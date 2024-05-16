@@ -7,8 +7,15 @@
 #patches:
 #  foo.patch: -p1
 #  bar.patch:
-#preamble: |-
-# BuildRequires:  gcc-c++
+
+# http://perlpunks.de/corelist/mversion?module=warnings
+# At some point in the past there was a version 1.05_01 which this
+# module is requiring, but that's greater than the current 1.65 for rpm
+preamble: |-
+  BuildRequires:  perl(warnings) >= 1.05
+  Requires:       perl(warnings) >= 1.05
+ignore_requires: warnings
+
 #post_prep: |-
 # hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
 # sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
@@ -20,4 +27,3 @@
 #./Build build flags=%{?_smp_mflags} --myflag
 #custom_test: |-
 #startserver && make test
-#ignore_requires: Bizarre::Module

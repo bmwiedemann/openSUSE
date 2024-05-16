@@ -1,7 +1,7 @@
 #
 # spec file for package gmavenplus-plugin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,6 +71,11 @@ This package contains javadoc for %{name}.
 %pom_xpath_remove "pom:plugin[pom:artifactId='maven-javadoc-plugin']/pom:executions"
 
 %pom_xpath_set "pom:project/pom:properties/pom:shortJavaVersion" "8"
+
+%pom_xpath_inject "pom:build/pom:plugins/pom:plugin[pom:artifactId='maven-plugin-plugin']" "
+  <configuration>
+    <goalPrefix>gmavenplus</goalPrefix>
+  </configuration>"
 
 # Mockito cannot mock this class: class org.codehaus.gmavenplus.mojo.AbstractGroovyMojoTest$TestGroovyMojo
 rm -r src/test/java/org/codehaus/gmavenplus/mojo/AbstractGroovyMojoTest.java

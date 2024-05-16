@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 16 13:28:54 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 0.6.8.1
+  * Fixes build issue
+- Removed 0001-v4l2-accommodate-to-struct-filed-rename-of-vb2_buffe.patch
+  * No longer needed
+
+-------------------------------------------------------------------
 Thu Mar 21 15:54:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add build fix for recent kernel versions:

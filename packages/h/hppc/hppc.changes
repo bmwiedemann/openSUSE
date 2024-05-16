@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 16 08:18:11 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with maven-plugin-plugin >= 3.11
+
+-------------------------------------------------------------------
 Wed Feb 21 10:44:44 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

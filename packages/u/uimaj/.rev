@@ -55,4 +55,12 @@
     <comment>Fix build with SLE12</comment>
     <requestid>1149419</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>98796da2077d9ad3b8dc263fcd549c0f</srcmd5>
+    <version>3.5.0</version>
+    <time>1715872577</time>
+    <user>anag+factory</user>
+    <comment>Fix build with maven-plugin-plugin &gt;= 3.11</comment>
+    <requestid>1174400</requestid>
+  </revision>
 </revisionlist>

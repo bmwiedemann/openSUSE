@@ -32,9 +32,9 @@ BuildRequires:  maven-lib
 BuildRequires:  maven-shared-io
 BuildRequires:  maven-shared-utils
 BuildRequires:  modello >= 2.0.0
-BuildRequires:  plexus-containers-container-default
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-xml
+BuildRequires:  sisu-plexus
 BuildRequires:  unzip
 BuildArch:      noarch
 
@@ -57,15 +57,15 @@ cp %{SOURCE1} build.xml
 %build
 mkdir -p lib
 build-jar-repository -s lib \
-	maven/maven-plugin-api \
-	maven-shared-io/maven-shared-io \
-	maven-shared-utils/maven-shared-utils \
-	plexus-containers/plexus-container-default \
-	plexus/utils \
-	plexus/xml
+    maven/maven-plugin-api \
+    maven-shared-io/maven-shared-io \
+    maven-shared-utils/maven-shared-utils \
+    org.eclipse.sisu.plexus \
+    plexus/utils \
+    plexus/xml
 
 %{ant} \
-	jar javadoc
+    jar javadoc
 
 %install
 # jar

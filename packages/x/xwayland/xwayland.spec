@@ -16,15 +16,13 @@
 #
 
 
-%define have_wayland_eglstream 1
-
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
 Name:           xwayland
-Version:        23.2.6
+Version:        24.1.0
 Release:        0
 URL:            http://xorg.freedesktop.org
 Summary:        Xwayland Xserver
@@ -72,9 +70,6 @@ BuildRequires:  pkgconfig(scrnsaverproto)
 BuildRequires:  pkgconfig(videoproto)
 BuildRequires:  pkgconfig(wayland-client) >= 1.21.0
 BuildRequires:  pkgconfig(wayland-protocols)
-%if 0%{?have_wayland_eglstream} == 1
-BuildRequires:  pkgconfig(wayland-eglstream-protocols)
-%endif
 BuildRequires:  pkgconfig(xau)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-damage)
@@ -131,9 +126,6 @@ This package contains the Xwayland Server development files.
 %build
 %{meson} \
    -Dglamor=true \
-%if 0%{?have_wayland_eglstream} == 1
-   -Dxwayland_eglstream=true \
-%endif
    -Dxvfb=true \
    -Dglx=true \
    -Dxdmcp=true \

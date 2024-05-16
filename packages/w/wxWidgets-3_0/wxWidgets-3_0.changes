@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 16 13:18:54 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Add autoconf-2_72.diff
+
+-------------------------------------------------------------------
 Wed May 24 09:29:25 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Use more pkgconfig(..) in BuildRequires

@@ -137,14 +137,14 @@ applications to be developed according to a true MVC model.
 %prep
 %setup -q
 cp %{SOURCE1} pom.xml
-%patch0 -b .sav0
-%patch1 -p1
+%patch -P 0 -b .sav0
+%patch -P 1 -p1
 
 # Use apache-commons-lang3
 %pom_change_dep commons-lang:commons-lang org.apache.commons:commons-lang3:3.9
-%patch2 -p1
+%patch -P 2 -p1
 
-%patch3 -p1
+%patch -P 3 -p1
 
 find . -name '*.jar' -print -delete
 find . -name '*.class' -print -delete

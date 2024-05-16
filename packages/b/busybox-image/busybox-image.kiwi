@@ -21,7 +21,7 @@ You can contact the BCI team via https://github.com/SUSE/bci/discussions
   <description type="system">
     <author>openSUSE Project</author>
     <contact>https://www.suse.com/</contact>
-    <specification>openSUSE Tumbleweed BCI openSUSE Tumbleweed BusyBox Container Image</specification>
+    <specification>openSUSE Tumbleweed BCI BusyBox Container Image</specification>
   </description>
   <preferences>
     <type image="docker">
@@ -32,8 +32,8 @@ You can contact the BCI team via https://github.com/SUSE/bci/discussions
           additionaltags="%OS_VERSION_ID_SP%.%RELEASE%,latest">
         <labels>
           <suse_label_helper:add_prefix prefix="org.opensuse.bci.busybox">
-            <label name="org.opencontainers.image.title" value="openSUSE Tumbleweed BCI openSUSE Tumbleweed BusyBox"/>
-            <label name="org.opencontainers.image.description" value="openSUSE Tumbleweed BusyBox container based on the openSUSE Tumbleweed Base Container Image."/>
+            <label name="org.opencontainers.image.title" value="openSUSE Tumbleweed BCI BusyBox"/>
+            <label name="org.opencontainers.image.description" value="BusyBox container based on the openSUSE Tumbleweed Base Container Image."/>
             <label name="org.opencontainers.image.version" value="%OS_VERSION_ID_SP%.%RELEASE%"/>
             <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
             <label name="org.opencontainers.image.vendor" value="openSUSE Project"/>

@@ -18,10 +18,10 @@
 
 %define cpan_name Mojolicious
 Name:           perl-Mojolicious
-Version:        9.360.0
+Version:        9.370.0
 Release:        0
-# 9.36 -> normalize -> 9.360.0
-%define cpan_version 9.36
+# 9.37 -> normalize -> 9.370.0
+%define cpan_version 9.37
 License:        Artistic-2.0
 Summary:        Real-time web framework
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -39,6 +39,7 @@ Provides:       perl(Mojo::Asset)
 Provides:       perl(Mojo::Asset::File)
 Provides:       perl(Mojo::Asset::Memory)
 Provides:       perl(Mojo::Base)
+Provides:       perl(Mojo::BaseUtil)
 Provides:       perl(Mojo::ByteStream)
 Provides:       perl(Mojo::Cache)
 Provides:       perl(Mojo::Collection)

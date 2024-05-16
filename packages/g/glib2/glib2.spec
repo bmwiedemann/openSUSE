@@ -37,7 +37,7 @@
 %define libgthread libgthread-%{libver}
 %define libgirepository libgirepository-%{libver}
 Name:           glib2%{psuffix}
-Version:        2.80.0
+Version:        2.80.2
 Release:        0
 Summary:        General-Purpose Utility Library
 License:        LGPL-2.1-or-later
@@ -481,7 +481,7 @@ done
 
 %if "%{flavor}" == "doc"
 %files
-%{_datadir}/doc/glib-2.0/
+%{_datadir}/doc/g*-2.0/
 %endif
 
 %if "%{flavor}" == ""

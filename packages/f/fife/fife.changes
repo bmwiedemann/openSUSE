@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 16 13:00:56 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- fix build with boost 1.85 (fife-boost_1_85.patch)
+
+-------------------------------------------------------------------
+Mon May  6 13:38:58 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Applying swig4.patch on Leap 15.6/SLE15-SP6 too
+  * swig 4.1.1 has been added to SLE15-SP6
+
+-------------------------------------------------------------------
 Mon Feb 26 08:36:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

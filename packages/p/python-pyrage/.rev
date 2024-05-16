@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2b80d3bd228685f31eb50f117a5d8ccc</srcmd5>
+    <version>1.1.2</version>
+    <time>1715872526</time>
+    <user>anag+factory</user>
+    <comment>Initial submission of python-pyrage. The end goal is to package
+and submit python-saltstack-age, and this is a required dependency.</comment>
+    <requestid>1174310</requestid>
+  </revision>
+</revisionlist>

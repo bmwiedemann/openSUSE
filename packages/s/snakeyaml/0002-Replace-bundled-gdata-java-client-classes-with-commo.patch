@@ -1,4 +1,4 @@
-From a42125edf39e204cd15f80ac551ce0b7bf3fc1de Mon Sep 17 00:00:00 2001
+From 6fc77c07c4a307063601c00869b03688bb4978b5 Mon Sep 17 00:00:00 2001
 From: Michal Srb <msrb@redhat.com>
 Date: Mon, 15 Apr 2024 10:08:26 +0200
 Subject: [PATCH 2/2] Replace bundled gdata-java-client classes with
@@ -10,9 +10,9 @@ Subject: [PATCH 2/2] Replace bundled gdata-java-client classes with
  .../util/common/base/PercentEscaper.java      | 267 ----------
  .../util/common/base/UnicodeEscaper.java      | 462 ------------------
  .../org/yaml/snakeyaml/util/UriEncoder.java   |  36 +-
- .../issue318/ContextClassLoaderTest.java      |  22 +-
+ .../issue318/ContextClassLoaderTest.java      |  20 +-
  .../issues/issue318/classpath.properties      |   1 +
- 7 files changed, 74 insertions(+), 820 deletions(-)
+ 7 files changed, 72 insertions(+), 820 deletions(-)
  delete mode 100644 src/main/java/org/yaml/snakeyaml/external/com/google/gdata/util/common/base/Escaper.java
  delete mode 100644 src/main/java/org/yaml/snakeyaml/external/com/google/gdata/util/common/base/PercentEscaper.java
  delete mode 100644 src/main/java/org/yaml/snakeyaml/external/com/google/gdata/util/common/base/UnicodeEscaper.java
@@ -955,18 +955,10 @@ index 02c3e434..69fdc55d 100644
  
    /**
 diff --git a/src/test/java/org/yaml/snakeyaml/issues/issue318/ContextClassLoaderTest.java b/src/test/java/org/yaml/snakeyaml/issues/issue318/ContextClassLoaderTest.java
-index 7d816c07..2bcc3406 100644
+index 7d816c07..d4ab48cb 100644
 --- a/src/test/java/org/yaml/snakeyaml/issues/issue318/ContextClassLoaderTest.java
 +++ b/src/test/java/org/yaml/snakeyaml/issues/issue318/ContextClassLoaderTest.java
-@@ -24,6 +24,7 @@ import java.lang.reflect.Method;
- import java.net.MalformedURLException;
- import java.net.URL;
- import java.net.URLClassLoader;
-+import java.util.ArrayList;
- import java.util.Collections;
- import java.util.List;
- import java.util.Properties;
-@@ -76,6 +77,7 @@ public class ContextClassLoaderTest {
+@@ -76,6 +76,7 @@ public class ContextClassLoaderTest {
  
    private URLClassLoader yamlCL;
    private URLClassLoader testYamlCL;
@@ -974,13 +966,12 @@ index 7d816c07..2bcc3406 100644
  
    @Before
    public void before() throws MalformedURLException {
-@@ -87,10 +89,18 @@ public class ContextClassLoaderTest {
+@@ -87,10 +88,17 @@ public class ContextClassLoaderTest {
        fail(e2.getLocalizedMessage());
      }
  
 +    String runtimeClasspath = classpath.getProperty("runtime_classpath");
 +    String[] classpathEntries = runtimeClasspath.split(File.pathSeparator);
-+    List<URL> urls = new ArrayList<>();
 +    for (String classpathEntry : classpathEntries) {
 +      File file = new File(classpathEntry);
 +      depsCL = new URLClassLoader(new URL[] {file.toURI().toURL()}, depsCL);
@@ -994,7 +985,7 @@ index 7d816c07..2bcc3406 100644
      testYamlCL = new URLClassLoader(new URL[] {testClassesDir.toURI().toURL()}, yamlCL);
    }
  
-@@ -115,6 +125,16 @@ public class ContextClassLoaderTest {
+@@ -115,6 +123,16 @@ public class ContextClassLoaderTest {
          yamlCL = null;
        }
      }

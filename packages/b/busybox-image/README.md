@@ -1,4 +1,4 @@
-# openSUSE Tumbleweed BCI openSUSE Tumbleweed BusyBox: the smallest and GPLv3-free image
+# openSUSE Tumbleweed BCI BusyBox: the smallest and GPLv3-free image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
 

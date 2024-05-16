@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 15 08:13:04 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Recommend ddcutil-i2c-udev-rules (boo#1224197)
+
+-------------------------------------------------------------------
 Wed Apr 17 08:13:55 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.4:

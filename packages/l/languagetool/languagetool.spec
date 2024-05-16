@@ -28,6 +28,7 @@ Patch0:         languagetool-descriptor.patch
 Patch1:         languagetool-xgboost-predictor.patch
 Patch2:         languagetool-hunspell.patch
 Patch3:         languagetool-4.8-lucene-8.patch
+Patch4:         languagetool-test-resource.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  xmvn-subst
@@ -163,6 +164,7 @@ This package contains javadoc for %{name}.
 %if %{?pkg_vcmp:%pkg_vcmp lucene-core >= 8}%{!?pkg_vcmp:0}
 %patch -P 3 -p1
 %endif
+%patch -P 4 -p1
 
 # We built these ones in another spec file
 %pom_disable_module languagetool-core

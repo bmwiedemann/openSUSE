@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu May 16 09:39:34 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to 1.97.2
+  * [AMD]
+    - [Hawk Point] Adding Ryzen PRO processors
+    - [Phoenix] Adding the unlocked Ryzen 8000 Series
+  * [Intel]
+    - [MeteorLake] New bits specified
+    - EEO and R2H bits inversion fix in MSR_POWER_CTL (0x1fc)
+    - Reverse specification of MSR UNCORE_PERF_STATUS
+    - Prefetchers fix of L1 Scrubbing, L1 Next Page and L2 AMP
+  * [AArch64]
+    - Providing Exclusive Load/Store to atomic operations
+    - Improved asm of various macro functions
+    - Removed LEGACY macros
+    - Optimized the CORE_COUNT macros
+    - Marked the Tools feature as nominal: Stress functions available
+    - Allow user access to Retired Instructions counter
+    - Fix Instructions counter overflow
+    - Other PMC enhancements
+  * [CR]
+    - Fix a building issue with AlmaLinux aka RHEL-9
+    - Linux kernel 6.9: Avoid redefinition of Intel MSR macros
+  * [Doc]
+    - README section for AlmaLinux
+    - CONFIG_TRIM_UNUSED_KSYMS kernel build config is forbidden
+
+-------------------------------------------------------------------
 Fri Apr  5 20:44:18 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - added preamble file for %kernel_module_package macro
@@ -29,10 +57,10 @@ Thu Jun 15 11:00:33 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
         Trailing Bit Manipulation [TBM]
         OS Visible Work-around [OSVW]
         LOCK prefix to read CR8 [AltMov]
-   * [Intel]
-     - Advanced Matrix Extensions [AMX]
-     - Bits and Features of Sierra Forest and Grand Ridge
-     - Attempt to decode the Meteor Lake Memory Controller
+  * [Intel]
+    - Advanced Matrix Extensions [AMX]
+    - Bits and Features of Sierra Forest and Grand Ridge
+    - Attempt to decode the Meteor Lake Memory Controller
 
 - update to 1.96.3
   * [AMD]

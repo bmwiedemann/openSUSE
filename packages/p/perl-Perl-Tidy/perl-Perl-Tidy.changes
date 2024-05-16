@@ -1,4 +1,127 @@
 -------------------------------------------------------------------
+Sat May 11 03:07:59 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20240511
+   see /usr/share/doc/packages/perl-Perl-Tidy/CHANGES.md
+
+  ## 2024 05 11
+      - The option --valign-signed-numbers, or -vsn is now the default. It
+        was introduced in the previous release has been found to significantly
+        improve the overall appearance of columns of signed and unsigned
+        numbers.  See the previous Change Log entry for an example.
+        This will change the formatting in scripts with columns
+        of vertically aligned signed and unsigned numbers.
+        Use -nvsn to turn this option off and avoid this change.
+      - Previously, a line break was made before a short concatenated terminal
+        quoted string, such as "\n", if the previous line had a greater
+        starting indentation. The break is now placed after the short quote.
+        This keeps code a little more compact. For example:
+      # old rule: break before "\n" here because '$name' has more indentation:
+      my $html = $this->SUPER::genObject( $query, $bindNode, $field . ":$var",
+          $name, "remove", "UNCHECKED" )
+        . "\n";
+      # new rule: break after a short terminal quote like "\n" for compactness;
+      my $html = $this->SUPER::genObject( $query, $bindNode, $field . ":$var",
+          $name, "remove", "UNCHECKED" ) . "\n";
+      - The option --delete-repeated-commas is now the default.
+        It makes the following checks and changes:
+        - Repeated commas like ',,' are removed with a warning
+        - Repeated fat commas like '=> =>' are removed with a warning
+        - The combination '=>,' produces a warning but is not changed
+        These warnings are only output if --warning-output, or -w, is set.
+        Use --nodelete-repeated-commas, or -ndrc, to retain repeated commas.
+      - The operator ``**=`` now has spaces on both sides by default. Previously,
+        there was no space on the left.  This change makes its spacing the same
+        as all other assignment operators. The previous behavior can be obtained
+        with the parameter setting -nwls='**='.
+      - The option --file-size-order, or -fso is now the default. When
+        perltidy is given a list of multiple filenames to process, they
+        are sorted by size and processed in order of increasing size.
+        This can significantly reduce memory usage by Perl.  This
+        option has always been used in testing, where typically several
+        jobs each operating on thousands of filenames are running at the
+        same time and competing for system resources.  If this option
+        is not wanted for some reason, it can be deactivated with -nfso.
+      - In the option --dump-block-summary, the number of sub arguments indicated
+        for each sub now includes any leading object variable passed with
+        an arrow-operator call.  Previously the count would have been decreased
+        by one in this case. This change is needed for compatibility with future
+        updates.
+      - Fix issue git #138 involving -xlp (--extended-line-up-parentheses).
+        When multiple-line quotes and regexes have long secondary lines, these
+        line lengths could influencing some spacing and indentation, but they
+        should not have since perltidy has no control over their indentation.
+        This has been fixed. This will mainly influence code which uses -xlp
+        and has long multi-line quotes.
+      - Add option --minimize-continuation-indentation, -mci (see git #137).
+        This flag allows perltidy to remove continuation indentation in some
+        special cases where it is not really unnecessary. For a simple example,
+        the default formatting for the following snippet is:
+          # perltidy -nmci
+          $self->blurt( "Error: No INPUT definition for type '$type', typekind '"
+                . $type->xstype
+                . "' found" );
+        The second and third lines are one level deep in a container, and
+        are also statement continuations, so they get indented by the sum
+        of the -i value and the -ci value.  If this flag is set, the
+        indentation is reduced by -ci spaces, giving
+          # perltidy -mci
+          $self->blurt( "Error: No INPUT definition for type '$type', typekind '"
+              . $type->xstype
+              . "' found" );
+        This situation is relatively rare except in code which has long
+        quoted strings and the -nolq flag is also set.  This flag is currently
+        off by default, but it could become the default in a future version.
+      - Add options --dump-mismatched-args (or -dma) and
+        --warn-mismatched-arg (or -wma).  These options look
+        for and report instances where the number of args expected by a
+        sub appear to differ from the number passed to the sub.  The -dump
+        version writes the results for a single file to standard output
+        and exits:
+           perltidy -dma somefile.pl >results.txt
+        The -warn version formats as normal but reports any issues as warnings in
+        the error file:
+           perltidy -wma somefile.pl
+        The -warn version may be customized with the following additional parameters
+        if necessary to avoid needless warnings:
+        --warn-mismatched-arg-types=s (or -wmat=s),
+        --warn-mismatched-arg-exclusion-list=s (or -wmaxl=s), and
+        --warn-mismatched-arg-undercount-cutoff=n (or -wmauc=n).
+        --warn-mismatched-arg-overcount-cutoff=n (or -wmaoc=n).
+        These are explained in the manual.
+      - Add option --valign-wide-equals, or -vwe, for issue git #135.
+        Setting this parameter causes the following assignment operators
+           = **= += *= &= <<= &&= -= /= |= >>= ||= //= .= %= ^= x=
+        to be aligned vertically with the ending = all aligned. For example,
+        here is the default formatting of a snippet of code:
+              $str .= SPACE x $total_pad_count;
+              $str_len += $total_pad_count;
+              $total_pad_count = 0;
+              $str .= $rfields->[$j];
+              $str_len += $rfield_lengths->[$j];
+        And here is the same code formatted with -vwe:
+              # perltidy -vwe
+              $str             .= SPACE x $total_pad_count;
+              $str_len         += $total_pad_count;
+              $total_pad_count  = 0;
+              $str             .= $rfields->[$j];
+              $str_len         += $rfield_lengths->[$j];
+        This option currently is off by default to avoid changing existing
+        formatting.
+      - Added control --delete-interbracket-arrows, or -dia, to delete optional
+        hash ref and array ref arrows between brackets as in the following
+        expression (see git #131)
+          return $self->{'commandline'}->{'arg_list'}->[0]->[0]->{'hostgroups'};
+          # perltidy -dia gives:
+          return $self->{'commandline'}{'arg_list'}[0][0]{'hostgroups'};
+        Added the opposite control --aia-interbracket-arrows, or -aia, to
+        add arrows. So applied to the previous line the arrows are restored:
+          # perltidy -aia
+          return $self->{'commandline'}->{'arg_list'}->[0]->[0]->{'hostgroups'};
+       The manual describes additional controls for adding and deleting
+       just selected interbracket arrows.
+
+-------------------------------------------------------------------
 Fri Mar  8 22:56:24 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

@@ -40,8 +40,8 @@ BuildRequires:  bsh2
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  plexus-classworlds >= 2
-BuildRequires:  plexus-containers-container-default
 BuildRequires:  plexus-utils
+BuildRequires:  sisu-plexus
 BuildArch:      noarch
 
 %description
@@ -66,7 +66,7 @@ cp -p %{SOURCE3} .
 %build
 mkdir -p lib
 
-build-jar-repository -s lib plexus/classworlds plexus/utils plexus-containers/plexus-container-default bsh2/bsh
+build-jar-repository -s lib plexus/classworlds plexus/utils org.eclipse.sisu.plexus bsh2/bsh
 %{ant} \
   jar javadoc
 

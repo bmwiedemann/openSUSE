@@ -1,4 +1,4 @@
-From b7e2fb6a680447b7bb7eb18bb7570afa8d2b7f09 Mon Sep 17 00:00:00 2001
+From 91a99dffbe78b91a0c18b32ebecf755ba9d74032 Mon Sep 17 00:00:00 2001
 From: Gary Lin <glin@suse.com>
 Date: Thu, 10 Aug 2023 10:19:29 +0800
 Subject: [PATCH 4/4] diskfilter: look up cryptodisk devices first
@@ -12,15 +12,15 @@ look like this:
 
 Since the disk search order is based on the order of module loading, the
 attacker could insert a malicious disk with the same FS-UUID root to
-trick grub2 to boot into th malicious root and further dump memory to
+trick grub2 to boot into the malicious root and further dump memory to
 steal the unsealed key.
 
-To defend such attack, we can specify the hint provided by 'grub-probe'
-to search the encrypted partition first:
+Do defend against such an attack, we can specify the hint provided by
+'grub-probe' to search the encrypted partition first:
 
 search --fs-uuid --set=root --hint='cryptouuid/<PART-UUID>' <FS-UUID>
 
-However, for LVM on a encrypted partition, the search hint provided by
+However, for LVM on an encrypted partition, the search hint provided by
 'grub-probe' is:
 
   --hint='lvmid/<VG-UUID>/<LV-UUID>'
@@ -29,20 +29,22 @@ It doesn't guarantee to look up the logical volume from the encrypted
 partition, so the attacker may have the chance to fool grub2 to boot
 into the malicious disk.
 
-To mininize the attack surface, this commit tweaks the disk device search
+To minimize the attack surface, this commit tweaks the disk device search
 in diskfilter to look up cryptodisk devices first and then others, so
 that the auto-unlocked disk will be found first, not the attacker's disk.
 
+Cc: Fabian Vogt <fvogt@suse.com>
 Signed-off-by: Gary Lin <glin@suse.com>
+Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
 ---
  grub-core/disk/diskfilter.c | 35 ++++++++++++++++++++++++++---------
  1 file changed, 26 insertions(+), 9 deletions(-)
 
 diff --git a/grub-core/disk/diskfilter.c b/grub-core/disk/diskfilter.c
-index 61a311efd..94832c8dd 100644
+index 41e177549..c45bef1ca 100644
 --- a/grub-core/disk/diskfilter.c
 +++ b/grub-core/disk/diskfilter.c
-@@ -226,15 +226,32 @@ scan_devices (const char *arname)
+@@ -322,15 +322,32 @@ scan_devices (const char *arname)
    int need_rescan;
  
    for (pull = 0; pull < GRUB_DISK_PULL_MAX; pull++)

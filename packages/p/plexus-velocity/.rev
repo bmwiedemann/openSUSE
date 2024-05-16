@@ -33,4 +33,12 @@
     <comment>Simplify the build</comment>
     <requestid>965692</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>b1f6f34e28d1580917d60cc0f999636a</srcmd5>
+    <version>1.2</version>
+    <time>1715872550</time>
+    <user>anag+factory</user>
+    <comment>build with sisu-plexus</comment>
+    <requestid>1174344</requestid>
+  </revision>
 </revisionlist>

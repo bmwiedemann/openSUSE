@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 14 07:21:57 UTC 2024 - ming li <mli@suse.com>
+
+- Update to 1.7.5:
+  * Support for kernels up to v6.8 (x86_64)
+  * Support for printk caller_id by --dump-dmesg option
+  * [PATCH] ppc64: get vmalloc start address from vmcoreinfo
+  * [PATCH] ppc64: read cur_mmu_type from vmcoreinfo
+  * [PATCH] add PRINTK_CALLER id support to --dump-dmesg option
+  * [PATCH v2 2/2] s390x: uncouple virtual and physical address spaces
+  * [PATCH 1/2] s390x: fix virtual vs physical address confusion
+
+  Regenerated the content of the makedumpfile-ppc64-VA-range-SUSE.patch
+  file based on version 1.7.5 of the code
+
+-------------------------------------------------------------------
 Wed Nov 15 14:00:28 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
 
 - Enable build for riscv64.

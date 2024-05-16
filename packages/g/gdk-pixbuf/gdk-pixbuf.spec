@@ -20,7 +20,7 @@
 %define gdk_pixbuf_binary_version 2.10.0
 
 Name:           gdk-pixbuf
-Version:        2.42.11
+Version:        2.42.12
 Release:        0
 Summary:        An image loading library
 License:        LGPL-2.1-or-later
@@ -36,8 +36,6 @@ Source1:        macros.gdk-pixbuf
 Source2:        README.SUSE
 Source3:        gdk-pixbuf-rpmlintrc
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM
-Patch0:         https://gitlab.gnome.org/GNOME/gdk-pixbuf/-/commit/238893d8cd6f9c2616a05ab521a29651a17a38c2.patch
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docutils

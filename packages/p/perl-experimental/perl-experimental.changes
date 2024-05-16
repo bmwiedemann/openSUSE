@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 26 03:14:49 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.032
+   see /usr/share/doc/packages/perl-experimental/Changes
+
+  0.032     2024-04-25 22:30:41+01:00 Europe/Lisbon
+            - Add the newly-stable features to stable.pm - extra_paired_delimiters, const_attr, for_list
+
+-------------------------------------------------------------------
 Wed Feb  1 03:09:00 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.031

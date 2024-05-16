@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 14 03:07:33 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 9.37
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  9.37  2024-05-13
+    - Improved Mojo::Base include time with a new Mojo::BaseUtils module. (okurz)
+
+-------------------------------------------------------------------
 Fri Mar 22 16:18:14 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 9.36

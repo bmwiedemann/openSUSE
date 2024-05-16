@@ -56,7 +56,6 @@ URL:            https://www.gnu.org/software/auctex
 # PATCH-FEATURE-UPSTREAM dvips.patch
 Patch0:         dvips.patch
 Patch1:         auctex-13.1-expand.patch
-Patch2:         ignore-errors.patch
 Patch3:         initial-reset.patch
 Patch4:         dinbrief.patch
 BuildArch:      noarch
@@ -83,7 +82,6 @@ you cannot use this package for XEmacs.
 %setup -n auctex-%{version}
 %patch -P0
 %patch -P1
-%patch -P2
 %patch -P3
 %patch -P4
 
@@ -118,8 +116,11 @@ you cannot use this package for XEmacs.
 %if %{with tex4auto}
 	pwd
 	echo "Run the command TeX-auto-generate-global in mini buffer"
+	ignore="$(sed -rn '/^\(defcustom TeX-ignore-file/,+1{ s@^\s+@@;s@(\\\\)(\)\$)@\1|lwarp\\.sty\\\\\2@p }' < ../tex.el)"
 	emacs-gtk -batch -Q -L %{buildroot}%{_sitedir}/auctex 			\
 	    --eval '(setq TeX-lisp-directory "%{buildroot}%{_aucdir}")'		\
+	    --eval "(setq TeX-install-font-lock #'ignore)"			\
+	    --eval "(setq TeX-ignore-file ${ignore})"				\
 	    --eval '(setq TeX-auto-global "%{buildroot}%{_aucdir}/auto")'	\
 	    -l %{buildroot}%{_sitedir}/tex-site.el -f TeX-auto-generate-global
 	exit 1

@@ -1,0 +1,6 @@
+<package name="ocrs" project="openSUSE:Factory">
+  <title>A modern OCR engine written in Rust</title>
+  <description>ocrs is CLI tool for extracting text from images, also known as OCR (Optical Character Recognition).</description>
+  <devel project="X11:Utilities" package="ocrs"/>
+  <url>https://github.com/robertknight/ocrs</url>
+</package>

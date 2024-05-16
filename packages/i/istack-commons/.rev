@@ -55,4 +55,12 @@
     <comment>This runs with java 8 just fine</comment>
     <requestid>1170844</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>7ebdfae154ff4b2dd16da2a548681a80</srcmd5>
+    <version>3.0.7</version>
+    <time>1715872576</time>
+    <user>anag+factory</user>
+    <comment>Fix build with maven-plugin-plugin &gt;= 3.11</comment>
+    <requestid>1174399</requestid>
+  </revision>
 </revisionlist>

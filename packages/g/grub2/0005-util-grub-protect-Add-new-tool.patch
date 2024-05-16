@@ -1,7 +1,7 @@
-From 1116bc4b9a27aceaec53421e89eb887e6ad3aef8 Mon Sep 17 00:00:00 2001
+From c8c567c463cbe6090e086430251efc0dd4f58164 Mon Sep 17 00:00:00 2001
 From: Hernan Gatta <hegatta@linux.microsoft.com>
 Date: Tue, 1 Feb 2022 05:02:57 -0800
-Subject: [PATCH v7 12/20] util/grub-protect: Add new tool
+Subject: [PATCH 5/5] util/grub-protect: Add new tool
 
 To utilize the key protectors framework, there must be a way to protect
 full-disk encryption keys in the first place. The grub-protect tool
@@ -27,6 +27,7 @@ To seal the key with TPM 2.0 Key File (recommended):
 
 $ sudo grub-protect --action=add \
                     --protector=tpm2 \
+		    --tpm2-pcrs=0,2,4,7,9 \
                     --tpm2key \
                     --tpm2-keyfile=luks-key \
                     --tpm2-outfile=/boot/efi/boot/grub2/sealed.tpm
@@ -35,6 +36,7 @@ Or, to seal the key with the raw sealed key:
 
 $ sudo grub-protect --action=add \
                     --protector=tpm2 \
+		    --tpm2-pcrs=0,2,4,7,9 \
                     --tpm2-keyfile=luks-key \
                     --tpm2-outfile=/boot/efi/boot/grub2/sealed.key
 
@@ -45,29 +47,38 @@ cryptomount -u <SDB1_UUID> -P tpm2
 
 Or, for the raw sealed key:
 
-tpm2_key_protector_init --keyfile=(hd0,gpt1)/boot/grub2/sealed.key
+tpm2_key_protector_init --keyfile=(hd0,gpt1)/boot/grub2/sealed.key --pcrs=0,2,4,7,9
 cryptomount -u <SDB1_UUID> -P tpm2
 
+The benefit of using TPM 2.0 Key File is that the PCR set is already
+written in the key file, so there is no need to specify PCRs when
+invoking tpm2_key_protector_init.
+
+Cc: Stefan Berger <stefanb@linux.ibm.com>
 Signed-off-by: Hernan Gatta <hegatta@linux.microsoft.com>
 Signed-off-by: Gary Lin <glin@suse.com>
 ---
- Makefile.util.def   |   22 +
- configure.ac        |    9 +
- util/grub-protect.c | 1492 +++++++++++++++++++++++++++++++++++++++++++
- 4 files changed, 1525 insertions(+)
+ .gitignore                |    2 +
+ Makefile.util.def         |   24 +
+ configure.ac              |   30 +
+ docs/man/grub-protect.h2m |    4 +
+ util/grub-protect.c       | 1420 +++++++++++++++++++++++++++++++++++++
+ 5 files changed, 1480 insertions(+)
+ create mode 100644 docs/man/grub-protect.h2m
  create mode 100644 util/grub-protect.c
 
-diff --git a/Makefile.util.def b/Makefile.util.def
-index e89abb38f..f43c223b9 100644
---- a/Makefile.util.def
-+++ b/Makefile.util.def
-@@ -207,6 +207,28 @@ program = {
-   ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
+Index: grub-2.12/Makefile.util.def
+===================================================================
+--- grub-2.12.orig/Makefile.util.def
++++ grub-2.12/Makefile.util.def
+@@ -208,6 +208,30 @@ program = {
  };
  
-+program = {
+ program = {
 +  name = grub-protect;
++  mansection = 1;
 +
++  common = grub-core/kern/emu/argp_common.c;
 +  common = grub-core/osdep/init.c;
 +  common = grub-core/tpm2/args.c;
 +  common = grub-core/tpm2/buffer.c;
@@ -84,16 +95,17 @@ index e89abb38f..f43c223b9 100644
 +  ldadd = '$(LIBTASN1)';
 +  ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBUTIL) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
 +
-+  enable = efi;
++  condition = COND_GRUB_PROTECT;
 +};
 +
- program = {
++program = {
    name = grub-mkrelpath;
    mansection = 1;
-diff --git a/configure.ac b/configure.ac
-index c19779c14..9796e5f9b 100644
---- a/configure.ac
-+++ b/configure.ac
+ 
+Index: grub-2.12/configure.ac
+===================================================================
+--- grub-2.12.orig/configure.ac
++++ grub-2.12/configure.ac
 @@ -76,6 +76,7 @@ grub_TRANSFORM([grub-mkpasswd-pbkdf2])
  grub_TRANSFORM([grub-mkrelpath])
  grub_TRANSFORM([grub-mkrescue])
@@ -102,27 +114,70 @@ index c19779c14..9796e5f9b 100644
  grub_TRANSFORM([grub-reboot])
  grub_TRANSFORM([grub-script-check])
  grub_TRANSFORM([grub-set-default])
-@@ -2018,6 +2019,14 @@ fi
+@@ -2057,6 +2058,29 @@ fi
  AC_SUBST([LIBZFS])
  AC_SUBST([LIBNVPAIR])
  
++AC_ARG_ENABLE([grub-protect],
++	      [AS_HELP_STRING([--enable-grub-protect],
++                             [build and install the `grub-protect' utility (default=guessed)])])
++if test x"$enable_grub_protect" = xno ; then
++  grub_protect_excuse="explicitly disabled"
++fi
++
 +LIBTASN1=
-+if test x"$platform" = xefi; then
-+  AC_CHECK_LIB([tasn1], [asn1_write_value], [],
-+               [AC_MSG_ERROR([Your platform requires libtasn1])])
-+  LIBTASN1="-ltasn1"
++if test x"$grub_protect_excuse" = x ; then
++  AC_CHECK_LIB([tasn1], [asn1_write_value], [LIBTASN1="-ltasn1"], [grub_protect_excuse="need libtasn1 library"])
 +fi
 +AC_SUBST([LIBTASN1])
++
++if test x"$enable_grub_protect" = xyes && test x"$grub_protect_excuse" != x ; then
++  AC_MSG_ERROR([grub-protect was explicitly requested but can't be compiled ($grub_protect_excuse)])
++fi
++if test x"$grub_protect_excuse" = x ; then
++enable_grub_protect=yes
++else
++enable_grub_protect=no
++fi
++AC_SUBST([enable_grub_protect])
 +
  LIBS=""
  
  AC_SUBST([FONT_SOURCE])
-diff --git a/util/grub-protect.c b/util/grub-protect.c
-new file mode 100644
-index 000000000..c6d41ea40
+@@ -2177,6 +2201,7 @@ AM_CONDITIONAL([COND_GRUB_EMU_SDL], [tes
+ AM_CONDITIONAL([COND_GRUB_EMU_PCI], [test x$enable_grub_emu_pci = xyes])
+ AM_CONDITIONAL([COND_GRUB_MKFONT], [test x$enable_grub_mkfont = xyes])
+ AM_CONDITIONAL([COND_GRUB_MOUNT], [test x$enable_grub_mount = xyes])
++AM_CONDITIONAL([COND_GRUB_PROTECT], [test x$enable_grub_protect = xyes])
+ AM_CONDITIONAL([COND_HAVE_FONT_SOURCE], [test x$FONT_SOURCE != x])
+ if test x$FONT_SOURCE != x ; then
+    HAVE_FONT_SOURCE=1
+@@ -2304,6 +2329,11 @@ echo grub-mount: Yes
+ else
+ echo grub-mount: No "($grub_mount_excuse)"
+ fi
++if [ x"$grub_protect_excuse" = x ]; then
++echo grub-protect: Yes
++else
++echo grub-protect: No "($grub_protect_excuse)"
++fi
+ if [ x"$starfield_excuse" = x ]; then
+ echo starfield theme: Yes
+ echo With DejaVuSans font from $DJVU_FONT_SOURCE
+Index: grub-2.12/docs/man/grub-protect.h2m
+===================================================================
 --- /dev/null
-+++ b/util/grub-protect.c
-@@ -0,0 +1,1492 @@
++++ grub-2.12/docs/man/grub-protect.h2m
+@@ -0,0 +1,4 @@
++[NAME]
++grub-protect \- protect a disk key with a key protector
++[DESCRIPTION]
++grub-protect helps to pretect a disk encryption key with a specified key protector.
+Index: grub-2.12/util/grub-protect.c
+===================================================================
+--- /dev/null
++++ grub-2.12/util/grub-protect.c
+@@ -0,0 +1,1420 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
 + *  Copyright (C) 2022 Microsoft Corporation
@@ -151,8 +206,6 @@ index 000000000..c6d41ea40
 +#include <string.h>
 +#include <unistd.h>
 +
-+#include <grub/crypto.h>
-+#include <grub/emu/getroot.h>
 +#include <grub/emu/hostdisk.h>
 +#include <grub/emu/misc.h>
 +#include <grub/tpm2/buffer.h>
@@ -228,9 +281,7 @@ index 000000000..c6d41ea40
 +  const char *tpm2_device;
 +  grub_uint8_t tpm2_pcrs[TPM_MAX_PCRS];
 +  grub_uint8_t tpm2_pcr_count;
-+  TPM_ALG_ID tpm2_asymmetric;
-+  TPM_KEY_BITS rsa_bits;
-+  TPM_ECC_CURVE ecc_curve;
++  grub_srk_type_t srk_type;
 +  TPM_ALG_ID tpm2_bank;
 +  TPM_HANDLE tpm2_srk;
 +  const char *tpm2_keyfile;
@@ -267,7 +318,7 @@ index 000000000..c6d41ea40
 +      .arg   = "FILE",
 +      .flags = 0,
 +      .doc   =
-+	N_("Path to the TPM2 device (default is /dev/tpm0)."),
++	N_("Path to the TPM2 device. (default: /dev/tpm0)"),
 +      .group = 0
 +    },
 +    {
@@ -277,7 +328,11 @@ index 000000000..c6d41ea40
 +      .flags = 0,
 +      .doc   =
 +	N_("Comma-separated list of PCRs used to authorize key release "
-+	   "(e.g., '7,11', default is 7."),
++	   "e.g., '7,11'. Please be aware that PCR 0~7 are used by the "
++	   "firmware and the measurement result may change after a "
++	   "firmware update (for baremetal systems) or a package "
++	   "(OVMF/SeaBIOS/SLOF) update in the VM host. This may lead to"
++	   "the failure of key unsealing. (default: 7)"),
 +      .group = 0
 +    },
 +    {
@@ -287,7 +342,7 @@ index 000000000..c6d41ea40
 +      .flags = 0,
 +      .doc   =
 +	N_("Bank of PCRs used to authorize key release: "
-+	   "SHA1, SHA256 (default), or SHA512."),
++	   "SHA1, SHA256, SHA384, or SHA512. (default: SHA256)"),
 +      .group = 0
 +    },
 +    {
@@ -324,10 +379,8 @@ index 000000000..c6d41ea40
 +      .arg   = "TYPE",
 +      .flags = 0,
 +      .doc   =
-+	N_("The type of SRK: RSA (RSA2048), RSA3072, RSA4096, "
-+	   "ECC (ECC_NIST_P256), ECC_NIST_P384, ECC_NIST_P521, "
-+	   "ECC_BN_P256, ECC_BN_P638, and ECC_SM2_P256. "
-+	   "(default is RSA2048)"),
++	N_("The type of SRK: RSA (RSA2048) and ECC (ECC_NIST_P256)."
++	   "(default: ECC)"),
 +      .group = 0
 +    },
 +    {
@@ -374,7 +427,7 @@ index 000000000..c6d41ea40
 +    }
 +
 +  len = ftell (f);
-+  if (len == 0)
++  if (len <= 0)
 +    {
 +       err = GRUB_ERR_FILE_READ_ERROR;
 +       goto exit1;
@@ -434,88 +487,6 @@ index 000000000..c6d41ea40
 +  return err;
 +}
 +
-+static grub_err_t
-+grub_protect_get_grub_drive_for_file (const char *filepath, char **drive)
-+{
-+  grub_err_t err = GRUB_ERR_IO;
-+  char *disk;
-+  char **devices;
-+  char *grub_dev;
-+  char *grub_path;
-+  char *efi_drive;
-+  char *partition;
-+  char *grub_drive;
-+  grub_device_t dev;
-+  grub_size_t grub_drive_len;
-+  int n;
-+
-+  grub_path = grub_canonicalize_file_name (filepath);
-+  if (grub_path == NULL)
-+    goto exit1;
-+
-+  devices = grub_guess_root_devices (grub_path);
-+  if (devices == NULL || devices[0] == NULL)
-+    goto exit2;
-+
-+  disk = devices[0];
-+
-+  grub_util_pull_device (disk);
-+
-+  grub_dev = grub_util_get_grub_dev (disk);
-+  if (grub_dev == NULL)
-+    goto exit3;
-+
-+  dev = grub_device_open (grub_dev);
-+  if (dev == NULL)
-+    goto exit4;
-+
-+  efi_drive = grub_util_guess_efi_drive (disk);
-+  if (efi_drive == NULL)
-+    goto exit5;
-+
-+  partition = grub_partition_get_name (dev->disk->partition);
-+  if (partition == NULL)
-+    goto exit6;
-+
-+  grub_drive_len = grub_strlen (efi_drive) + grub_strlen (partition) + 3;
-+  grub_drive = grub_malloc (grub_drive_len + 1);
-+  if (grub_drive == NULL)
-+    goto exit7;
-+
-+  n = grub_snprintf (grub_drive, grub_drive_len + 1, "(%s,%s)", efi_drive,
-+		     partition);
-+  if (n != grub_drive_len)
-+    goto exit8;
-+
-+  *drive = grub_drive;
-+  grub_drive = NULL;
-+  err = GRUB_ERR_NONE;
-+
-+exit8:
-+  grub_free (grub_drive);
-+
-+exit7:
-+  grub_free (partition);
-+
-+exit6:
-+  grub_free (efi_drive);
-+
-+exit5:
-+  grub_device_close (dev);
-+
-+exit4:
-+  grub_free (grub_dev);
-+
-+exit3:
-+  grub_free (devices);
-+
-+exit2:
-+  grub_free (grub_path);
-+
-+exit1:
-+  return err;
-+}
-+
 +grub_err_t
 +grub_tcg2_get_max_output_size (grub_size_t *size)
 +{
@@ -552,7 +523,7 @@ index 000000000..c6d41ea40
 +  grub_protector_tpm2_fd = open (dev_node, O_RDWR);
 +  if (grub_protector_tpm2_fd == -1)
 +    {
-+      fprintf (stderr, _("Could not open TPM device (Error: %u).\n"), errno);
++      fprintf (stderr, _("Could not open TPM device (%s).\n"), strerror (errno));
 +      return GRUB_ERR_FILE_NOT_FOUND;
 +    }
 +
@@ -595,20 +566,15 @@ index 000000000..c6d41ea40
 +  };
 +  TPML_PCR_SELECTION pcr_sel_out = { 0 };
 +  TPML_DIGEST pcr_values = { 0 };
-+  grub_uint8_t *pcr_digest;
++  TPM2B_DIGEST pcr_digest = { 0 };
 +  grub_size_t pcr_digest_len;
-+  grub_uint8_t *pcr_concat;
++  TPM2B_MAX_BUFFER pcr_concat = { 0 };
 +  grub_size_t pcr_concat_len;
 +  grub_uint8_t *pcr_cursor;
-+  const gcry_md_spec_t *hash_spec;
 +  TPM2B_NONCE nonce = { 0 };
 +  TPM2B_ENCRYPTED_SECRET salt = { 0 };
 +  TPMT_SYM_DEF symmetric = { 0 };
 +  TPMI_SH_AUTH_SESSION session = 0;
-+  TPM2B_DIGEST pcr_digest_in = {
-+    .size = TPM_SHA256_DIGEST_SIZE,
-+    .buffer = { 0 }
-+  };
 +  TPM2B_DIGEST policy_digest = { 0 };
 +  grub_uint8_t i;
 +  grub_err_t err;
@@ -637,40 +603,28 @@ index 000000000..c6d41ea40
 +    {
 +    case TPM_ALG_SHA1:
 +      pcr_digest_len = TPM_SHA1_DIGEST_SIZE;
-+      hash_spec = GRUB_MD_SHA1;
 +      break;
 +    case TPM_ALG_SHA256:
 +      pcr_digest_len = TPM_SHA256_DIGEST_SIZE;
-+      hash_spec = GRUB_MD_SHA256;
++      break;
++    case TPM_ALG_SHA384:
++      pcr_digest_len = TPM_SHA384_DIGEST_SIZE;
 +      break;
 +    case TPM_ALG_SHA512:
 +      pcr_digest_len = TPM_SHA512_DIGEST_SIZE;
-+      hash_spec = GRUB_MD_SHA512;
 +      break;
-+    /* Although SHA384 can be parsed by grub_tpm2_protector_parse_bank(),
-+       it's not supported by the built-in libgcrypt, and we won't be able to
-+       calculate the PCR digest, so SHA384 is marked as unsupported. */
 +    default:
 +      return GRUB_ERR_BAD_ARGUMENT;
 +    }
 +
-+  pcr_digest = grub_malloc (pcr_digest_len);
-+  if (!pcr_digest)
-+    {
-+      fprintf (stderr, _("Failed to allocate PCR digest buffer.\n"));
-+      return GRUB_ERR_OUT_OF_MEMORY;
-+    }
-+
 +  pcr_concat_len = pcr_digest_len * args->tpm2_pcr_count;
-+  pcr_concat = grub_malloc (pcr_concat_len);
-+  if (pcr_concat == NULL)
++  if (pcr_concat_len > TPM_MAX_DIGEST_BUFFER)
 +    {
-+      err = GRUB_ERR_OUT_OF_MEMORY;
-+      fprintf (stderr, _("Failed to allocate PCR concatenation buffer.\n"));
-+      goto exit1;
++      fprintf (stderr, _("PCR concatenation buffer not enough.\n"));
++      return GRUB_ERR_OUT_OF_RANGE;
 +    }
 +
-+  pcr_cursor = pcr_concat;
++  pcr_cursor = pcr_concat.buffer;
 +  for (i = 0; i < args->tpm2_pcr_count; i++)
 +    {
 +      if (pcr_values.digests[i].size != pcr_digest_len)
@@ -678,14 +632,21 @@ index 000000000..c6d41ea40
 +	  fprintf (stderr,
 +		   _("Bad PCR value size: expected %" PRIuGRUB_SIZE " bytes but got %u bytes.\n"),
 +		   pcr_digest_len, pcr_values.digests[i].size);
-+	  goto exit2;
++	  return GRUB_ERR_BAD_ARGUMENT;
 +	}
 +
 +      grub_memcpy (pcr_cursor, pcr_values.digests[i].buffer, pcr_digest_len);
 +      pcr_cursor += pcr_digest_len;
 +    }
++  pcr_concat.size = pcr_concat_len;
 +
-+  grub_crypto_hash (hash_spec, pcr_digest, pcr_concat, pcr_concat_len);
++  rc = TPM2_Hash (NULL, &pcr_concat, args->tpm2_bank, TPM_RH_NULL, &pcr_digest,
++		  NULL, NULL);
++  if (rc != TPM_RC_SUCCESS)
++    {
++      fprintf (stderr, _("Failed to generate PCR digest (TPM2_Hash: 0x%x)\n"), rc);
++      return GRUB_ERR_BAD_DEVICE;
++    }
 +
 +  /* Start Trial Session */
 +  nonce.size = TPM_SHA256_DIGEST_SIZE;
@@ -699,20 +660,17 @@ index 000000000..c6d41ea40
 +      fprintf (stderr,
 +	       _("Failed to start trial policy session (TPM2_StartAuthSession: 0x%x).\n"),
 +	       rc);
-+      err = GRUB_ERR_BAD_DEVICE;
-+      goto exit2;
++      return GRUB_ERR_BAD_DEVICE;
 +    }
 +
 +  /* PCR Policy */
-+  memcpy (pcr_digest_in.buffer, pcr_digest, TPM_SHA256_DIGEST_SIZE);
-+
-+  rc = TPM2_PolicyPCR (session, NULL, &pcr_digest_in, &pcr_sel, NULL);
++  rc = TPM2_PolicyPCR (session, NULL, &pcr_digest, &pcr_sel, NULL);
 +  if (rc != TPM_RC_SUCCESS)
 +    {
 +      fprintf (stderr, _("Failed to submit PCR policy (TPM2_PolicyPCR: 0x%x).\n"),
 +	       rc);
 +      err = GRUB_ERR_BAD_DEVICE;
-+      goto exit3;
++      goto error;
 +    }
 +
 +  /* Retrieve Policy Digest */
@@ -722,21 +680,15 @@ index 000000000..c6d41ea40
 +      fprintf (stderr, _("Failed to get policy digest (TPM2_PolicyGetDigest: 0x%x).\n"),
 +	       rc);
 +      err = GRUB_ERR_BAD_DEVICE;
-+      goto exit3;
++      goto error;
 +    }
 +
 +  /* Epilogue */
 +  *digest = policy_digest;
 +  err = GRUB_ERR_NONE;
 +
-+exit3:
++error:
 +  TPM2_FlushContext (session);
-+
-+exit2:
-+  grub_free (pcr_concat);
-+
-+exit1:
-+  grub_free (pcr_digest);
 +
 +  return err;
 +}
@@ -781,8 +733,8 @@ index 000000000..c6d41ea40
 +
 +  /* Create SRK */
 +  authCommand.sessionHandle = TPM_RS_PW;
-+  inPublic.publicArea.type = args->tpm2_asymmetric;
-+  inPublic.publicArea.nameAlg  = TPM_ALG_SHA256;
++  inPublic.publicArea.type = args->srk_type.type;
++  inPublic.publicArea.nameAlg = TPM_ALG_SHA256;
 +  inPublic.publicArea.objectAttributes.restricted = 1;
 +  inPublic.publicArea.objectAttributes.userWithAuth = 1;
 +  inPublic.publicArea.objectAttributes.decrypt = 1;
@@ -791,14 +743,14 @@ index 000000000..c6d41ea40
 +  inPublic.publicArea.objectAttributes.sensitiveDataOrigin = 1;
 +  inPublic.publicArea.objectAttributes.noDA = 1;
 +
-+  switch (args->tpm2_asymmetric)
++  switch (args->srk_type.type)
 +    {
 +    case TPM_ALG_RSA:
 +      inPublic.publicArea.parameters.rsaDetail.symmetric.algorithm = TPM_ALG_AES;
 +      inPublic.publicArea.parameters.rsaDetail.symmetric.keyBits.aes = 128;
 +      inPublic.publicArea.parameters.rsaDetail.symmetric.mode.aes = TPM_ALG_CFB;
 +      inPublic.publicArea.parameters.rsaDetail.scheme.scheme = TPM_ALG_NULL;
-+      inPublic.publicArea.parameters.rsaDetail.keyBits = args->rsa_bits;
++      inPublic.publicArea.parameters.rsaDetail.keyBits = args->srk_type.detail.rsa_bits;
 +      inPublic.publicArea.parameters.rsaDetail.exponent = 0;
 +      break;
 +
@@ -807,7 +759,7 @@ index 000000000..c6d41ea40
 +      inPublic.publicArea.parameters.eccDetail.symmetric.keyBits.aes = 128;
 +      inPublic.publicArea.parameters.eccDetail.symmetric.mode.aes = TPM_ALG_CFB;
 +      inPublic.publicArea.parameters.eccDetail.scheme.scheme = TPM_ALG_NULL;
-+      inPublic.publicArea.parameters.eccDetail.curveID = args->ecc_curve;
++      inPublic.publicArea.parameters.eccDetail.curveID = args->srk_type.detail.ecc_curve;
 +      inPublic.publicArea.parameters.eccDetail.kdf.scheme = TPM_ALG_NULL;
 +      break;
 +
@@ -948,6 +900,7 @@ index 000000000..c6d41ea40
 +  ret = asn1_write_value (tpm2key, "type", sealed_key_oid, 1);
 +  if (ret != ASN1_SUCCESS)
 +    {
++      fprintf (stderr, _("Failed to set 'type': 0x%u\n"), ret);
 +      err = GRUB_ERR_BAD_ARGUMENT;
 +      goto error;
 +    }
@@ -956,6 +909,7 @@ index 000000000..c6d41ea40
 +  ret = asn1_write_value (tpm2key, "emptyAuth", "TRUE", 1);
 +  if (ret != ASN1_SUCCESS)
 +    {
++      fprintf (stderr, _("Failed to set 'emptyAuth': 0x%x\n"), ret);
 +      err = GRUB_ERR_BAD_ARGUMENT;
 +      goto error;
 +    }
@@ -964,6 +918,7 @@ index 000000000..c6d41ea40
 +  ret = asn1_write_value (tpm2key, "policy", "NEW", 1);
 +  if (ret != ASN1_SUCCESS)
 +    {
++      fprintf (stderr, _("Failed to set 'policy': 0x%x\n"), ret);
 +      err = GRUB_ERR_BAD_ARGUMENT;
 +      goto error;
 +    }
@@ -972,6 +927,7 @@ index 000000000..c6d41ea40
 +			  sizeof (cmd_code));
 +  if (ret != ASN1_SUCCESS)
 +    {
++      fprintf (stderr, _("Failed to set 'policy CommandCode': 0x%x\n"), ret);
 +      err = GRUB_ERR_BAD_ARGUMENT;
 +      goto error;
 +    }
@@ -979,6 +935,7 @@ index 000000000..c6d41ea40
 +			  pol_buf.size);
 +  if (ret != ASN1_SUCCESS)
 +    {
++      fprintf (stderr, _("Failed to set 'policy CommandPolicy': 0x%x\n"), ret);
 +      err = GRUB_ERR_BAD_ARGUMENT;
 +      goto error;
 +    }
@@ -987,6 +944,7 @@ index 000000000..c6d41ea40
 +  ret = asn1_write_value (tpm2key, "secret", NULL, 0);
 +  if (ret != ASN1_SUCCESS)
 +    {
++      fprintf (stderr, _("Failed to remove 'secret': 0x%x\n"), ret);
 +      err = GRUB_ERR_BAD_ARGUMENT;
 +      goto error;
 +    }
@@ -995,15 +953,48 @@ index 000000000..c6d41ea40
 +  ret = asn1_write_value (tpm2key, "authPolicy", NULL, 0);
 +  if (ret != ASN1_SUCCESS)
 +    {
++      fprintf (stderr, _("Failed to remove 'authPolicy': 0x%x\n"), ret);
 +      err = GRUB_ERR_BAD_ARGUMENT;
 +      goto error;
 +    }
 +
-+  /* Use TPM_RH_OWNER as the default parent handle */
-+  parent = grub_cpu_to_be32 (TPM_RH_OWNER);
++  /* Remove 'description' */
++  ret = asn1_write_value (tpm2key, "description", NULL, 0);
++  if (ret != ASN1_SUCCESS)
++    {
++      fprintf (stderr, _("Failed to remove 'description': 0x%x\n"), ret);
++      err = GRUB_ERR_BAD_ARGUMENT;
++      goto error;
++    }
++
++  /*
++   *  Use the SRK handle as the parent handle if specified
++   *  Otherwise, Use TPM_RH_OWNER as the default parent handle
++  */
++  if (args->tpm2_srk != 0)
++    parent = grub_cpu_to_be32 (args->tpm2_srk);
++  else
++    parent = grub_cpu_to_be32 (TPM_RH_OWNER);
 +  ret = asn1_write_value (tpm2key, "parent", &parent, sizeof (parent));
 +  if (ret != ASN1_SUCCESS)
 +    {
++      fprintf (stderr, _("Failed to set 'parent': 0x%x\n"), ret);
++      err = GRUB_ERR_BAD_ARGUMENT;
++      goto error;
++    }
++
++  /*
++   * Set 'rsaParent' to TRUE if the RSA SRK is specified and the SRK
++   * handle is not persistent. Otherwise, remove 'rsaParent'.
++   */
++  if (args->tpm2_srk == 0 && args->srk_type.type == TPM_ALG_RSA)
++    ret = asn1_write_value (tpm2key, "rsaParent", "TRUE", 1);
++  else
++    ret = asn1_write_value (tpm2key, "rsaParent", NULL, 0);
++
++  if (ret != ASN1_SUCCESS)
++    {
++      fprintf (stderr, _("Failed to set 'rsaParent': 0x%x\n"), ret);
 +      err = GRUB_ERR_BAD_ARGUMENT;
 +      goto error;
 +    }
@@ -1012,6 +1003,7 @@ index 000000000..c6d41ea40
 +  ret = asn1_write_value (tpm2key, "pubkey", pub_buf.data, pub_buf.size);
 +  if (ret != ASN1_SUCCESS)
 +    {
++      fprintf (stderr, _("Failed to set 'pubkey': 0x%x\n"), ret);
 +      err = GRUB_ERR_BAD_ARGUMENT;
 +      goto error;
 +    }
@@ -1020,6 +1012,7 @@ index 000000000..c6d41ea40
 +  ret = asn1_write_value (tpm2key, "privkey", priv_buf.data, priv_buf.size);
 +  if (ret != ASN1_SUCCESS)
 +    {
++      fprintf (stderr, _("Failed to set 'privkey': 0x%x\n"), ret);
 +      err = GRUB_ERR_BAD_ARGUMENT;
 +      goto error;
 +    }
@@ -1027,10 +1020,17 @@ index 000000000..c6d41ea40
 +  /* Create the DER binary */
 +  der_buf_size = 0;
 +  ret = asn1_der_coding (tpm2key, "", NULL, &der_buf_size, NULL);
++  if (ret != ASN1_MEM_ERROR)
++    {
++      fprintf (stderr, _("Failed to get DER size: 0x%x\n"), ret);
++      err = GRUB_ERR_BAD_ARGUMENT;
++      goto error;
++    }
 +
 +  der_buf = grub_malloc (der_buf_size);
 +  if (der_buf == NULL)
 +    {
++      fprintf (stderr, _("Failed to allocate memory for DER encoding\n"));
 +      err = GRUB_ERR_OUT_OF_MEMORY;
 +      goto error;
 +    }
@@ -1038,6 +1038,7 @@ index 000000000..c6d41ea40
 +  ret = asn1_der_coding (tpm2key, "", der_buf, &der_buf_size, NULL);
 +  if (ret != ASN1_SUCCESS)
 +    {
++      fprintf (stderr, "DER coding error: 0x%x\n", ret);
 +      err = GRUB_ERR_BAD_ARGUMENT;
 +      goto error;
 +    }
@@ -1082,14 +1083,11 @@ index 000000000..c6d41ea40
 +grub_protect_tpm2_add (struct grub_protect_args *args)
 +{
 +  grub_err_t err;
-+  grub_uint8_t *key;
++  grub_uint8_t *key = NULL;
 +  grub_size_t key_size;
 +  TPM_HANDLE srk;
 +  TPM2B_DIGEST policy_digest;
 +  TPM2_SEALED_KEY sealed_key;
-+  char *grub_drive = NULL;
-+
-+  grub_protect_get_grub_drive_for_file (args->tpm2_outfile, &grub_drive);
 +
 +  err = grub_protect_tpm2_open_device (args->tpm2_device);
 +  if (err != GRUB_ERR_NONE)
@@ -1104,7 +1102,8 @@ index 000000000..c6d41ea40
 +    fprintf (stderr,
 +	     _("Input key is too long, maximum allowed size is %u bytes.\n"),
 +	     TPM_MAX_SYM_DATA);
-+    return GRUB_ERR_OUT_OF_RANGE;
++    err = GRUB_ERR_OUT_OF_RANGE;
++    goto exit2;
 +  }
 +
 +  err = grub_protect_tpm2_get_srk (args, &srk);
@@ -1126,19 +1125,6 @@ index 000000000..c6d41ea40
 +    err = grub_protect_tpm2_export_sealed_key (args->tpm2_outfile, &sealed_key);
 +  if (err != GRUB_ERR_NONE)
 +    goto exit3;
-+
-+  if (grub_drive)
-+    {
-+      printf (_("GRUB drive for the sealed key file: %s\n"), grub_drive);
-+      grub_free (grub_drive);
-+    }
-+  else
-+    {
-+      fprintf (stderr,
-+	       _("Warning: Could not determine GRUB drive for sealed key "
-+		 "file.\n"));
-+      err = GRUB_ERR_NONE;
-+    }
 +
 +exit3:
 +  TPM2_FlushContext (srk);
@@ -1254,10 +1240,10 @@ index 000000000..c6d41ea40
 +	  args->tpm2_pcr_count = 1;
 +	}
 +
-+      if (args->tpm2_asymmetric == TPM_ALG_ERROR)
++      if (args->srk_type.type == TPM_ALG_ERROR)
 +	{
-+	  args->tpm2_asymmetric = TPM_ALG_RSA;
-+	  args->rsa_bits = 2048;
++	  args->srk_type.type = TPM_ALG_ECC;
++	  args->srk_type.detail.ecc_curve = TPM_ECC_NIST_P256;
 +	}
 +
 +      if (args->tpm2_bank == TPM_ALG_ERROR)
@@ -1424,8 +1410,7 @@ index 000000000..c6d41ea40
 +	  return EINVAL;
 +	}
 +
-+      err = grub_tpm2_protector_parse_asymmetric (arg, &args->tpm2_asymmetric,
-+						  &args->rsa_bits, &args->ecc_curve);
++      err = grub_tpm2_protector_parse_asymmetric (arg, &args->srk_type);
 +      if (err != GRUB_ERR_NONE)
 +	{
 +	  if (grub_errno != GRUB_ERR_NONE)
@@ -1555,7 +1540,6 @@ index 000000000..c6d41ea40
 +  grub_util_biosdisk_init (NULL);
 +
 +  grub_init_all ();
-+  grub_gcry_init_all ();
 +
 +  grub_lvm_fini ();
 +  grub_mdraid09_fini ();
@@ -1570,7 +1554,6 @@ index 000000000..c6d41ea40
 +static void
 +grub_protect_fini (void)
 +{
-+  grub_gcry_fini_all ();
 +  grub_fini_all ();
 +  grub_util_biosdisk_fini ();
 +}
@@ -1615,6 +1598,3 @@ index 000000000..c6d41ea40
 +
 +  return err;
 +}
--- 
-2.35.3
-

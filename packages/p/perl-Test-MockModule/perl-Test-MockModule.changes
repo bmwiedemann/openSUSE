@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 27 03:09:09 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.178.0
+   see /usr/share/doc/packages/perl-Test-MockModule/Changes
+
+  v0.178.0
+  - 6724a30 - Simplify CI workflow - Nicolas R
+  - 1801372 - Multiple improvements -  Nicolas R
+  - e97e316 - Add protection to _replace_sub - Nicolas R
+
+-------------------------------------------------------------------
 Wed Sep  8 03:06:22 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.177.0

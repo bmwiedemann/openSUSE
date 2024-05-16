@@ -23,4 +23,12 @@
     <comment>cleanup</comment>
     <requestid>1148916</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>67ff7f4c8bbbc08cab8bedcd52299fa6</srcmd5>
+    <version>1.0~a2.1</version>
+    <time>1715872544</time>
+    <user>anag+factory</user>
+    <comment>build with sisu-plexus</comment>
+    <requestid>1174339</requestid>
+  </revision>
 </revisionlist>

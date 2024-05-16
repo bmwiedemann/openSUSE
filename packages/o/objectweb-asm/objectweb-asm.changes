@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 15 11:18:14 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 9.7
+  * new Opcodes.V23 constant for Java 23
+  * bug fixes
+    + 318009: Unit test regression in dex2jar.
+    + 318007: 'ClassNode#outerClass' has incorrect JavaDocs.
+    + 318006: asm-bom packaging should be 'pom'.
+    + 318003: The Textifier prints a supplementary space at the end
+      of each method that throws at least one exception.
+
+-------------------------------------------------------------------
 Tue Oct 17 05:26:11 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Upgrade to version 9.6

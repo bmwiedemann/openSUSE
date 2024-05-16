@@ -78,7 +78,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        4.6.1715609300.c38e9908
+Version:        4.6.1715787278.b4f7f6f0
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -248,6 +248,9 @@ Use this package to setup a local instance with all services provided together.
 
 %package bootstrap
 Summary:        Automated openQA setup
+Requires:       curl
+Requires:       iputils
+Requires:       procps
 
 %description bootstrap
 This can automatically setup openQA - either directly on your system

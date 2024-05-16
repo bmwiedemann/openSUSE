@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Crypt-OpenSSL-Random
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,27 @@
 #
 
 
-Name:           perl-Crypt-OpenSSL-Random
-Version:        0.15
-Release:        0
 %define cpan_name Crypt-OpenSSL-Random
-Summary:        OpenSSL/LibreSSL pseudo-random number generator access
+Name:           perl-Crypt-OpenSSL-Random
+Version:        0.160.0
+Release:        0
+# 0.16 -> normalize -> 0.160.0
+%define cpan_version 0.16
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Crypt-OpenSSL-Random/
-Source0:        https://cpan.metacpan.org/authors/id/R/RU/RURBAN/%{cpan_name}-%{version}.tar.gz
+Summary:        OpenSSL/LibreSSL pseudo-random number generator access
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/R/RU/RURBAN/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Crypt::OpenSSL::Guess) >= 0.11
+BuildRequires:  perl(Test::Pod) >= 1.22
+Provides:       perl(Crypt::OpenSSL::Random) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
-#MANUAL
+# MANUAL BEGIN
 BuildRequires:  openssl-devel
+# MANUAL END
 
 %description
 'Crypt::OpenSSL::Random' provides the ability to seed and query the
@@ -41,14 +45,14 @@ BuildRequires:  openssl-devel
 Note: On *LibreSSL* 'random_egd()' is not defined.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -56,8 +60,7 @@ Note: On *LibreSSL* 'random_egd()' is not defined.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes README
+%doc appveyor.cmd Changes README
 %license LICENSE
 
 %changelog

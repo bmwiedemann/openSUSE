@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 16 07:01:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Re-arrange spec files block to be in line with all other openSUSE
+  spec files.
+
+-------------------------------------------------------------------
+Tue May 14 10:09:04 UTC 2024 - Nicholas Yang <nicholas.yang@suse.com>
+
+- Enable building libled.
+
+-------------------------------------------------------------------
 Thu Mar 28 04:28:18 UTC 2024 - Nicholas Yang <nicholas.yang@suse.com>
 
 - Update to version 1.0.0:

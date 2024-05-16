@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 26 03:09:22 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.35
+   see /usr/share/doc/packages/perl-File-MimeInfo/Changes
+
+  0.35  2024-04-25
+   - Fix exit code issue for `mimeopen`
+      Closes https://github.com/mbeijen/File-MimeInfo/issues/54
+      fix provided by slatian
+
+-------------------------------------------------------------------
 Fri Mar  8 22:27:20 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

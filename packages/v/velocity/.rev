@@ -226,4 +226,12 @@
     <comment>Some compatibility cleanup</comment>
     <requestid>1152439</requestid>
   </revision>
+  <revision rev="30" vrev="15">
+    <srcmd5>715ac0bdcd83abc00185988860b1bf0b</srcmd5>
+    <version>1.7</version>
+    <time>1715872651</time>
+    <user>anag+factory</user>
+    <comment>patch -P</comment>
+    <requestid>1174598</requestid>
+  </revision>
 </revisionlist>

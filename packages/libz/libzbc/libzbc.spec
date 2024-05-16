@@ -1,7 +1,7 @@
 #
 # spec file for package libzbc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libzbc
 %define lname   libzbc5
-Version:        5.13.0
+Version:        5.14.0
 Release:        0
 Summary:        Library for manipulating ZBC and ZAC disks
 License:        BSD-2-Clause AND LGPL-3.0-or-later
@@ -81,13 +81,9 @@ Block Command (ZBC), Zoned-device ATA command set (ZAC) disks.
 
 %build
 autoreconf -fi
-#mkdir obj
-#pushd obj/
-#define _configure ../configure
 # includedir intentional, cf. bugzilla.opensuse.org/795968
 %configure --disable-static --includedir="%_includedir/%name" CFLAGS="%optflags -fno-common"
 %make_build
-#popd
 
 %install
 %make_install
@@ -96,8 +92,7 @@ find "%buildroot/%_libdir" -type f -name "*.la" -delete
 %check
 %make_build check
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files tools
 %_bindir/zbc_*

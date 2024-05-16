@@ -71,4 +71,12 @@
     <comment>This runs with java 8 just fine</comment>
     <requestid>1170856</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>f794fe9fd90e780951aa62e9650216b0</srcmd5>
+    <version>2.2</version>
+    <time>1715872542</time>
+    <user>anag+factory</user>
+    <comment>Clean up the patch</comment>
+    <requestid>1174336</requestid>
+  </revision>
 </revisionlist>

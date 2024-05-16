@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 16 06:14:41 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240515
+  * XM: Improve import routines, autovibrato is now handled
+    properly.
+  * STM: More sane import for tempo, similar to OpenMPT.
+  * S3M: Approximate the SAx command.
+  * Replayer: Correct playback when a sample sustains after a
+    portamento.
+  * Replayer: Emulate IT when an instrument is triggered with a
+    note that does not map to any sample.
+
+-------------------------------------------------------------------
 Sun May  5 22:18:06 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20240503

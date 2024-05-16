@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu May 16 12:59:05 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.2.0
+  * improve documentation to switch to Sisu
+  * pom clean after parent upgrade
+  * Improve plexus-component metadata - remove dependency to
+    plexus-container-default
+  * Add deprecation information to Plexus components
+  * Require Java 8
+  * Drop plexus-container-default artefact
+  * Require Maven 3.6.3+
+  * Switch to JUnit5
+  * Bump org.eclipse.sisu.plexus from 0.3.0.M1 to 0.9.0.M2
+
+-------------------------------------------------------------------
+Wed May 15 13:38:06 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with maven-plugin-plugin >= 3.11.0: define goalPrefix
+
+-------------------------------------------------------------------
 Tue Apr  2 17:33:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on plexus-xml where relevant
@@ -13,6 +33,15 @@ Tue Feb 20 14:46:35 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 Sun Mar 20 17:45:24 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 8
+
+-------------------------------------------------------------------
+Tue Jan 18 07:57:30 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.1.1
+  * Last version before deprecation
+  * Requires Java 7 and Maven 3.2.5+
+  * Upgrade ASM to 9.2
+  * Security upgrade org.jdom:jdom2 from 2.0.6 to 2.0.6.1
 
 -------------------------------------------------------------------
 Fri May 14 16:39:03 UTC 2021 - Fridrich Strba <fstrba@suse.com>

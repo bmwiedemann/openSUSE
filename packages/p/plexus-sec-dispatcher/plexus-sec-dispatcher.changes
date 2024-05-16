@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 16 05:04:40 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Unnecessary dependency on plexus-containers-container-default
+
+-------------------------------------------------------------------
 Tue Apr  2 17:34:05 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on plexus-xml where relevant

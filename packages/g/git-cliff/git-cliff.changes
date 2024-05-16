@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 15 18:21:35 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.2.2:
+  * (changelog) Allow adding custom context
+  * (changelog) Ignore empty lines when using split_commits
+  * (parser) Allow matching empty commit body
+  * Documentation updates
+
+-------------------------------------------------------------------
 Sun May  5 17:09:23 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.2.1:
@@ -6,6 +15,8 @@ Sun May  5 17:09:23 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
   * Support detecting config from project manifest
   * Make the bump version rules configurable
   * bug fixes and documentation updates
+- CVE-2024-32650: rust-rustls: Infinite loop with proper client
+  input fixes (boo#1223218)
 
 -------------------------------------------------------------------
 Thu Mar  7 05:06:13 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>

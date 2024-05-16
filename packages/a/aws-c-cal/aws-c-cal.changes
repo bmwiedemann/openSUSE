@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 13 09:14:06 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.13
+  * Fix handling of empty plaintext for AES by @DmitriyMusatkin in (#183)
+  * Adds a way to keep a more detailed state of a symetric cipher
+    by @sbiscigl in (#184)
+- from version 0.6.12
+  * CI test: Apple: explicitly include & link to CoreFoundation
+    by @jmklix in (#181)
+  * Move aws-lc shutdown to destructor from cleanup
+    by @DmitriyMusatkin in (#182)
+
+-------------------------------------------------------------------
 Mon Apr 15 11:41:44 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.6.11

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 16 05:07:02 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use sisu-plexus instead of plexus-containers-container-default
+- Clean up the spec file
+
+-------------------------------------------------------------------
 Tue Mar 29 14:22:10 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Simplify the build file and remove tests which depend on

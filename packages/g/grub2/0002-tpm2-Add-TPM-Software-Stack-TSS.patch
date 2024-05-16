@@ -1,10 +1,10 @@
-From c5a42cf3340aa740132bcdb8e8cee22c23306ef5 Mon Sep 17 00:00:00 2001
+From b24f2484393d468ee0286550c3275c2b090e3994 Mon Sep 17 00:00:00 2001
 From: Hernan Gatta <hegatta@linux.microsoft.com>
 Date: Tue, 1 Feb 2022 05:02:54 -0800
-Subject: [PATCH v6 09/20] tpm2: Add TPM Software Stack (TSS)
+Subject: [PATCH 2/5] tpm2: Add TPM Software Stack (TSS)
 
 A Trusted Platform Module (TPM) Software Stack (TSS) provides logic to
-compose, submit, and parse TPM commands and responses.
+compose and submit TPM commands and parse reponses.
 
 A limited number of TPM commands may be accessed via the EFI TCG2
 protocol. This protocol exposes functionality that is primarily geared
@@ -26,23 +26,26 @@ and response buffers, respectively, using the TPM wire protocol.
 
 Functions: TPM2_Create, TPM2_CreatePrimary, TPM2_EvictControl,
 TPM2_FlushContext, TPM2_Load, TPM2_PCR_Read, TPM2_PolicyGetDigest,
-TPM2_PolicyPCR, TPM2_ReadPublic, TPM2_StartAuthSession, TPM2_Unseal.
+TPM2_PolicyPCR, TPM2_ReadPublic, TPM2_StartAuthSession, TPM2_Unseal,
+TPM2_LoadExternal, TPM2_Hash, TPM2_VerifySignature,
+TPM2_PolicyAuthorize, TPM2_TestParms
 
 Signed-off-by: Hernan Gatta <hegatta@linux.microsoft.com>
 Signed-off-by: Gary Lin <glin@suse.com>
+Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
 ---
- grub-core/tpm2/buffer.c                | 145 +++++
- grub-core/tpm2/mu.c                    | 807 +++++++++++++++++++++++++
- grub-core/tpm2/tcg2.c                  | 143 +++++
- grub-core/tpm2/tpm2.c                  | 761 +++++++++++++++++++++++
- include/grub/tpm2/buffer.h             |  65 ++
- include/grub/tpm2/internal/functions.h | 117 ++++
- include/grub/tpm2/internal/structs.h   | 675 +++++++++++++++++++++
- include/grub/tpm2/internal/types.h     | 370 ++++++++++++
- include/grub/tpm2/mu.h                 | 292 +++++++++
- include/grub/tpm2/tcg2.h               |  34 ++
- include/grub/tpm2/tpm2.h               |  34 ++
- 11 files changed, 3443 insertions(+)
+ grub-core/tpm2/buffer.c                |  145 +++
+ grub-core/tpm2/mu.c                    | 1168 ++++++++++++++++++++++++
+ grub-core/tpm2/tcg2.c                  |  143 +++
+ grub-core/tpm2/tpm2.c                  | 1048 +++++++++++++++++++++
+ include/grub/tpm2/buffer.h             |   65 ++
+ include/grub/tpm2/internal/functions.h |  156 ++++
+ include/grub/tpm2/internal/structs.h   |  768 ++++++++++++++++
+ include/grub/tpm2/internal/types.h     |  403 ++++++++
+ include/grub/tpm2/mu.h                 |  396 ++++++++
+ include/grub/tpm2/tcg2.h               |   34 +
+ include/grub/tpm2/tpm2.h               |   34 +
+ 11 files changed, 4360 insertions(+)
  create mode 100644 grub-core/tpm2/buffer.c
  create mode 100644 grub-core/tpm2/mu.c
  create mode 100644 grub-core/tpm2/tcg2.c
@@ -208,10 +211,10 @@ index 000000000..cb9f29497
 +}
 diff --git a/grub-core/tpm2/mu.c b/grub-core/tpm2/mu.c
 new file mode 100644
-index 000000000..1617f37cd
+index 000000000..10ed71c04
 --- /dev/null
 +++ b/grub-core/tpm2/mu.c
-@@ -0,0 +1,807 @@
+@@ -0,0 +1,1168 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
 + *  Copyright (C) 2022 Microsoft Corporation
@@ -287,6 +290,9 @@ index 000000000..1617f37cd
 +      break;
 +    case TPM_ALG_NULL:
 +      break;
++    default:
++      buffer->error = 1;
++      break;
 +    }
 +}
 +
@@ -304,6 +310,9 @@ index 000000000..1617f37cd
 +      break;
 +    case TPM_ALG_XOR:
 +    case TPM_ALG_NULL:
++      break;
++    default:
++      buffer->error = 1;
 +      break;
 +    }
 +}
@@ -553,7 +562,18 @@ index 000000000..1617f37cd
 +    case TPM_ALG_ECC:
 +      grub_tpm2_mu_TPMS_ECC_POINT_Marshal (buffer, &p->ecc);
 +      break;
++    default:
++      buffer->error = 1;
++      break;
 +    }
++}
++
++void
++grub_tpm2_mu_TPMT_PUBLIC_PARMS_Marshal (grub_tpm2_buffer_t buffer,
++					const TPMT_PUBLIC_PARMS *p)
++{
++  grub_tpm2_buffer_pack_u16 (buffer, p->type);
++  grub_tpm2_mu_TPMU_PUBLIC_PARMS_Marshal (buffer, p->type, &p->parameters);
 +}
 +
 +void
@@ -598,6 +618,49 @@ index 000000000..1617f37cd
 +}
 +
 +void
++grub_tpm2_mu_TPMU_SENSITIVE_COMPOSITE_Marshal (grub_tpm2_buffer_t buffer,
++                                               const TPMI_ALG_PUBLIC type,
++                                               const TPMU_SENSITIVE_COMPOSITE *p)
++{
++  switch(type)
++    {
++    case TPM_ALG_RSA:
++      grub_tpm2_mu_TPM2B_Marshal (buffer, p->rsa.size, p->rsa.buffer);
++      break;
++    case TPM_ALG_ECC:
++      grub_tpm2_mu_TPM2B_Marshal (buffer, p->ecc.size, p->ecc.buffer);
++      break;
++    case TPM_ALG_KEYEDHASH:
++      grub_tpm2_mu_TPM2B_Marshal (buffer, p->bits.size, p->bits.buffer);
++      break;
++    case TPM_ALG_SYMCIPHER:
++      grub_tpm2_mu_TPM2B_Marshal (buffer, p->sym.size, p->sym.buffer);
++      break;
++    default:
++      buffer->error = 1;
++    }
++}
++
++void
++grub_tpm2_mu_TPMT_SENSITIVE_Marshal (grub_tpm2_buffer_t buffer,
++                                     const TPMT_SENSITIVE *p)
++{
++  grub_tpm2_buffer_pack_u16 (buffer, p->sensitiveType);
++  grub_tpm2_mu_TPM2B_Marshal (buffer, p->authValue.size, p->authValue.buffer);
++  grub_tpm2_mu_TPM2B_Marshal (buffer, p->seedValue.size, p->seedValue.buffer);
++  grub_tpm2_mu_TPMU_SENSITIVE_COMPOSITE_Marshal (buffer, p->sensitiveType,
++                                                 &p->sensitive);
++}
++
++void
++grub_tpm2_mu_TPM2B_SENSITIVE_Marshal (grub_tpm2_buffer_t buffer,
++                                      const TPM2B_SENSITIVE *p)
++{
++  grub_tpm2_buffer_pack_u16 (buffer, p->size);
++  grub_tpm2_mu_TPMT_SENSITIVE_Marshal (buffer, &p->sensitiveArea);
++}
++
++void
 +grub_tpm2_mu_TPM2B_SENSITIVE_CREATE_Marshal (grub_tpm2_buffer_t buffer,
 +					     const TPM2B_SENSITIVE_CREATE *sensitiveCreate)
 +{
@@ -620,14 +683,129 @@ index 000000000..1617f37cd
 +}
 +
 +void
-+grub_tpm2_mu_TPM2B_Unmarshal (grub_tpm2_buffer_t buffer,
-+			      TPM2B* p)
++grub_tpm2_mu_TPMS_SIGNATURE_RSA_Marshal (grub_tpm2_buffer_t buffer,
++                                         const TPMS_SIGNATURE_RSA *p)
++{
++  grub_tpm2_buffer_pack_u16 (buffer, p->hash);
++  grub_tpm2_mu_TPM2B_Marshal (buffer, p->sig.size, p->sig.buffer);
++}
++
++void
++grub_tpm2_mu_TPMS_SIGNATURE_ECC_Marshal (grub_tpm2_buffer_t buffer,
++                                         const TPMS_SIGNATURE_ECC *p)
++{
++  grub_tpm2_buffer_pack_u16 (buffer, p->hash);
++  grub_tpm2_mu_TPM2B_Marshal (buffer, p->signatureR.size, p->signatureR.buffer);
++  grub_tpm2_mu_TPM2B_Marshal (buffer, p->signatureS.size, p->signatureS.buffer);
++}
++
++void
++grub_tpm2_mu_TPMU_HA_Marshal (grub_tpm2_buffer_t buffer,
++                              const TPMI_ALG_HASH hashAlg,
++                              const TPMU_HA *p)
++{
++  switch (hashAlg)
++    {
++    case TPM_ALG_SHA1:
++      for (grub_uint16_t i = 0; i < TPM_SHA1_DIGEST_SIZE; i++)
++        grub_tpm2_buffer_pack_u8 (buffer, p->sha1[i]);
++      break;
++    case TPM_ALG_SHA256:
++      for (grub_uint16_t i = 0; i < TPM_SHA256_DIGEST_SIZE; i++)
++        grub_tpm2_buffer_pack_u8 (buffer, p->sha256[i]);
++      break;
++    case TPM_ALG_SHA384:
++      for (grub_uint16_t i = 0; i < TPM_SHA384_DIGEST_SIZE; i++)
++        grub_tpm2_buffer_pack_u8 (buffer, p->sha384[i]);
++      break;
++    case TPM_ALG_SHA512:
++      for (grub_uint16_t i = 0; i < TPM_SHA512_DIGEST_SIZE; i++)
++        grub_tpm2_buffer_pack_u8 (buffer, p->sha512[i]);
++      break;
++    default:
++      buffer->error = 1;
++      break;
++    }
++}
++
++void
++grub_tpm2_mu_TPMT_HA_Marshal (grub_tpm2_buffer_t buffer,
++                              const TPMT_HA *p)
++{
++  grub_tpm2_buffer_pack_u16 (buffer, p->hashAlg);
++  grub_tpm2_mu_TPMU_HA_Marshal (buffer, p->hashAlg, &p->digest);
++}
++
++void
++grub_tpm2_mu_TPMU_SIGNATURE_Marshal (grub_tpm2_buffer_t buffer,
++                                     const TPMI_ALG_SIG_SCHEME sigAlg,
++                                     const TPMU_SIGNATURE *p)
++{
++  switch (sigAlg)
++    {
++    case TPM_ALG_RSASSA:
++      grub_tpm2_mu_TPMS_SIGNATURE_RSA_Marshal (buffer, (TPMS_SIGNATURE_RSA *)&p->rsassa);
++      break;
++    case TPM_ALG_RSAPSS:
++      grub_tpm2_mu_TPMS_SIGNATURE_RSA_Marshal (buffer, (TPMS_SIGNATURE_RSA *)&p->rsapss);
++      break;
++    case TPM_ALG_ECDSA:
++      grub_tpm2_mu_TPMS_SIGNATURE_ECC_Marshal (buffer, (TPMS_SIGNATURE_ECC *)&p->ecdsa);
++      break;
++    case TPM_ALG_ECDAA:
++      grub_tpm2_mu_TPMS_SIGNATURE_ECC_Marshal (buffer, (TPMS_SIGNATURE_ECC *)&p->ecdaa);
++      break;
++    case TPM_ALG_SM2:
++      grub_tpm2_mu_TPMS_SIGNATURE_ECC_Marshal (buffer, (TPMS_SIGNATURE_ECC *)&p->sm2);
++      break;
++    case TPM_ALG_ECSCHNORR:
++      grub_tpm2_mu_TPMS_SIGNATURE_ECC_Marshal (buffer, (TPMS_SIGNATURE_ECC *)&p->ecschnorr);
++      break;
++    case TPM_ALG_HMAC:
++      grub_tpm2_mu_TPMT_HA_Marshal (buffer, &p->hmac);
++      break;
++    case TPM_ALG_NULL:
++      break;
++    default:
++      buffer->error = 1;
++      break;
++    }
++}
++
++void
++grub_tpm2_mu_TPMT_SIGNATURE_Marshal (grub_tpm2_buffer_t buffer,
++                                     const TPMT_SIGNATURE *p)
++{
++  grub_tpm2_buffer_pack_u16 (buffer, p->sigAlg);
++  grub_tpm2_mu_TPMU_SIGNATURE_Marshal (buffer, p->sigAlg, &p->signature);
++}
++
++void
++grub_tpm2_mu_TPMT_TK_VERIFIED_Marshal (grub_tpm2_buffer_t buffer,
++                                       const TPMT_TK_VERIFIED *p)
++{
++  grub_tpm2_buffer_pack_u16 (buffer, p->tag);
++  grub_tpm2_buffer_pack_u32 (buffer, p->hierarchy);
++  grub_tpm2_mu_TPM2B_Marshal (buffer, p->digest.size, p->digest.buffer);
++}
++
++static void
++__tpm2_mu_TPM2B_BUFFER_Unmarshal (grub_tpm2_buffer_t buffer,
++				  TPM2B* p, grub_uint16_t bound)
 +{
 +  grub_tpm2_buffer_unpack_u16 (buffer, &p->size);
 +
-+  for (grub_uint16_t i = 0; i < p->size; i++)
-+    grub_tpm2_buffer_unpack_u8 (buffer, &p->buffer[i]);
++  if (p->size > bound)
++    {
++      buffer->error = 1;
++      return;
++    }
++
++  grub_tpm2_buffer_unpack (buffer, &p->buffer, p->size);
 +}
++
++#define TPM2B_BUFFER_UNMARSHAL(buffer, type, data) \
++  __tpm2_mu_TPM2B_BUFFER_Unmarshal(buffer, (TPM2B *)data, sizeof(type) - sizeof(grub_uint16_t))
 +
 +void
 +grub_tpm2_mu_TPMS_AUTH_RESPONSE_Unmarshal (grub_tpm2_buffer_t buffer,
@@ -655,7 +833,70 @@ index 000000000..1617f37cd
 +grub_tpm2_mu_TPM2B_DIGEST_Unmarshal (grub_tpm2_buffer_t buffer,
 +				     TPM2B_DIGEST* digest)
 +{
-+  grub_tpm2_mu_TPM2B_Unmarshal (buffer, (TPM2B*)digest);
++  TPM2B_BUFFER_UNMARSHAL (buffer, TPM2B_DIGEST, digest);
++}
++
++void
++grub_tpm2_mu_TPM2B_NONCE_Unmarshal (grub_tpm2_buffer_t buffer,
++				    TPM2B_NONCE* nonce)
++{
++  TPM2B_BUFFER_UNMARSHAL (buffer, TPM2B_NONCE, nonce);
++}
++
++void
++grub_tpm2_mu_TPM2B_DATA_Unmarshal (grub_tpm2_buffer_t buffer,
++				   TPM2B_DATA* data)
++{
++  TPM2B_BUFFER_UNMARSHAL (buffer, TPM2B_DATA, data);
++}
++
++void
++grub_tpm2_mu_TPMS_CREATION_DATA_Unmarshal (grub_tpm2_buffer_t buffer,
++					   TPMS_CREATION_DATA *data)
++{
++  grub_tpm2_mu_TPML_PCR_SELECTION_Unmarshal (buffer, &data->pcrSelect);
++  grub_tpm2_mu_TPM2B_DIGEST_Unmarshal (buffer, &data->pcrDigest);
++  grub_tpm2_buffer_unpack_u8 (buffer, (grub_uint8_t *)&data->locality);
++  grub_tpm2_buffer_unpack_u16 (buffer, &data->parentNameAlg);
++  grub_tpm2_mu_TPM2B_NAME_Unmarshal (buffer, &data->parentName);
++  grub_tpm2_mu_TPM2B_NAME_Unmarshal (buffer, &data->parentQualifiedName);
++  grub_tpm2_mu_TPM2B_DATA_Unmarshal (buffer, &data->outsideInfo);
++}
++
++void
++grub_tpm2_mu_TPM2B_CREATION_DATA_Unmarshal (grub_tpm2_buffer_t buffer,
++					    TPM2B_CREATION_DATA *data)
++{
++  grub_tpm2_buffer_unpack_u16 (buffer, &data->size);
++  grub_tpm2_mu_TPMS_CREATION_DATA_Unmarshal (buffer, &data->creationData);
++}
++
++void
++grub_tpm2_mu_TPM2B_PRIVATE_Unmarshal (grub_tpm2_buffer_t buffer,
++				      TPM2B_PRIVATE *private)
++{
++  TPM2B_BUFFER_UNMARSHAL (buffer, TPM2B_PRIVATE, private);
++}
++
++void
++grub_tpm2_mu_TPM2B_SENSITIVE_DATA_Unmarshal (grub_tpm2_buffer_t buffer,
++					     TPM2B_SENSITIVE_DATA *data)
++{
++  TPM2B_BUFFER_UNMARSHAL (buffer, TPM2B_SENSITIVE_DATA, data);
++}
++
++void
++grub_tpm2_mu_TPM2B_PUBLIC_KEY_RSA_Unmarshal (grub_tpm2_buffer_t buffer,
++					     TPM2B_PUBLIC_KEY_RSA *rsa)
++{
++  TPM2B_BUFFER_UNMARSHAL (buffer, TPM2B_PUBLIC_KEY_RSA, rsa);
++}
++
++void
++grub_tpm2_mu_TPM2B_ECC_PARAMETER_Unmarshal (grub_tpm2_buffer_t buffer,
++					    TPM2B_ECC_PARAMETER *param)
++{
++  TPM2B_BUFFER_UNMARSHAL (buffer, TPM2B_ECC_PARAMETER, param);
 +}
 +
 +void
@@ -731,6 +972,9 @@ index 000000000..1617f37cd
 +      break;
 +    case TPM_ALG_NULL:
 +      break;
++    default:
++      buffer->error = 1;
++      break;
 +    }
 +}
 +
@@ -748,6 +992,9 @@ index 000000000..1617f37cd
 +      break;
 +    case TPM_ALG_XOR:
 +    case TPM_ALG_NULL:
++      break;
++    default:
++      buffer->error = 1;
 +      break;
 +    }
 +}
@@ -884,8 +1131,8 @@ index 000000000..1617f37cd
 +grub_tpm2_mu_TPMS_ECC_POINT_Unmarshal (grub_tpm2_buffer_t buffer,
 +				       TPMS_ECC_POINT *p)
 +{
-+  grub_tpm2_mu_TPM2B_Unmarshal (buffer, (TPM2B*) &p->x);
-+  grub_tpm2_mu_TPM2B_Unmarshal (buffer, (TPM2B*) &p->y);
++  grub_tpm2_mu_TPM2B_ECC_PARAMETER_Unmarshal (buffer, &p->x);
++  grub_tpm2_mu_TPM2B_ECC_PARAMETER_Unmarshal (buffer, &p->y);
 +}
 +
 +void
@@ -896,16 +1143,19 @@ index 000000000..1617f37cd
 +  switch(type)
 +    {
 +    case TPM_ALG_KEYEDHASH:
-+      grub_tpm2_mu_TPM2B_Unmarshal (buffer, (TPM2B*) &p->keyedHash);
++      grub_tpm2_mu_TPM2B_DIGEST_Unmarshal (buffer, &p->keyedHash);
 +      break;
 +    case TPM_ALG_SYMCIPHER:
-+      grub_tpm2_mu_TPM2B_Unmarshal (buffer, (TPM2B*) &p->sym);
++      grub_tpm2_mu_TPM2B_DIGEST_Unmarshal (buffer, &p->sym);
 +      break;
 +    case TPM_ALG_RSA:
-+      grub_tpm2_mu_TPM2B_Unmarshal (buffer, (TPM2B*) &p->rsa);
++      grub_tpm2_mu_TPM2B_PUBLIC_KEY_RSA_Unmarshal (buffer, &p->rsa);
 +      break;
 +    case TPM_ALG_ECC:
 +      grub_tpm2_mu_TPMS_ECC_POINT_Unmarshal (buffer, &p->ecc);
++      break;
++    default:
++      buffer->error = 1;
 +      break;
 +    }
 +}
@@ -917,7 +1167,7 @@ index 000000000..1617f37cd
 +  grub_tpm2_buffer_unpack_u16 (buffer, &p->type);
 +  grub_tpm2_buffer_unpack_u16 (buffer, &p->nameAlg);
 +  grub_tpm2_mu_TPMA_OBJECT_Unmarshal (buffer, &p->objectAttributes);
-+  grub_tpm2_mu_TPM2B_Unmarshal (buffer, (TPM2B*) &p->authPolicy);
++  grub_tpm2_mu_TPM2B_DIGEST_Unmarshal (buffer, &p->authPolicy);
 +  grub_tpm2_mu_TPMU_PUBLIC_PARMS_Unmarshal (buffer, p->type, &p->parameters);
 +  grub_tpm2_mu_TPMU_PUBLIC_ID_Unmarshal (buffer, p->type, &p->unique);
 +}
@@ -953,8 +1203,7 @@ index 000000000..1617f37cd
 +grub_tpm2_mu_TPM2B_NAME_Unmarshal (grub_tpm2_buffer_t buffer,
 +				   TPM2B_NAME *n)
 +{
-+  grub_tpm2_buffer_unpack_u16 (buffer, &n->size);
-+  grub_tpm2_buffer_unpack (buffer, n->name, n->size);
++  TPM2B_BUFFER_UNMARSHAL (buffer, TPM2B_NAME, n);
 +}
 +
 +void
@@ -966,58 +1215,173 @@ index 000000000..1617f37cd
 +}
 +
 +void
-+grub_tpm2_mu_TPMS_CAPABILITY_DATA_tpmProperties_Unmarshal (grub_tpm2_buffer_t buffer,
-+							   TPMS_CAPABILITY_DATA* capabilityData)
-+{
-+  grub_tpm2_buffer_unpack_u32 (buffer,
-+			       &capabilityData->data.tpmProperties.count);
-+
-+  if (buffer->error)
-+    return;
-+
-+  for (grub_uint32_t i = 0; i < capabilityData->data.tpmProperties.count; i++)
-+    grub_tpm2_mu_TPMS_TAGGED_PROPERTY_Unmarshal (buffer,
-+						 &capabilityData->data.tpmProperties.tpmProperty[i]);
-+}
-+
-+void
 +grub_tpm2_mu_TPMT_TK_CREATION_Unmarshal (grub_tpm2_buffer_t buffer,
 +					 TPMT_TK_CREATION *p)
 +{
 +  grub_tpm2_buffer_unpack_u16 (buffer, &p->tag);
 +  grub_tpm2_buffer_unpack_u32 (buffer, &p->hierarchy);
-+  grub_tpm2_mu_TPM2B_Unmarshal (buffer, (TPM2B*) &p->digest);
++  grub_tpm2_mu_TPM2B_DIGEST_Unmarshal (buffer, &p->digest);
 +}
 +
 +void
-+grub_tpm2_mu_TPMS_PCR_SELECTION_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMT_TK_HASHCHECK_Unmarshal (grub_tpm2_buffer_t buffer,
++                                          TPMT_TK_HASHCHECK *p)
++{
++  grub_tpm2_buffer_unpack_u16 (buffer, &p->tag);
++  grub_tpm2_buffer_unpack_u32 (buffer, &p->hierarchy);
++  grub_tpm2_mu_TPM2B_DIGEST_Unmarshal (buffer, &p->digest);
++}
++
++void
++grub_tpm2_mu_TPMT_TK_VERIFIED_Unmarshal (grub_tpm2_buffer_t buffer,
++                                         TPMT_TK_VERIFIED *p)
++{
++  grub_tpm2_buffer_unpack_u16 (buffer, &p->tag);
++  grub_tpm2_buffer_unpack_u32 (buffer, &p->hierarchy);
++  grub_tpm2_mu_TPM2B_DIGEST_Unmarshal (buffer, &p->digest);
++}
++
++void
++grub_tpm2_mu_TPMS_PCR_SELECTION_Unmarshal (grub_tpm2_buffer_t buffer,
 +					   TPMS_PCR_SELECTION* pcrSelection)
 +{
-+  grub_tpm2_buffer_unpack_u16 (buf, &pcrSelection->hash);
-+  grub_tpm2_buffer_unpack_u8 (buf, &pcrSelection->sizeOfSelect);
++  grub_tpm2_buffer_unpack_u16 (buffer, &pcrSelection->hash);
++  grub_tpm2_buffer_unpack_u8 (buffer, &pcrSelection->sizeOfSelect);
++
++  if (pcrSelection->sizeOfSelect > TPM_PCR_SELECT_MAX)
++    {
++      buffer->error = 1;
++      return;
++    }
 +
 +  for (grub_uint32_t i = 0; i < pcrSelection->sizeOfSelect; i++)
-+    grub_tpm2_buffer_unpack_u8 (buf, &pcrSelection->pcrSelect[i]);
++    grub_tpm2_buffer_unpack_u8 (buffer, &pcrSelection->pcrSelect[i]);
 +}
 +
 +void
-+grub_tpm2_mu_TPML_PCR_SELECTION_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPML_PCR_SELECTION_Unmarshal (grub_tpm2_buffer_t buffer,
 +					   TPML_PCR_SELECTION* pcrSelection)
 +{
-+  grub_tpm2_buffer_unpack_u32 (buf, &pcrSelection->count);
++  grub_tpm2_buffer_unpack_u32 (buffer, &pcrSelection->count);
++
++  if (pcrSelection->count > TPM_NUM_PCR_BANKS)
++    {
++      buffer->error = 1;
++      return;
++    }
 +
 +  for (grub_uint32_t i = 0; i < pcrSelection->count; i++)
-+    grub_tpm2_mu_TPMS_PCR_SELECTION_Unmarshal (buf, &pcrSelection->pcrSelections[i]);
++    grub_tpm2_mu_TPMS_PCR_SELECTION_Unmarshal (buffer, &pcrSelection->pcrSelections[i]);
 +}
 +
 +void
-+grub_tpm2_mu_TPML_DIGEST_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPML_DIGEST_Unmarshal (grub_tpm2_buffer_t buffer,
 +				    TPML_DIGEST* digest)
 +{
-+  grub_tpm2_buffer_unpack_u32 (buf, &digest->count);
++  grub_tpm2_buffer_unpack_u32 (buffer, &digest->count);
++
++  if (digest->count > 8)
++    {
++      buffer->error = 1;
++      return;
++    }
 +
 +  for (grub_uint32_t i = 0; i < digest->count; i++)
-+    grub_tpm2_mu_TPM2B_DIGEST_Unmarshal (buf, &digest->digests[i]);
++    grub_tpm2_mu_TPM2B_DIGEST_Unmarshal (buffer, &digest->digests[i]);
++}
++
++void
++grub_tpm2_mu_TPMS_SIGNATURE_RSA_Unmarshal (grub_tpm2_buffer_t buffer,
++                                           TPMS_SIGNATURE_RSA *rsa)
++{
++  grub_tpm2_buffer_unpack_u16 (buffer, &rsa->hash);
++  grub_tpm2_mu_TPM2B_PUBLIC_KEY_RSA_Unmarshal (buffer, &rsa->sig);
++}
++
++void
++grub_tpm2_mu_TPMS_SIGNATURE_ECC_Unmarshal (grub_tpm2_buffer_t buffer,
++                                           TPMS_SIGNATURE_ECC *ecc)
++{
++  grub_tpm2_buffer_unpack_u16 (buffer, &ecc->hash);
++  grub_tpm2_mu_TPM2B_ECC_PARAMETER_Unmarshal (buffer, &ecc->signatureR);
++  grub_tpm2_mu_TPM2B_ECC_PARAMETER_Unmarshal (buffer, &ecc->signatureS);
++}
++
++void
++grub_tpm2_mu_TPMU_HA_Unmarshal (grub_tpm2_buffer_t buffer,
++                                TPMI_ALG_HASH hashAlg,
++                                TPMU_HA *p)
++{
++  switch (hashAlg)
++    {
++    case TPM_ALG_SHA1:
++      grub_tpm2_buffer_unpack (buffer, &p->sha1, TPM_SHA1_DIGEST_SIZE);
++      break;
++    case TPM_ALG_SHA256:
++      grub_tpm2_buffer_unpack (buffer, &p->sha256, TPM_SHA256_DIGEST_SIZE);
++      break;
++    case TPM_ALG_SHA384:
++      grub_tpm2_buffer_unpack (buffer, &p->sha384, TPM_SHA384_DIGEST_SIZE);
++      break;
++    case TPM_ALG_SHA512:
++      grub_tpm2_buffer_unpack (buffer, &p->sha512, TPM_SHA512_DIGEST_SIZE);
++      break;
++    default:
++      buffer->error = 1;
++      break;
++    }
++}
++
++void
++grub_tpm2_mu_TPMT_HA_Unmarshal (grub_tpm2_buffer_t buffer,
++                                TPMT_HA *p)
++{
++  grub_tpm2_buffer_unpack_u16 (buffer, &p->hashAlg);
++  grub_tpm2_mu_TPMU_HA_Unmarshal (buffer, p->hashAlg, &p->digest);
++}
++
++void
++grub_tpm2_mu_TPMU_SIGNATURE_Unmarshal (grub_tpm2_buffer_t buffer,
++                                       TPMI_ALG_SIG_SCHEME sigAlg,
++                                       TPMU_SIGNATURE *p)
++{
++  switch (sigAlg)
++    {
++    case TPM_ALG_RSASSA:
++      grub_tpm2_mu_TPMS_SIGNATURE_RSA_Unmarshal (buffer, (TPMS_SIGNATURE_RSA *)&p->rsassa);
++      break;
++    case TPM_ALG_RSAPSS:
++      grub_tpm2_mu_TPMS_SIGNATURE_RSA_Unmarshal (buffer, (TPMS_SIGNATURE_RSA *)&p->rsapss);
++      break;
++    case TPM_ALG_ECDSA:
++      grub_tpm2_mu_TPMS_SIGNATURE_ECC_Unmarshal (buffer, (TPMS_SIGNATURE_ECC *)&p->ecdsa);
++      break;
++    case TPM_ALG_ECDAA:
++      grub_tpm2_mu_TPMS_SIGNATURE_ECC_Unmarshal (buffer, (TPMS_SIGNATURE_ECC *)&p->ecdaa);
++      break;
++    case TPM_ALG_SM2:
++      grub_tpm2_mu_TPMS_SIGNATURE_ECC_Unmarshal (buffer, (TPMS_SIGNATURE_ECC *)&p->sm2);
++      break;
++    case TPM_ALG_ECSCHNORR:
++      grub_tpm2_mu_TPMS_SIGNATURE_ECC_Unmarshal (buffer, (TPMS_SIGNATURE_ECC *)&p->ecschnorr);
++      break;
++    case TPM_ALG_HMAC:
++      grub_tpm2_mu_TPMT_HA_Unmarshal (buffer, &p->hmac);
++      break;
++    case TPM_ALG_NULL:
++      break;
++    default:
++      buffer->error = 1;
++      break;
++    }
++}
++
++void
++grub_tpm2_mu_TPMT_SIGNATURE_Unmarshal (grub_tpm2_buffer_t buffer,
++                                       TPMT_SIGNATURE *p)
++{
++  grub_tpm2_buffer_unpack_u16 (buffer, &p->sigAlg);
++  grub_tpm2_mu_TPMU_SIGNATURE_Unmarshal (buffer, p->sigAlg, &p->signature);
 +}
 diff --git a/grub-core/tpm2/tcg2.c b/grub-core/tpm2/tcg2.c
 new file mode 100644
@@ -1170,10 +1534,10 @@ index 000000000..9e4b7f565
 +}
 diff --git a/grub-core/tpm2/tpm2.c b/grub-core/tpm2/tpm2.c
 new file mode 100644
-index 000000000..d67699a24
+index 000000000..06621c28d
 --- /dev/null
 +++ b/grub-core/tpm2/tpm2.c
-@@ -0,0 +1,761 @@
+@@ -0,0 +1,1048 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
 + *  Copyright (C) 2022 Microsoft Corporation
@@ -1238,7 +1602,7 @@ index 000000000..d67699a24
 +  if (err)
 +    return TPM_RC_FAILURE;
 +
-+  /* Unmarshal*/
++  /* Unmarshal */
 +  out->size = sizeof (grub_uint16_t) + sizeof (grub_uint32_t) +
 +	      sizeof (grub_uint32_t);
 +  grub_tpm2_buffer_unpack_u16 (out, &tag_out);
@@ -1349,15 +1713,15 @@ index 000000000..d67699a24
 +  if (responseCode != TPM_RC_SUCCESS)
 +    return responseCode;
 +
-+  /* Unmarshal*/
++  /* Unmarshal */
 +  grub_tpm2_buffer_unpack_u32 (&out, objectHandle);
 +  if (tag == TPM_ST_SESSIONS)
 +    grub_tpm2_buffer_unpack_u32 (&out, &parameterSize);
 +  grub_tpm2_mu_TPM2B_PUBLIC_Unmarshal (&out, outPublic);
-+  grub_tpm2_mu_TPM2B_Unmarshal (&out, (TPM2B*)creationData);
-+  grub_tpm2_mu_TPM2B_Unmarshal (&out, (TPM2B*)creationHash);
++  grub_tpm2_mu_TPM2B_CREATION_DATA_Unmarshal (&out, creationData);
++  grub_tpm2_mu_TPM2B_DIGEST_Unmarshal (&out, creationHash);
 +  grub_tpm2_mu_TPMT_TK_CREATION_Unmarshal (&out, creationTicket);
-+  grub_tpm2_mu_TPM2B_Unmarshal (&out, (TPM2B*)name);
++  grub_tpm2_mu_TPM2B_NAME_Unmarshal (&out, name);
 +  if (tag == TPM_ST_SESSIONS)
 +    grub_tpm2_mu_TPMS_AUTH_RESPONSE_Unmarshal (&out, authResponse);
 +  if (out.error)
@@ -1433,11 +1797,11 @@ index 000000000..d67699a24
 +  if (responseCode != TPM_RC_SUCCESS)
 +    return responseCode;
 +
-+  /* Unmarshal*/
++  /* Unmarshal */
 +  grub_tpm2_buffer_unpack_u32 (&out, sessionHandle);
 +  if (tag == TPM_ST_SESSIONS)
 +    grub_tpm2_buffer_unpack_u32 (&out, &param_size);
-+  grub_tpm2_mu_TPM2B_Unmarshal (&out, (TPM2B*)nonceTpm);
++  grub_tpm2_mu_TPM2B_NONCE_Unmarshal (&out, nonceTpm);
 +  if (tag == TPM_ST_SESSIONS)
 +    grub_tpm2_mu_TPMS_AUTH_RESPONSE_Unmarshal (&out, authResponse);
 +  if (out.error)
@@ -1529,7 +1893,7 @@ index 000000000..d67699a24
 +  if (responseCode != TPM_RC_SUCCESS)
 +    return responseCode;
 +
-+  /* Unmarshal*/
++  /* Unmarshal */
 +  if (tag == TPM_ST_SESSIONS)
 +    grub_tpm2_buffer_unpack_u32 (&out, &parameterSize);
 +  grub_tpm2_mu_TPM2B_PUBLIC_Unmarshal (&out, outPublic);
@@ -1590,11 +1954,78 @@ index 000000000..d67699a24
 +  if (responseCode != TPM_RC_SUCCESS)
 +    return responseCode;
 +
-+  /* Unmarshal*/
++  /* Unmarshal */
 +  grub_tpm2_buffer_unpack_u32 (&out, objectHandle);
 +  if (tag == TPM_ST_SESSIONS)
 +    grub_tpm2_buffer_unpack_u32 (&out, &param_size);
-+  grub_tpm2_mu_TPM2B_Unmarshal (&out, (TPM2B*)name);
++  grub_tpm2_mu_TPM2B_NAME_Unmarshal (&out, name);
++  if (tag == TPM_ST_SESSIONS)
++    grub_tpm2_mu_TPMS_AUTH_RESPONSE_Unmarshal (&out, authResponse);
++  if (out.error)
++    return TPM_RC_FAILURE;
++
++  return TPM_RC_SUCCESS;
++}
++
++TPM_RC
++TPM2_LoadExternal (const TPMS_AUTH_COMMAND *authCommand,
++                   const TPM2B_SENSITIVE *inPrivate,
++                   const TPM2B_PUBLIC *inPublic,
++                   const TPMI_RH_HIERARCHY hierarchy,
++                   TPM_HANDLE *objectHandle,
++                   TPM2B_NAME *name,
++                   TPMS_AUTH_RESPONSE *authResponse)
++{
++  TPM_RC rc;
++  struct grub_tpm2_buffer in;
++  struct grub_tpm2_buffer out;
++  TPM_HANDLE objectHandleTmp;
++  TPM2B_NAME nameTmp;
++  TPMS_AUTH_RESPONSE authResponseTmp;
++  TPMI_ST_COMMAND_TAG tag = authCommand ? TPM_ST_SESSIONS : TPM_ST_NO_SESSIONS;
++  TPM_RC responseCode;
++  grub_uint32_t param_size;
++
++  if (!inPublic)
++    return TPM_RC_VALUE;
++
++  if (!objectHandle)
++    objectHandle = &objectHandleTmp;
++  if (!name)
++    name = &nameTmp;
++  if (!authResponse)
++    authResponse = &authResponseTmp;
++
++  grub_memset (objectHandle, 0, sizeof (*objectHandle));
++  grub_memset (name, 0, sizeof (*name));
++  grub_memset (authResponse, 0, sizeof (*authResponse));
++
++  /* Marshal */
++  grub_tpm2_buffer_init (&in);
++  if (authCommand)
++    grub_tpm2_mu_TPMS_AUTH_COMMAND_Marshal (&in, authCommand);
++  if (inPrivate)
++    grub_tpm2_mu_TPM2B_SENSITIVE_Marshal (&in, inPrivate);
++  else
++    grub_tpm2_buffer_pack_u16 (&in, 0);
++  grub_tpm2_mu_TPM2B_PUBLIC_Marshal (&in, inPublic);
++  grub_tpm2_buffer_pack_u32 (&in, hierarchy);
++  if (in.error)
++    return TPM_RC_FAILURE;
++
++  /* Submit */
++  grub_tpm2_buffer_init (&out);
++  rc = grub_tpm2_submit_command (tag, TPM_CC_LoadExternal, &responseCode, &in, &out);
++  if (rc != TPM_RC_SUCCESS)
++    return rc;
++  if (responseCode != TPM_RC_SUCCESS)
++    return responseCode;
++
++  /* Unmarshal */
++  grub_tpm2_buffer_unpack_u32 (&out, objectHandle);
++  if (tag == TPM_ST_SESSIONS)
++    grub_tpm2_buffer_unpack_u32 (&out, &param_size);
++  grub_tpm2_mu_TPM2B_NAME_Unmarshal (&out, name);
 +  if (tag == TPM_ST_SESSIONS)
 +    grub_tpm2_mu_TPMS_AUTH_RESPONSE_Unmarshal (&out, authResponse);
 +  if (out.error)
@@ -1642,10 +2073,10 @@ index 000000000..d67699a24
 +  if (responseCode != TPM_RC_SUCCESS)
 +    return responseCode;
 +
-+  // Unmarhsal
++  /* Unmarshal */
 +  if (tag == TPM_ST_SESSIONS)
 +    grub_tpm2_buffer_unpack_u32 (&out, &param_size);
-+  grub_tpm2_mu_TPM2B_Unmarshal (&out, (TPM2B*)outData);
++  grub_tpm2_mu_TPM2B_SENSITIVE_DATA_Unmarshal (&out, outData);
 +  if (tag == TPM_ST_SESSIONS)
 +    grub_tpm2_mu_TPMS_AUTH_RESPONSE_Unmarshal (&out, authResponse);
 +  if (out.error)
@@ -1677,7 +2108,7 @@ index 000000000..d67699a24
 +  if (responseCode != TPM_RC_SUCCESS)
 +    return responseCode;
 +
-+  /* Unmarshal*/
++  /* Unmarshal */
 +  if (out.error)
 +    return TPM_RC_FAILURE;
 +
@@ -1732,7 +2163,7 @@ index 000000000..d67699a24
 +  if (responseCode != TPM_RC_SUCCESS)
 +    return responseCode;
 +
-+  /* Unmarshal*/
++  /* Unmarshal */
 +  if (tag == TPM_ST_SESSIONS)
 +    grub_tpm2_buffer_unpack_u32 (&out, &parameterSize);
 +  grub_tpm2_buffer_unpack_u32 (&out, pcrUpdateCounter);
@@ -1786,10 +2217,10 @@ index 000000000..d67699a24
 +  if (responseCode != TPM_RC_SUCCESS)
 +    return responseCode;
 +
-+  /* Unmarshal*/
++  /* Unmarshal */
 +  if (tag == TPM_ST_SESSIONS)
 +    grub_tpm2_buffer_unpack_u32 (&out, &parameterSize);
-+  grub_tpm2_mu_TPM2B_Unmarshal (&out, (TPM2B*)policyDigest);
++  grub_tpm2_mu_TPM2B_DIGEST_Unmarshal (&out, policyDigest);
 +  if (tag == TPM_ST_SESSIONS)
 +    grub_tpm2_mu_TPMS_AUTH_RESPONSE_Unmarshal (&out, authResponse);
 +  if (out.error)
@@ -1869,13 +2300,13 @@ index 000000000..d67699a24
 +  if (responseCode != TPM_RC_SUCCESS)
 +    return responseCode;
 +
-+  /* Unmarshal*/
++  /* Unmarshal */
 +  if (tag == TPM_ST_SESSIONS)
 +   grub_tpm2_buffer_unpack_u32 (&out, &parameterSize);
-+  grub_tpm2_mu_TPM2B_Unmarshal (&out, (TPM2B*)outPrivate);
++  grub_tpm2_mu_TPM2B_PRIVATE_Unmarshal (&out, outPrivate);
 +  grub_tpm2_mu_TPM2B_PUBLIC_Unmarshal (&out, outPublic);
-+  grub_tpm2_mu_TPM2B_Unmarshal (&out, (TPM2B*)creationData);
-+  grub_tpm2_mu_TPM2B_Unmarshal (&out, (TPM2B*)creationHash);
++  grub_tpm2_mu_TPM2B_CREATION_DATA_Unmarshal (&out, creationData);
++  grub_tpm2_mu_TPM2B_DIGEST_Unmarshal (&out, creationHash);
 +  grub_tpm2_mu_TPMT_TK_CREATION_Unmarshal (&out, creationTicket);
 +  if (tag == TPM_ST_SESSIONS)
 +    grub_tpm2_mu_TPMS_AUTH_RESPONSE_Unmarshal(&out, authResponse);
@@ -1924,12 +2355,232 @@ index 000000000..d67699a24
 +  if (responseCode != TPM_RC_SUCCESS)
 +    return responseCode;
 +
-+  /* Unmarshal*/
++  /* Unmarshal */
 +  if (tag == TPM_ST_SESSIONS)
 +    {
 +      grub_tpm2_buffer_unpack_u32 (&out, &parameterSize);
 +      grub_tpm2_mu_TPMS_AUTH_RESPONSE_Unmarshal(&out, authResponse);
 +    }
++  if (out.error)
++    return TPM_RC_FAILURE;
++
++  return TPM_RC_SUCCESS;
++}
++
++TPM_RC
++TPM2_Hash (const TPMS_AUTH_COMMAND *authCommand,
++           const TPM2B_MAX_BUFFER *data,
++           const TPMI_ALG_HASH hashAlg,
++           const TPMI_RH_HIERARCHY hierarchy,
++           TPM2B_DIGEST *outHash,
++           TPMT_TK_HASHCHECK *validation,
++           TPMS_AUTH_RESPONSE *authResponse)
++{
++  TPM_RC rc;
++  struct grub_tpm2_buffer in;
++  struct grub_tpm2_buffer out;
++  TPMS_AUTH_RESPONSE authResponseTmp;
++  TPM2B_DIGEST outHashTmp;
++  TPMT_TK_HASHCHECK validationTmp;
++  TPMI_ST_COMMAND_TAG tag = authCommand ? TPM_ST_SESSIONS : TPM_ST_NO_SESSIONS;
++  TPM_RC responseCode;
++  grub_uint32_t param_size;
++
++  if (hashAlg == TPM_ALG_NULL)
++    return TPM_RC_VALUE;
++
++  if (!outHash)
++    outHash = &outHashTmp;
++  if (!validation)
++    validation = &validationTmp;
++  if (!authResponse)
++    authResponse = &authResponseTmp;
++
++  grub_memset (outHash, 0, sizeof (*outHash));
++  grub_memset (validation, 0, sizeof (*validation));
++  grub_memset (authResponse, 0, sizeof (*authResponse));
++
++  /* Marshal */
++  grub_tpm2_buffer_init (&in);
++  if (authCommand)
++    grub_tpm2_mu_TPMS_AUTH_COMMAND_Marshal (&in, authCommand);
++  if (data)
++    grub_tpm2_mu_TPM2B_Marshal (&in, data->size, data->buffer);
++  else
++    grub_tpm2_buffer_pack_u16 (&in, 0);
++  grub_tpm2_buffer_pack_u16 (&in, hashAlg);
++  grub_tpm2_buffer_pack_u32 (&in, hierarchy);
++  if (in.error)
++    return TPM_RC_FAILURE;
++
++  /* Submit */
++  grub_tpm2_buffer_init (&out);
++  rc = grub_tpm2_submit_command (tag, TPM_CC_Hash, &responseCode, &in, &out);
++  if (rc != TPM_RC_SUCCESS)
++    return rc;
++  if (responseCode != TPM_RC_SUCCESS)
++    return responseCode;
++
++  /* Unmarshal */
++  if (tag == TPM_ST_SESSIONS)
++    grub_tpm2_buffer_unpack_u32 (&out, &param_size);
++  grub_tpm2_mu_TPM2B_DIGEST_Unmarshal (&out, outHash);
++  grub_tpm2_mu_TPMT_TK_HASHCHECK_Unmarshal (&out, validation);
++  if (tag == TPM_ST_SESSIONS)
++    grub_tpm2_mu_TPMS_AUTH_RESPONSE_Unmarshal (&out, authResponse);
++  if (out.error)
++    return TPM_RC_FAILURE;
++
++  return TPM_RC_SUCCESS;
++}
++
++TPM_RC
++TPM2_VerifySignature (const TPMI_DH_OBJECT keyHandle,
++                      const TPMS_AUTH_COMMAND *authCommand,
++                      const TPM2B_DIGEST *digest,
++                      const TPMT_SIGNATURE *signature,
++                      TPMT_TK_VERIFIED *validation,
++                      TPMS_AUTH_RESPONSE *authResponse)
++{
++  TPM_RC rc;
++  struct grub_tpm2_buffer in;
++  struct grub_tpm2_buffer out;
++  TPMS_AUTH_RESPONSE authResponseTmp;
++  TPMI_ST_COMMAND_TAG tag = authCommand ? TPM_ST_SESSIONS : TPM_ST_NO_SESSIONS;
++  TPMT_TK_VERIFIED validationTmp;
++  TPM_RC responseCode;
++  grub_uint32_t param_size;
++
++  if (!digest || !signature)
++    return TPM_RC_VALUE;
++
++  if (!validation)
++    validation = &validationTmp;
++  if (!authResponse)
++    authResponse = &authResponseTmp;
++
++  grub_memset (validation, 0, sizeof (*validation));
++  grub_memset (authResponse, 0, sizeof (*authResponse));
++
++  /* Marshal */
++  grub_tpm2_buffer_init (&in);
++  if (authCommand)
++    grub_tpm2_mu_TPMS_AUTH_COMMAND_Marshal (&in, authCommand);
++  grub_tpm2_buffer_pack_u32 (&in, keyHandle);
++  grub_tpm2_mu_TPM2B_Marshal (&in, digest->size, digest->buffer);
++  grub_tpm2_mu_TPMT_SIGNATURE_Marshal (&in, signature);
++  if (in.error)
++    return TPM_RC_FAILURE;
++
++  /* Submit */
++  grub_tpm2_buffer_init (&out);
++  rc = grub_tpm2_submit_command (tag, TPM_CC_VerifySignature, &responseCode, &in, &out);
++  if (rc != TPM_RC_SUCCESS)
++    return rc;
++  if (responseCode != TPM_RC_SUCCESS)
++    return responseCode;
++
++  /* Unmarshal */
++  if (tag == TPM_ST_SESSIONS)
++    grub_tpm2_buffer_unpack_u32 (&out, &param_size);
++  grub_tpm2_mu_TPMT_TK_VERIFIED_Unmarshal (&out, validation);
++  if (tag == TPM_ST_SESSIONS)
++    grub_tpm2_mu_TPMS_AUTH_RESPONSE_Unmarshal (&out, authResponse);
++  if (out.error)
++    return TPM_RC_FAILURE;
++
++  return TPM_RC_SUCCESS;
++}
++
++TPM_RC
++TPM2_PolicyAuthorize (const TPMI_SH_POLICY policySession,
++                      const TPMS_AUTH_COMMAND *authCommand,
++                      const TPM2B_DIGEST *approvedPolicy,
++                      const TPM2B_NONCE *policyRef,
++                      const TPM2B_NAME *keySign,
++                      const TPMT_TK_VERIFIED *checkTicket,
++                      TPMS_AUTH_RESPONSE *authResponse)
++{
++  TPM_RC rc;
++  struct grub_tpm2_buffer in;
++  struct grub_tpm2_buffer out;
++  TPMS_AUTH_RESPONSE authResponseTmp;
++  TPMI_ST_COMMAND_TAG tag = authCommand ? TPM_ST_SESSIONS : TPM_ST_NO_SESSIONS;
++  TPM_RC responseCode;
++  grub_uint32_t param_size;
++
++  if (!approvedPolicy || !keySign || !checkTicket)
++    return TPM_RC_VALUE;
++
++  if (!authResponse)
++    authResponse = &authResponseTmp;
++
++  grub_memset (authResponse, 0, sizeof (*authResponse));
++
++  /* Marshal */
++  grub_tpm2_buffer_init (&in);
++  grub_tpm2_buffer_pack_u32 (&in, policySession);
++  if (authCommand)
++    grub_tpm2_mu_TPMS_AUTH_COMMAND_Marshal (&in, authCommand);
++  grub_tpm2_mu_TPM2B_Marshal (&in, approvedPolicy->size, approvedPolicy->buffer);
++  if (policyRef)
++    grub_tpm2_mu_TPM2B_Marshal (&in, policyRef->size, policyRef->buffer);
++  else
++    grub_tpm2_buffer_pack_u16 (&in, 0);
++  grub_tpm2_mu_TPM2B_Marshal (&in, keySign->size, keySign->name);
++  grub_tpm2_mu_TPMT_TK_VERIFIED_Marshal (&in, checkTicket);
++  if (in.error)
++    return TPM_RC_FAILURE;
++
++  /* Submit */
++  grub_tpm2_buffer_init (&out);
++  rc = grub_tpm2_submit_command (tag, TPM_CC_PolicyAuthorize, &responseCode, &in, &out);
++  if (rc != TPM_RC_SUCCESS)
++    return rc;
++  if (responseCode != TPM_RC_SUCCESS)
++    return responseCode;
++
++  /* Unmarshal */
++  if (tag == TPM_ST_SESSIONS)
++    {
++      grub_tpm2_buffer_unpack_u32 (&out, &param_size);
++      grub_tpm2_mu_TPMS_AUTH_RESPONSE_Unmarshal (&out, authResponse);
++    }
++  if (out.error)
++    return TPM_RC_FAILURE;
++
++  return TPM_RC_SUCCESS;
++}
++
++TPM_RC
++TPM2_TestParms (const TPMT_PUBLIC_PARMS *parms,
++		const TPMS_AUTH_COMMAND* authCommand)
++{
++  TPM_RC rc;
++  struct grub_tpm2_buffer in;
++  struct grub_tpm2_buffer out;
++  TPMI_ST_COMMAND_TAG tag = authCommand ? TPM_ST_SESSIONS : TPM_ST_NO_SESSIONS;
++  TPM_RC responseCode;
++
++  if (!parms)
++    return TPM_RC_VALUE;
++
++  /* Marshal */
++  grub_tpm2_buffer_init (&in);
++  grub_tpm2_mu_TPMT_PUBLIC_PARMS_Marshal (&in, parms);
++  if (in.error)
++    return TPM_RC_FAILURE;
++
++  /* Submit */
++  grub_tpm2_buffer_init (&out);
++  rc = grub_tpm2_submit_command (tag, TPM_CC_TestParms, &responseCode, &in,
++				 &out);
++  if (rc != TPM_RC_SUCCESS)
++    return rc;
++  if (responseCode != TPM_RC_SUCCESS)
++    return responseCode;
++
++  /* Unmarshal */
 +  if (out.error)
 +    return TPM_RC_FAILURE;
 +
@@ -2008,10 +2659,10 @@ index 000000000..87dcd8d6c
 +#endif /* ! GRUB_TPM2_BUFFER_HEADER */
 diff --git a/include/grub/tpm2/internal/functions.h b/include/grub/tpm2/internal/functions.h
 new file mode 100644
-index 000000000..9380f26a2
+index 000000000..ac3154ef5
 --- /dev/null
 +++ b/include/grub/tpm2/internal/functions.h
-@@ -0,0 +1,117 @@
+@@ -0,0 +1,156 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
 + *  Copyright (C) 2022 Microsoft Corporation
@@ -2085,6 +2736,15 @@ index 000000000..9380f26a2
 +	   TPMS_AUTH_RESPONSE *authResponse);
 +
 +TPM_RC
++TPM2_LoadExternal (const TPMS_AUTH_COMMAND *authCommand,
++                   const TPM2B_SENSITIVE *inPrivate,
++                   const TPM2B_PUBLIC *inPublic,
++                   const TPMI_RH_HIERARCHY hierarchy,
++                   TPM_HANDLE *objectHandle,
++                   TPM2B_NAME *name,
++                   TPMS_AUTH_RESPONSE *authResponse);
++
++TPM_RC
 +TPM2_Unseal (const TPMI_DH_OBJECT item_handle,
 +	     const TPMS_AUTH_COMMAND *authCommand,
 +	     TPM2B_SENSITIVE_DATA *outData,
@@ -2128,13 +2788,43 @@ index 000000000..9380f26a2
 +		   const TPMI_DH_PERSISTENT persistentHandle,
 +		   TPMS_AUTH_RESPONSE *authResponse);
 +
++TPM_RC
++TPM2_Hash (const TPMS_AUTH_COMMAND *authCommand,
++           const TPM2B_MAX_BUFFER *data,
++           const TPMI_ALG_HASH hashAlg,
++           const TPMI_RH_HIERARCHY hierarchy,
++           TPM2B_DIGEST *outHash,
++           TPMT_TK_HASHCHECK *validation,
++           TPMS_AUTH_RESPONSE *authResponse);
++
++TPM_RC
++TPM2_VerifySignature (const TPMI_DH_OBJECT keyHandle,
++                      const TPMS_AUTH_COMMAND *authCommand,
++                      const TPM2B_DIGEST *digest,
++                      const TPMT_SIGNATURE *signature,
++                      TPMT_TK_VERIFIED *validation,
++                      TPMS_AUTH_RESPONSE *authResponse);
++
++TPM_RC
++TPM2_PolicyAuthorize (const TPMI_SH_POLICY policySession,
++                      const TPMS_AUTH_COMMAND *authCommand,
++                      const TPM2B_DIGEST *approvedPolicy,
++                      const TPM2B_NONCE *policyRef,
++                      const TPM2B_NAME *keySign,
++                      const TPMT_TK_VERIFIED *checkTicket,
++                      TPMS_AUTH_RESPONSE *authResponse);
++
++TPM_RC
++TPM2_TestParms (const TPMT_PUBLIC_PARMS *parms,
++		const TPMS_AUTH_COMMAND* authCommand);
++
 +#endif /* ! GRUB_TPM2_INTERNAL_FUNCTIONS_HEADER */
 diff --git a/include/grub/tpm2/internal/structs.h b/include/grub/tpm2/internal/structs.h
 new file mode 100644
-index 000000000..72d71eb70
+index 000000000..c615d71e9
 --- /dev/null
 +++ b/include/grub/tpm2/internal/structs.h
-@@ -0,0 +1,675 @@
+@@ -0,0 +1,768 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
 + *  Copyright (C) 2022 Microsoft Corporation
@@ -2532,6 +3222,13 @@ index 000000000..72d71eb70
 +};
 +typedef union TPMU_PUBLIC_PARMS TPMU_PUBLIC_PARMS;
 +
++/* TPMT_PUBLIC_PARMS Structure */
++struct TPMT_PUBLIC_PARMS {
++    TPMI_ALG_PUBLIC type;
++    TPMU_PUBLIC_PARMS parameters;
++};
++typedef struct TPMT_PUBLIC_PARMS TPMT_PUBLIC_PARMS;
++
 +/* TPM2B_PUBLIC_KEY_RSA Structure */
 +struct TPM2B_PUBLIC_KEY_RSA
 +{
@@ -2809,13 +3506,99 @@ index 000000000..72d71eb70
 +};
 +typedef struct TPMT_TK_CREATION TPMT_TK_CREATION;
 +
++/* TPMS_EMPTY Structure */
++struct TPMS_EMPTY {
++  grub_uint8_t empty[1]; /* a structure with no member */
++};
++typedef struct TPMS_EMPTY TPMS_EMPTY;
++
++/* TPMS_SIGNATURE_RSA Structure */
++struct TPMS_SIGNATURE_RSA {
++  TPMI_ALG_HASH hash;
++  TPM2B_PUBLIC_KEY_RSA sig;
++};
++typedef struct TPMS_SIGNATURE_RSA TPMS_SIGNATURE_RSA;
++
++/* Definition of Types for RSA Signature */
++typedef TPMS_SIGNATURE_RSA TPMS_SIGNATURE_RSASSA;
++typedef TPMS_SIGNATURE_RSA TPMS_SIGNATURE_RSAPSS;
++
++/* TPMS_SIGNATURE_ECC Structure */
++struct TPMS_SIGNATURE_ECC {
++  TPMI_ALG_HASH hash;
++  TPM2B_ECC_PARAMETER signatureR;
++  TPM2B_ECC_PARAMETER signatureS;
++};
++typedef struct TPMS_SIGNATURE_ECC TPMS_SIGNATURE_ECC;
++
++/* Definition of Types for ECC TPMS_SIGNATURE_ECC */
++typedef TPMS_SIGNATURE_ECC TPMS_SIGNATURE_ECDSA;
++typedef TPMS_SIGNATURE_ECC TPMS_SIGNATURE_ECDAA;
++typedef TPMS_SIGNATURE_ECC TPMS_SIGNATURE_SM2;
++typedef TPMS_SIGNATURE_ECC TPMS_SIGNATURE_ECSCHNORR;
++
++/* TPMU_SIGNATURE Structure */
++union TPMU_SIGNATURE {
++  TPMS_SIGNATURE_RSASSA rsassa;
++  TPMS_SIGNATURE_RSAPSS rsapss;
++  TPMS_SIGNATURE_ECDSA ecdsa;
++  TPMS_SIGNATURE_ECDAA ecdaa;
++  TPMS_SIGNATURE_SM2 sm2;
++  TPMS_SIGNATURE_ECSCHNORR ecschnorr;
++  TPMT_HA hmac;
++  TPMS_SCHEME_HASH any;
++  TPMS_EMPTY null;
++};
++typedef union TPMU_SIGNATURE TPMU_SIGNATURE;
++
++/* TPMT_SIGNATURE Structure */
++struct TPMT_SIGNATURE {
++  TPMI_ALG_SIG_SCHEME sigAlg;
++  TPMU_SIGNATURE signature;
++};
++typedef struct TPMT_SIGNATURE TPMT_SIGNATURE;
++
++static inline TPMI_ALG_HASH
++TPMT_SIGNATURE_get_hash_alg (TPMT_SIGNATURE *sig)
++{
++  switch (sig->sigAlg)
++    {
++    case TPM_ALG_RSASSA:
++      return sig->signature.rsassa.hash;
++    case TPM_ALG_RSAPSS:
++      return sig->signature.rsapss.hash;
++    case TPM_ALG_ECDSA:
++      return sig->signature.ecdsa.hash;
++    case TPM_ALG_ECDAA:
++      return sig->signature.ecdaa.hash;
++    case TPM_ALG_SM2:
++      return sig->signature.sm2.hash;
++    case TPM_ALG_ECSCHNORR:
++      return sig->signature.ecschnorr.hash;
++    case TPM_ALG_HMAC:
++      return sig->signature.hmac.hashAlg;
++    default:
++      break;
++    }
++
++  return TPM_ALG_NULL;
++}
++
++/* TPMT_TK_VERIFIED Structure */
++struct TPMT_TK_VERIFIED {
++  TPM_ST tag;
++  TPMI_RH_HIERARCHY hierarchy;
++  TPM2B_DIGEST digest;
++};
++typedef struct TPMT_TK_VERIFIED TPMT_TK_VERIFIED;
++
 +#endif /* ! GRUB_TPM2_INTERNAL_STRUCTS_HEADER */
 diff --git a/include/grub/tpm2/internal/types.h b/include/grub/tpm2/internal/types.h
 new file mode 100644
-index 000000000..9118cad5d
+index 000000000..7d754394d
 --- /dev/null
 +++ b/include/grub/tpm2/internal/types.h
-@@ -0,0 +1,370 @@
+@@ -0,0 +1,403 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
 + *  Copyright (C) 2022 Microsoft Corporation
@@ -2999,6 +3782,9 @@ index 000000000..9118cad5d
 +#define TPM_ALG_CFB            ((TPM_ALG_ID) 0x0043)
 +#define TPM_ALG_ECB            ((TPM_ALG_ID) 0x0044)
 +#define TPM_ALG_ECC            ((TPM_ALG_ID) 0x0023)
++#define TPM_ALG_ECDAA          ((TPM_ALG_ID) 0x001A)
++#define TPM_ALG_ECDSA          ((TPM_ALG_ID) 0x0018)
++#define TPM_ALG_ECSCHNORR      ((TPM_ALG_ID) 0x001C)
 +#define TPM_ALG_HMAC           ((TPM_ALG_ID) 0x0005)
 +#define TPM_ALG_KDF1_SP800_108 ((TPM_ALG_ID) 0x0022)
 +#define TPM_ALG_KDF1_SP800_56A ((TPM_ALG_ID) 0x0020)
@@ -3007,10 +3793,13 @@ index 000000000..9118cad5d
 +#define TPM_ALG_MGF1           ((TPM_ALG_ID) 0x0007)
 +#define TPM_ALG_NULL           ((TPM_ALG_ID) 0x0010)
 +#define TPM_ALG_RSA            ((TPM_ALG_ID) 0x0001)
++#define TPM_ALG_RSASSA         ((TPM_ALG_ID) 0x0014)
++#define TPM_ALG_RSAPSS         ((TPM_ALG_ID) 0x0016)
 +#define TPM_ALG_SHA1           ((TPM_ALG_ID) 0x0004)
 +#define TPM_ALG_SHA256         ((TPM_ALG_ID) 0x000B)
 +#define TPM_ALG_SHA384         ((TPM_ALG_ID) 0x000C)
 +#define TPM_ALG_SHA512         ((TPM_ALG_ID) 0x000D)
++#define TPM_ALG_SM2            ((TPM_ALG_ID) 0x001B)
 +#define TPM_ALG_SM3_256        ((TPM_ALG_ID) 0x0012)
 +#define TPM_ALG_SM4            ((TPM_ALG_ID) 0x0013)
 +#define TPM_ALG_SYMCIPHER      ((TPM_ALG_ID) 0x0025)
@@ -3079,6 +3868,11 @@ index 000000000..9118cad5d
 +typedef TPM_HANDLE TPMI_RH_NV_AUTH;
 +typedef TPM_HANDLE TPMI_RH_NV_INDEX;
 +
++/* TPM_HT Constants */
++typedef grub_uint8_t TPM_HT;
++#define TPM_HT_PERMANENT  ((TPM_HT) 0x40)
++#define TPM_HT_PERSISTENT ((TPM_HT) 0x81)
++
 +/* TPM_RH Constants */
 +typedef TPM_HANDLE TPM_RH;
 +
@@ -3100,6 +3894,22 @@ index 000000000..9118cad5d
 +#define TPM_RH_AUTH_00     ((TPM_RH) 0x40000010)
 +#define TPM_RH_AUTH_FF     ((TPM_RH) 0x4000010F)
 +#define TPM_RH_LAST        ((TPM_RH) 0x4000010F)
++
++/* TPM_HC Constants */
++typedef TPM_HANDLE TPM_HC;
++#define TPM_HR_HANDLE_MASK   ((TPM_HC) 0x00FFFFFF)
++#define TPM_HR_RANGE_MASK    ((TPM_HC) 0xFF000000)
++#define TPM_HR_SHIFT         ((TPM_HC) 24)
++#define TPM_HR_PERSISTENT    ((TPM_HC) (TPM_HT_PERSISTENT << TPM_HR_SHIFT))
++#define TPM_HR_PERMANENT     ((TPM_HC) (TPM_HT_PERMANENT << TPM_HR_SHIFT))
++#define TPM_PERSISTENT_FIRST ((TPM_HC) (TPM_HR_PERSISTENT + 0))
++#define TPM_PERSISTENT_LAST  ((TPM_HC) (TPM_PERSISTENT_FIRST + 0x00FFFFFF))
++#define TPM_PERMANENT_FIRST  ((TPM_HC) TPM_RH_FIRST)
++#define TPM_PERMANENT_LAST   ((TPM_HC) TPM_RH_LAST)
++
++/* TPM Handle Type Checks */
++#define TPM_HT_IS_PERMANENT(HANDLE) (((HANDLE) >> TPM_HR_SHIFT) == TPM_HT_PERMANENT)
++#define TPM_HT_IS_PERSISTENT(HANDLE) (((HANDLE) >> TPM_HR_SHIFT) == TPM_HT_PERSISTENT)
 +
 +/* TPM_ECC_CURVE Constants */
 +typedef grub_uint16_t TPM_ECC_CURVE;
@@ -3129,8 +3939,13 @@ index 000000000..9118cad5d
 +#define TPM_CC_GetCapability    ((TPM_CC) 0x0000017a)
 +#define TPM_CC_PCR_Read         ((TPM_CC) 0x0000017e)
 +#define TPM_CC_Load             ((TPM_CC) 0x00000157)
++#define TPM_CC_LoadExternal     ((TPM_CC) 0x00000167)
 +#define TPM_CC_Unseal           ((TPM_CC) 0x0000015e)
 +#define TPM_CC_PolicyGetDigest  ((TPM_CC) 0x00000189)
++#define TPM_CC_Hash             ((TPM_CC) 0x0000017d)
++#define TPM_CC_VerifySignature  ((TPM_CC) 0x00000177)
++#define TPM_CC_PolicyAuthorize  ((TPM_CC) 0x0000016a)
++#define TPM_CC_TestParms        ((TPM_CC) 0x0000018a)
 +
 +/* Hash algorithm sizes */
 +#define TPM_SHA1_DIGEST_SIZE    20
@@ -3172,6 +3987,7 @@ index 000000000..9118cad5d
 +typedef TPM_ALG_ID TPMI_ALG_ASYM_SCHEME;
 +typedef TPM_ALG_ID TPMI_ALG_RSA_SCHEME;
 +typedef TPM_ALG_ID TPMI_ALG_SYM;
++typedef TPM_ALG_ID TPMI_ALG_SIG_SCHEME;
 +
 +/* TPM_KEY_BITS Type */
 +typedef grub_uint16_t TPM_KEY_BITS;
@@ -3188,10 +4004,10 @@ index 000000000..9118cad5d
 +#endif /* ! GRUB_TPM2_INTERNAL_TYPES_HEADER */
 diff --git a/include/grub/tpm2/mu.h b/include/grub/tpm2/mu.h
 new file mode 100644
-index 000000000..c545976db
+index 000000000..0970b5c70
 --- /dev/null
 +++ b/include/grub/tpm2/mu.h
-@@ -0,0 +1,292 @@
+@@ -0,0 +1,396 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
 + *  Copyright (C) 2022 Microsoft Corporation
@@ -3217,271 +4033,375 @@ index 000000000..c545976db
 +#include <grub/tpm2/tpm2.h>
 +
 +void
-+grub_tpm2_mu_TPMS_AUTH_COMMAND_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMS_AUTH_COMMAND_Marshal (grub_tpm2_buffer_t buffer,
 +					const TPMS_AUTH_COMMAND* authCommand);
 +
 +void
-+grub_tpm2_mu_TPM2B_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPM2B_Marshal (grub_tpm2_buffer_t buffer,
 +			    const grub_uint16_t size,
-+			    const grub_uint8_t* buffer);
++			    const grub_uint8_t* b);
 +
 +void
-+grub_tpm2_mu_TPMU_SYM_KEY_BITS_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMU_SYM_KEY_BITS_Marshal (grub_tpm2_buffer_t buffer,
 +					const TPMI_ALG_SYM_OBJECT algorithm,
 +					const TPMU_SYM_KEY_BITS *p);
 +
 +void
-+grub_tpm2_mu_TPMU_SYM_MODE_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMU_SYM_MODE_Marshal (grub_tpm2_buffer_t buffer,
 +				    const TPMI_ALG_SYM_OBJECT algorithm,
 +				    const TPMU_SYM_MODE *p);
 +
 +void
-+grub_tpm2_mu_TPMT_SYM_DEF_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMT_SYM_DEF_Marshal (grub_tpm2_buffer_t buffer,
 +				   const TPMT_SYM_DEF *p);
 +
 +void
-+grub_tpm2_mu_TPMS_PCR_SELECTION_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMS_PCR_SELECTION_Marshal (grub_tpm2_buffer_t buffer,
 +					 const TPMS_PCR_SELECTION* pcrSelection);
 +
 +void
-+grub_tpm2_mu_TPML_PCR_SELECTION_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPML_PCR_SELECTION_Marshal (grub_tpm2_buffer_t buffer,
 +					 const TPML_PCR_SELECTION* pcrSelection);
 +
 +void
-+grub_tpm2_mu_TPMA_OBJECT_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMA_OBJECT_Marshal (grub_tpm2_buffer_t buffer,
 +				  const TPMA_OBJECT *p);
 +
 +void
-+grub_tpm2_mu_TPMS_SCHEME_XOR_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMS_SCHEME_XOR_Marshal (grub_tpm2_buffer_t buffer,
 +				      const TPMS_SCHEME_XOR *p);
 +
 +void
-+grub_tpm2_mu_TPMS_SCHEME_HMAC_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMS_SCHEME_HMAC_Marshal (grub_tpm2_buffer_t buffer,
 +				       const TPMS_SCHEME_HMAC *p);
 +
 +void
-+grub_tpm2_mu_TPMU_SCHEME_KEYEDHASH_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMU_SCHEME_KEYEDHASH_Marshal (grub_tpm2_buffer_t buffer,
 +					    const TPMI_ALG_KEYEDHASH_SCHEME scheme,
 +					    const TPMU_SCHEME_KEYEDHASH *p);
 +
 +void
-+grub_tpm2_mu_TPMT_KEYEDHASH_SCHEME_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMT_KEYEDHASH_SCHEME_Marshal (grub_tpm2_buffer_t buffer,
 +					    const TPMT_KEYEDHASH_SCHEME *p);
 +
 +void
-+grub_tpm2_mu_TPMS_KEYEDHASH_PARMS_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMS_KEYEDHASH_PARMS_Marshal (grub_tpm2_buffer_t buffer,
 +					   const TPMS_KEYEDHASH_PARMS *p);
 +
 +void
-+grub_tpm2_mu_TPMT_SYM_DEF_OBJECT_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMT_SYM_DEF_OBJECT_Marshal (grub_tpm2_buffer_t buffer,
 +					  const TPMT_SYM_DEF_OBJECT *p);
 +
 +void
-+grub_tpm2_mu_TPMU_ASYM_SCHEME_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMU_ASYM_SCHEME_Marshal (grub_tpm2_buffer_t buffer,
 +				       const TPMI_ALG_RSA_DECRYPT scheme,
 +				       const TPMU_ASYM_SCHEME *p);
 +
 +void
-+grub_tpm2_mu_TPMT_RSA_SCHEME_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMT_RSA_SCHEME_Marshal (grub_tpm2_buffer_t buffer,
 +				      const TPMT_RSA_SCHEME *p);
 +
 +void
-+grub_tpm2_mu_TPMS_RSA_PARMS_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMS_RSA_PARMS_Marshal (grub_tpm2_buffer_t buffer,
 +				     const TPMS_RSA_PARMS *p);
 +
 +void
-+grub_tpm2_mu_TPMS_SYMCIPHER_PARMS_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMS_SYMCIPHER_PARMS_Marshal (grub_tpm2_buffer_t buffer,
 +					   const TPMS_SYMCIPHER_PARMS *p);
 +
 +void
-+grub_tpm2_mu_TPMT_ECC_SCHEME_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMT_ECC_SCHEME_Marshal (grub_tpm2_buffer_t buffer,
 +				      const TPMT_ECC_SCHEME *p);
 +
 +void
-+grub_tpm2_mu_TPMU_KDF_SCHEME_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMU_KDF_SCHEME_Marshal (grub_tpm2_buffer_t buffer,
 +				      const TPMI_ALG_KDF scheme,
 +				      const TPMU_KDF_SCHEME *p);
 +
 +void
-+grub_tpm2_mu_TPMT_KDF_SCHEME_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMT_KDF_SCHEME_Marshal (grub_tpm2_buffer_t buffer,
 +				      const TPMT_KDF_SCHEME *p);
 +
 +void
-+grub_tpm2_mu_TPMS_ECC_PARMS_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMS_ECC_PARMS_Marshal (grub_tpm2_buffer_t buffer,
 +				     const TPMS_ECC_PARMS *p);
 +
 +void
-+grub_tpm2_mu_TPMU_PUBLIC_PARMS_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMU_PUBLIC_PARMS_Marshal (grub_tpm2_buffer_t buffer,
 +					const grub_uint32_t type,
 +					const TPMU_PUBLIC_PARMS *p);
 +
 +void
-+grub_tpm2_mu_TPMS_ECC_POINT_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMS_ECC_POINT_Marshal (grub_tpm2_buffer_t buffer,
 +				     const TPMS_ECC_POINT *p);
 +
 +void
-+grub_tpm2_mu_TPMU_PUBLIC_ID_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMU_PUBLIC_ID_Marshal (grub_tpm2_buffer_t buffer,
 +				     const TPMI_ALG_PUBLIC type,
 +				     const TPMU_PUBLIC_ID *p);
 +
 +void
-+grub_tpm2_mu_TPMT_PUBLIC_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMT_PUBLIC_PARMS_Marshal (grub_tpm2_buffer_t buffer,
++					const TPMT_PUBLIC_PARMS *p);
++
++void
++grub_tpm2_mu_TPMT_PUBLIC_Marshal (grub_tpm2_buffer_t buffer,
 +				  const TPMT_PUBLIC *p);
 +
 +void
-+grub_tpm2_mu_TPM2B_PUBLIC_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPM2B_PUBLIC_Marshal (grub_tpm2_buffer_t buffer,
 +				   const TPM2B_PUBLIC *p);
 +
 +void
-+grub_tpm2_mu_TPMS_SENSITIVE_CREATE_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMS_SENSITIVE_CREATE_Marshal (grub_tpm2_buffer_t buffer,
 +					    const TPMS_SENSITIVE_CREATE *p);
 +
 +void
-+grub_tpm2_mu_TPM2B_SENSITIVE_CREATE_Marshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPM2B_SENSITIVE_CREATE_Marshal (grub_tpm2_buffer_t buffer,
 +					     const TPM2B_SENSITIVE_CREATE *sensitiveCreate);
 +
 +void
-+grub_tpm2_mu_TPM2B_Unmarshal (grub_tpm2_buffer_t buf,
-+			      TPM2B* p);
++grub_tpm2_mu_TPMU_SENSITIVE_COMPOSITE_Marshal (grub_tpm2_buffer_t buffer,
++                                               const TPMI_ALG_PUBLIC type,
++                                               const TPMU_SENSITIVE_COMPOSITE *p);
++void
++grub_tpm2_mu_TPMT_SENSITIVE_Marshal (grub_tpm2_buffer_t buffer,
++                                     const TPMT_SENSITIVE *p);
 +
 +void
-+grub_tpm2_mu_TPMS_AUTH_RESPONSE_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPM2B_SENSITIVE_Marshal (grub_tpm2_buffer_t buffer,
++                                      const TPM2B_SENSITIVE *p);
++
++void
++grub_tpm2_mu_TPMS_SIGNATURE_RSA_Marshal (grub_tpm2_buffer_t buffer,
++                                         const TPMS_SIGNATURE_RSA *p);
++
++void
++grub_tpm2_mu_TPMS_SIGNATURE_ECC_Marshal (grub_tpm2_buffer_t buffer,
++                                         const TPMS_SIGNATURE_ECC *p);
++
++void
++grub_tpm2_mu_TPMU_HA_Marshal (grub_tpm2_buffer_t buffer,
++                              const TPMI_ALG_HASH hashAlg,
++                              const TPMU_HA *p);
++
++void
++grub_tpm2_mu_TPMT_HA_Marshal (grub_tpm2_buffer_t buffer,
++                              const TPMT_HA *p);
++
++void
++grub_tpm2_mu_TPMU_SIGNATURE_Marshal (grub_tpm2_buffer_t buffer,
++                                     const TPMI_ALG_SIG_SCHEME sigAlg,
++                                     const TPMU_SIGNATURE *p);
++
++void
++grub_tpm2_mu_TPMT_SIGNATURE_Marshal (grub_tpm2_buffer_t buffer,
++                                     const TPMT_SIGNATURE *p);
++
++void
++grub_tpm2_mu_TPMT_TK_VERIFIED_Marshal (grub_tpm2_buffer_t buffer,
++                                       const TPMT_TK_VERIFIED *p);
++
++void
++grub_tpm2_mu_TPMS_AUTH_RESPONSE_Unmarshal (grub_tpm2_buffer_t buffer,
 +					   TPMS_AUTH_RESPONSE* p);
 +
 +void
-+grub_tpm2_mu_TPM2B_DIGEST_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPM2B_DIGEST_Unmarshal (grub_tpm2_buffer_t buffer,
 +				     TPM2B_DIGEST* digest);
 +
 +void
-+grub_tpm2_mu_TPMA_OBJECT_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPM2B_NONCE_Unmarshal (grub_tpm2_buffer_t buffer,
++				    TPM2B_NONCE* nonce);
++
++void
++grub_tpm2_mu_TPM2B_DATA_Unmarshal (grub_tpm2_buffer_t buffer,
++				   TPM2B_DATA* data);
++
++void
++grub_tpm2_mu_TPMS_CREATION_DATA_Unmarshal (grub_tpm2_buffer_t buffer,
++					   TPMS_CREATION_DATA *data);
++
++void
++grub_tpm2_mu_TPM2B_CREATION_DATA_Unmarshal (grub_tpm2_buffer_t buffer,
++					    TPM2B_CREATION_DATA *data);
++
++void
++grub_tpm2_mu_TPM2B_PRIVATE_Unmarshal (grub_tpm2_buffer_t buffer,
++				      TPM2B_PRIVATE* private);
++
++void
++grub_tpm2_mu_TPM2B_SENSITIVE_DATA_Unmarshal (grub_tpm2_buffer_t buffer,
++					     TPM2B_SENSITIVE_DATA *data);
++
++void
++grub_tpm2_mu_TPM2B_PUBLIC_KEY_RSA_Unmarshal (grub_tpm2_buffer_t buffer,
++					     TPM2B_PUBLIC_KEY_RSA *rsa);
++
++void
++grub_tpm2_mu_TPM2B_ECC_PARAMETER_Unmarshal (grub_tpm2_buffer_t buffer,
++					    TPM2B_ECC_PARAMETER *param);
++
++void
++grub_tpm2_mu_TPMA_OBJECT_Unmarshal (grub_tpm2_buffer_t buffer,
 +				    TPMA_OBJECT *p);
 +
 +void
-+grub_tpm2_mu_TPMS_SCHEME_HMAC_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMS_SCHEME_HMAC_Unmarshal (grub_tpm2_buffer_t buffer,
 +					 TPMS_SCHEME_HMAC *p);
 +
 +void
-+grub_tpm2_mu_TPMS_SCHEME_XOR_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMS_SCHEME_XOR_Unmarshal (grub_tpm2_buffer_t buffer,
 +					TPMS_SCHEME_XOR *p);
 +
 +void
-+grub_tpm2_mu_TPMU_SCHEME_KEYEDHASH_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMU_SCHEME_KEYEDHASH_Unmarshal (grub_tpm2_buffer_t buffer,
 +					      TPMI_ALG_KEYEDHASH_SCHEME scheme,
 +					      TPMU_SCHEME_KEYEDHASH *p);
 +
 +void
-+grub_tpm2_mu_TPMT_KEYEDHASH_SCHEME_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMT_KEYEDHASH_SCHEME_Unmarshal (grub_tpm2_buffer_t buffer,
 +					      TPMT_KEYEDHASH_SCHEME *p);
 +
 +void
-+grub_tpm2_mu_TPMS_KEYEDHASH_PARMS_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMS_KEYEDHASH_PARMS_Unmarshal (grub_tpm2_buffer_t buffer,
 +					     TPMS_KEYEDHASH_PARMS *p);
 +
 +void
-+grub_tpm2_mu_TPMU_SYM_KEY_BITS_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMU_SYM_KEY_BITS_Unmarshal (grub_tpm2_buffer_t buffer,
 +					  TPMI_ALG_SYM_OBJECT algorithm,
 +					  TPMU_SYM_KEY_BITS *p);
 +
 +void
-+grub_tpm2_mu_TPMU_SYM_MODE_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMU_SYM_MODE_Unmarshal (grub_tpm2_buffer_t buffer,
 +				      TPMI_ALG_SYM_OBJECT algorithm,
 +				      TPMU_SYM_MODE *p);
 +
 +void
-+grub_tpm2_mu_TPMT_SYM_DEF_OBJECT_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMT_SYM_DEF_OBJECT_Unmarshal (grub_tpm2_buffer_t buffer,
 +					    TPMT_SYM_DEF_OBJECT *p);
 +
 +void
-+grub_tpm2_mu_TPMS_SYMCIPHER_PARMS_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMS_SYMCIPHER_PARMS_Unmarshal (grub_tpm2_buffer_t buffer,
 +					     TPMS_SYMCIPHER_PARMS *p);
 +
 +void
-+grub_tpm2_mu_TPMU_ASYM_SCHEME_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMU_ASYM_SCHEME_Unmarshal (grub_tpm2_buffer_t buffer,
 +					 TPMI_ALG_RSA_DECRYPT scheme,
 +					 TPMU_ASYM_SCHEME *p);
 +
 +void
-+grub_tpm2_mu_TPMT_RSA_SCHEME_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMT_RSA_SCHEME_Unmarshal (grub_tpm2_buffer_t buffer,
 +					TPMT_RSA_SCHEME *p);
 +
 +void
-+grub_tpm2_mu_TPMS_RSA_PARMS_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMS_RSA_PARMS_Unmarshal (grub_tpm2_buffer_t buffer,
 +				       TPMS_RSA_PARMS *p);
 +
 +void
-+grub_tpm2_mu_TPMT_ECC_SCHEME_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMT_ECC_SCHEME_Unmarshal (grub_tpm2_buffer_t buffer,
 +					TPMT_ECC_SCHEME *p);
 +
 +void
-+grub_tpm2_mu_TPMU_KDF_SCHEME_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMU_KDF_SCHEME_Unmarshal (grub_tpm2_buffer_t buffer,
 +					TPMI_ALG_KDF scheme,
 +					TPMU_KDF_SCHEME *p);
 +
 +void
-+grub_tpm2_mu_TPMT_KDF_SCHEME_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMT_KDF_SCHEME_Unmarshal (grub_tpm2_buffer_t buffer,
 +					TPMT_KDF_SCHEME *p);
 +
 +void
-+grub_tpm2_mu_TPMS_ECC_PARMS_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMS_ECC_PARMS_Unmarshal (grub_tpm2_buffer_t buffer,
 +				       TPMS_ECC_PARMS *p);
 +
 +void
-+grub_tpm2_mu_TPMU_PUBLIC_PARMS_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMU_PUBLIC_PARMS_Unmarshal (grub_tpm2_buffer_t buffer,
 +					  grub_uint32_t type,
 +					  TPMU_PUBLIC_PARMS *p);
 +
 +void
-+grub_tpm2_mu_TPMS_ECC_POINT_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMS_ECC_POINT_Unmarshal (grub_tpm2_buffer_t buffer,
 +				       TPMS_ECC_POINT *p);
 +
 +void
-+grub_tpm2_mu_TPMU_PUBLIC_ID_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMU_PUBLIC_ID_Unmarshal (grub_tpm2_buffer_t buffer,
 +				       TPMI_ALG_PUBLIC type,
 +				       TPMU_PUBLIC_ID *p);
 +
 +void
-+grub_tpm2_mu_TPMT_PUBLIC_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMT_PUBLIC_Unmarshal (grub_tpm2_buffer_t buffer,
 +				    TPMT_PUBLIC *p);
 +
 +void
-+grub_tpm2_mu_TPM2B_PUBLIC_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPM2B_PUBLIC_Unmarshal (grub_tpm2_buffer_t buffer,
 +				     TPM2B_PUBLIC *p);
 +
 +void
-+grub_tpm2_mu_TPMS_NV_PUBLIC_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMS_NV_PUBLIC_Unmarshal (grub_tpm2_buffer_t buffer,
 +				       TPMS_NV_PUBLIC *p);
 +
 +void
-+grub_tpm2_mu_TPM2B_NV_PUBLIC_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPM2B_NV_PUBLIC_Unmarshal (grub_tpm2_buffer_t buffer,
 +					TPM2B_NV_PUBLIC *p);
 +
 +void
-+grub_tpm2_mu_TPM2B_NAME_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPM2B_NAME_Unmarshal (grub_tpm2_buffer_t buffer,
 +				   TPM2B_NAME *n);
 +
 +void
-+grub_tpm2_mu_TPMS_TAGGED_PROPERTY_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMS_TAGGED_PROPERTY_Unmarshal (grub_tpm2_buffer_t buffer,
 +					     TPMS_TAGGED_PROPERTY* property);
 +
 +void
-+grub_tpm2_mu_TPMS_CAPABILITY_DATA_tpmProperties_Unmarshal (grub_tpm2_buffer_t buf,
-+							   TPMS_CAPABILITY_DATA* capabilityData);
-+
-+void
-+grub_tpm2_mu_TPMT_TK_CREATION_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMT_TK_CREATION_Unmarshal (grub_tpm2_buffer_t buffer,
 +					 TPMT_TK_CREATION *p);
 +
 +void
-+grub_tpm2_mu_TPMS_PCR_SELECTION_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPMT_TK_HASHCHECK_Unmarshal (grub_tpm2_buffer_t buffer,
++                                          TPMT_TK_HASHCHECK *p);
++
++void
++grub_tpm2_mu_TPMT_TK_VERIFIED_Unmarshal (grub_tpm2_buffer_t buffer,
++                                         TPMT_TK_VERIFIED *p);
++
++void
++grub_tpm2_mu_TPMS_PCR_SELECTION_Unmarshal (grub_tpm2_buffer_t buffer,
 +					   TPMS_PCR_SELECTION* pcrSelection);
 +
 +void
-+grub_tpm2_mu_TPML_PCR_SELECTION_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPML_PCR_SELECTION_Unmarshal (grub_tpm2_buffer_t buffer,
 +					   TPML_PCR_SELECTION* pcrSelection);
 +
 +void
-+grub_tpm2_mu_TPML_DIGEST_Unmarshal (grub_tpm2_buffer_t buf,
++grub_tpm2_mu_TPML_DIGEST_Unmarshal (grub_tpm2_buffer_t buffer,
 +				    TPML_DIGEST* digest);
++
++void
++grub_tpm2_mu_TPMS_SIGNATURE_RSA_Unmarshal (grub_tpm2_buffer_t buffer,
++                                           TPMS_SIGNATURE_RSA *p);
++
++void
++grub_tpm2_mu_TPMS_SIGNATURE_ECC_Unmarshal (grub_tpm2_buffer_t buffer,
++                                           TPMS_SIGNATURE_ECC *p);
++
++void
++grub_tpm2_mu_TPMU_HA_Unmarshal (grub_tpm2_buffer_t buffer,
++                                TPMI_ALG_HASH hashAlg,
++                                TPMU_HA *p);
++
++void
++grub_tpm2_mu_TPMT_HA_Unmarshal (grub_tpm2_buffer_t buffer,
++                                TPMT_HA *p);
++
++void
++grub_tpm2_mu_TPMU_SIGNATURE_Unmarshal (grub_tpm2_buffer_t buffer,
++                                       TPMI_ALG_SIG_SCHEME sigAlg,
++                                       TPMU_SIGNATURE *p);
++
++void
++grub_tpm2_mu_TPMT_SIGNATURE_Unmarshal (grub_tpm2_buffer_t buffer,
++                                       TPMT_SIGNATURE *p);
 +
 +#endif /* ! GRUB_TPM2_MU_HEADER */
 diff --git a/include/grub/tpm2/tcg2.h b/include/grub/tpm2/tcg2.h

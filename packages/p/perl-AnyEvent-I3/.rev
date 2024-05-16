@@ -77,4 +77,12 @@
      * use lib '.' for Perl 5.25.11+</comment>
     <requestid>488999</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>304b7bc5f751bbcdc9f22430b7aeaf75</srcmd5>
+    <version>0.190.0</version>
+    <time>1715872621</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1174476</requestid>
+  </revision>
 </revisionlist>

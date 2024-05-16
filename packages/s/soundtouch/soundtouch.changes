@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 14 16:11:11 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 2.3.3:
+  * Fixing compiler warnings, maintenance fixes to make/build files
+    for various systems
+- Refresh disable-ffast-math.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 13:42:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -18,9 +18,10 @@
 
 %define cpan_name Text-CSV_XS
 Name:           perl-Text-CSV_XS
-Version:        1.530.0
+Version:        1.540.0
 Release:        0
-%define cpan_version 1.53
+# 1.54 -> normalize -> 1.540.0
+%define cpan_version 1.54
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Comma-Separated Values manipulation routines
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -30,7 +31,7 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 Provides:       perl(Text::CSV_XS) = %{version}
 %undefine       __perllib_provides
-Recommends:     perl(Encode) >= 3.200.0
+Recommends:     perl(Encode) >= 3.210.0
 %{perl_requires}
 
 %description

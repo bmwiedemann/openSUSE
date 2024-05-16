@@ -1,7 +1,7 @@
 #
 # spec file for package ddcutil
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ddcutil
-Version:        1.4.1
+Version:        2.1.4
 Release:        0
 Summary:        Utility to query and update monitor settings
 License:        GPL-2.0-or-later
@@ -32,6 +32,7 @@ BuildRequires:  gcc
 BuildRequires:  libi2c0-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libkmod)
 BuildRequires:  pkgconfig(libudev)
@@ -51,14 +52,14 @@ effect, e.g. red gain.  ddcutil allows color related settings to be saved at
 the time a monitor is calibrated, and then restored when the calibration is
 applied.
 
-%package -n libddcutil4
+%package -n libddcutil5
 Summary:        Shared library to query and update monitor settings
 Group:          System/Libraries
 # libddcutil.so.4 was wrongly packaged as libddcutil3 after the 1.x upgrade
 Conflicts:      libddcutil3 >= 1.0
 Suggests:       ddcutil-i2c-udev-rules
 
-%description -n libddcutil4
+%description -n libddcutil5
 Shared library version of ddcutil, exposing a C API.
 
 ddcutil communicates with monitors implementing MCCS (Monitor Control Command
@@ -68,7 +69,7 @@ Device on USB.
 %package -n libddcutil-devel
 Summary:        Development files for libddcutil
 Group:          Development/Libraries/C and C++
-Requires:       libddcutil4 = %{version}
+Requires:       libddcutil5 = %{version}
 
 %description -n libddcutil-devel
 Header files and pkgconfig control file for libddcutil.
@@ -76,7 +77,7 @@ Header files and pkgconfig control file for libddcutil.
 %package -n ddcutil-i2c-udev-rules
 Summary:        Udev rules to grant logged in users DDC/CI access
 Group:          Hardware/Other
-Requires:       libddcutil4 = %{version}
+Requires:       libddcutil5 = %{version}
 Provides:       ddcutil:%{_udevrulesdir}/60-ddcutil.rules
 BuildArch:      noarch
 
@@ -103,8 +104,8 @@ make %{?_smp_mflags} check
 %install
 %make_install
 
-%post   -n libddcutil4 -p /sbin/ldconfig
-%postun -n libddcutil4 -p /sbin/ldconfig
+%post   -n libddcutil5 -p /sbin/ldconfig
+%postun -n libddcutil5 -p /sbin/ldconfig
 
 %files
 %doc AUTHORS NEWS.md README.md CHANGELOG.md
@@ -113,15 +114,18 @@ make %{?_smp_mflags} check
 %dir %{_datadir}/%{name}/data
 %{_datadir}/%{name}/data/*rules
 %{_datadir}/%{name}/data/90-nvidia-i2c.conf
+%{_datadir}/%{name}/data/nvidia-i2c.conf
 %{_mandir}/man1/ddcutil.1*
 %{_bindir}/ddcutil
 
 %files -n ddcutil-i2c-udev-rules
-%{_udevrulesdir}/60-ddcutil.rules
+%{_udevrulesdir}/60-ddcutil-usb.rules
+%{_udevrulesdir}/60-ddcutil-i2c.rules
+%{_modulesloaddir}*
 
-%files -n libddcutil4
+%files -n libddcutil5
 %license COPYING
-%{_libdir}/libddcutil.so.4*
+%{_libdir}/libddcutil.so.5*
 
 %files -n libddcutil-devel
 %{_includedir}/ddcutil_types.h

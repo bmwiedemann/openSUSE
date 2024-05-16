@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 18 03:07:48 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.601
+   see /usr/share/doc/packages/perl-Email-Sender/Changes
+
+  2.601     2024-01-17 19:15:25-05:00 America/New_York
+          - allow using an Authen::SASL instance via sasl_authenticator as an
+            alternative to username asd password (thanks, Erik Huelsmann!)
+
+-------------------------------------------------------------------
 Mon Oct 24 03:07:07 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.600

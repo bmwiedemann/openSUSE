@@ -1,0 +1,403 @@
+--- tycho-1.6.0/target-platform-configuration/pom.xml	2024-05-15 14:36:53.368098051 +0200
++++ tycho-1.6.0/target-platform-configuration/pom.xml	2024-05-15 15:10:03.548000115 +0200
+@@ -50,4 +50,18 @@
+ 			<version>${project.version}</version>
+ 		</dependency>
+ 	</dependencies>
++
++    <build>
++        <plugins>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-plugin-plugin</artifactId>
++                <!-- workaround for https://issues.apache.org/jira/browse/MPLUGIN-504 -->
++                <configuration>
++                    <goalPrefix>target-platform-configuration</goalPrefix>
++                </configuration>
++            </plugin>
++        </plugins>
++    </build>
++
+ </project>
+--- tycho-1.6.0/tycho-compiler-plugin/pom.xml	2024-05-15 14:36:53.371431408 +0200
++++ tycho-1.6.0/tycho-compiler-plugin/pom.xml	2024-05-15 14:52:36.587501116 +0200
+@@ -81,4 +81,16 @@
+ 		</dependency>
+ 	</dependencies>
+ 
++	<build>
++		<plugins>
++			<plugin>
++				<groupId>org.apache.maven.plugins</groupId>
++				<artifactId>maven-plugin-plugin</artifactId>
++				<!-- workaround for https://issues.apache.org/jira/browse/MPLUGIN-504 -->
++				<configuration>
++					<goalPrefix>tycho-compiler</goalPrefix>
++				</configuration>
++			</plugin>
++		</plugins>
++	</build>
+ </project>
+--- tycho-1.6.0/tycho-extras/pack200/tycho-pack200a-plugin/pom.xml	2024-05-15 14:36:53.404764973 +0200
++++ tycho-1.6.0/tycho-extras/pack200/tycho-pack200a-plugin/pom.xml	2024-05-15 18:14:59.261868858 +0200
+@@ -34,4 +34,18 @@
+       <version>${project.version}</version>
+     </dependency>
+   </dependencies>
++
++  <build>
++    <plugins>
++      <plugin>
++        <groupId>org.apache.maven.plugins</groupId>
++        <artifactId>maven-plugin-plugin</artifactId>
++        <!-- workaround for https://issues.apache.org/jira/browse/MPLUGIN-504 -->
++        <configuration>
++          <goalPrefix>tycho-pack200a</goalPrefix>
++        </configuration>
++      </plugin>
++    </plugins>
++  </build>
++
+ </project>
+\ No newline at end of file
+--- tycho-1.6.0/tycho-extras/pack200/tycho-pack200b-plugin/pom.xml	2024-05-15 18:28:21.073980942 +0200
++++ tycho-1.6.0/tycho-extras/pack200/tycho-pack200b-plugin/pom.xml	2024-05-15 18:26:31.363232566 +0200
+@@ -39,4 +39,18 @@
+       <version>${project.version}</version>
+     </dependency>
+   </dependencies>
++
++  <build>
++    <plugins>
++      <plugin>
++        <groupId>org.apache.maven.plugins</groupId>
++        <artifactId>maven-plugin-plugin</artifactId>
++        <!-- workaround for https://issues.apache.org/jira/browse/MPLUGIN-504 -->
++        <configuration>
++          <goalPrefix>tycho-pack200b</goalPrefix>
++        </configuration>
++      </plugin>
++    </plugins>
++  </build>
++
+ </project>
+--- tycho-1.6.0/tycho-extras/target-platform-validation-plugin/pom.xml	2024-05-15 14:36:53.408098330 +0200
++++ tycho-1.6.0/tycho-extras/target-platform-validation-plugin/pom.xml	2024-05-15 14:38:04.951929674 +0200
+@@ -34,6 +34,19 @@
+ 		</dependency>
+ 	</dependencies>
+ 
++	<build>
++		<plugins>
++			<plugin>
++				<groupId>org.apache.maven.plugins</groupId>
++				<artifactId>maven-plugin-plugin</artifactId>
++				<!-- workaround for https://issues.apache.org/jira/browse/MPLUGIN-450 -->
++				<configuration>
++					<goalPrefix>target-platform-validation</goalPrefix>
++				</configuration>
++			</plugin>
++		</plugins>
++	</build>
++
+ 	<profiles>
+ 		<profile>
+ 			<id>its</id>
+--- tycho-1.6.0/tycho-extras/tycho-custom-bundle-plugin/pom.xml	2024-05-15 14:36:53.408098330 +0200
++++ tycho-1.6.0/tycho-extras/tycho-custom-bundle-plugin/pom.xml	2024-05-15 14:38:04.951929674 +0200
+@@ -61,6 +61,14 @@
+         <groupId>org.codehaus.plexus</groupId>
+         <artifactId>plexus-component-metadata</artifactId>
+       </plugin>
++      <plugin>
++		<groupId>org.apache.maven.plugins</groupId>
++		<artifactId>maven-plugin-plugin</artifactId>
++		<!-- workaround for https://issues.apache.org/jira/browse/MPLUGIN-450 -->
++		<configuration>
++			<goalPrefix>tycho-custom-bundle</goalPrefix>
++		</configuration>
++	  </plugin>
+     </plugins>
+   </build>
+ 
+--- tycho-1.6.0/tycho-extras/tycho-dependency-tools-plugin/pom.xml	2024-05-15 14:36:53.411431686 +0200
++++ tycho-1.6.0/tycho-extras/tycho-dependency-tools-plugin/pom.xml	2024-05-15 14:38:04.951929674 +0200
+@@ -63,6 +63,14 @@
+ 				<groupId>org.codehaus.plexus</groupId>
+ 				<artifactId>plexus-component-metadata</artifactId>
+ 			</plugin>
++			<plugin>
++				<groupId>org.apache.maven.plugins</groupId>
++				<artifactId>maven-plugin-plugin</artifactId>
++				<!-- workaround for https://issues.apache.org/jira/browse/MPLUGIN-450 -->
++				<configuration>
++					<goalPrefix>tycho-dependency-tools</goalPrefix>
++				</configuration>
++			</plugin>
+ 		</plugins>
+ 	</build>
+ 	
+--- tycho-1.6.0/tycho-extras/tycho-document-bundle-plugin/pom.xml	2024-05-15 14:36:53.411431686 +0200
++++ tycho-1.6.0/tycho-extras/tycho-document-bundle-plugin/pom.xml	2024-05-15 14:38:04.951929674 +0200
+@@ -70,6 +70,14 @@
+ 				<groupId>org.codehaus.plexus</groupId>
+ 				<artifactId>plexus-component-metadata</artifactId>
+ 			</plugin>
++			<plugin>
++				<groupId>org.apache.maven.plugins</groupId>
++				<artifactId>maven-plugin-plugin</artifactId>
++				<!-- workaround for https://issues.apache.org/jira/browse/MPLUGIN-450 -->
++				<configuration>
++					<goalPrefix>tycho-document-bundle</goalPrefix>
++				</configuration>
++			</plugin>
+ 		</plugins>
+ 	</build>
+ 	
+--- tycho-1.6.0/tycho-extras/tycho-eclipserun-plugin/pom.xml	2024-05-15 14:36:53.414765043 +0200
++++ tycho-1.6.0/tycho-extras/tycho-eclipserun-plugin/pom.xml	2024-05-15 14:38:04.951929674 +0200
+@@ -65,4 +65,17 @@
+ 			</build>
+ 		</profile>
+ 	</profiles>
++	
++	<build>
++		<plugins>
++			<plugin>
++				<groupId>org.apache.maven.plugins</groupId>
++				<artifactId>maven-plugin-plugin</artifactId>
++				<!-- workaround for https://issues.apache.org/jira/browse/MPLUGIN-450 -->
++				<configuration>
++					<goalPrefix>tycho-eclipserun</goalPrefix>
++				</configuration>
++			</plugin>
++		</plugins>
++	</build>
+ </project>
+--- tycho-1.6.0/tycho-extras/tycho-p2-extras-plugin/pom.xml	2024-05-15 14:36:53.418098399 +0200
++++ tycho-1.6.0/tycho-extras/tycho-p2-extras-plugin/pom.xml	2024-05-15 14:38:04.951929674 +0200
+@@ -147,6 +147,14 @@
+ 					</filesets>
+ 				</configuration>
+ 			</plugin>
++			<plugin>
++				<groupId>org.apache.maven.plugins</groupId>
++				<artifactId>maven-plugin-plugin</artifactId>
++				<!-- workaround for https://issues.apache.org/jira/browse/MPLUGIN-450 -->
++				<configuration>
++					<goalPrefix>tycho-p2-extras</goalPrefix>
++				</configuration>
++			</plugin>
+ 		</plugins>
+ 	</build>
+ 	
+--- tycho-1.6.0/tycho-extras/tycho-source-feature-plugin/pom.xml	2024-05-15 14:36:53.428098469 +0200
++++ tycho-1.6.0/tycho-extras/tycho-source-feature-plugin/pom.xml	2024-05-15 18:03:12.193732390 +0200
+@@ -64,6 +64,14 @@
+ 				<groupId>org.codehaus.plexus</groupId>
+ 				<artifactId>plexus-component-metadata</artifactId>
+ 			</plugin>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-plugin-plugin</artifactId>
++                <!-- workaround for https://issues.apache.org/jira/browse/MPLUGIN-504 -->
++                <configuration>
++                    <goalPrefix>tycho-source-feature</goalPrefix>
++                </configuration>
++            </plugin>
+ 		</plugins>
+ 	</build>
+ 
+--- tycho-1.6.0/tycho-extras/tycho-version-bump-plugin/pom.xml	2024-05-15 14:36:53.431431826 +0200
++++ tycho-1.6.0/tycho-extras/tycho-version-bump-plugin/pom.xml	2024-05-15 14:38:04.951929674 +0200
+@@ -40,6 +40,19 @@
+ 		</dependency>
+ 	</dependencies>
+ 
++	<build>
++		<plugins>
++			<plugin>
++				<groupId>org.apache.maven.plugins</groupId>
++				<artifactId>maven-plugin-plugin</artifactId>
++				<!-- workaround for https://issues.apache.org/jira/browse/MPLUGIN-450 -->
++				<configuration>
++					<goalPrefix>tycho-version-bump</goalPrefix>
++				</configuration>
++			</plugin>
++		</plugins>
++	</build>
++
+ 	<profiles>
+ 		<profile>
+ 			<id>its</id>
+--- tycho-1.6.0/tycho-p2/tycho-p2-director-plugin/pom.xml	2024-05-15 14:36:53.518099095 +0200
++++ tycho-1.6.0/tycho-p2/tycho-p2-director-plugin/pom.xml	2024-05-15 15:37:12.049317436 +0200
+@@ -92,6 +92,18 @@
+ 				<groupId>org.codehaus.plexus</groupId>
+ 				<artifactId>plexus-component-metadata</artifactId>
+ 			</plugin>
++            <plugin>
++                <groupId>org.codehaus.plexus</groupId>
++                <artifactId>plexus-component-metadata</artifactId>
++            </plugin>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-plugin-plugin</artifactId>
++                <!-- workaround for https://issues.apache.org/jira/browse/MPLUGIN-504 -->
++                <configuration>
++                    <goalPrefix>tycho-p2-director</goalPrefix>
++                </configuration>
++            </plugin>
+ 		</plugins>
+ 	</build>
+ </project>
+--- tycho-1.6.0/tycho-p2/tycho-p2-plugin/pom.xml	2024-05-15 14:36:53.521432452 +0200
++++ tycho-1.6.0/tycho-p2/tycho-p2-plugin/pom.xml	2024-05-15 15:28:50.812488466 +0200
+@@ -67,6 +67,14 @@
+                 <groupId>org.codehaus.plexus</groupId>
+                 <artifactId>plexus-component-metadata</artifactId>
+             </plugin>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-plugin-plugin</artifactId>
++                <!-- workaround for https://issues.apache.org/jira/browse/MPLUGIN-504 -->
++                <configuration>
++                    <goalPrefix>tycho-p2</goalPrefix>
++                </configuration>
++            </plugin>
+         </plugins>
+     </build>
+ 
+--- tycho-1.6.0/tycho-p2/tycho-p2-publisher-plugin/pom.xml	2024-05-15 14:36:53.521432452 +0200
++++ tycho-1.6.0/tycho-p2/tycho-p2-publisher-plugin/pom.xml	2024-05-15 15:31:22.453546150 +0200
+@@ -65,4 +65,20 @@
+ 		</dependency>
+ 	</dependencies>
+ 
++	<build>
++        <plugins>
++            <plugin>
++                <groupId>org.codehaus.plexus</groupId>
++                <artifactId>plexus-component-metadata</artifactId>
++            </plugin>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-plugin-plugin</artifactId>
++                <!-- workaround for https://issues.apache.org/jira/browse/MPLUGIN-504 -->
++                <configuration>
++                    <goalPrefix>tycho-p2-publisher</goalPrefix>
++                </configuration>
++            </plugin>
++        </plugins>
++	</build>
+ </project>
+--- tycho-1.6.0/tycho-p2/tycho-p2-repository-plugin/pom.xml	2024-05-15 14:36:53.524765809 +0200
++++ tycho-1.6.0/tycho-p2/tycho-p2-repository-plugin/pom.xml	2024-05-15 15:31:44.727034811 +0200
+@@ -42,4 +42,20 @@
+ 		</dependency>
+ 	</dependencies>
+ 
++	<build>
++        <plugins>
++            <plugin>
++                <groupId>org.codehaus.plexus</groupId>
++                <artifactId>plexus-component-metadata</artifactId>
++            </plugin>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-plugin-plugin</artifactId>
++                <!-- workaround for https://issues.apache.org/jira/browse/MPLUGIN-504 -->
++                <configuration>
++                    <goalPrefix>tycho-p2-repository</goalPrefix>
++                </configuration>
++            </plugin>
++        </plugins>
++	</build>
+ </project>
+--- tycho-1.6.0/tycho-packaging-plugin/pom.xml	2024-05-15 14:36:53.524765809 +0200
++++ tycho-1.6.0/tycho-packaging-plugin/pom.xml	2024-05-15 14:38:16.382009244 +0200
+@@ -86,6 +86,14 @@
+ 				<groupId>org.codehaus.plexus</groupId>
+ 				<artifactId>plexus-component-metadata</artifactId>
+ 			</plugin>
++			<plugin>
++				<groupId>org.apache.maven.plugins</groupId>
++				<artifactId>maven-plugin-plugin</artifactId>
++				<!-- workaround for https://issues.apache.org/jira/browse/MPLUGIN-504 -->
++				<configuration>
++					<goalPrefix>tycho-packaging</goalPrefix>
++				</configuration>
++			</plugin>
+ 		</plugins>
+ 	</build>
+ </project>
+--- tycho-1.6.0/tycho-pomgenerator-plugin/pom.xml	2024-05-15 14:36:53.531432522 +0200
++++ tycho-1.6.0/tycho-pomgenerator-plugin/pom.xml	2024-05-15 15:45:25.876094536 +0200
+@@ -62,4 +62,16 @@
+ 		</dependency>
+ 	</dependencies>
+ 
++	<build>
++        <plugins>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-plugin-plugin</artifactId>
++                <!-- workaround for https://issues.apache.org/jira/browse/MPLUGIN-504 -->
++                <configuration>
++                    <goalPrefix>tycho-pomgenerator</goalPrefix>
++                </configuration>
++            </plugin>
++        </plugins>
++	</build>
+ </project>
+--- tycho-1.6.0/tycho-release/tycho-versions-plugin/pom.xml	2024-05-15 14:36:53.534765878 +0200
++++ tycho-1.6.0/tycho-release/tycho-versions-plugin/pom.xml	2024-05-15 15:51:56.869138499 +0200
+@@ -66,6 +66,14 @@
+ 				<groupId>org.codehaus.plexus</groupId>
+ 				<artifactId>plexus-component-metadata</artifactId>
+ 			</plugin>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-plugin-plugin</artifactId>
++                <!-- workaround for https://issues.apache.org/jira/browse/MPLUGIN-504 -->
++                <configuration>
++                    <goalPrefix>tycho-versions</goalPrefix>
++                </configuration>
++            </plugin>
+ 		</plugins>
+ 	</build>
+ 
+--- tycho-1.6.0/tycho-source-plugin/pom.xml	2024-05-15 14:36:53.548099304 +0200
++++ tycho-1.6.0/tycho-source-plugin/pom.xml	2024-05-15 14:38:17.828685979 +0200
+@@ -93,6 +93,14 @@
+ 				<groupId>org.codehaus.plexus</groupId>
+ 				<artifactId>plexus-component-metadata</artifactId>
+ 			</plugin>
++			<plugin>
++				<groupId>org.apache.maven.plugins</groupId>
++				<artifactId>maven-plugin-plugin</artifactId>
++				<!-- workaround for https://issues.apache.org/jira/browse/MPLUGIN-504 -->
++				<configuration>
++					<goalPrefix>tycho-source</goalPrefix>
++				</configuration>
++			</plugin>
+ 		</plugins>
+ 	</build>
+ 
+--- tycho-1.6.0/tycho-surefire/tycho-surefire-plugin/pom.xml	2024-05-15 14:36:53.551432661 +0200
++++ tycho-1.6.0/tycho-surefire/tycho-surefire-plugin/pom.xml	2024-05-15 14:38:17.828685979 +0200
+@@ -39,6 +39,14 @@
+ 					</execution>
+ 				</executions>
+ 			</plugin>
++			<plugin>
++				<groupId>org.apache.maven.plugins</groupId>
++				<artifactId>maven-plugin-plugin</artifactId>
++				<!-- workaround for https://issues.apache.org/jira/browse/MPLUGIN-504 -->
++				<configuration>
++					<goalPrefix>tycho-surefire</goalPrefix>
++				</configuration>
++			</plugin>
+ 		</plugins>
+ 	</build>
+ 

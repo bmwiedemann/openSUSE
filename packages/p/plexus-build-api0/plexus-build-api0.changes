@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 16 05:17:10 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use sisu-plexus instead of plexus-containers-container-default
+
+-------------------------------------------------------------------
 Wed May  1 12:07:08 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 0.0.8

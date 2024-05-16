@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 13 09:16:50 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.14.8
+  * Remove setenv by @DmitriyMusatkin in (#634)
+  * aws_tls_connection_options_copy comment update following
+    #eaa583a or #475 by @SergeyRyabinin in (#482)
+  * Update Expired Certs by @waahm7 in (#636)
+
+-------------------------------------------------------------------
 Fri Apr  5 08:37:19 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.14.7

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu May 16 03:38:19 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.19.0:
+  * Features:
+    - container: show name if available.
+    - gleam: Add Gleam module.
+    - k8s: Add detect env vars option.
+    - nats: Add NATS Context.
+    - odin: Add Odin Lang module.
+    - username: add aliases option.
+  * Bug Fixes:
+    - bash: fix handling of the preserved DEBUG trap 
+      (used in Bash <= 4.3).
+    - bash: use eval instead of a procsub for the POSIX mode.
+    - bash: use eval instead of a procsub for the POSIX mode.
+    - bun: change default icon.
+    - scala: use scala-cli first to avoid timeout.
+    - xonsh: remove | cat workaround from xonsh init.
+  * Performance Improvements:
+    - scala: use scala-cli first to avoid timeout.
+
+-------------------------------------------------------------------
+Tue Apr 23 00:56:50 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Enable tests / Add git-core to pass tests.
+- Update to version 1.18.2:
+  * Bug Fixes:
+    - replace unmaintained crates yaml-rust, dirs-next
+    - replace all remaining paths referring to vuepress
+
+-------------------------------------------------------------------
 Thu Mar 21 16:00:15 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 1.18.0:

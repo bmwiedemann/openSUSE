@@ -471,4 +471,31 @@
     introduced by the fix for CVE-2024-31083 in xwayland-23.2.5.</comment>
     <requestid>1166452</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>cbb9af574794291e71a38cdf46b6c1fa</srcmd5>
+    <version>24.1.0</version>
+    <time>1715872407</time>
+    <user>anag+factory</user>
+    <comment>- Update to feature release 24.1.0
+  * This fixes a couple of regressions introduced in the previous release
+    candidate versions along with a fix for XTEST emulation with EI.
+    + xwayland: Send ei_device_frame on device_scroll_discrete
+    + xwayland: Restore the ResizeWindow handler
+    + xwayland: Handle rootful resize in ResizeWindow
+    + xwayland: Move XRandR emulation to the ResizeWindow hook
+    + xwayland: Use correct xwl_window lookup function in xwl_set_shape
+- eglstreams has been dropped
+
+- Update to bug fix relesae 23.2.7
+  * m4: drop autoconf leftovers
+  * xwayland: Send ei_device_frame on device_scroll_discrete
+  * xwayland: Call drmFreeDevice for dma-buf default feedback
+  * xwayland: Use drmDevicesEqual in xwl_dmabuf_feedback_tranche_done
+  * dri3: Free formats in cache_formats_and_modifiers
+  * xwayland/glamor: Handle depth 15 in gbm_format_for_depth
+  * Revert &quot;xwayland/glamor: Avoid implicit redirection with depth 32 parent windows&quot;
+  * xwayland: Check for outputs before lease devices
+  * xwayland: Do not remove output on withdraw if leased</comment>
+    <requestid>1174287</requestid>
+  </revision>
 </revisionlist>

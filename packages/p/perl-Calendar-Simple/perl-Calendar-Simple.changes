@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun May  5 03:06:13 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.1.0
+   see /usr/share/doc/packages/perl-Calendar-Simple/Changes.md
+
+  ## [2.1.0] 2024-05-04
+  ### Changed
+  - Require Perl 5.10 (for // in `pcal`)
+  - Better variable names in `pcal`
+  - Better argument handling logic in `pcal`
+  ### Fixed
+  - Fixed bug in example code (thanks exzr8u92)
+
+-------------------------------------------------------------------
 Wed Aug  2 03:07:01 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.0.3

@@ -31,4 +31,12 @@
     <comment>fix build with newer auto</comment>
     <requestid>946333</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>a77e3071c39c39b9fdaffad5b2e4262a</srcmd5>
+    <version>1.1.5</version>
+    <time>1715872570</time>
+    <user>anag+factory</user>
+    <comment>Fix build with maven-plugin-plugin &gt;= 3.11</comment>
+    <requestid>1174393</requestid>
+  </revision>
 </revisionlist>

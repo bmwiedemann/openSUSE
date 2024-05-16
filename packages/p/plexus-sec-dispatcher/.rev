@@ -55,4 +55,12 @@
     <comment></comment>
     <requestid>1164205</requestid>
   </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>0fe851a21c2b1d377ffdf22d1c34504e</srcmd5>
+    <version>2.0</version>
+    <time>1715872549</time>
+    <user>anag+factory</user>
+    <comment>Unnecessary dependency</comment>
+    <requestid>1174343</requestid>
+  </revision>
 </revisionlist>

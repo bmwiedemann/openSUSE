@@ -18,7 +18,7 @@
 
 %define cpan_name Test-Compile
 Name:           perl-Test-Compile
-Version:        3.3.1
+Version:        3.3.3
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Assert that your Perl files compile OK
@@ -29,14 +29,11 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Exporter) >= 5.68
-BuildRequires:  perl(Module::Build) >= 0.380000
+BuildRequires:  perl(Module::Build) >= 0.38
+BuildRequires:  perl(Test::More) >= 1.3
 BuildRequires:  perl(parent) >= 0.225
-BuildRequires:  perl(version) >= 0.77
 Requires:       perl(Exporter) >= 5.68
 Requires:       perl(parent) >= 0.225
-Provides:       perl(Test::Compile) = 3.3.1
-Provides:       perl(Test::Compile::Internal) = 3.3.1
-%undefine       __perllib_provides
 %{perl_requires}
 
 %description

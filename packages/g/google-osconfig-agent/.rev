@@ -357,4 +357,41 @@
     <comment></comment>
     <requestid>1161368</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f12fb6f9e72f16b87935e9290b67b273</srcmd5>
+    <version>20240513.02</version>
+    <time>1715872636</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240513.02
+  * E2e tests: allow passing spesific EL version
+    number to InstallOSConfigEL func (#592)
+- from version 20240513.01
+  * Bump google.golang.org/api from 0.179.0 to 0.180.0 (#591)
+- from version 20240513.00
+  * E2e tests: Fix EL version detection logic in E2E tests (#590)
+  * Bump google.golang.org/api from 0.178.0 to 0.179.0 (#589)
+- from version 20240510.02
+  * Bump cloud.google.com/go/auth from 0.4.0 to 0.4.1 (#588)
+- from version 20240510.01
+  * E2e tests: use family url format instead of specific
+    version URL for head test images (#587)
+- from version 20240510.00
+  * Fix for lock location (#586)
+- from version 20240509.03
+  * Bump cloud.google.com/go from 0.112.2 to 0.113.0 (#584)
+- from version 20240509.02
+  * Remove dependabot not needed label (#576)
+- from version 20240509.01
+  * Write inventory to attributes only if enabled (#486)
+- from version 20240509.00
+  * E2e tests: install gnupg2 and run apt update in VMs startup-scripts (#583)
+  * Add a temporary e2e test image for Ubuntu to test
+    the latest osconfig-agent stable version (#582)
+  * Bump google.golang.org/api from 0.177.0 to 0.178.0 (#578)
+  * Bump github.com/googleapis/gax-go/v2 from 2.12.3 to 2.12.4 (#579)
+  * Bump cloud.google.com/go/iam from 1.1.7 to 1.1.8 (#577)
+  * Bump cloud.google.com/go/auth from 0.3.0 to 0.4.0 (#580)
+  * Bump go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc (#581) (forwarded request 1174498 from glaubitz)</comment>
+    <requestid>1174499</requestid>
+  </revision>
 </revisionlist>

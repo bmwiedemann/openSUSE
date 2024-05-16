@@ -36,6 +36,8 @@ Patch1:         0002-Fixed-tests.patch
 Patch2:         hk2-jdk11.patch
 # Reproducible timestamps
 Patch3:         reproducible-now.patch
+# Port to maven-plugin-plugin >= 3.11
+Patch4:         hk2-inhabitant-generator-goaprefix.patch
 BuildRequires:  maven-local
 BuildRequires:  mvn(aopalliance:aopalliance)
 BuildRequires:  mvn(javax.annotation:javax.annotation-api)
@@ -249,6 +251,7 @@ for mod in osgi-resource-locator dependency-verifier dependency-visualizer ; do
 done
 
 %patch -P 3 -p1
+%patch -P 4 -p1
 
 # Do not remove test resources
 find . -name '*.jar' ! -name "gendir.jar" -type f -print -delete

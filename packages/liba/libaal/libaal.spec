@@ -1,7 +1,7 @@
 #
 # spec file for package libaal
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           libaal
+Version:        1.0.7
+Release:        0
 Summary:        Application abstraction mechanism library used by reiser4progs
 License:        GPL-2.0-only
 Group:          System/Filesystems
-Version:        1.0.7
-Release:        0
-URL:            https://sf.net/projects/reiser4/
-
+URL:            https://sourceforge.net/projects/reiser4/
 Source:         https://downloads.sf.net/reiser4/libaal-%version.tar.gz
 Patch1:         libaal-1.0.5-rpmoptflags.patch
+Patch2:         autoconf-2.72.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -65,16 +65,17 @@ libaal includes device abstraction, libc independence code, and more.
 %build
 autoreconf -fi
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
 
-%post   -n libaal-1_0-7 -p /sbin/ldconfig
-%postun -n libaal-1_0-7 -p /sbin/ldconfig
-%post   -n libaal-minimal0 -p /sbin/ldconfig
-%postun -n libaal-minimal0 -p /sbin/ldconfig
+%check
+%make_build check
+
+%ldconfig_scriptlets -n libaal-1_0-7
+%ldconfig_scriptlets -n libaal-minimal0
 
 %files -n libaal-1_0-7
 %license COPYING

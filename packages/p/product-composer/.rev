@@ -106,4 +106,13 @@
   * supports overwriting package (from) information in updatinfo</comment>
     <requestid>1166882</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a9a163c63e3da1a13eccfa4c94464064</srcmd5>
+    <version>0.4.5</version>
+    <time>1715872585</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.4.5
+  * generate .sha256 files for .iso files</comment>
+    <requestid>1174414</requestid>
+  </revision>
 </revisionlist>

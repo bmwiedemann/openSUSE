@@ -2805,4 +2805,12 @@ pretty much the same. The main user visible changes are
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1224150-revert</comment>
   </revision>
+  <revision rev="329" vrev="18">
+    <srcmd5>6cfbac991e44bb9d5f21ee13937429f7</srcmd5>
+    <version>2.12</version>
+    <time>1715872385</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1174381</requestid>
+  </revision>
 </revisionlist>

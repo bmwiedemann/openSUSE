@@ -2234,4 +2234,27 @@ Extra note: I see glib2 in G:N is missing its link - manual merge needed after a
     `GCancellable`s. (forwarded request 1168861 from dimstar)</comment>
     <requestid>1168889</requestid>
   </revision>
+  <revision rev="278" vrev="1">
+    <srcmd5>0e2b5e715560b3c32f7670057db73b70</srcmd5>
+    <version>2.80.2</version>
+    <time>1715872388</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.80.2:
+  + Fix a regression with IBus caused by the fix for
+    CVE-2024-34397.
+  + Fix installation directory of the GVariant specification.
+  + Bugs fixed:
+    - GVariant specification installed in wrong directory.
+    - Backport &quot;gdbusconnection: Fix test signal subscription
+      ordering&quot; to glib-2-80.
+    - Backport “Correct installation directory of GVariant
+      specification” to glib-2-80.
+    - Backport “gdbusconnection: Allow name owners to have the
+      syntax of a well-known name” to glib-2-80.
+- Changes from version 2.80.1
+  + Fix CVE-2024-34397: GDBus signal subscriptions for well-known
+    names are vulnerable to unicast spoofing.
+  + Updated translations. (forwarded request 1173695 from dimstar)</comment>
+    <requestid>1173983</requestid>
+  </revision>
 </revisionlist>

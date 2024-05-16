@@ -153,6 +153,11 @@ pushd %{name}
 %pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:executions/pom:execution[pom:id[text()='base-compile']]/pom:configuration/pom:target" "1.8" runtime tools
 %pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:executions/pom:execution[pom:id[text()='base-compile']]/pom:configuration/pom:jdkToolchain/pom:version" "1.8" runtime tools
 
+%pom_xpath_inject "pom:build/pom:plugins/pom:plugin[pom:artifactId='maven-plugin-plugin']" "
+  <configuration>
+    <goalPrefix>import-properties</goalPrefix>
+  </configuration>" import-properties-plugin
+
 # backward compatibility symlinks
 %{mvn_file} com.sun.istack:%{name}-buildtools %{name}-buildtools %{name}/%{name}-buildtools
 %{mvn_file} com.sun.istack:%{name}-runtime %{name}-runtime %{name}/%{name}-runtime

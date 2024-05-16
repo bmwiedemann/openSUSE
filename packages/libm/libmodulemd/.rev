@@ -254,4 +254,12 @@ char * to strcmp() were fixed</comment>
     <comment></comment>
     <requestid>1159621</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>5155cb28f3fb1c11f8e8eac45136088a</srcmd5>
+    <version>2.15.0</version>
+    <time>1715872403</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1174263</requestid>
+  </revision>
 </revisionlist>

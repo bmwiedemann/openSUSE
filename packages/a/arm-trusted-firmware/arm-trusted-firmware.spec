@@ -1,7 +1,7 @@
 #
 # spec file for package arm-trusted-firmware
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -491,7 +491,7 @@ install -D -m 0644 %{outdir}/flash-image.bin %{buildroot}%{_datadir}/%{name}/fla
 
 %fdupes %{buildroot}%{_prefix}
 
-%if "%{platform}" == "rpi3" || "%{platform}" == "rpi4"
+%if "%{platform}" == "rpi4"
 %post
 if mountpoint -q /boot/efi; then
   if ! [[ "$(readlink -f /boot/efi)" -ef "$(readlink -f /boot/vc)" ]]; then

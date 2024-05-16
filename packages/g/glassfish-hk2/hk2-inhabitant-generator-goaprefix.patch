@@ -1,0 +1,16 @@
+--- glassfish-hk2-2.5.0-RELEASE/maven-plugins/hk2-inhabitant-generator/pom.xml	2024-05-16 08:27:48.058000258 +0200
++++ glassfish-hk2-2.5.0-RELEASE/maven-plugins/hk2-inhabitant-generator/pom.xml	2024-05-16 08:30:01.002256638 +0200
+@@ -153,6 +153,13 @@
+                      </execution>
+                  </executions>
+              </plugin>
++             <plugin>
++                 <groupId>org.apache.maven.plugins</groupId>
++                 <artifactId>maven-plugin-plugin</artifactId>
++                 <configuration>
++                    <goalPrefix>hk2-inhabitant-generator</goalPrefix>
++                 </configuration>
++             </plugin>
+         </plugins>
+     </build>
+ 

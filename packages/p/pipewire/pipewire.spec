@@ -666,6 +666,8 @@ fi
 %files modules-%{apiver_str}
 %dir %{_libdir}/pipewire-%{apiver}
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-*.so
+%exclude %{_libdir}/pipewire-%{apiver}/libpipewire-module-jack-tunnel.so
+%exclude %{_libdir}/pipewire-%{apiver}/libpipewire-module-jackdbus-detect.so
 %exclude %{_libdir}/pipewire-%{apiver}/libpipewire-module-x11-bell.so
 %exclude %{_libdir}/pipewire-%{apiver}/libpipewire-module-protocol-pulse.so
 %dir %{_libdir}/pipewire-%{apiver}/v4l2/
@@ -821,6 +823,8 @@ fi
 %config %{_sysconfdir}/ld.so.conf.d/pipewire-jack-%{_arch}.conf
 
 %files spa-plugins-%{spa_ver_str}-jack
+%{_libdir}/pipewire-%{apiver}/libpipewire-module-jack-tunnel.so
+%{_libdir}/pipewire-%{apiver}/libpipewire-module-jackdbus-detect.so
 %{_libdir}/spa-%{spa_ver}/jack/
 
 %files lang -f %{name}.lang

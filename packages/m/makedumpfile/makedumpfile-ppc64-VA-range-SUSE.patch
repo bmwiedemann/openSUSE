@@ -5,18 +5,10 @@ Upstream: never, SUSE-specific
 
 SLE 15 SP1 backported commit c2b4d8b7417a ("powerpc/mm/hash64: Increase
 the VA range"), to Linux 4.12, so let's check SUSE_PRODUCT_CODE.
-
-Signed-off-by: Petr Tesarik <ptesarik@suse.cz>
----
- arch/ppc64.c   |    3 ++-
- makedumpfile.c |    4 ++++
- makedumpfile.h |    3 +++
- 3 files changed, 9 insertions(+), 1 deletion(-)
-Index: makedumpfile-1.7.1/arch/ppc64.c
-===================================================================
---- makedumpfile-1.7.1.orig/arch/ppc64.c
-+++ makedumpfile-1.7.1/arch/ppc64.c
-@@ -248,7 +248,9 @@ ppc64_vmalloc_init(void)
+diff -uprN makedumpfile-1.7.5.orig/arch/ppc64.c makedumpfile-1.7.5/arch/ppc64.c
+--- makedumpfile-1.7.5.orig/arch/ppc64.c	2024-04-12 13:09:09.000000000 +0800
++++ makedumpfile-1.7.5/arch/ppc64.c	2024-05-16 14:19:46.846209221 +0800
+@@ -261,7 +261,9 @@ ppc64_vmalloc_init(void)
  
  			if (info->kernel_version >= KERNEL_VERSION(4, 12, 0)) {
  				info->l2_index_size = PMD_INDEX_SIZE_L4_64K_4_12;
@@ -27,39 +19,35 @@ Index: makedumpfile-1.7.1/arch/ppc64.c
  					info->l3_index_size = PUD_INDEX_SIZE_L4_64K_4_17;
  				else
  					info->l3_index_size = PUD_INDEX_SIZE_L4_64K_4_12;
-Index: makedumpfile-1.7.1/makedumpfile.c
-===================================================================
---- makedumpfile-1.7.1.orig/makedumpfile.c
-+++ makedumpfile-1.7.1/makedumpfile.c
-@@ -2491,6 +2491,8 @@ write_vmcoreinfo_data(void)
+diff -uprN makedumpfile-1.7.5.orig/makedumpfile.c makedumpfile-1.7.5/makedumpfile.c
+--- makedumpfile-1.7.5.orig/makedumpfile.c	2024-04-12 13:09:09.000000000 +0800
++++ makedumpfile-1.7.5/makedumpfile.c	2024-05-16 14:16:42.897988141 +0800
+@@ -2531,6 +2531,7 @@ write_vmcoreinfo_data(void)
+ 	WRITE_NUMBER_UNSIGNED("PHYS_OFFSET", PHYS_OFFSET);
  	WRITE_NUMBER_UNSIGNED("kimage_voffset", kimage_voffset);
  #endif
++        WRITE_NUMBER("SUSE_PRODUCT_CODE", SUSE_PRODUCT_CODE);
  
-+	WRITE_NUMBER("SUSE_PRODUCT_CODE", SUSE_PRODUCT_CODE);
-+
  	if (info->phys_base)
  		fprintf(info->file_vmcoreinfo, "%s%lu\n", STR_NUMBER("phys_base"),
- 			info->phys_base);
-@@ -2939,6 +2941,8 @@ read_vmcoreinfo(void)
+@@ -3002,6 +3003,7 @@ read_vmcoreinfo(void)
  
  	READ_NUMBER("HUGETLB_PAGE_DTOR", HUGETLB_PAGE_DTOR);
- 
+ 	READ_NUMBER("RADIX_MMU", RADIX_MMU);
 +	READ_NUMBER("SUSE_PRODUCT_CODE", SUSE_PRODUCT_CODE);
-+
+ 
  	return TRUE;
  }
- 
-Index: makedumpfile-1.7.1/makedumpfile.h
-===================================================================
---- makedumpfile-1.7.1.orig/makedumpfile.h
-+++ makedumpfile-1.7.1/makedumpfile.h
-@@ -2069,6 +2069,9 @@ struct number_table {
- 	unsigned long kernel_link_addr;
+diff -uprN makedumpfile-1.7.5.orig/makedumpfile.h makedumpfile-1.7.5/makedumpfile.h
+--- makedumpfile-1.7.5.orig/makedumpfile.h	2024-04-12 13:09:09.000000000 +0800
++++ makedumpfile-1.7.5/makedumpfile.h	2024-05-16 14:18:08.275376258 +0800
+@@ -2283,6 +2283,9 @@ struct number_table {
  	unsigned long va_kernel_pa_offset;
  #endif
-+
+ 
 +	/* Distro-specific */
 +	long	SUSE_PRODUCT_CODE;
++
+ 	unsigned long RADIX_MMU;
  };
  
- struct srcfile_table {

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May  3 03:08:10 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.954
+   see /usr/share/doc/packages/perl-Email-MIME/Changes
+
+  1.954     2024-05-02 17:12:30-04:00 America/New_York
+          - Fix for CVE-2024-4140: An excessive memory use issue (CWE-770)
+            exists in Email-MIME, before version 1.954, which can cause denial of
+            service when parsing multipart MIME messages.  The fix is the new
+            $MAX_PARTS configuration limits how many parts we will consider
+            parsing.  The default $MAX_PARTS is 100.
+
+-------------------------------------------------------------------
 Mon Jan  9 03:06:50 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.953

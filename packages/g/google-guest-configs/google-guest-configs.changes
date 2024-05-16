@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 16 12:23:40 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20240514.00
+  * Add systemd-networkd hostname hook (#71)
+- from version 20240501.00
+  * Add hostname hook for NetworkManager without
+    dhclient compat script (#70)
+
+-------------------------------------------------------------------
 Fri Mar 22 13:26:48 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20240307.00 (bsc#1221146, bsc#1221900, bsc#1221901)

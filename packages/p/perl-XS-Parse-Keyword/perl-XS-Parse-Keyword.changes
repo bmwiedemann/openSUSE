@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed May  1 03:08:54 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.42
+   see /usr/share/doc/packages/perl-XS-Parse-Keyword/Changes
+
+  0.42    2024-04-30
+          [BUGFIXES]
+           * Don't crash on zero-argument calls to list-associative wrapper
+             functions (thanks aquanight) (RT153244)
+  0.41    2024-04-25
+          [BUGFIXES]
+           * Remmeber to EXTEND the stack in list-associative operator wrapper
+             functions (thanks aquanight) (RT153173)
+  0.40    2024-04-23
+          [CHANGES]
+           * Support N-way list-associative operators, implemented as LISTOPs
+           * Delete the no-longer-used API constants
+             XPI_OPERAND_{ARITH,TERM,CUSTOM} from XSParseInfix.h
+          [BUGFIXES]
+           * Avoid a subsequent `use VERSION` in unit tests to keep perl 5.39.8
+             happy
+
+-------------------------------------------------------------------
 Fri Mar  8 23:11:55 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

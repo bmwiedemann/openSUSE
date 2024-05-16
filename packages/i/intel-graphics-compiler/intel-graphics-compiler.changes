@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 16 07:45:58 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Make package build with GCC14 
+
+-------------------------------------------------------------------
+Wed May 15 12:19:14 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.0.16510.2
+  * No changelog was made available
+- Update spirv_llvm_translator to 927efdc07bc18302559acdce1715c3f9507f3acf 
+- Update vc_intrinsics to v0.18.0
+
+-------------------------------------------------------------------
 Thu Apr  4 08:40:08 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 1.0.16238.4

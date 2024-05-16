@@ -1,5 +1,5 @@
---- plexus-containers-plexus-containers-1.7.1/plexus-component-metadata/src/main/java/org/codehaus/plexus/metadata/ClassComponentDescriptorExtractor.java	2016-08-31 21:01:49.000000000 +0200
-+++ plexus-containers-plexus-containers-1.7.1/plexus-component-metadata/src/main/java/org/codehaus/plexus/metadata/ClassComponentDescriptorExtractor.java	2019-03-07 07:59:40.878835988 +0100
+--- plexus-containers-2.2.0/plexus-component-metadata/src/main/java/org/codehaus/plexus/metadata/ClassComponentDescriptorExtractor.java	2024-05-15 18:50:14.906335826 +0200
++++ plexus-containers-2.2.0/plexus-component-metadata/src/main/java/org/codehaus/plexus/metadata/ClassComponentDescriptorExtractor.java	2024-05-15 18:52:35.743977916 +0200
 @@ -23,7 +23,6 @@
  import java.util.List;
  import java.util.Map;
@@ -8,19 +8,15 @@
  import org.codehaus.plexus.component.annotations.Component;
  import org.codehaus.plexus.component.repository.ComponentDescriptor;
  import org.codehaus.plexus.metadata.gleaner.AnnotationComponentGleaner;
-@@ -95,15 +94,8 @@
+@@ -81,11 +80,7 @@
+ 
          // Add the projects dependencies
-         for ( String filename : elements )
-         {
--            try
--            {
-                 list.add( new File( filename ).toURI().toURL() );
-             }
--            catch ( MalformedURLException e )
--            {
--                throw new MojoExecutionException( "Invalid classpath entry: " + filename, e );
+         for (String filename : elements) {
+-            try {
+                 list.add(new File(filename).toURI().toURL());
+-            } catch (MalformedURLException e) {
+-                throw new MojoExecutionException("Invalid classpath entry: " + filename, e);
 -            }
--        }
+         }
  
-         URL[] urls = list.toArray( new URL[list.size()] );
- 
+         URL[] urls = list.toArray(new URL[list.size()]);

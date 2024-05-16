@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 15 06:27:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add glib-2.80.2-glibdoc-path.patch: Fix GLib documentation path
+  for GLib 2.80.2
+  (https://github.com/fedora-modularity/libmodulemd/pull/618).
+
+-------------------------------------------------------------------
 Tue Mar 19 14:56:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 9d280909.patch and 29c339a3.patch: Adapt GLib documentation

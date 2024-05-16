@@ -27,7 +27,7 @@
 %endif
 
 Name:           ovmf
-Version:        202308
+Version:        202311
 Release:        0
 Summary:        Open Virtual Machine Firmware
 License:        BSD-2-Clause-Patent
@@ -49,6 +49,8 @@ Source7:        descriptors.tar.xz
 Source8:        oniguruma-v6.9.4_mark1-src.tar.xz
 # public-mipi-sys-t: https://github.com/MIPI-Alliance/public-mipi-sys-t
 Source9:        public-mipi-sys-t-1.1-edk2.tar.gz
+# mbedtls: https://github.com/Mbed-TLS/mbedtls
+Source10:       mbedtls-3.3.0.tar.gz
 Source100:      %{name}-rpmlintrc
 Source101:      gdb_uefi.py.in
 Source102:      gen-key-enrollment-iso.sh
@@ -67,23 +69,21 @@ Patch8:         %{name}-Revert-ArmVirtPkg-make-EFI_LOADER_DATA-non-executabl.pat
 Patch9:         %{name}-Revert-OvmfPkg-OvmfXen-Set-PcdFSBClock.patch
 # Bug 1209266 - OVMF firmware hangs when booting SEV or SEV-ES guest
 Patch10:        %{name}-Revert-OvmfPkg-PlatformPei-Update-ReserveEmuVariable.patch
-# Bug 1216472 - VMs with secure boot do not start (assertion in edk2)
-Patch11:        %{name}-UefiCpuPkg-BaseXApicX2ApicLib-fix-CPUID_V2_EXTENDED_.patch
 # Bug 1219024 - SVVP test Check SMBIOS Table Specific Requirements fails
-Patch12:        %{name}-OvmfPkg-SmbiosPlatformDxe-tweak-fallback-release-dat.patch
+Patch11:        %{name}-OvmfPkg-SmbiosPlatformDxe-tweak-fallback-release-dat.patch
 # Bug 1217704 - ovmf: reproducible builds problem in ovmf-riscv64-code.bin
-Patch13:        %{name}-EmbeddedPkg-Library-Support-SOURCE_DATE_EPOCH-in-Vir.patch
+Patch12:        %{name}-EmbeddedPkg-Library-Support-SOURCE_DATE_EPOCH-in-Vir.patch
 # Bug 1218678 (CVE-2022-36763) - VUL-0: CVE-2022-36763: EDK2 is susceptible to a vulnerability in the Tcg2MeasureGptTable() function...
-Patch14:        %{name}-SecurityPkg-DxeTpm2MeasureBootLib-SECURITY-PATCH-4117.patch
-Patch15:        %{name}-SecurityPkg-DxeTpmMeasureBootLib-SECURITY-PATCH-4117.patch
-Patch16:        %{name}-SecurityPkg-Adding-CVE-2022-36763-to-SecurityFixes.y.patch
+Patch13:        %{name}-SecurityPkg-DxeTpm2MeasureBootLib-SECURITY-PATCH-4117.patch
+Patch14:        %{name}-SecurityPkg-DxeTpmMeasureBootLib-SECURITY-PATCH-4117.patch
+Patch15:        %{name}-SecurityPkg-Adding-CVE-2022-36763-to-SecurityFixes.y.patch
 # Bug 1218679 (CVE-2022-36764) - VUL-0: CVE-2022-36764: EDK2 is susceptible to a vulnerability in the Tcg2MeasurePeImage() function...
-Patch17:        %{name}-SecurityPkg-DxeTpm2MeasureBootLib-SECURITY-PATCH-4118.patch
-Patch18:        %{name}-SecurityPkg-DxeTpmMeasureBootLib-SECURITY-PATCH-4118.patch
-Patch19:        %{name}-SecurityPkg-Adding-CVE-2022-36764-to-SecurityFixes.y.patch
-Patch20:        %{name}-SecurityPkg-DxeTpm2MeasureBootLib-SECURITY-PATCH-4117-4118-symbol-rename.patch
-Patch21:        %{name}-SecurityPkg-DxeTpmMeasureBootLib-SECURITY-PATCH-4117-4118-symbol-rename.patch
-Patch22:        %{name}-SecurityPkg-Updating-SecurityFixes.yaml-after-symbol.patch
+Patch16:        %{name}-SecurityPkg-DxeTpm2MeasureBootLib-SECURITY-PATCH-4118.patch
+Patch17:        %{name}-SecurityPkg-DxeTpmMeasureBootLib-SECURITY-PATCH-4118.patch
+Patch18:        %{name}-SecurityPkg-Adding-CVE-2022-36764-to-SecurityFixes.y.patch
+Patch19:        %{name}-SecurityPkg-DxeTpm2MeasureBootLib-SECURITY-PATCH-4117-4118-symbol-rename.patch
+Patch20:        %{name}-SecurityPkg-DxeTpmMeasureBootLib-SECURITY-PATCH-4117-4118-symbol-rename.patch
+Patch21:        %{name}-SecurityPkg-Updating-SecurityFixes.yaml-after-symbol.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -233,6 +233,11 @@ popd
 # add public-mipi-sys-t
 pushd MdePkg/Library/MipiSysTLib/mipisyst
 tar -xf %{SOURCE9} --strip 1
+popd
+
+# add mbedtls
+pushd CryptoPkg/Library/MbedTlsLib/mbedtls
+tar -xf %{SOURCE10} --strip 1
 popd
 
 chmod +x %{SOURCE102}

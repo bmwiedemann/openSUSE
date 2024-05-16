@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 16 08:21:09 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with maven-plugin-plugin >= 3.11
+
+-------------------------------------------------------------------
 Thu Feb 22 13:37:22 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with SLE12

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 16 07:05:36 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 24.13.29138.7
+  * No changelog was made available.
+- Removed 0001-fix-handle-not-aligned-gtt-size-reported-by-i915.patch
+  * No longer needed 
+
+-------------------------------------------------------------------
 Thu Apr  4 10:55:18 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Added 0001-fix-handle-not-aligned-gtt-size-reported-by-i915.patch

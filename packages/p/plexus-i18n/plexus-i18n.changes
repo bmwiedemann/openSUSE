@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 16 05:15:26 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use sisu-plexus instead of plexus-containers-container-default
+- Removed patch:
+  * plexus-i18n-plexus-container-default-missing.patch
+    + not needed any more
+
+-------------------------------------------------------------------
 Tue Feb 20 14:55:35 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

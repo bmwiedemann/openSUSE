@@ -1,0 +1,25 @@
+diff --git a/meson.build b/meson.build
+index 6108649..c6d432f 100644
+--- a/meson.build
++++ b/meson.build
+@@ -73,12 +73,18 @@ if with_docs
+ 
+   if glib.version().version_compare('<2.79.0')
+     glib_docpath = join_paths(glib_prefix, 'share', 'gtk-doc', 'html')
+-  else
++    modules = ['glib', 'gobject' ]
++  elif glib.version().version_compare('<2.80.2')
+     glib_docpath = join_paths(glib_prefix, 'share', 'doc', 'glib-2.0')
++    modules = ['glib', 'gobject' ]
++    warning('glib >= 2.79.0 documention might not be properly referred from libmodulemd documentation.')
++  else
++    glib_docpath = join_paths(glib_prefix, 'share', 'doc')
++    modules = ['glib-2.0', 'gobject-2.0' ]
+     warning('glib >= 2.79.0 documention might not be properly referred from libmodulemd documentation.')
+   endif
+ 
+-  foreach referred_module : [ 'glib', 'gobject' ]
++  foreach referred_module : modules
+     doc_module_path = join_paths(glib_docpath, referred_module)
+     doc_index_file = join_paths(doc_module_path, 'index.html')
+     ret = run_command ([test, '-e', doc_index_file],

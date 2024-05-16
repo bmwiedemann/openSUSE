@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May  6 03:07:58 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.3.3
+   see /usr/share/doc/packages/perl-Test-Compile/Changes
+
+  v3.3.3	  2024-05-06
+      - Be more careful about windows filenames
+
+  v3.3.2	  2024-05-03
+      - Require a newer version of Test::More (fix CPAN testing failure?)
+      - Don't add an unnecassary "./" to the start of filepaths (CPAN-RT 151090)
+
+-------------------------------------------------------------------
 Fri Mar  8 23:05:12 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

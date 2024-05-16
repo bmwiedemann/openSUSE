@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed May  8 06:06:52 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- update to NSS 3.100
+ - bmo#1893029 - merge pk11_kyberSlotList into pk11_ecSlotList for 
+                 faster Xyber operations.
+ - bmo#1893752 - remove ckcapi.
+ - bmo#1893162 - avoid a potential PK11GenericObject memory leak.
+ - bmo#671060  - Remove incomplete ESDH code.
+ - bmo#215997  - Decrypt RSA OAEP encrypted messages.
+ - bmo#1887996 - Fix certutil CRLDP URI code.
+ - bmo#1890069 - Don't set CKA_DERIVE for CKK_EC_EDWARDS private keys.
+ - bmo#676118  - Add ability to encrypt and decrypt CMS messages using ECDH.
+ - bmo#676100  - Correct Templates for key agreement in smime/cmsasn.c.
+ - bmo#1548723 - Moving the decodedCert allocation to NSS.
+ - bmo#1885404 - Allow developers to speed up repeated local execution
+                 of NSS tests that depend on certificates.
+
+-------------------------------------------------------------------
 Thu Apr  4 11:20:08 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - update to NSS 3.99

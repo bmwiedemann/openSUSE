@@ -19,12 +19,12 @@
 %{?sle15_python_module_pythons}
 Name:           python-psycopg-c
 # This needs to upgraded in lockstep with python-psycopg
-Version:        3.1.18
+Version:        3.1.19
 Release:        0
 Summary:        PostgreSQL database adapter for Python -- C optimisation distribution
 License:        LGPL-3.0-only
 URL:            https://psycopg.org/psycopg3/
-Source:         https://files.pythonhosted.org/packages/source/p/psycopg-c/psycopg-c-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/psycopg-c/psycopg_c-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 49.2.0}
@@ -40,7 +40,7 @@ BuildRequires:  python-rpm-macros
 PostgreSQL database adapter for Python -- C optimisation distribution
 
 %prep
-%autosetup -p1 -n psycopg-c-%{version}
+%autosetup -p1 -n psycopg_c-%{version}
 
 %build
 export CFLAGS="%{optflags}"

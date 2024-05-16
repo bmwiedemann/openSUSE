@@ -77,6 +77,8 @@ Obsoletes:      powerdevil5 < %{version}
 Obsoletes:      powerdevil5-lang < %{version}
 # Needed for battery / brightness detection
 Recommends:     upower
+# For i2c dev handling and permissions
+Recommends:     ddcutil-i2c-udev-rules
 # For switching power profiles
 Recommends:     power-profiles-daemon
 

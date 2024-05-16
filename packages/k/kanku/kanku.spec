@@ -22,7 +22,7 @@
 
 Name:           kanku
 # Version gets set by obs-service-tar_scm
-Version:        0.17.0
+Version:        0.17.1
 Release:        0
 License:        GPL-3.0-only
 Summary:        Development and continuous integration
@@ -65,7 +65,7 @@ BuildRequires:  perl(Moose)
 BuildRequires:  perl(MooseX::App)
 BuildRequires:  perl(MooseX::Singleton)
 BuildRequires:  perl(Net::IP)
-BuildRequires:  perl(Net::OBS::Client) >= 0.1.2
+BuildRequires:  perl(Net::OBS::Client) >= 0.1.3
 BuildRequires:  perl(Libssh::Session)
 BuildRequires:  perl(Path::Class)
 BuildRequires:  perl(Plack)
@@ -226,6 +226,7 @@ common config and lib files used in kanku
 %dir /etc/kanku/templates/cmd/setup
 %config /etc/kanku/templates/default-vm.tt2
 %config /etc/kanku/templates/with-spice.tt2
+%config /etc/kanku/templates/vm-x86_64-uefi-tpm2.0.tt2
 %config /etc/kanku/templates/cmd/init.tt2
 %config /etc/kanku/templates/cmd/setup/*
 %dir    /etc/kanku/templates/examples-vm/

@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed May 15 06:58:39 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 2.1.4:
+  * Restore previously deprecated API function
+    ddca_create_display_ref(), still in use. It is a synonym for
+    ddca_get_display_ref(), whose name better reflects the role of
+    the function. Its persistence in the Debian code base blocked
+    ddcutil upgrade in that distribution.
+- Update to 2.1.3:
+  * Release 2.1.3 fixes a significant bug in libddcutil caused by
+    overzealous checking of the DDCA_Display_Reference passed to
+    various API functions. The display reference for displays
+    reported as invalid (typically one for which the EDID can be
+    read but DDC communication fails) was being rejected on API
+    functions such as ddca_get_display_info(). In particular
+    addresses ddcui issue 55 which reported a crash when one or
+    more displays were invalid.
+- Update to 2.1.2:
+  * Release 2.1.2 fixes a critical bug in libddcutil that caused
+    older versions of PowerDevil to repeatedly crash and restart.
+  * Additionally, there are minor bug fixes and changes to
+    accommodate the proprietary Nvidia video driver.
+- Update to 2.1.0:
+  * Improved initialization performance
+  * Dynamic sleep improvement
+  * Cross-instance locking
+  * Shared library libddcutil is backwardly compatible with the
+    one in ddcutil 2.0.0 The SONAME is unchanged as
+    libddcutil.so.5. The release library file is libddcutil.5.1.0
+  * libddcutil watches for display connection and DPMS state
+    changes and notifies clients.
+  * Improved control of initialization messages
+
+-------------------------------------------------------------------
+Sun Nov 19 20:59:49 UTC 2023 - Aaron Stern <ukbeast89@protonmail.com>
+
+- update to 2.0.0:
+  * Most users will find that command ddcutil just works "out of the box", 
+    without the need for manual configuration. Driver i2c-dev is loaded 
+    automatically in case it was not already built into the kernel. 
+    When executing on a system running systemd 
+    (i.e. on almost every current Linux distribution) 
+    the logged on user automatically has read-write access to the /dev/i2c devices associated with monitors, 
+    making excution as root or set up of group I2C unnecessary.
+  * The dynamic sleep algorithm was completely rewritten to use the minimal reliable sleep-multiplier value. 
+    Explicitly using option --sleep-multiplier to optimize performance should generally be unnecessary.
+  * The libddcutil API has been both extended and simplified. 
+    Some necessary changes broke full backward compatibility, 
+    requiring a SONAME bump from libddcutil.4 to libddcutil.5.
+    Given the necessary SONAME bump, the opportunity was taken for a major API cleanup. 
+    Unneeded functions were removed, including many that were previously deprecated. 
+    Most client programs should build with minimal changes.
+
+-------------------------------------------------------------------
 Sun Apr 23 17:14:47 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Split udev rules from command line tools (main) package. Allows

@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Thu May 16 12:33:50 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20240513.02
+  * E2e tests: allow passing spesific EL version
+    number to InstallOSConfigEL func (#592)
+- from version 20240513.01
+  * Bump google.golang.org/api from 0.179.0 to 0.180.0 (#591)
+- from version 20240513.00
+  * E2e tests: Fix EL version detection logic in E2E tests (#590)
+  * Bump google.golang.org/api from 0.178.0 to 0.179.0 (#589)
+- from version 20240510.02
+  * Bump cloud.google.com/go/auth from 0.4.0 to 0.4.1 (#588)
+- from version 20240510.01
+  * E2e tests: use family url format instead of specific
+    version URL for head test images (#587)
+- from version 20240510.00
+  * Fix for lock location (#586)
+- from version 20240509.03
+  * Bump cloud.google.com/go from 0.112.2 to 0.113.0 (#584)
+- from version 20240509.02
+  * Remove dependabot not needed label (#576)
+- from version 20240509.01
+  * Write inventory to attributes only if enabled (#486)
+- from version 20240509.00
+  * E2e tests: install gnupg2 and run apt update in VMs startup-scripts (#583)
+  * Add a temporary e2e test image for Ubuntu to test
+    the latest osconfig-agent stable version (#582)
+  * Bump google.golang.org/api from 0.177.0 to 0.178.0 (#578)
+  * Bump github.com/googleapis/gax-go/v2 from 2.12.3 to 2.12.4 (#579)
+  * Bump cloud.google.com/go/iam from 1.1.7 to 1.1.8 (#577)
+  * Bump cloud.google.com/go/auth from 0.3.0 to 0.4.0 (#580)
+  * Bump go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc (#581)
+  * Bump golang.org/x/net from 0.24.0 to 0.25.0 (#575)
+  * Bump cloud.google.com/go/osconfig from 1.12.6 to 1.12.7 (#573)
+  * Bump go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp (#574)
+  * Bump cloud.google.com/go/longrunning from 0.5.6 to 0.5.7 (#571)
+- from version 20240508.08
+  * Bump github.com/golang/glog from 1.2.0 to 1.2.1 (#572)
+- from version 20240508.07
+  * Bump golang.org/x/text from 0.14.0 to 0.15.0 (#565)
+- from version 20240508.06
+  * Bump golang.org/x/oauth2 from 0.19.0 to 0.20.0 (#566)
+  * Bump golang.org/x/sys from 0.19.0 to 0.20.0 (#564)
+- from version 20240508.05
+  * Bump go.opentelemetry.io/otel/trace from 1.24.0 to 1.26.0 (#563)
+- from version 20240508.04
+  * Bump google.golang.org/protobuf from 1.34.0 to 1.34.1 (#567)
+  * Using the default reviewer set for PR approvals (#570)
+- from version 20240508.03
+  * Adding advanced CodeQL settings to scan on PRs (#569)
+- from version 20240508.02
+  * Update Debian-12 package build workflow to use debian-cloud project (#568)
+- from version 20240508.01
+  * Dependabot dependency updates (#562)
+- from version 20240508.00
+  * Revert "Initial configuration of the dependabot
+    for the direct and indirect d…" (#561)
+  * Initial configuration of the dependabot for the
+    direct and indirect dependency scanning (#560)
+- from version 20240507.00
+  * Fix Debian-12 package build workflow typo (#559)
+- from version 20240506.00
+  * Use signed-by keyring approach for apt repos in Debian 12+ and Ubuntu 24+ (#558)
+- from version 20240501.03
+  * Logrus dependency update (#557)
+- from version 20240501.02
+  * Updating dependencies and respective checksums (#556)
+- from version 20240501.01
+  * Update go.mod (#554)
+- from version 20240501.00
+  * Bump golang.org/x/net from 0.17.0 to 0.23.0 (#542)
+- from version 20240430.01
+  * Remove SBOM generation logic from package build workflows (#553)
+- from version 20240425.00
+  * Fix e2e tests for exec-output size limit (#552)
+- from version 20240424.00
+  * Disabled some images which are either past EoL or broken (#549)
+- from version 20240423.01
+  * Copy packagebuild folder from guest-test-infra repo to osconfig repo (#545)
+  * OS Config windows state file location changed (#544)
+- from version 20240423.00
+  * Removed debian-10 from e2e tests (#548)
+- from version 20240422.00
+  * Merge pull request #541 from GoogleCloudPlatform/michaljankowiak-patch-1
+  * Update OWNERS
+- from version 20240409.00
+  * Bump output size limit to 500KB (#538)
+
+-------------------------------------------------------------------
 Fri Mar 22 13:36:36 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20240320.00 (bsc#1221900, bsc#1221901)

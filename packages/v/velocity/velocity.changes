@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 16 14:27:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Feb 27 15:50:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patches:
@@ -8,11 +13,6 @@ Tue Feb 27 15:50:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
   * velocity-build_xml.patch
     + In order to achieve Java 8 API compatibility, specify release
       8 in ant build whenever it is possible
-
--------------------------------------------------------------------
-Tue Feb 20 13:16:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
-
-- Use %patch -P N instead of deprecated %patchN.
 
 -------------------------------------------------------------------
 Wed Sep 27 04:36:41 UTC 2023 - Fridrich Strba <fstrba@suse.com>

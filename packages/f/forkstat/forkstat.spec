@@ -1,7 +1,7 @@
 #
 # spec file for package forkstat
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2017-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           forkstat
-Version:        0.03.01
+Version:        0.03.02
 Release:        0
 Summary:        Process fork/exec/exit monitoring tool
 License:        GPL-2.0-or-later

@@ -34,7 +34,7 @@ index f2f3437..5e39fcf 100644
 +            }
 +            catch ( ComponentLookupException e )
 +            {
-+                throw new ComponentInstantiationException( e );
++                throw new ComponentInstantiationException( "", e );
 +            }
 +
              throw new ComponentInstantiationException( "Cannot build component for: " +

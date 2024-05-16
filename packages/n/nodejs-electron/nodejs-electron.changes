@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 15 14:58:40 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 29.4.0
+  * Fix setuid() not affecting libuv's internal io_uring operations (CVE-2024-22017 bsc#1219995)
+
+-------------------------------------------------------------------
 Sat May 11 22:35:19 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - nodejs-electron-devel:

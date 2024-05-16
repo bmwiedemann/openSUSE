@@ -7,4 +7,12 @@
     <comment>rename the sonatype plexus build api in view of the codehaus one</comment>
     <requestid>1171160</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>feb70227f125fa399cf6394b8f26fcf4</srcmd5>
+    <version>0.0.8</version>
+    <time>1715872552</time>
+    <user>anag+factory</user>
+    <comment>build with sisu-plexus</comment>
+    <requestid>1174347</requestid>
+  </revision>
 </revisionlist>

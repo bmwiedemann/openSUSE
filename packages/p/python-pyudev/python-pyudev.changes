@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 15 04:57:43 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.24.3:
+  * Tidies and Maintenance fixes
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+- Add patch support-pytest-8.patch:
+  * Support pytest 8 changes.
+
+-------------------------------------------------------------------
 Mon Oct 30 16:58:20 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - update hypothesis_settings.patch:

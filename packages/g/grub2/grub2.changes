@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed May 15 06:19:54 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to the latest upstreaming TPM2 patches
+  * 0001-key_protector-Add-key-protectors-framework.patch
+    - Replace 0001-protectors-Add-key-protectors-framework.patch
+  * 0002-tpm2-Add-TPM-Software-Stack-TSS.patch
+    - Merge other TSS patches
+      * 0001-tpm2-Add-TPM2-types-structures-and-command-constants.patch
+      * 0002-tpm2-Add-more-marshal-unmarshal-functions.patch
+      * 0003-tpm2-Implement-more-TPM2-commands.patch
+  * 0003-key_protector-Add-TPM2-Key-Protector.patch
+    - Replace 0003-protectors-Add-TPM2-Key-Protector.patch
+  * 0004-cryptodisk-Support-key-protectors.patch
+  * 0005-util-grub-protect-Add-new-tool.patch
+  * 0001-tpm2-Support-authorized-policy.patch
+    - Replace 0004-tpm2-Support-authorized-policy.patch
+  * 0001-tpm2-Add-extra-RSA-SRK-types.patch
+  * 0001-tpm2-Implement-NV-index.patch
+    - Replace 0001-protectors-Implement-NV-index.patch
+  * 0002-cryptodisk-Fallback-to-passphrase.patch
+  * 0003-cryptodisk-wipe-out-the-cached-keys-from-protectors.patch
+  * 0004-diskfilter-look-up-cryptodisk-devices-first.patch
+- Refresh affected patches
+  * 0001-Improve-TPM-key-protection-on-boot-interruptions.patch
+  * grub2-bsc1220338-key_protector-implement-the-blocklist.patch
+- New manpage for grub2-protect
+
+-------------------------------------------------------------------
+Wed May 15 00:46:14 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Fix error in /etc/grub.d/20_linux_xen: file_is_not_sym not found, renamed to
+  file_is_not_xen_garbage (bsc#1224226)
+  * grub2-fix-menu-in-xen-host-server.patch
+
+-------------------------------------------------------------------
 Thu May  2 07:48:30 UTC 2024 - Michael Chang <mchang@suse.com>
 
 - Fix gcc error with CFLAGS=-Og

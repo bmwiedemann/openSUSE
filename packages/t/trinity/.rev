@@ -768,4 +768,19 @@
     <comment>- add 0001-kvm-drop-deprecated-and-dropped-KVM-ioctls.patch (kernel 6.8)</comment>
     <requestid>1159305</requestid>
   </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>8b4316ae93d05925f8bbb606d7aec3e9</srcmd5>
+    <version>1.9+git.20230710</version>
+    <time>1715872590</time>
+    <user>anag+factory</user>
+    <comment>- support for kernel 6.9
+  * deleted (superseded)
+    0001-kvm-drop-deprecated-and-dropped-KVM-ioctls.patch
+  * added
+    0001-compat-add-deprecated-KVM-IOCTL-definitions.patch
+    0002-compat-add-removed-KVM-structures.patch
+    0003-ioctls-kvm-make-s390-ioctls-s390-only.patch
+    0004-ioctls-kvm-make-powerpc-ioctls-powerpc-only.patch</comment>
+    <requestid>1174427</requestid>
+  </revision>
 </revisionlist>

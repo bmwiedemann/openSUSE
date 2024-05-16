@@ -1,0 +1,20 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://gitlab.ow2.org/asm/asm.git</param>
+		<param name="revision">ASM_9_7</param>
+		<param name="match-tag">ASM_*</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="versionrewrite-pattern">ASM_(\d+)_(\d+)</param>
+		<param name="versionrewrite-replacement">\1.\2</param>
+        <param name="exclude">**/*.jar</param>
+        <param name="exclude">asm{,-analysis,-commons}/**/*.class</param>
+        <param name="exclude">gradle</param>
+		<param name="filename">objectweb-asm</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

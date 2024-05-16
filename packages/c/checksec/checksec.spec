@@ -1,7 +1,7 @@
 #
 # spec file for package checksec
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013-2021 Fedora Project Authors
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           checksec
-Version:        2.6.0
+Version:        2.7.1
 Release:        0
 Summary:        Utility to check binaries for system hardening
 License:        BSD-3-Clause

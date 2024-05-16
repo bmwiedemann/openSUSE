@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 16 04:45:27 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Siwtch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Fri Oct  7 03:40:40 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 2.7 

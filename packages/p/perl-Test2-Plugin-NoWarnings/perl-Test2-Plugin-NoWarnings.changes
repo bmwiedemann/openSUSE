@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr  8 03:07:54 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.10
+   see /usr/share/doc/packages/perl-Test2-Plugin-NoWarnings/Changes
+
+  0.10     2024-04-07
+
+  - Previous, when tests were run via prove without the verbose flag and there
+    was a warning that caused a test failure, there was no output indicating
+    that a warning caused the failure. This has now been corrected and you'll
+    see output that includes "Unexpected warning". Reported by @janlimpens.
+
+-------------------------------------------------------------------
 Wed Jul  1 03:14:43 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.09

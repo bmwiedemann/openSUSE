@@ -285,4 +285,12 @@ There are 4 months worth of complicated commit, and I cannot go through them all
     <comment>update to 1.97.1</comment>
     <requestid>1165717</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>1b43b1db9ac998db27f7b690bf43c462</srcmd5>
+    <version>1.97.2</version>
+    <time>1715872592</time>
+    <user>anag+factory</user>
+    <comment>Update to 1.97.2</comment>
+    <requestid>1174430</requestid>
+  </revision>
 </revisionlist>

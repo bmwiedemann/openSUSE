@@ -1085,4 +1085,12 @@
     <comment>Sync to latest version in devel to investigate possible issues in staging to fix them, @ana+factory</comment>
     <requestid>1168784</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>88064d7e9ead0d466ed58799180a6870</srcmd5>
+    <version>2.12.7</version>
+    <time>1715872398</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1174242</requestid>
+  </revision>
 </revisionlist>

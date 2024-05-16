@@ -1,0 +1,67 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Tue, 19 Mar 2024 09:54:52 +0100
+Subject: compat: add removed KVM structures
+Git-repo: https://github.com/jirislaby/trinity
+Git-commit: 144a55ea69e7ad5d5eebf8ea88c6f61b29bcff74
+Patch-mainline: submitted, https://github.com/kernelslacker/trinity/pull/48
+References: kernel 6.8 & 6.9
+
+They were dropped in 6.9 in c0a411904e15 (KVM: remove more traces of
+device assignment UAPI).
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ include/compat.h | 37 +++++++++++++++++++++++++++++++++++++
+ 1 file changed, 37 insertions(+)
+
+diff --git a/include/compat.h b/include/compat.h
+index 33132e22..915149dc 100644
+--- a/include/compat.h
++++ b/include/compat.h
+@@ -1038,6 +1038,43 @@ struct kvm_ppc_pvinfo {
+ #define KVM_PPC_GET_PVINFO        _IOW(KVMIO,  0xa1, struct kvm_ppc_pvinfo)
+ #endif
+ 
++#ifndef KVM_DEV_ASSIGN_ENABLE_IOMMU
++struct kvm_assigned_pci_dev {
++	__u32 assigned_dev_id;
++	__u32 busnr;
++	__u32 devfn;
++	__u32 flags;
++	__u32 segnr;
++	union {
++		__u32 reserved[11];
++	};
++};
++
++struct kvm_assigned_irq {
++	__u32 assigned_dev_id;
++	__u32 host_irq;
++	__u32 guest_irq;
++	__u32 flags;
++	union {
++		__u32 reserved[12];
++	};
++};
++
++struct kvm_assigned_msix_nr {
++	__u32 assigned_dev_id;
++	__u16 entry_nr;
++	__u16 padding;
++};
++
++struct kvm_assigned_msix_entry {
++	__u32 assigned_dev_id;
++	__u32 gsi;
++	__u16 entry;
++	__u16 padding[3];
++};
++
++#endif
++
+ #ifndef KVM_SET_TSC_KHZ
+ #define KVM_SET_TSC_KHZ           _IO(KVMIO,  0xa2)
+ #endif
+-- 
+2.45.0
+

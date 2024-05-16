@@ -19,10 +19,10 @@ Reviewed-by: Jiewen Yao <Jiewen.yao@intel.com>
  .../DxeTpm2MeasureBootLibSanitizationTest.c   | 26 +++++++++----------
  4 files changed, 25 insertions(+), 25 deletions(-)
 
-Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLib.c
+Index: edk2-edk2-stable202311/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLib.c
 ===================================================================
---- edk2-edk2-stable202308.orig/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLib.c
-+++ edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLib.c
+--- edk2-edk2-stable202311.orig/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLib.c
++++ edk2-edk2-stable202311/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLib.c
 @@ -200,7 +200,7 @@ Tcg2MeasureGptTable (
                       BlockIo->Media->BlockSize,
                       (UINT8 *)PrimaryHeader
@@ -59,10 +59,10 @@ Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2M
    if (EFI_ERROR (Status)) {
      return EFI_UNSUPPORTED;
    }
-Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.c
+Index: edk2-edk2-stable202311/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.c
 ===================================================================
---- edk2-edk2-stable202308.orig/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.c
-+++ edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.c
+--- edk2-edk2-stable202311.orig/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.c
++++ edk2-edk2-stable202311/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.c
 @@ -63,7 +63,7 @@
  **/
  EFI_STATUS
@@ -99,10 +99,10 @@ Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2M
    IN  UINT32  FilePathSize,
    OUT UINT32  *EventSize
    )
-Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.h
+Index: edk2-edk2-stable202311/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.h
 ===================================================================
---- edk2-edk2-stable202308.orig/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.h
-+++ edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.h
+--- edk2-edk2-stable202311.orig/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.h
++++ edk2-edk2-stable202311/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.h
 @@ -54,7 +54,7 @@
  **/
  EFI_STATUS
@@ -139,10 +139,10 @@ Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2M
    IN  UINT32  FilePathSize,
    OUT UINT32  *EventSize
    );
-Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/InternalUnitTest/DxeTpm2MeasureBootLibSanitizationTest.c
+Index: edk2-edk2-stable202311/SecurityPkg/Library/DxeTpm2MeasureBootLib/InternalUnitTest/DxeTpm2MeasureBootLibSanitizationTest.c
 ===================================================================
---- edk2-edk2-stable202308.orig/SecurityPkg/Library/DxeTpm2MeasureBootLib/InternalUnitTest/DxeTpm2MeasureBootLibSanitizationTest.c
-+++ edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/InternalUnitTest/DxeTpm2MeasureBootLibSanitizationTest.c
+--- edk2-edk2-stable202311.orig/SecurityPkg/Library/DxeTpm2MeasureBootLib/InternalUnitTest/DxeTpm2MeasureBootLibSanitizationTest.c
++++ edk2-edk2-stable202311/SecurityPkg/Library/DxeTpm2MeasureBootLib/InternalUnitTest/DxeTpm2MeasureBootLibSanitizationTest.c
 @@ -84,27 +84,27 @@ TestSanitizeEfiPartitionTableHeader (
    PrimaryHeader.Header.CRC32 = CalculateCrc32 ((UINT8 *)&PrimaryHeader, PrimaryHeader.Header.HeaderSize);
  

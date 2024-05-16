@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Curses
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,26 @@
 
 %define cpan_name Curses
 Name:           perl-Curses
-Version:        1.44
+Version:        1.450.0
 Release:        0
+# 1.45 -> normalize -> 1.450.0
+%define cpan_version 1.45
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Terminal screen handling and optimization
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/G/GI/GIRAFFED/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/G/GI/GIRAFFED/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Curses) = %{version}
+Provides:       perl(Curses::Field)
+Provides:       perl(Curses::Form)
+Provides:       perl(Curses::Item)
+Provides:       perl(Curses::Menu)
+Provides:       perl(Curses::Panel)
+Provides:       perl(Curses::Screen)
+Provides:       perl(Curses::Window)
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  ncurses5-devel
@@ -41,9 +52,9 @@ document describes the interface itself, and assumes that you already know
 how your system's curses(3) library works.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 # MANUAL BEGIN
 sed -i '1s| /usr//bin/perl|%{__perl}|' demo.form
 sed -i '1s| /usr/bin/perl|%{__perl}|' demo* gdc testsyms

@@ -18,10 +18,10 @@ Reviewed-by: Jiewen Yao <jiewen.yao@intel.com>
  .../DxeTpm2MeasureBootLibSanitizationTest.c   | 60 ++++++++++++++++---
  4 files changed, 131 insertions(+), 15 deletions(-)
 
-Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLib.c
+Index: edk2-edk2-stable202311/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLib.c
 ===================================================================
---- edk2-edk2-stable202308.orig/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLib.c
-+++ edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLib.c
+--- edk2-edk2-stable202311.orig/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLib.c
++++ edk2-edk2-stable202311/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLib.c
 @@ -378,7 +378,6 @@ Exit:
    @retval EFI_OUT_OF_RESOURCES   No enough resource to measure image.
    @retval EFI_UNSUPPORTED        ImageType is unsupported or PE image is mal-format.
@@ -64,10 +64,10 @@ Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2M
    Tcg2Event->Header.HeaderSize    = sizeof (EFI_TCG2_EVENT_HEADER);
    Tcg2Event->Header.HeaderVersion = EFI_TCG2_EVENT_HEADER_VERSION;
    ImageLoad                       = (EFI_IMAGE_LOAD_EVENT *)Tcg2Event->Event;
-Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.c
+Index: edk2-edk2-stable202311/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.c
 ===================================================================
---- edk2-edk2-stable202308.orig/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.c
-+++ edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.c
+--- edk2-edk2-stable202311.orig/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.c
++++ edk2-edk2-stable202311/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.c
 @@ -151,7 +151,7 @@ SanitizeEfiPartitionTableHeader (
  }
  
@@ -127,10 +127,10 @@ Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2M
 +
    return EFI_SUCCESS;
  }
-Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.h
+Index: edk2-edk2-stable202311/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.h
 ===================================================================
---- edk2-edk2-stable202308.orig/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.h
-+++ edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.h
+--- edk2-edk2-stable202311.orig/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.h
++++ edk2-edk2-stable202311/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2MeasureBootLibSanitization.h
 @@ -9,6 +9,9 @@
    Tcg2MeasureGptTable() function will receive untrusted GPT partition table, and parse
    partition data carefully.
@@ -170,10 +170,10 @@ Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/DxeTpm2M
 +  );
 +
 +#endif // DXE_TPM2_MEASURE_BOOT_LIB_VALIDATION_
-Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/InternalUnitTest/DxeTpm2MeasureBootLibSanitizationTest.c
+Index: edk2-edk2-stable202311/SecurityPkg/Library/DxeTpm2MeasureBootLib/InternalUnitTest/DxeTpm2MeasureBootLibSanitizationTest.c
 ===================================================================
---- edk2-edk2-stable202308.orig/SecurityPkg/Library/DxeTpm2MeasureBootLib/InternalUnitTest/DxeTpm2MeasureBootLibSanitizationTest.c
-+++ edk2-edk2-stable202308/SecurityPkg/Library/DxeTpm2MeasureBootLib/InternalUnitTest/DxeTpm2MeasureBootLibSanitizationTest.c
+--- edk2-edk2-stable202311.orig/SecurityPkg/Library/DxeTpm2MeasureBootLib/InternalUnitTest/DxeTpm2MeasureBootLibSanitizationTest.c
++++ edk2-edk2-stable202311/SecurityPkg/Library/DxeTpm2MeasureBootLib/InternalUnitTest/DxeTpm2MeasureBootLibSanitizationTest.c
 @@ -72,10 +72,10 @@ TestSanitizeEfiPartitionTableHeader (
    PrimaryHeader.Header.Revision          = DEFAULT_PRIMARY_TABLE_HEADER_REVISION;
    PrimaryHeader.Header.HeaderSize        = sizeof (EFI_PARTITION_TABLE_HEADER);

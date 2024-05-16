@@ -71,4 +71,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148570</requestid>
   </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>59d6ac01b24eb58dde88939754f873a8</srcmd5>
+    <version>2.5.0</version>
+    <time>1715872573</time>
+    <user>anag+factory</user>
+    <comment>Fix build with maven-plugin-plugin &gt;= 3.11</comment>
+    <requestid>1174394</requestid>
+  </revision>
 </revisionlist>

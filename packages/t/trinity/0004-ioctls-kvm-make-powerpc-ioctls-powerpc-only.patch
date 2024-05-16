@@ -1,0 +1,33 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Thu, 16 May 2024 11:01:06 +0200
+Subject: ioctls/kvm: make powerpc ioctls powerpc-only
+Git-repo: https://github.com/jirislaby/trinity
+Git-commit: fd172db547d3510793b53ce43e384e7bca6974d0
+Patch-mainline: submitted, https://github.com/kernelslacker/trinity/pull/48
+References: kernel 6.8 & 6.9
+
+They are now powerpc-only since commit d750951c9ed7 (KVM: powerpc: move
+powerpc-specific structs to uapi/asm/kvm.h).
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ ioctls/kvm.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/ioctls/kvm.c b/ioctls/kvm.c
+index 8a2ef713..fa2f9fff 100644
+--- a/ioctls/kvm.c
++++ b/ioctls/kvm.c
+@@ -42,7 +42,9 @@ static const struct ioctl kvm_ioctls[] = {
+ 	IOCTL(KVM_IOEVENTFD),
+ 	IOCTL(KVM_SET_CLOCK),
+ 	IOCTL(KVM_GET_CLOCK),
++#if defined(__powerpc__)
+ 	IOCTL(KVM_PPC_GET_PVINFO),
++#endif
+ 	IOCTL(KVM_SET_TSC_KHZ),
+ 	IOCTL(KVM_GET_TSC_KHZ),
+ 	IOCTL(KVM_ASSIGN_SET_INTX_MASK),
+-- 
+2.45.0
+

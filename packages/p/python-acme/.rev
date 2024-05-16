@@ -764,4 +764,12 @@
     the ACME server and show the account details (account URL and, if applicable,</comment>
     <requestid>1145432</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>16cccf4ea4d2f88bf0baa3e829f7da33</srcmd5>
+    <version>2.10.0</version>
+    <time>1715872644</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1174587</requestid>
+  </revision>
 </revisionlist>

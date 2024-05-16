@@ -16,7 +16,7 @@
 #
 
 
-%global vers 4.5.1
+%global vers 4.5.2
 %global tftpdir /srv/tftpboot
 %global srvdir %{_sharedstatedir}
 #%%global githash 5b0de8ea5397ca42584335517fd4959d7ffe3da5
@@ -173,9 +173,8 @@ yq e '
   .["container mounts"] += {"source": "/etc/SUSEConnect", "dest": "/etc/SUSEConnect", "readonly": true} |
   .["container mounts"] += {"source": "/etc/zypp/credentials.d/SCCcredentials", "dest": "/etc/zypp/credentials.d/SCCcredentials", "readonly": true}' \
   -i %{buildroot}%{_sysconfdir}/warewulf/warewulf.conf
-#sed -i -e 's@\(^\s*\)\(.*:.*\):@\1"\2":@' %%{buildroot}%%{_sysconfdir}/warewulf/warewulf.conf
 # SUSE starts user UIDs at 1000
-sed -i -e 's@\(.* \$_UID \(>\|-ge\) \)500\(.*\)@\11000\3@' %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/profile.d/ssh_setup.*sh
+sed -i -e 's@\(.* \$_UID \(>\|-ge\) \)500\(.*\)@\11000\3@' %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/profile.d/ssh_setup.*sh.ww
 # fix dhcp for SUSE
 mv %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/dhcp/dhcpd.conf.ww %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/dhcpd.conf.ww
 rmdir %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/dhcp

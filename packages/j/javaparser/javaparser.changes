@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May  5 00:47:46 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Upgrade to upstream version 3.25.10
+  * Fixed
+    + Fix issue 4345 Strange error when trying to find erasure of
+      generic t… (PR #4362 by @jlerbsc)
+    + fix: issue 4358 prevent infinite cycles with static imports
+      (PR #4359 by @kdunee)
+    + Refactor ResolvedReferenceType#equals (PR #4351 by @freya022)
+    + fix: issue 4331 Cannot be 'abstract' and also 'private'. for
+      a private method in an interface (PR #4332 by @jlerbsc)
+  * Developer Changes
+    + chore(deps): bump actions/checkout from 4.1.1 to 4.1.2 (PR
+      #4341 by @dependabot[bot])
+
+-------------------------------------------------------------------
 Sat Jan 13 02:49:45 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Upgrade to upstream version 3.25.8

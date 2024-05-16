@@ -17,7 +17,7 @@
 
 
 Name:           starship
-Version:        1.18.0
+Version:        1.19.0
 Release:        0
 Summary:        A customizable prompt for many shells
 License:        ISC
@@ -26,6 +26,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
+BuildRequires:  git-core
 BuildRequires:  pkgconfig(openssl)
 ExclusiveArch:  %{rust_tier1_arches}
 
@@ -46,6 +47,9 @@ dash is not supported as of 1.10.2.
 
 %install
 %{cargo_install}
+
+%check
+%{cargo_test}
 
 %files
 %doc README.md

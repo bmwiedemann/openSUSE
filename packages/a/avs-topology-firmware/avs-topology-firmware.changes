@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 14 06:27:42 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Fix the firmware installation path (bsc#1224194)
+
+-------------------------------------------------------------------
 Sat Feb  3 07:51:27 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
 - Initial version: 2024.02

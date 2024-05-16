@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 15 07:04:17 UTC 2024 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- Don't use TF-A on RPi3 by default, just keep it around for testing.
+  Fixes bsc#1207204.
+
+-------------------------------------------------------------------
 Tue Feb 20 10:44:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

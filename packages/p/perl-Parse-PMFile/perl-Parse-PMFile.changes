@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 22 03:08:03 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.47
+   see /usr/share/doc/packages/perl-Parse-PMFile/Changes
+
+  0.47 2024/04/21
+    - Improve class detection
+
+  0.46 2024/04/15
+    - Strip BOM before finding a package
+
+-------------------------------------------------------------------
 Fri Mar  8 22:55:53 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 16 10:43:47 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 4.7.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+
+-------------------------------------------------------------------
 Tue May  7 16:19:29 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add Obsoletes for predecessor python3 package on SLE-15

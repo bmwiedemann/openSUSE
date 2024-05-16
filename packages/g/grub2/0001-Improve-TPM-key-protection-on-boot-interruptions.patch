@@ -1,7 +1,7 @@
-From fe7ed9104cef56f9e532a0c9a7164393d5d69ae1 Mon Sep 17 00:00:00 2001
+From 27b3e919b9b51a4fedeb3a5aef19c87f0cd7b687 Mon Sep 17 00:00:00 2001
 From: Michael Chang <mchang@suse.com>
 Date: Fri, 17 Nov 2023 12:32:59 +0800
-Subject: [PATCH 1/4] Improve TPM key protection on boot interruptions
+Subject: [PATCH] Improve TPM key protection on boot interruptions
 
 The unattended boot process for full disk encryption relies on an
 authorized TPM policy to ensure the system's integrity before releasing
@@ -125,7 +125,7 @@ index c2217ca98..9397bede9 100644
  
  static grub_command_t cmd;
 diff --git a/grub-core/disk/cryptodisk.c b/grub-core/disk/cryptodisk.c
-index c79d4125a..d90ca06dc 100644
+index aa0d43562..babc94868 100644
 --- a/grub-core/disk/cryptodisk.c
 +++ b/grub-core/disk/cryptodisk.c
 @@ -1071,6 +1071,9 @@ grub_cryptodisk_scan_device_real (const char *name,
@@ -139,14 +139,14 @@ index c79d4125a..d90ca06dc 100644
    dev = grub_cryptodisk_get_by_source_disk (source);
  
 @@ -1183,6 +1186,9 @@ grub_cryptodisk_scan_device_real (const char *name,
- 	     ret = grub_cryptodisk_insert (dev, name, source);
- 	     if (ret != GRUB_ERR_NONE)
- 	       goto error;
+ 	      ret = grub_cryptodisk_insert (dev, name, source);
+ 	      if (ret != GRUB_ERR_NONE)
+ 	        goto error;
 +#ifndef GRUB_UTIL
-+	     is_tpmkey = 1;
++	      is_tpmkey = 1;
 +#endif
- 	     goto cleanup;
- 	   }
+ 	      goto cleanup;
+ 	    }
  	}
 @@ -1244,7 +1250,7 @@ grub_cryptodisk_scan_device_real (const char *name,
  
@@ -282,5 +282,5 @@ index 113c53cfc..f86404686 100644
 +grub_cryptokey_tpmkey_discard (void);
  #endif /* ! GRUB_CRYPTTAB_HEADER */
 -- 
-2.42.1
+2.35.3
 

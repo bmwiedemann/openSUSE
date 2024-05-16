@@ -1,0 +1,11 @@
+--- languagetool-4.8/languagetool-core/src/test/java/org/languagetool/tools/StringToolsTest.java	2024-05-04 15:45:27.936860841 +0200
++++ languagetool-4.8/languagetool-core/src/test/java/org/languagetool/tools/StringToolsTest.java	2024-05-04 15:46:39.262077132 +0200
+@@ -55,7 +55,7 @@
+ 
+   @Test
+   public void testReadStream() throws IOException {
+-    String content = StringTools.readStream(new FileInputStream("src/test/resources/testinput.txt"), "utf-8");
++    String content = StringTools.readStream(this.getClass().getResourceAsStream("/testinput.txt"), "utf-8");
+     assertEquals("one\ntwo\nöäüß\nșțîâăȘȚÎÂĂ\n", content);
+   }
+ 

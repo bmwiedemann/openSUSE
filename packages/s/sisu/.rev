@@ -63,4 +63,12 @@
     <comment>0.9.0.M2</comment>
     <requestid>1167654</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>6223593c71fd227136614b8f8d842698</srcmd5>
+    <version>0.9.0.M2</version>
+    <time>1715877187</time>
+    <user>anag+factory</user>
+    <comment>Provide plexus-containers-container-default for easier update</comment>
+    <requestid>1174566</requestid>
+  </revision>
 </revisionlist>

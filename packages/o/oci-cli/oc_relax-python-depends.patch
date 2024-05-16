@@ -1,7 +1,7 @@
-diff -Nru oci-cli-3.39.1.orig/requirements.txt oci-cli-3.39.1/requirements.txt
---- oci-cli-3.39.1.orig/requirements.txt	2024-04-16 10:33:42.000000000 +0200
-+++ oci-cli-3.39.1/requirements.txt	2024-04-18 14:04:51.410499047 +0200
-@@ -2,47 +2,47 @@
+diff -Nru oci-cli-3.40.3.orig/requirements.txt oci-cli-3.40.3/requirements.txt
+--- oci-cli-3.40.3.orig/requirements.txt	2024-05-14 10:38:04.000000000 +0200
++++ oci-cli-3.40.3/requirements.txt	2024-05-15 11:05:10.334291290 +0200
+@@ -2,48 +2,48 @@
  # (https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format),
  # you may need to use the --extra-index-url option instead.
  
@@ -18,7 +18,7 @@ diff -Nru oci-cli-3.39.1.orig/requirements.txt oci-cli-3.39.1/requirements.txt
 -jmespath==0.10.0
 -ndg-httpsclient==0.4.2
 -mock==2.0.0
--oci==2.125.3
+-oci==2.126.3
 -packaging==20.2
 -pluggy==0.13.0
 -py==1.11.0
@@ -38,7 +38,7 @@ diff -Nru oci-cli-3.39.1.orig/requirements.txt oci-cli-3.39.1/requirements.txt
 +jmespath>=0.10.0
 +ndg-httpsclient>=0.4.2
 +mock>=2.0.0
-+oci>=2.125.3
++oci>=2.126.3
 +packaging>=20.2
 +pluggy>=0.13.0
 +py>=1.11.0
@@ -53,7 +53,7 @@ diff -Nru oci-cli-3.39.1.orig/requirements.txt oci-cli-3.39.1/requirements.txt
  pytz>=2016.10
 -requests==2.21.0; python_version == '3.6'
 -requests==2.31.0; python_version > '3.6'
-+requests>=2.21.0; python_version >= '3.6'
++requests>=2.21.0; python_version == '3.6'
 +requests>=2.31.0; python_version > '3.6'
  six>=1.15.0
 -sphinx==3.3.0
@@ -67,7 +67,7 @@ diff -Nru oci-cli-3.39.1.orig/requirements.txt oci-cli-3.39.1/requirements.txt
 -pytest-forked==1.0.2
 -PyYAML>=5.4,<=6.0.1
 -docutils==0.15.2
--prompt-toolkit==3.0.29
+-prompt-toolkit==3.0.29; python_version == '3.6'
 +sphinx>=3.3.0
 +sphinx-rtd-theme>=0.4.3
 +terminaltables>=3.1.10
@@ -79,21 +79,22 @@ diff -Nru oci-cli-3.39.1.orig/requirements.txt oci-cli-3.39.1/requirements.txt
 +pytest-forked>=1.0.2
 +PyYAML>=5.4
 +docutils>=0.15.2
-+prompt-toolkit>=3.0.29
++prompt-toolkit>=3.0.29; python_version == '3.6'
+ prompt-toolkit>=3.0.38,<=3.0.43; python_version > '3.6'
  setuptools>65.5.1; python_version > '3.6'
 -setuptools==59.6.0; python_version == '3.6'
-+setuptools>=59.6.0; python_version >= '3.6'
++setuptools>=59.6.0; python_version == '3.6'
  # this is required because of python 3.6 requests dependency version bound
  urllib3<=1.26.15
-diff -Nru oci-cli-3.39.1.orig/setup.py oci-cli-3.39.1/setup.py
---- oci-cli-3.39.1.orig/setup.py	2024-04-16 10:33:42.000000000 +0200
-+++ oci-cli-3.39.1/setup.py	2024-04-18 14:13:32.618481796 +0200
-@@ -30,23 +30,23 @@
+diff -Nru oci-cli-3.40.3.orig/setup.py oci-cli-3.40.3/setup.py
+--- oci-cli-3.40.3.orig/setup.py	2024-05-14 10:38:04.000000000 +0200
++++ oci-cli-3.40.3/setup.py	2024-05-15 11:05:54.187742166 +0200
+@@ -30,24 +30,24 @@
      readme = f.read()
  
  requires = [
--    'oci==2.125.3',
-+    'oci>=2.125.3',
+-    'oci==2.126.3',
++    'oci>=2.126.3',
      'arrow>=1.0.0',
      'certifi',
 -    'click==8.0.4',
@@ -109,11 +110,12 @@ diff -Nru oci-cli-3.39.1.orig/setup.py oci-cli-3.39.1/setup.py
 -    'terminaltables==3.1.10',
 -    'pyOpenSSL>=17.5.0,<25.0.0',
 -    'PyYAML>=5.4,<=6.0.1',
--    'prompt-toolkit==3.0.29'
 +    'terminaltables>=3.1.10',
 +    'pyOpenSSL>=17.5.0',
 +    'PyYAML>=5.4',
-+    'prompt-toolkit>=3.0.29'
+     'prompt-toolkit>=3.0.38,<=3.0.43; python_version > "3.6"',
+-    'prompt-toolkit==3.0.29; python_version == "3.6"'
++    'prompt-toolkit>=3.0.29; python_version == "3.6"'
  ]
  
  extras = {

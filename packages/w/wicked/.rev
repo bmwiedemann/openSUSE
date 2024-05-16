@@ -1880,4 +1880,14 @@
   [- 0005-client-do-to-not-convert-sec-to-msec-twice-bsc-1222105.patch]</comment>
     <requestid>1172779</requestid>
   </revision>
+  <revision rev="102" vrev="2">
+    <srcmd5>159a47c975dcd61bb5ad5c205e7f88fd</srcmd5>
+    <version>0.6.75</version>
+    <time>1715872405</time>
+    <user>anag+factory</user>
+    <comment>- client: fix ifreload to pull UP ports/links again when the config
+  of their master/lower changed (bsc#1224100,gh#openSUSE/wicked#1014).
+  [+ 0001-ifreload-pull-UP-again-on-master-lower-changes-bsc1224100.patch]</comment>
+    <requestid>1174279</requestid>
+  </revision>
 </revisionlist>

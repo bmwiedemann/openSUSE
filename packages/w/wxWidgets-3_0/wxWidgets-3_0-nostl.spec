@@ -1,7 +1,7 @@
 #
 # spec file for package wxWidgets-3_0-nostl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,10 +45,11 @@ Source5:        wxWidgets-3_0-rpmlintrc
 # identify and backport wxPython fixes to wxWidgets.
 Source6:        wxpython-mkdiff.sh
 Source50:       baselibs.conf
-Patch1:         soversion.diff
-Patch17:        relax-abi.diff
-Patch19:        0002-spinctrl.patch
-Patch20:        0001-18034-stick-with-compile-settings-detected-at-config.patch
+Patch0:         soversion.diff
+Patch1:         relax-abi.diff
+Patch2:         0002-spinctrl.patch
+Patch3:         0001-18034-stick-with-compile-settings-detected-at-config.patch
+Patch4:         autoconf-2_72.diff
 
 BuildRequires:  autoconf
 BuildRequires:  cppunit-devel
@@ -242,11 +243,7 @@ Provides translations for wxWidgets.
 
 %prep
 echo "=== RPM build flags: WX_DEBUG=0%{?WX_DEBUG}"
-%setup -q -n %tarball_name-%version
-%patch -P 1 -p1
-%patch -P 17 -p1
-%patch -P 19 -p1
-%patch -P 20 -p1
+%autosetup -n %tarball_name-%version -p1
 cp %{S:2} .
 
 %build

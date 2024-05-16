@@ -39,6 +39,7 @@ URL:            https://github.com/fedora-modularity/libmodulemd
 Source0:        %{url}/releases/download/%{libmodulemd_version}/modulemd-%{libmodulemd_version}.tar.xz
 Patch0:         https://github.com/fedora-modularity/libmodulemd/commit/9d280909.patch
 Patch1:         https://github.com/fedora-modularity/libmodulemd/commit/29c339a3.patch
+Patch2:         glib-2.80.2-glibdoc-path.patch
 
 BuildRequires:  gcc
 BuildRequires:  glib2-doc

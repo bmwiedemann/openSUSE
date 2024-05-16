@@ -61,14 +61,14 @@ Think of it as vipw(1) for LDAP.
 
 %prep
 %setup -q
-%patch0 -p0
-%patch1 -p2
-%patch2 -p2
-%patch3 -p2
-%patch4 -p2
-%patch5 -p2
-%patch6 -p1
-%patch7 -p1
+%patch -P 0 -p0
+%patch -P 1 -p2
+%patch -P 2 -p2
+%patch -P 3 -p2
+%patch -P 4 -p2
+%patch -P 5 -p2
+%patch -P 6 -p1
+%patch -P 7 -p1
 
 %build
 %configure

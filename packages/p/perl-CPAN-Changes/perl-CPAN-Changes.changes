@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May  3 03:06:08 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.500004
+   see /usr/share/doc/packages/perl-CPAN-Changes/Changes
+
+  0.500004 - 2024-05-02
+    - fix tests on Windows
+
+-------------------------------------------------------------------
 Fri Feb 23 03:06:20 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.500003

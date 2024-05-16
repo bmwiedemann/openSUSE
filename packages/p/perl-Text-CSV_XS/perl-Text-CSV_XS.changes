@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr 19 03:08:23 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.54
+   see /usr/share/doc/packages/perl-Text-CSV_XS/ChangeLog
+
+  1.54	- 2024-04-18, H.Merijn Brand
+      * Fix doc (Jean Forget, RT#150757)
+      * It's 2024
+      * Fix comment_str with strict
+      * Doc fixup (RT#151546)
+
+-------------------------------------------------------------------
 Fri Mar  8 23:06:29 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 15 09:21:57 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Move modules jack-tunnel and jackdbus-detect to the
+  pipewire-spa-plugins-0_2-jack since those modules should only
+  be used when the real jack server is running. This fixes pipewire
+  starting jackdbus on start.
+
+-------------------------------------------------------------------
 Fri May 10 11:43:21 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.0.6:

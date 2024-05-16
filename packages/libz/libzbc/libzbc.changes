@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 16 06:04:20 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.14
+  * Fix zbc_report_zones() to have the backend drivers handle
+    command buffer allocation. This simplification avoids rare
+    issues with report zones command failing due to an invalid
+    command size.
+  * Do not set the IMMED bit in the SYNCHRONIZE CACHE command
+    issued by zbc_flush() function.
+
+-------------------------------------------------------------------
 Wed Nov  2 10:55:20 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.13

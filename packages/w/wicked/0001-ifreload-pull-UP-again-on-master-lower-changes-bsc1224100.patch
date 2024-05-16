@@ -1,0 +1,119 @@
+From c6eb69d80a5c5c548d7c0a663d8a7bdd4fdd963c Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.com>
+Date: Wed, 15 May 2024 11:19:38 +0200
+Subject: [PATCH 1/2] nanny: reset instead to rearm worker on disable
+Upstream: yes
+References: bsc#1224100,gh#openSUSE/wicked#1014
+
+Reset interface worker on ifreload/ifdown to cleanup fsm state,
+master / lower hierarchy references and requirements, so there
+are no leftovers for the ifup part of ifreload that may change
+e.g. lower link reference (vlan's underlying device changes)
+with the new policy/config it is applying.
+
+diff --git a/nanny/interface.c b/nanny/interface.c
+index b1f53ce38..fa4cef283 100644
+--- a/nanny/interface.c
++++ b/nanny/interface.c
+@@ -88,7 +88,7 @@ ni_managed_netdev_disable(ni_managed_device_t *mdev)
+ 
+ 	ni_nanny_schedule_recheck(&mgr->down, w);
+ 	ni_nanny_unschedule(&mgr->recheck, w);
+-	ni_ifworker_rearm(w);
++	ni_ifworker_reset(w);
+ 
+ 	mdev->monitor = FALSE;
+ 	return TRUE;
+-- 
+2.35.3
+
+
+From 855719b2ba8c65147ae7c5a0cf36e283bc2c22db Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.com>
+Date: Wed, 15 May 2024 11:21:10 +0200
+Subject: [PATCH 2/2] fsm: pull UP ports/links on master/lower change
+Upstream: yes
+References: bsc#1224100,gh#openSUSE/wicked#1014
+
+Inherit the config changed state from master and lower interfaces.
+The ifreload down part pulls ports/linked interfaces DOWN when the
+master/lower changed, the up part needs to pull them UP again.
+
+diff --git a/src/fsm.c b/src/fsm.c
+index 16d43c8b8..353a9e2c7 100644
+--- a/src/fsm.c
++++ b/src/fsm.c
+@@ -3140,13 +3140,13 @@ ni_fsm_ifmatch_pull_up_lower(ni_fsm_t *fsm, ni_ifmatcher_t *match,
+ 		ni_log_fn_t *logit, ni_ifworker_t *w,
+ 		ni_bool_t master, ni_bool_t lower,
+ 		ni_bool_t ports, ni_bool_t links,
+-		ni_bool_t changed)
++		ni_bool_t *changed)
+ {
+ 	if (!w->lowerdev)
+ 		return TRUE; /* we don't have a lower */
+ 
+ 	if (!ni_fsm_ifmatch_pull_up(fsm, match, matching, guard, logit,
+-			w->lowerdev, master, lower, ports, FALSE, changed)) {
++			w->lowerdev, master, lower, ports, FALSE, *changed)) {
+ 
+ 		logit("skipping '%s' %s: unable to setup lower %s '%s'",
+ 			w->name, ni_ifworker_type_to_string(w->type),
+@@ -3154,6 +3154,10 @@ ni_fsm_ifmatch_pull_up_lower(ni_fsm_t *fsm, ni_ifmatcher_t *match,
+ 			w->lowerdev->name);
+ 		return FALSE;
+ 	}
++
++	if (match->ifreload && ni_ifworker_array_index(matching, w->lowerdev) != -1)
++		*changed = TRUE;
++
+ 	return TRUE;
+ }
+ 
+@@ -3163,13 +3167,13 @@ ni_fsm_ifmatch_pull_up_master(ni_fsm_t *fsm, ni_ifmatcher_t *match,
+ 		ni_log_fn_t *logit, ni_ifworker_t *w,
+ 		ni_bool_t master, ni_bool_t lower,
+ 		ni_bool_t ports, ni_bool_t links,
+-		ni_bool_t changed)
++		ni_bool_t *changed)
+ {
+ 	if (!w->masterdev)
+ 		return TRUE; /* we don't have a master */
+ 
+ 	if (!ni_fsm_ifmatch_pull_up(fsm, match, matching, guard, logit,
+-			w->masterdev, master, lower, FALSE, links, changed)) {
++			w->masterdev, master, lower, FALSE, links, *changed)) {
+ 
+ 		logit("skipping '%s' %s: unable to setup master %s '%s'",
+ 			w->name, ni_ifworker_type_to_string(w->type),
+@@ -3178,6 +3182,9 @@ ni_fsm_ifmatch_pull_up_master(ni_fsm_t *fsm, ni_ifmatcher_t *match,
+ 		return FALSE;
+ 	}
+ 
++	if (match->ifreload && ni_ifworker_array_index(matching, w->masterdev) != -1)
++		*changed = TRUE;
++
+ 	return TRUE;
+ }
+ 
+@@ -3232,7 +3239,7 @@ ni_fsm_ifmatch_pull_up(ni_fsm_t *fsm, ni_ifmatcher_t *match,
+ 	ni_ifworker_array_append(guard, w);
+ 
+ 	if (lower && !ni_fsm_ifmatch_pull_up_lower(fsm, match, &pulled,
+-			guard, logit, w, TRUE, TRUE, ports, FALSE, FALSE)) {
++			guard, logit, w, TRUE, TRUE, ports, FALSE, &changed)) {
+ 
+ 		ni_ifworker_array_destroy(&pulled);
+ 		ni_ifworker_array_remove(guard, w);
+@@ -3240,7 +3247,7 @@ ni_fsm_ifmatch_pull_up(ni_fsm_t *fsm, ni_ifmatcher_t *match,
+ 	}
+ 
+ 	if (master && !ni_fsm_ifmatch_pull_up_master(fsm, match, &pulled,
+-			guard, logit, w, TRUE, TRUE, FALSE, links, FALSE)) {
++			guard, logit, w, TRUE, TRUE, FALSE, links, &changed)) {
+ 
+ 		ni_ifworker_array_destroy(&pulled);
+ 		ni_ifworker_array_remove(guard, w);
+-- 
+2.35.3
+

@@ -24,7 +24,7 @@ MAINTAINER openSUSE (https://www.opensuse.org/)
 
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.bci.init
-LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI openSUSE Tumbleweed Init"
+LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Init"
 LABEL org.opencontainers.image.description="Systemd environment for containers based on the openSUSE Tumbleweed Base Container Image. This container is only supported with podman."
 LABEL org.opencontainers.image.version="%OS_VERSION_ID_SP%.%RELEASE%"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"

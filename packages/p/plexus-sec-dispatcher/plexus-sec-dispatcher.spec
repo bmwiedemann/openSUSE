@@ -34,7 +34,6 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  modello >= 2.0.0
 BuildRequires:  plexus-cipher
-BuildRequires:  plexus-containers-container-default
 BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-xml
@@ -67,7 +66,6 @@ build-jar-repository -s lib \
     plexus/utils \
     plexus/xml \
     plexus/plexus-cipher \
-    plexus-containers/plexus-container-default \
     javax.inject
 %{ant} \
 %if %{without tests}

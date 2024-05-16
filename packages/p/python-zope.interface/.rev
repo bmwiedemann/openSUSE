@@ -323,4 +323,12 @@
   * Add support to use the pipe (|) syntax for typing.Union.</comment>
     <requestid>1159258</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>b29a6df1d95ff249d44dd63e2ec89f17</srcmd5>
+    <version>6.3</version>
+    <time>1715872382</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1174206</requestid>
+  </revision>
 </revisionlist>

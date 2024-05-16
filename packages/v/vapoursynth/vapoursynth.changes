@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 13 13:54:38 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 68:
+  * fixed portable base path detection, was broken in r67
+  * fixed is_inspectable, was broken in r67
+  * reverted widestring print changes in vspipe from r67
+
+-------------------------------------------------------------------
 Mon May  6 08:39:31 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 67:

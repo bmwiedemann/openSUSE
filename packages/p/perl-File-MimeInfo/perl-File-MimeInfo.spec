@@ -18,9 +18,10 @@
 
 %define cpan_name File-MimeInfo
 Name:           perl-File-MimeInfo
-Version:        0.340.0
+Version:        0.350.0
 Release:        0
-%define cpan_version 0.34
+# 0.35 -> normalize -> 0.350.0
+%define cpan_version 0.35
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Determine file types
 URL:            https://metacpan.org/release/%{cpan_name}

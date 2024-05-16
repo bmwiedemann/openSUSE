@@ -18,7 +18,7 @@
 
 %bcond_with tests
 Name:           plexus-containers
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        Containers for Plexus
 # Most of the files are either under ASL 2.0 or MIT
@@ -61,13 +61,6 @@ Group:          Development/Libraries/Java
 %description component-annotations
 %{summary}.
 
-%package container-default
-Summary:        Default Container from %{name}
-Group:          Development/Libraries/Java
-
-%description container-default
-%{summary}.
-
 %package javadoc
 Summary:        API documentation for all plexus-containers packages
 Group:          Documentation/HTML
@@ -87,18 +80,8 @@ build-jar-repository -s lib objectweb-asm/asm objectweb-asm/asm-commons hamcrest
 cp %{SOURCE1} .
 cp %{SOURCE2} .
 
-rm -rf plexus-container-default/src/test/java/org/codehaus/plexus/hierarchy
-
 %pom_remove_plugin -r :maven-site-plugin
 
-# For Maven 3 compat
-%pom_add_dep org.apache.maven:maven-core plexus-component-metadata
-
-# ASM dependency was changed to "provided" in XBean 4.x, so we need to provide ASM
-%pom_add_dep org.ow2.asm:asm:5.0.3:runtime plexus-container-default
-%pom_add_dep org.ow2.asm:asm-commons:5.0.3:runtime plexus-container-default
-
-%pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 plexus-container-default
 %pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 plexus-component-metadata
 
 # Generate OSGI info
@@ -124,46 +107,32 @@ rm -rf plexus-container-default/src/test/java/org/codehaus/plexus/hierarchy
 mkdir -p plexus-component-annotations/src/test/java
 
 %build
-for i in plexus-component-annotations plexus-container-default; do
-  pushd ${i}
-    %{ant} \
+pushd plexus-component-annotations
+  %{ant} \
 %if %{without tests}
-      -Dtest.skip=true \
+    -Dtest.skip=true \
 %endif
-      jar javadoc
-  popd
-done
+    jar javadoc
+popd
 
 %install
 # jars
 install -dm 0755 %{buildroot}%{_javadir}/%{name}
-for i in plexus-component-annotations plexus-container-default; do
-  install -pm 0644 ${i}/target/${i}-%{version}.jar %{buildroot}%{_javadir}/%{name}/${i}.jar
-done
-install -dm 0755 %{buildroot}%{_javadir}/plexus
-# keep compat symlink for maven's sake
-ln -sf ../%{name}/plexus-component-annotations.jar %{buildroot}%{_javadir}/plexus/containers-component-annotations.jar
+install -pm 0644 plexus-component-annotations/target/plexus-component-annotations-%{version}.jar \
+    %{buildroot}%{_javadir}/%{name}/plexus-component-annotations.jar
 
 # poms
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-for i in plexus-component-annotations plexus-container-default; do
-  %{mvn_install_pom} ${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
-done
-%add_maven_depmap %{name}/plexus-component-annotations.pom %{name}/plexus-component-annotations.jar -f component-annotations
-%add_maven_depmap %{name}/plexus-container-default.pom %{name}/plexus-container-default.jar -f container-default -a org.codehaus.plexus:containers-component-api
+%{mvn_install_pom} plexus-component-annotations/pom.xml \
+    %{buildroot}%{_mavenpomdir}/%{name}/plexus-component-annotations.pom
+%add_maven_depmap %{name}/plexus-component-annotations.pom %{name}/plexus-component-annotations.jar
 
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
-for i in plexus-component-annotations plexus-container-default; do
-  cp -pr ${i}/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/${i}
-done
+cp -pr plexus-component-annotations/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/plexus-component-annotations
 %fdupes -s %{buildroot}%{_javadocdir}
 
-%files component-annotations -f .mfiles-component-annotations
-%license LICENSE-2.0.txt LICENSE.MIT
-%{_javadir}/plexus
-
-%files container-default -f .mfiles-container-default
+%files component-annotations -f .mfiles
 %license LICENSE-2.0.txt LICENSE.MIT
 
 %files javadoc

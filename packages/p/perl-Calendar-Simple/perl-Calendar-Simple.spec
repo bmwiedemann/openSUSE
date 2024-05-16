@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Calendar-Simple
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Calendar-Simple
 Name:           perl-Calendar-Simple
-Version:        2.0.3
+Version:        2.1.0
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl extension to create simple calendars

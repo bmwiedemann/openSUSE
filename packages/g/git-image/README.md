@@ -1,4 +1,4 @@
-# The openSUSE Tumbleweed openSUSE Tumbleweed with Git Container Image
+# The openSUSE Tumbleweed with Git Container Image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
 

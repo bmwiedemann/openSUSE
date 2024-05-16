@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyudev
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,12 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-pyudev
-Version:        0.24.1
+Version:        0.24.3
 Release:        0
 Summary:        Udev bindings for Python
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/Python
 URL:            https://pyudev.readthedocs.io/
 Source0:        https://github.com/pyudev/pyudev/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}-gh.tar.gz
 # PATCH-FIX-UPSTREAM pytest_register_mark.patch gh#pyudev/pyudev#404 mcepl@suse.com
@@ -32,7 +30,11 @@ Patch0:         pytest_register_mark.patch
 # PATCH-FIX-OPENSUSE hypothesis_settings.patch mcepl@suse.com
 # tests timeout on OBS
 Patch2:         hypothesis_settings.patch
+# PATCH-FIX-UPSTREAM gh#pyudev/pyudev#512
+Patch3:         support-pytest-8.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -66,10 +68,10 @@ in modern linux systems.
 sed -i -e "s|'sphinx.ext.intersphinx',\\?||" -e "s|'sphinxcontrib.issuetracker',\\?||" doc/conf.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -80,6 +82,7 @@ sed -i -e "s|'sphinx.ext.intersphinx',\\?||" -e "s|'sphinxcontrib.issuetracker',
 %files %{python_files}
 %license COPYING
 %doc CHANGES.rst README.rst
-%{python_sitelib}/*
+%{python_sitelib}/pyudev
+%{python_sitelib}/pyudev-%{version}.dist-info
 
 %changelog

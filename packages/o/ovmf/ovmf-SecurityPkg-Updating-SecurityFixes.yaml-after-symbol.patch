@@ -16,10 +16,10 @@ Reviewed-by: Jiewen Yao <Jiewen.yao@intel.com>
  SecurityPkg/SecurityFixes.yaml | 28 +++++++++++++++++-----------
  1 file changed, 17 insertions(+), 11 deletions(-)
 
-Index: edk2-edk2-stable202308/SecurityPkg/SecurityFixes.yaml
+Index: edk2-edk2-stable202311/SecurityPkg/SecurityFixes.yaml
 ===================================================================
---- edk2-edk2-stable202308.orig/SecurityPkg/SecurityFixes.yaml
-+++ edk2-edk2-stable202308/SecurityPkg/SecurityFixes.yaml
+--- edk2-edk2-stable202311.orig/SecurityPkg/SecurityFixes.yaml
++++ edk2-edk2-stable202311/SecurityPkg/SecurityFixes.yaml
 @@ -9,28 +9,34 @@ CVE_2022_36763:
      - "SecurityPkg: DxeTpm2Measurement: SECURITY PATCH 4117 - CVE 2022-36763"
      - "SecurityPkg: DxeTpmMeasurement: SECURITY PATCH 4117 - CVE 2022-36763"

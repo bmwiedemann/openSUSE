@@ -29,4 +29,16 @@
     <comment>1</comment>
     <requestid>296630</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3ca1dabe2fb8cf6188746ce222e393b2</srcmd5>
+    <version>0.9.0</version>
+    <time>1715872367</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.009
+   see /usr/share/doc/packages/perl-ExtUtils-Config/Changes
+  0.009     2024-04-25 12:22:53+02:00 Europe/Brussels
+            - Add a but method
+            - Add ExtUtils::Config::MakeMaker (forwarded request 1173739 from tinita)</comment>
+    <requestid>1174133</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 16 00:25:06 UTC 2024 - Michael Hamilton <michael@actrix.gen.nz>
+
+- 1.0.7
+  - Slightly improved setvcp diagnostics.
+  - Fix methods failing with return code DDCRC_OTHER (-3022) when only some i2c devices are accessible.
+
+-------------------------------------------------------------------
 Mon Apr 29 03:52:43 UTC 2024 - Michael Hamilton <michael@actrix.gen.nz>
 
 - 1.0.6

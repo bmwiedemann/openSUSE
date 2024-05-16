@@ -18,10 +18,10 @@
 
 %define cpan_name UUID
 Name:           perl-UUID
-Version:        0.330.0
+Version:        0.340.0
 Release:        0
-# 0.33 -> normalize -> 0.330.0
-%define cpan_version 0.33
+# 0.34 -> normalize -> 0.340.0
+%define cpan_version 0.34
 License:        Artistic-2.0
 Summary:        Universally Unique Identifier library for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -54,13 +54,13 @@ system, and unique across all systems, and are compatible with those
 created by the Open Software Foundation (OSF) Distributed Computing
 Environment (DCE).
 
-All generated UUIDs are either version 1, 4, 6, or version 7. And all are
-variant 1, meaning compliant with the OSF DCE standard as described in
+All generated UUIDs are either version 1, 3, 4, 5, 6, or version 7. And all
+are variant 1, meaning compliant with the OSF DCE standard as described in
 RFC4122.
 
-Versions 6, 7, and 8 are not standardized. They are presented here as
-proposed in RFC4122bis, version 14, and may change in the future.
-RFC4122bis is noted to replace RFC4122, if approved.
+Versions 6 and 7 are not standardized. They are presented here as proposed
+in RFC4122bis, version 14, and may change in the future. RFC4122bis is
+noted to replace RFC4122, if approved.
 
 %prep
 %autosetup  -n %{cpan_name}-%{cpan_version}

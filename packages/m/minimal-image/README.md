@@ -1,4 +1,4 @@
-# openSUSE Tumbleweed BCI openSUSE Tumbleweed Minimal: Base Container image without Zypper
+# openSUSE Tumbleweed BCI Minimal: Base Container image without Zypper
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
 

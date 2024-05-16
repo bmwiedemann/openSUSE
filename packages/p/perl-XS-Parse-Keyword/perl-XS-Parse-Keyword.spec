@@ -18,9 +18,10 @@
 
 %define cpan_name XS-Parse-Keyword
 Name:           perl-XS-Parse-Keyword
-Version:        0.390.0
+Version:        0.420.0
 Release:        0
-%define cpan_version 0.39
+# 0.42 -> normalize -> 0.420.0
+%define cpan_version 0.42
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        XS functions to assist in parsing keyword syntax
 URL:            https://metacpan.org/release/%{cpan_name}

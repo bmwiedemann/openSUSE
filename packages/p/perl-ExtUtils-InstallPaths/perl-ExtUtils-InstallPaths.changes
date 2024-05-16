@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 26 03:08:38 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.013
+   see /usr/share/doc/packages/perl-ExtUtils-InstallPaths/Changes
+
+  0.013     2024-04-25 12:28:37+02:00 Europe/Brussels
+            - Try to install any installable paths
+
+-------------------------------------------------------------------
 Fri May 11 05:19:22 UTC 2018 - coolo@suse.com
 
 - updated to 0.012

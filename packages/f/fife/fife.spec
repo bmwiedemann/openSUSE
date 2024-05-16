@@ -1,7 +1,7 @@
 #
 # spec file for package fife
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2011 Nelson Marques <nmarques@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,6 +32,8 @@ Source:         https://github.com/fifengine/fifengine/archive/%{version}/%{onam
 Patch0:         swig4.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         fife-boost_1_77.patch
+# PATCH-FIX-UPSTREAM https://github.com/fifengine/fifengine/issues/1085
+Patch2:         fife-boost_1_85.patch
 BuildRequires:  cmake
 BuildRequires:  fifechan-devel
 BuildRequires:  gcc-c++
@@ -94,11 +96,12 @@ game using Python interfaces.
 
 %prep
 %setup -q -n %{oname}-%{version}
-# only apply the patch if swig 4 is used (currently: Tumbleweed)
-%if 0%{?suse_version} > 1500
+# only apply the patch if swig 4 is used (currently: Tumbleweed and Leap 15.6)
+%if 0%{?suse_version} > 1500 || (0%{?suse_version} == 1500 && 0%{?sle_version} > 150500)
 %patch -P 0 -p1
 %endif
 %patch -P 1 -p1
+%patch -P 2 -p1
 
 %build
 %define __builddir py3
@@ -108,7 +111,8 @@ game using Python interfaces.
     -Drend-grid=ON \
     -Dlibrocket=ON \
     -Dbuild-python=ON \
-    -DPYTHON_SITE_PACKAGES=%{python3_sitearch}
+    -DPYTHON_SITE_PACKAGES=%{python3_sitearch} \
+    -DCMAKE_CXX_FLAGS='-DUSE_BOOST_FILESYSTEM_V3'
 make VERBOSE=1 %{?_smp_mflags}
 cd ..
 

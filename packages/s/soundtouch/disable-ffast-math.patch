@@ -4,34 +4,34 @@ is undesirable for shared libraries.
 see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=55522
 for details.
 
-Index: soundtouch/CMakeLists.txt
+Index: b/CMakeLists.txt
 ===================================================================
---- soundtouch.orig/CMakeLists.txt
-+++ soundtouch/CMakeLists.txt
-@@ -3,13 +3,6 @@ project(SoundTouch VERSION 2.3.2 LANGUAG
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -9,12 +9,7 @@ set(COMPILE_OPTIONS)
+ if(MSVC)
+   set(COMPILE_DEFINITIONS /O2 /fp:fast)
+ else()
+-  list(APPEND COMPILE_OPTIONS -Wall -Wextra -Wzero-as-null-pointer-constant -Wno-unknown-pragmas)
+-  if(EMSCRIPTEN)
+-    list(APPEND COMPILE_OPTIONS -O3)
+-  else()
+-    list(APPEND COMPILE_OPTIONS -Ofast)
+-  endif()
++  list(APPEND COMPILE_OPTIONS -Wall -Wextra -Wzero-as-null-pointer-constant -Wno-unknown-pragmas -O2)
+ endif()
  
- include(GNUInstallDirs)
- 
--if(MSVC)
--  set(COMPILE_DEFINITIONS /O2 /fp:fast)
--  set(COMPILE_OPTIONS )
--else()
--  set(COMPILE_OPTIONS -Ofast)
--endif()
--
  #####################
- # SoundTouch library
- 
-Index: soundtouch/configure.ac
+Index: b/configure.ac
 ===================================================================
---- soundtouch.orig/configure.ac
-+++ soundtouch/configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -33,7 +33,7 @@ AC_LANG(C++)
  
  # Compiler flags. Apply -Ofast (implies -O3 -ffast-math) to allow gcc autovectorization
  # generate effective SIMD code.
--CXXFLAGS+=" -Ofast"
-+CXXFLAGS+=" -O2"
+-CXXFLAGS="${CXXFLAGS} -Ofast -Wall -Wextra -Wzero-as-null-pointer-constant -Wno-unknown-pragmas"
++CXXFLAGS="${CXXFLAGS} -O2 -Wall -Wextra -Wzero-as-null-pointer-constant -Wno-unknown-pragmas"
  
  # Set AR_FLAGS to avoid build warning "ar: `u' modifier ignored since `D' is the default (see `U')"
  AR_FLAGS='cr'

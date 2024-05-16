@@ -35,12 +35,12 @@ BuildArch:      noarch
 # info from snd-soc-avs driver
 Supplements:    modalias(pci:v00008086d00003198sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00005A98sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00008086d0000A3F0sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00008086d0000A2F0sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00008086d0000A171sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00009D70sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00009D71sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A170sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00008086d00009D70sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A171sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A2F0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A3F0sv*sd*bc*sc*i*)
 
 %description
 Firmware data files for ASoC AVS sound driver.
@@ -52,7 +52,7 @@ Firmware data files for ASoC AVS sound driver.
 
 %install
 mkdir -p %{buildroot}%{_firmwaredir}
-cp -a lib/firmware %{buildroot}%{_firmwaredir}/
+cp -a lib/firmware/* %{buildroot}%{_firmwaredir}/
 
 %post
 %{?regenerate_initrd_post}

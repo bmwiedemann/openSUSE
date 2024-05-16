@@ -214,7 +214,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        29.3.3
+Version:        29.4.0
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS

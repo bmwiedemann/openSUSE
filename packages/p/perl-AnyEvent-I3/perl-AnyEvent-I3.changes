@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr 10 03:06:00 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.19
+   see /usr/share/doc/packages/perl-AnyEvent-I3/Changes
+
+  0.19    2024-04-09
+     * use Carp for errors (includes stacktraces)
+     * introduce (preferred) RUN_COMMAND spelling
+     * migrate tooling to ExtUtils::MakeMaker
+     * implement the tick event
+     * introduce the sync IPC command
+     * introduce the GET_BINDING_STATE IPC command
+  0.18    2017-08-19
+     * support the GET_CONFIG command
+
+-------------------------------------------------------------------
 Mon Apr 10 05:01:57 UTC 2017 - coolo@suse.com
 
 - updated to 0.17

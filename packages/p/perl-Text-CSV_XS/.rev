@@ -505,4 +505,18 @@
 </comment>
     <requestid>1156519</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>d0dce315af3117e67c14e50fe31dd150</srcmd5>
+    <version>1.540.0</version>
+    <time>1715872367</time>
+    <user>anag+factory</user>
+    <comment>- updated to 1.54
+   see /usr/share/doc/packages/perl-Text-CSV_XS/ChangeLog
+  1.54	- 2024-04-18, H.Merijn Brand
+      * Fix doc (Jean Forget, RT#150757)
+      * It's 2024
+      * Fix comment_str with strict
+      * Doc fixup (RT#151546) (forwarded request 1173734 from tinita)</comment>
+    <requestid>1174131</requestid>
+  </revision>
 </revisionlist>

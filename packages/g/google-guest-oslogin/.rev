@@ -267,4 +267,13 @@
     <comment></comment>
     <requestid>1164370</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>83b313a18c3ea141d0c7adaebfcc98e7</srcmd5>
+    <version>20240415.00</version>
+    <time>1715872628</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240415.00
+  * Log clearly when the initial parsing of a JSON object fails (#132) (forwarded request 1174486 from glaubitz)</comment>
+    <requestid>1174489</requestid>
+  </revision>
 </revisionlist>

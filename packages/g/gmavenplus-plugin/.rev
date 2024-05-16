@@ -31,4 +31,12 @@
     <comment>source/target 8 == build with jdk 21</comment>
     <requestid>1120414</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>ad2291793beb40d929fff75547ed13fa</srcmd5>
+    <version>1.13.1</version>
+    <time>1715872573</time>
+    <user>anag+factory</user>
+    <comment>Fix build with maven-plugin-plugin &gt;= 3.11</comment>
+    <requestid>1174397</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package objectweb-asm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
+%define __requires_exclude java-headless
 Name:           objectweb-asm
-Version:        9.6
+Version:        9.7
 Release:        0
 Summary:        Java bytecode manipulation framework
 License:        BSD-3-Clause
 Group:          Development/Libraries/Java
 URL:            http://asm.objectweb.org/
-# ./generate-tarball.sh
 Source0:        %{name}-%{version}.tar.xz
-Source1:        %{name}-%{version}-build.tar.xz
+Source1:        %{name}-build.tar.xz
 Source2:        https://repo1.maven.org/maven2/org/ow2/asm/asm/%{version}/asm-%{version}.pom
 Source3:        https://repo1.maven.org/maven2/org/ow2/asm/asm-analysis/%{version}/asm-analysis-%{version}.pom
 Source4:        https://repo1.maven.org/maven2/org/ow2/asm/asm-commons/%{version}/asm-commons-%{version}.pom
@@ -35,13 +35,14 @@ Source7:        https://repo1.maven.org/maven2/org/ow2/asm/asm-util/%{version}/a
 # We still want to create an "all" uberjar, so this is a custom pom to generate it
 # TODO: Fix other packages to no longer depend on "asm-all" so we can drop this
 Source9:        asm-all.pom
-# The source contains binary jars that cannot be verified for licensing and could be proprietary
-Source10:       generate-tarball.sh
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  java-devel >= 9
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  xz
+Requires:       java >= 1.8
+# For the script
+Requires:       javapackages-tools
 Obsoletes:      %{name}-examples
 BuildArch:      noarch
 
@@ -103,7 +104,7 @@ for i in asm asm-analysis asm-commons asm-tree asm-util asm-all; do
 done
 
 %build
-%ant -Dproject.version=%{version} \
+%{ant} -Dproject.version=%{version} \
     package javadoc
 
 %install
@@ -116,10 +117,10 @@ done
 # poms
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
 for i in asm asm-analysis asm-commons asm-tree asm-util; do
-  install -pm 0644 ${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
+  %{mvn_install_pom} ${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
   %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar
 done
-install -pm 0644 asm-all/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/asm-all.pom
+%{mvn_install_pom} asm-all/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/asm-all.pom
 %add_maven_depmap %{name}/asm-all.pom %{name}/asm-all.jar -a org.ow2.asm:asm-debug-all
 
 # javadoc

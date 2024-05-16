@@ -34,13 +34,12 @@ URL:            https://github.com/codehaus-plexus/plexus-i18n
 Source0:        %{name}-%{namedver}-src.tar.bz2
 Source1:        %{name}-build.xml
 Patch0:         %{name}-migration-to-component-metadata.patch
-Patch1:         %{name}-plexus-container-default-missing.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
-BuildRequires:  plexus-containers-container-default
 BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
+BuildRequires:  sisu-plexus
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
@@ -67,13 +66,14 @@ Javadoc for %{name}.
 %setup -q -n %{name}-%{namedver}
 cp %{SOURCE1} build.xml
 %patch -P 0 -p1
-%patch -P 1 -p1
+
+%pom_add_dep org.eclipse.sisu:org.eclipse.sisu.plexus:0.9.0.M2
 
 %build
 mkdir -p lib
 build-jar-repository -s lib \
     plexus/utils \
-    plexus-containers/plexus-container-default
+    org.eclipse.sisu.plexus
 %if %{with tests}
 build-jar-repository -s lib \
     guava/guava \

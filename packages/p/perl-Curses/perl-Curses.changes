@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 28 03:09:21 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.45
+   see /usr/share/doc/packages/perl-Curses/ChangeLog
+
+  New in 1.45 (Released April 27, 2023)
+
+    Correct wide character data types to fix compile failure.
+
+-------------------------------------------------------------------
 Wed Mar  8 03:07:07 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.44

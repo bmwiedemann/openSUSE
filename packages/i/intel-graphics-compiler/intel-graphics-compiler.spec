@@ -18,10 +18,10 @@
 
 %global llvm_commit llvmorg-14.0.5
 %global opencl_clang_commit cf95b338d14685e4f3402ab1828bef31d48f1fd6
-%global spirv_llvm_translator_commit 2221771c28dc224d5d560faf6a2cd73f8ecf713d
-%global vc_intrinsics_commit v0.16.0
+%global spirv_llvm_translator_commit 927efdc07bc18302559acdce1715c3f9507f3acf
+%global vc_intrinsics_commit v0.18.0
 Name:           intel-graphics-compiler
-Version:        1.0.16238.4
+Version:        1.0.16510.2
 Release:        1%{?dist}
 Summary:        Intel Graphics Compiler for OpenCL
 License:        MIT
@@ -138,7 +138,7 @@ mkdir build
 pushd build
 
 # FIXME: you should use %%cmake macros
-export CXXFLAGS="-Wno-nonnull -fPIE"
+export CXXFLAGS="-Wno-nonnull -fPIE  -Wno-error=free-nonheap-object"
 export LDFLAGS="-pie"
 cmake ../igc \
   -DCMAKE_BUILD_TYPE=Release \

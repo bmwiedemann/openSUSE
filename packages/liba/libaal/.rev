@@ -63,4 +63,12 @@
     <comment>- Modernize specfile.</comment>
     <requestid>725530</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>b7504e94500acdef98b79bdd4ecb96ff</srcmd5>
+    <version>1.0.7</version>
+    <time>1715872640</time>
+    <user>anag+factory</user>
+    <comment>- Add autoconf-2.72.patch to fix a build failure.</comment>
+    <requestid>1174571</requestid>
+  </revision>
 </revisionlist>

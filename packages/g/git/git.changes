@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May 14 22:38:09 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.45.1:
+ * CVE-2024-32002: recursive clones on case-insensitive
+   filesystems that support symbolic links are susceptible to case
+   confusion (boo#1224168)
+ * CVE-2024-32004: arbitrary code execution during local clones
+   (boo#1224170)
+ * CVE-2024-32020: file overwriting vulnerability during local
+   clones (boo#1224171)
+ * CVE-2024-32021: git may create hardlinks to arbitrary user-
+   readable files (boo#1224172)
+ * CVE-2024-32465: arbitrary code execution during clone operations
+   (boo#1224173)
+
+-------------------------------------------------------------------
 Wed May  1 16:47:14 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.45.0:

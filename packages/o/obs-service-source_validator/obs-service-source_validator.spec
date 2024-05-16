@@ -23,14 +23,14 @@
 %endif
 
 Name:           obs-service-source_validator
-Version:        0.35
+Version:        0.36
 Release:        0
 Summary:        An OBS source service: running all the osc source-validator checks
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 URL:            https://github.com/openSUSE/obs-service-source_validator
 # use osc service mr to update
-Source:         %{name}-%{version}.tar.zst
+Source:         %{name}-%{version}.tar.bz2
 BuildRequires:  %{build_pkg_name}
 BuildRequires:  zstd
 Requires:       %{_bindir}/cpio

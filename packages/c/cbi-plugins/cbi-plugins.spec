@@ -1,7 +1,7 @@
 #
 # spec file for package cbi-plugins
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -81,6 +81,21 @@ sed -i -e '/SuppressFBWarnings/d' maven-plugins/eclipse-flatpak-packager/src/mai
 # Parent pom and common module are "released" independently, but actually nothing changed yet since last releases
 sed -i -e 's/1\.0\.5-SNAPSHOT/1.0.4/' pom.xml
 sed -i -e 's/1\.2\.3-SNAPSHOT/1.2.2/' common/pom.xml
+
+for i in eclipse-winsigner eclipse-jarsigner eclipse-macsigner eclipse-cbi;
+do
+  %pom_add_plugin org.apache.maven.plugins:maven-plugin-plugin maven-plugins/${i}-plugin "
+    <configuration>
+      <goalPrefix>${i}</goalPrefix>
+    </configuration>"
+done
+for i in eclipse-dmg-packager eclipse-flatpak-packager;
+do
+  %pom_add_plugin org.apache.maven.plugins:maven-plugin-plugin maven-plugins/${i} "
+    <configuration>
+      <goalPrefix>${i}</goalPrefix>
+    </configuration>"
+done
 
 %build
 # Tests require jimfs which we don't have

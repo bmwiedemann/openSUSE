@@ -38,12 +38,13 @@ Source0:        %{name}-src.tar.bz2
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 Source2:        %{name}-build.xml
 Source100:      plexus-ant-factory_license_and_copyright.txt
+Patch0:         plexus-ant-factory-sisu-plexus.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  plexus-classworlds
-BuildRequires:  plexus-containers-container-default
 BuildRequires:  plexus-utils
+BuildRequires:  sisu-plexus
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
@@ -61,13 +62,14 @@ Javadoc for %{name}.
 
 %prep
 %setup -q -n %{name}
+%patch -P 0 -p1
 cp %{SOURCE1} LICENSE
 cp %{SOURCE2} build.xml
 
 %build
 mkdir -p lib
 
-build-jar-repository -s lib plexus/classworlds plexus/utils plexus-containers/plexus-container-default
+build-jar-repository -s lib plexus/classworlds plexus/utils org.eclipse.sisu.plexus
 %{ant} \
 %if %{without tests}
   -Dtest.skip=true \

@@ -1,4 +1,4 @@
-# The openSUSE Tumbleweed BCI openSUSE Tumbleweed Init Container Image
+# The openSUSE Tumbleweed BCI Init Container Image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
 

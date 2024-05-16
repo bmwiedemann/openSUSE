@@ -86,7 +86,7 @@ API documentation for %{name}.
 %patch -P 0 -p1
 %patch -P 1 -p1
 %patch -P 2 -p1
-cp -p %{SOURCE1} LICENSE
+cp -p %{SOURCE1} .
 
 %pom_remove_plugin :maven-site-plugin
 %pom_remove_plugin :maven-enforcer-plugin
@@ -114,9 +114,9 @@ popd
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f %{name}/.mfiles
-%license LICENSE
+%license LICENSE.txt LICENSE-2.0.txt
 
 %files javadoc -f %{name}/.mfiles-javadoc
-%license LICENSE
+%license LICENSE.txt LICENSE-2.0.txt
 
 %changelog

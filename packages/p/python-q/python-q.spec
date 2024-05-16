@@ -1,7 +1,7 @@
 #
 # spec file for package python-q
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-q
 Version:        2.7
 Release:        0
 Summary:        Quick-and-dirty debugging output for tired programmers
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/zestyping/q
 Source:         https://files.pythonhosted.org/packages/source/q/q/q-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -38,10 +38,10 @@ Quick-and-dirty debugging output for tired programmers.
 %setup -q -n q-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -49,6 +49,8 @@ Quick-and-dirty debugging output for tired programmers.
 
 %files %{python_files}
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/q.py
+%pycache_only %{python_sitelib}/__pycache__/q.*.pyc
+%{python_sitelib}/q-%{version}.dist-info
 
 %changelog

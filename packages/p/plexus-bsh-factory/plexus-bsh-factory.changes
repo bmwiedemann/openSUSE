@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 16 04:58:40 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use sisu-plexus instead of plexus-containers-container-default
+- Modified patch:
+  * 0001-Migrate-to-plexus-containers-container-default.patch
+    + fix to work with both plexus-containers-container-default
+      and sisu-plexus
+
+-------------------------------------------------------------------
 Tue Feb 20 14:42:08 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

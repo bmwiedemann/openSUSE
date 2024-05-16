@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 16 08:07:52 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * hk2-inhabitant-generator-goaprefix.patch
+    + fix build with maven-plugin-plugin >= 3.11
+    + for some plugins, the goalPrefix is not computed any more
+
+-------------------------------------------------------------------
 Wed Feb 21 10:43:40 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

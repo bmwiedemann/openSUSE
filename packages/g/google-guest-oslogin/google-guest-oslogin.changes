@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 16 12:29:28 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20240415.00
+  * Log clearly when the initial parsing of a JSON object fails (#132)
+
+-------------------------------------------------------------------
 Wed Apr  3 12:56:40 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Fix file permissions for google_authorized_principals binary (bsc#1222171)

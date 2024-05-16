@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 13 09:20:33 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.4.14
+  * fix: Increase received signature scheme limit (#4544)
+  * fix: Fix a bug in tls1.3 code path (#4513)
+  * ci: grep for S2N_RESULT_ERR without setting s2n_errno (#4534)
+  * style(bindings): fix new clippy lints (#4536)
+  * bin: tool to print security policies (#4524)
+  * feat[bindings]: fips feature flag (#4527)
+  * feat: set certificate_authorities from trust store (#4509)
+
+-------------------------------------------------------------------
 Wed May  8 13:04:31 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.4.13

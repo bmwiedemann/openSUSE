@@ -151,4 +151,12 @@
     <comment>This does not build with maven-surefire &lt; 3</comment>
     <requestid>1168545</requestid>
   </revision>
+  <revision rev="20" vrev="17">
+    <srcmd5>cf57e89522b6ccf729ca14d05417b82d</srcmd5>
+    <version>1.6.0</version>
+    <time>1715872556</time>
+    <user>anag+factory</user>
+    <comment>Fix build with maven-plugin-plugin &gt;= 3.11</comment>
+    <requestid>1174350</requestid>
+  </revision>
 </revisionlist>

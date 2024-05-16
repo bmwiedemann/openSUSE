@@ -147,6 +147,11 @@ rm -r %{name}-tools/src/test/java/org/apache/uima/tools/viewer/CasAnnotationView
 
 %pom_change_dep org.apache.maven: :::provided PearPackagingMavenPlugin jcasgen-maven-plugin
 
+%pom_add_plugin org.apache.maven.plugins:maven-plugin-plugin PearPackagingMavenPlugin "
+  <configuration>
+    <goalPrefix>PearPackagingMavenPlugin</goalPrefix>
+  </configuration>"
+
 %{mvn_package} :PearPackagingMavenPlugin uima-pear-maven-plugin
 %{mvn_package} :jcasgen-maven-plugin jcasgen-maven-plugin
 

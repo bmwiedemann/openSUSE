@@ -593,4 +593,13 @@ Personally I would make this even &quot;required&quot; instead of
     <comment></comment>
     <requestid>1136809</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>7150575dba721ea642340df60acbe07d</srcmd5>
+    <version>1.450.0</version>
+    <time>1715872371</time>
+    <user>anag+factory</user>
+    <comment>- updated to 1.45
+   see /usr/share/doc/packages/perl-Net-DNS/Changes (forwarded request 1173772 from tinita)</comment>
+    <requestid>1174136</requestid>
+  </revision>
 </revisionlist>

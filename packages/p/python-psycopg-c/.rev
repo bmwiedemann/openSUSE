@@ -53,4 +53,16 @@
     by CPython issue #65821 (ticket #725).</comment>
     <requestid>1158426</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6ce0fec7f41aa0e114fdc94a71713396</srcmd5>
+    <version>3.1.19</version>
+    <time>1715872583</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1.19:
+  * Fix unaligned access undefined behaviour in C extension (ticket #734).
+  * Fix excessive stripping of error message prefixes (ticket #752).
+  * Allow to specify the connect_timeout connection parameter as float (ticket #796).
+  * Improve COPY performance on macOS (ticket #745).</comment>
+    <requestid>1174407</requestid>
+  </revision>
 </revisionlist>

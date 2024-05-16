@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Archive-Tar-Wrapper
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,23 @@
 #
 
 
-Name:           perl-Archive-Tar-Wrapper
-Version:        0.38
-Release:        0
-#Upstream: GPL-1.0-or-later
 %define cpan_name Archive-Tar-Wrapper
-Summary:        API wrapper around the 'tar' utility
+Name:           perl-Archive-Tar-Wrapper
+Version:        0.400.0
+Release:        0
+# 0.40 -> normalize -> 0.400.0
+%define cpan_version 0.40
+#Upstream: GPL-1.0-or-later
 License:        GPL-3.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        API wrapper around the 'tar' utility
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/A/AR/ARFREITAS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/A/AR/ARFREITAS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(CPAN::Meta)
+BuildRequires:  perl(Dumbbench) >= 0.503
 BuildRequires:  perl(File::Which)
 BuildRequires:  perl(IPC::Run)
 BuildRequires:  perl(Log::Log4perl)
@@ -40,6 +41,8 @@ Requires:       perl(CPAN::Meta)
 Requires:       perl(File::Which)
 Requires:       perl(IPC::Run)
 Requires:       perl(Log::Log4perl)
+Provides:       perl(Archive::Tar::Wrapper) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -58,12 +61,13 @@ method), instead using disk as storage.
 because it uses it internally.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version}
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -74,7 +78,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes CONTRIBUTING.md README.md
 %license LICENSE
 

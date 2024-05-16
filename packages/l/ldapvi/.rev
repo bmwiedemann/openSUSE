@@ -15,4 +15,12 @@
     <comment>Fixed 64bit-portability-issue crypt.h fixed via 0007-crypth.patch (forwarded request 682142 from worldcitizen)</comment>
     <requestid>682143</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3b36db6ea67bd768f81db28d88a77642</srcmd5>
+    <version>1.7</version>
+    <time>1715872536</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1174331</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 %global comp_name plexus-component-metadata
 %bcond_with tests
 Name:           %{comp_name}
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        Component metadata from %{base_name}
 # Most of the files are either under ASL 2.0 or MIT
@@ -42,7 +42,6 @@ BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-component-annotations)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-container-default)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-xml)
 BuildRequires:  mvn(org.codehaus.plexus:plexus:pom:)
@@ -77,18 +76,8 @@ Group:          Documentation/HTML
 cp %{SOURCE1} .
 cp %{SOURCE2} .
 
-rm -rf plexus-container-default/src/test/java/org/codehaus/plexus/hierarchy
-
 %pom_remove_plugin -r :maven-site-plugin
 
-# For Maven 3 compat
-%pom_add_dep org.apache.maven:maven-core plexus-component-metadata
-
-# ASM dependency was changed to "provided" in XBean 4.x, so we need to provide ASM
-%pom_add_dep org.ow2.asm:asm:5.0.3:runtime plexus-container-default
-%pom_add_dep org.ow2.asm:asm-commons:5.0.3:runtime plexus-container-default
-
-%pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 plexus-container-default
 %pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 plexus-component-metadata
 
 # Generate OSGI info
@@ -109,6 +98,12 @@ rm -rf plexus-container-default/src/test/java/org/codehaus/plexus/hierarchy
         </plugin>
       </plugins>
     </build>" plexus-component-annotations
+
+# Fix build with maven-plugin-plugin >= 3.11.0
+%pom_add_plugin org.apache.maven.plugins:maven-plugin-plugin plexus-component-metadata "
+    <configuration>
+      <goalPrefix>plexus-component-metadata</goalPrefix>
+    </configuration>"
 
 # to prevent ant from failing
 mkdir -p plexus-component-annotations/src/test/java

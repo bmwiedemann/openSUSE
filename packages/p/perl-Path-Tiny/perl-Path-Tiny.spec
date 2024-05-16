@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Path-Tiny
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,29 @@
 
 %define cpan_name Path-Tiny
 Name:           perl-Path-Tiny
-Version:        0.144
+Version:        0.146.0
 Release:        0
+# 0.146 -> normalize -> 0.146.0
+%define cpan_version 0.146
 License:        Apache-2.0
 Summary:        File path utility
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Digest::SHA) >= 5.45
-BuildRequires:  perl(File::Path) >= 2.070000
+BuildRequires:  perl(File::Path) >= 2.07
 BuildRequires:  perl(File::Temp) >= 0.19
 BuildRequires:  perl(Test::More) >= 0.96
 Requires:       perl(Digest::SHA) >= 5.45
-Requires:       perl(File::Path) >= 2.070000
+Requires:       perl(File::Path) >= 2.07
 Requires:       perl(File::Temp) >= 0.19
-Recommends:     perl(Unicode::UTF8) >= 0.58
+Provides:       perl(Path::Tiny) = %{version}
+Provides:       perl(Path::Tiny::Error) = %{version}
+%undefine       __perllib_provides
+Recommends:     perl(Unicode::UTF8) >= 0.580.0
 %{perl_requires}
 
 %description
@@ -67,7 +72,7 @@ This module depends heavily on PerlIO layers for correct operation and thus
 requires Perl 5.008001 or later.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

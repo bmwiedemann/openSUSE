@@ -33,9 +33,9 @@ BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  plexus-classworlds
-BuildRequires:  plexus-containers-container-default
 BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
+BuildRequires:  sisu-plexus
 BuildArch:      noarch
 
 %description
@@ -59,7 +59,7 @@ cp -p %{SOURCE2} build.xml
 
 %build
 mkdir -p lib
-build-jar-repository -s lib plexus/utils plexus/classworlds plexus-containers/plexus-container-default
+build-jar-repository -s lib plexus/utils plexus/classworlds org.eclipse.sisu.plexus
 %{ant} \
   jar javadoc
 

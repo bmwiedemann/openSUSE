@@ -1,4 +1,4 @@
-From 7cc578baf26986c2badce998125b429a2aeb4d33 Mon Sep 17 00:00:00 2001
+From e62b26f9765e309691e014f322d4b02b220956a1 Mon Sep 17 00:00:00 2001
 From: Patrick Colp <patrick.colp@oracle.com>
 Date: Sun, 30 Jul 2023 12:58:18 -0700
 Subject: [PATCH 2/4] cryptodisk: Fallback to passphrase
@@ -10,15 +10,17 @@ the protector(s) failed. Later code (e.g., LUKS code) fails as
 proceeding with the passphrase.
 
 Signed-off-by: Patrick Colp <patrick.colp@oracle.com>
+Signed-off-by: Gary Lin <glin@suse.com>
+Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
 ---
  grub-core/disk/cryptodisk.c | 7 ++++++-
  1 file changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/grub-core/disk/cryptodisk.c b/grub-core/disk/cryptodisk.c
-index 6620fca00..cf37a0934 100644
+index af4104178..f9842f776 100644
 --- a/grub-core/disk/cryptodisk.c
 +++ b/grub-core/disk/cryptodisk.c
-@@ -1191,11 +1191,16 @@ grub_cryptodisk_scan_device_real (const char *name,
+@@ -1193,11 +1193,16 @@ grub_cryptodisk_scan_device_real (const char *name,
  		  source->name, source->partition != NULL ? "," : "",
  		  part != NULL ? part : N_("UNKNOWN"), dev->uuid);
        grub_free (part);

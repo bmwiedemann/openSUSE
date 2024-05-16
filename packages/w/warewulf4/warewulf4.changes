@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 14 09:01:13 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- update to 4.5.2 with followin changes:
+  * Reorder dnsmasq config to put iPXE last
+  * Update a dependency to fix CVE-2024-3727 (bsc#1224124)
+
+-------------------------------------------------------------------
 Mon May 13 07:59:50 UTC 2024 - Christian Goll <cgoll@suse.com>
 
 - updated to version 4.5.1 with following changes

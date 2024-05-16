@@ -338,9 +338,9 @@ Patch146:       0001-install-fix-software-raid1-on-esp.patch
 Patch147:       0001-grub-probe-Deduplicate-probed-partmap-output.patch
 Patch148:       0001-Fix-infinite-boot-loop-on-headless-system-in-qemu.patch
 Patch149:       0001-ofdisk-improve-boot-time-by-lookup-boot-disk-first.patch
-Patch150:       0001-protectors-Add-key-protectors-framework.patch
+Patch150:       0001-key_protector-Add-key-protectors-framework.patch
 Patch151:       0002-tpm2-Add-TPM-Software-Stack-TSS.patch
-Patch152:       0003-protectors-Add-TPM2-Key-Protector.patch
+Patch152:       0003-key_protector-Add-TPM2-Key-Protector.patch
 Patch153:       0004-cryptodisk-Support-key-protectors.patch
 Patch154:       0005-util-grub-protect-Add-new-tool.patch
 Patch155:       0008-linuxefi-Use-common-grub_initrd_load.patch
@@ -358,10 +358,8 @@ Patch166:       0002-Mark-environmet-blocks-as-used-for-image-embedding.patch
 Patch167:       grub2-increase-crypttab-path-buffer.patch
 Patch168:       0001-grub2-Set-multiple-device-path-for-a-nvmf-boot-devic.patch
 Patch169:       0001-grub2-Can-t-setup-a-default-boot-device-correctly-on.patch
-Patch170:       0001-tpm2-Add-TPM2-types-structures-and-command-constants.patch
-Patch171:       0002-tpm2-Add-more-marshal-unmarshal-functions.patch
-Patch172:       0003-tpm2-Implement-more-TPM2-commands.patch
-Patch173:       0004-tpm2-Support-authorized-policy.patch
+Patch170:       0001-tpm2-Support-authorized-policy.patch
+Patch171:       0001-tpm2-Add-extra-RSA-SRK-types.patch
 Patch174:       0001-clean-up-crypttab-and-linux-modules-dependency.patch
 Patch175:       0002-discard-cached-key-before-entering-grub-shell-and-ed.patch
 Patch176:       0001-ieee1275-ofdisk-retry-on-open-and-read-failure.patch
@@ -372,7 +370,7 @@ Patch180:       0001-xen_boot-add-missing-grub_arch_efi_linux_load_image_.patch
 Patch181:       0001-font-Try-memdisk-fonts-with-the-same-name.patch
 Patch182:       0001-Make-grub.cfg-compatible-to-old-binaries.patch
 Patch183:       grub2-change-bash-completion-dir.patch
-Patch184:       0001-protectors-Implement-NV-index.patch
+Patch184:       0001-tpm2-Implement-NV-index.patch
 Patch185:       0002-cryptodisk-Fallback-to-passphrase.patch
 Patch186:       0003-cryptodisk-wipe-out-the-cached-keys-from-protectors.patch
 Patch187:       0004-diskfilter-look-up-cryptodisk-devices-first.patch
@@ -1225,6 +1223,7 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %{_mandir}/man1/%{name}-mkrelpath.1.*
 %{_mandir}/man1/%{name}-mkrescue.1.*
 %{_mandir}/man1/%{name}-mkstandalone.1.*
+%{_mandir}/man1/%{name}-protect.1.*
 %{_mandir}/man1/%{name}-render-label.1.*
 %{_mandir}/man1/%{name}-script-check.1.*
 %{_mandir}/man1/%{name}-syslinux2cfg.1.*

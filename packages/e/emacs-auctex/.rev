@@ -558,4 +558,21 @@
   document class</comment>
     <requestid>1172346</requestid>
   </revision>
+  <revision rev="48" vrev="5">
+    <srcmd5>d76d7af3f7501a93cce13ab1f0da05c2</srcmd5>
+    <version>13.3</version>
+    <time>1715872598</time>
+    <user>anag+factory</user>
+    <comment>- Merge changes from upstream for patch dinbrief.patch 
+
+- Update dinbrief.patch
+  * Use babel style direct for ngerman
+  * Reintroduce enforced T1 font encoding
+
+- Remove patch ignore-errors.patch
+  * After discussion with AUCTeX upstream avoid now those errors
+    by ignoring font-lock TeX macros as well as lwarp.sty
+- Refresh auctex-13.3-auto-TL-2024.tar.xz with that above</comment>
+    <requestid>1174575</requestid>
+  </revision>
 </revisionlist>

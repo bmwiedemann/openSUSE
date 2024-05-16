@@ -255,4 +255,12 @@
     * [dist] more fixes for spec</comment>
     <requestid>1167140</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>781a6eb32fb97b7662d1fb9e49a195f7</srcmd5>
+    <version>0.17.1</version>
+    <time>1715872582</time>
+    <user>anag+factory</user>
+    <comment>* new upstream version 0.17.1</comment>
+    <requestid>1174412</requestid>
+  </revision>
 </revisionlist>

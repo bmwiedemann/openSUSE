@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Tue May 14 05:03:09 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 124.0.6367.207 (boo#1224294)
+  * CVE-2024-4761: Out of bounds write in V8
+
+-------------------------------------------------------------------
 Fri May 10 12:16:29 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- Chromium 124.0.6367.201
+- Chromium 124.0.6367.201 (boo#1224208)
   * CVE-2024-4671: Use after free in Visuals
 - Chromium 124.0.6367.155 (boo#1224045)
   * CVE-2024-4558: Use after free in ANGLE

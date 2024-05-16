@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May 16 10:44:07 UTC 2024 - dmueller@suse.com
+
+- Update to version 0.36:
+  * Forbid encrypted zip files
+
+-------------------------------------------------------------------
+Tue May 14 19:06:15 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Use bz2 compression to enable builds with debhelper
+  * Debian/Ubuntu builds now work fine.
+  * Allows rebuild packages with osc in ubuntu image on github
+- Add deb dependency on libmodule-build-perl and libxml2-utils
+
+-------------------------------------------------------------------
 Fri May 10 06:13:54 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Require cpio, needed for .obscpio support

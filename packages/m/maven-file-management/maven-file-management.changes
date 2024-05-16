@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 16 05:20:13 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use sisu-plexus instead of plexus-containers-container-default
+
+-------------------------------------------------------------------
 Tue Apr  2 17:25:06 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on plexus-xml where relevant

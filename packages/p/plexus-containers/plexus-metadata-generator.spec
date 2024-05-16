@@ -20,7 +20,7 @@
 %global comp_name component-metadata
 %bcond_with tests
 Name:           plexus-metadata-generator
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        Component metadata from %{base_name}
 # Most of the files are either under ASL 2.0 or MIT
@@ -46,21 +46,24 @@ BuildRequires:  objectweb-asm >= 7
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-cli
 BuildRequires:  plexus-containers-component-annotations
-BuildRequires:  plexus-containers-container-default
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-xml
 BuildRequires:  qdox >= 2
+BuildRequires:  sisu-plexus
 BuildRequires:  xbean
 Requires:       apache-commons-cli
+Requires:       atinject
+Requires:       google-guice
 Requires:       guava
 Requires:       jdom2
 Requires:       objectweb-asm >= 7
 Requires:       plexus-cli
 Requires:       plexus-containers-component-annotations = %{version}
-Requires:       plexus-containers-container-default = %{version}
 Requires:       plexus-utils
 Requires:       plexus-xml
 Requires:       qdox >= 2
+Requires:       sisu-inject
+Requires:       sisu-plexus
 Requires:       xbean
 BuildArch:      noarch
 %if %{with tests}
@@ -85,7 +88,7 @@ Group:          Documentation/HTML
 %setup -q -n %{base_name}-%{base_name}-%{version} -a100
 
 mkdir -p lib
-build-jar-repository -s lib %{base_name} objectweb-asm/asm objectweb-asm/asm-commons plexus/classworlds plexus/utils plexus/xml jdom2/jdom2 commons-cli qdox plexus/cli
+build-jar-repository -s lib %{base_name} objectweb-asm/asm objectweb-asm/asm-commons org.eclipse.sisu.plexus plexus/classworlds plexus/utils plexus/xml jdom2/jdom2 commons-cli qdox plexus/cli
 %if %{with tests}
 build-jar-repository -s lib hamcrest/core xbean/xbean-reflect
 %endif
@@ -97,19 +100,9 @@ build-jar-repository -s lib hamcrest/core xbean/xbean-reflect
 cp %{SOURCE1} .
 cp %{SOURCE2} .
 
-rm -rf plexus-container-default/src/test/java/org/codehaus/plexus/hierarchy
-
 %pom_remove_plugin -r :maven-site-plugin
 
-# For Maven 3 compat
-%pom_add_dep org.apache.maven:maven-core plexus-component-metadata
-
-# ASM dependency was changed to "provided" in XBean 4.x, so we need to provide ASM
-%pom_add_dep org.ow2.asm:asm:5.0.3:runtime plexus-container-default
-%pom_add_dep org.ow2.asm:asm-commons:5.0.3:runtime plexus-container-default
-
-%pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 plexus-container-default
-%pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 plexus-%{comp_name}
+%pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 plexus-component-metadata
 
 # Generate OSGI info
 %pom_xpath_inject "pom:project" "
@@ -165,7 +158,7 @@ install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr plexus-%{comp_name}/target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
 # script
-%jpackage_script org.codehaus.plexus.metadata.PlexusMetadataGeneratorCli "" "" %{name}:%{base_name}/plexus-container-default:%{base_name}/plexus-component-annotations:objectweb-asm/asm:plexus-classworlds:plexus/utils:plexus/xml:jdom2/jdom2:commons-cli:qdox:plexus/cli:guava/guava:xbean/xbean-reflect %{name}
+%jpackage_script org.codehaus.plexus.metadata.PlexusMetadataGeneratorCli "" "" %{name}:atinject:org.eclipse.sisu.plexus:org.eclipse.sisu.inject:guice/google-guice:%{base_name}/plexus-component-annotations:objectweb-asm/asm:plexus-classworlds:plexus/utils:plexus/xml:jdom2/jdom2:commons-cli:qdox:plexus/cli:guava/guava:xbean/xbean-reflect %{name}
 
 %files -f .mfiles
 %license LICENSE-2.0.txt LICENSE.MIT

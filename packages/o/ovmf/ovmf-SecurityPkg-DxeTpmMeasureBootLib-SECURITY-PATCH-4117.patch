@@ -26,10 +26,10 @@ Reviewed-by: Jiewen Yao <jiewen.yao@intel.com>
  create mode 100644 SecurityPkg/Library/DxeTpmMeasureBootLib/InternalUnitTest/DxeTpmMeasureBootLibSanitizationTest.c
  create mode 100644 SecurityPkg/Library/DxeTpmMeasureBootLib/InternalUnitTest/DxeTpmMeasureBootLibSanitizationTestHost.inf
 
-Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLib.c
+Index: edk2-edk2-stable202311/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLib.c
 ===================================================================
---- edk2-edk2-stable202308.orig/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLib.c
-+++ edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLib.c
+--- edk2-edk2-stable202311.orig/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLib.c
++++ edk2-edk2-stable202311/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLib.c
 @@ -18,6 +18,8 @@
  Copyright (c) 2009 - 2018, Intel Corporation. All rights reserved.<BR>
  SPDX-License-Identifier: BSD-2-Clause-Patent
@@ -133,10 +133,10 @@ Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMea
        goto Finish;
    }
  
-Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLib.inf
+Index: edk2-edk2-stable202311/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLib.inf
 ===================================================================
---- edk2-edk2-stable202308.orig/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLib.inf
-+++ edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLib.inf
+--- edk2-edk2-stable202311.orig/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLib.inf
++++ edk2-edk2-stable202311/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLib.inf
 @@ -32,6 +32,8 @@
  
  [Sources]
@@ -159,10 +159,10 @@ Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMea
    gEfiBlockIoProtocolGuid               ## SOMETIMES_CONSUMES
    gEfiDiskIoProtocolGuid                ## SOMETIMES_CONSUMES
 -
-Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLibSanitization.c
+Index: edk2-edk2-stable202311/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLibSanitization.c
 ===================================================================
 --- /dev/null
-+++ edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLibSanitization.c
++++ edk2-edk2-stable202311/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLibSanitization.c
 @@ -0,0 +1,241 @@
 +/** @file
 +  The library instance provides security service of TPM2 measure boot and
@@ -405,10 +405,10 @@ Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMea
 +
 +  return EFI_SUCCESS;
 +}
-Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLibSanitization.h
+Index: edk2-edk2-stable202311/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLibSanitization.h
 ===================================================================
 --- /dev/null
-+++ edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLibSanitization.h
++++ edk2-edk2-stable202311/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLibSanitization.h
 @@ -0,0 +1,114 @@
 +/** @file
 +  This file includes the function prototypes for the sanitization functions.
@@ -524,10 +524,10 @@ Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMea
 +  );
 +
 +#endif // DXE_TPM_MEASURE_BOOT_LIB_VALIDATION_
-Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/InternalUnitTest/DxeTpmMeasureBootLibSanitizationTest.c
+Index: edk2-edk2-stable202311/SecurityPkg/Library/DxeTpmMeasureBootLib/InternalUnitTest/DxeTpmMeasureBootLibSanitizationTest.c
 ===================================================================
 --- /dev/null
-+++ edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/InternalUnitTest/DxeTpmMeasureBootLibSanitizationTest.c
++++ edk2-edk2-stable202311/SecurityPkg/Library/DxeTpmMeasureBootLib/InternalUnitTest/DxeTpmMeasureBootLibSanitizationTest.c
 @@ -0,0 +1,301 @@
 +/** @file
 +This file includes the unit test cases for the DxeTpmMeasureBootLibSanitizationTest.c.
@@ -830,10 +830,10 @@ Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/InternalU
 +{
 +  return (INT32)UefiTestMain ();
 +}
-Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/InternalUnitTest/DxeTpmMeasureBootLibSanitizationTestHost.inf
+Index: edk2-edk2-stable202311/SecurityPkg/Library/DxeTpmMeasureBootLib/InternalUnitTest/DxeTpmMeasureBootLibSanitizationTestHost.inf
 ===================================================================
 --- /dev/null
-+++ edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/InternalUnitTest/DxeTpmMeasureBootLibSanitizationTestHost.inf
++++ edk2-edk2-stable202311/SecurityPkg/Library/DxeTpmMeasureBootLib/InternalUnitTest/DxeTpmMeasureBootLibSanitizationTestHost.inf
 @@ -0,0 +1,28 @@
 +## @file
 +# This file builds the unit tests for DxeTpmMeasureBootLib
@@ -863,10 +863,10 @@ Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/InternalU
 +  UnitTestLib
 +  PrintLib
 +  SafeIntLib
-Index: edk2-edk2-stable202308/SecurityPkg/SecurityPkg.ci.yaml
+Index: edk2-edk2-stable202311/SecurityPkg/SecurityPkg.ci.yaml
 ===================================================================
---- edk2-edk2-stable202308.orig/SecurityPkg/SecurityPkg.ci.yaml
-+++ edk2-edk2-stable202308/SecurityPkg/SecurityPkg.ci.yaml
+--- edk2-edk2-stable202311.orig/SecurityPkg/SecurityPkg.ci.yaml
++++ edk2-edk2-stable202311/SecurityPkg/SecurityPkg.ci.yaml
 @@ -17,6 +17,7 @@
          "ExceptionList": [
              "8005", "gRT",
@@ -875,10 +875,10 @@ Index: edk2-edk2-stable202308/SecurityPkg/SecurityPkg.ci.yaml
          ],
          ## Both file path and directory path are accepted.
          "IgnoreFiles": [
-Index: edk2-edk2-stable202308/SecurityPkg/Test/SecurityPkgHostTest.dsc
+Index: edk2-edk2-stable202311/SecurityPkg/Test/SecurityPkgHostTest.dsc
 ===================================================================
---- edk2-edk2-stable202308.orig/SecurityPkg/Test/SecurityPkgHostTest.dsc
-+++ edk2-edk2-stable202308/SecurityPkg/Test/SecurityPkgHostTest.dsc
+--- edk2-edk2-stable202311.orig/SecurityPkg/Test/SecurityPkgHostTest.dsc
++++ edk2-edk2-stable202311/SecurityPkg/Test/SecurityPkgHostTest.dsc
 @@ -27,6 +27,7 @@
    SecurityPkg/Library/SecureBootVariableLib/UnitTest/MockUefiLib.inf
    SecurityPkg/Test/Mock/Library/GoogleTest/MockPlatformPKProtectionLib/MockPlatformPKProtectionLib.inf

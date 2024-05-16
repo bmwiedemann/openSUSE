@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 16 06:02:54 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Version 1.1.1
+  * A workaround is added for a backward incompatible change in how
+    Qt 6.7 draws item views.
+  * Fixed an old issue in drawing radio buttons under mouse cursor
+    without animation.
+  * The support for qmake is back but without KWindowSystem (and
+    without being advertised).
+
+-------------------------------------------------------------------
 Sun Mar 17 20:01:55 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Version 1.1.0

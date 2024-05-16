@@ -70,6 +70,7 @@ Patch10:        tycho-sourcetarget.patch
 Patch11:        tycho-getTimestamp.patch
 Patch12:        tycho-surefire.patch
 Patch13:        tycho-surefire3.patch
+Patch14:        tycho-mpp-311.patch
 Patch100:       fedoraproject-p2-bootstrap-fix.patch
 BuildRequires:  bash
 BuildRequires:  fdupes
@@ -223,6 +224,7 @@ mv fedoraproject-p2-%{fp_p2_git_tag} fedoraproject-p2
 %patch -P 11 -p1
 %patch -P 12 -p1
 %patch -P 13 -p1
+%patch -P 14 -p1
 %patch -P 100
 
 # Unneeded for RPM builds

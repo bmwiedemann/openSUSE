@@ -17,7 +17,7 @@
 
 
 Name:           hwdata
-Version:        0.380
+Version:        0.382
 Release:        0
 Summary:        Hardware identification and configuration data
 License:        GPL-2.0-or-later
@@ -36,7 +36,7 @@ hwdata contains various hardware identification and configuration data,
 such as the pci.ids and usb.ids databases.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure

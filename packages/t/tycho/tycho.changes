@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 15 16:39:13 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * tycho-mpp-311.patch
+    + fix build with maven-plugin-plugin >= 3.11
+
+-------------------------------------------------------------------
 Wed Apr 17 12:49:52 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Require at least maven-surefire 3 for build

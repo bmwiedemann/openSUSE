@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May  4 14:01:48 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- languagetool-test-resource.patch
+  * fix running tests from the standalone
+    languagetool-core-tests.jar
+
+-------------------------------------------------------------------
 Wed Feb 21 22:08:29 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

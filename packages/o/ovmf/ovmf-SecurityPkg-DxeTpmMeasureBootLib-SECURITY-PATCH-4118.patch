@@ -18,10 +18,10 @@ Reviewed-by: Jiewen Yao <jiewen.yao@intel.com>
  .../DxeTpmMeasureBootLibSanitizationTest.c    | 98 +++++++++++++++++--
  4 files changed, 168 insertions(+), 10 deletions(-)
 
-Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLib.c
+Index: edk2-edk2-stable202311/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLib.c
 ===================================================================
---- edk2-edk2-stable202308.orig/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLib.c
-+++ edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLib.c
+--- edk2-edk2-stable202311.orig/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLib.c
++++ edk2-edk2-stable202311/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLib.c
 @@ -17,6 +17,7 @@
  
  Copyright (c) 2009 - 2018, Intel Corporation. All rights reserved.<BR>
@@ -57,10 +57,10 @@ Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMea
    ImageLoad           = (EFI_IMAGE_LOAD_EVENT *)TcgEvent->Event;
  
    switch (ImageType) {
-Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLibSanitization.c
+Index: edk2-edk2-stable202311/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLibSanitization.c
 ===================================================================
---- edk2-edk2-stable202308.orig/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLibSanitization.c
-+++ edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLibSanitization.c
+--- edk2-edk2-stable202311.orig/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLibSanitization.c
++++ edk2-edk2-stable202311/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLibSanitization.c
 @@ -239,3 +239,47 @@ SanitizePrimaryHeaderGptEventSize (
  
    return EFI_SUCCESS;
@@ -109,10 +109,10 @@ Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMea
 +
 +  return EFI_SUCCESS;
 +}
-Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLibSanitization.h
+Index: edk2-edk2-stable202311/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLibSanitization.h
 ===================================================================
---- edk2-edk2-stable202308.orig/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLibSanitization.h
-+++ edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLibSanitization.h
+--- edk2-edk2-stable202311.orig/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLibSanitization.h
++++ edk2-edk2-stable202311/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMeasureBootLibSanitization.h
 @@ -111,4 +111,27 @@ SanitizePrimaryHeaderGptEventSize (
    OUT UINT32                            *EventSize
    );
@@ -141,10 +141,10 @@ Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/DxeTpmMea
 +  );
 +
  #endif // DXE_TPM_MEASURE_BOOT_LIB_VALIDATION_
-Index: edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/InternalUnitTest/DxeTpmMeasureBootLibSanitizationTest.c
+Index: edk2-edk2-stable202311/SecurityPkg/Library/DxeTpmMeasureBootLib/InternalUnitTest/DxeTpmMeasureBootLibSanitizationTest.c
 ===================================================================
---- edk2-edk2-stable202308.orig/SecurityPkg/Library/DxeTpmMeasureBootLib/InternalUnitTest/DxeTpmMeasureBootLibSanitizationTest.c
-+++ edk2-edk2-stable202308/SecurityPkg/Library/DxeTpmMeasureBootLib/InternalUnitTest/DxeTpmMeasureBootLibSanitizationTest.c
+--- edk2-edk2-stable202311.orig/SecurityPkg/Library/DxeTpmMeasureBootLib/InternalUnitTest/DxeTpmMeasureBootLibSanitizationTest.c
++++ edk2-edk2-stable202311/SecurityPkg/Library/DxeTpmMeasureBootLib/InternalUnitTest/DxeTpmMeasureBootLibSanitizationTest.c
 @@ -1,8 +1,8 @@
  /** @file
 -This file includes the unit test cases for the DxeTpmMeasureBootLibSanitizationTest.c.

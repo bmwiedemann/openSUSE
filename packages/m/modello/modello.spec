@@ -99,7 +99,7 @@ API documentation for %{name}.
 %patch -P 0 -p1
 %patch -P 1 -p1
 %patch -P 2 -p1
-cp -p %{SOURCE1} LICENSE
+cp -p %{SOURCE1} .
 
 %pom_remove_plugin :maven-site-plugin
 %pom_remove_plugin :maven-enforcer-plugin
@@ -166,14 +166,14 @@ done
 %jpackage_script org.codehaus.modello.ModelloCli "" "" modello:aopalliance:atinject:google-guice:guava:jackson-core:javadoc-parser:plexus/plexus-build-api:plexus/plexus-build-api0:plexus/classworlds:plexus-containers/plexus-component-annotations:plexus/utils:plexus/xml:org.eclipse.sisu.inject:org.eclipse.sisu.plexus:slf4j/api:slf4j/simple:snakeyaml:velocity %{name} true
 
 %files -f .mfiles -f .mfiles-core
-%license LICENSE
+%license LICENSE.txt LICENSE-2.0.txt
 %{_bindir}/*
 
 %files test -f .mfiles-test
-%license LICENSE
+%license LICENSE.txt LICENSE-2.0.txt
 
 %files javadoc
-%license LICENSE
+%license LICENSE.txt LICENSE-2.0.txt
 %{_javadocdir}/%{name}
 
 %changelog

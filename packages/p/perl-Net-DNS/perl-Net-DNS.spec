@@ -18,9 +18,10 @@
 
 %define cpan_name Net-DNS
 Name:           perl-Net-DNS
-Version:        1.420.0
+Version:        1.450.0
 Release:        0
-%define cpan_version 1.42
+# 1.45 -> normalize -> 1.450.0
+%define cpan_version 1.45
 License:        MIT
 Summary:        Perl Interface to the Domain Name System
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -31,6 +32,7 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Carp) >= 1.1
 BuildRequires:  perl(Digest::HMAC) >= 1.03
+BuildRequires:  perl(Digest::MD5) >= 2.37
 BuildRequires:  perl(Digest::SHA) >= 5.23
 BuildRequires:  perl(Encode) >= 2.26
 BuildRequires:  perl(Exporter) >= 5.63
@@ -43,11 +45,18 @@ BuildRequires:  perl(IO::Socket) >= 1.3
 BuildRequires:  perl(IO::Socket::IP) >= 0.38
 BuildRequires:  perl(PerlIO) >= 1.05
 BuildRequires:  perl(Scalar::Util) >= 1.19
+BuildRequires:  perl(Socket) >= 1.81
 BuildRequires:  perl(Test::Builder) >= 0.8
 BuildRequires:  perl(Test::More) >= 0.8
 BuildRequires:  perl(Time::Local) >= 1.19
+BuildRequires:  perl(base) >= 2.13
+BuildRequires:  perl(constant) >= 1.17
+BuildRequires:  perl(overload) >= 1.06
+#BuildRequires:  perl(warnings) >= 1.0501
+Requires:       perl(base) >= 2.13
 Requires:       perl(Carp) >= 1.1
 Requires:       perl(Digest::HMAC) >= 1.03
+Requires:       perl(Digest::MD5) >= 2.37
 Requires:       perl(Digest::SHA) >= 5.23
 Requires:       perl(Encode) >= 2.26
 Requires:       perl(Exporter) >= 5.63
@@ -57,7 +66,11 @@ Requires:       perl(IO::Socket) >= 1.3
 Requires:       perl(IO::Socket::IP) >= 0.38
 Requires:       perl(PerlIO) >= 1.05
 Requires:       perl(Scalar::Util) >= 1.19
+Requires:       perl(Socket) >= 1.81
 Requires:       perl(Time::Local) >= 1.19
+Requires:       perl(constant) >= 1.17
+Requires:       perl(overload) >= 1.06
+#Requires:       perl(warnings) >= 1.0501
 Provides:       perl(Net::DNS) = %{version}
 Provides:       perl(Net::DNS::Domain)
 Provides:       perl(Net::DNS::DomainName)
@@ -84,6 +97,7 @@ Provides:       perl(Net::DNS::RR::CDS)
 Provides:       perl(Net::DNS::RR::CERT)
 Provides:       perl(Net::DNS::RR::CNAME)
 Provides:       perl(Net::DNS::RR::CSYNC)
+Provides:       perl(Net::DNS::RR::DELEG)
 Provides:       perl(Net::DNS::RR::DHCID)
 Provides:       perl(Net::DNS::RR::DNAME)
 Provides:       perl(Net::DNS::RR::DNSKEY)
@@ -162,10 +176,14 @@ Provides:       perl(Net::DNS::Update)
 Provides:       perl(Net::DNS::ZoneFile)
 Provides:       perl(Net::DNS::ZoneFile::Generator)
 Provides:       perl(Net::DNS::ZoneFile::Text)
-%define         __perllib_provides /bin/true
+%undefine       __perllib_provides
 Recommends:     perl(Digest::BubbleBabble) >= 0.02
 Recommends:     perl(Net::LibIDN2) >= 1
 %{perl_requires}
+# MANUAL BEGIN
+BuildRequires:  perl(warnings) >= 1.05
+Requires:       perl(warnings) >= 1.05
+# MANUAL END
 
 %description
 Net::DNS is a collection of Perl modules that act as a Domain Name System

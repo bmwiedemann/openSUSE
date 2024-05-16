@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 15 15:00:02 UTC 2024 - Marius Tomaschewski <mt@suse.com>
+
+- client: fix ifreload to pull UP ports/links again when the config
+  of their master/lower changed (bsc#1224100,gh#openSUSE/wicked#1014).
+  [+ 0001-ifreload-pull-UP-again-on-master-lower-changes-bsc1224100.patch]
+
+-------------------------------------------------------------------
 Wed May  8 10:16:30 UTC 2024 - Marius Tomaschewski <mt@suse.com>
 
 - Update to version 0.6.75:

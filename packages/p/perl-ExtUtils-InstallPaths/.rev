@@ -45,4 +45,15 @@
     <comment></comment>
     <requestid>606962</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>268d96fb9b1ebb519e479c1c0a4a8a00</srcmd5>
+    <version>0.13.0</version>
+    <time>1715872368</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.013
+   see /usr/share/doc/packages/perl-ExtUtils-InstallPaths/Changes
+  0.013     2024-04-25 12:28:37+02:00 Europe/Brussels
+            - Try to install any installable paths (forwarded request 1173741 from tinita)</comment>
+    <requestid>1174134</requestid>
+  </revision>
 </revisionlist>

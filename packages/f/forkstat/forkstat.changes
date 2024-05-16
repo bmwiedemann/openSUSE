@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  9 18:48:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.03.02:
+  * Makefile: remove snap from make dist rule
+  * debian/rules: update hardening flags
+  * Update copyright to 2024
+  * Check for array bounds limit while parsing pid length string
+
+-------------------------------------------------------------------
 Fri Mar 17 17:02:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.03.01:
@@ -30,7 +39,7 @@ Sat Nov  7 18:17:09 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 Mon Aug 17 12:41:40 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.02.15:
-  * add missing memory initialization to zero 
+  * add missing memory initialization to zero
 
 -------------------------------------------------------------------
 Sun Mar  8 10:41:16 UTC 2020 - Martin Hauke <mardnh@gmx.de>

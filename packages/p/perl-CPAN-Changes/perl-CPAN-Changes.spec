@@ -18,7 +18,7 @@
 
 %define cpan_name CPAN-Changes
 Name:           perl-CPAN-Changes
-Version:        0.500003
+Version:        0.500004
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Parser for CPAN style change logs

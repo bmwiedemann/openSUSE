@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 16 04:54:53 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use sisu-plexus instead of plexus-containers-container-default
+- Added patch:
+  * plexus-ant-factory-sisu-plexus.patch
+    + fix the code to build both with sisu-plexus and
+      plexus-containers-container-default.
+
+-------------------------------------------------------------------
 Wed Feb 21 22:17:52 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Clean the spec file and simplify it a bit

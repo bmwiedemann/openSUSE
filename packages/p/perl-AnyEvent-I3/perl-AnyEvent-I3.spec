@@ -1,7 +1,7 @@
 #
 # spec file for package perl-AnyEvent-I3
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,46 +12,51 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-AnyEvent-I3
-Version:        0.17
-Release:        0
 %define cpan_name AnyEvent-I3
-Summary:        Communicate with the I3 Window Manager
-License:        GPL-1.0+ or Artistic-1.0
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/AnyEvent-I3/
-Source0:        https://cpan.metacpan.org/authors/id/M/MS/MSTPLBG/%{cpan_name}-%{version}.tar.gz
+Name:           perl-AnyEvent-I3
+Version:        0.190.0
+Release:        0
+# 0.19 -> normalize -> 0.190.0
+%define cpan_version 0.19
+#Upstream: Artistic-1.0 or GPL-1.0-or-later
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Communicate with the i3 window manager
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/M/MS/MSTPLBG/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(AnyEvent)
 BuildRequires:  perl(AnyEvent::Handle)
 BuildRequires:  perl(AnyEvent::Socket)
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.36
 BuildRequires:  perl(JSON::XS)
+BuildRequires:  perl(Test::More) >= 0.8
 Requires:       perl(AnyEvent)
 Requires:       perl(AnyEvent::Handle)
 Requires:       perl(AnyEvent::Socket)
 Requires:       perl(JSON::XS)
+Provides:       perl(AnyEvent::I3) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
 communicate with the i3 window manager
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -59,7 +64,6 @@ communicate with the i3 window manager
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog

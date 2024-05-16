@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Email-Sender
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name Email-Sender
 Name:           perl-Email-Sender
-Version:        2.600
+Version:        2.601.0
 Release:        0
+# 2.601 -> normalize -> 2.601.0
+%define cpan_version 2.601
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Library for sending email
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -33,7 +35,7 @@ BuildRequires:  perl(Email::Abstract) >= 3.006
 BuildRequires:  perl(Email::Address::XS)
 BuildRequires:  perl(Email::Simple) >= 1.998
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.78
-BuildRequires:  perl(File::Path) >= 2.060000
+BuildRequires:  perl(File::Path) >= 2.06
 BuildRequires:  perl(List::Util) >= 1.45
 BuildRequires:  perl(Module::Runtime)
 BuildRequires:  perl(Moo) >= 2.000000
@@ -49,7 +51,7 @@ BuildRequires:  perl(Try::Tiny)
 Requires:       perl(Email::Abstract) >= 3.006
 Requires:       perl(Email::Address::XS)
 Requires:       perl(Email::Simple) >= 1.998
-Requires:       perl(File::Path) >= 2.060000
+Requires:       perl(File::Path) >= 2.06
 Requires:       perl(List::Util) >= 1.45
 Requires:       perl(Module::Runtime)
 Requires:       perl(Moo) >= 2.000000
@@ -61,6 +63,31 @@ Requires:       perl(Sub::Exporter)
 Requires:       perl(Sub::Exporter::Util)
 Requires:       perl(Throwable::Error) >= 0.200003
 Requires:       perl(Try::Tiny)
+Provides:       perl(Email::Sender) = %{version}
+Provides:       perl(Email::Sender::Failure) = %{version}
+Provides:       perl(Email::Sender::Failure::Multi) = %{version}
+Provides:       perl(Email::Sender::Failure::Permanent) = %{version}
+Provides:       perl(Email::Sender::Failure::Temporary) = %{version}
+Provides:       perl(Email::Sender::Manual) = %{version}
+Provides:       perl(Email::Sender::Manual::QuickStart) = %{version}
+Provides:       perl(Email::Sender::Role::CommonSending) = %{version}
+Provides:       perl(Email::Sender::Role::HasMessage) = %{version}
+Provides:       perl(Email::Sender::Simple) = %{version}
+Provides:       perl(Email::Sender::Success) = %{version}
+Provides:       perl(Email::Sender::Success::Partial) = %{version}
+Provides:       perl(Email::Sender::Transport) = %{version}
+Provides:       perl(Email::Sender::Transport::DevNull) = %{version}
+Provides:       perl(Email::Sender::Transport::Failable) = %{version}
+Provides:       perl(Email::Sender::Transport::Maildir) = %{version}
+Provides:       perl(Email::Sender::Transport::Mbox) = %{version}
+Provides:       perl(Email::Sender::Transport::Print) = %{version}
+Provides:       perl(Email::Sender::Transport::SMTP) = %{version}
+Provides:       perl(Email::Sender::Transport::SMTP::Persistent) = %{version}
+Provides:       perl(Email::Sender::Transport::Sendmail) = %{version}
+Provides:       perl(Email::Sender::Transport::Test) = %{version}
+Provides:       perl(Email::Sender::Transport::Wrapper) = %{version}
+Provides:       perl(Email::Sender::Util) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -76,8 +103,9 @@ Documentation may be found in Email::Sender::Manual, and new users should
 start with Email::Sender::Manual::QuickStart.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version}
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

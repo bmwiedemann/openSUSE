@@ -32,4 +32,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148133</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>28b7073d5658d34bae697be1eae1bae4</srcmd5>
+    <version>1.0~beta10</version>
+    <time>1715872551</time>
+    <user>anag+factory</user>
+    <comment>build with sisu-plexus</comment>
+    <requestid>1174345</requestid>
+  </revision>
 </revisionlist>

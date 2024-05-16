@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 10 03:08:34 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.73
+   see /usr/share/doc/packages/perl-Prima/Changes
+
+  1.73 2024-05-07
+   - add Prima::Image::Exif, support jpeg tags
+   - better compatibility for text rendering outside paint
+   - add examples/text-render.pl, inspired by hb_view
+
+-------------------------------------------------------------------
 Thu Feb  1 03:11:24 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.72

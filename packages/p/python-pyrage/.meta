@@ -1,0 +1,6 @@
+<package name="python-pyrage" project="openSUSE:Factory">
+  <title>Python bindings for rage (age in Rust)</title>
+  <description></description>
+  <devel project="security" package="python-pyrage"/>
+  <url>https://github.com/woodruffw/pyrage</url>
+</package>

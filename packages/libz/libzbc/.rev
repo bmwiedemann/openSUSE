@@ -167,4 +167,12 @@
     <comment>- Update to release 5.13</comment>
     <requestid>1032863</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>4a4b1f122ac7ff4b7f3684b9fcb0d6b9</srcmd5>
+    <version>5.14.0</version>
+    <time>1715872563</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 5.14</comment>
+    <requestid>1174366</requestid>
+  </revision>
 </revisionlist>

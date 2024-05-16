@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  2 13:24:11 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * 0002-Replace-bundled-gdata-java-client-classes-with-commo.patch
+    + remove unused List variable that was originally used for
+      debugging purposes
+
+-------------------------------------------------------------------
 Mon Apr 29 11:44:13 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - The binaries are compatible with java 1.8

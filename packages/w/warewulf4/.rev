@@ -251,4 +251,14 @@
 - use tftp.socket for activation not service (bsc#1216994) (forwarded request 1173599 from mslacken)</comment>
     <requestid>1173600</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a3560d18c0ecaf2e519f3ae58b4b34e5</srcmd5>
+    <version>4.5.2</version>
+    <time>1715872439</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.5.2 with followin changes:
+  * Reorder dnsmasq config to put iPXE last
+  * Update a dependency to fix CVE-2024-3727 (bsc#1224124) (forwarded request 1173929 from mslacken)</comment>
+    <requestid>1173930</requestid>
+  </revision>
 </revisionlist>

@@ -49,4 +49,12 @@
   * add missing libc on LoongArch-64</comment>
     <requestid>1005732</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>855a61cc92af4819542c8678612485cd</srcmd5>
+    <version>2.7.1</version>
+    <time>1715872647</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1174590</requestid>
+  </revision>
 </revisionlist>

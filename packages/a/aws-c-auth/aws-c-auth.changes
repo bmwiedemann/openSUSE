@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 13 08:36:07 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.21
+  * Fix STSCredentialsProvider Signing Region by @waahm7 in (#239)
+- from version 0.7.20
+  * Fix STS Credentials Provider to use regional
+    endpoint if possible by @waahm7 in (#237)
+
+-------------------------------------------------------------------
 Wed May  8 13:08:23 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.7.19

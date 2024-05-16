@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-velocity
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,12 +30,9 @@ BuildRequires:  ant
 BuildRequires:  apache-commons-collections
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
-BuildRequires:  plexus-containers-container-default
+BuildRequires:  javapackages-local >= 6
+BuildRequires:  sisu-plexus
 BuildRequires:  velocity
-Requires:       mvn(commons-collections:commons-collections)
-Requires:       mvn(org.codehaus.plexus:plexus-container-default)
-Requires:       mvn(velocity:velocity)
 BuildArch:      noarch
 
 %description
@@ -58,11 +55,8 @@ find -name '*.jar' -delete
 cp -p %{SOURCE1} build.xml
 cp -p %{SOURCE2} LICENSE
 
-%pom_xpath_inject pom:project "<groupId>org.codehaus.plexus</groupId>"
-%pom_remove_parent
-
 mkdir -p lib
-build-jar-repository -s lib commons-collections plexus-containers/plexus-container-default velocity
+build-jar-repository -s lib commons-collections org.eclipse.sisu.plexus velocity
 
 %build
 ant jar javadoc
@@ -73,7 +67,7 @@ install -dm 0755 %{buildroot}%{_javadir}/%{name}
 install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
 %add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}

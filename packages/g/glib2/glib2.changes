@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon May 13 14:07:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.80.2:
+  + Fix a regression with IBus caused by the fix for
+    CVE-2024-34397.
+  + Fix installation directory of the GVariant specification.
+  + Bugs fixed:
+    - GVariant specification installed in wrong directory.
+    - Backport "gdbusconnection: Fix test signal subscription
+      ordering" to glib-2-80.
+    - Backport “Correct installation directory of GVariant
+      specification” to glib-2-80.
+    - Backport “gdbusconnection: Allow name owners to have the
+      syntax of a well-known name” to glib-2-80.
+- Changes from version 2.80.1
+  + Fix CVE-2024-34397: GDBus signal subscriptions for well-known
+    names are vulnerable to unicast spoofing.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Apr  2 16:17:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - require dbus-launch only if dbus-service is wanted. This helps

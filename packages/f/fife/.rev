@@ -75,4 +75,18 @@
     <comment></comment>
     <requestid>1152971</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>7d63995623d7f1eeed88c6884b529079</srcmd5>
+    <version>0.4.2</version>
+    <time>1715872624</time>
+    <user>anag+factory</user>
+    <comment>I fixed the build according to docs, but I don't use that software, so probably it would be a good idea if somebody tests the fix. I added the patch to the relevant GitHub ticket as well, maybe somebody there tests it.
+
+
+- fix build with boost 1.85 (fife-boost_1_85.patch)
+- Applying swig4.patch on Leap 15.6/SLE15-SP6 too
+  * swig 4.1.1 has been added to SLE15-SP6
+</comment>
+    <requestid>1174568</requestid>
+  </revision>
 </revisionlist>

@@ -24,7 +24,7 @@
 %global _sitelibdir %{%{pythons}_sitelib}
 
 Name:           aws-cli
-Version:        1.32.31
+Version:        1.32.105
 Release:        0
 Summary:        Amazon Web Services Command Line Interface
 License:        Apache-2.0
@@ -42,7 +42,7 @@ BuildRequires:  %{pythons}-pip
 BuildRequires:  %{pythons}-setuptools
 BuildRequires:  %{pythons}-wheel
 Requires:       %{pythons}
-Requires:       %{pythons}-botocore >= 1.34.31
+Requires:       %{pythons}-botocore >= 1.34.105
 Requires:       %{pythons}-six
 Requires:       (%{pythons}-PyYAML >= 3.10 with %{pythons}-PyYAML <= 6.1)
 Requires:       (%{pythons}-colorama >= 0.2.5 with %{pythons}-colorama <= 0.5.0)

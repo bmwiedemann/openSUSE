@@ -800,4 +800,20 @@
   suite with other loaders enabled. (forwarded request 1172084 from dimstar)</comment>
     <requestid>1172085</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>cc39912307ee52ecdc590f1d974ed740</srcmd5>
+    <version>2.42.12</version>
+    <time>1715872396</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.42.12:
+  + Fix a build failure,
+  + Fix occasional build failures,
+  + ani: Reject files with multiple INA or IART chunks,
+  + ani: Reject files with multiple anih chunks (CVE-2022-48622),
+  + ani: validate chunk size,
+  + Updated translations.
+- Drop 238893d8cd6f9c2616a05ab521a29651a17a38c2.patch: fixed
+  upstream. (forwarded request 1174230 from dimstar)</comment>
+    <requestid>1174238</requestid>
+  </revision>
 </revisionlist>

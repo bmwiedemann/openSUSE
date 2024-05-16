@@ -18,9 +18,10 @@
 
 %define cpan_name Parse-PMFile
 Name:           perl-Parse-PMFile
-Version:        0.450.0
+Version:        0.470.0
 Release:        0
-%define cpan_version 0.45
+# 0.47 -> normalize -> 0.470.0
+%define cpan_version 0.47
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Parses .pm file as PAUSE does
 URL:            https://metacpan.org/release/%{cpan_name}

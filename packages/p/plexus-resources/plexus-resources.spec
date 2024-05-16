@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-resources
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,12 +32,10 @@ Source0:        %{name}-%{namedversion}-src.tar.xz
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
-BuildRequires:  plexus-containers-container-default
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
-Requires:       mvn(org.codehaus.plexus:plexus-container-default)
-Requires:       mvn(org.codehaus.plexus:plexus-utils)
+BuildRequires:  sisu-plexus
 BuildArch:      noarch
 
 %description
@@ -58,12 +56,9 @@ API documentation for %{name}.
 %setup -q -n %{name}-%{namedversion}
 cp %{SOURCE1} build.xml
 
-%pom_remove_parent .
-%pom_xpath_inject "pom:project" "<groupId>org.codehaus.plexus</groupId>" .
-
 %build
 mkdir -p lib
-build-jar-repository -s lib plexus/utils plexus-containers/plexus-container-default
+build-jar-repository -s lib plexus/utils org.eclipse.sisu.plexus
 %{ant} jar javadoc
 
 %install
@@ -72,7 +67,7 @@ install -dm 0755 %{buildroot}%{_javadir}/plexus
 install -pm 0644 target/%{name}-%{namedversion}.jar %{buildroot}%{_javadir}/plexus/resources.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/plexus
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/plexus/resources.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/plexus/resources.pom
 %add_maven_depmap plexus/resources.pom plexus/resources.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 16 08:06:57 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with maven-plugin-plugin >= 3.11
+
+-------------------------------------------------------------------
 Thu Jan 13 17:53:26 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with newer auto version by adding the

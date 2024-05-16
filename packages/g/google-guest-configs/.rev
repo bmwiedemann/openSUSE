@@ -197,4 +197,16 @@
     <comment></comment>
     <requestid>1161370</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5df7a686ae6e4f275944e568237b16ab</srcmd5>
+    <version>20240514.00</version>
+    <time>1715872635</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240514.00
+  * Add systemd-networkd hostname hook (#71)
+- from version 20240501.00
+  * Add hostname hook for NetworkManager without
+    dhclient compat script (#70) (forwarded request 1174485 from glaubitz)</comment>
+    <requestid>1174496</requestid>
+  </revision>
 </revisionlist>

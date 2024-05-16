@@ -1,7 +1,7 @@
 #
 # spec file for package makedumpfile
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %endif
 
 Name:           makedumpfile
-Version:        1.7.4
+Version:        1.7.5
 Release:        0
 Summary:        Partial kernel dump
 License:        GPL-2.0-only
@@ -70,6 +70,8 @@ via gdb or crash utility.
 %else
 %autosetup -p1
 %endif
+
+%check
 
 %build
 export CFLAGS="%{optflags} -fcommon"

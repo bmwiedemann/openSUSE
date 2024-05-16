@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr 26 03:13:12 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.000162
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000162  2024-04-25 14:57:23+01:00 Europe/Lisbon
+      - Fix #292 and #270
+  0.000161  2024-04-25 12:05:32+01:00 Europe/Lisbon
+      - Fix #289: some checks could leak across array bounds
+      - Fix #285: Mocking around missing symbols
+  0.000160  2024-04-25 11:18:36+01:00 Europe/Lisbon
+      - Fix #291: done_testing under AsyncSubtest does not make sense
+      - Fix #275: prototypes for around/after/before
+      - Fix #288: Merge PR for #275
+      - Fix #290: Extra docs for srand
+
+-------------------------------------------------------------------
 Thu Oct 26 03:08:32 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.000159

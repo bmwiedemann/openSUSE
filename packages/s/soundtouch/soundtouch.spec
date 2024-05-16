@@ -1,7 +1,7 @@
 #
 # spec file for package soundtouch
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 1
 Name:           soundtouch
-Version:        2.3.2
+Version:        2.3.3
 Release:        0
 Summary:        Audio Processing Library
 License:        LGPL-2.1-or-later

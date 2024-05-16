@@ -700,4 +700,18 @@ last submission had wrong tar ball for unknown reason</comment>
     <comment></comment>
     <requestid>1173045</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>0fa497ebeb2977df17c16f7c9ec1a961</srcmd5>
+    <version>0.36</version>
+    <time>1715872594</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.36:
+  * Forbid encrypted zip files
+
+- Use bz2 compression to enable builds with debhelper
+  * Debian/Ubuntu builds now work fine.
+  * Allows rebuild packages with osc in ubuntu image on github
+- Add deb dependency on libmodule-build-perl and libxml2-utils</comment>
+    <requestid>1174432</requestid>
+  </revision>
 </revisionlist>

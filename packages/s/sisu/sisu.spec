@@ -25,8 +25,8 @@ Summary:        Eclipse dependency injection framework
 License:        BSD-3-Clause AND EPL-1.0
 Group:          Development/Libraries/Java
 URL:            https://www.eclipse.org/sisu/
-Source0:        https://github.com/eclipse/sisu.inject/archive/refs/tags/%reltype/%{version}.tar.gz#/sisu-inject-%{version}.tar.gz
-Source1:        https://github.com/eclipse/sisu.plexus/archive/refs/tags/%reltype/%{version}.tar.gz#/sisu-plexus-%{version}.tar.gz
+Source0:        https://github.com/eclipse/sisu.inject/archive/refs/tags/%{reltype}/%{version}.tar.gz#/sisu-inject-%{version}.tar.gz
+Source1:        https://github.com/eclipse/sisu.plexus/archive/refs/tags/%{reltype}/%{version}.tar.gz#/sisu-plexus-%{version}.tar.gz
 Source2:        %{name}-build.tar.xz
 Patch1:         %{name}-no-dependency-on-glassfish-servlet-api.patch
 Patch3:         %{name}-osgi-api.patch
@@ -68,6 +68,8 @@ This package contains %{summary}.
 Summary:        Sisu Plexus
 Group:          Development/Libraries/Java
 Requires:       %{name}-inject = %{version}
+Obsoletes:      plexus-containers-container-default < 2.2.0
+Provides:       plexus-containers-container-default = 2.2.0
 
 %description    plexus
 This package contains %{summary}.
@@ -114,13 +116,16 @@ install -pm 0644 %{name}-inject/org.eclipse.sisu.inject/target/org.eclipse.sisu.
     %{buildroot}%{_javadir}/org.eclipse.sisu.inject.jar
 install -pm 0644 %{name}-plexus/org.eclipse.sisu.plexus/target/org.eclipse.sisu.plexus-%{version}.jar \
     %{buildroot}%{_javadir}/org.eclipse.sisu.plexus.jar
+# Compatibility symlink
+install -dm 0755 %{buildroot}%{_javadir}/plexus-containers
+ln -sf %{_javadir}/org.eclipse.sisu.plexus.jar %{buildroot}%{_javadir}/plexus-containers/plexus-container-default.jar
 
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
 %{mvn_install_pom} %{name}-inject/org.eclipse.sisu.inject/pom.xml %{buildroot}%{_mavenpomdir}/org.eclipse.sisu.inject.pom
 %add_maven_depmap org.eclipse.sisu.inject.pom org.eclipse.sisu.inject.jar -f inject
 %{mvn_install_pom} %{name}-plexus/org.eclipse.sisu.plexus/pom.xml %{buildroot}%{_mavenpomdir}/org.eclipse.sisu.plexus.pom
-%add_maven_depmap org.eclipse.sisu.plexus.pom org.eclipse.sisu.plexus.jar -f plexus -a org.sonatype.sisu:sisu-inject-plexus
+%add_maven_depmap org.eclipse.sisu.plexus.pom org.eclipse.sisu.plexus.jar -f plexus -a org.sonatype.sisu:sisu-inject-plexus,org.codehaus.plexus:plexus-container-default
 
 # javadoc
 for i in inject plexus; do
@@ -133,6 +138,7 @@ done
 %license sisu-inject/LICENSE.txt
 
 %files plexus -f .mfiles-plexus
+%{_javadir}/plexus-containers
 
 %files javadoc
 %license sisu-inject/LICENSE.txt

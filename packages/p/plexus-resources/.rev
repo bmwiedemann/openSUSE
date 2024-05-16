@@ -15,4 +15,12 @@
     <comment>Build with source/target levels 8</comment>
     <requestid>963314</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f20238e0495ab4c51f169c286bb181bf</srcmd5>
+    <version>1.0~a7</version>
+    <time>1715872546</time>
+    <user>anag+factory</user>
+    <comment>build with sisu-plexus</comment>
+    <requestid>1174342</requestid>
+  </revision>
 </revisionlist>

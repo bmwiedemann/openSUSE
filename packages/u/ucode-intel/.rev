@@ -1146,4 +1146,12 @@
   - Update for functional issues. Refer to 10th Generation Intel Core Processor Specification Update https://cdrdv2.intel.com/v1/dl/getContent/615213 for details. (forwarded request 1157540 from msmeissn)</comment>
     <requestid>1157541</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>1de6ed4ef078723448e23bd64e3d1d03</srcmd5>
+    <version>20240514</version>
+    <time>1715872412</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1174365</requestid>
+  </revision>
 </revisionlist>

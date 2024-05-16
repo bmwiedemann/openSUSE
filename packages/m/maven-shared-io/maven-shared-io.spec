@@ -33,8 +33,8 @@ BuildRequires:  javapackages-local >= 6
 BuildRequires:  maven-lib
 BuildRequires:  maven-shared-utils
 BuildRequires:  maven-wagon-provider-api
-BuildRequires:  plexus-containers-container-default
 BuildRequires:  plexus-utils
+BuildRequires:  sisu-plexus
 BuildRequires:  unzip
 BuildArch:      noarch
 
@@ -64,8 +64,8 @@ build-jar-repository -s lib \
   maven/maven-plugin-api \
   maven-wagon/provider-api \
   maven-shared-utils/maven-shared-utils \
-  plexus/utils \
-  plexus-containers/plexus-container-default
+  org.eclipse.sisu.plexus \
+  plexus/utils
 
 # Some of the tests cannot run outside maven
 %{ant} \

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu May  9 13:35:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.1:
+  * checksec FORTIFY detection (#236)
+  * libc cleanup
+  * Added github pages
+  * Check kernel for YAMA
+  * Fix Nx checks
+  * Move github primary branch from master to main
+  * Update gitattributes
+  * Allow setting a libc file
+  * Add tests for listfile
+  * Fix trailing comma with listfile
+  * Several shellcheck fixes
+  * If no header is present, return N/A for Relro and nx
+  * Remove superfluous -W flags
+  * Fix broken Nx checks
+  * change default libc search path from / to /lib
+  * Cleanup grep
+  * Rewrite man page in mdoc
+  * Remove s_readelf
+  * Fix stack protection and full relro check
+  * Add tests suite for hardening checks
+  * Speed up FS_comparison by 10x
+  * Make shellcheck only run on final script
+  * Fix debug exit check
+  * Use Dynamic Section if there is no symbols table
+  * Check foritfy vs fortified
+
+-------------------------------------------------------------------
 Sat Sep 24 08:58:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.0:
@@ -9,7 +39,7 @@ Sat Sep 24 08:58:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Wed Mar 16 10:57:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- add procps dependency for sysctl 
+- add procps dependency for sysctl
 
 -------------------------------------------------------------------
 Mon Dec 20 10:41:59 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -26,9 +56,9 @@ Mon Dec 20 10:41:59 UTC 2021 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Wed Jun  9 15:36:08 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- add missing gawk dependency 
+- add missing gawk dependency
 
 -------------------------------------------------------------------
 Thu Mar 25 19:28:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- Initial package (derived from Fedora spec) 
+- Initial package (derived from Fedora spec)
