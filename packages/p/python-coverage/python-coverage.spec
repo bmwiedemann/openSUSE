@@ -1,7 +1,7 @@
 #
 # spec file for package python-coverage
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-coverage
-Version:        7.3.2
+Version:        7.5.1
 Release:        0
 Summary:        Code coverage measurement for Python
 License:        Apache-2.0
@@ -32,7 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # coverage[toml]
 Recommends:     python-tomli
 # SECTION test requirements
@@ -76,6 +76,8 @@ cp %{python_sitearch}/zzzz-import-failed-hooks.pth build/mysite/
 # the tests need the empty leading part for importing local test projects"
 export PYTHONPATH=":$PWD/build/mysite"
 
+export COVERAGE_CORE="pytrace"
+
 %python_exec -mcoverage debug sys
 
 # d:l:p:backports 15.4_py39 does not have python3
@@ -91,14 +93,14 @@ $mypython igor.py zip_mods
 donttest="test_version"
 # test_xdist_sys_path_nuttiness_is_fixed - xdist check that we actually fail on purpose
 donttest+=" or test_xdist_sys_path_nuttiness_is_fixed"
-# test_debug_sys_ctracer - requires dep on ctracer
-donttest+=" or test_debug_sys_ctracer"
 # does not find a usable venv
 donttest+=" or test_venv"
 # writes in /usr/
 donttest+=" or test_process"
 # requires additional plugins
 donttest+=" or test_plugins"
+# asserts PYTHONPATH is empty, which it can't be
+donttest+=" or test_report_wildcard or test_run_omit_vs_report_omit"
 
 %pytest_arch -n auto --no-flaky-report -k "$donttest" -rp ||:
 %pytest_arch -n auto --no-flaky-report -k "not ($donttest)"

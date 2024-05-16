@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Fri May 10 03:05:12 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.5.1:
+  * Fix: a pragma comment on the continuation lines of a multi-line statement
+    now excludes the statement and its body, the same as if the pragma is
+    on the first line.
+  * Fix: very complex source files could cause a maximum recursion error when
+    creating an HTML report.
+  * HTML report improvements:
+    + Support files (JavaScript and CSS) referenced by the HTML report now have
+      hashes added to their names to ensure updated files are used instead of
+      stale cached copies.
+    + Missing branch coverage explanations that said "the condition was never
+      false" now read "the condition was always true" because it's easier to
+      understand.
+    + Column sort order is remembered better as you move between the index
+      pages.
+  * Added initial support for function and class reporting in the HTML report.
+  * Other HTML report improvements:
+    + There is now a "hide covered" checkbox to filter out 100% files.
+    + The index page is always sorted by one of its columns, with clearer
+      indications of the sorting.
+    + The "previous file" shortcut key didn't work on the index page, but now
+      it does.
+  * The debug output showing which configuration files were tried now shows
+    absolute paths to help diagnose problems where settings aren't taking
+    effect, and is renamed from "attempted_config_files" to the more logical
+    "config_files_attempted."
+  * Fix: in some cases, even with [run] relative_files=True, a data file
+    could be created with absolute path names.  When combined with other
+    relative data files, it was random whether the absolute file names would
+    be made relative or not. If they weren't, then a file would be listed
+    twice in reports.
+  * Fix: the last case of a match/case statement had an incorrect message if
+    the branch was missed.  It said the pattern never matched, when actually
+    the branch is missed if the last case always matched.
+  * Fix: clicking a line number in the HTML report now positions more
+    accurately.
+  * Fix: the report:format setting was defined as a boolean, but should be a
+    string.
+  * Fix: in some cases, coverage could fail with a RuntimeError: "Set changed
+    size during iteration."
+  * Fix: setting COVERAGE_CORE=sysmon no longer errors on 3.11 and lower.
+  * Fix: the JSON report now includes an explicit format version number.
+  * Fix: the change for multi-line signature exclusions in 7.3.3 broke other
+    forms of nested clauses being excluded properly.
+  * Fix: in the HTML report, selecting code for copying won't select the line
+    numbers also. Thanks, `Robert Harris <pull 1717_>`_.
+  * Fix: function definitions with multi-line signatures can now be excluded
+    by matching any of the lines.
+  * Fix: XML reports could fail with a TypeError if files had numeric
+    components that were duplicates except for leading zeroes, like file1.py
+    and file001.py.
+  * The coverage annotate command used to announce that it would be removed
+    in a future version. Enough people got in touch to say that they use it,
+    so it will stay. Don't expect it to keep up with other new features though.
+- Set COVERAGE_CORE, so we no longer need to skip the ctrace tests, it will be
+  handled for us.
+- Skip two tests that assert PYTHONPATH is empty, which it can't be.
+
+-------------------------------------------------------------------
 Tue Nov 28 08:53:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.3.2:

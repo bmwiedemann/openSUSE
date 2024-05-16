@@ -692,4 +692,41 @@ update to latest version</comment>
     the coverage of early-imported standard library modules.</comment>
     <requestid>1129470</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>96ba53656d9df7413465fbfc358c6cbf</srcmd5>
+    <version>7.5.1</version>
+    <time>1715872350</time>
+    <user>anag+factory</user>
+    <comment>- Update to 7.5.1:
+  * Fix: a pragma comment on the continuation lines of a multi-line statement
+    now excludes the statement and its body, the same as if the pragma is
+    on the first line.
+  * Fix: very complex source files could cause a maximum recursion error when
+    creating an HTML report.
+  * HTML report improvements:
+    + Support files (JavaScript and CSS) referenced by the HTML report now have
+      hashes added to their names to ensure updated files are used instead of
+      stale cached copies.
+    + Missing branch coverage explanations that said &quot;the condition was never
+      false&quot; now read &quot;the condition was always true&quot; because it's easier to
+      understand.
+    + Column sort order is remembered better as you move between the index
+      pages.
+  * Added initial support for function and class reporting in the HTML report.
+  * Other HTML report improvements:
+    + There is now a &quot;hide covered&quot; checkbox to filter out 100% files.
+    + The index page is always sorted by one of its columns, with clearer
+      indications of the sorting.
+    + The &quot;previous file&quot; shortcut key didn't work on the index page, but now
+      it does.
+  * The debug output showing which configuration files were tried now shows
+    absolute paths to help diagnose problems where settings aren't taking
+    effect, and is renamed from &quot;attempted_config_files&quot; to the more logical
+    &quot;config_files_attempted.&quot;
+  * Fix: in some cases, even with [run] relative_files=True, a data file
+    could be created with absolute path names.  When combined with other
+    relative data files, it was random whether the absolute file names would
+    be made relative or not. If they weren't, then a file would be listed</comment>
+    <requestid>1173002</requestid>
+  </revision>
 </revisionlist>
