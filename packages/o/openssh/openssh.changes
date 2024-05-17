@@ -1,19 +1,4 @@
 -------------------------------------------------------------------
-Mon May 13 15:27:37 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
-
-- Only for SLE15, restore the patch file removed in
-  Thu Feb 18 13:54:44 UTC 2021 to restore the previous behaviour
-  from SP5 of having root password login allowed by default
-  (fixes bsc#1223486, related to bsc#1173067):
-  * openssh-7.7p1-allow_root_password_login.patch
-- Since the default value for this config option is now set to
-  permit root to use password logins in SLE15, the
-  openssh-server-config-rootlogin subpackage isn't useful there so 
-  we now create an openssh-server-config-disallow-rootlogin
-  subpackage that sets the configuration the other way around
-  than openssh-server-config-rootlogin.
-
--------------------------------------------------------------------
 Mon Apr 15 13:21:50 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - openssh-8.0p1-gssapi-keyex.patch: Added missing struct initializer,

@@ -2557,6 +2557,7 @@ BuildFlags: onlybuild:perl-Mock-Config
 BuildFlags: onlybuild:perl-Module-Build
 BuildFlags: onlybuild:perl-Module-Build-Tiny
 BuildFlags: onlybuild:perl-Module-Implementation
+BuildFlags: onlybuild:perl-Module-Pluggable
 BuildFlags: onlybuild:perl-Module-Runtime
 BuildFlags: onlybuild:perl-Mojo-DOM58
 BuildFlags: onlybuild:perl-Moo

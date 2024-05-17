@@ -5,13 +5,6 @@ There are following changes in default settings of ssh client and server:
 
 * PAM authentication is enabled and mostly even required, do not turn it off.
 
-* In SLE15, root authentiation with password is enabled by default
-  (PermitRootLogin yes).
-  NOTE: this has security implications and is only done in order to not change
-  behaviour of the server in an update. We strongly suggest setting this option
-  either "prohibit-password" or even better to "no" (which disables direct
-  remote root login entirely).
-
 * DSA authentication is enabled by default for maximum compatibility.
   NOTE: do not use DSA authentication since it is being phased out for a reason
   - the size of DSA keys is limited by the standard to 1024 bits which cannot
