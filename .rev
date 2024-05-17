@@ -767,4 +767,12 @@
 - add 0001-Use-pip-instead-of-easy_install-for-installation.patch</comment>
     <requestid>1136312</requestid>
   </revision>
+  <revision rev="68" vrev="3">
+    <srcmd5>f4ff02f8f9cb9341b895f10e57e87642</srcmd5>
+    <version>6.0.0</version>
+    <time>1715969032</time>
+    <user>anag+factory</user>
+    <comment>- Use stestr rather than pytest to run the testsuite.</comment>
+    <requestid>1173551</requestid>
+  </revision>
 </revisionlist>

@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-pbr
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -30,7 +30,6 @@ Version:        6.0.0
 Release:        0
 Summary:        Python Build Reasonableness
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/pbr/latest/
 Source:         https://files.pythonhosted.org/packages/source/p/pbr/pbr-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
@@ -40,7 +39,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools >= 64.0.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     git-core
 Obsoletes:      python-pbr-doc
 BuildArch:      noarch
@@ -53,10 +52,11 @@ BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module fixtures >= 3.0.0}
-BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pbr = %{version}}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six >= 1.12.0}
+BuildRequires:  %{python_module stestr}
 BuildRequires:  %{python_module testresources >= 2.0.0}
 BuildRequires:  %{python_module testscenarios >= 0.4}
 BuildRequires:  %{python_module testtools >= 2.2.0}
@@ -85,16 +85,10 @@ sed -i '/coverage/d;/hacking/d' test-requirements.txt
 %if %{with test}
 %check
 export OS_TEST_TIMEOUT=60
-dont_test="test_parse_requirements or test_requirement_parsing or test_pep_517_support "
-dont_test+="or test_write_git_changelog or test_build_doc or test_cmd_builder_override "
-dont_test+="or test_cmd_builder_override_multiple_builders or test_extras_parsing "
-dont_test+="or test_project_url_parsing or test_keywords_parsing "
-dont_test+="or test_handling_of_whitespace_in_data_files "
-# the following tests fail due to Sphinx 7.0 and removal of build_sphinx feature
-# https://bugs.launchpad.net/pbr/+bug/2018453
-dont_test+="or test_setup_py_build_sphinx or test_builders_config "
-dont_test+="or test_default_api_build_dir or test_different_api_build_dir"
-%pytest -k "not ($dont_test)"
+exclude="parse_requirements|requirement_parsing|pep_517_support|"
+exclude+="write_git_changelog|build_doc|cmd_builder_override|"
+exclude+="extras_parsing|project_url_parsing|keywords_parsing"
+stestr run -E "($exclude)"
 %endif
 
 %if !%{with test}
@@ -116,7 +110,7 @@ dont_test+="or test_default_api_build_dir or test_different_api_build_dir"
 %doc AUTHORS ChangeLog CONTRIBUTING.rst README.rst
 %python_alternative %{_bindir}/pbr
 %{python_sitelib}/pbr
-%{python_sitelib}/pbr-%{version}*-info
+%{python_sitelib}/pbr-%{version}.dist-info
 %endif
 
 %changelog
