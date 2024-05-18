@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 16 13:40:05 UTC 2024 - aplanas@suse.com
+
+- Update to version 0.2.5~4:
+  * Fix 'unnecessary qualification' warnings
+  * fix IAK template to match IDevID
+  * rpm: fix COPR RPMs build for centos-stream-10
+  * Build COPR RPMs for centos-stream-10
+
+-------------------------------------------------------------------
 Thu May 02 07:31:40 UTC 2024 - aplanas@suse.com
 
 - Update to version 0.2.5~0:

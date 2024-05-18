@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  9 11:52:06 MDT 2024 - carnold@suse.com
+
+- Enable mdev tests with the introduction of libvirt 10.3.0
+  virt-manager.spec
+
+-------------------------------------------------------------------
 Tue May  7 13:30:54 MDT 2024 - carnold@suse.com
 
 - bsc#1222738 - virt-manager shows SLE Micro 6.0 in suggested OS

@@ -3,14 +3,15 @@ Date: 2023-10-27 07:34:46.251955161 +0200
 
 Static libraries are a no-go in our distro.
 ---
- CMakeLists.txt           |    2 --
- src/layer/CMakeLists.txt |    3 ++-
- 2 files changed, 2 insertions(+), 3 deletions(-)
+ CMakeLists.txt            |    2 --
+ src/layer/CMakeLists.txt  |    3 ++-
+ src/vulkan/CMakeLists.txt |    3 ++-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
 
-Index: Vulkan-Utility-Libraries-vulkan-sdk-1.3.268.0/CMakeLists.txt
+Index: Vulkan-Utility-Libraries-vulkan-sdk-1.3.283.0/CMakeLists.txt
 ===================================================================
---- Vulkan-Utility-Libraries-vulkan-sdk-1.3.268.0.orig/CMakeLists.txt
-+++ Vulkan-Utility-Libraries-vulkan-sdk-1.3.268.0/CMakeLists.txt
+--- Vulkan-Utility-Libraries-vulkan-sdk-1.3.283.0.orig/CMakeLists.txt
++++ Vulkan-Utility-Libraries-vulkan-sdk-1.3.283.0/CMakeLists.txt
 @@ -15,8 +15,6 @@ set(CMAKE_CXX_STANDARD 17)
  set(CMAKE_CXX_STANDARD_REQUIRED ON)
  set(CMAKE_CXX_EXTENSIONS OFF)
@@ -20,10 +21,10 @@ Index: Vulkan-Utility-Libraries-vulkan-sdk-1.3.268.0/CMakeLists.txt
  set(CMAKE_VISIBILITY_INLINES_HIDDEN "YES")
  
  # This variable enables downstream users to customize the target API
-Index: Vulkan-Utility-Libraries-vulkan-sdk-1.3.268.0/src/layer/CMakeLists.txt
+Index: Vulkan-Utility-Libraries-vulkan-sdk-1.3.283.0/src/layer/CMakeLists.txt
 ===================================================================
---- Vulkan-Utility-Libraries-vulkan-sdk-1.3.268.0.orig/src/layer/CMakeLists.txt
-+++ Vulkan-Utility-Libraries-vulkan-sdk-1.3.268.0/src/layer/CMakeLists.txt
+--- Vulkan-Utility-Libraries-vulkan-sdk-1.3.283.0.orig/src/layer/CMakeLists.txt
++++ Vulkan-Utility-Libraries-vulkan-sdk-1.3.283.0/src/layer/CMakeLists.txt
 @@ -5,8 +5,9 @@
  # SPDX-License-Identifier: Apache-2.0
  set(CMAKE_FOLDER "${CMAKE_FOLDER}/VulkanLayerSettings")
@@ -35,3 +36,17 @@ Index: Vulkan-Utility-Libraries-vulkan-sdk-1.3.268.0/src/layer/CMakeLists.txt
  
  target_sources(VulkanLayerSettings PRIVATE
     vk_layer_settings.cpp
+Index: Vulkan-Utility-Libraries-vulkan-sdk-1.3.283.0/src/vulkan/CMakeLists.txt
+===================================================================
+--- Vulkan-Utility-Libraries-vulkan-sdk-1.3.283.0.orig/src/vulkan/CMakeLists.txt
++++ Vulkan-Utility-Libraries-vulkan-sdk-1.3.283.0/src/vulkan/CMakeLists.txt
+@@ -5,7 +5,8 @@
+ # SPDX-License-Identifier: Apache-2.0
+ set(CMAKE_FOLDER "${CMAKE_FOLDER}/VulkanSafeStruct")
+ 
+-add_library(VulkanSafeStruct STATIC)
++add_library(VulkanSafeStruct SHARED)
++set_target_properties(VulkanSafeStruct PROPERTIES LIBRARY_OUTPUT_NAME VulkanSafeStruct-@PACKAGE_VERSION@)
+ add_library(Vulkan::SafeStruct ALIAS VulkanSafeStruct)
+ 
+ target_sources(VulkanSafeStruct PRIVATE

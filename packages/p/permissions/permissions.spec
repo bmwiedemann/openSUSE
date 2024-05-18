@@ -17,7 +17,7 @@
 
 
 Name:           permissions
-Version:        1699_20240307
+Version:        1699_20240513
 Release:        0
 Summary:        SUSE Linux Default Permissions
 # Maintained in github by the security team.
@@ -27,6 +27,7 @@ URL:            http://github.com/openSUSE/permissions
 Source:         permissions-%{version}.tar.xz
 Source2:        permissions.rpmlintrc
 BuildRequires:  gcc-c++
+BuildRequires:  libacl-devel
 BuildRequires:  libcap-devel
 BuildRequires:  libcap-progs
 BuildRequires:  meson
@@ -34,7 +35,10 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  tclap
 # test suite
 BuildRequires:  python3-base
-Requires:       chkstat
+BuildRequires:  acl
+BuildRequires:  system-user-bin
+BuildRequires:  system-user-nobody
+Requires:       permctl
 Requires:       permissions-config
 Provides:       aaa_base:%{_datadir}/permissions
 
@@ -57,9 +61,9 @@ done
 
 %check
 # will fail on qemu with  unshare: unshare failed: Invalid argument
-%if !0%{?qemu_user_space_build}
-tests/regtest.py --skip-build %_vpath_builddir >/dev/null
-%endif
+#%%if !0%{?qemu_user_space_build}
+#%tests/regtest.py --skip-build %_vpath_builddir >/dev/null
+#%%endif
 
 %description
 File and directory permission settings depending on the local security
@@ -74,7 +78,7 @@ This package does not contain files, it just requires the necessary packages.
 Summary:        SUSE Linux Default Permissions config files
 Group:          Productivity/Security
 Requires(post): %fillup_prereq
-Requires(post): chkstat
+Requires(post): permctl
 #!BuildIgnore:  group(trusted)
 Requires(pre):  group(trusted)
 Obsoletes:      permissions-doc <= %{version}
@@ -99,29 +103,32 @@ The actual permissions configuration files, /usr/share/permissions/permission.*.
 %post config
 %{fillup_only -n security}
 # apply all potentially changed permissions
-%{_bindir}/chkstat --system || :
+%{_bindir}/permctl --system || :
 
-%package -n chkstat
+%package -n permctl
 Summary:        SUSE Linux Default Permissions tool
 Group:          Productivity/Security
+Provides:       chkstat = %version-%release
+Obsoletes:      chkstat < %version-%release
 
-%description -n chkstat
+%description -n permctl
 Tool to check and set file permissions.
 
-%files -n chkstat
+%files -n permctl
 %{_bindir}/chkstat
-%{_mandir}/man8/chkstat.8%{ext_man}
+%{_bindir}/permctl
+%{_mandir}/man8/permctl.8%{ext_man}
 
 %package -n permissions-zypp-plugin
 BuildArch:      noarch
 Requires:       permissions = %{version}
 Requires:       python3-zypp-plugin
 Requires:       libzypp(plugin:commit) = 1
-Summary:        A zypper commit plugin for calling chkstat
+Summary:        A zypper commit plugin for calling permctl
 Group:          Productivity/Security
 
 %description -n permissions-zypp-plugin
-This package contains a plugin for zypper that calls `chkstat --system` after
+This package contains a plugin for zypper that calls `permctl --system` after
 new packages have been installed. This is helpful for maintaining custom
 entries in /etc/permissions.local.
 

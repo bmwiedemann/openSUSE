@@ -28,6 +28,7 @@ Source2:        %name.desktop
 Patch1:         schism-alsa.diff
 Patch2:         schism-nodate.diff
 Patch3:         schism-deptrack.diff
+Patch4:         0001-player-fx-check-for-Instrument-Mode-when-handling-No.patch
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
 BuildRequires:  automake

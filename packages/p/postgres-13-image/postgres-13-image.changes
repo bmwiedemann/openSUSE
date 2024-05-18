@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 16 16:20:25 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- install findutils for the containers that need it explicitly
+
+-------------------------------------------------------------------
 Tue May  7 19:07:24 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - extend READMEs; correct eula for application images

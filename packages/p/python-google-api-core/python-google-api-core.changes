@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu May 16 14:03:49 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.19.0
+  * Add google.api_core.version_header (#638)
+- from version 2.18.0
+  * Add common logic for supporting universe domain (#621)
+  * Add _registered_method to grpc ChannelStub (#614)
+  * **deps:** Require proto-plus >= 1.22.3 (#626)
+- from version 2.17.1
+  * Resolve issue handling protobuf responses in rest streaming (#604)
+- from version 2.17.0
+  * Add attempt_direct_path argument to create_channel (#583)
+  * Retry constructors methods support None (#592)
+- from version 2.16.2
+  * Spelling error `a,out` -> `amount` (#596)
+- from version 2.16.1
+  * Fix broken import for google.api_core.retry_async.AsyncRetry (#587)
+- from version 2.16.0
+  * Retry and retry_async support streaming rpcs (#495)
+- Refresh patches for new version
+  * python-google-api-core-no-mock.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Mar  5 20:20:17 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Obsolete Python 3.6 build for SLE 15 SP4 and openSUSE Leap 15.4 and later

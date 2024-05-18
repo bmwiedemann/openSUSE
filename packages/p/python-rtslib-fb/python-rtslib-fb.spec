@@ -53,7 +53,7 @@ BuildRequires:  alts
 Requires:       alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 %python_subpackages
 
@@ -72,9 +72,7 @@ python-rtslib-fb-common is the invariant base package needed by both
 python2-rtslib-fb and python3-rtslib-fb.
 
 %prep
-%setup -q -n python-rtslib-fb-v%{version}
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1 -n python-rtslib-fb-v%{version}
 
 %build
 %pyproject_wheel

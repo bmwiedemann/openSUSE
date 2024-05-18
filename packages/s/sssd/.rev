@@ -1205,4 +1205,12 @@ goes in line with 946250</comment>
     <comment></comment>
     <requestid>1156404</requestid>
   </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>5de6b4636515c39497eb567bc73afe54</srcmd5>
+    <version>2.9.5</version>
+    <time>1715969062</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.9.5</comment>
+    <requestid>1174497</requestid>
+  </revision>
 </revisionlist>

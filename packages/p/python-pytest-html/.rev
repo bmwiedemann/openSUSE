@@ -237,4 +237,32 @@
 </comment>
     <requestid>1108827</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>59cfdb7851025b0902772e6f1b7528da</srcmd5>
+    <version>4.1.1</version>
+    <time>1715969197</time>
+    <user>anag+factory</user>
+    <comment>- Replace node_modules.tar.gz vendoring with obs-service-node_modules
+- Delete not needed patch vendor-npm.patch
+- Update to 4.1.1:
+  * fix: Latest eslint is broken (#769) @BeyondEvil
+  * fix: original sort order (#768) @BeyondEvil
+  * [pre-commit.ci] pre-commit autoupdate (#763) @pre-commit-ci
+- 4.1.0:
+  * Release v4.1.0 (#761) @BeyondEvil
+  * fix: Escaping HTML in log (#757) @BeyondEvil
+  * test: Add UTF8 test (#760) @BeyondEvil
+  * [pre-commit.ci] pre-commit autoupdate (#563) @pre-commit-ci
+  * fix: Only run npm when building from source (#758) @BeyondEvil
+  * Fix results table modification documentation (#749) @michalkaptur
+  * fix: Add collections errors to report (#756) @BeyondEvil
+  * fix: Revert report generation to full run (#754) @BeyondEvil
+  * fix: Broken duration (#753) @BeyondEvil
+  * Pytest html fix reload button typo (#738) @jeffwright13
+- 4.0.2:
+  * Fix: Use absolute path for the report (#735) @adrien-berchet
+- 4.0.1:
+  * fix: Incorrect label for xfailed (#733) @BeyondEvil</comment>
+    <requestid>1174794</requestid>
+  </revision>
 </revisionlist>

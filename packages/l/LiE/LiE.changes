@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 15 07:45:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro: allows us to eliminate usage of deprecated
+  %patchN syntax.
+
+-------------------------------------------------------------------
 Mon Oct  2 04:14:37 UTC 2017 - bwiedemann@suse.com
 
 - Add LiE-2.2.2-memory-init.patch to make build more reproducible

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 16 13:22:29 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove more build-time files to soothe rpmlint.
+- Add no-avx.patch.
+
+-------------------------------------------------------------------
 Mon Mar 11 18:27:10 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.3.7

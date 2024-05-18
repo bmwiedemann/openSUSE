@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 15 19:55:19 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Wireshark 4.2.5:
+  * CVE-2024-4854: MONGO and ZigBee TLV dissector infinite loops
+    (wnpa-sec-2024-07 boo#1224274)
+  * CVE-2024-4853: The editcap command line utility could crash
+    when chopping bytes from the beginning of a packet
+    (wnpa-sec-2024-08 boo#1224259)
+  * CVE-2024-4855: The editcap command line utility could crash
+    when injecting secrets while writing multiple files
+    (wnpa-sec-2024-09 boo#1224276)
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.2.5.html
+
+-------------------------------------------------------------------
 Thu Mar 28 06:48:56 UTC 2024 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.2.4:

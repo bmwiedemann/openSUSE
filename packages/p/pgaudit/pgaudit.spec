@@ -1,7 +1,7 @@
 #
 # spec file for package pgaudit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,12 +31,6 @@ ExclusiveArch:  do_not_build
 %else
 Name:           %{name_pg}-pgaudit
 %endif
-%if "%{name_pg}" == "postgresql10"
-Version:        1.2.4
-%endif
-%if "%{name_pg}" == "postgresql11"
-Version:        1.3.4
-%endif
 %if "%{name_pg}" == "postgresql12"
 Version:        1.4.3
 %endif
@@ -49,6 +43,9 @@ Version:        1.6.2
 %endif
 %if "%{name_pg}" == "postgresql15"
 Version:        1.7.0
+%endif
+%if "%{name_pg}" == "postgresql16"
+Version:        16.0
 %endif
 Release:        0
 Summary:        An auditing module for PostgreSQL

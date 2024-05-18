@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 16 15:05:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro: allows us to eliminate usage of deprecated
+  %patchN syntax.
+
+-------------------------------------------------------------------
 Fri Mar  3 07:13:28 UTC 2023 - XinLiang <XLiang@suse.com>
 
 - Fix: manager: writer thread can only be started once (bsc#1208817)

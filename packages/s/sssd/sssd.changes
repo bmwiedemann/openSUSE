@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 16 12:13:02 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.9.5
+  * Added failover_primary_timout configuration option. This can
+    be used to configure how often SSSD tries to reconnect to a
+    primary server after a successful connection to a backup
+    server. This was previously hardcoded to 31 seconds which is
+    kept as the default value.
+
+-------------------------------------------------------------------
 Fri Mar  8 12:49:59 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

@@ -153,4 +153,13 @@
   * Fix MacOS build error</comment>
     <requestid>1161275</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>401cdf27bff8bb7c5258f252b362ca93</srcmd5>
+    <version>2.1.2</version>
+    <time>1715969184</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.1.2:
+  * Fix inetd</comment>
+    <requestid>1174775</requestid>
+  </revision>
 </revisionlist>

@@ -945,4 +945,57 @@
   * Remove unnecessary space in Vultr regex pattern (#2689) (forwarded request 1174073 from ph03nix)</comment>
     <requestid>1174086</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>c57dfea1def26c1d901cc05d773b6683</srcmd5>
+    <version>3.76.2</version>
+    <time>1715969139</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.76.2:
+  * [bug] - Handle empty reader case in newFileReader (#2854)
+- Update to version 3.76.1:
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.53.3 (#2849)
+  * [bug] - Handle empty reader case in newFileReader (#2854)
+  * [refactor] - Create separate handler for non-archive data (#2825)
+  * added email and location in metadata. (#2850)
+  * chore: fix some typos in comments (#2851)
+  * Add &quot;Intra42&quot; detector (#2835)
+  * [feat] - Support bearer auth for docker scans (#2848)
+  * Use fake detectors in versioned detectors test (#2847)
+  * switch to filesystem and specific tag when performance testing (#2846)
+  * [bug] - Fix case-sensitivity issue in PrefixRegex function (#2811)
+  * fix(deps): update module cloud.google.com/go/storage to v1.41.0 (#2843)
+  * feat(sendgrid): update detector (#2833)
+  * Bump up performance test threshold to 50% (#2839)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.53.1 (#2841)
+  * fix(deps): update module github.com/fatih/color to v1.17.0 (#2837)
+  * Fixed the Now Scanning emoji (#2842)
+  * [chore] - Update GitlabV2 detector (#2840)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.53.0 (#2830)
+  * Update results's extra data for Twilio (#2807)
+  * fix(deps): update module github.com/google/go-github/v61 to v62 (#2832)
+  * fix(deps): update module github.com/sassoftware/go-rpmutils to v0.4.0 (#2831)
+  * fix(deps): update module google.golang.org/api to v0.180.0 (#2822)
+  * fix(deps): update module github.com/xanzy/go-gitlab to v0.105.0 (#2824)
+  * fix(deps): update testcontainers-go monorepo to v0.31.0 (#2823)
+  * [refactor] - Refactor Archive Handling Logic (#2703)
+  * Update postman flags to be less confusing (#2755)
+  * fix(deps): update module github.com/prometheus/client_golang to v1.19.1 (#2821)
+  * fix(deps): update module github.com/charmbracelet/bubbletea to v0.26.2 (#2818)
+  * fix(deps): update module github.com/hashicorp/go-retryablehttp to v0.7.6 (#2819)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.52.6 (#2816)
+  * test(common/http): fix panic (#2817)
+  * fix(deps): update module github.com/snowflakedb/gosnowflake to v1.10.0 (#2810)
+  * fix(deps): update module github.com/rabbitmq/amqp091-go to v1.10.0 (#2809)
+  * fix(deps): update module github.com/xanzy/go-gitlab to v0.104.1 (#2784)
+  * address linter (#2783)
+  * chore(deps): update golangci/golangci-lint-action action to v6 (#2801)
+  * Updating Enterprise Readme Link from Contact to Product Info Page (#2804)
+  * Moved up enterprise section and added additional integrations (#2803)
+  * fix(deps): update module google.golang.org/api to v0.178.0 (#2800)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.52.4 (#2794)
+  * fix(deps): update module github.com/brianvoe/gofakeit/v7 to v7.0.3 (#2798)
+  * fix(deps): update module golang.org/x/exp to v0.0.0-20240506185415-9bf2ced13842 (#2795)
+  * increase test chan size (#2797) (forwarded request 1174422 from ph03nix)</comment>
+    <requestid>1174687</requestid>
+  </revision>
 </revisionlist>

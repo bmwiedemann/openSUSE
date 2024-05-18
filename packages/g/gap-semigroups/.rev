@@ -47,4 +47,13 @@
     <comment>- Update to release 5.3.7</comment>
     <requestid>1157020</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>91a95a4c9a505c9c51d4ceeeac32665e</srcmd5>
+    <version>5.3.7</version>
+    <time>1715969105</time>
+    <user>anag+factory</user>
+    <comment>- Remove more build-time files to soothe rpmlint.
+- Add no-avx.patch.</comment>
+    <requestid>1174580</requestid>
+  </revision>
 </revisionlist>

@@ -17,15 +17,13 @@
 
 
 Name:           gnome-commander
-Version:        1.16.1
+Version:        1.16.2
 Release:        0
 Summary:        A file manager for the GNOME desktop environment
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
 URL:            http://gcmd.github.io/
 Source:         https://download.gnome.org/sources/gnome-commander/1.16/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM gnome-commander-taglib-2.0.patch -- Fix build against taglib 2.0
-Patch0:         gnome-commander-taglib-2.0.patch
 
 %if 0%{?suse_version} < 1550
 BuildRequires:  gcc11

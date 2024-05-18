@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 16 15:12:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro: allows us to eliminate usage of deprecated
+  %patchN syntax.
+
+-------------------------------------------------------------------
 Thu Jan 25 19:56:48 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Enable SLE15 python module

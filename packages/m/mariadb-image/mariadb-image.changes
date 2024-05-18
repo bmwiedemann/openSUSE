@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 16 16:20:25 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- install findutils for the containers that need it explicitly
+
+-------------------------------------------------------------------
 Wed May  8 16:26:31 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - README fixes - better titles and follow recommended document structure

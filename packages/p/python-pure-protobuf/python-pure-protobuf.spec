@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pure-protobuf
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        Protocol Buffers using Python type annotations
 License:        MIT

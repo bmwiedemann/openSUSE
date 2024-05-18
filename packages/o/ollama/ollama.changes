@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May 16 19:55:51 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.1.38:
+  * New model: Falcon 2: A new 11B parameters causal decoder-only
+    model built by TII and trained over 5T tokens.
+  * New model: Yi 1.5: A new high-performing version of Yi, now 
+    licensed as Apache 2.0. Available in 6B, 9B and 34B sizes.
+  * Added ollama ps command
+  * Added /clear command
+  * Fixed issue where switching loaded models on Windows would take
+    several seconds
+  * Running /save will no longer abort the chat session if an
+    incorrect name is provided
+  * The /api/tags API endpoint will now correctly return an empty
+    list [] instead of null if no models are provided
+
+-------------------------------------------------------------------
 Sun May 12 19:05:53 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.1.37:

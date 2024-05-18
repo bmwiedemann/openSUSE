@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon May 13 11:36:17 UTC 2024 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- rename chkstat package to permctl to match the new binary names. Establish
+  Provides/Obsoletes to keep dependencies and old package cleanup in working
+  order, see:
+
+  https://en.opensuse.org/openSUSE:Package_dependencies#Renaming_a_package
+
+- add BuildRequires for acl programs for tests to succeed. Still keep %check
+  disabled, because the new ACL test fails without /etc/subuid, /etc/subgid
+  setup.
+
+-------------------------------------------------------------------
+Mon May 13 10:44:44 UTC 2024 - matthias.gerstner@suse.com
+
+- Update to version 1699_20240513:
+  * chkstat: has been renamed to permctl to better reflect its purpose. A
+    symlink for backward compatibility will remain in place.
+  * documentation: updated man pages
+  * ACL support: permctl (formerly chkstat) now supports an additional `+acl`
+    syntax to support assigning ACLs to files similar to the already existing
+    support for file based capabilities.
+
+-------------------------------------------------------------------
 Mon Mar 11 12:14:10 UTC 2024 - matthias.gerstner@suse.com
 
 - Update to version 1699_20240307:

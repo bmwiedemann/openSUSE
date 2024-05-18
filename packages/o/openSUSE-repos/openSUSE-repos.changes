@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May 16 14:33:48 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240516.5431918:
+  * Update README.md
+  * ci: Use bash for repo_checks to not rely on shebang
+  * t: Add diagnostic to leap test
+  * Add ci
+  * Add basic url_checker
+  * repo_checks: Add handling for Leap and Leap Micro
+  * Drop Leap armv7hl debug repo definitions boo#1224217
+  * Use Leap source repo for Leap 15 ports
+  * Fix urls for leap-ports (32 bit arm)
+  * Create repo_checks.yml
+  * rename url_checker to repo_checks
+  * Drop leap16 definitions for now to get url_checker working
+
+-------------------------------------------------------------------
 Fri May 10 13:29:15 UTC 2024 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20240510.6bfa644:

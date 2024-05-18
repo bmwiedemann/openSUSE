@@ -17,7 +17,7 @@
 
 
 Name:           sssd
-Version:        2.9.4
+Version:        2.9.5
 Release:        0
 Summary:        System Security Services Daemon
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -88,7 +88,7 @@ BuildRequires:  pkgconfig(tevent)
 BuildRequires:  pkgconfig(uuid)
 %{?systemd_ordering}
 Requires:       sssd-ldap = %version-%release
-Requires(postun):pam-config
+Requires(postun): pam-config
 Provides:       libsss_sudo = %version-%release
 Provides:       sssd-client = %version-%release
 Obsoletes:      libsss_sudo < %version-%release
@@ -111,8 +111,8 @@ Obsoletes:      sssd-common < %version-%release
 %define cifs_idmap_lib          %_libdir/cifs-utils/cifs_idmap_sss.so
 %define cifs_idmap_name         cifs-idmap-plugin
 %define cifs_idmap_priority     10
-Requires(post):update-alternatives
-Requires(postun):update-alternatives
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 
 %description
 Provides a set of daemons to manage access to remote directories and

@@ -18,7 +18,7 @@
 
 
 Name:           sslh
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        SSL/SSH multiplexer
 License:        GPL-2.0-or-later
@@ -56,7 +56,8 @@ export CFLAGS="%{optflags}"
 %install
 make PREFIX=%{_prefix} DESTDIR=%{buildroot} install
 
-install -Dm644 scripts/systemd.%{name}.service %{buildroot}%{_unitdir}/%{name}.service
+install -Dm644 scripts/systemd.sslh@.service %{buildroot}%{_unitdir}/%{name}@.service
+install -Dm644 scripts/systemd.sslh-select@.service %{buildroot}%{_unitdir}/%{name}-select@.service
 install -Dm644 %{SOURCE3} %{buildroot}%{_sysconfdir}/conf.d/%{name}
 ln -sf %{_sbindir}/service %{buildroot}/%{_sbindir}/rc%{name}
 
@@ -81,7 +82,8 @@ getent passwd sslh || useradd  -r -g nogroup -s /bin/false -c "User for SSLH" -d
 %doc ChangeLog README.md
 %{_sbindir}/%{name}
 %{_sbindir}/rc%{name}
-%{_unitdir}/%{name}.service
+%{_unitdir}/%{name}@.service
+%{_unitdir}/%{name}-select@.service
 %dir %{_sysconfdir}/conf.d
 %config(noreplace) %{_sysconfdir}/conf.d/%{name}
 %config(noreplace) %{_sysconfdir}/default/%{name}

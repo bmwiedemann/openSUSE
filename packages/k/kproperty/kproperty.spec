@@ -1,7 +1,7 @@
 #
 # spec file for package kproperty
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,6 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 
 %description
 A property editing framework with editor widget similar to what is known from Qt Designer
@@ -68,45 +67,43 @@ Development package for the property editing Framework
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %find_lang %{name} %{name}.lang --all-name --with-qt
+%kf5_makeinstall -C build
+%find_lang %{name} %{name}.lang --all-name --with-qt
 
-  # The pkgconfig files contain incorrect stuff
-  rm -f %{buildroot}%{_libdir}/pkgconfig/KProperty*.pc
+# The pkgconfig files contain incorrect stuff
+rm %{buildroot}%{_kf5_libdir}/pkgconfig/KProperty*.pc
 
 %post -n libKPropertyCore3-%{sover} -p /sbin/ldconfig
 %postun -n libKPropertyCore3-%{sover} -p /sbin/ldconfig
 
 %files -n libKPropertyCore3-%{sover}
-%{_libdir}/libKPropertyCore3.so.*
+%{_kf5_libdir}/libKPropertyCore3.so.*
 
 %post -n libKPropertyWidgets3-%{sover} -p /sbin/ldconfig
 %postun -n libKPropertyWidgets3-%{sover} -p /sbin/ldconfig
 
+%files
+%{_kf5_sharedir}/kproperty3/
+
 %files -n libKPropertyWidgets3-%{sover}
 %license COPYING.*
-%{_libdir}/libKPropertyWidgets3.so.*
+%{_kf5_libdir}/libKPropertyWidgets3.so.*
 
 %files devel
 %license COPYING*
 %{_includedir}/KPropertyCore3/
 %{_includedir}/KPropertyWidgets3/
-%{_libdir}/libKPropertyWidgets3.so
-%{_libdir}/libKPropertyCore3.so
-%{_libdir}/cmake/KPropertyCore3/
-%{_libdir}/cmake/KPropertyWidgets3/
-# %%{_libdir}/pkgconfig/KProperty*.pc
-
-%files
-%{_datadir}/kproperty3/
+%{_kf5_cmakedir}/KPropertyCore3/
+%{_kf5_cmakedir}/KPropertyWidgets3/
+%{_kf5_libdir}/libKPropertyCore3.so
+%{_kf5_libdir}/libKPropertyWidgets3.so
 
 %files lang -f %{name}.lang
 

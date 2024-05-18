@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Wed May 15 11:37:24 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.13.0
+- Changes of version 3.13.0
+  * Bug
+    + MPLUGIN-517: GoalRenderer renderParameterDetails() renders in
+      wrong order
+    + MPLUGIN-521: Nested types not properly extracted cause
+      exception while generating Javadoc URLs
+  * Improvement
+    + MPLUGIN-520: Get rid of maven-compat classes use
+  * Dependency upgrade
+    + MPLUGIN-516: Upgrade asmVersion from 9.6 to 9.7
+    + MPLUGIN-519: Update to Parent POM 42, prerequisite 3.6.3
+- Changes of version 3.12.0
+  * Improvement
+    + MPLUGIN-510: update plugin system requirements history
+      structure
+    + MPLUGIN-511: create and share tooling to detect plugin
+      prerequisites history
+    + MPLUGIN-514: switch dependency schema from png + imagemap to
+      svg, and update
+- Changes of version 3.11.0
+  * Bug
+    + MPLUGIN-496: Translation for keys report.plugin.goal.yes,no
+      are missing
+    + MPLUGIN-499: Deprecate descriptions are missing in description
+      table
+  * Improvement
+    + MPLUGIN-450: Make goal prefix mandatory by default
+    + MPLUGIN-474: Improve descriptor docs for requiredJavaVersion
+    + MPLUGIN-492: Documentation for plugins in general: Goals
+      comprises more than that
+    + MPLUGIN-495: WARNINGs based on usage of @Component for
+      MavenSession/MavenProject instead of @Parameter
+  * Task
+    + MPLUGIN-493: Consistently evaluate skip parameter in
+      MavenReport#canGenerateReport()
+    + MPLUGIN-498: Move section rendering to separate methods
+  * Dependency upgrade
+    + MPLUGIN-494: Upgrade to Parent 41
+    + MPLUGIN-497: Upgrade components
+- Changes of version 3.10.2
+  * Bug
+    + MPLUGIN-484: Downgrade plexus-xml to 3.0.0
+  * Dependency upgrade
+    + MPLUGIN-485: Upgrade Parent to 40
+    + MPLUGIN-487: Bump org.codehaus.plexus:plexus-java from 1.1.2
+      to 1.2.0
+    + MPLUGIN-488: Bump asmVersion from 9.5 to 9.6
+    + MPLUGIN-489: Bump antVersion from 1.10.13 to 1.10.14
+    + MPLUGIN-490: Bump org.jsoup:jsoup from 1.16.1 to 1.16.2
+    + MPLUGIN-491: Bump org.codehaus.plexus:plexus-testing from
+      1.1.0 to 1.2.0
+- Changes of version 3.10.1
+  * Bug
+    + MPLUGIN-482: JavadocSite.createLink() does not consider
+      implicit module path prefix
+  * Improvement
+    + MPLUGIN-442: Rewrite plugin goal documentation generation to
+      use supplied sink instead of direct Xdoc
+    + MPLUGIN-475: Upgrade to plexus-utils / plexus-xml 4.0.0
+    + MPLUGIN-477: Don't add a stray period
+  * Dependency upgrade
+    + MPLUGIN-478: Upgrade org.junit:junit-bom from 5.9.3 to 5.10.0
+    + MPLUGIN-479: Bump org.codehaus.plexus:plexus-archiver from
+      4.7.1 to 4.8.0
+
+-------------------------------------------------------------------
 Tue Apr  2 17:29:28 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on plexus-xml where relevant

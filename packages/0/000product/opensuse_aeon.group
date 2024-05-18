@@ -14,7 +14,6 @@
     <package name="busybox-grep" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
     <package name="busybox-gzip" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
     <package name="busybox-sed" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
-    <package name="chkstat" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="compat-usrmerge-tools" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="coreutils" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="cpio" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
@@ -104,6 +103,7 @@
     <package name="pam-config" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="pcr-oracle" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="perl-Bootloader" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
+    <package name="permctl" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="permissions" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="permissions-config" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="pigz" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->

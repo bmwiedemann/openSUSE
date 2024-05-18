@@ -17,7 +17,7 @@
 
 
 Name:           mediastreamer2
-Version:        5.3.26
+Version:        5.3.37
 Release:        0
 Summary:        Audio/Video real-time streaming
 License:        AGPL-3.0-or-later
@@ -121,7 +121,7 @@ fi
 %patch -P 3 -p1
 
 %build
-export CFLAGS="%(echo %{optflags}) -fcommon -Wno-implicit-function-declaration"
+export CFLAGS="%(echo %{optflags}) -fcommon -Wno-implicit-function-declaration -I%_includedir/bcmatroska2 -I%_includedir/corec"
 export CXXFLAGS="$CFLAGS"
 %cmake \
     -DCMAKE_SHARED_LINKER_FLAGS="-flto=auto -Wl,--as-needed -Wl,-z,now" \

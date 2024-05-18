@@ -133,4 +133,17 @@
     <comment></comment>
     <requestid>1153011</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5850b9c91847a171f9705a23914ef437</srcmd5>
+    <version>1.16.2</version>
+    <time>1715969172</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.16.2:
+  + Fix double g_error_free call in remote_close_callback.
+  + Fix build with taglib 2.0.
+  + Set project gnu++11 c++ language version explicitely.
+  + Updated translations.
+- Drop gnome-commander-taglib-2.0.patch: fixed upstream. (forwarded request 1174756 from dimstar)</comment>
+    <requestid>1174759</requestid>
+  </revision>
 </revisionlist>

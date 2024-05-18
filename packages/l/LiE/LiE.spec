@@ -1,7 +1,7 @@
 #
 # spec file for package LiE
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Version:        2.2.2
 Release:        0
 # See URL for Licensing, source contains no License file, hence appropriate COPYRIGHT file has been manually added
 Summary:        A Computer algebra package for Lie group computations
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://young.sp2mi.univ-poitiers.fr/~marc/LiE/
+URL:            http://young.sp2mi.univ-poitiers.fr/~marc/LiE/
 Source0:        http://young.sp2mi.univ-poitiers.fr/~marc/LiE/conLiE.tar.gz
 Source1:        COPYING
 Source2:        %{name}-rpmlintrc
@@ -54,9 +54,7 @@ involving (reductive) Lie groups and their representations.
 This packlage provides documentation for %{name}.
 
 %prep
-%setup -q -n %{name}
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n %{name}
 
 %build
 # parallel build fails

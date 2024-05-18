@@ -28,8 +28,10 @@
 
 %if 0%{?suse_version} >= 1550
 %bcond_without wtmpdb
+%bcond_with allow_root_password_login_by_default
 %else
 %bcond_with wtmpdb
+%bcond_without allow_root_password_login_by_default
 %endif
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
@@ -126,6 +128,9 @@ Patch106:       openssh-7.6p1-cleanup-selinux.patch
 # PATCH-FIX-OPENSUSE bsc#1211301 Add crypto-policies support
 Patch107:       openssh-9.6p1-crypto-policies.patch
 Patch108:       openssh-9.6p1-crypto-policies-man.patch
+%if 0%{with allow_root_password_login_by_default}
+Patch1000:      openssh-7.7p1-allow_root_password_login.patch
+%endif
 BuildRequires:  audit-devel
 BuildRequires:  automake
 BuildRequires:  groff
@@ -192,9 +197,6 @@ Group:          Productivity/Networking/SSH
 Requires:       %{name}-common = %{version}-%{release}
 Requires:       crypto-policies >= 20220824
 Recommends:     audit
-%if 0%{?suse_version} == 1500
-Recommends:     openssh-server-config-rootlogin
-%endif
 Requires(pre):  findutils
 Requires(pre):  grep
 Requires(post): %fillup_prereq
@@ -214,16 +216,31 @@ also be forwarded over the secure channel.
 This package contains the Secure Shell daemon, which allows clients to
 securely connect to your server.
 
+%if 0%{with allow_root_password_login_by_default}
+%package server-config-disallow-rootlogin
+Summary:        Config to disallow password root logins to sshd
+Group:          Productivity/Networking/SSH
+Requires:       %{name}-server = %{version}-%{release}
+Conflicts:      %{name}-server-config-rootlogin
+
+%description server-config-disallow-rootlogin
+The openssh-server package by default allows password based
+root logins. This package provides a config that disallows root
+to log in using the passwor. It's useful to secure your system
+preventing password attacks on the root account over ssh.
+%else
 %package server-config-rootlogin
 Summary:        Config to permit root logins to sshd
 Group:          Productivity/Networking/SSH
 Requires:       %{name}-server = %{version}-%{release}
+Conflicts:      %{name}-server-config-disallow-rootlogin
 
 %description server-config-rootlogin
 The openssh-server package by default disallows password based
 root logins. This package provides a config that does. It's useful
 to temporarily have a password based login to be able to use
 ssh-copy-id(1).
+%endif
 
 %package clients
 Summary:        SSH (Secure Shell) client applications
@@ -369,7 +386,11 @@ install -m 755 contrib/ssh-copy-id %{buildroot}%{_bindir}
 install -m 644 contrib/ssh-copy-id.1 %{buildroot}%{_mandir}/man1
 sed -i -e s@%{_prefix}/libexec@%{_libexecdir}@g %{buildroot}%{_sysconfdir}/ssh/sshd_config
 
+%if 0%{with allow_root_password_login_by_default}
+echo "PermitRootLogin prohibit-password" > %{buildroot}%{_sysconfdir}/ssh/sshd_config.d/51-permit-root-login.conf
+%else
 echo "PermitRootLogin yes" > %{buildroot}%{_sysconfdir}/ssh/sshd_config.d/50-permit-root-login.conf
+%endif
 
 # Move /etc to /usr/etc/ssh
 %if %{defined _distconfdir}
@@ -377,7 +398,11 @@ mkdir -p %{buildroot}%{_distconfdir}/ssh/ssh{,d}_config.d
 mv %{buildroot}%{_sysconfdir}/ssh/moduli %{buildroot}%{_distconfdir}/ssh/
 mv %{buildroot}%{_sysconfdir}/ssh/ssh_config %{buildroot}%{_distconfdir}/ssh/
 mv %{buildroot}%{_sysconfdir}/ssh/sshd_config %{buildroot}%{_distconfdir}/ssh/
+%if 0%{with allow_root_password_login_by_default}
+mv %{buildroot}%{_sysconfdir}/ssh/sshd_config.d/51-permit-root-login.conf %{buildroot}%{_distconfdir}/ssh/sshd_config.d/51-permit-root-login.conf
+%else
 mv %{buildroot}%{_sysconfdir}/ssh/sshd_config.d/50-permit-root-login.conf %{buildroot}%{_distconfdir}/ssh/sshd_config.d/50-permit-root-login.conf
+%endif
 %endif
 
 install -m 644 ssh_config_suse %{buildroot}%{_sysconfdir}/ssh/ssh_config.d/50-suse.conf
@@ -438,6 +463,15 @@ test -f /etc/ssh/sshd_config.rpmsave && mv -v /etc/ssh/sshd_config.rpmsave /etc/
 %{fillup_only -n ssh}
 %service_add_post sshd.service
 
+%if ! %{defined _distconfdir}
+test -f /etc/ssh/sshd_config && (grep -q "^Include /etc/ssh/sshd_config\.d/\*\.conf" /etc/ssh/sshd_config || ( \
+    echo "WARNING: /etc/ssh/sshd_config doesn't include config files from"
+    echo " /etc/ssh/sshd_config.d/ . The crypto-policies configuration won't"
+    echo "be honored until the following line is added at the start of"
+    echo "/etc/ssh/sshd_config :"
+    echo "Include /etc/ssh/sshd_config.d/*.conf" ) ) ||:
+%endif
+
 %preun server
 %service_del_preun sshd.service
 
@@ -451,6 +485,16 @@ else
 %service_del_postun sshd.service
 fi
 
+%if ! %{defined _distconfdir}
+%post server-config-disallow-rootlogin
+test -f /etc/ssh/sshd_config && (grep -q "^Include /etc/ssh/sshd_config\.d/\*\.conf" /etc/ssh/sshd_config || ( \
+    echo "WARNING: /etc/ssh/sshd_config doesn't include config files from"
+    echo " /etc/ssh/sshd_config.d/ . The config file installed by"
+    echo "openssh-server-config-disallow-rootlogin won't be used until"
+    echo "the following line is added at the start of /etc/ssh/sshd_config :"
+    echo "Include /etc/ssh/sshd_config.d/*.conf" ) ) ||:
+%endif
+
 %if %{defined _distconfdir}
 %posttrans server
 # Migration to /usr/etc.
@@ -462,6 +506,16 @@ test -f /etc/ssh/sshd_config.rpmsave && mv -v /etc/ssh/sshd_config.rpmsave /etc/
 %pre clients
 # Prepare for migration to /usr/etc.
 test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ssh/ssh_config.rpmsave.old ||:
+%endif
+
+%if ! %{defined _distconfdir}
+%post clients
+test -f /etc/ssh/ssh_config && (grep -q "^Include /etc/ssh/ssh_config\.d/\*\.conf" /etc/ssh/ssh_config || ( \
+    echo "WARNING: /etc/ssh/ssh_config doesn't include config files from"
+    echo " /etc/ssh/ssh_config.d/ . The crypto-policies configuration won't"
+    echo "be honored until the following line is added at the start of"
+    echo "/etc/ssh/ssh_config :"
+    echo "Include /etc/ssh/ssh_config.d/*.conf" ) ) ||:
 %endif
 
 %if %{defined _distconfdir}
@@ -532,11 +586,20 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 %config %{_fwdefdir}/sshd
 %endif
 
+%if 0%{with allow_root_password_login_by_default}
+%files server-config-disallow-rootlogin
+%if %{defined _distconfdir}
+%{_distconfdir}/ssh/sshd_config.d/51-permit-root-login.conf
+%else
+%config(noreplace) %{_sysconfdir}/ssh/sshd_config.d/51-permit-root-login.conf
+%endif
+%else
 %files server-config-rootlogin
 %if %{defined _distconfdir}
 %{_distconfdir}/ssh/sshd_config.d/50-permit-root-login.conf
 %else
 %config(noreplace) %{_sysconfdir}/ssh/sshd_config.d/50-permit-root-login.conf
+%endif
 %endif
 
 %files clients

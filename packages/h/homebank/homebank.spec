@@ -17,7 +17,7 @@
 
 
 Name:           homebank
-Version:        5.7.4
+Version:        5.8
 Release:        0
 Summary:        Application to manage personal accounts
 License:        GPL-2.0-or-later
@@ -33,6 +33,13 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0) >= 2.62
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.8
 BuildRequires:  pkgconfig(libsoup-3.0) >= 3.0
+%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
+%else
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
+%endif
 
 %description
 HomeBank is an application to manage personal accounts at home. The main
@@ -47,6 +54,11 @@ charts.
 %setup -q
 
 %build
+%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+export CC="gcc-13"
+export CXX="g++-13"
+%endif
+
 %configure
 %make_build
 

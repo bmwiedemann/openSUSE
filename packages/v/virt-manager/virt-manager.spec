@@ -286,13 +286,6 @@ donttest="$donttest or testCLI0203virt_install_bhyve_default_f27"
 donttest="$donttest or testCLI0280virt_xml_build_disk_domain"
 donttest="$donttest or testCLI0287virt_xml_edit_cpu_host_copy"
 donttest="$donttest or testCLI0288virt_xml_build_pool_logical_disk"
-# Disabled tests for libvirt 10.1.0
-donttest="$donttest or testDASDMdev"
-donttest="$donttest or testAPQNMdev"
-donttest="$donttest or testPCIMdev"
-donttest="$donttest or testPCIMdevNewFormat"
-donttest="$donttest or testCLI0369virt_xml_add_hostdev_mdev"
-donttest="$donttest or testCLI0377virt_xml_add_hostdev_mdev_start"
 # End disabled tests for libvirt 10.1.0
 donttest="$donttest or testCLI0375virt_xml_add_disk_create_storage_start"
 # Due to the above skips:

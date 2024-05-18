@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed May 15 19:07:26 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 4.2.1
+  * Fix parsing of section names containing whitespace
+  * Add support for escaped quotes, semicolon and hash in quoted values
+  * Do not close file in iniparser_load_file
+  * Add function description to header
+  * Add support for loading string/custom streams
+  * Update README.md
+  * Handle potential calloc failures in dictionary_new
+  * Add example showing how to write INI files
+  * Add support for uint64_t
+  * Fix tests on 32bit
+  * Prevent `long int` overflow on 32bit architectures
+  * Fail testrun on test failure
+  * add NULL check in dictionary_get
+  * Fix buffer overflow from sprintf
+- Remove patches merged upstream
+  * Fail-testrun-on-test-failure.patch
+  * Fix-buffer-overflow-from-sprintf.patch
+  * Fix-tests-on-32bit.patch
+  * handle-null-return-getstring.patch
+
+-------------------------------------------------------------------
 Fri Jun  2 18:36:09 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Add handle-null-return-getstring.patch (bsc#1211889)

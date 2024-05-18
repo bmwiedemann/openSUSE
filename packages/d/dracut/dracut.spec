@@ -25,7 +25,7 @@
 %endif
 
 Name:           dracut
-Version:        059+suse.581.g19b7c06c
+Version:        059+suse.588.g528264be
 Release:        0
 Summary:        Event driven initramfs infrastructure
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -207,7 +207,7 @@ if [ -L /var/run ] && [ -f /etc/dracut.conf.d/05-convertfs.conf ]; then
 fi
 
 # remove obsolete legacy fillup template for /etc/sysconfig/kernel
-[ -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd ] && rm -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd
+rm -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd
 
 %{?regenerate_initrd_post}
 

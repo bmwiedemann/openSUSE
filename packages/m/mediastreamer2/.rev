@@ -659,4 +659,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1157865</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>e9cf5cc4894bd1e8576c9cd60d0bd9e9</srcmd5>
+    <version>5.3.37</version>
+    <time>1715969116</time>
+    <user>anag+factory</user>
+    <comment>- specify in CFLAGS the location of the bcmatroska2 header files
+- Update to 5.3.37 (no changelog).
+</comment>
+    <requestid>1174657</requestid>
+  </revision>
 </revisionlist>

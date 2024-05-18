@@ -45,6 +45,8 @@ Conflicts:      gettext-tools-mini
 %else
 # to allow a prjconf preference which to take per build
 Provides:       gettext-runtime = %{version}
+# Ensure this never finds its way onto a real installation
+Requires:       this-is-only-for-build-envs
 # rpm-build requires gettext-tools, but we will only just be building it
 #!BuildIgnore:  gettext-tools
 %endif
@@ -108,6 +110,8 @@ Conflicts:      gettext-tools-mini
 %else
 # to allow a prjconf preference which to take per build
 Provides:       gettext-tools = %{version}
+# Ensure this never finds its way onto a real installation
+Requires:       this-is-only-for-build-envs
 %endif
 # Several tools use bison-runtime text domain:
 %if 0%{?suse_version}

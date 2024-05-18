@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 17 15:14:08 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- fix dependency on kernel module that was not versioned 
+
+-------------------------------------------------------------------
 Thu May 16 09:39:34 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - update to 1.97.2

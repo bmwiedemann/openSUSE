@@ -816,4 +816,21 @@
   upstream. (forwarded request 1174230 from dimstar)</comment>
     <requestid>1174238</requestid>
   </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>09219abb17ccaa2331580708e1dd28d6</srcmd5>
+    <version>2.42.12</version>
+    <time>1715969087</time>
+    <user>anag+factory</user>
+    <comment>- Enable test suite on x86_64 (other arches seem too flaky for now):
+  + Add %check section and call %meson_test
+  + Add gdk-pixbuf-jpeg-slow.patch: allow pixbuf-jpeg to run for
+    more than 30s, by marking it as a slow test
+    (glgo#GNOME/gdk-pixbuf!174).
+
+- Migrate package to a regular obs_scm service, no longer password
+  protecting a zip file. The originally reported bsc#1159337 seems
+  no longer be applicable and we prefer the easier route.
+- Drop unzip BuildRequires and pre_checkin.sh script. (forwarded request 1174646 from dimstar)</comment>
+    <requestid>1174652</requestid>
+  </revision>
 </revisionlist>

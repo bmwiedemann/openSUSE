@@ -549,4 +549,17 @@
   * Add optional tag argument to deb-package.sh</comment>
     <requestid>1173569</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>9579d7f9ffa6d4ef04bc61fc0321f958</srcmd5>
+    <version>0.18.16+0</version>
+    <time>1715969182</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.18.6:
+  * Change windows-only imports to be windows-only
+  * Replace decay with color-scale
+  * Update INSTALL.md
+  * Fix typo in INSTALL.md
+  * Use 3 columns for packaging status badge</comment>
+    <requestid>1174773</requestid>
+  </revision>
 </revisionlist>

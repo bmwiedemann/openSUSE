@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 13 05:17:26 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use stestr rather than pytest to run the testsuite. 
+
+-------------------------------------------------------------------
 Tue Jan  2 22:34:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - require setuptools

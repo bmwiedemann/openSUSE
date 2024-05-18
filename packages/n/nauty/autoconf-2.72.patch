@@ -1,0 +1,23 @@
+From: Jan Engelhardt <ej@inai.de>
+Date: 2024-05-16 13:22:58.758243293 +0200
+
+AC 2.72 changed the internals of AC_SYS_LARGEFILE. Just always build with largfile.
+See also https://gitweb.gentoo.org/repo/gentoo.git/commit/?id=7643b42096da1f4403a501a4a5930dec2d1c88c2
+
+---
+ configure.ac |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: nauty2_8_8/configure.ac
+===================================================================
+--- nauty2_8_8.orig/configure.ac
++++ nauty2_8_8/configure.ac
+@@ -170,7 +170,7 @@ CFLAGS=$user_cflags
+ MORECFLAGS=""
+ dnl  we need  AC_SYS_LARGEFILE and AC_FUNC_FSEEKO
+ AC_SYS_LARGEFILE
+-AS_IF([test "x$ac_cv_sys_file_offset_bits" = xno],[ac_cv_sys_file_offset_bits=0])
++ac_cv_sys_file_offset_bits=64
+ AC_SUBST(ac_cv_sys_file_offset_bits)
+ 
+ AS_IF([test "x$user_cflags" = x || test "x$user_cflags" = x-m32],

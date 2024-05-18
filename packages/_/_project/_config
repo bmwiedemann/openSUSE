@@ -3013,6 +3013,7 @@ BuildFlags: onlybuild:rust1.74
 BuildFlags: onlybuild:rust1.75
 BuildFlags: onlybuild:rust1.76
 BuildFlags: onlybuild:rust1.77
+BuildFlags: onlybuild:rust1.78
 BuildFlags: onlybuild:samba
 BuildFlags: onlybuild:sane-backends
 BuildFlags: onlybuild:sassc

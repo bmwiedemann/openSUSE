@@ -25,4 +25,12 @@
   * Allow users to explicitly configure universe domain</comment>
     <requestid>1165955</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0a485e2190c1258170982163b00bdbf0</srcmd5>
+    <version>2.20.0</version>
+    <time>1715969215</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1174874</requestid>
+  </revision>
 </revisionlist>

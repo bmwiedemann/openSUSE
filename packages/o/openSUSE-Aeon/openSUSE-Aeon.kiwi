@@ -52,6 +52,7 @@
         <package name="patterns-tik-base"/>
         <package name="tik-module-welcome"/>
         <package name="tik-module-mig"/>
+        <package name="tik-osimage-openSUSE-Aeon"/>
     </packages>
     <packages type="bootstrap">
         <!-- Avoid that zypper picks the busybox-foo variant for those, that would fail later -->

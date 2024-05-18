@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 16 11:31:12 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.94.7
+
+- Update 2.94.7
+  - Corrected handling of dateModified & datePublished (#624)
+  - Fix some JSON-LD problems (#626)
+  - DOCTEAM-1368: SBP series are taken from a parameter (#625)
+  - DOCTEAM-1368: Take TRD series from a parameter (#627)
+  - Fix series selection for SBP FO stylesheets (#628)
+
+-------------------------------------------------------------------
 Wed Mar 27 16:22:57 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.94.6
 
 - Update 2.94.6

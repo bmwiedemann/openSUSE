@@ -1,7 +1,7 @@
 #
 # spec file for package reiser4progs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,10 @@ Release:        0
 Summary:        Utilities for Managing the Reiser4 File System
 License:        GPL-2.0-only
 Group:          System/Filesystems
-URL:            https://sf.net/projects/reiser4/
+URL:            https://sourceforge.net/projects/reiser4/
 Source:         https://downloads.sf.net/reiser4/%name-%version.tar.gz
 Patch1:         no-static.diff
+Patch2:         autoconf-2.72.patch
 BuildRequires:  automake
 BuildRequires:  libaal-devel >= 1.0.7
 BuildRequires:  libtool
@@ -91,12 +92,12 @@ autoreconf -fi
 %make_install -j1
 rm -f "%buildroot/%_libdir"/*.la
 
-%post   -n libreiser4%lsuf -p /sbin/ldconfig
-%postun -n libreiser4%lsuf -p /sbin/ldconfig
-%post   -n libreiser4-minimal%lsuf -p /sbin/ldconfig
-%postun -n libreiser4-minimal%lsuf -p /sbin/ldconfig
-%post   -n librepair%lsuf -p /sbin/ldconfig
-%postun -n librepair%lsuf -p /sbin/ldconfig
+%check
+%make_build check
+
+%ldconfig_scriptlets -n libreiser4%lsuf
+%ldconfig_scriptlets -n libreiser4-minimal%lsuf
+%ldconfig_scriptlets -n librepair%lsuf
 
 %files
 %doc BUGS ChangeLog NEWS README TODO

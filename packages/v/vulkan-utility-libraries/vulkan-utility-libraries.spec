@@ -16,9 +16,9 @@
 #
 
 
-%define lname libVulkanLayerSettings-1_3_280_0
+%define lname libVulkanLayerSettings-1_3_283_0
 Name:           vulkan-utility-libraries
-Version:        1.3.280.0
+Version:        1.3.283.0
 Release:        0
 Summary:        Utility libraries for Vulkan
 License:        Apache-2.0
@@ -79,16 +79,20 @@ export CC=gcc-11 CXX=g++-11
 %install
 %cmake_install
 ln -s libVulkanLayerSettings-%version.so "%buildroot/%_libdir/libVulkanLayerSettings.so"
+ln -s libVulkanSafeStruct-%version.so "%buildroot/%_libdir/libVulkanSafeStruct.so"
 
 %ldconfig_scriptlets -n %lname
 
 %files -n %lname
+# lockstep updated (SLPP §6)
 %_libdir/libVulkanLayerSettings-*.so
+%_libdir/libVulkanSafeStruct-*.so
 
 %files devel
 %_includedir/vulkan/
 %_libdir/cmake/
 %_libdir/libVulkanLayerSettings.so
+%_libdir/libVulkanSafeStruct.so
 %license LICENSE.md
 
 %changelog

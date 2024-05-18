@@ -7,4 +7,12 @@
     <comment>New package for parsing Mozilla Glean files.</comment>
     <requestid>1045552</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2981651d0d147942d2ed5fc04452f990</srcmd5>
+    <version>6.3.0</version>
+    <time>1715969177</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1174765</requestid>
+  </revision>
 </revisionlist>

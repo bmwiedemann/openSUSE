@@ -1,7 +1,7 @@
 #
 # spec file for package webdot
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Summary:        A CGI graph server script that uses tcldot from graphviz
 License:        BSD-3-Clause
 Group:          Productivity/Graphics/Visualization/Graph
 URL:            https://www.graphviz.org/
-Source:         http://www.graphviz.org/pub/graphviz/stable/SOURCES//%{name}-%{version}.tar.gz
+Source:         https://www.graphviz.org/pub/graphviz/stable/SOURCES/%{name}.tar.gz#/%{name}-%{version}.tar.gz
 Patch1:         rpm-specifics.diff
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
@@ -51,8 +51,7 @@ provided with an href to a .dot file.  Uses Tcldot from the graphviz
 rpm. By default, only requests from localhost are served.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 

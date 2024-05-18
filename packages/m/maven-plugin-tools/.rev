@@ -104,4 +104,12 @@
     <comment>plexus-build-api 1.2.0 + dependent changes</comment>
     <requestid>1171148</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3c9635c837f2b1123f058242bd7dc8b8</srcmd5>
+    <version>3.13.0</version>
+    <time>1715969101</time>
+    <user>anag+factory</user>
+    <comment>3.13.0</comment>
+    <requestid>1174565</requestid>
+  </revision>
 </revisionlist>

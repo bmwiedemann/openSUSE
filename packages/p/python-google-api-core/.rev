@@ -301,4 +301,31 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1157353</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>2e852c92d937dcd1ed6b9e45b7a57b65</srcmd5>
+    <version>2.19.0</version>
+    <time>1715969107</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.19.0
+  * Add google.api_core.version_header (#638)
+- from version 2.18.0
+  * Add common logic for supporting universe domain (#621)
+  * Add _registered_method to grpc ChannelStub (#614)
+  * **deps:** Require proto-plus &gt;= 1.22.3 (#626)
+- from version 2.17.1
+  * Resolve issue handling protobuf responses in rest streaming (#604)
+- from version 2.17.0
+  * Add attempt_direct_path argument to create_channel (#583)
+  * Retry constructors methods support None (#592)
+- from version 2.16.2
+  * Spelling error `a,out` -&gt; `amount` (#596)
+- from version 2.16.1
+  * Fix broken import for google.api_core.retry_async.AsyncRetry (#587)
+- from version 2.16.0
+  * Retry and retry_async support streaming rpcs (#495)
+- Refresh patches for new version
+  * python-google-api-core-no-mock.patch
+- Update BuildRequires and Requires from setup.py (forwarded request 1174591 from glaubitz)</comment>
+    <requestid>1174606</requestid>
+  </revision>
 </revisionlist>

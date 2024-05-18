@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri May 17 09:50:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not recommend lang package: the -lang package already has more
+  elaborate supplements.
+
+-------------------------------------------------------------------
+Tue Apr 20 13:49:18 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Thu Aug 27 12:42:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Thu Aug 27 12:40:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec cleanup
+
+-------------------------------------------------------------------
 Sat Aug 24 08:39:04 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Remove the pkg-config files from the -devel package. Both files

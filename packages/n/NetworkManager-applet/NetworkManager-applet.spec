@@ -31,7 +31,7 @@ BuildRequires:  fdupes
 BuildRequires:  meson >= 0.43.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(appindicator3-0.1)
+BuildRequires:  pkgconfig(ayatana-appindicator3-0.1)
 BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4) >= 16.04.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.40
 BuildRequires:  pkgconfig(gmodule-export-2.0)

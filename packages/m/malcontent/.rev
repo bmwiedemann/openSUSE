@@ -80,4 +80,12 @@
     <comment></comment>
     <requestid>1161488</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d50e031f06176a6620a36791c27b9bb5</srcmd5>
+    <version>0.12.0</version>
+    <time>1715969086</time>
+    <user>anag+factory</user>
+    <comment>Update to version 0.12.0 (forwarded request 1174410 from simonlm)</comment>
+    <requestid>1174651</requestid>
+  </revision>
 </revisionlist>

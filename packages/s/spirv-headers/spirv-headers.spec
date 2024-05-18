@@ -21,11 +21,11 @@
 # CMakeLists.txt's project() line contains 1.5.5, but this is outdated too.
 # The SPIR-V version is 1.6.1 (include/spirv/unified1/spirv.core.grammar.json)
 # They add "SDK" tags that reflect the Vulkan version (1.3),
-# and the independently increasing toolchain release number (239).
+# and the independently increasing toolchain release number (283).
 
 Name:           spirv-headers
-Version:        1.6.1+sdk280
-%define innerver 1.3.280
+Version:        1.6.1+sdk283
+%define innerver 1.3.283
 Release:        0
 Summary:        Machine-readable files from the SPIR-V registry
 License:        MIT

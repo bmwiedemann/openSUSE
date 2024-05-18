@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat May 11 19:27:08 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.6.7:
+  * Added slapo-dynlist option to disable filter support
+  * Fixed liblber missing newline on long msg
+  * Fixed libldap exit handling with OpenSSL3
+  * Fixed libldap with TLS and multiple ldap URIs
+  * Fixed libldap OpenSSL cipher suite handling
+  * Fixed libldap OpenSSL 3.0 and Diffie-Hellman param files
+  * Fixed lloadd to work when resolv.conf is missing
+  * Fixed lloadd handling of closing connection
+  * Fixed lloadd tiers to be correctly linked on startup
+  * Fixed slapd to honour disclose in matchedDN handling
+  * Fixed slapd handling of regex testing in ACLs
+  * Fixed slapd sync replication with glued database
+  * Fixed slapd-asyncmeta when remote suffix is empty
+  * Fixed slapo-dynlist so it can't be global
+  * Fixed slapo-homedir(5) attribute name for olcHomedirArchivePath
+
+-------------------------------------------------------------------
 Fri Nov  3 06:33:07 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.6.6

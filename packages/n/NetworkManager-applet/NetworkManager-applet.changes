@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 17 10:49:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Swicth to ayatana-appindicator: Replace
+  pkgconfig(appindicator3-0.1) BuildRequires with
+  pkgconfig(ayatana-appindicator3-0.1). The legacy appindicator has
+  been unmaintained for a while already.
+
+-------------------------------------------------------------------
 Fri Jan 19 14:16:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.36.0:

@@ -243,7 +243,6 @@
     <package name="cheese-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="chewing-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="chewing-utils" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="chkstat" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="chrony" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="chrony-pool-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="cifs-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1741,6 +1740,9 @@
     <package name="libavtp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libavutil56_70" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libavutil58" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libayatana-appindicator3-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="libayatana-ido3-0_4-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="libayatana-indicator3-7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libb2-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libb64-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbabl-0_1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3436,6 +3438,7 @@
     <package name="perl-ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-libwww-perl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-razor-agents" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="permctl" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="permissions" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="permissions-config" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="phalanx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

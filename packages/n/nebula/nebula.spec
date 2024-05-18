@@ -17,7 +17,7 @@
 
 
 Name:           nebula
-Version:        1.8.2
+Version:        1.9.0
 Release:        0
 Summary:        A scalable overlay networking tool
 License:        MIT
@@ -26,9 +26,10 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Source2:        %{name}.service
 Patch0:         enable-pie.patch
-BuildRequires:  golang-packaging
 BuildRequires:  git-core
+BuildRequires:  golang-packaging
 BuildRequires:  zstd
+BuildRequires:  golang(API) = 1.22
 
 %description
 Nebula is a scalable overlay networking tool with a focus on performance,

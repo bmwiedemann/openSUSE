@@ -269,4 +269,12 @@
     <comment>- Update to release 20240515</comment>
     <requestid>1174379</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>76adff9793ea90d3163430aeb8b10897</srcmd5>
+    <version>20240515</version>
+    <time>1715969166</time>
+    <user>anag+factory</user>
+    <comment>- Add 0001-player-fx-check-for-Instrument-Mode-when-handling-No.patch</comment>
+    <requestid>1174755</requestid>
+  </revision>
 </revisionlist>

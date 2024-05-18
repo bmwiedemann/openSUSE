@@ -1998,4 +1998,12 @@
     <comment>Add detection for SUSE Linux Micro 6.0</comment>
     <requestid>1172595</requestid>
   </revision>
+  <revision rev="253" vrev="19">
+    <srcmd5>42ac4eac8e9648e536d901778c7a66f0</srcmd5>
+    <version>4.1.0</version>
+    <time>1715969034</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1174664</requestid>
+  </revision>
 </revisionlist>

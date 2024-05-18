@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 17 15:25:32 UTC 2024 - Reinhard Max <max@suse.com>
+
+- PostgreSQL 11 is EOL.
+
+-------------------------------------------------------------------
+Wed Sep  6 20:53:50 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Added version 16 for postgresql 16 
+  https://github.com/pgaudit/pgaudit/releases/tag/16.0
+
+-------------------------------------------------------------------
 Wed Apr 19 13:52:06 UTC 2023 - Reinhard Max <max@suse.com>
 
 - PostgreSQL 10 is EOL.

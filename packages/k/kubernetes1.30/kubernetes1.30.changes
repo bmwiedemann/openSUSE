@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 17 04:34:22 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.30.1:
+  * Clean up PersistentVolumeLabel admission plugin
+  * scheduler: preallocation for NodeToStatusMap
+  * tag service.spec.TrafficDistribution field as alpha
+  * tag TrafficDistribution tests to avoid running on clusters without the feature enabled
+  * fix(api): make LocalObjectReference.Name and HostAlias.IP required (#124553)
+  * kubeadm: check for available nodes during 'CreateJob' preflight
+  * Idempotent transformers in scheduler & kcm
+  * kubeadm: fix bug of kubeletconfig not being downloaded on upgrade
+  * e2e framework: configure Ginkgo logger and klog consistently
+  * e2e node: fix -v support
+  * Update applyconfig-gen for pacakges where group and dir differ in name
+  * kube_codegen: expose applyconfig-openapi-schema flag for client generation
+
+-------------------------------------------------------------------
 Fri Apr 19 13:38:06 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - For linux/s390x platform: disabled building kubernetes binaries with `-buildmode=pie`

@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-PyKCS11
-Version:        1.5.14
+Version:        1.5.15
 Release:        0
 Summary:        A Full PKCS#11 wrapper for Python
 License:        GPL-2.0-or-later
 URL:            https://github.com/LudovicRousseau/PyKCS11
-Source:         https://files.pythonhosted.org/packages/source/p/pyKCS11/PyKCS11-%{version}.tar.gz
+Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module asn1crypto}
 BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module coverage}

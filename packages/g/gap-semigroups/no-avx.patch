@@ -1,0 +1,24 @@
+From: Jan Engelhardt <ej@inai.de>
+Date: 2024-05-16 15:25:47.416880244 +0200
+
+Disable -mavx leaking into CFLAGS.
+
+---
+ configure.ac |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+Index: semigroups-5.3.7/configure.ac
+===================================================================
+--- semigroups-5.3.7.orig/configure.ac
++++ semigroups-5.3.7/configure.ac
+@@ -62,7 +62,9 @@ KERNEL_DEBUG=$enable_debug
+ AC_SUBST(KERNEL_DEBUG)
+ 
+ # Check if HPCombi is enable, and available
+-AX_CHECK_HPCOMBI
++dnl AX_CHECK_HPCOMBI
++HPCOMBI_CXXFLAGS=""
++AC_SUBST([HPCOMBI_CXXFLAGS])
+ 
+ dnl ##
+ dnl ## Output everything

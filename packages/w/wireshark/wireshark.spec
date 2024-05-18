@@ -2,6 +2,7 @@
 # spec file for package wireshark
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +22,14 @@
 %define libutil libwsutil15
 %define libwire libwireshark17
 %define org_name org.wireshark.Wireshark
-%bcond_without qt5
 %if 0%{?suse_version} >= 1500
 %bcond_without lz4
 %else
 %bcond_with lz4
 %endif
+%bcond_without qt5
 Name:           wireshark
-Version:        4.2.4
+Version:        4.2.5
 Release:        0
 Summary:        A Network Traffic Analyser
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -66,6 +67,20 @@ BuildRequires:  spandsp-devel
 BuildRequires:  tcpd-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(libmaxminddb)
+BuildRequires:  pkgconfig(libnghttp2)
+BuildRequires:  pkgconfig(libnl-3.0)
+BuildRequires:  pkgconfig(libssh) >= 0.6.0
+BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(minizip)
+BuildRequires:  pkgconfig(opus)
+BuildRequires:  pkgconfig(sbc)
+BuildRequires:  pkgconfig(speexdsp)
+Requires(pre):  permissions
+Requires(pre):  shadow
+Recommends:     wireshark-ui = %{version}
+Provides:       group(wireshark)
 %if %{with qt5}
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.3.0
@@ -86,20 +101,6 @@ BuildRequires:  pkgconfig(Qt6PrintSupport)
 BuildRequires:  pkgconfig(Qt6Svg)
 BuildRequires:  pkgconfig(Qt6Widgets)
 %endif
-BuildRequires:  pkgconfig(libmaxminddb)
-BuildRequires:  pkgconfig(libnghttp2)
-BuildRequires:  pkgconfig(libnl-3.0)
-BuildRequires:  pkgconfig(libssh) >= 0.6.0
-BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(minizip)
-BuildRequires:  pkgconfig(opus)
-BuildRequires:  pkgconfig(sbc)
-BuildRequires:  pkgconfig(speexdsp)
-Requires(pre):  permissions
-Requires(pre):  shadow
-Recommends:     wireshark-ui = %{version}
-Provides:       group(wireshark)
 %if 0%{?is_opensuse} && 0%{?suse_version} >= 1550
 # enable ITU G.729 Annex A/B speech codec only in Tumbleweed
 BuildRequires:  pkgconfig(libbcg729)
@@ -199,9 +200,9 @@ echo "`grep %{name}-%{version}.tar.xz %{SOURCE2} | grep SHA256 | head -n1 | cut 
 %cmake_install
 cmake --install build --component Development --prefix %{buildroot}%{_prefix}
 
-cmakedocdir=/usr/share/doc/packages/wireshark
-if [ -d  %{buildroot}/usr/share/doc/wireshark ]; then
-   cmakedocdir=/usr/share/doc/wireshark
+cmakedocdir=%{_docdir}/wireshark
+if [ -d  %{buildroot}%{_datadir}/doc/wireshark ]; then
+   cmakedocdir=%{_datadir}/doc/wireshark
 fi
 # removing doc files that are not needed
 rm %{buildroot}/${cmakedocdir}/COPYING
@@ -215,7 +216,7 @@ install -d -m 0755 %{buildroot}%{_mandir}/man1/
 # desktop file
 cp resources/freedesktop/%{org_name}.desktop %{buildroot}%{_datadir}/applications/%{org_name}-su.desktop
 sed -i -e 's|Name=Wireshark|Name=Wireshark - Super User Mode|g' %{buildroot}%{_datadir}/applications/%{org_name}-su.desktop
-sed -i -e 's|Exec=wireshark %f|Exec=xdg-su -c wireshark %f|g' %{buildroot}%{_datadir}/applications/%{org_name}-su.desktop
+sed -i -e 's|Exec=wireshark %{f}|Exec=xdg-su -c wireshark %{f}|g' %{buildroot}%{_datadir}/applications/%{org_name}-su.desktop
 
 %suse_update_desktop_file %{org_name}
 %suse_update_desktop_file %{org_name}-su
@@ -232,12 +233,17 @@ getent group wireshark >/dev/null || groupadd -r wireshark
 %set_permissions %{_bindir}/dumpcap
 exit 0
 
-%post -n %{libutil} -p /sbin/ldconfig
-%postun -n %{libutil} -p /sbin/ldconfig
-%post -n %{libwire} -p /sbin/ldconfig
-%postun -n %{libwire} -p /sbin/ldconfig
-%post -n %{libtap} -p /sbin/ldconfig
-%postun -n %{libtap} -p /sbin/ldconfig
+%post ui-qt
+%desktop_database_post
+%icon_theme_cache_post
+
+%postun ui-qt
+%desktop_database_postun
+%icon_theme_cache_postun
+
+%ldconfig_scriptlets -n %{libutil}
+%ldconfig_scriptlets -n %{libwire}
+%ldconfig_scriptlets -n %{libtap}
 
 %files
 %license COPYING
@@ -261,21 +267,26 @@ exit 0
 %{_datadir}/wireshark/
 
 %files -n %{libutil}
+%license COPYING
 %{_libdir}/libwsutil*.so.*
 
 %files -n %{libwire}
+%license COPYING
 %{_libdir}/libwireshark.so.*
 
 %files -n %{libtap}
+%license COPYING
 %{_libdir}/libwiretap.so.*
 
 %files devel
+%license COPYING
 %{_includedir}/wireshark/
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/wireshark.pc
 %{_libdir}/cmake/wireshark/
 
 %files ui-qt
+%license COPYING
 %{_bindir}/wireshark
 %{_datadir}/applications/%{org_name}.desktop
 %{_datadir}/applications/%{org_name}-su.desktop
@@ -283,13 +294,5 @@ exit 0
 %{_datadir}/icons/hicolor/*/mimetypes/%{org_name}-mimetype.png
 %{_datadir}/mime/packages/%{org_name}.xml
 %{_datadir}/metainfo/%{org_name}.metainfo.xml
-
-%post ui-qt
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun ui-qt
-%desktop_database_postun
-%icon_theme_cache_postun
 
 %changelog

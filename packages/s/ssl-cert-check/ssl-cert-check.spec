@@ -1,7 +1,7 @@
 #
 # spec file for package ssl-cert-check
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,6 @@ License:        GPL-2.0-only
 Group:          Productivity/Security
 URL:            https://prefetch.net/articles/checkcertificate.html
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         fix-shebang.patch
 BuildRequires:  xz
 Requires:       bash
 Requires:       coreutils
@@ -45,12 +44,13 @@ warnings or log alerts through nagios.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 
 %install
-install -D -m0755 ssl-cert-check %{buildroot}/%{_bindir}/ssl-cert-check
+mkdir -p %{buildroot}/%{_bindir}
+sed -e "s|/usr/bin/env bash|/bin/bash|g" ssl-cert-check > %{buildroot}/%{_bindir}/ssl-cert-check
+chmod 0755 %{buildroot}/%{_bindir}/ssl-cert-check
 
 %files
 %if 0%{?suse_version} >= 1500

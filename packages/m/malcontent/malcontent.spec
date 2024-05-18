@@ -17,7 +17,7 @@
 
 
 Name:           malcontent
-Version:        0.11.1
+Version:        0.12.0
 Release:        0
 Summary:        Parental control system
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

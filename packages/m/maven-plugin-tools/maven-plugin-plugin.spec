@@ -18,7 +18,7 @@
 
 %global base_name maven-plugin-tools
 Name:           maven-plugin-plugin
-Version:        3.9.0
+Version:        3.13.0
 Release:        0
 Summary:        Maven Plugin Plugin
 License:        Apache-2.0
@@ -31,9 +31,7 @@ BuildRequires:  maven-local
 BuildRequires:  unzip
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-tools-annotations)
-BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-tools-ant)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-tools-api)
-BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-tools-beanshell)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-tools-generators)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-tools-java)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
@@ -45,7 +43,6 @@ BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.apache.maven:maven-repository-metadata)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-velocity)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-xml)
 BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.plexus)
 BuildRequires:  mvn(org.sonatype.plexus:plexus-build-api)
 Obsoletes:      %{name}-bootstrap
@@ -74,17 +71,11 @@ API documentation for %{name}.
 %patch -P 0 -p1
 
 %pom_remove_plugin -r :maven-enforcer-plugin
+%pom_remove_plugin :sisu-maven-plugin
 
 %pom_xpath_inject "pom:project/pom:properties" "
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>"
-
-# Remove test dependencies because tests are skipped anyways.
-%pom_xpath_remove "pom:dependency[pom:scope='test']"
-
-for i in maven-plugin-report-plugin maven-plugin-tools-annotations maven-plugin-tools-api maven-plugin-tools-generators maven-script; do
-  %pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 ${i}
-done
 
 %pom_remove_dep org.junit:junit-bom
 %pom_remove_dep :maven-plugin-tools-ant maven-plugin-plugin

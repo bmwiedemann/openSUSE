@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  9 17:58:32 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update os-string to version 2.0.2.2.
+  ## 2.0.2.2 *May 2024*
+
+  * Fix compilation on big-endian arches, by Andrew Lelechenko
+
+-------------------------------------------------------------------
 Sat Apr 27 07:39:32 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update os-string to version 2.0.2.1.

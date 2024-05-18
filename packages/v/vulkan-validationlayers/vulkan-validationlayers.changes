@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 16 12:22:10 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.283.0
+  * Improve format feature error messages
+  * Fix aliasing image bindings with different types
+  * Add VkSwapchainPresentFenceInfoEXT fence sync support
+  * Add proper vkGetDescriptorSetLayoutSupport support
+  * Track lifetime of pipeline libraries
+  * Fix out-of-bounds memory access in BP
+  * Add dynamic state VK_EXT_conservative_rasterization
+  * Add InputAttachmentIndex SPIR-V check
+
+-------------------------------------------------------------------
 Thu Mar 21 10:20:14 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.280.0

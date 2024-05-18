@@ -96,4 +96,12 @@
     <comment></comment>
     <requestid>1169211</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>91a4f04f331b4efc1d3f6511d361d17f</srcmd5>
+    <version>1.27.14</version>
+    <time>1715969163</time>
+    <user>anag+factory</user>
+    <comment>May, 2024 patch release update: Kubernetes v1.27.14</comment>
+    <requestid>1174725</requestid>
+  </revision>
 </revisionlist>

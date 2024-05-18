@@ -17,7 +17,7 @@
 
 
 Name:           maven-plugin-tools
-Version:        3.9.0
+Version:        3.13.0
 Release:        0
 Summary:        Maven Plugin Tools
 License:        Apache-2.0
@@ -40,12 +40,11 @@ BuildRequires:  maven-reporting-api
 BuildRequires:  maven-resolver-api
 BuildRequires:  maven-wagon-provider-api
 BuildRequires:  modello >= 2.0.0
-BuildRequires:  objectweb-asm >= 9.5
+BuildRequires:  objectweb-asm >= 9.7
 BuildRequires:  plexus-ant-factory
 BuildRequires:  plexus-archiver
 BuildRequires:  plexus-bsh-factory
 BuildRequires:  plexus-classworlds
-BuildRequires:  plexus-containers-component-annotations
 BuildRequires:  plexus-languages
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-velocity
@@ -156,14 +155,7 @@ API documentation for %{name}.
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>"
 
-# Remove test dependencies because tests are skipped anyways.
-%pom_xpath_remove "pom:dependency[pom:scope='test']"
-
 %pom_remove_dep net.sf.jtidy:jtidy maven-plugin-tools-generators
-
-for i in maven-plugin-report-plugin maven-plugin-tools-annotations maven-plugin-tools-api maven-plugin-tools-generators maven-script; do
-  %pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 ${i}
-done
 
 %build
 mkdir -p lib
@@ -191,7 +183,6 @@ build-jar-repository -s lib \
     plexus/archiver \
     plexus/bsh-factory \
     plexus-classworlds \
-    plexus-containers/plexus-component-annotations \
     plexus-languages/plexus-java \
     plexus/utils \
     plexus/xml \

@@ -71,4 +71,41 @@
     <comment>Update to version 1.41.1 (forwarded request 1163837 from jgwang)</comment>
     <requestid>1164134</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c57c48de2de0adfdf2dbf691024eafa9</srcmd5>
+    <version>1.46.0</version>
+    <time>1715969171</time>
+    <user>anag+factory</user>
+    <comment>-update to version 1.46.0:
+    * [Webview] Fixed exiting when there is no Cloudflare challenge
+    * [Servers] Added MangaCrab (ES)
+    * [Servers] Comic Book Plus (EN): Update
+    * [Servers] Mode Scanlator (pt_BR): Update
+    * [Servers] Rawdevart (JA): Update
+    * [Servers] Reaper Scans (EN): Update
+    * [Servers] ShadowMangas (ES): Update
+    * [Servers] Tecno Scan (ES): Update
+    * [Servers] JManga (JA): Disabled
+    * [L10n] Updated Chinese (Traditional), Dutch, German, Hindi, Italian and
+      Turkish translations
+- update to version 1.45.0:
+    * fixes a bug that prevented some server logos from being displayed
+    * [Webview] Improved Cloudflare user challenge completion
+    * [Servers] Added Existential Comics (EN)
+    * [Servers] Added Manga Demon (EN)
+    * [Servers] Added MangaWeebs (EN)
+    * [Servers] Added Webtoon TR
+    * [Servers] Armoni Scans (Asura Scans TR): Reenabled
+    * [Servers] Atikrost (TR): Reenabled
+    * [Servers] Mangago (EN): Update
+    * [Servers] MangaFreak (EN): Update
+    * [Servers] Nine Manga (EN/PT_BR/DE/ES/FR/IT/RU): Update
+    * [L10n] Added Vietnamese translation
+    * [L10n] Updated French, German, Portuguese, Spanish and Russian
+      translations
+- update to version 1.44.0:
+    * [Servers] Added Cartel De Manhwas (ES)
+    * [Servers] Added F/OSS Comics (EN) (forwarded request 1174690 from rrahl0)</comment>
+    <requestid>1174758</requestid>
+  </revision>
 </revisionlist>

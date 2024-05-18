@@ -224,4 +224,13 @@
   * dtv-scan-tables: added channels for Lviv, Ukraine</comment>
     <requestid>1153244</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a45cf972a379b3e1bf2def4ab1fe85f6</srcmd5>
+    <version>20240503</version>
+    <time>1715969194</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240503:
+  * dvb-t/at-All: add Salzburg/Gaisberg dvb-t2 transponders</comment>
+    <requestid>1174789</requestid>
+  </revision>
 </revisionlist>

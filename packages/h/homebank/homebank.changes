@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Mon May 13 18:50:31 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.8: 
+ * new   : statistics report: category sign is now also displayed
+ * new   : added a tooltip to display active filter in all
+   report windows
+ * change: migrating to GTK4 preparation (GdkEvent struct)
+ * change: migrating to GTK4 preparation
+   (GtkApplication, GtkApplicationWindow)
+ * change: migrating to GTK4 preparation (GtkMenu*, GtkToolbar)
+   for ledger
+ * change: 'select action for target xfer' creation cancel now
+   get back to txn dialog
+ * change: reports: moved the collapse/expand buttons to bottom
+   of the list
+ * change: example file addition: split, tags, loan, flags,
+   life-energy
+ * change: the Info field is named as it should have originally:
+   Number
+ * change: added missing enums for most action of combobox
+ * wish  : lp#2064754 yours account should always display
+   a tooltip for consistency
+ * wish  : lp#2064520 enable ledger txn reconciled > cleared,
+   like for none
+ * wish  : lp#2063416 index for importing csv files
+ * wish  : lp#2060588 widths of memo -v- amount field in split
+   transactions
+ * wish  : lp#2059733 preference to use the template list when
+   edit a transaction
+ * wish  : lp#2058696 enrich account transactions list window
+   title with account number and institution name
+ * wish  : lp#2058566 budget Report - detail pane size not
+   adjustable
+ * wish  : lp#2056654 add thousand separator when print
+   'your accounts'
+ * wish  : lp#2055533 Payment column in auto-assignment window
+ * wish  : lp#2054906 "Cancel" button on prompt for a target
+   txn when adding xfer should not create a transaction
+ * wish  : lp#2051758 add a help tip when input amount range
+   in filter
+ * wish  : lp#2045514 Balance report to exclude transfers when
+   multiple selected accounts
+ * wish  : lp#2044601 preference to always prompt for a target
+   txn when adding xfer
+ * wish  : lp#2042674 idiot-proof preference for
+   "Sync transfert Status"
+ * wish  : lp#2038753 copy transaction to clipboard to paste
+   external apps
+ * wish  : lp#2037039 amend "Spending By Month" to have income
+   option & both income/expense by month
+ * wish  : lp#2023696 budget report to show not-budgeted amount
+ * wish  : lp#2017625 transfer txn widget From vs To field
+   ordering to be static
+ * wish  : lp#2017437 reorderable columns in the
+   Scheduled/Template window
+ * wish  : lp#2017436 scheduled/template window show internal
+   transfers "To" account in Payee column
+ * wish  : lp#2016317 columns for status icon and payment icon
+   in scheduled/template
+ * wish  : lp#2002177 automatic GTK dark theme switching for
+   Linux (using the Freedesktop standard)
+ * wish  : lp#1910935 statistic report by accounts groups
+ * wish  : lp#1909255 report exclude income in transfers
+ * wish  : lp#1867979 internal transfer edit dialog to show/change
+   date in both accounts
+ * wish  : lp#1867498 add "Life Energy" attribute
+ * wish  : lp#1817274 add more paymode + user order position
+   + disable
+ * wish  : lp#1674016 assignment to assign tags
+ * wish  : lp#1600356 add colour flag/group to transaction
+ * wish  : lp#613894 favorite saved filter list to use in report
+   and ledger show all 
+ * bugfix: multiple txn edit tag was not displaying the tag list
+ * bugfix: time report quick filter item list were displaying too
+   much columns
+ * bugfix: lp#2064839 post of today due date txn do not happen
+ * bugfix: lp#2063145 top spending pie chart subcategory is not
+   sorted descending
+ * bugfix: lp#2063135 statistics details export menu items
+   sensitivity update problem
+ * bugfix: lp#2061979 cross-currency transfer still do not propose
+   target transaction
+ * bugfix: lp#2060159 window width and height size is reset to an
+   invalid small size after demaximizing on startup
+ * bugfix: lp#2059709 filter exclusion of payment=none hide
+   transfer
+ * bugfix: lp#2055101 windows: recent file Clear keep
+   deleted/renamed files
+ * bugfix: lp#2052678 home time chart spending by month should
+   show net expense
+ * bugfix: lp#2052304 budget should warn/fix when we input
+   positive number for expense
+- use gcc13 for openSUSE Leap because building with gcc7 fails
+   
+-------------------------------------------------------------------
 Wed Feb  7 18:05:15 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 5.7.4:

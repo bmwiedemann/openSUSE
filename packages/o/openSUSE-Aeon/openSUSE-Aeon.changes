@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May 16 13:16:58 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Remove redundant relabelling (done better by kiwi now)
+- Shift growfs to initrd 
+
+-------------------------------------------------------------------
+Thu May 16 12:51:10 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- libcontainers-common no longer uses storage = btrfs by default,
+  neither should images 
+
+-------------------------------------------------------------------
+Thu May 16 07:57:30 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Require tik-osimage-openSUSE-Aeon 
+
+-------------------------------------------------------------------
 Wed May 15 08:17:59 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Prevent screen blanking during install 

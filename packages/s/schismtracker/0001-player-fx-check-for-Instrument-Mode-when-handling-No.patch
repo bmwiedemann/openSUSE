@@ -1,0 +1,27 @@
+From 943993a1c038c43dd9c3c326fe9f981eeb6c4fcf Mon Sep 17 00:00:00 2001
+From: Paper <paper@paper.us.eu.org>
+Date: Thu, 16 May 2024 22:23:16 -0400
+Subject: [PATCH] player/fx: check for Instrument Mode when handling
+ NoMapEffects.it
+
+Fixes #437. Simple fix, annoying though :)
+---
+ player/effects.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/player/effects.c b/player/effects.c
+index 814fff29..31c5239e 100644
+--- a/player/effects.c
++++ b/player/effects.c
+@@ -2153,7 +2153,7 @@ void csf_process_effects(song_t *csf, int firsttick)
+ 		// This is probably the single biggest WTF replayer bug in Impulse Tracker.
+ 		// In instrument mode, when an note + instrument is triggered that does not map to any sample, the entire cell (including potentially present global effects!)
+ 		// is ignored. Even better, if on a following row another instrument number (this time without a note) is encountered, we end up in the same situation!
+-		if (instr > 0 && instr < MAX_INSTRUMENTS && csf->instruments[instr] != NULL)
++		if (csf->flags & SONG_INSTRUMENTMODE && instr > 0 && instr < MAX_INSTRUMENTS && csf->instruments[instr] != NULL)
+ 		{
+ 			uint8_t note = (chan->row_note != NOTE_NONE) ? chan->row_note : chan->new_note;
+ 			if (NOTE_IS_NOTE(note) && csf->instruments[instr]->sample_map[note - NOTE_FIRST] == 0)
+-- 
+2.45.0
+

@@ -25,6 +25,7 @@ Group:          Productivity/Scientific/Math
 URL:            https://semigroups.github.io/Semigroups/
 #Git-Clone:     https://github.com/semigroups/Semigroups
 Source:         https://github.com/semigroups/Semigroups/releases/download/v%version/semigroups-%version.tar.gz
+Patch1:         no-avx.patch
 BuildRequires:  automake
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
@@ -70,7 +71,7 @@ autoreconf -fi
 rm -Rf libsemigroups
 %gappkg_simple_install
 pushd "%buildroot/$fmoddir/"
-rm -Rfv Makefile* configure* cnf/ src/ gapbind14/src/ gapbind14/include/ autom4te.cache config.log
+rm -Rfv Makefile* configure* config.* cnf/ src/ gapbind14/src/ gapbind14/include/ autom4te.cache
 popd
 find "%buildroot" "(" -name "*.orig" -o -name .gitignore -o \
 	-name .dirstamp -o -name .clang-format -o -name .ccls ")" -print -delete

@@ -1,5 +1,5 @@
 #
-# spec file for package gettext-runtime
+# spec file for package gettext-runtime-mini
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -45,6 +45,8 @@ Conflicts:      gettext-tools-mini
 %else
 # to allow a prjconf preference which to take per build
 Provides:       gettext-runtime = %{version}
+# Ensure this never finds its way onto a real installation
+Requires:       this-is-only-for-build-envs
 # rpm-build requires gettext-tools, but we will only just be building it
 #!BuildIgnore:  gettext-tools
 %endif
@@ -89,6 +91,8 @@ License:        LGPL-2.1-or-later
 Group:          Development/Tools/Other
 Requires:       %{name} = %{version}
 Requires:       xz
+# autopoint requires find
+Requires:       findutils
 %if %{without mini}
 Requires(post): info
 Requires(preun): info
@@ -106,6 +110,8 @@ Conflicts:      gettext-tools-mini
 %else
 # to allow a prjconf preference which to take per build
 Provides:       gettext-tools = %{version}
+# Ensure this never finds its way onto a real installation
+Requires:       this-is-only-for-build-envs
 %endif
 # Several tools use bison-runtime text domain:
 %if 0%{?suse_version}

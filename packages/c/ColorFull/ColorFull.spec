@@ -1,7 +1,7 @@
 #
 # spec file for package ColorFull
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Name:           ColorFull
 Version:        1.1
 Release:        0
 Summary:        C++ library for calculations in QCD (SU(Nc)) color space
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Scientific/Physics
-Url:            http://colorfull.hepforge.org/
+URL:            http://colorfull.hepforge.org/
 Source0:        http://colorfull.hepforge.org/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 # PATCH-FIX-UPSTREAM ColorFull-install-pkgconfig-file.patch badshah400@gmail.com -- Add a pkgconfig file and modify the autotool files to install it to an appropriate location
@@ -83,8 +83,7 @@ Requires:       %{shlib} = %{version}
 This package provides the headers and source files needed for developing applications using %{name}.
 
 %prep
-%setup -q
-%patch2 -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv

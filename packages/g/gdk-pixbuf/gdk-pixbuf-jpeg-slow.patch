@@ -1,0 +1,13 @@
+diff --git a/tests/meson.build b/tests/meson.build
+index 37810666..eff43cc3 100644
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -81,7 +81,7 @@ installed_tests = {
+     'suites': ['io'],
+   },
+   'pixbuf-jpeg': {
+-    'suites': ['format'],
++    'suites': ['format', 'slow'],
+     'skip': not enabled_loaders.contains('jpeg'),
+   },
+   'pixbuf-dpi': {

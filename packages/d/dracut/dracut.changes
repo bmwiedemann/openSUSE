@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 16 15:01:18 UTC 2024 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.588.g528264be:
+  * fix(install.d): skip if dracut is not the initrd or UKI generator
+  * style(install.d): shfmt reformat
+  * fix(suse-initrd): clean return of installkernel() (bsc#1223467)
+  * fix(dracut.spec): do not check if fillup template exists at %post end
+
+-------------------------------------------------------------------
 Fri Apr 26 06:19:27 UTC 2024 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.581.g19b7c06c:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-parallax
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,10 +36,10 @@ Requires:       openssh
 BuildArch:      noarch
 %if 0%{?suse_version}
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %else
 Requires(post): %{_sbindir}/update-alternatives
-Requires(postun):%{_sbindir}/update-alternatives
+Requires(postun): %{_sbindir}/update-alternatives
 %endif
 %python_subpackages
 
@@ -49,8 +49,7 @@ nodes at once using SSH. It also provides commands for sending and receiving fil
 multiple nodes using SCP.
 
 %prep
-%setup -q -n parallax-%{version}
-%patch1 -p1
+%autosetup -p1 -n parallax-%{version}
 
 %build
 %python_build

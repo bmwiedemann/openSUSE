@@ -40,6 +40,8 @@ Patch2:         double-slash-paths.patch
 Patch3:         460-miliseconds_tests.patch
 # PATCH-FIX-OPENSUSE Relax the time for one test case from 2ms to 3ms.
 Patch4:         relax-test-callback-response.patch
+# PATCH-FIX-UPSTREAM https://github.com/gabrielfalcao/HTTPretty/pull/480
+Patch5:         0001-Fix-test_417_openssl.py-if-pyOpenSSL-not-available.patch
 %if %{with boto3}
 BuildRequires:  %{python_module boto3}
 %endif

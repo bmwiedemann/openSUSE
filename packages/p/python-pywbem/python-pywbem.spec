@@ -19,8 +19,7 @@
 # cythonized pywbem produces yacc parser errors
 %bcond_with cythonize
 Name:           python-pywbem
-### FIXME: try to remove skipped unit test workaround for python 3.12 on next version update
-Version:        1.6.2
+Version:        1.7.2
 Release:        0
 Summary:        Python module for making CIM operation calls using the WBEM protocol
 License:        LGPL-2.1-or-later
@@ -39,8 +38,6 @@ BuildRequires:  %{python_module PyYAML > 5.3.1}
 BuildRequires:  %{python_module certifi >= 2019.11.28}
 BuildRequires:  %{python_module httpretty}
 BuildRequires:  %{python_module lxml >= 4.6.4}
-BuildRequires:  %{python_module nocasedict >= 1.0.1}
-BuildRequires:  %{python_module nocaselist >= 1.0.3}
 BuildRequires:  %{python_module ply >= 3.10}
 BuildRequires:  %{python_module pytest >= 6.2.5}
 BuildRequires:  %{python_module pytz}
@@ -48,19 +45,17 @@ BuildRequires:  %{python_module requests >= 2.25.0}
 BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module six >= 1.16.0}
 BuildRequires:  %{python_module testfixtures}
-BuildRequires:  %{python_module urllib3 >= 1.26.5 with %python-urllib3 < 2}
+BuildRequires:  %{python_module urllib3 >= 1.26.5}
 BuildRequires:  %{python_module yamlloader >= 0.5.5}
 BuildRequires:  fdupes
 BuildRequires:  libxml2-tools
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 5.3.1
 Requires:       python-certifi >= 2019.11.28
-Requires:       python-nocasedict >= 1.0.1
-Requires:       python-nocaselist >= 1.0.3
 Requires:       python-ply >= 3.10
 Requires:       python-requests >= 2.25.0
 Requires:       python-six >= 1.16.0
-Requires:       (python-urllib3 >= 1.26.5 with python-urllib3 < 2)
+Requires:       python-urllib3 >= 1.26.5
 Requires:       python-yamlloader >= 0.5.5
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -75,8 +70,7 @@ PyWBEM is a Python module for making CIM operation calls using the WBEM
 protocol to query and update managed objects.
 
 %prep
-%setup -q -n pywbem-%{version}
-%autopatch -p1
+%autosetup -p1 -n pywbem-%{version}
 
 %build
 %pyproject_wheel %{?_with_cythonize:--config-settings "--build-option=--cythonized" .}
@@ -88,10 +82,6 @@ rm %{buildroot}%{_bindir}/*.bat
 %python_clone -a %{buildroot}%{_bindir}/mof_compiler
 
 %check
-# https://github.com/pywbem/pywbem/issues/3097
-python312_donttest=" or (test_invokemethod_summary and instance_wp_tuple0)"
-# Deprecation warning from utcnow()
-python312_donttest="$python312_donttest or (test_subscriptionmanager and (kwargs29 or kwargs38))"
 %if %{with cythonize}
 %pytest_arch -k "not (skipnothingbydefault ${$python_donttest})" tests/unittest tests/functiontest
 %else
@@ -105,7 +95,7 @@ python312_donttest="$python312_donttest or (test_subscriptionmanager and (kwargs
 %python_uninstall_alternative mof_compiler
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE.txt
 %python_alternative %{_bindir}/mof_compiler
 %if %{with cythonize}

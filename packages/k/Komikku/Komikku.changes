@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Thu May 16 22:42:23 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+-update to version 1.46.0:
+    * [Webview] Fixed exiting when there is no Cloudflare challenge
+    * [Servers] Added MangaCrab (ES)
+    * [Servers] Comic Book Plus (EN): Update
+    * [Servers] Mode Scanlator (pt_BR): Update
+    * [Servers] Rawdevart (JA): Update
+    * [Servers] Reaper Scans (EN): Update
+    * [Servers] ShadowMangas (ES): Update
+    * [Servers] Tecno Scan (ES): Update
+    * [Servers] JManga (JA): Disabled
+    * [L10n] Updated Chinese (Traditional), Dutch, German, Hindi, Italian and
+      Turkish translations
+- update to version 1.45.0:
+    * fixes a bug that prevented some server logos from being displayed
+    * [Webview] Improved Cloudflare user challenge completion
+    * [Servers] Added Existential Comics (EN)
+    * [Servers] Added Manga Demon (EN)
+    * [Servers] Added MangaWeebs (EN)
+    * [Servers] Added Webtoon TR
+    * [Servers] Armoni Scans (Asura Scans TR): Reenabled
+    * [Servers] Atikrost (TR): Reenabled
+    * [Servers] Mangago (EN): Update
+    * [Servers] MangaFreak (EN): Update
+    * [Servers] Nine Manga (EN/PT_BR/DE/ES/FR/IT/RU): Update
+    * [L10n] Added Vietnamese translation
+    * [L10n] Updated French, German, Portuguese, Spanish and Russian
+      translations
+- update to version 1.44.0:
+    * [Servers] Added Cartel De Manhwas (ES)
+    * [Servers] Added F/OSS Comics (EN)
+    * [Servers] Added Mode Scanlator (pt_BR)
+    * [Servers] Added Neko Scans (ES)
+    * [Servers] Added Ragna Scan (ES)
+    * [Servers] Added Raiki Scan (ES)
+    * [Servers] Added Rukav Inari (ES)
+    * [Servers] Added Ryujinmanga (ES)
+    * [Servers] Added Senpai Ediciones (ES)
+    * [Servers] Added ShadowMangas (ES)
+    * [Servers] Added SkyMangas (ES)
+    * [Servers] Added Tecno Scan (ES)
+    * [Servers] Added Tres Daos (ES)
+    * [Servers] Read Manga, Mint Manga, Self Manga (RU): Update
+    * [Servers] Tapas (EN): Update
+    * [L10n] Added Hindi translation
+    * [L10n] Updated Dutch, French and Indonesian translations
+- update to version 1.43.0:
+    * Improved downloads and covers display speed
+    * [Servers] Added Comic Fans (EN)
+    * [Servers] Added FleksyScans (EN)
+    * [Servers] Added Iris Scanlator (pt_BR)
+    * [Servers] Added KomikLovers (ID)
+    * [Servers] Added Neromax (ID)
+    * [Servers] Added Scylla Comics (EN)
+    * [Servers] Added SushiScan (FR)
+    * [Servers] Added VF Scan (FR)
+    * [Servers] Legacy Scans (FR): Update
+    * [Servers] Lelscan-VF (FR): Update
+    * [Servers] TCB Scans (EN): Update
+    * [L10n] Updated French translation
+- update to version 1.42.0:
+    * [Explorer] Search: Improved covers rendering
+    * [Updater] Don't attempt to auto-download chapters when a Local source has an update
+    * [Servers] Added DB New Hope (EN/ES/FR/RU/ZH_Hans)
+    * [Servers] Added JManga (JA)
+    * [Servers] Added MangaZin (EN)
+    * [Servers] Added Read Comics Free (EN)
+    * [Servers] Apoll Comics (ES): Update
+    * [Servers] Mangalek (AR): Update
+    * [Servers] View Comics (EN): Update
+    * [Servers] Xoxocomics (EN): Update (new site)
+    * [Servers] Bilibili Comics (EN/ES/FR/ID): Disabled
+    * [L10n] Updated Finnish, Russian, Spanish and Turkish translations
+
+-------------------------------------------------------------------
 Mon Apr  1 03:09:56 UTC 2024 - jun wang <jgwang@suse.com>
 
 - Update to version 1.41.1

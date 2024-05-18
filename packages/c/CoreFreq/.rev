@@ -293,4 +293,13 @@ There are 4 months worth of complicated commit, and I cannot go through them all
     <comment>Update to 1.97.2</comment>
     <requestid>1174430</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>cc184974ea35fafc38d2d2a1f5f11989</srcmd5>
+    <version>1.97.2</version>
+    <time>1715969225</time>
+    <user>anag+factory</user>
+    <comment>Fix dependency on kernel module that was not versioned 
+</comment>
+    <requestid>1174913</requestid>
+  </revision>
 </revisionlist>

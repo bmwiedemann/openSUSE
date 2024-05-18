@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 17 01:54:18 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to 1.5.15:
+  * Fix an exception when PYKCS11LIB is not defined
+  * Correctly fix swig 4.2.0 issue
+  * cache PKCS#11 dll name after it's been succsessfully loaded
+  * Fix a problem when the library load failed
+- switch to github url, as pypi doesn't have the new version
+
+-------------------------------------------------------------------
 Tue Mar 26 08:31:54 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - initial packaging

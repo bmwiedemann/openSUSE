@@ -1,7 +1,7 @@
 #
 # spec file for package python-glean-parser
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@ Requires:       python-diskcache >= 4
 Requires:       python-jsonschema >= 3.0.2
 Requires:       python-yamllint >= 1.18.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Suggests:       python-iso8601 >= 0.1.10
 BuildArch:      noarch
 # SECTION test requirements
@@ -58,9 +58,7 @@ BuildRequires:  %{python_module yamllint >= 1.18.0}
 Parser tools for Mozilla's Glean telemetry
 
 %prep
-%setup -q -n glean_parser-%{version}
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n glean_parser-%{version}
 
 %build
 %python_build

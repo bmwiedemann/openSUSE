@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 16 15:11:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Adjust commented out patch apply command to ensure whoever
+  applies it will use the non-deprecated format.
+
+-------------------------------------------------------------------
 Sun Dec 17 06:15:33 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Limit wlroots version to 0.16.x and before 0.17.x

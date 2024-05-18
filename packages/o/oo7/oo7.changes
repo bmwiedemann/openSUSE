@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 17 02:17:48 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to 0.3.2:
+  * client: Fix compile issue with tracing feature
+  * client: Do not create features for optional deps already behind a feature
+- update to 0.3.1:
+  * portal: Support migration from legacy keyring format
+  * portal: Add rekeying support for oo7::portal::Keyring
+  * service: Use correct signal name for CollectionDeleted
+  * service: Add signals for collection create/delete/change
+  * collection: Add path to public api
+
+-------------------------------------------------------------------
 Sun Feb 25 21:35:35 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - initial packaging

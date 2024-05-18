@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 15 07:24:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require this-is-only-for-build-envs by the -mini packages: ensure
+  those mini packages never find their way onto a system, even when
+  published.
+
+-------------------------------------------------------------------
 Thu Apr  4 09:10:05 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - Add missing Requires: find to gettext-tools

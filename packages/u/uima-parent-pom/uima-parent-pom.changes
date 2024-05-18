@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri May 17 01:16:17 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 13
+  * UIMA-5612: first batch of upgrades to apache-wide parent pom
+  * UIMA-5612: set versions for enforcer using properties
+  * UIMA-5612: updates:
+    1) fix jira version for reporting
+    2) set property surefire.version to 2.20.1 (current level)
+    3) make javadoc version use the variable
+  * UIMA-5612: update the build for signed eclipse update site
+  * UIMA-5856: Use modern checksum algorithms during release
+  * UIMA-5876, UIMA-5753: updates for signatures/checksums and
+    Java 11 enablement, details in the Jira comments. Includes
+    patched jars and patches for two maven plugins
+  * UIMA-5876: update uima-wide parent pom
+  * UIMA-5897: workaround for Apache Nexus rule not allowing
+    unsigned .sha512 checksums
+  * UIMA-6059: apache license header can't be switched because
+    it breaks rat check
+  * UIMA-6059: http to https
+- Fetch sources using service in order to filter out spurious
+  binary files
+- Remove bogus dependencies
+
+-------------------------------------------------------------------
 Fri Feb 28 07:21:28 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of uima-parent-pom 10

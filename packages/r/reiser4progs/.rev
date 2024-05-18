@@ -94,4 +94,12 @@
     <comment>- update to 2.0.5:</comment>
     <requestid>948248</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>aacc9ff72d912c8dee3b7448229afdc6</srcmd5>
+    <version>2.0.5</version>
+    <time>1715969103</time>
+    <user>anag+factory</user>
+    <comment>- Add autoconf-2.72.patch to fix a build failure.</comment>
+    <requestid>1174572</requestid>
+  </revision>
 </revisionlist>

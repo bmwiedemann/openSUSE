@@ -102,23 +102,12 @@ set -eux
 gawk -i inplace '$2 == "/home" { $4 = $4",x-systemd.growfs" } { print $0 }' /etc/fstab
 EOF
 
-cat >>/etc/fstab.script <<"EOF"
-# Relabel /etc. While kiwi already relabelled it earlier, there are some files created later (boo#1210604).
-# The "gawk -i inplace" above also removes the label on /etc/fstab.
-if [ -e /etc/selinux/config ]; then
-	. /etc/selinux/config
-	touch /etc/sysconfig/bootloader # Make sure this exists so it gets labelled
-	setfiles -e /proc -e /sys -e /dev /etc/selinux/${SELINUXTYPE}/contexts/files/file_contexts /etc
-fi
-EOF
-
 chmod a+x /etc/fstab.script
 
-# Use the btrfs storage driver. This is usually detected in %post, but with kiwi
-# that happens outside of the final FS.
-if [ -e /etc/containers/storage.conf ]; then
-	sed -i 's/driver = "overlay"/driver = "btrfs"/g' /etc/containers/storage.conf
-fi
+# To make x-systemd.growfs work from inside the initrd
+cat >/etc/dracut.conf.d/50-microos-growfs.conf <<"EOF"
+install_items+=" /usr/lib/systemd/systemd-growfs "
+EOF
 
 #======================================
 # Enable NetworkManager

@@ -1,4 +1,153 @@
 -------------------------------------------------------------------
+Thu May 16 08:19:44 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.1.0413
+ *  smoothscroll may cause infinite loop
+ *  add missing entries for the keys CTRL-W g<Tab> and <C-Tab>
+ *  update vi_diff.txt: add default value for 'flash'
+ *  typo in regexp_bt.c in DEBUG code
+ *  allow indented commands 
+ *  Fix wrong define regex in ftplugin 
+ *  Filter out non-Latin-1 characters for syntax tests 
+ *  prefer scp over pscp
+ *  fix typo in usr_52.txt
+ *  too long functions in eval.c
+ *  warning about uninitialized variable
+ *  too many strlen() calls in the regexp engine
+ *  E16 fix, async keyword support for define 
+ *  Stuck with long line and half-page scrolling
+ *  Divide by zero with getmousepos() and 'smoothscroll'
+ *  update and remove  some invalid links
+ *  update translation of xxd manpage
+ *  Recursively delete directories by default with netrw delete command
+ *  Strive to remain compatible for at least Vim 7.0 
+ *  tests: xxd buffer overflow fails on 32-bit
+ *  Stop handpicking syntax groups for @javaTop 
+ *  [security] xxd: buffer-overflow with specific flags
+ *  Vim9: not able to import file from start dir
+ *  filetype: mdd files detected as zsh filetype
+ *  filetype: zsh module files are not recognized
+ *  Remove hardcoded private.ppk logic from netrw
+ *  Vim9: confusing error message for unknown type
+ *  block_editing errors out when using del
+ *  add new items to scripts section in syntax plugin
+ *  Vim9: imported vars are not properly type checked
+ *  Wrong display with 'smoothscroll' when changing quickfix list
+ *  filetype: jj files are not recognized
+ *  getregionpos() may leak memory on error
+ *  The CODEOWNERS File is not useful
+ *  Remove and cleanup Win9x legacy from netrw
+ *  add MsgArea to 'highlight' option description
+ *  Cannot get a list of positions describing a region
+ *  Fix digit separator in syntax script for octals and floats
+ *  Update link to Wikipedia Vi page
+ *  clear $MANPAGER in ftplugin before shelling out
+ *  Fix typos in help documents
+ *  'viewdir' not respecting $XDG_CONFIG_HOME
+ *  tests: Vim9 debug tests may be flaky
+ *  correct getscriptinfo() example 
+ *  Vim9: could improve testing
+ *  test_sound fails on macos-12 
+ *  update Serbian menu
+ *  update Slovak menu
+ *  update Slovenian menu
+ *  update Portuguese menu
+ *  update Dutch menu
+ *  update Korean menu
+ *  update Icelandic menu
+ *  update Czech menu
+ *  update Afrikaans menu
+ *  update German menu
+ *  filetype: inko files are not recognized
+ *  filetype: templ files are not recognized
+ *  cursor() and getregion() don't handle v:maxcol well
+ *  Vim9: null value tests not sufficient
+ *  update Catalan menu
+ *  filetype: stylus files not recognized
+ *  update spanish menu localization
+ *  regenerate helptags 
+ *  Vim9: crash with null_class and null_object
+ *  Add tags about lazyloading of menu 
+ *  tests: vt420 terminfo entry may not be found
+ *  filetype: .out files recognized as tex files
+ *  filetype: Kbuild files are not recognized
+ *  cbuffer and similar commands don't accept a range
+ *  Improve the recognition of the "indent" method declarations 
+ *  Fix a typo in usr_30.txt
+ *  remove undefined var s:save_cpoptions and add include setting
+ *  missing setlocal in indent plugin 
+ *  Calculating line height for unnecessary amount of lines
+ *  improve syntax file performance 
+ *  There are a few typos
+ *  Vim9: no comments allowed after class vars
+ *  CI: remove trailing white space in documentation
+ *  Formatting text wrong when 'breakindent' is set
+ *  Add oracular (24.10) as Ubuntu release name
+ *  Vim9: Trailing commands after class/enum keywords ignored
+ *  tests: 1-second delay after Test_BufEnter_botline()
+ *  update helptags for jq syntax 
+ *  include syntax, ftplugin and compiler plugin
+ *  fix typo synconcealend -> synconcealed 
+ *  include a simple comment toggling plugin
+ *  wrong botline in BufEnter
+ *  clarify syntax vs matching mechanism
+ *  fix undefined variable in indent plugin
+ *  ops.c code uses too many strlen() calls
+ *  Calling CLEAR_FIELD() on the same struct twice
+ *  Vim9: compile_def_function() still too long
+ *  Update Serbian messages 
+ *  clarify the effect of setting the shell to powershell
+ *  Improve the recognition of the "style" method declarations
+ *  Vim9: problem when importing autoloaded scripts
+ *  compile_def_function is too long
+ *  filetype: ondir files are not recognized
+ *  Crash when typing many keys with D- modifier
+ *  tests: test_vim9_builtin is a bit slow
+ *  update documentation
+ *  change the download URL of "libsodium" 
+ *  tests: test_winfixbuf is a bit slow
+ *  Add filetype, syntax and indent plugin for Astro
+ *  expanding rc config files does not work well
+ *  Vim9: vim9type.c is too complicated
+ *  Vim9: does not handle autoloaded variables well
+ *  minor spell fix in starting.txt
+ *  wrong drawing in GUI with setcellwidth()
+ *  Add include and suffixesadd
+ *  Page scrolling should place cursor at window boundaries
+ *  align command line table
+ *  minor fixes to starting.txt
+ *  fix comment definition in filetype plugin 
+ *  filetype: flake.lock files are not recognized
+ *  runtime(uci): No support for uci file types
+ *  Support "g:ftplugin_java_source_path" with archived files
+ *  tests: Test_autoload_import_relative_compiled fails on Windows
+ *  Finding cmd modifiers and cmdline-specials is inefficient
+ *  No test that completing a partial mapping clears 'showcmd'
+ *  tests: test_vim9_dissamble may fail
+ *  Vim9: need static type for typealias
+ *  X11 does not ignore smooth scroll event
+ *  A few typos in test_xdg when testing gvimrc
+ *  Patch v9.1.0338 fixed sourcing a script with import
+ *  Problem: gvimrc not sourced from XDG_CONFIG_HOME
+ *  Cursor wrong after using setcellwidth() in terminal
+ *  'showcmd' wrong for partial mapping with multibyte
+ *  tests: test_taglist fails when 'helplang' contains non-english
+ *  Problem: a few memory leaks are found
+ *  Problem: Error with matchaddpos() and empty list
+ *  tests: xdg test uses screen dumps
+ *  Vim9: import through symlinks not correctly handled
+ *  Missing entry for XDG vimrc file in :version
+ *  tests: typo in test_xdg
+ *  runtime(i3config/swayconfig): update syntax scripts
+ *  document pandoc compiler and enable configuring arguments
+ *  String interpolation fails for List type
+ *  No test for highlight behavior with 'ambiwidth'
+ *  tests: test_xdg fails on the appimage repo
+ *  tests: some assert_equal() calls have wrong order of args
+ *  make install does not install all files
+ *  runtime(doc): fix typos in starting.txt
+
+-------------------------------------------------------------------
 Mon Apr 15 08:47:30 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 9.1.0330

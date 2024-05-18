@@ -7608,4 +7608,41 @@ always built-in because vim has direct perl dependencies anyway.
  * filetype: Some config files are not recognized</comment>
     <requestid>1167771</requestid>
   </revision>
+  <revision rev="367" vrev="1">
+    <srcmd5>e5b74090958160eab006c18deca455a9</srcmd5>
+    <version>9.1.0413</version>
+    <time>1715969083</time>
+    <user>anag+factory</user>
+    <comment>- update to 9.1.0413
+ *  smoothscroll may cause infinite loop
+ *  add missing entries for the keys CTRL-W g&lt;Tab&gt; and &lt;C-Tab&gt;
+ *  update vi_diff.txt: add default value for 'flash'
+ *  typo in regexp_bt.c in DEBUG code
+ *  allow indented commands 
+ *  Fix wrong define regex in ftplugin 
+ *  Filter out non-Latin-1 characters for syntax tests 
+ *  prefer scp over pscp
+ *  fix typo in usr_52.txt
+ *  too long functions in eval.c
+ *  warning about uninitialized variable
+ *  too many strlen() calls in the regexp engine
+ *  E16 fix, async keyword support for define 
+ *  Stuck with long line and half-page scrolling
+ *  Divide by zero with getmousepos() and 'smoothscroll'
+ *  update and remove  some invalid links
+ *  update translation of xxd manpage
+ *  Recursively delete directories by default with netrw delete command
+ *  Strive to remain compatible for at least Vim 7.0 
+ *  tests: xxd buffer overflow fails on 32-bit
+ *  Stop handpicking syntax groups for @javaTop 
+ *  [security] xxd: buffer-overflow with specific flags
+ *  Vim9: not able to import file from start dir
+ *  filetype: mdd files detected as zsh filetype
+ *  filetype: zsh module files are not recognized
+ *  Remove hardcoded private.ppk logic from netrw
+ *  Vim9: confusing error message for unknown type
+ *  block_editing errors out when using del
+ *  add new items to scripts section in syntax plugin</comment>
+    <requestid>1174622</requestid>
+  </revision>
 </revisionlist>

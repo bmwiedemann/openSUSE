@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu May 16 23:07:47 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to version 1.9.0:
+    * This release adds a new setting default_local_cidr_any that defaults to
+      true to match previous behavior, but will default to false in the next
+      release (1.10)
+    * Added example service script for OpenRC
+    * The SSH daemon now supports inlined host keys
+    * The SSH daemon now supports certificates with sshd.trusted_cas
+    * Config setting tun.unsafe_routes is now reloadable
+    * Support for the deprecated local_range option has been removed
+    * Remove the TCP round trip tracking metrics, as they never had correct data
+    * Fixed a potential deadlock introduced in 1.8.1
+    * Fixed support for Linux when IPv6 has been disabled at the OS level
+    * DNS will return NXDOMAIN now when there are no results
+    * Allow :: in lighthouse.dns.host
+    * Capitalization of NotAfter fixed in DNS TXT response
+    * Don't log invalid certificates. It is untrusted data and can cause a large
+      volume of logs
+
+-------------------------------------------------------------------
 Tue Apr  9 06:08:08 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - initial packaging

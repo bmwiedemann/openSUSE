@@ -1,0 +1,26 @@
+From 37478cf707c19ea4653c62ba3d101c3887c2ca83 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fvogt@suse.de>
+Date: Fri, 22 Mar 2024 08:27:10 +0100
+Subject: [PATCH] Fix test_417_openssl.py if pyOpenSSL not available
+
+Only one of the test had the necessary @skipIf.
+---
+ tests/bugfixes/nosetests/test_417_openssl.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/tests/bugfixes/nosetests/test_417_openssl.py b/tests/bugfixes/nosetests/test_417_openssl.py
+index 750a3fc..3c2bc6b 100644
+--- a/tests/bugfixes/nosetests/test_417_openssl.py
++++ b/tests/bugfixes/nosetests/test_417_openssl.py
+@@ -24,6 +24,8 @@ def test_enable_disable_httpretty_extract():
+     extract_from_urllib3()
+     expect(urllib3.util.IS_PYOPENSSL).to.be.false
+ 
++@skipIf(extract_from_urllib3 is None,
++        "urllib3.contrib.pyopenssl.extract_from_urllib3 does not exist")
+ def test_enable_disable_httpretty():
+     "#417 urllib3.contrib.pyopenssl enable -> disable extract"
+     expect(urllib3.util.IS_PYOPENSSL).to.be.false
+-- 
+2.43.0
+

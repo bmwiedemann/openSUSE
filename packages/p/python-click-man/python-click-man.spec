@@ -1,7 +1,7 @@
 #
 # spec file for package python-click-man
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,8 +39,7 @@ BuildArch:      noarch
 Automate generation of man pages for Python Click applications.
 
 %prep
-%setup -q -n click-man-%{version}
-%patch1 -p1
+%autosetup -p1 -n click-man-%{version}
 
 %build
 export LANG=en_US.UTF-8

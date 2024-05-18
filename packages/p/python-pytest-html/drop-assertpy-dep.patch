@@ -1,7 +1,7 @@
-Index: pytest_html-4.0.0/testing/test_e2e.py
+Index: pytest_html-4.1.1/testing/test_e2e.py
 ===================================================================
---- pytest_html-4.0.0.orig/testing/test_e2e.py
-+++ pytest_html-4.0.0/testing/test_e2e.py
+--- pytest_html-4.1.1.orig/testing/test_e2e.py
++++ pytest_html-4.1.1/testing/test_e2e.py
 @@ -5,7 +5,6 @@ import urllib.parse
  
  import pytest
@@ -56,10 +56,10 @@ Index: pytest_html-4.0.0/testing/test_e2e.py
 +    assert "BBB" == rows[0]["alpha"]
 +    assert "AAA" in rows[1]["test"]
 +    assert "AAA" == rows[1]["alpha"]
-Index: pytest_html-4.0.0/testing/test_integration.py
+Index: pytest_html-4.1.1/testing/test_integration.py
 ===================================================================
---- pytest_html-4.0.0.orig/testing/test_integration.py
-+++ pytest_html-4.0.0/testing/test_integration.py
+--- pytest_html-4.1.1.orig/testing/test_integration.py
++++ pytest_html-4.1.1/testing/test_integration.py
 @@ -9,7 +9,6 @@ from base64 import b64encode
  from pathlib import Path
  
@@ -381,9 +381,9 @@ Index: pytest_html-4.0.0/testing/test_integration.py
 +                    assert re.match(f"- Captured {stream} {when} -", log)
 +                    assert re.match(f"this is {when} {stream}", log)
  
- 
- class TestLogCapturing:
-@@ -804,7 +773,7 @@ class TestLogCapturing:
+     def test_collect_error(self, pytester):
+         error_msg = "Non existent module"
+@@ -915,7 +884,7 @@ class TestLogCapturing:
  
          log = get_log(page)
          for when in ["setup", "test", "teardown"]:
@@ -392,7 +392,7 @@ Index: pytest_html-4.0.0/testing/test_integration.py
  
      @pytest.mark.usefixtures("log_cli")
      def test_setup_error(self, test_file, pytester):
-@@ -813,9 +782,9 @@ class TestLogCapturing:
+@@ -924,9 +893,9 @@ class TestLogCapturing:
          assert_results(page, error=1)
  
          log = get_log(page)
@@ -405,7 +405,7 @@ Index: pytest_html-4.0.0/testing/test_integration.py
  
      @pytest.mark.usefixtures("log_cli")
      def test_test_fails(self, test_file, pytester):
-@@ -825,7 +794,7 @@ class TestLogCapturing:
+@@ -936,7 +905,7 @@ class TestLogCapturing:
  
          log = get_log(page)
          for when in ["setup", "test", "teardown"]:
@@ -414,7 +414,7 @@ Index: pytest_html-4.0.0/testing/test_integration.py
  
      @pytest.mark.usefixtures("log_cli")
      @pytest.mark.parametrize(
-@@ -839,7 +808,7 @@ class TestLogCapturing:
+@@ -950,7 +919,7 @@ class TestLogCapturing:
          for test_name in ["test_logging", "test_logging::teardown"]:
              log = get_log(page, test_name)
              for when in ["setup", "test", "teardown"]:
@@ -423,7 +423,7 @@ Index: pytest_html-4.0.0/testing/test_integration.py
  
      def test_no_log(self, test_file, pytester):
          pytester.makepyfile(test_file(assertion=True))
-@@ -847,9 +816,9 @@ class TestLogCapturing:
+@@ -958,9 +927,9 @@ class TestLogCapturing:
          assert_results(page, passed=1)
  
          log = get_log(page, "test_logging")
@@ -435,7 +435,7 @@ Index: pytest_html-4.0.0/testing/test_integration.py
  
      @pytest.mark.usefixtures("log_cli")
      def test_rerun(self, test_file, pytester):
-@@ -860,8 +829,8 @@ class TestLogCapturing:
+@@ -971,8 +940,8 @@ class TestLogCapturing:
          assert_results(page, failed=1, rerun=2)
  
          log = get_log(page)
@@ -446,7 +446,7 @@ Index: pytest_html-4.0.0/testing/test_integration.py
  
  
  class TestCollapsedQueryParam:
-@@ -888,9 +857,9 @@ class TestCollapsedQueryParam:
+@@ -999,9 +968,9 @@ class TestCollapsedQueryParam:
          page = run(pytester)
          assert_results(page, passed=1, failed=1, error=1)
  
@@ -459,7 +459,7 @@ Index: pytest_html-4.0.0/testing/test_integration.py
  
      @pytest.mark.parametrize("param", ["failed,error", "FAILED,eRRoR"])
      def test_specified(self, pytester, test_file, param):
-@@ -898,9 +867,9 @@ class TestCollapsedQueryParam:
+@@ -1009,9 +978,9 @@ class TestCollapsedQueryParam:
          page = run(pytester, query_params={"collapsed": param})
          assert_results(page, passed=1, failed=1, error=1)
  
@@ -472,7 +472,7 @@ Index: pytest_html-4.0.0/testing/test_integration.py
  
      def test_all(self, pytester, test_file):
          pytester.makepyfile(test_file)
-@@ -908,7 +877,7 @@ class TestCollapsedQueryParam:
+@@ -1019,7 +988,7 @@ class TestCollapsedQueryParam:
          assert_results(page, passed=1, failed=1, error=1)
  
          for test_name in ["test_pass", "test_fail", "test_error::setup"]:
@@ -481,7 +481,7 @@ Index: pytest_html-4.0.0/testing/test_integration.py
  
      @pytest.mark.parametrize("param", ["", 'collapsed=""', "collapsed=''"])
      def test_falsy(self, pytester, test_file, param):
-@@ -916,9 +885,9 @@ class TestCollapsedQueryParam:
+@@ -1027,9 +996,9 @@ class TestCollapsedQueryParam:
          page = run(pytester, query_params={"collapsed": param})
          assert_results(page, passed=1, failed=1, error=1)
  
@@ -494,7 +494,7 @@ Index: pytest_html-4.0.0/testing/test_integration.py
  
      @pytest.mark.parametrize("param", ["failed,error", "FAILED,eRRoR"])
      def test_render_collapsed(self, pytester, test_file, param):
-@@ -932,9 +901,9 @@ class TestCollapsedQueryParam:
+@@ -1043,9 +1012,9 @@ class TestCollapsedQueryParam:
          page = run(pytester)
          assert_results(page, passed=1, failed=1, error=1)
  
@@ -507,7 +507,7 @@ Index: pytest_html-4.0.0/testing/test_integration.py
  
      def test_render_collapsed_precedence(self, pytester, test_file):
          pytester.makeini(
-@@ -951,7 +920,7 @@ class TestCollapsedQueryParam:
+@@ -1062,7 +1031,7 @@ class TestCollapsedQueryParam:
          page = run(pytester, query_params={"collapsed": "skipped"})
          assert_results(page, passed=1, failed=1, error=1, skipped=1)
  
@@ -519,11 +519,11 @@ Index: pytest_html-4.0.0/testing/test_integration.py
 +        assert not is_collapsed(page, "test_fail")
 +        assert not is_collapsed(page, "test_error::setup")
 +        assert is_collapsed(page, "test_skip")
-Index: pytest_html-4.0.0/testing/test_unit.py
+Index: pytest_html-4.1.1/testing/test_unit.py
 ===================================================================
---- pytest_html-4.0.0.orig/testing/test_unit.py
-+++ pytest_html-4.0.0/testing/test_unit.py
-@@ -4,7 +4,6 @@ import sys
+--- pytest_html-4.1.1.orig/testing/test_unit.py
++++ pytest_html-4.1.1/testing/test_unit.py
+@@ -5,7 +5,6 @@ from pathlib import Path
  
  import pkg_resources
  import pytest
@@ -531,7 +531,7 @@ Index: pytest_html-4.0.0/testing/test_unit.py
  
  pytest_plugins = ("pytester",)
  
-@@ -112,7 +111,8 @@ def test_custom_css(pytester, css_file_p
+@@ -134,7 +133,8 @@ def test_custom_css(pytester, css_file_p
  
      with open(str(path)) as f:
          css = f.read()
@@ -541,7 +541,7 @@ Index: pytest_html-4.0.0/testing/test_unit.py
  
  
  def test_custom_css_selfcontained(pytester, css_file_path, expandvar):
-@@ -131,4 +131,6 @@ def test_custom_css_selfcontained(pytest
+@@ -153,4 +153,6 @@ def test_custom_css_selfcontained(pytest
  
      with open(pytester.path / "report.html") as f:
          html = f.read()

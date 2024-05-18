@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 22 07:33:35 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch 0001-Fix-test_417_openssl.py-if-pyOpenSSL-not-available.patch:
+  * Fix tests without pyOpenSSL support in urllib3
+
+-------------------------------------------------------------------
 Thu Mar  7 13:24:32 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Allow building with python-urllib3 >= 2.x

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 17 06:07:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.16.2:
+  + Fix double g_error_free call in remote_close_callback.
+  + Fix build with taglib 2.0.
+  + Set project gnu++11 c++ language version explicitely.
+  + Updated translations.
+- Drop gnome-commander-taglib-2.0.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Wed Feb 28 18:27:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add gnome-commander-taglib-2.0.patch: Fix build against taglib

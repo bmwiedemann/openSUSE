@@ -1,7 +1,7 @@
 #
 # spec file for package nauty
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ URL:            https://pallini.di.uniroma1.it/
 Source:         https://pallini.di.uniroma1.it/nauty%fuv.tar.gz
 Patch1:         nauty-am.diff
 Patch2:         nauty-uninitialized.diff
+Patch3:         autoconf-2.72.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
@@ -82,8 +83,7 @@ export CFLAGS="%optflags -Wno-unused"
 rm -f "%buildroot/%_libdir"/*.la
 %fdupes %{buildroot}/${_bindir}
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files
 %_bindir/*

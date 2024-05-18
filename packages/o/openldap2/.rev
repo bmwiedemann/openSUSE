@@ -1564,4 +1564,12 @@ Removal of SuSEfirewall2 service.
     <comment>- Update to release 2.6.6</comment>
     <requestid>1122990</requestid>
   </revision>
+  <revision rev="183" vrev="1">
+    <srcmd5>d317637de660cb70b370eb308305281f</srcmd5>
+    <version>2.6.7</version>
+    <time>1715969049</time>
+    <user>anag+factory</user>
+    <comment>openldap2 2.6.7 (forwarded request 1173447 from AndreasStieger)</comment>
+    <requestid>1174483</requestid>
+  </revision>
 </revisionlist>

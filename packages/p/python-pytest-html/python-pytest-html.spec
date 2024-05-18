@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-html
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-html
-Version:        4.0.0
+Version:        4.1.1
 Release:        0
 Summary:        Pytest plugin for generating HTML reports
 License:        MPL-2.0
 URL:            https://github.com/pytest-dev/pytest-html
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-html/pytest_html-%{version}.tar.gz
-Source1:        node_modules.tar.gz
-# PATCH-FIX-OPENSUSE vendor-npm.patch
-Patch0:         vendor-npm.patch
+# npm install --package-lock-only --legacy-peer-deps --ignore-scripts
+Source10:       package-lock.json
+Source11:       node_modules.spec.inc
+%include        %{_sourcedir}/node_modules.spec.inc
 # PATCH-FIX-OPENSUSE drop-assertpy-dep.patch
 Patch1:         drop-assertpy-dep.patch
 BuildRequires:  %{python_module hatch-vcs}
@@ -34,6 +35,7 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  local-npm-registry
 BuildRequires:  npm
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2 >= 3.0.0
@@ -55,7 +57,10 @@ BuildRequires:  %{python_module pytest-xdist}
 A plugin for pytest that generates a HTML report for test results.
 
 %prep
-%autosetup -p1 -n pytest_html-%{version} -a1
+%autosetup -p1 -n pytest_html-%{version}
+rm package-lock.json
+local-npm-registry %{_sourcedir} install --also=dev
+sed -i '/npm ci/d' scripts/npm.py
 
 %build
 %pyproject_wheel

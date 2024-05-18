@@ -19,7 +19,7 @@
 %global base_name maven-plugin-tools
 %global artifactId maven-plugin-plugin
 Name:           %{artifactId}-bootstrap
-Version:        3.9.0
+Version:        3.13.0
 Release:        0
 Summary:        Maven Plugin Plugin
 License:        Apache-2.0
@@ -33,24 +33,19 @@ Patch0:         0002-Remove-dependency-on-jtidy.patch
 # We generated those ones outside the rpm build for a bootstrap package.
 Patch20:        maven-plugin-plugin-bootstrap-resouces.patch
 BuildRequires:  ant
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  maven-lib
 BuildRequires:  maven-plugin-annotations
+BuildRequires:  maven-plugin-tools-annotations
 BuildRequires:  maven-plugin-tools-api
 BuildRequires:  maven-plugin-tools-generators
 BuildRequires:  maven-resolver-api
+BuildRequires:  maven-resolver-util
 BuildRequires:  plexus-build-api0
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-velocity
-BuildRequires:  plexus-xml
-BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
 BuildRequires:  unzip
-BuildRequires:  xmvn-install
-BuildRequires:  xmvn-resolve
-BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-tools-annotations)
-BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-tools-java)
-BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
 BuildArch:      noarch
 
 %description
@@ -70,18 +65,9 @@ artifact metadata and a generic help goal.
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>"
 
-# Remove test dependencies because tests are skipped anyways.
-%pom_xpath_remove "pom:dependency[pom:scope='test']"
-
-for i in maven-plugin-report-plugin maven-plugin-tools-annotations maven-plugin-tools-api maven-plugin-tools-generators maven-script; do
-  %pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 ${i}
-done
-
 %pom_remove_dep org.junit:junit-bom
 %pom_remove_dep :maven-plugin-tools-ant maven-plugin-plugin
 %pom_remove_dep :maven-plugin-tools-beanshell maven-plugin-plugin
-
-%{mvn_package} :maven-plugin-tools __noinstall
 
 %build
 mkdir -p lib
@@ -96,11 +82,10 @@ build-jar-repository -s lib \
     maven-plugin-tools/maven-plugin-tools-api \
     maven-plugin-tools/maven-plugin-tools-generators \
     maven-resolver/maven-resolver-api \
-    org.eclipse.sisu.inject \
+    maven-resolver/maven-resolver-util \
     org.eclipse.sisu.plexus \
     plexus/plexus-build-api0 \
     plexus/utils \
-    plexus/xml \
     plexus-velocity/plexus-velocity
 
 %{mvn_file} :%{artifactId} %{base_name}/%{artifactId}
@@ -109,11 +94,15 @@ pushd %{artifactId}
     -Dtest.skip=true \
     jar
 popd
-%{mvn_artifact} pom.xml
-%{mvn_artifact} %{artifactId}/pom.xml %{artifactId}/target/%{artifactId}-%{version}.jar
 
 %install
-%mvn_install
+# jar
+install -dm 0755 %{buildroot}%{_javadir}/%{base_name}
+install -pm 0644 %{artifactId}/target/%{artifactId}-%{version}.jar %{buildroot}%{_javadir}/%{base_name}/%{artifactId}.jar
+# pom
+install -dm 0755 %{buildroot}%{_mavenpomdir}/%{base_name}
+%mvn_install_pom %{artifactId}/pom.xml %{buildroot}%{_mavenpomdir}/%{base_name}/%{artifactId}.pom
+%add_maven_depmap %{base_name}/%{artifactId}.pom %{base_name}/%{artifactId}.jar
 
 %files -f .mfiles
 %license LICENSE NOTICE

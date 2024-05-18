@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 16 13:17:46 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Remove redundant relabelling (done better by kiwi now)
+- Shift growfs to initrd
+
+-------------------------------------------------------------------
+Thu May 16 12:51:39 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- libcontainers-common no longer uses storage = btrfs by default,
+  neither should images
+
+-------------------------------------------------------------------
 Fri May 10 10:36:02 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Produce image with "tik-osimage-*" prefix to be consumed by tik-img-to-rpm post check

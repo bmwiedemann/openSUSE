@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed May 15 06:05:35 UTC 2024 - ming li <mli@suse.com>
+
+- Update to 0.12.0:
+  * Support searching list of apps to restrict
+  * Keynav focus disappears after GTK4 port
+  * Confusing sentence in user-controls.ui: above, below?
+  * mct_app_filter_is_appinfo_allowed fails when desktop entry
+    is missing Exec key
+  * “All Ages” option for Application Suitability is misleading
+  * Updated translations
+  * Add AppInfo support to malcontent-client check-app-filter
+  * update ru.po
+  * data: Update appdata
+  * build: Hide private structs from generated GIR files
+  * Various build and dependency cleanups for GTK 4.12
+  * malcontent-client: Fix syntax error in appinfo support
+
+-------------------------------------------------------------------
 Fri Mar 22 12:18:09 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

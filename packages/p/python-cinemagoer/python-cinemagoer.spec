@@ -1,7 +1,7 @@
 #
 # spec file for package python-cinemagoer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-SQLAlchemy
 Requires:       python-lxml
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       python-IMDbPY = %version-%release
 Obsoletes:      python-IMDbPY < %version-%release
 BuildArch:      noarch
@@ -46,8 +46,7 @@ cinemagoer can retrieve data from both the IMDb's web server and a local
 copy of the whole database.
 
 %prep
-%setup -q -n cinemagoer-%{version}
-%patch0 -p1
+%autosetup -p1 -n cinemagoer-%{version}
 
 %build
 %python_build

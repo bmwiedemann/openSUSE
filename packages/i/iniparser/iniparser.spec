@@ -1,7 +1,7 @@
 #
 # spec file for package iniparser
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # if bumping this, also update baselibs.conf
 %define sonum 1
 Name:           iniparser
-Version:        4.1
+Version:        4.2.1
 Release:        0
 Summary:        Library to parse ini files
 License:        MIT
@@ -28,12 +28,7 @@ URL:            http://ndevilla.free.fr/iniparser/
 Source:         https://github.com/ndevilla/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
 Patch00:        iniparser_remove_rpath.patch
-Patch01:        Fail-testrun-on-test-failure.patch
-Patch02:        Fix-buffer-overflow-from-sprintf.patch
-Patch03:        Fix-tests-on-32bit.patch
-# PATCH-FIX-SUSE handle-null-return-getstring.patch bsc#1211889 -- CVE-2023-33461: NULL pointer dereference in iniparser_getboolean()
-# https://github.com/ndevilla/iniparser/pull/146
-Patch04:        handle-null-return-getstring.patch
+BuildRequires:  doxygen
 
 %description
 Libiniparser offers parsing of ini files from the C level.
@@ -80,6 +75,7 @@ Libraries and Header Files to Develop Programs with iniparser Support.
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags} -fPIC"
+make %{?_smp_mflags} CFLAGS="%{optflags} -fPIC" docs
 
 %install
 install -d -m 0755 %{buildroot}%{_includedir}

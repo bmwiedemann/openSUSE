@@ -1758,4 +1758,27 @@ Changes:
 - various code cleanup and speedup work.</comment>
     <requestid>1157511</requestid>
   </revision>
+  <revision rev="162" vrev="1">
+    <srcmd5>1de78db7c59eb770d5b266ec39eae97a</srcmd5>
+    <version>20240516</version>
+    <time>1715969028</time>
+    <user>anag+factory</user>
+    <comment>- tumbleweed build config update
+- 15.6 build config fixes
+- sourcerpm &amp; sourcedep handling fixes
+- productcompose:
+  - Fix milestone handling
+  - Support bcntsynctag
+- Adding debian support to generate_sbom
+- Add syscall for personality switch on loongarch64 kernel
+- vm-build: ext3 &amp; ext4: fix disk space allocation
+- mkosi format updates, not fully working yet
+- pbuild exception fixes
+- Fixes for current fedora and centos distros
+- Don't copy original dsc sources if OBS-DCH-RELEASE set
+- Unbreak parsing of sources/patches
+- Support ForceMultiVersion in the dockerfile parser
+- Support %bcond of rpm 4.17.1</comment>
+    <requestid>1174403</requestid>
+  </revision>
 </revisionlist>

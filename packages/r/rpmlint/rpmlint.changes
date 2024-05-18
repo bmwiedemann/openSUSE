@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 14 16:17:30 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 2.5.0+git20240514.fd06b07:
+  * zypper-plugins: adjust permissions-zypp-plugin to new permctl name
+  * dbus-services: remove deepin-api entry until packaging issues are resolved
+  * whitelistings: drop no longer needed KDE5 whitelistings
+  * dbus-services: drop no longer present nfs-ganesha entry
+  * whitelistings: drop no longer needed pam_dbus entries
+
+-------------------------------------------------------------------
 Tue Apr 16 11:53:26 UTC 2024 - filippo.bonazzi@suse.com
 
 - Update to version 2.5.0+git20240416.97c8fad:

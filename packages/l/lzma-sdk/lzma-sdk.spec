@@ -16,11 +16,11 @@
 #
 
 
-%define _sver   2301
-%define _maver  23
-%define _miver  01
+%define _sver   2405
+%define _maver  24
+%define _miver  05
 Name:           lzma-sdk
-Version:        23.01
+Version:        24.05
 Release:        0
 Summary:        An implementation of LZMA compression
 # Actually the site says "Public Domain". See license file.
@@ -32,12 +32,12 @@ Source1:        lzma-sdk-LICENSE.fedora
 Source2:        baselibs.conf
 Patch1:         lzma-sdk-shlib.patch
 Patch2:         lzma-simd.patch
+BuildRequires:  7zip
 BuildRequires:  automake
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRequires:  p7zip-full
 BuildRequires:  pkg-config
 %{?suse_build_hwcaps_libs}
 

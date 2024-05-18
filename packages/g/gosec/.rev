@@ -309,4 +309,40 @@
   * chore(deps): update dependency babel-standalone to v7.23.4 (forwarded request 1146309 from ph03nix)</comment>
     <requestid>1146391</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2a23eb165e54ca5ee72f0995788671f5</srcmd5>
+    <version>2.20.0</version>
+    <time>1715969137</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.20.0:
+  * Update docker image in action to v2.20.0
+  * Catch os.ModePerm permissions in os.WriteFile
+  * Add a unit test to detect the false negative in rule G306 for os.ModePerm permissions
+  * Add filepath.EvalSymlinks to clean functions in rule G304
+  * chore(deps): update all dependencies
+  * Update Go to version 2.22.3 in CI and release
+  * chore(deps): update module golang.org/x/text to v0.15.0
+  * chore(deps): update all dependencies
+  * chore(deps): update module github.com/onsi/gomega to v1.33.0
+  * Update to go 1.22.2
+  * chore(deps): update all dependencies
+  * chore(deps): update module github.com/onsi/ginkgo/v2 to v2.17.1
+  * chore(deps): update all dependencies
+  * fix(helpers/goversion): get from go.mod
+  * chore: fix function name
+  * chore(deps): update all dependencies
+  * Format the imports using the gci tool
+  * Fixup: delete unused variable
+  * Fix test: update test to comply with the spec of generated sources
+  * Refactor: use standard function to check if a file is generated
+  * Fix lint warnings
+  * Add support for math/rand/v2 added in Go 1.22
+  * Skip the G601 tests for Go version 1.22
+  * Update go version to 1.22.1 and 1.21.8
+  * Ignore 'implicit memory aliasing' rule for Go 1.22+
+  * chore(deps): update all dependencies
+  * chore(deps): update module golang.org/x/tools to v0.18.0
+  * fix(hardcoded): remove duplicated `Stripe API Key` (forwarded request 1174421 from ph03nix)</comment>
+    <requestid>1174686</requestid>
+  </revision>
 </revisionlist>

@@ -472,4 +472,15 @@
     <comment></comment>
     <requestid>1140556</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>ad931f5da378c2e1f5b91108d0197385</srcmd5>
+    <version>1.36.0</version>
+    <time>1715969211</time>
+    <user>anag+factory</user>
+    <comment>- Swicth to ayatana-appindicator: Replace
+  pkgconfig(appindicator3-0.1) BuildRequires with
+  pkgconfig(ayatana-appindicator3-0.1). The legacy appindicator has
+  been unmaintained for a while already. (forwarded request 1174828 from dimstar)</comment>
+    <requestid>1174853</requestid>
+  </revision>
 </revisionlist>

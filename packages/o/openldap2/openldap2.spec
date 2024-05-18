@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package openldap2
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -26,7 +26,7 @@
 %endif
 
 Name:           openldap2%{name_suffix}
-Version:        2.6.6
+Version:        2.6.7
 Release:        0
 Summary:        An open source implementation of the Lightweight Directory Access Protocol
 License:        OLDAP-2.8

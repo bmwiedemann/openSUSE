@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu May 16 15:48:05 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.3.0:
+  * Updating help links to point to support.jacktrip.com 
+  * Updating PLC to run using peer instead of local FPP 
+  * Updating "Manage" button when browsing studios to go to dashboard 
+  * Fixing truncation of invite copied tooltip message 
+  * Adding learn more buttons to recommendation screens 
+  * plc meld with peer fpp 
+  * Few more tweaks for plc meld 
+  * Various qt upgrade related things 
+  * Upgrading qt versions for various releases 
+  * Updates for PLC variable headroom calculations 
+  * Conditionally use a PLC worker thread when predictions take too long 
+  * Feature/plc auto worker merge fix 
+  * Fix name of windows cicd job 
+  * Start P2P server on system without IPv6 support
+  * Improve error logging for cli application 
+  * Using only 1 packet in the past for PLC if peer FPP >= 512
+
+-------------------------------------------------------------------
 Wed Apr  3 08:14:20 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.2.5:

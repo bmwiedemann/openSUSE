@@ -1,7 +1,7 @@
 #
 # spec file for package python-pywlroots
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,7 +55,7 @@ Python binding to the wlroots library using cffi.
 
 %prep
 %setup -q -n pywlroots-%{version}
-#%%patch0 -p1
+#%%patch -P 0 -p1
 
 %build
 export CFLAGS="%optflags $(pkg-config --cflags wayland-client xkbcommon pixman-1 libinput libdrm)"

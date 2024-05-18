@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 17 09:14:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN syntax.
+
+-------------------------------------------------------------------
 Fri Nov  3 08:03:12 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - # [0.9.34] - April 12nd, 2023

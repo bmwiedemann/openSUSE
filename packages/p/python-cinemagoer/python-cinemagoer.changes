@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 16 14:46:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro: allows us to eliminiate usage of deprecated
+  %patchN syntax.
+
+-------------------------------------------------------------------
 Mon Jun  5 14:24:33 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Rename package from python-IMDbPY to python-cinemagoer

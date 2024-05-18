@@ -26,16 +26,13 @@ Summary:        An image loading library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://www.gnome.org/
-
-# A file from the test suite is correctly identified by clamav to be a
-# malicious BC.Gif.Exploit.Agent-1425366.Agent. This is an intentional part of
-# the test suite to ensure it has no negative side effects. Change the Source0
-# from tar.xz to zip to bypass clamav scanning on SLE.
-Source0:        %{name}-%{version}.zip
+Source0:        %{name}-%{version}.tar.zst
 Source1:        macros.gdk-pixbuf
 Source2:        README.SUSE
 Source3:        gdk-pixbuf-rpmlintrc
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM gdk-pixbuf-jpeg-slow.patch -- https://gitlab.gnome.org/GNOME/gdk-pixbuf/-/merge_requests/174
+Patch0:         gdk-pixbuf-jpeg-slow.patch
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docutils
@@ -43,7 +40,6 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  meson >= 0.55.3
 BuildRequires:  pkgconfig
-BuildRequires:  unzip
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56.0
@@ -131,12 +127,8 @@ This package contains the development files for gdk-pixbuf.
 %lang_package
 
 %prep
-%setup -c -T -q
-unzip -P gecko %{SOURCE0}
-%if "%{_lib}" == "lib64"
+%autosetup -p1
 cp -a %{SOURCE2} .
-%endif
-%autopatch -p1
 
 %build
 %meson \
@@ -171,6 +163,11 @@ cp %{SOURCE1} %{buildroot}%{_rpmmacrodir}
 %define _gdk_pixbuf_query_loaders %{_bindir}/gdk-pixbuf-query-loaders
 %endif
 %define _gdk_pixbuf_query_loaders_update_cache %{_gdk_pixbuf_query_loaders} --update-cache
+
+%ifarch x86_64
+%check
+%meson_test
+%endif
 
 %post -n libgdk_pixbuf-2_0-0
 /sbin/ldconfig

@@ -22,7 +22,7 @@
 %define baseversionminus1 1.29
 
 Name:           kubernetes%{baseversion}
-Version:        1.30.0
+Version:        1.30.1
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -66,6 +66,7 @@ management of containerized applications.
 
 It groups containers that make up an application into logical units
 for management and discovery.
+
 
 
 
@@ -239,7 +240,6 @@ export KUBE_GIT_VERSION=v%{version}
 
 #TEST
 export FORCE_HOST_GO=y
-
 
 %ifarch s390x
 # `-buildmode=pie` with "internal linking" is not yet supported on linux/s390x platform

@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon May 13 03:49:48 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.7.2:
+  * Bug fixes:
+    + Fix issue where pywbemlistener that fails startup can cause thread
+      exception.
+  * Incompatible changes:
+    + Dropped support for Python 3.5.
+    + In order to make life easier for people that package pywbem into Linux
+      distros, vendorized the nocasedict and nocaselist packages.
+    + Update to support urllib3 dependent package version 2.0+ for Python
+      version 3.7+.
+  * Bug fixes:
+    + Fixed a doc build issue with Sphinx 6.x and addressed some of the
+      Sphinx warnings during doc build.
+    + Test: Fixed issues resulting from removal of support for
+      pytest.warns(None) in pytest version 8.
+    + Fixed new Pylint issue for unused variable 'exp_result'.
+    + Test: Fixed issue in test_recorder.py where format of OrderDict repl
+      output changed with python 3.12
+  * Enhancements:
+    + Update handling of request exceptions in CIM_http.py to account for
+      changes to the urllib3 exceptions API that occurred in urllib3 version
+      2.0.0 and keep the capability to handle the urllib3 exceptions API
+      prior to versiion 2.0.
+    + Add end2end tests for operation timeout.
+    + Document the issue and possible corrections for the pywbem listener
+      possibly losing indications.
+  * Cleanup:
+    + Clarified the use of the host parameter on the WBEMListener class.
+    + Bring example pegasusindicationtest.py up to date and extend to be used
+      with WBEM server in a container.
+    + Fix issue in pywbem_mock._base_provider where __repr__ had invalid
+      parameter
+    + Extend support to Python version 3.12.
+    + Moved the version constraints for the 'idna' package into the pywbem
+      installation dependencies since it is an indirect dependency.
+    + Changed the format of the README and README_PYPI files from RST to
+      Markdown.
+- Switch to autosetup macro.
+- Stop skipping tests on Python 3.12.
+- No longer {Build,}Require urllib3 < 2.
+
+-------------------------------------------------------------------
 Thu Jan 18 21:15:49 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip tests failing on python312

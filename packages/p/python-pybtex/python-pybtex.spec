@@ -1,7 +1,7 @@
 #
 # spec file for package python-pybtex
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2010 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -40,7 +40,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-latexcodec
 Requires:       python-pyparsing
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,8 +55,7 @@ Furthermore, Pybtex provides an interface for Python applications which need to
 process the above formats.
 
 %prep
-%setup -q -n %{oname}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{oname}-%{version}
 
 %build
 %python_build

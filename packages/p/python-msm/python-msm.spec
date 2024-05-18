@@ -1,7 +1,7 @@
 #
 # spec file for package python-msm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,9 +58,8 @@ msm is Mycroft Skills Manager, a command line tool to install/list/remove
 Mycroft skills.
 
 %prep
-%setup -q -n mycroft-skills-manager-%{version}
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n mycroft-skills-manager-%{version}
+
 sed -i -e "s/install_requires=\['GitPython', 'typing'/install_requires=['GitPython'/" setup.py
 sed -i -e "s/data_files=\[('msm', \['LICENSE'\])\]//" setup.py
 chmod -x LICENSE

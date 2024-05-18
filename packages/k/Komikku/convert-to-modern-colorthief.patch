@@ -1,25 +1,23 @@
-diff --git a/komikku/models/database.py b/komikku/models/database.py
-index 495f771..4c7ca60 100644
---- a/komikku/models/database.py
-+++ b/komikku/models/database.py
-@@ -2,7 +2,7 @@
- # SPDX-License-Identifier: GPL-3.0-only or GPL-3.0-or-later
- # Author: Valéry Febvre <vfebvre@easter-eggs.com>
+diff -rub komikku/komikku/models/database/mangas.py komikku-patched/komikku/models/database/mangas.py
+--- komikku/komikku/models/database/mangas.py	2024-05-13 00:37:43.000000000 +0200
++++ komikku-patched/komikku/models/database/mangas.py	2024-05-17 00:36:51.784608966 +0200
+@@ -11,7 +11,7 @@
+ import shutil
+ import time
  
 -from colorthief import ColorThief
 +from modern_colorthief import ColorThief
- import datetime
- from enum import IntEnum
- from functools import cache
-diff --git a/requirements.txt b/requirements.txt
-index a17dda9..fe963b9 100644
---- a/requirements.txt
-+++ b/requirements.txt
+ 
+ from komikku.models.database import create_db_connection
+ from komikku.models.database import insert_row
+diff -rub komikku/requirements.txt komikku-patched/requirements.txt
+--- komikku/requirements.txt	2024-05-13 00:37:43.000000000 +0200
++++ komikku-patched/requirements.txt	2024-05-17 00:37:18.951143491 +0200
 @@ -1,6 +1,6 @@
  beautifulsoup4
- brotli
+ brotli >= 1.1.0
 -colorthief
 +modern_colorthief
- curl_cffi
  dateparser >= 1.1.4
  emoji
+ keyring >= 21.6.0

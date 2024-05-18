@@ -17,8 +17,8 @@
 
 
 Name:           vulkan-volk
-%define lname libvolk-1_3_280_0
-Version:        1.3.280.0
+%define lname libvolk-1_3_283_0
+Version:        1.3.283.0
 Release:        0
 Summary:        Meta loader for the Vulkan API
 License:        MIT

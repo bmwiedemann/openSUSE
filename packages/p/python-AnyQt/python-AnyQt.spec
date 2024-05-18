@@ -68,8 +68,8 @@ Features include:
   compatible API (some monkey patching is involved).
 
 %prep
-%setup -q -n anyqt-%{version}
-%patch0 -p1
+%autosetup -p1 -n anyqt-%{version}
+
 rm AnyQt/QtWinExtras.py
 rm AnyQt/QtMacExtras.py
 

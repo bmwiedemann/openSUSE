@@ -28,7 +28,7 @@ Source101:      preamble
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsystemd)
-Requires:       CoreFreq-kmp
+Requires:       CoreFreq-kmp = %{version}
 ExclusiveArch:  x86_64 aarch64
 %systemd_ordering
 %kernel_module_package -p preamble -x preempt 64kb

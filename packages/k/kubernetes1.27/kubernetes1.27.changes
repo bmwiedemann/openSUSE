@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May 17 05:02:25 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.27.14:
+  * scheduler: preallocation for NodeToStatusMap
+  * add e2e test when a plugin (in-tree or out-of-tree) return non-existent/illegal nodes, the pod should be scheduled normally if suitable nodes exists
+  * test to catch illegal nodeNames returned by PreFilterResult
+  * add integration test for pod with pvc has node-affinity to non-existent/existent nodes
+  * hotfix when a plugin (in-tree or out-of-tree) return non-existent/illegal nodes, the pod scheduling flow will abort immediately.
+  * Fix PersistentVolumeLabel admission plugin on Azure
+  * cluster/gce: upgrade cos-97-lts -> cos-109-lts
+  * storage e2e: update hostpath and mock images
+  * gce: fix test for non-existing instance in cloud
+  * cloud-node-lifecycle controller: add fallback for empty providerID in shutdown
+
+-------------------------------------------------------------------
 Thu Apr 18 11:26:41 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.27.13:

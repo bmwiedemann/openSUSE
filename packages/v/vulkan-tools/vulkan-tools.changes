@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 16 12:21:39 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.283.0
+  * vulkaninfo: Add minImageCount/maxImageCount to
+    VK_EXT_surface_maintenance1 information
+
+-------------------------------------------------------------------
 Thu Mar 21 10:01:43 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.280.0

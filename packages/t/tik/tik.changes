@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 16 14:21:05 UTC 2024 - rbrown@suse.com
+
+- Update to version 0.9.5:
+  * module-welcome: change echo to log
+  * Set boot target after all modules
+  * If restoring btrfs containers, set container storage driver to btrfs
+  * Moved AC power detection function after the welcome message
+  * Apply suggestions from code review
+  * Update 10-welcome
+  * Added code to detect laptop is connected to AC power before proceeding to copy home files to flash drive and starting upgrade
+
+-------------------------------------------------------------------
 Wed May 15 13:51:15 UTC 2024 - rbrown@suse.com
 
 - Update to version 0.9.4:

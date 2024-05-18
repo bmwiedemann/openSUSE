@@ -1,7 +1,7 @@
 #
 # spec file for package uima-parent-pom
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,17 @@
 
 
 Name:           uima-parent-pom
-Version:        10
+Version:        13
 Release:        0
 Summary:        Apache UIMA Parent POM
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://uima.apache.org/
-Source0:        https://github.com/apache/uima-build/archive/parent-pom-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 # uima-parent-pom package don't include the license file
 # reported @ https://issues.apache.org/jira/browse/UIMA-3575
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 BuildRequires:  maven-local
-BuildRequires:  mvn(ant-contrib:ant-contrib)
-BuildRequires:  mvn(jakarta-regexp:jakarta-regexp)
-BuildRequires:  mvn(org.apache.ant:ant-apache-regexp)
-BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-enforcer-plugin)
 BuildRequires:  mvn(org.apache:apache:pom:)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
 BuildArch:      noarch
@@ -49,7 +43,7 @@ supports scalablity, and provides tooling.
 This package provides Parent for Apache UIMA Projects.
 
 %prep
-%setup -q -n uima-build-parent-pom-%{version}
+%setup -q
 
 %pom_xpath_remove pom:Embed-Dependency
 %pom_xpath_remove pom:Embed-Directory
@@ -65,6 +59,8 @@ This package provides Parent for Apache UIMA Projects.
 %pom_remove_plugin :maven-assembly-plugin
 %pom_remove_plugin :maven-remote-resources-plugin
 %pom_remove_plugin :maven-javadoc-plugin
+%pom_remove_plugin :maven-enforcer-plugin
+%pom_remove_plugin :maven-antrun-plugin
 
 # unavailable deps org.apache.uima:uima-docbook-olink:zip:olink:1-SNAPSHOT
 # https://svn.apache.org/repos/asf/uima/build/trunk/uima-docbook-olink/
@@ -72,9 +68,9 @@ This package provides Parent for Apache UIMA Projects.
 # Unavailable deps
 %pom_xpath_remove "pom:profiles/pom:profile[pom:id = 'build-eclipse-update-subsite']"
 %pom_xpath_remove "pom:profiles/pom:profile[pom:id = 'build distribution']"
+%pom_xpath_remove "pom:profiles/pom:profile[pom:id = 'java11']"
 
-cp -p %{SOURCE1} .
-sed -i 's/\r//' LICENSE-2.0.txt README.txt
+cp -p %{SOURCE1} LICENSE-2.0.txt
 
 %build
 %{mvn_build}

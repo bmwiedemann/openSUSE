@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 16 15:58:22 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- specify in CFLAGS the location of the bcmatroska2 header files
+
+-------------------------------------------------------------------
+Fri Mar 29 09:43:12 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.3.37 (no changelog).
+
+-------------------------------------------------------------------
 Thu Mar  7 07:02:26 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.3.26 (no changelog).

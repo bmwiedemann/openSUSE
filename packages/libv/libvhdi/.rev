@@ -159,4 +159,12 @@
     <comment>- Update to release 20240303</comment>
     <requestid>1154438</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>013b4a9daf71d3ec677fe563a96e3b68</srcmd5>
+    <version>20240509</version>
+    <time>1715969090</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1174415</requestid>
+  </revision>
 </revisionlist>
