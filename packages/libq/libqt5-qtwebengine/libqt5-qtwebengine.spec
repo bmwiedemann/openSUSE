@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtwebengine
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,6 +64,8 @@ Patch6:         sandbox_futex_time64.patch
 Patch7:         python311-fixes.patch
 # PATCH-FIX-UPSTREAM -- libxml 2.12 support
 Patch8:         0001-Fix-building-with-system-libxml2.patch
+# PATCH-FIX-UPSTREAM -- Add missing dependencies for compatibility with Ninja 1.12
+Patch9:         Add-missing-dependencies.patch
 ### Patch 50-99 are applied conditionally
 # PATCH-FIX-OPENSUSE -- allow building qtwebengine with ffmpeg5
 Patch50:        qtwebengine-ffmpeg5.patch
@@ -300,6 +302,7 @@ Examples for the libqt5-qtpdf module.
 %patch -P6 -p1
 %patch -P7 -p1
 %patch -P8 -p1
+%patch -P9 -p1
 
 # Replace the whole catapult folder rather than picking individual changes
 pushd src/3rdparty/chromium/third_party

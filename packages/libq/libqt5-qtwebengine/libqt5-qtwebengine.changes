@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 17 05:53:59 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- Backport Ninja 1.12 compatibility patch (and adjust paths)
+  Add-missing-dependencies.patch from upstream
+
+-------------------------------------------------------------------
 Fri Apr 19 14:57:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add patch to fix build with libxml >= 2.12:

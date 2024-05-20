@@ -945,4 +945,12 @@ of the last blockers as we're still waiting for an upstream fix. (forwarded requ
   * 0001-Fix-building-with-system-libxml2.patch</comment>
     <requestid>1169239</requestid>
   </revision>
+  <revision rev="97" vrev="5">
+    <srcmd5>9cb25544c403f3428180f4f84141e7ef</srcmd5>
+    <version>5.15.16</version>
+    <time>1716221477</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1174927</requestid>
+  </revision>
 </revisionlist>
