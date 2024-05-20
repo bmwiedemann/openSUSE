@@ -681,4 +681,19 @@ installing all /icons/hicolor/*/*/*   might have been only some png and a single
 </comment>
     <requestid>1134724</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>f01e24097ed7889df22f4d6c9c0befbb</srcmd5>
+    <version>3.4.4</version>
+    <time>1716221567</time>
+    <user>anag+factory</user>
+    <comment>- Poedit 3.4.4:
+  * [Windows] Revert back to 32bit GNU gettext bundled binaries.
+- Poedit 3.4.3:
+  * Pass --no-convert to msgfmt with gettext &gt;= 0.22 to avoid UTF-8 conversion.
+  * Fixed parsing of @@locale values in ARB files.
+  * Updated bundled GNU gettext to 0.22.5.
+  * Assorted fixes.
+</comment>
+    <requestid>1175031</requestid>
+  </revision>
 </revisionlist>

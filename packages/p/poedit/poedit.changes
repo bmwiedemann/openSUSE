@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May 18 14:14:55 UTC 2024 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Poedit 3.4.4:
+  * [Windows] Revert back to 32bit GNU gettext bundled binaries.
+- Poedit 3.4.3:
+  * Pass --no-convert to msgfmt with gettext >= 0.22 to avoid UTF-8 conversion.
+  * Fixed parsing of @@locale values in ARB files.
+  * Updated bundled GNU gettext to 0.22.5.
+  * Assorted fixes.
+
+-------------------------------------------------------------------
 Sat Dec 23 10:10:31 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Poedit 3.4.2:
