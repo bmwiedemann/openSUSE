@@ -245,4 +245,13 @@
     <comment>Qt 6.7.0. qtwebengine is still building (forwarded request 1164304 from krop)</comment>
     <requestid>1165812</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>c731559f82b2929051447aa5b5921b8e</srcmd5>
+    <version>6.7.0</version>
+    <time>1716221460</time>
+    <user>anag+factory</user>
+    <comment>- Backport Ninja 1.12 compatibility patch (and adjust paths)
+  Add-missing-dependencies.patch from upstream (forwarded request 1174729 from mathletic)</comment>
+    <requestid>1174770</requestid>
+  </revision>
 </revisionlist>
