@@ -1033,4 +1033,16 @@
 (🤖: Submission of trivy via https://src.opensuse.org/pool/trivy/pulls/5 by dirkmueller)</comment>
     <requestid>1145485</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>a874d9c99694ace236d09f7bef335bc4</srcmd5>
+    <version>0.51.1</version>
+    <time>1716221486</time>
+    <user>anag+factory</user>
+    <comment>Update to 0.51.1
+
+
+
+(🤖: Submission of trivy via https://src.opensuse.org/pool/trivy/pulls/6 by dirkmueller)</comment>
+    <requestid>1174935</requestid>
+  </revision>
 </revisionlist>
