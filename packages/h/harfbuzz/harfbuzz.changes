@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 16 04:51:28 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to version 8.5.0:
+  + API for partial instancing is now stable and have been promoted
+    out of experimental APIs.
+  + Support instancing “BASE” table
+  + Speedup AAT shaping by 13–30%
+  + Various subsetter and instancer fixes
+
+-------------------------------------------------------------------
 Fri May  3 13:59:13 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Force higher C++ standard version for building with ICU 75.
