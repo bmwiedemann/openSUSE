@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 17 21:56:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+-update to 24.05:
+  * New Features:
+  * Initial work to support SDL 3.0
+  * FACT: Fix a crash for XACT Cues which may have variation set
+    with no variation data
+
+-------------------------------------------------------------------
 Mon Apr  8 19:58:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.04:
