@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May 17 16:05:37 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.18.27
+  New Features:
+  * A new option signatures-jitter has been added to dnssec-policy
+    to allow signature expirations to be spread out over a period
+    of time.
+
+  Feature Changes:
+  * DNSSEC signatures that are not valid because the current time
+    falls outside the signature inception and expiration dates are
+    skipped instead of causing an immediate validation failure.
+
+-------------------------------------------------------------------
 Sun Apr 21 21:17:19 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to release 9.18.26
