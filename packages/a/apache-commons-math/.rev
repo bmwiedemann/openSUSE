@@ -74,4 +74,12 @@
     <comment>Reproducible builds improvement</comment>
     <requestid>1109941</requestid>
   </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>36871c4c30de875589bb5b1e9b9f33cb</srcmd5>
+    <version>3.6.1</version>
+    <time>1716221488</time>
+    <user>anag+factory</user>
+    <comment>sync bug number with sle</comment>
+    <requestid>1174941</requestid>
+  </revision>
 </revisionlist>
