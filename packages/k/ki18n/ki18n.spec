@@ -24,7 +24,7 @@
 %define qt5_version 5.15.2
 %bcond_without released
 Name:           ki18n
-Version:        5.115.0
+Version:        5.116.0
 Release:        0
 Summary:        KDE Gettext-based UI text internationalization
 License:        LGPL-2.1-or-later
@@ -36,8 +36,6 @@ Source2:        frameworks.keyring
 %endif
 # PATCH-FIX-OPENSUSE fallbackLang.diff -- look for translations in locale/kf5 also
 Patch0:         fallbackLang.diff
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-KCountrySubdivision-unbreak-support-of-iso-codes-4.1.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
 BuildRequires:  gettext-runtime

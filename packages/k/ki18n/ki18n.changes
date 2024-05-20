@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May  6 11:32:48 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.116.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.116.0
+- Changes since 5.115.0:
+  * KF5I18nMacros.cmake.in - don't look for python[2,3] on Windows
+  * KCountrySubdivision: unbreak support of iso-codes >= 4.16
+- Drop patch, merged upstream:
+  * 0001-KCountrySubdivision-unbreak-support-of-iso-codes-4.1.patch
+
+-------------------------------------------------------------------
 Thu Feb  8 11:15:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.115.0

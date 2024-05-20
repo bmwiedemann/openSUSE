@@ -1035,4 +1035,12 @@
     <comment>KDE Frameworks 5.115.0</comment>
     <requestid>1145697</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>d50fe7520b7b81c0c8e27298f6bf4174</srcmd5>
+    <version>5.116.0</version>
+    <time>1716221454</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 5.116</comment>
+    <requestid>1175219</requestid>
+  </revision>
 </revisionlist>
