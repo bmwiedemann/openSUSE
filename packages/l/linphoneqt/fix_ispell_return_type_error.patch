@@ -1,0 +1,21 @@
+diff --git a/ispell.c b/ispell.c
+index 512a9d7..bb03a7c 100644
+--- a/ispell.c
++++ b/ispell.c
+@@ -319,11 +319,11 @@ int bc_spell_checker (const char * dicts_folder, const char * locale, int read_f
+ }
+ 
+ // BC hack to avoid using ncurses (not needed in library mode) by replacing dummy functions required originally by ispell.
+-int tgetent (char * buf, const char * term_name) {}
+-int tgetnum (const char * cmd) {}
+-char * tgetstr (const char * cmd, char ** buf) {}
+-char * tgoto (const char * cmd, int col, int row) {}
+-char * tputs (const char * cmd, int cnt, int (*func)(int)) {}
++int tgetent (char * buf, const char * term_name) { return 0; }
++int tgetnum (const char * cmd) { return 0; }
++char * tgetstr (const char * cmd, char ** buf) { return ""; }
++char * tgoto (const char * cmd, int col, int row) { return "";}
++char * tputs (const char * cmd, int cnt, int (*func)(int)) { return ""; }
+ 
+ int ispell_main (argc, argv)
+     int		argc;
