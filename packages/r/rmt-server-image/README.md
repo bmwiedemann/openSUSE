@@ -9,44 +9,44 @@ It is tested on K3s but should work on any Kubernetes distribution.
 
 ## Overview
 
-Every component of the stack is deployed in a dedicated container via a
-Helm Chart to ease deployment on top of Kubernetes.
+To deploy SUSE RMT on top of Kubernetes, each component of the stack is deployed in a dedicated container via a
+Helm Chart.
 
 ### Repository Mirroring Tool (SUSE RMT) server
 
-A containerized version of the SUSE RMT application, with the ability to pass its configuration via Helm values.  Persistent storage is on a Persistent Volume, thus you need to adapt its size depending on the number of repositories you need to mirror.
+A containerized version of the SUSE RMT application that can pass its configuration via Helm values. Because persistent storage resides on a persistent volume, you need to adjust the volume size according to the number of repositories you need to mirror.
 
 ### MariaDB
 
-The database backend for RMT.
-RMT does create the database/tables at startup if needed so no specific
-post-installation task is required for it to be usable.  Passwords are
-self-generated unless explicitly specified in the values file.
+The database back-end for SUSE RMT.
+If needed, RMT creates the database and tables at startup, so no specific
+post-installation task is required for it to be usable. Passwords are
+self-generated, unless explicitly specified in the values file.
 
 ### NGINX
 
-The web server with proper configuration for RMT routes.  Having a properly
-configured web server out of the box allows you to target your ingress traffic
-(for RMT) to it directly. You don't have to configure ingress for RMT specific
-paths handling, as NGINX is configured to do so.
+The web server with appropriate configuration for RMT routes. Having a correctly
+configured web server right from the start allows you to target your ingress traffic
+(for RMT) to directly to the server. You don't have to configure ingress for RMT specific
+paths handling, as NGINX is configured to do that.
 
 ## Prerequisites
 
-- a running kubernetes cluster
-- helm (v3) command configured to interact with this cluster
+- a running Kubernetes cluster
+- helm command configured to interact with the cluster
 
 ## Custom mandatory values
 
-Some values of this chart do not have any sensible defaults:
-- SCC mirroring credentials, please have a look here for [more information](https://documentation.suse.com/sles/15-SP4/html/SLES-all/cha-rmt-mirroring.html#sec-rmt-mirroring-credentials)
+Certain values of the chart do not have any defaults:
+- SCC mirroring credentials (refer to [more information](https://documentation.suse.com/sles/15-SP4/html/SLES-all/cha-rmt-mirroring.html#sec-rmt-mirroring-credentials) for more information)
 - list of products to mirror
-- list of products to not mirror
-- DNS name the RMT server should be reachable at
-- Configured [storage](https://kubernetes.io/docs/concepts/storage/)
+- list of products not to mirror
+- DNS name used to reach the RMT server
+- configured [storage](https://kubernetes.io/docs/concepts/storage/)
 
-You should fill a custom values file before deploying the chart.
+Before deploying the chart, you must fill a custom values file.
 
-Below example also enables ingress with TLS.
+The following example enables ingress with TLS.
 The create-certs.sh can be used to create self-signed certificates and
 add them to Kubernetes as a usable TLS secret.
 
