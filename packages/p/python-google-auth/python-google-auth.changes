@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 17 10:36:48 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.29.0
+  * Adds support for custom suppliers in AWS and Identity Pool credentials (#1496)
+  * Refactor tech debt in aws and identity pool credentials (#1501)
+- from version 2.28.2
+  * Remove gce log for expected 404 (#1491)
+- from version 2.28.1
+  * Typo when setting the state for the pickle deserializer. (#1479)
+- from version 2.28.0
+  * Adding universe domain support for downscroped credentials (#1463)
+  * Change log level to debug for return_none_for_not_found_error (#1473)
+  * Make requests import conditional for gce universe domain (#1476)
+- Refresh patches for new version
+  * python-google-auth-no-mock.patch
+
+-------------------------------------------------------------------
 Thu Mar 14 15:56:13 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Do not force transition to Python 3.11 it breaks SUMa
