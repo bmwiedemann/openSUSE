@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 12 20:14:14 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update text-short to version 0.1.6 revision 1.
+  ## 0.1.6
+
+    * Drop support for GHC prior 8.6.5
+    * Support GHC-9.10 (base-4.21)
+
+-------------------------------------------------------------------
 Tue Oct  3 21:07:52 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update text-short to version 0.1.5 revision 3.
