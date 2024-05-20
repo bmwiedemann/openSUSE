@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/open-telemetry/opentelemetry-collector-contrib</param>
+              <param name="changesrevision">da05052499099b69cbb68a679a0efeac95a5d88c</param></service></servicedata>
