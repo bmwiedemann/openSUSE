@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,8 @@ Patch2:         fcitx-autostart-check-INPUT_METHOD.patch
 # PATCH-FIX-OPENSUSE downgrade cmake requirement to 3.1 again
 Patch3:         fcitx-cmake-3.1.patch
 Patch4:         remote-module-use-safe-directory-for-socket-API-sock.patch
+# PATCH-FIX-UPSTREAM Add missing function prototypes
+Patch5:         fcitx-gclient-Export-fcitx_client_enable_ic-fcitx_cl.patch
 BuildRequires:  cairo-devel
 BuildRequires:  cmake
 BuildRequires:  dbus-1-devel

@@ -622,4 +622,13 @@
     <comment></comment>
     <requestid>1150816</requestid>
   </revision>
+  <revision rev="71" vrev="4">
+    <srcmd5>eb17bb5399f24c3858efe2d4f8173014</srcmd5>
+    <version>4.2.9.9</version>
+    <time>1716221375</time>
+    <user>anag+factory</user>
+    <comment>- Add missing fcitx_client_close_ic and fcitx_client_enable_ic prototypes:
+  fcitx-gclient-Export-fcitx_client_enable_ic-fcitx_cl.patch</comment>
+    <requestid>1174813</requestid>
+  </revision>
 </revisionlist>

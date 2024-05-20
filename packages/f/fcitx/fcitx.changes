@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 16 19:27:05 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- Add missing fcitx_client_close_ic and fcitx_client_enable_ic prototypes:
+  fcitx-gclient-Export-fcitx_client_enable_ic-fcitx_cl.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 08:41:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
