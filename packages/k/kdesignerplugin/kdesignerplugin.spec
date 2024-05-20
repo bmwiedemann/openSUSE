@@ -23,7 +23,7 @@
 %define qt5_version 5.15.2
 %bcond_without released
 Name:           kdesignerplugin
-Version:        5.115.0
+Version:        5.116.0
 Release:        0
 Summary:        Framework for integration of KDE frameworks widgets with Qt Designer
 License:        LGPL-2.1-or-later
