@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri May 17 08:16:15 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20240513:
+  * Add Expo domains (#1975)
+  * Add `*.hosted.app` (#1947)
+  * Add Clever Cloud's domains for customers (#1974)
+  * Add web.val.run and express.val.run to PSL (#1964)
+  * add notion site to etld (#1958)
+  * Add `box.ca` (Whatbox) (#1950)
+  * Add observablehq.cloud (#1934)
+  * Add "zeabur.app" (#1865)
+  * Add `sheezy.games` (#1945)
+  * util: gTLD data autopull updates for 2024-05-04T15:12:50 UTC (#1973)
+  * Create a Security Policy (#1856)
+  * Add examples of limitations to PR template (#1929)
+  * Update `prvcy.page` (#1859)
+  * Remove Lightmaker Property Manager, Inc. domain (#1820)
+  * Adding regional domain bielsko.pl (#1749)
+  * add xmit.dev (#1972)
+  * Remove `ghost.io` (#1969)
+  * Add aaa.vodka (#1795)
+  * Add ngo.us for the NGO.US Registry (#1821)
+  * AWS Submissions to the Public Suffix List - Q1 2024 (#1919)
+  * Add shop.brendly.hr (#1762)
+
+-------------------------------------------------------------------
 Thu Apr 25 05:13:39 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20240419:
