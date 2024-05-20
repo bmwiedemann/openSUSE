@@ -24,7 +24,7 @@
 %define qt5_version 5.15.2
 %bcond_without released
 Name:           oxygen5-icon-theme
-Version:        5.115.0
+Version:        5.116.0
 Release:        0
 Summary:        Oxygen Icon Theme
 License:        LGPL-3.0-only
