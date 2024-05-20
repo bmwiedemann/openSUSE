@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 17 03:37:07 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-pytest-8.2.patch:
+  * Support pytest >= 8.2 changes.
+
+-------------------------------------------------------------------
 Thu Jan 11 13:28:34 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add patch openssl-3.2.patch gh#tornadoweb/tornado#3355

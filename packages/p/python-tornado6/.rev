@@ -184,4 +184,13 @@
     <comment>- Add patch openssl-3.2.patch gh#tornadoweb/tornado#3355</comment>
     <requestid>1138133</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>29fbe49d7cf06b0d9af3fb702af695f3</srcmd5>
+    <version>6.4</version>
+    <time>1716221367</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-pytest-8.2.patch:
+  * Support pytest &gt;= 8.2 changes.</comment>
+    <requestid>1174712</requestid>
+  </revision>
 </revisionlist>

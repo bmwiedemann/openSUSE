@@ -30,6 +30,8 @@ Source99:       python-tornado6-rpmlintrc
 Patch0:         ignore-resourcewarning-doctests.patch
 # PATCH-FIX-OPENSUSE openssl-3.2.patch gh#tornadoweb/tornado#3355
 Patch1:         openssl-3.2.patch
+# PATCH-FIX-UPSTREAM gh#tornadoweb/tornado#3374
+Patch2:         support-pytest-8.2.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
