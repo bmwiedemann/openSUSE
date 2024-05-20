@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat May 18 07:47:19 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- pluto withdrew the release 5.19.2 and 5.19.4 and re-released
+  them
+  https://github.com/FairwindsOps/pluto/issues/533
+  Hence the package was rebuilt using the new 5.19.4 release
+  https://github.com/FairwindsOps/pluto/releases/tag/v5.19.4
+  https://github.com/FairwindsOps/pluto/commit/94d3acae30cd0c306a80fa42bb77a70b8f49e39c
+- Update to version 5.19.4:
+  * Bumped helm version (#537)
+  * Add pluto module v5 back (#535)
+  * Removed pluto v5 references (#534)
+  * fix(release): fix goreleaesr
+  * fix: goreleaser sign blob fix
+  * fix(release): fix release; fix HIGH vulns (#532)
+  * fix(release): another attempt to fix the release step (#531)
+  * re-added equals sign (#530)
+  * Sc/try cosign change (#529)
+
+-------------------------------------------------------------------
 Sun May 05 07:31:03 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 5.19.4 (skipping non-existent version 5.19.3):

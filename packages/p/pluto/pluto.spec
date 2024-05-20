@@ -62,10 +62,14 @@ Fish command line completion support for %{name}.
 %autosetup -p 1 -a 1
 
 %build
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
+
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags="-X main.Version=%{version}" \
+   -ldflags=" \
+   -X main.version=%{version} \
+   -X main.commit=${COMMIT_HASH}" \
    -o bin/pluto ./cmd/pluto/
 
 %install
