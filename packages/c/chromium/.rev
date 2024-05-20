@@ -4978,4 +4978,13 @@ Chromium 123.0.6312.58 (boo#1221732)</comment>
 </comment>
     <requestid>1174247</requestid>
   </revision>
+  <revision rev="419" vrev="1">
+    <srcmd5>16443d7be241c72dd6c6311f6a1e2aff</srcmd5>
+    <version>125.0.6422.60</version>
+    <time>1716221575</time>
+    <user>anag+factory</user>
+    <comment>chromium 125.0.6422.60 (boo#1224341)
+boo#1224178</comment>
+    <requestid>1175076</requestid>
+  </revision>
 </revisionlist>

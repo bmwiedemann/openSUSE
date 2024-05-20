@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Thu May 16 16:57:33 CEST 2024 - ro@suse.de
+
+- Chromium 125.0.6422.60 (boo#1224341)
+  * CVE-2024-4947: Type Confusion in V8
+  * CVE-2024-4948: Use after free in Dawn
+  * CVE-2024-4949: Use after free in V8
+  * CVE-2024-4950: Inappropriate implementation in Downloads
+
+- Chromium 125.0.6422.41
+  * New upstream (early) stable release.
+
+- drop upstreamed patches:
+  * chromium-124-uint-includes.patch
+  * chromium-124-fps-optional.patch
+  * chromium-124-span-optional.patch
+  * chromium-124-extractor-bitset.patch
+  * chromium-124-atomic.patch
+  * chromium-124-webgpu-optional.patch
+  * chromium-124-angle-powf.patch
+
+- add debian upstream patches added for 125:
+  * chromium-125-appservice-include.patch
+  * chromium-125-lens-include.patch
+  * chromium-125-mojo-bindings-include.patch
+  * chromium-125-no-vector-consts.patch
+  * chromium-125-vulkan-include.patch
+  * chromium-125-tabstrip-include.patch
+  * chromium-125-ninja.patch
+
+- add debian fixes patches to fix font gc crashes:
+  * chromium-125-debian-bad-font-gc0000.patch
+  * chromium-125-debian-bad-font-gc000.patch
+  * chromium-125-debian-bad-font-gc00.patch
+  * chromium-125-debian-bad-font-gc0.patch
+  * chromium-125-debian-bad-font-gc11.patch
+  * chromium-125-debian-bad-font-gc1.patch
+  * chromium-125-debian-bad-font-gc2.patch
+  * chromium-125-debian-bad-font-gc3.patch
+
+- add from fedora (reverse applied for older ffmpeg):
+  * chromium-125-ffmpeg-5.x-reordered_opaque.patch
+
+- re-diff and rename:
+  * from chromium-110-compiler.patch
+    to chromium-125-compiler.patch
+  * from chromium-120-emplace-struct.patch
+    to chromium-125-emplace-struct.patch
+  * from chromium-disable-FFmpegAllowLists.patch
+    to chromium-125-disable-FFmpegAllowLists.patch
+  * from chromium-122-missing-header-files.patch
+    to chromium-125-missing-header-files.patch
+  * from chromium-122-no_matching_constructor.patch
+    to chromium-125-no_matching_constructor.patch
+  * from chromium-122-lp155-typename.patch
+    to chromium-125-lp155-typename.patch
+
+- third_party/zstd
+  added to keeplibs for
+  third_party/blink/renderer/platform:platform
+- third_party/tflite/src/third_party/xla/xla/tsl/util
+  added to keeplibs for
+  third_party/tflite/tflite
+- third_party/lens_server_proto
+  added to keeplibs for
+  gen/third_party/lens_server_proto
+
+-------------------------------------------------------------------
 Tue May 14 05:03:09 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 124.0.6367.207 (boo#1224294)

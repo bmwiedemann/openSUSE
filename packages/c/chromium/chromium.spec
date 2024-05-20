@@ -41,7 +41,6 @@
 %bcond_without system_icu
 %bcond_without ffmpeg_51
 %bcond_without qt6
-%bcond_without system_zstd
 %else
 %bcond_with system_harfbuzz
 %bcond_with system_freetype
@@ -49,8 +48,8 @@
 %bcond_with system_icu
 %bcond_with ffmpeg_51
 %bcond_with qt6
-%bcond_with system_zstd
 %endif
+%bcond_with system_zstd
 # LLVM version
 %define llvm_version 17
 # GCC version
@@ -92,7 +91,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        124.0.6367.207
+Version:        125.0.6422.60
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -102,6 +101,7 @@ Source1:        esbuild.tar.gz
 Source3:        README.SUSE
 Source4:        ffmpeg-new-channel-layout.patch
 Source5:        Cr122-ffmpeg-new-channel-layout.patch
+Source6:        chromium-125-ffmpeg-5.x-reordered_opaque.patch
 # Toolchain definitions
 Source30:       master_preferences
 Source104:      chromium-symbolic.svg
@@ -123,7 +123,7 @@ Patch7:         chromium-norar.patch
 Patch9:         system-libdrm.patch
 Patch10:        chromium-disable-parallel-gold.patch
 # gentoo/fedora/arch patchset
-Patch15:        chromium-110-compiler.patch
+Patch15:        chromium-125-compiler.patch
 Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
 Patch62:        chromium-93-ffmpeg-4.4.patch
 Patch68:        chromium-94-ffmpeg-roll.patch
@@ -137,25 +137,33 @@ Patch240:       chromium-117-string-convert.patch
 Patch244:       chromium-117-system-zstd.patch
 Patch248:       chromium-119-assert.patch
 Patch250:       chromium-120-emplace.patch
-Patch254:       chromium-120-emplace-struct.patch
+Patch254:       chromium-125-emplace-struct.patch
 Patch256:       chromium-120-make_unique-struct.patch
 Patch258:       chromium-121-nullptr_t-without-namespace-std.patch
 Patch261:       chromium-121-rust-clang_lib.patch
-Patch311:       chromium-disable-FFmpegAllowLists.patch
-Patch316:       chromium-122-missing-header-files.patch
-Patch317:       chromium-122-no_matching_constructor.patch
-Patch322:       chromium-122-lp155-typename.patch
+Patch311:       chromium-125-disable-FFmpegAllowLists.patch
+Patch316:       chromium-125-missing-header-files.patch
+Patch317:       chromium-125-no_matching_constructor.patch
+Patch322:       chromium-125-lp155-typename.patch
 Patch324:       chromium-122-workaround_clang_bug-structured_binding.patch
 Patch326:       chromium-123-stats-collector.patch
-Patch328:       chromium-124-angle-powf.patch
-Patch329:       chromium-124-atomic.patch
-Patch330:       chromium-124-extractor-bitset.patch
-Patch331:       chromium-124-fps-optional.patch
-Patch332:       chromium-124-span-optional.patch
-Patch333:       chromium-124-uint-includes.patch
-Patch334:       chromium-124-webgpu-optional.patch
 Patch336:       chromium-124-system-libxml.patch
 Patch337:       chromium-123-missing-QtGui.patch
+Patch340:       chromium-125-appservice-include.patch
+Patch341:       chromium-125-lens-include.patch
+Patch342:       chromium-125-mojo-bindings-include.patch
+Patch343:       chromium-125-no-vector-consts.patch
+Patch345:       chromium-125-vulkan-include.patch
+Patch346:       chromium-125-tabstrip-include.patch
+Patch347:       chromium-125-ninja.patch
+Patch350:       chromium-125-debian-bad-font-gc0000.patch
+Patch351:       chromium-125-debian-bad-font-gc000.patch
+Patch352:       chromium-125-debian-bad-font-gc00.patch
+Patch353:       chromium-125-debian-bad-font-gc0.patch
+Patch354:       chromium-125-debian-bad-font-gc11.patch
+Patch355:       chromium-125-debian-bad-font-gc1.patch
+Patch356:       chromium-125-debian-bad-font-gc2.patch
+Patch357:       chromium-125-debian-bad-font-gc3.patch
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -403,6 +411,7 @@ WebDriver is an open source tool for automated testing of webapps across many br
 patch -R -p1 < %{PATCH68}
 %endif
 %if %{without ffmpeg_51}
+patch -R -p1 < %{SOURCE6}
 patch -R -p1 < %{SOURCE5}
 patch -R -p1 < %{SOURCE4}
 %endif
@@ -564,6 +573,7 @@ keeplibs=(
     third_party/jsoncpp
     third_party/jstemplate
     third_party/khronos
+    third_party/lens_server_proto
     third_party/leveldatabase
     third_party/libaddressinput
     third_party/libaom
@@ -653,6 +663,7 @@ keeplibs=(
     third_party/tflite/src/third_party/eigen3
     third_party/tflite/src/third_party/fft2d
     third_party/tflite/src/third_party/xla/third_party/tsl
+    third_party/tflite/src/third_party/xla/xla/tsl/util
     third_party/ukey2
     third_party/utf
     third_party/vulkan

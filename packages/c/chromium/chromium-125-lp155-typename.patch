@@ -207,7 +207,7 @@ Index: chromium-123.0.6312.46/base/containers/heap_array.h
 ===================================================================
 --- chromium-123.0.6312.46.orig/base/containers/heap_array.h
 +++ chromium-123.0.6312.46/base/containers/heap_array.h
-@@ -32,8 +32,8 @@ class TRIVIAL_ABI GSL_OWNER HeapArray {
+@@ -32,8 +32,8 @@
    static_assert(!std::is_reference_v<T>,
                  "HeapArray cannot hold reference types");
  
@@ -215,9 +215,9 @@ Index: chromium-123.0.6312.46/base/containers/heap_array.h
 -  using const_iterator = base::span<const T>::iterator;
 +  using iterator = typename base::span<T>::iterator;
 +  using const_iterator = typename base::span<const T>::iterator;
- 
-   // Allocates initialized memory capable of holding `size` elements. No memory
-   // is allocated for zero-sized arrays.
+   // We don't put this default value in the template parameter list to allow the
+   // static_assert on is_reference_v to give a nicer error message.
+   using deleter_type = std::
 Index: chromium-123.0.6312.46/mojo/public/cpp/bindings/type_converter.h
 ===================================================================
 --- chromium-123.0.6312.46.orig/mojo/public/cpp/bindings/type_converter.h

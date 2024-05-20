@@ -26,9 +26,9 @@ Index: chromium-123.0.6312.46/chrome/browser/webauthn/authenticator_request_dial
 ===================================================================
 --- chromium-123.0.6312.46.orig/chrome/browser/webauthn/authenticator_request_dialog_model.h
 +++ chromium-123.0.6312.46/chrome/browser/webauthn/authenticator_request_dialog_model.h
-@@ -9,6 +9,7 @@
- #include <optional>
+@@ -10,6 +10,7 @@
  #include <string>
+ #include <string_view>
  #include <vector>
 +#include <variant>
  
@@ -111,14 +111,14 @@ Index: chromium-123.0.6312.46/third_party/ruy/src/ruy/profiler/instrumentation.h
 ===================================================================
 --- chromium-123.0.6312.46.orig/third_party/ruy/src/ruy/profiler/instrumentation.h
 +++ chromium-123.0.6312.46/third_party/ruy/src/ruy/profiler/instrumentation.h
-@@ -17,6 +17,7 @@ limitations under the License.
+@@ -17,6 +17,7 @@
  #define RUY_RUY_PROFILER_INSTRUMENTATION_H_
  
  #ifdef RUY_PROFILER
 +#include <string>
  #include <cstdio>
  #include <mutex>
- #include <string>
+ #include <vector>
 Index: chromium-123.0.6312.46/third_party/swiftshader/third_party/llvm-10.0/llvm/lib/Support/Unix/Signals.inc
 ===================================================================
 --- chromium-123.0.6312.46.orig/third_party/swiftshader/third_party/llvm-10.0/llvm/lib/Support/Unix/Signals.inc

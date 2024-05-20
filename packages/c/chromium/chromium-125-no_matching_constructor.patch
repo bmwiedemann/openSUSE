@@ -471,21 +471,21 @@ Index: chromium-123.0.6312.46/content/browser/renderer_host/render_frame_host_im
 ===================================================================
 --- chromium-123.0.6312.46.orig/content/browser/renderer_host/render_frame_host_impl.cc
 +++ chromium-123.0.6312.46/content/browser/renderer_host/render_frame_host_impl.cc
-@@ -8691,7 +8691,7 @@ void RenderFrameHostImpl::SendFencedFram
+@@ -8796,7 +8796,7 @@
    for (const blink::FencedFrame::ReportingDestination& destination :
         destinations) {
      SendFencedFrameReportingBeaconInternal(
--        DestinationEnumEvent(event_type, event_data), destination);
-+        DestinationEnumEvent{event_type, event_data}, destination);
+-        DestinationEnumEvent(event_type, event_data, cross_origin_exposed),
++        DestinationEnumEvent{event_type, event_data, cross_origin_exposed},
+         destination);
    }
  }
- 
-@@ -8720,7 +8720,7 @@ void RenderFrameHostImpl::SendFencedFram
+@@ -8827,7 +8827,7 @@
    }
  
    SendFencedFrameReportingBeaconInternal(
--      DestinationURLEvent(destination_url),
-+      DestinationURLEvent{destination_url},
+-      DestinationURLEvent(destination_url, cross_origin_exposed),
++      DestinationURLEvent{destination_url, cross_origin_exposed},
        blink::FencedFrame::ReportingDestination::kBuyer);
  }
  

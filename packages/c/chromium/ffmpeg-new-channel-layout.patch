@@ -199,7 +199,7 @@ index 2aba7927a31..1f45a50cace 100644
  
  TEST_F(AudioFileReaderTest, MidStreamConfigChangesFail) {
 -  RunTestFailingDecode("midstream_config_change.mp3");
-+  RunTestFailingDecode("midstream_config_change.mp3", 42624);
++  RunTestFailingDecode("midstream_config_change.mp3", 0);
  }
  #endif
  

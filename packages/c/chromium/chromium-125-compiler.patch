@@ -77,7 +77,7 @@ Index: chromium-120.0.6099.35/build/config/compiler/BUILD.gn
    # C11/C++11 compiler flags setup.
    # ---------------------------
    if (is_linux || is_chromeos || is_android || (is_nacl && is_clang) ||
-@@ -1514,46 +1463,6 @@ config("compiler_deterministic") {
+@@ -1488,46 +1488,6 @@
      }
    }
  
@@ -123,7 +123,7 @@ Index: chromium-120.0.6099.35/build/config/compiler/BUILD.gn
 -
    # Tells the compiler not to use absolute paths when passing the default
    # paths to the tools it invokes. We don't want this because we don't
-   # really need it and it can mess up the goma cache entries.
+   # really need it and it can mess up the RBE cache entries.
 @@ -1572,27 +1481,6 @@ config("compiler_deterministic") {
    }
  }
@@ -188,10 +188,10 @@ Index: chromium-120.0.6099.35/build/config/compiler/BUILD.gn
      if (is_apple) {
        cflags_objc = [ "-Wimplicit-retain-self" ]
        cflags_objcc = [ "-Wimplicit-retain-self" ]
-@@ -2257,7 +2257,8 @@
- }
- 
- # Default "optimization on" config.
+@@ -2335,7 +2295,8 @@
+ # [0]: https://pinpoint-dot-chromeperf.appspot.com/job/147634a8be0000
+ # [1]: https://pinpoint-dot-chromeperf.appspot.com/job/132bc772be0000
+ # [2]: https://crrev.com/c/5447532
 -config("optimize") {
 +config("optimize") { }
 +config("xoptimize") {
@@ -208,10 +208,10 @@ Index: chromium-120.0.6099.35/build/config/compiler/BUILD.gn
    if (is_win) {
      cflags = [
        "/Od",  # Disable optimization.
-@@ -2470,7 +2338,8 @@ config("no_optimize") {
- # Turns up the optimization level. On Windows, this implies whole program
- # optimization and link-time code generation which is very expensive and should
- # be used sparingly.
+@@ -2417,7 +2377,8 @@
+ # Turns up the optimization level. Used to explicitly enable -O2 instead of
+ # -Os for select targets on platforms that use optimize_for_size. No-op
+ # elsewhere.
 -config("optimize_max") {
 +config("optimize_max") { }
 +config("xoptimize_max") {

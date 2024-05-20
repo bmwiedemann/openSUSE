@@ -1,0 +1,26 @@
+commit 2958f58a84ebaacce716929f1cc4ba4a8076daee
+Author: Ivan Murashov <ivan.murashov@lge.com>
+Date:   Wed May 15 19:30:45 2024 +0000
+
+    IWYU: Add missing include for std::variant usage in tab_strip_model.h
+    
+    Bug: 41455655
+    Change-Id: I1b028ee1340f0697f147b5d0bfef3c916e1a5729
+    Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/5537958
+    Reviewed-by: Vasilii Sukhanov <vasilii@chromium.org>
+    Reviewed-by: Dana Fried <dfried@chromium.org>
+    Commit-Queue: Ivan Murashov <ivan.murashov@lge.com>
+    Cr-Commit-Position: refs/heads/main@{#1301505}
+
+diff --git a/chrome/browser/ui/tabs/tab_strip_model.h b/chrome/browser/ui/tabs/tab_strip_model.h
+index 735c379a8cd1d..6711d565101ab 100644
+--- a/chrome/browser/ui/tabs/tab_strip_model.h
++++ b/chrome/browser/ui/tabs/tab_strip_model.h
+@@ -12,6 +12,7 @@
+ #include <memory>
+ #include <optional>
+ #include <string>
++#include <variant>
+ #include <vector>
+ 
+ #include "base/containers/span.h"

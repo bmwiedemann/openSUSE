@@ -61,8 +61,8 @@ index 5eb6378..4187556 100644
    // Origin for the Coordinator to be used for Private Aggregation.
    std::optional<url::Origin> aggregation_coordinator_origin;
  
--  static_assert(__LINE__ == 451, R"(
-+  static_assert(__LINE__ == 453, R"(
+-  static_assert(__LINE__ == 455, R"(
++  static_assert(__LINE__ == 457, R"(
  If modifying AuctionConfig fields, please make sure to also modify:
  
  * third_party/blink/public/mojom/interest_group/interest_group_types.mojom
