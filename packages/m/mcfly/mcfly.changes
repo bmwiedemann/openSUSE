@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 19 08:54:44 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.6:
+  * Add windows asset generation
+  * Fix init issue for fish
+
+-------------------------------------------------------------------
 Mon May 13 06:47:52 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update 0.8.5:

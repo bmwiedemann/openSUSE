@@ -75,4 +75,14 @@
   * Paste in emacs mode</comment>
     <requestid>1173575</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d7af9aab8c0adfdc14c62d2accd459d2</srcmd5>
+    <version>0.8.6+0</version>
+    <time>1716221668</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.8.6:
+  * Add windows asset generation
+  * Fix init issue for fish</comment>
+    <requestid>1175104</requestid>
+  </revision>
 </revisionlist>
