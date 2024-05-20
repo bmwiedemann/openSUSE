@@ -1,7 +1,7 @@
 #
 # spec file for package linphoneqt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,11 @@
 #
 
 
+%define ispell_commit_hash 05574fe160222c3d0b6283c1433c9b087271fad1
+
 %define _name   linphone
 Name:           linphoneqt
-Version:        5.1.2
+Version:        5.2.4
 Release:        0
 Summary:        Qt interface for Linphone
 License:        GPL-3.0-or-later
@@ -26,33 +28,24 @@ Group:          Productivity/Telephony/SIP/Clients
 URL:            https://linphone.org/technical-corner/linphone
 Source:         https://gitlab.linphone.org/BC/public/linphone-desktop/-/archive/%{version}/%{_name}-desktop-%{version}.tar.bz2
 Source1:        %{_name}.appdata.xml
-# PATCH-FIX-OPENSUSE linphoneqt-fix-no-git.patch -- Fix building out-of-git.
-Patch0:         linphoneqt-fix-no-git.patch
-# PATCH-FIX-OPENSUSE https://aur.archlinux.org/cgit/aur.git/plain/0002-remove-bc_compute_full_version-usage.patch?h=linphone-desktop
-Patch1:         linphoneqt-0002-remove-bc_compute_full_version-usage.patch
+# ispell with Linphone-specific patches from the Linphone developers
+Source2:        https://gitlab.linphone.org/BC/public/external/ispell/-/archive/%{ispell_commit_hash}/ispell-%{ispell_commit_hash}.tar.gz
 # PATCH-FIX-OPENSUSE linphoneqt_fix_gcc12_error.patch -- Fix building with gcc12
-Patch2:         linphoneqt_fix_gcc12_error.patch
-%if 0%{?suse_version}
+Patch0:         linphoneqt_fix_gcc12_error.patch
+# Fix spelling mistakes in library detection, add missing include directory and missing install.
+Patch1:         fix_cmakelists.patch
+# Fix gcc complaining about methods without a return value.
+Patch2:         fix_ispell_return_type_error.patch
+
 BuildRequires:  Mesa-libGLESv2-devel
-%else
-BuildRequires:  mesa-libGL-devel
-%endif
 BuildRequires:  chrpath
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-%if 0%{?suse_version}
 BuildRequires:  libqt5-linguist-devel
-%else
-BuildRequires:  boost-devel
-BuildRequires:  qt5-linguist
-BuildRequires:  qt5-qttools-devel
-Requires:       qt5-qtquickcontrols
-%endif
+BuildRequires:  lime-devel >= 5.3.0
 BuildRequires:  pkgconfig
-%if 0%{?suse_version}
 BuildRequires:  update-desktop-files
-%endif
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core) >= 5.12
 BuildRequires:  pkgconfig(Qt5DBus)
@@ -64,8 +57,13 @@ BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5TextToSpeech)
 BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(linphone) >= 5.1.58
-BuildRequires:  pkgconfig(mediastreamer) >= 5.0.0
+BuildRequires:  pkgconfig(bctoolbox) >= 5.3.0
+BuildRequires:  pkgconfig(belcard) >= 5.3.0
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(linphone) >= 5.3.0
+BuildRequires:  pkgconfig(mediastreamer) >= 5.3.0
+Provides:       linphone = %{version}-%{release}
+Obsoletes:      linphone < %{version}-%{release}
 
 %description
 Linphone is a Web phone with a Qt interface. It lets you make
@@ -96,50 +94,50 @@ with high speed connections as well as 28k modems.
 Summary:        Web Phone
 Group:          Productivity/Telephony/SIP/Clients
 BuildArch:      noarch
+Provides:       linphone-devel = %{version}-%{release}
+Obsoletes:      linphone-devel < %{version}-%{release}
 
 %description -n %{_name}-devel
 Devel package for %{_name}.
 
 %prep
-%autosetup -n %{_name}-desktop-%{version} -p1
+%setup -n %{_name}-desktop-%{version} -q -a2
 cp %{SOURCE1} linphone.appdata.xml
 touch linphone-sdk/CMakeLists.txt
-%if 0%{?suse_version}
-mkdir -p build/linphone-sdk/desktop/{bin,share}
-%else
-mkdir -p redhat-linux-build/linphone-sdk/desktop/{bin,share}
-%endif
+%patch -P0 -p1
+%patch -P1 -p1
 
-# Fix building out-of-git
-echo '#define LINPHONE_QT_GIT_VERSION "${PROJECT_VERSION}"' >> linphone-app/src/config.h.cmake
-# Hardcode linphoneqt version
-echo "project(linphoneqt VERSION %{version})" > linphone-app/linphoneqt_version.cmake
+rm -r external/ispell
+mv ispell-%{ispell_commit_hash} external/ispell
+cd external/ispell
+%patch -P2 -p1
+cd ../..
+
+# linphone-desktop wants to be built with liblinphone as a git submodule and includes its CMakeLists.txt, even though the submodule is not present during the build. Creating this file tricks cmake, while the dependencies are included from system packages instead.
+touch linphone-sdk/CMakeLists.txt
+
+# These files shadow the Config files installed by the respective devel packages and let the build fail since they expect to find the libraries in git submodules, which are not part of the archive.
+rm linphone-app/cmake/FindMediastreamer2.cmake \
+   linphone-app/cmake/FindLibLinphone.cmake \
+   linphone-app/cmake/FindLinphoneCxx.cmake
 
 %build
-sed -i '/^add_custom_command/s@${CMAKE_INSTALL_PREFIX}/include/@%{buildroot}%{_includedir}/@;/^add_custom_command/s@${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/@%{buildroot}%{_libdir}/@' linphone-app/CMakeLists.txt
-sed -i '/\/ui/s@${qml_dir}@${CMAKE_CURRENT_SOURCE_DIR}/../&@' linphone-app/cmake_builder/linphone_package/CMakeLists.txt
-mkdir -p build/linphone-sdk/desktop/share/{,sounds}/linphone
 %cmake \
   -DCMAKE_CXX_FLAGS="%{optflags} -fpic -ffat-lto-objects -fpermissive" \
   -DCMAKE_BUILD_TYPE=Release \
   -DLINPHONE_OUTPUT_DIR="$PWD" \
+  -DLINPHONEAPP_VERSION=%{version} \
   -DENABLE_QT_KEYCHAIN=OFF \
   -DENABLE_UPDATE_CHECK=OFF
 %cmake_build
 
 %install
 %cmake_install
-%if 0%{?fedora}
-# for Fedora the internal call to cmake overwrites CMAKE_INSTALL_PREFIX, move...
-mkdir -p %{buildroot}/usr
-mv %{buildroot}/home/abuild/rpmbuild/BUILD/linphone-desktop*/redhat-linux-build/OUTPUT/* %{buildroot}/usr
-rm -rf %{buildroot}/home
-%endif
-install -Dpm 0644 linphone.appdata.xml \
-  %{buildroot}%{_datadir}/metainfo/org.linphone.appdata.xml
+install -Dpm 0644 linphone.appdata.xml  %{buildroot}%{_datadir}/metainfo/org.linphone-desktop.appdata.xml
 
 rm %{buildroot}%{_bindir}/qt.conf
 chmod a-x %{buildroot}%{_datadir}/applications/linphone.desktop
+mv %{buildroot}%{_datadir}/applications/linphone.desktop %{buildroot}%{_datadir}/applications/linphone-desktop.desktop
 
 chrpath -d %{buildroot}%{_bindir}/linphone %{buildroot}%{_libdir}/libapp-plugin.so
 
@@ -148,11 +146,12 @@ chrpath -d %{buildroot}%{_bindir}/linphone %{buildroot}%{_libdir}/libapp-plugin.
 %doc CHANGELOG.md README.md
 %{_bindir}/linphone
 %{_libdir}/libapp-plugin.so
+%{_libdir}/libISpell.so
 %{_datadir}/linphone/
-%{_datadir}/applications/linphone.desktop
+%{_datadir}/applications/linphone-desktop.desktop
 %{_datadir}/icons/hicolor/*/apps/linphone.*
 %dir %{_datadir}/metainfo/
-%{_datadir}/metainfo/org.linphone.appdata.xml
+%{_datadir}/metainfo/org.linphone-desktop.appdata.xml
 
 %files -n %{_name}-devel
 %{_includedir}/LinphoneApp/

@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Sat May 18 17:54:53 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- Update to version 5.2.4.
+  ### Fixed
+   - File permission after auto downloading a file.
+   - Update SDK to 5.3.41
+  ### Added
+    - Option to mute chat reactions.
+    - Notify reactions only on local accounts messages.
+- Update to version 5.2.3.
+  ### Fixed
+    - Call logs : incoming filter will not display missed calls.
+    - Call logs synchronization.
+    - URI handlers when mixing remote provisioning and call.
+    - Blinking on resize or Ui updates on screen that have low frame rates.
+    - Timezones and Windows fix.
+    - Update SDK to 5.3.39.
+- Update to version 5.2.2.
+  ### Fixed
+    - Audio latency and bad echo behavior when going to media settings while being in call.
+    - About panel in readonly
+    - Wrong day offset in start date when scheduling a conference.
+    - Empty route can now be set in account settings.
+    - Network remote file can be used in chat attachment on Windows.
+    - Crash on forwarding a message to a new secure chat room.
+    - URI handlers and remote provisioning.
+    - Avoid to remove file on cancelling upload and fix cancelling file transfers.
+    - Update SDK to 5.3.34.
+  ### Added
+    - '[ui] logs_max_size' : option to set the max size of one log file.
+    - '[ui] notification_origin' : option to specify where to display notifications (only supported: 0=bottom-right and 1=top-right).
+    - '[ui] systray_notification_blink' : option to activate/deactivate the blinking systray on unread notifications.
+    - '[ui] systray_notification_global' : option to display notification number from all accounts or only selected.
+    - '[ui] systray_notification_filtered' : option to filter the notification number (not count if chat room is muted).
+    - Keyboard shortcuts:
+        * 'Ctrl+Shift+W' (or V): accept with video the last incoming call.
+        * 'Ctrl+Shift+A': accept without video the last incoming call.
+        * 'Ctrl+Shift+D': terminate the last call.
+        * 'Ctrl+Shift+E': Enable/disable echo cancellation.
+        * 'Ctrl+Shift+L': Unmute/Mute speaker.
+        * 'Ctrl+Shift+M': Unmute/Mute microphone.
+    - Request application focus when hovering a call notification.
+- removed fix for wrong namespace for the enum ConfiguringState
+
+-------------------------------------------------------------------
+Sat May 18 16:53:42 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- adapt SR#1155718 to linphoneqt
+  * fix boo#1221909
+
+-------------------------------------------------------------------
+Wed Feb 21 12:25:40 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 5.2.1.
+  Changelog:
+  * Fixed
+    * URI handlers when no domain are provided like tel:number.
+    * Empty page on first date in date picker.
+    * Ephemeral deactivation while restarting it.
+    * Fix rates on capture audio (SDK).
+    * Update SDK to 5.3.14.
+  * Added
+    * Remove trailing newlines in smart search bar.
+- Remove patch linphoneqt-fix-no-git.patch.
+- Remove patch linphoneqt-0002-remove-bc_compute_full_version-usage.patch.
+- Add patches fix_cmakelists.patch, fix_ispell_return_type_error.patch.
+
+-------------------------------------------------------------------
 Sat Nov  4 06:50:32 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Move the "linphone" Obsoletes/Provides from linphone.spec
