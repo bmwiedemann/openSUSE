@@ -28,6 +28,7 @@ URL:            https://github.com/opentofu/opentofu
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source99:       opentofu-rpmlintrc
+BuildRequires:  bash-completion
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.21
 # See: https://github.com/hashicorp/opentofu/issues/22807
@@ -57,10 +58,15 @@ go build \
 %install
 # Install the binary.
 install -D -m 0755 bin/%{executable_name} "%{buildroot}/%{_bindir}/%{executable_name}"
+mkdir -p %{buildroot}%{_datadir}/bash-completion/completions/
+cat > %{buildroot}%{_datadir}/bash-completion/completions/%{executable_name} <<EOF
+complete -C %{_bindir}/%{executable_name} %{executable_name}
+EOF
 
 %files
 %license LICENSE
 %doc CHANGELOG.md README.md
 %{_bindir}/%{executable_name}
+%{_datadir}/bash-completion/completions/%{executable_name}
 
 %changelog
