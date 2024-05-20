@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>1150013</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6bfd739f5612d17ca0bbb0c6c934aef3</srcmd5>
+    <version>0.1.3</version>
+    <time>1716221572</time>
+    <user>anag+factory</user>
+    <comment>Please only accept this, when the new Komikku SR is also accepted
+- update to 0.1.3
+    * Rust rewrite
+    * depedency updates</comment>
+    <requestid>1175064</requestid>
+  </revision>
 </revisionlist>

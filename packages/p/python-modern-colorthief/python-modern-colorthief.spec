@@ -17,43 +17,47 @@
 
 
 %{?sle15_python_module_pythons}
+%define         pyname modern_colorthief
 Name:           python-modern-colorthief
-Version:        0.1.2
+Version:        0.1.3
 Release:        0
 Summary:        Colorthief reimagined
 License:        MIT
 URL:            https://github.com/baseplate-admin/modern_colorthief
-Source:         https://files.pythonhosted.org/packages/source/m/modern-colorthief/modern_colorthief-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/m/modern-colorthief/modern_colorthief-%{version}.tar.gz
+Source1:        vendor.tar.zst
+# LICENSE added, as it was forgotten, remove with new version
+Source2:        https://raw.githubusercontent.com/baseplate-admin/modern_colorthief/master/LICENSE
 BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module maturin}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
+BuildRequires:  cargo
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Pillow
-BuildArch:      noarch
+BuildRequires:  zstd
 %python_subpackages
 
 %description
-%{summary}.
+Python-modern-colorthief is a rewritten rust python-colorthief replacement
 
 %prep
-%autosetup -p1 -n modern_colorthief-%{version}
+%autosetup -a1 -n %{pyname}-%{version}
+cp %{SOURCE2} .
 
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
-
-%python_expand rm %{buildroot}%{$python_sitelib}/LICENSE.colorthief
+%fdupes %{buildroot}
 
 %check
 # the singular test is relying on the old abandoned python-colorthief.
 
 %files %{python_files}
-%{python_sitelib}/modern_colorthief
-%{python_sitelib}/modern_colorthief-%{version}.dist-info
-%license LICENSE LICENSE.colorthief
+%license LICENSE
+%{python_sitearch}/%{pyname}
+%{python_sitearch}/%{pyname}-%{version}.dist-info
 
 %changelog
