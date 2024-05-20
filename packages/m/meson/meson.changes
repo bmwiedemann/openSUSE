@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  2 16:53:21 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- Add compatibility-ninja-1.12.patch from upstream to restore
+  compatibility with latest Ninja release, back-ported to 1.4.0
+
+-------------------------------------------------------------------
 Mon Apr 15 10:35:55 UTC 2024 - Yifan Jiang <yfjiang@suse.com>
 
 - Set the latest supported gcc13 to build meson:test on SLE/Leap.
