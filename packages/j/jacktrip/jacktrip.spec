@@ -25,7 +25,6 @@ License:        GPL-3.0-only AND MIT AND LGPL-3.0-only
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://github.com/jcacerec/jacktrip
 Source0:        https://github.com/jcacerec/jacktrip/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        https://www.music.mcgill.ca/~gary/rtaudio/release/rtaudio-6.0.1.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  help2man
 BuildRequires:  meson
@@ -48,6 +47,7 @@ BuildRequires:  pkgconfig(Qt6WebSockets)
 BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(jack)
+BuildRequires:  pkgconfig(rtaudio)
 
 %description
 JackTrip is a system used for multi-machine network performance over the
@@ -57,14 +57,10 @@ audio signal streaming.
 
 %prep
 %autosetup
-pushd externals
-tar xf %{_sourcedir}/rtaudio-6.0.1.tar.gz -C rtaudio
-popd
 
 %build
 mv build .build
-# disable git submodule as we locally provide the library
-%meson -Drtaudio=disabled
+%meson
 %meson_build
 
 %install
