@@ -7,4 +7,12 @@
     <comment>New package submission for inclusion in Tumbleweed.</comment>
     <requestid>1098695</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>22008cb5e2022f5b5e49fd37f85b4d8f</srcmd5>
+    <version>0.17+0</version>
+    <time>1716221565</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1175028</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 29 21:28:41 UTC 2024 - malcolmlewis@opensuse.org
+
+- Update to version 0.17+0:
+  + idle: support ext-idle-notify-v1 protocol.
+  + Support updating input backend geometry,
+    (gh#r-c-f/waynergy#93).
+  + Add user events for enter/exit, (gh#r-c-f/waynergy#89 and
+    gh#r-c-f/waynergy#90).
+  + Update README.md, (gh#r-c-f/waynergy#86).
+
+-------------------------------------------------------------------
 Sat Jul  8 17:58:07 UTC 2023 - malcolmlewis@opensuse.org
 
 - Initial build at version 0.16+3.

@@ -1,7 +1,8 @@
 #
 # spec file for package waynergy
 #
-# Copyright (c) 2023 Malcolm J Lewis <malcolmlewis@opensuse.org>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2023-2024 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,11 +13,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           waynergy
-Version:        0.16+3
+Version:        0.17+0
 Release:        0
 License:        MIT
 Summary:        Synergy client for wayland compositors
@@ -26,7 +28,7 @@ Source99:       waynergy-kde-rpmlintrc
 #PATCH-FIX-OPENSUSE waynergy-kde-fix-desktop.patch malcolmlewis@opensuse.org -- Remove key "TerminalOptions" in group "Desktop Entry" which is deprecated.
 Patch0:         waynergy-kde-fix-desktop.patch
 BuildRequires:  cmake
-BuildRequires:  meson 
+BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig(libtls)
 BuildRequires:  pkgconfig(wayland-client)
@@ -41,9 +43,9 @@ support and a bit of paranoia).
 NOTE: See README.md for using uinput.
 
 %package kde
-Summary:       KDE desktop integration
-Requires:      waynergy = %{version}
-BuildArch:     noarch
+Summary:        KDE desktop integration
+Requires:       waynergy = %{version}
+BuildArch:      noarch
 
 %description kde
 An implementation of a synergy client for wayland compositors. Based
