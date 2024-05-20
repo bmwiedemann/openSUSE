@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May  6 11:33:25 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.116.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.116.0
+- Changes since 5.115.0:
+  * fix refs
+  * use (?:sub){0,2} to work with all pcre versions
+
+-------------------------------------------------------------------
 Thu Feb  8 11:15:44 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.115.0

@@ -24,7 +24,7 @@
 %define qt5_version 5.15.2
 %bcond_without released
 Name:           syntax-highlighting
-Version:        5.115.0
+Version:        5.116.0
 Release:        0
 Summary:        Syntax highlighting engine and library
 License:        LGPL-2.1-or-later AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND MIT AND BSD-3-Clause AND Artistic-1.0
