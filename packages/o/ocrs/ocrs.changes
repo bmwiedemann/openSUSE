@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May 19 03:49:44 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.7.0
+  * Updated rten to v0.9.0: This brings a simpler API for loading
+    models from disk (Model::load_file) and improves performance.
+  * Updated image crate. This includes a much faster JPEG decoder.
+  * Re-designed the API for loading images to be easier to use and
+    more efficient.
+
+-------------------------------------------------------------------
 Wed May 15 18:24:19 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Remove script libocrs
