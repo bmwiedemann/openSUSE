@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat May 18 08:05:26 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.59:
+  * Meshery CLI
+    - Revert "[mesheryctl] Bug fixes in mesheryctl system start"
+      @leecalcote (#10992)
+  * Documentation
+    - docs: Replaced mesheryctl app & onboard commands @singh1203
+      (#10972)
+
+-------------------------------------------------------------------
+Sat May 18 07:55:10 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.58:
+  * General
+    - [Server] Fix k8s manifest to pattern conversion logic
+      @MUzairS15 (#10973)
+    - new feature on roadmap @captain-Akshay (#10964)
+    - [server]fix missing services attribute for empty design
+      @MUzairS15 (#10968)
+    - fix: fix provider lint step in make ui-build
+      @dragon-slayer875 (#10957)
+  * Meshery CLI
+    - [mesheryctl] Bug fixes in mesheryctl system start @MUzairS15
+      (#10961)
+  * Meshery UI
+    - responsive v1 @captain-Akshay (#10985)
+    - Initialize Playwright testing @codeKraken19 (#10930)
+    - without css baseline @captain-Akshay (#10955)
+    - fixes#10910: @MUzairS15 (#10967)
+    - Bump sistent & cleanup packages @sudhanshutech (#10963)
+  * Maintenance
+    - Initialize Playwright testing @codeKraken19 (#10930)
+  * Documentation
+    - Bump rexml from 3.2.6 to 3.2.8 in /docs @dependabot (#10984)
+    - Initialize Playwright testing @codeKraken19 (#10930)
+    - Eliminate duplication of tutorials listing on homepage
+      @vishalvivekm (#10983)
+    - Update error-codes.md @leecalcote (#10959)
+
+-------------------------------------------------------------------
 Tue May 14 19:53:05 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update ot 0.7.57:
