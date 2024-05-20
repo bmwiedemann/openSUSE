@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May  6 11:32:54 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.116.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.116.0
+- Changes since 5.115.0:
+  * Trivial fix for crash in buddy() when sourceModel isn't set yet
+
+-------------------------------------------------------------------
 Thu Feb  8 11:15:14 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.115.0
