@@ -24,7 +24,7 @@
 %define qt5_version 5.15.2
 %bcond_without released
 Name:           plasma-framework
-Version:        5.115.0
+Version:        5.116.0
 Release:        0
 Summary:        Plasma library and runtime components based upon KF5 and Qt5
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -110,7 +110,7 @@ Plasma QML and runtime components based upon KF5 and Qt5
 %package desktoptheme
 Summary:        Desktop themes usable by Plasma 5 or Plasma 6
 # Split from the main package
-Conflicts:      plasma-framework < 5.115.0
+Conflicts:      plasma-framework < 5.114.0
 
 %description desktoptheme
 Desktop themes usable by plasma 5 or plasma 6.
