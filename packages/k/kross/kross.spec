@@ -23,7 +23,7 @@
 %define qt5_version 5.15.2
 %bcond_without released
 Name:           kross
-Version:        5.115.0
+Version:        5.116.0
 Release:        0
 Summary:        Scripting bridge for programs
 License:        LGPL-2.1-or-later
