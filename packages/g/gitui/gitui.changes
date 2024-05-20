@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May 18 12:21:18 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to version 0.26.2:
+  * respect configuration for remote when fetching (also applies
+    to pulling)
+  * add : character to sign-off trailer to comply with Conventional
+    Commits standard
+  * support overriding build_date for reproducible builds
+- update vendored dependencies for CVE-2023-48795 (boo#1218264)
+
+-------------------------------------------------------------------
 Fri Apr 19 11:04:18 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 0.26.1:

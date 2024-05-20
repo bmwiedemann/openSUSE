@@ -2,6 +2,7 @@
 # spec file for package gitui
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           gitui
-Version:        0.26.1
+Version:        0.26.2
 Release:        0
 Summary:        Terminal UI for git
 License:        (Apache-2.0 OR MIT) AND Unicode-DFS-2016 AND (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Artistic-2.0 OR CC0-1.0) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CDDL-1.0 AND ISC AND MIT AND MIT AND CC-BY-3.0 AND MPL-2.0 AND SUSE-GPL-2.0-with-linking-exception
@@ -26,6 +27,7 @@ Source0:        https://github.com/extrawurst/gitui/archive/refs/tags/v%{version
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  git-core
+BuildRequires:  pkgconfig
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(libgit2)
 BuildRequires:  pkgconfig(openssl)
@@ -50,13 +52,13 @@ TUI for git with the following features:
 %autosetup -a1
 
 %build
-%cargo_build
+%{cargo_build}
 
 %install
-%cargo_install
+%{cargo_install}
 
 %check
-%cargo_test
+%{cargo_test}
 
 %files
 %license LICENSE.md
