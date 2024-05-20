@@ -49,12 +49,14 @@ BuildArch:      noarch
 %if %{with test}
 # SECTION test requirements
 BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  %{python_module numpy}
+# Conditional required for SLE-15-SP4+
+BuildRequires:  %{python_module numpy if (python-base without python36-base)}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tqdm = %{version}}
 %if ! 0%{?_with_ringdisabled}
-BuildRequires:  %{python_module pandas}
+# Conditional required for SLE-15-SP4+
+BuildRequires:  %{python_module pandas if (python-base without python36-base)}
 %endif
 # /SECTION
 %endif

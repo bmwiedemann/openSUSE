@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 17 06:38:10 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Re-add conditionals to numpy/pandas, it is required. 
+
+-------------------------------------------------------------------
 Tue May  7 01:37:49 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.66.4:

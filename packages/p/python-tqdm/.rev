@@ -503,4 +503,12 @@ update to latest version</comment>
 - Drop patch sprinkle-in-timezone.patch: Included upstream.</comment>
     <requestid>1172287</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>0f1edee87df2f883a1d1da2efbe94e92</srcmd5>
+    <version>4.66.4</version>
+    <time>1716221370</time>
+    <user>anag+factory</user>
+    <comment>- Re-add conditionals to numpy/pandas, it is required.</comment>
+    <requestid>1174774</requestid>
+  </revision>
 </revisionlist>
