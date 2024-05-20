@@ -17,9 +17,9 @@
 # needssslcertforbuild
 
 
-%define srcversion 6.8
-%define patchversion 6.8.9
-%define git_commit d3445e0f9a7738289b2812f3ff15dc41b75da70d
+%define srcversion 6.9
+%define patchversion 6.9.1
+%define git_commit 0c0b0b548ce4faaad4593f443b15222d26fe56f2
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -36,9 +36,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-pae
-Version:        6.8.9
+Version:        6.9.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gd3445e0
+Release:        <RELEASE>.g0c0b0b5
 %else
 Release:        0
 %endif
