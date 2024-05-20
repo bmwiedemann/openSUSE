@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat May 18 08:09:27 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.177.0:
+  * update release notes for 0.177.0
+  * Add release notes for v0.177.0
+  * Fix deleting clusters with a non-active status
+  * Fix deleting pod identities
+  * Fix creating pod identities
+  * Revert "[Release drafter] Treat RCs as full releases when
+    drafting notes" (#7725)
+  * Add utils command to migrate `iamidentitymappings` to EKS
+    access entries (#7710)
+  * include pre-releases as full releases when drafting release
+    notes
+  * Disable IMDSv1 in unowned integration tests
+  * Add support for Ubuntu Pro 22.04 based EKS images (#7711)
+  * Handle K8s service account lifecycle on `eksctl create/delete
+    podidentityassociation` commands (#7706)
+  * Allow nodegroup creation after a cluster subnet is deleted
+    (#7714)
+  * Fix cluster deletion in tests
+  * Add integration tests
+  * Add note about deleting nodegroups
+  * Fix reusing instanceRoleARN for nodegroups authorized with
+    access entries
+  * Fix arn build logic to support different aws partitions
+  * Bump dependencies
+  * Update build image tag
+  * Bump dependencies
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Thu Apr 25 19:05:25 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.176.0:
