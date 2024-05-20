@@ -70,4 +70,12 @@
     <comment></comment>
     <requestid>1173879</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>349754fea35208fe74014055e961012a</srcmd5>
+    <version>0.10.0+git22</version>
+    <time>1716221377</time>
+    <user>anag+factory</user>
+    <comment>- Update to git snapshot 0.10.0+git22 (e0d8122)</comment>
+    <requestid>1174844</requestid>
+  </revision>
 </revisionlist>

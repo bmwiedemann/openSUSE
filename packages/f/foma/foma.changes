@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 17 06:34:16 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to git snapshot 0.10.0+git22 (e0d8122)
+  * Build fixes for various compilers and C++ standard modes
+- Drop foma-gcc14.patch (merged), delete foma-harden-build.patch
+  (obsolete)
+
+-------------------------------------------------------------------
 Mon May 13 12:10:56 UTC 2024 - pgajdos@suse.com
 
 - added patches

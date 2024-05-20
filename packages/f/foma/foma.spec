@@ -19,39 +19,36 @@
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 %define libname	libfoma0
 Name:           foma
-Version:        0.10.0
+Version:        0.10.0+git22
 Release:        0
 Summary:        Finite-state compiler and C library
 License:        Apache-2.0
 URL:            https://fomafst.github.io/
-Source0:        foma-%{version}.tar.xz
-Patch0:         foma-harden-build.patch
-# https://github.com/mhulden/foma/commit/9a99d2d41809422080606bb49531b38ce1e2111a
-Patch1:         foma-gcc14.patch
+Source:         foma-%version.tar.xz
 BuildRequires:  bison
+BuildRequires:  cmake
 BuildRequires:  flex
 BuildRequires:  ncurses-devel
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(zlib)
 
 %description
 Foma is a compiler, programming language, and C library for constructing
-finite-state automata and transducers for various uses. It has specific
-support for many natural language processing applications such as producing
-morphological analyzers. Although NLP applications are probably the main
-use of foma, it is sufficiently generic to use for a large number of purposes.
+finite-state automata and transducers for various uses. It has specific support
+for many natural language processing applications such as producing
+morphological analyzers. Although NLP applications are probably the main use of
+foma, it is sufficiently generic to use for a large number of purposes.
 
 %package -n %{libname}
 Summary:        Finite-state C library
 
 %description -n %{libname}
 The library contains efficient implementations of all classical
-automata/transducer algorithms: determinization, minimization,
-epsilon-removal, composition, boolean operations. Also, more
-advanced construction methods are available: context restriction,
-quotients, first-order regular logic, transducers from replacement
-rules, etc.
+automata/transducer algorithms: determinization, minimization, epsilon-removal,
+composition, boolean operations. Also, more advanced construction methods are
+available: context restriction, quotients, first-order regular logic,
+transducers from replacement rules, etc.
 
 %package devel
 Summary:        Finite-state C library development files and headers
@@ -61,27 +58,21 @@ Requires:       %{libname} = %{version}
 Finite-state C library development files and headers for %{name}.
 
 %prep
-%autosetup -p2 -n %{name}-%{version}/%{name}
-
-sed -i '/^CFLAGS/c\CFLAGS = %{optflags} -fcommon -Wl,--as-needed -D_GNU_SOURCE -std=c99 -fvisibility=hidden -fPIC' Makefile
-sed -i '/^LDFLAGS/c\LDFLAGS = -lreadline -lz -lreadline -fpic' Makefile
-sed -i '/^FLOOKUPLDFLAGS/c\FLOOKUPLDFLAGS = libfoma.a -lz -fpic' Makefile
+%autosetup -p1
 
 %build
-# hand written Makefile that gets to be quite PITA
-%make_build -j1
+pushd foma/
+%cmake
+%cmake_build
+popd
 
 %install
-%make_install \
-	prefix=%{buildroot}%{_prefix} \
-	libdir=%{buildroot}%{_libdir}
-rm -rf %{buildroot}%{_libdir}/*.a
-# github.com/mhulden/foma/issues/127
-perl -i -pe 's{\Q%{buildroot}\E}{}' "%{buildroot}/%{_libdir}/pkgconfig"/*.pc
-cat "%{buildroot}/%{_libdir}/pkgconfig"/*.pc
+pushd foma/
+%cmake_install
+popd
+find "%buildroot" -type f -name "*.a" -print -delete
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %libname
 
 %files
 %{_bindir}/cgflookup
@@ -95,7 +86,7 @@ cat "%{buildroot}/%{_libdir}/pkgconfig"/*.pc
 %{_libdir}/pkgconfig/libfoma.pc
 
 %files -n %{libname}
-%license COPYING
+%license foma/COPYING
 %{_libdir}/libfoma.so.*
 
 %changelog
