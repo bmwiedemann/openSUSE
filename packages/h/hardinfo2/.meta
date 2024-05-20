@@ -1,0 +1,13 @@
+<package name="hardinfo2" project="openSUSE:Factory">
+  <title>hardinfo2</title>
+  <description>Hardinfo2 is based on hardinfo.
+
+Hardinfo2 offers System Information and Benchmark for Linux Systems. It is able to obtain information from both hardware and basic software. It can benchmark your system and compare to other machines online.
+
+Features include:
+- Report generation (in either HTML or plain text)
+- Online Benchmarking - compare your machine against other machines
+</description>
+  <devel project="utilities" package="hardinfo2"/>
+  <url>https://github.com/hardinfo2/hardinfo2</url>
+</package>
