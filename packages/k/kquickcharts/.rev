@@ -417,4 +417,12 @@ Another accidental omission in the KDE Frameworks update...</comment>
     <comment>KDE Frameworks 5.115.0. Not built yet (forwarded request 1145147 from krop)</comment>
     <requestid>1145659</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>121b5727a810be4a0f32ba39e56a71e6</srcmd5>
+    <version>5.116.0</version>
+    <time>1716221708</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 5.116 (forwarded request 1173590 from krop)</comment>
+    <requestid>1175164</requestid>
+  </revision>
 </revisionlist>
