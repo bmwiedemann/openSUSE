@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/cilium/tetragon</param>
+              <param name="changesrevision">7398faf12671e0081b86853cad8af92c797620b4</param></service></servicedata>
