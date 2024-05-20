@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May  7 07:48:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.0.1:
+  + Moved git project to https://github.com/project-spiel/libspiel
+  + Fix permissions and disable docs in libspeechprovider.
+  + Remove libspeechprovider and add it as a subproject.
+  + fix multiple NULL-dereferences.
+
+-------------------------------------------------------------------
 Wed Feb 21 14:46:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Initial package.

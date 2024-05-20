@@ -17,7 +17,7 @@
 
 
 Name:           spiel
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Speech synthesis API and framework for free desktops
 License:        LGPL-2.1-or-later
@@ -26,8 +26,8 @@ Source:         %{name}-%{version}.tar.zst
 BuildRequires:  meson >= 0.64.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gi-docgen)
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(gio-unix-2.0)
+BuildRequires:  pkgconfig(gio-2.0) >= 2.76
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.76
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-audio-1.0)
