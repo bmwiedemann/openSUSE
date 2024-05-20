@@ -89,6 +89,11 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 
+%if "%flavor" == "Slowroll"
+%define theme Slowroll
+%define net_repo https://download.opensuse.org/slowroll/repo/oss
+%endif
+
 %if "%flavor" == "SMO"
 %if 0%{?is_smo}
 # build for both Leap and SLE
@@ -171,6 +176,20 @@ BuildRequires:  distribution-logos-openSUSE-Tumbleweed
 %else
 BuildRequires:  distribution-logos-openSUSE-Leap
 %endif
+%endif
+
+%if "%theme" == "Slowroll"
+%define with_storage_ng 1
+%define with_fips 0
+%define branding_skelcd   openSUSE-Slowroll
+%define branding_systemd  openSUSE
+%define branding_plymouth openSUSE
+%define branding_grub2    openSUSE
+%define branding_gfxboot  openSUSE
+BuildRequires:  adobe-sourcesanspro-fonts
+BuildRequires:  openSUSE-release
+BuildRequires:  susepaste
+BuildRequires:  distribution-logos-openSUSE-Slowroll
 %endif
 
 %if "%theme" == "SMO" || "%theme" == "LeapMicro"
@@ -667,7 +686,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.127
+Version:        17.128
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
