@@ -2033,4 +2033,12 @@ those sources for i586 on its own.</comment>
     <user>anag+factory</user>
     <comment>skopeo is required for running docker_skopeo tests</comment>
   </revision>
+  <revision rev="286" vrev="284">
+    <srcmd5>189048081d3a6c82457e2e125c9f678b</srcmd5>
+    <version>unknown</version>
+    <time>1716221374</time>
+    <user>anag+factory</user>
+    <comment>No longer filter gettext-tools-mini and gettext-runtime-mini from the repo: the packages now properly require 'this-is-only-for-build-envs'</comment>
+    <requestid>1174809</requestid>
+  </revision>
 </revisionlist>
