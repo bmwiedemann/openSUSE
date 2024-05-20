@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May 17 08:12:42 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- replace:
+  0002-tests-fix-for-kernel-6.9.patch
+  by upstream proposed:
+  0002-linux-Maintain-original-output-for-pidfd-in-linux-6..patch
+
+-------------------------------------------------------------------
+Thu May 16 10:43:13 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- add (bsc#1224285):
+  * 0001-tests-eliminate-use-of-fgrep.patch
+  * 0002-tests-fix-for-kernel-6.9.patch
+
+-------------------------------------------------------------------
 Sun Dec 17 07:50:22 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - lsof 4.99.3:

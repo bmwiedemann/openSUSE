@@ -1,0 +1,46 @@
+From: "Jiri Slaby (SUSE)" <jirislaby@kernel.org>
+Date: Fri, 17 May 2024 07:48:27 +0200
+Subject: tests: eliminate use of fgrep
+Git-repo: https://github.com/lsof-org/lsof
+Git-commit: 3729186f3220814d5f07550051679377fde0cf92
+Patch-mainline: submitted, https://github.com/lsof-org/lsof/pull/319
+References: kernel 6.9
+
+fgrep use is deprecated. Use grep -F instead.
+
+See: https://git.savannah.gnu.org/cgit/grep.git/commit/?id=a95156247098
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ lib/dialects/linux/tests/case-20-inet6-ffffffff-handling.bash | 2 +-
+ lib/dialects/linux/tests/case-20-pidfd-pid.bash               | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/dialects/linux/tests/case-20-inet6-ffffffff-handling.bash b/lib/dialects/linux/tests/case-20-inet6-ffffffff-handling.bash
+index a3a62822..1e3f459b 100755
+--- a/lib/dialects/linux/tests/case-20-inet6-ffffffff-handling.bash
++++ b/lib/dialects/linux/tests/case-20-inet6-ffffffff-handling.bash
+@@ -30,7 +30,7 @@ expectation="n[${v6addr}]:$port"
+ result=1
+ if "${lsof}" -p "${pid}" -a -d fd -P -n -F n \
+     | tee -a "${report}" \
+-    | fgrep -q "$expectation"; then
++    | grep -Fq "$expectation"; then
+     result=0
+ fi
+ 
+diff --git a/lib/dialects/linux/tests/case-20-pidfd-pid.bash b/lib/dialects/linux/tests/case-20-pidfd-pid.bash
+index fe439e5e..ceeddb41 100755
+--- a/lib/dialects/linux/tests/case-20-pidfd-pid.bash
++++ b/lib/dialects/linux/tests/case-20-pidfd-pid.bash
+@@ -11,7 +11,7 @@ $TARGET | (
+         exit 77
+     fi
+     line=$($lsof -p $pid -a -d $fd -F pfn| tr '\n' ' ')
+-    if ! fgrep -q "p${pid} f${fd} n[pidfd:$pid]" <<<"$line"; then
++    if ! grep -Fq "p${pid} f${fd} n[pidfd:$pid]" <<<"$line"; then
+ 	$lsof -p $pid -a -d $fd -F pfn
+ 	echo
+ 	echo $line
+-- 
+2.45.1
+
