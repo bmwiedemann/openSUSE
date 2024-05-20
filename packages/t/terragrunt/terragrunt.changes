@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun May 19 09:38:14 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.58.7:
+  * Support all `provider_installation` methods with provider cache
+    (#3133)
+
+-------------------------------------------------------------------
+Sat May 18 09:20:07 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.58.6:
+  * fix: terraform source url handling (#3142)
+
+-------------------------------------------------------------------
+Sat May 18 09:04:13 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.58.5:
+  * Docs and tests fixes (#3136)
+
+-------------------------------------------------------------------
 Sat May 11 19:49:23 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - add Makefile and PACKAGING_README.md, remove services from
