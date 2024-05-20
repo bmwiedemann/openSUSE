@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Apr 26 05:36:46 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.33.0:
+  * docs: update readme by @cdrage in #1807
+  * docs(cli): introduce examples in the kompose command by
+    @martinjirku in #1808
+  * chore: update kompose convert --help by @leovct in #1813
+  * docs(1815): add trademarks link ref to linux foundation by
+    @martinjirku in #1816
+  * fix issue 1793 by @sosan in #1798
+  * fix client/convert (issue
+    https://github.com/kubernetes/kompose/issue… by @realgam3 in
+    #1819
+  * Cleanup README.md by @utkarsh-singh1 in #1823
+  * fix issue 1778 by @sosan in #1799
+  * #1821 update Dockerfile to alwyas use head Alpine by @thelamer
+    in #1824
+  * fix issue 1778 update1 by @sosan in #1826
+  * fix issues #1829, #1830 by @realgam3 in #1831
+  * chore: replace AhmedGrati with TessaIO by @TessaIO in #1835
+  * chore: unify e2e tests to compose yaml by @TessaIO in #1834
+  * chore(deps)(deps): bump golang.org/x/tools from 0.16.1 to
+    0.19.0 by @dependabot in #1836
+  * Adds ability to specify the stage/target of a multistage
+    dockerfile by @sosan in #1841
+  * adds a label for initContainers, test and user-guide by @sosan
+    in #1840
+  * chore(deps): bump Go version and
+    github.com/compose-spec/compose-go by @microsec-ambrose in
+    #1838
+  * chore: fix function name in comment by @racequite in #1861
+  * Feature 1635 - added labels to generate HPA by @sosan in #1847
+  * chore: fix some typos in comments by @cuiyourong in #1863
+  * customize resource name individually via labels
+    kompose.service.name_override by @sosan in #1837
+  * add configmaps derived from file and dir by @sosan in #1852
+  * add networkmode service: by @sosan in #1848
+  * fix 1853 by @sosan in #1854
+  * update dependencies to last version and go 1.22 by @sosan in
+    #1865
+  * 1.33.0 Release by @cdrage in #1866
+
+-------------------------------------------------------------------
 Thu Apr 04 05:52:39 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.32.0:
