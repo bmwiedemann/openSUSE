@@ -16,6 +16,7 @@
 
 #!BuildTag: opensuse/bci/php-fpm:8
 #!BuildTag: opensuse/bci/php-fpm:8-%RELEASE%
+#!BuildTag: opensuse/bci/php-fpm:latest
 
 FROM opensuse/tumbleweed:latest
 
