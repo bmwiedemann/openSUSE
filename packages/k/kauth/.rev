@@ -1034,4 +1034,12 @@ depends on sr#237875</comment>
     <comment>KDE Frameworks 5.115.0. Not built yet (forwarded request 1145147 from krop)</comment>
     <requestid>1145612</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>a5d441ea42b1cd8763834133ed779b19</srcmd5>
+    <version>5.116.0</version>
+    <time>1716221397</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 5.116 (forwarded request 1173590 from krop)</comment>
+    <requestid>1175117</requestid>
+  </revision>
 </revisionlist>
