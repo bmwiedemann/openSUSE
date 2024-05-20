@@ -16,14 +16,31 @@
 #
 
 
+%define tarver  3.41
+%define tardate 2023_06_19
 Name:           lout
-Version:        3.43.0
+Version:        3.41.0
 Release:        0
 Summary:        A document formatting system
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/PS
-URL:            https://savannah.nongnu.org/projects/lout/
-Source0:        https://github.com/william8000/lout/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            http://jeffreykingston.id.au/lout/
+Source0:        http://jeffreykingston.id.au/lout/lout-%{tarver}.tar.gz
+# PATCH-FIX-UPSTREAM opensuse-build.patch mcepl@suse.com
+# Make package building in OpenSUSE OBS
+Patch0:         opensuse-build.patch
+# PATCH-FIX-UPSTREAM Fix-for-CVE-2019-19917-and-CVE-2019-19918.patch mcepl@suse.com
+# Fix for CVE-2019-19918 and CVE-2019-19918
+# Patch from https://lists.nongnu.org/archive/html/lout-users/2020-10/msg00013.html
+Patch1:         fix-for-CVE-2019-19917-and-CVE-2019-19918.patch
+# PATCH-FIX-UPSTREAM tblf-fix-typo-in-PaintBox-PDF-backend.patch mcepl@suse.com
+# Patch from https://github.com/william8000/lout/commit/a8833f63f2b7.patch
+# fix typo in @PaintBox PDF backend
+Patch2:         tblf-fix-typo-in-PaintBox-PDF-backend.patch
+# PATCH-FIX-UPSTREAM avoid-calling-catclose-with-an-invalid-argument.patch mcepl@suse.com
+# Patch from https://github.com/william8000/lout/commit/5e7b8f9e7d44.patch
+# avoid calling catclose with an invalid argument
+Patch3:         avoid-calling-catclose-with-an-invalid-argument.patch
 BuildRequires:  fdupes
 BuildRequires:  ghostscript
 
@@ -35,7 +52,8 @@ limited but working (e.g. no graphics). Either of these may be
 fed to a printer. Lout is offered in multiple languages.
 
 %prep
-%setup -q
+%autosetup -p1 -n lout-%{tardate}
+
 find . -name README -exec chmod 0644 '{}' \;
 
 %build
@@ -86,6 +104,12 @@ make BINDIR=%{buildroot}%{_bindir} \
      MANDIR=%{buildroot}%{_mandir}/man1 \
      install installman installdoc
 %fdupes %{buildroot}%{_datadir}/%{name}
+
+%check
+# Program doesn't have specific test suite, but
+# building of complete documentation represents
+# rather thorough test of complete functionality of
+# the program.
 
 %files
 %doc README READMEPDF

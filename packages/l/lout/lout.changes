@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May 18 20:46:14 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch back to the official Jeff Kingston's version 3.41.0
+  (includes fixes for modern compilers, bsc#1220574).
+- Reapply fix-for-CVE-2019-19917-and-CVE-2019-19918.patch fixing
+  bsc#1159714 (CVE-2019-19917) and bsc#1159713 (CVE-2019-19918).
+- Add tblf-fix-typo-in-PaintBox-PDF-backend.patch fixing typo in
+  @PaintBox PDF backend.
+- Add avoid-calling-catclose-with-an-invalid-argument.patch
+  avoids calling catclose with an invalid argument
+- Add opensuse-build.patch allowing build in OBS.
+
+-------------------------------------------------------------------
 Wed May  8 22:02:53 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - update to 3.43.0:
