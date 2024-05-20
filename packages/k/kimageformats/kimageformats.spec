@@ -32,7 +32,7 @@
 %define qt5_version 5.15.2
 %bcond_without released
 Name:           kimageformats
-Version:        5.115.0
+Version:        5.116.0
 Release:        0
 Summary:        Image format plugins for Qt
 License:        LGPL-2.1-or-later
