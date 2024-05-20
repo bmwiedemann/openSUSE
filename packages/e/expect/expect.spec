@@ -1,7 +1,7 @@
 #
 # spec file for package expect
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Patch3:         expect-log.patch
 Patch4:         config-guess-sub-update.patch
 Patch5:         expect-errorfd.patch
 Patch6:         expect-5.45-format-security.patch
+Patch7:         expect-fix-implicit.patch
 BuildRequires:  autoconf
 BuildRequires:  tcl-devel
 

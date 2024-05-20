@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 12 10:24:16 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- expect-fix-implicit.patch: fixed several implicit warnings,
+  fixed bad struct initialization
+  - if you see pty related issues, please report them.
+
+-------------------------------------------------------------------
 Tue Apr 19 21:54:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add expect-5.45-format-security.patch 

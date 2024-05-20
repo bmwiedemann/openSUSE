@@ -1,0 +1,194 @@
+Index: configure.in
+===================================================================
+--- configure.in.orig
++++ configure.in
+@@ -469,7 +469,7 @@ memcpy(s1,s2,0);
+ AC_MSG_CHECKING([if WNOHANG requires _POSIX_SOURCE])
+ AC_TRY_RUN([
+ #include <sys/wait.h>
+-main() {
++int main() {
+ #ifndef WNOHANG
+ 	return 0;
+ #else
+@@ -489,7 +489,7 @@ rm -rf wnohang
+ AC_TRY_RUN([
+ #include <stdio.h>
+ #include <sys/wait.h>
+-main() {
++int main() {
+ #ifdef WNOHANG
+ 	FILE *fp = fopen("wnohang","w");
+ 	fprintf(fp,"%d",WNOHANG);
+@@ -536,6 +536,7 @@ dnl AC_HEADER_EGREP([(void|sighandler_t)
+ AC_MSG_CHECKING([if signals need to be re-armed])
+ AC_TRY_RUN([
+ #include <signal.h>
++#include <stdlib.h>
+ #define RETSIGTYPE $retsigtype
+ 
+ int signal_rearms = 0;
+@@ -553,7 +554,7 @@ int n;
+ signal_rearms++;
+ }
+ 
+-main()
++int main()
+ {
+ 	signal(SIGINT,parent_sigint_handler);
+ 
+@@ -714,7 +715,8 @@ fi
+ AC_MSG_CHECKING([for struct sgttyb])
+ AC_TRY_RUN([
+ #include <sgtty.h>
+-main()
++#include <stdlib.h>
++int main()
+ {
+   struct sgttyb tmp;
+   exit(0);
+@@ -738,7 +740,8 @@ if test $mach -eq 0 ; then
+   # pty_termios.c is set up to handle pty_termio.
+   AC_MSG_CHECKING([for struct termio])
+   AC_TRY_RUN([#include <termio.h>
+-  main()
++  #include <stdlib.h>
++  int main()
+   {
+     struct termio tmp;
+     exit(0);
+@@ -760,7 +763,8 @@ if test $mach -eq 0 ; then
+ #  include <inttypes.h>
+ #  endif
+ #  include <termios.h>
+-  main()
++#  include <stdlib.h>
++  int main()
+   {
+     struct termios tmp;
+     exit(0);
+@@ -782,7 +786,7 @@ AC_TRY_RUN([
+ #include <inttypes.h>
+ #endif
+ #include <termios.h>
+-main() {
++int main() {
+ #if defined(TCGETS) || defined(TCGETA)
+ 	return 0;
+ #else
+@@ -804,7 +808,7 @@ AC_TRY_RUN([
+ #include <inttypes.h>
+ #endif
+ #include <termios.h>
+-main() {
++int main() {
+ #ifdef TIOCGWINSZ
+ 	return 0;
+ #else
+@@ -823,7 +827,7 @@ main() {
+ AC_MSG_CHECKING([for Cray-style ptys])
+ SETUID=":"
+ AC_TRY_RUN([
+-main(){
++int main(){
+ #ifdef CRAY
+ 	return 0;
+ #else
+@@ -876,9 +880,10 @@ AC_FUNC_SETPGRP
+ #
+ AC_MSG_CHECKING([for SV-style timezone])
+ AC_TRY_RUN([
++void exit(int);
+ extern char *tzname[2];
+ extern int daylight;
+-main()
++int main()
+ {
+   int *x = &daylight;
+   char **y = tzname;
+Index: exp_tty.h
+===================================================================
+--- exp_tty.h.orig
++++ exp_tty.h
+@@ -25,5 +25,6 @@ int exp_isecho(void);
+ void exp_tty_set(Tcl_Interp *interp, exp_tty *tty, int raw, int echo);
+ int exp_tty_set_simple(exp_tty *tty);
+ int exp_tty_get_simple(exp_tty *tty);
++int exp_tty_cooked_echo( Tcl_Interp *interp, exp_tty *tty_old, int *was_raw, int *was_echo);
+ 
+ #endif	/* __EXP_TTY_H__ */
+Index: exp_clib.c
+===================================================================
+--- exp_clib.c.orig
++++ exp_clib.c
+@@ -57,6 +57,8 @@ would appreciate credit if this program
+ 
+ #include <errno.h>
+ 
++#include "exp_command.h"
++
+ #ifdef NO_STDLIB_H
+ 
+ /*
+Index: exp_chan.c
+===================================================================
+--- exp_chan.c.orig
++++ exp_chan.c
+@@ -35,10 +35,11 @@
+ #include "exp_prog.h"
+ #include "exp_command.h"
+ #include "exp_log.h"
++#include "exp_event.h"
+ #include "tcldbg.h" /* Dbg_StdinMode */
+ 
+ extern int		expSetBlockModeProc _ANSI_ARGS_((int fd, int mode));
+-static int		ExpBlockModeProc _ANSI_ARGS_((ClientData instanceData,
++static int		ExpBlockModeProc _ANSI_ARGS_((void* instanceData,
+ 			    int mode));
+ static int		ExpCloseProc _ANSI_ARGS_((ClientData instanceData,
+ 			    Tcl_Interp *interp));
+@@ -58,7 +59,7 @@ static int		ExpGetHandleProc _ANSI_ARGS_
+ 
+ Tcl_ChannelType expChannelType = {
+     "exp",				/* Type name. */
+-    ExpBlockModeProc,			/* Set blocking/nonblocking mode.*/
++    TCL_CHANNEL_VERSION_2,		/* version */
+     ExpCloseProc,			/* Close proc. */
+     ExpInputProc,			/* Input proc. */
+     ExpOutputProc,			/* Output proc. */
+@@ -68,6 +69,7 @@ Tcl_ChannelType expChannelType = {
+     ExpWatchProc,			/* Initialize notifier. */
+     ExpGetHandleProc,			/* Get OS handles out of channel. */
+     NULL,				/* Close2 proc */
++    ExpBlockModeProc,			/* Set blocking/nonblocking mode.*/
+ };
+ 
+ typedef struct ThreadSpecificData {
+@@ -104,7 +106,7 @@ static Tcl_ThreadDataKey dataKey;
+ 	/* ARGSUSED */
+ static int
+ ExpBlockModeProc(instanceData, mode)
+-    ClientData instanceData;		/* Exp state. */
++    void* instanceData;		/* Exp state. */
+     int mode;				/* The mode to set. Can be one of
+ 					 * TCL_MODE_BLOCKING or
+ 					 * TCL_MODE_NONBLOCKING. */
+Index: pty_termios.c
+===================================================================
+--- pty_termios.c.orig
++++ pty_termios.c
+@@ -98,11 +98,14 @@ with openpty which supports 4000 while p
+ #  include <sys/stropts.h>
+ #endif
+ 
++#include <pty.h>
++
+ #include "exp_win.h"
+ 
+ #include "exp_tty_in.h"
+ #include "exp_rename.h"
+ #include "exp_pty.h"
++#include "exp_int.h"
+ 
+ void expDiagLog();
+ void expDiagLogPtr();
