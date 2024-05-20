@@ -1,7 +1,7 @@
 #
 # spec file for package ninja
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,19 +15,31 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define name_ext -test
+%bcond_without test
+%else
+%define name_ext %{nil}
+%bcond_with test
+%endif
 
-Name:           ninja
-Version:        1.11.1
+Name:           ninja%{name_ext}
+Version:        1.12.0
 Release:        0
 Summary:        A small build system closest in spirit to Make
 License:        Apache-2.0
 Group:          Development/Tools/Building
 URL:            https://ninja-build.org/
-Source0:        https://github.com/ninja-build/ninja/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/ninja-build/ninja/archive/v%{version}/ninja-%{version}.tar.gz
 Source1:        macros.ninja
 Patch1:         ninja-disable-maxprocs-test.patch
 Patch2:         ninja-re2c-g.patch
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
+%if %{with test}
+BuildRequires:  googletest-devel
+%endif
 BuildRequires:  python3-base
 BuildRequires:  re2c
 
@@ -37,7 +49,7 @@ of files (typically source code and output executables) and orchestrates
 building them, quickly.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n ninja-%{version}
 
 %build
 export CFLAGS="%{optflags}"
@@ -45,22 +57,29 @@ export CFLAGS="%{optflags}"
 CFLAGS="$CFLAGS -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
 %endif
 export CXXFLAGS="$CFLAGS"
-python3 ./configure.py --bootstrap --verbose
+%if %{without test}
+%cmake -DBUILD_TESTING=OFF
+%else
+%cmake
+%endif
+%cmake_build
 
 %install
-install -D -p -m 0755 ninja %{buildroot}%{_bindir}/ninja
+%if %{without test}
+%cmake_install
 install -D -p -m 0644 misc/zsh-completion %{buildroot}%{_datadir}/zsh/site-functions/_ninja
 install -D -p -m 0644 misc/ninja.vim %{buildroot}%{_datadir}/vim/site/syntax/ninja.vim
 install -D -p -m 0644 misc/bash-completion %{buildroot}%{_datadir}/bash-completion/completions/ninja
 install -D -p -m 0644 %{SOURCE1} %{buildroot}%{_rpmconfigdir}/macros.d/macros.ninja
+%endif
 
 %check
-./ninja all
-./ninja_test
-python3 ./misc/ninja_syntax_test.py
-python3 ./misc/output_test.py
+%if %{with test}
+%ctest
+%endif
 
 %files
+%if %{without test}
 %license COPYING
 %{_bindir}/ninja
 %{_datadir}/bash-completion
@@ -69,3 +88,4 @@ python3 ./misc/output_test.py
 %{_rpmconfigdir}/macros.d/macros.ninja
 
 %changelog
+%endif

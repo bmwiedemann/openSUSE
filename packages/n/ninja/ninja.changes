@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue May  7 13:45:10 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- Move testing and its dependency google-test into a separate
+  package
+
+-------------------------------------------------------------------
+Sat May  4 21:31:20 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- Use build dependency googletest-devel instead of gtest to
+  break dependency cycle
+
+-------------------------------------------------------------------
+Tue Apr 30 17:40:20 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- update to 1.12.0
+  * Critical path scheduler which orders the jobs by their runtime
+    history. This may break your build if you haven't specified
+    your dependencies correctly.
+  * Resiliency against inputs changing during the build
+  * Reliable ETA and progress percentage in status #1963
+- Use CMake as build system
+
+-------------------------------------------------------------------
 Wed Aug 31 05:32:49 UTC 2022 - Christoph G <foss@grueninger.de>
 
 - update to 1.11.1:
