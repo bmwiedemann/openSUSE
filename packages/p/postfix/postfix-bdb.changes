@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 17 11:42:53 UTC 2024 - Peter Varkoly <varkoly@suse.com>
+
+- config.postfix needs updating (bsc#1224207)
+  * chkconfig -> systemctl
+  * Link Cyrus lmtp only if this exsists
+  * /usr/lib64/sasl2 does not need to exist
+  * Fetch timezone via readlink from /etc/localtime
+
+-------------------------------------------------------------------
 Thu Mar  7 18:42:30 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 3.9.0

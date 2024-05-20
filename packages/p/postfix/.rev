@@ -2299,4 +2299,22 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment></comment>
     <requestid>1173989</requestid>
   </revision>
+  <revision rev="239" vrev="2">
+    <srcmd5>a1cbfc88a15195ca1fd6b06430310cc0</srcmd5>
+    <version>3.9.0</version>
+    <time>1716221383</time>
+    <user>anag+factory</user>
+    <comment>- config.postfix needs updating (bsc#1224207)
+  * chkconfig -&gt; systemctl
+  * Link Cyrus lmtp only if this exsists
+  * /usr/lib64/sasl2 does not need to exist
+  * Fetch timezone via readlink from /etc/localtime
+
+- config.postfix needs updating (bsc#1224207)
+  * chkconfig -&gt; systemctl
+  * Link Cyrus lmtp only if this exsists
+  * /usr/lib64/sasl2 does not need to exist
+  * Fetch timezone via readlink from /etc/localtime</comment>
+    <requestid>1174920</requestid>
+  </revision>
 </revisionlist>
