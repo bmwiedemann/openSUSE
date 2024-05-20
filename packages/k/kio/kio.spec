@@ -23,7 +23,7 @@
 %define qt5_version 5.15.2
 %bcond_without released
 Name:           kio
-Version:        5.115.0
+Version:        5.116.0
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later
@@ -81,7 +81,7 @@ BuildRequires:  cmake(Qt5Xml) >= %{qt5_version}
 BuildRequires:  pkgconfig(mount)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(x11)
-Requires:       %{name}-core = %{version}
+Requires:       kio-core = %{version}
 Requires:       kded >= %{_kf5_version}
 # KIO/FileDialog uses klauncher directly, but we can't add Requires, as that would introduce dep cycle
 Recommends:     kinit
@@ -106,8 +106,8 @@ KIO core libraries, ioslave and daemons.
 
 %package devel
 Summary:        Network transparent access to files and data
-Requires:       %{name} = %{version}
-Requires:       %{name}-core = %{version}
+Requires:       kio = %{version}
+Requires:       kio-core = %{version}
 Requires:       cmake(KF5Bookmarks) >= %{_kf5_version}
 Requires:       cmake(KF5Completion) >= %{_kf5_version}
 Requires:       cmake(KF5Config) >= %{_kf5_version}
@@ -150,6 +150,11 @@ export CXX=g++-13
 %kf5_makeinstall -C build
 %fdupes %{buildroot}
 
+# Conflicts with kio-extras >= 6.0 and tries to invoke kcmshell5 which is no
+# longer present in the distribution (boo#1221438)
+rm %{buildroot}%{_kf5_applicationsdir}/kcm_trash.desktop
+rm %{buildroot}%{_kf5_plugindir}/kcm_trash.so
+
 %find_lang kio --with-man --all-name
 %{kf5_find_htmldocs}
 
@@ -166,7 +171,6 @@ export CXX=g++-13
 %dir %{_kf5_plugindir}/kf5/kiod
 %dir %{_kf5_sharedir}/kconf_update
 %{_kf5_applicationsdir}/ktelnetservice5.desktop
-%{_kf5_applicationsdir}/kcm_trash.desktop
 %{_kf5_bindir}/ktelnetservice5
 %{_kf5_bindir}/ktrash5
 %{_kf5_configdir}/accept-languages.codes
@@ -176,7 +180,6 @@ export CXX=g++-13
 %{_kf5_libdir}/libKF5KIONTLM.so.*
 %{_kf5_libexecdir}/kio_http_cache_cleaner
 %{_kf5_libexecdir}/kiod5
-%{_kf5_plugindir}/kcm_trash.so
 %{_kf5_plugindir}/kf5/kio/kio_file.so
 %{_kf5_plugindir}/kf5/kio/kio_ftp.so
 %{_kf5_plugindir}/kf5/kio/kio_ghelp.so

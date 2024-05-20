@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May 13 07:33:27 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Drop the 'trash' configuration module. It is not usable anymore
+  because of upstream decisions (boo#1221438)
+
+-------------------------------------------------------------------
+Mon May  6 11:32:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.116.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.116.0
+- Changes since 5.115.0:
+  * Strip trailing slash in iconForStandardPath
+- Use the newest gcc version on Leap
+
+-------------------------------------------------------------------
 Thu Feb  8 11:15:12 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.115.0
