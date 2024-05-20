@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 16 13:08:15 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix the notifier if NetworkManager is not used (boo#1224321):
+  * 0001-notifier-Assume-online-if-no-QNetworkInformation-ins.patch
+
+-------------------------------------------------------------------
 Wed Apr 17 08:12:11 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.4:

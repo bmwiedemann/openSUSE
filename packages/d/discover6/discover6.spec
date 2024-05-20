@@ -36,6 +36,8 @@ Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Warning-for-FlatHub.patch
+# PATCH-FIX-UPSTREAM https://invent.kde.org/plasma/discover/-/merge_requests/847
+Patch1:         0001-notifier-Assume-online-if-no-QNetworkInformation-ins.patch
 BuildRequires:  flatpak-devel
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig

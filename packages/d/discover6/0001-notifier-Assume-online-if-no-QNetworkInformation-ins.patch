@@ -1,0 +1,28 @@
+From 236af8f35304d39fa8cefe350263e8f38aa42910 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Thu, 16 May 2024 14:57:00 +0200
+Subject: [PATCH] notifier: Assume online if no QNetworkInformation instance
+ available
+
+On systems without this it should still try to notify. Otherwise starting
+the notifier process is completely useless as it would never show anything.
+---
+ notifier/DiscoverNotifier.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/notifier/DiscoverNotifier.cpp b/notifier/DiscoverNotifier.cpp
+index 9861981ca..3fbd50593 100644
+--- a/notifier/DiscoverNotifier.cpp
++++ b/notifier/DiscoverNotifier.cpp
+@@ -31,7 +31,7 @@ namespace
+ {
+ bool isOnline()
+ {
+-    return QNetworkInformation::instance() && QNetworkInformation::instance()->reachability() == QNetworkInformation::Reachability::Online;
++    return !QNetworkInformation::instance() || QNetworkInformation::instance()->reachability() == QNetworkInformation::Reachability::Online;
+ }
+ } // namespace
+ 
+-- 
+2.45.0
+
