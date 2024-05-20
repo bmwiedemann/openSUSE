@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat May 18 08:43:45 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.5.0:
+  * Enhancements
+    - Add subdirectories to be part of the task prefix (#4143)
+      @cavcrosby
+    - Prevent execution with incompatible yamllint configuration
+      (#4139) @ssbarnea
+    - Continue linting other files when one has syntax-check errors
+      (#4133) @ssbarnea
+  * Bugfixes
+    - Make linter aware of its own requirements (#4159) @ssbarnea
+    - Allow running with incompatible yamllint config (#4158)
+      @ssbarnea
+    - Avoid key exception during transform (#4156) @ssbarnea
+    - Raise name[casing] violation for notify task param (#4149)
+      @cavcrosby
+    - Allow tabs in win_lineinfile (#4147) @ssbarnea
+    - Improve feedback for fix, avoid a traceback with transform
+      (#4148) @cidrblock
+    - Allow tabs inside jinja strings (#4146) @ssbarnea
+    - Avoid reformatting hexadecimal integers (#4145) @ssbarnea
+    - Make import_playbook recognize playbooks from within
+      collections (#4141) @ssbarnea
+    - Document valid locations for requirements.yml in the docs
+      (#4134) @shatakshiiii
+    - Recognize adjacent plugins (#4131) @ssbarnea
+    - Support examples for role entrypoints (#4019) @felixfontein
+    - Add lower requirements and testing (#4130) @ssbarnea
+
+-------------------------------------------------------------------
 Tue Apr 30 11:35:52 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 24.2.3:
