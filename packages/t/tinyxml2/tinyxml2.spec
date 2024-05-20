@@ -1,7 +1,7 @@
 #
 # spec file for package tinyxml2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%define so_version 9
+%define so_version 10
 %define lib_package lib%{name}-%{so_version}
 Name:           tinyxml2
-Version:        9.0.0
+Version:        10.0.0
 Release:        0
 Summary:        Basic XML parser in C++
 License:        Zlib
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/leethomason/tinyxml2
-Source:         https://github.com/leethomason/tinyxml2/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/leethomason/tinyxml2/archive/%{version}.tar.gz
 BuildRequires:  cmake >= 3.15
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -62,7 +62,7 @@ Contains libraries and header files for
 developing applications that use libtinyxml2.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake
@@ -80,8 +80,7 @@ fi
 %check
 %make_build test
 
-%post -n %{lib_package} -p /sbin/ldconfig
-%postun -n %{lib_package} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lib_package}
 
 %files -n %{lib_package}
 %license LICENSE.txt

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May  7 12:48:07 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10
+  * Added function XMLNode::ChildElementCount
+  * Fix assertion "_elementPool.CurrentAllocs() ==
+    _elementPool.Untracked() failed"
+
+-------------------------------------------------------------------
 Sat Dec 11 18:58:30 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 9.0.0:

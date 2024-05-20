@@ -57,4 +57,12 @@
     <comment></comment>
     <requestid>942720</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e3d06bb777924688bcccaa33c6d1ceb3</srcmd5>
+    <version>10.0.0</version>
+    <time>1716221378</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 10 (forwarded request 1172440 from jengelh)</comment>
+    <requestid>1174849</requestid>
+  </revision>
 </revisionlist>
