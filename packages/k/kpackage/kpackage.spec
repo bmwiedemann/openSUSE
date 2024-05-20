@@ -23,7 +23,7 @@
 %define qt5_version 5.15.2
 %bcond_without released
 Name:           kpackage
-Version:        5.115.0
+Version:        5.116.0
 Release:        0
 Summary:        Non-binary asset user-installable package managing framework
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later

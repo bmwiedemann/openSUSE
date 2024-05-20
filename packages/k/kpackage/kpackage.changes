@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May  6 11:33:02 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.116.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.116.0
+- Changes since 5.115.0:
+  * testpackage: Add a website so that the tests succeed
+
+-------------------------------------------------------------------
 Thu Feb  8 11:15:21 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.115.0
