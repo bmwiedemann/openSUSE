@@ -111,6 +111,10 @@ Patch2:         Add-documentation-on-blacklisted-modules-to-mount-8-.patch
 # PATCH-FIX-SUSE util-linux-bash-completion-su-chsh-l.patch bsc1172427 -- Fix "su -s" bash completion.
 Patch3:         util-linux-bash-completion-su-chsh-l.patch
 Patch5:         static_lib.patch
+Patch6:         0001-include-Include-unistd.h-in-pidfd-utils.h-for-syscal.patch
+Patch7:         0002-lsfd-Refactor-the-pidfd-logic-into-lsfd-pidfd.c.patch
+Patch8:         0003-lsfd-Support-pidfs.patch
+Patch9:         0004-lsfd-test-Adapt-test-cases-for-pidfs.patch
 BuildRequires:  audit-devel
 BuildRequires:  bc
 BuildRequires:  binutils-devel

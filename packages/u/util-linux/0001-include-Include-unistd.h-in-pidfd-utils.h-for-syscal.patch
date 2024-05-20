@@ -1,0 +1,32 @@
+From: Xi Ruoyao <xry111@xry111.site>
+Date: Sun, 31 Mar 2024 00:42:03 +0800
+Subject: include: Include <unistd.h> in pidfd-utils.h for syscall()
+Git-repo: https://github.com/util-linux/util-linux.git
+Git-commit: 10add327c608b11b3d70215048aade4d1797b1fd
+Patch-mainline: yes
+References: kernel 6.9
+
+In Glibc, <sys/syscall.h> only contains SYS_* macros and the syscall()
+function is in <unistd.h>.  So include it.
+
+Signed-off-by: Xi Ruoyao <xry111@xry111.site>
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ include/pidfd-utils.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/pidfd-utils.h b/include/pidfd-utils.h
+index ff0bc4c7..0ee55f3b 100644
+--- a/include/pidfd-utils.h
++++ b/include/pidfd-utils.h
+@@ -7,6 +7,7 @@
+ 
+ #ifdef HAVE_SYS_SYSCALL_H
+ # include <sys/syscall.h>
++# include <unistd.h>
+ 
+ /*
+  * If the kernel headers are too old to provide the syscall numbers, let's
+-- 
+2.45.0
+

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 16 07:12:22 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- add support for pidfs in kernel 6.9 (bsc#1224285)
+  * 0001-include-Include-unistd.h-in-pidfd-utils.h-for-syscal.patch
+  * 0002-lsfd-Refactor-the-pidfd-logic-into-lsfd-pidfd.c.patch
+  * 0003-lsfd-Support-pidfs.patch
+  * 0004-lsfd-test-Adapt-test-cases-for-pidfs.patch
+
+-------------------------------------------------------------------
 Wed May  8 14:06:51 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.40.1

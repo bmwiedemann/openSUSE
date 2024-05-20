@@ -1,0 +1,142 @@
+From: Xi Ruoyao <xry111@xry111.site>
+Date: Thu, 28 Mar 2024 04:01:02 +0800
+Subject: lsfd: test: Adapt test cases for pidfs
+Git-repo: https://github.com/util-linux/util-linux.git
+Git-commit: 04db2ba9008e9635286b1aafc8ecd9533a0a91bf
+Patch-mainline: yes
+References: kernel 6.9
+
+On Linux >= 6.9, pidfds are from pidfs instead of anonymous inode.
+Thus:
+
+STTYPE is REG on Linux >= 6.9, UNKN on Linux < 6.9.
+
+KNAME is pidfd:[inode number] on Linux >= 6.9, anon_inode:[pidfd] on
+Linux < 6.9.
+
+And ainode_class test cannot work on Linux >= 6.9, just skip this sub
+test if STTYPE is REG.
+
+Signed-off-by: Xi Ruoyao <xry111@xry111.site>
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ tests/expected/lsfd/column-name-pidfd | 2 +-
+ tests/expected/lsfd/column-type-pidfd | 2 +-
+ tests/expected/lsfd/mkfds-pidfd       | 2 +-
+ tests/ts/lsfd/column-ainodeclass      | 8 ++++++++
+ tests/ts/lsfd/column-name             | 7 +++++++
+ tests/ts/lsfd/column-type             | 7 +++++++
+ tests/ts/lsfd/mkfds-pidfd             | 4 ++++
+ 7 files changed, 29 insertions(+), 3 deletions(-)
+
+diff --git a/tests/expected/lsfd/column-name-pidfd b/tests/expected/lsfd/column-name-pidfd
+index 10e3c5e7..68787d69 100644
+--- a/tests/expected/lsfd/column-name-pidfd
++++ b/tests/expected/lsfd/column-name-pidfd
+@@ -1,2 +1,2 @@
+-3 anon_inode:[pidfd] pid=1 comm= nspid=1
++3 [KNAME] pid=1 comm= nspid=1
+ pidfd:ASSOC,KNAME,NAME: 0
+diff --git a/tests/expected/lsfd/column-type-pidfd b/tests/expected/lsfd/column-type-pidfd
+index 6c9a9632..a4379807 100644
+--- a/tests/expected/lsfd/column-type-pidfd
++++ b/tests/expected/lsfd/column-type-pidfd
+@@ -1,2 +1,2 @@
+-3 UNKN pidfd
++3 [STTYPE] pidfd
+ pidfd:ASSOC,STTYPE,TYPE: 0
+diff --git a/tests/expected/lsfd/mkfds-pidfd b/tests/expected/lsfd/mkfds-pidfd
+index 94846992..bce4dd42 100644
+--- a/tests/expected/lsfd/mkfds-pidfd
++++ b/tests/expected/lsfd/mkfds-pidfd
+@@ -1,2 +1,2 @@
+-3 UNKN anon_inodefs pid=1 comm=systemd nspid=1 systemd     1
++3 [STTYPE] [SOURCE] pid=1 comm=systemd nspid=1 systemd     1
+ ASSOC,STTYPE,SOURCE,NAME,PIDFD.COMM,PIDFD.PID: 0
+diff --git a/tests/ts/lsfd/column-ainodeclass b/tests/ts/lsfd/column-ainodeclass
+index 6829494f..ab2abebd 100755
+--- a/tests/ts/lsfd/column-ainodeclass
++++ b/tests/ts/lsfd/column-ainodeclass
+@@ -42,10 +42,18 @@ for C in pidfd inotify; do
+ 	fi
+ 	wait "${MKFDS_PID}"
+     } > "$TS_OUTPUT" 2>&1
++
+     if [ "$C-$?" == "pidfd-$TS_EXIT_NOTSUPP" ]; then
+ 	ts_skip_subtest "pidfd_open(2) is not available"
+ 	continue
+     fi
++
++    STTYPE="$(head -n1 "$TS_OUTPUT" | awk '{print $2}')"
++    if [ "$C-$STTYPE" == "pidfd-REG" ]; then
++	ts_skip_subtest "pidfd is from pidfs instead of anon inode"
++	continue
++    fi
++
+     ts_finalize_subtest
+ done
+ 
+diff --git a/tests/ts/lsfd/column-name b/tests/ts/lsfd/column-name
+index 8bf8f421..9c67de88 100755
+--- a/tests/ts/lsfd/column-name
++++ b/tests/ts/lsfd/column-name
+@@ -64,10 +64,17 @@ for C in ro-regular-file pidfd socketpair; do
+ 	fi
+     } > "$TS_OUTPUT" 2>&1
+     wait "${MKFDS_PID}"
++
+     if [ "$C-$?" == "pidfd-$TS_EXIT_NOTSUPP" ]; then
+ 	ts_skip_subtest "pidfd_open(2) is not available"
+ 	continue
+     fi
++
++    case $C in
++    pidfd)
++	sed -i -E 's/(pidfd|anon_inode):\[[a-zA-Z]+\]/[KNAME]/' "$TS_OUTPUT"
++    esac
++
+     ts_finalize_subtest
+ done
+ 
+diff --git a/tests/ts/lsfd/column-type b/tests/ts/lsfd/column-type
+index 77bc5c94..1b8aa8c6 100755
+--- a/tests/ts/lsfd/column-type
++++ b/tests/ts/lsfd/column-type
+@@ -50,10 +50,17 @@ for C in ro-regular-file pidfd inotify socketpair; do
+ 	fi
+ 	wait "${MKFDS_PID}"
+     } > "$TS_OUTPUT" 2>&1
++
+     if [ "$C-$?" == "pidfd-$TS_EXIT_NOTSUPP" ]; then
+ 	ts_skip_subtest "pidfd_open(2) is not available"
+ 	continue
+     fi
++
++    case $C in
++    pidfd)
++	sed -i -E 's/UNKN|REG/[STTYPE]/' "$TS_OUTPUT"
++    esac
++
+     ts_finalize_subtest
+ done
+ 
+diff --git a/tests/ts/lsfd/mkfds-pidfd b/tests/ts/lsfd/mkfds-pidfd
+index c0fae4f7..9b0ff33c 100755
+--- a/tests/ts/lsfd/mkfds-pidfd
++++ b/tests/ts/lsfd/mkfds-pidfd
+@@ -44,8 +44,12 @@ EXPR="(PID != ${TARGET}) and (FD == 3) and (PIDFD.PID == ${TARGET})"
+     fi
+     wait ${MKFDS_PID}
+ } > $TS_OUTPUT 2>&1
++
+ if [ "$?" == "$TS_EXIT_NOTSUPP" ]; then
+     ts_skip "pidfd_open(2) is not available"
+ fi
+ 
++sed -i -E -e 's/UNKN|REG/[STTYPE]/' -e 's/pidfs|anon_inodefs/[SOURCE]/' \
++    $TS_OUTPUT
++
+ ts_finalize
+-- 
+2.45.0
+
