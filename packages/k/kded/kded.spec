@@ -23,7 +23,7 @@
 %define qt5_version 5.15.2
 %bcond_without released
 Name:           kded
-Version:        5.115.0
+Version:        5.116.0
 Release:        0
 Summary:        Central daemon of KDE workspaces
 License:        LGPL-2.1-or-later
