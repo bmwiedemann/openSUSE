@@ -23,4 +23,12 @@
     <comment>add missing libbfio-devel</comment>
     <requestid>1046615</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2ca72992aaf97cac0df0feb99c88135d</srcmd5>
+    <version>20240518</version>
+    <time>1716221736</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20240518</comment>
+    <requestid>1175256</requestid>
+  </revision>
 </revisionlist>
