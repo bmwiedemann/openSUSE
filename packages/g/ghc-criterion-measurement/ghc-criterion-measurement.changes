@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 12 11:57:43 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update criterion-measurement to version 0.2.2.0.
+  0.2.2.0
+
+  * Supporting building with all AArch64 platforms (not just Linux and macOS).
+
+-------------------------------------------------------------------
 Thu Mar 30 17:06:23 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
