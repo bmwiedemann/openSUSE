@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu May 16 10:01:20 UTC 2024 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+- systemd.spec: enable unit tests during build 
+
+-------------------------------------------------------------------
+Thu May 16 08:27:27 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Import commit 3ea0e1dff3d7ca74c072cdcc8b371034125803d6
+
+  3ea0e1dff3 test/test-rpm-macros.sh: add build directory to pkg-config search path
+  1cbf1c82b5 libsystemd-network: skip dhcp server test in case of EAFNOSUPPORT
+  38f7ac60db sd-event: increase test-event timeout to 120s
+
+-------------------------------------------------------------------
+Wed May 15 08:05:43 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- systemd.spec: update the minimal required version of dracut. Also drop
+  conflicts with mkinitrd: this package has been removed since quite some time
+  now.
+
+-------------------------------------------------------------------
+Tue May 14 11:47:55 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- systemd.spec: some of the meson options have been converted to meson features.
+
+-------------------------------------------------------------------
 Mon May 13 09:06:32 UTC 2024 - Franck Bui <fbui@suse.com>
 
 - Import commit a3dccacb97e94ed91f1c41ce82ef13bfe8fa1a79 (merge of v255.6)

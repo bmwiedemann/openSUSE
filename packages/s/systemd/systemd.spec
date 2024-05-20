@@ -28,16 +28,16 @@
 %else
 %define systemd_version    255.6
 %define systemd_release    0
-%define archive_version    +suse.27.ga3dccacb97
+%define archive_version    +suse.30.g3ea0e1dff3
 %endif
 
 %define systemd_major      %{sub %systemd_version 1 3}
 
 %define _testsuitedir %{_systemd_util_dir}/tests
-%define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
+%define xinitconfdir  %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
 
-# Similar to %%with but returns true/false. The 'true' value can be redefined
-# when a second parameter is passed.
+# Similar to %%with but return true/false. The value when the condition is
+# verified can be redefined when a second parameter is passed.
 %define __when_1() %{expand:%%{?with_%{1}:true}%%{!?with_%{1}:false}}
 %define __when_2() %{expand:%%{?with_%{1}:%{2}}%%{!?with_%{1}:false}}
 %define when()     %{expand:%%__when_%# %{*}}
@@ -45,6 +45,10 @@
 %define __when_not_1() %{expand:%%{?with_%{1}:false}%%{!?with_%{1}:true}}
 %define __when_not_2() %{expand:%%{?with_%{1}:false}%%{!?with_%{1}:%{2}}}
 %define when_not()     %{expand:%%__when_not_%# %{*}}
+
+# Same as above but return enabled/disabled instead.
+%define disabled_with()  %{expand:%%{?with_%{1}:disabled}%%{!?with_%{1}:enabled}}
+%define enabled_with()   %{expand:%%{?with_%{1}:enabled}%%{!?with_%{1}:disabled}}
 
 %if "%{flavor}" == "mini"
 %global mini -mini
@@ -135,6 +139,11 @@ BuildRequires:  pam-devel
 BuildRequires:  python3-Jinja2
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(blkid) >= 2.26
+# The following packages are only required by the execution of the unit tests during %%check
+BuildRequires:  acl
+BuildRequires:  distribution-release
+BuildRequires:  python3-pefile
+BuildRequires:  timezone
 
 %if %{with bootstrap}
 #!BuildIgnore:  dbus-1
@@ -168,7 +177,6 @@ Recommends:     libbpf1
 %endif
 Provides:       group(systemd-journal)
 Conflicts:      filesystem < 11.5
-Conflicts:      mkinitrd < 2.7.0
 Provides:       sbin_init
 Provides:       sysvinit:/sbin/init
 Conflicts:      sbin_init
@@ -363,9 +371,8 @@ Recommends:     libtss2-mu0
 Recommends:     libtss2-rc0
 %endif
 Conflicts:      ConsoleKit < 0.4.1
-Conflicts:      dracut < 044.1
+Conflicts:      dracut < 059
 Conflicts:      filesystem < 11.5
-Conflicts:      mkinitrd < 2.7.0
 Conflicts:      util-linux < 2.16
 %if %{with bootstrap}
 Conflicts:      udev
@@ -786,70 +793,70 @@ for the C APIs.
         -Ddebug-shell=/bin/bash \
         \
         -Dbump-proc-sys-fs-nr-open=false \
-        -Ddbus=false \
+        -Ddbus=disabled \
         -Ddefault-network=false \
-        -Dglib=false \
+        -Dglib=disabled \
         -Dgshadow=false \
         -Dldconfig=false \
-        -Dlibidn=false \
+        -Dlibidn=disabled \
         -Dsmack=false \
-        -Dxenctrl=false \
-        -Dxkbcommon=false \
+        -Dxenctrl=disabled \
+        -Dxkbcommon=disabled \
         \
         -Dpstore=true \
         \
-        -Daudit=%{when_not bootstrap} \
-        -Dbpf-framework=%{when_not bootstrap} \
-        -Dbzip2=%{when importd} \
+        -Daudit=%{disabled_with bootstrap} \
+        -Dbpf-framework=%{disabled_with bootstrap} \
+        -Dbzip2=%{enabled_with importd} \
         -Defi=%{when_not bootstrap} \
-        -Delfutils=%{when_not bootstrap} \
-        -Dfdisk=%{when_not bootstrap} \
-        -Dgcrypt=%{when_not bootstrap} \
-        -Dgnutls=%{when_not bootstrap} \
-        -Dhtml=%{when_not bootstrap} \
+        -Delfutils=%{disabled_with bootstrap} \
+        -Dfdisk=%{disabled_with bootstrap} \
+        -Dgcrypt=%{disabled_with bootstrap} \
+        -Dgnutls=%{disabled_with bootstrap} \
+        -Dhtml=%{disabled_with bootstrap} \
         -Dima=%{when_not bootstrap} \
         -Dkernel-install=%{when_not bootstrap} \
-        -Dlibfido2=%{when_not bootstrap} \
-        -Dlibidn2=%{when resolved} \
-        -Dlibiptc=%{when_not bootstrap} \
-        -Dlz4=%{when_not bootstrap} \
-        -Dqrencode=%{when_not bootstrap} \
-        -Dkmod=%{when_not bootstrap} \
-        -Dlibcryptsetup=%{when_not bootstrap} \
-        -Dlibcryptsetup-plugins=%{when_not bootstrap} \
-        -Dlibcurl=%{when_not bootstrap} \
-        -Dman=%{when_not bootstrap} \
-        -Dmicrohttpd=%{when journal_remote} \
+        -Dlibfido2=%{disabled_with bootstrap} \
+        -Dlibidn2=%{enabled_with resolved} \
+        -Dlibiptc=%{disabled_with bootstrap} \
+        -Dlz4=%{disabled_with bootstrap} \
+        -Dqrencode=%{disabled_with bootstrap} \
+        -Dkmod=%{disabled_with bootstrap} \
+        -Dlibcryptsetup=%{disabled_with bootstrap} \
+        -Dlibcryptsetup-plugins=%{disabled_with bootstrap} \
+        -Dlibcurl=%{disabled_with bootstrap} \
+        -Dman=%{disabled_with bootstrap} \
+        -Dmicrohttpd=%{enabled_with journal_remote} \
         -Dnss-myhostname=%{when_not bootstrap} \
-        -Dnss-mymachines=%{when machined} \
-        -Dnss-resolve=%{when resolved} \
+        -Dnss-mymachines=%{enabled_with machined} \
+        -Dnss-resolve=%{enabled_with resolved} \
         -Dnss-systemd=%{when_not bootstrap} \
-        -Dopenssl=%{when_not bootstrap} \
-        -Dp11kit=%{when_not bootstrap} \
-        -Dpasswdqc=%{when_not bootstrap} \
-        -Dpwquality=%{when_not bootstrap} \
-        -Dseccomp=%{when_not bootstrap} \
-        -Drepart=%{when_not bootstrap} \
+        -Dopenssl=%{disabled_with bootstrap} \
+        -Dp11kit=%{disabled_with bootstrap} \
+        -Dpasswdqc=%{disabled_with bootstrap} \
+        -Dpwquality=%{disabled_with bootstrap} \
+        -Dseccomp=%{disabled_with bootstrap} \
+        -Drepart=%{disabled_with bootstrap} \
         -Dstoragetm=%{when_not bootstrap} \
         -Dtpm=%{when_not bootstrap} \
-        -Dtpm2=%{when_not bootstrap} \
+        -Dtpm2=%{disabled_with bootstrap} \
         -Dtranslations=%{when_not bootstrap} \
         -Duserdb=%{when_not bootstrap} \
-        -Dxz=%{when_not bootstrap} \
-        -Dzlib=%{when importd} \
-        -Dzstd=%{when_not bootstrap} \
+        -Dxz=%{disabled_with bootstrap} \
+        -Dzlib=%{enabled_with importd} \
+        -Dzstd=%{disabled_with bootstrap} \
         \
-        -Dapparmor=%{when apparmor} \
+        -Dapparmor=%{enabled_with apparmor} \
         -Dcoredump=%{when coredump} \
-        -Dhomed=%{when homed} \
-        -Dimportd=%{when importd} \
+        -Dhomed=%{enabled_with homed} \
+        -Dimportd=%{enabled_with importd} \
         -Dmachined=%{when machined} \
         -Dnetworkd=%{when networkd} \
         -Dportabled=%{when portabled} \
-        -Dremote=%{when journal_remote} \
-        -Dselinux=%{when selinux} \
+        -Dremote=%{enabled_with journal_remote} \
+        -Dselinux=%{enabled_with selinux} \
         \
-        -Dbootloader=%{when sd_boot} \
+        -Dbootloader=%{enabled_with sd_boot} \
         -Defi-color-highlight="black,green" \
         \
         -Dsbat-distro="%{?sbat_distro}" \
@@ -865,13 +872,13 @@ for the C APIs.
         -Dresolve=%{when resolved} \
         \
         -Doomd=%{when experimental} \
-        -Dsysupdate=%{when experimental} \
+        -Dsysupdate=%{enabled_with experimental} \
 %if %{with sd_boot}
-        -Dukify=%{when experimental} \
+        -Dukify=%{enabled_with experimental} \
 %else
-        -Dukify=false \
+        -Dukify=disabled \
 %endif
-        -Dvmspawn=%{when experimental} \
+        -Dvmspawn=%{enabled_with experimental} \
         \
         -Dtests=%{when testsuite unsafe} \
         -Dinstall-tests=%{when testsuite}
@@ -1086,6 +1093,10 @@ rm -fr %{buildroot}%{_docdir}/systemd
 %systemd_pre getty@.service
 %systemd_pre systemd-journald-audit.socket
 %systemd_pre systemd-userdbd.service
+
+%check
+# Run the unit tests.
+%meson_test
 
 %post
 if [ $1 -eq 1 ]; then

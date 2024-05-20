@@ -7195,4 +7195,23 @@ handle manual pages that consist only of a .so directive such as
   https://github.com/openSUSE/systemd/compare/49fb09fa18a7b81f6b3c3c15aca47fd00940430e...a3dccacb97e94ed91f1c41ce82ef13bfe8fa1a79</comment>
     <requestid>1173887</requestid>
   </revision>
+  <revision rev="423" vrev="2">
+    <srcmd5>917d9be33689b0e72e34c7234f80ab26</srcmd5>
+    <version>255.6</version>
+    <time>1716221374</time>
+    <user>anag+factory</user>
+    <comment>- systemd.spec: enable unit tests during build 
+
+- Import commit 3ea0e1dff3d7ca74c072cdcc8b371034125803d6
+  3ea0e1dff3 test/test-rpm-macros.sh: add build directory to pkg-config search path
+  1cbf1c82b5 libsystemd-network: skip dhcp server test in case of EAFNOSUPPORT
+  38f7ac60db sd-event: increase test-event timeout to 120s
+
+- systemd.spec: update the minimal required version of dracut. Also drop
+  conflicts with mkinitrd: this package has been removed since quite some time
+  now.
+
+- systemd.spec: some of the meson options have been converted to meson features.</comment>
+    <requestid>1174803</requestid>
+  </revision>
 </revisionlist>
