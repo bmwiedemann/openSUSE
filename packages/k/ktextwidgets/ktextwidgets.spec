@@ -24,7 +24,7 @@
 %define qt5_version 5.15.2
 %bcond_without released
 Name:           ktextwidgets
-Version:        5.115.0
+Version:        5.116.0
 Release:        0
 Summary:        KDE Text editing widgets
 License:        LGPL-2.1-or-later
