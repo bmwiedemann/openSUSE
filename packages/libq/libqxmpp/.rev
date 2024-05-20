@@ -228,4 +228,20 @@ Qt5 alternative.</comment>
   that can't build with the default compiler</comment>
     <requestid>1151219</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a5a5a696e13195b75e965027046a179e</srcmd5>
+    <version>1.6.1</version>
+    <time>1716221718</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.6.1:
+  * Fix handling of XMPP redirects (introduced in aaa6497)
+  * Fix compilation with Qt 6 + C++17 (not C++20) in OmemoData
+  * Fix OMEMO decryption of group chat messages (#617)
+  * Fix stream resumption
+    This has been an issue since the initial implementation of
+    stream mangement. The xmlns was missing in the &lt;resume/&gt;
+    element and the stream ID was not parsed in the &lt;enabled/&gt;
+    element.</comment>
+    <requestid>1175106</requestid>
+  </revision>
 </revisionlist>

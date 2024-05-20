@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May 19 08:56:14 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6.1:
+  * Fix handling of XMPP redirects (introduced in aaa6497)
+  * Fix compilation with Qt 6 + C++17 (not C++20) in OmemoData
+  * Fix OMEMO decryption of group chat messages (#617)
+  * Fix stream resumption
+    This has been an issue since the initial implementation of
+    stream mangement. The xmlns was missing in the <resume/>
+    element and the stream ID was not parsed in the <enabled/>
+    element.
+
+-------------------------------------------------------------------
 Thu Feb  8 10:22:03 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add build flavors to have both Qt5 and Qt6 variants available.
