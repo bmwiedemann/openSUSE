@@ -674,4 +674,12 @@
     <comment>- Move the purpose service files to a subpackage</comment>
     <requestid>1156632</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>367ba0e77257ae2c0aef1f783dc7349c</srcmd5>
+    <version>5.116.0</version>
+    <time>1716221445</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 5.116 (forwarded request 1173590 from krop)</comment>
+    <requestid>1175182</requestid>
+  </revision>
 </revisionlist>
