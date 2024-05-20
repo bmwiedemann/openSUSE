@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Sat May 18 09:44:43 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.4.2:
+  * Pin the goreleaser version for Go version support (#3674)
+  * Bump x/net package to 0.24/latest (#3614)
+  * [release-v2.4] Update set-up-monitoring.md (#3625)
+  * [release-v2.4] Remove incorrect query (#3608)
+  * [release-v2.4] [DOC] Revised Tune search performance doc
+    (#3595)
+  * [release-v2.4] [DOC] Fix linter-related issues (#3581)
+  * [release-v2.4] Replace ß with s (#3578)
+  * [release-v2.4] [DOC] Add note for Grafana Alloy (#3565)
+  * [release-v2.4] [DOC] Update monitoring doc (#3550)
+  * [release-v2.4] Fix a broken link in tail-based-sampling.md
+    (#3545)
+  * [release-v2.4] [DOC] Tempo landing page for docs (#3549)
+  * [release-v2.4] Outdated documentation setting up a test app
+    (#3533)
+  * [release-v2.4] [DOC] Add 2.4.1 release notes (#3518)
+  * [release-v2.4] [DOC] Document Tempo Operator Monolithic mode
+    (#3519)
+  * [release-v2.4] [DOC] document Grafana data source setup using
+    Grafana and Tempo operators (#3520)
+  * [release-v2.4] Doc update (#3521)
+
+-------------------------------------------------------------------
+Mon Apr  8 11:48:52 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package tempo-cli: CLI for the Grafana Tempo tracing backend

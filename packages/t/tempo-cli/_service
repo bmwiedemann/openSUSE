@@ -1,0 +1,23 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/grafana/tempo</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="revision">v2.4.2</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service name="set_version" mode="manual">
+    <param name="basename">tempo</param>
+  </service>
+  <service name="tar" mode="buildtime">
+  </service>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="go_modules" mode="manual">
+    <param name="archive">tempo-2.4.2.obscpio</param>
+  </service>
+</services>

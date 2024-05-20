@@ -1,0 +1,5 @@
+<package name="tempo-cli" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="server:monitoring" package="tempo-cli"/>
+</package>
