@@ -1,0 +1,6 @@
+<package name="killport" project="openSUSE:Factory">
+  <title>A tool to easily kill processes running on a specified port</title>
+  <description></description>
+  <devel project="utilities" package="killport"/>
+  <url>https://github.com/jkfran/killport</url>
+</package>
