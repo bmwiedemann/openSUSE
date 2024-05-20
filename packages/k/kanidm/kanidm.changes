@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 18 03:11:05 UTC 2024 - william.brown@suse.com
+
+- Update to version 1.2.1~git0.ba82b1a:
+  * 2756 - resolve dyngroups not loading correctly at startup (#2778)
+
+-------------------------------------------------------------------
 Wed May 01 04:20:10 UTC 2024 - william.brown@suse.com
 
 - Update to version 1.2.0~git0.9efa91a:
