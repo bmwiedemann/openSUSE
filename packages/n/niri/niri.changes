@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May 18 18:27:17 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.1.6
+  * added mouse gestures for resizing and scrolling the view.
+  * added declare named workspaces in the config.
+  * IPC Improvements.
+  * added new window rules and new debugging features.
+  * added feature rounded Window Corners.
+  * added a do-screen-transition action which lets you switch
+    between light and dark, or between different themes.
+- add script test
+- exclude arch i586: error linking with gcc-13
+
+-------------------------------------------------------------------
 Sat Apr 20 22:27:51 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.1.5

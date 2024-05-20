@@ -16,8 +16,9 @@
 #
 
 
+%bcond_without test
 Name:           niri
-Version:        0.1.5
+Version:        0.1.6
 Release:        0
 Summary:        Scrollable-tiling Wayland compositor
 License:        GPL-3.0-or-later
@@ -53,6 +54,7 @@ Recommends:     swaylock
 Recommends:     swaybg
 Recommends:     mako
 Recommends:     xwayland-run
+ExcludeArch:    i586
 
 %description
 A scrollable-tiling Wayland compositor.
@@ -76,6 +78,9 @@ install -Dm644 -t %{buildroot}%{_datadir}/xdg-desktop-portal resources/niri-port
 install -Dm644 -t %{buildroot}%{_userunitdir} resources/niri{.service,-shutdown.target}
 
 %check
+%if %{with test}
+%cargo_test -- --workspace --exclude niri-visual-tests
+%endif
 
 %files
 %license LICENSE
