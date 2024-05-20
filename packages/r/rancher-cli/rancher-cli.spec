@@ -18,7 +18,7 @@
 
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 Name:           rancher-cli
-Version:        2.8.3
+Version:        2.8.4
 Release:        0
 Summary:        Rancher CLI
 License:        Apache-2.0
