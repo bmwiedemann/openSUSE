@@ -251,4 +251,40 @@
   * Translation updates (forwarded request 1142000 from Kieltux)</comment>
     <requestid>1142026</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>596b41c6ed9d39a69ee6015de9d8950d</srcmd5>
+    <version>0.11.4</version>
+    <time>1716221725</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.11.4
+  * More guards against divides by zero in autonav
+  * Fixed warnings on certain OpenGL drivers
+  * Fixed toolkit not rerendering when right-clicking on tabbed
+    windows
+  * Fixed Marius enclave description
+  * Tweaked Za'lek Diablo and Mephisto stats so that they are
+    better suited to their respective roles
+  * Updated flicker drive, blink drive, and hyperbolic blink
+    engine descriptions to be more complete and correct
+  * Initialize outfit Lua scripts when added in the equipment view
+    so that flicker drive signature gets properly computed
+  * Flicker drive no longer displays -10% signature range bonus
+    twice when equipped
+  * Fixed crash when selling deployed ship
+  * Gave the Dvaered warlord event better criteria so they don't
+    attack the hypergate
+  * shark/sh01_corvette: have the pilot jump in from the same
+    system as the player
+  * minerva/kex03: have mission claim the crimson gauntlet to
+    prevent unwanted spawns
+  * dvaered/gauntlet: have mission claim the system if it can,
+    but not fail if it can't
+  * trader/trader_escort: player can only escort one group of
+    traders at a time
+  * neburesearch/neburesearch_01: use the correct faction when
+    complaining
+  * Fixed some typos and revised writing
+  * Translation updates (forwarded request 1175244 from Kieltux)</comment>
+    <requestid>1175246</requestid>
+  </revision>
 </revisionlist>
