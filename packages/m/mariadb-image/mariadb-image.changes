@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May 18 17:56:27 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- Handle arguments with spaces in mysql_install_db
+
+-------------------------------------------------------------------
 Thu May 16 16:20:25 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - install findutils for the containers that need it explicitly
