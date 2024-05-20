@@ -1,7 +1,7 @@
 #
 # spec file for package python-subprocess-tee
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,8 +49,7 @@ any tool that executes long-running child processes. For those, you do want
 to provide instant feedback (progress) related to what is happening.
 
 %prep
-%setup -q -n subprocess-tee-%{version}
-%patch1 -p1
+%autosetup -p1 -n subprocess-tee-%{version}
 
 %build
 %pyproject_wheel

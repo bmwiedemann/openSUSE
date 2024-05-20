@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 16 15:09:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro: allows us to eliminate usage of deprecated
+  %patchN syntax.
+
+-------------------------------------------------------------------
 Mon Jul 17 07:05:58 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove BuildRequires on setuptools_scm_git_archive. 

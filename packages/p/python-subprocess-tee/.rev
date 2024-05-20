@@ -74,4 +74,12 @@
     <comment>- Remove BuildRequires on setuptools_scm_git_archive.</comment>
     <requestid>1099034</requestid>
   </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>0cd1c5ed614859ad11c77d3816865214</srcmd5>
+    <version>0.4.1</version>
+    <time>1716221370</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1174768</requestid>
+  </revision>
 </revisionlist>
