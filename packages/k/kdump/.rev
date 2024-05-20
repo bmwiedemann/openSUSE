@@ -1307,4 +1307,20 @@ URL-decode the target URL. (forwarded request 234827 from ptesarik)</comment>
   * load.sh: fix fadump (bsc#1218589)</comment>
     <requestid>1139721</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>251683b80a5785b64f6843dd96c98334</srcmd5>
+    <version>2.0.5</version>
+    <time>1716221381</time>
+    <user>anag+factory</user>
+    <comment>- upgrade to version 2.0.5
+  * spec: differentiate between uninstall and upgrade in postun/preun (bsc#1191410)
+  * spec: return success from pre, post, preun and postun scriplets (bsc#1222228)
+  * add a note to README.txt about the flattened format (bsc#1221374)
+  * use the same persistent device links as dracut (bsc#1222009, bsc#1219471)
+  * remove dracut parse-root.sh hook (bsc#1221288)
+  * always use nr_cpus, not maxcpus (bsc#1218180)
+  * prevent mounting root in fadump (bsc#1219958)
+  * update calibrate values</comment>
+    <requestid>1174881</requestid>
+  </revision>
 </revisionlist>
