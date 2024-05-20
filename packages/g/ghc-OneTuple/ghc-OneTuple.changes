@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 12 20:57:02 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update OneTuple to version 0.4.2.
+  Upstream has not updated the file "Changelog.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Thu Nov 16 13:14:16 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Drop obsolete dependency on ghc-foldable1-classes-compat.
