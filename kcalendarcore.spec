@@ -23,7 +23,7 @@
 %define qt5_version 5.15.2
 %bcond_without released
 Name:           kcalendarcore
-Version:        5.115.0
+Version:        5.116.0
 Release:        0
 Summary:        Library to access and handle calendar data
 License:        LGPL-2.0-or-later
