@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 21 06:08:00 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.2.0:
+  * Especially for diff3 conflicts, where we now show unchanged
+    lines vs base in context color:
+    https://stackoverflow.com/questions/27417656/should-diff3-be-default-conflictstyle-on-git
+  * With this release, we are also better at detecting conflict
+    markers in git diff output.
+
+-------------------------------------------------------------------
 Mon May 13 06:48:54 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.1.3:

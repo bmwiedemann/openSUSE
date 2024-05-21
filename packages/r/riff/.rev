@@ -141,4 +141,17 @@
     Before this release, we just panicked on parse errors.</comment>
     <requestid>1173674</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f41f71cf9d57b2918f09746833363273</srcmd5>
+    <version>3.2.0~0</version>
+    <time>1716309395</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.2.0:
+  * Especially for diff3 conflicts, where we now show unchanged
+    lines vs base in context color:
+    https://stackoverflow.com/questions/27417656/should-diff3-be-default-conflictstyle-on-git
+  * With this release, we are also better at detecting conflict
+    markers in git diff output.</comment>
+    <requestid>1175436</requestid>
+  </revision>
 </revisionlist>
