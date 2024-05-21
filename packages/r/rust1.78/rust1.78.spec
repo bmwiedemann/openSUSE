@@ -23,7 +23,7 @@
 # This has to be kept lock step to the rust version.
 # -- will be 18 for 1.78
 %global llvm_version 18
-%if 0%{?sle_version} <= 150500 && 0%{?suse_version} < 1599
+%if 0%{?sle_version} <= 150900 && 0%{?suse_version} < 1599
 # We may need a minimum gcc version for some linker flags
 # This is especially true on leap/sle
 #
@@ -134,7 +134,7 @@ Obsoletes:      %{1}1.62%{?2:-%{2}}
 # ⚠️   SLE/LEAP 15.3 LLVM is too old!
 # ⚠️   1.59 breaks codegen with distro llvm!!!
 
-%if 0%{?is_opensuse} == 1 && 0%{?suse_version} >= 1550
+%if 0%{?is_opensuse} == 1 && 0%{?suse_version} >= 1699
 # && "{version_suffix}" != "1.61"
 # Can proceed with pinned llvm.
 %bcond_with bundled_llvm
@@ -164,7 +164,7 @@ Obsoletes:      %{1}1.62%{?2:-%{2}}
 %endif
 
 # === Enable wasm/wasi on t1 targets ===
-%if 0%{?is_opensuse} == 1 && 0%{?suse_version} >= 1550
+%if 0%{?is_opensuse} == 1 && 0%{?suse_version} >= 1699
 %ifarch x86_64 aarch64
 %bcond_without wasm32
 %bcond_without wasi
@@ -285,7 +285,7 @@ Patch0:         ignore-Wstring-conversion.patch
 BuildRequires:  chrpath
 BuildRequires:  curl
 # BUG - fdupes on leap/sle causes issues with debug info
-%if 0%{?is_opensuse} == 1 && 0%{?suse_version} >= 1550
+%if 0%{?is_opensuse} == 1 && 0%{?suse_version} >= 1699
 BuildRequires:  fdupes
 %endif
 BuildRequires:  pkgconfig
@@ -649,7 +649,7 @@ if [ ! -f %{buildroot}%{_libexecdir}/cargo-credential-1password ] &&
 fi
 
 # Silence any duplicate library warnings.
-%if 0%{?is_opensuse} == 1 && 0%{?suse_version} >= 1550
+%if 0%{?is_opensuse} == 1 && 0%{?suse_version} >= 1699
 %fdupes %{buildroot}/%{common_libdir}
 %endif
 
