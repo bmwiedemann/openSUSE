@@ -96,4 +96,19 @@
     <comment></comment>
     <requestid>1139189</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d15c0ecbbcce25d4ffdf88a03d8060c4</srcmd5>
+    <version>1.5.0</version>
+    <time>1716309339</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file.
+- version 1.5.0
+  * naming scheme broken upstream
+  * Add MERGE query
+  * Support “UPSERT” with ON CONFLICT clause on INSERT query
+  * Remove default escape char on LIKE and ILIKE
+  * Add GROUPING SETS, CUBE, and ROLLUP clauses for GROUP BY.
+</comment>
+    <requestid>1175383</requestid>
+  </revision>
 </revisionlist>

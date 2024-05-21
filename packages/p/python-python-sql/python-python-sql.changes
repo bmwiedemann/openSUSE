@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 20 18:19:43 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up the SPEC file.
+
+-------------------------------------------------------------------
+Wed May 15 08:46:55 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.5.0
+  * naming scheme broken upstream
+  * Add MERGE query
+  * Support “UPSERT” with ON CONFLICT clause on INSERT query
+  * Remove default escape char on LIKE and ILIKE
+  * Add GROUPING SETS, CUBE, and ROLLUP clauses for GROUP BY.
+
+-------------------------------------------------------------------
 Sat Jan 13 14:06:41 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - added %{?sle15_python_module_pythons}
