@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Tue May 21 09:01:35 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- use pkconfig(systemd) instead of systemd-devel
+
+-------------------------------------------------------------------
+Tue Apr 16 18:00:05 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package alloy: OpenTelemetry Collector distribution with
+  programmable pipelines
