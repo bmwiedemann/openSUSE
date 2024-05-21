@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-attrs
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -33,6 +33,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/hynek/attrs/
 Source:         https://files.pythonhosted.org/packages/source/a/attrs/attrs-%{version}.tar.gz
+#PATCH-FIX-UPSTREAM https://github.com/python-attrs/attrs/pull/1249 Remove pytest.deprecated_call() in TestAssoc::test_unknown
+Patch:          pytest8.patch
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
