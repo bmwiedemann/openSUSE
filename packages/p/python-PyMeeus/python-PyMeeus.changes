@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 20 18:25:54 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up the SPEC file.
+
+-------------------------------------------------------------------
+Fri May 17 14:48:50 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add patch pytest72.patch to fix compatibility with recent pytest
+
+-------------------------------------------------------------------
 Fri Apr 21 12:21:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

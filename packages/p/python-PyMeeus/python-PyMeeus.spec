@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyMeeus
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-PyMeeus
 Version:        0.5.12
@@ -25,8 +24,11 @@ Summary:        Python implementation of Jean Meeus astronomical routines
 License:        LGPL-3.0-only
 URL:            https://github.com/architest/pymeeus
 Source:         https://files.pythonhosted.org/packages/source/P/PyMeeus/PyMeeus-%{version}.tar.gz
+Patch0:         pytest72.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -38,13 +40,13 @@ described in the classical book "Astronomical Algorithms, 2nd Edition,
 Willmann-Bell Inc. (1998)" by Jean Meeus.
 
 %prep
-%setup -q -n PyMeeus-%{version}
+%autosetup -p1 -n PyMeeus-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -53,6 +55,7 @@ Willmann-Bell Inc. (1998)" by Jean Meeus.
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/pymeeus
+%{python_sitelib}/PyMeeus-%{version}*-info
 
 %changelog

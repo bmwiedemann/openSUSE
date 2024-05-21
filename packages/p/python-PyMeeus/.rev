@@ -58,4 +58,14 @@
     <comment></comment>
     <requestid>1082032</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>2e73973c323cd5b4fa4c0676de5fc8ad</srcmd5>
+    <version>0.5.12</version>
+    <time>1716309279</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file.
+- Add patch pytest72.patch to fix compatibility with recent pytest
+</comment>
+    <requestid>1175386</requestid>
+  </revision>
 </revisionlist>
