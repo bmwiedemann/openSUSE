@@ -1,8 +1,7 @@
-diff --git a/src/debuginfo.cpp b/src/debuginfo.cpp
-index 95b562311b..69fceb0cfe 100644
---- a/src/debuginfo.cpp
-+++ b/src/debuginfo.cpp
-@@ -265,6 +265,7 @@ public:
+diff -ruN julia-1.10.3.orig/src/debuginfo.cpp julia-1.10.3/src/debuginfo.cpp
+--- julia-1.10.3.orig/src/debuginfo.cpp	2024-05-15 19:29:44.237505409 +0800
++++ julia-1.10.3/src/debuginfo.cpp	2024-05-15 19:34:48.084228112 +0800
+@@ -267,6 +267,7 @@
          di->format = UNW_INFO_FORMAT_ARM_EXIDX;
          di->start_ip = (uintptr_t)arm_text_addr;
          di->end_ip = (uintptr_t)(arm_text_addr + arm_text_len);
@@ -10,11 +9,11 @@ index 95b562311b..69fceb0cfe 100644
          di->u.rti.name_ptr = 0;
          di->u.rti.table_data = arm_exidx_addr;
          di->u.rti.table_len = arm_exidx_len;
-@@ -1577,6 +1578,7 @@ void register_eh_frames(uint8_t *Addr, size_t Size)
+@@ -1579,6 +1580,7 @@
      di->u.rti.table_data = (unw_word_t)table;
      di->start_ip = start_ip;
      di->end_ip = end_ip;
 +    di->load_offset = 0;
  
-     jl_profile_atomic([&]() {
+     jl_profile_atomic([&]() JL_NOTSAFEPOINT {
          _U_dyn_register(di);

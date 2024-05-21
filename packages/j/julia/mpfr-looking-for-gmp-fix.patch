@@ -1,0 +1,25 @@
+diff -ruN julia-1.10.3.orig/deps/mpfr.mk julia-1.10.3/deps/mpfr.mk
+--- julia-1.10.3.orig/deps/mpfr.mk	2024-05-10 23:13:57.440776105 +0800
++++ julia-1.10.3/deps/mpfr.mk	2024-05-12 17:15:31.003123811 +0800
+@@ -1,19 +1,15 @@
+ ## MPFR ##
+ include $(SRCDIR)/mpfr.version
+ 
+-ifeq ($(USE_SYSTEM_GMP), 0)
+ $(BUILDDIR)/mpfr-$(MPFR_VER)/build-configured: | $(build_prefix)/manifest/gmp
+-endif
+ 
+ ifneq ($(USE_BINARYBUILDER_MPFR),1)
+ 
+ MPFR_CONFIGURE_OPTS := $(CONFIGURE_COMMON)
+ MPFR_CONFIGURE_OPTS += --enable-thread-safe --enable-shared-cache --disable-float128 --disable-decimal-float
+ MPFR_CONFIGURE_OPTS += --enable-shared --disable-static
+-
+-ifeq ($(USE_SYSTEM_GMP), 0)
+-MPFR_CONFIGURE_OPTS += --with-gmp=$(abspath $(build_prefix))
+-endif
++MPFR_CONFIGURE_OPTS += --with-gmp-lib=$(abspath $(build_prefix))/lib64
++MPFR_CONFIGURE_OPTS += --with-gmp-include=$(abspath $(build_prefix))/include
+ 
+ ifeq ($(SANITIZE),1)
+ # Force generic C build

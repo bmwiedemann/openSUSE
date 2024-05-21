@@ -39,4 +39,285 @@
 </comment>
     <requestid>1133936</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>df4a44e7f7c08b10b061d2934e8872d9</srcmd5>
+    <version>1.10.3</version>
+    <time>1716309366</time>
+    <user>anag+factory</user>
+    <comment>- libjulia-compat1_10 provides libjulia1_10. added rpmlint filter
+  to workaround rpmlint error on ldconfig_scriptlet
+- Update rpmlint.
+  * bad-cert.pem is a test file in LibGit2_jll.
+- Update specfile.
+  * cleanup symlinks. these files should just point starting from buildroot
+- The location of libgcc_s is different between leap and tumbleweed.
+- Prevent debug-info generation touching precompiled sysimages and caches which will
+  invalidate checksum generation
+- Update rpmlintrc to ignore some warnings
+- Fix dangling symlinks errors
+- Inconsistencies on where sbinaries are located in openSUSE Leap and Tumbleweed
+  has caused leap rpm generation to fail after all the builds done successfully.
+- Julia on leap has trouble looking for libgfortran5 so symlinking it to fix it
+- Format specfile
+- Fix specfile
+  * p7zip for tumbleweed
+  * p7zip-full for leap
+- More cleanup
+- Also include OPENBLAS_TARGET_ARCH=NEHALEM in %{__julia_opts} for system not tumbleweed
+- More specfile cleanup
+  * Move over some environmental variables into the %{__julia_opts} global rpm var
+  * Adjust to support if system is not Tumbleweed. openblas not building because libpthread troubles
+- Fix ./julia-libunwind-1.9.patch.
+- Cleanup specfile
+  * Use autosetup
+  * Remove patches that are not needed anymore
+    - llvm-link-shared.patch
+    - llvm-set-of-custom-patches.patch
+    - new-pass-manager.patch
+    - support-float16-depending-on-llvm-and-platform.patch
+    - use-newpm-asan.patch
+    - fix-dependencies-checksums.patch
+    - julia-suitesparse-7.patch
+    - use-system-libuv-correctly.patch
+    - julia-libgit2-1.7.patch
+- Update to version 1.10.3:
+  * Fix outdated usage of scrubbing for log test failures
+  * [REPL] Fix typo in using/import completion
+  * Avoid compiler warning about redefining jl_globalref_t
+  * yet more atomics &amp; cache-line fixes on work-stealing queue 
+  * build: remove extra .a file
+  * Bump CSL to 1.1.1 to fix libgomp bug
+  * codegen: change tbaa of ptr_phi to tbaa_value
+  * Default to the medium code model in x86 linux
+  * Remove some duplicates from emitted compilation traces for Julia 1.10
+  * Add version string to sysimg triple
+  * Add missing GC_POP() in emit_cfunction
+  * typeintersect: fix UnionAll unaliasing bug caused by innervars
+  * Apply backported changes
+    - GC typo fix
+    - Add inventory writing via DocumenterInventoryWritingBackport
+- Add mpfr-looking-for-gmp-fix.patch
+- Cleanup specfile
+- Limit to x86_64(-v3) architectures. aarch64 has libquadmath disabled
+- Tests are currently broken. Idk how upstream was able to have all their checks green despite
+  I using the some bundled dependencies. Other issues are because of hardcoded libraries in
+  the jll packages even though their versions are non-impactful to Julia.
+- Nghttp, Mbedtls, PCRE, LibGit2, LibSSH, gmp, mpfr, and DSFMT are now using the bundled dependencies.
+  * now added to the globally defined _privatelibs
+  * ./julia-hardcoded-libs.patch is now updated.
+  * the only dependencies that do not require much intervention is libblastrampoline and openlibm
+- Update to version 1.10.2:
+  * JuliaSyntax.jl is now used as the default parser, providing better diagnostics and faster
+    parsing. Set environment variable `JULIA_USE_FLISP_PARSER` to `1` to switch back to the old
+    parser if necessary (and if you find this necessary, please file an issue).
+  * `⥺` (U+297A, `\leftarrowsubset`) and `⥷` (U+2977, `\leftarrowless`) may now be used as
+    binary operators with arrow precedence.
+  * When a task forks a child, the parent task's task-local RNG (random number
+    generator) is no longer affected. The seeding of child based on the parent
+    task also takes a more disciplined approach to collision resistance, using
+    a design based on the SplitMix and DotMix splittable RNG schemes.
+  * A new more-specific rule for methods resolves ambiguities containing Union{} in favor of
+    the method defined explicitly to handle the Union{} argument. This makes it possible to
+    define methods to explicitly handle Union{} without the ambiguities that commonly would
+    result previously. This also lets the runtime optimize certain method lookups in a way
+    that significantly improves load and inference times for heavily overloaded methods that
+    dispatch on Types (such as traits and constructors).
+  * The &quot;h bar&quot; `ℏ` (`\hslash` U+210F) character is now treated as equivalent to `ħ` (`\hbar` U+0127).
+  * The `@simd` macro now has more limited and clearer semantics: it only enables reordering and contraction
+    of floating-point operations, instead of turning on all &quot;fastmath&quot; optimizations.
+    If you observe performance regressions due to this change, you can
+    recover previous behavior with `@fastmath @simd`, if you are OK with
+    all the optimizations enabled by the `@fastmath` macro.
+  * When a method with keyword arguments is displayed in the stack trace view, the textual
+    representation of the keyword arguments' type is simplified using the new
+    `@Kwargs{key1::Type1, ...}` macro syntax.
+  * The mark phase of the garbage collector is now multi-threaded.
+  * [JITLink](https://llvm.org/docs/JITLink.html) is enabled by default on
+    Linux aarch64 when Julia is linked to LLVM 15 or later versions.
+    This should resolve many segmentation faults previously observed on this
+    platform.
+  * The precompilation process now uses pidfile locks and orchestrates
+    multiple julia processes to only have one process
+    spend effort precompiling while the others wait. Previously all would
+    do the work and race to overwrite the cache files.
+  * New option `--gcthreads` to set how many threads will be used by the
+  garbage collector.
+    The default is `N/2` where `N` is the number of worker threads
+    (`--threads`) used by Julia.
+  * SparseArrays and SuiteSparse are no longer included in the default system
+    image, so the core language no longer contains GPL libraries. However,
+    these libraries are still included alongside the language in the standard
+    binary distribution.
+  * `tanpi` is now defined. It computes tan(π*x) more accurately than
+    `tan(pi*x)`.
+  * `fourthroot(x)` is now defined in `Base.Math` and can be used to compute
+    the fourth root of `x`.  It can also be accessed using the unicode
+    character `∜`, which can be typed by `\fourthroot&lt;tab&gt;`.
+  * `Libc.memmove`, `Libc.memset`, and `Libc.memcpy` are now defined, whose
+  functionality matches that of their respective C calls.
+  * `Base.isprecompiled(pkg::PkgId)` has been added, to identify whether a
+    package has already been precompiled.
+  * `binomial(x, k)` now supports non-integer `x`.
+  * A `CartesianIndex` is now treated as a &quot;scalar&quot; for broadcasting.
+  * `printstyled` now supports italic output.
+  * `parent` and `parentindices` support `SubString`s.
+  * `replace(string, pattern...)` now supports an optional `IO` argument to
+     write the output to a stream rather than returning a string.
+  * `startswith` now supports seekable `IO` streams.
+  * The `initialized=true` keyword assignment for `sortperm!` and
+    `partialsortperm!` is now a no-op. It previously exposed unsafe behavior.
+  * Printing integral `Rational`s will skip the denominator in `Rational`-typed
+    IO context (e.g. in arrays).
+  * `Pkg.precompile` now accepts `timing` as a keyword argument
+    which displays per package timing information for precompilation
+  (e.g. `Pkg.precompile(timing=true)`).
+  * `AbstractQ` no longer subtypes `AbstractMatrix`. Moreover,
+    `adjoint(Q::AbstractQ)` no longer wraps `Q` in an `Adjoint` type,
+    but instead in an `AdjointQ`, that itself subtypes `AbstractQ`. This
+    change accounts for the fact that typically `AbstractQ` instances
+    behave like function-based, matrix-backed linear operators, and
+    hence don't allow for efficient indexing. Also, many `AbstractQ`
+    types can act on vectors/matrices of different size, acting like a
+    matrix with context-dependent size. With this change, `AbstractQ`
+    has a well-defined API that is described in detail in the [Julia
+    documentation](https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/#man-linalg-abstractq).
+  * Adjoints and transposes of `Factorization` objects are no longer wrapped
+    in `Adjoint` and `Transpose` wrappers, respectively. Instead, they are
+    wrapped in `AdjointFactorization` and `TranposeFactorization` types,
+    which themselves subtype `Factorization`.
+  * New functions `hermitianpart` and `hermitianpart!` for extracting the
+    Hermitian (real symmetric) part of a matrix.
+  * The `norm` of the adjoint or transpose of an `AbstractMatrix` now returns
+    the norm of the parent matrix by default, matching the current behaviour
+    for `AbstractVector`s.
+  * `eigen(A, B)` and `eigvals(A, B)`, where one of `A` or `B` is symmetric
+    or Hermitian, are now fully supported.
+  * `eigvals/eigen(A, cholesky(B))` now computes the generalized eigenvalues
+    (`eigen`: and eigenvectors) of `A` and `B` via Cholesky decomposition
+    for positive definite `B`. Note: The second argument is the output of
+    `cholesky`.
+  * Format specifiers now support dynamic width and precision, e.g. `%*s`
+    and `%*.*g`.
+  * When stack traces are printed, the printed depth of types in function
+  signatures will be limited
+    to avoid overly verbose output.
+  * The `@test_broken` macro (or `@test` with `broken=true`) now complains
+    if the test expression returns a non-boolean value in the same way as
+    a non-broken test.
+  * When a call to `@test` fails or errors inside a function, a larger
+    stacktrace is now printed such that the location of the  test within a
+    `@testset` can be retrieved.
+  * `code_native` and `@code_native` now default to intel syntax instead
+    of AT&amp;T.
+  * `@time_imports` now shows the timing of any module `__init__()`s that
+    are run.
+  * The `@pure` macro is now deprecated. Use `Base.@assume_effects :foldable` instead ([#48682]).
+- Set Cmake version requirement to be at least 3.22
+- Accommodate renaming dependencies in specfile.
+- Disable jldownload by just running true
+- Add fix-dependencies-checksums.patch
+  * Fix checksum checks for suitesparse aarch64. Sources are fetched from the same source.
+  * Fix checksum checks for libLLVM_jll
+  * It's checking for the checksums and it is also trying to fetch them from the internet 
+    and idk what's the point of having the full julia tarball.
+- Fix build
+  * use bundled suitesparse. comment out system suitesparse build requirement
+  * comment out openblas development dependencies. use bundled openblas.
+  * comment out lapack development dependencies. use bundled lapack.
+  * move openblas build away from the actual make build.
+    this ensures that it's installed properly because doing otherwise will
+    skip the install of the dependencies. weird but it works.
+- Update specfile for bundled LLVM
+- Add missing build requirements for bundled llvm 15
+- Fix aarch64 build. it needs to download a source that can just be copied which is
+  SuiteSparse.v7.2.1+1.aarch64-linux-gnu.tar.gz
+- Use python3 instead of python. Python 2.x is EOL-ed. Addresses bsc#1219740
+- Set suitesparse requirement to 7.2.1 and libcholmod to 5.x.x
+- Add Obsoletes to obsolete older versions for julia and its subpackages.
+- Enable only tier 1 architectures
+- Add disable-doc-gen-in-makefile.patch
+- Add disable-download-of-unicode-for-doc-gen.patch
+- Add UnicodeData.txt
+- Add julia-remove-libcholmod_cuda.patch
+- Add julia.keyring
+- Add julia-1.10.0-full.tar.gz.asc
+- Update julia-hardcoded-libs.patch
+- Update specfile and enable v3 CPU optimizations on x86_64 architecture
+- Update to version 1.10.0:
+* New language features
+  - JuliaSyntax.jl is now used as the default parser, providing better diagnostics and faster
+    parsing. Set environment variable `JULIA_USE_FLISP_PARSER` to `1` to switch back to the old
+    parser if necessary (and if you find this necessary, please file an issue).
+  - `⥺` (U+297A, `\leftarrowsubset`) and `⥷` (U+2977, `\leftarrowless`) may now be used as
+  binary operators with arrow precedence.
+* Language changes
+  - When a task forks a child, the parent task's task-local RNG (random number generator) is no longer affected. The 
+    seeding of child based on the parent task also takes a more disciplined approach to collision resistance, using a 
+    design based on the SplitMix and DotMix splittable RNG schemes.
+  - A new more-specific rule for methods resolves ambiguities containing Union{} in favor of
+    the method defined explicitly to handle the Union{} argument. This makes it possible to
+    define methods to explicitly handle Union{} without the ambiguities that commonly would
+    result previously. This also lets the runtime optimize certain method lookups in a way
+    that significantly improves load and inference times for heavily overloaded methods that
+    dispatch on Types (such as traits and constructors).
+  - The &quot;h bar&quot; `ℏ` (`\hslash` U+210F) character is now treated as equivalent to `ħ` (`\hbar` U+0127).
+  - The `@simd` macro now has more limited and clearer semantics: it only enables reordering and contraction
+    of floating-point operations, instead of turning on all &quot;fastmath&quot; optimizations.
+    If you observe performance regressions due to this change, you can recover previous behavior 
+    with `@fastmath @simd`,
+    if you are OK with all the optimizations enabled by the `@fastmath` macro.
+  - When a method with keyword arguments is displayed in the stack trace view, the textual
+    representation of the keyword arguments' type is simplified using the new
+    `@Kwargs{key1::Type1, ...}` macro syntax.
+* Compiler/Runtime improvements
+  - The mark phase of the garbage collector is now multi-threaded.
+  - [JITLink](https://llvm.org/docs/JITLink.html) is enabled by default on Linux aarch64 when Julia 
+    is linked to LLVM 15 or later versions.
+    This should resolve many segmentation faults previously observed on this platform.
+  - The precompilation process now uses pidfile locks and orchestrates multiple julia processes to only have one proces
+    spend effort precompiling while the others wait. Previously all would do the work and race to overwrite the cache 
+    files.
+* Command-line option changes
+  - New option `--gcthreads` to set how many threads will be used by the garbage collector.
+    The default is `N/2` where `N` is the number of worker threads (`--threads`) used by Julia.
+* Build system changes
+  - SparseArrays and SuiteSparse are no longer included in the default system image, so the core
+    language no longer contains GPL libraries. However, these libraries are still included
+    alongside the language in the standard binary distribution
+* New library functions
+  - `tanpi` is now defined. It computes tan(π*x) more accurately than `tan(pi*x)`.
+  - `fourthroot(x)` is now defined in `Base.Math` and can be used to compute the fourth root of `x`.
+   It can also be accessed using the unicode character `∜`, which can be typed by `\fourthroot&lt;tab&gt;`.
+  - `Libc.memmove`, `Libc.memset`, and `Libc.memcpy` are now defined, whose functionality matches that of their respective C calls.
+  - `Base.isprecompiled(pkg::PkgId)` has been added, to identify whether a package has already been precompiled.
+* New library features
+  - `binomial(x, k)` now supports non-integer `x`.
+  - A `CartesianIndex` is now treated as a &quot;scalar&quot; for broadcasting.
+  - `printstyled` now supports italic output.
+  - `parent` and `parentindices` support `SubString`s.
+  - `replace(string, pattern...)` now supports an optional `IO` argument to
+     write the output to a stream rather than returning a string.
+  - `startswith` now supports seekable `IO` streams.
+* Standard library changes
+  - The `initialized=true` keyword assignment for `sortperm!` and `partialsortperm!`
+    is now a no-op. It previously exposed unsafe behavior.
+  - Printing integral `Rational`s will skip the denominator in `Rational`-typed IO context (e.g. in arrays).
+* Package Manager
+  - `Pkg.precompile` now accepts `timing` as a keyword argument which displays per package timing 
+    information for precompilation (e.g. `Pkg.precompile(timing=true)`).
+- Update specfile:
+  * symlink libLLVM-14jl.so to standard LD_LIBRARY_PATH
+  * new Recommends:
+    - libcurl-devel for new recommends
+    - openssh-clients for ssh operations
+    - curl for any curl operation
+- Combine these patches to julia-hardcoded-libs.patch and delete:
+  * libblastrampoline-hardcoded-libs.patch
+  * libgit2-libssh2-hardcoded-libs.patch
+  * mbedtls-hardcoded-libs.patch
+- Slight adjustment of specfile for updated patch
+- Requires mbedtls-devel, libgit2-devel and libssh2-devel for dlopen
+</comment>
+    <requestid>1175424</requestid>
+  </revision>
 </revisionlist>

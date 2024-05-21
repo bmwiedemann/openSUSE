@@ -1,0 +1,21 @@
+diff -ruN julia-1.10.0.orig/Makefile julia-1.10.0/Makefile
+--- julia-1.10.0.orig/Makefile	2023-12-27 12:31:21.449481396 +0800
++++ julia-1.10.0/Makefile	2023-12-28 13:12:34.633832260 +0800
+@@ -265,7 +265,7 @@
+ endef
+ 
+ 
+-install: $(build_depsbindir)/stringreplace docs
++install: $(build_depsbindir)/stringreplace $(BUILDROOT)/doc/_build/html/en/index.html
+ 	@$(MAKE) $(QUIET_MAKE) $(JULIA_BUILD_MODE)
+ 	@for subdir in $(bindir) $(datarootdir)/julia/stdlib/$(VERSDIR) $(docdir) $(man1dir) $(includedir)/julia $(libdir) $(private_libdir) $(sysconfdir) $(private_libexecdir); do \
+ 		mkdir -p $(DESTDIR)$$subdir; \
+@@ -525,7 +525,7 @@
+ darwinframework:
+ 	$(MAKE) -C $(JULIAHOME)/contrib/mac/framework
+ 
+-light-source-dist.tmp: docs
++light-source-dist.tmp: $(BUILDROOT)/doc/_build/html/en/index.html
+ ifneq ($(BUILDROOT),$(JULIAHOME))
+ 	$(error make light-source-dist does not work in out-of-tree builds)
+ endif

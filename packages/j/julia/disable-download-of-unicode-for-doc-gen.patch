@@ -1,0 +1,11 @@
+diff -ruN julia-1.10.0.orig/doc/Makefile julia-1.10.0/doc/Makefile
+--- julia-1.10.0.orig/doc/Makefile	2023-12-27 12:31:21.472814814 +0800
++++ julia-1.10.0/doc/Makefile	2023-12-28 12:02:09.068566373 +0800
+@@ -28,7 +28,6 @@
+ UNICODE_DATA_VERSION=13.0.0
+ $(SRCCACHE)/UnicodeData-$(UNICODE_DATA_VERSION).txt:
+ 	@mkdir -p "$(SRCCACHE)"
+-	$(JLDOWNLOAD) "$@" https://www.unicode.org/Public/$(UNICODE_DATA_VERSION)/ucd/UnicodeData.txt
+ 
+ deps: $(SRCCACHE)/UnicodeData-$(UNICODE_DATA_VERSION).txt
+ 	$(JLCHECKSUM) "$<"

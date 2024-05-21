@@ -10,3 +10,12 @@ addFilter("W: hidden-file-or-dir /usr/share/julia/stdlib/v1.9/Pkg/test/test_pack
 # it is dlopened
 addFilter("explicit-lib-dependency")
 addFilter("devel-dependency")
+# Update alternatives does provide the binary
+addFilter("W: desktopfile-without-binary /usr/share/applications/julia.desktop julia")
+# We should not touch these
+addFilter("W: hidden-file-or-dir /usr/share/julia/base/JuliaSyntax/.mailmap")
+addFilter("W: hidden-file-or-dir /usr/share/julia/stdlib/v1.10/Pkg/test/test_packages/AugmentedPlatform/.pkg")
+addFilter("W: hidden-file-or-dir /usr/share/julia/stdlib/v1.10/Pkg/test/test_packages/AugmentedPlatform/.pkg")
+# LibGit_jll test case
+addFilter("W: pem-certificate /usr/share/julia/stdlib/v1.10/LibGit2/test/bad_ca_roots.pem")
+addFilter("E: shlib-policy-name-error*")
