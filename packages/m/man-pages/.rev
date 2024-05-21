@@ -2083,4 +2083,41 @@
   % man-pages_gai.conf-reference.patch (refreshed)</comment>
     <requestid>1159803</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>a5bf112d196917bb39d4b0710f00abe8</srcmd5>
+    <version>6.8</version>
+    <time>1716309276</time>
+    <user>anag+factory</user>
+    <comment>- version update to 6.8
+  New and rewritten pages
+  -----------------------
+  man3type/
+          locale_t.3type
+          mbstate_t.3type
+          wchar_t.3type
+          wint_t.3type
+  Newly documented interfaces in existing pages
+  ---------------------------------------------
+  man2/
+          init_module.2
+                  MODULE_INIT_COMPRESS_FILE
+  
+          get_mempolicy.2
+          mbind.2
+          set_mempolicy.2
+                  MPOL_WEIGHTED_INTERLEAVE
+  
+          mount_setattr.2
+                  squashfs
+                  tmpfs
+                  cephfs
+                  hugetlbfs
+  man5/
+  man8/
+          proc.5
+                  subset
+  
+          elf.5</comment>
+    <requestid>1175310</requestid>
+  </revision>
 </revisionlist>
