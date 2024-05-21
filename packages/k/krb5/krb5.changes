@@ -33,7 +33,7 @@ Sat Jul 15 18:19:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.21.1 (CVE-2023-36054):
   * Fix potential uninitialized pointer free in kadm5 XDR parsing
-    [CVE-2023-36054].
+    [CVE-2023-36054]; (bsc#1214054).
   * Added a credential cache type providing compatibility with
     the macOS 11 native credential cache.
   * libkadm5 will use the provided krb5_context object to read
