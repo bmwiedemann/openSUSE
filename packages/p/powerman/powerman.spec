@@ -1,7 +1,7 @@
 #
 # spec file for package powerman
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,22 +31,23 @@
 %endif
 
 Name:           powerman
-Version:        2.3.27
+Version:        2.4.2
 Release:        0
 Summary:        Centralized Power Control for Clusters
 License:        GPL-2.0-or-later
 Group:          Productivity/Clustering/HA
 URL:            https://github.com/chaos/powerman
-Source0:        https://github.com/chaos/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
-Patch1:         service-dynamic-user-autofiles.patch
-Patch2:         service-dynamic-user-configure.patch
-Patch3:         harden_powerman.service.patch
-Patch4:         Replace-deprecated-usmHMACMD5AuthProtocol-Protocol-by-SNMP_DEFAULT_AUTH_PROTO.patch
+Source:         https://github.com/chaos/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Patch1:         harden_powerman.service.patch
+Patch2:         Replace-deprecated-usmHMACMD5AuthProtocol-Protocol-by-SNMP_DEFAULT_AUTH_PROTO.patch
 BuildRequires:  automake
+BuildRequires:  bison
 BuildRequires:  fdupes
+BuildRequires:  flex
 BuildRequires:  ncurses-devel
 BuildRequires:  pkg-config
 BuildRequires:  tcpd-devel
+BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(libcurl)
 %{?have_sysuser:BuildRequires:  sysuser-tools}
 %if 0%{?_with_snmppower}
@@ -82,6 +83,8 @@ Header files, pkg-config file and man pages for developing applications using Po
 
 %prep
 %autosetup -p1
+# git is used to set package version in AC_INIT. That fails so we manually set the version.
+sed -i "s;m4_esyscmd(\[git describe --always.*\]);\[%{version}\];" configure.ac
 
 %build
 %configure \
@@ -89,6 +92,7 @@ Header files, pkg-config file and man pages for developing applications using Po
 	--with-httppower \
 	--with-user=%{powerman_u} \
 	--with-group=%{powerman_g} \
+    --with-systemdsystemunitdir=%{_unitdir} \
 %{?_with_snmppower:--with-snmppower} \
 %{?_with_genders:--with-genders} \
 %{?_with_tcp_wrappers:--with-tcp-wrappers} \
@@ -132,7 +136,8 @@ systemd-tmpfiles --create %{_tmpfilesdir}/powerman.conf
 
 %files
 %defattr(-,root,root)
-%doc DISCLAIMER COPYING NEWS
+%doc DISCLAIMER NEWS.md
+%license COPYING
 %{_bindir}/*
 %{_mandir}/man?/*.*
 %exclude %{_mandir}/man3/*.*
@@ -140,6 +145,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/powerman.conf
 %config %{_sysconfdir}/powerman/
 %attr(0644,root,root) %{_unitdir}/%{name}.service
 %attr(0644,root,root) %{_tmpfilesdir}/powerman.conf
+%ghost %{_rundir}/powerman
 %{?have_sysuser:%{_sysusersdir}/system-user-%{name}.conf}
 
 %files devel

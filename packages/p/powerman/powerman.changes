@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May 14 19:04:31 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 2.4.2:
+  * New features
+    * redfishpower: cache host resolution lookups (#190)
+    * redfishpower: support new --resolve-hosts option (#188)
+    * redfishpower: support message timeout config (#186)
+  * Fixes
+    * redfishpower: increase default message timeout (#191)
+    * redfishpower: output more detailed error messages (#183)
+- Changelog for 2.4.1 and 2.4.0:
+  * Too many changes, see NEWS.md
+- Removed patches:
+  * service-dynamic-user-autofiles.patch
+  * service-dynamic-user-configure.patch
+- Refreshed patches:
+  * Replace-deprecated-usmHMACMD5AuthProtocol-Protocol-by-SNMP_DEFAULT_AUTH_PROTO.patch
+  * harden_powerman.service.patch
+
+-------------------------------------------------------------------
 Thu Feb 29 14:48:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

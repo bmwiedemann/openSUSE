@@ -8,13 +8,13 @@ References:
 Signed-off-by: Egbert Eich <eich@suse.com>
 Signed-off-by: Egbert Eich <eich@suse.de>
 ---
- snmppower/snmppower.c | 4 ++--
+ src/snmppower/snmppower.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
-diff --git a/snmppower/snmppower.c b/snmppower/snmppower.c
-index 652b806..eb30dc4 100644
---- a/snmppower/snmppower.c
-+++ b/snmppower/snmppower.c
-@@ -207,9 +207,9 @@ start_v3 (char **av, char *hostname, struct snmp_session **ssp)
+Index: b/src/snmppower/snmppower.c
+===================================================================
+--- a/src/snmppower/snmppower.c
++++ b/src/snmppower/snmppower.c
+@@ -192,9 +192,9 @@ start_v3 (char **av, char *hostname, str
      session.securityNameLen = strlen (av[1]);
  
      session.securityLevel = SNMP_SEC_LEVEL_AUTHNOPRIV;

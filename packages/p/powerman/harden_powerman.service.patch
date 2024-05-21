@@ -1,10 +1,10 @@
-Index: powerman-2.3.26/scripts/powerman.service.in
+Index: b/etc/powerman.service.in
 ===================================================================
---- powerman-2.3.26.orig/scripts/powerman.service.in
-+++ powerman-2.3.26/scripts/powerman.service.in
+--- a/etc/powerman.service.in
++++ b/etc/powerman.service.in
 @@ -5,6 +5,17 @@ After=syslog.target network.target
  [Service]
- Type=forking
+ Environment=SHELL=/bin/sh
  PrivateTmp=yes
 +# added automatically, for details please see
 +# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
@@ -19,4 +19,4 @@ Index: powerman-2.3.26/scripts/powerman.service.in
 +# end of automatic additions 
  User=@RUN_AS_USER@
  Group=@RUN_AS_GROUP@
- ExecStart=/usr/sbin/powermand
+ ExecStart=@X_SBINDIR@/powermand
