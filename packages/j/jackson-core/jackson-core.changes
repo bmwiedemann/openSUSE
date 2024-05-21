@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon May 20 12:29:23 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Update to 2.17.1
+  * #1241: Fix `NumberInput.looksLikeValidNumber()` implementation
+    (contributed by @pjfanning)
+  * #1256: Revert #1117: change default recycler pool back to
+    `threadLocalPool()` for 2.17.1
+- Includes changes from 2.17.0
+  * #507: Add `JsonWriteFeature.ESCAPE_FORWARD_SLASHES` to allow
+    escaping of '/' for String values (contributed by Joo-Hyuk K)
+  * #1117: Change default `RecylerPool` implementation to
+    `newLockFreePool` (from `threadLocalPool`)
+  * #1137: Improve detection of "is a NaN" to only consider
+    explicit cases, not `double` overflow/underflow
+  * #1145: `JsonPointer.appendProperty(String)` does not escape the
+    property name (reported by Robert E)
+  * #1149: Add `JsonParser.getNumberTypeFP()`
+  * #1157: Use fast parser (FDP) for large `BigDecimal`s (500+
+    chars) (contributed by @pjfanning)
+  * #1169: `ArrayIndexOutOfBoundsException` for specific invalid
+    content, with Reader-based parser
+  * #1173: `JsonLocation` consistently off by one character for
+    many invalid JSON parsing cases (reported by Paul B)
+  * #1179: Allow configuring `DefaultPrettyPrinter` separators for
+    empty Arrays and Objects (contributed by Guillaume L)
+  * #1186: `BufferRecycler` should avoid setting replacement if one
+    already returned, bigger (suggested by @kkkkkhhhh)
+  * #1195: Use `BufferRecycler` provided by output (`OutputStream`,
+    `Writer`) object if available (contributed by Mario F)
+  * #1202: Add `RecyclerPool.clear()` method for dropping all
+    pooled Objects
+  * #1203: Faster division by 1000 (contributed by @xtonik)
+  * #1205:
+    JsonFactory.setStreamReadConstraints(StreamReadConstraints)
+    fails to update "maxNameLength" for symbol tables (reported by
+    @denizk)
+  * #1217: Optimize char comparison using bitwise OR (contributed
+    by @xtonik)
+  * #1218: Simplify Unicode surrogate pair conversion for
+    generation (contributed by @xtonik)
+
+-------------------------------------------------------------------
 Fri Mar  8 08:33:47 UTC 2024 - Gus Kenion <gkenion@suse.com>
 
 - Update to 2.16.1

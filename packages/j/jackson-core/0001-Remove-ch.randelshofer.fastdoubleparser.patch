@@ -15,8 +15,6 @@ it out. We can add it back in if we wish to package it later.
  delete mode 100644 src/main/java/com/fasterxml/jackson/core/io/BigIntegerParser.java
  delete mode 100644 src/test/java/com/fasterxml/jackson/core/io/BigIntegerParserTest.java
 
-diff --git a/src/main/java/com/fasterxml/jackson/core/io/BigDecimalParser.java b/src/main/java/com/fasterxml/jackson/core/io/BigDecimalParser.java
-index 0e42d163..e350d3c3 100644
 --- a/src/main/java/com/fasterxml/jackson/core/io/BigDecimalParser.java
 +++ b/src/main/java/com/fasterxml/jackson/core/io/BigDecimalParser.java
 @@ -1,7 +1,5 @@
@@ -25,40 +23,64 @@ index 0e42d163..e350d3c3 100644
 -import ch.randelshofer.fastdoubleparser.JavaBigDecimalParser;
 -
  import java.math.BigDecimal;
- import java.util.Arrays;
  
-@@ -62,28 +60,6 @@ public final class BigDecimalParser
+ /**
+@@ -55,10 +53,7 @@ public final class BigDecimalParser
+      */
+     public static BigDecimal parse(final char[] chars, final int off, final int len) {
+         try {
+-            if (len < 500) {
+-                return new BigDecimal(chars, off, len);
+-            }
+-            return JavaBigDecimalParser.parseBigDecimal(chars, off, len);
++		return new BigDecimal(chars, off, len);
+ 
+         // 20-Aug-2022, tatu: Although "new BigDecimal(...)" only throws NumberFormatException
+         //    operations by "parseBigDecimal()" can throw "ArithmeticException", so handle both:
+@@ -82,43 +77,6 @@ public final class BigDecimalParser
          return parse(chars, 0, chars.length);
      }
  
+-    /**
+-     * Internal Jackson method. Please do not use.
+-     *<p>
+-     * Note: Caller MUST pre-validate that given String represents a valid representation
+-     * of {@link BigDecimal} value: parsers in {@code jackson-core} do that; other
+-     * code must do the same.
+-     *
+-     * @param valueStr
+-     * @return BigDecimal value
+-     * @throws NumberFormatException
+-     */
 -    public static BigDecimal parseWithFastParser(final String valueStr) {
 -        try {
 -            return JavaBigDecimalParser.parseBigDecimal(valueStr);
--        } catch (NumberFormatException nfe) {
--            final String reportNum = valueStr.length() <= MAX_CHARS_TO_REPORT ?
--                    valueStr : valueStr.substring(0, MAX_CHARS_TO_REPORT) + " [truncated]";
--            throw new NumberFormatException("Value \"" + reportNum
--                    + "\" can not be represented as `java.math.BigDecimal`, reason: " + nfe.getMessage());
+-        } catch (ArithmeticException | NumberFormatException e) {
+-            throw _parseFailure(e, valueStr);
 -        }
 -    }
 -
+-    /**
+-     * Internal Jackson method. Please do not use.
+-     *<p>
+-     * Note: Caller MUST pre-validate that given String represents a valid representation
+-     * of {@link BigDecimal} value: parsers in {@code jackson-core} do that; other
+-     * code must do the same.
+-     *
+-     * @return BigDecimal value
+-     * @throws NumberFormatException
+-     */
 -    public static BigDecimal parseWithFastParser(final char[] ch, final int off, final int len) {
 -        try {
 -            return JavaBigDecimalParser.parseBigDecimal(ch, off, len);
--        } catch (NumberFormatException nfe) {
--            final String reportNum = len <= MAX_CHARS_TO_REPORT ?
--                    new String(ch, off, len) : new String(ch, off, MAX_CHARS_TO_REPORT) + " [truncated]";
--            throw new NumberFormatException("Value \"" + reportNum
--                    + "\" can not be represented as `java.math.BigDecimal`, reason: " + nfe.getMessage());
+-        } catch (ArithmeticException | NumberFormatException e) {
+-            throw _parseFailure(e, new String(ch, off, len));
 -        }
 -    }
 -
-     private static BigDecimal parseBigDecimal(final char[] chars, final int off, final int len, final int splitLen) {
-         boolean numHasSign = false;
-         boolean expHasSign = false;
-diff --git a/src/main/java/com/fasterxml/jackson/core/io/BigIntegerParser.java b/src/main/java/com/fasterxml/jackson/core/io/BigIntegerParser.java
-deleted file mode 100644
-index 777c3f45..00000000
+     private static NumberFormatException _parseFailure(Exception e, String fullValue) {
+         String desc = e.getMessage();
+         // 05-Feb-2021, tatu: Alas, JDK mostly has null message so:
 --- a/src/main/java/com/fasterxml/jackson/core/io/BigIntegerParser.java
 +++ /dev/null
 @@ -1,41 +0,0 @@
@@ -103,8 +125,6 @@ index 777c3f45..00000000
 -        }
 -    }
 -}
-diff --git a/src/main/java/com/fasterxml/jackson/core/io/NumberInput.java b/src/main/java/com/fasterxml/jackson/core/io/NumberInput.java
-index e216f48a..f8f0f2c6 100644
 --- a/src/main/java/com/fasterxml/jackson/core/io/NumberInput.java
 +++ b/src/main/java/com/fasterxml/jackson/core/io/NumberInput.java
 @@ -1,8 +1,5 @@
@@ -115,8 +135,8 @@ index e216f48a..f8f0f2c6 100644
 -
  import java.math.BigDecimal;
  import java.math.BigInteger;
- 
-@@ -385,7 +382,7 @@ public final class NumberInput
+ import java.util.regex.Pattern;
+@@ -397,7 +394,7 @@ public final class NumberInput
       * @since v2.14
       */
      public static double parseDouble(final String s, final boolean useFastParser) throws NumberFormatException {
@@ -125,38 +145,37 @@ index e216f48a..f8f0f2c6 100644
      }
  
      /**
-@@ -407,7 +404,7 @@ public final class NumberInput
+@@ -422,9 +419,6 @@ public final class NumberInput
       * @since v2.14
       */
      public static float parseFloat(final String s, final boolean useFastParser) throws NumberFormatException {
--        return useFastParser ? JavaFloatParser.parseFloat(s) : Float.parseFloat(s);
-+        return Float.parseFloat(s);
+-        if (useFastParser) {
+-            return JavaFloatParser.parseFloat(s);
+-        }
+         return Float.parseFloat(s);
      }
  
-     /**
-@@ -427,9 +424,7 @@ public final class NumberInput
+@@ -448,9 +442,6 @@ public final class NumberInput
       * @since v2.15
       */
      public static BigDecimal parseBigDecimal(final String s, final boolean useFastParser) throws NumberFormatException {
--        return useFastParser ?
--                BigDecimalParser.parseWithFastParser(s) :
--                BigDecimalParser.parse(s);
-+        return BigDecimalParser.parse(s);
+-        if (useFastParser) {
+-            return BigDecimalParser.parseWithFastParser(s);
+-        }
+         return BigDecimalParser.parse(s);
      }
  
-     /**
-@@ -455,9 +450,7 @@ public final class NumberInput
-     public static BigDecimal parseBigDecimal(final char[] ch, final int off, final int len,
+@@ -481,9 +472,6 @@ public final class NumberInput
                                               final boolean useFastParser)
-             throws NumberFormatException {
--        return useFastParser ?
--                BigDecimalParser.parseWithFastParser(ch, off, len) :
--                BigDecimalParser.parse(ch, off, len);
-+        return BigDecimalParser.parse(ch, off, len);
+             throws NumberFormatException
+     {
+-        if (useFastParser) {
+-            return BigDecimalParser.parseWithFastParser(ch, off, len);
+-        }
+         return BigDecimalParser.parse(ch, off, len);
      }
  
-     /**
-@@ -477,9 +470,7 @@ public final class NumberInput
+@@ -507,9 +495,7 @@ public final class NumberInput
       * @since v2.15
       */
      public static BigDecimal parseBigDecimal(final char[] ch, final boolean useFastParser) throws NumberFormatException {
@@ -167,78 +186,76 @@ index e216f48a..f8f0f2c6 100644
      }
  
      /**
-@@ -500,11 +491,7 @@ public final class NumberInput
+@@ -533,9 +519,6 @@ public final class NumberInput
       * @since v2.15
       */
      public static BigInteger parseBigInteger(final String s, final boolean useFastParser) throws NumberFormatException {
 -        if (useFastParser) {
 -            return BigIntegerParser.parseWithFastParser(s);
--        } else {
--            return parseBigInteger(s);
 -        }
-+        return parseBigInteger(s);
+         return new BigInteger(s);
      }
  
-     /**
-@@ -517,10 +504,6 @@ public final class NumberInput
+@@ -549,9 +532,6 @@ public final class NumberInput
       */
      public static BigInteger parseBigIntegerWithRadix(final String s, final int radix,
-                                                       final boolean useFastParser) throws NumberFormatException {
+             final boolean useFastParser) throws NumberFormatException {
 -        if (useFastParser) {
 -            return BigIntegerParser.parseWithFastParser(s, radix);
--        } else {
--            return new BigInteger(s, radix);
 -        }
-+        return new BigInteger(s, radix);
+         return new BigInteger(s, radix);
      }
- }
-diff --git a/src/test/java/com/fasterxml/jackson/core/io/BigDecimalParserTest.java b/src/test/java/com/fasterxml/jackson/core/io/BigDecimalParserTest.java
-index a4e41cd3..436d74cd 100644
+ 
 --- a/src/test/java/com/fasterxml/jackson/core/io/BigDecimalParserTest.java
 +++ b/src/test/java/com/fasterxml/jackson/core/io/BigDecimalParserTest.java
-@@ -2,26 +2,17 @@ package com.fasterxml.jackson.core.io;
- 
- public class BigDecimalParserTest extends com.fasterxml.jackson.core.BaseTest {
-     public void testLongStringParse() {
--        try {
--            BigDecimalParser.parse(genLongString());
--            fail("expected NumberFormatException");
--        } catch (NumberFormatException nfe) {
--            assertTrue("exception message starts as expected?", nfe.getMessage().startsWith("Value \"AAAAA"));
--            assertTrue("exception message value contains truncated", nfe.getMessage().contains("truncated"));
+@@ -10,19 +10,13 @@ class BigDecimalParserTest extends com.f
+ {
+     @Test
+     void longInvalidStringParse() {
 +        final int len = 1500;
 +        final StringBuilder sb = new StringBuilder(len);
 +        for (int i = 0; i < len; i++) {
 +            sb.append("A");
-         }
++	}
+         try {
+-            BigDecimalParser.parse(genLongInvalidString());
+-            fail("expected NumberFormatException");
+-        } catch (NumberFormatException nfe) {
+-            assertTrue(nfe.getMessage().startsWith("Value \"AAAAA"), "exception message starts as expected?");
+-            assertTrue(nfe.getMessage().contains("truncated"), "exception message value contains truncated");
+-        }
 -    }
 -
--    public void testLongStringFastParse() {
-         try {
--            BigDecimalParser.parseWithFastParser(genLongString());
+-    @Test
+-    void longInvalidStringFastParse() {
+-        try {
+-            BigDecimalParser.parseWithFastParser(genLongInvalidString());
 +            BigDecimalParser.parse(sb.toString());
              fail("expected NumberFormatException");
          } catch (NumberFormatException nfe) {
-             assertTrue("exception message starts as expected?", nfe.getMessage().startsWith("Value \"AAAAA"));
-             assertTrue("exception message value contains truncated", nfe.getMessage().contains("truncated"));
-         }
+             assertTrue(nfe.getMessage().startsWith("Value \"AAAAA"), "exception message starts as expected?");
+@@ -69,4 +63,7 @@ class BigDecimalParserTest extends com.f
+         sb.append('1');
+         return sb.toString();
      }
--
--    private String genLongString() {
--        return BigIntegerParserTest.genLongString();
--    }
++    private String genLongString() {
++        return BigIntegerParserTest.genLongString();
++    }
  }
-diff --git a/src/test/java/com/fasterxml/jackson/core/io/BigIntegerParserTest.java b/src/test/java/com/fasterxml/jackson/core/io/BigIntegerParserTest.java
-deleted file mode 100644
-index 7b8265d7..00000000
 --- a/src/test/java/com/fasterxml/jackson/core/io/BigIntegerParserTest.java
 +++ /dev/null
-@@ -1,46 +0,0 @@
+@@ -1,54 +0,0 @@
 -package com.fasterxml.jackson.core.io;
 -
--public class BigIntegerParserTest extends com.fasterxml.jackson.core.BaseTest {
+-import org.junit.jupiter.api.Test;
 -
--    public void testFastParseBigIntegerFailsWithENotation() {
+-import static org.junit.jupiter.api.Assertions.assertTrue;
+-import static org.junit.jupiter.api.Assertions.fail;
+-
+-class BigIntegerParserTest extends com.fasterxml.jackson.core.JUnit5TestBase {
+-
+-    @Test
+-    void fastParseBigIntegerFailsWithENotation() {
 -        String num = "2e308";
 -        try {
 -            BigIntegerParser.parseWithFastParser(num);
@@ -248,26 +265,28 @@ index 7b8265d7..00000000
 -        }
 -    }
 -
--    public void testLongStringFastParseBigInteger() {
+-    @Test
+-    void longStringFastParseBigInteger() {
 -        try {
 -            BigIntegerParser.parseWithFastParser(genLongString());
 -            fail("expected NumberFormatException");
 -        } catch (NumberFormatException nfe) {
--            assertTrue("exception message starts as expected?", nfe.getMessage().startsWith("Value \"AAAAA"));
--            assertTrue("exception message value contains: truncated", nfe.getMessage().contains("truncated"));
--            assertTrue("exception message value contains: BigInteger", nfe.getMessage().contains("BigInteger"));
+-            assertTrue(nfe.getMessage().startsWith("Value \"AAAAA"), "exception message starts as expected?");
+-            assertTrue(nfe.getMessage().contains("truncated"), "exception message value contains: truncated");
+-            assertTrue(nfe.getMessage().contains("BigInteger"), "exception message value contains: BigInteger");
 -        }
 -    }
 -
--    public void testLongStringFastParseBigIntegerRadix() {
+-    @Test
+-    void longStringFastParseBigIntegerRadix() {
 -        try {
 -            BigIntegerParser.parseWithFastParser(genLongString(), 8);
 -            fail("expected NumberFormatException");
 -        } catch (NumberFormatException nfe) {
--            assertTrue("exception message starts as expected?", nfe.getMessage().startsWith("Value \"AAAAA"));
--            assertTrue("exception message value contains: truncated", nfe.getMessage().contains("truncated"));
--            assertTrue("exception message value contains: radix 8", nfe.getMessage().contains("radix 8"));
--            assertTrue("exception message value contains: BigInteger", nfe.getMessage().contains("BigInteger"));
+-            assertTrue(nfe.getMessage().startsWith("Value \"AAAAA"), "exception message starts as expected?");
+-            assertTrue(nfe.getMessage().contains("truncated"), "exception message value contains: truncated");
+-            assertTrue(nfe.getMessage().contains("radix 8"), "exception message value contains: radix 8");
+-            assertTrue(nfe.getMessage().contains("BigInteger"), "exception message value contains: BigInteger");
 -        }
 -    }
 -
@@ -280,6 +299,3 @@ index 7b8265d7..00000000
 -        return sb.toString();
 -    }
 -}
--- 
-2.40.1
-
