@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat May 11 02:17:16 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 1.2.0
+  * Implement the Software fallback when Hardware down
+  * Improve Software fallback's performance
+  * Fix file permission change after decompression
+  * Add more instance capability check
+  * Limit LZ4s format to only support compression direction.
+  * QATzip API update
+  * Rename test app to qatzip-test and add it into package
+  * Update Document and Manual
+  * Fix Coverity issues
+  * Fix bugs 
+
+-------------------------------------------------------------------
 Thu Oct 19 07:58:04 UTC 2023 - ming li <mli@suse.com>
 
 - update to 1.1.2:
