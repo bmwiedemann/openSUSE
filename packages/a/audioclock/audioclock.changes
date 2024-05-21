@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Mon May 20 05:03:23 UTC 2024 - bwiedemann@suse.com
+
+- Update to version 1.3.1:
+  * Modernize spec file
+  * Consider local timezone
+  * Drop test code
+
+-------------------------------------------------------------------
+Tue Nov 14 08:43:14 UTC 2023 - bwiedemann@suse.de
+
+- Update to version 1.2:
+  * Handle signals
+
+-------------------------------------------------------------------
+Wed Jun 15 21:03:14 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- upgrade to 1.1 with cleaner audio samples
+
+-------------------------------------------------------------------
+Wed Jun 15 19:54:47 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Initial package version 1.0

@@ -1,0 +1,24 @@
+<services>
+ <service name="obs_scm" mode="manual">
+   <param name="url">https://github.com/bmwiedemann/audioclock</param>
+   <param name="filename">audioclock</param>
+   <param name="match-tag">v*</param>
+   <param name="versionformat">@PARENT_TAG@</param>
+   <param name="versionrewrite-pattern">v(.*)(-[0-9]*)?</param>
+   <param name="versionrewrite-replacement">\1</param>
+   <param name="scm">git</param>
+   <param name="changesgenerate">enable</param>
+   <param name="latest-signed-tag">true</param>
+   <param name="maintainers-asc">_maintainers.asc</param>
+ </service>
+ <service name="extract_file" mode="manual">
+   <param name="archive">*audioclock-*.obscpio</param>
+   <param name="files">audioclock-*/audioclock.spec</param>
+ </service>
+ <service name="set_version" mode="buildtime"/>
+ <service name="tar" mode="buildtime"/>
+ <service name="recompress" mode="buildtime">
+   <param name="compression">gz</param>
+   <param name="file">*.tar</param>
+ </service>
+</services>
