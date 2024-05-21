@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon May 20 12:09:23 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Upgrade to 2.17.1
+  * #646: Deserializing fails when using builder classes with
+    `Iterable` Collection setters (fix contributed by Bas P)
+  * Upgrade Woodstox to 6.6.2 (dependency fixes)
+- Includes changes from 2.17.0
+* #324: Support use of `xsi:type` for polymorphic serialization
+  (`ToXmlGenerator.Feature.AUTO_DETECT_XSI_TYPE`) (requested by
+  @philipzhaoTS)
+* #618: `ArrayIndexOutOfBoundsException` thrown for invalid ending
+  XML string when using JDK default Stax XML parser (reported by
+  Arthur C)
+* #631: Add `XmlMapper.createGenerator(XMLStreamWriter)` and
+  `XmlMapper.createParser(XMLStreamReader)` overloads
+* #634: Support use of xsi:type for polymorphic deserialization
+  (FromXmlParser.Feature.AUTO_DETECT_XSI_TYPE)
+* #637: `JacksonXmlAnnotationIntrospector.findNamespace()` should
+  properly merge namespace information
+* #643: XML serialization of floating-point infinity is
+  incompatible with JAXB and XML Schema (contributed by Alex H)
+* Upgrade Woodstox to 6.6.1 (latest at the time)
+
+-------------------------------------------------------------------
 Fri Mar  8 08:33:47 UTC 2024 - Gus Kenion <gkenion@suse.com>
 
 - Upgrade to 2.16.1
