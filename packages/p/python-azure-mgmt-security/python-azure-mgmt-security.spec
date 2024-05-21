@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-security
-Version:        6.0.0
+Version:        7.0.0
 Release:        0
 Summary:        Microsoft Azure Security Center Management Client Library
 License:        MIT

@@ -147,4 +147,15 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164876 from glaubitz)</comment>
     <requestid>1165270</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>af9d55a814a3f31ae10751d08d7629fa</srcmd5>
+    <version>7.0.0</version>
+    <time>1716309433</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 7.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1175469 from glaubitz)</comment>
+    <requestid>1175531</requestid>
+  </revision>
 </revisionlist>
