@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May 21 06:06:01 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.0:
+  Major changes:
+  * Accept - as stdin in any argument position
+  Breaking changes:
+  * Change order of nvimpager's and user supplied options
+  Changes:
+  * Deactivate some tests for neovim v0.10
+  * Improve documentation in lua code, make it ldoc compatible
+  * Add darwin packages to flake
+  * Use neovim overlay flake instead of neovim flake for nightly neovim
+  * Add tests with nvim's internal assert functions
+  * Fix detection of empty buffers (neovim/neovim#25369)
+  * Refactor process detection (neovim/neovim#23122)
+
+-------------------------------------------------------------------
 Wed May 10 06:43:39 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.12.0:

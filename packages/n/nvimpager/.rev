@@ -49,4 +49,24 @@
   * Add helper function to better detect man pages</comment>
     <requestid>1085983</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0f940c111abee358ddd5399a1ee8c923</srcmd5>
+    <version>0.13.0</version>
+    <time>1716309394</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.13.0:
+  Major changes:
+  * Accept - as stdin in any argument position
+  Breaking changes:
+  * Change order of nvimpager's and user supplied options
+  Changes:
+  * Deactivate some tests for neovim v0.10
+  * Improve documentation in lua code, make it ldoc compatible
+  * Add darwin packages to flake
+  * Use neovim overlay flake instead of neovim flake for nightly neovim
+  * Add tests with nvim's internal assert functions
+  * Fix detection of empty buffers (neovim/neovim#25369)
+  * Refactor process detection (neovim/neovim#23122)</comment>
+    <requestid>1175435</requestid>
+  </revision>
 </revisionlist>
