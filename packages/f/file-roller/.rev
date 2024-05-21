@@ -1299,4 +1299,14 @@ Fixed macro (as commented) (forwarded request 885296 from susnux)</comment>
   + Updated translations. (forwarded request 1173681 from dimstar)</comment>
     <requestid>1173978</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>13c2f46be0fc216331d606ab16c35574</srcmd5>
+    <version>44.3</version>
+    <time>1716309216</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 44.3:
+  + Fixed filename not changed when creating a new archive.
+  + 7z: error when creating archives with volumes. (forwarded request 1175527 from dimstar)</comment>
+    <requestid>1175529</requestid>
+  </revision>
 </revisionlist>

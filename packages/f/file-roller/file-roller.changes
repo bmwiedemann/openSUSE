@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 21 11:02:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 44.3:
+  + Fixed filename not changed when creating a new archive.
+  + 7z: error when creating archives with volumes.
+
+-------------------------------------------------------------------
 Mon May 13 13:56:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 44.2:
