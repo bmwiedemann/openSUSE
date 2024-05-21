@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.1.3
+Version:        0.1.2
 Release:        0
 Summary:        Parser and renderer for djot light markup syntax
 License:        MIT
@@ -39,6 +39,8 @@ BuildRequires:  ghc-doclayout-prof
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-template-haskell-devel
+BuildRequires:  ghc-template-haskell-prof
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
 ExcludeArch:    %{ix86}
