@@ -98,8 +98,6 @@
     <package name="yast2-wagon-control-SLE"/>
     <package name="dbench-ctcs2-glue"/>
     <package name="antlr-bootstrap"/>
-    <package name="gettext-runtime-mini"/>
-    <package name="gettext-tools-mini"/>
 
     <!-- Block Java bootstrap packages - boo#1019090 -->
     <package name="java-cup-bootstrap"/>

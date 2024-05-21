@@ -2604,7 +2604,6 @@ unsorted:
   - crash-eppic 
   - crash-gcore 
   - crash-kmp-default 
-  - crash-kmp-longterm 
   - crash-trace 
   - crawl 
   - crawl-data 
@@ -3353,7 +3352,6 @@ unsorted:
   - dpdk-doc 
   - dpdk-examples 
   - dpdk-kmp-default 
-  - dpdk-kmp-longterm 
   - dpdk-tools 
   - dpic 
   - dpic-doc 
@@ -8206,6 +8204,7 @@ unsorted:
   - haproxy 
   - hardening-check 
   - hardinfo 
+  - hardinfo2 
   - hare 
   - harec 
   - harfbuzz-devel 
@@ -9910,6 +9909,7 @@ unsorted:
   - killbots 
   - killbots-lang 
   - killerd 
+  - killport 
   - kim-api 
   - kim-api-devel 
   - kim-api-examples 
@@ -16267,7 +16267,7 @@ unsorted:
   - libtinygettext0 
   - libtinyobjloader2 
   - libtinyxml0 
-  - libtinyxml2-9 
+  - libtinyxml2-10 
   - libtirpc-devel 
   - libtirpc3-32bit 
   - libtls29 
@@ -19473,6 +19473,7 @@ unsorted:
   - nimbus-icon-theme 
   - nini 
   - ninja 
+  - ninja-test 
   - nintendo-gamecube-wiimote-udev-rules 
   - ninvaders 
   - niri 
@@ -19608,8 +19609,6 @@ unsorted:
   - nut-drivers-net 
   - nvdock 
   - nvidia-open-driver-G06-signed-default-devel 
-  - nvidia-open-driver-G06-signed-kmp-longterm 
-  - nvidia-open-driver-G06-signed-longterm-devel 
   - nvidia-texture-tools 
   - nvimpager 
   - nvimpager-zsh-completion 
@@ -20750,7 +20749,6 @@ unsorted:
   - pcb-doc 
   - pcfclock 
   - pcfclock-kmp-default 
-  - pcfclock-kmp-longterm 
   - pciutils-devel 
   - pciutils-devel-32bit 
   - pcm 
@@ -37009,6 +37007,7 @@ unsorted:
   - telegraf 
   - telegram-desktop 
   - telegram-theme-adapta 
+  - telemetrygen 
   - telepathy-farstream-devel 
   - telepathy-glib-devel 
   - telepathy-glib-doc 
@@ -37032,6 +37031,7 @@ unsorted:
   - template-glib-lang 
   - template-resolver 
   - template-resolver-javadoc 
+  - tempo-cli 
   - tenmon 
   - tennebon-dynamic-wallpaper 
   - tensorflow-lite 
@@ -37236,6 +37236,11 @@ unsorted:
   - testng-javadoc 
   - testrec0 
   - testssl.sh 
+  - tetragon 
+  - tetragon-cli 
+  - tetragon-cli-bash-completion 
+  - tetragon-cli-fish-completion 
+  - tetragon-cli-zsh-completion 
   - tetrinet-server 
   - tevent-man 
   - texamator 
@@ -48021,7 +48026,6 @@ unsorted:
   - xom-demo 
   - xom-javadoc 
   - xone-kmp-default 
-  - xone-kmp-longterm 
   - xonotic 
   - xonotic-data 
   - xonotic-server 
@@ -48051,7 +48055,6 @@ unsorted:
   - xournalpp 
   - xournalpp-lang 
   - xpadneo-kmp-default 
-  - xpadneo-kmp-longterm 
   - xpadneo-ueficert 
   - xpenguins 
   - xpinguin 
@@ -48133,7 +48136,6 @@ unsorted:
   - xsynth-dssi 
   - xtables-addons 
   - xtables-addons-kmp-default 
-  - xtables-addons-kmp-longterm 
   - xtables-geoip 
   - xteddy 
   - xtensor-devel 
