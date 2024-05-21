@@ -1,6 +1,6 @@
 name:                setlocale
 version:             1.0.0.10
-x-revision: 4
+x-revision: 5
 synopsis:            Haskell bindings to setlocale
 -- description:
 license:             BSD3
@@ -19,7 +19,7 @@ library
   exposed-modules:     System.Locale.SetLocale
   -- other-modules:
   other-extensions:    DeriveDataTypeable, ForeignFunctionInterface
-  build-depends:       base >=4.6 && <4.20
+  build-depends:       base >=4.6 && <4.21
   -- hs-source-dirs:
   build-tools:         hsc2hs
   default-language:    Haskell2010
