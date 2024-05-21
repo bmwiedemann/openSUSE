@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 13 13:13:13 UTC 2024 - ohering@suse.de
+
+- Use caml_copy_string API
+  2f4079f9d0beb60568cf4f4e024c6fda5581f995.patch
+
+-------------------------------------------------------------------
 Tue Jan 16 16:16:16 UTC 2024 - ohering@suse.de
 
 - Remove usage of dune.configurator because ocamlfind names which

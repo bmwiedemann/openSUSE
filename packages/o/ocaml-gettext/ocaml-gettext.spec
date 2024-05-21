@@ -37,6 +37,7 @@ License:        SUSE-LGPL-2.0-with-linking-exception
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/gettext
 Source0:        %pkg-%version.tar.xz
+Patch0:         2f4079f9d0beb60568cf4f4e024c6fda5581f995.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
 BuildRequires:  ocaml-rpm-macros >= 20231101
