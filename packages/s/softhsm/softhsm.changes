@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 21 07:24:23 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Use correct SOURCE for
+  /usr/share/p11-kit/modules/softhsm.module (fix bsc#1224356).
+
+-------------------------------------------------------------------
 Sat May 11 16:00:16 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - We actually don't need any hard Requires for OpenSSL at all

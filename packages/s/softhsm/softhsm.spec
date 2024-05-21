@@ -51,11 +51,11 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cppunit-devel
 BuildRequires:  gcc-c++
+BuildRequires:  libopenssl-3-devel
 BuildRequires:  libtool
 BuildRequires:  make
 BuildRequires:  mozilla-nss-devel
 BuildRequires:  mozilla-nss-tools
-BuildRequires:  libopenssl-3-devel
 # Because of directory ownership
 BuildRequires:  p11-kit
 BuildRequires:  p11-kit-devel
@@ -113,7 +113,7 @@ env -i PATH=%{_prefix}/sbin:%{_prefix}/bin:/sbin:/bin gcc $(pkg-config --libs ns
 
 %install
 %make_install
-install -D %{SOURCE1} %{buildroot}/%{_datadir}/p11-kit/modules/softhsm.module
+install -D %{SOURCE5} %{buildroot}/%{_datadir}/p11-kit/modules/softhsm.module
 
 rm %{buildroot}/%{_sysconfdir}/softhsm2.conf.sample
 rm -f %{buildroot}/%{_libdir}/pkcs11/*a
@@ -158,6 +158,7 @@ if [ $1 -eq 0 ]; then
    modutil -delete %{softhsm_module} -dbdir %{nssdb} -force || :
 fi
 
+%clean
 
 %files
 %config(noreplace) %{_sysconfdir}/softhsm2.conf
@@ -175,14 +176,16 @@ fi
 %{_datadir}/p11-kit/modules/softhsm2.module
 %attr(0750,ods,ods) %dir %{_sharedstatedir}/softhsm
 %attr(1770,ods,ods) %dir %{_sharedstatedir}/softhsm/tokens
-%{_mandir}/man1/softhsm2*
-%{_mandir}/man5/softhsm2*
+%{_mandir}/man1/softhsm2-dump-file.1%{?ext_man}
+%{_mandir}/man1/softhsm2-keyconv.1%{?ext_man}
+%{_mandir}/man1/softhsm2-migrate.1%{?ext_man}
+%{_mandir}/man1/softhsm2-util.1%{?ext_man}
+%{_mandir}/man5/softhsm2.conf.5%{?ext_man}
 %{_sysusersdir}/ods-user.conf
 
 %files devel
 %attr(0755,root,root) %dir %{_includedir}/softhsm
 %{_includedir}/softhsm/*.h
 %{_libdir}/libsofthsm2.so
-
 
 %changelog

@@ -7,4 +7,14 @@
     <comment>yet another attempt</comment>
     <requestid>1173434</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ec4e29471b361b1d945733d07628d565</srcmd5>
+    <version>2.6.1</version>
+    <time>1716309407</time>
+    <user>anag+factory</user>
+    <comment>- Use correct SOURCE for
+  /usr/share/p11-kit/modules/softhsm.module (fix bsc#1224356).
+</comment>
+    <requestid>1175453</requestid>
+  </revision>
 </revisionlist>
