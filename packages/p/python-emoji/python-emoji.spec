@@ -17,9 +17,9 @@
 #
 
 
-%{?sle15allpythons}
+%{?sle15_python_module_pythons}
 Name:           python-emoji
-Version:        2.11.1
+Version:        2.12.0
 Release:        0
 Summary:        Emoji for Python
 License:        BSD-3-Clause
@@ -29,9 +29,11 @@ Source:         https://files.pythonhosted.org/packages/source/e/emoji/emoji-%{v
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-typing_extensions
 BuildArch:      noarch
 %python_subpackages
 

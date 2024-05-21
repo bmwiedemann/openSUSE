@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 20 08:35:37 UTC 2024 - Matthias Bach <marix@marix.org> - 2.12.0
+
+- Update to 2.12.0
+  * Move type annotations inline
+  * Use functools.lru_cache for looking up emoji by name with
+    get_emoji_by_name()
+  * Move internal functions get_emoji_unicode_dict(),
+    get_aliases_unicode_dict(), _EMOJI_UNICODE and _ALIASES_UNICODE
+    to testutils
+  * Drop support for Python 3.6
+- Added new dependency on python-typing_extensions
+
+-------------------------------------------------------------------
 Mon Apr 22 18:45:12 UTC 2024 - Matthias Bach <marix@marix.org> - 2.11.1
 
 - update to 2.11.1
