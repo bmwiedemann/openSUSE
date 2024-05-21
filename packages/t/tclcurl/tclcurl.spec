@@ -1,7 +1,7 @@
 #
 # spec file for package tclcurl
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,11 +23,11 @@ Release:        0
 Summary:        Tcl Binding to libcurl
 License:        TCL
 Group:          Development/Languages/Tcl
-Url:            http://personal.telefonica.terra.es/web/getleft/tclcurl/index.html
-Source:         http://personal.telefonica.terra.es/web/getleft/tclcurl/download/tarball/TclCurl-%{version}.tar.gz
+URL:            https://github.com/flightaware/tclcurl-fa
+Source:         https://github.com/flightaware/tclcurl-fa/archive/refs/tags/v%{version}.tar.gz#/%{name}-fa-%{version}.tar.gz
 Patch0:         tclcurl-types.patch
 BuildRequires:  bc
-BuildRequires:  libcurl-devel >= 7.21.7
+BuildRequires:  libcurl-devel >= 7.54.0
 BuildRequires:  tcl-devel
 Requires:       tcl
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -36,8 +36,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 TclCurl provides TCL bindings to the libcurl client-side URL transfer library.
 
 %prep
-%setup -q -n TclCurl-%{version}
-%patch0
+%autosetup -p0 -n %{name}-fa-%{version}
 
 chmod 644 *.txt doc/*.txt doc/*.html
 
@@ -56,7 +55,7 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%doc ChangeLog.txt Changes.txt ReadMe.txt html/
+%doc ChangeLog.txt Changes.txt README.md
 %{tcl_archdir}/TclCurl%{version}
 %doc %{_mandir}/mann/*.n*
 

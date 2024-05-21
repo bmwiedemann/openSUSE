@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 17 09:05:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop stale source file TclCurl-7.22.0.tar.gz: the package was
+  change to the -fa- flavor in Feb 2024.
+
+-------------------------------------------------------------------
+Mon Feb 26 11:36:42 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
+Tue Feb 22 12:30:00 UTC 2024 - ray2501@gmail.com
+
+- change to FlightAware maintain version
+
+-------------------------------------------------------------------
 Tue Jun 21 10:01:55 UTC 2016 - max@suse.com
 
 - bsc#907545, tclcurl-types.patch: Fix segfaults in the multi
