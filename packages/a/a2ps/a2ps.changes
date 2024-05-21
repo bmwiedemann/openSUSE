@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 21 08:06:52 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Updated to 4.15.6 (boo#1224770)
+* Noteworthy changes in release 4.15.6 (2024-03-13) [stable]
+ * Bug fixes:
+   - Fix a2ps-lpr-wrapper to work with no arguments, as a2ps requires.
+   - Minor fixes & improvements to sheets.map for image types and PDF.
+ * Build system:
+   - Minor fixes and improvements.
+- Port patches
+  * a2ps-4.14.diff
+  * a2ps-buildcompare.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 09:53:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

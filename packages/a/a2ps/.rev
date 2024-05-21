@@ -444,4 +444,21 @@
     <comment></comment>
     <requestid>1148657</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>b0a99da585945138d90a1a18907f70de</srcmd5>
+    <version>4.15.6</version>
+    <time>1716309408</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 4.15.6 (boo#1224770)
+* Noteworthy changes in release 4.15.6 (2024-03-13) [stable]
+ * Bug fixes:
+   - Fix a2ps-lpr-wrapper to work with no arguments, as a2ps requires.
+   - Minor fixes &amp; improvements to sheets.map for image types and PDF.
+ * Build system:
+   - Minor fixes and improvements.
+- Port patches
+  * a2ps-4.14.diff
+  * a2ps-buildcompare.patch</comment>
+    <requestid>1175467</requestid>
+  </revision>
 </revisionlist>

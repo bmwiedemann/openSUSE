@@ -356,7 +356,7 @@
      ac_psfont_path="$ac_psfont_path:$ac_dir";
 --- configure
 +++ configure	2023-03-10 14:05:47.170620611 +0000
-@@ -38619,8 +38619,9 @@ printf %s "checking for PostScript fonts
+@@ -38989,8 +38989,9 @@ printf %s "checking for PostScript fonts
  # Try to find some PostScript fonts.
  # Find out if ghostscript is installed
  ac_psfont_path=
@@ -370,7 +370,7 @@
      ac_psfont_path="$ac_psfont_path:$ac_dir";
 --- doc/Makefile.in
 +++ doc/Makefile.in	2023-03-10 14:07:12.217071920 +0000
-@@ -991,7 +991,7 @@ INCLUDE_NEXT = @INCLUDE_NEXT@
+@@ -998,7 +998,7 @@ INCLUDE_NEXT = @INCLUDE_NEXT@
  INCLUDE_NEXT_AS_FIRST_DIRECTIVE = @INCLUDE_NEXT_AS_FIRST_DIRECTIVE@
  INSTALL = @INSTALL@
  INSTALL_DATA = @INSTALL_DATA@
@@ -394,7 +394,7 @@
  # Other encodings
 --- etc/Makefile.in
 +++ etc/Makefile.in	2023-03-10 14:09:35.798457473 +0000
-@@ -1615,7 +1615,7 @@ uninstall-local:
+@@ -1653,7 +1653,7 @@ uninstall-local:
  
  # Building the correct a2ps.cfg
  a2ps.cfg: a2ps_cfg Makefile
@@ -503,7 +503,7 @@
  
  #define MAN_LINES               66	/* no lines for a man */
  extern char *program_name;
-@@ -517,6 +519,16 @@ a2ps_handle_options (a2ps_job * job, int
+@@ -515,6 +517,16 @@ a2ps_handle_options (a2ps_job * job, int
  	break;
  
        case 'M':                 		/* select a medium */
@@ -520,7 +520,7 @@
  	xstrcpy (job->medium_request, optarg);
  	break;
  
-@@ -619,6 +631,14 @@ a2ps_handle_options (a2ps_job * job, int
+@@ -617,6 +629,14 @@ a2ps_handle_options (a2ps_job * job, int
  	break;
  
        case 'X': 			/* change the encoding scheme */
@@ -786,7 +786,7 @@
  C -1 ; WX 500 ; N ocircumflex ; B 27 -11 468 661 ;
  C -1 ; WX 444 ; N yacute ; B -24 -206 459 664 ;
 --- src/main.c
-+++ src/main.c	2023-09-18 05:16:52.891551389 +0000
++++ src/main.c	2023-03-10 14:28:23.305923037 +0000
 @@ -25,6 +25,7 @@
  #include <config.h>
  
@@ -795,7 +795,7 @@
  #include <locale.h>
  
  #include "a2ps.h"
-@@ -917,6 +918,7 @@
+@@ -917,6 +918,7 @@ int
  main (int argc, char *argv[])
  {
    int argn;
@@ -803,7 +803,7 @@
  
    /* Name under which this program was called. */
    program_name = base_name (argv[0]);
-@@ -926,7 +928,15 @@
+@@ -926,7 +927,15 @@ main (int argc, char *argv[])
    setlocale (LC_TIME, "");
    setlocale (LC_MESSAGES, "");
    setlocale (LC_CTYPE, "");

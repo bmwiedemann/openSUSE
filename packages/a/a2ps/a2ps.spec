@@ -17,7 +17,7 @@
 
 
 Name:           a2ps
-Version:        4.15.5
+Version:        4.15.6
 Release:        0
 Summary:        Tool to convert ASCII/Latin Text into PostScript
 License:        GPL-3.0-or-later
@@ -59,7 +59,7 @@ Requires:       sed
 Requires:       w3m
 Requires:       wdiff
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 Suggests:       ImageMagick
 Suggests:       acroread
 Suggests:       gv
@@ -104,7 +104,7 @@ Latin encodings are supported.
 %lang_package
 
 %prep
-%setup -q -n a2ps-4.15.5
+%setup -q -n a2ps-%{version}
 touch -r configure.ac .ref
 %patch -P 2  -p1
 %patch -P 3  -p1
