@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May 11 06:48:59 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.8.9.
+  texmath (0.12.8.9)
+
+    * Parse TeX `\mathbf` as both bold and upright (#236).
+
+-------------------------------------------------------------------
 Sun Apr  7 05:56:55 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update texmath to version 0.12.8.8.
