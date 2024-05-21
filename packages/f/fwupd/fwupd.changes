@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue May 21 07:51:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.9.20:
+  + This release adds the following features:
+    - Add some API to allow uploading reports for use in
+      gnome-firmware
+    - Allow the user to upload the entire devicelist to the LVFS
+  + This release fixes the following bugs:
+    - Correctly detect Synaptics Cayenne and Spyder firmware
+    - Do not offer the UEFI DBX update on Lenovo ideacentre
+      300-20ISH
+    - Explicitly enable shadow stack support in fwupd.service
+    - Fix a potential buffer overread when reading the algoltek-usb
+      version number
+    - Fix the CET HSI test by rewriting it in assembly
+    - Fix using --verbose in fwupdmgr
+    - Ignore --p2p when downloading the metadata signature
+  + This release adds support for the following hardware:
+    - FPC FF2 fingerprint devices
+
+-------------------------------------------------------------------
 Tue May  7 10:48:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.9.19:
