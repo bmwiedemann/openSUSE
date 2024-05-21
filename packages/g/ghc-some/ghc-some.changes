@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 13 18:42:11 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update some to version 1.0.6 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Fri May  3 13:55:17 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Forgot to update copyright header in spec file after last change.
