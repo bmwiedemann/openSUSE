@@ -16,9 +16,12 @@
 #
 
 
+%define kf6_version 6.0.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           kdiff3
-Version:        1.10.7
+Version:        1.11.1
 Release:        0
 Summary:        Code Comparison Utility
 License:        GPL-2.0-or-later
@@ -28,30 +31,24 @@ Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.x
 Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        kdiff3.keyring
 %endif
-# PATCH-FIX-OPENSUSE
-Patch0:         Fix-linking-with-boost-1.75.0.patch
-%if 0%{?suse_version} <= 1500
-BuildRequires:  libboost_headers1_75_0-devel
-%else
 BuildRequires:  boost-devel >= 1.71
-%endif
-BuildRequires:  extra-cmake-modules
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Parts)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 
 %description
 KDiff3 is a program that:
@@ -68,37 +65,32 @@ KDiff3 is a program that:
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build -- -DBUILD_autotests=FALSE
-%cmake_build
+%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
+
 %suse_update_desktop_file -r org.kde.kdiff3 Qt KDE Utility TextEditor X-KDE-Utilities-File
 
-%find_lang %{name} %{name}.lang --with-man
-%find_lang diff_ext %{name}.lang
-%find_lang kdiff3fileitemactionplugin %{name}.lang
-%{kf5_find_htmldocs}
+%find_lang %{name} --all-name --with-man --with-html
 
 %fdupes %{buildroot}
 
 %files
 %license LICENSES/*
-%doc %lang(en) %{_kf5_htmldir}/en/kdiff3
-%doc %lang(en) %{_kf5_mandir}/man1/kdiff3.1%{?ext_man}
-%dir %{_kf5_plugindir}/kf5/kfileitemaction
-%dir %{_kf5_plugindir}/kf5/parts
-%{_kf5_applicationsdir}/org.kde.kdiff3.desktop
-%{_kf5_appstreamdir}/org.kde.kdiff3.appdata.xml
-%{_kf5_bindir}/kdiff3
-%{_kf5_iconsdir}/hicolor/*/apps/kdiff3.png
-%{_kf5_iconsdir}/hicolor/scalable/apps/kdiff3.svgz
-%{_kf5_kxmlguidir}/kdiff3/
-%{_kf5_kxmlguidir}/kdiff3part/
-%{_kf5_plugindir}/kf5/kfileitemaction/kdiff3fileitemaction.so
-%{_kf5_plugindir}/kf5/parts/kdiff3part.so
-%{_kf5_servicesdir}/kdiff3part.desktop
+%doc %lang(en) %{_kf6_htmldir}/en/kdiff3/
+%doc %lang(en) %{_kf6_mandir}/man1/kdiff3.1%{?ext_man}
+%{_kf6_applicationsdir}/org.kde.kdiff3.desktop
+%{_kf6_appstreamdir}/org.kde.kdiff3.appdata.xml
+%{_kf6_bindir}/kdiff3
+%{_kf6_iconsdir}/hicolor/*/apps/kdiff3.png
+%{_kf6_iconsdir}/hicolor/scalable/apps/kdiff3.svgz
+%dir %{_kf6_plugindir}/kf6/kfileitemaction
+%{_kf6_plugindir}/kf6/kfileitemaction/kdiff3fileitemaction.so
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/kdiff3
 
 %changelog

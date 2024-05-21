@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 21 07:39:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.11.1.
+  * kparts is no longer needed
+  * Don't set invalid first line if line < visableLines
+  * Actually wait for event loop to exit in
+    ProgressDialog::enterEventLoop
+  * Don't kill KJob on hide
+  * Cleanup resize code
+  * Limit new line computation to 0
+  * Fix broken getBestFirstLine calcucation
+- Drop obsolete patch:
+  * Fix-linking-with-boost-1.75.0.patch
+
+-------------------------------------------------------------------
 Thu Jan 25 08:35:20 UTC 2024 - Wolfgang Bauer <wbauer1@a1.net>
 
 - Update to 1.10.7
