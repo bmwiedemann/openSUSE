@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 21 10:58:11 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to v1.14.15
+  * Changes of v1.14.15
+    + Allow attaching from root on J9.
+  * Changes of v1.14.14
+    + Adjust type validation to accept additional names that are
+      legal in the class file format.
+    + Fix dynamic attach on Windows when a service user is active.
+    + Avoid failure when using Android's strict mode.
+- Removed patch:
+  * 0002-Remove-dependencies.patch
+    + not needed since we have jna packaged
+
+-------------------------------------------------------------------
 Thu Apr 18 11:25:23 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Split the whole package into sub-packages

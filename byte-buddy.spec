@@ -17,7 +17,7 @@
 
 
 Name:           byte-buddy
-Version:        1.14.13
+Version:        1.14.15
 Release:        0
 Summary:        Runtime code generation for the Java virtual machine
 License:        Apache-2.0
@@ -25,12 +25,13 @@ Group:          Development/Libraries/Java
 URL:            https://bytebuddy.net/
 Source0:        https://github.com/raphw/%{name}/archive/refs/tags/%{name}-%{version}.tar.gz
 Patch0:         0001-Avoid-bundling-asm.patch
-Patch1:         0002-Remove-dependencies.patch
 BuildRequires:  fdupes
 BuildRequires:  jurand
 BuildRequires:  maven-local
 BuildRequires:  mvn(codes.rafael.modulemaker:modulemaker-maven-plugin)
 BuildRequires:  mvn(com.google.code.findbugs:jsr305)
+BuildRequires:  mvn(net.java.dev.jna:jna)
+BuildRequires:  mvn(net.java.dev.jna:jna-platform)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
@@ -53,14 +54,14 @@ Furthermore, Byte Buddy offers a convenient API for changing classes either
 manually, using a Java agent or during a build.
 
 %package agent
-Summary: Byte Buddy Java agent
+Summary:        Byte Buddy Java agent
 Group:          Development/Libraries/Java
 
 %description agent
 The Byte Buddy Java agent allows to access the JVM's HotSwap feature.
 
 %package maven-plugin
-Summary: Byte Buddy Maven plugin
+Summary:        Byte Buddy Maven plugin
 Group:          Development/Libraries/Java
 
 %description maven-plugin
@@ -76,7 +77,6 @@ API documentation for %{name}.
 %prep
 %setup -q -n %{name}-%{name}-%{version}
 %patch -P 0 -p1
-%patch -P 1 -p1
 
 # Don't ship android or benchmark modules
 %pom_disable_module byte-buddy-android
@@ -109,8 +109,6 @@ API documentation for %{name}.
 %pom_remove_dep org.ow2.asm:asm-deprecated
 
 %pom_remove_plugin -r :maven-shade-plugin
-%pom_remove_dep -r net.java.dev.jna:jna
-%pom_remove_dep -r net.java.dev.jna:jna-platform
 
 %{mvn_package} :byte-buddy-parent __noinstall
 
