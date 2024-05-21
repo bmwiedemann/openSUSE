@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 13 15:26:19 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Mark python3-CherryPy as recommended package for the testsuite
+
+-------------------------------------------------------------------
+Tue May  7 15:55:56 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Make "man" a recommended package instead of required
+
+-------------------------------------------------------------------
 Tue Mar 26 08:44:29 UTC 2024 - Marek Czernek <marek.czernek@suse.com>
 
 - Convert oscap output to UTF-8
