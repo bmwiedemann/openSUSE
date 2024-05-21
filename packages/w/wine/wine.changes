@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 21 08:35:40 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 9.9 release
+  - Support for new Wow64 mode in ODBC.
+  - Improved CPU detection on ARM platforms.
+  - Removal of a number of obsolete features in WineD3D.
+  - Various bug fixes.
+- update staging to 9.9 release
+
+-------------------------------------------------------------------
 Sat May  4 08:43:01 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 9.8 release

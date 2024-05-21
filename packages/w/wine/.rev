@@ -5157,4 +5157,17 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 9.8 release</comment>
     <requestid>1171903</requestid>
   </revision>
+  <revision rev="439" vrev="1">
+    <srcmd5>5b86a1712e27954f7c4bfb1c7f48e377</srcmd5>
+    <version>9.9</version>
+    <time>1716309411</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 9.9 release
+  - Support for new Wow64 mode in ODBC.
+  - Improved CPU detection on ARM platforms.
+  - Removal of a number of obsolete features in WineD3D.
+  - Various bug fixes.
+- update staging to 9.9 release</comment>
+    <requestid>1175482</requestid>
+  </revision>
 </revisionlist>
