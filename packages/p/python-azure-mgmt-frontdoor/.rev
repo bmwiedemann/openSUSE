@@ -93,4 +93,19 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164793 from glaubitz)</comment>
     <requestid>1165189</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>aadcdc36445559b7a0000f58237cd7d6</srcmd5>
+    <version>1.2.0</version>
+    <time>1716309316</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1174857 from glaubitz)</comment>
+    <requestid>1175325</requestid>
+  </revision>
 </revisionlist>
