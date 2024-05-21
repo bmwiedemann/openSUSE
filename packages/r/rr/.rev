@@ -91,4 +91,19 @@
     <comment></comment>
     <requestid>1157166</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>23ea4407b4cfeb4e8eca280ad25065d7</srcmd5>
+    <version>5.8.0</version>
+    <time>1716309373</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.8.0:
+  * This release contains many small bug fixes and updates for new
+    syscalls and CPU microarchitectures.
+  * There is some support for lldb now. rr replay -d lldb will
+    launch LLDB and connect it to rr just like we do for gdb.
+    LLDB does not expose reverse-execution commands so for now,
+    you can only replay forwards. (Of course you can still replay a
+    recording as many times as you need to.)</comment>
+    <requestid>1175434</requestid>
+  </revision>
 </revisionlist>

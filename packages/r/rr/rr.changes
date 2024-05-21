@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 21 05:59:29 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.8.0:
+  * This release contains many small bug fixes and updates for new
+    syscalls and CPU microarchitectures.
+  * There is some support for lldb now. rr replay -d lldb will
+    launch LLDB and connect it to rr just like we do for gdb.
+    LLDB does not expose reverse-execution commands so for now,
+    you can only replay forwards. (Of course you can still replay a
+    recording as many times as you need to.)
+
+-------------------------------------------------------------------
 Tue Mar 12 10:42:41 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

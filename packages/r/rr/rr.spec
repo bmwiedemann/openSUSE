@@ -17,7 +17,7 @@
 
 
 Name:           rr
-Version:        5.7.0
+Version:        5.8.0
 Release:        0
 Summary:        Records nondeterministic executions and debugs them deterministically
 License:        MIT
