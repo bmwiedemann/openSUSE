@@ -1,7 +1,7 @@
 cabal-version:      3.0
 name:               toml-parser
 version:            2.0.0.0
-x-revision: 1
+x-revision: 2
 synopsis:           TOML 1.0.0 parser
 description:
     TOML parser using generated lexers and parsers with
@@ -72,7 +72,7 @@ library
         Toml.Syntax.ParserUtils
     build-depends:
         array           ^>= 0.5,
-        base            ^>= {4.14, 4.15, 4.16, 4.17, 4.18, 4.19},
+        base            ^>= {4.14, 4.15, 4.16, 4.17, 4.18, 4.19, 4.20},
         containers      ^>= {0.5, 0.6, 0.7},
         prettyprinter   ^>= 1.7,
         text            >= 0.2 && < 3,
