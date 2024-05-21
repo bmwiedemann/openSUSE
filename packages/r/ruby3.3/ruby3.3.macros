@@ -6,7 +6,7 @@
 #
 # IMPORTANT IMPORTANT IMPORTANT IMPORTANT  IMPORTANT IMPORTANT
 #
-%rubygemsruby33() rubygem(ruby:3.3.0+0:%{expand:%%rubygemsx%*} %{expand:%%{rubygems%*}}
+%rubygemsruby33() rubygem(ruby:3.3.0:%{expand:%%rubygemsx%*} %{expand:%%{rubygems%*}}
 %rubygemsxruby33() %{expand:%%{rubygemsx%*}}
 
 %rubyruby33() ruby3.3 %{expand:%%rubyx%*} %{expand:%%{ruby%*}}

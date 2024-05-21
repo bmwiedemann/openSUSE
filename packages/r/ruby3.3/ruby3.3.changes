@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun May 19 09:51:02 UTC 2024 - José Gómez <jose.gomez@suse.com>
+
+- Backport for fix segfault caused by stack pointers not
+  saved/restored properly when yielding execution from Ruby to C.
+
+  https://bugs.ruby-lang.org/issues/20493
+  https://github.com/ruby/ruby/pull/10798
+
+  Adds fix-gvl-save-restore.patch
+
+-------------------------------------------------------------------
+Thu May 16 10:02:02 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- fix typo in the macros file. this only affected people building
+  without the OBS as this macro was shadowed by the macro that is
+  in the prjconf
+
+-------------------------------------------------------------------
 Tue Apr 23 16:24:04 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.3.1 (boo#1221851 boo#1221852 boo#1223314)

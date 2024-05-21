@@ -22,4 +22,20 @@
 - Add additionnal flags: cflags, cppflags and ASFLAGS</comment>
     <requestid>1169904</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>edb69ef37d5a3e826b6be77a4344519d</srcmd5>
+    <version>3.3.1</version>
+    <time>1716309270</time>
+    <user>anag+factory</user>
+    <comment>- Backport for fix segfault caused by stack pointers not
+  saved/restored properly when yielding execution from Ruby to C.
+  https://bugs.ruby-lang.org/issues/20493
+  https://github.com/ruby/ruby/pull/10798
+  Adds fix-gvl-save-restore.patch
+
+- fix typo in the macros file. this only affected people building
+  without the OBS as this macro was shadowed by the macro that is
+  in the prjconf</comment>
+    <requestid>1175260</requestid>
+  </revision>
 </revisionlist>
