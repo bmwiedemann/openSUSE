@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 12 22:17:03 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update type-equality to version 1.0.1.
+  ## 1.0.1
+
+    * Support GHC-8.6.5..GHC-9.10.1
+
+-------------------------------------------------------------------
 Tue Oct 10 15:27:07 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update type-equality to version 1 revision 6.
