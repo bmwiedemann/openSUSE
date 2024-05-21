@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 20 20:45:06 UTC 2024 - chris@computersalat.de
+
+- Update update_chroot.systemd
+  * Add missing checks for DKIM (openDKIM)
+- keep spec and changes files in sync
+
+-------------------------------------------------------------------
 Fri May 17 11:42:53 UTC 2024 - Peter Varkoly <varkoly@suse.com>
 
 - config.postfix needs updating (bsc#1224207)
@@ -6,6 +13,11 @@ Fri May 17 11:42:53 UTC 2024 - Peter Varkoly <varkoly@suse.com>
   * Link Cyrus lmtp only if this exsists
   * /usr/lib64/sasl2 does not need to exist
   * Fetch timezone via readlink from /etc/localtime
+
+-------------------------------------------------------------------
+Fri Apr  5 01:44:30 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Move qshape(1) out of -doc, install it as a binary with the main package
 
 -------------------------------------------------------------------
 Thu Mar  7 18:42:30 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
@@ -138,7 +150,7 @@ Tue Mar  5 16:46:16 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
     single delivery agent crash. The scheduler now throttles
     deliveries to one destination, and allows other deliveries to
     keep making progress.
-- change to functioning mirror (http://cdn.postfix.johnriley.me/ 
+- change to functioning mirror (http://cdn.postfix.johnriley.me/
   has been dead for a while although it is still listed upstream)
 - make output of %setup less verbose by restoring -q option
 

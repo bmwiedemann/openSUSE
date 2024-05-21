@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 20 20:45:06 UTC 2024 - chris@computersalat.de
+
+- Update update_chroot.systemd
+  * Add missing checks for DKIM (openDKIM)
+- keep spec and changes files in sync
+
+-------------------------------------------------------------------
 Fri May 17 11:42:53 UTC 2024 - Peter Varkoly <varkoly@suse.com>
 
 - config.postfix needs updating (bsc#1224207)

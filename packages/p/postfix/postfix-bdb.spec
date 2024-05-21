@@ -128,14 +128,14 @@ Requires(pre):  shadow
 %endif
 # /usr/lib/postfix/bin//post-install: line 667: ed: command not found
 Requires(pre):  ed
-Requires(preun):ed
+Requires(preun): ed
 Requires(post): ed
-Requires(postun):ed
+Requires(postun): ed
 # /usr/sbin/config.postfix needs perl
 Requires(pre):  perl
-Requires(preun):perl
+Requires(preun): perl
 Requires(post): perl
-Requires(postun):perl
+Requires(postun): perl
 
 %description
 Postfix aims to be an alternative to the widely-used sendmail program with bdb support
@@ -342,6 +342,9 @@ cp -a examples/* %{buildroot}%{pf_sample_directory}
 cp -a html/*     %{buildroot}%{pf_html_directory}
 cp -a auxiliary %{buildroot}%{pf_docdir}
 rm %{buildroot}%{pf_docdir}/README_FILES/INSTALL
+rm -r %{buildroot}%{pf_docdir}/auxiliary/qshape
+install -p auxiliary/qshape/qshape.pl %{buildroot}%{_sbindir}/qshape
+mantools/srctoman - auxiliary/qshape/qshape.pl > %{buildroot}%{_mandir}/man1/qshape.1
 # Fix build for Leap 42.3.
 rm -f %{buildroot}%{_sysconfdir}/postfix/*.orig
 mkdir -p %{buildroot}%{_unitdir}
@@ -506,6 +509,7 @@ fi
 %attr(0755,root,root) %{_sbindir}/postmap
 %attr(0755,root,root) %{_sbindir}/postmulti
 %attr(0755,root,root) %{_sbindir}/postsuper
+%attr(0755,root,root) %{_sbindir}/qshape
 %attr(0755,root,root) %{_sbindir}/qmqp-source
 %attr(0755,root,root) %{_sbindir}/smtp-sink
 %attr(0755,root,root) %{_sbindir}/smtp-source

@@ -2317,4 +2317,12 @@ successfully tested on Tumbleweed x86_64</comment>
   * Fetch timezone via readlink from /etc/localtime</comment>
     <requestid>1174920</requestid>
   </revision>
+  <revision rev="240" vrev="3">
+    <srcmd5>3fe9e125b5b1501ef98ca1df9591078f</srcmd5>
+    <version>3.9.0</version>
+    <time>1716309192</time>
+    <user>anag+factory</user>
+    <comment>Update update_chroot.systemd (forwarded request 1175397 from computersalat)</comment>
+    <requestid>1175398</requestid>
+  </revision>
 </revisionlist>

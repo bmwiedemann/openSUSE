@@ -110,14 +110,14 @@ BuildRequires:  libnsl-devel
 %endif
 # /usr/lib/postfix/bin//post-install: line 667: ed: command not found
 Requires(pre):  /usr/bin/ed
-Requires(preun):/usr/bin/ed
+Requires(preun): /usr/bin/ed
 Requires(post): /usr/bin/ed
-Requires(postun):/usr/bin/ed
+Requires(postun): /usr/bin/ed
 # /usr/sbin/config.postfix needs perl
 Requires(pre):  perl
-Requires(preun):perl
+Requires(preun): perl
 Requires(post): perl
-Requires(postun):perl
+Requires(postun): perl
 
 %description
 Postfix aims to be an alternative to the widely-used sendmail program.
