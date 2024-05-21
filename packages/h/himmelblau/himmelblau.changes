@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon May 20 19:23:30 UTC 2024 - david.mulder@suse.com
+
+- Update to version 0.4.0+git.0.69b64fe:
+  * Add github workflows for the 0.4.x branch
+  * Do not append to pam_allow_groups automatically
+  * Pam Allow Groups must be specified by Object ID
+  * Request the correct resource and permissions
+  * Improve error output on group lookup failure
+  * When faking a uuid for NSS, use a random uuid
+  * Fix clippy warning about inefficient use of clone()
+  * Remove the initial uid hack, use name mapping
+  * Don't stop an MR based on a clippy warning
+  * Update Kanidm tracking
+  * Modify CI workflows to handle idmap build
+  * Add CI job for cargo test
+  * Test the new and legacy idmapping
+  * Ensure duplicate providers are not started
+  * Use the SSSD Idmap code in Himmelblau
+  * Specify in conf that pam_allow_groups is required
+  * Remove code duplication in Hello PIN auth
+  * Fix Device authentication failed after enrollment
+  * Update the base64urlsafedata version
+  * Update README.md with Matrix contact info
+  * Version 0.4.0
+
+-------------------------------------------------------------------
 Wed May 15 15:19:43 UTC 2024 - david.mulder@suse.com
 
 - Update to version 0.3.4+git.0.01d099f:
