@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue May 21 09:06:25 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.22.2:
+  This is a patch release containing the following commits:
+  - py/compile: fix potential Py-stack overflow in try-finally
+    with return
+  - extmod/asyncio: support gather of tasks that finish early
+  - extmod/modssl_mbedtls: fix cipher iteration in
+    SSLContext.get_ciphers
+  - extmod/btstack: reset pending_value_handle before calling
+    write-done cb
+  - extmod/btstack: reset pending_value_handle before calling
+    read-done cb
+  - esp32/mpnimbleport: release the GIL while doing NimBLE port
+    deinit
+  - esp32: increase NimBLE task stack size and overflow detection
+    headroom
+  - mimxrt/modmachine: fix deepsleep wakeup pin ifdef
+  - renesas-ra/ra: fix SysTick clock source
+  - renesas-ra/boards/ARDUINO_PORTENTA_C33: fix the RTC clock
+    source
+  - renesas-ra/ra/ra_i2c: fix 1 byte and 2 bytes read issue
+  - rp2/rp2_dma: fix fetching 'write' buffers for writing not
+    reading
+  - rp2/machine_uart: fix event wait in uart.flush() and
+    uart.read()
+  - rp2: change machine.I2S and rp2.DMA to use shared DMA IRQ
+    handlers
+- Update to 1.22.1:
+  - This is a patch release to fix a race condition and potential
+    deadlock in the rp2 port's mp_thread_begin_atomic_section()
+    function, when the second core is in use.
+
+-------------------------------------------------------------------
 Mon Jan 15 14:54:02 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Build with %optflags
