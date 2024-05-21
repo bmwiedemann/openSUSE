@@ -134,4 +134,14 @@
   tests that are failing for Leap but not for Factory.</comment>
     <requestid>1163947</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2142ee0eecc7f297e8764a4606a1f633</srcmd5>
+    <version>1.4.6</version>
+    <time>1716309315</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.6 (bsc#1224467, CVE-2024-34083):
+  * STARTTLS is now fully enforced if used.
+</comment>
+    <requestid>1175330</requestid>
+  </revision>
 </revisionlist>

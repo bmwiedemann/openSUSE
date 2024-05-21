@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aiosmtpd
-Version:        1.4.5
+Version:        1.4.6
 Release:        0
 Summary:        SMTP server based on asyncio
 License:        Apache-2.0

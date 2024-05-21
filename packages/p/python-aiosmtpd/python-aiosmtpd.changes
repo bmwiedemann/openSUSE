@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 20 11:20:49 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 1.4.6 (bsc#1224467, CVE-2024-34083):
+  * STARTTLS is now fully enforced if used.
+
+-------------------------------------------------------------------
 Mon Apr  1 12:22:50 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Reenable tests for tumbleweed and Leap. Adds the
