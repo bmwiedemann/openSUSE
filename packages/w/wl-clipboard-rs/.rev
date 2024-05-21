@@ -40,4 +40,21 @@
     <comment></comment>
     <requestid>1158920</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>78a3eb1eb3f8db879ff18230e963846e</srcmd5>
+    <version>0.8.1</version>
+    <time>1716309362</time>
+    <user>anag+factory</user>
+    <comment>- Get sources from upstream
+- Remove the following files:
+  * _servicedata
+  * wl-clipboard-rs-0.8.1.obscpio
+  * wl-clipboard-rs.obsinfo
+  * vendor.tar.gz
+- Update vendored dependencies.
+- Compression is now zstd so vendored tarball is vendor.tar.zst
+- Cleanup specfile
+</comment>
+    <requestid>1175417</requestid>
+  </revision>
 </revisionlist>

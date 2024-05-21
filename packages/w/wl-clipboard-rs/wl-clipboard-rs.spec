@@ -16,20 +16,19 @@
 #
 
 
-%global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
-
 Name:           wl-clipboard-rs
 Version:        0.8.1
 Release:        0
 Summary:        Wayland Clipboard Utility in Rust
 License:        Apache-2.0 AND MIT
 URL:            https://github.com/YaLTeR/wl-clipboard-rs
-Source0:        %{name}-%{version}.tar.gz
-Source1:        vendor.tar.gz
+Source0:        https://github.com/YaLTeR/wl-clipboard-rs/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        vendor.tar.zst
+BuildRequires:  cargo >= 1.61
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig
-BuildRequires:  rust+cargo >= 1.61
 BuildRequires:  wayland-devel
+BuildRequires:  zstd
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.17

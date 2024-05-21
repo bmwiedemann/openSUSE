@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 21 00:44:49 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Get sources from upstream
+- Remove the following files:
+  * _servicedata
+  * wl-clipboard-rs-0.8.1.obscpio
+  * wl-clipboard-rs.obsinfo
+  * vendor.tar.gz
+- Update vendored dependencies.
+- Compression is now zstd so vendored tarball is vendor.tar.zst
+- Cleanup specfile
+
+-------------------------------------------------------------------
 Mon Mar 18 08:09:52 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 0.8.1:
