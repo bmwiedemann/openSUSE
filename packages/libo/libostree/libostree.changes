@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May 18 15:38:13 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2024.6:
+  + prepare-root: Handle non-AB aboot properly
+  + various bug fixes and developer visible fixes
+  + ostree-prepare-root.service: add OnFailureJobMode=isolate
+  + ostree-sysroot-deploy: check if deployments are in the same
+    stateroot
+
+-------------------------------------------------------------------
 Sun Apr 14 20:24:47 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2024.5:
