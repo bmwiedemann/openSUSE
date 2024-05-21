@@ -18,16 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-joserfc
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        The ultimate Python library for JOSE RFCs
 License:        BSD-3-Clause
 URL:            https://github.com/authlib/joserfc
 Source:         https://files.pythonhosted.org/packages/source/j/joserfc/joserfc-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module pycryptodome}
