@@ -1,7 +1,7 @@
 #
 # spec file for package font-manager
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Summary:        A simple font management application for Gtk+ Desktop Environmen
 License:        GPL-3.0-or-later
 URL:            https://fontmanager.github.io
 Source0:        https://github.com/FontManager/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 600f498946c3904064b4e4fdf96e5841f6a827e4.patch -- based on commit 600f498
+Patch0:         https://github.com/FontManager/font-manager/commit/600f498946c3904064b4e4fdf96e5841f6a827e4.patch
 BuildRequires:  appstream-glib
 BuildRequires:  gettext-runtime
 BuildRequires:  meson
@@ -103,7 +105,7 @@ Requires:       font-viewer >= %{version}
 This package provides integration with the Thunar file manager.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %meson \

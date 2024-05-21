@@ -62,4 +62,13 @@
     <comment></comment>
     <requestid>1005773</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>77109633c00703fdbb2ccd80a55bd555</srcmd5>
+    <version>0.8.8</version>
+    <time>1716309319</time>
+    <user>anag+factory</user>
+    <comment>Allow build to proceed with Vala versions &gt;= 0.56.17
+</comment>
+    <requestid>1175344</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 20 13:42:54 UTC 2024 - Jan Baier <jbaier@suse.com>
+
+- Add 600f498946c3904064b4e4fdf96e5841f6a827e4.patch
+  * Allow build to proceed with Vala versions >= 0.56.17
+
+-------------------------------------------------------------------
 Fri Sep 23 17:31:21 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Disable pkgconfig(libnautilus-extension) BuildRequires and pass
