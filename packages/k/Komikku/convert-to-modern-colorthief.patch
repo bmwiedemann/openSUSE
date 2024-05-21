@@ -1,18 +1,27 @@
 diff -rub komikku/komikku/models/database/mangas.py komikku-patched/komikku/models/database/mangas.py
 --- komikku/komikku/models/database/mangas.py	2024-05-13 00:37:43.000000000 +0200
-+++ komikku-patched/komikku/models/database/mangas.py	2024-05-17 00:36:51.784608966 +0200
++++ komikku-patched/komikku/models/database/mangas.py	2024-05-18 23:53:43.326245422 +0200
 @@ -11,7 +11,7 @@
  import shutil
  import time
  
 -from colorthief import ColorThief
-+from modern_colorthief import ColorThief
++from modern_colorthief import get_color, get_palette
  
  from komikku.models.database import create_db_connection
  from komikku.models.database import insert_row
+@@ -122,7 +122,7 @@
+                 return fp.read()
+ 
+         colors = []
+-        for index, color in enumerate(ColorThief(cover_path).get_palette(color_count=2, quality=1)[:2]):
++        for index, color in enumerate(get_palette(cover_path)[:2]):
+             colors.append(f'@define-color background_color_{index} rgba({color[0]}, {color[1]}, {color[2]}, 1);\n')
+         colors.append('@define-color background_color_2 @window_bg_color;')
+ 
 diff -rub komikku/requirements.txt komikku-patched/requirements.txt
 --- komikku/requirements.txt	2024-05-13 00:37:43.000000000 +0200
-+++ komikku-patched/requirements.txt	2024-05-17 00:37:18.951143491 +0200
++++ komikku-patched/requirements.txt	2024-05-18 23:50:44.195297399 +0200
 @@ -1,6 +1,6 @@
  beautifulsoup4
  brotli >= 1.1.0

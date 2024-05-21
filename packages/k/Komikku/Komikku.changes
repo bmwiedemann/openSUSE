@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 18 22:10:46 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update convert-to-modern-colorthief.patch as python-modern-colorthief got
+  a complete rewrite in rust
+
+-------------------------------------------------------------------
 Thu May 16 22:42:23 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 -update to version 1.46.0:

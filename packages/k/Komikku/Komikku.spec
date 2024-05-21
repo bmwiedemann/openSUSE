@@ -46,7 +46,7 @@ Requires:       python3-dateparser
 Requires:       python3-emoji
 Requires:       python3-keyring
 Requires:       python3-lxml
-Requires:       python3-modern-colorthief
+Requires:       python3-modern-colorthief >= 0.1.3
 Requires:       python3-natsort
 Requires:       python3-piexif
 Requires:       python3-pure-protobuf >= 3.0.0
