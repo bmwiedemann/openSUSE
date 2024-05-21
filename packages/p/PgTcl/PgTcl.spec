@@ -1,7 +1,7 @@
 #
 # spec file for package PgTcl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        Tcl Client Library for PostgreSQL
 License:        MIT
 Version:        1.7
 Release:        0
-Url:            http://pgfoundry.org/projects/pgtcl/
+URL:            http://pgfoundry.org/projects/pgtcl/
 Source0:        libpgtcl-%version.tar.gz
 Patch0:         pgtcl-stubs.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -33,8 +33,7 @@ This package contains the libpgtcl client library as a loadable Tcl
 package. It is needed to access PostgreSQL databases from Tcl scripts.
 
 %prep
-%setup -q -n libpgtcl-%version
-%patch0 -p 1
+%autosetup -p1 -n libpgtcl-%version
 
 %build
 CFLAGS=-DUSE_INTERP_ERRORLINE
