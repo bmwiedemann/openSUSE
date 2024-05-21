@@ -1,7 +1,7 @@
 #
 # spec file for package fish
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 Name:           fish
-Version:        3.7.0
+Version:        3.7.1
 Release:        0
 Summary:        The "friendly interactive shell"
 # see bundled doc_src/license.rst
-License:        GPL-2.0-only AND BSD-3-Clause AND ISC AND LGPL-2.0-or-later AND MIT AND PSF-2.0
+License:        BSD-3-Clause AND GPL-2.0-only AND ISC AND LGPL-2.0-or-later AND MIT AND PSF-2.0
 Group:          System/Shells
 URL:            https://fishshell.com/
 Source:         https://github.com/fish-shell/fish-shell/releases/download/%{version}/fish-%{version}.tar.xz

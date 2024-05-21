@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Apr  4 09:09:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.7.1:
+  * Deleting the last history entry via `history delete` works
+    again (#10190).
+  * Wildcards (`*`) will no longer sometimes generate paths that
+    did not exist (#10205).
+  * A crash when trying to run an ELF program with a missing
+    interpreter has been fixed. This crashed in the process after
+    fork, so did not affect the fish process that tried to start
+    the program (#10199).
+  * `funced` will now always `source` the file after it has
+    written it, even if the contents did not change. This
+    prevents issues if the file was otherwise modified (#10318).
+  * The warning for when a builtin returns a negative exit code
+    was improved, now mentioning the original status (#10187).
+  * Added completions for `cobra-cli`, `dmidecode`, `mycli`,
+    `ollama`, `pstree`
+
+-------------------------------------------------------------------
 Tue Jan 30 10:17:54 UTC 2024 - Simon Lees <sflees@suse.de>
 
 - Fix changelog timestamp in the last entry
@@ -14,13 +34,13 @@ Wed Jan 24 14:38:01 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 -------------------------------------------------------------------
 Mon Jan 1 18:42:02 UTC 2024 - Victorhck <victorhck@opensuse.org>
 
-- Update to 3.7.0:  
+- Update to 3.7.0:
   * The history pager will now also attempt subsequence matches (#9476),
     so you can find a command line like git log 3.6.1..Integration_3.7.0 by searching for gitInt.
   * Opening the history pager will now fill the search field with a search string if you’re already
-    in a search (#10005). This makes it nicer to search something with ↑ and then later decide 
+    in a search (#10005). This makes it nicer to search something with ↑ and then later decide
     to switch to the full pager.
-  * Closing the history pager with enter will now copy the search text to the commandline 
+  * Closing the history pager with enter will now copy the search text to the commandline
     if there was no match, so you can continue editing the command you tried to find right away (#9934).
   * Performance improvements for command completions and globbing, where supported by the operating system,
     especially on slow filesystems such as NFS (#9891, #9931, #10032, #10052).
@@ -28,7 +48,7 @@ Mon Jan 1 18:42:02 UTC 2024 - Victorhck <victorhck@opensuse.org>
     instead of waiting indefinitely. For example, this makes binding kj to switching modes in vi mode possible.
     The timeout can be set via the new fish_sequence_key_delay_ms variable (#7401),
     and may be set by default in future versions.
-  * See https://github.com/fish-shell/fish-shell/releases/tag/3.7.0 
+  * See https://github.com/fish-shell/fish-shell/releases/tag/3.7.0
     for more details
 
 -------------------------------------------------------------------
@@ -56,7 +76,7 @@ Wed Dec  6 12:42:56 UTC 2023 - Dan Čermák <dcermak@suse.com>
 
   While this may cause unexpected behavior with direct input, this may become a minor security problem
   if the output is being fed from an external program into a command substitution where this output
-  may not be expected. (bsc#1217808, CVE-2023-49284) 
+  may not be expected. (bsc#1217808, CVE-2023-49284)
 
 -------------------------------------------------------------------
 Tue Dec  5 08:08:21 UTC 2023 - Dan Čermák <dcermak@suse.com>
@@ -121,7 +141,7 @@ Tue Apr 18 03:15:56 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 Tue Jan 17 11:23:02 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 3.6.0:
-  * By default, Control-R now opens the command history in the pager, 
+  * By default, Control-R now opens the command history in the pager,
   * Abbrevations are more flexible
   * The \\x and \\X escape syntax is now equivalent. \\xAB previously
     behaved the same as \\XAB, except that it would error if the value “AB” was larger than “7f”
@@ -229,7 +249,7 @@ Wed Mar 16 06:35:37 UTC 2022 - pgajdos@suse.com
     per-repository configuration. This avoids a potential security
     issue in some circumstances, and has been assigned CVE-2022-20001
     (#8589). [bsc#1197139]
-  * see https://github.com/fish-shell/fish-shell/releases/tag/3.4.0 
+  * see https://github.com/fish-shell/fish-shell/releases/tag/3.4.0
     for more details
 
 -------------------------------------------------------------------
@@ -247,7 +267,7 @@ Thu Sep 2 20:39:41 UTC 2021 - Victorhck <victorhck@opensuse.org>
   * The prompt and command line are redrawn correctly in response to universal variable changes.
   * A superfluous error that was produced when setting the PATH or CDPATH environment variables to include colon-delimited components that do not exist was removed.
   * The Vi mode indicator in the prompt is repainted correctly after Ctrl-C cancels the current command.
-  
+
 -------------------------------------------------------------------
 Sun Apr 18 22:39:41 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
 
@@ -282,7 +302,7 @@ Thu Mar 18 17:40:37 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
   * fish_git_prompt no longer causes screen flickering in certain terminals
   * fish_add_path manipulates the fish_user_paths variable correctly
     when moving multiple paths
-  * Pasting with a multi-line command no longer causes 
+  * Pasting with a multi-line command no longer causes
      __fish_tokenizer_state error
   * psub inside event handlers cleans up temporary files properly
   * Event handlers declared with --on-job-exit $fish_pid no longer run
@@ -307,7 +327,7 @@ Thu Mar 18 17:40:37 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
 -------------------------------------------------------------------
 Tue Mar  9 05:43:01 UTC 2021 - Samu Voutilainen <smar@smar.fi>
 
-- Define GenericName and proper category in fish.desktop 
+- Define GenericName and proper category in fish.desktop
 
 -------------------------------------------------------------------
 Mon Mar  1 15:43:22 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
@@ -324,14 +344,14 @@ Mon Mar  1 15:43:22 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
     as fish variables
   * Globs and other expansions are limited to 512,288 results
   * A new "fish for bash users" documentation page gives a quick overview
-    of the scripting differences between bash and fish 
+    of the scripting differences between bash and fish
   * Range limits in index range expansions like $x[$start..$end]
-    may be omitted: $start and $end default to 1 and -1 
+    may be omitted: $start and $end default to 1 and -1
   * the type, _ (gettext), . (source) and : (no-op) functions
     are now implemented builtins for performance purposes
   * The output for set --show has been shortened
   * string sub has a new --end option to specify the end index of
-    a substring 
+    a substring
   * string trim now also trims vertical tabs by default
   * string repeat now handles multiple arguments, repeating each one
   * The true and false builtins ignore any arguments
