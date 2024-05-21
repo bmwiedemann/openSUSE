@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 20 07:22:09 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Only enable grub-protect for EFI systems
+  * 0001-util-enable-grub-protect-only-for-EFI-systems.patch
+
+-------------------------------------------------------------------
 Wed May 15 06:19:54 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to the latest upstreaming TPM2 patches

@@ -1,0 +1,33 @@
+From 6ce53d4db8430de5526ea4c48beac8139ba60925 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Mon, 20 May 2024 14:19:58 +0800
+Subject: [PATCH] util: enable grub-protect only for EFI systems
+
+Add 'enable = efi;' back to the grub-protect section to enable the
+utility only for EFI systems.
+
+The restriction was relaxed in the upstreaming patch to enable the
+grub-emu TPM2 testcases. Since we already build the utility natively for
+the architectures with EFI support, there is no need to build the
+program again for grub-emu.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ Makefile.util.def | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Makefile.util.def b/Makefile.util.def
+index 90850125d..5085152b0 100644
+--- a/Makefile.util.def
++++ b/Makefile.util.def
+@@ -210,6 +210,7 @@ program = {
+ program = {
+   name = grub-protect;
+   mansection = 1;
++  enable = efi;
+ 
+   common = grub-core/kern/emu/argp_common.c;
+   common = grub-core/osdep/init.c;
+-- 
+2.35.3
+

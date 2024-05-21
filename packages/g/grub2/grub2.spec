@@ -394,6 +394,7 @@ Patch203:       grub2-bsc1220338-key_protector-implement-the-blocklist.patch
 Patch204:       0001-ofdisk-Enhance-canonical-path-handling-for-bootpath.patch
 Patch205:       0001-10_linux-Ensure-persistence-of-root-file-system-moun.patch
 Patch206:       0001-util-bash-completion-Fix-for-bash-completion-2.12.patch
+Patch207:       0001-util-enable-grub-protect-only-for-EFI-systems.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
@@ -1223,7 +1224,6 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %{_mandir}/man1/%{name}-mkrelpath.1.*
 %{_mandir}/man1/%{name}-mkrescue.1.*
 %{_mandir}/man1/%{name}-mkstandalone.1.*
-%{_mandir}/man1/%{name}-protect.1.*
 %{_mandir}/man1/%{name}-render-label.1.*
 %{_mandir}/man1/%{name}-script-check.1.*
 %{_mandir}/man1/%{name}-syslinux2cfg.1.*
@@ -1250,6 +1250,9 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %{_mandir}/man8/%{name}-macbless.8.*
 %{_mandir}/man8/%{name}-ofpathname.8.*
 %{_mandir}/man8/%{name}-sparc64-setup.8.*
+%endif
+%ifarch %{efi}
+%{_mandir}/man1/%{name}-protect.1.*
 %endif
 
 %files branding-upstream
