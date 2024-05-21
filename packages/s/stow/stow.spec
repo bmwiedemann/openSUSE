@@ -1,7 +1,7 @@
 #
 # spec file for package stow
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           stow
-Version:        2.3.1
+Version:        2.4.0
 Release:        0
 Summary:        Manage the installation of software packages from source
 License:        GPL-3.0-or-later

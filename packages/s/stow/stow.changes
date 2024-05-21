@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr  8 06:48:09 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- stow 2.4.0:
+  * --dotfiles now works with directories
+  * Eliminated a spurious warning on unstowing
+  * Unstowing logic has been improved in other cases
+  * Improved debug output
+
+-------------------------------------------------------------------
 Fri Apr  9 12:26:16 BST 2021 - suse@adamspiers.org
 
 - A few more minor spec tweaks.  Thanks to Dirk Mueller for some
