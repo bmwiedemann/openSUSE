@@ -1,7 +1,7 @@
 #
 # spec file for package python-alembic
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        A database migration tool for SQLAlchemy
 License:        MIT
 URL:            https://github.com/sqlalchemy/alembic
 Source0:        https://files.pythonhosted.org/packages/source/a/alembic/alembic-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/sqlalchemy/alembic/commit/6bdb9043868d4bd04ebe3fe8a4991735d5f87ed3 use SQLAlchemy's xdist methods
+Patch:          pytest8.patch
 BuildRequires:  %{python_module Mako}
 BuildRequires:  %{python_module SQLAlchemy >= 2.0.0}
 BuildRequires:  %{python_module backports.zoneinfo if %python-base < 3.9}
@@ -42,7 +44,7 @@ Requires:       python-Mako
 Requires:       python-SQLAlchemy >= 2.0.0
 Requires:       python-typing-extensions >= 4
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if 0%{?python_version_nodots} < 39
 Requires:       python-importlib-metadata
