@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 18 17:34:02 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- Update to version 3.1.4
+  * citnames: Allow for include flag glued to the parameter
+  * intercept: gRPC dependency usage fix
+
+-------------------------------------------------------------------
 Tue Mar 26 10:20:39 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Build with GCC13 on Leap 15
