@@ -32,6 +32,8 @@ Summary:        Extensions to the Python Standard Library Unit Testing Framework
 License:        MIT
 URL:            https://github.com/testing-cabal/testtools
 Source0:        https://files.pythonhosted.org/packages/source/t/testtools/testtools-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/testing-cabal/testtools/pull/373 Treat methodName="runTest" similar to unittest.TestCase
+Patch:          pytest82.patch
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
@@ -58,7 +60,7 @@ with unit tests in Python and come from many different sources. testtools
 also ports recent unittest changes all the way back to Python 2.4.
 
 %prep
-%setup -q -n testtools-%{version}
+%autosetup -p1 -n testtools-%{version}
 
 %if !%{with test}
 %build
