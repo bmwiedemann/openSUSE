@@ -17,7 +17,7 @@
 
 
 Name:           haruna
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Video player built with Qt/QML on top of libmpv
 License:        CC-BY-4.0 AND GPL-3.0-or-later AND WTFPL
@@ -51,7 +51,7 @@ BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libavutil) >= 58.29.100
 BuildRequires:  pkgconfig(libpostproc)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(mpv)
@@ -67,6 +67,8 @@ Requires:       yt-dlp
 %autosetup -p1
 
 %build
+export CXX=g++
+test -x "$(type -p g++-13)" && export CXX=g++-13
 %cmake
 %cmake_build
 
