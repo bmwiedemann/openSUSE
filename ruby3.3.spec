@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -96,7 +96,8 @@ Source4:        %{rb_soname}-default.macros
 Source5:        vendor.tar.xz
 Source98:       series
 Source99:       %{rb_soname}-rpmlintrc
-Patch:          use-pie.patch
+Patch0:         use-pie.patch
+Patch1:         fix-gvl-save-restore.patch
 BuildRequires:  ruby-bundled-gems-rpmhelper
 %if %{with clang}
 BuildRequires:  clang
