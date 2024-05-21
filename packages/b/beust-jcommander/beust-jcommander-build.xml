@@ -23,7 +23,8 @@
   <property name="build.srcDir" value="src/main/java"/>
   <property name="build.resourceDir" value="src/main/resources"/>
   
-  <property name="compiler.source" value="1.8"/>
+  <property name="compiler.release" value="8"/>
+  <property name="compiler.source" value="1.${compiler.release}"/>
   <property name="compiler.target" value="${compiler.source}"/>
   
   <property name="reporting.outputDirectory" value="${build.dir}/site"/>
@@ -48,13 +49,29 @@
            debug="true" 
            optimize="false" 
            deprecation="true" 
-           target="${compiler.target}" 
+           release="${compiler.release}" 
            verbose="false" 
-           fork="false" 
-           source="${compiler.source}">
+           fork="false">
       <src>
         <pathelement location="${build.srcDir}"/>
       </src>
+    </javac>
+    <javac destdir="${build.outputDir}" 
+           encoding="${project.build.sourceEncoding}" 
+           nowarn="false" 
+           debug="true" 
+           optimize="false" 
+           deprecation="true" 
+           release="9" 
+           verbose="false" 
+           fork="false">
+      <modulepath>
+        <pathelement location="${build.outputDir}"/>
+      </modulepath>
+      <src>
+        <pathelement location="."/>
+      </src>
+	  <include name="**/module-info.java"/>
     </javac>
   </target>
 

@@ -16,14 +16,15 @@
 #
 
 
+%define __requires_exclude java-headless
 %global short_name jcommander
 Name:           beust-%{short_name}
-Version:        1.82
+Version:        1.83
 Release:        0
 Summary:        Java framework for parsing command line parameters
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://jcommander.org/
+URL:            https://jcommander.org/
 Source0:        %{short_name}-%{version}.tar.xz
 # Adapted from earlier version that still shipped poms. It uses kobalt for building now
 Source1:        %{name}.pom
@@ -31,8 +32,8 @@ Source2:        %{name}-build.xml
 Patch0:         0001-ParseValues-NullPointerException-patch.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  java-devel >= 9
+BuildRequires:  javapackages-local >= 6
 Requires:       java >= 1.8
 Obsoletes:      %{short_name} < %{version}-%{release}
 Provides:       %{short_name} = %{version}-%{release}

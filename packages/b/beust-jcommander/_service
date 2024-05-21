@@ -2,7 +2,7 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/cbeust/jcommander.git</param>
-		<param name="revision">1.82</param>
+		<param name="revision">1.83</param>
 		<param name="versionformat">@PARENT_TAG@</param>
         <param name="exclude">**.jar</param>
         <param name="exclude">**.class</param>

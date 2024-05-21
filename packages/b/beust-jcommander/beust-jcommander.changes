@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May 20 16:56:11 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 1.83
+  * Fixes:
+    + Fixed Docs Timestamp
+    + Fixed: #563 - JCommander does not recognize command by alias.
+    + fixed: missing null check
+    + renamed IRule to IParametersValidator
+    + `@Parameters(rules = <? extends IRule>)`
+    + Unit Test for #532
+    + Fixed #532: @-syntax not working with command objects
+    + enable testng tests
+    + Fix regression with removed usage methods
+    + Add OSGi entries in MANIFEST.MF during jar creation
+
+-------------------------------------------------------------------
 Wed Feb 21 08:20:16 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
