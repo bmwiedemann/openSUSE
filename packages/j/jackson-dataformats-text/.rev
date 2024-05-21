@@ -31,4 +31,12 @@
     <comment>2.16.1, CVE-2023-3894, bsc#1214111</comment>
     <requestid>1156784</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>14c1948bb583b8a82bfe5c75c4ddbe49</srcmd5>
+    <version>2.17.1</version>
+    <time>1716309328</time>
+    <user>anag+factory</user>
+    <comment>2.17.x</comment>
+    <requestid>1175354</requestid>
+  </revision>
 </revisionlist>
