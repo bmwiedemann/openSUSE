@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May 11 06:19:08 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update skylighting to version 0.14.1.2.
+  ## 0.14.1.2
+
+    * Add terraform syntax (#190).
+
+-------------------------------------------------------------------
 Thu Mar 14 19:14:57 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update skylighting to version 0.14.1.1.
