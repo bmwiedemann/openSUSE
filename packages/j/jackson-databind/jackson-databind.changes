@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 20 12:26:44 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Update to 2.17.1
+  * No changes since 2.17.0
+- Includes changes from 2.17.0
+  * #242: Allow `@JsonAnySetter` on `ElementType.PARAMETER` (for
+    use on constructor parameters)
+
+-------------------------------------------------------------------
 Fri Mar  8 08:33:47 UTC 2024 - Gus Kenion <gkenion@suse.com>
 
 - Update to 2.16.1
