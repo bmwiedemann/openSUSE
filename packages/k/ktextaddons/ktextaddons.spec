@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           ktextaddons
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        Various text handling addons
 License:        LGPL-2.1-or-later

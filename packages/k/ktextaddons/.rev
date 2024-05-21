@@ -32,4 +32,12 @@
 - Build ktextaddons using KF6/Qt6</comment>
     <requestid>1151277</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5047fb5c706091bb9e76e70423d9629a</srcmd5>
+    <version>1.5.4</version>
+    <time>1716309200</time>
+    <user>anag+factory</user>
+    <comment>Update to 1.5.4</comment>
+    <requestid>1175470</requestid>
+  </revision>
 </revisionlist>
