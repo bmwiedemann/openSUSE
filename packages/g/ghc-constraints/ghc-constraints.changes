@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 12 22:52:37 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update constraints to version 0.14.2.
+  0.14.2 [2024.05.12]
+  -------------------
+  * Re-export `Log2` from `Data.Constraint.Nat`.
+  * Add `log2Nat` and `log2Pow` to `Data.Constraint.Nat`.
+
+-------------------------------------------------------------------
 Mon Apr 29 13:47:12 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update constraints to version 0.14.1.
