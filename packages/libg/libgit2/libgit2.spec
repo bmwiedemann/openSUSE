@@ -1,7 +1,7 @@
 #
 # spec file for package libgit2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2011, Sascha Peilicke <saschpe@gmx.de>
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -20,7 +20,7 @@
 
 %define sover 1_8
 Name:           libgit2
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        C git library
 License:        GPL-2.0-only WITH GCC-exception-2.0

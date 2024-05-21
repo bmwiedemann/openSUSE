@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri May 17 10:30:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.1:
+  * In v1.8, libgit2 introduced the `report_unchanged ` member in
+    the `git_fetch_options` structure. We mistakenly introduced
+    this as a bitfield, which is not suitable for our public API.
+    To correct this mistake, we have _removed_ the
+    `report_unchanged ` member. To support the report unchanged
+    tips option, users can set the `update_fetchhead`
+    member to include the `GIT_REMOTE_UPDATE_REPORT_UNCHANGED`
+    value.
+  * The libgit2 projects regrets the API change, but this was
+    required to support cross-platform compatibility.
+  * commit: Fix git_commit_create_from_stage without author and
+  * committer
+  * process.c: fix environ
+  * Bounds check for pack index read
+  * transport: provide a useful error message during cancellation
+  * transport: support sha256 oids
+  * Revparse: Correctly accept ref with '@' at the end
+  * remote: drop bitfields in git_remote_fetch_options
+  * examples: fix memory leak in for-each-ref.c
+  * xdiff: use proper free function
+  * rand: avoid uninitialized loadavg warnings
+  * cli: include alloca on illumos / solaris / sunos
+  * Update git_array allocator to obey strict aliasing rules
+  * tree: avoid mixed signedness comparison by @ethomson in
+
+-------------------------------------------------------------------
 Sun Mar 24 16:16:18 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.8.0:
@@ -198,7 +227,7 @@ Fri Jul 16 20:24:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Thu Nov 26 15:39:16 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
-- require library required by pkg-config file 
+- require library required by pkg-config file
 
 -------------------------------------------------------------------
 Mon Oct 19 20:30:28 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
@@ -579,7 +608,7 @@ Tue Aug 21 08:47:14 UTC 2018 - mpluskal@suse.com
 Mon Aug 13 11:24:27 UTC 2018 - astieger@suse.com
 
 - libgit2 0.27.4:
-  * fix out-of-bounds reads when processing smart-protocol "ng" 
+  * fix out-of-bounds reads when processing smart-protocol "ng"
     packets (bsc#1104641)
 
 -------------------------------------------------------------------
@@ -766,7 +795,7 @@ Wed Jan 11 20:27:04 UTC 2017 - astieger@suse.com
 - Removed API:
   * git_blob_create_fromchunks() has been removed in  favour of
     git_blob_create_fromstream()
-- Changed API: 
+- Changed API:
   * git_packbuilder_object_count and git_packbuilder_written now
     return a size_t instead of a uint32_t for more thorough
     compatibility with the rest of the library.
@@ -1222,7 +1251,7 @@ Fri Aug 31 13:27:15 UTC 2012 - cgiboudeaux@gmx.com
 -------------------------------------------------------------------
 Mon May  7 10:15:10 UTC 2012 - idonmez@suse.com
 
-- Fix license to be GPL-2.0-with-GCC-exception 
+- Fix license to be GPL-2.0-with-GCC-exception
 
 -------------------------------------------------------------------
 Mon Apr 16 10:22:50 UTC 2012 - cgiboudeaux@gmx.com
