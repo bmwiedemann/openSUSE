@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed May 15 07:45:53 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.6.0:
+  * Fix issue with make depend for QAT_SW
+  * QAT_HW GCM Memleak fix & bug fixes
+  * QAT2.0 FreeBSD14 intree driver support
+  * Fix OpenSSL 3.2 compatibility issues
+  * Optimize hex dump logging
+  * Clear job tlv on error
+  * QAT_HW RSA Encrypt and Decrypt provider support
+  * QAT_HW AES-CCM Provider support
+  * Add ECDH keymgmt support for provider
+  * Fix QAT_HW SM2 memory leak 
+  * Enable qaeMemFreeNonZeroNUMA() for qatlib 
+  * Fix polling issue for the process that doesn't have QAT_HW instance
+  * Fix SHA3 qctx initialization issue & potential memleak 
+  * Fix compilation error in SM2 with qat_contig_mem 
+  * Update year in copyright information to 2024 
+
+-------------------------------------------------------------------
 Wed Jan  3 12:00:12 UTC 2024 - Torsten Duwe <duwe@suse.com>
 
 - update to 1.5.0:
