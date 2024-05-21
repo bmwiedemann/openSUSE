@@ -76,7 +76,7 @@ ExclusiveArch:  do-not-build
 Name:           webkit2%{_gtknamesuffix}
 ### FIXME ### Drop the disabling of LTO on next release/versionbump
 %define _lto_cflags %{nil}
-Version:        2.44.1
+Version:        2.44.2
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -440,6 +440,9 @@ Group:          Development/Tools/Other
 
 %description minibrowser
 A small test browswer from webkit, useful for testing features.
+
+
+
 
 
 

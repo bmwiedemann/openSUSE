@@ -1703,4 +1703,12 @@
     <comment>Add a CVE reference (forwarded request 1168626 from mgorse)</comment>
     <requestid>1168634</requestid>
   </revision>
+  <revision rev="194" vrev="1">
+    <srcmd5>fa177d1b1f8cba7c233bd7f489133eb9</srcmd5>
+    <version>2.44.2</version>
+    <time>1716309195</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1175451</requestid>
+  </revision>
 </revisionlist>

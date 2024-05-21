@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri May 17 20:40:00 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.44.2:
+  + Make gamepads visible on axis movements, and not only on
+    button presses.
+  + Disable the gst-libav AAC decoder.
+  + Make user scripts and style sheets visible in the Web
+    Inspector.
+  + Use the geolocation portal where available, with the existing
+    geoclue as fallback if the portal is not usable.
+  + Use the printing portal when running sandboxed.
+  + Use the file transfer portal for drag and drop when running
+    sandboxed.
+  + Avoid notifying an empty cursor rectangle to input methods.
+  + Remove empty bar shown in detached inspector windows.
+  + Consider keycode when activating application accelerators.
+  + Fix the build with ENABLE_WEBAUDIO disabled.
+  + Fix several crashes and rendering issues.
+- Update keyring (taken from rawhide).
+
+-------------------------------------------------------------------
 Tue Apr 16 16:42:31 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.44.1:
