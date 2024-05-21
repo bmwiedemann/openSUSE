@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 20 09:46:03 UTC 2024 - Matthias Bach <marix@marix.org>
+
+- Stop building for Python 3.6 as python-emoji no longer supports
+  it.
+
+-------------------------------------------------------------------
 Wed Jan  3 00:22:57 UTC 2024 - Matthias Bach <marix@marix.org>
 
 - Add python-312-compat.patch to achieve compatibility with Python

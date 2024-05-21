@@ -104,4 +104,13 @@
     <comment></comment>
     <requestid>1136327</requestid>
   </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>5e18a6155d8bffd098f078a1f9879f19</srcmd5>
+    <version>2.7.0</version>
+    <time>1716309343</time>
+    <user>anag+factory</user>
+    <comment>- Stop building for Python 3.6 as python-emoji no longer supports
+  it.</comment>
+    <requestid>1175393</requestid>
+  </revision>
 </revisionlist>
