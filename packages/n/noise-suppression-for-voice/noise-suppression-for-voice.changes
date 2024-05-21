@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 20 21:56:42 UTC 2024 - pallaswept@proton.me
+
+- Update to version 1.10+git0.9c4e5c2:
+  * ci: Change windows-latest to windows-2019 due to internal compiler error
+  * rnnoise: Remove previous rnnoise version
+  * common: Switch to updated rnnoise v0.2
+  * external/rnnoise: Add CMakeLists.txt to build as a static lib
+  * external/rnnoise: Add generated weights
+  * git subrepo clone https://github.com/xiph/rnnoise external/rnnoise
+  * build: Unique LV2URI
+  * JUCE/VST2: Prevent crash of effGetSpeakerArrangement with null in/out
+  * cmake: Add option to use external JUCE installation
+  * Add some `=` signs to the PipeWire config snippet
+
+-------------------------------------------------------------------
 Wed Aug 03 02:54:40 UTC 2022 - kv@kott.no-ip.biz
 
 - Update to version 1.03+git1.226f03b:

@@ -1,7 +1,7 @@
 #
 # spec file for package noise-suppression-for-voice
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           noise-suppression-for-voice
-Version:        1.03+git1.226f03b
+Version:        1.10+git0.9c4e5c2
 Release:        0
 Summary:        Noise suppression plugin based on Xiph's RNNoise
 License:        GPL-3.0-only
@@ -132,7 +132,12 @@ This package holds the ladspa plugin.
 sed -i -e 's/lxvst/vst/' src/juce_plugin/CMakeLists.txt
 
 %build
+%ifarch x86_64
+# Build with SIMD extension
+%cmake -DBUILD_RTCD:BOOL=ON
+%else
 %cmake
+%endif
 %cmake_build
 
 %install
