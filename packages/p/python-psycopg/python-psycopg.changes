@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 16 08:40:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.19:
+  * Fix unaligned access undefined behaviour in C extension
+  * Fix excessive stripping of error message prefixes
+  * Allow to specify the connect_timeout connection parameter as
+    float
+  * Improve COPY performance on macOS
+
+-------------------------------------------------------------------
 Thu Mar 21 17:15:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.18:

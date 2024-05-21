@@ -35,4 +35,18 @@
     CPython issue #65821</comment>
     <requestid>1160438</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0dc252ac709000f024c187c3636772eb</srcmd5>
+    <version>3.1.19</version>
+    <time>1716309313</time>
+    <user>anag+factory</user>
+    <comment>- Sync the version with python-psycopg-c, bsc#1224470
+- update to 3.1.19:
+  * Fix unaligned access undefined behaviour in C extension
+  * Fix excessive stripping of error message prefixes
+  * Allow to specify the connect_timeout connection parameter as
+    float
+  * Improve COPY performance on macOS</comment>
+    <requestid>1175328</requestid>
+  </revision>
 </revisionlist>
