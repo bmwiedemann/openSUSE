@@ -17,17 +17,17 @@
 
 
 Name:           jackson-modules-base
-Version:        2.16.1
+Version:        2.17.1
 Release:        0
 Summary:        Jackson modules: Base
 License:        Apache-2.0
 URL:            https://github.com/FasterXML/jackson-modules-base
 Source0:        %{url}/archive/%{name}-%{version}.tar.gz
 BuildRequires:  maven-local
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations) >= 2.16
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core) >= 2.16
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind) >= 2.16
-BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:) >= 2.16
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations) >= 2.17
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core) >= 2.17
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind) >= 2.17
+BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:) >= 2.17
 BuildRequires:  mvn(com.google.code.maven-replacer-plugin:replacer)
 BuildRequires:  mvn(com.google.inject:guice)
 BuildRequires:  mvn(com.thoughtworks.paranamer:paranamer)
