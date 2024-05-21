@@ -1,4 +1,4 @@
-From a87d1515a3425dad03240b31478bcf1c8097a738 Mon Sep 17 00:00:00 2001
+From 68366dbea6762d338aaefa6d80caaf5abb05555a Mon Sep 17 00:00:00 2001
 From: Marian Koncek <mkoncek@redhat.com>
 Date: Thu, 23 Feb 2023 13:59:25 +0100
 Subject: [PATCH 1/2] Avoid bundling asm
@@ -8,7 +8,7 @@ Subject: [PATCH 1/2] Avoid bundling asm
  1 file changed, 11 insertions(+), 45 deletions(-)
 
 diff --git a/byte-buddy/pom.xml b/byte-buddy/pom.xml
-index ad2343d3fd..edae9d9ad9 100644
+index 3a2c52000b..5372965676 100644
 --- a/byte-buddy/pom.xml
 +++ b/byte-buddy/pom.xml
 @@ -26,8 +26,6 @@
@@ -96,5 +96,5 @@ index ad2343d3fd..edae9d9ad9 100644
                                          <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                              <mainClass>net.bytebuddy.build.Plugin$Engine$Default</mainClass>
 -- 
-2.44.0
+2.45.1
 
