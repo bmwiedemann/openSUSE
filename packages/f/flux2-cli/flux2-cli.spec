@@ -135,7 +135,7 @@ cat manifests/bases/source-controller/kustomization.yaml
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags="-s -w -X main.VERSION=%{version}" \
+   -ldflags="-X main.VERSION=%{version}" \
    -o bin/flux ./cmd/flux
 
 %install

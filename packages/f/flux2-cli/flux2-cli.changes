@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May 18 16:06:15 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- do not strip aka remove -s -w ldflags
+
+-------------------------------------------------------------------
 Mon May 13 15:05:50 UTC 2024 - rombert@apache.org
 
 - Update to version 2.3.0:
