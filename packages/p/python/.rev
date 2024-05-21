@@ -4112,4 +4112,22 @@ However, upstream development now focuses on 3.x series.
   (including expat).</comment>
     <requestid>1173435</requestid>
   </revision>
+  <revision rev="196" vrev="47">
+    <srcmd5>eab6cd1dfd3553f7120fc4fdd8f21018</srcmd5>
+    <version>2.7.18</version>
+    <time>1716309268</time>
+    <user>anag+factory</user>
+    <comment>- bsc#1221854 (CVE-2024-0450) Add
+  CVE-2024-0450-zipfile-avoid-quoted-overlap-zipbomb.patch
+  detecting the vulnerability of the &quot;quoted-overlap&quot; zipbomb
+  (from gh#python/cpython!110016).
+
+- Add CVE-2023-52425-libexpat-2.6.0-remove-failing-tests.patch
+  removing failing test fixing bpo#3151, which we just not
+  support.
+- Remove patches over those embedded packages (cffi):
+  - python-2.7-libffi-aarch64.patch
+  - sparc_longdouble.patch</comment>
+    <requestid>1175099</requestid>
+  </revision>
 </revisionlist>

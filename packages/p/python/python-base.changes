@@ -1,10 +1,24 @@
 -------------------------------------------------------------------
+Sat May 18 15:49:07 UTC 2024 - Matej Cepl <mcepl@suse.com>
+
+- bsc#1221854 (CVE-2024-0450) Add
+  CVE-2024-0450-zipfile-avoid-quoted-overlap-zipbomb.patch
+  detecting the vulnerability of the "quoted-overlap" zipbomb
+  (from gh#python/cpython!110016).
+
+-------------------------------------------------------------------
 Sat May 11 05:46:55 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Switch to using the system libexpat (bsc#1219559,
   CVE-2023-52425)
 - Make sure to remove all embedded versions of other packages
   (including expat).
+- Add CVE-2023-52425-libexpat-2.6.0-remove-failing-tests.patch
+  removing failing test fixing bpo#3151, which we just not
+  support.
+- Remove patches over those embedded packages (cffi):
+  - python-2.7-libffi-aarch64.patch
+  - sparc_longdouble.patch
 
 -------------------------------------------------------------------
 Tue Apr 16 15:39:24 UTC 2024 - Matej Cepl <mcepl@cepl.eu>

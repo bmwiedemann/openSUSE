@@ -47,13 +47,10 @@ Patch4:         python-2.5.1-sqlite.patch
 Patch5:         python-2.7.4-canonicalize2.patch
 Patch7:         python-2.6-gettext-plurals.patch
 Patch8:         python-2.6b3-curses-panel.patch
-Patch10:        sparc_longdouble.patch
 Patch13:        python-2.7.2-fix_date_time_compiler.patch
 Patch17:        remove-static-libpython.patch
 # PATCH-FEATURE-OPENSUSE python-bundle-lang.patch bnc#617751 dimstar@opensuse.org -- gettext: when looking in default_localedir also check in locale-bundle.
 Patch20:        python-bundle-lang.patch
-# PATCH-FIX-UPSTREAM Fix argument passing in libffi for aarch64
-Patch22:        python-2.7-libffi-aarch64.patch
 Patch24:        python-bsddb6.patch
 # PATCH-FIX-UPSTREAM accept directory-based CA paths as well
 Patch33:        python-2.7.9-ssl_ca_path.patch
@@ -161,6 +158,12 @@ Patch79:        CVE-2023-40217-avoid-ssl-pre-close.patch
 # PATCH-FIX-UPSTREAM CVE-2022-48566-compare_digest-more-constant.patch bsc#1214691 mcepl@suse.com
 # Make compare_digest more constant-time
 Patch80:        CVE-2022-48566-compare_digest-more-constant.patch
+# PATCH-FIX-OPENSUSE CVE-2023-52425-libexpat-2.6.0-remove-failing-tests.patch bpo#3151 mcepl@suse.com
+# We don't have fix for bpo#3151 and it is just not supported
+Patch81:        CVE-2023-52425-libexpat-2.6.0-remove-failing-tests.patch
+# PATCH-FIX-UPSTREAM CVE-2024-0450-zipfile-avoid-quoted-overlap-zipbomb.patch bsc#1221854 mcepl@suse.com
+# detecting the vulnerability of the "quoted-overlap" zipbomb (from gh#python/cpython!110016).
+Patch82:        CVE-2024-0450-zipfile-avoid-quoted-overlap-zipbomb.patch
 # COMMON-PATCH-END
 Provides:       pyth_doc = %{version}
 Provides:       pyth_ps = %{version}
@@ -198,11 +201,9 @@ Python, and Macintosh Module Reference in PDF format.
 %patch -P 5 -p1
 %patch -P 7 -p1
 %patch -P 8 -p1
-%patch -P 10 -p1
 %patch -P 13 -p1
 %patch -P 17 -p1
 %patch -P 20 -p1
-%patch -P 22 -p1
 %patch -P 24 -p1
 %patch -P 33 -p1
 %if %{suse_version} < 1500 && !0%{?is_opensuse}
@@ -252,6 +253,8 @@ Python, and Macintosh Module Reference in PDF format.
 %patch -P 78 -p1
 %patch -P 79 -p1
 %patch -P 80 -p1
+%patch -P 81 -p1
+%patch -P 82 -p1
 
 # For patch 66
 cp -v %{SOURCE66} Lib/test/recursion.tar
