@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 15 08:27:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro: allows us to eliminate usage of deprecated
+  %patchN syntax.
+
+-------------------------------------------------------------------
 Thu Jul  1 09:18:55 UTC 2021 - Paolo Perego <paolo.perego@suse.com>
 
 - Create a link to xsstrike.py into /usr/bin (with removal support in

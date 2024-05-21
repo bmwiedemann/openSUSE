@@ -1,7 +1,7 @@
 #
-# spec file for package python-xsstrike
+# spec file for package XSStrike
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,9 @@ License:        GPL-3.0-only
 URL:            https://github.com/s0md3v/XSStrike
 Source:         XSStrike-3.1.5.tar.gz
 Patch0:         fix_shebang.patch
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python3-fuzzywuzzy
 BuildArch:      noarch
 
@@ -42,10 +42,8 @@ do, XSStrike analyses the response with multiple parsers and then crafts
 payloads that are guaranteed to work by context analysis integrated with a
 fuzzing engine.
 
-
 %prep
-%setup -q -n XSStrike-%{version}
-%patch0 -p1
+%autosetup -p1 -n XSStrike-%{version}
 
 %build
 
