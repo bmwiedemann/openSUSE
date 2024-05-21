@@ -1,0 +1,5 @@
+<package name="system-user-alloy" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="server:monitoring" package="system-user-alloy"/>
+</package>
