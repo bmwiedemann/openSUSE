@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 21 10:24:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace %patchN with %patch -P N: %patchN is deprecated.
+
+-------------------------------------------------------------------
 Tue Nov 14 14:50:29 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - 0.3.0:
