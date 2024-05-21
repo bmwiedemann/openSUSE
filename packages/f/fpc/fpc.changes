@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 21 02:51:46 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Use fpc-3.2.0-glibc-2.34.patch on Leap 15.6 for fix build fail
+  with glibc 2.38
+
+-------------------------------------------------------------------
 Mon Feb 26 08:20:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

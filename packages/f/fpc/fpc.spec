@@ -159,7 +159,7 @@ documentation or automatical-code generation purposes.
 %setup -q -n fpcbuild-%{version}
 %patch -P 1 -p0
 %patch -P 4 -p1
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || (0%{?suse_version} == 1500 && 0%{?sle_version} > 150500)
 %patch -P 5 -p1
 %endif
 %patch -P 6 -p1
