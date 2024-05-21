@@ -221,4 +221,14 @@
   * Maintenance and upkeep improvements</comment>
     <requestid>1163584</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5e0f32e08cb6dcb415bdada4f5a6cafc</srcmd5>
+    <version>5.14.3</version>
+    <time>1716309274</time>
+    <user>anag+factory</user>
+    <comment>- Update 5.14.3:
+  * Fix assigning string value to Set #903
+- Remove upper bound from pytest, it works.</comment>
+    <requestid>1175274</requestid>
+  </revision>
 </revisionlist>

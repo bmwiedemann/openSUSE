@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-traitlets
-Version:        5.14.2
+Version:        5.14.3
 Release:        0
 Summary:        Traitlets Python configuration system
 License:        BSD-3-Clause
@@ -29,7 +29,7 @@ BuildRequires:  %{python_module argcomplete >= 3.0.3}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling >= 1.5}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest >= 7 with %python-pytest < 8.1}
+BuildRequires:  %{python_module pytest >= 7}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -59,6 +59,6 @@ sed -i 's/"--color=yes",//' pyproject.toml
 %doc examples/
 %license LICENSE
 %{python_sitelib}/traitlets/
-%{python_sitelib}/traitlets-%{version}*-info
+%{python_sitelib}/traitlets-%{version}.dist-info
 
 %changelog

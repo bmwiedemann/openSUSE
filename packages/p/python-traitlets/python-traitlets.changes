@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 20 05:50:43 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update 5.14.3:
+  * Fix assigning string value to Set #903
+- Remove upper bound from pytest, it works.
+
+-------------------------------------------------------------------
 Fri Mar 29 19:09:27 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.14.2
