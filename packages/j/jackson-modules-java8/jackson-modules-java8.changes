@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 20 09:49:05 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Upgrade to 2.17.1
+  * #306: Only DateTimeFormatter.ISO_OFFSET_DATE_TIME accepted by
+    ZonedDateTimeKeyDeserializer
+- Includes changes from 2.17
+  * #274: Add 1-based Month[De]serializer enabled with
+    JavaTimeFeature.ONE_BASED_MONTHS option
+  * #294: Optional deserialization, serialization ignore
+    contentConverter
+
+-------------------------------------------------------------------
 Fri Mar  8 08:33:47 UTC 2024 - Gus Kenion <gkenion@suse.com>
 
 - Upgrade to 2.16.1
