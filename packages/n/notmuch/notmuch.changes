@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May 18 15:18:13 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.38.3:
+  * Fix a bug in configuration code that caused the notmuch command
+    to erroneously report "Error: could not locate database" under
+    some circumstances
+
+-------------------------------------------------------------------
 Sun Jan 28 13:25:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.38.2:

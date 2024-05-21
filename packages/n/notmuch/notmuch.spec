@@ -2,6 +2,7 @@
 # spec file for package notmuch
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 %define libversion 5
 Name:           notmuch
-Version:        0.38.2
+Version:        0.38.3
 Release:        0
 Summary:        The mail indexer
 License:        GPL-3.0-or-later
@@ -132,7 +133,7 @@ Requires:       emacs-el
 %endif
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 #hand-made configure script
@@ -205,8 +206,7 @@ fi
 %endif
 # {with tests}
 
-%post -n libnotmuch%{libversion} -p /sbin/ldconfig
-%postun -n libnotmuch%{libversion} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libnotmuch%{libversion}
 
 %files
 %doc AUTHORS NEWS README
@@ -221,29 +221,35 @@ fi
 %{_mandir}/man7/%{name}-sexp-queries.7%{?ext_man}
 
 %files -n libnotmuch%{libversion}
+%license COPYING COPYING-GPL-3
 %{_libdir}/libnotmuch.so.%{libversion}*
 
 %files devel
+%license COPYING COPYING-GPL-3
 %{_includedir}/%{name}.h
 %{_libdir}/libnotmuch.so
 
 %files doc
+%license COPYING COPYING-GPL-3
 %{_infodir}/nmbug.info%{?ext_info}
 %{_infodir}/%{name}.info%{?ext_info}
 %{_infodir}/%{name}-*.info%{?ext_info}
 
 %if %{with python3}
 %files -n python3-%{name}
+%license COPYING COPYING-GPL-3
 %doc bindings/python/README
 %{python3_sitelib}/%{name}/
 %{python3_sitelib}/%{name}*egg-info
 
 %files -n python-%{name}-doc
+%license COPYING COPYING-GPL-3
 %doc bindings/python3/docs/build/dirhtml/
 %endif
 
 %if %{with emacs}
 %files emacs
+%license COPYING COPYING-GPL-3
 %{_datadir}/emacs/site-lisp/
 %exclude %{_datadir}/applications/
 %endif
