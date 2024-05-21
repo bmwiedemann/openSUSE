@@ -18,7 +18,7 @@
 
 %bcond_without test
 Name:           oculante
-Version:        0.8.21
+Version:        0.8.22
 Release:        0
 Summary:        A minimalistic crossplatform image viewer written in rust
 License:        MIT
