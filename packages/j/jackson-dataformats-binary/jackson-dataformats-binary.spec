@@ -19,7 +19,7 @@
 %bcond_with extra_dataformats
 # Extra formats are disabled because of circular dependencies
 Name:           jackson-dataformats-binary
-Version:        2.16.1
+Version:        2.17.1
 Release:        0
 Summary:        Jackson standard binary data format backends
 License:        Apache-2.0 AND BSD-3-Clause
@@ -28,10 +28,10 @@ URL:            https://github.com/FasterXML/jackson-dataformats-binary
 Source0:        https://github.com/FasterXML/jackson-dataformats-binary/archive/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations) >= 2.16
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core) >= 2.16
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind) >= 2.16
-BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:) >= 2.16
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations) >= 2.17
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core) >= 2.17
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind) >= 2.17
+BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:) >= 2.17
 BuildRequires:  mvn(com.google.code.maven-replacer-plugin:replacer)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildArch:      noarch
