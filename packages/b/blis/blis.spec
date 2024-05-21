@@ -1,7 +1,7 @@
 #
 # spec file for package blis
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %define sover 4
 %define shlib lib%{name}%{sover}
 Name:           blis
-Version:        0.9.0
+Version:        1.0
 Release:        0
 Summary:        BLAS-like Library Instantiation Software Framework
 License:        BSD-3-Clause
@@ -66,6 +66,9 @@ This package provides the shared library for blis.
 %package devel
 Summary:        Headers and devel files for blis
 Requires:       %{shlib} = %{version}
+# Both cblas-devel and blis-devel provide a %%{_includedir}/cblas.h header file
+# and the latter is a drop-in replacement for the former
+Conflicts:      cblas-devel
 
 %description devel
 BLIS is a portable software framework for instantiating high-performance
@@ -82,15 +85,15 @@ This package provides the headers and devel files for %{name}.
 %build
 export CFLAGS="%{optflags}"
 # Not an autotools configure script
-./configure                 \
-  --disable-rpath           \
-  --disable-static          \
-  --enable-verbose-make     \
-  --enable-cblas            \
-  --enable-debug=opt        \
-  --prefix=%{_prefix}       \
-  --libdir=%{_libdir}       \
-  --enable-threading=openmp \
+./configure                          \
+  --disable-rpath                    \
+  --disable-static                   \
+  --enable-verbose-make              \
+  --enable-cblas                     \
+  --enable-debug=opt                 \
+  --prefix=%{_prefix}                \
+  --libdir=%{_libdir}                \
+  --enable-threading=openmp,pthreads \
 %{blis_config}
 %make_build
 %make_build -C testsuite
@@ -100,21 +103,20 @@ export CFLAGS="%{optflags}"
 
 # Manually remove rpath from pkgconfig file
 sed -i "s/\-Wl,\-rpath.* //g" %{buildroot}%{_datadir}/pkgconfig/blis.pc
-cat %{buildroot}%{_datadir}/pkgconfig/blis.pc
 
 %check
 pushd testsuite
 ./test_libblis.x
 
-%post -n %{shlib} -p /sbin/ldconfig
-%postun -n %{shlib} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{shlib}
 
 %files -n %{shlib}
 %{_libdir}/lib%{name}.so.*
 
 %files devel
 %license LICENSE
-%doc CHANGELOG README.md
+%doc CHANGELOG README.md docs/ReleaseNotes.md
+%{_includedir}/*.h
 %{_includedir}/%{name}/
 %{_libdir}/lib%{name}.so
 %{_datadir}/%{name}/
