@@ -6749,4 +6749,41 @@
     <comment></comment>
     <requestid>1170867</requestid>
   </revision>
+  <revision rev="427" vrev="1">
+    <srcmd5>cf4a61b6c5adeba4580fd841e7ac9344</srcmd5>
+    <version>126.0</version>
+    <time>1716309201</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Firefox 126.0
+  https://www.mozilla.org/en-US/firefox/126.0/releasenotes
+  MFSA 2024-21 (bsc#1224056)
+  * CVE-2024-4764 (bmo#1879093)
+    Use-after-free when audio input connected with multiple consumers
+  * CVE-2024-4367 (bmo#1893645)
+    Arbitrary JavaScript execution in PDF.js
+  * CVE-2024-4765 (bmo#1871109)
+    Web application manifests could have been overwritten via
+    hash collision
+  * CVE-2024-4766 (bmo#1871214, bmo#1871217)
+    Fullscreen notification could have been obscured on Firefox
+    for Android
+  * CVE-2024-4767 (bmo#1878577)
+    IndexedDB files retained in private browsing mode
+  * CVE-2024-4768 (bmo#1886082)
+    Potential permissions request bypass via clickjacking
+  * CVE-2024-4769 (bmo#1886108)
+    Cross-origin responses could be distinguished between script
+    and non-script content-types
+  * CVE-2024-4770 (bmo#1893270)
+    Use-after-free could occur when printing to PDF
+  * CVE-2024-4771 (bmo#1893891)
+    Failed allocation could lead to use-after-free
+  * CVE-2024-4772 (bmo#1870579)
+    Use of insecure rand() function to generate nonce
+  * CVE-2024-4773 (bmo#1875248)
+    URL bar could be cleared after network error
+  * CVE-2024-4774 (bmo#1886598)
+    Undefined behavior in ShmemCharMapHashEntry()</comment>
+    <requestid>1175472</requestid>
+  </revision>
 </revisionlist>

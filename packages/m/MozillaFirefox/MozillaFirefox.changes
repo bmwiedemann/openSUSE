@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed May 15 08:46:30 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 126.0
+  https://www.mozilla.org/en-US/firefox/126.0/releasenotes
+  MFSA 2024-21 (bsc#1224056)
+  * CVE-2024-4764 (bmo#1879093)
+    Use-after-free when audio input connected with multiple consumers
+  * CVE-2024-4367 (bmo#1893645)
+    Arbitrary JavaScript execution in PDF.js
+  * CVE-2024-4765 (bmo#1871109)
+    Web application manifests could have been overwritten via
+    hash collision
+  * CVE-2024-4766 (bmo#1871214, bmo#1871217)
+    Fullscreen notification could have been obscured on Firefox
+    for Android
+  * CVE-2024-4767 (bmo#1878577)
+    IndexedDB files retained in private browsing mode
+  * CVE-2024-4768 (bmo#1886082)
+    Potential permissions request bypass via clickjacking
+  * CVE-2024-4769 (bmo#1886108)
+    Cross-origin responses could be distinguished between script
+    and non-script content-types
+  * CVE-2024-4770 (bmo#1893270)
+    Use-after-free could occur when printing to PDF
+  * CVE-2024-4771 (bmo#1893891)
+    Failed allocation could lead to use-after-free
+  * CVE-2024-4772 (bmo#1870579)
+    Use of insecure rand() function to generate nonce
+  * CVE-2024-4773 (bmo#1875248)
+    URL bar could be cleared after network error
+  * CVE-2024-4774 (bmo#1886598)
+    Undefined behavior in ShmemCharMapHashEntry()
+  * CVE-2024-4775 (bmo#1887332)
+    Invalid memory access in the built-in profiler
+  * CVE-2024-4776 (bmo#1887343)
+    Window may remain disabled after file dialog is shown in
+    full-screen
+  * CVE-2024-4777 (bmo#1878199, bmo#1893340)
+    Memory safety bugs fixed in Firefox 126, Firefox ESR 115.11,
+    and Thunderbird 115.11
+  * CVE-2024-4778 (bmo#1838834, bmo#1889291, bmo#1889595,
+    bmo#1890204, bmo#1891545)
+    Memory safety bugs fixed in Firefox 126
+- requires NSS 3.100
+- removed obsolete mozilla-libproxy-fix.patch
+
+-------------------------------------------------------------------
 Mon Apr 29 18:17:48 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 125.0.3

@@ -50,7 +50,7 @@ Co-authored-by: Björn Bidar <bjorn.bidar@thaodan.de>
 diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
 --- a/modules/libpref/Preferences.cpp
 +++ b/modules/libpref/Preferences.cpp
-@@ -90,16 +90,17 @@
+@@ -92,16 +92,17 @@
  #include "PLDHashTable.h"
  #include "prdtoa.h"
  #include "prlink.h"
@@ -727,7 +727,7 @@ diff --git a/uriloader/exthandler/HandlerServiceParent.cpp b/uriloader/exthandle
  using mozilla::dom::RemoteHandlerApp;
  
  namespace {
-@@ -305,18 +305,18 @@ mozilla::ipc::IPCResult HandlerServicePa
+@@ -309,18 +309,18 @@ mozilla::ipc::IPCResult HandlerServicePa
  mozilla::ipc::IPCResult HandlerServiceParent::RecvExistsForProtocolOS(
      const nsACString& aProtocolScheme, bool* aHandlerExists) {
    if (aProtocolScheme.Length() > MAX_SCHEME_LENGTH) {
@@ -771,7 +771,7 @@ diff --git a/uriloader/exthandler/moz.build b/uriloader/exthandler/moz.build
      ]
  elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "windows":
      UNIFIED_SOURCES += [
-@@ -129,15 +131,16 @@ include("/ipc/chromium/chromium-config.m
+@@ -130,15 +132,16 @@ include("/ipc/chromium/chromium-config.m
  FINAL_LIBRARY = "xul"
  
  LOCAL_INCLUDES += [
@@ -991,7 +991,7 @@ new file mode 100644
 diff --git a/uriloader/exthandler/unix/nsMIMEInfoUnix.cpp b/uriloader/exthandler/unix/nsMIMEInfoUnix.cpp
 --- a/uriloader/exthandler/unix/nsMIMEInfoUnix.cpp
 +++ b/uriloader/exthandler/unix/nsMIMEInfoUnix.cpp
-@@ -1,48 +1,51 @@
+@@ -1,27 +1,30 @@
  /* -*- Mode: C++; tab-width: 3; indent-tabs-mode: nil; c-basic-offset: 2 -*-
   *
   * This Source Code Form is subject to the terms of the Mozilla Public
@@ -1004,6 +1004,8 @@ diff --git a/uriloader/exthandler/unix/nsMIMEInfoUnix.cpp b/uriloader/exthandler
  #include "nsIGIOService.h"
  #include "nsNetCID.h"
  #include "nsIIOService.h"
+ #include "nsLocalFile.h"
+ 
  #ifdef MOZ_ENABLE_DBUS
  #  include "nsDBusHandlerApp.h"
  #endif
@@ -1016,10 +1018,13 @@ diff --git a/uriloader/exthandler/unix/nsMIMEInfoUnix.cpp b/uriloader/exthandler
 +  return nsCommonRegistry::LoadURL(aURI);
  }
  
- NS_IMETHODIMP
- nsMIMEInfoUnix::GetHasDefaultHandler(bool* _retval) {
-   // if a default app is set, it means the application has been set from
-   // either /etc/mailcap or ${HOME}/.mailcap, in which case we don't want to
+ NS_IMETHODIMP nsMIMEInfoUnix::GetDefaultExecutable(nsIFile** aExecutable) {
+   // This needs to be implemented before FirefoxBridge will work on Linux.
+   // To implement this and be consistent, GetHasDefaultHandler and
+   // LaunchDefaultWithFile should probably be made to be consistent.
+   // Right now, they aren't. GetHasDefaultHandler reports true in cases
+   // where calling LaunchDefaultWithFile will fail due to not finding the
+@@ -37,25 +40,25 @@ nsMIMEInfoUnix::GetHasDefaultHandler(boo
    // give the GNOME answer.
    if (GetDefaultApplication()) {
      return nsMIMEInfoImpl::GetHasDefaultHandler(_retval);
@@ -1048,7 +1053,7 @@ diff --git a/uriloader/exthandler/unix/nsMIMEInfoUnix.cpp b/uriloader/exthandler
    if (*_retval) return NS_OK;
  
    return NS_OK;
-@@ -54,16 +57,31 @@ nsresult nsMIMEInfoUnix::LaunchDefaultWi
+@@ -67,16 +70,31 @@ nsresult nsMIMEInfoUnix::LaunchDefaultWi
    // give the GNOME answer.
    if (GetDefaultApplication()) {
      return nsMIMEInfoImpl::LaunchDefaultWithFile(aFile);
