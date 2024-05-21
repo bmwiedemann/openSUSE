@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat May 18 15:53:53 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.18.4:
+  + Don't allow commandline arrays when the first commandline item
+    starts with whitespace or hyphen. (CVE-2024-32462, boo#1223110)
+  + Do not store device access permission if it returned an error
+  + Fix crash with config files without a default backend set
+- includes changes from 1.18.3:
+  + Don't try to read D-Bus object properties of Request objects on
+    construction
+  + Fix various memory and file descriptor leaks.
+  + Minuscule optimization to the ScreenCast portal so that it
+    stores restoration data with a single D-Bus call, instead of two.
+  + Fix a crash in the OpenURI file when trying to open a non-
+    existing file
+  + Fix a bug in PipeWire that prevented cameras from being
+    reported reliably.
+  + Various smaller bug fixes.
+
+-------------------------------------------------------------------
 Fri Jan 12 12:48:49 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Also own the packaging directory used by portals themselves

@@ -2,6 +2,7 @@
 # spec file for package xdg-desktop-portal
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           xdg-desktop-portal
-Version:        1.18.2
+Version:        1.18.4
 Release:        0
 Summary:        A portal frontend service for Flatpak
 License:        LGPL-2.1-or-later
@@ -116,6 +117,7 @@ install -d %{buildroot}%{_datadir}/xdg-desktop-portal/portals
 %{_mandir}/man5/portals.conf.5%{?ext_man}
 
 %files devel
+%license COPYING
 %doc %{_datadir}/doc/%{name}/
 %if %{pkg_vcmp meson < 0.62.0 }
 %{_libdir}/pkgconfig/%{name}.pc
@@ -124,5 +126,6 @@ install -d %{buildroot}%{_datadir}/xdg-desktop-portal/portals
 %endif
 
 %files lang -f %{name}.lang
+%license COPYING
 
 %changelog
