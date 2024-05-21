@@ -17,7 +17,7 @@
 
 
 Name:           geary
-Version:        44.1
+Version:        46.0
 Release:        0
 Summary:        An email reader for the GNOME desktop
 License:        BSD-2-Clause AND CC-BY-3.0 AND LGPL-2.1-or-later
@@ -53,7 +53,7 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gsound)
 BuildRequires:  pkgconfig(gspell-1)
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.24
 BuildRequires:  pkgconfig(icu-uc) >= 60
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(javascriptcoregtk-4.1)
@@ -66,7 +66,7 @@ BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libunwind)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.8
 BuildRequires:  pkgconfig(sqlite3) >= 3.24
-BuildRequires:  pkgconfig(vapigen) >= 0.48.6
+BuildRequires:  pkgconfig(vapigen) >= 0.48.18
 BuildRequires:  pkgconfig(webkit2gtk-4.1)
 BuildRequires:  pkgconfig(webkit2gtk-web-extension-4.1)
 

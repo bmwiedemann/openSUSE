@@ -597,4 +597,16 @@
   + Numerous bug fixes and user interface improvements. (forwarded request 1171287 from dimstar)</comment>
     <requestid>1171407</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>d82cd63d587a8db03e39e0e2903a61f2</srcmd5>
+    <version>46.0</version>
+    <time>1716309429</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.0:
+  + Simpler notification messages.
+  + Fix navigation issues.
+  + Continue delivering messages on error.
+  + Fix one more unread count issue. (forwarded request 1175528 from dimstar)</comment>
+    <requestid>1175530</requestid>
+  </revision>
 </revisionlist>

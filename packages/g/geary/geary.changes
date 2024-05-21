@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 21 11:03:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Simpler notification messages.
+  + Fix navigation issues.
+  + Continue delivering messages on error.
+  + Fix one more unread count issue.
+
+-------------------------------------------------------------------
 Thu May  2 08:22:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 44.1:
