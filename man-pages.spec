@@ -17,7 +17,7 @@
 
 
 Name:           man-pages
-Version:        6.7
+Version:        6.8
 Release:        0
 Summary:        Linux  Manual Pages
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT

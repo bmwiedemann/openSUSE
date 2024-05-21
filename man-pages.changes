@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon May 20 07:13:02 UTC 2024 - pgajdos@suse.com
+
+- version update to 6.8
+  New and rewritten pages
+  -----------------------
+  man3type/
+          locale_t.3type
+          mbstate_t.3type
+          wchar_t.3type
+          wint_t.3type
+  Newly documented interfaces in existing pages
+  ---------------------------------------------
+  man2/
+          init_module.2
+                  MODULE_INIT_COMPRESS_FILE
+  
+          get_mempolicy.2
+          mbind.2
+          set_mempolicy.2
+                  MPOL_WEIGHTED_INTERLEAVE
+  
+          mount_setattr.2
+                  squashfs
+                  tmpfs
+                  cephfs
+                  hugetlbfs
+  man5/
+  man8/
+          proc.5
+                  subset
+  
+          elf.5
+          ld.so.8
+                  Updeprecate and explain DT_RPATH
+  man7/
+          string_copying.7
+                  strndup()
+
+-------------------------------------------------------------------
 Wed Mar 20 09:11:23 UTC 2024 - pgajdos@suse.com
 
 - version update to 6.7
