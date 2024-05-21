@@ -17,7 +17,7 @@
 
 
 Name:           jackson-bom
-Version:        2.16.1
+Version:        2.17.1
 Release:        0
 Summary:        Bill of materials POM for Jackson projects
 License:        Apache-2.0
@@ -45,6 +45,7 @@ sed -i 's/\r//' LICENSE
 # Disable plugins not needed during RPM builds
 %pom_remove_plugin ":maven-enforcer-plugin" base
 %pom_remove_plugin ":nexus-staging-maven-plugin" base
+%pom_remove_dep -r :junit-bom
 
 %build
 
