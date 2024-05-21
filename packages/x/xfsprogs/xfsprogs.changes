@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri May 17 15:34:53 UTC 2024 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to 6.8.0
+  - xfs_repair: Dump both inode details in Phase 6 duplicate file check
+  - libxfs: print the device name if flush-on-close fails
+  - xfs_db: fix leak in flist_find_ftyp()
+  - xfs_repair: support more than INT_MAX block maps
+  - xfs_repair: constrain attr fork extent count
+  - xfs_repair: support more than 2^32 owners per physical block
+  - xfs_repair: support more than 2^32 rmapbt records per AG
+  - xfs_db: add a bmbt inflation command
+  - xfs_scrub: scan whole-fs metadata files in parallel
+  - mkfs: allow sizing internal logs for concurrency
+  - mkfs: allow sizing allocation groups for concurrency
+  - mkfs: use a sensible log sector size default
+  - xfs_io: add linux madvise advice codes
+  - xfs_scrub: fix threadcount estimates for phase 6
+  - xfs_db: improve number extraction in getbitval
+  - xfs_repair: adjust btree bulkloading slack computations to match online repair
+  - xfs: make rextslog computation consistent with mkfs
+  - mkfs: fix log sunit rounding when external logs are in use
+  - libxfs: kernel sync
+
+-------------------------------------------------------------------
 Thu Apr 18 19:13:22 UTC 2024 - Anthony Iliopoulos <ailiop@suse.com>
 
 - update to 6.7.0
