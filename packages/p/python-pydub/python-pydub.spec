@@ -16,6 +16,14 @@
 #
 
 
+%if 0%{?!ffmpeg_pref:1}
+%if 0%{?suse_version} >= 1550
+%define ffmpeg_pref ffmpeg-6
+%else
+%define ffmpeg_pref ffmpeg-4
+%endif
+%endif
+
 Name:           python-pydub
 Version:        0.25.1
 Release:        0
@@ -28,19 +36,19 @@ Source:         https://github.com/jiaaro/pydub/archive/v%{version}.tar.gz#/pydu
 Patch0:         skip_libopenh264-7.patch
 # PATCH-FIX-UPSTREAM gh#jiaaro/pydub#769
 Patch1:         fix-assertions.patch
+BuildRequires:  %{ffmpeg_pref}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-BuildRequires:  ffmpeg-5
+BuildConflicts: %{ffmpeg_pref}-mini-libs
 BuildRequires:  python-rpm-macros
+Requires:       %{ffmpeg_pref}
 Recommends:     python-scipy
 Recommends:     python-simpleaudio
-Requires:       ffmpeg-5
 BuildArch:      noarch
-
 %python_subpackages
 
 %description

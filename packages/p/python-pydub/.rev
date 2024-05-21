@@ -85,4 +85,15 @@
 - Limit to ffmpeg 5.</comment>
     <requestid>1161235</requestid>
   </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>cad5e5525624ee6f11b1b918c41d38e2</srcmd5>
+    <version>0.25.1</version>
+    <time>1716309284</time>
+    <user>anag+factory</user>
+    <comment>- If ffmpeg_pref is defined, use it, otherwise use ffmpeg-6 or
+  ffmpeg-4 depening on suse_version.
+- Build with ffmpeg-6 in TW and ffmpeg-4 in Leap
+</comment>
+    <requestid>1175473</requestid>
+  </revision>
 </revisionlist>
