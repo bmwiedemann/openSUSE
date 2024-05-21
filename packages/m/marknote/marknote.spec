@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           marknote
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        Rich text notes editor
 License:        GPL-2.0-or-later
@@ -36,9 +36,10 @@ BuildRequires:  cmake(md4c)
 BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
-BuildRequires:  cmake(KF6Kirigami2) >= %{kf6_version}
-BuildRequires:  cmake(KF6KirigamiAddons) >= 1.1.0
+BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons) >= 1.2.0
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
@@ -47,7 +48,7 @@ BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Requires:       kf6-kirigami-imports >= %{kf6_version}
-Requires:       kirigami-addons6 >= 1.1.0
+Requires:       kirigami-addons6 >= 1.2.0
 Requires:       qt6-declarative-imports >= %{qt6_version}
 
 %description

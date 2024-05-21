@@ -17,4 +17,12 @@
 Depends on sr#1164320</comment>
     <requestid>1164344</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>95192366b2c7d163ea4cd3c6222fab6e</srcmd5>
+    <version>1.2.0</version>
+    <time>1716309406</time>
+    <user>anag+factory</user>
+    <comment>Update to 1.2.0</comment>
+    <requestid>1175457</requestid>
+  </revision>
 </revisionlist>
