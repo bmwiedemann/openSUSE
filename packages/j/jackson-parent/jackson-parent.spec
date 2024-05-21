@@ -17,7 +17,7 @@
 
 
 Name:           jackson-parent
-Version:        2.16
+Version:        2.17
 Release:        0
 Summary:        Parent pom for all Jackson components
 License:        Apache-2.0
