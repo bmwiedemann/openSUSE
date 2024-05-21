@@ -25,6 +25,10 @@ Group:          Amusements/Toys/Graphics
 URL:            https://hpjansson.org/chafa/
 Source0:        https://github.com/hpjansson/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  freetype2-devel
+BuildRequires:  libjpeg-devel
+BuildRequires:  librsvg-devel
+BuildRequires:  libtiff-devel
+BuildRequires:  libwebp-devel
 BuildRequires:  gcc
 BuildRequires:  glib2-devel >= 2.26
 BuildRequires:  gtk-doc
