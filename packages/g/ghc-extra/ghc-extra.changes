@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat May 11 15:55:39 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update extra to version 1.7.16.
+  1.7.16, released 2024-05-11
+      Fix to actually work with GHC 9.10
+
+-------------------------------------------------------------------
+Fri May 10 13:07:51 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update extra to version 1.7.15.
+  1.7.15, released 2024-05-10
+      #111, work with GHC 9.10
+      Test with GHC 9.8
+
+-------------------------------------------------------------------
 Sat Jul  1 19:19:07 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update extra to version 1.7.14.
