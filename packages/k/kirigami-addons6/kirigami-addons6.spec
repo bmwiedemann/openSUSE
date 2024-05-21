@@ -16,14 +16,14 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.1.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 
 %define rname kirigami-addons
 Name:           kirigami-addons6
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Add-ons for the Kirigami framework
 License:        LGPL-3.0-only

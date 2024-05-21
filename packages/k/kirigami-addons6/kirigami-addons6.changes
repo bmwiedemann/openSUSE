@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 21 08:05:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.2.1
+  * Fix regression with double accept
+  * Update maintainer name
+  * Define minimum requirement on framework
+
+-------------------------------------------------------------------
 Fri May 10 08:56:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.2.0:
