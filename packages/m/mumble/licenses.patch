@@ -1,7 +1,7 @@
-Index: mumble-1.5.629/scripts/generate_license_header.py
+Index: mumble-1.5.634/scripts/generate_license_header.py
 ===================================================================
---- mumble-1.5.629.orig/scripts/generate_license_header.py
-+++ mumble-1.5.629/scripts/generate_license_header.py
+--- mumble-1.5.634.orig/scripts/generate_license_header.py
++++ mumble-1.5.634/scripts/generate_license_header.py
 @@ -22,49 +22,10 @@ repoRoot = os.path.normpath(os.path.join
  # List of (3rdparty) licenses  [<variableName>, <pathToLicenseFile>, <DisplayName>, <URL>, (<define-guard>)?]
  licenses = [
@@ -16,9 +16,8 @@ Index: mumble-1.5.629/scripts/generate_license_header.py
 -    ["licenseMinHook", "3rdparty/minhook/LICENSE.txt", "MinHook", "https://github.com/TsudaKageyu/minhook", "Q_OS_WIN64"],
 -    ["licenseQtTranslations", "src/mumble/qttranslations/LICENSE",
 -        "Additional Qt translations", "https://www.virtualbox.org/ticket/2018", "USING_BUNDLED_QT_TRANSLATIONS"],
--    ["licenseEmojiOne", "3rdPartyLicenses/cc_by_sa_40_legalcode.txt", "Emoji One artwork", "http://emojione.com/"],
+     ["licenseFlagIcons", "3rdparty/flag-icons/LICENSE", "flag-icons", "https://flagicons.lipis.dev/" ],
 -    ["licenseXInputCheck", "3rdparty/xinputcheck-src/COPYING.txt", "XInputCheck (SDL_IsXInput function)", "https://www.libsdl.org/"],
-+    ["licenseEmojiOne", "icons/flags/LICENSE.md", "Emoji One artwork", "http://emojione.com/"],
      ["licenseQQBonjour", "3rdparty/qqbonjour/LICENSE", "QQBonjour", "https://doc.qt.io/archives/qq/qq23-bonjour.html"],
      ["licenseSmallFT", "3rdparty/smallft/LICENSE", "smallft", "https://www.xiph.org"],
 -    ["licenseOldStyleLicenseHeaders", "3rdPartyLicenses/mumble-old-license-headers/LICENSE.txt", "Old-style Mumble license headers", "https://www.mumble.info"],

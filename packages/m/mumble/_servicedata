@@ -1,6 +1,6 @@
 <servicedata>
   <service name="tar_scm">
     <param name="url">https://github.com/mumble-voip/mumble.git</param>
-    <param name="changesrevision">e2b376b66eae551c4e2bad172598e0e7b917fd4d</param>
+    <param name="changesrevision">5ae5c1756c049b9571289ef9cea6ecb49407c5e8</param>
   </service>
 </servicedata>

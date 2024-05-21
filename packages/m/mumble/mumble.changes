@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 20 07:04:42 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.5.634:
+  * first stable release in the 1.5.x series
+  * flag icons replaced with an MIT licensed version
+- replace mumble-cxx17.patch with a cmake option
+- drop mumble-1.5.629-The-OCB-design-is-in-the-public-domain.patch
+  now upstream
+
+-------------------------------------------------------------------
 Thu Apr 25 20:44:16 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - enable and fix tests: TestSettingsJSONSerialization fails loading

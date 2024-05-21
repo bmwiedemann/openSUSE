@@ -21,12 +21,13 @@
 %bcond_without tests
 %bcond_without server
 Name:           mumble
-Version:        1.5.629
+Version:        1.5.634
 Release:        0
 Summary:        Voice Communication Client for Gamers
 # Most files are BSD-3-Clause
 # 3rdparty/arc4random/LICENSE: MIT
 # 3rdparty/SPSCQueue: MIT
+# 3rdparty/flag-icons: MIT
 License:        BSD-2-Clause AND BSD-3-Clause AND MIT
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://www.mumble.info/
@@ -34,11 +35,9 @@ Source:         %{name}-%{version}.tar.xz
 Source6:        baselibs.conf
 # PATCH-FIX-UPSTREAM fix-64bit-only-plugins.patch -- Requires 64bit memory alignment ( https://github.com/mumble-voip/mumble/issues/5849 )
 Patch0:         fix-64bit-only-plugins.patch
-Patch2:         mumble-cxx17.patch
 # Patches related to dependency unbundling
 Patch100:       licenses.patch
 Patch101:       mumble-unbundle-tracy.patch
-Patch102:       mumble-1.5.629-The-OCB-design-is-in-the-public-domain.patch
 Patch103:       mumble-1.5.629-unbundle-audio-backends.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.20
@@ -162,6 +161,7 @@ won't be audible to other players.
 %if %{with tests}
 	-Dtests:BOOL=ON \
 %endif
+	-DCMAKE_CXX_STANDARD=17 \
 %{nil}
 
 %cmake_build
