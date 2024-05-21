@@ -1,9 +1,0 @@
--------------------------------------------------------------------
-Tue Aug 31 12:49:26 UTC 2021 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
-
-- Vendor etcdctl and server as there are multiple go.mod files
-
--------------------------------------------------------------------
-Mon Aug 30 11:01:17 UTC 2021 - Richard Brown <rbrown@suse.com>
-
-- Initial Package 

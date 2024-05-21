@@ -1,6 +1,0 @@
-<servicedata>
-<service name="tar_scm">
-                <param name="url">https://github.com/coreos/etcd.git</param>
-              <param name="changesrevision">94745a4eed0425653b3b4275a208d38babceeaec</param></service><service name="tar_scm">
-                <param name="url">git://github.com/etcd-io/etcd.git</param>
-              <param name="changesrevision">946a5a6f25c3b6b89408ab447852731bde6e6289</param></service></servicedata>
