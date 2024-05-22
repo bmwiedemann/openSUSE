@@ -45,8 +45,7 @@ Authors:
     Jan Kiszka <kiszka@rts.uni-hannover.de>
 
 %prep
-%setup  -n smictrl
-%patch0 -p1
+%autosetup -p1 -n smictrl
 
 %build
 CFLAGS=$RPM_OPT_FLAGS make %{?jobs:-j%jobs}

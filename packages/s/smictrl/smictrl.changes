@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:39:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Fri Jun  8 07:53:52 UTC 2012 - pgajdos@suse.com
 
 - add zlib-devel into BuildRequires
