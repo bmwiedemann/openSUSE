@@ -20,6 +20,7 @@ LABEL org.opencontainers.image.title="kubevirt libguestfs-tools container"
 LABEL org.opencontainers.image.description="Container for libguestfs tools"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
+LABEL org.opencontainers.image.source="%SOURCEURL%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/libguestfs-tools:%%PKG_VERSION%%.%RELEASE%"
 # endlabelprefix
