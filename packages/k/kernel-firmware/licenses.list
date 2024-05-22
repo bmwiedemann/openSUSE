@@ -205,5 +205,4 @@ ti-tas2781:	sound		GPL-2 GPL-3
 ti-tas2563:	sound		GPL-2 GPL-3
 Mont-TSSE:	platform	LICENSE.montage
 panthor:	platform	LICENCE.mali_csffw
-
-
+isp:		amdgpu		LICENSE.amdisp

@@ -215,4 +215,5 @@ ti-tas2781:	sound		snd-hda-scodec-tas2781-i2c
 ti-tas2563:	sound		snd-hda-scodec-tas2781-i2c
 Mont-TSSE:	platform
 panthor:	platform
+isp:		amdgpu		amdgpu
 ast:		platform
