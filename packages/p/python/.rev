@@ -4130,4 +4130,12 @@ However, upstream development now focuses on 3.x series.
   - sparc_longdouble.patch</comment>
     <requestid>1175099</requestid>
   </revision>
+  <revision rev="197" vrev="48">
+    <srcmd5>01861162ecc08da957da311665ccb6df</srcmd5>
+    <version>2.7.18</version>
+    <time>1716406176</time>
+    <user>anag+factory</user>
+    <comment>- Restore _multibuild</comment>
+    <requestid>1175721</requestid>
+  </revision>
 </revisionlist>
