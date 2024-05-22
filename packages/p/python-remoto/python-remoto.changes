@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 15 02:46:14 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+- Add patch support-pytest-8.patch:
+  * Don't call deprecated methods that break with Pytest 8.
+
+-------------------------------------------------------------------
 Fri Apr  8 09:21:48 UTC 2022 - pgajdos@suse.com
 
 - version update to 1.2.1

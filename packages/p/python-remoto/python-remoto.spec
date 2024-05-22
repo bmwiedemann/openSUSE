@@ -1,7 +1,7 @@
 #
 # spec file for package python-remoto
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-remoto
 Version:        1.2.1
 Release:        0
@@ -26,9 +25,13 @@ URL:            https://github.com/alfredodeza/remoto
 Source0:        https://files.pythonhosted.org/packages/source/r/remoto/remoto-%{version}.tar.gz
 # https://github.com/alfredodeza/remoto/commit/aa74f65bb59dc46998e72e4bdcd070287e4e2af6
 Patch0:         python-remoto-no-mock.patch
+# PATCH-FIX-UPSTREAM gh#alfredodeza/remoto#69
+Patch1:         support-pytest-8.patch
 BuildRequires:  %{python_module execnet}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module virtualenv}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-execnet
@@ -49,11 +52,11 @@ connections and processes.
 
 %build
 export REMOTO_NO_VENDOR=no
-%python_build
+%pyproject_wheel
 
 %install
 export REMOTO_NO_VENDOR=no
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,6 +65,7 @@ export REMOTO_NO_VENDOR=no
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/remoto
+%{python_sitelib}/remoto-%{version}.dist-info
 
 %changelog
