@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 22 11:59:17 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Add keyring.patch to unlock Gnome Keyring if locked
+
+-------------------------------------------------------------------
 Sun Apr 21 08:50:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.4.2:

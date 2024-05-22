@@ -26,6 +26,8 @@ License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/ProtonVPN/python-proton-vpn-network-manager
 Source:         https://github.com/ProtonVPN/python-proton-vpn-network-manager/archive/refs/tags/v%{version}.tar.gz
+# https://github.com/ProtonVPN/proton-vpn-gtk-app/issues/43
+Patch1:         keyring.patch
 BuildRequires:  %{python_module gobject}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module proton-core}
