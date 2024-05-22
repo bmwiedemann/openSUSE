@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 22 08:37:28 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.4.13:
+  * Add preserve-ns in README.md
+  * fix blank lines for namespace, add new flag --preserve-ns
+  * Adjusting namespace creation to ignore if there is no namespace
+  * Add namespace to metadata
+
+-------------------------------------------------------------------
 Sat Apr 20 11:35:11 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.4.12:
