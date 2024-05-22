@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define library_version 1.0.0
 %define library_soversion 1
 
@@ -31,6 +32,9 @@ BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
+BuildRequires:  libstdc++-devel
+BuildRequires:  ninja
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(aws-c-auth)
 BuildRequires:  cmake(aws-c-cal)
 BuildRequires:  cmake(aws-c-common)
@@ -43,9 +47,6 @@ BuildRequires:  cmake(aws-c-s3)
 BuildRequires:  cmake(aws-c-sdkutils)
 BuildRequires:  cmake(aws-checksums)
 BuildRequires:  cmake(s2n)
-BuildRequires:  libstdc++-devel
-BuildRequires:  ninja
-BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libssl)
@@ -110,8 +111,7 @@ AWS C++ wrapper for the following AWS SDK C libraries
 This package contains development files.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %define __builder ninja
