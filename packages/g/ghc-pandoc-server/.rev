@@ -47,4 +47,12 @@
     <comment>Update Haskell ecosystem to GHC version 9.8.2.</comment>
     <requestid>1157260</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a3ae5d1cd4849e07b9def6112a645c64</srcmd5>
+    <version>0.1.0.6</version>
+    <time>1716406312</time>
+    <user>anag+factory</user>
+    <comment>Fix ghc-pandoc deps</comment>
+    <requestid>1175809</requestid>
+  </revision>
 </revisionlist>
