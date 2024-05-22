@@ -20,6 +20,7 @@ LABEL org.opencontainers.image.title="kubevirt virt-exportserver container"
 LABEL org.opencontainers.image.description="HTTP server for the VirtualMachineExport resources"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
+LABEL org.opencontainers.image.source="%SOURCEURL%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/virt-exportserver:%%PKG_VERSION%%.%RELEASE%"
 # endlabelprefix
