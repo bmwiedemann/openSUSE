@@ -4987,4 +4987,17 @@ Chromium 123.0.6312.58 (boo#1221732)</comment>
 boo#1224178</comment>
     <requestid>1175076</requestid>
   </revision>
+  <revision rev="420" vrev="1">
+    <srcmd5>e56fd18b79121d80ed23925fe70be500</srcmd5>
+    <version>125.0.6422.76</version>
+    <time>1716406221</time>
+    <user>anag+factory</user>
+    <comment>- Chromium 125.0.6422.76 (boo#1224818)
+  * CVE-2024-5157: Use after free in Scheduling
+  * CVE-2024-5158: Type Confusion in V8
+  * CVE-2024-5159: Heap buffer overflow in ANGLE
+  * CVE-2024-5160: Heap buffer overflow in Dawn
+  * Various fixes from internal audits, fuzzing and other initiatives</comment>
+    <requestid>1175671</requestid>
+  </revision>
 </revisionlist>

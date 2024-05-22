@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 21 20:47:44 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 125.0.6422.76 (boo#1224818)
+  * CVE-2024-5157: Use after free in Scheduling
+  * CVE-2024-5158: Type Confusion in V8
+  * CVE-2024-5159: Heap buffer overflow in ANGLE
+  * CVE-2024-5160: Heap buffer overflow in Dawn
+  * Various fixes from internal audits, fuzzing and other initiatives
+
+-------------------------------------------------------------------
 Thu May 16 16:57:33 CEST 2024 - ro@suse.de
 
 - Chromium 125.0.6422.60 (boo#1224341)
