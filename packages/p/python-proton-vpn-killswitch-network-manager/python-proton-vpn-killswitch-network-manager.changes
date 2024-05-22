@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 22 11:40:07 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Update to 0.4.4
+  * Fix random crashes when enabling/disabling the kill switch
+
+-------------------------------------------------------------------
 Tue Mar 19 15:10:10 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Build for Leap
