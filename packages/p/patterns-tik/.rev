@@ -17,4 +17,14 @@
 - Move optional modules into image definition instead of patterns</comment>
     <requestid>1173957</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6a53639247a01f70049eace8d2135895</srcmd5>
+    <version>1.0</version>
+    <time>1716406383</time>
+    <user>anag+factory</user>
+    <comment>- Require coreutils-systemd (boo#1224812)
+
+- Require gsettings-backend-dconf (boo#1224473, boo#1224472)</comment>
+    <requestid>1175817</requestid>
+  </revision>
 </revisionlist>

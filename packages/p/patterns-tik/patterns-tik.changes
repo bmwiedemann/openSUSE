@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 22 12:01:57 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Require coreutils-systemd (boo#1224812)
+
+-------------------------------------------------------------------
+Wed May 22 12:00:14 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Require gsettings-backend-dconf (boo#1224473, boo#1224472)
+
+-------------------------------------------------------------------
 Tue May 14 08:27:09 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Correct architecture support 

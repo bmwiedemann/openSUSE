@@ -68,6 +68,7 @@ Requires:       btrfsprogs
 Requires:       ca-certificates
 Requires:       ca-certificates-mozilla
 Requires:       coreutils
+Requires:       coreutils-systemd
 Requires:       glibc
 Suggests:       busybox-hostname
 Requires:       NetworkManager
@@ -208,8 +209,9 @@ Requires:       kernel-firmware-all
 #AEON:Requires:       sof-firmware
 
 ### Packages formerly provided by desktop-gnome
-Requires:       gdm-branding-Aeon
+Requires:       gsettings-backend-dconf
 Requires:       distribution-logos-openSUSE-Aeon
+Requires:       gdm-branding-Aeon
 # gnome-initial-setup requirements
 #AEON:Requires:       gnome-initial-setup
 Requires:       gjs
