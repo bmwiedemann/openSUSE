@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 22 10:09:11 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add azure-cli-core to BuildRequires and Requires
+- Remove azure-cli-nspkg from BuildRequires and Requires
+- Remove deletion of azure-cli namespace files
+
+-------------------------------------------------------------------
 Thu Apr  4 13:16:55 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Switch package to modern Python Stack on SLE-15

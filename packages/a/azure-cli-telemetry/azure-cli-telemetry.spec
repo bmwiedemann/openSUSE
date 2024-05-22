@@ -36,7 +36,7 @@ BuildRequires:  %{pythons}-azure-nspkg >= 3.0.0
 BuildRequires:  %{pythons}-pip
 BuildRequires:  %{pythons}-setuptools
 BuildRequires:  %{pythons}-wheel
-BuildRequires:  azure-cli-nspkg
+BuildRequires:  azure-cli-core
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       %{pythons}-applicationinsights < 0.12
@@ -44,7 +44,7 @@ Requires:       %{pythons}-applicationinsights >= 0.11.1
 Requires:       %{pythons}-azure-nspkg >= 3.0.0
 Requires:       %{pythons}-portalocker < 3.0
 Requires:       %{pythons}-portalocker >= 1.6
-Requires:       azure-cli-nspkg
+Requires:       azure-cli-core
 Conflicts:      azure-cli < 2.0.0
 
 BuildArch:      noarch
@@ -68,10 +68,6 @@ install -m 644 %{SOURCE1} %{_builddir}/azure-cli-telemetry-%{version}
 %install
 %pyproject_install
 %fdupes %{buildroot}%{_sitelibdir}
-rm -rf %{buildroot}%{_sitelibdir}/azure/cli/__init__.*
-rm -rf %{buildroot}%{_sitelibdir}/azure/cli/__pycache__
-rm -rf %{buildroot}%{_sitelibdir}/azure/__init__.*
-rm -rf %{buildroot}%{_sitelibdir}/azure/__pycache__
 
 %files
 %defattr(-,root,root,-)

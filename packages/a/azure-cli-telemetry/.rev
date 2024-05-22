@@ -93,4 +93,14 @@
   + Update name for dist directory in %files section (forwarded request 1164960 from glaubitz)</comment>
     <requestid>1165353</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>28a8bb57f9ff5534ead46cd6098921db</srcmd5>
+    <version>1.1.0</version>
+    <time>1716406338</time>
+    <user>anag+factory</user>
+    <comment>- Add azure-cli-core to BuildRequires and Requires
+- Remove azure-cli-nspkg from BuildRequires and Requires
+- Remove deletion of azure-cli namespace files (forwarded request 1175742 from glaubitz)</comment>
+    <requestid>1175757</requestid>
+  </revision>
 </revisionlist>
