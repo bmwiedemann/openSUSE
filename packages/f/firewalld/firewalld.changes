@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  9 18:58:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.2:
+  * fix(policy): allow forward ports w/ to-addr for egress-
+    zone=HOST
+  * fix(rich): fix range check for large rule limit
+  * fix(tests): fix skip detection in fw-in-container environment
+
+-------------------------------------------------------------------
 Mon Jan 29 17:05:05 UTC 2024 - Mohd Saquib <mohd.saquib@suse.com>
 
 - update to 2.1.1:
@@ -29,7 +38,7 @@ Wed Nov 29 07:10:44 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
 
 - update to 2.0.2:
   * fix(policy): runtime dispatch update if *-zone=ANY (e8b9637)
-  * fix(nm): release NM client after a timeout (d534f07) 
+  * fix(nm): release NM client after a timeout (d534f07)
 
 -------------------------------------------------------------------
 Tue Oct  3 06:42:21 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
@@ -55,17 +64,17 @@ Tue Oct  3 06:42:21 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
 -------------------------------------------------------------------
 Mon Sep 25 01:29:47 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- python3-dbus isn't correct either, it's python3-dbus-python. 
+- python3-dbus isn't correct either, it's python3-dbus-python.
 
 -------------------------------------------------------------------
 Thu Sep 21 06:26:34 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Correct Requires, python3-slip-dbus -> python3-dbus. 
+- Correct Requires, python3-slip-dbus -> python3-dbus.
 
 -------------------------------------------------------------------
 Tue Aug 22 10:47:06 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
 
-- fix(cli): all --list-all-zones output identical (boo#1213609) 
+- fix(cli): all --list-all-zones output identical (boo#1213609)
   [+ fix_list_all_zones_output.patch]
 
 -------------------------------------------------------------------
@@ -75,9 +84,9 @@ Sat Jun 24 14:20:24 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
   * This is a major release. The major version is being bumped symbolically
     to reflect significant changes done in commit f4d2b80 ("fix(policy):
     disallow zone drifting"). It does not contain any deliberate breaking
-    changes. 
+    changes.
   * Complete changelog:
-    https://github.com/firewalld/firewalld/releases/tag/v2.0.0 
+    https://github.com/firewalld/firewalld/releases/tag/v2.0.0
 
 -------------------------------------------------------------------
 Thu Jun 15 07:48:48 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
@@ -230,14 +239,14 @@ Mon Mar  7 16:45:58 UTC 2022 - Martin Wilck <mwilck@suse.com>
 -------------------------------------------------------------------
 Fri Mar  4 20:30:02 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
-- Always own %_modprobedir (bsc#1196275, jsc#SLE-20639) 
+- Always own %_modprobedir (bsc#1196275, jsc#SLE-20639)
 
 -------------------------------------------------------------------
 Thu Mar  3 14:26:57 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Fix modprobe.d directory for SLE15 SP3
 - Cleanup dependencies:
-  - ipset, ebtables and iptables are purely optional and deprecated, 
+  - ipset, ebtables and iptables are purely optional and deprecated,
     so don't require them
   - sysconfig is not needed at all
   - Don't hard require systemd, we don't have and need that in containers
@@ -890,7 +899,7 @@ Tue Nov 28 12:30:59 UTC 2017 - mchandras@suse.de
 -------------------------------------------------------------------
 Thu Nov 23 13:37:50 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------
@@ -941,7 +950,7 @@ Wed Nov 15 12:36:09 UTC 2017 - mchandras@suse.de
   * firewall.core.fw_zone: Fix IPv6 address in rich rule forward ports
   * add Murmur (Mumble server) service
 - spec file fixes to avoid rpmlint warnings about duplicate files.
- 
+
 -------------------------------------------------------------------
 Wed Nov  8 17:25:40 UTC 2017 - mpluskal@suse.com
 
@@ -990,7 +999,7 @@ Mon Mar 27 22:27:20 UTC 2017 - mchandras@suse.de
   * firewall.core.fw_ipset: get_ipset may not ckeck if set is applied by default
   * firewall.core.fw_transaction: Use LastUpdatedOrderedDict for zone transactions
 - Remove upstream patch:
-  * 0001-firewall.core.fw_ipset-get_ipset-may-not-ckeck-if-se.patch 
+  * 0001-firewall.core.fw_ipset-get_ipset-may-not-ckeck-if-se.patch
 
 -------------------------------------------------------------------
 Mon Feb 13 16:20:27 UTC 2017 - mchandras@suse.de
@@ -1037,7 +1046,7 @@ Mon Feb 13 16:20:27 UTC 2017 - mchandras@suse.de
   * New services mssql, kibana, elasticsearch, quassel, bitcoin-rpc, bitcoin-testnet-rpc, bitcoin-testnet, bitcoin and spideroak-lansync
   * Translation updates
 - Add upstream patch to fix ipset overloading from /etc/firewalld/ipsets (gh#t-woerner/firewalld#206)
-  * 0001-firewall.core.fw_ipset-get_ipset-may-not-ckeck-if-se.patch 
+  * 0001-firewall.core.fw_ipset-get_ipset-may-not-ckeck-if-se.patch
 
 -------------------------------------------------------------------
 Mon Dec  5 09:41:03 UTC 2016 - mchandras@suse.de
