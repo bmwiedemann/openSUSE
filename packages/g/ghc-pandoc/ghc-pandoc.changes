@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May 11 20:57:34 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update pandoc to version 3.2.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/pandoc-3.2/src/changelog.md
+
+-------------------------------------------------------------------
 Sun Apr  7 15:38:26 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update pandoc to version 3.1.13.
