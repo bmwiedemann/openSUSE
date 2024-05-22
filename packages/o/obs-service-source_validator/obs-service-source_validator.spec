@@ -34,6 +34,7 @@ Source:         %{name}-%{version}.tar.bz2
 BuildRequires:  %{build_pkg_name}
 BuildRequires:  zstd
 Requires:       %{_bindir}/cpio
+Requires:       %{_bindir}/unzip
 Requires:       %{_bindir}/xmllint
 Requires:       %{build_pkg_name}
 Requires:       patch

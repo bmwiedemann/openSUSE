@@ -714,4 +714,12 @@ last submission had wrong tar ball for unknown reason</comment>
 - Add deb dependency on libmodule-build-perl and libxml2-utils</comment>
     <requestid>1174432</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>544cf762382226e3005a131fbff21703</srcmd5>
+    <version>0.36</version>
+    <time>1716406203</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1175594</requestid>
+  </revision>
 </revisionlist>
