@@ -229,4 +229,15 @@
     <comment></comment>
     <requestid>1127517</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>26fd059d5ac5e3ddf0a5f9c6e541f6b7</srcmd5>
+    <version>1.0.6</version>
+    <time>1716406476</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.6
+  * Fix loadfile for mpv v0.38.0
+  * Add play_bytes convenience function
+  * Add play_context convenience function</comment>
+    <requestid>1175913</requestid>
+  </revision>
 </revisionlist>

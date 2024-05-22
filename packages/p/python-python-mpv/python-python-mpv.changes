@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 22 17:35:36 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to version 1.0.6
+  * Fix loadfile for mpv v0.38.0
+  * Add play_bytes convenience function
+  * Add play_context convenience function
+
+-------------------------------------------------------------------
 Sun Nov 19 06:30:55 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.0.5
