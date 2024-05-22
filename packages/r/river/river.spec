@@ -17,22 +17,25 @@
 
 
 Name:           river
-Version:        0.3.0
+Version:        0.3.2
 Release:        0
 Summary:        A dynamic tiling Wayland compositor
 License:        GPL-3.0-only
 URL:            https://github.com/riverwm/river
 Source0:        https://codeberg.org/river/river/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        https://codeberg.org/river/river/releases/download/v%{version}/%{name}-%{version}.tar.gz.sig
-Source2:        river-run.sh
-Source3:        river-portals.conf
-Source4:        https://isaacfreund.com/public_key.txt#/%{name}.keyring
+Source2:        vendor.tar.zst
+Source3:        river-run.sh
+Source4:        river-portals.conf
+Source5:        https://isaacfreund.com/public_key.txt#/%{name}.keyring
+Source6:        README-suse-maintenance.md
 BuildRequires:  libevdev-devel
 BuildRequires:  libpixman-1-0-devel
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc >= 1.9.2
 BuildRequires:  zig
 BuildRequires:  zig-rpm-macros
+BuildRequires:  zstd
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbus-1) >= 1.10
@@ -71,7 +74,7 @@ ExclusiveArch:  x86_64 aarch64 riscv64 %{mips64}
 River is a dynamic tiling Wayland compositor with flexible runtime configuration.
 
 %prep
-%autosetup -n %{name}-%{version}
+%autosetup -n %{name}-%{version} -a2
 
 %package        riverctl
 Summary:        Command-line interface for controlling river
@@ -142,12 +145,20 @@ setting up sane environmental variables before running river in
 `river.sh`. These files are not part of the river project.
 
 %build
-%zig_build -Dpie -Dxwayland
+%ifarch aarch64
+%zig_build -Dpie -Dxwayland --global-cache-dir vendor/
+%else
+%zig_build -Dno-llvm -Dpie -Dxwayland --global-cache-dir vendor/
+%endif
 
 %install
 mkdir -p %{buildroot}%{_datadir}/wayland-sessions
 mkdir -p %{buildroot}%{_datadir}/river
-%zig_install -Dpie -Dxwayland
+%ifarch aarch64
+%zig_install -Dpie -Dxwayland --global-cache-dir vendor/
+%else
+%zig_install -Dno-llvm -Dpie -Dxwayland --global-cache-dir vendor/
+%endif
 
 # Installing the desktop file for easy login manager access
 sed -i 's|Exec=river|Exec=river-run.sh|' contrib/river.desktop
@@ -156,14 +167,14 @@ cp -rv contrib %{buildroot}%{_datadir}/river/contrib
 cp -v %{SOURCE2} %{buildroot}%{_datadir}/river/contrib/
 
 # Install convenient script to run river
-install -Dpm 0755 %{SOURCE2} %{buildroot}%{_bindir}
+install -Dpm 0755 %{SOURCE3} %{buildroot}%{_bindir}
 
 # XDP >= 0.18.0 requires a portal for the environment and onwards
-install -Dpm 0644 -t %{buildroot}%{_datadir}/xdg-desktop-portal/ %{SOURCE3}
+install -Dpm 0644 -t %{buildroot}%{_datadir}/xdg-desktop-portal/ %{SOURCE4}
 
 %files
 %license LICENSE
-%doc README.md CONTRIBUTING.md example
+%doc README.md CONTRIBUTING.md example PACKAGING.md
 %{_bindir}/river
 %{_bindir}/river-run.sh
 %dir %{_datadir}/wayland-sessions

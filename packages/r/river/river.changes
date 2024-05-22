@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue May 21 15:04:57 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.3.2:
+  * build: update to Zig 0.12
+  * build: add -Dno-llvm build option
+  * build: switch to the Zig package manager
+- Add ./README-suse-maintenance.md
+- Add ./vendor.tar.zst. Zig uses a package manager now.
+- Only do LLVM builds for aarch64
+- Changes since 0.3.1:
+  * input: prevent duplicate input configs
+  * input: fix scroll-factor resetting if unspecified
+  * input: change ScrollFactor and MapToOutput to align with other options
+  * XdgToplevel: don't update geometry if configure inflight
+  * XdgToplevel: update clip on geometry x/y change
+  * Cursor: don't hide while pointer constraint active
+  * Keyboard: fix redundant leave/enter on creation
+  * Server: fix filtering of newly created globals
+  * InputPopup: fix naming
+  * TextInput: ignore enable requests without focus
+  * InputPopup: fix minor issues, simplify code
+  * PointerConstraint: remove overly tight assert
+  * PointerConstraint: remove overly tight assert 2
+  * bulid: bump version to 0.3.1
+  * input-method-v2: Implement popups
+  * command/swap: fix cursor warp on focus change
+
+-------------------------------------------------------------------
 Tue Apr 16 16:56:50 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 0.3.0:
