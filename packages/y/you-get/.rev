@@ -442,4 +442,16 @@
 </comment>
     <requestid>1042216</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>f933bdb463e5b664e755e7481e71ba0b</srcmd5>
+    <version>0.4.1700</version>
+    <time>1716406323</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.4.1700
+  * Bilibili: fix extraction
+  * TikTok: fix extraction
+  * X (Twitter): fix extraction
+</comment>
+    <requestid>1175698</requestid>
+  </revision>
 </revisionlist>
