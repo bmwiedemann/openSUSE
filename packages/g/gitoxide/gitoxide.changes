@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 22 12:23:37 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.36.0:
+  * Fixes for CVE-2024-35186 and CVE-2024-35197
+  * checkout respects options for core.protectHFS and
+    core.protectNTFS
+  * more robustness in the face of a trampling-herd of threads
+    loading a single index
+
+-------------------------------------------------------------------
 Tue Apr 16 07:45:12 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 0.35.0:
