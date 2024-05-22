@@ -1,7 +1,7 @@
 #
 # spec file for package tlp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 %define _name TLP
-%define systemd_sleepdir %{_unitdir}/system-sleep
+%define systemd_sleepdir %{_systemd_util_dir}/system-sleep
 %if 0%{?suse_version} > 01500
 %define _udevdir %(pkg-config --variable udev_dir udev || echo %{_prefix}/lib/udev)
 %else
 %{!?_udevdir: %define _udevdir %{_prefix}/lib/udev}
 %endif
 %{!?_udevrulesdir: %define _udevrulesdir %{_udevdir}/rules.d}
-
 Name:           tlp
 Version:        1.6.1
 Release:        0
@@ -35,6 +34,7 @@ URL:            http://linrunner.de/tlp
 Source:         https://github.com/linrunner/%{_name}/archive/%{version}.tar.gz#/%{_name}-%{version}.tar.gz
 Source10:       tlp-rpmlintrc
 BuildRequires:  gzip
+BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(udev)
 Requires:       hdparm
@@ -50,6 +50,7 @@ Recommends:     lsb-release
 Recommends:     smartmontools
 Conflicts:      laptop-mode-tools
 Conflicts:      power-profiles-daemon
+Conflicts:      tuned
 BuildArch:      noarch
 %{?systemd_ordering}
 
@@ -100,23 +101,23 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rctlp
 
 %post
 %service_add_post tlp.service
-/usr/bin/systemctl mask systemd-rfkill.service
-/usr/bin/systemctl mask systemd-rfkill.socket
-/usr/bin/systemctl mask power-profiles-daemon.service
+%{_bindir}/systemctl mask systemd-rfkill.service
+%{_bindir}/systemctl mask systemd-rfkill.socket
+%{_bindir}/systemctl mask power-profiles-daemon.service
 
 %postun
 %service_del_postun tlp.service
 if [ $1 -eq 0 ] ; then
-    /usr/bin/systemctl unmask systemd-rfkill.service
-    /usr/bin/systemctl unmask systemd-rfkill.socket
-    /usr/bin/systemctl unmask power-profiles-daemon.service
+    %{_bindir}/systemctl unmask systemd-rfkill.service
+    %{_bindir}/systemctl unmask systemd-rfkill.socket
+    %{_bindir}/systemctl unmask power-profiles-daemon.service
 fi
 
 %preun
 %service_del_preun tlp.service
 
 %post rdw
-/usr/bin/systemctl enable NetworkManager-dispatcher.service >/dev/null 2>&1 || :
+%{_bindir}/systemctl enable NetworkManager-dispatcher.service >/dev/null 2>&1 || :
 
 %files
 %license COPYING LICENSE

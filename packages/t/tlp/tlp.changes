@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 22 16:08:00 UTC 2024 - Thomas Renninger <trenn@suse.de>
+
+- Conflicts with tuned (bsc#1224202)
+- Spec cleanups
+
+-------------------------------------------------------------------
+Thu May  9 07:19:42 UTC 2024 - munix9@googlemail.com
+
+- Fix systemd_sleepdir: It must be %{_systemd_util_dir}/system-sleep
+  and not %{_unitdir}/system-sleep (/usr/lib/systemd/system-sleep
+  instead of /usr/lib/systemd/system/system-sleep).
+
+-------------------------------------------------------------------
 Mon Sep 25 14:01:42 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update to 1.6.1 18.09.2023
