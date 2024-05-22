@@ -20,6 +20,7 @@ LABEL org.opencontainers.image.title="Cloner container for host assisted cloning
 LABEL org.opencontainers.image.description="Source and Target cloner image for host assisted cloning"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
+LABEL org.opencontainers.image.source="%SOURCEURL%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/cdi-cloner:%%PKG_VERSION%%.%RELEASE%"
 # endlabelprefix
