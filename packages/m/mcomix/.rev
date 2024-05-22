@@ -77,4 +77,26 @@
 </comment>
     <requestid>1128167</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1e476f64842566c187e583f3c8776541</srcmd5>
+    <version>3.1.0</version>
+    <time>1716406408</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1.0:
+  * Image colors can be negated in the Image Enhancement dialog.
+  * &quot;Fit to size&quot; has been generalised.
+  * Fixed regression from 2.0.0 in Library collection list.
+  * Added official MIME types for CBZ/CBR files
+  * Improved robustness to invalid UTF-8
+- update to 3.0.0:
+  * MComix uses pyproject.toml instead of the now obsolete setup.py
+  * application meta files are no longer copied automatically by 
+    the installation process
+  * Fixed bug in Python PDF extraction that prevented rotated PDF
+    images being displayed without rotation.
+  * MComix previously didn't remember to restore the &quot;maximized&quot; 
+    window state when restarting.
+</comment>
+    <requestid>1175872</requestid>
+  </revision>
 </revisionlist>

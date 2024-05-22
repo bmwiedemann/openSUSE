@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May 21 15:32:29 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- update to 3.1.0:
+  * Image colors can be negated in the Image Enhancement dialog.
+  * "Fit to size" has been generalised.
+  * Fixed regression from 2.0.0 in Library collection list.
+  * Added official MIME types for CBZ/CBR files
+  * Improved robustness to invalid UTF-8
+- update to 3.0.0:
+  * MComix uses pyproject.toml instead of the now obsolete setup.py
+  * application meta files are no longer copied automatically by 
+    the installation process
+  * Fixed bug in Python PDF extraction that prevented rotated PDF
+    images being displayed without rotation.
+  * MComix previously didn't remember to restore the "maximized" 
+    window state when restarting.
+
+-------------------------------------------------------------------
 Wed Nov 22 16:03:49 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - fixed typo: Requires: /usr/bin/chardet -> Requires: /usr/bin/chardetect
