@@ -55,4 +55,14 @@
     <comment>- Correct architecture support</comment>
     <requestid>1173958</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>8cb87d7332c316e3b30741dc604c1084</srcmd5>
+    <version>5.0</version>
+    <time>1716406382</time>
+    <user>anag+factory</user>
+    <comment>- Require coreutils-systemd (boo#1224812)
+
+- Require gsettings-backend-dconf (boo#1224473, boo#1224472)</comment>
+    <requestid>1175816</requestid>
+  </revision>
 </revisionlist>
