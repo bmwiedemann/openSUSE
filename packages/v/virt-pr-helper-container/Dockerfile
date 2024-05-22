@@ -20,6 +20,7 @@ LABEL org.opencontainers.image.title="kubevirt pr-helper container"
 LABEL org.opencontainers.image.description="QEMU persistent reservation helper"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
+LABEL org.opencontainers.image.source="%SOURCEURL%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/pr-helper:%%PKG_VERSION%%.%RELEASE%"
 # endlabelprefix

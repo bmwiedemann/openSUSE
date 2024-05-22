@@ -17,4 +17,12 @@ The container is a part of KubeVirt deployment.</comment>
     <comment></comment>
     <requestid>1119860</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>866a993e966721c3cd3169d3214fd786</srcmd5>
+    <version>unknown</version>
+    <time>1716406365</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1175798</requestid>
+  </revision>
 </revisionlist>
