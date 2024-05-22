@@ -77,4 +77,13 @@ Don't change permission, leave it at 644.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>943504</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>299e0ea5a8fbd33189fbc45da318dbdf</srcmd5>
+    <version>2.2.1</version>
+    <time>1716406324</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro: allows us to eliminate usage of deprecated
+  %patchN syntax. (forwarded request 1174633 from dimstar)</comment>
+    <requestid>1175708</requestid>
+  </revision>
 </revisionlist>

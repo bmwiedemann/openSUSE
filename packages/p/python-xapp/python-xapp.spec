@@ -1,7 +1,7 @@
 #
 # spec file for package python-xapp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,8 +44,7 @@ desktop environments and required to implement cross-DE solutions.
 %python_subpackages
 
 %prep
-%setup -q -n %{_name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
 %python_build
