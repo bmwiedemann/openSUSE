@@ -29,8 +29,12 @@ Source:         https://files.pythonhosted.org/packages/source/p/pygit2/pygit2-%
 Patch0:         pygit2-Upgrade_to_libgit2_v1_8_0.patch
 # PATCH-FIX-UPSTREAM - fixup for the libgit 1.8 support
 Patch1:         Fix-CI.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         pygit2-Upgrade_to_libgit2_v1_8_1.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         pygit2-Upgrade_to_libgit2_v1_8_1-2.patch
 # PATCH-FIX-UPSTREAM - happens to eliminate bogus pointer casts
-Patch2:         Fix-leaks-in-fetch_refspecs-and-push_refspecs.patch
+Patch4:         Fix-leaks-in-fetch_refspecs-and-push_refspecs.patch
 BuildRequires:  %{python_module cached-property}
 BuildRequires:  %{python_module cffi >= 1.4.0}
 BuildRequires:  %{python_module devel}
@@ -54,6 +58,8 @@ Bindings for libgit2, a linkable C library for the Git version-control system.
 %prep
 %autosetup -p1 -n pygit2-%{version}
 %if %{?pkg_vcmp:%pkg_vcmp libgit2-devel < 1.8}%{!?pkg_vcmp:1}
+%patch -P 3 -p1 -R
+%patch -P 2 -p1 -R
 %patch -P 1 -p1 -R
 %patch -P 0 -p1 -R
 %endif

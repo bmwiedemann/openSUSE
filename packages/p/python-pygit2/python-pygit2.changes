@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 17 10:57:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add  pygit2-Upgrade_to_libgit2_v1_8_1-2.patch
+  pygit2-Upgrade_to_libgit2_v1_8_1.patch: support libgit2 1.8.1
+
+-------------------------------------------------------------------
 Thu May  2 10:26:23 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix build with gcc 14
