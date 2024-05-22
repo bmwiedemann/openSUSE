@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 16:40:51 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Oct 30 17:43:04 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 20190621:

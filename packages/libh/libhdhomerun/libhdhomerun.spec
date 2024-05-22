@@ -89,7 +89,7 @@ Firmware updates can be downloaded from http://www.silicondust.com/support/hdhom
 %prep
 %setup -q -b 1 -n hdhomerun_config_gui
 cd ../libhdhomerun
-%patch0
+%patch -P 0
 
 %build
 ln -s libhdhomerun.so.%{SO_NR} ../libhdhomerun/libhdhomerun.so
