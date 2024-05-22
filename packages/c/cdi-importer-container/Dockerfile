@@ -20,6 +20,7 @@ LABEL org.opencontainers.image.title="CDI Data fetching service container"
 LABEL org.opencontainers.image.description="Data fetching service for VM container images"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
+LABEL org.opencontainers.image.source="%SOURCEURL%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/cdi-importer:%%PKG_VERSION%%.%RELEASE%"
 # endlabelprefix
