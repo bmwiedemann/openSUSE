@@ -42,8 +42,7 @@ technologies that have been submitted to the ECMA for standardization.
 Mono's VB runtime.
 
 %prep
-%setup -q
-%patch2 -p1
+%autosetup -p1
 
 %build
 ./configure --prefix=%{_prefix}
