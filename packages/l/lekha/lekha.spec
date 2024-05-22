@@ -1,7 +1,7 @@
 #
 # spec file for package lekha
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,8 +48,7 @@ ExcludeArch:    %ix86
 EFL and python based pdf reader.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 python3 setup.py build
