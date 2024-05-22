@@ -67,8 +67,7 @@ Group:          Productivity/Networking/Web/Frontends
 Lang files for prewikka.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 

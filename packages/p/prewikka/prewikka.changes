@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 29 15:14:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Tue May 18 09:35:18 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build by removing stray pyton single spec macros: this is a
