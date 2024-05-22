@@ -24,7 +24,7 @@
 %global _sitelibdir %{%{pythons}_sitelib}
 
 Name:           azure-cli-core
-Version:        2.60.0
+Version:        2.61.0
 Release:        0
 Summary:        Microsoft Azure CLI Core Module
 License:        MIT
@@ -37,12 +37,11 @@ BuildRequires:  %{pythons}-azure-nspkg >= 3.0.0
 BuildRequires:  %{pythons}-pip
 BuildRequires:  %{pythons}-setuptools
 BuildRequires:  %{pythons}-wheel
-BuildRequires:  azure-cli-nspkg
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       %{pythons}-PyJWT >= 2.1.0
 Requires:       %{pythons}-argcomplete < 4.0
-Requires:       %{pythons}-argcomplete >= 3.1.1
+Requires:       %{pythons}-argcomplete >= 3.3.0
 Requires:       %{pythons}-azure-mgmt-core < 2.0.0
 Requires:       %{pythons}-azure-mgmt-core >= 1.2.0
 Requires:       %{pythons}-azure-nspkg >= 3.0.0
@@ -69,7 +68,6 @@ Requires:       %{pythons}-pyOpenSSL >= 17.1.0
 Requires:       %{pythons}-requests < 3.0.0
 Requires:       %{pythons}-requests >= 2.25.1
 Requires:       %{pythons}-wheel >= 0.30.0
-Requires:       azure-cli-nspkg
 Requires:       azure-cli-telemetry >= 1.1.0
 Conflicts:      azure-cli < 2.0.0
 
@@ -88,15 +86,12 @@ install -m 644 %{SOURCE1} %{_builddir}/azure-cli-core-%{version}
 %install
 %pyproject_install
 %fdupes %{buildroot}%{_sitelibdir}
-rm -rf %{buildroot}%{_sitelibdir}/azure/cli/__init__.*
-rm -rf %{buildroot}%{_sitelibdir}/azure/cli/__pycache__
-rm -rf %{buildroot}%{_sitelibdir}/azure/__init__.*
-rm -rf %{buildroot}%{_sitelibdir}/azure/__pycache__
 
 %files
 %defattr(-,root,root,-)
 %doc HISTORY.rst README.rst
 %license LICENSE.txt
+%dir %{_sitelibdir}/azure/cli
 %{_sitelibdir}/azure/cli/core
 %{_sitelibdir}/azure_cli_core-*.dist-info
 
