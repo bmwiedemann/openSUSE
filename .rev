@@ -1279,4 +1279,12 @@
 - make SystemCmd take vector of strings</comment>
     <requestid>1130172</requestid>
   </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>1c46efb357c63876b479b3bd8fddfd76</srcmd5>
+    <version>0.11.0</version>
+    <time>1716406163</time>
+    <user>anag+factory</user>
+    <comment>- updated to latest repository</comment>
+    <requestid>1169010</requestid>
+  </revision>
 </revisionlist>

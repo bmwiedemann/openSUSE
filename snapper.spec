@@ -35,7 +35,7 @@
 %bcond_with coverage
 
 Name:           snapper
-Version:        0.10.7
+Version:        0.11.0
 Release:        0
 Summary:        Tool for filesystem snapshot management
 License:        GPL-2.0-only
@@ -143,14 +143,13 @@ autoreconf -fvi
 	--disable-btrfs-quota							\
 %endif
 	%{?with_selinux:--enable-selinux}					\
-	--disable-silent-rules --disable-ext4
+	--disable-silent-rules --disable-bcachefs --disable-ext4
 make %{?_smp_mflags}
 
 %install
 %make_install
 rm -f "%{buildroot}/%{_libdir}"/*.la "%{buildroot}/%{pam_security_dir}/pam_snapper.la"
 rm -f %{buildroot}/etc/cron.hourly/suse.de-snapper
-rm -f %{buildroot}/etc/cron.daily/suse.de-snapper
 
 %if 0%{?suse_version}
 install -D -m 644 data/sysconfig.snapper "%{buildroot}%{_fillupdir}/sysconfig.snapper"
@@ -185,10 +184,6 @@ test -f /etc/logrotate.d/snapper.rpmsave && mv -v /etc/logrotate.d/snapper.rpmsa
 if [ -f /etc/cron.hourly/suse.de-snapper ]; then
  systemctl preset snapper-timeline.timer || :
  systemctl is-enabled -q snapper-timeline.timer && systemctl start snapper-timeline.timer || :
-fi
-if [ -f /etc/cron.daily/suse.de-snapper ]; then
- systemctl preset snapper-cleanup.timer || :
- systemctl is-enabled -q snapper-cleanup.timer && systemctl start snapper-cleanup.timer || :
 fi
 %service_add_post snapper-boot.service snapper-boot.timer snapper-cleanup.service snapper-cleanup.timer snapper-timeline.service snapper-timeline.timer snapperd.service
 %endif
@@ -268,6 +263,7 @@ This package contains libsnapper, a library for filesystem snapshot management.
 %else
 %config(noreplace) %{_sysconfdir}/sysconfig/snapper
 %endif
+%dir /usr/lib/snapper/plugins
 
 %pre -n libsnapper7
 # Migration from /etc/snapper to /usr/share/snapper
