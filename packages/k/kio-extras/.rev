@@ -40,4 +40,12 @@
   * [thumbnail] Limit bits per pixel to 32 (kde#484183)</comment>
     <requestid>1167650</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ffc1f7771fd1485035b6c238bcb70c6e</srcmd5>
+    <version>24.02.2</version>
+    <time>1716406164</time>
+    <user>anag+factory</user>
+    <comment>- Make kcm_trash conflict with kio &lt; 5.116 only (boo#1221438)</comment>
+    <requestid>1175189</requestid>
+  </revision>
 </revisionlist>

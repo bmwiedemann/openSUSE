@@ -75,7 +75,7 @@ BuildRequires:  pkgconfig(libplist-2.0)
 BuildRequires:  pkgconfig(libtirpc)
 BuildRequires:  pkgconfig(smbclient)
 BuildRequires:  pkgconfig(taglib)
-Requires:       (trash_kcm or kio-core)
+Requires:       trash_kcm
 Requires:       qt6-sql-sqlite >= %{qt6_version}
 Recommends:     kf6-kimageformats >= %{kf6_version}
 Recommends:     qt6-imageformats >= %{qt6_version}
@@ -92,7 +92,7 @@ Additional KIO-slaves for KDE applications.
 # kcm_trash.desktop conflicts with KF5's kio one. Only one is needed
 %package -n trash_kcm
 Summary:        Trash KDE module
-Conflicts:      kio-core
+Conflicts:      kio-core < 5.116
 
 %description -n trash_kcm
 This package provides a configuration module to modify trash settings.
