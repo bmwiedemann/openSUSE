@@ -46,8 +46,6 @@ BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.23.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.31.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.31.0
 BuildRequires:  pkgconfig(gmodule-2.0)
-BuildRequires:  pkgconfig(goa-1.0) >= 3.18.0
-BuildRequires:  pkgconfig(goa-backend-1.0) >= 3.18.0
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(iso-codes)
@@ -121,7 +119,8 @@ needed to develop applications that require these.
 %autosetup -p1
 
 %build
-%meson
+%meson \
+  -Donlineaccounts=false
 %meson_build
 
 %install

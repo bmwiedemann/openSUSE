@@ -315,4 +315,13 @@
 - clean the forgotten .la files</comment>
     <requestid>1128873</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>3dc8a21fc86a2768b126f09fe40c88ae</srcmd5>
+    <version>6.0.0</version>
+    <time>1716406182</time>
+    <user>anag+factory</user>
+    <comment>- Drop gnome-online-accounts dependency: not compatible with GOA
+  from GNOME 46. (forwarded request 1174880 from dimstar)</comment>
+    <requestid>1175707</requestid>
+  </revision>
 </revisionlist>

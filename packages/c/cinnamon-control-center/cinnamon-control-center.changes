@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 17 14:25:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop gnome-online-accounts dependency: not compatible with GOA
+  from GNOME 46.
+
+-------------------------------------------------------------------
 Sat Nov 25 18:56:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.0.0:
