@@ -6,7 +6,7 @@ Wed Feb 21 10:46:24 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 -------------------------------------------------------------------
 Thu Aug 24 10:16:57 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
-- Build only the jdom package and drop xom, jaxen and xom into
+- Build only the jdom package and drop xom, jaxen and saxpath into
   separate standalone packages
 - Removed patches:
   * jdom-1.1-build.xml.patch
