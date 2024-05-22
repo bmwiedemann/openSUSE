@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-pywayland
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,15 +43,14 @@ BuildRequires:  pkgconfig(wayland-client) >= 1.21
 BuildRequires:  pkgconfig(wayland-cursor) >= 1.21
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.26
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
 Python binding to the wayland library using cffi.
 
 %prep
-%setup -q -n pywayland-%{version}
-%patch0 -p1
+%autosetup -p1 -n pywayland-%{version}
 
 %build
 export CFLAGS="%optflags $(pkg-config --cflags wayland-client)"
