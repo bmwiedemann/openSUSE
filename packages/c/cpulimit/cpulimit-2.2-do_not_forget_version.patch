@@ -1,7 +1,7 @@
-Index: cpulimit-2.8/cpulimit.c
+Index: cpulimit-3.1/cpulimit.c
 ===================================================================
---- cpulimit-2.8.orig/cpulimit.c
-+++ cpulimit-2.8/cpulimit.c
+--- cpulimit-3.1.orig/cpulimit.c
++++ cpulimit-3.1/cpulimit.c
 @@ -88,7 +88,7 @@
  #endif
  

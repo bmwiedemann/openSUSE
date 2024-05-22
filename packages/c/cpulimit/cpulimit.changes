@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 20 13:10:29 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 3.1:
+  * The new version fixes an issue with monitoring a target process which 
+    has multiple children and a low CPU limit throttle. In some cases this 
+    situation could lead to LimitCPU crashing. This has been fixed and the
+    monitoring of children processes has been made slightly more efficient.
+
+-------------------------------------------------------------------
 Wed Feb 21 15:51:03 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
