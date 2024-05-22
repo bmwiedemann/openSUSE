@@ -26,7 +26,6 @@ unsorted:
   - AppStream-doc 
   - AppStream-lang 
   - AusweisApp 
-  - AusweisApp2 
   - Bear 
   - Botan-doc 
   - Bottles 
@@ -519,6 +518,7 @@ unsorted:
   - allegro44-tools 
   - alligator 
   - alligator-lang 
+  - alloy 
   - almanah 
   - almanah-lang 
   - alpine 
@@ -1040,6 +1040,7 @@ unsorted:
   - audaspace-plugin-sndfile 
   - audio-recorder 
   - audio-recorder-lang 
+  - audioclock 
   - audiofile 
   - audiofile-devel 
   - audiofile-doc 
@@ -2501,12 +2502,6 @@ unsorted:
   - coreboot-utils 
   - coredns 
   - coredns-extras 
-  - coredns-for-k8s1.21 
-  - coredns-for-k8s1.21-extras 
-  - coredns-for-k8s1.22 
-  - coredns-for-k8s1.22-extras 
-  - coredns-for-k8s1.23 
-  - coredns-for-k8s1.23-extras 
   - coredns-for-k8s1.24 
   - coredns-for-k8s1.24-extras 
   - coredns-for-k8s1.25 
@@ -3754,8 +3749,6 @@ unsorted:
   - espeakedit 
   - etc-update 
   - etcd 
-  - etcd-for-k8s1.22 
-  - etcd-for-k8s1.23 
   - etcd-for-k8s1.24 
   - etcd-for-k8s1.25 
   - etcd-for-k8s1.26 
@@ -4661,8 +4654,6 @@ unsorted:
   - gap-zeromqinterface 
   - garlic 
   - garlic-doc 
-  - gasket-driver 
-  - gasket-driver-kmp-default 
   - gaupol 
   - gavl 
   - gbdfed 
@@ -10275,36 +10266,6 @@ unsorted:
   - kubernetes-scheduler-minus1 
   - kubernetes-scheduler-minus2 
   - kubernetes-scheduler-minus3 
-  - kubernetes1.20-apiserver 
-  - kubernetes1.20-client 
-  - kubernetes1.20-client-bash-completion 
-  - kubernetes1.20-client-common 
-  - kubernetes1.20-controller-manager 
-  - kubernetes1.20-kubeadm 
-  - kubernetes1.20-kubelet 
-  - kubernetes1.20-kubelet-common 
-  - kubernetes1.20-proxy 
-  - kubernetes1.20-scheduler 
-  - kubernetes1.21-apiserver 
-  - kubernetes1.21-client 
-  - kubernetes1.21-client-bash-completion 
-  - kubernetes1.21-client-common 
-  - kubernetes1.21-controller-manager 
-  - kubernetes1.21-kubeadm 
-  - kubernetes1.21-kubelet 
-  - kubernetes1.21-kubelet-common 
-  - kubernetes1.21-proxy 
-  - kubernetes1.21-scheduler 
-  - kubernetes1.22-apiserver 
-  - kubernetes1.22-client 
-  - kubernetes1.22-client-bash-completion 
-  - kubernetes1.22-client-common 
-  - kubernetes1.22-controller-manager 
-  - kubernetes1.22-kubeadm 
-  - kubernetes1.22-kubelet 
-  - kubernetes1.22-kubelet-common 
-  - kubernetes1.22-proxy 
-  - kubernetes1.22-scheduler 
   - kubernetes1.23-apiserver 
   - kubernetes1.23-client 
   - kubernetes1.23-client-bash-completion 
@@ -13835,8 +13796,8 @@ unsorted:
   - libjsonrpc-glib-1_0-1 
   - libjte-devel 
   - libjthread1_3_3 
-  - libjulia-compat1 
-  - libjulia1 
+  - libjulia-compat1_10 
+  - libjulia1_10 
   - libjxl-devel 
   - libjxl-tools 
   - libjxl0_10-32bit 
@@ -17428,8 +17389,6 @@ unsorted:
   - lswt 
   - lsyncd 
   - ltrace 
-  - lttng-modules 
-  - lttng-modules-kmp-default 
   - lttng-tools 
   - lttng-tools-devel 
   - lttng-ust-devel 
@@ -23651,7 +23610,6 @@ unsorted:
   - python3-pysol-cards 
   - python3-pytest-ansible 
   - python3-pytest-cookies 
-  - python3-python-sql 
   - python3-rados 
   - python3-rbd 
   - python3-renderspec 
@@ -26503,6 +26461,7 @@ unsorted:
   - python310-python-snappy 
   - python310-python-socketio 
   - python310-python-socks 
+  - python310-python-sql 
   - python310-python-stdnum 
   - python310-python-subunit 
   - python310-python-ternary 
@@ -26834,6 +26793,7 @@ unsorted:
   - python310-sphinx-bootstrap-theme 
   - python310-sphinx-click 
   - python310-sphinx-feature-classification 
+  - python310-sphinx-gallery 
   - python310-sphinx-inline-tabs 
   - python310-sphinx-issues 
   - python310-sphinx-jsonschema 
@@ -29988,6 +29948,7 @@ unsorted:
   - python311-python-snappy 
   - python311-python-socketio 
   - python311-python-socks 
+  - python311-python-sql 
   - python311-python-stdnum 
   - python311-python-subunit 
   - python311-python-ternary 
@@ -30305,6 +30266,7 @@ unsorted:
   - python311-sphinx-bootstrap-theme 
   - python311-sphinx-click 
   - python311-sphinx-feature-classification 
+  - python311-sphinx-gallery 
   - python311-sphinx-inline-tabs 
   - python311-sphinx-issues 
   - python311-sphinx-jsonschema 
@@ -33548,6 +33510,7 @@ unsorted:
   - python312-python-snappy 
   - python312-python-socketio 
   - python312-python-socks 
+  - python312-python-sql 
   - python312-python-stdnum 
   - python312-python-subunit 
   - python312-python-ternary 
@@ -33876,6 +33839,7 @@ unsorted:
   - python312-sphinx-bootstrap-theme 
   - python312-sphinx-click 
   - python312-sphinx-feature-classification 
+  - python312-sphinx-gallery 
   - python312-sphinx-inline-tabs 
   - python312-sphinx-issues 
   - python312-sphinx-jsonschema 
@@ -35376,7 +35340,6 @@ unsorted:
   - rspamd 
   - rss-glx 
   - rssguard 
-  - rsstail 
   - rstart 
   - rstudio 
   - rstudio-desktop 
@@ -36860,6 +36823,7 @@ unsorted:
   - system-group-ne 
   - system-group-obsolete 
   - system-group-sudo 
+  - system-user-alloy 
   - system-user-bitlbee 
   - system-user-cscreen 
   - system-user-grafana 
