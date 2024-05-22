@@ -671,4 +671,41 @@ please use same ADI as https://build.opensuse.org/request/show/902766</comment>
     <comment>1.11.65</comment>
     <requestid>1169896</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>9a0eaff6fb81c109ce613d9adc76d613</srcmd5>
+    <version>1.11.67</version>
+    <time>1716406416</time>
+    <user>anag+factory</user>
+    <comment>- Version 1.11.67
+  ## ✨ Features
+  * Tooltip: Improve the accessibility of the composer and the rich text editor (https://github.com/matrix-org/matrix-react-sdk/pull/12459). Contributed by @florianduros.
+  * Allow explicit configuration of OIDC dynamic registration metadata (https://github.com/matrix-org/matrix-react-sdk/pull/12514). Contributed by @t3chguy.
+  * Tooltip: improve accessibility for messages (https://github.com/matrix-org/matrix-react-sdk/pull/12487). Contributed by @florianduros.
+  * Collapse UserSettings tabs to just icons on narrow screens (https://github.com/matrix-org/matrix-react-sdk/pull/12505). Contributed by @dbkr.
+  * Add room topic to right panel room info (https://github.com/matrix-org/matrix-react-sdk/pull/12503). Contributed by @t3chguy.
+  * OIDC: pass `id_token` via `id_token_hint` on Manage Account interaction (https://github.com/matrix-org/matrix-react-sdk/pull/12499). Contributed by @t3chguy.
+  * Tooltip: improve accessibility in room (https://github.com/matrix-org/matrix-react-sdk/pull/12493). Contributed by @florianduros.
+  * Tooltip: improve accessibility for call and voice messages (https://github.com/matrix-org/matrix-react-sdk/pull/12489). Contributed by @florianduros.
+  * Move the active tab in user settings to the dialog title (https://github.com/matrix-org/matrix-react-sdk/pull/12481). Contributed by @dbkr.
+  * Tooltip: improve accessibility of spaces (https://github.com/matrix-org/matrix-react-sdk/pull/12497). Contributed by @florianduros.
+  * Tooltip: improve accessibility of the right panel (https://github.com/matrix-org/matrix-react-sdk/pull/12490). Contributed by @florianduros.
+  * MSC3575 (Sliding Sync) add well-known proxy support (https://github.com/matrix-org/matrix-react-sdk/pull/12307). Contributed by @EdGeraghty.
+  ## 🐛 Bug Fixes
+  * Reuse single PlaybackWorker between Playback instances (https://github.com/matrix-org/matrix-react-sdk/pull/12520). Contributed by @t3chguy.
+  * Fix well-known lookup for sliding sync labs check (https://github.com/matrix-org/matrix-react-sdk/pull/12519). Contributed by @t3chguy.
+  * Fix `element-desktop-ssoid being` included in OIDC Authorization call (https://github.com/matrix-org/matrix-react-sdk/pull/12495). Contributed by @t3chguy.
+  * Fix beta notifications reconciliation for intentional mentions push rules (https://github.com/matrix-org/matrix-react-sdk/pull/12510). Contributed by @t3chguy.
+  * fix avatar stretched on 1:1 call (https://github.com/matrix-org/matrix-react-sdk/pull/12494). Contributed by @I-lander.
+  * Check native sliding sync support against an unstable feature flag (https://github.com/matrix-org/matrix-react-sdk/pull/12498). Contributed by @turt2live.
+  * Use OPTIONS for sliding sync detection poke (https://github.com/matrix-org/matrix-react-sdk/pull/12492). Contributed by @turt2live.
+  * TAC: hide tooltip when the release announcement is displayed (https://github.com/matrix-org/matrix-react-sdk/pull/12472). Contributed by @florianduros.
+Version 1.11.66
+  ## ✨ Features
+  * Use a different error message for UTDs when you weren't in the room. (https://github.com/matrix-org/matrix-react-sdk/pull/12453). Contributed by @uhoreg.
+  * Take the Threads Activity Centre out of labs (https://github.com/matrix-org/matrix-react-sdk/pull/12439). Contributed by @dbkr.
+  * Expected UTDs: use a different message for UTDs sent before login (https://github.com/matrix-org/matrix-react-sdk/pull/12391). Contributed by @richvdh.
+  * Add `Tooltip` to `AccessibleButton` (https://github.com/matrix-org/matrix-react-sdk/pull/12443). Contributed by @florianduros.
+  * Add analytics to activity toggles (https://github.com/matrix-org/matrix-react-sdk/pull/12418). Contributed by @dbkr.</comment>
+    <requestid>1175893</requestid>
+  </revision>
 </revisionlist>
