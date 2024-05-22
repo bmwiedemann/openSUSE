@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Wed May 22 10:49:02 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Update to 22.2.0:
+  * cli: allow running wasm in limited vmem with --disable-wasm-trap-handler
+  * doc: add pimterry to collaborators
+  * fs: allow 'withFileTypes' to be used with globs
+  * inspector: introduce the --inspect-wait flag
+  * lib,src: remove --experimental-policy
+  * perf_hooks: add deliveryType and responseStatus fields
+  * test_runner: support test plans
+  * zlib: expose zlib.crc32()
+
+- linker_lto_jobs.patch: refreshed
+- fix_ci_tests.patch: partially upstreamed, refreshed 
+- skip_no_console.patch: dropped, upstreamed
+
+-------------------------------------------------------------------
+Wed May 22 09:04:46 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- fix_ci_tests.patch: add fix for issue #53085
+
+-------------------------------------------------------------------
+Tue May 14 14:25:41 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- New nodejs major version 22.1.0
+  For overview of changes and details since 21.x and earlier see
+  https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V22.md#22.1.0
+
+- v8-i586.patch: fix 32bit build with new gcc
+
+- Imported patches from 21.x:
+  * cares_public_headers.patch
+  * fix_ci_tests.patch
+  * flaky_test_rerun.patch
+  * gcc13.patch
+  * legacy_python.patch
+  * linker_lto_jobs.patch
+  * manual_configure.patch
+  * node-gyp-addon-gypi.patch
+  * node-gyp-config.patch
+  * nodejs-libpath.patch
+  * npm_search_paths.patch
+  * openssl_binary_detection.patch
+  * qemu_timeouts_arches.patch
+  * skip_no_console.patch
+  * sle12_python3_compat.patch
+  * test-skip-y2038-on-32bit-time_t.patch
+  * versioned.patch
+

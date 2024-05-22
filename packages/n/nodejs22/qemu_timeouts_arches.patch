@@ -1,0 +1,14 @@
+Index: node-v22.1.0/test/common/index.js
+===================================================================
+--- node-v22.1.0.orig/test/common/index.js
++++ node-v22.1.0/test/common/index.js
+@@ -275,6 +275,9 @@ function platformTimeout(ms) {
+   if (isPi)
+     return multipliers.two * ms;  // Raspberry Pi devices
+ 
++  if (process.arch === 'riscv64') // usermode qemu slow
++    return multipliers.seven * ms;
++
+   return ms;
+ }
+ 

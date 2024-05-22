@@ -1,0 +1,25 @@
+Purpose of these dependencies is to make sure that the linker
+is run serially over these binaries instead of in parallel.
+OBS workers run out of memory as each executable seems to require
+upward of 5G RAM
+
+Index: node-v22.2.0/node.gyp
+===================================================================
+--- node-v22.2.0.orig/node.gyp
++++ node-v22.2.0/node.gyp
+@@ -1167,6 +1167,7 @@
+         'deps/simdjson/simdjson.gyp:simdjson',
+         'deps/simdutf/simdutf.gyp:simdutf',
+         'deps/ada/ada.gyp:ada',
++        'fuzz_env'
+       ],
+ 
+       'includes': [
+@@ -1241,6 +1242,7 @@
+         '<(node_lib_target_name)',
+         'deps/histogram/histogram.gyp:histogram',
+         'deps/ada/ada.gyp:ada',
++        'cctest'
+       ],
+ 
+       'includes': [
