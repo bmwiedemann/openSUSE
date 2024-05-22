@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-gravatar2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,8 +41,7 @@ BuildRequires:  %{pythons}
 Essential Gravatar support for Django. Features helper methods, templatetags and a full test suite!
 
 %prep
-%setup -q -n django-gravatar2-%{version}
-%patch1 -p1
+%autosetup -p1 -n django-gravatar2-%{version}
 
 %build
 %python_build
