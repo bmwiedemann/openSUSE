@@ -1,7 +1,7 @@
 #
 # spec file for package geoclue2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -110,6 +110,9 @@ install -d %{buildroot}%{_localstatedir}/lib/srvGeoClue
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 644 %{SOURCE1} %{buildroot}%{_sysusersdir}/system-user-srvGeoClue.conf
 
+# conf.d dir needed for drop-in configs (such as used by GNOME)
+install -d %{buildroot}%{_sysconfdir}/geoclue/conf.d
+
 # note: do not use systemd macros for geoclue2.service, they are not meant for dbus unit files.
 %pre -n system-user-srvGeoClue -f srvGeoClue.pre
 %ldconfig_scriptlets
@@ -131,6 +134,7 @@ install -m 644 %{SOURCE1} %{buildroot}%{_sysusersdir}/system-user-srvGeoClue.con
 %{_datadir}/dbus-1/system-services/org.freedesktop.GeoClue2.service
 %{_datadir}/polkit-1/rules.d/50-org.freedesktop.GeoClue2.rules
 %dir %{_sysconfdir}/geoclue/
+%dir %{_sysconfdir}/geoclue/conf.d
 %config %{_sysconfdir}/geoclue/geoclue.conf
 %{_datadir}/dbus-1/system.d/org.freedesktop.GeoClue2.conf
 %{_datadir}/dbus-1/system.d/org.freedesktop.GeoClue2.Agent.conf
