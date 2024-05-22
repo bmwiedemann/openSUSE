@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue May 21 13:26:33 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.7.0
+  Complete support of MIX groupchats and add new QXmppMixManager
+  * Support of new SASL 2 authentication from XEP-0388: Extensible
+    SASL Profile
+  * Update support of XEP-0428: Fallback Indication to v0.2
+  * Update support of XEP-0447: Stateless file sharing to v0.3.1
+  * ClientExtension: New onRegistered() and onUnregistered()
+    virtual functions, called when the extension is added to
+    or removed from a client.
+  * Client: New error handling: New errorOccurred() signal with
+    QXmppError based API
+  * New StreamError, AuthenticationError and BindError offering
+    more details about connection errors
+  * The 'from' attribute of the <stream:stream> open is set if
+    a JID is configured
+  * Security improvements in the internals of QXmppClient by
+    terminating the connection when unexpected packets are received
+  Breaking changes:
+  * Drop support for RFC3920 servers requiring a <session/> IQ
+    to be sent.
+  * PLAIN authentication is disabled by default, but can be
+    enabled in QXmppConfiguration again.
+
+-------------------------------------------------------------------
 Sun May 19 08:56:14 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.6.1:
