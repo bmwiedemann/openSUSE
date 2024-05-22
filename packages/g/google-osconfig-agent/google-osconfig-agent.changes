@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 22 11:04:41 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20240517.00
+  * Bump cloud.google.com/go/auth from 0.4.1 to 0.4.2 (#597)
+- from version 20240516.01
+  * Bump cloud.google.com/go/logging from 1.9.0 to 1.10.0 (#595)
+  * Bump cloud.google.com/go/storage from 1.40.0 to 1.41.0 (#594)
+- from version 20240516.00
+  * Bump google.golang.org/grpc from 1.63.2 to 1.64.0 (#593)
+
+-------------------------------------------------------------------
 Thu May 16 12:33:50 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20240513.02

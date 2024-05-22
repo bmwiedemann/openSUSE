@@ -394,4 +394,18 @@
   * Bump go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc (#581) (forwarded request 1174498 from glaubitz)</comment>
     <requestid>1174499</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0148e7abcfd0264269e5eb7903f4d55e</srcmd5>
+    <version>20240517.00</version>
+    <time>1716406339</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240517.00
+  * Bump cloud.google.com/go/auth from 0.4.1 to 0.4.2 (#597)
+- from version 20240516.01
+  * Bump cloud.google.com/go/logging from 1.9.0 to 1.10.0 (#595)
+  * Bump cloud.google.com/go/storage from 1.40.0 to 1.41.0 (#594)
+- from version 20240516.00
+  * Bump google.golang.org/grpc from 1.63.2 to 1.64.0 (#593) (forwarded request 1175749 from glaubitz)</comment>
+    <requestid>1175758</requestid>
+  </revision>
 </revisionlist>
