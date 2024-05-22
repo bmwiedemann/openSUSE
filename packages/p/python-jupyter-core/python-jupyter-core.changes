@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 22 04:15:02 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove upper bound on pytest, and switch to importlib import-mode. 
+
+-------------------------------------------------------------------
 Fri Mar 29 18:20:02 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.7.2

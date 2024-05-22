@@ -68,7 +68,7 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module jupyter-core = %{version}}
-BuildRequires:  %{python_module pytest >= 7 with %python-pytest < 8}
+BuildRequires:  %{python_module pytest >= 7}
 BuildRequires:  %{python_module pytest-timeout}
 %endif
 %python_subpackages
@@ -115,7 +115,7 @@ donttest="test_jupyter_path_prefer_env or test_jupyter_config_path_prefer_env"
 donttest="$donttest or test_config_dir_linux"
 # async failure
 donttest="$donttest or test_ensure_async"
-%pytest -k "not ($donttest)"
+%pytest --import-mode=importlib -k "not ($donttest)"
 %endif
 
 %pre

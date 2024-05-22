@@ -296,4 +296,12 @@ Update to 4.6.1</comment>
   * Enforce pytest 7 #393 (@blink1073)</comment>
     <requestid>1163572</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>e58c87c7ffec1b91f51484a0f9f6ccb4</srcmd5>
+    <version>5.7.2</version>
+    <time>1716406168</time>
+    <user>anag+factory</user>
+    <comment>- Remove upper bound on pytest, and switch to importlib import-mode.</comment>
+    <requestid>1175661</requestid>
+  </revision>
 </revisionlist>
