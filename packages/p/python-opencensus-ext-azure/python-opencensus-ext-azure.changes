@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 21 10:36:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace %patchN with %patch -P N: %patchN is deprecated.
+
+-------------------------------------------------------------------
 Tue Mar  5 23:04:08 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Switch package to modern Python Stack on SLE-15

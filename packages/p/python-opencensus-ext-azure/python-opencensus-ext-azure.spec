@@ -50,7 +50,7 @@ OpenCensus Azure Monitor Exporters
 %prep
 %setup -q -n opencensus-python-%{repo_version}/contrib/opencensus-ext-azure
 pushd ../..
-%patch0 -p1
+%patch -P 0 -p1
 popd
 # for discovery to work
 touch tests/__init__.py
