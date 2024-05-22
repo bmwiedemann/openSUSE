@@ -3,12 +3,10 @@
     <param name="url">https://github.com/tailscale/tailscale.git</param>
     <param name="scm">git</param>
     <param name="package-meta">yes</param>
-    <param name="revision">v1.66.1</param>
+    <param name="revision">v1.66.4</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">disable</param>
-  </service>
-  <service name="set_version" mode="manual">
   </service>
   <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
@@ -16,4 +14,5 @@
   </service>
   <service name="go_modules" mode="manual">
   </service>
+  <service name="set_version" mode="manual" />
 </services>

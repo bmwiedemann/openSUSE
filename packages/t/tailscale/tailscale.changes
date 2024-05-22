@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed May 22 08:36:37 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to 1.66.4:
+  * Fixed: Restored UDP connectivity through Mullvad exit nodes
+  * Stateful filtering is now off by default
+
+- update to 1.66.3:
+  * Login URLs did not always appear in the console when running tailscale up
+  * Starting with v1.66, the Kubernetes operator must always run the same or later version
+    as the proxies it manages.
+  * Expose cloud services on cluster network to the tailnet, using Kubernetes ExternalName Services
+  * Expose tailnet services that use Tailscale HTTPS to cluster workloads
+  * Cluster workloads can now refer to Tailscale Ingress resources by their MagicDNS names
+  * Configure environment variables for Tailscale Kubernetes operator proxies using ProxyClass CRD
+  * Expose tailscaled metrics endpoint for Tailscale Kubernetes operator proxies through ProxyClass CRD
+  * Configure labels for the Kubernetes operator Pods with Helm chart values
+  * Configure affinity rules for Kubernetes operator proxy Pods with ProxyClass
+  * Kubernetes operator proxy init container no longer attempts to enable IPv6 forwarding on systems
+    that don't have IPv6 module loaded
+  * Tailscale containers running on Kubernetes no longer error if an empty Kubernetes Secret is
+    pre-created for the tailscaled state
+  * Improved the ambiguous error messages when Tailscale running on Kubernetes does not have the right
+    permissions to perform actions against the tailscaled state Secret
+
+-------------------------------------------------------------------
 Fri May 10 15:16:33 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - update to 1.66.1:
