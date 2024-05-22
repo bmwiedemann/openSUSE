@@ -599,4 +599,12 @@ bsc#1007869) (CVE-2016-8706)</comment>
     <comment></comment>
     <requestid>1151132</requestid>
   </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>8a0bf94da5309414eed116ea4da0d197</srcmd5>
+    <version>1.6.23</version>
+    <time>1716406171</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1175703</requestid>
+  </revision>
 </revisionlist>

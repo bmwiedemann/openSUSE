@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 23 10:22:55 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Mon Feb 19 01:06:31 UTC 2024 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Drop obsolete rpmlint filter

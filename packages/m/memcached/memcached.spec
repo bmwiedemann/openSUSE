@@ -91,8 +91,7 @@ web applications by alleviating database load.
 This package contains development files
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
