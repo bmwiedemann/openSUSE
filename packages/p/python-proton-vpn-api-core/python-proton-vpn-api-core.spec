@@ -18,20 +18,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-proton-vpn-api-core
-Version:        0.23.1
+Version:        0.24.4
 Release:        0
 Summary:        Proton VPN API library
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/ProtonVPN/python-proton-vpn-api-core
 Source:         https://github.com/ProtonVPN/python-proton-vpn-api-core/archive/refs/tags/v%{version}.tar.gz
+BuildRequires:  %{python_module PyNaCl}
+BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module distro}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module proton-core}
 BuildRequires:  %{python_module proton-vpn-connection}
 BuildRequires:  %{python_module proton-vpn-killswitch}
 BuildRequires:  %{python_module proton-vpn-logger}
-BuildRequires:  %{python_module proton-vpn-session}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
@@ -40,12 +41,13 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
+Requires:       python-PyNaCl
+Requires:       python-cryptography
 Requires:       python-distro
 Requires:       python-proton-core
 Requires:       python-proton-vpn-connection
 Requires:       python-proton-vpn-killswitch
 Requires:       python-proton-vpn-logger
-Requires:       python-proton-vpn-session
 Requires:       python-sentry-sdk
 BuildArch:      noarch
 %python_subpackages

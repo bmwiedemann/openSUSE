@@ -39,4 +39,12 @@
   * Add WireGuard ports</comment>
     <requestid>1172590</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f51eac8dba6646a6f18e51c485e631ef</srcmd5>
+    <version>0.24.4</version>
+    <time>1716406392</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1175848</requestid>
+  </revision>
 </revisionlist>

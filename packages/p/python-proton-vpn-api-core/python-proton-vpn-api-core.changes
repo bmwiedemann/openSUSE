@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 22 11:28:37 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Update to 0.24.4
+  * Filter OSError not just FileNotFound error in sentry.
+  * Set the sentry user id based on a hash of /etc/machine-id
+  * Fix deprecation warning when calculatin WireGuard certificate validity period.
+  * Fix error saving cache file when parent directory does not exist
+  * Only initialize sentry on first enable.
+  * Forward SSL_CERT_FILE environment variable to sentry.
+
+-------------------------------------------------------------------
 Tue May  7 21:10:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.23.1:
