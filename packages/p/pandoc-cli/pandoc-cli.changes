@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 15 15:27:11 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-cli to version 3.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sat May 11 20:57:52 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-cli to version 3.2.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Sun Apr  7 15:38:48 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update pandoc-cli to version 3.1.13.

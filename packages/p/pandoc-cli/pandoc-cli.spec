@@ -17,12 +17,13 @@
 
 
 Name:           pandoc-cli
-Version:        3.1.13
+Version:        3.2
 Release:        0
 Summary:        Conversion between documentation formats
 License:        GPL-2.0-or-later
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/1.cabal#/%{name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
@@ -56,6 +57,7 @@ convert between markup formats.
 
 %prep
 %autosetup
+cp -p %{SOURCE1} %{name}.cabal
 
 %build
 %define cabal_configure_options -f+lua -f+server
