@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mail-SpamAssassin-Plugin-dqs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Mail-SpamAssassin-Plugin-dqs
-Version:        1.4.0
+Version:        1.5.1
 Release:        0
 Summary:        SpamAssassin plugin for Spamhaus Data Query Service (DQS)
 License:        Apache-2.0

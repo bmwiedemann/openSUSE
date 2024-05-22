@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 18 16:10:52 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- spamassassin-dqs version 1.5.1
+  * Added support for URLHash component
+  * Minor fixes
+
+-------------------------------------------------------------------
 Fri Jan 13 13:35:49 UTC 2023 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - spamassassin-dqs version 1.4.0
