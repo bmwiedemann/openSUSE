@@ -737,4 +737,25 @@
     <comment></comment>
     <requestid>1168961</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>90a531e463c391cd7b159e00fb827785</srcmd5>
+    <version>3.5.0</version>
+    <time>1716406173</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.5.0:
+  * New -i,--install option installs an icewm-extra theme.
+  * Add file argument completion to the address bar.
+  * Add &quot;cd&quot; and &quot;pwd&quot; commands to the address bar.
+  * Improve tilde expansion on user login names.
+  * Document the 22 address bar editing keys.
+  * When lowering a frame by KeyWinLower, also lower it in the focus order.
+  * Keyboard layout icon names can now be longer than 2 letters.
+  * Don't use XSendEvent for internal WM actions, but use XPutBack.
+  * When focusing a client, clear urgency and stop flashing.
+  * When the frame drops urgency, also update the client.
+  * Let &quot;icesh restore&quot; also clear the urgency flag.
+  * Several small documentation improvements.
+</comment>
+    <requestid>1175709</requestid>
+  </revision>
 </revisionlist>

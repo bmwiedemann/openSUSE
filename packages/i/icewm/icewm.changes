@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 22 07:52:14 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.5.0:
+  * New -i,--install option installs an icewm-extra theme.
+  * Add file argument completion to the address bar.
+  * Add "cd" and "pwd" commands to the address bar.
+  * Improve tilde expansion on user login names.
+  * Document the 22 address bar editing keys.
+  * When lowering a frame by KeyWinLower, also lower it in the focus order.
+  * Keyboard layout icon names can now be longer than 2 letters.
+  * Don't use XSendEvent for internal WM actions, but use XPutBack.
+  * When focusing a client, clear urgency and stop flashing.
+  * When the frame drops urgency, also update the client.
+  * Let "icesh restore" also clear the urgency flag.
+  * Several small documentation improvements.
+
+-------------------------------------------------------------------
 Thu Apr 18 16:58:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not recommends icewm-lang: the -lang package has already more
