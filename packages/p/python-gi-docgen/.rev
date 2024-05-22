@@ -101,4 +101,33 @@
     <comment></comment>
     <requestid>1148451</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bfa0cd8db6e6d5283405c048b4a76098</srcmd5>
+    <version>2024.1</version>
+    <time>1716406147</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2024.1:
+  + Added
+    - Add unit testing for link syntax
+    - Support link to enumeration members
+    - Add favicon support
+    - Add proper anchor for enum members
+    - Parse optional anchors in links
+    - Generate a link to finish functions
+    - Add 'inline' to C declarations for inline callables
+    - Make the logo a link to the index
+   - Clear search when pressing Escape
+  + Changed
+    - Update the wording for transfer modes
+    - Turn deprecation notices into admonitions
+    - Improve filesystem string type docs
+  + Fixed
+    - Fix doubled paragraph tags around descriptions
+    - Append period after last line in more cases
+    - Documentation fixes
+    - Use the basename of the urlmap file
+  + Removed
+    - Revert &quot;generate: Add fallback for missing &quot;since&quot;&quot; (forwarded request 1175575 from dimstar)</comment>
+    <requestid>1175580</requestid>
+  </revision>
 </revisionlist>

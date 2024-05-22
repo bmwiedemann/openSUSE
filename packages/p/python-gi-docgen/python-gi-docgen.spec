@@ -18,14 +18,14 @@
 
 %define pythons python3
 Name:           python-gi-docgen
-Version:        2023.3
+Version:        2024.1
 Release:        0
 Summary:        A documentation generator for GObject-based libraries
 # For reference, as some scripts are known to reorder things:
 #               (Apache-2.0 OR GPL-3.0-or-later) AND CC0-1.0 AND MIT AND OFL-1.1
 License:        (Apache-2.0 OR GPL-3.0-or-later) AND CC0-1.0 AND MIT AND OFL-1.1
 URL:            https://gitlab.gnome.org/GNOME/gi-docgen
-Source:         https://files.pythonhosted.org/packages/source/g/gi-docgen/gi-docgen-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/g/gi-docgen/gi_docgen-%{version}.tar.gz
 Source98:       README.license
 Source99:       %{name}-rpmlintrc
 
@@ -63,7 +63,7 @@ to generate the API reference of these libraries, as well as other
 ancillary documentation.
 
 %prep
-%autosetup -n gi-docgen-%{version} -p1
+%autosetup -n gi_docgen-%{version} -p1
 # Copy README.license to the source tree, so we can use the %%doc macro on it.
 cp %{SOURCE98} .
 

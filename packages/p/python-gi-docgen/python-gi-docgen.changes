@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue May 21 11:06:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2024.1:
+  + Added
+    - Add unit testing for link syntax
+    - Support link to enumeration members
+    - Add favicon support
+    - Add proper anchor for enum members
+    - Parse optional anchors in links
+    - Generate a link to finish functions
+    - Add 'inline' to C declarations for inline callables
+    - Make the logo a link to the index
+   - Clear search when pressing Escape
+  + Changed
+    - Update the wording for transfer modes
+    - Turn deprecation notices into admonitions
+    - Improve filesystem string type docs
+  + Fixed
+    - Fix doubled paragraph tags around descriptions
+    - Append period after last line in more cases
+    - Documentation fixes
+    - Use the basename of the urlmap file
+  + Removed
+    - Revert "generate: Add fallback for missing "since""
+
+-------------------------------------------------------------------
 Tue Feb 20 18:20:41 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Require python3-tomli if python3-base is on v3.6 (ie, SLE 15).
