@@ -39,7 +39,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.60.0
+Version:        2.61.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -53,9 +53,7 @@ BuildRequires:  %{short_name} = %{version}
 %else
 BuildRequires:  %{pythons}-pip
 BuildRequires:  %{pythons}-wheel
-BuildRequires:  azure-cli-command-modules-nspkg >= 2.0
 BuildRequires:  azure-cli-core = %{version}
-BuildRequires:  azure-cli-nspkg >= 3.0.3
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       %{pythons}-Fabric >= 3.2.2
@@ -85,7 +83,7 @@ Requires:       %{pythons}-azure-mgmt-billing >= 6.0.0
 Requires:       %{pythons}-azure-mgmt-botservice >= 2.0.0b3
 Requires:       %{pythons}-azure-mgmt-cdn >= 12.0.0
 Requires:       %{pythons}-azure-mgmt-cognitiveservices >= 13.5.0
-Requires:       %{pythons}-azure-mgmt-compute >= 30.6.0
+Requires:       %{pythons}-azure-mgmt-compute >= 31.0.0
 Requires:       %{pythons}-azure-mgmt-containerinstance >= 10.1.0
 Requires:       %{pythons}-azure-mgmt-containerregistry >= 10.3.0
 Requires:       %{pythons}-azure-mgmt-containerservice >= 30.0.0
@@ -116,17 +114,17 @@ Requires:       %{pythons}-azure-mgmt-msi >= 7.0.0
 Requires:       %{pythons}-azure-mgmt-netapp >= 10.1.0
 Requires:       %{pythons}-azure-mgmt-policyinsights >= 1.1.0b4
 Requires:       %{pythons}-azure-mgmt-privatedns >= 1.0.0
-Requires:       %{pythons}-azure-mgmt-rdbms >= 10.2.0b14
+Requires:       %{pythons}-azure-mgmt-rdbms >= 10.2.0b16
 Requires:       %{pythons}-azure-mgmt-recoveryservices >= 3.0.0
 Requires:       %{pythons}-azure-mgmt-recoveryservicesbackup >= 9.1.0
 Requires:       %{pythons}-azure-mgmt-redhatopenshift >= 1.4.0
 Requires:       %{pythons}-azure-mgmt-redis >= 14.3.0
 Requires:       %{pythons}-azure-mgmt-reservations >= 2.0.0
-Requires:       %{pythons}-azure-mgmt-resource >= 23.1.0~b2
+Requires:       %{pythons}-azure-mgmt-resource >= 23.1.1
 Requires:       %{pythons}-azure-mgmt-search >= 9.0
-Requires:       %{pythons}-azure-mgmt-security >= 5.0.0
+Requires:       %{pythons}-azure-mgmt-security >= 6.0.0
 Requires:       %{pythons}-azure-mgmt-servicebus >= 8.2.0
-Requires:       %{pythons}-azure-mgmt-servicefabric >= 1.0.0
+Requires:       %{pythons}-azure-mgmt-servicefabric >= 2.1.0
 Requires:       %{pythons}-azure-mgmt-servicefabricmanagedclusters >= 2.0.0~b6
 Requires:       %{pythons}-azure-mgmt-servicelinker >= 1.2.0~b2
 Requires:       %{pythons}-azure-mgmt-signalr >= 2.0.0~b1
@@ -155,12 +153,11 @@ Requires:       %{pythons}-scp >= 0.13.2
 Requires:       %{pythons}-semver >= 2.13.0
 Requires:       %{pythons}-six >= 1.10.0
 Requires:       %{pythons}-sshtunnel >= 0.1.4
+Requires:       %{pythons}-tabulate
 Requires:       %{pythons}-urllib3
 Requires:       %{pythons}-websocket-client >= 1.3.1
 Requires:       %{pythons}-xmltodict >= 0.12
-Requires:       azure-cli-command-modules-nspkg >= 2.0
 Requires:       azure-cli-core = %{version}
-Requires:       azure-cli-nspkg >= 3.0.3
 Provides:       azure-cli-acr = 2.2.9
 Obsoletes:      azure-cli-acr < 2.2.9
 Provides:       azure-cli-acs = 2.4.4
@@ -316,12 +313,6 @@ install -m 644 %{SOURCE1} %{_builddir}/azure-cli-%{version}
 %pyproject_install
 install -DTm644 %{buildroot}%{_bindir}/az.completion.sh %{buildroot}%{_datadir}/bash-completion/completions/az
 %fdupes %{buildroot}%{_sitelibdir}
-rm -rf %{buildroot}%{_sitelibdir}/azure/cli/command_modules/__init__.*
-rm -rf %{buildroot}%{_sitelibdir}/azure/cli/command_modules/__pycache__
-rm -rf %{buildroot}%{_sitelibdir}/azure/cli/__init__.*
-rm -rf %{buildroot}%{_sitelibdir}/azure/cli/__pycache__
-rm -rf %{buildroot}%{_sitelibdir}/azure/__init__.*
-rm -rf %{buildroot}%{_sitelibdir}/azure/__pycache__
 %endif
 
 %files

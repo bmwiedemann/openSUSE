@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 22 10:13:08 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.61.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Remove deletion of azure-cli namespace files
+- Remove deletion of azure-cli-command-modules namespace files
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Mon May  6 09:34:43 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
