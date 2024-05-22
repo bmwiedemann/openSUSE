@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 14 23:56:58 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update unordered-containers to version 0.2.20 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Jan 11 06:26:58 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update unordered-containers to version 0.2.20 revision 1.

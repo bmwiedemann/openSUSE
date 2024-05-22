@@ -1,6 +1,6 @@
 name:           unordered-containers
 version:        0.2.20
-x-revision: 1
+x-revision: 2
 synopsis:       Efficient hashing-based container types
 description:
   Efficient hashing-based container types.  The containers have been
@@ -61,7 +61,7 @@ library
     base >= 4.10 && < 5,
     deepseq >= 1.4.3,
     hashable >= 1.4 && < 1.5,
-    template-haskell < 2.22
+    template-haskell < 2.23
 
   default-language: Haskell2010
 

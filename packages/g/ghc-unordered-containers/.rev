@@ -265,4 +265,12 @@ See http://lists.opensuse.org/opensuse-factory/2013-07/msg00409.html</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1139825</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>329a7133f4a366015f5d950fe922f75e</srcmd5>
+    <version>0.2.20</version>
+    <time>1716406310</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1175747</requestid>
+  </revision>
 </revisionlist>
