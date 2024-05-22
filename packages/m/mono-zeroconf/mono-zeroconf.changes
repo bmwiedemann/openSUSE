@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 22 15:26:29 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sun Jun  5 00:00:00 UTC 2016 - fwdsbs.to.11df@xoxy.net
 
 - Added patch mono-search-path.patch:

@@ -1,7 +1,7 @@
 #
 # spec file for package mono-zeroconf
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +20,7 @@ Name:           mono-zeroconf
 Summary:        A cross platform Zero Configuration Networking library for Mono
 License:        MIT
 Group:          Development/Languages/Mono
-Url:            http://mono-project.com/Mono.Zeroconf
+URL:            http://mono-project.com/Mono.Zeroconf
 Version:        0.9.0
 Release:        0
 Source0:        %{name}-%{version}.tar.bz2
@@ -212,7 +212,7 @@ Authors:
 %setup -q
 %define mcsver %({ mcs --version | awk '{print $5}' | cut -f1 -d"." ; mcs --version | awk '{print $5}' | cut -f2 -d"." ; } | xargs printf "%03d")
 %if 0%{?mcsver} >= 4004
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 
 %build
