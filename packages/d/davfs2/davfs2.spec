@@ -29,6 +29,7 @@ Source2:        %{name}-rpmlintrc
 # Taken from https://savannah.nongnu.org/project/release-gpgkeys.php?group=davfs2&download=1
 Source3:        davfs2.keyring
 Source4:        davfs2.sysusers
+Patch0:         davfs2-1.7.0-neon-33.patch
 BuildRequires:  automake >= 1.16
 BuildRequires:  fuse-devel >= 2.2
 BuildRequires:  neon-devel
@@ -51,10 +52,11 @@ FUSE. To connect to the WebDAV server, it makes use of the neon library,
 supporting TLS/SSL and access via proxy servers.
 
 %prep
-%setup -q
-cd src
+%autosetup -p1
 
 %build
+# for davfs2-1.7.0-neon-33.patch
+autoreconf -fiv
 dav_user="%{name}" \
 dav_group="%{name}" \
 %configure \
