@@ -20,6 +20,7 @@ LABEL org.opencontainers.image.title="kubevirt virt-handler container"
 LABEL org.opencontainers.image.description="Virtualization handler for kubevirt"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
+LABEL org.opencontainers.image.source="%SOURCEURL%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/virt-handler:%%PKG_VERSION%%.%RELEASE%"
 # endlabelprefix
