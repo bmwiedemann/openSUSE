@@ -1,0 +1,11 @@
+<package name="corrosion" project="openSUSE:Factory">
+  <title>Rust integration into existing CMake project</title>
+  <description>Corrosion, formerly known as cmake-cargo, is a tool for integrating Rust into
+an existing CMake project. Corrosion can automatically import executables,
+static libraries, and dynamic libraries from a workspace or package manifest
+(Cargo.toml file).
+
+</description>
+  <devel project="KDE:Applications" package="corrosion"/>
+  <url>https://corrosion-rs.github.io/corrosion/</url>
+</package>
