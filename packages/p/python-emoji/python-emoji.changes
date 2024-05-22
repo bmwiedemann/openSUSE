@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 20 20:49:52 UTC 2024 - Matthias Bach <marix@marix.org> - 2.21.1
+
+- Update to 2.12.1
+  * Require version 4.7.0+ of typing-extensions
+
+-------------------------------------------------------------------
 Mon May 20 08:35:37 UTC 2024 - Matthias Bach <marix@marix.org> - 2.12.0
 
 - Update to 2.12.0
