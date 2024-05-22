@@ -47,4 +47,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1169523</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>91ba7f530191fb664b35bce6b2dcd66f</srcmd5>
+    <version>0.2.1.5</version>
+    <time>1716406311</time>
+    <user>anag+factory</user>
+    <comment>Fix ghc-pandoc deps</comment>
+    <requestid>1175754</requestid>
+  </revision>
 </revisionlist>
