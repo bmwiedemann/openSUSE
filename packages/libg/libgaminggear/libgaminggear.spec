@@ -85,8 +85,7 @@ This package holds libgaminggearwidget.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake -DINSTALL_PKGCONFIGDIR=%{_libdir}/pkgconfig

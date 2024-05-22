@@ -94,4 +94,15 @@
     <comment></comment>
     <requestid>756738</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>f263f4a12aeb1967fee36993b5f7590c</srcmd5>
+    <version>0.15.1</version>
+    <time>1716406351</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1153482 from pgajdos
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN</comment>
+    <requestid>1175766</requestid>
+  </revision>
 </revisionlist>
