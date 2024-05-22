@@ -80,4 +80,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1151718</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>4c7b0f15ac1519aebd22258934af3aa4</srcmd5>
+    <version>3.25.2</version>
+    <time>1716406141</time>
+    <user>anag+factory</user>
+    <comment>- Replace %patchN with %patch -P N: %patchN is deprecated. (forwarded request 1175508 from dimstar)</comment>
+    <requestid>1175518</requestid>
+  </revision>
 </revisionlist>

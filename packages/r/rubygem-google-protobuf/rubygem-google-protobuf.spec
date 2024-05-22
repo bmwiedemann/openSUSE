@@ -47,8 +47,8 @@ Protocol Buffers are Google's data interchange format.
 
 %prep
 %gem_unpack
-%patch0 -p1
-%patch1 -p2
+%patch -P 0 -p1
+%patch -P 1 -p2
 find -type f -print0 | xargs -0 touch -r %{S:0}
 %gem_build
 
