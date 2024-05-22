@@ -100,14 +100,11 @@ set -eux
 /usr/sbin/setup-fstab-for-overlayfs
 # ... set options for autoexpanding /home
 gawk -i inplace '$2 == "/home" { $4 = $4",x-systemd.growfs" } { print $0 }' /etc/fstab
+# workaround https://github.com/systemd/systemd/issues/927, drop the ro from the fstab mount
+gawk -i inplace '$2 == "/" && $4 == "compress=zstd:1,ro" { $4 = "compress=zstd:1" } { print $0 }' /etc/fstab
 EOF
 
 chmod a+x /etc/fstab.script
-
-# To make x-systemd.growfs work from inside the initrd
-cat >/etc/dracut.conf.d/50-microos-growfs.conf <<"EOF"
-install_items+=" /usr/lib/systemd/systemd-growfs "
-EOF
 
 #======================================
 # Enable NetworkManager

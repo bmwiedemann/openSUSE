@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 22 11:08:36 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Remove growfs from initrd  
+- Remove ro mount option as can cause racy mount behaviour on boot 
+
+-------------------------------------------------------------------
 Thu May 16 13:17:46 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Remove redundant relabelling (done better by kiwi now)

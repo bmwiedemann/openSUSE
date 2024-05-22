@@ -15,4 +15,13 @@
     <comment>Hi ana, another day, another bugfix</comment>
     <requestid>1174593</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>923fbab1de37e94b40a795c86e7b590d</srcmd5>
+    <version>0.1.0</version>
+    <time>1716406336</time>
+    <user>anag+factory</user>
+    <comment>- Remove growfs from initrd  
+- Remove ro mount option as can cause racy mount behaviour on boot</comment>
+    <requestid>1175753</requestid>
+  </revision>
 </revisionlist>
