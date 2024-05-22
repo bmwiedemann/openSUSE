@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec electron /usr/share/element/app.asar "$@"
+exec electron /usr/share/element/app "$@"

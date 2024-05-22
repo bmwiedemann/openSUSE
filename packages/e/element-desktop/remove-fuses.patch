@@ -1,0 +1,35 @@
+It is impossible to monkeypatch a shared copy of Electron, and in current versions of the nodejs-electron package
+we intentionally fail the build of any app which tries to do this to alert the packager.
+
+One problematic fuse which may break user data compatibility with upstream binaries is cookie encryption.
+If a user runs an app with fused electron and then with unfused one, their cookies will get deleted.
+
+OBSERVATION(dziobian):
+Element creates a cookies sqlite database on startup but seems to never write anything to it.
+Deleting the database manually seemed to have no effect.
+
+--- element-desktop-1.11.65/electron-builder.ts.orig	2024-04-23 15:14:00.000000000 +0200
++++ element-desktop-1.11.65/electron-builder.ts	2024-05-16 18:51:14.513871208 +0200
+@@ -75,22 +75,6 @@ const config: Writable<Configuration> =
+             const electronBinaryPath = path.join(context.appOutDir, `${executableName}${ext}`);
+             console.log(`Flipping fuses for: ${electronBinaryPath}`);
+ 
+-            await flipFuses(electronBinaryPath, {
+-                version: FuseVersion.V1,
+-                resetAdHocDarwinSignature: context.electronPlatformName === "darwin" && context.arch === Arch.universal,
+-
+-                [FuseV1Options.EnableCookieEncryption]: true,
+-                [FuseV1Options.OnlyLoadAppFromAsar]: true,
+-
+-                [FuseV1Options.RunAsNode]: false,
+-                [FuseV1Options.EnableNodeOptionsEnvironmentVariable]: false,
+-                [FuseV1Options.EnableNodeCliInspectArguments]: false,
+-
+-                // Mac app crashes on arm for us when `LoadBrowserProcessSpecificV8Snapshot` is enabled
+-                [FuseV1Options.LoadBrowserProcessSpecificV8Snapshot]: false,
+-                // https://github.com/electron/fuses/issues/7
+-                [FuseV1Options.EnableEmbeddedAsarIntegrityValidation]: false,
+-            });
+         }
+     },
+     files: [

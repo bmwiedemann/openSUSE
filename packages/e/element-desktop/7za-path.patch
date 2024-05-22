@@ -1,0 +1,14 @@
+7-zip is not actually used during build
+
+--- vendor/node_modules/builder-util/out/7za.js.orig	2024-05-15 21:11:29.747999000 +0200
++++ vendor/node_modules/builder-util/out/7za.js	2024-05-15 23:22:09.712045854 +0200
+@@ -4,8 +4,7 @@ exports.getPath7x = exports.getPath7za =
+ const _7zip_bin_1 = require("7zip-bin");
+ const fs_extra_1 = require("fs-extra");
+ async function getPath7za() {
+-    await (0, fs_extra_1.chmod)(_7zip_bin_1.path7za, 0o755);
+-    return _7zip_bin_1.path7za;
++    return '/bin/false'
+ }
+ exports.getPath7za = getPath7za;
+ async function getPath7x() {
