@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 22 07:17:45 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update to 0.20.4
+  * Drop the kernel headers unpack and caching feature
+
+-------------------------------------------------------------------
 Tue Mar 26 13:01:31 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update to 0.20.3 to fix build on pre-v5.14 kernel
@@ -15,7 +21,7 @@ Tue Mar 19 05:31:53 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 Fri Mar  8 06:42:00 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update to 0.20.2 
-    * Fix security hole checking unpacked kernel headers  
+  * Fix security hole checking unpacked kernel headers (CVE-2024-2313) 
 - Add fix-build-issue-when-using-UAPI-of-older-kernel.patch to
   fix build issue on pre-v6.0 kernel
 
