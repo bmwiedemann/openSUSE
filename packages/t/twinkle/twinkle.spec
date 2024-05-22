@@ -1,7 +1,7 @@
 #
 # spec file for package twinkle
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,7 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(speex)
 BuildRequires:  pkgconfig(speexdsp)
 Requires(post): update-desktop-files
-Requires(postun):update-desktop-files
+Requires(postun): update-desktop-files
 
 Patch1:         Add-support-for-the-new-bcg729-API-introduced-in-ver.patch
 
@@ -55,8 +55,7 @@ Twinkle is a SIP-based soft phone for making telephone calls over IP
 networks.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 %cmake \

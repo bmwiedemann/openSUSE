@@ -338,4 +338,15 @@
   of X11/ header files. (forwarded request 1083021 from jengelh)</comment>
     <requestid>1084192</requestid>
   </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>ef6e805f4fe969c9406e61849894471a</srcmd5>
+    <version>1.10.3</version>
+    <time>1716406352</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1151857 from pgajdos
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN</comment>
+    <requestid>1175765</requestid>
+  </revision>
 </revisionlist>
