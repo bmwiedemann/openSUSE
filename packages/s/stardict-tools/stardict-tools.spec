@@ -1,7 +1,7 @@
 #
 # spec file for package stardict-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,13 +56,7 @@ This package contains the dictionary conversion tools which can convert
 dictionaries of DICT, wquick, mova and pydict to stardict format.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2
-%patch3
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv

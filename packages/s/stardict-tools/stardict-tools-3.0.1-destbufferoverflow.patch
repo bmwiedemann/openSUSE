@@ -1,8 +1,8 @@
-Index: src/myspell2dic.c
+Index: stardict-tools-3.0.1/src/myspell2dic.c
 ===================================================================
---- src/myspell2dic.c.orig	2007-09-07 05:10:45.000000000 +0200
-+++ src/myspell2dic.c	2008-10-08 22:23:39.000000000 +0200
-@@ -132,7 +132,7 @@ if (argc<3) 
+--- stardict-tools-3.0.1.orig/src/myspell2dic.c
++++ stardict-tools-3.0.1/src/myspell2dic.c
+@@ -132,7 +132,7 @@ if (argc<3)
  
  fprintf(stderr, "Enter grammar language [Spanish]: ");
  fflush(stderr);
@@ -11,10 +11,10 @@ Index: src/myspell2dic.c
  if ((p=strchr(lang, '\n'))!=NULL) *p=0;
  if (*lang==0) strcpy(lang, "Spanish");
  
-Index: src/ooo2dict.c
+Index: stardict-tools-3.0.1/src/ooo2dict.c
 ===================================================================
---- src/ooo2dict.c.orig	2007-07-10 09:16:06.000000000 +0200
-+++ src/ooo2dict.c	2008-10-08 22:24:23.000000000 +0200
+--- stardict-tools-3.0.1.orig/src/ooo2dict.c
++++ stardict-tools-3.0.1/src/ooo2dict.c
 @@ -71,7 +71,7 @@ current2=malloc(10000);
  
  fprintf(stderr, "Enter thesaurus language [WordNet_English]: ");

@@ -1,9 +1,17 @@
 -------------------------------------------------------------------
+Fri May 17 09:10:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro: allows us to eliminate usage of deprecated
+  %patchN syntax.
+- Rebase stardict-tools-3.0.1-destbufferoverflow.patch and
+  stardict-tools-3.0.1-gcc44.patch: make the apply witch patch -p1.
+
+-------------------------------------------------------------------
 Fri Aug 27 05:45:11 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch: python3-support.patch
   * Convert all Python 2 scripts to Python 3
-- Remove shebang mangling from the specfile for python scripts. 
+- Remove shebang mangling from the specfile for python scripts.
 
 -------------------------------------------------------------------
 Sun Dec 10 04:46:08 UTC 2017 - i@marguerite.su
