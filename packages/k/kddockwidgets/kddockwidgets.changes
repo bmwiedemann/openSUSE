@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue May 21 13:30:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.1.0
+  https://github.com/KDAB/KDDockWidgets/releases/tag/v2.1.0
+  Bug fixes:
+  * Fixed dock widget float button when using main window nesting
+  * Fixed double-click on titlebar not floating it if auto-hide
+    flag was enabled
+  * Fixed auto-hide overlay not updating its position when main
+    window was resized
+  * Fixed crash when doing sequential open() and close() calls
+  * Fixed double-click the guest widget would make window float
+  * LayoutSaverOption::Skip now honours docked dock widgets
+  * Fixed DockWidget::addDockWidgetToContainingWindow() when
+    using nested main windows
+  * Multiple fixes for save/restore when windows are maximized
+  * Several fixes regarding nested main windows
+
+-------------------------------------------------------------------
+Thu Feb  1 09:31:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.0.0
+  * Architecture rewrite to support more frontends besides
+    QtWidgets and QtQuick. 2.0 isn't very interesting for users,
+    but will allow developers to make KDDW support other GUI
+    frameworks more easily. Also QtQuick is now better integrated,
+    without being shoehorned with ifdefs into the QtWidgets
+    implementation.
+    + Split into a view/controller architecture
+    + Non-gui logic moved to controllers
+    + Each controller has a gui counter part, implemented for each
+      supported frontend
+  * Uses nlohmann JSON library (MIT) instead of QJsonDocument, for
+    saving/restoring layouts
+  * Added Config::setStartDragDistance()
+  * Removed Config::setTabbingAllowedFunc() which was already
+    deprecated in favor of Config::setDropIndicatorAllowedFunc()
+  * Slint and Flutter WIP. Waiting for these frameworks to
+    support multi-window before finishing.
+
+-------------------------------------------------------------------
 Tue May  9 06:42:49 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.7.0
