@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed May 22 04:42:05 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.60:
+  * General
+    - fix nil pointer dereference @code-sleuth (#10932)
+    - [Server] handling of token and cookies, auth and session
+      middleware @MUzairS15 (#11003)
+  * Meshery CLI
+    - Mesheryctl's unit tests fix @Jougan-0 (#11002)
+    - Revert "Revert "[mesheryctl] Bug fixes in mesheryctl system
+      start"" @MUzairS15 (#10993)
+  * Meshery UI
+    - [Navigator.js] Equalized the height of Meshery logo container
+      @Aryakoste (#10982)
+    - bump sistent @captain-Akshay (#11001)
+    - Convert class to functional component in
+      management/service-mesh @JeevaRamanathan (#10981)
+    - Feat: Implement new missing permissions page
+      @dragon-slayer875 (#10969)
+
+-------------------------------------------------------------------
 Sat May 18 08:05:26 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.59:
