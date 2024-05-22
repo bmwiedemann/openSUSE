@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed May 22 17:35:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.8.0:
+  * Fix typo in README
+  * build(deps): bump actions/checkout from 4.1.4 to 4.1.6
+  * generate
+  * gofmt
+  * upgrade to new apko
+  * Fix camel-case after review
+  * kill k8s e2e test
+  * delete k8s runner impl
+  * copyright: allow custom license texts
+  * go.mod: upgrade everything
+  * build(deps): bump goreleaser/goreleaser-action from 5.0.0 to
+    5.1.0
+  * build(deps): bump golangci/golangci-lint-action from 5.3.0 to
+    6.0.1
+
+-------------------------------------------------------------------
 Tue May 14 19:35:43 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.7.0:
