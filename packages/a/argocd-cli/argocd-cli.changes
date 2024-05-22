@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May 21 18:16:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.11.1:
+  * Bump version to 2.11.1 (#18319)
+  * Merge pull request from GHSA-9766-5277-j5hr
+  * Merge pull request from GHSA-9766-5277-j5hr
+  * fix: UI MultiSource - Helm Chart with values.yaml (#18188)
+    (#18200)
+  * fix: copy visited map #11699 (#12667) (#18219)
+  * update resolveRevision to use the correct source for
+    multi-source app (#18194) (#18202)
+  * Fix logging hash with multiple sources (#18189) (#18193)
+  * chore(deps): upgrade helm to 3.14.4 (#18255) (#18286)
+  * chore(deps): cherry-pick bump protobuf #17788 (#18284)
+  * chore: update gitops engine for force sync option (#5882) -
+    2.11 (#18125)
+
+-------------------------------------------------------------------
 Wed May 08 11:13:41 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.11.0:
