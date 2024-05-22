@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue May 21 13:49:27 UTC 2024 - pgajdos@suse.com
+
+- Update to version 4.8.0+2:
+  * Fix actually linking the library
+  * Use simpler test linker script for detectiong --version-script option
+  * Release v4.8.0
+  * Explicit that -Dstatic=True is not meant for distributing a static library
+  * icmp6: Add echo request forwarding support
+  * fuzz: Fix icmp6 matching and checksum computation
+  * fuzz: Drop debugging
+  * fuzz: Drop debugging
+  * fuzz: Add ARP and NDP cases
+  * fuzz: Add IPv6 cases
+  * mbuf: Do not reallocate when the requested size already fits exactly
+  * mbuf: Fix copying headers
+  * oss-fuzz: Fix udp-h and tcp-h corpuses
+  * fuzz: comment coherency
+  * fuzz: Simplify TCP checksum code
+  * Note changes that can probably be security issues
+  * Add changelog for next release
+  * eth: pad ethernet frames to 60 bytes
+  * udp: Make cleanup loop clearer
+  * fuzz: Fix tftp fuzz actually receiving a file
+  * tftp: cleanup sessions remaining at slirp shutdown
+  * tftp: Fix use-after-free
+  * Add fuzzing CI
+  * fuzz: Add ip filtering
+  * tcp: hack syn/ack
+  * fuzzing: Increase coverage
+  * First attempt at fuzzing with libFuzzer based on @elmarco work
+  * Start some fuzzing test
+  * tcp: Fix testing for last fragment
+  * icmp: Fix msg duplication for debugging
+  * tcp: Fix allocating room
+  * mbuf: Be extra careful with freed pointer
+  * mbuf: remove '#define if*' member accessors
+  * m_cleanup_list: Fix missing cleanup packets from the same session
+  * tcp-input: inline TCP_REASS
+  * ip: remove second argument from ip_stripoptions()
+  * Document endianness of slirp_add_hostfwd parameters
+
+-------------------------------------------------------------------
 Wed Dec 13 09:44:43 UTC 2023 - lnussel@suse.com
 
 - Update to version 4.7.0+60:
