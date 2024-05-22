@@ -40,4 +40,16 @@
     <comment>Hi ana, another day, another bugfix</comment>
     <requestid>1174595</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0beea13eaffcb1097be2000841f1b764</srcmd5>
+    <version>1.0.1</version>
+    <time>1716406406</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.1:
+  * Force all migrated users to have default shell of /bin/bash
+  * module-mig: Cleanup incomplete snapshot
+  * migration: probe for existing LUKS devices, and ask the user to unlock them
+  * Correct copyright attribution</comment>
+    <requestid>1175875</requestid>
+  </revision>
 </revisionlist>

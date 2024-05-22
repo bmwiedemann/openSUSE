@@ -17,7 +17,7 @@
 
 
 Name:           tik
-Version:        0.9.5
+Version:        1.0.1
 Release:        0
 Summary:        Transactional Installation Kit
 License:        MIT
