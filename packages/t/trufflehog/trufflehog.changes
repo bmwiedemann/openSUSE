@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May 21 06:38:19 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 3.76.3:
+  * made changes in organization regex for azure devops. (#2866)
+  * Update azure storage extra data (#2808)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.53.5 (#2859)
+  * fix(deps): update module google.golang.org/api to v0.181.0 (#2857)
+  * fix(deps): update module github.com/wasilibs/go-re2 to v1.5.3 (#2861)
+  * chore(engine): remove verbose log line (#2860)
+  * remove redundant chunking (#2855)
+  * [chore] - move buffers pkg out of writers pkg (#2826)
+  * upgrade github dep (#2858)
+  * Adding postman to sub-commands list (#2813)
+  * add tolower to all keywords, and remove return on error for global vars (#2852)
+  * deprecated Integromat detector becuase they are gone. (#2856)
+
+-------------------------------------------------------------------
 Thu May 16 08:09:47 UTC 2024 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 3.76.2:
