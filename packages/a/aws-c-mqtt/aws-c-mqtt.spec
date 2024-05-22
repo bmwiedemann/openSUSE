@@ -74,8 +74,7 @@ AWS C99 implementation of the MQTT 3.1.1 specification.
 This package contains the development files.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %define __builder ninja
