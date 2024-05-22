@@ -50,7 +50,7 @@
 
 %define skip_python2 1
 Name:           python-ini2toml%{psuffix}
-Version:        0.14
+Version:        0.15
 Release:        0
 Summary:        Automatic conversion of .ini/cfg files to TOML equivalents
 License:        MPL-2.0
@@ -134,7 +134,7 @@ The ini2toml[all] extra requirements for %{python_flavor}-ini2toml
 %package experimental
 Summary:        Python ini2toml[experimental] extra requirement
 Requires:       python-ini2toml = %{version}
-Requires:       python-pyproject-fmt >= 0.4.0
+Requires:       (python-pyproject-fmt >= 0.4.0 with python-pyproject-fmt < 2)
 
 %description experimental
 The ini2toml[experimental] extra requirements for %{python_flavor}-ini2toml

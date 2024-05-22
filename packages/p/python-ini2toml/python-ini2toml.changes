@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 14 19:03:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15:
+  * Due to the change in API for pyproject-fmt introduce a
+    dependency cap.
+
+-------------------------------------------------------------------
 Fri May  3 07:41:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.14:
