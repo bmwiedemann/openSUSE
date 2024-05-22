@@ -112,4 +112,14 @@ This depends on recently checked into tw rpmlint whitelisting - should be &quot;
   * Updated translations. (forwarded request 1168860 from dimstar)</comment>
     <requestid>1168888</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bfd92b17fd1a249adb603b3c70813267</srcmd5>
+    <version>1.2.22</version>
+    <time>1716406162</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.22:
+  + Add IPv6 support.
+  + Updated translations. (forwarded request 1175725 from dimstar)</comment>
+    <requestid>1175726</requestid>
+  </revision>
 </revisionlist>
