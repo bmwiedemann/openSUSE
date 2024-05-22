@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-debugger
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,7 @@ ipdb/pdb statement checker plugin for flake8
 %setup -q -n flake8-debugger-%{version}
 cp %{SOURCE1} .
 cp %{SOURCE2} .
-%patch1 -p1
+%patch -P 1 -p1
 
 %build
 %python_build
