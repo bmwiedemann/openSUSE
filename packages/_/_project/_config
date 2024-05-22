@@ -1496,8 +1496,8 @@ Prefer: libsane1
 Prefer: libglfw3
 # have choice for (xclip or wl-clipboard) needed by password-store: wl-clipboard xclip
 Prefer: -wl-clipboard
-# have choice for pkgconfig(libhs): hyperscan-devel vectorscan-devel. hyperscan is for x86 only, prefer that where possible (for now).
-Prefer: hyperscan-devel
+# have choice for pkgconfig(libhs): hyperscan-devel vectorscan-devel. hyperscan is no longer free - de-prefer it
+Prefer: -hyperscan-devel
 
 Ignore: installation-images-openSUSE:cracklib-dict-full
 Ignore: openSUSE-release:openSUSE-release-ftp,openSUSE-release-dvd5,openSUSE-release-biarch,openSUSE-release-livecdkde,openSUSE-release-livecdgnome
