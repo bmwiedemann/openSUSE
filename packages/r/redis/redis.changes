@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun May 19 13:57:27 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- redis 7.2.5:
+  * A single shard cluster leaves failed replicas in CLUSTER SLOTS
+    instead of removing them
+  * Crash in LSET command when replacing small items and exceeding
+    4GB
+  * Blocking commands timeout is reset due to re-processing command
+  * Conversion of numbers in Lua args to redis args can fail
+  * redis-cli: --count (for --scan, --bigkeys, etc) was ignored
+    unless --pattern was also used
+  * redis-check-aof: incorrectly considering data in manifest 
+    format as MP-AOF
+
+-------------------------------------------------------------------
 Sat Apr 27 22:00:24 UTC 2024 - Илья Индиго <13ilya@gmail.com>
 
 - Fixed privileges of /run/redis directory (rpm -qlv redis | grep /run).
