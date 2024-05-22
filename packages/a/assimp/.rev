@@ -228,4 +228,12 @@
     <comment>Update to 5.4.0</comment>
     <requestid>1166862</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>facb2b853e90514c1476209274f7058b</srcmd5>
+    <version>5.4.1</version>
+    <time>1716406148</time>
+    <user>anag+factory</user>
+    <comment>Update to 5.4.1</comment>
+    <requestid>1175595</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue May 21 13:11:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.4.1
+  * CMake: Allow linking draco statically if ASSIMP_BUILD_DRACO_STATIC is set.
+  * Deps: updated minizip to last version
+  * Deps: updated STBIMAGElib
+  * Fix issue #5461 (segfault after removing redundant materials)
+  * Update ComputeUVMappingProcess.cpp
+  * Add some ASSIMP_INSTALL checks
+  * Fix SplitByBoneCount typo that prevented node updates
+  * Q3DLoader: Fix possible material string overflow
+  * Reverts the changes introduced by commit ad766cb in February 2022
+  * Fix a collada import bug
+  * Mention IQM loader in Fileformats.md
+  * Fix ASE loader crash when *MATERIAL_COUNT or *NUMSUBMTLS is not specified
+    or is 0
+  * Add checks for invalid buffer and size
+  * Make sure for releases revision will be zero
+  * glTF2Importer: Support .vrm extension
+
+-------------------------------------------------------------------
 Thu Apr 11 11:40:44 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.4.0
