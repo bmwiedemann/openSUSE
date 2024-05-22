@@ -32,4 +32,14 @@
     <comment>Hi ana, another day, another bugfix</comment>
     <requestid>1174594</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>937e4d12935176b6425a2b8faeffbe6f</srcmd5>
+    <version>0.1.0</version>
+    <time>1716406335</time>
+    <user>anag+factory</user>
+    <comment>- Remove unused disk.sh (no systemd-boot on installer)
+- Remove growfs from initrd
+- Remove ro mount option as can cause racy mount behaviour on boot</comment>
+    <requestid>1175752</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 22 11:07:36 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Remove unused disk.sh (no systemd-boot on installer)
+- Remove growfs from initrd
+- Remove ro mount option as can cause racy mount behaviour on boot 
+
+-------------------------------------------------------------------
 Thu May 16 13:16:58 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Remove redundant relabelling (done better by kiwi now)
