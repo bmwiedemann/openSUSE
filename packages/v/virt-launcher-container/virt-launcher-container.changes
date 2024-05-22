@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 22 08:12:59 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Add LABEL with source URL
+
+-------------------------------------------------------------------
 Tue Mar 19 16:18:45 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Install qemu-hw-usb-host to enable USB passthrough (bsc#1221538)
