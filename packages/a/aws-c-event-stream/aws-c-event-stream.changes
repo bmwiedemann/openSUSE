@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 21 11:22:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro: allows us to eliminate usage of deprecated
+  %patchN syntax.
+
+-------------------------------------------------------------------
 Mon Feb 19 15:45:39 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.4.2

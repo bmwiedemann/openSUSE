@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %bcond_with test
 
 %define library_version 1.0.0
@@ -31,13 +32,13 @@ Patch0:         aces_fix-cmake-modules-path.patch
 Patch1:         aces_re-add-so-version.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  ninja
 BuildRequires:  cmake(aws-c-cal)
 BuildRequires:  cmake(aws-c-common)
 BuildRequires:  cmake(aws-c-io)
 BuildRequires:  cmake(aws-checksums)
 BuildRequires:  cmake(s2n)
 BuildRequires:  pkgconfig(libcrypto)
-BuildRequires:  ninja
 
 %description
 C99 implementation of the vnd.amazon.eventstream content-type.
@@ -62,9 +63,7 @@ C99 implementation of the vnd.amazon.eventstream content-type.
 This package contains the development files.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %define __builder ninja
