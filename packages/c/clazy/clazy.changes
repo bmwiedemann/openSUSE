@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 21 13:15:49 UTC 2024 - christophe@krop.fr
+
+- Update to version 1.11git.20240520T014559~87b83e3:
+  * no-module-include: Fix test with Qt6, ignore internal include
+    of QtQmlBuiltinsDepends file
+  * lambda-in-connect test: remove unused and confusing member
+    variable
+  * Fix false positive from lambda-in-connect when the receiver
+    is on the stack
+
+-------------------------------------------------------------------
 Mon Mar 11 11:09:18 UTC 2024 - christophe@krop.fr
 
 - Update to version 1.11git.20240311T110110~ebf99de:

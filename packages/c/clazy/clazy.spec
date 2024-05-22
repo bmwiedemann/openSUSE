@@ -1,7 +1,7 @@
 #
 # spec file for package clazy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,19 @@
 
 
 Name:           clazy
-Version:        1.11git.20240311T110110~ebf99de
+Version:        1.11git.20240520T014559~87b83e3
 Release:        0
 Summary:        Qt oriented code checker based on the Clang framework
 License:        LGPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://www.kdab.com/clazy-video/
-Source0:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  clang
 BuildRequires:  clang-devel >= 11.0
 BuildRequires:  cmake >= 3.7
 %if 0%{?suse_version} == 1500
-BuildRequires:  gcc13-c++
 BuildRequires:  gcc13-PIE
+BuildRequires:  gcc13-c++
 %endif
 BuildRequires:  libstdc++-devel
 %requires_eq    clang%{_llvm_sonum}
