@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 15:53:50 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Mon Sep  7 10:27:37 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)

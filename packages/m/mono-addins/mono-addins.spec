@@ -1,7 +1,7 @@
 #
 # spec file for package mono-addins
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,8 +62,7 @@ applications.
 This package contains the pkgconfig files.
 
 %prep
-%setup -q -n mono-addins-mono-addins-%{version}
-%patch0 -p1
+%autosetup -p1 -n mono-addins-mono-addins-%{version}
 
 %build
 ./autogen.sh
