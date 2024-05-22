@@ -200,14 +200,12 @@ BuildRequires:  libgfortran5
 Requires:       libgcc_s.so.1()(64bit)
 Requires:       libgfortran.so.5()(64bit)
 Requires:       libgomp.so.1()(64bit)
-Requires:       libmbedcrypto.so.16()(64bit)
 %else
 BuildRequires:  libgcc_s1
 BuildRequires:  libgfortran5
 Requires:       libgcc_s.so.1
 Requires:       libgfortran.so.5
 Requires:       libgomp.so.1
-Requires:       libmbedcrypto.so.15
 %endif
 
 # Same as the previous comment. But the difference

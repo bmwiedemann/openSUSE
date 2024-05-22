@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 22 00:19:35 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Cleanup
+  * remove libmbedcrypto as mbedtls is bundled
+
+-------------------------------------------------------------------
 Mon May 20 12:12:39 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - libjulia-compat1_10 provides libjulia1_10. added rpmlint filter

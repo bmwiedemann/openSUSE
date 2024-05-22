@@ -320,4 +320,14 @@
 </comment>
     <requestid>1175424</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>eeb17d0830f5efd94d6f127e5ff7131b</srcmd5>
+    <version>1.10.3</version>
+    <time>1716406394</time>
+    <user>anag+factory</user>
+    <comment>- Cleanup
+  * remove libmbedcrypto as mbedtls is bundled
+</comment>
+    <requestid>1175840</requestid>
+  </revision>
 </revisionlist>
