@@ -1,7 +1,0 @@
-<package name="apache2-mod_encoding" project="openSUSE:Factory">
-  <title>apache-mod_encoding</title>
-  <description>Mod Encoding is an Apache module for non-ascii filename interoperability
-This module improves non-ascii filename interoperability of apache
-(and mod_dav).</description>
-  <devel project="Apache:Modules" package="apache2-mod_encoding"/>
-</package>
