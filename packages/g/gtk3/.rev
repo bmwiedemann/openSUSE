@@ -1720,4 +1720,30 @@ Putting the API-docs into a separate package removes 23MByte from a gtk3-devel i
     <comment></comment>
     <requestid>1167741</requestid>
   </revision>
+  <revision rev="194" vrev="1">
+    <srcmd5>ade43e0eb5506eab6373601b48751903</srcmd5>
+    <version>3.24.42</version>
+    <time>1716406143</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.24.42:
+  + GtkFileChooser:
+    - Avoid warnings about floating refs.
+    - Improve performance of recursive search.
+    - Populate search model in an idle.
+  + GtkGLArea: Fix a regression in transparency handling.
+  + Printing: Avoid accessing freed printers.
+  + Accessibility: Drop support for the deprecated
+    atk_focus_tracker.
+  + Wayland:
+    - Fix monitor sizes.
+    - Fix a crash related to tablet removal.
+    - Infer resizable edges for tiled windows.
+    - Always commit soon after acking a configure.
+  + gdk:
+    - Use css cursor names as far as possible.
+    - Sync DND cursor use with GTK4.
+  + build: Allow building against sysprof-capture-4.
+  + Updated translations. (forwarded request 1175574 from dimstar)</comment>
+    <requestid>1175579</requestid>
+  </revision>
 </revisionlist>

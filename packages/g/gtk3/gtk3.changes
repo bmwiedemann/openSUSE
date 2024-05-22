@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu May 16 06:36:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.24.42:
+  + GtkFileChooser:
+    - Avoid warnings about floating refs.
+    - Improve performance of recursive search.
+    - Populate search model in an idle.
+  + GtkGLArea: Fix a regression in transparency handling.
+  + Printing: Avoid accessing freed printers.
+  + Accessibility: Drop support for the deprecated
+    atk_focus_tracker.
+  + Wayland:
+    - Fix monitor sizes.
+    - Fix a crash related to tablet removal.
+    - Infer resizable edges for tiled windows.
+    - Always commit soon after acking a configure.
+  + gdk:
+    - Use css cursor names as far as possible.
+    - Sync DND cursor use with GTK4.
+  + build: Allow building against sysprof-capture-4.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Apr 15 07:18:17 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire gettext-devel instead of gettext-tools-mini: the
