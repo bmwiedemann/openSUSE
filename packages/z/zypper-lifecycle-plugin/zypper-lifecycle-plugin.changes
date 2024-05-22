@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 20 12:12:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
 Thu May 12 14:32:29 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Drop unconditional supplements on zypper. It's already recommended

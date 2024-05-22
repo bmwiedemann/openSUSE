@@ -45,8 +45,7 @@ BuildArch:      noarch
 Zypper subcommand for products and packages lifecycle information.
 
 %prep
-%setup -q -n zypper-lifecycle-%{version}
-%patch0 -p1
+%autosetup -p1 -n zypper-lifecycle-%{version}
 
 %build
 
