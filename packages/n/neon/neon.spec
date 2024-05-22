@@ -2,6 +2,7 @@
 # spec file for package neon
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +17,9 @@
 #
 
 
+%define sover 27
 Name:           neon
-Version:        0.32.5
+Version:        0.33.0
 Release:        0
 Summary:        An HTTP and WebDAV Client Library
 License:        GPL-2.0-or-later
@@ -25,40 +27,35 @@ Group:          Development/Libraries/Other
 URL:            https://notroj.github.io/neon/
 Source0:        https://notroj.github.io/neon/neon-%{version}.tar.gz
 Source3:        baselibs.conf
-Source10:       replace_manpage_with_links.sh
-# PATCH-MISSING-TAG -- See http://wiki.opensuse.org/Packaging/Patches
 Patch0:         neon-0.28.4-bloat.patch
-Patch1:         fix_timeout_tests_for_ppc64le.patch
-BuildRequires:  krb5-devel
-BuildRequires:  libexpat-devel
-BuildRequires:  libproxy-devel
-BuildRequires:  libtool
+BuildRequires:  fdupes
 BuildRequires:  openssl
 BuildRequires:  pkgconfig
 BuildRequires:  xmlto
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(krb5-gssapi)
+BuildRequires:  pkgconfig(libproxy-1.0)
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 neon is an HTTP and WebDAV client library with a C interface.
 
-%package -n libneon27
+%package -n libneon%{sover}
 Summary:        An HTTP and WebDAV Client Library
 # Drop the main package. It avoids the lib from being installed in different versions
 # and generally only contained coders doc anyhow.
 Group:          Development/Libraries/Other
 Provides:       neon = %{version}
 Obsoletes:      neon < %{version}
-#
 
-%description -n libneon27
+%description -n libneon%{sover}
 neon is an HTTP and WebDAV client library with a C interface.
 
 %package -n libneon-devel
 Summary:        An HTTP and WebDAV Client Library
 Group:          Development/Libraries/Other
-Requires:       glibc-devel
-Requires:       libneon27 = %{version}
+Requires:       libneon%{sover} = %{version}
 # renamed after openSUSE 10.3
 Provides:       neon-devel = %{version}
 Obsoletes:      neon-devel < %{version}
@@ -67,15 +64,9 @@ Obsoletes:      neon-devel < %{version}
 neon is an HTTP and WebDAV client library with a C interface.
 
 %prep
-%setup -q
-%patch -P 0
-%ifarch ppc64le ppc64
-%patch -P 1
-%endif
+%autosetup -p1
 
 %build
-rm -f aclocal.m4 ltmain.sh
-sh autogen.sh
 %configure \
     --with-ssl \
     --enable-threadsafe-ssl=posix \
@@ -88,28 +79,30 @@ sh autogen.sh
 %make_build
 
 %install
-make DESTDIR=%{buildroot} docdir=%{_defaultdocdir}/%{name} install install-man install-html %{?_smp_mflags}
+%make_install \
+	docdir=%{_defaultdocdir}/%{name} \
+	%{nil}
 find %{buildroot} -type f -name "*.la" -delete -print
-find %{buildroot}%{_mandir} -type f -exec bash %{SOURCE10} {} \;
+%fdupes -s %{buildroot}/%{_mandir}
 
 %check
 export TEST_QUIET=0
 %make_build check
 
-%post -n libneon27 -p /sbin/ldconfig
-%postun -n libneon27 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libneon%{sover}
 
-%files -n libneon27
-%doc AUTHORS BUGS ChangeLog NEWS THANKS TODO
-%{_libdir}/*.so.27*
+%files -n libneon%{sover}
 %license src/COPYING.LIB
+%doc AUTHORS BUGS NEWS THANKS TODO
+%{_libdir}/*.so.%{sover}
+%{_libdir}/*.so.%{sover}.*
 
 %files -n libneon-devel
+%license src/COPYING.LIB
 %doc %{_defaultdocdir}/%{name}
 %{_bindir}/neon-config
-%dir %{_includedir}/neon
-%{_includedir}/neon/*.h
-%{_mandir}/*/*
+%{_includedir}/neon
+%{_mandir}/man*/*%{?ext_man}
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/neon.pc
 

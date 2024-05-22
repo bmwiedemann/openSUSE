@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May 17 16:53:16 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.33.0:
+  * Interface clarifications
+  * added DAV:lockroot support per RFC 4918
+  * Improved handling of interim (1xx) responses, headers in
+    interim responses are now accessible
+  * TLS name verification updated to match RFC 9110/6125, added
+    strict handling of IP literals vs DNS names
+  * bug fixes
+- drop fix_timeout_tests_for_ppc64le.patch
+- replace replace_manpage_with_links.sh with fdupes
+
+-------------------------------------------------------------------
 Thu Feb 22 13:58:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
