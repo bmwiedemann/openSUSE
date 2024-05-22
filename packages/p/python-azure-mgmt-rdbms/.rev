@@ -343,4 +343,15 @@
 - Update Requires from setup.py (forwarded request 1166292 from glaubitz)</comment>
     <requestid>1166435</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d3ab20676c855573453acf89095ee500</srcmd5>
+    <version>10.2.0b16</version>
+    <time>1716406386</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 10.2.0b16
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1175704 from glaubitz)</comment>
+    <requestid>1175812</requestid>
+  </revision>
 </revisionlist>
