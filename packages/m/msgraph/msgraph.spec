@@ -17,7 +17,7 @@
 
 
 Name:           msgraph
-Version:        0.2.1
+Version:        0.2.2
 Release:        0
 Summary:        Library for accessing online serive APIs using MS Graph protocol
 License:        LGPL-3.0-or-later
@@ -33,7 +33,7 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libuhttpmock-1.0) > 0.9.0
-BuildRequires:  pkgconfig(rest-1.0)
+BuildRequires:  pkgconfig(libxml-2.0)
 
 %description
 libmsgraph is a GLib-based library for accessing online serive APIs using MS Graph protocol.
@@ -60,6 +60,8 @@ libmsgraph is a GLib-based library for accessing online serive APIs using MS Gra
 
 %prep
 %autosetup
+# the 'drive' test wats to connect to the actual drive / microsoft servers
+sed -i '/drive/d' tests/meson.build
 
 %build
 %meson
@@ -67,6 +69,9 @@ libmsgraph is a GLib-based library for accessing online serive APIs using MS Gra
 
 %install
 %meson_install
+
+%check
+%meson_test
 
 %ldconfig_scriptlets -n libmsgraph-0-1
 

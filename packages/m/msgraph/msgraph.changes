@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 22 06:16:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.2.2:
+  + Add remote copy and move functions.
+  + Drop Authorization header during download.
+  + Fix browsing shared files.
+- Drop pkgconfig(rest-0.1) BuildRequires: no longer needed.
+- Add pkgconfig(libxml-2.0) BuildRequires: new dependency for the
+  test suite.
+- Enable test suite: run meson_test in check section.
+- Remove 'drive' test from test suite: this specific test wants to
+  verify the library against Microsofts servers. As we build
+  without network connectivity, this test cannot pass for us.
+
+-------------------------------------------------------------------
 Mon Mar  4 09:06:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.2.1:

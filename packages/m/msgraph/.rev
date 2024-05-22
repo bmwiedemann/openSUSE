@@ -7,4 +7,22 @@
     <comment>New dependency for GNOME 46</comment>
     <requestid>1159555</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5b92c366c575d0207c255b51595915f9</srcmd5>
+    <version>0.2.2</version>
+    <time>1716406169</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.2.2:
+  + Add remote copy and move functions.
+  + Drop Authorization header during download.
+  + Fix browsing shared files.
+- Drop pkgconfig(rest-0.1) BuildRequires: no longer needed.
+- Add pkgconfig(libxml-2.0) BuildRequires: new dependency for the
+  test suite.
+- Enable test suite: run meson_test in check section.
+- Remove 'drive' test from test suite: this specific test wants to
+  verify the library against Microsofts servers. As we build
+  without network connectivity, this test cannot pass for us. (forwarded request 1175689 from dimstar)</comment>
+    <requestid>1175690</requestid>
+  </revision>
 </revisionlist>
