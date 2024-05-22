@@ -28,4 +28,12 @@
   * Make necessary changes to support Wireguard protocol</comment>
     <requestid>1169474</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>dcaa97b06dcdca3e5972a16d65a76bec</srcmd5>
+    <version>0.4.2</version>
+    <time>1716406392</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1175846</requestid>
+  </revision>
 </revisionlist>
