@@ -3,7 +3,7 @@
 @@ -6,7 +6,7 @@
      "target": "ES2016",
      "module": "ES2020",
-     "lib": ["es5", "es6", "es7", "dom"],
+     "lib": ["es5", "es6", "es7", "dom", "ES2021"],
 -    "sourceMap": true,
 +    "sourceMap": false,
      "allowSyntheticDefaultImports": true,

@@ -18,7 +18,7 @@
 #
 
 Name:       bitwarden
-Version:    2024.4.3
+Version:    2024.5.0
 Release:    0
 Summary:    A secure and free password manager for all of your devices
 Group:      Productivity/Security
@@ -81,11 +81,7 @@ BuildRequires: cargo
 %if 0%{?fedora}
 BuildRequires:  rust-srpm-macros
 %else
-%if 0%{?suse_version} >= 1600
 BuildRequires:  cargo-packaging >= 1.2.0+3
-%else
-BuildRequires:  rust-packaging
-%endif
 BuildRequires:  cargo-auditable
 %endif
 BuildRequires: fdupes
@@ -136,9 +132,6 @@ mv -v libs/angular/src/scss/bwicons/fonts/bwi-font.woff %{_builddir}
 rm -rvf libs/angular/src/scss/bwicons/fonts
 
 
-mkdir %{_builddir}/cargo
-
-
 #Rust config
 cd apps/desktop/desktop_native
 tar --zstd -xf %SOURCE4
@@ -151,46 +144,8 @@ jq -cj '.files={}' .cargo-checksum.json >tmp && mv tmp .cargo-checksum.json && p
 done
 
 
-# Make `node` and `npm` binaries refer to Electron
-%if 0%{?suse_version}
-NODEJS_DEFAULT_VER=$(echo %nodejs_version|sed 's/\..*//')
-%else
-NODEJS_DEFAULT_VER=
-%endif
-
-
-# Electron has a little known feature that make it work like a nodejs binary.
-# We make use of it since the system node may be too bleeding-edge
-# and to avoid building the same modules twice.
-# Not all scripts work when run under electron,
-# but importantly npm/yarn and GYP do.
-mkdir %{_builddir}/path
-
-
-
-cp -v /dev/stdin  %{_builddir}/path/node << EOF
-#!/bin/sh
-ELECTRON_RUN_AS_NODE=1 exec %{_libdir}/electron/electron "\$@"
-EOF
-
-# HACK: This will refer to /usr/bin/npm17 on openSUSE, /usr/bin/npm on Fedora which are Node scripts
-cp -v /dev/stdin  %{_builddir}/path/npm << EOF
-#!/bin/sh
-exec node %{_bindir}/npm${NODEJS_DEFAULT_VER} "\$@"
-EOF
-
-cp -v /dev/stdin  %{_builddir}/path/npx << EOF
-#!/bin/sh
-exec node %{_bindir}/npx${NODEJS_DEFAULT_VER} "\$@"
-EOF
-
-
-chmod +x %{_builddir}/path/*
-
-
 
 %build
-export PATH="%{_builddir}/cargo:$PATH"
 %ifarch %ix86
 export RUSTC_BOOTSTRAP=1
 %endif
@@ -216,7 +171,7 @@ auditable='auditable -vv'
 
 
 
-PATH="%{_builddir}/path:$PATH" npm rebuild --verbose --foreground-scripts --nodedir=%{_includedir}/electron
+%electron_rebuild
 
 cd apps/desktop
 pushd desktop_native
@@ -300,16 +255,7 @@ find . -type d -empty -print -delete
 %endif
 
 %check
-# Sanity check that we don't have unresolved symbols, and only call napi_* functions (which are ABI stable, unlike node_* ones)
-pushd %{buildroot}%{_libdir}/%{name}
-find . -name '*.node' -print0 | xargs -0 -t -IXXX sh -c '! ldd -d -r XXX | \
-grep    '\''^undefined symbol'\'' | \
-grep -v '\''^undefined symbol: napi_'\'' '
-
-# Check that all native modules are loadable.
-find . -name '*.node' -print0 | xargs -0 -t -IXXX env ELECTRON_RUN_AS_NODE=1 %{_libdir}/electron/electron -e 'require("XXX")'
-popd
-
+%electron_check_native
 
 
 %files

@@ -194,4 +194,15 @@
     <comment></comment>
     <requestid>1172267</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5eeeaa5b98691079e195371319ede961</srcmd5>
+    <version>2024.5.0</version>
+    <time>1716406217</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release 2024.5.0
+  * no changelog provided
+- Use new %electron_rebuild and %electron_check_native macros in specfile
+</comment>
+    <requestid>1175643</requestid>
+  </revision>
 </revisionlist>

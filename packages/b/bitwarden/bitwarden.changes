@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 21 21:38:33 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 2024.5.0
+  * no changelog provided
+- Use new %electron_rebuild and %electron_check_native macros in specfile
+
+-------------------------------------------------------------------
 Mon May  6 18:31:43 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 2024.4.3
