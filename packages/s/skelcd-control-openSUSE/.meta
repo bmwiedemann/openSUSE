@@ -1,5 +1,7 @@
 <package name="skelcd-control-openSUSE" project="openSUSE:Factory">
-  <title>SuSE Linux Professional Control file</title>
-  <description>Control file for installation</description>
+  <title> The openSUSE Installation Control file </title>
+  <description>This package contains the control file used for openSUSE installation.
+</description>
   <devel project="YaST:Head" package="skelcd-control-openSUSE"/>
+  <url>https://github.com/yast/skelcd-control-openSUSE</url>
 </package>

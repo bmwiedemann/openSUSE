@@ -27,7 +27,7 @@
 #
 ######################################################################
 Name:           skelcd-control-openSUSE
-Version:        20240321
+Version:        20240516
 Release:        0
 Summary:        The openSUSE Installation Control file
 License:        MIT
@@ -38,8 +38,7 @@ Source:         skelcd-control-openSUSE-%{version}.tar.bz2
 BuildRequires:  libxml2-tools
 # xsltproc
 BuildRequires:  libxslt-tools
-# Added 'lsm' section (jsc#SLE-22069)
-BuildRequires:  yast2-installation-control >= 4.4.7
+BuildRequires:  yast2-installation-control >= 5.0.1
 ######################################################################
 #
 # Here is the list of Yast packages which are needed in the
