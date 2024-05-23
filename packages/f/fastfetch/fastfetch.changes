@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed May 22 20:29:17 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- update to 2.13.1:
+   Changes:
+    * The long deprecated flag based config files are removed.
+     - They can still be used with xargs fastfetch < /path/to/config.conf
+     - --gen-config can be used to migrate them to json based config files
+    * The long deprecated options --set and --set-keyless are removed.
+    * Kernel module now prints kernel name by default
+   Features:
+    * Support st terminal font detection for font configuration compiled in st binary (TerminalFont, Linux)
+    * Add option --color-output to change output color of all modules except Title, Separator
+        display.color.output in JSONC config file
+    * Add option --<module>-output-color to change output color of one specified module,
+      which overrides the global option --color-output
+    * Add option --publicip-ipv6 to print IPv6 address (PublicIP)
+    * Add new module Loadavg to print load averages (Loadavg)
+    * Add new module PhysicalMemory to print information of physical memory devices (PhysicalMemory)
+        Requires root permission to work on Linux and FreeBSD
+    * Support specifying --logo-width only for --kitty-direct and --iterm (Logo)
+    * Add option --localip-show-all-ips to show all IPs assigned to the same interface (LocalIP)
+        Default to false
+    * Add --cpu-show-pe-core-count to detect and display core count for performance / efficiency cores (CPU)
+    * Add new module Bootmgr which prints information of stage 2 bootloader (grub, system-boot, etc)
+     - Requires booting in UEFI mode
+    * Detect core count for performance / efficiency cores (CPU)
+     - Test it with fastfetch --cpu-show-pe-core-count
+    * Detect DRM driver version if DRM detection method is used (GPU, Linux)
+   Bugfixes:
+    * Rename option --temperature-unit to --temp-unit as documented in help messages
+    * Fix alternate logo doesn't work with { "type": "builtin" } (Logo)
+    * Don't detect clifm and valgrind as a terminal (Terminal, Linux)
+    * Fix --cpu-freq-ndigits not working if --cpu-format is used
+   Logos:
+    * Add openSUSE Slowroll
+
+-------------------------------------------------------------------
 Mon May  6 19:45:12 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - update to 2.11.5:
