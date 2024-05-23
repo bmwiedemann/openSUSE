@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 22 19:44:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.2.1
+  * Fix double copy paste (kde#487181)
+  * Close dialog after deleting note (kde#487179)
+  * Remember last window state (kde#487178)
+  * Fix saving font (kde#487175)
+  * Fix data in appstream file
+  * Make left sidebar scrollable when there is too much note books
+
+-------------------------------------------------------------------
 Tue May 21 07:21:12 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.2.0

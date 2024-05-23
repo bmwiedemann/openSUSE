@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           marknote
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Rich text notes editor
 License:        GPL-2.0-or-later
