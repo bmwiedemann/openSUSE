@@ -22,22 +22,14 @@
 %define pkgname espresso
 %define modname %{pkgname}md
 Name:           python3-%{modname}
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Summary:        Parallel simulation software for soft matter research
 License:        GPL-3.0-or-later
 URL:            http://espressomd.org
 Source:         https://github.com/%{modname}/%{pkgname}/releases/download/%{version}/%{pkgname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM setuptools.patch gh#espressomd/espresso#4709
-Patch0:         setuptools.patch
-# PATCH-FIX-UPSTREAM tracers.patch gh#espressomd/espresso#4714
-Patch1:         tracers.patch
-# PATCH-FIX-UPSTREAM array-bounds.patch gh#espressomd/espresso#4715
-Patch2:         array-bounds.patch
-# PATCH-FIX-UPSTREAM mpi.patch gh#espressomd/espresso#4858
-Patch3:         mpi.patch
 # According to gh#espressomd/espresso#4537 32bit architectures are not supported any more
-ExcludeArch:    %{ix86}
+ExcludeArch:    %{ix86} armv7l
 BuildRequires:  cmake
 BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
