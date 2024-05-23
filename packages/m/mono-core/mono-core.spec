@@ -204,14 +204,14 @@ technologies that have been submitted to the ECMA for standardization.
 
 %prep
 %setup -q -n mono-%{version}.%{version_suffix}
-%patch14 -p1
+%patch -P 14 -p1
 %if "%roslyn" == "no"
-%patch15 -p1
+%patch -P 15 -p1
 %else
-%patch20 -p1
+%patch -P 20 -p1
 %endif
-%patch22 -p1
-%patch23 -p1
+%patch -P 22 -p1
+%patch -P 23 -p1
 
 %build
 %define _lto_cflags %{nil}
