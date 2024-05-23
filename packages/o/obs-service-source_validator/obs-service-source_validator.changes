@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 23 12:57:17 UTC 2024 - dimstar@opensuse.org
+
+- Update to version 0.36+2:
+  * Fix unzip test in 20-files-present-and-referenced
+
+-------------------------------------------------------------------
 Tue May 21 13:50:46 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Require unzip, needed for 0.36

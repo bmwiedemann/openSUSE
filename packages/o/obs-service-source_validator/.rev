@@ -722,4 +722,13 @@ last submission had wrong tar ball for unknown reason</comment>
     <comment></comment>
     <requestid>1175594</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>782acca7bb51098bf301d7445a51b3ac</srcmd5>
+    <version>0.36+2</version>
+    <time>1716471371</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.36+2:
+  * Fix unzip test in 20-files-present-and-referenced (forwarded request 1176476 from dimstar)</comment>
+    <requestid>1176477</requestid>
+  </revision>
 </revisionlist>

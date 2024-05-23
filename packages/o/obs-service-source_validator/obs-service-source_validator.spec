@@ -23,7 +23,7 @@
 %endif
 
 Name:           obs-service-source_validator
-Version:        0.36
+Version:        0.36+2
 Release:        0
 Summary:        An OBS source service: running all the osc source-validator checks
 License:        GPL-2.0-or-later
