@@ -31,4 +31,17 @@
     <comment></comment>
     <requestid>1162848</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f306788f3d754bf4428b74ff46788341</srcmd5>
+    <version>5.8.7.1+git20240521.287e766</version>
+    <time>1716471308</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.8.7.1+git20240521.287e766:
+  * Fix build for Linux v6.9
+  * Remove puncturing bitmap from function calls
+  * Suppress stringop-overread
+  * Remove useless if-guard
+  * Rewrite section regarding Unknown symbol errors</comment>
+    <requestid>1175959</requestid>
+  </revision>
 </revisionlist>
