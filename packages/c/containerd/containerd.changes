@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 22 19:31:04 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Update to containerd v1.7.17. Upstream release notes:
+  <https://github.com/containerd/containerd/releases/tag/v1.7.17>
+- Switch back to using tar_scm service. Aside from obs_scm using more bandwidth
+  and storage than a locally-compressed tar.xz, it seems there's some weird
+  issue with paths in obscpio that break our SLE-12-only patch.
+- Rebase patches:
+  * 0001-BUILD-SLE12-revert-btrfs-depend-on-kernel-UAPI-inste.patch
+- Update to containerd v1.7.16. Upstream release notes:
+  <https://github.com/containerd/containerd/releases/tag/v1.7.16>
+  CVE-2023-45288 bsc#1221400
+
+-------------------------------------------------------------------
 Sun Apr 21 15:57:05 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Use obs_scm service instead of tar_scm
@@ -21,6 +35,7 @@ Sun Apr 21 15:57:05 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to containerd v1.7.11. Upstream release notes:
   <https://github.com/containerd/containerd/releases/tag/v1.7.11>
+  GHSA-jq35-85cj-fj4p bsc#1224323
 
 -------------------------------------------------------------------
 Mon Feb 26 11:04:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>

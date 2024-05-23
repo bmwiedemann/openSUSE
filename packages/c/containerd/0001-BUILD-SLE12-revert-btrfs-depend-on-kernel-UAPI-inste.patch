@@ -1,6 +1,6 @@
-From 4c4982da6ba4822ce8ea33a8054fac51465b0c7c Mon Sep 17 00:00:00 2001
+From 0a038dd20742bcc5e244d92af75399b0c3cdc030 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <cyphar@cyphar.com>
-Date: Tue, 28 Nov 2023 22:54:03 +1100
+Date: Wed, 22 May 2024 12:58:32 -0700
 Subject: [PATCH] BUILD: SLE12: revert "btrfs: depend on kernel UAPI instead of
  libbtrfs"
 
@@ -15,7 +15,7 @@ for SLE-12.
 Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
 ---
  go.mod                                        |   2 +-
- go.sum                                        |   3 +-
+ go.sum                                        |   4 +-
  snapshots/btrfs/btrfs.go                      |   2 +-
  .../containerd/btrfs/{v2 => }/.gitignore      |   0
  .../containerd/btrfs/{v2 => }/LICENSE         |   0
@@ -28,58 +28,58 @@ Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
  .../containerd/btrfs/{v2 => }/helpers.go      |  29 +-
  .../containerd/btrfs/{v2 => }/info.go         |   0
  .../containerd/btrfs/{v2 => }/ioctl.go        |   0
- vendor/golang.org/x/sys/cpu/asm_aix_ppc64.s   |  18 --
+ vendor/golang.org/x/sys/cpu/asm_aix_ppc64.s   |  17 -
  vendor/golang.org/x/sys/cpu/byteorder.go      |  66 ----
  vendor/golang.org/x/sys/cpu/cpu.go            | 290 ------------------
- vendor/golang.org/x/sys/cpu/cpu_aix.go        |  34 --
+ vendor/golang.org/x/sys/cpu/cpu_aix.go        |  33 --
  vendor/golang.org/x/sys/cpu/cpu_arm.go        |  73 -----
  vendor/golang.org/x/sys/cpu/cpu_arm64.go      | 172 -----------
- vendor/golang.org/x/sys/cpu/cpu_arm64.s       |  32 --
- vendor/golang.org/x/sys/cpu/cpu_gc_arm64.go   |  12 -
- vendor/golang.org/x/sys/cpu/cpu_gc_s390x.go   |  22 --
- vendor/golang.org/x/sys/cpu/cpu_gc_x86.go     |  17 -
- .../golang.org/x/sys/cpu/cpu_gccgo_arm64.go   |  12 -
- .../golang.org/x/sys/cpu/cpu_gccgo_s390x.go   |  23 --
- vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.c   |  39 ---
- vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.go  |  33 --
- vendor/golang.org/x/sys/cpu/cpu_linux.go      |  16 -
+ vendor/golang.org/x/sys/cpu/cpu_arm64.s       |  31 --
+ vendor/golang.org/x/sys/cpu/cpu_gc_arm64.go   |  11 -
+ vendor/golang.org/x/sys/cpu/cpu_gc_s390x.go   |  21 --
+ vendor/golang.org/x/sys/cpu/cpu_gc_x86.go     |  15 -
+ .../golang.org/x/sys/cpu/cpu_gccgo_arm64.go   |  11 -
+ .../golang.org/x/sys/cpu/cpu_gccgo_s390x.go   |  22 --
+ vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.c   |  37 ---
+ vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.go  |  31 --
+ vendor/golang.org/x/sys/cpu/cpu_linux.go      |  15 -
  vendor/golang.org/x/sys/cpu/cpu_linux_arm.go  |  39 ---
  .../golang.org/x/sys/cpu/cpu_linux_arm64.go   | 111 -------
- .../golang.org/x/sys/cpu/cpu_linux_mips64x.go |  24 --
- .../golang.org/x/sys/cpu/cpu_linux_noinit.go  |  10 -
- .../golang.org/x/sys/cpu/cpu_linux_ppc64x.go  |  32 --
+ .../golang.org/x/sys/cpu/cpu_linux_mips64x.go |  22 --
+ .../golang.org/x/sys/cpu/cpu_linux_noinit.go  |   9 -
+ .../golang.org/x/sys/cpu/cpu_linux_ppc64x.go  |  30 --
  .../golang.org/x/sys/cpu/cpu_linux_s390x.go   |  40 ---
- vendor/golang.org/x/sys/cpu/cpu_loong64.go    |  13 -
- vendor/golang.org/x/sys/cpu/cpu_mips64x.go    |  16 -
- vendor/golang.org/x/sys/cpu/cpu_mipsx.go      |  12 -
+ vendor/golang.org/x/sys/cpu/cpu_loong64.go    |  12 -
+ vendor/golang.org/x/sys/cpu/cpu_mips64x.go    |  15 -
+ vendor/golang.org/x/sys/cpu/cpu_mipsx.go      |  11 -
  .../golang.org/x/sys/cpu/cpu_netbsd_arm64.go  | 173 -----------
  .../golang.org/x/sys/cpu/cpu_openbsd_arm64.go |  65 ----
  .../golang.org/x/sys/cpu/cpu_openbsd_arm64.s  |  11 -
- vendor/golang.org/x/sys/cpu/cpu_other_arm.go  |  10 -
- .../golang.org/x/sys/cpu/cpu_other_arm64.go   |  10 -
- .../golang.org/x/sys/cpu/cpu_other_mips64x.go |  13 -
- .../golang.org/x/sys/cpu/cpu_other_ppc64x.go  |  15 -
- .../golang.org/x/sys/cpu/cpu_other_riscv64.go |  12 -
- vendor/golang.org/x/sys/cpu/cpu_ppc64x.go     |  17 -
- vendor/golang.org/x/sys/cpu/cpu_riscv64.go    |  12 -
+ vendor/golang.org/x/sys/cpu/cpu_other_arm.go  |   9 -
+ .../golang.org/x/sys/cpu/cpu_other_arm64.go   |   9 -
+ .../golang.org/x/sys/cpu/cpu_other_mips64x.go |  11 -
+ .../golang.org/x/sys/cpu/cpu_other_ppc64x.go  |  12 -
+ .../golang.org/x/sys/cpu/cpu_other_riscv64.go |  11 -
+ vendor/golang.org/x/sys/cpu/cpu_ppc64x.go     |  16 -
+ vendor/golang.org/x/sys/cpu/cpu_riscv64.go    |  11 -
  vendor/golang.org/x/sys/cpu/cpu_s390x.go      | 172 -----------
- vendor/golang.org/x/sys/cpu/cpu_s390x.s       |  58 ----
- vendor/golang.org/x/sys/cpu/cpu_wasm.go       |  18 --
- vendor/golang.org/x/sys/cpu/cpu_x86.go        | 152 ---------
- vendor/golang.org/x/sys/cpu/cpu_x86.s         |  28 --
+ vendor/golang.org/x/sys/cpu/cpu_s390x.s       |  57 ----
+ vendor/golang.org/x/sys/cpu/cpu_wasm.go       |  17 -
+ vendor/golang.org/x/sys/cpu/cpu_x86.go        | 151 ---------
+ vendor/golang.org/x/sys/cpu/cpu_x86.s         |  26 --
  vendor/golang.org/x/sys/cpu/cpu_zos.go        |  10 -
  vendor/golang.org/x/sys/cpu/cpu_zos_s390x.go  |  25 --
- vendor/golang.org/x/sys/cpu/endian_big.go     |  11 -
- vendor/golang.org/x/sys/cpu/endian_little.go  |  11 -
+ vendor/golang.org/x/sys/cpu/endian_big.go     |  10 -
+ vendor/golang.org/x/sys/cpu/endian_little.go  |  10 -
  vendor/golang.org/x/sys/cpu/hwcap_linux.go    |  71 -----
  vendor/golang.org/x/sys/cpu/parse.go          |  43 ---
- .../x/sys/cpu/proc_cpuinfo_linux.go           |  54 ----
+ .../x/sys/cpu/proc_cpuinfo_linux.go           |  53 ----
  vendor/golang.org/x/sys/cpu/runtime_auxv.go   |  16 -
- .../x/sys/cpu/runtime_auxv_go121.go           |  19 --
- .../golang.org/x/sys/cpu/syscall_aix_gccgo.go |  27 --
- .../x/sys/cpu/syscall_aix_ppc64_gc.go         |  36 ---
+ .../x/sys/cpu/runtime_auxv_go121.go           |  18 --
+ .../golang.org/x/sys/cpu/syscall_aix_gccgo.go |  26 --
+ .../x/sys/cpu/syscall_aix_ppc64_gc.go         |  35 ---
  vendor/modules.txt                            |   7 +-
- 65 files changed, 54 insertions(+), 2330 deletions(-)
+ 65 files changed, 55 insertions(+), 2287 deletions(-)
  rename vendor/github.com/containerd/btrfs/{v2 => }/.gitignore (100%)
  rename vendor/github.com/containerd/btrfs/{v2 => }/LICENSE (100%)
  rename vendor/github.com/containerd/btrfs/{v2 => }/Makefile (100%)
@@ -143,12 +143,12 @@ Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
  delete mode 100644 vendor/golang.org/x/sys/cpu/syscall_aix_ppc64_gc.go
 
 diff --git a/go.mod b/go.mod
-index 8fa8e5afc0d5..a0c927917263 100644
+index 8028c97c1b0c..865356aced28 100644
 --- a/go.mod
 +++ b/go.mod
 @@ -9,7 +9,7 @@ require (
- 	github.com/Microsoft/hcsshim v0.11.4
- 	github.com/container-orchestrated-devices/container-device-interface v0.5.4
+ 	github.com/Microsoft/go-winio v0.6.2
+ 	github.com/Microsoft/hcsshim v0.11.5
  	github.com/containerd/aufs v1.0.0
 -	github.com/containerd/btrfs/v2 v2.0.0
 +	github.com/containerd/btrfs v1.0.0
@@ -156,17 +156,17 @@ index 8fa8e5afc0d5..a0c927917263 100644
  	github.com/containerd/console v1.0.3
  	github.com/containerd/continuity v0.4.2
 diff --git a/go.sum b/go.sum
-index cd0adb193879..21693007e7bc 100644
+index 4695f33f521e..7a8a8d9f0121 100644
 --- a/go.sum
 +++ b/go.sum
-@@ -187,9 +187,8 @@ github.com/containerd/aufs v1.0.0 h1:2oeJiwX5HstO7shSrPZjrohJZLzK36wvpdmzDRkL/LY
+@@ -133,8 +133,8 @@ github.com/containerd/aufs v0.0.0-20201003224125-76a6863f2989/go.mod h1:AkGGQs9N
+ github.com/containerd/aufs v1.0.0 h1:2oeJiwX5HstO7shSrPZjrohJZLzK36wvpdmzDRkL/LY=
  github.com/containerd/aufs v1.0.0/go.mod h1:kL5kd6KM5TzQjR79jljyi4olc1Vrx6XBlcyj3gNv2PU=
  github.com/containerd/btrfs v0.0.0-20201111183144-404b9149801e/go.mod h1:jg2QkJcsabfHugurUvvPhS3E08Oxiuh5W/g1ybB4e0E=
- github.com/containerd/btrfs v0.0.0-20210316141732-918d888fb676/go.mod h1:zMcX3qkXTAi9GI50+0HOeuV8LU2ryCE/V2vG/ZBiTss=
-+github.com/containerd/btrfs v1.0.0 h1:osn1exbzdub9L5SouXO5swW4ea/xVdJZ3wokxN5GrnA=
- github.com/containerd/btrfs v1.0.0/go.mod h1:zMcX3qkXTAi9GI50+0HOeuV8LU2ryCE/V2vG/ZBiTss=
 -github.com/containerd/btrfs/v2 v2.0.0 h1:FN4wsx7KQrYoLXN7uLP0vBV4oVWHOIKDRQ1G2Z0oL5M=
 -github.com/containerd/btrfs/v2 v2.0.0/go.mod h1:swkD/7j9HApWpzl8OHfrHNxppPd9l44DFZdF94BUj9k=
++github.com/containerd/btrfs v1.0.0 h1:osn1exbzdub9L5SouXO5swW4ea/xVdJZ3wokxN5GrnA=
++github.com/containerd/btrfs v1.0.0/go.mod h1:zMcX3qkXTAi9GI50+0HOeuV8LU2ryCE/V2vG/ZBiTss=
  github.com/containerd/cgroups v0.0.0-20190717030353-c4b9ac5c7601/go.mod h1:X9rLEHIqSf/wfK8NsPqxJmeZgW4pcfzdXITDrUSJ6uI=
  github.com/containerd/cgroups v0.0.0-20190919134610-bf292b21730f/go.mod h1:OApqhQ4XNSNC13gXIwDjhOQxjWa/NxkwZXJ1EvqT0ko=
  github.com/containerd/cgroups v0.0.0-20200531161412-0dbf7f05ba59/go.mod h1:pA0z1pT8KYB3TCXK/ocprsh7MAkoW8bZVzPdih9snmM=
@@ -585,16 +585,15 @@ rename from vendor/github.com/containerd/btrfs/v2/ioctl.go
 rename to vendor/github.com/containerd/btrfs/ioctl.go
 diff --git a/vendor/golang.org/x/sys/cpu/asm_aix_ppc64.s b/vendor/golang.org/x/sys/cpu/asm_aix_ppc64.s
 deleted file mode 100644
-index db9171c2e491..000000000000
+index 269e173ca469..000000000000
 --- a/vendor/golang.org/x/sys/cpu/asm_aix_ppc64.s
 +++ /dev/null
-@@ -1,18 +0,0 @@
+@@ -1,17 +0,0 @@
 -// Copyright 2018 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build gc
--// +build gc
 -
 -#include "textflag.h"
 -
@@ -977,16 +976,15 @@ index 4756ad5f7951..000000000000
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_aix.go b/vendor/golang.org/x/sys/cpu/cpu_aix.go
 deleted file mode 100644
-index 8aaeef545a76..000000000000
+index 9bf0c32eb6ad..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_aix.go
 +++ /dev/null
-@@ -1,34 +0,0 @@
+@@ -1,33 +0,0 @@
 -// Copyright 2019 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build aix
--// +build aix
 -
 -package cpu
 -
@@ -1274,16 +1272,15 @@ index f3eb993bf24b..000000000000
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_arm64.s b/vendor/golang.org/x/sys/cpu/cpu_arm64.s
 deleted file mode 100644
-index c61f95a05a73..000000000000
+index fcb9a3888205..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_arm64.s
 +++ /dev/null
-@@ -1,32 +0,0 @@
+@@ -1,31 +0,0 @@
 -// Copyright 2019 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build gc
--// +build gc
 -
 -#include "textflag.h"
 -
@@ -1312,16 +1309,15 @@ index c61f95a05a73..000000000000
 -	RET
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_gc_arm64.go b/vendor/golang.org/x/sys/cpu/cpu_gc_arm64.go
 deleted file mode 100644
-index ccf542a73da8..000000000000
+index a8acd3e3285d..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_gc_arm64.go
 +++ /dev/null
-@@ -1,12 +0,0 @@
+@@ -1,11 +0,0 @@
 -// Copyright 2019 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build gc
--// +build gc
 -
 -package cpu
 -
@@ -1330,16 +1326,15 @@ index ccf542a73da8..000000000000
 -func getpfr0() uint64
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_gc_s390x.go b/vendor/golang.org/x/sys/cpu/cpu_gc_s390x.go
 deleted file mode 100644
-index 0af2f248412d..000000000000
+index c8ae6ddc156f..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_gc_s390x.go
 +++ /dev/null
-@@ -1,22 +0,0 @@
+@@ -1,21 +0,0 @@
 -// Copyright 2019 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build gc
--// +build gc
 -
 -package cpu
 -
@@ -1358,17 +1353,15 @@ index 0af2f248412d..000000000000
 -func klmdQuery() queryResult
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_gc_x86.go b/vendor/golang.org/x/sys/cpu/cpu_gc_x86.go
 deleted file mode 100644
-index fa7cdb9bcd5f..000000000000
+index 910728fb163f..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_gc_x86.go
 +++ /dev/null
-@@ -1,17 +0,0 @@
+@@ -1,15 +0,0 @@
 -// Copyright 2018 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build (386 || amd64 || amd64p32) && gc
--// +build 386 amd64 amd64p32
--// +build gc
 -
 -package cpu
 -
@@ -1381,16 +1374,15 @@ index fa7cdb9bcd5f..000000000000
 -func xgetbv() (eax, edx uint32)
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_gccgo_arm64.go b/vendor/golang.org/x/sys/cpu/cpu_gccgo_arm64.go
 deleted file mode 100644
-index 2aff31891162..000000000000
+index 7f1946780bd3..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_gccgo_arm64.go
 +++ /dev/null
-@@ -1,12 +0,0 @@
+@@ -1,11 +0,0 @@
 -// Copyright 2019 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build gccgo
--// +build gccgo
 -
 -package cpu
 -
@@ -1399,16 +1391,15 @@ index 2aff31891162..000000000000
 -func getpfr0() uint64  { return 0 }
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_gccgo_s390x.go b/vendor/golang.org/x/sys/cpu/cpu_gccgo_s390x.go
 deleted file mode 100644
-index 4bfbda61993d..000000000000
+index 9526d2ce3a95..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_gccgo_s390x.go
 +++ /dev/null
-@@ -1,23 +0,0 @@
+@@ -1,22 +0,0 @@
 -// Copyright 2019 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build gccgo
--// +build gccgo
 -
 -package cpu
 -
@@ -1428,17 +1419,15 @@ index 4bfbda61993d..000000000000
 -func klmdQuery() queryResult  { panic("not implemented for gccgo") }
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.c b/vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.c
 deleted file mode 100644
-index 6cc73109f595..000000000000
+index 3f73a05dcf32..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.c
 +++ /dev/null
-@@ -1,39 +0,0 @@
+@@ -1,37 +0,0 @@
 -// Copyright 2018 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build (386 || amd64 || amd64p32) && gccgo
--// +build 386 amd64 amd64p32
--// +build gccgo
 -
 -#include <cpuid.h>
 -#include <stdint.h>
@@ -1473,17 +1462,15 @@ index 6cc73109f595..000000000000
 -#pragma GCC pop_options
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.go b/vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.go
 deleted file mode 100644
-index 863d415ab498..000000000000
+index 99c60fe9f9c6..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.go
 +++ /dev/null
-@@ -1,33 +0,0 @@
+@@ -1,31 +0,0 @@
 -// Copyright 2018 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build (386 || amd64 || amd64p32) && gccgo
--// +build 386 amd64 amd64p32
--// +build gccgo
 -
 -package cpu
 -
@@ -1512,16 +1499,15 @@ index 863d415ab498..000000000000
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_linux.go b/vendor/golang.org/x/sys/cpu/cpu_linux.go
 deleted file mode 100644
-index 159a686f6f7a..000000000000
+index 743eb54354b5..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_linux.go
 +++ /dev/null
-@@ -1,16 +0,0 @@
+@@ -1,15 +0,0 @@
 -// Copyright 2018 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build !386 && !amd64 && !amd64p32 && !arm64
--// +build !386,!amd64,!amd64p32,!arm64
 -
 -package cpu
 -
@@ -1696,17 +1682,15 @@ index a968b80fa6ab..000000000000
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_linux_mips64x.go b/vendor/golang.org/x/sys/cpu/cpu_linux_mips64x.go
 deleted file mode 100644
-index 6000db4cdd1b..000000000000
+index 4686c1d541d8..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_linux_mips64x.go
 +++ /dev/null
-@@ -1,24 +0,0 @@
+@@ -1,22 +0,0 @@
 -// Copyright 2020 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build linux && (mips64 || mips64le)
--// +build linux
--// +build mips64 mips64le
 -
 -package cpu
 -
@@ -1726,33 +1710,30 @@ index 6000db4cdd1b..000000000000
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_linux_noinit.go b/vendor/golang.org/x/sys/cpu/cpu_linux_noinit.go
 deleted file mode 100644
-index f4992b1a5938..000000000000
+index cd63e7335573..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_linux_noinit.go
 +++ /dev/null
-@@ -1,10 +0,0 @@
+@@ -1,9 +0,0 @@
 -// Copyright 2019 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build linux && !arm && !arm64 && !mips64 && !mips64le && !ppc64 && !ppc64le && !s390x
--// +build linux,!arm,!arm64,!mips64,!mips64le,!ppc64,!ppc64le,!s390x
 -
 -package cpu
 -
 -func doinit() {}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_linux_ppc64x.go b/vendor/golang.org/x/sys/cpu/cpu_linux_ppc64x.go
 deleted file mode 100644
-index 021356d6deb0..000000000000
+index 197188e67f34..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_linux_ppc64x.go
 +++ /dev/null
-@@ -1,32 +0,0 @@
+@@ -1,30 +0,0 @@
 -// Copyright 2018 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build linux && (ppc64 || ppc64le)
--// +build linux
--// +build ppc64 ppc64le
 -
 -package cpu
 -
@@ -1826,16 +1807,15 @@ index 1517ac61d31b..000000000000
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_loong64.go b/vendor/golang.org/x/sys/cpu/cpu_loong64.go
 deleted file mode 100644
-index 0f57b05bdbe5..000000000000
+index 558635850c78..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_loong64.go
 +++ /dev/null
-@@ -1,13 +0,0 @@
+@@ -1,12 +0,0 @@
 -// Copyright 2022 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build loong64
--// +build loong64
 -
 -package cpu
 -
@@ -1845,16 +1825,15 @@ index 0f57b05bdbe5..000000000000
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_mips64x.go b/vendor/golang.org/x/sys/cpu/cpu_mips64x.go
 deleted file mode 100644
-index f4063c66423b..000000000000
+index fedb00cc4cb9..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_mips64x.go
 +++ /dev/null
-@@ -1,16 +0,0 @@
+@@ -1,15 +0,0 @@
 -// Copyright 2018 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build mips64 || mips64le
--// +build mips64 mips64le
 -
 -package cpu
 -
@@ -1867,16 +1846,15 @@ index f4063c66423b..000000000000
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_mipsx.go b/vendor/golang.org/x/sys/cpu/cpu_mipsx.go
 deleted file mode 100644
-index 07c4e36d8f55..000000000000
+index ffb4ec7eb39e..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_mipsx.go
 +++ /dev/null
-@@ -1,12 +0,0 @@
+@@ -1,11 +0,0 @@
 -// Copyright 2018 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build mips || mipsle
--// +build mips mipsle
 -
 -package cpu
 -
@@ -2152,49 +2130,45 @@ index 054ba05d607b..000000000000
 -DATA	·libc_sysctl_trampoline_addr(SB)/8, $libc_sysctl_trampoline<>(SB)
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_other_arm.go b/vendor/golang.org/x/sys/cpu/cpu_other_arm.go
 deleted file mode 100644
-index d7b4fb4ccc24..000000000000
+index e9ecf2a45674..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_other_arm.go
 +++ /dev/null
-@@ -1,10 +0,0 @@
+@@ -1,9 +0,0 @@
 -// Copyright 2020 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build !linux && arm
--// +build !linux,arm
 -
 -package cpu
 -
 -func archInit() {}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_other_arm64.go b/vendor/golang.org/x/sys/cpu/cpu_other_arm64.go
 deleted file mode 100644
-index f3cde129b634..000000000000
+index 5341e7f88d71..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_other_arm64.go
 +++ /dev/null
-@@ -1,10 +0,0 @@
+@@ -1,9 +0,0 @@
 -// Copyright 2019 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build !linux && !netbsd && !openbsd && arm64
--// +build !linux,!netbsd,!openbsd,arm64
 -
 -package cpu
 -
 -func doinit() {}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_other_mips64x.go b/vendor/golang.org/x/sys/cpu/cpu_other_mips64x.go
 deleted file mode 100644
-index 0dafe9644a5a..000000000000
+index 5f8f2419ab85..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_other_mips64x.go
 +++ /dev/null
-@@ -1,13 +0,0 @@
+@@ -1,11 +0,0 @@
 -// Copyright 2020 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build !linux && (mips64 || mips64le)
--// +build !linux
--// +build mips64 mips64le
 -
 -package cpu
 -
@@ -2203,18 +2177,15 @@ index 0dafe9644a5a..000000000000
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_other_ppc64x.go b/vendor/golang.org/x/sys/cpu/cpu_other_ppc64x.go
 deleted file mode 100644
-index 060d46b6eacc..000000000000
+index 89608fba2763..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_other_ppc64x.go
 +++ /dev/null
-@@ -1,15 +0,0 @@
+@@ -1,12 +0,0 @@
 -// Copyright 2022 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build !aix && !linux && (ppc64 || ppc64le)
--// +build !aix
--// +build !linux
--// +build ppc64 ppc64le
 -
 -package cpu
 -
@@ -2224,16 +2195,15 @@ index 060d46b6eacc..000000000000
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_other_riscv64.go b/vendor/golang.org/x/sys/cpu/cpu_other_riscv64.go
 deleted file mode 100644
-index dd10eb79feef..000000000000
+index 5ab87808f710..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_other_riscv64.go
 +++ /dev/null
-@@ -1,12 +0,0 @@
+@@ -1,11 +0,0 @@
 -// Copyright 2022 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build !linux && riscv64
--// +build !linux,riscv64
 -
 -package cpu
 -
@@ -2242,16 +2212,15 @@ index dd10eb79feef..000000000000
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_ppc64x.go b/vendor/golang.org/x/sys/cpu/cpu_ppc64x.go
 deleted file mode 100644
-index 4e8acd16583d..000000000000
+index c14f12b14942..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_ppc64x.go
 +++ /dev/null
-@@ -1,17 +0,0 @@
+@@ -1,16 +0,0 @@
 -// Copyright 2020 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build ppc64 || ppc64le
--// +build ppc64 ppc64le
 -
 -package cpu
 -
@@ -2265,16 +2234,15 @@ index 4e8acd16583d..000000000000
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_riscv64.go b/vendor/golang.org/x/sys/cpu/cpu_riscv64.go
 deleted file mode 100644
-index ff7da60eb8d7..000000000000
+index 7f0c79c004b4..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_riscv64.go
 +++ /dev/null
-@@ -1,12 +0,0 @@
+@@ -1,11 +0,0 @@
 -// Copyright 2019 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build riscv64
--// +build riscv64
 -
 -package cpu
 -
@@ -2461,16 +2429,15 @@ index 5881b8833f5a..000000000000
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_s390x.s b/vendor/golang.org/x/sys/cpu/cpu_s390x.s
 deleted file mode 100644
-index 96f81e209717..000000000000
+index 1fb4b701334c..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_s390x.s
 +++ /dev/null
-@@ -1,58 +0,0 @@
+@@ -1,57 +0,0 @@
 -// Copyright 2019 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build gc
--// +build gc
 -
 -#include "textflag.h"
 -
@@ -2525,16 +2492,15 @@ index 96f81e209717..000000000000
 -	RET
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_wasm.go b/vendor/golang.org/x/sys/cpu/cpu_wasm.go
 deleted file mode 100644
-index 7747d888a692..000000000000
+index 384787ea3062..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_wasm.go
 +++ /dev/null
-@@ -1,18 +0,0 @@
+@@ -1,17 +0,0 @@
 -// Copyright 2019 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build wasm
--// +build wasm
 -
 -package cpu
 -
@@ -2549,16 +2515,15 @@ index 7747d888a692..000000000000
 -func archInit() {}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_x86.go b/vendor/golang.org/x/sys/cpu/cpu_x86.go
 deleted file mode 100644
-index 2dcde8285d59..000000000000
+index c29f5e4c5a6e..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_x86.go
 +++ /dev/null
-@@ -1,152 +0,0 @@
+@@ -1,151 +0,0 @@
 -// Copyright 2018 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build 386 || amd64 || amd64p32
--// +build 386 amd64 amd64p32
 -
 -package cpu
 -
@@ -2707,17 +2672,15 @@ index 2dcde8285d59..000000000000
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_x86.s b/vendor/golang.org/x/sys/cpu/cpu_x86.s
 deleted file mode 100644
-index 39acab2ff5c2..000000000000
+index 7d7ba33efb85..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_x86.s
 +++ /dev/null
-@@ -1,28 +0,0 @@
+@@ -1,26 +0,0 @@
 -// Copyright 2018 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build (386 || amd64 || amd64p32) && gc
--// +build 386 amd64 amd64p32
--// +build gc
 -
 -#include "textflag.h"
 -
@@ -2788,16 +2751,15 @@ index ccb1b708aba9..000000000000
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/endian_big.go b/vendor/golang.org/x/sys/cpu/endian_big.go
 deleted file mode 100644
-index 93ce03a34605..000000000000
+index 7fe04b0a13b1..000000000000
 --- a/vendor/golang.org/x/sys/cpu/endian_big.go
 +++ /dev/null
-@@ -1,11 +0,0 @@
+@@ -1,10 +0,0 @@
 -// Copyright 2023 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build armbe || arm64be || m68k || mips || mips64 || mips64p32 || ppc || ppc64 || s390 || s390x || shbe || sparc || sparc64
--// +build armbe arm64be m68k mips mips64 mips64p32 ppc ppc64 s390 s390x shbe sparc sparc64
 -
 -package cpu
 -
@@ -2805,16 +2767,15 @@ index 93ce03a34605..000000000000
 -const IsBigEndian = true
 diff --git a/vendor/golang.org/x/sys/cpu/endian_little.go b/vendor/golang.org/x/sys/cpu/endian_little.go
 deleted file mode 100644
-index 55db853efbec..000000000000
+index 48eccc4c7996..000000000000
 --- a/vendor/golang.org/x/sys/cpu/endian_little.go
 +++ /dev/null
-@@ -1,11 +0,0 @@
+@@ -1,10 +0,0 @@
 -// Copyright 2023 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build 386 || amd64 || amd64p32 || alpha || arm || arm64 || loong64 || mipsle || mips64le || mips64p32le || nios2 || ppc64le || riscv || riscv64 || sh || wasm
--// +build 386 amd64 amd64p32 alpha arm arm64 loong64 mipsle mips64le mips64p32le nios2 ppc64le riscv riscv64 sh wasm
 -
 -package cpu
 -
@@ -2948,16 +2909,15 @@ index 762b63d6882c..000000000000
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/proc_cpuinfo_linux.go b/vendor/golang.org/x/sys/cpu/proc_cpuinfo_linux.go
 deleted file mode 100644
-index d87bd6b3eb05..000000000000
+index 4cd64c7042bc..000000000000
 --- a/vendor/golang.org/x/sys/cpu/proc_cpuinfo_linux.go
 +++ /dev/null
-@@ -1,54 +0,0 @@
+@@ -1,53 +0,0 @@
 -// Copyright 2022 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build linux && arm64
--// +build linux,arm64
 -
 -package cpu
 -
@@ -3030,16 +2990,15 @@ index 5f92ac9a2e2b..000000000000
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/runtime_auxv_go121.go b/vendor/golang.org/x/sys/cpu/runtime_auxv_go121.go
 deleted file mode 100644
-index b975ea2a04ef..000000000000
+index 4c9788ea8ee8..000000000000
 --- a/vendor/golang.org/x/sys/cpu/runtime_auxv_go121.go
 +++ /dev/null
-@@ -1,19 +0,0 @@
+@@ -1,18 +0,0 @@
 -// Copyright 2023 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
 -//go:build go1.21
--// +build go1.21
 -
 -package cpu
 -
@@ -3055,10 +3014,10 @@ index b975ea2a04ef..000000000000
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/syscall_aix_gccgo.go b/vendor/golang.org/x/sys/cpu/syscall_aix_gccgo.go
 deleted file mode 100644
-index 96134157a10d..000000000000
+index 1b9ccb091a57..000000000000
 --- a/vendor/golang.org/x/sys/cpu/syscall_aix_gccgo.go
 +++ /dev/null
-@@ -1,27 +0,0 @@
+@@ -1,26 +0,0 @@
 -// Copyright 2020 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
@@ -3070,7 +3029,6 @@ index 96134157a10d..000000000000
 -// gccgo's libgo and thus must not used a CGo method.
 -
 -//go:build aix && gccgo
--// +build aix,gccgo
 -
 -package cpu
 -
@@ -3088,10 +3046,10 @@ index 96134157a10d..000000000000
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/syscall_aix_ppc64_gc.go b/vendor/golang.org/x/sys/cpu/syscall_aix_ppc64_gc.go
 deleted file mode 100644
-index 904be42ffdce..000000000000
+index e8b6cdbe9a7c..000000000000
 --- a/vendor/golang.org/x/sys/cpu/syscall_aix_ppc64_gc.go
 +++ /dev/null
-@@ -1,36 +0,0 @@
+@@ -1,35 +0,0 @@
 -// Copyright 2019 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
@@ -3101,7 +3059,6 @@ index 904be42ffdce..000000000000
 -// (See golang.org/issue/32102)
 -
 -//go:build aix && ppc64 && gc
--// +build aix,ppc64,gc
 -
 -package cpu
 -
@@ -3129,10 +3086,10 @@ index 904be42ffdce..000000000000
 -	return
 -}
 diff --git a/vendor/modules.txt b/vendor/modules.txt
-index fd5a3491d305..764f922ba25c 100644
+index 9d97f2a203b2..937ca9b44ded 100644
 --- a/vendor/modules.txt
 +++ b/vendor/modules.txt
-@@ -87,9 +87,9 @@ github.com/container-orchestrated-devices/container-device-interface/specs-go
+@@ -85,9 +85,9 @@ github.com/cilium/ebpf/link
  ## explicit; go 1.13
  github.com/containerd/aufs
  github.com/containerd/aufs/plugin
@@ -3145,14 +3102,14 @@ index fd5a3491d305..764f922ba25c 100644
  # github.com/containerd/cgroups v1.1.0
  ## explicit; go 1.17
  github.com/containerd/cgroups/stats/v1
-@@ -530,7 +530,6 @@ golang.org/x/sync/errgroup
+@@ -532,7 +532,6 @@ golang.org/x/sync/errgroup
  golang.org/x/sync/semaphore
- # golang.org/x/sys v0.13.0
- ## explicit; go 1.17
+ # golang.org/x/sys v0.18.0
+ ## explicit; go 1.18
 -golang.org/x/sys/cpu
- golang.org/x/sys/execabs
  golang.org/x/sys/plan9
  golang.org/x/sys/unix
+ golang.org/x/sys/windows
 -- 
-2.43.0
+2.45.1
 

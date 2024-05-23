@@ -1,17 +1,14 @@
 <services>
-  <service name="obs_scm" mode="manual">
+  <service name="tar_scm" mode="manual">
     <param name="url">https://github.com/containerd/containerd.git</param>
     <param name="scm">git</param>
     <param name="filename">containerd</param>
-    <param name="versionformat">1.7.15_%h</param>
-    <param name="revision">v1.7.15</param>
+    <param name="versionformat">1.7.17_%h</param>
+    <param name="revision">v1.7.17</param>
     <param name="exclude">.git</param>
   </service>
-  
-  <service mode="buildtime" name="tar" />
-  <service mode="buildtime" name="recompress">
-    <param name="file">*.tar</param>
+  <service name="recompress" mode="manual">
+    <param name="file">containerd-*.tar</param>
     <param name="compression">xz</param>
   </service>
-
 </services>
