@@ -12335,6 +12335,7 @@ unsorted:
   - libcupsimage2-32bit 
   - libcurl-devel 
   - libcurl-devel-32bit 
+  - libcurl-devel-doc 
   - libcurl4-32bit 
   - libcurses1 
   - libcvc-devel 
@@ -23252,6 +23253,9 @@ unsorted:
   - python-logutils-doc 
   - python-logzero-doc 
   - python-lxml-doc 
+  - python-magic-wormhole-bash-completion 
+  - python-magic-wormhole-fish-completion 
+  - python-magic-wormhole-zsh-completion 
   - python-magnumclient-doc 
   - python-manilaclient-doc 
   - python-mapscript 
@@ -25124,6 +25128,7 @@ unsorted:
   - python310-gprof2dot 
   - python310-gps3 
   - python310-gpstime 
+  - python310-gpt4all 
   - python310-gpxpy 
   - python310-graphene 
   - python310-graphene-django 
@@ -28670,6 +28675,7 @@ unsorted:
   - python311-gprof2dot 
   - python311-gps3 
   - python311-gpstime 
+  - python311-gpt4all 
   - python311-gpxpy 
   - python311-graphene 
   - python311-graphene-django 
@@ -32181,6 +32187,7 @@ unsorted:
   - python312-gprof2dot 
   - python312-gps3 
   - python312-gpstime 
+  - python312-gpt4all 
   - python312-gpxpy 
   - python312-graphene 
   - python312-graphene-django 
@@ -46350,6 +46357,8 @@ unsorted:
   - tktable 
   - tkxcd 
   - tllist-devel 
+  - tlp 
+  - tlp-rdw 
   - tlpui 
   - tlrc 
   - tls 
@@ -46574,6 +46583,7 @@ unsorted:
   - ttf2pt1 
   - ttyd 
   - ttynvt 
+  - ttyper 
   - tuba 
   - tuba-lang 
   - tudu 
