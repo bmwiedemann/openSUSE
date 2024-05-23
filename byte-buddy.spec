@@ -17,7 +17,7 @@
 
 
 Name:           byte-buddy
-Version:        1.14.15
+Version:        1.14.16
 Release:        0
 Summary:        Runtime code generation for the Java virtual machine
 License:        Apache-2.0
@@ -39,7 +39,7 @@ BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.eclipse.aether:aether-api)
 BuildRequires:  mvn(org.eclipse.aether:aether-util)
-BuildRequires:  mvn(org.ow2.asm:asm)
+BuildRequires:  mvn(org.ow2.asm:asm) >= 9.7
 BuildRequires:  mvn(org.ow2.asm:asm-commons)
 BuildRequires:  mvn(org.sonatype.plexus:plexus-build-api)
 BuildArch:      noarch

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 23 05:28:12 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v1.14.16
+  * Changes of v1.14.16
+    + Update ASM and introduce support for Java 23.
+
+-------------------------------------------------------------------
 Tue May 21 10:58:11 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to v1.14.15
