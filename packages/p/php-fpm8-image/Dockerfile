@@ -52,7 +52,7 @@ RUN chmod +x /usr/local/bin/docker-php-*
 WORKDIR /srv/www/htdocs
 
 RUN set -euo pipefail; \
-	cd /etc/php8/fpm/; \
+	cd /etc/php8/fpm/; \ 
         test -e php-fpm.d/www.conf.default && cp -p php-fpm.d/www.conf.default php-fpm.d/www.conf; \
         test -e php-fpm.conf.default && cp -p php-fpm.conf.default php-fpm.conf; \
 	{ \
