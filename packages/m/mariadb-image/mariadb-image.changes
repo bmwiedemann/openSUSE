@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 21 07:34:23 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- Simplify _mariadb_version in entrypoint
+
+-------------------------------------------------------------------
 Sat May 18 17:56:27 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - Handle arguments with spaces in mysql_install_db
