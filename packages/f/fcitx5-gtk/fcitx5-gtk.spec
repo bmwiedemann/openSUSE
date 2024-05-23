@@ -17,13 +17,13 @@
 
 
 Name:           fcitx5-gtk
-Version:        5.1.1
+Version:        5.1.3
 Release:        0
 Summary:        Gtk im module for fcitx5 and glib based dbus client library
 License:        LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/fcitx5-gtk
-Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
+Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.zst
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
@@ -34,6 +34,7 @@ BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk2-devel
 BuildRequires:  gtk3-devel
 BuildRequires:  libxkbcommon-devel
+BuildRequires:  zstd
 %if 0%{?suse_version} >= 1550
 BuildRequires:  gtk4-devel
 %endif
@@ -83,7 +84,7 @@ This package provides GTK+ 3.0 im module for fcitx5.
 Summary:        GTK+ 4.0 im module for fcitx5
 Group:          System/I18n/Chinese
 Requires(post): glib2-tools
-Requires(postun):glib2-tools
+Requires(postun): glib2-tools
 Supplements:    (fcitx5 and libgtk-4-1)
 
 %description -n fcitx5-gtk4
