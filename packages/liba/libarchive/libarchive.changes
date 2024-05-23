@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 22 08:32:02 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix bsdunzip test failing due to a locale issue
+  * fix-bsdunzip-test.patch
+
+-------------------------------------------------------------------
 Tue Apr 30 08:05:28 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 3.7.4:

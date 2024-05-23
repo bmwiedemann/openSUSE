@@ -1,0 +1,19 @@
+commit 64e2e88ec326dd37fcb85c9a9d21fa43444a0a59
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Wed May 22 10:13:47 2024 +0200
+
+    Fix test failure on openSUSE:Leap:15.5
+
+diff --git a/unzip/test/test_I.c b/unzip/test/test_I.c
+index 5d31ce8d..92e5ce59 100644
+--- a/unzip/test/test_I.c
++++ b/unzip/test/test_I.c
+@@ -45,7 +45,7 @@ DEFINE_TEST(test_I)
+ #endif
+ 
+ 	extract_reference_file(reffile);
+-	r = systemf("%s -I UTF-8 %s >test.out 2>test.err", testprog, reffile);
++	r = systemf("env -uLC_ALL LC_CTYPE=en_US.UTF-8 %s -I UTF-8 %s >test.out 2>test.err", testprog, reffile);
+ 	assertEqualInt(0, r);
+ 	assertNonEmptyFile("test.out");
+ 	assertEmptyFile("test.err");
