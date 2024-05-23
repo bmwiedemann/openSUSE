@@ -18,19 +18,20 @@
 
 %define _suffix 1
 Name:           xcb-imdkit
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Summary:        An implementation of xim protocol in xcb
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/fcitx/xcb-imdkit
-Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
+Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.zst
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
 BuildRequires:  libxcb-devel
 BuildRequires:  xcb-util-devel
 BuildRequires:  xcb-util-keysyms-devel
+BuildRequires:  zstd
 
 %description
 xcb-imdkit is an implementation of xim protocol in xcb, comparing with the
