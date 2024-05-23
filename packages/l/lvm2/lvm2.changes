@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 21 11:30:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN syntax.
+
+-------------------------------------------------------------------
 Fri Mar 22 12:54:54 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

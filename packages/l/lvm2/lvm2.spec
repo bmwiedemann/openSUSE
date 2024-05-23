@@ -155,44 +155,44 @@ Volume Manager.
 
 %prep
 %setup -q -n LVM2.%{version}
-%patch0001 -p1
-%patch0002 -p1
-%patch0003 -p1
-%patch0004 -p1
-%patch0005 -p1
-%patch0006 -p1
-%patch0007 -p1
-%patch0008 -p1
-%patch0009 -p1
-%patch0010 -p1
-%patch0011 -p1
-%patch0012 -p1
-%patch0013 -p1
-%patch0014 -p1
-%patch0015 -p1
-%patch0016 -p1
-%patch0017 -p1
-%patch0018 -p1
-%patch0019 -p1
-%patch0020 -p1
-%patch0021 -p1
-%patch0022 -p1
-%patch0023 -p1
-%patch0024 -p1
-%patch1001 -p1
-%patch1002 -p1
-%patch1003 -p1
-%patch1004 -p1
-%patch1005 -p1
-%patch1006 -p1
-%patch1007 -p1
-%patch1008 -p1
-%patch1009 -p1
-%patch2001 -p1
-%patch3001 -p1
+%patch -P 0001 -p1
+%patch -P 0002 -p1
+%patch -P 0003 -p1
+%patch -P 0004 -p1
+%patch -P 0005 -p1
+%patch -P 0006 -p1
+%patch -P 0007 -p1
+%patch -P 0008 -p1
+%patch -P 0009 -p1
+%patch -P 0010 -p1
+%patch -P 0011 -p1
+%patch -P 0012 -p1
+%patch -P 0013 -p1
+%patch -P 0014 -p1
+%patch -P 0015 -p1
+%patch -P 0016 -p1
+%patch -P 0017 -p1
+%patch -P 0018 -p1
+%patch -P 0019 -p1
+%patch -P 0020 -p1
+%patch -P 0021 -p1
+%patch -P 0022 -p1
+%patch -P 0023 -p1
+%patch -P 0024 -p1
+%patch -P 1001 -p1
+%patch -P 1002 -p1
+%patch -P 1003 -p1
+%patch -P 1004 -p1
+%patch -P 1005 -p1
+%patch -P 1006 -p1
+%patch -P 1007 -p1
+%patch -P 1008 -p1
+%patch -P 1009 -p1
+%patch -P 2001 -p1
+%patch -P 3001 -p1
 
 %if !%{with lockd}
-%patch4001 -p1
+%patch -P 4001 -p1
 %endif
 
 %build
