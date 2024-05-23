@@ -17,18 +17,19 @@
 
 
 Name:           fcitx5-sayura
-Version:        5.1.1
+Version:        5.1.2
 Release:        0
 Summary:        Sinhala input method for Fcitx5
 License:        GPL-2.0-or-later
 URL:            https://github.com/fcitx/fcitx5-sayura
-Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
+Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.zst
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
+BuildRequires:  zstd
 Requires:       fcitx5
 Provides:       fcitx-sayura = %{version}
 Obsoletes:      fcitx-sayura <= 0.1.2
