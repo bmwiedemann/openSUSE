@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-respx
 Version:        0.21.1
 Release:        0

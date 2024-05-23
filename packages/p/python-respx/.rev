@@ -88,4 +88,12 @@
   * Add support for `None` values in `data` pattern</comment>
     <requestid>1170437</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>aee56fff349c40005e0c7439238f71e4</srcmd5>
+    <version>0.21.1</version>
+    <time>1716471345</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1176154</requestid>
+  </revision>
 </revisionlist>
