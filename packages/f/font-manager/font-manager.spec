@@ -19,14 +19,12 @@
 %global DBusName org.gnome.FontManager
 %global DBusName2 org.gnome.FontViewer
 Name:           font-manager
-Version:        0.8.8
+Version:        0.8.9
 Release:        0
 Summary:        A simple font management application for Gtk+ Desktop Environments
 License:        GPL-3.0-or-later
 URL:            https://fontmanager.github.io
 Source0:        https://github.com/FontManager/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 600f498946c3904064b4e4fdf96e5841f6a827e4.patch -- based on commit 600f498
-Patch0:         https://github.com/FontManager/font-manager/commit/600f498946c3904064b4e4fdf96e5841f6a827e4.patch
 BuildRequires:  appstream-glib
 BuildRequires:  gettext-runtime
 BuildRequires:  meson
@@ -43,12 +41,12 @@ BuildRequires:  pkgconfig(json-glib-1.0)
 # Disable nautilus until font-manager is ported to gtk4
 #BuildRequires:  pkgconfig(libnautilus-extension)
 BuildRequires:  pkgconfig(libnemo-extension)
-BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(thunarx-3)
-BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.13.90
+BuildRequires:  pkgconfig(webkit2gtk-4.1) >= 2.13.90
 Requires:       %{name}-common
 Requires:       font-viewer
 Requires:       fontconfig

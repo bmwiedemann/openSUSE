@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 23 10:45:20 UTC 2024 - Jan Baier <jbaier@suse.com>
+
+- Update to 0.8.9
+  * Bumps libsoup version to 3.0 - Issue #343
+  * Fix build failures with Vala >= 0.56.17 - Issue #355
+  * Fix failure during copy of font files on export
+  * Fix reversed order of font substitutions - Issue #351
+  * Update Unicode data to version 15.1.0 - Issue #345
+  * Don't disable Fontconfig home, avoids warnings from library
+- Remove upstreamed 600f498946c3904064b4e4fdf96e5841f6a827e4.patch
+
+-------------------------------------------------------------------
 Mon May 20 13:42:54 UTC 2024 - Jan Baier <jbaier@suse.com>
 
 - Add 600f498946c3904064b4e4fdf96e5841f6a827e4.patch
