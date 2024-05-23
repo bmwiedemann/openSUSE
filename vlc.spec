@@ -56,6 +56,8 @@ Patch5:         vlc-libplacebo-5.patch
 Patch6:         vlc-taglib-2.0.patch
 # PATCH-FIX-UPSTREAM
 Patch7:         https://code.videolan.org/videolan/vlc/-/merge_requests/4645.patch
+# PATCH-FIX-UPSTREAM -- chromaprint, missing cast
+Patch8:         https://code.videolan.org/videolan/vlc/-/commit/770789f2.patch
 # PATCH-FEATURE-OPENSUSE vlc-projectM-qt5.patch -- Build against projectM-qt5; openSUSE provides projectM as -qt and -qt5 variant
 Patch100:       vlc-projectM-qt5.patch
 # PATCH-FIX-UPSTREAM -- Use OpenCV C++ API
@@ -417,6 +419,7 @@ OpenCV based video filters and a face detection example.
 %patch -P 4 -p1
 %patch -P 6 -p1
 %patch -P 7 -p1
+%patch -P 8 -p1
 %if 0%{?suse_version} > 1320 && 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
 %patch -P 100 -p1
 %endif
