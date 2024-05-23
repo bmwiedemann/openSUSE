@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyMySQL
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-PyMySQL
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Pure Python MySQL Driver
 License:        MIT
@@ -77,7 +77,7 @@ dbuserpw='db_user_secret'
 dbname1='test1'
 dbname2='test2'
 # Needs mysql server
-#%%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v
+#%%python_expand PYTHONPATH=%%{buildroot}%%{$python_sitelib} py.test-%%{$python_bin_suffix} -v
 cconf=abuild-myclient.cnf
 #
 # start the mariadb server

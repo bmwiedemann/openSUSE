@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 23 11:34:26 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 1.1.1 (bsc#1225070):
+  * Prohibit dict parameter for Cursor.execute(). It didn't produce
+    valid SQL and might cause SQL injection. (CVE-2024-36039)
+  * Added ssl_key_password param by @svaskov in #1145
+
+-------------------------------------------------------------------
 Wed Aug 16 14:43:37 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

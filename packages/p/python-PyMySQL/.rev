@@ -267,4 +267,15 @@
     <comment></comment>
     <requestid>1104322</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e74c10c655647fa8349787f1b6e83257</srcmd5>
+    <version>1.1.1</version>
+    <time>1716471366</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.1.1 (bsc#1225070):
+  * Prohibit dict parameter for Cursor.execute(). It didn't produce
+    valid SQL and might cause SQL injection. (CVE-2024-36039)
+  * Added ssl_key_password param by @svaskov in #1145</comment>
+    <requestid>1176449</requestid>
+  </revision>
 </revisionlist>
