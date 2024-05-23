@@ -17,12 +17,12 @@
 
 
 Name:           fcitx5-table-extra
-Version:        5.1.3
+Version:        5.1.5
 Release:        0
 Summary:        Extra Chinese table input methods for Fcitx5
 License:        GPL-3.0-or-later AND SUSE-Public-Domain
 URL:            https://github.com/fcitx/fcitx5-table-extra
-Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
+Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.zst
 BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
@@ -30,6 +30,7 @@ BuildRequires:  fcitx5-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libime-devel
+BuildRequires:  zstd
 Requires:       fcitx5
 Provides:       fcitx-table-cn-cantonese = %{version}
 Provides:       fcitx-table-cn-wu = %{version}
