@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed May 22 13:22:01 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 12.85:
+  * Added GeolocationFeatureType tag
+  * Added read support for Nikon NKA and NXD adjustment files
+  * Added a new Apple:ImageCaptureType value, and changed another one
+  * Decode a few new Pentax tags
+  * Decode a few new Canon tags
+  * Decode some Ricoh Exif metadata from MOV videos
+  * Extract ID3 UserDefinedText and UserDefinedURL tags by name
+  * Make $advFmtSelf available for user-defined helper functions
+  * Documented API GeoDir pseudo option feature
+  * Tolerate pad byte at end of HIF file when writing
+  * Raised priority of FileName, BaseName, Directory and FileType tags
+    so they don't get hidden by other tags in the file which may have these names
+  * Changed decoding of QuickTime Rotation (irot) to
+    correspond with EXIF:Orientation (previously this was oddly
+    reported as degrees of counterclockwise rotation)
+  * Fixed a typo in the print conversion value for a couple of DPX tags
+  * Fixed problem writing some QuickTime tags with very large (> 16 MB) values
+  * Fixed bug in build_geolocation utility that resulted in incorrect
+    population numbers when run under ActivePerl
+
+-------------------------------------------------------------------
 Mon Apr 29 06:40:46 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 12.84:
