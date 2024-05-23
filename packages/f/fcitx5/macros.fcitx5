@@ -5,3 +5,4 @@
 %_fcitx5_addondir %{_fcitx5_datadir}/addon
 %_fcitx5_imconfdir %{_fcitx5_datadir}/inputmethod
 %_fcitx5_qt5dir %{_fcitx5_libdir}/qt5
+%_fcitx5_qt6dir %{_fcitx5_libdir}/qt6

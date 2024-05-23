@@ -23,13 +23,13 @@
 %define _environmentdir %{_prefix}/lib/environment.d
 %endif
 Name:           fcitx5
-Version:        5.1.7
+Version:        5.1.9
 Release:        0
 Summary:        Next generation of fcitx
 License:        LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/fcitx5
-Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}_dict.tar.xz
+Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}_dict.tar.zst
 Source2:        https://raw.githubusercontent.com/fcitx/fcitx-artwork/master/logo/Fcitx.svg
 Source3:        xim.d-fcitx5
 Source4:        macros.fcitx5
@@ -46,6 +46,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xcb-util-wm-devel
 BuildRequires:  xkeyboard-config
+BuildRequires:  zstd
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(cldr-emoji-annotation)
 BuildRequires:  pkgconfig(enchant-2)

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 22 07:44:16 UTC 2024 - Marguerite Su <i@marguerite.su>
+
+- Update to 5.1.9
+  * Add support to recognize passwords in clipboard and allow
+    automatically clear after a certain amount of time, and 
+    also hide them when displaying it. This feature is not 
+    widely supported, the known application supports it including
+    keepassxc, plasma-pass. You can also configure to ask fcitx
+    clipboard to ignore all such marked passwords.
+  * Fix repeat info is not correctly populated from wayland
+  * Unicode addon now supports Unicode 15.1
+  * FIx an issue that under certain cases, the X popup window
+    may still out of screen.
+  * A new option to reset input method active state on focus in.
+  * fix wayland im frontend check on whether a key should repeat
+
+-------------------------------------------------------------------
 Sun Feb  4 14:17:28 UTC 2024 - Marguerite Su <i@marguerite.su>
 
 - Update to 5.1.7
