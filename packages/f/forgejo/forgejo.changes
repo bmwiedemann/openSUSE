@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed May 22 20:41:58 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to 7.0.3:
+  * CVE-2024-24788: a malformed DNS message in response to a query can
+    cause the lookup functions to get stuck in an infinite loop
+  * backticks in mermaid block diagram labels are not sanitized properly
+  * migration of a repository from gogs fails when it is hosted at a subpath.
+  * when creating an OAuth2 application the redirect URLs are not enforced to
+    be mandatory
+  * the API incorrectly excludes repositories where code is not enabled
+  * "Allow edits from maintainers" cannot be modified via the pull request web UI
+  * repository activity feeds (including RSS and Atom feeds) contain
+    repeated activities
+  * uploading maven packages with metadata being uploaded separately will fail
+  * the mail notification sent about commits pushed to pull requests are empty
+  * inline emails attachments are not properly handled when commenting on an
+    issue via email
+  * the links to .zip and tar.gz on the tag list web UI fail
+  * expanding code diff while previewing a pull request before it is created fails
+  * the CLI is not able to migrate Forgejo Actions artifacts
+  * when adopting a repository, the default branch is not taken into account
+  * when using reverse proxy authentication, logout will not be taken into
+    account when immediately trying to login afterwards
+  * pushing to the master branch of a sha256 repository fails
+  * a very long project column name will make the action menu inaccessible
+  * a useless error is displayed when the title of a merged pull request is
+    modified
+  * workflow badges are not working for workflows that are not running on push
+    (such as scheduled workflows, and ones that run on tags and pull requests)
+
+-------------------------------------------------------------------
 Fri May  3 00:35:37 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - update to 7.0.2:
