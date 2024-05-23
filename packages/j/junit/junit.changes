@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 23 05:53:55 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Require hamcrest >= 2.2 to resolve choice of providers
+
+-------------------------------------------------------------------
 Sat Apr 27 11:44:02 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Generate anew the ant build system using the maven pom.xml

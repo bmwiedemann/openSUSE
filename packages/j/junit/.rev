@@ -248,4 +248,12 @@
     <comment>refactor build system and clean-up dependencies</comment>
     <requestid>1170622</requestid>
   </revision>
+  <revision rev="33" vrev="8">
+    <srcmd5>bc1aeeaba6631de51b230eb95932bc1e</srcmd5>
+    <version>4.13.2</version>
+    <time>1716471258</time>
+    <user>anag+factory</user>
+    <comment>Fix choice of providers</comment>
+    <requestid>1175986</requestid>
+  </revision>
 </revisionlist>

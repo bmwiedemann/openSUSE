@@ -29,9 +29,10 @@ Patch0:         0001-Port-to-hamcrest-2.2.patch
 Patch1:         0002-remove-usages-of-deprecated-org.junit.Assert.assertT.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  hamcrest >= 2.0
+BuildRequires:  hamcrest >= 2.2
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
+Requires:       hamcrest >= 2.2
 Provides:       %{name}-demo = %{version}-%{release}
 Obsoletes:      %{name}-demo < %{version}-%{release}
 Provides:       %{name}4-demo = %{version}-%{release}
