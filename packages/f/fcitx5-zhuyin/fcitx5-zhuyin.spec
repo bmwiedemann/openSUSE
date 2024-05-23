@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-zhuyin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           fcitx5-zhuyin
-Version:        5.1.0
+Version:        5.1.1
 Release:        0
 Summary:        Libzhuyin Wrapper for Fcitx5
 License:        GPL-2.0-or-later
 URL:            https://github.com/fcitx/fcitx5-zhuyin
-Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}_dict.tar.xz
+Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}_dict.tar.zst
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
@@ -30,6 +30,7 @@ BuildRequires:  fmt-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libpinyin-devel
 BuildRequires:  pkgconfig
+BuildRequires:  zstd
 Requires:       fcitx5
 Provides:       fcitx-zhuyin = %{version}
 Obsoletes:      fcitx-zhuyin <= 0.1.1
