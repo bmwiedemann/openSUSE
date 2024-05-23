@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 22 12:52:19 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 770789f2.patch: Fix missing cast in chromaprint
+  (boo#1223909).
+
+-------------------------------------------------------------------
 Tue May 14 14:47:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Address build failures with GCC 14 (boo#1223909):
