@@ -4,9 +4,9 @@
   <attribute namespace="OBS" name="ApprovedRequestSource"/>
   <attribute namespace="OSRT" name="IgnoredIssues">
     <value>last_seen:
-  boo#0: '20240521'
+  boo#0: '20240522'
   boo#1172073: '20240205'
-  boo#1207390: '20240521'
+  boo#1207390: '20240522'
   boo#1207940: '20240522'
   boo#1209053: '20240129'
   boo#1209728: '20240115'
@@ -37,13 +37,13 @@
   boo#1219904: '20240213'
   boo#1220000: '20240301'
   boo#1221110: '20240318'
-  boo#1221206: '20240520'
+  boo#1221206: '20240522'
   boo#1221350: '20240313'
   boo#1221353: '20240311'
   boo#1221354: '20240313'
   boo#1221367: '20240321'
   boo#1221427: '20240315'
-  boo#1221451: '20240521'
+  boo#1221451: '20240522'
   boo#1221458: '20240314'
   boo#1221508: '20240315'
   boo#1221795: '20240328'
@@ -58,7 +58,7 @@
   boo#1222597: '20240409'
   boo#1222994: '20240522'
   boo#1223381: '20240508'
-  boo#1223624: '20240521'
+  boo#1223624: '20240522'
   boo#1224063: '20240510'
   boo#1224140: '20240514'
   boo#1224153: '20240512'
@@ -66,9 +66,10 @@
   boo#1224253: '20240515'
   boo#1224315: '20240515'
   boo#1224321: '20240517'
+  boo#1225089: '20240522'
   bsc#1223381: '20240514'
   bsc#1223447: '20240426'
-  bsc#1224023: '20240521'
+  bsc#1224023: '20240522'
   gh#OSInside/kiwi#2529: '20240416'
   gh#os-autoinst/os-autoinst-distri-opensuse#18471: '20240116'
   gh#os-autoinst/os-autoinst-distri-opensuse#18688: '20240218'
@@ -80,7 +81,7 @@
   poo#132191: '20240116'
   poo#133691: '20240111'
   poo#134078: '20240128'
-  poo#137423: '20240521'
+  poo#137423: '20240522'
   poo#138743: '20240522'
   poo#152320: '20240226'
   poo#152551: '20240116'
@@ -108,7 +109,7 @@
   poo#157174: '20240507'
   poo#157330: '20240314'
   poo#157351: '20240314'
-  poo#157672: '20240521'
+  poo#157672: '20240522'
   poo#157678: '20240514'
   poo#158032: '20240419'
   poo#158035: '20240327'
@@ -172,7 +173,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20240522</value>
+    <value>20240523</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -589,9 +590,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20240522'
-published: '20240521'
-publishing: '20240521'
+    <value>failed: ''
+published: '20240522'
+publishing: '20240522'
 testing: '20240522'
 </value>
   </attribute>
