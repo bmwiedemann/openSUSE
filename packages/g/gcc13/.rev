@@ -340,4 +340,12 @@
 - Removed gcc13-pr111731.patch now included upstream</comment>
     <requestid>1173185</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3773381ba65cc0b739118623262d54d1</srcmd5>
+    <version>13.3.0+git8781</version>
+    <time>1716471291</time>
+    <user>anag+factory</user>
+    <comment>- Update to GCC 13.3 release</comment>
+    <requestid>1175553</requestid>
+  </revision>
 </revisionlist>
