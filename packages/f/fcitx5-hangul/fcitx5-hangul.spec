@@ -17,12 +17,12 @@
 
 
 Name:           fcitx5-hangul
-Version:        5.1.1
+Version:        5.1.3
 Release:        0
 Summary:        Hangul Wrapper for Fcitx5
 License:        LGPL-2.1-only
 URL:            https://github.com/fcitx/fcitx5-hangul
-Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
+Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.zst
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
@@ -30,6 +30,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libhangul-devel
 BuildRequires:  pkgconfig
+BuildRequires:  zstd
 Requires:       fcitx5
 Provides:       fcitx-hangul = %{version}
 Obsoletes:      fcitx-hangul <= 0.3.1
