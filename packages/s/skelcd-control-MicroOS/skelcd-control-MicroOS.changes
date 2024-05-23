@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May 16 12:02:14 UTC 2024 - Ludwig Nussel <lnussel@suse.com>
+
+- Enable LUKS2 and PBKDF2 by default for compat with grub (boo#1185291)
+- need yast2-installation-control >= 5.0.1 for correct schema
+- 20240524
+
+-------------------------------------------------------------------
+Sat Feb 03 18:35:00 UTC 2024 - Shawn W Dunn <sfalken@opensuse.org>
+
+- Modified the Naming for the Desktop versions (Aeon/Kalpa) to
+  align more closely with the new branding.   Temporary until we
+  our new brand specific installation images ready.
+- 20240203
+
+-------------------------------------------------------------------
 Tue Sep 12 12:04:40 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Set readonly_language to false for desktop roles (boo#1212560)

@@ -1,7 +1,7 @@
 #
 # spec file for package skelcd-control-MicroOS
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,9 +31,9 @@ Name:           skelcd-control-MicroOS
 # xmllint (for validation)
 BuildRequires:  libxml2-tools
 # RNG validation schema
-BuildRequires:  yast2-installation-control >= 4.4.3
+BuildRequires:  yast2-installation-control >= 5.0.1
 
-# xsltproc - for building control.TWMicroOS.xml from control.MicroOS.xml
+# xsltproc - for building control.xml from control.MicroOS.xml
 BuildRequires:  libxslt-tools
 BuildRequires:  diffutils
 # we need to copy some parts from the openSUSE control.xml to MicroOS
@@ -122,7 +122,7 @@ Requires:       yast2-vm
 
 URL:            https://github.com/yast/skelcd-control-MicroOS
 AutoReqProv:    off
-Version:        20230912
+Version:        20240524
 Release:        0
 Summary:        The MicroOS control file needed for installation
 License:        MIT
@@ -143,10 +143,10 @@ The package contains the MicroOS control file needed for installation.
 
 %build
 # build control.TWMicroOS.xml from control.MicroOS.xml
-make -C control control.TWMicroOS.xml
+make -C control control.xml
 # display the changes (just for easier debugging)
 # don't fail, a difference is expected
-diff -u control/control.MicroOS.xml control/control.TWMicroOS.xml || :
+diff -u control/control.MicroOS.xml control/control.xml || :
 
 %check
 #
@@ -159,7 +159,7 @@ make -C control check
 # Add control file
 #
 mkdir -p %{buildroot}/%{?skelcdpath}/CD1
-install -m 644 control/control.TWMicroOS.xml %{buildroot}/%{?skelcdpath}/CD1/control.xml
+install -m 644 control/control.xml %{buildroot}/%{?skelcdpath}/CD1/control.xml
 
 # install LICENSE (required by build service check)
 mkdir -p %{buildroot}/%{_defaultdocdir}/%{name}
