@@ -17,7 +17,7 @@
 
 
 Name:           pcm
-Version:        202403
+Version:        202405
 Release:        0
 Summary:        Intel Performance Counter Monitor
 License:        BSD-3-Clause
@@ -92,6 +92,7 @@ rm -rf %{buildroot}%{_docdir}/pcm/generate_summary_readme.md
 %{_datadir}/pcm/opCode-134.txt
 %{_datadir}/pcm/opCode-143.txt
 %{_datadir}/pcm/opCode-143-accel.txt
+%{_datadir}/pcm/opCode-175.txt
 %{_datadir}/pcm/opCode-207.txt
 %{_datadir}/pcm/PMURegisterDeclarations
 

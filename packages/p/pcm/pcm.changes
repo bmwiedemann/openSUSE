@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu May 23 11:00:00 UTC 2024 - Roman Dementiev <roman.dementiev@intel.com>
+
+- Update to version 202405:
+  * Xeon 6E Processor Support: Added support for Xeon 6E processor (Sierra Forest/SRF).
+  * pcm-iio: Enabled pcm-iio for Sierra Forest (SRF) processors.
+  * Intel QAT Support: Added support for QAT Linux in-tree driver addressing issue#547.
+  * Meteor Lake Support: Added support for Meteor Lake processors.
+  * Intel PMT raw counter support in pcm-raw: Added support for Intel Platform Monitoring Technology Telemetry (Intel PMT) raw counters.
+  * Client CPU Energy Metrics: Support for client CPU energy metrics in Grafana.
+  * Colorful Display: Added --color option for colorful display in the command-line interface.
+  * CPU Support: Support for more CPUs added for localMemoryRequestRatioMetric.
+  * Precise UPI Speed Detection: Improved UPI speed detection on SPR using UPI_SPEED_REGISTER.
+  * Metric Version 2: Made metric version 2 the default setting.
+  * Dashboard Graph: Replaced Graph with Timeseries for better visualization in the dashboard.
+  * Incorrect PMON IDs: Fixed incorrect PMON IDs for HCx stacks.
+  * Ubox PMU Declarations: Added declarations for ubox PMU.
+  * Crash on BDX: Fixed a crash on BDX when trying to program IRP or IIO PMU.
+  * Less Useful Metrics: Disabled less useful metrics to streamline performance monitoring metric display.
+
+-------------------------------------------------------------------
 Sun Mar 17 17:00:00 UTC 2024 - Roman Dementiev <roman.dementiev@intel.com>
 
 - Update to version 202403:
