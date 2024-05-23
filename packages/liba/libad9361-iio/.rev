@@ -9,4 +9,12 @@
 This function is required to build an new version of existing package gnuradio ( https://build.opensuse.org/request/show/1171849/changes )</comment>
     <requestid>1171983</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f01f0b6b592234684f7d67d1e68d1c21</srcmd5>
+    <version>0.3</version>
+    <time>1716471349</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1176150</requestid>
+  </revision>
 </revisionlist>

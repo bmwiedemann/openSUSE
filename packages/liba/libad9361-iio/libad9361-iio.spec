@@ -1,7 +1,7 @@
 #
 # spec file for package libad9361-iio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,8 +66,7 @@ BuildArch:      noarch
 Documentation for libad9361-iio library.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake -DCMAKE_SHARED_LINKER_FLAGS=""
