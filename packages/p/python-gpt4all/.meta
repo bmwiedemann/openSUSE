@@ -1,0 +1,5 @@
+<package name="python-gpt4all" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="science:machinelearning" package="python-gpt4all"/>
+</package>
