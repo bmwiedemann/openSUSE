@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-m17n
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           fcitx5-m17n
-Version:        5.1.0
+Version:        5.1.1
 Release:        0
 Summary:        M17n input method engine for Fcitx5
 License:        LGPL-2.1-or-later
 URL:            https://github.com/fcitx/fcitx5-m17n
-Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
+Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.zst
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
@@ -30,6 +30,7 @@ BuildRequires:  fmt-devel
 BuildRequires:  gcc-c++
 BuildRequires:  m17n-lib-devel
 BuildRequires:  pkgconfig
+BuildRequires:  zstd
 Requires:       fcitx5
 Requires:       m17n-db
 Provides:       fcitx-m17n = %{version}
