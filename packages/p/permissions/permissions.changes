@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 21 07:40:14 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 1699_20240521:
+  * permctl: return special exit code in --warn mode if entries need fixing
+
+-------------------------------------------------------------------
 Mon May 13 11:36:17 UTC 2024 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - rename chkstat package to permctl to match the new binary names. Establish

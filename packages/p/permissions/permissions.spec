@@ -17,7 +17,7 @@
 
 
 Name:           permissions
-Version:        1699_20240513
+Version:        1699_20240521
 Release:        0
 Summary:        SUSE Linux Default Permissions
 # Maintained in github by the security team.

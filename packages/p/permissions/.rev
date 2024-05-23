@@ -1593,4 +1593,12 @@ https://lists.opensuse.org/archives/list/packaging@lists.opensuse.org/message/5F
     support for file based capabilities.</comment>
     <requestid>1173700</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>9b09506d30988078f06533425ff76415</srcmd5>
+    <version>1699_20240521</version>
+    <time>1716471244</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1175459</requestid>
+  </revision>
 </revisionlist>
