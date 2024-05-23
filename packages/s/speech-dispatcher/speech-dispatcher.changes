@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 22 18:40:02 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.12.0~rc3:
+  * Detect module failures from generic module.
+  * Make the fallback espeak-ng and dummy modules hardcoded.
+  * Better detect generic module failures to disable them.
+  * pulse: Use asynchronous API to avoid buffer underruns.
+  * generic: Make stripping punctuation use locale charset.
+- Add speech-dispatcher-missing-return-vals.patch: add missing
+  return statements.
+
+-------------------------------------------------------------------
 Thu Feb 22 20:43:22 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 0.12.0~rc2:

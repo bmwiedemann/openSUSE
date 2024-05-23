@@ -375,4 +375,19 @@ Now as requested only for Leap (forwarded request 1096175 from ecsos)</comment>
   * Add spd_fd function to C api. (forwarded request 1149646 from mgorse)</comment>
     <requestid>1149647</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>18dc16f27d7aa44dfcf082d0bfafbdba</srcmd5>
+    <version>0.12.0~rc3</version>
+    <time>1716471255</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.12.0~rc3:
+  * Detect module failures from generic module.
+  * Make the fallback espeak-ng and dummy modules hardcoded.
+  * Better detect generic module failures to disable them.
+  * pulse: Use asynchronous API to avoid buffer underruns.
+  * generic: Make stripping punctuation use locale charset.
+- Add speech-dispatcher-missing-return-vals.patch: add missing
+  return statements. (forwarded request 1175928 from mgorse)</comment>
+    <requestid>1175929</requestid>
+  </revision>
 </revisionlist>
