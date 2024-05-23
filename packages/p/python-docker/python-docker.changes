@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 23 08:58:30 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- backport patches to fix errors with requests 2.32.x:
+  * 2a059a9f19c7b37c6c71c233754c6845e325d1ec.patch
+  * e33e0a437ecd895158c8cb4322a0cdad79312636.patch
+
+-------------------------------------------------------------------
 Wed Dec 27 09:30:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.0.0:

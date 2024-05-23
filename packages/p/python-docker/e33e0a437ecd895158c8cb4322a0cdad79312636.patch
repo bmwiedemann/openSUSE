@@ -1,0 +1,25 @@
+From e33e0a437ecd895158c8cb4322a0cdad79312636 Mon Sep 17 00:00:00 2001
+From: Felix Fontein <felix@fontein.de>
+Date: Mon, 20 May 2024 21:13:41 +0200
+Subject: [PATCH] Hotfix for requests 2.32.0.
+
+Signed-off-by: Felix Fontein <felix@fontein.de>
+---
+ docker/transport/basehttpadapter.py | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/docker/transport/basehttpadapter.py b/docker/transport/basehttpadapter.py
+index dfbb193b9..281897a27 100644
+--- a/docker/transport/basehttpadapter.py
++++ b/docker/transport/basehttpadapter.py
+@@ -6,3 +6,10 @@ def close(self):
+         super().close()
+         if hasattr(self, 'pools'):
+             self.pools.clear()
++
++    # Hotfix for requests 2.32.0: its commit
++    # https://github.com/psf/requests/commit/c0813a2d910ea6b4f8438b91d315b8d181302356
++    # changes requests.adapters.HTTPAdapter to no longer call get_connection() from
++    # send(), but instead call _get_connection().
++    def _get_connection(self, request, *args, proxies=None, **kwargs):
++        return self.get_connection(request.url, proxies)

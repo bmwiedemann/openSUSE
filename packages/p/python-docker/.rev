@@ -279,4 +279,12 @@ large update to 6.1.3 to fix builds; recreated spec file using py2pack</comment>
   rebase hide_py_pckgmgmt.patch</comment>
     <requestid>1135242</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>f46d7045e6b088706304593316473dd7</srcmd5>
+    <version>7.0.0</version>
+    <time>1716471352</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1176178</requestid>
+  </revision>
 </revisionlist>
