@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Apr 29 07:13:35 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
-- Upgrade to upstream vesion 1.1.2
+- Upgrade to upstream version 1.1.2
   * Fixes:
     + Javadoc 1.8 cannot link to the published 1.1.0 API
       documentation
