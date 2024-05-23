@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 22 08:45:17 UTC 2024 - Marguerite Su <i@marguerite.su>
+
+- update to 1.1.7:
+  * Support more pinyin correction
+  * Improve candidates to cursor logic
+  * Remove shuang pin's ng -> mapping to pinyin ng
+
+-------------------------------------------------------------------
 Sun Mar 17 09:16:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.6:

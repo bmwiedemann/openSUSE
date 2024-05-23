@@ -17,13 +17,13 @@
 
 
 Name:           libime
-Version:        1.1.6
+Version:        1.1.7
 Release:        0
 Summary:        Generic input method implementation
 License:        LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/libime
-Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}_dict.tar.xz
+Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}_dict.tar.zst
 BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
@@ -34,6 +34,7 @@ BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_regex-devel
 BuildRequires:  libzstd-devel
+BuildRequires:  zstd
 
 %description
 This is a library to support generic input method implementation.
