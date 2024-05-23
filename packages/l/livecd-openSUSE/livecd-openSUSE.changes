@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 23 07:48:42 UTC 2024 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Remove some more locales: az, uz, tk.
+
+-------------------------------------------------------------------
 Mon May 13 09:24:27 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Ignore pam_kwallet6 (boo#1224153)

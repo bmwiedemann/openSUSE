@@ -117,7 +117,7 @@ EULA_DIR=/etc/YaST2/licenses/base
 (cd "${EULA_DIR}"; tar -cvzf /license.tar.gz *)
 
 # Remove some large locales to save space
-rm -rf /usr/{lib,share}/locale/{ca,cs,da,es,it,ja,fi,hu,id,ko,nl,pl,pt_BR,tr,ro,ru,sk,sr,sv,uk,vi,cmn_TW,zh}*
+rm -rf /usr/{lib,share}/locale/{aa,az,ca,cs,da,es,it,ja,fi,hu,id,ko,ml,nl,pl,pt_BR,tr,ro,ru,sk,sr,sv,tk,uk,uz,vi,cmn_TW,zh}*
 rm -rf /usr/share/qt5/translations/*_{ca,cs,da,es,it,ja,fi,hu,id,ko,nl,pl,pr_BR,tr,ro,ru,sk,sr,sv,uk,vi,cmn_TW,zh}*
 zypper --non-interactive rm yast2-trans-{uk,sv,ru,ja,da,cs,sr,vi} || :
 

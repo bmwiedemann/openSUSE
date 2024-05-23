@@ -1930,4 +1930,11 @@
     <comment></comment>
     <requestid>1173616</requestid>
   </revision>
+  <revision rev="242" vrev="242">
+    <srcmd5>4b9ad73c857c39ed6c994ecfe95bce10</srcmd5>
+    <version>unknown</version>
+    <time>1716450557</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove some more locales: az, uz, tk.</comment>
+  </revision>
 </revisionlist>
