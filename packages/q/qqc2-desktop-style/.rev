@@ -640,4 +640,12 @@ Not installed by default yet as it's currently in beta.</comment>
     <comment>KDE Frameworks 5.116 (forwarded request 1173590 from krop)</comment>
     <requestid>1175183</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>24fd2f29665ad58acc45d895e1c272b5</srcmd5>
+    <version>5.116.1</version>
+    <time>1716471284</time>
+    <user>anag+factory</user>
+    <comment>Update to 5.116.1</comment>
+    <requestid>1175859</requestid>
+  </revision>
 </revisionlist>

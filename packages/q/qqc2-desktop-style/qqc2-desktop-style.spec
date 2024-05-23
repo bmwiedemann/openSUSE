@@ -23,7 +23,8 @@
 %define qt5_version 5.15.2
 %bcond_without released
 Name:           qqc2-desktop-style
-Version:        5.116.0
+Version:        5.116.1
+%global _kf5_version 5.116.0
 Release:        0
 Summary:        A Qt Quick Controls 2 Style for Desktop UIs
 License:        GPL-2.0-or-later

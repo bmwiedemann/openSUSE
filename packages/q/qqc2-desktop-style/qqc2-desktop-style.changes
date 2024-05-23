@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 22 13:38:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.116.1
+- Changes since 5.116.0:
+  * Extract translations into qqc2desktopstyle_qt5.pot
+  * Really fix the translation file
+
+-------------------------------------------------------------------
 Mon May  6 11:33:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.116.0
