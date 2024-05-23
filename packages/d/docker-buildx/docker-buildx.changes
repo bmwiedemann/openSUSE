@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 22 17:32:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.14.1:
+  * Fix possible duplicate requests when setting up a connection to
+    buildkit instance #2467
+  * Fix error handling when merging multi-node build results #2424
+  * Fix creating metadata file if --print is used #2422
+  * Fix creating an empty image when "default load" and --print are
+    both set #2421
+  * Fix bake files that use same named context pointing to another
+    target multiple times with different names #2444
+  * Defer metrics provider setup to updated docker/cli library
+    #2460
+
+-------------------------------------------------------------------
 Thu Apr 18 19:02:50 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.14.0:
