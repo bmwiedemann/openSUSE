@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-table-other
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           fcitx5-table-other
-Version:        5.1.0
+Version:        5.1.2
 Release:        0
 Summary:        Other Non-Chinese table input methods for Fcitx5
 License:        GPL-3.0-only AND SUSE-Public-Domain
 URL:            https://github.com/fcitx/fcitx5-table-other
-Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
+Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.zst
 BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
@@ -31,6 +31,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libime-devel
+BuildRequires:  zstd
 Requires:       fcitx5
 Provides:       fcitx-table-other = %{version}
 Obsoletes:      fcitx-table-other < 4.99.0
