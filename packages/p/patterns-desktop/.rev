@@ -87,4 +87,19 @@
     <user>dimstar_suse</user>
     <comment>Fabian feels strobgly... so merry x-mas</comment>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>c54198d47ee43b7fe59e17a96b81e7b5</srcmd5>
+    <version>20201106</version>
+    <time>1716471269</time>
+    <user>anag+factory</user>
+    <comment>- No longer recommend tlp: we have three (conflicting) power tuners
+  by now, each is recommended by some pattern/feature:
+  + tuned is recommended by the base patterns (installed on all
+    systems)
+  + power-daemon-profiles is recommended by GNOME and Plasma (GUI
+    controlled)
+  + tlp recommended by laptop pattern (tlp conflicts explicitly
+    with the other two though).</comment>
+    <requestid>1176039</requestid>
+  </revision>
 </revisionlist>

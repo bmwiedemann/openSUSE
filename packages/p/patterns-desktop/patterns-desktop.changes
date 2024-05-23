@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 23 08:18:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend tlp: we have three (conflicting) power tuners
+  by now, each is recommended by some pattern/feature:
+  + tuned is recommended by the base patterns (installed on all
+    systems)
+  + power-daemon-profiles is recommended by GNOME and Plasma (GUI
+    controlled)
+  + tlp recommended by laptop pattern (tlp conflicts explicitly
+    with the other two though).
+
+-------------------------------------------------------------------
 Fri Nov  6 14:40:04 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
 
 - Rename laptop pattern to mobile (jsc#SLE-11520).

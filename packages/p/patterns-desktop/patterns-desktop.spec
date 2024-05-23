@@ -156,8 +156,6 @@ Recommends:     wpa_supplicant
 # bnc#480879
 Recommends:     crda
 Recommends:     iw
-# https://www.reddit.com/r/openSUSE/comments/3rzzrx/notebook_powersaving_in_leap_421/
-Recommends:     tlp
 Suggests:       irda
 Suggests:       smbios-utils-python
 Suggests:       powertop
