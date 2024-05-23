@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 22 21:35:50 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.58.9:
+  * Improved logging for S3 bucket encryption (#3147)
+  * Fixed subcommand actions wrapping (#3144)
+  * Cleaning up docs (#3149)
+  * feat: Improving `locals` documentation (#3148)
+
+-------------------------------------------------------------------
 Tue May 21 18:35:11 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.58.8:
