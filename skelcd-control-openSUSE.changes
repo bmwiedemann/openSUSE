@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 16 08:46:56 UTC 2024 - Ludwig Nussel <lnussel@suse.com>
+
+- Enable LUKS2 and PBKDF2 by default for compat with grub (boo#1185291)
+- need yast2-installation-control >= 5.0.1 for correct schema
+- 20240516
+
+-------------------------------------------------------------------
 Thu Mar 21 14:08:23 UTC 2024 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Removed 'transactional server' system role from TW
