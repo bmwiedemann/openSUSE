@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 20 12:11:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Nov 30 09:43:33 UTC 2023 - Paolo Perego <paolo.perego@suse.com>
 
 - add pipe-less-and-signals-handling.patch (bsc#1217304). It fixes a problem
