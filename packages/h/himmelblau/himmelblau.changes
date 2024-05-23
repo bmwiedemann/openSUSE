@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 22 22:10:10 UTC 2024 - david.mulder@suse.com
+
+- Update to version 0.4.0+git.4.63e3704:
+  * Fix a refresh token leak in debug from msal
+
+-------------------------------------------------------------------
 Wed May 22 14:28:10 UTC 2024 - david.mulder@suse.com
 
 - Update to version 0.4.0+git.2.7b57f5e:

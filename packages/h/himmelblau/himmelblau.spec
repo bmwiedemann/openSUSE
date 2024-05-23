@@ -17,7 +17,7 @@
 
 
 Name:           himmelblau
-Version:        0.4.0+git.2.7b57f5e
+Version:        0.4.0+git.4.63e3704
 Release:        0
 Summary:        Interoperability suite for Microsoft Azure AD and Intune
 License:        MPL-2.0
