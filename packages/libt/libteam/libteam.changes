@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 23 11:22:27 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
+
+- teamd: lw: arp_ping: bitmask VID in VLAN BPF filter [bsc#1224798]
+  * Add 0001-teamd-lw-arp_ping-bitmask-VID-in-VLAN-BPF-filter.patch
+
+-------------------------------------------------------------------
 Tue Sep 26 14:47:59 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - update to 1.32:

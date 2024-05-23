@@ -1,7 +1,7 @@
 #
 # spec file for package libteam
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,8 @@ Patch3:         ignore_ebusy_for_team_hwaddr_set.patch
 Patch4:         0001-allow-send_interface-dbus.patch
 Patch5:         harden_teamd@.service.patch
 Patch6:         better_handle_failures_to_chown.patch
+# PATCH-FIX-UPSTREAM bsc#1224798 teamd: lw: arp_ping: bitmask VID in VLAN BPF filter
+Patch7:         0001-teamd-lw-arp_ping-bitmask-VID-in-VLAN-BPF-filter.patch
 BuildRequires:  doxygen
 BuildRequires:  libcap-devel
 BuildRequires:  libtool
