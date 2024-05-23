@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu May 23 06:03:08 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.2.3:
+  CHANGES:
+  * dump.exfat: Report sector size in bytes and cluster size in
+    terms of sectors.
+  * fsck.exfat: Show checksum value if the SetChecksum of File
+    directory entry is invalid.
+  * mkfs.exfat: Improve FAT length calculation to reduce
+    the FAT size.
+  NEW FEATURES:
+  * mkfs.exfat: Add the option "--sector-size".
+  * fsck.exfat: Support checking and repairing VendorAllcation and
+    VendorExtension directory entries.
+  BUG FIXES:
+  * exfatprogs: Remove unnecessary memory allocations.
+  * fsck.exfat: Fix corruption that can occur if the cluster size
+    is 512-byte.
+  * fsck.exfat: Fix the SecondaryCount of File directory entry
+    when the count of Name directory entries is 17 or higher.
+  * tune.exfat: Fix an error that accepts invalid serial numbers.
+
+-------------------------------------------------------------------
 Mon Oct 30 20:18:33 UTC 2023 - Goldwyn Rodrigues <rgoldwyn@suse.com>
 
 - Update to 1.2.2

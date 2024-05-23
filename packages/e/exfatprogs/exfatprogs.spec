@@ -1,7 +1,7 @@
 #
 # spec file for package exfatprogs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           exfatprogs
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        Utilities for exFAT file system maintenance
 License:        GPL-2.0-or-later
 URL:            https://github.com/exfatprogs/exfatprogs
-Source0:        https://github.com/exfatprogs/exfatprogs/releases/download/%{version}/exfatprogs-%{version}.tar.xz
-Source1:        https://github.com/exfatprogs/exfatprogs/releases/download/%{version}/exfatprogs-%{version}.tar.xz.asc
+Source0:        https://github.com/exfatprogs/exfatprogs/archive/refs/tags/%{version}.tar.gz
 Source1000:     exfatprogs.keyring
 BuildRequires:  autoconf
 BuildRequires:  automake

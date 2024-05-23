@@ -153,4 +153,30 @@
     <comment>Update to 1.2.2</comment>
     <requestid>1121304</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>892d57ec4ed9b35f84a4b6cf96a96008</srcmd5>
+    <version>1.2.3</version>
+    <time>1716471261</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.2.3:
+  CHANGES:
+  * dump.exfat: Report sector size in bytes and cluster size in
+    terms of sectors.
+  * fsck.exfat: Show checksum value if the SetChecksum of File
+    directory entry is invalid.
+  * mkfs.exfat: Improve FAT length calculation to reduce
+    the FAT size.
+  NEW FEATURES:
+  * mkfs.exfat: Add the option &quot;--sector-size&quot;.
+  * fsck.exfat: Support checking and repairing VendorAllcation and
+    VendorExtension directory entries.
+  BUG FIXES:
+  * exfatprogs: Remove unnecessary memory allocations.
+  * fsck.exfat: Fix corruption that can occur if the cluster size
+    is 512-byte.
+  * fsck.exfat: Fix the SecondaryCount of File directory entry
+    when the count of Name directory entries is 17 or higher.
+  * tune.exfat: Fix an error that accepts invalid serial numbers.</comment>
+    <requestid>1176000</requestid>
+  </revision>
 </revisionlist>
