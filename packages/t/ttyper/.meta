@@ -1,0 +1,6 @@
+<package name="ttyper" project="openSUSE:Factory">
+  <title>Terminal-based typing test</title>
+  <description>ttyper is a terminal-based typing test built with Rust and tui-rs.</description>
+  <devel project="X11:Utilities" package="ttyper"/>
+  <url>https://github.com/max-niederman/ttyper</url>
+</package>
