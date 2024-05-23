@@ -754,7 +754,6 @@ unsorted:
   - apache2-mod_auth_mellon-doc 
   - apache2-mod_auth_openidc 
   - apache2-mod_authn_otp 
-  - apache2-mod_encoding 
   - apache2-mod_evasive 
   - apache2-mod_fcgid 
   - apache2-mod_jk 
@@ -2519,6 +2518,7 @@ unsorted:
   - coreos-installer 
   - corepack20 
   - corepack21 
+  - corepack22 
   - coreutils-doc 
   - coreutils-single 
   - coreutils-testsuite 
@@ -2526,6 +2526,7 @@ unsorted:
   - corosync-qdevice 
   - corosync-qnetd 
   - corosync-testagents 
+  - corrosion 
   - cosign 
   - coturn 
   - coturn-devel 
@@ -10266,17 +10267,6 @@ unsorted:
   - kubernetes-scheduler-minus1 
   - kubernetes-scheduler-minus2 
   - kubernetes-scheduler-minus3 
-  - kubernetes1.23-apiserver 
-  - kubernetes1.23-client 
-  - kubernetes1.23-client-bash-completion 
-  - kubernetes1.23-client-common 
-  - kubernetes1.23-client-fish-completion 
-  - kubernetes1.23-controller-manager 
-  - kubernetes1.23-kubeadm 
-  - kubernetes1.23-kubelet 
-  - kubernetes1.23-kubelet-common 
-  - kubernetes1.23-proxy 
-  - kubernetes1.23-scheduler 
   - kubernetes1.24-apiserver 
   - kubernetes1.24-client 
   - kubernetes1.24-client-bash-completion 
@@ -11024,9 +11014,9 @@ unsorted:
   - libQCoro6Quick0 
   - libQCoro6WebSockets0 
   - libQMatrixClient0_5_3 
-  - libQXmppQt5-4 
+  - libQXmppQt5-5 
   - libQXmppQt5-devel 
-  - libQXmppQt6-4 
+  - libQXmppQt6-5 
   - libQXmppQt6-devel 
   - libQgpsmm30 
   - libQt53DAnimation-devel 
@@ -13612,8 +13602,6 @@ unsorted:
   - libicecream-devel 
   - libicns-devel 
   - libicns1 
-  - libiconv_hook-devel 
-  - libiconv_hook1 
   - libicu-devel 
   - libicu-devel-32bit 
   - libicu-doc 
@@ -13822,8 +13810,8 @@ unsorted:
   - libkdcraw 
   - libkdcraw-devel 
   - libkdcraw-qt6-devel 
-  - libkddockwidgets-qt6-1_7 
-  - libkddockwidgets1_7 
+  - libkddockwidgets-qt6-2_1 
+  - libkddockwidgets2_1 
   - libkdecoration2-devel 
   - libkdecorations2-5 
   - libkdecorations2-5-lang 
@@ -19470,6 +19458,9 @@ unsorted:
   - nodejs21 
   - nodejs21-devel 
   - nodejs21-docs 
+  - nodejs22 
+  - nodejs22-devel 
+  - nodejs22-docs 
   - noisetorch 
   - nomacs 
   - nomacs-lang 
@@ -19511,6 +19502,7 @@ unsorted:
   - npm-default 
   - npm20 
   - npm21 
+  - npm22 
   - npth-devel 
   - nqp 
   - nqptp 
@@ -24694,6 +24686,7 @@ unsorted:
   - python310-dask-expr 
   - python310-dask-test 
   - python310-databases 
+  - python310-dataclasses-json 
   - python310-datadiff 
   - python310-datashader 
   - python310-dateparser 
@@ -28249,6 +28242,7 @@ unsorted:
   - python311-dask-expr 
   - python311-dask-test 
   - python311-databases 
+  - python311-dataclasses-json 
   - python311-datadiff 
   - python311-datashader 
   - python311-dateparser 
@@ -31749,6 +31743,7 @@ unsorted:
   - python312-dask-expr 
   - python312-dask-test 
   - python312-databases 
+  - python312-dataclasses-json 
   - python312-datadiff 
   - python312-datashader 
   - python312-dateparser 
@@ -46491,7 +46486,6 @@ unsorted:
   - transmission-qt 
   - transmission-qt-lang 
   - transset 
-  - trash_kcm 
   - tre 
   - tre-devel 
   - tre-lang 
