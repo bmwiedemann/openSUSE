@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 20 12:24:03 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Security fix: [bsc#1224388, CVE-2024-4603]
+  * Check DSA parameters for excessive sizes before validating
+  * Add openssl-CVE-2024-4603.patch
+
+-------------------------------------------------------------------
 Tue May  7 13:35:31 UTC 2024 - Giuliano Belinassi <giuliano.belinassi@suse.com>
 
 - Enable livepatching support (bsc#1223428)

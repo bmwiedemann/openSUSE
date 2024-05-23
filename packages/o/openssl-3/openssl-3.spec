@@ -89,6 +89,8 @@ Patch26:        openssl-3-use-include-directive.patch
 Patch27:        openssl-CVE-2024-0727.patch
 # PATCH-FIX-UPSTREAM: bsc#1222548 CVE-2024-2511: Unbounded memory growth with session handling in TLSv1.3
 Patch28:        openssl-CVE-2024-2511.patch
+# PATCH-FIX-UPSTREAM: bsc#1224388 CVE-2024-4603: excessive time spent checking DSA keys and parameters
+Patch29:        openssl-CVE-2024-4603.patch
 BuildRequires:  pkgconfig
 %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
 BuildRequires:  ulp-macros
