@@ -1,7 +1,7 @@
 #
 # spec file for package udisks2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define libblockdev_version 3.0
 
 Name:           udisks2
-Version:        2.10.0
+Version:        2.10.1
 Release:        0
 Summary:        Disk Manager
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -34,11 +34,6 @@ Source0:        %{url}/releases/download/udisks-%{version}/udisks-%{version}.tar
 # an exception will be silently removed with the next version update.
 
 Patch0:         harden_udisks2.service.patch
-Patch1:         0001-doc-Clarify-the-Filesystem.Size-property-presence.patch
-Patch2:         0001-tests-Mark-UDF-fstab-filesystem-tests-as-unstable.patch
-Patch3:         0001-udiskslinuxfilesystem-Refactor-internal-whitelists.patch
-Patch4:         0001-tests-Add-offline-and-online-filesystem-grow-tests.patch
-Patch5:         0001-udiskslinuxfilesystem-Force-native-tools-for-mounted.patch
 
 BuildRequires:  chrpath
 BuildRequires:  docbook-xsl-stylesheets

@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed May 22 13:17:26 UTC 2024 - Thomas Blume <Thomas.Blume@suse.com>
+
+- update to version 2.10.1
+  - Update Ukrainian translation
+  - tests: Wipe used devices for LVM2 RAID tests
+  - tests: Settle down before checking the LVM RAID MissingPhysicalVolumes property
+  - tests: Rescan vdevs after lvm raid tests
+  - Update German translation
+  - tests: Mark UDF fstab filesystem tests as unstable
+  - tests: Add offline and online filesystem grow tests
+  - doc: Clarify the Filesystem.Size property presence
+  - udiskslinuxfilesystem: Force native tools for mounted XFS fs size retrieval
+  - udiskslinuxfilesystem: Refactor internal whitelists
+  - tests: Fix Python class invocation in nvme tests
+  - udisksctl: Add "--no-partition-scan" option for "loop-setup" command
+  - tests: Fix regex escaping
+  - integration-test: Fix invalid escaping
+  - tests: Mark LVM RAID tests as unstable
+  - tests: Fix LSM drive objects crawl
+  - iscsi: Fix login on firmware-discovered nodes
+  - udiskslinuxmanager: Properly handle disabled modules
+  - tests: Replace deprecated unittest assert calls
+  - udisksctl: Guard object lookup
+  - Update ka.po
+  - udiskslinuxloop: Avoid warnings on empty loop devices
+  - Update Polish translation
+  - Limit getting filesystem size only to Ext and XFS
+  - build: Check for gobject-introspection m4 macro presence
+  - tests: start the polkitd mock with the corresponding user if it exists
+
+  - Drop merged upstream patches:
+    0001-doc-Clarify-the-Filesystem.Size-property-presence.patch
+    0001-udiskslinuxfilesystem-Force-native-tools-for-mounted.patch
+    0001-udiskslinuxfilesystem-Refactor-internal-whitelists.patch
+    0001-tests-Mark-UDF-fstab-filesystem-tests-as-unstable.patch
+    0001-tests-Add-offline-and-online-filesystem-grow-tests.patch
+
+-------------------------------------------------------------------
 Wed Oct 11 15:37:37 UTC 2023 - Thomas Blume <thomas.blume@suse.com>
 
 - fix mount failure on ntfs formatted usb disks (bsc#1216055)
