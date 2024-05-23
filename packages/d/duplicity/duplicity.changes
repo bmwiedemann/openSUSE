@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 22 17:21:52 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.2.4:
+  * Onedrive: fix "unauthorized" upload error by not passing auth.
+  * Don't drop args when restarting with execve.
+  * Fix invalid option error.
+  * Move missleading warning to debug level.
+  * Duplicity 2.2.3: --use-agent can be wrongly turned off.
+  * Pass "usedforsecurity=False" to md5() and sha1().
+- Update source URI.
+
+-------------------------------------------------------------------
 Sun Apr  7 15:45:45 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.2.3:
