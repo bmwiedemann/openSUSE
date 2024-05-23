@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 23 07:50:51 UTC 2024 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.3
+  * fix word repeat issue 
+- changes in 5.1.2
+  * Add a new default option that allow select candidate with
+    arrow key
+  * Allow customize the behavior when switching away from chewing,
+    also change the default behavior to not commit the chewing
+    symbol
+
+-------------------------------------------------------------------
 Mon Feb  5 12:52:00 UTC 2024 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.1

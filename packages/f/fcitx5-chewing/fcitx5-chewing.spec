@@ -17,12 +17,12 @@
 
 
 Name:           fcitx5-chewing
-Version:        5.1.1
+Version:        5.1.3
 Release:        0
 Summary:        Chewing Wrapper for Fcitx5
 License:        GPL-2.0-or-later
 URL:            https://github.com/fcitx/fcitx5-chewing
-Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
+Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.zst
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
@@ -30,6 +30,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libchewing-devel
 BuildRequires:  pkgconfig
+BuildRequires:  zstd
 Requires:       chewing-data
 Requires:       chewing-utils
 Requires:       fcitx5
