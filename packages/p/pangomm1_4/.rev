@@ -88,4 +88,24 @@
     <comment></comment>
     <requestid>1043967</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>752d820e4c528e128ac70bc349ab61cc</srcmd5>
+    <version>2.46.4</version>
+    <time>1716471280</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.46.4:
+  + Coverage: Don't use deprecated pango_coverage_ref/unref()
+  + Documentation:
+    - Doxyfile.in: Don't hide undocumented classes
+    - Remove AUTHORS, HACKING, README.SUN; add general info to
+      README.md.
+  + Meson build:
+    - Detect if we build from a git subtree
+    - Don't copy files with configure_file()
+    - Fix the evaluation of is_git_build on Windows
+    - Don't fail if warning_level=everything
+- Enable check section: run meson test (no tests defined as of
+  now). (forwarded request 1175735 from dimstar)</comment>
+    <requestid>1175740</requestid>
+  </revision>
 </revisionlist>

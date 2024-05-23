@@ -1,7 +1,7 @@
 #
 # spec file for package pangomm1_4
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _name   pangomm
 
 Name:           pangomm1_4
-Version:        2.46.3
+Version:        2.46.4
 Release:        0
 Summary:        C++ interface for pango
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -72,12 +72,15 @@ chmod -x NEWS
 %meson_install
 %fdupes %{buildroot}/%{prefix}
 
+%check
+%meson_test
+
 %post -n libpangomm%{so_ver} -p /sbin/ldconfig
 %postun -n libpangomm%{so_ver} -p /sbin/ldconfig
 
 %files -n libpangomm%{so_ver}
 %license COPYING
-%doc AUTHORS NEWS README.md
+%doc NEWS README.md
 %{_libdir}/*.so.*
 
 %files devel

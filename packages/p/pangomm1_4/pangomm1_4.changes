@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 22 09:58:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.46.4:
+  + Coverage: Don't use deprecated pango_coverage_ref/unref()
+  + Documentation:
+    - Doxyfile.in: Don't hide undocumented classes
+    - Remove AUTHORS, HACKING, README.SUN; add general info to
+      README.md.
+  + Meson build:
+    - Detect if we build from a git subtree
+    - Don't copy files with configure_file()
+    - Fix the evaluation of is_git_build on Windows
+    - Don't fail if warning_level=everything
+- Enable check section: run meson test (no tests defined as of
+  now).
+
+-------------------------------------------------------------------
 Mon Dec 19 08:43:21 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop baselibs.conf: there is no known consumer of the -32bit
