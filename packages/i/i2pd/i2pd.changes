@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed May 22 19:41:27 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.52.0:
+  * Moved netdb's disk file operations to separate threads
+  * Fast exploratory lookup handling at floodfills
+  * Drop unsolicited database search replies
+  * Pick only confirmed routers for tunnels and exploratory replies if tunnel build rate is low
+  * More reliable long live streams
+  * Throttle database search requests
+  * Handle database search replies faster
+  * Don't accept too old routers and address with malformed keys
+  * Fixed different crashes on high load and shutdown
+- fix up Factory submission and cmake macros
+
+-------------------------------------------------------------------
+Mon May  6 08:13:54 UTC 2024 - sage <lamiaceae@airmail.cc>
+
+- update to 2.51.0:
+  * Encrypted tunnel tests
+  * New streaming RTT/RTO/Window calculation algorithms
+  * Publish medium congestion indication
+  * Changed upstream SOCKS proxy from SOCKS4 to SOCKS5
+  * New implementation of SSU2 retransmission, send buffer, window, congestion control, timeouts
+  * Transit tunnels limit more than 64K. Default value to 10K
+  * Fixed lookup of encrypted LeaseSet
+  * Report error if client is trying to connect to itself in SAM
+  * Fixed crash when packet comes to terminated stream
+  * Tunnel status "declined" in web console
+  * SAM error reply "Incompatible crypto" if remote destination has incompatible crypto
+  * Fixed outbound tunnel build failure if it's endpoint is the same as reply tunnel gateway
+  * Reduce unreachable router ban interval to 8 minutes
+  * Send lookup reply directly to reply tunnel gateway if possible
+  * Fixed I2PControl RouterManager returns invalid JSON when unknown params are passed
+  * Correct implementation of "reservedrange" config param
+  * Less false positive cases for tunnel tests
+  * Check ipv4/ipv6 compatibility for peer tests
+  * Allow SSU2 even if port binding fails
+  * Support local domain sockets for SOCKS proxy upstream
+- update to 2.50.2:
+  * Fixed crash with OpenSSL 3.2.0
+  * Fixed false positive clock skew detection
+- update to 2.50.1:
+  * Fixed support for new EdDSA usage behavior in OpenSSL 3.2.0
+- update to 2.50.0:
+  * Support of concurrent ACCEPTs on SAM 3.1
+  * Low bandwidth and far routers can expire before 1 hour
+  * Don't pick too active peer for first hop
+  * Try peer test again if status is Unknown
+  * Send peer tests with random delay
+  * Updated reseeds list
+  * Fixed XSS vulnerability in addresshelper
+  * Fixed publishing NAT64 ipv6 addresses
+  * Fixed deadlock in AsyncSend callback
+
+-------------------------------------------------------------------
 Wed Feb  7 11:56:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Provide user/group symbol for user created during pre.

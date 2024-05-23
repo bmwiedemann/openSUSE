@@ -3,6 +3,7 @@
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2023 PurpleI2P team
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,16 +21,15 @@
 %define sysuser i2pd
 %define sysgroup i2pd
 Name:           i2pd
-Version:        2.49.0
+Version:        2.52.0
 Release:        0
 Summary:        C++ implementation of an I2P client
 License:        BSD-3-Clause
 Group:          Productivity/Networking/System
 URL:            https://i2pd.website
-Source0:        https://github.com/PurpleI2P/i2pd/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/PurpleI2P/i2pd/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  c++_compiler
 BuildRequires:  cmake
-BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  libminiupnpc-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libssl)
@@ -56,7 +56,7 @@ don't reveal their real IP addresses.
 This package contains a C++ implementation of an I2P router.
 
 %prep
-%setup -q
+%autosetup -p1
 
 cp contrib/debian/i2pd.service i2pd.service.in
 cp contrib/debian/i2pd.tmpfile i2pd.tmpfile.in
@@ -71,8 +71,9 @@ pushd build
 %cmake \
     -DWITH_LIBRARY=OFF \
     -DWITH_UPNP=ON \
-    -DBUILD_SHARED_LIBS=OFF
-%make_build
+    -DBUILD_SHARED_LIBS=OFF \
+    %{nil}
+%cmake_build
 popd
 
 %install
