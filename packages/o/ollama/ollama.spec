@@ -28,7 +28,11 @@ Source2:        ollama.service
 Source3:        %{name}-user.conf
 Patch0:         enable-lto.patch
 BuildRequires:  cmake >= 3.24
+%if 0%{?sle_version} == 150600
+BuildRequires:  gcc12-c++
+%else
 BuildRequires:  gcc-c++ >= 11.4.0
+%endif
 BuildRequires:  git
 BuildRequires:  sysuser-tools
 BuildRequires:  zstd
@@ -52,6 +56,12 @@ can be imported.
 
 %ifnarch ppc64
 export GOFLAGS="-buildmode=pie -mod=vendor"
+%endif
+%if 0%{?sle_version} == 150600
+export CXX=g++-12
+export CC=gcc-12
+# pie doesn't work with gcc12 on leap
+export GOFLAGS="-mod=vendor"
 %endif
 
 export OLLAMA_SKIP_PATCHING=1
