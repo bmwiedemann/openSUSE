@@ -17,12 +17,12 @@
 
 
 Name:           fcitx5-libthai
-Version:        5.1.2
+Version:        5.1.3
 Release:        0
 Summary:        Libthai input method engine for Fcitx5
 License:        GPL-2.0-or-later
 URL:            https://github.com/fcitx/fcitx5-libthai
-Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
+Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.zst
 Patch0:         %{name}-iconv.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
@@ -30,6 +30,7 @@ BuildRequires:  fcitx5-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libthai-devel
 BuildRequires:  pkgconfig
+BuildRequires:  zstd
 Requires:       fcitx5
 Requires:       libthai-data
 %if 0%{?suse_version} <= 1520
