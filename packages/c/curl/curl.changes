@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 22 11:04:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add split-provides for libcurl-devel -> libcurl-devel-doc.
+
+-------------------------------------------------------------------
+Mon May 20 17:31:35 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Spin documentation off to libcurl-devel-doc, this saves buildroots
+  495 files and time (mandb is run in %posttrans).
+
+-------------------------------------------------------------------
 Wed Mar 27 09:38:34 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 8.7.1:

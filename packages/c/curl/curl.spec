@@ -89,6 +89,14 @@ server using any of the supported protocols (HTTP, HTTPS, FTP, GOPHER,
 DICT, TELNET, LDAP, or FILE). The command is designed to work without
 user interaction or any kind of interactivity.
 
+%package -n libcurl-devel-doc
+Summary:        Manual pages for libcurl
+BuildArch:      noarch
+Provides:       libcurl-devel:%{_mandir}/man1/curl-config.1%{?ext_man}
+
+%description -n libcurl-devel-doc
+Manual pages for the libcurl C API.
+
 %prep
 %autosetup -p1
 
@@ -152,8 +160,7 @@ pushd scripts
 %make_install
 popd
 
-%post -n libcurl4 -p /sbin/ldconfig
-%postun -n libcurl4 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libcurl4
 
 %files
 %doc README RELEASE-NOTES CHANGES
@@ -178,6 +185,8 @@ popd
 %{_datadir}/aclocal/libcurl.m4
 %{_libdir}/libcurl.so
 %{_libdir}/pkgconfig/libcurl.pc
+
+%files -n libcurl-devel-doc
 %{_mandir}/man1/curl-config.1%{?ext_man}
 %{_mandir}/man3/*
 %doc docs/libcurl/symbols-in-versions
