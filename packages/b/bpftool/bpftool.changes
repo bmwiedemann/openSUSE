@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 22 09:43:32 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update LLVM version selection logic to align with bcc and bpftrace
+  * narrow down the dependency to clang and llvm
+
+-------------------------------------------------------------------
 Thu Apr 11 07:02:33 UTC 2024 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - Update to version 7.4.0
