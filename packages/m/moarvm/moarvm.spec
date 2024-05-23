@@ -16,10 +16,10 @@
 #
 
 
-%global mvrel 2024.02
+%global mvrel 2024.04
 Name:           moarvm
-Version:        %mvrel
-Release:        4.1
+Version:        %{mvrel}
+Release:        0
 Summary:        A virtual machine built especially for Rakudo
 License:        Artistic-2.0
 Group:          Development/Libraries/Other
@@ -27,6 +27,7 @@ URL:            https://moarvm.org
 Source:         https://moarvm.org/releases/MoarVM-%{mvrel}.tar.gz
 # PATCH-FIX-OPENSUSE boo#1100677
 Patch0:         reproducible.patch
+BuildRequires:  pkgconfig
 BuildRequires:  perl(ExtUtils::Command)
 BuildRequires:  pkgconfig(libffi)
 %if 0%{?suse_version} >= 1550
@@ -53,9 +54,9 @@ Generational, parallel, garbage collection
 %package devel
 Summary:        MoarVM development headers and libraries
 Group:          Development/Libraries/Other
-BuildArch:      noarch
 Requires:       %{name} = %{version}
 Requires:       pkgconfig(libffi)
+BuildArch:      noarch
 %if 0%{?suse_version} >= 1550
 Requires:       pkgconfig(libtommath)
 Requires:       pkgconfig(libuv)
@@ -77,15 +78,14 @@ extra_config_args+=" --has-libtommath --has-libuv"
 %endif
 CFLAGS="%{optflags}" \
 perl Configure.pl --prefix=%{_usr} --libdir=%{_libdir} --debug --optimize=3 --has-libffi $extra_config_args
-make NOISY=1 %{?_smp_mflags}
+%make_build NOISY=1
 
 %install
 %make_install
-find %buildroot -type f \( -name '*.so' -o -name '*.so.*' \) -exec chmod 755 {} +
-mkdir -p $RPM_BUILD_ROOT/%{_libdir}/moar/share
+find %{buildroot} -type f \( -name '*.so' -o -name '*.so.*' \) -exec chmod 755 {} +
+mkdir -p %{buildroot}/%{_libdir}/moar/share
 
 %files
-%defattr(-,root,root)
 %doc CREDITS Artistic2.txt docs
 %license LICENSE
 %{_bindir}/moar
@@ -94,7 +94,6 @@ mkdir -p $RPM_BUILD_ROOT/%{_libdir}/moar/share
 %{_datadir}/nqp
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/*
 %{_datadir}/pkgconfig/*
 

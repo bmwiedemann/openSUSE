@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 23 04:53:11 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 2024.04
+- Changes from 2024.04:
+  + Increase the size of the int-to-str cache to 65
+  + Use atomic operations for on SerializationReader's working flag
+  + Fix memcmp call
+- Changes from 2024.03:
+  + Add a GitHub release build workflow (ubuntu, macos, windows)
+
+-------------------------------------------------------------------
 Wed Mar 27 16:15:02 CET 2024 - nine@detonation.org
 
 - update to version 2024.02

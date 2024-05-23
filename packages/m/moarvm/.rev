@@ -356,4 +356,12 @@ Added information about the removal to the corresponding changelog entry.</comme
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1164395</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>cde8fd35581dde714dd039859439a010</srcmd5>
+    <version>2024.04</version>
+    <time>1716471335</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1175997</requestid>
+  </revision>
 </revisionlist>
