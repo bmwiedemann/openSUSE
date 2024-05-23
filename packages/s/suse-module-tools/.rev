@@ -772,4 +772,15 @@ source service setup which messed up my spec file.
   * README: Update blacklist description (gh#openSUSE/suse-module-tools#71) (forwarded request 1143009 from mwilck)</comment>
     <requestid>1143010</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>f1b56c968aa6d6ff84d8a13b7f876d24</srcmd5>
+    <version>16.0.44</version>
+    <time>1716471256</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 16.0.44:
+  * Include unblacklist in initramfs (bsc#1224320)
+  * regenerate-initrd-posttrans: run update-bootloader --refresh for XEN
+    (bsc#1223278)</comment>
+    <requestid>1175930</requestid>
+  </revision>
 </revisionlist>

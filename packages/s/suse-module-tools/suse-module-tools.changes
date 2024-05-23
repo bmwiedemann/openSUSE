@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 22 18:32:42 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.44:
+  * Include unblacklist in initramfs (bsc#1224320)
+  * regenerate-initrd-posttrans: run update-bootloader --refresh for XEN
+    (bsc#1223278)
+
+-------------------------------------------------------------------
 Wed Jan 31 12:02:16 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.43:

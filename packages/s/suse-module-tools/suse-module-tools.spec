@@ -20,6 +20,7 @@
 # This assumes post-usr-merge (20210527) for Tumbleweed
 %global modprobe_dir /usr/lib/modprobe.d
 %global depmod_dir /usr/lib/depmod.d
+%global dracutlibdir %{_prefix}/lib/dracut
 %global with_kernel_sysctl 1
 # boot_sysctl may be dropped on TW when we can assume that nobody keeps
 # kernel packages around that store sysctl files under /boot
@@ -36,7 +37,7 @@
 %global modprobe_conf_rpmsave %(echo "%{modprobe_conf_files}" | sed 's,\\([^ ]*\\),%{_sysconfdir}/modprobe.d/\\1.conf.rpmsave,g')
 
 Name:           suse-module-tools
-Version:        16.0.43
+Version:        16.0.44
 Release:        0
 Summary:        Configuration for module loading and SUSE-specific utilities for KMPs
 License:        GPL-2.0-or-later
@@ -126,6 +127,8 @@ for i in "pre" "preun" "post" "posttrans" "postun" ; do
     ln -s rpm-script %{buildroot}/usr/lib/module-init-tools/kernel-scriptlets/rpm-$i
 done
 
+install -d -m 755 %{buildroot}%{dracutlibdir}/dracut.conf.d
+install -pm 644 10-unblacklist.conf %{buildroot}%{dracutlibdir}/dracut.conf.d
 install -d -m 755 "%{buildroot}%{_prefix}/bin"
 
 # systemd service(s) to load kernel-specific sysctl settings
@@ -232,6 +235,8 @@ exit 0
 %{_unitdir}/systemd-sysctl.service.d
 %{_modulesloaddir}
 %{_udevrulesdir}
+%dir %{dracutlibdir}
+%{dracutlibdir}/dracut.conf.d
 %ifarch ppc64 ppc64le
 /usr/lib/systemd/system-generators
 %endif
