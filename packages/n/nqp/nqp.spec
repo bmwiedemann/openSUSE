@@ -17,22 +17,20 @@
 
 
 Name:           nqp
-Version:        2024.02
-Release:        1.1
+Version:        2024.04
+Release:        0
 Summary:        Not Quite Perl
 License:        Artistic-2.0
 Group:          Development/Languages/Other
-URL:            https://github.com/Raku/nqp
-Source:         nqp-%{version}.tar.gz
-BuildRequires:  moarvm-devel >= 2024.02
-Requires:       moarvm >= 2024.02
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%ifarch s390x
-BuildRequires:  libffi-devel
-%endif
+Source:         https://github.com/Raku/nqp/releases/download/%{version}/nqp-%{version}.tar.gz
+BuildRequires:  moarvm-devel >= %{version}
 BuildRequires:  perl
 BuildRequires:  perl(Digest::SHA)
 BuildRequires:  perl(IPC::Cmd)
+Requires:       moarvm >= %{version}
+%ifarch s390x
+BuildRequires:  libffi-devel
+%endif
 
 %description
 This is "Not Quite Perl" -- a lightweight Raku-like environment for virtual
@@ -49,17 +47,16 @@ regular expression engine for the virtual machine.
 %setup -q
 
 %build
-perl Configure.pl --backends=moar --prefix=%{_usr} --with-moar=/usr/bin/moar
-make
+perl Configure.pl --backends=moar --prefix=%{_usr} --with-moar=%{_bindir}/moar
+%make_build
 
 %check
-make test
+%make_build test
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT
+%make_install
 
 %files
-%defattr(-,root,root)
 %doc CREDITS
 %license LICENSE
 %{_bindir}/*

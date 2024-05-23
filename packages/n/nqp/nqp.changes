@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu May 23 05:03:18 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to version 2024.04:
+  * Add "code_of_method" and "declares_method" methods
+  * Add hint back in
+  * Add minimized fastutil jar
+  * Allow --moar-option='--no-optimize' to actually work
+  * Enable the creation of 'is item' and 'is exact-type' param traits
+  * Eradicate .publish_method_cache from MoarVM backend
+  * Further dd tweaks
+  * Initial stab at a "dd" for NQP
+  * Make sure we catch errors in stringification
+  * Manually sort two elements of an array instead of using
+    .subList().sort()
+  * More efficient way to get a long as a string
+  * More tweaking fetching MRO
+  * Oops, we can type the object key
+  * P6str's StorageSpec can be a singleton
+  * Pre-allocate arrays and use bind_pos instead of push
+  * Rename NQPClassHOW's $!mro to $!MRO
+  * Simplify JVM backend's set_size_internal
+  * Simplify runNFA() a little
+  * Slight tweak in fetching MRO
+  * [JVM] Fix capturenamedshash to actually include objects
+- Apply spec-cleaner.
+- Set "Source" to GitHub's URL, so the source tarball may be
+  downloaded through the appropriate OBS service.
+- Use "%{version}" to declare the related MoarVM dependency, rather
+  than hardcoding MoarVM's version.
+
+-------------------------------------------------------------------
 Wed Mar 27 16:20:59 CET 2024 - nine@detonation.org
 
 - update to version 2024.02
