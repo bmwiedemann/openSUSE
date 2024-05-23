@@ -1,6 +1,6 @@
-From 3c0817dcbbc99eb438a33be5336db69cf88ca7cf Mon Sep 17 00:00:00 2001
+From ec4f0a28ed48c51165e3e72c7427efb0ae14a124 Mon Sep 17 00:00:00 2001
 From: Giuliano Belinassi <gbelinassi@suse.de>
-Date: Wed, 24 May 2023 18:03:15 -0300
+Date: Mon, 6 May 2024 20:09:55 -0300
 Subject: [PATCH] Add Userspace Livepatch prologue into ASM functions
 
 Userspace Live Patching (ULP) refers to the process of applying
@@ -12,22 +12,22 @@ this have to be included manually. This patch does this.
 
 Signed-off-by: Giuliano Belinassi <gbelinassi@suse.de>
 ---
- Makeconfig                               |  5 +++++
- config.h.in                              |  3 +++
+ Makeconfig                               |  5 +++
+ config.h.in                              |  3 ++
  config.make.in                           |  1 +
- configure                                | 21 ++++++++++++++++++
- configure.ac                             | 13 +++++++++++
- sysdeps/x86_64/multiarch/strcmp-avx2.S   |  5 +----
- sysdeps/x86_64/multiarch/strcmp-evex.S   |  5 +----
- sysdeps/x86_64/multiarch/strcmp-sse4_2.S |  5 +----
- sysdeps/x86_64/sysdep.h                  | 28 ++++++++++++++++++++----
- 9 files changed, 70 insertions(+), 16 deletions(-)
+ configure                                | 21 +++++++++
+ configure.ac                             | 13 ++++++
+ sysdeps/x86_64/multiarch/strcmp-avx2.S   |  5 +--
+ sysdeps/x86_64/multiarch/strcmp-evex.S   |  5 +--
+ sysdeps/x86_64/multiarch/strcmp-sse4_2.S |  5 +--
+ sysdeps/x86_64/sysdep.h                  | 54 ++++++++++++++++++++++--
+ 9 files changed, 96 insertions(+), 16 deletions(-)
 
 diff --git a/Makeconfig b/Makeconfig
-index 85e00cef94..502e4e2d89 100644
+index e583765712..b136e10224 100644
 --- a/Makeconfig
 +++ b/Makeconfig
-@@ -979,6 +979,11 @@ else
+@@ -981,6 +981,11 @@ else
  +cflags += $(no-fortify-source)
  endif
  
@@ -40,10 +40,10 @@ index 85e00cef94..502e4e2d89 100644
  # used to compile and will be installed.  Each can also contain an
  # include/ subdirectory, whose header files will be used to compile
 diff --git a/config.h.in b/config.h.in
-index 44a34072a4..430627dcaf 100644
+index c4cc7d3b9a..dc70ed03d0 100644
 --- a/config.h.in
 +++ b/config.h.in
-@@ -199,6 +199,9 @@
+@@ -205,6 +205,9 @@
  /* Define to 1 if libpthread actually resides in libc.  */
  #define PTHREAD_IN_LIBC 0
  
@@ -66,7 +66,7 @@ index 55e8b7563b..0f14c05d62 100644
  build-profile = @profile@
  build-static-nss = @static_nss@
 diff --git a/configure b/configure
-index 59ff1e415d..69c0795f99 100755
+index 432e40a592..eb6b203925 100755
 --- a/configure
 +++ b/configure
 @@ -622,6 +622,7 @@ LIBOBJS
@@ -94,7 +94,7 @@ index 59ff1e415d..69c0795f99 100755
  
  Optional Packages:
    --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
-@@ -7864,6 +7868,23 @@ libc_cv_multidir=`${CC-cc} $CFLAGS $CPPFLAGS -print-multi-directory`
+@@ -7867,6 +7871,23 @@ libc_cv_multidir=`${CC-cc} $CFLAGS $CPPFLAGS -print-multi-directory`
  
  
  
@@ -119,10 +119,10 @@ index 59ff1e415d..69c0795f99 100755
  RELEASE=`sed -n -e 's/^#define RELEASE "\([^"]*\)"/\1/p' < $srcdir/version.h`
  
 diff --git a/configure.ac b/configure.ac
-index 65799e5685..e792f8c866 100644
+index bdc385d03c..cb4d28b3d8 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -1753,6 +1753,19 @@ AC_SUBST(DEFINES)
+@@ -1756,6 +1756,19 @@ AC_SUBST(DEFINES)
  dnl See sysdeps/mach/configure.ac for this variable.
  AC_SUBST(mach_interface_list)
  
@@ -191,10 +191,10 @@ index 4e98da0246..2a2280c65f 100644
  /*
   * This implementation uses SSE to compare up to 16 bytes at a time.
 diff --git a/sysdeps/x86_64/sysdep.h b/sysdeps/x86_64/sysdep.h
-index db6e36b2dd..37136d8ca9 100644
+index db6e36b2dd..86a5d1b2be 100644
 --- a/sysdeps/x86_64/sysdep.h
 +++ b/sysdeps/x86_64/sysdep.h
-@@ -49,6 +49,20 @@ enum cf_protection_level
+@@ -49,6 +49,46 @@ enum cf_protection_level
  
  #ifdef	__ASSEMBLER__
  
@@ -203,29 +203,55 @@ index db6e36b2dd..37136d8ca9 100644
 +   written in ASM, the way we do this is by adding this prologue manually.  */
 +
 +#if ENABLE_USERSPACE_LIVEPATCH
-+# define ULP_PRE_PROLOGUE \
-+  .rept 14; nop; .endr
-+# define ULP_POST_PROLOGUE \
-+  xchg %ax, %ax
++
++/* Instructions to be inserted before the function label.  */
++# define ULP_NOPS_PRE_PROLOGUE     .rept 14; nop; .endr
++
++/* Instruction to be inserted after the function label.  */
++# define ULP_NOPS_POST_PROLOGUE    .rept  2; nop; .endr
++
++
++/* this macro expands according to the following condition:
++ * if name = _start, then the prologue is not inserted.
++ * if name = _dl_relocate_static_pie, then the prologue is not inserted.
++ * if name = anything else, then the prologue is inserted.
++ **/
++# define __ULP_POST_PROLOGUE_dl_relocate_static_pie   ,
++# define __ULP_PRE_PROLOGUE_start                     ,
++# define __ULP_PRE_PROLOGUE(x, y,...)                 y
++# define _ULP_PRE_PROLOGUE(x, ...)                    __ULP_PRE_PROLOGUE(x, __VA_ARGS__)
++# define ULP_PRE_PROLOGUE(name)                       _ULP_PRE_PROLOGUE(__ULP_PRE_PROLOGUE##name, ULP_NOPS_PRE_PROLOGUE,)
++
++/* this macro expands according to the following condition:
++ * if name = _start, then the postlogue is not inserted.
++ * if name = _dl_relocate_static_pie, then the postlogue is not inserted.
++ * if name = anything else, then the postlogue is inserted.
++ **/
++# define __ULP_POST_PROLOGUE_dl_relocate_static_pie   ,
++# define __ULP_POST_PROLOGUE_start                    ,
++# define __ULP_POST_PROLOGUE(x, y,...)                y
++# define _ULP_POST_PROLOGUE(x, ...)                   __ULP_POST_PROLOGUE(x, __VA_ARGS__)
++# define ULP_POST_PROLOGUE(name)                      _ULP_POST_PROLOGUE(__ULP_POST_PROLOGUE##name, ULP_NOPS_POST_PROLOGUE,)
++
 +#else
-+# define ULP_PRE_PROLOGUE
-+# define ULP_POST_PROLOGUE
++# define ULP_PRE_PROLOGUE(name)
++# define ULP_POST_PROLOGUE(name)
 +#endif
 +
  /* Syntactic details of assembler.  */
  
  #ifdef _CET_ENDBR
-@@ -58,15 +72,21 @@ enum cf_protection_level
+@@ -58,15 +98,21 @@ enum cf_protection_level
  # define _CET_NOTRACK
  #endif
  
 +/* Define the first instructions of a function.  */
 +#define FUNCTION_START(name)						      \
-+  ULP_PRE_PROLOGUE;							      \
++  ULP_PRE_PROLOGUE(name);							      \
 +  C_LABEL(name);							      \
 +  cfi_startproc;							      \
 +  _CET_ENDBR;								      \
-+  ULP_POST_PROLOGUE;							      \
++  ULP_POST_PROLOGUE(name);							      \
 +  CALL_MCOUNT;
 +
  /* Define an entry point visible from C.  */
@@ -242,5 +268,5 @@ index db6e36b2dd..37136d8ca9 100644
  /* This macro is for setting proper CFI with DW_CFA_expression describing
     the register as saved relative to %rsp instead of relative to the CFA.
 -- 
-2.43.0
+2.44.0
 

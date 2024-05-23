@@ -3025,4 +3025,34 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
     <comment></comment>
     <requestid>1171104</requestid>
   </revision>
+  <revision rev="291" vrev="7">
+    <srcmd5>360fad08926f6a4ea8e2f6729c948cb5</srcmd5>
+    <version>2.39</version>
+    <time>1716471247</time>
+    <user>anag+factory</user>
+    <comment>- glibc-CVE-2024-33599-nscd-Stack-based-buffer-overflow-in-n.patch:
+  nscd: Stack-based buffer overflow in netgroup cache
+  (CVE-2024-33599, bsc#1223423, BZ #31677)
+- glibc-CVE-2024-33600-nscd-Avoid-null-pointer-crashes-after.patch:
+  nscd: Avoid null pointer crashes after notfound response
+  (CVE-2024-33600, bsc#1223424, BZ #31678)
+- glibc-CVE-2024-33600-nscd-Do-not-send-missing-not-found-re.patch:
+  nscd: Do not send missing not-found response in addgetnetgrentX
+  (CVE-2024-33600, bsc#1223424, BZ #31678)
+- glibc-CVE-2024-33601-CVE-2024-33602-nscd-netgroup-Use-two.patch:
+  netgroup: Use two buffers in addgetnetgrentX (CVE-2024-33601,
+  CVE-2024-33602, bsc#1223425, BZ #31680)
+- nscd-netgroup-cache-timeout.patch: Use time_t for return type of
+  addgetnetgrentX (CVE-2024-33602, bsc#1223425)
+- glibc-fix-cve-2024-33599.patch: renamed
+
+- ulp-prologue-into-asm-functions.patch: Avoid creating ULP prologue
+  for _start routine (bsc#1221940)
+
+- utmp-time-bits.patch: login: structs utmp, utmpx, lastlog _TIME_BITS
+  independence (BZ #30701)
+- elf-parse-tunables.patch: elf: Only process multiple tunable once (BZ
+  #31686)</comment>
+    <requestid>1175454</requestid>
+  </revision>
 </revisionlist>
