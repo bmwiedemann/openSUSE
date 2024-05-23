@@ -132,4 +132,19 @@
     <comment></comment>
     <requestid>1152047</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>aa334f18903f4b08cc56e078f33f2353</srcmd5>
+    <version>0.14.0</version>
+    <time>1716471370</time>
+    <user>anag+factory</user>
+    <comment>- Update URL. The old URL redirects to the magic-wormhole org.
+- Change spec from obsoleted setup to autosetup
+- Update to version 0.14.0
+  * Add completion files for bash, zsh and fish
+  * Python 3.12 added to CI, versioneer updated
+  * Support streaming compression of directories
+  * Remove obsolete compatibility code
+  * Add &quot;ecosystem&quot; document</comment>
+    <requestid>1176459</requestid>
+  </revision>
 </revisionlist>
