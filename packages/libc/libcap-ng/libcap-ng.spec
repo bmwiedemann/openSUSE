@@ -20,7 +20,7 @@
 %define ambient_sover 0
 
 Name:           libcap-ng
-Version:        0.8.4
+Version:        0.8.5
 Release:        0
 Summary:        An alternate Linux/POSIX capabilities library
 License:        LGPL-2.1-or-later
@@ -28,7 +28,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://people.redhat.com/sgrubb/libcap-ng
 Source0:        https://people.redhat.com/sgrubb/%{name}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-Source99:       libcap-ng.rpmlintrc
 BuildRequires:  kernel-headers >= 2.6.11
 BuildRequires:  pkgconfig
 

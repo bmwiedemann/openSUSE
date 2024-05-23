@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 20 17:29:35 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.8.5:
+  * Remove python global exception handler since it's deprecated
+  * Make the utilities link against just built libraries
+  * Remove unused macro in cap-ng.h
+- Remove libcap-ng.rpmlintrc, it doesn't seem to be used any more.
+
+-------------------------------------------------------------------
 Tue Jan  2 10:35:45 UTC 2024 - jun wang <jgwang@suse.com>
 
 - Update to version 0.8.4
