@@ -1937,4 +1937,11 @@
     <user>dimstar_suse</user>
     <comment>- Remove some more locales: az, uz, tk.</comment>
   </revision>
+  <revision rev="243" vrev="243">
+    <srcmd5>578d70129f930b37b197a7297241d5bb</srcmd5>
+    <version>unknown</version>
+    <time>1716456212</time>
+    <user>dimstar_suse</user>
+    <comment>More languages need to go</comment>
+  </revision>
 </revisionlist>
