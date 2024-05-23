@@ -46,4 +46,16 @@
 - Update Requires from setup.py (forwarded request 1166309 from glaubitz)</comment>
     <requestid>1166428</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>da162d705c3689723c19789a38998f9c</srcmd5>
+    <version>2.0.0</version>
+    <time>1716471368</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 2.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1176038 from glaubitz)</comment>
+    <requestid>1176448</requestid>
+  </revision>
 </revisionlist>
