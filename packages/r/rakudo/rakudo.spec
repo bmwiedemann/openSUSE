@@ -17,23 +17,22 @@
 
 
 Name:           rakudo
-Version:        2024.02
-Release:        2.1
+Version:        2024.04
+Release:        0
 Summary:        Raku (formerly Perl 6) implemenation that runs on MoarVM
 License:        Artistic-2.0
 Group:          Development/Languages/Other
 URL:            https://rakudo.org/
-Source0:        rakudo-%{version}.tar.gz
+Source0:        https://rakudo.org/dl/rakudo/rakudo-%{version}.tar.gz
 Patch0:         rakudo-test-log.diff
-%if !0%{?rhel_version}
-BuildRequires:  fdupes
-%endif
-BuildRequires:  moarvm-devel >= 2024.02
-BuildRequires:  nqp >= 2024.02
+BuildRequires:  moarvm-devel >= %{version}
+BuildRequires:  nqp >= %{version}
 BuildRequires:  perl(Archive::Tar)
 BuildRequires:  perl(Digest::SHA)
 BuildRequires:  perl(IPC::Cmd)
 BuildRequires:  perl(YAML::Tiny)
+Requires:       moarvm >= %{version}
+Requires:       nqp >= %{version}
 Provides:       raku = %{version}-%{release}
 Provides:       raku(CompUnit::Repository::Staging)
 Provides:       raku(MoarVM::Profiler)
@@ -41,15 +40,15 @@ Provides:       raku(MoarVM::SIL)
 Provides:       raku(MoarVM::SL)
 Provides:       raku(MoarVM::Spesh)
 Provides:       raku(NativeCall)
-Provides:       raku(NativeCall::Types)
 Provides:       raku(NativeCall::Compiler::GNU)
 Provides:       raku(NativeCall::Compiler::MSVC)
+Provides:       raku(NativeCall::Types)
 Provides:       raku(Pod::To::Text)
 Provides:       raku(RakuDoc::To::Text)
 Provides:       raku(Test)
-Requires:       moarvm >= 2024.02
-Requires:       nqp >= 2024.02
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%if !0%{?rhel_version}
+BuildRequires:  fdupes
+%endif
 %ifarch s390x
 BuildRequires:  libffi-devel
 %endif
@@ -73,7 +72,7 @@ RAKUDO_SKIP_TIMING_TESTS=1 make test
 mkdir -p "%{buildroot}/%{_datadir}/perl6/bin"
 cp tools/install-dist.p6 "%{buildroot}/%{_datadir}/perl6/bin/install-perl6-dist"
 chmod +x "%{buildroot}/%{_datadir}/perl6/bin/install-perl6-dist"
-sed -i -e '1s:!/usr/bin/env :!/usr/bin/:' "%{buildroot}/%{_datadir}/perl6/bin"/*
+sed -i -e '1s:!%{_bindir}/env :!%{_bindir}/:' "%{buildroot}/%{_datadir}/perl6/bin"/*
 rm "%{buildroot}/%{_bindir}/raku"
 rm "%{buildroot}/%{_bindir}/raku-debug"
 ln -s rakudo "%{buildroot}/%{_bindir}/raku"
@@ -84,7 +83,6 @@ ln -s rakudo-debug "%{buildroot}/%{_bindir}/raku-debug"
 %endif
 
 %files
-%defattr(-,root,root)
 %doc CREDITS
 %license LICENSE
 %{_bindir}/*

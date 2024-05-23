@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu May 23 12:35:38 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 2024.04.
+- New in 2024.04:
+  * Improvements:
+    * Make X::Syntax::Number::LiteralType a subclass of
+      X::TypeCheck::Assignment
+    * Make Rakudo up to 2x as fast on the JVM backend by using
+      fastutil
+  * Additions:
+    * Add Allomorph.narrow
+    * Add dispatch disambiguation via 'is item' parameter trait
+  * Fixes:
+    * Fix "No exception handler located for catch" trying to report
+      method-not-found
+    * Fix naming of anonymous classes
+    * Increase JVM max heap
+    * Fix reporting of X::Role::Initialization errors
+    * Fix race condition in lazy deserialization on MoarVM backend
+    * Fix obscure pattern bug in regex engine on MoarVM backend
+- New in 2024.03:
+  * Fixes:
+    * Add Parameter.of method
+    * Unbreak the JVM build
+    * Unbreak t/harness
+- Apply spec-cleaner.
+- Set "Source" to GitHub's URL, so the source tarball may be
+  downloaded through the appropriate OBS service.
+- Use "%{version}" to declare the related MoarVM dependency, rather
+  than hardcoding MoarVM's version.
+
+-------------------------------------------------------------------
 Wed Mar 27 16:32:06 CET 2024 - nine@detonation.org
 
 - update to version 2024.02

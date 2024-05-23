@@ -597,4 +597,12 @@ Fixed the changelog to explain the reason for the patch.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1164430</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>7cd72005ecd1a3bc7456d335e893709a</srcmd5>
+    <version>2024.04</version>
+    <time>1716471338</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1176479</requestid>
+  </revision>
 </revisionlist>
