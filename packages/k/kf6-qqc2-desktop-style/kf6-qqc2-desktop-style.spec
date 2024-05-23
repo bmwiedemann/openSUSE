@@ -54,7 +54,7 @@ Requires:       kf6-sonnet-imports >= %{_kf6_bugfix_version}
 # but looks better with it. By itself plasma6-workspace does not use
 # it (yet), so only install it with qt6-declarative-imports.
 Supplements:    (plasma6-workspace and qt6-declarative-imports)
-Obsoletes:      qqc2-desktop-style-lang < %{version}
+Obsoletes:      qqc2-desktop-style-lang < 5.116.1
 
 %description
 A Qt Quick Controls 2 style engine that uses the desktop style

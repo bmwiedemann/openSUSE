@@ -23,4 +23,12 @@
     <comment>KDE Frameworks 6.2.0 (forwarded request 1173094 from krop)</comment>
     <requestid>1173174</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3ff8f12faa20d1e8c9f5de8ef9c72d2f</srcmd5>
+    <version>6.2.0</version>
+    <time>1716471285</time>
+    <user>anag+factory</user>
+    <comment>- Update qqc2-desktop-style-lang obsoleted version</comment>
+    <requestid>1175860</requestid>
+  </revision>
 </revisionlist>
