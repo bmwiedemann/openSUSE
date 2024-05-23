@@ -119,7 +119,7 @@ BuildRequires:  pesign-obs-integration
 %endif
 Provides:       installhint(reboot-needed)
 
-Version:        4.18.2_02
+Version:        4.18.2_04
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -154,6 +154,16 @@ Source10183:    xen_maskcalc.py
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
+Patch1:         6617d62c-x86-hvm-Misra-Rule-19-1-regression.patch
+Patch2:         6627a4ee-vRTC-UIP-set-for-longer-than-expected.patch
+Patch3:         6627a5fc-x86-MTRR-inverted-WC-check.patch
+Patch4:         662a6a4c-x86-spec-reporting-of-BHB-clearing.patch
+Patch5:         662a6a8d-x86-spec-adjust-logic-to-elide-LFENCE.patch
+Patch6:         663090fd-x86-gen-cpuid-syntax.patch
+Patch7:         663a383c-libxs-open-xenbus-fds-as-O_CLOEXEC.patch
+Patch8:         663a4f3e-x86-cpu-policy-migration-IceLake-to-CascadeLake.patch
+Patch9:         663d05b5-x86-ucode-distinguish-up-to-date.patch
+Patch10:        663eaa27-libxl-XenStore-error-handling-in-device-creation.patch
 # EMBARGOED security fixes
 # libxc
 Patch301:       libxc-bitmap-long.patch

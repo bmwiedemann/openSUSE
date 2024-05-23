@@ -1,0 +1,43 @@
+# Commit 648db37a155aca6f66d4cf3bb118417a728c3579
+# Date 2024-05-09 18:19:49 +0100
+# Author Andrew Cooper <andrew.cooper3@citrix.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+x86/ucode: Distinguish "ucode already up to date"
+
+Right now, Xen returns -ENOENT for both "the provided blob isn't correct for
+this CPU", and "the blob isn't newer than what's loaded".
+
+This in turn causes xen-ucode to exit with an error, when "nothing to do" is
+more commonly a success condition.
+
+Handle EEXIST specially and exit cleanly.
+
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Acked-by: Roger Pau Monné <roger.pau@citrix.com>
+
+--- a/tools/misc/xen-ucode.c
++++ b/tools/misc/xen-ucode.c
+@@ -125,8 +125,11 @@ int main(int argc, char *argv[])
+         exit(1);
+     }
+ 
++    errno = 0;
+     ret = xc_microcode_update(xch, buf, len);
+-    if ( ret )
++    if ( ret == -1 && errno == EEXIST )
++        printf("Microcode already up to date\n");
++    else if ( ret )
+     {
+         fprintf(stderr, "Failed to update microcode. (err: %s)\n",
+                 strerror(errno));
+--- a/xen/arch/x86/cpu/microcode/core.c
++++ b/xen/arch/x86/cpu/microcode/core.c
+@@ -640,7 +640,7 @@ static long cf_check microcode_update_he
+                    "microcode: couldn't find any newer%s revision in the provided blob!\n",
+                    opt_ucode_allow_same ? " (or the same)" : "");
+             microcode_free_patch(patch);
+-            ret = -ENOENT;
++            ret = -EEXIST;
+ 
+             goto put;
+         }

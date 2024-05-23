@@ -1,0 +1,24 @@
+# Commit 77e25f0e30ddd11e043e6fce84bf108ce7de5b6f
+# Date 2024-04-23 14:13:48 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86/MTRR: correct inadvertently inverted WC check
+
+The ! clearly got lost by mistake.
+
+Fixes: e9e0eb30d4d6 ("x86/MTRR: avoid several indirect calls")
+Reported-by: Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Acked-by: Roger Pau Monné <roger.pau@citrix.com>
+
+--- a/xen/arch/x86/cpu/mtrr/main.c
++++ b/xen/arch/x86/cpu/mtrr/main.c
+@@ -316,7 +316,7 @@ int mtrr_add_page(unsigned long base, un
+ 	}
+ 
+ 	/*  If the type is WC, check that this processor supports it  */
+-	if ((type == X86_MT_WC) && mtrr_have_wrcomb()) {
++	if ((type == X86_MT_WC) && !mtrr_have_wrcomb()) {
+ 		printk(KERN_WARNING
+ 		       "mtrr: your processor doesn't support write-combining\n");
+ 		return -EOPNOTSUPP;

@@ -7,10 +7,8 @@ References: bsc#954872
  tools/libxl/libxlu_disk_l.l |    2 ++
  4 files changed, 37 insertions(+), 6 deletions(-)
 
-Index: xen-4.18.0-testing/tools/libs/light/libxl_disk.c
-===================================================================
---- xen-4.18.0-testing.orig/tools/libs/light/libxl_disk.c
-+++ xen-4.18.0-testing/tools/libs/light/libxl_disk.c
+--- a/tools/libs/light/libxl_disk.c
++++ b/tools/libs/light/libxl_disk.c
 @@ -203,7 +203,7 @@ static int libxl__device_disk_setdefault
      return rc;
  }
@@ -31,11 +29,9 @@ Index: xen-4.18.0-testing/tools/libs/light/libxl_disk.c
                  flexarray_append(back, "params");
                  flexarray_append(back, GCSPRINTF("%s:%s",
                                libxl__device_disk_string_of_format(disk->format),
-Index: xen-4.18.0-testing/tools/libs/light/libxl_device.c
-===================================================================
---- xen-4.18.0-testing.orig/tools/libs/light/libxl_device.c
-+++ xen-4.18.0-testing/tools/libs/light/libxl_device.c
-@@ -333,7 +333,8 @@ static int disk_try_backend(disk_try_bac
+--- a/tools/libs/light/libxl_device.c
++++ b/tools/libs/light/libxl_device.c
+@@ -351,7 +351,8 @@ static int disk_try_backend(disk_try_bac
          return 0;
  
      case LIBXL_DISK_BACKEND_QDISK:
@@ -45,10 +41,8 @@ Index: xen-4.18.0-testing/tools/libs/light/libxl_device.c
          return backend;
  
      case LIBXL_DISK_BACKEND_STANDALONE:
-Index: xen-4.18.0-testing/tools/libs/light/libxl_dm.c
-===================================================================
---- xen-4.18.0-testing.orig/tools/libs/light/libxl_dm.c
-+++ xen-4.18.0-testing/tools/libs/light/libxl_dm.c
+--- a/tools/libs/light/libxl_dm.c
++++ b/tools/libs/light/libxl_dm.c
 @@ -1197,6 +1197,30 @@ out:
      return rc;
  }
@@ -93,10 +87,8 @@ Index: xen-4.18.0-testing/tools/libs/light/libxl_dm.c
              if (dev_number == -1) {
                  LOGD(WARN, guest_domid, "unable to determine"" disk number for %s",
                       disks[i].vdev);
-Index: xen-4.18.0-testing/tools/libs/util/libxlu_disk_l.l
-===================================================================
---- xen-4.18.0-testing.orig/tools/libs/util/libxlu_disk_l.l
-+++ xen-4.18.0-testing/tools/libs/util/libxlu_disk_l.l
+--- a/tools/libs/util/libxlu_disk_l.l
++++ b/tools/libs/util/libxlu_disk_l.l
 @@ -253,6 +253,8 @@ target=.*	{ STRIP(','); SAVESTRING("targ
                      free(newscript);
                  }
@@ -106,10 +98,8 @@ Index: xen-4.18.0-testing/tools/libs/util/libxlu_disk_l.l
  tapdisk:/.*	{ DPC->had_depr_prefix=1; DEPRECATE(0); }
  tap2?:/.*	{ DPC->had_depr_prefix=1; DEPRECATE(0); }
  aio:/.*		{ DPC->had_depr_prefix=1; DEPRECATE(0); }
-Index: xen-4.18.0-testing/tools/libs/light/libxl_internal.h
-===================================================================
---- xen-4.18.0-testing.orig/tools/libs/light/libxl_internal.h
-+++ xen-4.18.0-testing/tools/libs/light/libxl_internal.h
+--- a/tools/libs/light/libxl_internal.h
++++ b/tools/libs/light/libxl_internal.h
 @@ -2073,6 +2073,10 @@ _hidden char *libxl__object_to_json(libx
  _hidden int libxl__cpuid_legacy(libxl_ctx *ctx, uint32_t domid, bool retore,
                                  libxl_domain_build_info *info);

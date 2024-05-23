@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 15 11:15:00 CEST 2024 - jbeulich@suse.com
+
+- bsc#1221984 - VUL-0: CVE-2023-46842: xen: x86 HVM hypercalls may
+  trigger Xen bug check (XSA-454)
+  6617d62c-x86-hvm-Misra-Rule-19-1-regression.patch
+- Upstream bug fixes (bsc#1027519)
+  6627a4ee-vRTC-UIP-set-for-longer-than-expected.patch
+  6627a5fc-x86-MTRR-inverted-WC-check.patch
+  662a6a4c-x86-spec-reporting-of-BHB-clearing.patch
+  662a6a8d-x86-spec-adjust-logic-to-elide-LFENCE.patch
+  663090fd-x86-gen-cpuid-syntax.patch
+  663a383c-libxs-open-xenbus-fds-as-O_CLOEXEC.patch
+  663a4f3e-x86-cpu-policy-migration-IceLake-to-CascadeLake.patch
+  663d05b5-x86-ucode-distinguish-up-to-date.patch
+  663eaa27-libxl-XenStore-error-handling-in-device-creation.patch
+
+-------------------------------------------------------------------
 Tue Apr  9 14:11:15 MDT 2024 - carnold@suse.com
 
 - Update to Xen 4.18.2 security bug fix release (bsc#1027519)

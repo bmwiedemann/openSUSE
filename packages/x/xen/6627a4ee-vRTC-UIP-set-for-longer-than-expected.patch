@@ -1,0 +1,47 @@
+# Commit 43a07069863b419433dee12c9b58c1f7ce70aa97
+# Date 2024-04-23 14:09:18 +0200
+# Author Ross Lagerwall <ross.lagerwall@citrix.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86/rtc: Avoid UIP flag being set for longer than expected
+
+In a test, OVMF reported an error initializing the RTC without
+indicating the precise nature of the error. The only plausible
+explanation I can find is as follows:
+
+As part of the initialization, OVMF reads register C and then reads
+register A repatedly until the UIP flag is not set. If this takes longer
+than 100 ms, OVMF fails and reports an error. This may happen with the
+following sequence of events:
+
+At guest time=0s, rtc_init() calls check_update_timer() which schedules
+update_timer for t=(1 - 244us).
+
+At t=1s, the update_timer function happens to have been called >= 244us
+late. In the timer callback, it sets the UIP flag and schedules
+update_timer2 for t=1s.
+
+Before update_timer2 runs, the guest reads register C which calls
+check_update_timer(). check_update_timer() stops the scheduled
+update_timer2 and since the guest time is now outside of the update
+cycle, it schedules update_timer for t=(2 - 244us).
+
+The UIP flag will therefore be set for a whole second from t=1 to t=2
+while the guest repeatedly reads register A waiting for the UIP flag to
+clear. Fix it by clearing the UIP flag when scheduling update_timer.
+
+I was able to reproduce this issue with a synthetic test and this
+resolves the issue.
+
+Signed-off-by: Ross Lagerwall <ross.lagerwall@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/hvm/rtc.c
++++ b/xen/arch/x86/hvm/rtc.c
+@@ -202,6 +202,7 @@ static void check_update_timer(RTCState
+         }
+         else
+         {
++            s->hw.cmos_data[RTC_REG_A] &= ~RTC_UIP;
+             next_update_time = (USEC_PER_SEC - guest_usec - 244) * NS_PER_USEC;
+             expire_time = NOW() + next_update_time;
+             s->next_update_time = expire_time;

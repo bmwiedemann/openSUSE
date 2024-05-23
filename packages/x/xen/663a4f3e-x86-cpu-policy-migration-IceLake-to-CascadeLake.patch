@@ -1,0 +1,79 @@
+# Commit a2330b51df267e20e66bbba6c5bf08f0570ed58b
+# Date 2024-05-07 16:56:46 +0100
+# Author Andrew Cooper <andrew.cooper3@citrix.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+x86/cpu-policy: Fix migration from Ice Lake to Cascade Lake
+
+Ever since Xen 4.14, there has been a latent bug with migration.
+
+While some toolstacks can level the features properly, they don't shink
+feat.max_subleaf when all features have been dropped.  This is because
+we *still* have not completed the toolstack side work for full CPU Policy
+objects.
+
+As a consequence, even when properly feature levelled, VMs can't migrate
+"backwards" across hardware which reduces feat.max_subleaf.  One such example
+is Ice Lake (max_subleaf=2 for INTEL_PSFD) to Cascade Lake (max_subleaf=0).
+
+Extend the max policies feat.max_subleaf to the hightest number Xen knows
+about, but leave the default policies matching the host.  This will allow VMs
+with a higher feat.max_subleaf than strictly necessary to migrate in.
+
+Eventually we'll manage to teach the toolstack how to avoid creating such VMs
+in the first place, but there's still more work to do there.
+
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Acked-by: Roger Pau Monné <roger.pau@citrix.com>
+
+--- a/xen/arch/x86/cpu-policy.c
++++ b/xen/arch/x86/cpu-policy.c
+@@ -603,6 +603,13 @@ static void __init calculate_pv_max_poli
+     unsigned int i;
+ 
+     *p = host_cpu_policy;
++
++    /*
++     * Some VMs may have a larger-than-necessary feat max_subleaf.  Allow them
++     * to migrate in.
++     */
++    p->feat.max_subleaf = ARRAY_SIZE(p->feat.raw) - 1;
++
+     x86_cpu_policy_to_featureset(p, fs);
+ 
+     for ( i = 0; i < ARRAY_SIZE(fs); ++i )
+@@ -643,6 +650,10 @@ static void __init calculate_pv_def_poli
+     unsigned int i;
+ 
+     *p = pv_max_cpu_policy;
++
++    /* Default to the same max_subleaf as the host. */
++    p->feat.max_subleaf = host_cpu_policy.feat.max_subleaf;
++
+     x86_cpu_policy_to_featureset(p, fs);
+ 
+     for ( i = 0; i < ARRAY_SIZE(fs); ++i )
+@@ -679,6 +690,13 @@ static void __init calculate_hvm_max_pol
+     const uint32_t *mask;
+ 
+     *p = host_cpu_policy;
++
++    /*
++     * Some VMs may have a larger-than-necessary feat max_subleaf.  Allow them
++     * to migrate in.
++     */
++    p->feat.max_subleaf = ARRAY_SIZE(p->feat.raw) - 1;
++
+     x86_cpu_policy_to_featureset(p, fs);
+ 
+     mask = hvm_hap_supported() ?
+@@ -780,6 +798,10 @@ static void __init calculate_hvm_def_pol
+     const uint32_t *mask;
+ 
+     *p = hvm_max_cpu_policy;
++
++    /* Default to the same max_subleaf as the host. */
++    p->feat.max_subleaf = host_cpu_policy.feat.max_subleaf;
++
+     x86_cpu_policy_to_featureset(p, fs);
+ 
+     mask = hvm_hap_supported() ?

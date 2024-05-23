@@ -1,0 +1,32 @@
+# Commit 08e79bba73d74a85d3ce6ff0f91c5205f1e05eda
+# Date 2024-04-30 08:34:37 +0200
+# Author Jason Andryuk <jason.andryuk@amd.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+xen/x86: Fix Syntax warning in gen-cpuid.py
+
+Python 3.12.2 warns:
+
+xen/tools/gen-cpuid.py:50: SyntaxWarning: invalid escape sequence '\s'
+  "\s+([\s\d]+\*[\s\d]+\+[\s\d]+)\)"
+xen/tools/gen-cpuid.py:51: SyntaxWarning: invalid escape sequence '\s'
+  "\s+/\*([\w!]*) .*$")
+
+Specify the strings as raw strings so '\s' is read as literal '\' + 's'.
+This avoids escaping all the '\'s in the strings.
+
+Signed-off-by: Jason Andryuk <jason.andryuk@amd.com>
+Acked-by: Andrew Cooper <andrew.cooper3@citrix.com>
+
+--- a/xen/tools/gen-cpuid.py
++++ b/xen/tools/gen-cpuid.py
+@@ -47,8 +47,8 @@ def parse_definitions(state):
+     """
+     feat_regex = re.compile(
+         r"^XEN_CPUFEATURE\(([A-Z0-9_]+),"
+-        "\s+([\s\d]+\*[\s\d]+\+[\s\d]+)\)"
+-        "\s+/\*([\w!]*) .*$")
++        r"\s+([\s\d]+\*[\s\d]+\+[\s\d]+)\)"
++        r"\s+/\*([\w!]*) .*$")
+ 
+     word_regex = re.compile(
+         r"^/\* .* word (\d*) \*/$")

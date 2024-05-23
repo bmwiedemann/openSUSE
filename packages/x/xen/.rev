@@ -2926,4 +2926,12 @@
     <comment>Update to Xen version 4.18.2. Includes security fixes for bsc#1221984 CVE-2023-46842 XSA-454, bsc#1222302 CVE-2024-31142 XSA-455, bsc#1222453 CVE-2024-2201 XSA-456</comment>
     <requestid>1166538</requestid>
   </revision>
+  <revision rev="344" vrev="1">
+    <srcmd5>db38e9b0e0cf2040d789871b70eff7cc</srcmd5>
+    <version>4.18.2_04</version>
+    <time>1716471251</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1175908</requestid>
+  </revision>
 </revisionlist>

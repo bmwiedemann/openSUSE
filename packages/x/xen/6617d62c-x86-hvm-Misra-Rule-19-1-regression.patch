@@ -1,0 +1,45 @@
+# Commit d0a718a45f14b86471d8eb3083acd72760963470
+# Date 2024-04-11 13:23:08 +0100
+# Author Andrew Cooper <andrew.cooper3@citrix.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+x86/hvm: Fix Misra Rule 19.1 regression
+
+Despite noticing an impending Rule 19.1 violation, the adjustment made (the
+uint32_t cast) wasn't sufficient to avoid it.  Try again.
+
+Subsequently noticed by Coverity too.
+
+Fixes: 6a98383b0877 ("x86/HVM: clear upper halves of GPRs upon entry from 32-bit code")
+Coverity-IDs: 1596289 thru 1596298
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Stefano Stabellini <sstabellini@kernel.org>
+
+--- a/xen/arch/x86/include/asm/hvm/hvm.h
++++ b/xen/arch/x86/include/asm/hvm/hvm.h
+@@ -585,16 +585,16 @@ static inline void hvm_sanitize_regs_fie
+     if ( compat )
+     {
+         /* Clear GPR upper halves, to counteract guests playing games. */
+-        regs->rbp = (uint32_t)regs->ebp;
+-        regs->rbx = (uint32_t)regs->ebx;
+-        regs->rax = (uint32_t)regs->eax;
+-        regs->rcx = (uint32_t)regs->ecx;
+-        regs->rdx = (uint32_t)regs->edx;
+-        regs->rsi = (uint32_t)regs->esi;
+-        regs->rdi = (uint32_t)regs->edi;
+-        regs->rip = (uint32_t)regs->eip;
+-        regs->rflags = (uint32_t)regs->eflags;
+-        regs->rsp = (uint32_t)regs->esp;
++        regs->rbp = (uint32_t)regs->rbp;
++        regs->rbx = (uint32_t)regs->rbx;
++        regs->rax = (uint32_t)regs->rax;
++        regs->rcx = (uint32_t)regs->rcx;
++        regs->rdx = (uint32_t)regs->rdx;
++        regs->rsi = (uint32_t)regs->rsi;
++        regs->rdi = (uint32_t)regs->rdi;
++        regs->rip = (uint32_t)regs->rip;
++        regs->rflags = (uint32_t)regs->rflags;
++        regs->rsp = (uint32_t)regs->rsp;
+     }
+ 
+ #ifndef NDEBUG

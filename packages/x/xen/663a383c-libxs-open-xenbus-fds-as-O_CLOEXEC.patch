@@ -1,0 +1,38 @@
+# Commit f4f2f3402b2f4985d69ffc0d46f845d05fd0b60f
+# Date 2024-05-07 15:18:36 +0100
+# Author Andrew Cooper <andrew.cooper3@citrix.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+tools/libxs: Open /dev/xen/xenbus fds as O_CLOEXEC
+
+The header description for xs_open() goes as far as to suggest that the fd is
+O_CLOEXEC, but it isn't actually.
+
+`xl devd` has been observed leaking /dev/xen/xenbus into children.
+
+Link: https://github.com/QubesOS/qubes-issues/issues/8292
+Reported-by: Demi Marie Obenour <demi@invisiblethingslab.com>
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Juergen Gross <jgross@suse.com>
+
+--- a/tools/libs/store/xs.c
++++ b/tools/libs/store/xs.c
+@@ -54,6 +54,10 @@ struct xs_stored_msg {
+ #include <dlfcn.h>
+ #endif
+ 
++#ifndef O_CLOEXEC
++#define O_CLOEXEC 0
++#endif
++
+ struct xs_handle {
+ 	/* Communications channel to xenstore daemon. */
+ 	int fd;
+@@ -227,7 +231,7 @@ error:
+ static int get_dev(const char *connect_to)
+ {
+ 	/* We cannot open read-only because requests are writes */
+-	return open(connect_to, O_RDWR);
++	return open(connect_to, O_RDWR | O_CLOEXEC);
+ }
+ 
+ static int all_restrict_cb(Xentoolcore__Active_Handle *ah, domid_t domid) {
