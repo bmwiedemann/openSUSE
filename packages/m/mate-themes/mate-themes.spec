@@ -1,7 +1,7 @@
 #
 # spec file for package mate-themes
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 # TODO: Split up packages into individual themes.
 Name:           mate-themes
-Version:        3.22.24
+Version:        3.22.26
 Release:        0
 Summary:        Themes for the MATE desktop
 License:        LGPL-2.1-or-later

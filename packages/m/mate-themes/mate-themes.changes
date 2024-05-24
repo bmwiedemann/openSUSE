@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 23 03:02:51 UTC 2024 - ming li <mli@suse.com>
+
+- Update to version 3.22.26:
+  * Fix travis build
+  * ci: Use Ubuntu jammy not focal
+
+-------------------------------------------------------------------
 Thu Nov 23 02:30:32 UTC 2023 - Mihai Moldovan <ionic@ionic.de>
 
 - Update to new upstream version 3.22.24:
