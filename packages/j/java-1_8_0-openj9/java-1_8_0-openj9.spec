@@ -28,18 +28,18 @@
 %global abs2rel perl -e %{script}
 %global syslibdir       %{_libdir}
 # Standard JPackage naming and versioning defines.
-%global updatever       402
-%global buildver        b06
+%global updatever       412
+%global buildver        b08
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk8/archive
-%global root_revision   0fa9d9c53243b300211f1e7dabee29164552fe0b
-%global root_branch     v0.43.0-release
+%global root_revision   3f438d726eabae33b2687e565530272909ff37ad
+%global root_branch     v0.44.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    ea8124dbc1b625da6f607b66d2b657dce90c96c4
-%global omr_branch      v0.43.0-release
+%global omr_revision    254af5a0452934f62e3253c5565b183c682d3495
+%global omr_branch      v0.44.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 2c3d78b48adf36dbbef5852b95889da5a5ce1279
-%global openj9_branch   v0.43.0-release
-%global openj9_tag      openj9-0.43.0
+%global openj9_revision b0699311c7d9341f3d0ebf9a7a4b5546a7ca7004
+%global openj9_branch   v0.44.0-release
+%global openj9_tag      openj9-0.44.0
 # priority must be 6 digits in total
 %global priority        1801
 %global javaver         1.8.0
@@ -123,6 +123,7 @@ Patch201:       system-libjpeg.patch
 Patch202:       system-libpng.patch
 Patch203:       system-lcms.patch
 Patch210:       openj9-no-werror.patch
+Patch211:       openj9-openssl.patch
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -353,6 +354,7 @@ rm -rvf jdk/src/share/native/sun/java2d/cmm/lcms/lcms2*
 %patch -P 203 -p1
 
 %patch -P 210
+%patch -P 211 -p1
 
 %patch -P 1 -p1
 %patch -P 2 -p1

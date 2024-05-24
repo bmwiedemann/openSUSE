@@ -1,0 +1,13 @@
+--- a/openj9/runtime/compiler/runtime/Listener.cpp
++++ b/openj9/runtime/compiler/runtime/Listener.cpp
+@@ -44,6 +44,10 @@
+ #include "runtime/CompileService.hpp"
+ #include "runtime/Listener.hpp"
+ 
++#ifndef SSL_R_UNEXPECTED_EOF_WHILE_READING
++#define SSL_R_UNEXPECTED_EOF_WHILE_READING 294
++#endif
++
+ static bool
+ handleOpenSSLConnectionError(int connfd, SSL *&ssl, BIO *&bio, const char *errMsg, int ret, TR::CompilationInfo *compInfo)
+    {

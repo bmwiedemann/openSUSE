@@ -199,4 +199,12 @@
     <comment>fix build with gcc 14</comment>
     <requestid>1172261</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>019eee8fe0367f0e750ed91465a9c791</srcmd5>
+    <version>1.8.0.412</version>
+    <time>1716573166</time>
+    <user>anag+factory</user>
+    <comment>April 2024 security fixes</comment>
+    <requestid>1176636</requestid>
+  </revision>
 </revisionlist>
