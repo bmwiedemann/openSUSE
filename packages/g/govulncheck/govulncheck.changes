@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu May 23 14:12:18 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.1.1:
+  * all: remove unit tests for staticcheck, unparam, and spellcheck
+  * internal/sarif,cmd/govulncheck: publicize sarif
+  * internal/vulncheck: load source code for scan symbol mode only
+  * all: update golang.org/x/tools
+  * internal/vulncheck: emit progress message instead of warning
+  * internal/scan: improve textual output for binary traces
+  * internal/buildinfo: avoid panic on nil symbol for elf
+  * internal/sarif: improve GOMODCACHE relative paths
+  * internal/sarif: add version to module info for locations
+  * internal/sarif: remove originalURIBaseIds
+  * go.mod: update golang.org/x dependencies
+  * internal/gosym: preallocate inlined call slice
+  * internal/vulncheck: improve progress message for binaries
+  * internal/vulncheck: emit fetch db and vuln checking progress messages
+  * internal/scan: print progress messages only in verbose mode
+  * internal/scan: refactor flag usage in text handler
+  * Revert "internal/scan: disallow multiple patterns in source mode"
+  * internal/sarif: add missing required Message field
+  * internal/scan: disallow multiple patterns in source mode
+  * internal/vulncheck: use new improved DeleteSyntheticNodes
+
+-------------------------------------------------------------------
 Tue Apr 16 20:29:47 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.1.0:
