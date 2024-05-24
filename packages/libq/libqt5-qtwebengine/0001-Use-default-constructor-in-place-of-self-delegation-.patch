@@ -1,0 +1,35 @@
+From 1b74bce8ba1322d1853c7fd4467504a4a0d32d7b Mon Sep 17 00:00:00 2001
+From: Adam Klein <adamk@chromium.org>
+Date: Mon, 29 Nov 2021 15:11:39 -0800
+Subject: [PATCH] Use default constructor in place of self-delegation for
+ Symbol()
+
+This avoids a compile error when building with GCC in C++17 mode.
+
+Bug: v8:12449
+Change-Id: I14817895d31019fb71fc71b061f2ecf576dbc711
+Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/3307102
+Commit-Queue: Adam Klein <adamk@chromium.org>
+Reviewed-by: Leszek Swirski <leszeks@chromium.org>
+Reviewed-by: Tobias Tebbi <tebbi@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#78171}
+---
+ src/3rdparty/chromium/v8/src/torque/earley-parser.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/3rdparty/chromium/v8/src/torque/earley-parser.h b/src/3rdparty/chromium/v8/src/torque/earley-parser.h
+index e0dca24..0429fd2 100644
+--- a/src/3rdparty/chromium/v8/src/torque/earley-parser.h
++++ b/src/3rdparty/chromium/v8/src/torque/earley-parser.h
+@@ -248,7 +248,7 @@ class Rule final {
+ // used in the parser.
+ class Symbol {
+  public:
+-  Symbol() : Symbol({}) {}
++  Symbol() = default;
+   Symbol(std::initializer_list<Rule> rules) { *this = rules; }
+ 
+   V8_EXPORT_PRIVATE Symbol& operator=(std::initializer_list<Rule> rules);
+-- 
+2.45.1
+

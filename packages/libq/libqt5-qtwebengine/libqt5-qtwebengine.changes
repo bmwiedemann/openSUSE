@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu May 23 00:21:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add compatibility patches for ICU 75:
+  * qt5-webengine-icu-75.patch
+  * 0001-Use-default-constructor-in-place-of-self-delegation-.patch
+- Consequently build with a newer compiler on Leap 15
+
+-------------------------------------------------------------------
+Wed May 22 08:20:33 UTC 2024 - christophe@krop.fr
+
+- Update to version 5.15.17:
+  * Add option to chose python version for building 5.15 WebEngine
+  * Update Chromium. Backported fixes:
+  * [Backport] Security bug 325296797
+  * [Backport] CVE-2024-1059: Use after free in WebRTC
+  * [Backport] Security bug 1518994
+  * Fixup for [Backport] Security bug 1519980
+  * [Backport] CVE-2024-1283: Heap buffer overflow in Skia
+  * [Backport] CVE-2024-1060: Use after free in Canvas
+  * [Backport] CVE-2024-1077: Use after free in Network
+  * [Backport] Security bug 1519980
+  * [Backport] CVE-2024-0808: Integer underflow in WebUI
+  * [Backport] CVE-2024-0807: Use after free in WebAudio
+  * Fix ffmpeg assembly with newer binutil
+  * [Backport] Security bug 1511689
+  * [Backport] CVE-2024-0224: Use after free in WebAudio
+  * [Backport] CVE-2023-7024: Heap buffer overflow in WebRTC
+  * [Backport] Security bug 1506535
+  * [Backport] CVE-2024-0519: Out of bounds memory access in V8
+  * [Backport] CVE-2024-0518: Type Confusion in V8
+  * [Backport] CVE-2024-0333: Insufficient data validation in Extensions
+  * [Backport] CVE-2024-0222: Use after free in ANGLE
+  * Fixup: [Backport] Security bug 1488199
+  * FIXUP: Fix compilation with system ICU
+  * Fixup: [Backport] Security bug 1505632
+  * [Backport] Security bug 1505632
+  * [Backport] CVE-2023-6702: Type Confusion in V8
+  * [Backport] CVE-2023-6345: Integer overflow in Skia
+  * Bump V8_PATCH_LEVEL
+  * [Backport] Security bug 1488199 (2/2)
+  * [Backport] Security bug 1488199 (1/2)
+  * [Backport] CVE-2023-6510: Use after free in Media Capture
+  * Fix building with system libxml2
+  * [Backport] CVE-2023-6347: Use after free in Mojo
+  * [Backport] CVE-2023-6112: Use after free in Navigation
+  * [Backport] CVE-2023-5997: Use after free in Garbage Collection
+- Drop patches, merged upstream:
+  * 0001-Fix-building-with-system-libxml2.patch
+  * qtwebengine-python3.patch
+  * python311-fixes.patch
+- Update _service file, catapult snapshots are not needed anymore
+
+-------------------------------------------------------------------
 Fri May 17 05:53:59 UTC 2024 - Christoph G <foss@grueninger.de>
 
 - Backport Ninja 1.12 compatibility patch (and adjust paths)

@@ -1,19 +1,11 @@
 <services>
   <service name="tar_scm" mode="disabled">
    <param name="changesgenerate">enable</param>
-   <param name="version">5.15.16</param>
+   <param name="version">5.15.17</param>
    <param name="url">git://code.qt.io/qt/qtwebengine.git</param>
    <param name="scm">git</param>
    <param name="filename">qtwebengine-everywhere-src</param>
-   <param name="revision">v5.15.16-lts</param>
-  </service>
-  <service name="tar_scm" mode="disabled">
-   <param name="changesgenerate">disable</param>
-   <param name="url">https://chromium.googlesource.com/catapult</param>
-   <param name="revision">main</param>
-   <param name="scm">git</param>
-   <param name="filename">catapult</param>
-   <param name="versionformat">git</param>
+   <param name="revision">v5.15.17-lts</param>
   </service>
   <service name="recompress" mode="disabled">
    <param name="file">*.tar</param>

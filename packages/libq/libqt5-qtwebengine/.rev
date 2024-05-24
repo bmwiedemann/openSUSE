@@ -953,4 +953,12 @@ of the last blockers as we're still waiting for an upstream fix. (forwarded requ
     <comment></comment>
     <requestid>1174927</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>257fb9c28fed3fd3b4a052148f5e77a9</srcmd5>
+    <version>5.15.17</version>
+    <time>1716573008</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1176497</requestid>
+  </revision>
 </revisionlist>

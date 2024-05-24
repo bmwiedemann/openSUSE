@@ -32,19 +32,17 @@
 %global _qtwebengine_dictionaries_dir %{_libqt5_datadir}/qtwebengine_dictionaries
 
 Name:           libqt5-qtwebengine
-Version:        5.15.16
+Version:        5.15.17
 Release:        0
 Summary:        Qt 5 WebEngine Library
 License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.15.16
-%define so_version 5.15.16
+%define real_version 5.15.17
+%define so_version 5.15.17
 %define tar_version qtwebengine-everywhere-src-%{version}
 Source:         %{tar_version}.tar.xz
-# Use a git snapshot for catapult to build with python3 (git rev: 2da767c6)
-Source1:        catapult-git.tar.xz
 Source99:       libqt5-qtwebengine-rpmlintrc
 # PATCH-FIX-UPSTREAM armv6-ffmpeg-no-thumb.patch - Fix ffmpeg configuration for armv6
 Patch0:         armv6-ffmpeg-no-thumb.patch
@@ -56,16 +54,13 @@ Patch2:         rtc-dont-use-h264.patch
 Patch3:         0001-skia-Some-includes-to-fix-build-with-GCC-12.patch
 # PATCH-FIX-UPSTREAM -- build with pipewire 0.3
 Patch4:         qtwebengine-pipewire-0.3.patch
-# PATCH-FIX-OPENSUSE -- build with python 3
-Patch5:         qtwebengine-python3.patch
 # PATCH-FIX-UPSTREAM -- handle futex_time64
-Patch6:         sandbox_futex_time64.patch
-# PATCH-FIX-UPSTREAM -- python 3.11 fixes
-Patch7:         python311-fixes.patch
-# PATCH-FIX-UPSTREAM -- libxml 2.12 support
-Patch8:         0001-Fix-building-with-system-libxml2.patch
+Patch5:         sandbox_futex_time64.patch
 # PATCH-FIX-UPSTREAM -- Add missing dependencies for compatibility with Ninja 1.12
-Patch9:         Add-missing-dependencies.patch
+Patch6:         Add-missing-dependencies.patch
+# PATCH-FIX-UPSTREAM -- ICU 75 compatibility
+Patch7:         qt5-webengine-icu-75.patch
+Patch8:         0001-Use-default-constructor-in-place-of-self-delegation-.patch
 ### Patch 50-99 are applied conditionally
 # PATCH-FIX-OPENSUSE -- allow building qtwebengine with ffmpeg5
 Patch50:        qtwebengine-ffmpeg5.patch
@@ -78,6 +73,10 @@ BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flac-devel
 BuildRequires:  flex
+%if 0%{?suse_version} < 1550
+BuildRequires:  gcc13-PIE
+BuildRequires:  gcc13-c++
+%endif
 BuildRequires:  git-core
 BuildRequires:  gperf
 BuildRequires:  krb5
@@ -108,6 +107,7 @@ BuildRequires:  pipewire-devel
 BuildRequires:  pkgconfig
 BuildRequires:  %{pyver}
 BuildRequires:  %{pyver}-devel
+BuildRequires:  %{pyver}-html5lib
 BuildRequires:  %{pyver}-xml
 BuildRequires:  re2c
 BuildRequires:  sed
@@ -302,14 +302,6 @@ Examples for the libqt5-qtpdf module.
 %patch -P6 -p1
 %patch -P7 -p1
 %patch -P8 -p1
-%patch -P9 -p1
-
-# Replace the whole catapult folder rather than picking individual changes
-pushd src/3rdparty/chromium/third_party
-rm -r catapult
-tar xJf %{SOURCE1}
-mv catapult-git catapult
-popd
 
 # FFmpeg 5
 %if %{with system_ffmpeg}
@@ -327,12 +319,11 @@ mkdir .git
 sed -i -e '/toolprefix = /d' -e 's/\${toolprefix}//g' \
   src/3rdparty/chromium/build/toolchain/linux/BUILD.gn
 
-%build
 rm -r src/3rdparty/chromium/third_party/openh264/src
 
-%if "%{pyver}" == "python311"
-sed -i 's#QMAKE_PYTHON = python3#QMAKE_PYTHON = python3.11#' mkspecs/features/functions.prf
-sed -i 's#python3#python3.11#' configure.pri
+%build
+%if 0%{?suse_version} < 1550
+export CC=gcc-13 CXX=g++-13
 %endif
 
 %ifnarch x86_64
@@ -349,6 +340,14 @@ export RPM_OPT_FLAGS="${RPM_OPT_FLAGS} -Wno-return-type"
         gn_args+="link_pulseaudio=true" \
         gn_args+="media_use_openh264=false" \
         gn_args+="use_system_libxml=true use_system_libxslt=true" \
+%if "%{pyver}" == "python311"
+        config.input.python_override=python3.11 \
+%endif
+%if 0%{?suse_version} < 1550
+        QMAKE_CC=gcc-13 \
+        QMAKE_CXX=g++-13 \
+        QMAKE_LINK=g++-13 \
+%endif
         qtwebengine.pro -- \
         -webengine-alsa \
         -no-webengine-embedded-build \
@@ -363,7 +362,10 @@ export RPM_OPT_FLAGS="${RPM_OPT_FLAGS} -Wno-return-type"
         -webengine-proprietary-codecs \
 %endif
 %if %{with pipewire}
-        -webengine-webrtc-pipewire
+        -webengine-webrtc-pipewire \
+%endif
+%if 0%{?suse_version} > 1500
+        -webengine-python-version python3
 %endif
 
 # Determine the right number of parallel processes based on the available memory
