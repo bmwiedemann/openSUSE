@@ -16,14 +16,16 @@
 #
 
 
+%define build_qt5 1
+%define build_qt6 1
 Name:           fcitx5-chinese-addons
-Version:        5.1.3
+Version:        5.1.5
 Release:        0
 Summary:        Pinyin and Table IM support for fcitx5
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/fcitx5-chinese-addons
-Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}_dict.tar.xz
+Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}_dict.tar.zst
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
@@ -32,17 +34,24 @@ BuildRequires:  fcitx5-qt-devel
 BuildRequires:  fdupes
 BuildRequires:  fmt-devel
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libQt5Concurrent-devel
-BuildRequires:  libQt5DBus-devel
-# BuildRequires:  libQt5WebKitWidgets-devel
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_regex-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libime-devel >= 1.0.12
-BuildRequires:  libqt5-qtwebengine-devel
 BuildRequires:  opencc-devel
 BuildRequires:  pkgconfig
-BuildRequires:  xz
+BuildRequires:  zstd
+%if %{build_qt6}
+BuildRequires:  qt6-concurrent-devel
+BuildRequires:  qt6-dbus-devel
+BuildRequires:  qt6-webenginewidgets-devel
+BuildRequires:  qt6-widgets-devel
+%endif
+%if %{build_qt5}
+BuildRequires:  libQt5Concurrent-devel
+BuildRequires:  libQt5DBus-devel
+BuildRequires:  libqt5-qtwebengine-devel
+%endif
 Supplements:    fcitx5
 Conflicts:      fcitx <= 4.2.9.8
 Provides:       fcitx-cloudpinyin = %{version}
@@ -86,41 +95,110 @@ BuildRequires:  appstream-glib-devel
 %description
 This provides pinyin and table input method support for fcitx5.
 
+%if %{build_qt5}
 %package -n fcitx5-pinyindictmanager
 Summary:        Fcitx5 Pinyin dictionary manager library
 Group:          System/Libraries
-Supplements:    (fcitx5 and plasma5-workspace)
+Supplements:    (fcitx5-chinese-addons and plasma5-workspace)
 
 %description -n fcitx5-pinyindictmanager
 Fcitx5 Pinyin dictionary manager library.
+
+%package -n fcitx5-customphraseeditor
+Summary:        Fcitx5 Custom Phrase editor library
+Group:          System/Libraries
+Supplements:    (fcitx5-chinese-addons and plasma5-workspace)
+
+%description -n fcitx5-customphraseeditor
+Fcitx5 Custom Phrase editor library.
+%endif
+
+%if %{build_qt6}
+%package -n fcitx5-pinyindictmanager6
+Summary:        Fcitx5 Pinyin dictionary manager library
+Group:          System/Libraries
+Supplements:    (fcitx5-chinese-addons and plasma6-workspace)
+
+%description -n fcitx5-pinyindictmanager6
+Fcitx5 Pinyin dictionary manager library.
+
+%package -n fcitx5-customphraseeditor6
+Summary:        Fcitx5 Custom Phrase editor library
+Group:          System/Libraries
+Supplements:    (fcitx5-chinese-addons and plasma6-workspace)
+
+%description -n fcitx5-customphraseeditor6
+Fcitx5 Custom Phrase editor library.
+%endif
 
 %package devel
 Summary:        Development files for fcitx5-chinese-addons
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
+%if %{build_qt5}
+Requires:       fcitx5-customphraseeditor = %{version}
 Requires:       fcitx5-pinyindictmanager = %{version}
+%endif
+%if %{build_qt6}
+Requires:       fcitx5-customphraseeditor6 = %{version}
+Requires:       fcitx5-pinyindictmanager6 = %{version}
+%endif
 
 %description devel
 This package provides development files for fcitx5-chinese-addons.
 
 %prep
 %setup -q
+%if %{build_qt6}
+mkdir -p %{_builddir}/qt6_build
+cp -r . %{_builddir}/qt6_build
+%endif
 
 %build
 %if 0%{?suse_version} == 1500
 export CC=gcc-8
 export CXX=g++-8
 %endif
+%if %{build_qt5}
+%cmake -DUSE_WEBKIT=OFF -DUSE_QT6=OFF
+%make_build
+%endif
+
+%if %{build_qt6}
+pushd %{_builddir}/qt6_build
 %cmake -DUSE_WEBKIT=OFF
 %make_build
+popd
+%endif
 
 %install
+%if %{build_qt5}
 %cmake_install
+%endif
+
+%if %{build_qt6}
+pushd %{_builddir}/qt6_build
+%cmake_install
+popd
+%endif
 %find_lang %{name}
 %fdupes %{buildroot}
 
+%if %{build_qt5}
 %files -n fcitx5-pinyindictmanager
 %{_fcitx5_qt5dir}/libpinyindictmanager.so
+
+%files -n fcitx5-customphraseeditor
+%{_fcitx5_qt5dir}/libcustomphraseeditor.so
+%endif
+
+%if %{build_qt6}
+%files -n fcitx5-pinyindictmanager6
+%{_fcitx5_qt6dir}/libpinyindictmanager.so
+
+%files -n fcitx5-customphraseeditor6
+%{_fcitx5_qt6dir}/libcustomphraseeditor.so
+%endif
 
 %files -f %{name}.lang
 %doc README.md
@@ -132,7 +210,6 @@ export CXX=g++-8
 %dir %{_fcitx5_datadir}/lua/imeapi/extensions
 %dir %{_fcitx5_datadir}/pinyin
 %dir %{_fcitx5_datadir}/chttrans
-%dir %{_fcitx5_libdir}/qt5
 %{_bindir}/scel2org5
 %{_fcitx5_libdir}/libchttrans.so
 %{_fcitx5_libdir}/libcloudpinyin.so
@@ -141,7 +218,6 @@ export CXX=g++-8
 %{_fcitx5_libdir}/libpinyinhelper.so
 %{_fcitx5_libdir}/libpunctuation.so
 %{_fcitx5_libdir}/libtable.so
-%{_fcitx5_libdir}/qt5/libcustomphraseeditor.so
 %{_fcitx5_addondir}/chttrans.conf
 %{_fcitx5_addondir}/cloudpinyin.conf
 %{_fcitx5_addondir}/fullwidth.conf
@@ -165,7 +241,7 @@ export CXX=g++-8
 %{_fcitx5_datadir}/punctuation/punc.mb.*
 %{_fcitx5_datadir}/lua/imeapi/extensions/pinyin.lua
 %{_fcitx5_datadir}/pinyin/chaizi.dict
-%{_fcitx5_datadir}/pinyin/emoji.dict
+%{_fcitx5_datadir}/pinyin/symbols
 %{_datadir}/icons/hicolor/*/apps/org.fcitx.Fcitx5.fcitx-*
 %{_datadir}/icons/hicolor/*/apps/fcitx-*
 %{_datadir}/metainfo/org.fcitx.Fcitx5.Addon.ChineseAddons.metainfo.xml

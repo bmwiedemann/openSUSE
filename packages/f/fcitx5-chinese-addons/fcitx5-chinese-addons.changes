@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 22 09:28:00 UTC 2024 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.5
+  * New emoji implementation
+  * Selecting a character from a candidate can now be used with any
+    candidate even if the sentence is partially selected.
+  * Extra dictionary is now loaded asynchronously.
+  * openCC profile is now listed as a combobox in configuration
+  * Add pinyin correction based on layout
+- changes in 5.1.4
+  * Use Qt5 by default
+  * Make sure we load table data after start up
+  * Fix corner case of custom phrase parsing
+  * Fix testpinyin
+  * Make virtual key by pass quickphrase
+
+-------------------------------------------------------------------
 Mon Feb  5 11:01:57 UTC 2024 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.3
