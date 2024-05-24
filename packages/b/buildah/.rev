@@ -699,4 +699,12 @@
 - Fix for CVE-2024-3727 (bsc#1224117) (forwarded request 1173189 from danishprakash)</comment>
     <requestid>1173582</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>08f74a78606cff7c358945eef110daeb</srcmd5>
+    <version>1.36.0</version>
+    <time>1716573196</time>
+    <user>anag+factory</user>
+    <comment>New upstream release 1.36.0</comment>
+    <requestid>1176691</requestid>
+  </revision>
 </revisionlist>
