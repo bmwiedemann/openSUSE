@@ -18,7 +18,7 @@
 
 Name:           libguestfs
 ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64 riscv64
-Version:        1.52.0
+Version:        1.52.1
 Release:        0
 Summary:        Access and modify virtual machine disk images
 License:        GPL-2.0-or-later
@@ -33,8 +33,6 @@ Source101:      README
 
 # Patches
 Patch1:         use-rtc-driftfix-slew-for-x86-only.patch
-Patch2:         Split-chown-parameter-on-character.patch
-Patch3:         Initialise-bar-fp-as-NULL.patch
 
 BuildRequires:  bison
 BuildRequires:  file-devel

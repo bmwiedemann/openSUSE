@@ -1142,4 +1142,12 @@
     <comment>Set as Recommends packages zerofree (not in SLE) and ntfsprogs (in SLE-WE) in libguestfs-appliance for SLE compatibility</comment>
     <requestid>1172813</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>6efd470efca36cdca92472f9a0b84b97</srcmd5>
+    <version>1.52.1</version>
+    <time>1716573108</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1176549</requestid>
+  </revision>
 </revisionlist>

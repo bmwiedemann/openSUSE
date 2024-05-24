@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 16 13:02:34 MDT 2024 - carnold@suse.com
+
+- Update to version 1.52.1 bug fix release (jsc#PED-6305)
+  * There are no upstream release notes for verion 1.52.x
+  * Several python fixes
+  * Rework Std_utils.Option so it works like the OCaml stdlib module
+  * Update common submodule to latest
+- Drop patches contained in new tarball
+  Split-chown-parameter-on-character.patch
+  Initialise-bar-fp-as-NULL.patch
+
+-------------------------------------------------------------------
 Wed May  8 12:42:02 MDT 2024 - carnold@suse.com
 
 - Set Recommends on zerofree and ntfsprogs for libguestfs-appliance
