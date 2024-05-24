@@ -16,25 +16,42 @@
 #
 
 
-Name:           fcitx5-skk
-Version:        5.1.1
+%global flavor @BUILD_FLAVOR@%{nil}
+%global sname fcitx5-skk
+%if "%{flavor}" == ""
+%global pname %sname
+%else
+%global pname %{sname}-%{flavor}
+%endif
+
+Name:           %{pname}
+Version:        5.1.3
 Release:        0
 Summary:        Libskk input method engine for Fcitx5
 License:        GPL-3.0-or-later
 URL:            https://github.com/fcitx/fcitx5-skk
-Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
+Source:         https://download.fcitx-im.org/fcitx5/%{sname}/%{sname}-%{version}.tar.zst
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
 BuildRequires:  fcitx5-qt-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  libskk-devel
 BuildRequires:  pkgconfig
-Requires:       fcitx5
+%if "%{flavor}" == ""
+BuildRequires:  libqt5-qtbase-devel
+Conflicts:      %{sname}-qt6
 Provides:       fcitx-skk = %{version}
 Obsoletes:      fcitx-skk <= 0.1.4
+%endif
+%if "%{flavor}" == "qt6"
+BuildRequires:  qt6-base-devel
+Conflicts:      %{sname}
+Supplements:    (fcitx5 and skkdic and plasma6-workspace)
+%endif
+BuildRequires:  zstd
+Requires:       fcitx5
 %if 0%{?suse_version} <= 1520
 BuildRequires:  appstream-glib-devel
 %endif
@@ -43,22 +60,31 @@ BuildRequires:  appstream-glib-devel
 fcitx-skk is an input method engine for Fcitx, which uses libskk as its backend.
 
 %prep
-%setup -q
+%setup -q -n %{sname}-%{version}
 
 %build
+%if "%{flavor}" == "qt6"
 %cmake
+%endif
+%if "%{flavor}" == ""
+%cmake -DUSE_QT6=OFF
+%endif
 %make_build
 
 %install
 %cmake_install
-%find_lang %{name}
+%find_lang %{sname}
 
-%files -f %{name}.lang
+%files -f %{sname}.lang
 %license LICENSES
 %doc README.md
-%dir %{_fcitx5_libdir}/qt5
 %{_fcitx5_libdir}/skk.so
-%{_fcitx5_libdir}/qt5/libfcitx5-skk-config.so
+%if "%{flavor}" == ""
+%{_fcitx5_qt5dir}/libfcitx5-skk-config.so
+%endif
+%if "%{flavor}" == "qt6"
+%{_fcitx5_qt6dir}/libfcitx5-skk-config.so
+%endif
 %{_fcitx5_addondir}/skk.conf
 %{_fcitx5_imconfdir}/skk.conf
 %{_fcitx5_datadir}/skk
