@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 16 11:31:42 UTC 2024 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to version 0.16.1
+  * build with Python 3.12 (bso#15513)
+  * documentation fixes
+
+-------------------------------------------------------------------
 Mon Jan 22 04:39:32 UTC 2024 - Jun Wang <jgwang@suse.com>
 
 - Update to version 0.16.0
