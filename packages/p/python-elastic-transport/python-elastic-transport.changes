@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 23 08:17:35 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add requests232.patch to fix compatibility with new requests
+
+-------------------------------------------------------------------
+Fri May 17 13:29:03 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- update to 8.13.0
+  * Support the HTTPX client with asyncio
+  * Added optional orjson serializer support
+
+-------------------------------------------------------------------
 Sat Jan 20 14:03:15 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.12.0:

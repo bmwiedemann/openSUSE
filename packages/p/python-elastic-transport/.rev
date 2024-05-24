@@ -80,4 +80,12 @@
   * Fix basic auth built from percent-encoded URLs</comment>
     <requestid>1140133</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>50bb52beea26ec881779f0ab08fb918d</srcmd5>
+    <version>8.13.0</version>
+    <time>1716573002</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1176152</requestid>
+  </revision>
 </revisionlist>
