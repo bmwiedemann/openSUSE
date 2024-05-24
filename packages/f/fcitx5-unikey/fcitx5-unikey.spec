@@ -16,24 +16,40 @@
 #
 
 
-Name:           fcitx5-unikey
-Version:        5.1.2
+%global flavor @BUILD_FLAVOR@%{nil}
+%global sname fcitx5-unikey
+%if "%{flavor}" == ""
+%global pname %sname
+%else
+%global pname %{sname}-%{flavor}
+%endif
+
+Name:           %{pname}
+Version:        5.1.4
 Release:        0
 Summary:        Unikey engine support for Fcitx5
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 URL:            https://github.com/fcitx/fcitx5-unikey
-Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
+Source:         https://download.fcitx-im.org/fcitx5/%{sname}/%{sname}-%{version}.tar.zst
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
 BuildRequires:  fcitx5-qt-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  pkgconfig
+BuildRequires:  zstd
+%if "%{flavor}" == ""
+BuildRequires:  libqt5-qtbase-devel
 Requires:       fcitx5
 Provides:       fcitx-unikey = %{version}
 Obsoletes:      fcitx-unikey <= 0.2.7
+Conflicts:      %{sname}-qt6
+%endif
+%if "%{flavor}" == "qt6"
+BuildRequires:  qt6-base-devel
+Conflicts:      %{sname}
+%endif
 %if 0%{?suse_version} <= 1520
 BuildRequires:  appstream-glib-devel
 %endif
@@ -42,27 +58,37 @@ BuildRequires:  appstream-glib-devel
 Chewing Wrapper for Fcitx5.
 
 %prep
-%setup -q
+%setup -q -n %{sname}-%{version}
 
 %build
+%if "%{flavor}" == ""
+%cmake -DUSE_QT6=OFF
+%endif
+%if "%{flavor}" == "qt6"
 %cmake
+%endif
 %make_build
 
 %install
 %cmake_install
-%find_lang %{name}
+%find_lang %{sname}
 
-%files -f %{name}.lang
+%files -f %{sname}.lang
 %license LICENSES
 %doc README
-%dir %{_fcitx5_libdir}/qt5
 %{_fcitx5_libdir}/libunikey.so
-%{_fcitx5_libdir}/qt5/libfcitx5-unikey-keymap-editor.so
+%if "%{flavor}" == ""
+%{_fcitx5_qt5dir}/libfcitx5-unikey-keymap-editor.so
+%{_fcitx5_qt5dir}/libfcitx5-unikey-macro-editor.so
+%endif
+%if "%{flavor}" == "qt6"
+%{_fcitx5_qt6dir}/libfcitx5-unikey-keymap-editor.so
+%{_fcitx5_qt6dir}/libfcitx5-unikey-macro-editor.so
+%endif
 %{_fcitx5_addondir}/unikey.conf
 %{_fcitx5_imconfdir}/unikey.conf
 %{_datadir}/icons/hicolor/*/apps/fcitx-unikey*
 %{_datadir}/icons/hicolor/*/apps/org.fcitx.Fcitx5.fcitx-unikey*
-%{_fcitx5_libdir}/qt5/libfcitx5-unikey-macro-editor.so
 %{_datadir}/metainfo/org.fcitx.Fcitx5.Addon.Unikey.metainfo.xml
 
 %changelog
