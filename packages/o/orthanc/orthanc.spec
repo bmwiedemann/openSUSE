@@ -33,12 +33,13 @@ Source5:        index.html
 Source7:        orthanc-rpmlintrc
 Source8:        Configuration.json
 # Sources for plugin - need a defined version, so taking them from orthanc-server
-Source10:       https://orthanc.osimis.io/ThirdPartyDownloads/dicom-web/bootstrap-4.3.1.zip
-Source11:       https://orthanc.osimis.io/ThirdPartyDownloads/dicom-web/axios-0.19.0.tar.gz
-Source12:       https://orthanc.osimis.io/ThirdPartyDownloads/jquery-3.4.1.min.js
-Source13:       https://orthanc.osimis.io/ThirdPartyDownloads/dicom-web/vuejs-2.6.10.tar.gz
+Source10:       https://orthanc.uclouvain.be/downloads/third-party-downloads/dicom-web/bootstrap-4.3.1.zip
+Source11:       https://orthanc.uclouvain.be/downloads/third-party-downloads/dicom-web/axios-0.19.0.tar.gz
+Source12:       https://orthanc.uclouvain.be/downloads/third-party-downloads/jquery-3.4.1.min.js
+Source13:       https://orthanc.uclouvain.be/downloads/third-party-downloads/dicom-web/vuejs-2.6.10.tar.gz
 
 Patch0:         dcmtk.diff
+Patch1:         boost185.diff
 BuildRequires:  civetweb-devel
 BuildRequires:  cmake >= 2.8.0
 BuildRequires:  curl-devel
@@ -108,6 +109,7 @@ of the DICOM format and of the DICOM protocol.
 Summary:        Header and source files for creating Orthanc plugins
 Group:          Development/Libraries/C and C++
 Provides:       orthanc-static = %{version}-%{release}
+BuildArch:      noarch
 
 %description -n %{name}-devel
 This package includes the header files to develop C/C++ plugins for Orthanc.
@@ -128,6 +130,7 @@ Summary:        This package includes the source files for Orthanc
 Group:          Development/Sources
 # DcmtkConfiguration.cmake looks for dicom.dic
 Requires:       dcmtk
+BuildArch:      noarch
 
 %description source
 This package includes the source files for Orthanc. Use it in conjunction with the -devel package
@@ -192,11 +195,17 @@ tar --strip-components 1 -xzf %{S:0} -C %{buildroot}/usr/src/%{name}/
 #Apply dcmtk patch
 patch %{buildroot}/usr/src/%{name}/OrthancFramework/Resources/CMake/DcmtkConfiguration.cmake < %{P:0}
 
+#Apply boost patch
+patch -p1 -d %{buildroot}/usr/src/%{name} < %{P:1}
+
 # Do not mark Python scripts as executable
 find %{buildroot}/usr/src/%{name} -name '*.py' -exec chmod a-x "{}" +
 #...and delete dot files
 rm %{buildroot}/usr/src/%{name}/.hg*
 rm %{buildroot}/usr/src/%{name}/.travis*
+
+# and patched files
+find %{buildroot}/usr/src/%{name} -iname *.orig -type f -print | xargs /bin/rm -f
 
 %cmake_install
 

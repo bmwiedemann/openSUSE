@@ -1,11 +1,12 @@
-# no need for old init-script:
-addFilter("suse-missing-rclink orthanc");
 # end-of-line is not really a pain:
 addFilter("wrong-file-end-of-line-encoding /usr/share/doc/packages/orthanc/Samples/CppHelpers/README.md");
 # some python files are installed under 'examples'
 # they should be adjusted
 addFilter("env-script-interpreter");
+addFilter("non-executable-script");
 # false positive
 addFilter("script-without-shebang /etc/orthanc/Configuration.json");
 addFilter("script-without-shebang /etc/orthanc/worklists.json");
 addFilter("script-without-shebang /etc/orthanc/serve-folders.json");
+# Orthanc source was all the time in /usr/src....
+addFilter("filelist-forbidden-fhs23 /usr/src/orthanc");
