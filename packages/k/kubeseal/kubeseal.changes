@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu May 23 19:34:47 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.26.3:
+  * Release notes for version 0.26.3 (#1537)
+  * Fix code generation (#1536)
+  * chore: update dependencies (#1535)
+  * readme: mention limitation of backup with key renewal (#1533)
+  * [helm] Set `GOMAXPROCS` and `GOMEMLIMIT` environment variables
+    (#1528)
+  * fix: show field name in error message when base64 decoding
+    fails (#1519)
+  * Bump k8s.io/code-generator from 0.30.0 to 0.30.1 (#1529)
+  * Bump k8s.io/client-go from 0.30.0 to 0.30.1 (#1532)
+  * Bump github.com/onsi/ginkgo/v2 from 2.17.2 to 2.17.3 (#1527)
+  * Bump github.com/prometheus/client_golang from 1.19.0 to 1.19.1
+    (#1526)
+  * Site cleanup (#1525)
+  * Bump k8s.io/code-generator from 0.29.3 to 0.30.0 (#1513)
+  * Update dependencies (#1524)
+  * Bump github.com/onsi/gomega from 1.33.0 to 1.33.1 (#1522)
+  * Bump github.com/onsi/ginkgo/v2 from 2.17.1 to 2.17.2 (#1520)
+  * Bump github.com/onsi/gomega from 1.32.0 to 1.33.0 (#1512)
+  * chore: increase vib timeout (#1509)
+  * chore: fix publish-release workflow (#1508)
+  * Bump golang.org/x/crypto from 0.21.0 to 0.22.0 (#1505)
+  * release carvel 2.15.3 (#1504)
+  * Release chart 2.15.3 (#1503)
+
+-------------------------------------------------------------------
 Thu Apr 04 16:56:00 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.26.2:
