@@ -53,7 +53,7 @@ BuildRequires:  pkgconfig(systemd)
 Summary:        SANE (Scanner Access Now Easy) Scanner Drivers
 License:        GPL-2.0-or-later AND SUSE-GPL-2.0+-with-sane-exception AND SUSE-Public-Domain
 Group:          Hardware/Scanner
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 URL:            http://www.sane-project.org/
 # On https://gitlab.com/sane-project/backends/-/releases , the "Source code (tar.gz)" link
