@@ -52,4 +52,16 @@
   * Correct copyright attribution</comment>
     <requestid>1175875</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>973b2e8ea7fbbbf884bc845d22531ffe</srcmd5>
+    <version>1.0.3</version>
+    <time>1716573202</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.3:
+  * module-mig: make /etc umount optional - doesn't mount on Leap/TW sources
+
+- Update to version 1.0.2:
+  * Put autostart .desktop in migrated homedirs</comment>
+    <requestid>1176712</requestid>
+  </revision>
 </revisionlist>

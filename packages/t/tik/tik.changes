@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 24 10:31:06 UTC 2024 - rbrown@suse.com
+
+- Update to version 1.0.3:
+  * module-mig: make /etc umount optional - doesn't mount on Leap/TW sources
+
+-------------------------------------------------------------------
+Fri May 24 09:32:07 UTC 2024 - rbrown@suse.com
+
+- Update to version 1.0.2:
+  * Put autostart .desktop in migrated homedirs
+
+-------------------------------------------------------------------
 Wed May 22 14:26:16 UTC 2024 - rbrown@suse.com
 
 - Update to version 1.0.1:
