@@ -16,25 +16,35 @@
 #
 
 
-Name:           fcitx5-configtool
-Version:        5.1.3
+%global flavor @BUILD_FLAVOR@%{nil}
+%global sname fcitx5-configtool
+%if "%{flavor}" == ""
+%global pname %sname
+%else
+%global pname %{sname}-%{flavor}
+%endif
+
+Name:           %pname
+Version:        5.1.5
 Release:        0
 Summary:        Configuration tool for fcitx5
 License:        GPL-2.0-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/fcitx5-configtool
-Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
-Patch1:         %{name}-gcc7.patch
+Source:         https://download.fcitx-im.org/fcitx5/%{sname}/%{sname}-%{version}.tar.zst
+Patch1:         %{sname}-gcc7.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
 BuildRequires:  fcitx5-qt-devel
 BuildRequires:  gcc-c++
-BuildRequires:  libQt5QuickControls2-devel
-BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  libqt5-qtx11extras-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+%if "%{flavor}" == ""
+BuildRequires:  libQt5QuickControls2-devel
+BuildRequires:  libqt5-qtbase-devel
+BuildRequires:  libqt5-qtsvg-devel
+BuildRequires:  libqt5-qtx11extras-devel
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(KF5I18n)
@@ -44,6 +54,25 @@ BuildRequires:  cmake(KF5Kirigami2)
 BuildRequires:  cmake(KF5Package)
 BuildRequires:  cmake(KF5Plasma)
 BuildRequires:  cmake(KF5WidgetsAddons)
+Conflicts:      %{sname}-qt6
+%endif
+%if "%{flavor}" == "qt6"
+BuildRequires:  libplasma6-devel
+BuildRequires:  qt6-concurrent-devel
+BuildRequires:  qt6-quickcontrols2-devel
+BuildRequires:  qt6-widgets-devel
+BuildRequires:  cmake(KF6CoreAddons)
+BuildRequires:  cmake(KF6Declarative)
+BuildRequires:  cmake(KF6I18n)
+BuildRequires:  cmake(KF6IconThemes)
+BuildRequires:  cmake(KF6ItemViews)
+BuildRequires:  cmake(KF6KCMUtils)
+BuildRequires:  cmake(KF6Kirigami)
+BuildRequires:  cmake(KF6Package)
+BuildRequires:  cmake(KF6Svg)
+Conflicts:      %{sname}
+%endif
+BuildRequires:  zstd
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xkbfile)
@@ -54,7 +83,7 @@ Obsoletes:      fcitx-config-gtk3 <= 0.4.10
 %description
 Configuration tool for fcitx5
 
-%if 0%{?sle_version} > 150100 || 0%{?suse_version} >= 1550
+%if "%{flavor}" == ""
 %package -n kcm_fcitx5
 Summary:        Configuration module for fcitx5
 Group:          System/I18n/Chinese
@@ -65,36 +94,56 @@ Provides:       kf5-kcm-fcitx-icons = %{version}
 Obsoletes:      kcm5-fcitx <= 0.5.6
 Obsoletes:      kf5-kcm-fcitx <= 0.5.6
 Obsoletes:      kf5-kcm-fcitx-icons <= 0.5.6
+Conflicts:      %{sname}-kcm6
 
 %description -n kcm_fcitx5
 Configuration module for fcitx5
 %endif
 
+%if "%{flavor}" == "qt6"
+%package -n %{sname}-kcm6
+Summary:        Configuration module for fcitx5
+Group:          System/I18n/Chinese
+Supplements:    (fcitx5 and plasma6-workspace)
+Conflicts:      kcm_fcitx5
+
+%description -n %{sname}-kcm6
+Configuration module for fcitx5
+%endif
+
 %prep
-%setup -q
+%setup -q -n %{sname}-%{version}
 %autopatch -p1
 
 %build
-%if 0%{?sle_version} == 150100
-%cmake -DENABLE_KCM=OFF
-%else
+%if "%{flavor}" == ""
+%cmake -DUSE_QT6=OFF
+%endif
+%if "%{flavor}" == "qt6"
 %cmake
 %endif
 %make_build
 
 %install
 %cmake_install
+
 %find_lang kcm_fcitx5
-%find_lang %{name}
+%find_lang %{sname}
 %suse_update_desktop_file kbd-layout-viewer5 Qt KDE Utility DesktopUtility
 %suse_update_desktop_file org.fcitx.fcitx5-migrator Qt KDE Utility DesktopUtility
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
+%if "%{flavor}" == ""
 %post -n kcm_fcitx5 -p /sbin/ldconfig
 %postun -n kcm_fcitx5 -p /sbin/ldconfig
+%endif
+%if "%{flavor}" == "qt6"
+%post -n %{sname}-kcm6 -p /sbin/ldconfig
+%postun -n %{sname}-kcm6 -p /sbin/ldconfig
+%endif
 
-%files -f %{name}.lang
+%files -f %{sname}.lang
 %license LICENSES
 %{_bindir}/fcitx5-config-qt
 %{_bindir}/fcitx5-migrator
@@ -104,17 +153,23 @@ Configuration module for fcitx5
 %{_libdir}/libFcitx5Migrator.so*
 %{_datadir}/applications/kbd-layout-viewer5.desktop
 
-%if 0%{?sle_version} > 150100 || 0%{?suse_version} >= 1550
+%if "%{flavor}" == ""
 %files -n kcm_fcitx5 -f kcm_fcitx5.lang
 %{_bindir}/fcitx5-plasma-theme-generator
+%dir %{_datadir}/kpackage
+%dir %{_datadir}/kpackage/kcms
 %dir %{_libdir}/qt5/plugins/plasma
 %dir %{_libdir}/qt5/plugins/plasma/kcms
 %dir %{_libdir}/qt5/plugins/plasma/kcms/systemsettings
-%dir %{_datadir}/kpackage
-%dir %{_datadir}/kpackage/kcms
 %{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_fcitx5.so
 %{_datadir}/applications/kcm_fcitx5.desktop
 %{_datadir}/kpackage/kcms/kcm_fcitx5
+%endif
+%if "%{flavor}" == "qt6"
+%files -n %{sname}-kcm6 -f kcm_fcitx5.lang
+%{_bindir}/fcitx5-plasma-theme-generator
+%{_libdir}/qt6/plugins/plasma/kcms/systemsettings/kcm_fcitx5.so
+%{_datadir}/applications/kcm_fcitx5.desktop
 %endif
 
 %changelog

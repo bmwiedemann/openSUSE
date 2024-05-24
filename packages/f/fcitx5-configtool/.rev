@@ -79,4 +79,13 @@
     <comment></comment>
     <requestid>1144319</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9b7efcdab867ce1cd9cfee8f002a439d</srcmd5>
+    <version>5.1.5</version>
+    <time>1716573210</time>
+    <user>anag+factory</user>
+    <comment>- add Conflicts so users can switch between plasma5 and plasma6
+</comment>
+    <requestid>1176749</requestid>
+  </revision>
 </revisionlist>
