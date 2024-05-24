@@ -1,11 +1,12 @@
---- a/buildtools/wafsamba/wafsamba.py
-+++ b/buildtools/wafsamba/wafsamba.py
-@@ -108,7 +108,7 @@ def SAMBA_LIBRARY(bld, libname, source,
-                   ldflags='',
-                   external_library=False,
-                   realname=None,
--                  keep_underscore=False,
-+                  keep_underscore=True,
-                   autoproto=None,
-                   autoproto_extra_source='',
-                   group='main',
+diff -ruNp a/buildtools/wafsamba/wafsamba.py b/buildtools/wafsamba/wafsamba.py
+--- a/buildtools/wafsamba/wafsamba.py	2024-05-16 13:52:58.561283248 +0200
++++ b/buildtools/wafsamba/wafsamba.py	2024-05-16 13:54:32.297195397 +0200
+@@ -309,7 +309,7 @@ def SAMBA_LIBRARY(bld, libname, source,
+     if bundled_name is not None:
+         pass
+     elif target_type == 'PYTHON' or realname or not private_library:
+-        bundled_name = libname.replace('_', '-')
++        bundled_name = libname
+     else:
+         assert (private_library is True and realname is None)
+         bundled_name = PRIVATE_NAME(bld, libname.replace('_', '-'))

@@ -1,11 +1,19 @@
 -------------------------------------------------------------------
+Thu May 16 11:17:35 UTC 2024 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 2.4.2
+  * build with Python 3.12 (bso#15513)
+  * documentation fixes
+  * Update patch talloc-python3.5-fix-soabi_name.patch
+
+-------------------------------------------------------------------
 Tue Sep 26 09:32:01 UTC 2023 - Noel Power <nopower@suse.com>
 
 -  Update to 2.4.1
     * Remove remaining, but broken python2 support
     * Spelling fixes
     * Remove unneeded va_copy()
-   
+
 -------------------------------------------------------------------
 Mon Apr 24 10:07:53 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
