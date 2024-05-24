@@ -120,6 +120,8 @@ Patch990:       install-with-hardlinks.diff
 Patch991:       libreoffice-no-destdircheck.patch
 # Fix build on sle12
 Patch992:       python34-no-f-strings.patch
+# Fix build with icu 74 (bsc#1224309)
+Patch993:       icu-74-compatibility.patch
 BuildRequires:  %{name}-share-linker
 BuildRequires:  ant
 BuildRequires:  autoconf
@@ -1034,6 +1036,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %if 0%{?suse_version} < 1550
 %patch -P 992 -p1
 %endif
+%patch -P 993 -p1
 
 # Disable some of the failing tests (some are random)
 %if 0%{?suse_version} < 1330
@@ -1060,6 +1063,8 @@ sed -i -e /CppunitTest_sc_dataprovider/d sc/Module_sc.mk # https://bugs.document
 sed -i -e /CppunitTest_sc_financial_functions_test/d sc/Module_sc.mk # https://bugs.documentfoundation.org/show_bug.cgi?id=127083
 sed -i -e /CppunitTest_sc_statistical_functions_test/d sc/Module_sc.mk
 %endif
+# fix build with icu 75.1, remove breaking test breaking rule (bsc#1224309)
+sed -i "109d" i18npool/source/breakiterator/data/sent.txt
 
 # Do not generate doxygen timestamp
 echo "HTML_TIMESTAMP = NO" >> odk/docs/cpp/Doxyfile

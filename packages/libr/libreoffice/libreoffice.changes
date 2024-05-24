@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 23 14:36:16 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- bsc#1224309: LibreOffice fails to build with ICU 75.
+- Add patch to fix bsc#1224309.
+  * icu-74-compatibility.patch
+- Add required 'sed' usage during %prep to fix bsc#1224309.
+- These two changes have been applied on both Gentoo and Arch Linux, but
+  originally they come from upstream.
+
+-------------------------------------------------------------------
 Thu May  2 11:55:42 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 2.4.3.2 (24.2.3 final)
