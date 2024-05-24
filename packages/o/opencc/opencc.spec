@@ -1,7 +1,7 @@
 #
 # spec file for package opencc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source:         https://github.com/BYVoid/OpenCC/archive/ver.%{version}/OpenCC-v
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+BuildRequires:  rapidjson-devel
 # needed to generate some docu files
 BuildRequires:  python3-base
 
@@ -80,7 +81,8 @@ sed -i \
 
 %build
 %cmake \
-  -DCMAKE_SKIP_RPATH=OFF
+  -DCMAKE_SKIP_RPATH=OFF \
+  -DUSE_SYSTEM_RAPIDJSON=ON
 %make_jobs
 
 %install
