@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 16 13:13:10 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 5.15.13+kde7:
+  * Update mapbox-gl-native (boo#1224376)
+
+-------------------------------------------------------------------
 Tue Mar 19 09:58:11 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.13+kde6, rebased upstream:
