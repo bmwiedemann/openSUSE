@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 22 08:19:48 UTC 2024 - Marguerite Su <i@marguerite.su>
+
+- Update to 5.1.6
+  * Fix a IM module bug under wayland that may cause a protocol error
+
+-------------------------------------------------------------------
 Thu Apr 18 07:26:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.1.5

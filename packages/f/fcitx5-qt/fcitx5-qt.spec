@@ -26,14 +26,16 @@
 %else
 %define build_qt6 0
 %endif
+
+%define build_qt5 1
 Name:           fcitx5-qt
-Version:        5.1.5
+Version:        5.1.6
 Release:        0
 Summary:        Qt library and IM module for fcitx5
 License:        BSD-3-Clause AND LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/fcitx5-qt
-Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
+Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.zst
 BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
@@ -41,11 +43,13 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  pkgconfig
+%if %{build_qt5}
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
+%endif
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xkbcommon)
@@ -63,6 +67,7 @@ BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6WaylandClient)
 BuildRequires:  cmake(Qt6Widgets)
 %endif
+BuildRequires:  zstd
 
 %description
 Qt library and IM module for fcitx5.
@@ -93,6 +98,7 @@ Group:          System/I18n/Chinese
 Supplements:    (fcitx5 and libQt6Core6)
 Provides:       fcitx-qt6 = %{version}
 Obsoletes:      fcitx-qt6 < 5.0.0
+Requires:       %{name}-lang
 
 %description -n fcitx5-qt6
 Qt6 IM module for Fcitx5.
@@ -112,12 +118,14 @@ Group:          System/Libraries
 This package provides Qt6 Widgets Addons library for Fcitx5.
 %endif
 
+%if %{build_qt5}
 %package -n fcitx5-qt5
 Summary:        Qt5 IM module for Fcitx5
 Group:          System/I18n/Chinese
 Supplements:    (fcitx5 and libqt5-qtbase)
 Provides:       fcitx-qt5 = %{version}
 Obsoletes:      fcitx-qt5 < 5.0.0
+Requires:       %{name}-lang
 
 %description -n fcitx5-qt5
 Qt5 IM module for Fcitx5.
@@ -135,13 +143,25 @@ Group:          System/Libraries
 
 %description -n libFcitx5Qt5WidgetsAddons2
 This package provides Qt5 Widgets Addons library for Fcitx5.
+%endif
+
+%package lang
+Summary:        Summary: Translations for package fcitx5-qt
+Group:          System/Localization
+BuildArch:      noarch
+Enhances:       (fcitx5-qt5 or fcitx5-qt6 or fcitx5-qt4)
+
+%description lang
+Provides translations for the fcitx5-qt package.
 
 %package devel
 Summary:        Development files for fcitx5-qt
 Group:          Development/Libraries/C and C++
+%if %{build_qt5}
 Requires:       fcitx5-qt5 = %{version}
 Requires:       libFcitx5Qt5DBusAddons1 = %{version}
 Requires:       libFcitx5Qt5WidgetsAddons2 = %{version}
+%endif
 %if %{build_qt4}
 Requires:       fcitx5-qt4 = %{version}
 Requires:       libFcitx5Qt4DBusAddons1 = %{version}
@@ -162,6 +182,9 @@ This package provides development files for fcitx5-qt.
 ARGS="-DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir}"
 %if %{build_qt4}
 ARGS="$ARGS -DENABLE_QT4=ON"
+%endif
+%if !%{build_qt5}
+ARGS="$ARGS -DENABLE_QT5=OFF"
 %endif
 %if !%{build_qt6}
 ARGS="$ARGS -DENABLE_QT6=OFF"
@@ -189,14 +212,19 @@ ARGS="$ARGS -DENABLE_QT6=OFF"
 %if %{build_qt4}
 %ldconfig_scriptlets -n libFcitx5Qt4DBusAddons1
 %endif
+%if %{build_qt5}
 %ldconfig_scriptlets -n libFcitx5Qt5DBusAddons1
 %ldconfig_scriptlets -n libFcitx5Qt5WidgetsAddons2
+%endif
 %if %{build_qt6}
 %ldconfig_scriptlets -n libFcitx5Qt6DBusAddons1
 %ldconfig_scriptlets -n libFcitx5Qt6WidgetsAddons2
 %endif
 
-%files -n fcitx5-qt5 -f %{name}.lang
+%files lang -f %{name}.lang
+
+%if %{build_qt5}
+%files -n fcitx5-qt5
 %doc README.md
 %license LICENSES
 %{_bindir}/fcitx5-qt5-immodule-probing
@@ -207,8 +235,19 @@ ARGS="$ARGS -DENABLE_QT6=OFF"
 %{_libdir}/fcitx5/qt5/libfcitx-quickphrase-editor5.so
 %{_libdir}/qt5/plugins/platforminputcontexts/libfcitx5platforminputcontextplugin.so
 
+%files -n libFcitx5Qt5DBusAddons1
+%{_libdir}/libFcitx5Qt5DBusAddons.so.1
+%{_libdir}/libFcitx5Qt5DBusAddons.so.%{version}
+
+%files -n libFcitx5Qt5WidgetsAddons2
+%{_libdir}/libFcitx5Qt5WidgetsAddons.so.2
+%{_libdir}/libFcitx5Qt5WidgetsAddons.so.%{version}
+%endif
+
 %if %{build_qt6}
 %files -n fcitx5-qt6
+%doc README.md
+%license LICENSES
 %{_bindir}/fcitx5-qt6-immodule-probing
 %{_libexecdir}/fcitx5-qt6-gui-wrapper
 %dir %{_libdir}/fcitx5/qt6
@@ -234,25 +273,19 @@ ARGS="$ARGS -DENABLE_QT6=OFF"
 %{_libdir}/libFcitx5Qt4DBusAddons.so.%{version}
 %endif
 
-%files -n libFcitx5Qt5DBusAddons1
-%{_libdir}/libFcitx5Qt5DBusAddons.so.1
-%{_libdir}/libFcitx5Qt5DBusAddons.so.%{version}
-
-%files -n libFcitx5Qt5WidgetsAddons2
-%{_libdir}/libFcitx5Qt5WidgetsAddons.so.2
-%{_libdir}/libFcitx5Qt5WidgetsAddons.so.%{version}
-
 %files devel
 %if %{build_qt4}
 %{_includedir}/Fcitx5Qt4
 %{_libdir}/libFcitx5Qt4DBusAddons.so
 %{_libdir}/cmake/Fcitx5Qt4DBusAddons
 %endif
+%if %{build_qt5}
 %{_includedir}/Fcitx5Qt5
 %{_libdir}/cmake/Fcitx5Qt5DBusAddons
 %{_libdir}/cmake/Fcitx5Qt5WidgetsAddons
 %{_libdir}/libFcitx5Qt5DBusAddons.so
 %{_libdir}/libFcitx5Qt5WidgetsAddons.so
+%endif
 %if %{build_qt6}
 %{_includedir}/Fcitx5Qt6
 %{_libdir}/libFcitx5Qt6DBusAddons.so
