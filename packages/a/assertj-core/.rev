@@ -15,4 +15,12 @@
     <comment>3.25.3</comment>
     <requestid>1171017</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b7c36feda5e0ae785ff4820c1cafeefa</srcmd5>
+    <version>3.25.3</version>
+    <time>1716573177</time>
+    <user>anag+factory</user>
+    <comment>Some more action for conflict/choice of providers</comment>
+    <requestid>1176654</requestid>
+  </revision>
 </revisionlist>

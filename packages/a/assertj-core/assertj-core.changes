@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 24 05:36:38 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Require in OBS junit5-minimal to avoid provider choice
+
+-------------------------------------------------------------------
 Tue Apr 30 16:00:07 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 3.25.3
