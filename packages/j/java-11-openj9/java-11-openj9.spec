@@ -30,19 +30,19 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       22
+%global updatever       23
 %global patchver        0
-%global buildver        7
+%global buildver        9
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk11/archive
-%global root_revision   7876cac747577ca0233e2c48c7a9ac3ace89d716
-%global root_branch     v0.43.0-release
+%global root_revision   3d1045c3eaf1d7ccd9fbcbc87a8c68da9c38fda8
+%global root_branch     v0.44.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    ea8124dbc1b625da6f607b66d2b657dce90c96c4
-%global omr_branch      v0.43.0-release
+%global omr_revision    254af5a0452934f62e3253c5565b183c682d3495
+%global omr_branch      v0.44.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 2c3d78b48adf36dbbef5852b95889da5a5ce1279
-%global openj9_branch   v0.43.0-release
-%global openj9_tag      openj9-0.43.0
+%global openj9_revision b0699311c7d9341f3d0ebf9a7a4b5546a7ca7004
+%global openj9_branch   v0.44.0-release
+%global openj9_tag      openj9-0.44.0
 # priority must be 6 digits in total
 %global priority        2101
 %global javaver         %{featurever}
@@ -103,6 +103,8 @@ Patch4:         libdwarf-fix.patch
 Patch5:         multiple-pkcs11-library-init.patch
 # Fix narrowing conversion error
 Patch6:         openj9-no-narrowing.patch
+# Fix build with older openssl
+Patch7:         openj9-openssl.patch
 # Fix: implicit-pointer-decl
 Patch13:        implicit-pointer-decl.patch
 #
@@ -351,6 +353,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch -P 4 -p1
 %patch -P 5 -p1
 %patch -P 6 -p1
+%patch -P 7 -p1
 %patch -P 13 -p1
 
 %if %{with_system_pcsc}
@@ -775,7 +778,6 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/OMRTraceFormat.dat
 %{_jvmdir}/%{sdkdir}/lib/default/j9ddr.dat
 %{_jvmdir}/%{sdkdir}/lib/default/libcuda4j29.so
-%{_jvmdir}/%{sdkdir}/lib/default/libj9criu29.so
 %{_jvmdir}/%{sdkdir}/lib/default/libj9dmp29.so
 %{_jvmdir}/%{sdkdir}/lib/default/libj9gc29.so
 %{_jvmdir}/%{sdkdir}/lib/default/libj9gcchk29.so
