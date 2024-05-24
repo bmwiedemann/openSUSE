@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri May 24 08:15:51 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.64:
+  * Meshery UI
+    - missing state @captain-Akshay (#11030)
+
+-------------------------------------------------------------------
+Thu May 23 21:05:33 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.63:
+  * Meshery UI
+    - [Extension Point] Disable footer and padding for fullscreen
+      extensions @codeKraken19 (#11027)
+
+-------------------------------------------------------------------
+Thu May 23 12:02:27 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.62:
+  * General
+    - [Argo CD]: Add argocd AppProject-ApplicationSet-Application
+      relationships @innocentrda (#10920)
+  * Meshery UI
+    - bump sistent package @sudhanshutech (#11018)
+
+-------------------------------------------------------------------
+Wed May 22 19:43:47 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.61:
+  * Meshery UI
+    - fix eslint check @sudhanshutech (#11014)
+  * Maintenance
+    - Keys table added @iArchitSharma (#10756)
+  * Documentation
+    - Keys table added @iArchitSharma (#10756)
+
+-------------------------------------------------------------------
 Wed May 22 04:42:05 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.60:
