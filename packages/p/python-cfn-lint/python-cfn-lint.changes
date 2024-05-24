@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Fri May 17 12:27:36 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.87.2
+  * Update CloudFormation specs to 173.0.0 (#3215)
+  * Ignore_bad_template and E0000 based ignore checks (#3226)
+  * Validate GetAtts are to a list when being used for a list (#3224)
+- from version 0.87.1
+  * Update CloudFormation specs to 172.0.0 (#3181)
+  * Continue to walk the FindInMap components in transform (#3203)
+  * Fix an issue with nested  in schema (#3189)
+  * GitHub - Make sure to grab xml files (#3202)
+  * Full paths for files being uploaded (#3201)
+  * Move clone to another folder (#3200)
+  * Checkout the appropriate sha (#3199)
+  * move back to 3 (#3197)
+  * GitHub - Import fs (#3196)
+  * GHA - Set PR numbers for forked repos (#3195)
+  * Exclude github folder (#3194)
+  * Specify files (#3193)
+  * Provide more overrides and details to the codecov action (#3191)
+  * Skip secondary key check when using language transform (#3190)
+  * add AWS::Kinesis::Stream to stateful resource list (#3188)
+  * Remove files to see if they are auto discovered (#3187)
+  * Fix an issue with gha coverage uploader (#3186)
+  * commonize on xml format (#3185)
+  * Add in gha github token (#3184)
+  * Download artifacts from a different run (#3183)
+  * More github action changes (#3182)
+  * New github action flow (#3180)
+- from version 0.87.0
+  * Update CloudFormation specs to 171.0.0 (#3160)
+  * When using a list param in foreach pass back select
+    statements when no allowed value (#3176)
+  * Fix an issue with graphs and not quoting attrs (#3177)
+  * Read replicas don't need backup period (#3171)
+  * Change filenames to be OS specific paths (#3170)
+  * Validate null Condition section (#3169)
+  * Change branch for PR (#3158)
+  * Update v1 job (#3157)
+  * Add maintenance jobs for v0 and v1 (#3156)
+- from version 0.86.4
+  * Update CloudFormation specs to 170.0.0 (#3149)
+  * Only include json files as registry schemas (#3150)
+  * Check for unsupported element combination (#3145)
+- from version 0.86.3
+  * Update CloudFormation specs to 169.0.0 (#3135)
+  * chore(deps): Bump codecov/codecov-action from 4.2.0 to 4.3.0 (#3142)
+  * Support db2-ae and db2-se RDS engines (#3139)
+  * Use get to safely pull readOnlyProperties. (#3141)
+  * chore(deps): bump codecov/codecov-action from 4.1.1 to 4.2.0 (#3137)
+- from version 0.86.2
+  * Update CloudFormation specs to 168.0.0 (#3127)
+  * Walk FindInMap to pass mapping in resolution failure (#3131)
+  * chore: Update deprecated Lambda runtimes (#3113)
+  * chore(deps): bump codecov/codecov-action from 4.1.0 to 4.1.1 (#3128)
+  * Update CloudFormation specs to 167.1.0 (#3126)
+  * Update CloudFormation specs to 167.0.0 (#3114)
+  * Remove AWS::RDS::DBCluster from exclusive checks (#3119)
+  * Update CloudFormation specs to 166.0.0 (#3101)
+  * Switch cut characters (#3109)
+- from version 0.86.1
+  * Fix an issue when searching for Ref in tojsonstring (#3107)
+  * RDS DB Cluster remove MasterUserPassword from
+    exclusion with MasterUsername (#3106)
+  * Update CloudFormation specs to 165.0.0 (#3092)
+  * Update CloudFormation specs to 164.0.0 (#3086)
+- from version 0.86.0
+  * Update CloudFormation specs to 163.0.0 (#3076)
+  * Disable and configure certain rules when template is from CDK (#2971)
+  * chore(deps): bump codecov/codecov-action from 4.0.2 to 4.1.0 (#3084)
+- from version 0.85.3
+  * Fix some issues from pylint (#3077)
+  * chore(deps): bump codecov/codecov-action from 4.0.1 to 4.0.2 (#3074)
+  * Raise error if any key in a mapping is null (#3073)
+  * Update CloudFormation specs to 162.0.0 (#3069)
+  * Update CloudFormation specs to 161.0.0 (#3058)
+  * Add getatt support for registry schemas (#3061)
+  * Set Application location when its a string (#3060)
+- from version 0.85.2
+  * Update CloudFormation specs to 160.0.0 (#3054)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Feb 13 14:16:22 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.85.1
