@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu May 23 19:33:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.12.2:
+  * Release v1.12.2 (#10298)
+  * chore: make contrinue-on-fail flag available outside package
+    (#10293) (#10297)
+  * release v1.12.2-rc.3 (#10294)
+  * release v1.12.2-rc.2 (#10286)
+  * fix(anchor): skip anchors don't have priority (#10206) (#10284)
+  * release v1.12.2-rc.1 (#10282)
+  * fix: add a copy method to the policy context (#10236) (#10280)
+  * fix: sort webhookconfig.operations (#10274) (#10275)
+  * fix: webhook config set (#10262) (#10273)
+  * chore: cherry-pick #10270 (#10272)
+  * fix: generate VAPs that match all resources when kinds is set
+    to * (#10266)
+  * fix flake test in VAPs (#10269)
+  * fix: process the matched resources only for mutate existing
+    policies (#10164) (#10267)
+  * fix: add resourceNames field in the generated VAPs (#10187)
+    (#10265)
+  * chore: cherry-pick #10250 (#10264)
+  * truncate event messages to 1024 chars (#10255) (#10261)
+  * fix: deepcopy patched resource in foreach mutate (#10252)
+    (#10258)
+  * fix: isolate reports creation context (#10245) (#10246)
+  * [Bug] [CLI] Level parameter of the apply and test commands does
+    not work (#10216) (#10240)
+  * kyverno-1.12 CVE fix (#10225)
+  * allow kyverno apply command to continue on failure (#10036)
+    (#10178)
+  * feat: make cli results count public (#10177) (#10194)
+  * feat: release chart 3.2.2 (#10193)
+  * [kyverno helm chart] make webhook pod annotations configurable
+    (#9875) (#10185)
+  * fix(polex): multiple polexes with conditions (#9994) (#10183)
+  * fix: skip generating VAPs for policies that match multiple
+    resources with a namespace/object selector (#10181) (#10184)
+  * fix: add CONNECT operation in the webhook config for pod/exec
+    subresource (#9855) (#10179)
+  * fix: add pods/ephemeralcontainers to the generated VAPs
+    (#10162) (#10176)
+
+-------------------------------------------------------------------
 Fri May 03 16:19:34 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.12.1:
