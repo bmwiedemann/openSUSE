@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May 23 17:42:26 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 17.0.11 with OpenJ9 0.44.0 virtual machine
+- Including Oracle April 2024 CPU changes
+  * CVE-2024-21012 (bsc#1222987), CVE-2024-21094 (bsc#1222986),
+    CVE-2024-21011 (bsc#1222979), CVE-2024-21068 (bsc#1222983)
+  * OpenJ9 changes, see 
+    https://www.eclipse.org/openj9/docs/version0.44/
+- Added patch:
+  * openj9-openssl.patch
+    + fix build with older openssl that does not define
+      SSL_R_UNEXPECTED_EOF_WHILE_READING
+
+-------------------------------------------------------------------
 Thu Mar  7 12:44:28 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Removed patch:

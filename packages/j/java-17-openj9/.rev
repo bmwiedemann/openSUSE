@@ -103,4 +103,12 @@
     <comment>Erase the existence of tzdata-java8 from the memory of mankind</comment>
     <requestid>1155903</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>37e6c4e874ece88831222c26153734dd</srcmd5>
+    <version>17.0.11.0</version>
+    <time>1716573161</time>
+    <user>anag+factory</user>
+    <comment>April 2024 security fixes</comment>
+    <requestid>1176634</requestid>
+  </revision>
 </revisionlist>
