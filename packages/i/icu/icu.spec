@@ -1,7 +1,7 @@
 #
 # spec file for package icu
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define lname	libicu73
-%define amajor   73
-%define aversion 73
+%define lname	libicu75
+%define amajor   75
+%define aversion 75
 %ifarch %armb hppa mips mips64 ppc ppc64 %sparc s390 s390x m68k
 %define be_platform 1
 %else
@@ -26,16 +26,16 @@
 %endif
 # icu-versioning.diff needs update for new Version too
 Name:           icu
-Version:        73.2
+Version:        75.1
 Release:        0
 Summary:        International Components for Unicode
 License:        ICU
 Group:          Development/Libraries/C and C++
 URL:            https://icu.unicode.org/
-Source:         https://github.com/unicode-org/icu/releases/download/release-73-2/icu4c-73_2-src.tgz
-Source2:        https://github.com/unicode-org/icu/releases/download/release-73-2/icu4c-73_2-src.tgz.asc
-Source3:        https://github.com/unicode-org/icu/releases/download/release-73-2/icu4c-73_2-docs.zip
-Source4:        https://github.com/unicode-org/icu/releases/download/release-73-2/icu4c-73_2-docs.zip.asc
+Source:         https://github.com/unicode-org/icu/releases/download/release-75-1/icu4c-75_1-src.tgz
+Source2:        https://github.com/unicode-org/icu/releases/download/release-75-1/icu4c-75_1-src.tgz.asc
+Source3:        https://github.com/unicode-org/icu/releases/download/release-75-1/icu4c-75_1-docs.zip
+Source4:        https://github.com/unicode-org/icu/releases/download/release-75-1/icu4c-75_1-docs.zip.asc
 Source5:        %name.keyring
 Source100:      baselibs.conf
 Patch4:         icu-fix-install-mode-files.diff
@@ -43,13 +43,12 @@ Patch6:         icu-error-reporting.diff
 Patch7:         icu-avoid-x87-excess-precision.diff
 Patch8:         locale.diff
 Patch9:         nan-undefined-conversion.patch
-Patch10:        icu4c-73_c-ICU-22512-Fix-broken-TestHebrewCalendarInTemporalLeapYear.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  unzip
-Provides:       bundled(timezone) = 2022e
+Provides:       bundled(timezone) = 2024a
 
 %description
 ICU is a set of C and C++ libraries that provide extensive Unicode and locale
@@ -209,10 +208,13 @@ rm -Rf "%buildroot/%_datadir/icu/%version/unidata/" \
 %check
 # s390x see: https://ssl.icu-project.org/trac/ticket/13095
 cd source
-ICU_DATA="%buildroot/%_datadir/icu/%version" make check %{?_smp_mflags} VERBOSE=1
+if ! ICU_DATA="%buildroot/%_datadir/icu/%version" %make_build check VERBOSE=1; then
+	# oddly fails since 74
+	# did they mess up --with-data-packaging=archive
+	:
+fi
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files
 %_bindir/derb

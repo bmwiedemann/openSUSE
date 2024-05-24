@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr 25 13:52:08 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 75.1
+  * Update to Unicode 15.1
+  * Update to CLDR 45 locale data with new locales and various
+    additions and corrections.
+  * C++ code now requires C++17 and is being made more robust
+  * New Unicode properties APIs for Identifier_Status and
+    Identifier_Type, defined by UTS #39 Unicode Security
+    Mechanisms, General Security Profile for Identifiers.
+  * Time zone data (tzdata) version 2024a (2024-jan). Note that
+    pre-1970 data for a number of time zones has been removed, as
+    has been the case in the upstream tzdata release since 2021b.
+- Delete icu4c-73_c-ICU-22512-Fix-broken-TestHebrewCalendarInTemporalLeapYear.patch
+  (merged)
+
+-------------------------------------------------------------------
 Tue Sep 19 05:46:14 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Fix broken TestHebrewCalendarInTemporalLeapYear [boo#1215425]
