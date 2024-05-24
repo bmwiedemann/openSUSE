@@ -1,3 +1,12 @@
+gpxsee (13.20) stable; urgency=low
+
+  * Improved hillshading rendering.
+  * Use the map DEM data for hillshading on IMG maps.
+  * Added support for TCX course points icons.
+  * Various DEM related fixes.
+
+ -- Martin Tuma <tumic@cbox.cz>  Wed, 22 May 2024 22:48:44 +0200
+
 gpxsee (13.19) stable; urgency=low
 
   * Added support for FIT course icons.

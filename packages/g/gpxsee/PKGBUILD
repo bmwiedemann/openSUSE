@@ -1,20 +1,22 @@
 pkgname=gpxsee
-pkgver=13.19
+pkgver=13.20
 pkgrel=1
 pkgdesc='GPS log files visualizing and analyzing tool'
 arch=('i686' 'x86_64')
 url="http://www.gpxsee.org/"
 license=('GPL3')
-depends=('qt5-base' 'qt5-imageformats' 'qt5-svg' 'qt5-location' 'qt5-svg' 'qt5-serialport')
-makedepends=('qt5-tools')
+depends=('qt6-imageformats' 'qt6-positioning' 'qt6-svg'
+         'qt6-serialport' 'hicolor-icon-theme')
+makedepends=('qt6-tools')
+optdepends=('qtpbfimageplugin-qt6: Mapbox vector tiles (MVT) files support')
 provides=("${pkgname}=${pkgver}")
 source=("GPXSee-${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
 	cd GPXSee-${pkgver}
-	lrelease gpxsee.pro
-	qmake PREFIX=/usr gpxsee.pro
+	/usr/lib/qt6/lrelease-pro gpxsee.pro
+	qmake6 PREFIX=/usr gpxsee.pro
 	make
 }
 

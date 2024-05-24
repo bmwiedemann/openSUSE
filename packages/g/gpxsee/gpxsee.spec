@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           gpxsee
-Version:        13.19
+Version:        13.20
 Release:        1
 Summary:        GPS log file visualization and analysis tool
 License:        GPL-3.0-only
@@ -29,55 +29,52 @@ Source0:        https://github.com/tumic0/GPXSee/archive/%{version}/GPXSee-%{ver
 
 BuildRequires:  gcc-c++
 BuildRequires:  make
-%if 0%{?centos_version} >= 800
-BuildRequires:  gdb-headless
-%endif
-%if 0%{?fedora_version} || 0%{?centos_version} >= 800
-BuildRequires:  qt5-qtbase
-BuildRequires:  qt5-qtbase-gui
-BuildRequires:  qt5-qtbase-devel
-BuildRequires:  qt5-qtbase-private-devel
-BuildRequires:  qt5-qtlocation-devel
-BuildRequires:  qt5-qtsvg-devel
-BuildRequires:  qt5-qtserialport-devel
-BuildRequires:  qt5-linguist
-Recommends: qt5-qtimageformats
-Recommends: qt5-qtpbfimageformat
+%if 0%{?fedora_version}
+BuildRequires:  qt6-qtbase
+BuildRequires:  qt6-qtbase-gui
+BuildRequires:  qt6-qtbase-devel
+BuildRequires:  qt6-qtbase-private-devel
+BuildRequires:  qt6-qtlocation-devel
+BuildRequires:  qt6-qtsvg-devel
+BuildRequires:  qt6-qtserialport-devel
+BuildRequires:  qt6-linguist
+Recommends: qt6-qtimageformats
+Recommends: qt6-qtpbfimageformat
 %else
 %if 0%{?suse_version}
-BuildRequires:  libQt5Core-devel
-BuildRequires:  libQt5Concurrent-devel
-BuildRequires:  libQt5Gui-devel
-BuildRequires:  libQt5Gui-private-headers-devel
-BuildRequires:  libQt5Widgets-devel
-BuildRequires:  libQt5Network-devel
-BuildRequires:  libQt5PrintSupport-devel
-BuildRequires:  libQt5OpenGL-devel
-BuildRequires:  libQt5Sql-devel
-BuildRequires:  libQt5Svg-devel
-BuildRequires:  libQt5SerialPort-devel
-BuildRequires:  libqt5-qtlocation-devel
-BuildRequires:  libqt5-linguist
-Recommends: libQt5Sql5-sqlite
-Recommends: libqt5-qtimageformats
-Recommends: libqt5-qtpbfimageformat
+BuildRequires:  qt6-core-devel
+BuildRequires:  qt6-concurrent-devel
+BuildRequires:  qt6-gui-devel
+BuildRequires:  qt6-gui-private-devel
+BuildRequires:  qt6-widgets-devel
+BuildRequires:  qt6-network-devel
+BuildRequires:  qt6-printsupport-devel
+BuildRequires:  qt6-openglwidgets-devel
+BuildRequires:  qt6-sql-devel
+BuildRequires:  qt6-svg-devel
+BuildRequires:  qt6-serialport-devel
+BuildRequires:  qt6-positioning-devel
+BuildRequires:  qt6-tools-linguist
+Recommends: qt6-sql-sqlite
+Recommends: qt6-imageformats
+Recommends: qt6-qtpbfimageformat
 %else
 # Mageia
-BuildRequires:  libqt5core-devel
-BuildRequires:  libqt5gui-devel
-BuildRequires:  libqt5concurrent-devel
-BuildRequires:  libqt5widgets-devel
-BuildRequires:  libqt5network-devel
-BuildRequires:  libqt5printsupport-devel
-BuildRequires:  libqt5opengl-devel
-BuildRequires:  libqt5sql-devel
-BuildRequires:  libqt5svg-devel
-BuildRequires:  libqt5location-devel
-BuildRequires:  libqt5serialport-devel
-BuildRequires:  qttools5
-Recommends: qtimageformats5
-Recommends: libqt5-database-plugin-sqlite
-Recommends: libqt5-qtpbfimageformat
+BuildRequires:  libqt6core-devel
+BuildRequires:  libqt6gui-devel
+BuildRequires:  libqt6concurrent-devel
+BuildRequires:  libqt6widgets-devel
+BuildRequires:  libqt6network-devel
+BuildRequires:  libqt6printsupport-devel
+BuildRequires:  libqt6openglwidgets-devel
+BuildRequires:  libqt6sql-devel
+BuildRequires:  libqt6svg-devel
+BuildRequires:  libqt6positioning-devel
+BuildRequires:  libqt6serialport-devel
+BuildRequires:  qttools6
+Recommends: qtimageformats6
+Recommends: libqt6-database-plugin-sqlite
+Recommends: libqt6-qtpbfimageformat
 %endif
 %endif
 
@@ -91,16 +88,11 @@ TomTom OV2&ITN, ONmove OMD/GHP and geotagged JPEG files.
 
 %build
 %if 0%{?suse_version}
-lrelease-qt5 gpxsee.pro
-%{qmake5} gpxsee.pro
+lrelease6 gpxsee.pro
+%{qmake6} gpxsee.pro
 %else
-%if 0%{?fedora_version} || 0%{?centos_version} >= 800
-lrelease-qt5 gpxsee.pro
-%{qmake_qt5} gpxsee.pro
-%else
-lrelease gpxsee.pro
-%{qmake_qt5} gpxsee.pro
-%endif
+lrelease-qt6 gpxsee.pro
+%{qmake_qt6} gpxsee.pro
 %endif
 make %{?_smp_mflags}
 
@@ -148,6 +140,7 @@ fi
 %{_datadir}/%{name}/*
 %{_datadir}/applications/*
 %{_datadir}/metainfo/*
+%{_datadir}/icons/hicolor
 %{_datadir}/icons/hicolor/*
 %{_datadir}/mime/packages/*
 

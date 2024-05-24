@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 22 22:43:05 CEST 2024 - tumic@cbox.cz
+
+- Update to version 13.20
+  * Improved hillshading rendering.
+  * Use the map DEM data for hillshading on IMG maps.
+  * Added support for TCX course points icons.
+  * Various DEM related fixes.
+  * Switched to Qt6.
+
+-------------------------------------------------------------------
 Sat Apr 20 21:32:42 CEST 2024 - tumic@cbox.cz
 
 - Update to version 13.19
