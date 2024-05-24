@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 16 09:06:36 UTC 2024 - pgajdos@suse.com
+
+- reverted update-alternatives usage removal [bsc#1122033][bsc#1220818]
+
+-------------------------------------------------------------------
 Sun May  5 19:33:38 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - version update to 7.1.1.32

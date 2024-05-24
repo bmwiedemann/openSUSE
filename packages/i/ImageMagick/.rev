@@ -3895,4 +3895,12 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * uhdr.c: add support for rgb inputs #7273 (forwarded request 1172019 from adkorte)</comment>
     <requestid>1172155</requestid>
   </revision>
+  <revision rev="297" vrev="2">
+    <srcmd5>28bca6e0a04886041b6f919ff99d8028</srcmd5>
+    <version>7.1.1.32</version>
+    <time>1716573027</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1176179</requestid>
+  </revision>
 </revisionlist>
