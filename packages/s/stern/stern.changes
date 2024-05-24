@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 24 07:48:53 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.30.0:
+  * Update CHANGELOG for v1.30.0 (#307)
+  * Add support to configure colors for pods and containers (#306)
+  * Display different colors for different containers (#305)
+  * Support an array value in the config file (#303)
+
+-------------------------------------------------------------------
 Thu May 02 13:31:30 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.29.0:
