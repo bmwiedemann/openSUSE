@@ -71,4 +71,12 @@
     <comment>5.10.2</comment>
     <requestid>1171149</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>ac7fdc71a9311a4cdc27d8f3e72ce2f2</srcmd5>
+    <version>5.10.2</version>
+    <time>1716573177</time>
+    <user>anag+factory</user>
+    <comment>Some more action for conflict/choice of providers</comment>
+    <requestid>1176655</requestid>
+  </revision>
 </revisionlist>
