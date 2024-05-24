@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May 23 19:44:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.4.1:
+  * Feat: add failed jobs as unused (#283)
+  * docs: add values.yaml descriptions to README.md (#281)
+  * chore(pull_request_template): Update PR template (#282)
+  * chore(charts): run helm-docs (#280)
+  * feat: add K3S exceptions (#270)
+  * fix(formatOutput): fix spacing between tables (#269)
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.30.0 to
+    0.30.1 (#275)
+  * chore(deps): bump github.com/fatih/color from 1.16.0 to 1.17.0
+    (#274)
+  * feat(helm): Add Extra Labels to Helm Chart for Enhanced
+    Metadata Management (#265)
+
+-------------------------------------------------------------------
 Tue May 14 05:13:41 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.4.0:
