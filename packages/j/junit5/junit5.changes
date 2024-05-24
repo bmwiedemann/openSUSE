@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 24 05:33:13 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Let junit5 require junit5-minimal to avoid conflict of providers
+
+-------------------------------------------------------------------
 Tue Apr 30 16:25:27 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 5.10.2

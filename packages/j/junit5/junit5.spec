@@ -62,7 +62,7 @@ Source500:      https://repo1.maven.org/maven2/org/junit/junit-bom/%{version}/ju
 Patch1:         0001-Drop-transitive-requirement-on-apiguardian.patch
 Patch2:         0002-Add-missing-module-static-requires.patch
 Patch3:         0003-Bump-open-test-reporting-to-0.1.0-M2.patch
-BuildRequires:  apiguardian
+BuildRequires:  apiguardian >= 1.1.2
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 9
 BuildRequires:  opentest4j
@@ -89,6 +89,7 @@ BuildRequires:  mvn(org.apiguardian:apiguardian-api)
 BuildRequires:  mvn(org.assertj:assertj-core)
 BuildRequires:  mvn(org.opentest4j.reporting:open-test-reporting-events)
 BuildRequires:  mvn(org.opentest4j:opentest4j)
+Requires:       %{base_name}-minimal >= %{version}
 %endif
 
 %description
