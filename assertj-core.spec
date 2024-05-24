@@ -37,6 +37,7 @@ BuildRequires:  mvn(org.hamcrest:hamcrest)
 BuildRequires:  mvn(org.junit.jupiter:junit-jupiter-api)
 BuildRequires:  mvn(org.opentest4j:opentest4j)
 Requires:       java-headless >= 1.8
+#!BuildRequires: junit5-minimal
 BuildArch:      noarch
 
 %description
