@@ -17,7 +17,7 @@
 
 
 Name:           papirus-icon-theme
-Version:        20240201
+Version:        20240501
 Release:        0
 Summary:        Papirus icon theme for Linux
 License:        GPL-3.0-only
