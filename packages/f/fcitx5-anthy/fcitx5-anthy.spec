@@ -17,12 +17,13 @@
 
 
 Name:           fcitx5-anthy
-Version:        5.1.3
+Version:        5.1.4
 Release:        0
 Summary:        Anthy Wrapper for Fcitx5
 License:        GPL-2.0-or-later
 URL:            https://github.com/fcitx/fcitx5-anthy
-Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
+Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.zst
+Patch0:         %{name}-leap15.5.patch
 BuildRequires:  anthy-devel
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
@@ -30,6 +31,7 @@ BuildRequires:  fcitx5-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
+BuildRequires:  zstd
 Requires:       anthy
 Requires:       fcitx5
 Provides:       fcitx-anthy = %{version}
@@ -43,6 +45,7 @@ Anthy Wrapper for Fcitx5.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 %cmake

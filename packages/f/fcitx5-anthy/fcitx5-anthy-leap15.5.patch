@@ -1,0 +1,35 @@
+Index: fcitx5-anthy-5.1.4/CMakeLists.txt
+===================================================================
+--- fcitx5-anthy-5.1.4.orig/CMakeLists.txt
++++ fcitx5-anthy-5.1.4/CMakeLists.txt
+@@ -11,7 +11,7 @@ include(ECMUninstallTarget)
+ option(ENABLE_TEST "Build Test" On)
+ option(ENABLE_COVERAGE "Build the project with gcov support (Need ENABLE_TEST=On)" Off)
+ 
+-find_package(Fcitx5Core 5.1.2 REQUIRED)
++find_package(Fcitx5Core 5.0.18 REQUIRED)
+ find_package(Fcitx5Module REQUIRED COMPONENTS Clipboard)
+ find_package(Gettext REQUIRED)
+ find_package(PkgConfig REQUIRED)
+Index: fcitx5-anthy-5.1.4/src/engine.cpp
+===================================================================
+--- fcitx5-anthy-5.1.4.orig/src/engine.cpp
++++ fcitx5-anthy-5.1.4/src/engine.cpp
+@@ -276,7 +276,7 @@ AnthyEngine::AnthyEngine(fcitx::Instance
+             FCITX_ANTHY_INFO() << "Anthy: " << msg;
+         },
+         0);
+-    if constexpr (fcitx::isAndroid() || fcitx::isApple()) {
++    /*if constexpr (fcitx::isAndroid() || fcitx::isApple()) {
+         const auto &sp = fcitx::StandardPath::global();
+         std::string anthy_conf = sp.locate(fcitx::StandardPath::Type::Data,
+                                            "anthy/anthy-unicode.conf");
+@@ -292,7 +292,7 @@ AnthyEngine::AnthyEngine(fcitx::Instance
+         anthy_conf_override(
+             "XDG_CONFIG_HOME",
+             sp.userDirectory(fcitx::StandardPath::Type::Data).c_str());
+-    }
++    }*/
+     if (anthy_init()) {
+         throw std::runtime_error("Failed to init anthy library.");
+     }

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 23 08:19:33 UTC 2024 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.4
+  * Cache dict files
+  * Add fmt to dependency
+- add fcitx5-anthy-leap15.5.patch
+  * lower the version requirement for Fcitx5Core, the
+    newer version introduced isAndroid() and isApple()
+    functions, which is not useful for Linux at all
+
+-------------------------------------------------------------------
 Mon Feb  5 12:50:46 UTC 2024 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.3

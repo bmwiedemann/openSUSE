@@ -71,4 +71,19 @@
     <comment></comment>
     <requestid>1144310</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7b9800abfbaeb44fe743269c9bdf5e34</srcmd5>
+    <version>5.1.4</version>
+    <time>1716573213</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.1.4
+  * Cache dict files
+  * Add fmt to dependency
+- add fcitx5-anthy-leap15.5.patch
+  * lower the version requirement for Fcitx5Core, the
+    newer version introduced isAndroid() and isApple()
+    functions, which is not useful for Linux at all
+</comment>
+    <requestid>1176753</requestid>
+  </revision>
 </revisionlist>
