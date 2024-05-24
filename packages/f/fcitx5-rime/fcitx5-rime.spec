@@ -17,13 +17,13 @@
 
 
 Name:           fcitx5-rime
-Version:        5.1.5
+Version:        5.1.6
 Release:        0
 Summary:        RIME support for Fcitx5
 License:        LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/fcitx5-rime
-Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
+Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.zst
 Patch0:         %{name}-cmake-3.10.patch
 BuildRequires:  brise
 BuildRequires:  cmake
@@ -33,7 +33,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  librime-devel
 BuildRequires:  pkgconfig
-BuildRequires:  xz
+BuildRequires:  zstd
 Requires:       fcitx5
 Requires:       rime
 Provides:       fcitx-rime = %{version}

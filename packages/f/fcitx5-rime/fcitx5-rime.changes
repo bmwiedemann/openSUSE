@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 23 07:54:38 UTC 2024 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.6
+  * Fix missing SharedStatePolicyI18NAnnotation
+  * Use new setComment API for candidate
+
+-------------------------------------------------------------------
 Fri Mar  1 16:08:23 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - update to version 5.1.5:
