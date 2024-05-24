@@ -1,0 +1,141 @@
+# ------------------------------------------------------------------------
+# Configuration for Traefik v3
+# ------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------
+# Global configuration
+# ------------------------------------------------------------------------
+global:
+  checkNewVersion: false
+  sendAnonymousUsage: false
+
+# ------------------------------------------------------------------------
+# TLS specific configuration
+# ------------------------------------------------------------------------
+#tls:
+#  options:
+#    default:
+#      sniStrict: true
+
+# ------------------------------------------------------------------------
+# Entrypoints configuration
+# https://doc.traefik.io/traefik/routing/entrypoints/
+# ------------------------------------------------------------------------
+entryPoints:
+  web:
+    address: ":80"
+    # ------------------------------------------------------------------------
+    # Redirect all requests incoming from http to https
+    # websecure/https must be enabled to be use this configuration
+    # https://doc.traefik.io/traefik/routing/entrypoints/#redirection
+    # ------------------------------------------------------------------------
+    #http:
+    #  redirections:
+    #    entryPoint:
+    #      to: websecure
+    #      scheme: https
+
+  # ------------------------------------------------------------------------
+  #  Enable the https endpoint at port 443
+  # ------------------------------------------------------------------------
+  #websecure:
+  #  address: :443
+
+  # ------------------------------------------------------------------------
+  # Enable the http3 and advertize it at UDP port 443
+  # ------------------------------------------------------------------------
+  #http3:
+  #  advertisedPort: 443
+
+
+# ------------------------------------------------------------------------
+# Traefik logs configuration
+# Enabled if uncommented 
+# https://doc.traefik.io/traefik/observability/logs/
+# ------------------------------------------------------------------------
+log:
+  # Set traefik's log-level
+  # Default: ERROR
+  #level: DEBUG
+
+
+# ------------------------------------------------------------------------
+# Traefik access-log destination and format
+# uncomment to enable 
+# https://doc.traefik.io/traefik/observability/logs/
+# ------------------------------------------------------------------------
+#accessLog:
+  # ------------------------------------------------------------------------
+  # Set the filepath for the traefik log-file.
+  # Default: os.Stdout
+  #filePath: /var/log/traefik/traefik.log
+  # ------------------------------------------------------------------------
+  # Write logs in the 'common' or 'json' format.
+  # Default: common
+  #format: json
+
+
+# ------------------------------------------------------------------------
+# API and dashboard configuration.
+# Uncomment to enable 
+# https://doc.traefik.io/traefik/operations/api/
+# ------------------------------------------------------------------------
+api:
+  # ------------------------------------------------------------------------
+  # Enable the API in insecure mode
+  # Default: false
+  insecure: false
+  # ------------------------------------------------------------------------
+  # Enable the dashboard
+  # Default: true
+  dashboard: true
+
+
+# ------------------------------------------------------------------------
+# Ping configuration
+# https://doc.traefik.io/traefik/operations/ping/
+# --------------------------------------------------------------------------
+ping:
+# --------------------------------------------------------------------------
+  # Name of the related entry point
+  # Default: "traefik"
+  entryPoint: traefik
+
+
+# --------------------------------------------------------------------------
+# Provider configuration
+# --------------------------------------------------------------------------
+providers:
+  # ------------------------------------------------------------------------
+  # Docker configuration provider
+  # Default: disabled
+  # https://doc.traefik.io/traefik/providers/docker/
+  # ------------------------------------------------------------------------
+  #docker:
+    # ----------------------------------------------------------------------
+    # Docker server endpoint. Can be a tcp or a unix socket endpoint.
+    # Default: "unix:///var/run/docker.sock"
+    #endpoint: tcp://10.10.10.10:2375
+    # ----------------------------------------------------------------------
+    #  defaultRule: Host(`{{ normalize .Name }}.docker.localhost`)
+    # ----------------------------------------------------------------------
+    # Expose containers by default in traefik
+    # Default: true
+    #exposedByDefault: false
+
+  # ------------------------------------------------------------------------
+  # File configuration provider
+  # Default: disabled
+  # https://doc.traefik.io/traefik/providers/docker/
+  # ------------------------------------------------------------------------
+  file:
+    # ----------------------------------------------------------------------
+    # Defines the path to the directory that contains the configuration files.
+    # Default: unset
+    directory: /etc/traefik/conf.d
+    # ----------------------------------------------------------------------
+    # Set the watch option to true to allow Traefik to automatically
+    # watch for file changes
+    # Default: false
+    watch: true
+

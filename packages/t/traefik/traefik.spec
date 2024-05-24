@@ -17,38 +17,30 @@
 
 
 %define project github.com/traefik/traefik
-%include  %{_sourcedir}/node_modules.spec.inc
 %ifarch ppc64 s390x
 %define buildmode default
 %else
 %define buildmode pie
 %endif
-
 Name:           traefik
-Version:        2.11.2
+Version:        3.0.1
 Release:        0
 Summary:        The Cloud Native Application Proxy
 License:        MIT
 Group:          Productivity/Networking/Web/Proxy
 URL:            https://traefik.io/
-Source0:        https://github.com/traefik/traefik/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# set the desired version in the spec-file
+# download the source files and create the vendor tarball with "osc service mr"
+Source0:        https://github.com/traefik/traefik/releases/download/v%{version}/%{name}-v%{version}.src.tar.gz
 Source1:        vendor.tar.gz
 Source2:        traefik.service
-Source3:        traefik.toml
-Source4:        package-lock.json
-Source5:        node_modules.spec.inc
-# prepare-sources.sh is used to prepare sources for packaging
-Source6:        prepare-sources.sh
-
-Patch0:         allow-node-21.patch
-
+Source3:        traefik.yml
 BuildRequires:  go-bindata
 BuildRequires:  golang-packaging
-BuildRequires:  local-npm-registry
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  yarn
 BuildRequires:  (golang(API) >= 1.22)
 Recommends:     podman
+Conflicts:      traefik2
 %{?systemd_requires}
 %{go_provides}
 
@@ -61,20 +53,11 @@ Etcd, Rancher, Amazon ECS) and configures itself automatically and dynamically.
 Pointing Traefik at your orchestrator should be the only configuration step you need.
 
 %prep
-%setup -b0 -a1 -q
+%setup -q -c %{name}-%{version} -b0 -a1
 %autopatch -p1
-
-cd webui
-local-npm-registry %{_sourcedir} install --include=dev --legacy-peer-deps
 
 %build
 %{goprep} %{project}
-
-pushd webui
-export PATH=$PATH:./node_modules/.bin
-yarn build
-popd
-
 # see script/generate
 go generate
 
@@ -99,7 +82,7 @@ install -D -p -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.service
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 # configuration
-install -D -p -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/%{name}/%{name}.toml
+install -D -p -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/%{name}/%{name}.yml
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}/conf.d
 
 # logging
@@ -129,7 +112,7 @@ mkdir -p %{buildroot}%{_localstatedir}/log/%{name}
 %dir %{_sysconfdir}/%{name}
 %dir %{_sysconfdir}/%{name}/conf.d
 
-%config(noreplace) %{_sysconfdir}/%{name}/%{name}.toml
+%config(noreplace) %{_sysconfdir}/%{name}/%{name}.yml
 %attr(750,root,root) %dir %{_localstatedir}/log/%{name}
 
 %changelog

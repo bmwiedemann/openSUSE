@@ -103,4 +103,42 @@
     <comment></comment>
     <requestid>1171842</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fe3ffc57e635f942509349d60a90add9</srcmd5>
+    <version>3.0.1</version>
+    <time>1716573185</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.0.1
+  * CVEs:
+    * CVE-2024-24788 (bsc#1224018): A malformed DNS message in response to a
+      query can cause the Lookup functions to get stuck in an infinite loop.
+  * Bug fixes:
+    * [k8s/ingress] Fix rule syntax version for all internal routers
+      (gh#traefik/traefik#10689 by HalloTschuess)
+    * [metrics,tracing] Allow empty configuration for OpenTelemetry metrics
+      and tracing (gh#traefik/traefik#10729 by rtribotte)
+    * [provider,tls] Bump tscert dependency to 28a91b69a046
+      (gh#traefik/traefik#10668 by kevinpollet)
+    * [rules,tcp] Fix the rule syntax mechanism for TCP
+      (gh#traefik/traefik#10680 by lbenguigui)
+    * [tls,server] Remove deadlines when handling PostgreSQL connections
+      (gh#traefik/traefik#10675 by rtribotte)
+    * [webui] Add support for IP White list
+      (gh#traefik/traefik#10740 by davidbaptista)
+- Packaging:
+  * Use Traefik's src.tar.gz files containing a pre-built frontend to simplify the packaging process
+  * Fixes bsc#1224308 and bsc#1224384
+- Removed allow-node-21.patch and prepare-sources.sh script
+- Moved configuraton from .toml to .yml config
+- Update to version 3.0.0
+  * Announcment: https://traefik.io/blog/announcing-traefik-proxy-v3-rc/
+    * added support for popular, emerging technologies—WebAssembly (Wasm), 
+      OpenTelemetry, and Kubernetes Gateway API
+    * revamped some key parts of the routing rules
+    * added support for some leading edge technologies like HTTP/3, SPIFFE, and Tailscale
+  * Migration guide: https://doc.traefik.io/traefik/v3.0/migration/v2-to-v3/
+  * Details: https://github.com/traefik/traefik/releases/tag/v3.0.0
+</comment>
+    <requestid>1176684</requestid>
+  </revision>
 </revisionlist>
