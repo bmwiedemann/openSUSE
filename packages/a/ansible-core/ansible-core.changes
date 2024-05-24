@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu May 23 11:07:12 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.16.7:
+  https://github.com/ansible/ansible/blob/v2.16.7/changelogs/CHANGELOG-v2.16.rst
+  * Minor Changes
+    - ansible.builtin.user - Remove user not found warning (#80267)
+  * Bugfixes
+    - Add a version ceiling constraint for pypsrp to avoid
+      potential breaking changes in the 1.0.0 release.
+    - Fix NEVRA parsing of package names that include digit(s) in
+      them (#76463, #81018)
+    - Fix handlers not being executed in lockstep using the linear
+      strategy in some cases (#82307)
+    - Give the tombstone error for include pre-fork like other
+      tombstoned action/module plugins.
+    - Include the task location when a module or action plugin is
+      deprecated (#82450).
+    - Mirror the behavior of dnf on the command line when handling
+      NEVRAs with omitted epoch (#71808)
+    - ansible-test - Automatically enable the PyPI proxy for the
+      centos7 container to restore the ability to use pip in that
+      container.
+    - ansible_managed restored it's 'templatability' by ensuring
+      the possible injection routes are cut off earlier in the
+      process.
+    - assemble - fixed missing parameter 'content' in
+      `_get_diff_data` API (#82359).
+    - dnf - fix an issue when installing a package by specifying a
+      file it provides could result in installing a different
+      package providing the same file than the package already
+      installed resulting in resolution failure (#82461)
+    - uri - update the documentation for follow_redirects.
+
+-------------------------------------------------------------------
 Tue Apr 16 10:37:56 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - adjust spec to new name for PyPI file name (underscore instead of
