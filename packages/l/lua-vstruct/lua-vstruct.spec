@@ -18,7 +18,7 @@
 
 %define flavor @BUILD_FLAVOR@
 %define mod_name vstruct
-%define rock_version 2.1.1-1
+%define rock_version 2.2.0-1
 
 Version:        2.2.0
 Release:        0
