@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 24 13:30:21 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Correct ignition partition label to 'ignition' 
+
+-------------------------------------------------------------------
 Wed May 22 11:07:36 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Remove unused disk.sh (no systemd-boot on installer)

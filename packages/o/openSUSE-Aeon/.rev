@@ -42,4 +42,12 @@
 - Remove ro mount option as can cause racy mount behaviour on boot</comment>
     <requestid>1175752</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>a1143da224f848e215caec637ffac2ba</srcmd5>
+    <version>0.1.0</version>
+    <time>1716573209</time>
+    <user>anag+factory</user>
+    <comment>- Correct ignition partition label to 'ignition'</comment>
+    <requestid>1176745</requestid>
+  </revision>
 </revisionlist>
