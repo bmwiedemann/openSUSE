@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests-unixsocket
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ URL:            https://github.com/msabramo/requests-unixsocket
 Source:         https://files.pythonhosted.org/packages/source/r/requests-unixsocket/requests-unixsocket-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM urllib3-2.patch -- gh#msabramo/requests-unixsocket#69
 Patch0:         urllib3-2.patch
+# PATCH-FIX-UPSTREAM https://github.com/msabramo/requests-unixsocket/pull/72 adapters: fix for requests 2.32.2+
+Patch1:         requests232.patch
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

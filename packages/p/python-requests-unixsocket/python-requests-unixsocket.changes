@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 23 08:28:38 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add requests232.patch to fix compatibility with new requests
+- The project appears unmaintained
+  * living fork: https://gitlab.com/thelabnyc/requests-unixsocket2
+  * patching here for expediency reasons
+
+-------------------------------------------------------------------
 Sat Jun 10 09:24:04 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
