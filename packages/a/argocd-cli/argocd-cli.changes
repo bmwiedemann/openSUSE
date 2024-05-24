@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 23 20:07:14 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.11.2:
+  * Bump version to 2.11.2 (#18384)
+  * fix: remove Egress NetworkPolicy for argocd-redis and
+    argocd-redis-ha-haproxy (#18367) (#18372)
+  * fix: revert registry change (#18328)
+  * fix(deps): upgrade otel dependency (#18285) (#18324)
+  * docs: add v2.11 notes to upgrading page (#18333)
+  * chore(ci): fix release notes (#18132) (#18330)
+
+-------------------------------------------------------------------
 Tue May 21 18:16:41 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.11.1:
