@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 22 05:19:22 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop casacore-drop-mirlib.patch: Superseded in favour of better
+  patch casacore-mirlib-gcc14-compat.patch already committed
+  upstream.
+- Add casacore-mirlib-gcc14-compat.patch: Resolve issues compiling
+  mirlib with gcc 14 (gh#casacore/casacore#1344,
+  gh#casacore/casacore#1353).
+
+-------------------------------------------------------------------
 Thu May  2 14:25:09 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add casacore-drop-mirlib.patch: drop unused mirlib library,
