@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 23 09:37:54 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Skip test failing with requests 2.32.X
+  * suprisingly not with the CVE, but with gh#psf/requests#6644
+
+-------------------------------------------------------------------
 Fri Mar 22 07:33:35 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch 0001-Fix-test_417_openssl.py-if-pyOpenSSL-not-available.patch:
