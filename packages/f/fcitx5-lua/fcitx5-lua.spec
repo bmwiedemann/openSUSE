@@ -17,16 +17,17 @@
 
 
 Name:           fcitx5-lua
-Version:        5.0.12
+Version:        5.0.13
 Release:        0
 Summary:        Lua support for fcitx
 License:        LGPL-2.1-or-later
 URL:            https://github.com/fcitx/fcitx5-lua
-Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
+Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.zst
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
 BuildRequires:  gcc-c++
+BuildRequires:  zstd
 Supplements:    fcitx5
 %if 0%{?suse_version} >= 1550
 BuildRequires:  lua54-devel
