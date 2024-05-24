@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 24 08:12:05 UTC 2024 - ming li <mli@suse.com>
+
+- Update to version 20231216:
+  * changed from `which` to `command` for Debian forward compatibility 
+
+-------------------------------------------------------------------
 Mon May 29 19:38:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 20230301:

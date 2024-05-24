@@ -1,7 +1,7 @@
 #
 # spec file for package mbuffer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           mbuffer
-Version:        20230301
+Version:        20231216
 Release:        0
 Summary:        Replacement for "buffer" with many more Features
 License:        GPL-3.0-or-later
