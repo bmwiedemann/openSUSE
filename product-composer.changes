@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 24 13:54:21 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.4.8
+  * Support export of slsa.provenance files
+  * Allow to override product directory per flavor
+
+-------------------------------------------------------------------
 Fri May 17 13:36:46 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.4.7

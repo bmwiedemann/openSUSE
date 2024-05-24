@@ -130,4 +130,14 @@
   * added option to allow to specify an updateinfo id prefix</comment>
     <requestid>1174868</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6f20abdae68d8ba8644fa5ac9911a16a</srcmd5>
+    <version>0.4.8</version>
+    <time>1716573215</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.4.8
+  * Support export of slsa.provenance files
+  * Allow to override product directory per flavor</comment>
+    <requestid>1176757</requestid>
+  </revision>
 </revisionlist>
