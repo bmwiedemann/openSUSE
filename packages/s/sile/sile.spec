@@ -24,7 +24,7 @@ Summary:        Simon’s Improved Layout Engine
 Group:          Productivity/Publishing
 License:        MIT
 URL:            https://sile-typesetter.org/
-Source0:        https://github.com/sile-typesetter/sile/releases/download/v%{version}/sile-%{version}.tar.xz
+Source0:        sile-0.14.17.tar.zst
 Source1:        sile-rpmlintrc
 Source2:        LICENSE
 
@@ -73,6 +73,7 @@ BuildRequires:  sil-gentium-fonts
 %endif
 BuildRequires:  automake
 BuildRequires:  fontconfig-devel
+BuildRequires:  libtool
 Requires:       fontconfig
 BuildRequires:  freetype2-devel
 Requires:       freetype2
@@ -127,9 +128,11 @@ This package contains the development files for libtexpdf.
 
 %prep
 %autosetup -p1
+
 cp %{SOURCE2} .
 
 %build
+autoreconf -fiv
 %configure --disable-static --with-system-luarocks
 %make_build all
 

@@ -232,4 +232,12 @@
   - packages: Add balancing option to makecolums command</comment>
     <requestid>1145016</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>6092b915bf0dd99b0ea0e7501c2e0de8</srcmd5>
+    <version>0.14.17</version>
+    <time>1716573106</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1176522</requestid>
+  </revision>
 </revisionlist>

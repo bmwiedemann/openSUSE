@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 23 09:56:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Change package to use obs_scm source service. Upstream now longer
+  publishes xz tarballs.
+- Add libtool BuildRquires and call autoreconf in prep: git source
+  trees are not bootstrapped.
+
+-------------------------------------------------------------------
 Wed Feb  7 21:13:13 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to 0.14.17
