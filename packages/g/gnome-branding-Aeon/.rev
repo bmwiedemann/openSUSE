@@ -15,4 +15,20 @@
     <comment></comment>
     <requestid>1136077</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8c657d6544435fd9170c18ef95a051cc</srcmd5>
+    <version>20231005</version>
+    <time>1716573101</time>
+    <user>anag+factory</user>
+    <comment>- Wait for network for all aeon-mig-firstboot tasks 
+
+- Introduce aeon-mig-firstboot to help tuneup home directories
+  after migration 
+
+- Minor locale bugfixes and cleanup 
+
+- Rewrite aeon-firstboot to be multi-threaded and install locales
+  (boo#1224328, boo#1213055, boo#1208869, boo#1217466, boo#1223608)</comment>
+    <requestid>1176548</requestid>
+  </revision>
 </revisionlist>

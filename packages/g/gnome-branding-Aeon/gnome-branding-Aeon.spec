@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-branding-Aeon
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021 SUSE Software Solutions GmbH
 #
 # All modifications and additions to the file contributed by third parties
@@ -34,6 +34,7 @@ Source8:        distrobox-upgrade-all.timer
 Source9:        50-aeon
 Source10:       wallpaper-branding-Aeon.xml
 Source11:       49-aeon.rules
+Source12:       aeon-mig-firstboot
 BuildArch:      noarch
 BuildRequires:  flatpak
 BuildRequires:  gio-branding-openSUSE
@@ -71,6 +72,7 @@ cp -a %{SOURCE8} distrobox-upgrade-all.timer
 cp -a %{SOURCE9} 50-aeon
 cp -a %{SOURCE10} wallpaper-branding-Aeon.xml
 cp -a %{SOURCE11} 49-aeon.rules
+cp -a %{SOURCE12} aeon-mig-firstboot
 
 %build
 
@@ -83,6 +85,7 @@ install -d %{buildroot}%{_sysconfdir}/skel/.config/autostart
 install -m0644 aeon-firstboot.desktop %{buildroot}%{_sysconfdir}/skel/.config/autostart/aeon-firstboot.desktop
 install -d %{buildroot}%{_bindir}
 install -m0755 aeon-firstboot %{buildroot}%{_bindir}/aeon-firstboot
+install -m0755 aeon-mig-firstboot %{buildroot}%{_bindir}/aeon-mig-firstboot
 install -d %{buildroot}%{_prefix}%{_sysconfdir}/transactional-update.conf.d
 install -m644 50-desktop.conf %{buildroot}%{_prefix}%{_sysconfdir}/transactional-update.conf.d/50-desktop.conf
 install -d %{buildroot}%{_datadir}/wallpapers
@@ -120,6 +123,7 @@ install -m0444 49-aeon.rules %{buildroot}%{_datadir}/polkit-1/rules.d/49-aeon.ru
 %dir %{_sysconfdir}/skel/.config/autostart
 %config(noreplace) %{_sysconfdir}/skel/.config/autostart/aeon-firstboot.desktop
 %{_bindir}/aeon-firstboot
+%{_bindir}/aeon-mig-firstboot
 %dir %{_prefix}%{_sysconfdir}/transactional-update.conf.d
 %{_prefix}%{_sysconfdir}/transactional-update.conf.d/50-desktop.conf
 %dir %{_datadir}/wallpapers

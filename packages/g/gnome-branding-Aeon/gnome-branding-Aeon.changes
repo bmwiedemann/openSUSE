@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu May 23 20:00:38 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Wait for network for all aeon-mig-firstboot tasks 
+
+-------------------------------------------------------------------
+Thu May 23 16:05:53 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Introduce aeon-mig-firstboot to help tuneup home directories
+  after migration 
+
+-------------------------------------------------------------------
+Thu May 23 15:00:50 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Minor locale bugfixes and cleanup 
+
+-------------------------------------------------------------------
+Thu May 23 12:53:48 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Rewrite aeon-firstboot to be multi-threaded and install locales
+  (boo#1224328, boo#1213055, boo#1208869, boo#1217466, boo#1223608) 
+
+-------------------------------------------------------------------
 Thu Dec 28 14:52:59 UTC 2023 - dopice <0xdopice@protonmail.com>
 
 - Use cURL instead of ping for online check

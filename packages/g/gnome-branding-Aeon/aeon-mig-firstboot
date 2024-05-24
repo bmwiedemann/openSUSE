@@ -1,0 +1,60 @@
+#!/bin/bash
+
+firstMSG() {
+    #Insert Welcome message here
+    zenity --info --icon=distributor-logo-Aeon-symbolic --no-wrap --title 'Welcome to openSUSE Aeon' \
+      --text 'Almost done, there is one last step\n\nWe need perform some checks to make\nsure your migration has gone smoothly\n\nPlease click <b>OK</b> to Continue' \
+      --width 300 --height 300
+}
+
+show_progress() {
+    (
+    sleep 1
+    echo "# Waiting for Internet connection"
+    waitforNet
+    while /usr/bin/pgrep -f '/usr/bin/flatpak|/usr/sbin/transactional-update|/usr/bin/pkexec' >/dev/null; do
+    echo "# Tuning Installation"
+    sleep 1
+    done
+    )| zenity --progress --title="Final Setup" --width=300 --pulsate --auto-close --no-cancel
+}
+
+installFlatpakRepo(){
+    	waitforNet
+        /usr/bin/flatpak remote-add --user --if-not-exists flathub /usr/share/aeon/flathub.flatpakrepo
+        if [ "$?" != 0 ] ; then
+                zenity --error \
+                --text="Adding Flathub Repo Failed"
+                exit 1
+        fi
+}
+
+install_locale() {
+    waitforNet
+    pkexec sh -c "/usr/sbin/transactional-update -n run zypper -n aloc ${LANG} && /usr/sbin/transactional-update -n apply"
+    if [ "$?" != 0 ] ; then
+            zenity --error \
+            --text="Installing Locales Failed"
+            exit 1
+    fi
+}
+
+lastMSG() {
+    #Insert Welcome message here
+    zenity --info --icon=distributor-logo-Aeon-symbolic --no-wrap --title 'Welcome to openSUSE Aeon' \
+      --text 'Congratulations!\n\nYour system is ready to be used\n\nWe hope you enjoy using <b>openSUSE Aeon</b>' \
+      --width 300 --height 300
+    rm ~/.config/autostart/aeon-mig-firstboot.desktop
+}
+
+waitforNet(){
+until /usr/bin/curl -s --max-time 5 https://flathub.org > /dev/null; do sleep 1; done
+}
+
+firstMSG
+installFlatpakRepo &
+if [[ ! "${LANG}" =~ ^en_ ]]; then
+       install_locale &
+fi
+show_progress
+lastMSG

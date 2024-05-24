@@ -1,60 +1,146 @@
-#!/bin/sh
-(
-echo "# Waiting for Internet connection"
+#!/bin/bash
+
+# SPDX-License-Identifier: MIT
+# SPDX-FileCopyrightText: Copyright 2024 SUSE LLC
+# SPDX-FileCopyrightText: Copyright 2024 Richard Brown
+# SPDX-FileCopyrightText: Copyright 2024 Raymond Yip
+
+installFlatpakRepo(){
+        /usr/bin/flatpak remote-add --user --if-not-exists flathub /usr/share/aeon/flathub.flatpakrepo
+        if [ "$?" != 0 ] ; then
+                zenity --error \
+                --text="Adding Flathub Repo Failed"
+                exit 1
+        fi
+}
+
+installFlatpakPackage(){
+    /usr/bin/flatpak install --user --noninteractive flathub $1
+    if [ "$?" != 0 ] ; then
+            zenity --error \
+            --text="Installing $1 Failed"
+            exit 1
+    fi
+}
+
+waitforNet(){
 until /usr/bin/curl -s --max-time 5 https://flathub.org > /dev/null; do sleep 1; done
-echo "10"
+}
 
-echo "# Adding Flathub Repository"
-/usr/bin/flatpak remote-add --user --if-not-exists flathub /usr/share/aeon/flathub.flatpakrepo
-if [ "$?" != 0 ] ; then
-        zenity --error \
-          --text="Adding Flathub Repo Failed"
-        exit 1
-fi
-echo "20"
+defaultOptions() {
+    pkgs=("org.mozilla.firefox" "org.gnome.Calculator" "org.gnome.TextEditor")
+}
 
-echo "# Installing Firefox"
-/usr/bin/flatpak install --user --noninteractive flathub org.mozilla.firefox
-if [ "$?" != 0 ] ; then
-        zenity --error \
-          --text="Installing Firefox Failed"
-        exit 1
-fi
+customizeOptions() {
+    #User has decided to customize their installed flatpaks
+    selection=$(zenity --list --width=1000  --height=1025 --title="Choose software to install" \
+    --text="Select which software you would like to install\nMore software can be found in the <b>Software</b> App" \
+    --checklist --column="" --column="AppName" --column="Application" --column="Description" \
+    --hide-column=2 \
+TRUE org.mozilla.firefox "Mozilla Firefox" "Default Web Browser" \
+TRUE org.gnome.Calculator "Calculator" "Basic Calculator" \
+TRUE org.gnome.TextEditor "Text Editor" "Basic Text Editor" \
+FALSE com.mattjakeman.ExtensionManager "Extension Manager" "Shell Extensions Manager" \
+FALSE com.github.tchx84.Flatseal "Flatseal" "Application Permissions Manager" \
+FALSE com.valvesoftware.Steam "Steam" "Steam Games Launcher" \
+FALSE org.gnome.Loupe "Image Viewer" "Basic Image Viewer" \
+FALSE org.gnome.gThumb "gThumb" "Advanced Image Viewer" \
+FALSE io.github.celluloid_player.Celluloid "Celluloid" "Basic Video Player" \
+FALSE org.videolan.VLC "VLC" "Advanced Video Player" \
+FALSE org.mozilla.Thunderbird "Thunderbird" "Mail Client" \
+FALSE org.telegram.desktop "Telegram Desktop" "Telegram Messaging Client" \
+FALSE org.libreoffice.LibreOffice "LibreOffice" "LibreOffice Office Suite" \
+FALSE org.gimp.GIMP "GNU Image Manipulation Program" "Image Editor" \
+FALSE org.gnome.Builder "Builder" "Graphical IDE" \
+FALSE io.github.dvlv.boxbuddyrs "BoxBuddy" "Distrobox Container Manager" \
+FALSE org.gnome.Boxes "Boxes" "Virtualisation" \
+FALSE org.gnome.World.PikaBackup "Pika Backup" "Basic Backup Tool" \
+FALSE org.gnome.SimpleScan "Document Scanner" "Basic Document Scanner" \
+)
+    #the above command outputs pipe-delimeted lists of all the flathub app names people chose..eg
+    #org.mozilla.firefox|org.gnome.Calculator|org.gnome.TextEditor|com.github.tchx84.Flatseal|com.valvesoftware.Steam|org.telegram.desktop
+    #So that could be parsed to figure out the number of apps chosen and fed into flatpak —user —noninteractive flathub and allow people to pick what they install on first boot
+    if [[ -z "${selection}" ]]; then
+        #if cancel is pressed, $custom variable is empty so we go back to use the default options
+        defaultOptions
+    else
+        IFS='|' read -a pkgs <<< "$selection" 
+    fi
+}
 
-echo "40"
-echo "# Installing Calculator"
-/usr/bin/flatpak install --user --noninteractive flathub org.gnome.Calculator
-if [ "$?" != 0 ] ; then
-        zenity --error \
-          --text="Installing Calculator Failed"
-        exit 1
-fi
+firstMSG() {
+    #Insert Welcome message here
+    zenity --question --icon=distributor-logo-Aeon-symbolic --no-wrap --title 'Welcome to openSUSE Aeon' \
+      --text 'Almost done, there is one last step\n\nWe need to download some applications to get you started\n\nYou can add more software later using the <b>Software</b> App' \
+      --width 300 --height 300 \
+      --ok-label OK \
+      --cancel-label Customise
+    option=$?
+    if [ "$option" != 0 ]; then
+        #User wants to customize software
+        customizeOptions
+    else
+        #OK Button selected, running with defaults
+        defaultOptions
+    fi
+}
 
-echo "60"
-echo "# Installing Text Editor"
-/usr/bin/flatpak install --user --noninteractive flathub org.gnome.TextEditor
-if [ "$?" != 0 ] ; then
-        zenity --error \
-          --text="Installing Text Editor Failed"
-        exit 1
-fi
+lastMSG() {
+    #Insert Welcome message here
+    zenity --info --icon=distributor-logo-Aeon-symbolic --no-wrap --title 'Welcome to openSUSE Aeon' \
+      --text 'Congratulations!\n\nYour system is ready to be used\n\nWe hope you enjoy using <b>openSUSE Aeon</b>' \
+      --width 300 --height 300
+    rm ~/.config/autostart/aeon-firstboot.desktop
+}
 
-echo "80"
-echo "# Installing Extension Manager"
-/usr/bin/flatpak install --user --noninteractive flathub com.mattjakeman.ExtensionManager
-if [ "$?" != 0 ] ; then
-        zenity --error \
-          --text="Installing Extension Manager Failed"
-        exit 1
-fi
+detectLocale() {
+    if [[ ! "${LANG}" =~ ^en_ ]]; then
+    need_locale=${LANG}
+    fi
 
-echo "100"
-echo "# Cleaning up"
-rm ~/.config/autostart/aeon-firstboot.desktop
-) |
-        zenity --progress --title="Aeon Firstboot" --percentage=0 --auto-close --no-cancel --width=300
+}
 
-if [ "$?" != 0 ] ; then
-        zenity --error \
-          --text="Firstboot Configuration Error"
-fi
+show_progress() {
+    (
+    sleep 1
+    echo "# Waiting for Internet connection"
+    waitforNet
+    while /usr/bin/pgrep -f '/usr/bin/flatpak|/usr/sbin/transactional-update|/usr/bin/pkexec' >/dev/null; do
+    echo "# Installing Packages"
+    sleep 1
+    done
+    )| zenity --progress --title="Final Setup" --width=300 --pulsate --auto-close --no-cancel
+}
+
+install_locale() {
+    pkexec sh -c "/usr/sbin/transactional-update -n run zypper -n aloc ${need_locale} && /usr/sbin/transactional-update -n apply"
+    if [ "$?" != 0 ] ; then
+            zenity --error \
+            --text="Installing Locales Failed"
+            exit 1
+    fi
+    for i in "$HOME/Desktop" "$HOME/Downloads" "$HOME/Templates" "$HOME/Public" "$HOME/Documents" "$HOME/Music" "$HOME/Pictures" "$HOME/Videos"
+ 	do
+ 	   	rmdir $i
+    done
+    rm $HOME/.config/user-dirs.dirs
+    rm $HOME/.config/user-dirs.locale
+    xdg-user-dirs-update --force
+}
+
+run_tasks() {
+    waitforNet
+    if [[ -n "${need_locale}" ]]; then
+       install_locale &
+    fi
+    installFlatpakRepo
+    for pkg in "${pkgs[@]}"; do 
+        installFlatpakPackage $pkg &
+    done
+}
+
+detectLocale
+firstMSG
+run_tasks &
+show_progress
+lastMSG
