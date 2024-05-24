@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue May 14 03:08:45 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 24.05.0:
+  * Faster discarding of maths that is too long to read
+  * Resolved a crash on closing the last window
+    (gh#wxMaxima-developers/wxmaxima#1898)
+  * Now only wxWidgets builds with Unicode support (default) are
+    allowed.
+  * Use po4a instead of po4a-translate for the generation of
+    internationalized manuals. po4a-translate is deprecated
+    (gh#wxMaxima-developers/wxmaxima#1899)
+  * Allow compiliation with the current wxWidgets development
+    version
+  * Code reorganization to promote stability
+  * Security: Use a standard function (CreateTempFileName) for
+    creating
+  * temporary filenames instead of using the process id as
+    'random' number.
+  * Security: (autosaved) temporary files now use secure
+    permissions, are not readable by everyone.
+  * wxm files no more truncate text
+    (gh#wxMaxima-developers/wxmaxima#1908)
+  * Unicode sidebar: Allow searching for unicode numbers too, not
+    only the character name.
+  * Unicode sidebar: Correct the search filter, the last char was
+    always shown, even if there was no match.
+  * Improvements of the manual.
+  * Performance: Replaced many copy operations by references to
+    const
+  * Correctly handle deletion of the last cell
+    (gh#wxMaxima-developers/wxmaxima#1911,
+    gh#wxMaxima-developers/wxmaxima#1840)
+  * A link from the help menu to maxima's help page
+  * Offer more maxima demos in the right-click menu
+  * Resolved a threading race condition
+    (gh#wxMaxima-developers/wxmaxima#1912)
+  * Resolved literally hundreds of warnings from static analysis
+    tools
+  * Support for the %catalan constant
+  * A backward-search fix (gh#wxMaxima-developers/wxmaxima#1913)
+  * Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 22 14:20:10 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - drop obsolete texinfo scriptlet
