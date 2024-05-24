@@ -151,4 +151,12 @@
     <comment>Revert this since some things not in factory depend on the test artifacts</comment>
     <requestid>1169530</requestid>
   </revision>
+  <revision rev="20" vrev="15">
+    <srcmd5>108ac7ac2171bd6a98113e6e7d9c44e7</srcmd5>
+    <version>5.11.0</version>
+    <time>1716573097</time>
+    <user>anag+factory</user>
+    <comment>Fix conflict of providers on some distributions</comment>
+    <requestid>1176499</requestid>
+  </revision>
 </revisionlist>

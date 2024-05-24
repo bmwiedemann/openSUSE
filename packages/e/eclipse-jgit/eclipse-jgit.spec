@@ -50,7 +50,7 @@ BuildRequires:  ed25519-java
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  google-gson
-BuildRequires:  hamcrest-core
+BuildRequires:  hamcrest
 BuildRequires:  javaewah
 BuildRequires:  jgit = %{version}
 BuildRequires:  junit
@@ -74,7 +74,7 @@ Requires:       bouncycastle-pg
 Requires:       bouncycastle-pkix
 Requires:       ed25519-java
 Requires:       google-gson
-Requires:       hamcrest-core
+Requires:       hamcrest
 Requires:       javaewah
 Requires:       jgit = %{version}
 Requires:       junit
