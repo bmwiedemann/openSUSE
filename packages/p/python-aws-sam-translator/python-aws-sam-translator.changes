@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri May 17 11:26:48 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.89.0
+  * chore(schema): update by @github-actions in #3566
+  * fix: add error message when JwtConfiguration is not a map by @aaythapa in #3567
+  * fix: skip tests if Logs resources aren't available by @aaythapa in #3570
+  * chore(deps-dev): bump black from 23.10.1 to 24.3.0 in
+    /requirements by @dependabot in #3569
+  * chore: deal with adding new partitions for arn
+    generation by @aaythapa in #3571
+  * chore(schema): update by @github-actions in #3568
+  * chore(schema): update by @github-actions in #3572
+  * fix: add new partition to arn generation by @aaythapa in #3574
+  * Merge main to develop by @gracelu0 in #3576
+  * chore(schema): update by @github-actions in #3573
+  * chore: encrypt SNS and Kinesis resources in integration
+    test templates by @gracelu0 in #3578
+  * fix: remove unused policies in integ test by @aaythapa in #3582
+  * fix: move the normalized open api version to feature flag
+    normalized_open_api_version by @xazhao in #3555
+  * chore(schema): update by @github-actions in #3584
+  * Revert "fix: remove unused policies in integ test" by @aaythapa in #3585
+  * chore(schema): update by @github-actions in #3587
+  * Release 1.89.0 (to main) by @godwingrs22 in #3594
+- from version 1.88.0
+  * Release 1.88.0 (to main) #3588
+
+-------------------------------------------------------------------
 Wed Apr 10 18:54:55 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Switch to Python 3.11 build in SLE 15 SP4 and openSUSE Leap 15.4 and
