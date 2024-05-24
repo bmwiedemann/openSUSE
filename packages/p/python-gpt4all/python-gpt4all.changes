@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 23 17:56:11 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- added gpt4all-chat what is a QT6-GUI and updated to latest 
+  llamacpp a3f03b7
+- rename gpt4all.rpmlintrc to python-gpt4all.rpmlintrc
+
+-------------------------------------------------------------------
 Tue Apr 30 18:53:36 UTC 2024 - Christian Goll <cgoll@suse.com>
 
 - initial commit of gpt4all, with python bindings only

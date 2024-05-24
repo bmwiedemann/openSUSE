@@ -7,4 +7,12 @@
     <comment>with 15.6 builds now</comment>
     <requestid>1176174</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1a763390c8d03d1c8fdf7c517b349bfe</srcmd5>
+    <version>2.7.3</version>
+    <time>1716573182</time>
+    <user>anag+factory</user>
+    <comment>with right license (forwarded request 1176682 from mslacken)</comment>
+    <requestid>1176683</requestid>
+  </revision>
 </revisionlist>
