@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 23 22:46:05 UTC 2024 - Daike Yu <yu.daike@suse.com>
+
+- Multiple CVE fixes
+  + Add freerdp-CVE-2024-32659.patch (bsc#1223346, CVE-2024-32659)
+    - out-of-bounds read if `((nWidth == 0) and (nHeight == 0))`
+  + Add freerdp-CVE-2024-32660.patch (bsc#1223347, CVE-2024-32660)
+    - client crash via invalid huge allocation size
+  + Add freerdp-CVE-2024-32661.patch (bsc#1223348, CVE-2024-32661)
+    - client NULL pointer dereference
+  + Add freerdp-CVE-2024-32658.patch (bsc#1223353, CVE-2024-32658) 
+    - out-of-bounds read in Interleaved RLE Bitmap Codec in FreeRDP based clients
+
+-------------------------------------------------------------------
 Tue Apr  9 19:40:24 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add patch to avoid unneeded dependencies when using winpr-devel:

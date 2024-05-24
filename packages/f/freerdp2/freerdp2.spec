@@ -48,6 +48,14 @@ Patch0:         0001-Make-H.264-codec-optional-during-runtime.patch
 Patch1:         freerdp-CVE-2023-40574-to-2023-40576.patch
 # PATCH-FIX-OPENSUSE -- Don't let 'cmake(WinPR)' require unneeded tools
 Patch2:         0001-Don-t-add-winpr-cli-tools-to-exported-CMake-targets.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2024-32659.patch CVE-2024-32659 bsc#1223346 yu.daike@suse.com -- out-of-bounds read if `((nWidth == 0) and (nHeight == 0))`
+Patch3:         freerdp-CVE-2024-32659.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2024-32660.patch CVE-2024-32660 bsc#1223347 yu.daike@suse.com -- client crash via invalid huge allocation size
+Patch4:         freerdp-CVE-2024-32660.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2024-32661.patch CVE-2024-32661 bsc#1223348 yu.daike@suse.com -- client NULL pointer dereference
+Patch5:         freerdp-CVE-2024-32661.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2024-32658.patch CVE-2024-32658 bsc#1223353 yu.daike@suse.com -- out-of-bounds read in Interleaved RLE Bitmap Codec in FreeRDP based clients
+Patch6:         freerdp-CVE-2024-32658.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  cups-devel
 BuildRequires:  ed
