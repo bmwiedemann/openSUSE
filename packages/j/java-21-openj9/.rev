@@ -31,4 +31,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1158966</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4fdf78ce82bc0a07565f0566cce24bda</srcmd5>
+    <version>21.0.3.0</version>
+    <time>1716573171</time>
+    <user>anag+factory</user>
+    <comment>April 2024 security fixes</comment>
+    <requestid>1176637</requestid>
+  </revision>
 </revisionlist>

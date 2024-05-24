@@ -39,7 +39,7 @@
    endif
 --- a/closed/custom/ReleaseFile.gmk
 +++ b/closed/custom/ReleaseFile.gmk
-@@ -18,6 +18,6 @@
+@@ -18,9 +18,9 @@
  # 2 along with this work; if not, see <http://www.gnu.org/licenses/>.
  # ===========================================================================
  
@@ -49,3 +49,6 @@
 +SOURCE_REVISION := OpenJDK:@OPENJ9_SHA@
 +SOURCE_REVISION += OpenJ9:@OPENJ9_SHA@
 +SOURCE_REVISION += OMR:@OPENJ9OMR_SHA@
+ ifeq (true,$(BUILD_OPENJCEPLUS))
+   SOURCE_REVISION += OpenJCEPlus:$(shell $(GIT) -C $(OPENJCEPLUS_TOPDIR) rev-parse --short HEAD)
+ endif
