@@ -1,5 +1,5 @@
 #
-# spec file for package casacore
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -75,8 +75,8 @@ Source:         https://github.com/casacore/casacore/archive/v%{version}.tar.gz#
 Source99:       casacore-rpmlintrc
 # PATCH-FIX-UPSTREAM casacore-fitsio-header.patch badshah400@gmail.com -- Fix location of cfitsio headers used in sources
 Patch1:         casacore-fitsio-header.patch
-# PATCH-FIX-UPSTREAM casacore-drop-mirlib.patch gh#casacore/casacore#1344 badshah400@gmail.com -- Drop usused mirlib library; fixes builds against GCC 14
-Patch2:         casacore-drop-mirlib.patch
+# PATCH-FIX-UPSTREAM casacore-mirlib-gcc14-compat.patch gh#casacore/casacore#1344 badshah400@gmail.com -- Fix builds against GCC 14; patch taken from upstream commit
+Patch2:         https://github.com/casacore/casacore/commit/a4516a86f935dea17502727c34f91955b73209ef.patch#/casacore-mirlib-gcc14-compat.patch
 BuildRequires:  bison
 BuildRequires:  blas-devel
 BuildRequires:  cmake
