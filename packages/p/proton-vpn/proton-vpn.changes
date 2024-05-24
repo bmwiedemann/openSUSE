@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed May 22 11:09:03 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Add setup-data-files.patch to fix erroneous files being installed
+- Update package
+  * 4.3.2
+   - We no longer call UsageReporting.init to initialize UsageReporting.
+   - Only initialize sentry on first enable.
+   - Forward SSL_CERT_FILE environment variable to sentry.
+  * 4.3.1
+   - Ensure behavioral consistency when opening settings window across different distributions
+   - Update label alignment on disable kill switch widget at login
+   - Missed the minimum python3-proton-vpn-api-core version in build_packages.py
+   - Switch to using sessions module that is now bundled with vpn-api-core
+   - Update wireguard certificate request when settings are changed
+   - Add connection features to the wireguard certificate request
+   - Periodically refresh certificate
+  * 4.3.0
+   - Provide the possibility to disable Kill Switch if user is logged out and Kill Switch is set to permanent
+   - Ensure that protocol list in settings UI is properly capitalized and alphabetically ordered
+   - Anonymous crash reports are now sent by default, this can be disabled in the settings
+   - Change how we build debian and rpm packages. We now depend on a single versions.yml file to build everything
+   - Increase minimum number of characters required for bug report description
+
+-------------------------------------------------------------------
 Thu Mar 21 12:40:45 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Update to 4.2.0

@@ -15,23 +15,21 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{?suse_version} >= 1600
 %global pythons python3
 %else
 %global pythons python311
 %endif
 Name:           proton-vpn
-Version:        4.2.0
+Version:        4.3.2
 Release:        0
 Summary:        Official Proton VPN client
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Security
 URL:            https://github.com/ProtonVPN/proton-vpn-gtk-app
 Source:         https://github.com/ProtonVPN/proton-vpn-gtk-app/archive/refs/tags/v%{version}.tar.gz
-BuildRequires:  fdupes
-BuildRequires:  gobject-introspection
-BuildRequires:  gtk3-devel
-BuildRequires:  python-rpm-macros
+Patch1:         setup-data-files.patch
 BuildRequires:  %{pythons}-dbus-python
 BuildRequires:  %{pythons}-gobject
 BuildRequires:  %{pythons}-packaging
@@ -44,17 +42,21 @@ BuildRequires:  %{pythons}-pycairo
 BuildRequires:  %{pythons}-pytest
 BuildRequires:  %{pythons}-pytest-cov
 BuildRequires:  %{pythons}-setuptools
+BuildRequires:  fdupes
+BuildRequires:  gobject-introspection
+BuildRequires:  gtk3-devel
+BuildRequires:  python-rpm-macros
 BuildRequires:  update-desktop-files
-Requires:       gtk3
 Requires:       %{pythons}-dbus-python
 Requires:       %{pythons}-gobject
 Requires:       %{pythons}-packaging
-Requires:       %{pythons}-proton-vpn-api-core
+Requires:       %{pythons}-proton-vpn-api-core >= 0.24.0
 Requires:       %{pythons}-proton-vpn-connection >= 0.14.2
 Requires:       %{pythons}-proton-vpn-killswitch-network-manager
 Requires:       %{pythons}-proton-vpn-logger
 Requires:       %{pythons}-proton-vpn-network-manager-openvpn
 Requires:       %{pythons}-pycairo
+Requires:       gtk3
 Conflicts:      protonvpn-gui
 Provides:       protonvpn-app = %{version}
 BuildArch:      noarch
@@ -65,6 +67,7 @@ carefully designed to improve your online security.
 
 %prep
 %setup -q -n proton-vpn-gtk-app-%{version}
+%autopatch -p1
 
 %build
 %python3_build
