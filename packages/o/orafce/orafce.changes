@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 23 08:51:44 UTC 2024 - emiliano.langella@suse.com
+
+- Update to version 4.10.2+git0.8d10ace:
+  * prepare for 4.10.2
+  * When load of orafce was triggered by using some orafce's function by nonprivileged user, then the check orafce_umask_check_hook fails and breaks loading of Orafce. This fix disable check in initialization time when orafce_umask is set to default value (so the check can be disabled).
+  * prepare for 4.10.1
+  * regress tests for issues #266 and #267
+  * fix obsolete (and broken) implementation of dbms_assert.qualified_sql_name
+  * fix not correct test of identifier validity in dbms_assert.simple_sql_name
+  * Add an alternative output for test dbms_random (Illumos)
+
+-------------------------------------------------------------------
 Mon Apr 29 08:24:22 UTC 2024 - emiliano.langella@suse.com
 
 - Update to version 4.10.0+git0.cfdcdf2:
