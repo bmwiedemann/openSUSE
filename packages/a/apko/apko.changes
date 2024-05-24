@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu May 23 19:46:28 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.14.2:
+  * spdx: Add test of SBOM of packages with custom licenses
+  * updated-dependencies:
+    - dependency-name: step-security/harden-runner
+      dependency-type: direct:production
+      update-type: version-update:semver-minor ...
+    - dependency-name: go.opentelemetry.io/otel
+      dependency-type: direct:production
+      update-type: version-update:semver-minor ...
+  * sbom: fixup merging LicensingInfos during Image SBOM generation
+  * build(deps): bump github/codeql-action from 3.25.4 to 3.25.6
+  * build(deps): bump actions/checkout from 4.1.5 to 4.1.6
+  * build(deps): bump github.com/package-url/packageurl-go
+  * gofmt
+  * Fix capitalisation style
+  * spdx: allow specifying custom license
+  * Bump go-apk
+  * Bump go-apk to pick up conflict fix
+  * build(deps): bump goreleaser/goreleaser-action from 5.0.0 to
+    5.1.0
+  * Bump go-apk
+  * linter
+  * Fix duplicates when overlaying the config with config with no
+    contents
+  * build(deps): bump sigs.k8s.io/release-utils from 0.8.1 to 0.8.2
+  * build(deps): bump golangci/golangci-lint-action from 5.1.0 to
+    6.0.1
+  * build(deps): bump github/codeql-action from 3.25.3 to 3.25.4
+  * build(deps): bump actions/checkout from 4.1.4 to 4.1.5
+  * build(deps): bump golang.org/x/sys from 0.19.0 to 0.20.0
+
+-------------------------------------------------------------------
 Thu May 09 15:48:25 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.14.1:
