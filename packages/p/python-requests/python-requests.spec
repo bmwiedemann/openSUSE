@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-requests
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-requests%{psuffix}
-Version:        2.31.0
+Version:        2.32.2
 Release:        0
 Summary:        Python HTTP Library
 License:        Apache-2.0
@@ -88,9 +88,6 @@ Features of Requests:
 
 %prep
 %autosetup -p1 -n requests-%{version}
-
-# drop shebang from certs.py
-sed -i '1s/^#!.*$//' requests/certs.py
 
 # remove 'never' default parameter from digest-auth check
 # requires httpbin 0.6.0
