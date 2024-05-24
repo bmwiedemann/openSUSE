@@ -130,4 +130,12 @@ The conflict with mariadb is still a problem. Debian solved this by making maria
     <comment></comment>
     <requestid>1169752</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9f143f8b1d9367a9efd151de43ab5e95</srcmd5>
+    <version>9.2.1</version>
+    <time>1716573149</time>
+    <user>anag+factory</user>
+    <comment>rocksdb 9.2.1</comment>
+    <requestid>1176556</requestid>
+  </revision>
 </revisionlist>

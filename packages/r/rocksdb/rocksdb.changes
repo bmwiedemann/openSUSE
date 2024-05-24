@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu May 23 20:13:16 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 9.2.1:
+  * Added two options deadline and max_size_bytes for CacheDumper
+    to exit early
+  * API for wide-column point lookups with read-your-own-writes
+    consistency, and a batched versions of the same
+  * API to support programmatically read a SST file as a raw table
+    file
+  * API to wait for background purge to complete
+  * DeleteRange() will return NotSupported() if row_cache is
+    configured since they don't work together in some cases
+  * Deprecated CompactionOptions::compression
+  * Using OptionChangeMigration() to migrate from non-FIFO to FIFO
+    compaction with Options::compaction_options_fifo.
+    max_table_files_size > 0 can cause the whole DB to be dropped
+    right after migration if the migrated data is larger than
+    max_table_files_size
+  * Various behavior changes, and changes of defaults
+  * On distributed file systems that support file system level
+    checksum verification and reconstruction reads, RocksDB will
+    now retry a file read if the initial read fails RocksDB block
+    level or record level checksum verification. This applies to
+    MANIFEST file reads when the DB is opened, and to SST file
+    reads at all times.
+  * Bug fixes
+
+-------------------------------------------------------------------
 Mon Apr 22 20:56:46 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 9.1.1:
