@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu May 23 11:04:38 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.16.7:
+  * Merge pull request #1479 from felixfontein/fix
+  * Merge pull request #1416 from sourn00dl/feature#881
+  * Merge pull request #1248 from BhattacharjeeSutapa/ansible-doc
+  * Update community topics links (#1451) (#1469)
+  * community_topics_workflow: fix formatting (#1270) (#1467)
+  * SC: move community_topics_workflow.md to docs.ansible.com
+    (#1257) (#1466)
+  * Merge pull request #1408 from ansible/pip-compile/devel/dev
+  * Update playbooks_reuse_roles.rst (#1415) (#1429)
+  * clarify backup_file (#1391) (#1441)
+  * Document the possibility of vars/main and defaults/main being
+    directories (#1320) (#1443)
+  * how_can_i_help page: rephrase the paragraph mentioning forums
+    (#1410) (#1433)
+  * Restore the umask note for building docs (#1400) (#1437)
+  * intro_installation.rst: shells -> shell's to make possessive
+    (#1420) (#1424)
+  * Bump antsibull-docs to 2.11.0. (#1417) (#1419)
+  * Adding explanation for combining until with loop (#1367)
+  * update codespell ignore lines (#1366) (#1406)
+  * Integrate ansible-creator and devtools into the developing
+    collections guide (#1302) (#1401)
+  * follows up on #1042 to remove smart from uptime script (#1340)
+    (#1397)
+  * New section on combining variables added (#1383) (#1389)
+  * CONTRIBUTING: document backport labels and PR Merging (#1364)
+    (#1393)
+  * Fix typos in style guide (#1368)
+  * MUNI_TECH_WRITERS: Better documented local collections for
+    playbooks #1129 (#1315)
+  * ci: refresh dev dependencies
+  * Add examples to clarify inventory plugin usage (#1347)
+  * Merge pull request #1311 from
+    TarzanOfJungle/defining-changed-issue
+  * Merge pull request #1296 from terezahelanova/feature/#793
+  * Merge pull request #1303 from terezahelanova/feature/#96
+  * Merge pull request #1283 from Devids10/clarify_example_module
+  * Merge pull request #1258 from Devids10/paramiko_contradictions
+  * Merge pull request #1275 from ansible/bcoca-patch-2
+  * Merge pull request #1293 from terezahelanova/fix/#1199
+  * Bump wntrblm/nox from 2024.03.02 to 2024.04.15
+  * Add Ansible 9.5.1 porting guide. (#1312)
+  * Merge pull request #1300 from ansible/pip-compile/devel/dev
+  * Update playbooks_blocks.rst (#1190)
+  * Merge pull request #1233 from meizhaohui/patch-1
+  * Merge pull request #1277 from ansible/pip-compile/devel/dev
+  * Avoid using sh.
+  * Bump antsibull-docs to 2.10.0.
+
+-------------------------------------------------------------------
 Tue Apr 16 10:38:20 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.16.6:
