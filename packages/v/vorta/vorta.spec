@@ -15,44 +15,48 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%if 0%{?suse_version} > 1500
+# Build only one time
+%define pythons %{primary_python}
+%else
+# Build only with python 3.11
+%{?sle15_python_module_pythons}
+%endif
 Name:           vorta
 Version:        0.9.1
 Release:        0
 Summary:        Desktop Backup Client based on BorgBackup
-License:        GPL-3.0-only
+License:        Apache-2.0 AND GPL-3.0-only AND OFL-1.1
 Group:          Productivity/Archiving/Backup
 URL:            https://github.com/borgbase/vorta
 Source:         https://github.com/borgbase/%{name}/archive/v%{version}.tar.gz
 Source1:        vorta.desktop
 # PATCH-FIX-OPENSUSE vorta-fix-dependencies.patch malcolmlewis@opensuse.org -- Remove dependencies that are named differently.
 Patch0:         vorta-fix-dependencies.patch
+BuildRequires:  %{python_module APScheduler < 4.0}
+BuildRequires:  %{python_module QDarkStyle}
+BuildRequires:  %{python_module keyring}
+BuildRequires:  %{python_module peewee}
+BuildRequires:  %{python_module platformdirs}
+BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-dateutil}
+BuildRequires:  %{python_module qt6}
+BuildRequires:  %{python_module setuptools-git}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-APScheduler < 4.0
-BuildRequires:  python3-QDarkStyle
-BuildRequires:  python3-keyring
-BuildRequires:  python3-peewee
-BuildRequires:  python3-platformdirs
-BuildRequires:  python3-psutil
-BuildRequires:  python3-pytest
-BuildRequires:  python3-python-dateutil
-BuildRequires:  python3-qt6
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-setuptools-git
 BuildRequires:  update-desktop-files
-## MANUAL BEGIN
 Requires:       borgbackup
-Requires:       python3-APScheduler < 4.0
-Requires:       python3-QDarkStyle
-Requires:       python3-keyring
-Requires:       python3-peewee
-Requires:       python3-platformdirs
-Requires:       python3-psutil
-Requires:       python3-python-dateutil
-Requires:       python3-qt6
-## MANUAL END
+Requires:       %{python_flavor}-APScheduler < 4.0
+Requires:       %{python_flavor}-QDarkStyle
+Requires:       %{python_flavor}-keyring
+Requires:       %{python_flavor}-peewee
+Requires:       %{python_flavor}-platformdirs
+Requires:       %{python_flavor}-psutil
+Requires:       %{python_flavor}-python-dateutil
+Requires:       %{python_flavor}-qt6
 BuildArch:      noarch
 
 %description
@@ -65,16 +69,16 @@ ransomware and theft.
 
 %build
 export LANG=en_US.UTF-8
-%python3_build
+%python_build
 
 %install
 export LANG=en_US.UTF-8
-%python3_install
+%python_install
 install -d %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
 install -Dm644 "src/vorta/assets/icons/icon.svg" "%{buildroot}%{_datadir}/icons/hicolor/256x256/apps/vorta.svg"
 install -Dm644 -t %{buildroot}%{_datadir}/metainfo "src/vorta/assets/metadata/com.borgbase.Vorta.appdata.xml"
 %suse_update_desktop_file -i vorta
-%fdupes %{buildroot}%{python3_sitelib}
+%fdupes %{buildroot}%{python_sitelib}
 
 %files
 %license LICENSE.txt
@@ -83,7 +87,7 @@ install -Dm644 -t %{buildroot}%{_datadir}/metainfo "src/vorta/assets/metadata/co
 %{_datadir}/applications/vorta.desktop
 %{_datadir}/metainfo/com.borgbase.Vorta.appdata.xml
 %{_datadir}/icons/hicolor/256x256/apps/vorta.svg
-%{python3_sitelib}/%{name}
-%{python3_sitelib}/%{name}-%{version}-py%{py3_ver}.egg-info
+%{python_sitelib}/%{name}
+%{python_sitelib}/%{name}-%{version}-py%{python_bin_suffix}.egg-info
 
 %changelog

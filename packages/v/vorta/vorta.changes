@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 24 07:11:25 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Update license to match legaldb report
+  add OFL-1.1 and Apache-2.0 
+
+-------------------------------------------------------------------
+Fri May 24 04:30:44 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Fix Leap 15.6 build
+  * Build with python 3.11
+
+-------------------------------------------------------------------
 Thu Jan 11 16:19:53 UTC 2024 - malcolmlewis@opensuse.org
 
 - Updated to version 0.9.1:
