@@ -4,6 +4,7 @@
     <package name="389-ds" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="7zip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ImageMagick" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="ImageMagick-config-7-SUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="Mesa" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="Mesa-demo-egl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="Mesa-demo-x" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2226,8 +2227,8 @@
     <package name="libibverbs1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libical-glib3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libical3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libicu73" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libicu73-ledata" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libicu75" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libicu75-ledata" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libid3tag0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libidn12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libidn2-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
