@@ -2986,6 +2986,7 @@ BuildFlags: onlybuild:qmlpluginexports:qt5
 BuildFlags: onlybuild:qrencode
 BuildFlags: onlybuild:qtdeclarative-imports-provides:qt5
 BuildFlags: onlybuild:quota
+BuildFlags: onlybuild:rapidjson
 BuildFlags: onlybuild:raptor
 BuildFlags: onlybuild:rav1e
 BuildFlags: onlybuild:rdma-core
