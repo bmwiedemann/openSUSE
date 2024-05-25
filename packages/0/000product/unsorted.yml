@@ -82,6 +82,10 @@ unsorted:
   - HyperKitty-web 
   - HyperKitty-web-uwsgi 
   - IccXML 
+  - ImageMagick-config-7-upstream-limited 
+  - ImageMagick-config-7-upstream-open 
+  - ImageMagick-config-7-upstream-secure 
+  - ImageMagick-config-7-upstream-websafe 
   - ImageMagick-devel 
   - ImageMagick-devel-32bit 
   - ImageMagick-doc 
@@ -1221,9 +1225,7 @@ unsorted:
   - azote 
   - azove 
   - azure-cli 
-  - azure-cli-command-modules-nspkg 
   - azure-cli-core 
-  - azure-cli-nspkg 
   - azure-cli-telemetry 
   - azure-cli-test 
   - azure-storage-cpp-devel 
@@ -3958,12 +3960,17 @@ unsorted:
   - fcitx5-chinese-addons 
   - fcitx5-chinese-addons-devel 
   - fcitx5-configtool 
+  - fcitx5-configtool-kcm6 
+  - fcitx5-configtool-qt6 
+  - fcitx5-customphraseeditor 
+  - fcitx5-customphraseeditor6 
   - fcitx5-devel 
   - fcitx5-gtk2 
   - fcitx5-gtk3 
   - fcitx5-gtk4 
   - fcitx5-hangul 
   - fcitx5-kkc 
+  - fcitx5-kkc-qt6 
   - fcitx5-libthai 
   - fcitx5-lua 
   - fcitx5-lua-devel 
@@ -3971,15 +3978,19 @@ unsorted:
   - fcitx5-m17n 
   - fcitx5-mozc 
   - fcitx5-pinyindictmanager 
+  - fcitx5-pinyindictmanager6 
   - fcitx5-qt-devel 
+  - fcitx5-qt-lang 
   - fcitx5-qt5 
   - fcitx5-qt6 
   - fcitx5-rime 
   - fcitx5-sayura 
   - fcitx5-skk 
+  - fcitx5-skk-qt6 
   - fcitx5-table-extra 
   - fcitx5-table-other 
   - fcitx5-unikey 
+  - fcitx5-unikey-qt6 
   - fcitx5-zhuyin 
   - fclones 
   - fcwnn 
@@ -7728,6 +7739,7 @@ unsorted:
   - gpsd-clients 
   - gpsd-devel 
   - gpsd-qt5-devel 
+  - gpt4all-chat 
   - gptfdisk-fixparts 
   - gputils 
   - gputils-doc 
@@ -13606,8 +13618,8 @@ unsorted:
   - libicu-devel 
   - libicu-devel-32bit 
   - libicu-doc 
-  - libicu73-32bit 
-  - libicu73-bedata 
+  - libicu75-32bit 
+  - libicu75-bedata 
   - libid3-3_8-3 
   - libid3tag-devel 
   - libidl-devel 
@@ -14027,6 +14039,7 @@ unsorted:
   - liblldb17 
   - liblldb18 
   - liblldpctl4 
+  - libllmodel0 
   - liblmdb-0_9_30-32bit 
   - liblms7002m-devel 
   - liblms7compact0 
