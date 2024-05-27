@@ -21,16 +21,16 @@
 
 %bcond_without released
 Name:           kolourpaint
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Paint Program
 # See boo#717722 for license details
 # GPL-2.0 is the license of the Bulgarian translation
 License:        LGPL-2.1-or-later AND GPL-2.0-only
 URL:            https://apps.kde.org/kolourpaint
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
