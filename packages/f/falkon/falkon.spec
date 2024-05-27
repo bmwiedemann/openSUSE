@@ -21,14 +21,14 @@
 
 %bcond_without released
 Name:           falkon
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Modern web browser
 License:        GPL-3.0-or-later
 URL:            https://apps.kde.org/falkon
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -57,7 +57,7 @@ BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(xcb-util)
-# 2024.02.21 still fails to build with python deps
+# 2024-02-11 still fails to build with python deps
 # BuildRequires:  cmake(PySide6)
 # BuildRequires:  cmake(Shiboken6)
 # BuildRequires:  python3-devel
@@ -69,7 +69,7 @@ Provides:       web_browser
 Provides:       falkon-gnome-keyring = %{version}
 Obsoletes:      falkon-gnome-keyring < %{version}
 # No QtWebEngine for other archs
-ExclusiveArch:  aarch64 x86_64 %x86_64 riscv64
+ExclusiveArch:  aarch64 x86_64 riscv64
 
 %description
 Falkon is a web browser designed to well integrate with all
