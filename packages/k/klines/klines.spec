@@ -21,14 +21,14 @@
 
 %bcond_without released
 Name:           klines
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Tactical game
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/klines
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
