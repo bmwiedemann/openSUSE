@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 24 12:26:41 UTC 2024 - Zoltan Balogh <zbalogh@suse.com>
+
+- Fixing bsc#1223985 - zypper-changelog-plugin exhausts all memory 
+- Fixing bsc#1217299 - zypp:plugins/zypper-changelog-plugin: Bug repodata is now using zstd compression
+- Optimized memory usage, more error handling, better structure and 
+  improved comments 
+
+-------------------------------------------------------------------
 Thu Dec  8 06:20:17 UTC 2022 - Zoltan Balogh <zbalogh@suse.com>
 
 - Fixing bsc#1206081 -  The zypper changelog plugin fails for packages not installed
