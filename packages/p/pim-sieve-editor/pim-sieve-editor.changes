@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun May 19 09:57:44 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:17:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * Fix windows build
+  * Use 0.14.2
+  * Remove unused include
+  * Use desktop-application
+  * Use _L1
+  * Add vcs-browser
+  * Drop support for KF5's deprecated KToolInvocation
+  * Apply i18n to percent values
+  * We depend against kf6.0.0
+  * appdata: Add homepage URL
+  * Add app identifier in donation url
+  * Add QT6KEYCHAIN_LIB_VERSION 0.14.1
+  * Fix check for reveal password mode
+  * Port to setRevealPasswordMode (scripted)
+  * Use local includes
+
+-------------------------------------------------------------------
 Tue Apr  9 18:09:51 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
