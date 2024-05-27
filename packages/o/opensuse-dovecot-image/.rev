@@ -41,4 +41,14 @@
     <comment></comment>
     <requestid>1169031</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>41c2a05a3eed50374d4d6278574b06f4</srcmd5>
+    <version>1.0.0</version>
+    <time>1716803799</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1716797648.904a015:
+  * dovecot: add openssl to image (#4)
+  * dovecot: update kiwi schemaversion to 7.4</comment>
+    <requestid>1177054</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 27 08:14:57 UTC 2024 - kukuk@suse.com
+
+- Update to version 1716797648.904a015:
+  * dovecot: add openssl to image (#4)
+  * dovecot: update kiwi schemaversion to 7.4
+
+-------------------------------------------------------------------
 Wed Apr 17 14:48:38 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - update kiwi schemaversion to 7.4
