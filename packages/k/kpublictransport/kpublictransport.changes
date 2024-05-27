@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun May 19 09:56:52 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- Changes since 24.04.80:
+  * Remove PKP provider
+  * Fix dangling reference
+  * Make the pointless path filter for journey results actually work again
+  * Factor out journey filter thresholds
+  * Use the new location-based timezone propagation also for the onboard API
+  * Fill in missing timezones based on locations from KI18nLocaleData
+  * Add another Hafas coach/vehicle feature mapping
+  * Handle invalid coordinates when parsing Navitia responses
+  * transitous: Move NL and BE to regularCoverage
+  * db, transitous: Sync geometry
+  * Add attribution data for Transitous
+  * Map two more Hafas feature message codes
+  * Handle non-WGS84 coordinates in EFA responses
+
+-------------------------------------------------------------------
+Fri May  3 09:16:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Too many changes since 24.02.2, only listing bugfixes:
+  * Fix locale overriding in request unit tests (kde#482357)
+
+-------------------------------------------------------------------
 Tue Apr  9 18:09:00 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
