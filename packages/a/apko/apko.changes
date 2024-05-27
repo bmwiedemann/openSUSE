@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May 25 15:08:37 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.14.3:
+  * spdx: fixup PackageVerificationCode setting
+  * spdx: fixup filesAnalyzed setting
+  * spdx: backpopulate supplier & originator for packages
+  * spdx: Add test case of merging pkg SBOM without supplier
+  * spdx: rename expected.spdx.json ahead of more tests
+
+-------------------------------------------------------------------
 Thu May 23 19:46:28 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.14.2:

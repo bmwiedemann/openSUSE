@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           apko
-Version:        0.14.2
+Version:        0.14.3
 Release:        0
 Summary:        Build OCI images from APK packages directly without Dockerfile
 License:        Apache-2.0
