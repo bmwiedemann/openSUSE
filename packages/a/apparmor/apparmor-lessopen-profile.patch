@@ -5,7 +5,7 @@ Index: profiles/apparmor.d/usr.bin.lessopen.sh
 @@ -0,0 +1,52 @@
 +# vim: ft=apparmor
 +
-+abi <abi/3.0>,
++abi <abi/4.0>,
 +
 +#include <tunables/global>
 +

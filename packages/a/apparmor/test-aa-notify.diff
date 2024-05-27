@@ -1,0 +1,30 @@
+https://gitlab.com/apparmor/apparmor/-/merge_requests/1226
+
+From 715cb711ba26d3ccff490f35f80721cf3678abb6 Mon Sep 17 00:00:00 2001
+From: Christian Boltz <apparmor@cboltz.de>
+Date: Sun, 5 May 2024 22:05:43 +0200
+Subject: [PATCH] Don't rely on argparse saying "options:"
+
+Some argparse versions (for example on openSUSE Leap 15.5) instead say
+"optional arguments:"
+
+Don't rely on the "options:" line to allow both wordings.
+---
+ utils/test/test-aa-notify.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/utils/test/test-aa-notify.py b/utils/test/test-aa-notify.py
+index 4f3e540e9..abffd0631 100644
+--- a/utils/test/test-aa-notify.py
++++ b/utils/test/test-aa-notify.py
+@@ -194,7 +194,6 @@ Display AppArmor notifications or messages for DENIED entries.
+ 
+         expected_output_2 = \
+ '''
+-options:
+   -h, --help            show this help message and exit
+   -p, --poll            poll AppArmor logs and display notifications
+   --display DISPLAY     set the DISPLAY environment variable (might be needed if
+-- 
+GitLab
+

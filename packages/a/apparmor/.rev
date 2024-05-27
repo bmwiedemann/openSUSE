@@ -2735,4 +2735,48 @@ thanks to the upstream 926 merge. (forwarded request 1108011 from dmdiss)</comme
     <comment>Use full URLs for source tarball and signature. (forwarded request 1165684 from badshah400)</comment>
     <requestid>1165715</requestid>
   </revision>
+  <revision rev="206" vrev="1">
+    <srcmd5>925c51b16024544d68141d4c619f7317</srcmd5>
+    <version>4.0.1</version>
+    <time>1716803084</time>
+    <user>anag+factory</user>
+    <comment>- fix bashism in %post profiles
+
+- Update to AppArmor 4.0.1
+  Too many changes to list them here. See
+  https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_4.0.1
+  for the detailed upstream release notes
+- add tools-fix-redefinition.diff: fix redefinition of _ in tools
+- add test-aa-notify.diff: relax test-aa-notify to avoid a mismatch
+  with argparse on Leap 15.5
+- drop upstreamed patches:
+  - apparmor-abstractions-openssl-allow-version-specific-en.patch
+  - dovecot-unix_chkpwd.diff
+  - smbd-unix_chkpwd.diff
+- apparmor-lessopen-profile.patch: update lessopen profile to
+  abi/4.0
+- mark local/* as %ghost so that these dummy files don't get
+  installed anymore (changed existing local/files will be kept,
+  unchanged files will be deleted)
+- switch to gitlab tarballs (without pregenerated libapparmor
+  configure script and prebuilt techdoc.pdf)
+  - run libapparmor autogen.sh (needs additional BuildRequires
+    autoconf, autoconf-archive, automake and libtool)
+  - no longer package techdoc.pdf - old documentation, not worth
+    the texlive BuildRequires we would need to build it
+- drop old (up to 2.12) cache location /var/lib/apparmor/ and the
+  /etc/apparmor.d/cache symlink pointing to it
+- drop apparmor-samba-include-permissions-for-shares.diff - no
+  longer needed, update-apparmor-samba-profile in Tumbleweed works
+  without a pre-existing local/usr.sbin.smbd-shares file
+- drop ruby-2_0-mkmf-destdir.patch - this ancient patch doesn't
+  change a single bit in the resulting build (anymore?)
+- drop apparmor-lessopen-nfs-workaround.diff - no longer needed
+  since Kernel 6.0 (see https://bugs.launchpad.net/bugs/1784499)
+- drop ancient, unused update-trans.sh
+
+
+Note: %post profiles contains a for loop calling &quot;rm&quot; (to delete unchanged /etc/apparmor.d/local/* files). Please double-check for possible side effects I didn't consider.</comment>
+    <requestid>1176730</requestid>
+  </revision>
 </revisionlist>

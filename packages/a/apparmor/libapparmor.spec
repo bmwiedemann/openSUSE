@@ -17,18 +17,26 @@
 #
 
 
+%define tarversion v4.0.1
+
 Name:           libapparmor
-Version:        3.1.7
+Version:        4.0.1
 Release:        0
 Summary:        Utility library for AppArmor
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-URL:            https://launchpad.net/apparmor
-Source0:        https://launchpad.net/apparmor/3.1/%{version}/+download/apparmor-%{version}.tar.gz
-Source1:        https://launchpad.net/apparmor/3.1/%{version}/+download/apparmor-%{version}.tar.gz.asc
+URL:            https://gitlab.com/apparmor/apparmor/
+Source0:        https://gitlab.com/apparmor/apparmor/-/archive/%{tarversion}/apparmor-%{tarversion}.tar.gz
+# from https://gitlab.com/apparmor/apparmor/-/wikis/%{version}_Signatures
+Source1:        apparmor-%{tarversion}.tar.gz.asc
+Source2:        apparmor.keyring
+BuildRequires:  autoconf
+BuildRequires:  autoconf-archive
+BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  dejagnu
 BuildRequires:  flex
+BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -63,11 +71,12 @@ These libraries are needed for developing software that makes use of the
 AppArmor API.
 
 %prep
-%setup -q -n apparmor-%{version}
+%setup -q -n apparmor-%{tarversion}
 
 %build
 (
   cd ./libraries/libapparmor
+  sh ./autogen.sh &&
   %configure \
   --without-perl \
   --without-python \
