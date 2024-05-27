@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun May 19 09:54:54 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:14:44 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * Fix APK build
+  * Fix CI
+  * Port QML to Qt6/KF6 While technically the application builds with Qt6
+  * KAboutData: update homepage URL to latest repo path
+  * appstream: use desktop-application type, add developer & launchable tags
+  * Drop code duplicating what KAboutData::setApplicationData() does
+
+-------------------------------------------------------------------
 Tue Apr  9 18:07:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
