@@ -21,14 +21,14 @@
 
 %bcond_without released
 Name:           kmag
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Screen Magnifier
 License:        GPL-2.0-only
 URL:            https://apps.kde.org/kmag
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -65,7 +65,7 @@ Magnifies a part of the screen.
 %license LICENSES/*
 %doc %lang(en) %{_kf6_htmldir}/en/*/
 %{_kf6_applicationsdir}/org.kde.kmag.desktop
-%{_kf6_appstreamdir}/org.kde.kmag.appdata.xml
+%{_kf6_appstreamdir}/org.kde.kmag.metainfo.xml
 %{_kf6_bindir}/kmag
 %{_kf6_iconsdir}/hicolor/*/apps/kmag.*
 %{_kf6_mandir}/man1/kmag.1*
