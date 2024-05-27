@@ -1,0 +1,299 @@
+From 567a7eb36dbfa367b8dba23e283fbaf7e22ca09a Mon Sep 17 00:00:00 2001
+From: Michele Spagnolo <m.spagnolo@mu.se>
+Date: Thu, 2 May 2024 15:45:20 +0200
+Subject: [PATCH 3/6] Fix utests - 2
+
+---
+ src/importexport/capella/tests/data/test1.cap-ref.mscx          | 2 +-
+ src/importexport/capella/tests/data/test1.capx-ref.mscx         | 2 +-
+ src/importexport/capella/tests/data/test2.cap-ref.mscx          | 2 +-
+ src/importexport/capella/tests/data/test2.capx-ref.mscx         | 2 +-
+ src/importexport/capella/tests/data/test3.cap-ref.mscx          | 2 +-
+ src/importexport/capella/tests/data/test3.capx-ref.mscx         | 2 +-
+ src/importexport/capella/tests/data/test4.cap-ref.mscx          | 2 +-
+ src/importexport/capella/tests/data/test4.capx-ref.mscx         | 2 +-
+ src/importexport/capella/tests/data/test5.cap-ref.mscx          | 2 +-
+ src/importexport/capella/tests/data/test5.capx-ref.mscx         | 2 +-
+ src/importexport/capella/tests/data/test6.cap-ref.mscx          | 2 +-
+ src/importexport/capella/tests/data/test6.capx-ref.mscx         | 2 +-
+ src/importexport/capella/tests/data/test7.cap-ref.mscx          | 2 +-
+ src/importexport/capella/tests/data/test8.cap-ref.mscx          | 2 +-
+ .../capella/tests/data/testEmptyStaff1.capx-ref.mscx            | 2 +-
+ .../capella/tests/data/testEmptyStaff2.capx-ref.mscx            | 2 +-
+ src/importexport/capella/tests/data/testPianoG4G5.capx-ref.mscx | 2 +-
+ src/importexport/capella/tests/data/testScaleC4C5.capx-ref.mscx | 2 +-
+ src/importexport/capella/tests/data/testSlurTie.capx-ref.mscx   | 2 +-
+ src/importexport/capella/tests/data/testText1.capx-ref.mscx     | 2 +-
+ src/importexport/capella/tests/data/testTuplet1.capx-ref.mscx   | 2 +-
+ src/importexport/capella/tests/data/testTuplet2.cap-ref.mscx    | 2 +-
+ src/importexport/capella/tests/data/testTuplet2.capx-ref.mscx   | 2 +-
+ src/importexport/capella/tests/data/testVolta1.capx-ref.mscx    | 2 +-
+ 24 files changed, 24 insertions(+), 24 deletions(-)
+
+diff --git a/src/importexport/capella/tests/data/test1.cap-ref.mscx b/src/importexport/capella/tests/data/test1.cap-ref.mscx
+index 999f9ae458..77ea9db73e 100644
+--- a/src/importexport/capella/tests/data/test1.cap-ref.mscx
++++ b/src/importexport/capella/tests/data/test1.cap-ref.mscx
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<museScore version="4.20">
++<museScore version="4.30">
+   <Score>
+     <Division>480</Division>
+     <Style>
+diff --git a/src/importexport/capella/tests/data/test1.capx-ref.mscx b/src/importexport/capella/tests/data/test1.capx-ref.mscx
+index 389481f870..6050de7900 100644
+--- a/src/importexport/capella/tests/data/test1.capx-ref.mscx
++++ b/src/importexport/capella/tests/data/test1.capx-ref.mscx
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<museScore version="4.20">
++<museScore version="4.30">
+   <Score>
+     <Division>480</Division>
+     <Style>
+diff --git a/src/importexport/capella/tests/data/test2.cap-ref.mscx b/src/importexport/capella/tests/data/test2.cap-ref.mscx
+index 888c2bc037..64de543904 100644
+--- a/src/importexport/capella/tests/data/test2.cap-ref.mscx
++++ b/src/importexport/capella/tests/data/test2.cap-ref.mscx
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<museScore version="4.20">
++<museScore version="4.30">
+   <Score>
+     <Division>480</Division>
+     <Style>
+diff --git a/src/importexport/capella/tests/data/test2.capx-ref.mscx b/src/importexport/capella/tests/data/test2.capx-ref.mscx
+index 660d3c1f8c..f4ebc2324f 100644
+--- a/src/importexport/capella/tests/data/test2.capx-ref.mscx
++++ b/src/importexport/capella/tests/data/test2.capx-ref.mscx
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<museScore version="4.20">
++<museScore version="4.30">
+   <Score>
+     <Division>480</Division>
+     <Style>
+diff --git a/src/importexport/capella/tests/data/test3.cap-ref.mscx b/src/importexport/capella/tests/data/test3.cap-ref.mscx
+index 6b2f773c66..979fecb32c 100644
+--- a/src/importexport/capella/tests/data/test3.cap-ref.mscx
++++ b/src/importexport/capella/tests/data/test3.cap-ref.mscx
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<museScore version="4.20">
++<museScore version="4.30">
+   <Score>
+     <Division>480</Division>
+     <Style>
+diff --git a/src/importexport/capella/tests/data/test3.capx-ref.mscx b/src/importexport/capella/tests/data/test3.capx-ref.mscx
+index a785ed1caa..755f00845c 100644
+--- a/src/importexport/capella/tests/data/test3.capx-ref.mscx
++++ b/src/importexport/capella/tests/data/test3.capx-ref.mscx
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<museScore version="4.20">
++<museScore version="4.30">
+   <Score>
+     <Division>480</Division>
+     <Style>
+diff --git a/src/importexport/capella/tests/data/test4.cap-ref.mscx b/src/importexport/capella/tests/data/test4.cap-ref.mscx
+index 7e959b9ff6..640174901f 100644
+--- a/src/importexport/capella/tests/data/test4.cap-ref.mscx
++++ b/src/importexport/capella/tests/data/test4.cap-ref.mscx
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<museScore version="4.20">
++<museScore version="4.30">
+   <Score>
+     <Division>480</Division>
+     <Style>
+diff --git a/src/importexport/capella/tests/data/test4.capx-ref.mscx b/src/importexport/capella/tests/data/test4.capx-ref.mscx
+index 368d044e29..fcf0f0db2e 100644
+--- a/src/importexport/capella/tests/data/test4.capx-ref.mscx
++++ b/src/importexport/capella/tests/data/test4.capx-ref.mscx
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<museScore version="4.20">
++<museScore version="4.30">
+   <Score>
+     <Division>480</Division>
+     <Style>
+diff --git a/src/importexport/capella/tests/data/test5.cap-ref.mscx b/src/importexport/capella/tests/data/test5.cap-ref.mscx
+index 0023f42a0e..b973aa2d4d 100644
+--- a/src/importexport/capella/tests/data/test5.cap-ref.mscx
++++ b/src/importexport/capella/tests/data/test5.cap-ref.mscx
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<museScore version="4.20">
++<museScore version="4.30">
+   <Score>
+     <Division>480</Division>
+     <Style>
+diff --git a/src/importexport/capella/tests/data/test5.capx-ref.mscx b/src/importexport/capella/tests/data/test5.capx-ref.mscx
+index d810eae4f5..b0e750884e 100644
+--- a/src/importexport/capella/tests/data/test5.capx-ref.mscx
++++ b/src/importexport/capella/tests/data/test5.capx-ref.mscx
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<museScore version="4.20">
++<museScore version="4.30">
+   <Score>
+     <Division>480</Division>
+     <Style>
+diff --git a/src/importexport/capella/tests/data/test6.cap-ref.mscx b/src/importexport/capella/tests/data/test6.cap-ref.mscx
+index 04959938f8..4bf719052a 100644
+--- a/src/importexport/capella/tests/data/test6.cap-ref.mscx
++++ b/src/importexport/capella/tests/data/test6.cap-ref.mscx
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<museScore version="4.20">
++<museScore version="4.30">
+   <Score>
+     <Division>480</Division>
+     <Style>
+diff --git a/src/importexport/capella/tests/data/test6.capx-ref.mscx b/src/importexport/capella/tests/data/test6.capx-ref.mscx
+index 049a5b7cd6..00377f12fd 100644
+--- a/src/importexport/capella/tests/data/test6.capx-ref.mscx
++++ b/src/importexport/capella/tests/data/test6.capx-ref.mscx
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<museScore version="4.20">
++<museScore version="4.30">
+   <Score>
+     <Division>480</Division>
+     <Style>
+diff --git a/src/importexport/capella/tests/data/test7.cap-ref.mscx b/src/importexport/capella/tests/data/test7.cap-ref.mscx
+index 4683f3bb6a..3da11e95a8 100644
+--- a/src/importexport/capella/tests/data/test7.cap-ref.mscx
++++ b/src/importexport/capella/tests/data/test7.cap-ref.mscx
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<museScore version="4.20">
++<museScore version="4.30">
+   <Score>
+     <Division>480</Division>
+     <Style>
+diff --git a/src/importexport/capella/tests/data/test8.cap-ref.mscx b/src/importexport/capella/tests/data/test8.cap-ref.mscx
+index a6d3711042..753e91c6fc 100644
+--- a/src/importexport/capella/tests/data/test8.cap-ref.mscx
++++ b/src/importexport/capella/tests/data/test8.cap-ref.mscx
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<museScore version="4.20">
++<museScore version="4.30">
+   <Score>
+     <Division>480</Division>
+     <Style>
+diff --git a/src/importexport/capella/tests/data/testEmptyStaff1.capx-ref.mscx b/src/importexport/capella/tests/data/testEmptyStaff1.capx-ref.mscx
+index 8bbfa2aafd..d67aab2e5d 100644
+--- a/src/importexport/capella/tests/data/testEmptyStaff1.capx-ref.mscx
++++ b/src/importexport/capella/tests/data/testEmptyStaff1.capx-ref.mscx
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<museScore version="4.20">
++<museScore version="4.30">
+   <Score>
+     <Division>480</Division>
+     <Style>
+diff --git a/src/importexport/capella/tests/data/testEmptyStaff2.capx-ref.mscx b/src/importexport/capella/tests/data/testEmptyStaff2.capx-ref.mscx
+index c933c734f6..f91d0b6700 100644
+--- a/src/importexport/capella/tests/data/testEmptyStaff2.capx-ref.mscx
++++ b/src/importexport/capella/tests/data/testEmptyStaff2.capx-ref.mscx
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<museScore version="4.20">
++<museScore version="4.30">
+   <Score>
+     <Division>480</Division>
+     <Style>
+diff --git a/src/importexport/capella/tests/data/testPianoG4G5.capx-ref.mscx b/src/importexport/capella/tests/data/testPianoG4G5.capx-ref.mscx
+index 615cb9925b..c396aa5241 100644
+--- a/src/importexport/capella/tests/data/testPianoG4G5.capx-ref.mscx
++++ b/src/importexport/capella/tests/data/testPianoG4G5.capx-ref.mscx
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<museScore version="4.20">
++<museScore version="4.30">
+   <Score>
+     <Division>480</Division>
+     <Style>
+diff --git a/src/importexport/capella/tests/data/testScaleC4C5.capx-ref.mscx b/src/importexport/capella/tests/data/testScaleC4C5.capx-ref.mscx
+index 38eff32dff..2c03d3e4f7 100644
+--- a/src/importexport/capella/tests/data/testScaleC4C5.capx-ref.mscx
++++ b/src/importexport/capella/tests/data/testScaleC4C5.capx-ref.mscx
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<museScore version="4.20">
++<museScore version="4.30">
+   <Score>
+     <Division>480</Division>
+     <Style>
+diff --git a/src/importexport/capella/tests/data/testSlurTie.capx-ref.mscx b/src/importexport/capella/tests/data/testSlurTie.capx-ref.mscx
+index 7d5ee61bb4..aae0aa8a4b 100644
+--- a/src/importexport/capella/tests/data/testSlurTie.capx-ref.mscx
++++ b/src/importexport/capella/tests/data/testSlurTie.capx-ref.mscx
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<museScore version="4.20">
++<museScore version="4.30">
+   <Score>
+     <Division>480</Division>
+     <Style>
+diff --git a/src/importexport/capella/tests/data/testText1.capx-ref.mscx b/src/importexport/capella/tests/data/testText1.capx-ref.mscx
+index f602648765..b550467330 100644
+--- a/src/importexport/capella/tests/data/testText1.capx-ref.mscx
++++ b/src/importexport/capella/tests/data/testText1.capx-ref.mscx
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<museScore version="4.20">
++<museScore version="4.30">
+   <Score>
+     <Division>480</Division>
+     <Style>
+diff --git a/src/importexport/capella/tests/data/testTuplet1.capx-ref.mscx b/src/importexport/capella/tests/data/testTuplet1.capx-ref.mscx
+index de133f919e..c2e645e50f 100644
+--- a/src/importexport/capella/tests/data/testTuplet1.capx-ref.mscx
++++ b/src/importexport/capella/tests/data/testTuplet1.capx-ref.mscx
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<museScore version="4.20">
++<museScore version="4.30">
+   <Score>
+     <Division>480</Division>
+     <Style>
+diff --git a/src/importexport/capella/tests/data/testTuplet2.cap-ref.mscx b/src/importexport/capella/tests/data/testTuplet2.cap-ref.mscx
+index 9a1cbf5978..86a01326ad 100644
+--- a/src/importexport/capella/tests/data/testTuplet2.cap-ref.mscx
++++ b/src/importexport/capella/tests/data/testTuplet2.cap-ref.mscx
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<museScore version="4.20">
++<museScore version="4.30">
+   <Score>
+     <Division>480</Division>
+     <Style>
+diff --git a/src/importexport/capella/tests/data/testTuplet2.capx-ref.mscx b/src/importexport/capella/tests/data/testTuplet2.capx-ref.mscx
+index 0ed0185f61..d16e9b371b 100644
+--- a/src/importexport/capella/tests/data/testTuplet2.capx-ref.mscx
++++ b/src/importexport/capella/tests/data/testTuplet2.capx-ref.mscx
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<museScore version="4.20">
++<museScore version="4.30">
+   <Score>
+     <Division>480</Division>
+     <Style>
+diff --git a/src/importexport/capella/tests/data/testVolta1.capx-ref.mscx b/src/importexport/capella/tests/data/testVolta1.capx-ref.mscx
+index 607af2e2a2..44d73bd234 100644
+--- a/src/importexport/capella/tests/data/testVolta1.capx-ref.mscx
++++ b/src/importexport/capella/tests/data/testVolta1.capx-ref.mscx
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<museScore version="4.20">
++<museScore version="4.30">
+   <Score>
+     <Division>480</Division>
+     <Style>
+-- 
+2.45.1
+

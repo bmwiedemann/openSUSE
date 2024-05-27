@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun May 26 22:06:23 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add patch series that was included in the usptream binaries but
+  not in the 4.3.0 tag:
+  https://github.com/musescore/MuseScore/issues/22984
+
+  0001-Increase-file-version-number-to-430.patch
+  0002-Fix-utests-1.patch
+  0003-Fix-utests-2.patch
+  0004-Fix-utests-3.patch
+  0005-Fix-utests-4.patch
+  0006-Fix-utests-5.patch
+
+-------------------------------------------------------------------
 Wed May  8 12:28:54 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - MuseScore 4.3.0:

@@ -1,0 +1,38 @@
+From 16f358cd23e0e30a8e6dd9a514a0f8f9dbf96f5a Mon Sep 17 00:00:00 2001
+From: Michele Spagnolo <m.spagnolo@mu.se>
+Date: Thu, 2 May 2024 15:37:37 +0200
+Subject: [PATCH 1/6] Increase file version number to 430
+
+---
+ src/engraving/types/constants.h | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/engraving/types/constants.h b/src/engraving/types/constants.h
+index 6f155be2a4..34e10d8dd2 100644
+--- a/src/engraving/types/constants.h
++++ b/src/engraving/types/constants.h
+@@ -28,8 +28,8 @@
+ namespace mu::engraving {
+ struct Constants
+ {
+-    static constexpr int MSC_VERSION = 420;
+-    static constexpr const char* MSC_VERSION_STR = "4.20";
++    static constexpr int MSC_VERSION = 430;
++    static constexpr const char* MSC_VERSION_STR = "4.30";
+ 
+ // History:
+ //    1.3   added staff->_barLineSpan
+@@ -90,6 +90,10 @@ struct Constants
+ //       - Corrections to key signature and transposition (#18998)
+ //       - New inside/outside style for ties
+ 
++//    4.30 (Version 4.3)
++//       - New styles for tab notation
++//       - Sound flags
++
+     constexpr static int DIVISION = 480;
+     constexpr static BeatsPerSecond DEFAULT_TEMPO = 2.0; //default tempo is equal 120 bpm
+ };
+-- 
+2.45.1
+
