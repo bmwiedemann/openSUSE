@@ -1,7 +1,7 @@
 #
 # spec file for package munge
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@
 %define munge_descr "MUNGE authentication service"
 
 Name:           munge
-Version:        0.5.15
+Version:        0.5.16
 Release:        0
 Summary:        An authentication service for creating and validating credentials
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -72,7 +72,7 @@ BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
 %endif
 Requires(post): coreutils
-Requires(postun):coreutils
+Requires(postun): coreutils
 
 %description
 MUNGE (MUNGE Uid 'N' Gid Emporium) is an authentication service for

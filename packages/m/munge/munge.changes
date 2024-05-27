@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 26 11:03:40 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 0.5.16
+  * Fixed connect failure retry for full socket listen queue.
+  * Added --listen-backlog cmdline opt. (#139) 
+
+-------------------------------------------------------------------
 Wed Jul  6 09:29:47 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to version 0.5.15:
