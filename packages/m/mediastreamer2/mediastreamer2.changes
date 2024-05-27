@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May 25 13:07:00 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- add patch fix_soversion.patch
+- add package libmediastreamer2-11 containing libmediastreamer2.so.11
+  * do no pack such library in package mediastreamer2-devel
+    otherwise when installing linphone-desktop a bunch of unnecessary
+    devel packages get installed as well
+
+-------------------------------------------------------------------
 Thu May 16 15:58:22 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - specify in CFLAGS the location of the bcmatroska2 header files

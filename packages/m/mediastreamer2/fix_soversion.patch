@@ -1,0 +1,22 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -613,8 +613,6 @@
+ 		if(VPX_FOUND)
+ 			set_target_properties(mediastreamer2 PROPERTIES LINK_FLAGS "-Wl,--exclude-libs,libvpx.a")
+ 		endif()
+-		# Do not version shared library on Android
+-		set_target_properties(mediastreamer2 PROPERTIES SOVERSION ${MEDIASTREAMER_SO_VERSION})
+ 	else()
+ 
+ 
+@@ -654,7 +652,8 @@
+ 		endif()
+ 
+ 
+-
++		# Do not version shared library on Android
++		set_target_properties(mediastreamer2 PROPERTIES SOVERSION ${MEDIASTREAMER_SO_VERSION})
+ 	endif()
+ 	if(IOS)
+ 		target_link_libraries(mediastreamer2 INTERFACE "-framework Foundation" "-framework AVFoundation")

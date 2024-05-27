@@ -669,4 +669,17 @@
 </comment>
     <requestid>1174657</requestid>
   </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>43435ba2cf230d6c037e52ecdf00c6a9</srcmd5>
+    <version>5.3.37</version>
+    <time>1716803713</time>
+    <user>anag+factory</user>
+    <comment>- add patch fix_soversion.patch
+- add package libmediastreamer2-11 containing libmediastreamer2.so.11
+  * do no pack such library in package mediastreamer2-devel
+    otherwise when installing linphone-desktop a bunch of unnecessary
+    devel packages get installed as well
+</comment>
+    <requestid>1176866</requestid>
+  </revision>
 </revisionlist>

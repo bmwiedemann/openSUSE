@@ -16,6 +16,9 @@
 #
 
 
+%define sobase  libmediastreamer2
+%define sover   11
+
 Name:           mediastreamer2
 Version:        5.3.37
 Release:        0
@@ -27,14 +30,15 @@ Source:         https://gitlab.linphone.org/BC/public/mediastreamer2/-/archive/%
 Patch0:         mediastreamer2-fix-pkgconfig.patch
 Patch1:         fix-srtp2-linphone.patch
 Patch2:         fix-build-ffmpeg5.patch
-Patch3:         set_current_version.patch
+Patch3:         fix_soversion.patch
+Patch4:         set_current_version.patch
 %if 0%{?suse_version} >= 1600
 BuildRequires:  liboqs-devel
 # At the time of writing (22/Dec/2023), PQCE is only available on Tumbleweed.
 BuildRequires:  postquantumcryptoengine-devel >= 5.3.0~git.20230802
 %endif
 BuildRequires:  Mesa-libGL-devel
-BuildRequires:  bcmatroska2-devel >= 0.23
+BuildRequires:  bcmatroska2-devel >= 5.3.0
 BuildRequires:  broadvoice16-devel
 BuildRequires:  cmake >= 3.22
 BuildRequires:  doxygen
@@ -85,6 +89,15 @@ Mediastreamer2 is a library to make audio and video real-time
 streaming and processing. It is written in pure C and based upon the
 oRTP library.
 
+%package -n %{sobase}-%{sover}
+Summary:        Audio/video real-time streaming library, base part
+Group:          System/Libraries
+
+%description -n %{sobase}-%{sover}
+Mediastreamer2 is a library to make audio and video real-time
+streaming and processing. It is written in pure C and based upon the
+oRTP library.
+
 %package doc
 Summary:        Documentation for the mediastreamer2 library
 Group:          Documentation/HTML
@@ -101,6 +114,7 @@ This package contains documentation files
 Summary:        Headers and libraries for the mediastreamer2 library
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
+Requires:       %{sobase}-%{sover} = %{version}
 Requires:       bcmatroska2-devel
 
 %description devel
@@ -119,6 +133,7 @@ if pkg-config --atleast-version 59.37.100 libavcodec; then
 %patch -P 2 -p1
 fi
 %patch -P 3 -p1
+%patch -P 4 -p1
 
 %build
 export CFLAGS="%(echo %{optflags}) -fcommon -Wno-implicit-function-declaration -I%_includedir/bcmatroska2 -I%_includedir/corec"
@@ -142,6 +157,9 @@ mkdir -p %{buildroot}%{_docdir}/%{name}/
 mv -T %{buildroot}%{_datadir}/doc/%{name}-%{version}/ \
   %{buildroot}%{_docdir}/%{name}/
 
+%post -n %{sobase}-%{sover} -p /sbin/ldconfig
+%postun -n %{sobase}-%{sover} -p /sbin/ldconfig
+
 %files
 %license LICENSE.txt
 %{_bindir}/mediastreamer2-mediastream
@@ -153,6 +171,9 @@ mv -T %{buildroot}%{_datadir}/doc/%{name}-%{version}/ \
 %{_libdir}/mediastreamer/plugins/libmsqogl.so
 %endif
 %endif
+
+%files -n %{sobase}-%{sover}
+%{_libdir}/%{sobase}.so.%{sover}*
 
 %files doc
 %doc README.md
