@@ -23,14 +23,14 @@
 %define rname baloo-widgets
 %bcond_without released
 Name:           baloo-widgets
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Framework for searching and managing metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
 URL:            https://www.kde.org
-Source:         %{rname}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 Source99:       baloo-widgets-rpmlintrc
