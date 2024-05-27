@@ -20,19 +20,19 @@
 
 %define kf6_version 6.0.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.2
+%define kpim6_version 6.0.80
 %define plasma6_version 5.27.80
 
 %bcond_without released
 Name:           merkuro
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Calendar Application
 License:        GPL-3.0-only
 URL:            https://apps.kde.org/merkuro.calendar
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -62,7 +62,6 @@ BuildRequires:  cmake(KPim6MailTransport) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MimeTreeParserCore) >= %{kpim6_version}
 BuildRequires:  cmake(Plasma) >= %{plasma6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
-BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
@@ -81,7 +80,7 @@ Requires:       qt6-declarative-imports >= %{qt6_version}
 Provides:       kalendar = %{version}
 Obsoletes:      kalendar < %{version}
 # merkuro has a runtime dependency on QtWebEngine
-ExclusiveArch:  x86_64 %x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 Calendar application using Akonadi to sync with external services (NextCloud, GMail, ...).
