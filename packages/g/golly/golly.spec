@@ -1,7 +1,7 @@
 #
 # spec file for package golly
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           golly
-Version:        4.2
+Version:        4.3
 Release:        0
 Summary:        Tool for exploring Game of Life and other automata
 License:        GPL-2.0-or-later
 Group:          Amusements/Toys/Graphics
-URL:            https://golly.sourceforge.net/
+URL:            https://golly.sourceforge.io
 Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}-src.tar.gz
 Source1:        %{name}.desktop
 BuildRequires:  SDL2-devel
@@ -85,7 +85,7 @@ rm -v {Help/Lexicon/modify.pl,docs/Build.html}
 %set_build_flags
 export GOLLYDIR=%{_datadir}/%{name}
 cd gui-wx
-%make_build -f makefile-gtk 
+%make_build -f makefile-gtk
 
 %install
 install -D -m 0755 bgolly golly -t %{buildroot}%{_bindir}

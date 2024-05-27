@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sat May 25 15:08:01 UTC 2024 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 4.3:
+  * Added the new Investigator rule family to the Super algorithm.
+  * Adjusted Super conversion scripts to handle Investigator rules,
+    including a new toInvestigator.lua conversion script that will
+    be mapped by default to Alt+I whenever Golly creates a new
+    GollyPrefs file.
+  * Minor improvements to error-checking and recovery in
+    toHistory.lua and toSuper.lua conversion scripts.
+  * Various changes to the RLE parsing code, mainly for consistency
+    with LifeViewer..
+  * Fixed a crash by limiting the scale to no more than 2^(2^20)
+    cells per pixel.
+  * Fixed a bug that affected all multi-state hashlife algorithms
+    (changing a cell in a very large pattern could result in a
+    corrupted universe).
+  * Fixed some bugs handling filenames with underscores or
+    ampersands in the Open/Run Recent submenus.
+  * Fixed orientation of Custom neighborhood in the Larger than
+    Life algorithm.
+  * Fixed an assertion in progress bar update when downloading a
+    file from a web server using gzip compression.
+  * Better support for .rule files with very long lines. An error
+    message is now displayed if a line exceeds the maximum length of
+    4,000 characters.
+  * The Pattern Info window displays Unicode characters correctly
+    (assuming the comments are UTF-8 encoded).
+  * 3D.lua has a Pattern Info command (in its View menu) which will
+    display the current pattern's comments in the help window. You
+    can also click on the new "i" button.
+  * The Larger than Life algorithm now supports Aligned Checkerboard
+    neighborhood (ND).
+  * New script safeopenclip.lua will attempt to open the clipboard
+    as a pattern.
+  * Modified goto.lua to check for a number too large for Lua (if
+    so then the script exits and recommends using goto.py instead).
+  * File > Run Clipboard displays a nicer error message if the
+    clipboard doesn't contain Lua/Python code.
+  * Removed optional support for Perl.
+  * Updated Lua to version 5.4.6.
+  * Added a query command (for Lua or Python) that displays a
+    modal dialog with customizable button labels.
+  * Lots of new patterns.
+  * Reformatted and renamed many Larger than Life and Generations
+    patterns to use Golly native HROT format and/or an .rle
+    extension instead of .mcl.
+  * Deleted pattern: oscillator-stamp-collection-12August2022.rle
+    (replaced by oscillator-stamp-collection-31January2023.rle).
+  * The comments in a large number of existing patterns have been
+    modified (broken links deleted or fixed, and the formatting of
+    paragraphs made more consistent).
+  * Added new rules required by some of the new patterns.
+
+-------------------------------------------------------------------
 Thu May 18 09:50:42 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim unquantified wording from descriptions.
