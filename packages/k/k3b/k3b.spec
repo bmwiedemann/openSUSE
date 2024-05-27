@@ -24,14 +24,14 @@
 %bcond_without lame
 %bcond_without mad
 Name:           k3b
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        CD/DVD/Blu-ray Burning Application by KDE
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/k3b
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -65,7 +65,7 @@ BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
-%ifarch x86_64 %x86_64 aarch64 riscv64
+%ifarch x86_64 aarch64 riscv64
 BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
 %endif
 BuildRequires:  pkgconfig(dvdread)

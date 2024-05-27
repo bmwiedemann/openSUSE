@@ -1,4 +1,4 @@
-From 45609f881bd8cd8cfd0a1c53b04192bab8969c5d Mon Sep 17 00:00:00 2001
+From 50e466004d9eefb7c54d8f20f99c730aa9d33fc3 Mon Sep 17 00:00:00 2001
 From: Luca Beltrame <lbeltrame@kde.org>
 Date: Mon, 3 Jun 2019 22:31:35 +0200
 Subject: [PATCH] Revert "Enable the k3b helper by default"
@@ -16,7 +16,7 @@ This reverts commit cb4985b00dc2d1a1e27850dcd672093426aafd8b.
  8 files changed, 42 insertions(+), 1 deletion(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 0eb74a0..39a0624 100644
+index 9bc9152..ae8aa40 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -36,6 +36,7 @@ option(K3B_ENABLE_MUSICBRAINZ "Support for querying metadata about audio tracks
@@ -139,7 +139,7 @@ index 4108ba3..9445517 100644
  
  #include "moc_k3bdevicewidget.cpp"
 diff --git a/src/option/k3bexternalbinpermissionmodel.cpp b/src/option/k3bexternalbinpermissionmodel.cpp
-index c3e24d0..2f64497 100644
+index 02b608c..e6bcd0c 100644
 --- a/src/option/k3bexternalbinpermissionmodel.cpp
 +++ b/src/option/k3bexternalbinpermissionmodel.cpp
 @@ -341,6 +341,7 @@ QModelIndex ExternalBinPermissionModel::buddy( const QModelIndex& index ) const
@@ -159,10 +159,10 @@ index c3e24d0..2f64497 100644
  
  void ExternalBinPermissionModel::update()
 diff --git a/src/option/k3bexternalbinwidget.cpp b/src/option/k3bexternalbinwidget.cpp
-index e029226..0f6cc28 100644
+index 85c1ae8..f0068a1 100644
 --- a/src/option/k3bexternalbinwidget.cpp
 +++ b/src/option/k3bexternalbinwidget.cpp
-@@ -104,7 +104,12 @@ K3b::ExternalBinWidget::ExternalBinWidget( K3b::ExternalBinManager* manager, QWi
+@@ -103,7 +103,12 @@ K3b::ExternalBinWidget::ExternalBinWidget( K3b::ExternalBinManager* manager, QWi
      // setup permissions tab
      // ------------------------------------------------------------
      QWidget* permissionsTab = new QWidget( m_mainTabWidget );
@@ -175,7 +175,7 @@ index e029226..0f6cc28 100644
      permissionsLabel->setWordWrap( true );
      m_permissionModel = new ExternalBinPermissionModel( *manager, permissionsTab );
      m_permissionView = new QTreeView( permissionsTab );
-@@ -112,11 +117,15 @@ K3b::ExternalBinWidget::ExternalBinWidget( K3b::ExternalBinManager* manager, QWi
+@@ -111,11 +116,15 @@ K3b::ExternalBinWidget::ExternalBinWidget( K3b::ExternalBinManager* manager, QWi
      m_permissionView->setAllColumnsShowFocus( true );
      m_permissionView->setRootIsDecorated( false );
      m_permissionView->header()->setSectionResizeMode( ExternalBinPermissionModel::ProgramColumn, QHeaderView::ResizeToContents );
@@ -191,7 +191,7 @@ index e029226..0f6cc28 100644
      m_mainTabWidget->addTab( permissionsTab, i18n("Permissions") );
  
  
-@@ -135,9 +144,11 @@ K3b::ExternalBinWidget::ExternalBinWidget( K3b::ExternalBinManager* manager, QWi
+@@ -134,9 +143,11 @@ K3b::ExternalBinWidget::ExternalBinWidget( K3b::ExternalBinManager* manager, QWi
  
      m_mainTabWidget->addTab( searchPathTab, i18n("Search Path") );
  
@@ -203,7 +203,7 @@ index e029226..0f6cc28 100644
      connect( m_rescanButton, SIGNAL(clicked(bool)), this, SLOT(rescan()) );
  
      qRegisterMetaType<HelperProgramItem>();
-@@ -145,6 +156,7 @@ K3b::ExternalBinWidget::ExternalBinWidget( K3b::ExternalBinManager* manager, QWi
+@@ -144,6 +155,7 @@ K3b::ExternalBinWidget::ExternalBinWidget( K3b::ExternalBinManager* manager, QWi
      qRegisterMetaTypeStreamOperators<HelperProgramItem>("K3b::HelperProgramItem");
  #endif
  
@@ -211,7 +211,7 @@ index e029226..0f6cc28 100644
      while (::group *g = ::getgrent()) {
          const QString groupName = QString::fromLocal8Bit(g->gr_name);
          if (groupName == "cdrom" ||
-@@ -154,6 +166,7 @@ K3b::ExternalBinWidget::ExternalBinWidget( K3b::ExternalBinManager* manager, QWi
+@@ -153,6 +165,7 @@ K3b::ExternalBinWidget::ExternalBinWidget( K3b::ExternalBinManager* manager, QWi
          }
      }
      ::endgrent();
@@ -219,7 +219,7 @@ index e029226..0f6cc28 100644
  }
  
  
-@@ -200,12 +213,15 @@ void K3b::ExternalBinWidget::saveSearchPath()
+@@ -199,12 +212,15 @@ void K3b::ExternalBinWidget::saveSearchPath()
  
  void K3b::ExternalBinWidget::slotPermissionModelChanged()
  {
@@ -235,19 +235,19 @@ index e029226..0f6cc28 100644
      KAuth::Action action("org.kde.k3b.updatepermissions");
      action.setHelperId("org.kde.k3b");
  
-@@ -252,6 +268,7 @@ void K3b::ExternalBinWidget::slotChangePermissions()
+@@ -256,6 +272,7 @@ void K3b::ExternalBinWidget::slotChangePermissions()
          }
      } );
      job->start();
 +#endif
  }
  
- #include "moc_k3bexternalbinwidget.cpp"
+ 
 diff --git a/src/option/k3bexternalbinwidget.h b/src/option/k3bexternalbinwidget.h
-index dceaba8..9426412 100644
+index b610147..d53a4fc 100644
 --- a/src/option/k3bexternalbinwidget.h
 +++ b/src/option/k3bexternalbinwidget.h
-@@ -57,7 +57,9 @@ namespace K3b {
+@@ -66,7 +66,9 @@ namespace K3b {
          QTreeView* m_permissionView;
          KEditListWidget* m_searchPathBox;
  
@@ -257,3 +257,6 @@ index dceaba8..9426412 100644
          QPushButton* m_rescanButton;
      };
  }
+-- 
+2.44.0
+

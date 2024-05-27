@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun May 19 09:55:11 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- Changes since 24.04.80:
+  * K3b::Device::debugBitfield: Fix crash when using Qt6 (kde#486314)
+
+-------------------------------------------------------------------
+Fri May  3 09:15:01 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * Port more parts of libk3b away from QRegExp
+  * kde#485432: Fix libavcodec version major typo
+  * kde#485432: Add libavcodec version major check for FFmpeg avutil: remove deprecated FF_API_OLD_CHANNEL_LAYOUT
+  * Port libk3bdevice away from Qt::Core5Compat
+  * Add dontAskAgain about add hidden files for DataUrlAddingDialog
+  * Remove unused out parameter
+  * Remove QTextCodec use
+  * Settings (External Programs): Give a useful error message on failure
+  * Settings (External Programs): Consistent permissions format for both columns
+
+-------------------------------------------------------------------
 Tue Apr  9 18:07:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
