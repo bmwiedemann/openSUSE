@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun May 19 09:56:42 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- Changes since 24.04.80:
+  * use KIconTheme::initTheme & KStyleManager::initStyle to ensure proper styling outside of plasma
+  * Remove unused includes
+  * Construct tabbar with tabwidget parent
+  * Fix case when Lam Alef is at the end of the line
+  * Don't use Lam-Alef ligatures when shaping arabic letters (kde#478181)
+  * Supress incorrect resize notifications
+  * Fixed the window geometry config file placement.
+
+-------------------------------------------------------------------
+Fri May  3 09:16:27 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Too many changes since 24.02.2, only listing bugfixes:
+  * Character: Return stringWidth, not value of ignoreWcWidth (kde#485155)
+  * Fix hamburger menu/toolbar issues when splitting tabs (kde#474848)
+  * Override width of YiJing Hexagram Symbols Unicode characters (0x4dc0-0x4dff) (kde#421625)
+  * Add next/previous actions to change the profile of the current terminal (kde#413258)
+  * Add hamburger menu action to all active views (kde#484171)
+  * Check only IXON when getting flow control state (kde#457924)
+  * Do not enclose CTL tab in appearance dialogue in its own qwidget (kde#474309)
+  * Fix strings to allow translations (kde#482364)
+  * Change type of tokenBuffer to QList allow longer length of tokens. (kde#479241)
+  * Draw block cursor with antialiasing (kde#483197)
+  * Draw block cursor outline with MiterJoin (kde#483197)
+  * Fallback to home dir if initial working dir is inaccessible (kde#470262)
+  * Reshow configuration dialog after toggling borders (kde#479081)
+  * Fix getting FreeBSD process name (kde#480196)
+  * Fix touchscreen scroll inconsistency (kde#450440)
+  * Support non-BMP codepoints in HTMLDecoder (kde#479983)
+  * terminalDisplay/TerminalFonts: fix checking if emojiFont is set (kde#481211)
+  * fix: Issue with focus setting on wdg after relocating to a new splitter (kde#479858)
+  * Implemented DBus methods for reading displayed text (kde#238032)
+
+-------------------------------------------------------------------
 Tue Apr  9 18:08:50 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
