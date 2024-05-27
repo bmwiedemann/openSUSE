@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.7.0
+%define real_version 6.7.1
 %define short_version 6.7
 %define tar_name qtopcua-everywhere-src
 %define tar_suffix %{nil}
@@ -27,14 +27,14 @@
 %endif
 #
 Name:           qt6-opcua%{?pkg_suffix}
-Version:        6.7.0
+Version:        6.7.1
 Release:        0
 Summary:        Qt wrapper for existing OPC UA stacks
 # src/plugins/opcua is GPL-3.0-or-later, rest is dual licensed
 # only exception is the open62541 folder which is MPL-2.0
 License:        (GPL-2.0-or-later OR LGPL-3.0-only) AND GPL-3.0-or-later
 URL:            https://www.qt.io
-Source:         %{tar_name}-%{real_version}%{tar_suffix}.tar.xz
+Source0:        %{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-opcua-rpmlintrc
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
