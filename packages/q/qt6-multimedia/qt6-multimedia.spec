@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.7.0
+%define real_version 6.7.1
 %define short_version 6.7
 %define short_name qtmultimedia
 %define tar_name qtmultimedia-everywhere-src
@@ -28,15 +28,13 @@
 %endif
 #
 Name:           qt6-multimedia%{?pkg_suffix}
-Version:        6.7.0
+Version:        6.7.1
 Release:        0
 Summary:        Qt 6 Multimedia libraries
 License:        GPL-3.0-or-later
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
+Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source1:        qt6-multimedia-rpmlintrc
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-ABI-breakage-wrt-QAudioSink-Source-stateChanged-.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
@@ -237,6 +235,17 @@ This library does not have any ABI or API guarantees.
 # CMake files are not needed for plugins
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Targets}*.cmake
+
+# The GstreamerMediaPlugin library has a limited usage outside of Qt development
+# (needed to create unit tests for the gstreamer plugin)
+rm %{buildroot}%{_qt6_cmakedir}/Qt6Multimedia/Qt6QGstreamerMediaPluginAdditionalTargetInfo.cmake
+rm %{buildroot}%{_qt6_descriptionsdir}/QGstreamerMediaPluginPrivate.json
+rm %{buildroot}%{_qt6_libdir}/libQt6QGstreamerMediaPlugin.a
+rm %{buildroot}%{_qt6_libdir}/libQt6QGstreamerMediaPlugin.prl
+rm %{buildroot}%{_qt6_metatypesdir}/qt6qgstreamermediapluginprivate_*_metatypes.json
+rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qgstreamermediaplugin_private.pri
+rm -r %{buildroot}%{_qt6_cmakedir}/Qt6QGstreamerMediaPluginPrivate/
+rm -r %{buildroot}%{_qt6_includedir}/QtQGstreamerMediaPlugin/
 
 %ldconfig_scriptlets -n libQt6Multimedia6
 %ldconfig_scriptlets -n libQt6MultimediaQuick6

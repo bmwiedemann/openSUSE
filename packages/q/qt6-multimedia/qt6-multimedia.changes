@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 21 08:31:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.7.1:
+  * https://www.qt.io/blog/qt-6.7.1-released
+- Drop patch, merged upstream:
+  * 0001-Fix-ABI-breakage-wrt-QAudioSink-Source-stateChanged-.patch
+
+-------------------------------------------------------------------
 Sat Apr  6 13:14:31 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change to restore binary compatibility (QTBUG-123997):
