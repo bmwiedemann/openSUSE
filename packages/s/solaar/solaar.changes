@@ -1,4 +1,229 @@
 -------------------------------------------------------------------
+Sat May 11 15:38:09 UTC 2024 - asn@cryptomilk.org
+
+- Update to version 1.1.13:
+  * release 1.1.13
+  * po: update Russian translation
+  * po: Update Polish translation
+  * release 1.1.13rc1
+  * solaar: fix bug in suspend and resume callback
+  * settings: add choices universe for backlight setting
+  * diversion: Add unit tests
+  * diversion: Simplify and type hint
+  * settings: get and use current host number for K375sFnSwap because of bug in firmware of MX Keys S
+  * ui: fix bug with logo in about window
+  * solaar: don't ping device just to get logging information
+  * settings: optimize write for per-key lighting
+  * settings: add and initialize per-key lighting to a special no-change value
+  * hidapi: Remove Python 2 compatibility (#2460)
+  * po: Update French translation (for release 1.1.12) (#2458)
+  * Refactor rule loading for testability (#2456)
+
+-------------------------------------------------------------------
+Mon Apr 29 16:25:31 UTC 2024 - asn@cryptomilk.org
+
+- Update to version 1.1.12:
+  * release 1.1.12
+  * po: Update zh_TW Traditional Chinese translation
+  * release 1.1.12rc2
+  * device: check for existences of keys file before opening
+  * po: update Russion translation and have all strings translated
+  * po: update Russian translation (#2443)
+  * dist: add included hid_parser to packages installed
+  * po: Update Polish translation (#2439)
+  * settings: improve label and description for LED zone settings
+  * settings: add message about Onboard Profiles to LED Zone settings
+  * device: initialize device registers to empty list
+  * po: Update Polish translation (#2435)
+  * release 1.1.12rc1
+  * release 1.1.12rc1
+  * solaar: use bluez dbus signals to disconnect and connect bluetooth devices
+  * device: handle a different signal for onboard profiles directory in ROM
+  * receiver: introduce small delay in getting pairing information to let receiver settle after pairing
+  * tests: extend tests for device.py
+  * device: fix bug found in testing
+  * tests: expand tests for device.py
+  * device: fix small bugs uncovered by testing
+  * tests: expand tests for settings_templates
+  * tests: extend testing of hidpp20
+  * device: fix bugs in onboard profiles found during testing
+  * tests: extend testing of hidpp20
+  * device: fix bugs in hidpp20 found during testing
+  * tests: extend device testing
+  * tests: test GESTURES settings
+  * tests: extend testing of hidpp20
+  * Updated  Greek Translation
+  * doc: add information about bad interaction between Bluez 5.73 and Solaar
+  * tests: expand tests for settings_templates
+  * device: better support for extended ajustable dpi
+  * device: limited support for extended adjustable dpi
+  * tests: remove unused code
+  * tests: adjust imports to always import installed version
+  * tests: test more settings
+  * settings: remove unused code and fix but in EQUALIZER setting
+  * settings: provide symbolic names for per-key lighting keys
+  * tests: improve infrastructure for testing setting_templates
+  * settings: implement and test per-key lighting
+  * tests: check for Gtk initialization and don't run tests that depend on it
+  * tests: test GUI pair_window
+  * ui: refactor pair_window
+  * tests: fix tests for RBG effects
+  * settings: add in bit telling RGB effects changes to change ROM
+  * ui: handle situation when read of a setting fails
+  * settings: permit continuing when a read during pushing fails
+  * tests: add tests for RGB EFFECTS settings
+  * settings: add settings for RGB EFFECTS feature
+  * settings: fix bug in LEDZoneSetting when effect is not implemented
+  * device: add RGB EFFECTS feature version of LED COLOR EFFECTS data
+  * tests: add tests for LEDEffect structures in hidpp20
+  * device: handle BRIGHTNESS CONTROL notifications
+  * settings: implement and test BRIGHTNESS_CONTROL
+  * tests: expand tests for settings_templates
+  * settings: fix small bugs found from testing
+  * refactor: Manually improve f-string formatting
+  * refactor: Use f-strings for more exceptions and log message
+  * settings: patch to make python 3.7 happy
+  * tests: expand tests for settings_templates
+  * tests: use new test methods in test_hidpp20_simple
+  * tests: add tests for setting_templates
+  * settings: simple change to improve testability
+  * device: use feature_request from the device everywhere in hidpp20
+  * settings: fix bug in backlight 2 durations
+  * tests: fix finding paired node in test_device
+  * tests: use hidpp module in several test modules
+  * tests: add tests for logitech_receiver device
+  * ui: reduce deprecation warnings in ui
+  * hidapi: remove deprecation warnings
+  * tests: improve coverage of receiver.py
+  * device: align init methods for all receiver classes
+  * tests: use 3.7 type hint
+  * tests: improve hidpp20 coverage
+  * tests: fully cover hidpp10
+  * device: fix bug in hidpp10 get_device_features
+  * refactor: Use dataclass for TestByte
+  * refactor: Split diversion rules into smaller modules
+  * refactor: Make _populate_model a function
+  * rules: allow sub-second delays in Later
+  * device: remove unreachable code
+  * device: fix bug in setting configuration cookie due to bad documentation
+  * Add new end line
+  * Add solaar pot generation
+  * Add indonesian translations
+  * tests: complete testing of common
+  * tests: start coverage of complex structures in hidpp20
+  * tests: expand coverage of hidpp20
+  * tests: expand coverage of common
+  * ruff: Apply single line import format
+  * ruff: Force single line imports
+  * Automatically upgrade strings to f-string
+  * docs: document battery-icons=solaar option
+  * receiver: delay device sending first messages
+  * device: remove checks for status attributes
+  * device: optimize some functions in FeaturesArray
+  * device: fix bug in creating features array
+  * cli: fix bug in building battery line in show
+  * ui: refactor diversion_rules
+  * ui: fix bug in determining tray icon
+  * device: fix bug in getting friendly name
+  * device: remove status from Device and Receiver
+  * device: move changed method from status to Device and Receiver
+  * device: move link_encrypted from status to Device
+  * device: move battery information from status to Device
+  * device: move status string function to Device and Receiver
+  * receiver: move pairing status to new dataclass attached to receiver
+  * test: Test base product information
+  * Disable macOS tests until GitHub CI dependencies are fixed
+  * Extend Ubuntu dependencies for GitHub CI
+  * test: Extract get_kind_from_index function and test it
+  * docs: update EX100 information
+  * device: use Python 3.7 type hints
+  * device: use status attribute for error
+  * device: use status attribute for notification_flags
+  * device: use status attribute for link_encrypted
+  * ui: use Battery object in GUI
+  * device: change status battery fields to Battery objects
+  * receiver: move more method code to subclasses
+  * receiver: create subclasses of receiver for different variants
+  * docs: add requirement for CONFIG_HIDRAW
+  * tests: tests for a few simple hidpp20 functions
+  * tests: add yaml test for led setting
+  * tests: simple tests for hidpp20 profiles and lighting
+  * ui: fix app name casing in UI
+  * device: add missing receiver type for Lightspeed receivers
+  * device: add new device types
+  * refactor: Get receiver product info before instantiation
+  * Refactor: Move Device instantiation to factory class
+  * Refactor: Move Receiver instantiation to factory class
+  * Simplify name of license file
+  * Rename changelog.md to all capitals
+  * Update .gitignore
+  * Remove unused .gitmodules
+  * fix: Use exception from exception module
+  * update: Replace legacy logger.warn with logger.warning
+  * cleanup: Remove duplicated code to read register
+  * tests: Add hidpp10 tests
+  * refactor: Introduce Hidpp20 class
+  * refactor: Introduce Hidpp10 class
+  * cleanup: Remove unnecessary calls of del
+  * settings: fix bug when reading BACKLIGHT setting from device
+  * clean up: Remove editor specific marks
+  * fix: Replace invalid hidpp20 usage
+  * fix: Replace invalid hidpp10 usage
+  * solaar: use only timer thread to save config.yaml
+  * docs: improve README.md
+  * doc: Add link to Debian package to README.md
+  * docs: adjust image placing in README
+  * docs: adjust image size in README
+  * docs: improve README
+  * hid: copy newer version of hid_parser into Solaar codebase
+  * ui: fix bug when displaying receiver notification flags
+  * device: reorder code in settings
+  * doc: update installation documentation
+  * hidapi: make hid_parser optional, but add it to setup
+  * device: add missing license blocks
+  * device: clean up listener and notifications code
+  * solaar: cleanup listener code
+  * solaar: add locks to prevent multiple persisters for device
+  * solaar: clean up configuration code
+  * device: clean up device and receiver code
+  * device: move battery constants common to HID++ 1.0 and 2.0 to common
+  * device: move mapping of device kind into hidpp20
+  * device: move pairing information gathering to receiver
+  * docs: update contributors
+  * solaar: fix debugging levels
+  * device: expand allowable profile numbers
+  * device: clean up __init__ in logitech_receiver
+  * dist: modify pre-commit args to make ruff change files
+  * device: fix bug in hidpp20 get host names
+  * device: fix typo
+  * Remove yapf exclusions
+  * Manually fix linter issues
+  * Apply ruff format
+  * Makefile: Add command for formatting and linting
+  * Introduce ruff formatter and linter
+  * rules: fix bug in Set action
+  * device: add notify module to logitech_receiver
+  * ui: implement setting_changed callback and pass in to new devices and receivers
+  * device: add callback to call when changing a setting
+  * logitech_receiver: style fixes
+  * logitech_receiver: Move hidpp20 constants into new module
+  * logitech_receiver: Move hidpp10 constants into new module
+  * logitech_receiver: Move exceptions into own module
+  * device: streamline status code
+  * hidapi: upgrade debugging in udev
+  * dist: Fix deprecated GitHub actions
+  * dist: extend makefile and tests
+  * device: improve features array
+  * ui: move ui_async to common.py
+  * tests: Show pytest coverage in GitHub CI tests
+  * device: improve imports in logitech_receiver
+  * solaar: improve imports and guard Gtk, etc imports with correct version
+  * ui: improve imports in ui
+  * cli: move imports in __init__.py to top of file
+  * device: improve imports in logitech_receiver
+  * tests: Add tests of common module
+
+-------------------------------------------------------------------
 Wed Mar 20 06:04:20 UTC 2024 - asn@cryptomilk.org
 
 - Update to version 1.1.11:

@@ -23,7 +23,7 @@
 %endif
 
 Name:           solaar
-Version:        1.1.11
+Version:        1.1.13
 Release:        0
 Summary:        Linux devices manager for the Logitech Unifying Receiver
 License:        GPL-2.0-or-later
@@ -123,14 +123,17 @@ install -m 0644 rules.d/42-logitech-unify-permissions.rules %{buildroot}%{_udevr
 
 ln -s solaar %{buildroot}%{_bindir}/solaar-cli
 
+# We use the system package
+rm -rf %{buildroot}%{python3_sitelib}/hid_parser
+
 %posttrans udev
 # This is needed to apply permissions to existing devices when the package is
 # installed.
 %{_bindir}/udevadm trigger --subsystem-match=hidraw --action=add
 
 %files
-%doc ChangeLog.md COPYRIGHT README.md Release_Notes.md
-%license COPYING
+%doc CHANGELOG.md COPYRIGHT README.md Release_Notes.md
+%license LICENSE.txt
 %{_bindir}/%{name}
 %{_bindir}/%{name}-cli
 %{_datadir}/applications/%{name}.desktop
