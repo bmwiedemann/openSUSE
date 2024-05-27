@@ -506,4 +506,18 @@ Bugfixes:
     * Don't detect clifm and valgrind as a terminal (Terminal, Linux)</comment>
     <requestid>1175960</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>6995976186e28ca3670304a9f14fd7b7</srcmd5>
+    <version>2.13.2</version>
+    <time>1716803719</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.13.2:
+   Bugfixes:
+    - Remove DRM driver version detection feature,
+      which caused a performance regression for nouveau drivers (Display, Linux)
+    - Don't use *-unknown as display name for Wayland protocol (Display, Linux)
+   Features:
+    - Add new module Editor which prints editor settings, i.e. $VISUAL or $EDITOR</comment>
+    <requestid>1176874</requestid>
+  </revision>
 </revisionlist>

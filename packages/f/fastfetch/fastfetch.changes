@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May 25 16:45:13 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- update to 2.13.2:
+   Bugfixes:
+    - Remove DRM driver version detection feature,
+      which caused a performance regression for nouveau drivers (Display, Linux)
+    - Don't use *-unknown as display name for Wayland protocol (Display, Linux)
+   Features:
+    - Add new module Editor which prints editor settings, i.e. $VISUAL or $EDITOR
+
+-------------------------------------------------------------------
 Wed May 22 20:29:17 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - update to 2.13.1:
