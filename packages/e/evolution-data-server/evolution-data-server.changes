@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 24 07:04:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.52.2:
+  + Bug Fixes:
+     - Calendar: "This and Future" modifications can duplicate
+       events.
+     - CardDAV: Prefetch PHOTO/LOGO when being remote URL.
+  + Miscellaneous:
+    - EOAuth2ServiceYahoo: Update redirect URI.
+    - OAuth2Prompter: Fix possible crash on application quit.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Apr 19 12:58:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.52.1:

@@ -2329,4 +2329,20 @@ New stable rel</comment>
 </comment>
     <requestid>1171492</requestid>
   </revision>
+  <revision rev="255" vrev="1">
+    <srcmd5>1afe433ecb8bb5f3c8e1eb861852575a</srcmd5>
+    <version>3.52.2</version>
+    <time>1716803062</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.52.2:
+  + Bug Fixes:
+     - Calendar: &quot;This and Future&quot; modifications can duplicate
+       events.
+     - CardDAV: Prefetch PHOTO/LOGO when being remote URL.
+  + Miscellaneous:
+    - EOAuth2ServiceYahoo: Update redirect URI.
+    - OAuth2Prompter: Fix possible crash on application quit.
+  + Updated translations. (forwarded request 1176666 from dimstar)</comment>
+    <requestid>1176673</requestid>
+  </revision>
 </revisionlist>
