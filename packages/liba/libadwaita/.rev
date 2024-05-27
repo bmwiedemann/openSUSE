@@ -250,4 +250,41 @@
     <comment>GNOME 46 (forwarded request 1158278 from dimstar)</comment>
     <requestid>1159464</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>352184f211b784bc88f8ec5d05a7f8d3</srcmd5>
+    <version>1.5.1</version>
+    <time>1716803088</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.5.1:
+  + AdwAboutDialog/Window: Fix an outdated appstream reference in
+    docs.
+  + AdwActionRow: Mention .property in docs.
+  + AdwAlertDialog:
+    - Fix the accessible role.
+    - Fix initial focus.
+  + AdwAvatar: Fix portrait avatars on hidpi.
+  + AdwBin: Fix a potential focus issue.
+  + AdwBreakpoint: Fix add_setter() annotations.
+  + AdwCarousel: Fix a build warning.
+  + AdwComboRow:
+    - Fix initial checkmark.
+    - Handle model changes properly.
+  + AdwDialog:
+    - Fix accessibility warnings.
+    - Make shortcuts work when there are no focusable widgets.
+    - Correctly restore focus when opening a dialog from a menu.
+    - Fix GtkWindow:deletable=false hiding close buttons in
+      dialogs.
+  + AdwExpanderRow:
+    - Fix get_title_lines() and get_subtitle_lines() return types.
+    - Fix remove() docs.
+  + AdwOverlaySplitView: Unmap sidebar when it's hidden.
+  + AdwPreferencesGroup:
+    - Fix a potential focus issue.
+    - Fix :header-group annotations and notifications.
+  + AdwPreferencesPage: Fix a potential focus issue.
+  + AdwTabView:
+    - Document :close-page return value. (forwarded request 1176754 from dimstar)</comment>
+    <requestid>1176755</requestid>
+  </revision>
 </revisionlist>
