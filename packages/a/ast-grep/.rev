@@ -312,4 +312,21 @@
   * refactor: move Transformation into a standalone module b51cc95</comment>
     <requestid>1173693</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>6a49f9df118da8c030b39475d1cea9b9</srcmd5>
+    <version>0.22.4+0</version>
+    <time>1716803797</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.22.4:
+  * feat: use var defined in utils in transform/fix #1155
+  * fix: fix pattern polluting env #1164
+  * test: add python fix test #1161
+  * feat: add fix related feature to pyo3 #1159
+  * test: add test for napi test #1160
+  * feat: add commit_fix and fix to napi #1158
+  * fix(deps): update babel monorepo to v7.24.6 0898b55
+  * fix(deps): update dependency @swc/core to v1.5.7 9beda6e
+  * feat: add edit/fix sketch 6817854</comment>
+    <requestid>1177044</requestid>
+  </revision>
 </revisionlist>

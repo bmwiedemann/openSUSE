@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May 27 07:09:29 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.22.4:
+  * feat: use var defined in utils in transform/fix #1155
+  * fix: fix pattern polluting env #1164
+  * test: add python fix test #1161
+  * feat: add fix related feature to pyo3 #1159
+  * test: add test for napi test #1160
+  * feat: add commit_fix and fix to napi #1158
+  * fix(deps): update babel monorepo to v7.24.6 0898b55
+  * fix(deps): update dependency @swc/core to v1.5.7 9beda6e
+  * feat: add edit/fix sketch 6817854
+
+-------------------------------------------------------------------
 Mon May 13 14:06:01 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.22.3:
