@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 19 16:26:13 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Fix build on openSUSE Leap by requiring libieee1284-devel only
+  for openSUSE Tumbleweed
+
+-------------------------------------------------------------------
 Sat Feb 03 12:26:12 UTC 2024 - mardnh@gmx.de
 
 - Update to snapshot 1.1+git20240123 (b9e215b)

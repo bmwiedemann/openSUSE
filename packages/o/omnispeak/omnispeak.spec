@@ -33,7 +33,9 @@ BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
+%if 0%{?suse_version} >= 1599
 BuildRequires:  libieee1284-devel
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(sdl2)
@@ -69,8 +71,12 @@ from the directory where the original game files are located.
   -DVANILLA=OFF \
   -DXDGUSERPATH=OFF \
   -DOMNIPATH=%{_datadir}/omnispeak \
+%if 0%{?suse_version} > 1500
   -DWITH_ALSA=ON \
   -DWITH_IEEE1284=ON
+%else
+  -DWITH_ALSA=ON
+%endif
 %cmake_build
 
 %install
