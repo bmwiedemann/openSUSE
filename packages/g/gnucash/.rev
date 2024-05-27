@@ -1067,4 +1067,13 @@
     <comment></comment>
     <requestid>1171808</requestid>
   </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>85ddfe20ba2e8d8968ab9fe08ab23f35</srcmd5>
+    <version>5.6</version>
+    <time>1716803745</time>
+    <user>anag+factory</user>
+    <comment>- Included upstream fix for broken qif import
+  * gnucash-fix-qif-import.patch</comment>
+    <requestid>1176918</requestid>
+  </revision>
 </revisionlist>

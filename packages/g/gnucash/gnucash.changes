@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 21 08:58:50 UTC 2024 - Peter Conrad <conrad@quisquis.de>
+
+- Included upstream fix for broken qif import
+  * gnucash-fix-qif-import.patch
+
+-------------------------------------------------------------------
 Thu Apr 25 20:18:50 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 5.6
