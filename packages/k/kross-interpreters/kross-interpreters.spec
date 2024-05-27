@@ -18,13 +18,13 @@
 
 %bcond_without released
 Name:           kross-interpreters
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Diverse bindings for KROSS
 License:        LGPL-2.1-or-later
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
