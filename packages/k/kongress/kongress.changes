@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun May 19 09:56:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:16:25 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * Add license to git blame ignore file
+  * Add git blame ignore file
+  * Add and make use of ECM clang-format integration
+  * Port to ecm_add_qml_module
+  * Build with current ECM compiler default settings
+  * appstream: use desktop-application type, add developer & launchable tags
+  * Fix broken section header in conferences view
+  * Fix broken section header in schedule view
+
+-------------------------------------------------------------------
 Tue Apr  9 18:08:47 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2

@@ -20,14 +20,14 @@
 
 %bcond_without  released
 Name:           kongress
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 License:        GPL-3.0-or-later
 Summary:        Companion application for conferences
 Url:            https://apps.kde.org/kongress/
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
