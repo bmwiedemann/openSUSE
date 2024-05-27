@@ -1,4 +1,144 @@
 -------------------------------------------------------------------
+Mon May 20 08:33:29 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240520.c5122b8:
+  * gocd: Add SLFO Stagings pipeline.
+
+-------------------------------------------------------------------
+Fri May 17 09:58:40 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240517.d3deb40:
+  * gocd: microos-stagings: Switch to SL-Micro 6.1.
+  * gocd: Add SL-Micro 6.1 release pipelines.
+  * gocd: SL-Micro.Images: Rename to SL-Micro6.0-Images.
+
+-------------------------------------------------------------------
+Thu May 16 13:37:43 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240516.b854784:
+  * build-fail-reminder: don't escape characters
+
+-------------------------------------------------------------------
+Thu May 16 12:29:10 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240516.2c8dfbe:
+  * add missing whitespace to please linter
+  * fix typo in variable
+  * Report errors if weakremover.inc status is inconsistent between staging and parent projects.
+  * Don't abort if weakremover.inc don't exist on source project
+
+-------------------------------------------------------------------
+Wed May 15 16:28:45 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240515.123ba53:
+  * SLCS has no images
+
+-------------------------------------------------------------------
+Wed May 15 13:05:41 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240515.f2820d7:
+  * add SLCS 6.0
+
+-------------------------------------------------------------------
+Tue May 14 10:19:45 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240514.7b5a3b7:
+  * pkglistgen: tool: decouple summary dict creation
+
+-------------------------------------------------------------------
+Tue May 14 06:53:02 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240514.ed30d28:
+  * pkglistgen.py: Run productcomposer iif there's a *.productcompose.in file and a 000productcompose directory.
+
+-------------------------------------------------------------------
+Sat May 11 07:02:55 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240510.91ddc8a:
+  * Use f-strings where possible
+  * avoid shell usage
+  * Make it optional to have a classic product-builder setup
+  * write group support status
+  * Add support for git project handling
+  * Initial support for productcompose files
+  * fix issue #3073
+  * Add Leap 15.6 to access metrics
+
+-------------------------------------------------------------------
+Mon May 06 19:43:50 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240506.d9659f7:
+  * Add codecov upload token
+  * Use "not in" not "not X in"
+
+-------------------------------------------------------------------
+Mon Apr 29 14:12:08 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240429.94b4fd3:
+  * gocd: microos: Stop releasing 000product.
+  * Reapply "gocd: microos: Release both 000product and 000productcompose ."
+
+-------------------------------------------------------------------
+Thu Apr 11 09:04:32 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240411.58b3d97:
+  * Revert "gocd: microos: Release both 000product and 000productcompose ."
+
+-------------------------------------------------------------------
+Fri Apr 05 13:19:40 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240405.6094898:
+  * gocd: microos: Release both 000product and 000productcompose .
+
+-------------------------------------------------------------------
+Mon Mar 25 10:50:48 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240325.9d60e62:
+  * gocd: Rename SLE-Micro to SL-Micro.
+
+-------------------------------------------------------------------
+Fri Mar 15 12:24:28 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240315.b086253:
+  * gocd: sp/micro-targets: ensure the pipeline exits on failures
+
+-------------------------------------------------------------------
+Tue Mar 12 08:36:51 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240312.5f5f9db:
+  * pkglistgen: Don't always regenerate .changes
+
+-------------------------------------------------------------------
+Mon Mar 11 15:05:22 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240311.a2edca4:
+  * build-fail-reminder: send mail to the 'new' mailing list address
+  * Create .changes files for reproducible builds
+
+-------------------------------------------------------------------
+Mon Mar 04 15:05:26 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240304.fd5b7a6:
+  * Skip SLSA scripts in smoke-test.
+  * Create SLSA user (osrt-slsa) on specfile like others osrt-* users and remove logrotate file
+  * Packaging release and pkglistgen services (slsa-build-service)
+  * Add a timeout for verify-repo-built-successful.py
+  * Changes to avoid parallel execution issue on SLSA services
+  * Change pkglistgen timer and relpkggen service
+  * Change sleep location and improve log messages
+  * Refactor SLSA services to avoid parallel execution
+  * Fix SLSA systemd target
+  * Add working dir for SLSA services
+  * Add systemd target for SLSA
+  * Add osrt-slsa dir
+  * Change how verify-build-and-generatelists checks when run pkglistgen
+  * Change SLSA systemd services
+  * Add SLSA osrc config
+  * Add relpkg support
+  * Add log support to slsa-build-service
+  * Add slsa-build-service
+
+-------------------------------------------------------------------
 Fri Feb 23 12:37:59 UTC 2024 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20240223.f941f9d:
