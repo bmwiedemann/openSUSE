@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri May 24 12:38:43 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.27.1:
+  * build(deps): bump github.com/containerd/containerd from 1.7.16
+    to 1.7.17
+  * build(deps): bump github.com/docker/buildx from 0.14.0 to
+    0.14.1
+  * drop COMPOSE_EXPERIMENTAL_OTEL as docker/cli has opentelemetry
+    in
+  * add gui/composeview as part of available commands
+  * fix opentelemetry
+  * bump compose-go to version v2.1.1
+  * Set endpoint-specific DriverOpts
+  * Bump compose-go version to latest main
+  * Backport OpenBSD patches
+  * add new navigation menu to open Compose app configuration in
+    Docker Desktop
+  * build(deps): bump github.com/fsnotify/fsevents from 0.1.1 to
+    0.2.0
+  * build(deps): bump golang.org/x/sys from 0.19.0 to 0.20.0
+  * fix --resolve-image-digests
+  * allow a local .env file to override compose.yaml sibling .env
+  * Bump docker engine and cli to version 26.1.3
+  * Bump docker to v26.1.2
+  * Add documentation for --menu up option and COMPOSE_MENU
+    environemnt variable
+  * chore(deps): bump docker to v26.1.1 (#11794)
+
+-------------------------------------------------------------------
 Thu Apr 25 05:12:57 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.27.0:
