@@ -21,14 +21,14 @@
 
 %bcond_without released
 Name:           ghostwriter
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        A distraction-free Markdown editor
 License:        GPL-3.0-or-later
 URL:            https://ghostwriter.kde.org
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  pkgconfig
@@ -50,7 +50,7 @@ BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(hunspell)
 Recommends:     multimarkdown
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  x86_64 %x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 ghostwriter is a text editor for Markdown, which is a plain text markup format.
