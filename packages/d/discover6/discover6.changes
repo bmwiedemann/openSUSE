@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed May 22 07:42:59 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.5
+- Changes since 6.0.4:
+  * remove dup version
+  * update version for new release
+  * flatpak: don't trip over nullptr remotes when installing a flatpakref
+  * flatpak: Check specifically installed files when looking up installed ones (kde#482518)
+  * notifier: Assume online if no QNetworkInformation instance available
+  * kns: drop provider part of the url (kde#486330)
+  * packagekit: return empty license array when unknown (kde#486037)
+  * FwupdBackend: Set user agent from client (kde#486726)
+  * flatpak: Do not report regressions on transaction progress
+  * flatpak&pk: Do not use QIcon to check if an appstream icon exists
+  * UpdatesPage: Fix invisible delegates taking up space and causing a ghost section header (kde#478253)
+  * UpdatesPage: Port from custom QSortFilterProxyModel subclass to KItemModels
+- Drop patches, now upstream:
+  * 0001-notifier-Assume-online-if-no-QNetworkInformation-ins.patch
+
+-------------------------------------------------------------------
 Thu May 16 13:08:15 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix the notifier if NetworkManager is not used (boo#1224321):

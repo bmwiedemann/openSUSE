@@ -24,7 +24,7 @@
 %global have_fwupd (0%{?suse_version} > 1500 || 0%{?sle_version} >= 150600)
 
 Name:           discover6
-Version:        6.0.4
+Version:        6.0.5
 Release:        0
 Summary:        Software store for the KDE Plasma desktop
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
@@ -36,8 +36,6 @@ Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Warning-for-FlatHub.patch
-# PATCH-FIX-UPSTREAM https://invent.kde.org/plasma/discover/-/merge_requests/847
-Patch1:         0001-notifier-Assume-online-if-no-QNetworkInformation-ins.patch
 BuildRequires:  flatpak-devel
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
@@ -51,6 +49,7 @@ BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6IdleTime) >= %{kf6_version}
 BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
