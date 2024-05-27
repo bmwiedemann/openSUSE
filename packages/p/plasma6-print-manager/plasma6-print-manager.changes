@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 22 07:43:16 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.5
+- Changes since 6.0.4:
+  * revert dup version
+  * update version for new release
+  * plasmoid: Use KItemModels SFPM
+
+-------------------------------------------------------------------
 Wed Apr 17 08:13:28 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.4:
