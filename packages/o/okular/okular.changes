@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun May 19 09:57:38 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- Changes since 24.04.80:
+  * Unify usage of WITH_K7ZIP
+
+-------------------------------------------------------------------
+Fri May  3 09:17:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Too many changes since 24.02.2, only listing bugfixes:
+  * Fix sidebar status not being respected when opening the first file (kde#484938)
+  * Load certificates delayed (kde#472356)
+  * Fix DocumentHasPassword check (kde#474888)
+  * Fix crash on closing Annot Window if spell checking is enabled (kde#483904)
+  * Fix loading okular preview part (kde#483109)
+  * Fix multiline selection (kde#482249)
+  * Fix crash when in embedded dummy mode (kde#476207)
+  * presentationwidget: Invalidate pixmaps on dpr change (kde#479141)
+  * Button groups can span multiple pages (kde#479942)
+  * Add support for app.popUpMenu and submenus in popUpMenuEx (kde#479777)
+
+-------------------------------------------------------------------
 Tue Apr  9 18:09:46 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2

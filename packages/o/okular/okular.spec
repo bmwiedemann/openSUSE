@@ -21,15 +21,15 @@
 
 %bcond_without released
 Name:           okular
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Document Viewer
 # GPL-3.0+ license used by a runtime plugin
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 URL:            https://okular.kde.org
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 # PATCH-FEATURE-OPENSUSE
@@ -162,7 +162,6 @@ sed -i 's#3.22#3.20#' CMakeLists.txt
 %{_kf6_applicationsdir}/okularApplication_md.desktop
 %{_kf6_applicationsdir}/okularApplication_mobi.desktop
 %{_kf6_applicationsdir}/okularApplication_pdf.desktop
-%{_kf6_applicationsdir}/okularApplication_plucker.desktop
 %{_kf6_applicationsdir}/okularApplication_tiff.desktop
 %{_kf6_applicationsdir}/okularApplication_txt.desktop
 %{_kf6_applicationsdir}/okularApplication_xps.desktop
@@ -177,7 +176,6 @@ sed -i 's#3.22#3.20#' CMakeLists.txt
 %{_kf6_appstreamdir}/org.kde.okular-kimgio.metainfo.xml
 %{_kf6_appstreamdir}/org.kde.okular-md.metainfo.xml
 %{_kf6_appstreamdir}/org.kde.okular-mobipocket.metainfo.xml
-%{_kf6_appstreamdir}/org.kde.okular-plucker.metainfo.xml
 %{_kf6_appstreamdir}/org.kde.okular-poppler.metainfo.xml
 %{_kf6_appstreamdir}/org.kde.okular-tiff.metainfo.xml
 %{_kf6_appstreamdir}/org.kde.okular-txt.metainfo.xml
@@ -204,7 +202,6 @@ sed -i 's#3.22#3.20#' CMakeLists.txt
 %{_kf6_plugindir}/okular_generators/okularGenerator_kimgio.so
 %{_kf6_plugindir}/okular_generators/okularGenerator_md.so
 %{_kf6_plugindir}/okular_generators/okularGenerator_mobi.so
-%{_kf6_plugindir}/okular_generators/okularGenerator_plucker.so
 %{_kf6_plugindir}/okular_generators/okularGenerator_poppler.so
 %{_kf6_plugindir}/okular_generators/okularGenerator_tiff.so
 %{_kf6_plugindir}/okular_generators/okularGenerator_txt.so
