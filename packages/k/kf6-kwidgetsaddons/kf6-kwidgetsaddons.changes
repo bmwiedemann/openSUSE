@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 23 07:41:46 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.2.1:
+  * KMessageWidget: Avoid calling polish() inside of palette
+    update (kde#487247)
+
+-------------------------------------------------------------------
 Mon May  6 12:23:00 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.2.0

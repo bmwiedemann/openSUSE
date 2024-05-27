@@ -23,4 +23,14 @@
     <comment>KDE Frameworks 6.2.0 (forwarded request 1173094 from krop)</comment>
     <requestid>1173167</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>53dfb0908dea0e0fcae42f399f9e5449</srcmd5>
+    <version>6.2.1</version>
+    <time>1716803172</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.2.1:
+  * KMessageWidget: Avoid calling polish() inside of palette
+    update (kde#487247)</comment>
+    <requestid>1176128</requestid>
+  </revision>
 </revisionlist>
