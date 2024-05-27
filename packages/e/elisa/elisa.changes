@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun May 19 09:55:00 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- Changes since 24.04.80:
+  * Fix UI freeze when maximizing the Headerbar (kde#483613)
+
+-------------------------------------------------------------------
+Fri May  3 09:14:50 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Too many changes since 24.02.2, only listing bugfixes:
+  * Fix broken volume slider with Qt Multimedia backend (kde#392501)
+  * Don't skip to the end when playing the same track twice in a row (kde#480743)
+  * Open the config window in the centre of the app (kde#429936)
+  * Refactor "About Elisa" dialog to use Kirigami Addons (kde#439781)
+
+-------------------------------------------------------------------
 Tue Apr  9 18:07:12 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
