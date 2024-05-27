@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun May 19 09:57:45 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:17:30 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Too many changes since 24.02.2, only listing bugfixes:
+  * Fix the video grid becoming unresponsive when flicking away the player (kde#480578)
+  * Restore maximized state when exiting fullscreen (kde#480851)
+  * Fix the sub count not being formatted correctly (kde#478405)
+  * Fix the video quality setting not actually doing anything (kde#475964)
+
+-------------------------------------------------------------------
 Tue Apr  9 18:09:52 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
