@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun May 19 09:56:18 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:16:03 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * Continue to implement model
+  * Add parent
+  * Fix indent
+  * Add model
+  * Add missing [[nodiscard]]
+  * Fix windows build
+  * Replace tab with space in cmakelists.txt
+  * Use {}
+  * Use static_cast as we don't check it
+  * coding style
+  * We depend against qtkeychain 0.14.2 (kwallet6 support)
+  * Use _L1 operator
+  * Intercept return key
+  * Remove unused include
+  * We depend against kf6.0.0
+  * Add missing [[nodiscard]]
+  * Don't export private methods
+  * Use 0.14.1
+  * Use QT6KEYCHAIN_LIB_VERSION = 0.14.2
+  * Fix check for reveal password mode
+  * Port to setRevealPasswordMode (scripted)
+  * Use local include
+  * ldapoperation: evaluate value of HAVE_WINLDAP_H
+
+-------------------------------------------------------------------
 Tue Apr  9 18:08:26 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
