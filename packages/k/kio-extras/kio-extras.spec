@@ -22,14 +22,14 @@
 
 %bcond_without released
 Name:           kio-extras
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Additional KIO slaves for KDE applications
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  gperf
@@ -55,6 +55,7 @@ BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6Solid) >= %{kf6_version}
 BuildRequires:  cmake(KF6SyntaxHighlighting) >= %{kf6_version}
 BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
+BuildRequires:  cmake(Microsoft.GSL)
 BuildRequires:  cmake(Phonon4Qt6)
 BuildRequires:  cmake(PlasmaActivities) >= %{plasma6_version}
 BuildRequires:  cmake(PlasmaActivitiesStats) >= %{plasma6_version}
@@ -79,8 +80,8 @@ Requires:       trash_kcm
 Requires:       qt6-sql-sqlite >= %{qt6_version}
 Recommends:     kf6-kimageformats >= %{kf6_version}
 Recommends:     qt6-imageformats >= %{qt6_version}
-# Packages are only coinstallable since 24.02.1
-Conflicts:      kio-extras5 < 24.02.1
+# Packages are only coinstallable since 24.02.0
+Conflicts:      kio-extras5 < 24.02.0
 Provides:       kfileaudiopreview = 4.100.0
 Obsoletes:      kfileaudiopreview < 4.100.0
 Provides:       kde-odf-thumbnail = %{version}
@@ -179,7 +180,6 @@ This is the development package for libkioarchive6
 %{_kf6_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_netpref.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_proxy.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_webshortcuts.so
-%{_kf6_sharedir}/kio_docfilter/
 %{_kf6_sharedir}/kio_info/
 %{_kf6_sharedir}/konqueror/
 %{_kf6_sharedir}/remoteview/

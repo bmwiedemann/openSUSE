@@ -48,4 +48,12 @@
     <comment>- Make kcm_trash conflict with kio &lt; 5.116 only (boo#1221438)</comment>
     <requestid>1175189</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>99a8f3b63b1c682e1fc1055667047ac2</srcmd5>
+    <version>24.05.0</version>
+    <time>1716803224</time>
+    <user>anag+factory</user>
+    <comment>KDE release 24.05.0 (forwarded request 1175936 from krop)</comment>
+    <requestid>1176306</requestid>
+  </revision>
 </revisionlist>
