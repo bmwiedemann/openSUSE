@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr 16 07:21:19 UTC 2024 - Simon Lees <sflees@suse.de>
+
+- Update to 3.13.1
+  * Highlights
+    Khepri now can be used as an alternative schema data store in RabbitMQ, replacing Mnesia
+    MQTTv5 support
+    Support for consumer-side stream filtering
+    A new common message container format used internally, based on the AMQP 1.0 message format
+    Improved classic non-mirrored queue performance with message sizes larger than
+    4 KiB (or a different customized CQ index embedding threshold)
+    Classic queues storage implementation version 2 (CQv2) is now highly recommended for all new deployments.
+    CQv2 meaningfully improves performance of non-mirrored classic queues for most workloads
+  * Fixes bsc#1222591
+
+-------------------------------------------------------------------
 Tue Feb  6 12:45:48 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Provide user/group for RPM 4.19 (boo#1219532).
