@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 24 11:56:30 UTC 2024 - kukuk@suse.com
+
+- Update to version 2.4+git20240524.30e5383:
+  * Move tmpfiles.d/soft-reboot-cleanup.conf to aaa_base
+
+-------------------------------------------------------------------
 Fri May 03 13:10:33 UTC 2024 - kukuk@suse.com
 
 - Remove rcrebootmgr symlink

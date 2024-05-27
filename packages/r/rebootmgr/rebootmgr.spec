@@ -24,7 +24,7 @@
 %endif
 
 Name:           rebootmgr
-Version:        2.4+git20240503.5b98913
+Version:        2.4+git20240524.30e5383
 Release:        0
 Summary:        Automatic controlled reboot during a maintenance window
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -85,7 +85,6 @@ test -f /etc/rebootmgr.conf.rpmsave && mv -v /etc/rebootmgr.conf.rpmsave /etc/re
 %{_distconfdir}/rebootmgr.conf
 %endif
 %{_unitdir}/rebootmgr.service
-%{_tmpfilesdir}/soft-reboot-cleanup.conf
 %{_sbindir}/rebootmgrctl
 %{_sbindir}/rebootmgrd
 %{_datadir}/dbus-1/interfaces/org.opensuse.RebootMgr.xml
