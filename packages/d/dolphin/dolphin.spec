@@ -22,14 +22,14 @@
 
 %bcond_without released
 Name:           dolphin
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        KDE File Manager
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/dolphin
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 Source3:        dolphinsu.desktop
@@ -158,6 +158,9 @@ install -D -m 0644 %{SOURCE3} %{buildroot}%{_kf6_applicationsdir}/org.kde.dolphi
 %{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.dolphin.svg
 %{_kf6_sharedir}/dbus-1/services/org.kde.dolphin.FileManager1.service
 %{_kf6_sharedir}/kconf_update/dolphin_detailsmodesettings.upd
+%{_kf6_sharedir}/kconf_update/dolphin_directorysizemode.py
+%{_kf6_sharedir}/kconf_update/dolphin_directorysizemode.upd
+
 %dir %{_kf6_sharedir}/kglobalaccel
 %{_kf6_sharedir}/kglobalaccel/org.kde.dolphin.desktop
 %{_userunitdir}/plasma-dolphin.service

@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun May 19 09:54:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- Changes since 24.04.80:
+  * Revert "DragAndDropHelper::updateDropAction: use StatJob for remote URLs"
+
+-------------------------------------------------------------------
+Fri May  3 09:14:48 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Too many changes since 24.02.2, only listing bugfixes:
+  * Fix crash while entering selection mode with Qt6.7 (kde#485599)
+  * DisabledActionNotifier: Prevent null dereferences (kde#485089)
+  * Fix saving sort role after change from header (kde#480246)
+  * KItemListController: don't create rubber band for a right click in an empty region (kde#484881)
+  * kitemlist: don't open dir when double-click on expand arrow (kde#484688)
+  * Better support for RTL (kde#484012)
+  * versioncontrol: Prevent a use-after-free in UpdateItemStatesThread (kde#477425)
+  * Save 'Open Archives as Folders' setting (kde#474500)
+  * Add settings page for Panels (kde#480243)
+  * Sync Dolphin icon with Breeze system-file-manager (kde#482581)
+  * Remove unneeded code for toggeling dockwidget visibility (kde#481952)
+  * Start autoActivationTimer only if hovering over a directory (kde#479960)
+  * Open KFind with current dir (kde#482343)
+  * Fix a crash in DolphinSearchBox::hideEvent() (kde#481553)
+  * Improve arrow key navigation for right-to-left languages (kde#453933)
+  * dolphintabbar: only open tab on double left click (kde#480098)
+  * Allow popping out a split view (kde#270604)
+  * Fix: "empty folder" placeholder text eating mouse events (kde#441070)
+  * DolphinMainWindow: autosave session (kde#425627)
+  * Add setting also hide application/x-trash files when hiding hidden files (kde#475805)
+  * Always automatically choose a new file name while duplicating (kde#475410)
+  * Fix: closing split view doesn't update tab name BUG: 469316 (kde#469316)
+
+-------------------------------------------------------------------
 Tue Apr  9 18:07:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
