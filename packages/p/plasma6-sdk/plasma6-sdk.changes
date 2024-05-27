@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 22 07:43:16 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.5
+- Changes since 6.0.4:
+  * remove dup version
+  * update version for new release
+  * Fix montage functionality
+  * fix: remove duplicate entry
+
+-------------------------------------------------------------------
 Wed Apr 17 08:13:30 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.4:
