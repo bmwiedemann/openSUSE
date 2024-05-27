@@ -1,7 +1,7 @@
 #
 # spec file for package gource
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Visualization/Graph
 URL:            https://gource.io/
 Source:         https://github.com/acaudwell/Gource/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-build-with-Boost-1.85.0.patch
 BuildRequires:  gcc-c++
 BuildRequires:  glew-devel
 BuildRequires:  glm-devel >= 0.9.3
@@ -50,7 +52,7 @@ Currently there is first party support for Git and Mercurial,
 and third party (using additional steps) for CVS and SVN.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \

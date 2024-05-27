@@ -168,4 +168,14 @@
 </comment>
     <requestid>1071244</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>15ac0372621bc420f472616feb92db1c</srcmd5>
+    <version>0.54</version>
+    <time>1716803708</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream change to fix build failures with recent boost:
+  * 0001-Fix-build-with-Boost-1.85.0.patch
+</comment>
+    <requestid>1176862</requestid>
+  </revision>
 </revisionlist>
