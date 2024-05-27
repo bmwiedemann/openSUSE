@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Fri May 24 11:05:25 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix make install for curl-config.1
+  * docs/Makefile.am: make curl-config.1 install
+  * Fixed upstream in: github.com/curl/curl/pull/13741
+  * Add curl-make-install-curl-config.patch
+
+-------------------------------------------------------------------
+Wed May 22 17:56:18 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 8.8.0:
+  * Changes:
+    - curl_version_info: provide librtmp version
+    - file: add support for directory listings
+    - lib: add curl_multi_waitfds
+    - NTLM_WB: drop support
+    - TLS: add support for ECH (Encrypted Client Hello)
+    - urlapi: add CURLU_GET_EMPTY for empty queries and fragments
+  * Bugfixes:
+    - build: prefer "USE_IPV6" macro internally (was: "ENABLE_IPV6")
+    - cd2nroff/manage: use UTC when SOURCE_DATE_EPOCH is set
+    - cf-socket: don't try getting local IP without socket
+    - cf-socket: remove references to l_ip, l_port
+    - configure: make --disable-docs imply --disable-manual
+    - curl.h: change CURL_SSLVERSION_* from enum to defines
+    - curl_path: make Curl_get_pathname use dynbuf
+    - curl_sha512_256: do not use workaround for NetBSD when not needed
+    - curl_sha512_256: fix detection of OpenSSL 1.1.1 or later
+    - curl_url_get.md: clarify queries and fragments and CURLU_GET_EMPTY
+    - DEPRECATE.md: TLS libraries without 1.3 support
+    - digest: replace strcpy for empty string with simple assignment
+    - doc: pytest "--repeat" -> "--count"
+    - docs/cmdline-opts: mention STARTTLS for --ssl and --ssl-reqd
+    - dynbuf: fix returncode on memory error
+    - ftp: add tracing support
+    - ftp: fix socket leak on rare error
+    - gnutls: lazy init the trust settings
+    - hsts: explicitly skip blank lines
+    - http2 + ngtcp2: pass CURLcode errors from callbacks
+    - http2, http3: decouple stream state from easy handle
+    - http2: emit RST when client write fails
+    - http: HEAD response body tolerance
+    - http: reject HTTP major version switch mid connection
+    - http: with chunked POST forced, disable length check on read callback
+    - idn: make Curl_idnconvert_hostname() use Curl_idn_decode()
+    - if2ip: make the buf_size arg a size_t
+    - krb5: use dynbuf
+    - lib/cf-h1-proxy: silence compiler warnings (gcc 14)
+    - lib: add trace support for client reads and writes
+    - lib: bump hash sizes to "size_t"
+    - lib: clear the easy handle's saved errno before transfer
+    - lib: make protocol handlers store scheme name lowercase
+    - lib: merge "ENABLE_QUIC" C macro into "USE_HTTP3"
+    - libssh2: set length to 0 if strdup failed
+    - openssl: do not set SSL_MODE_RELEASE_BUFFERS
+    - openssl: revert keylog_callback support for LibreSSL
+    - OS400: fix shellcheck warnings in scripts
+    - quiche: expire all active transfers on connection close
+    - quiche: trust its timeout handling
+    - tls: use shared init code for TCP+QUIC
+    - tool_cfgable: free {proxy_}cipher13_list on exit
+    - url: do not URL decode proxy crendentials
+    - url: fix use of an uninitialized variable
+    - url: make parse_login_details use memdup0
+    - urlapi: allow setting port number zero
+    - version: use msnprintf instead of strncpy
+    - vtls: TLS session storage overhaul
+    - wakeup_create: use FD_CLOEXEC/SOCK_CLOEXEC
+    - websocket: avoid memory leak in error path
+
+-------------------------------------------------------------------
 Wed May 22 11:04:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add split-provides for libcurl-devel -> libcurl-devel-doc.
