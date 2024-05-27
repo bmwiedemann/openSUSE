@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat May 25 11:52:26 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.45.5
+  * Fixed streaming sender functions payload corruption
+    gh#netdata/netdata#17696
+  * Fixed crashes due to missing dimension IDs (external protocol)
+    by detecting incorrect syntax and disabling plugins
+    gh#netdata/netdata#17690
+  * Fixed calculation issue in the go.d/cockroachdb collector
+    gh#netdata/netdata#17659
+- Changes in 1.45.4
+  * Added missing update_every property to the health prototype
+    JSON schema
+    gh#netdata/netdata#17613
+  * Fixed issue where parent alerts remained active after child
+    disconnection, by resetting health on child disconnect
+    gh#netdata/netdata#17612
+  * Increased spawn server command size and added shutdown
+    safeguard to prevent crashes from command size limit exceeded
+    gh#netdata/netdata#17566
+  * Fixed error code reporting for failed data insertion in SQLite
+    gh#netdata/netdata#17508
+  * Fixed issue with name-only label matching
+    gh#netdata/netdata#17482
+  * Improved termination handling: start watcher thread post-fork,
+    preventing main process from waiting indefinitely on TERM
+    signal
+    gh#netdata/netdata#17436
+  * Fixed priority order for alarms and alarm templates: now,
+    alarms are applied before alarm templates consistently,
+    regardless of their order in configuration files
+    gh#netdata/netdata#17398
+  * Added option for health table cleanup with
+    'netdata -W sqlite-alert-cleanup' command
+    gh#netdata/netdata#17385
+
+-------------------------------------------------------------------
 Fri Apr 12 16:15:23 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.45.3
