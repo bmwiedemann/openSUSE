@@ -1,0 +1,19 @@
+Index: nss/lib/pk11wrap/pk11skey.c
+===================================================================
+--- nss.orig/lib/pk11wrap/pk11skey.c
++++ nss/lib/pk11wrap/pk11skey.c
+@@ -520,6 +520,14 @@ PK11_ImportDataKey(PK11SlotInfo *slot, C
+     CK_OBJECT_HANDLE handle;
+     PK11GenericObject *genObject;
+ 
++    // Using HTTP3, Firefox runs via neqo that doesn't log in before calling into
++    // this function. So we try to log in here (and ignore failures) in case of FIPS.
++    // Also, no need to also load certificates, we only create a new object and we
++    // have to be logged in for that.
++    if (PK11_IsFIPS()) {
++        PK11_Authenticate(slot, PR_FALSE, wincx);
++    }
++
+     genObject = PK11_CreateGenericObject(slot, template, PR_ARRAY_SIZE(template), PR_FALSE);
+     if (genObject == NULL) {
+         return NULL;

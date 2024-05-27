@@ -80,6 +80,7 @@ Patch46:        nss-allow-slow-tests.patch
 Patch47:        nss-fips-pct-pubkeys.patch
 Patch48:        nss-fips-test.patch
 Patch49:        nss-allow-slow-tests-s390x.patch
+Patch50:        nss-fips-bsc1223724.patch
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
 # aarch64 + gcc4.8 fails to build on SLE-12 due to undefined references
 BuildRequires:  gcc9-c++
@@ -107,6 +108,7 @@ Requires:       libnssckbi.so()(64bit)
 %else
 Requires:       libnssckbi.so
 %endif
+Provides:       nss = %{version}
 %ifnarch %sparc
 %if ! 0%{?qemu_user_space_build}
 %define run_testsuite 1
@@ -242,6 +244,7 @@ cd nss
 # slow test on s390x, permit more time
 %patch -P 49 -p1
 %endif
+%patch -P 50 -p1
 
 # additional CA certificates
 #cd security/nss/lib/ckfw/builtins

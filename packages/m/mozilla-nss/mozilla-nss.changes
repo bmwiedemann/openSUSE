@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 24 08:12:08 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Adding nss-fips-bsc1223724.patch to fix startup crash of Firefox
+  when using FIPS-mode (bsc#1223724).
+- Added "Provides: nss" so other RPMs that require 'nss' can
+  be installed (jira PED-6358).
+
+-------------------------------------------------------------------
 Wed May  8 06:06:52 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - update to NSS 3.100
