@@ -22,14 +22,14 @@
 %define rname dragon
 %bcond_without released
 Name:           dragonplayer
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Multimedia Player
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/dragonplayer
-Source:         %{rname}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -82,6 +82,7 @@ rm -r %{buildroot}%{_kf6_iconsdir}/oxygen
 %{_kf6_appstreamdir}/org.kde.dragonplayer.appdata.xml
 %{_kf6_bindir}/dragon
 %{_kf6_iconsdir}/hicolor/*/apps/dragonplayer.*
+%{_kf6_mandir}/man1/dragon.1%{?ext_man}
 %{_kf6_plugindir}/kf6/parts/dragonpart.so
 %dir %{_kf6_sharedir}/kio
 %dir %{_kf6_sharedir}/kio/servicemenus
@@ -90,7 +91,6 @@ rm -r %{buildroot}%{_kf6_iconsdir}/oxygen
 %dir %{_kf6_sharedir}/solid/actions
 %{_kf6_sharedir}/solid/actions/dragonplayer-openaudiocd.desktop
 %{_kf6_sharedir}/solid/actions/dragonplayer-opendvd.desktop
-%{_kf6_mandir}/man1/dragon.1%{?ext_man}
 
 %files lang -f %{name}.lang
 %exclude %{_kf6_htmldir}/en/dragonplayer/

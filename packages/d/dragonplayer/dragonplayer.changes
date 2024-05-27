@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun May 19 09:54:59 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:14:49 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * Use QList directly
+  * man page: refer to Qt6 & KF6 version of commandline options
+  * Fix broken man page installation due to defunc variable
+  * appstream: use desktop-application type, add developer tag
+  * Use QString type arg with KActionCollection::action()
+  * Bump min required KF6 to 6.0
+  * Drop support for KF5's deprecated KToolInvocation
+  * Remove qt5 code
+  * Make sure that icon is setting
+
+-------------------------------------------------------------------
 Tue Apr  9 18:07:11 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
