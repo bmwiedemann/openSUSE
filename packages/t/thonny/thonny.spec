@@ -1,7 +1,7 @@
 #
 # spec file for package thonny
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019-2023 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %define desktop_file_name thonny
 
 Name:           thonny
-Version:        4.1.1
+Version:        4.1.4
 Release:        0
 Summary:        Python IDE for beginners
 License:        MIT
@@ -56,7 +56,7 @@ Requires:       python3-tk
 Requires:       python3-wheel
 ## MANUAL END
 Requires(post): desktop-file-utils
-Requires(postun):desktop-file-utils
+Requires(postun): desktop-file-utils
 Recommends:     %{name}-lang
 BuildArch:      noarch
 
