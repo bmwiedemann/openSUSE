@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun May 19 09:57:30 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:17:15 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * Port deprecated methods
+  * Add parent
+  * Rename as forceFocus
+  * Coding style
+  * Add missing [[nodiscard]]
+  * Coding style
+  * const'ify pointer
+  * Use QStringView::split
+  * Remove unused include
+  * Use kformat
+  * Use directly QString
+  * Increase version. Libkleo already required it
+  * Not export private method + coding style + use [[nodiscard]]
+  * const'ify pointer
+  * Fix coding style
+  * Use include as local
+  * Finish to implement expiremovejob
+
+-------------------------------------------------------------------
 Tue Apr  9 18:09:38 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
