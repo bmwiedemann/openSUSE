@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May 24 07:07:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.52.2:
+  + Bug Fixes:
+     - m365: Accepting event sends mail to each recipient.
+  + Miscellaneous:
+    - m365: Calendar: Correct read of file attachments.
+    - m365: Calendar: Read detached and deleted instances of event
+      series.
+    - m365: Calendar: Write detached and deleted instances of event
+      series.
+    - m365: Calendar: Fix a memory leak when loading event/task.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Apr 19 13:01:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.52.1:

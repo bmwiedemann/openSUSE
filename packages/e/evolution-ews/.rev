@@ -1232,4 +1232,22 @@
 </comment>
     <requestid>1171493</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>40cdefcca64ede1ddeb3cd087d996c6e</srcmd5>
+    <version>3.52.2</version>
+    <time>1716803073</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.52.2:
+  + Bug Fixes:
+     - m365: Accepting event sends mail to each recipient.
+  + Miscellaneous:
+    - m365: Calendar: Correct read of file attachments.
+    - m365: Calendar: Read detached and deleted instances of event
+      series.
+    - m365: Calendar: Write detached and deleted instances of event
+      series.
+    - m365: Calendar: Fix a memory leak when loading event/task.
+  + Updated translations. (forwarded request 1176668 from dimstar)</comment>
+    <requestid>1176675</requestid>
+  </revision>
 </revisionlist>
