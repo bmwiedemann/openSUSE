@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 22 07:43:23 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.5
+- Changes since 6.0.4:
+  * revert duplicate version
+  * update version for new release
+  * Fix subcategory pane opening when exiting search (kde#487156)
+
+-------------------------------------------------------------------
 Wed Apr 17 08:14:00 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.4:
