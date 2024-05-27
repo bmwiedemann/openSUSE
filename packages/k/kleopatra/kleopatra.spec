@@ -18,18 +18,18 @@
 
 %define kf6_version 6.0.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.2
+%define kpim6_version 6.0.80
 
 %bcond_without released
 Name:           kleopatra
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Certificate manager and GUI for OpenPGP and CMS cryptography
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/kleopatra
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -60,7 +60,6 @@ BuildRequires:  cmake(KPim6MailTransport) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MimeTreeParserWidgets) >= %{kpim6_version}
 BuildRequires:  cmake(QGpgmeQt6)
-BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
@@ -113,8 +112,6 @@ Kleopatra is a certificate manager and GUI for OpenPGP and CMS cryptography.
 %dir %{_kf6_plugindir}/pim6/kcms
 %dir %{_kf6_plugindir}/pim6/kcms/kleopatra
 %{_kf6_plugindir}/pim6/kcms/kleopatra/kleopatra_config_gnupgsystem.so
-%{_kf6_sharedir}/kconf_update/kleopatra-15.08-kickoff.sh
-%{_kf6_sharedir}/kconf_update/kleopatra.upd
 %dir %{_kf6_sharedir}/kio
 %dir %{_kf6_sharedir}/kio/servicemenus
 %{_kf6_sharedir}/kio/servicemenus/kleopatra_decryptverifyfiles.desktop
