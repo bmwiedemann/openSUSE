@@ -105,4 +105,36 @@
     <comment></comment>
     <requestid>1174653</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bb48c3152b6489185ad2b629e00f9af4</srcmd5>
+    <version>0.17.0</version>
+    <time>1716803735</time>
+    <user>anag+factory</user>
+    <comment>- Use autosetup to replace deprecated patch
+- Update to version 0.17.0
+  * Support for wlroots 0.17.x * Breaking change Rename all declarations of XdgTopLevel.* to XdgToplevel.*
+  * Fixed Seat.touch_point_clear_focus: The method took too many arguments which were not aligned to the wlroots counterpart and lead to a runtime error.
+  * Fixed Renderer.autocreate return value check. This also replaces some of the exceptions from render_texture and render_texture_with_matrix with boolean return values.
+  * Fixed: XdgTopLevel.parent always returnd a parent even if the parent is NULL.
+  * Fixed return type of Seat.touch_notify_down: Returns an integer now (the
+  * serial identifier)
+  * Added support for wlr_switch
+  * Added Seat.touch_send_* methods
+  * Added TouchPoint class
+  * Real support for wlr_touch. The previous implementations were not usable.
+  * Added support for the Single-pixel buffer protocol.
+  * Added (experimental) support for the Session lock V1 protocol
+  * Added Output.enable_adaptive_sync(bool)
+  * Added Cursor.detach_input_device()
+  * Added Backend.is_multi property which indicates if the backend represents a multi-backend
+  * Added Pointer.data property
+  * Added support for wlr_touch
+  * Added support for OutputState which simplifies the configuration of Output
+  * Removed Seat.has_grab(): Use the explicit methods like Seat.keyboard_has_grab(), Seat.pointer_has_grab() or Seat.touch_has_grab()
+  * Renamed the touch events to maintain a consistent naming scheme: TouchEventUp -&gt; TouchUpEvent, TouchEventDown -&gt; TouchDownEvent, TouchEventMotion -&gt; TouchMotionEvent, TouchEventCancel -&gt; TouchCancelEvent
+  * The following methods don't throw a RuntimeError anymore, but return a boolean value like the wlroots API: Backend.start(), Output.commit(), and SceneOutput.commit()
+  * Deprecated Seat.set_keyboard(): Use the Seat.keyboard property
+  * Seat.keyboard (and Seat.set_keyboard()) accepts None as valid value.</comment>
+    <requestid>1176890</requestid>
+  </revision>
 </revisionlist>

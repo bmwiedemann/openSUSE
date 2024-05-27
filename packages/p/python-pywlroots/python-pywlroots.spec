@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %bcond_without test
 Name:           python-pywlroots
-Version:        0.16.6
+Version:        0.17.0
 Release:        0
 Summary:        Python binding to the wlroots library using cffi
 License:        NCSA
@@ -42,8 +42,9 @@ BuildRequires:  fdupes
 BuildRequires:  libdrm >= 2.4.113
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(wlroots) >= 0.16.0
-BuildConflicts: pkgconfig(wlroots) >= 0.17.0
+BuildRequires:  pkgconfig(wlroots) >= 0.17.0
+# For future possible versions
+BuildConflicts: pkgconfig(wlroots) >= 0.18.0
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xwayland)
 Requires:       python-pywayland
@@ -54,8 +55,7 @@ Requires:       python-xkbcommon
 Python binding to the wlroots library using cffi.
 
 %prep
-%setup -q -n pywlroots-%{version}
-#%%patch -P 0 -p1
+%autosetup -n pywlroots-%{version}
 
 %build
 export CFLAGS="%optflags $(pkg-config --cflags wayland-client xkbcommon pixman-1 libinput libdrm)"
