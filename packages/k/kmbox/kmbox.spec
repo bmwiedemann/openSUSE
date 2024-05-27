@@ -18,24 +18,23 @@
 
 %define kf6_version 6.0.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.2
+%define kpim6_version 6.0.80
 
 %bcond_without released
 Name:           kmbox
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        KDE PIM Libraries: Mailbox functionality
 License:        LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
-BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 Conflicts:      libKF6MBox5 < %{version}
 
