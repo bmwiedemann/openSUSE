@@ -22,7 +22,7 @@
 %define _version 1.28
 
 Name:           mate-panel
-Version:        1.28.0
+Version:        1.28.1
 Release:        0
 Summary:        MATE Desktop Panel
 License:        GPL-2.0-or-later

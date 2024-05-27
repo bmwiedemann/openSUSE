@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 22 06:51:23 UTC 2024 - ming li <mli@suse.com>
+
+- Update version to 1.28.1:
+  * Build: require mate-desktop 1.28.2
+  * [ci]  use mate-desktop 1.28.2 upon which this depends
+  * Use MateImageMenuItem properly
+
+-------------------------------------------------------------------
 Fri Apr  5 09:15:03 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Drop mate-panel-layouts-suse.patch 
