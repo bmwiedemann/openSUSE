@@ -21,19 +21,18 @@
 
 %bcond_without released
 Name:           konqueror
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        KDE File Manager and Browser
 # Note for legal: webenginepart/autotests/webengine_testutils.h is neither built nor installed in our package.
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/konqueror
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
 BuildRequires:  cmake(KF6Bookmarks) >= %{kf6_version}
@@ -64,7 +63,6 @@ BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6TextToSpeech) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
-BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(zlib)
 Requires:       webenginepart
 Recommends:     konqueror-plugins
@@ -190,7 +188,8 @@ rm -r %{buildroot}%{_kf6_plugindir}/kwebkitpart
 %{_kf6_plugindir}/kf6/kio/bookmarks.so
 %{_kf6_plugindir}/kf6/parts/fsviewpart.so
 %{_kf6_plugindir}/kf6/parts/konq_sidebar.so
-%{_kf6_plugindir}/webarchivethumbnail.so
+%dir %{_kf6_plugindir}/kf6/thumbcreator
+%{_kf6_plugindir}/kf6/thumbcreator/webarchivethumbnail.so
 # webenginepart/kpartplugins/khtmlsettingspluginwebenginepart_kpartplugins.so is a symlink to this file
 %{_kf6_plugindir}/khtmlsettingsplugin.so
 %{_kf6_plugindir}/khtml/
