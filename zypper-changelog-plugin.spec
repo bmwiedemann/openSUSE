@@ -1,7 +1,7 @@
 #
 # spec file for package zypper-changelog-plugin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           zypper-changelog-plugin
-Version:        0.3
+Version:        0.4
 Release:        0
 Summary:        Changelog listing tool
 License:        GPL-2.0-only
 Group:          System/Packages
 URL:            https://github.com/bzoltan1/zypper-changelog-plugin.git
-Source:         zypper-changelog-plugin-0.3.tar.gz
+Source:         zypper-changelog-plugin-0.4.tar.gz
 Requires:       /usr/bin/python3
 Requires:       python3-requests
 BuildArch:      noarch
