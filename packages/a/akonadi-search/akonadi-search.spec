@@ -18,23 +18,26 @@
 
 %define kf6_version 6.0.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.2
+%define kpim6_version 6.0.80
 
 %bcond_without released
 Name:           akonadi-search
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Framework for searching and managing PIM metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
 URL:            https://www.kde.org
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+Source3:        vendor.tar.zst
 BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libxapian-devel
+BuildRequires:  zstd
+BuildRequires:  cmake(Corrosion)
 BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6Contacts) >= %{kf6_version}
@@ -49,7 +52,6 @@ BuildRequires:  cmake(KPim6Akonadi) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6AkonadiMime) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
-BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 Obsoletes:      baloo-pim < %{version}
@@ -83,7 +85,7 @@ Development files for the AkonadiSearch library.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -p1 -a3
 
 %build
 %cmake_kf6 -DBUILD_QCH:BOOL=TRUE

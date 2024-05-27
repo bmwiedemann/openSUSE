@@ -1,0 +1,9 @@
+<services>
+  <service name="cargo_vendor" mode="manual">
+     <param name="srctar">akonadi-search-*.tar.xz</param>
+     <param name="compression">zst</param>
+     <param name="update">true</param>
+     <param name="cargotoml">agent/rs/htmlparser/Cargo.toml</param>
+  </service>
+  <service name="cargo_audit" mode="manual" />
+</services>
