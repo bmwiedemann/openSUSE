@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 22 07:43:02 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.5
+- Changes since 6.0.4:
+  * update version for new release
+  * alternatecalendar: respect numbering system from libicu (kde#485373)
+  * wallpapers/potd: fix dragging preview image in Qt6.7
+
+-------------------------------------------------------------------
 Wed Apr 17 08:12:22 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.4:
