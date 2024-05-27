@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun May 19 09:56:32 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:16:17 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * appstream: use developer tag with name KDE
+  * Bump min required KF6 to 6.0
+  * Drop support for KF5's deprecated KToolInvocation
+  * Store theme files as SVG in repo, compress to SVGZ only on installation
+  * Install theme data to themes/ subdir, for kdegames consistency
+
+-------------------------------------------------------------------
 Tue Apr  9 18:08:40 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
