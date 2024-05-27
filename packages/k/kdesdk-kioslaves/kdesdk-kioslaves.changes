@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun May 19 09:55:49 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:15:35 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * Rename translation catalog to kio6_perldoc to match version
+  * Drop support for Qt5/KF5
+  * Use kdoctools' kde-docs.css instead of kio_docfilter.css
+
+-------------------------------------------------------------------
 Tue Apr  9 18:07:58 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2

@@ -503,4 +503,12 @@
     <comment>KDE Release gear 24.02.2 (forwarded request 1166725 from krop)</comment>
     <requestid>1167315</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>e2e453b69023ff531b6836494f291c28</srcmd5>
+    <version>24.05.0</version>
+    <time>1716803391</time>
+    <user>anag+factory</user>
+    <comment>KDE release 24.05.0 (forwarded request 1175936 from krop)</comment>
+    <requestid>1176279</requestid>
+  </revision>
 </revisionlist>
