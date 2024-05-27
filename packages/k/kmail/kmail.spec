@@ -18,18 +18,18 @@
 
 %define kf6_version 6.0.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.2
+%define kpim6_version 6.0.80
 
 %bcond_without released
 Name:           kmail
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Mail Client
 License:        GPL-2.0-only
 URL:            https://apps.kde.org/kmail2
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -91,7 +91,7 @@ BuildRequires:  cmake(KPim6TextEdit) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Tnef) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6WebEngineViewer) >= %{kpim6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
-BuildRequires:  cmake(Qt6Keychain)
+BuildRequires:  cmake(Qt6Keychain) >= 0.14.2
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
@@ -111,7 +111,7 @@ Recommends:     pim-sieve-editor
 Provides:       kmail5 = %{version}
 Obsoletes:      kmail5 < %{version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  x86_64 %x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 KMail is the KDE mail client.
