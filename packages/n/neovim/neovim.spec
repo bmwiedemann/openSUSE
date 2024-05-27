@@ -18,35 +18,16 @@
 
 %{?!python3_pkgversion:%define python3_pkgversion 3}
 
-# %%undefine _build_create_debug \
-#     %%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
-%if 0%{?rhel}
-%define __cmake cmake3
-BuildRequires:  cmake3
-%else
-BuildRequires:  cmake
-%endif
-%if 0%{?rhel} || 0%{?fedora}
-%define vimplugin_dir %{_datadir}/vim/vimfiles
-%else
 %define vimplugin_dir %{_datadir}/vim/site
-%endif
-%if 0%{?fedora}
-%define lua_archdir %{lua_libdir}
-%define lua_noarchdir %{lua_pkgdir}
-%define lua_incdir %{_includedir}/lua-%{lua_version}
-Requires:       python3-neovim
-%bcond_with luajit
-%endif
 # Luajit not available on all platforms
 %ifarch %{arm} %{ix86} x86_64 aarch64
 %bcond_without luajit
 %else
 %bcond_with luajit
 %endif
+
 Name:           neovim
-Version:        0.9.5
+Version:        0.10.0
 Release:        0
 Summary:        Vim-fork focused on extensibility and agility
 License:        Apache-2.0 AND Vim AND GPL-3.0-or-later AND CC-BY-3.0
@@ -54,11 +35,8 @@ Group:          Productivity/Text/Editors
 URL:            https://neovim.io/
 Source0:        https://github.com/neovim/neovim/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        sysinit.vim
-Source2:        spec-template
 Source3:        suse-spec-template
-# Our packaged busted script has a shebang pointing to regular Lua interepreter,
-# we need /usr/bin/luajit. Fake it.
-Source10:       lj-busted.sh
+BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  filesystem
@@ -76,9 +54,9 @@ BuildRequires:  pkgconfig(libutf8proc)
 BuildRequires:  pkgconfig(libuv) >= 1.42.0
 BuildRequires:  pkgconfig(msgpack-c)
 BuildRequires:  pkgconfig(termkey)
-BuildRequires:  pkgconfig(tree-sitter) >= 0.20.8
-BuildRequires:  pkgconfig(unibilium)
-BuildRequires:  pkgconfig(vterm) >= 0.3
+BuildRequires:  pkgconfig(tree-sitter) >= 0.20.9
+BuildRequires:  pkgconfig(unibilium) >= 2.0.0
+BuildRequires:  pkgconfig(vterm) >= 0.3.3
 Requires:       gperf
 Requires:       libvterm0 >= 0.3
 Requires:       xdg-utils
@@ -86,7 +64,6 @@ Requires:       xdg-utils
 Recommends:     wl-clipboard
 Recommends:     xsel
 
-%if 0%{?suse_version}
 BuildRequires:  libluv-devel
 BuildRequires:  lua-macros
 BuildRequires:  lua51-LPeg
@@ -103,35 +80,7 @@ BuildRequires:  lua51-devel
 Requires:       lua51-bit32
 Requires:       lua51-luv
 Recommends:     python3-neovim
-%if 0%{?suse_version} < 1330
-Requires(post): gtk3-tools
-Requires(postun): gtk3-tools
-%endif
-%endif
-%if 0%{?suse_version} >= 1500
-# Modern *SUSE … tests are enabled
-# For tests
-BuildRequires:  lua51-busted
-BuildRequires:  hostname
-# end of test requirements
-%endif
-%if 0%{?rhel} || 0%{?fedora}
-BuildRequires:  lua-bit32
-BuildRequires:  lua-devel
-BuildRequires:  lua-lpeg
-BuildRequires:  lua-luv-devel
-BuildRequires:  lua-mpack
-BuildRequires:  luarocks
-BuildRequires:  python2-six
-Requires:       lua-luv
-%endif
-%if 0%{?rhel}
-BuildRequires:  lua-bit32
-BuildRequires:  lua-macros
-BuildRequires:  luajit-devel
-Requires:       lua-bit32
-Requires:       python34-neovim
-%endif
+
 Provides:       nvim
 
 %description
@@ -151,8 +100,6 @@ parts of Vim, without compromise, and more.
 %prep
 %autosetup -p1
 
-install -p -m 0755 %{SOURCE10} .
-
 # Remove __DATE__ and __TIME__.
 BUILD_TIME=$(LC_ALL=C date -ur %{_sourcedir}/%{name}.changes +'%{H}:%{M}')
 BUILD_DATE=$(LC_ALL=C date -ur %{_sourcedir}/%{name}.changes +'%{b} %{d} %{Y}')
@@ -171,7 +118,6 @@ export CXXFLAGS="%{optflags} -fcommon"
        -DPREFER_LUA=%{?with_luajit:OFF}%{!?with_luajit:ON} \
        -DLUA_PRG=%{_bindir}/%{?with_luajit:luajit}%{!?with_luajit:lua} \
 %if %{with luajit}
-       -DBUSTED_PRG="$(readlink -f ../lj-busted.sh)" \
        -DLUAJIT_INCLUDE_DIR:PATH=%(pkg-config --cflags-only-I luajit|cut -c 3-) \
 %endif
        -DUSE_BUNDLED=OFF -DLUAJIT_USE_BUNDLED=ON  \
@@ -179,8 +125,8 @@ export CXXFLAGS="%{optflags} -fcommon"
        -DCMAKE_COLOR_MAKEFILE=OFF \
        -DCMAKE_C_FLAGS_RELWITHDEBINFO="$opts" \
        -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
-       -DLIBLUV_INCLUDE_DIR:PATH=%{lua_incdir} \
-# -DLIBLUV_LIBRARY=%%{lua_archdir}/luv.so
+       -DLIBLUV_INCLUDE_DIR:PATH=%{lua_incdir}
+
 %make_build
 
 popd
@@ -193,11 +139,8 @@ popd
 install -D -m 644 -p %{SOURCE1} %{buildroot}%{_sysconfdir}/nvim/sysinit.vim
 ln -sf  %{_sysconfdir}/nvim/sysinit.vim %{buildroot}%{_datadir}/nvim/sysinit.vim
 
-%if 0%{?suse_version}
+# install SUSE specific spec template
 install -p -m 644 %{SOURCE3} %{buildroot}%{_datadir}/nvim/template.spec
-%else
-install -p -m 644 %{SOURCE2} %{buildroot}%{_datadir}/nvim/template.spec
-%endif
 
 desktop-file-install --dir=%{buildroot}%{_datadir}/applications \
     runtime/nvim.desktop
@@ -218,33 +161,8 @@ mkdir -p %{buildroot}%{vimplugin_dir}/{after,after/syntax,autoload,colors,doc,ft
 # https://en.opensuse.org/openSUSE:Packaging_checks
 export NO_BRP_CHECK_RPATH=true
 
-%check
-%if %{with luajit}
-# Tests fail on aarch64 gh#neovim/neovim#18176
-%ifnarch aarch64
-# set vars to make build reproducible in spite of config/CMakeLists.txt
-HOSTNAME=OBS
-USERNAME=OBS
-pushd build
-%make_build BUSTED_PRG=$(readlink -f ../lj-busted.sh) unittest
-popd
-%endif
-%endif
-
-%if 0%{?suse_version} && 0%{?suse_version} < 1330
-%post
-%desktop_database_post
-%icon_theme_cache_post
-%endif
-
-%if 0%{?suse_version} && 0%{?suse_version} < 1330
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
-
 %files
-%doc BACKERS.md CONTRIBUTING.md README.md
+%doc CONTRIBUTING.md README.md
 %docdir %{_mandir}
 %license LICENSE.txt
 %{_bindir}/nvim
