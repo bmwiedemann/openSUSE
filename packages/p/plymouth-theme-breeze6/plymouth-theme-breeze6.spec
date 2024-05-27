@@ -40,14 +40,14 @@ BuildRequires:  fix-version-checks-in-here
 
 %bcond_without released
 Name:           plymouth-theme-breeze6
-Version:        6.0.4.1
+Version:        6.0.5
 Release:        0
 Summary:        Plymouth "Breeze" theme
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/6.0.4/%{rname}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/6.0.4/%{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
