@@ -4149,4 +4149,13 @@
   * fix typo in alljava.csh and drop stderr redirection</comment>
     <requestid>1167849</requestid>
   </revision>
+  <revision rev="500" vrev="1">
+    <srcmd5>7a41ba25ae7e8f087341bde864eca755</srcmd5>
+    <version>84.87+git20240523.10a5692</version>
+    <time>1716802869</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 84.87+git20240523.10a5692:
+  * Add tmpfiles.d/soft-reboot-cleanup.conf (forwarded request 1176719 from kukuk)</comment>
+    <requestid>1176720</requestid>
+  </revision>
 </revisionlist>

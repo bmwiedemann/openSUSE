@@ -33,7 +33,7 @@ BuildRequires:  git-core
 %endif
 
 Name:           aaa_base
-Version:        84.87+git20240415.e6815bf%{git_version}
+Version:        84.87+git20240523.10a5692%{git_version}
 Release:        0
 Summary:        openSUSE Base Package
 License:        GPL-2.0-or-later
@@ -193,6 +193,7 @@ mkdir -p %{buildroot}%{_fillupdir}
 /usr/etc/profile.d/terminal.csh
 %dir /usr/lib/environment.d
 /usr/lib/environment.d/50-xdg.conf
+%{_tmpfilesdir}/soft-reboot-cleanup.conf
 %config /etc/shells
 %ghost %dir /etc/init.d
 %ghost %config(noreplace) /etc/init.d/boot.local

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 24 11:48:00 UTC 2024 - kukuk@suse.com
+
+- Update to version 84.87+git20240523.10a5692:
+  * Add tmpfiles.d/soft-reboot-cleanup.conf
+
+-------------------------------------------------------------------
 Mon Apr 15 15:49:43 UTC 2024 - lnussel@suse.com
 
 - Update to version 84.87+git20240415.e6815bf:
