@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun May 19 09:54:58 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:14:48 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * Formatting leftover files and fix build
+  * Drop clang-format file
+  * Add and make use of ECM clang-format integration
+  * git: fix pull and push dialogs typos in signal connection
+  * git: Initial implementation of git clone dialog
+  * org.kde.dolphin-plugins.metainfo.xml appstream issue summary-has-dot-suffix
+  * svn: Fix gcc-13 One Definition Rule compilation error with LTO enabled (kde#482524)
+  * [svn] Fix part or previous commit message append to new shorter one (kde#446027)
+  * Use locales date in Git log (kde#454841)
+  * git: Add restoreStaged action
+  * Port Mercurial plugin away from QTextCodec
+  * Port Git plugin away from QTextCodec
+  * Use ConfigGui not XmlGui in git and subversion plugins
+
+-------------------------------------------------------------------
 Tue Apr  9 18:07:10 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
