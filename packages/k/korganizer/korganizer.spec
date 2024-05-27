@@ -18,18 +18,18 @@
 
 %define kf6_version 6.0.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.2
+%define kpim6_version 6.0.80
 
 %bcond_without released
 Name:           korganizer
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Personal Organizer
 License:        GPL-2.0-only
 URL:            https://apps.kde.org/korganizer
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -81,7 +81,7 @@ Requires:       kdepim-runtime
 Provides:       korganizer5 = %{version}
 Obsoletes:      korganizer5 < %{version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  x86_64 %x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 KOrganizer is a calendar application by KDE.
@@ -129,7 +129,6 @@ KOrganizer is a calendar application by KDE.
 %dir %{_kf6_plugindir}/pim6/kcms
 %dir %{_kf6_plugindir}/pim6/kcms/korganizer
 %{_kf6_plugindir}/pim6/kcms/korganizer/korganizer_configcolorsandfonts.so
-%{_kf6_plugindir}/pim6/kcms/korganizer/korganizer_configdesignerfields.so
 %{_kf6_plugindir}/pim6/kcms/korganizer/korganizer_configfreebusy.so
 %{_kf6_plugindir}/pim6/kcms/korganizer/korganizer_configgroupscheduling.so
 %{_kf6_plugindir}/pim6/kcms/korganizer/korganizer_configmain.so
