@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat May 25 13:28:01 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.7.2:
+  * Remove margins and spacing from the top-level canvas layout.
+  * Possible fix to pipewire backend thread loop locking.
+  * Update to latest framework level (Qt >= 6.7).
+
+-------------------------------------------------------------------
+Sat Apr 27 19:34:28 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.7.1:
+  * Hot-fix: Disable thumbview interactivity: prevent dragging
+    nodes over to extremely severe off-limits by accident.
+
+-------------------------------------------------------------------
+Wed Apr 24 18:22:52 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.7.0:
+  * Whether to show the System-tray informational and/or active
+    Patchbay warning messages, respectively on Close and/or Quit,
+    is now optional (cf. Help > Enable System Tray Message and/or
+    Help > Enable Patchbay Message, resp.)
+  * Introduce the View/Thumbview option as a whole graph thumbnail
+    overview helper.
+
+-------------------------------------------------------------------
+Sat Apr  6 20:12:10 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.6.3:
+  * Node and port title ellipsis shortning trimmed and simplified.
+  * Fix system-tray icon to a 32x32 pixmap.
+  * Fix renamed ports positioned incorrectly after relaunch.
+
+-------------------------------------------------------------------
 Sun Jan 28 10:38:08 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to version 0.6.2:
