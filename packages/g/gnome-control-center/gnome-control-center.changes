@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 24 02:33:07 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gnome-control-center-users-page-Don-t-show-the-system-accounts.patch:
+  not show system account in Users panel
+  (bsc#1224199 glgo#GNOME/Settings#3066).
+
+-------------------------------------------------------------------
 Mon May 13 23:02:40 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - Re-Enable location-services support:

@@ -1,0 +1,30 @@
+From cf0a84f2a79d3685b0f7a516e4c9d9ade1b888dc Mon Sep 17 00:00:00 2001
+From: Xiaoguang Wang <xwang@suse.com>
+Date: Thu, 23 May 2024 09:32:43 +0800
+Subject: [PATCH] users-page: Don't show the system accounts
+
+When handling user-added signal, omit the system accounts.
+
+Fixes https://gitlab.gnome.org/GNOME/gnome-control-center/-/issues/3066
+---
+ panels/system/users/cc-users-page.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/panels/system/users/cc-users-page.c b/panels/system/users/cc-users-page.c
+index 56dd0e007..0d487558a 100644
+--- a/panels/system/users/cc-users-page.c
++++ b/panels/system/users/cc-users-page.c
+@@ -168,6 +168,10 @@ on_user_added (CcUsersPage *self,
+   CcUserPage *page;
+   g_list_store_insert_sorted (self->model, user, sort_users, self);
+ 
++  if (act_user_is_system_account (user)) {
++    return;
++  }
++
+   page = CC_USER_PAGE (adw_navigation_view_get_visible_page (self->navigation));
+   if (page != self->current_user_page)
+     return;
+-- 
+2.45.1
+

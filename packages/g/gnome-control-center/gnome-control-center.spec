@@ -37,6 +37,8 @@ Source99:       %{name}-rpmlintrc
 
 # PATCH-FIX-OPENSUSE gnome-control-center-disable-error-message-for-NM.patch bsc#989801 sckang@suse.com -- network: Improve the check for whether NM or wicked is running
 Patch1:         gnome-control-center-disable-error-message-for-NM.patch
+# PATCH-FIX-UPSTREAM gnome-control-center-users-page-Don-t-show-the-system-accounts.patch bsc#1224199 glgo#GNOME/Settings#3066 xwang@suse.com -- not show system account in Users panel
+Patch2:         gnome-control-center-users-page-Don-t-show-the-system-accounts.patch
 
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
 # PATCH-FEATURE-SLE gnome-control-center-info-never-use-gnome-software.patch bsc#999336 fezhang@suse.com -- info: Never search for gnome-software as an option when checking for updates on SLE and Leap 42.2, because we use gpk-update-viewer.
@@ -195,6 +197,7 @@ GNOME control center.
 %prep
 %setup -q
 %patch -P 1 -p1
+%patch -P 2 -p1
 
 # patches for Leap >= 15 plus SLE >= 15, but not TW
 %if 0%{?sle_version} >= 150000
