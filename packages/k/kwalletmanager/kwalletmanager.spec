@@ -16,19 +16,19 @@
 #
 
 
-%define kf6_version 5.246.0
+%define kf6_version 6.0.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kwalletmanager
-Version:        24.02.1
+Version:        24.05.0
 Release:        0
 Summary:        Wallet Management Tool
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/kwalletmanager
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 # PATCH-FIX-OPENSUSE -- boo#1217190 don't require password to save settings
