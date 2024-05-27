@@ -21,14 +21,14 @@
 
 %bcond_without released
 Name:           kcalc
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Scientific Calculator
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/kcalc
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  gmp-devel
@@ -44,7 +44,6 @@ BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
-BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Obsoletes:      kcalc5 < %{version}
 Provides:       kcalc5 = %{version}

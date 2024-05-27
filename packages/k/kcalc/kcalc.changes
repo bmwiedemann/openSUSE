@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun May 19 09:55:33 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:15:20 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * Add localization for decimal separator in KNumber.toQString
+  * it compiles with QT_NO_CONTEXTLESS_CONNECT
+  * Promote square root button to Normal mode (kde#471088)
+  * Add cubic root parsing
+  * Use desktop-application
+  * Allow the string 'XOR' as a token for typed expressions
+  * Drop support for KF5's deprecated KToolInvocation
+  * Port away from QRegExp
+  * appstream: Update developer name
+  * Change default shortcut to Calculator
+  * Add missing include moc
+  * Use local include
+  * Apply missing i18n
+  * Use a more frameless style for the calculator display
+  * Add display for user's input
+
+-------------------------------------------------------------------
 Tue Apr  9 18:07:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
