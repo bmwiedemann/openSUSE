@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sat May 25 14:52:32 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Updating vendor.tar.gz
+
+-------------------------------------------------------------------
+Sat May 25 14:39:14 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.35.0:
+  * kitten @ run: A new remote control command to run a process on the machine
+    kitty is running on and get its output (#7429)
+  * notify_on_cmd_finish: Show the actual command that was finished (#7420)
+  * hints kitten: Allow clicking on matched text to select it in addition to
+    typing the hint
+  * Shell integration: Make the currently executing cmdline available as a
+    window variable in kitty
+  * paste_actions: Fix replace-newline not working with confirm (#7374)
+  * Graphics: Fix aspect ratio of images not being preserved when only a
+    single dimension of the destination rectangle is specified (#7380)
+  * focus_visible_window: Fix selecting with mouse click leaving keyboard
+    in unusable state (#7390)
+  * Wayland: Fix infinite loop causing bad performance when using IME via
+    fcitx5 due to a change in fcitx5 (#7396)
+  * Desktop notifications protocol: Add support for specifying urgency
+  * Improve rendering of Unicode shade character to avoid Moire
+    patterns (#7401)
+  * kitten @ send-key: Fix some keys being sent in kitty keyboard protocol
+    encoding when not using socket for remote control
+  * Dont clear selections on erase in screen commands unless the erased
+    region intersects a selection (#7408)
+  * Wayland: save energy by not rendering “suspended” windows on compositors
+    that support that
+  * Allow more types of alignment for placement_strategy (#7419)
+  * Add some more box-drawing characters from the “Geometric shapes”
+    Unicode block (#7433)
+  * Linux: Run all child processes in their own systemd scope to prevent the
+    OOM killer from harvesting kitty when a child process misbehaves (#7427)
+  * Mouse reporting: Fix horizontal scroll events inverted (#7439)
+  * Remote control: @ action: Fix some actions being performed on the active
+    window instead of the matched window (#7438)
+  * Scrolling with mouse wheel when a selection is active should update
+    the selection (#7453)
+  * Fix kitten @ set-background-opacity limited to min opacity of 0.1
+    instead of 0 (#7463)
+  * launch --hold: Fix hold not working if kernel signals process group
+    with SIGINT (#7466)
+  * macOS: Fix --start-as=fullscreen not working when another window is
+    already fullscreen (#7448)
+  * Add option kitten @ detach-window --stay-in-tab to keep focus in the
+    currently active tab when moving windows (#7468)
+  * macOS: Fix changing window chrome/colors while in traditional fullscreen
+    causing the titlebar to become visible (#7469)
+
+-------------------------------------------------------------------
 Fri Apr 19 13:47:21 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.34.1:
