@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Fri May 17 11:44:56 UTC 2024 - dfaggioli@suse.com
+
+- Update to version 9.0.0:
+  Full changelog here:
+   https://wiki.qemu.org/ChangeLog/9.0
+  Highlights include:
+   * block: virtio-blk now supports multiqueue where different queues of a
+     single disk can be processed by different I/O threads
+   * gdbstub: various improvements such as catching syscalls in user-mode,
+     support for fork-follow modes, and support for siginfo:read
+   * memory: preallocation of memory backends can now be handled
+     concurrently using multiple threads in some cases
+   * migration: support for "mapped-ram" capability allowing for more
+     efficient VM snapshots, improved support for zero-page detection, and
+     checkpoint-restart support for VFIO
+   * ARM: architectural feature support for ECV (Enhanced Counter Virtualization),
+     NV (Nested Virtualization), and NV2 (Enhanced Nested
+     Virtualization)
+   * ARM: board support for B-L475E-IOT01A IoT node, mp3-an536 (MPS3 dev board
+     + AN536 firmware), and raspi4b (Raspberry Pi 4 Model B)
+   * ARM: additional IO/disk/USB/SPI/ethernet controller and timer support for
+     Freescale i.MX6, Allwinner R40, Banana Pi, npcm7xxx, and virt boards
+   * HPPA: numerous bug fixes and SeaBIOS-hppa firmware updated to version 16
+   * LoongArch: KVM acceleration support, including LSX/LASX vector
+     extensions
+   * RISC-V: ISA/extension support for Zacas, amocas, RVA22 profiles,
+     Zaamo, Zalrsc, Ztso, and more
+   * RISC-V: SMBIOS support for RISC-V virt machine, ACPI support for
+     SRAT, SLIT, AIA, PLIC and updated RHCT table support, and numerous fixes
+   * s390x: Emulation support for CVDG, CVB, CVBY and CVBG instructions,
+     and fixes for LAE (Load Address Extended) emulation
+   * and lots more...
+
+-------------------------------------------------------------------
+Thu May 16 14:43:38 UTC 2024 - dfaggioli@suse.com
+
+- Update to version 8.2.4. Full changelog/backports here:
+   https://lore.kernel.org/qemu-devel/1715632914.382233.1013785.nullmailer@tls.msk.ru/
+  Some of the upstream backports are:
+   target/sh4: Fix SUBV opcode
+   target/sh4: Fix ADDV opcode
+   hw/arm/npcm7xx: Store derivative OTP fuse key in little endian
+   hw/dmax/xlnx_dpdma: fix handling of address_extension descriptor fields
+   hw/ufs: Fix buffer overflow bug
+   tests/avocado: update sunxi kernel from armbian to 6.6.16
+   target/loongarch/cpu.c: typo fix: expection
+   backends/cryptodev-builtin: Fix local_error leaks
+   nbd/server: Mark negotiation functions as coroutine_fn
+   nbd/server: do not poll within a coroutine context
+   linux-user: do_setsockopt: fix SOL_ALG.ALG_SET_KEY
+   target/riscv/kvm: change timer regs size to u64
+   target/riscv/kvm: change KVM_REG_RISCV_FP_D to u64
+   target/riscv/kvm: change KVM_REG_RISCV_FP_F to u32
+   ...
+
+-------------------------------------------------------------------
+Wed May 08 13:27:40 UTC 2024 - dfaggioli@suse.com
+
+- Fixes:
+  * [openSUSE][RPM] Prioritize PA over PipeWire in SLE (bsc#1222218)
+  * [openSUSE][RPM] Hostname normalization (for repr. build ) done properly (boo#1084909)
+
+-------------------------------------------------------------------
 Tue Apr 30 10:05:32 UTC 2024 - dfaggioli@suse.com
 
 - Fix a build issue on riscv:
@@ -31,6 +94,7 @@ Tue Apr 30 10:05:32 UTC 2024 - dfaggioli@suse.com
    * hw/virtio/virtio-crypto: Protect from DMA re-entrancy bugs
    * hw/char/virtio-serial-bus: Protect from DMA re-entrancy bugs
    * hw/display/virtio-gpu: Protect from DMA re-entrancy bugs
+   * mirror: Don't call job_pause_point() under graph lock (bsc#1224179)
    * ...and many more...
 
 -------------------------------------------------------------------

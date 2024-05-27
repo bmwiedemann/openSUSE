@@ -82,7 +82,7 @@ URL:            https://www.qemu.org/
 Summary:        Machine emulator and virtualizer
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        8.2.3
+Version:        9.0.0
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
@@ -401,8 +401,8 @@ meson subprojects packagefiles --apply berkeley-testfloat-3
 meson subprojects packagefiles --apply berkeley-softfloat-3
 
 # for the record, this set of firmware files is installed, but we don't
-# build (yet): bamboo.dtb canyonlands.dtb hppa-firmware.img openbios-ppc
-# openbios-sparc32 openbios-sparc64 palcode-clipper petalogix-ml605.dtb
+# build (yet): bamboo.dtb canyonlands.dtb hppa-firmware.img hppa-firmware.img 64
+# openbios-ppc openbios-sparc32 openbios-sparc64 palcode-clipper petalogix-ml605.dtb
 # petalogix-s3adsp1800.dtb QEMU,cgthree.bin QEMU,tcx.bin qemu_vga.ndrv
 # u-boot.e500 u-boot-sam460-20100605.bin opensbi-riscv32-generic-fw_dynamic.bin
 # opensbi-riscv32-generic-fw_dynamic.elfnpcm7xx_bootrom.bin vof.bin
@@ -498,6 +498,8 @@ find . -iname ".git" -exec rm -rf {} +
 
 mkdir -p %blddir
 cd %blddir
+export USER=abuild
+export HOSTNAME=OBS # is used in roms/SLOF/Makefile.gen (boo#1084909)
 
 # We define a few general and common options and then we disable
 # pretty much everything. Afterwards, there is a section for each
@@ -671,7 +673,11 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--disable-xkbcommon \
 	--disable-zstd \
 	--without-default-devices \
+%if 0%{?suse_version} >= 1600
 	--audio-drv-list=pipewire,pa,alsa,jack,oss \
+%else
+	--audio-drv-list=pa,pipewire,alsa,jack,oss \
+%endif
 %ifarch x86_64
 	--enable-avx2 \
 	--enable-libpmem \
@@ -904,8 +910,6 @@ done
 
 %install
 cd %blddir
-export USER=abuild
-export HOSTNAME=OBS # is used in roms/SLOF/Makefile.gen (boo#1084909)
 
 %make_build install DESTDIR=%{buildroot}
 
@@ -1314,6 +1318,7 @@ popular QEMU packages which are dedicated to a single architecture.)
 %_bindir/qemu-system-xtensa
 %_bindir/qemu-system-xtensaeb
 %_datadir/%name/hppa-firmware.img
+%_datadir/%name/hppa-firmware64.img
 %_datadir/%name/openbios-sparc32
 %_datadir/%name/openbios-sparc64
 %_datadir/%name/opensbi-riscv32-generic-fw_dynamic.bin
@@ -1958,7 +1963,7 @@ wider support than qboot, but still focuses on quick boot up.
 %package seabios
 Summary:        x86 Legacy BIOS for QEMU
 Group:          System/Emulators/PC
-Version:        8.2.3%{sbver}
+Version:        9.0.0%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -1979,7 +1984,7 @@ is the default and legacy BIOS for QEMU.
 %package vgabios
 Summary:        VGA BIOSes for QEMU
 Group:          System/Emulators/PC
-Version:        8.2.3%{sbver}
+Version:        9.0.0%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -2005,7 +2010,7 @@ video card. For use with QEMU.
 %package ipxe
 Summary:        PXE ROMs for QEMU NICs
 Group:          System/Emulators/PC
-Version:        8.2.3
+Version:        9.0.0
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0

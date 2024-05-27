@@ -27,7 +27,7 @@ URL:            https://www.qemu.org/
 Summary:        CPU emulator for user space
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        8.2.3
+Version:        9.0.0
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
@@ -344,7 +344,7 @@ scripts/qemu-binfmt-conf.sh --systemd ALL --persistent yes --preserve-argv0 yes 
 cd %blddir
 
 %ifarch aarch64 %ix86 ppc ppc64 ppc64le riscv64 s390x x86_64
-%{qemu_arch}-linux-user/qemu-%{qemu_arch} %_bindir/ls > /dev/null
+./qemu-%{qemu_arch} %_bindir/ls > /dev/null
 %endif
 
 %make_build check-softfloat
