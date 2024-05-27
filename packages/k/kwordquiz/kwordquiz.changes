@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun May 19 09:57:14 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:17:00 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * It compiles fine without deprecated methods
+  * Improve logo and appstream metadata for flathub
+  * Update homepage consistently to apps.kde.org
+  * appstream: use desktop-application type, add developer & launchable tags
+  * It compiles fine without deprecated method
+  * Use correct variable KF_MIN_VERSION
+  * flatpak: Switch to non-preview runtime
+
+-------------------------------------------------------------------
 Tue Apr  9 18:09:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
