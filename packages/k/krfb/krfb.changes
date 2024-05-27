@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun May 19 09:56:56 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- Changes since 24.04.80:
+  * pw: Fix build with last released KPipeWire release
+  * Fix build with >=QtWaylandScanner-6.7.1
+
+-------------------------------------------------------------------
+Fri May  3 09:16:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * Fixed crash calling PWFrameBuffer::cursorPosition() (kde#472453)
+  * Port KStandardAction usage to new connection syntax
+  * Use QList directly
+  * Fix assertion error when noWallet used
+  * pw: Improve fb allocation code.
+  * Drop unused kcrash dependency
+  * Don't search for non-existant Qt6XkbCommonSupport
+  * Fix pipewire.h include not found
+  * wayland: Adapt to change in kpipewire
+
+-------------------------------------------------------------------
 Tue Apr  9 18:09:04 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
