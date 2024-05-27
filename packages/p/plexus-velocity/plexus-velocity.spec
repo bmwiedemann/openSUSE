@@ -55,6 +55,8 @@ find -name '*.jar' -delete
 cp -p %{SOURCE1} build.xml
 cp -p %{SOURCE2} LICENSE
 
+%pom_change_dep :plexus-container-default org.eclipse.sisu:org.eclipse.sisu.plexus:0.9.0.M2
+
 mkdir -p lib
 build-jar-repository -s lib commons-collections org.eclipse.sisu.plexus velocity
 
