@@ -20,18 +20,17 @@
 %define qt6_version 6.6.0
 %bcond_without released
 Name:           kget
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Download Manager
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/kget
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  qt6-qt5compat-private-devel >= %{qt6_version}
 BuildRequires:  libboost_headers-devel
 BuildRequires:  pkgconfig
 BuildRequires:  sqlite-devel
@@ -60,7 +59,6 @@ BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(KTorrent6)
 BuildRequires:  cmake(QGpgmeQt6) >= 1.7.0
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
-BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
