@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun May 19 09:54:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- Changes since 24.04.80:
+  * Disable testpython
+  * Fixed the export to LaTex. (kde#483482)
+
+-------------------------------------------------------------------
+Fri May  3 09:14:45 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * Skip the new test added in the previous commit
+  * [python] ignore IPython's magic functions in imported Jupytor notebooks
+  * Properly initialize the setting for latex typesetting when creating a new session in a new worksheet. (kde#467094)
+  * Don't try to evaluate the expression(s) in the worksheet if the login into the session has failed
+  * Disable requiring tests failing on FreeBSD
+  * Update README.md
+
+-------------------------------------------------------------------
 Tue Apr  9 18:07:07 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
