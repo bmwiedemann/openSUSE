@@ -576,4 +576,12 @@
     <comment>Add database entry for SUSE Linux Micro 6.0 and remove database entry for SUSE Linux Enterprise Micro 6.0</comment>
     <requestid>1172594</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>fb6dddc576ee4c4cbb435535a2d05118</srcmd5>
+    <version>20240510</version>
+    <time>1716803025</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1176531</requestid>
+  </revision>
 </revisionlist>
