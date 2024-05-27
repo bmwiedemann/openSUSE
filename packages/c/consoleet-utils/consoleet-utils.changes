@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May 18 15:23:17 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.5
+  * palcomp: add XFCE4/Termux palette file loader
+    (`palcomp loadpal=somexfce4.theme`)
+  * palcomp: rename commands "emit"->"xfce", "stat"->"lch"
+  * palcomp: add "eq" and "loeq" commands for brightness
+    equalization
+  * palcomp: replace "cxr" command by a APCA-based contrast
+    derivation ("cxa" command)
+  * cp437x: delete wrong mapping from U+25B6,25B7 to 0x1e
+
+-------------------------------------------------------------------
 Sat Oct 21 03:33:37 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Unbreak Leap 15.x build

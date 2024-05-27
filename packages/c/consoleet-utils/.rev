@@ -39,4 +39,12 @@
     <comment>- Unbreak Leap 15.x build</comment>
     <requestid>1119301</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fdef234590d30c8688c05fdf7fe481e2</srcmd5>
+    <version>1.5</version>
+    <time>1716803715</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1176870</requestid>
+  </revision>
 </revisionlist>

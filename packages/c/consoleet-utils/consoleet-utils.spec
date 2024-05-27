@@ -1,7 +1,7 @@
 #
 # spec file for package consoleet-utils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           consoleet-utils
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        Utilities for manipulating terminal fonts and colors
 License:        GPL-3.0-or-later AND MIT
@@ -30,7 +30,8 @@ Source3:        %name.keyring
 BuildRequires:  c++_compiler
 BuildRequires:  pkg-config >= 0.21
 BuildRequires:  zstd
-BuildRequires:  pkgconfig(libHX) >= 3.22
+BuildRequires:  pkgconfig(babl-0.1)
+BuildRequires:  pkgconfig(libHX) >= 4.15
 Conflicts:      hxtools < 20200310
 Obsoletes:      vfontas < 20221121
 Provides:       vfontas = 20221121
