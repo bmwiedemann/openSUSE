@@ -23,14 +23,14 @@
 
 %bcond_without released
 Name:           kdesdk-scripts
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Scripts for KDE software development
 License:        GPL-2.0-only AND GFDL-1.2-only
 URL:            https://www.kde.org/
-Source:         %{rname}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 Patch0:         kde-dev-scripts-4.14.3-fix-bashisms.patch
