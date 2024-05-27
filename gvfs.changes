@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 24 12:18:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.54.1:
+  + network: Request content-type attribute to suppress critical
+    errors.
+  + metadata: Check g_stat result to avoid using of uninitialized
+    value.
+  + ftp: Fix data connection to IPv6 link-local address.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Apr  8 14:17:00 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move the recently added onedrive provider to the backend-goa

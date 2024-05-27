@@ -1498,4 +1498,18 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1166243</requestid>
   </revision>
+  <revision rev="193" vrev="1">
+    <srcmd5>d2c3f93a902cc21b0c093c0a32375fdb</srcmd5>
+    <version>1.54.1</version>
+    <time>1716803082</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.54.1:
+  + network: Request content-type attribute to suppress critical
+    errors.
+  + metadata: Check g_stat result to avoid using of uninitialized
+    value.
+  + ftp: Fix data connection to IPv6 link-local address.
+  + Updated translations. (forwarded request 1176726 from dimstar)</comment>
+    <requestid>1176729</requestid>
+  </revision>
 </revisionlist>
