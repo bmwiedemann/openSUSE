@@ -63,4 +63,12 @@
   * BugFix: using implode() instead of join() (#74)</comment>
     <requestid>1121709</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b2d279eb07536a6b6e974e231d5ada71</srcmd5>
+    <version>1.12.1</version>
+    <time>1716803754</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1176974</requestid>
+  </revision>
 </revisionlist>
