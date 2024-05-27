@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun May 19 09:54:44 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:14:34 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * appdata: Fix typo in launchable desktop-id
+  * Remove unused include
+  * Add comment
+  * We already use "using namespace Akregator"
+  * const'ify
+  * It's enabled by default
+  * Coding style
+  * Coding style + add missing [[nodiscard]]
+  * Remove unused include
+  * Prepare for the future support for Activities
+  * Update org.kde.akregator.appdata.xml - Drop .desktop from ID.
+  * New article theme
+  * Use desktop-application
+  * We use namespace directly
+  * Fix 483737:  akregator icon, in systray does not follow dark breeze theme. (kde#483737)
+  * Drop support for KF5's deprecated KToolInvocation
+  * Fix appstream developer tag id
+  * Remove some KIO/Global
+  * Fix homepage
+  * Fix appstream file
+  * Improve appstream metadata
+  * Remove unused code
+  * Use local include
+
+-------------------------------------------------------------------
 Tue Apr  9 18:06:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
