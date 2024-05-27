@@ -7,4 +7,12 @@
     <comment>new package rke2-1.29 following the 1.29.x releases</comment>
     <requestid>1173822</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7b71946de2f48e6f11c00568cdee375f</srcmd5>
+    <version>1.29.5+rke2r1</version>
+    <time>1716803701</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1176851</requestid>
+  </revision>
 </revisionlist>
