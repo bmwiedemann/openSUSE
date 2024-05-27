@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun May 19 09:57:13 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:16:58 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * coding style: fixed lines > 80 characters
+  * plugins/saveblocks: port QRegExp to QRegularExpression
+  * plugins/export_k3b: port QRegExp to QRegularExpression
+  * plugins/codec_ascii: port QRegExp to QRegularExpression
+  * libgui: port QRegExp to QRegularExpression
+  * libkwave: change QRegExp to QRegularExpression
+  * coding style: fixed lines > 80 characters
+  * tabs to spaces in some other files
+  * bump KF5_MIN_VERSION and update where KMessageBox API has been deprecated
+  * converted tabs to spaces in all .h and .cpp files, according to latest KDE coding style
+  * bugfix: mime type names must not be localized
+  * playback plugin: removed two unneeded Q_ASSERTs
+  * playback_qt: fixed possible division through zero
+  * bugfix: First run on multiscreen uses full desktop geometry
+
+-------------------------------------------------------------------
 Tue Apr  9 18:09:21 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
