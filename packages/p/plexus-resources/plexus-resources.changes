@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 26 19:39:05 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use the org.eclipse.sisu:org.eclipse.sisu.plexus artifact to avoid
+  conflict/choise of providers
+
+-------------------------------------------------------------------
 Thu May 16 05:03:15 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use sisu-plexus instead of plexus-containers-container-default

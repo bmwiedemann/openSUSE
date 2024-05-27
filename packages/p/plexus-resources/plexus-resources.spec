@@ -55,6 +55,7 @@ API documentation for %{name}.
 %prep
 %setup -q -n %{name}-%{namedversion}
 cp %{SOURCE1} build.xml
+%pom_change_dep :plexus-container-default org.eclipse.sisu:org.eclipse.sisu.plexus:0.9.0.M2
 
 %build
 mkdir -p lib
