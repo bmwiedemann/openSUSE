@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun May 19 09:57:42 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:17:27 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * Use std::chrono_literals
+  * Remove unused include
+  * Ensure tooltip in recipient editor are word wrapped
+  * Use operator_L1 directly
+  * There is not ui file
+  * Remove duplicate "protected:"
+  * Add missing [[nodiscard]]
+  * Add parent
+  * Const'ify pointer
+  * Merge target_source
+  * don't export private method
+  * Add missing [[nodiscard]]
+  * Remove Q_SLOTS (as we use lambda)
+  * Remove usage of QT_NO_* ifdef
+  * Use local include
+  * Fix clazy warning
+
+-------------------------------------------------------------------
 Tue Apr  9 18:09:50 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
