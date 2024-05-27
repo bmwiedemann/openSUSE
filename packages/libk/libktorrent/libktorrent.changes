@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun May 19 09:57:27 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:17:13 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * upnprouter: Send <NewRemoteHost> in forward and undoForward
+  * upnprouter: Fix SOAPAction header in UPnP requests
+  * changes to allow renaming in ktorrent
+  * Clazy: use multi-arg instead
+  * Clazy: don't include entire modules, just the classes we need
+  * Clazy: don't call first on temporary container
+  * Clazy: don't create temporary QRegularExpression objects
+  * Clazy: add missing Q_EMIT keywords
+
+-------------------------------------------------------------------
 Tue Apr  9 18:09:35 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
