@@ -1601,4 +1601,13 @@ https://lists.opensuse.org/archives/list/packaging@lists.opensuse.org/message/5F
     <comment></comment>
     <requestid>1175459</requestid>
   </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>0d347fa0cae94cd310d1146f99f01985</srcmd5>
+    <version>1699_20240522</version>
+    <time>1716802869</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1699_20240522:
+  * man pages: minor corrections (bsc#1224822)</comment>
+    <requestid>1176713</requestid>
+  </revision>
 </revisionlist>
