@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sun May 19 09:55:24 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- Changes since 24.04.80:
+  * KateSaveModifiedDialog: Use message box icon size from style
+  * UrlBar: Optimize showing a directory
+  * UrlBar: Fix filtering in treeview
+  * urlbar: Slightly optimize current symbol finding
+  * UrlBar: Fix symbol view
+  * Fix RBQL toolview remains after plugin is disabled
+  * Refer to qml language server binary by upstream name
+  * fix capture warnings
+  * fix capture warnings
+  * use 6.0 as minimal release and use C++20 like frameworks
+  * use new theme and style init functions
+  * keep track of recent used files on saveAs & close (kde#486203)
+  * make dbus optional is a start, needs more work
+  * don't force konsole master
+  * use kate from the right virtual desktop (kde#486066)
+
+-------------------------------------------------------------------
+Fri May  3 09:15:13 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Too many changes since 24.02.2, only listing bugfixes:
+  * Fix external tools get lost on modification (kde#456502)
+  * Fix crash on deleting the only file in view (kde#485738)
+  * project: Add ruff code analysis tool (kde#466175)
+  * Fix tooltip hides on trying to scroll using scrollbar (kde#485120)
+  * Documents: Fix sorting for directories (kde#476307)
+  * ColorPicker: connect to line wrap/unwrap signals (kde#475109)
+  * Add Rainbow CSV plugin (kde#451981)
+  * Fix tabbar visibility check (kde#455890)
+  * Fix session autosave deletes view session config (kde#482018)
+  * Restore last active toolview when closing file history (kde#474129)
+  * diag: Fix filtering after removing previous items (kde#481381)
+  * move lsp context menu actions to xmlgui (kde#477224)
+  * add size limit config option to search in files (kde#480489)
+  * don't acces member without checking (kde#482946)
+  * improve safefty, don't crash on non arrays (kde#482152)
+  * fix crash on close other with active widget (kde#481625)
+  * more descriptive label (kde#464065)
+  * fix Kate snippets: crash when editing a snippet repository (kde#478230)
+  * fix: terminal path automatically changes on launch even if the terminal setting is disabled (kde#480080)
+
+-------------------------------------------------------------------
 Tue Apr  9 18:07:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
