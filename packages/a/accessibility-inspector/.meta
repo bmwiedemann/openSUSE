@@ -1,0 +1,5 @@
+<package name="accessibility-inspector" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Applications" package="accessibility-inspector"/>
+</package>
