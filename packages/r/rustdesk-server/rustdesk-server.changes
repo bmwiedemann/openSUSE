@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 24 16:32:17 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to 1.1.11-1:
+  * set reuse port to make restart friendly
+  * revert hbbr -k to not ruin back-compatibility
+
+- update to 1.1.11:
+  * Change default value of -k option to -
+
+
+-------------------------------------------------------------------
 Tue Feb 20 15:53:19 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - add minimum version 1.70 for rust

@@ -17,12 +17,12 @@
 
 
 Name:           rustdesk-server
-Version:        1.1.10+3
+Version:        1.1.111
 Release:        0
 Summary:        RustDesk Server Program
 License:        AGPL-3.0-only
 URL:            https://github.com/rustdesk/rustdesk-server
-Source0:        %{name}-1.1.103.tar.gz
+Source0:        %{name}-1.1.111.tar.gz
 Source1:        vendor.tar.zst
 Source2:        rustdesk-server.sysusers
 Source3:        hbbr.service
@@ -68,7 +68,7 @@ the utilities for Rustdesk Server
 Self-host your own RustDesk server.
 
 %prep
-%autosetup -a1 -n %{name}-1.1.103
+%autosetup -a1 -n %{name}-1.1.111
 
 %build
 %sysusers_generate_pre %{SOURCE2} system-user-rustdesk system-user-rustdesk.conf
