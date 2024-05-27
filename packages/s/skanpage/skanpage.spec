@@ -21,14 +21,14 @@
 
 %bcond_without released
 Name:           skanpage
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Multi-Page Scanning Application
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/skanpage/
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -45,6 +45,7 @@ BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(KSaneCore6)
 BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Pdf) >= %{qt6_version}
 BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
@@ -58,6 +59,8 @@ BuildRequires:  pkgconfig(lept)
 Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kquickimageeditor6-imports >= 0.2
 Requires:       qt6-declarative-imports >= %{qt6_version}
+# It can only build on the same platforms as Qt Webengine
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 Skanpage is a simple scanning application designed for
