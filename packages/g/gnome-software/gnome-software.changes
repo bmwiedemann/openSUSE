@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 24 07:10:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.2:
+  + Fix a crash when no appstream data is found.
+  + Correct app safety calculation.
+  + Correct Flatpak system and user apps recognition.
+  + Slightly speed-up rpm-ostree metadata refresh.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu May  2 07:51:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.1:
