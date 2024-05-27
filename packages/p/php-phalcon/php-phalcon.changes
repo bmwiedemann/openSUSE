@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun May 26 18:02:22 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 5.7.0
+  * Changed `Phalcon\Support\HelperFactory` to use the internal mapper
+    for better memory management [#16571]
+  * New ini setting `phalcon.form.strict_entity_property_check` for
+    `Phalcon\Forms\Form` to enable strict entity property checking. [#16567]
+  * Fixed `Phalcon\Mvc\Cli\Router` to extend the
+    `Phalcon\Mvc\Cli\RouterInterface` [#16551]
+  * Fixed `Phalcon\Filter\Validation\Validator\StringLength::validate()`
+    to correctly use the `include` parameter [#16560]
+  * Fixed `Phalcon\Db\Column::TYPE_BINARY` and
+    `Phalcon\Db\Column::TYPE_TINYINTEGER` to have unique values [#16532]
+  * Fixed `Phalcon\Forms\Form` to bind only existing properties on entities,
+    based on `phalcon.form.strict_entity_property_check` setting. [#16567]
+  * Fixed `Phalcon\Filter\Sanitize\BoolVal` to correctly handle integers.
+    [#16582]
+
+-------------------------------------------------------------------
 Thu Mar 14 20:47:31 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 5.6.2
