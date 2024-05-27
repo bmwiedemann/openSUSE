@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.7.0
+%define real_version 6.7.1
 %define short_version 6.7
 %define tar_name qtcoap-everywhere-src
 %define tar_suffix %{nil}
@@ -27,12 +27,12 @@
 %endif
 #
 Name:           qt6-coap%{?pkg_suffix}
-Version:        6.7.0
+Version:        6.7.1
 Release:        0
 Summary:        Qt 6 CoAP client module
 License:        GPL-3.0-or-later
 URL:            https://www.qt.io
-Source:         %{tar_name}-%{real_version}%{tar_suffix}.tar.xz
+Source0:        %{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-coap-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
