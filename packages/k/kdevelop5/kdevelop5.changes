@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun May 19 09:55:50 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- Changes since 24.04.80:
+  * externalscript: don't attempt to open an empty-URL document
+  * BreakpointModel: work around another empty URL assertion failure
+  * BreakpointModel: always handle moving cursor invalidation
+  * BreakpointModel: fix -Wimplicit-fallthrough Clang warnings
+  * Prevent empty TextDocument::url()
+  * Assert correct document in TextDocument::documentUrlChanged()
+  * BreakpointModel: create moving cursors only for CodeBreakpoints
+  * BreakpointModel: skip setting up moving cursors in untitled documents
+  * BreakpointModel::removeBreakpointMarks: take non-const reference
+
+-------------------------------------------------------------------
+Fri May  3 09:15:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Too many changes since 24.02.2, only listing bugfixes:
+  * Only reparse project if meson-info contents change (kde#482983)
+  * BreakpointModel: complete document reload support (kde#362485)
+  * Add new menu action to create named session (kde#462297)
+  * Add default name "(no projects)" to newly created session (kde#462297)
+  * GrepFindFilesThread: match relative paths against Exclude filter (kde#361760)
+
+-------------------------------------------------------------------
 Tue Apr  9 18:08:00 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
