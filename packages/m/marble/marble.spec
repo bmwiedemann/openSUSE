@@ -20,15 +20,15 @@
 %define _so_astro 1
 %bcond_without released
 Name:           marble
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Generic map viewer
 # License note: the tools directory contains GPL-3 tools, but they are neither built nor installed by the package
 License:        LGPL-2.1-or-later
 URL:            https://apps.kde.org/marble
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
@@ -79,7 +79,7 @@ Requires:       marble-frontend = %{version}
 Recommends:     %{name}-doc = %{version}
 Obsoletes:      marble5 < %{version}
 Provides:       marble5 < %{version}
-%ifarch %{ix86} x86_64 %x86_64 %{arm} aarch64
+%ifarch %{ix86} x86_64 %{arm} aarch64
 # Only include WebEngine on platforms where it is available
 BuildRequires:  cmake(Qt5WebEngineWidgets)
 %endif
@@ -125,7 +125,7 @@ Requires:       cmake(Qt5Widgets)
 Requires:       cmake(Qt5Xml)
 Obsoletes:      marble5-devel < %{version}
 Provides:       marble5-devel = %{version}
-%ifarch %{ix86} x86_64 %x86_64 %{arm} aarch64
+%ifarch %{ix86} x86_64 %{arm} aarch64
 Requires:       cmake(Qt5WebEngineWidgets)
 %endif
 
