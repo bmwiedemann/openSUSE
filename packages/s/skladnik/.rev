@@ -7,4 +7,12 @@
     <comment>Add Skladnik to factory</comment>
     <requestid>1164058</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a88683a26e5af9aec5a83544943eea7c</srcmd5>
+    <version>24.05.0</version>
+    <time>1716803510</time>
+    <user>anag+factory</user>
+    <comment>KDE release 24.05.0 (forwarded request 1175936 from krop)</comment>
+    <requestid>1176428</requestid>
+  </revision>
 </revisionlist>

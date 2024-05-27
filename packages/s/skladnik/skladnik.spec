@@ -17,19 +17,19 @@
 
 
 %define kf6_version 6.0.0
-%define qt6_version 6.5.0
+%define qt6_version 6.6.0
 
 %bcond_without released
 Name:           skladnik
-Version:        0.5.2
+Version:        24.05.0
 Release:        0
 Summary:        Sokoban-like game
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/skladnik
-Source:         https://download.kde.org/stable/skladnik/%{version}/src/%{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/skladnik/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        skladnik.keyring
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  povray
@@ -78,6 +78,7 @@ places and/or block your way.
 %{_kf6_appstreamdir}/org.kde.skladnik.metainfo.xml
 %{_kf6_bindir}/skladnik
 %{_kf6_iconsdir}/hicolor/*/apps/skladnik.*
+%{_kf6_mandir}/man6/skladnik.6%{?ext_man}
 %{_kf6_sharedir}/skladnik/
 
 %files lang -f %{name}.lang
