@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 22 07:43:08 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.5
+- Changes since 6.0.4:
+  * update version for new release
+  * More robust against malformed hints (kde#487230)
+  * Workaround setMinimumSize not resizing (kde#485456,kde#480722)
+  * clock.svg: remove empty groups that cause warnings
+  * Sync config to disk when values change (kde#481085,kde#482469,kde#482090,kde#481113,kde#482773,kde#483083)
+
+-------------------------------------------------------------------
 Wed Apr 17 08:12:54 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.4:
