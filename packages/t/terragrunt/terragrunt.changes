@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 24 19:32:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.58.10:
+  * Fixed ignoring `TERRAGRUNT_DOWNLOAD` for dependent modules
+    (#3158)
+  * fix: Fixing `TestTerraformHelp` (#3154)
+  * fix: Fixing some malformed cli-options in docs (#3152)
+  * fix: get rid of testdata archives (#3155)
+
+-------------------------------------------------------------------
 Wed May 22 21:35:50 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.58.9:
