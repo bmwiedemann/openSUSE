@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun May 19 09:57:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:17:07 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * People API: handle EXPIRED_SYNC_TOKEN error properly
+  * Activate test CI
+  * Calendar API: implement support for Event.eventType
+  * Fix Calendar API test data
+  * Use QTEST_GUILESS_MAIN in file{copy,create}jobtest
+  * Use local include
+  * Introduce a BUILD_SASL_PLUGIN option for co-installability
+
+-------------------------------------------------------------------
 Tue Apr  9 18:09:30 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
