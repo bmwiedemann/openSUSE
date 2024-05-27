@@ -34,14 +34,14 @@
 %endif
 %bcond_without released
 Name:           libkexiv2%{?pkg_suffix}
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Library to manipulate picture meta data
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         %{rname}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  pkgconfig
@@ -49,7 +49,6 @@ BuildRequires:  pkgconfig(exiv2) >= 0.25
 %if 0%{?qt6}
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
-BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 %else
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
