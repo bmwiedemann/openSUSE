@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun May 19 09:56:34 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- Changes since 24.04.80:
+  * Bug 429654 - Can't disable voice (kde#429654)
+
+-------------------------------------------------------------------
+Fri May  3 09:16:19 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * Port away from Qt5Compat
+  * appstream: use developer tag with name KDE
+  * Bump min required Plasma libs to 6.0
+  * Fix crash during game over (kde#481546)
+  * flatpak: add libplasma as explicit source
+  * Bump min required KF6 to 6.0
+  * Add missing KF6I18n dependency
+  * Fix crash while playing against CPU (kde#449639)
+
+-------------------------------------------------------------------
 Tue Apr  9 18:08:42 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
