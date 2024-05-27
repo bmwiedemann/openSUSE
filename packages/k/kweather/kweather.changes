@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun May 19 09:57:13 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:16:59 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * const'ify pointer
+  * Fix copyright
+  * Make compile with QT_NO_CONTEXTLESS_CONNECT
+  * Remove custom appstream check
+  * Fix licensecheck on the CI
+  * ci: Make use of Ubuntu:devel This updates appstream version to 1.0
+  * Complement and Update org.kde.kweather.appdata.xml
+  * Don't enable page dragging between locations unless it's touch input
+  * CI: Flatpak: Add libplasma
+  * flatpak: Switch to non-preview runtime
+  * appstream: Update developer name
+  * ci: Use ubuntu runner
+  * ci: Add tag to appstream test
+  * Add appstream CI test
+  * Update Project Link in Readme
+
+-------------------------------------------------------------------
 Tue Apr  9 18:09:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
