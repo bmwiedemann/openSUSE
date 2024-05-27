@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun May 19 09:55:14 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- Too many changes since 24.04.80, only listing bugfixes:
+  * Qt6 only worked when Qt5 was installed too (kde#486171)
+
+-------------------------------------------------------------------
+Fri May  3 09:15:04 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Too many changes since 24.02.2, only listing bugfixes:
+  * Ruleset option: Discarded tiles in order of discard (kde#451244)
+
+-------------------------------------------------------------------
 Tue Apr  9 18:07:27 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
