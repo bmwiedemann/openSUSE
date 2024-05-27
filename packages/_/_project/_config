@@ -501,6 +501,7 @@ FileProvides: /usr/sbin/fonts-config fonts-config
 FileProvides: /usr/sbin/groupadd shadow
 FileProvides: /usr/sbin/groupdel shadow
 FileProvides: /usr/sbin/groupmod shadow
+FileProvides: /usr/sbin/iconvconfig glibc
 FileProvides: /usr/sbin/ipsec strongswan-ipsec
 FileProvides: /usr/sbin/ldconfig glibc
 FileProvides: /usr/sbin/lpadmin cups-client
