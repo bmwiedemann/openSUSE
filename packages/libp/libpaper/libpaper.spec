@@ -19,7 +19,7 @@
 %define sover 2
 
 Name:           libpaper
-Version:        2.1.3
+Version:        2.2.5
 Release:        0
 Summary:        Enables users to indicate their preferred paper size
 License:        GPL-3.0-or-later
@@ -71,12 +71,14 @@ This package contains all devel files needed by the libpaper package
 
 %build
 %configure \
-  --disable-static
+  --disable-static \
+  --enable-relocatable \
+  --enable-year2038
 %make_build
 
 %install
 %make_install
-rm -vRf %{buildroot}%{_datadir}/doc/libpaper/README
+rm -vRf %{buildroot}%{_datadir}/doc/libpaper/README.md
 find %{buildroot}%{_libdir} -name *libpaper.la -delete
 
 %post -n %{name}%{sover} -p /sbin/ldconfig
@@ -84,7 +86,7 @@ find %{buildroot}%{_libdir} -name *libpaper.la -delete
 
 %files
 %license COPYING
-%doc README
+%doc README.md
 %config %{_sysconfdir}/paperspecs
 %{_mandir}/man5/paperspecs.5.gz
 
