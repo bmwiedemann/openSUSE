@@ -2,7 +2,7 @@
 # spec file for package orthanc-python
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2020-2021 Dr. Axel Braun
+# Copyright (c) 2020-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           orthanc-python
-Version:        4.1
+Version:        4.2
 Release:        0
 Summary:        Python plugin for Orthanc
 License:        AGPL-3.0-or-later
