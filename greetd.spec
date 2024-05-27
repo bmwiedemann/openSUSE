@@ -64,7 +64,7 @@ install -D -m 0644 %{name}.service %{buildroot}/%{_unitdir}/%{name}.service
 install -D -m 0644 %{SOURCE3} %{buildroot}/%{_pam_confdir}/greetd
 
 install -d %{buildroot}%{_localstatedir}/cache/greetd
-install -d %{buildroot}%{_localstatedir}/lib/greetd
+install -d %{buildroot}%{_sharedstatedir}/greetd
 install -d %{buildroot}/run/greetd
 
 %check
@@ -92,7 +92,7 @@ install -d %{buildroot}/run/greetd
 %attr(644,greeter,greeter) %config(noreplace) %{_sysconfdir}/%{name}/config.toml
 %_config_norepl %{_pam_confdir}/greetd
 %ghost %attr(711,root,greeter) %dir /run/greetd/
-%ghost %attr(750,greeter,greeter) %dir %{_localstatedir}/lib/greetd/
+%attr(750,greeter,greeter) %dir %{_sharedstatedir}/greetd
 %ghost %dir %{_localstatedir}/cache/greetd/
 
 %changelog

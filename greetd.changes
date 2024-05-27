@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 23 05:52:57 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- create /var/lib/greetd by default
+
+-------------------------------------------------------------------
 Tue May  7 06:27:12 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Move PAM to /usr -- Fixes filelist-forbidden-move-to-usr badness
