@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun May 19 09:57:54 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- Changes since 24.04.80:
+  * Don't enforce the spellchecker even when it's disabled (kde#486465)
+  * Fix the content font not actually affecting the post text (kde#481911)
+  * Fix multiple fullscreen images appearing on top of each other
+  * Improve mentions in the composer, move content warning field
+  * Copy the spoiler text in replies (kde#486691)
+  * Fix pasting text content in the status composer
+
+-------------------------------------------------------------------
+Fri May  3 09:17:40 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Too many changes since 24.02.2, only listing bugfixes:
+  * Make QtWebView optional, overhaul auth (again) (kde#483938)
+  * Resolve remote posts in the search box (kde#485080)
+  * Allow popping out the status composer on desktop (kde#470048)
+  * Remove minimum window size on mobile (kde#482844)
+  * Refresh the thread if we reply to it (kde#480695)
+  * PostContent: assorted bidirectionality fixes (kde#475043)
+  * Add initial setup flow where required (kde#477927)
+
+-------------------------------------------------------------------
 Tue Apr  9 18:10:02 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2

@@ -21,14 +21,14 @@
 
 %bcond_without released
 Name:           tokodon
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Mastodon client by KDE
 License:        GPL-3.0-only
 URL:            https://apps.kde.org/tokodon/
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  fdupes
@@ -66,7 +66,6 @@ Requires:       kf6-kitemmodels-imports >= %{kf6_version}
 Requires:       kf6-sonnet-imports >= %{kf6_version}
 Requires:       kirigami-addons6
 Requires:       qt6-declarative-imports >= %{qt6_version}
-Requires:       qt6-qt5compat-imports >= %{qt6_version}
 Requires:       qt6-webview >= %{qt6_version}
 Requires:       qt6-webview-imports >= %{qt6_version}
 
