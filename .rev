@@ -1158,4 +1158,17 @@ New stable release</comment>
   + Updated translations. (forwarded request 1171254 from dimstar)</comment>
     <requestid>1171392</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>64d86832219c7d9cad407ab216452bb2</srcmd5>
+    <version>46.2</version>
+    <time>1716803075</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.2:
+  + Fix a crash when no appstream data is found.
+  + Correct app safety calculation.
+  + Correct Flatpak system and user apps recognition.
+  + Slightly speed-up rpm-ostree metadata refresh.
+  + Updated translations. (forwarded request 1176669 from dimstar)</comment>
+    <requestid>1176676</requestid>
+  </revision>
 </revisionlist>
