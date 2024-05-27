@@ -613,4 +613,13 @@
 - Make ssh-pairing a required dep on new distros</comment>
     <requestid>1172157</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>e77eee3156dbe1fc51eca34ce13000c1</srcmd5>
+    <version>1.4.3</version>
+    <time>1716803085</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.4.3:
+  * Use UTC as default TZ if there was no locale selection dialog (boo#1224212)</comment>
+    <requestid>1176741</requestid>
+  </revision>
 </revisionlist>

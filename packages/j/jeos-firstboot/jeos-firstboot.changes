@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 24 13:08:13 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.4.3:
+  * Use UTC as default TZ if there was no locale selection dialog (boo#1224212)
+
+-------------------------------------------------------------------
 Mon May 06 11:38:02 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.4.2:
