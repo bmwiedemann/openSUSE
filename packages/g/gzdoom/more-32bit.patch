@@ -1,20 +1,55 @@
-From: Jan Engelhardt <jengelh@inai.de>
-Date: 2023-11-03 10:46:06.423636287 +0100
+From: Jan Engelhardt <ej@inai.de>
+Date: Wed, 8 May 2024 13:33:41 +0200
+Subject: [PATCH] build: portability fixes
+References: https://github.com/ZDoom/gzdoom/pull/2562
 
-VkSurfaceKHR is an alias to `struct something *` on 64-bit platforms, but to
-`uint64_t` on 32-bit. Using {} will clear it without running into a type error:
+Different architectures have different type sizes and alignments.
+Don't test void* for a hardcoded size if there is not an inherent
+dependency on the size. I have hereby tested gzdoom.i586 runs
+inside a chroot-on-x64.
 
-[   88s] sdlglvideo.cpp:294:54: error: cannot convert 'std::nullptr_t' to
-'VkSurfaceKHR' {aka 'long long unsigned int'} in initialization
-[   88s]   294 |                         VkSurfaceKHR surfacehandle = nullptr;
+VkSurfaceKHR is not a pointer on some platforms but an integral type.
+Using {} will clear it without running into a type error:
 
-static_assert for particle_t also failed, because it's 120 on ILP32.
-
+	sdlglvideo.cpp:294:54: error: cannot convert 'std::nullptr_t' to
+	'VkSurfaceKHR' {aka 'long long unsigned int'} in initialization
+		VkSurfaceKHR surfacehandle = nullptr;
 ---
+ src/CMakeLists.txt                           |    5 +++++
+ src/common/engine/i_interface.cpp            |    2 --
  src/common/platform/posix/sdl/sdlglvideo.cpp |    2 +-
  src/playsim/p_effect.h                       |    7 +++++--
- 2 files changed, 6 insertions(+), 3 deletions(-)
+ 4 files changed, 11 insertions(+), 5 deletions(-)
 
+Index: gzdoom-g4.12.2/src/CMakeLists.txt
+===================================================================
+--- gzdoom-g4.12.2.orig/src/CMakeLists.txt
++++ gzdoom-g4.12.2/src/CMakeLists.txt
+@@ -44,6 +44,11 @@ if( ${TARGET_ARCHITECTURE} MATCHES "x86_
+ 	set( X64 64 )
+ 	add_definitions( -DARCH_IA32 )
+ endif()
++if( ${TARGET_ARCHITECTURE} MATCHES "i386" )
++	# The production of _mm_load_si128 instructions requires flags.
++	# (This is independent of whether or not they are executed later.)
++	add_definitions( -mmmx -msse -msse2 -mfpmath=sse -DARCH_IA32 )
++endif()
+ 
+ if( NOT PROJECT_LIBRARIES )
+ 	set( PROJECT_LIBRARIES "" )
+Index: gzdoom-g4.12.2/src/common/engine/i_interface.cpp
+===================================================================
+--- gzdoom-g4.12.2.orig/src/common/engine/i_interface.cpp
++++ gzdoom-g4.12.2/src/common/engine/i_interface.cpp
+@@ -5,8 +5,6 @@
+ #include "c_cvars.h"
+ #include "gstrings.h"
+ 
+-static_assert(sizeof(void*) == 8, "32 builds are not supported");
+-
+ // Some global engine variables taken out of the backend code.
+ FStartupScreen* StartWindow;
+ SystemCallbacks sysCallbacks;
 Index: gzdoom-g4.12.2/src/common/platform/posix/sdl/sdlglvideo.cpp
 ===================================================================
 --- gzdoom-g4.12.2.orig/src/common/platform/posix/sdl/sdlglvideo.cpp

@@ -1,7 +1,10 @@
-From: Jan Engelhardt <jengelh@inai.de>
+From: Jan Engelhardt <ej@inai.de>
 Date: 2018-01-08 13:48:59+0100
 
-Use LZMA system libraries instead of bundled code.
+Use system-provided lzma-sdk. Heed
+
+* https://docs.fedoraproject.org/en-US/fesco/Bundled_Software_policy/
+* https://en.opensuse.org/openSUSE:Bundled_software_policy
 
 ---
  CMakeLists.txt              |    4 ++--

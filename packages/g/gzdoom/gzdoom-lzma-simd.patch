@@ -1,8 +1,10 @@
-From: Jan Engelhardt <jengelh@inai.de>
+From: Jan Engelhardt <ej@inai.de>
 Date: 2024-05-01 00:14:04.625759204 +0200
 Subject: Fix build failures involving SIMD code
 
-Fix build failure on Leap 15.6/gcc-7 amd64:
+When using the bundled copy of lzma-sdk, there is a build failure
+on Leap 15.6/gcc-7 amd64:
+
 [   31s] C/SwapBytes.c:312:7: error: incompatible types when initializing type
 '__m256i {aka const __vector(4) long long int}' using type 'int'
 

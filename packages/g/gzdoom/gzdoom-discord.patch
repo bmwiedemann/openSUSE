@@ -1,7 +1,11 @@
-From: Jan Engelhardt <jengelh@inai.de>
+From: Jan Engelhardt <ej@inai.de>
 Date: 2022-06-12 10:37:00.984596068 +0200
 
-Unbundle discord-rpc.
+Use system-provided discord-rpc library. Heed
+
+* https://docs.fedoraproject.org/en-US/fesco/Bundled_Software_policy/
+* https://en.opensuse.org/openSUSE:Bundled_software_policy
+
 ---
  CMakeLists.txt                          |    6 +++---
  libraries/discordrpc/src/CMakeLists.txt |    2 +-
@@ -18,7 +22,7 @@ Index: gzdoom-g4.12.2/CMakeLists.txt
 -set( DRPC_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/libraries/discordrpc/include" )
 -set( DRPC_LIBRARIES discord-rpc )
 -set( DRPC_LIBRARY discord-rpc )
-+set( DRPC_INCLUDE_DIR "-I/ignore" )
++set( DRPC_INCLUDE_DIR "/ignore" )
 +set( DRPC_LIBRARIES -ldiscord-rpc )
 +set( DRPC_LIBRARY -ldiscord-rpc )
  

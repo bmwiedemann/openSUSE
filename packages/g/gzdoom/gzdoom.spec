@@ -26,13 +26,10 @@ URL:            https://zdoom.org/
 
 #Git-Clone:     https://github.com/zdoom/gzdoom
 Source:         https://github.com/zdoom/gzdoom/archive/g%version.tar.gz
-Patch1:         gzdoom-waddir.patch
 Patch2:         gzdoom-discord.patch
 Patch3:         0001-Revert-Switch-to-miniz-from-zlib.patch
 Patch4:         gzdoom-lzma-simd.patch
 Patch5:         gzdoom-lzma.patch
-Patch6:         0001-removed-some-32bit-only-CMake-code.patch
-Patch7:         0001-Revert-use-static_assert-to-make-32-bit-builds-fail.patch
 Patch8:         more-32bit.patch
 BuildRequires:  cmake >= 2.8.7
 BuildRequires:  discord-rpc-devel
@@ -81,16 +78,19 @@ SSE2 is a hard requirement even on 32-bit x86.
 %prep
 %autosetup -n %name-g%version -p1
 %if 0%{?suse_version} < 1599
+# system lzma-sdk too old, use bundled copy
 %patch -P 5 -R -p1
 %endif
-perl -i -pe 's{__DATE__}{"does not matter when"}g' src/common/platform/posix/sdl/i_main.cpp
-perl -i -pe 's{<unknown version>}{%version}g' tools/updaterevision/UpdateRevision.cmake
+# osc/rpm always has the version identifier (only has an effect when snapshots are used via _service files)
+perl -i -pe "s{<unknown version>}{%version}g" tools/updaterevision/UpdateRevision.cmake
+# https://en.opensuse.org/openSUSE:Reproducible_Builds
+perl -i -pe "s{__DATE__}{$SOURCE_DATE_EPOCH}g" src/common/platform/posix/sdl/i_main.cpp
 
 %build
-# There is handcrafted assembler, which LTO does not play nice with.
+# Disable LTO, which does not like seeing handcrafted assembler
 %define _lto_cflags %nil
 
-export CXXFLAGS="$CXXFLAGS -I$PWD/extra_include"
+export CXXFLAGS="$CXXFLAGS -DSHARE_DIR=\\\"%_datadir/doom\\\""
 %cmake -DNO_STRIP=1 \
 	-DCMAKE_SHARED_LINKER_FLAGS="" \
 	-DCMAKE_EXE_LINKER_FLAGS="" -DCMAKE_MODULE_LINKER_FLAGS="" \

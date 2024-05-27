@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 17 22:04:47 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Delete gzdoom-waddir.patch (substitute by logic in build recipe),
+  delete 0001-Revert-use-static_assert-to-make-32-bit-builds-fail.patch
+  and 0001-removed-some-32bit-only-CMake-code.patch
+  (merged into more-32bit.patch)
+
+-------------------------------------------------------------------
 Wed May  8 11:37:09 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update more-32bit.patch to fix i586/ILP32 FTBFS.
