@@ -47,4 +47,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148771</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>2bcce54c2d2f9cde69aa33ecbc2b8f90</srcmd5>
+    <version>3.3.4</version>
+    <time>1716803772</time>
+    <user>anag+factory</user>
+    <comment>plexus-container-default -&gt; sisu-plexus</comment>
+    <requestid>1176994</requestid>
+  </revision>
 </revisionlist>

@@ -35,10 +35,9 @@ BuildRequires:  jansi
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsr-305
 BuildRequires:  plexus-classworlds
-BuildRequires:  plexus-containers-container-default
 BuildRequires:  plexus-utils
+BuildRequires:  sisu-plexus
 BuildRequires:  unzip
-Requires:       mvn(commons-io:commons-io)
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
@@ -68,10 +67,12 @@ cp %{SOURCE1} build.xml
 
 %patch -P 0 -p1
 
+%pom_change_dep :plexus-container-default org.eclipse.sisu:org.eclipse.sisu.plexus:0.9.0.M2
+
 %build
 mkdir -p lib
 build-jar-repository -s lib commons-io jansi/jansi jsr305 \
-  plexus/classworlds plexus-containers/plexus-container-default plexus/utils
+  org.eclipse.sisu.plexus plexus/classworlds plexus/utils
 %if %{with tests}
   build-jar-repository -s lib commons-lang3 maven/maven-artifact maven/maven-core \
     maven/maven-model maven-plugin-testing/maven-plugin-testing-harness \

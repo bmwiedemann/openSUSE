@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 26 22:42:50 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use the org.eclipse.sisu:org.eclipse.sisu.plexus artifact in
+  order to avoid conflict/choise of providers
+
+-------------------------------------------------------------------
 Wed Feb 21 15:14:20 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
