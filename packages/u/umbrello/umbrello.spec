@@ -16,19 +16,19 @@
 #
 
 
-%ifarch %{arm} aarch64 %{ix86} x86_64 %x86_64 %{riscv}
+%ifarch %{arm} aarch64 %{ix86} x86_64 %{riscv}
 %bcond_without kdevelop
 %endif
 %bcond_without released
 Name:           umbrello
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        UML Modeller
 License:        GPL-2.0-only AND GFDL-1.2-only AND GPL-3.0-or-later
 URL:            https://apps.kde.org/umbrello
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
@@ -49,7 +49,6 @@ BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5ItemModels)
 BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5TextEditor)
 BuildRequires:  cmake(KF5ThreadWeaver)
