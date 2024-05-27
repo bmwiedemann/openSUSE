@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May 25 09:10:32 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240523
+  * Fix an issue where F4 would silence all samples when in sample mode
+- Remove 0001-player-fx-check-for-Instrument-Mode-when-handling-No.patch
+  (merged)
+
+-------------------------------------------------------------------
 Fri May 17 05:57:18 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-player-fx-check-for-Instrument-Mode-when-handling-No.patch
