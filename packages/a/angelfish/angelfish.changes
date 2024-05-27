@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun May 19 09:54:46 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- Changes since 24.04.80:
+  * Fix build with corrosion 0.5
+
+-------------------------------------------------------------------
+Fri May  3 09:14:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * Fix download list page having uninteractable action buttons
+  * Fix downloads not being prompted and starting
+  * Fix history clearing not working
+  * Fix desktop tabs
+  * UrlDelegate: Fix deleting entries
+  * Fix remove button
+  * Fix bookmarks and history page not working on mobile
+  * appstream: Update developer name
+  * Update rust crates
+  * WebApp: Fix not launching on Qt6
+  * desktop: Fix switching tabs
+  * metainfo: Change name to just Angelfish
+
+-------------------------------------------------------------------
 Tue Apr  9 18:06:58 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2

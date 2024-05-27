@@ -21,21 +21,22 @@
 
 %bcond_without released
 Name:           angelfish
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Mobile web browser
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/angelfish
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+Source3:        vendor.tar.zst
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  qt6-core-private-devel >= %{qt6_version}
 BuildRequires:  qt6-webenginequick-private-devel >= %{qt6_version}
-# Cargo is only needed if Corrosion is present
-# BuildRequires:  cmake(Corrosion)
+BuildRequires:  zstd
+BuildRequires:  cmake(Corrosion)
 BuildRequires:  cmake(FutureSQL6)
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
@@ -59,18 +60,18 @@ BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WebEngineCore) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WebEngineQuick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
-Requires:       kirigami-addons6
 Requires:       kf6-kirigami-imports >= %{kf6_version}
+Requires:       kirigami-addons6
 Requires:       qt6-sql-sqlite >= %{qt6_version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  x86_64 %x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 Angelfish is a mobile web browser. It supports typical browser features, such
 as bookmarks, history and tabs.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -a3
 
 %lang_package
 
