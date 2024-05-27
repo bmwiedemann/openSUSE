@@ -39,4 +39,12 @@
     <comment>build with sisu-plexus</comment>
     <requestid>1174348</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>5752395e9c8077e149078f1bad5e0db9</srcmd5>
+    <version>3.0.0</version>
+    <time>1716803757</time>
+    <user>anag+factory</user>
+    <comment>fix conflict/choice of providers</comment>
+    <requestid>1176981</requestid>
+  </revision>
 </revisionlist>

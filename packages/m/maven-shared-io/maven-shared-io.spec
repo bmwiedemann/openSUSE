@@ -53,8 +53,6 @@ API documentation for %{name}.
 cp %{SOURCE1} build.xml
 %patch -P 0 -p1
 
-%pom_add_dep org.codehaus.plexus:plexus-container-default::provided
-
 %build
 mkdir -p lib
 build-jar-repository -s lib \
