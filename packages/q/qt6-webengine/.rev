@@ -254,4 +254,12 @@
   Add-missing-dependencies.patch from upstream (forwarded request 1174729 from mathletic)</comment>
     <requestid>1174770</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d67ec02bee2f16b734d42d34bb3fe976</srcmd5>
+    <version>6.7.1</version>
+    <time>1716803186</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.7.1</comment>
+    <requestid>1176155</requestid>
+  </revision>
 </revisionlist>

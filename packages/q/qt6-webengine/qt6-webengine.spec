@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package qt6-webengine
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.7.0
+%define real_version 6.7.1
 %define short_version 6.7
 %define tar_name qtwebengine-everywhere-src
 %define tar_suffix %{nil}
@@ -37,15 +37,14 @@
 %bcond_without system_tiff
 %endif
 Name:           qt6-webengine%{?pkg_suffix}
-Version:        6.7.0
+Version:        6.7.1
 Release:        0
 Summary:        Web browser engine for Qt applications
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
+Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-webengine-rpmlintrc
 # Patches 0-100 are upstream patches #
-Patch001:       Add-missing-dependencies.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       rtc-dont-use-h264.patch
 #

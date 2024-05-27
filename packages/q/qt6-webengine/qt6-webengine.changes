@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 21 08:31:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.7.1:
+  * https://www.qt.io/blog/qt-6.7.1-released
+- Drop patch, merged upstream:
+  * Add-missing-dependencies.patch
+
+-------------------------------------------------------------------
 Wed May 15 19:16:46 UTC 2024 - Christoph G <foss@grueninger.de>
 
 - Backport Ninja 1.12 compatibility patch (and adjust paths)
