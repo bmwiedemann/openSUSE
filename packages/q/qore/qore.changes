@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun May 26 11:34:21 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to 1.19.2
+  * requires libqore.so.12.4.1
+  * libqore-stdlib package moved to qore package
+  * Added the HueRestClient class
+  * Implemented the GoogleRestClient module
+  * Implemented a logger interface class 
+  * Fixed reporting URLs for invalid connections
+  * Fixed non-blocking I/O checking for a connect on Darwin
+  * Added connection features to connection info
+  * Allow user modules included with external binary modules
+  * Fixed compatibility with recent versions of ServiceNow 
+  * Added missing allowed values to field data info
+  * Fixed a bug where an access exception could be raised 
+  * Fixed bug with http connection context leak
+  * Fixed setting the varargs flag on user variants
+  * Fixed returning the OAuth2 token URL
+  * Fixed REST headers in the SalesforceRestClient module
+  * Fixed a bug setting the time zone on macOS Sonoma
+  * Fixed conversions of soft bool, binary, float, int
+  * CSV writer automatically detects output fields
+  * Fixed a race condition that could cause an exception
+  * Fixed trunc handling in the mapper when bulk processing
+  * Fixed mappings with default values and outout field types
+  * Fixed adding, updating, and removing connections
+  * Fixed support for nullable object props
+  * Fixed deadlocks in polling connection monitoring
+  * Added the encode_chars HTTP / REST option
+
+-------------------------------------------------------------------
 Tue Feb 20 13:49:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
