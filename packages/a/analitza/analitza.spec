@@ -21,19 +21,18 @@
 
 %bcond_without released
 Name:           analitza
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        A library to add mathematical features to programs
 License:        LGPL-2.1-or-later
 URL:            https://invent.kde.org/education/analitza
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6LinguistTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6OpenGLWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
@@ -45,27 +44,26 @@ BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
 BuildRequires:  pkgconfig(eigen3)
 BuildRequires:  pkgconfig(glew)
-Requires:       libAnalitza8 = %{version}
+Requires:       libAnalitza9 = %{version}
 Obsoletes:      analitza5 < %{version}
 Provides:       analitza5 = %{version}
 
 %description
 The Analitza library lets developers add mathematical features to programs.
 
-%package -n libAnalitza8
+%package -n libAnalitza9
 Summary:        A library to add mathematical features to programs
 Requires:       analitza = %{version}
 # Mistakenly contained libAnalitza6, 7 and 8
 Conflicts:      libAnalitza5
 
-%description -n libAnalitza8
+%description -n libAnalitza9
 The Analitza library lets developers add mathematical features to programs.
 
 %package devel
 Summary:        Development files for analitza, a mathematical feature library
-Requires:       libAnalitza8 = %{version}
+Requires:       libAnalitza9 = %{version}
 Requires:       cmake(Qt6Core) >= %{qt6_version}
-Requires:       cmake(Qt6Core5Compat) >= %{qt6_version}
 Requires:       cmake(Qt6Xml) >= %{qt6_version}
 Obsoletes:      analitza5-devel < %{version}
 
@@ -88,9 +86,9 @@ add mathematical features to programs.
 
 %find_lang %{name} --with-qt --all-name
 
-%ldconfig_scriptlets -n libAnalitza8
+%ldconfig_scriptlets -n libAnalitza9
 
-%files -n libAnalitza8
+%files -n libAnalitza9
 %license COPYING*
 %{_kf6_libdir}/libAnalitza*.so.*
 
