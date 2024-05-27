@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun May 26 19:15:37 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.6.5
+  Bug fixes:
+  * Prevent app from being closed when disabling system tray
+    icon
+  * Fix <kbd>Enter</kbd> key behavior in Add new torrent dialog
+  * Prevent invalid status filter index from being used
+  * Add extra offset for dialog frame
+  * Don't overwrite stored layout of main window with incorrect
+    one
+  * Don't forget to resume "missing files" torrent when
+    rechecking
+  Web UI:
+  * Restore ability to use server-side translation by custom
+    WebUI
+  * Fix wrong peer number
+  Other:
+  * Improve AppStream metadata
+
+-------------------------------------------------------------------
 Fri Apr 19 15:50:58 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Build against boost 1.75 on Leap 15 to match the one used by

@@ -25,7 +25,7 @@
 %endif
 
 Name:           qbittorrent
-Version:        4.6.4
+Version:        4.6.5
 Release:        0
 Summary:        A BitTorrent client in Qt
 License:        GPL-2.0-or-later
@@ -132,7 +132,7 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-nox
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
 %{_datadir}/icons/hicolor/*/status/%{name}-tray.png
 %{_datadir}/icons/hicolor/scalable/status/%{name}-tray*.svg
-%{_datadir}/metainfo/org.qbittorrent.qBittorrent.appdata.xml
+%{_datadir}/metainfo/org.qbittorrent.qBittorrent.metainfo.xml
 %{_mandir}/man?/%{name}.?%{?ext_man}
 
 %files nox
