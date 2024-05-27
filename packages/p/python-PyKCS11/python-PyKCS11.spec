@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-PyKCS11
-Version:        1.5.15
+Version:        1.5.16
 Release:        0
 Summary:        A Full PKCS#11 wrapper for Python
 License:        GPL-2.0-or-later

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 24 16:22:04 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to 1.5.16:
+  * add support of CKA_MODIFIABLE and CKA_DESTROYABLE attributes
+  * minor improvments
+
+-------------------------------------------------------------------
 Fri May 17 01:54:18 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - update to 1.5.15:
