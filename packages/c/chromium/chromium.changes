@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 24 04:24:22 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 125.0.6422.112
+  * CVE-2024-5274: Type Confusion in V8 (boo#1225199)
+
+-------------------------------------------------------------------
 Tue May 21 20:47:44 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 125.0.6422.76 (boo#1224818)

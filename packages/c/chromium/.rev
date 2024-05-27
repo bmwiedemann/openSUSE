@@ -5000,4 +5000,14 @@ boo#1224178</comment>
   * Various fixes from internal audits, fuzzing and other initiatives</comment>
     <requestid>1175671</requestid>
   </revision>
+  <revision rev="421" vrev="1">
+    <srcmd5>87c0a7f590cd84e5f4a387a01cf39375</srcmd5>
+    <version>125.0.6422.112</version>
+    <time>1716803529</time>
+    <user>anag+factory</user>
+    <comment>- Chromium 125.0.6422.112
+  * CVE-2024-5274: Type Confusion in V8 (boo#1225199)
+</comment>
+    <requestid>1176705</requestid>
+  </revision>
 </revisionlist>
