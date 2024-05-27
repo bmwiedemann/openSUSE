@@ -18,18 +18,18 @@
 
 %define kf6_version 6.0.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.2
+%define kpim6_version 6.0.80
 
 %bcond_without released
 Name:           libksieve
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Sieve and Managesieve support library for KDE PIM applications
 License:        GPL-2.0-only AND LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  cyrus-sasl-devel
@@ -54,13 +54,12 @@ BuildRequires:  cmake(KPim6Libkdepim) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MailTransport) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6PimCommon) >= %{kpim6_version}
-BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  x86_64 %x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 This package contains the libksieve library, which is used to support
@@ -68,10 +67,10 @@ the Sieve server-side mail filtering protocol in KDE PIM applications.
 
 %package -n libksieve6
 Summary:        Sieve and Managesieve support library for KDE PIM applications
-# Before 21.08.3, the libraries were in libksieve, require the same version
-# to make sure the old library is updated
 Requires:       libksieve = %{version}
 Obsoletes:      libksieve5 < %{version}
+# Before 21.08.3, the libraries were in libksieve
+Conflicts:      libksieve < 21.08.3
 
 %description -n libksieve6
 This package contains the libksieve library, which is used to support
