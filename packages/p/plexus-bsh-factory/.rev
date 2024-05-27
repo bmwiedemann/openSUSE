@@ -31,4 +31,12 @@
     <comment>build with sisu-plexus</comment>
     <requestid>1174340</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>cdd72a6b9e921145cf9244eeb45a9078</srcmd5>
+    <version>1.0~a7</version>
+    <time>1716803759</time>
+    <user>anag+factory</user>
+    <comment>fix conflict/choice of providers</comment>
+    <requestid>1176983</requestid>
+  </revision>
 </revisionlist>
