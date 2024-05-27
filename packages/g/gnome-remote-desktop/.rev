@@ -210,4 +210,28 @@ need to be staged with libVNCServer sr#862644 (forwarded request 862647 from fcr
     <comment></comment>
     <requestid>1143315</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2bd99aabff46a43b37a73fee8ee60aad</srcmd5>
+    <version>46.2</version>
+    <time>1716803058</time>
+    <user>anag+factory</user>
+    <comment>- Add new files with the latest update.
+
+- Update to version 46.2:
+  + Potential crasher fix.
+  + Improved disconnection messages.
+  + Broader client compatibility support.
+  + Various security hardening improvements.
+  + CVE-2024-5148 Limit login screen-&gt;user session handover access
+    to appropriate user.
+  + Updated translations.
+
+- Update to version 46.1:
+  + Fix running on big endian.
+  + Don't crash when there are no user sessions.
+  + Updated translations.
+
+- Use sysusers to create gnome-remote-desktop user and home dir. (forwarded request 1176664 from dimstar)</comment>
+    <requestid>1176672</requestid>
+  </revision>
 </revisionlist>

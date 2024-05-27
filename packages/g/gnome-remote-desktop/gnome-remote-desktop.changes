@@ -1,7 +1,86 @@
 -------------------------------------------------------------------
+Wed May 22 08:36:26 UTC 2024 - Joan Torres <joan.torres@suse.com>
+
+- Add new files with the latest update.
+
+-------------------------------------------------------------------
+Wed May 22 06:15:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.2:
+  + Potential crasher fix.
+  + Improved disconnection messages.
+  + Broader client compatibility support.
+  + Various security hardening improvements.
+  + CVE-2024-5148 Limit login screen->user session handover access
+    to appropriate user.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr 18 13:11:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.1:
+  + Fix running on big endian.
+  + Don't crash when there are no user sessions.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 16 15:00:08 UTC 2024 - Joan Torres <joan.torres@suse.com>
+
+- Use sysusers to create gnome-remote-desktop user and home dir.
+
+-------------------------------------------------------------------
+Tue Mar 19 07:53:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Fix custom configuration directory with tmpfiles.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  4 11:43:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.rc:
+  + Allow D-Bus activation.
+  + Add polkit rules for system daemon configuration access.
+  + Add system daemon configuration D-Bus API.
+  + Allow checking TLS fingerprint via grdctl.
+  + Fix VNC-only bulids.
+  + Disable DMA buffer support when running with NVIDIA.
+- Add pkgconfig(polkit-gobject-1) and pkgconfig(dbus-1)
+  BuildRequires: new dependencies.
+
+-------------------------------------------------------------------
+Thu Feb 15 07:15:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.beta:
+  + Add layering to system daemon configuration.
+  + Various fixes and cleanups to the RDP backend.
+  + Handle the Microsofts mstsc client (default RDP client in MS
+    Windows) clients better when redirecting.
+  + Improve system-daemon <-> user-daemon RDP port conflict
+    handling.
+  + Fix crash when setting invalid configuration.
+  + Improved performance during monitor layout changes.
+
+-------------------------------------------------------------------
 Thu Feb  1 09:20:38 UTC 2024 - Yifan Jiang <yfjiang@suse.com>
 
 - Explict require higher version of gcc on SLE/Leap.
+
+-------------------------------------------------------------------
+Tue Jan 16 12:59:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.alpha:
+  + Port to FreeRDP 3.1.
+  + Introduce systemd service for single user headless setups.
+  + Introduce headless remote login via GDM (RDP only).
+  + Make fdk-aac dependency non-optional (RDP).
+  + Improve cursor handling (RDP).
+  + Automatic fallback port finding (RDP).
+  + Add Opus coder support (RDP).
+  + Misc. improvements to the RDP backend.
+- Add pkgconfig(opus) BuildRequires: new dependency.
+- Replace pkgconfig(freerdp*2|winpr2) buildRequires with
+  pkgconfig(freerdp*3|winpr3): follow upstreams port to FreeRDP 3.1.
 
 -------------------------------------------------------------------
 Sun Oct 22 17:39:54 UTC 2023 - bjorn.lie@gmail.com
