@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Fri May 17 20:40:00 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
-- Update to version 2.44.2:
+- Update to version 2.44.2 (boo#1225071):
   + Make gamepads visible on axis movements, and not only on
     button presses.
   + Disable the gst-libav AAC decoder.
@@ -17,6 +17,7 @@ Fri May 17 20:40:00 UTC 2024 - Michael Gorse <mgorse@suse.com>
   + Consider keycode when activating application accelerators.
   + Fix the build with ENABLE_WEBAUDIO disabled.
   + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2024-27834.
 - Update keyring (taken from rawhide).
 
 -------------------------------------------------------------------

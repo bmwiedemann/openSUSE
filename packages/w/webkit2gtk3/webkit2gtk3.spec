@@ -441,14 +441,8 @@ Group:          Development/Tools/Other
 %description minibrowser
 A small test browswer from webkit, useful for testing features.
 
+%dnl Expand %%lang_package to Obsoletes its older-name counterpart
 
-
-
-
-
-
-
-# Expand %%lang_package to Obsoletes its older-name counterpart
 %package -n WebKitGTK-%{_apiver}-lang
 Summary:        Translations for package %{name}
 Group:          System/Localization
