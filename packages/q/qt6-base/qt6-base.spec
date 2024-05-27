@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.7.0
+%define real_version 6.7.1
 %define short_version 6.7
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
@@ -29,26 +29,26 @@
 %ifarch %{arm} aarch64
 %global with_gles 1
 %endif
+%if 0%{?suse_version} > 1500
+%bcond_without system_md4c
+%endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.7.0
+Version:        6.7.1
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 # Legal: qtpaths is BSD-3-Clause
 License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 OR LGPL-3.0-only
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
+Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
-Patch0:         fix_builds_with_Werror.patch
-Patch1:         0001-QStringConverterICU-Pass-correct-pointer-to-callback.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
-Patch100:       0001-CMake-ELF-allow-using-Qt-s-full-version-number-in-th.patch
 # No need to pollute the library dir with object files, install them in the qt6 subfolder
-Patch101:       0001-CMake-Install-objects-files-into-ARCHDATADIR.patch
+Patch100:       0001-CMake-Install-objects-files-into-ARCHDATADIR.patch
 %if 0%{?suse_version} == 1500
-Patch102:       0001-Use-newer-GCC-on-Leap.patch
+Patch101:       0001-Use-newer-GCC-on-Leap.patch
 %endif
-Patch103:       0001-Don-t-strip-binaries-when-building-with-qmake.patch
+Patch102:       0001-Don-t-strip-binaries-when-building-with-qmake.patch
 ##
 BuildRequires:  cmake >= 3.18.3
 BuildRequires:  cups-devel
@@ -70,6 +70,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  qt6-macros
 BuildRequires:  xmlstarlet
 BuildRequires:  cmake(double-conversion)
+%if %{with system_md4c}
+BuildRequires:  cmake(md4c)
+%endif
 BuildRequires:  pkgconfig(atspi-2)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(egl)
@@ -739,6 +742,9 @@ sed -i 's#../../3rdparty/freetype/LICENSE.txt#FREETYPE_LICENSE.txt#' src/gui/pai
 
 # We don't want to use these 3rdparty libraries
 rm -r src/3rdparty/{blake2,double-conversion,freetype,harfbuzz-ng,libjpeg,libpng,pcre2,sqlite,xcb,zlib}
+%if %{with system_md4c}
+rm -r src/3rdparty/md4c
+%endif
 
 # Empty file used for the meta packages
 cat >> meta_package << EOF
@@ -887,6 +893,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_libexecdir}/qt-cmake-private
 %{_qt6_libexecdir}/qt-cmake-private-install.cmake
 %{_qt6_libexecdir}/qt-cmake-standalone-test
+%{_qt6_libexecdir}/qt-internal-configure-examples
 %{_qt6_libexecdir}/qt-internal-configure-tests
 %{_qt6_libexecdir}/qvkgen
 %{_qt6_libexecdir}/rcc

@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
+Tue May 21 08:31:24 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.7.1:
+  * https://www.qt.io/blog/qt-6.7.1-released
+- Build with system md4c when possible
+- Drop patches, merged upstream:
+  * fix_builds_with_Werror.patch
+  * 0001-QStringConverterICU-Pass-correct-pointer-to-callback.patch
+  * 0001-CMake-ELF-allow-using-Qt-s-full-version-number-in-th.patch
+
+-------------------------------------------------------------------
 Fri May  3 07:15:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
-- Add upstream security fix (CVE-2024-33861):
+- Add upstream security fix (CVE-2024-33861, boo#1223917):
   * 0001-QStringConverterICU-Pass-correct-pointer-to-callback.patch
 
 -------------------------------------------------------------------

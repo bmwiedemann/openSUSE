@@ -465,4 +465,12 @@
   * 0001-QStringConverterICU-Pass-correct-pointer-to-callback.patch</comment>
     <requestid>1171530</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>d33f9f22430a293cfc93bd7462942293</srcmd5>
+    <version>6.7.1</version>
+    <time>1716803091</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.7.1 (forwarded request 1175612 from krop)</comment>
+    <requestid>1176045</requestid>
+  </revision>
 </revisionlist>
