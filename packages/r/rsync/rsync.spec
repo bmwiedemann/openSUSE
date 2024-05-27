@@ -1,7 +1,7 @@
 #
 # spec file for package rsync
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@
 %endif
 
 Name:           rsync
-Version:        3.2.7
+Version:        3.3.0
 Release:        0
 Summary:        Versatile tool for fast incremental file transfer
 License:        GPL-3.0-or-later
@@ -55,7 +55,6 @@ Source11:       https://rsync.samba.org/ftp/rsync/src/rsync-patches-%{version}.t
 Source12:       %{name}.keyring
 Source13:       rsyncd
 Patch0:         rsync-no-libattr.patch
-Patch1:         rsync-fortified-strlcpy-fix.patch
 Patch2:         rsync-usr-etc.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -121,7 +120,7 @@ export LDFLAGS="-Wl,-z,relro,-z,now -fPIE -pie"
   --disable-xxhash\
 %endif
 %ifarch x86_64
-  --enable-simd \
+  --enable-roll-simd \
 %endif
 %if %{with slp}
   --enable-slp \
