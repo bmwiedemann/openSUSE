@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun May 19 09:55:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- Changes since 24.04.80:
+  * Remove no longer necessary Qt6Core5Compat dependency
+
+-------------------------------------------------------------------
+Fri May  3 09:15:26 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * [filetransferjob] Simplify error handling
+  * Add 24.02.0 Windows artifact
+  * smsapp/conversation list: Fix formatting issues and refactor code
+  * fix: do not send NetworkPacket if autoshare is disabled when connecting (kde#476551)
+  * Fix incorrect filename for duplicate copies on notification displays The filename is just changed after notification is displayed. (kde#484727)
+  * Make clang-format happy
+  * smsapp/qml: Remove explicit column height binding
+  * smsapp: Clean up conversation list title elements
+  * smsapp/attachments: Remove Qt5Compat import
+  * smsapp: Use Kirigami.ShadowedRectangle instead of DropShadow
+  * smsapp/qml: Remove unneeded imports
+  * Improve accessibility based on HAN university accessibility report
+  * smsapp/qml: Define explicit params in signal handlers
+  * Remove QTextCodec usage
+  * Apply 2 suggestion(s) to 2 file(s)
+  * Don't install kdeconnectd in libexec
+  * [kcm] Use correct KCModule constructor (kde#482199)
+  * sftp: --warning
+  * app: Put the Placeholder inside the view
+  * Remove unused dependency
+  * Remove `master` dependency overrides from craft config
+  * Disable Bluetooth backend due to kde#482192
+  * singlerelease is actually used
+  * [plugins/mousepad]: Add support for the persistence feature of the RemoteDesktop portal (kde#479013)
+  * [plugins/telephony] Clear actions before creating new notification action (kde#479904)
+  * Use StartupNotify now instead of X-KDE-StartupNotify
+
+-------------------------------------------------------------------
 Tue Apr  9 18:07:49 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2

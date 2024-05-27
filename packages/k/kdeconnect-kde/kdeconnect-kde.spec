@@ -21,14 +21,14 @@
 
 %bcond_without released
 Name:           kdeconnect-kde
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Integration of Android with Linux desktops
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/kdeconnect
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 Source100:      kdeconnect-kde.SuSEfirewall
@@ -58,7 +58,6 @@ BuildRequires:  cmake(KF6Solid) >= %{kf6_version}
 BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Bluetooth) >= %{qt6_version}
-BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
@@ -78,7 +77,6 @@ Requires:       kf6-qqc2-desktop-style >= %{kf6_version}
 Requires:       kirigami-addons6
 Requires:       qt6-declarative-imports >= %{qt6_version}
 Requires:       qt6-multimedia-imports >= %{qt6_version}
-Requires:       qt6-qt5compat-imports >= %{qt6_version}
 Requires:       sshfs >= 3.7.2
 # TODO Not packaged yet
 # Recommends:     kpeoplevcard
@@ -212,6 +210,7 @@ true
 %{_kf6_bindir}/kdeconnect-indicator
 %{_kf6_bindir}/kdeconnect-settings
 %{_kf6_bindir}/kdeconnect-sms
+%{_kf6_bindir}/kdeconnectd
 %{_kf6_configdir}/autostart/org.kde.kdeconnect.daemon.desktop
 %{_kf6_debugdir}/kdeconnect-kde.categories
 %{_kf6_iconsdir}/hicolor/*/apps/kdeconnect*.svg
@@ -246,7 +245,6 @@ true
 %dir %{_kf6_sharedir}/Thunar
 %dir %{_kf6_sharedir}/Thunar/sendto
 %{_kf6_sharedir}/Thunar/sendto/kdeconnect-thunar.desktop
-%{_libexecdir}/kdeconnectd
 
 %files lang -f %{name}.lang
 %exclude %{_kf6_htmldir}/en/kdeconnect*/
