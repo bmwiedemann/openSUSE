@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun May 19 09:56:04 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:15:50 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * Readd page search feature (kde#483972)
+  * Load documentation pages with KIO::HideProgressInfo
+  * Fix missing URL redirection implementation in web engine feeding from KIO
+  * Trigger Quirks mode for index/glossary/search HTML pages
+  * Unbreak endless invocation loop with "info" pages (kde#484977)
+  * page templates: fix CSS loading, DOCTYPE wrong uppercase HTML, not html
+  * Glossary pages: fix broken styling
+  * Fix outdated use of kdoctools5-common resources, kdoctools6-common now
+  * Contents & Glossary list: always activate entry on single click
+  * Forward/backward navigation: KToolBarPopupAction needs use of popupMenu()
+  * Use ECMDeprecationSettings
+  * appstream: use desktop-application type, add developer tag
+  * Bump min required KF6 to 6.0 (and align Qt min version)
+
+-------------------------------------------------------------------
 Tue Apr  9 18:08:13 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
