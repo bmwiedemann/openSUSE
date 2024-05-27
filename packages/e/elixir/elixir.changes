@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 26 16:29:58 UTC 2024 - Alessio Biancalana <alessio.biancalana@suse.com>
+
+- Upgrade to Elixir 1.16.3:
+  * Changelog available at https://hexdocs.pm/elixir/1.16.3/changelog.html
+  * 0001-Skip-tests-if-Erlang-compiled-without-docs-closes-13322.patch no longer
+    needed
+
+-------------------------------------------------------------------
 Sun Mar 10 11:32:11 UTC 2024 - Alessio Biancalana <alessio.biancalana@suse.com>
 
 - Upgrade to Elixir 1.16.2:

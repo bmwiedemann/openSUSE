@@ -19,7 +19,7 @@
 %define elixirdir %{_prefix}/lib/elixir
 
 Name:           elixir
-Version:        1.16.2
+Version:        1.16.3
 Release:        0
 Summary:        Functional meta-programming aware language built atop Erlang
 License:        Apache-2.0
@@ -28,7 +28,6 @@ URL:            http://elixir-lang.org
 Source0:        https://github.com/elixir-lang/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/elixir-lang/%{name}/releases/download/v%{version}/Docs.zip#/%{name}-%{version}-doc.zip
 Source2:        macros.elixir
-Patch0:         0001-Skip-tests-if-Erlang-compiled-without-docs-closes-13322.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  make
