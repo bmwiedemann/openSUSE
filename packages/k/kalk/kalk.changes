@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun May 19 09:55:17 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:15:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * Remove extra ;
+  * Update and complement org.kde.kalk.appdata.xml
+  * Port away from Qt5Compat.GraphicalEffects
+  * appstream: Update developer name
+  * Remove unnecessary quickcompiler dependency
+  * change background of the display area
+  * port unit converter to bootom Drawer
+  * Fix cliping in unit converter selector
+  * Add i18n to units and modes
+
+-------------------------------------------------------------------
 Tue Apr  9 18:07:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
