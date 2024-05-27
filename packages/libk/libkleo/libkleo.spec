@@ -22,14 +22,14 @@
 
 %bcond_without released
 Name:           libkleo
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Base package of Kleopatra, a key manager by KDE
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  doxygen
