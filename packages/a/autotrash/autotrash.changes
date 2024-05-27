@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Mar  9 00:30:14 UTC 2024 - malcolmlewis@opensuse.org
+
+- Updated to version 0.4.6:
+  + Upgrade dependencies, (gh#bneijt/autotrash#59).
+  + Bump cryptography from 40.0.1 to 41.0.3,
+    (gh#bneijt/autotrash#62).
+  + Upgrade poetry, (gh#bneijt/autotrash#63).
+  + OSV scan, (gh#bneijt/autotrash#54).
+- Changes from version 0.4.5:
+  + Add mypy and actions cache, (gh#bneijt/autotrash#42).
+  + Update documentation, (gh#bneijt/autotrash#45).
+  + Add .gnomerc Example For Granular Cleanup,
+    (gh#bneijt/autotrash#46).
+  + Upgrades, (gh#bneijt/autotrash#53).
+- Update source URL.
+- Update spec file, move to building with poetry macros.
+
+-------------------------------------------------------------------
 Wed Dec 29 10:25:34 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.4.4:
