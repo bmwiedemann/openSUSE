@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 26 18:17:59 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- New upstream release 1.4.7
+  * Add support of OAUTHBEARER
+  * PHPDoc improvements/fixes
+  * Short array syntax
+
+-------------------------------------------------------------------
 Mon Dec 12 21:28:36 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - New upstream release 1.4.6
