@@ -1,0 +1,8 @@
+<package name="audex" project="openSUSE:Factory">
+  <title>Tool for ripping compact discs</title>
+  <description>Audex is an audio grabber tool for CD-ROM drives.
+
+</description>
+  <devel project="KDE:Applications" package="audex"/>
+  <url>https://apps.kde.org/audex</url>
+</package>

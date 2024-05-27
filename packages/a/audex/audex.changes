@@ -1,0 +1,190 @@
+-------------------------------------------------------------------
+Sun May 19 09:54:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:14:44 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+  * Port to KF6/Qt6
+
+-------------------------------------------------------------------
+Sun Jan 10 10:29:51 UTC 2021 - christophe@krop.fr
+
+- Use a snapshot tracking git for audex. The current package still
+  uses KDE4/Qt4 which is long dead.
+
+-------------------------------------------------------------------
+Thu Dec  8 19:57:51 UTC 2016 - fabian@ritter-vogt.de
+
+- Revert kde4_runtime_requires change
+
+-------------------------------------------------------------------
+Tue Nov 29 07:20:36 UTC 2016 - olaf@aepfle.de
+
+- Expand macro kde4_runtime_requires only when its available
+  to fix quilt setup
+
+-------------------------------------------------------------------
+Mon Nov 17 15:51:44 UTC 2014 - ecsos@opensuse.org
+
+- update to 0.79
+  * This is only a bugfix release.
+
+-------------------------------------------------------------------
+Sat Feb 22 10:30:44 UTC 2014 - ecsos@opensuse.org
+
+- update to 0.78
+  
+  * Fixed google cover search
+  * Embed cover in FLAC files
+  * Minor bugfixes, code modifications and typo fixes...
+
+-------------------------------------------------------------------
+Sat Feb 16 19:36:58 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to 0.77b1:
+  * Removed store discid file feature as this is useless considering info file
+    feature
+  * Integrated new playlist module (relative filenames in playlists and
+    playlist merging)
+  * Minor bugfixes, code modifications and typo fixes...
+  From 0.76b2:
+  * Some minor code fixes
+  * Cue sheet writer now follows the file format specs (not using OGG and FLAC
+    anymore)
+  * Some minor bugfixes...
+- Removed require_cmake_2.6.4.patch (not needed anymore).
+- Removed install_translations.diff (fixed upstream).
+
+-------------------------------------------------------------------
+Mon Jan 21 11:59:01 UTC 2013 - ctrippe@opensuse.org
+
+- Update to 0.76b1
+  * Fix google cover fetcher (bnc#799499)
+  * Fix compile issues with GCC 4.7 (drop audex-gcc47.patch)
+- Added patch to install translations
+
+-------------------------------------------------------------------
+Mon Apr 30 14:28:43 UTC 2012 - idonmez@suse.com
+
+- Fix compilation with gcc 4.7 
+
+-------------------------------------------------------------------
+Tue Feb 15 20:35:12 UTC 2011 - asterios.dramis@gmail.com
+
+- Updated to 0.74b1
+  * New feature: Simple cue sheet support (but does not detect pregaps yet)
+  * New feature: Single file rip
+  * New feature: Adds MD5 to hashlist options
+  * Fixes some issues with cover browser
+  * Uses external image viewer to show cover
+  * Bugfix in Ogg Vorbis settings widget
+  * Ogg Vorbis setting widget now allows to set fractional quality values
+  * Bugfix in commandline for FAAC
+  * 2 digits track number option for filenames
+  * New parameters for file name scheme variables: left (see
+    kde.maniatek.com/audex for full documentation)
+  * New helptext for scheme wizard dialogs
+  * Pattern of playlists, hashlists and cover files now need a $suffix variable
+  * Some more small bugfixes...
+- Spec file updates
+  * Changed License: to GPLv3+.
+  * Minor fixes.
+  * Fix Categories: entry of audex.desktop file.
+
+-------------------------------------------------------------------
+Sun Jan  9 15:03:40 UTC 2011 - asterios.dramis@gmail.com
+
+- Updated to 0.73b1
+  * New feature: Use eyeD3 for MP3 tagging if available
+  * Bugfix: Crash on cancel
+  * Fixes some compile issues with GCC 4.5
+  * Some cosmetic fixes
+  * English language fix: Uses the word "folder" instead of "directory"
+  * Uses KDiskFreeSpaceInfo for calculating free space on a device
+  * New feature: Uses mimetype icons for profiles and allows user to change these
+  * Settings in profile editing dialog now grouped with tabs
+  * Fixes a crash when adding a new profile via the UI
+  * New feature: New simple view of the ripping progress dialog
+  * Adds more detail to CDDB errors
+  * Some small bugfixes... (thx to all reporters!)
+- Spec file updates
+  - Added a audex-lang package.
+  - Changes after spec-cleaner run.
+  - Updates in BuildRequires: and %install sections.
+  - Added python-eyeD3 to Recommends: entry.
+- Removed the 02_useless_include.diff and audex-0.72b1-compilation_fixes.patch
+  patches (fixed upstream).
+- Added a patch to make the package use cmake-2.6.4 (fixes build in openSUSE
+  11.2).
+
+-------------------------------------------------------------------
+Thu Jul 15 22:11:29 UTC 2010 - bitshuffler@opensuse.org
+
+- Added 02_useless_include.diff
+- Added audex-0.72b1-compilation_fixes.patch
+
+-------------------------------------------------------------------
+Wed Sep 30 11:48:53 CEST 2009 - tittiatcoke@gmail.com
+
+- Updated to 0.72b1
+   * Cover fetch from google.
+   * Minor bugfixes.
+
+-------------------------------------------------------------------
+Sun Aug 23 14:11:53 CEST 2009 - tittiatcoke@gmail.com
+
+- Updated to 0.71b5
+  + Updated header information (all GPLv3+ now)
+  + Slightly improved czech translation (Pavel Fric)
+  + Slightly improved german translation (this is already not perfect!)
+  + Minor bugfix.
+
+-------------------------------------------------------------------
+Tue Jun 23 06:33:53 CEST 2009 - tittiatcoke@gmail.com
+
+- Updated to 0.71b3
+  + Added translations (Dutch & Portugees)
+  + Bugfixes (slider, Update profile loaded from external file)
+
+-------------------------------------------------------------------
+Fri May 29 20:33:15 CEST 2009 - bitshuffler@opensuse.org
+
+- Updated to 0.71b2
+
+-------------------------------------------------------------------
+Sat May  9 00:00:00 CEST 2009 - bitshuffler@opensuse.org
+
+- Updated to 0.70b1
+
+-------------------------------------------------------------------
+Mon Mar 30 00:00:00 CEST 2009 - bitshuffler@opensuse.org
+
+- Updated to 0.62b
+
+-------------------------------------------------------------------
+Fri Oct 31 00:00:00 CET 2008 - buschmann@huessenbergnetz.de
+
+- fixing file list (directories not owned by a package)
+
+-------------------------------------------------------------------
+Tue Apr 15 00:00:00 CEST 2008 - cgoncalves@opensuse.org
+
+- updated to version 0.6a:
+  * New XML-based scheme definitions.
+  * Assistant will help you creating profiles.
+  * Cover fetching from amazon works again (rewritten).
+  * Store SFV files for the music files.
+  * Store text files with predefined information.
+  * A lot of Bugfixes...
+-------------------------------------------------------------------
+Tue Mar 18 00:00:00 CET 2008 - cgoncalves@opensuse.org
+
+- initial release (version 0.5a)
