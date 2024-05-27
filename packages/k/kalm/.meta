@@ -1,0 +1,8 @@
+<package name="kalm" project="openSUSE:Factory">
+  <title>Breathing techniques helper</title>
+  <description>Kalm can teach you different breathing techniques.
+
+</description>
+  <devel project="KDE:Applications" package="kalm"/>
+  <url>https://apps.kde.org/kalm</url>
+</package>
