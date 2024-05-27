@@ -22,20 +22,21 @@
 
 %bcond_without released
 Name:           spectacle
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Screen Capture Program
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 URL:            https://apps.kde.org/spectacle
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  cmake(OpenCV)
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
@@ -114,7 +115,7 @@ screenshot capture program by KDE.
 
 %files
 %license LICENSES/*
-%doc %lang(en) %{_kf6_mandir}/man1/spectacle.1%{?ext_man}
+%doc %lang(en) %{_mandir}/man1/spectacle.1.gz
 %{_kf6_applicationsdir}/org.kde.spectacle.desktop
 %{_kf6_appstreamdir}/org.kde.spectacle.appdata.xml
 %{_kf6_bindir}/spectacle

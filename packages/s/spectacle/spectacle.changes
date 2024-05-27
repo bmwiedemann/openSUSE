@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sun May 19 09:57:50 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- Changes since 24.04.80:
+  * Always convert old placeholder format to new placeholder format when new format is not used (kde#484211)
+  * Fix empty <title> placeholders breaking nearby placeholders (kde#483320)
+  * ExportManager: reduce unnecessary string manipulation in formattedFilename()
+  * VideoCaptureOverlay: Minimized -> Window.Minimized
+  * Raise and activate capture windows when shown (kde#482467)
+  * Use HH instead of hh by default
+  * SpectacleCore: Only use normal windows and dialogs for window visible check
+  * ImagePlatformXcb: Make on click filter button handling code more descriptive
+  * VideoPlatformWayland: handle and add error messages for when the stream is prematurely closed
+  * VideoPlatform: don't assert recording boolean in setRecording
+  * VideoPlatformWayland: Remove the need for a DBus call to KWin's getWindowInfo
+  * Update recording related models in response to VideoPlatform changes
+  * VideoPlatformWayland: Get PipeWireRecord asynchronously
+  * VideoPlatformWayland: Add missing not operator
+  * Improve feedback when recording is not available (kde#484038)
+  * SpectacleCore: use shared error behavior for screenshot and recording failures
+  * RecordingFailedMessage: fix close button
+  * SpectacleCore: move video platform setup code closer to image platform setup code
+  * SpectacleCore: use VideoPlatform::regionRequested to start rectangle selection
+
+-------------------------------------------------------------------
+Fri May  3 09:17:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Too many changes since 24.02.2, only listing bugfixes:
+  * ImagePlatformKWin: Use logical positions for images in combinedImage on X11 (kde#486118)
+  * Add blur/pixelate strength settings and slider for adjusting them (kde#469184)
+  * Fix sequence numbers in filenames (kde#483260)
+  * Disable video mode when a new rectangle capture screenshot is started (kde#481471)
+  * Handle: prevent division by zero in ShapePath scale (kde#484892)
+  * ImagePlatformKWin: Go back to manually combining images (kde#478426)
+  * Add crop tool (kde#467590)
+  * Add backend logic for undoable cropping (kde#481435)
+  * SpectacleCore: make class inheritance check more robust (kde#484652)
+  * Add recording options to the no screenshot dialog (kde#468778)
+  * AnnotationViewport: Don't use TextureCanUseAtlas (kde#481665)
+  * Finish recording instead of activating when activated from shortcut while recording (kde#481471)
+  * Set layer-shell exclusive zone for capture region overlay (kde#481391)
+  * Use KConfigDialogManager system instead of directly setting video format (kde#481390)
+  * ViewerWindow: Check if s_viewerWindowInstance points to this when destroying (kde#469502)
+  * Fix always recording the screen at (0,0) with screen recording (kde#480599)
+  * Add support for new lines and tabstops in text annotations (kde#472302)
+  * Remove X11 atom (kde#478162)
+  * Add <UnixTime> filename placeholder (kde#478802)
+
+-------------------------------------------------------------------
 Tue Apr  9 18:09:58 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
