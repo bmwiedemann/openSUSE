@@ -175,4 +175,12 @@
     <comment>Qt 6.7.0. qtwebengine is still building (forwarded request 1164304 from krop)</comment>
     <requestid>1165779</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>850479aba81f199e5530988f984045b8</srcmd5>
+    <version>6.7.1</version>
+    <time>1716803096</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.7.1 (forwarded request 1175612 from krop)</comment>
+    <requestid>1176048</requestid>
+  </revision>
 </revisionlist>
