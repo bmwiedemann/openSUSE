@@ -1,0 +1,26 @@
+diff --git a/src/convolver_ui.cpp b/src/convolver_ui.cpp
+index fba3d6bfd..d40f3afff 100644
+--- a/src/convolver_ui.cpp
++++ b/src/convolver_ui.cpp
+@@ -186,7 +186,7 @@ void ConvolverUi::import_irs_file(const std::string& file_path) {
+ 
+     out_path.replace_extension(".irs");
+ 
+-    boost::filesystem::copy_file(p, out_path, boost::filesystem::copy_option::overwrite_if_exists);
++    boost::filesystem::copy_file(p, out_path, boost::filesystem::copy_options::overwrite_existing);
+ 
+     util::debug(log_tag + "imported irs file to: " + out_path.string());
+   } else {
+diff --git a/src/presets_manager.cpp b/src/presets_manager.cpp
+index 6926e3d9d..57c333aaf 100644
+--- a/src/presets_manager.cpp
++++ b/src/presets_manager.cpp
+@@ -472,7 +472,7 @@ void PresetsManager::import(PresetType preset_type, const std::string& file_path
+ 
+       out_path = user_dir / p.filename();
+ 
+-      boost::filesystem::copy_file(p, out_path, boost::filesystem::copy_option::overwrite_if_exists);
++      boost::filesystem::copy_file(p, out_path, boost::filesystem::copy_options::overwrite_existing);
+ 
+       util::debug(log_tag + "imported preset to: " + out_path.string());
+     }

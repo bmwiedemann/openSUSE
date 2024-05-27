@@ -105,4 +105,16 @@
     <comment></comment>
     <requestid>978502</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d6f008a4c4557976a14ddcf89c5732f3</srcmd5>
+    <version>4.8.7</version>
+    <time>1716803744</time>
+    <user>anag+factory</user>
+    <comment>- Switch to _service source tarball
+- Update spec
+- Add 01-fix-depricated-boost-filesystem-copy_option.patch fixing
+  build with current boost
+</comment>
+    <requestid>1176913</requestid>
+  </revision>
 </revisionlist>
