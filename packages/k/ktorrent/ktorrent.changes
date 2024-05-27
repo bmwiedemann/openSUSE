@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun May 19 09:57:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:16:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * Undo system tray bug workaround (kde#484598)
+  * Avoid displaying "(I18N_ARGUMENT_MISSING)"
+  * Fix crash when system tray icon is disabled (kde#484577)
+  * Fix progress bar text placeholder
+  * CMake: Bump min libktorrent version
+  * Apply i18n to percent values
+  * Set associated window for tray icon after showing main window (kde#483899)
+  * infowidget: add context menu action to rename files (kde#208493)
+  * Save magnet queue whenever the queue is updated (kde#415580)
+  * Proofreading
+  * Replace QWidget->show() with QWindow()->show() (kde#481151)
+  * Use different icon for queued seeding and queued downloading (kde#312607)
+  * [Flatpak] Re-enable
+  * Request symbolic tray icon (kde#480340)
+
+-------------------------------------------------------------------
 Tue Apr  9 18:09:16 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2

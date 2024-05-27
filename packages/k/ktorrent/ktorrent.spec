@@ -21,14 +21,14 @@
 
 %bcond_without released
 Name:           ktorrent
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        KDE BitTorrent Client
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/ktorrent
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 Source3:        ktorrent.1
@@ -74,7 +74,7 @@ BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(taglib)
 BuildRequires:  pkgconfig(libmaxminddb)
-%ifarch aarch64 x86_64 %x86_64 riscv64
+%ifarch aarch64 x86_64 riscv64
 BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
 %endif
 
@@ -100,9 +100,9 @@ sed -i 's#1.71.0#1.66.0#' CMakeLists.txt
 %kf6_install
 
 # Add man pages from help2man edited.
-mkdir -p %{buildroot}%{_kf6_mandir}/man1
-cp -a %{SOURCE3} %{buildroot}%{_kf6_mandir}/man1
-cp -a %{SOURCE4} %{buildroot}%{_kf6_mandir}/man1
+mkdir -p %{buildroot}%{_mandir}/man1
+cp -a %{SOURCE3} %{buildroot}%{_mandir}/man1
+cp -a %{SOURCE4} %{buildroot}%{_mandir}/man1
 
 # Fix any .py files with shebangs and wrong permissions.
 find %{buildroot} -name "*.py" -perm 0644 -exec grep -l '#!' {} + | \
@@ -143,12 +143,12 @@ find %{buildroot} -name "*.py" -perm 0644 -exec grep -l '#!' {} + | \
 %{_kf6_plugindir}/ktorrent_plugins/StatsPlugin.so
 %{_kf6_plugindir}/ktorrent_plugins/UPnPPlugin.so
 %{_kf6_plugindir}/ktorrent_plugins/ZeroconfPlugin.so
-%ifarch aarch64 x86_64 %x86_64 riscv64
+%ifarch aarch64 x86_64 riscv64
 %{_kf6_plugindir}/ktorrent_plugins/SearchPlugin.so
 %{_kf6_plugindir}/ktorrent_plugins/SyndicationPlugin.so
 %endif
 
-%ifarch aarch64 x86_64 %x86_64 riscv64
+%ifarch aarch64 x86_64 riscv64
 %{_kf6_sharedir}/ktorrent/
 %endif
 
