@@ -25,14 +25,14 @@
 
 %bcond_without released
 Name:           kalgebra
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Math Expression Solver and Plotter
 License:        GPL-2.0-or-later
 URL:            https://edu.kde.org
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -49,7 +49,6 @@ BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(Plasma) >= %{plasma6_version}
-BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6OpenGLWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
@@ -81,8 +80,6 @@ a QtQuick based version for use in mobile (phone, tablet) environments.
 
 %prep
 %autosetup -p1
-# https://bugs.kde.org/show_bug.cgi?id=482464
-echo > plasmoids/CMakeLists.txt
 
 %build
 %cmake_kf6
@@ -95,6 +92,9 @@ echo > plasmoids/CMakeLists.txt
 %find_lang kalgebra --with-html
 %find_lang kalgebramobile
 
+# 'nothing provides qt6qmlimport(org.kde.plasma.components.2) needed by kalgebra'
+rm -r %{buildroot}%{_kf6_plasmadir}/plasmoids/org.kde.graphsplasmoid/
+
 %fdupes %{buildroot}
 
 %files
@@ -102,11 +102,10 @@ echo > plasmoids/CMakeLists.txt
 %doc %lang(en) %{_kf6_htmldir}/en/kalgebra
 %{_kf6_applicationsdir}/org.kde.kalgebra.desktop
 %{_kf6_appstreamdir}/org.kde.kalgebra.appdata.xml
-#%%{_kf6_appstreamdir}/org.kde.graphsplasmoid.appdata.xml
+%{_kf6_appstreamdir}/org.kde.graphsplasmoid.appdata.xml
 %{_kf6_bindir}/calgebra
 %{_kf6_bindir}/kalgebra
 %{_kf6_iconsdir}/hicolor/*/apps/kalgebra.*
-#%%{_kf6_plasmadir}/plasmoids/org.kde.graphsplasmoid/
 %dir %{_kf6_sharedir}/katepart5
 %dir %{_kf6_sharedir}/katepart5/syntax
 %{_kf6_sharedir}/katepart5/syntax/kalgebra.xml
