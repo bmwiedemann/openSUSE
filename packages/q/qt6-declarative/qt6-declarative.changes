@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 21 08:31:28 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.7.1:
+  * https://www.qt.io/blog/qt-6.7.1-released
+- Drop patch, merged upstream:
+  * 0001-Fix-PointHandler-rejecting-click-events-near-window-.patch
+
+-------------------------------------------------------------------
 Tue Apr  2 13:39:38 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.7.0:
