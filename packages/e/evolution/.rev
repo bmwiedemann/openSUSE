@@ -2565,4 +2565,28 @@ New stable rel</comment>
 - Add boo1221868.patch, fixing a crash when hiding completed tasks (forwarded request 1171338 from dimstar)</comment>
     <requestid>1171399</requestid>
   </revision>
+  <revision rev="278" vrev="1">
+    <srcmd5>fdc6a7f01132c2c3901da40b4bbe88ce</srcmd5>
+    <version>3.52.2</version>
+    <time>1716803067</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.52.2:
+  + Bug Fixes:
+     - Composer: Added extra quotation level after draft open ][.
+     - Calendar: Fails to open event from alarm-notify on app
+       start.
+     - Possible crash when exiting application.
+     - Mail: Remember Page Setup settings when printing.
+     - Shell: Enhance symbolic icons usage detection.
+     - Crash when recovering mail from the previous session.
+     - Open last view when restarting Evolution.
+     - SignatureEditor: Format change can discard signature text.
+  + Miscellaneous:
+    - e-mail-request: Fix a memory leak.
+    - shell: Closing last window does not always run
+      &quot;prepare-for-quit&quot;.
+    - Update online_help_url URI.
+  + Updated translations. (forwarded request 1176667 from dimstar)</comment>
+    <requestid>1176674</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri May 24 07:06:00 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.52.2:
+  + Bug Fixes:
+     - Composer: Added extra quotation level after draft open ][.
+     - Calendar: Fails to open event from alarm-notify on app
+       start.
+     - Possible crash when exiting application.
+     - Mail: Remember Page Setup settings when printing.
+     - Shell: Enhance symbolic icons usage detection.
+     - Crash when recovering mail from the previous session.
+     - Open last view when restarting Evolution.
+     - SignatureEditor: Format change can discard signature text.
+  + Miscellaneous:
+    - e-mail-request: Fix a memory leak.
+    - shell: Closing last window does not always run
+      "prepare-for-quit".
+    - Update online_help_url URI.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Apr 19 12:59:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.52.1:
