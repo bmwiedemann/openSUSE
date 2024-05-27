@@ -22,14 +22,14 @@
 
 %bcond_without released
 Name:           kio_audiocd
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        KDE I/O Slave for Audio CDs
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         %{rname}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  cdparanoia-devel
@@ -43,7 +43,6 @@ BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
-BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(vorbis)

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun May 19 09:54:49 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:14:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * Port away from QRegExp
+  * Only mark KCM as changed when text was actually edited (kde#476669)
+  * Use local include
+
+-------------------------------------------------------------------
 Tue Apr  9 18:07:01 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
