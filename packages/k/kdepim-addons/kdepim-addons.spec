@@ -18,26 +18,29 @@
 
 %define kf6_version 6.0.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.2
+%define kpim6_version 6.0.80
 
 %bcond_without released
 Name:           kdepim-addons
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Addons for KDE PIM applications
 License:        GPL-2.0-only
 URL:            https://www.kde.org
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+Source3:        vendor.tar.zst
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Enable-the-expert-plugin-by-default.patch
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libgpgmepp-devel
 BuildRequires:  libmarkdown-devel
+BuildRequires:  zstd
+BuildRequires:  cmake(Corrosion)
 BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6Contacts) >= %{kf6_version}
@@ -90,12 +93,11 @@ BuildRequires:  cmake(KPim6TemplateParser) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6TextEdit) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Tnef) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6WebEngineViewer) >= %{kpim6_version}
-BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  x86_64 %x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 Addons for KDE PIM applications, such as extensions for KMail, additional
@@ -104,11 +106,10 @@ themes, and plugins providing extra or advanced functionality.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -p1 -a3
 
 %build
 %cmake_kf6 \
-  -DQTCREATOR_TEMPLATE_INSTALL_DIR:PATH=%{_kf6_sharedir}/qtcreator/templates \
   -DKDEPIM_RUN_AKONADI_TEST:BOOL=FALSE
 
 %kf6_build
@@ -131,6 +132,7 @@ themes, and plugins providing extra or advanced functionality.
 %{_kf6_debugdir}/kdepim-addons.categories
 %{_kf6_debugdir}/kdepim-addons.renamecategories
 %{_kf6_iconsdir}/hicolor/scalable/status/*.svg
+%{_kf6_libdir}/libadblockplugin.so.*
 %{_kf6_libdir}/libakonadidatasetools.so.*
 %{_kf6_libdir}/libdkimverifyconfigure.so.*
 %{_kf6_libdir}/libexpireaccounttrashfolderconfig.so.*
@@ -157,9 +159,6 @@ themes, and plugins providing extra or advanced functionality.
 %{_kf6_plugindir}/plasmacalendarplugins/
 %dir %{_kf6_qmldir}/org/kde/plasma
 %{_kf6_qmldir}/org/kde/plasma/PimCalendars/
-%dir %{_kf6_sharedir}/qtcreator
-%dir %{_kf6_sharedir}/qtcreator/templates/
-%{_kf6_sharedir}/qtcreator/templates/kmaileditorconvertertextplugins/
 
 %files lang -f %{name}.lang
 

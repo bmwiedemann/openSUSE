@@ -1,0 +1,9 @@
+<services>
+  <service name="cargo_vendor" mode="manual">
+     <param name="src">kdepim-addons-*.tar.xz</param>
+     <param name="compression">zst</param>
+     <param name="update">true</param>
+     <param name="cargotoml">plugins/webengineurlinterceptor/adblock/Cargo.toml</param>
+  </service>
+  <service name="cargo_audit" mode="manual" />
+</services>
