@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun May 19 09:55:01 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:14:51 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * TodoView: Use current instead of selection to track active todo (kde#485185)
+  * Fix a few unused variable/parameter warnings
+  * Port away from deprecated QDateTime Qt::TimeSpec constructor
+  * USe _L1 operator directly
+  * Use setContentsMargins({})
+  * Clean up
+  * We don't have  README.md file
+  * Remove commented code + remove private Q_SLOTS we use lambda
+  * Add missing [[nodiscard]]
+  * Add missing explicit
+  * Remove EventViews::resourceColor() overload for an Akonadi::Item
+  * Agenda, Month: query collection color from calendar collection
+  * Prefer color stored in Akonadi over eventviewsrc
+  * Fix 'Create sub-todo' action being always disabled (kde#479351)
+  * Use isEmpty()
+
+-------------------------------------------------------------------
 Tue Apr  9 18:07:13 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
