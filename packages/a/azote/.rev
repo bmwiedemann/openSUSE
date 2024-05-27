@@ -265,4 +265,13 @@
   * Get ready for Hyprland socket files moved to $XDG_RUNTIME_DIR/hypr</comment>
     <requestid>1171496</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>53ff1e878e9762f0593d37e5eee5af04</srcmd5>
+    <version>1.12.8</version>
+    <time>1716803794</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.12.8:
+  * Fix no such file in directory bug #189</comment>
+    <requestid>1177043</requestid>
+  </revision>
 </revisionlist>

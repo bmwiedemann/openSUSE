@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 27 07:07:42 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.12.8:
+  * Fix no such file in directory bug #189
+
+-------------------------------------------------------------------
 Fri May  3 05:31:46 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.12.7:
