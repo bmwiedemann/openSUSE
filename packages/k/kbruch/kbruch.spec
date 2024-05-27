@@ -21,14 +21,14 @@
 
 %bcond_without released
 Name:           kbruch
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Application to excercise fractions
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/kbruch
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -69,7 +69,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %license LICENSES/*
 %doc AUTHORS ChangeLog NEWS README
 %doc %lang(en) %{_kf6_htmldir}/en/kbruch/
-%doc %lang(en) %{_kf6_mandir}/man1/kbruch.1%{?ext_man}
+%doc %lang(en) %{_mandir}/man1/kbruch.1%{?ext_man}
 %{_kf6_applicationsdir}/org.kde.kbruch.desktop
 %{_kf6_appstreamdir}/org.kde.kbruch.appdata.xml
 %{_kf6_bindir}/kbruch
