@@ -19,11 +19,11 @@
 %define __builder Ninja
 %bcond_without qt6
 
-%define _mtime 1712511110
-%define _commit fe1ce05
+%define _mtime 1716497960
+%define _commit 8cb3483
 
 Name:           QMPlay2
-Version:        24.04.07
+Version:        24.05.23
 Release:        0
 Summary:        A Qt based media player, streamer and downloader
 License:        LGPL-3.0-or-later
@@ -49,13 +49,13 @@ BuildRequires:  pkgconfig(Qt6Qml) >= 6.0.0
 BuildRequires:  pkgconfig(Qt6Svg) >= 6.0.0
 BuildRequires:  pkgconfig(Qt6Widgets) >= 6.0.0
 %else
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.10.0
-BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.10.0
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.10.0
-BuildRequires:  pkgconfig(Qt5Qml) >= 5.10.0
-BuildRequires:  pkgconfig(Qt5Svg) >= 5.10.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.10.0
-BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.10.0
+BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.2
+BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.15.2
+BuildRequires:  pkgconfig(Qt5DBus) >= 5.15.2
+BuildRequires:  pkgconfig(Qt5Qml) >= 5.15.2
+BuildRequires:  pkgconfig(Qt5Svg) >= 5.15.2
+BuildRequires:  pkgconfig(Qt5Widgets) >= 5.15.2
+BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.15.2
 %endif
 BuildRequires:  pkgconfig(SPIRV-Tools)
 BuildRequires:  pkgconfig(alsa)
@@ -120,7 +120,7 @@ It's a development package for %{name}.
   -DCMAKE_C_FLAGS="${CFLAGS:-%optflags} -gdwarf-4" \
   -DCMAKE_CXX_FLAGS="${CXXFLAGS:-%optflags} -gdwarf-4" \
   -DSOLID_ACTIONS_INSTALL_PATH="%{_datadir}/solid/actions" \
-  -DUSE_LINK_TIME_OPTIMIZATION=ON \
+  -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
   -DUSE_PCH=ON \
   -DUSE_GIT_VERSION=OFF \
   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
