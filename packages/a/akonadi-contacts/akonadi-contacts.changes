@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun May 19 09:54:40 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- Changes since 24.04.80:
+  * Fix 486837: "upon new contact creation, KAddressbook always warns: Location was not saved. Do you want to close editor?" (kde#486837)
+
+-------------------------------------------------------------------
+Fri May  3 09:14:30 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * We don't have kcfg* file
+  * Add missing [[nodiscard]]
+  * Add missing explicit keyword
+  * Use local includes
+  * QLatin1String is same as QLatin1StringView, we need to use QLatin1StringView now
+  * Activate CI test
+
+-------------------------------------------------------------------
 Tue Apr  9 18:06:51 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
