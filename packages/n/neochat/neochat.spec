@@ -21,15 +21,15 @@
 
 %bcond_without released
 Name:           neochat
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        A chat client for Matrix, the decentralized communication protocol
 License:        BSD-2-Clause AND GPL-3.0-only AND GPL-3.0-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://apps.kde.org/neochat/
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 # Needed for leap 15.5
@@ -43,6 +43,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
@@ -51,8 +52,10 @@ BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
 BuildRequires:  cmake(KF6KirigamiAddons) >= 0.7.2
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6Purpose) >= %{kf6_version}
 BuildRequires:  cmake(KF6QQC2DesktopStyle) >= %{kf6_version}
 BuildRequires:  cmake(KF6Sonnet) >= %{kf6_version}
+BuildRequires:  cmake(KF6SyntaxHighlighting) >= %{kf6_version}
 BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(QCoro6Core)
@@ -68,7 +71,7 @@ BuildRequires:  cmake(QuotientQt6) >= 0.7.0
 BuildRequires:  pkgconfig(icu-uc) >= 61.0
 BuildRequires:  pkgconfig(libcmark)
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  x86_64 %x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 aarch64 riscv64
 Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kf6-kitemmodels-imports >= %{kf6_version}
 Requires:       kf6-kquickcharts >= %{kf6_version}
@@ -111,6 +114,8 @@ instant messaging.
 %{_kf6_iconsdir}/hicolor/*/apps/org.kde.neochat.svg
 %{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.neochat.tray.svg
 %{_kf6_mandir}/man1/neochat.1%{?ext_man}
+%dir %{_kf6_plugindir}/kf6/purpose
+%{_kf6_plugindir}/kf6/purpose/neochatplugin.so
 %{_kf6_notificationsdir}/neochat.notifyrc
 %{_kf6_sharedir}/krunner/dbusplugins/plasma-runner-neochat.desktop
 

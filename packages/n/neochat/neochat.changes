@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun May 19 09:57:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- Changes since 24.04.80:
+  * Fix module
+  * Adapt to behavior change in libQuotient
+  * Push ImageEditorPage using pushDialogLayer (kde#486315)
+  * Fix opening room on mobile
+  * Fix AddServerSheet
+  * Revert "Preserve mx-reply in the edited message if it exists"
+
+-------------------------------------------------------------------
+Fri May  3 09:17:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Too many changes since 24.02.2, only listing bugfixes:
+  * Fix Roomlist Shortcuts (kde#485949)
+  * Fix Verification Window Sizing (kde#485309)
+  * Linkpreviewer Improvements (kde#484927)
+  * Re-add requirement for having devtools active for the show message source action (kde#485140)
+  * Only ask for URL opening confirmation for QR codes (kde#484870)
+  * Add "Leave room" button to sidebar (kde#484425)
+  * UserInfo compact (kde#482261)
+  * Remove external room window feature (kde#455984)
+  * Support selected text for replies in the right click menu (kde#463885)
+  * Don't Maximize Stickers (kde#482701)
+  * Fix Message Components for Tags with Attributes (kde#482331)
+  * Fix crash when visiting user (kde#483744)
+  * Remove manual window toggling for system tray icon (kde#479721)
+  * Favourites -> Favorites (kde#481814)
+  * Port RoomList to TreeView (kde#456643)
+  * Move notifications button to space drawer. (kde#479051)
+  * Readonly Room (kde#479590)
+
+-------------------------------------------------------------------
 Tue Apr  9 18:09:45 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
