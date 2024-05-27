@@ -23,14 +23,14 @@
 
 %bcond_without released
 Name:           libksane-kf5
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        KDE scanning library
 License:        LGPL-2.1-only OR LGPL-3.0-only
 URL:            https://www.kde.org
-Source:         %{rname}-%{version}.tar.xz
+Source0:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules
@@ -38,7 +38,7 @@ BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5TextWidgets) >= %{kf5_version}
 BuildRequires:  cmake(KF5Wallet) >= %{kf5_version}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{kf5_version}
-BuildRequires:  cmake(KSaneCore)
+BuildRequires:  cmake(KSaneCore) >= 24.02.2
 BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
 
