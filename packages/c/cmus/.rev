@@ -227,4 +227,41 @@ The program’s features have stabilized and it receives mostly bugfixes and min
   See https://github.com/cmus/cmus/pull/1254</comment>
     <requestid>1088919</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>037e6045d4dbc316eeddea8c05e060bb</srcmd5>
+    <version>2.11.0</version>
+    <time>1716803693</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.11.0
+  * Add support for .nomedia file
+    gh#cmus/cmus#1190
+  * Fix a typo in an error message
+    gh#cmus/cmus#1206
+  * Take opus output gain into account when checking
+    replaygain_limit peak
+    gh#cmus/cmus#1201
+  * #1219: Update Unofficial IRC channel
+    gh#cmus/cmus#1220
+  * Recognize artist/album sort keys from ffmpeg plugin
+    gh#cmus/cmus#1165
+  * Fix missing combining marks on last character in a field
+    gh#cmus/cmus#1151
+  * Use wcwidth for u_char_width
+    gh#cmus/cmus#1198
+  * Fix under-allocation when many zero-width characters are
+    present
+    gh#cmus/cmus#1152
+  * Draw title and command lines on first update
+    gh#cmus/cmus#1257
+  * Switch to -latest os in build workflow
+    gh#cmus/cmus#1265
+  * ip/mp4: Use MP4FindTrackId() rather than assuming it's &quot;1&quot;
+    gh#cmus/cmus#1255
+  * Remove AV_CODEC_{CAP,FLAG}_TRUNCATED for FFmpeg 6 compatibility
+    gh#cmus/cmus#1254
+  * Introduce basu as an option for MPRIS control
+    gh#cmus/cmus#1221
+  * Add auto_hide_playlists_panel option</comment>
+    <requestid>1176840</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package cmus
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2007-2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,15 +19,13 @@
 
 %bcond_without sndio
 Name:           cmus
-Version:        2.10.0
+Version:        2.11.0
 Release:        0
 Summary:        Text-mode music player
 License:        GPL-2.0-only
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://cmus.github.io/
 Source:         https://github.com/cmus/cmus/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Remove AV_CODEC_{CAP,FLAG}_TRUNCATED (not needed) for FFmpeg 6 -- PR 1254
-Patch0:         https://patch-diff.githubusercontent.com/raw/cmus/cmus/pull/1254.patch#/ffmpeg-6-compat.patch
 BuildRequires:  libmpcdec-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -198,6 +196,7 @@ Requires:       %{name}-plugin-wavpack = %{version}-%{release}
 %if %{with sndio}
 Requires:       %{name}-plugin-sndio = %{version}-%{release}
 %endif
+BuildArch:      noarch
 
 %description plugins-all
 This package pulls in all the plugins for the C* Music Player.

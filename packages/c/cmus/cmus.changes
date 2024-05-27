@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Sat May 25 12:11:16 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to 2.11.0
+  * Add support for .nomedia file
+    gh#cmus/cmus#1190
+  * Fix a typo in an error message
+    gh#cmus/cmus#1206
+  * Take opus output gain into account when checking
+    replaygain_limit peak
+    gh#cmus/cmus#1201
+  * #1219: Update Unofficial IRC channel
+    gh#cmus/cmus#1220
+  * Recognize artist/album sort keys from ffmpeg plugin
+    gh#cmus/cmus#1165
+  * Fix missing combining marks on last character in a field
+    gh#cmus/cmus#1151
+  * Use wcwidth for u_char_width
+    gh#cmus/cmus#1198
+  * Fix under-allocation when many zero-width characters are
+    present
+    gh#cmus/cmus#1152
+  * Draw title and command lines on first update
+    gh#cmus/cmus#1257
+  * Switch to -latest os in build workflow
+    gh#cmus/cmus#1265
+  * ip/mp4: Use MP4FindTrackId() rather than assuming it's "1"
+    gh#cmus/cmus#1255
+  * Remove AV_CODEC_{CAP,FLAG}_TRUNCATED for FFmpeg 6 compatibility
+    gh#cmus/cmus#1254
+  * Introduce basu as an option for MPRIS control
+    gh#cmus/cmus#1221
+  * Add auto_hide_playlists_panel option
+    gh#cmus/cmus#1238
+  * Fixed zsh autocompletion for --query/-Q
+    gh#cmus/cmus#1244
+  * Search should only try filename when there are no tags
+    gh#cmus/cmus#1263
+  * Ignore duplicates when adding tracks to the library
+    gh#cmus/cmus#1052
+  * Implement pl_env_vars option for library/playlist/cache
+    relocation
+    gh#cmus/cmus#1085
+  * pulse: don't drain the stream
+    gh#cmus/cmus#1268
+  * Fixed function detection. check_function failed to compile due
+    to clang -Wint-conversion warning became error.
+    gh#cmus/cmus#1269
+  * Support italic text
+    gh#cmus/cmus#1179
+  * Flag to prevent cycling with left-view / right-view
+    gh#cmus/cmus#1275
+  * Add mouse bindings for right third of status bar
+    gh#cmus/cmus#1272
+  * Implement option to ignore pasted text in normal mode
+    gh#cmus/cmus#1271
+  * Add option to sort albums
+    gh#cmus/cmus#1276
+  * Check only title in track title replacement
+    gh#cmus/cmus#1281
+  * Add %{totaldiscs} to available format string
+    gh#cmus/cmus#1294
+  * [FFmpeg] Switch to new channel layout api
+    gh#cmus/cmus#1292
+  * Reduce R128 gain precision to 2 places of decimal
+    gh#cmus/cmus#1291
+  * Fix formatting of whole number doubles
+    gh#cmus/cmus#1290
+  * Fix unmute when using softvol
+    gh#cmus/cmus#1279
+  * Allow cue plugin to parse cue sheet with multiple files.
+    gh#cmus/cmus#1300
+  * Add commands for external playlist management
+    gh#cmus/cmus#1297
+  * Fix gbuf to account for print width of control characters
+    gh#cmus/cmus#1289
+  * Fix player-next-album / player-prev-album with play_sorted
+    gh#cmus/cmus#1277
+  * Fix ignore_duplicates missing filtered tracks
+    gh#cmus/cmus#1288
+  * Parse LAME header when mp3 was created with libavcodec
+    gh#cmus/cmus#1321
+  * Support 384kHz sample rates
+    gh#cmus/cmus#1314
+- Drop ffmpeg-6-compat.patch
+
+-------------------------------------------------------------------
 Wed May 24 22:46:20 UTC 2023 - Mia Herkt <mia@0x0.st>
 
 - Add ffmpeg-6-compat.patch
