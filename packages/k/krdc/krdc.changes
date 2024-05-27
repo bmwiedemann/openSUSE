@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun May 19 09:56:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:16:38 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * rdp: Proxy and Gateway settings (kde#482395)
+  * Remove plugin id metadata Just use the auto-generated plugin id from the file name.
+  * Build plugins as MODULE libraries
+  * Ensure WinPR version matches FreeRDP version
+  * Close rdp session after receiving an error Handle error messages in rdpsession
+  * Use socket=fallback-x11
+  * Add and make use of ECM clang-format integration
+  * RDP: Fix resolution scaling and initial resolution settings
+  * Also disconnect the cliprdr channel
+  * Add icon for Remote Desktops sidebar menu item
+  * rdp: fix mouse double click
+  * Fix disconnection on session init due to missing clipboard struct init (kde#478580)
+  * Set default TLS security level to 1 (80 bit) to mimic freerdp default
+  * Rdp: add an option to set TLS security level
+  * Fix missing break in mouse event handler
+
+-------------------------------------------------------------------
 Tue Apr  9 18:09:01 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
