@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun May 19 09:55:38 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:15:25 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * Don't export private symbol
+  * Add missing [[nodiscard]]
+  * Port deprecated [=]
+  * It compiles fine without deprecated methods
+  * Depend against last qt version
+  * Remove qml version
+  * Replace Kirigami.BasicListItem
+  * Use constexpr
+  * USe _L1
+  * Use desktop-application
+  * Add more CI build
+  * Add cppcheck support
+  * Add vcs-browser
+  * Drop support for KF5's deprecated KToolInvocation
+  * It compiles fine without deprecated method
+  * Fix url (use qt6 path)
+  * we use QT_REQUIRED_VERSION here
+  * Optimization
+  * Fix typo
+  * Add a homepage to appdata to satisfy CI
+  * Output rules that override all others at the top of the save file
+  * Better wording for the CategoryWarning message
+  * Ensure that the CategoryWarning is shown, if relevant, on first startup
+  * Eliminate annoying "declaration shadows a member" warnings
+  * Use QLatin1StringView directly
+  * [CI] Add Flatpak
+
+-------------------------------------------------------------------
 Tue Apr  9 18:07:48 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
