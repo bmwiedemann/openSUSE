@@ -1,7 +1,7 @@
 #
 # spec file for package francis
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,40 +16,39 @@
 #
 
 
+%define kf6_version 6.0.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           francis
-Version:        1.0.1
+Version:        24.05.0
 Release:        0
 Summary:        Productivity tool
 License:        LGPL-2.1-or-later AND GPL-3.0-or-later
 URL:            https://apps.kde.org/francis
-Source:         https://download.kde.org/stable/francis/%{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/francis/%{name}-%{version}.tar.xz.sig
-Source2:        francis.keyring
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
-%if 0%{?suse_version} < 1550
-BuildRequires:  gcc13-c++
-BuildRequires:  gcc13-PIE
-%endif
-BuildRequires:  extra-cmake-modules >= 5.92
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5Kirigami2)
-BuildRequires:  cmake(KF5KirigamiAddons) >= 0.10
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(Qt5Core) >= 5.15
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5QuickControls2)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Widgets)
-Requires:       knotifications-imports
-Requires:       kirigami-addons
-Requires:       kirigami2
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons) >= 1.0
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+Requires:       kf6-knotifications-imports >= %{kf6_version}
+Requires:       kirigami-addons6 >= 1.0
+Requires:       kf6-kirigami-imports >= %{kf6_version}
 
 %description
 Francis uses the well-known pomodoro technique to help you get more productive.
@@ -60,24 +59,21 @@ Francis uses the well-known pomodoro technique to help you get more productive.
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} < 1550
-export CXX=g++-13
-%endif
-%cmake_kf5 -d build
+%cmake_kf6
 
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
 %find_lang %{name} --all-name
 
 %files
 %license LICENSES/*
-%{_kf5_applicationsdir}/org.kde.francis.desktop
-%{_kf5_appstreamdir}/org.kde.francis.metainfo.xml
-%{_kf5_bindir}/francis
-%{_kf5_iconsdir}/hicolor/scalable/apps/org.kde.francis.svg
+%{_kf6_applicationsdir}/org.kde.francis.desktop
+%{_kf6_appstreamdir}/org.kde.francis.metainfo.xml
+%{_kf6_bindir}/francis
+%{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.francis.svg
 
 %files lang -f %{name}.lang
 

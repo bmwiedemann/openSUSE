@@ -24,4 +24,12 @@
   that can't build with the default compiler</comment>
     <requestid>1143086</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2e9969b8b8f11b9652d9346d4ee3f869</srcmd5>
+    <version>24.05.0</version>
+    <time>1716803524</time>
+    <user>anag+factory</user>
+    <comment>KDE release 24.05.0</comment>
+    <requestid>1176732</requestid>
+  </revision>
 </revisionlist>
