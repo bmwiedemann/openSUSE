@@ -16,4 +16,25 @@
   * Fix incorrect full width modification (#150) (3d20ebe)</comment>
     <requestid>1130167</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>95506cebbf3928d32d331d8c3f20edbf</srcmd5>
+    <version>4.15.0</version>
+    <time>1716803742</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.15.0:
+  Feature:
+  * efficient use of element mutation observers (e553c00)
+  * add line widget at bottom of cutom notification widget (0d19713)
+  * use xdg-open as fallback to open local files (3092158)
+  Bug Fixes:
+  * restore window state video fullscreen toggle (e0483dd)
+  * prioritize xdg-open for handling openUrl request (36cd46b)
+  * set correct lock state when app starts minimized (b58d942)
+  Chores:
+  * CI Update Qt version to 5.15.4 for build (e030486)
+  * update UA to latest Chrome (cc2852a)
+  * snap use portal if available (8cef204)
+  * version 4.15 (08fba4c)</comment>
+    <requestid>1176896</requestid>
+  </revision>
 </revisionlist>

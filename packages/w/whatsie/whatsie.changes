@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun May 26 05:26:32 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.15.0:
+  Feature:
+  * efficient use of element mutation observers (e553c00)
+  * add line widget at bottom of cutom notification widget (0d19713)
+  * use xdg-open as fallback to open local files (3092158)
+  Bug Fixes:
+  * restore window state video fullscreen toggle (e0483dd)
+  * prioritize xdg-open for handling openUrl request (36cd46b)
+  * set correct lock state when app starts minimized (b58d942)
+  Chores:
+  * CI Update Qt version to 5.15.4 for build (e030486)
+  * update UA to latest Chrome (cc2852a)
+  * snap use portal if available (8cef204)
+  * version 4.15 (08fba4c)
+
+-------------------------------------------------------------------
 Fri Dec  1 07:35:23 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.14.2:
