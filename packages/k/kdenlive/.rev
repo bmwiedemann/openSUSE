@@ -1092,4 +1092,12 @@ I would be grateful.
     <comment>- Require the Qt6 MLT modules (boo#1222915)</comment>
     <requestid>1168466</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>ec0bf0f28e3690aa940cf71b4dc9f87d</srcmd5>
+    <version>24.05.0</version>
+    <time>1716803390</time>
+    <user>anag+factory</user>
+    <comment>KDE release 24.05.0 (forwarded request 1175936 from krop)</comment>
+    <requestid>1176276</requestid>
+  </revision>
 </revisionlist>

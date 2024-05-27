@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun May 19 09:55:46 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- Too many changes since 24.04.80, only listing bugfixes:
+  * Fix sequence clip inserted in another one is not updated if track is locked. (kde#487065)
+  * Fix duplicating sequence clips (kde#486855)
+  * Fix wrong FFmpeg chapter export TIMEBASE (kde#487019)
+  * Fix duplicating Bin clip does not suplicate effects (kde#463399)
+  * Fix Ctrl+Wheel not working on some effect parameters (kde#486233)
+  * Fix crash disabling sequence clip in timeline (kde#486117)
+
+-------------------------------------------------------------------
+Fri May  3 09:15:32 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Too many changes since 24.02.2, only listing bugfixes:
+  * Fix effects cannot be enabled after saving with disable bin/timeline effects Faster project opening for multi-timeline projects (kde#438970)
+  * Monitor: add play zone from cursor (kde#484103)
+  * fix: cannot revert letter spacing to 0 in title clips (kde#483710)
+  * Block Qt5 MLT plugins in thumbnailer when building with Qt6. (kde#482335)
+  * Allow customizing camcorder proxy profiles (kde#481836)
+
+-------------------------------------------------------------------
 Wed Apr 17 06:52:30 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Require the Qt6 MLT modules (boo#1222915)
