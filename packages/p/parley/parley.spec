@@ -21,14 +21,14 @@
 
 %bcond_without released
 Name:           parley
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Vocabulary Trainer
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/parley
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -58,7 +58,7 @@ Obsoletes:      %{name}5 < %{version}
 Obsoletes:      parley5 < %{version}
 Provides:       %{name}5 = %{version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  x86_64 %x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 Parley is a vocabulary trainer by KDE.

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun May 19 09:57:40 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:17:25 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * Port deprecated qt6.7 methods
+  * Update homepage to apps.kde.org
+  * appstream: use desktop-application type, add developer & launchable tags
+  * Convert QT_MAJOR_VERSION to 6
+  * Fix window updates on wayland (kde#468591)
+  * Port PracticeSummaryComponent to be a QWidget
+  * Port PracticeMainWindow to be a QWidget
+  * Port Editor to be a QWidget
+  * Port StatisticsMainWindow to be a QWidget
+  * Port Dashboard to be a QWidget
+  * Port away from deprecated pos() method
+  * Provide option to disable browser integration
+  * use local includes
+  * Make sure that icon is setting
+
+-------------------------------------------------------------------
 Tue Apr  9 18:09:47 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
