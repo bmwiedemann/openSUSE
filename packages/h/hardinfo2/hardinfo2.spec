@@ -17,7 +17,7 @@
 
 
 Name:           hardinfo2
-Version:        2.0.18
+Version:        2.1.2
 Release:        0
 Summary:        A System Information and Benchmark for Linux
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-only
@@ -82,6 +82,8 @@ desktop-file-install --vendor="" \
 %find_lang %{name}
 
 %files -f %{name}.lang
+%doc README.md
+%license LICENSE LICENSE.1 LICENSE.2
 %{_bindir}/%{name}
 %{_libdir}/%{name}/
 %{_datadir}/%{name}/

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon May 20 16:21:52 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 2.1.2:
+ * Themes support added along with 6 themes for dark and
+   light mode.
+ * Memory_usage updated
+ * UI/UX improved (Notes color scheme fixed for dark/light mode,
+   scrollbars, sorting, string wrap, man page updated)
+ * CLI - Skip benchmark reporting when -s (skip benchmark)
+ * User Note for group benchmarks - more to come on this topic
+   in user guide
+ * Added network interface speed
+ * Minor fixes - deprecated functions, gcc warning, runtime
+   warning, implicit ctype functions, uninitialized variable
+ * Fix Reload details after synchronize - M11
+ * Fix frozen app window, focus loss every second time
+   benchmarking - M13
+ * Fix Benchmark shows too many records when not completed
+ * Fix lowering flash in GUI benchmark for epileptics.
+
+-------------------------------------------------------------------
 Tue May 14 19:47:16 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Initial version, based on the spec files from daviddavid (Mageia)
