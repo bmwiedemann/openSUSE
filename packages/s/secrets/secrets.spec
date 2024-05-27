@@ -23,13 +23,13 @@
 %define         psuffix %nil
 %endif
 Name:           secrets%{psuffix}
-Version:        9.3
+Version:        9.4
 Release:        0
 Summary:        A password manager for GNOME
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/World/secrets
 Source0:        secrets-%{version}.tar.zst
-
+Patch0:         fix-test.patch
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  meson >= 0.51.0
@@ -38,7 +38,7 @@ BuildRequires:  python3-PyKCS11
 BuildRequires:  python3-base >= 3.7.0
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
-BuildRequires:  python3-pykeepass >= 4.0.7
+BuildRequires:  python3-pykeepass >= 4.0.7.post1
 BuildRequires:  python3-pyotp >= 2.4.0
 BuildRequires:  python3-pytest
 BuildRequires:  python3-python-yubico
@@ -50,10 +50,6 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.5.0
 BuildRequires:  pkgconfig(libadwaita-1)
-
-BuildRequires:  python3-gobject
-BuildRequires:  python3-pykeepass
-BuildRequires:  python3-pytest
 
 Requires:       opensc
 Requires:       python3-PyKCS11
@@ -72,7 +68,6 @@ Obsoletes:      gnome-passwordsafe < 6.1
 Provides:       gnome-passwordsafe = %{version}
 
 %if "%{flavor}" == "test"
-BuildRequires:  python3-pytest
 BuildRequires:  secrets = %{version}
 %endif
 
