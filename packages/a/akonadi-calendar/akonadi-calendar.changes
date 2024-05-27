@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun May 19 09:54:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- Changes since 24.04.80:
+  * IncidenceChanger: fix crash due to redundant deletion of handler
+
+-------------------------------------------------------------------
+Fri May  3 09:14:27 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * Adapt api
+  * USe _L1
+  * Make CalFilterProxyModel part of public API
+  * Use QIODevice::WriteOnly directly
+  * Drop support for KF5's deprecated KToolInvocation
+  * Fix copyright
+  * Add missing [[nodiscard]]
+  * Add option to hide declined invitations from event views
+  * Bump version so we can depend on the new API in KOrganizer
+  * Make CollectionCalendar work with a proxy on top of ETM instead of raw ETM
+  * Make CalFilterPartStatusProxyModel part of akonadi-calendar public API
+  * Not necessary to use 6 suffix
+  * Remove mem leak
+  * Refactor the SearchCollectionHelper to use d-pointer
+  * Make the SearchCollectionHelper inactive by default
+  * There is not qml/js files
+  * USe [[nodiscard]]
+  * Don't export symbol
+  * Remove unused variables
+  * Add missing include moc
+  * Remove commented code
+  * Implement a dialog for the user to choose the suspend duration (kde#481024)
+  * Use local includes
+
+-------------------------------------------------------------------
 Tue Apr  9 18:06:49 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
