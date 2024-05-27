@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.7.0
+%define real_version 6.7.1
 %define short_version 6.7
 %define short_name qtgrpc
 %define tar_name qtgrpc-everywhere-src
@@ -28,12 +28,12 @@
 %endif
 #
 Name:           qt6-grpc%{?pkg_suffix}
-Version:        6.7.0
+Version:        6.7.1
 Release:        0
 Summary:        gRPC and Protobuf generator and bindings for Qt framework
 License:        GPL-3.0-or-later
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
+Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel = %{version}
 BuildRequires:  qt6-network-private-devel = %{version}
