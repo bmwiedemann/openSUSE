@@ -21,14 +21,14 @@
 
 %bcond_without released
 Name:           kasts
-Version:        24.02.2
+Version:        24.05.0
 Release:        0
 Summary:        Kirigami-based podcast player
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/kasts
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -97,7 +97,6 @@ Its main features are:
 %{_kf6_iconsdir}/hicolor/scalable/apps/kasts-tray-*.svg
 %{_kf6_iconsdir}/hicolor/scalable/apps/kasts.svg
 %{_kf6_libdir}/libKMediaSession.so
-%{_kf6_qmldir}/org/kde/kmediasession/
 
 %files lang -f %{name}.lang
 
