@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun May 19 09:57:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:17:38 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * it compiles with QT_NO_CONTEXTLESS_CONNECT
+  * Use desktop-application
+  * Drop support for KF5's deprecated KToolInvocation
+  * It compiles fine without deprecated method
+  * we use QT_REQUIRED_VERSION here
+  * Use StartupNotify now instead of X-KDE-StartupNotify
+
+-------------------------------------------------------------------
 Tue Apr  9 18:10:00 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
