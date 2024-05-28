@@ -1,0 +1,61 @@
+cabal-version: 2.2
+
+author: Mitchell Dalvi Rosen, Travis Staton
+bug-reports: https://github.com/awkward-squad/text-ansi/issues
+build-type: Simple
+category: Data
+copyright: (c) 2018-2024 Mitchell Dalvi Rosen, Travis Staton
+homepage: https://github.com/awkward-squad/text-ansi
+license-file: LICENSE
+license: BSD-3-Clause
+maintainer: Mitchell Dalvi Rosen <mitchellwrosen@gmail.com>, Travis Staton <hello@travisstaton.com>
+name: text-ansi
+synopsis: Text styling for ANSI terminals.
+tested-with: GHC == 9.6.5, GHC == 9.8.2, GHC == 9.10.1
+version: 0.3.0.1
+x-revision: 1
+
+description:
+  Text styling for ANSI terminals using SGR codes, as defined by the
+  <https://www.ecma-international.org/publications-and-standards/standards/ecma-48 ECMA-48>
+  standard.
+  .
+  Supports foreground\/background color, bold\/faint intensity, italic,
+  single\/double underline, strikethrough, frame, encircle, and overline escape
+  sequences. Some styles may not work on your terminal.
+  .
+  Also features terminal detection, so redirecting styled output to a file will
+  automatically strip the ANSI escape sequences.
+
+extra-source-files:
+  CHANGELOG.md
+  README.md
+
+source-repository head
+  type: git
+  location: git://github.com/awkward-squad/text-ansi.git
+
+library
+  build-depends:
+    base ^>= 4.16 || ^>= 4.17 || ^>= 4.18 || ^>= 4.19 || ^>= 4.20,
+    text >= 1.0 && < 2.2,
+    text-builder-linear ^>= 0.1.1,
+  default-language:
+    Haskell2010
+  exposed-modules:
+    String.ANSI
+    Text.ANSI
+    Text.Builder.ANSI
+    Text.Lazy.Builder.ANSI
+  ghc-options:
+    -Weverything
+    -Wno-implicit-prelude
+    -Wno-missing-import-lists
+    -Wno-missing-local-signatures
+    -Wno-unsafe
+  if impl(ghc >= 8.10)
+    ghc-options:
+      -Wno-missing-safe-haskell-mode
+      -Wno-prepositive-qualified-module
+  hs-source-dirs:
+    src
