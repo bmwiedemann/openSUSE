@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue May 28 04:39:09 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.8.1:
+ * bugfix: lp#2066161 "Raw amount" check menu is not saved 
+ * bugfix: lp#2065955 scheduled transactions not automatically
+   posted before weekend
+ * bugfix: lp#2065929 saved filter does not show txn with remind
+   status
+ * bugfix: lp#2065781 balance not updated after edit a transaction
+   in ledger
+ * bugfix: lp#2065770 display bug of next date column in template
+   dialog
+ * bugfix: lp#2065758 incorrect window title for credit card type
+ * bugfix: lp#2065740 scheduled transactions are broken for
+   "Next Payout"
+ * bugfix: lp#2065628 windows: crash after open recent file no
+   more existing
+ * bugfix: lp#2065625 save button stay disabled after edit
+   a transaction
+ * bugfix: lp#2065592 changing status to none from txn dialog fail
+ * bugfix: lp#2065551 embedded help file misses some new files
+   and images
+ * bugfix: lp#2065531 statistics report with tags filter show
+   extra tags
+
+-------------------------------------------------------------------
 Mon May 13 18:50:31 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 5.8: 
