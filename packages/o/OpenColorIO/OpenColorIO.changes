@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri May 24 14:55:05 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.3.2
+  This is an ABI-compatible update for the 2.3.x series that
+  includes all fixes since the 2.3.1 release.
+
+  In particular, this release fixes two crashes:
+
+  Certain older (generally 7-12 year old) CPUs including Intel
+  x86-64 (Sandy Bridge and Ivy Bridge) and Intel Atom
+  (Goldmont/Apollo Lake) microarchitectures that support SSE 4.2
+  SIMD instructions but do not support the initial AVX set and
+  XSAVE, or other CPUs where the OS has disabled AVX and XSAVE
+  support, will crash when trying to evaluate a Lut1D or Lut3D in
+  OCIO libraries compiled with SSE enabled (which is the default).
+  More recent CPUs (e.g., those supporting AVX2 or higher) should
+  not be affected.
+
+  Users of the Linux Python bindings via PyPI will crash when
+  trying to use OCIO from within another application that has been
+  compiled with the new libstdc++ ABI, per the requirements of the
+  VFX Platform for CY2023 and CY2024.
+
+  Bug fixes and minor enhancements:
+  - PR #1935, Prevent trying to use AVX instructions on certain
+    CPUs that don't support them
+  - PR #1933, Add manylinux_2_28 Python wheels for compliance with
+    the current VFX Platform libstdc++ ABI
+  - PR #1929, Fix ssse3 detection typo
+  - PR #1921, Fix build break with custom PyString installs by
+    always using system include pystring.h
+  - PR #1924, Fix narrowing conversion error in unit test on
+    riscv64
+  - PR #1925, Enhance the ociochecklut command-line tool to print
+    the output after each step
+- drop a95febc7.patch: fixed in update
+
+-------------------------------------------------------------------
 Wed Jan 24 09:17:14 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix build on aarch64:
