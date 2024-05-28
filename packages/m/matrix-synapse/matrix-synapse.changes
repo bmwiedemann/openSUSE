@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue May 28 12:37:01 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.108.0
+  - Features
+    - Add a feature that allows clients to query the configured
+      federation whitelist. Disabled by default. (#16848, #17199)
+    - Add the ability to allow numeric user IDs with a specific
+      prefix when in the CAS flow. Contributed by Aurélien
+      Grimpard. (#17098)
+  - Bugfixes
+    - Fix bug where push rules would be empty in /sync for some
+      accounts. Introduced in v1.93.0. (#17142)
+    - Add support for optional whitespace around the Federation
+      API's Authorization header's parameter commas. (#17145)
+    - Fix bug where disabling room publication prevented public
+      rooms being created on workers. (#17177, #17184)
+  - Improved Documentation
+    - Document /v1/make_knock and /v1/send_knock/ federation
+      endpoints as worker-compatible. (#17058)
+    - Update User Admin API with note about prefixing OIDC
+      external_id providers. (#17139)
+    - Clarify the state of the created room when using the
+      autocreate_auto_join_room_preset config option. (#17150)
+    - Update the Admin FAQ with the current libjemalloc version for
+      latest Debian stable. Additionally update the name of the
+      "push_rules" stream in the Workers documentation. (#17171)
+  - Internal Changes
+    - Add note to reflect that MSC3886 is closed but will remain
+      supported for some time. (#17151)
+    - Update dependency PyO3 to 0.21. (#17162)
+    - Fixes linter errors found in PR #17147. (#17166)
+    - Bump black from 24.2.0 to 24.4.2. (#17170)
+    - Cache literal sync filter validation for performance.
+      (#17186)
+    - Improve performance by fixing a reactor pause. (#17192)
+    - Route /make_knock and /send_knock federation APIs to the
+      federation reader worker in Complement test runs. (#17195)
+    - Prepare sync handler to be able to return different sync
+      responses (SyncVersion). (#17200)
+    - Organize the sync cache key parameter outside of the sync
+      config (separate concerns). (#17201)
+    - Refactor SyncResultBuilder assembly to its own function.
+      (#17202)
+    - Rename to be obvious: joined_rooms -> joined_room_ids.
+      (#17203, #17208)
+    - Add a short pause when rate-limiting a request. (#17210)
+
+-------------------------------------------------------------------
 Tue May 14 14:41:53 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.107.0
