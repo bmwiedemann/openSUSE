@@ -63,7 +63,6 @@ BuildRequires:  libyaml-devel
 BuildRequires:  timezone
 BuildRequires:  qore >= 1.12.4
 BuildRequires:  qore-devel >= 1.12.4
-BuildRequires:  qore-stdlib >= 1.12.4
 Suggests:       %{name}-doc = %{version}
 
 %description
