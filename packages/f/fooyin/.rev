@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ae5ce0b99897174acd83d21e98cf7320</srcmd5>
+    <version>0.4.1</version>
+    <time>1716910090</time>
+    <user>anag+factory</user>
+    <comment>Hi there,
+
+I am resubmitting fooyin for inclusion into openSUSE Factory. fooyin is a music player built around customisation. It offers a growing list of widgets to manage and play your local music collection. It's extendable through the use of plugins and many widgets make use of FooScript to offer an even deeper level of control.
+
+Audio playback is supported by FFmpeg alongside multiple options for output including ALSA and PipeWire, with more to come.
+
+A layout editing mode enables the entire user interface to be customised, starting from a blank slate or a preset layout.
+
+This music player is very similar to the Windows program foobar2000.
+
+This request has significant cleanups in the spec file and puts everything necessary into one package, instead of being split across multiple subpackages.</comment>
+    <requestid>1176941</requestid>
+  </revision>
+</revisionlist>

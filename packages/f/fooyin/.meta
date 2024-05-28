@@ -1,0 +1,9 @@
+<package name="fooyin" project="openSUSE:Factory">
+  <title>fooyin</title>
+  <description>fooyin is a music player built around customisation. It offers a growing list of widgets to manage and play your local music collection. It's extendable through the use of plugins and many widgets make use of FooScript to offer an even deeper level of control.
+
+Audio playback is supported by FFmpeg alongside multiple options for output including ALSA and PipeWire, with more to come.
+
+A layout editing mode enables the entire user interface to be customised, starting from a blank slate or a preset layout.</description>
+  <devel project="multimedia:apps" package="fooyin"/>
+</package>
