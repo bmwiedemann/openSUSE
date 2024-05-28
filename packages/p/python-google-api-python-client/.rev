@@ -1057,4 +1057,43 @@ eplacement for google-api-python-client, follow our naming convention</comment>
   * **dataportability:** Update the api (forwarded request 1168803 from glaubitz)</comment>
     <requestid>1168804</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>9f329c7b5e53771d30537076f5fa572f</srcmd5>
+    <version>2.130.0</version>
+    <time>1716910147</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1177066 from glaubitz
+
+- Update to 2.130.0
+    * **admin:** Update the api
+    * **analyticsadmin:** Update the api
+    * **analyticsdata:** Update the api
+    * **androidpublisher:** Update the api
+    * **artifactregistry:** Update the api
+    * **backupdr:** Update the api
+    * **chromemanagement:** Update the api
+    * **cloudbuild:** Update the api
+    * **clouddeploy:** Update the api
+    * **cloudkms:** Update the api
+    * **compute:** Update the api
+    * **connectors:** Update the api
+    * **containeranalysis:** Update the api
+    * **containeranalysis:** Update the api
+    * **content:** Update the api
+    * **dialogflow:** Update the api
+    * **discoveryengine:** Update the api
+    * **dlp:** Update the api
+    * **fcmdata:** Update the api
+    * **firebaseml:** Update the api
+    * **firestore:** Update the api
+    * **gkehub:** Update the api
+    * **healthcare:** Update the api
+    * **integrations:** Update the api
+    * **integrations:** Update the api
+    * **metastore:** Update the api
+    * **migrationcenter:** Update the api
+    * **networkconnectivity:** Update the api
+    * **orgpolicy:** Update the api</comment>
+    <requestid>1177164</requestid>
+  </revision>
 </revisionlist>

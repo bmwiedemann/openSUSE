@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-api-python-client
-Version:        2.126.0
+Version:        2.130.0
 Release:        0
 Summary:        Google APIs Python Client
 License:        Apache-2.0
@@ -65,6 +65,8 @@ Google APIs Client Library for Python
 donttest="test_credentials_and_credentials_file_mutually_exclusive"
 # don't test deprecated oaut2client usage
 donttest="$donttest or TestAuthWithOAuth2Client or test_oauth2client_crendentials"
+# Both test_client_options_universe_configured_with_mtls and test_universe_env_var_configured_with_mtls require internet connection
+donttest="$donttest or test_client_options_universe_configured_with_mtls or test_universe_env_var_configured_with_mtls"
 # test_http.py uses mocked Credentials class and API from deprecated oauth2client
 %pytest --ignore=samples --ignore tests/test_http.py -k "not ($donttest)"
 
