@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 28 06:39:46 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2024.05.27
+  * Fix parsing of base URL in SMIL manifest
+
+-------------------------------------------------------------------
+Mon May 27 06:23:09 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2024.05.26
+  * Better warning when requested subs format not found
+  * Warn if lack of installed ffmpeg alters format selection
+  * youtube: Add mediaconnect client
+
+-------------------------------------------------------------------
 Tue Apr  9 20:25:02 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2024.04.09
