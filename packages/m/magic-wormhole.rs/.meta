@@ -1,0 +1,5 @@
+<package name="magic-wormhole.rs" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network" package="magic-wormhole.rs"/>
+</package>
