@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 22 06:19:47 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.25:
+  * significantly improve boot time with the microvm architecture
+    (simply by enabling the RTC and avoiding unnecessary boot time
+    that most kernels spend probing for a non-existent RTC)
+  * virtme: make sure RTC is enabled with microvm
+  * virtme-ng: silent lint errors
+  * github: new test with KVM support
+
+-------------------------------------------------------------------
 Fri May  3 20:55:04 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.24:
