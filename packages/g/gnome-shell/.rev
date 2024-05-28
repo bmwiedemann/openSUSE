@@ -2295,4 +2295,29 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   + Updated translations. (forwarded request 1171275 from dimstar)</comment>
     <requestid>1171393</requestid>
   </revision>
+  <revision rev="255" vrev="1">
+    <srcmd5>a5671b291c57f00bff157f057255e832</srcmd5>
+    <version>46.2</version>
+    <time>1716910079</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.2:
+  + Fix size of workspace switcher OSD.
+  + Fix handling of invalid TLS certs in portal handler.
+  + Exclude override-redirect windows from workspace animation.
+  + Also center time on lock screen when using 12h format.
+  + Use absolute tray icon position in root event coordinates.
+  + Fix displaying info messages on login screen.
+  + Correct expected bus name for streams.
+  + Fix notifications on lock screen.
+  + notifications: Only apply special styling to symbolic icons.
+  + Fix number of search results with Large Text option.
+  + Fix showing keyboard layouts with variants.
+  + Tweak font sizes in calendar.
+  + automountManager: Fix re-asking password for TCRYPT devices.
+  + Fix stuck unlock prompt when animations are disabled.
+  + Fix possible hang on startup during ibus-daemon launch.
+  + Misc. bug fixes and cleanups.
+  + Updated translations. (forwarded request 1177041 from dimstar)</comment>
+    <requestid>1177063</requestid>
+  </revision>
 </revisionlist>

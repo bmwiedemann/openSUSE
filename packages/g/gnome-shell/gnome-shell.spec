@@ -21,7 +21,7 @@
 %define mutter_req 46.0
 
 Name:           gnome-shell
-Version:        46.1
+Version:        46.2
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
@@ -41,6 +41,8 @@ Patch1:         gnome-shell-private-connection.patch
 Patch7:         gnome-shell-executable-path-not-absolute.patch
 # PATCH-FIX-UPSTREAM gnome-shell-exit-crash-workaround.patch bsc#1190878 glgo#GNOME/gnome-shell#4344 qkzhu@suse.com -- Workaround logout crashing
 Patch8:         gnome-shell-exit-crash-workaround.patch
+# PATCH-FIX-UPSTREAM gnome-shell-fix-cursor-on-hide-preedit.patch glgo#GNOME/gnome-shell!3318 alynx.zhou@suse.com -- Correctly reset cursor when hide preedit
+Patch9:         gnome-shell-fix-cursor-on-hide-preedit.patch
 
 ## NOTE: Keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gnome-shell-gdm-login-applet.patch fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
@@ -187,6 +189,7 @@ This package contains an optional extensions app for managing GNOME Shell extens
 %patch -P 1 -p1
 %patch -P 7 -p1
 %patch -P 8 -p1
+%patch -P 9 -p1
 
 %if 0%{?sle_version}
 %patch -P 1001 -p1

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon May 27 07:11:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.2:
+  + Fix size of workspace switcher OSD.
+  + Fix handling of invalid TLS certs in portal handler.
+  + Exclude override-redirect windows from workspace animation.
+  + Also center time on lock screen when using 12h format.
+  + Use absolute tray icon position in root event coordinates.
+  + Fix displaying info messages on login screen.
+  + Correct expected bus name for streams.
+  + Fix notifications on lock screen.
+  + notifications: Only apply special styling to symbolic icons.
+  + Fix number of search results with Large Text option.
+  + Fix showing keyboard layouts with variants.
+  + Tweak font sizes in calendar.
+  + automountManager: Fix re-asking password for TCRYPT devices.
+  + Fix stuck unlock prompt when animations are disabled.
+  + Fix possible hang on startup during ibus-daemon launch.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri May 17 03:33:41 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add gnome-shell-fix-cursor-on-hide-preedit.patch: Correctly reset
+  preedit cursor location when hide preedit text to prevent
+  potential problems (glgo#GNOME/gnome-shell!3318).
+
+-------------------------------------------------------------------
 Thu May  2 08:03:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.1:
