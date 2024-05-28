@@ -72,7 +72,6 @@ BuildRequires:  openssl-devel
 BuildRequires:  openssl-devel
 BuildRequires:  qore >= 1.12.4
 BuildRequires:  qore-devel >= 1.12.4
-BuildRequires:  qore-stdlib >= 1.12.4
 
 %description
 This package contains the json module for the Qore Programming Language.
