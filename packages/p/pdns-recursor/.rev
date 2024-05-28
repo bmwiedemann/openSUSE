@@ -800,4 +800,12 @@ https://doc.powerdns.com/recursor/changelog/4.4.html#change-4.4.3</comment>
     update</comment>
     <requestid>1170013</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>e19150dec96486aa9161e7691b73c786</srcmd5>
+    <version>5.0.5</version>
+    <time>1716910113</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1177076</requestid>
+  </revision>
 </revisionlist>

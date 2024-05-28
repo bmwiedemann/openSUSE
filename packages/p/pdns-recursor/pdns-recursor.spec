@@ -2,6 +2,7 @@
 # spec file for package pdns-recursor
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +26,7 @@
 %endif
 
 Name:           pdns-recursor
-Version:        5.0.4
+Version:        5.0.5
 Release:        0
 BuildRequires:  autoconf
 BuildRequires:  automake

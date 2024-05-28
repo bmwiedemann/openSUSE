@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat May 25 09:17:04 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 5.0.5:
+  * Do not count RRSIGs using unsupported algorithms toward RRSIGs
+    limit
+  * Correctly count NSEC3s considered when chasing the closest
+    encloser.
+  * Let NetmaskGroup parse dont-throttle-netmasks, allowing
+    negations.
+  * Fix types of two YAML settings (incoming.edns_padding_from,
+    incoming.proxy_protocol_from) that should be sequences of
+    subnets
+  * Fix trace=fail regression and add regression test for it
+
+-------------------------------------------------------------------
 Wed Apr 24 08:56:56 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - update to 5.0.4:
