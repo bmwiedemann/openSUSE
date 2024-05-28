@@ -17,7 +17,7 @@
 
 
 Name:           SVT-AV1
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        An AV1 decoder/encoder for video streams
 License:        BSD-3-Clause-Clear
@@ -30,7 +30,7 @@ BuildRequires:  gcc-c++ >= 5.4.0
 BuildRequires:  help2man
 BuildRequires:  pkgconfig
 BuildRequires:  yasm >= 1.2.0
-ExclusiveArch:  x86_64 aarch64 riscv64
+ExclusiveArch:  aarch64 riscv64 x86_64
 
 %description
 The Scalable Video Technology for AV1 (SVT-AV1 Encoder and Decoder) is an

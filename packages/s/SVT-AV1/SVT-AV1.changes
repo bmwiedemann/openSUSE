@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 20 10:20:18 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.1
+  * Presets 6 and 12 are now pointing to presets 7 and 13
+    respectively due to the lack of spacing between the presets.
+  * Added variance boost support to improve visual quality for
+    the tune vq mode.
+  * Speedup of 12–40% presets M0, M3, M5 and M6 while maintaining
+    similar quality levels.
+  * Improved the compression efficiency of presets M11-M13 by 1-2%.
+
+-------------------------------------------------------------------
 Wed Mar 13 23:32:09 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.0
