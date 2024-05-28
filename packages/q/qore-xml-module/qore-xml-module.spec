@@ -73,7 +73,6 @@ BuildRequires:  libxml2-devel
 BuildRequires:  openssl-devel
 BuildRequires:  qore >= 1.12.4
 BuildRequires:  qore-devel >= 1.12.4
-BuildRequires:  qore-stdlib >= 1.12.4
 %if 0%{?suse_version} || 0%{?sles_version}
 BuildRequires:  timezone
 %else
