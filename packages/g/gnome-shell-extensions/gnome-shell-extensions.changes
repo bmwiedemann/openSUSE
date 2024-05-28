@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 27 07:03:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.2:
+  + apps-menu: Fix a11y of category labels.
+  + window-list: Fix long-press support.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu May  2 08:07:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.1:

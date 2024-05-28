@@ -2368,4 +2368,16 @@
   + Updated translations. (forwarded request 1171276 from dimstar)</comment>
     <requestid>1171394</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>fa0bd6bde7f5f705a2a3b79c2ebb6328</srcmd5>
+    <version>46.2</version>
+    <time>1716910073</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.2:
+  + apps-menu: Fix a11y of category labels.
+  + window-list: Fix long-press support.
+  + Misc. bug fixes and cleanups.
+  + Updated translations. (forwarded request 1177036 from dimstar)</comment>
+    <requestid>1177060</requestid>
+  </revision>
 </revisionlist>
