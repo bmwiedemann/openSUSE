@@ -1,7 +1,7 @@
 #
 # spec file for package pmdk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright 2016, Intel Corporation
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,46 +17,31 @@
 #
 
 
-%if 0%{?suse_version} > 1315
-%define with_fabric 1
-%endif
-
 %define min_libfabric_ver 1.4.2
 %define min_ndctl_ver 63.0
 
 Name:           pmdk
-Version:        1.11.1
+Version:        2.1.0
 Release:        0
 Summary:        Persistent Memory Development Kit
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            http://pmem.io/pmdk/
-
-Source:         https://github.com/pmem/pmdk/archive/%version.tar.gz
-Source1:        pregen-doc.tgz
+Source:         https://github.com/pmem/pmdk/releases/download/%version/%name-%version.tar.gz
+Source2:        https://github.com/pmem/pmdk/releases/download/%version/%name-%version.tar.gz.asc
+Source10:       pregen-doc.tar.xz
 Source99:       gen-doc.sh
-Patch0:         examples-rpmem-add-missing-lfabric-flag.patch
-
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  man
 BuildRequires:  pkg-config
-%if 0%{?with_fabric}
-BuildRequires:  libfabric-devel >= %min_libfabric_ver
-%endif
 # NVML was renamed upstream to PMDK between 1.3 and 1.3.1
 Obsoletes:      nvml < %version-%release
 Provides:       nvml = %version-%release
 BuildRequires:  libndctl-devel >= %min_ndctl_ver
 
 # By design, NVML does not support any 32-bit architecture.
-# Due to dependency on xmmintrin.h and some inline assembly, it can be
-# compiled only for x86_64 at the moment.
-# Other 64-bit architectures could also be supported, if only there is
-# a request for that, and if somebody provides the arch-specific
-# implementation of the low-level routines for flushing to persistent
-# memory.
-ExclusiveArch:  x86_64 aarch64 ppc64le
+ExclusiveArch:  x86_64 aarch64 ppc64le riscv64
 
 # Debug variants of the libraries should be filtered out of the provides.
 %global __provides_exclude_from ^%_libdir/pmdk_debug/.*\\.so.*$
@@ -137,51 +122,6 @@ will find higher level libraries like libpmemobj to be much more
 convenient. libpmem2 has a new API that addresses many of the shortcommings
 of libpmem1
 
-%package -n libpmemblk1
-Summary:        Persistent Memory Resident Block library
-Group:          System/Libraries
-
-%description -n libpmemblk1
-libpmemblk implements a pmem-resident array of blocks, all the same
-size, where a block is updated atomically with respect to power
-failure or program interruption (no torn blocks).
-
-%package -n libpmemblk-devel
-Summary:        Development files for the Persistent Memory Resident Block library
-Group:          Development/Libraries/C and C++
-Requires:       libpmemblk1 = %version
-
-%description -n libpmemblk-devel
-libpmemblk implements a pmem-resident array of blocks, all the same
-size, where a block is updated atomically with respect to power
-failure or program interruption (no torn blocks).
-
-For example, a program keeping a cache of fixed-size objects in pmem
-might find this library useful. This library is provided for cases
-requiring large arrays of objects at least 512 bytes each. Most
-developers will find higher level libraries like libpmemobj to be
-more generally useful.
-
-%package -n libpmemlog1
-Summary:        Persistent Memory Resident Log File library
-Group:          System/Libraries
-
-%description -n libpmemlog1
-The libpmemlog library provides a pmem-resident log file. This is
-useful for programs like databases that append frequently to a log
-file.
-
-%package -n libpmemlog-devel
-Summary:        Development files for the Persistent Memory Resident Log File library
-Group:          Development/Libraries/C and C++
-Requires:       libpmemlog1 = %version
-
-%description -n libpmemlog-devel
-The libpmemlog library provides a pmem-resident log file. This
-library is provided for cases requiring an append-mostly file to
-record variable length entries. Most developers will find higher
-level libraries like libpmemobj to be more generally useful.
-
 %package -n libpmemobj1
 Summary:        Persistent Memory Transactional Object Store library
 Group:          System/Libraries
@@ -209,7 +149,7 @@ Group:          System/Libraries
 %description -n libpmempool1
 The libpmempool library provides a set of utilities for off-line administration,
 analysis, diagnostics and repair of persistent memory pools created
-by libpmemlog, libpemblk and libpmemobj libraries.
+by libpmemobj libraries.
 
 %package -n libpmempool-devel
 Summary:        Development files for Persistent Memory pool management library
@@ -219,57 +159,25 @@ Requires:       libpmempool1 = %version
 %description -n libpmempool-devel
 The libpmempool library provides a set of utilities for off-line administration,
 analysis, diagnostics and repair of persistent memory pools created
-by libpmemlog, libpemblk and libpmemobj libraries.
-
-%package -n librpmem1
-Summary:        Remote Access to Persistent Memory library
-#Manual dependency to make sure libfabric is at least in this version
-Group:          System/Libraries
-Requires:       libfabric >= %min_libfabric_ver
-Requires:       openssh
-
-%description -n librpmem1
-The librpmem library provides low-level support for remote access
-to persistent memory utilizing RDMA-capable NICs. It can be used
-to replicate persistent memory regions over RDMA protocol.
-
-%package -n librpmem-devel
-Summary:        Development files for the Remote Access to Persistent Memory library
-Group:          Development/Libraries/C and C++
-Requires:       librpmem1 = %version
-
-%description -n librpmem-devel
-The librpmem library provides low-level support for remote access
-to persistent memory utilizing RDMA-capable NICs. It can be used
-to replicate persistent memory regions over RDMA protocol.
-
-This sub-package contains libraries and header files for developing
-applications that want to specifically make use of librpmem.
-
-%package -n rpmemd
-Summary:        Target node process executed by librpmem
-#Manual dependency to make sure libfabric is at least in this version
-Group:          System/Base
-Requires:       libfabric >= %min_libfabric_ver
-
-%description -n rpmemd
-The rpmemd process is executed on a target node by librpmem library
-and facilitates access to persistent memory over RDMA.
+by libpmemobj libraries.
 
 %package devel-doc
 Summary:        Man pages for the libpmem C API
 Group:          Documentation/Man
+BuildArch:      noarch
 
 %description devel-doc
 Documentation for the pmem library interface.
 
 %prep
-%autosetup -p0 -a1
+%autosetup -p0 -a10
+# we have pregenerated pages
+find doc -type f -name "*.[0-9].md" -delete
 
 %build
 %define _lto_cflags %nil
 # Currently, NVML makefiles do not allow to easily override CFLAGS,
-# so the build flags are passed via EXTRA_CFLAGS.  For debug build
+# so the build flags are passed via EXTRA_CFLAGS. For debug builds,
 # selected flags are overriden to disable compiler optimizations.
 #
 # remaining issues:
@@ -277,15 +185,13 @@ Documentation for the pmem library interface.
 EXTRA_CFLAGS_RELEASE="%optflags" \
 EXTRA_CFLAGS_DEBUG="%optflags -Wp,-U_FORTIFY_SOURCE -O0" \
 EXTRA_CXXFLAGS="%optflags" \
-make %{?_smp_mflags} BINDIR="%_bindir" EXTRA_CFLAGS="-Wno-error" \
-%if 0%{?with_fabric}
-  BUILD_RPMEM=y \
-%endif
+%make_build BINDIR="%_bindir" EXTRA_CFLAGS="-Wno-error" \
   NORPATH=1
 
 # Override LIB_AR with empty string to skip installation of static libraries
 %install
 b="%buildroot"
+
 %make_install LIB_AR= \
 	prefix="%_prefix" \
 	libdir="%_libdir" \
@@ -307,20 +213,10 @@ mv %buildroot/%_sysconfdir/bash_completion.d/* %buildroot/%_datadir/bash-complet
 cp src/test/testconfig.sh.example src/test/testconfig.sh
 #make check
 
-%post   -n libpmem1 -p /sbin/ldconfig
-%postun -n libpmem1 -p /sbin/ldconfig
-%post   -n libpmem2-1 -p /sbin/ldconfig
-%postun -n libpmem2-1 -p /sbin/ldconfig
-%post   -n libpmemblk1 -p /sbin/ldconfig
-%postun -n libpmemblk1 -p /sbin/ldconfig
-%post   -n libpmemlog1 -p /sbin/ldconfig
-%postun -n libpmemlog1 -p /sbin/ldconfig
-%post   -n libpmemobj1 -p /sbin/ldconfig
-%postun -n libpmemobj1 -p /sbin/ldconfig
-%post   -n libpmempool1 -p /sbin/ldconfig
-%postun -n libpmempool1 -p /sbin/ldconfig
-%post   -n librpmem1 -p /sbin/ldconfig
-%postun -n librpmem1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libpmem1
+%ldconfig_scriptlets -n libpmem2-1
+%ldconfig_scriptlets -n libpmemobj1
+%ldconfig_scriptlets -n libpmempool1
 
 %files
 %_datadir/pmdk/
@@ -358,26 +254,7 @@ cp src/test/testconfig.sh.example src/test/testconfig.sh
 %dir %_libdir/pmdk_debug/
 %_libdir/pmdk_debug/libpmem2.so*
 %_includedir/libpmem2.h
-
-%files -n libpmemblk1
-%_libdir/libpmemblk.so.1*
-
-%files -n libpmemblk-devel
-%_libdir/libpmemblk.so
-%_libdir/pkgconfig/libpmemblk.pc
-%dir %_libdir/pmdk_debug/
-%_libdir/pmdk_debug/libpmemblk.so*
-%_includedir/libpmemblk.h
-
-%files -n libpmemlog1
-%_libdir/libpmemlog.so.1*
-
-%files -n libpmemlog-devel
-%_libdir/libpmemlog.so
-%_libdir/pkgconfig/libpmemlog.pc
-%dir %_libdir/pmdk_debug/
-%_libdir/pmdk_debug/libpmemlog.so*
-%_includedir/libpmemlog.h
+%_includedir/libpmem2/
 
 %files -n libpmemobj1
 %_libdir/libpmemobj.so.1*
@@ -399,25 +276,6 @@ cp src/test/testconfig.sh.example src/test/testconfig.sh
 %dir %_libdir/pmdk_debug
 %_libdir/pmdk_debug/libpmempool.so*
 %_includedir/libpmempool.h
-
-%if 0%{?with_fabric}
-%files -n librpmem1
-%_libdir/librpmem.so.*
-%license LICENSE
-
-%files -n librpmem-devel
-%_libdir/librpmem.so
-%_libdir/pkgconfig/librpmem.pc
-%dir %_libdir/pmdk_debug
-%_libdir/pmdk_debug/librpmem.so*
-%_includedir/librpmem.h
-%license LICENSE
-
-%files -n rpmemd
-%_bindir/rpmemd
-%_mandir/man1/rpmemd.1*
-#with_fabric
-%endif
 
 %files devel-doc
 %_mandir/man3/*.3*

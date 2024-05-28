@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri May 24 10:37:10 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.1
+  * New logging subsystem; Messages by default are printed to
+    syslog and stderr but might be redirected to a user-defined
+    function (cf. pmem(obj)_log_set_function,
+    pmem(obj)_log_set_treshold).
+  * Introduced fuses against ill-considered use of NDCTL_ENABLE=n.
+  * Does not allow create PMEMOBJ pool without unsafe shutdown
+    counter (USC).
+
+-------------------------------------------------------------------
+Fri Apr 12 07:13:15 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.1
+  * Removes librpmem. Those interested in remote persistent memory
+    support should use the rpma library.
+  * Removes libpmemset - it was an experimental library.
+  * Removes libpmemlog, libpmemblk, btt, and their support in
+    (lib)pmempool
+  * Removes all pmem2_async operations (experimental)
+  * Introduces a new set of APIs in libpmem2 to perform
+    asynchronous data movement operations. To use this feature,
+    software needs to include an optional miniasync(7) dependency.
+  * Adds new API to machine safe read/write operations in the pmem2
+    library.
+  * Introduces support for movdir64b instruction for memory
+    operation functions in the libpmem2 library.
+  * Adds experimental support for RISC-V.
+  * Significantly reduces the libpmem's stack usage.
+  * Reduces libpmemobj's stack usage below the 11kB threshold.
+- Delete examples-rpmem-add-missing-lfabric-flag.patch (obsolete)
+
+-------------------------------------------------------------------
 Wed Oct  6 08:54:51 UTC 2021 - Christian Vögl <christian.voegl@suse.com>
 
 - Update to PMDK 1.11.1
