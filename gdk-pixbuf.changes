@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May 16 13:30:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Enable test suite on x86_64 (other arches seem too flaky for now):
+  + Add %check section and call %meson_test
+  + Add gdk-pixbuf-jpeg-slow.patch: allow pixbuf-jpeg to run for
+    more than 30s, by marking it as a slow test
+    (glgo#GNOME/gdk-pixbuf!174).
+
+-------------------------------------------------------------------
+Thu May 16 11:26:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate package to a regular obs_scm service, no longer password
+  protecting a zip file. The originally reported bsc#1159337 seems
+  no longer be applicable and we prefer the easier route.
+- Drop unzip BuildRequires and pre_checkin.sh script.
+
+-------------------------------------------------------------------
 Wed May 15 11:49:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.42.12:
