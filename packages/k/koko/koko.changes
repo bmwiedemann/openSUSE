@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun May 19 09:56:35 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:16:20 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Changes since 24.02.2:
+  * Use consistently generic apps.kde.org/koko as homepage
+  * appstream: use desktop-application type, add developer & launchable tags
+  * qml/EditorView: Set position for InlineMessage in footer
+  * Add "koko" to keywords list (kde#480249)
+  * Remove property dialog
+  * Disable slideshow on mobile
+  * Fix image actions on mobile
+  * Port away from deprecated ECMQMLModules
+
+-------------------------------------------------------------------
 Tue Apr  9 18:08:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2
