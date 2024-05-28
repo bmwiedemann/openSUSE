@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 27 01:32:36 UTC 2024 - Yifan Jiang <yfjiang@suse.com>
+
+- The packages gnome-shell-search-provider-bijiben triggers
+  repetitive crash (bsc#1210322, bsc#1221387). From Alynx's analysis
+  from openSUSE side, this can be a complex glib/gdbus issue which
+  can not be fixed quickly. Temporarily not to pull the package now
+  will keep the main application more useful before a fix.
+
+-------------------------------------------------------------------
 Tue Aug 30 20:12:53 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add bijiben-switch-to-soup3.patch: Backport upstream switch to

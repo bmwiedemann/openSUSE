@@ -1,7 +1,7 @@
 #
 # spec file for package bijiben
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,7 +58,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Office/Other
 Requires:       %{name} = %{version}
 Requires:       gnome-shell
-Supplements:    (%{name} and gnome-shell)
+# Temporarily not to be pulled because a long due crash (bsc#1210322, bsc#1221387)
+# Supplements:    (%{name} and gnome-shell)
 
 %description -n gnome-shell-search-provider-%{name}
 Bijiben is a note editor designed to remain simple to use.
