@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 27 07:05:53 UTC 2024 - dimstar@opensuse.org
+
+- Update to version 0.76.2:
+  * widget: Make CSS parse warnings non-fatal
+  * build: Post release version bump
+
+-------------------------------------------------------------------
 Thu May  2 06:56:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.76.1:
