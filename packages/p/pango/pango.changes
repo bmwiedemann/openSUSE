@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr  4 08:04:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.52.2:
+  + coretext: Implement reload_font.
+  + coretext: Use Menlo instead of Courier for monospace.
+  + win32: Avoid a double free.
+  + Update to Unicode 15.1.
+  + Simplify hexbox drawing.
+- Changes from version 1.52.1:
+  + Fix hexbox drawing.
+
+-------------------------------------------------------------------
 Sun Mar 31 22:30:53 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - added GraphicsMagick package as Recommends. The invocation of

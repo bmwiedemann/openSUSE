@@ -1199,4 +1199,19 @@ Without it, running 'pango-view --backend=ft2' results in this error:
 pango-view: When running GraphicsMagick 'gm display' command: Failed to execute child process “gm” (No such file or directory) (forwarded request 1163816 from bobbie424242)</comment>
     <requestid>1164136</requestid>
   </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>bdcf76ba7c998ac7fbdbc4ef1b4dbecd</srcmd5>
+    <version>1.52.2</version>
+    <time>1716910067</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.52.2:
+  + coretext: Implement reload_font.
+  + coretext: Use Menlo instead of Courier for monospace.
+  + win32: Avoid a double free.
+  + Update to Unicode 15.1.
+  + Simplify hexbox drawing.
+- Changes from version 1.52.1:
+  + Fix hexbox drawing. (forwarded request 1177029 from dimstar)</comment>
+    <requestid>1177055</requestid>
+  </revision>
 </revisionlist>
