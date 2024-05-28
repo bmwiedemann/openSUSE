@@ -1,0 +1,21 @@
+commit f497afbe1364b45540a6582870e5a76f1ada7a2b
+Author: Christian Boltz <apparmor@cboltz.de>
+Date:   Tue May 28 21:13:47 2024 +0200
+
+    Fix aa-teardown for `unconfined` profiles
+    
+    Fixes: https://bugzilla.opensuse.org/show_bug.cgi?id=1225457
+
+diff --git a/parser/rc.apparmor.functions b/parser/rc.apparmor.functions
+index f66fea422..099ab67d3 100644
+--- a/parser/rc.apparmor.functions
++++ b/parser/rc.apparmor.functions
+@@ -253,7 +253,7 @@ remove_profiles() {
+ 	retval=0
+ 	# We filter child profiles as removing the parent will remove
+ 	# the children
+-	sed -e "s/ (\(enforce\|complain\))$//" "$SFS_MOUNTPOINT/profiles" | \
++	sed -e "s/ (\(enforce\|complain\|unconfined\))$//" "$SFS_MOUNTPOINT/profiles" | \
+ 	LC_COLLATE=C sort | grep -v // | {
+ 		while read -r profile ; do
+ 			printf "%s" "$profile" > "$SFS_MOUNTPOINT/.remove"

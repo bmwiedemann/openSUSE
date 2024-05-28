@@ -2792,4 +2792,20 @@ Note: %post profiles contains a for loop calling &quot;rm&quot; (to delete uncha
 - set permissions for %ghost files (boo#1223578) (forwarded request 1177351 from cboltz)</comment>
     <requestid>1177352</requestid>
   </revision>
+  <revision rev="208" vrev="3">
+    <srcmd5>73c4a6038903726af4baef75622c6594</srcmd5>
+    <version>4.0.1</version>
+    <time>1716926604</time>
+    <user>anag+factory</user>
+    <comment>Note: Unfortunately my SR earlier today didn't fix everything that was reported by openQA :-(
+
+This SR adds two more fixes. Especially teardown-unconfined.diff makes this SR a &quot;fast track&quot; candidate.
+
+- add utils-relax-mount-rules.diff and utils-relax-mount-rules-2.diff:
+  Relax handling of mount rules in utils to avoid errors when
+  parsing valid profiles
+- add teardown-unconfined.diff to fix aa-teardown for 'unconfined'
+  profiles (boo#1225457)</comment>
+    <requestid>1177404</requestid>
+  </revision>
 </revisionlist>

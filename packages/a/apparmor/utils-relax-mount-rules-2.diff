@@ -1,0 +1,182 @@
+commit 1f4bba0448563b7d1fe4d86c230556ebf8d3805b
+Author: Maxime Bélair <maxime.belair@canonical.com>
+Date:   Mon May 20 11:09:04 2024 +0200
+
+    Cherry-pick: MountRule: Aligning behavior with apparmor_parser
+    
+    Mount Rules with options in { remount, [make-] { [r]unbindable, [r]shared, [r]private, and [r]slave }} do not support specifying a source. This commit aligns utils implementation to apparmor_parser's, which prohibits having a both source and a destination simultaneously, instad of just prohibiting source.
+    
+    Therefore, both `mount options=(unbindable) /a,` and `mount options=(unbindable) -> /a,` are now supported (and equivalent for apparmor_parser). However, `mount options=(unbindable) /a -> /b,` is invalid.
+    
+    For the same reason, specifying a fstype in these cases is also prohibited.
+    
+    Similarly, we prohibit to specify a fstype for bind mount rules.
+    
+    Fixes: https://bugs.launchpad.net/ubuntu/+source/apparmor/+bug/2065685
+    
+    (cherry picked from commit 60acc4a4053ddb3718b9a2f5ceb1ef02fea3a226)
+    
+    Signed-off-by: Maxime Bélair <maxime.belair@canonical.com>
+
+diff --git a/utils/apparmor/rule/mount.py b/utils/apparmor/rule/mount.py
+index abfa2b75e..b2d73a27b 100644
+--- a/utils/apparmor/rule/mount.py
++++ b/utils/apparmor/rule/mount.py
+@@ -25,15 +25,18 @@ _ = init_translation()
+ 
+ # TODO : Apparmor remount logs are displayed as mount (with remount flag). Profiles generated with aa-genprof are therefore mount rules. It could be interesting to make them remount rules.
+ 
+-flags_keywords = [
+-    # keep in sync with parser/mount.cc mnt_opts_table!
+-    'ro', 'r', 'read-only', 'rw', 'w', 'suid', 'nosuid', 'dev', 'nodev', 'exec', 'noexec', 'sync', 'async', 'remount',
+-    'mand', 'nomand', 'dirsync', 'symfollow', 'nosymfollow', 'atime', 'noatime', 'diratime', 'nodiratime', 'bind', 'B',
+-    'move', 'M', 'rbind', 'R', 'verbose', 'silent', 'loud', 'acl', 'noacl', 'unbindable', 'make-unbindable', 'runbindable',
+-    'make-runbindable', 'private', 'make-private', 'rprivate', 'make-rprivate', 'slave', 'make-slave', 'rslave', 'make-rslave',
+-    'shared', 'make-shared', 'rshared', 'make-rshared', 'relatime', 'norelatime', 'iversion', 'noiversion', 'strictatime',
+-    'nostrictatime', 'lazytime', 'nolazytime', 'user', 'nouser',
+-    '([A-Za-z0-9])',
++flags_bind_mount = {'B', 'bind', 'R', 'rbind'}
++flags_change_propagation = {
++    'remount', 'unbindable', 'shared', 'private', 'slave', 'runbindable', 'rshared', 'rprivate', 'rslave',
++    'make-unbindable', 'make-shared', 'make-private', 'make-slave', 'make-runbindable', 'make-rshared', 'make-rprivate',
++    'make-rslave'
++}
++# keep in sync with parser/mount.cc mnt_opts_table!
++flags_keywords = list(flags_bind_mount) + list(flags_change_propagation) + [
++    'ro', 'r', 'read-only', 'rw', 'w', 'suid', 'nosuid', 'dev', 'nodev', 'exec', 'noexec', 'sync', 'async', 'mand',
++    'nomand', 'dirsync', 'symfollow', 'nosymfollow', 'atime', 'noatime', 'diratime', 'nodiratime', 'move', 'M',
++    'verbose', 'silent', 'loud', 'acl', 'noacl', 'relatime', 'norelatime', 'iversion', 'noiversion', 'strictatime',
++    'nostrictatime', 'lazytime', 'nolazytime', 'user', 'nouser', '([A-Za-z0-9])',
+ ]
+ join_valid_flags = '|'.join(flags_keywords)
+ 
+@@ -112,6 +115,7 @@ class MountRule(BaseRule):
+         self.is_options_equal = options[0] if not self.all_options else None
+ 
+         self.source, self.all_source = self._aare_or_all(source, 'source', is_path=False, log_event=log_event)
++        self.dest, self.all_dest = self._aare_or_all(dest, 'dest', is_path=False, log_event=log_event)
+ 
+         if not self.all_fstype and self.is_fstype_equal not in ('=', 'in'):
+             raise AppArmorBug(f'Invalid is_fstype_equal : {self.is_fstype_equal}')
+@@ -120,11 +124,14 @@ class MountRule(BaseRule):
+         if self.operation != 'mount' and not self.all_source:
+             raise AppArmorException(f'Operation {self.operation} cannot have a source')
+ 
+-        flags_forbidden_with_source = {'remount', 'unbindable', 'shared', 'private', 'slave', 'runbindable', 'rshared', 'rprivate', 'rslave'}
+-        if self.operation == 'mount' and not self.all_source and not self.all_options and flags_forbidden_with_source & self.options != set():
+-            raise AppArmorException(f'Operation {flags_forbidden_with_source & self.options} cannot have a source. Source = {self.source}')
++        if self.operation == 'mount' and not self.all_options and flags_change_propagation & self.options != set():
++            if not (self.all_source or self.all_dest):
++                raise AppArmorException(f'Operation {flags_change_propagation & self.options} cannot specify a source. Source = {self.source}')
++            elif not self.all_fstype:
++                raise AppArmorException(f'Operation {flags_change_propagation & self.options} cannot specify a fstype. Fstype = {self.fstype}')
+ 
+-        self.dest, self.all_dest = self._aare_or_all(dest, 'dest', is_path=False, log_event=log_event)
++        if self.operation == 'mount' and not self.all_options and flags_bind_mount & self.options != set() and not self.all_fstype:
++            raise AppArmorException(f'Bind mount rules cannot specify a fstype. Fstype = {self.fstype}')
+ 
+         self.can_glob = not self.all_source and not self.all_dest and not self.all_options
+ 
+diff --git a/utils/test/test-mount.py b/utils/test/test-mount.py
+index 7f88ff7db..cb1a89630 100644
+--- a/utils/test/test-mount.py
++++ b/utils/test/test-mount.py
+@@ -43,12 +43,12 @@ class MountTestParse(AATest):
+         ('mount @{mntpnt},',                                                MountRule('mount',   MountRule.ALL,            MountRule.ALL,           '@{mntpnt}',    MountRule.ALL,  False, False, False, ''     )),
+         ('mount /a,',                                                       MountRule('mount',   MountRule.ALL,            MountRule.ALL,           '/a',           MountRule.ALL,  False, False, False, ''     )),
+         ('mount fstype=(ext3, ext4) /a -> /b,',                             MountRule('mount',   ('=', ['ext3', 'ext4']),  MountRule.ALL,           '/a',           '/b',           False, False, False, ''     )),
+-        ('mount fstype=(ext3, ext4) options=(ro, rbind) /a -> /b,',         MountRule('mount',   ('=', ['ext3', 'ext4']),  ('=', ('ro', 'rbind')),  '/a',           '/b',           False, False, False, ''     )),
+-        ('mount fstype=(ext3, ext4) options=(ro, rbind) /a -> /b, #cmt',    MountRule('mount',   ('=', ['ext3', 'ext4']),  ('=', ('ro', 'rbind')),  '/a',           '/b',           False, False, False, ' #cmt')),
+-        ('mount fstype=({ext3,ext4}) options in (ro, rbind) /a -> /b,',     MountRule('mount',   ('=', ['{ext3,ext4}']),   ('in', ('ro', 'rbind')), '/a',           '/b',           False, False, False, ''     )),
+-        ('mount fstype in (ext3, ext4) options=(ro, rbind) /a -> /b, #cmt', MountRule('mount',   ('in', ['ext3', 'ext4']), ('=', ('ro', 'rbind')),  '/a',           '/b',           False, False, False, ' #cmt')),
+-        ('mount fstype in (ext3, ext4) option in (ro, rbind) /a, #cmt',     MountRule('mount',   ('in', ['ext3', 'ext4']), ('in', ('ro', 'rbind')), '/a',           MountRule.ALL,  False, False, False, ' #cmt')),
+-        ('mount fstype=(ext3, ext4) option=(ro, rbind) /a -> /b, #cmt',     MountRule('mount',   ('=', ['ext3', 'ext4']),  ('=', ('ro', 'rbind')),  '/a',           '/b',           False, False, False, ' #cmt')),
++        ('mount fstype=(ext3, ext4) options=(ro, sync) /a -> /b,',          MountRule('mount',   ('=', ['ext3', 'ext4']),  ('=', ('ro', 'sync')),   '/a',           '/b',           False, False, False, ''     )),
++        ('mount fstype=(ext3, ext4) options=(ro, sync) /a -> /b, #cmt',     MountRule('mount',   ('=', ['ext3', 'ext4']),  ('=', ('ro', 'sync')),   '/a',           '/b',           False, False, False, ' #cmt')),
++        ('mount fstype=({ext3,ext4}) options in (ro, sync) /a -> /b,',      MountRule('mount',   ('=', ['{ext3,ext4}']),   ('in', ('ro', 'sync')),  '/a',           '/b',           False, False, False, ''     )),
++        ('mount fstype in (ext3, ext4) options=(ro, sync) /a -> /b, #cmt',  MountRule('mount',   ('in', ['ext3', 'ext4']), ('=', ('ro', 'sync')),   '/a',           '/b',           False, False, False, ' #cmt')),
++        ('mount fstype in (ext3, ext4) option in (ro, sync) /a, #cmt',      MountRule('mount',   ('in', ['ext3', 'ext4']), ('in', ('ro', 'sync')),  '/a',           MountRule.ALL,  False, False, False, ' #cmt')),
++        ('mount fstype=(ext3, ext4) option=(ro, sync) /a -> /b, #cmt',      MountRule('mount',   ('=', ['ext3', 'ext4']),  ('=', ('ro', 'sync')),   '/a',           '/b',           False, False, False, ' #cmt')),
+         ('mount options=(rw, rbind) {,/usr}/lib{,32,64,x32}/modules/ -> /tmp/snap.rootfs_*{,/usr}/lib/modules/,',
+                                                                             MountRule('mount',   MountRule.ALL,            ('=', ('rw', 'rbind')),  '{,/usr}/lib{,32,64,x32}/modules/',
+                                                                                                                                                                    '/tmp/snap.rootfs_*{,/usr}/lib/modules/',
+@@ -68,6 +68,17 @@ class MountTestParse(AATest):
+         expected.raw_rule = rawrule.strip()
+         self.assertTrue(obj.is_equal(expected, True))
+ 
++    def test_valid_mount_changing_propagation(self):
++        # Rules changing propagation type can either specify a source or a dest (these are equivalent for apparmor_parser in this specific case) but not both.
++        MountRule('mount', MountRule.ALL, ('=', ('runbindable')), '/foo', MountRule.ALL)
++        MountRule('mount', MountRule.ALL, ('=', ('runbindable')), MountRule.ALL, '/foo')
++
++    def test_valid_bind_mount(self):
++        # Fstype must remain empty in bind rules
++        MountRule('mount', MountRule.ALL, ('=', ('bind')), '/foo', MountRule.ALL)
++        MountRule('mount', MountRule.ALL, ('=', ('bind')), MountRule.ALL, '/bar')
++        MountRule('mount', MountRule.ALL, ('=', ('bind')), '/foo', '/bar')
++
+ 
+ class MountTestParseInvalid(AATest):
+     tests = (
+@@ -143,6 +154,20 @@ class MountTestParseInvalid(AATest):
+         with self.assertRaises(AppArmorException):
+             MountRule('remount', MountRule.ALL, MountRule.ALL, '/foo', MountRule.ALL)
+ 
++    def test_invalid_mount_changing_propagation(self):
++        # Rules changing propagation type can either specify a source or a dest (these are equivalent for apparmor_parser in this specific case) but not both.
++        with self.assertRaises(AppArmorException):
++            MountRule('mount', MountRule.ALL, ('=', ('runbindable')), '/foo', '/bar')
++
++        # Rules changing propagation type cannot specify a fstype.
++        with self.assertRaises(AppArmorException):
++            MountRule('mount', ('=', ('ext4')), ('=', ('runbindable')), MountRule.ALL, '/foo')
++
++    def test_invalid_bind_mount(self):
++        # Bind mount rules cannot specify a fstype.
++        with self.assertRaises(AppArmorException):
++            MountRule('mount', ('=', ('ext4')), ('=', ('bind')), MountRule.ALL, '/foo')
++
+ 
+ class MountTestGlob(AATest):
+     def test_glob(self):
+diff --git a/utils/test/test-parser-simple-tests.py b/utils/test/test-parser-simple-tests.py
+index 451af7d22..60a738aed 100644
+--- a/utils/test/test-parser-simple-tests.py
++++ b/utils/test/test-parser-simple-tests.py
+@@ -85,16 +85,6 @@ exception_not_raised = (
+     'mount/bad_1.sd',
+     'mount/bad_2.sd',
+ 
+-    # not checked/detected: "make-*" mount opt and an invalid src
+-    'mount/bad_opt_17.sd',
+-    'mount/bad_opt_18.sd',
+-    'mount/bad_opt_19.sd',
+-    'mount/bad_opt_20.sd',
+-    'mount/bad_opt_21.sd',
+-    'mount/bad_opt_22.sd',
+-    'mount/bad_opt_23.sd',
+-    'mount/bad_opt_24.sd',
+-
+     'profile/flags/flags_bad10.sd',
+     'profile/flags/flags_bad11.sd',
+     'profile/flags/flags_bad12.sd',
+@@ -324,19 +314,6 @@ unknown_line = (
+     'bare_include_tests/ok_85.sd',
+     'bare_include_tests/ok_86.sd',
+ 
+-    # Mount with flags in {remount, [r]unbindable, [r]shared, [r]private, [r]slave} does not support a source
+-    'mount/ok_opt_68.sd',
+-    'mount/ok_opt_69.sd',
+-    'mount/ok_opt_70.sd',
+-    'mount/ok_opt_71.sd',
+-    'mount/ok_opt_72.sd',
+-    'mount/ok_opt_73.sd',
+-    'mount/ok_opt_74.sd',
+-    'mount/ok_opt_75.sd',
+-
+-    # options=slave with /** src (first rule in the test causes exception)
+-    'mount/ok_opt_84.sd',
+-
+     # According to spec mount should be in the form fstype=... options=... and NOT in the form options=... fstype=...
+     'mount/ok_opt_combo_3.sd',
+     'mount/ok_opt_combo_2.sd',

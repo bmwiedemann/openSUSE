@@ -88,8 +88,15 @@ Patch10:        tools-fix-redefinition.diff
 # make test-aa-notify a bit more relaxed to allow different argparse wording on Leap 15.5 (merged upstream 2024-05-06 (4.0 and master) https://gitlab.com/apparmor/apparmor/-/merge_requests/1226)
 Patch11:        test-aa-notify.diff
 
-# Fix aa-remove-unknown for 'unconfined' profiles (submitted upstream 2024-05-25 https://gitlab.com/apparmor/apparmor/-/merge_requests/1240)
+# Fix aa-remove-unknown for 'unconfined' profiles (merged upstream 2024-05-28 in 4.0 and master https://gitlab.com/apparmor/apparmor/-/merge_requests/1240)
 Patch12:        aa-remove-unknown-fix-unconfined.diff
+
+# Fix aa-teardown for 'unconfined' profiles (submitted upstream 2024-05-28 https://gitlab.com/apparmor/apparmor/-/merge_requests/1242)
+Patch13:        teardown-unconfined.diff
+
+# Relax handling of mount rules in utils to avoid errors when parsing valid profiles (both patches taken from upstream 4.0 branch 2024-05-28)
+Patch14:        utils-relax-mount-rules.diff
+Patch15:        utils-relax-mount-rules-2.diff
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -361,6 +368,9 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch -P 10 -p1
 %patch -P 11 -p1
 %patch -P 12 -p1
+%patch -P 13 -p1
+%patch -P 14 -p1
+%patch -P 15 -p1
 
 %build
 export SUSE_ASNEEDED=0

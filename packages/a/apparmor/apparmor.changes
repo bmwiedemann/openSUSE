@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 28 19:34:43 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
+
+- add utils-relax-mount-rules.diff and utils-relax-mount-rules-2.diff:
+  Relax handling of mount rules in utils to avoid errors when
+  parsing valid profiles
+- add teardown-unconfined.diff to fix aa-teardown for 'unconfined'
+  profiles (boo#1225457)
+
+-------------------------------------------------------------------
 Tue May 28 12:20:59 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
 
 - exclude runc profile until updated runc packages (including
