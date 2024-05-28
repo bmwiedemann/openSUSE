@@ -388,9 +388,8 @@ echo with HPC
 %if %{without hpc}
 echo without HPC
 %endif
-%setup -q -n mpich-%{version}%{?rc_ver}
-%patch1
-%patch2
+%autosetup -p0 -n mpich-%{version}%{?rc_ver}
+
 # Make sure prebuilt dependencies are used and not mpich submodules
 rm -R modules/{ucx,libfabric,json-c}
 
