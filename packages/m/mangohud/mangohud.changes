@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun May 26 15:09:29 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Add BuildRequires xkbcommon.
+- Update to version 0.7.2:
+  * Changes:
+    - time now has a label (you can remove this label with 
+      time_no_label).
+    - Wayland keybinds have been added.
+    - rewritten exec function to have a persistent shell. 
+      Should reduce frametime spikes when using exec.
+    - exec is now right aligned to conform with every other item.
+    - added a mutex for config to prevent some crashes when 
+      accessing config at the same time as reloading.
+    - winesync and refresh_rate have been changed to small font.
+    - added more stats to log summary.
+    - stop using intel_gpu_top, as it was causing too many issues. 
+      We can still get GPU load but the rest we'll have to wait 
+      for to be exposed in sysfs.
+  * Fixes:
+    - frametime color wasn't being correctly inherited, 
+      the user was not able to change it's color.
+    - fixed a crash when pressing Shift_R + F9.
+    - config options now correctly override preset options.
+    - fixed RPM and % being incorrectly assigned for GPU fan speeds.
+    - graphs had incorrect padding at start of graphs.
+    - fixed a crash when reloading the config while logging.
+    - check that cpu input gives a non-zero value.
+    - fixed minecraft-launcher crashing.
+    - graphs had incorrect padding leading to a smaller graph.
+    - ixed a build issue where some meson options would exclude 
+      opengl files incorrectly.
+    - fixed presets not working with MANGOHUD_CONFIG env.
+  * Parameters:
+    - time_no_label removes the label before time.
+    - network shows the throughput in kb/s for all interfaces 
+      or a specified list of interfaces e.g network=eth0,wlo1.
+
+-------------------------------------------------------------------
 Thu Feb  8 07:12:13 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Added implot to versioned directory to allow build

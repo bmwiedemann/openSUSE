@@ -22,7 +22,7 @@
 %define implot_ver 0.16
 %define vulkan_ver 1.2.158
 Name:           mangohud
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        A Vulkan and OpenGL overlay for monitoring
 License:        MIT
@@ -57,6 +57,7 @@ BuildRequires:  pkgconfig(nlohmann_json)
 BuildRequires:  pkgconfig(spdlog)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xkbcommon)
 Suggests:       goverlay
 Provides:       bundled(ImGui)
 Provides:       bundled(Vulkan-Headers-sdk)
