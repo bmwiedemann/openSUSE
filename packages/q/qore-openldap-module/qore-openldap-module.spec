@@ -52,7 +52,6 @@ Requires:       /usr/bin/env
 Requires:       qore-module(abi)%{?_isa} = %{module_api}
 BuildRequires:  gcc-c++
 BuildRequires:  qore-devel >= 1.12.4
-BuildRequires:  qore-stdlib >= 1.12.4
 %if 0%{?suse_version} || 0%{?sles_version}
 BuildRequires:  openldap2-devel
 %else

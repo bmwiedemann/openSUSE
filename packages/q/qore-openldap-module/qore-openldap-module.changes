@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May 26 13:19:26 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Remove BuildRequirement qore-stdlib after the move of qore-stdlib to qore
+
+-------------------------------------------------------------------
 Mon Jul 31 16:40:01 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Add debug package
