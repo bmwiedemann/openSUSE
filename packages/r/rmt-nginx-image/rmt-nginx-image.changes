@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 27 17:31:22 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Remove broken 10-listen-on-ipv6-by-default.sh and install gettext-runtime for envsubst
+
+-------------------------------------------------------------------
 Thu May 16 16:20:25 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - install findutils for the containers that need it explicitly
