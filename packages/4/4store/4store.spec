@@ -2,6 +2,7 @@
 # spec file for package 4store
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,30 +19,30 @@
 
 %define major   0
 Name:           4store
-Version:        1.1.6
+Version:        1.1.7
 Release:        0
 Summary:        RDF Storage and SPARQL Query Engine
 License:        GPL-3.0-or-later
 URL:            https://4store.github.io
 Source:         https://github.com/4store/4store/archive/v%{version}/%{name}-%{version}.tar.gz
-Patch0:         Use-_GNU_SOURCE-instead-of-__USE_MISC.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(avahi-client)
-BuildRequires:  pkgconfig(avahi-core)
 BuildRequires:  pkgconfig(avahi-glib)
-BuildRequires:  pkgconfig(expat)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gthread-2.0)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.2.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.2.0
 BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(raptor2)
-BuildRequires:  pkgconfig(rasqal)
+BuildRequires:  pkgconfig(rasqal) >= 0.9.22
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(zlib)
+%if 0%{?suse_version} > 1600
+BuildRequires:  pkgconfig(readline)
+%else
+BuildRequires:  readline-devel
+%endif
 
 %description
 4store was designed by Steve Harris and developed at Garlik to underpin
@@ -79,18 +80,19 @@ find %{buildroot} -type f -name "*.la" -delete -print
 sed -i 's:%{_bindir}/env bash:/bin/bash:' %{buildroot}%{_bindir}/4s-*
 sed -i 's:%{_bindir}/env perl:%{_bindir}/perl:' %{buildroot}%{_bindir}/4s-*
 
-%post -n lib4store%{major} -p /sbin/ldconfig
-%postun -n lib4store%{major} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib4store%{major}
+
+%check
+#%%make_build tests
 
 %files
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README
 %{_bindir}/4s-*
-%{_mandir}/man1/*
-%{_mandir}/man5/*
-%{_mandir}/man8/*
+%{_mandir}/man?/*.?%{?ext_man}
 
 %files -n lib4store%{major}
+%license COPYING
 %{_libdir}/lib4store.so.*
 
 %files -n lib4store-devel

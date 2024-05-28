@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 25 07:09:46 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.1.7
+  * build system fixes
+- drop Use-_GNU_SOURCE-instead-of-__USE_MISC.patch
+
+-------------------------------------------------------------------
 Mon May  6 16:40:32 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Delete incomplete patch invalid-define.patch and instead...
