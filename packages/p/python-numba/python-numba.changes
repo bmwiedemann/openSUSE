@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 28 09:30:26 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip broken test on ppc64le
+  bsc#1225394, gh#numba/numba#8489
+
+-------------------------------------------------------------------
 Fri Mar 22 20:05:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.59.1:

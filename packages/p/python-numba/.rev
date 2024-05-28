@@ -452,4 +452,12 @@ Python2 support was turned off by accident.  I don't go out of my way to support
   * Allow use of Python 3.12 PEP-695 type parameter syntax</comment>
     <requestid>1160819</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>f798441103caf815a9096077252b93ed</srcmd5>
+    <version>0.59.1</version>
+    <time>1716910221</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1177314</requestid>
+  </revision>
 </revisionlist>
