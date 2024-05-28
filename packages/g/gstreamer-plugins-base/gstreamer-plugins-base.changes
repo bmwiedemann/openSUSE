@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 22 12:45:03 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add gst-plugins-base-CVE-2024-4453.patch:
+  Backporting e68eccff from upstream, Prevent integer overflows
+  and out of bounds reads when handling undefined tags.
+  (CVE-2024-4453 ZDI-24-467 ZDI-CAN-23896 bsc#1224806)
+
+-------------------------------------------------------------------
 Tue Mar  5 06:20:51 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.24.0:
