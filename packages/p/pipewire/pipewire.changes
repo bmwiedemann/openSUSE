@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat May 25 13:28:01 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.0.7:
+  * Highlights
+    - Fix a potential race/crash.
+    - Fix some problems with negotiation of large integers and
+      floats.
+    - Fix JACK sysex MIDI event handling.
+    - Some more smaller fixes and improvements.
+  * PipeWire
+    - Fix a potential race when adding/removing a port to be
+      scheduled.
+  * Modules
+    - Fix FFADO default device handling.
+  * SPA
+    - Fix in integer overflow and float/double compare in POD.
+  * JACK
+    - Copy larger MIDI events correctly.
+
+-------------------------------------------------------------------
 Wed May 15 09:21:57 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Move modules jack-tunnel and jackdbus-detect to the
