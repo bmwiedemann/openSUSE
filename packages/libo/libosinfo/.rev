@@ -456,4 +456,12 @@ New package for Factory, dependency for gnome-boxes. Hardware seems to be the be
     <comment>Fix for bsc#1220228 - virt-manager crashes when its viewer is opened on a running guest that uses spice graphics (on SLE15-SP6)</comment>
     <requestid>1155741</requestid>
   </revision>
+  <revision rev="53" vrev="5">
+    <srcmd5>2be6563ab68abbb49cff1cd3e5c7cd7d</srcmd5>
+    <version>1.11.0</version>
+    <time>1716910084</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1177065</requestid>
+  </revision>
 </revisionlist>

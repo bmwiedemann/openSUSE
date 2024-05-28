@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 26 10:18:24 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change:
+  * 0001-osinfo-Make-xmlError-struct-constant-in-propagate_li.patch
+
+-------------------------------------------------------------------
 Mon Mar  4 14:24:21 MST 2024 - carnold@suse.com
 
 - bsc#1220228 - virt-manager crashes when its viewer is opened on a
