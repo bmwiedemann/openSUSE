@@ -2,6 +2,7 @@
 # spec file for package libsodium
 #
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +17,10 @@
 #
 
 
-%define _lto_cflags %{nil}
-
-%define sover   23
+%define sover   26
 %define lname   %{name}%{sover}
 Name:           libsodium
-Version:        1.0.18
+Version:        1.0.20
 Release:        0
 Summary:        Portable NaCl-based crypto library
 License:        ISC
@@ -63,31 +62,29 @@ This package contains all necessary include files and libraries needed
 to compile and develop applications that use libsodium.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-# Do _NOT_ change CFLAGS
-# See https://github.com/jedisct1/libsodium/issues/604
 %configure \
   --disable-static \
   --disable-silent-rules
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %files -n %{lname}
 %license LICENSE
 %{_libdir}/%{name}.so.%{sover}*
 
 %files devel
+%license LICENSE
 %doc AUTHORS ChangeLog README.markdown THANKS
 %{_includedir}/sodium.h
 %{_includedir}/sodium
