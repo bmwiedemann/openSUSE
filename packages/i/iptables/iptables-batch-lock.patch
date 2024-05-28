@@ -10,11 +10,19 @@ Date: 2017-06-26T10:53:24+0000
  iptables/xshared.c        |    8 +++++++-
  2 files changed, 28 insertions(+), 1 deletion(-)
 
-Index: iptables-1.8.8/iptables/iptables-batch.c
+Index: iptables-1.8.10/iptables/iptables-batch.c
 ===================================================================
---- iptables-1.8.8.orig/iptables/iptables-batch.c
-+++ iptables-1.8.8/iptables/iptables-batch.c
-@@ -403,6 +403,27 @@ main(int argc, char *argv[])
+--- iptables-1.8.10.orig/iptables/iptables-batch.c
++++ iptables-1.8.10/iptables/iptables-batch.c
+@@ -44,6 +44,7 @@
+ #include <iptables.h>
+ #endif
+ #include <xtables.h>
++#include "xshared.h"
+ 
+ #ifdef IP6T
+ #define prog_name ip6tables_globals.program_name
+@@ -403,6 +404,26 @@ main(int argc, char *argv[])
  	tables[3].name = "raw";
  	tables[3].handle = NULL;
  	current_table = &tables[0];
@@ -34,19 +42,18 @@ Index: iptables-1.8.8/iptables/iptables-batch.c
 +	 * To prevent this, part of this patch adds logic to avoid taking the
 +	 * lock a second time in the same process in xtables_lock()
 +	 */
-+	const struct timeval wait_interval = {.tv_sec = 1};
-+	if (!xtables_lock_or_exit(-1, &wait_interval)) {
++	if (!xtables_lock_or_exit(-1)) {
 +		fprintf(stderr, "failed to acquire the xtables lock\n");
 +		exit(1);
 +	}
  
  	while((r = getline(&iline, &llen, fp)) != -1)
  	{
-Index: iptables-1.8.8/iptables/xshared.c
+Index: iptables-1.8.10/iptables/xshared.c
 ===================================================================
---- iptables-1.8.8.orig/iptables/xshared.c
-+++ iptables-1.8.8/iptables/xshared.c
-@@ -262,10 +262,14 @@ static void alarm_ignore(int i) {
+--- iptables-1.8.10.orig/iptables/xshared.c
++++ iptables-1.8.10/iptables/xshared.c
+@@ -255,10 +255,14 @@ static void alarm_ignore(int i) {
  
  static int xtables_lock(int wait)
  {
@@ -61,7 +68,7 @@ Index: iptables-1.8.8/iptables/xshared.c
  	lock_file = getenv("XTABLES_LOCKFILE");
  	if (lock_file == NULL || lock_file[0] == '\0')
  		lock_file = XT_LOCK_NAME;
-@@ -285,8 +289,10 @@ static int xtables_lock(int wait)
+@@ -278,8 +282,10 @@ static int xtables_lock(int wait)
  		alarm(wait);
  	}
  

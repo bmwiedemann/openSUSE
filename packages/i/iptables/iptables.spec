@@ -1,7 +1,7 @@
 #
 # spec file for package iptables
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,7 +55,7 @@ Requires:       alts
 BuildRequires:  alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 # During the update to iptables 1.8, ip6tables-restore-translate, ip6tables-translate,
 # iptables-restore-translate and iptables-translate were moved from iptables-nft subpackage
@@ -76,7 +76,7 @@ Requires:       alts
 BuildRequires:  alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 Provides:       iptables-nft = %version-%release
 Obsoletes:      iptables-nft < %version-%release

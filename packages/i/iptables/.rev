@@ -682,4 +682,12 @@ GPL version does not have ^or later^ due to inclusion of numerous GPL 2 ^only^ f
   backend-nft [bsc#1206383].</comment>
     <requestid>1119324</requestid>
   </revision>
+  <revision rev="83" vrev="3">
+    <srcmd5>c495969ca3ab566fbebf96e000f326af</srcmd5>
+    <version>1.8.10</version>
+    <time>1716910044</time>
+    <user>anag+factory</user>
+    <comment>gcc14 fixes</comment>
+    <requestid>1176764</requestid>
+  </revision>
 </revisionlist>
