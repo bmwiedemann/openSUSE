@@ -193,4 +193,12 @@
     Python 3.12, due to the new sys.last_exc attribute (#532).</comment>
     <requestid>1158422</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>9a02a15f89df1f57eac349ab9690c333</srcmd5>
+    <version>4.4.0</version>
+    <time>1716910173</time>
+    <user>anag+factory</user>
+    <comment>- Skip test_destroyed, this test fails with pyside6 6.7.0</comment>
+    <requestid>1177275</requestid>
+  </revision>
 </revisionlist>
