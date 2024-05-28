@@ -2112,4 +2112,15 @@
     <comment></comment>
     <requestid>1171973</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>0c246d06a59357b9f4021b31c39953bf</srcmd5>
+    <version>6.1.0</version>
+    <time>1716910148</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1177083 from glaubitz
+
+- Cherry-pick upstream patch to fix build with GCC 14
+    * https://github.com/astropy/astropy/pull/16450.patch</comment>
+    <requestid>1177165</requestid>
+  </revision>
 </revisionlist>
