@@ -127,4 +127,13 @@
     <comment></comment>
     <requestid>1123671</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>9e3245d8add05d5daaa293647bc7e182</srcmd5>
+    <version>0.8.0</version>
+    <time>1716910160</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream build fix:
+  * 0001-Increased-required-std-to-C-17-100.patch</comment>
+    <requestid>1177187</requestid>
+  </revision>
 </revisionlist>

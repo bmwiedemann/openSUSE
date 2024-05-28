@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 27 19:56:20 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream build fix:
+  * 0001-Increased-required-std-to-C-17-100.patch
+
+-------------------------------------------------------------------
 Mon Nov  6 17:44:47 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 ﻿- Update to version 0.8.0

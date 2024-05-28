@@ -26,6 +26,8 @@ URL:            https://invent.kde.org/multimedia/subtitlecomposer
 Source0:        https://download.kde.org/stable/subtitlecomposer/%{name}-%{version}.tar.xz
 Source1:        https://download.kde.org/stable/subtitlecomposer/%{name}-%{version}.tar.xz.sig
 Source2:        subtitlecomposer.keyring
+# PATCH-FIX-UPSTREAM -- icu 75 compatibility
+Patch0:         0001-Increased-required-std-to-C-17-100.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libQt5Widgets-private-headers-devel
@@ -82,7 +84,7 @@ has speech Recognition using PocketSphinx.
 # Fix rpmlint error (devel-file-in-non-devel-package) and install header files as doc (since they are installed just for help)
 mkdir files_for_doc
 cp -a %{buildroot}%{_kf5_appsdir}/%{name}/scripts/api/ files_for_doc/
-rm -rf %{buildroot}%{_kf5_appsdir}/%{name}/scripts/api/
+rm -r %{buildroot}%{_kf5_appsdir}/%{name}/scripts/api/
 # Point to the correct path of the header files directory (doc)
 perl -pi -e "s|'api'|'%{_docdir}/subtitlecomposer/api'|" %{buildroot}%{_kf5_appsdir}/%{name}/scripts/README
 
