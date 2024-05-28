@@ -1,0 +1,6 @@
+<package name="libvarlink" project="openSUSE:Factory">
+  <title>libvarlink</title>
+  <description>A C implementation of Varlink - a protocol for creating APIs</description>
+  <devel project="devel:libraries:c_c++" package="libvarlink"/>
+  <url>https://varlink.org/</url>
+</package>
