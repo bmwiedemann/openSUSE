@@ -1156,4 +1156,13 @@
     <comment>GNOME 46 (forwarded request 1158896 from dimstar)</comment>
     <requestid>1159509</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>0030a3176c3d0e105cc3ed465f33e34c</srcmd5>
+    <version>2.58.1</version>
+    <time>1716910085</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.58.1:
+  + Fix failing test with Pango 1.52.1.</comment>
+    <requestid>1177168</requestid>
+  </revision>
 </revisionlist>
