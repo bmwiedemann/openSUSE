@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May 28 04:18:15 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Replace 0001-build-set-standard-to-c-17.patch to 0001-build-set-c-standard-to-c-17.patch
+- Adjust patches for the release branch. tectonic uses a separate branch for releases
+  so that's why the patches are failing
+
+-------------------------------------------------------------------
+Tue May 28 03:18:21 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update vendored dependencies.
+- Apply the following patches for icu 75 support
+  * 0001-build-set-standard-to-c-17.patch
+  * 0002-fix-update-symbols-tags_from_lang-hb_ot_tag_from_lan.patch
+- Update _service file and replace obsoleted "disabled" option
+
+-------------------------------------------------------------------
 Wed Apr 24 09:41:30 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Remove redundant %{cargo_build}

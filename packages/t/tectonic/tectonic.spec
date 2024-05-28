@@ -25,6 +25,8 @@ Group:          Productivity/Publishing/TeX/Utilities
 URL:            https://tectonic-typesetting.github.io
 Source0:        https://github.com/tectonic-typesetting/tectonic/archive/refs/tags/%{name}@%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+Patch1:         0001-build-set-c-standard-to-c-17.patch
+Patch2:         0002-fix-update-symbols-tags_from_lang-hb_ot_tag_from_lan.patch
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  cargo-packaging
@@ -32,6 +34,7 @@ BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(harfbuzz)
+# https://github.com/tectonic-typesetting/tectonic/issues/1190
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(openssl)
@@ -43,7 +46,7 @@ Tectonic is a complete self-contained TeX/LaTeX engine powered by
 XeTeX and TeXLive.
 
 %prep
-%autosetup -a1 -n %{name}-%{name}-%{version}
+%autosetup -p1 -a1 -n %{name}-%{name}-%{version}
 
 %build
 

@@ -92,4 +92,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1171129</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>161071cf943d1a40b768754672b414b4</srcmd5>
+    <version>0.15.0</version>
+    <time>1716910168</time>
+    <user>anag+factory</user>
+    <comment>- Replace 0001-build-set-standard-to-c-17.patch to 0001-build-set-c-standard-to-c-17.patch
+- Adjust patches for the release branch. tectonic uses a separate branch for releases
+  so that's why the patches are failing
+- Update vendored dependencies.
+- Apply the following patches for icu 75 support
+  * 0001-build-set-standard-to-c-17.patch
+  * 0002-fix-update-symbols-tags_from_lang-hb_ot_tag_from_lan.patch
+- Update _service file and replace obsoleted &quot;disabled&quot; option
+</comment>
+    <requestid>1177200</requestid>
+  </revision>
 </revisionlist>
