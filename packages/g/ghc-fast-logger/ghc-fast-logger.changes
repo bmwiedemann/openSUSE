@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 16 07:11:46 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update fast-logger to version 3.2.3.
+  ## 3.2.3
+
+  * Ensuring flush for single logger.
+    [#214](https://github.com/kazu-yamamoto/logger/pull/214)
+
+-------------------------------------------------------------------
 Thu Jul  6 23:02:44 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update fast-logger to version 3.2.2.
