@@ -21,7 +21,7 @@
 %endif
 
 Name:           ART
-Version:        1.21.3
+Version:        1.22
 Release:        0
 Summary:        Rawtherapee fork with masks and simplified UI
 License:        GPL-3.0-only
@@ -112,7 +112,8 @@ mv %{buildroot}%{_datadir}/doc/%{name} %{buildroot}%{_docdir}/%{name}
 %fdupes %{buildroot}/%{_prefix}
 
 %files
-%{_bindir}/*
+%{_bindir}/ART
+%{_bindir}/ART-cli
 %{_libdir}/librtengine.so
 %{_datadir}/%{name}/
 %{_datadir}/icons/hicolor/*/apps/*

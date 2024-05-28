@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon May 27 16:10:40 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 1.22:
+  * brush mask: added ctrl-z / ctrl-shift-z for undo/undo all
+    during brush editing
+  * cmake: do not link against mimalloc when using ASAN
+  * colortemp.h: added missing "#include <array>"
+  * CTL: take into account the CTL_MODULE_PATH env var when loading
+    modules
+  * file browser: show the number of selected files when >1
+  * metadata: explicitly handle the case of exiftool not found
+  * procparams: disable histmatching when loading arp files with an
+    already-computed tone curve
+  * rawimage: properly extract the raw optical black for bayer
+    sensors when using libraw
+  * rawimage: simple workaround for libraw issue with some xtrans
+    DNG files produced by dnglab
+  * smoothing: added simple halation
+  * spot removal: fixed bad preview when denoise is enabled
+  * subprocess: fixed freeze happening when fork/exec failed in
+    subprocess::popen
+  * updated camera matrices
+  * updated translations
+  * updated WB presets
+  * white balance: improved robustness in "extreme" situations
+    (e.g. UV)
+
+-------------------------------------------------------------------
 Thu Apr 11 02:52:53 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 1.21.3:
