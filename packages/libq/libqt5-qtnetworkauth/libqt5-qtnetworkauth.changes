@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 21 09:37:28 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 5.15.13+kde1:
+  * QAbstractOAuth: fix data race and poor seeding in generateRandomString()
+    (boo#1224782, CVE-2024-36048)
+
+-------------------------------------------------------------------
 Tue Mar 19 09:58:28 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.13+kde0, rebased upstream:

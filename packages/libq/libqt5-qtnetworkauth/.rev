@@ -239,4 +239,14 @@
     <comment>Qt 5.15.13, untested as usual (forwarded request 1159361 from favogt)</comment>
     <requestid>1159427</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c0ef98ca1f42b3dde90ac8d322d2b175</srcmd5>
+    <version>5.15.13+kde1</version>
+    <time>1716910119</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.15.13+kde1:
+  * QAbstractOAuth: fix data race and poor seeding in generateRandomString()
+    (boo#1224782, CVE-2024-36048) (forwarded request 1177078 from favogt)</comment>
+    <requestid>1177087</requestid>
+  </revision>
 </revisionlist>
