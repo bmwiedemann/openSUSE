@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 27 17:21:53 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- added wwctl-configure-all-calls-SSH-keys.patch to fix
+  (bsc#1225402)
+
+-------------------------------------------------------------------
 Tue May 14 09:01:13 UTC 2024 - Christian Goll <cgoll@suse.com>
 
 - update to 4.5.2 with followin changes:

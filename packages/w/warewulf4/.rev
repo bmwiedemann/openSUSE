@@ -261,4 +261,13 @@
   * Update a dependency to fix CVE-2024-3727 (bsc#1224124) (forwarded request 1173929 from mslacken)</comment>
     <requestid>1173930</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>3d8314888732076a50433e49a23a47e8</srcmd5>
+    <version>4.5.2</version>
+    <time>1716910187</time>
+    <user>anag+factory</user>
+    <comment>- added wwctl-configure-all-calls-SSH-keys.patch to fix
+  (bsc#1225402)</comment>
+    <requestid>1177285</requestid>
+  </revision>
 </revisionlist>
