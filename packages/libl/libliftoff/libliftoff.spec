@@ -1,7 +1,7 @@
 #
 # spec file for package libliftoff
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define libname libliftoff0
 
 Name:           libliftoff
-Version:        0.4.1
+Version:        0.5.0
 Release:        0
 Summary:        KMS plane library
 Group:          Development/Libraries/C and C++
