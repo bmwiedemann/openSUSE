@@ -1,0 +1,1047 @@
+-------------------------------------------------------------------
+Mon May 27 01:24:51 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.12.0
+  * new inline hints
+  * Detail field to pointer deref and optional unwrap operations
+  * semantic highlighting on vscode
+  * Module completions for std and builtin
+  * completions for function aliases with self parameters
+  * validate configuration options
+  * supports only zig 0.12.0
+  * tagged releases now support only tagged releases of zig
+- Add vendor.tar.zst. Contains the vendored dependencies. Zig now uses a
+  package manager
+
+-------------------------------------------------------------------
+Mon Oct 23 23:41:44 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Remove files:
+  * 0001-add-pie-and-strip-build-options.patch 
+  * _service
+- update to version 0.11.0:
+  * check `linkSupport` when handling goto requests
+  * `getPositionContext`: Include preceding line(s) when tokenizing if a line starts with a '.'
+  * Update data for Zig 0.11.0
+  * Fix Go to Type Definition
+  * Update flake.lock
+  * update usage of std.zig.system.NativePaths
+  * fix infinite loop on struct init field completion
+  * Disable fuzzing temporarily until fuzzer/infra is fixed
+  * detect type reference cycles on hover
+  * merge Analyser.using_trail and Analyser.resolved_aliases
+  * refactor some testing code
+  * enable references label test
+  * remove incorrect TODOs
+  * remove unused global var decls
+  * add new semantic token tests
+  * Revert "simplify semantic token generation on field access"
+  * add hover tests
+  * update stage 2 sources
+  * Remove the extra part from hover message
+  * fix parsing of unknown or ill formed CodeActionKind
+  * add workaround for https://github.com/ziglang/zig/issues/16647
+  * resolve std.ArrayList(T).Slice
+  * update build runner
+  * workflow: specify `-Dcpu=baseline` when building artifacts
+  * Updates Nix lock to newer compiler version.
+  * Fix building for Zig version 0.11.0-dev.4332+43b830415
+  * fix stack overflow due to cyclically anytype resolution
+  * improve `tokenToLoc` on invalid tokens
+  * fix use of uninitialised value
+  * Revert "Search for r_brace at the AST level, not the source code level."
+  * makePath no longer returns error.PathAlreadyExists
+  * allow forward slash in zig directory path
+  * fix infinite loop in `resolveVarDeclAlias`
+  * fix `hasInferredError` on function without return type
+  * always call custom ast helper functions
+  * Search for r_brace at the AST level, not the source code level.
+  * remove `callWriteNodeTokens`
+  * add semantic token for align and callconv keyword in functions
+  * resolve type of anyframe
+  * resolve type parameter semantic tokens
+  * simplify semantic token generation on field access
+  * update Semantic token types and modifiers
+  * Updates Nix lock to newer compiler version.
+  * Fix snippet being added to parenthesised function completion
+  * only run ci in zigtools org
+  * fix single threaded build
+  * update to new `jsonStringify` interface
+  * Updates Nix to reflect Zon.
+  * fix generate coverage with kcov
+  * Fix type resolution for `MyTaggedUnion.value`
+  * Add hover for `MyEnum.value`/`MyTaggedUnion.value`
+  * Fix symbol lookup for var with same name as field and vice versa
+  * Highlight entire identifier on hover/goto
+  * Preserve whitespace in doc comments
+  * Resolve type of enum literal in container field init
+  * Fix semantic highlighting for `MyEnum.value`/`MyTaggedUnion.value`
+  * Resolve type of implicitly void variant of tagged union
+  * Show type when hovering over block label
+  * Revert "fuzzing: improve action"
+  * fuzzing: improve action
+  * CI: trigger CI when build.zig.zon changes
+  * Update known-folders dependency
+  * Enable hover for `var @"foo-bar"`
+  * Make Go to Definition fully resolve `const Foo = @import("Foo.zig")`
+  * Show `//!` doc comments in hover and completions
+  * Fix snippets of aliased functions
+  * make argument placeholders optional
+  * ignore unknown json fields #1324
+  * add LSP server life-cycle test
+  * implement asynchronous diagnostic generation and build.zig runner
+  * process messages in parallel
+  * remove analyser field from server
+  * remove arena field from server
+  * remove `builtin_completions`
+  * move inlay hint construction into `inlay_hints.zig`
+  * add basic thread safety to DocumentStore
+  * remove ArenaAllocator from loadBuildConfiguration
+  * simplify some DocumentStore function signatures
+  * Remove `tres` and update lockfile
+  * update minimum build version
+  * ignore unknown fields while parsing
+  * Fix hover in generic types using `@This()`
+  * Get docs from definition if alias has none
+  * Resolve type of enum values
+  * Enable hover for `.foo` in `&.{ .foo, .bar }`
+  * work around zig bug https://github.com/ziglang/zig/issues/16392
+  * remove dependency on tres
+  * Resolve type of tuple field
+  * Resolve type of `slice.len` and `slice.ptr`
+  * Revert removing tres
+  * Resolve type of loop expressions
+  * fix parsing of unknown or ill formed CodeActionKind
+  * enable inlay hints for single-argument builtins
+  * update minimum build version
+  * remove dependency on tres
+  * Fix type resolution for if-else on optional value
+  * Add hover/goto for container fields in struct init
+  * Hover: Omit merged error set body
+  * Hover: Omit error set body
+  * Hover: Include explicitly provided backing integer
+  * Enable hover for merged error sets
+  * Resolve types of primitive values, enum literals, and error values
+  * Enable hover and Go to References for loop label declaration
+  * Hover: Omit container body
+  * Hover: Show "Go to Foo | Bar" instead of "Go to Foo | Go to Bar"
+  * Show doc comments for errors in error sets
+  * add missing union initalization
+  * Completions for struct fields that are containers
+  * Show doc comments for fields with explicit alignment
+  * Fix references to parameter in function header
+  * Implement type resolution for error union payloads
+  * Add completions for merged error sets
+  * Fix test failure
+  * Implement hover and goto for enum literals
+  * Fix type string resolution for named extern/packed structs
+  * Use given type in struct init `Foo{...}` for "Go to Foo"
+  * Add hover info for generic types
+  * Fix rendering of multi-line doc comments
+  * Resolves #1242.
+  * Enable hover for container fields
+  * Add hover info for string and number literals
+  * Improve type analysis involving `&foo`, `foo[bar]`, or `!Foo`
+  * Add missing `!` in resolved function string when error set is inferred
+  * Fix hover with anonymous types in function headers and container fields
+  * Analyser: Set scope start at payload token if present
+  * Hover: Resolve underlying type recursively
+  * Hover: Avoid duplicate "Go to <type>"
+  * Hover: Resolve type to alias for "Go to <type>" when possible
+  * Simplify resolved `if`/`switch` type when branches return same type
+  * Add hover info for optional type `?Foo` and error union `error{...}!Foo`
+  * Hover: Add links to referenced types when possible
+  * Complete anon struct fields in fn calls (parser permitting)
+  * Update Nix files.
+  * resolve var decl aliases of functions in inlay hints
+  * expand variable-decl alias resolution
+  * Remove invalid inlay hints test
+  * Update dependencies in build.zig.zon
+  * Remove desitination type param from cast builtins
+  * Hover: Show name of struct type defined at file scope
+  * do not stop iterating container members in non-exhaustive enum
+  * exclude `_` enum member from completion
+  * Update flake.nix and flake.lock
+  * Remove zon comment
+  * fix timeout in ZCS receiveMessage
+  * include anytype parameters in inlay hint function parameter count
+  * Add completion test
+  * Resolve type of simple labeled block
+  * improve self param detection in inlay hints
+  * update stage2 sources
+  * update analysis of builtin functions
+  * disable translate c test on windows
+  * Add notice to legacy_json
+  * update zon to merged commits
+  * Update config_gen.zig and regenerated master
+  * fix legacy json in tests
+  * Update to latest binary build on website
+  * Added legacy-style json api wrapper
+  * update dependencies
+  * update casting builtins
+  * Fixed compatibility with latest builds of Zig
+  * Updates Nix to reflect Zon.
+  * Update diffz to latest-compatible version
+  * Replace deprecated calls
+  * autofix now handles comments in the event of a newline w/ comments
+  * set Enum completion kind to .EnumMember
+  * clear using_trail when calling resolveUse fixes #1231
+  * deduplicate packages in the build runner
+  * `executeBuildRunner`: increase `.max_output_bytes`
+  * Updates Nix to reflect Zon.
+  * Use @silversquirl's binned allocator
+  * Fix `configuration.getConfigurationType` returning non null values
+  * refactor debugging utilities
+  * add tests for autofix code actions
+  * compatible with the `settings.zls` in didChangeConfigurationHandler
+  * revive translateC support
+  * add `paramSlice` helper function
+  * include enum fields in enum completion set
+  * fix memory leak on error in `makeInnerScope`
+  * reduce size of `ScopeContext`
+  * replace scope decl container from StringHashMap with StringArrayHashMap
+  * store document scope declarations in std.ArrayList
+  * refactor document scope creation with `ast.iterateChildren`
+  * rewrite semantic token types union and opaque as type
+  * exhaustively list semantic token types to exclude
+  * nix: update lock
+  * update to Zig 0.11.0-dev.3312+ab37ab33c
+  * autofix: tighten up getCaptureLoc()
+  * autofix: clean up dupe 'remove capture' action detection
+  * autofix: discard captures + some multi for loop support
+  * update `std.debug.TTY` to `std.io.tty`
+  * Replace nonexistent `std.sort.sort` with `std.mem.sort`
+  * invalidate Analyser on didClose
+  * skip std module resolution test on webassembly target
+  * fix semantic tokens on union and enum container fields
+  * bring semantic token types and modifiers closer to predefined ones
+  * fix semantic tokens on if capture by ref
+  * replace semantic token type .field with .property
+  * use `std.meta.fieldNames` instead of manually re-implementing it
+  * test and simplify semantic tokens on function call
+  * simplify semantic token comment handling
+  * Update Nix Flakes file
+  * Update `config_gen` and data
+  * update to new std.json api
+  * access tree of resolved typed on hover
+  *  Fix panic caused by custom zls.json path
+  * remove usage of `std.meta.tagName` as it is deprecated
+  * fix semantic token generation crash on continue expression
+  * Update tracy to 0.9.1
+  * flake.lock: Update
+  * build.zig: Update minimum Zig version
+  * various intern pool & comptime interpreter changes
+  * update stage2 sources
+  * fix: update test case involving @memcpy
+  * chore: update master version data
+  * print zls version and path during startup
+  * Removes default.nix
+  * Update config to highlight danger of the comptime interpreter
+  * build.zig: Update minimum Zig version
+  * flake.lock: Update
+  * chore: use new @memset api
+  * Update `config_gen` and data
+  * Fix to make zls compile for 0.11.0-dev.2775+21aa55d34.
+  * update config gen according to new `std.http` changes
+  * Mem fixes
+  * add completion tests on struct init fields
+  * implement `iterateChildren` on asm
+  * update data files
+  * InternPool: add c_char type
+  * Implement $/setTrace and add --enable-message-tracing
+  * flake.lock: Update
+  * update to latest zig: add c_char type
+  * flake update
+  * Update configuration.zig
+  * Use plain text if the client tells zls it's preferred
+  * disable assertions in smallestEnclosingSubrange
+  * Update build to the new zig build API
+  * Nested struct init fields completion
+  * Avoid accessing inactive union fields in `completeDot`
+  * Remove format lt 512 diff restriction
+  * Add WASI to CI builds
+  * Remove outdated diagnostics check
+  * remove zls.json
+  * Disable build file config runs for WASI
+  * explain how AstGen will diverge from zig codebase
+  * add support for running ast-check without zig
+  * add zig code for generating Zir
+  * Add anytype resolution based on call references
+  * Make Analyser use its own arena
+  * only include snippet completions when enable_snippet is set
+  * update snippet data
+  * disable `.fixall` autofix mode
+  * Apply suggestions from code review
+  * exclude default cimport declarations from completions
+  * disable cimport resolution
+  * fix block label completion test
+  * improve source location of block scope with invalid ast
+  * refactor document scope creation to be more aware of block expressions
+  * remove TODO's about redefinition errors i favor of ast-check
+  * update handling of some node tags in `makeScopeInternal`
+  * implement document scope creation for array_type_sentinel
+  * fix printDocumentScope
+  * enable successful references test
+  * implement testing for cross-file references
+  * add multi-file support to ErrorBuilder
+  * generate distinct uris in Context.addDocument
+  * make semantic token configuration an enum
+  * More `.` completion
+  * flake.lock: Update
+  * Struct init fields completion.
+  * remove boxed null boilerplate
+  * do not print error messages in comptime interpreter tests
+  * update build.zig
+  * hack latest build changes
+  * Rework file structure
+  * Fix scope creation for label blocks
+  * support enums in config_gen
+  * fix typos
+  * tracy: workaround zig bug
+  * update git clone command in README.md
+  * only return block scopes from `innermostBlockScope`
+  * improve variable lookup performance
+  * do not store Handle pointer in Analyser
+  * replace unnecessary `std.ArrayListUnmanaged` in document scope
+  * remove `had_root` global
+  * simplify analysis by introducing a Analysis Struct
+  * expand semantic token test coverage
+  * refactor semantic tokens
+  * update config gen to work with vscode-zig
+  * resolve relative include directories
+  * Add some more basic overflow checks
+  * find references on test decl with identifier name
+  * Optimize document symbols
+  * more tracy calls
+  * InternPool: add more helper functions and debug formatting
+  * minor semantic token fixes
+  * Fixes nix standard derivation.
+  * limit maximum detail length at 1024 bytes
+  * fix leak in `openDocument`
+  * add more Ast tests
+  * rework `nodesAtLoc`
+  * add more tests to `offsets.zig`
+  * fix `locIntersect`
+  * add Ast to callback field in `iterateChildren`
+  * implement `textDocument/semanticTokens/range`
+  * fix lastToken on tagged union with invalid members
+  * Branching type resolution
+  * skip failed cimports on garbage collection
+  * send response on shutdown request
+  * update failing semantic tokens test
+  * update version data
+  * Fixes nix build.
+  * Fix crash if zls.json is empty
+  * Fix build runner
+  * update zig submodules to new builtin dependency system
+  * InternPool: replace untyped values with typed values
+  * make `diff.edits` memory safe
+  * Rerun build.zig configuration extraction on zig_exe_path change
+  * fix folding range on multi line function declaration
+  * fix folding range on structs with doc comment on first field
+  * support new module cli arguments
+  * Make the CI trigger if the CI script itself is modified
+  * update version data
+  * `completeBuiltin` fixes
+  * update flake.lock
+  * ignore an unknown CodeActionKind
+  * add multi object for loop support
+  * build: add PIE (Position Independent Executable) option
+  * build_runner: provide valid global cache to the build runner
+  * Fix build runner for latest changes
+  * improve error message when parsing zls.json
+  * Fix handling of invalid tokens in getPositionContext
+  * Merge branch 'master' into intern-pool
+  * sync build.zig with latest std.build API changes
+  * Avoid integer overflow in `analysis.getPositionContext`
+  * Configuration handling fixes
+  * Amend `getPositionContext` to handle incomplete `.string_literal`s, ie `"`, `@"`
+  * Bump diffz to fix overflow issue on long files
+  * Fix: variable not defined.
+  * Adds ziglibs/diffz to flake.nix
+  * implement cInclude completions & goto definition
+  * small refactor
+  * implement coerceInMemoryAllowedErrorSets
+  * Switch to Diff Match Patch (diffz)
+  * Fix missing nodes in outline
+  * Remove some boilerplate from test
+  * add testing infra for textDocument/documentSymbol
+  * Merge branch 'master' into intern-pool
+  * improve comptime interpreter dot completions
+  * fix function call resolution
+  * remove some InternPool test boilerplate
+  * update onePossibleValue for arrays
+  * implement intInfo for enums
+  * more closely match Zir.Inst.Ref to InternPool.Index
+  * add predefined values to Index
+  * Merge branch 'master' into intern-pool
+  * make build docs reflect zig 0.11 cli args
+  * remove arena allocator from analysis
+  * simplify symbol references handler
+  * Use merge commit for fuzzing
+  * zig build system changes (modules)
+  * Use -Doptimize=ReleaseSafe; update flake.lock
+  * optimize DocumentStore garbage collection
+  * implement goto definition for cImport
+  * show c source when hovering over cImport
+  * [`std.zig.`] `parse(alloc, src)` -> `Ast.parse(alloc, src, Ast.Mode)`
+  * fix doc comment not showing on container field
+  * Fix fuzzing -Doptimize
+  * Update builtins data: "Say hello to `@qualCast`".
+  * Build modes are specified with -Doptimize now
+  * resolve bit size based target
+  * Merge branch 'master' into intern-pool
+  * Work in Zig's breaking changes (build sys apis)
+  * Skip incomplete fn_protos when generating folding ranges
+  * Fix CI checkout origin
+  * rewrite folding range
+  * fix iterateChildren on if
+  * Optimize inlay hints
+  * update data files
+  * fix config_gen
+  * Update README.md
+  * more comptime interpreter tests
+  * better error messages on field access
+  * bug fixes
+  * use SegmentedList
+  * do not intern Structs, Enums and Unions
+  * add colon to inlay hint label
+  * remove unused capacity from Ast and DocumentStore
+  * Fuzzer fixes
+  * improve comptime interpreter stack trace message
+  * Merge branch 'master' into intern-pool
+  * Use new ast helper functions
+  * bug hunting
+  * replace ArrayList with MultiArrayList in DocumentScope
+  * use ArrayList for dotCompletions
+  * equality compare floats with bitcast in InternPool
+  * move InternPool and encoding into analyser folder
+  * use `analyser/completions.zig` for completing comptime interpreter
+  * small refactor
+  * update tests
+  * implement field access in comptime interpreter
+  * add helper functions to intern pool
+  * expand dot completions
+  * Properly refer to external repositories instead of lumping everything into zls
+  * Partially fixes #907
+  * enable successful interpreter tests
+  * add struct value tests
+  * redesign InternPool encoding
+  * add test filter to src tests
+  * Fix lsp weird behaviour on block cursors
+  * pull_request -> pull_request_target all over
+  * Fix secrets access in foreign PRs
+  * Fix fuzzing ref
+  * Fix env transfer
+  * Last fuzzing PR for a while hopefully
+  * Fix fuzzing paths
+  * Add fuzzing workflow
+  * optimize folding range
+  * Goto definition works when the cursor is at the start of the identifier.
+  * fix builtin completions if `label_details_support` is false
+  * implement big int
+  * add more interpreter tests
+  * add initial completions on InternPool
+  * Merge branch 'master' into intern-pool
+  * report interpreter errors in tests
+  * add formatting to recordError
+  * add more comptime interpreter tests
+  * small comptime interpreter refactor
+  * correctly resolve primitive types
+  * add basic comptime interpreter tests
+  * add internpool to test steps
+  * add coerceInMemoryAllowed integer & float tests
+  * remove panics from release builds
+  * coerce in memory improvements
+  * implement onePossibleValue
+  * add function pointer peer type tests
+  * refactor pointer peer type tests
+  * add expectEqualTypes
+  * peer type resolution improvements
+  * improve peer type resolution test failure message
+  * Generate data files in config_gen.zig
+  * update pointer type tests
+  * implement union values
+  * optimize hashing and equality checks on structs
+  * improve Function memory layout
+  * update tests
+  * refactor type printing
+  * Allow setting test filter in `zig build test`
+  * Fix bypass not having value on PR&commit
+  * Add fuzzing on deploy
+  * show better zig/zls version mismatch messages
+  * simplify formatting handler
+  * fix use after free for builtin completions
+  * resolve type of `@typeInfo`
+  * fix storage of negative signed integer values
+  * more tests
+  * add bit_offset & host_size to Pointer
+  * update test
+  * small refactor on ComptimeInterpreter
+  * remove arena from ComptimeInterpreter
+  * more tests
+  * small cleanup
+  * refactor InternPool KeyAdapter
+  * restructure ComptieInterpreter tests
+  * some ComptieInterpreter work
+  * fix use after free
+  * move log overrides into `std_options`
+  * check submodules in build.zig
+  * add tests for textDocument/Definition
+  * improve memory allocations
+  * Fix build runner cwd causing relative @src
+  * return from main instead of calling exit
+  * Revert "Fix Nix build, add Nix to CI"
+  * fix returning freed memory in formattingHandler
+  * fix compile errors when targeting wasm
+  * Fix Nix build, add Nix to CI
+  * Verify minimum zig version at comptime
+  * improve completion on error and enums
+  * more tests
+  * error set type formatting
+  * implement anyframe->T
+  * refactor and basic struct/union value implementation
+  * Fix crash when using nvim-lspconfig
+  * first successful test case 🚀
+  * more comptime interpreter work
+  * remove namespace and decl from intern pool
+  * partially implement peer type resolution for pointer types
+  * finish and test peer type resolution among integers and floats
+  * Merge branch 'master' into intern-pool
+  * Add error return trace
+  * use more explicit error sets
+  * Autofix improvements
+  * remove setup wizard
+  * enable all capabilities by default
+  * Add a replay feature to zls
+  * add vscode config generation to `zig build gen`
+  * fix ast-check with single error
+  * Debugging utilities
+  * fix crashes found through fuzzing
+  * optimize `build.zig` discovery
+  * always use scoped logs instead of default
+  * fix: tres not available in a nix environment.
+  * fix: update master.zig to reflect changes to builtins
+  * Memory lifetime fixes
+  * chore: add command for updating master.zig on windows
+  * Use zig-lsp-codegen
+  * fix memory lifetime issues
+  * fix another underflow in ast.zig#fullWhile()
+  * fix remaining compiler errors
+  * Merge branch 'master' into intern-pool
+  * more intern pool work
+  * prevent underflow in ast.zig#fullWhile()
+  * semantic_tokens: Fix handleComments not evaluating the last byte
+  * generated master data for new builtins
+  * fix: avoid finding references in the current file twice
+  * Fix raw, responseless returns on willSaveWaitUntil
+  * build: bump zig min version
+  * track builtin API changes from zig/master
+  * analysis.zig getPositionContext() - check for null
+  * improve behavior if zig_exe_path is not set
+  * remove old stage1 code artifacts
+  * fix integer underflow in `ast.fullPtrType`
+  * fix cimport duplicate messages & crash
+  * remove `ast.tokenSlice()`
+  * simplify & refactor analysis code
+  * Zig @call changes
+  * Fix labels for real this time
+  * Bug stream fixes
+  * fix missed reference on windows
+  * Merge remote-tracking branch 'origin/master' into intern-pool
+  * automatically generate config associated files
+  * Fix build.zig comment
+  * Fix references to now removed, previously deprecated std.ascii declarations
+  * update TracyAllocator for new Allocator changes
+  * main ci: upload an artifact per arch
+  * Enable stage2
+  * Allocator.resize() does not adjust size of string allocated for URI to file path conversion
+  * update flake
+  * Fix rogue resize, bump minimum version
+  * fix #801, IOOB in foldingRanges
+  * Make sure zig lib path retrieved from `zig env` is absolute
+  * Allocgate 2.0 slain
+  * Add aarch64-linux to targets
+  * add initial intern pool implementation
+  * add a dummy cancelRequest implementation
+  * pass correct zig-cache path
+  * Added tuple type support, fixed compilation with zig master branch
+  * textDocument/selectionRange
+  * Revert "move to stage2"
+  * use textDocument/willSaveWaitUntil for autofix
+  * move to stage2
+  * set TextDocumentSync to Incremental
+  * Disable label references until #728 is resolved
+  * correctly find last full text change in applyTextEdits
+  * fix anytype snippet
+  * snippets for primitive types
+  * don't format files with syntax errors
+  * Simplify install procedure
+  * update snippets
+  * Quick comptime interpreter fix, place it behind an option
+  * shout-out to zls for helping with zls's development
+  * report actual zls version in initialize response
+  * find references in while continue expressions
+  * don't iterate handles while potential invalidation occurs
+  * detect comment position context
+  * format with `Ast.render` instead of `zig fmt`
+  * Add Open Collective
+  * do not panic on error response to workspace/configuration
+  * Update the command of installing binaries to install v0.10.0.
+  * Some comptime interpreter fixes
+  * Quick cleanup
+  * Add param type resolution & stop using stage2, still a bit broken :(
+  * Improve Zig version mismatch error
+  * We can interpret std now because of proper tree shaking!
+  * Casts++, compileLog, pointers
+  * More builtins, use stage2 because we can
+  * Some builtins, rudimentary hacky diagnostics; need to nerf global evaluation
+  * Imports, cross-boundary resolution; can import std but dies on missing builtins / lang features
+  * Field access, function calls based on function value
+  * Hacky mess but it works (only if your function is the first root decl tho :P)
+  * Add struct test
+  * comptime interpreter moment
+  * Nix: Pass `-Dcpu=baseline` to `zig build`
+  * add workflow to check build_runner works with a range of zig versions
+  * Add builtin data for 0.9.1 and 0.10.0
+  * Fix crash when getting signature of optional
+  * update minimum zig version
+
+-------------------------------------------------------------------
+Sun Aug 13 13:27:00 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Replace obsoleted `disabled` option with `manual`
+
+-------------------------------------------------------------------
+Tue Jan 24 08:49:39 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.10.0+g142:
+  * Properly refer to external repositories instead of lumping everything into zls (#936)
+  * Partially fixes #907 (#908)
+  * Fix lsp weird behaviour on block cursors (#891) (#905)
+  * pull_request -> pull_request_target all over (#935)
+  * Fix secrets access in foreign PRs (#934)
+  * Fix fuzzing ref (#933)
+  * Fix env transfer (#932)
+  * Last fuzzing PR for a while hopefully (#929)
+  * Fix fuzzing paths (#928)
+  * Add fuzzing workflow (#927)
+  * optimize folding range (#926)
+  * Goto definition works when the cursor is at the start of the identifier.
+  * fix builtin completions if `label_details_support` is false (#924)
+  * Generate data files in config_gen.zig (#903)
+  * Allow setting test filter in `zig build test` (#909)
+  * Fix bypass not having value on PR&commit (#920)
+  * Add fuzzing on deploy (#918)
+  * show better zig/zls version mismatch messages (#917)
+  * simplify formatting handler (#916)
+  * fix use after free for builtin completions (#914)
+  * resolve type of `@typeInfo` (#915)
+  * fix use after free (#911)
+  * move log overrides into `std_options` (#902)
+  * check submodules in build.zig (#904)
+  * add tests for textDocument/Definition (#900)
+  * improve memory allocations (#889)
+  * Fix build runner cwd causing relative @src (#898)
+  * return from main instead of calling exit (#894)
+  * Revert "Fix Nix build, add Nix to CI (#840)" (#893)
+  * fix returning freed memory in formattingHandler (#890)
+  * fix compile errors when targeting wasm (#886)
+  * Fix Nix build, add Nix to CI (#840)
+  * Verify minimum zig version at comptime (#885)
+  * improve completion on error and enums (#887)
+  * Fix crash when using nvim-lspconfig (#884)
+  * Add error return trace (#882)
+  * use more explicit error sets (#880)
+  * Autofix improvements (#879)
+  * remove setup wizard (#878)
+  * enable all capabilities by default (#877)
+  * Add a replay feature to zls (#857)
+  * add vscode config generation to `zig build gen` (#862)
+  * fix ast-check with single error (#865)
+  * Debugging utilities (#860)
+  * fix crashes found through fuzzing (#866)
+  * optimize `build.zig` discovery (#863)
+  * always use scoped logs instead of default (#864)
+  * fix: tres not available in a nix environment. (#855)
+  * fix: update master.zig to reflect changes to builtins (#858)
+  * Memory lifetime fixes (#861)
+  * chore: add command for updating master.zig on windows (#859)
+  * Use zig-lsp-codegen (#850)
+  * fix memory lifetime issues (#851)
+  * fix another underflow in ast.zig#fullWhile() (#853)
+  * prevent underflow in ast.zig#fullWhile() (#848)
+  * semantic_tokens: Fix handleComments not evaluating the last byte (#844)
+  * generated master data for new builtins (#845)
+  * fix: avoid finding references in the current file twice (#846)
+  * Fix raw, responseless returns on willSaveWaitUntil (#833)
+  * build: bump zig min version
+  * track builtin API changes from zig/master
+  * analysis.zig getPositionContext() - check for null
+  * improve behavior if zig_exe_path is not set (#830)
+  * remove old stage1 code artifacts (#831)
+  * fix integer underflow in `ast.fullPtrType` (#829)
+  * fix cimport duplicate messages & crash (#828)
+  * remove `ast.tokenSlice()` (#824)
+  * simplify & refactor analysis code (#823)
+  * Zig @call changes (#822)
+  * Fix labels for real this time (#819)
+  * Bug stream fixes (#818)
+  * fix missed reference on windows
+  * automatically generate config associated files (#813)
+  * Fix build.zig comment
+  * Fix references to now removed, previously deprecated std.ascii declarations
+  * update TracyAllocator for new Allocator changes (#812)
+  * main ci: upload an artifact per arch (#809)
+  * Enable stage2 (#810)
+  * Allocator.resize() does not adjust size of string allocated for URI to file path conversion (#806)
+  * update flake
+  * Fix rogue resize, bump minimum version (#805)
+  * fix #801, IOOB in foldingRanges (#802)
+  * Make sure zig lib path retrieved from `zig env` is absolute (#799)
+  * Allocgate 2.0 slain (#791)
+  * Add aarch64-linux to targets (#795)
+  * add a dummy cancelRequest implementation (#790)
+  * pass correct zig-cache path (#789)
+  * Added tuple type support, fixed compilation with zig master branch (#786)
+  * textDocument/selectionRange
+  * Revert "move to stage2 (#781)" (#783)
+  * use textDocument/willSaveWaitUntil for autofix (#780)
+  * move to stage2 (#781)
+  * set TextDocumentSync to Incremental (#776)
+  * Disable label references until #728 is resolved
+  * correctly find last full text change in applyTextEdits (#772)
+  * fix anytype snippet (#769)
+  * snippets for primitive types (#767)
+  * don't format files with syntax errors (#766)
+  * Simplify install procedure (#764)
+  * update snippets
+  * Quick comptime interpreter fix, place it behind an option (#761)
+  * shout-out to zls for helping with zls's development (#760)
+  * report actual zls version in initialize response (#759)
+  * find references in while continue expressions (#758)
+  * don't iterate handles while potential invalidation occurs (#757)
+  * detect comment position context (#756)
+  * format with `Ast.render` instead of `zig fmt` (#755)
+  * Add Open Collective (#751)
+  * do not panic on error response to workspace/configuration (#747)
+  * Update the command of installing binaries to install v0.10.0.
+  * Some comptime interpreter fixes
+  * Quick cleanup
+  * Add param type resolution & stop using stage2, still a bit broken :(
+  * Improve Zig version mismatch error (#744)
+  * We can interpret std now because of proper tree shaking!
+  * Casts++, compileLog, pointers
+  * More builtins, use stage2 because we can
+  * Some builtins, rudimentary hacky diagnostics; need to nerf global evaluation
+  * Imports, cross-boundary resolution; can import std but dies on missing builtins / lang features
+  * Field access, function calls based on function value
+  * Hacky mess but it works (only if your function is the first root decl tho :P)
+  * Add struct test
+  * comptime interpreter moment
+  * Update the main CI workflow (#742)
+  * Nix: Pass `-Dcpu=baseline` to `zig build` (#739)
+  * add workflow to check build_runner works with a range of zig versions (#732)
+  * Add builtin data for 0.9.1 and 0.10.0 (#735)
+  * Fix crash when getting signature of optional
+  * update minimum zig version
+  * only run CI workflow if atleast one zig file changed
+
+-------------------------------------------------------------------
+Sun Dec 04 14:43:52 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 0.10.0:
+  * README.md: Fix typo
+  * README.md: Remove trailing spaces
+  * README.md: Add missing punctuation
+  * fixed jrpc config treating empty strings as non null (#727)
+  * fix symbol references (#712)
+  * Fix region folding off-by-one error (#726)
+  * Improve folding regions (#720)
+  * Fix build runner optional issue (#725)
+  * fix cimport completion (#722)
+  * fix invalid union access in build_runner.zig (#723)
+  * add tests for completion (#719)
+  * update flake.lock (#710)
+  * fix allocator mismatch in tagStoreCompletionItems (#717)
+  * Added textDocument/foldingRange (#718)
+  * Fix diagnostics (#716)
+  * add missing semicolon
+  * Replace @minimum and @maximum with @min and @max. (#713)
+  * simplify dependency collection in references.zig
+  * return null if file can't be read in documentstore
+  * add separate function for loading handles with getOrLoadHandle
+  * return const Handle from getHandle
+  * fix tagStoreCompletionItems
+  * add more tracy calls in documentstore
+  * simplify tagStoreCompletionItems
+  * load handles on demand instead of ahead of time
+  * undo DocumentStore constness changes
+  * builtins also get their detailed label (#706)
+  * ci fix
+  * fix CI oops
+  * build.zig: ensure user zig matches program minimum
+  * disable label details if client only support old lsp (#707)
+  * Allow tabs for the indentation added by code actions. (#684)
+  * improve document of DocumentStore.zig
+  * fix relative_builtin_path option
+  * correctly resolve `import("builtin")`
+  * update cimport diagnostic collection
+  * ability to highlight global variables (#655)
+  * finish document store garbage collection
+  * correctly exclude builtin.zig from build.zig search
+  * revert timer removal
+  * correctly handle var decl without equal sign
+  * Add missing .switch_case_inline, .switch_case_inline_one cases (#699)
+  * mark DocumentStore & Handle const
+  * reimplement document store
+  * Update some config sites (#695)
+  * remove requests.Configuration (#696)
+  * remove types.TextDocument (#693)
+  * Adds a 'format to camelCase' codeaction for function names (#679)
+  * Self hosted fixes (#682)
+  * improve conformance to the lsp (#687)
+  * support 0.9.1 (#691)
+  * inlay_hints: implement ability to remove redundant hints (#690)
+  * handle `OptionsStep` in build_runner (#686)
+  * simplify Server.zig (#681)
+  * Revamp bulid.zig discovery (#688)
+  * show a warning when using an old zig version (#677)
+  * Code action improvements (#678)
+  * unmanage diff.zig (#680)
+  * explicit request didSave notification from client (#676)
+  * Remove unnecessary indirection
+  * Allocate build_runner args directly
+  * Move build options out of parse result instead of copying
+  * Fix typo in readme
+  * Document per-build configuration options
+  * Support for user-configurable build options
+  * cleanup `processPkgConfig`
+  * use `StringArrayHashMap` to remove duplicate include paths
+  * support pkgconfig
+  * update snippets
+  * add keyword snippets for autocomplete
+  * remove sessions.zig
+  * implement autofix
+  * implement textDocument/codeAction
+  * make types.Diagnostic correctly parseable
+  * refactor ast-check into separate function with small changes
+  * add `enable_autofix` option
+  * add code action types
+  * refactor getting the first & last parameter token into a function
+  * analysis: store function node in parameter declaration
+  * simplify completionHandler, gotoHandler, hoverHandler and their callees
+  * use an ArrayList in uri.pathRelative
+  * don't use inline for iterating builtin data
+  * avoid config copy for document store (#669)
+  * support generating test coverage with kcov
+  * create entire cache folder path
+  * report cImport failure using `textDocument/publishDiagnostics`
+  * Testing improvements (#662)
+  * Add target to Env struct
+  * Pass -lc to translate-c (#660)
+  * fix for zig master (#658)
+  * References improvements (#653)
+  * Completely overhaul offsets.zig (#643)
+  * sync with zig master version llvm15 (#652)
+  * update for zig master (#651)
+  * improve width of log prefix (#649)
+  * refactor builtin_completions
+  * fix warning in session test
+  * only globally log to stderr
+  * create global cache path directory if it doesn't exist yet
+  * place build_runner.zig in zls subfolder
+  * correctly handle anytype in inlay hint tooltips
+  * move updated units_test.zig into tests directory
+  * Add `chmod +x` command to macOS install instructions (#640)
+  * NativeTargetInfo.detect() no longer takes an Allocator param (#637)
+  * place build_runner.zig in cache directory (#635)
+  * fix: "f..o.o;" crashes the server (#629)
+  * respect document encoding
+  * reconstruct diagnostic range end of ast-gen
+  * update data/master.zig
+  * embedFile build_runner.zig in executable
+  * Build m1 binaries (#622)
+  * update README.md
+  * set custom config for tests
+  * enable ast-check by default
+  * fallback when failing to run git describe
+  * report version just like zig
+  * CI: Fetch all history for all tags and branches
+  * report zls version using git describe
+  * ast-check fixes
+  * ast-check for zls!
+  * remove unnecessary check in setup wizard
+  * only conditionally ask for global configuration in setup wizard
+  * add --show-config-path for querying the config path
+  * add JSON Schema
+  * fix textDocument/rename
+  * use comptime in tests.zig
+  * Switch to using mitchellh's zig-overlay
+  * add tests for cimport
+  * add tests for inlay hints
+  * add tests for semantic tokens
+  * prepare testing framework - allow source files from tests as a package - use `tests/tests.zig` as the entry point - add `Context.requestAlloc`
+  * fix: fix warning emitted incorrectly when using ..
+  * fix: fix an attempt to use null value in DocumentStore.resolveImport
+  * fix: fix server crash related to parsing incomplete function as a function's parameter
+  * emit correct c preprocessor macro in convertCInclude
+  * patch allocator mismatch in translate_c
+  * unmanage all the code
+  * workaround zig tarball bug (#599)
+  * Update analysis.zig
+  * Update Server.zig
+  * Issue templates (#600)
+  * update README.md
+  * fix Path <-> Uri mismatch
+  * fix: fix memory leaks related to updating config variables
+  * fix link of VS Code (#593)
+  * Update dependencies
+  * better handling for enum field signatures
+  * correctly handle path to uri conversion
+  * set `use_stage1` in build.zig
+  * Improve unused variable report accuracy
+  * 2 minor tidy-ups + fix for over-eager unused parameter error in function types
+  * add basic cImport support
+  * rename `build_runner_cache_path` to `global_cache_path`
+  * emit JSON formatted packages & include dirs in build_runner.zig
+  * Improve CLI, fix leak, & other.
+  * Refactor Ast helper functions
+  * trigger completion after `]`
+  * Minor cleanup in formatting function
+  * Add fallback to old behavior on diff failure
+  * Working diff for formatting
+  * Only return highlights for symbols in current document
+  * Fix memory leaks
+  * better semantic token for keyword `undefined`
+  * handle `ptr_type_sentinel`
+  * fix 'Cannot resolve std library import'
+  * Add missing tests
+  * move Context into Context.zig
+  * provide build_runner command on failure (#569)
+  * Format `zls.json` in setup wizard (#568)
+  * move ArenaAllocator into Server
+  * revive session tests
+  * add writer interface to Server & move main to main.zig
+  * fix format string (#565)
+  * update format specifiers for optional strings (#564)
+  * Fix tests for real? (#562)
+  * support 0.9 and master (#561)
+  * update README.md and setup - update notes for VS Code according to new changes in zls-vscode - add instructions for setting up Helix editor
+  * Update setup wizard for ST4 (#461)
+  * Implement textDocument/inlayHint (#559)
+  * docs(neovim/vim): Update instruction for Coc
+  * Limit references to current document for documentHighlight
+  * Implement textDocument/documentHighlight
+  * Highlight orelse as a keyword
+  * Make `known-folders` a flake input
+  * Use flake-utils
+  * Add known-folders as a flake input
+  * Add flake support
+  * Fix tokenRelativeLocation
+  * update to IterableDir changes in Zig std
+  * add f80
+  * Refactor builds!
+  * Start refactoring main -> Server's globals
+  * Fix config source of truth problems, refactor some more
+  * Add Discord link, DocumentStore now uses the config source of truth!
+  * Fix container function param completion
+  * (Hopefully) fix configuration uri/memory bugs
+  * Beam to felix land!
+  * Increase workflow perf/debugability on non-main
+  * setup: Update vscode configuration snippet
+  * use zstd tars
+  * Remove unnecessary pointer indirection
+  * Fix CI?
+  * workspace configuration server request model implemented!
+  * Fix build.zig typo for enable_tracy using better wording
+  * Add config option, fix config wizard, fix random crash and extern unused highlighting
+  * @import and @embedFile completions!
+  * Nice to have style hint and bug fix
+  * Fix small bugs
+  * Basic variable type resolution on hover
+  * Fix function snippets not working with details
+  * Add config option for unused vars
+  * Tests pass?
+  * Add super basic unused variable support
+  * Update test
+  * Put constants/imports at the top
+  * Append the actual label so it can then be sorted a-z
+  * Make Kind public
+  * Cleanup
+  * Add sortText to CompletionItem struct
+  * Sort completion items
+  * fix memory leak
+  * Ease debugging package loading from build_runner
+  * Add link to the note
+  * Implement label details support
+  * Update request to enable label details support
+  * Update types for label details support
+  * fix off by one error in documentRange
+  * Remove duplicated deinit defer for GPA
+  * only send format editings when necessary
+  * Expand table to include include_at_in_builtins and max_detail_length
+  * Add support for Spacemacs
+  * Add step to Kate installation instructions
+  * Add tracy
+  * Add tracy submodule
+  * Ignore unimplemented notifications
+  * Remove zinput dependency
+  * Add builtin path to configuration struct
+  * implement workspace/configuration
+  * Fix build runner for latest Zig
+  * enable windows and mac tests in CI
+  * fix tests
+  * use provided target for tests
+  * `std.ChildProcess.init` cannot error
+  * `std.math.cast` returns optional
+  * update build.zig for recent zig changes
+  * Fix missing doc comments in `inline fn`
+  * fix ast.lastToken() does not handle empty error_value
+  * update to zig master 0.10.0-dev.1679+d227f76af
+  * fix: ast.lasttoken() does not handle addrspace section
+  * Skip char and string literals when highlighting comments
+  * Fix ZLS config not found crash #410
+  * update for anytype field yeeting
+  * Fix build on zig master (0.10.0-dev.500+66cf011aa)
+  * builtin_uri: Fix typo in log message
+  * yolo: add type function symbols to outline
+  * Update prebuilt release URLs
+  * handle AccessDenied when making 'builtin.zig' fill-in
+  * only print stderr
+  * investing in debugging tools
+  * add back FIXME comment
+  * cant repro locally
+  * cleanup tests
+  * match other tests
+  * builtin_path might not be set if zig_exe_path isnt found
+  * uriFromImportStr expects a uri not a path
+  * add a default option for import(builtin)
+  * update builtin data for zig master
+  * add builtin data for 0.9.0
+  * Fix compilation on latest Zig
+
+-------------------------------------------------------------------
+Mon Jul 11 01:18:43 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- add 0001-add-pie-and-strip-build-options.patch
+
+-------------------------------------------------------------------
+Sun Jul 10 23:30:39 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 0.9.0:
+  * Update submodule to latest commit (#439)
+  * c_void -> anyopaque (#437)
+  * build_runner: Require some paths to be given (#369)
+  * update known-folders for allocgate (#432)
+  * Fix zigtools/zls#389
+  * allocgate defeated
+  * Remove newline
+  * Fixes errors that are caused by using deprecated functions
+  * Fix and generalize broken link to Sublime Text instructions
+  * Change notification method in log
+
+-------------------------------------------------------------------
+Sun Jul 10 23:29:03 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for zls 0.9.0
