@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon May 27 07:13:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.2:
+  + Fix hardware cursor with non-atomic KMS drivers.
+  + Fix night light state getting stuck on monitor changes.
+  + Fix sending preferred buffer transform.
+  + Fix key press events with immediate release being ignored.
+  + Fix unsetting clipboard on screen lock.
+  + Fix wrong input region of undecorated X11 windows.
+  + Fix windows potentially shrinking unexpectedly on configure.
+  + Fix popup menus sometimes closing immediately.
+  + Fixed crashes.
+  + Misc. bug fixes and cleanups.
+  + Updated transltions.
+
+-------------------------------------------------------------------
+Fri May 17 03:26:48 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add mutter-implement-text-input-v1.patch: This allows input
+  method to work in Chromium/Electron-based apps with Wayland Ozone
+  platform, which only has text-input-v1 support
+  (glgo#GNOME/mutter!3751, bsc#1219505).
+
+-------------------------------------------------------------------
 Wed May  1 13:01:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.1:

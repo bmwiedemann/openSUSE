@@ -2031,4 +2031,23 @@ New stable rel</comment>
   fixed upstream. (forwarded request 1171180 from dimstar)</comment>
     <requestid>1171389</requestid>
   </revision>
+  <revision rev="229" vrev="1">
+    <srcmd5>ddea4495e88c76e855ffc277cf3fe848</srcmd5>
+    <version>46.2</version>
+    <time>1716910081</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.2:
+  + Fix hardware cursor with non-atomic KMS drivers.
+  + Fix night light state getting stuck on monitor changes.
+  + Fix sending preferred buffer transform.
+  + Fix key press events with immediate release being ignored.
+  + Fix unsetting clipboard on screen lock.
+  + Fix wrong input region of undecorated X11 windows.
+  + Fix windows potentially shrinking unexpectedly on configure.
+  + Fix popup menus sometimes closing immediately.
+  + Fixed crashes.
+  + Misc. bug fixes and cleanups.
+  + Updated transltions. (forwarded request 1177042 from dimstar)</comment>
+    <requestid>1177064</requestid>
+  </revision>
 </revisionlist>
