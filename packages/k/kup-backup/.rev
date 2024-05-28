@@ -45,4 +45,12 @@
     <comment>- update URL to https://apps.kde.org/kup/</comment>
     <requestid>1009910</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bdb82811f6874aa4340ec5023fa4da4e</srcmd5>
+    <version>0.10.0</version>
+    <time>1716910138</time>
+    <user>anag+factory</user>
+    <comment>Update to 0.10.0</comment>
+    <requestid>1177140</requestid>
+  </revision>
 </revisionlist>

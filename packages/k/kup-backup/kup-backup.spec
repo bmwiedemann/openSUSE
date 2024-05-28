@@ -1,7 +1,7 @@
 #
 # spec file for package kup-backup
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,35 +16,42 @@
 #
 
 
+%define kf6_version 6.1.0
+%define qt6_version 6.6.0
+
 %define rname kup
-%bcond_without lang
+%bcond_without released
 Name:           kup-backup
-Version:        0.9.1
+Version:        0.10.0
 Release:        0
 Summary:        Backup scheduler for the Plasma desktop
-License:        GPL-2.0-only AND GPL-3.0-only
-Group:          System/GUI/KDE
+License:        GPL-3.0-or-later
 URL:            https://apps.kde.org/kup/
 Source0:        https://download.kde.org/stable/%{rname}/%{rname}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/%{rname}/%{rname}-%{version}.tar.xz.sig
-Source2:        %{rname}.keyring
+Source2:        kup.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  libgit2-devel
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IdleTime)
-BuildRequires:  cmake(KF5Init)
-BuildRequires:  cmake(KF5JobWidgets)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5Plasma)
-BuildRequires:  cmake(KF5Solid)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IdleTime) >= %{kf6_version}
+BuildRequires:  cmake(KF6JobWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6Solid) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Plasma) >= 6.0
+BuildRequires:  cmake(Plasma5Support) >= 6.0
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  pkgconfig(libgit2)
+Requires:       systemsettings6
 Recommends:     bup
 Recommends:     rsync
 
@@ -65,36 +72,39 @@ disturb you needlessly.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
-%if %{with lang}
-%find_lang %{rname}
-%endif
+%kf6_install
+
+%find_lang %{name} --all-name
 
 %files
 %license LICENSES/*
 %doc README.md
-%{_kf5_appstreamdir}/*.xml
-%{_kf5_bindir}/kup-daemon
-%{_kf5_bindir}/kup-filedigger
-%{_kf5_bindir}/kup-purger
-%{_kf5_configdir}/autostart/kup-daemon.desktop
-%{_kf5_debugdir}/kup.categories
-%{_kf5_iconsdir}/hicolor/scalable/apps/kup.svg
-%{_kf5_libdir}/libkdeinit5_kup-daemon.so
-%{_kf5_notifydir}/kupdaemon.notifyrc
-%{_kf5_plugindir}/kcm_kup.so
-%{_kf5_plugindir}/kio_bup.so
-%{_kf5_plugindir}/plasma/
-%{_kf5_sharedir}/plasma/
-%{_kf5_servicesdir}
+%{_kf6_applicationsdir}/kcm_kup.desktop
+%{_kf6_appstreamdir}/org.kde.kup.appdata.xml
+%{_kf6_appstreamdir}/org.kde.kupapplet.appdata.xml
+%{_kf6_bindir}/kup-daemon
+%{_kf6_bindir}/kup-filedigger
+%{_kf6_bindir}/kup-purger
+%{_kf6_configdir}/autostart/kup-daemon.desktop
+%{_kf6_debugdir}/kup.categories
+%{_kf6_iconsdir}/hicolor/scalable/apps/kup.svg
+%{_kf6_notificationsdir}/kupdaemon.notifyrc
+%{_kf6_plasmadir}/plasmoids/org.kde.kupapplet/
+%{_kf6_plugindir}/kf6/kio/kio_bup.so
+%{_kf6_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_kup.so
+%{_kf6_plugindir}/plasma5support
+%dir %{_kf6_plugindir}/plasma5support/dataengine
+%{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_kup.so
+%dir %{_kf6_sharedir}/plasma5support
+%dir %{_kf6_sharedir}/plasma5support/services
+%{_kf6_sharedir}/plasma5support/services/kupdaemonservice.operations
+%{_kf6_sharedir}/plasma5support/services/kupservice.operations
 
-%if %{with lang}
-%files lang -f %{rname}.lang
-%license LICENSES/*
-%endif
+%files lang -f %{name}.lang
 
 %changelog
