@@ -1,0 +1,25 @@
+From 67f0b3174062732aa846a6369232371c6dd42223 Mon Sep 17 00:00:00 2001
+From: Michael Cho <michael@michaelcho.dev>
+Date: Thu, 25 Apr 2024 11:29:49 -0400
+Subject: [PATCH] Fix build with Boost 1.85.0
+
+Signed-off-by: Michael Cho <michael@michaelcho.dev>
+---
+ src/system.hh.in | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/system.hh.in b/src/system.hh.in
+index 60ea0fd..c17448d 100644
+--- a/src/system.hh.in
++++ b/src/system.hh.in
+@@ -144,7 +144,6 @@
+ #include <boost/date_time/posix_time/posix_time_io.hpp>
+ #include <boost/date_time/gregorian/gregorian_io.hpp>
+ 
+-#include <boost/filesystem/convenience.hpp>
+ #include <boost/filesystem/exception.hpp>
+ #include <boost/filesystem/fstream.hpp>
+ #include <boost/filesystem/operations.hpp>
+-- 
+2.45.1
+

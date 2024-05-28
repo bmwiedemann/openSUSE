@@ -24,6 +24,8 @@ License:        BSD-3-Clause
 Group:          Productivity/Office/Finance
 URL:            https://github.com/ledger/ledger
 Source:         https://github.com/ledger/ledger/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-build-with-Boost-1.85.0.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_date_time-devel >= 1.72.0

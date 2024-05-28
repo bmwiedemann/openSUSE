@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 23 16:33:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change to fix build failure with boost 1.85:
+  * 0001-Fix-build-with-Boost-1.85.0.patch
+
+-------------------------------------------------------------------
 Thu Jul 13 22:18:37 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Update to version 3.3.2:
