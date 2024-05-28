@@ -3,6 +3,7 @@
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,17 +41,17 @@
 # Search path for pc files for pkgconf
 %global pkgconf_libdirs %{_libdir}/pkgconfig:%{_datadir}/pkgconfig
 
-%global somajor 4
+%global somajor 5
 %global libname lib%{name}%{somajor}
 %global devname lib%{name}-devel
 
 Name:           pkgconf
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        Package compiler and linker metadata toolkit
 License:        ISC
 Group:          Development/Tools/Building
-URL:            http://pkgconf.org/
+URL:            https://pkgconf.org/
 Source0:        https://distfiles.dereferenced.org/%{name}/%{name}-%{version}.tar.xz
 # Simple wrapper script to offer platform versions of pkgconfig from Fedora
 Source1:        platform-pkg-config.in
@@ -182,8 +183,7 @@ rm -rf %{buildroot}%{_datadir}/aclocal
 rm -rf %{buildroot}%{_mandir}/man7
 %endif
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files
 %license COPYING
@@ -204,17 +204,20 @@ rm -rf %{buildroot}%{_mandir}/man7
 %{_libdir}/lib%{name}*.so.%{somajor}.*
 
 %files -n %{devname}
+%license COPYING
 %{_libdir}/lib%{name}*.so
 %{_includedir}/%{name}/
 %{_libdir}/pkgconfig/lib%{name}.pc
 
 %if %{with pkgconfig_compat}
 %files m4
+%license COPYING
 %dir %{_datadir}/aclocal
 %{_datadir}/aclocal/pkg.m4
 %{_mandir}/man7/pkg.m4.7%{?ext_man}
 
 %files pkg-config
+%license COPYING
 %{_bindir}/pkg-config
 %{_bindir}/%{pkgconf_target_platform}-pkg-config
 %{_mandir}/man1/pkg-config.1%{?ext_man}
