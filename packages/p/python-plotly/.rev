@@ -338,4 +338,43 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1156902</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>8f68e7adbac6af49c86739dfe0005e5a</srcmd5>
+    <version>5.22.0</version>
+    <time>1716910140</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1176533 from bnavigator
+
+- Update to 5.22.0
+    * Updated Plotly.js from version 2.31.1 to version 2.32.0. See
+      the plotly.js CHANGELOG for more information. These changes are
+      reflected in the auto-generated plotly.graph_objects module.
+      Notable changes include:
+    * Add &quot;bold&quot; weight, &quot;italic&quot; style and &quot;small-caps&quot; variant
+      options to fonts [#6956]
+    * Fix applying autotickangles on axes with showdividers as well
+      as cases where tickson is set to &quot;boundaries&quot; [#6967], with
+      thanks to @my-tien for the contribution!
+    * Fix positioning of multi-line axis titles with standoff
+      [#6970], with thanks to @my-tien for the contribution!
+  - Release 5.21.0
+    * Updated Plotly.js from version 2.30.0 to version 2.31.1. See
+      the plotly.js CHANGELOG for more information. These changes are
+      reflected in the auto-generated plotly.graph_objects module.
+      Notable changes include:
+    * Add zorder attribute to various cartesian traces for
+      controlling stacking order of SVG traces drawn into a subplot
+      [#6918, #6953], This feature was anonymously sponsored: thank
+      you to our sponsor!
+    * Add &quot;between&quot; option to shape layer for placing them above grid
+      lines and below traces [#6927], with thanks to @my-tien for the
+      contribution!
+    * Add &quot;raw&quot; sizemode to cone trace [#6938]
+    * Add layout.hoversubplots to enable hover effects across
+      multiple cartesian suplots sharing one axis [#6947, #6950]
+    * Fixed orjson loading issue [#4562]
+  - Release 5.20.0
+    * Updated Plotly.js from version 2.29.1 to version 2.30.0. See</comment>
+    <requestid>1177151</requestid>
+  </revision>
 </revisionlist>

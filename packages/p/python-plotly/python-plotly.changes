@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Thu May 23 18:43:23 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.22.0
+  * Updated Plotly.js from version 2.31.1 to version 2.32.0. See
+    the plotly.js CHANGELOG for more information. These changes are
+    reflected in the auto-generated plotly.graph_objects module.
+    Notable changes include:
+  * Add "bold" weight, "italic" style and "small-caps" variant
+    options to fonts [#6956]
+  * Fix applying autotickangles on axes with showdividers as well
+    as cases where tickson is set to "boundaries" [#6967], with
+    thanks to @my-tien for the contribution!
+  * Fix positioning of multi-line axis titles with standoff
+    [#6970], with thanks to @my-tien for the contribution!
+- Release 5.21.0
+  * Updated Plotly.js from version 2.30.0 to version 2.31.1. See
+    the plotly.js CHANGELOG for more information. These changes are
+    reflected in the auto-generated plotly.graph_objects module.
+    Notable changes include:
+  * Add zorder attribute to various cartesian traces for
+    controlling stacking order of SVG traces drawn into a subplot
+    [#6918, #6953], This feature was anonymously sponsored: thank
+    you to our sponsor!
+  * Add "between" option to shape layer for placing them above grid
+    lines and below traces [#6927], with thanks to @my-tien for the
+    contribution!
+  * Add "raw" sizemode to cone trace [#6938]
+  * Add layout.hoversubplots to enable hover effects across
+    multiple cartesian suplots sharing one axis [#6947, #6950]
+  * Fixed orjson loading issue [#4562]
+- Release 5.20.0
+  * Updated Plotly.js from version 2.29.1 to version 2.30.0. See
+    the plotly.js CHANGELOG for more information. These changes are
+    reflected in the auto-generated plotly.graph_objects module.
+    Notable changes include:
+  * Add fill gradients for scatter traces [#6905], with thanks to
+    @lumip for the contribution!
+  * Add indentation to legend [#6874], with thanks to @my-tien for
+    the contribution!
+- Release 5.19.0
+  * Updated Plotly.js from version 2.27.0 to version 2.29.1. See
+    the plotly.js CHANGELOG for more information. These changes are
+    reflected in the auto-generated plotly.graph_objects module.
+    Notable changes include:
+  * Add layout.barcornerradius and trace.marker.cornerradius
+    properties to support rounding the corners of bar traces
+    [#6761], with thanks to Displayr for sponsoring development!
+  * Add autotickangles to cartesian and radial axes [#6790], with
+    thanks to @my-tien for the contribution!
+  * Add align option to sankey nodes to control horizontal
+    alignment [#6800], with thanks to @adamreeve for the
+    contribution!
+  * Add the possibility of loading "virtual-webgl" script for WebGL
+    1 to help display several WebGL contexts on a page [#6784],
+    with thanks to @greggman for the contribution!
+  * Add options to use base64 encoding (bdata) and shape (for 2
+    dimensional arrays) to declare various typed arrays i.e.
+    dtype=(float64|float32|int32|int16|int8|uint32|uint16|uint8)
+    [#5230]
+  * Adjust stamen styles to point to stadiamaps.com, the users may
+    also need to provide their own API_KEY via
+    config.mapboxAccessToken [#6776, #6778]
+  * Removed Python 3.6 and Python 3.7 support [#4492]
+  * Ensure scatter mode is deterministic from px [#4429]
+  * Fix issue with creating dendrogram in subplots [#4411],
+  * Fix issue with px.line not accepting "spline" line shape
+    [#2812]
+  * Fix KeyError when using column of pd.Categorical dtype with
+    unobserved categories [#4437]
+  * Fix dataframe interchange in case column_names returns an
+    unmaterialized object: generator, iterator, etc. [#4442]
+  * Fix issue with FutureWarning being displayed when setting the
+    color argument in plotly.express [#4519]
+- Release 5.18.0
+  * Updated Plotly.js from version 2.26.0 to version 2.27.0. See
+    the plotly.js CHANGELOG for more information. These changes are
+    reflected in the auto-generated plotly.graph_objects module.
+    Notable changes include:
+  * Add insiderange to cartesian axes to help avoid overlap between
+    visible grid lines and tick labels of the counter axis when
+    they are positioned inside [#6735], this feature was
+    anonymously sponsored: thank you to our sponsor!
+  * Fix column order changes on hover [#6718], with thanks to
+    @bhavinpatel1109 for the contribution!
+  * Fix hover at timestamp '1970-01-01 00:00:00' [#6752], with
+    thanks to @adamjhawley for the contribution!
+  * Fix clearing empty candlestick using react [#6757]
+  * Repair crash on Matplotlib 3.8 related to get_offset_position
+    [#4372],
+  * Handle deprecation of pandas.Series.dt.to_pydatetime() calls
+    and suppress the FutureWarning they currently emit. [#4379]
+- boo#1224382, CVE-2024-4067 bogus CVE from overeager
+  pseudo-security researchers. Ignore it. Neither micromatch nor
+  braces is used in plotly runtime, it's pulled in by eslint for
+  development only.
+
+-------------------------------------------------------------------
 Mon Mar  4 09:44:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.17.0:

@@ -16,14 +16,13 @@
 #
 
 
-%define skip_python39 1
 Name:           python-plotly
-Version:        5.17.0
+Version:        5.22.0
 Release:        0
 Summary:        Library for collaborative, interactive, publication-quality graphs
 License:        MIT
 URL:            https://github.com/plotly/plotly.py
-# Get the PyPI archive for the bundles JS files
+# Get the PyPI archive for the bundled JS files
 Source:         https://files.pythonhosted.org/packages/source/p/plotly/plotly-%{version}.tar.gz
 # Additionally use the GitHub archive for the test suite
 Source1:        https://github.com/plotly/plotly.py/archive/refs/tags/v%{version}.tar.gz#/plotly.py-%{version}-gh.tar.gz
