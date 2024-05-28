@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May 28 08:39:49 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- update to 6.9
+  - Regression Bug 5349: basic_nis_auth build error: unterminated #ifndef
+  - Bug 5069: Keep listening after getsockname() error
+  - Bug 5360: FwdState::noteDestinationsEnd() assertion "err"
+  - Reduce stale errno usage
+  - Plug memory leak in handling cache manager requests
+  - Fix error: template-id not allowed for constructor in C++20
+  - Improve release packaging automation
+
+- header_fixups.patch: upstreamed, removed
+- 9be86d8db5e8f40829374d26334d0bb5272c1afd.patch: upstreamed, removed
+- CVE-2024-33427.patch: fixes possible buffer overread leading to
+  denial of service (bsc#1225417, CVE-2024-33427)
+
+-------------------------------------------------------------------
 Wed Mar  6 12:02:14 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - update to 6.8

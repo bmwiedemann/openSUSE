@@ -1234,4 +1234,23 @@ and CVE references,
  - Fix handling of expanding HTTP header values (bsc#1219960, CVE-2024-25617)</comment>
     <requestid>1155563</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>1f4b7ef6f00760a9867002852fd820ee</srcmd5>
+    <version>6.9</version>
+    <time>1716910223</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.9
+  - Regression Bug 5349: basic_nis_auth build error: unterminated #ifndef
+  - Bug 5069: Keep listening after getsockname() error
+  - Bug 5360: FwdState::noteDestinationsEnd() assertion &quot;err&quot;
+  - Reduce stale errno usage
+  - Plug memory leak in handling cache manager requests
+  - Fix error: template-id not allowed for constructor in C++20
+  - Improve release packaging automation
+- header_fixups.patch: upstreamed, removed
+- 9be86d8db5e8f40829374d26334d0bb5272c1afd.patch: upstreamed, removed
+- CVE-2024-33427.patch: fixes possible buffer overread leading to
+  denial of service (bsc#1225417, CVE-2024-33427)</comment>
+    <requestid>1177317</requestid>
+  </revision>
 </revisionlist>

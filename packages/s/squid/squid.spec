@@ -24,7 +24,7 @@
 %define         squidhelperdir %{_sbindir}
 %endif
 Name:           squid
-Version:        6.8
+Version:        6.9
 Release:        0
 Summary:        Caching and forwarding HTTP web proxy
 License:        GPL-2.0-or-later
@@ -51,8 +51,7 @@ Source17:       tmpfilesdir.squid.conf
 Patch1:         missing_installs.patch
 Patch2:         old_nettle_compat.patch
 Patch3:         harden_squid.service.patch
-Patch4:         header_fixups.patch
-Patch5:         9be86d8db5e8f40829374d26334d0bb5272c1afd.patch
+Patch4:         CVE-2024-33427.patch
 BuildRequires:  cppunit-devel
 BuildRequires:  expat
 BuildRequires:  fdupes
@@ -109,8 +108,7 @@ accelerator.
 %setup -q
 cp %{SOURCE10} .
 %patch -P 3 -p1
-%patch -P4 -p1
-%patch -P5 -p1
+%patch -P 4 -p1
 
 # upstream patches after RELEASE
 perl -p -i -e 's|%{_prefix}/local/bin/perl|%{_bindir}/perl|' `find -name "*.pl"`
