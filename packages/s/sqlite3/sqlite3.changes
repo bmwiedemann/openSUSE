@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu May 23 19:21:24 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Update to release 3.46.0:
+  * https://sqlite.org/releaselog/3_46_0.html
+  * Enhance PRAGMA optimize in multiple ways.
+  * Enhancements to the date and time functions.
+  * Add support for underscore ("_") characters between digits in
+    numeric literals.
+  * Add the json_pretty() SQL function.
+  * Query planner improvements.
+  * Allocate additional memory from the heap for the SQL parser
+    stack if that stack overflows, rather than reporting a "parser
+    stack overflow" error.
+  * Allow ASCII control characters within JSON5 string literals.
+  * Fix the -> and ->> JSON operators so that when the right-hand
+    side operand is a string that looks like an integer it is still
+    treated as a string, because that is what PostgreSQL does.
+  * Obsoletes sqlite3-float-i586.patch.
+
+-------------------------------------------------------------------
 Wed Apr 17 08:50:51 UTC 2024 - Reinhard Max <max@suse.com>
 
 - Update to release 3.45.3:
