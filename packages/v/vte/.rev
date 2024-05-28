@@ -1260,4 +1260,14 @@ New upstream release</comment>
   * build: Post release version bump (forwarded request 1171351 from dimstar)</comment>
     <requestid>1171402</requestid>
   </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>0e798dd3110e74ac31ff3285504d892c</srcmd5>
+    <version>0.76.2</version>
+    <time>1716910078</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.76.2:
+  * widget: Make CSS parse warnings non-fatal
+  * build: Post release version bump (forwarded request 1177039 from dimstar)</comment>
+    <requestid>1177062</requestid>
+  </revision>
 </revisionlist>
