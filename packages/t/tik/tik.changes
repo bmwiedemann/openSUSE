@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 27 14:55:51 UTC 2024 - rbrown@suse.com
+
+- Update to version 1.0.4:
+  * module-mig: filter out empty SD card readers from install target list
+
+-------------------------------------------------------------------
 Fri May 24 10:31:06 UTC 2024 - rbrown@suse.com
 
 - Update to version 1.0.3:
