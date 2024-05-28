@@ -1,11 +1,9 @@
 Description: Disable the JDK check
 Author: Emmanuel Bourg <ebourg@apache.org>
 Forwarded: not-needed
-Index: mysql-connector-j-8.0.31/build.xml
-===================================================================
---- mysql-connector-j-8.0.31.orig/build.xml
-+++ mysql-connector-j-8.0.31/build.xml
-@@ -405,7 +405,7 @@ See also com.mysql.cj.conf.PropertyDefin
+--- a/build.xml
++++ b/build.xml
+@@ -400,7 +400,7 @@ See also com.mysql.cj.conf.PropertyDefin
  
  
      <!-- Initialize the build directory and check requirements for compiling the driver code. -->

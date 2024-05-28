@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Mon May 27 10:09:41 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+- Patch mysql-connector-java-remove-opentelemetry-support.patch
+  removes OpenTelemetry support, which was added upstream
+- Refresh the following patches for updated codebase:
+  * javac-check.patch
+  * reproducible-build.patch
+  * mysql-connector-java-remove-oci-support.patch
+- Update to 8.4.0
+  * WL#16174, Support for VECTOR data type.
+  * Fix for Bug#36380711, Tests failing due to removal of
+    deprecated features.
+  * Fix for Bug#113600 (Bug#36171575), Contribution: Fix join
+    condition for retrieval of imported primary keys.  Thanks to
+    Henning Pöttker for his contribution.
+  * WL#16196, GPL License Exception Update.
+  * Fix for Bug#111031 (Bug#35392222), Contribution: Update
+    SyntaxRegressionTest.java.  Thanks to Abby Palmero for her
+    contribution.
+  * Fix for Bug#113599 (Bug#36171571), Contribution: Replace
+    StringBuffer with StringBuilder in ValueEncoders.  Thanks to
+    Henning Pöttker for his contribution.
+  * Fix for Bug#91550 (Bug#28297874), DatabaseMetaData specifies
+    incorrect extra name characters.
+  * Fix for Bug#113129 (Bug#36043145), setting the FetchSize on a
+    Statement object does not affect.
+  * Fix for Bug#22931632, GETPARAMETERBINDINGS() ON A PS RETURNS
+    NPE WHEN NOT ALL PARAMETERS ARE BOUND.
+  * WL#16147, Remove support for FIDO authentication.
+  * Fix for Bug#110286 (Bug#35152855), Only call
+    Messages.getString(...) when it's needed (when the SQLException
+    is thrown).  Thanks to Janick Reynders for his contribution.
+  * Fix for Bug#23143279, CLIENT HANG WHEN LOADBALANCESTRATEGY IS
+    BESTRESPONSETIME.
+- Includes changes from 8.3.0
+  * Fix for Bug#107107 (Bug#34101635), Redundant "Reset stmt" when
+    setting useServerPrepStmts&cachePrepStmts to true.  Thanks to
+    Marcos Albe for his contribution.
+  * Fix for Bug#19845752, COMMENT PARSING IS NOT PROPER IN
+    CONNECTOR JDBC.
+  * Fix for Bug#112884 (Bug#36043166), Setting a large timeout
+    leads to errors when executing SQL.
+  * WL#16077, Upgrade 3rd party libraries and tools.
+  * WL#16074, Upgrade Protocol Buffers dependency to
+    protobuf*java-3.25.1.
+  * Fix for Bug#35929119, Issue with mysql-connector-j 8.0.33
+    connector (XDEVAPI) - getsession is slow.
+  * Fix for Bug#111107 (Bug#36023972),
+    CallableStatement::getParameterMetaData reports incorrect
+    parameterCount.
+  * Fix for Bug#109546 (Bug#34958912), executeUpdate throws
+    SQLException on queries that are only comments.
+  * Fix for Bug#112195 (Bug#35749998), getWarnings() of
+    StatementImpl contains all warnings.
+  * Fix for Bug#111360 (Bug#35488208), Unexpected list of permitted ciphers.
+  * Fix for Bug#96582 (Bug#30222032),
+    jdbc.MysqlParameterMetadata#isNullable doesnt check whether to
+    be simple.
+  * Fix for Bug#95796 (Bug#29907618), Parameter metadata inferred
+    incorrectly when procedure or function doesn't exist.
+  * Fix for Bug#73774 (Bug#19531305), Can't execute a stored
+    procedure if exists function with same name.
+
+-------------------------------------------------------------------
 Wed Feb 21 21:41:53 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -1,0 +1,43 @@
+--- a/src/main/core-impl/java/com/mysql/cj/NativeSession.java
++++ b/src/main/core-impl/java/com/mysql/cj/NativeSession.java
+@@ -37,7 +37,6 @@ import java.util.concurrent.CopyOnWriteA
+ import java.util.function.Supplier;
+ 
+ import com.mysql.cj.conf.HostInfo;
+-import com.mysql.cj.conf.PropertyDefinitions.OpenTelemetry;
+ import com.mysql.cj.conf.PropertyKey;
+ import com.mysql.cj.conf.PropertySet;
+ import com.mysql.cj.conf.RuntimeProperty;
+@@ -51,7 +50,6 @@ import com.mysql.cj.exceptions.MysqlErro
+ import com.mysql.cj.exceptions.OperationCancelledException;
+ import com.mysql.cj.interceptors.QueryInterceptor;
+ import com.mysql.cj.log.Log;
+-import com.mysql.cj.otel.OpenTelemetryHandler;
+ import com.mysql.cj.protocol.ColumnDefinition;
+ import com.mysql.cj.protocol.NetworkResources;
+ import com.mysql.cj.protocol.ProtocolEntityFactory;
+@@ -107,24 +105,6 @@ public class NativeSession extends CoreS
+ 
+     public NativeSession(HostInfo hostInfo, PropertySet propSet) {
+         super(hostInfo, propSet);
+-
+-        // Check Telemetry option.
+-        RuntimeProperty<OpenTelemetry> openTelemetry = this.propertySet.getEnumProperty(PropertyKey.openTelemetry);
+-        if (openTelemetry.getValue() == OpenTelemetry.PREFERRED || openTelemetry.getValue() == OpenTelemetry.REQUIRED) {
+-            if (!OpenTelemetryHandler.isOpenTelemetryApiAvailable()) {
+-                if (openTelemetry.getValue() == OpenTelemetry.REQUIRED) {
+-                    throw ExceptionFactory.createException(Messages.getString("Connection.OtelApiNotFound"));
+-                }
+-                if (openTelemetry.isExplicitlySet()) {
+-                    getLog().logInfo(Messages.getString("Connection.OtelApiNotFound"));
+-                }
+-                setTelemetryHandler(NoopTelemetryHandler.getInstance());
+-            } else {
+-                setTelemetryHandler(new OpenTelemetryHandler());
+-            }
+-        } else {
+-            setTelemetryHandler(NoopTelemetryHandler.getInstance());
+-        }
+     }
+ 
+     public void connect(HostInfo hi, String user, String password, String database, int loginTimeout, TransactionEventHandler transactionManager)

@@ -18,7 +18,7 @@
 
 %define new_name mysql-connector-j
 Name:           mysql-connector-java
-Version:        8.2.0
+Version:        8.4.0
 Release:        0
 Summary:        Official JDBC Driver for MySQL
 License:        GPL-2.0-or-later
@@ -38,6 +38,7 @@ Patch0:         javac-check.patch
 #   therefore it's removed during prep phase
 Patch1:         %{name}-remove-oci-support.patch
 Patch2:         reproducible-build.patch
+Patch3:         %{name}-remove-opentelemetry-support.patch
 BuildRequires:  ant
 BuildRequires:  ant-contrib
 BuildRequires:  apache-commons-logging
@@ -82,8 +83,9 @@ set that supports the capabilities of MySQL.
 %patch -P 0 -p1
 %patch -P 1 -p1
 %patch -P 2 -p1
+%patch -P 3 -p1
 
-%if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150200
+%if 0%{?suse_version} <= 1500
 # ship protobuf generated files compatible with protobuf 3.9.2
 # which is the version we have in SLE15 SP2, the files were taken
 # from commit 6976d9d779b498c254fc5cab5e69cfc74fc3e4f0, which is
@@ -94,6 +96,11 @@ tar -xvf %{SOURCE1} -C .
 
 # remove OCI support
 rm -rf src/main/protocol-impl/java/com/mysql/cj/protocol/a/authentication/AuthenticationOciClient.java
+
+# remove OpenTelemetry support
+rm -rf src/main/core-impl/java/com/mysql/cj/otel/OpenTelemetryHandler.java
+rm -rf src/main/core-impl/java/com/mysql/cj/otel/OpenTelemetrySpan.java
+rm -rf src/main/core-impl/java/com/mysql/cj/otel/OpenTelemetryScope.java
 
 # extra libs
 mkdir -p lib
@@ -109,7 +116,7 @@ export CLASSPATH=$(build-classpath \
     ant-contrib \
     commons-logging \
     slf4j \
-    jdbc-stdext\
+    jdbc-stdext \
     jta \
     junit \
     reload4j \
