@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 17 01:03:37 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding version-fixup.diff to account for leftover 1.613.1 references
+- Update to 1.614.0:
+  * This release matches the content provided in the DirectX12
+    Agility SDK and the 1.614.0 NuGet package.
+    - https://devblogs.microsoft.com/directx/directx12agility/
+    - https://www.nuget.org/packages/Microsoft.Direct3D.D3D12/1.614.0
+
+-------------------------------------------------------------------
 Tue Mar 19 18:04:58 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 1.613.1:

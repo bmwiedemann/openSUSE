@@ -17,7 +17,7 @@
 
 
 Name:           DirectX-Headers
-Version:        1.613.1
+Version:        1.614.0
 Release:        0
 Summary:        DirectX Headers for Mesa
 License:        MIT
@@ -25,6 +25,7 @@ URL:            https://github.com/microsoft/DirectX-Headers
 # osc service runall download_files
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
+Patch0:         version-fixup.diff
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  meson

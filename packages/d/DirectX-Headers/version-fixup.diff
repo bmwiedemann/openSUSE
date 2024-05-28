@@ -1,0 +1,22 @@
+--- CMakeLists.txt.smb	2024-05-17 09:08:48.438066598 -0400
++++ CMakeLists.txt	2024-05-17 09:08:57.914876687 -0400
+@@ -3,7 +3,7 @@
+ cmake_minimum_required(VERSION 3.10.2)
+ project(DirectX-Headers
+     LANGUAGES CXX
+-    VERSION 1.613.1
++    VERSION 1.614.0
+ )
+ include(CTest)
+ set(CMAKE_CXX_STANDARD 14) 
+--- meson.build.smb	2024-05-17 09:10:12.959472507 -0400
++++ meson.build	2024-05-17 09:09:08.685039684 -0400
+@@ -1,7 +1,7 @@
+ # Copyright (c) Microsoft Corporation.
+ # Licensed under the MIT License.
+ 
+-project('DirectX-Headers', 'cpp', version : '1.613.1',
++project('DirectX-Headers', 'cpp', version : '1.614.0',
+         default_options : ['cpp_std=c++14'])
+ 
+ cpp = meson.get_compiler('cpp')
