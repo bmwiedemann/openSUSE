@@ -43,9 +43,11 @@
 %bcond_with    pdns_lmdb
 %endif
 
-%if 0%{?suse_version} < 1500
-BuildRequires:  gcc9-c++
-%define compiler_ver -9
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+# std::filesystem is supported since gcc8, but default gcc is 7
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
+%define compiler_ver -12
 %else
 BuildRequires:  gcc-c++
 %endif
@@ -57,7 +59,7 @@ ExclusiveArch:  no-32bit-build
 %endif
 
 Name:           pdns
-Version:        4.9.0
+Version:        4.9.1
 Release:        0
 Summary:        Authoritative-only nameserver
 License:        GPL-2.0-only
@@ -67,12 +69,13 @@ Source:         https://downloads.powerdns.com/releases/pdns-%{version}.tar.bz2
 Source1:        https://downloads.powerdns.com/releases/pdns-%{version}.tar.bz2.sig
 Source2:        https://powerdns.com/powerdns-keyblock.asc#/pdns.keyring
 Patch0:         pdns-4.0.3_allow_dacoverride_in_capset.patch
+# PATCH-FIX-OPENSUSE pdns-4.9.0-fix_boost.patch -- fix including boost headers with older releases
+Patch1:         pdns-4.9.0-fix_boost.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  curl-devel
 BuildRequires:  flex
-BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  libsodium-devel
@@ -84,7 +87,9 @@ BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
-%if 0%{?suse_version} > 1325
+%if 0%{?suse_version}
+# version 1.55 adds support for boost::hash<CompositeKeyResult> used in auth-querycache.cc
+BuildRequires:  libboost_headers-devel >= 1.55
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_serialization-devel
 %else
@@ -264,6 +269,7 @@ This package holds the LMDB backend for pdns.
 %autosetup -n %{name}-%{version} -p1
 
 %build
+export CC=gcc%{?compiler_ver}
 export CXX=g++%{?compiler_ver}
 %configure \
   --docdir=%{_docdir}/%{name}/ \

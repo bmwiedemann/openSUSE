@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue May 28 09:49:18 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Update to version 4.9.1
+  * Improvements
+    + rpm: Change home directory to /var/lib/pdns
+    + m4: Add option for 64-bit time_t on 32-bit systems with glibc-2.34 (Sven Wegener)
+    + Wrap backend factories in smart pointers
+    + (optionally) drop whitespace on join
+
+  * Bug Fixes
+    + autoconf: allow prerelease systemd versions (Chris Hofstaedtler)
+    + ixfrdist: Fix broken ‘uid’ and ‘gid’ parsing for non-numerical values
+    + YaHTTP: Enforce max # of request fields and max request line size
+    + Fix memory leaks in the bind file format parser
+    + dnsproxy: fix build on s390x (Chris Hofstaedtler)
+    + pdnsutil check-zone: accept LUA A/AAAA as SVCB address targets
+    + Properly finalize PKCS11 modules before releasing them (Aki Tuomi)
+    + don’t crash when a catalog SOA is invalid
+    + debian: adjust option name in shipped postinst
+
+-------------------------------------------------------------------
+Tue Apr  2 22:10:29 UTC 2024 - Adam Mizerski <adam@mizerski.pl>
+
+- fix building on older openSUSE releases
+- added pdns-4.9.0-fix_boost.patch
+
+-------------------------------------------------------------------
 Tue Mar 26 03:49:22 UTC 2024 - jun wang <jgwang@suse.com>
 
 - Update to version 4.9.0

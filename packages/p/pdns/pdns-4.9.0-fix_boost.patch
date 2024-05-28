@@ -1,0 +1,51 @@
+Index: pdns-4.9.0/pdns/dnsparser.hh
+===================================================================
+--- pdns-4.9.0.orig/pdns/dnsparser.hh
++++ pdns-4.9.0/pdns/dnsparser.hh
+@@ -39,6 +39,8 @@
+ #include "iputils.hh"
+ #include "svc-records.hh"
+ 
++#include <boost/utility.hpp>
++
+ /** DNS records have three representations:
+     1) in the packet
+     2) parsed in a class, ready for use
+Index: pdns-4.9.0/pdns/dnswriter.hh
+===================================================================
+--- pdns-4.9.0.orig/pdns/dnswriter.hh
++++ pdns-4.9.0/pdns/dnswriter.hh
+@@ -30,6 +30,7 @@
+ #include "svc-records.hh"
+ #include <arpa/inet.h>
+ 
++#include <boost/utility.hpp>
+ 
+ /** this class can be used to write DNS packets. It knows about DNS in the sense that it makes
+     the packet header and record headers.
+Index: pdns-4.9.0/pdns/iputils.hh
+===================================================================
+--- pdns-4.9.0.orig/pdns/iputils.hh
++++ pdns-4.9.0/pdns/iputils.hh
+@@ -33,6 +33,8 @@
+ #include <netdb.h>
+ #include <sstream>
+ 
++#include <boost/utility.hpp>
++
+ #include "namespaces.hh"
+ 
+ #ifdef __APPLE__
+Index: pdns-4.9.0/pdns/auth-zonecache.hh
+===================================================================
+--- pdns-4.9.0.orig/pdns/auth-zonecache.hh
++++ pdns-4.9.0/pdns/auth-zonecache.hh
+@@ -27,6 +27,8 @@
+ #include "lock.hh"
+ #include "misc.hh"
+ 
++#include <boost/utility.hpp>
++
+ class AuthZoneCache : public boost::noncopyable
+ {
+ public:
