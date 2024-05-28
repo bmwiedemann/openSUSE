@@ -374,4 +374,18 @@
 </comment>
     <requestid>1127273</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>9d4f6503456292c49fbdcf68fd271249</srcmd5>
+    <version>1.420000</version>
+    <time>1716910030</time>
+    <user>anag+factory</user>
+    <comment>- updated to 1.42
+   see /usr/share/doc/packages/perl-DateTime-Locale/Changes
+  1.42     2024-04-18
+  - Rebuilt all locale data with the data from CLDR 45.0.0
+  1.41     2024-04-06
+  - Rebuilt all locale data with the data from CLDR 44.1.0.
+</comment>
+    <requestid>1177157</requestid>
+  </revision>
 </revisionlist>
