@@ -17,7 +17,7 @@
 
 
 %global somajor 1
-%global sominor 33
+%global sominor 34
 %global revision 0
 %global libname libjanet%{somajor}_%{sominor}
 
