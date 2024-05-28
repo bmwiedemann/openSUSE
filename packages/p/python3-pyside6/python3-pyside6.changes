@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 24 11:22:44 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.7.1. Check the installed changes-6.7.1 file for the
+  full list of changes
+- Drop patch, merged upstream:
+  * 0001-Multimedia-Adapt-to-revert-of-QAudio-QtAudio-namespa.patch
+- Add upstream build fix:
+  * 0001-shiboken-add-missing-include.patch
+
+-------------------------------------------------------------------
 Tue Apr  9 11:46:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change:
