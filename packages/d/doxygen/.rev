@@ -1174,4 +1174,28 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1150589 from dimstar)</comment>
     <requestid>1150740</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>27111ba92db12f989e30eae4802afbb2</srcmd5>
+    <version>1.11.0</version>
+    <time>1716910034</time>
+    <user>anag+factory</user>
+    <comment>- Update to Doxygen 1.11.0
+  * Add Markdown style todo list
+  * Add support for GitHub Markdown style alerts
+  * Add a &quot;Run&quot; menu item key-command to DoxyWizard
+  * Added 'raise' and 'prefix' options to @include{doc}
+  * Support `link` / `endlink` command in section title
+  * Add support for @subparagraph and @subsubparagraph
+  * Translation updates for German/Greek/Polish/Portuegse/Dutch/Chinese
+  * `doxyapp --locate` list all overloads by including arguments
+  * Adding support for &quot;engine&quot; files for plantuml
+  * Show emoji in HTML treeview
+  * Add `HTML_CODE_FOLDING` possibility to CHM
+  * Make `HTML_CODE_FOLDING` possible when `DISABLE_INDEX=YES`
+  * Add doxyindexer and doxysearch installation
+  * cmake: always install man pages, only install for the
+    binaries installed
+  * allow function ptr with `INLINE_SIMPLE_STRUCTS`</comment>
+    <requestid>1177172</requestid>
+  </revision>
 </revisionlist>

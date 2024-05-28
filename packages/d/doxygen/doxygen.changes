@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed May 22 21:28:25 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- Update to Doxygen 1.11.0
+  * Add Markdown style todo list
+  * Add support for GitHub Markdown style alerts
+  * Add a "Run" menu item key-command to DoxyWizard
+  * Added 'raise' and 'prefix' options to @include{doc}
+  * Support `link` / `endlink` command in section title
+  * Add support for @subparagraph and @subsubparagraph
+  * Translation updates for German/Greek/Polish/Portuegse/Dutch/Chinese
+  * `doxyapp --locate` list all overloads by including arguments
+  * Adding support for "engine" files for plantuml
+  * Show emoji in HTML treeview
+  * Add `HTML_CODE_FOLDING` possibility to CHM
+  * Make `HTML_CODE_FOLDING` possible when `DISABLE_INDEX=YES`
+  * Add doxyindexer and doxysearch installation
+  * cmake: always install man pages, only install for the
+    binaries installed
+  * allow function ptr with `INLINE_SIMPLE_STRUCTS`
+
+-------------------------------------------------------------------
 Mon Feb 26 07:48:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

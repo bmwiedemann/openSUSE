@@ -17,7 +17,7 @@
 
 
 Name:           doxywizard
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 Summary:        Graphical User Interface for Doxygen
 # qtools are used for building and they are GPL-3.0 licensed
@@ -84,6 +84,7 @@ export LANG=C.UTF-8
 rm %{buildroot}%{_bindir}/doxygen
 mkdir -p %{buildroot}%{_mandir}/man1/
 install -m 644 doc/doxywizard.1 %{buildroot}%{_mandir}/man1/
+rm %{buildroot}%{_mandir}/man1/doxygen.1
 %suse_update_desktop_file -i doxywizard Development Documentation
 
 %files
