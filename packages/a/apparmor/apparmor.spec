@@ -88,6 +88,9 @@ Patch10:        tools-fix-redefinition.diff
 # make test-aa-notify a bit more relaxed to allow different argparse wording on Leap 15.5 (merged upstream 2024-05-06 (4.0 and master) https://gitlab.com/apparmor/apparmor/-/merge_requests/1226)
 Patch11:        test-aa-notify.diff
 
+# Fix aa-remove-unknown for 'unconfined' profiles (submitted upstream 2024-05-25 https://gitlab.com/apparmor/apparmor/-/merge_requests/1240)
+Patch12:        aa-remove-unknown-fix-unconfined.diff
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
@@ -357,6 +360,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %endif
 %patch -P 10 -p1
 %patch -P 11 -p1
+%patch -P 12 -p1
 
 %build
 export SUSE_ASNEEDED=0
@@ -426,7 +430,7 @@ for oldlocal in \
     usr.sbin.identd usr.sbin.mdnsd usr.sbin.nmbd usr.sbin.nscd usr.sbin.ntpd usr.sbin.smbd usr.sbin.smbd-shares usr.sbin.smbldap-useradd  usr.sbin.traceroute \
     usr.sbin.winbindd zgrep
 do
-    echo "%ghost /etc/apparmor.d/local/$oldlocal"
+    echo "%ghost %config %attr(0644,root,root) /etc/apparmor.d/local/$oldlocal"
 done > oldlocal.files
 
 %check
@@ -660,7 +664,9 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %config(noreplace) %{_sysconfdir}/apparmor.d/rootlesskit
 %config(noreplace) %{_sysconfdir}/apparmor.d/rpm
 %config(noreplace) %{_sysconfdir}/apparmor.d/rssguard
-%config(noreplace) %{_sysconfdir}/apparmor.d/runc
+# exclude runc profile until the updated runc (including updated profile with "signal peer=runc") has arrived
+#config(noreplace) %{_sysconfdir}/apparmor.d/runc
+%exclude %{_sysconfdir}/apparmor.d/runc
 %config(noreplace) %{_sysconfdir}/apparmor.d/samba-bgqd
 %config(noreplace) %{_sysconfdir}/apparmor.d/samba-dcerpcd
 %config(noreplace) %{_sysconfdir}/apparmor.d/samba-rpcd

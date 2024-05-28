@@ -2779,4 +2779,17 @@ thanks to the upstream 926 merge. (forwarded request 1108011 from dmdiss)</comme
 Note: %post profiles contains a for loop calling &quot;rm&quot; (to delete unchanged /etc/apparmor.d/local/* files). Please double-check for possible side effects I didn't consider.</comment>
     <requestid>1176730</requestid>
   </revision>
+  <revision rev="207" vrev="2">
+    <srcmd5>265fab97ea144aa3512dfa55bbb9826e</srcmd5>
+    <version>4.0.1</version>
+    <time>1716910037</time>
+    <user>anag+factory</user>
+    <comment>- exclude runc profile until updated runc packages (including
+  updated profile with &quot;signal peer=runc&quot;) have arrived
+
+- add aa-remove-unknown-fix-unconfined.diff to fix
+  aa-remove-unknown for 'unconfined' profiles (boo#1225457)
+- set permissions for %ghost files (boo#1223578) (forwarded request 1177351 from cboltz)</comment>
+    <requestid>1177352</requestid>
+  </revision>
 </revisionlist>

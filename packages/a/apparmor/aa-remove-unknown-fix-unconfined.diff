@@ -1,0 +1,26 @@
+commit cabd88a94055d2a7b876758d36fe559a6b728f45
+Author: Christian Boltz <apparmor@cboltz.de>
+Date:   Sat May 25 13:12:49 2024 +0200
+
+    Fix aa-remove-unknown for 'unconfined' profiles
+    
+    Without this patch, aa-remove-unknown uses 'profile_name (unconfined)'
+    when trying to unload unconfined profiles, which fails for obvious
+    reasons with (picking a random example)
+    
+        Removing 'busybox (unconfined)'
+        /sbin/aa-remove-unknown: line 112: echo: write error: No such file or directory
+
+diff --git a/utils/aa-remove-unknown b/utils/aa-remove-unknown
+index 0e00d6a03..983d23727 100755
+--- a/utils/aa-remove-unknown
++++ b/utils/aa-remove-unknown
+@@ -89,7 +89,7 @@ LOADED_PROFILES=$("$PARSER" -N $PROFILE_DIRS) || {
+ echo "$LOADED_PROFILES" | awk '
+ BEGIN {
+   while (getline < "'${PROFILES}'" ) {
+-    str = sub(/ \((enforce|complain)\)$/, "", $0);
++    str = sub(/ \((enforce|complain|unconfined)\)$/, "", $0);
+     if (match($0, /^libvirt-[0-9a-f\-]+$/) == 0)
+       arr[$str] = $str
+   }
