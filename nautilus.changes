@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 27 07:04:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.2:
+  + Don't treat future dates as "Today".
+  + Fix crashes.
+  + Prevent freeze on Audio/Video properties.
+  + Don't irreversibly hide sidebar with touch gesture.
+  + Don't expose unreadable symbol to screen reader.
+  + Fix search selection performance.
+  + Fix sorting on grid view.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed May  1 09:08:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.1:
