@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 24 17:15:05 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * xmlsec1-gcc14.patch
+    + add missing include and fix gcc14 build
+
+-------------------------------------------------------------------
 Mon Feb 26 12:24:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

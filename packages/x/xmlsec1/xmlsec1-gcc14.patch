@@ -1,0 +1,10 @@
+--- xmlsec1-1.2.38/apps/crypto.c	2024-05-24 19:08:57.856528758 +0200
++++ xmlsec1-1.2.38/apps/crypto.c	2024-05-24 19:09:45.526855641 +0200
+@@ -12,6 +12,7 @@
+ #endif
+ 
+ #include <string.h>
++#include <stdlib.h>
+ 
+ #include <xmlsec/xmlsec.h>
+ #include <xmlsec/keys.h>

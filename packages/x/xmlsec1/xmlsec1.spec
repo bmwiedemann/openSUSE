@@ -1,7 +1,7 @@
 #
 # spec file for package xmlsec1
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ Source1:        https://www.aleksey.com/xmlsec/download/xmlsec1-%{version}.sig#/
 Source2:        %{name}.keyring
 Source99:       xmlsec1-rpmlintrc
 Patch0:         xmlsec1-ui_null.patch
+Patch1:         xmlsec1-gcc14.patch
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libtool
 # Needed certutil for tests
@@ -145,6 +146,7 @@ Libraries, includes, etc. for developing XML Security applications with NSS.
 %if 0%{?suse_version} < 1500
 %patch -P 0 -p1
 %endif
+%patch -P 1 -p1
 
 %build
 # Allow for deprecations

@@ -242,4 +242,12 @@
     <comment></comment>
     <requestid>1152326</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>a23031b8ce897807c3b48893ecf0fef2</srcmd5>
+    <version>1.2.38</version>
+    <time>1716910047</time>
+    <user>anag+factory</user>
+    <comment>Fix gcc14 build</comment>
+    <requestid>1176772</requestid>
+  </revision>
 </revisionlist>
