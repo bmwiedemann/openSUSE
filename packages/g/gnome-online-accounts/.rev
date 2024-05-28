@@ -733,4 +733,24 @@
   + Updated translations. (forwarded request 1166998 from dimstar)</comment>
     <requestid>1167121</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>f3e0a10a859afe469de9e2bf3f70c0c6</srcmd5>
+    <version>3.50.2</version>
+    <time>1716910069</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.50.2:
+  + Setup Dialog:
+    - fix provider icon style.
+    - fix dialog not closing when cancelled.
+  + Exchange: fix account setup field verification.
+  + Microsoft 365:
+    - fix account storage.
+    - fix identity retrieval.
+    - fix email retrieval.
+  + WebDAV:
+    - fix Fastmail and mailbox.org endpoints.
+    - fix for content-restricted app passwords.
+  + Updated translations. (forwarded request 1177033 from dimstar)</comment>
+    <requestid>1177057</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May 27 06:57:17 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.50.2:
+  + Setup Dialog:
+    - fix provider icon style.
+    - fix dialog not closing when cancelled.
+  + Exchange: fix account setup field verification.
+  + Microsoft 365:
+    - fix account storage.
+    - fix identity retrieval.
+    - fix email retrieval.
+  + WebDAV:
+    - fix Fastmail and mailbox.org endpoints.
+    - fix for content-restricted app passwords.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Apr 12 07:41:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.50.1:
