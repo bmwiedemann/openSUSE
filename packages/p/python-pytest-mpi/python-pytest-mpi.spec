@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-mpi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,7 +64,13 @@ mpi plugin for pytest to collect information from openmpi-based tests.
 export PATH=${PATH}:%{_libdir}/mpi/gcc/%{mpiver}/bin
 source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
 # Exclude test_fixtures, it fails for i586 arch with Segmentation fault
-%pytest -v -p pytester --runpytest=subprocess -k 'not test_fixtures'
+donttest="test_fixtures"
+%if "%{_arch}" == "s390x"
+# Exclude some test_mpi_ that fails for s390x arch with Segmentation fault
+donttest+=" or test_mpi_with_mpi or test_mpi_only_mpi or test_mpi_skip_under_mpi or test_mpi_xfail or test_mpi_xfail_under_mpi"
+%endif
+
+%pytest -v -p pytester --runpytest=subprocess -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.md

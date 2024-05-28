@@ -69,4 +69,12 @@
   * Fix doctests infrastructure</comment>
     <requestid>1035099</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>46eb54dae9501dae7d777bec010e050a</srcmd5>
+    <version>0.6</version>
+    <time>1716910177</time>
+    <user>anag+factory</user>
+    <comment>- Skip some tests that produces a Segmentation fault in s390x</comment>
+    <requestid>1177279</requestid>
+  </revision>
 </revisionlist>

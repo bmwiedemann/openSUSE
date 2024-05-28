@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 28 07:30:07 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip some tests that produces a Segmentation fault in s390x
+
+-------------------------------------------------------------------
 Thu Nov 10 15:24:16 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable again test_fixtures that produces a Segmentation fault in i586
