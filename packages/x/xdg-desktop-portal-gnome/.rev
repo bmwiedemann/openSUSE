@@ -139,4 +139,15 @@ New stable rel</comment>
   + Updated translations. (forwarded request 1171143 from dimstar)</comment>
     <requestid>1171388</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6fb827760983a676dd953d798d241d67</srcmd5>
+    <version>46.2</version>
+    <time>1716910071</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.2:
+  + Various behavioral and accessibility fixes to the ScreenCast
+    portal dialog.
+  + Updated translations. (forwarded request 1177034 from dimstar)</comment>
+    <requestid>1177058</requestid>
+  </revision>
 </revisionlist>
