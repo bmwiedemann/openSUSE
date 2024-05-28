@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 28 08:20:00 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable test for ppc64le because of Insufficient precision
+  bsc#1225381
+
+-------------------------------------------------------------------
 Sun Apr 14 07:46:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.11.0:

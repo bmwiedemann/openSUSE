@@ -313,4 +313,13 @@
     that include links when visiting groups (:pr:`2360`).</comment>
     <requestid>1167623</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>7143d8f55531028c6a9d578259eaf238</srcmd5>
+    <version>3.11.0</version>
+    <time>1716910185</time>
+    <user>anag+factory</user>
+    <comment>- Disable test for ppc64le because of Insufficient precision
+  bsc#1225381</comment>
+    <requestid>1177282</requestid>
+  </revision>
 </revisionlist>

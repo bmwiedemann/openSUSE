@@ -113,6 +113,10 @@ donttest="dummytest"
 # overflow
 donttest="test_float_round_tripping or test_register_filter"
 %endif
+# Disable test for ppc64le because of Insufficient precision
+%ifarch ppc64le
+donttest+=" or test_complex256 or test_long_double or test_custom_float_promotion"
+%endif
 %{python_expand #
 %if %{with mpi}
 source %{my_bindir}/mpivars.sh
