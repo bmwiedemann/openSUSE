@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 28 12:13:51 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1716874663.ccc6eb0d:
+  * Add GRU task to update DISTRI and NEEDLES_DIR from git if needed
+  * Make warning about partial rescheduling more clear
+  * Overhaul info panel on job details page
+  * Bump ace-builds from 1.34.1 to 1.34.2
+  * Cleanup download job gru task enqueuement
+
+-------------------------------------------------------------------
 Sun May 26 04:13:49 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1716566379.3b8eb1f6:
