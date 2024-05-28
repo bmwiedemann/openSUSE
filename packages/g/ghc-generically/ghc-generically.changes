@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 16 11:22:04 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update generically to version 0.1.1 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Nov 16 13:18:26 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Drop obsolete dependency on ghc-base-orphans.
