@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri May 24 12:16:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix minor issues:
+  + Do not build devscripts main package (empty) in checkbashisms
+    flavor.
+  + Ensure the two flavors have different .src.rpm names, not
+    overwriting each other.
+
+-------------------------------------------------------------------
+Tue May 21 10:43:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Mark %{buildroot}%{_bindir}/checkbashisms executable: sed … >
+  %{buildroot}%{_bindir}/checkbashisms creates a non-executable,
+  regular file.
+
+-------------------------------------------------------------------
+Mon Feb 26 07:58:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
+Tue Nov 28 13:33:03 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Move checkbashisms to a separate multibuild flavor, reduce
+  build cycle when only checkbashisms is needed.
+
+-------------------------------------------------------------------
 Tue Jul 12 09:38:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.22.2:
