@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 27 06:20:12 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.14.1
+  * Fixed parsing large notes @khimaros in #339
+  * fix day range parsing (#382) by @tjex in #384
+  * accept tripple dash file URIs as valid links by @tjex in #391
+  * fix(lsp): fix trigger completion of zk LSP by @Rahlir in #397
+  * fix(lsp): ignore diagnostic check within code blocks by @Rahlir in #399
+  * allow notebook as hidden dir by @tjex in #402
+  * documentation fixes
+
+- project has moved to its own github org 
+- unit tests run on build
+
+-------------------------------------------------------------------
 Tue Mar 19 07:29:38 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Replace vendor.tar.zstd with vendor.tar.zst

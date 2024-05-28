@@ -17,13 +17,13 @@
 
 
 Name:           zk
-Version:        0.14.0
+Version:        0.14.1
 Release:        0
 Summary:        Plain text note-taking assistant for markdown
 License:        BSD-2-Clause
 Group:          System/Shells
-URL:            https://github.com/mickael-menu/zk
-Source0:        https://github.com/mickael-menu/zk/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/zk-org/zk
+Source0:        https://github.com/zk-org/zk/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  c_compiler
 BuildRequires:  zstd
@@ -50,6 +50,9 @@ go build -v -x -mod=vendor $BUILDMOD -a -ldflags "-s -X main.Version=%{version} 
 
 %install
 install -Dm755 zk %{buildroot}%{_bindir}/zk
+
+%check
+make test
 
 %files
 %{_bindir}/%{name}
