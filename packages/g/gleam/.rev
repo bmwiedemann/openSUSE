@@ -7,4 +7,13 @@
     <comment>New BEAM Language Just Dropped! :D</comment>
     <requestid>1171171</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>68155d94a526f58ed527fa8ba980bb52</srcmd5>
+    <version>1.2.0</version>
+    <time>1716910161</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.2.0:
+ * Changelog: https://gleam.run/news/fault-tolerant-gleam/</comment>
+    <requestid>1177194</requestid>
+  </revision>
 </revisionlist>

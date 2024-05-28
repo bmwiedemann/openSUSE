@@ -11,16 +11,17 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
-#
+
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           gleam
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
-Summary:        A friendly language for building type-safe, scalable systems! 
+Summary:        A friendly language for building type-safe, scalable systems!
 License:        Apache-2.0
-Url:            https://gleam.run/
+URL:            https://gleam.run/
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
@@ -35,7 +36,7 @@ ExclusiveArch:  %{rust_tier1_arches}
 %description
 The power of a type system, the expressiveness of functional programming,
 and the reliability of the highly concurrent, fault tolerant Erlang runtime,
-with a familiar and modern syntax. 
+with a familiar and modern syntax.
 
 %prep
 %autosetup -p1 -a1
@@ -46,7 +47,7 @@ with a familiar and modern syntax.
 %install
 install -D -d -m 0755 %{buildroot}%{_bindir}
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/gleam %{buildroot}%{_bindir}/gleam
- 
+
 %check
 %{cargo_test}
 
