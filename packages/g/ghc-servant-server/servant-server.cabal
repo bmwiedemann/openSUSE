@@ -1,7 +1,7 @@
 cabal-version:       2.2
 name:                servant-server
 version:             0.20
-x-revision: 4
+x-revision: 5
 
 synopsis:            A family of combinators for defining webservices APIs and serving them
 category:            Servant, Web
@@ -86,7 +86,7 @@ library
     , http-types          >= 0.12.2   && < 0.13
     , network-uri         >= 2.6.1.0  && < 2.8
     , monad-control       >= 1.0.2.3  && < 1.1
-    , network             >= 2.8      && < 3.2
+    , network             >= 2.8      && < 3.3
     , sop-core            >= 0.4.0.0  && < 0.6
     , string-conversions  >= 0.4.0.1  && < 0.5
     , resourcet           >= 1.2.2    && < 1.4
@@ -116,7 +116,7 @@ executable greet
 
   build-depends:
       aeson               >= 1.4.1.0  && < 3
-    , warp                >= 3.2.25   && < 3.4
+    , warp                >= 3.2.25   && < 3.5
 
 test-suite spec
   type: exitcode-stdio-1.0
