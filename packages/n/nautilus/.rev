@@ -1638,4 +1638,20 @@ Hence, recommended to be added to 12.3</comment>
   + Updated translations. (forwarded request 1171124 from dimstar)</comment>
     <requestid>1171387</requestid>
   </revision>
+  <revision rev="215" vrev="1">
+    <srcmd5>28be680a799d1d8d88cb43fd9309762c</srcmd5>
+    <version>46.2</version>
+    <time>1716910075</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.2:
+  + Don't treat future dates as &quot;Today&quot;.
+  + Fix crashes.
+  + Prevent freeze on Audio/Video properties.
+  + Don't irreversibly hide sidebar with touch gesture.
+  + Don't expose unreadable symbol to screen reader.
+  + Fix search selection performance.
+  + Fix sorting on grid view.
+  + Updated translations. (forwarded request 1177038 from dimstar)</comment>
+    <requestid>1177061</requestid>
+  </revision>
 </revisionlist>
