@@ -4288,6 +4288,7 @@ unsorted:
   - foot 
   - foot-extra-terminfo 
   - foot-themes 
+  - fooyin 
   - forge-parent 
   - forgejo 
   - forgejo-apparmor 
@@ -10877,7 +10878,7 @@ unsorted:
   - libKF5Plotting5 
   - libKF5Pty5 
   - libKF5Pty5-lang 
-  - libKF5PulseAudioQt4 
+  - libKF5PulseAudioQt5 
   - libKF5Sane6 
   - libKF5Su5 
   - libKF5Su5-lang 
@@ -13756,7 +13757,7 @@ unsorted:
   - libjacknet0-32bit 
   - libjackserver0 
   - libjackserver0-32bit 
-  - libjanet1_33 
+  - libjanet1_34 
   - libjansson-devel 
   - libjasper-devel 
   - libjasper7-32bit 
@@ -15022,12 +15023,8 @@ unsorted:
   - libpmem-devel 
   - libpmem2-1 
   - libpmem2-devel 
-  - libpmemblk-devel 
-  - libpmemblk1 
   - libpmemkv1 
   - libpmemkv_json_config1 
-  - libpmemlog-devel 
-  - libpmemlog1 
   - libpmemobj-cpp-devel 
   - libpmemobj-cpp-devel-doc 
   - libpmemobj-devel 
@@ -15679,8 +15676,6 @@ unsorted:
   - librocsgraphtheory0 
   - libroken18 
   - librpma0 
-  - librpmem-devel 
-  - librpmem1 
   - librrd8 
   - librsb-devel 
   - librsb0 
@@ -15912,7 +15907,7 @@ unsorted:
   - libsocketxx1_2 
   - libsocks0 
   - libsodium-devel 
-  - libsodium23-32bit 
+  - libsodium26-32bit 
   - libsofia-sip-ua-glib3 
   - libsofia-sip-ua0 
   - libsoftokn3-32bit 
@@ -16472,6 +16467,9 @@ unsorted:
   - libvamp-sdk2-32bit 
   - libvapoursynth-68 
   - libvapoursynth-script0 
+  - libvarlink-devel 
+  - libvarlink0 
+  - libvarlink0-x86-64-v3 
   - libvarnishapi3 
   - libvbr2 
   - libvc-devel 
@@ -17763,6 +17761,10 @@ unsorted:
   - maelstrom 
   - maeparser-devel 
   - mage 
+  - magic-wormhole.rs 
+  - magic-wormhole.rs-bash-completion 
+  - magic-wormhole.rs-fish-completion 
+  - magic-wormhole.rs-zsh-completion 
   - magpie 
   - magpie-devel 
   - magpie-lang 
@@ -26338,6 +26340,7 @@ unsorted:
   - python310-pytest-git 
   - python310-pytest-grpc 
   - python310-pytest-helpers-namespace 
+  - python310-pytest-home 
   - python310-pytest-html 
   - python310-pytest-httpbin 
   - python310-pytest-httpserver 
@@ -29829,6 +29832,7 @@ unsorted:
   - python311-pytest-git 
   - python311-pytest-grpc 
   - python311-pytest-helpers-namespace 
+  - python311-pytest-home 
   - python311-pytest-html 
   - python311-pytest-httpbin 
   - python311-pytest-httpserver 
@@ -33391,6 +33395,7 @@ unsorted:
   - python312-pytest-git 
   - python312-pytest-grpc 
   - python312-pytest-helpers-namespace 
+  - python312-pytest-home 
   - python312-pytest-html 
   - python312-pytest-httpbin 
   - python312-pytest-httpserver 
@@ -35324,7 +35329,6 @@ unsorted:
   - rpma-devel 
   - rpmconf 
   - rpmdevtools 
-  - rpmemd 
   - rpmlint 
   - rpmlint-mini 
   - rpmlint-strict 
@@ -47200,6 +47204,9 @@ unsorted:
   - vapoursynth-devel 
   - vapoursynth-tools 
   - variety 
+  - varlink-bash-completion 
+  - varlink-util 
+  - varlink-vim 
   - varnish 
   - varnish-devel 
   - vboot 
@@ -48372,6 +48379,7 @@ unsorted:
   - zlibrary-data 
   - zlibrary-devel 
   - zlibrary0_99 
+  - zls 
   - zmusic-devel 
   - zn_poly-devel 
   - znc 
