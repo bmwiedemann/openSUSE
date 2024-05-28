@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 16 07:59:00 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update indexed-traversable to version 0.1.4.
+  # 0.1.4 [2024-05-dd]
+
+  - Drop support for GHCs prior 8.6.5
+
+-------------------------------------------------------------------
 Thu Nov 16 13:19:07 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Drop obsolete dependency on foldable1-classes-compat.
