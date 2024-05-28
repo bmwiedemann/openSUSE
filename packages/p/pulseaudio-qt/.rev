@@ -40,4 +40,12 @@
 - Add a Qt6 build flavor</comment>
     <requestid>1151257</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>44d4c46300623875ed3a62ab14a3d541</srcmd5>
+    <version>1.5.0</version>
+    <time>1716910117</time>
+    <user>anag+factory</user>
+    <comment>Update to 1.5.0</comment>
+    <requestid>1177093</requestid>
+  </revision>
 </revisionlist>

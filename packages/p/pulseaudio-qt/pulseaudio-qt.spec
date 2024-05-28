@@ -22,24 +22,24 @@
 %define qt6 1
 %define kf6_version 5.246.0
 %define qt6_version 6.6.0
-%define library_name libKF6PulseAudioQt4
+%define library_name libKF6PulseAudioQt5
 %else
 %define kf5_version 5.90
 %define qt5_version 5.15.2
-%define library_name libKF5PulseAudioQt4
+%define library_name libKF5PulseAudioQt5
 %endif
 
 %define rname pulseaudio-qt
 %bcond_without released
 Name:           pulseaudio-qt%{?pkg_suffix}
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Qt bindings for PulseAudio
 License:        LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/%{name}/%{rname}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/pulseaudio-qt/%{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/%{name}/%{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/pulseaudio-qt/%{rname}-%{version}.tar.xz.sig
 Source2:        pulseaudio-qt.keyring
 %endif
 BuildRequires:  pkgconfig

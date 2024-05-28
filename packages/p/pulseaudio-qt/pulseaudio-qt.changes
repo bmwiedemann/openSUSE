@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat May 25 11:52:29 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 1.5.0:
+  * Add git blame ignore file
+  * Use QStringList instead of QList<QString>
+  * Stream: Fix client (kde#485455)
+  * Require C++17
+  * Port away from qAsConst
+  * Replace QVector with QList
+  * override++
+  * bump version to 1.5.0
+  * streamrestore: workaround for notification volume (kde#473013)
+  * context: explicitly create operation
+  * Make setGenericVolume keep balance between channels (kde#435840)
+  * server: register q_properties
+  * models: retract defaultSink, preferredSink, and defaultSource
+  * device: add virtualDevice property
+  * Add portal.app_id to iconName lookup in pulseobject.cpp for flatpak
+  * device: document switchStreams
+  * sink, source: refine the implementation of switchStreams
+  * Add command to switch all applications to the selected device
+  * server: emit updated signal after updates
+  * context: remove refcounting remnants
+  * device: add property pulseProperties
+  * foreach--
+  * operation: mark explicit
+
+-------------------------------------------------------------------
 Sat Feb 10 17:13:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.4.0. No changelog
