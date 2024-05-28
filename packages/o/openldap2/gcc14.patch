@@ -1,0 +1,91 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2024-05-25 09:45:23.081724037 +0200
+
+Codefixes needed for gcc 14:
+
+mdb.c:5115:31: error: assignment to "pthread_key_t" {aka "unsigned int"} from
+"void *" makes integer from pointer without a cast [-Wint-conversion]
+
+Workarounds for:
+
+constraint.c:560:43: error: assignment to "constraint **" from incompatible pointer type "void **" [-Wincompatible-pointer-types]
+	for ( app = &on->on_bi.bi_private; *app; app = &(*app)->ap_next )
+dyngroup.c:114:27: error: assignment to "adpair **" from incompatible pointer type "void **" [-Wincompatible-pointer-types]
+	for ( app = &on->on_bi.bi_private; *app; app = &(*app)->ap_next )
+valsort.c:204:19: error: assignment to "valsort_info **" from incompatible pointer type "void **" [-Wincompatible-pointer-types]
+	for ( vip = &on->on_bi.bi_private; *vip; vip = &(*vip)->vi_next )
+cloak.c:245:25: error: implicit declaration of function "attr_clean"; did you mean "entry_clean"? [-Wimplicit-function-declaration]
+	attr_clean( a );
+
+---
+ contrib/slapd-modules/cloak/cloak.c |    1 +
+ libraries/liblmdb/mdb.c             |    2 +-
+ servers/slapd/overlays/constraint.c |    2 +-
+ servers/slapd/overlays/dyngroup.c   |    2 +-
+ servers/slapd/overlays/valsort.c    |    2 +-
+ 5 files changed, 5 insertions(+), 4 deletions(-)
+
+Index: openldap-2.6.7/contrib/slapd-modules/cloak/cloak.c
+===================================================================
+--- openldap-2.6.7.orig/contrib/slapd-modules/cloak/cloak.c
++++ openldap-2.6.7/contrib/slapd-modules/cloak/cloak.c
+@@ -242,6 +242,7 @@ cloak_search_response_cb( Operation *op,
+ 			else
+ 				me->e_attrs = a->a_next;
+ 
++			extern void attr_clean(Attribute *);
+ 			attr_clean( a );
+ 		}
+ 
+Index: openldap-2.6.7/libraries/liblmdb/mdb.c
+===================================================================
+--- openldap-2.6.7.orig/libraries/liblmdb/mdb.c
++++ openldap-2.6.7/libraries/liblmdb/mdb.c
+@@ -5161,7 +5161,7 @@ mdb_env_close0(MDB_env *env, int excl)
+ 
+ 		// No need to call desctructor anymore, as all pid
+ 		// values are cleared below.
+-		env->me_txkey = NULL;
++		memset(&env->me_txkey, 0, sizeof(env->me_txkey));
+ 
+ #ifdef _WIN32
+ 		/* Delete our key from the global list */
+Index: openldap-2.6.7/servers/slapd/overlays/constraint.c
+===================================================================
+--- openldap-2.6.7.orig/servers/slapd/overlays/constraint.c
++++ openldap-2.6.7/servers/slapd/overlays/constraint.c
+@@ -557,7 +557,7 @@ done:;
+ 				a2->restrict_filter = ap.restrict_filter;
+ 				a2->restrict_val = ap.restrict_val;
+ 
+-				for ( app = &on->on_bi.bi_private; *app; app = &(*app)->ap_next )
++				for ( app = (constraint **)&on->on_bi.bi_private; *app; app = &(*app)->ap_next )
+ 					/* Get to the end */ ;
+ 
+ 				a2->ap_next = *app;
+Index: openldap-2.6.7/servers/slapd/overlays/dyngroup.c
+===================================================================
+--- openldap-2.6.7.orig/servers/slapd/overlays/dyngroup.c
++++ openldap-2.6.7/servers/slapd/overlays/dyngroup.c
+@@ -111,7 +111,7 @@ static int dgroup_cf( ConfigArgs *c )
+ 		 */
+ 		a2 = ch_malloc( sizeof(adpair) );
+ 
+-		for ( app = &on->on_bi.bi_private; *app; app = &(*app)->ap_next )
++		for ( app = (adpair **)&on->on_bi.bi_private; *app; app = &(*app)->ap_next )
+ 			/* Get to the end */ ;
+ 
+ 		a2->ap_mem = ap.ap_mem;
+Index: openldap-2.6.7/servers/slapd/overlays/valsort.c
+===================================================================
+--- openldap-2.6.7.orig/servers/slapd/overlays/valsort.c
++++ openldap-2.6.7/servers/slapd/overlays/valsort.c
+@@ -201,7 +201,7 @@ valsort_cf_func(ConfigArgs *c) {
+ 		return(1);
+ 	}
+ 
+-	for ( vip = &on->on_bi.bi_private; *vip; vip = &(*vip)->vi_next )
++	for ( vip = (valsort_info **)&on->on_bi.bi_private; *vip; vip = &(*vip)->vi_next )
+ 		/* Get to the end */ ;
+ 
+ 	vi = ch_malloc( sizeof(valsort_info) );

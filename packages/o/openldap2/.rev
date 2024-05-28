@@ -1572,4 +1572,12 @@ Removal of SuSEfirewall2 service.
     <comment>openldap2 2.6.7 (forwarded request 1173447 from AndreasStieger)</comment>
     <requestid>1174483</requestid>
   </revision>
+  <revision rev="184" vrev="2">
+    <srcmd5>fe7bf30e9b2e29181bb552f885b3a4a7</srcmd5>
+    <version>2.6.7</version>
+    <time>1716910053</time>
+    <user>anag+factory</user>
+    <comment>- Add gcc14.patch</comment>
+    <requestid>1176814</requestid>
+  </revision>
 </revisionlist>

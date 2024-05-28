@@ -1,7 +1,7 @@
 #
 # spec file for package openldap2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,6 +56,7 @@ Patch3:         0003-LDAPI-socket-location.dif
 Patch5:         0005-pie-compile.dif
 Patch8:         0008-In-monitor-backend-do-not-return-Connection0-entries.patch
 Patch16:        0016-Clear-shared-key-only-in-close-function.patch
+Patch17:        gcc14.patch
 BuildRequires:  argon2-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  db-devel
