@@ -214,4 +214,21 @@ Changes in 0.19.0:
     gh#kvesteri/validators#368</comment>
     <requestid>1170193</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>84b2b83e81c7bcb044d6e553c2a94be2</srcmd5>
+    <version>0.28.3</version>
+    <time>1716910055</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.28.3
+  * ensure _tld.txt is in sdist and bdist
+    gh#kvesteri/validators#379
+- Changes in 0.28.2:
+  * fix: corrects a few typo
+    gh#kvesteri/validators#371
+  * fix(ip_address): properly handle private is false
+    gh#kvesteri/validators#374
+  * chore(url): allow symbols and pictographs in url
+    gh#kvesteri/validators#375</comment>
+    <requestid>1176833</requestid>
+  </revision>
 </revisionlist>

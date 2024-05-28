@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-validators
-Version:        0.28.1
+Version:        0.28.3
 Release:        0
 Summary:        Python Data Validation
 License:        MIT
