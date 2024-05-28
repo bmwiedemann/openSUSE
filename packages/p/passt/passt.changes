@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri May 24 06:52:32 UTC 2024 - dcermak@suse.com
+
+- Update to version 20240523.765eb0b:
+  * apparmor: Fix comments after PID file and AF_UNIX socket creation refactoring
+  * conf, passt.h: Rename pid_file in struct ctx to pidfile
+  * conf, passt, tap: Open socket and PID files before switching UID/GID
+  * passt, util: Move opening of PID file to its own function
+  * util: Rename write_pidfile() to pidfile_write()
+  * tap: Split tap_sock_unix_init() into opening and listening parts
+  * passt, tap: Don't use -1 as uninitialised value for fd_tap_listen
+  * tap: Move all-ones initialisation of mac_guest to tap_sock_init()
+  * conf: Don't lecture user about starting us as root
+  * netlink, test: Ignore deprecated addresses
+  * tcp: Remove interim 'tapside' field from connection
+  * flow: Record the pifs for each side of each flow
+  * flow: Make side 0 always be the initiating side
+  * flow: Clarify and enforce flow state transitions
+  * inany: Better helpers for using inany and specific family addrs together
+  * flow: Properly type callbacks to protocol specific handlers
+  * util, tcp: Add helper to display socket addresses
+  * apparmor: Fix passt abstraction
+  * apparmor: allow netns paths on /tmp
+  * clang-tidy: Suppress macro to enum conversion warnings
+  * conf: Fix clang-tidy warning about using an undefined enum value
+  * passt.c: explicitly include libgen.h for basename
+  * netlink: Don't duplicate routes referring to unrelated host interfaces
+
+-------------------------------------------------------------------
 Mon May 13 06:50:32 UTC 2024 - dcermak@suse.com
 
 - Update to version 20240510.7288448:
