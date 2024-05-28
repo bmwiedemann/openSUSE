@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 27 18:10:49 UTC 2024 - Cor Blom <cornelis@solcon.nl>
+
+- Fix build with icu 75:
+  fix-icu-75.patch
+
+-------------------------------------------------------------------
 Wed Nov 22 20:01:21 UTC 2023 - Cor Blom <cornelis@solcon.nl>
 
 - Fix RPATH problem with cmake options instead of chrpath

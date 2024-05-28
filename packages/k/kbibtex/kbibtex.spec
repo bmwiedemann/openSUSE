@@ -1,7 +1,7 @@
 #
 # spec file for package kbibtex
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        GPL-2.0-only
 Group:          Productivity/Publishing/TeX/Utilities
 URL:            https://apps.kde.org/nl/kbibtex/
 Source:         https://download.kde.org/stable/KBibTeX/%{version}/%{name}-%{version}.tar.xz
+Patch0:         fix-icu-75.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libicu-devel
 BuildRequires:  libpoppler-qt5-devel
@@ -56,8 +57,8 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5XmlPatterns)
 Requires(post): desktop-file-utils
 Requires(post): shared-mime-info
-Requires(postun):desktop-file-utils
-Requires(postun):shared-mime-info
+Requires(postun): desktop-file-utils
+Requires(postun): shared-mime-info
 
 %description
 KBibTeX is a BibTeX editor by KDE to edit bibliographies used with

@@ -119,4 +119,13 @@
     <comment>- Fix RPATH problem with cmake options instead of chrpath</comment>
     <requestid>1128315</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>324d6d36d95cd31c56df25e36da45560</srcmd5>
+    <version>0.10.0</version>
+    <time>1716910158</time>
+    <user>anag+factory</user>
+    <comment>- Fix build with icu 75:
+  fix-icu-75.patch</comment>
+    <requestid>1177182</requestid>
+  </revision>
 </revisionlist>
