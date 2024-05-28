@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 27 15:19:36 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Skip privacy page in gnome-initial-setup.
+  It doesn't currently work and we prefer geolocation disabled
+  by default 
+
+-------------------------------------------------------------------
 Thu May 23 20:00:38 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Wait for network for all aeon-mig-firstboot tasks 

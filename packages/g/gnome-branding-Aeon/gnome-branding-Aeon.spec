@@ -35,15 +35,18 @@ Source9:        50-aeon
 Source10:       wallpaper-branding-Aeon.xml
 Source11:       49-aeon.rules
 Source12:       aeon-mig-firstboot
+Source13:       vendor.conf
 BuildArch:      noarch
 BuildRequires:  flatpak
 BuildRequires:  gio-branding-openSUSE
+BuildRequires:  gnome-initial-setup
 BuildRequires:  polkit
 BuildRequires:  sudo
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  transactional-update
 Requires:       flatpak
 Requires:       gio-branding-openSUSE
+Requires:       gnome-initial-setup
 Requires:       polkit
 Requires:       sound-theme-freedesktop
 Requires:       sudo
@@ -73,6 +76,7 @@ cp -a %{SOURCE9} 50-aeon
 cp -a %{SOURCE10} wallpaper-branding-Aeon.xml
 cp -a %{SOURCE11} 49-aeon.rules
 cp -a %{SOURCE12} aeon-mig-firstboot
+cp -a %{SOURCE13} vendor.conf
 
 %build
 
@@ -99,6 +103,8 @@ install -d %{buildroot}%{_datadir}/gnome-background-properties
 install -m0644 wallpaper-branding-Aeon.xml %{buildroot}%{_datadir}/gnome-background-properties/wallpaper-branding-Aeon.xml
 install -d %{buildroot}%{_datadir}/polkit-1/rules.d/
 install -m0444 49-aeon.rules %{buildroot}%{_datadir}/polkit-1/rules.d/49-aeon.rules
+install -d %{buildroot}%{_datadir}/gnome-initial-setup/
+install -m0644 vendor.conf %{buildroot}%{_datadir}/gnome-initial-setup/vendor.conf
 
 %pre
 %systemd_user_pre distrobox-upgrade-all.service
@@ -134,5 +140,6 @@ install -m0444 49-aeon.rules %{buildroot}%{_datadir}/polkit-1/rules.d/49-aeon.ru
 %dir %{_datadir}/gnome-background-properties
 %{_datadir}/gnome-background-properties/wallpaper-branding-Aeon.xml
 %{_datadir}/polkit-1/rules.d/49-aeon.rules
+%{_datadir}/gnome-initial-setup/vendor.conf
 
 %changelog

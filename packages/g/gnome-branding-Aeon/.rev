@@ -31,4 +31,14 @@
   (boo#1224328, boo#1213055, boo#1208869, boo#1217466, boo#1223608)</comment>
     <requestid>1176548</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>8ddc523f53f558dd22abbf71c35b1219</srcmd5>
+    <version>20231005</version>
+    <time>1716910153</time>
+    <user>anag+factory</user>
+    <comment>- Skip privacy page in gnome-initial-setup.
+  It doesn't currently work and we prefer geolocation disabled
+  by default</comment>
+    <requestid>1177173</requestid>
+  </revision>
 </revisionlist>
