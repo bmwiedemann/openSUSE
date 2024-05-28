@@ -388,6 +388,8 @@ unsorted:
   - accerciser 
   - accerciser-lang 
   - accerciser-plugin-IPython 
+  - accessibility-inspector 
+  - accessibility-inspector-lang 
   - accounts-qml-module-doc 
   - accountsservice-devel 
   - accountsservice-vala 
@@ -1041,6 +1043,8 @@ unsorted:
   - audaspace-plugin-pulse 
   - audaspace-plugin-sdl2 
   - audaspace-plugin-sndfile 
+  - audex 
+  - audex-lang 
   - audio-recorder 
   - audio-recorder-lang 
   - audioclock 
@@ -8709,7 +8713,6 @@ unsorted:
   - indi 
   - indi-devel 
   - indi-plugins 
-  - indicator-common 
   - indriya 
   - indriya-javadoc 
   - ineffassign 
@@ -9541,6 +9544,8 @@ unsorted:
   - kalgebra-mobile-lang 
   - kalk 
   - kalk-lang 
+  - kalm 
+  - kalm-lang 
   - kalzium 
   - kalzium-devel 
   - kalzium-lang 
@@ -12173,7 +12178,6 @@ unsorted:
   - libcjose-devel 
   - libcjose0 
   - libcjs0 
-  - libcjson1 
   - libck0 
   - libckteec0 
   - libclBLAS2 
@@ -12894,7 +12898,7 @@ unsorted:
   - libfreeimage3 
   - libfreeimageplus3 
   - libfreerdp-server-proxy3-3 
-  - libfreerdp3-3 
+  - libfreerdp2-2 
   - libfreesrp0 
   - libfreetype6-32bit 
   - libfreexl1 
@@ -13666,10 +13670,6 @@ unsorted:
   - libimobiledevice-glue-devel 
   - libinchi1 
   - libindiAlignmentDriver2 
-  - libindicator-devel 
-  - libindicator3-7 
-  - libindicator3-devel 
-  - libindicator7 
   - libindiclient2 
   - libindiclientqt2 
   - libindidriver2 
@@ -14211,7 +14211,6 @@ unsorted:
   - libmca_common_dstore1 
   - libmcpp0 
   - libmd-devel 
-  - libmd4c0 
   - libmdb3 
   - libmdbsql3 
   - libmdmp-devel 
@@ -14227,6 +14226,7 @@ unsorted:
   - libmediacheck-devel 
   - libmediainfo-devel 
   - libmediainfo0 
+  - libmediastreamer2-11 
   - libmediawiki-devel 
   - libmedimport0 
   - libmeep32 
@@ -14697,7 +14697,6 @@ unsorted:
   - libopencsd_c_api1 
   - libopencsg1 
   - libopencv3_4 
-  - libopencv409 
   - libopencv_aruco409 
   - libopencv_face409 
   - libopencv_gapi409 
@@ -15493,7 +15492,6 @@ unsorted:
   - librdkafka1 
   - librdmacm-utils 
   - librdmacm1-32bit 
-  - librdtk0-0 
   - libre23 
   - libreadline-java 
   - libreadline-java-javadoc 
@@ -16156,7 +16154,6 @@ unsorted:
   - libtasn1-devel 
   - libtasn1-devel-32bit 
   - libtasn1-tools 
-  - libtbb12 
   - libtbbbind_2_5-3 
   - libtbbmalloc2 
   - libtcmalloc4 
@@ -16674,7 +16671,7 @@ unsorted:
   - libwiiuse0 
   - libwim15 
   - libwind0 
-  - libwinpr3-3 
+  - libwinpr2-2 
   - libwireshark17 
   - libwiretap14 
   - libwlroots11 
@@ -20038,6 +20035,7 @@ unsorted:
   - openSUSE-release-tools-pkglistgen 
   - openSUSE-release-tools-publish-distro 
   - openSUSE-release-tools-repo-checker 
+  - openSUSE-release-tools-slsa-build-service 
   - openSUSE-release-tools-staging-bot 
   - openSUSE-release-usb-gnome 
   - openSUSE-release-usb-kde 
@@ -22548,10 +22546,8 @@ unsorted:
   - plexus-compiler-javadoc 
   - plexus-component-api 
   - plexus-component-api-javadoc 
-  - plexus-component-factories-pom 
   - plexus-component-metadata 
   - plexus-component-metadata-javadoc 
-  - plexus-components-pom 
   - plexus-containers-component-annotations 
   - plexus-containers-javadoc 
   - plexus-i18n 
@@ -34462,7 +34458,6 @@ unsorted:
   - qore-sqlite3-module-doc 
   - qore-ssh2-module 
   - qore-ssh2-module-doc 
-  - qore-stdlib 
   - qore-uuid-module 
   - qore-uuid-module-doc 
   - qore-xml-module 
@@ -35263,8 +35258,6 @@ unsorted:
   - rkdeveloptool 
   - rke 
   - rke2 
-  - rke2-1.25 
-  - rke2-1.26 
   - rke2-1.27 
   - rke2-1.28 
   - rke2-1.29 
@@ -48121,6 +48114,8 @@ unsorted:
   - xteddy 
   - xtensor-devel 
   - xtensor-doc 
+  - xtensor-python-devel 
+  - xtensor-python-doc 
   - xterm-console 
   - xtexit 
   - xtl-devel 
