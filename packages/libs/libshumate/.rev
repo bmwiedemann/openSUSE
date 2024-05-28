@@ -105,4 +105,15 @@
   + Fix crash with null reference map source. (forwarded request 1171349 from dimstar)</comment>
     <requestid>1171400</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>92fbaef7b84dc0fa03d5eecc1b4f5072</srcmd5>
+    <version>1.2.2</version>
+    <time>1716910069</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.2:
+  + Fix some compiler warnings.
+  + Fix build failure with Clang 18.
+  + Allow building with G_DISABLE_ASSERT. (forwarded request 1177032 from dimstar)</comment>
+    <requestid>1177056</requestid>
+  </revision>
 </revisionlist>
