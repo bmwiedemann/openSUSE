@@ -1,7 +1,7 @@
-Index: torrentinfo-1.8.6/doc/conf.py
+Index: torrentinfo-1.8.7/doc/conf.py
 ===================================================================
---- torrentinfo-1.8.6.orig/doc/conf.py
-+++ torrentinfo-1.8.6/doc/conf.py
+--- torrentinfo-1.8.7.orig/doc/conf.py
++++ torrentinfo-1.8.7/doc/conf.py
 @@ -25,7 +25,7 @@ sys.path.insert(0, os.path.abspath(os.pa
  
  # Add any Sphinx extension module names here, as strings. They can be extensions
@@ -11,7 +11,7 @@ Index: torrentinfo-1.8.6/doc/conf.py
  
  # Add any paths that contain templates here, relative to this directory.
  templates_path = ['_templates']
-@@ -58,7 +58,7 @@ release = '1.8.6'
+@@ -58,7 +58,7 @@ release = '1.8.7'
  
  # There are two options for replacing |today|: either, you set today to some
  # non-false value, then it is used:
@@ -20,10 +20,10 @@ Index: torrentinfo-1.8.6/doc/conf.py
  # Else, today_fmt is used as the format for a strftime call.
  #today_fmt = '%B %d, %Y'
  
-Index: torrentinfo-1.8.6/doc/index.rst
+Index: torrentinfo-1.8.7/doc/index.rst
 ===================================================================
---- torrentinfo-1.8.6.orig/doc/index.rst
-+++ torrentinfo-1.8.6/doc/index.rst
+--- torrentinfo-1.8.7.orig/doc/index.rst
++++ torrentinfo-1.8.7/doc/index.rst
 @@ -59,26 +59,15 @@ Usage
  If no settings are specified the script will default to showing the basic
  information on each file.
@@ -42,8 +42,8 @@ Index: torrentinfo-1.8.6/doc/index.rst
  Bugs
  ====
  
--Any bugs or fixes should be submitted to `my GitHub <https://github.com/ShanaTsunTsunLove/torrentinfo>`_.
-+Any bugs or fixes should be submitted to my GitHub <https://github.com/ShanaTsunTsunLove/torrentinfo>.
+-Any bugs or fixes should be submitted to `my GitHub <https://github.com/Fuuzetsu/torrentinfo>`_.
++Any bugs or fixes should be submitted to my GitHub <https://github.com/Fuuzetsu/torrentinfo>.
  
  Credits
  =======
