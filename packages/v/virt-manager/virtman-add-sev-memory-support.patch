@@ -4,7 +4,7 @@ Index: virt-manager-4.1.0/ui/details.ui
 ===================================================================
 --- virt-manager-4.1.0.orig/ui/details.ui
 +++ virt-manager-4.1.0/ui/details.ui
-@@ -1925,7 +1925,20 @@
+@@ -1927,7 +1927,20 @@
                                    </packing>
                                  </child>
                                  <child>
@@ -84,7 +84,7 @@ Index: virt-manager-4.1.0/virtManager/object/domain.py
 ===================================================================
 --- virt-manager-4.1.0.orig/virtManager/object/domain.py
 +++ virt-manager-4.1.0/virtManager/object/domain.py
-@@ -706,15 +706,33 @@ class vmmDomain(vmmLibvirtObject):
+@@ -707,15 +707,33 @@ class vmmDomain(vmmLibvirtObject):
              guest.memoryBacking.access_mode = access_mode
  
      def define_memory(self, memory=_SENTINEL, maxmem=_SENTINEL,
@@ -119,7 +119,7 @@ Index: virt-manager-4.1.0/virtManager/object/domain.py
  
          self._redefine_xmlobj(guest)
  
-@@ -1328,6 +1346,9 @@ class vmmDomain(vmmLibvirtObject):
+@@ -1331,6 +1349,9 @@ class vmmDomain(vmmLibvirtObject):
      def get_description(self):
          return self.get_xmlobj().description
  

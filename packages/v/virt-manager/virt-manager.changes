@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu May 23 13:34:59 MDT 2024 - carnold@suse.com
+
+- Upstream bug fixes (bsc#1027942) (jsc#PED-6305)
+  088-tests-Fix-host-copy-XML-with-libvirt-10.1.0.patch
+  089-hostdev-Fix-error-when-mdev-type_id-is-missing.patch
+  090-uitests-Fix-with-GtkFileChooserNative.patch
+
+-------------------------------------------------------------------
+Thu May 16 14:14:23 MDT 2024 - carnold@suse.com
+
+- Upstream bug fixes (bsc#1027942) (jsc#PED-6305)
+  063-Support-creating-sparse-volumes-on-ZFS-pools.patch
+  064-domain-rename-handle-firmware-ending-with-.qcow2.patch
+  065-testdriver-Add-portgroups-example-to-test-many-devices.patch
+  066-netlist-Fix-UI-error-when-virtual-network-doesnt-exist.patch
+  067-ui-details-fix-Applications-width.patch
+  068-ui-details-Increased-scrolledview6s-height-request.patch
+  069-uitests-Fix-walkUI-flakyness.patch
+  070-uitests-Handle-slow-app-launch-on-fedora-39.patch
+  071-createvm-Replace-deprecated-pkgutil.find_loader.patch
+  072-Fix-pylint-3.1.0-issues.patch
+  073-console-Move-embeddable_graphics-to-console.py.patch
+  074-domain-Add-idx-parameter-to-open_graphics_fd.patch
+  075-console-Select-the-first-embeddable-graphics-device-as-graphical-console.patch
+  076-console-Cleanup-and-improve-console-menu-handling.patch
+  077-cli-add-show-systray-option.patch
+  078-man-document-show-systray-option.patch
+  079-baseclass-Avoid-glib-Source-ID-XX-not-found-at-app-shutdown.patch
+  080-uitests-More-handling-for-slow-startup-on-f39.patch
+  081-systray-Cleanups-and-improvements-for-show-systray.patch
+  082-virtinst-add-external-snapshot-capability.patch
+  083-virtinst-snapshot-add-memory-file-attribute.patch
+  084-virtManager-domain-allow-disk-only-snapshots.patch
+  085-virtManager-add-support-to-create-external-snapshots.patch
+  086-virtManager-ignore-agen-livecycle-event-for-shutoff-VMs.patch
+  087-Allow-serial-console-resize-to-beyond-80-columns.patch
+- Modifications to the Categories in virt-install.desktop and 
+  virtman-desktop.patch
+
+-------------------------------------------------------------------
 Thu May  9 11:52:06 MDT 2024 - carnold@suse.com
 
 - Enable mdev tests with the introduction of libvirt 10.3.0

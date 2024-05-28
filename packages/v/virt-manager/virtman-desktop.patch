@@ -1,7 +1,7 @@
-Index: virt-manager-3.3.0/data/virt-manager.desktop.in
+Index: virt-manager-4.1.0/data/virt-manager.desktop.in
 ===================================================================
---- virt-manager-3.3.0.orig/data/virt-manager.desktop.in
-+++ virt-manager-3.3.0/data/virt-manager.desktop.in
+--- virt-manager-4.1.0.orig/data/virt-manager.desktop.in
++++ virt-manager-4.1.0/data/virt-manager.desktop.in
 @@ -1,9 +1,20 @@
  [Desktop Entry]
  Name=Virtual Machine Manager
@@ -14,9 +14,8 @@ Index: virt-manager-3.3.0/data/virt-manager.desktop.in
  Type=Application
  Terminal=false
  Keywords=vmm;
--Categories=System;
 +Encoding=UTF-8
-+Categories=GTK;GNOME;System;Monitor;X-SuSE-YaST;X-SuSE-YaST-Virtualization;
+ Categories=System;
 +X-KDE-ModuleType=Library
 +X-KDE-RootOnly=true
 +X-KDE-HasReadOnlyMode=false

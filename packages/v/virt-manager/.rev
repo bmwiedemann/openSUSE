@@ -2006,4 +2006,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1174664</requestid>
   </revision>
+  <revision rev="254" vrev="20">
+    <srcmd5>99e849404e6688514848a55efdc73b3f</srcmd5>
+    <version>4.1.0</version>
+    <time>1716910042</time>
+    <user>anag+factory</user>
+    <comment>Several upstream bug fixes and enhancements.</comment>
+    <requestid>1176759</requestid>
+  </revision>
 </revisionlist>

@@ -100,59 +100,87 @@ Patch59:        059-tests-cli-Adjust-hotplug-test-for-latest-libvirt.patch
 Patch60:        060-Fix-some-pylint.patch
 Patch61:        061-tests-ui-make-newvm-test-start-less-flakey.patch
 Patch62:        062-tests-ui-make-creatnet-test-start-less-flakey.patch
-Patch69:        revert-363fca41-virt-install-Require-osinfo-for-non-x86-HVM-case-too.patch
+Patch63:        063-Support-creating-sparse-volumes-on-ZFS-pools.patch
+Patch64:        064-domain-rename-handle-firmware-ending-with-.qcow2.patch
+Patch65:        065-testdriver-Add-portgroups-example-to-test-many-devices.patch
+Patch66:        066-netlist-Fix-UI-error-when-virtual-network-doesnt-exist.patch
+Patch67:        067-ui-details-fix-Applications-width.patch
+Patch68:        068-ui-details-Increased-scrolledview6s-height-request.patch
+Patch69:        069-uitests-Fix-walkUI-flakyness.patch
+Patch70:        070-uitests-Handle-slow-app-launch-on-fedora-39.patch
+Patch71:        071-createvm-Replace-deprecated-pkgutil.find_loader.patch
+Patch72:        072-Fix-pylint-3.1.0-issues.patch
+Patch73:        073-console-Move-embeddable_graphics-to-console.py.patch
+Patch74:        074-domain-Add-idx-parameter-to-open_graphics_fd.patch
+Patch75:        075-console-Select-the-first-embeddable-graphics-device-as-graphical-console.patch
+Patch76:        076-console-Cleanup-and-improve-console-menu-handling.patch
+Patch77:        077-cli-add-show-systray-option.patch
+Patch78:        078-man-document-show-systray-option.patch
+Patch79:        079-baseclass-Avoid-glib-Source-ID-XX-not-found-at-app-shutdown.patch
+Patch80:        080-uitests-More-handling-for-slow-startup-on-f39.patch
+Patch81:        081-systray-Cleanups-and-improvements-for-show-systray.patch
+Patch82:        082-virtinst-add-external-snapshot-capability.patch
+Patch83:        083-virtinst-snapshot-add-memory-file-attribute.patch
+Patch84:        084-virtManager-domain-allow-disk-only-snapshots.patch
+Patch85:        085-virtManager-add-support-to-create-external-snapshots.patch
+Patch86:        086-virtManager-ignore-agen-livecycle-event-for-shutoff-VMs.patch
+Patch87:        087-Allow-serial-console-resize-to-beyond-80-columns.patch
+Patch88:        088-tests-Fix-host-copy-XML-with-libvirt-10.1.0.patch
+Patch89:        089-hostdev-Fix-error-when-mdev-type_id-is-missing.patch
+Patch90:        090-uitests-Fix-with-GtkFileChooserNative.patch
+Patch100:       revert-363fca41-virt-install-Require-osinfo-for-non-x86-HVM-case-too.patch
 # SUSE Only
-Patch70:        virtman-desktop.patch
-Patch71:        virtman-kvm.patch
-Patch72:        virtman-show-suse-install-repos.patch
-Patch73:        virtman-dont-allow-grub.xen-to-be-deleted.patch
-Patch74:        virtinst-pvgrub2-bootloader.patch
-Patch75:        virtinst-change-location-for-grub_xen.patch
-Patch76:        virtinst-set-qemu-emulator.patch
+Patch150:       virtman-desktop.patch
+Patch151:       virtman-kvm.patch
+Patch152:       virtman-show-suse-install-repos.patch
+Patch153:       virtman-dont-allow-grub.xen-to-be-deleted.patch
+Patch154:       virtinst-pvgrub2-bootloader.patch
+Patch155:       virtinst-change-location-for-grub_xen.patch
+Patch156:       virtinst-set-qemu-emulator.patch
 # Features or Enhancements
-Patch103:       virtman-load-stored-uris.patch
-Patch104:       virtman-add-tooltip-to-firmware.patch
-Patch105:       virtman-modify-gui-defaults.patch
-Patch106:       virtman-add-sev-memory-support.patch
-Patch120:       virtinst-default-xen-to-qcow2-format.patch
-Patch121:       virtinst-detect-oes-distros.patch
-Patch122:       virtinst-vol-default-nocow.patch
-Patch123:       virtinst-set-cache-mode-unsafe-for-install.patch
-Patch124:       virtinst-s390x-disable-graphics.patch
-Patch125:       virtinst-add-caasp-support.patch
-Patch126:       virtinst-add-sle15-detection-support.patch
-Patch127:       virtinst-add-pvh-support.patch
-Patch128:       virtinst-media-detection.patch
-Patch129:       virtinst-enable-video-virtio-for-arm.patch
+Patch203:       virtman-load-stored-uris.patch
+Patch204:       virtman-add-tooltip-to-firmware.patch
+Patch205:       virtman-modify-gui-defaults.patch
+Patch206:       virtman-add-sev-memory-support.patch
+Patch220:       virtinst-default-xen-to-qcow2-format.patch
+Patch221:       virtinst-detect-oes-distros.patch
+Patch222:       virtinst-vol-default-nocow.patch
+Patch223:       virtinst-set-cache-mode-unsafe-for-install.patch
+Patch224:       virtinst-s390x-disable-graphics.patch
+Patch225:       virtinst-add-caasp-support.patch
+Patch226:       virtinst-add-sle15-detection-support.patch
+Patch227:       virtinst-add-pvh-support.patch
+Patch228:       virtinst-media-detection.patch
+Patch229:       virtinst-enable-video-virtio-for-arm.patch
 # Bug Fixes
-Patch151:       virtman-increase-setKeepAlive-count.patch
-Patch152:       virtman-allow-destroy-from-shutdown-menu-of-crashed-vm.patch
-Patch153:       virtman-allow-creating-i686-vm.patch
-Patch154:       virtman-dont-specify-vte-version.patch
-Patch155:       virtman-dont-specify-gtksource-version.patch
-Patch156:       virtman-fix-restore-vm-menu-selection.patch
-Patch157:       virtman-disallow-adding-floppy-disk.patch
-Patch158:       virtman-register-delete-event-for-details-dialog.patch
-Patch159:       virtman-revert-use-of-AyatanaAppIndicator3.patch
-Patch170:       virtinst-xen-drive-type.patch
-Patch171:       virtinst-xenbus-disk-index-fix.patch
-Patch172:       virtinst-refresh_before_fetch_pool.patch
-Patch173:       virtinst-use-xenpae-kernel-for-32bit.patch
-Patch174:       virtinst-use-qemu-for-cdrom-device.patch
-Patch175:       virtinst-keep-install-iso-attached.patch
-Patch176:       virtinst-dont-use-special-copy-cpu-features.patch
-Patch177:       virtinst-set-default-nic.patch
-Patch178:       virtinst-sap-detection.patch
-Patch179:       virtinst-smbios-unsupported-for-xenpv.patch
-Patch180:       virtinst-keep-iso-for-xenpv.patch
-Patch181:       virtinst-add-slem-detection-support.patch
-Patch182:       virtinst-add-sle-hpc-support.patch
-Patch183:       virtinst-add-oracle-linux-support.patch
-Patch184:       virtinst-add-slm-detection-support.patch
-Patch185:       virtinst-windows-server-detection.patch
-Patch186:       virtman-fix-shared-disk-request-alignment-error.patch
-Patch187:       virtman-language-fixes.patch
-Patch188:       virtman-fix-inspection-apps-window.patch
+Patch251:       virtman-increase-setKeepAlive-count.patch
+Patch252:       virtman-allow-destroy-from-shutdown-menu-of-crashed-vm.patch
+Patch253:       virtman-allow-creating-i686-vm.patch
+Patch254:       virtman-dont-specify-vte-version.patch
+Patch255:       virtman-dont-specify-gtksource-version.patch
+Patch256:       virtman-fix-restore-vm-menu-selection.patch
+Patch257:       virtman-disallow-adding-floppy-disk.patch
+Patch258:       virtman-register-delete-event-for-details-dialog.patch
+Patch259:       virtman-revert-use-of-AyatanaAppIndicator3.patch
+Patch270:       virtinst-xen-drive-type.patch
+Patch271:       virtinst-xenbus-disk-index-fix.patch
+Patch272:       virtinst-refresh_before_fetch_pool.patch
+Patch273:       virtinst-use-xenpae-kernel-for-32bit.patch
+Patch274:       virtinst-use-qemu-for-cdrom-device.patch
+Patch275:       virtinst-keep-install-iso-attached.patch
+Patch276:       virtinst-dont-use-special-copy-cpu-features.patch
+Patch277:       virtinst-set-default-nic.patch
+Patch278:       virtinst-sap-detection.patch
+Patch279:       virtinst-smbios-unsupported-for-xenpv.patch
+Patch280:       virtinst-keep-iso-for-xenpv.patch
+Patch281:       virtinst-add-slem-detection-support.patch
+Patch282:       virtinst-add-sle-hpc-support.patch
+Patch283:       virtinst-add-oracle-linux-support.patch
+Patch284:       virtinst-add-slm-detection-support.patch
+Patch285:       virtinst-windows-server-detection.patch
+Patch286:       virtman-fix-shared-disk-request-alignment-error.patch
+Patch287:       virtman-language-fixes.patch
+Patch288:       virtman-fix-inspection-apps-window.patch
 
 BuildArch:      noarch
 
@@ -286,7 +314,6 @@ donttest="$donttest or testCLI0203virt_install_bhyve_default_f27"
 donttest="$donttest or testCLI0280virt_xml_build_disk_domain"
 donttest="$donttest or testCLI0287virt_xml_edit_cpu_host_copy"
 donttest="$donttest or testCLI0288virt_xml_build_pool_logical_disk"
-# End disabled tests for libvirt 10.1.0
 donttest="$donttest or testCLI0375virt_xml_add_disk_create_storage_start"
 # Due to the above skips:
 # "there are XML properties that are untested in the test suite"

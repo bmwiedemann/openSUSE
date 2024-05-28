@@ -96,7 +96,7 @@ Signed-off-by: Oleg Vasilev <oleg.vasilev@virtuozzo.com>
  ]
  
  
-@@ -1491,6 +1497,7 @@ _CLONE_NVRAM_MISSING = "--original-xml %
+@@ -1484,6 +1490,7 @@ _CLONE_NVRAM_MISSING = "--original-xml %
  _CLONE_EMPTY = "--original-xml %s/clone-empty.xml" % _CLONEXMLDIR
  _CLONE_NET_RBD = "--original-xml %s/clone-net-rbd.xml" % _CLONEXMLDIR
  _CLONE_NET_HTTP = "--original-xml %s/clone-net-http.xml" % _CLONEXMLDIR
@@ -104,7 +104,7 @@ Signed-off-by: Oleg Vasilev <oleg.vasilev@virtuozzo.com>
  
  
  vclon = App("virt-clone")
-@@ -1514,6 +1521,7 @@ c.add_compare(_CLONE_EMPTY + " --auto-cl
+@@ -1507,6 +1514,7 @@ c.add_compare(_CLONE_EMPTY + " --auto-cl
  c.add_compare("--connect %(URI-KVM-X86)s -o test-clone-simple --auto -f /foo.img --print-xml", "pool-test-cross-pool")  # cross pool cloning which fails with test driver but let's confirm the XML
  c.add_compare(_CLONE_MANAGED + " --auto-clone", "auto-managed")  # Auto flag w/ managed storage
  c.add_compare(_CLONE_UNMANAGED + " --auto-clone", "auto-unmanaged")  # Auto flag w/ local storage

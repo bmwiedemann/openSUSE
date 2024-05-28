@@ -15,7 +15,7 @@ Index: virt-manager-4.1.0/virtManager/createvol.py
 ===================================================================
 --- virt-manager-4.1.0.orig/virtManager/createvol.py
 +++ virt-manager-4.1.0/virtManager/createvol.py
-@@ -246,7 +246,13 @@ class vmmCreateVolume(vmmGObjectUI):
+@@ -248,7 +248,13 @@ class vmmCreateVolume(vmmGObjectUI):
          vol = self._make_stub_vol()
          vol.name = volname
          vol.capacity = (cap * 1024 * 1024 * 1024)

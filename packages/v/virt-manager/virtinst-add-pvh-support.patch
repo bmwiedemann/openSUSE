@@ -45,7 +45,7 @@ Index: virt-manager-4.1.0/virtManager/object/domain.py
 ===================================================================
 --- virt-manager-4.1.0.orig/virtManager/object/domain.py
 +++ virt-manager-4.1.0/virtManager/object/domain.py
-@@ -1310,6 +1310,8 @@ class vmmDomain(vmmLibvirtObject):
+@@ -1313,6 +1313,8 @@ class vmmDomain(vmmLibvirtObject):
          return self.get_xmlobj().os.is_xenpv()
      def is_hvm(self):
          return self.get_xmlobj().os.is_hvm()
