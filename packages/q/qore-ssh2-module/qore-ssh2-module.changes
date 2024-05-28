@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May 26 11:58:31 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Remove BuildRequirement qore-stdlib after the move of qore-stdlib to qore
+
+-------------------------------------------------------------------
 Sat Sep  2 13:23:51 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - fixed a bug where the sftp connection scheme was unusable (issue 4755)

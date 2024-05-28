@@ -62,7 +62,6 @@ BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  qore >= 1.18
 BuildRequires:  qore-devel >= 1.18
-BuildRequires:  qore-stdlib >= 1.18
 Requires:       /usr/bin/env
 Requires:       qore-module(abi)%{?_isa} = %{module_api}
 Suggests:       %{name}-doc = %{version}
@@ -78,6 +77,7 @@ via libssh2 in the Qore programming language.
 %package doc
 Summary:        Documentation and examples for the Qore SSH2 module
 Group:          Development/Languages/Misc
+BuildArch:      noarch
 
 %description doc
 SSH2 module for the Qore Programming Language.
