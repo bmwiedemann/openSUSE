@@ -16,23 +16,21 @@
 #
 
 
-%bcond_without lang
+%bcond_without released
 Name:           plasma-wayland-protocols
-Version:        1.12.0
+Version:        1.13.0
 Release:        0
 Summary:        Wayland protocols used by Plasma
 License:        BSD-3-Clause AND LGPL-2.1-only AND LGPL-2.1-or-later AND MIT
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
-BuildRequires:  extra-cmake-modules
-BuildRequires:  fdupes
-BuildRequires:  kf5-filesystem
-%if %{with lang}
-Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
-# Note: The key in there is currently only self-signed and so not actually trusted.
-Source2:        plasma-wayland-protocols.keyring
+Source0:        https://download.kde.org/stable/plasma-wayland-protocols/plasma-wayland-protocols-%{version}.tar.xz
+%if %{with released}
+Source1:        https://download.kde.org/stable/plasma-wayland-protocols/plasma-wayland-protocols-%{version}.tar.xz.sig
+Source2:        plasma.keyring
 %endif
+BuildRequires:  fdupes
+BuildRequires:  kf6-extra-cmake-modules
 
 %description
 This package contains the non-standard Wayland protocol definitions used by
@@ -42,16 +40,16 @@ KDE Plasma.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf6
+%kf6_build
 
 %install
-  %kf5_makeinstall -C build
-  %fdupes %{buildroot}
+%kf6_install
+%fdupes %{buildroot}
 
 %files
 %license COPYING* LICENSES/*.txt
-%{_kf5_sharedir}/plasma-wayland-protocols/
-%{_kf5_cmakedir}/PlasmaWaylandProtocols/
+%{_kf6_sharedir}/plasma-wayland-protocols/
+%{_kf6_cmakedir}/PlasmaWaylandProtocols/
 
 %changelog

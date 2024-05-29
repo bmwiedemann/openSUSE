@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May 25 11:56:30 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 1.13.0:
+  * new release for Plasma 6.1 beta, 1.13.0
+  * plasma-window-management: add a stacking order object
+  * output device, output management: add brightness setting
+  * outputdevice,outputconfiguration: add a way to use the EDID-provided color profile
+  * Enforce passing tests
+  * output device, management: change the descriptions for sdr gamut wideness
+- Build with KDE Frameworks 6
+- Use the same keyring as for Plasma
+
+-------------------------------------------------------------------
 Wed Jan 17 18:46:17 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 1.12.0:
