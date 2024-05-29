@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Tue May 28 07:54:10 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.2
+  * Fix final, output contractions being mistakenly marked as not tensordot-able.
+  * When `implementation="autoray"` don't require a backend to have both
+    `einsum` and `tensordot`, instead fallback to `cotengra`'s own.
+- from version 0.6.1
+  * The number of workers initialized (for non-distributed pools) is now set to,
+    in order of preference, 1. the environment variable `COTENGRA_NUM_WORKERS`,
+    2. the environment variable `OMP_NUM_THREADS`, or 3. `os.cpu_count()`.
+  * Add [RandomGreedyOptimizer](cotengra.pathfinders.path_basic.RandomGreedyOptimizer)
+    which is a lightweight and performant randomized greedy optimizer, eschewing both
+    hyper parameter tuning and full contraction tree construction, making it suitable
+    for very large contractions (10,000s of tensors+).
+  * Add [optimize_random_greedy_track_flops](cotengra.pathfinders.path_basic.optimize_\
+    random_greedy_track_flops) which runs N trials of (random) greedy path optimization,
+    whilst computing the FLOP count simultaneously. This or its accelerated rust counterpart
+    in `cotengrust` is the driver for the above optimizer.
+  * Add `parallel="threads"` backend, and make it the default for `RandomGreedyOptimizer`
+    when `cotengrust` is present, since its version of `optimize_random_greedy_track_flops`
+    releases the GIL.
+  * Significantly improve both the speed and memory usage of [`SliceFinder`](cotengra.slicer.SliceFinder)
+  * Alias `tree.total_cost()` to `tree.combo_cost()`
+- from version 0.6.0
+  * All input node legs and pre-processing steps are now calculated lazily,
+    allowing slicing of indices including those 'simplified' away {issue}`31`.
+  * Make [`tree.peak_size`](cotengra.ContractionTree.peak_size) more accurate,
+    by taking max assuming left, right and parent intermediate tensors are all
+    present at the same time.
+  * Add simulated annealing tree refinement (in `path_simulated_annealing.py`),
+    based on "Multi-Tensor Contraction for XEB Verification of
+    Quantum Circuits" by Gleb Kalachev, Pavel Panteleev, Man-Hong Yung
+    (arXiv:2108.05665), and the "treesa" implementation in
+    OMEinsumContractionOrders.jl by Jin-Guo Liu and Pan Zhang. This can be
+    accessed most easily by supplying
+    `opt = HyperOptimizer(simulated_annealing_opts={})`.
+  * Add [`ContractionTree.plot_flat`](cotengra.plot.plot_tree_flat): a new method
+    for plotting the contraction tree as a flat diagram showing all indices on
+    every intermediate (without requiring any graph layouts), which is useful for
+    visualizing and understanding small contractions.
+  * [`HyperGraph.plot`](cotengra.plot.plot_hypergraph): support showing hyper
+    outer indices, multi-edges, and automatic unique coloring of nodes and
+    indices (to match `plot_flat`).
+  * Add [`ContractionTree.plot_circuit](cotengra.plot.plot_tree_circuit) for
+    plotting the contraction tree as a circuit diagram, which is fast and useful
+    for visualizing the traversal ordering for larger trees.
+  * Add [`ContractionTree.restore_ind`](cotengra.ContractionTree.restore_ind)
+    for 'unslicing' or 'unprojecting' previously removed indices.
+  * [`ContractionTree.from_path`](cotengra.ContractionTree.from_path): add option
+    `complete` to automatically complete the tree given an incomplete path
+    (usually disconnected subgraphs - {issue}`29`).
+  * Add [`ContractionTree.get_incomplete_nodes`](cotengra.ContractionTree.get_incomplete_nodes)
+    for finding all uncontracted childless-parentless node groups.
+  * Add [`ContractionTree.autocomplete`](cotengra.ContractionTree.autocomplete)
+    for automatically completing a contraction tree, using above method.
+  * [`tree.plot_flat`](cotengra.plot.plot_tree_flat): show any preprocessing
+    steps and optionally list sliced indices
+  * Add [get_rng](cotengra.utils.get_rng) as a single entry point for getting or
+    propagating a random number generator, to help determinism.
+  * Set ``autojit="auto"`` for contractions, which by default turns on jit for
+    `backend="jax"` only.
+  * Add [`tree.describe`](cotengra.ContractionTree.describe) for a various levels
+    of information about a tree, e.g. `tree.describe("full")` and
+    `tree.describe("concise")`.
+  * Add [ctg.GreedyOptimizer](cotengra.pathfinders.path_basic.GreedyOptimizer)
+    and [ctg.OptimalOptimizer](cotengra.pathfinders.path_basic.OptimalOptimizer)
+    to the top namespace.
+  * Add [ContractionTree.benchmark](cotengra.ContractionTree.benchmark) for
+    for automatically assessing hardware performance vs theoretical cost.
+  * Contraction trees now have a `get_default_objective` method to return the
+    objective function they were optimized with, for simpler further refinement
+    or scoring, where it is now picked up automatically.
+  * Change the default 'sub' optimizer on divisive partition building algorithms
+    to be `'greedy'` rather than `'auto'`. This might make individual trials
+    slightly worse but makes each cheaper, see discussion: ({issue}`27`).
+- Drop patches for issues fixed upstream
+  * fix-check.patch
+
+-------------------------------------------------------------------
 Thu Mar 21 09:04:19 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix test for aarch64 with:

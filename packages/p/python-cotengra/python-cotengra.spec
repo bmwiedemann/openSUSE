@@ -17,13 +17,12 @@
 
 
 Name:           python-cotengra
-Version:        0.5.6
+Version:        0.6.2
 Release:        0
 Summary:        Hyper optimized contraction trees for large tensor networks and einsums
 License:        Apache-2.0
 URL:            https://github.com/jcmgray/cotengra
 Source:         https://files.pythonhosted.org/packages/source/c/cotengra/cotengra-%{version}.tar.gz
-Patch1:         fix-check.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 45}
 BuildRequires:  %{python_module setuptools_scm >= 6.2}
