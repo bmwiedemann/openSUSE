@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Tue May 28 05:14:03 UTC 2024 - william.brown@suse.com
+
+- Update to version 0.20.0~git66.972ac93:
+  * build(deps): bump comrak from 0.21.0 to 0.24.1 (#1193)
+  * build(deps): bump softprops/action-gh-release (#1192)
+  * build(deps): bump atom_syndication from 0.12.2 to 0.12.3 (#1191)
+  * build(deps): bump rust-embed from 8.3.0 to 8.4.0 (#1190)
+  * build(deps): bump petgraph from 0.6.4 to 0.6.5 (#1189)
+  * update `gix` to v0.63 for security fixes
+  * Upgrade to auditable-info 0.7.2
+  * build(deps): bump rust-embed from 8.2.0 to 8.3.0
+  * build(deps): bump semver from 1.0.21 to 1.0.23
+  * Fix typo `then` -> `them` in index.html
+  * Drop unused import
+  * Fix typos
+  * Use clap to properly parse --color argument
+  * Remove duplicated arguments from bin subcommand
+  * Support specifying multiple target arches and oses in cargo-audit
+  * Make Query's target arch & os a Vec<T> instead of Option<T>
+  * build(deps): bump tame-index from 0.11.0 to 0.11.1
+  * Apply clippy suggestions
+  * Adjust binary type filter for WASM
+  * WIP WASM auditing support
+  * Fix warnings added in Rust 1.78
+  * Regenerate Cargo.lock
+  * Bump rustsec version
+  * Drop is-terminal line from rustsec changelog; it's a cargo-audit only change
+  * Update changelog
+  * build(deps): bump chrono from 0.4.34 to 0.4.38
+  * build(deps): bump time from 0.3.34 to 0.3.36
+  * fix after gix update
+  * update gix and tame-index
+  * fix cargo clippy warning and error
+  * cargo-audit: remove is-terminal dep
+  * build(deps): bump regex from 1.10.3 to 1.10.4
+  * Regenerate Cargo.lock
+  * Bump tame-index and gix versions
+  * chore: regenerate platform support and bump to platforms@3.4.0
+  * Document to use cargo install with --locked (fixes #1152)
+  * Release `rustsec` 0.29.1
+  * Revert rustsec-admin Cargo.toml entirely
+  * Bump required tame-index version in admin as well
+  * Upgrade to gix 0.60 to fix build
+  * build(deps): bump actions/cache from 4.0.0 to 4.0.1 (#1135)
+  * build(deps): bump auditable-serde from 0.6.0 to 0.6.1
+  * build(deps): bump toml_edit from 0.22.5 to 0.22.6
+  * build(deps): bump time from 0.3.32 to 0.3.34
+
+-------------------------------------------------------------------
+Tue May 28 04:57:40 UTC 2024 - william.brown@suse.com
+
+- Update to version 0.20.0~git0.6f4ca87:
+  * Bump version numbers
+  * Mention enterprise firewall issue in cargo-audit changelog too
+  * Fill in cargo-audit changelog
+  * Expand upon the rewrite description in rustsec changelog
+  * Fill in rustsec changelog
+  * Fix link
+  * build(deps): bump softprops/action-gh-release (#1114)
+  * build(deps): bump toml_edit from 0.21.1 to 0.22.5 (#1123)
+  * Bump askama to 0.12
+  * Update yanked package
+  * Drop libgit2 advisory from ignore list now that we got rid of libgit2
+  * build(deps): bump toml_edit from 0.19.15 to 0.21.1
+  * build(deps): bump chrono from 0.4.33 to 0.4.34
+  * build(deps): bump is-terminal from 0.4.11 to 0.4.12
+  * Improve fixer documentation
+  * Move Cargo path detection out of rustsec and into cargo-audit, to make rustsec more flexible
+  * Remove rustsec `fix` feature and always enable the fixer, now that it doesn't pull in additional dependencies
+  * Fix syntax
+  * Apply review suggestion (style)
+  * Update cargo-audit/src/commands/audit/fix.rs
+  * Run `cargo update` in the same dir as Cargo.lock
+  * Revert 'fix' being a default feature
+  * Placate clippy
+  * Print a nice summary at the end
+  * Better wording
+  * Remove extraneous newline
+  * prettier printing
+  * More detailed reporting
+  * Set the correct(ish) exit status in dry run mode
+  * Keep track of unpatchable vulns and failures
+  * Warn about vulnerabilities without patched versions and do not attempt to upgrade those crates
+  * Only attempt to upgrade vulnerable versions of a given package
+  * Fix: run `cargo update`, not just `cargo`
+  * Add a note that `fix` is experimental
+  * Update cargo.lock in the wake of cargo-edit removal
+  * Drop the now-unused dependency cargo-edit
+  * Drop obsolete Cargo.toml locating logic that breaks in presence of workspaces
+  * Do not require passing manifest path
+  * Drop unused imports
+  * Adapt `cargo audit fix` to the changed rustsec fix api
+  * Simplify rustsec part of `cargo audit fix`
+  * cargo fmt
+  * WIP
+  * No need to generate lockfile explicitly now that we call `cargo update`, remove that code
+  * WIP conversion of cargo-audit to the new rustsec fixer API
+  * cargo fmt
+  * Do not run `cargo update` when auditing
+  * Better docs on fixer
+  * Drop lifetimes from the fixer struct; they are a pointless flex - the cost of cloning is absolutely dwarfed by the cost of calling a subprocess.
+  * Implement initial prototype of `cargo update`-based package upgrading
+  * .cargo/audit.toml: ignore RUSTSEC-2024-0013 (#1111)
+  * WIP
+  * WIP
+  * Accept a &Path without allocating for giggles
+  * Comment out soon-to-be-removed code and make lifetimes work out
+  * Fix pkgid function signature to accept an immutable borrow
+  * Bump rustsec to 0.28.6
+  * Add pkgid function
+  * Temporarily make 'fix' feature default to ease development
+  * build(deps): bump is-terminal from 0.4.10 to 0.4.11 (#1105)
+  * Bump rustsec-admin to 0.8.9
+  * Rebase
+  * Remove PYSEC ids
+  * Update sync for various changes
+  * HTTPS download for OSV export
+  * Improve output format
+  * Add a command to synchronize advisory data from osv.dev/GHSA
+  * build(deps): bump tame-index from 0.9.2 to 0.9.3
+
+-------------------------------------------------------------------
 Wed Feb 07 01:23:27 UTC 2024 - william.brown@suse.com
 
 - Update to version 0.19.0~git0.c9d1fbe:
