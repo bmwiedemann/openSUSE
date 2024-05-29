@@ -137,6 +137,7 @@ buildignore libvdpau_nouveau
 
 # Pulls in a lot of libs, only used by libwebkit2gtk/epiphany anyway
 buildignore gstreamer-plugins-bad
+buildignore xdg-utils
 
 # Previously required by rest_cd_x11
 install patterns-xfce-xfce_basis

@@ -634,6 +634,8 @@
     <ignore name="libvdpau_nouveau"/>
     <!-- OBS-IgnorePackage: gstreamer-plugins-bad -->
     <ignore name="gstreamer-plugins-bad"/>
+    <!-- OBS-IgnorePackage: xdg-utils -->
+    <ignore name="xdg-utils"/>
     <package name="patterns-xfce-xfce_basis"/>
     <namedCollection name="xfce_basis"/>
     <package name="evince"/>
