@@ -1,4 +1,219 @@
 -------------------------------------------------------------------
+Mon May 27 15:12:20 UTC 2024 - pirateclip@protonmail.com
+
+- Update to version 0.4.0:
+  * remove unnecessary "Settings" suffix, hide terminal profiles from settings
+  * bump floem
+  * chore(deps): bump pulldown-cmark from 0.10.2 to 0.10.3 (#3223)
+  * chore(deps): bump unicode-width from 0.1.11 to 0.1.12 (#3226)
+  * chore(deps): bump bytemuck from 1.14.3 to 1.15.0 (#3187)
+  * Update README.md
+  * stop palette scroll to bubble up
+  * fix: reimplement path un/install for macos (#3255)
+  * proxy gzip overwrite file
+  * bump floem
+  * fix: remove tree-sitter-yaml
+  * fix: use default profile when spawning terminal panel
+  * fix clippy lints (#3237)
+  * add additional logging for environment loading
+  * fix: remove unsupported highlight for cpp
+  * hover doesn't propagate wheel event
+  * chore(deps): bump hashbrown from 0.14.3 to 0.14.5
+  * fix: use windows subsystem to prevent console running
+  * fix: log error with path when it cannot be parsed to Url
+  * rename preview_editor_width to palette_width
+  * ci: fix fedora glob
+  * add fedora builds (#3204)
+  * Fallback to default theme if key is wrong (#3203)
+  * Add cursor affinity for diagnostic phantom text
+  * docs: add pkgconf just in case
+  * bump version to 0.4.0
+  * update changelog
+  * make code action and completion clickable
+  * docs: use openssl system lib
+  * update screenshot
+  * Focus key bindings input when open
+  * reimplement settings dropdown
+  * chore(deps): bump structdesc from `a6a2b8a` to `47d8201`
+  * fix fmt
+  * log target lapce_core=debug, try to unload library on failure and log the error
+  * restore unsaved buffer
+  * chore(deps): bump smallvec from 1.13.1 to 1.13.2
+  * Update README.md
+  * remember panel section open status
+  * chore(deps): bump h2 from 0.3.24 to 0.3.26
+  * rework diagnostics
+  * Fix the issue where the copied text might be empty. (#3178)
+  * fix: add terminal profile example
+  * bump floem
+  * fix: use pre-installed wix (#3172)
+  * fix: update wix toolset
+  * bump floem
+  * chore(deps): bump libloading from 0.7.4 to 0.8.1
+  * chore(deps): bump serde from 1.0.190 to 1.0.197
+  * chore(deps): bump crossbeam-channel from 0.5.11 to 0.5.12
+  * chore(deps): bump regex from 1.10.2 to 1.10.4
+  * Implement ShowHover command to support modal hover keybind (#3158)
+  * docs: use `cargo install`
+  * fix: upgrade pulldown-cmark (#3156)
+  * chore(deps): bump reqwest from 0.11.24 to 0.11.27
+  * chore(deps): bump open from 5.0.1 to 5.1.2
+  * chore(deps): bump backtrace from 0.3.69 to 0.3.71
+  * chore(deps): bump rayon from 1.8.0 to 1.10.0
+  * chore(deps): bump tar from 0.4.38 to 0.4.40
+  * fix: upgrade nucleo, remove unused futures dependency (#3155)
+  * fix: remove unused tokio dependency (#3153)
+  * fix terminal bg drawing (#3152)
+  * fix: make keymap failure warn level
+  * fix: use trace level for keypress
+  * fix: lockfile
+  * fix: switch to tree-sitter-json crate
+  * no modal for local doc
+  * create editor modal from config
+  * treat altgr as modifier (#3143)
+  * Fix terminal default profile saving incorrectly (#3142)
+  * chore(deps): bump tree-sitter-javascript from 0.20.3 to 0.20.4 (#3112)
+  * chore(deps): bump hashbrown from 0.14.2 to 0.14.3 (#3039)
+  * Update floem (#3134)
+  * ci: refactor deb builds, link openssl statically (#3133)
+  * fix settings page navigation issue (#3130)
+  * Update floem (#3128)
+  * Fix theme fallback (#3127)
+  * special keymap parsing for +
+  * Two small `itertools` simplifications (#3126)
+  * chore(deps): bump futures from 0.3.28 to 0.3.30
+  * import KeyEventExtModifierSupplement from floem
+  * Click icon event propagation (#3124)
+  * swap sled to plain text file for db (#3123)
+  * Update floem for editor styling (#3122)
+  * fix: dont panic on missing colour
+  * Keyboard (#3119)
+  * Editors struct (#3118)
+  * return error if can't deserialize json
+  * fix: add remote disconnect button
+  * update notariation env key name
+  * bump alacritty_terminal
+  * don't exit stdio rpc if msg wrong format
+  * Downgrade config to 0.13.4
+  * Add scroll command to the internal commands
+  * editor copy include more information
+  * change notarize action
+  * fix: add event propagation to certain buttons (#3115)
+  * new function of terminal: double left-click to select the text, then right-click to copy (#3106)
+  * fix: improve observability for plugins (#3104)
+  * chore(deps): bump polling from 3.2.0 to 3.5.0
+  * fix: bump config (#3103)
+  * add selection function for terminal (#3105)
+  * fix: bump dependencies, remove indexmap/parking_lot duplicates (#3101)
+  * fix: typo in workspace dependency
+  * Update floem (#3099)
+  * Add text color if file is changed according to source control (#3096)
+  * Add setting to toggle open editors section (#3095)
+  * docs: remove matrix button (#3094)
+  * style: format Cargo manifests (#3092)
+  * fix: switch back to async-std for rfd
+  * fix panel resizing bug (#3089)
+  * fix: update msrv (#3013)
+  * fix(clippy): fix new clippy lints (#3090)
+  * add underline for hyperlink (#3087)
+  * preliminary implement: Jump from terminal prompt to the corresponding… (#3084)
+  * Foldable panel sections (#3086)
+  * Simplify settings (#3082)
+  * Add plugin-path for loading plugin(s) from specific folder(s) (#3076)
+  * Add tooltip coloring to settings.toml (#3077)
+  * Implement arbitrary theme variables (#3069)
+  * Fix scrolling in file explorer (#3068)
+  * Update floem (#3060)
+  * Move line up/down keybinds in insert to macos (#3055)
+  * Focus on app_view when creating the view (#3054)
+  * Tooltips (#3053)
+  * Implement line-ending switching (#3047)
+  * chore(deps): bump mio from 0.8.9 to 0.8.11
+  * chore(deps): bump tree-sitter-cpp from 0.20.4 to 0.20.5
+  * Focus on app_view so that find receives keypresses (#3031)
+  * fix some comments (#3030)
+  * Remaining file explorer context menu entries (#3026)
+  * chore(deps): bump sha2 from 0.10.7 to 0.10.8
+  * chore(deps): bump thiserror from 1.0.50 to 1.0.55
+  * chore(deps): bump git2 from 0.18.1 to 0.18.2
+  * chore(deps): bump bytemuck from 1.14.0 to 1.14.3
+  * fix: bump softbuffer to 0.3.4 to update drm
+  * chore(deps): bump clap from 3 to 4 (#3015)
+  * fix: update softbuffer (#3014)
+  * chore(deps): bump smallvec from 1.11.1 to 1.13.1 (#3009)
+  * chore(deps): bump walkdir from 2.3.2 to 2.4.0 (#3010)
+  * build: fix ubuntu builds
+  * fix: announce support for workspace_folders in lsp/psp (#3005)
+  * Allow Dependabot to open more PRs (#2670)
+  * fix: include .desktop and logo in debian packages (#3002)
+  * chore(deps): bump globset from 0.4.13 to 0.4.14
+  * fix: move globset to workspace deps (#3000)
+  * chore(deps): bump floem to `341afd` (#2999)
+  * look one dir lower for binaries when publishing
+  * fix simple nightly tag
+  * add building packages for linux distros (#2989)
+  * chore(deps): bump base64 from 0.21.5 to 0.21.7
+  * chore(deps): bump url from 2.3.1 to 2.5.0
+  * Cargo.toml: Add license to metadata (#2986)
+  * bump floem
+  * chore(deps): bump chrono from 0.4.22 to 0.4.34
+  * chore(deps): bump globset from 0.4.9 to 0.4.13
+  * chore(deps): bump open from 5.0.0 to 5.0.1
+  * chore(deps): bump reqwest from 0.11.22 to 0.11.24
+  * chore(deps): bump tree-sitter-cpp from 0.20.0 to 0.20.4
+  * chore(deps): bump notify from 5.0.0 to 5.2.0
+  * chore(deps): bump crossbeam-channel from 0.5.8 to 0.5.11
+  * chore(deps): bump tree-sitter-c from 0.20.6 to 0.20.8
+  * chore(deps): bump tokio from 1.33.0 to 1.36.0
+  * chore(deps): bump grep-regex from 0.1.10 to 0.1.11
+  * chore(deps): bump once_cell from 1.18.0 to 1.19.0
+  * chore(deps): bump tree-sitter-javascript from 0.20.1 to 0.20.3
+  * chore(deps): bump slotmap from 1.0.6 to 1.0.7
+  * chore(deps): bump bumpalo from 3.11.0 to 3.14.0
+  * add windows-sys, add error popup on panic, bring back panic hook to logfile (#2686)
+  * chore(deps): bump dyn-clone from 1.0.10 to 1.0.16
+  * chore(deps): bump unsafe-libyaml from 0.2.9 to 0.2.10
+  * chore(deps): bump h2 from 0.3.21 to 0.3.24
+  * chore(deps): bump openssl from 0.10.42 to 0.10.63
+  * feat: focus search input when opening settings (#2949)
+  * Feat: add `files_exclude` option (Fixes #811) (#2955)
+  * chore(deps): bump rustix from 0.37.23 to 0.37.27
+  * chore(deps): bump openssl-src from 111.22.0+1.1.1q to 111.28.1+1.1.1w
+  * chore(deps): bump libgit2-sys from 0.16.1+1.7.1 to 0.16.2+1.7.2
+  * sanitise window size when reading from db
+  * Floem Editor (#2909)
+  * adding fedora linux instructions to package-manager doc file (#2928)
+  * feat(editor): bracket colorization (#2835)
+  * Improve search in keyboard shortcuts overview (#2918)
+  * Fixed the issue where the plugin folder couldn't be deleted when unin… (#2915)
+  * fix some display bugs to do with screen line cache
+  * editor view layout needs to fill in cache
+  * Left panel file ordering fixed (#2912)
+  * move update_document_completion out of completion update
+  * Implement comparing files in the diff editor (#2910)
+  * update_document_completion can trigger window_origin
+  * bump floem
+  * Fix/git commit silently fail missing username email (#2878)
+  * fix: wsl (#2877)
+  * fix: detect git changes when no commit in repository (#2872)
+  * Implement path renaming from the file explorer (#2863)
+  * docs: cleanup distro specific info (#2865)
+  * fix: add cmakelists to cmake lang (#2864)
+  * build(deps): lock lsp-types to patch versions only (#2860)
+  * Remove LapceConfig from do_insert (#2849)
+  * get_color -> color; return copies of Color (#2848)
+  * bump floem
+  * Document no longer has common; Add line styling (#2847)
+  * Implement inline completion (#2846)
+  * Doc backend (#2836)
+  * fix: hide inline grammars (#2840)
+  * fix using default terminal profile (#2834)
+  * Line wrap (#2723)
+  * chore(deps): bump toml_edit from 0.19.14 to 0.20.2
+  * chore(deps): bump grep-searcher from 0.1.10 to 0.1.11
+  * chore(deps): bump flate2 from 1.0.24 to 1.0.28
+
+-------------------------------------------------------------------
 Sun Jan  7 03:55:54 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Respect lock and revert cargo update
