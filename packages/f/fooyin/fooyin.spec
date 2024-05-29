@@ -17,7 +17,7 @@
 
 
 Name:           fooyin
-Version:        0.4.1
+Version:        0.4.3
 Release:        0
 Summary:        A customisable music player built with Qt
 License:        GPL-3.0-only
@@ -27,7 +27,6 @@ BuildRequires:  c++_compiler
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  qt6-base-devel
 BuildRequires:  cmake(KDSingleApplication-qt6)
-BuildRequires:  cmake(QCoro6)
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6Linguist)
@@ -69,7 +68,7 @@ rm -fv %{buildroot}/%{_libdir}/fooyin/*.so
 %{_datadir}/applications/*
 %{_datadir}/doc/%{name}
 %{_datadir}/metainfo/*
-%{_datadir}/icons/hicolor/*/apps/%{name}.*
+%{_datadir}/icons/hicolor/*/apps/org.%{name}.%{name}.*
 %{_datadir}/%{name}
 %{_libdir}/%{name}/
 

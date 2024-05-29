@@ -17,4 +17,31 @@ This music player is very similar to the Windows program foobar2000.
 This request has significant cleanups in the spec file and puts everything necessary into one package, instead of being split across multiple subpackages.</comment>
     <requestid>1176941</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fb4b1fb2b951b44835806793d445ab4e</srcmd5>
+    <version>0.4.3</version>
+    <time>1717004158</time>
+    <user>anag+factory</user>
+    <comment>- Update to new upstream release 0.4.3
+  * Improvements
+    * Interface
+      * Support changing volume by scrolling on volume icon
+      * Add options to control appearance of tool buttons
+      * Add options to override margins, splitter handle sizes
+      * Make quick setup dialog modal
+    * Playlist
+      * Add channels column
+      * Add last modified column
+      * Improve performance when updating playback statistics
+    * WaveBar
+      * Add optional labels
+      * Improve behaviour when seeking
+  * Fixes
+    * Refer to the upstream release notes for more details on fixes: https://github.com/ludouzi/fooyin/releases/tag/v0.4.3
+- Removed QCoro dependency
+  * See https://github.com/ludouzi/fooyin/commit/c5aa3620c2d78a70e3d10d06d8fb0ed6ce4cb041
+- Icon name changed to reverse DNS format
+  * Part of a commit to use more reverse DNS: https://github.com/ludouzi/fooyin/commit/fab7933ced4347d7593c1ea378ebe56081d930a5</comment>
+    <requestid>1177424</requestid>
+  </revision>
 </revisionlist>

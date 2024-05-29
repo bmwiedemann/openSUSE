@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed May 29 01:45:24 UTC 2024 - Julius Enriquez <win8linux@gmail.com>
+
+- Update to new upstream release 0.4.3
+  * Improvements
+    * Interface
+      * Support changing volume by scrolling on volume icon
+      * Add options to control appearance of tool buttons
+      * Add options to override margins, splitter handle sizes
+      * Make quick setup dialog modal
+    * Playlist
+      * Add channels column
+      * Add last modified column
+      * Improve performance when updating playback statistics
+    * WaveBar
+      * Add optional labels
+      * Improve behaviour when seeking
+  * Fixes
+    * Refer to the upstream release notes for more details on fixes: https://github.com/ludouzi/fooyin/releases/tag/v0.4.3
+
+- Removed QCoro dependency
+  * See https://github.com/ludouzi/fooyin/commit/c5aa3620c2d78a70e3d10d06d8fb0ed6ce4cb041
+- Icon name changed to reverse DNS format
+  * Part of a commit to use more reverse DNS: https://github.com/ludouzi/fooyin/commit/fab7933ced4347d7593c1ea378ebe56081d930a5
+
+-------------------------------------------------------------------
+Sun May 26 13:10:13 UTC 2024 - Julius Enriquez <win8linux@gmail.com>
+
+- Working spec file
+
+-------------------------------------------------------------------
 Thu May 23 20:57:40 UTC 2024 - Julius Enriquez <win8linux@gmail.com>
 
 - Initial spec file 
