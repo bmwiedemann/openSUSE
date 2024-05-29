@@ -17,7 +17,7 @@
 
 
 Name:           ibus-typing-booster
-Version:        2.25.7
+Version:        2.25.8
 Release:        0
 Summary:        An input completion utility
 License:        GPL-3.0-or-later
@@ -44,6 +44,8 @@ BuildRequires:  python3-gobject-Gdk
 # Because of “from packing import version”:
 BuildRequires:  python3-packaging
 BuildRequires:  python3-pyenchant
+# To avoid requiring Python >= 3.8
+BuildRequires:  python3-typing_extensions
 BuildRequires:  update-desktop-files
 BuildRequires:  xvfb-run
 Requires:       dbus-1-python3
@@ -52,7 +54,7 @@ Requires:       enchant-1-backend
 #
 Requires:       ibus >= 1.5.3
 Requires:       m17n-lib
-Requires:       python3 >= 3.3
+Requires:       python3 >= 3.6
 Requires:       python3-distro
 # Because of “from packing import version”:
 Requires:       python3-packaging

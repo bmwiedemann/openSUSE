@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 27 19:07:01 UTC 2024 - maiku.fabian@gmail.com
+
+- Update to 2.25.8
+- Support compose sequences containing ASCII keys written as <U00XX> code points
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/510)
+- Update emoji annotations from CLDR
+- Translation update from Weblate (pt 91.3%)
+
+-------------------------------------------------------------------
 Mon Apr 15 10:52:39 UTC 2024 - maiku.fabian@gmail.com
 
 - Update to 2.25.7
