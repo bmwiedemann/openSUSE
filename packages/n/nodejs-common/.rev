@@ -190,4 +190,14 @@
     <comment>- Update default TW to nodejs21</comment>
     <requestid>1124370</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>61815974c7b1680f57cbb2bd4656d6b5</srcmd5>
+    <version>6.1</version>
+    <time>1717004119</time>
+    <user>anag+factory</user>
+    <comment>- Update TW to 22 and set 15.7 to use it as default
+
+- Add corepack support</comment>
+    <requestid>1177122</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package nodejs-common
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,7 @@
 #
 ###########################################################
 
-%define NODEJS_LTS      20
-%define NODEJS_CURRENT  21
+%define NODEJS_CURRENT  22
 
 %if 0%{?suse_version} > 1500 || 0%{?fedora_version}
 %bcond_without libalternatives
@@ -64,6 +63,10 @@
 
 %if 0%{?sle_version} >= 150600 && 0%{?sle_version} < 150700
 %define default_node_ver 20
+%endif
+
+%if 0%{?sle_version} >= 150700
+%define default_node_ver 22
 %endif
 
 # SLE-15 variants
@@ -138,6 +141,17 @@ Provides:       nodejs-devel = %default_node_ver
 Depends on the most current and up-to-date version of nodejs for
 the current architecture and codestream.
 
+%package -n corepack-default
+Summary:        Default version of corepack
+Group:          Development/Languages/NodeJS
+Requires:       corepack%{default_node_ver}
+Requires:       npm-default
+Provides:       corepack = %default_node_ver
+
+%description -n corepack-default
+Depends on the corepack version associated with the current default
+version of nodejs for the current architecture and codestream.
+
 %prep
 
 %build
@@ -150,17 +164,21 @@ echo "Default Node version: " %{default_node_ver}
 install -D -m 0755 node %{buildroot}%{_bindir}/node
 ln node %{buildroot}%{_bindir}/npm
 ln node %{buildroot}%{_bindir}/npx
+ln node %{buildroot}%{_bindir}/corepack
 
 %files
 %license LICENSE
 %{_bindir}/node
 %{_bindir}/npm
 %{_bindir}/npx
+%{_bindir}/corepack
 
 %files -n nodejs-default
 
 %files -n npm-default
 
 %files -n nodejs-devel-default
+
+%files -n corepack-default
 
 %changelog

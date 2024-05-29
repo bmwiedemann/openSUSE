@@ -17,6 +17,7 @@ const char * const supported_execs[] = {
 	"node",
 	"npm",
 	"npx",
+	"corepack",
 	NULL
 };
 

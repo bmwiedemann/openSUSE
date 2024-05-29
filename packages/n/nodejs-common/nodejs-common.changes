@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 16 13:34:35 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Update TW to 22 and set 15.7 to use it as default
+
+-------------------------------------------------------------------
+Sat Jan 27 09:40:57 UTC 2024 - Bingwu Zhang <xtexchooser@duck.com>
+
+- Add corepack support
+
+-------------------------------------------------------------------
 Thu Nov  9 09:12:01 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - Update default TW to nodejs21
