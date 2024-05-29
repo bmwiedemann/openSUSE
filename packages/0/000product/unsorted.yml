@@ -870,6 +870,7 @@ unsorted:
   - arpwatch 
   - arpwatch-ethercodes 
   - arpwatch-ethercodes-build 
+  - art-ctlscripts 
   - artem 
   - artha 
   - arti 
@@ -2522,6 +2523,7 @@ unsorted:
   - coredns-for-k8s1.30 
   - coredns-for-k8s1.30-extras 
   - coreos-installer 
+  - corepack-default 
   - corepack20 
   - corepack21 
   - corepack22 
@@ -14184,7 +14186,7 @@ unsorted:
   - libmateweather-lang 
   - libmateweather1 
   - libmatio-devel 
-  - libmatio11 
+  - libmatio13 
   - libmatroska-devel 
   - libmaxminddb-devel 
   - libmbd 
@@ -26694,7 +26696,7 @@ unsorted:
   - python310-scikit-sparse 
   - python310-scipy 
   - python310-scipy-gnu-hpc 
-  - python310-scipy_1_13_0-gnu-hpc 
+  - python310-scipy_1_13_1-gnu-hpc 
   - python310-scitokens 
   - python310-scour 
   - python310-scp 
@@ -30176,7 +30178,7 @@ unsorted:
   - python311-scikit-sparse 
   - python311-scipy 
   - python311-scipy-gnu-hpc 
-  - python311-scipy_1_13_0-gnu-hpc 
+  - python311-scipy_1_13_1-gnu-hpc 
   - python311-scitokens 
   - python311-scp 
   - python311-screeninfo 
@@ -33747,7 +33749,7 @@ unsorted:
   - python312-scikit-sparse 
   - python312-scipy 
   - python312-scipy-gnu-hpc 
-  - python312-scipy_1_13_0-gnu-hpc 
+  - python312-scipy_1_13_1-gnu-hpc 
   - python312-scitokens 
   - python312-scour 
   - python312-scp 
