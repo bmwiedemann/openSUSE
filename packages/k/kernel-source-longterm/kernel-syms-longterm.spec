@@ -16,7 +16,7 @@
 #
 
 
-%define git_commit 7564314c39367c4281b1cfdff17f89e1720d08c4
+%define git_commit 20208a45ccbfec4fe53435e1241231d0f4bb2ffe
 %define variant -longterm%{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -28,7 +28,7 @@ Group:          Development/Sources
 Version:        6.6.32
 %if %using_buildservice
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g7564314
+Release:        <RELEASE>.g20208a4
 %else
 Release:        0
 %endif
@@ -39,7 +39,7 @@ Release:        %kernel_source_release
 URL:            https://www.kernel.org/
 AutoReqProv:    off
 BuildRequires:  coreutils
-%ifarch x86_64
+%ifarch aarch64 x86_64
 Requires:       kernel-longterm-devel = %version-%source_rel
 %endif
 Requires:       pesign-obs-integration
@@ -49,7 +49,7 @@ Provides:       multiversion(kernel)
 Source:         README.KSYMS
 Requires:       kernel-devel%variant = %version-%source_rel
 %if ! 0%{?is_kotd} || ! %{?is_kotd_qa}%{!?is_kotd_qa:0}
-ExclusiveArch:  x86_64
+ExclusiveArch:  aarch64 x86_64
 %else
 ExclusiveArch:  do_not_build
 %endif

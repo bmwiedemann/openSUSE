@@ -19,7 +19,7 @@
 
 %define srcversion 6.6
 %define patchversion 6.6.32
-%define git_commit 7564314c39367c4281b1cfdff17f89e1720d08c4
+%define git_commit 20208a45ccbfec4fe53435e1241231d0f4bb2ffe
 %define variant -longterm%{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -115,7 +115,7 @@ License:        GPL-2.0-only
 Group:          System/Kernel
 Version:        6.6.32
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g7564314
+Release:        <RELEASE>.g20208a4
 %else
 Release:        0
 %endif
@@ -299,7 +299,7 @@ NoSource:       114
 NoSource:       120
 NoSource:       121
 %if ! 0%{?is_kotd} || ! %{?is_kotd_qa}%{!?is_kotd_qa:0}
-ExclusiveArch:  x86_64
+ExclusiveArch:  aarch64 x86_64
 %else
 ExclusiveArch:  do_not_build
 %endif
