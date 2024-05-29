@@ -1,0 +1,202 @@
+From 88bd54971d39b34d9728f3fe5fcb493cec3ff2fd Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Wed, 15 May 2024 09:22:11 +0200
+Subject: [PATCH] Improve broken events catching and reporting
+
+* Improve broken events catching and reporting
+
+* Add test of catching SaltDeserializationError on reading event
+
+* Add test for fire_ret_load
+---
+ salt/utils/event.py                          |  23 +++-
+ tests/pytests/unit/utils/event/test_event.py | 107 +++++++++++++++++++
+ 2 files changed, 128 insertions(+), 2 deletions(-)
+
+diff --git a/salt/utils/event.py b/salt/utils/event.py
+index e6d7b00520..ef048335ae 100644
+--- a/salt/utils/event.py
++++ b/salt/utils/event.py
+@@ -75,6 +75,7 @@ import salt.utils.platform
+ import salt.utils.process
+ import salt.utils.stringutils
+ import salt.utils.zeromq
++from salt.exceptions import SaltDeserializationError
+ 
+ log = logging.getLogger(__name__)
+ 
+@@ -461,7 +462,13 @@ class SaltEvent:
+             salt.utils.stringutils.to_bytes(TAGEND)
+         )  # split tag from data
+         mtag = salt.utils.stringutils.to_str(mtag)
+-        data = salt.payload.loads(mdata, encoding="utf-8")
++        try:
++            data = salt.payload.loads(mdata, encoding="utf-8")
++        except SaltDeserializationError:
++            log.warning(
++                "SaltDeserializationError on unpacking data, the payload could be incomplete"
++            )
++            raise
+         return mtag, data
+ 
+     def _get_match_func(self, match_type=None):
+@@ -583,6 +590,9 @@ class SaltEvent:
+                     raise
+                 else:
+                     return None
++            except SaltDeserializationError:
++                log.error("Unable to deserialize received event")
++                return None
+             except RuntimeError:
+                 return None
+ 
+@@ -889,6 +899,14 @@ class SaltEvent:
+             ret = load.get("return", {})
+             retcode = load["retcode"]
+ 
++        if not isinstance(ret, dict):
++            log.error(
++                "Event with bad payload received from '%s': %s",
++                load.get("id", "UNKNOWN"),
++                "".join(ret) if isinstance(ret, list) else ret,
++            )
++            return
++
+         try:
+             for tag, data in ret.items():
+                 data["retcode"] = retcode
+@@ -910,7 +928,8 @@ class SaltEvent:
+                     )
+         except Exception as exc:  # pylint: disable=broad-except
+             log.error(
+-                "Event iteration failed with exception: %s",
++                "Event from '%s' iteration failed with exception: %s",
++                load.get("id", "UNKNOWN"),
+                 exc,
+                 exc_info_on_loglevel=logging.DEBUG,
+             )
+diff --git a/tests/pytests/unit/utils/event/test_event.py b/tests/pytests/unit/utils/event/test_event.py
+index f4b6c15999..3eadfaf6ba 100644
+--- a/tests/pytests/unit/utils/event/test_event.py
++++ b/tests/pytests/unit/utils/event/test_event.py
+@@ -12,6 +12,7 @@ import salt.ext.tornado.ioloop
+ import salt.ext.tornado.iostream
+ import salt.utils.event
+ import salt.utils.stringutils
++from salt.exceptions import SaltDeserializationError
+ from salt.utils.event import SaltEvent
+ from tests.support.events import eventpublisher_process, eventsender_process
+ from tests.support.mock import patch
+@@ -340,3 +341,109 @@ def test_master_pub_permissions(sock_dir):
+         assert bool(os.lstat(p).st_mode & stat.S_IRUSR)
+         assert not bool(os.lstat(p).st_mode & stat.S_IRGRP)
+         assert not bool(os.lstat(p).st_mode & stat.S_IROTH)
++
++
++def test_event_unpack_with_SaltDeserializationError(sock_dir):
++    with eventpublisher_process(str(sock_dir)), salt.utils.event.MasterEvent(
++        str(sock_dir), listen=True
++    ) as me, patch.object(
++        salt.utils.event.log, "warning", autospec=True
++    ) as mock_log_warning, patch.object(
++        salt.utils.event.log, "error", autospec=True
++    ) as mock_log_error:
++        me.fire_event({"data": "foo1"}, "evt1")
++        me.fire_event({"data": "foo2"}, "evt2")
++        evt2 = me.get_event(tag="")
++        with patch("salt.payload.loads", side_effect=SaltDeserializationError):
++            evt1 = me.get_event(tag="")
++        _assert_got_event(evt2, {"data": "foo2"}, expected_failure=True)
++        assert evt1 is None
++        assert (
++            mock_log_warning.mock_calls[0].args[0]
++            == "SaltDeserializationError on unpacking data, the payload could be incomplete"
++        )
++        assert (
++            mock_log_error.mock_calls[0].args[0]
++            == "Unable to deserialize received event"
++        )
++
++
++def test_event_fire_ret_load():
++    event = SaltEvent(node=None)
++    test_load = {
++        "id": "minion_id.example.org",
++        "jid": "20240212095247760376",
++        "fun": "state.highstate",
++        "retcode": 254,
++        "return": {
++            "saltutil_|-sync_states_|-sync_states_|-sync_states": {
++                "result": True,
++            },
++            "saltutil_|-sync_modules_|-sync_modules_|-sync_modules": {
++                "result": False,
++            },
++        },
++    }
++    test_fire_event_data = {
++        "result": False,
++        "retcode": 254,
++        "jid": "20240212095247760376",
++        "id": "minion_id.example.org",
++        "success": False,
++        "return": "Error: saltutil.sync_modules",
++        "fun": "state.highstate",
++    }
++    test_unhandled_exc = "Unhandled exception running state.highstate"
++    test_traceback = [
++        "Traceback (most recent call last):\n",
++        "    Just an example of possible return as a list\n",
++    ]
++    with patch.object(
++        event, "fire_event", side_effect=[None, None, Exception]
++    ) as mock_fire_event, patch.object(
++        salt.utils.event.log, "error", autospec=True
++    ) as mock_log_error:
++        event.fire_ret_load(test_load)
++        assert len(mock_fire_event.mock_calls) == 2
++        assert mock_fire_event.mock_calls[0].args[0] == test_fire_event_data
++        assert mock_fire_event.mock_calls[0].args[1] == "saltutil.sync_modules"
++        assert mock_fire_event.mock_calls[1].args[0] == test_fire_event_data
++        assert (
++            mock_fire_event.mock_calls[1].args[1]
++            == "salt/job/20240212095247760376/sub/minion_id.example.org/error/state.highstate"
++        )
++        assert not mock_log_error.mock_calls
++
++        mock_log_error.reset_mock()
++
++        event.fire_ret_load(test_load)
++        assert (
++            mock_log_error.mock_calls[0].args[0]
++            == "Event from '%s' iteration failed with exception: %s"
++        )
++        assert mock_log_error.mock_calls[0].args[1] == "minion_id.example.org"
++
++        mock_log_error.reset_mock()
++        test_load["return"] = test_unhandled_exc
++
++        event.fire_ret_load(test_load)
++        assert (
++            mock_log_error.mock_calls[0].args[0]
++            == "Event with bad payload received from '%s': %s"
++        )
++        assert mock_log_error.mock_calls[0].args[1] == "minion_id.example.org"
++        assert (
++            mock_log_error.mock_calls[0].args[2]
++            == "Unhandled exception running state.highstate"
++        )
++
++        mock_log_error.reset_mock()
++        test_load["return"] = test_traceback
++
++        event.fire_ret_load(test_load)
++        assert (
++            mock_log_error.mock_calls[0].args[0]
++            == "Event with bad payload received from '%s': %s"
++        )
++        assert mock_log_error.mock_calls[0].args[1] == "minion_id.example.org"
++        assert mock_log_error.mock_calls[0].args[2] == "".join(test_traceback)
+-- 
+2.45.0
+

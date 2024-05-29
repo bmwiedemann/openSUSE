@@ -1,0 +1,25 @@
+From 032a470b6a2dbffbdee52c4f6a2a7fc40e3b6f85 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Wed, 15 May 2024 09:18:42 +0200
+Subject: [PATCH] Remove unused import causing delays on starting
+ salt-master
+
+---
+ salt/utils/minions.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/salt/utils/minions.py b/salt/utils/minions.py
+index 21d34b7edd..082b698522 100644
+--- a/salt/utils/minions.py
++++ b/salt/utils/minions.py
+@@ -9,7 +9,6 @@ import logging
+ import os
+ import re
+ 
+-import salt.auth.ldap
+ import salt.cache
+ import salt.payload
+ import salt.roster
+-- 
+2.45.0
+

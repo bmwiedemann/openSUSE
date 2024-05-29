@@ -1,0 +1,117 @@
+From d64311862c8cfdd7728aca504a22822df1b043c1 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Wed, 15 May 2024 09:48:39 +0200
+Subject: [PATCH] Skip tests for unsupported algorithm on old OpenSSL
+ version
+
+---
+ .../functional/modules/test_x509_v2.py        | 51 +++++++++++++------
+ 1 file changed, 35 insertions(+), 16 deletions(-)
+
+diff --git a/tests/pytests/functional/modules/test_x509_v2.py b/tests/pytests/functional/modules/test_x509_v2.py
+index 8da31bed9d..c060ad2971 100644
+--- a/tests/pytests/functional/modules/test_x509_v2.py
++++ b/tests/pytests/functional/modules/test_x509_v2.py
+@@ -9,6 +9,7 @@ from salt.utils.odict import OrderedDict
+ try:
+     import cryptography
+     import cryptography.x509 as cx509
++    from cryptography.exceptions import UnsupportedAlgorithm
+     from cryptography.hazmat.primitives import hashes
+     from cryptography.hazmat.primitives.serialization import (
+         load_pem_private_key,
+@@ -678,7 +679,10 @@ def crl_revoked():
+ @pytest.mark.parametrize("algo", ["rsa", "ec", "ed25519", "ed448"])
+ def test_create_certificate_self_signed(x509, algo, request):
+     privkey = request.getfixturevalue(f"{algo}_privkey")
+-    res = x509.create_certificate(signing_private_key=privkey, CN="success")
++    try:
++        res = x509.create_certificate(signing_private_key=privkey, CN="success")
++    except UnsupportedAlgorithm:
++        pytest.skip(f"Algorithm '{algo}' is not supported on this OpenSSL version")
+     assert res.startswith("-----BEGIN CERTIFICATE-----")
+     cert = _get_cert(res)
+     assert cert.subject.rfc4514_string() == "CN=success"
+@@ -743,12 +747,15 @@ def test_create_certificate_raw(x509, rsa_privkey):
+ @pytest.mark.parametrize("algo", ["rsa", "ec", "ed25519", "ed448"])
+ def test_create_certificate_from_privkey(x509, ca_key, ca_cert, algo, request):
+     privkey = request.getfixturevalue(f"{algo}_privkey")
+-    res = x509.create_certificate(
+-        signing_cert=ca_cert,
+-        signing_private_key=ca_key,
+-        private_key=privkey,
+-        CN="success",
+-    )
++    try:
++        res = x509.create_certificate(
++            signing_cert=ca_cert,
++            signing_private_key=ca_key,
++            private_key=privkey,
++            CN="success",
++        )
++    except UnsupportedAlgorithm:
++        pytest.skip(f"Algorithm '{algo}' is not supported on this OpenSSL version")
+     assert res.startswith("-----BEGIN CERTIFICATE-----")
+     cert = _get_cert(res)
+     assert cert.subject.rfc4514_string() == "CN=success"
+@@ -788,12 +795,15 @@ def test_create_certificate_from_encrypted_privkey_with_encrypted_privkey(
+ @pytest.mark.parametrize("algo", ["rsa", "ec", "ed25519", "ed448"])
+ def test_create_certificate_from_pubkey(x509, ca_key, ca_cert, algo, request):
+     pubkey = request.getfixturevalue(f"{algo}_pubkey")
+-    res = x509.create_certificate(
+-        signing_cert=ca_cert,
+-        signing_private_key=ca_key,
+-        public_key=pubkey,
+-        CN="success",
+-    )
++    try:
++        res = x509.create_certificate(
++            signing_cert=ca_cert,
++            signing_private_key=ca_key,
++            public_key=pubkey,
++            CN="success",
++        )
++    except UnsupportedAlgorithm:
++        pytest.skip(f"Algorithm '{algo}' is not supported on this OpenSSL version")
+     assert res.startswith("-----BEGIN CERTIFICATE-----")
+     cert = _get_cert(res)
+     assert cert.subject.rfc4514_string() == "CN=success"
+@@ -1329,7 +1339,10 @@ def test_create_crl_raw(x509, crl_args):
+ @pytest.mark.parametrize("algo", ["rsa", "ec", "ed25519", "ed448"])
+ def test_create_csr(x509, algo, request):
+     privkey = request.getfixturevalue(f"{algo}_privkey")
+-    res = x509.create_csr(private_key=privkey)
++    try:
++        res = x509.create_csr(private_key=privkey)
++    except UnsupportedAlgorithm:
++        pytest.skip(f"Algorithm '{algo}' is not supported on this OpenSSL version")
+     assert res.startswith("-----BEGIN CERTIFICATE REQUEST-----")
+ 
+ 
+@@ -1444,7 +1457,10 @@ def test_create_private_key_raw(x509):
+ )
+ def test_get_private_key_size(x509, algo, expected, request):
+     privkey = request.getfixturevalue(f"{algo}_privkey")
+-    res = x509.get_private_key_size(privkey)
++    try:
++        res = x509.get_private_key_size(privkey)
++    except UnsupportedAlgorithm:
++        pytest.skip(f"Algorithm '{algo}' is not supported on this OpenSSL version")
+     assert res == expected
+ 
+ 
+@@ -1588,7 +1604,10 @@ def test_verify_private_key(x509, ca_key, ca_cert):
+ @pytest.mark.parametrize("algo", ["rsa", "ec", "ed25519", "ed448"])
+ def test_verify_signature(x509, algo, request):
+     wrong_privkey = request.getfixturevalue(f"{algo}_privkey")
+-    privkey = x509.create_private_key(algo=algo)
++    try:
++        privkey = x509.create_private_key(algo=algo)
++    except UnsupportedAlgorithm:
++        pytest.skip(f"Algorithm '{algo}' is not supported on this OpenSSL version")
+     cert = x509.create_certificate(signing_private_key=privkey)
+     assert x509.verify_signature(cert, privkey)
+     assert not x509.verify_signature(cert, wrong_privkey)
+-- 
+2.45.0
+

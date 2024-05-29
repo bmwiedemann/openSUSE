@@ -2334,4 +2334,38 @@ let build start it or we will get libvirt errors.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1175362</requestid>
   </revision>
+  <revision rev="149" vrev="13">
+    <srcmd5>a6379059f812647e52eb8ec660c755d4</srcmd5>
+    <version>3006.0</version>
+    <time>1717004109</time>
+    <user>anag+factory</user>
+    <comment>- Several fixes for tests to avoid errors and failures in some OSes
+- Speed up salt.matcher.confirm_top by using __context__
+- Do not call the async wrapper calls with the separate thread
+- Prevent OOM with high amount of batch async calls (bsc#1216063)
+- Add missing contextvars dependency in salt.version
+- Skip tests for unsupported algorithm on old OpenSSL version
+- Remove redundant `_file_find` call to the master
+- Prevent possible exception in tornado.concurrent.Future._set_done
+- Make reactor engine less blocking the EventPublisher
+- Make salt-master self recoverable on killing EventPublisher
+- Improve broken events catching and reporting
+- Make logging calls lighter
+- Remove unused import causing delays on starting salt-master
+- Added:
+  * improve-broken-events-catching-and-reporting.patch
+  * add-missing-contextvars-dependency-in-salt.version.patch
+  * prevent-oom-with-high-amount-of-batch-async-calls-bs.patch
+  * speed-up-salt.matcher.confirm_top-by-using-__context.patch
+  * remove-redundant-_file_find-call-to-the-master.patch
+  * make-logging-calls-lighter.patch
+  * make-salt-master-self-recoverable-on-killing-eventpu.patch
+  * skip-tests-for-unsupported-algorithm-on-old-openssl-.patch
+  * remove-unused-import-causing-delays-on-starting-salt.patch
+  * do-not-call-the-async-wrapper-calls-with-the-separat.patch
+  * prevent-possible-exception-in-tornado.concurrent.fut.patch
+  * several-fixes-for-tests-to-avoid-errors-and-failures.patch
+  * make-reactor-engine-less-blocking-the-eventpublisher.patch</comment>
+    <requestid>1177117</requestid>
+  </revision>
 </revisionlist>

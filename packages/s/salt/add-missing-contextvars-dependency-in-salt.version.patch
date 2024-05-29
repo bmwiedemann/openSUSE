@@ -1,0 +1,38 @@
+From 1a5716365e0c3b8d290759847f4046f28ee4b79f Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Wed, 15 May 2024 09:53:20 +0200
+Subject: [PATCH] Add missing contextvars dependency in salt.version
+
+---
+ salt/version.py                     | 1 +
+ tests/unit/states/test_pip_state.py | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/salt/version.py b/salt/version.py
+index 44372830b2..b2643550e9 100644
+--- a/salt/version.py
++++ b/salt/version.py
+@@ -717,6 +717,7 @@ def dependency_information(include_salt_cloud=False):
+         ("docker-py", "docker", "__version__"),
+         ("packaging", "packaging", "__version__"),
+         ("looseversion", "looseversion", None),
++        ("contextvars", "contextvars", None),
+         ("relenv", "relenv", "__version__"),
+     ]
+ 
+diff --git a/tests/unit/states/test_pip_state.py b/tests/unit/states/test_pip_state.py
+index d70b115000..fe5d171a15 100644
+--- a/tests/unit/states/test_pip_state.py
++++ b/tests/unit/states/test_pip_state.py
+@@ -419,7 +419,7 @@ class PipStateInstallationErrorTest(TestCase):
+     def test_importable_installation_error(self):
+         extra_requirements = []
+         for name, version in salt.version.dependency_information():
+-            if name in ["PyYAML", "packaging", "looseversion"]:
++            if name in ["PyYAML", "packaging", "looseversion", "contextvars"]:
+                 extra_requirements.append("{}=={}".format(name, version))
+         failures = {}
+         pip_version_requirements = [
+-- 
+2.45.0
+

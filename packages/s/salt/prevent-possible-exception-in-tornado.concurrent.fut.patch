@@ -1,0 +1,37 @@
+From 859be3e8213d4b5814a18fa6e9f3f17bf65b3183 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Wed, 15 May 2024 09:45:26 +0200
+Subject: [PATCH] Prevent possible exception in
+ tornado.concurrent.Future._set_done
+
+---
+ salt/ext/tornado/concurrent.py | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/salt/ext/tornado/concurrent.py b/salt/ext/tornado/concurrent.py
+index bea09ba125..011808ed27 100644
+--- a/salt/ext/tornado/concurrent.py
++++ b/salt/ext/tornado/concurrent.py
+@@ -330,12 +330,13 @@ class Future(object):
+ 
+     def _set_done(self):
+         self._done = True
+-        for cb in self._callbacks:
+-            try:
+-                cb(self)
+-            except Exception:
+-                app_log.exception("Exception in callback %r for %r", cb, self)
+-        self._callbacks = None
++        if self._callbacks:
++            for cb in self._callbacks:
++                try:
++                    cb(self)
++                except Exception:
++                    app_log.exception("Exception in callback %r for %r", cb, self)
++            self._callbacks = None
+ 
+     # On Python 3.3 or older, objects with a destructor part of a reference
+     # cycle are never destroyed. It's no longer the case on Python 3.4 thanks to
+-- 
+2.45.0
+

@@ -1,0 +1,64 @@
+From a7e578b96d0e7ad8fdf4e5d62416ba6961b82315 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Wed, 15 May 2024 11:50:52 +0200
+Subject: [PATCH] Speed up salt.matcher.confirm_top by using
+ __context__
+
+* Speed up salt.matcher.confirm_top by using __context__
+
+* Add test for getting matchers from __context__ in matchers.confirm_top
+---
+ salt/matchers/confirm_top.py                    |  6 +++++-
+ tests/pytests/unit/matchers/test_confirm_top.py | 15 +++++++++++++++
+ 2 files changed, 20 insertions(+), 1 deletion(-)
+
+diff --git a/salt/matchers/confirm_top.py b/salt/matchers/confirm_top.py
+index 7435f4ae94..d2edc99d8f 100644
+--- a/salt/matchers/confirm_top.py
++++ b/salt/matchers/confirm_top.py
+@@ -21,7 +21,11 @@ def confirm_top(match, data, nodegroups=None):
+             if "match" in item:
+                 matcher = item["match"]
+ 
+-    matchers = salt.loader.matchers(__opts__)
++    if "matchers" in __context__:
++        matchers = __context__["matchers"]
++    else:
++        matchers = salt.loader.matchers(__opts__)
++        __context__["matchers"] = matchers
+     funcname = matcher + "_match.match"
+     if matcher == "nodegroup":
+         return matchers[funcname](match, nodegroups)
+diff --git a/tests/pytests/unit/matchers/test_confirm_top.py b/tests/pytests/unit/matchers/test_confirm_top.py
+index 514df323b6..f439fcf94a 100644
+--- a/tests/pytests/unit/matchers/test_confirm_top.py
++++ b/tests/pytests/unit/matchers/test_confirm_top.py
+@@ -2,6 +2,7 @@ import pytest
+ 
+ import salt.config
+ import salt.loader
++from tests.support.mock import patch
+ 
+ 
+ @pytest.fixture
+@@ -12,3 +13,17 @@ def matchers(minion_opts):
+ def test_sanity(matchers):
+     match = matchers["confirm_top.confirm_top"]
+     assert match("*", []) is True
++
++
++@pytest.mark.parametrize("in_context", [False, True])
++def test_matchers_from_context(matchers, in_context):
++    match = matchers["confirm_top.confirm_top"]
++    with patch.dict(
++        matchers.pack["__context__"], {"matchers": matchers} if in_context else {}
++    ), patch("salt.loader.matchers", return_value=matchers) as loader_matchers:
++        assert match("*", []) is True
++        assert id(matchers.pack["__context__"]["matchers"]) == id(matchers)
++        if in_context:
++            loader_matchers.assert_not_called()
++        else:
++            loader_matchers.assert_called_once()
+-- 
+2.45.0
+

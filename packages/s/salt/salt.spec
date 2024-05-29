@@ -356,7 +356,7 @@ Patch101:       fix-problematic-tests-and-allow-smooth-tests-executi.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/628
 Patch102:       make-importing-seco.range-thread-safe-bsc-1211649.patch
 # PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/66130
-PAtch103:       fix-tests-failures-and-errors-when-detected-on-vm-ex.patch
+Patch103:       fix-tests-failures-and-errors-when-detected-on-vm-ex.patch
 # PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/66234 (modified at Patch106)
 Patch104:       decode-oscap-byte-stream-to-string-bsc-1219001.patch
 ### Commits to make Salt compatible with Python 3.11 (and 3.6)
@@ -370,6 +370,32 @@ Patch104:       decode-oscap-byte-stream-to-string-bsc-1219001.patch
 Patch105:       fix-salt-warnings-and-testuite-for-python-3.11-635.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/639
 Patch106:       switch-oscap-encoding-to-utf-8-639.patch
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/65982
+Patch107:       remove-unused-import-causing-delays-on-starting-salt.patch
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/66024
+Patch108:       make-logging-calls-lighter.patch
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/66034
+Patch109:       improve-broken-events-catching-and-reporting.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/633
+Patch110:       make-salt-master-self-recoverable-on-killing-eventpu.patch
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/66158
+Patch111:       make-reactor-engine-less-blocking-the-eventpublisher.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/638
+Patch112:       prevent-possible-exception-in-tornado.concurrent.fut.patch
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/66455
+Patch113:       remove-redundant-_file_find-call-to-the-master.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/646
+Patch114:       skip-tests-for-unsupported-algorithm-on-old-openssl-.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/652
+Patch115:       add-missing-contextvars-dependency-in-salt.version.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/640
+Patch116:       prevent-oom-with-high-amount-of-batch-async-calls-bs.patch
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/65983
+Patch117:       do-not-call-the-async-wrapper-calls-with-the-separat.patch
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/66494
+Patch118:       speed-up-salt.matcher.confirm_top-by-using-__context.patch
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/66593
+Patch119:       several-fixes-for-tests-to-avoid-errors-and-failures.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END

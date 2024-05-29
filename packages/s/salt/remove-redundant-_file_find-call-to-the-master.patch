@@ -1,0 +1,40 @@
+From 768495df67725ae840b06d321bef8299eca2368a Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Wed, 15 May 2024 09:47:40 +0200
+Subject: [PATCH] Remove redundant `_file_find` call to the master
+
+---
+ salt/fileclient.py | 10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
+
+diff --git a/salt/fileclient.py b/salt/fileclient.py
+index f01a86dd0d..f4b8d76dbe 100644
+--- a/salt/fileclient.py
++++ b/salt/fileclient.py
+@@ -1162,10 +1162,7 @@ class RemoteClient(Client):
+         if senv:
+             saltenv = senv
+ 
+-        if not salt.utils.platform.is_windows():
+-            hash_server, stat_server = self.hash_and_stat_file(path, saltenv)
+-        else:
+-            hash_server = self.hash_file(path, saltenv)
++        hash_server = self.hash_file(path, saltenv)
+ 
+         # Check if file exists on server, before creating files and
+         # directories
+@@ -1206,10 +1203,7 @@ class RemoteClient(Client):
+         )
+ 
+         if dest2check and os.path.isfile(dest2check):
+-            if not salt.utils.platform.is_windows():
+-                hash_local, stat_local = self.hash_and_stat_file(dest2check, saltenv)
+-            else:
+-                hash_local = self.hash_file(dest2check, saltenv)
++            hash_local = self.hash_file(dest2check, saltenv)
+ 
+             if hash_local == hash_server:
+                 return dest2check
+-- 
+2.45.0
+

@@ -1,0 +1,254 @@
+From 4021f938ed1b64acd47ccaefc111197a1118ee4f Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Wed, 15 May 2024 11:48:46 +0200
+Subject: [PATCH] Do not call the async wrapper calls with the separate
+ thread
+
+* Do not run method with the distinct thread
+
+* Move test_asynchronous.py to pytests
+---
+ salt/utils/asynchronous.py                    | 25 +----
+ tests/pytests/unit/utils/test_asynchronous.py | 92 +++++++++++++++++++
+ tests/unit/utils/test_asynchronous.py         | 81 ----------------
+ 3 files changed, 94 insertions(+), 104 deletions(-)
+ create mode 100644 tests/pytests/unit/utils/test_asynchronous.py
+ delete mode 100644 tests/unit/utils/test_asynchronous.py
+
+diff --git a/salt/utils/asynchronous.py b/salt/utils/asynchronous.py
+index 88596a4a20..55a50cbcbf 100644
+--- a/salt/utils/asynchronous.py
++++ b/salt/utils/asynchronous.py
+@@ -2,11 +2,8 @@
+ Helpers/utils for working with tornado asynchronous stuff
+ """
+ 
+-
+ import contextlib
+ import logging
+-import sys
+-import threading
+ 
+ import salt.ext.tornado.concurrent
+ import salt.ext.tornado.ioloop
+@@ -111,30 +108,12 @@ class SyncWrapper:
+ 
+     def _wrap(self, key):
+         def wrap(*args, **kwargs):
+-            results = []
+-            thread = threading.Thread(
+-                target=self._target,
+-                args=(key, args, kwargs, results, self.io_loop),
++            return self.io_loop.run_sync(
++                lambda: getattr(self.obj, key)(*args, **kwargs)
+             )
+-            thread.start()
+-            thread.join()
+-            if results[0]:
+-                return results[1]
+-            else:
+-                exc_info = results[1]
+-                raise exc_info[1].with_traceback(exc_info[2])
+ 
+         return wrap
+ 
+-    def _target(self, key, args, kwargs, results, io_loop):
+-        try:
+-            result = io_loop.run_sync(lambda: getattr(self.obj, key)(*args, **kwargs))
+-            results.append(True)
+-            results.append(result)
+-        except Exception:  # pylint: disable=broad-except
+-            results.append(False)
+-            results.append(sys.exc_info())
+-
+     def __enter__(self):
+         return self
+ 
+diff --git a/tests/pytests/unit/utils/test_asynchronous.py b/tests/pytests/unit/utils/test_asynchronous.py
+new file mode 100644
+index 0000000000..2b5613e2bf
+--- /dev/null
++++ b/tests/pytests/unit/utils/test_asynchronous.py
+@@ -0,0 +1,92 @@
++import tornado.gen
++import tornado.ioloop
++
++import salt.utils.asynchronous as asynchronous
++
++
++class HelperA:
++
++    async_methods = [
++        "sleep",
++    ]
++
++    def __init__(self, io_loop=None):
++        pass
++
++    @tornado.gen.coroutine
++    def sleep(self):
++        yield tornado.gen.sleep(0.1)
++        raise tornado.gen.Return(True)
++
++
++class HelperB:
++
++    async_methods = [
++        "sleep",
++    ]
++
++    def __init__(self, a=None, io_loop=None):
++        if a is None:
++            a = asynchronous.SyncWrapper(HelperA)
++        self.a = a
++
++    @tornado.gen.coroutine
++    def sleep(self):
++        yield tornado.gen.sleep(0.1)
++        self.a.sleep()
++        raise tornado.gen.Return(False)
++
++
++def test_helpers():
++    """
++    Test that the helper classes do what we expect within a regular asynchronous env
++    """
++    io_loop = tornado.ioloop.IOLoop(make_current=False)
++    ret = io_loop.run_sync(lambda: HelperA().sleep())
++    assert ret is True
++
++    ret = io_loop.run_sync(lambda: HelperB().sleep())
++    assert ret is False
++
++
++def test_basic_wrap():
++    """
++    Test that we can wrap an asynchronous caller.
++    """
++    sync = asynchronous.SyncWrapper(HelperA)
++    ret = sync.sleep()
++    assert ret is True
++
++
++def test_basic_wrap_series():
++    """
++    Test that we can wrap an asynchronous caller and call the method in series.
++    """
++    sync = asynchronous.SyncWrapper(HelperA)
++    ret = sync.sleep()
++    assert ret is True
++    ret = sync.sleep()
++    assert ret is True
++
++
++def test_double():
++    """
++    Test when the asynchronous wrapper object itself creates a wrap of another thing
++
++    This works fine since the second wrap is based on the first's IOLoop so we
++    don't have to worry about complex start/stop mechanics
++    """
++    sync = asynchronous.SyncWrapper(HelperB)
++    ret = sync.sleep()
++    assert ret is False
++
++
++def test_double_sameloop():
++    """
++    Test asynchronous wrappers initiated from the same IOLoop, to ensure that
++    we don't wire up both to the same IOLoop (since it causes MANY problems).
++    """
++    a = asynchronous.SyncWrapper(HelperA)
++    sync = asynchronous.SyncWrapper(HelperB, (a,))
++    ret = sync.sleep()
++    assert ret is False
+diff --git a/tests/unit/utils/test_asynchronous.py b/tests/unit/utils/test_asynchronous.py
+deleted file mode 100644
+index e5bd974cb6..0000000000
+--- a/tests/unit/utils/test_asynchronous.py
++++ /dev/null
+@@ -1,81 +0,0 @@
+-import salt.ext.tornado.gen
+-import salt.ext.tornado.testing
+-import salt.utils.asynchronous as asynchronous
+-from salt.ext.tornado.testing import AsyncTestCase
+-
+-
+-class HelperA:
+-
+-    async_methods = [
+-        "sleep",
+-    ]
+-
+-    def __init__(self, io_loop=None):
+-        pass
+-
+-    @salt.ext.tornado.gen.coroutine
+-    def sleep(self):
+-        yield salt.ext.tornado.gen.sleep(0.1)
+-        raise salt.ext.tornado.gen.Return(True)
+-
+-
+-class HelperB:
+-
+-    async_methods = [
+-        "sleep",
+-    ]
+-
+-    def __init__(self, a=None, io_loop=None):
+-        if a is None:
+-            a = asynchronous.SyncWrapper(HelperA)
+-        self.a = a
+-
+-    @salt.ext.tornado.gen.coroutine
+-    def sleep(self):
+-        yield salt.ext.tornado.gen.sleep(0.1)
+-        self.a.sleep()
+-        raise salt.ext.tornado.gen.Return(False)
+-
+-
+-class TestSyncWrapper(AsyncTestCase):
+-    @salt.ext.tornado.testing.gen_test
+-    def test_helpers(self):
+-        """
+-        Test that the helper classes do what we expect within a regular asynchronous env
+-        """
+-        ha = HelperA()
+-        ret = yield ha.sleep()
+-        self.assertTrue(ret)
+-
+-        hb = HelperB()
+-        ret = yield hb.sleep()
+-        self.assertFalse(ret)
+-
+-    def test_basic_wrap(self):
+-        """
+-        Test that we can wrap an asynchronous caller.
+-        """
+-        sync = asynchronous.SyncWrapper(HelperA)
+-        ret = sync.sleep()
+-        self.assertTrue(ret)
+-
+-    def test_double(self):
+-        """
+-        Test when the asynchronous wrapper object itself creates a wrap of another thing
+-
+-        This works fine since the second wrap is based on the first's IOLoop so we
+-        don't have to worry about complex start/stop mechanics
+-        """
+-        sync = asynchronous.SyncWrapper(HelperB)
+-        ret = sync.sleep()
+-        self.assertFalse(ret)
+-
+-    def test_double_sameloop(self):
+-        """
+-        Test asynchronous wrappers initiated from the same IOLoop, to ensure that
+-        we don't wire up both to the same IOLoop (since it causes MANY problems).
+-        """
+-        a = asynchronous.SyncWrapper(HelperA)
+-        sync = asynchronous.SyncWrapper(HelperB, (a,))
+-        ret = sync.sleep()
+-        self.assertFalse(ret)
+-- 
+2.45.0
+

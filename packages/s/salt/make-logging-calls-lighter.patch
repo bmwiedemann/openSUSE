@@ -1,0 +1,233 @@
+From 48b6f57ece7eb9f58b8e6da40ec241b6df3f6d01 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Wed, 15 May 2024 09:20:18 +0200
+Subject: [PATCH] Make logging calls lighter
+
+* Call set_lowest_log_level_by_opts with set_logging_options_dict
+
+* Fix the _logging test with setting minimum logging level
+
+* Fix test_deferred_stream_handler test
+
+* Fix vt.Terminal failing test: test_log_sanitize
+
+Fixes failing test added in a09b4f445052be66f0ac53fd01fa02bfa5b82ea6
+
+We can't assume tests are run at debug level, so this ensures the test
+passes regardless of what logging level is currently set by capturing
+the output in caplog at DEBUG which stream_stdout/stream_stderr uses by
+default.
+
+Signed-off-by: Joe Groocock <jgroocock@cloudflare.com>
+
+---------
+
+Signed-off-by: Joe Groocock <jgroocock@cloudflare.com>
+Co-authored-by: Joe Groocock <jgroocock@cloudflare.com>
+---
+ salt/_logging/impl.py                         |   1 +
+ .../integration/_logging/test_logging.py      | 106 ++++++++++++++++++
+ .../handlers/test_deferred_stream_handler.py  |   9 +-
+ tests/pytests/unit/utils/test_vt.py           |   6 +-
+ 4 files changed, 117 insertions(+), 5 deletions(-)
+ create mode 100644 tests/pytests/integration/_logging/test_logging.py
+
+diff --git a/salt/_logging/impl.py b/salt/_logging/impl.py
+index 2d1a276cb8..1d71cb8be8 100644
+--- a/salt/_logging/impl.py
++++ b/salt/_logging/impl.py
+@@ -426,6 +426,7 @@ def set_logging_options_dict(opts):
+     except AttributeError:
+         pass
+     set_logging_options_dict.__options_dict__ = opts
++    set_lowest_log_level_by_opts(opts)
+ 
+ 
+ def freeze_logging_options_dict():
+diff --git a/tests/pytests/integration/_logging/test_logging.py b/tests/pytests/integration/_logging/test_logging.py
+new file mode 100644
+index 0000000000..8e38f55b38
+--- /dev/null
++++ b/tests/pytests/integration/_logging/test_logging.py
+@@ -0,0 +1,106 @@
++import logging
++import os
++
++import pytest
++
++import salt._logging.impl as log_impl
++from tests.support.mock import MagicMock, patch
++
++pytestmark = [
++    pytest.mark.skip_on_windows(reason="Temporarily skipped on the newer golden images")
++]
++
++
++log = logging.getLogger(__name__)
++
++
++@pytest.fixture
++def configure_loader_modules():
++    return {log_impl: {}}
++
++
++def log_nameToLevel(name):
++    """
++    Return the numeric representation of textual logging level
++    """
++    # log level values
++    CRITICAL = 50
++    FATAL = CRITICAL
++    ERROR = 40
++    WARNING = 30
++    WARN = WARNING
++    INFO = 20
++    DEBUG = 10
++    NOTSET = 0
++
++    _nameToLevel = {
++        "CRITICAL": CRITICAL,
++        "FATAL": FATAL,
++        "ERROR": ERROR,
++        "WARN": WARNING,
++        "WARNING": WARNING,
++        "INFO": INFO,
++        "DEBUG": DEBUG,
++        "NOTSET": NOTSET,
++    }
++    return _nameToLevel.get(name, None)
++
++
++def test_lowest_log_level():
++    ret = log_impl.get_lowest_log_level()
++    assert ret is not None
++
++    log_impl.set_lowest_log_level(log_nameToLevel("DEBUG"))
++    ret = log_impl.get_lowest_log_level()
++    assert ret is log_nameToLevel("DEBUG")
++
++    log_impl.set_lowest_log_level(log_nameToLevel("WARNING"))
++    ret = log_impl.get_lowest_log_level()
++    assert ret is log_nameToLevel("WARNING")
++
++    opts = {"log_level": "ERROR", "log_level_logfile": "INFO"}
++    log_impl.set_lowest_log_level_by_opts(opts)
++    ret = log_impl.get_lowest_log_level()
++    assert ret is log_nameToLevel("INFO")
++
++
++def test_get_logging_level_from_string(caplog):
++    ret = log_impl.get_logging_level_from_string(None)
++    assert ret is log_nameToLevel("WARNING")
++
++    ret = log_impl.get_logging_level_from_string(log_nameToLevel("DEBUG"))
++    assert ret is log_nameToLevel("DEBUG")
++
++    ret = log_impl.get_logging_level_from_string("CRITICAL")
++    assert ret is log_nameToLevel("CRITICAL")
++
++    caplog.clear()
++    with caplog.at_level(logging.WARNING):
++        msg = "Could not translate the logging level string 'BADLEVEL' into an actual logging level integer. Returning 'logging.ERROR'."
++        ret = log_impl.get_logging_level_from_string("BADLEVEL")
++        assert ret is log_nameToLevel("ERROR")
++        assert msg in caplog.text
++
++
++def test_logfile_handler(caplog):
++    caplog.clear()
++    with caplog.at_level(logging.WARNING):
++        ret = log_impl.is_logfile_handler_configured()
++        assert ret is False
++
++        msg = "log_path setting is set to `None`. Nothing else to do"
++        log_path = None
++        assert log_impl.setup_logfile_handler(log_path) is None
++        assert msg in caplog.text
++
++
++def test_in_mainprocess():
++    ret = log_impl.in_mainprocess()
++    assert ret is True
++
++    curr_pid = os.getpid()
++    with patch(
++        "os.getpid", MagicMock(side_effect=[AttributeError, curr_pid, curr_pid])
++    ):
++        ret = log_impl.in_mainprocess()
++        assert ret is True
+diff --git a/tests/pytests/unit/_logging/handlers/test_deferred_stream_handler.py b/tests/pytests/unit/_logging/handlers/test_deferred_stream_handler.py
+index 76b0e88eca..62c0dff4be 100644
+--- a/tests/pytests/unit/_logging/handlers/test_deferred_stream_handler.py
++++ b/tests/pytests/unit/_logging/handlers/test_deferred_stream_handler.py
+@@ -9,6 +9,7 @@ import pytest
+ from pytestshellutils.utils.processes import terminate_process
+ 
+ from salt._logging.handlers import DeferredStreamHandler
++from salt._logging.impl import set_lowest_log_level
+ from salt.utils.nb_popen import NonBlockingPopen
+ from tests.support.helpers import CaptureOutput, dedent
+ from tests.support.runtests import RUNTIME_VARS
+@@ -20,7 +21,7 @@ def _sync_with_handlers_proc_target():
+ 
+     with CaptureOutput() as stds:
+         handler = DeferredStreamHandler(sys.stderr)
+-        handler.setLevel(logging.DEBUG)
++        set_lowest_log_level(logging.DEBUG)
+         formatter = logging.Formatter("%(message)s")
+         handler.setFormatter(formatter)
+         logging.root.addHandler(handler)
+@@ -45,7 +46,7 @@ def _deferred_write_on_flush_proc_target():
+ 
+     with CaptureOutput() as stds:
+         handler = DeferredStreamHandler(sys.stderr)
+-        handler.setLevel(logging.DEBUG)
++        set_lowest_log_level(logging.DEBUG)
+         formatter = logging.Formatter("%(message)s")
+         handler.setFormatter(formatter)
+         logging.root.addHandler(handler)
+@@ -126,7 +127,7 @@ def test_deferred_write_on_atexit(tmp_path):
+         # Just loop consuming output
+         while True:
+             if time.time() > max_time:
+-                pytest.fail("Script didn't exit after {} second".format(execution_time))
++                pytest.fail(f"Script didn't exit after {execution_time} second")
+ 
+             time.sleep(0.125)
+             _out = proc.recv()
+@@ -146,7 +147,7 @@ def test_deferred_write_on_atexit(tmp_path):
+     finally:
+         terminate_process(proc.pid, kill_children=True)
+     if b"Foo" not in err:
+-        pytest.fail("'Foo' should be in stderr and it's not: {}".format(err))
++        pytest.fail(f"'Foo' should be in stderr and it's not: {err}")
+ 
+ 
+ @pytest.mark.skip_on_windows(reason="Windows does not support SIGINT")
+diff --git a/tests/pytests/unit/utils/test_vt.py b/tests/pytests/unit/utils/test_vt.py
+index 438a6eb09c..c31b25e623 100644
+--- a/tests/pytests/unit/utils/test_vt.py
++++ b/tests/pytests/unit/utils/test_vt.py
+@@ -1,3 +1,4 @@
++import logging
+ import os
+ import signal
+ 
+@@ -43,10 +44,13 @@ def test_log_sanitize(test_cmd, caplog):
+         cmd,
+         log_stdout=True,
+         log_stderr=True,
++        log_stdout_level="debug",
++        log_stderr_level="debug",
+         log_sanitize=password,
+         stream_stdout=False,
+         stream_stderr=False,
+     )
+-    ret = term.recv()
++    with caplog.at_level(logging.DEBUG):
++        ret = term.recv()
+     assert password not in caplog.text
+     assert "******" in caplog.text
+-- 
+2.45.0
+
