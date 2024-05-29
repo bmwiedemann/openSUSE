@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 27 10:17:01 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.2.1. Hotfix release:
+  * Fix secrets portal wallet access (kde#487348)
+
+-------------------------------------------------------------------
 Mon May  6 12:23:00 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.2.0
