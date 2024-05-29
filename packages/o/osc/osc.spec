@@ -48,6 +48,11 @@
 %bcond_with fdupes
 %endif
 
+# the macro exists only on openSUSE based distros
+%if %{undefined python3_fix_shebang}
+%define python3_fix_shebang %nil
+%endif
+
 %define argparse_manpage_pkg argparse-manpage
 %define obs_build_pkg obs-build
 %define ssh_add_pkg openssh-clients
@@ -62,7 +67,7 @@
 %endif
 
 Name:           osc
-Version:        1.6.2
+Version:        1.7.0
 Release:        0
 Summary:        Command-line client for the Open Build Service
 License:        GPL-2.0-or-later
@@ -128,6 +133,9 @@ Recommends:     obs-service-set_version
 Recommends:     obs-service-source_validator
 Recommends:     obs-service-tar_scm
 Recommends:     obs-service-verify_file
+
+# needed for `osc updatepacmetafromspec` that calls rpmspec to get values with expanded macros
+Recommends:     rpm-build
 
 # needed for ssh signature auth
 Recommends:     %{ssh_add_pkg}
