@@ -1,27 +1,10 @@
 <services>
-  <service mode="disabled" name="obs_scm">
-    <param name="url">https://github.com/ms-jpq/sad</param>
-    <param name="versionformat">@PARENT_TAG@</param>
-    <param name="scm">git</param>
-    <param name="revision">ecbb271</param>
-    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
-    <param name="versionrewrite-replacement">\1</param>
-    <param name="changesgenerate">enable</param>
-    <param name="changesauthor">socvirnyl.estela@gmail.com</param>
+  <service mode="manual" name="download_files">
   </service>
-  <service mode="disabled" name="tar" />
-  <service mode="disabled" name="recompress">
-    <param name="file">*.tar</param>
-    <param name="compression">xz</param>
-  </service>
-  <service mode="disabled" name="set_version"/>
-  <service name="cargo_vendor" mode="disabled">
-     <param name="srcdir">sad</param>
-     <param name="compression">xz</param>
+  <service name="cargo_vendor" mode="manual">
+     <param name="src">sad*.tar.gz</param>
      <param name="update">true</param>
   </service>
-  <service name="cargo_audit" mode="disabled">
-     <param name="srcdir">sad</param>
-  </service>
+  <service name="cargo_audit" mode="manual" />
 </services>
 

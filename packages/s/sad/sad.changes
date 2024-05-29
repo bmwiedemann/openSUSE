@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 22 03:12:05 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.4.28:
+  * Give up on trying to solve windows edge cases, instead of not working at all, it now works for utf-8 only
+  * Reduce allocations
+  * Preview multi-selects
+  * Fewer dependencies
+  * More robust signal handling
+- Remove cargo_config and vendor.tar.xz
+- Add vendor.tar.zst
+
+-------------------------------------------------------------------
 Sun Jun 25 23:33:45 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.4.23:
