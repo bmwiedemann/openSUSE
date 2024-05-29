@@ -231,4 +231,12 @@ https://www.reddit.com/r/openSUSE/comments/11sl1a7/comment/jcg9pbh/?utm_source=s
 - Add ffmpeg-CVE-2023-50009.patch:</comment>
     <requestid>1172480</requestid>
   </revision>
+  <revision rev="26" vrev="8">
+    <srcmd5>275c5ffa0f8ed7a9af9de9a061c091ef</srcmd5>
+    <version>5.1.4</version>
+    <time>1717004182</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1177514</requestid>
+  </revision>
 </revisionlist>

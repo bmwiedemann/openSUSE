@@ -6,6 +6,12 @@ Tue Apr 27 11:38:35 UTC 2024 - Cliff Zhao <qzhao@suse.com>
   (CVE-2023-50010 bsc#1223256)
 
 -------------------------------------------------------------------
+Fri Apr 26 22:16:48 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-avfilter-af_stereowiden-Check-length.patch
+  [boo#1223437, CVE-2023-51794]
+
+-------------------------------------------------------------------
 Tue Apr 26 12:18:26 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-CVE-2023-50009.patch:
