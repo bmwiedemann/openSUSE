@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 24 20:52:03 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- update to 1.12.1
+  * Dry run error if the build directory does not exist
+  * New critical path scheduler performance improvements
+
+-------------------------------------------------------------------
 Tue May  7 13:45:10 UTC 2024 - Christoph G <foss@grueninger.de>
 
 - Move testing and its dependency google-test into a separate

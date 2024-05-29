@@ -25,7 +25,7 @@
 %endif
 
 Name:           ninja%{name_ext}
-Version:        1.12.0
+Version:        1.12.1
 Release:        0
 Summary:        A small build system closest in spirit to Make
 License:        Apache-2.0
