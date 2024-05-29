@@ -1,0 +1,11 @@
+diff -Nru gevent-24.2.1.orig/src/gevent/_gevent_cqueue.pxd gevent-24.2.1/src/gevent/_gevent_cqueue.pxd
+--- gevent-24.2.1.orig/src/gevent/_gevent_cqueue.pxd	2024-02-14 12:22:11.000000000 +0100
++++ gevent-24.2.1/src/gevent/_gevent_cqueue.pxd	2024-05-28 12:54:09.729241504 +0200
+@@ -75,7 +75,6 @@
+     cdef readonly Queue queue
+ 
+ 
+-@cython.final
+ cdef class UnboundQueue(Queue):
+     pass
+ 

@@ -40,6 +40,10 @@ Patch2:         gevent-opensuse-nocolor-tests.patch
 # Fix some tests that fails with python 3.12.3 in the current version,
 # related to  gh#python/cpython#113964
 Patch3:         gh-113964-fix-tests-3.12.3.patch
+# PATCH-FIX-OPENSUSE gh-2031-cython-workaround.patch
+# Fix FTBFS with GCC 14 and Cython 3.0.10
+# https://github.com/gevent/gevent/issues/2031
+Patch4:         gh-2031-cython-workaround.patch
 BuildRequires:  %{python_module Cython >= 3.0.2}
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel >= 3.8}

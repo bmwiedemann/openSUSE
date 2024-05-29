@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 28 10:56:43 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add gh-2031-cython-workaround.patch which fixes a regression
+  with Cython 3.0.10 which caused an FTBFS with GCC 14
+
+-------------------------------------------------------------------
 Mon Apr 22 07:38:07 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add gh-113964-fix-tests-3.12.3.patch to tix tests with python 3.12.3
