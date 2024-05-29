@@ -40,7 +40,7 @@
     <param name="exclude">vendor</param>
     <param name="filename">aws-nitro-enclaves-cli</param>
     <param name="match-tag">*</param>
-    <param name="revision">be13960f9b51396bf15dd7ac9d1eaf25cf9dd594</param>
+    <param name="revision">db34c02261c145ff5383d434206567524c18880b</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/aws/aws-nitro-enclaves-cli.git</param>
@@ -53,7 +53,7 @@
     <param name="exclude">Makefile</param>
     <param name="filename">aws-nitro-enclaves-sdk-bootstrap</param>
     <param name="subdir">init</param>
-    <param name="revision">ac43d103ba0f98044bf760477c088f1dc6f3702d</param>
+    <param name="revision">203242d54e4fbb9b5d57b49e73c947226e08ce82</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/aws/aws-nitro-enclaves-sdk-bootstrap.git</param>
