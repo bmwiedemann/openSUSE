@@ -1,7 +1,7 @@
 #
 # spec file for package sad
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           sad
-Version:        0.4.23
+Version:        0.4.28
 Release:        0
 Summary:        CLI search and replace batch file editing tool
 URL:            https://github.com/ms-jpq/sad
 License:        (0BSD OR Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND MIT AND (Artistic-2.0 OR CC0-1.0) AND BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND CC0-1.0 AND ISC AND MIT AND (MIT OR Unlicense) AND MPL-2.0 AND MPL-2.0+ AND Zlib AND zlib-acknowledgement AND Apache-2.0
-Source0:        %{name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
-Source2:        cargo_config
+Source0:        https://github.com/ms-jpq/sad/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  python3
+BuildRequires:  zstd
 Recommends:     fzf
 
 %description
@@ -36,10 +36,6 @@ Unlike sed, you can double check before you fat finger your edit.
 
 %prep
 %autosetup -a1
-mkdir -p .cargo
-
-# replacing the toml provided by sad
-cp %{SOURCE2} .cargo/config.toml
 
 %build
 %{cargo_build}
