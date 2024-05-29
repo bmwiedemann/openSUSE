@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 %global flavor @BUILD_FLAVOR@%{nil}
-%define _ver 1_13_0
+%define _ver 1_13_1
 %define shortname scipy
 %define pname python-%{shortname}
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
@@ -89,13 +89,11 @@ ExclusiveArch:  do_not_build
  %endif
 %{hpc_modules_init openblas}
 %endif
-# make sure the generators get called with the flavored python -- gh#scipy/scipy#20535
-%define pybuildgenerators tools/generate_f2pymod.py scipy/_build_utils/tempita.py
 
 # TODO explore debundling Boost for standard and hpc
 
 Name:           %{package_name}
-Version:        1.13.0
+Version:        1.13.1
 Release:        0
 Summary:        Scientific Tools for Python
 License:        BSD-3-Clause AND LGPL-2.0-or-later AND BSL-1.0
@@ -103,14 +101,13 @@ URL:            https://www.scipy.org
 Source0:        https://files.pythonhosted.org/packages/source/s/scipy/scipy-%{version}.tar.gz
 # Create with pooch: `python3 scipy-%%{version}/scipy/datasets/_download_all.py scipy-datasets/scipy-data; tar czf scipy-datasets.tar.gz scipy-datasets`
 Source1:        scipy-datasets.tar.gz
-# PATCH-FIX-UPSTREAM scipy-pr20530-f2py_error.patch -- gh#scipy/scipy#20530
-Patch0:         scipy-pr20530-f2py_error.patch
 BuildRequires:  %{python_module Cython >= 3.0.8 with %python-Cython < 3.1}
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module meson-python >= 0.15.0 with %python-meson-python < 0.18}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pybind11-devel >= 2.12 with %python-pybind11-devel < 2.13}
-BuildRequires:  %{python_module pythran >= 0.14 with %python-pythran < 0.16}
+# Upstream's pre-emptive pin to < 0.16 is not necessary
+BuildRequires:  %{python_module pythran >= 0.14 with %python-pythran < 0.17}
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.62.2
 BuildRequires:  pkg-config
@@ -168,11 +165,6 @@ for numerical integration and optimization.
 sed -i '1{/env python/d}' scipy/sparse/linalg/_isolve/tests/test_gcrotmk.py
 chmod a-x scipy/stats/tests/test_distributions.py
 
-# make sure the generators get called with the flavored python -- gh#scipy/scipy#20535
-for c in %pybuildgenerators; do
-  sed -E '1{s/^#!(.*)$/#!@MYFLAVORPYTHON@/}' $c > $c.flavorin
-done
-
 %ifarch i586
 # Limit double floating point precision for x87, triggered by GCC 12.
 %global optflags %(echo "%{optflags} -ffloat-store")
@@ -196,10 +188,6 @@ export FC=gfortran-10
 # makes sure that the cython and pythran commands from the correct flavor are in PATH
 %python_flavored_alternatives
 %{python_expand #
-# make sure the generators get called with the flavored python -- gh#scipy/scipy#20535
-for c in %pybuildgenerators; do
-  sed '1{s|@MYFLAVORPYTHON@|%{__$python}|}' $c.flavorin > $c
-done
 %if %{with hpc}
 py_ver=%{$python_version}
 %hpc_setup

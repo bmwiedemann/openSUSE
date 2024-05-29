@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun May 26 11:26:14 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.13.1
+  * SciPy 1.13.1 is a bug-fix release with no new features compared
+    to 1.13.0.
+  ## Issues closed
+  * BUG: `scipy.ndimage.value_indices` returns empty dict for
+    `intc`/`uintc` dtype on Windows
+  * BUG: csr_array can no longer be initialized with 1D array
+  * BUG: `TestEig.test_falker` fails on windows + MKL as well as…
+  * BUG: Cannot find `OpenBLAS` on Cygwin
+  * BUG: special.spherical_in: derivative at `z=0, n=1` incorrect
+  * BUG: `eigh` fails for size 1 array with driver=evd
+  * BUG: warning from `optimize.least_squares` for astropy with…
+  * BUG: spatial: error in `Rotation.align_vectors()` with an
+    infinite…
+  * BUG: scipy.special.factorial2 doesn’t handle `uint32` dtypes
+  * BUG: scipy.stats.wilcoxon in 1.13 fails on 2D array with nan…
+  * BUG: scipy.spatial.Delaunay,
+    scipy.interpolate.LinearNDInterpolator…
+  * BUG: stats.yulesimon: incorrect kurtosis values
+  * BUG: incorrect origin tuple handling in ndimage
+    `minimum_filter`…
+  * BUG: spatial: `Rotation.align_vectors()` incorrect for
+    anti-parallel…
+  * BUG: sparse matrix creation in 1.13 with indices not summing…
+  * BUG: stats.zipf: incorrect pmf values 
+- Allow pythran 0.16: Upstream's pre-emptive pin is not necessary
+- Drop scipy-pr20530-f2py_error.patch
+
+-------------------------------------------------------------------
 Sun May 12 16:37:45 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Enable python-scipy:gnu-hpc for s390x (together with python-numpy:gnu-hpc)
