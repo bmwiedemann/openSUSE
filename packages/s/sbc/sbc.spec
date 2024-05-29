@@ -1,7 +1,7 @@
 #
 # spec file for package sbc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 B1 Systems GmbH, Vohburg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -54,8 +54,7 @@ Requires:       libsbc%{sonum} = %{version}
 Development files for the SBC library
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

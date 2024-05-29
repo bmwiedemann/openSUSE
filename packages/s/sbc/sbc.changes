@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 16 14:44:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Re-download fix-build-on-non-x86.patch: minor changes in the
+  git signature.
+
+-------------------------------------------------------------------
+Mon Feb 26 13:11:00 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
 Sun Jan 17 14:11:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add fix-build-on-non-x86.patch: fix build on non-x86 

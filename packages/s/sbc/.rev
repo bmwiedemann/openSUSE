@@ -69,4 +69,12 @@
     <comment>- add fix-build-on-non-x86.patch: fix build on non-x86</comment>
     <requestid>863886</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>2c06b20b8881421d377837d09c5ce75b</srcmd5>
+    <version>1.5</version>
+    <time>1717004113</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1177293</requestid>
+  </revision>
 </revisionlist>
