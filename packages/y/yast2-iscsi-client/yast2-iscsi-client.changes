@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 28 11:51:41 UTC 2024 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Don't leak passwords to the log (bsc#1225432)
+- 5.0.2
+
+-------------------------------------------------------------------
 Tue Sep 19 14:01:12 UTC 2023 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Add support packages on demand (bsc#1214273)
