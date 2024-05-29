@@ -628,7 +628,10 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %config(noreplace) %{_sysconfdir}/apparmor.d/ch-run
 %config(noreplace) %{_sysconfdir}/apparmor.d/chrome
 %config(noreplace) %{_sysconfdir}/apparmor.d/code
-%config(noreplace) %{_sysconfdir}/apparmor.d/crun
+# exclude crun and runc profiles until the updated container engines (including updated profile with "signal peer=runc") has arrived
+#config(noreplace) %{_sysconfdir}/apparmor.d/crun
+%exclude %{_sysconfdir}/apparmor.d/crun
+%exclude %{_sysconfdir}/apparmor.d/runc
 %config(noreplace) %{_sysconfdir}/apparmor.d/devhelp
 %config(noreplace) %{_sysconfdir}/apparmor.d/element-desktop
 %config(noreplace) %{_sysconfdir}/apparmor.d/epiphany
@@ -674,9 +677,7 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %config(noreplace) %{_sysconfdir}/apparmor.d/rootlesskit
 %config(noreplace) %{_sysconfdir}/apparmor.d/rpm
 %config(noreplace) %{_sysconfdir}/apparmor.d/rssguard
-# exclude runc profile until the updated runc (including updated profile with "signal peer=runc") has arrived
 #config(noreplace) %{_sysconfdir}/apparmor.d/runc
-%exclude %{_sysconfdir}/apparmor.d/runc
 %config(noreplace) %{_sysconfdir}/apparmor.d/samba-bgqd
 %config(noreplace) %{_sysconfdir}/apparmor.d/samba-dcerpcd
 %config(noreplace) %{_sysconfdir}/apparmor.d/samba-rpcd

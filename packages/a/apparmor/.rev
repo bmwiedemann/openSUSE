@@ -2808,4 +2808,12 @@ This SR adds two more fixes. Especially teardown-unconfined.diff makes this SR a
   profiles (boo#1225457)</comment>
     <requestid>1177404</requestid>
   </revision>
+  <revision rev="209" vrev="4">
+    <srcmd5>f751ed668e4e228469c5bafcac7abf0b</srcmd5>
+    <version>4.0.1</version>
+    <time>1716970331</time>
+    <user>dimstar_suse</user>
+    <comment>- Exclude the crun profile in addition to runc (forwarded request 1177448 from favogt)</comment>
+    <requestid>1177466</requestid>
+  </revision>
 </revisionlist>

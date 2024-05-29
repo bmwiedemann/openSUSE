@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 29 06:41:36 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Exclude the crun profile in addition to runc
+
+-------------------------------------------------------------------
 Tue May 28 19:34:43 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
 
 - add utils-relax-mount-rules.diff and utils-relax-mount-rules-2.diff:
