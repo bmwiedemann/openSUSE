@@ -1,0 +1,11 @@
+diff -Nur deepin-pw-check-5.1.16/tool/pwd_conf_update.c deepin-pw-check-5.1.16-new/tool/pwd_conf_update.c
+--- deepin-pw-check-5.1.16/tool/pwd_conf_update.c	2022-08-15 11:11:11.000000000 +0800
++++ deepin-pw-check-5.1.16-new/tool/pwd_conf_update.c	2024-05-28 22:41:07.242176563 +0800
+@@ -6,6 +6,7 @@
+ #include <iniparser/dictionary.h>
+ #include <errno.h>
+ #include <sys/stat.h>
++#include <stdlib.h>
+ 
+ #define PASSWD_CONF_FILE_PATH "/etc/deepin/dde.conf"
+ #define OS_VERSION_FILE_PATH "/etc/os-version"

@@ -1,8 +1,8 @@
 #
 # spec file for package deepin-pw-check
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2021 Hillwood Yang <hillwood@opensuse.org>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,8 +13,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define   with_pam        0
 %define   sover           1
@@ -29,40 +30,41 @@
 Name:           deepin-pw-check
 Version:        5.1.16
 Release:        0
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Summary:        Deepin Password Check tool
-Url:            https://github.com/linuxdeepin/deepin-pw-check
+URL:            https://github.com/linuxdeepin/deepin-pw-check
 Group:          Productivity/Security
 Source0:        https://github.com/linuxdeepin/deepin-pw-check/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+# PATCH-FIX-OPENSUSE disable-gobuild-in-makefile.patch hillwood@opensuse.org - Use go macro instead of make
 Patch0:         disable-gobuild-in-makefile.patch
+# PATCH-FIX-UPSTREAM fix-missing-header.patch hillwood@opensuse.org - Missing include stdlib.h
+Patch1:         fix-missing-header.patch
 BuildRequires:  gcc
 %if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300
 BuildRequires:  golang(github.com/stretchr/testify/mock)
 %endif
-BuildRequires:  golang-packaging
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(gdk-3.0)
+BuildRequires:  cracklib-devel
+BuildRequires:  deepin-gettext-tools
 BuildRequires:  golang-github-linuxdeepin-go-dbus-factory
 BuildRequires:  golang-github-linuxdeepin-go-lib
-BuildRequires:  pam-devel
-BuildRequires:  deepin-gettext-tools
-BuildRequires:  cracklib-devel
+BuildRequires:  golang-packaging
 BuildRequires:  libiniparser-devel
-BuildRequires:  polkit
 BuildRequires:  pam
+BuildRequires:  pam-devel
+BuildRequires:  polkit
+BuildRequires:  pkgconfig(gdk-3.0)
+BuildRequires:  pkgconfig(gio-2.0)
 AutoReqProv:    Off
 
 %description
 deepin-pw-check is a tool to verify the validity of the password
 
-
 %package -n golang-%{provider}-%{project}-%{repo}
 Summary:        Deepin-pw-check source
 Group:          Development/Languages/Golang
-AutoReqProv:    On
 Requires:       golang-github-linuxdeepin-go-dbus-factory
-Autoreq:        Off
+AutoReq:        Off
 BuildArch:      noarch
 
 %description -n golang-%{provider}-%{project}-%{repo}
@@ -88,7 +90,7 @@ docs for deepin-pw-check.
 %lang_package
 
 %prep
-%autosetup -a1 -n %{name}-%{version}
+%autosetup -p1 -a1 -n %{name}-%{version}
 %if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300
 rm -rf vendor/github.com/stretchr/testify/
 %endif
