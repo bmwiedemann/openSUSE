@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 14 13:55:18 UTC 2024 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Drop fbiterm (bsc#1224053)
+- 5.0.11
+
+-------------------------------------------------------------------
 Wed May  8 07:22:28 UTC 2024 - Stefan Schubert <schubi@suse.com>
 
 - Added encryption_method and encryption_pbkdf in the product
