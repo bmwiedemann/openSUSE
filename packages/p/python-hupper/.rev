@@ -63,4 +63,30 @@
     <comment></comment>
     <requestid>1092250</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c02600f5a9c83a4c92ab21632edaa1f7</srcmd5>
+    <version>1.12.1</version>
+    <time>1717004185</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.2.1:
+  - Add support for Python 3.12.
+  - Fix a blocking issue when shutting down on Windows.
+  - Fix a race condition closing pipes when restarting the worker
+    process. See https://github.com/Pylons/hupper/pull/83
+  - Fix issues with watchman when the server shuts down unexpectedly
+    and when subscriptions are canceled.
+  - Add hupper.get_reloader().graceful_shutdown() which can be used
+    within your own app to trigger a full shutdown of the worker as
+    well as the monitoring. See
+    https://github.com/Pylons/hupper/pull/88
+1.12:
+  - When the reloader is stopped, exit with the same code received
+    from the subprocess. See https://github.com/Pylons/hupper/pull/81
+1.11:
+  - Drop support for Python 2.7, 3.4, 3.5, and 3.6.
+  - Add support/testing for Python 3.10, and 3.11.
+  - Explicitly require reload_interval set greater than 0 to avoid
+    spinning the CPU needlessly.</comment>
+    <requestid>1177531</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-hupper
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,25 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-hupper
-Version:        1.10.3
+Version:        1.12.1
 Release:        0
 Summary:        An in-process file monitor
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://pylonsproject.org/
-# Wheels lack files with problematic noncommercial license
-Source:         https://files.pythonhosted.org/packages/py2.py3/h/hupper/hupper-%{version}-py2.py3-none-any.whl
+# The _service download the source and repack without the docs folder
+# that has CC noncommercial license.
+Source:         hupper-%{version}.tar.xz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-watchdog
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 
 %python_subpackages
@@ -42,17 +47,19 @@ imported Python files in sys.modules as well as custom paths.
 When files are changed the process is restarted.
 
 %prep
-%setup -q -c -T
+%autosetup -p1 -n hupper-%{version}
 
 %build
-# Not Needed
+%pyproject_wheel
 
 %install
-cp -a %{SOURCE0} .
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/hupper
+
+%check
+%pytest
 
 %post
 %python_install_alternative hupper
