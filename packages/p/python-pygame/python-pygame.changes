@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 29 07:56:43 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Cherry-pick upstream patch to fix build with GCC 14
+  * pygame-pr4236-gcc14.patch
+- Add python-Cython to BuildRequires
+- Switch upstream source to GitHub to avoid generated C code
+
+-------------------------------------------------------------------
 Fri Mar 29 13:57:43 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Fix build error in Leap 15.6.
