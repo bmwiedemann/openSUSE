@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue May 21 14:18:43 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.076:
+  * Fix duplicate values in x-media-version response header
+  * ci: Temporarily disable systemd tests
+
+-------------------------------------------------------------------
+Tue May 21 11:00:26 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.075:
+  * Add url parameters for report/download
+  * ui: User friendly status of DB sync for a directory
+  * Add Etag and X-MEDIA-VERSION for folders
+  * Add response header X-MEDIA-VERSION
+  * Add Etag when rendering files
+  * Prioritize scanning of projects
+  * Make VPN_PREFIX a list
+  * Add WorkingDir to the subtree.service
+  * Add config for mojo tmpfiles
+  * fix redirect for mirrorlist parameter for zsync files
+
+-------------------------------------------------------------------
 Thu Apr 04 10:32:53 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.074:
