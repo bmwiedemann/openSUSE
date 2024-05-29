@@ -139,4 +139,12 @@
     <comment></comment>
     <requestid>1173614</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>7a1ef2bcb5e67a657fa3d0f3f0f0f9f4</srcmd5>
+    <version>0.9.8</version>
+    <time>1717004181</time>
+    <user>anag+factory</user>
+    <comment>- enable unit tests</comment>
+    <requestid>1177507</requestid>
+  </revision>
 </revisionlist>

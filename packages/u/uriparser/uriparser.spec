@@ -16,7 +16,11 @@
 #
 
 
+%if 0%{?suse_version} >= 1500
+%bcond_without googletest
+%else
 %bcond_with googletest
+%endif
 
 %define so_ver  1
 Name:           uriparser
@@ -115,7 +119,7 @@ This subpackage contains the documentation for %{name}.
 %if %{with googletest}
 %check
 export MALLOC_CHECK_=2 MALLOC_PERTURB_=$((${RANDOM:-256} % 256))
-make %{?_smp_mflags} check
+%ctest
 unset MALLOC_CHECK_ MALLOC_PERTURB_
 %endif
 
