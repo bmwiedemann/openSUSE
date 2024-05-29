@@ -440,4 +440,34 @@ The spec file changes were made by obs-service-format_spec_file... (forwarded re
     <comment></comment>
     <requestid>1157615</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d4c67e779fa2b6a825bdf01f043fa904</srcmd5>
+    <version>3.2.0</version>
+    <time>1717004125</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.2.0:
+  * Added extra diagnostics to printcal.
+  * Added colprof -nI option, that adds inverse gamut mapping to Perceptual and
+    Saturation A2B tables, if they are being created. This is not recommended for
+    source profiles, since it handicaps true gamut mapping, but may be a workaround
+    to faulty Adobe Lightroom BPC for Perceptual intent in output profiles.
+  * Added error message for ColorMunki spectro sensor internal cable being
+    disconnected.
+  * Fixed bug in Appearance B2A conversion that appeared in V3.0 release.
+  * Fixed crash in chartread strip reading when given faulty .ti2 file.
+  * Tweaked i1d3 AIO adaptive integration time to reduce measure time to be more
+    comparable to just using Rev A commands.
+  * Re-worked ARGYLL_NOT_INTERACTIVE stdin to work much better on MSWin when
+    connected to a pipe. Removed code that empties stdin before expecting use input
+    when ARGYLL_NOT_INTERACTIVE.
+  * Fixed OS X dispwin -c etc.
+  * Fixed colprof IGNORE_DISP_ZEROS heuristic so that it doesn't reject OLED red
+    measurements that have a Z value of 0.0.
+  * Added -H option to colprof to allow setting the charTargetTag to given string,
+    rather than automatically filling with .ti3 data.
+  * Changed instrument monitoring thread debug messages to only be shown on -D9, so
+    they don't interfere with messages shown at -D8.
+</comment>
+    <requestid>1177369</requestid>
+  </revision>
 </revisionlist>
