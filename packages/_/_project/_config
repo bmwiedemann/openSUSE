@@ -1815,6 +1815,7 @@ BuildFlags: onlybuild:dejavu-fonts
 BuildFlags: onlybuild:deltarpm
 BuildFlags: onlybuild:desktop-file-utils
 BuildFlags: onlybuild:devscripts
+BuildFlags: onlybuild:devscripts:checkbashisms
 BuildFlags: onlybuild:dialog
 BuildFlags: onlybuild:diffutils
 BuildFlags: onlybuild:dirac
