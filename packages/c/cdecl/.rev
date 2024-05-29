@@ -578,4 +578,12 @@
     <comment>- Update to release 16.3</comment>
     <requestid>1168363</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>2e594d10b16b3586f24aff6cd08c1868</srcmd5>
+    <version>16.4.1</version>
+    <time>1717004142</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 16.4.1</comment>
+    <requestid>1177363</requestid>
+  </revision>
 </revisionlist>

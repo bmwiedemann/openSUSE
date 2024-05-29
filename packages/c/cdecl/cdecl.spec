@@ -17,7 +17,7 @@
 
 
 Name:           cdecl
-Version:        16.3
+Version:        16.4.1
 Release:        0
 Summary:        C/C++ function declaration translator
 License:        GPL-3.0-or-later
@@ -49,6 +49,7 @@ history.
 %files
 %_bindir/*
 %_mandir/*/*
+%_datadir/*sh*
 %license COPYING
 
 %changelog
