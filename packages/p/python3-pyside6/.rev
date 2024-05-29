@@ -240,4 +240,12 @@
     <comment></comment>
     <requestid>1177283</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>12a9a792a84f4d91dee5a7a996bdd737</srcmd5>
+    <version>6.7.1</version>
+    <time>1717004170</time>
+    <user>anag+factory</user>
+    <comment>Update build constraints</comment>
+    <requestid>1177471</requestid>
+  </revision>
 </revisionlist>

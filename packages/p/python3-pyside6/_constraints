@@ -5,13 +5,13 @@
     </conditions>
     <hardware>
       <disk>
-        <size unit="M">3500</size>
+        <size unit="G">4</size>
       </disk>
     </hardware>
   </overwrite>
   <overwrite>
     <conditions>
-      <package>python3-pyside6</package>
+      <package>python3-pyside6:pyside6</package>
     </conditions>
     <hardware>
       <disk>
