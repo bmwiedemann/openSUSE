@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Fri May 24 13:46:41 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 8.13.
+
+- Changes from 8.13:
+  * The racket/treelist and racket/mutable-treelist libraries provide
+    list-like containers that support many operations in effectively
+    constant time, including appending and extracting sub-lists without
+    mutating the given list. Treelists are implemented as RRB Vectors,
+    invented by Stucki, Riompf, Ureche, and Bagwell.
+  
+  * The hash-filter-keys and hash-filter-values functions allow users
+    to filter hashes using a predicate on either keys or values.
+  
+  * The vector-extend and vector*-extend functions provide a way to
+    pre-populate the prefix of a newly allocated vector using the
+    elements of an existing vector.
+  
+  * Command-line raco setup, package update, and package installation
+    use terminal control (when available) to show what they are working
+    on more compactly and with a progress bar.
+  
+  * Racket v8.13 uses Unicode 15.1 for character and string
+    operations.
+  
+  * Machine-specific cross-module optimization allows improved support for
+    static generation of foreign-function bindings.
+  
+  * The scribble/acmart language uses v2.01, which avoids errors
+    concerning the hyperref package in some latex installations.
+
+- Changes from 8.12:
+  * The "Die Macht der Abstraktion" language levels are no longer
+    present, replaced by the "Schreibe dein Programm" language levels
+    which have been available for several years.
+  
+  * The release fixes a problem with the binding structure of the
+    for/fold form in the rare situation when an iteration clause
+    identifier shadowed an accumulator identifier. This change may break
+    code that depends on the old binding structure.
+  
+  * Racket automatically sets the close-on-exec flag when opening a file, on
+    systems where this is available. This change lowers the cost of avoiding
+    problems that can occur when file descriptors become accidentally shared
+    between processes.
+  
+  * Match includes hash and hash* patterns.
+  
+  * The vector-set/copy function allows creation of a new vector that
+    differs at only one index. This change also adds vector-append and
+    vector-copy primitives.
+  
+  * The pregexp-quote function brings the functionality of
+    regexp-quote to pregexps.
+  
+  * The C FFI convention-based converter supports PascalCase and
+    camelCase in addition to an underscore-based convention.
+  
+  * The racket/case library allows case-like forms that use different
+    equality comparisons, such as eq? and equal-always?.
+  
+  * Scribble rendering to HTML adds linking and information buttons
+    when hovering over heading titles.
+  
+  * The interval-map data structure supports iterator functions in the
+    style of gen:ordered-dict.
+
+-------------------------------------------------------------------
 Sun Apr  7 16:45:21 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
 
 - mzdyn3m.lo no longer gets built for s390x, remove it from %files
