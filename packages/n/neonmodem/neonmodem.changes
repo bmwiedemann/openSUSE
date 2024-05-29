@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 29 06:48:42 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 1.0.5+git0.b2e8808:
+  * Updated dependencies
+  * Bump golang.org/x/net from 0.22.0 to 0.23.0
+  * Added Radicle as source
+  * Updated dependencies
+  * Added omitempty, possibly fixes #57
+  * Add NetBSD
+  * Fix for lemmy 0.19.0
+
+-------------------------------------------------------------------
 Tue Mar 19 13:16:27 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:

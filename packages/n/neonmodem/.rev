@@ -7,4 +7,19 @@
     <comment>New package neonmodem is a BBS-style TUI client for Discourse, Lemmy, Lobsters and Hacker News.</comment>
     <requestid>1159601</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>aa76e84f36dbafeaee9323d98f7b84bf</srcmd5>
+    <version>1.0.5+git0.b2e8808</version>
+    <time>1717004202</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.5+git0.b2e8808:
+  * Updated dependencies
+  * Bump golang.org/x/net from 0.22.0 to 0.23.0
+  * Added Radicle as source
+  * Updated dependencies
+  * Added omitempty, possibly fixes #57
+  * Add NetBSD
+  * Fix for lemmy 0.19.0 (forwarded request 1177449 from ph03nix)</comment>
+    <requestid>1177602</requestid>
+  </revision>
 </revisionlist>
