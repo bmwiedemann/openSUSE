@@ -22,16 +22,18 @@
 %bcond_with git
 
 Name:           xfce4-screenshooter
-Version:        1.10.5
+Version:        1.10.6
 Release:        0
 Summary:        Screenshot Tool for the Xfce Desktop
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://goodies.xfce.org/projects/applications/xfce4-screenshooter
-Source:         https://archive.xfce.org/src/apps/xfce4-screenshooter/1.10/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/apps/xfce4-screenshooter/1.10/%{name}-%{version}.tar.bz2
+# PATCH-FIX-OPENSUSE xfce4-screenshooter-relax-x11-version.patch lower required X11 version to allow building for Leap which only has 1.6.5, which is enough, though
+Patch0:         xfce4-screenshooter-relax-x11-version.patch
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
-BuildRequires:  intltool
+BuildRequires:  gettext
 BuildRequires:  update-desktop-files
 BuildRequires:  xfce4-dev-tools
 BuildRequires:  pkgconfig(exo-2) >= 0.12.0
@@ -87,7 +89,7 @@ This package contains the xfce4-screenshooter Xfce panel plugin.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %if %{with git}

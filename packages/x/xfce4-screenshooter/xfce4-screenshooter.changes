@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 29 07:15:21 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 1.10.6
+  * build: Switch from intltool to gettext
+  * Preliminary Wayland support
+  * Translation Updates
+- Add xfce4-screenshooter-relax-x11-version.patch
+
+-------------------------------------------------------------------
 Mon Feb  5 09:43:07 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to 1.10.5

@@ -1,0 +1,137 @@
+diff -rup a/configure.ac b/configure.ac
+--- a/configure.ac	2024-05-28 23:17:26.000000000 +0200
++++ b/configure.ac	2024-05-29 09:30:19.333885138 +0200
+@@ -58,7 +58,7 @@ dnl ***********************************
+ XDT_CHECK_OPTIONAL_FEATURE([X11],
+                            [x11],
+                            [
+-                             XDT_FEATURE_DEPENDENCY([LIBX11], [x11], [1.6.7])
++                             XDT_FEATURE_DEPENDENCY([LIBX11], [x11], [1.6.5])
+                              XDT_FEATURE_DEPENDENCY([GDKX11], [gdk-x11-3.0], [3.24.0])
+                              XDT_FEATURE_DEPENDENCY([XINPUT2], [xi], [1.7.8])
+                              XDT_FEATURE_DEPENDENCY([LIBXEXT], [xext], [1.0.0])
+diff -rup a/config.h.in b/config.h.in
+--- a/config.h.in	2024-05-28 23:24:00.000000000 +0200
++++ b/config.h.in	2024-05-29 09:30:25.267216340 +0200
+@@ -58,7 +58,7 @@
+ /* Define to 1 if you have the <inttypes.h> header file. */
+ #undef HAVE_INTTYPES_H
+ 
+-/* Define if x11 >= 1.6.7 present */
++/* Define if x11 >= 1.6.5 present */
+ #undef HAVE_LIBX11
+ 
+ /* Define if xext >= 1.0.0 present */
+diff -rup a/configure b/configure
+--- a/configure	2024-05-28 23:24:00.000000000 +0200
++++ b/configure	2024-05-29 09:31:02.307203033 +0200
+@@ -15569,11 +15569,11 @@ fi
+ 
+ 
+   if test x"$xdt_feature_deps_check_only" = x"yes"; then
+-    if ! $PKG_CONFIG --exists "x11 >= 1.6.7" >/dev/null 2>&1; then
++    if ! $PKG_CONFIG --exists "x11 >= 1.6.5" >/dev/null 2>&1; then
+       if test x"$xdt_feature_deps_missing" = x""; then
+-        xdt_feature_deps_missing="x11 >= 1.6.7"
++        xdt_feature_deps_missing="x11 >= 1.6.5"
+       else
+-        xdt_feature_deps_missing="$xdt_feature_deps_missing, x11 >= 1.6.7"
++        xdt_feature_deps_missing="$xdt_feature_deps_missing, x11 >= 1.6.5"
+       fi
+     fi
+   else
+@@ -15727,9 +15727,9 @@ fi
+ 
+ 
+ 
+-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for x11 >= 1.6.7" >&5
+-printf %s "checking for x11 >= 1.6.7... " >&6; }
+-  if $PKG_CONFIG "--atleast-version=1.6.7" "x11" >/dev/null 2>&1; then
++  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for x11 >= 1.6.5" >&5
++printf %s "checking for x11 >= 1.6.5... " >&6; }
++  if $PKG_CONFIG "--atleast-version=1.6.5" "x11" >/dev/null 2>&1; then
+     LIBX11_VERSION=`$PKG_CONFIG --modversion "x11"`
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBX11_VERSION" >&5
+ printf "%s\n" "$LIBX11_VERSION" >&6; }
+@@ -15746,7 +15746,7 @@ printf %s "checking LIBX11_LIBS... " >&6
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBX11_LIBS" >&5
+ printf "%s\n" "$LIBX11_LIBS" >&6; }
+ 
+-    LIBX11_REQUIRED_VERSION=1.6.7
++    LIBX11_REQUIRED_VERSION=1.6.5
+ 
+ 
+ 
+@@ -15775,7 +15775,7 @@ printf "%s\n" "found, but $xdt_cv_versio
+ 
+       echo "*** The required package x11 was found on your system,"
+       echo "*** but the installed version ($xdt_cv_version) is too old."
+-      echo "*** Please upgrade x11 to atleast version 1.6.7, or adjust"
++      echo "*** Please upgrade x11 to atleast version 1.6.5, or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you installed"
+       echo "*** the new version of the package in a nonstandard prefix so"
+       echo "*** pkg-config is able to find it."
+@@ -15787,7 +15787,7 @@ printf "%s\n" "not found" >&6; }
+ 
+ 
+       echo "*** The required package x11 was not found on your system."
+-      echo "*** Please install x11 (atleast version 1.6.7) or adjust"
++      echo "*** Please install x11 (atleast version 1.6.5) or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you"
+       echo "*** installed the package in a nonstandard prefix so that"
+       echo "*** pkg-config is able to find it."
+@@ -16733,11 +16733,11 @@ printf "%s\n" "not found" >&6; }
+ 
+ 
+   if test x"$xdt_feature_deps_check_only" = x"yes"; then
+-    if ! $PKG_CONFIG --exists "x11 >= 1.6.7" >/dev/null 2>&1; then
++    if ! $PKG_CONFIG --exists "x11 >= 1.6.5" >/dev/null 2>&1; then
+       if test x"$xdt_feature_deps_missing" = x""; then
+-        xdt_feature_deps_missing="x11 >= 1.6.7"
++        xdt_feature_deps_missing="x11 >= 1.6.5"
+       else
+-        xdt_feature_deps_missing="$xdt_feature_deps_missing, x11 >= 1.6.7"
++        xdt_feature_deps_missing="$xdt_feature_deps_missing, x11 >= 1.6.5"
+       fi
+     fi
+   else
+@@ -16891,9 +16891,9 @@ fi
+ 
+ 
+ 
+-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for x11 >= 1.6.7" >&5
+-printf %s "checking for x11 >= 1.6.7... " >&6; }
+-  if $PKG_CONFIG "--atleast-version=1.6.7" "x11" >/dev/null 2>&1; then
++  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for x11 >= 1.6.5" >&5
++printf %s "checking for x11 >= 1.6.5... " >&6; }
++  if $PKG_CONFIG "--atleast-version=1.6.5" "x11" >/dev/null 2>&1; then
+     LIBX11_VERSION=`$PKG_CONFIG --modversion "x11"`
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBX11_VERSION" >&5
+ printf "%s\n" "$LIBX11_VERSION" >&6; }
+@@ -16910,7 +16910,7 @@ printf %s "checking LIBX11_LIBS... " >&6
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBX11_LIBS" >&5
+ printf "%s\n" "$LIBX11_LIBS" >&6; }
+ 
+-    LIBX11_REQUIRED_VERSION=1.6.7
++    LIBX11_REQUIRED_VERSION=1.6.5
+ 
+ 
+ 
+@@ -16939,7 +16939,7 @@ printf "%s\n" "found, but $xdt_cv_versio
+ 
+       echo "*** The required package x11 was found on your system,"
+       echo "*** but the installed version ($xdt_cv_version) is too old."
+-      echo "*** Please upgrade x11 to atleast version 1.6.7, or adjust"
++      echo "*** Please upgrade x11 to atleast version 1.6.5, or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you installed"
+       echo "*** the new version of the package in a nonstandard prefix so"
+       echo "*** pkg-config is able to find it."
+@@ -16951,7 +16951,7 @@ printf "%s\n" "not found" >&6; }
+ 
+ 
+       echo "*** The required package x11 was not found on your system."
+-      echo "*** Please install x11 (atleast version 1.6.7) or adjust"
++      echo "*** Please install x11 (atleast version 1.6.5) or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you"
+       echo "*** installed the package in a nonstandard prefix so that"
+       echo "*** pkg-config is able to find it."
