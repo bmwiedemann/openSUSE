@@ -1,8 +1,8 @@
 -------------------------------------------------------------------
 Sat Aug 19 09:50:18 UTC 2023 - ecsos <ecsos@opensuse.org>
 
-- Update to 1.3.3
-  - Fixed HTTP chunk length parsing.
+- Update to 1.3.3 (bsc#1222007)
+  - Fixed HTTP chunk length parsing. (CVE-2023-33476)
   - Improved Dutch and Swedish translations.
   - Fixed directory symlink deletion handling.
 
