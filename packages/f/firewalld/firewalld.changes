@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 24 14:41:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Keep English 'translations' (en_US, en_GB) in the main package:
+  do not force the lang package on plain English systems.
+
+-------------------------------------------------------------------
 Thu May  9 18:58:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.2:

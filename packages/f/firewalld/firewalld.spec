@@ -294,6 +294,7 @@ fi
 %{_prefix}/lib/firewalld/policies/*.xml
 %{_prefix}/lib/firewalld/xmlschema/check.sh
 %{_prefix}/lib/firewalld/xmlschema/*.xsd
+%{_datadir}/locale/en_*/LC_MESSAGES/firewalld.mo
 %{_datadir}/polkit-1
 %dir %{_datadir}/dbus-1
 %dir %{_datadir}/dbus-1/system.d
@@ -383,5 +384,6 @@ fi
 %{_datadir}/zsh/site-functions/_firewalld
 
 %files lang -f %{name}.lang
+%exclude %{_datadir}/locale/en_*/LC_MESSAGES/firewalld.mo
 
 %changelog
