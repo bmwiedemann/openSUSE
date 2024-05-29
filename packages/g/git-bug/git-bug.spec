@@ -17,13 +17,17 @@
 
 
 Name:           git-bug
-Version:        0.8.0
+Version:        0.8.0+git.1713935544.6d051a2
 Release:        0
 Summary:        Distributed, offline-first bug tracker embedded in git, with bridges
 License:        MIT
 URL:            https://github.com/MichaelMure/git-bug
-Source0:        https://github.com/MichaelMure/%{name}/archive/refs/tags/v%{version}.tar.gz#/git-bug-%{version}.tar.gz
+# Source0:        https://github.com/MichaelMure/%%{name}/archive/refs/tags/v%%{version}.tar.gz#/git-bug-%%{version}.tar.gz
+Source0:        git-bug-%{version}.tar.gz
 Source1:        vendor.tar.gz
+# # PATCH-FEATURE-UPSTREAM 501-export.patch gh#MichaelMure/git-bug!501 mcepl@suse.com
+# # add a command to export bugs as raw operations
+# Patch0:         501-export.patch
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) = 1.18
 
@@ -92,6 +96,9 @@ install -Dm0644 misc/completion/fish/git-bug  \
     %{buildroot}%{_datadir}/fish/vendor_completions.d/git-bug.fish
 install -Dm0644 misc/completion/zsh/git-bug  \
     %{buildroot}%{_sysconfdir}/zsh_completion.d/git-bug
+
+%check
+go test -v -s TestValidateUsername -mod=vendor -bench=. ./...
 
 %files
 %license LICENSE

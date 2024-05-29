@@ -1,4 +1,146 @@
 -------------------------------------------------------------------
+Tue May 07 14:31:42 UTC 2024 - mcepl@cepl.eu
+
+- Update to version 0.8.0+git.1713935544.6d051a2:
+  * Fix some comments
+  * Update README.md
+  * chore: fix some struct names in comments
+  * Use HTTPS repo url
+
+-------------------------------------------------------------------
+Thu Mar 21 12:26:22 UTC 2024 - mcepl@cepl.eu
+
+- Update to version 0.8.0+git.1697403397.1212f75:
+  * Fix typo
+  * fix openpgp handling to sign/check
+  * codespell: more ignore
+  * api/graphql: regenerate after gqlgen upgrade
+  * build(deps): bump github.com/99designs/gqlgen from 0.17.20 to 0.17.36
+  * build(deps): bump github.com/99designs/gqlgen from 0.17.20 to 0.17.36
+  * regenerate after cobra update
+  * update to golang-lru v2
+  * build(deps): bump github.com/hashicorp/golang-lru from 0.5.4 to 1.0.2
+  * build(deps): bump golang.org/x/oauth2 from 0.8.0 to 0.11.0
+  * build(deps): bump github.com/mattn/go-isatty from 0.0.17 to 0.0.19
+  * build(deps): bump golang.org/x/sync from 0.1.0 to 0.3.0
+  * build(deps): bump github.com/fatih/color from 1.13.0 to 1.15.0
+  * build(deps): bump golang.org/x/vuln
+  * build(deps): bump github.com/spf13/cobra from 1.6.1 to 1.7.0
+  * build(deps): bump github.com/cloudflare/circl from 1.3.1 to 1.3.3
+  * build(deps): bump golang.org/x/crypto from 0.5.0 to 0.12.0
+  * build(deps): bump github.com/vbauerster/mpb/v8 from 8.1.4 to 8.5.2
+  * codespell: no "with" means using codespellrc, add more opt out
+  * build(deps): bump golang.org/x/term from 0.8.0 to 0.11.0
+  * build(deps): bump golang.org/x/sys from 0.8.0 to 0.11.0
+  * build(deps): bump golang.org/x/text from 0.9.0 to 0.12.0
+  * build(deps): bump github.com/xanzy/go-gitlab from 0.79.1 to 0.90.0
+  * build(deps): bump github.com/stretchr/testify from 1.8.1 to 1.8.4
+  * build(deps): bump golang.org/x/oauth2 from 0.4.0 to 0.8.0
+  * execenv: fix some cache building progress bar artifact
+  * build(deps): bump github.com/go-git/go-billy/v5 from 5.4.0 to 5.4.1
+  * util: better IsRunning(pid)
+  * webui: also teardown cleanly on SIGTERM
+  * build(deps): bump golang.org/x/net from 0.5.0 to 0.7.0
+  * CI: ignore spelling mistake in repo to be imported from github
+  * tools: fix how security tools are setup and launched
+  * repo: improve support for gitdir indirection
+  * build(deps): bump github.com/xanzy/go-gitlab from 0.78.0 to 0.79.1
+  * add more ideas in the feature matrix
+  * cache: faster indexing by caping Bleve batch count
+  * doc: add a feature matrix
+  * chore: updated error message when detectGitPath fails
+  * test: resolve changes for PR #1004, add unit test, fix issue uncovered by unit test
+  * Add github workflow for codespell
+  * [DATALAD RUNCMD] Run codespell -w
+  * rudimentary codespell configuration
+  * [DATALAD RUNCMD] Fix one ambigous overrided
+  * build(deps): bump golang.org/x/oauth2 from 0.3.0 to 0.4.0
+  * commands: add a helper to generate testing regex for CLI output
+  * fix(#971): parse submodule .git files instead of erroring
+  * docs(commands): try to make cleaned argument use more obvious
+  * style: resolve PR comments
+  * version: code cleanup, fix some edge cases
+  * dirty should be bool
+  * address PR review
+  * commands: different pattern to detect changed flags
+  * style: clean up linter complaints
+  * build(deps): bump github.com/xanzy/go-gitlab from 0.77.0 to 0.78.0
+  * fix(commands): replace missing import
+  * fix(commands): create env.Env once for all Cobra commands
+  * commands: remove compact style for "bug", as the width adaptive default renderer cover that usage
+  * command: adapt the output of the bug list to the terminal size
+  * execenv: move terminal detection to Out, introduce the compagnion In
+  * feat: use isatty to detect a Termios instead
+  * feat: detect os.Stdin/os.Stdout mode
+  * New approach to define the version
+  * build(deps): bump github.com/dustin/go-humanize from 1.0.0 to 1.0.1
+  * repo: don't forget to close a file
+  * repo: temporary use a fork of go-git due to https://github.com/go-git/go-git/pull/659
+  * Fixed version info be set when go install
+  * added EventMentionedInCommit
+  * add wipe sub-command that remove local bugs and identities
+  * commands: add a nice terminal progress bar when building the cache
+  * properly close files in edge cases in various places
+  * repo: check error when closing a repo in tests
+  * make go1.19 fmt happy
+  * cache: fix tests?
+  * fix(commands): run tests in ./commands/... without ANSI color
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.5.1 to 5.5.2
+  * chore(TestCache): cleanup per PR review
+  * build(deps): bump golang.org/x/crypto from 0.4.0 to 0.5.0
+  * build(deps): bump golang.org/x/text from 0.5.0 to 0.6.0
+  * refactor(TestCache): guarantee test caches are closed when tests finish
+  * fix(TestCache): eliminate hanging Windows tests
+  * style(TestCache): remove empty trailing line from function
+  * test(cache): close second instance of RepoCache
+  * ci: use Go 1.19.4 and setup-go@v3
+  * fix: resolve Go vulnerabilities
+  * fix(972): use prerelease of GoKart with repaired panic
+  * build(deps): bump github.com/go-git/go-billy/v5 from 5.3.1 to 5.4.0
+  * fix: keyrings must return keys with entities/identities
+  * commands: share JSON creation
+  * CI: remove lint security step as it's crashing
+  * commands: don't double build the lamport clocks
+  * build(deps): bump github.com/mattn/go-isatty from 0.0.16 to 0.0.17
+  * feat: upgrade go-git to v5.1.1
+  * commands: generic "select" code, move bug completion in bugcmd
+  * cache: simplify cache building events handling
+  * commands: move bug specific input code into commands/bug/input
+  * cache: tie the last printf in an event to make the core print free
+  * cache: fix some bugs after refactor
+  * github: cleanup test token when test is done
+  * cache: generic withSnapshot, some cleanup
+  * cache: tie up the refactor up to compiling
+  * repository: return specific error on object not found, accept multiple namespace to push/pull
+  * build(deps): bump github.com/99designs/keyring from 1.2.1 to 1.2.2
+  * WIP
+  * repo: proper reduced interface for full-text indexing
+  * WIP
+  * doc/README: normalize verb tense and fix typo
+  * build(deps): bump github.com/xanzy/go-gitlab from 0.76.0 to 0.77.0
+  * build(deps): bump golang.org/x/text from 0.4.0 to 0.5.0
+  * WIP
+  * fix: remove repeated use of the same fmt.Errorf() calls
+  * WIP
+  * feat: wrap ErrMultipleConfigEntry to report duplicate key
+  * feat: wrap ErrNoConfigEntry to report missing key
+  * benchmark-action: make it work?
+  * gha: add a workflow to continuously run benchmarks
+  * build(deps): bump github.com/xanzy/go-gitlab from 0.74.0 to 0.76.0
+  * commands: reorg into different packages
+  * release: don't build for darwin/386 as support has been removed in golang
+  * GHA: add a release workflow to build and upload binaries
+  * webui: pack into binary
+  * gogit: fix incorrect loader handling
+  * github: sanitize rate limit waiting time
+  * go-git: concurrent loading of clocks
+  * github: fix rate limiting
+  * build(deps): bump github.com/stretchr/testify from 1.8.0 to 1.8.1
+  * core: bubble up the comment ID when created, or edited the first comment
+  * build(deps): bump github.com/xanzy/go-gitlab from 0.73.1 to 0.74.0
+  * build(deps): bump golang.org/x/text from 0.3.7 to 0.4.0
+
+-------------------------------------------------------------------
 Sun Nov 20 18:46:53 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.8.0:

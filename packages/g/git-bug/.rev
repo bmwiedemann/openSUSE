@@ -150,4 +150,16 @@
 </comment>
     <requestid>1036978</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3480496dac57feaeb083e682244c5442</srcmd5>
+    <version>0.8.0+git.1713935544.6d051a2</version>
+    <time>1717004178</time>
+    <user>anag+factory</user>
+    <comment>devel
+
+Update to the latest git commit (+ adding 501-export.patch).
+
+(🤖: Submission of git-bug via https://src.opensuse.org/pool/git-bug/pulls/2 by mcepl)</comment>
+    <requestid>1177513</requestid>
+  </revision>
 </revisionlist>
