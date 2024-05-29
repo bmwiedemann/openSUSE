@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 28 05:56:45 UTC 2024 - william.brown@suse.com
+
+- Update to version 20240528:
+  * Add some civility language to HOWTO_UNMAINTAINED.md (#1972)
+  * Synchronize IDs (2024-05-21) (#1966)
+  * Assigned RUSTSEC-2024-0342 to vodozemac (#1965)
+  * Add CVE-2024-34063 for vodozemac (#1955)
+  * Assigned RUSTSEC-2024-0341 to tls-listener (#1964)
+  * Assigned RUSTSEC-2024-0340 to tor-circmgr (#1963)
+  * add CVE-2024-28854 for tls-listener (#1926)
+  * Add advisory for tor-circmgr TROVE-2024-004 (#1958)
+  * Assigned RUSTSEC-2024-0339 to tor-circmgr (#1962)
+  * Add advisory for tor-circmgr TROVE-2024-003 (#1957)
+
+-------------------------------------------------------------------
 Sat Mar 30 04:06:18 UTC 2024 - william.brown@suse.com
 
 - Update to version 20240330:
