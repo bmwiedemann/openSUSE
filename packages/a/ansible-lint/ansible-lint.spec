@@ -92,6 +92,7 @@ Requires:       %{ansible_python}-black >= 23.10.1
 Requires:       %{ansible_python}-bracex >= 2.2.1
 Requires:       %{ansible_python}-enrich >= 1.2.7
 Requires:       %{ansible_python}-filelock  >= 3.3.0
+Requires:       %{ansible_python}-importlib-metadata
 Requires:       %{ansible_python}-jsonschema >= 4.17.3
 Requires:       %{ansible_python}-packaging >= 23.1
 Requires:       %{ansible_python}-PyYAML  >= 6.0.1
@@ -108,7 +109,7 @@ Checks playbooks for practices and behavior that could potentially be improved.
 
 %prep
 %setup -n %{name}-%{version}
-sed -i '/^dynamic/d' pyproject.toml
+sed -i '/^dynamic/ s/"version", //' pyproject.toml
 sed -i '/^description/a version = "%{version}"' pyproject.toml
 sed -i '1{/\/usr\/bin\/env python/d;}' src/ansiblelint/__main__.py
 sed -i '/__version__ =/ s/0.1.dev1/%{version}/' src/ansiblelint/version.py
