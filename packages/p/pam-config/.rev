@@ -817,4 +817,13 @@
   * Himmelblau session is only optional</comment>
     <requestid>1166807</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>32b0936088a7aa189a703777d9a902e0</srcmd5>
+    <version>2.11+git.20240527</version>
+    <time>1717004110</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.11+git.20240527:
+  * Move ecryptfs/fscrypt earlier in session list [bsc#1225290]</comment>
+    <requestid>1177121</requestid>
+  </revision>
 </revisionlist>

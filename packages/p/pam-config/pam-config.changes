@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 27 12:31:16 UTC 2024 - kukuk@suse.com
+
+- Update to version 2.11+git.20240527:
+  * Move ecryptfs/fscrypt earlier in session list [bsc#1225290]
+
+-------------------------------------------------------------------
 Thu Apr 11 08:55:34 UTC 2024 - kukuk@suse.com
 
 - Update to version 2.11+git.20240411:
