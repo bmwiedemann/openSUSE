@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-cheroot
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -26,7 +26,7 @@
 %bcond_with ringdisabled
 %{?sle15_python_module_pythons}
 Name:           python-%{pypi_name}
-Version:        10.0.0
+Version:        10.0.1
 Release:        0
 Summary:        Pure-python HTTP server
 License:        BSD-3-Clause
@@ -76,7 +76,7 @@ Requires:       alts
 BuildRequires:  alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 # the package and distribution name is lowercase-cheroot,
 # but PyPI claims the name is capital-Cheroot

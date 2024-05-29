@@ -231,4 +231,21 @@
     <comment>- Disable failing tests with openssl 3.2</comment>
     <requestid>1137971</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>dce5a0fc4244315d18ec2fae6aeef18e</srcmd5>
+    <version>10.0.1</version>
+    <time>1717004112</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1176149 from mcalabkova
+
+It was a bug in requests-unixsocket
+
+  - Update to 10.0.1
+    * Fixed a flaw where internally unhandled exceptions could crash the
+      worker threads and eventually starve the server of its processing
+      resources.
+    * Fixed compatibility with Python 3.8 in the built-in TLS adapter that
+      relies on :pypython:ssl.</comment>
+    <requestid>1177150</requestid>
+  </revision>
 </revisionlist>

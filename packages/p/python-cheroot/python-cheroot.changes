@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 22 13:36:38 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 10.0.1
+  * Fixed a flaw where internally unhandled exceptions could crash the
+    worker threads and eventually starve the server of its processing
+    resources.
+  * Fixed compatibility with Python 3.8 in the built-in TLS adapter that
+    relies on :pypython:ssl.
+
+-------------------------------------------------------------------
 Wed Jan 10 17:40:08 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable failing tests with openssl 3.2
