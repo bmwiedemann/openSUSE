@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-thriftpy2
-Version:        0.4.20
+Version:        0.5.0
 Release:        0
 Summary:        Pure python implementation of Apache Thrift
 License:        MIT
@@ -69,7 +70,7 @@ find %{buildroot}%{$python_sitearch} -name '*.c' -exec rm {} \;
 cd tests
 # the two tests fail in OBS on timeout
 # test_asynchronous_exception/test_asynchronous_result - needs old tornado to work
-%pytest_arch -k 'not (test_able_to_communicate or test_zero_length_string or test_asynchronous_exception or test_asynchronous_result)'
+%pytest_arch -k 'not (test_able_to_communicate or test_zero_length_string or test_asynchronous_exception or test_asynchronous_result or test_api_ipv6)'
 
 %files %{python_files}
 %license LICENSE

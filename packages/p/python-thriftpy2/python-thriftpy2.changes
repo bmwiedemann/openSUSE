@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 29 11:59:34 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.5.0:
+  * Dropped Python2 and Python3.5 Support.
+  * Added SASL transport client.
+  * Add submodule to sys.path when loading child idl file.
+  * Support cythonized module on Windows.
+  * Support using ipv6 in make_client/make_server method.
+  * Basic multi-thread support in parser.
+- Switch package to modern Python Stack on SLE-15
+  * Use Python 3.11 on SLE-15 by default
+- Disable additional tests that require internet connection
+  * test_api_ipv6
+
+-------------------------------------------------------------------
 Tue Mar 12 01:03:03 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.4.20:
