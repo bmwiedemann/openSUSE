@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 22 02:29:08 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Remove files
+  * zig-wayland.tar.gz
+  * zig-xkbcommon.tar.gz
+- Update to 1.1.0:
+  * Seat: submit password on KP_Enter keysym
+  * build: update to Zig 0.12.0
+  * build: switch to the Zig package manager
+- Add vendor.tar.zst. Vendored dependencies.
+- Add ./add-experimental-non-llvm-zig-backend.patch
+
+-------------------------------------------------------------------
 Thu Apr 18 01:33:22 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 1.0.0:
