@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 14 08:47:48 UTC 2024 - pgajdos@suse.com
+
+- fix build with gcc14
+- modified patches
+  % sharutils-CVE-2018-1000097-fix_buffer_overflow.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 13:10:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
