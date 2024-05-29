@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May 22 05:32:21 UTC 2024 - jslaby@suse.cz
+
+- Update to version 1.9+git.20240521:
+  * support kernel 6.8 and 6.9 (#48)
+  * ioctls/kvm: make powerpc ioctls powerpc-only
+  * ioctls/kvm: make s390 ioctls s390-only
+  * compat: add removed KVM structures
+  * compat: add deprecated KVM IOCTL definitions
+  * Update madvise flags
+- delete (they are in upstream)
+  0001-compat-add-deprecated-KVM-IOCTL-definitions.patch
+  0002-compat-add-removed-KVM-structures.patch
+  0003-ioctls-kvm-make-s390-ioctls-s390-only.patch
+  0004-ioctls-kvm-make-powerpc-ioctls-powerpc-only.patch
+
+-------------------------------------------------------------------
 Thu May 16 10:03:21 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
 
 - support for kernel 6.9

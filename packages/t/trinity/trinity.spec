@@ -17,16 +17,12 @@
 
 
 Name:           trinity
-Version:        1.9+git.20230710
+Version:        1.9+git.20240521
 Release:        0
 Summary:        A Linux System call fuzz tester
 License:        GPL-2.0-only
 URL:            https://github.com/kernelslacker/trinity
 Source0:        %{name}-%{version}.tar.gz
-Patch0:         0001-compat-add-deprecated-KVM-IOCTL-definitions.patch
-Patch1:         0002-compat-add-removed-KVM-structures.patch
-Patch2:         0003-ioctls-kvm-make-s390-ioctls-s390-only.patch
-Patch3:         0004-ioctls-kvm-make-powerpc-ioctls-powerpc-only.patch
 
 %description
 The basic idea is fairly simple. As 'fuzz testing' suggests, we call syscalls

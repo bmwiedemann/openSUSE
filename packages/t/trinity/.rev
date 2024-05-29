@@ -783,4 +783,12 @@
     0004-ioctls-kvm-make-powerpc-ioctls-powerpc-only.patch</comment>
     <requestid>1174427</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>05b0b1a18fcbbc3d57e1e9dff6b68aed</srcmd5>
+    <version>1.9+git.20240521</version>
+    <time>1717004169</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1177450</requestid>
+  </revision>
 </revisionlist>
