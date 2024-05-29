@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed May 29 08:13:29 UTC 2024 - pdostal@suse.com
+
+- Update to version 1.41.0:
+  * feat(issue): add epic and due-date to issue create
+  * chore(deps): update dependency go to v1.22.3
+  * chore(deps): update module github.com/xanzy/go-gitlab
+    to v0.105.0
+  * chore(deps): update module github.com/spf13/viper to v1.18.2
+  * fix(cluster-agent): construct kubeconfig authinfo name with
+    agent id
+  * feat: rename `ask git` to `duo ask`
+  * chore(deps): update module github.com/hashicorp/go-version
+    to v1.7.0
+  * docs: improve integration test docs
+  * docs: clarify that fill option automatically pushes
+  * chore(deps): update dependency axios to ^1.7.2
+  * chore(deps): update dependency @commitlint/format to ^19.3.0
+  * fix(auth status): better output for auth status
+  * chore(deps): update module golang.org/x/term to v0.20.0
+  * chore(deps): update module github.com/mattn/go-runewidth
+    to v0.0.15
+  * chore(deps): update module k8s.io/client-go to v0.30.1
+  * chore(deps): update module golang.org/x/text to v0.15.0
+  * docs: Fix broken or redirecting links
+  * chore(deps): update module gopkg.in/yaml.v2 to v3
+  * chore(deps): update module github.com/spf13/cobra to v1.8.0
+  * chore: update code nagivation to use scip
+  * chore(deps): update module github.com/spf13/cast to v1.6.0
+  * chore(deps): update module github.com/zalando/go-keyring
+    to v0.2.4
+  * chore(deps): update module github.com/alecaivazis/survey/v2
+    to v2.3.7
+  * chore: upgrade to Go 1.22
+  * feat(cluster):  Add check manifest usage command
+  * build: Updating golanglint recommendation
+  * fix(glab repo fork): clone if --clone flag set
+  * test: fixing error running integration test locally
+  * fix(project): don't request statistics
+  * fix(auth status): exit with code 1 when auth fails
+  * chore: fix typo in Dangerfile
+  * refactor: Moving test helper functions to their own file
+    for reuse
+  * chore: Add a Maintainer Onboarding issue template
+  * test: have git tests actually use git instead of stubs
+
+-------------------------------------------------------------------
 Thu Apr 25 05:13:51 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.40.0:
