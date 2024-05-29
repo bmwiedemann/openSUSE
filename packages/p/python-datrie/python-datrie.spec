@@ -24,6 +24,8 @@ License:        LGPL-2.1-or-later
 URL:            https://github.com/kmike/datrie
 Source:         https://files.pythonhosted.org/packages/source/d/datrie/datrie-%{version}.tar.gz
 Patch0:         datrie-bigendian.patch
+# PATCH-FIX-UPSTREAM - Fix AlphaMap definition in cdatrie.pxd
+Patch1:         https://github.com/pytries/datrie/pull/99.patch
 BuildRequires:  %{python_module Cython >= 0.26.1}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module hypothesis}

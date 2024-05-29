@@ -1,0 +1,23 @@
+From 12ffaa89e589a47d0b29b32997cb3623d231d920 Mon Sep 17 00:00:00 2001
+From: "Benjamin A. Beasley" <code@musicinmybrain.net>
+Date: Thu, 1 Feb 2024 15:14:00 -0500
+Subject: [PATCH] Fix AlphaMap definition in cdatrie.pxd
+
+Fixes failure to compile on GCC with `-Werror=incompatible-pointer-types`.
+---
+ src/cdatrie.pxd | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/cdatrie.pxd b/src/cdatrie.pxd
+index b80ce99..e609d1c 100644
+--- a/src/cdatrie.pxd
++++ b/src/cdatrie.pxd
+@@ -9,7 +9,7 @@ cdef extern from "../libdatrie/datrie/triedefs.h":
+ 
+ cdef extern from "../libdatrie/datrie/alpha-map.h":
+ 
+-    struct AlphaMap:
++    ctypedef struct AlphaMap:
+         pass
+ 
+     AlphaMap * alpha_map_new()

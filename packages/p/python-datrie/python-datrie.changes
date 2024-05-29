@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 28 08:57:59 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Cherry-pick upstream patch to fix build with GCC 14
+  * https://github.com/pytries/datrie/pull/99.patch
+
+-------------------------------------------------------------------
 Thu Feb 29 03:08:48 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to autosetup and pyproject macros.
