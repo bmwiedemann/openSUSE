@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon May 27 08:44:05 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20240525
+  + build-fix for configure option --disable-ext-funcs
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + review/update iTerm2 for 3.5.0 -TD
+- Add ncurses patch 20240519
+  + update Ada95/configure to match change for -DTRACE
+  + revert change to include/ncurses_defs, which caused build failure if
+    tracing was not enabled (report by Branden Robinson).
+- Add ncurses patch 20240518
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + move makefile's -DTRACE into include/ncurses_cfg.h, to simplify use
+    of CFLAGS/CPPFLAGS.
+  + improve check for clock_gettime(), from xterm.
+  + modify configure script to work around broken gnatgcc script found in
+    gcc-13 builds.
+- Port patch ncurses-6.4.dif
+
+-------------------------------------------------------------------
+Tue May 14 06:12:46 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20240511
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + limit value from ESCDELAY environment variable to 30 seconds, like
+    other delay limits.
+  + limit values from LINES and COLUMNS environment variables to 512
+    (report by Miroslav Lichvar).
+- Port patch ncurses-6.4.dif
+
+-------------------------------------------------------------------
 Wed May  8 07:30:03 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Make verify the patches an optional task for local builds only 

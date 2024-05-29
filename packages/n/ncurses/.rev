@@ -4548,4 +4548,35 @@
 - Verify also every patch</comment>
     <requestid>1172646</requestid>
   </revision>
+  <revision rev="264" vrev="37">
+    <srcmd5>860b4440aa56f1b308504f0baba0c086</srcmd5>
+    <version>unknown</version>
+    <time>1717004102</time>
+    <user>anag+factory</user>
+    <comment>- Add ncurses patch 20240525
+  + build-fix for configure option --disable-ext-funcs
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + review/update iTerm2 for 3.5.0 -TD
+- Add ncurses patch 20240519
+  + update Ada95/configure to match change for -DTRACE
+  + revert change to include/ncurses_defs, which caused build failure if
+    tracing was not enabled (report by Branden Robinson).
+- Add ncurses patch 20240518
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + move makefile's -DTRACE into include/ncurses_cfg.h, to simplify use
+    of CFLAGS/CPPFLAGS.
+  + improve check for clock_gettime(), from xterm.
+  + modify configure script to work around broken gnatgcc script found in
+    gcc-13 builds.
+- Port patch ncurses-6.4.dif
+
+- Add ncurses patch 20240511
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + limit value from ESCDELAY environment variable to 30 seconds, like
+    other delay limits.
+  + limit values from LINES and COLUMNS environment variables to 512
+    (report by Miroslav Lichvar).
+- Port patch ncurses-6.4.dif</comment>
+    <requestid>1177126</requestid>
+  </revision>
 </revisionlist>
