@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 29 14:32:58 UTC 2024 - rbrown@suse.com
+
+- Update to version 1.0.5:
+  * fix(functions): fallback to unix device path, when by-id does not exist
+
+-------------------------------------------------------------------
 Mon May 27 14:55:51 UTC 2024 - rbrown@suse.com
 
 - Update to version 1.0.4:

@@ -73,4 +73,13 @@
   * module-mig: filter out empty SD card readers from install target list</comment>
     <requestid>1177163</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0868d519016378097bcb83878166655f</srcmd5>
+    <version>1.0.5</version>
+    <time>1717004206</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.5:
+  * fix(functions): fallback to unix device path, when by-id does not exist</comment>
+    <requestid>1177611</requestid>
+  </revision>
 </revisionlist>
