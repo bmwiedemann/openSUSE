@@ -1,7 +1,7 @@
 #
 # spec file for package vkeybd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           vkeybd
-Version:        0.1.18d
+Version:        0.1.18e
 Release:        0
 Summary:        Virtual Keyboard Instrument
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Midi
-URL:            http://www.alsa-project.org/~iwai/alsa.html
-Source:         ftp://ftp.suse.com/pub/people/tiwai/vkeybd/%{name}-%{version}.tar.bz2
+URL:            https://github.com/tiwai/vkeybd
+Source:         https://github.com/tiwai/vkeybd/archive/refs/tags/v0.1.18e.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa)
@@ -35,7 +35,7 @@ raw MIDI, and ALSA sequencer drivers.  It is written in Tcl/Tk.  Enjoy
 playing music with your "computer" keyboard.
 
 %prep
-%setup -q -n %{name}
+%autosetup -p1
 
 %build
 TCL_VERSION=$(echo 'puts $tcl_version' | tclsh)

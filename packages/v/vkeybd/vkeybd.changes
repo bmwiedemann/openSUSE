@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 29 13:06:57 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Update to v0.1.18e:
+  * README and manpage updates
+  * Send both MSB (CC#0) and LSB (CC#32) for bank selection in alsa-seq mode;
+    there is a new option --bankmsb to keep the old behavior
+
+-------------------------------------------------------------------
 Fri Feb 19 12:51:49 CET 2021 - tiwai@suse.de
 
 - Fix broken symlink of icon file that broke the TW build
