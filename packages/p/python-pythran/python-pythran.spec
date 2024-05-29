@@ -17,39 +17,34 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "test-py310"
-%define psuffix -test-py310
-%define skip_python311 1
-%define skip_python312 1
-%endif
-%if "%{flavor}" == "test-py311"
-%define psuffix -test-py311
-%define skip_python310 1
-%define skip_python312 1
-%endif
-%if "%{flavor}" == "test-py312"
-%define psuffix -test-py312
-%define skip_python310 1
-%define skip_python311 1
-%endif
+%{?sle15_python_module_pythons}
+
 %if "%{flavor}" == ""
 %define psuffix %{nil}
 %bcond_with test
 %else
+%define psuffix -%{flavor}
 %bcond_without test
-# global stop testing even when it is still in buildset (otherwise every test flavor would also test this one)
-%define skip_python39 1
-# do nothing in a test flavor that is still around but has nothing in buildset anymore
-%if "%{shrink:%{pythons}}" == ""
+%if "%{flavor}" != "test-py310"
+%define skip_python310 1
+%endif
+%if "%{flavor}" != "test-py311"
+%define skip_python311 1
+%endif
+%if "%{flavor}" != "test-py312"
+%define skip_python312 1
+%endif
+# Skip empty buildsets, last one is for sle15_python_module_pythons
+%if "%{shrink:%{pythons}}" == "" || ("%pythons" == "python311" && 0%{?skip_python311})
 ExclusiveArch:  donotbuild
-%define python_module() %flavor-not-enabled-in-buildset
+%define python_module() %flavor-not-enabled-in-buildset-for-suse-%{?suse_version}
 %else
 ExclusiveArch:  x86_64
 %endif
 %endif
-%{?sle15_python_module_pythons}
+
 Name:           python-pythran%{psuffix}
-Version:        0.15.0
+Version:        0.16.0
 Release:        0
 Summary:        Ahead of Time compiler for numeric kernels
 License:        BSD-3-Clause
@@ -74,16 +69,22 @@ Requires:       boost-devel
 Requires:       gcc-c++
 Requires:       python-devel
 Requires:       python-numpy-devel
-Requires:       xsimd-devel
+Requires:       xsimd-devel >= 13.0.0
 # /SECTION
 %if %{with test}
 BuildRequires:  %{python_module ipython}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pythran = %{version}}
 BuildRequires:  %{python_module wheel}
+%if 0%{?suse_version} > 1500
 BuildRequires:  openblas-devel
+%else
+BuildRequires:  cblas-devel
+BuildRequires:  lapack-devel
+%endif
 BuildRequires:  unzip
 %endif
 BuildArch:      noarch
@@ -120,6 +121,7 @@ rm -r pythran/boost pythran/xsimd
 %if %{with test}
 %check
 export CFLAGS="%{optflags}"
+%if 0%{?suse_version} > 1500
 # Force to link against openblas during tests because the update-alternatives setup
 # for lapack/cblas/openblas might be inconsistent inside obs builds
 cat > config.pythranrc <<EOF
@@ -128,6 +130,7 @@ blas=openblas
 libs=openblas
 EOF
 export PYTHRANRC=$PWD/config.pythranrc
+%endif
 # pytest_extra_args is for debug builds with local defines on command line
 %pytest %{?jobs:-n %jobs} %{?pytest_extra_args}
 %endif

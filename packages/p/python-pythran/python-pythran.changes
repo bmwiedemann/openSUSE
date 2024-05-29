@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat May 25 10:35:26 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.16.0
+  * Support numpy.vectorize, numpy.argsort's kind keyword,
+    real/imag on numpy_iexpr
+  * Add missing omp.set_num_thread descriptor
+  * Provide --trace-allocations switch
+  * Support empty PYTHRANRC for reproducible builds
+  * Improve compilation time
+  * Support ufunc creation through #pythran export ufunc
+    func_name(arg_types...)
+  * Fix memory leak when returing numpy_gexpr to Python
+  * Numpy 2.x support
+  * Upgrade xsimd to 13.0.0
+  * Improve detection of non-overlapping memory area during gexpr
+    assignment
+  * Improve python 3.12 support (distutils removal)
+  * Support imatmul
+  * Only link blas when needed
+
+-------------------------------------------------------------------
+Thu Apr 25 09:21:21 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Refactor the multibuild test flavor logic
+- Accomodate some 15.x intricacies for the failing tests:
+  * use netlib lapack/blas instead of openblas
+
+-------------------------------------------------------------------
 Fri Feb 23 12:24:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use newly supported shrink{} on OBS to exclude python flavors
