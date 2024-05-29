@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 28 12:46:14 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.2.1
+  Release notes https://github.com/kubevirt/kubevirt/releases/tag/v1.2.1
+- Drop upstreamed patch
+  0001-Improve-the-handling-of-ordinal-pod-interface-name-for-upgrade.patch
+
+-------------------------------------------------------------------
 Fri Apr 12 05:51:30 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Improve the OrdinalPodInterfaceName mechanism (bsc#1222699)
