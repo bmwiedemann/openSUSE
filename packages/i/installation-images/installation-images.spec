@@ -91,6 +91,7 @@ ExclusiveArch:  do_not_build
 
 %if "%flavor" == "Slowroll"
 %define theme Slowroll
+%define product_name_suffix -Slowroll
 %define net_repo https://download.opensuse.org/slowroll/repo/oss
 %endif
 
@@ -152,7 +153,7 @@ ExclusiveArch:  do_not_build
 
 # ===  set product string (based on required packages)  ===
 
-%global product_name %(bash %_sourcedir/product_name)
+%global product_name %(bash %_sourcedir/product_name)%{?product_name_suffix}
 
 # ===  define each theme  ===
 
@@ -686,7 +687,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.128
+Version:        17.129
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
