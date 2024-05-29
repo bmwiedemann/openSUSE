@@ -168,7 +168,6 @@ install libgnomesu
 install libxfce4ui-tools
 install shared-mime-info
 install xdg-user-dirs-gtk
-install xdg-utils
 install NetworkManager-applet
 install xfce4-panel-plugin-xkb
 install xfce4-terminal

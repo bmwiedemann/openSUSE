@@ -1944,4 +1944,11 @@
     <user>dimstar_suse</user>
     <comment>More languages need to go</comment>
   </revision>
+  <revision rev="244" vrev="244">
+    <srcmd5>778f6404f11da6a1c3ce4f3fbe111138</srcmd5>
+    <version>unknown</version>
+    <time>1716976343</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop xdg-utils from rescue CD.</comment>
+  </revision>
 </revisionlist>

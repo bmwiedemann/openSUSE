@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 29 09:51:58 UTC 2024 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop xdg-utils from rescue CD.
+
+-------------------------------------------------------------------
 Thu May 23 07:48:42 UTC 2024 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Remove some more locales: az, uz, tk.
