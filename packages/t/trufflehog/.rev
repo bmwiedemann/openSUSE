@@ -1018,4 +1018,28 @@
   * deprecated Integromat detector becuase they are gone. (#2856) (forwarded request 1175441 from ph03nix)</comment>
     <requestid>1175584</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>885ef108d34f79ae1148ec49c39da672</srcmd5>
+    <version>3.77.0</version>
+    <time>1717004203</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.77.0:
+  * feat: support docker image history scanning (#2882)
+  * Added extra data for LaunchDarkly (#2836)
+  * fix(deps): update module github.com/gabriel-vasile/mimetype to v1.4.4 (#2890)
+  * fix(deps): update module github.com/elastic/go-elasticsearch/v8 to v8.13.1 (#2886)
+  * fix(deps): update golang.org/x/exp digest to 4c93da0 (#2883)
+  * fix(deps): update module cloud.google.com/go/secretmanager to v1.13.1 (#2884)
+  * fix(deps): update module github.com/go-logr/logr to v1.4.2 (#2869)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.53.10 (#2871)
+  * test(github): fix some errors (#2774)
+  * Improve handling of Gist URLs (#2653)
+  * Elastic adapter (#2727)
+  * fix(github): scan user repos (#2814)
+  * Log reasons for GitLab repo exclusion (#2875)
+  * adding Groq detector (#2873)
+  * [chore] - Use http.NewRequestWithContext (#2870)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.53.6 (#2867) (forwarded request 1177456 from ph03nix)</comment>
+    <requestid>1177603</requestid>
+  </revision>
 </revisionlist>
