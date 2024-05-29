@@ -214,7 +214,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        29.4.0
+Version:        29.4.1
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
@@ -912,7 +912,7 @@ unset MALLOC_PERTURB_
 
 %if %{with lto}
 %ifarch aarch64
-export LDFLAGS="$LDFLAGS -flto=3 --param ggc-min-expand=20 --param ggc-min-heapsize=32768 --param lto-max-streaming-parallelism=1 -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
+export LDFLAGS="$LDFLAGS -flto=2 --param ggc-min-expand=20 --param ggc-min-heapsize=32768 --param lto-max-streaming-parallelism=1 -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
 %else
 # x64 is fine with the the default settings (the machines have 30GB+ ram)
 export LDFLAGS="$LDFLAGS -flto=auto"
