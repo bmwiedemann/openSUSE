@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun May 19 15:19:23 UTC 2024 - Jean Delvare <jdelvare@suse.com>
+
+Update for HPE servers from upstream:
+- dmioem-update-hpe-oem-type-238.patch: Decode PCI bus segment in
+  HPE type 238 records.
+
+- Drop legacy Provides: and Obsoletes: tags. The split from the
+  pmtools package happened 15 years ago so they are no longer
+  relevant.
+
+-------------------------------------------------------------------
+Thu Apr 25 12:41:17 UTC 2024 - Jean Delvare <jdelvare@suse.com>
+
+- Update to upstream version 3.6:
+  * Support for SMBIOS 3.6.0. This includes new memory device types, new
+    processor upgrades, and Loongarch support.
+  * Support for SMBIOS 3.7.0. This includes new port types, new processor
+    upgrades, new slot characteristics and new fields for memory modules.
+  * Add bash completion.
+  * Decode HPE OEM records 197, 239 and 245.
+  * Implement options --list-strings and --list-types.
+  * Update HPE OEM records 203, 212, 216, 221, 233, 236, 238 and 242.
+  * Update Redfish support.
+  * Bug fixes:
+    Fix enabled slot characteristics not being printed
+  * Minor improvements:
+    Print slot width on its own line
+    Use standard strings for slot width
+  * Obsoletes arm-use-alignment-workaround.patch,
+    dmioem-hpe-oem-record-237-firmware-change.patch and
+    use-read_file-to-read-from-dump.patch.
+
+-------------------------------------------------------------------
 Mon Feb 26 07:51:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

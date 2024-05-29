@@ -1,7 +1,7 @@
 #
 # spec file for package dmidecode
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dmidecode
-Version:        3.5
+Version:        3.6
 Release:        0
 Summary:        DMI table decoder
 License:        GPL-2.0-or-later
@@ -27,11 +27,7 @@ Source0:        http://download.savannah.gnu.org/releases/%{name}/%{name}-%{vers
 Source1:        http://download.savannah.gnu.org/releases/%{name}/%{name}-%{version}.tar.xz.sig
 # https://savannah.nongnu.org/project/memberlist-gpgkeys.php?group=dmidecode
 Source2:        %{name}.keyring
-Patch1:         arm-use-alignment-workaround.patch
-Patch2:         dmioem-hpe-oem-record-237-firmware-change.patch
-Patch3:         use-read_file-to-read-from-dump.patch
-Provides:       pmtools:%{_sbindir}/dmidecode
-Obsoletes:      pmtools < 20071117
+Patch1:         dmioem-update-hpe-oem-type-238.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  xz
 ExclusiveArch:  %ix86 ia64 x86_64 %arm aarch64
@@ -60,6 +56,7 @@ CFLAGS="%{optflags}" make %{?_smp_mflags}
 install -dm 755 %{buildroot}%{_sbindir}
 install -dm 755 %{buildroot}%{_mandir}/man8
 install -dm 755 %{buildroot}%{_docdir}/%{name}
+install -dm 755 %{buildroot}%{_datadir}/bash-completion/completions/
 %ifarch ia64 %arm aarch64
 for i in dmidecode ; do
 %else
@@ -67,6 +64,7 @@ for i in dmidecode vpddecode ownership biosdecode ; do
 %endif
 install -m 755 $i %{buildroot}%{_sbindir}/
 install -m 644 man/$i.8 %{buildroot}%{_mandir}/man8/
+install -m 644 completion/$i.bash %{buildroot}%{_datadir}/bash-completion/completions/$i
 done
 
 %files
@@ -75,6 +73,7 @@ done
 %dir %{_docdir}/%{name}
 %doc AUTHORS NEWS README
 %{_mandir}/man8/*
+%{_datadir}/bash-completion/completions/*
 %license LICENSE
 
 %changelog
