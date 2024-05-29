@@ -175,4 +175,13 @@
     <comment></comment>
     <requestid>1169635</requestid>
   </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>f28fa34f0a832f7fe7aff6172741a98a</srcmd5>
+    <version>unknown</version>
+    <time>1717004192</time>
+    <user>anag+factory</user>
+    <comment>- Build from source not whl, using obs-service-node_modules to get the
+  javascript packages required to build the package.</comment>
+    <requestid>1177588</requestid>
+  </revision>
 </revisionlist>

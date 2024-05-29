@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 29 12:55:54 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Build from source not whl, using obs-service-node_modules to get the
+  javascript packages required to build the package.
+
+-------------------------------------------------------------------
 Sun Apr 21 22:22:11 UTC 2024 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.9.4

@@ -27,20 +27,30 @@ Summary:        Matplotlib Jupyter Extension
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/matplotlib/ipympl
-Source0:        https://files.pythonhosted.org/packages/py3/i/ipympl/ipympl-%{pyver}-py3-none-any.whl
-Source1:        https://github.com/matplotlib/ipympl/raw/%{pyver}/docs/examples/full-example.ipynb
+Source0:        https://files.pythonhosted.org/packages/source/i/ipympl/ipympl-%{pyver}.tar.gz
+# package-lock.json file generated with command:
+# npm install --package-lock-only --legacy-peer-deps --ignore-scripts
+Source2:        package-lock.json
+# node_modules generated using "osc service mr" with the https://github.com/openSUSE/obs-service-node_modules
+Source3:        node_modules.spec.inc
+%include        %{_sourcedir}/node_modules.spec.inc
 BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module hatch-jupyter-builder}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module ipython < 9}
 BuildRequires:  %{python_module ipython_genutils}
 BuildRequires:  %{python_module ipywidgets >= 7.6.0 with %python-ipywidgets < 9}
+BuildRequires:  %{python_module jupyterlab}
 BuildRequires:  %{python_module matplotlib >= 3.4.0 with %python-matplotlib < 4}
 BuildRequires:  %{python_module matplotlib-web}
 BuildRequires:  %{python_module nbval}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module traitlets < 6}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-rpm-macros
+BuildRequires:  local-npm-registry
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       jupyter-matplotlib = %{jsver}
@@ -98,22 +108,24 @@ Jupyter extension to display matplotlib plots in a widget.
 This package provides the JupyterLab extension.
 
 %prep
-%setup -q -c ipympl-%{pyver} -D -T
-%python_expand mkdir -p build; cp %{SOURCE0} build/
-cp %{SOURCE1} .
+%autosetup -p1 -n ipympl-%{pyver}
+# Replace usage of "jlpm" with "npm"
+sed -i 's/npm = \["jlpm"\]/npm = ["npm"]/g' pyproject.toml
+sed -i 's/jlpm/npm run/g' package.json
+sed -i '/prepublish/d' package.json
+local-npm-registry %{_sourcedir} install --include=dev --include=peer
 
 %build
-:
+%pyproject_wheel
 
 %install
 %pyproject_install
 %jupyter_move_config
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %fdupes %{buildroot}%{_jupyter_prefix}
-cp %{buildroot}%{python3_sitelib}/ipympl-%{pyver}.dist-info/licenses/LICENSE .
 
 %check
-%pytest --nbval full-example.ipynb
+%pytest --nbval docs/examples/full-example.ipynb
 
 %files %{python_files}
 %license LICENSE
