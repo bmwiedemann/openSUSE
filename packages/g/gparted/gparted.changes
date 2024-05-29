@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 29 07:26:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop xdg-utils Requires: it's been since 2013 that we relied on
+  pkexec to gain root permissions (using GKSUPROG=pkexec).
+
+-------------------------------------------------------------------
 Tue Feb 27 06:33:56 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.6.0:

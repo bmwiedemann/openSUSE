@@ -50,7 +50,6 @@ Requires:       mtools
 Requires:       parted
 Requires:       polkit
 Requires:       util-linux
-Requires:       xdg-utils
 Recommends:     btrfsprogs >= 4.1
 Recommends:     cryptsetup
 Recommends:     e2fsprogs
