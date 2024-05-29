@@ -184,4 +184,12 @@
     * Add gibbs and gibbs_ice via ufunc wrapping</comment>
     <requestid>1173200</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f1abfb2feccfcbb5af6601d0f2ff2243</srcmd5>
+    <version>3.6.18</version>
+    <time>1717004151</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1177375</requestid>
+  </revision>
 </revisionlist>

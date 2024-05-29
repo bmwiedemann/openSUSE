@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 28 12:36:49 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.6.18
+  * Avoid distutils by @ocefpaf in #143
+  * Add citation in README.md by @rcaneill in #145
+  * Fix upload-download artifacts by @ocefpaf in #154
+  * Should fix PyPI publishing by @ocefpaf in #155
+  * Version everything and allow tests to run on macos-14 by @ocefpaf in #159
+  * Test on py312 by @ocefpaf in #164
+  * Fix typo... by @ocefpaf in #163
+  * Dev notes by @ocefpaf in #133
+  * Remove used dependency by @ocefpaf in #165
+  * Test against numpy 2.0 by @ocefpaf in #166
+
+-------------------------------------------------------------------
 Fri May 10 12:41:17 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.6.17

@@ -19,7 +19,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-gsw
-Version:        3.6.17
+Version:        3.6.18
 Release:        0
 Summary:        Gibbs Seawater Oceanographic Package of TEOS-10
 # Note: Python code is MIT licensed
