@@ -329,6 +329,7 @@ PR      Commit message
 2571    fix(dracut-install): memory leak in `--modalias` option
 2573    fix(dracut-install): release memory allocated for regular expressions
 2574    fix(dracut-install): memory leak in two `hashmap_put` calls if key exists
+2577    perf(drm): group dracut_instmods calls
 2593    fix(dracut.sh): do not add device if find_block_device returns an error
 2593    feat(dracut.sh): protect push_host_devs function
 2601    feat(tpm2-tss): add tpm2.target and systemd-tpm2-generator
@@ -350,4 +351,6 @@ PR      Commit message
 were already merged
 
 a45048b8 fix(dracut): move hooks directory from /usr/lib to /var/lib
+424717af fix: /etc/modprobe.d --> /run/modprobe.d (partially reverted)
+4cc962aa fix(systemd-ask-password): no graphical output in aarch64
 

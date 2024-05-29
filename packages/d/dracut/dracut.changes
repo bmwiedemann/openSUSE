@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 27 12:09:20 UTC 2024 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.598.gfe80dac7:
+  * fix(systemd-ask-password): no graphical output in aarch64 (bsc#1224404)
+  * perf(drm): group dracut_instmods calls
+  * fix: do not write to /usr/lib/modprobe.d at boot
+
+-------------------------------------------------------------------
 Thu May 16 15:01:18 UTC 2024 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.588.g528264be:
