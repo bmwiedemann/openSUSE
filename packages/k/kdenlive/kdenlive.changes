@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 28 11:40:35 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add fix for ARM builds (kde#483425)
+  * 0001-Fix-build-when-using-GLES.patch
+
+-------------------------------------------------------------------
 Sun May 19 09:55:46 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.0
