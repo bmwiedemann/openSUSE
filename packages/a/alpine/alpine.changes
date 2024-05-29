@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 21 13:25:15 UTC 2024 - Reinhard Max <max@suse.com>
+
+- boo#1224533: Add alpine-qsort.patch to fix build with gcc 14.
+
+-------------------------------------------------------------------
 Tue Feb 20 10:39:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -1,7 +1,7 @@
 #
 # spec file for package alpine
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,6 +44,7 @@ Patch10:        pico-fix-spurious-undef-warnings.diff
 Patch20:        pine-expression-warnings.diff
 Patch60:        signal-and-panic-improvements.diff
 Patch61:        return-values.diff
+Patch62:        alpine-qsort.patch
 #
 # Eduardo Chappa's patches.
 # http://patches.freeiz.com/alpine/
@@ -147,6 +148,7 @@ fi
 %patch -P 20 -p1
 %patch -P 60 -p1
 %patch -P 61 -p1
+%patch -P 62
 %endif
 
 %build
