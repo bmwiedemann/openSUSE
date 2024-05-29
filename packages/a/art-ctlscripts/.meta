@@ -1,0 +1,5 @@
+<package name="art-ctlscripts" project="openSUSE:Factory">
+  <title>art-ctlscripts</title>
+  <description></description>
+  <devel project="graphics" package="art-ctlscripts"/>
+</package>

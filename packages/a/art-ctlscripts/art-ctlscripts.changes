@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Tue May 28 14:25:15 UTC 2024 - info@paolostivanin.com
+
+- Update to version 1.0.1:
+  * fixed typo in ght.ctl
+  * added simple B&W mixer
+  * color mix: added subtract blend mode
+  * reworked gamut compression to make it compliant with ACES reference implementation
+  * added simple split toning
+  * added simple exposure compensation
+  * use rec2020 for gamma
+  * some tweaks to the odt default parameters
+  * added channel mixer and gamma/slope correction scripts
+  * some tweaks to GHT
+
+-------------------------------------------------------------------
+Tue May 28 11:54:12 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Initial OBS release.
