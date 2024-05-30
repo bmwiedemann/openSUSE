@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 24 16:14:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream build fix:
+  * 0001-tests-Fix-build-with-older-libxml2.patch
+
+-------------------------------------------------------------------
 Sun May  5 16:26:10 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Fix ftbfs with GCC14 (bsc#1220571)
