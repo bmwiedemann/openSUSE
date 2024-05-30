@@ -1,7 +1,7 @@
 #
 # spec file for package psmisc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ BuildRequires:  dejagnu
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
 BuildRequires:  glibc-devel
+BuildRequires:  glibc-gconv-modules-extra
 BuildRequires:  libselinux-devel
 BuildRequires:  linux-glibc-devel >= 4.12
 BuildRequires:  ncurses-devel
@@ -33,7 +34,7 @@ BuildRequires:  netcat-openbsd
 BuildRequires:  pkgconfig(libapparmor)
 %endif
 URL:            https://gitlab.com/psmisc/psmisc/
-Version:        23.6
+Version:        23.7
 Release:        0
 Provides:       ps:/usr/bin/killall
 Summary:        Utilities for managing processes on your system
@@ -41,6 +42,7 @@ License:        GPL-2.0-or-later
 Group:          System/Monitoring
 Source:         https://gitlab.com/%{name}/%{name}/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
 Patch0:         %{name}-v%{version}.dif
+Patch1:         0001-killall,pstree-use-clock_gettime-not-uptime.patch
 Patch2:         %{name}-22.21-pstree.patch
 # PATCH-ADD-SUSE boo#908068, boo#1046237, boo#1046237
 # https://gitlab.com/bitstreamout/psmisc/tree/mountinfo
@@ -60,6 +62,7 @@ processes that are using specified files or filesystems.
 
 %prep
 %setup -q -n %{name}-v%{version}
+%patch -P 1 -p0 -b .uptime
 %patch -P 2 -p0 -b .pstree
 %patch -P 3 -p0 -b .mntinf
 %patch -P 0 -p0 -b .p0

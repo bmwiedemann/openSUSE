@@ -67,10 +67,10 @@ index 723cf02..3599fea 100644
 +AC_CHECK_FUNC([name_to_handle_at],[
 +  AC_DEFINE([HAS_NAME_TO_HANDLE_AT], [1], [System has name_to_handle_at(2) system call])])
 +
- AC_CHECK_HEADERS([sys/syscall.h])
  AC_CHECK_DECLS([SYS_statx],
    [has_syscall_statx="yes"],
-@@ -105,9 +119,9 @@ AC_SUBST([TERMCAP_LIB])
+   [has_syscall_statx="no"],
+@@ -112,9 +126,9 @@ AC_SUBST([TERMCAP_LIB])
  
  dnl Checks for header files.
  AC_HEADER_DIRENT
@@ -482,7 +482,7 @@ index f2bd3e9..8e4c853 100644
 -	if (statn(filepath, STATX_INO, &st) != 0)
 +        if (statn(filepath, STATX_INO, &st) != 0)
          {
-             if (errno != ENOENT && errno != ENOTDIR)
+             if (errno != ENOENT && errno != ENOTDIR && errno != EACCES)
              {
 @@ -1651,6 +1784,9 @@ static void check_dir(
                          filepath, strerror(errno));
@@ -1123,7 +1123,7 @@ index f2bd3e9..8e4c853 100644
  /*
   * Somehow the realpath(3) glibc function call, nevertheless
   * it avoids lstat(2) system calls.
-@@ -2215,6 +2774,52 @@ char *expandpath(
+@@ -2211,6 +2770,52 @@ char *expandpath(
              }
              lnkbuf[n] = '\0';    /* Don't be fooled by readlink(2) */
  

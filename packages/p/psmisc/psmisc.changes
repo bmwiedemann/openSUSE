@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May 27 11:55:43 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update to 23.7
+  * build-sys: Make disable-statx work
+  * fuser: Fallback to stat() if no statx() Debian 1030747 #48
+  * fuser: silently ignore EACCES when scanning proc directories
+  * killall: small formatting fixes Debian #1037231
+  * pstree: Do not assume root PID #49
+  * pslog: include config.h #51 !36
+  * misc: Update gettext to 0.21
+- Add patch from upstream 0001-killall,pstree-use-clock_gettime-not-uptime.patch
+- Port the patches
+  * 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
+  * psmisc-22.21-pstree.patch
+- Port patch psmisc-v23.6.dif and rename it to psmisc-v23.7.dif
+
+-------------------------------------------------------------------
 Thu Feb 29 15:01:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

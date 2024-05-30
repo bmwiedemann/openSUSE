@@ -5,7 +5,7 @@
 
 --- configure.ac
 +++ configure.ac	2022-12-13 07:57:11.751636898 +0000
-@@ -162,7 +162,7 @@ AC_CHECK_MEMBERS([struct user_regs_struc
+@@ -169,7 +169,7 @@ AC_CHECK_MEMBERS([struct user_regs_struc
  		struct user_regs_struct.rdi,
  		struct user_regs_struct.rsi,
  		struct user_regs_struct.rdx], [],[],

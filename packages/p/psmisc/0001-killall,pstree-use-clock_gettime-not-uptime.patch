@@ -1,0 +1,160 @@
+From a146bfc359a4d4d96c438f3a0fa988c6a171d40d Mon Sep 17 00:00:00 2001
+From: Craig Small <csmall@dropbear.xyz>
+Date: Wed, 13 Mar 2024 22:01:07 +1100
+Subject: [PATCH] killall,pstree use clock_gettime not uptime
+
+/proc/uptime can become a container uptime in LXC containers
+but the process start time is still relative to the boot time.
+
+This means things like "newer than" or "older than" will be incorrect
+in some containers, using clock_gettime() fixes this as its always the
+hosts boot time.
+
+References:
+ https://bugs.debian.org/1066090
+ https://gitlab.com/procps-ng/procps/-/commit/b5e19c1730bcc68d553f44b5585704e3c92267bf#83c45d853acc8384452b404946e4a0c484b16a4e
+
+Signed-off-by: Craig Small <csmall@dropbear.xyz>
+---
+ ChangeLog     |  4 ++++
+ src/killall.c | 39 +++++++++++++++++++--------------------
+ src/pstree.c  | 39 +++++++++++++++++++--------------------
+ 3 files changed, 42 insertions(+), 40 deletions(-)
+
+diff --git ChangeLog ChangeLog
+index 15c5725..f4dcfd2 100644
+--- ChangeLog
++++ ChangeLog
+@@ -1,3 +1,7 @@
++Changes in NEXT
++===============
++	* killall,pstree: Use gettime instead of uptime Debian 1066090
++
+ Changes in 23.7
+ ===============
+ 	* build-sys: Make disable-statx work
+diff --git src/killall.c src/killall.c
+index 81dcc4b..229e61c 100644
+--- src/killall.c
++++ src/killall.c
+@@ -45,6 +45,7 @@
+ #include <regex.h>
+ #include <ctype.h>
+ #include <assert.h>
++#include <time.h>
+ 
+ #ifdef WITH_SELINUX
+ #include <dlfcn.h>
+@@ -132,30 +133,28 @@ ask (char *name, pid_t pid, const int signal)
+     /* Never should get here */
+ }
+ 
+-static double
+-uptime()
+-{
+-    char * savelocale;
+-    char buf[2048];
+-    FILE* file;
+-    if (!(file=fopen( PROC_BASE "/uptime", "r"))) {
+-        fprintf(stderr, "killall: error opening uptime file\n");    
+-        exit(1);
+-    }
+-    savelocale = setlocale(LC_NUMERIC,"C");
+-    if (fscanf(file, "%2047s", buf) == EOF) perror("uptime");
+-    fclose(file);
+-    setlocale(LC_NUMERIC,savelocale);
+-    return atof(buf);
+-}
+ 
+-/* process age from jiffies to seconds via uptime */
++/* process age from jiffies to seconds via uptime
++ * Cannot use /proc/uptime as this can change in containers
++ * but process start time does not
++ */
+ static double process_age(const unsigned long long jf)
+ {
++    struct timespec ts;
++    double sc_clk_tck;
+     double age;
+-    double sc_clk_tck = sysconf(_SC_CLK_TCK);
+-    assert(sc_clk_tck > 0);
+-    age = uptime() - jf / sc_clk_tck;
++
++    if (clock_gettime(CLOCK_BOOTTIME, &ts) != 0) {
++        perror("clock_gettime():");
++        exit(EXIT_FAILURE);
++    }
++
++    if ( (sc_clk_tck = sysconf(_SC_CLK_TCK)) < 0) {
++        perror("sysconf(CLK_TCK):");
++        exit(EXIT_FAILURE);
++    }
++
++    age = (ts.tv_sec + ts.tv_nsec * 1.0e-9)  - jf / sc_clk_tck;
+     if (age < 0L)
+         return 0L;
+     return age;
+diff --git src/pstree.c src/pstree.c
+index 39265d1..2545e24 100644
+--- src/pstree.c
++++ src/pstree.c
+@@ -44,6 +44,7 @@
+ #include <sys/ioctl.h>
+ #include <limits.h>
+ #include <locale.h>
++#include <time.h>
+ 
+ #include "i18n.h"
+ #include "comm.h"
+@@ -1028,30 +1029,28 @@ static void trim_tree_by_parent(PROC * current)
+   trim_tree_by_parent(parent);
+ }
+ 
+-static double
+-uptime()
+-{
+-    char * savelocale;
+-    char buf[2048];
+-    FILE* file;
+-    if (!(file=fopen( PROC_BASE "/uptime", "r"))) {
+-        fprintf(stderr, "pstree: error opening uptime file\n");
+-        exit(1);
+-    }
+-    savelocale = setlocale(LC_NUMERIC,"C");
+-    if (fscanf(file, "%2047s", buf) == EOF) perror("uptime");
+-    fclose(file);
+-    setlocale(LC_NUMERIC,savelocale);
+-    return atof(buf);
+-}
+ 
+-/* process age from jiffies to seconds via uptime */
++/* process age from jiffies to seconds via uptime
++ * Cannot use /proc/uptime as this can change in containers
++ * but process start time does not
++ */
+ static double process_age(const unsigned long long jf)
+ {
++    struct timespec ts;
++    double sc_clk_tck;
+     double age;
+-    double sc_clk_tck = sysconf(_SC_CLK_TCK);
+-    assert(sc_clk_tck > 0);
+-    age = uptime() - jf / sc_clk_tck;
++
++    if (clock_gettime(CLOCK_BOOTTIME, &ts) != 0) {
++        perror("clock_gettime():");
++        exit(EXIT_FAILURE);
++    }
++
++    if ( (sc_clk_tck = sysconf(_SC_CLK_TCK)) < 0) {
++        perror("sysconf(CLK_TCK):");
++        exit(EXIT_FAILURE);
++    }
++
++    age = (ts.tv_sec + ts.tv_nsec * 1.0e-9)  - jf / sc_clk_tck;
+     if (age < 0L)
+         return 0L;
+     return age;
+-- 
+2.35.3
+

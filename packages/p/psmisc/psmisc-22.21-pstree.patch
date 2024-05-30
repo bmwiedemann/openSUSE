@@ -4,7 +4,7 @@
 
 --- src/pstree.c
 +++ src/pstree.c	2022-12-13 07:46:58.243076344 +0000
-@@ -79,6 +79,7 @@ extern const char *__progname;
+@@ -81,6 +81,7 @@ extern const char *__progname;
  #define UTF_HD        "\342\224\254"        /* U+252C, Horizontal and down */
  
  #define VT_BEG        "\033(0\017"        /* use graphic chars */
@@ -12,7 +12,7 @@
  #define VT_END        "\033(B"        /* back to normal char set */
  #define VT_V        "x"                /* see UTF definitions above */
  #define VT_VR        "t"
-@@ -578,6 +579,28 @@ static void out_scontext(const PROC *cur
+@@ -594,6 +595,28 @@ static void out_scontext(const PROC *cur
      out_string("'");
  }
  
@@ -41,7 +41,7 @@
  static void out_newline(void)
  {
      if (last_char && cur_x == output_width)
-@@ -817,11 +840,12 @@ dump_tree(PROC * current, int level, int
+@@ -833,11 +856,12 @@ dump_tree(PROC * current, int level, int
          for (lvl = 0; lvl < level; lvl++) {
              for (i = width[lvl] + 1; i; i--)
                  out_char(' ');
@@ -59,7 +59,7 @@
          }
  
      if (rep < 2)
-@@ -931,7 +955,7 @@ dump_tree(PROC * current, int level, int
+@@ -947,7 +971,7 @@ dump_tree(PROC * current, int level, int
      }
      width[level] = comm_len + cur_x - offset + add;
      if (cur_x >= output_width && trunc) {
@@ -68,7 +68,7 @@
          out_string("+");
          out_newline();
          return;
-@@ -955,7 +979,7 @@ dump_tree(PROC * current, int level, int
+@@ -971,7 +995,7 @@ dump_tree(PROC * current, int level, int
                  }
          }
          if (first) {
