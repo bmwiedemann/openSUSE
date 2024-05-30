@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed May 29 21:02:29 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up the SPEC file.
+
+-------------------------------------------------------------------
+Wed May 29 19:49:25 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 2.1:
+  * Dropped support for Python 3.7.
+  * Test against Python 3.11.
+  * Added docstrings and basic type hints to all primitives and main
+    methods.
+- Changes from 2.0:
+  * Dropped support for Python < 3.6.
+  * Added Parser.until().
+  * Parser.optional() now supports an optional default argument to be
+    returned instead None.
+- Changes from 1.4:
+  * Documentation improvements.
+  * Added group parameter to regex().
+  * Support bytes with regex() as well as str.
+  * Added forward_declaration.
+- Apply spec-cleaner.
+
+-------------------------------------------------------------------
 Sat Jan 23 06:12:24 AM UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Initial spec for v1.3.0

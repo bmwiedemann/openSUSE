@@ -7,4 +7,29 @@
     <comment>missing dependency of multiple packages</comment>
     <requestid>888112</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9d0c9f047282ce67546afb5c5cacc15e</srcmd5>
+    <version>2.1</version>
+    <time>1717076018</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file.
+- Update to 2.1:
+  * Dropped support for Python 3.7.
+  * Test against Python 3.11.
+  * Added docstrings and basic type hints to all primitives and main
+    methods.
+- Changes from 2.0:
+  * Dropped support for Python &lt; 3.6.
+  * Added Parser.until().
+  * Parser.optional() now supports an optional default argument to be
+    returned instead None.
+- Changes from 1.4:
+  * Documentation improvements.
+  * Added group parameter to regex().
+  * Support bytes with regex() as well as str.
+  * Added forward_declaration.
+- Apply spec-cleaner.
+</comment>
+    <requestid>1177642</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-parsy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-parsy
-Version:        1.3.0
+Version:        2.1
 Release:        0
 Summary:        Python parser combinators
 License:        MIT
 URL:            https://github.com/python-parsy/parsy
 Source:         https://files.pythonhosted.org/packages/source/p/parsy/parsy-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -35,13 +36,13 @@ Easy-to-use parser combinators, for parsing in pure Python.
 
 %prep
 %setup -q -n parsy-%{version}
-touch test/__init__.py
+touch tests/__init__.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -50,6 +51,7 @@ touch test/__init__.py
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/parsy
+%{python_sitelib}/parsy-%{version}*-info
 
 %changelog
