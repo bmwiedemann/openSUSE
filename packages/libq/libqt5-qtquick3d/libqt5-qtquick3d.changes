@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 29 06:47:24 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.14+kde1, rebased upstream:
+  * Fix crash when a custom material / effect shader variable changes
+  * Skip processing unknown uniforms
+  * Fix progressive anti-aliasing for PrincipledMaterial
+  * Bump version to 5.15.14
+
+-------------------------------------------------------------------
 Tue Mar 19 09:58:31 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.13+kde1, rebased upstream:
