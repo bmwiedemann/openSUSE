@@ -24,6 +24,7 @@ Version:        0.22.5
 Release:        0
 BuildRequires:  automake >= 1.14
 BuildRequires:  gcc-c++
+BuildRequires:  glibc-gconv-modules-extra
 BuildRequires:  libtool
 # To get an updated linkdupes.sh (in case there are new dupes), temproarily enable:
 #BuildRequires: fdupes
@@ -93,6 +94,8 @@ Requires:       %{name} = %{version}
 Requires:       xz
 # autopoint requires find
 Requires:       findutils
+# For non-UTF encodings
+Requires:       glibc-gconv-modules-extra
 %if %{without mini}
 Requires(post): info
 Requires(preun): info

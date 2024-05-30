@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 21 10:25:25 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Require glibc-gconv-modules-extra by the gettext-tools packages
+
+-------------------------------------------------------------------
 Mon Apr 15 07:24:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Require this-is-only-for-build-envs by the -mini packages: ensure
