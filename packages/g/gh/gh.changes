@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Thu May 30 07:28:08 UTC 2024 - pdostal@suse.com
+
+- Update to version 2.50.0:
+  * Clarify Mac OS Installer packages are unsigned
+  * Build completions during release on macos
+  * Add build provenance for gh CLI releases (#9087)
+  * Add integration tests for `gh attestation verify` shared workflow use case (#9107)
+  * Update readme about MacOS pkg
+  * Remove `v` prefix when `pkgmacos` is called
+  * Integrate argument array to remove duplicate code
+  * build(deps): bump github.com/gabriel-vasile/mimetype from 1.4.3 to 1.4.4
+  * Added native min os version blocking
+  * Fix distribution.xml + min macos version requirements
+  * Added make macospkg target
+  * Fix directory already exists
+  * Add a `gh variable get FOO` command (#9106)
+  * Add comment to pr diff regex
+  * Update regex in changedFilesNames to handle quoted paths
+  * fix: rename the `Attempts` field to `Attempt`; expose in `gh run view` and `gh run ls` (#8905)
+  * Change minimum build script macOS version
+  * Cleanup pkgmacos build script
+  * Removed redundant specifications
+  * Fix indentation
+  * Undo goreleaser change
+  * feat: add support for stateReason in `gh pr view` (#9080)
+  * Fix indentation
+  * Fix indentation
+  * Indentation fix
+  * Update choice title
+  * Update pkg title
+  * update generated content for man pages and website
+  * williammartin simplifications
+  * remove no-op if clause that returns 'No Aliases'
+  * Conditionalize references, remove redundant alias
+  * list the various alias permutations for the command and subcommands
+  * Remove TODO and add comment on LoginFlow tests
+  * Comment the purpose of the helper config contract
+  * Test git credentials are configured in LoginFlow
+  * Add HelperConfig contract test and FakeHelperConfig
+  * Inject GitCredentialFlow to LoginFlow as test seam
+  * Removed unused param flagDryRun from upgradeFunc
+  * Added summary TTY message to tests
+  * Added TTY message to summarize checking extension upgrades
+  * Add Helper test for Windows
+  * Add tests for gitcredentials Updater
+  * Fix mistaken git installation error check
+  * Move gitcredentials HelperConfig and add tests
+  * Comment the new gitcredentials package
+  * Comment the git credential flow
+  * Remove unnecessary credential setup private method
+  * Use tighter interface in setup-git
+  * Rename gitcredentials Configure to ConfigureOurs
+  * Make gitcredential helper smarter
+  * Move fetching configured helper into gitcredentials
+  * Extract units for configuring and updating git credential helpers
+  * removed tty message
+  * Implement ExportData to filter json fields
+  * fix: rename fields list
+  * feat: add json output for PR checks
+  * Fix doc bug for gh run watch
+  * Fix typo in macOS pkg installer build script
+  * Add macOS pkg installer to deployment
+
+-------------------------------------------------------------------
 Mon May 13 17:59:29 UTC 2024 - pdostal@suse.com
 
 - Update to version 2.49.2:
