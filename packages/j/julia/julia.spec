@@ -84,6 +84,8 @@ Patch6:         openlibm.patch
 Patch7:         julia-hardcoded-libs.patch
 # PATCH-FIX-OPENSUSE -- A bug in MPFR which they describe in their INSTALL file. So we have to assist the mpfr.mk that julia uses.
 Patch8:         mpfr-looking-for-gmp-fix.patch
+# PATCH-FIX-UPSTREAM
+Patch9:         https://github.com/JuliaLang/julia/pull/54605.patch#/allow_libssp_libatomic_and_libgomp_to_fail_as_they_are_not_available_on_all_systems.patch
 
 BuildRequires:  ImageMagick
 BuildRequires:  autoconf
@@ -269,7 +271,7 @@ Obsoletes:      %{name} < %{version}
 %if 0%{?compat_mode}
 ExclusiveArch:  x86_64 x86_64_v3
 %else
-ExclusiveArch:  x86_64 x86_64_v3
+ExclusiveArch:  x86_64 x86_64_v3 aarch64
 %endif
 %{?suse_build_hwcaps_libs}
 
@@ -377,7 +379,10 @@ RELEASE_BANNER="openSUSE Leap ${SLE_VERSION} - Built on $(date -u)"
 make %{?_smp_mflags} \
                      MARCH="%{julia_march}" \
 %ifarch x86_64 || x86_64_v3
-                     JULIA_CPU_TARGET="generic;sandybridge,-xsaveopt,clone_all;haswell,-rdrnd,base(1)" \
+                     JULIA_CPU_TARGETS="generic;sandybridge,-xsaveopt,clone_all;haswell,-rdrnd,base(1)" \
+%endif
+%ifarch aarch64
+                     JULIA_CPU_TARGETS="generic;cortex-a53;cortex-a55;cortex-a57;cortex-a72;arm_cortex_a78;arm_cortex_x1;neoverse-512tvb,base(3);arm_neoverse_n1;arm_neoverse_v1;arm_neoverse_n2;carmel,clone_all;apple-m1,base(3)" \
 %endif
                      build_prefix="%{_builddir}/%{buildsubdir}/build%{_prefix}" \
                      build_libdir="%{_builddir}/%{buildsubdir}/build%{_libdir}" \
@@ -437,7 +442,10 @@ RELEASE_BANNER="openSUSE Leap ${SLE_VERSION} - Built on $(date -u)"
 make install DESTDIR="%{buildroot}" \
              MARCH="%{julia_march}" \
 %ifarch x86_64 || x86_64_v3
-             JULIA_CPU_TARGET="generic;sandybridge,-xsaveopt,clone_all;haswell,-rdrnd,base(1)" \
+             JULIA_CPU_TARGETS="generic;sandybridge,-xsaveopt,clone_all;haswell,-rdrnd,base(1)" \
+%endif
+%ifarch aarch64
+             JULIA_CPU_TARGETS="generic;cortex-a53;cortex-a55;cortex-a57;cortex-a72;arm_cortex_a78;arm_cortex_x1;neoverse-512tvb,base(3);arm_neoverse_n1;arm_neoverse_v1;arm_neoverse_n2;carmel,clone_all;apple-m1,base(3)" \
 %endif
              build_prefix="%{_builddir}/%{buildsubdir}/build%{_prefix}" \
              build_libdir="%{_builddir}/%{buildsubdir}/build%{_libdir}" \

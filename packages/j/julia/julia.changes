@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 29 13:42:29 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update JULIA_CPU_TARGETS
+
+-------------------------------------------------------------------
+Wed May 29 03:29:01 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Reenable aarch64 builds with patch
+  ./allow_libssp_libatomic_and_libgomp_to_fail_as_they_are_not_available_on_all_systems.patch
+
+-------------------------------------------------------------------
 Wed May 22 00:19:35 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Cleanup

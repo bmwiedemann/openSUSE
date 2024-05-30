@@ -1,0 +1,30 @@
+From dc7e47be092a21ddd74311114b2df4c72a8044b3 Mon Sep 17 00:00:00 2001
+From: "Viral B. Shah" <ViralBShah@users.noreply.github.com>
+Date: Tue, 28 May 2024 16:37:02 -0400
+Subject: [PATCH] Allow libssp, libatomic and libgomp to fail as they are not
+ available on all systems
+
+Co-authored-by: FX Coudert <fxcoudert@gmail.com>
+---
+ base/Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/base/Makefile b/base/Makefile
+index 9a6c0d0d03833..febee53a9ddfc 100644
+--- a/base/Makefile
++++ b/base/Makefile
+@@ -249,12 +249,12 @@ endif
+ ifneq (,$(LIBGFORTRAN_VERSION))
+ $(eval $(call symlink_system_library,CSL,libgfortran,$(LIBGFORTRAN_VERSION)))
+ endif
+-$(eval $(call symlink_system_library,CSL,libquadmath,0))
+ $(eval $(call symlink_system_library,CSL,libstdc++,6))
+-# We allow libssp, libatomic and libgomp to fail as they are not available on all systems
++# We allow libssp, libatomic, libgomp and libquadmath to fail as they are not available on all systems
+ $(eval $(call symlink_system_library,CSL,libssp,0,ALLOW_FAILURE))
+ $(eval $(call symlink_system_library,CSL,libatomic,1,ALLOW_FAILURE))
+ $(eval $(call symlink_system_library,CSL,libgomp,1,ALLOW_FAILURE))
++$(eval $(call symlink_system_library,CSL,libquadmath,0,ALLOW_FAILURE))
+ $(eval $(call symlink_system_library,PCRE,libpcre2-8))
+ $(eval $(call symlink_system_library,DSFMT,libdSFMT))
+ $(eval $(call symlink_system_library,LIBBLASTRAMPOLINE,libblastrampoline))
