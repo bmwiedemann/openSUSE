@@ -498,4 +498,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment></comment>
     <requestid>1174608</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>01c7d6361fdb8af013884eedd1591fb4</srcmd5>
+    <version>5.15.14+kde7</version>
+    <time>1717075963</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1177517 from favogt)</comment>
+    <requestid>1177548</requestid>
+  </revision>
 </revisionlist>
