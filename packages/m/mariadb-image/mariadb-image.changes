@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 30 08:24:02 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- Fix version string in reference
+
+-------------------------------------------------------------------
 Tue May 21 07:34:23 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - Simplify _mariadb_version in entrypoint

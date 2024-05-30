@@ -14,8 +14,8 @@
 # You can contact the BCI team via https://github.com/SUSE/bci/discussions
 
 
-#!BuildTag: opensuse/mariadb:%%mariadb_version%%
-#!BuildTag: opensuse/mariadb:%%mariadb_version%%-%RELEASE%
+#!BuildTag: opensuse/mariadb:11.2
+#!BuildTag: opensuse/mariadb:11.2-%RELEASE%
 #!BuildTag: opensuse/mariadb:latest
 
 FROM opensuse/tumbleweed:latest
@@ -26,13 +26,13 @@ MAINTAINER openSUSE (https://www.opensuse.org/)
 # labelprefix=org.opensuse.application.mariadb
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed MariaDB Server"
 LABEL org.opencontainers.image.description="MariaDB Server container based on the openSUSE Tumbleweed Base Container Image."
-LABEL org.opencontainers.image.version="%%mariadb_version%%"
+LABEL org.opencontainers.image.version="11.2"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/mariadb-image/README.md"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/mariadb:%%mariadb_version%%-%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/mariadb:11.2-%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime"
 LABEL org.opensuse.release-stage="released"
@@ -43,6 +43,9 @@ RUN set -euo pipefail; zypper -n in --no-recommends mariadb mariadb-tools gawk t
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["mariadbd"]
 EXPOSE 3306
+# sanity check that the version from the tag is equal to the version that we expect
+RUN set -euo pipefail; [[ $(rpm -q --qf "%{version}" mariadb-client | cut -d "." -f -2) = "11.2" ]]
+
 RUN set -euo pipefail; mkdir /docker-entrypoint-initdb.d
 
 # docker-entrypoint from https://github.com/MariaDB/mariadb-docker.git
