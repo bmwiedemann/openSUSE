@@ -20,7 +20,7 @@
 # Track upstream progress in https://github.com/sherpa/sherpa/pull/1949
 %define skip_python312 1
 Name:           python-sherpa
-Version:        4.16.0
+Version:        4.16.1
 Release:        0
 Summary:        Modeling and fitting package for scientific data analysis
 License:        GPL-3.0-only
@@ -39,7 +39,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.19
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 ExcludeArch:    %{ix86} %{arm}
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 5}

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May 29 12:53:04 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.16.1:
+  * enhancements:
+    + minor plotting changes; add support for splitting model expression into
+    + additive components and plot the results; support of log scale axes for
+    + confidence plots; improved error messages for unavailable plot backends
+    + improved RMF plot display to allow choice of energy units
+  * documentation changes:
+    + updates to fake_pha documentation
+    + updates to install.rst to fix incorrect links and outdated version references
+    + updated read the docs documentation to match current code
+  * bug fixes:
+    + fixed multi-panel plot issue with Bokeh backend
+
+-------------------------------------------------------------------
 Wed May  8 19:28:20 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Do not run tests in parallel to avoid random failures
