@@ -390,4 +390,12 @@
     <comment>Resubmit, clearing reviews</comment>
     <requestid>1159801</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>5fe93b29b2b3a28a16b11c61cd979004</srcmd5>
+    <version>5.15.14+kde0</version>
+    <time>1717075975</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1177517 from favogt)</comment>
+    <requestid>1177538</requestid>
+  </revision>
 </revisionlist>
