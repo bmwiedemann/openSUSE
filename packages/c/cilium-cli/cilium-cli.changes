@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Thu May 30 09:00:08 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.8:
+  * Update stable release to v0.16.7 by @michi-covalent in #2532
+  * RELEASE.md: make sure to push correct release branch by
+    @tklauser in #2534
+  * Remove cilium/hubble dependency by @michi-covalent in #2528
+  * golangci: remove deprecated go version properties by @tklauser
+    in #2536
+  * chore(deps): update softprops/action-gh-release action to
+    v2.0.5 by @renovate in #2535
+  * chore(deps): update golangci/golangci-lint-action action to
+    v5.3.0 by @renovate in #2527
+  * Display stderr when ExecInPod action fails. by @marseel in
+    #2508
+  * chore(deps): update golang docker tag to v1.22.3 by @renovate
+    in #2537
+  * chore(deps): update docker.io/library/busybox:stable-glibc
+    docker digest to 9bc27a7 by @renovate in #2538
+  * fix: Azure BYOCNI workflow by @viktor-kurchenko in #2546
+  * Capture additional clustermesh-related troubleshooting
+    information as part of sysdumps by @giorio94 in #2531
+  * Improve ClusterMesh status reporting to include KVStoreMesh
+    information and troubleshooting tips by @giorio94 in #2541
+  * chore(deps): update go to v1.22.3 (patch) by @renovate in #2542
+  * fix(deps): update module github.com/cilium/charts to
+    v0.0.0-20240507142034-8e0b9125ca4a by @renovate in #2543
+  * clustermesh: reset remote clusters configuration upon
+    disconnection by @giorio94 in #2544
+  * chore(deps): update dependency cilium/cilium to v1.15.5 by
+    @renovate in #2551
+  * Connectivity test concurrent run by @viktor-kurchenko in #2496
+  * chore(deps): update golang:1.22.3-alpine3.19 docker digest to
+    f1fe698 by @renovate in #2550
+  * chore(deps): update dependency kubernetes-sigs/kind to v0.23.0
+    by @renovate in #2547
+  * chore(deps): update docker.io/library/golang:1.22.3-alpine3.19
+    docker digest to f1fe698 by @renovate in #2554
+  * chore(deps): update all github action dependencies (patch) by
+    @renovate in #2539
+  * chore(deps): update golangci/golangci-lint-action action to v6
+    by @renovate in #2533
+  * chore(deps): update golangci/golangci-lint docker tag to
+    v1.58.1 by @renovate in #2525
+  * fix(deps): update all go dependencies main (minor) by @renovate
+    in #2556
+  * encrypt: broken IPsec algo removed by @viktor-kurchenko in
+    #2552
+  * sysdump: don't write extension twice in clustermesh debug files
+    by @giorio94 in #2557
+  * fix(deps): update module github.com/cilium/charts to
+    v0.0.0-20240517144447-a8ec8771aab8 by @renovate in #2555
+  * chore(deps): update golangci/golangci-lint docker tag to
+    v1.58.2 by @renovate in #2558
+  * fix(deps): update module helm.sh/helm/v3 to v3.15.1 by
+    @renovate in #2560
+  * Connectivity tests concurrent logger. by @viktor-kurchenko in
+    #2562
+  * chore(deps): update golangci/golangci-lint docker tag to
+    v1.59.0 by @renovate in #2563
+  * chore(deps): update docker/login-action action to v3.2.0 by
+    @renovate in #2564
+  * chore(deps): update azure/login action to v2.1.1 by @renovate
+    in #2561
+  * Prepare for v0.16.8 release by @michi-covalent in #2566
+
+-------------------------------------------------------------------
 Wed May 08 11:09:12 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.16.7:
