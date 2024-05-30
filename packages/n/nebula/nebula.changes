@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 29 21:39:44 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to version 1.9.1:
+  * Fixed a potential deadlock in GetOrHandshake
+
+-------------------------------------------------------------------
 Thu May 16 23:07:47 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - update to version 1.9.0:

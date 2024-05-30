@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1174693</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>22f0a4cd6147c5cbc77702c6d1a5c348</srcmd5>
+    <version>1.9.1</version>
+    <time>1717076019</time>
+    <user>anag+factory</user>
+    <comment>- update to version 1.9.1:
+  * Fixed a potential deadlock in GetOrHandshake (forwarded request 1177649 from rrahl0)</comment>
+    <requestid>1177650</requestid>
+  </revision>
 </revisionlist>
