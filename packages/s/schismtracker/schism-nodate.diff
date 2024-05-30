@@ -8,49 +8,19 @@ encoded happens to be the current day. That is ok, since rpmlint
 uses just a heuristic - excessive rebuilds should not actually
 be happening.
 ---
- schism/version.c |   11 +++++------
- 1 file changed, 5 insertions(+), 6 deletions(-)
+ schism/version.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: schismtracker-20200412/schism/version.c
+Index: schismtracker-20240529/schism/version.c
 ===================================================================
---- schismtracker-20200412.orig/schism/version.c
-+++ schismtracker-20200412/schism/version.c
-@@ -92,6 +92,10 @@ Information at our disposal:
+--- schismtracker-20240529.orig/schism/version.c
++++ schismtracker-20240529/schism/version.c
+@@ -52,7 +52,7 @@ static const char* top_banner_normal =
+ #if !defined(EMPTY_VERSION)
+ 	"Schism Tracker " VERSION
+ #else
+-	"Schism Tracker built " __DATE__ " " __TIME__
++	"Schism Tracker built <>"
+ #endif
+ 	;
  
- */
- 
-+/* update whenever you checkout */
-+#define __HG_DATE__ "Apr  9 2011"
-+#define __HG_TIME__ "00:00:00" /* screw this */
-+
- static int get_version_tm(struct tm *version)
- {
- 	char *ret;
-@@ -101,10 +105,6 @@ static int get_version_tm(struct tm *ver
- 	if (ret && !*ret)
- 		return 1;
- 	/* Argh. */
--	memset(version, 0, sizeof(*version));
--	ret = strptime(__DATE__, "%b %e %Y", version);
--	if (ret && !*ret)
--		return 1;
- 	/* Give up; we don't know anything. */
- 	return 0;
- }
-@@ -118,7 +118,6 @@ void ver_init(void)
- 	if (get_version_tm(&version)) {
- 		version_sec = mktime(&version);
- 	} else {
--		printf("help, I am very confused about myself\n");
- 		version_sec = epoch_sec;
- 	}
- 
-@@ -134,7 +133,7 @@ void ver_init(void)
- 			"Schism Tracker %s", ver);
- 	} else {
- 		snprintf(top_banner_normal, sizeof(top_banner_normal) - 1,
--			"Schism Tracker built %s %s", __DATE__, __TIME__);
-+			"Schism Tracker");
- 	}
- 
- 	top_banner_normal[sizeof(top_banner_normal) - 1] = '\0'; /* to be sure */

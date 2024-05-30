@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 29 17:55:33 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240529
+  * Add support for exporting songs and saving samples to FLAC
+  * Fix mouse wheel coordinates getting warped under want_fixed=1
+  * Fix some text input events causing global key inputs
+  * Fix character digraphs
+  * Fix double mouse cursor over half-width characters
+  * Fix Shift-Tab not being the same as in ImpulseTracker
+  * Fix appearance of parent directories in file browsers when
+    those directories do, in fact, not exist
+- Add 0001-build-fix-gcc-warning-for-handle_text_input-function.patch
+
+-------------------------------------------------------------------
 Sat May 25 09:10:32 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20240523
