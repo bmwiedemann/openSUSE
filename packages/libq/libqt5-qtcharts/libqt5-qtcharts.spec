@@ -19,11 +19,11 @@
 %define qt5_snapshot 1
 %define libname libQt5Charts5
 %define base_name libqt5
-%define real_version 5.15.13
-%define so_version 5.15.13
+%define real_version 5.15.14
+%define so_version 5.15.14
 %define tar_version qtcharts-everywhere-src-%{version}
 Name:           libqt5-qtcharts
-Version:        5.15.13+kde0
+Version:        5.15.14+kde0
 Release:        0
 Summary:        Qt 5 Charts Library
 License:        GPL-3.0-or-later

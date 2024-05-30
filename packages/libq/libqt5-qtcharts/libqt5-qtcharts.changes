@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 29 06:25:32 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.14+kde0, rebased upstream:
+  * Fix background drawing with fixed plot area
+  * Blacklist tst_QBarSeries::mousehovered for sles-15.4
+  * Fix audio example for macos
+  * Bump version to 5.15.14
+
+-------------------------------------------------------------------
 Tue Mar 19 09:55:36 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.13+kde0, rebased upstream:
