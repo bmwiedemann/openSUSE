@@ -738,4 +738,12 @@ depends on sr#251413</comment>
     <comment>Qt 5.15.13, untested as usual (forwarded request 1159361 from favogt)</comment>
     <requestid>1159416</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>7a97ef6ddbab129562ecc1c2cd509ec0</srcmd5>
+    <version>5.15.14+kde28</version>
+    <time>1717075960</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1177517 from favogt)</comment>
+    <requestid>1177543</requestid>
+  </revision>
 </revisionlist>

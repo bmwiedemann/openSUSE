@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 29 06:40:53 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.14+kde28, rebased upstream:
+  * Blaclist tst_qquickwidget::enterLeave for sles 15.4
+  * Blacklist tst_qquicktextedit::linkHover for sles 15.4
+  * Blaclist tst_qquicktext::contentSize for sles 15.4
+  * Fix blacklisting of tst_HoverHandler::movingItemWithHoverHandler for SLES 15.4
+  * Blacklist tst_QQuickDropArea::containsDrag_internal for sles 15.4
+  * Doc: Flatten header structure for 'Import Statements'
+  * Blacklist tst_HoverHandler::movingItemWithHoverHandler on SLES 15.4
+  * Bump version to 5.15.14
+
+-------------------------------------------------------------------
 Tue Mar 19 09:55:44 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.13+kde30, rebased upstream:
