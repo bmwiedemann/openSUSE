@@ -18,29 +18,30 @@
 
 %{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
 Name:           azote
-Version:        1.12.8
+Version:        1.12.9
 Release:        0
 Summary:        Wallpaper manager for Sway, i3 and some other WMs
 License:        GPL-3.0-only
 Group:          Productivity/Graphics/Viewers
 URL:            https://github.com/nwg-piotr/azote
 Source:         %{url}/archive/refs/tags/v%{version}.tar.gz
+BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  python3-Pillow
 BuildRequires:  python3-gobject
 BuildRequires:  python3-setuptools
+# for screen color picker on both Sway and X11
+Requires:       ImageMagick
 Requires:       feh
 Requires:       python3-Pillow
+# for alacritty.yml toolbox
+Requires:       python3-PyYAML
 Requires:       python3-Send2Trash
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       wget
 Requires:       wmctrl
 Requires:       xrandr
-# for screen color picker on both Sway and X11
-Requires:       ImageMagick
-# for alacritty.yml toolbox
-Requires:       python3-PyYAML
 BuildArch:      noarch
 
 %description
@@ -54,9 +55,9 @@ Azote is a GTK+ 3-based picture browser and a wallpaper setter, as the frontend 
 
 %install
 %python3_install
-install -D -m 0755 dist/azote %{buildroot}%{_bindir}/azote
 install -D -m 0644 dist/azote.svg %{buildroot}%{_datadir}/azote/azote.svg
 install -D -m 0644 dist/azote.desktop %{buildroot}%{_datadir}/applications/azote.desktop
+%fdupes  %{buildroot}/
 
 %files
 %license LICENSE
@@ -64,6 +65,7 @@ install -D -m 0644 dist/azote.desktop %{buildroot}%{_datadir}/applications/azote
 %{_bindir}/azote
 %{_datadir}/applications/azote.desktop
 %{_datadir}/azote/
-%{python_sitelib}/*
+%{python_sitelib}/%{name}
+%{python_sitelib}/%{name}-%{version}*-info
 
 %changelog

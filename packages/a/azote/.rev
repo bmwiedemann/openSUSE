@@ -274,4 +274,13 @@
   * Fix no such file in directory bug #189</comment>
     <requestid>1177043</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>8ffee0e00a0df65946faeb9fff366d99</srcmd5>
+    <version>1.12.9</version>
+    <time>1717075995</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.12.9:
+  * Fix broken images path</comment>
+    <requestid>1177613</requestid>
+  </revision>
 </revisionlist>
