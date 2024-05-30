@@ -33,8 +33,8 @@ Patch1:         add_wayland_dep_to_tests.patch
 Patch2:         MR-221-video-anc-add-two-new-CEA-608-caption-formats.patch
 # https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/3303
 Patch3:         gst-plugins-base-audiobasesink-gap.patch
-# PATCH-FIX-UPSTREAM gst-plugins-base-CVE-2024-4453.patch CVE-2024-4453 ZDI-24-467 ZDI-CAN-23896 bsc#1224806 qzhao@suse.com -- Prevent integer overflows and out of bounds reads when handling undefined tags.
-Patch4:         gst-plugins-base-CVE-2024-4453.patch
+# PATCH-FIX-UPSTREAM gstreamer-plugins-base-CVE-2024-4453.patch CVE-2024-4453 ZDI-24-467 ZDI-CAN-23896 bsc#1224806 qzhao@suse.com -- Prevent integer overflows and out of bounds reads when handling undefined tags.
+Patch4:         gstreamer-plugins-base-CVE-2024-4453.patch
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  cdparanoia-devel
 BuildRequires:  gcc-c++
