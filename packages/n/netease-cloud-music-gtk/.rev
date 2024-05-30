@@ -198,4 +198,20 @@
 </comment>
     <requestid>1154609</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9721a1ada6834eb78a75dd2ad6e2e82f</srcmd5>
+    <version>2.4.0</version>
+    <time>1717076033</time>
+    <user>anag+factory</user>
+    <comment>- Release version 2.4.0 
+ + Add lyrics translation.
+ + Add current lyrics highlighting.
+ + Add delete function for playlist.
+ + Add deb packaging configuration.
+ + Optimize lyrics parsing.
+ + Fix some minor bugs.
+ + Add patch(fix-dependencies.patch).
+</comment>
+    <requestid>1177687</requestid>
+  </revision>
 </revisionlist>

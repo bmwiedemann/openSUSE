@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 29 03:21:58 UTC 2024 - gmg 137 <gmg137@live.com>
+
+- Release version 2.4.0 
+ + Add lyrics translation.
+ + Add current lyrics highlighting.
+ + Add delete function for playlist.
+ + Add deb packaging configuration.
+ + Optimize lyrics parsing.
+ + Fix some minor bugs.
+ + Add patch(fix-dependencies.patch).
+
+-------------------------------------------------------------------
 Mon Mar  4 08:49:54 UTC 2024 - gmg 137 <gmg137@live.com>
 
 - Release version 2.3.1

@@ -20,14 +20,15 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 %define _lto_cflags %{nil}
 Name:           netease-cloud-music-gtk
-Version:        2.3.1
+Version:        2.4.0
 Release:        0
 Summary:        Linux 平台下基于 Rust + GTK4 开发的网易云音乐播放器
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://github.com/gmg137/netease-cloud-music-gtk
-Source:         %{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
+Patch1:         fix-dependencies.patch
 
 BuildRequires:  cargo-packaging
 BuildRequires:  git
@@ -61,13 +62,14 @@ netease-cloud-music-gtk 是基于 Rust + GTK4 开发的网易云音乐播放器�
 
 %prep
 %setup -q -a1
+%autopatch -p1
 mkdir .cargo
-cat >.cargo/config <<EOF
+cat >.cargo/config.toml <<EOF
 [source.crates-io]
 registry = 'https://github.com/rust-lang/crates.io-index'
 replace-with = 'vendored-sources'
 [source.vendored-sources]
-directory = './vendor'
+directory = 'vendor'
 EOF
 
 %build
