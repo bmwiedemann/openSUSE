@@ -544,6 +544,8 @@
     <package name="glibc-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="glibc-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="glibc-extra" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="glibc-gconv-modules-extra" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="glibc-gconv-modules-extra-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="glibc-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="glibc-locale" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="glibc-locale-base" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
