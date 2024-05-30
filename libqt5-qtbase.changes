@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Wed May 29 06:25:15 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.14+kde140, rebased upstream:
+  * xcb: Avoid repeatedly registering xsettings callbacks
+  * Opt out of standard library memory_resource on macOS < 14 and iOS < 17
+  * QPainter: fix assert when drawing bitmaps at very near to .5 coord
+  * XCB: Unset the connection's mousePressWindow if it's this window
+  * SQL/ODBC: Pass correct length to SQLColAttribute()
+  * qxkbcommon: fix isKeypad
+  * QObjectPrivate::Signal: initialize all members
+  * gui: fix build against gcc-14 (-Werror=calloc-transposed-args)
+  * QTest::WatchDog: fix missing timeout resets on test function change
+  * tst_bench_QCryptographicHash: add benchmarks for QMessageAuthenticationCode
+  * Hsts: match header names case insensitively
+  * Blacklist tst_NetworkSelfTest::smbServer on openSUSE 15.4
+  * Blacklist tst_QGlyphRun::drawRightToLeft on openSUSE 15.4
+  * Match deadcode elimination with cpu feature check
+  * Update public suffix list for QUrl/QtNetwork
+  * QProcess: remove the note that it freezes threads on QNX
+  * Update public suffix list for QUrl/QtNetwork
+  * QNAM: Fix double-connect for manual redirect handling
+  * Android: fix build error for Qt 5.15 with NDK r24+
+  * Bump tested macOS SDK to version 13
+  * Darwin: Explicitly link to IOKit, as used by QSysInfo::machineUniqueId()
+  * Update Copyright year to 2023
+  * SQLite: Update SQLite to v3.41.2
+  * Android: remove getRootWindowInsets
+  * Blacklist tst_QItemDelegate::editorKeyPress for SLES 15.4
+  * BLACKLIST tst_QListView::internalDragDropMove for SLES 15.4
+  * Blacklist tst_QWindow:testInputEvents on SLES 15.4
+  * Blacklist tst_gestures tests for SLES 15.4
+  * Blacklist tst_QOpenGLWidget::stackWidgetOpaqueChildIsVisible for SLES 15.4
+  * Blacklist tst_qwidget::widgetAt and tst_qwidget_window::tst_dnd_events
+  * BLACKLIST: tst_QApplication::sendEventsOnProcessEvents for SLES 15.4
+  * Blacklist: tst_QGraphicsAnchorLayout::layoutDirection for SLES 15.4
+  * Doc: Fix typo
+  * Android: allow using string based versions in compileSdkVersion
+  * QListView: No-op, when a list item is dropped directly behind itself
+  * Android: don't break when finding opengl plugin
+  * Change android target SDK version to 31
+  * git: ignore ._* files
+  * Android: fix manual deployment with ANDROID_DEPLOYMENT_DEPENDENCIES
+  * QMessageAuthenticationCode: fix result() non-re-entrancy
+  * QMessageAuthenticationCode: Extract Methods finalize{,Unchecked}() from result()
+  * tst_bench_QCryptographicHash: use QMetaEnum trick
+  * tst_bench_QCryptographicHash: port to QTest::addRow()
+  * tst_qtconcurrentrun: fix UB (uninit'ed values)
+  * QComboBox: Disable items marked as disabled in native popups
+  * tst_QSslSocket_onDemandCertificates_member: Blacklist & debug
+  * QSQL/ODBC: fix regression (trailing NUL)
+  * SQLite: Update SQLite to v3.41.1
+  * Android: demistify the "No platform plugin" androiddeployqt error
+  * QTest::WatchDog: Extract Method setExpectation()
+  * Tidy up qtestcase.cpp's WatchDog
+  * Fix thread-sanitizer warning about a data race
+  * macOS: Guard text input client from destroyed QCocoaWindow
+  * Accept full-width parentheses in removeMnemonics()
+  * Fix listed files for sha3_keccak
+  * Fix overflow in SHA-3/Keccak
+  * tst_QCryptographicHash: Extract Method ensureLargeData()
+  * QCryptographicHash: fix UB (data race on concurrent result()) [2nd try]
+  * QVarLengthArray: fix UBs in insert(it, n, v) ([basic.life], invariants)
+  * Add q_points_into_range to container utilities
+  * qstrncpy(): document that we don't implement strncpy() fill-all-[dst,len)
+  * QThread/Unix: fix compilation with C++11
+  * QDBusError: don't refer to a QT_NAMESPACE'ed get() as ::get()
+  * Update to Freetype 2.13.0
+  * Android: fix and document QStandardPaths behavior on different versions
+  * tst_qvarlengtharray: add test for QVLA(n) ctor
+  * Android: avoid duplicate paths from QStandardPaths::standardLocations()
+  * Android: document limitation for QFile::copy() operation for content uri
+  * Bump version to 5.15.14
+  * SQLite: Update SQLite to v3.41.0
+  * tst_QMessageAuthenticationCode: check that setKey() reset()s
+  * Avoid resetting CMAKE_AUTOMOC_MACRO_NAMES
+  * Set GenerateDebugInformation to true in vcproj if at least /DEBUG is set
+  * QCryptographicHash: add a mutex to writing to the results
+  * SQL/OCI: Correctly calculate utc offset string when icu is not available
+  * QVarLengthArray: Extract Method QtPrivate::q_rotate()
+  * Specify Android architecture in gradle files
+  * Logging: fix crash when decoding a symbol that isn't a function
+  * qstrncpy: NUL-terminate even when src is nullptr
+  * Blacklist a test in the GUI form of tst_QTimer on ubuntu-20.04
+  * Blacklist tst_QTimer::zeroTimer in its Gui form
+  * Text: fix Soft hyphen rendering in QTextLayout::glyphRuns()
+
+-------------------------------------------------------------------
 Tue Mar 19 09:55:28 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.13+kde138, rebased upstream:

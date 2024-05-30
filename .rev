@@ -2629,4 +2629,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.13, untested as usual (forwarded request 1159361 from favogt)</comment>
     <requestid>1159411</requestid>
   </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>3d1819a381b29e9b0145ada8674f83f3</srcmd5>
+    <version>5.15.14+kde140</version>
+    <time>1717075951</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1177517 from favogt)</comment>
+    <requestid>1177539</requestid>
+  </revision>
 </revisionlist>
