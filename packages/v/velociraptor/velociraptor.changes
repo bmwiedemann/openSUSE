@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 28 16:45:51 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Patches changes:
+  * Change CVE-2024-28849-follow-redirects-drop-proxy-authorization.patch
+    to update the follow-redirects package instead of patching directly.
+  * Added CVE-2022-25883-npm-watch-semver-deps.patch (bsc#1212572)
+- Add a package-lock.json to the package
+
+-------------------------------------------------------------------
 Sat Apr 27 16:11:14 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Fix group(velociraptor) dependency for SLE 15 SP3
