@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 30 09:01:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.180.0:
+  * Add release notes for v0.180.0 (#7782)
+  * [Pod Identity Associations] Don't allow
+    `--create-service-account` flag when `--config-file` is set
+    (#7789)
+  * Update json schema (#7788)
+  * Add option to create service account for pod identities which
+    defaults to `false` (#7784)
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Fri May 24 07:49:46 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.179.0:
