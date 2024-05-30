@@ -16,9 +16,9 @@
 #
 
 
-%define libver  4_6_6
+%define libver  4_7_0
 Name:           rssguard
-Version:        4.6.6
+Version:        4.7.0
 Release:        0
 Summary:        RSS/ATOM/RDF feed reader
 Group:          Productivity/Networking/News/Clients
@@ -26,8 +26,10 @@ License:        AGPL-3.0-or-later AND GPL-3.0-only
 URL:            https://github.com/martinrotter/rssguard
 Source0:        https://github.com/martinrotter/rssguard/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.changes
-# PATCH-FIX-OPENSUSE rssguard-4.6.6-add_library_version.patch aloisio@gmx.com -- add version to shared library
-Patch0:         rssguard-4.6.6-add_library_version.patch
+# PATCH-FIX-UPSTREAM https://github.com/martinrotter/rssguard/pull/1412 -- Fix plugin loading
+Patch0:         fix_plugin_loading.patch
+# PATCH-FIX-OPENSUSE rssguard-4.7.0-add_library_version.patch aloisio@gmx.com -- add version to shared library
+Patch1:         rssguard-4.7.0-add_library_version.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -94,10 +96,12 @@ mkdir -pv %{buildroot}%{_datadir}/autostart
 %dir %{_datadir}/applications
 %dir %{_datadir}/autostart
 %dir %{_datadir}/metainfo
+%dir %{_libdir}/%{name}
 %{_bindir}/%{name}
 %{_datadir}/applications/io.github.martinrotter.%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/io.github.martinrotter.%{name}.png
 %{_datadir}/metainfo/io.github.martinrotter.%{name}.metainfo.xml
+%{_libdir}/%{name}/lib%{name}-*.so
 
 %files -n librssguard-devel
 %{_includedir}/lib%{name}
