@@ -6786,4 +6786,22 @@
     Undefined behavior in ShmemCharMapHashEntry()</comment>
     <requestid>1175472</requestid>
   </revision>
+  <revision rev="428" vrev="1">
+    <srcmd5>cf138ecfe120105fe59dfbe01d60784e</srcmd5>
+    <version>126.0.1</version>
+    <time>1717075930</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Firefox 126.0.1
+  * Fixed an issue with reading tagged PDF documents in a screen reader
+    bmo#1894849
+  * Fixed not displaying localized text for non-en-US locales in the
+    Crash Reporter dialog box on macOS. (bmo#1896097)
+  * Fixed issues with drag-and-drop functionality on Linux. (bmo#1897115)
+  * Fixed an issue causing high GPU memory usage on certain versions
+    of AMD cards. (bmo#1897006)
+
+- Backport upstream patches to fix build on aarch64 - boo#1225460
+  * mozilla-bmo1886378.patch</comment>
+    <requestid>1177453</requestid>
+  </revision>
 </revisionlist>

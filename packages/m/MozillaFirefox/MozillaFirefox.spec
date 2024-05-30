@@ -29,8 +29,8 @@
 # major 69
 # mainver %%major.99
 %define major          126
-%define mainver        %major.0
-%define orig_version   126.0
+%define mainver        %major.0.1
+%define orig_version   126.0.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -229,6 +229,7 @@ Patch21:        svg-rendering.patch
 Patch22:        mozilla-partial-revert-1768632.patch
 Patch23:        mozilla-rust-disable-future-incompat.patch
 Patch24:        mozilla-bmo1822730.patch
+Patch25:        mozilla-bmo1886378.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed May 29 06:05:07 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 126.0.1
+  * Fixed an issue with reading tagged PDF documents in a screen reader
+    bmo#1894849
+  * Fixed not displaying localized text for non-en-US locales in the
+    Crash Reporter dialog box on macOS. (bmo#1896097)
+  * Fixed issues with drag-and-drop functionality on Linux. (bmo#1897115)
+  * Fixed an issue causing high GPU memory usage on certain versions
+    of AMD cards. (bmo#1897006)
+
+-------------------------------------------------------------------
+Tue May 28 15:05:14 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Backport upstream patches to fix build on aarch64 - boo#1225460
+  * mozilla-bmo1886378.patch
+
+-------------------------------------------------------------------
 Wed May 15 08:46:30 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 126.0
