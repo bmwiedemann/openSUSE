@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 30 02:47:22 UTC 2024 - william.brown@suse.com
+
+- Update to version 1.2.2~git0.c4153c9:
+  * Resolve incorrect handling of tokens in logout flow (#2795) (#2803)
+
+-------------------------------------------------------------------
 Sat May 18 03:11:05 UTC 2024 - william.brown@suse.com
 
 - Update to version 1.2.1~git0.ba82b1a:
