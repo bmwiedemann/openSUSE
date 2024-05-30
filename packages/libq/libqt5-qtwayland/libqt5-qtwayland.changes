@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 29 06:50:03 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.14+kde57, rebased upstream:
+  * Move internal function to private class
+  * Send correct modifier state for non-windowsystem key events
+  * Bump version to 5.15.14
+  * Fix detection of dmabuf sharing support
+
+-------------------------------------------------------------------
 Tue Mar 19 10:00:00 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.13+kde60, rebased upstream:
