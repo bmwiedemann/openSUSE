@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 29 13:21:52 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Cherry-pick upstream patch to fix build with GCC 14
+  * https://github.com/shapely/shapely/pull/1945.patch
+
+-------------------------------------------------------------------
 Sun May  5 11:01:36 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.0.4
