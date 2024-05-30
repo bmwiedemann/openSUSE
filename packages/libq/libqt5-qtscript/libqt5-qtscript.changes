@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed May 29 06:25:18 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 5.15.17:
+  * Bump version to 5.15.17
+
+-------------------------------------------------------------------
+Tue Mar 19 09:59:31 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.16+kde0, rebased upstream:
+  * No code changes
+- Commits dropped by the rebase:
+  * Bump version to 5.15.16
+  * Bump version to 5.15.15
+  * Bump version to 5.15.14
+  * Bump version to 5.15.13
+  * Bump version to 5.15.12
+  * Bump version to 5.15.11
+  * Bump version to 5.15.10
+
+-------------------------------------------------------------------
 Fri Dec 29 15:47:58 UTC 2023 - fvogt@suse.com
 
 - Update to version 5.15.16:

@@ -471,4 +471,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.12 (+ some .16), untested (forwarded request 1135706 from favogt)</comment>
     <requestid>1136117</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>a3ee79ac53f7b730c1f40daefabbbc9c</srcmd5>
+    <version>5.15.17</version>
+    <time>1717075990</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1177517 from favogt)</comment>
+    <requestid>1177557</requestid>
+  </revision>
 </revisionlist>
