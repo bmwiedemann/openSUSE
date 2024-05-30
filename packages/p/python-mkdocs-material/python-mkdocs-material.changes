@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 30 10:55:49 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.25:
+  * Fixed #7209 <https://github.com/squidfunk/mkdocs-material/issues/7209>:
+    Tags plugin crashing on numeric tags 
+
+-------------------------------------------------------------------
 Mon May 20 17:19:10 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.5.24:
