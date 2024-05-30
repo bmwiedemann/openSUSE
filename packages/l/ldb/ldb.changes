@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 16 11:34:15 UTC 2024 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 2.9.0
+  * documentation fixes
+  * build with Python 3.12 (bso#15513)
+  * a lot of additional error checking in the python bindings
+  * minor code fixes
+  * Update patch ldb-python3.5-fix-soabi_name.patch
+
+-------------------------------------------------------------------
 Tue Sep 26 09:52:58 UTC 2023 - Noel Power <nopower@suse.com>
 
 -  Update to 2.8.0

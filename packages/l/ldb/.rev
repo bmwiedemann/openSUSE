@@ -657,4 +657,17 @@ x86-64 when building with python 3.5.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1114970</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>484d8d992782fda8ddab0ec858b12fd5</srcmd5>
+    <version>2.9.0</version>
+    <time>1717075949</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.9.0
+  * documentation fixes
+  * build with Python 3.12 (bso#15513)
+  * a lot of additional error checking in the python bindings
+  * minor code fixes
+  * Update patch ldb-python3.5-fix-soabi_name.patch</comment>
+    <requestid>1177472</requestid>
+  </revision>
 </revisionlist>
