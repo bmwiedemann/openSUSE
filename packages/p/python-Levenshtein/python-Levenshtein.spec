@@ -18,15 +18,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Levenshtein
-Version:        0.12.0
+Version:        0.25.1
 Release:        0
 Summary:        Python extension computing string distances and similarities
 License:        GPL-2.0-or-later
-URL:            https://github.com/ztane/python-Levenshtein/
-Source0:        https://files.pythonhosted.org/packages/source/p/python-Levenshtein/python-Levenshtein-%{version}.tar.gz
+URL:            https://github.com/rapidfuzz/Levenshtein
+Source:         https://files.pythonhosted.org/packages/source/L/Levenshtein/Levenshtein-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module scikit-build}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
+BuildRequires:  ninja
 BuildRequires:  python-rpm-macros
 %python_subpackages
 
@@ -42,19 +48,18 @@ computation of
 It supports both normal and Unicode strings.
 
 %prep
-%setup -q
+%setup -q -n Levenshtein-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-rm -v %{buildroot}%{_libdir}/python*/*/Levenshtein/_levenshtein.{c,h}
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
 %license COPYING
-%doc HISTORY.txt README.rst NEWS
-%{python_sitearch}/*
+%doc HISTORY.md README.md
+%{python_sitearch}/
 
 %changelog

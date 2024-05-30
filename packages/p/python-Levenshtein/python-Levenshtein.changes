@@ -1,4 +1,130 @@
 -------------------------------------------------------------------
+Tue May 28 15:13:46 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.25.1
+  * Fix potentially incorrect results of `jaro_winkler`
+    when using high prefix weights
+- from version 0.25.0
+  * Improve type hints
+- from version 0.24.0
+  * Upgrade ``rapidfuzz-cpp`` to ``v3.0.0``
+  - Drop support for Python 3.7
+- from version 0.23.0
+  * Added keyword argument `pad` to Hamming distance. This controls
+    whether sequences of different length should be padded or lead
+    to a `ValueError`
+  * Upgrade to `Cython==3.0.3`
+- from version 0.22.0
+  * Add support for Python 3.12
+  * Drop support for Python 3.6
+  * Add wheels for windows arm64
+- from version 0.21.1
+  * Upgrade ``rapidfuzz-cpp`` to ``v2.0.0``
+- from version 0.21.0
+  * Relax dependency requirement on ``rapidfuzz``
+- from version 0.20.9
+  * Fix function signature of `get_requires_for_build_wheel`
+- from version 0.20.8
+  - Type hints for `editops`/`opcoded`/`matching_blocks` did not allow any
+    hashable sequence
+- from version 0.20.7
+  - Type hints did not get installed
+- from version 0.20.6
+  - Fix incorrect result normalization in `setratio` and `seqratio`
+- from version 0.20.5
+  * Fix support for cmake versions below 3.17
+  * Fix version requirement for `rapidfuzz-cpp` when building
+    against a previously installed version
+- from version 0.20.4
+  * Modernize cmake build to fix most conda-forge builds
+- from version 0.20.3
+  * Added support for Python 3.11
+- from version 0.20.2
+  * Fix matching_blocks conversion for empty editops
+  * Added in-tree build backend to install cmake and ninja only when
+    it is not installed yet and only when wheels are available
+- from version 0.20.1
+  * Fix broken matching_blocks conversion
+- from version 0.20.0
+  * Use `matching_blocks`/`apply`/`remove_subsequence`/`inverse`
+    implementation from RapidFuzz
+  * Stop adding data to wheels
+  * Fix segmentation fault on some invalid editop sequences in subtract_edit
+  * Detect duplicated entries in editops validation
+- from version 0.19.3
+  * Add musllinux wheels
+- from version 0.19.2
+  * Add missing type hints
+- from version 0.19.1
+  * Add type hints
+- from version 0.19.0
+  * Implement all Python wrappers mostly with cython
+  * Replace usage of deprecated Python APIs
+  * Fix behavior of median and median_improve
+- from version 0.18.2
+  * Allow installation from system installed versions of `rapidfuzz-cpp`
+- from version 0.18.1
+  * Indel.normalized_similarity was broken in RapidFuzz v2.0.0 (see #20)
+- from version 0.18.0
+  * Fixed memory leak in error path of setratio
+  * Fixed out of bound reads due to uninitialized variable in median
+    * e.g. quickmedian(["test", "teste"], [0, 0]) caused out of bound reads
+  * Use a faster editops implementation provided by RapidFuzz
+  * Reduce code duplication
+  * Reuse implementations from rapidfuzz-cpp
+  * Transition to scikit-build
+- from version 0.17.0
+  * Removed support for Python 3.5
+- from version 0.16.1
+  * Add support for RapidFuzz v1.9.*
+- from version 0.16.0
+  * Add support for Python 3.10
+- from version 0.15.0
+  * Update SequenceMatcher interface to support the autojunk parameter
+- from version 0.14.0
+  * Drop Python 2 support
+  * Fixed free of non heap object due caused by zero offset on a heap object
+  * Fixed warnings about missing type conversions
+  * Fix segmentation fault in subtract_edit when incorrect input types are used
+  * Fixed unchecked memory allocations
+  * Implement distance/ratio/hamming/jaro/jaro_winkler
+    using rapidfuzz instead of providing a own implementation
+  * Implement Wrapper for inverse/editops/opcodes/matching_blocks/subtract_edit/apply_edit
+    using Cython to simplify support for new Python versions
+- from version 0.13.0
+  * Maintainership passed to Max Bachmann
+  * Use faster bitparallel implementations for distance and ratio
+  * Avoid string copies in distance, ratio and hamming
+  * Fix usage of deprecated Unicode APIs in distance, ratio and hamming
+  * Fixed incorrect window size inside Jaro and Jaro-Winkler implementation
+  * Fixed incorrect exception messages
+  * Removed unused functions and compiler specific hacks
+  * Split the Python and C implementations to simplify building of
+    the C library
+  * Fixed multiple bugs which prevented the use as C library, since some functions
+    only got defined when compiling for Python
+  * Build and deliver python wheels for the library
+  * Fixed incorrect allocation size in lev_editops_matching_blocks and
+    lev_opcodes_matching_blocks
+- from version 0.12.1
+  * Fixed handling of numerous possible wraparounds in calculating the size
+    of memory allocations; incorrect handling of which could cause denial
+    of service or even possible remote code execution in previous versions
+    of the library.
+- Remove NEWS file from %files section
+- Rename HISTORY.txt to HISTORY.md in %files section
+- Rename README.rst to README.md in %files section
+- Switch build system from setuptools to pyproject.toml
+  + Add python-pip and python-wheel to BuildRequires
+  + Replace %python_build with %pyproject_wheel
+  + Replace %python_install with %pyproject_install
+- Switch to new upstream project Levenshtein
+  * Adjust upstream source name in spec file
+  * Update URL to GitHub project
+  * Update Source URL for upstream tarball
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Sun Feb  4 21:46:41 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - enable %{?sle15_python_module_pythons} 
