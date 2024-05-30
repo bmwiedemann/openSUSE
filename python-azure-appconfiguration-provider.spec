@@ -18,24 +18,22 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-appconfiguration-provider
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Microsoft App Configuration Provider Library for Python
 License:        MIT
 URL:            https://github.com/Azure/azure-sdk-for-python/tree/main/sdk
 Source:         https://files.pythonhosted.org/packages/source/a/azure-appconfiguration-provider/azure-appconfiguration-provider-%{version}.tar.gz
-BuildRequires:  %{python_module azure-core >= 1.24.0}
+BuildRequires:  %{python_module azure-core >= 1.28.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
-BuildRequires:  %{python_module isodate >= 0.6.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.6.21
 Requires:       (python-azure-appconfiguration >= 1.4.0 with python-azure-appconfiguration < 2.0.0)
-Requires:       (python-azure-core >= 1.25.0 with python-azure-core < 2.0.0)
+Requires:       (python-azure-core >= 1.28.0 with python-azure-core < 2.0.0)
 Requires:       (python-azure-keyvault-secrets >= 4.3.0 with python-azure-keyvault-secrets < 5.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
