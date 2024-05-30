@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 29 19:35:33 UTC 2024 - david.mulder@suse.com
+
+- Update to version 0.4.1+git.0.41dd0dc:
+  * Version 0.4.1
+  * Use latest msal with MFA fixes
+  * PhoneAppNotification is not a cred request algorithm
+  * The polling_interval is in milliseconds, not seconds
+  * OneWaySMS is additionally a valid OTP
+  * Relicensing as GPL3, as SSSD source inclusion requires
+
+-------------------------------------------------------------------
 Wed May 22 22:10:10 UTC 2024 - david.mulder@suse.com
 
 - Update to version 0.4.0+git.4.63e3704:
