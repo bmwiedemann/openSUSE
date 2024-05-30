@@ -249,4 +249,12 @@
     (boo#1224782, CVE-2024-36048) (forwarded request 1177078 from favogt)</comment>
     <requestid>1177087</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>39d047d62b082122134fc9ee1ac6cfc5</srcmd5>
+    <version>5.15.14+kde1</version>
+    <time>1717075980</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1177517 from favogt)</comment>
+    <requestid>1177551</requestid>
+  </revision>
 </revisionlist>
