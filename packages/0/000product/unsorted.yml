@@ -7080,7 +7080,6 @@ unsorted:
   - glibc-html 
   - glibc-i18ndata 
   - glibc-info 
-  - glibc-locale-base-32bit 
   - glibc-profile 
   - glibc-profile-32bit 
   - glibc-utils 
@@ -8746,9 +8745,12 @@ unsorted:
   - inspectrum 
   - inst-source-utils 
   - install-initrd-MicroOS 
+  - install-initrd-Slowroll 
   - install-initrd-openSUSE 
   - installation-images-MicroOS 
+  - installation-images-Slowroll 
   - installation-images-debuginfodeps-MicroOS 
+  - installation-images-debuginfodeps-Slowroll 
   - installation-images-debuginfodeps-openSUSE 
   - installation-images-openSUSE 
   - instlux 
@@ -15683,7 +15685,7 @@ unsorted:
   - librsb0 
   - librseq-devel 
   - librseq0 
-  - librssguard-4_6_6 
+  - librssguard-4_7_0 
   - librssguard-devel 
   - librsvg-2-2-32bit 
   - librsvg-devel 
@@ -19181,8 +19183,6 @@ unsorted:
   - nagios-theme-switcher 
   - nagios-www 
   - nagios-www-dch 
-  - nailgun 
-  - nailgun-javadoc 
   - namdhinggo-fonts 
   - nano-icinga2 
   - nano-plugin-conky 
@@ -27179,6 +27179,7 @@ unsorted:
   - python310-xattr 
   - python310-xcffib 
   - python310-xdg 
+  - python310-xdg-base-dirs 
   - python310-xdoctest 
   - python310-xerox 
   - python310-xhtml2pdf 
@@ -30651,6 +30652,7 @@ unsorted:
   - python311-xattr 
   - python311-xcffib 
   - python311-xdg 
+  - python311-xdg-base-dirs 
   - python311-xdoctest 
   - python311-xerox 
   - python311-xhtml2pdf 
@@ -34232,6 +34234,7 @@ unsorted:
   - python312-xattr 
   - python312-xcffib 
   - python312-xdg 
+  - python312-xdg-base-dirs 
   - python312-xdoctest 
   - python312-xerox 
   - python312-xhtml2pdf 
@@ -36259,7 +36262,9 @@ unsorted:
   - skelcd-control-openSUSE-Slowroll 
   - skelcd-fallbackrepo-openSUSE 
   - skelcd-installer-MicroOS 
+  - skelcd-installer-Slowroll 
   - skelcd-installer-net-MicroOS 
+  - skelcd-installer-net-Slowroll 
   - skelcd-installer-net-openSUSE 
   - skelcd-installer-openSUSE 
   - skelcd-openSUSE 
@@ -46263,6 +46268,7 @@ unsorted:
   - texworks-plugin-lua 
   - texworks-plugin-python 
   - tftpboot-installation-common 
+  - tftpboot-installation-openSUSE-Tumbleweed-Slowroll-x86_64 
   - tftpboot-installation-openSUSE-Tumbleweed-x86_64 
   - tgt 
   - the_silver_searcher 
