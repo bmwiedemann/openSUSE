@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 29 06:25:40 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.14+kde3, rebased upstream:
+  * Android-example: add missing properties in AndroidManifest.xml
+  * Bump version to 5.15.14
+
+-------------------------------------------------------------------
 Tue Mar 19 09:55:38 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.13+kde4, rebased upstream:

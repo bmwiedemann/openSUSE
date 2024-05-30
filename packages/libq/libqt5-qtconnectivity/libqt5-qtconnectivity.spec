@@ -22,11 +22,11 @@
 %define qt5_snapshot 1
 %define libname libQt5Bluetooth5
 %define base_name libqt5
-%define real_version 5.15.13
-%define so_version 5.15.13
+%define real_version 5.15.14
+%define so_version 5.15.14
 %define tar_version qtconnectivity-everywhere-src-%{version}
 Name:           libqt5-qtconnectivity
-Version:        5.15.13+kde4
+Version:        5.15.14+kde3
 Release:        0
 Summary:        Qt 5 Nfc Addon
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
