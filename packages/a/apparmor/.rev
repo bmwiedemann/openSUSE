@@ -2816,4 +2816,12 @@ This SR adds two more fixes. Especially teardown-unconfined.diff makes this SR a
     <comment>- Exclude the crun profile in addition to runc (forwarded request 1177448 from favogt)</comment>
     <requestid>1177466</requestid>
   </revision>
+  <revision rev="210" vrev="5">
+    <srcmd5>c88dfbba06d9a6acaf9b0cffbcbaae6a</srcmd5>
+    <version>4.0.1</version>
+    <time>1717075888</time>
+    <user>anag+factory</user>
+    <comment>- Also exclude podman profile - boo#1225608 (forwarded request 1177727 from Guillaume_G)</comment>
+    <requestid>1177757</requestid>
+  </revision>
 </revisionlist>

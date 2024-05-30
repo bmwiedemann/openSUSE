@@ -628,9 +628,10 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %config(noreplace) %{_sysconfdir}/apparmor.d/ch-run
 %config(noreplace) %{_sysconfdir}/apparmor.d/chrome
 %config(noreplace) %{_sysconfdir}/apparmor.d/code
-# exclude crun and runc profiles until the updated container engines (including updated profile with "signal peer=runc") has arrived
+# exclude crun, podman and runc profiles until the updated container engines (including updated profile with "signal peer=runc") has arrived
 #config(noreplace) %{_sysconfdir}/apparmor.d/crun
 %exclude %{_sysconfdir}/apparmor.d/crun
+%exclude %{_sysconfdir}/apparmor.d/podman
 %exclude %{_sysconfdir}/apparmor.d/runc
 %config(noreplace) %{_sysconfdir}/apparmor.d/devhelp
 %config(noreplace) %{_sysconfdir}/apparmor.d/element-desktop
@@ -668,7 +669,6 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %config(noreplace) %{_sysconfdir}/apparmor.d/pageedit
 %config(noreplace) %{_sysconfdir}/apparmor.d/plasmashell
 %config(noreplace) %{_sysconfdir}/apparmor.d/php-fpm
-%config(noreplace) %{_sysconfdir}/apparmor.d/podman
 %config(noreplace) %{_sysconfdir}/apparmor.d/polypane
 %config(noreplace) %{_sysconfdir}/apparmor.d/privacybrowser
 %config(noreplace) %{_sysconfdir}/apparmor.d/qcam
