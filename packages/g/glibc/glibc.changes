@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 28 07:27:01 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Obsolete glibc-locale-base-<targettype> from glibc-<targettype>
+
+-------------------------------------------------------------------
+Tue May 21 09:44:46 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Move essential (Latin-1 and UTF based) gconv modules to main glibc
+  package, other modules to new package glibc-gconv-modules-extra
+
+-------------------------------------------------------------------
 Mon May 13 09:45:36 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - glibc-CVE-2024-33599-nscd-Stack-based-buffer-overflow-in-n.patch:

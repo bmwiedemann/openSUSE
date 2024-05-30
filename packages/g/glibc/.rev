@@ -3055,4 +3055,12 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   #31686)</comment>
     <requestid>1175454</requestid>
   </revision>
+  <revision rev="292" vrev="8">
+    <srcmd5>0a1c8faa91a8bb788b40d7f46c084d17</srcmd5>
+    <version>2.39</version>
+    <time>1717075923</time>
+    <user>anag+factory</user>
+    <comment>- Obsolete glibc-locale-base-&lt;targettype&gt; from glibc-&lt;targettype&gt; (forwarded request 1177460 from Andreas_Schwab)</comment>
+    <requestid>1177461</requestid>
+  </revision>
 </revisionlist>

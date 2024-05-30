@@ -204,6 +204,7 @@ Provides:       ld-linux.so.3(GLIBC_2.4)
 %endif
 Requires(pre):  filesystem
 Recommends:     glibc-extra
+Recommends:     glibc-gconv-modules-extra
 Provides:       rtld(GNU_HASH)
 %endif
 %if %{build_utils}
@@ -408,7 +409,6 @@ created.
 Summary:        en_US Locale Data for Localized Programs
 License:        GPL-2.0-or-later AND MIT AND LGPL-2.1-or-later
 Group:          System/Libraries
-Requires(post): /bin/cat
 Requires:       glibc = %{version}
 
 %description locale-base
@@ -444,6 +444,17 @@ Obsoletes:      unscd <= 0.48
 %description -n nscd
 Nscd caches name service lookups and can dramatically improve
 performance with NIS, NIS+, and LDAP.
+
+%package gconv-modules-extra
+Summary:        Non-essential gconv modules
+License:        LGPL-2.1-or-later
+Group:          System/Libraries
+Requires:       glibc = %{version}
+Provides:       glibc-locale-base:%{_libdir}/gconv/BIG5.so
+
+%description gconv-modules-extra
+Modules for use by the iconv facility, to support encodings other than
+Latin-1 and UTF based.
 
 %package profile
 Summary:        Libc Profiling and Debugging Versions
@@ -1162,14 +1173,14 @@ if posix.access("%{rootsbindir}/ldconfig", "x") then
   exec("%{rootsbindir}/ldconfig", "-X")
 end
 if posix.utime("%{_libdir}/gconv/gconv-modules.cache") then
-  exec("/usr/sbin/iconvconfig", "-o", "%{_libdir}/gconv/gconv-modules.cache",
+  exec("%{_sbindir}/iconvconfig", "-o", "%{_libdir}/gconv/gconv-modules.cache",
        "--nostdlib", "%{_libdir}/gconv")
 end
 
 %postun -p %{rootsbindir}/ldconfig
 
-%post locale-base
-/usr/sbin/iconvconfig
+%post gconv-modules-extra -p %{_sbindir}/iconvconfig
+%postun gconv-modules-extra -p %{_sbindir}/iconvconfig
 
 %post info
 %install_info --info-dir=%{_infodir} %{_infodir}/libc.info.gz
@@ -1265,6 +1276,46 @@ exit 0
 %dir %attr(0755,root,root) %{_libexecdir}/getconf
 %{_libexecdir}/getconf/*
 %{_sbindir}/iconvconfig
+%dir %{_libdir}/gconv
+%{_libdir}/gconv/ANSI_X3.110.so
+%{_libdir}/gconv/CP1252.so
+%{_libdir}/gconv/ISO8859-1.so
+%{_libdir}/gconv/ISO8859-15.so
+%{_libdir}/gconv/UNICODE.so
+%{_libdir}/gconv/UTF-16.so
+%{_libdir}/gconv/UTF-32.so
+%{_libdir}/gconv/UTF-7.so
+%{_libdir}/gconv/gconv-modules
+%dir %{_libdir}/gconv/gconv-modules.d
+%ifarch s390x
+%{_libdir}/gconv/gconv-modules.d/gconv-modules-s390.conf
+%{_libdir}/gconv/ISO-8859-1_CP037_Z900.so
+%{_libdir}/gconv/UTF8_UTF32_Z9.so
+%{_libdir}/gconv/UTF16_UTF32_Z9.so
+%{_libdir}/gconv/UTF8_UTF16_Z9.so
+%endif
+%attr(0644,root,root) %verify(not md5 size mtime) %ghost %{_libdir}/gconv/gconv-modules.cache
+
+%files gconv-modules-extra
+%dir %{_libdir}/gconv
+%dir %{_libdir}/gconv/gconv-modules.d
+%{_libdir}/gconv/gconv-modules.d/*.conf
+%{_libdir}/gconv/*.so
+%exclude %{_libdir}/gconv/ANSI_X3.110.so
+%exclude %{_libdir}/gconv/CP1252.so
+%exclude %{_libdir}/gconv/ISO8859-1.so
+%exclude %{_libdir}/gconv/ISO8859-15.so
+%exclude %{_libdir}/gconv/UNICODE.so
+%exclude %{_libdir}/gconv/UTF-16.so
+%exclude %{_libdir}/gconv/UTF-32.so
+%exclude %{_libdir}/gconv/UTF-7.so
+%ifarch s390x
+%exclude %{_libdir}/gconv/gconv-modules.d/gconv-modules-s390.conf
+%exclude %{_libdir}/gconv/ISO-8859-1_CP037_Z900.so
+%exclude %{_libdir}/gconv/UTF8_UTF32_Z9.so
+%exclude %{_libdir}/gconv/UTF16_UTF32_Z9.so
+%exclude %{_libdir}/gconv/UTF8_UTF16_Z9.so
+%endif
 
 %files locale-base
 %defattr(-,root,root)
@@ -1274,11 +1325,6 @@ exit 0
 %{_prefix}/lib/locale/C.utf8
 %{_prefix}/lib/locale/en_US.utf8
 %endif
-%dir %{_libdir}/gconv
-%{_libdir}/gconv/*.so
-%{_libdir}/gconv/gconv-modules
-%{_libdir}/gconv/gconv-modules.d
-%attr(0644,root,root) %verify(not md5 size mtime) %ghost %{_libdir}/gconv/gconv-modules.cache
 
 %files locale
 %defattr(-,root,root)
