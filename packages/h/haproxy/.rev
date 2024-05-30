@@ -1481,4 +1481,14 @@
     <comment>- Update to version 2.9.6+git0.9eafce5dc:</comment>
     <requestid>1151945</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>bc324fa343c8e01a1bc42d7ece048d5a</srcmd5>
+    <version>3.0.0+git0.5590ada47</version>
+    <time>1717076014</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.0.0+git0.5590ada47:
+  https://www.haproxy.com/blog/announcing-haproxy-3-0
+  https://www.mail-archive.com/haproxy@formilux.org/msg44993.html</comment>
+    <requestid>1177631</requestid>
+  </revision>
 </revisionlist>
