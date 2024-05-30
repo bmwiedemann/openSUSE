@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu May 16 10:47:57 UTC 2024 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 4.20.1
+  * dns update debug message is too noisy; (bso#15630);
+  * Do not fail PAC validation for RFC8009 checksums types; (bso#15635);
+  * Improve performance of lookup_groupmem() in idmap_ad; (bso#15605);
+  * Smbcacls incorrectly propagates inheritance with Inherit-Only flag; (bso#15636);
+  * http library doesn't support 'chunked transfer encoding'; (bso#15611);
+  * Provide a systemd service file for the background queue daemon; (bso#15600);
+
+- Update to 4.20.0
+  New features:
+    * samba-tool user getpassword / syncpasswords ;rounds= change
+    * Group Managed service account client-side features
+    * New Windows Search Protocol Client
+    * Allow 'smbcacls' to save/restore DACLs to file
+    * Samba-tool extensions for AD Claims, Authentication Policies and Silos
+    * AD DC support for Authentication Silos and Authentication Policies
+    * Conditional ACEs and Resource Attribute ACEs
+    * Service Witness Protocol [MS-SWN]
+  Removed features:
+    * Get locally logged on users from utmp
+  Fixed bugs:
+    * Avoid null-dereference with bad claims; (bso#15606);
+    * ndr_pull_security_ace can leave resource attribute ACE coda
+      claim struct undefined; (bso#15613);
+    * fd_handle_destructor() panics within an smbd_smb2_close() if
+      vfs_stat_fsp() fails in fd_close(); (bso#15527);
+    * set_nt_acl sometimes fails with NT_STATUS_INVALID_PARAMETER -
+      openat() EACCES; (bso#15583);
+    * libgpo: Segfault in python bindings; (bso#15599);
+    * Samba AD is missing some authentication policy tests;
+      (bso#15607);
+    * samba-gpupdate: Correctly implement site support; (bso#15588);
+    * Remove unsupported "Final" keyword missing from Python 3.6;
+      (bso#15575);
+    * Additional witness backports for 4.20.0; (bso#15577);
+    * Error output with wspsearch; (bso#15579);
+    * Packet marshalling push support missing for
+      CTDB_CONTROL_TCP_CLIENT_DISCONNECTED and
+      CTDB_CONTROL_TCP_CLIENT_PASSED; (bso#15580);
+    * Performance regression for NDR parsing of security
+      descriptors; (bso#15574);
+    * Build and install man page for wspsearch client utility;
+      (bso#15565);
+
+-------------------------------------------------------------------
 Tue Feb 20 09:58:03 UTC 2024 - Noel Power <nopower@suse.com>
 
 - Update to 4.19.5

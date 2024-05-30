@@ -1,8 +1,8 @@
 <services>
-        <service name="tar_scm" mode="disabled">
+        <service name="tar_scm" mode="manual">
                 <param name="url">https://gitlab.suse.de/samba/suse-samba.git/</param>
                 <param name="scm">git</param>
-                <param name="revision">factory-4-19-stable</param>
+                <param name="revision">factory-4-20-stable</param>
                 <param name="versionformat">@PARENT_TAG@+git.@TAG_OFFSET@.%h</param>
                 <param name="versionrewrite-pattern">samba-(.*)</param>
                 <param name="versionrewrite-replacement">\1</param>
@@ -10,7 +10,7 @@
                 <param name="exclude">.git</param>
         </service>
 
-        <service name="extract_file" mode="disabled">
+        <service name="extract_file" mode="manual">
                 <param name="archive">samba*.tar</param>
                 <param name="files">samba-*/packaging/SuSE/samba.changes</param>
                 <param name="files">samba-*/packaging/SuSE/baselibs.conf</param>
@@ -18,19 +18,19 @@
                 <param name="files">samba-*/packaging/SuSE/samba.spec</param>
         </service>
 
-        <service name="set_version" mode="disabled">
+        <service name="set_version" mode="manual">
                 <param name="basename">samba</param>
                 <param name="regex">^samba-([^/]+)</param>
                 <param name="file">samba.spec</param>
         </service>
 
-        <service name="set_version" mode="disabled">
+        <service name="set_version" mode="manual">
                 <param name="basename">samba</param>
                 <param name="regex">^samba-([^/]+)</param>
                 <param name="file">samba.changes</param>
         </service>
 
-        <service name="recompress" mode="disabled">
+        <service name="recompress" mode="manual">
                 <param name="file">*.tar</param>
                 <param name="compression">bz2</param>
         </service>

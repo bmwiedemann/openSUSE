@@ -86,6 +86,8 @@ BuildRequires:  libuuid-devel
 BuildRequires:  cracklib-devel
 BuildRequires:  gdbm-devel
 BuildRequires:  keyutils-devel
+BuildRequires:  flex
+BuildRequires:  bison
 BuildRequires:  libnscd-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  zlib-devel
@@ -158,7 +160,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.19.5+git.342.57620c4f7e
+Version:        4.20.1+git.335.0a46cdafe2
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -930,7 +932,7 @@ install -m 0644 examples/LDAP/samba-nds.schema %{buildroot}/%{_datadir}/samba/LD
 %fdupes %{buildroot}
 
 %pre -f samba.pre
-%service_add_pre nmb.service smb.service
+%service_add_pre nmb.service smb.service samba-bgqd.service
 %if 0%{?suse_version} > 1500
 # Prepare for migration to /usr/etc; save any old .rpmsave
 for i in logrotate.d/samba pam.d/samba; do
@@ -952,7 +954,7 @@ done
 %endif
 
 %preun
-%service_del_preun nmb.service smb.service
+%service_del_preun nmb.service smb.service samba-bgqd.service
 
 %if %{with_dc}
 %preun ad-dc
@@ -979,12 +981,12 @@ then
     sed -i 's/-F *//g' %{_sysconfdir}/sysconfig/samba
 fi
 
-%service_add_post nmb.service smb.service
+%service_add_post nmb.service smb.service samba-bgqd.service
 %tmpfiles_create samba.conf
 %fillup_only
 
 %postun
-%service_del_postun nmb.service smb.service
+%service_del_postun nmb.service smb.service samba-bgqd.service
 
 %post client
 /sbin/ldconfig
@@ -1120,6 +1122,7 @@ exit 0
 %defattr(-,root,root)
 %{_unitdir}/nmb.service
 %{_unitdir}/smb.service
+%{_unitdir}/samba-bgqd.service
 %ghost %{CONFIGDIR}/smbpasswd
 %config(noreplace) %{CONFIGDIR}/smbusers
 %if 0%{?suse_version} > 1500
@@ -1149,6 +1152,7 @@ exit 0
 %{_libdir}/samba/rpcd_mdssvc
 %{_libdir}/samba/rpcd_spoolss
 %{_libdir}/samba/rpcd_winreg
+%{_libdir}/samba/rpcd_witness
 %{_libdir}/samba/samba-bgqd
 %{_libdir}/samba/samba-dcerpcd
 %attr(0644,root,root) %{_datadir}/omc/svcinfo.d/nmb.xml
@@ -1156,6 +1160,7 @@ exit 0
 %dir %{_datadir}/samba
 %{_datadir}/samba/update-apparmor-samba-profile
 %{_mandir}/man1/smbstatus.1.*
+%{_mandir}/man1/wspsearch.1.*
 %{_mandir}/man5/smbpasswd.5.*
 %{_mandir}/man8/nmbd.8.*
 %{_mandir}/man8/smbd.8.*
@@ -1201,6 +1206,7 @@ exit 0
 %{_bindir}/smbtree
 %{_bindir}/testparm
 %{_bindir}/mvxattr
+%{_bindir}/wspsearch
 %dir %{cups_lib_dir}
 %dir %{cups_lib_dir}/backend
 %ghost %{cups_lib_dir}/backend/smb
@@ -1333,6 +1339,7 @@ exit 0
 %_includedir/samba-4.0/tdr.h
 %_includedir/samba-4.0/tsocket.h
 %_includedir/samba-4.0/tsocket_internal.h
+%_includedir/samba-4.0/smb3posix.h
 %dir %_includedir/samba-4.0/util/
 %_includedir/samba-4.0/util/genrand.h
 %_includedir/samba-4.0/util/idtree.h
@@ -1410,90 +1417,90 @@ exit 0
 %{_libdir}/libsmbconf.so.*
 %{_libdir}/libsmbldap.so.*
 %{_libdir}/libwbclient.so.*
-%{_libdir}/samba/libCHARSET3-samba4.so
-%{_libdir}/samba/libMESSAGING-samba4.so
-%{_libdir}/samba/libMESSAGING-SEND-samba4.so
-%{_libdir}/samba/libaddns-samba4.so
-%{_libdir}/samba/libads-samba4.so
-%{_libdir}/samba/libasn1util-samba4.so
-%{_libdir}/samba/libauth-samba4.so
+%{_libdir}/samba/libCHARSET3-private-samba.so
+%{_libdir}/samba/libMESSAGING-private-samba.so
+%{_libdir}/samba/libMESSAGING-SEND-private-samba.so
+%{_libdir}/samba/libaddns-private-samba.so
+%{_libdir}/samba/libads-private-samba.so
+%{_libdir}/samba/libasn1util-private-samba.so
+%{_libdir}/samba/libauth-private-samba.so
 %if %{with_dc}
-%{_libdir}/samba/libauthn-policy-util-samba4.so
+%{_libdir}/samba/libauthn-policy-util-private-samba.so
 %endif
-%{_libdir}/samba/libauthkrb5-samba4.so
-%{_libdir}/samba/libcli-cldap-samba4.so
-%{_libdir}/samba/libcli-ldap-samba4.so
-%{_libdir}/samba/libcli-ldap-common-samba4.so
-%{_libdir}/samba/libcli-nbt-samba4.so
-%{_libdir}/samba/libcli-smb-common-samba4.so
-%{_libdir}/samba/libcli-spoolss-samba4.so
-%{_libdir}/samba/libcliauth-samba4.so
-%{_libdir}/samba/libclidns-samba4.so
-%{_libdir}/samba/libcluster-samba4.so
-%{_libdir}/samba/libcmdline-contexts-samba4.so
-%{_libdir}/samba/libcmdline-samba4.so
-%{_libdir}/samba/libcommon-auth-samba4.so
-%{_libdir}/samba/libdbwrap-samba4.so
-%{_libdir}/samba/libdcerpc-pkt-auth-samba4.so
-%{_libdir}/samba/libdcerpc-samba-samba4.so
-%{_libdir}/samba/libdcerpc-samba4.so
-%{_libdir}/samba/libevents-samba4.so
-%{_libdir}/samba/libflag-mapping-samba4.so
-%{_libdir}/samba/libgenrand-samba4.so
-%{_libdir}/samba/libgensec-samba4.so
-%{_libdir}/samba/libgpo-samba4.so
-%{_libdir}/samba/libgse-samba4.so
-%{_libdir}/samba/libhttp-samba4.so
-%{_libdir}/samba/libinterfaces-samba4.so
-%{_libdir}/samba/libiov-buf-samba4.so
-%{_libdir}/samba/libkrb5samba-samba4.so
-%{_libdir}/samba/libldbsamba-samba4.so
-%{_libdir}/samba/liblibcli-lsa3-samba4.so
-%{_libdir}/samba/liblibcli-netlogon3-samba4.so
-%{_libdir}/samba/liblibsmb-samba4.so
-%{_libdir}/samba/libstable-sort-samba4.so
+%{_libdir}/samba/libauthkrb5-private-samba.so
+%{_libdir}/samba/libcli-cldap-private-samba.so
+%{_libdir}/samba/libcli-ldap-private-samba.so
+%{_libdir}/samba/libcli-ldap-common-private-samba.so
+%{_libdir}/samba/libcli-nbt-private-samba.so
+%{_libdir}/samba/libcli-smb-common-private-samba.so
+%{_libdir}/samba/libcli-spoolss-private-samba.so
+%{_libdir}/samba/libcliauth-private-samba.so
+%{_libdir}/samba/libclidns-private-samba.so
+%{_libdir}/samba/libcluster-private-samba.so
+%{_libdir}/samba/libcmdline-contexts-private-samba.so
+%{_libdir}/samba/libcmdline-private-samba.so
+%{_libdir}/samba/libcommon-auth-private-samba.so
+%{_libdir}/samba/libdbwrap-private-samba.so
+%{_libdir}/samba/libdcerpc-pkt-auth-private-samba.so
+%{_libdir}/samba/libdcerpc-samba-private-samba.so
+%{_libdir}/samba/libdcerpc-samba4-private-samba.so
+%{_libdir}/samba/libevents-private-samba.so
+%{_libdir}/samba/libflag-mapping-private-samba.so
+%{_libdir}/samba/libgenrand-private-samba.so
+%{_libdir}/samba/libgensec-private-samba.so
+%{_libdir}/samba/libgpo-private-samba.so
+%{_libdir}/samba/libgse-private-samba.so
+%{_libdir}/samba/libhttp-private-samba.so
+%{_libdir}/samba/libinterfaces-private-samba.so
+%{_libdir}/samba/libiov-buf-private-samba.so
+%{_libdir}/samba/libkrb5samba-private-samba.so
+%{_libdir}/samba/libldbsamba-private-samba.so
+%{_libdir}/samba/liblibcli-lsa3-private-samba.so
+%{_libdir}/samba/liblibcli-netlogon3-private-samba.so
+%{_libdir}/samba/liblibsmb-private-samba.so
+%{_libdir}/samba/libstable-sort-private-samba.so
 %{_libdir}/libtevent-util.so.*
-%{_libdir}/samba/libmessages-dgm-samba4.so
-%{_libdir}/samba/libmessages-util-samba4.so
-%{_libdir}/samba/libmsghdr-samba4.so
-%{_libdir}/samba/libmsrpc3-samba4.so
-%{_libdir}/samba/libndr-samba4.so
-%{_libdir}/samba/libndr-samba-samba4.so
-%{_libdir}/samba/libnet-keytab-samba4.so
-%{_libdir}/samba/libnetif-samba4.so
-%{_libdir}/samba/libnpa-tstream-samba4.so
-%{_libdir}/samba/libprinting-migrate-samba4.so
-%{_libdir}/samba/libregistry-samba4.so
-%{_libdir}/samba/libreplace-samba4.so
-%{_libdir}/samba/libsamba-cluster-support-samba4.so
-%{_libdir}/samba/libsamba-debug-samba4.so
-%{_libdir}/samba/libsamba-security-samba4.so
-%{_libdir}/samba/libsamba-sockets-samba4.so
-%{_libdir}/samba/libsamba3-util-samba4.so
-%{_libdir}/samba/libsamba-modules-samba4.so
-%{_libdir}/samba/libsamdb-common-samba4.so
-%{_libdir}/samba/libsmb-transport-samba4.so
-%{_libdir}/samba/libsmbclient-raw-samba4.so
-%{_libdir}/samba/libsmbd-base-samba4.so
-%{_libdir}/samba/libsmbd-shim-samba4.so
-%{_libdir}/samba/libsmbldaphelper-samba4.so
-%{_libdir}/samba/libsecrets3-samba4.so
-%{_libdir}/samba/libserver-id-db-samba4.so
-%{_libdir}/samba/libserver-role-samba4.so
-%{_libdir}/samba/libsocket-blocking-samba4.so
-%{_libdir}/samba/libsys-rw-samba4.so
-%{_libdir}/samba/libtalloc-report-printf-samba4.so
-%{_libdir}/samba/libtdb-wrap-samba4.so
-%{_libdir}/samba/libtime-basic-samba4.so
-%{_libdir}/samba/libtrusts-util-samba4.so
-%{_libdir}/samba/libutil-reg-samba4.so
-%{_libdir}/samba/libutil-setid-samba4.so
-%{_libdir}/samba/libutil-tdb-samba4.so
+%{_libdir}/samba/libmessages-dgm-private-samba.so
+%{_libdir}/samba/libmessages-util-private-samba.so
+%{_libdir}/samba/libmsghdr-private-samba.so
+%{_libdir}/samba/libmsrpc3-private-samba.so
+%{_libdir}/samba/libndr-samba4-private-samba.so
+%{_libdir}/samba/libndr-samba-private-samba.so
+%{_libdir}/samba/libnet-keytab-private-samba.so
+%{_libdir}/samba/libnetif-private-samba.so
+%{_libdir}/samba/libnpa-tstream-private-samba.so
+%{_libdir}/samba/libprinting-migrate-private-samba.so
+%{_libdir}/samba/libregistry-private-samba.so
+%{_libdir}/samba/libreplace-private-samba.so
+%{_libdir}/samba/libsamba-cluster-support-private-samba.so
+%{_libdir}/samba/libsamba-debug-private-samba.so
+%{_libdir}/samba/libsamba-security-private-samba.so
+%{_libdir}/samba/libsamba-sockets-private-samba.so
+%{_libdir}/samba/libsamba3-util-private-samba.so
+%{_libdir}/samba/libsamba-modules-private-samba.so
+%{_libdir}/samba/libsamdb-common-private-samba.so
+%{_libdir}/samba/libsmb-transport-private-samba.so
+%{_libdir}/samba/libsmbclient-raw-private-samba.so
+%{_libdir}/samba/libsmbd-base-private-samba.so
+%{_libdir}/samba/libsmbd-shim-private-samba.so
+%{_libdir}/samba/libsmbldaphelper-private-samba.so
+%{_libdir}/samba/libsecrets3-private-samba.so
+%{_libdir}/samba/libserver-id-db-private-samba.so
+%{_libdir}/samba/libserver-role-private-samba.so
+%{_libdir}/samba/libsocket-blocking-private-samba.so
+%{_libdir}/samba/libsys-rw-private-samba.so
+%{_libdir}/samba/libtalloc-report-printf-private-samba.so
+%{_libdir}/samba/libtdb-wrap-private-samba.so
+%{_libdir}/samba/libtime-basic-private-samba.so
+%{_libdir}/samba/libtrusts-util-private-samba.so
+%{_libdir}/samba/libutil-reg-private-samba.so
+%{_libdir}/samba/libutil-setid-private-samba.so
+%{_libdir}/samba/libutil-tdb-private-samba.so
 %if %{with_mscat}
-%{_libdir}/samba/libmscat-samba4.so
+%{_libdir}/samba/libmscat-private-samba.so
 %endif
 %if %{with_dc}
-%{_libdir}/samba/libdfs-server-ad-samba4.so
+%{_libdir}/samba/libdfs-server-ad-private-samba.so
 %endif
 %dir %{_libdir}/samba/pdb
 %{_libdir}/samba/pdb/ldapsam.so
@@ -1504,42 +1511,42 @@ exit 0
 %defattr(-,root,root)
 %{_libdir}/libdcerpc-samr.so.*
 %dir %{_libdir}/samba
-%{_libdir}/samba/libLIBWBCLIENT-OLD-samba4.so
-%{_libdir}/samba/libauth4-samba4.so
-%{_libdir}/samba/libauth-unix-token-samba4.so
-%{_libdir}/samba/libdnsserver-common-samba4.so
-%{_libdir}/samba/libgpext-samba4.so
-%{_libdir}/samba/libposix-eadb-samba4.so
-%{_libdir}/samba/libprinter-driver-samba4.so
-%{_libdir}/samba/libshares-samba4.so
-%{_libdir}/samba/libsmbpasswdparser-samba4.so
-%{_libdir}/samba/libtalloc-report-samba4.so
-%{_libdir}/samba/libtorture-samba4.so
-%{_libdir}/samba/libxattr-tdb-samba4.so
-%{_libdir}/samba/libcmocka-samba4.so
-%{_libdir}/samba/libREG-FULL-samba4.so
-%{_libdir}/samba/libRPC-SERVER-LOOP-samba4.so
-%{_libdir}/samba/libRPC-WORKER-samba4.so
-%{_libdir}/samba/libdsdb-module-samba4.so
+%{_libdir}/samba/libLIBWBCLIENT-OLD-private-samba.so
+%{_libdir}/samba/libauth4-private-samba.so
+%{_libdir}/samba/libauth-unix-token-private-samba.so
+%{_libdir}/samba/libdnsserver-common-private-samba.so
+%{_libdir}/samba/libgpext-private-samba.so
+%{_libdir}/samba/libposix-eadb-private-samba.so
+%{_libdir}/samba/libprinter-driver-private-samba.so
+%{_libdir}/samba/libshares-private-samba.so
+%{_libdir}/samba/libsmbpasswdparser-private-samba.so
+%{_libdir}/samba/libtalloc-report-private-samba.so
+%{_libdir}/samba/libtorture-private-samba.so
+%{_libdir}/samba/libxattr-tdb-private-samba.so
+%{_libdir}/samba/libcmocka-private-samba.so
+%{_libdir}/samba/libREG-FULL-private-samba.so
+%{_libdir}/samba/libRPC-SERVER-LOOP-private-samba.so
+%{_libdir}/samba/libRPC-WORKER-private-samba.so
+%{_libdir}/samba/libdsdb-module-private-samba.so
 %if ! %{with_mitkrb5}
-%{_libdir}/samba/libasn1-samba4.so
-%{_libdir}/samba/libcom-err-samba4.so
-%{_libdir}/samba/libgss-preauth-samba4.so
-%{_libdir}/samba/libgssapi-samba4.so
-%{_libdir}/samba/libhcrypto-samba4.so
-%{_libdir}/samba/libhdb-samba4.so
-%{_libdir}/samba/libheimbase-samba4.so
-%{_libdir}/samba/libheimntlm-samba4.so
-%{_libdir}/samba/libhx509-samba4.so
-%{_libdir}/samba/libkdc-samba4.so
-%{_libdir}/samba/libkrb5-samba4.so
-%{_libdir}/samba/libroken-samba4.so
-%{_libdir}/samba/libwind-samba4.so
+%{_libdir}/samba/libasn1-private-samba.so
+%{_libdir}/samba/libcom-err-private-samba.so
+%{_libdir}/samba/libgss-preauth-private-samba.so
+%{_libdir}/samba/libgssapi-private-samba.so
+%{_libdir}/samba/libhcrypto-private-samba.so
+%{_libdir}/samba/libhdb-private-samba.so
+%{_libdir}/samba/libheimbase-private-samba.so
+%{_libdir}/samba/libheimntlm-private-samba.so
+%{_libdir}/samba/libhx509-private-samba.so
+%{_libdir}/samba/libkdc-private-samba.so
+%{_libdir}/samba/libkrb5-private-samba.so
+%{_libdir}/samba/libroken-private-samba.so
+%{_libdir}/samba/libwind-private-samba.so
 %endif
 
 %files libs-python3
-%{_libdir}/samba/libsamba-net.%{py3_soflags_dash}-samba4.so
-%{_libdir}/samba/libsamba-python.%{py3_soflags_dash}-samba4.so
+%{_libdir}/samba/libsamba-net.%{py3_soflags_dash}-private-samba.so
+%{_libdir}/samba/libsamba-python.%{py3_soflags_dash}-private-samba.so
 
 %files python3
 %defattr(-,root,root)
@@ -1571,8 +1578,8 @@ exit 0
 %defattr(-,root,root)
 %{_pam_moduledir}/pam_winbind.so
 %{_libdir}/libnss_winbind.so.*
-%{_libdir}/samba/libidmap-samba4.so
-%{_libdir}/samba/libnss-info-samba4.so
+%{_libdir}/samba/libidmap-private-samba.so
+%{_libdir}/samba/libnss-info-private-samba.so
 %dir %{_libdir}/samba/idmap
 %{_libdir}/samba/idmap/ad.so
 %{_libdir}/samba/idmap/autorid.so
@@ -1670,7 +1677,7 @@ exit 0
 %{_bindir}/ping_pong
 %dir %{_libdir}/ctdb
 %{_libdir}/ctdb/ctdb-config
-%{_libdir}/samba/libctdb-event-client-samba4.so
+%{_libdir}/samba/libctdb-event-client-private-samba.so
 %{_libdir}/ctdb/ctdb-event
 %{_libdir}/ctdb/ctdb-eventd
 %{_libdir}/ctdb/ctdb-path
@@ -1866,12 +1873,12 @@ exit 0
 %if %{with_dc}
 %files ad-dc-libs
 %defattr(-,root,root)
-%{_libdir}/samba/libad-claims-samba4.so
-%{_libdir}/samba/libdb-glue-samba4.so
-%{_libdir}/samba/libdsdb-garbage-collect-tombstones-samba4.so
-%{_libdir}/samba/libscavenge-dns-records-samba4.so
-%{_libdir}/samba/libprocess-model-samba4.so
-%{_libdir}/samba/libservice-samba4.so
+%{_libdir}/samba/libad-claims-private-samba.so
+%{_libdir}/samba/libdb-glue-private-samba.so
+%{_libdir}/samba/libdsdb-garbage-collect-tombstones-private-samba.so
+%{_libdir}/samba/libscavenge-dns-records-private-samba.so
+%{_libdir}/samba/libprocess-model-private-samba.so
+%{_libdir}/samba/libservice-private-samba.so
 %dir %{_libdir}/samba/process_model
 %{_libdir}/samba/process_model/standard.so
 %{_libdir}/samba/process_model/prefork.so
@@ -1894,7 +1901,7 @@ exit 0
 %if %{with_mit_dc}
 %{_libdir}/krb5/plugins/kdb/samba.so
 %else
-%{_libdir}/samba/libHDB-SAMBA4-samba4.so
+%{_libdir}/samba/libHDB-SAMBA4-private-samba.so
 %endif
 %dir %{_libdir}/samba/bind9
 %{_libdir}/samba/bind9/dlz_bind9_10.so
@@ -1905,8 +1912,8 @@ exit 0
 %{_libdir}/samba/bind9/dlz_bind9_18.so
 %dir %{_libdir}/samba/gensec
 %{_libdir}/samba/gensec/krb5.so
-%{_libdir}/samba/libdlz-bind9-for-torture-samba4.so
-%{_libdir}/samba/libpac-samba4.so
+%{_libdir}/samba/libdlz-bind9-for-torture-private-samba.so
+%{_libdir}/samba/libpac-private-samba.so
 
 %files dsdb-modules
 %defattr(-,root,root)
