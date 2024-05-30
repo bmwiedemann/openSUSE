@@ -25,7 +25,7 @@
 %define fontdir %{_datadir}/fonts/%{name}
 %define docdir  %{_docdir}/%{name}
 Name:           musescore
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        A WYSIWYG music score typesetter
 # Licenses in MuseScore are a mess. To help other maintainers I give the following overview:
@@ -62,15 +62,6 @@ Source4:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General
 Source5:        README.SUSE
 # PATCH-FIX-OPENSUSE: openSUSE has qmake-qt5 qmake was reserved for qt4, which is no longer present
 Patch0:         use-qtmake-qt5.patch
-
-# PATCH-UPSTREAM: https://github.com/musescore/MuseScore/issues/22984
-# make it possible to open files created with official binaries in our build
-Patch0001:      0001-Increase-file-version-number-to-430.patch
-Patch0002:      0002-Fix-utests-1.patch
-Patch0003:      0003-Fix-utests-2.patch
-Patch0004:      0004-Fix-utests-3.patch
-Patch0005:      0005-Fix-utests-4.patch
-Patch0006:      0006-Fix-utests-5.patch
 
 BuildRequires:  cmake
 BuildRequires:  fdupes

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu May 30 10:30:14 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- MuseScore 4.3.1:
+  This update fixes a critical usability issue affecting AZERTY
+  keyboard users. The shift modifier key can now be used to trigger
+  number keys, enabling note durations to be changed using the
+  default shortcuts. 
+
+  This release also improves CPU performance when using Muse
+  Sounds, and resolves a number of playback bugs associated with
+  repeats.
+
+  Additional fixes:
+  - Playback now falls back to MS Basic if SoundFonts are missing.
+  - Volume levels of MS Basic are now better balanced between note input and playback modes.
+  - An issue preventing instrument names from being deleted from beginning of staves has been resolved. 
+  - Fixed a bug where synthesizers incorrectly defaulted to the piano sound.
+  - Fixed a crash preventing certain scores with hidden clefs from opening.
+
+  See the full list of improvements here:
+
+  https://github.com/orgs/musescore/projects/46/views/2
+- drop patches which are included in the update:
+  0001-Increase-file-version-number-to-430.patch
+  0002-Fix-utests-1.patch
+  0003-Fix-utests-2.patch
+  0004-Fix-utests-3.patch
+  0005-Fix-utests-4.patch
+  0006-Fix-utests-5.patch
+
+-------------------------------------------------------------------
 Sun May 26 22:06:23 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Add patch series that was included in the usptream binaries but
