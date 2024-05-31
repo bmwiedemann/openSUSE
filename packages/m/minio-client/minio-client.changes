@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 30 14:36:24 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240524T090849Z:
+  * restructure credential creation with simplified expectations
+    (#4939)
+  * Bump up minio/pkg to v3 (#4940)
+  * simplify histograms, make it based on the server return (#4935)
+  * keep pool display order and also pretty it (#4931)
+  * fix: mirror --summary should work like -q (#4923)
+
+-------------------------------------------------------------------
 Fri May 10 05:01:31 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240509T170424Z:
