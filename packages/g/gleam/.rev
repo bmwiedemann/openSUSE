@@ -16,4 +16,18 @@
  * Changelog: https://gleam.run/news/fault-tolerant-gleam/</comment>
     <requestid>1177194</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7791480e6f3cda3fe1767e215999bef4</srcmd5>
+    <version>1.2.1</version>
+    <time>1717186610</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.2.1:
+ * Fixed a bug where the compiler could fail to detect modules that
+   would clash with Erlang modules. (Louis Pilfold)
+ * Fixed a bug where dependency version resolution could crash for
+   certain release candidate versions. (Marshall Bowers)
+ * Fixed a bug where trailing comments would be moved out of a bit
+   array. (Giacomo Cavalieri)</comment>
+    <requestid>1177808</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           gleam
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        A friendly language for building type-safe, scalable systems!
 License:        Apache-2.0
