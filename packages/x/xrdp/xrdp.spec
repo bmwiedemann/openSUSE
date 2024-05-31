@@ -1,7 +1,7 @@
 #
 # spec file for package xrdp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,6 @@ Source0:        https://github.com/neutrinolabs/%{name}/releases/download/v%{ver
 Source1:        https://github.com/neutrinolabs/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        xrdp.keyring
 Source4:        sysconfig.xrdp
-Source5:        force_stop
 Source6:        xrdp.ini
 Source7:        sesman.ini
 Source100:      %{name}-rpmlintrc
@@ -132,12 +131,7 @@ find %{buildroot} -name '*.a' -delete
 find %{buildroot} -type f -name "*.la" -delete -print
 mkdir -p %{buildroot}/%{_fillupdir}
 install -m 644 %{SOURCE4} %{buildroot}/%{_fillupdir}/sysconfig.xrdp
-mkdir -p %{buildroot}/%{_libexecdir}/initscripts/legacy-actions/xrdp
-install -m 755 %{SOURCE5} %{buildroot}/%{_libexecdir}/initscripts/legacy-actions/xrdp/force_stop
 install -m 644 %{SOURCE6} %{SOURCE7} %{buildroot}/%{_sysconfdir}/xrdp/
-
-ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcxrdp
-ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcxrdp-sesman
 
 # remove a private key and certification file generated during make and
 # use certification file created at the post phase
@@ -208,8 +202,6 @@ exit 0
 %{_mandir}/man1/*
 %{_mandir}/man5/*
 %{_mandir}/man8/*
-%{_libexecdir}/initscripts/legacy-actions/xrdp
-%{_sbindir}/rc*
 %{_sbindir}/xrdp*
 %dir %{_sysconfdir}/xrdp
 %config(noreplace) %{_sysconfdir}/xrdp/km*.ini
