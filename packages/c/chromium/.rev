@@ -5010,4 +5010,12 @@ boo#1224178</comment>
 </comment>
     <requestid>1176705</requestid>
   </revision>
+  <revision rev="422" vrev="1">
+    <srcmd5>7a28d5e189cd79b22547331bc807e114</srcmd5>
+    <version>125.0.6422.141</version>
+    <time>1717186624</time>
+    <user>anag+factory</user>
+    <comment>Chromium 125.0.6422.141 (boo#1225690)</comment>
+    <requestid>1177853</requestid>
+  </revision>
 </revisionlist>

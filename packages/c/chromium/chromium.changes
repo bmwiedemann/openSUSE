@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 31 07:29:22 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 125.0.6422.141 (boo#1225690)
+  * CVE-2024-5493: Heap buffer overflow in WebRTC
+  * CVE-2024-5494: Use after free in Dawn
+  * CVE-2024-5495: Use after free in Dawn
+  * CVE-2024-5496: Use after free in Media Session
+  * CVE-2024-5497: Out of bounds memory access in Keyboard Inputs
+  * CVE-2024-5498: Use after free in Presentation API
+  * CVE-2024-5499: Out of bounds write in Streams API
+
+-------------------------------------------------------------------
 Fri May 24 04:24:22 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 125.0.6422.112
