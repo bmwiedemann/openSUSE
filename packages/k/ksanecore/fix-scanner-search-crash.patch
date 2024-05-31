@@ -1,0 +1,39 @@
+From d83891ca38d3006f04a2a246400b905a3f5fc57c Mon Sep 17 00:00:00 2001
+From: Andras Mantia <andras.mantia@kdab.com>
+Date: Tue, 28 May 2024 12:30:59 +0300
+Subject: [PATCH] Don't crash scanner apps (skanlite, skanpage) when searching
+ for scanners
+
+This is triggered eg. with network scanners where scanning takes longer time.
+As comment says: this defeats the idea of using a scanner thread,
+but the proper fix would be more elaborate (ie. do the rest of initialization
+only when the thread is finished).
+Still makes sense to have this hotfix, especially as this is an old bug...
+
+BUG: 444987
+BUG: 468053
+---
+ src/interface_p.cpp | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/src/interface_p.cpp b/src/interface_p.cpp
+index e7cb9a3..1af5de3 100644
+--- a/src/interface_p.cpp
++++ b/src/interface_p.cpp
+@@ -95,6 +95,13 @@ Interface::OpenStatus InterfacePrivate::loadDeviceOptions()
+         }
+     }
+ 
++    // need to wait as calling sane_get_devices and sane_control_option (that happens later)
++    // from two different threads at the same time causes a crash, libsane looks to be not
++    // thread safe.
++    // It defeats the purpose of the thread and make startup slower, but it is better than crashing.
++    if (m_findDevThread->isRunning())
++        m_findDevThread->wait();
++
+     // Read the options (start with option 0 the number of parameters)
+     optDesc = sane_get_option_descriptor(m_saneHandle, 0);
+     if (optDesc == nullptr) {
+-- 
+GitLab
+
