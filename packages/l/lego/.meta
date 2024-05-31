@@ -1,0 +1,6 @@
+<package name="lego" project="openSUSE:Factory">
+  <title>lego</title>
+  <description>Let's Encrypt/ACME client and library written in Go</description>
+  <devel project="network:utilities" package="lego"/>
+  <url>https://github.com/go-acme/lego</url>
+</package>

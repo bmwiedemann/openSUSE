@@ -1,0 +1,444 @@
+-------------------------------------------------------------------
+Thu May 30 15:00:04 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.17.3 (no release between 4.16.1 and this
+  one):
+  * 96a8381 fix: disable snap release
+  * 71b48f8 fix: disable Solaris build
+  * f038102 chore: fix snapcraft release
+  * 5eb8768 pdns: reconstruct zone URLs to enable non-root folder
+    API endpoints
+  * f89e257 dode: update API URL
+  * 220c608 chore: update linter
+  * 92bde4c chore: remove remaining deprecated ARI call
+  * d39d57f chore: remove useless file
+  * bf10a46 chore: update linter
+  * c61aeba godaddy: documentation new API limitations
+  * 11b4bef route53: adds option to not wait for changes
+  * 2ec9e42 azuredns: use TenantID also for cli authentication
+  * 983c181 feat: renewal retry after value
+  * f6d1413 exoscale: simplify record creation
+  * acd3382 ovh: add OAuth2 authentication
+  * 42aa57e exec: stream command output
+  * 76eb1ea feat: add LEGO_ISSUER_CERT_PATH to hook
+  * d60c335 feat: fills LEGO_CERT_PFX_PATH and LEGO_CERT_PEM_PATH
+    only when needed
+  * 55dd478 chore: update dependencies
+  * ca32b56 oracle: update API client
+  * 8623f0d Add DNS provider for Selectel v2
+  * a832515 chore: fix typos
+  * ef9086a httpnet: add provider to NewDNSChallengeProviderByName
+  * 8dd1fa5 docs: fix link to alibaba API documentation
+  * 3371145 chore: update to go1.22
+  * 874e3ea azuredns: servicediscovery for zones
+  * 27fd142 scaleway: add alternative env var names
+  * 61553c4 chore: add snap to release packages
+
+-------------------------------------------------------------------
+Fri Mar 15 21:43:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.16.1:
+  * Prepare release v4.16.1
+  * fix: don't generate ARI cert ID if ARI is not enable (#2138)
+  * Detach v4.16.0
+
+-------------------------------------------------------------------
+Fri Mar 15 21:40:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- BuildRequire go1.21 to follow upstream
+- Update to version 4.16.0:
+  * Prepare release v4.16.0
+  * Add DNS provider for Shellrent (#2126)
+  * feat: implement 'replaces' field in newOrder and
+    draft-ietf-acme-ari-03 CertID changes (#2114)
+  * chore: update to github.com/go-jose/go-jose/v4 (#2130)
+  * nifcloud: fix bug in case of same auth zone (#2125)
+  * easydns: fix zone detection (#2121)
+  * bunny: support delegated sub-domains (#2123)
+  * fix: test on CI (#2119)
+  * Add DNS provider for Mail-in-a-Box (#2110)
+  * ns1: fix record creation (#2115)
+  * chore: use org variables inside the CI
+  * feat: improve errors and logs related to DNS call (#2109)
+  * chore: minor changes (#2108)
+  * chore: fix typo (#2106)
+  * chore: update to go1.21 (#2103)
+  * cpanel: remove custom DNS call (#2102)
+  * Add DNS provider for CPanel and WHM (#1977)
+  * route53: fix example (#2100)
+  * chore: update CI
+  * chore: replace mitchellh/mapstructure by
+    go-viper/mapstructure/v2 (#2095)
+  * docs: add installation for Gentoo (#2094)
+  * Detach v4.15.0
+
+-------------------------------------------------------------------
+Mon Jan 29 17:51:17 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.15.0:
+  * Prepare release v4.15.0
+  * chore: update dependencies (#2092)
+  * feat(cli): add format option for PFX encoding (#2063)
+  * pdns: optional custom API version (#2019)
+  * feat: support simplified issuance for very long domain names at
+    Let's Encrypt (#2054)
+  * desec: increase default propagation interval (#2089)
+  * feat: update CertID format as per draft-ietf-acme-ari-02
+    (#2066)
+  * constellix: follow rate limiting headers (#2085)
+  * inwx: improve sleep calculation (#2086)
+  * gcloud: support GCE_ZONE_ID to bypass zone list (#2081)
+  * inwx: wait before generating new TOTP TANs (#2084)
+  * ionos: fix DNS record removal (#2083)
+  * feat(cli): add environment variable for specifying alternate
+    directory URL (#2061)
+  * Add DNS provider for Webnames (#2077)
+  * cloudru: change default URLs (#2076)
+  * scaleway: add cname support (#2075)
+  * chore: change test ports (related to Windows and CI)
+  * efficientip: add insecure skip verify option (#2052)
+  * regru: HTTP method changed to POST (#2051)
+  * regru: client certificate support (#2050)
+  * chore: update linter (#2046)
+  * azuredns: allow oidc authentication (#2036)
+  * nifcloud: fix API requests (#2039)
+  * liquidweb: add LWAPI_ prefix for env vars (#2034)
+  * liquidweb: detect zone automatically (#2031)
+  * gandiv5: Add "Bearer" prefix to the auth header (#2029)
+  * azuredns: provide the ability to select authentication methods
+    (#2026)
+  * otc: sequential challenge  (#2023)
+  * ipv64: remove unused option (#2022)
+  * doc: update Designate documentation (#1465)
+  * gandiv5: add Personal Access Token support (#2007)
+  * Add DNS provider for http.net (#2014)
+  * Detach v4.14.2
+
+-------------------------------------------------------------------
+Wed Sep 20 05:57:26 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 4.14.2:
+  * Prepare release v4.14.2
+  * chore: temporary workaround
+  * Detach v4.14.1
+
+-------------------------------------------------------------------
+Wed Sep 20 05:54:39 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 4.14.1:
+  * Prepare release v4.14.1
+  * bunny: fix zone detection (#2012)
+  * ovh: update client to v1.4.2 (#2010)
+  * bunny: use NRDCG fork (#2009)
+  * Revert "chore: exclude egoscale v1.19.0" (#2003)
+  * Detach v4.14.0
+
+-------------------------------------------------------------------
+Tue Sep 05 13:14:35 UTC 2023 - kastl@b1-systems.de
+
+- BuildRequire go1.20
+- Update to version 4.14.0:
+  * Prepare release v4.14.0
+  * nearlyfreespeech: fix salt
+  * nearlyfreespeech: fix authentication (#1999)
+  * doc: retrieve hugo-theme-learn as hugo module (#1994)
+  * doc: fix broken links (#1997)
+  *  chore: update to go1.20 (#1993)
+  * doc: bump hugo version (#1996)
+  * doc: fixing typos (#1995)
+  * exec: fix CLI documention (#1991)
+  * azuredns: update docs (#1988)
+  * Add DNS provider for Yandex 360 (#1975)
+  * chore: exclude egoscale v1.19.0 (#1985)
+  * pdns: fix notify (#1983)
+  * chore: fix grammar and typo (#1978)
+  * route53: avoid unexpected records deletion (#1976)
+  * Allow to set EAB kid and hmac via environment variables (#1959)
+  * Add DNS provider for cloud.ru (#1968)
+  * Adding S3 support for HTTP domain validation (#1970)
+  * chore: migrate to aws-sdk-go-v2 (lightsail, route53) (#1973)
+  * Detach v4.13.3
+
+-------------------------------------------------------------------
+Wed Jul 26 04:28:11 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 4.13.3:
+  * Prepare release v4.13.3
+  * azure: fix configuration from env vars (#1972)
+  * gcore: change API domain (#1971)
+  * chore: update new DNS provider issue template
+  * Detach v4.13.2
+
+-------------------------------------------------------------------
+Mon Jul 24 04:59:55 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 4.13.2:
+  * Prepare release v4.13.2
+  * servercow: fix regression (#1964)
+  * Detach v4.13.1
+
+-------------------------------------------------------------------
+Thu Jul 20 14:34:30 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 4.13.1:
+  * Prepare release v4.13.1
+  * chore: Free Disk Space
+  * Detach v4.13.0
+
+-------------------------------------------------------------------
+Thu Jul 20 14:31:52 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 4.13.0:
+  * Prepare release v4.13.0
+  * Experimental option to force DNS queries to use TCP (#1843)
+  * Add IPv64 as DNS Provider (#1954)
+  * fix: ensure case-insensitive comparison of CNAME records
+    (#1956)
+  * Add Metaname.net as DNS provider (#1952)
+  * azure: new implementation based on the new API client (#1830)
+  * Add DNS provider for Efficient IP (#1945)
+  * Add DNS provider for RcodeZero  (#1947)
+  * cloudflare: update api client to v0.70.0 (#1931)
+  * chore: update dependencies (#1948)
+  * tests: fix flaky
+  * fix: ARI explanationURL (#1944)
+  * fix: list command (#1943)
+  * Detach v4.12.3
+
+-------------------------------------------------------------------
+Thu Jul 20 14:29:07 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 4.12.3:
+  * Prepare release v4.12.3
+  * chore: reduce disk space consumption during release
+  * Detach v4.12.2
+
+-------------------------------------------------------------------
+Tue Jun 20 04:56:19 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 4.12.2:
+  * Prepare release v4.12.2
+  * dnsmadeeasy: fix DeleteRecord (#1939)
+  * fix: read status code from response (#1937)
+  * docs: remove wrong timeout documentation for exec (#1936)
+  * Detach v4.12.1
+
+-------------------------------------------------------------------
+Tue Jun 13 06:09:43 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 4.12.1:
+  * Prepare release v4.12.1
+  * pdns: fix record value (#1929)
+  * chore: update linter (#1927)
+  * Detach v4.12.0
+
+-------------------------------------------------------------------
+Mon May 29 17:56:12 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 4.12.0:
+  * Prepare release v4.12.0
+  * feat: support custom duration for certificate (#1925)
+  * docs: replace godoc.org references
+  * docs: update the list of supported RFC
+  * Initial ACME Renewal Info (ARI) Implementation (#1912)
+  * websupport: simplify errors (#1924)
+  * route53: pass ExternalID property to STS:AssumeRole API
+    operation (#1918)
+  * autodns: fixes wrong zone in api call if CNAME is used (#1923)
+  * docs: add homebrew installation (#1920)
+  * route53: minor correction to documentation (#1916)
+  * doc: improve readme
+  * fix: archive only domain-related files on revoke (#1874)
+  * Add DNS provider for Derak Cloud (#1909)
+  * chore: update linter
+  * chore: refactor clients (#1868)
+  * docs: fix `gdomains`→`googledomains` (#1911)
+  * Detach v4.11.0
+
+-------------------------------------------------------------------
+Wed May 03 04:50:03 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 4.11.0:
+  * Prepare release v4.11.0
+  * feat: support for certificate with raw IP SAN (RFC8738) (#1838)
+  * feat: add LEGO_CERT_PEM_PATH and LEGO_CERT_PFX_PATH to run hook
+    (#1907)
+  * doc: fix wrong env var name (#1908)
+  * Add Brandit.com as DNS provider (#1890)
+  * rimuhosting: fix API base URL (#1894)
+  * ultradns: update link (#1883)
+  * docs: Add ArchLinux package, fix AUR link (#1884)
+  * docs: update dnshomede API documentation (#1871)
+  * Add Google Domains as DNS provider (#1839)
+  * gcloud: update google APIs to latest version (#1866)
+  * chore: replace GetRecord by GetChallengeInfo (#1863)
+  * docs: --help text fixes (#1860)
+  * docs: --pem and --pfx text disambiguation (#1859)
+  * chore: update Pebble (#1857)
+  * feat: add RSA 3072 (#1856)
+  * chore: update linter (#1852)
+  * Add DNS provider for Bunny (#1848)
+  * Add DNS provider for Nodion (#1844)
+  * Add DNS provider for Plesk (#1837)
+  * Detach v4.10.2
+
+-------------------------------------------------------------------
+Sun Feb 26 15:24:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 4.10.2:
+  * Prepare release v4.10.2
+  * chore: use buildx for cross-platform image builds
+  * Detach v4.10.1
+
+-------------------------------------------------------------------
+Sun Feb 26 15:08:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 4.10.1:
+  * Prepare release v4.10.1
+  * acmedns: fix CNAME support (#1847)
+  * dynu: fix subdomain support (#1842)
+  * chore: improve issue templates
+  * Detach v4.10.0
+
+-------------------------------------------------------------------
+Sun Feb 12 06:30:35 UTC 2023 - kastl@b1-systems.de
+
+- BuildRequire go1.19
+- Update to version 4.10.0:
+  * Prepare release v4.10.0
+  * chore: update to go1.19 (#1835)
+  * namesilo: add cleanup before add a DNS record (#1833)
+  * alidns: filter on record type (#1829)
+  * feat: Add DNS provider for Websupport (#1824)
+  * fix: dnsHome.de documentation
+  * Add DNS provider for dnsHome.de (#1821)
+  * hetzner: improve zone ID detection (#1815)
+  * route53: add CLI example (#1814)
+  * gcloud: add CLI example (#1808)
+  * route53: Allow static credentials to be supplied (#1746)
+  * docs: expand description for --dns.resolvers (#1786)
+  * Add DNS provider for UltraDNS (#1806)
+  * pdns: fix usage of notify only when zone kind is Master or
+    Slave  (#1781)
+  * docs: generate CLI help (#1785)
+  * doc: fix cron schedule in example (#1803)
+  * hurricane: fix typo in example command (#1799)
+  * chore: update go-jose package to latest (#1797)
+  * luadns: removed dot suffix from authzone while searching for
+    zone (#1796)
+  * fix: skip reg.ru tests on CI
+  * infomaniak: CNAME support (#1790)
+  * tencentcloud: support punycode domain (#1788)
+  * chore: upgrade actions (#1784)
+  * ibmcloud: add support for subdomains (#1779)
+  * fix: return an error when extracting record name (#1778)
+  * fix: return an error when extracting record name (#1766)
+  * arvancloud: replace arvancloud.com by arvancloud.ir (#1771)
+  * chore: update linter (#1767)
+  * Add DNS provider for Liara (#1741)
+  * Detach v4.9.1
+
+-------------------------------------------------------------------
+Fri Nov 25 20:03:13 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 4.9.1:
+  * Prepare release v4.9.1
+  * cname: add log about CNAME entries (#1764)
+  * fix: CNAME support (#1735)
+  * regru: improve error handling (#1750)
+  * chore: update actions/cache to v3 (#1740)
+  * Route 53: Update IAM policy example to grant least privilege access (#1727)
+  * hurricane: fix CNAME support (#1734)
+  * cname: stop trying to traverse cname if none have been found (#1733)
+  * duckdns: fix CNAME support (#1732)
+  * oraclecloud: use fqdn to resolve zone (#1731)
+  * Detach v4.9.0
+
+-------------------------------------------------------------------
+Tue Oct  4 10:43:22 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire go1.18
+
+-------------------------------------------------------------------
+Tue Oct 04 08:27:16 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 4.9.0:
+  * Prepare release v4.9.0
+  * digitalocean: configurable base URL (#1687)
+  * docs: un-deprecate Yandex (#1719)
+  * feat: take out CNAME support from experimental features (#1718)
+  * luadns: fix cname support (#1717)
+  * Remove embedded issuer certificates from issued certificate if bundle is false (#1655)
+  * gcloud: update golang.org/x/oauth2 (#1673)
+  * pdns: notify secondary servers after updates (#1679)
+  * allinkl: removed deprecated sha1 hashing (#1713)
+  * lib: add recursive CNAME lookup support (#1677)
+  * lightsail: cleanup (#1716)
+  * feat: deprecate Yandex and DNSPod (#1715)
+  * Add DNS provider for CIVO (#1707)
+  * docs: fix typo (#1711)
+  * chore: update dependencies (#1709)
+  * Add DNS provider for VK Cloud (#1706)
+  * chore: update linter (#1708)
+  * Add DNS provider for YandexCloud (#1694)
+  * infoblox: fix documentation
+  * loopia: add configuratble API endpoint (#1704)
+  * infoblox: fix documentation (#1702)
+  * fix: flaky tests (#1701)
+  * feat: update to go1.18 (#1700)
+  * exoscale: migrate to API v2 endpoints (#1682)
+  * sakuracloud: update api client library (#1690)
+  * njalla: fix record id unmarshal error (#1686)
+  * docs: update install from sources (#1688)
+  * tencentcloud: fix subdomain error (#1678)
+  * auroradns: update authentification (#1669)
+  * Detach v4.8.0
+
+-------------------------------------------------------------------
+Fri Jul 01 10:59:13 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 4.8.0:
+  * Prepare release v4.8.0
+  * hetzner: set min TTL to 60s (#1666)
+  * feat: add a --user-agent flag to lego-cli (#1664)
+  * docs: fixed invalid environment parameter name in example (#1662)
+  * docs: new logo (#1660)
+  * cli/renew: skip random sleep if stdout is a terminal (#1659)
+  * docs: refactoring and cleanup (#1658)
+  * feat: sleep at renewal (#1657)
+  * Add DNS provider for Variomedia (#1654)
+  * Add NearlyFreeSpeech DNS Provider (#1652)
+  * Detach v4.7.0
+
+-------------------------------------------------------------------
+Mon May 30 15:04:52 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 4.7.0:
+  * Prepare release v4.7.0
+  * route53: add assume role ARN (#1650)
+  * chore: update CI
+  * Add DNS Provider for IIJ DNS Platform Service (#1646)
+  * vultr: bump client from 2.7.1 to 2.16.0 (#1640)
+  * chore: update logrus (#1639)
+  * Add Vercel DNS provider (#1635)
+  * chore: update CI (#1636)
+  * rfc2136: fix TSIG secret (#1633)
+  * gcore: change dns api url (#1629)
+  * dnsimple: add debug option (#1630)
+  * bluecat: rewrite provider implementation (#1627)
+  * tencentcloud: fix InvalidParameter.DomainInvalid error when using DNS challenges (#1616)
+  * feat: add LEGO_CERT_PEM_PATH and LEGO_CERT_PFX_PATH (#1609)
+  * docs: fix link in the httpreq page (#1602)
+  * fix: panic in certcrypto.ParsePEMPrivateKey (#1596)
+  * docs: fix typos for usage hostingde example (#1595)
+  * chore: migrate to github.com/urfave/cli/v2 (#1590)
+  * chore: add funding
+  * Add DNS provider for iwantmyname (#1588)
+  * docs: fix all-inkl configuration (#1576)
+  * chore: update linter (#1570)
+  * Detach v4.6.0
+
+-------------------------------------------------------------------
+Sat Feb 19 08:53:35 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- first version of package lego: Let's Encrypt/ACME client and library written in Go
