@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 30 20:13:52 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1717018874.26363281:
+  * Bump datatables.net-bs4 from 2.0.7 to 2.0.8
+  * Downgrade single-instance-container to Leap
+  * Avoid long build numbers from taking too much space on dashboard
+
+-------------------------------------------------------------------
 Tue May 28 12:13:51 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1716874663.ccc6eb0d:
