@@ -27,12 +27,22 @@ Release:        0
 Summary:        A widget library for scales
 License:        BSD-3-Clause
 URL:            https://github.com/vidartf/ipyscales
-Source0:        https://files.pythonhosted.org/packages/py2.py3/i/ipyscales/ipyscales-%{mainver}-py2.py3-none-any.whl
+Source0:        https://files.pythonhosted.org/packages/source/i/ipyscales/ipyscales-%{mainver}.tar.gz
+# package-lock.json file generated with command:
+# npm install --package-lock-only --legacy-peer-deps --ignore-scripts
+Source2:        package-lock.json
+# node_modules generated using "osc service mr" with the https://github.com/openSUSE/obs-service-node_modules
+Source3:        node_modules.spec.inc
+%include        %{_sourcedir}/node_modules.spec.inc
 BuildRequires:  %{python_module base >= 3.5}
+BuildRequires:  %{python_module jupyter-packaging}
+BuildRequires:  %{python_module jupyterlab}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  jupyter-rpm-macros
+BuildRequires:  local-npm-registry
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-ipyscales = %{version}
 Requires:       python-ipywidgets >= 7.0.0
@@ -82,26 +92,29 @@ After installation you must run:
 jupyter labextension install @jupyter-widgets/jupyterlab-manager
 
 %prep
-%setup -q -c -T
+%autosetup -p1 -n ipyscales-%{mainver}
+pushd js
+# jupyterlab/builder 3 is too old, in Factory we've version 4
+sed -i 's/builder": "^3/builder": "^4/g' package.json
+sed -i 's/buildutils": "^3/buildutils": "^4/g' package.json
+cp package.json ..
+popd
+local-npm-registry %{_sourcedir} install --include=dev --include=peer
+cp -rf node_modules package-lock.json js
 
-%build
-# must use upstream wheel: npm build requires online connection
-:
+# gh#vidartf/ipyscales#29
+sed -i 's/np.float/float/' ipyscales/tests/test_colorarray.py
 
-%install
-%pyproject_install %{SOURCE0}
-builddir=${PWD}
-%{python_expand # must patch everything after installing from wheel
-pushd %{buildroot}%{$python_sitelib}
-cp ipyscales-%{mainver}.dist-info/LICENSE.txt ${builddir}
 find ipyscales -name '*.py' \
   -exec dos2unix '{}' ';' \
   -exec sed -i '1{/env python/ d}' '{}' ';'
-# gh#vidartf/ipyscales#29
-sed -i 's/np.float/float/' ipyscales/tests/test_colorarray.py
-popd
-}
-%python_compileall
+
+%build
+%pyproject_wheel
+
+%install
+%pyproject_install
+
 %jupyter_move_config
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %fdupes %{buildroot}%{_jupyter_prefix}

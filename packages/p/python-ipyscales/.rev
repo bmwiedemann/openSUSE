@@ -70,4 +70,12 @@
   ipywidgets)</comment>
     <requestid>1155859</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>2837574531488ddf7264e0a0886c7c88</srcmd5>
+    <version>unknown</version>
+    <time>1717186556</time>
+    <user>anag+factory</user>
+    <comment>- Build from source using obs-service-node_modules</comment>
+    <requestid>1177756</requestid>
+  </revision>
 </revisionlist>

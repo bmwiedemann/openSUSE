@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 30 12:37:38 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Build from source using obs-service-node_modules
+
+-------------------------------------------------------------------
 Thu Mar  7 10:54:34 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip python39: no longer supported since ipython 8.19 (through
