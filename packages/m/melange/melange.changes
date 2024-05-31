@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu May 30 11:00:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.8.3:
+  * Disallow duplicate subpackage names
+
+-------------------------------------------------------------------
+Thu May 30 10:43:53 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.8.2:
+  * build(deps): bump chainguard.dev/apko
+  * build(deps): bump gitlab.alpinelinux.org/alpine/go from 0.10.0
+    to 0.10.1
+  * tests: add range priority replacement tests
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/stdout/stdouttrace
+  * build(deps): bump actions/checkout from 4.1.4 to 4.1.6
+  * build(deps): bump step-security/harden-runner from 2.7.1 to
+    2.8.0
+  * schmea: validate priority integer strings, and update schema
+    comment
+  * Add ReplacesPriroity like ProviderPriority, and allow
+    substitutions
+
+-------------------------------------------------------------------
 Wed May 22 19:38:50 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.8.1:
