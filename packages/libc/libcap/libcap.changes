@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May 25 18:00:14 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.70:
+  * setcap changes to make it harder to set invalid file capabilities
+  * Lots of documentation fixes
+  * Fix c89 compilation syntax for the C code in the libraries
+  * libpam has deprecated providing the _pam_overwrite() function,
+    so use memset() instead
+
+-------------------------------------------------------------------
 Tue May 16 08:13:00 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - updated to 2.69

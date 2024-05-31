@@ -1,7 +1,8 @@
 #
 # spec file for package libcap
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +18,15 @@
 
 
 Name:           libcap
-Version:        2.69
+Version:        2.70
 Release:        0
 Summary:        Library for Capabilities (linux-privs) Support
 License:        BSD-3-Clause OR GPL-2.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://sites.google.com/site/fullycapable/
-Source:         https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-%{version}.tar.xz
-Source1:        https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-%{version}.tar.sign
-Source2:        https://git.kernel.org/pub/scm/linux/kernel/git/morgan/libcap.git/plain/pgp.keys.asc#/%{name}.keyring
+Source:         https://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/%{name}-%{version}.tar.xz
+Source1:        https://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/%{name}-%{version}.tar.sign
+Source2:        https://git.kernel.org/pub/scm/libs/libcap/libcap.git/plain/pgp.keys.asc#/%{name}.keyring
 Source3:        baselibs.conf
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel-static
@@ -90,8 +91,7 @@ This package contains utility programs handling capabilities via
 libcap.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -110,10 +110,8 @@ rm %{buildroot}%{_libdir}/libcap.a
 %check
 %make_build %{buildvariables} test
 
-%post -n libcap2 -p /sbin/ldconfig
-%postun -n libcap2 -p /sbin/ldconfig
-%post -n libpsx2 -p /sbin/ldconfig
-%postun -n libpsx2 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libcap2
+%ldconfig_scriptlets -n libpsx2
 
 %files -n libpsx2
 %license License
@@ -124,6 +122,7 @@ rm %{buildroot}%{_libdir}/libcap.a
 %{_libdir}/libcap.so.*
 
 %files progs
+%license License
 %{_mandir}/man1/*
 %{_mandir}/man8/*
 %{_sbindir}/*
@@ -137,6 +136,7 @@ rm %{buildroot}%{_libdir}/libcap.a
 %{_libdir}/libpsx.a
 %{_libdir}/pkgconfig/%{name}.pc
 %{_libdir}/pkgconfig/libpsx.pc
-%{_mandir}/man3/*
+%{_mandir}/man3/*.3%{?ext_man}
+%{_mandir}/man5/*.5%{?ext_man}
 
 %changelog

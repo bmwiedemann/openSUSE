@@ -554,4 +554,17 @@
   - Man page style improvement from Emanuele Torre (forwarded request 1087355 from msmeissn)</comment>
     <requestid>1087357</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>78538bf8fa50828697761f4377bf78ab</srcmd5>
+    <version>2.70</version>
+    <time>1717186517</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.70:
+  * setcap changes to make it harder to set invalid file capabilities
+  * Lots of documentation fixes
+  * Fix c89 compilation syntax for the C code in the libraries
+  * libpam has deprecated providing the _pam_overwrite() function,
+    so use memset() instead</comment>
+    <requestid>1177532</requestid>
+  </revision>
 </revisionlist>
