@@ -1209,4 +1209,22 @@
   * Fix paths with dots issue with content adapters (forwarded request 1174239 from jfkw)</comment>
     <requestid>1174240</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>dd704cd101773fedee00ca8fbc0eff79</srcmd5>
+    <version>0.126.2</version>
+    <time>1717186606</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.126.2:
+  * content adapter: Fix server crash on partial edit
+  * Delete .github/workflows/test-dart-sass-v1.yml
+  * commands: Add shorthand flags -M (--renderToMemory) and -N (--navigateToChanged)
+  * content adapter: Add support for menus in AddPage
+  * content adapter: Fix issue with content starting out with a shortcode
+  * hugolib: Allow override of sitemap file name
+  * commands: Improve list command
+  * config: Remove extraneous BuildConfig setting
+  * tpl/tplimpl: Resolve render hook destinations with leading ./
+  * Also warn about duplicate content paths with --printPathWarnings (forwarded request 1177791 from jfkw)</comment>
+    <requestid>1177792</requestid>
+  </revision>
 </revisionlist>
