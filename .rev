@@ -168,4 +168,12 @@
 - Fix build on Tumbleweed (forwarded request 1034186 from hillwood)</comment>
     <requestid>1034205</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>53888ffbaea0e49cf09033996b3eb135</srcmd5>
+    <version>5.8.27</version>
+    <time>1717186703</time>
+    <user>anag+factory</user>
+    <comment>- Add fix-c++17.patch, icu 75 needs c++17 (forwarded request 1177951 from hillwood)</comment>
+    <requestid>1177952</requestid>
+  </revision>
 </revisionlist>
