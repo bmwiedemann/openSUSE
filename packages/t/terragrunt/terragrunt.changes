@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May 30 11:22:26 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.58.12:
+  * fix: init command on every run (#3167)
+
+-------------------------------------------------------------------
+Thu May 30 11:08:04 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.58.11:
+  * fix: Revert resource class update (#3164)
+  * chore: Bumping CircleCI configs (#3160)
+  * Fixed flaky test `TestTerragruntProviderCache` (#3161)
+
+-------------------------------------------------------------------
 Fri May 24 19:32:35 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.58.10:
