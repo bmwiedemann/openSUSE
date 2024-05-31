@@ -17,15 +17,15 @@
 # needsrootforbuild
 
 
-%define patchversion 6.9.1
+%define patchversion 6.9.3
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
 
 Name:           kernel-obs-qa
-Version:        6.9.1
+Version:        6.9.3
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g0c0b0b5
+Release:        <RELEASE>.g279162a
 %else
 Release:        0
 %endif
