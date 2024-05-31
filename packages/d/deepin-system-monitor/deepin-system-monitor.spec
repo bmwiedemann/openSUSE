@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-system-monitor
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,8 @@ Source1:        %{name}.appdata.xml
 Source2:        %{name}.svg
 # PATCH-FIX-UPSTREAN fix-return-type-errors.patch hillwood@opensuse.org
 Patch0:         fix-return-type-errors.patch
+# PATCH-FIX-UPSTREAN fix-c++17.patch hillwood@opensuse.org - ICU 75 needs c++17
+Patch1:         fix-c++17.patch
 %ifarch ppc ppc64 ppc64le s390 s390x
 BuildRequires:  deepin-desktop-base
 %else

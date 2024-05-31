@@ -1,0 +1,9 @@
+diff -Nur deepin-system-monitor-5.8.27/src/CMakeLists.txt deepin-system-monitor-5.8.27-new/src/CMakeLists.txt
+--- deepin-system-monitor-5.8.27/src/CMakeLists.txt	2022-05-31 14:13:04.000000000 +0800
++++ deepin-system-monitor-5.8.27-new/src/CMakeLists.txt	2024-05-31 21:43:10.875211606 +0800
+@@ -1,4 +1,4 @@
+-set(CMAKE_CXX_STANDARD 11)
++set(CMAKE_CXX_STANDARD 17)
+ set(CMAKE_CXX_STANDARD_REQUIRED True)
+ 
+ set(APP_NAME ${CMAKE_PROJECT_NAME})
