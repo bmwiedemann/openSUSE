@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 21 15:45:51 UTC 2024 - Michael Matz <matz@suse.com>
+
+- Add "-g" to %optflags, so that the tests work in all repos,
+  with or without globally enabled debuginfo creation.
+
+-------------------------------------------------------------------
 Sun Mar 17 17:39:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.191:

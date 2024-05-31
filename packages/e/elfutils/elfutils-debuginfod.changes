@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue May 21 15:45:51 UTC 2024 - Michael Matz <matz@suse.com>
+
+- Add "-g" to %optflags, so that the tests work in all repos,
+  with or without globally enabled debuginfo creation.
+
+-------------------------------------------------------------------
+Sun Mar 17 17:39:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.191:
+  * libdw: dwarf_addrdie now supports binaries lacking a
+    .debug_aranges section.
+  * Improved support for DWARF package files.  Add new
+    function dwarf_cu_dwp_section_info.
+  * debuginfod: Caching eviction logic improvements to improve
+    retention of small/frequent/slow files such as Fedora's
+    vdso.debug.
+  * srcfiles: Can now fetch the source files of a DWARF/ELF file
+    and place them into a zip.
+- drop fix_gcc14_errors.patch (upstream)
+
+-------------------------------------------------------------------
+Tue Mar  5 08:51:07 UTC 2024 - Michal Jireš <michal.jires@suse.com>
+
+- Add fix_gcc14_errors.patch (bsc#1220464)
+
+-------------------------------------------------------------------
 Tue Jan  9 08:47:09 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Update to version 0.190

@@ -1128,4 +1128,12 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
   order to fulfil SLPP violation.</comment>
     <requestid>1158795</requestid>
   </revision>
+  <revision rev="113" vrev="2">
+    <srcmd5>509d74ee4e2e585a02014333692aa83c</srcmd5>
+    <version>0.191</version>
+    <time>1717186515</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1177390</requestid>
+  </revision>
 </revisionlist>

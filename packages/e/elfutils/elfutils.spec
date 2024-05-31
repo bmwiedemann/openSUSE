@@ -152,8 +152,11 @@ The package is dummy.
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+# tests need debug info enabled (boo#1031556) but some repos don't
+# do that by default.  Some others do (when debuginfo is globally enabled)
+# so just enable this always, for all compilations
+%global optflags %{optflags} -g
 export CFLAGS="%optflags -Werror=date-time"
-CFLAGS+=" -g" # tests need debug info enabled (boo#1031556)
 %ifarch %sparc
 # Small PIC model not sufficient
 CFLAGS+=" -fPIC"
