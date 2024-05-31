@@ -1138,4 +1138,12 @@ Update to version 4.7.1 (forwarded request 1115956 from danishprakash)</comment>
 - Fix for CVE-2024-3727 (bsc#1224122) (forwarded request 1173229 from danishprakash)</comment>
     <requestid>1173579</requestid>
   </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>d3ce8381a7708300e803f9f62017ca7c</srcmd5>
+    <version>5.1.0</version>
+    <time>1717186523</time>
+    <user>anag+factory</user>
+    <comment>Update to version 5.1.0 (forwarded request 1177679 from danishprakash)</comment>
+    <requestid>1177691</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,290 @@
 -------------------------------------------------------------------
+Thu May 30 05:32:21 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 5.1.0:
+  * Bump to v5.1.0
+  * Release notes for v5.1
+  * Add configuration for podmansh
+  * [v5.1] Bump c/* for vendor dance
+  * test/e2e: fix new error message
+  * Add Hyper-V option in windows installer
+  * Only stop chowning volumes once they're not empty
+  * remote API: restore v4 payload in container inspect
+  * Fix windows action trigger
+  * Update podman network docs
+  * Add Rosetta support for Apple Silicon mac
+  * fix incorrect host.containers.internal entry for rootless bridge mode
+  * vendor latest c/common main
+  * Bump to v5.1.0-dev
+  * Bump to v5.1.0-rc1
+  * Add release notes for v5.1.0 (preliminary)
+  * `podman events`: check for an error after we finish reading events
+  * Fix updating connection when SSH port conflict happens
+  * rootless: fix reexec to use /proc/self/exe
+  * ExitWithError() - enforce required exit status & stderr
+  * ExitWithError() - a few that I missed
+  * [skip-ci] Packit: use only one value for `packages` key for `trigger: commit` copr builds
+  * Revert "Temporarily disable rootless debian e2e testing"
+  * CI tests: enforce TMPDIR on tmpfs
+  * use new CI images with tmpfs /tmp
+  * run e2e test on tmpfs
+  * Update module github.com/crc-org/crc/v2 to v2.36.0
+  * Address CVE-2024-3727
+  * [CI:DOCS] Use checkout@v4 in GH Actions
+  * ExitWithError() - rmi_test
+  * ExitWithError() - more r files
+  * ExitWithError() - s files
+  * ExitWithError() - more run_xxx tests
+  * Fix podman-remote support for `podman farm build`
+  * [CI:DOCS] Trigger windows installer action properly
+  * Revert "container stop: kill conmon"
+  * Ensure that containers do not get stuck in stopping
+  * [CI:DOCS] Improvements to make validatepr
+  * ExitWithError() - rest of the p files
+  * [CI:DOCS] Update dependency golangci/golangci-lint to v1.58.1
+  * Graceful shutdown during podman kube down
+  * test/system: fix broken "podman volume globs" test
+  * Quadlet/Container: Add GroupAdd option
+  * Don't panic if a runtime was configured without paths
+  * update c/{buildah,common,image,storage} to latest main
+  * update golangci-lint to 1.58
+  * machine: Add LibKrun provider detection
+  * ExitWithError() - continue tightening
+  * fix(deps): update module google.golang.org/protobuf to v1.34.1
+  * test: improve test for powercap presence
+  * fix(deps): update module go.etcd.io/bbolt to v1.3.10
+  * fix(deps): update module golang.org/x/tools to v0.21.0
+  * [skip-ci] RPM: `bats` required only on Fedora
+  * fix(deps): update module golang.org/x/exp to v0.0.0-20240506185415-9bf2ced13842
+  * gpdate and remove parameter settings in `.golangci.yml`
+  * ExitWithError() - play_kube_test.go
+  * Temporarily disable rootless debian e2e testing
+  * fix(deps): update module golang.org/x/crypto to v0.23.0
+  * CI Docs: Clarify passthrough_envars() comments
+  * Skip machine tests if they don't need to be run
+  * Update CI VMs to F40, F39, D13
+  * ExitWithError() - v files
+  * Update module golang.org/x/term to v0.20.0
+  * machine: Add provider detection API
+  * util: specify a not empty pause dir for root too
+  * Add missing option 'healthy' to output of `podman run --help`
+  * [CI:DOCS] Add info on the quay.io images to the README.md
+  * Add a random suffix to healthcheck unit names
+  * test/e2e: remove toolbox image
+  * Also substitute $HOME in runlabel with user's homedir
+  * Update module github.com/cyphar/filepath-securejoin to v0.2.5
+  * ExitWithError() - pod_xxx tests
+  * ExitWithError() -- run_test.go
+  * Update module golang.org/x/exp to v0.0.0-20240416160154-fe59bbe5cc7f
+  * Update module github.com/shirou/gopsutil/v3 to v3.24.4
+  * Update module github.com/docker/docker to v26.1.1+incompatible
+  * GHA: Attempt fix exceeded a secondary rate limit
+  * vendor ginkgo 2.17.2 into test/tools
+  * Fix machine volumes with long path and paths with dashes
+  * Update module google.golang.org/protobuf to v1.34.0
+  * Update module github.com/crc-org/crc/v2 to v2.35.0
+  * Update module github.com/onsi/gomega to v1.33.1
+  * test/e2e: podman unshare image mount fix tmpdir leak
+  * test/e2e: do not leak /tmp/private_file
+  * test/e2e: "persistentVolumeClaim with source" do not leak file
+  * e2e tests: use /var/tmp, not $TMPDIR, as workdirs
+  * Update dependency pytest to v8.1.2
+  * Remove unncessary lines at the end of specfile summary
+  * Clean machine pull cache
+  * Add krun support to podman machine
+  * Use custom image for make validatepr
+  * test/e2e: force systemd cgroup manager
+  * e2e and bindings tests: fix $PATH setup
+  * Makefile: remove useless HACK variable in e2e test
+  * test/e2e: fix volumes and suid/dev/exec options
+  * test/e2e: volumes and suid/dev/exec options works remote
+  * test/e2e: fix limits test
+  * Update module github.com/rootless-containers/rootlesskit/v2 to v2.1.0
+  * Correct option name `ip` -> `ip6`
+  * Add the ability to automount images as volumes via play
+  * Add support for image volume subpaths
+  * Bump Buildah to latest main
+  * Update Makefile to Go 1.22 for in-container
+  * ExitWithError() - yet more low-hanging fruit
+  * ExitWithError() - more low-hanging fruit
+  * ExitWithError() - low-hanging fruit
+  * chore: fix function names in comment
+  * Remove redundant Prerequisite before build section
+  * Remove PKG_CONFIG_PATH
+  * Add installation instructions for openSUSE
+  * Replace golang.org/x/exp/slices with slices from std
+  * Update to go 1.21
+  * fix(deps): update module github.com/docker/docker to v26.1.0+incompatible
+  * [CI:DOCS] Fix artifact action
+  * [skip-ci] Packit/rpm: remove el8 jobs and spec conditionals
+  * e2e tests: stop littering
+  * [CI:DOCS] format podman-pull example as code
+  * [CI:DOCS] Build & upload release artifacts with GitHub Actions
+  * libpod: getHealthCheckLog() remove unessesary check
+  * add containers.conf healthcheck_events support
+  * vendor latest c/common
+  * libpod: make healthcheck events more efficient
+  * libpod: wrap store setup error message
+  * [skip-ci] Packit: enable CentOS 10 Stream build jobs
+  * pkg/systemd: use fileutils.(Le|E)xists
+  * pkg/bindings: use fileutils.(Le|E)xists
+  * pkg/util: use fileutils.(Le|E)xists
+  * pkg/trust: use fileutils.(Le|E)xists
+  * pkg/specgen: use fileutils.(Le|E)xists
+  * pkg/rootless: use fileutils.(Le|E)xists
+  * pkg/machine: use fileutils.(Le|E)xists
+  * pkg/domain: use fileutils.(Le|E)xists
+  * pkg/api: use fileutils.(Le|E)xists
+  * libpod: use fileutils.(Le|E)xists
+  * cmd: use fileutils.(Le|E)xists
+  * vendor: update containers/{buildah,common,image,storage}
+  * fix(deps): update module github.com/docker/docker to v26.0.2+incompatible [security]
+  * fix podman-pod-restart.1.md typo
+  * [skip-ci] Packit: switch to EPEL instead of centos-stream+epel-next
+  * fix(deps): update module github.com/onsi/gomega to v1.33.0
+  * Add more annnotation information to podman kupe play man page
+  * test/compose: remove compose v1 code
+  * CI: remove compose v1 tests
+  * [CI:DOCS] Fix windows installer action
+  * fix(deps): update module tags.cncf.io/container-device-interface to v0.7.2
+  * add `list` as an alias to list networks
+  * Add support for updating restart policy
+  * Add Compat API for Update
+  * Make `podman update` changes persistent
+  * Emergency fix (well, skip) for failing bud tests
+  * fix swagger doc for manifest create
+  * [CI:DOCS] options/network: fix markdown lists
+  * Makefile: do not hardcode `GOOS` in `podman-remote-static` target
+  * chore(deps): update module golang.org/x/crypto to v0.17.0 [security]
+  * chore(deps): update dependency setuptools to ~=69.5.0
+  * Fix some comments
+  * swagger fix infinitive recursion on some types
+  * install swagger from source
+  * Revert "Swap out javascript engine"
+  * podman exec CID without command should exit 125
+  * (minor) prefetch systemd image before use
+  * Update go-swagger version
+  * Swap out javascript engine
+  * fix(deps): update module github.com/docker/docker to v26.0.1+incompatible
+  * Add os, arch, and ismanifest to libpod image list
+  * [CI:DOCS]Initial PR validation
+  * fix(deps): update github.com/containers/gvisor-tap-vsock digest to d744d71
+  * vendor ginkgo 2.17.1 into test/tools
+  * fix "concurrent map writes" in network ls compat endpoint
+  * chore(deps): update dependency pytest to v8
+  * e2e: redefine ExitWithError() to require exit code
+  * docs: fix missleading run/create --expose description
+  * podman ps: show exposed ports under PORTS as well
+  * rootless: drop function ReadMappingsProc
+  * fix(deps): update module github.com/vbauerster/mpb/v8 to v8.7.3
+  * New CI VMs, to give us pasta 2024-04-05
+  * Add big warning to GHA workflow
+  * GHA: Fix intermittent workflow error
+  * fix(deps): update module golang.org/x/tools to v0.20.0
+  * e2e tests: remove requirement for fuse-overlayfs
+  * docs: update Quadlet volume Options desc
+  * fix(deps): update module golang.org/x/sync to v0.7.0
+  * Fix relabeling failures with Z/z volumes on Mac
+  * fix(deps): update module golang.org/x/net to v0.24.0
+  * Makefile: fix annoying errors in docs generation
+  * chore: fix function names in comment
+  * Bump tags.cncf.io/container-device-interface to v0.7.1
+  * fix(deps): update module golang.org/x/crypto to v0.22.0
+  * Detect unhandled reboots and require user intervention
+  * podman --runroot: remove 50 char length restriction
+  * update github.com/rootless-containers/rootlesskit to v2
+  * Update module github.com/gorilla/schema to v1.3.0
+  * Update dependency requests-mock to ~=1.12.1
+  * Update module github.com/crc-org/crc/v2 to v2.34.1
+  * rm --force work for more than one arg
+  * [CI:DOCS] Update kube docs
+  * fix(deps): update module github.com/shirou/gopsutil/v3 to v3.24.3
+  * [CI:DOCS] Add GitHub action to update version on Podman.io
+  * [CI:DOCS] Update dependency golangci/golangci-lint to v1.57.2
+  * Windows: clean up temporary perl install
+  * pkg/util: FindDeviceNodes() ignore ENOENT errors
+  * [CI:DOCS] build deps: make-validate needs docs
+  * test/system: add rootless-netns test for setup errors
+  * vendor latest c/common main
+  * container: do not chown to dest target with U
+  * [CI:DOCS] golangci-lint: update deprecated flags
+  * systests: conditionalize slirp4netns tests
+  * CI: systests: instrument flaky tests
+  * s3fs docs
+  * test: do not skip tests under rootless
+  * Add note about host networking to Kube PublishPort option
+  * Inject additional build tags from the environment
+  * libpod: use original IDs if idmap is provided
+  * Switch back to checking out the same branch the action script runs in
+  * docs/podman-login: Give an example of writing the persistent path
+  * CI: Bump VMs to 2024-03-28
+  * [skip-ci] Update dawidd6/action-send-mail action to v3.12.0
+  * fix(deps): update module github.com/openshift/imagebuilder to v1.2.7
+  * Fix reference to deprecated types.Info
+  * Use logformatter for podman_machine_windows_task
+  * applehv: Print vfkit logs in --log-level debug
+  * [CI:DOCS]Add Mario to reviewers list
+  * [CI:DOCS] Document CI-maintenance job addition
+  * Add golang 1.21 update warning
+  * Add rootless network command to `podman info`
+  * libpod: don't warn about cgroupsv1 on FreeBSD
+  * hyperv: error if not admin
+  * Properly parse stderr when updating container status
+  * [skip-ci] Packit: specify fedora-latest in propose-downstream
+  * Use built-in ssh impl for all non-pty operations
+  * Add support for annotations
+  * hyperv: fix machine rm -r
+  * [skip-ci] Packit: Enable CentOS Stream 10 update job
+  * 5.0 release note fix typo in cgroupv1 env var
+  * fix remote build isolation on client side
+  * chore: remove repetitive words
+  * Dont save remote context in temp file but stream and extract
+  * fix remote build isolation when server runs as root
+  * util: use private propagation with bind
+  * util: add some tests for ProcessOptions
+  * util: refactor ProcessOptions into an internal function
+  * util: rename files to snake case
+  * Add LoongArch support for libpod
+  * fix(deps): update github.com/containers/common digest to bc5f97c
+  * [CI:DOCS] Update dependency golangci/golangci-lint to v1.57.1
+  * fix(deps): update module github.com/docker/docker to v25.0.5+incompatible [security]
+  * fix(deps): update module github.com/onsi/gomega to v1.32.0
+  * [CI:DOCS] Update dependency golangci/golangci-lint to v1.57.0
+  * Update module github.com/cpuguy83/go-md2man/v2 to v2.0.4
+  * Fix type-o
+  * Use correct extension in suite
+  * minikube: instrument tests, to allow debugging failures
+  * libpod: restart always reconfigure the netns
+  * use new c/common pasta2 setup logic to fix dns
+  * utils: drop conversion float->string->float
+  * utils: do not generate duplicate range
+  * logformatter: handle Windows logs
+  * utils: add test for the new function
+  * utils: move rootless code to a new function
+  * CVE-2024-1753 fix for main
+  * xref-helpmsgs-manpages: cross-check Commands.rst
+  * test/system: Add support for multipath routes in pasta networking tests
+  * [skip-ci] rpm: use macro supported vendoring
+  * Adjust to the standard location of gvforwarder used in new images
+  * Makefile: add target `podman-remote-static`
+  * Switch to 5.x WSL machine os stream using new automation
+  * Cleanup build scratch dir if remote end disconnects while passing the context
+  * bump main to 5.1.0-dev
+  * Use faster gzip for compression for 3x speedup for sending large contexts to remote
+  * pkg/machine: make checkExclusiveActiveVM race free
+  * pkg/machine/wsl: remove unused CheckExclusiveActiveVM()
+  * pkg/machine: CheckExclusiveActiveVM should also check for starting
+  * pkg/machine: refresh config after we hold lock
+  * Update dependency setuptools to ~=69.2.0
+  * [skip-ci] rpm: update containers-common dep on f40+
+  * fix invalid HTTP header values when hijacking a connection
+  * Add doc to build podman on windows without MSYS
+  * Removing CRI-O related annotations
+  * fix(deps): update module github.com/containers/ocicrypt to v1.1.10
+  * Pass the restart policy to the individual containers
+  * kube play: always pull when both imagePullPolicy and tag are missing
+
+-------------------------------------------------------------------
 Fri May 10 18:10:00 UTC 2024 - danish.prakash@suse.com
 
 - Update to version 5.0.3:
