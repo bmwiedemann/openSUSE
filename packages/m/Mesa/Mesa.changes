@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 23 11:05:09 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to bugfix release 24.0.8
+  --> https://docs.mesa3d.org/relnotes/24.0.8.html
+- refreshed 0008-pipe-loader-plumb-a-flag-for-implicit-driver-load-th.patch
+
+-------------------------------------------------------------------
 Thu May 16 10:38:33 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 -  Update to bugfix release 24.0.7

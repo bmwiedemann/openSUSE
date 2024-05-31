@@ -24,10 +24,10 @@ Subject: [PATCH 8/9] pipe-loader: plumb a flag for implicit driver load
  src/gallium/tests/trivial/tri.c                   | 2 +-
  17 files changed, 25 insertions(+), 21 deletions(-)
 
-Index: mesa-24.0.3/src/gallium/auxiliary/pipe-loader/pipe_loader.c
+Index: mesa-24.0.8/src/gallium/auxiliary/pipe-loader/pipe_loader.c
 ===================================================================
---- mesa-24.0.3.orig/src/gallium/auxiliary/pipe-loader/pipe_loader.c
-+++ mesa-24.0.3/src/gallium/auxiliary/pipe-loader/pipe_loader.c
+--- mesa-24.0.8.orig/src/gallium/auxiliary/pipe-loader/pipe_loader.c
++++ mesa-24.0.8/src/gallium/auxiliary/pipe-loader/pipe_loader.c
 @@ -169,11 +169,12 @@ pipe_loader_get_driinfo_xml(const char *
  }
  
@@ -54,10 +54,10 @@ Index: mesa-24.0.3/src/gallium/auxiliary/pipe-loader/pipe_loader.c
  }
  
  struct util_dl_library *
-Index: mesa-24.0.3/src/gallium/auxiliary/pipe-loader/pipe_loader.h
+Index: mesa-24.0.8/src/gallium/auxiliary/pipe-loader/pipe_loader.h
 ===================================================================
---- mesa-24.0.3.orig/src/gallium/auxiliary/pipe-loader/pipe_loader.h
-+++ mesa-24.0.3/src/gallium/auxiliary/pipe-loader/pipe_loader.h
+--- mesa-24.0.8.orig/src/gallium/auxiliary/pipe-loader/pipe_loader.h
++++ mesa-24.0.8/src/gallium/auxiliary/pipe-loader/pipe_loader.h
 @@ -88,17 +88,19 @@ pipe_loader_probe(struct pipe_loader_dev
   *
   * \param dev Device the screen will be created for.
@@ -80,10 +80,10 @@ Index: mesa-24.0.3/src/gallium/auxiliary/pipe-loader/pipe_loader.h
  
  /**
   * Ensures that the driconf option cache has been parsed for the driver.
-Index: mesa-24.0.3/src/gallium/auxiliary/vl/vl_winsys_dri.c
+Index: mesa-24.0.8/src/gallium/auxiliary/vl/vl_winsys_dri.c
 ===================================================================
---- mesa-24.0.3.orig/src/gallium/auxiliary/vl/vl_winsys_dri.c
-+++ mesa-24.0.3/src/gallium/auxiliary/vl/vl_winsys_dri.c
+--- mesa-24.0.8.orig/src/gallium/auxiliary/vl/vl_winsys_dri.c
++++ mesa-24.0.8/src/gallium/auxiliary/vl/vl_winsys_dri.c
 @@ -459,7 +459,7 @@ vl_dri2_screen_create(Display *display,
        goto free_authenticate;
  
@@ -93,10 +93,10 @@ Index: mesa-24.0.3/src/gallium/auxiliary/vl/vl_winsys_dri.c
  
     if (!scrn->base.pscreen)
        goto release_pipe;
-Index: mesa-24.0.3/src/gallium/auxiliary/vl/vl_winsys_dri3.c
+Index: mesa-24.0.8/src/gallium/auxiliary/vl/vl_winsys_dri3.c
 ===================================================================
---- mesa-24.0.3.orig/src/gallium/auxiliary/vl/vl_winsys_dri3.c
-+++ mesa-24.0.3/src/gallium/auxiliary/vl/vl_winsys_dri3.c
+--- mesa-24.0.8.orig/src/gallium/auxiliary/vl/vl_winsys_dri3.c
++++ mesa-24.0.8/src/gallium/auxiliary/vl/vl_winsys_dri3.c
 @@ -843,7 +843,7 @@ vl_dri3_screen_create(Display *display,
     free(geom_reply);
  
@@ -106,10 +106,10 @@ Index: mesa-24.0.3/src/gallium/auxiliary/vl/vl_winsys_dri3.c
  
     if (!scrn->base.pscreen)
        goto release_pipe;
-Index: mesa-24.0.3/src/gallium/auxiliary/vl/vl_winsys_drm.c
+Index: mesa-24.0.8/src/gallium/auxiliary/vl/vl_winsys_drm.c
 ===================================================================
---- mesa-24.0.3.orig/src/gallium/auxiliary/vl/vl_winsys_drm.c
-+++ mesa-24.0.3/src/gallium/auxiliary/vl/vl_winsys_drm.c
+--- mesa-24.0.8.orig/src/gallium/auxiliary/vl/vl_winsys_drm.c
++++ mesa-24.0.8/src/gallium/auxiliary/vl/vl_winsys_drm.c
 @@ -47,7 +47,7 @@ vl_drm_screen_create(int fd)
        return NULL;
  
@@ -119,10 +119,10 @@ Index: mesa-24.0.3/src/gallium/auxiliary/vl/vl_winsys_drm.c
  
     if (!vscreen->pscreen)
        goto release_pipe;
-Index: mesa-24.0.3/src/gallium/frontends/clover/core/device.cpp
+Index: mesa-24.0.8/src/gallium/frontends/clover/core/device.cpp
 ===================================================================
---- mesa-24.0.3.orig/src/gallium/frontends/clover/core/device.cpp
-+++ mesa-24.0.3/src/gallium/frontends/clover/core/device.cpp
+--- mesa-24.0.8.orig/src/gallium/frontends/clover/core/device.cpp
++++ mesa-24.0.8/src/gallium/frontends/clover/core/device.cpp
 @@ -163,7 +163,7 @@ namespace {
  
  device::device(clover::platform &platform, pipe_loader_device *ldev) :
@@ -132,10 +132,10 @@ Index: mesa-24.0.3/src/gallium/frontends/clover/core/device.cpp
     if (pipe && pipe->get_param(pipe, PIPE_CAP_COMPUTE)) {
        const bool has_supported_ir = supports_ir(PIPE_SHADER_IR_NATIVE) ||
                                      supports_ir(PIPE_SHADER_IR_NIR_SERIALIZED);
-Index: mesa-24.0.3/src/gallium/frontends/dri/dri2.c
+Index: mesa-24.0.8/src/gallium/frontends/dri/dri2.c
 ===================================================================
---- mesa-24.0.3.orig/src/gallium/frontends/dri/dri2.c
-+++ mesa-24.0.3/src/gallium/frontends/dri/dri2.c
+--- mesa-24.0.8.orig/src/gallium/frontends/dri/dri2.c
++++ mesa-24.0.8/src/gallium/frontends/dri/dri2.c
 @@ -2382,7 +2382,7 @@ dri2_init_screen(struct dri_screen *scre
     (void) mtx_init(&screen->opencl_func_mutex, mtx_plain);
  
@@ -144,7 +144,7 @@ Index: mesa-24.0.3/src/gallium/frontends/dri/dri2.c
 +      pscreen = pipe_loader_create_screen(screen->dev, implicit);
  
     if (!pscreen)
-        goto fail;
+        return NULL;
 @@ -2438,7 +2438,7 @@ dri_swrast_kms_init_screen(struct dri_sc
  
  #ifdef HAVE_DRISW_KMS
@@ -154,11 +154,11 @@ Index: mesa-24.0.3/src/gallium/frontends/dri/dri2.c
  #endif
  
     if (!pscreen)
-Index: mesa-24.0.3/src/gallium/frontends/dri/drisw.c
+Index: mesa-24.0.8/src/gallium/frontends/dri/drisw.c
 ===================================================================
---- mesa-24.0.3.orig/src/gallium/frontends/dri/drisw.c
-+++ mesa-24.0.3/src/gallium/frontends/dri/drisw.c
-@@ -562,7 +562,7 @@ drisw_init_screen(struct dri_screen *scr
+--- mesa-24.0.8.orig/src/gallium/frontends/dri/drisw.c
++++ mesa-24.0.8/src/gallium/frontends/dri/drisw.c
+@@ -564,7 +564,7 @@ drisw_init_screen(struct dri_screen *scr
        success = pipe_loader_sw_probe_dri(&screen->dev, lf);
  
     if (success)
@@ -166,12 +166,12 @@ Index: mesa-24.0.3/src/gallium/frontends/dri/drisw.c
 +      pscreen = pipe_loader_create_screen(screen->dev, implicit);
  
     if (!pscreen)
-       goto fail;
-Index: mesa-24.0.3/src/gallium/frontends/dri/kopper.c
+       return NULL;
+Index: mesa-24.0.8/src/gallium/frontends/dri/kopper.c
 ===================================================================
---- mesa-24.0.3.orig/src/gallium/frontends/dri/kopper.c
-+++ mesa-24.0.3/src/gallium/frontends/dri/kopper.c
-@@ -131,7 +131,7 @@ kopper_init_screen(struct dri_screen *sc
+--- mesa-24.0.8.orig/src/gallium/frontends/dri/kopper.c
++++ mesa-24.0.8/src/gallium/frontends/dri/kopper.c
+@@ -133,7 +133,7 @@ kopper_init_screen(struct dri_screen *sc
        success = pipe_loader_vk_probe_dri(&screen->dev);
  
     if (success)
@@ -179,11 +179,11 @@ Index: mesa-24.0.3/src/gallium/frontends/dri/kopper.c
 +      pscreen = pipe_loader_create_screen(screen->dev, implicit);
  
     if (!pscreen)
-       goto fail;
-Index: mesa-24.0.3/src/gallium/frontends/lavapipe/lvp_device.c
+       return NULL;
+Index: mesa-24.0.8/src/gallium/frontends/lavapipe/lvp_device.c
 ===================================================================
---- mesa-24.0.3.orig/src/gallium/frontends/lavapipe/lvp_device.c
-+++ mesa-24.0.3/src/gallium/frontends/lavapipe/lvp_device.c
+--- mesa-24.0.8.orig/src/gallium/frontends/lavapipe/lvp_device.c
++++ mesa-24.0.8/src/gallium/frontends/lavapipe/lvp_device.c
 @@ -1101,7 +1101,7 @@ lvp_physical_device_init(struct lvp_phys
     }
     device->pld = pld;
@@ -193,10 +193,10 @@ Index: mesa-24.0.3/src/gallium/frontends/lavapipe/lvp_device.c
     if (!device->pscreen)
        return vk_error(instance, VK_ERROR_OUT_OF_HOST_MEMORY);
     for (unsigned i = 0; i < ARRAY_SIZE(device->drv_options); i++)
-Index: mesa-24.0.3/src/gallium/frontends/xa/xa_tracker.c
+Index: mesa-24.0.8/src/gallium/frontends/xa/xa_tracker.c
 ===================================================================
---- mesa-24.0.3.orig/src/gallium/frontends/xa/xa_tracker.c
-+++ mesa-24.0.3/src/gallium/frontends/xa/xa_tracker.c
+--- mesa-24.0.8.orig/src/gallium/frontends/xa/xa_tracker.c
++++ mesa-24.0.8/src/gallium/frontends/xa/xa_tracker.c
 @@ -172,7 +172,7 @@ xa_tracker_create(int drm_fd)
  	return NULL;
  
@@ -206,10 +206,10 @@ Index: mesa-24.0.3/src/gallium/frontends/xa/xa_tracker.c
  
      if (!xa->screen)
  	goto out_no_screen;
-Index: mesa-24.0.3/src/gallium/include/pipe/p_screen.h
+Index: mesa-24.0.8/src/gallium/include/pipe/p_screen.h
 ===================================================================
---- mesa-24.0.3.orig/src/gallium/include/pipe/p_screen.h
-+++ mesa-24.0.3/src/gallium/include/pipe/p_screen.h
+--- mesa-24.0.8.orig/src/gallium/include/pipe/p_screen.h
++++ mesa-24.0.8/src/gallium/include/pipe/p_screen.h
 @@ -806,6 +806,7 @@ struct pipe_screen {
   * Global configuration options for screen creation.
   */
@@ -218,10 +218,10 @@ Index: mesa-24.0.3/src/gallium/include/pipe/p_screen.h
     struct driOptionCache *options;
     const struct driOptionCache *options_info;
  };
-Index: mesa-24.0.3/src/gallium/targets/d3dadapter9/drm.c
+Index: mesa-24.0.8/src/gallium/targets/d3dadapter9/drm.c
 ===================================================================
---- mesa-24.0.3.orig/src/gallium/targets/d3dadapter9/drm.c
-+++ mesa-24.0.3/src/gallium/targets/d3dadapter9/drm.c
+--- mesa-24.0.8.orig/src/gallium/targets/d3dadapter9/drm.c
++++ mesa-24.0.8/src/gallium/targets/d3dadapter9/drm.c
 @@ -242,7 +242,7 @@ drm_create_adapter( int fd,
          return D3DERR_DRIVERINTERNALERROR;
      }
@@ -240,10 +240,10 @@ Index: mesa-24.0.3/src/gallium/targets/d3dadapter9/drm.c
      else {
          /* Use the hardware for sw rendering */
          ctx->swdev = ctx->dev;
-Index: mesa-24.0.3/src/gallium/tests/trivial/quad-tex.c
+Index: mesa-24.0.8/src/gallium/tests/trivial/quad-tex.c
 ===================================================================
---- mesa-24.0.3.orig/src/gallium/tests/trivial/quad-tex.c
-+++ mesa-24.0.3/src/gallium/tests/trivial/quad-tex.c
+--- mesa-24.0.8.orig/src/gallium/tests/trivial/quad-tex.c
++++ mesa-24.0.8/src/gallium/tests/trivial/quad-tex.c
 @@ -97,7 +97,7 @@ static void init_prog(struct program *p)
  	assert(ret);
  
@@ -253,10 +253,10 @@ Index: mesa-24.0.3/src/gallium/tests/trivial/quad-tex.c
  	assert(p->screen);
  
  	/* create the pipe driver context and cso context */
-Index: mesa-24.0.3/src/gallium/tests/trivial/tri.c
+Index: mesa-24.0.8/src/gallium/tests/trivial/tri.c
 ===================================================================
---- mesa-24.0.3.orig/src/gallium/tests/trivial/tri.c
-+++ mesa-24.0.3/src/gallium/tests/trivial/tri.c
+--- mesa-24.0.8.orig/src/gallium/tests/trivial/tri.c
++++ mesa-24.0.8/src/gallium/tests/trivial/tri.c
 @@ -91,7 +91,7 @@ static void init_prog(struct program *p)
  	assert(ret);
  
@@ -266,10 +266,10 @@ Index: mesa-24.0.3/src/gallium/tests/trivial/tri.c
  	assert(p->screen);
  
  	/* create the pipe driver context and cso context */
-Index: mesa-24.0.3/src/gallium/frontends/rusticl/mesa/pipe/device.rs
+Index: mesa-24.0.8/src/gallium/frontends/rusticl/mesa/pipe/device.rs
 ===================================================================
---- mesa-24.0.3.orig/src/gallium/frontends/rusticl/mesa/pipe/device.rs
-+++ mesa-24.0.3/src/gallium/frontends/rusticl/mesa/pipe/device.rs
+--- mesa-24.0.8.orig/src/gallium/frontends/rusticl/mesa/pipe/device.rs
++++ mesa-24.0.8/src/gallium/frontends/rusticl/mesa/pipe/device.rs
 @@ -20,7 +20,7 @@ impl PipeLoaderDevice {
      }
  
