@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May 31 14:35:50 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.35.1:
+  * Wayland: Fix a regression in 0.34 that caused the tab bar to not render in
+    second and subsequent OS Windows under Hyprland (#7413)
+  * Fix a regression in the previous release that caused horizontal scrolling
+    via touchpad in fullscreen applications to be reversed on non-Wayland
+    platforms (#7475, #7481)
+  * Fix a regression in the previous release causing an error when setting
+    background_opacity to zero (#7483)
+  * Image display: Fix cursor movement and image hit region incorrect for
+    image placements that specify only a number of rows or columns to display
+    in (#7479)
+
+-------------------------------------------------------------------
 Sat May 25 14:52:32 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Updating vendor.tar.gz
