@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May 30 08:59:06 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.14.5:
+  * fix: redact URLs in config marshaling
+  * bump go-apk
+
+-------------------------------------------------------------------
+Thu May 30 08:52:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.14.4:
+  * go mod tidy
+  * bump go-apk
+
+-------------------------------------------------------------------
 Sat May 25 15:08:37 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.14.3:
