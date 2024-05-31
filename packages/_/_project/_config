@@ -7,7 +7,7 @@ BuildFlags: genmetaalgo:1
 # The prjconf macros have a serial to help work around issues like https://github.com/openSUSE/open-build-service/issues/4088
 # On macros having impact on dep chains, update the serial (mainly ruby, python)
 # Using a date to indicate when we set the serial
-ExpandFlags: macroserial:20240516
+ExpandFlags: macroserial:20240529
 
 ExpandFlags: kiwi-nobasepackages
 ExpandFlags: docker-nobasepackages
@@ -87,6 +87,8 @@ Macros:
 %packager https://bugs.opensuse.org
 :Macros
 %endif
+
+BuildFlags: excludebuild:installation-images:Slowroll
 
 %if "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:ARM" || "%_project" == "openSUSE:Factory:Rebuild" || "%_project" == "openSUSE:Factory:Live" || "%_project" == "openSUSE:Factory:NonFree" || "%_project" == "openSUSE:Factory:LegacyX86"
 Substitute: kiwi-image:docker python3-kiwi kiwi-systemdeps-containers container-build-checks-vendor-openSUSE container-build-checks-strict
