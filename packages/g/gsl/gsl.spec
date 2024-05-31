@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package gsl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,9 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname gsl
-%define vers 2.7.1
-%define _vers 2_7_1
-%define lgsl_so_v   27
+%define vers 2.8
+%define _vers 2_8_0
+%define lgsl_so_v   28
 %define lgslcblas_so_v 0
 
 %if "%{flavor}" == ""
@@ -122,7 +122,6 @@ Source1:        https://ftp.gnu.org/pub/gnu/%{pname}/%{pname}-%{version}.tar.gz.
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=gsl&download=1#/%{pname}.keyring
 Patch6:         gsl-qawc-test-x86-precision.diff
 Patch7:         gsl-disable-fma.patch
-Patch8:         989a193268b963aa1047814f7f1402084fb7d859.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -131,7 +130,7 @@ BuildRequires:  pkgconfig
 %if %{without hpc}
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 %else
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  lua-lmod
@@ -219,7 +218,7 @@ high level languages.
 Summary:        Documentation for the GNU Scientific Library
 Group:          Documentation/Other
 Requires(post): %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
+Requires(preun): %{install_info_prereq}
 BuildArch:      noarch
 
 %description    doc
@@ -260,7 +259,6 @@ library packages.
 %setup -q -n %{pname}-%{version}
 %patch -P 6
 %patch -P 7 -p1
-%patch -P 8 -p1
 
 %build
 
