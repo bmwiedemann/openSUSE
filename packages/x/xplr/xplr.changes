@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May 23 16:14:34 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.21.8:
+  * Added vim-like scrolling as the default scrolling method. Set
+    xplr.config.general.paginated_scrolling = true to disable
+  * Added xplr.config.general.scroll_padding config option to set the padding
+    in vim-like scrolling
+  * Fixed some color rendering issues
+  * Added feature flag so that xplr can be built with system Lua
+  * Fixed ScrollUpHalf behavior.
+  * xplr.util.lscolor() won't return nil anymore.
+  * Arguments passed to the custom dynamic layout Lua function will include
+    scrolltop field.
+  * Fixed node_type resolution for directories with . in their name
+  * Dependency updates.
+
+-------------------------------------------------------------------
 Thu Mar 21 22:44:53 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 0.21.7:

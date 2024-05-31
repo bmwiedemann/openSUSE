@@ -17,7 +17,7 @@
 
 
 Name:           xplr
-Version:        0.21.7
+Version:        0.21.8
 Release:        0
 Summary:        TUI file explorer
 License:        MIT
