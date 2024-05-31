@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 30 11:32:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.27.4:
+  * fix: panics on command initialsation (#4322) (#4323)
+
+-------------------------------------------------------------------
+Thu May 30 09:36:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.27.3:
+  * [Backport release-2.27] fix panic when inferring stack with
+    empty image (#4318)
+
+-------------------------------------------------------------------
 Tue May 21 18:17:43 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.27.2:
