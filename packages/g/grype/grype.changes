@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu May 30 09:30:59 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.78.0:
+  * update syft to v1.5.0 (#1897)
+  * chore(deps): bump docker/login-action from 3.1.0 to 3.2.0
+    (#1896)
+  * Update syft to 1.4.2-0.20240528141306-ac34808b9c55 (#1895)
+  * chore(deps): bump github.com/charmbracelet/lipgloss (#1888)
+  * chore(deps): bump github.com/hashicorp/go-version from 1.6.0 to
+    1.7.0 (#1887)
+  * chore(deps): update tools to latest versions (#1891)
+  * chore(deps): bump github.com/charmbracelet/bubbletea (#1890)
+  * chore(deps): bump github.com/gabriel-vasile/mimetype from 1.4.3
+    to 1.4.4 (#1889)
+  * chore(deps): update tools to latest versions (#1883)
+  * feat: add config command (#1876)
+  * disable TUI for simpler commands (#1872)
+  * chore(deps): bump github.com/docker/docker (#1867)
+  * chore(deps): bump actions/checkout from 4.1.5 to 4.1.6 (#1868)
+  * chore(deps): update tools to latest versions (#1864)
+  * chore(deps): bump github/codeql-action from 2.13.4 to 3.25.6
+    (#1870)
+  * chore(deps): bump anchore/sbom-action from 0.15.11 to 0.16.0
+    (#1871)
+  * chore(deps): update tools to latest versions (#1862)
+  * chore: add top level permissions to new workflow (#1860)
+  * chore(deps): update tools to latest versions (#1856)
+  * chore(deps): bump actions/checkout from 4.1.4 to 4.1.5 (#1858)
+  * chore(deps): bump ossf/scorecard-action from 2.3.1 to 2.3.3
+    (#1859)
+  * fix: ask catalog for package rather than type asserting (#1857)
+
+-------------------------------------------------------------------
 Sun May 12 07:52:24 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - add completion subpackages
