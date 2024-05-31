@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May 30 18:11:20 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20240530.1.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20240530.1
+  * Fix 3.1.6 version definition by @rafaelfranca in #2397
+- Update to version 20240530.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20240530
+  * Mark Ruby 3.0.7 as unsupported by @CamJN in #2386
+  * Mark Ruby 3.0 as EOL by @mislav in #2388
+  * Truncate teeny version from dev definitions by @hsbt in #2389
+  * Add Ruby 3.3.2 by @k0kubun in #2396
+  * Add CRuby release 3.1.6 by @sferik in #2395
+
+-------------------------------------------------------------------
 Fri May 17 13:22:26 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20240517.
