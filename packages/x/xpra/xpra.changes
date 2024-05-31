@@ -1,4 +1,361 @@
 -------------------------------------------------------------------
+Thu May 23 15:00:36 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.1+git20240523.91f77fa9:
+  * ignore all spaces
+  * ignore spaces
+  * #4064 add more prominent link to 'configure'
+  * detect utf8 clipboard text and handle it correctly (#4233)
+  * remove duplicate enums
+  * silence some deprecation warnings
+  * skip warning when openh264 decoder rounds up image dimensions to 16
+  * fix staticmethod signature
+  * add Corning to the list of sponsors
+  * simplify: reconfig once after tweaking all the settings
+  * #4235 add missing python-cairo dependency
+  * 4235 verify that cairo is available before enabling sync-xvfb
+  * #4235 make it possible to call without cairo / pango installed
+  * oops: another duplicated tag
+  * use jpeg modified Rec. 601
+  * #3837 switch to full-range BT.601 colorspace transform
+  * type hints
+  * cosmetic
+  * also handle generic types at this layer
+  * #3837 openh264 uses bFullRange=0 by default
+  * csc options must be a typedict
+  * paint callbacks take arguments, ImageWrapper.free does not
+  * accept more generic types
+  * #3837 add color range metadata to frames
+  * add type hints
+  * add type hints
+  * bandwidth-limit should always be an int
+  * decoders now also require options
+  * add type hints + show shaders when ran from the cmd line
+  * cosmetic
+  * better opaque region warning message
+  * require all keys to be strings, update tests to match
+  * UnicodeError is a ValueError
+  * missed from 5c1d036e6da3d8053730d16fb32ff50af8290767, add type hints
+  * missed test updates from 5c1d036e6da3d8053730d16fb32ff50af8290767
+  * simplify codecs: always require options as a typedict
+  * help decoders with colorspace information
+  * incorrect call to compress image
+  * failure tests fail for the wrong reason
+  * #4232 handle byte strings in 'Gtk' clipboard backend
+  * remove unused method
+  * minor type fixes
+  * simplify: remove unused arguments
+  * device is a string
+  * icon_filename should be a string
+  * function must match signature of 'flush_then_close'
+  * simplify + type hints, also fixes dubious sonarqube 'chained expression' warning
+  * cosmetic + type hints
+  * 'start_client' already calls init_ui
+  * parse opengl probe properties early
+  * cosmetic
+  * #4204 fixup 90a26b79a96281b22440018c236c551fc8c2798f: can't have the same field twice
+  * add quic support to launcher
+  * #4223 improvements and fixes
+  * cosmetic
+  * correct type hint for functions that never return
+  * DBusHelper can throw a 'dbus.exceptions.DBusException'
+  * #4222 native chooser for saving session info graphs
+  * fixup garbled commit 4b2e113888df4bf58214292257b792cb7092b151
+  * need a tuple to be able to concatenate them
+  * strong type hints for http script responses
+  * app_name must be a string
+  * better sequence / iterable type hints
+  * more type hints
+  * include the contents of nvidia proc file when we fail to parse it
+  * silence 'DeprecationWarning: ssl NPN is deprecated, use ALPN instead'
+  * simplify
+  * missed during refactoring
+  * simplify
+  * use original 'general' channel, not the duplicate one..
+  * fix discord invite link, again
+  * simplify paint call context
+  * warn users that this syntax is deprecated
+  * consistent return value
+  * don't log packet stats for audio
+  * remove support for ancient GStreamer versions
+  * more type hints
+  * linter warnings find bugs, fix low hanging fruits
+  * log the correct variable
+  * explicit return statement
+  * remove unused 'scaled-size'
+  * silence invalid ctypes warnings
+  * add type hints
+  * simplify: paint rgb should always work, raise an exception if not
+  * match refactoring that removed scheduler
+  * silence invalid ctypes linter warning
+  * add type hints
+  * it should be safe to read the mmap data from a non-ui thread
+  * fix type hint
+  * #4210 only use native chooser when force enabled
+  * don't log EOF on server start as an error
+  * better / more detailed logging
+  * don't log backtrace by default
+  * add hint
+  * new type of error encountered when explorer.exe has crashed
+  * make it clearer that this will upload a file
+  * #4210 use native file choose dialog on win32 and macos
+  * 'new_stream' is a signal handler, use a more explicit return value
+  * 'plugins' may not be exposed, 'sources' should be
+  * the wrapped_object's start method now returns a boolean indicating success
+  * newer versions may not use 'wants' flag
+  * more type hints
+  * handle double barrelled feature names correctly
+  * wait just a little bit for the splash process to terminate
+  * hide the splash screen when showing a dialog
+  * #4198 make it clearer that the command is missing
+  * more fixups for 431145386dede6e0dd71a02987a3aa4c7dfc3604
+  * match changes from 431145386dede6e0dd71a02987a3aa4c7dfc3604 in unit test
+  * #4198 try harder to show any error message, even garbled
+  * #4198 before we decode it, this is a byte string
+  * use GLib directly
+  * remove long unused feature
+  * respect python PATH
+  * minor sonarqube warnings
+  * #4210 deprecation warnings
+  * jhbuild: update instructions for 'local modulesets'.
+  * fix updating version in spec file
+  * add type hints
+  * script didn't bump the version here
+  * smarter auto refresh encoding selection
+  * really avoid scaling with text, but don't discard the option
+  * improve error messages, use set to simplify
+  * cosmetic and type hints
+  * #4209 make it possible to not prefer csc scaling
+  * #4209 support YUV scaling of yuv input before converting to RGB
+  * use cairo scaling if none of the csc modules can handle it
+  * fix parsing of scaling values as percentages
+  * better audio source setup error messages
+  * #2467 forgot to update the spinner to use a shader
+  * 'glGetProgramInfoLog' and 'glGetShaderInfoLog' return byte strings
+  * indirection not needed
+  * make it possible to force the spinners on opengl windows
+  * make spinner window types configurable
+  * remove duplicated method, just check availability of redraw_spinners
+  * move subprocess exec env to a re-usable function
+  * we don't need glBegin or glEnd
+  * calling init_gdk_display_source will load Gtk / Gdk
+  * oops: set_source_version was not updating this file
+  * also bump version in pyproject.toml
+  * #4204 try to tell dpkg to remove or upgrade xpra-codecs first
+  * also handle updating the '__version_info__' value
+  * prevent overloading check_file_size from file transfer mixin
+  * remove unused sequence argument to draw_region
+  * stronger type hints for draw options
+  * the callbacks are only used when painting
+  * bump subcommand timeout on arm and riscv, in one place
+  * pandoc also runs slowly on emulated arm / riscv
+  * missed from c7b12a61d8aa9b9fa9900c9fce13183d21e293fd
+  * more detailed csc 'nomatch' error messages
+  * split package check into a reusable function
+  * handle missing PIL more gracefully
+  * quic type hints
+  * wrongly modified by pycharm refactoring in c7b12a61d8aa9b9fa9900c9fce13183d21e293fd
+  * add 'x11' as an alias for 'native' on Posix
+  * ensure 'zerocopy' flag is a boolean
+  * stronger type hints
+  * arm builds can take longer than 30 seconds to run add_build_info
+  * forgot to bump version in both
+  * remove more mostly redundant calls to bytestostr
+  * use 'x11' prefix for all X11 signals
+  * this should no longer be needed
+  * merge gtk_x11 and gtk3 modules into one
+  * add note and link about abstract sockets
+  * with rencodeplus most calls to bytestostr should not be needed
+  * nasm 2.16.03
+  * pytools 2024.1.2
+  * uinput 1.0.1
+  * wheel 0.43.0
+  * pynvml 12.550.52
+  * latest Xcode can't include stdlib.h without emitting warnings..
+
+-------------------------------------------------------------------
+Thu Apr 25 14:22:59 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.0+git20240425.177f2546:
+  * bump version
+  * cosmetic: use correct time unit in logging
+  * update date in release notes
+  * fixup ddb72e154ace71f913ac01391b48281f3b6ca40b: only modify 'use_display' variable when shadowing or expanding
+  * also verify display in 'monitor' mode
+  * #4198 use utf8 for sending messages to the splash window
+  * #4199 never start a display in proxy or shadow mode
+  * #4200 fix breakage introduced by 13288d42587ca532e5a0e8e0a235207002bd6f7d
+  * #3964 honour the csc modes specified by the client
+  * fail fast when testing decoders with junk data
+  * include [enc/dec]oder name in buffer error messages
+  * cosmetic
+  * add a fairly dumb decoder chooser
+  * fix infinite recursion on exit
+  * silence tons of Gtk warnings
+  * cosmetic
+  * missed from 130ac206b688d0bcb6c7f3bfcaf25d21a10ffc3d
+  * switch to pycallgraph2
+  * make it possible to not clean stdout / stderr on exit
+  * use the same force_quit method for all clients
+  * minor type hint fixes
+  * always return a string
+  * add some type hints
+  * more resilient: handle missing stdin
+  * any exit code means the process has ended, even zero
+  * better debug logging
+  * #4195 / #3822 destroying windows is not safe
+  * sync-xvfb=None is a valid option which means 'auto'
+  * sync-xvfb broke because of the changes for #3822
+  * no need to generate /etc/xpra/xpra.conf
+  * #3964 automatically switch to GStreamer 'stream' mode
+  * remove ffmpeg encoder remnants
+  * only switch to stream if the gpu accelerated encoding can be used
+  * doh: remove test code
+  * simplify
+  * only use the convert_templates() function for '/etc/xpra/conf.d' files
+  * this file has already been removed
+  * remove reference to outdated xxhash source files
+  * don't include any 'venv' in source distribution
+  * derp
+  * only apply substitutions to '*.in' files
+  * seems that the Debian Trixie riscv64 images are missing
+  * skip warning if 'nvcc' is not installed
+  * undo non-cosmetic changes from f73adec572e1751677b8a59072fdab3aa593b1ee that broke the build
+  * fixup for b9cc4b9bfbf5249c4c10c638d8919ace51ee9794 use list to append
+  * cosmetic: skip warning if 'nvcc' is not installed
+  * switch to 'stream' encoding if we have a GPU encoder
+  * convert decoders to use the same spec interface as encoders
+  * prefer immutable type, which is what we get from typedict
+  * fix cython compilation warnings: No exception value declared
+  * cleanup: move pillow imagegrab function
+  * simplify video and csc initialization
+  * bail out before acquiring the lock
+  * stop using deprecated 'Screen', just use 'Monitor'
+  * cosmetic hint fixes
+  * can't convert ctypes HANDLE to a number easily
+  * add type hints and simplify logging
+  * add missing argument (new shadow constructor)
+  * simplify
+  * minor linter fixes
+  * oops: missed when renamed variable
+  * mypy and type hint fixes
+  * #3667 the server auth test finally runs OK on the CI, at last
+  * #3667 also show client output
+  * #3667 oops: missed from 001d596afa5ef59492ded00568bae615f49f26a5
+  * also nice-ify the warning
+  * fix mypy warnings: missing expected attribute 'get_allocated_size'
+  * oops: only the value can be used as an int
+  * minor type hints / mypy fixes
+  * better type hints for connection messages
+  * #3667 python <= 3.10 workaround for StrEnum
+  * more type hints
+  * oops
+  * more mypy fixes
+  * raise exception instead of returning None
+  * missed from da092b94a5f99628487821747029819ce63cd7ef
+  * don't shadow HANDLE
+  * oops: missed from 04465efa2e7e51bc129bd766514c551c868553e2
+  * fix 'truth value of an array...' error
+  * move KeyEvent to keyboard
+  * more mypy / type hints fixes
+  * add type hint
+  * doh: just use the wrapper to handle bytes safely
+  * minor mypy warnings
+  * proc_to_channle should use the write function specified
+  * can't add memoryviews, but we can join them
+  * don't shadow the variable we're iterating
+  * make mypy happy: the return type is already correct
+  * mypy: use a valid 'Callable' rather than a None value
+  * mypy: don't use None default value for string
+  * the method returns a flag to indicate changes were made
+  * get_hash returns a string
+  * avoid mypy warning logging binary string
+  * mypy: specify type just once
+  * simplify: callback is never None
+  * remove unused vars
+  * user name must be a string, decode it
+  * typo
+  * mypy fix: use an explicit Callable, not a hidden one
+  * mypy fix: simplify, can't have a 'target_rgb' without PIL
+  * remove outdated comment: vpx encoder does support YUV444P
+  * add debug logging
+  * log message when forced to switch encoding
+  * slightly stronger type hints
+  * remove redundant statement
+  * remove compat shim for old evdi lib versions
+  * more type hints
+  * do test openh264 on CI
+  * simplify: 'position' is removed from the size hints
+  * egg-info is a directory
+  * ##3667 the server auth test still fails
+  * 'position' is removed from the hints and stored in 'requested-position'
+  * set initial position when WM_NORMAL_HINTS request it
+  * #3667 show server log on failure
+  * #3667 add more diagnostics
+  * try to make it look less 'disabled'
+  * the server tests no longer fail
+  * use bind=noabstract to force authentication
+  * fix ssl test
+  * use the more specific ssl failure exit code
+  * better ssl debug logging
+  * lots of linter warning, better debug logging, etc
+  * forgot asset used by opengl configure dialog
+  * 'format_frame_summary' requires Python 3.11
+  * doh: verify the output
+  * YUV444P to rgb cannot use scaling
+  * remove unused statement replaced by fallback call
+  * make utility functions reusable
+  * forgot to update expand server
+  * fix relative link
+  * pycharm table formatting
+  * type hints and cosmetic changes
+  * add type hints
+  * silence more ctypes array pycharm bug
+  * simplify: use shutil.which
+  * minor linter warnings
+  * stricter exception type
+  * use absolute links
+  * #4188 ugly Wayland popup workaround
+  * must use a valid format value
+  * #298 expose x11 window 'parent'
+  * update type hint to match code
+  * update docstring to match code
+  * keep the same strict type
+  * simpler naming
+  * downgrade to info, since Wayland clients trigger it
+  * forgot to update these shadow servers
+  * more minor linter warnings
+  * more pycharm grammar fixes
+  * more minor linter warnings
+  * fix deprecation warning
+  * fix deprecation warning
+  * pycharm grammar fixes
+  * fixup 89d3a42f4744e9ceae2d2be3208801ccd77e9ce7: don't redefine the type hints
+  * fix unwanted change in 8336e66405d31ced7f388a483367d67e1ab31ac6: do copy the dictionary
+  * simplify + stronger types
+  * stronger type for refresh-rate: must be an int
+  * #4064 hide unfinished GUIs
+  * silence linter warnings
+  * cosmetic linter warnings
+  * match the signature of the noop in main tree
+  * don't shadow the file object
+  * we now require Python 3.10, remove workaround
+  * remove unused vars
+  * refactoring: convert methods to functions
+  * we lookup commands as strings
+  * cosmetic (no change): missing return statement
+  * force int type rather than hinting it
+  * silence ctypes array pycharm bug
+  * clipboard 'format' is a number
+  * more correct type hint: Sequence supports len()
+  * this is readable, the "simplified" version is not
+  * pycharm reformats the tables
+  * 404 link
+  * honour font argument
+  * remove duplicate patterns
+  * fix save-to-file error on sample with no data
+
+-------------------------------------------------------------------
 Sat Apr 06 23:03:01 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 6.0+git20240406.e2d97e37:

@@ -9,17 +9,19 @@
         tag=v4.4 but setup.py returns 6.0 as a
         result of:
           $ grep __version__ xpra/xpra/__init__.py
-      * Now (20240206):
+      * Now (20240523):
           $ grep -r __version_info__ .
           ...
-          ./xpra/__init__.py:__version_info__ = (6, 0)
+          ./xpra/__init__.py:__version_info__ = (6, 1)
           ...
     -->
-    <!-- DEFAULT PATTERN
+    <!-- DEFAULT versionrewrite-pattern
     <param name="versionrewrite-pattern">v(.*)</param>
     -->
-    <param name="versionrewrite-pattern">v4.4</param>
-    <param name="versionrewrite-replacement">6.0</param>
+    <!-- REPLACEMENT versionrewrite-pattern
+    -->
+    <param name="versionrewrite-pattern">v6.0</param>
+    <param name="versionrewrite-replacement">6.1</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual"/>
