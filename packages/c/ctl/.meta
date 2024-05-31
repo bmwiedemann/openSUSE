@@ -1,0 +1,5 @@
+<package name="ctl" project="openSUSE:Factory">
+  <title>ctl</title>
+  <description></description>
+  <devel project="graphics" package="ctl"/>
+</package>
