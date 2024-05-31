@@ -1021,4 +1021,41 @@ Bug Fixes
   (boo#1220025, accidentally discovered via boo#1220024) (forwarded request 1147358 from cboltz)</comment>
     <requestid>1148113</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>4c0fa34249f47dbb6ae3cc9714261b88</srcmd5>
+    <version>3.2.4</version>
+    <time>1717186706</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2.4
+  Configuration changes
+  * Better handle backslashes in strings in the configuration files.
+    If the configuration items contain backslashes, then behavior may change.
+    However, the previous behavior didn't work as expected,
+    and therefore is not likely to be used.
+  * reject_delay no longer applies to proxied packets. All servers
+    should now set reject_delay = 1 for security and scalability.
+  * %{randstr:...} now returns the requested amount of data,
+    instead of one too many bytes.
+  Feature Improvements
+  * Preliminary support for TEAP.
+  * Update EAP module pre_proxy checks to make them less restrictive
+    This prevents the &quot;middle box&quot; effect from affecting future traffic.
+  * Many fixes and updates for Docker images.
+  * Add dpsk module. See mods-available/dpsk.
+  * Print out what cause the TLS operations to be made, such as the EAP
+    method name (peap, ttls, etc), or RADIUS/TLS listen / proxy socket.
+  * Add auto_escape to sample SQL module config.
+  * Add 'if not exists' to mysql create table queries.
+  * Update dictionary.aruba; add dictionary.tplink, dictionary.alphion.
+  * Allow for 'encrypt=1' attributes to be longer than 128 characters.
+  * Added &quot;radsecret&quot; program which generates strong secrets.
+    See the top of the &quot;clients.conf&quot; file for more information.
+  * radclient now prints packets as hex when using -xxx.
+  * Added &quot;-t timeout&quot; to radsniff. It will stop processing packets
+    after &lt;timeout&gt; seconds.
+  * Support &quot;interface = ...&quot; on OSX and other *BSD which have IP_BOUND_IF.
+  * The detail module now has a &quot;dates_as_integer&quot; configuration item
+    See mods-available/detail for more information.</comment>
+    <requestid>1177967</requestid>
+  </revision>
 </revisionlist>

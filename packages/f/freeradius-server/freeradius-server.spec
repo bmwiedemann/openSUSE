@@ -18,7 +18,7 @@
 
 %define unitname radiusd
 Name:           freeradius-server
-Version:        3.2.3
+Version:        3.2.4
 Release:        0
 
 # Disable FreeTDS on SLE12. We never shipped it enabled with FreeTDS.
@@ -296,7 +296,6 @@ rm %{buildroot}%{_sysconfdir}/raddb/certs/*.pem
 rm %{buildroot}%{_sysconfdir}/raddb/certs/*.p12
 rm %{buildroot}%{_sysconfdir}/raddb/certs/index.*
 rm %{buildroot}%{_sysconfdir}/raddb/certs/serial*
-rm %{buildroot}%{_sysconfdir}/raddb/certs/dh
 rm doc/source/.gitignore
 rm %{buildroot}%{_sbindir}/rc.radiusd
 rm -r %{buildroot}%{_datadir}/doc/freeradius*
@@ -388,6 +387,8 @@ done
 %{_sysconfdir}/raddb/certs/Makefile
 %{_sysconfdir}/raddb/certs/passwords.mk
 %{_sysconfdir}/raddb/certs/README.md
+%dir %attr(755,radiusd,radiusd) %{_sysconfdir}/raddb/certs/realms/
+%{_sysconfdir}/raddb/certs/realms/README.md
 %{_sysconfdir}/raddb/certs/xpextensions
 %{_sysconfdir}/raddb/panic.gdb
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/certs/*.cnf
@@ -487,6 +488,7 @@ done
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/dhcp_sql
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/dhcp_sqlippool
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/digest
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/dpsk
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/dynamic_clients
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/eap
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/echo
@@ -622,6 +624,7 @@ done
 %{_libdir}/freeradius/rlm_detail.so
 %{_libdir}/freeradius/rlm_dhcp.so
 %{_libdir}/freeradius/rlm_digest.so
+%{_libdir}/freeradius/rlm_dpsk.so
 %{_libdir}/freeradius/rlm_dynamic_clients.so
 %{_libdir}/freeradius/rlm_eap.so
 %{_libdir}/freeradius/rlm_eap_fast.so
@@ -631,6 +634,7 @@ done
 %{_libdir}/freeradius/rlm_eap_peap.so
 %{_libdir}/freeradius/rlm_eap_pwd.so
 %{_libdir}/freeradius/rlm_eap_sim.so
+%{_libdir}/freeradius/rlm_eap_teap.so
 %{_libdir}/freeradius/rlm_eap_tls.so
 %{_libdir}/freeradius/rlm_eap_ttls.so
 %{_libdir}/freeradius/rlm_exec.so
