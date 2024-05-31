@@ -22,7 +22,7 @@ Index: fde-tools-0.7.2/Makefile
  FIRSTBOOTDIR	= $(DATADIR)/jeos-firstboot
  FDE_HELPER_DIR	= $(LIBEXECDIR)/fde
 -RPM_MACRO_DIR	= /etc/rpm
-++RPM_MACRO_DIR	?= /etc/rpm
++RPM_MACRO_DIR	?= /etc/rpm
  FIDO_LINK	= -lfido2 -lcrypto
  CRPYT_LINK	= -lcryptsetup -ljson-c
  TOOLS		= fde-token fdectl-grub-tpm2

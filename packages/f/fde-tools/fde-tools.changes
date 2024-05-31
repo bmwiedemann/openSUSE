@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 30 06:53:32 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Fix fde-tools-change-rpm-macro-dir.patch which didn't set
+  RPM_MACRO_DIR correctly
+
+-------------------------------------------------------------------
 Tue May  7 05:53:20 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add fde-tools-bsc1223771-firstboot-make-Pass-phrase-mandatory.patch
