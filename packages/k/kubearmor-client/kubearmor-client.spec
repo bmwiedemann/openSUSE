@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kubearmor-client
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        KubeArmor cli tool aka kArmor
 License:        Apache-2.0
@@ -74,7 +74,7 @@ BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || dat
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags="-s -w \
+   -ldflags=" \
    -X github.com/kubearmor/kubearmor-client/selfupdate.GitCommit=v%{version} \
    -X github.com/kubearmor/kubearmor-client/selfupdate.GitSummary=v%{version} \
    -X github.com/kubearmor/kubearmor-client/selfupdate.GitBranch=main  \

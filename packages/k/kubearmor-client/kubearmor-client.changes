@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu May 30 10:43:25 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.2:
+  * fix(probe): directly ftech kubearmor pods from k8s api instead
+    of listing nodes
+  * Feat: added postUpdate option in Renovate for go tidy (#429)
+  * use go1.21
+  * nitfix: keep command in code block
+  * Remove usage of sudo to install kubearmor-client
+  * fix(deps): update module helm.sh/helm/v3 to v3.14.3
+  * chore(deps): update helm/kind-action action to v1.9.0
+  * Update: Scorecard to latest version
+  * fix(deps): update module github.com/docker/docker to
+    v25.0.5+incompatible [security]
+  * chore(deps): update dependency jquery to v3.7.1
+  * chore(deps): update actions/checkout action to v3.6.0
+
+-------------------------------------------------------------------
+Thu Apr 18 07:59:02 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- do not strip aka remove -s -w ldflags
+
+-------------------------------------------------------------------
 Sat Mar 30 10:17:44 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.2.1:
