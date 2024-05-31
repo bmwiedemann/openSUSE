@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu May 30 09:34:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.7.4:
+  * Remove feature from changelog as it's still blocked on #769
+    (#1006)
+  * V1.7.4 changelog (#1001)
+  * Update typo in supported_languages_and_lockfiles.md (#998)
+  * feat: support comparing Alpine versions locally (#980)
+  * Now that we have updated to go1.21.10, we can remove the ignore
+    line from osv-scanner.toml (#996)
+  * chore(deps): update workflows (major) (#897)
+  * fix(deps): update osv-scanner minor (#994)
+  * chore(deps): update alpine docker tag to v3.20 (#993)
+  * Update test snapshots (#992)
+  * test: add cases for output functions (#937)
+  * fix(deps): update osv-scanner minor (#978)
+  * Add a new Maven pom.xml extractor (#982)
+  * feat: support parsing `gradle/verification-metadata.xml` (#943)
+  * chore(deps): update workflows (#977)
+  * chore(deps): update golang:1.21-alpine3.19 docker digest to
+    1c2e474 (#985)
+  * chore(deps-dev): Bump the bundler group across 1 directory with
+    2 updates (#983)
+  * make Maven parent path relative on current project (#987)
+  * Fix snapshots and alpine version (#990)
+  * Update deps.dev dependencies (#984)
+  * [docs] Add installation instructions for FreeBSD and NetBSD
+    (#969)
+  * Disable all unimportant vulnerabilities (#968)
+  * GR: Add test universe generation script and tests for patch
+    generation (#967)
+
+-------------------------------------------------------------------
 Thu May 09 07:20:31 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.7.3:
