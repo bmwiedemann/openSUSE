@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue May 28 00:00:00 UTC 2024 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com>
+
+- Update to version 5.12.1:
+  * gradient backgrounds in saved images larger than the render
+    window are now correct.
+  * support for ospray is checked only when ospray rendering is
+    requested.
+  * cached geometry is discarded whenever an animation keyframe is
+    edited.
+  * coloring by partial field data arrays now works correctly.
+  * the reflect filter on triangle strips now produces correct
+    cells.
+  * slicing image data with multiple components now correctly
+    copies all components to the output.
+  * fixed a crash when loading an unstructured grid containing a
+    vtk_convex_point_set from a vtu file.
+  * removed spurious warning message when the integrate variables
+    filter was applied to an empty dataset.
+  * the legacy ghost cells generator filter, which was deprecated
+    in paraview 5.10 and removed in paraview 5.11, has been added
+    back.
+  * the gradient filter had a thread race condition fixed
+  * vtk xml file format readers no longer fail when building
+    paraview against expat 2.6.0.
+  * saving a multiblock dataset file (vtm) in parallel now uses
+    only rank 0 to create a subdirectory instead of all ranks
+    trying and one rank winning.
+  * fixed state saving option when a remote server crashes.
+  * error reporting when creating extracts directory fails now
+    includes the full path of the directory whose creation failed.
+  * More info at
+    <https://www.kitware.com/paraview-5-12-1-release-notes/>.
+
+-------------------------------------------------------------------
 Wed Mar 07 00:00:00 UTC 2024 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com>
 
 - Update to version 5.12.0:

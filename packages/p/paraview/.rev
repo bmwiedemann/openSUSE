@@ -538,4 +538,12 @@ Please consider for 13.2, which already has 4.2.0-RC1 and the only change is the
 </comment>
     <requestid>1156449</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>ec8173f2166073bc26d2be1a06e9d03d</srcmd5>
+    <version>5.12.1</version>
+    <time>1717186537</time>
+    <user>anag+factory</user>
+    <comment>Update to version 5.12.1</comment>
+    <requestid>1177721</requestid>
+  </revision>
 </revisionlist>

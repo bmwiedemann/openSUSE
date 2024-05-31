@@ -44,7 +44,7 @@
 
 %define __builder ninja
 Name:           paraview
-Version:        %{short_ver}.0
+Version:        %{short_ver}.1
 Release:        0
 Summary:        Data analysis and visualization application
 License:        BSD-3-Clause
