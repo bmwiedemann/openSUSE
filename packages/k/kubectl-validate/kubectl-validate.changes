@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Thu May 30 09:35:00 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.0.4:
+  * add test to enforce that we always have builtin schemas for
+    linked k8s version
+  * account for new signature on CRD NewStrategy
+  * update vendor
+  * bump deps to 0.30
+  * better test error
+  * Created gif example Edit README to include gif
+  * chore: add windows tests (#120)
+  * Ignore empty documents.
+  * ignore non-crds given in crds directory
+  * add apiregistration schema
+  * bump default version to 1.30
+  * add go generate command to generate schema definitions
+  * update builtin schemas
+  * fix --context typo in readme
+  * Apply suggestions from code review
+  * Allow `--local-crds` flag to receive multiple values
+  * Bump github.com/stretchr/testify from 1.8.4 to 1.9.0
+  * Bump the kubernetes group with 4 updates
+  * add dependabot to kubectl-validate
+  * update to go 1.21
+  * Added client-go auth plugins
+
+-------------------------------------------------------------------
+Mon May 06 11:43:39 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.0.3:
+  * added issue template
+  * added k8s pr template
+  * added pr template
+  * fix incorrect map passed to strategy
+  * revert to Go 1.21
+  * fix go version
+  * fix go version
+  * Return the error that ReadDir returns in localSchemasClient.Paths
+  * fix: install goreleaser with go tools
+
+-------------------------------------------------------------------
+Mon May  6 11:42:55 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package kubectl-validate: local validation of resources for
+  native Kubernetes types and CRDs

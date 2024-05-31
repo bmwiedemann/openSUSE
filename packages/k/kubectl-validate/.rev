@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5f110de401874ba389980447a5859eab</srcmd5>
+    <version>0.0.4</version>
+    <time>1717186543</time>
+    <user>anag+factory</user>
+    <comment>new package kubectl-validate: local validation of resources for native Kubernetes types and CRDs</comment>
+    <requestid>1177726</requestid>
+  </revision>
+</revisionlist>

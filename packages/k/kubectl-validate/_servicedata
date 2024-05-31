@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/kubernetes-sigs/kubectl-validate</param>
+              <param name="changesrevision">fac15fd6e47976df8585fe18a73246d78642eab9</param></service></servicedata>

@@ -1,0 +1,5 @@
+<package name="kubectl-validate" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:kubic" package="kubectl-validate"/>
+</package>
