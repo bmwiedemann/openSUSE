@@ -2850,6 +2850,10 @@ unsorted:
   - csync2 
   - ctdb 
   - ctdb-pcp-pmda 
+  - ctl 
+  - ctl-data 
+  - ctl-devel 
+  - ctl-doc 
   - ctop 
   - ctre-devel 
   - ctris 
@@ -7878,11 +7882,11 @@ unsorted:
   - gsl-gnu-hpc 
   - gsl-gnu-hpc-devel 
   - gsl-gnu-hpc-doc 
-  - gsl_2_7_1-gnu-hpc 
-  - gsl_2_7_1-gnu-hpc-devel 
-  - gsl_2_7_1-gnu-hpc-doc 
-  - gsl_2_7_1-gnu-hpc-examples 
-  - gsl_2_7_1-gnu-hpc-module 
+  - gsl_2_8_0-gnu-hpc 
+  - gsl_2_8_0-gnu-hpc-devel 
+  - gsl_2_8_0-gnu-hpc-doc 
+  - gsl_2_8_0-gnu-hpc-examples 
+  - gsl_2_8_0-gnu-hpc-module 
   - gsmartcontrol 
   - gsoap-devel 
   - gsoap-doc 
@@ -10241,6 +10245,7 @@ unsorted:
   - kubectl-oomd 
   - kubectl-operator 
   - kubectl-tree 
+  - kubectl-validate 
   - kubectl-view-allocations 
   - kubectl-view-secret 
   - kubectl-who-can 
@@ -10709,6 +10714,7 @@ unsorted:
   - leechcraft-xtazy 
   - leechcraft-zalil 
   - leftwm 
+  - lego 
   - leiningen 
   - lekha 
   - lemon 
@@ -10844,6 +10850,10 @@ unsorted:
   - libIccXML-devel 
   - libIccXML2 
   - libIex-3_2-31-32bit 
+  - libIlmCtl1_5_3 
+  - libIlmCtlMath1_5_3 
+  - libIlmCtlSimd1_5_3 
+  - libIlmImfCtl1_5_3 
   - libIlmThread-3_2-31-32bit 
   - libImath-3_1-29-32bit 
   - libIrrlicht1_8 
@@ -13305,9 +13315,9 @@ unsorted:
   - libgsf-devel 
   - libgsf-tools 
   - libgsl-gnu-hpc 
-  - libgsl_2_7_1-gnu-hpc 
+  - libgsl_2_8_0-gnu-hpc 
   - libgslcblas-gnu-hpc 
-  - libgslcblas_2_7_1-gnu-hpc 
+  - libgslcblas_2_8_0-gnu-hpc 
   - libgsm-devel 
   - libgsm-devel-32bit 
   - libgsm-utils 
