@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Thu May 23 19:45:52 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.15.1:
+  * Fixing build issue where wrong version is used
+
+-------------------------------------------------------------------
+Sat May 18 09:20:56 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.15.0:
+  Helm v3.15.0 is a feature release. Users are encouraged to
+  upgrade for the best experience.
+  * Updating to k8s 1.30 c4e37b3 (Matt Farina)
+  * bump version to v3.15.0 d7afa3b (Matt Farina)
+  * bump version to 7743467 (Matt Farina)
+  * Fix namespace on kubeconfig error 214fb6e (Calvin Krist)
+  * Update testdata PKI with keys that have validity until 3393
+    (Fixes #12880) 1b75d48 (Dirk Müller)
+  * chore(deps): bump golang.org/x/net from 0.17.0 to 0.23.0
+    dac23c8 (dependabot[bot])
+  * chore(deps): bump github/codeql-action from 3.24.7 to 3.24.10
+    167d576 (dependabot[bot])
+  * chore: remove repetitive words dd37787 (deterclosed)
+  * Modified how created annotation is populated based on package
+    creation time 0a69a0d (Andrew Block)
+  * chore(deps): bump github.com/docker/docker aaaf112
+    (dependabot[bot])
+  * chore(deps): bump google.golang.org/protobuf from 1.31.0 to
+    1.33.0 7f53529 (dependabot[bot])
+  * Enabling hide secrets on install and upgrade dry run 25c4738
+    (Matt Farina)
+  * chore(deps): bump github/codeql-action from 3.24.6 to 3.24.7
+    ff94e93 (dependabot[bot])
+  * Fixing all the linting errors d58d7b3 (Robert Sirchia)
+  * Add a note about --dry-run displaying secrets a23dd9e (Matt
+    Farina)
+  * chore(deps): bump golang.org/x/term from 0.15.0 to 0.18.0
+    275f2ab (dependabot[bot])
+  * Updating .gitignore 8b424ba (Robert Sirchia)
+  * chore(deps): bump github/codeql-action from 3.24.5 to 3.24.6
+    e22d881 (dependabot[bot])
+  * chore(deps): bump github/codeql-action from 3.24.3 to 3.24.5
+    4f200fa (dependabot[bot])
+  * Some fixes 764557c (Matt Farina)
+  * chore(deps): bump github/codeql-action from 3.23.1 to 3.24.3
+    5bc97b9 (dependabot[bot])
+  * chore(deps): bump golangci/golangci-lint-action from 3.7.0 to
+    4.0.0 e6db0ec (dependabot[bot])
+  * add error messages 8d19bcb (George Jenkins)
+  * Fix: Ignore alias validation error for index load 68294fd
+    (George Jenkins)
+  * validation fix 8e6a514 (Matt Farina)
+  * bug: add proxy support for oci getter 94c1dea (Ricardo
+    Maraschini)
+  * chore(deps): bump actions/setup-go from 4.1.0 to 5.0.0 cbab6d6
+    (dependabot[bot])
+  * chore(deps): bump github/codeql-action from 3.23.0 to 3.23.1
+    de332ae (dependabot[bot])
+  * chore(deps): bump github.com/containerd/containerd from 1.7.11
+    to 1.7.12 a2dd34b (dependabot[bot])
+  * Update architecture detection method 57a1bb8 (weidongkl)
+  * chore(deps): bump github/codeql-action from 3.22.11 to 3.23.0
+    8cab7c1 (dependabot[bot])
+  * chore(deps): bump github.com/DATA-DOG/go-sqlmock from 1.5.0 to
+    1.5.2 5f9533f (dependabot[bot])
+  * Improve release action 4790bb9 (George Jenkins)
+  * chore(deps): bump actions/setup-go from 4.1.0 to 5.0.0 f980ad3
+    (dependabot[bot])
+  * Fix grammatical error c25736c (Matt Carr)
+  * Updated for review comments d2cf8c6 (MichaelMorris)
+  * Add robustness to wait status checks fc74964 (MichaelMorris)
+  * refactor: create a helper for checking if a release is
+    uninstalled f908379 (Alex Petrov)
+  * fix: reinstall previously uninstalled chart with --keep-history
+    9e198fa (Alex Petrov)
+
+-------------------------------------------------------------------
 Wed Apr 10 20:33:10 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.14.4:

@@ -19,7 +19,7 @@
 %define goipath helm.sh/helm/v3
 %define git_dirty clean
 Name:           helm
-Version:        3.14.4
+Version:        3.15.1
 Release:        0
 Summary:        The Kubernetes Package Manager
 License:        Apache-2.0
@@ -28,7 +28,7 @@ URL:            https://github.com/helm/helm
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.21
+BuildRequires:  golang(API) = 1.22
 %{go_provides}
 
 %description
@@ -74,7 +74,7 @@ export GO111MODULE=on
 export CGO_ENABLED=0
 %gobuild -trimpath -tags '' -mod vendor -buildmode pie -ldflags \
     "-X %{goipath}/internal/version.version=v%{version} \
-     -X %{goipath}/internal/version.gitCommit=$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/helm.obsinfo) \
+     -X %{goipath}/internal/version.gitCommit=$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo) \
      -X %{goipath}/pkg/lint/rules.k8sVersionMajor=1 \
      -X %{goipath}/pkg/lint/rules.k8sVersionMinor=$K8S_MINOR \
      -X %{goipath}/pkg/chartutil.k8sVersionMajor=1 \
