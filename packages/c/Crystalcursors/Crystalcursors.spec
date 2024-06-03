@@ -1,7 +1,7 @@
 #
 # spec file for package Crystalcursors
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,8 +36,7 @@ white, gray, blue, and green versions. They can be selected from KDE
 Control Center, in the mouse configuration.
 
 %prep
-%setup -q -n %name
-%patch0 -p1
+%autosetup -p1 -n %name
 
 %build
 make
