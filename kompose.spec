@@ -17,7 +17,7 @@
 
 
 Name:           kompose
-Version:        1.33.0
+Version:        1.34.0
 Release:        0
 Summary:        Go from Docker Compose to Kubernetes
 License:        Apache-2.0
