@@ -11,6 +11,17 @@ Sat May  4 23:02:59 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
   * staging: add alpha-modifier protocol
 
 -------------------------------------------------------------------
+Tue Apr 30 08:15:19 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.36
+  * Fix to the xdg dialog protocol
+  * tablet-v2 protocol is now stable
+  * alpha-modifier: new protocol
+  * Bug fix to the cursor shape documentation
+  * The xdg-shell protocol now also explicitly recommends against
+    drawing decorations outside of the window geometry when tiled
+
+-------------------------------------------------------------------
 Thu Mar 21 13:28:47 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.34:
