@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri May 31 02:41:29 UTC 2024 - william.brown@suse.com
+
+- Update to version 0.8.1~2:
+  * Add experimental concurrent cache support
+  * deps: bump libc from 0.2.153 to 0.2.155 (#2188)
+  * sccache: prepare new release (#2179)
+  * build(deps): bump bytes from 1.5.0 to 1.6.0 (#2176)
+  * build(deps): bump encoding_rs from 0.8.33 to 0.8.34 (#2178)
+  * build(deps): bump semver from 1.0.22 to 1.0.23 (#2177)
+  * build(deps): bump tempfile from 3.9.0 to 3.10.1 (#2175)
+  * build(deps): bump time from 0.3.31 to 0.3.36 (#2184)
+  * Make preprocessor cache methods async (#2182)
+  * Make recent versions of clippy happy (#2181)
+  * Allow SCCACHE_CACHE_SIZE values without a unit (#2183)
+  * Disable preprocessor cache when doing distributed compilation (#2173)
+  * build(deps): bump jobserver from 0.1.28 to 0.1.31 (#2166)
+  * build(deps): bump tokio from 1.35.1 to 1.37.0 (#2165)
+  * build(deps): bump http-body-util from 0.1.0 to 0.1.1 (#2167)
+  * build(deps): bump serde from 1.0.199 to 1.0.201 (#2171)
+  * build(deps): bump serde from 1.0.195 to 1.0.199 (#2162)
+  * build(deps): bump semver from 1.0.21 to 1.0.22 (#2109)
+  * build(deps): bump nix from 0.27.1 to 0.28.0 (#2108)
+  * build(deps): bump mio from 0.8.10 to 0.8.11 (#2128)
+  * build(deps): bump h2 from 0.3.24 to 0.3.26 (#2144)
+  * msvc: passthrough argument -Qpar- (#1834)
+  * build(deps): bump rustls from 0.21.10 to 0.21.11 (#2151)
+  * build(deps): bump serial_test from 2.0.0 to 3.1.0 (#2158)
+  * Add required winapi features (#2160)
+
+-------------------------------------------------------------------
 Tue Apr 23 01:17:44 UTC 2024 - william.brown@suse.com
 
 - bsc#1223238 - CVE-2024-32650 - Infinite loop in
