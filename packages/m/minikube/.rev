@@ -708,4 +708,12 @@
   * Fix addon registry doesn't follow Minikube DNS domain name</comment>
     <requestid>1124810</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>6695e1fab417ae99274bfa640ef6541b</srcmd5>
+    <version>1.33.1</version>
+    <time>1717429392</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1178136</requestid>
+  </revision>
 </revisionlist>

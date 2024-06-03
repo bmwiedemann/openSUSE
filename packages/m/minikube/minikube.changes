@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Thu May 16 08:51:49 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.33.1:
+  * Bugs:
+    - Fix DNSSEC validation failed errors #18830
+    - Fix too many open files errors #18832
+    - CNI cilium: Fix cilium pods failing to start-up #18846
+    - Addon ingress: Fix enable failing on arm64 machines using VM
+      driver #18779
+    - Addon kubeflow: Fix some components missing arm64 images
+      #18765
+  * Version Upgrades:
+    - Addon cloud-spanner: Update cloud-spanner-emulator/emulator
+      image from 1.5.15 to 1.5.17 #18773 #18811
+    - Addon headlamp: Update headlamp-k8s/headlamp image from
+      v0.23.1 to v0.23.2 #18793
+    - Addon ingress: Update ingress-nginx/controller image from
+      v1.10.0 to v1.10.1 #18756
+    - Addon istio-provisioner: Update istio/operator image from
+      1.21.1 to 1.21.2 #18757
+    - Addon kubevirt: Update bitnami/kubectl image from 1.29.3 to
+      1.30.0 #18711 #18771
+    - Addon nvidia-device-plugin: Update nvidia/k8s-device-plugin
+      image from v0.14.5 to v0.15.0 #18703
+    - CNI cilium: Update from v1.15.1 to v1.15.3 #18846
+    - High Availability: Update kube-vip from 0.7.1 to v0.8.0
+      #18774
+    - Kicbase/ISO: Update docker from 26.0.1 to 26.0.2 #18706
+    - Kicbase: Bump ubuntu:jammy from 20240227 to 20240427 #18702
+      #18769 #18804
+
+-------------------------------------------------------------------
+Thu May 16 08:35:41 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.33.0:
+  * Features:
+    - Support multi-control plane - HA clusters --ha #17909
+      Tutorial
+    - Add support for Kubernetes v1.30 #18669
+    - Support exposing clusterIP services via minikube service
+      #17877
+    - Addon gvisor: Add arm64 support #18063 #18453
+    - New Addon: YAKD - Kubernetes Dashboard addon #17775
+  * Minor Improvements:
+    - Add active kubecontext to minikube profile list output #17735
+    - CNI calico: support kubeadm.pod-network-cidr #18233
+    - CNI bridge: Ensure pod communications are allowed #16143
+    - Addon auto-pause: Remove memory leak & add configurable
+      interval #17936
+    - image build: Add docker.io/library to image short names
+      #16214
+    - cp: Create directory if not present #17715
+    - Move errors getting logs into log output itself #18007
+    - Add default sysctls to allow privileged ports with no
+      capabilities #18421
+    - Include extended attributes in preload tarballs #17829
+    - Apply kubeadm.applyNodeLabels label to all nodes #16416
+    - Limit driver status check to 20s #17553
+    - Include journalctl logs if systemd service fails to start
+      #17659
+    - Fix "Failed to enable container runtime: sudo systemctl
+      restart cri-docker" #17907
+    - Fix containerd redownloading existing images on start #17671
+    - Fix kvm2 not detecting containerd preload #17658
+    - Fix modifying Docker binfmt config #17830
+    - Fix auto-pause addon #17866
+    - Fix not using preload with overlayfs storage driver #18333
+    - Fix image repositories not allowing subdomains with numbers
+      #17496
+    - Fix stopping cluster when using kvm2 with containerd #17967
+    - Fix starting more than one cluster on kvm2 arm64 #18241
+    - Fix starting kvm2 clusters using Linux on arm64 Mac #18239
+    - Fix displaying error when deleting non-existing cluster
+      #17713
+    - Fix no-limit not being respected on restart #17598
+    - Fix not applying kubeadm.applyNodeLabels label to nodes added
+      after inital start #16416
+    - Fix logs delimiter output #17734
+  * Bugs:
+    - Fix unescaped local host regex #18617
+    - Fix regex on validateNetwork to support special characters
+      #18158
+  * Version Upgrades:
+    - Bump Kubernetes version default: v1.30.0 and latest: v1.30.0
+      #18669
+    - Addon headlamp: Update headlamp-k8s/headlamp image from
+      v0.23.0 to 0.23.1 #18517
+    - Addon inspektor-gadget: Update inspektor-gadget image from
+      v0.26.0 to v0.27.0 #18588
+    - Addon istio-provisioner: Update istio/operator image from
+      1.21.0 to 1.21.1 #18644
+    - Addon metrics-server: Update metrics-server/metrics-server
+      image from v0.7.0 to v0.7.1 #18551
+    - CNI: Update calico from v3.27.0 to v3.27.3 #18206
+    - CNI: Update flannel from v0.24.4 to v0.25.1 #18641
+    - Kicbase/ISO: Update buildkit from v0.13.0 to v0.13.1 #18566
+    - Kicbase/ISO: Update containerd from v1.7.14 to v1.7.15 #18621
+    - Kicbase/ISO: Update cri-dockerd from v0.3.3 to v0.3.12 #18585
+    - Kicbase/ISO: Update crun from 1.14 to 1.14.4 #18610
+    - Kicbase/ISO: Update docker from 25.0.4 to 26.0.1 #18485
+      #18649
+    - Kicbase/ISO: Update nerdctl from 1.7.4 to 1.7.5 #18634
+    - Kicbase: Update nerdctld from 0.5.1 to 0.6.0 #18647
+
+-------------------------------------------------------------------
 Fri Nov 10 08:35:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.32.0:
