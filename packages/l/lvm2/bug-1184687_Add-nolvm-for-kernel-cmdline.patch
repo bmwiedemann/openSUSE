@@ -34,13 +34,14 @@ diff -Nupr a/scripts/lvm2-pvscan.service.in b/scripts/lvm2-pvscan.service.in
 diff -Nupr a/udev/69-dm-lvm.rules.in b/udev/69-dm-lvm.rules.in
 --- a/udev/69-dm-lvm.rules.in	2022-09-02 14:04:51.074880312 +0800
 +++ b/udev/69-dm-lvm.rules.in	2022-09-02 14:07:19.978230990 +0800
-@@ -10,6 +10,9 @@ SUBSYSTEM!="block", GOTO="lvm_end"
+@@ -10,6 +10,9 @@ (LVM_EXEC_RULE)
  
  ENV{DM_UDEV_DISABLE_OTHER_RULES_FLAG}=="1", GOTO="lvm_end"
  
 +IMPORT{cmdline}="nolvm"
 +ENV{nolvm}=="?*", GOTO="lvm_end"
 +
- # Only process devices already marked as a PV - this requires blkid to be called before.
- ENV{ID_FS_TYPE}!="LVM2_member", GOTO="lvm_end"
- ENV{DM_MULTIPATH_DEVICE_PATH}=="1", GOTO="lvm_end"
+ # Ignore PVs on LVs.
+ # This is usually a case of an LV being used for a guest VM
+ # image, where the guest is using lvm.  The host should
+ # ignore lvm data from the guest and not attempt to scan or

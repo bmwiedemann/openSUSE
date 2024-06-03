@@ -1,5 +1,5 @@
 #
-# spec file for package lvm2
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -21,11 +21,11 @@
 %define libname_event libdevmapper-event1_03
 %define _udevdir %(pkg-config --variable=udevdir udev)
 %define cmdlib liblvm2cmd2_03
-%define lvm2_version              2.03.22
+%define lvm2_version              2.03.24
 # For device_mapper_version, it's package version, see bsc#1199074.
 # Also note there is another dm version on below "sed -ie ... VERSION_DM".
-%define upstream_device_mapper_version  1.02.196
-%define device_mapper_version           %{lvm2_version}_1.02.196
+%define upstream_device_mapper_version  1.02.198
+%define device_mapper_version           %{lvm2_version}_1.02.198
 %define thin_provisioning_version 0.7.0
 %define _supportsanlock 1
 %define dlm_version     4.0.9
@@ -71,30 +71,7 @@ Source42:       ftp://sourceware.org/pub/lvm2/LVM2.%{version}.tgz.asc
 Source99:       baselibs.conf
 
 # Upstream patches
-Patch0001:      0001-lvconvert-swapmetadata-fix-lvmlockd-locking.patch
-Patch0002:      0002-lvconvert-fix-ret-values-fro-integrity-remove.patch
-Patch0003:      0003-lvconvert-fix-regresion-from-integrity-check.patch
-Patch0004:      0004-gcc-cleanup-warnings.patch
-Patch0005:      0005-lvmlockd-fix-thick-to-thin-lv-conversion.patch
-Patch0006:      0006-lvmlockd-let-lockd_init_lv_args-set-lock_args.patch
-Patch0007:      0007-lvmlockd-fix-lvconvert-to-thin-pool.patch
-Patch0008:      0008-lvconvert-run-error-path-code-only-for-shared-VG.patch
-Patch0009:      0009-vgchange-acquire-an-exclusive-VG-lock-for-refresh.patch
-Patch0010:      0010-lvmlockd-client-mutex-ordering.patch
-Patch0011:      0011-filesystem-move-stat-after-open-check.patch
-Patch0012:      0012-tests-check-for-writecache.patch
-Patch0013:      0013-lvresize-fix-32-bit-overflow-in-size-calculation.patch
-Patch0014:      0014-gcc-fix-warnings-for-x32-architecture.patch
-Patch0015:      0015-gcc-warning-missing-braces-around-initializer.patch
-Patch0016:      0016-test-improve-aux-teardown.patch
-Patch0017:      0017-tests-aux-try-with-extra-sleep.patch
-Patch0018:      0018-tests-aux-using-singl-lvmconf-call.patch
-Patch0019:      0019-tests-missing-to-check-for-writecache-support.patch
-Patch0020:      0020-tests-pvmove-large-disk-area.patch
-Patch0021:      0021-tests-enforce-full-fs-check.patch
-Patch0022:      0022-tests-update-for-work-in-fake-dev-environment.patch
-Patch0023:      0023-tests-skip-test-when-lvmdbusd-runs-on-the-system.patch
-Patch0024:      0024-tests-better-slowdown.patch
+#Patch0001:      n/a
 # SUSE patches: 1000+ for LVM
 # Never upstream
 Patch1001:      cmirrord_remove_date_time_from_compilation.patch
@@ -122,8 +99,10 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev)
 Requires:       device-mapper >= %{device_mapper_version}
 Requires:       modutils
+#see bsc#1225783
+Requires:       (udev >= 255.7 if udev)
 Requires(post): coreutils
-Requires(postun): coreutils
+Requires(postun):coreutils
 Provides:       lvm = %{version}
 Obsoletes:      lvm2-cmirrord <= %{lvm2_cmirrord_version}
 %{?systemd_requires}
@@ -155,30 +134,6 @@ Volume Manager.
 
 %prep
 %setup -q -n LVM2.%{version}
-%patch -P 0001 -p1
-%patch -P 0002 -p1
-%patch -P 0003 -p1
-%patch -P 0004 -p1
-%patch -P 0005 -p1
-%patch -P 0006 -p1
-%patch -P 0007 -p1
-%patch -P 0008 -p1
-%patch -P 0009 -p1
-%patch -P 0010 -p1
-%patch -P 0011 -p1
-%patch -P 0012 -p1
-%patch -P 0013 -p1
-%patch -P 0014 -p1
-%patch -P 0015 -p1
-%patch -P 0016 -p1
-%patch -P 0017 -p1
-%patch -P 0018 -p1
-%patch -P 0019 -p1
-%patch -P 0020 -p1
-%patch -P 0021 -p1
-%patch -P 0022 -p1
-%patch -P 0023 -p1
-%patch -P 0024 -p1
 %patch -P 1001 -p1
 %patch -P 1002 -p1
 %patch -P 1003 -p1

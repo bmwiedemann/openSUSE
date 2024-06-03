@@ -1,4 +1,140 @@
 -------------------------------------------------------------------
+Sat Jun  1 01:46:00 UTC 2024 - Heming Zhao <heming.zhao@suse.com>
+
+- add rpm dependency in spec file for aligning new DM udev rules (bsc#1225783)
+  * update lvm2.spec
+
+-------------------------------------------------------------------
+Sun May 26 13:14:00 UTC 2024 - Heming Zhao <heming.zhao@suse.com>
+
+- Update lvm2 from LVM2.2.03.22 to LVM2.2.03.24
+
+  *** WHATS_NEW from 2.03.22 to 2.03.24 ***
+
+  Version 2.03.24 - 16th May 2024
+  ===============================
+    Lvconvert supports VDO options for thin-pool with vdo conversion.
+    Improve placement to .data.rel.ro and .rodata sections.
+    Fix support for -y and -W when creating thinpool with vdo.
+    Bettter support for runtime valgrind detection.
+    Allow command interruption when communicating with dmeventd.
+    Fix resize of VDO volume used for thin pool data volume.
+    Use -Wl,-z,now and -Wl,--as-needed for compilation by default.
+    Require 3.7 as minimal version for sanlock.
+    Share code for closing opened desriptors on program startup.
+    Fix memleak in lvmcache.
+    Add configure --with-default-event-activation=ON setting.
+    Fix return value from reporter function when hitting internal error.
+    Skip checking of pools for lvremove and vgremove commands.
+    VDO modprobes dm-vdo for 6.9 kernel and kvdo for older kernel version.
+    Fix lvs reporting for VDO volumes with new upstream kernel driver.
+    Don't import DM_UDEV_DISABLE_OTHER_RULES_FLAG in LVM rules, DM rules cover it.
+    Fix table line generation for cache snapshots using cachevol.
+    Enhance lvconvert support for external origins stacking.
+    When swapping LV names also swap properties like hostname, time and data.
+    Fix removal of stacked external origins.
+    Lock filesystem when converting volume to read-only external origin.
+    Support external origin between different thin-pool.
+    Improve validation of acceptable volumes for external origins.
+    Reduce amount of preloaded devices for complex device trees.
+    Avoid logging problems from monitoring snapshots with inactive origins.
+    Check for cache policy module presence in kernel's builtin modules file.
+    Add configure --with-modulesdir to select kernel modules directory.
+    Support creation of thin-pool with VDO use for its data volume.
+  
+  Version 2.03.23 - 21st November 2023
+  ====================================
+    Set the first lv_attr flag for raid integrity images to i or I.
+    Add -A option for pvs and pvscan to show PVs outside devices file.
+    Improve searched_devnames temp file usage to prevent redundant scanning.
+    Change default search_for_devnames from auto to all.
+    Add lvmdevices --refresh to search for missing PVIDs on all devices.
+    Add comparison between old and new entries in lvmdevices --check.
+    Fix device_id matching order - match non-devname first.
+    Fix "lvconvert -m 0" when there is other than first in-sync leg.
+    Use system.devices as default for dmeventd when dmeventd.devices is undefined.
+    Accept WWIDs containing QEMU HARDDISK for device_id.
+    Improve handling of non-standard WWID prefixes used for device_id.
+    Configure automatically enables cmdlib for dmeventd and notify-dbus for dbus.
+    Fix hint calculation for pools with zero or error segment.
+    Configure supports --disable-shared to build only static binaries.
+    Configure supports --without-{blkid|systemd|udev} for easier static build.
+    Refresh device ids if the system changes.
+    Fix pvmove when specifying raid components as moved LVs.
+    Enhance error detection for lvm_import_vdo.
+    Support PV lists with thin lvconvert.
+    Fix support for lvm_import_vdo with SCSI VDO volumes.
+    Fix locking issue leading to hanging concurrent vgchange --refresh.
+    Recognize lvm.conf report/headings=2 for full column names in report headings.
+    Add --headings none|abbrev|full cmd line option to set report headings type.
+    Fix conversion to thin pool using lvmlockd.
+    Fix conversion from thick into thin volume using lvmlockd.
+    Require writable LV for conversion to vdo pool.
+    Fix return value from lvconvert integrity remove.
+    Preserve UUID for pool metadata spare.
+    Preserve UUID for swapped pool metadata.
+    Rewrite validation of device name entries used as device_id.
+
+  *** WHATS_NEW_DM from 1.02.196 to 1.02.198 ***
+
+  Version 1.02.198 - 16th May 2024
+  ================================
+    Fix static only compilation of libdevmapper.a and dmsetup tool.
+    Use better code for closing opened descriptors when starting dmeventd.
+    Correct dmeventd -R for systemd environment.
+    Restart of dmeventd -R checks pid file to detect running dmeventd first.
+    Query with dmeventd -i quickly ends when there is no running dmeventd.
+    Enhance dm_get_status_raid to handle mismatching status or reported legs.
+    Create /dev/disk/by-label symlinks for DM devs that have crypto as next layer.
+    Persist udev db for DM devs on cleanup used in initrd to rootfs transition.
+    Process synthetic udev events other than 'add/change' as 'change' events.
+    Increase DM_UDEV_RULES_VSN to 3 to indicate changed udev rules.
+    Rename DM_NOSCAN to .DM_NOSCAN so it's not stored in udev db.
+    Rename DM_SUSPENDED to .DM_SUSPENDED so it's not stored in udev db.
+    Do not import DM_UDEV_DISABLE_OTHER_RULES_FLAG from db in 10-dm-disk.rules.
+    Test DISK_RO after importing properties from db in 10-dm.rules.
+    Also import ID_FS_TYPE in 13-dm-disk.rules from db if needed.
+  
+  Version 1.02.197 - 21st November 2023
+  =====================================
+    Fix invalid JSON report if using DM_REPORT_OUTPUT_MULTIPLE_TIMES and selection.
+    Propagate ioctl errno from dm_task_run when creating new table line.
+    Add support for group aliases in dmstats.
+    Add support for exit-on file for dmeventd to reduce shutdown delays.
+    Add configure option --with-dmeventd-exit-on-path to specify default path.
+    Add dmsetup --headings none|abbrev|full to set report headings type.
+    Add DM_REPORT_OUTPUT_FIELD_IDS_IN_HEADINGS to provide alternative headings.
+
+- Drop patches that have been merged into upstream
+  - 0001-lvconvert-swapmetadata-fix-lvmlockd-locking.patch
+  - 0002-lvconvert-fix-ret-values-fro-integrity-remove.patch
+  - 0003-lvconvert-fix-regresion-from-integrity-check.patch
+  - 0004-gcc-cleanup-warnings.patch
+  - 0005-lvmlockd-fix-thick-to-thin-lv-conversion.patch
+  - 0006-lvmlockd-let-lockd_init_lv_args-set-lock_args.patch
+  - 0007-lvmlockd-fix-lvconvert-to-thin-pool.patch
+  - 0008-lvconvert-run-error-path-code-only-for-shared-VG.patch
+  - 0009-vgchange-acquire-an-exclusive-VG-lock-for-refresh.patch
+  - 0010-lvmlockd-client-mutex-ordering.patch
+  - 0011-filesystem-move-stat-after-open-check.patch
+  - 0012-tests-check-for-writecache.patch
+  - 0013-lvresize-fix-32-bit-overflow-in-size-calculation.patch
+  - 0014-gcc-fix-warnings-for-x32-architecture.patch
+  - 0015-gcc-warning-missing-braces-around-initializer.patch
+  - 0016-test-improve-aux-teardown.patch
+  - 0017-tests-aux-try-with-extra-sleep.patch
+  - 0018-tests-aux-using-singl-lvmconf-call.patch
+  - 0019-tests-missing-to-check-for-writecache-support.patch
+  - 0020-tests-pvmove-large-disk-area.patch
+  - 0021-tests-enforce-full-fs-check.patch
+  - 0022-tests-update-for-work-in-fake-dev-environment.patch
+  - 0023-tests-skip-test-when-lvmdbusd-runs-on-the-system.patch
+  - 0024-tests-better-slowdown.patch
+
+- Update patch
+  - bug-1184687_Add-nolvm-for-kernel-cmdline.patch
+
+-------------------------------------------------------------------
 Tue May 21 11:30:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN syntax.
