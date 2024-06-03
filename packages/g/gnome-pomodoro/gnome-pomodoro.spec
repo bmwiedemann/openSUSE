@@ -18,7 +18,7 @@
 
 %global __requires_exclude typelib\\(Meta\\)
 Name:           gnome-pomodoro
-Version:        0.25.1
+Version:        0.25.2
 Release:        0
 Summary:        A time management utility for GNOME
 License:        GPL-3.0-or-later

@@ -381,4 +381,12 @@ doesn't work anyway. (forwarded request 796279 from develop7)</comment>
   + Drop support for GNOME Shell 45 (forwarded request 1163802 from mgorse)</comment>
     <requestid>1164132</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>81507dadfd0b3ed04780b410808c842a</srcmd5>
+    <version>0.25.2</version>
+    <time>1717429494</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1178275 from dimstar)</comment>
+    <requestid>1178287</requestid>
+  </revision>
 </revisionlist>
