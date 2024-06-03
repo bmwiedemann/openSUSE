@@ -499,4 +499,12 @@ replace plaintext widget with mini-html widget (forwarded request 522296 from je
     <comment>- Employ %sysuser macros to generate &quot;boinc&quot; user</comment>
     <requestid>1143836</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>d424875e70ad89f7d7b6ab7a3e742ec5</srcmd5>
+    <version>8.0.2</version>
+    <time>1717429449</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1178194</requestid>
+  </revision>
 </revisionlist>

@@ -23,7 +23,7 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
-%define sonum 7
+%define sonum 8
 %define boinc_dir %{_localstatedir}/lib/boinc
 
 # do not build boinc-manager on SLES 11/12
@@ -35,8 +35,8 @@
 
 Name:           boinc-client
 %define rel_name        %{name}_release
-%define minor_version   7.24
-Version:        %minor_version.1
+%define minor_version   8.0
+Version:        %minor_version.2
 Release:        0
 Summary:        Client for Berkeley Open Infrastructure for Network Computing
 License:        GPL-3.0-or-later OR LGPL-3.0-or-later
