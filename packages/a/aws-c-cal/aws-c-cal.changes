@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 22 13:49:36 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.14
+  - Fix inccorect export of aws_symmetric_cipher_get_state by @sbiscigl in (#185)
+
+-------------------------------------------------------------------
 Mon May 13 09:14:06 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.6.13
