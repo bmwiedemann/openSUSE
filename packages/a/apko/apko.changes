@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jun 01 09:23:29 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.14.7:
+  * ensure homedir respects non-defaults
+  * build(deps): bump github/codeql-action from 3.25.6 to 3.25.7
+
+-------------------------------------------------------------------
+Sat Jun 01 09:10:13 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.14.6:
+  * plumb through HomeDir as optional build configuration
+  * Pull in the auth fix in go-apk (#1145)
+  * Update internal/cli/build.go
+  * Update internal/cli/publish.go
+  * This fixes the boolean logic to pass auth.
+  * go mod tidy
+  * support basic HTTP auth
+
+-------------------------------------------------------------------
 Thu May 30 08:59:06 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.14.5:
