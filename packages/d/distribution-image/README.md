@@ -31,7 +31,7 @@ mkdir -p /var/lib/docker-registry
 Then you can start the container with the following command:
 
 ```bash
-podman run -d --restart=always -p 5000:5000 -v /path/to/config.yml:/etc/docker/registry/config.yml \
+podman run -d --restart=always -p 5000:5000 -v /path/to/config.yml:/etc/registry/config.yml \
   -v /var/lib/docker-registry:/var/lib/docker-registry --name registry registry.opensuse.org/opensuse/registry:%%registry_version%%-%RELEASE%
 ```
 
