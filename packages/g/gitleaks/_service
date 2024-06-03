@@ -3,7 +3,7 @@
     <param name="url">https://github.com/zricethezav/gitleaks</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v8.18.2</param>
+    <param name="revision">v8.18.3</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>

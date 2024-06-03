@@ -1,17 +1,40 @@
 -------------------------------------------------------------------
+Sat Jun 01 15:28:13 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 8.18.3:
+  * extend FB access token discovery (#1407)
+  * tests: scalingo validation consistent test (#1359)
+  * add real (test) standard and restricted keys (#1375)
+  * Add Cloudflare API and Origin CA keys (#1374)
+  * Update "contributing guidelines" link (#1390)
+  * add update token from square (#1370)
+  * feat: facebook secret, access token, and page access token
+    rules (#1372)
+  * update mailchimp with new tokens (#1376)
+  * Append ordered rules when extending (#1304)
+  * fix: age rule id with dashes (#1349)
+  * patching golang.org/x/text for CVE-2021-38561 and
+    CVE-2022-32149 (#1342)
+  * Use latest base images. (#1334)
+
+-------------------------------------------------------------------
 Sun May  5 15:19:43 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 8.18.2:
-  * Remove IAM identifiers for non-credential resources in the aws-access-token rule
+  * Remove IAM identifiers for non-credential resources in the
+    aws-access-token rule
   * Update stripe rule to not alert on publishable keys
-  * --max-target-megabytes flag now supported for --no-git flag as well
+  * --max-target-megabytes flag now supported for --no-git flag as
+    well
   * add pre-commit hook gitleaks-system
   * fix errors when using protect and an external git diff tool
   * rename filesystem to directory
   * Enhance Secret Descriptions
   * Small refactor `detect` and `sources`
-  * chore(config): refactor to go generate; simplify configRules init
-  * pretty apparent 'protect' and 'detect' should be merged into one command
+  * chore(config): refactor to go generate; simplify configRules
+    init
+  * pretty apparent 'protect' and 'detect' should be merged into
+    one command
   * style: sort the stopwords
 
 -------------------------------------------------------------------

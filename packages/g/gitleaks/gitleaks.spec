@@ -1,7 +1,7 @@
 #
 # spec file for package gitleaks
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           gitleaks
-Version:        8.18.2
+Version:        8.18.3
 Release:        0
 Summary:        Protect and discover secrets using Gitleaks
 License:        MIT
