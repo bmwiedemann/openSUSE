@@ -20,7 +20,7 @@
 %bcond_with profiling
 
 Name:           libdex
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        Library supporting "Deferred Execution" for GNOME and GTK
 License:        LGPL-2.1-or-later

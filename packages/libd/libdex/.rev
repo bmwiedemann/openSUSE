@@ -41,4 +41,13 @@
     <comment>GNOME 46 (forwarded request 1158306 from dimstar)</comment>
     <requestid>1159471</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>532d470c60927ea6494a78d956a025ad</srcmd5>
+    <version>0.6.1</version>
+    <time>1717429492</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.6.1:
+  + Adds Fiber support for macOS on Apple Silicon. (forwarded request 1178270 from dimstar)</comment>
+    <requestid>1178278</requestid>
+  </revision>
 </revisionlist>
