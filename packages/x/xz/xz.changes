@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu May 30 06:08:18 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.6.2:
+  * Remove the backdoor (CVE-2024-3094).
+  * Not changed: Memory sanitizer (MSAN) has a false positive
+    in the CRC CLMUL code which also makes OSS Fuzz unhappy.
+    Valgrind is smarter and doesn't complain.
+    A revision to the CLMUL code is coming anyway and this issue
+    will be cleaned up as part of it. It won't be backported to
+    5.6.x or 5.4.x because the old code isn't wrong. There is
+    no reason to risk introducing regressions in old branches
+    just to silence a false positive.
+  * liblzma:
+    - lzma_index_decoder() and lzma_index_buffer_decode(): Fix
+      a missing output pointer initialization (*i = NULL) if the
+      functions are called with invalid arguments. The API docs
+      say that such an initialization is always done. In practice
+      this matters very little because the problem can only occur
+      if the calling application has a bug and these functions
+      return LZMA_PROG_ERROR.
+    - lzma_str_to_filters(): Fix a missing output pointer
+      initialization (*error_pos = 0). This is very similar
+      to the fix above.
+    - Fix C standard conformance with function pointer types.
+    - Remove GNU indirect function (IFUNC) support. This is *NOT*
+      done for security reasons even though the backdoor relied on
+      this code. The performance benefits of IFUNC are too tiny in
+      this project to make the extra complexity worth it.
+    - FreeBSD on ARM64: Add error checking to CRC32 instruction
+      support detection.
+    - Fix building with NVIDIA HPC SDK.
+  * xz:
+    - Fix a C standard conformance issue in --block-list parsing
+      (arithmetic on a null pointer).
+     - Fix a warning from GNU groff when processing the man page:
+      "warning: cannot select font 'CW'"
+  * xzdec: Add support for Linux Landlock ABI version 4. xz already
+    had the v3-to-v4 change but it had been forgotten from xzdec.
+
+-------------------------------------------------------------------
 Fri Apr 12 16:22:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - revert the switch to tar_scm which dropped the signature

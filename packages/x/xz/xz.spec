@@ -23,17 +23,15 @@
 %bcond_with static
 %endif
 
-%global real_ver 5.4.2
-
 Name:           xz
-Version:        5.6.1.revertto5.4
+Version:        5.6.2
 Release:        0
 Summary:        A Program for Compressing Files with the Lempel–Ziv–Markov algorithm
 License:        0BSD AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Archiving/Compression
 URL:            https://tukaani.org/xz/
-Source0:        https://github.com/tukaani-project/xz/releases/download/v%{real_ver}/xz-%{real_ver}.tar.gz
-Source1:        https://github.com/tukaani-project/xz/releases/download/v%{real_ver}/xz-%{real_ver}.tar.gz.sig
+Source0:        https://github.com/tukaani-project/xz/releases/download/v%{version}/xz-%{version}.tar.xz
+Source1:        https://github.com/tukaani-project/xz/releases/download/v%{version}/xz-%{version}.tar.xz.sig
 Source2:        baselibs.conf
 Source3:        https://tukaani.org/misc/lasse_collin_pubkey.txt#/xz.keyring
 Source4:        xznew
@@ -93,7 +91,7 @@ Static library for the LZMA library
 %endif
 
 %prep
-%autosetup -n xz-%{real_ver}
+%autosetup -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

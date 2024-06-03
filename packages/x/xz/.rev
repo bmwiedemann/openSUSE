@@ -806,4 +806,12 @@
 - add rpmlintrc to silence harmless warnings</comment>
     <requestid>1167536</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>264c904c90900e46626e7ef836f67df4</srcmd5>
+    <version>5.6.2</version>
+    <time>1717429226</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1177928</requestid>
+  </revision>
 </revisionlist>
