@@ -39,6 +39,37 @@ Cosign supports:
 - Our free OIDC PKI (Fulcio)
 - Built-in binary transparency and timestamping service (Rekor)
 
+%package -n %{name}-bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description -n %{name}-bash-completion
+Bash command line completion support for %{name}.
+
+%package -n %{name}-fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and fish)
+BuildArch:      noarch
+
+%description -n %{name}-fish-completion
+Fish command line completion support for %{name}.
+
+%package -n %{name}-zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description -n %{name}-zsh-completion
+zsh command line completion support for %{name}.
+
 %prep
 %autosetup -p1 -a1
 
@@ -57,9 +88,35 @@ CGO_ENABLED=0 go build -mod=vendor -buildmode=pie -trimpath -ldflags "${CLI_LDFL
 %install
 install -D -m 0755 cosign %{buildroot}%{_bindir}/cosign
 
+# create the bash completion file
+mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
+%{buildroot}/%{_bindir}/%{name} completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
+
+# create the fish completion file
+mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
+%{buildroot}/%{_bindir}/%{name} completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
+
+# create the zsh completion file
+mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
+%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
+
 %files
 %license LICENSE
 %doc *.md
 %{_bindir}/cosign
+
+%files -n %{name}-bash-completion
+%dir %{_datarootdir}/bash-completion/completions/
+%{_datarootdir}/bash-completion/completions/%{name}
+
+%files -n %{name}-fish-completion
+%dir %{_datarootdir}/fish
+%dir %{_datarootdir}/fish/vendor_completions.d
+%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
+
+%files -n %{name}-zsh-completion
+%defattr(-,root,root)
+%dir %{_datarootdir}/zsh_completion.d/
+%{_datarootdir}/zsh_completion.d/_%{name}
 
 %changelog

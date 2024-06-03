@@ -540,4 +540,12 @@
     * feat: add OVHcloud MPR registry tested with cosign (#3639) (forwarded request 1167810 from msmeissn)</comment>
     <requestid>1167811</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>c2072dd1321b1ba32e9be25d87c76ddc</srcmd5>
+    <version>2.2.4</version>
+    <time>1717429425</time>
+    <user>anag+factory</user>
+    <comment>add completion subpackages (bash, fish, zsh) (forwarded request 1177857 from ojkastl_buildservice)</comment>
+    <requestid>1178146</requestid>
+  </revision>
 </revisionlist>

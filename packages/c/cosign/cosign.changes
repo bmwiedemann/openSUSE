@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 31 07:48:36 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- add completion subpackages (bash, fish, zsh)
+
+-------------------------------------------------------------------
 Mon Apr 15 12:48:16 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - updated to 2.2.4 (jsc#SLE-23879)
