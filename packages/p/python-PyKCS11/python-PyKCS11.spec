@@ -26,15 +26,14 @@ URL:            https://github.com/LudovicRousseau/PyKCS11
 Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module asn1crypto}
 BuildRequires:  %{python_module build}
-BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module python-coveralls}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
+BuildRequires:  softhsm-devel
 BuildRequires:  swig
 %python_subpackages
 
@@ -53,13 +52,15 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# test depends on softhsm, which is not in factory
-#%%python_exec run_test.py
+export $(python3 get_PYKCS11LIB.py)
+# Unfortunately the test suite is irrecovabily broken
+# gh#LudovicRousseau/PyKCS11#115
+# %%pyunittest_arch discover -v test
 
 %files %{python_files}
 %doc Changes.txt README.md
 %license COPYING
 %{python_sitearch}/PyKCS11
-%{python_sitearch}/PyKCS11-%{version}.dist-info
+%{python_sitearch}/PyKCS11-%{version}*-info
 
 %changelog
