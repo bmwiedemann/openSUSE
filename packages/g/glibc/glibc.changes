@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun  3 08:24:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Also provide glibc-locale-base-<targettype> from
+  glibc-<targettype>: the package was merged in the baselibs.conf
+  case, so the capability is there. Steam for one has a requires
+  on the symbol (boo#1225809).
+
+-------------------------------------------------------------------
 Tue May 28 07:27:01 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Obsolete glibc-locale-base-<targettype> from glibc-<targettype>

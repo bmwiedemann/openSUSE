@@ -3063,4 +3063,15 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
     <comment>- Obsolete glibc-locale-base-&lt;targettype&gt; from glibc-&lt;targettype&gt; (forwarded request 1177460 from Andreas_Schwab)</comment>
     <requestid>1177461</requestid>
   </revision>
+  <revision rev="293" vrev="9">
+    <srcmd5>11e2792cd50cf31625b7ae5a39defeec</srcmd5>
+    <version>2.39</version>
+    <time>1717429347</time>
+    <user>anag+factory</user>
+    <comment>- Also provide glibc-locale-base-&lt;targettype&gt; from
+  glibc-&lt;targettype&gt;: the package was merged in the baselibs.conf
+  case, so the capability is there. Steam for one has a requires
+  on the symbol (boo#1225809). (forwarded request 1178272 from dimstar)</comment>
+    <requestid>1178284</requestid>
+  </revision>
 </revisionlist>
