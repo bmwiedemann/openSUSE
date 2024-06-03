@@ -1708,4 +1708,29 @@ New stable rel</comment>
     <comment>GNOME 46 (forwarded request 1159401 from dimstar)</comment>
     <requestid>1159551</requestid>
   </revision>
+  <revision rev="207" vrev="1">
+    <srcmd5>ec098012600a38374862fea0721dd066</srcmd5>
+    <version>46.1</version>
+    <time>1717429489</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.1:
+  + Properly remember window size.
+  + Fix &quot;sync secrets for the current sync user are invalid&quot;.
+  + Fix retrieving web app icon from web app manifest.
+  + Don't delay internal Epiphany pages on adblocker
+    initialization.
+  + Fix inability to open custom JS or stylesheet.
+  + Fix sync service criticals when glib-networking is not
+    installed.
+  + Fix WebExtension accelerator parsing.
+  + Fix critical when creating a duplicate notification.
+  + Fix crash on exit when tab sync is enabled.
+  + Fix set as default browser dialog under phoc.
+  + Fix failure to save session state when it would contain a blob
+    URL.
+  * Fix web app provider crash when user data directory is empty.
+  + Hide broken close context menu item on pinned tabs.
+  + Updated translations. (forwarded request 1178269 from dimstar)</comment>
+    <requestid>1178277</requestid>
+  </revision>
 </revisionlist>

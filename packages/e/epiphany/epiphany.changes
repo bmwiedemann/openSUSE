@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jun  3 09:51:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.1:
+  + Properly remember window size.
+  + Fix "sync secrets for the current sync user are invalid".
+  + Fix retrieving web app icon from web app manifest.
+  + Don't delay internal Epiphany pages on adblocker
+    initialization.
+  + Fix inability to open custom JS or stylesheet.
+  + Fix sync service criticals when glib-networking is not
+    installed.
+  + Fix WebExtension accelerator parsing.
+  + Fix critical when creating a duplicate notification.
+  + Fix crash on exit when tab sync is enabled.
+  + Fix set as default browser dialog under phoc.
+  + Fix failure to save session state when it would contain a blob
+    URL.
+  * Fix web app provider crash when user data directory is empty.
+  + Hide broken close context menu item on pinned tabs.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 15 14:30:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:
