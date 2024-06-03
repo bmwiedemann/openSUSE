@@ -15,4 +15,41 @@
     <comment>- Do not build for Python 3.6, due to no NumPy.</comment>
     <requestid>887908</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0a165ec3975751c5c85b1f5efd3fa7c4</srcmd5>
+    <version>3.0.19.11</version>
+    <time>1717429236</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.0.19.0
+  * Merge pull request #839 from Psychtoolbox-3/master
+  * Merge pull request #838 from kleinerm/master
+  * GitHub/CI: Print version() of Matlab or Octave used for build.
+  * Eyelink mex for 64-Bit Octave/Matlab on MS-Windows rebuilt.
+  * Eyelink mex for 64-Bit Octave/Matlab on macOS rebuilt.
+  * Eyelink mex for 64-Bit Octave/Matlab on Linux rebuilt.
+  * Merge pull request #266 from kleinerm/eyelinktoolboxrc
+  * PsychEyelinkDispatchCallback(): Keep all persistent variables grouped on top.
+  * EyelinkDo[TrackerSetup/DriftCorrection]: Update help text wrt. sound setup.
+  * EyelinkGetTrackerImageDemo: Add option to test different sound paths.
+  * PsychEyelinkDispatchCallback(): Cleanup also clears all (persistent) variables.
+  * Eyelink('Shutdown'): Do not 'clear PsychEyelinkDispatchCallback'.
+  * Eyelink: Make verbosity static, to avoid cross-talk with other mex files.
+  * PsychEyelinkDispatchCallback(): Optimize text drawing, get rid of globals.
+  * PsychEyelinkDispatchCallback(): Drop use of ppa_beep_buffers / CreateBuffer.
+  * EyelinkToolbox: Improve / fix new audio feedback tone output path.
+  * PsychEyelinkDispatchCallback(): Cleanup weird use of Eyelink('Verbosity').
+  * EyelinkDoDriftCorrection(), EyelinkDoTrackerSetup(): Fix broken video support for Octave.
+  * EyelinkToolbox: Further fixes to broken legacy functions.
+  * EyelinkUpdateDefaults(): Fix for use with legacy scripts.
+  * EyelinkTests: Bring EyelinkGetTrackerImageDemo.m back.
+  * EyelinkToolbox: Update changelog.
+  * EyelinkToolbox: Fix help text of legacy basic functions.
+  * EyelinkBasic: Remove unnecessary calls to SetMovieTimeIndex.
+  * EyelinkDemos: Misc improvements to demo projects code and syntax.
+  * PsychEyelinkDispatchCallback: Various performance improvements and cleanups.
+  * Eyelink: Update SR-ResearchDemos to directly use PsychPortAudio.
+  * Eyelink: Add support for direct use of PsychPortAudio.
+  * EyelinkDemos: Adapt SR-ResearchDemos to use PsychDefaultSetup(2) and PsychImaging.</comment>
+    <requestid>1177811</requestid>
+  </revision>
 </revisionlist>

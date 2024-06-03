@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Wed May 29 12:03:50 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.0.19.0
+  * Merge pull request #839 from Psychtoolbox-3/master
+  * Merge pull request #838 from kleinerm/master
+  * GitHub/CI: Print version() of Matlab or Octave used for build.
+  * Eyelink mex for 64-Bit Octave/Matlab on MS-Windows rebuilt.
+  * Eyelink mex for 64-Bit Octave/Matlab on macOS rebuilt.
+  * Eyelink mex for 64-Bit Octave/Matlab on Linux rebuilt.
+  * Merge pull request #266 from kleinerm/eyelinktoolboxrc
+  * PsychEyelinkDispatchCallback(): Keep all persistent variables grouped on top.
+  * EyelinkDo[TrackerSetup/DriftCorrection]: Update help text wrt. sound setup.
+  * EyelinkGetTrackerImageDemo: Add option to test different sound paths.
+  * PsychEyelinkDispatchCallback(): Cleanup also clears all (persistent) variables.
+  * Eyelink('Shutdown'): Do not 'clear PsychEyelinkDispatchCallback'.
+  * Eyelink: Make verbosity static, to avoid cross-talk with other mex files.
+  * PsychEyelinkDispatchCallback(): Optimize text drawing, get rid of globals.
+  * PsychEyelinkDispatchCallback(): Drop use of ppa_beep_buffers / CreateBuffer.
+  * EyelinkToolbox: Improve / fix new audio feedback tone output path.
+  * PsychEyelinkDispatchCallback(): Cleanup weird use of Eyelink('Verbosity').
+  * EyelinkDoDriftCorrection(), EyelinkDoTrackerSetup(): Fix broken video support for Octave.
+  * EyelinkToolbox: Further fixes to broken legacy functions.
+  * EyelinkUpdateDefaults(): Fix for use with legacy scripts.
+  * EyelinkTests: Bring EyelinkGetTrackerImageDemo.m back.
+  * EyelinkToolbox: Update changelog.
+  * EyelinkToolbox: Fix help text of legacy basic functions.
+  * EyelinkBasic: Remove unnecessary calls to SetMovieTimeIndex.
+  * EyelinkDemos: Misc improvements to demo projects code and syntax.
+  * PsychEyelinkDispatchCallback: Various performance improvements and cleanups.
+  * Eyelink: Update SR-ResearchDemos to directly use PsychPortAudio.
+  * Eyelink: Add support for direct use of PsychPortAudio.
+  * EyelinkDemos: Adapt SR-ResearchDemos to use PsychDefaultSetup(2) and PsychImaging.
+  * Eyelinktoolbox: Cleanup EyelinkInit/UpdateDefaults.m in EyelinkBasic.
+  * Eyelink: fix CRLF > LF line ending fixes and conversion.
+  * EyelinkToolbox: Cleanup documentation, help summary Contents.m and H1.
+  * EyelinkDemos: Remove old suboptimal demo projects.
+  * EyelinkToolbox: Backward compatible deprecation of legacy functions.
+  * EyelinkToolbox: Various refactoring, renaming and improvements.
+  * EyelinkToolbox: Refactoring and improvements to EyelinkDemos
+  * PsychLinuxConfiguration: Minor fixups for previous commits.
+  * PsychLinuxConfiguration: Add hack for moglcore compatibility with Ubuntu 24.04+.
+  * PsychLinuxConfiguration: Add workaround for Matlab OpenGL plotting bug on Intel.
+  * OpenXR: Prep work for future articulated hand tracking support in M-Files.
+  * PsychOpenXRCore: Bump copyrights to year 2024, update some comments.
+  * Screen('OpenVideoCapture'): Allow to disable videorate converter during recording.
+  * ImagingStereoMoviePlayer.m: Add handling for top-bottom encoded movies.
+  * PsychCV mex for 64-Bit Octave/Matlab on Ubuntu 22.04 Linux built.
+  * PsychCV: Improve Apriltags support, based on practical use experience.
+  * PsychCV('AprilDetectMarkers'): Make sure to choose best candidate for each marker.
+  * PsychPortAudio mex for 64-Bit Octave 7.3 on Windows rebuilt.
+  * PsychPortAudio/Win: Use auto samplerate conversion under WASAPI shared mode.
+  * CedrusResponseBox(): Disable any flow control.
+  * PsychPython: Bump version for 3.0.19.11 release.
+  * Merge pull request #270 from Psychtoolbox-3/beta
+- for previous changes from 3.0.16 through 3.0.19.10, see git log
+- Switch package to modern Python Stack on SLE-15
+  * Use Python 3.11 on SLE-15 by default
+  * Drop support for older Python versions
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+  * Update name for dist directory in %files section
+- Switch URL for source tarball to new GitHub project
+
+-------------------------------------------------------------------
 Fri Apr 23 03:06:41 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not build for Python 3.6, due to no NumPy. 
