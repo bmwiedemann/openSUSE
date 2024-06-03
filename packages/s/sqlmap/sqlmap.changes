@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May 25 15:10:26 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.8.5:
+  * Patch related to the #5700 (Send raw binary data to postprocess function)
+
+- update to 1.8.4:
+  * Removing some obsolete code
+
+-------------------------------------------------------------------
 Sat Mar 16 19:41:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.3:
