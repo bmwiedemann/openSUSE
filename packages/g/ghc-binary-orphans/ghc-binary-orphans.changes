@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 17 00:57:49 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update binary-orphans to version 1.0.5.
+  # 1.0.5
+
+  - Support GHC-8.6.5..GHC-9.10.1
+
+-------------------------------------------------------------------
 Fri Oct 13 14:44:09 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update binary-orphans to version 1.0.4.1 revision 3.
