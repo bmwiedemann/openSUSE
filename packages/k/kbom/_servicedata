@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/ksoclabs/kbom</param>
-              <param name="changesrevision">5873ff285776c931b4158b76c91074620589d16f</param></service></servicedata>
+              <param name="changesrevision">5873ff285776c931b4158b76c91074620589d16f</param></service><service name="tar_scm">
+                <param name="url">https://github.com/rad-security/kbom</param>
+              <param name="changesrevision">c34494fddc3f2af8fb3f087a6f32112dc453debf</param></service></servicedata>

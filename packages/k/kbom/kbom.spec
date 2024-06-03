@@ -1,7 +1,7 @@
 #
 # spec file for package kbom
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,21 +19,25 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kbom
-Version:        0.2.5
+Version:        0.3.0
 Release:        0
 Summary:        Kubernetes Bill of Materials
 License:        Apache-2.0
-URL:            https://github.com/ksoclabs/kbom
+URL:            https://github.com/rad-security/kbom
 Source:         kbom-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.20
+BuildRequires:  go >= 1.22
 
 %description
-The Kubernetes Bill of Materials (KBOM) standard provides insight into container orchestration tools widely used across the industry.
+The Kubernetes Bill of Materials (KBOM) standard provides insight into
+container orchestration tools widely used across the industry.
 
-As a first draft, we have created a rough specification which should fall in line with other Bill of Materials (BOM) standards.
+As a first draft, we have created a rough specification which should fall in
+line with other Bill of Materials (BOM) standards.
 
-The KBOM project provides an initial specification in JSON and has been constructed for extensibilty across various cloud service providers (CSPs) as well as DIY Kubernetes.
+The KBOM project provides an initial specification in JSON and has been
+constructed for extensibilty across various cloud service providers (CSPs) as
+well as DIY Kubernetes.
 
 %package -n %{name}-bash-completion
 Summary:        Bash Completion for %{name}
@@ -75,11 +79,11 @@ BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || dat
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags="-s -w \
-   -X github.com/ksoclabs/kbom/internal/config.AppName=kbom \
-   -X github.com/ksoclabs/kbom/internal/config.AppVersion=v%{version} \
-   -X github.com/ksoclabs/kbom/internal/config.BuildTime=$BUILD_DATE\
-   -X github.com/ksoclabs/kbom/internal/config.LastCommitHash=v%{version}" \
+   -ldflags=" \
+   -X github.com/rad-security/kbom/internal/config.AppName=kbom \
+   -X github.com/rad-security/kbom/internal/config.AppVersion=v%{version} \
+   -X github.com/rad-security/kbom/internal/config.BuildTime=$BUILD_DATE\
+   -X github.com/rad-security/kbom/internal/config.LastCommitHash=v%{version}" \
    -o bin/kbom .
 
 %install

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jun 01 09:14:22 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.3.0:
+  * Change prefix in taxonomy and cyclondx
+
+-------------------------------------------------------------------
+Fri May 31 12:33:05 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.6:
+  * Bump schema version and format
+  * Bump dependencies
+  * Migrate kbom from ksoclabs to rad-security
+  * Update module github.com/google/uuid to v1.5.0
+  * Update kubernetes packages to v0.29.0
+
+-------------------------------------------------------------------
+Thu Apr 18 08:01:51 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- do not strip aka remove -s -w ldflags
+
+-------------------------------------------------------------------
 Thu Dec 21 16:26:20 UTC 2023 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.2.5:
