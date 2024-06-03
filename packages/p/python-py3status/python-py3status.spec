@@ -18,12 +18,12 @@
 
 %define skip_python2 1
 Name:           python-py3status
-Version:        3.52
+Version:        3.57
 Release:        0
 Summary:        Python extensible i3status wrapper
 License:        BSD-3-Clause
 URL:            https://github.com/ultrabug/py3status
-Source:         https://github.com/ultrabug/py3status/archive/3.52.tar.gz#/py3status-3.52.tar.gz
+Source:         https://github.com/ultrabug/py3status/archive/3.57.tar.gz#/py3status-3.57.tar.gz
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}

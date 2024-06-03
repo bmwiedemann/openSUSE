@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri May 31 09:50:50 UTC 2024 - Dawid Adam <nyslay@gmail.com>
+
+- update to 3.57:
+  * docs: explain how to serve mkdocs locally
+  * add CodeQL workflow for GitHub code scanning
+  * fmt: fix newer black
+  * backlight module: add brightnessctl support
+  * conky module: workaround upstream issues/1479
+  * volume_status module: fix for default source with pamixer
+
+-------------------------------------------------------------------
+Fri May 31 09:50:50 UTC 2024 - Dawid Adam <nyslay@gmail.com>
+
+- update to 3.56:
+  * remove audio modules in favor of playerctl
+  * new module dexcom:  display glucose readings from your Dexcom CGM system
+  * arch_updates module: hourly cache_timeout, add a note about alpm-hooks
+  * volume_status module: pamixer fix command if device is 0
+  * volume_status module: pamixer: Use default device if none specified
+
+-------------------------------------------------------------------
+Fri May 31 09:50:50 UTC 2024 - Dawid Adam <nyslay@gmail.com>
+
+- uprate to 3.55:
+  * pkg: add dbus tag to pull dependencies 'pip install py3status[dbus]'
+  * pkg: drop eol python 3.7 support, add python 3.12
+  * pkg: pull setuptools for 3.12
+  * docs(build): move away from readthedocs and switch to automatic github pages
+  * docs(config): add favicon and rename the site
+  * readme: drop readthedocs build status
+  * docs: fix broken 404 urls
+  * arch_updates module: update auracle from sync to outdated
+  * bluetooth module: reinitialize dbus to fix after sleep behavior
+  * lm_sensors module: fix invalid json if specified more than one chip
+  * nvidia_smi module: fix --list-properties
+  * vpn_status module: add formatters for displaying IP addresses of VPNs
+
+-------------------------------------------------------------------
+Fri May 31 09:50:50 UTC 2024 - Dawid Adam <nyslay@gmail.com>
+
+- update to 3.54:
+  * arch_updates module: handle yay return code better when there are no updates
+  * arch_updates module: make it more responsive to system updates
+  * battery_level module: fix code style
+
+-------------------------------------------------------------------
+Fri May 31 09:50:50 UTC 2024 - Dawid Adam <nyslay@gmail.com>
+
+- update to 3.53:
+  * argparser: remove deprecated interval option
+  * new module playerctl: control players supported by playerctl
+
+-------------------------------------------------------------------
 Tue Aug 01 12:00:23 UTC 2023 - nyslay@gmail.com
 
 - update to 3.52:
