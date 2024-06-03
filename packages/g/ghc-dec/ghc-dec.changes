@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 17 15:33:11 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update dec to version 0.0.6.
+  ## 0.0.6
+
+  - Support GHC-8.6.5...9.10.1
+
+-------------------------------------------------------------------
 Tue Oct 24 16:57:16 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update dec to version 0.0.5 revision 2.
