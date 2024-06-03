@@ -19,14 +19,14 @@
 
 %define sover   1
 Name:           poke
-Version:        4.0
+Version:        4.1
 Release:        0
 Summary:        An interactive, extensible editor for binary data
 License:        GPL-3.0-or-later
 URL:            https://www.gnu.org/software/poke/
 Source0:        https://ftp.gnu.org/gnu/poke/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/poke/%{name}-%{version}.tar.gz.sig
-Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=829#/%{name}.keyring
+Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=217829#/%{name}.keyring
 BuildRequires:  dejagnu
 BuildRequires:  gawk
 BuildRequires:  pkgconfig
@@ -80,7 +80,7 @@ BuildArch:      noarch
 Provides Vim support for %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 # jitter fails to build with LTO, disable it for now
@@ -113,6 +113,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_infodir}/%{name}.info-2%{?ext_info}
 %{_infodir}/%{name}.info-3%{?ext_info}
 %{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man1/pokefmt.1%{?ext_man}
 %{_mandir}/man1/poked.1%{?ext_man}
 %{_datadir}/poke/pickles/
 

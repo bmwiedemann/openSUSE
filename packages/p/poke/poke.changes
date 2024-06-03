@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 31 21:15:09 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.1:
+  * Execution speed of `pk-jojopatch' has been improved by
+    disabling auto-remap feature
+  * Fixes for invalid memory accesses and crashes
+  * jitter submodule updated
+
+-------------------------------------------------------------------
 Tue Apr  2 19:38:05 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.0
