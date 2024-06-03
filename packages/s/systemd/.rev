@@ -7214,4 +7214,21 @@ handle manual pages that consist only of a .so directive such as
 - systemd.spec: some of the meson options have been converted to meson features.</comment>
     <requestid>1174803</requestid>
   </revision>
+  <revision rev="424" vrev="1">
+    <srcmd5>33a108e6f796c9969e760f12e6bbbdc4</srcmd5>
+    <version>255.7</version>
+    <time>1717429230</time>
+    <user>anag+factory</user>
+    <comment>- Import commit 603cd1d4d81147d4f2eccd5e352064a4215119b4 (merge of v255.7)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/b9c17562f612ab2cd8cfee1960714c58d0a6c593...603cd1d4d81147d4f2eccd5e352064a4215119b4
+
+- Import commit b9c17562f612ab2cd8cfee1960714c58d0a6c593
+  b9c17562f6 99-systemd.rules: rework SYSTEMD_READY logic for device mapper
+  c5003fc15e pcrlock: add make_pcrlock_record_from_stream
+
+- systemd.spec: introduce %{meson_extra_configure_options} to allow passing
+  extra meson configure options.</comment>
+    <requestid>1177954</requestid>
+  </revision>
 </revisionlist>

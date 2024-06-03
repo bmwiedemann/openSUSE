@@ -26,9 +26,9 @@
 %define systemd_release    %{?release_override}%{!?release_override:0}
 %define archive_version    %{nil}
 %else
-%define systemd_version    255.6
+%define systemd_version    255.7
 %define systemd_release    0
-%define archive_version    +suse.30.g3ea0e1dff3
+%define archive_version    +suse.33.g603cd1d4d8
 %endif
 
 %define systemd_major      %{sub %systemd_version 1 3}
@@ -881,7 +881,9 @@ for the C APIs.
         -Dvmspawn=%{enabled_with experimental} \
         \
         -Dtests=%{when testsuite unsafe} \
-        -Dinstall-tests=%{when testsuite}
+        -Dinstall-tests=%{when testsuite} \
+        \
+        %{?meson_extra_configure_options}
 
 %meson_build
 
