@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun 03 06:19:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.34.0:
+  * 1.34.0 Release (#1890)
+  * docs: update user guide (#1882)
+  * cleanup: removes uneeded annotation when not using network
+    policy (#1884)
+  * bug: fix annotation bug (#1887)
+  * tests: fix flakey tests (#1886)
+  * chore: fix test file names (#1889)
+  * update owners (#1888)
+  * fix: expose container to host only with labels (#1880)
+  * feature: change example to use non-root (#1879)
+  * update references to just compose (#1869)
+
+-------------------------------------------------------------------
 Fri Apr 26 05:36:46 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.33.0:
