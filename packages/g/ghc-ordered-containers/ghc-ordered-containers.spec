@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-ordered-containers
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name ordered-containers
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.2.3
+Version:        0.2.4
 Release:        0
 Summary:        Set- and Map-like types that remember the order elements were inserted
 License:        BSD-3-Clause
@@ -30,6 +30,8 @@ BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-hashable-devel
+BuildRequires:  ghc-hashable-prof
 BuildRequires:  ghc-rpm-macros
 ExcludeArch:    %{ix86}
 
