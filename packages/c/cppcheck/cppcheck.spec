@@ -17,7 +17,7 @@
 
 
 Name:           cppcheck
-Version:        2.14.0
+Version:        2.14.1
 Release:        0
 Summary:        A tool for static C/C++ code analysis
 License:        GPL-3.0-or-later

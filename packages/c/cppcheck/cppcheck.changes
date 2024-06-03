@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 27 07:17:31 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- update to 2.14.1
+  * Build: fix USE_MATCHCOMPILER CMake option validation
+  * Improve Checking: implement evaluation order checker for c++11
+    and later
+
+-------------------------------------------------------------------
 Fri Apr 26 20:39:37 UTC 2024 - Christoph G <foss@grueninger.de>
 
 - update to 2.14.0
