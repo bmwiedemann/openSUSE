@@ -1,0 +1,60 @@
+diff -ru binutils-2.39.orig/ld/emultempl/pe.em binutils-2.39/ld/emultempl/pe.em
+--- binutils-2.39.orig/ld/emultempl/pe.em	2022-07-08 11:46:48.000000000 +0200
++++ binutils-2.39/ld/emultempl/pe.em	2024-05-31 17:03:45.730816373 +0200
+@@ -116,6 +116,7 @@
+ 
+ #define DEFAULT_DLL_CHARACTERISTICS	(${cygwin_behavior} ? 0 : \
+ 					   IMAGE_DLL_CHARACTERISTICS_DYNAMIC_BASE \
++					 | IMAGE_DLL_CHARACTERISTICS_HIGH_ENTROPY_VA \
+ 					 | IMAGE_DLL_CHARACTERISTICS_NX_COMPAT)
+ 
+ #if defined(TARGET_IS_i386pe) || ! defined(DLL_SUPPORT)
+@@ -272,7 +273,8 @@
+ #define OPTION_DISABLE_LONG_SECTION_NAMES \
+ 					(OPTION_ENABLE_LONG_SECTION_NAMES + 1)
+ /* DLLCharacteristics flags.  */
+-#define OPTION_DYNAMIC_BASE		(OPTION_DISABLE_LONG_SECTION_NAMES + 1)
++#define OPTION_HIGH_ENTROPY_VA		(OPTION_DISABLE_LONG_SECTION_NAMES + 1)
++#define OPTION_DYNAMIC_BASE		(OPTION_HIGH_ENTROPY_VA + 1)
+ #define OPTION_FORCE_INTEGRITY		(OPTION_DYNAMIC_BASE + 1)
+ #define OPTION_NX_COMPAT		(OPTION_FORCE_INTEGRITY + 1)
+ #define OPTION_NO_ISOLATION		(OPTION_NX_COMPAT + 1)
+@@ -287,7 +289,8 @@
+ #define OPTION_ENABLE_RELOC_SECTION	(OPTION_BUILD_ID + 1)
+ #define OPTION_DISABLE_RELOC_SECTION	(OPTION_ENABLE_RELOC_SECTION + 1)
+ /* DLL Characteristics flags.  */
+-#define OPTION_DISABLE_DYNAMIC_BASE	(OPTION_DISABLE_RELOC_SECTION + 1)
++#define OPTION_DISABLE_HIGH_ENTROPY_VA	(OPTION_DISABLE_RELOC_SECTION + 1)
++#define OPTION_DISABLE_DYNAMIC_BASE	(OPTION_DISABLE_HIGH_ENTROPY_VA + 1)
+ #define OPTION_DISABLE_FORCE_INTEGRITY	(OPTION_DISABLE_DYNAMIC_BASE + 1)
+ #define OPTION_DISABLE_NX_COMPAT	(OPTION_DISABLE_FORCE_INTEGRITY + 1)
+ #define OPTION_DISABLE_NO_ISOLATION	(OPTION_DISABLE_NX_COMPAT + 1)
+@@ -366,6 +369,8 @@
+     {"disable-large-address-aware", no_argument, NULL, OPTION_DISABLE_LARGE_ADDRESS_AWARE},
+     {"enable-long-section-names", no_argument, NULL, OPTION_ENABLE_LONG_SECTION_NAMES},
+     {"disable-long-section-names", no_argument, NULL, OPTION_DISABLE_LONG_SECTION_NAMES},
++    {"high-entropy-va", no_argument, NULL, OPTION_HIGH_ENTROPY_VA},
++    {"disable-high-entropy-va", no_argument, NULL, OPTION_DISABLE_HIGH_ENTROPY_VA},
+     {"dynamicbase",no_argument, NULL, OPTION_DYNAMIC_BASE},
+     {"disable-dynamicbase",no_argument, NULL, OPTION_DISABLE_DYNAMIC_BASE},
+     {"forceinteg", no_argument, NULL, OPTION_FORCE_INTEGRITY},
+@@ -893,6 +898,9 @@
+       pe_use_coff_long_section_names = 0;
+       break;
+ /*  Get DLLCharacteristics bits  */
++    case OPTION_HIGH_ENTROPY_VA:
++      pe_dll_characteristics |= IMAGE_DLL_CHARACTERISTICS_HIGH_ENTROPY_VA;
++      /* fall through */
+     case OPTION_DYNAMIC_BASE:
+       pe_dll_characteristics |= IMAGE_DLL_CHARACTERISTICS_DYNAMIC_BASE;
+       /* fall through */
+@@ -904,6 +912,9 @@
+       /* fall through */
+     case OPTION_DISABLE_DYNAMIC_BASE:
+       pe_dll_characteristics &= ~ IMAGE_DLL_CHARACTERISTICS_DYNAMIC_BASE;
++      /* fall through */
++    case OPTION_DISABLE_HIGH_ENTROPY_VA:
++      pe_dll_characteristics &= ~ IMAGE_DLL_CHARACTERISTICS_HIGH_ENTROPY_VA;
+       break;
+     case OPTION_FORCE_INTEGRITY:
+       pe_dll_characteristics |= IMAGE_DLL_CHARACTERISTICS_FORCE_INTEGRITY;
