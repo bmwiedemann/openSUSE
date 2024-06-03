@@ -35,8 +35,6 @@ BuildRequires:  gcc11
 BuildRequires:  gcc
 %endif
 
-%{go_nostrip}
-
 %description
 rsync for cloud storage. rclone is a command line program to sync files and
 directories to and from a wide variety of cloud storage providers, providing
