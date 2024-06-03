@@ -284,4 +284,13 @@
   * Ignored wildcard specifications for top-level domains (forwarded request 1171935 from VaiTon)</comment>
     <requestid>1171936</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>276b110195bc5fd9f95fa45f1f353e0b</srcmd5>
+    <version>0.71.2</version>
+    <time>1717429453</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.71.2:
+  * The quic-go dependency has been updated to v0.44.0. (forwarded request 1178187 from VaiTon)</comment>
+    <requestid>1178200</requestid>
+  </revision>
 </revisionlist>
