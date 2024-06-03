@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 21 20:07:43 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.8.1:
+  * [BUGFIX] Fix CPU seconds on Solaris #2963
+  * [BUGFIX] Sign Darwin/MacOS binaries #3008
+  * [BUGFIX] Fix pressure collector nil reference #3016
+
+-------------------------------------------------------------------
 Wed Apr 24 16:56:23 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.8.0:

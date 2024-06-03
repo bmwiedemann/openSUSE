@@ -20,7 +20,7 @@
 %{go_nostrip}
 
 Name:           golang-github-prometheus-node_exporter
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        Prometheus exporter for machine metrics
 License:        Apache-2.0

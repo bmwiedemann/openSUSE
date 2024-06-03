@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v1.8.0</param>
+    <param name="revision">v1.8.1</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
   <service name="tar" mode="buildtime"/>
@@ -16,6 +16,6 @@
     <param name="basename">node_exporter</param>
   </service>
   <service name="go_modules" mode="manual">
-    <param name="archive">node_exporter-1.8.0.obscpio</param>
+    <param name="archive">node_exporter-1.8.1.obscpio</param>
   </service>
 </services>
