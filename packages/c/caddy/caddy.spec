@@ -25,7 +25,7 @@
 %endif
 
 Name:           caddy
-Version:        2.7.6
+Version:        2.8.4
 Release:        0
 Summary:        Fast, multi-platform web server with automatic HTTPS
 License:        Apache-2.0
@@ -41,7 +41,7 @@ Source6:        zsh-completion
 Source7:        caddy.sysusers
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
-BuildRequires:  golang(API) >= 1.20
+BuildRequires:  golang(API) >= 1.21
 %{?systemd_requires}
 %{sysusers_requires}
 

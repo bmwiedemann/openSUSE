@@ -385,4 +385,20 @@
     <comment>Fix --no-check build (forwarded request 1163784 from bmwiedemann)</comment>
     <requestid>1163949</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e881e3c1caf0d6212a57bb0ed96f39ea</srcmd5>
+    <version>2.8.4</version>
+    <time>1717429294</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.8.4:
+  * cmd: fix regression in auto-detect of Caddyfile (#6362)
+  * Tag v2.8.3 was mistakenly made on the v2.8.2 commit and is skipped
+
+- Update to version 2.8.2:
+  * cmd: fix auto-detetction of .caddyfile extension (#6356)
+  * caddyhttp: properly sanitize requests for root path (#6360)
+  * caddytls: Implement certmagic.RenewalInfoGetter
+  * build(deps): bump golangci/golangci-lint-action from 5 to 6 (#6361) (forwarded request 1178167 from jfkw)</comment>
+    <requestid>1178203</requestid>
+  </revision>
 </revisionlist>
