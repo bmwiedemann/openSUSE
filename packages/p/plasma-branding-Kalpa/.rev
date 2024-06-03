@@ -41,4 +41,14 @@
 - Updated version to 202400401</comment>
     <requestid>1163992</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>50e0807b23354af85b8479a29e3fc0ae</srcmd5>
+    <version>20240401</version>
+    <time>1717429241</time>
+    <user>anag+factory</user>
+    <comment>- Added Conflicts: plasma-branding-MicroOS
+
+- Removed Obsolets from spec file to avoid collision with plasma-branding-MicroOS</comment>
+    <requestid>1177820</requestid>
+  </revision>
 </revisionlist>

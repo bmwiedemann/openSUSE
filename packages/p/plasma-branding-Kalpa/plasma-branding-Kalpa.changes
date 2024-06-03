@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 30 22:22:26 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Added Conflicts: plasma-branding-MicroOS
+
+-------------------------------------------------------------------
+Thu May 30 21:42:03 UTC 2024 - Gerardo Gomez Rodriguez <gerardo.gomez@tutanota.com>
+
+- Removed Obsolets from spec file to avoid collision with plasma-branding-MicroOS
+
+-------------------------------------------------------------------
 Mon Apr  1 21:20:32 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Updated kalpa-firstboot and kalpa-firstboot-aarch64 for Plasma6

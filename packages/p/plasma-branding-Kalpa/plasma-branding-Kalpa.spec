@@ -48,7 +48,9 @@ Requires:       transactional-update
 Conflicts:      gnome-branding-MicroOS
 Provides:       plasma-branding = %{version}
 Provides:       plasma-branding-MicroOS = %{version}
-Obsoletes:      plasma-branding-MicroOS < %{version}
+# Do not obsolete plasma-branding-MicroOS just yet
+# Obsoletes:      plasma-branding-MicroOS
+Conflicts:      plasma-branding-MicroOS = %{version}
 BuildArch:      noarch
 
 %description
