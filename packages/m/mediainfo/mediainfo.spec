@@ -18,7 +18,7 @@
 
 
 Name:           mediainfo
-Version:        24.04
+Version:        24.05
 Release:        0
 Summary:        Audio/video file technical and tag information utility
 License:        GPL-2.0-or-later
