@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 31 13:27:30 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to version 2.52
+  * Add GCS batch delete support
+  * S3 SSE-C encryption support
+  * PostgreSQL 17 support
+  * Update start/stop documentation to reflect actual functionality.
+
+- switch rpm build to meson build system
+
+-------------------------------------------------------------------
 Fri Mar 29 09:05:56 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to version 2.51

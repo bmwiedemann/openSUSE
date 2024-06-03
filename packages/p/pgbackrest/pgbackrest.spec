@@ -19,7 +19,7 @@
 
 %define services pgbackrest.target pgbackrest-diff@.service pgbackrest-full@.service pgbackrest-incr@.service pgbackrest.service pgbackrest-diff@.timer pgbackrest-full@.timer pgbackrest-incr@.timer
 Name:           pgbackrest
-Version:        2.51
+Version:        2.52
 Release:        0
 Summary:        Reliable PostgreSQL Backup & Restore
 License:        MIT
@@ -40,12 +40,15 @@ Source98:       README.SUSE
 Source99:       series
 Patch0:         libpq-fe.h_localisation.patch
 Patch1:         use-run-pgbackrest.patch
+BuildRequires:  libbacktrace-devel
 BuildRequires:  libyaml-devel
-BuildRequires:  openssl-devel
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(libpq)
+BuildRequires:  pkgconfig(libssh2)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(systemd)
 # This is a bit awkward as we only need this for directory ownership
 Requires(pre):  postgresql-server
@@ -82,14 +85,11 @@ The following features are available:
 
 %build
 cp %{SOURCE98} .
-pushd src
-%configure
-# make_build doesn't work on sle12, as long we want to support that we can not use the macro here
-%make_build
-popd
+%meson
+%meson_build
 
 %install
-%make_install -C src
+%meson_install
 
 install -D -d -m 0700                         \
   %{buildroot}%{_localstatedir}/lib/%{name}   \
@@ -120,6 +120,7 @@ install -D -m 0644 \
 # Tests are only available with Vagrant
 # We just test that the binary works.
 %{buildroot}/%{_bindir}/%{name} version || exit 1
+%meson_test
 
 %pre
 %service_add_pre %{services}

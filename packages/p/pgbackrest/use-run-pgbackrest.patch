@@ -1,7 +1,7 @@
-Index: pgbackrest-release-2.51/CODING.md
+Index: pgbackrest-release-2.52/CODING.md
 ===================================================================
---- pgbackrest-release-2.51.orig/CODING.md
-+++ pgbackrest-release-2.51/CODING.md
+--- pgbackrest-release-2.52.orig/CODING.md
++++ pgbackrest-release-2.52/CODING.md
 @@ -268,11 +268,11 @@ Continuation characters should be aligne
  
  This function can be called without variable parameters:
@@ -16,11 +16,11 @@ Index: pgbackrest-release-2.51/CODING.md
  ```
  If the majority of functions in a module or object are variadic it is best to provide macros for all functions even if they do not have variable parameters. Do not use the base function when variadic macros exist.
  
-Index: pgbackrest-release-2.51/doc/resource/git-history.cache
+Index: pgbackrest-release-2.52/doc/resource/git-history.cache
 ===================================================================
---- pgbackrest-release-2.51.orig/doc/resource/git-history.cache
-+++ pgbackrest-release-2.51/doc/resource/git-history.cache
-@@ -7586,7 +7586,7 @@
+--- pgbackrest-release-2.52.orig/doc/resource/git-history.cache
++++ pgbackrest-release-2.52/doc/resource/git-history.cache
+@@ -7784,7 +7784,7 @@
      {
          "commit": "a1365b26d4c2383eaacea3714eeb521435ca79aa",
          "date": "2021-01-18 23:41:09 -0500",
@@ -29,7 +29,7 @@ Index: pgbackrest-release-2.51/doc/resource/git-history.cache
      },
      {
          "commit": "8322dfd7af97e307b952cfb37e6a65b65f55be0f",
-@@ -10402,8 +10402,8 @@
+@@ -10600,8 +10600,8 @@
      {
          "commit": "3fbfcba811499a59b943dd893eef9ff52090f7b6",
          "date": "2020-03-16 17:27:01 -0400",
@@ -40,7 +40,7 @@ Index: pgbackrest-release-2.51/doc/resource/git-history.cache
      },
      {
          "commit": "46911c64c19dc8ff76d2a6ff4548fc01647043e0",
-@@ -12303,7 +12303,7 @@
+@@ -12501,7 +12501,7 @@
          "commit": "45881c74aeff4bb25559ec0254fa7fc1960d9cab",
          "date": "2019-10-08 12:06:30 -0400",
          "subject": "Allow most unit tests to run outside of a container.",
@@ -49,7 +49,7 @@ Index: pgbackrest-release-2.51/doc/resource/git-history.cache
      },
      {
          "commit": "77b0c6c993a0e6ff45a6a99f343c3709a016d152",
-@@ -20790,7 +20790,7 @@
+@@ -20988,7 +20988,7 @@
          "commit": "18fd25233b1db7b3197f5d8dc537d239dcfc7aba",
          "date": "2016-04-14 09:30:54 -0400",
          "subject": "New simpler configuration and consistent project/exe/path naming.",
@@ -58,10 +58,10 @@ Index: pgbackrest-release-2.51/doc/resource/git-history.cache
      },
      {
          "commit": "885797e4b58a675487a3531ba16908c1d1e9f970",
-Index: pgbackrest-release-2.51/doc/xml/coding.xml
+Index: pgbackrest-release-2.52/doc/xml/coding.xml
 ===================================================================
---- pgbackrest-release-2.51.orig/doc/xml/coding.xml
-+++ pgbackrest-release-2.51/doc/xml/coding.xml
+--- pgbackrest-release-2.52.orig/doc/xml/coding.xml
++++ pgbackrest-release-2.52/doc/xml/coding.xml
 @@ -365,13 +365,13 @@ void storagePathCreate(const Storage *th
              <p>This function can be called without variable parameters:</p>
  
@@ -78,10 +78,10 @@ Index: pgbackrest-release-2.51/doc/xml/coding.xml
              </code-block>
  
              <p>If the majority of functions in a module or object are variadic it is best to provide macros for all functions even if they do not have variable parameters. Do not use the base function when variadic macros exist.</p>
-Index: pgbackrest-release-2.51/doc/xml/release/2016/1.00.xml
+Index: pgbackrest-release-2.52/doc/xml/release/2016/1.00.xml
 ===================================================================
---- pgbackrest-release-2.51.orig/doc/xml/release/2016/1.00.xml
-+++ pgbackrest-release-2.51/doc/xml/release/2016/1.00.xml
+--- pgbackrest-release-2.52.orig/doc/xml/release/2016/1.00.xml
++++ pgbackrest-release-2.52/doc/xml/release/2016/1.00.xml
 @@ -43,7 +43,7 @@
                      <release-item-contributor id="david.steele"/>
                  </release-item-contributor-list> -->
@@ -91,10 +91,10 @@ Index: pgbackrest-release-2.51/doc/xml/release/2016/1.00.xml
              </release-item>
  
              <release-item>
-Index: pgbackrest-release-2.51/src/build/config/config.yaml
+Index: pgbackrest-release-2.52/src/build/config/config.yaml
 ===================================================================
---- pgbackrest-release-2.51.orig/src/build/config/config.yaml
-+++ pgbackrest-release-2.51/src/build/config/config.yaml
+--- pgbackrest-release-2.52.orig/src/build/config/config.yaml
++++ pgbackrest-release-2.52/src/build/config/config.yaml
 @@ -844,7 +844,7 @@ option:
    lock-path:
      section: global
@@ -104,10 +104,10 @@ Index: pgbackrest-release-2.51/src/build/config/config.yaml
      command:
        annotate: {}
        archive-get: {}
-Index: pgbackrest-release-2.51/src/config/parse.auto.c.inc
+Index: pgbackrest-release-2.52/src/config/parse.auto.c.inc
 ===================================================================
---- pgbackrest-release-2.51.orig/src/config/parse.auto.c.inc
-+++ pgbackrest-release-2.51/src/config/parse.auto.c.inc
+--- pgbackrest-release-2.52.orig/src/config/parse.auto.c.inc
++++ pgbackrest-release-2.52/src/config/parse.auto.c.inc
 @@ -11,7 +11,7 @@ Rule Strings
  
  static const StringPub parseRuleValueStr[] =
@@ -117,10 +117,10 @@ Index: pgbackrest-release-2.51/src/config/parse.auto.c.inc
      PARSE_RULE_STRPUB("/var/lib/pgbackrest"),                                                                             // val/str
      PARSE_RULE_STRPUB("/var/log/pgbackrest"),                                                                             // val/str
      PARSE_RULE_STRPUB("/var/spool/pgbackrest"),                                                                           // val/str
-Index: pgbackrest-release-2.51/test/ci.pl
+Index: pgbackrest-release-2.52/test/ci.pl
 ===================================================================
---- pgbackrest-release-2.51.orig/test/ci.pl
-+++ pgbackrest-release-2.51/test/ci.pl
+--- pgbackrest-release-2.52.orig/test/ci.pl
++++ pgbackrest-release-2.52/test/ci.pl
 @@ -202,8 +202,8 @@ eval
              $strPackage .= " libdbd-pg-perl";
          }
@@ -132,10 +132,10 @@ Index: pgbackrest-release-2.51/test/ci.pl
          processEnd();
  
          processBegin('install test packages');
-Index: pgbackrest-release-2.51/test/src/module/command/helpTest.c
+Index: pgbackrest-release-2.52/test/src/module/command/helpTest.c
 ===================================================================
---- pgbackrest-release-2.51.orig/test/src/module/command/helpTest.c
-+++ pgbackrest-release-2.51/test/src/module/command/helpTest.c
+--- pgbackrest-release-2.52.orig/test/src/module/command/helpTest.c
++++ pgbackrest-release-2.52/test/src/module/command/helpTest.c
 @@ -246,7 +246,7 @@ testRun(void)
              "                                      [default=n]\n"
              "  --io-timeout                        I/O timeout [default=60]\n"
@@ -145,10 +145,10 @@ Index: pgbackrest-release-2.51/test/src/module/command/helpTest.c
              "  --neutral-umask                     use a neutral umask [default=y]\n"
              "  --process-max                       max processes to use for\n"
              "                                      compress/transfer [default=1]\n"
-Index: pgbackrest-release-2.51/test/Vagrantfile
+Index: pgbackrest-release-2.52/test/Vagrantfile
 ===================================================================
---- pgbackrest-release-2.51.orig/test/Vagrantfile
-+++ pgbackrest-release-2.51/test/Vagrantfile
+--- pgbackrest-release-2.52.orig/test/Vagrantfile
++++ pgbackrest-release-2.52/test/Vagrantfile
 @@ -54,12 +54,12 @@ Vagrant.configure(2) do |config|
              sudo /etc/init.d/virtualbox-guest-utils stop
              sudo /usr/sbin/VBoxService --timesync-set-on-restore --timesync-interval 5000 --timesync-set-threshold 1
