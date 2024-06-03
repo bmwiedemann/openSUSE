@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 31 15:05:37 UTC 2024 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Add patch to enable HEASLR with PE builds which is a leftover from
+    https://sourceware.org/bugzilla/show_bug.cgi?id=19011 (boo#948280)
+  * binutils-2.39-option-high-entry-va.patch
+
+-------------------------------------------------------------------
 Fri Oct  6 12:31:39 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to override build date (boo#1047218)

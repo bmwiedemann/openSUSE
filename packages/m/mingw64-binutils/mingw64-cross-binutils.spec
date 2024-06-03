@@ -30,6 +30,7 @@ Patch0:         0001-PR29362-some-binutils-memory-leaks.patch
 Patch1:         0001-Fix-bug-not-showing-correct-path-with-objdump-WL-wit.patch
 Patch2:         0001-dllwrap-windres-and-dlltools-use-mktemp-which-should.patch
 Patch3:         reproducible.patch
+Patch4:         binutils-2.39-option-high-entry-va.patch
 #!BuildIgnore:  post-build-checks
 #!BuildIgnore:  mingw64-cross-binutils-utils
 #!BuildIgnore:  mingw64-cross-pkgconf-utils
