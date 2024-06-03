@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jun  2 09:16:20 UTC 2024 - Dominik Wombacher <dominik@wombacher.cc>
+
+- Backport patches to fix issues after 5.14.1 release (https://pagure.io/pagure/pull-request/5486)
+  + fix(5.14.x): Use '==' instead of 'is' in template if condition because to work with old Jinja2 versions
+  + fix(oidc): Edge case, avoid 'KeyError' after pagure update if a cached session is used 
+  + Patch: 5486.patch 
+
+-------------------------------------------------------------------
+Sun May 26 20:11:46 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Update to 5.14.1
+  * no upstream changelog
+
+-------------------------------------------------------------------
 Tue May  3 16:57:56 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 5.13.3

@@ -1,7 +1,7 @@
 #
 # spec file for package pagure
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,14 +23,14 @@
 %global __requires_exclude_from ^%{python3_sitelib}/pagure/.*$
 
 Name:           pagure
-Version:        5.13.3
+Version:        5.14.1
 Release:        0
 Summary:        A git-centered forge
 Group:          Development/Tools/Version Control
 # Pagure itself is GPL-2.0-or-later; flask_fas_openid.py is LGPL-2.1-or-later
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://pagure.io/pagure
-Source0:        https://pagure.io/releases/pagure/%{name}-%{version}.tar.gz
+Source0:        https://pagure.io/pagure/archive/%{version}/%{name}-%{version}.tar.gz
 
 # Vendor in the single file from python-fedora that's needed
 # This way, we avoid having to pull in all of python-fedora
@@ -45,6 +45,9 @@ Source10:       pagure-README.SUSE
 # SUSE-specific fixes
 ## Change the defaults in the example config to match packaging
 Patch1000:      pagure-5.0-default-example-cfg.patch
+# PATCH-FIX-UPSTREAM 5486.patch https://pagure.io/pagure/pull-request/5486 dominik@wombacher.cc -- Use '==' instead of 'is' in template if condition because to work with older Jinja2 versions. Edge case, avoid 'KeyError' after pagure update if a cached session is used.
+Patch1001:      5486.patch
+
 
 BuildArch:      noarch
 
@@ -613,7 +616,7 @@ echo "See %{_docdir}/%{name}/README.SUSE to continue"
 %systemd_postun_with_restart pagure_mirror.service
 
 %files
-%doc README.SUSE README.rst UPGRADING.rst doc/_build/html files/gitolite3.rc files/pagure.cfg.sample
+%doc README.SUSE README.rst UPGRADING.rst files/gitolite3.rc files/pagure.cfg.sample
 %license LICENSE
 %config(noreplace) %{_sysconfdir}/pagure/pagure.cfg
 %config(noreplace) %{_sysconfdir}/pagure/alembic.ini
