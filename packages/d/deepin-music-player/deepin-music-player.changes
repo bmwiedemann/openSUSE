@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 31 13:36:02 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add fix-c++17.patch, icu 75 needs c++17 
+
+-------------------------------------------------------------------
+Thu May 30 14:02:04 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add fix-c++17.patch, ICU 75 needs c++17 
+
+-------------------------------------------------------------------
 Tue Mar  5 02:44:05 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add update-taglib-interface.patch, fix build on new taglib

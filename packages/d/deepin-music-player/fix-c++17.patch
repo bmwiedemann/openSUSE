@@ -1,0 +1,33 @@
+diff -Nur deepin-music-6.2.18/CMakeLists.txt deepin-music-6.2.18-new/CMakeLists.txt
+--- deepin-music-6.2.18/CMakeLists.txt	2022-08-04 09:19:15.000000000 +0800
++++ deepin-music-6.2.18-new/CMakeLists.txt	2024-05-31 21:34:21.720176836 +0800
+@@ -4,7 +4,7 @@
+ project(music)
+ 
+ #cmake属性
+-set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD 17)
+ set(CMAKE_INCLUDE_CURRENT_DIR ON)
+ set(CMAKE_AUTOMOC ON)
+ set(CMAKE_AUTORCC ON)
+@@ -27,7 +27,7 @@
+ endif()
+ 
+ if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
++    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
+ endif()
+ 
+ # 加速编译优化参数
+diff -Nur deepin-music-6.2.18/tests/CMakeLists.txt deepin-music-6.2.18-new/tests/CMakeLists.txt
+--- deepin-music-6.2.18/tests/CMakeLists.txt	2022-08-04 09:19:15.000000000 +0800
++++ deepin-music-6.2.18-new/tests/CMakeLists.txt	2024-05-31 21:34:36.130132391 +0800
+@@ -4,7 +4,7 @@
+ project(music-test)
+ 
+ #cmake属性
+-set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD 17)
+ set(CMAKE_INCLUDE_CURRENT_DIR ON)
+ set(CMAKE_AUTOMOC ON)
+ set(CMAKE_AUTORCC ON)

@@ -319,4 +319,14 @@
     <comment></comment>
     <requestid>1154944</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>1ee99d1cc5d4cd337772e5115ceb9dc3</srcmd5>
+    <version>6.2.18</version>
+    <time>1717429298</time>
+    <user>anag+factory</user>
+    <comment>- Add fix-c++17.patch, icu 75 needs c++17 
+
+- Add fix-c++17.patch, ICU 75 needs c++17 (forwarded request 1177948 from hillwood)</comment>
+    <requestid>1177949</requestid>
+  </revision>
 </revisionlist>

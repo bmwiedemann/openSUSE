@@ -35,6 +35,8 @@ Source0:        https://github.com/linuxdeepin/deepin-music/archive/%{version}/d
 Patch0:         Fix-library-link.patch
 # PATCH-FIX-UPSTRAM update-taglib-interface.patch hillwood@opensuse.org - fix build on new taglib
 Patch1:         update-taglib-interface.patch
+# PATCH-FIX-UPSTRAM fix-c++17.patch hillwood@opensuse.org - ICU 75 needs c++17
+Patch2:         fix-c++17.patch
 %ifarch ppc ppc64 ppc64le s390 s390x
 BuildRequires:  deepin-desktop-base
 %else
