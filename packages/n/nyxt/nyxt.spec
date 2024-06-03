@@ -20,7 +20,7 @@
 # and possibly prone to security issues.
 %bcond_with webextensions
 Name:           nyxt
-Version:        3.11.6
+Version:        3.11.7
 Release:        0
 Summary:        Keyboard-oriented, Common Lisp extensible web-browser
 License:        BSD-3-Clause
@@ -29,6 +29,8 @@ URL:            https://nyxt.atlas.engineer
 Source:         nyxt-%{version}-source-with-submodules.tar.xz
 Source1:        nyxt-rpmlintrc
 Patch0:         so_ver_fix.patch
+Patch1:         cl-gobject-introspection-sb-int.patch
+Patch2:         fset-sb-int.patch
 BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  libfixposix-devel

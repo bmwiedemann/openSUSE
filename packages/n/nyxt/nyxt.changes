@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun  1 20:25:02 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- added cl-gobject-introspection-sb-int.patch and fset-sb-int.patch
+  for compilation with SBCL 2.4.5
+- Update to version 3.11.7:
+  * Bug fixes 
+    - Fix query handling when invoking command set-url (Ctrl+l)
+    - Fix incorrect redirection when reduce-tracking-mode is enabled
+    - Improve clipboard facilities detection on X11 and Wayland
+  * UI/UX 
+    - Bind common zoom keybindings for all keyschemes
+
+-------------------------------------------------------------------
 Tue Apr  9 15:45:32 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to version 3.11.6:

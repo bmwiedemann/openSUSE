@@ -163,4 +163,12 @@ Update to version 3.11.2</comment>
     <comment>Update to version 3.11.6</comment>
     <requestid>1166491</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>cd5dab387840e8f32eea1f0b38900af9</srcmd5>
+    <version>3.11.7</version>
+    <time>1717429379</time>
+    <user>anag+factory</user>
+    <comment>Update to 3.11.7</comment>
+    <requestid>1178083</requestid>
+  </revision>
 </revisionlist>
