@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu May 23 10:35:18 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.5.9
+  * Buffer-pool allows "forced" buffers, which don't count
+    against memory limit by @graebm in (#429)
+  * Improve async write (fewer copies, polling API)
+    by @graebm in (#430)
+- Add Provides and Obsoletes for lib%{name}%{library_soversion}
+
+-------------------------------------------------------------------
+Mon May 13 10:48:17 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.5.8
+  * Allow disabling upload checksums while using upload review
+    by @jamesbornholt in (#421)
+  * Remove Dashboard and S3 Benchmark Stack by @waahm7 in (#427)
+  * Make test_s3_range_requests less flaky by @waahm7 in #423
+  * Add 'Content-Length: 0' header on multipart upload creation
+    by @waahm7 in #428
+- from version 0.5.7
+  * Add async write() function - fixes "stalled" uploads deadlocking
+    S3 Client by @graebm in (#418)
+- from version 0.5.6
+  * Adds Connection Pool Destroy Delay Take 2 by @waahm7 in (#419)
+- from version 0.5.5
+  * Set fail-fast to false in CI by @waahm7 in (#420)
+  * Small buffer by @DmitriyMusatkin in (#422)
+- Rename shared librar package from lib%{name}%{library_soversion}
+  to lib%{name}-%{library_soversion} to fix rpmlint error
+
+-------------------------------------------------------------------
 Thu Mar 28 10:10:46 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.5.4

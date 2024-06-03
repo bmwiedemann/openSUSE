@@ -19,7 +19,7 @@
 %define library_version 1.0.0
 %define library_soversion 0unstable
 Name:           aws-c-s3
-Version:        0.5.4
+Version:        0.5.9
 Release:        0
 Summary:        AWS Cross-Platform, C99 wrapper for cryptography primitives
 License:        Apache-2.0
@@ -29,25 +29,25 @@ Source0:        https://github.com/awslabs/%{name}/archive/v%{version}.tar.gz
 Patch0:         acs_fix-cmake-modules-path.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  ninja
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(aws-c-auth)
 BuildRequires:  cmake(aws-c-cal)
 BuildRequires:  cmake(aws-c-common)
 BuildRequires:  cmake(aws-c-compression)
-BuildRequires:  cmake(aws-checksums)
 BuildRequires:  cmake(aws-c-http)
 BuildRequires:  cmake(aws-c-io)
 BuildRequires:  cmake(aws-c-sdkutils)
+BuildRequires:  cmake(aws-checksums)
 BuildRequires:  cmake(s2n)
-BuildRequires:  pkgconfig(numa)
 BuildRequires:  pkgconfig(libssl)
-BuildRequires:  ninja
-BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(numa)
 
 %description
 AWS Crypto Abstraction Layer: Cross-Platform, C99 wrapper for cryptography primitives.
 
 %package -n %{name}-bin
-Summary:        aws-c-s3 binary files
+Summary:        Binary files for aws-c-s3 library
 Group:          Development/Libraries/C and C++
 # both provide /usr/bin/s3
 Conflicts:      libs3-tools
@@ -57,11 +57,13 @@ AWS Crypto Abstraction Layer: Cross-Platform, C99 wrapper for cryptography primi
 
 This package contains the command line utilities.
 
-%package -n lib%{name}%{library_soversion}
+%package -n lib%{name}-%{library_soversion}
 Summary:        Shared library files for aws-c-s3 library
 Group:          Development/Libraries/C and C++
+Provides:       lib%{name}%{library_soversion} = %{version}
+Obsoletes:      lib%{name}%{library_soversion} < %{version}
 
-%description -n lib%{name}%{library_soversion}
+%description -n lib%{name}-%{library_soversion}
 AWS Crypto Abstraction Layer: Cross-Platform, C99 wrapper for cryptography primitives.
 
 This package contains the dynamically linked library.
@@ -69,7 +71,7 @@ This package contains the dynamically linked library.
 %package devel
 Summary:        Development files for aws-c-s3 library
 Group:          Development/Libraries/C and C++
-Requires:       lib%{name}%{library_soversion} = %{version}
+Requires:       lib%{name}-%{library_soversion} = %{version}
 
 %description devel
 AWS Crypto Abstraction Layer: Cross-Platform, C99 wrapper for cryptography primitives.
@@ -93,13 +95,13 @@ This package contains the development files.
 %install
 %cmake_install
 
-%post -n lib%{name}%{library_soversion} -p /sbin/ldconfig
-%postun -n lib%{name}%{library_soversion} -p /sbin/ldconfig
+%post -n lib%{name}-%{library_soversion} -p /sbin/ldconfig
+%postun -n lib%{name}-%{library_soversion} -p /sbin/ldconfig
 
 %files -n %{name}-bin
 %{_bindir}/s3
 
-%files -n lib%{name}%{library_soversion}
+%files -n lib%{name}-%{library_soversion}
 %doc README.md
 %license LICENSE
 %{_libdir}/*.so.%{library_soversion}
