@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Tue Feb 27 08:47:43 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Let -devel subpackage use the SRPM base name.
+- Use %ldconfig_scriptlets.
+- Description updates: meaningful description for the SRPM, neutral
+  descriptions, trim duplication, give libisal2 a bulleted list.
+
+-------------------------------------------------------------------
+Mon Feb 26 17:30:24 UTC 2024 - Jeff Mahoney <jeffm@suse.com> - v2.31.0
+
+- v2.31.0: Update
+  - gf_vect_mul_base() function now returns an integer, matching the return type of gf_vect_mul() function (not a breaking change).
+  - Added compress/decompress with dictionary to perf test app.
+  - Zlib header can be now created on the fly when starting the compression.
+  - Added isal_zlib_hdr_init() function to initialize the zlib header to 0.
+  - Optimized AVX implementation.
+  - Added new AVX2 and AVX512 implementations.
+  - Added new AVX512 and AVX2 implementations using GFNI instructions.
+  - Added new SVE implementation.
+  - Added new CRC64 Rocksoft algorithm.
+  - CRC x86 implementations optimized using ternary logic instructions and
+  - folding of bigger data on the last bytes.
+  - CRC16 T10dif aarch64 implementation improved.
+  - CRC aarch64 implementations optimized using XOR fusion feature.
+  - Changed performance tests to warm by default.
+  - Fixed various compilation issues/warnings for different platforms.
+  - Fixed documentation on xor/pq gen/check functions, with minimum
+    number of vectors.
+  - Fixed potential out-of-bounds read on Adler32 Neon implementation.
+  - Fixed potential out-of-bounds read on gf_vect_mul Neon implementation.
+  - Fixed x86 load/store instructions in erasure coding functions (aligned moves
+    that should be unaligned).
+  - Fixed memory leaks in unit tests.
+
+-------------------------------------------------------------------
+Thu Mar 23 20:22:12 UTC 2023 - Jeff Mahoney <jeffm@suse.com> - v2.30.0
+
+- v2.30.0: Initial packaging.
