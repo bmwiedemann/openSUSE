@@ -149,4 +149,18 @@
   * Added and updated translations</comment>
     <requestid>1164490</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e55afa73ad7ad3bf1be7187b95d5165d</srcmd5>
+    <version>4.2</version>
+    <time>1717429457</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.2:
+  * This release of Parlatype and Parlatype LibreOffice Extension
+    is triggered by the move to a new website, www.parlatype.xyz.
+  * The website also the app ID has changed (xyz.parlatype.Parlatype)
+    and the DBUS interface name. Because of that previous versions
+    of Parlatype LibreOffice Extension are incompatible with this
+    version of Parlatype.</comment>
+    <requestid>1178223</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun  3 06:18:05 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.2:
+  * This release of Parlatype and Parlatype LibreOffice Extension
+    is triggered by the move to a new website, www.parlatype.xyz.
+  * The website also the app ID has changed (xyz.parlatype.Parlatype)
+    and the DBUS interface name. Because of that previous versions
+    of Parlatype LibreOffice Extension are incompatible with this
+    version of Parlatype.
+
+-------------------------------------------------------------------
 Thu Apr  4 05:58:04 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.1:

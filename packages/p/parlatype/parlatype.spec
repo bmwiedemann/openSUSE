@@ -18,12 +18,12 @@
 
 %define c_lib   libparlatype7
 Name:           parlatype
-Version:        4.1
+Version:        4.2
 Release:        0
 Summary:        GNOME audio player for transcriptions
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
-URL:            https://gkarsay.github.io/parlatype/
+URL:            https://www.parlatype.xyz
 Source:         https://github.com/gkarsay/parlatype/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  AppStream-devel
 BuildRequires:  automake
@@ -76,7 +76,7 @@ Parlatype ships its own library, libparlatype, which provides a GStreamer backen
 %meson_install
 
 %find_lang %{name}
-%find_lang org.parlatype.Parlatype %{no_lang_C} %{name}.lang
+%find_lang xyz.parlatype.Parlatype %{no_lang_C} %{name}.lang
 %find_lang %{c_lib}
 
 %post -n %{c_lib} -p /sbin/ldconfig
@@ -87,12 +87,12 @@ Parlatype ships its own library, libparlatype, which provides a GStreamer backen
 %doc NEWS README.md
 %{_bindir}/parlatype
 %{_mandir}/man1/parlatype.1%{?ext_man}
-%{_datadir}/help/C/org.parlatype.Parlatype/
+%{_datadir}/help/C/xyz.parlatype.Parlatype/
 %{_datadir}/icons/hicolor/
-%{_datadir}/applications/org.parlatype.Parlatype.desktop
-%{_datadir}/dbus-1/services/org.parlatype.Parlatype.service
-%{_datadir}/glib-2.0/schemas/org.parlatype.Parlatype.gschema.xml
-%{_datadir}/metainfo/org.parlatype.Parlatype.appdata.xml
+%{_datadir}/applications/xyz.parlatype.Parlatype.desktop
+%{_datadir}/dbus-1/services/xyz.parlatype.Parlatype.service
+%{_datadir}/glib-2.0/schemas/xyz.parlatype.Parlatype.gschema.xml
+%{_datadir}/metainfo/xyz.parlatype.Parlatype.metainfo.xml
 
 %files -n libparlatype-devel
 %{_libdir}/libparlatype.so
