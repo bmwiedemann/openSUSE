@@ -16,4 +16,14 @@
     <comment></comment>
     <requestid>915485</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a15d4842c4e4098f11edc0c98ea83330</srcmd5>
+    <version>1.6</version>
+    <time>1717429371</time>
+    <user>anag+factory</user>
+    <comment>- Clean up SPEC file.
+- Add drop-old-pythons.patch to get rid of six
+</comment>
+    <requestid>1178076</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,311 @@
+From 99244d2230110568234e3156647ee16d5b4bd0af Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tomasz=20K=C5=82oczko?= <kloczek@github.com>
+Date: Sat, 9 Mar 2024 12:17:46 +0000
+Subject: [PATCH 1/2] drop python<=3.7 support
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Pass all code over `pyupgrade --py38`.
+
+Signed-off-by: Tomasz Kłoczko <kloczek@github.com>
+---
+ tests/test_mixins.py      |  9 ++++-----
+ unittest_mixins/mixins.py | 29 +++++++++++++----------------
+ 2 files changed, 17 insertions(+), 21 deletions(-)
+
+diff --git a/tests/test_mixins.py b/tests/test_mixins.py
+index 2fd7ca0..edebf53 100644
+--- a/tests/test_mixins.py
++++ b/tests/test_mixins.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ # Licensed under the Apache License: http://www.apache.org/licenses/LICENSE-2.0
+ # For details: https://github.com/nedbat/unittest-mixins/blob/master/NOTICE.txt
+ 
+@@ -32,7 +31,7 @@
+ class ChangeDirTest(unittest.TestCase):
+     """Test the change_dir decorator."""
+     def setUp(self):
+-        super(ChangeDirTest, self).setUp()
++        super().setUp()
+         self.root = tempfile.mkdtemp(prefix="change_dir_test")
+         self.addCleanup(shutil.rmtree, self.root)
+         self.a_dir = os.path.join(self.root, "a_dir")
+@@ -132,7 +131,7 @@ class EnvironmentAwareMixinTest(EnvironmentAwareMixin, unittest.TestCase):
+     """Tests of test_helpers.EnvironmentAwareMixin."""
+ 
+     def setUp(self):
+-        super(EnvironmentAwareMixinTest, self).setUp()
++        super().setUp()
+ 
+         # Find a pre-existing environment variable.
+         # Not sure what environment variables are available in all of our
+@@ -229,7 +228,7 @@ def test_two_delayed_assertions(self):
+             - w
+             + z
+             """))
+-        with six.assertRaisesRegex(self, AssertionError, msg):
++        with self.assertRaisesRegex(AssertionError, msg):
+             with self.delayed_assertions():
+                 self.assertEqual("x", "y")
+                 self.assertEqual("w", "z")
+@@ -241,7 +240,7 @@ def test_only_one_fails(self):
+             - w
+             + z
+             """))
+-        with six.assertRaisesRegex(self, AssertionError, msg):
++        with self.assertRaisesRegex(AssertionError, msg):
+             with self.delayed_assertions():
+                 self.assertEqual("x", "x")
+                 self.assertEqual("w", "z")
+diff --git a/unittest_mixins/mixins.py b/unittest_mixins/mixins.py
+index d9591ed..36cee46 100644
+--- a/unittest_mixins/mixins.py
++++ b/unittest_mixins/mixins.py
+@@ -21,7 +21,7 @@
+ import six
+ 
+ 
+-class _Tee(object):
++class _Tee:
+     """A file-like that writes to all the file-likes it has."""
+ 
+     def __init__(self, *files):
+@@ -101,7 +101,7 @@ def test_foo(self):
+     return val
+ 
+ 
+-class ModuleCleaner(object):
++class ModuleCleaner:
+     """Remember the state of sys.modules, and provide a way to restore it."""
+ 
+     def __init__(self):
+@@ -122,7 +122,7 @@ class ModuleAwareMixin(unittest.TestCase):
+     """A test case mixin that isolates changes to sys.modules."""
+ 
+     def setUp(self):
+-        super(ModuleAwareMixin, self).setUp()
++        super().setUp()
+ 
+         self._module_cleaner = ModuleCleaner()
+         self.addCleanup(self._module_cleaner.cleanup_modules)
+@@ -135,7 +135,7 @@ class SysPathAwareMixin(unittest.TestCase):
+     """A test case mixin that isolates changes to sys.path."""
+ 
+     def setUp(self):
+-        super(SysPathAwareMixin, self).setUp()
++        super().setUp()
+         setup_with_context_manager(self, saved_sys_path())
+ 
+ 
+@@ -143,7 +143,7 @@ class EnvironmentAwareMixin(unittest.TestCase):
+     """A test case mixin that isolates changes to the environment."""
+ 
+     def setUp(self):
+-        super(EnvironmentAwareMixin, self).setUp()
++        super().setUp()
+ 
+         # Record environment variables that we changed with set_environ.
+         self._environ_undos = {}
+@@ -202,7 +202,7 @@ class StdStreamCapturingMixin(unittest.TestCase):
+     show_stderr = False
+ 
+     def setUp(self):
+-        super(StdStreamCapturingMixin, self).setUp()
++        super().setUp()
+ 
+         # Capture stdout and stderr so we can examine them in tests.
+         # nose keeps stdout from littering the screen, so we can safely _Tee
+@@ -255,7 +255,7 @@ class DelayedAssertionMixin(unittest.TestCase):
+ 
+     """
+     def __init__(self, *args, **kwargs):
+-        super(DelayedAssertionMixin, self).__init__(*args, **kwargs)
++        super().__init__(*args, **kwargs)
+         # This mixin only works with assert methods that call `self.fail`.  In
+         # Python 2.7, `assertEqual` didn't, but we can do what Python 3 does,
+         # and use `assertMultiLineEqual` for comparing strings.
+@@ -277,7 +277,7 @@ def delayed_assertions(self):
+                 self.fail(self._delayed_assertions[0])
+             else:
+                 self.fail(
+-                    "{0} failed assertions:\n{1}".format(
++                    "{} failed assertions:\n{}".format(
+                         len(self._delayed_assertions),
+                         "\n".join(self._delayed_assertions),
+                     )
+@@ -310,10 +310,7 @@ def make_file(filename, text="", bytes=b"", newline=None):
+         text = textwrap.dedent(text)
+         if newline:
+             text = text.replace("\n", newline)
+-        if six.PY3:
+-            data = text.encode('utf8')
+-        else:
+-            data = text
++        data = text.encode('utf8')
+ 
+     # Make sure the directories are available.
+     dirs, _ = os.path.split(filename)
+@@ -355,7 +352,7 @@ class TempDirMixin(SysPathAwareMixin, ModuleAwareMixin, unittest.TestCase):
+     temp_dir_prefix = "test_"
+ 
+     def setUp(self):
+-        super(TempDirMixin, self).setUp()
++        super().setUp()
+ 
+         if self.run_in_temp_dir:
+             # Create a temporary directory.
+@@ -385,7 +382,7 @@ def _check_behavior(self):
+     def _make_temp_dir(self):
+         """Make a temp directory that is cleaned up when the test is done."""
+         slug = re.sub(r"[^\w]+", "_", self.id())
+-        name = "{0}{1}_{2:08d}".format(
++        name = "{}{}_{:08d}".format(
+             self.temp_dir_prefix,
+             slug,
+             random.randint(0, 99999999)
+@@ -403,7 +400,7 @@ def _delete_temp_dir(self, temp_dir):
+     def skipTest(self, reason):
+         """Skip this test, and give a reason."""
+         self._class_behavior().skipped += 1
+-        super(TempDirMixin, self).skipTest(reason)
++        super().skipTest(reason)
+ 
+     def chdir(self, new_dir):
+         """Change directory, and change back when the test is done."""
+@@ -427,7 +424,7 @@ def make_file(self, filename, text="", bytes=b"", newline=None):
+     # then report at the end of the process on test classes that were set
+     # wrong.
+ 
+-    class _ClassBehavior(object):
++    class _ClassBehavior:
+         """A value object to store per-class."""
+         def __init__(self):
+             self.klass = None
+
+From b7a7db348acc372c881f0ca72012c49bf0bf5e6a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tomasz=20K=C5=82oczko?= <kloczek@github.com>
+Date: Sat, 9 Mar 2024 12:18:30 +0000
+Subject: [PATCH 2/2] manual changes to remove python<=3.7 support and remove
+ use `six module
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Manual changes to remove python<=3.7 support
+Remove use `six module and use standard io.
+Add entries for python 3.8 and 3.9 in setup.py.
+
+Signed-off-by: Tomasz Kłoczko <kloczek@github.com>
+---
+ requirements.txt          |  1 -
+ setup.py                  | 11 ++---------
+ tests/test_mixins.py      |  7 +++----
+ unittest_mixins/mixins.py |  8 +++-----
+ 4 files changed, 8 insertions(+), 19 deletions(-)
+
+diff --git a/requirements.txt b/requirements.txt
+index b6e34eb..e69de29 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1 +0,0 @@
+-six==1.10.0
+diff --git a/setup.py b/setup.py
+index a3a5a5b..c902351 100644
+--- a/setup.py
++++ b/setup.py
+@@ -9,13 +9,9 @@
+ Intended Audience :: Developers
+ License :: OSI Approved :: Apache Software License
+ Operating System :: OS Independent
+-Programming Language :: Python :: 2.6
+-Programming Language :: Python :: 2.7
+-Programming Language :: Python :: 3.3
+-Programming Language :: Python :: 3.4
+-Programming Language :: Python :: 3.5
+-Programming Language :: Python :: 3.6
+ Programming Language :: Python :: 3.7
++Programming Language :: Python :: 3.8
++Programming Language :: Python :: 3.9
+ Programming Language :: Python :: Implementation :: CPython
+ Programming Language :: Python :: Implementation :: PyPy
+ Topic :: Software Development :: Quality Assurance
+@@ -31,9 +27,6 @@
+     author_email='ned@nedbatchelder.com',
+     url='https://github.com/nedbat/unittest-mixins',
+     packages=['unittest_mixins'],
+-    install_requires=[
+-        'six >= 1.4.0',
+-    ],
+     license='Apache 2.0',
+     classifiers=classifiers.splitlines(),
+ )
+diff --git a/tests/test_mixins.py b/tests/test_mixins.py
+index edebf53..50969e9 100644
+--- a/tests/test_mixins.py
++++ b/tests/test_mixins.py
+@@ -4,6 +4,7 @@
+ """Tests that our test infrastructure is really working!"""
+ 
+ import contextlib
++import io
+ import os
+ import os.path
+ import re
+@@ -16,8 +17,6 @@
+ except ImportError:
+     import unittest
+ 
+-import six
+-
+ from unittest_mixins import (
+     change_dir,
+     DelayedAssertionMixin,
+@@ -323,8 +322,8 @@ def test_stderr(self):
+         old_stdout = sys.stdout
+         old_stderr = sys.stderr
+         self.addCleanup(self._cleanup_streams, old_stdout, old_stderr)
+-        sys.stdout = my_stdout = six.StringIO()
+-        sys.stderr = my_stderr = six.StringIO()
++        sys.stdout = my_stdout = io.StringIO()
++        sys.stderr = my_stderr = io.StringIO()
+ 
+         results = run_tests_from_class(TheTestsToTest)
+         assert_all_passed(results, tests_run=2)
+diff --git a/unittest_mixins/mixins.py b/unittest_mixins/mixins.py
+index 36cee46..479e9d0 100644
+--- a/unittest_mixins/mixins.py
++++ b/unittest_mixins/mixins.py
+@@ -6,6 +6,7 @@
+ import atexit
+ import collections
+ import contextlib
++import io
+ import os
+ import random
+ import re
+@@ -18,9 +19,6 @@
+ except ImportError:
+     import unittest
+ 
+-import six
+-
+-
+ class _Tee:
+     """A file-like that writes to all the file-likes it has."""
+ 
+@@ -209,11 +207,11 @@ def setUp(self):
+         # it, but it doesn't capture stderr, so we don't want to _Tee stderr to
+         # the real stderr, since it will interfere with our nice field of dots.
+         old_stdout = sys.stdout
+-        self.captured_stdout = six.StringIO()
++        self.captured_stdout = io.StringIO()
+         sys.stdout = _Tee(sys.stdout, self.captured_stdout)
+ 
+         old_stderr = sys.stderr
+-        self.captured_stderr = six.StringIO()
++        self.captured_stderr = io.StringIO()
+         if self.show_stderr:
+             sys.stderr = _Tee(sys.stderr, self.captured_stderr)
+         else:

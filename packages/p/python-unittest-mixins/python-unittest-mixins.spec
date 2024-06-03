@@ -1,7 +1,7 @@
 #
 # spec file for package python-unittest-mixins
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,37 +16,35 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-unittest-mixins
 Version:        1.6
 Release:        0
-License:        Apache-2.0
 Summary:        Helpful mixins for unittest classes
-URL:            https://github.com/nedbat/unittest-mixins
+License:        Apache-2.0
 Group:          Development/Languages/Python
+URL:            https://github.com/nedbat/unittest-mixins
 Source:         https://files.pythonhosted.org/packages/source/u/unittest-mixins/unittest-mixins-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/nedbat/unittest-mixins/pull/4 drop python<=3.7 support and use of six module
+Patch0:         drop-old-pythons.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module six >= 1.4.0}
-# /SECTION
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-Requires:       python-six >= 1.4.0
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
 Helpful mixins for unittest classes.
 
 %prep
-%setup -q -n unittest-mixins-%{version}
+%autosetup -p1 -n unittest-mixins-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,6 +53,7 @@ Helpful mixins for unittest classes.
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/unittest_mixins
+%{python_sitelib}/unittest_mixins-%{version}*-info
 
 %changelog

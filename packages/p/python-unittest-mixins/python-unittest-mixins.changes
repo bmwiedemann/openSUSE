@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun  1 20:10:03 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up SPEC file.
+
+-------------------------------------------------------------------
+Thu May 30 08:11:07 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add drop-old-pythons.patch to get rid of six
+
+-------------------------------------------------------------------
 Thu Aug 26 07:33:28 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro
