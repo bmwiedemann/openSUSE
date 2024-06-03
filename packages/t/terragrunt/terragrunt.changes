@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun 01 09:56:00 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.58.13:
+  * Improved errors printing returned from Sops (#3174)
+  * fix: Correcting docs on default binary used by Terragrunt
+    (#3173)
+  * s/trragrunt/terragrunt/ (#3170)
+  * feat: Adding binary signing test (#3166)
+
+-------------------------------------------------------------------
 Thu May 30 11:22:26 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.58.12:
