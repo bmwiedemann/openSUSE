@@ -1,7 +1,7 @@
 #
 # spec file for package openscad
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Patch1:         CVE-2022-0496.patch
 Patch2:         CVE-2022-0497.patch
 Patch3:         fix_build_with_cgal-5.4.patch
 Patch4:         fix_build_issue_with_overloaded_join.patch
+Patch5:         fix_fs_error.patch
 BuildRequires:  bison
 BuildRequires:  double-conversion-devel
 BuildRequires:  flex

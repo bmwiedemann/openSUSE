@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 27 11:42:51 UTC 2024 - George <georgewoodall82@gmail.com>
+
+- Add patch to fix is_regular is not a member of fs
+  + fix_fs_error.patch
+
+-------------------------------------------------------------------
 Mon Jul  4 10:02:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Rebase fix_build_with_cgal-5.4.patch

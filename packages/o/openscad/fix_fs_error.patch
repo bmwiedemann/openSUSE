@@ -1,0 +1,12 @@
+diff '--color=auto' -Naur openscad-2021.01.orig/src/FileModule.cc openscad-2021.01/src/FileModule.cc
+--- openscad-2021.01.orig/src/FileModule.cc	2024-05-27 11:57:04.154249159 +0100
++++ openscad-2021.01/src/FileModule.cc	2024-05-27 11:52:36.324609857 +0100
+@@ -65,7 +65,7 @@
+ 	auto ext = fs::path(path).extension().generic_string();
+ 
+ 	if (boost::iequals(ext, ".otf") || boost::iequals(ext, ".ttf")) {
+-		if (fs::is_regular(path)) {
++		if (fs::is_regular_file(path)) {
+ 			FontCache::instance()->register_font_file(path);
+ 		} else {
+ 			LOG(message_group::Error,Location::NONE,"","Can't read font with path '%1$s'",path);
