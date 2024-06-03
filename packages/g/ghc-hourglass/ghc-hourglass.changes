@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 26 20:03:14 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update hourglass to version 0.2.12 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:06:58 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
