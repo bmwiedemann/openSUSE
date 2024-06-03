@@ -17,7 +17,7 @@
 
 
 Name:           nvptx-tools
-Version:        1.0+git.20240419.9962793
+Version:        1.0+git.20240530.96f8fc5
 Release:        0
 Summary:        PTX language tools
 License:        GPL-3.0-or-later
@@ -39,8 +39,6 @@ Execution) GCC toolchains.
 * nvptx-none-as: "assembler" for PTX.
 * nvptx-none-ld: "linker" for PTX.
 * nvptx-none-run: run PTX binaries compiled with -mmainkernel.
-* nvptx-none-run-single: like nvptx-none-run, but locked, such that
-  system-wide, only one instance of it is running at a time.
 
 %prep
 %setup -q
@@ -62,7 +60,6 @@ make DESTDIR=%{buildroot} install
 %{_bindir}/nvptx-none-nm
 %{_bindir}/nvptx-none-ranlib
 %{_bindir}/nvptx-none-run
-%{_bindir}/nvptx-none-run-single
 %doc COPYING3
 
 %changelog

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 31 13:48:51 UTC 2024 - rguenther@suse.com
+
+- Update to version 1.0+git.20240530.96f8fc5:
+  * ld: Global constructor/destructor support
+  * Build in C++11 mode
+  * Import 'config/ax_cxx_compile_stdcxx.m4' from GCC
+  * Replace 'nvptx-none-run-single' with a locking mechanism in 'nvptx-none-run.exp'
+  * Change github.com/MentorEmbedded to github.com/SourceryTools
+
+-------------------------------------------------------------------
 Tue May 07 12:46:17 UTC 2024 - rguenther@suse.com
 
 - Update to version 1.0+git.20240419.9962793:

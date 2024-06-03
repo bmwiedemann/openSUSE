@@ -140,4 +140,17 @@
   * Handle --hash-style argument in nvptx-ld</comment>
     <requestid>1172434</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>46cf3190d1bf3f26014ac58aa7ae5e3c</srcmd5>
+    <version>1.0+git.20240530.96f8fc5</version>
+    <time>1717429302</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0+git.20240530.96f8fc5:
+  * ld: Global constructor/destructor support
+  * Build in C++11 mode
+  * Import 'config/ax_cxx_compile_stdcxx.m4' from GCC
+  * Replace 'nvptx-none-run-single' with a locking mechanism in 'nvptx-none-run.exp'
+  * Change github.com/MentorEmbedded to github.com/SourceryTools</comment>
+    <requestid>1177955</requestid>
+  </revision>
 </revisionlist>
