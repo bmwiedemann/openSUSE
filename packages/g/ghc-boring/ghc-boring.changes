@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 17 10:42:08 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update boring to version 0.2.2.
+  ## 0.2.2
+
+  - Support GHC-8.6.5...9.10.1
+
+-------------------------------------------------------------------
 Wed Oct 11 09:22:11 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update boring to version 0.2.1 revision 1.
