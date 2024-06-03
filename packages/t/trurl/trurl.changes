@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 15 15:47:08 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.13
+  * Free allocated pointer on OOM error.
+  * short options need no space separation for the argument anymore
+  * trurl.1: use present tense.
+  * trurl: only append the first iterate loop.
+  * fix Coverity nits.
+
+-------------------------------------------------------------------
 Thu Apr 18 21:44:49 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.12
