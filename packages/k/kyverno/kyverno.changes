@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 31 12:29:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.12.3:
+  * feat: add aggregation workers flag (#10331) (#10343)
+  * fix: remove unused parameters (#10327) (#10329)
+  * feat: add cleanup cronjobs for (cluster)ephemeralreports
+    (#10325) (#10334)
+  * feat: add a cleanup cronjob to delete urs (#10249) (#10326)
+  * feat: add support for background scanning of existing resource
+    in image verification (#10287) (#10311)
+
+-------------------------------------------------------------------
 Thu May 23 19:33:58 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.12.2:
