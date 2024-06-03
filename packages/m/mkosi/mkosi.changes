@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 27 15:50:17 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add opensuse-dont-install-distribution-release-by-default.patch 
+
+-------------------------------------------------------------------
 Tue Mar 26 14:37:39 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Correct dependencies after discussions with upstream
