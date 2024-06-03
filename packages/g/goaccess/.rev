@@ -850,4 +850,20 @@
   * Updated Swedish i18n.</comment>
     <requestid>1166954</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>40a8dddec62914547055769ac44199ff</srcmd5>
+    <version>1.9.3</version>
+    <time>1717429455</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.9.3:
+  * Added additional common bots to the list.
+  * Added Address Sanitizer via '--enable-asan' to the configure
+    options for debugging purposes.
+  * Fixed inability to parse JSON keys containing dots.
+  * Fixed out-of-bounds access for invalid HTTP status codes.
+  * Fixed out-of-bounds access when parsing a log in serial processing mode.
+  * Fixed regression introduced in 8f570c, which caused duplicate
+    counts upon restoring from disk via '--restore'.</comment>
+    <requestid>1178221</requestid>
+  </revision>
 </revisionlist>

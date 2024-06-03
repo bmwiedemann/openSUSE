@@ -20,7 +20,7 @@
 %global goaccess_services goaccess@.service goaccess@.timer
 
 Name:           goaccess
-Version:        1.9.2
+Version:        1.9.3
 Release:        0
 Summary:        Apache Web Log Analyzer
 License:        GPL-2.0-or-later

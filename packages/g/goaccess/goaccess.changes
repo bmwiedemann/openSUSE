@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun  3 06:15:14 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.9.3:
+  * Added additional common bots to the list.
+  * Added Address Sanitizer via '--enable-asan' to the configure
+    options for debugging purposes.
+  * Fixed inability to parse JSON keys containing dots.
+  * Fixed out-of-bounds access for invalid HTTP status codes.
+  * Fixed out-of-bounds access when parsing a log in serial processing mode.
+  * Fixed regression introduced in 8f570c, which caused duplicate
+    counts upon restoring from disk via '--restore'.
+
+-------------------------------------------------------------------
 Fri Apr 12 05:43:11 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.9.2:
