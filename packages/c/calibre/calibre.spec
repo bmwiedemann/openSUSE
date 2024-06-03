@@ -16,9 +16,11 @@
 #
 
 
+%define my_qtversion 6.5.3
+
 %{?sle15_python_module_pythons}
 Name:           calibre
-Version:        7.4.0
+Version:        7.12.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -87,25 +89,25 @@ BuildRequires:  libwmf-devel >= 0.2.8
 BuildRequires:  optipng >= 0.7.7
 BuildRequires:  podofo >= 0.10.1
 BuildRequires:  poppler-tools >= 21.11.0
-BuildRequires:  qt6-core-private-devel >= 6.4.0
-BuildRequires:  qt6-declarative-devel >= 6.4.0
-BuildRequires:  qt6-gui-private-devel >= 6.4.0
-BuildRequires:  qt6-imageformats-devel >= 6.4.0
-BuildRequires:  qt6-platformsupport-private-devel  >= 6.4.0
-BuildRequires:  qt6-wayland-devel >= 6.4.0
+BuildRequires:  qt6-core-private-devel >= %{my_qtversion}
+BuildRequires:  qt6-declarative-devel >= %{my_qtversion}
+BuildRequires:  qt6-gui-private-devel >= %{my_qtversion}
+BuildRequires:  qt6-imageformats-devel >= %{my_qtversion}
+BuildRequires:  qt6-platformsupport-private-devel >= %{my_qtversion}
+BuildRequires:  qt6-wayland-devel >= %{my_qtversion}
 #BuildRequires:  python311-dbus-python
 BuildRequires:  xdg-utils >= 1.0.2
-BuildRequires:  pkgconfig(Qt6Core) >= 6.4.0
-BuildRequires:  pkgconfig(Qt6Gui) >= 6.4.0
-BuildRequires:  pkgconfig(Qt6Network) >= 6.4.0
-BuildRequires:  pkgconfig(Qt6Positioning) >= 6.4.0
-BuildRequires:  pkgconfig(Qt6Sensors) >= 6.4.0
-BuildRequires:  pkgconfig(Qt6ShaderTools) >= 6.4.0
-BuildRequires:  pkgconfig(Qt6Svg) >= 6.4.0
-BuildRequires:  pkgconfig(Qt6WebChannel) >= 6.4.0
-BuildRequires:  pkgconfig(Qt6WebEngineCore) >= 6.4.0
-BuildRequires:  pkgconfig(Qt6WebEngineWidgets) >= 6.4.0
-BuildRequires:  pkgconfig(Qt6Widgets) >= 6.4.0
+BuildRequires:  pkgconfig(Qt6Core) >= %{my_qtversion}
+BuildRequires:  pkgconfig(Qt6Gui) >= %{my_qtversion}
+BuildRequires:  pkgconfig(Qt6Network) >= %{my_qtversion}
+BuildRequires:  pkgconfig(Qt6Positioning) >= %{my_qtversion}
+BuildRequires:  pkgconfig(Qt6Sensors) >= %{my_qtversion}
+BuildRequires:  pkgconfig(Qt6ShaderTools) >= %{my_qtversion}
+BuildRequires:  pkgconfig(Qt6Svg) >= %{my_qtversion}
+BuildRequires:  pkgconfig(Qt6WebChannel) >= %{my_qtversion}
+BuildRequires:  pkgconfig(Qt6WebEngineCore) >= %{my_qtversion}
+BuildRequires:  pkgconfig(Qt6WebEngineWidgets) >= %{my_qtversion}
+BuildRequires:  pkgconfig(Qt6Widgets) >= %{my_qtversion}
 BuildRequires:  pkgconfig(dbus-glib-1) >= 0.112
 BuildRequires:  pkgconfig(espeak-ng)
 BuildRequires:  pkgconfig(fontconfig) >= 2.14.2
@@ -170,11 +172,11 @@ BuildRequires:  python311-pyparsing >= 3.0.6
 BuildRequires:  python311-pyppmd >= 1.1.0
 BuildRequires:  python311-pyqt-builder >= 1.14.0
 BuildRequires:  python311-pyzstd >= 0.15.6
-BuildRequires:  python311-qt6-devel >= 6.4.0
+BuildRequires:  python311-qt6-devel >= %{my_qtversion}
 BuildRequires:  python311-regex >= 2021.11.10
 # Upstream use: BuildRequires:  python311-setuptools >= 68.2.2
 BuildRequires:  python311-setuptools >= 67.8.0
-BuildRequires:  python311-qtwebengine-qt6 >= 6.4.0
+BuildRequires:  python311-qtwebengine-qt6 >= %{my_qtversion}
 BuildRequires:  python311-sgmllib3k >= 1.0.0
 BuildRequires:  python311-sip-devel >= 6.7.5
 BuildRequires:  python311-six >= 1.16.0
@@ -220,7 +222,7 @@ Requires:       python311-dateutil >= 2.8.2
 #Requires:       python311-dbus-python
 Requires:       python311-dnspython >= 2.1.0
 Requires:       python311-FontTools >= 4.39.3
-Requires:       python311-PyQt6-sip >= 13.4.0
+Requires:       python311-PyQt6-sip >= 13.5.2
 Requires:       python311-dukpy-kovidgoyal >= 0.3
 Requires:       python311-feedparser >= 6.0.8
 Requires:       python311-html2text >= 2020.1.16
@@ -241,8 +243,8 @@ Requires:       python311-pycryptodome >= 3.11.0
 Requires:       python311-pyparsing >= 3.0.6
 Requires:       python311-pyppmd >= 1.1.0
 Requires:       python311-pyzstd >= 0.15.6
-Requires:       python311-qt6 >= 6.4.0
-Requires:       python311-qtwebengine-qt6 >= 6.4.0
+Requires:       python311-qt6 >= %{my_qtversion}
+Requires:       python311-qtwebengine-qt6 >= %{my_qtversion}
 Requires:       python311-regex >= 2021.11.10
 Requires:       python311-sgmllib3k >= 1.0.0
 Requires:       python311-six >= 1.16.0

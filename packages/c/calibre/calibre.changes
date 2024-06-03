@@ -1,4 +1,215 @@
 -------------------------------------------------------------------
+Fri May 31 06:21:09 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 7.12.0
+  * New Features
+    - E-book polishing: Add option to download external resources
+      (images/stylesheets/etc.)
+    - Conversion: Add an option under Structure detection to
+      automatically fill in blank alt attributes for images that
+      have alt text in the image file metadata
+    - Content server: Use the book title as the filename for
+      downloaded highlights
+    - Review downloaded metadata dialog: Add a "Previous" button to
+      go back to the last reviewed book
+  * Bug Fixes
+    - Content server viewer: Fix the bottom of the text being cut
+      off on mobile browsers when not in full screen mode.
+      Unfortunately, this means the viewer now requires a browser
+      no more than two years old.
+    - Kindle driver: Increase the size of the cover thumbnails sent
+      to the Scribe
+    - Kindle output: Fix cover images that contain EXIF data
+      without a rotation not displaying on the Kindle lockscreen
+    - E-book viewer: Fix ruby tags not excluded when searching for
+      text
+    - Content server viewer: Fix a regression in the previous
+      release that broke searching
+
+-------------------------------------------------------------------
+Fri May 24 05:34:55 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 7.11.0
+  * New Features
+    - Kindle driver: Add support for sending cover thumbnails to
+      the Kindle Scribe
+    - A new options under Preferences->Look & feel to draw covers
+      with rounded corners
+    - Bulk metadata edit: Add a new tab where you can create rules
+      to transform tags/authors/publishers for the selected books
+    - Tag browser context menu for Formats now has Open with menu
+      items
+    - E-book viewer: When hovering over the top/bottom margin show
+      a button indicating that a click will open the viewer controls.
+      Can be configured via The Headers and footers section of the
+      viewer Preferences.
+    - Spell check dialog: Also show count of currently displayed words
+  * Bug Fixes
+    - E-book viewer: Fix searching not ignoring ruby text
+    - Edit book: Save the state of the current book when opening
+      a new book via File->Open book
+    - Edit book: Fix importing a list of words into a user
+      dictionary not working
+    - EPUB3 metadata: Do not fail to read metadata in the presence
+      on invalid calibre user metadata in the OPF file with empty keys
+    - Get books: Fix rules to map tags on adding books not being
+      applied to books downloaded via Get books
+    - Spellcheck dialog: Move the checkbox to hide correctly spelled
+      words with the rest of the checkboxes that filter the word list
+- Changes from 7.10.0
+  * New Features
+    - Export of calibre data: Ensure individual part files in the
+      exported data are no larger than one gigabyte even if the
+      library contains individual files larger than that size.
+    - Edit book: Spell check: Add options to exclude words in
+      ALL CAPS or with numbers or in camelCase/snake_case from the
+      list of words
+    - Allow easily inverting the current search via the right click
+      menu on the search box
+  * Bug Fixes
+    - Kobo driver: Fix database unsupported error with newest firmware
+    - DOCX Input: Fix text elements containing only whitespace
+      being incorrectly ignored
+    - Bulk metadata dialog: Do not fail when setting covers from
+      ebook files and some of the files have invalid covers
+
+-------------------------------------------------------------------
+Fri Apr 19 07:23:34 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update Tumbleweed to 7.9.0
+  * New Features
+    - Kobo driver: Add support for the new color Kobo devices
+    - Edit book: Add a setting to control cursor width under
+      Preferences->Editor settings
+    - Edit book: Regex-function mode: Show a confirmation popup
+      when closing the function editor when there are unsaved changes
+  * Bug Fixes
+    - Fix undocked Quickview dialog not being restored at startup
+    - Windows: Fix an issue where closing a maximized calibre window
+      to the system tray and then reconnecting with remote desktop
+      would cause a blank calibre window to be displayed
+
+-------------------------------------------------------------------
+Fri Apr  5 05:55:04 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update Tumbleweed to 7.8.0
+  * New Features
+    - E-book viewer: Highlight panel: Allow filtering the shown
+      highlights by type of highlight
+    - Conversion: Add support for the CSS text-transform property
+      when subsetting embedded fonts
+    - E-book viewer: Allow displaying the view mode paged/flow in
+      the header/footer
+    - Book details popup window: Allow dropping of files to add
+      formats/set the cover just as for the book details panel
+    - Book details: Context menu: Add a menu action to remove the
+      associated link
+    - DOCX Input: Add role=doc-noteref for links to
+      footnotes/endnotes so that they popup in more e-book readers
+    - Add a "Mark all selected books" to the Mark action.
+    - Add "Hide Empty Categories" to tag browser configuration menu
+    - Supernote: Support for new device firmware
+    - Sort by tool: Add an action to re-apply the current sort
+  * Bug Fixes
+    - Grid view cover cache: Fix covers not loading when cache
+      entries are stale
+    - Conversion: Do not change viewport relative font sizes used
+      for SVG text elements
+    - Conversion: Fix <style> tags inside <svg> tags not being
+      processed
+    - Get books: Update Kobo store plugin for website changes
+    - EPUB Input: Use a translated name for the cover page
+
+-------------------------------------------------------------------
+Thu Mar 14 11:14:30 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update Tumbleweed to 7.7.0
+  * New features
+    - Trim image: Allow specifying the size of the trim rectangle
+      using numbers
+    - Full text search: Allow pressing Ctrl+S to select the current
+      book in the calibre book list
+    - Speed up scrolling through the book list book-by-book by only
+      redrawing the book details panel when scrolling pauses
+    - Add a tweak under Preferences->Tweaks to set the first day of
+      the week in popup calendars used to input dates
+  * Bug fixes
+    - CHM Input: Handle CHM files with no HHC Table of Contents
+    - E-book viewer: Fix a few settings such as pages per screen
+      and header/footers not being saved in profiles
+    - Full text search: Ignore text inside <ruby> tags when
+      indexing books
+    - DOCX Output: Preserve spaces around soft hyphens
+    - Book details popup: Copy the original cover image to the
+      clipboard even when the image is rescaled to fit into view
+    - Fix changing disabled colors in the UI color palette
+      overriding non-disabled colors
+    - Content server: Fix deletion of viewer profiles not working
+
+-------------------------------------------------------------------
+Sat Mar  2 10:24:45 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update Tumbleweed to 7.6.0
+  * New Features
+    - E-book viewer: Allow saving current settings in "profiles"
+      that can be quickly and easily swapped between
+    - Edit book: Add a shortcut `Ctrl+M` to merge selected files
+    - Get books: Add support for Amazon Mexico
+    - A new toolbar button to show all available actions in sub
+      menus. Can be added via `Preferences->Toolbars & menus`
+    - Edit book: Allow selecting multiple books to edit at once,
+      opening all selected books in separate editor instances
+  * Bug Fixes
+    - Cover grid: Fix dragging the mouse while holding shift to
+      extend the selection not working well
+    - E-book viewer: Fix doing a multi-page selections sometimes
+      causing the start of the selection to move backwards
+    - Edit book: Live CSS: Fix regression causing incorrect colors
+      in calibre 7
+    - Windows: Fix a regression in calibre 7 that caused images in
+      long text columns to not be displayed in the tooltip for the
+      tooltip
+    - Fix disabled items in menus having blurry text
+    - Content server: Fix a regression in the previous release that
+      caused an error when doing a search/sort on some browsers
+- Changes from 7.5.1
+  * Bug Fixes
+    - Version 7.5.1 fixes a bug in 7.5.0 where calibre would not
+      start up using dark colors when the system was in dark mode
+      on some windows installs and another bug that could cause
+      errors when using cover grid mode with covers stored in 
+      CMYK colorspace
+- Changes from 7.5.0
+  * New Features
+    - Allow fine tuning the colors used in the calibre interface
+      via Preference->Look & feel->Main interface->User interface
+      colors
+    - Full text search window: Add actions to the context menu to
+      open the book at the clicked on result. Also allow using the
+      view book shortcut to open the currently selected search result
+    - When showing the Full text search dialog, pre populate the
+      search box with the contents of the main calibre search box 
+      if the main search box contains a simple search
+  * Bug Fixes
+    - Windows: Fix a regression in 7.0 that caused images referring
+      to files on the disk within comments columns to not display 
+      in some circumstances
+    - E-book viewer: Fix clock showing hour as zero instead
+      of 12 between 12 and 1 am/pm
+    - Edit book: When wrapping selected text in a tag,
+      preserve the selection after wrapping
+    - Content server: Fix a periodic spurious error message when
+      reading books in offline mode
+    - Fix a regression in 7.0 caused by a regression in Qt that
+      would result in calibre hanging rarely when using the cover
+      browser view
+    - Fix custom template functions not useable in save to disk
+      templates
+    - Fix a regression in 7.2 that caused the popup used for
+      editing fields in the book list to be mis-positioned on very
+      wide monitors
+
+-------------------------------------------------------------------
 Mon Feb 26 09:09:16 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Adjustments patch macro for rpm 4.20.
