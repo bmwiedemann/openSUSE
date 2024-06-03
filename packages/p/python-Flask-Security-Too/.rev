@@ -307,4 +307,12 @@ This is a maintained fork of python-Flask-Security</comment>
   * Support Python 3.12 changes.</comment>
     <requestid>1146065</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f2b4399299d12db8433eca787a7fd6b4</srcmd5>
+    <version>5.4.3</version>
+    <time>1717429291</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1177933</requestid>
+  </revision>
 </revisionlist>

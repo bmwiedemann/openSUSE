@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Fri May 31 12:12:17 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 5.4.3:
+  + Fixes
+    * Regression - some templates no longer getting correct config
+    * CSRF not properly ignored for application forms using
+      :py SECURITY_CSRF_PROTECT_MECHANISMS.
+    * Improve jp translations
+    * Regression - datetime_factory should still be an attribute
+    * :py SECURITY_RETURN_GENERIC_RESPONSES hide email
+      validation/syntax errors.
+
+- Update to 5.4.2:
+  + Fixes
+    * OpenAPI spec missing.
+    * Doc fixes
+    * Update ES/IT translations
+
+- Update to 5.4.0 & 5.4.1:
+  + Features and improvements:
+    * Work with Flask[async]. view decorators and signals support
+      async handlers.
+    * CI support for python 3.12
+    * Work with py_webauthn 2.0 (and only 2.0+)
+    * Improve (and simplify) Two-Factor setup. See below for
+      backwards compatability issues and new functionality.
+    * Improve oauth debugging support. Handle next propagation in a
+      more general way.
+    * Make AnonymousUser (Flask-Login) optional and deprecated.
+    * Remove undocumented and untested looking in session for
+      possible 'next' redirect location.
+    * No longer rely on Flask-Login.unauthorized callback. See
+      below for implications.
+    * Changes to default unauthorized handler - remove use of
+      referrer header (see below) and document precise behavior.
+    * The authentication_token format has changed - adding
+      per-token expiry time and future session ID. Old tokens are
+      still accepted.
+  + Docs and Chores
+    * Improve method translations for unified signin and two
+      factor. Remove support for Flask-Babelex.
+    * Chore - stop setting all config as attributes.
+      init_app(**kwargs) can only set forms, flags, and utility
+      classes (see below for compatibility concerns).
+    * Update Spanish and Italian translations.
+    * Improve translations for two-factor method selection.
+    * Improve German translations.
+    * Remove deprecation of AUTO_LOGIN_AFTER_CONFIRM - it has a
+      reasonable use case.
+    * Update message extraction - note that the
+      CONFIRM_REGISTRATION message was changed to improve
+      readability.
+  + Fixes
+    * us-signin magic link should use fs_uniquifier (not email).
+    * Improve open-redirect vulnerability mitigation. (see below)
+    * user_datastore.create_user has side effects on mutable
+      inputs. (NoRePercussions)
+    * The long deprecated _unauthorized_callback/handler has been
+      removed.
+    * Oauth re-used POST_LOGIN_VIEW which caused confusion. See
+      below for the new configuration and implications.
+    * Improve CSRF documentation and testing. Fix bug where a CSRF
+      failure could return an HTML page even if the request was
+      JSON.
+    * Register with JSON and authentication token failed CSRF.
+    * Fix 2 issues with CSRF configuration.
+    * It was possible that if SECURITY_EMAIL_VALIDATOR_ARGS were
+      set that deliverability would be checked even for login.
+  + Backwards Compatibility Concerns
+    Please read the full changelog at
+    https://github.com/Flask-Middleware/flask-security/blob/master/CHANGES.rst#version-540--541
+- Drop patch that's already included by upstream:
+  * support-python-312.patch
+
+-------------------------------------------------------------------
 Mon Feb 12 04:11:51 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python-312.patch:

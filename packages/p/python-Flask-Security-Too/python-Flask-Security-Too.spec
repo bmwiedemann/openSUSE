@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Flask-Security-Too
-Version:        5.3.3
+Version:        5.4.3
 Release:        0
 Summary:        Security for Flask apps
 License:        MIT
@@ -27,8 +27,6 @@ Source:         https://files.pythonhosted.org/packages/source/F/Flask-Security-
 Patch0:         no-mongodb.patch
 # PATCH-FIX-OPENSUSE Use pyqrcodeng, we do not ship qrcode in OpenSUSE.
 Patch1:         use-pyqrcodeng.patch
-# PATCH-FIX-UPSTREAM Based on gh#Flask-Middleware/flask-security#900
-Patch2:         support-python-312.patch
 BuildRequires:  %{python_module Authlib}
 BuildRequires:  %{python_module Babel >= 2.10.0}
 BuildRequires:  %{python_module Flask >= 2.3.2}
@@ -37,7 +35,7 @@ BuildRequires:  %{python_module Flask-Login >= 0.6.2}
 BuildRequires:  %{python_module Flask-Mailman >= 0.3.0}
 BuildRequires:  %{python_module Flask-Principal >= 0.4.0}
 BuildRequires:  %{python_module Flask-SQLAlchemy >= 3.0.3}
-BuildRequires:  %{python_module Flask-WTF >= 1.1.1}
+BuildRequires:  %{python_module Flask-WTF >= 1.1.2}
 BuildRequires:  %{python_module MarkupSafe >= 2.1.0}
 BuildRequires:  %{python_module PyQRCode >= 1.2}
 BuildRequires:  %{python_module SQLAlchemy}
@@ -49,8 +47,8 @@ BuildRequires:  %{python_module bcrypt >= 4.0.1}
 BuildRequires:  %{python_module bleach >= 6.0.0}
 BuildRequires:  %{python_module cachetools >= 3.1.0}
 BuildRequires:  %{python_module cryptography >= 40.0.2}
-BuildRequires:  %{python_module dateutil}
 BuildRequires:  %{python_module email-validator >= 2.0}
+BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module importlib_resources >= 5.10.0}
 BuildRequires:  %{python_module itsdangerous >= 1.1.0}
 BuildRequires:  %{python_module passlib >= 1.7.4}
@@ -61,6 +59,7 @@ BuildRequires:  %{python_module pony if %python-base < 3.11}
 BuildRequires:  %{python_module pytest >= 6.2.5}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module webauthn >= 2.0.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zxcvbn >= 4.4.28}
 BuildRequires:  fdupes
@@ -69,7 +68,7 @@ Requires:       python-Flask >= 2.3.2
 Requires:       python-Flask-Babel >= 3.1.0
 Requires:       python-Flask-Login >= 0.6.2
 Requires:       python-Flask-Principal >= 0.4.0
-Requires:       python-Flask-WTF >= 1.1.1
+Requires:       python-Flask-WTF >= 1.1.2
 Requires:       python-MarkupSafe >= 2.1.0
 Requires:       python-WTForms >= 3.0.0
 Requires:       python-Werkzeug >= 2.3.3
@@ -80,6 +79,7 @@ Requires:       python-email-validator >= 2.0
 Requires:       python-importlib_resources >= 5.10.0
 Requires:       python-itsdangerous >= 1.1.0
 Requires:       python-passlib >= 1.7.4
+Requires:       python-webauthn >= 2.0.0
 Recommends:     python-PyQRCode >= 1.2
 Recommends:     python-SQLAlchemy
 Recommends:     python-zxcvbn >= 4.4.28
