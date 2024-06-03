@@ -1,7 +1,7 @@
 #
 # spec file for package QtDMM
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,8 +47,8 @@ been added. For more information about the currently supported DMMs,
 refer to the preset table.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
+
 # called lrelease in openSUSE
 sed -i 's/lrelease-qt5/lrelease/' src/src.pro
 sed -i 's/-fuse-ld=gold//' src/src.pro

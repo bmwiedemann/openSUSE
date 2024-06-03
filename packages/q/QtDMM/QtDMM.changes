@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 15 08:28:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro: allows us to eliminate usage of deprecated
+  %patchN syntax.
+
+-------------------------------------------------------------------
 Thu Apr 20 11:40:25 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Drop using binutils-gold as it is unmaintained and
