@@ -24,7 +24,7 @@
 %endif
 
 Name:           python-ansible-compat
-Version:        24.5.1
+Version:        24.6.0
 Release:        0
 Summary:        Compatibility shim for Ansible 2.9 and newer
 License:        MIT
@@ -37,7 +37,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test
 # https://github.com/ansible/ansible-compat/blob/main/.config/requirements.in
-BuildRequires:  ansible-core >= 2.12
+BuildRequires:  ansible-core >= 2.14
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module jsonschema >= 4.17.3}
 BuildRequires:  %{python_module subprocess-tee >= 0.4.1}
@@ -48,7 +48,7 @@ BuildRequires:  %{python_module pytest-plus}
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-generators
-Requires:       ansible-core >= 2.12
+Requires:       ansible-core >= 2.14
 Requires:       python-PyYAML
 Requires:       python-jsonschema >= 4.17.3
 Requires:       python-packaging

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May 30 09:40:44 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.6.0:
+  * Enhancements
+    - Drop support for Ansible 2.12 and 2.13 (#380) @ssbarnea
+  * Bugfixes
+    - Make collection location cache_dir aware (#384) @ssbarnea
+    - Correctly identify the installed collections when duplicates
+      exist (#379) @ssbarnea
+    - Increase coverage (#378) @ssbarnea
+    - Removed leftover code related to ansible-core before 2.14
+      (#382) @ssbarnea
+
+-------------------------------------------------------------------
 Tue May 14 14:19:11 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 24.5.1:
