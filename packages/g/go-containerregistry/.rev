@@ -81,4 +81,12 @@
   * feat: allow port and disk path to be overriden</comment>
     <requestid>1135385</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>13a4de4330961a193a585e9cc5ec452f</srcmd5>
+    <version>0.17.0</version>
+    <time>1717429414</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1178144</requestid>
+  </revision>
 </revisionlist>
