@@ -1,7 +1,7 @@
 #
 # spec file for package i3status-rust
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           i3status-rust
-Version:        0.32.1
+Version:        0.33.1
 Release:        0%{?dist}
 Summary:        Feature-rich and resource-friendly replacement for i3status, written in Rust
 

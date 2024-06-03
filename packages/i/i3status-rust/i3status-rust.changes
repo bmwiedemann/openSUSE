@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri May 31 09:35:42 UTC 2024 - Dawid Adam <nyslay@gmail.com>
+
+- Update to 0.33.1:
+  * Memory: add zram, zswap support
+  * Music: allow asymmetric seek steps
+  * Time: snap seconds to the multiple of interval
+  * Privacy(Pipewire): fix status bar freezing
+  * Privacy(v4l): change device scan method
+  * Kdeconnect: fix device_id parameter
+  * AMD GPU: better error message on device not found
+
+-------------------------------------------------------------------
+Fri May 31 09:35:42 UTC 2024 - Dawid Adam <nyslay@gmail.com>
+
+- Update to 0.33.0:
+  * Kdeconnect: removed hide_disconnected option and connected formatting flag
+  * cpu: Add critical_info/warning_info/info_info options
+  * Kdeconnect: add format_disconnected and format_missing options
+  * Toggle: allow customizing state/theming when on/off by adding state_on and state_off options
+  * Disk Space: add support for TiB, GiB, MiB and KiB in alert_unit
+  * Add new privacy block which can detect if your webcam, screen/monitor, microphone, or audio monitor is being captured by another application. Note: only webcams that use v4l can be detected by default, enable the pipewire to monitor the use of the other listed kinds of media.
+  * Add new packages block which supports apt, dnf, and pacman/aur
+
+-------------------------------------------------------------------
+Fri May 31 09:35:42 UTC 2024 - Dawid Adam <nyslay@gmail.com>
+
+- Update to 0.32.3:
+  * Weather: add zip option for OpenWeatherMap
+  * Weather: add format_alt option
+  * Weather: implement forecast
+  * Music: add format_alt
+  * Apt: added config option ignore_updates_regex to filter the list of updates
+  * Time: add basic support for non Gregorian calendars (#1968).
+  * Xrandr: support multiple outputs
+  * Fail if click handler config refers to unknown button.
+  * Weather: location placeholder now works with Met.no if autolocate is enabled
+
+-------------------------------------------------------------------
+Fri May 31 09:35:42 UTC 2024 - Dawid Adam <nyslay@gmail.com>
+
+- Update to 0.32.2:
+  * Weather: Add icons for night, separated icons for Fog/Mist from Cloudy.
+  * icons: Add new set of emoji icons.
+  * Fix "update = true" click event handling for some blocks (e.g. pacman).
+
+-------------------------------------------------------------------
 Tue Sep 19 21:37:42 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
 
 - License correction based on legaldb review 

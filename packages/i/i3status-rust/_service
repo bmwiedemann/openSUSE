@@ -3,7 +3,7 @@
     <param name="url">https://github.com/greshake/i3status-rust</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">v0.32.1</param>
+    <param name="revision">v0.33.1</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
