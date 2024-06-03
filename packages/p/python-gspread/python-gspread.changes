@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jun  2 10:36:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.2:
+  * add note about runnings tests to contrib guide
+  * Some updates on get_notes
+  * Add some missing typing in code
+  * More fixes for Worksheet.update argument ordering & single
+    cell updating (i.e. now Worksheet.update_acell)
+  * Added 'add_data_validation` to Workhsheet [Issue #1420]
+  * Fix incorrect version number in HISTORY.rst from 6.0.1 to
+    6.1.0
+  * add get_notes
+  * Bump mypy from 1.9.0 to 1.10.0
+  * bugfix: handle domain name in spreadsheet copy permissions
+  * Fix/api key auth version
+  * Ignore pip vulnerabilities in CI.
+  * Remove StrEnum dependency and added custom class[issue #1462]
+
+-------------------------------------------------------------------
 Sun Apr 14 07:36:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.0:

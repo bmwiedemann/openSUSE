@@ -260,4 +260,26 @@
   * Improce README and documentation with value render options</comment>
     <requestid>1167621</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>26f20e9de5db5c470229976c85389f5e</srcmd5>
+    <version>6.1.2</version>
+    <time>1717429435</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.1.2:
+  * add note about runnings tests to contrib guide
+  * Some updates on get_notes
+  * Add some missing typing in code
+  * More fixes for Worksheet.update argument ordering &amp; single
+    cell updating (i.e. now Worksheet.update_acell)
+  * Added 'add_data_validation` to Workhsheet [Issue #1420]
+  * Fix incorrect version number in HISTORY.rst from 6.0.1 to
+    6.1.0
+  * add get_notes
+  * Bump mypy from 1.9.0 to 1.10.0
+  * bugfix: handle domain name in spreadsheet copy permissions
+  * Fix/api key auth version
+  * Ignore pip vulnerabilities in CI.
+  * Remove StrEnum dependency and added custom class[issue #1462]</comment>
+    <requestid>1178157</requestid>
+  </revision>
 </revisionlist>
