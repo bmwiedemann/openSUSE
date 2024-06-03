@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  3 07:38:00 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update CVE-2024-33664.patch with upstream
+  https://github.com/mpdavis/python-jose/pull/352
+  bsc#1223422
+
+-------------------------------------------------------------------
 Tue May  7 09:58:08 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Make python-pycryptodome dependency only required for Factory.

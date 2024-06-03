@@ -36,8 +36,6 @@
 %bcond_with    testnative
 %endif
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-python-jose%{psuffix}
 Version:        3.3.0
@@ -47,7 +45,7 @@ License:        MIT
 URL:            https://github.com/mpdavis/python-jose
 Source:         https://files.pythonhosted.org/packages/source/p/python-jose/python-jose-%{version}.tar.gz
 Patch0:         unpin-deps.patch
-# PATCH-FIX-UPSTREAM CVE-2024-33664.patch gh#mpdavis/python-jose#345
+# PATCH-FIX-UPSTREAM CVE-2024-33664.patch gh#mpdavis/python-jose#352
 Patch1:         CVE-2024-33664.patch
 # PATCH-FIX-UPSTREAM CVE-2024-33663.patch gh#mpdavis/python-jose#349
 Patch2:         CVE-2024-33663.patch

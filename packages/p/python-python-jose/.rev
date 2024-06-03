@@ -79,4 +79,14 @@
     <comment>- Make python-pycryptodome dependency only required for Factory.</comment>
     <requestid>1172403</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>5c75de7a8f5df54fdec3def24093b464</srcmd5>
+    <version>3.3.0</version>
+    <time>1717429469</time>
+    <user>anag+factory</user>
+    <comment>- Update CVE-2024-33664.patch with upstream
+  https://github.com/mpdavis/python-jose/pull/352
+  bsc#1223422</comment>
+    <requestid>1178245</requestid>
+  </revision>
 </revisionlist>
