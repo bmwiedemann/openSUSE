@@ -82,4 +82,13 @@
   * fix(functions): fallback to unix device path, when by-id does not exist</comment>
     <requestid>1177611</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>75f14071175dac81bbb9fd8c5747402e</srcmd5>
+    <version>1.0.6</version>
+    <time>1717429259</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.6:
+  * Migrate bluetooth configuration also</comment>
+    <requestid>1177866</requestid>
+  </revision>
 </revisionlist>
