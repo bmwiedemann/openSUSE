@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 29 21:19:29 CEST 2024 - tumic@cbox.cz
+
+- Update to version 13.21
+  * Added hillshading settings.
+  * Fixed render issues with Qt 6.7.
+  * Fixed issues with dates not respecting the system format.
+
+-------------------------------------------------------------------
 Wed May 22 22:43:05 CEST 2024 - tumic@cbox.cz
 
 - Update to version 13.20

@@ -1,3 +1,11 @@
+gpxsee (13.21) stable; urgency=low
+
+  * Added hillshading settings.
+  * Fixed render issues with Qt 6.7.
+  * Fixed issues with dates not respecting the system format.
+
+ -- Martin Tuma <tumic@cbox.cz>  Wed, 29 May 2024 21:28:02 +0200
+
 gpxsee (13.20) stable; urgency=low
 
   * Improved hillshading rendering.
