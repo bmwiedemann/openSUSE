@@ -117,4 +117,12 @@
 - Refresh source url and gpg keyring</comment>
     <requestid>1094653</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c74bf85879d64c7cb8a7f7e387c5c435</srcmd5>
+    <version>7.23</version>
+    <time>1717429389</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1178119</requestid>
+  </revision>
 </revisionlist>

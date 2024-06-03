@@ -1,7 +1,7 @@
 #
 # spec file for package c_count
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           c_count
-Version:        7.22
+Version:        7.23
 Release:        0
 Summary:        Source Code Measure Counter for C/C++/Java
 License:        MIT

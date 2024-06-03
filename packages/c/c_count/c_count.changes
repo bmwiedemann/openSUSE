@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun  2 02:41:50 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 7.23
+  * improve style/formatting of manpage
+  * updated configure macros
+  * update config.guess and config.sub 
+
+-------------------------------------------------------------------
 Thu Jun 22 11:43:43 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 7.22
