@@ -1,5 +1,5 @@
 <services>
-    <service name="obs_scm" mode="disabled">
+    <service name="obs_scm" mode="manual">
         <param name="url">https://github.com/thkukuk/containers-mailserver.git</param>
         <param name="scm">git</param>
         <param name="extract">LICENSE</param>
@@ -8,7 +8,7 @@
         <param name="revision">master</param>
         <param name="versionformat">%cd.%h</param>
     </service>
-    <service name="obs_scm" mode="disabled">
+    <service name="obs_scm" mode="manual">
         <param name="url">https://github.com/thkukuk/containers-mailserver.git</param>
         <param name="scm">git</param>
         <param name="version">_none_</param>
