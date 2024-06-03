@@ -226,4 +226,19 @@
   * Add a warning when run by the user root.</comment>
     <requestid>1167764</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>034aab30b75ff51f36a226b936c1c834</srcmd5>
+    <version>0.11.0</version>
+    <time>1717429250</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.11.0:
+  Changed:
+  * Move private Ox key into JID folder in ~/.local/share/go-sendxmpp.
+  * Use fmt.Errorf() instead of errors.New() to create new error messages.
+  Added:
+  * Add new parameter --subject.
+  * Added flag --fast-off to disable XEP-0484: Fast Authentication
+    Streamlining Tokens (requires go-xmpp &gt;= 0.2.1)</comment>
+    <requestid>1177829</requestid>
+  </revision>
 </revisionlist>
