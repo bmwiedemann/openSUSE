@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 27 02:16:41 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update vector-algorithms to version 0.9.0.2 revision 1.
+  ## Version 0.9.0.2 (2024-05-23)
+
+  - Add `TypeOperators` pragma where needed.
+
+-------------------------------------------------------------------
 Tue Oct 10 14:53:32 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update vector-algorithms to version 0.9.0.1 revision 3.

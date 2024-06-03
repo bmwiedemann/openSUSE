@@ -1,7 +1,7 @@
 cabal-version:     >= 1.10
 name:              vector-algorithms
-version:           0.9.0.1
-x-revision:        3
+version:           0.9.0.2
+x-revision: 1
 license:           BSD3
 license-file:      LICENSE
 author:            Dan Doel
@@ -161,7 +161,7 @@ test-suite properties
       base >= 4.9,
       bytestring,
       containers,
-      QuickCheck > 2.9 && < 2.15,
+      QuickCheck > 2.9 && < 2.16,
       vector,
       vector-algorithms
 
