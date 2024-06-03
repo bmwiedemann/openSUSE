@@ -788,6 +788,7 @@ Prefer: udev-mini
 # break dependency of the -mini packages: they are valid for OBS, but not for end-user-installation
 Ignore: cmake-mini:this-is-only-for-build-envs
 Ignore: dummy-release:this-is-only-for-build-envs
+Ignore: envsubst-mini:this-is-only-for-build-envs
 Ignore: erlang-rebar-obs:this-is-only-for-build-envs
 Ignore: ffmpeg-5-mini-devel:this-is-only-for-build-envs
 Ignore: ffmpeg-5-mini-libs:this-is-only-for-build-envs
@@ -800,6 +801,8 @@ Ignore: ghc-bootstrap:this-is-only-for-build-envs
 Ignore: ghostscript-mini:this-is-only-for-build-envs
 Ignore: harfbuzz-bootstrap:this-is-only-for-build-envs
 Ignore: jdk-bootstrap:this-is-only-for-build-envs
+Ignore: krb5-mini-devel:this-is-only-for-build-envs
+Ignore: krb5-mini:this-is-only-for-build-envs
 Ignore: libpxbackend-1_0-mini:this-is-only-for-build-envs
 Ignore: libsystemd0-mini:this-is-only-for-build-envs
 Ignore: libudev-mini1:this-is-only-for-build-envs
@@ -811,8 +814,6 @@ Ignore: postgresql16-devel-mini:this-is-only-for-build-envs
 Ignore: systemd-mini-container:this-is-only-for-build-envs
 Ignore: systemd-mini:this-is-only-for-build-envs
 Ignore: udev-mini:this-is-only-for-build-envs
-Ignore: krb5-mini-devel:this-is-only-for-build-envs
-Ignore: krb5-mini:this-is-only-for-build-envs
 
 # Ring0 packages should not pull in 'info' - making the base VM smaller
 Ignore: autoconf:info
