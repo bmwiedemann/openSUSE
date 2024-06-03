@@ -1,7 +1,7 @@
 #
 # spec file for package soapy-rtlsdr
 #
-# Copyright (c) 2021 SUSE LLC.
+# Copyright (c) 2024 SUSE LLC.
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define soapy_modname soapysdr%{soapy_modver}-module-rtlsdr
 
 Name:           soapy-rtlsdr
-Version:        0.3.2
+Version:        0.3.3
 Release:        0
 Summary:        SoapySDR RTL-SDR support module
 License:        MIT
@@ -51,7 +51,7 @@ A Soapy module that supports RTL-SDR devices within the Soapy API.
 
 %build
 %cmake
-make VERBOSE=1 %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install

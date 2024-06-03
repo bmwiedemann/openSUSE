@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun  1 09:11:25 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 0.3.3
+  + Add setting for test mode (#60)
+  + Add getSampleRateRange (closes #54)
+
+-------------------------------------------------------------------
 Tue Jul  6 12:04:34 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - SoapySDR version bumped to 0.8
