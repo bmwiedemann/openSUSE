@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr 22 07:30:42 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.6.0
+  + Fixes
+    - The shell-completions subcommand is now run before anything
+      is set up
+    - Fix nix flake
+    - Fix jq
+    - Labels now use gtk's truncation system
+  + Features
+    - Add libdbusmenu-gtk3-devel BuildRequires: add systray widget
+    - Add :checked property to checkbox
+- Disable cargo update: could not find `ObjectExt` in `glib` 
+  (gh#elkowar/eww#1062 gh#elkowar/eww#1063)
+- Add cargo test script
+- Add CHANGELOG.md to doc
+
+-------------------------------------------------------------------
 Sun Mar  3 09:34:30 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Initial package
