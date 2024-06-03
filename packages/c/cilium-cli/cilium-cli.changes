@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun 01 09:11:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.9:
+  * Prepare for v0.16.9 release
+  * fix(deps): update github.com/cilium/charts digest to f365292
+  * clustermesh: fix status retrieval on v1.14 with kvstoremesh
+    enabled
+  * Update stable release to v0.16.8
+
+-------------------------------------------------------------------
 Thu May 30 09:00:08 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.16.8:
