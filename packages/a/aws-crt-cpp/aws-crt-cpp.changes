@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 22 13:52:30 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.26.9
+  - Fix memory leak when UnsubscribePacket is reused by @sfod in (#617)
+  - Fix order of arguments when calling aws_aes_gcm_256_new by @sbiscigl in (#618)
+  - Symmetric cipher state by @sbiscigl in (#619)
+
+-------------------------------------------------------------------
 Tue May 21 11:23:17 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro: allows us to eliminate usage of deprecated
