@@ -21,16 +21,16 @@
 %endif
 
 Name:           lyx
-Version:        2.4.0~RC4
+Version:        2.4.0
 Release:        0
 Summary:        WYSIWYM (What You See Is What You Mean) document processor
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            http://www.lyx.org/
-Source:         http://ftp.lyx.org/pub/lyx/devel/lyx-2.4/lyx-%{version}.tar.xz
+Source:         http://ftp.lyx.org/pub/lyx/stable/2.4.x/lyx-%{version}.tar.xz
 Source1:        lyxrc.dist
 Source2:        lyx.keyring
-Source3:        http://ftp.lyx.org/pub/lyx/devel/lyx-2.4/lyx-%{version}.tar.xz.sig
+Source3:        http://ftp.lyx.org/pub/lyx/stable/2.4.x/lyx-%{version}.tar.xz.sig
 Source4:        README.SUSE
 BuildRequires:  autoconf
 BuildRequires:  automake

@@ -892,4 +892,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1163914</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>016a6ad22e22cab2e6c7812d8e999088</srcmd5>
+    <version>2.4.0</version>
+    <time>1717429255</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.4.0 release
+  This is a major release with many changes, too much to list here.
+  Details can be found at:
+  https://wiki.lyx.org/LyX/NewInLyX24</comment>
+    <requestid>1177865</requestid>
+  </revision>
 </revisionlist>
