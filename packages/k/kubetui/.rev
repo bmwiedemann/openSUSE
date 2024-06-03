@@ -15,4 +15,12 @@
     <comment>update to 1.5.1 - fixes bsc#1223225 aka CVE-2024-32650 (forwarded request 1169986 from dancermak)</comment>
     <requestid>1170474</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3714aa3425212bec2353394b3164054f</srcmd5>
+    <version>1.5.2</version>
+    <time>1717429396</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1178137</requestid>
+  </revision>
 </revisionlist>

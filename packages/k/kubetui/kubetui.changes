@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 16 14:19:52 UTC 2024 - ekr59uv25@gmail.com
+
+- Update to version 1.5.2:
+  * (experimental) Support Gateway API (only Gateway and HTTPRoute)
+  * fix(ui/table): ensure filter form displays when items are empty
+
+-------------------------------------------------------------------
 Wed Apr 24 07:17:36 UTC 2024 - dcermak@suse.com
 
 - Update to version 1.5.1:
