@@ -4,5 +4,3 @@ addFilter("python-leftover-require python[0-9]+-httpsig_cffi")
 addFilter("python-leftover-require python[0-9]+-requests")
 addFilter("python-leftover-require python[0-9]+-six")
 addFilter("python-leftover-require python[0-9]+-urllib3")
-# python2 only: rpmlint does not understand the python marker yet
-addFilter("python-missing-require configparser")
