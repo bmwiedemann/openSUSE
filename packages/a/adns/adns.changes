@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat May 25 07:58:19 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix Factory submission and spec file tweaks
+
+-------------------------------------------------------------------
+Tue May 14 14:00:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.6.1:
+  + Minor bugfix:
+    * Suppress warning about `trust-ad` in resolv.conf.
+  + Build system:
+    * Honour DESTDIR, avoiding need for prefix= workaround.
+      (Drop adns-1.4-destdir.patch)
+    * regression tests: Add missing dependency on hsyscalls.i.
+      GNU #51329.  [Report from Sergei Trofimovich]
+    * regression tests: build with 64-bit time_t on 32-bit systems.
+  + Documentation:
+    * Fix all http: URLs in docs to be https: instead.
+
+-------------------------------------------------------------------
 Tue Feb 20 10:01:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -2,6 +2,7 @@
 # spec file for package adns
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 %define lname	libadns1
 Name:           adns
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        Advanced Easy-to-Use Asynchronous-Capable DNS Utilities
 License:        GPL-2.0-or-later
@@ -29,7 +30,6 @@ Source1:        http://www.chiark.greenend.org.uk/~ian/adns/ftp/%{name}-%{versio
 Source2:        %{name}.keyring
 Source3:        README.SUSE
 Source4:        baselibs.conf
-Patch0:         adns-1.4-destdir.patch
 Patch1:         adns-1.4-configure.patch
 Patch2:         adns-visibility.patch
 BuildRequires:  autoconf
@@ -65,7 +65,7 @@ cp %{SOURCE3} .
 %build
 autoreconf -fiv
 %configure
-%make_build all
+%make_build
 
 %install
 make install \
@@ -77,19 +77,24 @@ make install \
 # FIXME: --disable-static not available
 rm %{buildroot}%{_libdir}/*.a
 
+%ldconfig_scriptlets -n %{lname}
+
+%check
+## Fails without network
+#%%make_build check
+
 %files
 %license COPYING
 %doc GPL-vs-LGPL README* TODO changelog
 %{_bindir}/adns*
 
 %files -n %{lname}
+%license COPYING
 %{_libdir}/libadns.so.1*
 
 %files -n libadns-devel
+%license COPYING
 %{_includedir}/adns.h
 %{_libdir}/libadns.so
-
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
 
 %changelog
