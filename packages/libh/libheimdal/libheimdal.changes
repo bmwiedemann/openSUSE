@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 22 08:01:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 1229.patch: Fix build with autoconf-2.72.
+
+-------------------------------------------------------------------
 Thu Apr  6 13:26:58 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add heimdal-CVE-2022-45142.patch: Fix logic inversion introduced

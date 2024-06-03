@@ -1,7 +1,7 @@
 #
 # spec file for package libheimdal
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ Patch0:         heimdal-patched.diff
 Patch1:         reproducible.patch
 # PATCH-FIX-UPSTREAM https://www.openwall.com/lists/oss-security/2023/02/08/1
 Patch2:         heimdal-CVE-2022-45142.patch
+Patch3:         https://patch-diff.githubusercontent.com/raw/heimdal/heimdal/pull/1229.patch
 BuildRequires:  automake >= 1.11
 BuildRequires:  bison
 BuildRequires:  db-devel >= 4.8
