@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 24 07:37:33 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update os-string to version 2.0.3.
+  ## 2.0.3 *May 2024*
+
+  * Fix `length` function wrt [#17](https://github.com/haskell/os-string/issues/17)
+
+-------------------------------------------------------------------
 Thu May  9 17:58:32 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update os-string to version 2.0.2.2.
