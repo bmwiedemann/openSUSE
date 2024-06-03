@@ -2,6 +2,7 @@
 # spec file for package libhtp
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +19,23 @@
 
 %define sover   2
 %define lname   %{name}%{sover}
+%bcond_without tests
 Name:           libhtp
 Version:        0.5.48
 Release:        0
 Summary:        HTTP normalizer and parser
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-URL:            http://www.openinfosecfoundation.org/
+URL:            https://www.openinfosecfoundation.org/
 Source:         https://github.com/OISF/libhtp/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
+%if %{with tests}
+BuildRequires:  c++_compiler
+%endif
 
 %description
 The HTP Library is an HTTP normalizer and parser written by Ivan Ristic of Mod Security fame for the OISF. This integrates and provides very advanced processing of HTTP streams for Suricata. The HTP library is required by the engine, but may also be used independently in a range of applications and tools.
@@ -52,27 +57,34 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 sed -i 's/\r$//' ChangeLog
 
 %build
-autoreconf -fi
-%configure --disable-static
-make %{?_smp_mflags}
+autoreconf -fiv
+%configure \
+	--disable-static
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%check
+%if %{with tests}
+%make_build test
+%endif
+
+%ldconfig_scriptlets -n %{lname}
 
 %files -n %{lname}
 %license COPYING LICENSE
 %doc AUTHORS ChangeLog README
-%{_libdir}/libhtp.so.%{sover}*
+%{_libdir}/libhtp.so.%{sover}
+%{_libdir}/libhtp.so.%{sover}.*
 
 %files devel
+%license COPYING LICENSE
 %{_includedir}/htp
 %{_libdir}/libhtp.so
 %{_libdir}/pkgconfig/htp.pc

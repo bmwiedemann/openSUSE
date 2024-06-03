@@ -1,11 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun  1 20:30:02 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- run tests, spec file tweaks
+
+-------------------------------------------------------------------
 Thu Apr 25 20:11:06 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.5.48
   * decompressor: only take erroneous data on first try
   * autotools: run autoupdate to modernize build system
 - Update to version 0.5.47
-  * request: limit probing after missing protocol
+  * CVE-2024-28871 request: limit probing after missing protocol
+    (boo#1222512)
 
 -------------------------------------------------------------------
 Mon Feb 19 07:31:20 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
@@ -20,7 +26,8 @@ Mon Feb 19 07:31:20 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
   * htp_util: fix spelling issue
   * src: fix -Wshorten-64-to-32 warnings
   * uri: normalization removes trailing spaces
-  * CVE-2024-23837 - Critical severity
+  * CVE-2024-23837: excessive processing time of HTTP headers can
+    lead to a denial of service (boo#1220403)
 
 -------------------------------------------------------------------
 Thu Jul 27 08:56:06 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
