@@ -17,9 +17,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ZODB
-Version:        5.8.1
+Version:        6.0
 Release:        0
 Summary:        Zope Object Database: object database and persistence
 License:        ZPL-2.1
@@ -30,7 +29,6 @@ BuildRequires:  %{python_module ZConfig}
 BuildRequires:  %{python_module manuel}
 BuildRequires:  %{python_module persistent-devel >= 4.4.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module transaction >= 2.4.0}
 BuildRequires:  %{python_module zc.lockfile}
 BuildRequires:  %{python_module zodbpickle >= 1.0.1}
@@ -42,13 +40,12 @@ BuildRequires:  python-rpm-macros
 Requires:       python-BTrees >= 4.2.0
 Requires:       python-ZConfig
 Requires:       python-persistent >= 4.4.0
-Requires:       python-six
 Requires:       python-transaction >= 2.4.0
 Requires:       python-zc.lockfile
 Requires:       python-zodbpickle >= 1.0.1
 Requires:       python-zope.interface
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -89,6 +86,10 @@ rm -f src/ZODB/tests/testdocumentation.py
 %python_clone -a %{buildroot}%{_bindir}/fstail
 %python_clone -a %{buildroot}%{_bindir}/repozo
 
+mkdir -p %{buildroot}%{_defaultdocdir}/python-ZODB-doc/docs
+cp -r docs/* %{buildroot}%{_defaultdocdir}/python-ZODB-doc/docs/
+%fdupes %{buildroot}%{_defaultdocdir}/python-ZODB-doc
+
 %check
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} zope-testrunner-%{$python_bin_suffix} --test-path=src
 
@@ -110,6 +111,6 @@ rm -f src/ZODB/tests/testdocumentation.py
 %python_alternative %{_bindir}/repozo
 
 %files -n %{name}-doc
-%doc docs/
+%doc %{_defaultdocdir}/python-ZODB-doc
 
 %changelog

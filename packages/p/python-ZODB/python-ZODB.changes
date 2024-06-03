@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 30 12:34:58 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.0
+  * Add support for Python 3.12.
+  * Drop support for Python 2.7, 3.5, 3.6.
+  * Fix sorting issue in scripts/space.py.
+  * FileStorage: fix a rare data corruption when using restore after multiple undos.
+  * Fix exit code of repozo script in case of verification error.
+- Fix deduplication of documentation.
+
+-------------------------------------------------------------------
 Sun Jan  7 16:42:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.8.1:
