@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Jun  2 13:50:14 UTC 2024 - Matthias Bach <marix@marix.org> - 2.57
+
+- Update to 2.57
+  * New Features:
+    - Added option 'Prevent certain screen captures' (in 'Tools' → 'Options' → tab 'Security', turned off by default); note that this may also prevent legitimate other software (remote desktop solutions, accessibility tools such as screen magnifiers, etc.) from seeing KeePass windows.
+    - Added the new option 'Prevent certain screen captures' in the 'Enforce Options (All Users)' dialog (in 'Tools' → 'Advanced Tools' → 'Enforce Options').
+    - Key files can be created on the secure desktop now.
+    - Added shortcut keys for the 'Copy Group (Encrypted)' (Ctrl+Shift+C) and 'Paste Group' (Ctrl+Shift+V) commands.
+    - Ctrl+Shift+V can now be used for pasting entries while the group tree has the input focus and vice versa.
+    - Added 'More' button in the icon picker dialog, which shows a menu that provides two commands: 'Rename' and 'Export'; the menu is also shown as context menu of the custom icons list.
+    - When importing an icon, the file name without extension is now used as icon name.
+    - Added option 'Remember password hiding setting' in the main window column configuration dialog (turned off by default).
+    - Some error messages now contain the type and the HResult of the exception that occured.
+    - Some error messages are now more detailed when running KeePass with the '-debug' command line option.
+    - Bitwarden JSON import: two-digit years are now converted to four-digit years.
+    - Added UIFlags bit for automatically adjusting weak key transformation settings to the current default values (without a confirmation dialog).
+    - Added DPI detection on Unix-like systems.
+  * Improvements:
+    - Databases are now always saved in the KDBX 4/4.1 file format; if you need a KDBX 3.1 file (e.g. for compatibility with an old app), perform an export: main menu 'File' → 'Export' → format 'KeePass KDBX (2.34, Old Format)'.
+    - In an auto-type error dialog, the sequence is now only displayed if KeePass has been started with the '-debug' command line option.
+    - Increased maximum length of the main window title.
+    - Improved handling of shortcut keys in the main window.
+    - Improved entry data exchange menu update performance.
+    - After moving a group, KeePass now ensures that the group is visible.
+    - Improved database save confirmation dialog text.
+    - When showing the master key creation/change dialog on the secure desktop, trying to perform an operation that is not supported on the secure desktop now results in a simple error message, i.e. it is not possible anymore to choose to cancel the dialog and perform the operation on the normal desktop; this avoids certain accidental data loss scenarios.
+    - Various improvements in the simple file browser dialog (for the secure desktop).
+    - While a hot key control of the options dialog is focused, dialog-specific keyboard shortcuts are now disabled.
+    - Changed the 'MAC Address' password generator profile such that it always generates a unicast, locally administered MAC address in the SLAP administratively assigned quadrant.
+    - In the icon picker dialog: moved the 'Export' command into the 'More'/context menu of the custom icons list.
+    - Improved error messages for exception chains.
+    - Improved serialization, deserialization and conversion of nullable booleans.
+    - Improved deserialization of variant dictionaries.
+    - Improved application context initialization.
+    - Improved termination of the program in case of a fatal exception.
+    - Various UI text improvements.
+    - Various code optimizations.
+    - Minor other improvements.
+
+-------------------------------------------------------------------
 Sun Feb  4 15:35:42 UTC 2024 - Matthias Bach <marix@marix.org> - 2.56
 
 - Update to 2.56
