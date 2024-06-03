@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun  2 13:41:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.7.0:
+  * Add fixtures explicitly in test requirements
+  * tox: Use pre-commit for linter checks
+  * Blacken code base
+  * requirements: Bump minimums
+
+-------------------------------------------------------------------
 Sun Apr  7 08:49:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.6.0:

@@ -576,4 +576,16 @@
   * Test python 3.10 and 3.11</comment>
     <requestid>1165942</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>eff949c33022b739654d859d5a7bc94e</srcmd5>
+    <version>4.7.0</version>
+    <time>1717429437</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.7.0:
+  * Add fixtures explicitly in test requirements
+  * tox: Use pre-commit for linter checks
+  * Blacken code base
+  * requirements: Bump minimums</comment>
+    <requestid>1178158</requestid>
+  </revision>
 </revisionlist>
