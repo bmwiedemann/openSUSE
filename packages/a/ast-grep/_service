@@ -3,7 +3,7 @@
     <param name="url">https://github.com/ast-grep/ast-grep.git</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <param name="revision">0.22.4</param>
+    <param name="revision">0.22.5</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun  3 06:26:04 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.22.5:
+  * feat: support all languages in napi #1170
+  * Breaking change: refactor: rename Frontend Language to Lang c582c16
+  * refactor: move find files operations to standalone files 8ebb888
+  * feat: support more languages in napi 19e3baa
+
+-------------------------------------------------------------------
 Mon May 27 07:09:29 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.22.4:

@@ -329,4 +329,16 @@
   * feat: add edit/fix sketch 6817854</comment>
     <requestid>1177044</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>dc98c783f26f056b98167d32142127aa</srcmd5>
+    <version>0.22.5+0</version>
+    <time>1717429458</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.22.5:
+  * feat: support all languages in napi #1170
+  * Breaking change: refactor: rename Frontend Language to Lang c582c16
+  * refactor: move find files operations to standalone files 8ebb888
+  * feat: support more languages in napi 19e3baa</comment>
+    <requestid>1178224</requestid>
+  </revision>
 </revisionlist>
