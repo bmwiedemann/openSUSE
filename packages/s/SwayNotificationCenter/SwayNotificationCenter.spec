@@ -19,7 +19,7 @@
 %global alt_pkg_name swaync
 
 Name:           SwayNotificationCenter
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        A simple GTK notification daemon
 License:        GPL-3.0-only

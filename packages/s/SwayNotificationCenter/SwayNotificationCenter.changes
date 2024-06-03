@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 31 09:16:12 UTC 2024 - Dawid Respondek <nyslay@gmail.com>
+
+- Update to version 0.10.1:
+  * Fix brightness slider choppiness
+  * Fixed BOTTOM aligned notifications in CC not compensating for fade properly
+  * Fix default mpris icon size
+
+-------------------------------------------------------------------
 Mon Feb 12 11:15:00 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 0.10.0:
