@@ -78,7 +78,7 @@ BuildRequires:  file-devel
 BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  gd-devel
 %if %{with hyperscan}
-BuildRequires:  hyperscan-devel
+BuildRequires:  pkgconfig(libhs)
 %endif
 %if %{with jemalloc}
 BuildRequires:  jemalloc-devel

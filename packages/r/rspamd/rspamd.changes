@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 22 12:19:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libhs) instead of vectorscan-devel: allow
+  to work with the free hyperscan variant.
+
+-------------------------------------------------------------------
 Mon Feb 26 11:23:38 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.8.4
