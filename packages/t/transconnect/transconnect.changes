@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 17 09:02:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop AUTHORS file: upstream already supplies it as part of the
+  tarball.
+
+-------------------------------------------------------------------
+Mon Feb 26 15:42:08 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Thu Mar  6 19:58:16 UTC 2014 - aj@ajaissle.de
 
 - Spec cleanup

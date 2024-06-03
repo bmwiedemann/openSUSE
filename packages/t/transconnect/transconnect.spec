@@ -1,7 +1,7 @@
 #
 # spec file for package transconnect
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           transconnect
 Version:        1.2
 Release:        0
 Summary:        Allows you to access the internet through a HTTP proxy
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Proxy
-Url:            http://transconnect.sourceforge.net/
+URL:            http://transconnect.sourceforge.net/
 Source0:        http://prdownloads.sourceforge.net/transconnect/%{name}-%{version}.tar.bz2
 Source1:        README.SUSE
 Patch0:         %{name}-%{version}.dif
@@ -33,8 +33,7 @@ TransConnect is a program to allow you almost complete access to the
 internet through a HTTP proxy like squid.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 cp %{SOURCE1} .
 
 %build
