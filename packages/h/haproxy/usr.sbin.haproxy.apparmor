@@ -38,7 +38,20 @@ profile haproxy /usr/sbin/haproxy {
   /{,var/}run/haproxy/pid rw,
   /{,var/}run/haproxy/master.sock* rwlk,
 
+  # This is for the additional debug output in haproxy >= 2.9
+  # can be accessed with "p post_mortem" in gdb
   /sys/devices/system/node/ r,
+  /sys/devices/system/node/*/cpumap r,
+  /sys/devices/system/cpu/online r,
+  /sys/class/dmi/id/sys_vendor r,
+  /sys/class/dmi/id/product_family r,
+  /sys/class/dmi/id/product_name r,
+  /sys/class/dmi/id/board_vendor r,
+  /sys/firmware/devicetree/base/model r,
+  /sys/class/dmi/id/board_name r,
+  /proc/2/status r,
+  /proc/cpuinfo r,
+  # end of debug.c files
 
   # Site-specific additions and overrides. See local/README for details.
   #include if exists <local/haproxy>

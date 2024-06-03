@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 31 12:07:48 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- AppArmor: allow haproxy to read the files needed for the
+  "p post_mortem" support
+
+-------------------------------------------------------------------
 Wed May 29 14:00:25 UTC 2024 - mrueckert@suse.de
 
 - Update to version 3.0.0+git0.5590ada47:

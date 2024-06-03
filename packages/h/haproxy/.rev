@@ -1491,4 +1491,13 @@
   https://www.mail-archive.com/haproxy@formilux.org/msg44993.html</comment>
     <requestid>1177631</requestid>
   </revision>
+  <revision rev="143" vrev="2">
+    <srcmd5>32f2e04886af2ece2e4b30f7793c1fda</srcmd5>
+    <version>3.0.0+git0.5590ada47</version>
+    <time>1717429294</time>
+    <user>anag+factory</user>
+    <comment>- AppArmor: allow haproxy to read the files needed for the
+  &quot;p post_mortem&quot; support</comment>
+    <requestid>1177941</requestid>
+  </revision>
 </revisionlist>
