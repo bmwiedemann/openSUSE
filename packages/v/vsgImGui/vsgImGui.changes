@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 27 13:31:24 UTC 2024 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 0.3.0
+  * Always pass events to ImGui to solve keyRelease issues
+  * Updated ImGui to v1 90 1
+  * VS warning fixes
+
+-------------------------------------------------------------------
 Fri Jan  5 21:33:30 UTC 2024 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update to version 0.2.0

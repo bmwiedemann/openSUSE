@@ -2,7 +2,7 @@
 <service name="tar_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/vsg-dev/vsgImGui.git</param>
-    <param name="revision">v0.2.0</param>
+    <param name="revision">v0.3.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>  
     <param name="package-meta">no</param>

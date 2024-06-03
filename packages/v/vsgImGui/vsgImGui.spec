@@ -19,7 +19,7 @@
 %define _vsg_so_nr 0
 
 Name:           vsgImGui
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        3D graphics toolkit
 License:        MIT
