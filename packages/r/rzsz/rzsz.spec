@@ -37,6 +37,7 @@ Patch9:         lrzsz-0.12.20-fix-lsz-getopt.patch
 Patch10:        lrzsz-0.12.21rc-drop-po-intl.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  gettext-runtime
 Provides:       lrzsz
 
 %description

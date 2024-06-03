@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 27 11:22:53 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
+
+- add gettext-runtime as buid requirement:
+  needed for the call to msgfmt during the build
+
+-------------------------------------------------------------------
 Tue Feb 20 21:11:39 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
 
 - convert lrzsz-po.patch to -p1, same as the other patches
