@@ -1,7 +1,7 @@
 #
 # spec file for package soundconverter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global __requires_exclude typelib\\(GConf\\)|typelib\\(Unity\\)
 %define pythons python3
 Name:           soundconverter
-Version:        4.0.4
+Version:        4.0.5
 Release:        0
 Summary:        Sound Converter Application for the GNOME Desktop
 License:        GPL-3.0-or-later
