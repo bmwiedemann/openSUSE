@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun 01 09:13:28 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.5.0:
+  https://github.com/grafana/tempo/releases/tag/v2.5.0
+  CLI-related changes:
+  * [ENHANCEMENT] Tempo CLI - add percentage support for query
+    blocks #3697 #3697 (@edgarkz)
+
+-------------------------------------------------------------------
 Sat May 18 09:44:43 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.4.2:

@@ -7,4 +7,12 @@
     <comment>new package tempo-cli: CLI for the Grafana Tempo tracing backend</comment>
     <requestid>1175008</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d2ee238ceeb34cb72adf9c56091b26e0</srcmd5>
+    <version>2.5.0</version>
+    <time>1717429331</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1178035</requestid>
+  </revision>
 </revisionlist>
