@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Jun 01 21:12:20 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.1.40:
+  * New model: Codestral: Codestral is Mistral AI’s first-ever code
+  	model designed for code generation tasks.
+  * New model: IBM Granite Code: now in 3B and 8B parameter sizes.
+  * New model: Deepseek V2: A Strong, Economical, and Efficient 
+  	Mixture-of-Experts Language Model
+  * Fixed out of memory and incorrect token issues when running 
+  	Codestral on 16GB Macs
+  * Fixed issue where full-width characters (e.g. Japanese, 
+  	Chinese, Russian) were deleted at end of the line when using 
+  	ollama run
+
+-------------------------------------------------------------------
+Wed May 29 11:38:26 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.1.39:
+  * New model: Cohere Aya 23: A new state-of-the-art, multilingual
+  	LLM covering 23 different languages.
+  * New model: Mistral 7B 0.3: A new version of Mistral 7B with 
+  	initial support for function calling.
+  * New model: Phi-3 Medium: a 14B parameters, lightweight, 
+  	state-of-the-art open model by Microsoft.
+  * New model: Phi-3 Mini 128K and Phi-3 Medium 128K: versions of
+  	the Phi-3 models that support a context window size of 128K
+  * New model: Granite code: A family of open foundation models by
+  	IBM for Code Intelligence
+  * It is now possible to import and quantize Llama 3 and its
+  	finetunes from Safetensors format to Ollama.
+  * Full changelog at 
+  	https://github.com/ollama/ollama/releases/tag/v0.1.39
+
+-------------------------------------------------------------------
 Wed May 22 18:05:30 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Added 15.6 build
