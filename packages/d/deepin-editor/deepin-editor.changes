@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 31 14:21:09 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add fix-build-on-icu-75.patch, icu 75 needs c++17 
+
+-------------------------------------------------------------------
 Thu Nov 24 03:33:21 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.10.40

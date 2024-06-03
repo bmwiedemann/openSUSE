@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-editor
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://github.com/linuxdeepin/deepin-editor
 Source0:        https://github.com/linuxdeepin/deepin-editor/archive/%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTRAEM fix-build-on-icu-75.patch hillwood@opensuse.org - ICU 75 needs c++17
+Patch1:         fix-build-on-icu-75.patch
 %ifarch ppc ppc64 ppc64le s390 s390x
 BuildRequires:  deepin-desktop-base
 %else
