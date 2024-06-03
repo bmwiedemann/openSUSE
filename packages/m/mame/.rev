@@ -152,4 +152,13 @@
   * /usr/share/doc/packages/mame/whatsnew-0.265.txt</comment>
     <requestid>1170142</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f241d057052b3ed755f0154fc1f126a1</srcmd5>
+    <version>0.266</version>
+    <time>1717429261</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 0.266
+  * /usr/share/doc/packages/mame/whatsnew-0.266.txt</comment>
+    <requestid>1177872</requestid>
+  </revision>
 </revisionlist>

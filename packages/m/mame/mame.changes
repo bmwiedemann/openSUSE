@@ -1,24 +1,30 @@
 -------------------------------------------------------------------
-Thu Apr 25 11:36:06 UTC 2024 - Илья Индиго <13ilya@gmail.com>
+Fri May 31 07:14:35 UTC 2024 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 0.266
+  * /usr/share/doc/packages/mame/whatsnew-0.266.txt
+
+-------------------------------------------------------------------
+Thu Apr 25 11:36:06 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 0.265
   * Changed SDL2 requirements >= 2.0.14
   * /usr/share/doc/packages/mame/whatsnew-0.265.txt
 
 -------------------------------------------------------------------
-Tue Mar 26 14:55:23 UTC 2024 - Илья Индиго <13ilya@gmail.com>
+Tue Mar 26 14:55:23 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 0.264
   * /usr/share/doc/packages/mame/whatsnew-0.264.txt
 
 -------------------------------------------------------------------
-Wed Feb 28 07:17:55 UTC 2024 - Илья Индиго <13ilya@gmail.com>
+Wed Feb 28 07:17:55 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 0.263
   * /usr/share/doc/packages/mame/whatsnew-0.263.txt
 
 -------------------------------------------------------------------
-Sun Feb  4 15:13:28 UTC 2024 - Илья Индиго <ilya@ilya.cf>
+Sun Feb  4 15:13:28 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 0.262
   * /usr/share/doc/packages/mame/whatsnew-0.262.txt
@@ -26,14 +32,14 @@ Sun Feb  4 15:13:28 UTC 2024 - Илья Индиго <ilya@ilya.cf>
 - Used ld.gold for link (fixed aarch64 build).
 
 -------------------------------------------------------------------
-Fri Jan 19 00:55:33 UTC 2024 - Илья Индиго <ilya@ilya.cf>
+Fri Jan 19 00:55:33 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 0.261
   * /usr/share/doc/packages/mame/whatsnew-0.261.txt
   * Changed file reproducible.patch
 
 -------------------------------------------------------------------
-Tue Nov  7 11:24:43 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+Tue Nov  7 11:24:43 UTC 2023 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 0.260
   * /usr/share/doc/packages/mame/whatsnew-0.260.txt
@@ -52,31 +58,31 @@ Sun Oct 22 15:25:45 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 - Added file reproducible.patch for deterministic output order.
 
 -------------------------------------------------------------------
-Wed Aug 30 09:19:13 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+Wed Aug 30 09:19:13 UTC 2023 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 0.258
   * /usr/share/doc/packages/mame/whatsnew-0.258.txt
 
 -------------------------------------------------------------------
-Sun Aug 20 15:57:01 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+Sun Aug 20 15:57:01 UTC 2023 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 0.257
   * https://mametesters.org/changelog_page.php
 
 -------------------------------------------------------------------
-Thu May 18 21:42:44 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+Thu May 18 21:42:44 UTC 2023 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 0.254
   * Dropped file mame-ppc64le.patch.
   * https://mametesters.org/changelog_page.php
 
 -------------------------------------------------------------------
-Wed Apr 12 01:17:44 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+Wed Apr 12 01:17:44 UTC 2023 - Илья Индиго <ilya@ilya.top>
 
 - Disabled gold and enabled 32bit and aarch64 archs with null optflags.
 
 -------------------------------------------------------------------
-Mon Apr 10 02:11:38 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+Mon Apr 10 02:11:38 UTC 2023 - Илья Индиго <ilya@ilya.top>
 
 - Dropped files mame-rpmlintrc mame.png mess.png mame-mess.appdata.xml mame.appdata.xml.
 - Added files mame.svg and mame-ppc64le.patch (fix build ppc, ppc64 and ppc64le archs).
@@ -90,7 +96,7 @@ Mon Apr 10 02:11:38 UTC 2023 - Илья Индиго <ilya@ilya.cf>
   * https://mametesters.org/changelog_page.php
 
 -------------------------------------------------------------------
-Thu Mar 30 18:15:32 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+Thu Mar 30 18:15:32 UTC 2023 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 0.252
   * Refreshed spec-file via spec-cleaner and manual optimizations.
