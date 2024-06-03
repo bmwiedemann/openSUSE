@@ -18,17 +18,20 @@
 
 
 Name:           python-transitions
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        A lightweight, object-oriented Python state machine implementation
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pytransitions/transitions
 Source:         https://files.pythonhosted.org/packages/source/t/transitions/transitions-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/pytransitions/transitions/pull/653 remove Python 2 crumbs
+Patch:          remove-py2-crumbs.patch
+# PATCH-FIX-UPSTREAM https://github.com/a-detiste/transitions/pull/1 remove more python crumbs
+Patch:          iteritems.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 Suggests:       python-pygraphviz
 Suggests:       python-pytest
 BuildArch:      noarch
@@ -38,7 +41,6 @@ BuildRequires:  %{python_module graphviz}
 BuildRequires:  %{python_module pycodestyle}
 BuildRequires:  %{python_module pygraphviz}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 # png support for graphviz
 BuildRequires:  graphviz-gnome
 BuildRequires:  noto-sans-fonts

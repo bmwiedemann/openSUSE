@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 30 08:25:50 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- update to 0.9.1
+  * several bugfixes
+  * typing improvements
+  * introduces `on_final` callbacks on machines (as well as 
+    `NestedState`) and `final` flags for states
+  * see the full list in Changelog.md
+- Add remove-py2-crumbs.patch to get rid of most py2 remnants
+- Add iteritems.patch to clean the rest of six
+
+-------------------------------------------------------------------
 Fri Jan 12 08:26:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.0:

@@ -1,0 +1,263 @@
+From 3758cd4a28dfb162e19e29601d8cfe3b8ae1d410 Mon Sep 17 00:00:00 2001
+From: Alexandre Detiste <alexandre.detiste@gmail.com>
+Date: Sun, 14 Apr 2024 14:28:03 +0200
+Subject: [PATCH] remove Python 2 crumbs
+
+---
+ tests/test_nesting.py                   |  7 +------
+ transitions/core.py                     | 23 +++-----------------
+ transitions/extensions/diagrams_base.py |  4 +---
+ transitions/extensions/factory.py       |  2 +-
+ transitions/extensions/markup.py        | 19 ++++-------------
+ transitions/extensions/nesting.py       | 28 +++++++------------------
+ 6 files changed, 18 insertions(+), 65 deletions(-)
+
+diff --git a/tests/test_nesting.py b/tests/test_nesting.py
+index a982aba0..13323869 100644
+--- a/tests/test_nesting.py
++++ b/tests/test_nesting.py
+@@ -1,10 +1,5 @@
+ # -*- coding: utf-8 -*-
+ 
+-try:
+-    from builtins import object
+-except ImportError:
+-    pass
+-
+ import sys
+ import tempfile
+ from os.path import getsize
+@@ -37,7 +32,7 @@
+ default_separator = NestedState.separator
+ 
+ 
+-class Dummy(object):
++class Dummy:
+     pass
+ 
+ 
+diff --git a/transitions/core.py b/transitions/core.py
+index 8b42d553..e9480c2a 100644
+--- a/transitions/core.py
++++ b/transitions/core.py
+@@ -6,23 +6,7 @@
+     and transition concepts.
+ """
+ 
+-
+-try:
+-    from builtins import object
+-except ImportError:  # pragma: no cover
+-    # python2
+-    pass
+-
+-try:
+-    # Enums are supported for Python 3.4+ and Python 2.7 with enum34 package installed
+-    from enum import Enum, EnumMeta
+-except ImportError:  # pragma: no cover
+-    # If enum is not available, create dummy classes for type checks
+-    class Enum:  # type:ignore
+-        """This is just an Enum stub for Python 2 and Python 3.3 and before without Enum support."""
+-
+-    class EnumMeta:  # type:ignore
+-        """This is just an EnumMeta stub for Python 2 and Python 3.3 and before without Enum support."""
++from enum import Enum, EnumMeta
+ 
+ import inspect
+ import itertools
+@@ -31,7 +15,6 @@ class EnumMeta:  # type:ignore
+ 
+ from collections import OrderedDict, defaultdict, deque
+ from functools import partial
+-from six import string_types
+ 
+ _LOGGER = logging.getLogger(__name__)
+ _LOGGER.addHandler(logging.NullHandler())
+@@ -820,7 +803,7 @@ def add_states(self, states, on_enter=None, on_exit=None,
+         states = listify(states)
+ 
+         for state in states:
+-            if isinstance(state, (string_types, Enum)):
++            if isinstance(state, (str, Enum)):
+                 state = self._create_state(
+                     state, on_enter=on_enter, on_exit=on_exit,
+                     ignore_invalid_triggers=ignore, **kwargs)
+@@ -1178,7 +1161,7 @@ def resolve_callable(func, event_data):
+         Returns:
+             callable function resolved from string or func
+         """
+-        if isinstance(func, string_types):
++        if isinstance(func, str):
+             try:
+                 func = getattr(event_data.model, func)
+                 if not callable(func):  # if a property or some other not callable attribute was passed
+diff --git a/transitions/extensions/diagrams_base.py b/transitions/extensions/diagrams_base.py
+index b70ae553..c831e5cb 100644
+--- a/transitions/extensions/diagrams_base.py
++++ b/transitions/extensions/diagrams_base.py
+@@ -8,14 +8,12 @@
+ import copy
+ import abc
+ import logging
+-import six
+ 
+ _LOGGER = logging.getLogger(__name__)
+ _LOGGER.addHandler(logging.NullHandler())
+ 
+ 
+-@six.add_metaclass(abc.ABCMeta)
+-class BaseGraph(object):
++class BaseGraph(metaclass=abc.ABCMeta):
+     """Provides the common foundation for graphs generated either with pygraphviz or graphviz. This abstract class
+     should not be instantiated directly. Use .(py)graphviz.(Nested)Graph instead.
+     Attributes:
+diff --git a/transitions/extensions/factory.py b/transitions/extensions/factory.py
+index e56541c6..30d6a961 100644
+--- a/transitions/extensions/factory.py
++++ b/transitions/extensions/factory.py
+@@ -34,7 +34,7 @@ class NestedAsyncTransition(NestedTransition):  # type: ignore
+         """A mock of NestedAsyncTransition for Python 3.6 and earlier."""
+ 
+ 
+-class MachineFactory(object):
++class MachineFactory:
+     """Convenience factory for machine class retrieval."""
+ 
+     # get one of the predefined classes which fulfill the criteria
+diff --git a/transitions/extensions/markup.py b/transitions/extensions/markup.py
+index 7d5e1bdf..b42f9607 100644
+--- a/transitions/extensions/markup.py
++++ b/transitions/extensions/markup.py
+@@ -7,24 +7,13 @@
+     also be used to store and transfer machines.
+ """
+ 
++from enum import Enum, EnumMeta
+ from functools import partial
+ import importlib
+ import itertools
+ import numbers
+ 
+-from six import string_types, iteritems
+-
+-try:
+-    # Enums are supported for Python 3.4+ and Python 2.7 with enum34 package installed
+-    from enum import Enum, EnumMeta
+-except ImportError:  # pragma: no cover
+-    # If enum is not available, create dummy classes for type checks
+-    # typing must be prevent redefinition issues with mypy
+-    class Enum:  # type:ignore
+-        """This is just an Enum stub for Python 2 and Python 3.3 and before without Enum support."""
+-
+-    class EnumMeta:  # type:ignore
+-        """This is just an EnumMeta stub for Python 2 and Python 3.3 and before without Enum support."""
++from six import iteritems
+ 
+ from ..core import Machine
+ from .nesting import HierarchicalMachine
+@@ -229,7 +218,7 @@ class HierarchicalMarkupMachine(MarkupMachine, HierarchicalMachine):
+ 
+ def rep(func, format_references=None):
+     """Return a string representation for `func`."""
+-    if isinstance(func, string_types):
++    if isinstance(func, str):
+         return func
+     if isinstance(func, numbers.Number):
+         return str(func)
+@@ -242,7 +231,7 @@ def _convert(obj, attributes, format_references):
+         val = getattr(obj, key, False)
+         if not val:
+             continue
+-        if isinstance(val, string_types):
++        if isinstance(val, str):
+             definition[key] = val
+         else:
+             try:
+diff --git a/transitions/extensions/nesting.py b/transitions/extensions/nesting.py
+index d8c54ef7..96ccbfb1 100644
+--- a/transitions/extensions/nesting.py
++++ b/transitions/extensions/nesting.py
+@@ -9,23 +9,11 @@
+ 
+ from collections import OrderedDict
+ import copy
++from enum import Enum, EnumMeta
+ from functools import partial, reduce
+ import inspect
+ import logging
+ 
+-try:
+-    # Enums are supported for Python 3.4+ and Python 2.7 with enum34 package installed
+-    from enum import Enum, EnumMeta
+-except ImportError:  # pragma: no cover
+-    # If enum is not available, create dummy classes for type checks
+-    class Enum:  # type: ignore
+-        """This is just an Enum stub for Python 2 and Python 3.3 and before without Enum support."""
+-
+-    class EnumMeta:  # type: ignore
+-        """This is just an EnumMeta stub for Python 2 and Python 3.3 and before without Enum support."""
+-
+-from six import string_types
+-
+ from ..core import State, Machine, Transition, Event, listify, MachineError, EventData
+ 
+ _LOGGER = logging.getLogger(__name__)
+@@ -374,7 +362,7 @@ def __init__(self, model=Machine.self_literal, states=None, initial='initial', t
+         )
+ 
+     def __call__(self, to_scope=None):
+-        if isinstance(to_scope, string_types):
++        if isinstance(to_scope, str):
+             state_name = to_scope.split(self.state_cls.separator)[0]
+             state = self.states[state_name]
+             to_scope = (state, state.states, state.events, self.prefix_path + [state_name])
+@@ -408,7 +396,7 @@ def add_model(self, model, initial=None):
+         if hasattr(initial_name, 'name'):
+             initial_name = initial_name.name
+         # initial states set by add_model or machine might contain initial states themselves.
+-        if isinstance(initial_name, string_types):
++        if isinstance(initial_name, str):
+             initial_states = self._resolve_initial(models, initial_name.split(self.state_cls.separator))
+         # when initial is set to a (parallel) state, we accept it as it is
+         else:
+@@ -473,7 +461,7 @@ def add_states(self, states, on_enter=None, on_exit=None, ignore_invalid_trigger
+                     state = {'name': state, 'children': state.value}
+                 elif isinstance(state.value, dict):
+                     state = dict(name=state, **state.value)
+-            if isinstance(state, string_types):
++            if isinstance(state, str):
+                 self._add_string_state(state, on_enter, on_exit, ignore, remap, **kwargs)
+             elif isinstance(state, Enum):
+                 self._add_enum_state(state, on_enter, on_exit, ignore, remap, **kwargs)
+@@ -600,7 +588,7 @@ def get_state(self, state, hint=None):
+         """
+         if isinstance(state, Enum):
+             state = self._get_enum_path(state)
+-        elif isinstance(state, string_types):
++        elif isinstance(state, str):
+             state = state.split(self.state_cls.separator)
+         if not hint:
+             state = copy.copy(state)
+@@ -652,11 +640,11 @@ def get_transitions(self, trigger="", source="*", dest="*", delegate=False):
+         """
+         with self():
+             source_path = [] if source == "*" \
+-                else source.split(self.state_cls.separator) if isinstance(source, string_types) \
++                else source.split(self.state_cls.separator) if isinstance(source, str) \
+                 else self._get_enum_path(source) if isinstance(source, Enum) \
+                 else self._get_state_path(source)
+             dest_path = [] if dest == "*" \
+-                else dest.split(self.state_cls.separator) if isinstance(dest, string_types) \
++                else dest.split(self.state_cls.separator) if isinstance(dest, str) \
+                 else self._get_enum_path(dest) if isinstance(dest, Enum) \
+                 else self._get_state_path(dest)
+             matches = self.get_nested_transitions(trigger, source_path, dest_path)
+@@ -1064,7 +1052,7 @@ def _init_state(self, state):
+                 self._init_state(substate)
+ 
+     def _recursive_initial(self, value):
+-        if isinstance(value, string_types):
++        if isinstance(value, str):
+             path = value.split(self.state_cls.separator, 1)
+             if len(path) > 1:
+                 state_name, suffix = path
