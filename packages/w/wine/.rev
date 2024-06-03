@@ -5170,4 +5170,24 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 9.9 release</comment>
     <requestid>1175482</requestid>
   </revision>
+  <revision rev="440" vrev="1">
+    <srcmd5>0fa8ad9d897efef54338e0e63322fdf1</srcmd5>
+    <version>9.10</version>
+    <time>1717429496</time>
+    <user>anag+factory</user>
+    <comment>- various adjustments to make wow64 / wow64-staging flavors correctly
+  coexist.
+
+- Introduce wow64 and wow64-staging flavors
+
+- Updated to 9.10 release
+  - Bundled vkd3d upgraded to version 1.12.
+  - DPI Awareness support improvements.
+  - C++ RTTI support on ARM platforms.
+  - More obsolete features removed in WineD3D.
+  - Various bug fixes.
+- update staging to 9.10 release
+- 0001-mf-tests-help-older-compilers-by-using-defines.patch: make build on 15.x</comment>
+    <requestid>1178345</requestid>
+  </revision>
 </revisionlist>

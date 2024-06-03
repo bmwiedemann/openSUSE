@@ -1,5 +1,7 @@
 <multibuild>
   <!-- <package>nine</package> -->
   <package>staging</package> 
+  <package>wow64</package>
+  <package>staging-wow64</package>
   <!-- <package>staging-nine</package> -->
 </multibuild>

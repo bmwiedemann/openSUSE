@@ -20,13 +20,29 @@
 %global flavor @BUILD_FLAVOR@%nil
 %define staging 0
 
+%ifarch x86_64
+%define wow64_build 0
+%endif
+%ifarch %ix86
+%define wow64_build 0
+%endif
+
 %if "%flavor" == "staging"
 %define staging 1
 %endif
 
+%if "%flavor" == "wow64"
+%define wow64_build 1
+%endif
+
+%if "%flavor" == "staging-wow64"
+%define staging 1
+%define wow64_build 1
+%endif
+
 # needs to be on top due to usage of %version macro below
-%define realver 9.9
-Version:        9.9
+%define realver 9.10
+Version:        9.10
 Release:        0
 
 %if "%{flavor}" != ""
@@ -36,6 +52,11 @@ Provides:       wine = %{version}-%{release}
 Name:           wine
 %endif
 Conflicts:      otherproviders(wine)
+# the wow64 is now a 64bit flavor of the 32bit build.
+%if "%{flavor}" == "wow64" || "%{flavor}" == "staging-wow64"
+Conflicts:      otherproviders(wine-32bit)
+Provides:       wine-32bit = %{version}-%{release}
+%endif
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
 BuildRequires:  bison
@@ -102,6 +123,9 @@ BuildRequires:  valgrind-devel
 BuildRequires:  mingw64-cross-gcc
 BuildRequires:  mingw64-zlib-devel
 Requires:       mingw64-libz
+%if %{wow64_build}
+BuildRequires:  mingw32-cross-gcc
+%endif
 %endif
 %ifarch %ix86
 BuildRequires:  mingw32-cross-gcc
@@ -152,6 +176,7 @@ Source7:        baselibs.conf
 Source8:        wine-rpmlintrc
 # SUSE specific patches
 # - currently none, but add them here
+Patch0:         0001-mf-tests-help-older-compilers-by-using-defines.patch
 Recommends:     wine-gecko >= 2.47.4
 Conflicts:      wine-gecko < 2.47.4
 Recommends:     wine-mono >= 9.0.0
@@ -163,14 +188,16 @@ Recommends:     dosbox
 Recommends:     pipewire-alsa
 Recommends:     winetricks
 Requires:       samba-winbind
+%if "%{flavor}" != "wow64" && "%{flavor}" != "staging-wow64"
 %ifarch x86_64
 Requires:       %{name}-32bit = %{version}
+%endif
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 9.9
+%define staging_version 9.10
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel
@@ -272,9 +299,12 @@ CFLAGS="$RPM_OPT_FLAGS" \
 	--with-float-abi=hard \
 %endif
 %ifarch x86_64 aarch64
-        --enable-win64 \
+	--enable-win64 \
+%if %{wow64_build}
+	--enable-archs=x86_64,i386 \
 %endif
-	--verbose
+%endif
+	--verbose || cat config.log
 
 grep "have_x=yes" config.log || exit 1
 # generate baselibs.conf
@@ -322,6 +352,7 @@ make %{?_smp_mflags} all
 make install DESTDIR=%{buildroot}
 
 %ifarch x86_64
+%if !%{wow64_build}
 mkdir -p \
    %{buildroot}/usr/lib/wine/i386-windows \
    %{buildroot}/usr/lib/wine/i386-unix
@@ -329,6 +360,7 @@ ln -s \
     /usr/lib/wine/i386-windows \
     /usr/lib/wine/i386-unix    \
   %buildroot/usr/%_lib/wine/
+%endif
 %endif
 
 # install desktop file
@@ -341,6 +373,9 @@ install -m 0755 %SOURCE2 %{buildroot}%{_bindir}/
 mv %{buildroot}/%{_mandir}/de.UTF-8 %{buildroot}/%{_mandir}/de
 mv %{buildroot}/%{_mandir}/fr.UTF-8 %{buildroot}/%{_mandir}/fr
 %ifnarch x86_64
+mv %{buildroot}/%{_mandir}/pl.UTF-8 %{buildroot}/%{_mandir}/pl
+%endif
+%if %{wow64_build}
 mv %{buildroot}/%{_mandir}/pl.UTF-8 %{buildroot}/%{_mandir}/pl
 %endif
 
@@ -430,9 +465,17 @@ chmod 755 %winedir/my-find-requires.sh
 %ifnarch x86_64
 %doc %{_mandir}/man1/wine.1*
 %endif
+%if %{wow64_build}
+%doc %{_mandir}/man1/wine.1*
+%endif
 %doc %{_mandir}/man1/winedbg.1*
 %doc %{_mandir}/man1/wineserver.1*
 %ifnarch x86_64
+%doc %dir %doc %{_mandir}/pl
+%doc %dir %doc %{_mandir}/pl/man1
+%doc %{_mandir}/*/man1/wine.1*
+%endif
+%if %{wow64_build}
 %doc %dir %doc %{_mandir}/pl
 %doc %dir %doc %{_mandir}/pl/man1
 %doc %{_mandir}/*/man1/wine.1*
@@ -468,18 +511,30 @@ chmod 755 %winedir/my-find-requires.sh
 %{_bindir}/wine
 %endif
 %ifarch x86_64
+%if %{wow64_build}
+%{_bindir}/wine
+%{_bindir}/wine-preloader
+%else
 %{_bindir}/wine64
 %{_bindir}/wine64-preloader
 %endif
+%endif
+
 %ifarch x86_64
+%if !%{wow64_build}
 %dir /usr/lib/wine/
 %dir /usr/lib/wine/i386-windows
 %dir /usr/lib/wine/i386-unix
+%{_libdir}/wine/i386-unix
+%{_libdir}/wine/i386-windows
+%else
+%dir %{_libdir}/wine/i386-windows
+%exclude %{_libdir}/wine/i386-windows/*.a
+%endif
+
 %dir %{_libdir}/wine/x86_64-windows
 %dir %{_libdir}/wine/x86_64-unix
 %dir %{_libdir}/wine
-/usr/%{_lib}/wine/i386-windows
-/usr/%{_lib}/wine/i386-unix
 %else
 %dir %{_libdir}/wine
 %dir %{_libdir}/wine/*-windows
