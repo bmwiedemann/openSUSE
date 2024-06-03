@@ -18,7 +18,7 @@
 
 %global library_version 1_0_0
 Name:           aws-c-mqtt
-Version:        0.10.3
+Version:        0.10.4
 Release:        0
 Summary:        AWS C99 implementation of the MQTT 3.1.1 specification
 License:        Apache-2.0

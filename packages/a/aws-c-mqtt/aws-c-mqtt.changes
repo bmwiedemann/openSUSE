@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 31 10:44:17 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.10.4
+  * Refactor MQTT5 ping timeout by @bretambrose in (#361)
+  * Disabled keep alive by @bretambrose in (#363)
+
+-------------------------------------------------------------------
 Tue May 21 11:21:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro: allows us to eliminate usage of deprecated
