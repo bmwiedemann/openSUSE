@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %define modname xdg-base-dirs
 Name:           python-xdg-base-dirs
 Version:        6.0.1

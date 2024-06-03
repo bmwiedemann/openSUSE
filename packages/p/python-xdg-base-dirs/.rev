@@ -7,4 +7,12 @@
     <comment>Renaming python-xdg package to new upstream name.</comment>
     <requestid>1177640</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8806ce5463764be225d5431e7de477ab</srcmd5>
+    <version>6.0.1</version>
+    <time>1717429306</time>
+    <user>anag+factory</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1177991</requestid>
+  </revision>
 </revisionlist>

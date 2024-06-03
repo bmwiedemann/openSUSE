@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 31 21:11:37 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Fri May 24 05:27:16 UTC 2024 - Thomas Bechtold <thomasbechtold@jpberlin.de>
 
 - Update to version 6.0.1:
