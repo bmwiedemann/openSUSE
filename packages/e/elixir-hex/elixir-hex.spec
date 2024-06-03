@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package elixir-hex
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define app_name hex
 %define app_ver %(echo "%{version}" | cut -d "+" -f1)
 Name:           elixir-%{app_name}
-Version:        2.0.6
+Version:        2.1.1
 Release:        0
 Summary:        Package manager for the Erlang VM
 License:        Apache-2.0

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri May 31 09:09:48 UTC 2024 - valentin.lefebvre@suse.com
+
+- Update to version 2.1.1:
+  * Release v2.1.1
+  * Only filter non Hex overrides from requests (#1030)
+  * Bump v2.1.1-dev
+  * Release v2.1.0
+  * Warn on unknown dependency options (#1027)
+  * Document generating package keys
+  * Use docs output if set in project's config (#1026)
+  * Handle empty package name in mix hex.info (#1022)
+  * Improve error message when trying to publish existing package with permissions (#1021)
+  * Fix failing test on newer Elixir
+  * Do not silently ignore incorrect `mix hex.outdated --sort BY`
+  * Provide --sort flag sorting outdated results by status (#1017)
+  * Fix building requests from umbrella apps (#1013)
+  * Revert Mix changes on app stop (#1015)
+  * Update release matrix
+  * Update CI matrix and bump Elixir requirement to ~> 1.6
+  * Update certs
+  * Set exit status on organization.auth failure (#1009)
+  * Improve logging of auth issues (#1007)
+  * Add disclaimer about loadpaths (#1000)
+  * Update Hex.Repo to use hex_core to fetch data (#993)
+  * Add rebar3 installs for Elixir 1.14.5 & 1.15.0-rc.0 (#995)
+  * Do not close registry server in post_converge (#994)
+  * Add (CI) to user-agent
+  * Fix HEX_TRUSTED_MIRROR_URL name in docs
+  * Revert setup-beam tag
+  * Convert HTTP module into hex_core adapter (#990)
+  * Test erlef/setup-beam with builds.hex.pm (#992)
+  * Solve with path and git deps (#989)
+  * Bump to v2.0.7-dev
+
+-------------------------------------------------------------------
 Fri Nov 24 09:34:29 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Cleanup spec file
