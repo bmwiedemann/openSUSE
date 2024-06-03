@@ -17,7 +17,7 @@
 
 
 Name:           gap-idrel
-Version:        2.46
+Version:        2.47
 Release:        0
 Summary:        GAP: Identities among relations
 License:        GPL-2.0-or-later
