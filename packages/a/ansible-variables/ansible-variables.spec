@@ -38,7 +38,7 @@
 %endif
 
 Name:           ansible-variables
-Version:        0.6.1
+Version:        0.7.0
 Release:        0
 Summary:        Tool to show origin of Ansible host context variables
 License:        GPL-3.0-or-later

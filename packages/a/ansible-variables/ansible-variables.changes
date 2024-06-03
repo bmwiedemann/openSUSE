@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 31 13:11:07 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.0:
+  Features
+  * support for ansible-core 2.17
+
+-------------------------------------------------------------------
 Fri Mar 15 22:02:24 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.6.1:
