@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sat Jun  1 09:58:28 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 15.4.0:
+  * Access requests notification routing rules
+    Hosted Slack plugin users can now configure notification
+    routing rules for role-based access requests.
+  * Database access for Spanner
+    Database access users can now connect to GCP Spanner.
+  * Unix Workload Attestation
+    Teleport Workload ID now supports basic workload attestation on
+    Unix systems, allowing cluster administrators to restrict the
+    issuance of SVIDs to specific workloads based on UID/PID/GID.
+  * Other improvements and fixes
+    - Fixed an issue where mix-and-match of join tokens could
+      interfere with some services appearing correctly in
+      heartbeats. #42189
+    - Added an alternate EC2 auto discover flow using AWS Systems
+      Manager as a more scalable method than EICE in the "Enroll
+      New Resource" view in the web UI. #42205
+    - Fixed kubectl exec functionality when Teleport is running
+      behind L7 load balancer. #42192
+    - Fixed the plugins AMR cache to be updated when Access
+      requests are removed from the subject of an existing rule.
+      #42186
+    - Improved temporary disk space usage for session recording
+      processing. #42174
+    - Fixed a regression where Kubernetes Exec audit events were
+      not properly populated and lacked error details. #42145
+    - Fixed Azure join method when using Resource Groups in the
+      allow section. #42141
+    - Added new teleport debug set-log-level / profile commands
+      changing instance log level without a restart and collecting
+      pprof profiles. #42122
+    - Added ability to manage access monitoring rules via tctl.
+      #42092
+    - Added access monitoring rule routing for slack access plugin.
+      #42087
+    - Extended Discovery Service to self-bootstrap necessary
+      permissions for Kubernetes Service to interact with the
+      Kubernetes API on behalf of users. #42075
+    - Fixed resource leak in session recording cleanup. #42066
+    - Reduced memory and CPU usage after control plane restarts in
+      clusters with a high number of roles. #42062
+    - Added an option to send a Ctrl+Alt+Del sequence to remote
+      desktops. #41720
+    - Added support for GCP Spanner to Teleport Database Service.
+      #41349
+
+-------------------------------------------------------------------
 Thu May 23 19:36:32 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 15.3.6 (no releases between .1 and .6):
