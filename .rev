@@ -91,4 +91,12 @@
     <comment></comment>
     <requestid>1037839</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>274be785026fa9bf31efb8d2c3149bcb</srcmd5>
+    <version>5.10.40</version>
+    <time>1717429298</time>
+    <user>anag+factory</user>
+    <comment>- Add fix-build-on-icu-75.patch, icu 75 needs c++17 (forwarded request 1177957 from hillwood)</comment>
+    <requestid>1177958</requestid>
+  </revision>
 </revisionlist>
