@@ -1,0 +1,24 @@
+*** Makefile	2024-02-26 23:32:33.662944059 -0500
+--- Makefile.new	2024-02-26 23:33:03.506482850 -0500
+*************** install:
+*** 19,26 ****
+  	mkdir -p $(DESTDIR)$(PREFIX)/share/applications
+  	mkdir -p $(DESTDIR)$(PREFIX)/share/pixmaps
+  
+- 	mkdir -p $(DESTDIR)$(PREFIX)/share/doc/nwg-look
+- 	mkdir -p $(DESTDIR)$(PREFIX)/share/licenses/nwg-look
+  
+  	cp stuff/main.glade $(DESTDIR)$(PREFIX)/share/nwg-look/
+  	cp langs/* $(DESTDIR)$(PREFIX)/share/nwg-look/langs/
+--- 19,24 ----
+*************** install:
+*** 28,35 ****
+  	cp stuff/nwg-look.svg $(DESTDIR)$(PREFIX)/share/pixmaps/
+  	cp bin/nwg-look $(DESTDIR)$(PREFIX)/bin
+  
+- 	cp README.md $(DESTDIR)$(PREFIX)/share/doc/nwg-look
+- 	cp LICENSE $(DESTDIR)$(PREFIX)/share/licenses/nwg-look
+  
+  uninstall:
+  	rm -r $(DESTDIR)$(PREFIX)/share/nwg-look
+--- 26,31 ----

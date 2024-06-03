@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Fri May 31 11:08:55 UTC 2024 - nyslay@gmail.com
+
+- Update to version 0.2.7:
+  * update README.md
+  * update dependencies; bump to 0.2.7
+  * Add $PREFIX support to Makefile.
+  * Look for glade file in all data directories.
+  * Look for en_US.json in all data directories.
+  * update README.md Makefile
+  * update README.md Makefile
+  * bump to 0.2.6
+  * update dependencies
+
+-------------------------------------------------------------------
+Fri Feb 16 21:12:33 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.2.7:
+  * update README.md
+  * update dependencies
+  * Look for glade file in all data directories.
+  * Look for en_US.json in all data directories.
+  * add `-x` for exportConfigs and quit
+
+-------------------------------------------------------------------
+Sat Nov 18 06:35:07 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.2.4:
+  * update LICENSE copyright
+  * replace FATA w/ WARN if target path nonexistent
+  * replace deprecated ioutil with os
+  * update dependencies
+  * i18n: create zh_CN translation
+  * Fixed text scale factor loading from file
+
+-------------------------------------------------------------------
+Thu May 18 20:16:20 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.2.2:
+  * Use map value, not key
+  * Add Russian localization
+  * Update README.md
+
+-------------------------------------------------------------------
+Tue Mar 07 12:15:31 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.2.1:
+  * fix "toolbar-icon-size" label
+  * fix JSON indentation
+  * add missing translations
+  * add translation engine
+  * upgrade dependencies
+  * tools.go: respect color-scheme settings
+  * Create FUNDING.yml
+
+-------------------------------------------------------------------
+Thu Jan 19 12:02:56 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Initial package for 0.1.4
