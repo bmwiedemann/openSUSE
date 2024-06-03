@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun  3 12:11:28 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update to mutt 2.2.13 (Bug fix release)
+  * Fix smtp client to respect $use_envelope_from option. The code
+    was only looking to see if $envelope_from_address had a value,
+    not if $use_envelope_from was set.
+    Add extra safety checks to make sure the mailbox value isn't NULL.
+  * Fix smtp client $envelope_from_address possible dangling pointer.
+    If the account-hook invoked by mutt_conn_find() modifies
+    $envelope_from_address, envfrom could point no longer point to the
+    address.
+    Move the mutt_conn_find() before the code that determines the envelope
+    from address.
+
+-------------------------------------------------------------------
 Fri Feb 23 09:10:55 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -1457,4 +1457,22 @@ with a run of spec-cleaner (forwarded request 826781 from AndreasStieger)</comme
     <comment>- Use %patch -P N instead of deprecated %patchN. (forwarded request 1149751 from pgajdos)</comment>
     <requestid>1149763</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>bece985fca15c3f7bd37bd4179b2a3fd</srcmd5>
+    <version>2.2.13</version>
+    <time>1717429526</time>
+    <user>anag+factory</user>
+    <comment>- Update to mutt 2.2.13 (Bug fix release)
+  * Fix smtp client to respect $use_envelope_from option. The code
+    was only looking to see if $envelope_from_address had a value,
+    not if $use_envelope_from was set.
+    Add extra safety checks to make sure the mailbox value isn't NULL.
+  * Fix smtp client $envelope_from_address possible dangling pointer.
+    If the account-hook invoked by mutt_conn_find() modifies
+    $envelope_from_address, envfrom could point no longer point to the
+    address.
+    Move the mutt_conn_find() before the code that determines the envelope
+    from address.</comment>
+    <requestid>1178323</requestid>
+  </revision>
 </revisionlist>
