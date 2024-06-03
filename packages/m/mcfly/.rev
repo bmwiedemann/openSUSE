@@ -85,4 +85,13 @@
   * Fix init issue for fish</comment>
     <requestid>1175104</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f8d8e754562f6f29b6b1f63968434545</srcmd5>
+    <version>0.9.0+0</version>
+    <time>1717429461</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.9.0:
+  * Make bash no longer use TIOCSTI by default</comment>
+    <requestid>1178226</requestid>
+  </revision>
 </revisionlist>

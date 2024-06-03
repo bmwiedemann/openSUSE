@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  3 06:27:57 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.0:
+  * Make bash no longer use TIOCSTI by default
+
+-------------------------------------------------------------------
 Sun May 19 08:54:44 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.8.6:

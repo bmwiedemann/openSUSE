@@ -17,7 +17,7 @@
 
 
 Name:           mcfly
-Version:        0.8.6+0
+Version:        0.9.0+0
 Release:        0
 Summary:        Shell history helper
 License:        MIT
