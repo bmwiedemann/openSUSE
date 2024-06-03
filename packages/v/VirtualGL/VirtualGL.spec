@@ -1,7 +1,7 @@
 #
 # spec file for package VirtualGL
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -93,8 +93,7 @@ Interactive Hardware Accelerated Remote 3D-Visualization" (Engel, Sommer,
 Ertl 2000.)
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 # Use /var/lib
 sed -e "s#%{_sysconfdir}/opt#%{_localstatedir}/lib#g" \
