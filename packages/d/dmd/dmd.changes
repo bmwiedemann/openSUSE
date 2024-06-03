@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Jun  2 13:54:29 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.109.0
+  * Compiler changes
+    + [next edition] Aliasing a member of a type instance is now an error
+    + Add Bitfield Introspection Capability
+    + Added __ctfeWrite to write messages from CTFE
+    + Deprecation warnings are now also limited by -verrors
+    + dtoh generates signatures for extern(Windows) and extern(System) functions.
+    + foreach on a dynamic array can have an index type smaller than size_t
+    + foreach_reverse on a delegate is now an error
+    + Expansion of identifier tables to allow new characters to match C23 have been 
+      added along with CLI configurability
+    + ImportC has improved Unicode support
+    + Missing symbol errors are made less cryptic
+  * Runtime changes
+    + Add module core.sys.linux.sys.mount.
+    + Remove all collectNoStack functions and API from druntime.
+    + Mark Thread.sleep as @trusted
+  * Library changes
+    + Add std.process.Config.preExecDelegate
+
+-------------------------------------------------------------------
 Mon May  6 07:52:44 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.108.1

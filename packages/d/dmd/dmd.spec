@@ -16,7 +16,7 @@
 #
 
 
-%define sover	0_108
+%define sover	0_109
 %define bootstrap_with_gdmd 1
 %if %{bootstrap_with_gdmd}
 %if 0%{?suse_version} < 1550
@@ -29,7 +29,7 @@ BuildRequires:  dmd
 BuildRequires:  phobos-devel-static
 %endif
 Name:           dmd
-Version:        2.108.1
+Version:        2.109.0
 Release:        0
 Summary:        D Programming Language 2.0
 License:        BSL-1.0
@@ -37,7 +37,7 @@ Group:          Development/Languages/Other
 URL:            https://dlang.org/
 Source:         https://github.com/D-Programming-Language/dmd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source2:        https://github.com/D-Programming-Language/phobos/archive/v%{version}.tar.gz#/phobos-%{version}.tar.gz
-Source3:        https://raw.githubusercontent.com/dlang/tools/master/rdmd.d
+Source3:        rdmd.d
 Source9:        dmd.conf
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
