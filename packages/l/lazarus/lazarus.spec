@@ -19,7 +19,7 @@
 %define qt5_sover   1
 %define qt6_sover   6
 Name:           lazarus
-Version:        3.2
+Version:        3.4
 Release:        0
 # Please note that the LGPL is modified and this is not multi-licensed, but each component has a separate license chosen.
 Summary:        FreePascal RAD IDE and Component Library
@@ -34,8 +34,6 @@ Source90:       %{name}-rpmlintrc
 Patch0:         %{name}-Makefile_patch.diff
 # PATCH-FIX-OPENSUSE lazarus.desktop.patch -- Fix desktop file
 Patch1:         lazarus.desktop.patch
-# PATCH-FIX-OPENSUSE lazarus-libqt6_fix.patch -- Fix libqt6pas per upstream issue #40901
-Patch2:         lazarus-libqt6_fix.patch
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  fpc >= 3.0.0

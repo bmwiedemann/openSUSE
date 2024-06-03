@@ -230,4 +230,12 @@
     <comment>- Add lazarus-libqt6_fix.patch to fix libqt6pas per upstream issue #40901</comment>
     <requestid>1174084</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>29940b7107637960f7b53251d5f29ab3</srcmd5>
+    <version>3.4</version>
+    <time>1717429288</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1177940</requestid>
+  </revision>
 </revisionlist>

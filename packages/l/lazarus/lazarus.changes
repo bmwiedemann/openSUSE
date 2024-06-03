@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 31 10:04:48 UTC 2024 - PragmaticLinux <info@pragmaticlinux.com>
+
+- Update to 3.4
+  * This is a bugfix release for which no seperate release notes were
+    published. The previous release notes still apply:
+    https://wiki.freepascal.org/Lazarus_3.0_release_notes
+- Removed lazarus-libqt6_fix.patch because this is fixed in Lazarus 3.4.
+
+-------------------------------------------------------------------
 Tue May 14 20:19:34 UTC 2024 - PragmaticLinux <info@pragmaticlinux.com>
 
 - Add lazarus-libqt6_fix.patch to fix libqt6pas per upstream issue #40901
