@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun  1 15:43:28 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v0.12.16
+  * Fix offset of query parsing error on multi-byte characters.
+  * Fix tests of `exp10` and `atan2` failing on some platforms.
+  * Fix `debug/1` to be available only when `debug/0` is defined.
+  * Improve parser to allow binary operators as object values.
+  * Improve compiler to emit error if query is missing.
+
+-------------------------------------------------------------------
 Mon Apr  1 16:33:18 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
 
 - Suppress rpmlint error statically-linked-binary.

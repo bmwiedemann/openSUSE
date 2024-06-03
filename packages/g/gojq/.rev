@@ -78,4 +78,17 @@
 - Fix rpmlint warning no-%check-section.</comment>
     <requestid>1163958</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8cb49a37f7c6fe974ebe4242b55b3ca7</srcmd5>
+    <version>0.12.16</version>
+    <time>1717429365</time>
+    <user>anag+factory</user>
+    <comment>- Update to v0.12.16
+  * Fix offset of query parsing error on multi-byte characters.
+  * Fix tests of `exp10` and `atan2` failing on some platforms.
+  * Fix `debug/1` to be available only when `debug/0` is defined.
+  * Improve parser to allow binary operators as object values.
+  * Improve compiler to emit error if query is missing.</comment>
+    <requestid>1178069</requestid>
+  </revision>
 </revisionlist>
