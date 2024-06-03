@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 31 07:52:33 UTC 2024 - Rumen Chikov <rumen.chikov@suse.com>
+
+- updated to 0.1.73 (jsc#ECO-3319)
+  - CMP 2417: Implement PCI-DSS v4.0 outline for OpenShift (#11651)
+  - Update all RHEL ANSSI BP028 profiles to be aligned with configuration recommendations version 2.0
+  - Generate rule references from control files (#11540)
+  - Initial implementation of STIG V1R1 profile for Ubuntu 22.04 LTS (#11820)
+
+-------------------------------------------------------------------
 Tue Feb 13 16:02:47 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - updated to 0.1.72 (jsc#ECO-3319)

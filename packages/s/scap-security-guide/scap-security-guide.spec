@@ -42,7 +42,7 @@
 %endif
 
 Name:           scap-security-guide
-Version:        0.1.72
+Version:        0.1.73
 Release:        0
 Summary:        XCCDF files for SUSE Linux and openSUSE
 License:        BSD-3-Clause
@@ -137,11 +137,15 @@ files to run a compliance test on SLE12, SLE15 and openSUSE
 SUSE supported in this version of scap-security-guide:
 
 - DISA STIG profile for SUSE Linux Enterprise Server 12 and 15
+- ANSSI-BP-028 profile for SUSE Linux Enterprise Server 12 and 15
 - PCI-DSS profile for SUSE Linux Enterprise Server 12 and 15
 - HIPAA profile for SUSE Linux Enterprise Server 12 and 15
+- CIS profile for SUSE Linux Enterprise Server 12 and 15
+- Hardening for Public Cloud Image of SUSE Linux Enterprise Server for SAP Applications 15
+- Public Cloud Hardening for SUSE Linux Enterprise 15
 
-Other profiles, like the CIS profile, are community supplied and
-not officially supported by SUSE.
+Other profiles, like the Standard System Security Profile for SUSE Linux Enterprise 12 and 15,
+are community supplied and not officially supported by SUSE.
 
 %package redhat
 Summary:        XCCDF files for RHEL, CentOS, Fedora and ScientificLinux

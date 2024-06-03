@@ -397,4 +397,16 @@ Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from 
 - removed ssg-fix-journald.patch: fixed upstream</comment>
     <requestid>1146536</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>dbb2bf7987db31218d12a03b7ad64319</srcmd5>
+    <version>0.1.73</version>
+    <time>1717429407</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.1.73 (jsc#ECO-3319)
+  - CMP 2417: Implement PCI-DSS v4.0 outline for OpenShift (#11651)
+  - Update all RHEL ANSSI BP028 profiles to be aligned with configuration recommendations version 2.0
+  - Generate rule references from control files (#11540)
+  - Initial implementation of STIG V1R1 profile for Ubuntu 22.04 LTS (#11820)</comment>
+    <requestid>1178138</requestid>
+  </revision>
 </revisionlist>
