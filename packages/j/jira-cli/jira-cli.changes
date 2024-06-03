@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Mon Jun 03 08:01:47 UTC 2024 - georg.pfuetzenreuter@suse.com
+
+- Update to version 1.5.1:
+  * fix: Skip auth type prompt if already set (#701)
+  * fix: Properly close created files (#702)
+  * build: Upgrade goreleaser
+  * feat: Add support for updating the estimate (#669)
+  * fix: Respect jira timezone (#697)
+  * fix: Bring bearer back (#696)
+  * fix: Jira init broken due to authtype value (#694)
+  * ci: Upgrade workflow + linter (#695)
+  * chore(Dockerfile): bump go & alpine versions (#691)
+  * chore(deps): bump golang.org/x/net from 0.12.0 to 0.17.0 (#671)
+  * chore: Add supporters
+  * [feat] Add `mtls` authentication for client certificate auth (#615)
+  * feat: affects version (#642)
+  * fix: Issue with no-input on create (#655)
+  * deps: Upgrade all (#643)
+  * feat: Enable issue edit to read body from stdin (#619)
+  * chore: go mod tidy
+  * fix: Comment author name is not always displayed (#618)
+  * feat: Allow different jira server for API and for UI (#613)
+  * fix: Issue with epic field on create (#607)
+  * dep: Upgrade cobra to v1.7.0 (#608)
+  * fix: Issue with value assignment in init (#606)
+  * ci: Upgrade actions and linter (#590)
+  * ci: Upgrade go version
+  * ci: Make linter happy
+  * fix: Detect if Jira v8 server is not using the /createmeta REST endpoint (#574)
+  * fix: Issue with -c flag on config generation (#582)
+  * feat: Support for adding watcher to Issue (#584)
+  * chore: Some minor README changes
+  * chore(deps): bump golang.org/x/net from 0.4.0 to 0.7.0 (#575)
+  * ehc: Improve PAGER selection (#570)
+  * feat: Filter by multiple statuses (#573)
+  * fix: Use http client wrapper instead of round trip (#530)
+  * feat: Add help page (#563)
+  * fix: Worklog comment don't work together with prompt (#562)
+  * feat(tui): Allow issue transition from the ui (#544)
+  * fix: Shell completion for Fish and PowerShell (#553)
+  * chore: Refactor jira client (#543)
+  * chore(tui): Refactor table data access (#542)
+  * tui: Use tview Modal instead of the extended one (#541)
+  * feat: Use single char ellipsis instead of triple dot (#540)
+  * feat: Allow to set reporter on issue create (#539)
+  * chore: Update bug report template
+  * doc: Fix example scripts
+  * chore: Remove duplication in epic and issue create (#537)
+  * ehc: Auto fallback to plain output on notty (#538)
+  * ci: Upgrade golangci-lint to v1.50.1 (#536)
+  * ehc: Make assignee operation atomic on create (#531)
+  * fix(build): Invalid commit hash in docker image (#535)
+  * dep: Upgrade golang to v1.19 (#534)
+  * doc: Update README
+  * dep: Upgrade all (#532)
+  * feat: Add warning for invalid custom field (#528)
+  * ehc: Remove viper dependency from pkg (#526)
+  * doc: Fix typo
+  * doc: Shorten installation section
+  * ci: Fix build branch
+  * fix: Respect editor env vars in Windows (#524)
+  * doc: Upgrade badge URL
+  * chore: Minor cleanup
+  * fix: Improve support for pager (#503)
+  * fix: Make board selection optional (#502)
+  * feat: allow setting of fixed columns in the list of issues (#509)
+  * feat: Add labels to the issue listing (#506)
+  * feat: Filter issues by the absence of label(s) (#505)
+  * ci: Multi-arch docker image (#508)
+  * fix: Discrepancy in --insecure flag (#507)
+  * doc: Add scoop installation process (#497)
+  * feat: Resolution, assignee & comment on issue move (#492)
+  * doc: Update zsh completion command
+  * doc: Update help for completion cmd (#491)
+  * feat: Add weblink to issue (#483)
+  * feat: Add support for project datatype in custom fields (#482)
+  * fix: Option to show issues from all projects in sprint (#475)
+  * feat: Make date time input in worklog add flexible (#465)
+  * doc: Minor updates
+  * doc: Add Nix package (#458)
+  * doc: Add pkg maintainers
+  * doc: Add link to project in help (#456)
+  * chore: Minor refactoring
+  * feat: Allow to set start datetime on worklog add (#453)
+  * feat: Support for Jira v9 (#447)
+  * feat: Add serverinfo command (#440)
+  * doc: Fix typo
+
+-------------------------------------------------------------------
 Sun Aug 14 16:00:16 UTC 2022 - chrisbcoutinho@gmail.com
 
 - Update to version 1.1.0:

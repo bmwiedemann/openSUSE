@@ -32,4 +32,12 @@
   * doc: Add instructions for docker (forwarded request 995046 from cbcoutinho)</comment>
     <requestid>995057</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dd221e7d848d2aa866ac8b09d98da74a</srcmd5>
+    <version>1.5.1</version>
+    <time>1717429523</time>
+    <user>anag+factory</user>
+    <comment>Update to version 1.5.1 (forwarded request 1178247 from crameleon)</comment>
+    <requestid>1178320</requestid>
+  </revision>
 </revisionlist>

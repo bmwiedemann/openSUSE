@@ -1,7 +1,7 @@
 #
 # spec file for package jira-cli
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
+%define shortname jira
 Name:           jira-cli
-Version:        1.1.0
+Version:        1.5.1
 Release:        0
 Summary:        CLI tool for Atlassian JIRA inspired by the Github CLI tool
 License:        MIT
@@ -28,9 +28,7 @@ Group:          Development/Tools/Other
 URL:            https://github.com/ankitpokhrel/jira-cli
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.18
-
-%define shortname jira
+BuildRequires:  golang(API) >= 1.19
 
 %description
 JiraCLI is an interactive command line tool for Atlassian Jira that will help
