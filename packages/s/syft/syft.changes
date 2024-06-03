@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri May 31 14:28:58 UTC 2024 - andrea.manzini@suse.com
+
+- Update to version 1.5.0:
+  * feat: detect fluent-bit binaries (#2905)
+  * bump dependencies
+  * Add python wheel egg relationships (#2903)
+  * feat: Add Lua cataloger (#2613)
+  * feat: add config command (#2892)
+  * feat: Added functionality to convert major, minor, patch to version for binary classifier (#2864)
+  * Go Mod Cataloger: Remove Replaced Packages (#2891)
+  * chore: Reduce length of readme, moving lengthy content to the wiki (#2882)
+  * fix: DecoderCollection discarding input from non-seekable Readers (#2878)
+  * Fix outdated spdx links (#2865)
+  * Use values in relationship To/From fields (#2871)
+  * add support for RPM DB package relationships (#2872)
+  * fix: capture dependencies when parsing SPDX SBOMs (#2869)
+  * Add abstraction for adding relationships from package cataloger results (#2853)
+  * chore: fix small tooling error for go.mod (#2868)
+
+-------------------------------------------------------------------
 Sun May 12 07:42:00 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - add completion subpackages
