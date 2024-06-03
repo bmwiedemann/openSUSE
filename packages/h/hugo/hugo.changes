@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 02 14:28:09 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.126.3:
+  * content adapter: Fix site.GetPage using the base part of the path
+  * resources/page: Deprecate .Sites.First in favor of .Sites.Default
+  * metrics: Increase maximum length of cumulative duration to 15
+  * content adapter: Handle <!--more--> separator in content.value
+
+-------------------------------------------------------------------
 Thu May 30 18:12:01 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.126.2:

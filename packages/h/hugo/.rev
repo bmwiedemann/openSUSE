@@ -1227,4 +1227,16 @@
   * Also warn about duplicate content paths with --printPathWarnings (forwarded request 1177791 from jfkw)</comment>
     <requestid>1177792</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>d0bff8b3c5cb8eeb412c8f84a0e82f69</srcmd5>
+    <version>0.126.3</version>
+    <time>1717429442</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.126.3:
+  * content adapter: Fix site.GetPage using the base part of the path
+  * resources/page: Deprecate .Sites.First in favor of .Sites.Default
+  * metrics: Increase maximum length of cumulative duration to 15
+  * content adapter: Handle &lt;!--more--&gt; separator in content.value (forwarded request 1178168 from jfkw)</comment>
+    <requestid>1178169</requestid>
+  </revision>
 </revisionlist>
