@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May  4 06:37:10 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- switch to meson, so we can have translations
+- fixing packaging issues with Leap 15.6 (old packaging had Requires
+  which were not in Leap)
+- remove packaging for Leap < 1330
+
+-------------------------------------------------------------------
 Thu Apr 11 01:49:00 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - sync the requires with the setup.py and prepare at least the
