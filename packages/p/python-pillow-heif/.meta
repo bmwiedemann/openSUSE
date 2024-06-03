@@ -1,0 +1,5 @@
+<package name="python-pillow-heif" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-pillow-heif"/>
+</package>
