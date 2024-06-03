@@ -17,9 +17,9 @@
 #
 
 
-%define _mainv  2.0.0
+%define _mainv  2.1
 Name:           quimup
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        A client for the music player daemon (MPD)
 # was http://www.coonsden.com
@@ -44,7 +44,7 @@ The focus is on mouse handling: playlist management is done entirely by drag-&-d
 playback functions are directly accessible from the system tray.
 
 %prep
-%autosetup -p1 -n Quimup
+%autosetup -p1 -n Quimup-%{version}.source
 
 %build
 %qmake6

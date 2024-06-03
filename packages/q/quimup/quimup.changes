@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jun  3 08:00:08 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.1.0
+  Added features:
+  * Album art size can be set (requires restart).
+  * User actions to run scripts on files or directories.
+  Fixed bugs:
+  * Problems rendering odd- and under-sized album art.
+  * Some menu items were disabled when they shouldn't be.
+  * Streams had generic names and titles in the playlist.
+  * Stream fetcher dit not handle https correctly.
+  * Connect thread not closed before closing quimup.
+  Other:
+  * Only settings in active tab are applied/saved now.
+  * If a song does not exist it is removed from the list.
+  * Player has a bit more space for album info.
+  * Smoother mini-maxi mode transition.
+  * Items in the Settings window were reorganized.
+
+-------------------------------------------------------------------
 Fri Feb  9 05:22:44 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.0.1
