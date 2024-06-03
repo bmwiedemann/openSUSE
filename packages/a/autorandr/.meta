@@ -1,0 +1,5 @@
+<package name="autorandr" project="openSUSE:Factory">
+  <title>autorandr</title>
+  <description>Auto-detect the connect display hardware and load the appropiate X11 setup using xrandr</description>
+  <devel project="X11:Utilities" package="autorandr"/>
+</package>

@@ -1,0 +1,17 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">http://github.com/phillipberndt/autorandr</param>
+    <param name="filename">autorandr</param>
+	<param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.%ct</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*autorandr*.tar</param>
+    <param name="compression">bz2</param>
+  </service>
+  <service name="set_version" mode="manual">
+	<param name="basename">autorandr</param>
+  </service>
+</services>

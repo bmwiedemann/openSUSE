@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Tue May 28 17:25:52 UTC 2024 - Eric Renfro <erenfro@linux-help.org>
+
+- Removed obsoleted Group.
+
+-------------------------------------------------------------------
+Tue May 28 14:41:22 UTC 2024 - Eric Renfro <erenfro@linux-help.org>
+
+- Added dependancy libinput-utils for autorandr-lid-switch service
+
+-------------------------------------------------------------------
+Tue May 28 13:31:12 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update specfile to openSUSE standards.
+
+-------------------------------------------------------------------
+
+Sat May 25 12:00:00 UTC 2024 - Eric Renfro <erenfro@linux-help.org>
+
+- Branched version
+- Update to version 1.15.0.1709469470:
+  * Release autorandr 1.15
+  * Fix: Skip profiles without outputs
+  * Fix const warnings
+  * Do not check for mask in evt->response_type
+  * add compiled autorandr-launcher binary to .gitignore
+  * fix: remove literal backslashes in edid regex
+  * Added missing r literal in OUTPUT_REGEX
+  * Add missing r literal to regex strings
+  * fish completion: fix typo in folder name
+
+-------------------------------------------------------------------
+
+Wed Dec 07 12:00:00 UTC 2016 - phillip.berndt@googlemail.com
+
+- initial version
