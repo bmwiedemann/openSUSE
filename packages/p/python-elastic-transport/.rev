@@ -88,4 +88,15 @@
     <comment></comment>
     <requestid>1176152</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>5e6b256317c29f845541fafd80ffb4f6</srcmd5>
+    <version>8.13.0</version>
+    <time>1717498227</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject macros.
+- Require pytest 8 or greater.
+- Add patch remove-mock.patch:
+  * Remove requirement on mock, now as a patch, rather than sed.</comment>
+    <requestid>1177005</requestid>
+  </revision>
 </revisionlist>

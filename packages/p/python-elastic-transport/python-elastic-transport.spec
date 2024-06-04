@@ -25,9 +25,13 @@ License:        Apache-2.0
 URL:            https://github.com/elastic/elastic-transport-python
 Source:         https://github.com/elastic/elastic-transport-python/archive/refs/tags/v%{version}.tar.gz#/elastic-transport-python-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/elastic/elastic-transport-python/pull/164 Fix requests 2.32 compatibility
-Patch:          requests232.patch
+Patch0:         requests232.patch
+# PATCH-FIX-UPSTREAM gh#elastic/elastic-transport-python#163
+Patch1:         remove-mock.patch
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-certifi
@@ -57,13 +61,12 @@ Transport classes and utilities shared among Python Elastic client libraries
 %prep
 %autosetup -p1 -n elastic-transport-python-%{version}
 sed -i '/addopts/d' setup.cfg
-sed -i 's/from mock/from unittest.mock/' tests/node/test_http_*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -80,6 +83,6 @@ donttest="$donttest or test_url_to_node_config[https://[::1]:0/-https://[::1]:0-
 %doc CHANGELOG.md README.md
 %license LICENSE
 %{python_sitelib}/elastic_transport
-%{python_sitelib}/elastic_transport-%{version}*-info
+%{python_sitelib}/elastic_transport-%{version}.dist-info
 
 %changelog

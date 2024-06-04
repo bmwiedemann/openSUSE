@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 27 04:24:39 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Require pytest 8 or greater.
+- Add patch remove-mock.patch:
+  * Remove requirement on mock, now as a patch, rather than sed.
+
+-------------------------------------------------------------------
 Thu May 23 08:17:35 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add requests232.patch to fix compatibility with new requests

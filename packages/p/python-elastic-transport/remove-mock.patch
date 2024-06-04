@@ -1,0 +1,59 @@
+From 20d207e59f17f9539af12626e2f832f9ad094025 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Mon, 20 May 2024 11:51:43 +1000
+Subject: [PATCH] Remove last uses of mock
+
+The node tests still relied on the external mock library for mocking,
+whereas other tests have transitioned to unittest.mock. Since we support
+Python 3.7 and greater, we can remove that requirement and pull them in
+line too.
+---
+ setup.py                         | 1 -
+ tests/node/test_http_requests.py | 2 +-
+ tests/node/test_http_urllib3.py  | 2 +-
+ 3 files changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index c145012..17370a7 100644
+--- a/setup.py
++++ b/setup.py
+@@ -63,7 +63,6 @@
+             "pytest-asyncio",
+             "pytest-httpserver",
+             "trustme",
+-            "mock",
+             "requests",
+             "aiohttp",
+             "httpx",
+diff --git a/tests/node/test_http_requests.py b/tests/node/test_http_requests.py
+index 2ff7bc0..3a99854 100644
+--- a/tests/node/test_http_requests.py
++++ b/tests/node/test_http_requests.py
+@@ -18,10 +18,10 @@
+ import gzip
+ import ssl
+ import warnings
++from unittest.mock import Mock, patch
+ 
+ import pytest
+ import requests
+-from mock import Mock, patch
+ from requests.auth import HTTPBasicAuth
+ 
+ from elastic_transport import NodeConfig, RequestsHttpNode
+diff --git a/tests/node/test_http_urllib3.py b/tests/node/test_http_urllib3.py
+index fad11e7..25bd920 100644
+--- a/tests/node/test_http_urllib3.py
++++ b/tests/node/test_http_urllib3.py
+@@ -19,10 +19,10 @@
+ import re
+ import ssl
+ import warnings
++from unittest.mock import Mock, patch
+ 
+ import pytest
+ import urllib3
+-from mock import Mock, patch
+ from urllib3.response import HTTPHeaderDict
+ 
+ from elastic_transport import NodeConfig, TransportError, Urllib3HttpNode
