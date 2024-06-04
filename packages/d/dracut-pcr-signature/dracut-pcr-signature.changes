@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 30 08:45:40 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.4:
+  + No new features, tagged on 0.3+6
+- Remove GRUB2 conflict 
+
+-------------------------------------------------------------------
+Mon May 13 20:42:01 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Adapt regenerate initrd macro expansion
+
+-------------------------------------------------------------------
 Mon Apr 22 09:08:46 UTC 2024 - aplanas@suse.com
 
 - Update to version 0.3+6:
