@@ -2132,4 +2132,38 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1176660</requestid>
   </revision>
+  <revision rev="248" vrev="1">
+    <srcmd5>e71dd8bb5e269178b089851b82f29c08</srcmd5>
+    <version>46.2</version>
+    <time>1717498208</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.2:
+  + Enable the &quot;Location&quot; settings panel by default.
+  + Improve accessibility of some secondary-labels in settings
+    rows.
+  + Increase default log verbosity level.
+  + Accessibility:
+    - Fix icon name of accessibility panel desktop file.
+    - Fix flash area settings selection shown incorrectly.
+  + Display: Fix crash when closing laptop lid.
+  + Keyboard: Fix keyboard navigation of keyboard shortcuts dialog
+    categories.
+  + Mouse and Touchpad: Remove unnecessary a11y label.
+  + Network:
+    - Fix crash when removing bluetooth network adapter row.
+    - Sort VPN connections list alphabetically.
+    - Remove incorrect assertion that breaks proxy settings page.
+  + Sound:
+    - Make sliders more accessible by keyboard.
+    - Remove need for translating speaker test button tooltip.
+  + System:
+    - Improve accessibility of &quot;Copy&quot; buttons in Remote Desktop.
+    - Fix crash in Date And Time settings closing before async
+      calls finish.
+    - Fix reuse of remote-desktop verify encryption fingerprint
+      dialog.
+  + Users: Fix visibility issue in parental controls row.
+  + Updated translations. (forwarded request 1178267 from dimstar)</comment>
+    <requestid>1178276</requestid>
+  </revision>
 </revisionlist>
