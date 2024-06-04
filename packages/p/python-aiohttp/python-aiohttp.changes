@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 29 13:46:54 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Skip test failing with pytest 8, upstream is on it
+  * https://github.com/aio-libs/aiohttp/issues/8234
+- Also un-skip some of the no-longer-failing tests
+
+-------------------------------------------------------------------
 Sat Apr 20 13:59:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.9.5:

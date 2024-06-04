@@ -125,13 +125,13 @@ rm -r %{buildroot}%{$python_sitearch}/aiohttp/.hash
 %check
 donttest="test_aiohttp_request_coroutine or test_mark_formdata_as_processed or test_aiohttp_plugin_async or test_secure_https_proxy_absolute_path"
 # no name resolution
-donttest+=" or test_client_session_timeout_zero or test_requote_redirect_url_default"
+donttest+=" or test_client_session_timeout_zero"
 # flaky
 donttest+=" or test_https_proxy_unsupported_tls_in_tls"
-# not running under pytest ?!
-donttest+=" or test_circular_imports or test_import_time"
 # raises not expected "ConnectionResetError" with openssl 3.2 and python < 3.11
 donttest+=" or test_tcp_connector_raise_connector_ssl_error[pyloop]"
+# fails with pytest 8 https://github.com/aio-libs/aiohttp/issues/8234
+donttest+=" or (test_pytest_plugin and test_aiohttp_plugin)"
 
 # requires python-on-whales
 rm -v tests/autobahn/test_autobahn.py
