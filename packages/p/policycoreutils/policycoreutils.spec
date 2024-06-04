@@ -1,7 +1,7 @@
 #
 # spec file for package policycoreutils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,19 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%{?sle15_python_module_pythons}
+%if 0%{?suse_version} < 1600
+# redefine python_for_executables from python macros to deprecate python36
+%define python_for_executables python311
+# cahu 2024-05-29: dirty hack to be able to pass python3.11 as python interpreter
+# in an environment variable for < 1600 to build with python3.11;
+# python_binary_for_executables is only defined in this specfile so can be just replaced
+# when someone has found a more clever way
+%define python_binary_for_executables python3.11
+%else
+%define python_binary_for_executables %{python_for_executables}
+%endif
 
 %define libaudit_ver     2.2
 %define libsepol_ver     3.6
@@ -64,8 +77,8 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  %{pythons}
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3
 BuildRequires:  update-desktop-files
 BuildRequires:  xmlto
 Recommends:     setools-console
@@ -75,6 +88,8 @@ Requires:       rpm
 Requires:       selinux-tools
 Requires:       util-linux
 Obsoletes:      policycoreutils-python <= 2.6
+%define python_subpackage_only 1
+%python_subpackages
 
 %description
 policycoreutils contains the policy core utilities that are required
@@ -90,28 +105,37 @@ Security.)
 
 %lang_package
 
-%package -n python3-%{name}
+%package -n python-%{name}
 Summary:        SELinux policy core python3 interfaces
 Group:          Productivity/Security
 Requires:       %{name} = %{version}-%{release}
+Requires:       %{python_for_executables}-selinux
+Requires:       %{python_for_executables}-semanage >= %{libsepol_ver}
+Requires:       %{python_for_executables}-setools >= %{setools_ver}
+Requires:       %{python_for_executables}-setuptools
+%if 0%{?suse_version} < 1600
+Requires:       audit-libs-python3 >= %{libaudit_ver}
+%else
+Requires:       %{python_for_executables}-audit >= %{libaudit_ver}
+%endif
 Requires:       checkpolicy
-Requires:       python3-audit >= %{libaudit_ver}
-Requires:       python3-selinux
-Requires:       python3-semanage >= %{libsepol_ver}
-Requires:       python3-setools >= %{setools_ver}
-Requires:       python3-setuptools
 Provides:       policycoreutils-python = %{version}-%{release}
 Obsoletes:      policycoreutils-python < %{version}
+Obsoletes:      python-policycoreutils < %{version}-%{release}
+Provides:       python-policycoreutils = %{version}-%{release}
+%if "%{python_flavor}" != "python3"
+Obsoletes:      python3-policycoreutils < %{version}-%{release}
+%endif
 BuildArch:      noarch
 
-%description -n python3-%{name}
+%description -n python-%{name}
 The python-policycoreutils package contains the interfaces that can be used
 by python in an SELinux environment.
 
 %package python-utils
 Summary:        SELinux policy core python utilities
 Group:          Productivity/Security
-Requires:       python3-policycoreutils = %{version}-%{release}
+Requires:       %{python_for_executables}-%{name} = %{version}-%{release}
 BuildArch:      noarch
 Obsoletes:      policycoreutils-python
 
@@ -123,8 +147,12 @@ use to manage an SELinux environment.
 Summary:        SELinux policy core policy devel utilities
 Group:          Productivity/Security
 Requires:       %{_bindir}/make
-Requires:       python3-%{name} = %{version}-%{release}
+Requires:       %{python_for_executables}-%{name} = %{version}-%{release}
+%if 0%{?sle_version} <= 150400
 Requires:       python3-distro
+%else
+Requires:       %{python_for_executables}-distro
+%endif
 Recommends:     %{_sbindir}/ausearch
 Recommends:     selinux-policy-devel
 Conflicts:      %{name}-python <= 2.6
@@ -149,10 +177,10 @@ or level of a logged-in user.
 Summary:        SELinux configuration GUI
 Group:          Productivity/Security
 Requires:       %{name}-dbus = %{version}
-Requires:       python
+Requires:       %{python_for_executables}
+Requires:       %{python_for_executables}-%{name} = %{version}
+Requires:       %{python_for_executables}-gobject
 Requires:       python-gtk
-Requires:       python3-%{name} = %{version}
-Requires:       python3-gobject
 Requires:       selinux-policy
 Requires:       setools-console
 BuildArch:      noarch
@@ -163,9 +191,9 @@ system-config-selinux is a utility for managing the SELinux environment.
 %package dbus
 Summary:        SELinux policy core DBUS api
 Group:          Productivity/Security
+Requires:       %{python_for_executables}-%{name} = %{version}
+Requires:       %{python_for_executables}-gobject
 Requires:       polkit
-Requires:       python3-%{name} = %{version}
-Requires:       python3-gobject
 BuildArch:      noarch
 
 %description dbus
@@ -183,13 +211,11 @@ mv ${setools_python_pwd}/audit2allow ${setools_python_pwd}/chcat ${setools_pytho
 mv ${semodule_utils_pwd}/semodule_expand ${semodule_utils_pwd}/semodule_link ${semodule_utils_pwd}/semodule_package .
 
 %build
-export PYTHON="python3" LIBDIR="%{_libdir}" CFLAGS="%{optflags} -fPIE" LDFLAGS="-pie -Wl,-z,relro"
+export PYTHON="%{python_binary_for_executables}" LIBDIR="%{_libdir}" CFLAGS="%{optflags} -fPIE" LDFLAGS="-pie -Wl,-z,relro"
 make %{?_smp_mflags} LIBEXECDIR="%{_libexecdir}"
 (cd selinux-python-%{version}/po && make)
 
 %install
-export PYTHON="python3"
-
 mkdir -p %{buildroot}%{_localstatedir}/lib/selinux
 mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_sbindir}
@@ -206,7 +232,8 @@ mkdir -p %{buildroot}%{_sysconfdir}/pam.d
 %endif
 
 # Set the SBINDIR to the openSUSE one (/usb/sbin)
-make LSPP_PRIV=y DESTDIR=%{buildroot} SBINDIR=%{_sbindir} install LIBEXECDIR=%{_libexecdir}
+%python_expand make PYTHON=$python LSPP_PRIV=y DESTDIR=%{buildroot} SBINDIR=%{_sbindir} install LIBEXECDIR=%{_libexecdir}
+export PYTHON="%{python_binary_for_executables}"
 %if 0%{?suse_version} > 1500
 cp -f %{SOURCE13} %{buildroot}%{_pam_vendordir}/newrole
 rm %{buildroot}%{_sysconfdir}/pam.d/newrole
@@ -250,6 +277,16 @@ mkdir -p %{buildroot}%{_localstatedir}/lib/sepolgen
 %find_lang selinux-python
 %find_lang selinux-gui
 %fdupes -s %{buildroot}%{_datadir}
+
+%if 0%{?suse_version} < 1600
+%python311_fix_shebang
+# cahu 2024-05-29: the python3_fix_shebang_path macro does not exist in <1600 so far and the
+# python311_fix_shebang macro in <1600 does not fix /usr/sbin so dirty hack:
+# please replace this with python3_fix_shebang_path when python-rpm-macros get updated in <1600
+sed -i '1s@#!.*python.*@#!%{_bindir}/%{python_binary_for_executables}@' %{buildroot}/sbin/semanage
+%else
+%python3_fix_shebang
+%endif
 
 %if 0%{?suse_version} > 1500
 %pre
@@ -345,9 +382,11 @@ done
 %{_mandir}/man1/secon.1%{?ext_man}
 %{_datadir}/bash-completion/completions/setsebool
 
-%files -n python3-%{name}
-%{python3_sitelib}/*
-%dir %{_localstatedir}/lib/selinux
+%files %{python_files policycoreutils}
+%{python_sitelib}/sepolicy
+%{python_sitelib}/sepolgen
+%{python_sitelib}/sepolicy-%{version}.dist-info
+%{python_sitelib}/seobject.py
 
 %files lang -f %{name}.lang
 
@@ -365,6 +404,7 @@ done
 %{_mandir}/man8/chcat.8%{?ext_man}
 %{_mandir}/man8/semanage*.8%{?ext_man}
 %{_datadir}/bash-completion/completions/semanage
+%dir %{_localstatedir}/lib/selinux
 
 %files devel
 %{_bindir}/sepolgen

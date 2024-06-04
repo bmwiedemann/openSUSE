@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue May 28 10:42:49 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
+
+- Rework packaging to modern python packaging as we need
+  policycoreutils-python-tools as build dependency for python311-setools
+  - General: 
+    - python version for scripts is now set to python311, deprecating python3.6
+      on 15.4 + 15.5
+    - replaced python3 dependencies with corresponding dependencies
+    - moved %{_localstatedir}/lib/selinux out of the python-policycoreutils
+      rpm and into policycoreutils-python-utils as it does not belong
+      into a module and causes conflicts when module is built for multiple
+      python versions
+  - Factory-specific changes:
+    - python-policycoreutils module is now built for python310, python311,
+      python312 instead of python3
+    - added %python3_fix_shebang to set the shebang to the current python
+  - 15.4 and 15.5 specific changes
+    - python-policycoreutils module is now built for python311 instead
+      of python3
+    - added %python311_fix_shebang to set the shebang to python311, this
+      is currently a dirty hack since the python3_fix_shebang_path macro 
+      does not exist in <=15.5 so far
+  - 15.4 specific changes
+    - policycoreutils-devel requires python3-distro still, as there
+      is no python311-distro package
+
+-------------------------------------------------------------------
+Fri Mar 15 14:56:14 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
+
+- exclude %python3_fix_shebang for distros <=15.4 to avoid build
+  failure
+
+-------------------------------------------------------------------
+Wed Mar 13 10:42:05 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Tue Dec 19 12:31:33 UTC 2023 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 3.6
