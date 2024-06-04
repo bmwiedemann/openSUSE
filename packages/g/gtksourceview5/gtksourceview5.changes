@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun  3 09:54:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 5.12.1:
+  + Update documentation links.
+  + Specify recoloring hex colors for Adwaita-dark.
+  + Improve grid drawing positions slightly.
+  + Use a weak ref for GtkSourceView backpointer in
+    GtkSourceGutterRenderers which fixes a potential leak of
+    GtkSourceView.
+  + Fix a fontconfig check for Windows.
+  + Fix section name for elixir.
+
+-------------------------------------------------------------------
 Sat Mar 16 09:19:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 5.12.0:

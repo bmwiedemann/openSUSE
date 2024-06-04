@@ -113,4 +113,20 @@
     <comment>GNOME 46 (forwarded request 1158400 from dimstar)</comment>
     <requestid>1159472</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>339edb5762064f2a8fe97084e68f6355</srcmd5>
+    <version>5.12.1</version>
+    <time>1717498219</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.12.1:
+  + Update documentation links.
+  + Specify recoloring hex colors for Adwaita-dark.
+  + Improve grid drawing positions slightly.
+  + Use a weak ref for GtkSourceView backpointer in
+    GtkSourceGutterRenderers which fixes a potential leak of
+    GtkSourceView.
+  + Fix a fontconfig check for Windows.
+  + Fix section name for elixir. (forwarded request 1178271 from dimstar)</comment>
+    <requestid>1178279</requestid>
+  </revision>
 </revisionlist>
