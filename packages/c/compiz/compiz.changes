@@ -1,3 +1,10 @@
+Mon Jun 04 01:00:06 UTC 2024 - Kai-Uwe Behrmann <ku.b@gmx.de>
+
+- Add fix-compatibility-with-libxml-2.12.patch: Fix runtime
+  libxml-2.12 (commit ea7b3731).
+- Add fixed-compilation-with-gcc-14.patch: Fix compiling with
+  gcc-14 (commit d4213fa4)
+
 -------------------------------------------------------------------
 Sat Nov 13 15:44:35 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
 

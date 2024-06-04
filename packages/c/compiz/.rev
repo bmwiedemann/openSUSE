@@ -945,4 +945,16 @@ remove old unused gtk patch</comment>
     <comment> </comment>
     <requestid>932049</requestid>
   </revision>
+  <revision rev="135" vrev="3">
+    <srcmd5>9f64bc7eb1cfb9104301c24203df5156</srcmd5>
+    <version>0.8.18</version>
+    <time>1717498333</time>
+    <user>anag+factory</user>
+    <comment>- Add fix-compatibility-with-libxml-2.12.patch: Fix runtime
+  libxml-2.12 (commit ea7b3731).
+- Add fixed-compilation-with-gcc-14.patch: Fix compiling with
+  gcc-14 (commit d4213fa4)
+</comment>
+    <requestid>1178402</requestid>
+  </revision>
 </revisionlist>

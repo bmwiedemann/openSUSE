@@ -36,6 +36,10 @@ Patch1:         %{name}-java-config-notify.diff
 Patch2:         bug-474862-allow-moving-focus-to-fs-window.diff
 # PATCH-FIX-UPSTREAM compiz-0.8.18-fix-librsvg-2.51.patch -- Fix building against librsvg 2.51+.
 Patch3:         %{name}-0.8.18-fix-librsvg-2.51.patch
+# PATCH-FIX-UPSTREAM Fix compatibility with libxml 2.12
+Patch4:         fix-compatibility-with-libxml-2.12.patch
+# PATCH-FIX-UPSTREAM Fixed compilation with gcc-14
+Patch5:         fixed-compilation-with-gcc-14.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gettext
