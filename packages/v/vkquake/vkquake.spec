@@ -1,7 +1,7 @@
 #
 # spec file for package vkquake
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2017 Luke Jones <luke.nukem.jones@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -39,6 +39,12 @@ BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vorbis)
+%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+BuildRequires:  gcc11
+BuildRequires:  gcc11-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 
 %description
 vkQuake is a Quake 1 port using Vulkan instead of OpenGL for rendering. It is based on the popular QuakeSpasm port and runs all mods compatible with it like Arcane Dimensions or In The Shadows.
@@ -46,10 +52,6 @@ Game data must be placed in ~/.vkquake/id1 .
 
 %prep
 %autosetup -n vkQuake-%{version} -p1
-
-%if 0%{?sle_version} < 150200
-sed -i 's#vulkan_core.h#vulkan.h#' Quake/quakedef.h
-%endif
 
 # Drop pre-compiled Windows stuff
 rm Windows -fr
@@ -62,6 +64,9 @@ sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" Quake/host.c
 
 %build
 %make_build -C Quake \
+%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+    CC='/usr/bin/gcc-11' \
+%endif    
     STRIP=": do not strip:" \
     DO_USERDIRS=1 \
     USE_SDL2=1 \
