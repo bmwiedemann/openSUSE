@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 16 18:25:45 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.0
+  * Bugfix: Disabled check_hostname to prevent error message when
+    setting CERT_NONE.
+  * Feature: Add flag to increase verbosity and flag to override
+    unreachable state.
+  * Feature: Add flag to override unreachable state.
+  * Extend tests for array syntax.
+
+-------------------------------------------------------------------
 Thu Mar 16 08:17:13 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Build the package against python3 only.

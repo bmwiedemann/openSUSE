@@ -26,4 +26,12 @@
     <comment>- Build the package against python3 only.</comment>
     <requestid>1072281</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e15d465d81c7d40307f25ab1d807dc70</srcmd5>
+    <version>2.2.0</version>
+    <time>1717498276</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1178354</requestid>
+  </revision>
 </revisionlist>
