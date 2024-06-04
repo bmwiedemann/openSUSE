@@ -1104,4 +1104,19 @@
     <comment>- Updated list of recommended modules (deleted unavailable in TW).</comment>
     <requestid>1173379</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>b6fc3adb67cb4f1b2d65a6cb4b91891e</srcmd5>
+    <version>1.27.0</version>
+    <time>1717498242</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 1.27.0
+  * Changed nginx.keyring to Sergey Kandaurov’s PGP public key.
+  * https://nginx.org/en/CHANGES
+  * Added variables support in the &quot;proxy_limit_rate&quot;, &quot;fastcgi_limit_rate&quot;,
+    &quot;scgi_limit_rate&quot;, and &quot;uwsgi_limit_rate&quot; directives.
+  * Fixed reduced memory consumption for long-lived requests if &quot;gzip&quot;,
+    &quot;gunzip&quot;, &quot;ssi&quot;, &quot;sub_filter&quot;, or &quot;grpc_pass&quot; directives are used.
+  * Fixed building with gcc 14 with --with-atomic option.</comment>
+    <requestid>1177870</requestid>
+  </revision>
 </revisionlist>

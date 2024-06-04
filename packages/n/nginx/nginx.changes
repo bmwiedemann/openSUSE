@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 31 08:48:36 UTC 2024 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 1.27.0
+  * Changed nginx.keyring to Sergey Kandaurov’s PGP public key.
+  * https://nginx.org/en/CHANGES
+  * Added variables support in the "proxy_limit_rate", "fastcgi_limit_rate",
+    "scgi_limit_rate", and "uwsgi_limit_rate" directives.
+  * Fixed reduced memory consumption for long-lived requests if "gzip",
+    "gunzip", "ssi", "sub_filter", or "grpc_pass" directives are used.
+  * Fixed building with gcc 14 with --with-atomic option.
+
+-------------------------------------------------------------------
 Sat May 11 04:03:00 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Updated list of recommended modules (deleted unavailable in TW).
