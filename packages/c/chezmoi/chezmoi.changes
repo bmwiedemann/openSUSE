@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun  3 14:54:22 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.48.2:
+  - Fixes
+    * fix: Don't panic on unexpected bubbletea messages
+    * fix: Respect umask when creating files
+
+-------------------------------------------------------------------
 Tue Apr 30 15:39:55 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.48.0:
