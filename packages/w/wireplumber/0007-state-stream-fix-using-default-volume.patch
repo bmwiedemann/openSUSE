@@ -1,0 +1,48 @@
+From df8bc12464c6b582fc1a5f46e4a3a025557bc58b Mon Sep 17 00:00:00 2001
+From: George Kiagiadakis <george.kiagiadakis@collabora.com>
+Date: Fri, 24 May 2024 20:36:28 +0300
+Subject: [PATCH 7/7] state-stream: fix using the default volume
+
+When there was no previous state stored, the default volume was
+also not applied because the code would return from the hook early
+
+Fixes: #655
+---
+ src/scripts/node/state-stream.lua | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/scripts/node/state-stream.lua b/src/scripts/node/state-stream.lua
+index f5ac95d54..e2fc7efee 100644
+--- a/src/scripts/node/state-stream.lua
++++ b/src/scripts/node/state-stream.lua
+@@ -52,10 +52,7 @@ restore_stream_hook = SimpleEventHook {
+       return
+     end
+ 
+-    local stored_values = getStoredStreamProps (key)
+-    if not stored_values then
+-      return
+-    end
++    local stored_values = getStoredStreamProps (key) or {}
+ 
+     -- restore node Props (volumes, channelMap, etc...)
+     if Settings.get_boolean ("node.stream.restore-props") and stream_props ["state.restore-props"] ~= "false"
+@@ -356,11 +353,14 @@ function buildDefaultChannelVolumes (node)
+     end
+   end
+ 
++  log:info (node, "using default volume: " .. tostring(def_vol) ..
++      ", channels: " .. tostring(channels))
++
+   while (#res < channels) do
+     table.insert(res, def_vol)
+   end
+ 
+-  return res;
++  return res
+ end
+ 
+ function getStoredStreamProps (key)
+-- 
+2.45.1
+

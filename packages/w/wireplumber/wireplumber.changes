@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May 25 13:28:01 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Add patches from upstream to fix a crash for aborted links:
+  * 0004-transition-fix-memleak-when-error-set.patch
+  * 0005-transition-ensure-single-completion-and-finish.patch
+  * 0006-linking-return-after-aborting-transition.patch
+- Add patch from upstream to fix default playback volume ignore:
+  * 0007-state-stream-fix-using-default-volume.patch
+
+-------------------------------------------------------------------
 Mon May  6 16:23:47 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Better fix for (bsc#1223916) that basically turns the main

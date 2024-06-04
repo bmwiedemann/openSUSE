@@ -1,7 +1,7 @@
 #
 # spec file for package wireplumber
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,10 @@ Source1:        split-config-file.py
 Patch0:         0001-lua-json-fix-error-ouput.patch
 Patch1:         0002-lua-json-add-method-to-merge-json-containers.patch
 Patch2:         0003-json-utils-fix-overriding-of-non-container-values-when.patch
+Patch3:         0004-transition-fix-memleak-when-error-set.patch
+Patch4:         0005-transition-ensure-single-completion-and-finish.patch
+Patch5:         0006-linking-return-after-aborting-transition.patch
+Patch6:         0007-state-stream-fix-using-default-volume.patch
 # docs
 BuildRequires:  doxygen
 BuildRequires:  graphviz
