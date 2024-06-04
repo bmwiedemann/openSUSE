@@ -88,7 +88,6 @@ Macros:
 :Macros
 %endif
 
-BuildFlags: excludebuild:installation-images:Slowroll
 
 %if "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:ARM" || "%_project" == "openSUSE:Factory:Rebuild" || "%_project" == "openSUSE:Factory:Live" || "%_project" == "openSUSE:Factory:NonFree" || "%_project" == "openSUSE:Factory:LegacyX86"
 Substitute: kiwi-image:docker python3-kiwi kiwi-systemdeps-containers container-build-checks-vendor-openSUSE container-build-checks-strict
