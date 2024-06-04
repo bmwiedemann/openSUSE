@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 03 07:22:01 UTC 2024 - emiliano.langella@suse.com
+
+- Update to version 4.10.3+git0.e050dd6:
+  * prepare for 4.10.3
+  * security check can be ignored when the value is configured by ALTER SYSTEM, and in reload the system is not in transactional state. fix #270
+
+-------------------------------------------------------------------
 Thu May 23 08:51:44 UTC 2024 - emiliano.langella@suse.com
 
 - Update to version 4.10.2+git0.8d10ace:
