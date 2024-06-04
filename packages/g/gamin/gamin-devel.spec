@@ -36,6 +36,7 @@ Patch3:         gamin-obsol-glib.diff
 Patch4:         gamin-0.1.11-double-lock.patch
 # PATCH-FIX-UPSTREAM 0001-Poll-files-on-nfs4.patch (bgo#693006)
 Patch5:         0001-Poll-files-on-nfs4.patch
+Patch6:         gamin-missing-includes.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libstdc++-devel

@@ -1,0 +1,55 @@
+diff -urp gamin-0.1.10.orig/server/gam_connection.c gamin-0.1.10/server/gam_connection.c
+--- gamin-0.1.10.orig/server/gam_connection.c	2007-07-04 08:36:49.000000000 -0500
++++ gamin-0.1.10/server/gam_connection.c	2024-05-31 16:37:12.317543600 -0500
+@@ -17,6 +17,7 @@
+ #endif
+ #ifdef ENABLE_INOTIFY
+ #include "gam_inotify.h"
++#include "gam_excludes.h"
+ #endif
+ #include "fam.h"
+ 
+diff -urp gamin-0.1.10.orig/server/gam_inotify.c gamin-0.1.10/server/gam_inotify.c
+--- gamin-0.1.10.orig/server/gam_inotify.c	2008-11-12 14:45:28.000000000 -0600
++++ gamin-0.1.10/server/gam_inotify.c	2024-05-31 16:37:12.317543600 -0500
+@@ -30,6 +30,7 @@
+ #include "gam_server.h"
+ #include "gam_subscription.h"
+ #include "gam_inotify.h"
++#include "gam_poll_basic.h"
+ 
+ /* Transforms a inotify event to a gamin event. */
+ static GaminEventType
+diff -urp gamin-0.1.10.orig/server/gam_listener.c gamin-0.1.10/server/gam_listener.c
+--- gamin-0.1.10.orig/server/gam_listener.c	2007-07-04 08:36:49.000000000 -0500
++++ gamin-0.1.10/server/gam_listener.c	2024-05-31 16:37:12.314210251 -0500
+@@ -27,6 +27,7 @@
+ #include "gam_pidname.h"
+ #ifdef ENABLE_INOTIFY
+ #include "gam_inotify.h"
++#include "gam_excludes.h"
+ #endif
+ 
+ //#define GAM_LISTENER_VERBOSE
+diff -urp gamin-0.1.10.orig/server/gam_node.c gamin-0.1.10/server/gam_node.c
+--- gamin-0.1.10.orig/server/gam_node.c	2024-05-31 16:36:31.874029974 -0500
++++ gamin-0.1.10/server/gam_node.c	2024-05-31 16:37:12.317543600 -0500
+@@ -23,6 +23,7 @@
+ #include "gam_event.h"
+ #include "gam_node.h"
+ #include "gam_error.h"
++#include "gam_server.h"
+ 
+ /**
+  * Create a new node
+diff -urp gamin-0.1.10.orig/server/gam_server.c gamin-0.1.10/server/gam_server.c
+--- gamin-0.1.10.orig/server/gam_server.c	2024-05-31 16:36:12.563943900 -0500
++++ gamin-0.1.10/server/gam_server.c	2024-05-31 16:37:12.317543600 -0500
+@@ -33,6 +33,7 @@
+ #include "gam_channel.h"
+ #include "gam_subscription.h"
+ #include "gam_poll_generic.h"
++#include "gam_poll_basic.h"
+ #ifdef ENABLE_INOTIFY
+ #include "gam_inotify.h"
+ #endif

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 31 21:39:55 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Add gamin-missing-includes.patch: fix implicit function
+  declarations.
+
+-------------------------------------------------------------------
 Tue Feb 27 11:15:33 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Rediff patches for consistent patch level.

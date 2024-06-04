@@ -120,4 +120,12 @@ I tried removing the %py_requires macros, but that resulted in an rpmlint warnin
 - Delete old specfile constructs.</comment>
     <requestid>1152209</requestid>
   </revision>
+  <revision rev="16" vrev="20">
+    <srcmd5>6eda43e7d481f3b06248d7dcbd19d4fb</srcmd5>
+    <version>0.1.10</version>
+    <time>1717498260</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1178141</requestid>
+  </revision>
 </revisionlist>
