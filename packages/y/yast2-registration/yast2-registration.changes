@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 29 13:34:10 UTC 2024 - Martin Vidner <mvidner@suse.com>
+
+- Ensure add_on_others in autoyast profile are added (bsc#1223301)
+- 5.0.2
+
+-------------------------------------------------------------------
 Thu Mar 14 12:57:02 UTC 2024 - Ladislav Slezák <lslezak@suse.com>
 
 - Use the new product mapping API (related to bsc#1220567)
