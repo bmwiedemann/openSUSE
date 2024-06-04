@@ -17,7 +17,7 @@
 set -euo pipefail
 
 pkg_name="google-noto-fonts"
-font_dir="notofonts.github.io-noto-monthly-release-24.5.1"
+font_dir="notofonts.github.io-noto-monthly-release-24.6.1"
 
 # Used to extract the tarball to generate the specfile.
 # You can comment this out while testing out changes to the script,
@@ -95,7 +95,6 @@ ls $font_dir/fonts | sed -e 's:Noto::' -e 's:-.*\..tf::' -e 's:\..tf::' -e 's:\.
 	sed -i "s/@LIST_OF_SUBPACKAGES@/Requires:       $packagename\n@LIST_OF_SUBPACKAGES@/" $pkg_name.spec
 	sed -i "s/@SUBPACKAGE_HEADERS@/%package -n $packagename\n@SUBPACKAGE_HEADERS@/" $pkg_name.spec
 	sed -i "s/@SUBPACKAGE_HEADERS@/Summary:        $summary\n@SUBPACKAGE_HEADERS@/" $pkg_name.spec
-	sed -i "s;@SUBPACKAGE_HEADERS@;Group:          System/X11/Fonts\n@SUBPACKAGE_HEADERS@;" $pkg_name.spec
 	for i in "${OBSOLETES[@]}"; do
 		sed -i "s/@SUBPACKAGE_HEADERS@/Obsoletes:      $i < %{version}\n@SUBPACKAGE_HEADERS@/" $pkg_name.spec
 		sed -i "s/@SUBPACKAGE_HEADERS@/Provides:       $i = %{version}\n@SUBPACKAGE_HEADERS@/" $pkg_name.spec

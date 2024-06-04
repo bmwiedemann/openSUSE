@@ -17,7 +17,7 @@
 
 
 %define hyear     2024
-%define hmonth    05
+%define hmonth    06
 %define hday      01
 
 %define src_name  NotoFonts
@@ -29,10 +29,9 @@ Version:        %{hyear}%{hmonth}%{hday}
 Release:        0
 Summary:        All Noto Fonts except CJK and Emoji
 License:        OFL-1.1
-Group:          System/X11/Fonts
 URL:            https://notofonts.github.io/
-# https://github.com/notofonts/notofonts.github.io/archive/refs/tags/noto-monthly-release-24.5.1.tar.gz
-Source0:        notofonts.github.io-noto-monthly-release-24.5.1.tar.gz
+# https://github.com/notofonts/notofonts.github.io/archive/refs/tags/noto-monthly-release-24.6.1.tar.gz
+Source0:        notofonts.github.io-noto-monthly-release-24.6.1.tar.gz
 Source1:        generate-specfile.sh
 Source2:        README.FAQ
 Source3:        README.maintain
@@ -50,15 +49,15 @@ thicknesses) across languages. This package contains most noto fonts except for 
 %prep
 %autosetup -c
 
-cp notofonts.github.io-noto-monthly-release-24.5.1/fonts/LICENSE .
+cp notofonts.github.io-noto-monthly-release-24.6.1/fonts/LICENSE .
 
 %build
 
 %install
 
-rm -r notofonts.github.io-noto-monthly-release-24.5.1/fonts/Noto*Test
+rm -r notofonts.github.io-noto-monthly-release-24.6.1/fonts/Noto*Test
 
-install -Dm 644 -t %{buildroot}%{_ttfontsdir} notofonts.github.io-noto-monthly-release-24.5.1/fonts/*/hinted/ttf/*
+install -Dm 644 -t %{buildroot}%{_ttfontsdir} notofonts.github.io-noto-monthly-release-24.6.1/fonts/*/hinted/ttf/*
 
 @SUBPACKAGE_SCRIPTLETS@
 %files

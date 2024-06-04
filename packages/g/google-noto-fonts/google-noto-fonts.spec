@@ -17,7 +17,7 @@
 
 
 %define hyear     2024
-%define hmonth    05
+%define hmonth    06
 %define hday      01
 
 %define src_name  NotoFonts
@@ -29,10 +29,9 @@ Version:        %{hyear}%{hmonth}%{hday}
 Release:        0
 Summary:        All Noto Fonts except CJK and Emoji
 License:        OFL-1.1
-Group:          System/X11/Fonts
 URL:            https://notofonts.github.io/
-# https://github.com/notofonts/notofonts.github.io/archive/refs/tags/noto-monthly-release-24.5.1.tar.gz
-Source0:        notofonts.github.io-noto-monthly-release-24.5.1.tar.gz
+# https://github.com/notofonts/notofonts.github.io/archive/refs/tags/noto-monthly-release-24.6.1.tar.gz
+Source0:        notofonts.github.io-noto-monthly-release-24.6.1.tar.gz
 Source1:        generate-specfile.sh
 Source2:        README.FAQ
 Source3:        README.maintain
@@ -238,6 +237,7 @@ Requires:       google-noto-serif-toto-fonts
 Requires:       google-noto-serif-vithkuqi-fonts
 Requires:       google-noto-serif-yezidi-fonts
 Requires:       google-noto-traditionalnushu-fonts
+Requires:       google-noto-znamennymusicalnotation-fonts
 
 %description
 Noto's design goal is to achieve visual harmonization (e.g., compatible heights and stroke
@@ -245,7 +245,6 @@ thicknesses) across languages. This package contains most noto fonts except for 
 
 %package -n google-noto-fangsongkssrotated-fonts
 Summary:        Noto Fangsong KSSRotated Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-fangsongkssrotated < %{version}
 Provides:       noto-fangsongkssrotated = %{version}
 Obsoletes:      noto-fangsongkssrotated-fonts < %{version}
@@ -259,7 +258,6 @@ FangsongKSSRotated font, hinted.
 
 %package -n google-noto-fangsongkssvertical-fonts
 Summary:        Noto Fangsong KSSVertical Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-fangsongkssvertical < %{version}
 Provides:       noto-fangsongkssvertical = %{version}
 Obsoletes:      noto-fangsongkssvertical-fonts < %{version}
@@ -273,7 +271,6 @@ FangsongKSSVertical font, hinted.
 
 %package -n google-noto-kufiarabic-fonts
 Summary:        Noto Kufi Arabic Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-kufiarabic < %{version}
 Provides:       noto-kufiarabic = %{version}
 Obsoletes:      noto-kufiarabic-fonts < %{version}
@@ -287,7 +284,6 @@ KufiArabic font, hinted.
 
 %package -n google-noto-music-fonts
 Summary:        Noto Music Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-music < %{version}
 Provides:       noto-music = %{version}
 Obsoletes:      noto-music-fonts < %{version}
@@ -301,7 +297,6 @@ Music font, hinted.
 
 %package -n google-noto-naskharabic-fonts
 Summary:        Noto Naskh Arabic Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-naskharabic < %{version}
 Provides:       noto-naskharabic = %{version}
 Obsoletes:      noto-naskharabic-fonts < %{version}
@@ -319,7 +314,6 @@ NaskhArabic font, hinted.
 
 %package -n google-noto-nastaliqurdu-fonts
 Summary:        Noto Nastaliq Urdu Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-nastaliqurdu < %{version}
 Provides:       noto-nastaliqurdu = %{version}
 Obsoletes:      noto-nastaliqurdu-fonts < %{version}
@@ -333,7 +327,6 @@ NastaliqUrdu font, hinted.
 
 %package -n google-noto-rashihebrew-fonts
 Summary:        Noto Rashi Hebrew Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-rashihebrew < %{version}
 Provides:       noto-rashihebrew = %{version}
 Obsoletes:      noto-rashihebrew-fonts < %{version}
@@ -347,7 +340,6 @@ RashiHebrew font, hinted.
 
 %package -n google-noto-sans-fonts
 Summary:        Noto Sans Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans < %{version}
 Provides:       noto-sans = %{version}
 Obsoletes:      noto-sans-fonts < %{version}
@@ -365,7 +357,6 @@ Sans font, hinted.
 
 %package -n google-noto-sans-adlam-fonts
 Summary:        Noto Adlam Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-adlam < %{version}
 Provides:       noto-sans-adlam = %{version}
 Obsoletes:      noto-sans-adlam-fonts < %{version}
@@ -379,7 +370,6 @@ Adlam Sans Serif font, hinted.
 
 %package -n google-noto-sans-adlamunjoined-fonts
 Summary:        Noto Adlam Unjoined Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-adlamunjoined < %{version}
 Provides:       noto-sans-adlamunjoined = %{version}
 Obsoletes:      noto-sans-adlamunjoined-fonts < %{version}
@@ -393,7 +383,6 @@ AdlamUnjoined Sans Serif font, hinted.
 
 %package -n google-noto-sans-anatolianhieroglyphs-fonts
 Summary:        Noto Anatolian Hieroglyphs Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-anatolianhieroglyphs < %{version}
 Provides:       noto-sans-anatolianhieroglyphs = %{version}
 Obsoletes:      noto-sans-anatolianhieroglyphs-fonts < %{version}
@@ -407,7 +396,6 @@ AnatolianHieroglyphs Sans Serif font, hinted.
 
 %package -n google-noto-sans-arabic-fonts
 Summary:        Noto Arabic Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-arabic < %{version}
 Provides:       noto-sans-arabic = %{version}
 Obsoletes:      noto-sans-arabic-fonts < %{version}
@@ -425,7 +413,6 @@ Arabic Sans Serif font, hinted.
 
 %package -n google-noto-sans-armenian-fonts
 Summary:        Noto Armenian Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-armenian < %{version}
 Provides:       noto-sans-armenian = %{version}
 Obsoletes:      noto-sans-armenian-fonts < %{version}
@@ -439,7 +426,6 @@ Armenian Sans Serif font, hinted.
 
 %package -n google-noto-sans-avestan-fonts
 Summary:        Noto Avestan Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-avestan < %{version}
 Provides:       noto-sans-avestan = %{version}
 Obsoletes:      noto-sans-avestan-fonts < %{version}
@@ -453,7 +439,6 @@ Avestan Sans Serif font, hinted.
 
 %package -n google-noto-sans-balinese-fonts
 Summary:        Noto Balinese Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-balinese < %{version}
 Provides:       noto-sans-balinese = %{version}
 Obsoletes:      noto-sans-balinese-fonts < %{version}
@@ -467,7 +452,6 @@ Balinese Sans Serif font, hinted.
 
 %package -n google-noto-sans-bamum-fonts
 Summary:        Noto Bamum Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-bamum < %{version}
 Provides:       noto-sans-bamum = %{version}
 Obsoletes:      noto-sans-bamum-fonts < %{version}
@@ -481,7 +465,6 @@ Bamum Sans Serif font, hinted.
 
 %package -n google-noto-sans-bassavah-fonts
 Summary:        Noto Bassa Vah Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-bassavah < %{version}
 Provides:       noto-sans-bassavah = %{version}
 Obsoletes:      noto-sans-bassavah-fonts < %{version}
@@ -495,7 +478,6 @@ BassaVah Sans Serif font, hinted.
 
 %package -n google-noto-sans-batak-fonts
 Summary:        Noto Batak Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-batak < %{version}
 Provides:       noto-sans-batak = %{version}
 Obsoletes:      noto-sans-batak-fonts < %{version}
@@ -509,7 +491,6 @@ Batak Sans Serif font, hinted.
 
 %package -n google-noto-sans-bengali-fonts
 Summary:        Noto Bengali Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-bengali < %{version}
 Provides:       noto-sans-bengali = %{version}
 Obsoletes:      noto-sans-bengali-fonts < %{version}
@@ -527,7 +508,6 @@ Bengali Sans Serif font, hinted.
 
 %package -n google-noto-sans-bhaiksuki-fonts
 Summary:        Noto Bhaiksuki Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-bhaiksuki < %{version}
 Provides:       noto-sans-bhaiksuki = %{version}
 Obsoletes:      noto-sans-bhaiksuki-fonts < %{version}
@@ -541,7 +521,6 @@ Bhaiksuki Sans Serif font, hinted.
 
 %package -n google-noto-sans-brahmi-fonts
 Summary:        Noto Brahmi Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-brahmi < %{version}
 Provides:       noto-sans-brahmi = %{version}
 Obsoletes:      noto-sans-brahmi-fonts < %{version}
@@ -555,7 +534,6 @@ Brahmi Sans Serif font, hinted.
 
 %package -n google-noto-sans-buginese-fonts
 Summary:        Noto Buginese Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-buginese < %{version}
 Provides:       noto-sans-buginese = %{version}
 Obsoletes:      noto-sans-buginese-fonts < %{version}
@@ -569,7 +547,6 @@ Buginese Sans Serif font, hinted.
 
 %package -n google-noto-sans-buhid-fonts
 Summary:        Noto Buhid Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-buhid < %{version}
 Provides:       noto-sans-buhid = %{version}
 Obsoletes:      noto-sans-buhid-fonts < %{version}
@@ -583,7 +560,6 @@ Buhid Sans Serif font, hinted.
 
 %package -n google-noto-sans-canadianaboriginal-fonts
 Summary:        Noto Canadian Aboriginal Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-canadianaboriginal < %{version}
 Provides:       noto-sans-canadianaboriginal = %{version}
 Obsoletes:      noto-sans-canadianaboriginal-fonts < %{version}
@@ -597,7 +573,6 @@ CanadianAboriginal Sans Serif font, hinted.
 
 %package -n google-noto-sans-carian-fonts
 Summary:        Noto Carian Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-carian < %{version}
 Provides:       noto-sans-carian = %{version}
 Obsoletes:      noto-sans-carian-fonts < %{version}
@@ -611,7 +586,6 @@ Carian Sans Serif font, hinted.
 
 %package -n google-noto-sans-caucasianalbanian-fonts
 Summary:        Noto Caucasian Albanian Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-caucasianalbanian < %{version}
 Provides:       noto-sans-caucasianalbanian = %{version}
 Obsoletes:      noto-sans-caucasianalbanian-fonts < %{version}
@@ -625,7 +599,6 @@ CaucasianAlbanian Sans Serif font, hinted.
 
 %package -n google-noto-sans-chakma-fonts
 Summary:        Noto Chakma Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-chakma < %{version}
 Provides:       noto-sans-chakma = %{version}
 Obsoletes:      noto-sans-chakma-fonts < %{version}
@@ -639,7 +612,6 @@ Chakma Sans Serif font, hinted.
 
 %package -n google-noto-sans-cham-fonts
 Summary:        Noto Cham Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-cham < %{version}
 Provides:       noto-sans-cham = %{version}
 Obsoletes:      noto-sans-cham-fonts < %{version}
@@ -653,7 +625,6 @@ Cham Sans Serif font, hinted.
 
 %package -n google-noto-sans-cherokee-fonts
 Summary:        Noto Cherokee Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-cherokee < %{version}
 Provides:       noto-sans-cherokee = %{version}
 Obsoletes:      noto-sans-cherokee-fonts < %{version}
@@ -667,7 +638,6 @@ Cherokee Sans Serif font, hinted.
 
 %package -n google-noto-sans-chorasmian-fonts
 Summary:        Noto Chorasmian Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-chorasmian < %{version}
 Provides:       noto-sans-chorasmian = %{version}
 Obsoletes:      noto-sans-chorasmian-fonts < %{version}
@@ -681,7 +651,6 @@ Chorasmian Sans Serif font, hinted.
 
 %package -n google-noto-sans-coptic-fonts
 Summary:        Noto Coptic Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-coptic < %{version}
 Provides:       noto-sans-coptic = %{version}
 Obsoletes:      noto-sans-coptic-fonts < %{version}
@@ -695,7 +664,6 @@ Coptic Sans Serif font, hinted.
 
 %package -n google-noto-sans-cuneiform-fonts
 Summary:        Noto Cuneiform Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-cuneiform < %{version}
 Provides:       noto-sans-cuneiform = %{version}
 Obsoletes:      noto-sans-cuneiform-fonts < %{version}
@@ -709,7 +677,6 @@ Cuneiform Sans Serif font, hinted.
 
 %package -n google-noto-sans-cypriot-fonts
 Summary:        Noto Cypriot Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-cypriot < %{version}
 Provides:       noto-sans-cypriot = %{version}
 Obsoletes:      noto-sans-cypriot-fonts < %{version}
@@ -723,7 +690,6 @@ Cypriot Sans Serif font, hinted.
 
 %package -n google-noto-sans-cyprominoan-fonts
 Summary:        Noto Cypro Minoan Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-cyprominoan < %{version}
 Provides:       noto-sans-cyprominoan = %{version}
 Obsoletes:      noto-sans-cyprominoan-fonts < %{version}
@@ -737,7 +703,6 @@ CyproMinoan Sans Serif font, hinted.
 
 %package -n google-noto-sans-deseret-fonts
 Summary:        Noto Deseret Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-deseret < %{version}
 Provides:       noto-sans-deseret = %{version}
 Obsoletes:      noto-sans-deseret-fonts < %{version}
@@ -751,7 +716,6 @@ Deseret Sans Serif font, hinted.
 
 %package -n google-noto-sans-devanagari-fonts
 Summary:        Noto Devanagari Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-devanagari < %{version}
 Provides:       noto-sans-devanagari = %{version}
 Obsoletes:      noto-sans-devanagari-fonts < %{version}
@@ -769,7 +733,6 @@ Devanagari Sans Serif font, hinted.
 
 %package -n google-noto-sans-duployan-fonts
 Summary:        Noto Duployan Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-duployan < %{version}
 Provides:       noto-sans-duployan = %{version}
 Obsoletes:      noto-sans-duployan-fonts < %{version}
@@ -783,7 +746,6 @@ Duployan Sans Serif font, hinted.
 
 %package -n google-noto-sans-egyptianhieroglyphs-fonts
 Summary:        Noto Egyptian Hieroglyphs Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-egyptianhieroglyphs < %{version}
 Provides:       noto-sans-egyptianhieroglyphs = %{version}
 Obsoletes:      noto-sans-egyptianhieroglyphs-fonts < %{version}
@@ -797,7 +759,6 @@ EgyptianHieroglyphs Sans Serif font, hinted.
 
 %package -n google-noto-sans-elbasan-fonts
 Summary:        Noto Elbasan Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-elbasan < %{version}
 Provides:       noto-sans-elbasan = %{version}
 Obsoletes:      noto-sans-elbasan-fonts < %{version}
@@ -811,7 +772,6 @@ Elbasan Sans Serif font, hinted.
 
 %package -n google-noto-sans-elymaic-fonts
 Summary:        Noto Elymaic Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-elymaic < %{version}
 Provides:       noto-sans-elymaic = %{version}
 Obsoletes:      noto-sans-elymaic-fonts < %{version}
@@ -825,7 +785,6 @@ Elymaic Sans Serif font, hinted.
 
 %package -n google-noto-sans-ethiopic-fonts
 Summary:        Noto Ethiopic Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-ethiopic < %{version}
 Provides:       noto-sans-ethiopic = %{version}
 Obsoletes:      noto-sans-ethiopic-fonts < %{version}
@@ -839,7 +798,6 @@ Ethiopic Sans Serif font, hinted.
 
 %package -n google-noto-sans-georgian-fonts
 Summary:        Noto Georgian Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-georgian < %{version}
 Provides:       noto-sans-georgian = %{version}
 Obsoletes:      noto-sans-georgian-fonts < %{version}
@@ -853,7 +811,6 @@ Georgian Sans Serif font, hinted.
 
 %package -n google-noto-sans-glagolitic-fonts
 Summary:        Noto Glagolitic Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-glagolitic < %{version}
 Provides:       noto-sans-glagolitic = %{version}
 Obsoletes:      noto-sans-glagolitic-fonts < %{version}
@@ -867,7 +824,6 @@ Glagolitic Sans Serif font, hinted.
 
 %package -n google-noto-sans-gothic-fonts
 Summary:        Noto Gothic Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-gothic < %{version}
 Provides:       noto-sans-gothic = %{version}
 Obsoletes:      noto-sans-gothic-fonts < %{version}
@@ -881,7 +837,6 @@ Gothic Sans Serif font, hinted.
 
 %package -n google-noto-sans-grantha-fonts
 Summary:        Noto Grantha Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-grantha < %{version}
 Provides:       noto-sans-grantha = %{version}
 Obsoletes:      noto-sans-grantha-fonts < %{version}
@@ -895,7 +850,6 @@ Grantha Sans Serif font, hinted.
 
 %package -n google-noto-sans-gujarati-fonts
 Summary:        Noto Gujarati Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-gujarati < %{version}
 Provides:       noto-sans-gujarati = %{version}
 Obsoletes:      noto-sans-gujarati-fonts < %{version}
@@ -913,7 +867,6 @@ Gujarati Sans Serif font, hinted.
 
 %package -n google-noto-sans-gunjalagondi-fonts
 Summary:        Noto Gunjala Gondi Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-gunjalagondi < %{version}
 Provides:       noto-sans-gunjalagondi = %{version}
 Obsoletes:      noto-sans-gunjalagondi-fonts < %{version}
@@ -927,7 +880,6 @@ GunjalaGondi Sans Serif font, hinted.
 
 %package -n google-noto-sans-gurmukhi-fonts
 Summary:        Noto Gurmukhi Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-gurmukhi < %{version}
 Provides:       noto-sans-gurmukhi = %{version}
 Obsoletes:      noto-sans-gurmukhi-fonts < %{version}
@@ -945,7 +897,6 @@ Gurmukhi Sans Serif font, hinted.
 
 %package -n google-noto-sans-hanifirohingya-fonts
 Summary:        Noto Hanifi Rohingya Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-hanifirohingya < %{version}
 Provides:       noto-sans-hanifirohingya = %{version}
 Obsoletes:      noto-sans-hanifirohingya-fonts < %{version}
@@ -959,7 +910,6 @@ HanifiRohingya Sans Serif font, hinted.
 
 %package -n google-noto-sans-hanunoo-fonts
 Summary:        Noto Hanunoo Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-hanunoo < %{version}
 Provides:       noto-sans-hanunoo = %{version}
 Obsoletes:      noto-sans-hanunoo-fonts < %{version}
@@ -973,7 +923,6 @@ Hanunoo Sans Serif font, hinted.
 
 %package -n google-noto-sans-hatran-fonts
 Summary:        Noto Hatran Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-hatran < %{version}
 Provides:       noto-sans-hatran = %{version}
 Obsoletes:      noto-sans-hatran-fonts < %{version}
@@ -987,7 +936,6 @@ Hatran Sans Serif font, hinted.
 
 %package -n google-noto-sans-hebrew-fonts
 Summary:        Noto Hebrew Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-hebrew < %{version}
 Provides:       noto-sans-hebrew = %{version}
 Obsoletes:      noto-sans-hebrew-fonts < %{version}
@@ -1009,7 +957,6 @@ Hebrew Sans Serif font, hinted.
 
 %package -n google-noto-sans-imperialaramaic-fonts
 Summary:        Noto Imperial Aramaic Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-imperialaramaic < %{version}
 Provides:       noto-sans-imperialaramaic = %{version}
 Obsoletes:      noto-sans-imperialaramaic-fonts < %{version}
@@ -1023,7 +970,6 @@ ImperialAramaic Sans Serif font, hinted.
 
 %package -n google-noto-sans-indicsiyaqnumbers-fonts
 Summary:        Noto Indic Siyaq Numbers Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-indicsiyaqnumbers < %{version}
 Provides:       noto-sans-indicsiyaqnumbers = %{version}
 Obsoletes:      noto-sans-indicsiyaqnumbers-fonts < %{version}
@@ -1037,7 +983,6 @@ IndicSiyaqNumbers Sans Serif font, hinted.
 
 %package -n google-noto-sans-inscriptionalpahlavi-fonts
 Summary:        Noto Inscriptional Pahlavi Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-inscriptionalpahlavi < %{version}
 Provides:       noto-sans-inscriptionalpahlavi = %{version}
 Obsoletes:      noto-sans-inscriptionalpahlavi-fonts < %{version}
@@ -1051,7 +996,6 @@ InscriptionalPahlavi Sans Serif font, hinted.
 
 %package -n google-noto-sans-inscriptionalparthian-fonts
 Summary:        Noto Inscriptional Parthian Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-inscriptionalparthian < %{version}
 Provides:       noto-sans-inscriptionalparthian = %{version}
 Obsoletes:      noto-sans-inscriptionalparthian-fonts < %{version}
@@ -1065,7 +1009,6 @@ InscriptionalParthian Sans Serif font, hinted.
 
 %package -n google-noto-sans-javanese-fonts
 Summary:        Noto Javanese Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-javanese < %{version}
 Provides:       noto-sans-javanese = %{version}
 Obsoletes:      noto-sans-javanese-fonts < %{version}
@@ -1079,7 +1022,6 @@ Javanese Sans Serif font, hinted.
 
 %package -n google-noto-sans-kaithi-fonts
 Summary:        Noto Kaithi Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-kaithi < %{version}
 Provides:       noto-sans-kaithi = %{version}
 Obsoletes:      noto-sans-kaithi-fonts < %{version}
@@ -1093,7 +1035,6 @@ Kaithi Sans Serif font, hinted.
 
 %package -n google-noto-sans-kannada-fonts
 Summary:        Noto Kannada Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-kannada < %{version}
 Provides:       noto-sans-kannada = %{version}
 Obsoletes:      noto-sans-kannada-fonts < %{version}
@@ -1111,7 +1052,6 @@ Kannada Sans Serif font, hinted.
 
 %package -n google-noto-sans-kawi-fonts
 Summary:        Noto Kawi Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-kawi < %{version}
 Provides:       noto-sans-kawi = %{version}
 Obsoletes:      noto-sans-kawi-fonts < %{version}
@@ -1125,7 +1065,6 @@ Kawi Sans Serif font, hinted.
 
 %package -n google-noto-sans-kayahli-fonts
 Summary:        Noto Kayah Li Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-kayahli < %{version}
 Provides:       noto-sans-kayahli = %{version}
 Obsoletes:      noto-sans-kayahli-fonts < %{version}
@@ -1139,7 +1078,6 @@ KayahLi Sans Serif font, hinted.
 
 %package -n google-noto-sans-kharoshthi-fonts
 Summary:        Noto Kharoshthi Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-kharoshthi < %{version}
 Provides:       noto-sans-kharoshthi = %{version}
 Obsoletes:      noto-sans-kharoshthi-fonts < %{version}
@@ -1153,7 +1091,6 @@ Kharoshthi Sans Serif font, hinted.
 
 %package -n google-noto-sans-khmer-fonts
 Summary:        Noto Khmer Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-khmer < %{version}
 Provides:       noto-sans-khmer = %{version}
 Obsoletes:      noto-sans-khmer-fonts < %{version}
@@ -1171,7 +1108,6 @@ Khmer Sans Serif font, hinted.
 
 %package -n google-noto-sans-khojki-fonts
 Summary:        Noto Khojki Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-khojki < %{version}
 Provides:       noto-sans-khojki = %{version}
 Obsoletes:      noto-sans-khojki-fonts < %{version}
@@ -1185,7 +1121,6 @@ Khojki Sans Serif font, hinted.
 
 %package -n google-noto-sans-khudawadi-fonts
 Summary:        Noto Khudawadi Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-khudawadi < %{version}
 Provides:       noto-sans-khudawadi = %{version}
 Obsoletes:      noto-sans-khudawadi-fonts < %{version}
@@ -1199,7 +1134,6 @@ Khudawadi Sans Serif font, hinted.
 
 %package -n google-noto-sans-lao-fonts
 Summary:        Noto Lao Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-lao < %{version}
 Provides:       noto-sans-lao = %{version}
 Obsoletes:      noto-sans-lao-fonts < %{version}
@@ -1217,7 +1151,6 @@ Lao Sans Serif font, hinted.
 
 %package -n google-noto-sans-laolooped-fonts
 Summary:        Noto Lao Looped Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-loopedlao < %{version}
 Provides:       noto-loopedlao = %{version}
 Obsoletes:      noto-loopedlao-fonts < %{version}
@@ -1235,7 +1168,6 @@ LaoLooped Sans Serif font, hinted.
 
 %package -n google-noto-sans-lepcha-fonts
 Summary:        Noto Lepcha Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-lepcha < %{version}
 Provides:       noto-sans-lepcha = %{version}
 Obsoletes:      noto-sans-lepcha-fonts < %{version}
@@ -1249,7 +1181,6 @@ Lepcha Sans Serif font, hinted.
 
 %package -n google-noto-sans-limbu-fonts
 Summary:        Noto Limbu Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-limbu < %{version}
 Provides:       noto-sans-limbu = %{version}
 Obsoletes:      noto-sans-limbu-fonts < %{version}
@@ -1263,7 +1194,6 @@ Limbu Sans Serif font, hinted.
 
 %package -n google-noto-sans-lineara-fonts
 Summary:        Noto Linear A Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-lineara < %{version}
 Provides:       noto-sans-lineara = %{version}
 Obsoletes:      noto-sans-lineara-fonts < %{version}
@@ -1277,7 +1207,6 @@ LinearA Sans Serif font, hinted.
 
 %package -n google-noto-sans-linearb-fonts
 Summary:        Noto Linear B Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-linearb < %{version}
 Provides:       noto-sans-linearb = %{version}
 Obsoletes:      noto-sans-linearb-fonts < %{version}
@@ -1291,7 +1220,6 @@ LinearB Sans Serif font, hinted.
 
 %package -n google-noto-sans-lisu-fonts
 Summary:        Noto Lisu Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-lisu < %{version}
 Provides:       noto-sans-lisu = %{version}
 Obsoletes:      noto-sans-lisu-fonts < %{version}
@@ -1305,7 +1233,6 @@ Lisu Sans Serif font, hinted.
 
 %package -n google-noto-sans-lycian-fonts
 Summary:        Noto Lycian Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-lycian < %{version}
 Provides:       noto-sans-lycian = %{version}
 Obsoletes:      noto-sans-lycian-fonts < %{version}
@@ -1319,7 +1246,6 @@ Lycian Sans Serif font, hinted.
 
 %package -n google-noto-sans-lydian-fonts
 Summary:        Noto Lydian Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-lydian < %{version}
 Provides:       noto-sans-lydian = %{version}
 Obsoletes:      noto-sans-lydian-fonts < %{version}
@@ -1333,7 +1259,6 @@ Lydian Sans Serif font, hinted.
 
 %package -n google-noto-sans-mahajani-fonts
 Summary:        Noto Mahajani Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-mahajani < %{version}
 Provides:       noto-sans-mahajani = %{version}
 Obsoletes:      noto-sans-mahajani-fonts < %{version}
@@ -1347,7 +1272,6 @@ Mahajani Sans Serif font, hinted.
 
 %package -n google-noto-sans-malayalam-fonts
 Summary:        Noto Malayalam Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-malayalam < %{version}
 Provides:       noto-sans-malayalam = %{version}
 Obsoletes:      noto-sans-malayalam-fonts < %{version}
@@ -1365,7 +1289,6 @@ Malayalam Sans Serif font, hinted.
 
 %package -n google-noto-sans-mandaic-fonts
 Summary:        Noto Mandaic Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-mandaic < %{version}
 Provides:       noto-sans-mandaic = %{version}
 Obsoletes:      noto-sans-mandaic-fonts < %{version}
@@ -1379,7 +1302,6 @@ Mandaic Sans Serif font, hinted.
 
 %package -n google-noto-sans-manichaean-fonts
 Summary:        Noto Manichaean Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-manichaean < %{version}
 Provides:       noto-sans-manichaean = %{version}
 Obsoletes:      noto-sans-manichaean-fonts < %{version}
@@ -1393,7 +1315,6 @@ Manichaean Sans Serif font, hinted.
 
 %package -n google-noto-sans-marchen-fonts
 Summary:        Noto Marchen Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-marchen < %{version}
 Provides:       noto-sans-marchen = %{version}
 Obsoletes:      noto-sans-marchen-fonts < %{version}
@@ -1407,7 +1328,6 @@ Marchen Sans Serif font, hinted.
 
 %package -n google-noto-sans-masaramgondi-fonts
 Summary:        Noto Masaram Gondi Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-masaramgondi < %{version}
 Provides:       noto-sans-masaramgondi = %{version}
 Obsoletes:      noto-sans-masaramgondi-fonts < %{version}
@@ -1421,7 +1341,6 @@ MasaramGondi Sans Serif font, hinted.
 
 %package -n google-noto-sans-math-fonts
 Summary:        Noto Math Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-math < %{version}
 Provides:       noto-sans-math = %{version}
 Obsoletes:      noto-sans-math-fonts < %{version}
@@ -1435,7 +1354,6 @@ Math Sans Serif font, hinted.
 
 %package -n google-noto-sans-mayannumerals-fonts
 Summary:        Noto Mayan Numerals Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-mayannumerals < %{version}
 Provides:       noto-sans-mayannumerals = %{version}
 Obsoletes:      noto-sans-mayannumerals-fonts < %{version}
@@ -1449,7 +1367,6 @@ MayanNumerals Sans Serif font, hinted.
 
 %package -n google-noto-sans-medefaidrin-fonts
 Summary:        Noto Medefaidrin Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-medefaidrin < %{version}
 Provides:       noto-sans-medefaidrin = %{version}
 Obsoletes:      noto-sans-medefaidrin-fonts < %{version}
@@ -1463,7 +1380,6 @@ Medefaidrin Sans Serif font, hinted.
 
 %package -n google-noto-sans-meeteimayek-fonts
 Summary:        Noto Meetei Mayek Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-meeteimayek < %{version}
 Provides:       noto-sans-meeteimayek = %{version}
 Obsoletes:      noto-sans-meeteimayek-fonts < %{version}
@@ -1477,7 +1393,6 @@ MeeteiMayek Sans Serif font, hinted.
 
 %package -n google-noto-sans-mendekikakui-fonts
 Summary:        Noto Mende Kikakui Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-mendekikakui < %{version}
 Provides:       noto-sans-mendekikakui = %{version}
 Obsoletes:      noto-sans-mendekikakui-fonts < %{version}
@@ -1491,7 +1406,6 @@ MendeKikakui Sans Serif font, hinted.
 
 %package -n google-noto-sans-meroitic-fonts
 Summary:        Noto Meroitic Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-meroitic < %{version}
 Provides:       noto-sans-meroitic = %{version}
 Obsoletes:      noto-sans-meroitic-fonts < %{version}
@@ -1505,7 +1419,6 @@ Meroitic Sans Serif font, hinted.
 
 %package -n google-noto-sans-miao-fonts
 Summary:        Noto Miao Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-miao < %{version}
 Provides:       noto-sans-miao = %{version}
 Obsoletes:      noto-sans-miao-fonts < %{version}
@@ -1519,7 +1432,6 @@ Miao Sans Serif font, hinted.
 
 %package -n google-noto-sans-modi-fonts
 Summary:        Noto Modi Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-modi < %{version}
 Provides:       noto-sans-modi = %{version}
 Obsoletes:      noto-sans-modi-fonts < %{version}
@@ -1533,7 +1445,6 @@ Modi Sans Serif font, hinted.
 
 %package -n google-noto-sans-mongolian-fonts
 Summary:        Noto Mongolian Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-mongolian < %{version}
 Provides:       noto-sans-mongolian = %{version}
 Obsoletes:      noto-sans-mongolian-fonts < %{version}
@@ -1547,7 +1458,6 @@ Mongolian Sans Serif font, hinted.
 
 %package -n google-noto-sans-mono-fonts
 Summary:        Noto Mono Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-mono < %{version}
 Provides:       noto-sans-mono = %{version}
 Obsoletes:      noto-sans-mono-fonts < %{version}
@@ -1565,7 +1475,6 @@ Mono Sans Serif font, hinted.
 
 %package -n google-noto-sans-mro-fonts
 Summary:        Noto Mro Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-mro < %{version}
 Provides:       noto-sans-mro = %{version}
 Obsoletes:      noto-sans-mro-fonts < %{version}
@@ -1579,7 +1488,6 @@ Mro Sans Serif font, hinted.
 
 %package -n google-noto-sans-multani-fonts
 Summary:        Noto Multani Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-multani < %{version}
 Provides:       noto-sans-multani = %{version}
 Obsoletes:      noto-sans-multani-fonts < %{version}
@@ -1593,7 +1501,6 @@ Multani Sans Serif font, hinted.
 
 %package -n google-noto-sans-myanmar-fonts
 Summary:        Noto Myanmar Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-myanmar < %{version}
 Provides:       noto-sans-myanmar = %{version}
 Obsoletes:      noto-sans-myanmar-fonts < %{version}
@@ -1611,7 +1518,6 @@ Myanmar Sans Serif font, hinted.
 
 %package -n google-noto-sans-nabataean-fonts
 Summary:        Noto Nabataean Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-nabataean < %{version}
 Provides:       noto-sans-nabataean = %{version}
 Obsoletes:      noto-sans-nabataean-fonts < %{version}
@@ -1625,7 +1531,6 @@ Nabataean Sans Serif font, hinted.
 
 %package -n google-noto-sans-nagmundari-fonts
 Summary:        Noto Nag Mundari Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-nagmundari < %{version}
 Provides:       noto-sans-nagmundari = %{version}
 Obsoletes:      noto-sans-nagmundari-fonts < %{version}
@@ -1639,7 +1544,6 @@ NagMundari Sans Serif font, hinted.
 
 %package -n google-noto-sans-nandinagari-fonts
 Summary:        Noto Nandinagari Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-nandinagari < %{version}
 Provides:       noto-sans-nandinagari = %{version}
 Obsoletes:      noto-sans-nandinagari-fonts < %{version}
@@ -1653,7 +1557,6 @@ Nandinagari Sans Serif font, hinted.
 
 %package -n google-noto-sans-newa-fonts
 Summary:        Noto Newa Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-newa < %{version}
 Provides:       noto-sans-newa = %{version}
 Obsoletes:      noto-sans-newa-fonts < %{version}
@@ -1667,7 +1570,6 @@ Newa Sans Serif font, hinted.
 
 %package -n google-noto-sans-newtailue-fonts
 Summary:        Noto New Tai Lue Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-newtailue < %{version}
 Provides:       noto-sans-newtailue = %{version}
 Obsoletes:      noto-sans-newtailue-fonts < %{version}
@@ -1681,7 +1583,6 @@ NewTaiLue Sans Serif font, hinted.
 
 %package -n google-noto-sans-nko-fonts
 Summary:        Noto NKo Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-nko < %{version}
 Provides:       noto-sans-nko = %{version}
 Obsoletes:      noto-sans-nko-fonts < %{version}
@@ -1695,7 +1596,6 @@ NKo Sans Serif font, hinted.
 
 %package -n google-noto-sans-nkounjoined-fonts
 Summary:        Noto NKo Unjoined Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-nkounjoined < %{version}
 Provides:       noto-sans-nkounjoined = %{version}
 Obsoletes:      noto-sans-nkounjoined-fonts < %{version}
@@ -1709,7 +1609,6 @@ NKoUnjoined Sans Serif font, hinted.
 
 %package -n google-noto-sans-nushu-fonts
 Summary:        Noto Nushu Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-nushu < %{version}
 Provides:       noto-sans-nushu = %{version}
 Obsoletes:      noto-sans-nushu-fonts < %{version}
@@ -1723,7 +1622,6 @@ Nushu Sans Serif font, hinted.
 
 %package -n google-noto-sans-ogham-fonts
 Summary:        Noto Ogham Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-ogham < %{version}
 Provides:       noto-sans-ogham = %{version}
 Obsoletes:      noto-sans-ogham-fonts < %{version}
@@ -1737,7 +1635,6 @@ Ogham Sans Serif font, hinted.
 
 %package -n google-noto-sans-olchiki-fonts
 Summary:        Noto Ol Chiki Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-olchiki < %{version}
 Provides:       noto-sans-olchiki = %{version}
 Obsoletes:      noto-sans-olchiki-fonts < %{version}
@@ -1751,7 +1648,6 @@ OlChiki Sans Serif font, hinted.
 
 %package -n google-noto-sans-oldhungarian-fonts
 Summary:        Noto Old Hungarian Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-oldhungarian < %{version}
 Provides:       noto-sans-oldhungarian = %{version}
 Obsoletes:      noto-sans-oldhungarian-fonts < %{version}
@@ -1765,7 +1661,6 @@ OldHungarian Sans Serif font, hinted.
 
 %package -n google-noto-sans-olditalic-fonts
 Summary:        Noto Old Italic Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-olditalic < %{version}
 Provides:       noto-sans-olditalic = %{version}
 Obsoletes:      noto-sans-olditalic-fonts < %{version}
@@ -1779,7 +1674,6 @@ OldItalic Sans Serif font, hinted.
 
 %package -n google-noto-sans-oldnortharabian-fonts
 Summary:        Noto Old North Arabian Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-oldnortharabian < %{version}
 Provides:       noto-sans-oldnortharabian = %{version}
 Obsoletes:      noto-sans-oldnortharabian-fonts < %{version}
@@ -1793,7 +1687,6 @@ OldNorthArabian Sans Serif font, hinted.
 
 %package -n google-noto-sans-oldpermic-fonts
 Summary:        Noto Old Permic Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-oldpermic < %{version}
 Provides:       noto-sans-oldpermic = %{version}
 Obsoletes:      noto-sans-oldpermic-fonts < %{version}
@@ -1807,7 +1700,6 @@ OldPermic Sans Serif font, hinted.
 
 %package -n google-noto-sans-oldpersian-fonts
 Summary:        Noto Old Persian Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-oldpersian < %{version}
 Provides:       noto-sans-oldpersian = %{version}
 Obsoletes:      noto-sans-oldpersian-fonts < %{version}
@@ -1821,7 +1713,6 @@ OldPersian Sans Serif font, hinted.
 
 %package -n google-noto-sans-oldsogdian-fonts
 Summary:        Noto Old Sogdian Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-oldsogdian < %{version}
 Provides:       noto-sans-oldsogdian = %{version}
 Obsoletes:      noto-sans-oldsogdian-fonts < %{version}
@@ -1835,7 +1726,6 @@ OldSogdian Sans Serif font, hinted.
 
 %package -n google-noto-sans-oldsoutharabian-fonts
 Summary:        Noto Old South Arabian Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-oldsoutharabian < %{version}
 Provides:       noto-sans-oldsoutharabian = %{version}
 Obsoletes:      noto-sans-oldsoutharabian-fonts < %{version}
@@ -1849,7 +1739,6 @@ OldSouthArabian Sans Serif font, hinted.
 
 %package -n google-noto-sans-oldturkic-fonts
 Summary:        Noto Old Turkic Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-oldturkic < %{version}
 Provides:       noto-sans-oldturkic = %{version}
 Obsoletes:      noto-sans-oldturkic-fonts < %{version}
@@ -1863,7 +1752,6 @@ OldTurkic Sans Serif font, hinted.
 
 %package -n google-noto-sans-oriya-fonts
 Summary:        Noto Oriya Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-oriya < %{version}
 Provides:       noto-sans-oriya = %{version}
 Obsoletes:      noto-sans-oriya-fonts < %{version}
@@ -1881,7 +1769,6 @@ Oriya Sans Serif font, hinted.
 
 %package -n google-noto-sans-osage-fonts
 Summary:        Noto Osage Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-osage < %{version}
 Provides:       noto-sans-osage = %{version}
 Obsoletes:      noto-sans-osage-fonts < %{version}
@@ -1895,7 +1782,6 @@ Osage Sans Serif font, hinted.
 
 %package -n google-noto-sans-osmanya-fonts
 Summary:        Noto Osmanya Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-osmanya < %{version}
 Provides:       noto-sans-osmanya = %{version}
 Obsoletes:      noto-sans-osmanya-fonts < %{version}
@@ -1909,7 +1795,6 @@ Osmanya Sans Serif font, hinted.
 
 %package -n google-noto-sans-pahawhhmong-fonts
 Summary:        Noto Pahawh Hmong Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-pahawhhmong < %{version}
 Provides:       noto-sans-pahawhhmong = %{version}
 Obsoletes:      noto-sans-pahawhhmong-fonts < %{version}
@@ -1923,7 +1808,6 @@ PahawhHmong Sans Serif font, hinted.
 
 %package -n google-noto-sans-palmyrene-fonts
 Summary:        Noto Palmyrene Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-palmyrene < %{version}
 Provides:       noto-sans-palmyrene = %{version}
 Obsoletes:      noto-sans-palmyrene-fonts < %{version}
@@ -1937,7 +1821,6 @@ Palmyrene Sans Serif font, hinted.
 
 %package -n google-noto-sans-paucinhau-fonts
 Summary:        Noto Pau Cin Hau Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-paucinhau < %{version}
 Provides:       noto-sans-paucinhau = %{version}
 Obsoletes:      noto-sans-paucinhau-fonts < %{version}
@@ -1951,7 +1834,6 @@ PauCinHau Sans Serif font, hinted.
 
 %package -n google-noto-sans-phagspa-fonts
 Summary:        Noto Phags Pa Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-phagspa < %{version}
 Provides:       noto-sans-phagspa = %{version}
 Obsoletes:      noto-sans-phagspa-fonts < %{version}
@@ -1965,7 +1847,6 @@ PhagsPa Sans Serif font, hinted.
 
 %package -n google-noto-sans-phoenician-fonts
 Summary:        Noto Phoenician Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-phoenician < %{version}
 Provides:       noto-sans-phoenician = %{version}
 Obsoletes:      noto-sans-phoenician-fonts < %{version}
@@ -1979,7 +1860,6 @@ Phoenician Sans Serif font, hinted.
 
 %package -n google-noto-sans-psalterpahlavi-fonts
 Summary:        Noto Psalter Pahlavi Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-psalterpahlavi < %{version}
 Provides:       noto-sans-psalterpahlavi = %{version}
 Obsoletes:      noto-sans-psalterpahlavi-fonts < %{version}
@@ -1993,7 +1873,6 @@ PsalterPahlavi Sans Serif font, hinted.
 
 %package -n google-noto-sans-rejang-fonts
 Summary:        Noto Rejang Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-rejang < %{version}
 Provides:       noto-sans-rejang = %{version}
 Obsoletes:      noto-sans-rejang-fonts < %{version}
@@ -2007,7 +1886,6 @@ Rejang Sans Serif font, hinted.
 
 %package -n google-noto-sans-runic-fonts
 Summary:        Noto Runic Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-runic < %{version}
 Provides:       noto-sans-runic = %{version}
 Obsoletes:      noto-sans-runic-fonts < %{version}
@@ -2021,7 +1899,6 @@ Runic Sans Serif font, hinted.
 
 %package -n google-noto-sans-samaritan-fonts
 Summary:        Noto Samaritan Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-samaritan < %{version}
 Provides:       noto-sans-samaritan = %{version}
 Obsoletes:      noto-sans-samaritan-fonts < %{version}
@@ -2035,7 +1912,6 @@ Samaritan Sans Serif font, hinted.
 
 %package -n google-noto-sans-saurashtra-fonts
 Summary:        Noto Saurashtra Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-saurashtra < %{version}
 Provides:       noto-sans-saurashtra = %{version}
 Obsoletes:      noto-sans-saurashtra-fonts < %{version}
@@ -2049,7 +1925,6 @@ Saurashtra Sans Serif font, hinted.
 
 %package -n google-noto-sans-sharada-fonts
 Summary:        Noto Sharada Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-sharada < %{version}
 Provides:       noto-sans-sharada = %{version}
 Obsoletes:      noto-sans-sharada-fonts < %{version}
@@ -2063,7 +1938,6 @@ Sharada Sans Serif font, hinted.
 
 %package -n google-noto-sans-shavian-fonts
 Summary:        Noto Shavian Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-shavian < %{version}
 Provides:       noto-sans-shavian = %{version}
 Obsoletes:      noto-sans-shavian-fonts < %{version}
@@ -2077,7 +1951,6 @@ Shavian Sans Serif font, hinted.
 
 %package -n google-noto-sans-siddham-fonts
 Summary:        Noto Siddham Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-siddham < %{version}
 Provides:       noto-sans-siddham = %{version}
 Obsoletes:      noto-sans-siddham-fonts < %{version}
@@ -2091,7 +1964,6 @@ Siddham Sans Serif font, hinted.
 
 %package -n google-noto-sans-signwriting-fonts
 Summary:        Noto Sign Writing Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-signwriting < %{version}
 Provides:       noto-sans-signwriting = %{version}
 Obsoletes:      noto-sans-signwriting-fonts < %{version}
@@ -2105,7 +1977,6 @@ SignWriting Sans Serif font, hinted.
 
 %package -n google-noto-sans-sinhala-fonts
 Summary:        Noto Sinhala Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-sinhala < %{version}
 Provides:       noto-sans-sinhala = %{version}
 Obsoletes:      noto-sans-sinhala-fonts < %{version}
@@ -2123,7 +1994,6 @@ Sinhala Sans Serif font, hinted.
 
 %package -n google-noto-sans-sogdian-fonts
 Summary:        Noto Sogdian Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-sogdian < %{version}
 Provides:       noto-sans-sogdian = %{version}
 Obsoletes:      noto-sans-sogdian-fonts < %{version}
@@ -2137,7 +2007,6 @@ Sogdian Sans Serif font, hinted.
 
 %package -n google-noto-sans-sorasompeng-fonts
 Summary:        Noto Sora Sompeng Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-sorasompeng < %{version}
 Provides:       noto-sans-sorasompeng = %{version}
 Obsoletes:      noto-sans-sorasompeng-fonts < %{version}
@@ -2151,7 +2020,6 @@ SoraSompeng Sans Serif font, hinted.
 
 %package -n google-noto-sans-soyombo-fonts
 Summary:        Noto Soyombo Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-soyombo < %{version}
 Provides:       noto-sans-soyombo = %{version}
 Obsoletes:      noto-sans-soyombo-fonts < %{version}
@@ -2165,7 +2033,6 @@ Soyombo Sans Serif font, hinted.
 
 %package -n google-noto-sans-sundanese-fonts
 Summary:        Noto Sundanese Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-sundanese < %{version}
 Provides:       noto-sans-sundanese = %{version}
 Obsoletes:      noto-sans-sundanese-fonts < %{version}
@@ -2179,7 +2046,6 @@ Sundanese Sans Serif font, hinted.
 
 %package -n google-noto-sans-sylotinagri-fonts
 Summary:        Noto Syloti Nagri Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-sylotinagri < %{version}
 Provides:       noto-sans-sylotinagri = %{version}
 Obsoletes:      noto-sans-sylotinagri-fonts < %{version}
@@ -2193,7 +2059,6 @@ SylotiNagri Sans Serif font, hinted.
 
 %package -n google-noto-sans-symbols-fonts
 Summary:        Noto Symbols Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-symbols < %{version}
 Provides:       noto-sans-symbols = %{version}
 Obsoletes:      noto-sans-symbols-fonts < %{version}
@@ -2207,7 +2072,6 @@ Symbols Sans Serif font, hinted.
 
 %package -n google-noto-sans-symbols2-fonts
 Summary:        Noto Symbols2 Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-symbols2 < %{version}
 Provides:       noto-sans-symbols2 = %{version}
 Obsoletes:      noto-sans-symbols2-fonts < %{version}
@@ -2221,7 +2085,6 @@ Symbols2 Sans Serif font, hinted.
 
 %package -n google-noto-sans-syriac-fonts
 Summary:        Noto Syriac Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-syriac < %{version}
 Provides:       noto-sans-syriac = %{version}
 Obsoletes:      noto-sans-syriac-fonts < %{version}
@@ -2239,7 +2102,6 @@ Syriac Sans Serif font, hinted.
 
 %package -n google-noto-sans-syriaceastern-fonts
 Summary:        Noto Syriac Eastern Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-syriaceastern < %{version}
 Provides:       noto-sans-syriaceastern = %{version}
 Obsoletes:      noto-sans-syriaceastern-fonts < %{version}
@@ -2253,7 +2115,6 @@ SyriacEastern Sans Serif font, hinted.
 
 %package -n google-noto-sans-syriacwestern-fonts
 Summary:        Noto Syriac Western Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-syriacwestern < %{version}
 Provides:       noto-sans-syriacwestern = %{version}
 Obsoletes:      noto-sans-syriacwestern-fonts < %{version}
@@ -2267,7 +2128,6 @@ SyriacWestern Sans Serif font, hinted.
 
 %package -n google-noto-sans-tagalog-fonts
 Summary:        Noto Tagalog Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-tagalog < %{version}
 Provides:       noto-sans-tagalog = %{version}
 Obsoletes:      noto-sans-tagalog-fonts < %{version}
@@ -2281,7 +2141,6 @@ Tagalog Sans Serif font, hinted.
 
 %package -n google-noto-sans-tagbanwa-fonts
 Summary:        Noto Tagbanwa Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-tagbanwa < %{version}
 Provides:       noto-sans-tagbanwa = %{version}
 Obsoletes:      noto-sans-tagbanwa-fonts < %{version}
@@ -2295,7 +2154,6 @@ Tagbanwa Sans Serif font, hinted.
 
 %package -n google-noto-sans-taile-fonts
 Summary:        Noto Tai Le Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-taile < %{version}
 Provides:       noto-sans-taile = %{version}
 Obsoletes:      noto-sans-taile-fonts < %{version}
@@ -2309,7 +2167,6 @@ TaiLe Sans Serif font, hinted.
 
 %package -n google-noto-sans-taitham-fonts
 Summary:        Noto Tai Tham Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-taitham < %{version}
 Provides:       noto-sans-taitham = %{version}
 Obsoletes:      noto-sans-taitham-fonts < %{version}
@@ -2323,7 +2180,6 @@ TaiTham Sans Serif font, hinted.
 
 %package -n google-noto-sans-taiviet-fonts
 Summary:        Noto Tai Viet Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-taiviet < %{version}
 Provides:       noto-sans-taiviet = %{version}
 Obsoletes:      noto-sans-taiviet-fonts < %{version}
@@ -2337,7 +2193,6 @@ TaiViet Sans Serif font, hinted.
 
 %package -n google-noto-sans-takri-fonts
 Summary:        Noto Takri Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-takri < %{version}
 Provides:       noto-sans-takri = %{version}
 Obsoletes:      noto-sans-takri-fonts < %{version}
@@ -2351,7 +2206,6 @@ Takri Sans Serif font, hinted.
 
 %package -n google-noto-sans-tamil-fonts
 Summary:        Noto Tamil Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-tamil < %{version}
 Provides:       noto-sans-tamil = %{version}
 Obsoletes:      noto-sans-tamil-fonts < %{version}
@@ -2369,7 +2223,6 @@ Tamil Sans Serif font, hinted.
 
 %package -n google-noto-sans-tamilsupplement-fonts
 Summary:        Noto Tamil Supplement Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-tamilsupplement < %{version}
 Provides:       noto-sans-tamilsupplement = %{version}
 Obsoletes:      noto-sans-tamilsupplement-fonts < %{version}
@@ -2383,7 +2236,6 @@ TamilSupplement Sans Serif font, hinted.
 
 %package -n google-noto-sans-tangsa-fonts
 Summary:        Noto Tangsa Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-tangsa < %{version}
 Provides:       noto-sans-tangsa = %{version}
 Obsoletes:      noto-sans-tangsa-fonts < %{version}
@@ -2397,7 +2249,6 @@ Tangsa Sans Serif font, hinted.
 
 %package -n google-noto-sans-telugu-fonts
 Summary:        Noto Telugu Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-telugu < %{version}
 Provides:       noto-sans-telugu = %{version}
 Obsoletes:      noto-sans-telugu-fonts < %{version}
@@ -2415,7 +2266,6 @@ Telugu Sans Serif font, hinted.
 
 %package -n google-noto-sans-thaana-fonts
 Summary:        Noto Thaana Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-thaana < %{version}
 Provides:       noto-sans-thaana = %{version}
 Obsoletes:      noto-sans-thaana-fonts < %{version}
@@ -2429,7 +2279,6 @@ Thaana Sans Serif font, hinted.
 
 %package -n google-noto-sans-thai-fonts
 Summary:        Noto Thai Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-thai < %{version}
 Provides:       noto-sans-thai = %{version}
 Obsoletes:      noto-sans-thai-fonts < %{version}
@@ -2447,7 +2296,6 @@ Thai Sans Serif font, hinted.
 
 %package -n google-noto-sans-thailooped-fonts
 Summary:        Noto Thai Looped Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-loopedthai < %{version}
 Provides:       noto-loopedthai = %{version}
 Obsoletes:      noto-loopedthai-fonts < %{version}
@@ -2465,7 +2313,6 @@ ThaiLooped Sans Serif font, hinted.
 
 %package -n google-noto-sans-tifinagh-fonts
 Summary:        Noto Tifinagh Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-tifinagh < %{version}
 Provides:       noto-sans-tifinagh = %{version}
 Obsoletes:      noto-sans-tifinagh-fonts < %{version}
@@ -2523,7 +2370,6 @@ Tifinagh Sans Serif font, hinted.
 
 %package -n google-noto-sans-tirhuta-fonts
 Summary:        Noto Tirhuta Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-tirhuta < %{version}
 Provides:       noto-sans-tirhuta = %{version}
 Obsoletes:      noto-sans-tirhuta-fonts < %{version}
@@ -2537,7 +2383,6 @@ Tirhuta Sans Serif font, hinted.
 
 %package -n google-noto-sans-ugaritic-fonts
 Summary:        Noto Ugaritic Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-ugaritic < %{version}
 Provides:       noto-sans-ugaritic = %{version}
 Obsoletes:      noto-sans-ugaritic-fonts < %{version}
@@ -2551,7 +2396,6 @@ Ugaritic Sans Serif font, hinted.
 
 %package -n google-noto-sans-vai-fonts
 Summary:        Noto Vai Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-vai < %{version}
 Provides:       noto-sans-vai = %{version}
 Obsoletes:      noto-sans-vai-fonts < %{version}
@@ -2565,7 +2409,6 @@ Vai Sans Serif font, hinted.
 
 %package -n google-noto-sans-vithkuqi-fonts
 Summary:        Noto Vithkuqi Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-vithkuqi < %{version}
 Provides:       noto-sans-vithkuqi = %{version}
 Obsoletes:      noto-sans-vithkuqi-fonts < %{version}
@@ -2579,7 +2422,6 @@ Vithkuqi Sans Serif font, hinted.
 
 %package -n google-noto-sans-wancho-fonts
 Summary:        Noto Wancho Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-wancho < %{version}
 Provides:       noto-sans-wancho = %{version}
 Obsoletes:      noto-sans-wancho-fonts < %{version}
@@ -2593,7 +2435,6 @@ Wancho Sans Serif font, hinted.
 
 %package -n google-noto-sans-warangciti-fonts
 Summary:        Noto Warang Citi Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-warangciti < %{version}
 Provides:       noto-sans-warangciti = %{version}
 Obsoletes:      noto-sans-warangciti-fonts < %{version}
@@ -2607,7 +2448,6 @@ WarangCiti Sans Serif font, hinted.
 
 %package -n google-noto-sans-yi-fonts
 Summary:        Noto Yi Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-yi < %{version}
 Provides:       noto-sans-yi = %{version}
 Obsoletes:      noto-sans-yi-fonts < %{version}
@@ -2621,7 +2461,6 @@ Yi Sans Serif font, hinted.
 
 %package -n google-noto-sans-zanabazarsquare-fonts
 Summary:        Noto Zanabazar Square Sans Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-sans-zanabazarsquare < %{version}
 Provides:       noto-sans-zanabazarsquare = %{version}
 Obsoletes:      noto-sans-zanabazarsquare-fonts < %{version}
@@ -2635,7 +2474,6 @@ ZanabazarSquare Sans Serif font, hinted.
 
 %package -n google-noto-serif-fonts
 Summary:        Noto Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif < %{version}
 Provides:       noto-serif = %{version}
 Obsoletes:      noto-serif-fonts < %{version}
@@ -2649,7 +2487,6 @@ Serif font, hinted.
 
 %package -n google-noto-serif-ahom-fonts
 Summary:        Noto Ahom Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-ahom < %{version}
 Provides:       noto-serif-ahom = %{version}
 Obsoletes:      noto-serif-ahom-fonts < %{version}
@@ -2663,7 +2500,6 @@ Ahom Serif font, hinted.
 
 %package -n google-noto-serif-armenian-fonts
 Summary:        Noto Armenian Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-armenian < %{version}
 Provides:       noto-serif-armenian = %{version}
 Obsoletes:      noto-serif-armenian-fonts < %{version}
@@ -2677,7 +2513,6 @@ Armenian Serif font, hinted.
 
 %package -n google-noto-serif-balinese-fonts
 Summary:        Noto Balinese Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-balinese < %{version}
 Provides:       noto-serif-balinese = %{version}
 Obsoletes:      noto-serif-balinese-fonts < %{version}
@@ -2691,7 +2526,6 @@ Balinese Serif font, hinted.
 
 %package -n google-noto-serif-bengali-fonts
 Summary:        Noto Bengali Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-bengali < %{version}
 Provides:       noto-serif-bengali = %{version}
 Obsoletes:      noto-serif-bengali-fonts < %{version}
@@ -2705,7 +2539,6 @@ Bengali Serif font, hinted.
 
 %package -n google-noto-serif-devanagari-fonts
 Summary:        Noto Devanagari Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-devanagari < %{version}
 Provides:       noto-serif-devanagari = %{version}
 Obsoletes:      noto-serif-devanagari-fonts < %{version}
@@ -2719,7 +2552,6 @@ Devanagari Serif font, hinted.
 
 %package -n google-noto-serif-display-fonts
 Summary:        Noto Display Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-display < %{version}
 Provides:       noto-serif-display = %{version}
 Obsoletes:      noto-serif-display-fonts < %{version}
@@ -2733,7 +2565,6 @@ Display Serif font, hinted.
 
 %package -n google-noto-serif-divesakuru-fonts
 Summary:        Noto Dives Akuru Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-divesakuru < %{version}
 Provides:       noto-serif-divesakuru = %{version}
 Obsoletes:      noto-serif-divesakuru-fonts < %{version}
@@ -2747,7 +2578,6 @@ DivesAkuru Serif font, hinted.
 
 %package -n google-noto-serif-dogra-fonts
 Summary:        Noto Dogra Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-dogra < %{version}
 Provides:       noto-serif-dogra = %{version}
 Obsoletes:      noto-serif-dogra-fonts < %{version}
@@ -2761,7 +2591,6 @@ Dogra Serif font, hinted.
 
 %package -n google-noto-serif-ethiopic-fonts
 Summary:        Noto Ethiopic Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-ethiopic < %{version}
 Provides:       noto-serif-ethiopic = %{version}
 Obsoletes:      noto-serif-ethiopic-fonts < %{version}
@@ -2775,7 +2604,6 @@ Ethiopic Serif font, hinted.
 
 %package -n google-noto-serif-georgian-fonts
 Summary:        Noto Georgian Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-georgian < %{version}
 Provides:       noto-serif-georgian = %{version}
 Obsoletes:      noto-serif-georgian-fonts < %{version}
@@ -2789,7 +2617,6 @@ Georgian Serif font, hinted.
 
 %package -n google-noto-serif-grantha-fonts
 Summary:        Noto Grantha Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-grantha < %{version}
 Provides:       noto-serif-grantha = %{version}
 Obsoletes:      noto-serif-grantha-fonts < %{version}
@@ -2803,7 +2630,6 @@ Grantha Serif font, hinted.
 
 %package -n google-noto-serif-gujarati-fonts
 Summary:        Noto Gujarati Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-gujarati < %{version}
 Provides:       noto-serif-gujarati = %{version}
 Obsoletes:      noto-serif-gujarati-fonts < %{version}
@@ -2817,7 +2643,6 @@ Gujarati Serif font, hinted.
 
 %package -n google-noto-serif-gurmukhi-fonts
 Summary:        Noto Gurmukhi Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-gurmukhi < %{version}
 Provides:       noto-serif-gurmukhi = %{version}
 Obsoletes:      noto-serif-gurmukhi-fonts < %{version}
@@ -2831,7 +2656,6 @@ Gurmukhi Serif font, hinted.
 
 %package -n google-noto-serif-hebrew-fonts
 Summary:        Noto Hebrew Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-hebrew < %{version}
 Provides:       noto-serif-hebrew = %{version}
 Obsoletes:      noto-serif-hebrew-fonts < %{version}
@@ -2845,7 +2669,6 @@ Hebrew Serif font, hinted.
 
 %package -n google-noto-serif-kannada-fonts
 Summary:        Noto Kannada Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-kannada < %{version}
 Provides:       noto-serif-kannada = %{version}
 Obsoletes:      noto-serif-kannada-fonts < %{version}
@@ -2859,7 +2682,6 @@ Kannada Serif font, hinted.
 
 %package -n google-noto-serif-khitansmallscript-fonts
 Summary:        Noto Khitan Small Script Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-khitansmallscript < %{version}
 Provides:       noto-serif-khitansmallscript = %{version}
 Obsoletes:      noto-serif-khitansmallscript-fonts < %{version}
@@ -2873,7 +2695,6 @@ KhitanSmallScript Serif font, hinted.
 
 %package -n google-noto-serif-khmer-fonts
 Summary:        Noto Khmer Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-khmer < %{version}
 Provides:       noto-serif-khmer = %{version}
 Obsoletes:      noto-serif-khmer-fonts < %{version}
@@ -2887,7 +2708,6 @@ Khmer Serif font, hinted.
 
 %package -n google-noto-serif-khojki-fonts
 Summary:        Noto Khojki Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-khojki < %{version}
 Provides:       noto-serif-khojki = %{version}
 Obsoletes:      noto-serif-khojki-fonts < %{version}
@@ -2901,7 +2721,6 @@ Khojki Serif font, hinted.
 
 %package -n google-noto-serif-lao-fonts
 Summary:        Noto Lao Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-lao < %{version}
 Provides:       noto-serif-lao = %{version}
 Obsoletes:      noto-serif-lao-fonts < %{version}
@@ -2915,7 +2734,6 @@ Lao Serif font, hinted.
 
 %package -n google-noto-serif-makasar-fonts
 Summary:        Noto Makasar Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-makasar < %{version}
 Provides:       noto-serif-makasar = %{version}
 Obsoletes:      noto-serif-makasar-fonts < %{version}
@@ -2929,7 +2747,6 @@ Makasar Serif font, hinted.
 
 %package -n google-noto-serif-malayalam-fonts
 Summary:        Noto Malayalam Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-malayalam < %{version}
 Provides:       noto-serif-malayalam = %{version}
 Obsoletes:      noto-serif-malayalam-fonts < %{version}
@@ -2943,7 +2760,6 @@ Malayalam Serif font, hinted.
 
 %package -n google-noto-serif-myanmar-fonts
 Summary:        Noto Myanmar Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-myanmar < %{version}
 Provides:       noto-serif-myanmar = %{version}
 Obsoletes:      noto-serif-myanmar-fonts < %{version}
@@ -2957,7 +2773,6 @@ Myanmar Serif font, hinted.
 
 %package -n google-noto-serif-nphmong-fonts
 Summary:        Noto NPHmong Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-myanmar < %{version}
 Provides:       noto-serif-myanmar = %{version}
 Obsoletes:      noto-serif-myanmar-fonts < %{version}
@@ -2975,7 +2790,6 @@ NPHmong Serif font, hinted.
 
 %package -n google-noto-serif-olduyghur-fonts
 Summary:        Noto Old Uyghur Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-olduyghur < %{version}
 Provides:       noto-serif-olduyghur = %{version}
 Obsoletes:      noto-serif-olduyghur-fonts < %{version}
@@ -2989,7 +2803,6 @@ OldUyghur Serif font, hinted.
 
 %package -n google-noto-serif-oriya-fonts
 Summary:        Noto Oriya Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-oriya < %{version}
 Provides:       noto-serif-oriya = %{version}
 Obsoletes:      noto-serif-oriya-fonts < %{version}
@@ -3003,7 +2816,6 @@ Oriya Serif font, hinted.
 
 %package -n google-noto-serif-ottomansiyaq-fonts
 Summary:        Noto Ottoman Siyaq Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-ottomansiyaq < %{version}
 Provides:       noto-serif-ottomansiyaq = %{version}
 Obsoletes:      noto-serif-ottomansiyaq-fonts < %{version}
@@ -3017,7 +2829,6 @@ OttomanSiyaq Serif font, hinted.
 
 %package -n google-noto-serif-sinhala-fonts
 Summary:        Noto Sinhala Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-sinhala < %{version}
 Provides:       noto-serif-sinhala = %{version}
 Obsoletes:      noto-serif-sinhala-fonts < %{version}
@@ -3031,7 +2842,6 @@ Sinhala Serif font, hinted.
 
 %package -n google-noto-serif-tamil-fonts
 Summary:        Noto Tamil Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-tamil < %{version}
 Provides:       noto-serif-tamil = %{version}
 Obsoletes:      noto-serif-tamil-fonts < %{version}
@@ -3045,7 +2855,6 @@ Tamil Serif font, hinted.
 
 %package -n google-noto-serif-tangut-fonts
 Summary:        Noto Tangut Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-tangut < %{version}
 Provides:       noto-serif-tangut = %{version}
 Obsoletes:      noto-serif-tangut-fonts < %{version}
@@ -3059,7 +2868,6 @@ Tangut Serif font, hinted.
 
 %package -n google-noto-serif-telugu-fonts
 Summary:        Noto Telugu Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-telugu < %{version}
 Provides:       noto-serif-telugu = %{version}
 Obsoletes:      noto-serif-telugu-fonts < %{version}
@@ -3073,7 +2881,6 @@ Telugu Serif font, hinted.
 
 %package -n google-noto-serif-thai-fonts
 Summary:        Noto Thai Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-thai < %{version}
 Provides:       noto-serif-thai = %{version}
 Obsoletes:      noto-serif-thai-fonts < %{version}
@@ -3087,7 +2894,6 @@ Thai Serif font, hinted.
 
 %package -n google-noto-serif-tibetan-fonts
 Summary:        Noto Tibetan Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-tibetan < %{version}
 Provides:       noto-serif-tibetan = %{version}
 Obsoletes:      noto-serif-tibetan-fonts < %{version}
@@ -3105,7 +2911,6 @@ Tibetan Serif font, hinted.
 
 %package -n google-noto-serif-toto-fonts
 Summary:        Noto Toto Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-toto < %{version}
 Provides:       noto-serif-toto = %{version}
 Obsoletes:      noto-serif-toto-fonts < %{version}
@@ -3119,7 +2924,6 @@ Toto Serif font, hinted.
 
 %package -n google-noto-serif-vithkuqi-fonts
 Summary:        Noto Vithkuqi Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-vithkuqi < %{version}
 Provides:       noto-serif-vithkuqi = %{version}
 Obsoletes:      noto-serif-vithkuqi-fonts < %{version}
@@ -3133,7 +2937,6 @@ Vithkuqi Serif font, hinted.
 
 %package -n google-noto-serif-yezidi-fonts
 Summary:        Noto Yezidi Serif Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-serif-yezidi < %{version}
 Provides:       noto-serif-yezidi = %{version}
 Obsoletes:      noto-serif-yezidi-fonts < %{version}
@@ -3147,7 +2950,6 @@ Yezidi Serif font, hinted.
 
 %package -n google-noto-traditionalnushu-fonts
 Summary:        Noto Traditional Nushu Font
-Group:          System/X11/Fonts
 Obsoletes:      noto-traditionalnushu < %{version}
 Provides:       noto-traditionalnushu = %{version}
 Obsoletes:      noto-traditionalnushu-fonts < %{version}
@@ -3159,18 +2961,31 @@ Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 TraditionalNushu font, hinted.
 
+%package -n google-noto-znamennymusicalnotation-fonts
+Summary:        Noto Znamenny Musical Notation Font
+Obsoletes:      noto-znamennymusicalnotation < %{version}
+Provides:       noto-znamennymusicalnotation = %{version}
+Obsoletes:      noto-znamennymusicalnotation-fonts < %{version}
+Provides:       noto-znamennymusicalnotation-fonts = %{version}
+%reconfigure_fonts_prereq
+
+%description -n google-noto-znamennymusicalnotation-fonts
+Noto's design goal is to achieve visual harmonization (e.g., compatible
+heights and stroke thicknesses) across languages. This package contains
+ZnamennyMusicalNotation font, hinted.
+
 %prep
 %autosetup -c
 
-cp notofonts.github.io-noto-monthly-release-24.5.1/fonts/LICENSE .
+cp notofonts.github.io-noto-monthly-release-24.6.1/fonts/LICENSE .
 
 %build
 
 %install
 
-rm -r notofonts.github.io-noto-monthly-release-24.5.1/fonts/Noto*Test
+rm -r notofonts.github.io-noto-monthly-release-24.6.1/fonts/Noto*Test
 
-install -Dm 644 -t %{buildroot}%{_ttfontsdir} notofonts.github.io-noto-monthly-release-24.5.1/fonts/*/hinted/ttf/*
+install -Dm 644 -t %{buildroot}%{_ttfontsdir} notofonts.github.io-noto-monthly-release-24.6.1/fonts/*/hinted/ttf/*
 
 %reconfigure_fonts_scriptlets -n google-noto-fangsongkssrotated-fonts
 
@@ -3567,6 +3382,8 @@ install -Dm 644 -t %{buildroot}%{_ttfontsdir} notofonts.github.io-noto-monthly-r
 %reconfigure_fonts_scriptlets -n google-noto-serif-yezidi-fonts
 
 %reconfigure_fonts_scriptlets -n google-noto-traditionalnushu-fonts
+
+%reconfigure_fonts_scriptlets -n google-noto-znamennymusicalnotation-fonts
 
 %files
 
@@ -4569,5 +4386,10 @@ install -Dm 644 -t %{buildroot}%{_ttfontsdir} notofonts.github.io-noto-monthly-r
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoTraditionalNushu-*.?tf
+
+%files -n google-noto-znamennymusicalnotation-fonts
+%license LICENSE
+%dir %{_ttfontsdir}
+%{_ttfontsdir}/NotoZnamennyMusicalNotation-*.?tf
 
 %changelog

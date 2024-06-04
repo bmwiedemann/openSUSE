@@ -266,4 +266,15 @@ add: README.FAQ to answer some questions about Noto Fonts packaging
     - Add codepoints from Unicode 14</comment>
     <requestid>1171083</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>3e7357375ba23592372391f6e39e5058</srcmd5>
+    <version>20240601</version>
+    <time>1717498174</time>
+    <user>anag+factory</user>
+    <comment>- Remove obsolete &quot;Group&quot; parameter
+- Update to 20240601
+ * Noto Znamenny Musical Notation has been added
+ * Other fonts have been updated</comment>
+    <requestid>1178174</requestid>
+  </revision>
 </revisionlist>
