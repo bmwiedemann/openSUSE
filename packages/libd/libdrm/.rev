@@ -1788,4 +1788,41 @@ Man pages are disabled for this build, upstream disabled them for this release. 
   n_libdrm-drop-valgrind-dep-intel.patch to fix build</comment>
     <requestid>1138457</requestid>
   </revision>
+  <revision rev="176" vrev="1">
+    <srcmd5>ec8276749ecd3a906bede30e977c0dec</srcmd5>
+    <version>2.4.121</version>
+    <time>1717498199</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.4.121
+  * meson: make build system happy by replacing deprecated feature
+  * include poll.h instead of sys/poll.h
+  * amdgpu: Make amdgpu_device_deinitialize thread-safe
+  * Revert &quot;xf86drm: ignore symlinks in process_device()&quot;
+  * xf86drm: Don't consider node names longer than the maximum allowed
+  * tests/amdgpu: fix compile warning with the guard enum value
+  * tests/amdgpu: fix compile error with gcc7.5
+  * tests/amdgpu: fix compile error with gcc14
+  * tests/util: add tidss driver
+  * meson: Replace usages of deprecated ExternalProgram.path()
+  * meson: Fix broken str.format usage
+  * amdgpu: add marketing names from Adrenalin 23.11.1
+  * amdgpu: add marketing names from PRO Edition for W7700
+  * amdgpu: add marketing names from Windows Steam Deck OLED APU driver
+  * amdgpu: add marketing names from amd-6.0
+  * amdgpu: add marketing name for Radeon RX 6550M
+  * amdgpu: add marketing names from amd-6.0.1
+  * amdgpu: Make amdgpu_cs_signal_semaphore() thread-safe
+  * amdgpu: sync amdgpu_drm.h
+  * symbols-check: Add _GLOBAL_OFFSET_TABLE_
+  * symbols-check: Add _fbss, _fdata, _ftext
+  * amdgpu: expose amdgpu_va_manager publicly
+  * amdgpu: add amdgpu_va_range_alloc2
+  * amdgpu: add amdgpu_device_initialize2
+  * amdgpu: fix deinit logic
+  * ci: build with meson --fatal-meson-warnings
+  * ci: use &quot;meson setup&quot; sub-command
+  * xf86drm: document drmDevicesEqual()
+  * xf86drm: ignore symlinks in process_device()</comment>
+    <requestid>1178202</requestid>
+  </revision>
 </revisionlist>

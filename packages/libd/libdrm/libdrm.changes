@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jun  3 00:46:48 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 2.4.121
+  * meson: make build system happy by replacing deprecated feature
+  * include poll.h instead of sys/poll.h
+  * amdgpu: Make amdgpu_device_deinitialize thread-safe
+  * Revert "xf86drm: ignore symlinks in process_device()"
+  * xf86drm: Don't consider node names longer than the maximum allowed
+  * tests/amdgpu: fix compile warning with the guard enum value
+  * tests/amdgpu: fix compile error with gcc7.5
+  * tests/amdgpu: fix compile error with gcc14
+  * tests/util: add tidss driver
+  * meson: Replace usages of deprecated ExternalProgram.path()
+  * meson: Fix broken str.format usage
+  * amdgpu: add marketing names from Adrenalin 23.11.1
+  * amdgpu: add marketing names from PRO Edition for W7700
+  * amdgpu: add marketing names from Windows Steam Deck OLED APU driver
+  * amdgpu: add marketing names from amd-6.0
+  * amdgpu: add marketing name for Radeon RX 6550M
+  * amdgpu: add marketing names from amd-6.0.1
+  * amdgpu: Make amdgpu_cs_signal_semaphore() thread-safe
+  * amdgpu: sync amdgpu_drm.h
+  * symbols-check: Add _GLOBAL_OFFSET_TABLE_
+  * symbols-check: Add _fbss, _fdata, _ftext
+  * amdgpu: expose amdgpu_va_manager publicly
+  * amdgpu: add amdgpu_va_range_alloc2
+  * amdgpu: add amdgpu_device_initialize2
+  * amdgpu: fix deinit logic
+  * ci: build with meson --fatal-meson-warnings
+  * ci: use "meson setup" sub-command
+  * xf86drm: document drmDevicesEqual()
+  * xf86drm: ignore symlinks in process_device()
+
+-------------------------------------------------------------------
 Sat Jan 13 10:33:20 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 2.4.120
