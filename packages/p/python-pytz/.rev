@@ -507,4 +507,15 @@
   * Sync with timezone 2013b release</comment>
     <requestid>1143345</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>28a183672b003b655fc274463819ddeb</srcmd5>
+    <version>2024.1</version>
+    <time>1717498252</time>
+    <user>anag+factory</user>
+    <comment>- Clean up SPEC file.
+- update to 2024.1:
+  * Update olson to 2024a
+</comment>
+    <requestid>1177996</requestid>
+  </revision>
 </revisionlist>
