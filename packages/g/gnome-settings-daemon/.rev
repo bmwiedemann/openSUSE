@@ -1532,4 +1532,16 @@ work. (forwarded request 640069 from iznogood)</comment>
     <comment></comment>
     <requestid>1170051</requestid>
   </revision>
+  <revision rev="193" vrev="3">
+    <srcmd5>98e057299acdffa62ec00986d28fe792</srcmd5>
+    <version>46.0</version>
+    <time>1717498261</time>
+    <user>anag+factory</user>
+    <comment>- Update gnome-settings-daemon-bgo793253.patch to fix the build
+  with gcc 14.
+- Add gnome-settings-daemon-stop-service-when-no-network.patch
+  Fix to enable remote login.
+  Allows the g-r-d handover service to be started on wifi network.</comment>
+    <requestid>1178363</requestid>
+  </revision>
 </revisionlist>
