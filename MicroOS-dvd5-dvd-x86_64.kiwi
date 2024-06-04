@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20240603" schemaversion="4.1">
+<image name="OBS__MicroOS___20240604" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20240603</productvar>
+      <productvar name="VERSION">20240604</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20240603,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20240604,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20240603/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20240604/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1711,7 +1711,6 @@
       <repopackage name="python3-audit"/>
       <repopackage name="python3-cupshelpers"/>
       <repopackage name="python3-firewall"/>
-      <repopackage name="python3-policycoreutils"/>
       <repopackage name="python311"/>
       <repopackage name="python311-alembic"/>
       <repopackage name="python311-apipkg"/>
@@ -1747,6 +1746,7 @@
       <repopackage name="python311-oauthlib"/>
       <repopackage name="python311-packaging"/>
       <repopackage name="python311-passlib"/>
+      <repopackage name="python311-policycoreutils"/>
       <repopackage name="python311-psutil"/>
       <repopackage name="python311-py"/>
       <repopackage name="python311-pycairo"/>

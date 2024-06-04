@@ -3603,7 +3603,6 @@
     <package name="python3-gedit" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
     <package name="python3-ldb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="python3-louis" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python3-policycoreutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python3-salt" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python3-smbios" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="python3-smbios-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -3687,6 +3686,7 @@
     <package name="python311-pexpect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="python311-pip" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python311-ply" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="python311-policycoreutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python311-psutil" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
     <package name="python311-ptyprocess" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="python311-py" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

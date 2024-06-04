@@ -7692,6 +7692,7 @@ unsorted:
   - google-noto-serif-vithkuqi-fonts 
   - google-noto-serif-yezidi-fonts 
   - google-noto-traditionalnushu-fonts 
+  - google-noto-znamennymusicalnotation-fonts 
   - google-or-tools 
   - google-or-tools-devel 
   - google-or-tools-minizinc 
@@ -8514,7 +8515,6 @@ unsorted:
   - hyperfine-fish-completion 
   - hyperfine-zsh-completion 
   - hyperlink-app-client 
-  - hyperscan-devel 
   - hyphen 
   - hyphen-devel 
   - hyprcursor 
@@ -8760,9 +8760,12 @@ unsorted:
   - inspectrum 
   - inst-source-utils 
   - install-initrd-MicroOS 
+  - install-initrd-Slowroll 
   - install-initrd-openSUSE 
   - installation-images-MicroOS 
+  - installation-images-Slowroll 
   - installation-images-debuginfodeps-MicroOS 
+  - installation-images-debuginfodeps-Slowroll 
   - installation-images-debuginfodeps-openSUSE 
   - installation-images-openSUSE 
   - instlux 
@@ -13598,7 +13601,6 @@ unsorted:
   - libhowl0 
   - libhpdf2_4 
   - libhpx1 
-  - libhs5 
   - libhs5-vectorscan5 
   - libhtp-devel 
   - libhtp2 
@@ -15747,7 +15749,6 @@ unsorted:
   - libsaml12 
   - libsamplerate-devel 
   - libsamplerate0-32bit 
-  - libsane-airscan1 
   - libsane1-32bit 
   - libsanlock1 
   - libsass-3_6_6-1 
@@ -16117,7 +16118,7 @@ unsorted:
   - libsuperlu6 
   - libsuperlu6-32bit 
   - libsuperlu_6_0_1-gnu-hpc 
-  - libsurgescript0_5_6 
+  - libsurgescript0_6_0 
   - libsuseconnect 
   - libsvm-devel 
   - libsvm-java 
@@ -24281,6 +24282,7 @@ unsorted:
   - python310-azure-mgmt-devcenter 
   - python310-azure-mgmt-devhub 
   - python310-azure-mgmt-deviceupdate 
+  - python310-azure-mgmt-devopsinfrastructure 
   - python310-azure-mgmt-devspaces 
   - python310-azure-mgmt-devtestlabs 
   - python310-azure-mgmt-digitaltwins 
@@ -24309,6 +24311,7 @@ unsorted:
   - python310-azure-mgmt-hybridkubernetes 
   - python310-azure-mgmt-hybridnetwork 
   - python310-azure-mgmt-imagebuilder 
+  - python310-azure-mgmt-informaticadatamanagement 
   - python310-azure-mgmt-iotcentral 
   - python310-azure-mgmt-iotfirmwaredefense 
   - python310-azure-mgmt-iothub 
@@ -24317,6 +24320,7 @@ unsorted:
   - python310-azure-mgmt-kubernetesconfiguration 
   - python310-azure-mgmt-kusto 
   - python310-azure-mgmt-labservices 
+  - python310-azure-mgmt-largeinstance 
   - python310-azure-mgmt-loadtesting 
   - python310-azure-mgmt-loadtestservice 
   - python310-azure-mgmt-loganalytics 
@@ -24347,6 +24351,7 @@ unsorted:
   - python310-azure-mgmt-notificationhubs 
   - python310-azure-mgmt-nspkg 
   - python310-azure-mgmt-oep 
+  - python310-azure-mgmt-oracledatabase 
   - python310-azure-mgmt-orbital 
   - python310-azure-mgmt-paloaltonetworksngfw 
   - python310-azure-mgmt-peering 
@@ -26024,6 +26029,7 @@ unsorted:
   - python310-poetry-dynamic-versioning 
   - python310-poetry-plugin-export 
   - python310-polib 
+  - python310-policycoreutils 
   - python310-pony 
   - python310-pooch 
   - python310-pook 
@@ -26743,6 +26749,7 @@ unsorted:
   - python310-serpent 
   - python310-serverfiles 
   - python310-service_identity 
+  - python310-setools 
   - python310-setproctitle 
   - python310-setuptools 
   - python310-setuptools-declarative-requirements 
@@ -27856,6 +27863,7 @@ unsorted:
   - python311-azure-mgmt-devcenter 
   - python311-azure-mgmt-devhub 
   - python311-azure-mgmt-deviceupdate 
+  - python311-azure-mgmt-devopsinfrastructure 
   - python311-azure-mgmt-devspaces 
   - python311-azure-mgmt-devtestlabs 
   - python311-azure-mgmt-digitaltwins 
@@ -27884,6 +27892,7 @@ unsorted:
   - python311-azure-mgmt-hybridkubernetes 
   - python311-azure-mgmt-hybridnetwork 
   - python311-azure-mgmt-imagebuilder 
+  - python311-azure-mgmt-informaticadatamanagement 
   - python311-azure-mgmt-iotcentral 
   - python311-azure-mgmt-iotfirmwaredefense 
   - python311-azure-mgmt-iothub 
@@ -27892,6 +27901,7 @@ unsorted:
   - python311-azure-mgmt-kubernetesconfiguration 
   - python311-azure-mgmt-kusto 
   - python311-azure-mgmt-labservices 
+  - python311-azure-mgmt-largeinstance 
   - python311-azure-mgmt-loadtesting 
   - python311-azure-mgmt-loadtestservice 
   - python311-azure-mgmt-loganalytics 
@@ -27922,6 +27932,7 @@ unsorted:
   - python311-azure-mgmt-notificationhubs 
   - python311-azure-mgmt-nspkg 
   - python311-azure-mgmt-oep 
+  - python311-azure-mgmt-oracledatabase 
   - python311-azure-mgmt-orbital 
   - python311-azure-mgmt-paloaltonetworksngfw 
   - python311-azure-mgmt-peering 
@@ -31349,6 +31360,7 @@ unsorted:
   - python312-azure-mgmt-devcenter 
   - python312-azure-mgmt-devhub 
   - python312-azure-mgmt-deviceupdate 
+  - python312-azure-mgmt-devopsinfrastructure 
   - python312-azure-mgmt-devspaces 
   - python312-azure-mgmt-devtestlabs 
   - python312-azure-mgmt-digitaltwins 
@@ -31377,6 +31389,7 @@ unsorted:
   - python312-azure-mgmt-hybridkubernetes 
   - python312-azure-mgmt-hybridnetwork 
   - python312-azure-mgmt-imagebuilder 
+  - python312-azure-mgmt-informaticadatamanagement 
   - python312-azure-mgmt-iotcentral 
   - python312-azure-mgmt-iotfirmwaredefense 
   - python312-azure-mgmt-iothub 
@@ -31385,6 +31398,7 @@ unsorted:
   - python312-azure-mgmt-kubernetesconfiguration 
   - python312-azure-mgmt-kusto 
   - python312-azure-mgmt-labservices 
+  - python312-azure-mgmt-largeinstance 
   - python312-azure-mgmt-loadtesting 
   - python312-azure-mgmt-loadtestservice 
   - python312-azure-mgmt-loganalytics 
@@ -31415,6 +31429,7 @@ unsorted:
   - python312-azure-mgmt-notificationhubs 
   - python312-azure-mgmt-nspkg 
   - python312-azure-mgmt-oep 
+  - python312-azure-mgmt-oracledatabase 
   - python312-azure-mgmt-orbital 
   - python312-azure-mgmt-paloaltonetworksngfw 
   - python312-azure-mgmt-peering 
@@ -33085,6 +33100,7 @@ unsorted:
   - python312-poetry-dynamic-versioning 
   - python312-poetry-plugin-export 
   - python312-polib 
+  - python312-policycoreutils 
   - python312-pooch 
   - python312-pook 
   - python312-poppler-qt5 
@@ -33802,6 +33818,7 @@ unsorted:
   - python312-serpent 
   - python312-serverfiles 
   - python312-service_identity 
+  - python312-setools 
   - python312-setproctitle 
   - python312-setuptools 
   - python312-setuptools-declarative-requirements 
@@ -35906,7 +35923,6 @@ unsorted:
   - samtools 
   - samurai 
   - sane-airscan 
-  - sane-airscan-devel 
   - sane-backends-32bit 
   - sane-backends-devel 
   - sane-backends-devel-32bit 
@@ -36290,7 +36306,9 @@ unsorted:
   - skelcd-control-openSUSE-Slowroll 
   - skelcd-fallbackrepo-openSUSE 
   - skelcd-installer-MicroOS 
+  - skelcd-installer-Slowroll 
   - skelcd-installer-net-MicroOS 
+  - skelcd-installer-net-Slowroll 
   - skelcd-installer-net-openSUSE 
   - skelcd-installer-openSUSE 
   - skelcd-openSUSE 
@@ -46294,6 +46312,7 @@ unsorted:
   - texworks-plugin-lua 
   - texworks-plugin-python 
   - tftpboot-installation-common 
+  - tftpboot-installation-openSUSE-Tumbleweed-Slowroll-x86_64 
   - tftpboot-installation-openSUSE-Tumbleweed-x86_64 
   - tgt 
   - the_silver_searcher 
@@ -47232,6 +47251,7 @@ unsorted:
   - valgrind-32bit 
   - valgrind-client-headers 
   - valgrind-devel 
+  - valijson-devel 
   - vamp-plugin-sdk 
   - vamp-plugin-sdk-devel 
   - vapoursynth-devel 
@@ -47368,6 +47388,7 @@ unsorted:
   - vips-tools 
   - virglrenderer-devel 
   - virglrenderer-test-server 
+  - virt-firmware 
   - virt-p2v 
   - virt-sandbox 
   - virt-scenario-gtk 
