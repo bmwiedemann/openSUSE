@@ -387,4 +387,13 @@
   * Add environment variable to disable plugins</comment>
     <requestid>1170440</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>debf81efd144601b379da873d7f04bd7</srcmd5>
+    <version>2.7.1</version>
+    <time>1717498230</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-pytest-8.patch:
+  * Support changes in pytest 8.x.</comment>
+    <requestid>1177661</requestid>
+  </revision>
 </revisionlist>

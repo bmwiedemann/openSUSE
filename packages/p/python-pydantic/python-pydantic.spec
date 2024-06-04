@@ -33,6 +33,8 @@ Summary:        Data validation and settings management using python type hintin
 License:        MIT
 URL:            https://github.com/pydantic/pydantic
 Source:         https://github.com/pydantic/pydantic/archive/v%{version}.tar.gz#/pydantic-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#pydantic/pydantic#9527
+Patch0:         support-pytest-8.patch
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module packaging}
