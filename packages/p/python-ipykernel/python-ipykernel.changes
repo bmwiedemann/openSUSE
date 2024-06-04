@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 28 06:16:03 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch ignore-ipython-deprecationwarning.patch:
+  * Ignore DeprecationWarning raised by IPython 8.24+.
+
+-------------------------------------------------------------------
 Sun May  5 18:01:26 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.29.4

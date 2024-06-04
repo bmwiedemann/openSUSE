@@ -22,9 +22,10 @@ Version:        6.29.4
 Release:        0
 Summary:        IPython Kernel for Jupyter
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/ipython/ipykernel
 Source:         https://files.pythonhosted.org/packages/source/i/ipykernel/ipykernel-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#ipython/ipykernel#1242
+Patch0:         ignore-ipython-deprecationwarning.patch
 Provides:       python-jupyter_ipykernel = %{version}
 Obsoletes:      python-jupyter_ipykernel < %{version}
 Provides:       %{python_module ipykernel-doc = %{version}}

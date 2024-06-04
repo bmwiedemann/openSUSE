@@ -1,0 +1,25 @@
+From e2827a6ee80767a815b1f9a6b913faf4f2b731c4 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Tue, 28 May 2024 15:49:36 +1000
+Subject: [PATCH] Catch IPython 8.24 DeprecationWarnings
+
+test_pylab with IPython 8.24 and above raises DeprecationWarnings about
+backend{s,2gui} being deprecated, causing test failures. Add them into
+the IPython list so they are ignored.
+---
+ pyproject.toml | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index cdf265f6..d9481564 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -172,6 +172,8 @@ filterwarnings= [
+ 
+   # IPython warnings
+   "ignore: `Completer.complete` is pending deprecation since IPython 6.0 and will be replaced by `Completer.completions`:PendingDeprecationWarning",
++  "ignore: backends is deprecated since IPython 8.24, backends are managed in matplotlib and can be externally registered.:DeprecationWarning",
++  "ignore: backend2gui is deprecated since IPython 8.24, backends are managed in matplotlib and can be externally registered.:DeprecationWarning",
+ 
+   # Ignore jupyter_client warnings
+   "ignore:unclosed <socket.socket:ResourceWarning",

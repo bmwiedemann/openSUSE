@@ -569,4 +569,13 @@
   * Fix side effect import for pickleutil #1216 (@blink1073)</comment>
     <requestid>1172014</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>3cefa3562923136e7e8ad7ac5a68f25d</srcmd5>
+    <version>6.29.4</version>
+    <time>1717498228</time>
+    <user>anag+factory</user>
+    <comment>- Add patch ignore-ipython-deprecationwarning.patch:
+  * Ignore DeprecationWarning raised by IPython 8.24+.</comment>
+    <requestid>1177273</requestid>
+  </revision>
 </revisionlist>
