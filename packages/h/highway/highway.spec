@@ -19,7 +19,7 @@
 %define lname libhwy1
 
 Name:           highway
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        C++ library providing SIMD/vector intrinsics
 License:        Apache-2.0 OR BSD-3-Clause

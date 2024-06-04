@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun  1 21:00:14 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.0
+  * Add utility functions Add InterleaveEven/InterleaveOdd, BitShuffle,
+    GatherIndexNOr, IsNegative, IfNegativeThenElseZero,
+    IfNegativeThenZeroElse, PromoteInRangeTo / ConvertInRangeTo /
+    DemoteInRangeTo
+
+-------------------------------------------------------------------
 Sun Feb 18 20:26:43 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.1.0
