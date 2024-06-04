@@ -1259,4 +1259,41 @@ removed boo#1203092 (forwarded request 1006499 from AndreasStieger)</comment>
     o now working much more comprehensively</comment>
     <requestid>1137694</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>63c40e85a07b671d4ea5c481868462c5</srcmd5>
+    <version>6.0.1</version>
+    <time>1717498204</time>
+    <user>anag+factory</user>
+    <comment>- Update to gnuplot 6.0.1
+  * CHANGE Use of data source '-' inside a multiplot is an error;
+      use a local datablock instead
+  * CHANGE gd: scale &quot;dot&quot; (pointtype 0) by current linewidth            Bug 2690
+  * CHANGE modify configure script to accommodate Fedora dependencies    Bug 2706
+  * FIX empty field in csv file should not generate a tic label        Bug 2667 2672
+  * FIX Do not autoscale or extend axis ranges while zooming           Bug 2679 2680
+  * FIX x11: Empirical correction for bad rotation of enhanced text    Bug 2661
+  * FIX wxt: Add exception handler for mouse event processing          Bug 2680 2683
+  * FIX wxt: make right-mouse zoom box independent of terminal scaling Bug 2578
+  * FIX regression: border color of objects with fillstyle &quot;empty&quot;     Bug 2686
+  * FIX &quot;set colorbox border {&lt;lt&gt;}&quot; parsing error
+  * FIX svg: set default fill properties for depth-sorted pm3d objects
+  * FIX gd x11: very short arrows were not drawn at all                Bug 2690
+  * FIX &quot;stats ... name FOO&quot; Do not delete existing variables FOO_*    Bug 2695
+  * FIX order-dependent parsing of 2D plots with &quot;fs solid fc variable&quot;
+  * FIX mp: configure --with-metapost failed to include mp terminal
+  * FIX qt wxt x11: &quot;set term&quot; from a script causes next pause to fail Bug 2703
+  * FIX tikz: fix use of palettes with a fixed number of colors        Bug 2706
+- Add patch gnuplot-doc2tex.patch
+  * Avoid SIGSEGV at the end of a string due to scanning with initial line lenght
+
+- Update to gnuplot 6.0.1
+  * CHANGE Use of data source '-' inside a multiplot is an error;
+      use a local datablock instead
+  * CHANGE gd: scale &quot;dot&quot; (pointtype 0) by current linewidth            Bug 2690
+  * CHANGE modify configure script to accommodate Fedora dependencies    Bug 2706
+  * FIX empty field in csv file should not generate a tic label        Bug 2667 2672
+  * FIX Do not autoscale or extend axis ranges while zooming           Bug 2679 2680
+  * FIX x11: Empirical correction for bad rotation of enhanced text    Bug 2661</comment>
+    <requestid>1178241</requestid>
+  </revision>
 </revisionlist>

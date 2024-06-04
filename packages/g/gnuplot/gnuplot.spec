@@ -83,7 +83,7 @@ BuildRequires:  tex(textgreek.sty)
 BuildRequires:  tex(upquote.sty)
 %endif
 URL:            https://www.gnuplot.info/
-Version:        6.0.0
+Version:        6.0.1
 Release:        0
 %global         underscore 6
 %if "%{flavor}" == ""
@@ -108,6 +108,7 @@ Source6:        gnuplot-5.2.0-texi2info.patch
 Patch0:         gnuplot-4.6.0.dif
 Patch1:         gnuplot-4.4.0-x11ovf.dif
 Patch2:         gnuplot-4.6.0-fonts.diff
+Patch3:         gnuplot-doc2tex.patch
 Patch4:         gnuplot-4.6.0-demo.diff
 Patch5:         gnuplot-wx3.diff
 Patch6:         gnuplot-QtCore-PIC.dif
@@ -140,6 +141,7 @@ bunzip2 -dc %{_sourcedir}/gnuplot-fr.doc.bz2 > docs/gnuplot-fr.doc
 test $? -eq 0 || exit 1
 cp %{_sourcedir}/picins.sty docs
 %patch -P2 -p0 -b .font
+%patch -P3 -p0 -b .overscan
 %patch -P4 -p0 -b .demo
 %patch -P0 -p1 -b .0
 %patch -P1 -p0 -b .x11ovf

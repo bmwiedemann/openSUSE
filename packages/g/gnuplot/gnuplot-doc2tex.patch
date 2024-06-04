@@ -1,0 +1,19 @@
+Do not scan more characters we actual have.
+
+---
+ docs/doc2tex.c |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- docs/doc2tex.c
++++ docs/doc2tex.c	2024-06-03 07:11:02.870049141 +0000
+@@ -553,8 +553,9 @@ puttex( char *str, FILE *file)
+                 (void) fputs("}", file);
+ 		inquote = FALSE;
+ 	    } else {
++		size_t lmax = strlen(str);
+ 		(void) fputs("{\\bf ", file);
+-		for (i=0; i<MAX_LINE_LEN && ((c=str[i]) != '`') ; i++){
++		for (i=0; i<lmax && ((c=str[i]) != '`') ; i++){
+                     string[i] = c;
+                 }
+ 		string[i] = NUL;
