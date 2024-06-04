@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jun  4 07:45:35 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- final adjustment for Obsoletes
+
+-------------------------------------------------------------------
+Tue Jun  4 07:15:42 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- add Provides and Obsoletes for old packages
+
+-------------------------------------------------------------------
+Mon Jun  3 23:14:30 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- remove code which related to the old packaging
+
+-------------------------------------------------------------------
+Mon Jun  3 22:57:13 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- adapt packaging according to 
+  https://build.opensuse.org/request/show/1177729#comment-1944225
+  (remove .so file and include the libsane-airscan.so.1 in the main
+  package
+
+-------------------------------------------------------------------
+Thu May 30 10:25:59 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- add runtime dependency
+
+------------------------------------------------------------------
 Fri Mar 15 20:59:46 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - initial packaging

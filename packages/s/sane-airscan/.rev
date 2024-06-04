@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1165968</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bf0a555abd495d5bc59b36cdf7515d24</srcmd5>
+    <version>0.99.29</version>
+    <time>1717498342</time>
+    <user>anag+factory</user>
+    <comment>- final adjustment for Obsoletes (forwarded request 1178456 from rrahl0)</comment>
+    <requestid>1178457</requestid>
+  </revision>
 </revisionlist>

@@ -16,7 +16,6 @@
 #
 
 
-%define         soversion 1
 Name:           sane-airscan
 Version:        0.99.29
 Release:        0
@@ -27,6 +26,7 @@ Source0:        %{name}-%{version}.tar.zst
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  zstd
 BuildRequires:  pkgconfig(avahi-core)
 BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(libjpeg)
@@ -34,20 +34,10 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(sane-backends)
-BuildRequires:  zstd
-
-%package devel
-Summary:        Devel files for %{name}
-Requires:       %{name} = %{version}-%{release}
-
-%description devel
-%{summary}.
-
-%package -n lib%{name}%{soversion}
-Summary:        Library files for %{name}
-
-%description -n lib%{name}%{soversion}
-Libary files for %{name}.
+Provides:       lib%{name}1 = %{version}
+Obsoletes:      lib%{name}1 <= %{version}
+Provides:       %{name}-devel = %{version}
+Obsoletes:      %{name}-devel <= %{version}
 
 %description
 This package contains a SANE backend for MFP and document scanners that
@@ -63,6 +53,7 @@ scanning protocol
 
 %install
 %meson_install
+rm %{buildroot}%{_libdir}/sane/libsane-airscan.so
 
 %files
 %license LICENSE COPYING
@@ -70,17 +61,10 @@ scanning protocol
 %{_bindir}/airscan-discover
 %config %{_sysconfdir}/sane.d/airscan.conf
 %config %{_sysconfdir}/sane.d/dll.d/airscan
+%{_libdir}/sane/libsane-airscan.so.1
 %{_mandir}/man?/{sane-airscan,airscan-discover}.?.gz
 %if 0%{?suse_version} == 1500
 %dir %{_sysconfdir}/sane.d/dll.d
 %endif
-
-%files -n lib%{name}%{soversion}
-%{_libdir}/sane/libsane-airscan.so.1
-
-%files devel
-%license LICENSE COPYING
-%doc README.md
-%{_libdir}/sane/libsane-airscan.so
 
 %changelog
