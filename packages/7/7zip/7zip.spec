@@ -2,6 +2,7 @@
 # spec file for package 7zip
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +17,9 @@
 #
 
 
-%define stripped_version 2301
+%define stripped_version 2405
 Name:           7zip
-Version:        23.01
+Version:        24.05
 Release:        0
 Summary:        Command-line file archiver with high compression ratio
 # CPP/7zip/Compress/LzfseDecoder.cpp is under the BSD-3-Clause
@@ -31,22 +32,18 @@ Source1:        p7zip
 Source2:        p7zip.1
 Source3:        7zz.1
 Patch0:         fix-compatib-with-p7zip.patch
-# PATCH-FIX-SUSE danilo.spinella@suse.com
-# Fix build on SLE-15-SP6
-# https://sourceforge.net/p/sevenzip/patches/420/
-Patch1:         fix-avx-sle.patch
 BuildRequires:  dos2unix
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-%ifarch x86_64 %ix86 %x86_64
-BuildRequires:  uasm
-%endif
 Conflicts:      p7zip
 Conflicts:      p7zip-full
 Provides:       p7zip = %{version}
 Provides:       p7zip-full = %{version}
 Obsoletes:      p7zip < %{version}
 Obsoletes:      p7zip-full < %{version}
+%ifarch x86_64 %ix86 %x86_64
+BuildRequires:  uasm
+%endif
 
 %description
 This package contains the 7z command line utility for archiving and
@@ -120,6 +117,8 @@ install -m644 -Dt %{buildroot}%{_mandir}/man1 %{SOURCE3}
 ln -s %{_mandir}/man1/7zz.1 %{buildroot}%{_mandir}/man1/7z.1
 ln -s %{_mandir}/man1/7z.1 %{buildroot}%{_mandir}/man1/7za.1
 ln -s %{_mandir}/man1/7z.1 %{buildroot}%{_mandir}/man1/7zr.1
+
+%check
 
 %files
 %license DOC/copying.txt DOC/License.txt

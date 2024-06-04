@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun May 26 08:50:16 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 24.05:
+  * New switch -myv=.. to set decoder compatibility version for
+    7z archive creating
+  * New switches -myfa and -myfd to allow or disallow the specified
+    filter method for 7z archive creating
+  * can use new RISCV filter for compression to 7z and xz archives
+  * can ask user permission to unpack RAR archives that require
+    large amount of memory
+  * new switch -smemx{size}g : to set allowed memory usage limit
+    for RAR archive unpacking.
+  * -y switch disables user requests and messages.
+  * -slmu switch : to show timestamps as UTC instead of LOCAL TIME
+  * support .sha256 files that use backslash path separator '\'
+  * can unpack ZSTD archives (.zst filename extension).
+  * can unpack ZIP, SquashFS and RPM archives that use ZSTD
+    compression method.
+  * support fast hash algorithm XXH64 that is used in ZSTD.
+  * can unpack RAR archives (that use larger than 4 GB dictionary)
+    created by new WinRAR 7.00.
+  * can unpack DMG archives that use XZ (ULMO/LZMA) compression method
+  * can unpack NTFS images with cluster size larger than 64 KB.
+  * can unpack MBR and GDP images with 4 KB sectors.
+  * Speed optimizations for archive unpacking: rar, cab, wim, zip, gz.
+  * Speed optimizations for hash caclulation: CRC-32, CRC-64, BLAKE2sp.
+  * Fix multivolume creation in some cases
+  * bug fixs
+- drop fix-avx-sle.patch
+
+-------------------------------------------------------------------
 Wed Mar  6 12:46:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use autosetup -c instead of manually extracting the tarball and
