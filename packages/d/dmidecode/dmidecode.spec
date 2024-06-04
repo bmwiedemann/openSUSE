@@ -30,7 +30,7 @@ Source2:        %{name}.keyring
 Patch1:         dmioem-update-hpe-oem-type-238.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  xz
-ExclusiveArch:  %ix86 ia64 x86_64 %arm aarch64
+ExclusiveArch:  %ix86 ia64 x86_64 %arm aarch64 riscv64
 
 %description
 Dmidecode reports information about your system's hardware as described
@@ -57,7 +57,7 @@ install -dm 755 %{buildroot}%{_sbindir}
 install -dm 755 %{buildroot}%{_mandir}/man8
 install -dm 755 %{buildroot}%{_docdir}/%{name}
 install -dm 755 %{buildroot}%{_datadir}/bash-completion/completions/
-%ifarch ia64 %arm aarch64
+%ifarch ia64 %arm aarch64 riscv64
 for i in dmidecode ; do
 %else
 for i in dmidecode vpddecode ownership biosdecode ; do

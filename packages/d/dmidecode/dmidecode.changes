@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 29 19:54:25 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Enable build on riscv64
+
+-------------------------------------------------------------------
 Sun May 19 15:19:23 UTC 2024 - Jean Delvare <jdelvare@suse.com>
 
 Update for HPE servers from upstream:
