@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 04 06:24:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.58.14:
+  * Terragrunt Provider Cache with `providers lock` command (#3176)
+
+-------------------------------------------------------------------
 Sat Jun 01 09:56:00 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.58.13:
