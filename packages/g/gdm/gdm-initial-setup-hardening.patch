@@ -1,8 +1,8 @@
-Index: gdm-45.beta/daemon/gdm-display.c
+Index: gdm-46.2/daemon/gdm-display.c
 ===================================================================
---- gdm-45.beta.orig/daemon/gdm-display.c
-+++ gdm-45.beta/daemon/gdm-display.c
-@@ -1537,12 +1537,12 @@ can_create_environment (const char *sess
+--- gdm-46.2.orig/daemon/gdm-display.c
++++ gdm-46.2/daemon/gdm-display.c
+@@ -1538,12 +1538,12 @@ can_create_environment (const char *sess
          return session_exists;
  }
  
@@ -18,7 +18,7 @@ Index: gdm-45.beta/daemon/gdm-display.c
                  return TRUE;
  
          return FALSE;
-@@ -1624,7 +1624,7 @@ wants_initial_setup (GdmDisplay *self)
+@@ -1625,7 +1625,7 @@ wants_initial_setup (GdmDisplay *self)
  
          priv = gdm_display_get_instance_private (self);
  
@@ -27,11 +27,11 @@ Index: gdm-45.beta/daemon/gdm-display.c
                  return FALSE;
          }
  
-Index: gdm-45.beta/daemon/gdm-manager.c
+Index: gdm-46.2/daemon/gdm-manager.c
 ===================================================================
---- gdm-45.beta.orig/daemon/gdm-manager.c
-+++ gdm-45.beta/daemon/gdm-manager.c
-@@ -60,7 +60,7 @@
+--- gdm-46.2.orig/daemon/gdm-manager.c
++++ gdm-46.2/daemon/gdm-manager.c
+@@ -62,7 +62,7 @@
  #define GDM_MANAGER_DISPLAYS_PATH GDM_DBUS_PATH "/Displays"
  
  #define INITIAL_SETUP_USERNAME "gnome-initial-setup"
@@ -40,32 +40,28 @@ Index: gdm-45.beta/daemon/gdm-manager.c
  
  typedef struct
  {
-@@ -1789,6 +1789,7 @@ on_start_user_session (StartUserSessionO
-         gboolean doing_initial_setup = FALSE;
+@@ -1847,6 +1847,7 @@ on_start_user_session (StartUserSessionO
+         gboolean fail_if_already_switched = TRUE;
          GdmDisplay *display;
          const char *session_id;
 +        int fd = -1;
  
          g_debug ("GdmManager: start or jump to session");
  
-@@ -1815,6 +1816,15 @@ on_start_user_session (StartUserSessionO
-                       "doing-initial-setup", &doing_initial_setup,
-                       NULL);
+@@ -1889,22 +1890,21 @@ on_start_user_session (StartUserSessionO
+                               "doing-initial-setup", &doing_initial_setup,
+                               NULL);
  
-+        fd = open(BLOCK_INITIAL_SETUP, O_RDONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC, 0644);
-+        if (fd == -1 && errno != EEXIST) {
-+                g_warning ("GdmDisplay: Could not write initial-setup-done marker to %s: %s",
-+                           BLOCK_INITIAL_SETUP,
-+                           strerror(errno));
-+        }
-+        else {
-+                close(fd);
-+        }
-         if (doing_initial_setup)
-                 chown_initial_setup_home_dir ();
- 
-@@ -1835,20 +1845,9 @@ on_start_user_session (StartUserSessionO
- 
++                fd = open(BLOCK_INITIAL_SETUP, O_RDONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC, 0644);
++                if (fd == -1 && errno != EEXIST) {
++                      g_warning ("GdmDisplay: Could not write initial-setup-done marker to %s: %s",
++                                 BLOCK_INITIAL_SETUP,
++                                 strerror(errno));
++                }
++                else {
++                        close(fd);
++                }
++
                  g_object_ref (display);
                  if (doing_initial_setup) {
 -                        g_autoptr(GError) error = NULL;
@@ -85,11 +81,11 @@ Index: gdm-45.beta/daemon/gdm-manager.c
                  } else {
                          g_debug ("GdmManager: session has its display server, reusing our server for another login screen");
                  }
-Index: gdm-45.beta/daemon/meson.build
+Index: gdm-46.2/daemon/meson.build
 ===================================================================
---- gdm-45.beta.orig/daemon/meson.build
-+++ gdm-45.beta/daemon/meson.build
-@@ -210,6 +210,7 @@ endif
+--- gdm-46.2.orig/daemon/meson.build
++++ gdm-46.2/daemon/meson.build
+@@ -227,6 +227,7 @@ endif
  
  gdm_daemon = executable('gdm',
    [ gdm_daemon_sources, gdm_daemon_gen_sources ],

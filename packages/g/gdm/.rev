@@ -2062,4 +2062,18 @@
     <comment>GNOME 46 (forwarded request 1159257 from dimstar)</comment>
     <requestid>1159526</requestid>
   </revision>
+  <revision rev="267" vrev="1">
+    <srcmd5>99c07bca5d734bccfe59bd0bf04f07a7</srcmd5>
+    <version>46.2</version>
+    <time>1717498220</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.2:
+  + Block suspend when remote displays are active.
+  + Support S0ix suspend when deciding if nvidia should use
+    wayland.
+  + Misc fixes.
+  + Updated translations.
+- Rebase gdm-initial-setup-hardening.patch. (forwarded request 1178274 from dimstar)</comment>
+    <requestid>1178280</requestid>
+  </revision>
 </revisionlist>

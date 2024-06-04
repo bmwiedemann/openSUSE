@@ -27,7 +27,7 @@
 %endif
 
 Name:           gdm
-Version:        46.0
+Version:        46.2
 Release:        0
 Summary:        The GNOME Display Manager
 License:        GPL-2.0-or-later

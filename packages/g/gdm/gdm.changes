@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun  3 09:50:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.2:
+  + Block suspend when remote displays are active.
+  + Support S0ix suspend when deciding if nvidia should use
+    wayland.
+  + Misc fixes.
+  + Updated translations.
+- Rebase gdm-initial-setup-hardening.patch.
+
+-------------------------------------------------------------------
 Tue Mar 19 07:49:19 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:
