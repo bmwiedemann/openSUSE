@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 23 15:25:40 UTC 2024 - Michal Kubecek <mkubecek@suse.cz>
+
+- update to upstream release 6.9
+  * Feature: support for rx-flow-hash gtp (-N)
+  * Feature: support for RSS input transformation (-X)
+  * Fix: typo in coalescing output (-c)
+  * Fix: document all debugging flags in man page
+
+-------------------------------------------------------------------
 Sun Jan 28 23:10:01 UTC 2024 - Michal Kubecek <mkubecek@suse.cz>
 
 - update to upstream release 6.7
