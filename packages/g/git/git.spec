@@ -28,6 +28,13 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
+# Compat stub for python3_fix_shebang_path
+%{?!python3_fix_shebang_path:%define python3_fix_shebang_path(+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-=) \\\
+    myargs="%{**}" \
+    for f in ${myargs}; do \
+        [ -f "$f" ] && sed -i -e "1s@#\\!.*python.*@#\\!$(realpath %__python3)@" $f \
+    done
+    }
 %bcond_without git_libsecret
 %bcond_without docs
 %if 0%{?suse_version} >= 1500 && %{with docs}
@@ -36,7 +43,7 @@
 %bcond_with    asciidoctor
 %endif
 Name:           git
-Version:        2.45.1
+Version:        2.45.2
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
@@ -70,6 +77,8 @@ BuildRequires:  pcre2-devel
 BuildRequires:  perl-Error
 BuildRequires:  perl-MailTools
 BuildRequires:  pkgconfig
+# for the %%python3_fix_shebang_path macro
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  tcsh
@@ -443,6 +452,12 @@ install -m 0644 %{SOURCE11} %{buildroot}%{_sysusersdir}/
 
 %find_lang %{name}
 cat %{name}.lang >>bin-man-doc-files
+
+%if %{defined python3_fix_shebang_path}
+# fix shebang for git-p4 (and possibly others)
+%python3_fix_shebang_path %{buildroot}%{gitexecdir}/*
+%endif
+
 # use symlinks instead of hardlinks in sub-commands
 %fdupes -s %{buildroot}
 

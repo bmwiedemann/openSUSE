@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri May 31 22:57:33 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Compat stub for %python3_fix_shebang_path
+
+-------------------------------------------------------------------
+Fri May 31 22:42:57 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- only call the %python3_fix_shebang_path if it is actually
+  defined. This fixes the build on 15.x
+
+-------------------------------------------------------------------
+Fri May 31 21:04:34 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.45.2:
+  * Revert "defense in depth" fixes from 2.45.1 broke 'git lfs' and
+   'git annex'
+
+-------------------------------------------------------------------
+Mon May 27 10:12:52 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang_path macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Tue May 14 22:38:09 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.45.1:
