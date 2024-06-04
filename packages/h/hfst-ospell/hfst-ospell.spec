@@ -1,7 +1,7 @@
 #
 # spec file for package hfst-ospell
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define _name hfstospell
+%define _name hfst-ospell
 %define libname libhfstospell11
 Name:           hfst-ospell
-Version:        0.5.1
+Version:        0.5.4
 Release:        0
 Summary:        Spell checker library and tool based on HFST
 License:        Apache-2.0
@@ -27,8 +27,6 @@ Group:          Productivity/Text/Spell
 URL:            https://hfst.github.io/
 Source0:        https://github.com/hfst/%{name}/releases/download/v%{version}/%{_name}-%{version}.tar.gz
 Source99:       baselibs.conf
-Patch0:         gcc10-Fix-a-typo-in-wide-string-conversion-function-49.patch
-Patch1:         gcc13-fix.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -63,6 +61,7 @@ Development headers and libraries for hfst-ospell
 # disable libxml++ as upstream requires version 2.6
 # disable tinyxml2 as upstream requires version < 3.0
 export CXXFLAGS="%{optflags} -DU_USING_ICU_NAMESPACE=1"
+NO_CONFIGURE=1 ./autogen.sh
 %configure \
     --disable-static \
     --disable-silent-rules \
@@ -81,7 +80,7 @@ make %{?_smp_mflags} check
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS
 %{_bindir}/*
 %{_mandir}/man1/*
 

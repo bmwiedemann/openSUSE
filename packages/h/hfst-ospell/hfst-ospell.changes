@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 10 10:05:10 UTC 2024 - Timo Jyrinki <tjyrinki@suse.com>
+
+- Update to 0.5.4, notable changes:
+  * Fix minor memory leak
+  * Try first-lower varianta instead of first-upper and all-lower
+  * Re-set limits every step
+  * Caching improvements
+  * Fix build issues
+- Drop gcc build patches, included upstream.
+  * - gcc10-Fix-a-typo-in-wide-string-conversion-function-49.patch
+  * - gcc13-fix.patch
+
+-------------------------------------------------------------------
 Thu Feb 22 07:56:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
