@@ -1976,4 +1976,41 @@ Fixed:
     qt.workarounds.disable_accelerated_2d_canvas as the issue was</comment>
     <requestid>1132497</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>ea16be96a4156ef77b09666316e94c2c</srcmd5>
+    <version>3.2.0</version>
+    <time>1717498336</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.2.0:
+Added:
+  * When qutebrowser receives a SIGHUP it will now reload any
+    config.py file in use (same as the :config-source command does)
+    gh#qutebrowser/qutebrowser#8108
+  * The Chromium security patch version is now shown in the backend
+    string in --version and :version. This reflects the latest
+    Chromium version that security fixes have been backported to
+    the base QtWebEngine version from.
+    gh#qutebrowser/qutebrowser#7187
+Changed:
+  * With QtWebEngine 6.7+, the colors.webpage.darkmode.enabled
+    setting can now be changed at runtime and supports URL patterns
+    gh#qutebrowser/qutebrowser#8182
+  * A few more completions will now match search terms in any
+    order: :quickmark-*, :bookmark-*, :tab-take and :tab-select
+    (for the quick and bookmark categories).
+    gh#qutebrowser/qutebrowser#7955
+  * Elements with an ARIA role=&quot;switch&quot; now get hints (toggle
+    switches like e.g. on cookie banners).
+  * The tor_identity userscript now validates that the
+    -c|--control-port argument value is an int.
+    gh#qutebrowser/qutebrowser#8162
+Fixed:
+  * input.insert_mode.auto_load sometimes not triggering due to
+    a race condition.
+    gh#qutebrowser/qutebrowser#8145
+  * Worked around qutebrowser quitting when closing a KDE file
+    dialog due to a Qt bug.
+    gh#qutebrowser/qutebrowser#8143</comment>
+    <requestid>1178405</requestid>
+  </revision>
 </revisionlist>
