@@ -1,4 +1,322 @@
 -------------------------------------------------------------------
+Thu May 30 21:55:20 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.18 → 10.0.19
+
+-------------------------------------------------------------------
+Wed May 29 21:22:38 CEST 2024 - Neal Gompa <neal@gompa.dev>
+
+- package: Always include patches and number all sources and patches
+
+  This ensures that stuff is applied reliably and all sources and patches
+  are included as expected.
+
+  Then the added kiwi-revert-bls-default-for-suse.patch is applied
+  conditionally for SUSE distributions.
+
+-------------------------------------------------------------------
+Wed May 29 18:18:26 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.17 → 10.0.18
+
+-------------------------------------------------------------------
+Wed May 29 16:54:21 CEST 2024 - Alberto Planas <aplanas@suse.com>
+
+- package: adjust openSUSE patch
+
+-------------------------------------------------------------------
+Wed May 29 15:18:38 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.16 → 10.0.17
+
+-------------------------------------------------------------------
+Wed May 29 12:35:43 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed box plugin documentation
+
+  The provided example was no longer correct according to
+  changes on the image description referenced in the example
+
+-------------------------------------------------------------------
+Fri May 17 17:23:53 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add procps to Tumbleweed integration tests
+
+-------------------------------------------------------------------
+Thu May 16 10:58:40 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add procps to Tumbleweed integration tests
+
+-------------------------------------------------------------------
+Sun May 12 22:01:45 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix sdist upstream tarball contents
+
+  The .virtualenv.dev-requirements.txt file is referenced by tox.ini
+  but not put into the sdist tarball and therefore missing in the
+  pypi upstream data.
+
+-------------------------------------------------------------------
+Fri May 10 12:10:23 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop use of obsolete pkg_resources
+
+  As documented in https://setuptools.pypa.io/en/latest/pkg_resources.html
+  the use of pkg_resources is obsolete and will cause issues.
+  So happened on Debian unstable. This Fixes #2548
+
+-------------------------------------------------------------------
+Thu May 09 18:35:42 CEST 2024 - Adam Williamson <awilliam@redhat.com>
+
+- RepositoryDnf5: correct defaults, set system_cachedir
+
+  The "defaults" in `use_default_location` here are the dnf4
+  defaults, not the dnf5 defaults, so let's update them. Also, for
+  dnf5, we need to set `system_cachedir` instead of `cachedir` -
+  see https://dnf5.readthedocs.io/en/latest/misc/caching.7.html ,
+  `system_cachedir` is the cache location used when running as
+  root, `cachedir` is the cache location used when running as a
+  regular user.
+
+  Signed-off-by: Adam Williamson <awilliam@redhat.com>
+
+-------------------------------------------------------------------
+Wed May 08 15:46:17 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.15 → 10.0.16
+
+-------------------------------------------------------------------
+Wed May 08 15:44:10 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- poetry build doesn't like symlinks
+
+  The sdist tarball produced by poetry build does not include
+  all files and skipped symlinks in test/data. This caused the
+  unit test run to fail if called from within that sources
+
+-------------------------------------------------------------------
+Wed May 08 10:48:57 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix spec file
+
+  Require docopt-ng for Fedora 41+
+
+-------------------------------------------------------------------
+Tue May 07 16:18:28 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.14 → 10.0.15
+
+-------------------------------------------------------------------
+Thu May 02 16:27:14 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for stopsignal in containerconfig
+
+  Allow to specify the stopsignal via the containerconfig
+  element as the following example shows
+
+  <type image="docker">
+  <containerconfig ...>
+  <stopsignal>SIGINT</stopsignal>
+  </containerconfig>
+  </type>
+
+  This Fixes #2543
+
+-------------------------------------------------------------------
+Thu May 02 16:08:35 CEST 2024 - Steffen Winterfeldt <wfeldt@opensuse.org>
+
+- Fix set_disk_password to be effective
+
+  Since commit 8aa517eb7 it is necessary to call
+  _mount_device_and_volumes() prior making any modifications
+  to boot files. In addition handle potential errors
+  from the grub.cfg modification better.
+
+-------------------------------------------------------------------
+Thu May 02 15:28:48 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update Makefile
+
+  Make sure custom patches are part of the package sources
+
+-------------------------------------------------------------------
+Thu May 02 15:24:20 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.13 → 10.0.14
+
+-------------------------------------------------------------------
+Thu May 02 12:42:27 CEST 2024 - Neal Gompa <neal@gompa.dev>
+
+- doc: Document the bls option for the grub bootloader
+
+-------------------------------------------------------------------
+Wed May 01 20:17:18 CEST 2024 - Neal Gompa <ngompa@opensuse.org>
+
+- Temporarily revert grub-bls default to false for SUSE distributions
+
+  For the time being, SUSE distributions cannot handle KIWI's default
+  to use BLS with GRUB2. Until they catch up, revert this for them only.
+
+-------------------------------------------------------------------
+Wed May 01 20:06:02 CEST 2024 - Neal Gompa <neal@gompa.dev>
+
+- kiwi/bootloader: restore backward compatibility for grub2 with bls
+
+  The change to introduce the bls parameter broke backward compatibility
+  with all existing kiwi descriptions for distributions that default to BLS.
+
+  This fixes that by allowing the unset state to be equivalent to enabling it.
+
+  Fixes: 8a8190098cb30358459ba10a4db1ba6446eee8c2
+
+-------------------------------------------------------------------
+Tue Apr 30 14:25:56 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.12 → 10.0.13
+
+-------------------------------------------------------------------
+Mon Apr 29 17:33:43 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Overwrite compression setting only if randomized
+
+  When building an encrypted image, the bundler never compressed
+  the result. This overwrite from the runtime configuration and
+  the default compression setting actually only makes sense when
+  the image is randomized because only then a compression is
+  for sure useless. This Fixes #2540
+
+-------------------------------------------------------------------
+Mon Apr 29 16:08:47 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make sure lsblk output is sorted by dev name
+
+  lsblk without the sorting option can provide the list
+  of devices in different order. This patch makes sure
+  lsblk sorts the output by the device name.
+  This Fixes bsc#1223374
+
+-------------------------------------------------------------------
+Fri Apr 26 17:11:45 CEST 2024 - Romain Geissler <romain.geissler@amadeus.com>
+
+- Stop leaking plugins/{priorities,versionlock}.conf file with dnf4/5.
+
+  This fixes the fedora issue
+  https://bugzilla.redhat.com/show_bug.cgi?id=2270364
+
+  Signed-off-by: Romain Geissler <romain.geissler@amadeus.com>
+
+-------------------------------------------------------------------
+Fri Apr 26 12:10:47 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix luks_randomize setting
+
+  Make sure the value passed for luks_randomize in the description
+  becomes effective. It was not possible to switch off luks_randomize
+  because any "not" value was turned into a true value. The actual
+  default should therefore only apply in case luks_randomize is
+  not specified at all which means only a None value will turn
+  into a true value for this setting.
+
+-------------------------------------------------------------------
+Fri Apr 26 01:36:46 CEST 2024 - Adam Williamson <awilliam@redhat.com>
+
+- Fix package removal with dnf5
+
+  dnf5 does not implement `dnf autoremove <package>` as a synonym
+  for `--setopt=clean_requirements_on_remove=true remove <package>`
+  as dnf4 did. So, we should do it this way instead.
+
+  Signed-off-by: Adam Williamson <awilliam@redhat.com>
+
+-------------------------------------------------------------------
+Thu Apr 25 19:28:29 CEST 2024 - Alberto Planas <aplanas@suse.com>
+
+- Add 'bls' parameter for the bootloader
+
+-------------------------------------------------------------------
+Sat Apr 20 22:51:24 CEST 2024 - Iván Chavero <ichavero@chavero.com.mx>
+
+- Fix efifatimagesize attribute type
+
+  The efifatimagesize attribute type value is set to "oem" but the documentation says
+  that it is intended to be also used for creating ISO images. This causes a schema error
+  when this attribute is set on a profile with type "iso" and blocks changing the EFI
+  boot image size which is a problem if the image is bigger than 20M. This commit
+  allows to specify the attribute also for the "iso" type
+
+-------------------------------------------------------------------
+Fri Apr 19 21:10:44 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add missing tool requires
+
+  Latest changes on the bundler used sed and file
+  which were not required by the spec. This is
+  related to bsc#1221790
+
+-------------------------------------------------------------------
+Fri Apr 19 17:48:43 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add vmdk format to test-image-bundle-format
+
+  Allow to check if the bundle format rename is applied
+  in the new bundle reference checker code
+
+-------------------------------------------------------------------
+Fri Apr 19 16:12:31 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix file references in kiwi bundler result files
+
+  When using a custom bundle_format the kiwi result bundler renames
+  the output files to match the bundle_format. However, if there are
+  output files that references other output files, for example the
+  vmware binary (.vmdk) in the guest config file (.vmx) then this
+  renaming breaks those result files. This patch adds a reference
+  file check for all non binary output files if they contain a
+  reference to another output file and updates the data accordingly.
+  This Fixes bsc#1221790
+
+-------------------------------------------------------------------
+Fri Apr 19 15:38:02 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Don't compress vmdk images
+
+  Like with qcow2 it's not expected that the format type gets
+  compressed in the bundle
+
+-------------------------------------------------------------------
+Fri Apr 19 14:48:22 CEST 2024 - Alberto Planas <aplanas@suse.com>
+
+- kiwi.rnc: define bls parameter for bootloader
+
+-------------------------------------------------------------------
+Fri Apr 19 12:54:07 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Keep runtime_checker_metadata.yml as module file
+
+  It was a bad idea to install a mandatory source file outside
+  the module path. This prevents running kiwi from source
+
+-------------------------------------------------------------------
+Fri Apr 19 12:33:04 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed Arch build
+
+  Forgot to add install of runtime_checker_metadata.yml
+
+-------------------------------------------------------------------
+Thu Apr 18 17:12:27 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update tumbleweed/test-image-disk integration test
+
+-------------------------------------------------------------------
+Thu Apr 18 12:46:20 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Handle XSLT errors better
+
+  Make sure etree.XSLTApplyError is a known error in the kiwi
+  scope and raise an appropriate exception
+
+-------------------------------------------------------------------
 Wed Apr 17 12:28:35 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.0.11 → 10.0.12
@@ -46,6 +364,17 @@ Mon Apr 08 12:12:19 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
   Add /usr/lib/grub/*-efi-signed to search for shim signed EFI
   binaries too. This Fixes #2525
+
+-------------------------------------------------------------------
+Mon Apr 08 09:56:12 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed runtime checks for dracut module packages
+
+  Unfortunately the packaging of kiwi on Debian follows different
+  naming conventions for dracut module packages which causes
+  the runtime check to fail. This commit allows to check for
+  multiple package names and adds the variants used on Debian.
+  This Fixes #2524
 
 -------------------------------------------------------------------
 Thu Apr 04 17:17:42 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>

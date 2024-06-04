@@ -44,7 +44,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        10.0.12
+Version:        10.0.19
 Provides:       kiwi-schema = 8.1
 Release:        0
 Url:            https://github.com/OSInside/kiwi
@@ -55,8 +55,11 @@ License:        GPL-3.0-or-later
 Packager:       Marcus Schaefer <marcus.schaefer@suse.com>
 %endif
 Group:          %{pygroup}
-Source:         %{name}.tar.gz
+Source0:        %{name}.tar.gz
 Source1:        %{name}-rpmlintrc
+# SUSE-specific patches (1001+)
+## PATCH-FIX-OPENSUSE kiwi-revert-bls-default-for-suse.patch -- temporary until opensuse has bls
+Patch1001:      kiwi-revert-bls-default-for-suse.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?fedora} || 0%{?suse_version}
 BuildRequires:  fdupes
@@ -76,7 +79,11 @@ BuildRequires:  python%{python3_pkgversion}-installer
 BuildRequires:  python%{python3_pkgversion}-poetry-core >= 1.2.0
 BuildRequires:  python%{python3_pkgversion}-wheel
 # doc build requirements
+%if ! (0%{?fedora} >= 41 || 0%{?rhel} >= 10)
 BuildRequires:  python%{python3_pkgversion}-docopt >= 0.6.2
+%else
+BuildRequires:  python%{python3_pkgversion}-docopt-ng
+%endif
 BuildRequires:  python%{python3_pkgversion}-lxml
 BuildRequires:  python%{python3_pkgversion}-requests
 BuildRequires:  python%{python3_pkgversion}-setuptools
@@ -387,6 +394,8 @@ Obsoletes:      python2-kiwi
 Conflicts:      python2-kiwi
 Conflicts:      kiwi-man-pages < %{version}
 Requires:       screen
+Requires:       file
+Requires:       sed
 Requires:       python%{python3_pkgversion} >= 3.9
 %if 0%{?ubuntu} || 0%{?debian}
 Requires:       python%{python3_pkgversion}-yaml
@@ -394,7 +403,11 @@ Requires:       python%{python3_pkgversion}-yaml
 Requires:       python%{python3_pkgversion}-PyYAML
 %endif
 Requires:       python%{python3_pkgversion}-simplejson
+%if ! (0%{?fedora} >= 41 || 0%{?rhel} >= 10)
 Requires:       python%{python3_pkgversion}-docopt
+%else
+Requires:       python%{python3_pkgversion}-docopt-ng
+%endif
 Requires:       python%{python3_pkgversion}-lxml
 Requires:       python%{python3_pkgversion}-requests
 Requires:       python%{python3_pkgversion}-setuptools
@@ -626,7 +639,12 @@ Group:          %{sysgroup}
 Provides manual pages to describe the kiwi commands
 
 %prep
-%autosetup -n kiwi-%{version}
+%setup -q -n kiwi-%{version}
+
+%if 0%{?suse_version}
+# Temporarily revert grub-bls default to false for SUSE distributions
+%patch -P 1001 -p1
+%endif
 
 # Temporarily switch things back to docopt for everything but Fedora 41+
 # FIXME: Drop this hack as soon as we can...

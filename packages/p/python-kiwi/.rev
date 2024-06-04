@@ -2410,4 +2410,41 @@
   kiwi files using a schema version &lt; 7.4 are no longer supported</comment>
     <requestid>1168512</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>de7e92e948d5545b99f1cb87706e1079</srcmd5>
+    <version>10.0.19</version>
+    <time>1717498239</time>
+    <user>anag+factory</user>
+    <comment>- Bump version: 10.0.18 → 10.0.19
+
+- package: Always include patches and number all sources and patches
+  This ensures that stuff is applied reliably and all sources and patches
+  are included as expected.
+  Then the added kiwi-revert-bls-default-for-suse.patch is applied
+  conditionally for SUSE distributions.
+
+- Bump version: 10.0.17 → 10.0.18
+
+- package: adjust openSUSE patch
+
+- Bump version: 10.0.16 → 10.0.17
+
+- Fixed box plugin documentation
+  The provided example was no longer correct according to
+  changes on the image description referenced in the example
+
+- Add procps to Tumbleweed integration tests
+
+- Add procps to Tumbleweed integration tests
+
+- Fix sdist upstream tarball contents
+  The .virtualenv.dev-requirements.txt file is referenced by tox.ini
+  but not put into the sdist tarball and therefore missing in the
+  pypi upstream data.
+
+- Drop use of obsolete pkg_resources
+  As documented in https://setuptools.pypa.io/en/latest/pkg_resources.html
+  the use of pkg_resources is obsolete and will cause issues.</comment>
+    <requestid>1177852</requestid>
+  </revision>
 </revisionlist>
