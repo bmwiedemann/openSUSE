@@ -1,9 +1,24 @@
 -------------------------------------------------------------------
+Thu May 23 15:00:00 UTC 2024 - Felix Schnizlein <fschnizlein@suse.com>
+
+- Update version to 1.10.0
+  * Build zypper-migration and zypper-packages-search as standalone
+    binaries rather then one single binary
+  * Add --gpg-auto-import-keys flag before action in zypper command (bsc#1219004)
+  * Include /etc/products.d in directories whose content are backed
+    up and restored if a zypper-migration rollback happens. (bsc#1219004)
+  * Add the ability to upload the system uptime logs, produced by the
+    suse-uptime-tracker daemon, to SCC/RMT as part of keepalive report.
+    (jsc#PED-7982) (jsc#PED-8018)
+  * Add support for third party packages in SUSEConnect
+  * Refactor existing system information collection implementation
+
+-------------------------------------------------------------------
 Tue May  7 14:12:47 UTC 2024 - Thomas Schmidt <tschmidt@suse.com>
 
 - Update to version 1.9.0
   * Fix certificate import for Yast when using a registration proxy with
-    self-signed SSL certificate (bsc#1223107) 
+    self-signed SSL certificate (bsc#1223107)
 
 -------------------------------------------------------------------
 Wed Mar 13 12:37:29 UTC 2024 - José Gómez <1josegomezr@gmail.com>

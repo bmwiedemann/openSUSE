@@ -1,23 +1,12 @@
 <services>
-  <!-- The copy of this file in the OBS package needs to be manually updated
-       from the one in git repo.
-       Parameter definitions:
-       https://github.com/openSUSE/obs-service-tar_scm/blob/master/tar_scm.service.in
-  -->
   <service name="tar_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/SUSE/connect-ng.git</param>
-    <param name="revision">1.9_bugfix_release</param>
-    <param name="version">1.9.0</param>
-
-    <!-- <param name="match-tag">v*</param>
-    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
-    <param name="versionrewrite-replacement">\1</param>
-    <param name="versionformat">@PARENT_TAG@</param> -->
+    <param name="revision">main</param>
+    <param name="version">1.10.0</param>
     <param name="filename">suseconnect-ng</param>
-    <param name="changesgenerate">enable</param>
     <param name="package-meta">no</param>
-    <param name="exclude">vendor</param>
+    <param name="changesgenerate">disable</param>
   </service>
   <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
@@ -25,15 +14,11 @@
   </service>
   <service name="extract_file" mode="manual">
     <param name="archive">suseconnect-ng*.tar.xz</param>
-    <param name="files">suseconnect-ng-*/suseconnect-ng.spec</param>
-    <param name="files">suseconnect-ng-*/suseconnect-ng.changes</param>
-    <param name="files">suseconnect-ng-*/suseconnect-ng-rpmlintrc</param>
+    <param name="files">suseconnect-ng-*/build/packaging/suseconnect-ng.spec</param>
+    <param name="files">suseconnect-ng-*/build/packaging/suseconnect-ng.changes</param>
+    <param name="files">suseconnect-ng-*/build/packaging/suseconnect-ng-rpmlintrc</param>
   </service>
-  <service name="set_version" mode="manual">
-    <param name="file">suseconnect-ng.spec</param>
+  <service name="go_modules" mode="manual">
+    <param name="compression">xz</param>
   </service>
-<!--
-  <service name="go_modules" mode="disabled">
-  </service>
--->
 </services>
