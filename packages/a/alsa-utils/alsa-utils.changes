@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 30 13:13:53 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Require tree which is used by alsa-info.sh (bsc#1225665)
+
+-------------------------------------------------------------------
 Tue Feb 20 10:58:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

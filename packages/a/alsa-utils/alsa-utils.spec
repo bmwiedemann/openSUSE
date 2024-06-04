@@ -66,6 +66,7 @@ Requires:       alsa
 # for alsa-info.sh
 Requires:       dialog
 Requires:       pciutils
+Requires:       tree
 
 %description
 This package contains utility programs supporting ALSA, Advanced Linux
