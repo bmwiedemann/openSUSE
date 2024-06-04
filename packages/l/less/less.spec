@@ -1,7 +1,7 @@
 #
 # spec file for package less
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,13 @@
 %define use_usretc 1
 %endif
 Name:           less
-Version:        643
+Version:        656
 Release:        0
 Summary:        Text File Browser and Pager Similar to more
 License:        BSD-2-Clause OR GPL-3.0-or-later
 Group:          Productivity/Text/Utilities
 URL:            https://www.greenwoodsoftware.com/less/
-Source:         https://www.greenwoodsoftware.com/less/less-%{version}.tar.gz
+Source:         https://www.greenwoodsoftware.com/less/less-%{version}-beta.tar.gz
 Source1:        README.SUSE
 Source2:        lessopen.sh
 Source3:        lessclose.sh

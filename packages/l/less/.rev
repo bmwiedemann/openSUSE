@@ -662,4 +662,12 @@ The less license is a choice of either GPL-3.0+ or BSD-2-Clause (less license). 
 - improved detection for input conding from keyboard, proper input</comment>
     <requestid>1124451</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>6263ba3ac265c8fab6f2489a55b9e0a8</srcmd5>
+    <version>656</version>
+    <time>1717498240</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1177861</requestid>
+  </revision>
 </revisionlist>
