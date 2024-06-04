@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 31 22:24:51 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Update to version 0.7 (commit dbdce91bfd7954616731e47f97f82b8e10586101):
+  * Remove susepaste.org from output, use paste.opensuse.org exclusively
+  * Repair X11 clipboard copy (use clipboard instead of XA_CLIPBOARD)
+  * Support Wayland clipboard copy
+- Drop upstreamed patches:
+  * 0001-susepaste-Fix-parsing-of-returned-Location-header.patch
+  * 0002-susepaste-add-image-paste-info.patch
+  * 0003-susepaste-use-paste-opensuse.org.patch
+- Disable submodules in service, linked forge is offline 
+
+-------------------------------------------------------------------
 Mon Feb 26 13:32:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

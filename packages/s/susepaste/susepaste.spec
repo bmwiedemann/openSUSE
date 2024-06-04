@@ -1,7 +1,7 @@
 #
 # spec file for package susepaste
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,13 @@
 
 
 Name:           susepaste
-Version:        0.6
+Version:        0.7
 Release:        0
 Summary:        Script for using openSUSE paste
 License:        GPL-3.0-only
 Group:          Productivity/Other
 URL:            https://github.com/openSUSE/paste
-Source0:        susepaste-script-%{version}.tar.bz2
-Patch0:         0001-susepaste-Fix-parsing-of-returned-Location-header.patch
-# PATCH-FIX-OPENSUSE 0002-susepaste-add-image-paste-info.patch malcolmlewis@opensuse.org boo#1193400-- Add info on posting an image to susepaste in the man page.
-Patch1:         0002-susepaste-add-image-paste-info.patch
-Patch2:         0003-susepaste-use-paste-opensuse.org.patch
+Source0:        susepaste-script-%{version}.tar.xz
 Requires:       bash
 Requires:       curl
 BuildArch:      noarch
@@ -50,15 +46,13 @@ A script for using the openSUSE paste service.
 You can paste screenshot of the window or whole desktop.
 
 %prep
-%setup -q -n susepaste-script-%{version}
-%patch -P 0 -p2
-%patch -P 1 -p1
-%patch -P 2 -p2
-mv gpl-3.0.txt COPYING
+%autosetup -n susepaste-script-%{version} -p 1
+mv script/gpl-3.0.txt COPYING
 
 %build
 
 %install
+pushd script
 install -Dpm 0755 susepaste \
   %{buildroot}%{_bindir}/susepaste
 install -Dpm 0755 susepaste-screenshot \
@@ -69,6 +63,7 @@ install -Dpm 0644 susepaste-screenshot.1 \
   %{buildroot}%{_mandir}/man1/susepaste-screenshot.1
 install -Dpm 0644 lang-mappings.sed \
   %{buildroot}%{_datadir}/susepaste/lang-mappings.sed
+popd
 
 %files
 %license COPYING

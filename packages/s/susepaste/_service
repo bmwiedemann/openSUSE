@@ -1,10 +1,11 @@
 <services>
 	<service name="tar_scm" mode="manual">
-		<param name="filename">gromox</param>
+		<param name="filename">susepaste-script</param>
 		<param name="scm">git</param>
 		<param name="url">https://github.com/openSUSE/paste</param>
-		<param name="revision">a21cd8d3df39934db385e3b9ff2d0c930a5df32e</param>
-		<param name="versionformat">0.6</param>
+		<param name="revision">dbdce91bfd7954616731e47f97f82b8e10586101</param>
+		<param name="versionformat">0.7</param>
+		<param name="submodules">disable</param>
 	</service>
 	<service name="recompress" mode="manual">
 		<param name="file">*.tar</param>
