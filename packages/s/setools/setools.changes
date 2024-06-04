@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 28 11:19:10 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
+
+- Rework packaging to modern python packaging
+  - python-setools module now builds for python310, python311, python312
+    for tw and builds for python311 in 15.4 + 15.5
+  - setools-console scripts will use python311 as default in factory, 15.4
+    and 15.5 
+  - moved %dir %{_docdir}/%{name}/ and %{_docdir}/%{name}/* out of the
+    python-setools module into setools-console as it does not belong in there
+    and causes conflicts between python versions
+  - moved %{python_sitearch}/setoolsgui from setools-gui into the
+    python-setools module for multiversion build
+
+-------------------------------------------------------------------
 Thu May  2 07:41:11 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 4.5.1:

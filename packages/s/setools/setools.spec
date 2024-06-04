@@ -16,8 +16,12 @@
 #
 
 
-%define python3_primary_provider python311
-%define pythons %python3_primary_provider
+%{?sle15_python_module_pythons}
+%if 0%{?suse_version} < 1600
+# set python_for_executables from python macros to python311
+# to build python scripts in bin dirs only for python311
+%define python_for_executables python311
+%endif
 
 Name:           setools
 Version:        4.5.1
@@ -37,6 +41,10 @@ BuildRequires:  libsepol-devel
 BuildRequires:  python-rpm-macros
 Requires:       setools-console = %{version}-%{release}
 Requires:       setools-gui = %{version}-%{release}
+# needed since setools is not a python-main package, see
+# https://github.com/openSUSE/python-rpm-macros
+%define python_subpackage_only 1
+%python_subpackages
 
 %description
 SETools is a collection of graphical tools, command-line tools, and
@@ -49,7 +57,7 @@ SETools.
 Summary:        Policy analysis command-line tools for SELinux
 License:        GPL-2.0-only
 Group:          System/Base
-Requires:       python3-setools = %{version}
+Requires:       %{python_for_executables}-setools = %{version}
 
 %description console
 SETools is a collection of graphical tools, command-line tools, and
@@ -63,23 +71,22 @@ This package includes the following console tools:
   seinfoflow      Information flow analysis tool
   sediff          Semantic policy difference tool
 
-%package -n %{python3_primary_provider}-setools
+%package -n python-setools
 Summary:        Python bindings for SELinux policy analysis
 License:        LGPL-2.0-only
 Group:          Development/Languages/Python
-Requires:       %{python3_primary_provider} >= 3.10
-Requires:       %{python3_primary_provider}-setuptools
+Requires:       %{python_for_executables} >= 3.10
+Requires:       %{python_for_executables}-setuptools
 # Only suggest python-networkx due to its large amount of dependencies
 # (see README.SUSE)
-Suggests:       %{python3_primary_provider}-networkx
+Suggests:       %{python_for_executables}-networkx
 Obsoletes:      python-setools < %{version}-%{release}
 Provides:       python-setools = %{version}-%{release}
-%if "%{python3_primary_provider}" != "python3"
+%if "%{python_flavor}" != "python3"
 Obsoletes:      python3-setools < %{version}-%{release}
-Provides:       python3-setools = %{version}-%{release}
 %endif
 
-%description -n %{python3_primary_provider}-setools
+%description -n python-setools
 SETools is a collection of graphical tools, command-line tools, and
 libraries designed to facilitate SELinux policy analysis.
 
@@ -87,9 +94,9 @@ libraries designed to facilitate SELinux policy analysis.
 Summary:        Policy analysis graphical tools for SELinux
 License:        GPL-2.0-only
 Group:          System/Base
-Requires:       %{python3_primary_provider}-PyQt6
-Requires:       %{python3_primary_provider}-pygraphviz
-Requires:       %{python3_primary_provider}-setools = %{version}
+Requires:       %{python_for_executables}-PyQt6
+Requires:       %{python_for_executables}-pygraphviz
+Requires:       %{python_for_executables}-setools = %{version}
 
 %description gui
 SETools is a collection of graphical tools, command-line tools, and
@@ -111,12 +118,11 @@ This package includes the following graphical tools:
 install -m 644 -D %{SOURCE2} %{buildroot}%{_docdir}/%{name}/README.SUSE
 %fdupes -s %{buildroot}%{python_sitearch}
 
-%files -n %{python3_primary_provider}-setools
+%files %{python_files setools}
 %defattr(-,root,root,-)
 %{python_sitearch}/setools
+%{python_sitearch}/setoolsgui
 %{python_sitearch}/setools-%{version}*-info
-%dir %{_docdir}/%{name}/
-%{_docdir}/%{name}/*
 
 %files console
 %defattr(-,root,root,-)
@@ -138,10 +144,11 @@ install -m 644 -D %{SOURCE2} %{buildroot}%{_docdir}/%{name}/README.SUSE
 %{_mandir}/ru/man1/seinfo.1.gz
 %{_mandir}/ru/man1/seinfoflow.1.gz
 %{_mandir}/ru/man1/sesearch.1.gz
+%dir %{_docdir}/%{name}/
+%{_docdir}/%{name}/*
 
 %files gui
 %defattr(-,root,root,-)
-%{python_sitearch}/setoolsgui
 %{_bindir}/apol
 %{_mandir}/man1/apol.1.gz
 
