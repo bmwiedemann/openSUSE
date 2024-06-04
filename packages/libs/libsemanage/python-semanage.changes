@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 28 10:40:17 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
+
+- Build python-semanage for python311 in 15.4 and 15.5 instead of
+  python3.6 to fix build dependencies
+
+-------------------------------------------------------------------
 Tue Dec 19 11:13:19 UTC 2023 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 3.6
