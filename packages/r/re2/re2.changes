@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 31 20:52:23 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2024-06-01:
+  * switch to abseil logging
+  * build system changes
+
+-------------------------------------------------------------------
 Wed May  1 11:35:08 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2024-05-01:
