@@ -22,11 +22,17 @@ Release:        0
 Summary:        Library for collaborative, interactive, publication-quality graphs
 License:        MIT
 URL:            https://github.com/plotly/plotly.py
-# Get the PyPI archive for the bundled JS files
-Source:         https://files.pythonhosted.org/packages/source/p/plotly/plotly-%{version}.tar.gz
-# Additionally use the GitHub archive for the test suite
-Source1:        https://github.com/plotly/plotly.py/archive/refs/tags/v%{version}.tar.gz#/plotly.py-%{version}-gh.tar.gz
+# Use the GitHub archive for the test suite
+Source0:        https://github.com/plotly/plotly.py/archive/refs/tags/v%{version}.tar.gz#/plotly.py-%{version}-gh.tar.gz
+# package-lock.json file generated with command in packages/javascript/jupyterlab-plotly:
+# npm install --package-lock-only --legacy-peer-deps --ignore-scripts
+Source10:       package-lock.json
+# node_modules generated using "osc service mr" with the https://github.com/openSUSE/obs-service-node_modules
+Source11:       node_modules.spec.inc
+%include        %{_sourcedir}/node_modules.spec.inc
 Source100:      python-plotly-rpmlintrc
+# PATCH-FIX-UPSTREAM plotly-pr4622-np2.patch gh#plotly/plotly.py#4622
+Patch0:         plotly-pr4622-np2.patch
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module jupyterlab >= 3}
 BuildRequires:  %{python_module notebook >= 5.3}
@@ -37,6 +43,7 @@ BuildRequires:  %{python_module tenacity >= 6.2.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-rpm-macros
+BuildRequires:  local-npm-registry
 BuildRequires:  python-rpm-macros
 Requires:       python-packaging
 Requires:       python-tenacity >= 6.2.0
@@ -115,7 +122,13 @@ This package provides the flavorless configuration for the
 Jupyterlab and Notebook integration and widgets.
 
 %prep
-%setup -q -n plotly-%{version} -b 1
+%autosetup -p4 -n plotly.py-%{version}/packages/python/plotly
+pushd ../../javascript/jupyterlab-plotly/
+rm package-lock.json
+# allow builder v4
+sed -i '/jupyterlab.builder/ s/\^3/>=3/' package.json
+local-npm-registry %{_sourcedir} install --include=dev --include=peer
+popd
 # remove script interpreter line in non-executable script
 sed -i '1{/env python/ d}' _plotly_utils/png.py
 # homogenize mtime of all __init__.py files for deduplicated compile cache consistency
@@ -130,9 +143,6 @@ find . -name __init__.py -exec touch -m -r plotly/__init__.py '{}' ';'
 %fdupes %{buildroot}%{_jupyter_prefix}
 
 %check
-# No test suite in the PyPI package, which is required for the bundled JS files, we are using the GitHub repo tree now.
-# Important: make sure you patched the sources the same as the github repo
-pushd ../plotly.py-%{version}/packages/python/plotly
 # API parameter mismatch
 donttest="test_described_subscript_error_on_type_error"
 %pytest plotly/tests/test_core -k "not ($donttest)"
@@ -141,10 +151,11 @@ donttest="test_kaleido"
 donttest="$donttest or test_px_input and (vaex or polars)"
 # API parameter mismatches and precision errors
 donttest="$donttest or test_matplotlylib"
+# fails to plot with numpy 2 but cannot reproduce failure interactively
+donttest="$donttest or test_masked_constants_example"
 # flaky timing error
 donttest="$donttest or test_fast_track_finite_arrays"
 %pytest plotly/tests/test_optional -k "not ($donttest)"
-popd
 
 %files %{python_files}
 %license LICENSE.txt

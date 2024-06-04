@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun  2 14:39:59 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Build from github archive with obs-service-node_modules and
+  local-npm-registry
+- Add plotly-pr4622-np2.patch gh#plotly/plotly.py#4622
+
+-------------------------------------------------------------------
 Thu May 23 18:43:23 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.22.0
