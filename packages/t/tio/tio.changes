@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 16 19:29:37 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.3
+  * Force destructive backspace when using local echo
+  * Only takes effect in normal output mode.
+  * Fix local-echo in configuration file
+  * Clean up includes
+  * Force socket write operation to ignore any signals
+  * Man page cleanup
+
+-------------------------------------------------------------------
 Thu May  9 08:41:24 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.2
