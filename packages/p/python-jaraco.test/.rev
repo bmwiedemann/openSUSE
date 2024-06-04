@@ -25,4 +25,13 @@
     <comment></comment>
     <requestid>1163254</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>fe76645481a0ef543a1f5c4dfb6b802c</srcmd5>
+    <version>5.4.0</version>
+    <time>1717498230</time>
+    <user>anag+factory</user>
+    <comment>- Allow testsuite to fail due to upstream pytest bug with 8.1+. 
+- Clean up Suggests.</comment>
+    <requestid>1177823</requestid>
+  </revision>
 </revisionlist>

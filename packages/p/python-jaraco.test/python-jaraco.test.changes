@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 31 01:29:54 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Allow testsuite to fail due to upstream pytest bug with 8.1+. 
+- Clean up Suggests.
+
+-------------------------------------------------------------------
 Wed Mar 27 20:41:30 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
