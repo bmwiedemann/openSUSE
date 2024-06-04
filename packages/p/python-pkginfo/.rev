@@ -75,4 +75,19 @@
   * Add support for Metadata 2.3.</comment>
     <requestid>1158408</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c322bd056d06fe0023c26ba6b97fca2b</srcmd5>
+    <version>1.11.0</version>
+    <time>1717498222</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.11.0:
+  * Add support for Python 3.13.
+  * Drop support for Python 3.7.
+  * Emit warnings for distributions parsed with unknown metadata
+    versions, or metadata versions newer than highest supported
+    version.
+  * Improve exception message when failing to find a valid 'PKG-
+    INFO' file within an 'sdist' archive.  LP #2064652.</comment>
+    <requestid>1178286</requestid>
+  </revision>
 </revisionlist>

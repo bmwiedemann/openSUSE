@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun  3 10:48:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11.0:
+  * Add support for Python 3.13.
+  * Drop support for Python 3.7.
+  * Emit warnings for distributions parsed with unknown metadata
+    versions, or metadata versions newer than highest supported
+    version.
+  * Improve exception message when failing to find a valid 'PKG-
+    INFO' file within an 'sdist' archive.  LP #2064652.
+
+-------------------------------------------------------------------
 Sat Mar 16 09:28:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.10.0:

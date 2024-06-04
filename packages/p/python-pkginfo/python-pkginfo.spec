@@ -18,14 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pkginfo
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 Summary:        Python package for querying metadatdata from sdists/bdists/installed packages
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/pkginfo/
 Source:         https://files.pythonhosted.org/packages/source/p/pkginfo/pkginfo-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
@@ -50,10 +53,10 @@ the *.egg-info stored in a "development checkout"
 %setup -q -n pkginfo-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/pkginfo
 
@@ -71,6 +74,6 @@ the *.egg-info stored in a "development checkout"
 %doc README.txt CHANGES.txt TODO.txt
 %python_alternative %{_bindir}/pkginfo
 %{python_sitelib}/pkginfo
-%{python_sitelib}/pkginfo-%{version}-py*.egg-info
+%{python_sitelib}/pkginfo-%{version}.dist-info
 
 %changelog
