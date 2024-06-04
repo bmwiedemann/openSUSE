@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Jun 03 07:16:07 UTC 2024 - danish.prakash@suse.com
+
+- Remove redundant source: cargo_config
+- Update to version 1.11.0:
+  * Release v1.11.0
+  * v1.11.0 release notes
+  * run cargo update
+  * chore(deps): update dependency containers/automation_images to v20240529
+  * Internal networks cannot make external DNS requests
+  * fix(deps): update rust crate anyhow to 1.0.86
+  * fix(deps): update rust crate nix to 0.29.0
+  * [skip-ci] RPM: use default __cargo macro across all envs
+  * chore(deps): update dependency containers/automation_images to v20240513
+  * fix(deps): update rust crate anyhow to 1.0.83
+  * [skip-ci] Packit: separate `packages` key for rhel jobs
+  * fix(deps): update rust crate libc to 0.2.154
+  * [skip-ci] Packit: enable rhel10, c10s tests and c10s downstream sync
+  * [skip-ci] Packit: Remove EL8 jobs
+  * fix(deps): update rust crate syslog to ^6.1.1
+  * fix reverse ipv6 lookup test flake
+  * fix(deps): update hickory-dns monorepo to 0.24.1
+  * chore(deps): update rust crate chrono to 0.4.38
+  * Don't tear down all server threads on SIGHUP (bsc#1224167)
+  * fix(deps): update rust crate anyhow to 1.0.82
+  * fix(deps): update rust crate tokio to 1.37.0
+  * Update to nix-0.28.0
+  * update chrono package
+  * chore(deps): update dependency containers/automation_images to v20240320
+  * fix(deps): update rust crate anyhow to 1.0.81
+  * tests: check queried domain name in reverse lookup tests
+  * fix: set name for answers in reverse lookups
+  * chore: fix typo in runner script
+  * chore: fix log message when doing reverse lookup
+  * fix(deps): update rust crate log to 0.4.21
+  * fix(deps): update rust crate anyhow to 1.0.80
+  * chore(deps): update rust crate chrono to 0.4.34
+  * fix(deps): update rust crate async-broadcast to 0.7.0
+  * fix(deps): update rust crate tokio to 1.36.0
+  * [CI:DOCS] Packit: disable bodhi tasks
+  * chore(deps): update rust crate chrono to 0.4.33
+  * Bump to 1.11.0-dev
+
+-------------------------------------------------------------------
 Thu Jan 25 06:08:17 UTC 2024 - danish.prakash@suse.com
 
 - Update to version 1.10.0:

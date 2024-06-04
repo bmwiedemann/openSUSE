@@ -17,14 +17,13 @@
 
 
 Name:           aardvark-dns
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 Summary:        Authoritative dns server for A/AAAA container records
 License:        Apache-2.0
 URL:            https://github.com/containers/%{name}
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Source2:        cargo_config
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 # Disable this line if you wish to support all platforms.
@@ -35,8 +34,6 @@ It can forward other requests to configured resolvers.
 
 %prep
 %autosetup -a1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 %make_build

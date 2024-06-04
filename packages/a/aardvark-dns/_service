@@ -3,7 +3,7 @@
     <param name="url">https://github.com/containers/aardvark-dns</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">v1.10.0</param>
+    <param name="revision">v1.11.0</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
