@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 15 07:42:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro: allows us to eliminate usage of deprecated
+  %patchN syntax.
+- Rebase FastCGI-perl526.patch to apply with -p0, like all the
+  other patches.
+
+-------------------------------------------------------------------
 Thu May 11 15:44:16 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Fix url for website and source, upstream is dead for a while.

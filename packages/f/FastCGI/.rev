@@ -223,4 +223,12 @@ Use SUSE- proprietary prefix until license is accepted upstream by SPDX.org. Fed
     <comment></comment>
     <requestid>1087201</requestid>
   </revision>
+  <revision rev="31" vrev="174">
+    <srcmd5>06ff7169af6f8a3e66adbcaffcec077f</srcmd5>
+    <version>2.4.0</version>
+    <time>1717498257</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1178131</requestid>
+  </revision>
 </revisionlist>

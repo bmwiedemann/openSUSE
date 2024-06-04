@@ -1,7 +1,7 @@
 Index: fcgi-2.4.0/perl/FCGI.PL
 ===================================================================
---- fcgi-2.4.0.orig/perl/FCGI.PL
-+++ fcgi-2.4.0/perl/FCGI.PL
+--- perl/FCGI.PL
++++ perl/FCGI.PL
 @@ -1,7 +1,7 @@
  use Config;
  use ExtUtils::MakeMaker;

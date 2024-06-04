@@ -1,7 +1,7 @@
 #
 # spec file for package FastCGI
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -83,15 +83,7 @@ provides high performance without the limitations of server specific
 APIs.
 
 %prep
-%setup -n fcgi2-%{version}
-%patch0
-%patch1
-%patch2
-%patch3
-%patch4
-%patch5
-%patch6
-%patch7 -p1
+%autosetup -n fcgi2-%{version} -p0
 touch NEWS AUTHORS ChangeLog COPYING
 find doc/{fastcgi-prog-guide,fastcgi-whitepaper} -type f -print0 | xargs -r0 chmod 0644
 cp include/fcgi_config.h.in .
