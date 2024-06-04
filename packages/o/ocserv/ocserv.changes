@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed May 15 12:58:13 UTC 2024 - Андрей Кувшинов <m407@mail.ru>
+
+- Update to version 1.3.0
+  * Switch to https://github.com/nodejs/llhttp from http-parser.
+    http-parser was a liability as an unmaintained project (#598)
+  * Bump the number of groups per account from 128 to 512 (#219)
+  * Allow connecting users to select an authgroup by appending the
+    group name to the URL, as in https://vpn.example.com/groupname;
+    this introduces the select-group-by-url config option (#597).
+  * Informational messages due to configuration loading are not printed
+    during worker initialization.
+- Update to version 1.2.4
+  * Get connection speed limits (traffic shaping) from RADIUS (#554)
+  * Fix logging to stderr: add missing newline.
+  * Fixed compatibility with AnyConnect clients on Linux (#544)
+  * Detect the new AnyConnect-compatible identifier of OpenConnect clients
+  * occtl: Print bit rates as kb/s.
+- Update to version 1.2.3
+  * Treat unknown clients as capable of IPv6 routes and DNS servers
+  * Introduced new ocserv options --log-stderr and --syslog that redirect
+    logging to stderr or syslog explicitly. The stderr option allows for better
+    integration with logging on containers or under systemd. The default remains
+    syslog.
+  * Warn when more than 2 DNS server IPv6 addresses are sent by Radius.
+  * Improved server shutdown (#563)
+  * Modified Camouflage functionality to allow AnyConnect clients (#544)
+  * ocserv-fw: Move under libexec.
+  * ocserv-fw: Fixed clean_all_rules logic on multiple similar devices (!384)
+  * occtl: added machine-readable raw_connected_at field for user stats
+
+-------------------------------------------------------------------
 Mon Feb 26 12:40:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

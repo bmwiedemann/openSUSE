@@ -17,7 +17,7 @@
 
 
 Name:           ocserv
-Version:        1.2.2
+Version:        1.3.0
 Release:        0
 Summary:        OpenConnect VPN Server
 License:        GPL-2.0-only
@@ -45,6 +45,7 @@ BuildRequires:  firewall-macros
 BuildRequires:  freeradius-client-devel
 BuildRequires:  gperf
 BuildRequires:  gpg2
+BuildRequires:  ipcalc
 BuildRequires:  libev-devel
 #!BuildIgnore:  libevent-devel
 BuildRequires:  libgnutls-devel >= 3.1.10
@@ -145,7 +146,7 @@ sed -i '/^\[Service\].*/a ExecStartPre=%{_sbindir}/ocserv-forwarding --enable' %
 %{_bindir}/occtl
 %{_bindir}/ocpasswd
 %{_bindir}/ocserv-script
-%{_bindir}/ocserv-fw
+%{_libexecdir}/ocserv-fw
 %{_sbindir}/ocserv
 %{_sbindir}/ocserv-forwarding
 %{_sbindir}/ocserv-worker
