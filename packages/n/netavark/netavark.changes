@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Mon Jun 03 06:42:43 UTC 2024 - danish.prakash@suse.com
+
+- Remove redundant source: cargo_config
+- Update to version 1.11.0:
+  * Release v1.11.0
+  * Update release notes for 1.11.0
+  * update netlink-packet-route to 0.20.0
+  * run cargo update
+  * fix: remove extra / in make install and uninstall
+  * chore(deps): update dependency containers/automation_images to v20240529
+  * fix(deps): update rust crate nix to 0.29.0
+  * fix(deps): update rust crate nispor to 1.2.19
+  * fix(deps): update rust crate anyhow to 1.0.86
+  * fix(deps): update rust crate anyhow to 1.0.85
+  * [skip-ci] Packit: do not create dup jobs on podman-next
+  * fix(deps): update rust crate anyhow to 1.0.84
+  * [skip-ci] RPM: use default __cargo macro across all envs
+  * [skip-ci] RPM: switch default firewall to nftables on EL10+
+  * chore(deps): update dependency containers/automation_images to v20240513
+  * Add conditional compilation of default firewall driver
+  * fix(deps): update rust crate serde_json to 1.0.117
+  * fix new clippy warnings
+  * Update CI image to fedora 40
+  * fix ncat sctp tests
+  * fix(deps): update rust crate anyhow to 1.0.83
+  * build(deps): bump h2 from 0.3.25 to 0.3.26
+  * [skip-ci] Packit: distinct `-rhel` packages value
+  * [skip-ci] Packit: enable c10s downstream sync
+  * fix(deps): update rust crate libc to 0.2.154
+  * fix(deps): update rust crate ipnet to 2.9.0
+  * fix(deps): update rust crate tower to 0.4.13
+  * fix(deps): update rust crate tokio-stream to 0.1.15
+  * fix(deps): update rust crate prost to 0.12.4
+  * fix(deps): update rust crate iptables to 0.5.1
+  * [skip-ci] Packit: remove el8 jobs
+  * fix(deps): update rust crate anyhow to 1.0.82
+  * fix(deps): update rust crate serde to 1.0.199
+  * Add suffix to Aardvark internal network filenames
+  * fix port forward with strict RPF and multi networks
+  * renovate: stop rebasing PRs automatically
+  * chore(deps): update rust crate chrono to 0.4.38
+  * fix(deps): update rust crate serde_json to 1.0.116
+  * fix(deps): update rust crate netlink-sys to 0.8.6
+  * nftables: only dump netavark table rules
+  * update nftables to 0.4
+  * fix aardvark-dns netns check
+  * fix(deps): update rust crate tokio to 1.37
+  * fix(deps): update rust crate netlink-packet-route to 0.19.0
+  * Update to nix-0.28.0
+  * fix(deps): update rust crate mozim to 0.2.3
+  * fix(deps): update rust crate nispor to 1.2.18
+  * Update chrono
+  * fix(deps): update rust crate serde_json to 1.0.115
+  * build(deps): bump mio from 0.8.9 to 0.8.11
+  * [skip-ci] rpm: aardvark-dns is a hard dep across the board
+  * Update Rust crate env_logger to 0.11.3
+  * Update Rust crate serde to 1.0.197
+  * Update Rust crate tempfile to 3.10.1
+  * Update Rust crate log to 0.4.21
+  * Update Rust crate zbus to 3.15.2
+  * Update Rust crate serde_json to 1.0.114
+  * Update Rust crate env_logger to 0.11.2
+  * Update Rust crate chrono to 0.4.34
+  * Update Rust crate tonic-build to 0.11
+  * Update Rust crate tonic to 0.11
+  * fix netavark update to not start a new aardvark-dns
+  * Update Rust crate tempfile to 3.10.0
+  * Update Rust crate zbus to 3.15.0
+  * Update Rust crate tokio to 1.36
+  * Update Rust crate chrono to 0.4.33
+  * Do not perform network namespace detection on AV update
+  * [CI:BUILD] Packit/rpm: fix aardvark-dns handling
+  * Update Rust crate serde_json to 1.0.113
+  * Update Rust crate serde_json to 1.0.112
+  * Update Rust crate env_logger to 0.11.1
+  * update README with nftables support
+  * Bump to v1.11.0-dev
+  * perf-netavark: accept fw driver as argument
+  * perf-netavark: fix missing --config arg
+
+-------------------------------------------------------------------
 Tue Feb 13 08:43:45 UTC 2024 - danish.prakash@suse.com
 
 - Update to version 1.10.3:

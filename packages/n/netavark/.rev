@@ -79,4 +79,13 @@
     <comment>Update to version 1.10.3 (forwarded request 1146317 from danishprakash)</comment>
     <requestid>1146318</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0eb823f86c320d4617dbd8e2519805a8</srcmd5>
+    <version>1.11.0</version>
+    <time>1717498206</time>
+    <user>anag+factory</user>
+    <comment>- Remove redundant source: cargo_config
+- Update to version 1.11.0 (forwarded request 1178239 from danishprakash)</comment>
+    <requestid>1178256</requestid>
+  </revision>
 </revisionlist>
