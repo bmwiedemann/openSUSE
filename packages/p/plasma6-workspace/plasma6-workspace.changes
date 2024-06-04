@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 31 18:56:41 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patches to fix ksmserver authentication (CVE-2024-36041, boo#1225774):
+  * 0001-Authenticate-local-clients.patch
+  * 0002-Remove-iceauth-dependency.patch
+
+-------------------------------------------------------------------
 Wed May 22 07:43:19 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.5:
