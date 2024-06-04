@@ -180,4 +180,14 @@
     <comment></comment>
     <requestid>1123290</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>5a9ded7730cabfff5e3f8f54c1a0543a</srcmd5>
+    <version>12.10.1~bzr20200706.298</version>
+    <time>1717498224</time>
+    <user>anag+factory</user>
+    <comment>- Drop xappstatusicon.patch: patch has not been applied since Nov
+  2021.
+- Drop --disable-gtk-doc configure paramter: no longer recognized. (forwarded request 1174818 from dimstar)</comment>
+    <requestid>1178330</requestid>
+  </revision>
 </revisionlist>

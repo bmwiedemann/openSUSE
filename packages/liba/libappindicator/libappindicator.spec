@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package libappindicator
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,8 +42,6 @@ Source:         https://launchpad.net/ubuntu/+archive/primary/+files/libappindic
 Patch0:         0001_Fix_mono_dir.patch
 # PATCH-FIX-OPENSUSE make_gtk_doc_optional.patch -- Do not require macros from gtk-doc
 Patch1:         make_gtk_doc_optional.patch
-# PATCH-FIX-OPENSUSE xappstatusicon.patch maurizio.galli@gmail.com -- Original patch by Linux Mint. Include support for XAppStatusIcon by Linux Mint
-Patch2:         xappstatusicon.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -130,9 +128,8 @@ This package contains the development files for the appindicator%{?psuffix} libr
 
 %prep
 %setup -q -c -n libappindicator-%{version}
-%patch0 -p1
-%patch1 -p1
-#%%patch2 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 %build
 # Create dummy file, to avoid dependency on gtk-doc

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 17 10:18:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop xappstatusicon.patch: patch has not been applied since Nov
+  2021.
+- Drop --disable-gtk-doc configure paramter: no longer recognized.
+
+-------------------------------------------------------------------
+Fri Mar  1 13:33:17 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Oct 30 11:56:00 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Ensure the src.rpms have unique names between the multibuild
