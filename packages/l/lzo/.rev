@@ -326,4 +326,12 @@ No GPL-2.0 &quot;only&quot; licenses found in the package (forwarded request 131
 - add lzo-2.08-rhbz1309225.patch to avoid aliasing issues</comment>
     <requestid>1072688</requestid>
   </revision>
+  <revision rev="41" vrev="9">
+    <srcmd5>01759c6cd50b8251cf91e7f6aec6f14f</srcmd5>
+    <version>2.10</version>
+    <time>1717498259</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1178134</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package lzo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -73,8 +73,7 @@ de-/compression in real-time. This means it favours speed over
 compression ratio.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

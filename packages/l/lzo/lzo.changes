@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 15 11:13:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro: allows us to eliminate usage of deprecated
+  %patchN syntax.
+
+-------------------------------------------------------------------
 Fri Mar 17 16:27:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - adjust lzo-2.08-rhbz1309225.patch download reference
