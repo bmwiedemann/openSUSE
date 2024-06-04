@@ -16,11 +16,11 @@
 #
 
 
-%define kf5_version 5.77.0
+%define kf5_version 5.78.0
 %define qt5_version 5.15.0
 %bcond_without released
 Name:           amarok
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        Media Player
 License:        GPL-2.0-or-later

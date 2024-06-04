@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Jun  2 19:56:14 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.0.1
+  * Added an option to copy image to clipboard in Wikipedia applet,
+    and a clickable notification if a non-Wikipedia link was clicked.
+  * Added an option to select if track's artist is shown for
+    entries under various artists / different album artist in
+    context browser (kde#276039, kde#248101)
+  * Indicate which search option is active in Wikipedia applet
+    (kde#332010)
+  * Amarok now depends on KDE Frameworks 5.78.
+  * Improve strings in user interface (kde#343896, kde#234854)
+  * Reduce CPU usage by minimized/hidden analyzer (kde#390063)
+    and other components.
+  * Various tag match bias, APG and collection filtering related
+    fixes (kde#375565, kde#406751, kde#435810, kde#382456)
+  * Ignore any infinite values when reading replaygain tags
+    (kde#486084)
+  * Avoid volume getting set to 0 when phonon-vlc playback is
+    stopped (kde#442319)
+  * Playlist duplicate track deletion fixes (kde#313791)
+
+-------------------------------------------------------------------
 Tue Apr 30 06:59:18 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.0.0
