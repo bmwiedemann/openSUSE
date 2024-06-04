@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun May 19 15:26:47 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- update to 2.1.0:
+  * Fix crash when continuing game
+  * Fix ammo pickups for dropped grenades
+  * Fix crash in Most Classified Enemy campaign
+  * Fix crash when player has no melee weapon
+  * Fix crash when freshly installed game generates invalid config
+  * Fix compass arrows slightly off direction
+  * Add options in pause menu
+  * Add --listen_port N command option for specifying network port
+  * Improve UI with flashing elements when certain things happen
+    like getting hurt or picking up items
+- changes in 2.0.0:
+  Campaigns
+  * Cyberdogs
+  Game
+  * Fix buffer overflows in yajl
+  * Fix prox mine placement and draw order
+  * Fix lives going to 0 when replaying first mission after failure
+  * Improve objective compass arrows by moving slightly away
+    from edge
+  * Improve ammo/weapon persistence by not resetting it after
+    respawning
+  * Improve AI chatter by not showing when they change weapons
+  * Improve CMake formatting style
+  * Improve nanopb by updating to avoid potential invalid free bug
+  * Improve appdata with minor fixes
+  Editor
+  * Add support for exceeding max health with special pickups
+  * Improve destroy objectives by allowing multiple object types
+
+-------------------------------------------------------------------
 Thu Nov  9 08:38:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.0:
