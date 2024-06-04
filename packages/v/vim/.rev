@@ -7645,4 +7645,12 @@ always built-in because vim has direct perl dependencies anyway.
  *  add new items to scripts section in syntax plugin</comment>
     <requestid>1174622</requestid>
   </revision>
+  <revision rev="368" vrev="1">
+    <srcmd5>de4d790603f3ef417405d261cabb62a0</srcmd5>
+    <version>9.1.0448</version>
+    <time>1717498246</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1177971</requestid>
+  </revision>
 </revisionlist>

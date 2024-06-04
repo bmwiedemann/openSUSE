@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Wed May 29 12:49:57 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 9.1.0448:
+  * compiler warning in eval.c
+  * remove remaining css code
+  * Add ft_hare.txt to Reference Manual TOC
+  * re-generate vim syntax from generator
+  * fix syntax vim bug
+  * completion may be wrong when deleting all chars
+  * getregionpos() inconsistent for partly-selected multibyte char
+  * fix highlighting nested and escaped quotes in string props
+  * remove the indent plugin since it has too many issues
+  * update Debian runtime files
+  * Coverity warning after 9.1.0440
+  * Not enough tests for getregion() with multibyte chars
+  * Can't use blockwise selection with width for getregion()
+  * update outdated syntax files
+  * fix floating_modifier highlight
+  * hare runtime files outdated
+  * getregionpos() can't properly indicate positions beyond eol
+  * function get_lval() is too long
+  * Cannot filter the history
+  * Wrong Ex command executed when :g uses '?' as delimiter
+  * support floating_modifier none; revert broken highlighting
+  * Motif requires non-const char pointer for XPM  data
+  * Crash when using '?' as separator for :s
+  * filetype: cygport files are not recognized
+  * make errors trying to access autoload/zig
+  * Wrong yanking with exclusive selection and ve=all
+  * add missing help tags file
+  * Ancient XPM preprocessor hack may cause build errors
+  * include basic rescript ftplugin file
+  * eval.c is too long
+  * getregionpos() doesn't handle one char selection
+  * check for gdb file/dir before using as buffer name
+  * refactor zig ftplugin, remove auto format
+  * Coverity complains about eval.c refactor
+  * Tag guessing leaves wrong search history with very short names
+  * some issues with termdebug mapping test
+  * update matchit plugin to v1.20
+  * too many strlen() calls in search.c
+  * set commentstring option
+  * update vb indent plugin as vim9script
+  * filetype: purescript files are not recognized
+  * filetype: slint files are not recognized
+  * basic nim ftplugin file for comments 
+  * Add Arduino ftplugin and indent files 
+  * include basic typst ftplugin file 
+  * include basic prisma ftplugin file 
+  * include basic v ftplugin for comment support 
+  * getregionpos() wrong with blockwise mode and multibyte
+  * function echo_string_core() is too long
+  * hyprlang files are not recognized
+  * add basic dart ftplugin file
+  * basic ftplugin file for graphql
+  * mention comment plugin at :h 'commentstring'
+  * set commentstring for sql files in ftplugin
+  * :browse oldfiles prompts even with single entry
+  * eval.c not sufficiently tested
+  * clarify why E195 is returned
+  * clarify temporary file clean up
+  * fix :NoMatchParen not working 
+  * Cannot move to previous/next rare word
+  * add basic ftplugin file for sshdconfig 
+  * if_py: find_module has been removed in Python 3.12.0a7
+  * some screen dump tests can be improved
+  * Some functions are not tested
+  * clarify instal instructions for comment package
+  * Unable to leave long line with 'smoothscroll' and 'scrolloff'
+  * fix typo in vim9script help file 
+  * Remove trailing spaces 
+  * clarify {special} argument for shellescape()
+
+-------------------------------------------------------------------
 Thu May 16 08:19:44 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 9.1.0413
