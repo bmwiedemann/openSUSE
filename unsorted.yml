@@ -1087,6 +1087,8 @@ unsorted:
   - automake 
   - autonym-fonts 
   - autoopts 
+  - autorandr 
+  - autorandr-bash-completion 
   - autossh 
   - autotrace 
   - autotrace-devel 
@@ -2536,6 +2538,9 @@ unsorted:
   - corosync-testagents 
   - corrosion 
   - cosign 
+  - cosign-bash-completion 
+  - cosign-fish-completion 
+  - cosign-zsh-completion 
   - coturn 
   - coturn-devel 
   - coturn-utils 
@@ -2602,6 +2607,9 @@ unsorted:
   - cramfs-tools 
   - cramfsswap 
   - crane 
+  - crane-bash-completion 
+  - crane-fish-completion 
+  - crane-zsh-completion 
   - crash 
   - crash-devel 
   - crash-doc 
@@ -4806,6 +4814,9 @@ unsorted:
   - gcr-doc 
   - gcr3-viewer 
   - gcrane 
+  - gcrane-bash-completion 
+  - gcrane-fish-completion 
+  - gcrane-zsh-completion 
   - gcstar 
   - gd-devel 
   - gd-devel-32bit 
@@ -6936,7 +6947,6 @@ unsorted:
   - git-filter-repo 
   - git-fzlog 
   - git-gui 
-  - git-interactive-rebase-tool 
   - git-lfs 
   - git-merge-changelog 
   - git-mr 
@@ -8662,6 +8672,7 @@ unsorted:
   - ignition 
   - igrep 
   - igwn-cmake-macros 
+  - igzip 
   - iio-sensor-proxy-doc 
   - ikiwiki 
   - ikiwiki-w3m 
@@ -8862,6 +8873,7 @@ unsorted:
   - irssi 
   - irssi-devel 
   - irssi-otr 
+  - isa-l-devel 
   - isatapd 
   - iscsi-formula 
   - isight-firmware-tools 
@@ -11740,7 +11752,7 @@ unsorted:
   - libaws-c-http1_0_0 
   - libaws-c-io0unstable 
   - libaws-c-mqtt1_0_0 
-  - libaws-c-s30unstable 
+  - libaws-c-s3-0unstable 
   - libaws-c-sdkutils1_0_0 
   - libaws-checksums-devel 
   - libaws-checksums1 
@@ -11850,7 +11862,7 @@ unsorted:
   - libbobcat-devel-static 
   - libbobcat-light-devel-static 
   - libbobcat6 
-  - libboinc7 
+  - libboinc8 
   - libboost_atomic-devel 
   - libboost_atomic1_85_0 
   - libboost_atomic1_85_0-32bit 
@@ -13734,6 +13746,7 @@ unsorted:
   - libirman0 
   - libirml1 
   - libirrecord0 
+  - libisal2 
   - libiscsi-devel 
   - libiscsi-test 
   - libiscsi-utils 
@@ -14997,7 +15010,7 @@ unsorted:
   - libphdi-devel 
   - libphdi-tools 
   - libphdi1 
-  - libphobos2-0_108 
+  - libphobos2-0_109 
   - libphobos2-ldc102 
   - libphonenumber-devel 
   - libphysfs-devel 
@@ -17656,6 +17669,7 @@ unsorted:
   - lunar-date-devel 
   - lunar-date-doc 
   - lutris 
+  - lutris-lang 
   - luvcview 
   - lux 
   - lv2 
@@ -19593,6 +19607,7 @@ unsorted:
   - nwg-displays 
   - nwg-dock-hyprland 
   - nwg-launchers 
+  - nwg-look 
   - nxtvepg 
   - nyancat 
   - nyxt 
@@ -25970,6 +25985,7 @@ unsorted:
   - python310-pika-pool 
   - python310-pikepdf 
   - python310-pilkit 
+  - python310-pillow-heif 
   - python310-pingparsing 
   - python310-pip 
   - python310-pip-api 
@@ -27141,6 +27157,7 @@ unsorted:
   - python310-web.py 
   - python310-web_cache 
   - python310-webassets 
+  - python310-webauthn 
   - python310-webcolors 
   - python310-webencodings 
   - python310-weblate-language-data 
@@ -29479,6 +29496,7 @@ unsorted:
   - python311-pika-pool 
   - python311-pikepdf 
   - python311-pilkit 
+  - python311-pillow-heif 
   - python311-pingparsing 
   - python311-pip-api 
   - python311-pip-licenses 
@@ -30614,6 +30632,7 @@ unsorted:
   - python311-web.py 
   - python311-web_cache 
   - python311-webassets 
+  - python311-webauthn 
   - python311-webcolors 
   - python311-webencodings 
   - python311-weblate-language-data 
@@ -33029,6 +33048,7 @@ unsorted:
   - python312-pika-pool 
   - python312-pikepdf 
   - python312-pilkit 
+  - python312-pillow-heif 
   - python312-pingparsing 
   - python312-pip 
   - python312-pip-api 
@@ -34195,6 +34215,7 @@ unsorted:
   - python312-web.py 
   - python312-web_cache 
   - python312-webassets 
+  - python312-webauthn 
   - python312-webcolors 
   - python312-webencodings 
   - python312-weblate-language-data 
@@ -47618,6 +47639,10 @@ unsorted:
   - wine-staging-32bit 
   - wine-staging-devel 
   - wine-staging-devel-32bit 
+  - wine-staging-wow64 
+  - wine-staging-wow64-devel 
+  - wine-wow64 
+  - wine-wow64-devel 
   - winetricks 
   - winpr-devel 
   - winpr2-devel 
@@ -48283,6 +48308,7 @@ unsorted:
   - yazi-fish-completion 
   - yazi-zsh-completion 
   - yder-devel 
+  - ydotool 
   - yecht 
   - yecht-javadoc 
   - yelp-devel 
