@@ -1,7 +1,7 @@
 #
 # spec file for package surgescript
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020 Artur Iwicki <fedora@svgames.pl>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,9 @@
 #
 
 
-%define _sover  0_5_6
+%define _sover  0_6_0
 Name:           surgescript
-Version:        0.5.6.1
+Version:        0.6.0
 Release:        0
 Summary:        A scripting language for games
 License:        Apache-2.0
@@ -108,7 +108,7 @@ export CXX="g++-11"
 %{_libdir}/pkgconfig/%{name}.pc
 
 %files -n lib%{name}%{_sover}
-%{_libdir}/lib%{name}.so.0.5.6
+%{_libdir}/lib%{name}.so.0.6.0
 %{_libdir}/lib%{name}.so.%{version}
 
 %changelog

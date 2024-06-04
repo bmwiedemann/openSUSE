@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun May 19 10:52:52 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 0.6.0:
+  * Optimized function calls with self-modifying SurgeScript
+    bytecode that recognizes opportunities for optimization
+  * Optimized tag tests with faster hashes and bitsets
+  * Optimized the allocation and the deallocation of strings with
+    a pool of managed strings
+  * Introduced do-while loops
+  * Changed Math.mod() so that it returns the modulo instead of
+    the remainder
+  * Made various updates and additions to the standard library
+  * Updated the documentation
+  * Updated the CLI
+  * Added support for reading scripts in virtual files
+  * Removed support for emoticons
+  * General improvements to the code. Bugfixes
+
+-------------------------------------------------------------------
 Fri Jan 27 17:17:01 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Fix building for openSUSE Leap: using gcc11-c++
