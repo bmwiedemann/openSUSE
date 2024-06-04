@@ -16,26 +16,22 @@
 #
 
 
-%global pythons python311
-%{?sle15_python_module_pythons}
 Name:           epy
-Version:        2022.12.11+git.1675870044.c7a87f3
+Version:        2022.12.11+git.1686460830.6b0e9fe
 Release:        0
 Summary:        CLI ebook reader
 License:        GPL-3.0-only
 URL:            https://github.com/wustho/epy
 # Source:         https://files.pythonhosted.org/packages/source/e/epy-reader/epy-reader-%%{version}.tar.gz#/epy-%%{version}.tar.gz
 Source:         epy-%{version}.tar.xz
-BuildRequires:  %{python_module curses}
-BuildRequires:  %{python_module mobi}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python311-curses
+BuildRequires:  python311-pip
+BuildRequires:  python311-poetry-core
+BuildRequires:  python311-pytest
+BuildRequires:  python311-setuptools
+BuildRequires:  python311-wheel
 Requires:       python311-curses
-Requires:       python311-mobi
 Suggests:       dictd
 Suggests:       mimic
 Suggests:       sdcv
@@ -68,23 +64,23 @@ find . -name \*.py -print0 | while IFS= read -r -d $'\0' script; do
 done
 
 %build
-python3.11 -mpip wheel --no-deps --disable-pip-version-check --use-pep517 \
-    --no-build-isolation --progress-bar off --verbose . -w build/
+%python311_pyproject_wheel
 
 %install
-python3.11 -mpip install --root %{buildroot} --no-warn-script-location \
-    --disable-pip-version-check --no-compile --no-deps --progress-bar off \
-    build/epy_reader-*-py3-none-any.whl
+%python311_pyproject_install
+%fdupes %{buildroot}/%{python311_sitelib}
+%python311_fix_shebang
 
 %check
 export PYTHONDONTWRITEBYTECODE=1
 export PYTHONPATH=%{buildroot}/%{python311_sitelib}
-python3.11 -m pytest -v tests
+pytest-3.11 -v tests
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/epy
-%{python311_sitelib}/*
+%{python311_sitelib}/epy_reader-2023.6.11.dist-info
+%{python311_sitelib}/epy_reader
 
 %changelog

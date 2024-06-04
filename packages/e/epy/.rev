@@ -150,4 +150,20 @@
     <comment></comment>
     <requestid>1138511</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0b2cd5feacb7f911d7af067292d2118e</srcmd5>
+    <version>2022.12.11+git.1686460830.6b0e9fe</version>
+    <time>1717498330</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2022.12.11+git.1686460830.6b0e9fe:
+  * Deprecate setup.py
+  * Try fixing #87 &amp; bump version
+  * add speaker support for gtts-cli | mpv (#88)
+  * Update AUR package name (#92)
+- Actually, make buildable on Leap (remove unnecessary dependency
+  on a package which is not in Leap).
+- Add python3_fix_shebang_path treatment (bsc#1212476)
+</comment>
+    <requestid>1178380</requestid>
+  </revision>
 </revisionlist>

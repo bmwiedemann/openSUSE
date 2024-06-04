@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun 03 19:36:52 UTC 2024 - mcepl@cepl.eu
+
+- Update to version 2022.12.11+git.1686460830.6b0e9fe:
+  * Deprecate setup.py
+  * Try fixing #87 & bump version
+  * add speaker support for gtts-cli | mpv (#88)
+  * Update AUR package name (#92)
+
+-------------------------------------------------------------------
+Mon Jun  3 19:28:09 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Actually, make buildable on Leap (remove unnecessary dependency
+  on a package which is not in Leap).
+- Add python3_fix_shebang_path treatment (bsc#1212476)
+
+-------------------------------------------------------------------
 Wed Jan 10 17:23:31 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
 
 - Make buildable on Leap.
