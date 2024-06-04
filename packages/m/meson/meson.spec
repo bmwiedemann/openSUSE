@@ -35,7 +35,7 @@
 %bcond_with     setuptools
 %bcond_without  mono
 Name:           meson%{name_ext}
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
@@ -50,10 +50,6 @@ Patch0:         meson-test-installed-bin.patch
 Patch1:         extend-test-timeout-on-qemu-builds.patch
 # PATCH-FIX-OPENSUSE meson-distutils.patch -- meson is ring0 and therefor setuptools is not available
 Patch2:         meson-distutils.patch
-# PATCH-FIX-UPSTREAM get_llvm_tool_names-llvm18.patch -- Accept LLVM 18.1.
-Patch3:         get_llvm_tool_names-llvm18.patch
-# PATCH-FIX-UPSTREAM compatibility-ninja-1.12.patch -- compatibility with Ninja 1.12, tagged for Meson 1.4.1
-Patch4:         compatibility-ninja-1.12.patch
 
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  fdupes
@@ -189,8 +185,6 @@ Vim/NeoVim.
 %if !%{with setuptools}
 %patch -P 2 -p1
 %endif
-%patch -P 3 -p1
-%patch -P 4 -p1
 
 %if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000
 # AddressSanitizer fails here because of ulimit.

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun  3 11:16:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.4.1:
+  + compilers: cpp: improve libc++ vs libstdc++ detection (again).
+  + compilers: cpp: reduce macro pollution for stdlib macros.
+  + Fix builds with Ninja 12 and remove a 5 year old workaround.
+  + rust: Fix warning_level=everything case.
+  + environment: fix LLVM 18 support in get_llvm_tool_names().
+- Drop get_llvm_tool_names-llvm18.patch and
+  compatibility-ninja-1.12.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Thu May  2 16:53:21 UTC 2024 - Christoph G <foss@grueninger.de>
 
 - Add compatibility-ninja-1.12.patch from upstream to restore
