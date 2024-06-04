@@ -140,4 +140,19 @@
     <comment>- add python312-syntax-warning.patch for python 3.12 support</comment>
     <requestid>1131503</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2266e3c769ec4544e31fa8462e1e3c41</srcmd5>
+    <version>0.20.3</version>
+    <time>1717498226</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.20.3:
+  * Drop Python 3.7 support (end of life 27 Jun 2023).
+  * Tag Python 3.11 and 3.12 support.
+  * Add caveat about labe escaping/quoting to .node() and .render() API docs.
+  * Document that doctest_skip_exe() lines in doctest should be ignored.
+- Drop patch python312-syntax-warning.patch, no longer required.
+- Ignore conftest files during collection, due to pytest issue.
+- Switch to pyproject macros.</comment>
+    <requestid>1175975</requestid>
+  </revision>
 </revisionlist>

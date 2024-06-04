@@ -1,7 +1,7 @@
 #
 # spec file for package python-graphviz
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-graphviz
-Version:        0.20.1
+Version:        0.20.3
 Release:        0
 Summary:        Python interface for Graphviz
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/xflr6/graphviz
 Source:         https://files.pythonhosted.org/packages/source/g/graphviz/graphviz-%{version}.zip
-Patch1:         python312-syntax-warning.patch
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  %{python_module pytest-mock >= 3}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  graphviz
@@ -65,19 +65,20 @@ sed -i '/^mock_use_standalone_module/d' setup.cfg
 dos2unix LICENSE.txt README.rst docs/*.rst
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# https://github.com/pytest-dev/pytest/issues/12123
+%pytest --ignore tests/conftest.py --ignore tests/backend/conftest.py
 
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
 %{python_sitelib}/graphviz
-%{python_sitelib}/graphviz-%{version}*-info
+%{python_sitelib}/graphviz-%{version}.dist-info
 
 %changelog

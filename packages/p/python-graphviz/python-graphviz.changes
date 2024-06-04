@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 23 01:59:56 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.20.3:
+  * Drop Python 3.7 support (end of life 27 Jun 2023).
+  * Tag Python 3.11 and 3.12 support.
+  * Add caveat about labe escaping/quoting to .node() and .render() API docs.
+  * Document that doctest_skip_exe() lines in doctest should be ignored.
+- Drop patch python312-syntax-warning.patch, no longer required.
+- Ignore conftest files during collection, due to pytest issue.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Wed Dec  6 22:22:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add python312-syntax-warning.patch for python 3.12 support
