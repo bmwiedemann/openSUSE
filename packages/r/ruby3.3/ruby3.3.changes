@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu May 30 22:20:12 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.3.2
+  - Bug #20493: Segfault on rb_io_getline_fast
+  - Bug #20450: Ruby 3.3.1 broken with bootsnap
+  - Bug #20169: GC.compact can raises EFAULT on IO
+  - Bug #20192: YJIT in 3.3.0 miscompiles yield with keyword splats
+  - Bug #20307: Hash#update from compare_by_identity hash can have
+    unfrozen string keys
+  - Bug #20511: Update bundled reline gem version to v0.5.7
+  - Bug #20204: 3.3.0 YJIT rises TypeError instead of ArgumentError
+    with some incorrect calls
+  - Bug #20195: 3.3.0 YJIT mishandles ruby2_keywords splat into
+    methods taking a rest parameter
+  - Bug #20288: rb_fiber_scheduler_close exceptions are not handled
+    in rb_fiber_scheduler_set.
+  - Bug #20286: TracePoint does not emit thread_end event when
+    thread exits with exception
+  - Bug #20292: Abort ruby by String#initialize
+  - Bug #20445: Reduce if for decreasing counter on OP_REPEAT_INC
+  - Bug #20296: Complex(:sym, exception: false) generate exception
+    with weird timing
+  - Bug #20322: rb_enc_interned_str_cstr doesn't accept null
+    pointer for encoding
+  - Bug #20289: Bug in Zlib::GzipReader#eof? breaks reading certain
+    sizes of gzipped files.
+  - Bug #20393: after_fork_ruby clears all pending interrupts for
+    both parent and child process.
+  - Bug #20305: commit 1d2d25dcadda0764f303183ac091d0c87b432566
+    breaks grapheme_clusters
+  - Bug #20342: Top level public, private and ruby2_keywords do not
+    work in wrapped load
+  - Bug #20413: Enumerator can block fiber scheduler.
+  - Bug #20427: Backport: Heap buffer overflow in Array#sort! when
+    block modifies target array
+  - Bug #20414: Fiber#raise should recurse to resumed_fiber rather
+    than failing.
+  - Bug #20453: Pointer being freed was not allocated in Regexp
+    timeout
+  - Bug #20494: Non-default directories are not searched when
+    checking for a gmp header
+  - Bug #20094: Inline while loop behavior changed unexpectedly in
+    3.3.0
+  - Bug #20502: Backport pthread_kill fix to Ruby 3.3
+  - Bug #20431: Ruby 3.3.0 build fail with make: *** [io_buffer.o]
+    Error 1
+  - Bug #20500: Non-system directories are not searched when
+    checking for jemalloc headers and libs, and building enc
+- drop fix-gvl-save-restore.patch: included upstream
+
+-------------------------------------------------------------------
 Sun May 19 09:51:02 UTC 2024 - José Gómez <jose.gomez@suse.com>
 
 - Backport for fix segfault caused by stack pointers not
