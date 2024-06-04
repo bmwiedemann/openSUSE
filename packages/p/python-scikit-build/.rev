@@ -235,4 +235,13 @@
   * Tests avoid incorrect get_map match by @keszybz in #990.</comment>
     <requestid>1096295</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>1691ffbb5efe4c5677d07f538713dfbb</srcmd5>
+    <version>0.17.6</version>
+    <time>1717498231</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-setuptools-69-3.patch:
+  * Support changes introduced by setuptools 69.3.0.</comment>
+    <requestid>1178218</requestid>
+  </revision>
 </revisionlist>

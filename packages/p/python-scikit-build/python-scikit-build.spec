@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-scikit-build
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ License:        MIT
 URL:            https://github.com/scikit-build/scikit-build
 Source:         https://files.pythonhosted.org/packages/source/s/scikit-build/scikit_build-%{version}.tar.gz
 Source99:       sample-setup.cfg
+# PATCH-FIX-UPSTREAM gh#scikit-build/scikit-build#1087
+Patch0:         support-setuptools-69-3.patch
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatch-vcs}
