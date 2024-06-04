@@ -687,7 +687,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.129
+Version:        17.130
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
@@ -768,6 +768,10 @@ Package that holds debuginfo dependencies for image files in installation-image.
 %define __debuginfo_path       ^/usr/share/debuginfodeps
 
 %prep
+if [ "$UID" != 0 ] ; then
+    echo "ERROR: need to run this as root. e.g. with osc build --userootforbuild"
+    exit 1
+fi
 %setup -n installation-images-%{version}
 rm -f /usr/lib/build/checks/04-check-filelist
 

@@ -1,4 +1,17 @@
 --------------------------------------------------------------------
+Fri May 31 11:40:04 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#721
+- Check for root permissions at start
+- 17.130
+
+--------------------------------------------------------------------
+Fri May 31 11:37:40 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#720
+- Use dedicated path for Slowroll tftpboot files
+
+--------------------------------------------------------------------
 Wed May 29 10:55:47 UTC 2024 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#719
