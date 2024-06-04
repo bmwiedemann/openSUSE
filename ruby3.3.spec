@@ -36,7 +36,7 @@
 
 %global patch_level p0
 Name:           ruby3.3%{psuffix}
-Version:        3.3.1
+Version:        3.3.2
 Release:        0
 %global pkg_version %{version}
 # make the exported API version explicit
@@ -97,7 +97,6 @@ Source5:        vendor.tar.xz
 Source98:       series
 Source99:       %{rb_soname}-rpmlintrc
 Patch0:         use-pie.patch
-Patch1:         fix-gvl-save-restore.patch
 BuildRequires:  ruby-bundled-gems-rpmhelper
 %if %{with clang}
 BuildRequires:  clang
