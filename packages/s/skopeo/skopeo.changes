@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 20 13:43:43 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 1.15.1:
+  * [release-1.15] Bump to v1.15.1
+  * [release-1.15] Freeze the fedora-minimal image reference
+  * [release-1.15] CVE-2024-3727 (bsc#1224123)
+
+-------------------------------------------------------------------
 Fri Mar 15 11:22:37 UTC 2024 - dcermak@suse.com
 
 - Update to version 1.15.0:
