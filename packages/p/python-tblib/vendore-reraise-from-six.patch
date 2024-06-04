@@ -1,0 +1,63 @@
+From 9f6f864f7de6ce6640bab6d962f00b956da75361 Mon Sep 17 00:00:00 2001
+From: Alexandre Detiste <alexandre.detiste@gmail.com>
+Date: Wed, 1 May 2024 13:43:53 +0200
+Subject: [PATCH] vendore reraise() from six
+
+---
+ ci/requirements.txt     |  1 -
+ setup.py                |  2 +-
+ src/tblib/decorators.py | 14 ++++++++++++--
+ 3 files changed, 13 insertions(+), 4 deletions(-)
+
+diff --git a/ci/requirements.txt b/ci/requirements.txt
+index a1708f4..b4f1852 100644
+--- a/ci/requirements.txt
++++ b/ci/requirements.txt
+@@ -1,6 +1,5 @@
+ virtualenv>=16.6.0
+ pip>=19.1.1
+ setuptools>=18.0.1
+-six>=1.14.0
+ tox
+ twine
+diff --git a/setup.py b/setup.py
+index c5364a1..c09d4c3 100755
+--- a/setup.py
++++ b/setup.py
+@@ -64,7 +64,7 @@ def read(*names, **kwargs):
+     ],
+     python_requires='>=3.8',
+     install_requires=[
+-        # eg: "aspectlib==1.1.1", "six>=1.7",
++        # eg: "aspectlib==1.1.1",
+     ],
+     extras_require={
+         # eg:
+diff --git a/src/tblib/decorators.py b/src/tblib/decorators.py
+index 38d0675..a1ace45 100644
+--- a/src/tblib/decorators.py
++++ b/src/tblib/decorators.py
+@@ -1,11 +1,21 @@
+ import sys
+ from functools import wraps
+ 
+-from six import reraise
+-
+ from . import Traceback
+ 
+ 
++def reraise(tp, value, tb=None):
++    try:
++        if value is None:
++            value = tp()
++        if value.__traceback__ is not tb:
++            raise value.with_traceback(tb)
++        raise value
++    finally:
++        value = None
++        tb = None
++
++
+ class Error:
+     def __init__(self, exc_type, exc_value, traceback):
+         self.exc_type = exc_type

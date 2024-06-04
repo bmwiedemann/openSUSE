@@ -62,4 +62,22 @@ see https://build.opensuse.org/project/show/openSUSE:Factory:Staging:adi:73
     <comment></comment>
     <requestid>1092209</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>430320f4eb92bdd0ce97dc0c9398585d</srcmd5>
+    <version>3.0.0</version>
+    <time>1717498253</time>
+    <user>anag+factory</user>
+    <comment>- Clean up SPEC file.
+- Update to 3.0.0
+  * Removed support for legacy Pythons (2.7 up to 3.7) and added Pythons 
+    3.11 and 3.12 in the test grid.
+  * Added support for __context__, __suppress_context__ and __notes__.
+  * Added the get_locals argument to tblib.pickling_support.install(), 
+    tblib.Traceback and tblib.Frame.
+- Add vendore-reraise-from-six.patch to get rid of six
+- Add more-aggressive-location-stripping.patch to fix test failure
+- Standardize multibuild
+</comment>
+    <requestid>1177999</requestid>
+  </revision>
 </revisionlist>

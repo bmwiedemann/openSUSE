@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May 31 22:34:24 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up SPEC file.
+
+-------------------------------------------------------------------
+Fri May 17 09:22:14 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.0.0
+  * Removed support for legacy Pythons (2.7 up to 3.7) and added Pythons 
+    3.11 and 3.12 in the test grid.
+  * Added support for __context__, __suppress_context__ and __notes__.
+  * Added the get_locals argument to tblib.pickling_support.install(), 
+    tblib.Traceback and tblib.Frame.
+- Add vendore-reraise-from-six.patch to get rid of six
+- Add more-aggressive-location-stripping.patch to fix test failure
+- Standardize multibuild
+
+-------------------------------------------------------------------
 Fri Jun  9 11:45:42 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
