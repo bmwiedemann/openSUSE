@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>995ebce294406f1ec5f76247dd5439dd</srcmd5>
+    <version>24.4</version>
+    <time>1717498344</time>
+    <user>anag+factory</user>
+    <comment>virt-firmware, tool for working with EFI var stores.
+
+Initial submission. Might be used by ovmf in the future.</comment>
+    <requestid>1178460</requestid>
+  </revision>
+</revisionlist>

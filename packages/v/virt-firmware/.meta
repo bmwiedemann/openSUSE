@@ -1,0 +1,8 @@
+<package name="virt-firmware" project="openSUSE:Factory">
+  <title>Tools for virtual machine firmware volumes</title>
+  <description>Tools for virtual machine firmware volumes.
+
+</description>
+  <devel project="Virtualization" package="virt-firmware"/>
+  <url>https://gitlab.com/kraxel/virt-firmware</url>
+</package>
