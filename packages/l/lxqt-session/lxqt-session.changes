@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May 11 16:01:52 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 2.0.0:
+  * Ported to Qt6.
+  * Used an overlay layer shell for the leaving dialog and centered
+    it under Wayland.
+  * Made the user inputs stricter in auto-start.
+  * Don't allow inputs consisting of only whitespaces, and remove
+    start and end whitespaces from them.
+
+-------------------------------------------------------------------
 Wed Feb 21 07:19:35 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

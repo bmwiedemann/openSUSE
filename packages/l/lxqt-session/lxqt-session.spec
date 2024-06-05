@@ -17,41 +17,40 @@
 
 
 Name:           lxqt-session
-Version:        1.4.0
+Version:        2.0.0
 Release:        0
 Summary:        LXQt Session Manager
 License:        LGPL-2.1-or-later
 Group:          System/GUI/Other
-URL:            http://www.lxqt.org
-Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+URL:            https://github.com/lxqt/lxqt-session
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 # FIX-OPENSUSE mvetter@suse.com bsc#1099800
 Patch0:         lxqt-0.13.0-xdg-config-dir.patch
 # mvetter@suse.com bsc#1127043 - Use Openbox as default WM
-Patch1:         lxqt-session-default_wm.patch
-BuildRequires:  cmake >= 3.0.2
+Patch1:         %{name}-default_wm.patch
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.13.0
 BuildRequires:  pkgconfig
-BuildRequires:  qtxdg-tools
+BuildRequires:  qtxdg-tools >= 4.0.0
 BuildRequires:  xdg-user-dirs
-BuildRequires:  cmake(KF5WindowSystem) >= 5.36.0
-BuildRequires:  pkgconfig(Qt5UiTools) >= 5.15
-BuildRequires:  pkgconfig(Qt5Xdg)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(libprocps)
+BuildRequires:  cmake(KF6WindowSystem)
+BuildRequires:  cmake(LayerShellQt) >= 6.0.0
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(lxqt2-build-tools)
+BuildRequires:  cmake(qtxdg-tools)
+BuildRequires:  pkgconfig(libproc2) >= 4.0.0
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(lxqt) >= %{version}
+BuildRequires:  pkgconfig(lxqt) >= 2.0.0
 BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(x11-xcb)
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Requires:       qtxdg-tools
-Recommends:     %{name}-lang
-Obsoletes:      lxqt-common <= 0.12.0
-Obsoletes:      lxqt-l10n <= 0.12.0
+Recommends:     %{name}-lang = %{version}-%{release}
 
 %description
 lxqt-session is the standard session manager used by LXQt. The lxqt-session manager
@@ -63,22 +62,23 @@ use when a user logs out and to restart them the next time the user logs in.
 
 %prep
 %autosetup -p1
-# Changing LXQt into X-LXQt in desktop files to be freedesktop compliant and shut rpmlint warnings
-#find -name '*desktop.in*' -exec sed -ri 's/(LXQt;)/X-\1/' {} +
+sed -i 's/^\(Type=\).*/\1XSession/' xsession/lxqt.desktop.in
+sed -i '/^Categories/s/\(LXQt\;\)/X-\1/' lxqt-config-session/lxqt-config-session.desktop.in
 
 %build
-%cmake -DPULL_TRANSLATIONS=No
+%cmake_qt6
+%{qt6_build}
 
 %install
-%cmake_install
-%fdupes %{buildroot}/%{_datadir}
+%{qt6_install}
+%fdupes -s %{buildroot}%{_datadir}
 
 # for default-xsession
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
 ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
 
-%find_lang %{name} --with-qt
+%find_lang %{name} --with-qt --all-name
 
 %post
 %{_sbindir}/update-alternatives --install %{_datadir}/xsessions/default.desktop \
@@ -90,12 +90,12 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 
 %files
 %license LICENSE
-%doc AUTHORS
+%doc AUTHORS CHANGELOG README.md
 %{_bindir}/lxqt-config-session
-%{_bindir}/lxqt-session
+%{_bindir}/%{name}
 %{_bindir}/lxqt-leave
-%{_datadir}/applications/*.desktop
-%{_mandir}/man?/lxqt-*%{ext_man}
+%{_datadir}/applications/lxqt-*.desktop
+%{_mandir}/man?/lxqt-*%{?ext_man}
 %config %{_sysconfdir}/xdg/autostart/lxqt-xscreensaver-autostart.desktop
 %{_bindir}/startlxqt
 %{_mandir}/man1/startlxqt.1%{?ext_man}
@@ -107,13 +107,13 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 # for default-xsession
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
 %ghost %{_sysconfdir}/alternatives/default.desktop
-%{_datadir}/xsessions/*.desktop
+%{_datadir}/xsessions/default.desktop
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/lxqt
 %dir %{_datadir}/lxqt/translations
-%{_datadir}/lxqt/translations/lxqt-config-session
-%{_datadir}/lxqt/translations/lxqt-leave
-%{_datadir}/lxqt/translations/lxqt-session
+%dir %{_datadir}/lxqt/translations/lxqt-config-session
+%dir %{_datadir}/lxqt/translations/lxqt-leave
+%dir %{_datadir}/lxqt/translations/%{name}
 
 %changelog
