@@ -389,4 +389,16 @@ This release includes a backward-incompatible change and deprecates many functio
     <comment></comment>
     <requestid>1057147</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>cf12f84a68fbbea2ba3839c37bc50192</srcmd5>
+    <version>4.10.4</version>
+    <time>1717601997</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.10.4
+  For changes, see
+  https://www.webtoolkit.eu/wt/doc/reference/html/Releasenotes.html
+- boost_fixes.patch: compilation fixes with latest Boost
+- missing_libs.patch: add missing libX11 linking</comment>
+    <requestid>1178503</requestid>
+  </revision>
 </revisionlist>

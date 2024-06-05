@@ -1,7 +1,7 @@
 #
 # spec file for package wt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,17 @@
 
 %define WTSRVDIR /srv/wt
 %define WTRUNDIR %{WTSRVDIR}/run
-%define so_version 4_8_1
+%define so_version 4_10_4
 Name:           wt
-Version:        4.8.1
+Version:        4.10.4
 Release:        0
 Summary:        Web Toolkit
 License:        GPL-2.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://www.webtoolkit.eu/wt/
 Source0:        https://github.com/emweb/wt/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch1:         boost_fixes.patch
+Patch2:         missing_libs.patch
 BuildRequires:  FastCGI-devel
 BuildRequires:  GraphicsMagick-devel
 BuildRequires:  Mesa-devel
@@ -45,7 +47,7 @@ BuildRequires:  pango-devel
 BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
 BuildRequires:  zlib-devel
-BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt6Core)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3)
 Requires:       FastCGI
@@ -53,15 +55,11 @@ Requires:       openssl
 Recommends:     %{name}-dbo = %{version}
 Suggests:       %{name}-dbo-mysql = %{version}
 Suggests:       %{name}-dbo-postgres = %{version}
-%if 0%{?suse_version} > 1315
 BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
-%else
-BuildRequires:  boost-devel >= 1.50.0
-%endif
 
 %description
 Wt is a C++ library and application server for developing and
@@ -129,6 +127,8 @@ code.
 %cmake \
     -DENABLE_FIREBIRD=OFF \
     -DENABLE_QT4=OFF \
+    -DENABLE_QT5=OFF \
+    -DENABLE_QT6=ON \
     -DSHARED_LIBS=ON \
     -DMULTI_THREADED=ON \
     -DUSE_SYSTEM_SQLITE3=ON \

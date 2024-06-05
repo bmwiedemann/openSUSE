@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  4 09:10:52 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Update to 4.10.4
+  For changes, see
+  https://www.webtoolkit.eu/wt/doc/reference/html/Releasenotes.html
+
+- boost_fixes.patch: compilation fixes with latest Boost
+- missing_libs.patch: add missing libX11 linking
+
+-------------------------------------------------------------------
 Mon Jan  9 14:25:17 UTC 2023 - pgajdos@suse.com
 
 - enable GraphicsMagick again; GraphicsMagick will stay for the
