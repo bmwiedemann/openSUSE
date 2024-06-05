@@ -18,7 +18,7 @@
 
 
 Name:           ugrep
-Version:        6.0.0
+Version:        6.1.0
 Release:        0
 Summary:        Universal grep: a feature-rich grep implementation with focus on speed
 License:        BSD-3-Clause

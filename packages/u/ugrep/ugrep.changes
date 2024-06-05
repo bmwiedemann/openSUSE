@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun  4 16:40:11 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 6.1.0:
+  * improve option -w to support Unicode
+  * make [[:alpha:]] and other [::] character classes also match
+    Unicode by default, like \p{Class} already does, unless option
+    -U (--ascii or --binary) is used
+  * Unicode word boundaries \<, \>, \b, \B unless option -U
+    (--ascii or --binary) is used
+  * improve bash and zsh auto-completion usability
+
+-------------------------------------------------------------------
 Tue May  7 20:16:40 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 6.0.0:
