@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May 11 11:08:40 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 2.0.0:
+  * Ported to Qt6.
+- X-SuSE-YaST category has been excluded from the Settings menu
+  * Added 001-lxqt-applications-menu-2.0.0.patch
+
+-------------------------------------------------------------------
 Fri Nov 10 10:41:55 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4.1:
