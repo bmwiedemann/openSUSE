@@ -17,13 +17,13 @@
 
 
 Name:           python-manilaclient
-Version:        4.8.0
+Version:        4.9.0
 Release:        0
 Summary:        Client Library for OpenStack Share API
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-manilaclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-manilaclient/python-manilaclient-4.8.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-manilaclient/python-manilaclient-4.9.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-ddt
 BuildRequires:  python3-fixtures
@@ -31,7 +31,7 @@ BuildRequires:  python3-openstackclient
 BuildRequires:  python3-osc-lib >= 1.10.0
 BuildRequires:  python3-oslo.config >= 5.2.0
 BuildRequires:  python3-oslo.log >= 3.36.0
-BuildRequires:  python3-oslo.serialization >= 2.18.0
+BuildRequires:  python3-oslo.serialization >= 2.20.0
 BuildRequires:  python3-oslo.utils >= 3.33.0
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testrepository
@@ -44,14 +44,14 @@ Share API.
 
 %package -n python3-manilaclient
 Summary:        Client Library for OpenStack Share API
-Requires:       python3-Babel >= 2.3.4
+Requires:       python3-Babel >= 2.5.0
 Requires:       python3-PrettyTable >= 0.7.1
 Requires:       python3-debtcollector >= 1.2.0
 Requires:       python3-keystoneclient >= 3.8.0
 Requires:       python3-osc-lib >= 1.10.0
 Requires:       python3-oslo.config >= 5.2.0
 Requires:       python3-oslo.log >= 3.36.0
-Requires:       python3-oslo.serialization >= 2.18.0
+Requires:       python3-oslo.serialization >= 2.20.0
 Requires:       python3-oslo.utils >= 3.33.0
 Requires:       python3-requests >= 2.14.2
 Requires:       python3-simplejson >= 3.5.1
@@ -76,13 +76,13 @@ Share API.
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-manilaclient-4.8.0
+%autosetup -p1 -n python-manilaclient-4.9.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
-PBR_VERSION=4.8.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=4.9.0 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
