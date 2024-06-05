@@ -169,4 +169,12 @@
 - Clean up skipping tests, packaging &gt;22 is now required</comment>
     <requestid>1118748</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a2428adf353fb9fb86bbdeca710f9547</srcmd5>
+    <version>6.11.0</version>
+    <time>1717601978</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1178483</requestid>
+  </revision>
 </revisionlist>

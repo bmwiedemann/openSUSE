@@ -1,7 +1,7 @@
 #
 # spec file for package python-devpi-server
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-devpi-server
-Version:        6.9.2
+Version:        6.11.0
 Release:        0
 Summary:        Private PyPI caching server
 License:        MIT
 URL:            https://doc.devpi.net
-Source:         https://files.pythonhosted.org/packages/source/d/devpi-server/devpi-server-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/devpi-server/devpi_server-%{version}.tar.gz
+BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -37,6 +38,7 @@ Requires:       python-attrs
 Requires:       python-defusedxml
 Requires:       python-devpi-common >= 3.3.0
 Requires:       python-execnet >= 1.2
+Requires:       python-httpx
 Requires:       python-itsdangerous >= 0.24
 Requires:       python-lazy
 Requires:       python-passlib
@@ -49,7 +51,7 @@ Requires:       python-ruamel.yaml >= 0.15.94
 Requires:       python-strictyaml
 Requires:       python-waitress >= 1.0.1
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # nginx tests failing when not skipped, likely due to rpmbuild environment
 Suggests:       nginx
 Suggests:       python-WebTest
@@ -85,7 +87,7 @@ A private PyPI caching server, providing user or team based indices which can
 inherit packages from each other or from the pypi.org site.
 
 %prep
-%setup -q -n devpi-server-%{version}
+%setup -q -n devpi_server-%{version}
 sed -i "s/ruamel.yaml<=[^']*,/ruamel.yaml/g" setup.py
 sed -i "s/--flake8//" tox.ini
 
@@ -111,7 +113,7 @@ for c in %{commands}; do
 done
 export PATH=$PATH:`pwd`/bin-%{$python_version}
 export PYTHONPATH=:%{buildroot}%{$python_sitelib}
-$python -m pytest --slow --ignore test_devpi_server -k "not ($donttest)" %{buildroot}%{$python_sitelib}/test_devpi_server
+$python -m pytest --ignore test_devpi_server -k "not ($donttest)" %{buildroot}%{$python_sitelib}/test_devpi_server
 }
 
 %post
