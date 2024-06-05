@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun  4 20:01:04 UTC 2024 - cloud-devel@suse.de
+
+- update to version 5.0.0
+  - reno: Update master for unmaintained/yoga
+  - Update python classifier in setup.cfg
+  - Bump hacking
+  - Update master for stable/2023.2
+  - tox: Drop envdir
+  - Add release note about new consumer interfaces
+  - Raise ManagedObjectNotFoundError in MockKeyManager
+
+-------------------------------------------------------------------
 Thu Jan  4 09:15:28 UTC 2024 - cloud-devel@suse.de
 
 - update to version 4.3.0

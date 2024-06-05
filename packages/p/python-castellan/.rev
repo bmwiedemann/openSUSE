@@ -299,4 +299,19 @@
   - Revert &quot;Add force parameter functional tests&quot;</comment>
     <requestid>1136733</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>44ba315f4aea4fda0666ec4386d3e328</srcmd5>
+    <version>5.0.0</version>
+    <time>1717602114</time>
+    <user>anag+factory</user>
+    <comment>- update to version 5.0.0
+  - reno: Update master for unmaintained/yoga
+  - Update python classifier in setup.cfg
+  - Bump hacking
+  - Update master for stable/2023.2
+  - tox: Drop envdir
+  - Add release note about new consumer interfaces
+  - Raise ManagedObjectNotFoundError in MockKeyManager</comment>
+    <requestid>1178601</requestid>
+  </revision>
 </revisionlist>
