@@ -1,7 +1,7 @@
-diff -urEbw pcmanfm-qt-1.1.0/config/pcmanfm-qt/lxqt/settings.conf.in pcmanfm-qt-1.1.0.new/config/pcmanfm-qt/lxqt/settings.conf.in
---- pcmanfm-qt-1.1.0/config/pcmanfm-qt/lxqt/settings.conf.in	2022-04-16 02:59:21.000000000 +0200
-+++ pcmanfm-qt-1.1.0.new/config/pcmanfm-qt/lxqt/settings.conf.in	2022-04-27 23:45:23.911770193 +0200
-@@ -17,7 +17,7 @@
+diff -urEbw pcmanfm-qt-2.0.0/config/pcmanfm-qt/lxqt/settings.conf.in pcmanfm-qt-2.0.0.new/config/pcmanfm-qt/lxqt/settings.conf.in
+--- pcmanfm-qt-2.0.0/config/pcmanfm-qt/lxqt/settings.conf.in	2024-04-17 13:36:46.000000000 +0300
++++ pcmanfm-qt-2.0.0.new/config/pcmanfm-qt/lxqt/settings.conf.in	2024-05-11 14:55:03.198535051 +0300
+@@ -15,7 +15,7 @@
  [Desktop]
  DesktopShortcuts=Home, Trash, Computer, Network
  WallpaperMode=stretch

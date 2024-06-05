@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May 11 11:50:48 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 2.0.0:
+  * Ported to Qt6.
+  * Desktop module is made completely ready for Wayland.
+  * Fixed rare misplacement of desktop icons with Qt6.
+  * Added 5 menu icons to the main window.
+  * Disabled root instance under Wayland.
+
+-------------------------------------------------------------------
 Wed Apr 10 11:46:15 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Adjust pcmanfm-qt-default-wallpaper.patch to use png boo#1222581

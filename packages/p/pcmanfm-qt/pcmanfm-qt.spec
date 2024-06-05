@@ -17,35 +17,37 @@
 
 
 Name:           pcmanfm-qt
-Version:        1.4.1
+Version:        2.0.0
 Release:        0
 Summary:        File manager and desktop icon manager
 License:        GPL-2.0-or-later
 Group:          System/GUI/LXQt
-URL:            http://www.lxqt.org
-Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+URL:            https://github.com/lxqt/pcmanfm-qt
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 #bsc#1100208 - mvetter@suse.de - set default openSUSE wallpaper
-Patch0:         pcmanfm-qt-default-wallpaper.patch
-BuildRequires:  cmake >= 3.1.0
+Patch0:         %{name}-default-wallpaper.patch
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.13.0
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  libQt6Svg6
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  pkgconfig(Qt5Core) >= 5.15.0
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5UiTools)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  cmake(LayerShellQt) >= 6.0.0
+BuildRequires:  cmake(Qt6DBus) >= 6.6.0
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(fm-qt6)
+BuildRequires:  cmake(lxqt2-build-tools) >= 2.0.0
 BuildRequires:  pkgconfig(libexif)
-BuildRequires:  pkgconfig(libfm-qt) >= 1.4.0
+BuildRequires:  pkgconfig(libmenu-cache) >= 1.1.0
+%requires_eq    libQt6Svg6
 #bsc#1128570 - mvetter@suse.de
 Requires:       menu-cache
 #bsc#1100208 - mvetter@suse.de
 Requires:       wallpaper-branding-openSUSE
-Recommends:     %{name}-lang
+Recommends:     %{name}-lang = %{version}-%{release}
 Recommends:     gnome-keyring-pam
 
 %description
@@ -57,29 +59,33 @@ PCManFM-Qt is the Qt port of the LXDE file manager PCManFM
 %autosetup -p1
 
 %build
-%cmake -DPULL_TRANSLATIONS=No
+%cmake_qt6
+%qt6_build
 
 %install
-%cmake_install
+%qt6_install
 %fdupes -s %{buildroot}%{_datadir}
 
 %find_lang %{name} --with-qt
 
 %files
-%doc AUTHORS
-%dir %{_datadir}/pcmanfm-qt
-%dir %{_datadir}/pcmanfm-qt/lxqt
-%dir %{_datadir}/icons/hicolor/scalable
-%dir %{_datadir}/icons/hicolor/scalable/apps
+%doc AUTHORS CHANGELOG README.md
+%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/lxqt
 %{_bindir}/%{name}
-%{_datadir}/applications/*.desktop
-%{_mandir}/man?/%{name}.?%{ext_man}
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/%{name}-desktop-pref.desktop
+%{_mandir}/man?/%{name}.?%{?ext_man}
 %config %{_sysconfdir}/xdg/autostart/lxqt-desktop.desktop
-%{_datadir}/pcmanfm-qt/lxqt/settings.conf
-%{_datadir}/icons/hicolor/scalable/apps/pcmanfm-qt.svg
+%{_datadir}/%{name}/lxqt/settings.conf
+%{_datadir}/icons/hicolor/*/apps/%{name}.??g
+%license LICENSE
 
 %files lang -f %{name}.lang
-%dir %{_datadir}/pcmanfm-qt
-%{_datadir}/pcmanfm-qt/translations
+%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/translations
+%if 0%{?sle_version}
+%{_datadir}/%{name}/translations/%{name}_???.qm
+%endif
 
 %changelog
