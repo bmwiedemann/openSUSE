@@ -11,7 +11,7 @@ Index: doc/find.texi
 ===================================================================
 --- doc/find.texi.orig
 +++ doc/find.texi
-@@ -1608,6 +1608,10 @@ them.
+@@ -1607,6 +1607,10 @@ them.
  There are two ways to avoid searching certain filesystems.  One way is
  to tell @code{find} to only search one filesystem:
  
@@ -26,7 +26,7 @@ Index: find/defs.h
 ===================================================================
 --- find/defs.h.orig
 +++ find/defs.h
-@@ -562,6 +562,9 @@ struct options
+@@ -557,6 +557,9 @@ struct options
    /* If true, don't cross filesystem boundaries. */
    bool stay_on_filesystem;
  
@@ -40,7 +40,7 @@ Index: find/find.1
 ===================================================================
 --- find/find.1.orig
 +++ find/find.1
-@@ -638,6 +638,9 @@ to stat them; this gives a significant i
+@@ -654,6 +654,9 @@ to stat them; this gives a significant i
  .IP "\-version, \-\-version"
  Print the \fBfind\fR version number and exit.
  
@@ -54,7 +54,7 @@ Index: find/ftsfind.c
 ===================================================================
 --- find/ftsfind.c.orig
 +++ find/ftsfind.c
-@@ -435,6 +435,12 @@ consider_visiting (FTS *p, FTSENT *ent)
+@@ -433,6 +433,12 @@ consider_visiting (FTS *p, FTSENT *ent)
  	}
      }
  
@@ -71,7 +71,7 @@ Index: find/parser.c
 ===================================================================
 --- find/parser.c.orig
 +++ find/parser.c
-@@ -139,6 +139,7 @@ static bool parse_used          (const s
+@@ -150,6 +150,7 @@ static bool parse_used          (const s
  static bool parse_user          (const struct parser_table*, char *argv[], int *arg_ptr);
  static bool parse_wholename     (const struct parser_table*, char *argv[], int *arg_ptr);
  static bool parse_xdev          (const struct parser_table*, char *argv[], int *arg_ptr);
@@ -79,7 +79,7 @@ Index: find/parser.c
  static bool parse_ignore_race   (const struct parser_table*, char *argv[], int *arg_ptr);
  static bool parse_noignore_race (const struct parser_table*, char *argv[], int *arg_ptr);
  static bool parse_warn          (const struct parser_table*, char *argv[], int *arg_ptr);
-@@ -304,6 +305,7 @@ static struct parser_table const parse_t
+@@ -309,6 +310,7 @@ static struct parser_table const parse_t
    PARSE_TEST_NP    ("wholename",             wholename), /* GNU, replaced -path, but now -path is standardized since POSIX 2008 */
    {ARG_TEST,       "writable",               parse_accesscheck, pred_writable}, /* GNU, 4.3.0+ */
    PARSE_OPTION     ("xdev",                  xdev), /* POSIX */
@@ -87,7 +87,7 @@ Index: find/parser.c
    PARSE_TEST       ("xtype",                 xtype),	     /* GNU */
  #ifdef UNIMPLEMENTED_UNIX
    /* It's pretty ugly for find to know about archive formats.
-@@ -2608,6 +2610,16 @@ parse_xdev (const struct parser_table* e
+@@ -2490,6 +2492,16 @@ parse_xdev (const struct parser_table* e
  }
  
  static bool
@@ -108,17 +108,17 @@ Index: find/util.c
 ===================================================================
 --- find/util.c.orig
 +++ find/util.c
-@@ -183,7 +183,8 @@ Positional options (always true):\n\
+@@ -181,7 +181,8 @@ Positional options (always true):\n\
    HTL (_("\n\
  Normal options (always true, specified before other expressions):\n\
        -depth -files0-from FILE -maxdepth LEVELS -mindepth LEVELS\n\
--       -mount -noleaf -xdev -ignore_readdir_race -noignore_readdir_race\n"));
+-      -mount -noleaf -xdev -ignore_readdir_race -noignore_readdir_race\n"));
 +      -mount -noleaf -xdev -ignore_readdir_race -noignore_readdir_race\n\
 +      -xautofs\n"));
    HTL (_("\n\
  Tests (N can be +N or -N or N):\n\
        -amin N -anewer FILE -atime N -cmin N -cnewer FILE -context CONTEXT\n\
-@@ -1028,6 +1029,7 @@ set_option_defaults (struct options *p)
+@@ -1027,6 +1028,7 @@ set_option_defaults (struct options *p)
  
    p->full_days = false;
    p->stay_on_filesystem = false;

@@ -623,4 +623,12 @@ Prompted by an error of 'osc service localrun download_files'.
     <comment></comment>
     <requestid>1153949</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>4f15fa46db2cb159dc4b3bf1e6209d57</srcmd5>
+    <version>4.10.0</version>
+    <time>1717601865</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1178093</requestid>
+  </revision>
 </revisionlist>

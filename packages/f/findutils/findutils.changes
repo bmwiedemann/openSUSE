@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun  1 20:37:18 UTC 2024 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- Update to 4.10.0.
+  Announcement: https://savannah.gnu.org/news/?id=10638
+- findutils-xautofs.patch: Refresh.
+
+-------------------------------------------------------------------
 Mon Feb 26 08:35:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
