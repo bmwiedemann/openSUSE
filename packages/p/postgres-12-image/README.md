@@ -126,9 +126,10 @@ $ cat dump.sql | podman exec -i $CONTAINER_ID psql -U $POSTGRES_USER -d $POSTGRE
 For more information on how to perform backup and restore, refer to the [PostgreSQL documentation](https://www.postgresql.org/docs/current/backup.html).
 
 ## Licensing
+
 `SPDX-License-Identifier: MIT`
 
-The build recipe and this documentation is licensed as MIT.
+This documentation and the build recipe are licensed as MIT.
 The container itself contains various software components under various open source licenses listed in the associated
 Software Bill of Materials (SBOM).
 
