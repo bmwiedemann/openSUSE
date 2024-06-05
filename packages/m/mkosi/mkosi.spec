@@ -37,7 +37,6 @@ BuildRequires:  pandoc
 BuildRequires:  python-rpm-macros
 Requires:       bubblewrap
 Requires:       python3 >= 3.9
-Requires:       systemd-experimental
 Requires:       zypper
 Recommends:     btrfsprogs
 Recommends:     dnf >= 4.8.0

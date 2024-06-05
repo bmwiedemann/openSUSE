@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  4 13:59:06 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Drop requirement on systemd-experimental.
+
+  It's no longer necessary as systemd-repart is no more considered as an
+  experimental tool and is now shipped by udev. Also the hard requirement was a
+  bit too strong since systemd-repart is only required when building disk
+  images.
+
+-------------------------------------------------------------------
 Mon May 27 15:50:17 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add opensuse-dont-install-distribution-release-by-default.patch 
