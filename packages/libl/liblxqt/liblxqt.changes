@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 17 23:51:21 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 2.0.0:
+  * Ported to Qt6
+- Specfile cleanup and macro updates
+
+-------------------------------------------------------------------
 Fri Jan 12 15:40:39 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Changes to fix (boo#1218288)
