@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           govc
-Version:        0.37.2
+Version:        0.37.3
 Release:        0
 Summary:        vSphere CLI built on top of govmomi
 License:        Apache-2.0

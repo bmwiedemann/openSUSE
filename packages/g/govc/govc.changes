@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 05 10:51:24 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.37.3:
+  * chore: Update version.go for v0.37.3
+  * nfc: Record the SSL thumbprint for the host the (device) URL
+    refers to
+
+-------------------------------------------------------------------
 Fri May 10 05:07:41 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.37.2:
