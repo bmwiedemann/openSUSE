@@ -1219,4 +1219,21 @@
    Panel plugins can depend on lxqt-backlight_backend</comment>
     <requestid>1134437</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>904ee833d8c3b5e17315ae3ee7817993</srcmd5>
+    <version>2.0.1</version>
+    <time>1717601911</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.0.1:
+  * Fixed a runtime failure in the plugin loader.
+  * Workaround for Removable Media plugin with a GLib-mounted encrypted volume.
+  * Ported to Qt6.
+  * Added Wayland support for positioning the panel by using layer shell.
+  * Removed spaces from saved settings of Custom Command plugin.
+  * Added the SVG format to the panel background picker dialog.
+- Fix plugin loader (#2052) #2053 
+  * 001-fix-plugin-loader.patch added
+</comment>
+    <requestid>1174632</requestid>
+  </revision>
 </revisionlist>

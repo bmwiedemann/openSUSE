@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-panel
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,58 +17,58 @@
 
 
 Name:           lxqt-panel
-Version:        1.4.0
+Version:        2.0.1
 Release:        0
-Summary:        Desktop Panel for LXQt
-License:        GPL-2.0-or-later
-Group:          System/GUI/Other
-URL:            http://www.lxqt.org
-Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+Summary:        LXQt desktop panel
+License:        LGPL-2.1-or-later
+Group:          System/GUI/LXQt
+URL:            https://github.com/lxqt/lxqt-panel
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-BuildRequires:  cmake >= 3.1.0
-BuildRequires:  extra-cmake-modules
+Patch1:         001-fix-plugin-loader.patch
+BuildRequires:  cmake >= 3.27.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libsensors4-devel
-BuildRequires:  lxqt-build-tools-devel >= 0.13.0
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5Solid) >= 5.36.0
-BuildRequires:  cmake(KF5WindowSystem) >= 5.36.0
-BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  cmake(lxqt-menu-data)
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.12.0
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  cmake(KF6Solid)
+BuildRequires:  cmake(KF6WindowSystem)
+BuildRequires:  cmake(LayerShellQt) >= 6.0.0
+BuildRequires:  cmake(Qt6Concurrent)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Xml)
+BuildRequires:  cmake(lxqt-menu-data) >= 2.0.0
+BuildRequires:  cmake(lxqt2-build-tools)
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(dbusmenu-qt5)
+BuildRequires:  pkgconfig(dbusmenu-lxqt)
+BuildRequires:  pkgconfig(libmenu-cache)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libstatgrab)
-BuildRequires:  pkgconfig(lxqt) >= %{version}
-BuildRequires:  pkgconfig(lxqt-globalkeys) >= %{version}
+BuildRequires:  pkgconfig(lxqt) >= 2.0.0
 BuildRequires:  pkgconfig(lxqt-globalkeys-ui)
-BuildRequires:  pkgconfig(sysstat-qt5)
+BuildRequires:  pkgconfig(sysstat-qt6)
 BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-damage)
 BuildRequires:  pkgconfig(xcb-image)
+BuildRequires:  pkgconfig(xcb-randr)
+BuildRequires:  pkgconfig(xcb-shape)
+BuildRequires:  pkgconfig(xcb-shm)
 BuildRequires:  pkgconfig(xcb-util)
+BuildRequires:  pkgconfig(xcb-xfixes)
 BuildRequires:  pkgconfig(xcb-xkb)
 BuildRequires:  pkgconfig(xcomposite)
-BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xkbcommon-x11)
-BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xtst)
 Requires:       lxqt-menu-data
-# boo#1218288 -- mvetter@suse.com
-Requires:       liblxqt
-Recommends:     %{name}-lang
+Requires:       menu-cache
+Recommends:     %{name}-lang = %{version}-%{release}
 
 %description
-Brand new desktop Panel for LXQt
+lxqt-panel represents the taskbar of LXQt.
 
 %lang_package
 
@@ -82,41 +82,61 @@ BuildArch:      noarch
 LXQt panel development files and headers
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %define _lto_cflags %{nil}
 export CXXFLAGS="%{optflags} $(pkg-config --cflags xkbcommon-x11)"
-%cmake -DPULL_TRANSLATIONS=No -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now"
+%cmake_qt6 \
+    -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now"
+%{qt6_build}
 
 %install
-%cmake_install
-%fdupes -s %{buildroot}/%{_datadir}
+%{qt6_install}
+%fdupes -s %{buildroot}%{_datadir}
 
-%find_lang %{name} --with-qt
+%find_lang %{name} --with-qt --all-name
 
 %files
-%license LICENSE
-%doc AUTHORS CHANGELOG
-%{_bindir}/%{name}
+%doc AUTHORS CHANGELOG README.md
 %dir %{_datadir}/lxqt
-%dir %{_sysconfdir}/xdg
-%dir %{_sysconfdir}/xdg/autostart
+%{_bindir}/%{name}
 %{_libdir}/%{name}
-%{_datadir}/lxqt/panel
-%{_datadir}/lxqt/lxqt-panel
-%{_datadir}/lxqt/panel/qeyes-types
-%{_mandir}/man1/lxqt-panel.1%{?ext_man}
-%config %{_sysconfdir}/xdg/autostart/lxqt-panel.desktop
+%{_datadir}/lxqt/%{name}
+%dir %{_datadir}/lxqt/panel
+%{_datadir}/lxqt/panel/qeyes-types/
 %{_datadir}/lxqt/panel.conf
+%{_mandir}/man1/%{name}.1%{?ext_man}
+%{_sysconfdir}/xdg/autostart/%{name}.desktop
+%license LICENSE
 
 %files devel
-%license LICENSE
 %{_includedir}/lxqt
 
 %files lang -f %{name}.lang
-%license LICENSE
-%dir %{_datadir}/lxqt/translations/
-%{_datadir}/lxqt/translations/%{name}
+%dir %{_datadir}/lxqt
+%dir %{_datadir}/lxqt/translations
+%dir %{_datadir}/lxqt/translations/%{name}
+%dir %{_datadir}/lxqt/translations/%{name}/colorpicker
+%dir %{_datadir}/lxqt/translations/%{name}/cpuload
+%dir %{_datadir}/lxqt/translations/%{name}/customcommand
+%dir %{_datadir}/lxqt/translations/%{name}/desktopswitch
+%dir %{_datadir}/lxqt/translations/%{name}/directorymenu
+%dir %{_datadir}/lxqt/translations/%{name}/dom
+%dir %{_datadir}/lxqt/translations/%{name}/fancymenu
+%dir %{_datadir}/lxqt/translations/%{name}/kbindicator
+%dir %{_datadir}/lxqt/translations/%{name}/mainmenu
+%dir %{_datadir}/lxqt/translations/%{name}/mount
+%dir %{_datadir}/lxqt/translations/%{name}/networkmonitor
+%dir %{_datadir}/lxqt/translations/%{name}/qeyes
+%dir %{_datadir}/lxqt/translations/%{name}/quicklaunch
+%dir %{_datadir}/lxqt/translations/%{name}/sensors
+%dir %{_datadir}/lxqt/translations/%{name}/showdesktop
+%dir %{_datadir}/lxqt/translations/%{name}/spacer
+%dir %{_datadir}/lxqt/translations/%{name}/statusnotifier
+%dir %{_datadir}/lxqt/translations/%{name}/sysstat
+%dir %{_datadir}/lxqt/translations/%{name}/taskbar
+%dir %{_datadir}/lxqt/translations/%{name}/volume
+%dir %{_datadir}/lxqt/translations/%{name}/worldclock
 
 %changelog

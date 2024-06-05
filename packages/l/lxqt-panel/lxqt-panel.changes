@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May 11 10:46:45 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 2.0.1:
+  * Fixed a runtime failure in the plugin loader.
+  * Workaround for Removable Media plugin with a GLib-mounted encrypted volume.
+  * Ported to Qt6.
+  * Added Wayland support for positioning the panel by using layer shell.
+  * Removed spaces from saved settings of Custom Command plugin.
+  * Added the SVG format to the panel background picker dialog.
+- Fix plugin loader (#2052) #2053 
+  * 001-fix-plugin-loader.patch added
+
+-------------------------------------------------------------------
 Thu Dec 21 12:10:53 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 -  boo#1218288: Require liblxqt
