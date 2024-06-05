@@ -357,4 +357,14 @@ The upstream has developed for a long time and waylyrics has been stable, althou
   * Set title for lyrics file selection dialog</comment>
     <requestid>1176995</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>03b77007ecab1dd564425d5ec6f96f23</srcmd5>
+    <version>0.3.10</version>
+    <time>1717602161</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.3.10:
+  * chore: release v0.3.10
+  * fix(log): i18n bind result will not be logged</comment>
+    <requestid>1178663</requestid>
+  </revision>
 </revisionlist>
