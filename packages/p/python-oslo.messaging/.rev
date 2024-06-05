@@ -624,4 +624,23 @@
   - Enable use of quorum queues for transient messages</comment>
     <requestid>1171468</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>50dbbeba33335f876fbd7d10bf9bf49c</srcmd5>
+    <version>14.8.0</version>
+    <time>1717602117</time>
+    <user>anag+factory</user>
+    <comment>- update to version 14.8.0
+  - reno: Update master for unmaintained/xena
+  - reno: Update master for unmaintained/zed
+  - Restore read stream queues from last known offset
+  - Make oslo.messaging, magnum, and zaqar reproducible.
+  - reno: Update master for unmaintained/victoria
+  - Update master for stable/2024.1
+  - Use StopWatch timer when waiting for message
+  - reno: Update master for unmaintained/wallaby
+  - Remove old excludes
+  - kafka: Fix invalid hostaddr format for IPv6 address
+  - Fix incorrect desc of rabbit_stream_fanout option</comment>
+    <requestid>1178603</requestid>
+  </revision>
 </revisionlist>

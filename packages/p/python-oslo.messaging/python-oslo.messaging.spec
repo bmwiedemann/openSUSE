@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.messaging
-Version:        14.7.0
+Version:        14.8.0
 Release:        0
 Summary:        OpenStack oslo.messaging library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.messaging
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.messaging/oslo.messaging-14.7.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.messaging/oslo.messaging-14.8.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML >= 3.13
 BuildRequires:  python3-WebOb >= 1.7.1
@@ -98,7 +98,7 @@ of different messaging transports.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n oslo.messaging-14.7.0
+%autosetup -p1 -n oslo.messaging-14.8.0
 %py_req_cleanup
 
 %build

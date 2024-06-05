@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun  4 20:02:49 UTC 2024 - cloud-devel@suse.de
+
+- update to version 14.8.0
+  - reno: Update master for unmaintained/xena
+  - reno: Update master for unmaintained/zed
+  - Restore read stream queues from last known offset
+  - Make oslo.messaging, magnum, and zaqar reproducible.
+  - reno: Update master for unmaintained/victoria
+  - Update master for stable/2024.1
+  - Use StopWatch timer when waiting for message
+  - reno: Update master for unmaintained/wallaby
+  - Remove old excludes
+  - kafka: Fix invalid hostaddr format for IPv6 address
+  - Fix incorrect desc of rabbit_stream_fanout option
+
+-------------------------------------------------------------------
 Thu May  2 22:13:40 UTC 2024 - cloud-devel@suse.de
 
 - update to version 14.7.0
