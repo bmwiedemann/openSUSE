@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun  4 20:02:08 UTC 2024 - cloud-devel@suse.de
+
+- update to version 6.0.0
+  - reno: Update master for unmaintained/victoria
+  - Apply eventlet workaround only once
+  - Imported Translations from Zanata
+  - Validate rate_limit_except_level by choices
+  - Remove unused pyinotify
+  - Fix broken reference to rate_limit_except_level
+  - Remove old excludes
+  - Fix eventlet detection
+  - Deprecate watch_log_file
+  - Update master for stable/2024.1
+  - Remove fallback for old oslo.context
+  - Remove implementation for watch_log_file
+
+-------------------------------------------------------------------
 Thu May  2 22:14:38 UTC 2024 - cloud-devel@suse.de
 
 - update to version 5.5.1

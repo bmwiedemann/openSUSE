@@ -459,4 +459,24 @@
   - Update .gitreview for stable/2024.1</comment>
     <requestid>1171469</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>16b451108e61e8e62f362576f0523396</srcmd5>
+    <version>6.0.0</version>
+    <time>1717602115</time>
+    <user>anag+factory</user>
+    <comment>- update to version 6.0.0
+  - reno: Update master for unmaintained/victoria
+  - Apply eventlet workaround only once
+  - Imported Translations from Zanata
+  - Validate rate_limit_except_level by choices
+  - Remove unused pyinotify
+  - Fix broken reference to rate_limit_except_level
+  - Remove old excludes
+  - Fix eventlet detection
+  - Deprecate watch_log_file
+  - Update master for stable/2024.1
+  - Remove fallback for old oslo.context
+  - Remove implementation for watch_log_file</comment>
+    <requestid>1178602</requestid>
+  </revision>
 </revisionlist>
