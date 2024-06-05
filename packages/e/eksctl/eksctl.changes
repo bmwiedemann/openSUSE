@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Jun 04 04:39:16 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.181.0:
+  * Add release notes for v0.181.0
+  * Disallow IRSA config if addon has existing pod identity
+    associations
+  * Update link to docs
+  * use service level endpoint resolver instead of global endpoint
+    resolver which was deprecated
+  * Update AWS SDK
+  * Rename fields to addonsConfig.autoApplyPodIdentityAssociations
+    and addon.useDefaultPodIdentityAssociations
+  * Add more validation
+  * Allow updating addons with recommended IAM policies, disallow
+    setting tags and wellKnownPolicies
+  * fix addons integration test
+  * tech debt - unskip tests from PI suite
+  * update list of minimum IAM permissions
+  * update unit tests
+  * add auto-create-pod-identity-associations CLI flag
+  * update describe addon config command to return pod identity
+    config
+  * add integration tests for creating and deleting addons &&
+    bugfixes around validations and error checking
+  * Add integration test for addon.podIdentityAssociations
+  * Delete old IRSA stack in `update addon`
+  * add docs && tweak validation
+  * Migrate: ignore pod identity associations that already exist
+  * add unit tests and update generated files
+  * Migrate EKS addons to pod identity using the Addons API
+  * add validations
+  * take into account that not all EKS addons will support pod IDs
+    at launch
+  * Delete IAM resources when addon.podIdentityAssociations is []
+  * Fix `create cluster` when iam.podIdentityAssociations is unset
+  * Show ownerARN in `get podidentityassociations`
+  * Disallow deletion of addon pod identities in `delete
+    podidentityassociation`
+  * Fix deleting the specified addon instead of all addons
+  * Update mocks
+  * Show pod identities in `get addons`, use a pointer for
+    addon.podIdentityAssociations
+  * Disallow updating podidentityassociations owned by addons
+  * Show addon.podIdentityAssociations in `get addon`
+  * Support updating podIdentityAssociations for addons
+  * small tweaks
+  * ammend delete addon command to delete roles for pod identity
+    associations
+  * add new addon fields required for pod identity support
+  * Prepare for next development iteration (#7791)
+
+-------------------------------------------------------------------
 Thu May 30 09:01:45 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.180.0:

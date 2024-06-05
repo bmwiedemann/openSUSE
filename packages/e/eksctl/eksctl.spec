@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           eksctl
-Version:        0.180.0
+Version:        0.181.0
 Release:        0
 Summary:        The official CLI for Amazon EKS
 License:        Apache-2.0
