@@ -17,7 +17,7 @@
 
 %define baseprogramname lite-xl
 Name:           lite-xl-plugin-manager
-Version:        1.2.9+git20240421.b9723c0
+Version:        1.2.9+git20240603.5343f48
 Release:        0
 Summary:        A %{baseprogramname} plugin manager
 %if 0%{?suse_version} > 1500

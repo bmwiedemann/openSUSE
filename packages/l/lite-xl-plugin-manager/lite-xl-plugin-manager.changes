@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Jun 04 15:24:55 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.2.9+git20240603.5343f48:
+  * Added in searchpath for lib64, which is where libraries get installed sometimes.
+
+-------------------------------------------------------------------
+Tue May 28 14:55:41 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.2.9+git20240513.22152f1:
+  * Warn about id mismatches, but otherwise, take the basename of a path.
+  * Fixed issue with https://github.com/lite-xl/lite-xl-plugin-manager/issues/110.
+  * Fix for issue #112.
+  * Add JSON schema for `manifest.json` files (#102)
+
+-------------------------------------------------------------------
+Mon May 13 13:38:06 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.2.9+git20240512.81f1703:
+  * Fix meson static lua source generation
+  * Updated meson and build.sh to remove source context for LPM_STATIC builds.
+  * Made change to ensure that total_objects_or_content_length was > 0.
+  * Fixed stuff.
+  * Comment.
+  * Fixed up a few things.
+  * Added in declarative managed plugin functionality to plugin_maanger.
+  * Unified syntax.
+  * Fixed addons.
+  * Added in plugin manager hook.
+  * Added in apply.
+  * Updated CHANGELOG.md.
+
+-------------------------------------------------------------------
 Sun Apr 21 16:45:13 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 1.2.9+git20240421.b9723c0:
