@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 04 21:08:56 UTC 2024 - Rodrigo Pedra Brum <rodrigo.pedra@gmail.com>
+
+- Update to 1.6.0
+  * Improved app analysis performance
+  * Improved debug logs
+  * Fixed some issues with special characters in filenames
+- Drop 0001-Rename-icon-with-generic-name-that-conflicts-with-an.patch
+
+-------------------------------------------------------------------
 Fri May 10 15:28:05 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Add 0001-Rename-icon-with-generic-name-that-conflicts-with-an.patch

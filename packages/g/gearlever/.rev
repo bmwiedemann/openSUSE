@@ -15,4 +15,17 @@
     <comment></comment>
     <requestid>1173363</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3ff096b245a7d9d58d72239446293615</srcmd5>
+    <version>1.6.0</version>
+    <time>1717602180</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.6.0
+  * Improved app analysis performance
+  * Improved debug logs
+  * Fixed some issues with special characters in filenames
+- Drop 0001-Rename-icon-with-generic-name-that-conflicts-with-an.patch
+</comment>
+    <requestid>1178722</requestid>
+  </revision>
 </revisionlist>

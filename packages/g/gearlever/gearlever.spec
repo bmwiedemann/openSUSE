@@ -18,14 +18,13 @@
 
 %define appid it.mijorus.gearlever
 Name:           gearlever
-Version:        1.5.2
+Version:        1.6.0
 Release:        0
 Summary:        Manage AppImages
 License:        GPL-3.0-or-later
 URL:            https://gearlever.mijorus.it/
 Source:         https://github.com/mijorus/gearlever/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM: https://github.com/mijorus/gearlever/pull/80
-Patch1:         0001-Rename-icon-with-generic-name-that-conflicts-with-an.patch
 Group:          System/X11/Utilities
 BuildArch:      noarch
 BuildRequires:  fdupes
