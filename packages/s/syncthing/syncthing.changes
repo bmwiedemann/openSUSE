@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun  4 17:08:00 UTC 2024 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.27.8
+  * Bugfixes:
+    #9506: gui: Favicon not working in Firefox bookmarks
+  * Enhancements:
+    #9527: Device connection state metric
+
+-------------------------------------------------------------------
 Wed May  8 09:05:53 UTC 2024 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.27.7
