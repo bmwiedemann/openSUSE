@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun  4 20:09:08 UTC 2024 - cloud-devel@suse.de
+
+- update to version 5.1.0
+  - Update master for stable/2024.1
+  - refectoring: Fix parameter and annotation mismatch
+  - reno: Update master for unmaintained/victoria
+  - reno: Update master for unmaintained/zed
+  - Handle NotAcceptable when Accept-Encoding: identity is not allowed
+  - reno: Update master for unmaintained/wallaby
+  - reno: Update master for unmaintained/xena
+
+-------------------------------------------------------------------
 Fri May 10 08:41:29 UTC 2024 - cloud-devel@suse.de
 
 - update to version 5.0.0

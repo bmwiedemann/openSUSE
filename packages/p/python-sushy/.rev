@@ -287,4 +287,19 @@
   - Remove version field from iLO error</comment>
     <requestid>1173072</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d84f4f6b5d5f908fe270ca46a620dee7</srcmd5>
+    <version>5.1.0</version>
+    <time>1717602132</time>
+    <user>anag+factory</user>
+    <comment>- update to version 5.1.0
+  - Update master for stable/2024.1
+  - refectoring: Fix parameter and annotation mismatch
+  - reno: Update master for unmaintained/victoria
+  - reno: Update master for unmaintained/zed
+  - Handle NotAcceptable when Accept-Encoding: identity is not allowed
+  - reno: Update master for unmaintained/wallaby
+  - reno: Update master for unmaintained/xena</comment>
+    <requestid>1178612</requestid>
+  </revision>
 </revisionlist>
