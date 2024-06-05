@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun  4 20:07:23 UTC 2024 - cloud-devel@suse.de
+
+- update to version 4.9.0
+  - Update master for stable/2024.1
+  - [OSC] Fix output format for osc share subnet create
+  - reno: Update master for unmaintained/xena
+  - Human readable export location CLI changes
+  - Add new-note tox environment
+  - "--wait" option added for snapshot create/revert/delete commands
+  - "--wait" option added for managing/unmanaging a share snapshot
+  - adds bandit testing and Zuul CI job.
+  - reno: Update master for unmaintained/wallaby
+  - Remove --nova-net-id option
+
+-------------------------------------------------------------------
 Sun Mar 24 20:08:53 UTC 2024 - cloud-devel@suse.de
 
 - update to version 4.8.0

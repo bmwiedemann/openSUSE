@@ -501,4 +501,22 @@ update to version 1.10.0
   - Fix list call when search_opts isn't provided</comment>
     <requestid>1161189</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>da1cd84ea10cacc4b60f8e6f05036ff4</srcmd5>
+    <version>4.9.0</version>
+    <time>1717602128</time>
+    <user>anag+factory</user>
+    <comment>- update to version 4.9.0
+  - Update master for stable/2024.1
+  - [OSC] Fix output format for osc share subnet create
+  - reno: Update master for unmaintained/xena
+  - Human readable export location CLI changes
+  - Add new-note tox environment
+  - &quot;--wait&quot; option added for snapshot create/revert/delete commands
+  - &quot;--wait&quot; option added for managing/unmanaging a share snapshot
+  - adds bandit testing and Zuul CI job.
+  - reno: Update master for unmaintained/wallaby
+  - Remove --nova-net-id option</comment>
+    <requestid>1178610</requestid>
+  </revision>
 </revisionlist>
