@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun  3 06:16:18 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20240601
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + change Ada95/configure to use --with-screen option rather than
+    --enable-widec, to provide more choices of underlying curses library
+
+-------------------------------------------------------------------
 Mon May 27 08:44:05 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20240525

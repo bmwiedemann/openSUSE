@@ -4579,4 +4579,15 @@
 - Port patch ncurses-6.4.dif</comment>
     <requestid>1177126</requestid>
   </revision>
+  <revision rev="265" vrev="38">
+    <srcmd5>72336ad303fe00652c0c5838ffd7816e</srcmd5>
+    <version>unknown</version>
+    <time>1717601870</time>
+    <user>anag+factory</user>
+    <comment>- Add ncurses patch 20240601
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + change Ada95/configure to use --with-screen option rather than
+    --enable-widec, to provide more choices of underlying curses library</comment>
+    <requestid>1178235</requestid>
+  </revision>
 </revisionlist>
