@@ -1,0 +1,374 @@
+-------------------------------------------------------------------
+Sat May 11 03:12:05 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 4.0.0:
+  * Ported to Qt6
+  * Considered the EV XDG_CURRENT_DESKTOP as a colon-separated list.
+  * Fixed an FTBFS with BUILD_DEV_UTILS enabled.
+
+-------------------------------------------------------------------
+Sun Nov  5 14:27:40 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.12.0:
+  * Just corrected a typo and bumped the version.
+
+-------------------------------------------------------------------
+Sat Apr 15 17:25:39 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 3.11.0:
+  * File association is fixed with desktop entries that are
+    symlinks
+
+-------------------------------------------------------------------
+Sat Nov  5 17:05:32 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Update to 3.10.0:
+  * Invalidate GTK icon cache as soon as icons are installed.
+  * Follow `freedesktop.org` in adding dirs under `DefaultDirectoryDirs`.
+
+-------------------------------------------------------------------
+Mon May  9 11:23:17 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.9.1:
+  For making it possible to have Qt5 and Qt6 installations of
+  libqtxdg alongside each other in near future, two changes are
+  made to this point release:
+  * qtxdg-mat has been separated from libqtxdg and put into qtxdg-tools.
+  * The installation of config files has been made optional.
+
+-------------------------------------------------------------------
+Wed Apr 27 19:19:43 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.9.0:
+  * String literals are supported in Exec keys of desktop entries.
+  * Enhancements to qtxdg-mat.
+
+-------------------------------------------------------------------
+Fri Nov  5 15:48:22 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.8.0:
+  * Added support for default terminal.
+  * Considered XDG_DATA_HOME when computing desktop entry id.
+  * Made sure that hicolor is searched before dash fallbacks.
+  * Considered Qt's fallback search paths when finding icons.
+  * Handle relative paths in qtxdg-desktop-file-start.
+
+-------------------------------------------------------------------
+Fri Apr 16 11:23:47 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update 3.7.1:
+  * Fixed compilation against Qt < 5.14.
+  * Added a nullity check for paint device.
+
+-------------------------------------------------------------------
+Fri Apr 16 06:31:20 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.7.0:
+  * QSvgRenderer is used with a cache for SVG icons, so that LXQt's
+    icon handling could not be broken by intruding icon engines
+	that register themselves for "svg" (like kiconthemes 5.80).
+  * Allow runtime overriding of detachment of processes by
+    setting QTXDG_START_DETACH_TRULY.
+  * XTerm is added as a runtime dependency.
+  * Code cleanup.
+- Remove libqt5xdg-svg-render.patch: upstreamed
+
+-------------------------------------------------------------------
+Wed Mar 31 10:02:43 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1183834: Fix displaying of icons by using QSvgRenderer
+  * Add libqt5xdg-svg-render.patch
+
+-------------------------------------------------------------------
+Wed Nov  4 13:17:31 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.6.0:
+  *￼Dropped deprecated QLinkedList.
+  *￼Code cleanup.
+  * Memory leaks are fixed.
+  *￼Fixed setting of default apps with GLib backend.
+  *￼Fixed (recommended) apps list given by GLib backend.
+  *￼Added a XdgDefaultApps class with email client, file
+    manager and web browser set/get methods.
+  *￼Used Qt's fix for too big SVG icons with scale factors > 1.
+  *￼Added methods to ￼XdgDefaultApps for getting special applications.
+  *￼Fixed unneeded URL encoding for %U/%u in "xdgdesktopfile.cpp".
+
+-------------------------------------------------------------------
+Mon Apr 27 10:45:27 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Changed libqt5xdg.keyring to tsujan's key
+
+-------------------------------------------------------------------
+Fri Apr 24 19:50:57 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 3.5.0
+  * Sharp SVG icons with scale factors > 1, especially non-integer ones.
+  * Removed obsolete qSwap.
+  * Removed obsolete Qt4 Mac code.
+   
+-------------------------------------------------------------------
+Fri Jan  3 10:36:08 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Add subpackage qtxdg-tools (Debian name qtxdg-dev-tools)
+
+-------------------------------------------------------------------
+Sun Oct 27 18:20:36 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.4.0:
+  * Adds an command line MimeType (mimetype) tool
+  * Adds a command line Open (open) Tool
+  * Adds a command line Default App (defapp) Tool
+  * Adds a MIME Applications Associations (XdgMimeApps) class
+  * XdgDesktopFile:
+    - Deprecates XdgDesktopFileCache and drop XdgDesktopFileCache use
+    - Add explanation comment
+    - Avoid freeze for DBusActivatable apps
+  * CMake:
+    - Remove string conversion flags
+    - Removes not used helper function
+  * test:
+    - Use qAsConst()
+  * Build and Implementation:
+    - Don't use automatic string conversion
+    - Prevent a c++11 range-loop possible detach
+    - Fixed icon cache with absolute paths
+    - Use more precise wording
+    - Use the QString multi-arg overload
+    - Use qEnvironmentVariableIntValue()
+    - Use qAsConst
+    - Drop QRegExp.
+    - Port even more towards C++ raw string literal
+    - Port towards return with a braced init list
+    - Port towards raw string literal use.
+    - Use bool literals
+    - Ports towards C++11 override specifiers
+    - Port towards C++ headers
+    - Port towards C++11 nullptr
+  * Reworded github issue template
+
+-------------------------------------------------------------------
+Mon Feb 25 10:07:22 UTC 2019 - mvetter@suse.com
+
+- Update to 3.3.1:
+  * Silenced compiler warnings about not used variables.
+  * Dropped not needed MOC stuff, we already use CMAKE_AUTOMOC.
+  * Dropped using libqtxdg's own versions of things that are in
+    lxqt-build-tools
+  * Updated translations
+
+-------------------------------------------------------------------
+Thu Jan 31 09:43:45 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.3.0:
+  * Use C++ ISO Standard 14, removed support for < 14
+  * XdgDesktopFile: Simplify scheme handling
+  * XdgDesktopFile: Clear internal data before loading a new file
+  * XdgDesktopFile: Don’t try read non existent files
+  * xdgaction: Set icon in updateIcon() only if needed
+  * xdgiconloader: Support more classes for “FollowColors” icons
+  * xdgiconloader: Consider device pixel ratio when painting
+  * xdgiconloader: Cover all KDE colors schemes for symbolic icons
+  * xdgiconloader: Fixes pedantic warning
+  * xdgmenuwidget: Fix menu-item drag url
+
+-------------------------------------------------------------------
+Tue May 22 13:54:39 UTC 2018 - mvetter@suse.com
+
+- Update to 3.2.0:
+  * xdgiconloader: Add GTK cache revalidation (fixes finding and
+    showing new icons, especially in main menu)
+  * xdgiconloader: Cache ScalableFollowsColorEntry properly
+  * Set genericName as tooltip (for main menu)
+  * Fix symbolic SVG icons with Qt >= 5.10
+
+-------------------------------------------------------------------
+Mon Oct 23 09:54:57 UTC 2017 - mvetter@suse.com
+
+- Update to 3.1.0:
+  * Bump version to 3.1.0
+  * xdgdesktopfile: Add API for getting actions info
+  * xdgdesktopfile: Add support for activating actions
+  * xdgdesktopfile: Add getting actions
+  * Check $XDG_CONFIG_HOME and $XDG_CONFIG_DIRS for mimeapps.list first.
+  * Fix reading and writing mimeapps.list file.
+  * Don't export github templates
+  * Release 3.0.0: Update changelog
+  * Backport support for Scale directory key according to Icon Theme spec
+  * Bump Major to 3
+  * test: Drop Q_FOREACH
+  * Drop Q_FOREACH
+  * liblxqt make no sense here
+  * Copied issue template
+  * Drops Qt5Core_VERSION_STRING
+  * Avoid Qt special keywords collision
+  * XdgDesktopFile: Stops allocating unneeded QMap::keys()
+  * XdgDesktopFile: Stop allocating unneeded QHash:values()
+  * XdgDesktopFile: Improve const-ness
+  * xdgiconloader: Reworks the unthemed/pixmap search
+  * xdgiconloader: Puts the hicolor at the end of the theme hierarchy
+  * XdgIcon: Add flag for "FollowsColorScheme" processing
+  * xdgiconloader: Honor "FolowsColorScheme" theme hint
+  * xdgiconloader: Support symbolic SVG icons
+  * More fixes (#131)
+  * xdgiconloader: Correct hierarchy of fallbacks (#116)
+  * xdgiconloader: Fix XdgIconLoaderEngine::actualSize() (#130)
+  * Update CMakeLists.txt
+  * It adds loadIcon() timing measurements.
+  * xdgiconloader: Consider all existing files/images
+  * Check QTXDGX_ICONENGINEPLUGIN_INSTALL_PATH existence
+  * Mark QTXDGX_ICONENGINEPLUGIN_INSTALL_PATH as advanced
+  * xdgiconloader: Implement QIconEnginePlugin interface
+  * Disables uninstall target
+  * Remove last uses of Java-style (non-mutable) iterators from QtBase
+  * Adds a development qtxdg-iconfinder utility tool
+  * Enable strict iterators for debug builds
+  * Removes extra semi-colons
+  * Improve build warnings
+  * Bump year
+  * QtGui: eradicate Q_FOREACH loops [already const]
+  * Optimize QIconLoader::findIconHelper()
+  * Remove unused variable in QIconLoader::findIconHelper()
+  * Improve use of QHash to minimize double hashing
+  * QIconLoaderEngine: add missing Q_DECL_OVERRIDEs
+  * Replace QLatin1Literal with QLatin1String
+  * QIconCacheGtkReader: use QStringRef more
+  * Gui: use const (and const APIs) more
+  * Adds Link Time Optimization
+  * Replaces CMAKE_SOURCE_DIR by PROJECT_SOURCE_DIR
+  * Refactors superbuild support
+  * Remove duplicate use of source header files
+  * Use AUTOMOC everywhere
+  * Stop using include_directories()
+  * Removes test project definition
+  * Use CMAKE_INCLUDE_CURRENT_DIR
+  * Adds PROJECT_NAME to the build Qt version message
+  * Simplify target_compile_definitions() and target_include_directories()
+  * qiconloader: Reuse Qt implementation
+  * XdgIconLoader: Fix FTBFS in super-build/in-tree builds
+  * Allow xdg-user-dirs in the realpath of $HOME. On some systems /home is a symlink and $HOME points to the symlink. This commit allows the xdg-user-dirs to start with the real/canonical path.
+  * Updates version requirements in pkg-config (.pc) stuff
+  * Make Qt5Xdg use only the same version Qt5XdgIconLoader
+  * Adds minimum Qt version requirement (5.4.2)
+  * test: Fixes false positive in tst_xdgdesktopfile::testReadLocalized()
+  * Remove cpack (#106)
+
+-------------------------------------------------------------------
+Sat Sep 24 18:02:50 UTC 2016 - mvetter@suse.com
+
+- Update to to 2.0.0:
+  * BACKWARDS-INCOMPATIBLE: New XdgIconLoader library
+  * New explicit dependency Qt SVG
+  * The IconLoader can use GTK+ icon cache
+  * Improved overall performance
+  * Better XDG handling
+  * Overall polishing
+
+-------------------------------------------------------------------
+Thu Nov  5 10:36:47 UTC 2015 - mvetter@suse.com
+
+- Upstream release 0.10.0
+
+-------------------------------------------------------------------
+Fri Feb 20 19:53:39 UTC 2015 - sfalken@opensuse.org
+
+- Changed %build and %install to use cmake macros 
+
+-------------------------------------------------------------------
+Mon Feb  9 16:27:11 UTC 2015 - sfalken@opensuse.org
+
+- New upstream version 1.1.0 
+
+-------------------------------------------------------------------
+Sun Jan 25 19:07:55 UTC 2015 - sfalken@opensuse.org
+
+- Added conditionals to build for Fedora (Only needed for F20) 
+
+-------------------------------------------------------------------
+Tue Oct 28 15:19:02 UTC 2014 - andrea@opensuse.org
+
+- changed license tag in the spec file to GPL-3.0
+
+-------------------------------------------------------------------
+Sun Oct 26 11:23:03 UTC 2014 - andrea@opensuse.org
+
+- ported to QT5 
+
+-------------------------------------------------------------------
+Sat Oct 25 11:15:54 UTC 2014 - andrea@opensuse.org
+
+- new upstream version 1.0.0 
+
+-------------------------------------------------------------------
+Tue May 13 14:52:16 UTC 2014 - andrea@opensuse.org
+
+- spec file clean up
+- removed statically defined requires , we let rpm work for us
+- use pkg-config where possible  
+
+-------------------------------------------------------------------
+Tue May 13 14:43:44 UTC 2014 - sfalken@opensuse.org
+
+- BuildRequires and patch cleanup 
+
+-------------------------------------------------------------------
+Mon May 12 15:29:43 UTC 2014 - sfalken@opensuse.org
+
+- Removed fedora spec, split into subproject
+  Del:  libqtxdg-Fedora_20.spec 
+
+-------------------------------------------------------------------
+Sun May 11 14:32:30 UTC 2014 - sfalken@opensuse.org
+
+- Removed BuildRequires: pkgconfig() in favour of BuildRequires: libqt4-devel at the request of X11:lxde:lxqt maintainers 
+
+-------------------------------------------------------------------
+Sat May 10 17:52:32 UTC 2014 - sfalken@opensuse.org
+
+- Ran spec-cleaner on spec file 
+
+-------------------------------------------------------------------
+Fri May  9 21:19:56 UTC 2014 - sfalken@opensuse.org
+
+- Added specfile for Fedora_20
+  Add:  libqtxdg-Fedora_20.spec 
+
+-------------------------------------------------------------------
+Fri May  9 13:40:04 UTC 2014 - sfalken@opensuse.org
+
+- Repackaged tarball to unpack to libqtxdg-0.5.3 instead of . 
+
+-------------------------------------------------------------------
+Fri May  9 13:15:46 UTC 2014 - sfalken@opensuse.org
+
+- First stable release, added stable tarball
+  Added: libqtxdg-0.5.3.tar.xz 
+  Delete:  _service
+
+-------------------------------------------------------------------
+Thu Apr 17 17:21:56 UTC 2014 - sfalken@opensuse.org
+
+- .spec file cleanup for rpmlint checks
+  Removed explicit Requires:
+  Adjusted description 
+
+-------------------------------------------------------------------
+Wed Apr  2 14:35:21 UTC 2014 - sfalken@opensuse.org
+
+- Removed direct cmake calls, in favour of %cmake and %cmake_install 
+
+-------------------------------------------------------------------
+Mon Mar 24 04:47:11 UTC 2014 - sfalken@opensuse.org
+
+- Specfile complete, successful build and packaging 
+
+-------------------------------------------------------------------
+Mon Mar 24 04:16:14 UTC 2014 - sfalken@opensuse.org
+
+- Added 0001-translation-dir.patch to correct for openSUSE directories 
+
+-------------------------------------------------------------------
+Mon Mar 24 02:53:11 UTC 2014 - sfalken@opensuse.org
+
+- Wrote initial _service file and first source pull 
+

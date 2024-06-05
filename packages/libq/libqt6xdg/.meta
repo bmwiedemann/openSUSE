@@ -1,0 +1,6 @@
+<package name="libqt6xdg" project="openSUSE:Factory">
+  <title>Qt implementation of freedesktop.org xdg specs</title>
+  <description></description>
+  <devel project="X11:LXQt" package="libqt6xdg"/>
+  <url>https://github.com/lxqt/libqtxdg</url>
+</package>
