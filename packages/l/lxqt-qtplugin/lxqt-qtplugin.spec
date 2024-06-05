@@ -17,63 +17,46 @@
 
 
 Name:           lxqt-qtplugin
-Version:        1.4.1
+Version:        2.0.0
 Release:        0
-Summary:        LXQt platform integration plugin for Qt 5
+Summary:        LXQt platform integration plugin
 License:        LGPL-2.1-or-later
 Group:          System/GUI/LXQt
-URL:            http://www.lxqt.org
-Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+URL:            https://github.com/lxqt/lxqt-qtplugin
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-BuildRequires:  cmake >= 3.1.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  gcc-c++
-BuildRequires:  libQt5Gui-private-headers-devel
-BuildRequires:  libexif-devel
-BuildRequires:  lxqt-build-tools-devel >= 0.13.0
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.15.0
-BuildRequires:  pkgconfig(Qt5UiTools)
-BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(Qt5Xdg) >= 3.11.0
-BuildRequires:  pkgconfig(Qt5XdgIconLoader)
-BuildRequires:  pkgconfig(dbusmenu-qt5)
-BuildRequires:  pkgconfig(libfm-qt) >= 1.4.0
-BuildRequires:  pkgconfig(lxqt) >= 1.4.0
-%if 0%{?fedora_version}
-%requires_eq    qt5-qtbase-gui
-%else
-%requires_eq    libQt5Gui5
-%endif
+BuildRequires:  qt6-gui-private-devel
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Gui) >= 6.3.0
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(fm-qt6)
+BuildRequires:  cmake(lxqt2-build-tools)
+BuildRequires:  pkgconfig(Qt6XdgIconLoader)
+BuildRequires:  pkgconfig(dbusmenu-lxqt)
 
 %description
-With this plugin, all Qt-based programs can adopt settings of
-LXQt, such as the icon theme.
-
-To use the plugin in Qt5, we have to export the environment
-variable QT_QPA_PLATFORMTHEME=lxqt. Then every Qt5 program
-can load the theme plugin.
-If, for some unknown reasons, the plugin is not loaded, we can
-debug the plugin by exporting QT_DEBUG_PLUGINS=1.
-Then, Qt5 will print detailed information and error messages
-about all plugins in the console when running any Qt5 programs.
+A library libqtlxqt to integrate Qt with LXQt. With this plugin, all
+Qt-based programs can adopt settings of LXQt, such as the icon theme.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-%cmake
-make %{?_smp_mflags}
+%cmake_qt6
+%{qt6_build}
 
 %install
-%cmake_install
+%{qt6_install}
 
 %files
 %license LICENSE
-%doc AUTHORS README.md
-%dir %{_libdir}/qt5/plugins
-%dir %{_libdir}/qt5/plugins/platformthemes
-%{_libdir}/qt5/plugins/platformthemes/libqtlxqt.so
+%doc AUTHORS CHANGELOG README.md
+%dir %{_qt6_pluginsdir}/platformthemes
+%{_qt6_pluginsdir}/platformthemes/libqtlxqt.so
 
 %changelog

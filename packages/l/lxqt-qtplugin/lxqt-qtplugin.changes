@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 11 09:20:11 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 2.0.0:
+  * Ported to Qt6
+  * The existence of qApp is checked to prevent crashes.
+
+-------------------------------------------------------------------
 Fri Apr 12 14:12:24 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4.1:
