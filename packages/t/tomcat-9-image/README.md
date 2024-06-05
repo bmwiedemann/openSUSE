@@ -74,9 +74,10 @@ packages:
 
 
 ## Licensing
+
 `SPDX-License-Identifier: MIT`
 
-The build recipe and this documentation is licensed as MIT.
+This documentation and the build recipe are licensed as MIT.
 The container itself contains various software components under various open source licenses listed in the associated
 Software Bill of Materials (SBOM).
 
