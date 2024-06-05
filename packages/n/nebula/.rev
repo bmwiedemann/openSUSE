@@ -24,4 +24,13 @@
   * Fixed a potential deadlock in GetOrHandshake (forwarded request 1177649 from rrahl0)</comment>
     <requestid>1177650</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2601dae6ee72b0b2018e9831ccad7ed6</srcmd5>
+    <version>1.9.2</version>
+    <time>1717601950</time>
+    <user>anag+factory</user>
+    <comment>- update to version 1.9.2:
+  * Ensure messageCounter is set before handshake is complete (forwarded request 1178400 from rrahl0)</comment>
+    <requestid>1178401</requestid>
+  </revision>
 </revisionlist>
