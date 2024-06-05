@@ -269,4 +269,25 @@
   - Support add/remove CIDR type address in Address_Set cmds</comment>
     <requestid>1173076</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>97d63fb5c6e106bace282c51fb8f1eb6</srcmd5>
+    <version>2.7.1</version>
+    <time>1717602118</time>
+    <user>anag+factory</user>
+    <comment>- update to version 2.7.1
+  - reno: Update master for unmaintained/xena
+  - reno: Update master for unmaintained/zed
+  - ovn-sb: remove chassis from Chassis_Private on ChassisDelCommand
+  - reno: Update master for unmaintained/wallaby
+  - Handle IPv6 addresses for LB IP port mappings
+  - Add pre-commit configuration
+  - Remove executable from python files which don't really needs it
+  - Add if_exists to lrp_set_options
+  - nb: commands: fix passing string to LSP attach/detach mirror API
+  - Backend: always operate on (class level) ovsdb_connection
+  - reno: Update master for unmaintained/victoria
+  - Fix BFD functional test, avoid comparing status column
+  - Update master for stable/2024.1</comment>
+    <requestid>1178604</requestid>
+  </revision>
 </revisionlist>
