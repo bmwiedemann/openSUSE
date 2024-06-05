@@ -1,0 +1,6 @@
+<package name="qtermwidget" project="openSUSE:Factory">
+  <title>The terminal widget for QTerminal.</title>
+  <description></description>
+  <devel project="X11:LXQt" package="qtermwidget"/>
+  <url>https://github.com/lxqt/qtermwidget</url>
+</package>
