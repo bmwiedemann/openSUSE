@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-powermanagement
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,39 +17,35 @@
 
 
 Name:           lxqt-powermanagement
-Version:        1.4.0
+Version:        2.0.0
 Release:        0
 Summary:        Power Management and Auto-suspend
 License:        LGPL-2.1-or-later
 Group:          System/GUI/LXQt
-URL:            http://www.lxqt.org
-Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+URL:            https://github.com/lxqt/lxqt-powermanagement
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-BuildRequires:  cmake >= 3.1.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  libQt5Gui-private-headers-devel
-BuildRequires:  lxqt-build-tools-devel >= 0.13.0
-BuildRequires:  lxqt-globalkeys-devel
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5IdleTime)
-BuildRequires:  cmake(KF5Solid)
-BuildRequires:  cmake(KF5WindowSystem) >= 5.36.0
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.15.0
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5UiTools)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(Qt5Xdg)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(lxqt) >= %{version}
-#BuildRequires:  pkgconfig(xcb)
+BuildRequires:  qt6-gui-private-devel
+BuildRequires:  cmake(KF6IdleTime)
+BuildRequires:  cmake(KF6Solid)
+BuildRequires:  cmake(KF6WindowSystem)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(lxqt2-build-tools)
+BuildRequires:  pkgconfig(lxqt)
+BuildRequires:  pkgconfig(lxqt-globalkeys-ui) >= 2.0.0
+BuildRequires:  pkgconfig(xcb-dpms)
+BuildRequires:  pkgconfig(xcb-screensaver)
 Requires:       upower
-%requires_eq    libQt5Gui5
-Recommends:     %{name}-lang
+Recommends:     %{name}-lang = %{version}-%{release}
 
 %description
 LXQt daemon for power management and auto-suspend
@@ -57,33 +53,32 @@ LXQt daemon for power management and auto-suspend
 %lang_package
 
 %prep
-%setup -q
-# Changing LXQt into X-LXQt in desktop files to be freedesktop compliant and shut rpmlint warnings
-#find -name '*desktop.in*' -exec sed -ri 's/(LXQt;)/X-\1/' {} +
+%autosetup
+sed -i '/^Categories/s/\(LXQt\;\)/X-\1/' config/lxqt-config-powermanagement.desktop.in
 
 %build
-%cmake  -DPULL_TRANSLATIONS=No
+%cmake_qt6
+%{qt6_build}
 
 %install
-%cmake_install
+%{qt6_install}
 %fdupes -s %{buildroot}%{_datadir}
 
-%find_lang %{name} --with-qt
+%find_lang %{name} --with-qt --all-name
 
 %files
 %license LICENSE
-%doc AUTHORS README.md
-%dir %{_datadir}/icons/hicolor/scalable
-%{_datadir}/icons/hicolor/scalable/devices
-%{_bindir}/lxqt*
-%{_datadir}/applications/*.desktop
-%{_datadir}/icons/hicolor/scalable/devices/*.svg
-%config %{_sysconfdir}/xdg/autostart/lxqt-powermanagement.desktop
+%doc AUTHORS CHANGELOG README.md
+%{_bindir}/%{name}
+%{_bindir}/lxqt-config-powermanagement
+%{_datadir}/applications/lxqt-config-powermanagement.desktop
+%{_datadir}/icons/hicolor/*/devices/*.svg
+%config %{_sysconfdir}/xdg/autostart/%{name}.desktop
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/lxqt
 %dir %{_datadir}/lxqt/translations
-%{_datadir}/lxqt/translations/lxqt-powermanagement
-%{_datadir}/lxqt/translations/lxqt-config-powermanagement
+%dir %{_datadir}/lxqt/translations/lxqt-config-powermanagement
+%dir %{_datadir}/lxqt/translations/%{name}
 
 %changelog
