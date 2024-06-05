@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 18 19:14:45 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 2.0.0:
+  * Ported to Qt6
+  * Improved the UI of monitor settings
+  * Corrected tab orders of config dialogs
+- Specfile cleanup and macro refactoring/updating
+
+-------------------------------------------------------------------
 Mon Jan  1 07:36:32 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Added %dir declarations for icon directories to clear buildfail
