@@ -260,4 +260,23 @@
   - Remove unicode literal</comment>
     <requestid>1130499</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4b9ca5535f2cc9e6c74d47c63dd910fb</srcmd5>
+    <version>6.0.0</version>
+    <time>1717602120</time>
+    <user>anag+factory</user>
+    <comment>- update to version 6.0.0
+  - Bump hacking
+  - Migrate back to Launchpad
+  - Remove old excludes
+  - Update python classifier in setup.cfg
+  - Replace pytz
+  - coveragerc: Remove non-existent path
+
+- update to version 5.6.1
+  - Fixed typo in the release notes
+  - Use constraints for docs job
+  - Fix functional tests</comment>
+    <requestid>1178605</requestid>
+  </revision>
 </revisionlist>

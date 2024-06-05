@@ -1,12 +1,12 @@
 <services>
-  <service mode="disabled" name="renderspec">
+  <service mode="manual" name="renderspec">
     <param name="input-template">https://opendev.org/openstack/rpm-packaging/raw/master/openstack/python-barbicanclient/python-barbicanclient.spec.j2</param>
     <param name="output-name">python-barbicanclient.spec</param>
     <param name="requirements">https://opendev.org/openstack/python-barbicanclient/raw/branch/master/requirements.txt</param>
     <param name="changelog-email">cloud-devel@suse.de</param>
     <param name="changelog-provider">gh,openstack,python-barbicanclient</param>
   </service>
-  <service mode="disabled" name="download_files">
+  <service mode="manual" name="download_files">
   </service>
-  <service name="format_spec_file" mode="disabled"/>
+  <service name="format_spec_file" mode="manual"/>
 </services>

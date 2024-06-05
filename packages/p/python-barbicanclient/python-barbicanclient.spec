@@ -1,7 +1,7 @@
 #
 # spec file for package python-barbicanclient
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-barbicanclient
-Version:        5.5.0
+Version:        6.0.0
 Release:        0
 Summary:        Client for the Barbican Key Management API
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-barbicanclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-barbicanclient/python-barbicanclient-5.5.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-barbicanclient/python-barbicanclient-6.0.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-cliff >= 2.8.0
 BuildRequires:  python3-keystoneauth1 >= 5.1.1
@@ -39,11 +39,11 @@ BuildRequires:  python3-testtools
 BuildArch:      noarch
 %if 0%{?suse_version}
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %else
 # on RDO, update-alternatives is in chkconfig
 Requires(post): chkconfig
-Requires(postun):chkconfig
+Requires(postun): chkconfig
 %endif
 
 %description

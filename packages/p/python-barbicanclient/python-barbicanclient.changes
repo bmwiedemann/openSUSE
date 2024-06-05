@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun  4 20:04:03 UTC 2024 - cloud-devel@suse.de
+
+- update to version 6.0.0
+  - Bump hacking
+  - Migrate back to Launchpad
+  - Remove old excludes
+  - Update python classifier in setup.cfg
+  - Replace pytz
+  - coveragerc: Remove non-existent path
+
+-------------------------------------------------------------------
+Wed Jan 10 16:42:36 UTC 2024 - cloud-devel@suse.de
+
+- update to version 5.6.1
+  - Fixed typo in the release notes
+  - Use constraints for docs job
+  - Fix functional tests
+
+-------------------------------------------------------------------
 Tue Mar  7 06:53:48 UTC 2023 - cloud-devel@suse.de
 
 - update to version 5.5.0
