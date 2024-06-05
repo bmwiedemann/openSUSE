@@ -17,59 +17,62 @@
 
 
 Name:           lxqt-archiver
-Version:        0.9.1
+Version:        1.0.0
 Release:        0
 Summary:        LXQt File Archiver
 License:        GPL-2.0-or-later
 Group:          System/GUI/LXQt
-URL:            http://www.lxqt.org
-Source0:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+URL:            https://github.com/lxqt/lxqt-archiver
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-BuildRequires:  cmake >= 3.1.0
-BuildRequires:  libexif-devel
-BuildRequires:  libqt5-linguist-devel
-BuildRequires:  lxqt-build-tools-devel >= 0.13.0
+BuildRequires:  cmake >= 3.18.0
+BuildRequires:  gcc-c++
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5UiTools)
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.15.0
-BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(fm-qt6)
+BuildRequires:  cmake(lxqt2-build-tools)
 BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libfm-qt) >= 1.3.0
+BuildRequires:  pkgconfig(libexif)
+BuildRequires:  pkgconfig(libmenu-cache)
+Recommends:     %{name}-lang = %{version}-%{release}
 Requires:       bsdtar
 Requires(post): desktop-file-utils
 Requires(pre):  desktop-file-utils
 
 %description
-LXQt file archiver.
+A simple & lightweight Qt file archiver. The core I/O functions are ported
+from Engrampa (a Gnome File Roller fork). This is only a front-end (a
+graphical interface) to archiving programs like tar and zip.
 
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 
 %build
-%cmake
+%cmake_qt6
+%{qt6_build}
 
 %install
-%cmake_install
+%{qt6_install}
 
 %find_lang %{name} --with-qt
 
 %files
-%license LICENSE
 %doc AUTHORS CHANGELOG README.md
-%{_bindir}/lxqt-archiver
-%{_datadir}/applications/lxqt-archiver.desktop
-%dir %{_datadir}/icons/hicolor/
-%dir %{_datadir}/icons/hicolor/scalable/
-%dir %{_datadir}/icons/hicolor/scalable/apps/
-%{_datadir}/icons/hicolor/scalable/apps/lxqt-archiver.svg
+%{_bindir}/%{name}
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/*/apps/%{name}.??g
+%license LICENSE
 
 %files lang -f %{name}.lang
-%dir %{_datadir}/lxqt-archiver/
-%dir %{_datadir}/lxqt-archiver/translations/
-%{_datadir}/lxqt-archiver/translations/*.qm
+%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/translations
+%if 0%{?sle_version}
+%{_datadir}/%{name}/translations/%{name}_???.qm
+%endif
 
 %changelog
