@@ -279,4 +279,17 @@ Many of the files in the rules/ subdirectory are GPL-2.0 licensed (forwarded req
   + apache2-mod_security2-gcc14.patch (forwarded request 1172451 from pgajdos)</comment>
     <requestid>1173611</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>859de1a9db8b322838c4416751432a2a</srcmd5>
+    <version>2.9.7</version>
+    <time>1717601986</time>
+    <user>anag+factory</user>
+    <comment>- %autopatch instead of %patchN
+- modified patches
+  % apache2-mod_security2-no_rpath.diff (refreshed)
+
+- Fix patch application syntax: Use %patch -P N instead of
+  deprecated %patchN.</comment>
+    <requestid>1178493</requestid>
+  </revision>
 </revisionlist>

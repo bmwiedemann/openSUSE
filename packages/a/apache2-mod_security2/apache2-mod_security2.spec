@@ -66,11 +66,7 @@ applications from known and unknown attacks.
 %setup -q -n %{tarballname}
 %setup -q -D -T -a 1 -n %{tarballname}
 mv -v SpiderLabs* rules
-%patch -P 0
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 3 -p1
-%patch4 -p1
+%autopatch -p1
 
 %build
 aclocal

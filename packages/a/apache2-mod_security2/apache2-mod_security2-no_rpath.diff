@@ -1,7 +1,7 @@
 Index: apache2/Makefile.am
 ===================================================================
---- apache2/Makefile.am.orig
-+++ apache2/Makefile.am
+--- a/apache2/Makefile.am.orig
++++ b/apache2/Makefile.am
 @@ -118,7 +118,7 @@ mod_security2_la_LDFLAGS = -module -avoi
  endif
  
@@ -13,8 +13,8 @@ Index: apache2/Makefile.am
      @APXS_LDFLAGS@ \
 Index: apache2/Makefile.in
 ===================================================================
---- apache2/Makefile.in.orig
-+++ apache2/Makefile.in
+--- a/apache2/Makefile.in.orig
++++ b/apache2/Makefile.in
 @@ -691,7 +691,7 @@ libinjection/mod_security2_la-libinjecti
  	libinjection/$(DEPDIR)/$(am__dirstamp)
  
@@ -26,8 +26,8 @@ Index: apache2/Makefile.in
  	-rm -f *.$(OBJEXT)
 Index: build/libtool.m4
 ===================================================================
---- build/libtool.m4.orig
-+++ build/libtool.m4
+--- a/build/libtool.m4.orig
++++ b/build/libtool.m4
 @@ -5053,7 +5053,7 @@ dnl Note also adjust exclude_expsyms for
      # are reset later if shared libraries are not supported. Putting them
      # here allows them to be overridden if necessary.

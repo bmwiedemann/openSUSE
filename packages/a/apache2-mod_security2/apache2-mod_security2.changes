@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun  4 12:14:51 UTC 2024 - pgajdos@suse.com
+
+- %autopatch instead of %patchN
+- modified patches
+  % apache2-mod_security2-no_rpath.diff (refreshed)
+
+-------------------------------------------------------------------
+Tue Jun  4 11:03:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix patch application syntax: Use %patch -P N instead of
+  deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue May  7 13:16:44 UTC 2024 - pgajdos@suse.com
 
 - added patches
