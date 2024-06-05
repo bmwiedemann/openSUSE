@@ -55,4 +55,12 @@
     <comment>- Update to release 3.16</comment>
     <requestid>954070</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>d8cc1123fdb6e6d19474613078ab66b4</srcmd5>
+    <version>3.16.0</version>
+    <time>1717601980</time>
+    <user>anag+factory</user>
+    <comment>- Add 0001-build-fix-build-failure-with-ICU-75.patch</comment>
+    <requestid>1178480</requestid>
+  </revision>
 </revisionlist>

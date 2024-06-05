@@ -1,7 +1,7 @@
 #
 # spec file for package hfst
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,9 @@ Group:          Development/Tools/Other
 URL:            https://hfst.github.io/
 
 Source:         https://github.com/hfst/hfst/archive/refs/tags/v%version.tar.gz
-Patch1:         hfst-nodate.diff
-Patch2:         hfst-sse.diff
+Patch1:         0001-build-fix-build-failure-with-ICU-75.patch
+Patch2:         hfst-nodate.diff
+Patch3:         hfst-sse.diff
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -81,6 +82,7 @@ want to make use of the HFST library.
 
 %build
 autoreconf -fiv
+export CXXFLAGS="%optflags -std=c++17"
 %configure --disable-static --with-readline \
 	--enable-all-tools --includedir="%_includedir/%name" \
 	--with-foma-upstream

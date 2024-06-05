@@ -1,0 +1,243 @@
+From 6b2fd057b6efe178d3501b4dcc9fe1fde9a206bd Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Tue, 4 Jun 2024 11:20:48 +0200
+Subject: [PATCH] build: fix build failure with ICU 75
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+References: https://github.com/hfst/hfst/pull/579
+
+ICU 75 needs C++17. Knowing that, I did:
+
+```
+./configure CXXFLAGS=-std=c++17 && make
+```
+
+but, configure.ac erroneously overrides this with c++14:
+
+```
+libtool: compile:  g++ -DHAVE_CONFIG_H -I. -I../../..
+-I../../../libhfst/src -I../../../libhfst/src -I../../../back-ends
+-I/usr/include -I../../../back-ends/openfst/src/include -Wno-deprecated -g -O2
+-Wall -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3 -fstack-protector-strong
+-funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection
+-Werror=return-type -flto=auto -g -std=c++17 -std=c++14 -c
+ConvertFomaTransducer.cc  -fPIC -DPIC -o .libs/ConvertFomaTransducer.o
+```
+
+Stop overriding user-provided CXXFLAGS as per automake.info §3.6
+"Variables reserved for the user" and move things over to my_CXXFLAGS
+and into AM_CXXFLAGS.
+---
+ back-ends/foma/Makefile.am               |    1 +
+ back-ends/foma/cpp-version/Makefile.am   |    1 +
+ back-ends/openfst/src/lib/Makefile.am    |    1 +
+ back-ends/openfstwin/src/lib/Makefile.am |    1 +
+ back-ends/sfst/Makefile.am               |    1 +
+ configure.ac                             |   10 ++++++----
+ libhfst/src/Makefile.am                  |    2 +-
+ libhfst/src/implementations/Makefile.am  |    2 +-
+ libhfst/src/parsers/Makefile.am          |    1 +
+ test/libhfst/Makefile.am                 |    2 +-
+ tools/src/Makefile.am                    |    2 +-
+ tools/src/hfst-proc/Makefile.am          |    1 +
+ tools/src/hfst-tagger/src/Makefile.am    |    2 +-
+ tools/src/hfst-twolc/src/Makefile.am     |    2 +-
+ tools/src/parsers/Makefile.am            |    1 +
+ 15 files changed, 20 insertions(+), 10 deletions(-)
+
+Index: hfst-3.16.0/back-ends/foma/Makefile.am
+===================================================================
+--- hfst-3.16.0.orig/back-ends/foma/Makefile.am
++++ hfst-3.16.0/back-ends/foma/Makefile.am
+@@ -2,6 +2,7 @@ AUTOMAKE_OPTIONS=std-options
+ 
+ .NOTPARALLEL:
+ 
++AM_CXXFLAGS = ${my_CXXFLAGS}
+ AM_CPPFLAGS= -Wno-deprecated -std=c99 -D_XOPEN_SOURCE=500
+ 
+ if WANT_MINGW
+Index: hfst-3.16.0/back-ends/foma/cpp-version/Makefile.am
+===================================================================
+--- hfst-3.16.0.orig/back-ends/foma/cpp-version/Makefile.am
++++ hfst-3.16.0/back-ends/foma/cpp-version/Makefile.am
+@@ -2,6 +2,7 @@ AUTOMAKE_OPTIONS=std-options
+ 
+ .NOTPARALLEL:
+ 
++AM_CXXFLAGS = ${my_CXXFLAGS}
+ AM_CPPFLAGS= -Wno-deprecated -D_XOPEN_SOURCE=500 -fpermissive -std=c++11
+ 
+ if WANT_MINGW
+Index: hfst-3.16.0/back-ends/openfst/src/lib/Makefile.am
+===================================================================
+--- hfst-3.16.0.orig/back-ends/openfst/src/lib/Makefile.am
++++ hfst-3.16.0/back-ends/openfst/src/lib/Makefile.am
+@@ -10,6 +10,7 @@
+ # information.
+ 
+ AUTOMAKE_OPTIONS=subdir-objects
++AM_CXXFLAGS = ${my_CXXFLAGS}
+ AM_CPPFLAGS = -I $(srcdir)/../include $(ICU_CPPFLAGS)
+ noinst_LTLIBRARIES = libfst.la
+ libfst_la_SOURCES = compat.cc flags.cc fst.cc properties.cc \
+Index: hfst-3.16.0/back-ends/openfstwin/src/lib/Makefile.am
+===================================================================
+--- hfst-3.16.0.orig/back-ends/openfstwin/src/lib/Makefile.am
++++ hfst-3.16.0/back-ends/openfstwin/src/lib/Makefile.am
+@@ -16,6 +16,7 @@
+ ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ AUTOMAKE_OPTIONS=subdir-objects
++AM_CXXFLAGS = ${my_CXXFLAGS}
+ AM_CPPFLAGS = -I $(srcdir)/../include -I $(srcdir)/../../../dlfcn \
+                 $(ICU_CPPFLAGS) -DMSC_VER -DOPENFSTEXPORT
+ 
+Index: hfst-3.16.0/back-ends/sfst/Makefile.am
+===================================================================
+--- hfst-3.16.0.orig/back-ends/sfst/Makefile.am
++++ hfst-3.16.0/back-ends/sfst/Makefile.am
+@@ -1,3 +1,4 @@
++AM_CXXFLAGS = ${my_CXXFLAGS}
+ AM_CPPFLAGS=-Wno-deprecated
+ 
+ if WANT_SFST
+Index: hfst-3.16.0/configure.ac
+===================================================================
+--- hfst-3.16.0.orig/configure.ac
++++ hfst-3.16.0/configure.ac
+@@ -47,6 +47,8 @@ AC_SUBST([LIBHFST_MINOR],     [16])
+ AC_SUBST([LIBHFST_EXTENSION], [0])
+ AC_SUBST([LIBHFST_VERSION],   [3.16.0])
+ AC_SUBST([LIBHFST_NAME],      [hfst])
++my_CXXFLAGS=""
++AC_SUBST([my_CXXFLAGS])
+ 
+ # long version = version vector cast in base 10000, for automatic comparisons
+ # e.g.: 3.3.2 = 0003 0000 0000 + 0003 0000 + 0002
+@@ -658,12 +660,12 @@ AC_CHECK_HEADERS([limits.h stdlib.h stri
+ AC_LANG_PUSH([C++])
+ 
+ # If we're using upstream OpenFST then use C++17, otherwise limit to C++14
+-AM_COND_IF([WANT_OPENFST_UPSTREAM], [CXXFLAGS="$CXXFLAGS -std=c++17"], [CXXFLAGS="$CXXFLAGS -std=c++14"])
++AM_COND_IF([WANT_OPENFST_UPSTREAM], [my_CXXFLAGS="-std=c++17"], [my_CXXFLAGS="-std=c++14"])
+ 
+ # On 32bit x86, we need to use SSE for precise floating point arithmetics in OpenFST
+-AX_CHECK_COMPILE_FLAG([-msse], [CXXFLAGS="$CXXFLAGS -msse"], [])
+-AX_CHECK_COMPILE_FLAG([-msse2], [CXXFLAGS="$CXXFLAGS -msse2"], [])
+-AX_CHECK_COMPILE_FLAG([-mfpmath=sse], [CXXFLAGS="$CXXFLAGS -mfpmath=sse"], [])
++AX_CHECK_COMPILE_FLAG([-msse], [my_CXXFLAGS="$my_CXXFLAGS -msse"], [])
++AX_CHECK_COMPILE_FLAG([-msse2], [my_CXXFLAGS="$my_CXXFLAGS -msse2"], [])
++AX_CHECK_COMPILE_FLAG([-mfpmath=sse], [my_CXXFLAGS="$my_CXXFLAGS -mfpmath=sse"], [])
+ 
+ AC_CHECK_HEADERS([ext/slist])
+ 
+Index: hfst-3.16.0/libhfst/src/Makefile.am
+===================================================================
+--- hfst-3.16.0.orig/libhfst/src/Makefile.am
++++ hfst-3.16.0/libhfst/src/Makefile.am
+@@ -13,7 +13,7 @@ SUBDIRS=implementations parsers
+ AUTOMAKE_OPTIONS=subdir-objects
+ lib_LTLIBRARIES = libhfst.la
+ 
+-AM_CXXFLAGS=-Wno-deprecated -Wall -Wextra -Wno-unused-parameter -Wno-sign-compare -g
++AM_CXXFLAGS = ${my_CXXFLAGS} -Wno-deprecated -Wall -Wextra -Wno-unused-parameter -Wno-sign-compare -g
+ AM_CPPFLAGS = -I${top_srcdir}/libhfst/src
+ 
+ # HFST bridge specific stuff
+Index: hfst-3.16.0/libhfst/src/implementations/Makefile.am
+===================================================================
+--- hfst-3.16.0.orig/libhfst/src/implementations/Makefile.am
++++ hfst-3.16.0/libhfst/src/implementations/Makefile.am
+@@ -25,7 +25,7 @@ IMPLEMENTATION_SRCS=ConvertTransducerFor
+                     compose_intersect/ComposeIntersectFst.cc \
+                     compose_intersect/ComposeIntersectUtilities.cc
+ 
+-AM_CXXFLAGS=-Wno-deprecated -g
++AM_CXXFLAGS = ${my_CXXFLAGS} -Wno-deprecated -g
+ 
+ AM_CPPFLAGS = -I${top_srcdir}/libhfst/src -I${top_srcdir}/back-ends ${ICU_CPPFLAGS}
+ if ! WANT_FOMA_UPSTREAM
+Index: hfst-3.16.0/libhfst/src/parsers/Makefile.am
+===================================================================
+--- hfst-3.16.0.orig/libhfst/src/parsers/Makefile.am
++++ hfst-3.16.0/libhfst/src/parsers/Makefile.am
+@@ -9,6 +9,7 @@
+ # See the file COPYING included with this distribution for more
+ # information.
+ 
++AM_CXXFLAGS = ${my_CXXFLAGS}
+ noinst_LTLIBRARIES=libhfstparsers.la
+ 
+ XRE_SRCS=xre_lex.ll xre_parse.yy xre_utils.cc XreCompiler.cc
+Index: hfst-3.16.0/test/libhfst/Makefile.am
+===================================================================
+--- hfst-3.16.0.orig/test/libhfst/Makefile.am
++++ hfst-3.16.0/test/libhfst/Makefile.am
+@@ -15,7 +15,7 @@ else
+ endif
+ endif
+ 
+-AM_CXXFLAGS = -Wno-deprecated
++AM_CXXFLAGS = ${my_CXXFLAGS} -Wno-deprecated
+ 
+ # programs to build before unit etc. testing
+ check_PROGRAMS=test_rules test_constructors test_streams test_tokenizer \
+Index: hfst-3.16.0/tools/src/Makefile.am
+===================================================================
+--- hfst-3.16.0.orig/tools/src/Makefile.am
++++ hfst-3.16.0/tools/src/Makefile.am
+@@ -19,7 +19,7 @@ SUBDIRS=hfst-proc hfst-twolc hfst-tagger
+ AUTOMAKE_OPTIONS=std-options subdir-objects
+ LDADD = $(top_builddir)/libhfst/src/libhfst.la $(ICU_LIBS)
+ AM_CPPFLAGS = -I${top_srcdir}/libhfst/src -I${top_srcdir}/libhfst/src/parsers -I${top_srcdir}/tools/src/parsers -Wno-sign-compare ${GLIB_CPPFLAGS} ${ICU_CPPFLAGS}
+-AM_CXXFLAGS = -Wno-deprecated -Wno-sign-compare
++AM_CXXFLAGS = ${my_CXXFLAGS} -Wno-deprecated -Wno-sign-compare
+ 
+ # sort alphabetically:
+ if WANT_AFFIX_GUESSIFY
+Index: hfst-3.16.0/tools/src/hfst-proc/Makefile.am
+===================================================================
+--- hfst-3.16.0.orig/tools/src/hfst-proc/Makefile.am
++++ hfst-3.16.0/tools/src/hfst-proc/Makefile.am
+@@ -15,6 +15,7 @@
+ ## You should have received a copy of the GNU General Public License
+ ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
++AM_CXXFLAGS = ${my_CXXFLAGS}
+ AM_CPPFLAGS = -I${top_srcdir}/libhfst/src -I${top_srcdir}/lib -I${top_builddir}/lib $(GLIB_CPPFLAGS) $(ICU_CPPFLAGS)
+ 
+ if WANT_PROC
+Index: hfst-3.16.0/tools/src/hfst-tagger/src/Makefile.am
+===================================================================
+--- hfst-3.16.0.orig/tools/src/hfst-tagger/src/Makefile.am
++++ hfst-3.16.0/tools/src/hfst-tagger/src/Makefile.am
+@@ -1,4 +1,4 @@
+-AM_CXXFLAGS= -O3 -g -Wall -Wextra -Wcast-qual -Wno-deprecated -Wfatal-errors -Wno-sign-compare\
++AM_CXXFLAGS= ${my_CXXFLAGS} -O3 -g -Wall -Wextra -Wcast-qual -Wno-deprecated -Wfatal-errors -Wno-sign-compare\
+              -I$(top_builddir)/tools/src/inc -I$(top_builddir)/tools/src
+ 
+ if WANT_TRAIN_TAGGER
+Index: hfst-3.16.0/tools/src/hfst-twolc/src/Makefile.am
+===================================================================
+--- hfst-3.16.0.orig/tools/src/hfst-twolc/src/Makefile.am
++++ hfst-3.16.0/tools/src/hfst-twolc/src/Makefile.am
+@@ -1,4 +1,4 @@
+-AM_CXXFLAGS= -Wcast-qual -Wno-deprecated -Wfatal-errors
++AM_CXXFLAGS = ${my_CXXFLAGS} -Wcast-qual -Wno-deprecated -Wfatal-errors
+ 
+ if WANT_TWOLC_SCRIPT
+   bin_PROGRAMS=hfst-twolc htwolcpre1 htwolcpre2 htwolcpre3
+Index: hfst-3.16.0/tools/src/parsers/Makefile.am
+===================================================================
+--- hfst-3.16.0.orig/tools/src/parsers/Makefile.am
++++ hfst-3.16.0/tools/src/parsers/Makefile.am
+@@ -19,6 +19,7 @@ SUBDIRS=test
+ 
+ hfst_xfst_SOURCES = hfst-xfst.cc $(HFST_COMMON_SRC)
+ 
++AM_CXXFLAGS = ${my_CXXFLAGS}
+ AM_CPPFLAGS = -I${top_srcdir}/libhfst/src -I${top_srcdir}/libhfst/src/parsers -I${top_srcdir}/tools/src $(GLIB_CPPFLAGS) $(ICU_CPPFLAGS) -Wno-deprecated
+ 
+ if WANT_XFST
