@@ -22,7 +22,7 @@
 %bcond_without test
 %endif
 Name:           ocrs
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        A modern OCR engine written in Rust
 License:        Apache-2.0 AND MIT

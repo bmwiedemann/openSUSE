@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun  5 07:53:14 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.8.0
+  * Updated rten to v0.10.0: This improves performance when
+    recognizing long lines of text and improves efficiency by
+    setting the number of threads to match the number of physical
+    cores.
+  * Errors that occur when running the text recognition model are
+    now propagated to the caller instead of causing a panic.
+
+-------------------------------------------------------------------
 Sun May 19 03:49:44 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.7.0
