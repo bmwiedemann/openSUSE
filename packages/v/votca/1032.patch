@@ -1,0 +1,35 @@
+From 9a29a3a82ea23c5159d43b0f25218601e12085b4 Mon Sep 17 00:00:00 2001
+From: Michael Cho <michael@michaelcho.dev>
+Date: Thu, 25 Apr 2024 14:14:54 -0400
+Subject: [PATCH] Fix build with Boost 1.85.0
+
+Signed-off-by: Michael Cho <michael@michaelcho.dev>
+---
+ csg/src/libcsg/modules/io/pdbreader.cc    | 1 -
+ xtp/src/libxtp/calculators/kmcmultiple.cc | 1 +
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/csg/src/libcsg/modules/io/pdbreader.cc b/csg/src/libcsg/modules/io/pdbreader.cc
+index 14b259ee8b..3686806e9d 100644
+--- a/csg/src/libcsg/modules/io/pdbreader.cc
++++ b/csg/src/libcsg/modules/io/pdbreader.cc
+@@ -22,7 +22,6 @@
+ 
+ // Third party includes
+ #include <boost/algorithm/string.hpp>
+-#include <boost/filesystem/convenience.hpp>
+ #include <boost/lexical_cast.hpp>
+ 
+ // VOTCA includes
+diff --git a/xtp/src/libxtp/calculators/kmcmultiple.cc b/xtp/src/libxtp/calculators/kmcmultiple.cc
+index 1627950277..fa515e78eb 100644
+--- a/xtp/src/libxtp/calculators/kmcmultiple.cc
++++ b/xtp/src/libxtp/calculators/kmcmultiple.cc
+@@ -20,6 +20,7 @@
+ 
+ // Third party includes
+ #include <boost/format.hpp>
++#include <boost/numeric/conversion/cast.hpp>
+ 
+ // VOTCA includes
+ #include <votca/tools/constants.h>

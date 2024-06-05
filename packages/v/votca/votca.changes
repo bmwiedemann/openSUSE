@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  3 21:40:05 UTC 2024 - Christoph Junghans <junghans@votca.org>
+
+- Add upsteam patch, 1032.patch, to fix build with newer boost
+
+-------------------------------------------------------------------
 Wed Jan 31 20:58:32 UTC 2024 - Christoph Junghans <junghans@votca.org>
 
 - Drop python3-espressomd testing dependency, revert once 
