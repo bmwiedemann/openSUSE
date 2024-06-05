@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-desktop-portal-lxqt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,47 +17,51 @@
 
 
 Name:           xdg-desktop-portal-lxqt
-Version:        0.5.0
+Version:        1.0.2
 Release:        0
 Summary:        A backend implementation for xdg-desktop-portal
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://www.lxqt.org
-Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+URL:            https://github.com/lxqt/xdg-desktop-portal-lxqt
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-BuildRequires:  cmake >= 3.1.0
-BuildRequires:  fdupes
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  gcc-c++
-# like libfm-qt this one needs private headers
-BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5WindowSystem) >= 5.78
-BuildRequires:  pkgconfig(Qt5Core) >= 5.15
-BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:  qt6-gui-private-devel
+BuildRequires:  cmake(KF6WindowSystem)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(fm-qt6)
 BuildRequires:  pkgconfig(libexif)
-BuildRequires:  pkgconfig(libfm-qt) >= 1.4.0
-BuildRequires:  pkgconfig(xdg-desktop-portal)
+BuildRequires:  pkgconfig(libmenu-cache)
+Requires:       xdg-desktop-portal
+Supplements:    (xdg-desktop-portal and lxqt-session)
 
 %description
 A backend implementation for xdg-desktop-portal that is using Qt/KF5/libfm-qt.
 functionality needed by nearly all of its components.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-%cmake
+%cmake_qt6
+%{qt6_build}
 
 %install
-%cmake_install
+%{qt6_install}
 
 %files
+%doc README.md
+%{_libexecdir}/%{name}
 %dir %{_datadir}/xdg-desktop-portal
 %dir %{_datadir}/xdg-desktop-portal/portals
-%{_libexecdir}/xdg-desktop-portal-lxqt
-%{_datadir}/applications/org.freedesktop.impl.portal.desktop.lxqt.desktop
-%{_datadir}/dbus-1/services/org.freedesktop.impl.portal.desktop.lxqt.service
 %{_datadir}/xdg-desktop-portal/portals/lxqt.portal
+%{_datadir}/dbus-1/services/org.freedesktop.impl.portal.desktop.lxqt.service
+%{_datadir}/applications/org.freedesktop.impl.portal.desktop.lxqt.desktop
+%license LICENSE
 
 %changelog

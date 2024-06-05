@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 10 17:38:03 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 1.0.2:
+  * Fixed the initial path, which started to get broken with apps like Firefox recently
+  * Removed the redundant qt5x11extra dependency.
+  * Support current_folder when opening files.
+  * Transfer ownership of options widget.
+  * Convert mimetype filters to name filters.
+  * Ported to Qt6.
+
+-------------------------------------------------------------------
 Sun Nov  5 14:28:42 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.0:
