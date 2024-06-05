@@ -1,0 +1,12 @@
+diff -ur lazr.restfulclient-0.14.5/src/lazr/restfulclient/authorize/oauth.py lazr.restfulclient-0.14.5_fix/src/lazr/restfulclient/authorize/oauth.py
+--- lazr.restfulclient-0.14.5/src/lazr/restfulclient/authorize/oauth.py	2021-11-17 11:38:41.000000000 +0100
++++ lazr.restfulclient-0.14.5_fix/src/lazr/restfulclient/authorize/oauth.py	2024-04-23 18:26:30.270645673 +0200
+@@ -191,7 +191,7 @@
+         """
+         # Attempt to load the access token from the file.
+         parser = SafeConfigParser()
+-        reader = getattr(parser, "read_file", parser.readfp)
++        reader = getattr(parser, "read_file", parser.read_file)
+         reader(readable_file)
+         # Check the version number and extract the access token and
+         # secret.  Then convert these to the appropriate instances.

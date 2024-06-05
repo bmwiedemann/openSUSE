@@ -1,0 +1,6 @@
+<package name="python-lazr.restfulclient" project="openSUSE:Factory">
+  <title></title>
+  <description>Programmable client library to provide added functionality on top of wadllib</description>
+  <devel project="devel:languages:python" package="python-lazr.restfulclient"/>
+  <url>https://launchpad.net/lazr.restfulclient</url>
+</package>
