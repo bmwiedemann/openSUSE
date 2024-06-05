@@ -17,13 +17,13 @@
 
 
 Name:           python-swiftclient
-Version:        4.4.0
+Version:        4.6.0
 Release:        0
 Summary:        OpenStack Object Storage API Client Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-swiftclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-swiftclient/python-swiftclient-4.4.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-swiftclient/python-swiftclient-4.6.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-keystoneclient
 BuildRequires:  python3-pbr
@@ -37,7 +37,7 @@ swiftclient module), and a command-line script (swift).
 
 %package -n python3-swiftclient
 Summary:        OpenStack Object Storage API Client Library
-Requires:       python3-requests >= 1.1.0
+Requires:       python3-requests >= 2.4.0
 %if 0%{?suse_version}
 Obsoletes:      python2-swiftclient < 3.9.0
 %endif
@@ -61,7 +61,7 @@ swiftclient module), and a command-line script (swift).
 This package contains documentation files for %{name}.
 
 %prep
-%autosetup -p1 -n python-swiftclient-4.4.0
+%autosetup -p1 -n python-swiftclient-4.6.0
 %py_req_cleanup
 
 %build

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jun  4 20:08:29 UTC 2024 - cloud-devel@suse.de
+
+- update to version 4.6.0
+  - make setup dependencies discoverable
+  - tests: Fix call assertion
+  - Fix swiftclient output regression
+  - Add transaction id to errors
+  - reno: Update master for unmaintained/zed
+  - reno: Update master for unmaintained/victoria
+  - CI: constrain deps for tests
+  - Mark py312 job as voting and update classifiers
+  - Update master for stable/2023.2
+  - CI: skip func tests on irrelevant changes
+  - CI: add py39 and py310 to experimental pipeline
+  - Bring back (experimental) py38 job
+  - tests: Skip keystoneauth tests if not available
+  - Update master for stable/2024.1
+  - shell: Print friendly account byte quotas
+  - Authors / changelog for 4.5.0
+  - reno: Update master for unmaintained/yoga
+  - lint: Up-rev hacking
+  - CI: Fix py36 and py37 jobs
+  - Remove duplicate script entry leading to broken wheel build
+  - reno: Update master for unmaintained/xena
+  - reno: Update master for unmaintained/wallaby
+
+-------------------------------------------------------------------
 Sun Jan 14 18:05:51 UTC 2024 - cloud-devel@suse.de
 
 - update to version 4.4.0

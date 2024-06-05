@@ -2,7 +2,7 @@
   <service mode="manual" name="renderspec">
     <param name="input-template">https://opendev.org/openstack/rpm-packaging/raw/master/openstack/python-swiftclient/python-swiftclient.spec.j2</param>
     <param name="output-name">python-swiftclient.spec</param>
-    <param name="requirements">https://opendev.org/openstack/python-swiftclient/raw/branch/stable/xena/requirements.txt</param>
+    <param name="requirements">https://opendev.org/openstack/python-swiftclient/raw/master/requirements.txt</param>
     <param name="changelog-email">cloud-devel@suse.de</param>
     <param name="changelog-provider">gh,openstack,python-swiftclient</param>
   </service>
