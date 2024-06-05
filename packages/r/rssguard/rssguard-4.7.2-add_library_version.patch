@@ -1,7 +1,7 @@
-Index: rssguard-4.7.0/localization/CMakeLists.txt
+Index: rssguard-4.7.2/localization/CMakeLists.txt
 ===================================================================
---- rssguard-4.7.0.orig/localization/CMakeLists.txt
-+++ rssguard-4.7.0/localization/CMakeLists.txt
+--- rssguard-4.7.2.orig/localization/CMakeLists.txt
++++ rssguard-4.7.2/localization/CMakeLists.txt
 @@ -8,7 +8,7 @@ if(UPDATE_TRANSLATIONS AND BUILD_WITH_QT
      "${CMAKE_SOURCE_DIR}/src/librssguard*/*.h"
      "${CMAKE_SOURCE_DIR}/src/librssguard*/*.ui")
@@ -27,10 +27,10 @@ Index: rssguard-4.7.0/localization/CMakeLists.txt
 -  add_dependencies(rssguard rssguard_lrelease)
 +  add_dependencies(rssguard-${APP_VERSION} rssguard_lrelease)
  endif()
-Index: rssguard-4.7.0/src/librssguard/CMakeLists.txt
+Index: rssguard-4.7.2/src/librssguard/CMakeLists.txt
 ===================================================================
---- rssguard-4.7.0.orig/src/librssguard/CMakeLists.txt
-+++ rssguard-4.7.0/src/librssguard/CMakeLists.txt
+--- rssguard-4.7.2.orig/src/librssguard/CMakeLists.txt
++++ rssguard-4.7.2/src/librssguard/CMakeLists.txt
 @@ -492,11 +492,11 @@ if(WIN32)
    list(APPEND SOURCES "${CMAKE_BINARY_DIR}/rssguard.rc")
  endif()
@@ -43,24 +43,18 @@ Index: rssguard-4.7.0/src/librssguard/CMakeLists.txt
 -  target_compile_definitions(rssguard
 +  target_compile_definitions(rssguard-${APP_VERSION}
      PRIVATE
- 
      FORCE_BUNDLE_ICONS
-@@ -506,12 +506,12 @@ if(FORCE_BUNDLE_ICONS)
+   )
+@@ -504,7 +504,7 @@ if(FORCE_BUNDLE_ICONS)
+   message(STATUS "Forcibly bundling icon themes.")
  endif()
- 
- # Add specific definitions.
--target_compile_definitions(rssguard
-+target_compile_definitions(rssguard-${APP_VERSION}
-   PRIVATE
-   RSSGUARD_DLLSPEC=Q_DECL_EXPORT
- )
  
 -target_include_directories(rssguard
 +target_include_directories(rssguard-${APP_VERSION}
    PUBLIC
    ${CMAKE_CURRENT_SOURCE_DIR}
    ${CMAKE_CURRENT_SOURCE_DIR}/gui
-@@ -527,24 +527,24 @@ target_include_directories(rssguard
+@@ -520,24 +520,24 @@ target_include_directories(rssguard
  )
  
  if(SQLite3_FOUND)
@@ -89,7 +83,7 @@ Index: rssguard-4.7.0/src/librssguard/CMakeLists.txt
    Qt${QT_VERSION_MAJOR}::Core
    Qt${QT_VERSION_MAJOR}::Gui
    Qt${QT_VERSION_MAJOR}::Network
-@@ -556,93 +556,93 @@ target_link_libraries(rssguard PUBLIC
+@@ -549,94 +549,94 @@ target_link_libraries(rssguard PUBLIC
  )
  
  if(QT_VERSION_MAJOR EQUAL 6)
@@ -187,12 +181,7 @@ Index: rssguard-4.7.0/src/librssguard/CMakeLists.txt
  elseif(UNIX AND NOT APPLE AND NOT ANDROID)
    include (GNUInstallDirs)
 -  install(TARGETS rssguard DESTINATION ${CMAKE_INSTALL_LIBDIR})
--  target_compile_definitions(rssguard
 +  install(TARGETS rssguard-${APP_VERSION} DESTINATION ${CMAKE_INSTALL_LIBDIR})
-+  target_compile_definitions(rssguard-${APP_VERSION}
-     PRIVATE
-     RSSGUARD_LIBDIR="${CMAKE_INSTALL_LIBDIR}"
-   )
    set(HEADERS_FOLDER "${CMAKE_INSTALL_INCLUDEDIR}/librssguard")
  elseif(APPLE)
 -  install(TARGETS rssguard DESTINATION Contents/MacOS)
@@ -200,10 +189,16 @@ Index: rssguard-4.7.0/src/librssguard/CMakeLists.txt
    set(HEADERS_FOLDER "Contents/Resources/Include")
  endif()
  
-Index: rssguard-4.7.0/src/rssguard/CMakeLists.txt
+ # Add specific definitions.
+-target_compile_definitions(rssguard
++target_compile_definitions(rssguard-${APP_VERSION}
+   PRIVATE
+   RSSGUARD_DLLSPEC=Q_DECL_EXPORT
+   RSSGUARD_LIBDIR="${CMAKE_INSTALL_LIBDIR}"
+Index: rssguard-4.7.2/src/rssguard/CMakeLists.txt
 ===================================================================
---- rssguard-4.7.0.orig/src/rssguard/CMakeLists.txt
-+++ rssguard-4.7.0/src/rssguard/CMakeLists.txt
+--- rssguard-4.7.2.orig/src/rssguard/CMakeLists.txt
++++ rssguard-4.7.2/src/rssguard/CMakeLists.txt
 @@ -21,7 +21,7 @@ target_link_libraries(app PUBLIC
    Qt${QT_VERSION_MAJOR}::Core
    Qt${QT_VERSION_MAJOR}::Gui
@@ -213,10 +208,10 @@ Index: rssguard-4.7.0/src/rssguard/CMakeLists.txt
  )
  
  if(QT_VERSION_MAJOR EQUAL 6)
-Index: rssguard-4.7.0/src/cmake_plugins.cmake
+Index: rssguard-4.7.2/src/cmake_plugins.cmake
 ===================================================================
---- rssguard-4.7.0.orig/src/cmake_plugins.cmake
-+++ rssguard-4.7.0/src/cmake_plugins.cmake
+--- rssguard-4.7.2.orig/src/cmake_plugins.cmake
++++ rssguard-4.7.2/src/cmake_plugins.cmake
 @@ -15,7 +15,7 @@ function(prepare_rssguard_plugin plugin_
    add_library(${PLUGIN_TARGET} SHARED ${SOURCES} ${QM_FILES})
  

@@ -16,9 +16,9 @@
 #
 
 
-%define libver  4_7_0
+%define libver  4_7_2
 Name:           rssguard
-Version:        4.7.0
+Version:        4.7.2
 Release:        0
 Summary:        RSS/ATOM/RDF feed reader
 Group:          Productivity/Networking/News/Clients
@@ -26,12 +26,13 @@ License:        AGPL-3.0-or-later AND GPL-3.0-only
 URL:            https://github.com/martinrotter/rssguard
 Source0:        https://github.com/martinrotter/rssguard/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.changes
-# PATCH-FIX-UPSTREAM https://github.com/martinrotter/rssguard/pull/1412 -- Fix plugin loading
-Patch0:         fix_plugin_loading.patch
-# PATCH-FIX-OPENSUSE rssguard-4.7.0-add_library_version.patch aloisio@gmx.com -- add version to shared library
-Patch1:         rssguard-4.7.0-add_library_version.patch
+# PATCH-FIX-OPENSUSE rssguard-4.7.2-add_library_version.patch aloisio@gmx.com -- add version to shared library
+Patch0:         rssguard-4.7.2-add_library_version.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc13-c++
+%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  cmake(Qt6Core) >= 6.3.0
@@ -79,7 +80,16 @@ Shared library for %{name} to be used by external plugins.
 find src/librssguard -name "*.h" -exec chmod -x {} \;
 
 %build
-%cmake -DBUILD_WITH_QT6:BOOL=ON -DENABLE_MEDIAPLAYER_LIBMPV:BOOL=ON -DUSE_SYSTEM_SQLITE:BOOL=ON
+%if 0%{?suse_version} == 1500
+export CXX=g++-13
+%endif
+%cmake -DBUILD_WITH_QT6:BOOL=ON \
+%if 0%{?suse_version} > 1600 || 0%{?sle_version} >= 150600
+    -DENABLE_MEDIAPLAYER_LIBMPV:BOOL=ON \
+%else
+    -DENABLE_MEDIAPLAYER_LIBMPV:BOOL=OFF \
+%endif
+    -DUSE_SYSTEM_SQLITE:BOOL=ON
 %cmake_build
 
 %install
