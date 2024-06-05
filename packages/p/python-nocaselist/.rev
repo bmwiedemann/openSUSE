@@ -72,4 +72,16 @@
   * Fixed safety issues up to 2024-05-04</comment>
     <requestid>1172529</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d71a2fa0f262cca6c2b279b13b7a62b4</srcmd5>
+    <version>2.0.2</version>
+    <time>1717602138</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.2:
+  * support python 3.12
+  * cleanup pip backtracking
+  * Fix content type of pacakge description
+  * use f-streings</comment>
+    <requestid>1178616</requestid>
+  </revision>
 </revisionlist>
