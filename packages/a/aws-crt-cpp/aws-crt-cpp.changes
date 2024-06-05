@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  4 09:36:23 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.26.11
+  * Latest submodules by @waahm7 in (#621)
+- from version 0.26.10
+  * Fix memory leak when UnsubscribePacket is reused by @sfod in (#617)
+  * Fix order of arguments when calling aws_aes_gcm_256_new by @sbiscigl in (#618)
+  * Symmetric cipher state by @sbiscigl in (#619)
+  * AutoTag PR for v0.26.9 by @bretambrose in (#620)
+
+-------------------------------------------------------------------
 Wed May 22 13:52:30 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.26.9
