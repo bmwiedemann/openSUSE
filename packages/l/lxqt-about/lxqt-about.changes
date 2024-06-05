@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 10 19:48:03 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 2.0.0:
+  * Ported to Qt6.
+
+-------------------------------------------------------------------
 Mon Jan  1 07:11:52 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Fixed %dir declarations to clear buildfail
