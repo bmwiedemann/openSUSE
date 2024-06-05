@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-notificationd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,27 @@
 
 
 Name:           lxqt-notificationd
-Version:        1.4.0
+Version:        2.0.1
 Release:        0
 Summary:        LXQt Notification daemon
 License:        LGPL-2.1-or-later
 Group:          System/GUI/LXQt
-URL:            http://www.lxqt.org
-Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+URL:            https://github.com/lxqt/lxqt-notificationd
+Source:         %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-BuildRequires:  cmake >= 3.1.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.13.0
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5WindowSystem) >= 5.36.0
-BuildRequires:  pkgconfig(Qt5UiTools) >= 5.15.0
-BuildRequires:  pkgconfig(Qt5Xdg)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(lxqt) >= %{version}
-Recommends:     %{name}-lang
+BuildRequires:  cmake(KF6WindowSystem)
+BuildRequires:  cmake(LayerShellQt) >= 6.0.0
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(lxqt2-build-tools)
+BuildRequires:  pkgconfig(lxqt) >= 2.0.0
+Recommends:     %{name}-lang = %{version}-%{release}
 
 %description
 The LXQt Notification daemon
@@ -44,22 +45,22 @@ The LXQt Notification daemon
 %lang_package
 
 %prep
-%setup -q
-# Changing LXQt into X-LXQt in desktop files to be freedesktop compliant and shut rpmlint warnings
-#find -name '*desktop.in*' -exec sed -ri 's/(LXQt;)/X-\1/' {} +
+%autosetup
+sed -i '/Categories/s/\(LXQt\)/X-\1/' ./config/lxqt-config-notificationd.desktop.in
 
 %build
-%cmake -DPULL_TRANSLATIONS=No
+%cmake_qt6
+%{qt6_build}
 
 %install
-%cmake_install
+%{qt6_install}
 %fdupes -s %{buildroot}%{_datadir}
 
-%find_lang %{name} --with-qt
+%find_lang %{name} --with-qt --all-name
 
 %files
 %license LICENSE
-%doc AUTHORS README.md
+%doc AUTHORS CHANGELOG README.md
 %{_bindir}/%{name}
 %{_bindir}/lxqt-config-notificationd
 %{_datadir}/applications/lxqt-config-notificationd.desktop
@@ -68,8 +69,7 @@ The LXQt Notification daemon
 %files lang -f %{name}.lang
 %dir %{_datadir}/lxqt
 %dir %{_datadir}/lxqt/translations
-%dir %{_datadir}/lxqt/translations/lxqt-notificationd
-%{_datadir}/lxqt/translations/lxqt-config-notificationd
-%{_datadir}/lxqt/translations/lxqt-notificationd/*
+%dir %{_datadir}/lxqt/translations/lxqt-config-notificationd
+%dir %{_datadir}/lxqt/translations/%{name}
 
 %changelog

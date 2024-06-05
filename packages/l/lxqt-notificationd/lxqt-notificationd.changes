@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May 11 06:42:45 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 2.0.1:
+  * Prevented a random crash on killing the process with Qt ≥ 6.7.
+  * Ported to Qt6.
+  * Added full Wayland support by using layer shell.
+
+-------------------------------------------------------------------
 Sun Nov  5 22:04:07 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 1.4.0:
