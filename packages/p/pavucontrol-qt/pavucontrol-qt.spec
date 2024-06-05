@@ -1,7 +1,7 @@
 #
 # spec file for package pavucontrol-qt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,58 +17,55 @@
 
 
 Name:           pavucontrol-qt
-Version:        1.4.0
+Version:        2.0.0
 Release:        0
-Summary:        Qt port of pavucontrol
+Summary:        A Pulseaudio mixer in Qt
 License:        GPL-2.0-only
 Group:          System/GUI/LXQt
 URL:            https://github.com/lxqt/pavucontrol-qt
-Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-BuildRequires:  cmake >= 3.1.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.13.0
 BuildRequires:  pkgconfig
-BuildRequires:  xdg-user-dirs
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.15
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(libpulse) >= 5.0
-BuildRequires:  pkgconfig(libpulse-mainloop-glib) >= 0.9.16
-BuildRequires:  pkgconfig(lxqt)
-Recommends:     %{name}-lang
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Widgets) >= 6.6.0
+BuildRequires:  cmake(lxqt2-build-tools)
+BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libpulse-mainloop-glib)
+Recommends:     %{name}-lang = %{version}-%{release}
 
 %description
-PulseAudio Volume Control (pavucontrol) is a simple volume control tool
-("mixer") for the PulseAudio sound server. In contrast to classic mixer
-tools this one allows you to control both the volume of hardware devices
-and of each playback stream separately.
+pavucontrol-qt is the Qt port of the volume control pavucontrol for the
+sound server PulseAudio. As such it can be used to adjust all controls
+provided by PulseAudio and ALSA as well as some additional settings.
 
 %lang_package
 
 %prep
-%setup -q
-sed -i '/Name=/s/$/ Qt/' src/%{name}.desktop.in
+%autosetup
 
 %build
-%cmake \
-      -DPULL_TRANSLATIONS=OFF
+%cmake_qt6
+%{qt6_build}
 
 %install
-%cmake_install
+%{qt6_install}
 
 %find_lang %{name} --with-qt
 
 %files
-%license LICENSE
 %doc AUTHORS CHANGELOG README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
+%license LICENSE
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/translations
-%{_datadir}/%{name}/translations/*
+%if 0%{?sle_version}
+%{_datadir}/%{name}/translations/%{name}_???.qm
+%endif
 
 %changelog
