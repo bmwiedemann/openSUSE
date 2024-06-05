@@ -17,16 +17,14 @@
 
 
 Name:           python-glanceclient
-Version:        4.4.1
+Version:        4.6.0
 Release:        0
 Epoch:          0
 Summary:        Python API and CLI for OpenStack Glance
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-glanceclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-glanceclient/python-glanceclient-4.4.1.tar.gz
-# https://review.opendev.org/c/openstack/python-glanceclient/+/917275
-Patch1:         0001-Fix-unit-tests-broken-by-requests-mock-1.12.0.patch
+Source0:        https://files.pythonhosted.org/packages/source/p/python-glanceclient/python-glanceclient-4.6.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable >= 0.7.1
 BuildRequires:  python3-ddt
@@ -84,15 +82,15 @@ glanceclient module), and a command-line script (glance). Each implements
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-glanceclient-4.4.1
+%autosetup -p1 -n python-glanceclient-4.6.0
 %py_req_cleanup
 
 %build
 %py3_build
 
 # generate html docs
-PBR_VERSION=4.4.1 %sphinx_build -b html doc/source doc/build/html
-PBR_VERSION=4.4.1 %sphinx_build -b man doc/source doc/build/man
+PBR_VERSION=4.6.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=4.6.0 %sphinx_build -b man doc/source doc/build/man
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 rm -rf doc/build/man/.{doctrees,buildinfo}

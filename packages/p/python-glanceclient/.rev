@@ -680,4 +680,29 @@ update to version 2.3.0
   - Remove incorrect validation for glance-download import method</comment>
     <requestid>1172149</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>53c0bc794a07f1fa9f21bfe9827f9c4f</srcmd5>
+    <version>4.6.0</version>
+    <time>1717602124</time>
+    <user>anag+factory</user>
+    <comment>- removed 0001-Fix-unit-tests-broken-by-requests-mock-1.12.0.patch
+- update to version 4.6.0
+  - reno: Update master for victoria Unmaintained status
+  - Remove incorrect validation for glance-download import method
+  - Update master for stable/2024.1
+  - reno: Update master for yoga Unmaintained status
+  - Remove unused fallback to simplejson
+  - Fix unit tests broken by requests-mock &gt;= 1.12.0
+  - reno: Update master for unmaintained/zed
+  - Release notes for 4.6.0
+  - Do not leak X-Auth-Token when logging curl requests
+  - Update master for stable/2023.2
+  - reno: Update master for wallaby Unmaintained status
+  - Exclude tests directory from coverage calculation
+  - reno: Update master for xena Unmaintained status
+  - Bump hacking
+  - Update python classifier in setup.cfg
+  - Tests: Fix original_only wrapper</comment>
+    <requestid>1178607</requestid>
+  </revision>
 </revisionlist>

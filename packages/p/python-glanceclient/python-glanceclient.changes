@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jun  4 20:05:19 UTC 2024 - cloud-devel@suse.de
+
+- removed 0001-Fix-unit-tests-broken-by-requests-mock-1.12.0.patch
+- update to version 4.6.0
+  - reno: Update master for victoria Unmaintained status
+  - Remove incorrect validation for glance-download import method
+  - Update master for stable/2024.1
+  - reno: Update master for yoga Unmaintained status
+  - Remove unused fallback to simplejson
+  - Fix unit tests broken by requests-mock >= 1.12.0
+  - reno: Update master for unmaintained/zed
+  - Release notes for 4.6.0
+  - Do not leak X-Auth-Token when logging curl requests
+  - Update master for stable/2023.2
+  - reno: Update master for wallaby Unmaintained status
+  - Exclude tests directory from coverage calculation
+  - reno: Update master for xena Unmaintained status
+  - Bump hacking
+  - Update python classifier in setup.cfg
+  - Tests: Fix original_only wrapper
+
+-------------------------------------------------------------------
 Mon May  6 11:04:35 UTC 2024 - cloud-devel@suse.de
 
 - added 0001-Fix-unit-tests-broken-by-requests-mock-1.12.0.patch
