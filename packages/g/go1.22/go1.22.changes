@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jun  4 18:08:59 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.22.4 (released 2024-06-04) includes security fixes to the
+  archive/zip and net/netip packages, as well as bug fixes to the
+  compiler, the go command, the linker, the runtime, and the os
+  package.
+  Refs boo#1218424 go1.22 release tracking
+  CVE-2024-24789 CVE-2024-24790
+  * go#67554 go#66869 boo#1225973 security: fix CVE-2024-24789 archive/zip: EOCDR comment length handling is inconsistent with other ZIP implementations
+  * go#67682 go#67680 boo#1225974 security: fix CVE-2024-24790 net/netip: unexpected behavior from Is methods for IPv4-mapped IPv6 addresses
+  * go#67188 runtime/metrics: /memory/classes/heap/unused:bytes spikes
+  * go#67212 cmd/compile: SIGBUS unaligned access on mips64 via qemu-mips64
+  * go#67236 cmd/go: mod tidy reports toolchain not available with 'go 1.21'
+  * go#67258 runtime: unexpected fault address 0
+  * go#67311 cmd/go: TestScript/gotoolchain_issue66175 fails on tip locally
+  * go#67314 cmd/go,cmd/link: TestScript/build_issue48319 and TestScript/build_plugin_reproducible failing on LUCI gotip-darwin-amd64-longtest builder due to non-reproducible LC_UUID
+  * go#67352 crypto/x509: TestPlatformVerifier failures on Windows due to broken connections
+  * go#67460 cmd/compile: internal compiler error: panic with range over integer value
+  * go#67527 cmd/link: panic: machorelocsect: size mismatch
+  * go#67650 runtime: SIGSEGV after performing clone(CLONE_PARENT) via C constructor prior to runtime start
+  * go#67696 os: RemoveAll susceptible to symlink race
+
+-------------------------------------------------------------------
 Tue May  7 16:00:41 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.22.3 (released 2024-05-07) includes security fixes to the go
