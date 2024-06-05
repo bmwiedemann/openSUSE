@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 18 18:41:24 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 2.0.0:
+  * Ported to Qt6
+  * Allow bidirectional communication with launched process
+  * Avoid flushing empty line
+  * Flush everything coming from child and optimize splitting of
+    output
+- Specfile cleanup, and macro refactoring/updating
+
+-------------------------------------------------------------------
 Mon Nov  6 02:43:21 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 1.4.0:

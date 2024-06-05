@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-sudo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,24 @@
 
 
 Name:           lxqt-sudo
-Version:        1.4.0
+Version:        2.0.0
 Release:        0
 Summary:        GUI frontend for sudo
 License:        LGPL-2.1-only
-Group:          System/X11/Utilities
 URL:            http://lxqt.org
 Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-BuildRequires:  cmake >= 3.1.0
+BuildRequires:  cmake >= 3.5.0
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.13.0
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.15.0
+BuildRequires:  cmake(KF6WindowSystem) >= 6.0.0
+BuildRequires:  cmake(Qt6LinguistTools) >= 6.6
+BuildRequires:  cmake(lxqt) >= 2.0.0
+BuildRequires:  cmake(lxqt2-build-tools) >= 2.0.0
+BuildRequires:  pkgconfig(Qt6Widgets) >= 6.6
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(lxqt) >= %{version}
 Requires:       sudo
-Recommends:     %{name}-lang
 
 %description
 A graphical frontend for plain sudo (for requesting optional password in GUI
@@ -47,13 +46,14 @@ and (after submit) the password is provided to sudo.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%cmake -DPULL_TRANSLATIONS=No
+%cmake_qt6
+%{qt6_build}
 
 %install
-%cmake_install
+%{qt6_install}
 
 %find_lang %{name} --with-qt
 
@@ -64,8 +64,8 @@ and (after submit) the password is provided to sudo.
 %{_bindir}/lxsu*
 %{_bindir}/lxdoas
 %{_mandir}/man?/%{name}.*
-%{_mandir}/man?/lxsu*.*
-%{_mandir}/man?/lxdoas*
+%{_mandir}/man?/lxsu*.?%{?ext_man}
+%{_mandir}/man?/lxdoas.?%{?ext_man}
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/lxqt
