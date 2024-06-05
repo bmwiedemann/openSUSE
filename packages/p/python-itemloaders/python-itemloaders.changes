@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun  4 20:38:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.0:
+  * Added support for method chaining to the `add_*` and
+    `replace_*` methods
+  * Added type hints and `py.typed`
+  * Made the docs builds reproducible
+
+-------------------------------------------------------------------
 Sat Apr 20 15:44:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.0:

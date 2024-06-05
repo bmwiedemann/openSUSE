@@ -51,4 +51,16 @@
   * Fixed test expectations on recent Python versions</comment>
     <requestid>1169389</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e88e99100d41abe45e35071c7e2e1bfa</srcmd5>
+    <version>1.3.0</version>
+    <time>1717602136</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.0:
+  * Added support for method chaining to the `add_*` and
+    `replace_*` methods
+  * Added type hints and `py.typed`
+  * Made the docs builds reproducible</comment>
+    <requestid>1178615</requestid>
+  </revision>
 </revisionlist>
