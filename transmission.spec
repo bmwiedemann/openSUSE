@@ -31,7 +31,7 @@
 %define webui_opt OFF
 %endif
 Name:           transmission
-Version:        4.0.5
+Version:        4.0.6
 Release:        0
 Summary:        A BitTorrent client with multiple UIs
 License:        (GPL-2.0-only OR GPL-3.0-only) AND MIT

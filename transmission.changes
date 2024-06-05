@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu May 30 06:13:52 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.0.6:
+  + Improved parsing HTTP tracker announce response. (#6223)
+  + Fixed 4.0.0 bug that caused some user scripts to have an
+    invalid TR_TORRENT_TRACKERS environment variable. (#6434)
+  + Fixed 4.0.0 bug where alt-speed-enabled had no effect in
+    settings.json. (#6483)
+  + Fixed 4.0.0 bug where the GTK client's "Use authentication"
+    option was not saved between's sessions. (#6514)
+  + Fixed 4.0.0 bug where the filename for single-file
+    torrents aren't sanitized. (#6846)
+  + Fixed 4.0.0 bug where piece size description text and slider
+    state in torrent creation dialog are not always up-to-date.
+  + Fixed build when compiling with GTKMM 4. (#6393)
+  + Added the launchable desktop-id to metainfo files. (#6779)
+  + Fixed build when compiling on BSD. (#6812)
+  + Fixed a 4.0.0 bug where the infinite ratio symbol
+    was displayed incorrectly in the WebUI. (#6491, #6500)
+  + Fixed layout issue in speed display. (#6570)
+  + General UI improvement related to filterbar and fixes
+    download/upload speed info wrap. (#6761)
+  + Fixed a couple of logging issues. (#6463)
+
+-------------------------------------------------------------------
 Tue Apr 16 10:10:21 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Build with gcc13 on Leap 15
