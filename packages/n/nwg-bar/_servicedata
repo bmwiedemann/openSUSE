@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/nwg-piotr/nwg-bar.git</param>
+              <param name="changesrevision">c4da7d817747ad2f8cfda332d95bd4fc55eb6b34</param></service><service name="tar_scm">
+                <param name="url">https://github.com/nwg-piotr/nwg-bar</param>
+              <param name="changesrevision">c4da7d817747ad2f8cfda332d95bd4fc55eb6b34</param></service></servicedata>

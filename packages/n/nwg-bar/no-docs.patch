@@ -1,0 +1,14 @@
+--- Makefile.new	2024-01-28 18:28:40.000000000 +0100
++++ Makefile	2024-06-04 11:00:52.564002894 +0200
+@@ -20,11 +20,6 @@
+ 	mkdir -p $(DESTDIR)$(PREFIX)/bin
+ 	cp bin/nwg-bar $(DESTDIR)$(PREFIX)/bin/nwg-bar
+ 
+-	mkdir -p $(DESTDIR)$(PREFIX)/share/doc/nwg-bar
+-	cp README.md $(DESTDIR)$(PREFIX)/share/doc/nwg-bar
+-	mkdir -p $(DESTDIR)$(PREFIX)/share/licenses/nwg-bar
+-	cp LICENSE $(DESTDIR)$(PREFIX)/share/licenses/nwg-bar
+-
+ uninstall:
+ 	rm -r $(DESTDIR)$(PREFIX)/share/nwg-bar
+ 	rm $(DESTDIR)$(PREFIX)/bin/nwg-bar
