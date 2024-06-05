@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 11 09:54:49 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 2.0.0:
+  * Ported to Qt6.
+  * Full Wayland support is added to it by using layer shell.
+
+-------------------------------------------------------------------
 Mon Nov  6 02:47:51 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 1.4.0:

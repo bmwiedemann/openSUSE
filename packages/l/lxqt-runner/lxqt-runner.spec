@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-runner
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,55 +17,59 @@
 
 
 Name:           lxqt-runner
-Version:        1.4.0
+Version:        2.0.0
 Release:        0
 Summary:        LXQt application launcher
 License:        LGPL-2.1-or-later
 Group:          System/GUI/LXQt
-URL:            http://www.lxqt.org
-Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+URL:            https://github.com/lxqt/lxqt-runner
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-BuildRequires:  cmake >= 3.1.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.13.0
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5WindowSystem) >= 5.36.0
-BuildRequires:  pkgconfig(Qt5UiTools) >= 5.15
-BuildRequires:  pkgconfig(Qt5Xdg)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(lxqt) >= %{version}
-BuildRequires:  pkgconfig(lxqt-globalkeys) >= %{version}
+BuildRequires:  cmake(KF6WindowSystem)
+BuildRequires:  cmake(LayerShellQt) >= 6.0.0
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Xml)
+BuildRequires:  cmake(lxqt2-build-tools)
+BuildRequires:  pkgconfig(libmenu-cache)
+BuildRequires:  pkgconfig(lxqt) >= 2.0.0
+BuildRequires:  pkgconfig(lxqt-globalkeys-ui)
 BuildRequires:  pkgconfig(muparser)
-Recommends:     %{name}-lang
+Recommends:     %{name}-lang = %{version}-%{release}
 
 %description
-Tool to launch programs quickly, by typing their names
+lxqt-runner provides a GUI that comes up on the desktop and allows for
+launching applications or shutting down the system. A calculator function
+is implemented too.
 
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 
 %build
-%cmake -DPULL_TRANSLATIONS=No
+%cmake_qt6
+%{qt6_build}
 
 %install
-%cmake_install
-install -Dm 0644 man/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
+%{qt6_install}
 
 %find_lang %{name} --with-qt
 
 %files
+%doc AUTHORS CHANGELOG README.md
+%{_bindir}/%{name}
+%{_mandir}/man?/%{name}.?%{?ext_man}
+%config %{_sysconfdir}/xdg/autostart/%{name}.desktop
 %license LICENSE
-%doc AUTHORS
-%{_bindir}/lxqt-runner
-%{_mandir}/man?/%{name}.?%{ext_man}
-%config %{_sysconfdir}/xdg/autostart/lxqt-runner.desktop
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/lxqt
 %dir %{_datadir}/lxqt/translations
-%{_datadir}/lxqt/translations/lxqt-runner
+%dir %{_datadir}/lxqt/translations/%{name}
 
 %changelog
