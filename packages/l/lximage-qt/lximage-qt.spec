@@ -1,7 +1,7 @@
 #
 # spec file for package lximage-qt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,32 +17,35 @@
 
 
 Name:           lximage-qt
-Version:        1.4.0
+Version:        2.0.1
 Release:        0
 Summary:        LXQt Image Viewer
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
-URL:            http://www.lxqt.org
-Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+URL:            https://github.com/lxqt/lximage-qt
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-BuildRequires:  cmake >= 3.1.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.13.0
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  lxqt2-build-tools-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.15.0
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  cmake(Qt6DBus) >= 6.3.0
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6PrintSupport)
+BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6SvgWidgets)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(fm-qt6)
 BuildRequires:  pkgconfig(libexif)
-BuildRequires:  pkgconfig(libfm-qt) >= %{version}
-BuildRequires:  pkgconfig(lxqt) >= %{version}
+BuildRequires:  pkgconfig(libmenu-cache) >= 1.1.0
+BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xfixes)
+Recommends:     %{name}-lang = %{version}-%{release}
 Requires(post): desktop-file-utils
 Requires(pre):  desktop-file-utils
 
@@ -52,35 +55,32 @@ Image Viewer for LXQt and Thumbnail Generator for PCManFM-Qt
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 
 %build
-%cmake \
-    -DUSE_QT5=ON \
-    -DPULL_TRANSLATIONS=OFF
+%cmake_qt6
+%qt6_build
 
 %install
-%cmake_install
-
+%qt6_install
 %suse_update_desktop_file -r %{name} Graphics Viewer RasterGraphics 2DGraphics Photography
-
-%fdupes %{buildroot}%{_datadir}/%{name}
+%fdupes -s %{buildroot}%{_datadir}/%{name}
 
 %find_lang %{name} --with-qt
 
 %files
-%license COPYING
-%doc AUTHORS
-%dir %{_datadir}/icons/hicolor/48x48
-%dir %{_datadir}/icons/hicolor/48x48/apps
+%doc AUTHORS CHANGELOG README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}*.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.??g
-%{_datadir}/metainfo/lximage-qt.metainfo.xml
+%{_datadir}/metainfo/%{name}.metainfo.xml
+%license COPYING
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/translations
-%{_datadir}/%{name}/translations/*
+%if 0%{?sle_version}
+%{_datadir}/%{name}/translations/%{name}_???.qm
+%endif
 
 %changelog

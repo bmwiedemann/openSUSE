@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 16 14:59:14 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- fixed requirement lxqt2-build-tools-devel
+
+-------------------------------------------------------------------
+Fri May 10 19:23:54 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 2.0.1:
+  * Fixed a crash on using annotations with Qt ≥ 6.7
+  * Fixed a memory leak
+  * Ported to Qt6, and added some menu icons
+
+-------------------------------------------------------------------
 Mon Jan  1 07:24:41 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Added %dir declarations for icon directories to clear buildfail
