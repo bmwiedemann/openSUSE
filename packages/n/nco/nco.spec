@@ -1,7 +1,7 @@
 #
 # spec file for package nco
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           nco
-Version:        5.1.9
-%define  soname 5_1_9
+Version:        5.2.4
+%define  soname 5_2_4
 %define  major  5
 Release:        0
 Summary:        Suite of programs for manipulating NetCDF/HDF files
@@ -121,7 +121,7 @@ in the netCDF and HDF formats.
 This package contains the documentation for %{name}.
 
 %prep
-%setup -q
+%autosetup
 # We need to enable the valarray check, so the c++ binding library gets build
 sed -i 's|# AC_CXX_HAVE_VALARRAY|AC_CXX_HAVE_VALARRAY|' configure.ac
 
@@ -139,7 +139,7 @@ automake --foreign
 %make_build
 pushd doc
     makeinfo --html --no-split nco.texi
-    make nco.pdf
+    %make_build nco.pdf
 popd
 
 %install
@@ -148,7 +148,8 @@ export QA_RPATHS=$((0x0001))  # check-rpaths: ignore standard RPATHs, for Fedora
 find %{buildroot} -type f -name "*.la" -delete -print
 rm -f %{buildroot}%{_infodir}/dir
 # Fix shebangs
-sed -i '1 s|.*env bash|#!/usr/bin/bash|' %{buildroot}%{_bindir}/{ncclimo,ncremap}
+sed -i '1 s|.*env bash|#!/usr/bin/bash|' \
+  %{buildroot}%{_bindir}/{ncchecker,ncclimo,ncremap,ncz2psx}
 
 %check
 %make_build check
@@ -171,6 +172,7 @@ fi
 %{_bindir}/ncap2
 %{_bindir}/ncatted
 %{_bindir}/ncbo
+%{_bindir}/ncchecker
 %{_bindir}/ncclimo
 %{_bindir}/ncdiff
 %{_bindir}/ncea
@@ -188,6 +190,7 @@ fi
 %{_mandir}/man1/ncap2.1%{?ext_man}
 %{_mandir}/man1/ncatted.1%{?ext_man}
 %{_mandir}/man1/ncbo.1%{?ext_man}
+%{_mandir}/man1/ncchecker.1%{?ext_man}
 %{_mandir}/man1/ncclimo.1%{?ext_man}
 %{_mandir}/man1/ncecat.1%{?ext_man}
 %{_mandir}/man1/nces.1%{?ext_man}

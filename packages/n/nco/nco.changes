@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri May 31 14:16:41 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Update to version 5.2.4:
+  * fully implements the CF lossy metadata convention for all NCO internal
+    quantization algorithms.
+  * improves ncclimo diagnostics and adds a new invocation synonym (--qnt) for quantization.
+- Update to version 5.2.3:
+  * ncclimo now automates the correct options for regional averages of timeseries
+    of subgridscale fields (useful for ELM/CLM).)
+  * fixes to ncclimo splitter behavior
+- Update to version 5.2.2:
+  * introduces a new operator, ncchecker, that checks dataset compliance with a
+    small yet growing number of recommendations.
+  * ncclimo no longer omits time_bounds from ELM/CLM regional averages.
+- Update to version 5.2.1:
+  * fixes an issue with ncremap and ncclimo in MPI mode.
+  * fix to enables GCC compilation in pedantic mode.
+- Update to version 5.2.0:
+  * New features:
+    - All operators append draft CF Convention behavior for metadata to encode
+      lossy compression.
+    - ncclimo timeseries mode now supports all input methods (including automatic
+      filename generation) long-supported by climo mode.
+    - ncremap Make-Weight-File (MWF) mode has been revamped and now support
+      specifiable lists of algorithms.
+    - ncks --s1d now converts CLM/ELM restart files from their native, inscrutable
+      sparse 1-D (S1D) format to normal-looking files, without loss of information.
+  * various fixes
+
+-------------------------------------------------------------------
 Wed Dec 27 16:02:48 UTC 2023 - Manfred Schwarb <manfred99@gmx.ch>
 
 - Update to version 5.1.9:
