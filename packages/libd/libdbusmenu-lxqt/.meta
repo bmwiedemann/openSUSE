@@ -1,0 +1,6 @@
+<package name="libdbusmenu-lxqt" project="openSUSE:Factory">
+  <title>A Qt implementation of the DBusMenu protocol.</title>
+  <description></description>
+  <devel project="X11:LXQt" package="libdbusmenu-lxqt"/>
+  <url>https://github.com/lxqt/libdbusmenu-lxqt</url>
+</package>
