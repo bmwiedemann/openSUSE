@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 05 05:29:26 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240601T150335Z:
+  * fix: rm command with `--newer-than` not working (#4944)
+  * Fix support top net JSON (#4948)
+  * fix: avoid HeadObject call for mc get (#4947)
+  * remote flaky bucket_replication test for now
+
+-------------------------------------------------------------------
 Thu May 30 14:36:24 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240524T090849Z:
