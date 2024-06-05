@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jun  4 14:28:21 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Added:
+  * Provides: libfm-qt6 >= %{version} for main library
+  * Specfile Cleanup
+  * %check section
+
+-------------------------------------------------------------------
+Mon Jun  3 20:09:16 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- Requires fixed
+
+-------------------------------------------------------------------
+Sat May 11 04:11:37 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 2.0.2:
+  * Fixed a regression in running executable files in terminal.
+  * Removed a redundant child-parent relation in path-bar to prevent
+    a rare crash with Qt ≥ 6.7.
+  * Ported to Qt6.
+  * Added lxqt-menu-data dependency to README.md.
+  * Updated mime types of lxqt-archiver and arqiver.
+  * Added 4 menu icons.
+  * Workaround for Qt bug in a context menu invoked by Menu key.
+
+-------------------------------------------------------------------
 Fri Nov 10 17:27:16 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
 
 - Change in .spec to clear install issue with -lang subpackage

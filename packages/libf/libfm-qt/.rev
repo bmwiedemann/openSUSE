@@ -341,4 +341,27 @@
     <comment></comment>
     <requestid>1125100</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d5229958a7398b584457c33d9e298d11</srcmd5>
+    <version>2.0.2</version>
+    <time>1717601932</time>
+    <user>anag+factory</user>
+    <comment>- Added:
+  * Provides: libfm-qt6 &gt;= %{version} for main library
+  * Specfile Cleanup
+  * %check section
+
+- Requires fixed
+
+- Update to 2.0.2:
+  * Fixed a regression in running executable files in terminal.
+  * Removed a redundant child-parent relation in path-bar to prevent
+    a rare crash with Qt ≥ 6.7.
+  * Ported to Qt6.
+  * Added lxqt-menu-data dependency to README.md.
+  * Updated mime types of lxqt-archiver and arqiver.
+  * Added 4 menu icons.
+  * Workaround for Qt bug in a context menu invoked by Menu key.</comment>
+    <requestid>1178511</requestid>
+  </revision>
 </revisionlist>

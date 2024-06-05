@@ -1,7 +1,7 @@
 #
 # spec file for package libfm-qt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,117 +16,103 @@
 #
 
 
+%define   _ver  14
+%define  _name  libfm-qt6
 Name:           libfm-qt
-Version:        1.4.0
+Version:        2.0.2
 Release:        0
-Summary:        Library providing components to build desktop file managers
+Summary:        Core library of PCManFM-Qt (Qt binding for libfm)
 License:        BSD-3-Clause AND LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
-URL:            http://lxqt.org
-Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
-Source2:        libfm-qt.keyring
-BuildRequires:  cmake >= 3.1.0
-# Needs private headers, see xdndworkaround.cpp
-BuildRequires:  libQt5Gui-private-headers-devel
-BuildRequires:  libqt5-qttools-devel
-BuildRequires:  lxqt-build-tools-devel >= 0.13.0
+URL:            https://github.com/lxqt/libfm-qt
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+Source2:        %{name}.keyring
+BuildRequires:  cmake >= 3.18.0
+BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  qt6-gui-private-devel
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Widgets) >= 6.6.0
 BuildRequires:  cmake(lxqt-menu-data)
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.15
-BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.15
-BuildRequires:  pkgconfig(Qt5Xdg)
+BuildRequires:  cmake(lxqt2-build-tools)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libmenu-cache) >= 1.1.0
-BuildRequires:  pkgconfig(lxqt)
-BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xcb)
 
 %description
-libfm-qt is the Qt port of libfm, a library providing components to
-build desktop file managers.
+Libfm-Qt is a companion library providing components to build desktop file managers
 
-%{lang_package -r libfm-qt14}
+%lang_package -n %{_name}
 
-%package -n libfm-qt14
-Summary:        Library providing components to build desktop file managers
-# Require data files read by the library. For parallel installed library versions, the newest one wins
-Group:          System/Libraries
-Requires:       %{name}-data >= %{version}
-Recommends:     %{name}-lang
-Conflicts:      pcmanfm <= 0.10.0
-Provides:       libfm-qt
+%package -n %{_name}-%{_ver}
+Summary:        Libfm-qt libraries
+Requires:       %{_name}-data >= %{version}
+Provides:       %{_name} >= %{version}
 
-%description -n libfm-qt14
-libfm-qt is the Qt port of libfm, a library providing components to
-build desktop file managers.
+%description -n %{_name}-%{_ver}
+Libfm-Qt is a companion library providing components to build desktop file managers
 
-%package data
+%package -n %{_name}-data
 Summary:        Data files for libfm library
-# libfm-qt6 wrongly shipped those files as part of the library package
-# resulting in file conflicts when the soname changed
-# No way to fix the old package, so we conflict it
-Group:          Development/Libraries/C and C++
-Conflicts:      libfm-qt6
 BuildArch:      noarch
 
-%description data
+%description -n %{_name}-data
 Provides data to be read by libfm-qt
 
-%package -n libfm-qt-devel
+%package -n %{_name}-devel
 Summary:        Development files for libfm-qt
-Group:          Development/Libraries/C and C++
-Requires:       libfm-qt14 >= %{version}
-Requires:       pkgconfig
-# libfm-qt has an -I on a path from menu-cache-devel
-Requires:       pkgconfig(libmenu-cache) >= 0.4.0
+Requires:       %{_name}-%{_ver} = %{version}-%{release}
 
-%description -n libfm-qt-devel
+%description -n %{_name}-devel
 Libfm-Qt libraries for development
 
 %prep
-%setup -q
+%autosetup
 
 %build
-%cmake -DPULL_TRANSLATIONS=No
-%make_build
+%cmake_qt6
+%{qt6_build}
 
 %install
-%cmake_install
+%{qt6_install}
 
 %find_lang %{name} --with-qt
 
-%post -n libfm-qt14 -p /sbin/ldconfig
-%postun -n libfm-qt14 -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{_name}-%{_ver}
 
-%files -n libfm-qt14
-%license LICENSE LICENSE.BSD-3-Clause
-%doc README.md
-%{_libdir}/libfm-qt.so.*
+%check
+%ctest
 
-%files data
-%dir %{_datadir}/libfm-qt/
-%{_datadir}/libfm-qt/archivers.list
-%{_datadir}/libfm-qt/terminals.list
-%{_datadir}/mime/packages/libfm-qt-mimetypes.xml
+%files -n %{_name}-%{_ver}
+%doc AUTHORS CHANGELOG README.md
+%{_libdir}/%{_name}.so.*
+%license LICENSE
 
-%files -n libfm-qt-devel
-%doc %{_datadir}/cmake/fm-qt
-%{_includedir}/libfm-qt/
-%{_libdir}/libfm-qt.so
-%{_libdir}/pkgconfig/libfm-qt.pc
-%{_datadir}/cmake/fm-qt/fm-qt-config-version.cmake
-%{_datadir}/cmake/fm-qt/fm-qt-config.cmake
-%{_datadir}/cmake/fm-qt/fm-qt-targets-*.cmake
-%{_datadir}/cmake/fm-qt/fm-qt-targets.cmake
+%files -n %{_name}-data
+%dir %{_datadir}/%{_name}
+%{_datadir}/%{_name}/archivers.list
+%{_datadir}/%{_name}/terminals.list
+%{_datadir}/mime/packages/%{_name}-mimetypes.xml
 
-%files lang -f %{name}.lang
-%dir %{_datadir}/libfm-qt
-%dir %{_datadir}/libfm-qt/translations
-%{_datadir}/libfm-qt/translations/*
+%files -n %{_name}-devel
+%dir %{_datadir}/cmake/fm-qt6
+%{_includedir}/%{_name}/
+%{_libdir}/%{_name}.so
+%{_libdir}/pkgconfig/%{_name}.pc
+%{_datadir}/cmake/fm-qt6/fm-qt6-config-version.cmake
+%{_datadir}/cmake/fm-qt6/fm-qt6-config.cmake
+%{_datadir}/cmake/fm-qt6/fm-qt6-targets-*.cmake
+%{_datadir}/cmake/fm-qt6/fm-qt6-targets.cmake
+%license LICENSE.BSD-3-Clause
+
+%files -n %{_name}-lang -f %{name}.lang
+%dir %{_datadir}/%{_name}/translations/
+%if 0%{?sle_version}
+%{_datadir}/%{_name}/translations/%{name}_???.qm
+%endif
 
 %changelog
