@@ -11262,6 +11262,9 @@ unsorted:
   - libQt6StateMachineQml6 
   - libQt6WebSockets6 
   - libQt6WebViewQuick6 
+  - libQt6Xdg4 
+  - libQt6XdgIconLoader-devel 
+  - libQt6XdgIconLoader4 
   - libQtAV1 
   - libQtAVWidgets1 
   - libQtOlm3_0 
@@ -12444,6 +12447,8 @@ unsorted:
   - libdbusmenu-gtk4 
   - libdbusmenu-jsonloader-devel 
   - libdbusmenu-jsonloader4 
+  - libdbusmenu-lxqt-devel 
+  - libdbusmenu-lxqt0 
   - libdbusmenu-qt5-2-32bit 
   - libdbusmenu-qt5-devel 
   - libdbusmenu-qt5-devel-32bit 
@@ -12870,10 +12875,10 @@ unsorted:
   - libfm-gtk-devel 
   - libfm-gtk4 
   - libfm-lang 
-  - libfm-qt-data 
-  - libfm-qt-devel 
-  - libfm-qt-lang 
-  - libfm-qt14 
+  - libfm-qt6-14 
+  - libfm-qt6-data 
+  - libfm-qt6-devel 
+  - libfm-qt6-lang 
   - libfm4 
   - libfmapi-devel 
   - libfmapi1 
@@ -14132,10 +14137,10 @@ unsorted:
   - liblxpanel0 
   - liblxqt 
   - liblxqt-devel 
-  - liblxqt-globalkeys-ui1 
-  - liblxqt-globalkeys1 
+  - liblxqt-globalkeys-ui2 
+  - liblxqt-globalkeys2 
   - liblxqt-lang 
-  - liblxqt1 
+  - liblxqt2 
   - liblz1 
   - liblz4-devel 
   - liblzo2-2-32bit 
@@ -14450,9 +14455,9 @@ unsorted:
   - libnbd-bash-completion 
   - libnbd-devel 
   - libnblib_gmx0 
-  - libnco-5_1_9 
+  - libnco-5_2_4 
   - libnco-devel 
-  - libnco_c++-5_1_9 
+  - libnco_c++-5_2_4 
   - libncurses5 
   - libncurses5-32bit 
   - libncurses6-32bit 
@@ -15436,9 +15441,11 @@ unsorted:
   - libqt5keychain1 
   - libqt5keychain1-lang 
   - libqt5xdg-devel 
+  - libqt6xdg-devel 
   - libqtcurve-cairo1 
   - libqtcurve-utils2 
   - libqtermwidget5-1 
+  - libqtermwidget6-2 
   - libqtolm-devel 
   - libquadmath0-32bit 
   - libquadmath0-gcc12 
@@ -15704,7 +15711,7 @@ unsorted:
   - librsb0 
   - librseq-devel 
   - librseq0 
-  - librssguard-4_7_0 
+  - librssguard-4_7_2 
   - librssguard-devel 
   - librsvg-2-2-32bit 
   - librsvg-devel 
@@ -16141,8 +16148,10 @@ unsorted:
   - libsynce-devel 
   - libsynce0 
   - libsysprof-6-6 
+  - libsysstat-devel 
   - libsysstat-qt5-0 
   - libsysstat-qt5-devel 
+  - libsysstat1 
   - libsystemd0-mini 
   - libsz2 
   - libt3config-devel 
@@ -16737,9 +16746,9 @@ unsorted:
   - libwtcdb-devel 
   - libwtcdb-tools 
   - libwtcdb1 
-  - libwtdbo4_8_1 
-  - libwtdbomysql4_8_1 
-  - libwtdbopostgres4_8_1 
+  - libwtdbo4_10_4 
+  - libwtdbomysql4_10_4 
+  - libwtdbopostgres4_10_4 
   - libwv-1_2-4 
   - libwv2-4 
   - libwx_base-suse-devel 
@@ -17745,6 +17754,7 @@ unsorted:
   - lxqt-theme-openSUSE-leaper 
   - lxqt-theme-openSUSE-light 
   - lxqt-themes 
+  - lxqt2-build-tools-devel 
   - lxrandr 
   - lxrandr-lang 
   - lxsession 
@@ -19602,6 +19612,7 @@ unsorted:
   - nvmetcli 
   - nvptx-tools 
   - nvtop 
+  - nwg-bar 
   - nwg-displays 
   - nwg-dock-hyprland 
   - nwg-launchers 
@@ -22708,6 +22719,7 @@ unsorted:
   - pocl-devel 
   - poco-cpspc 
   - poco-devel 
+  - podlet 
   - podman-docker 
   - podman-remote 
   - podmansh 
@@ -24208,6 +24220,7 @@ unsorted:
   - python310-azure-keyvault-nspkg 
   - python310-azure-keyvault-secrets 
   - python310-azure-loganalytics 
+  - python310-azure-maps-geolocation 
   - python310-azure-maps-render 
   - python310-azure-maps-route 
   - python310-azure-media-nspkg 
@@ -25484,8 +25497,10 @@ unsorted:
   - python310-langtable 
   - python310-lark 
   - python310-latexcodec 
+  - python310-launchpadlib 
   - python310-lazr.config 
   - python310-lazr.delegates 
+  - python310-lazr.restfulclient 
   - python310-lazr.uri 
   - python310-lazy 
   - python310-lazy-loader 
@@ -27206,7 +27221,6 @@ unsorted:
   - python310-xarray-viz 
   - python310-xattr 
   - python310-xcffib 
-  - python310-xdg 
   - python310-xdg-base-dirs 
   - python310-xdoctest 
   - python310-xerox 
@@ -27789,6 +27803,7 @@ unsorted:
   - python311-azure-keyvault-nspkg 
   - python311-azure-keyvault-secrets 
   - python311-azure-loganalytics 
+  - python311-azure-maps-geolocation 
   - python311-azure-maps-render 
   - python311-azure-maps-route 
   - python311-azure-media-nspkg 
@@ -29021,8 +29036,10 @@ unsorted:
   - python311-langdetect 
   - python311-langtable 
   - python311-latexcodec 
+  - python311-launchpadlib 
   - python311-lazr.config 
   - python311-lazr.delegates 
+  - python311-lazr.restfulclient 
   - python311-lazr.uri 
   - python311-lazy 
   - python311-lazy-loader 
@@ -30685,7 +30702,6 @@ unsorted:
   - python311-xarray-viz 
   - python311-xattr 
   - python311-xcffib 
-  - python311-xdg 
   - python311-xdg-base-dirs 
   - python311-xdoctest 
   - python311-xerox 
@@ -31286,6 +31302,7 @@ unsorted:
   - python312-azure-keyvault-nspkg 
   - python312-azure-keyvault-secrets 
   - python312-azure-loganalytics 
+  - python312-azure-maps-geolocation 
   - python312-azure-maps-render 
   - python312-azure-maps-route 
   - python312-azure-media-nspkg 
@@ -32558,8 +32575,10 @@ unsorted:
   - python312-langtable 
   - python312-lark 
   - python312-latexcodec 
+  - python312-launchpadlib 
   - python312-lazr.config 
   - python312-lazr.delegates 
+  - python312-lazr.restfulclient 
   - python312-lazr.uri 
   - python312-lazy 
   - python312-lazy-loader 
@@ -34275,7 +34294,6 @@ unsorted:
   - python312-xarray-viz 
   - python312-xattr 
   - python312-xcffib 
-  - python312-xdg 
   - python312-xdg-base-dirs 
   - python312-xdoctest 
   - python312-xerox 
@@ -34982,6 +35000,8 @@ unsorted:
   - qterm 
   - qterminal 
   - qterminal-lang 
+  - qtermwidget-data 
+  - qtermwidget-devel 
   - qtermwidget-qt5-data 
   - qtermwidget-qt5-devel 
   - qtfm 
@@ -47005,6 +47025,8 @@ unsorted:
   - ufraw 
   - ufraw-lang 
   - uftpd 
+  - ufw 
+  - ufw-lang 
   - uget 
   - uget-integrator 
   - uget-lang 
