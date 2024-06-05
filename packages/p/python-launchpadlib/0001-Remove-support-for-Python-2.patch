@@ -1,0 +1,574 @@
+From 27d18a156ea94fedb6556811b39dd6e9e349476e Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@ubuntu.com>
+Date: Sun, 3 Mar 2024 16:07:27 +0000
+Subject: [PATCH] Remove support for Python 2
+
+I noticed that a number of the scripts in `contrib/` were Python-2-only,
+so I did a basic untested port of those while I was here.
+
+Apply pyupgrade --py3-plus
+
+Simplify coverage testing
+
+We no longer need the more complex arrangements after dropping Python 2
+support.
+---
+ NEWS.rst                                         |    4 +
+ pyproject.toml                                   |    2 
+ setup.py                                         |    4 -
+ src/launchpadlib/apps.py                         |    2 
+ src/launchpadlib/credentials.py                  |   63 ++++++-----------------
+ src/launchpadlib/docs/conf.py                    |   16 ++---
+ src/launchpadlib/launchpad.py                    |   15 +----
+ src/launchpadlib/testing/helpers.py              |    6 --
+ src/launchpadlib/testing/launchpad.py            |   22 ++------
+ src/launchpadlib/testing/tests/test_launchpad.py |    4 -
+ src/launchpadlib/tests/test_credential_store.py  |    8 --
+ src/launchpadlib/tests/test_http.py              |    9 ---
+ src/launchpadlib/tests/test_launchpad.py         |   12 +---
+ src/launchpadlib/uris.py                         |    7 --
+ 14 files changed, 56 insertions(+), 118 deletions(-)
+
+--- a/NEWS.rst
++++ b/NEWS.rst
+@@ -2,6 +2,10 @@
+ NEWS for launchpadlib
+ =====================
+ 
++2.0.0
++=====
++- Remove support for Python 2.
++
+ 1.11.0 (2023-01-09)
+ ===================
+ - Move the ``keyring`` dependency to a new ``keyring`` extra.
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,3 +1,3 @@
+ [tool.black]
+ line-length = 79
+-target-version = ['py27']
++target-version = ['py35']
+--- a/setup.py
++++ b/setup.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # Copyright 2008-2022 Canonical Ltd.
+ #
+@@ -46,7 +46,6 @@ install_requires = [
+     'importlib-metadata; python_version < "3.8"',
+     "lazr.restfulclient>=0.14.2",
+     "lazr.uri",
+-    "six",
+ ]
+ 
+ setup(
+@@ -64,6 +63,7 @@ setup(
+     description=open("README.rst").readline().strip(),
+     long_description=generate("src/launchpadlib/docs/index.rst", "NEWS.rst"),
+     license="LGPL v3",
++    python_requires=">=3.5",
+     install_requires=install_requires,
+     url="https://help.launchpad.net/API/launchpadlib",
+     project_urls={
+--- a/src/launchpadlib/apps.py
++++ b/src/launchpadlib/apps.py
+@@ -30,7 +30,7 @@ from launchpadlib.credentials import Cre
+ from launchpadlib.uris import lookup_web_root
+ 
+ 
+-class RequestTokenApp(object):
++class RequestTokenApp:
+     """An application that creates request tokens."""
+ 
+     def __init__(self, web_root, consumer_name, context):
+--- a/src/launchpadlib/credentials.py
++++ b/src/launchpadlib/credentials.py
+@@ -14,11 +14,8 @@
+ # You should have received a copy of the GNU Lesser General Public License
+ # along with launchpadlib. If not, see <http://www.gnu.org/licenses/>.
+ 
+-from __future__ import print_function
+-
+ """launchpadlib credentials and authentication support."""
+ 
+-__metaclass__ = type
+ __all__ = [
+     "AccessToken",
+     "AnonymousAccessToken",
+@@ -29,40 +26,20 @@ __all__ = [
+     "Credentials",
+ ]
+ 
+-try:
+-    from cStringIO import StringIO
+-except ImportError:
+-    from io import StringIO
+-
++from base64 import (
++    b64decode,
++    b64encode,
++)
+ import httplib2
++from io import StringIO
+ import json
+ import os
+ from select import select
+ import stat
+ from sys import stdin
+ import time
+-
+-try:
+-    from urllib.parse import urlencode
+-except ImportError:
+-    from urllib import urlencode
+-try:
+-    from urllib.parse import urljoin
+-except ImportError:
+-    from urlparse import urljoin
++from urllib.parse import urlencode, urljoin, parse_qs
+ import webbrowser
+-from base64 import (
+-    b64decode,
+-    b64encode,
+-)
+-
+-from six.moves.urllib.parse import parse_qs
+-
+-if bytes is str:
+-    # Python 2
+-    unicode_type = unicode  # noqa: F821
+-else:
+-    unicode_type = str
+ 
+ from lazr.restfulclient.errors import HTTPError
+ from lazr.restfulclient.authorize.oauth import (
+@@ -135,7 +112,7 @@ class Credentials(OAuthAuthorizer):
+         sio = StringIO()
+         self.save(sio)
+         serialized = sio.getvalue()
+-        if isinstance(serialized, unicode_type):
++        if isinstance(serialized, str):
+             serialized = serialized.encode("utf-8")
+         return serialized
+ 
+@@ -146,7 +123,7 @@ class Credentials(OAuthAuthorizer):
+         This should probably be moved into OAuthAuthorizer.
+         """
+         credentials = cls()
+-        if not isinstance(value, unicode_type):
++        if not isinstance(value, str):
+             value = value.decode("utf-8")
+         credentials.load(StringIO(value))
+         return credentials
+@@ -255,7 +232,7 @@ class AccessToken(_AccessToken):
+     @classmethod
+     def from_string(cls, query_string):
+         """Create and return a new `AccessToken` from the given string."""
+-        if not isinstance(query_string, unicode_type):
++        if not isinstance(query_string, str):
+             query_string = query_string.decode("utf-8")
+         params = parse_qs(query_string, keep_blank_values=False)
+         key = params["oauth_token"]
+@@ -280,10 +257,10 @@ class AnonymousAccessToken(_AccessToken)
+     """
+ 
+     def __init__(self):
+-        super(AnonymousAccessToken, self).__init__("", "")
++        super().__init__("", "")
+ 
+ 
+-class CredentialStore(object):
++class CredentialStore:
+     """Store OAuth credentials locally.
+ 
+     This is a generic superclass. To implement a specific way of
+@@ -369,7 +346,7 @@ class KeyringCredentialStore(CredentialS
+     B64MARKER = b"<B64>"
+ 
+     def __init__(self, credential_save_failed=None, fallback=False):
+-        super(KeyringCredentialStore, self).__init__(credential_save_failed)
++        super().__init__(credential_save_failed)
+         self._fallback = None
+         if fallback:
+             self._fallback = MemoryCredentialStore(credential_save_failed)
+@@ -438,7 +415,7 @@ class KeyringCredentialStore(CredentialS
+             else:
+                 raise
+         if credential_string is not None:
+-            if isinstance(credential_string, unicode_type):
++            if isinstance(credential_string, str):
+                 credential_string = credential_string.encode("utf8")
+             if credential_string.startswith(self.B64MARKER):
+                 try:
+@@ -468,9 +445,7 @@ class UnencryptedFileCredentialStore(Cre
+     """
+ 
+     def __init__(self, filename, credential_save_failed=None):
+-        super(UnencryptedFileCredentialStore, self).__init__(
+-            credential_save_failed
+-        )
++        super().__init__(credential_save_failed)
+         self.filename = filename
+ 
+     def do_save(self, credentials, unique_key):
+@@ -495,7 +470,7 @@ class MemoryCredentialStore(CredentialSt
+     """
+ 
+     def __init__(self, credential_save_failed=None):
+-        super(MemoryCredentialStore, self).__init__(credential_save_failed)
++        super().__init__(credential_save_failed)
+         self._credentials = {}
+ 
+     def do_save(self, credentials, unique_key):
+@@ -507,7 +482,7 @@ class MemoryCredentialStore(CredentialSt
+         return self._credentials.get(unique_key)
+ 
+ 
+-class RequestTokenAuthorizationEngine(object):
++class RequestTokenAuthorizationEngine:
+     """The superclass of all request token authorizers.
+ 
+     This base class does not implement request token authorization,
+@@ -774,15 +749,13 @@ class AuthorizeRequestTokenWithBrowser(A
+         # It doesn't look like we're doing anything here, but we
+         # are discarding the passed-in values for consumer_name and
+         # allow_access_levels.
+-        super(AuthorizeRequestTokenWithBrowser, self).__init__(
++        super().__init__(
+             service_root, application_name, None, credential_save_failed
+         )
+ 
+     def notify_end_user_authorization_url(self, authorization_url):
+         """Notify the end-user of the URL."""
+-        super(
+-            AuthorizeRequestTokenWithBrowser, self
+-        ).notify_end_user_authorization_url(authorization_url)
++        super().notify_end_user_authorization_url(authorization_url)
+ 
+         try:
+             browser_obj = webbrowser.get()
+--- a/src/launchpadlib/docs/conf.py
++++ b/src/launchpadlib/docs/conf.py
+@@ -1,5 +1,3 @@
+-# -*- coding: utf-8 -*-
+-#
+ # launchpadlib documentation build configuration file, created by
+ # sphinx-quickstart on Tue Nov  5 23:48:15 2019.
+ #
+@@ -47,9 +45,9 @@ source_suffix = ".rst"
+ master_doc = "index"
+ 
+ # General information about the project.
+-project = u"launchpadlib"
+-copyright = u"2008-2019, Canonical Ltd."
+-author = u"LAZR Developers <lazr-developers@lists.launchpad.net>"
++project = "launchpadlib"
++copyright = "2008-2019, Canonical Ltd."
++author = "LAZR Developers <lazr-developers@lists.launchpad.net>"
+ 
+ # The version info for the project you're documenting, acts as replacement for
+ # |version| and |release|, also used in various other places throughout the
+@@ -140,8 +138,8 @@ latex_documents = [
+     (
+         master_doc,
+         "launchpadlib.tex",
+-        u"launchpadlib Documentation",
+-        u"LAZR Developers \\textless{}lazr-developers@lists.launchpad.net\\textgreater{}",  # noqa: E501
++        "launchpadlib Documentation",
++        "LAZR Developers \\textless{}lazr-developers@lists.launchpad.net\\textgreater{}",  # noqa: E501
+         "manual",
+     ),
+ ]
+@@ -152,7 +150,7 @@ latex_documents = [
+ # One entry per manual page. List of tuples
+ # (source start file, name, description, authors, manual section).
+ man_pages = [
+-    (master_doc, "launchpadlib", u"launchpadlib Documentation", [author], 1)
++    (master_doc, "launchpadlib", "launchpadlib Documentation", [author], 1)
+ ]
+ 
+ 
+@@ -165,7 +163,7 @@ texinfo_documents = [
+     (
+         master_doc,
+         "launchpadlib",
+-        u"launchpadlib Documentation",
++        "launchpadlib Documentation",
+         author,
+         "launchpadlib",
+         "One line description of project.",
+--- a/src/launchpadlib/launchpad.py
++++ b/src/launchpadlib/launchpad.py
+@@ -16,18 +16,13 @@
+ 
+ """Root Launchpad API class."""
+ 
+-__metaclass__ = type
+ __all__ = [
+     "Launchpad",
+ ]
+ 
+ import errno
+ import os
+-
+-try:
+-    from urllib.parse import urlsplit
+-except ImportError:
+-    from urlparse import urlsplit
++from urllib.parse import urlsplit
+ import warnings
+ 
+ try:
+@@ -130,7 +125,7 @@ class LaunchpadOAuthAwareHttp(RestfulHtt
+     def __init__(self, launchpad, authorization_engine, *args):
+         self.launchpad = launchpad
+         self.authorization_engine = authorization_engine
+-        super(LaunchpadOAuthAwareHttp, self).__init__(*args)
++        super().__init__(*args)
+ 
+     def _bad_oauth_token(self, response, content):
+         """Helper method to detect an error caused by a bad OAuth token."""
+@@ -141,9 +136,7 @@ class LaunchpadOAuthAwareHttp(RestfulHtt
+         )
+ 
+     def _request(self, *args):
+-        response, content = super(LaunchpadOAuthAwareHttp, self)._request(
+-            *args
+-        )
++        response, content = super()._request(*args)
+         return self.retry_on_bad_token(response, content, *args)
+ 
+     def retry_on_bad_token(self, response, content, *args):
+@@ -227,7 +220,7 @@ class Launchpad(ServiceRoot):
+         # case we need to authorize a new token during use.
+         self.authorization_engine = authorization_engine
+ 
+-        super(Launchpad, self).__init__(
++        super().__init__(
+             credentials, service_root, cache, timeout, proxy_info, version
+         )
+ 
+--- a/src/launchpadlib/testing/helpers.py
++++ b/src/launchpadlib/testing/helpers.py
+@@ -18,8 +18,6 @@
+ 
+ """launchpadlib testing helpers."""
+ 
+-
+-__metaclass__ = type
+ __all__ = [
+     "BadSaveKeyring",
+     "fake_keyring",
+@@ -64,7 +62,7 @@ class NoNetworkAuthorizationEngine(Reque
+     ACCESS_TOKEN_KEY = "access_key:84"
+ 
+     def __init__(self, *args, **kwargs):
+-        super(NoNetworkAuthorizationEngine, self).__init__(*args, **kwargs)
++        super().__init__(*args, **kwargs)
+         # Set up some instrumentation.
+         self.request_tokens_obtained = 0
+         self.access_tokens_obtained = 0
+@@ -144,7 +142,7 @@ class TestableLaunchpad(Launchpad):
+             generally pass in fully-formed Credentials objects.
+         :param service_root: Defaults to 'test_dev'.
+         """
+-        super(TestableLaunchpad, self).__init__(
++        super().__init__(
+             credentials,
+             authorization_engine,
+             credential_store,
+--- a/src/launchpadlib/testing/launchpad.py
++++ b/src/launchpadlib/testing/launchpad.py
+@@ -65,23 +65,15 @@ Where 'https://api.launchpad.net/devel/'
+ also in the WADL file itelf.
+ """
+ 
++from collections.abc import Callable
+ from datetime import datetime
+ 
+-try:
+-    from collections.abc import Callable
+-except ImportError:
+-    from collections import Callable
+-import sys
+-
+-if sys.version_info[0] >= 3:
+-    basestring = str
+-
+ 
+ class IntegrityError(Exception):
+     """Raised when bad sample data is used with a L{FakeLaunchpad} instance."""
+ 
+ 
+-class FakeLaunchpad(object):
++class FakeLaunchpad:
+     """A fake Launchpad API class for unit tests that depend on L{Launchpad}.
+ 
+     @param application: A C{wadllib.application.Application} instance for a
+@@ -188,7 +180,7 @@ def wadl_tag(tag_name):
+     return "{http://research.sun.com/wadl/2006/10}" + tag_name
+ 
+ 
+-class FakeResource(object):
++class FakeResource:
+     """
+     Represents valid sample data on L{FakeLaunchpad} instances.
+ 
+@@ -434,7 +426,7 @@ class FakeResource(object):
+             if param is None:
+                 raise IntegrityError("%s not found" % name)
+             if param.type is None:
+-                if not isinstance(value, basestring):
++                if not isinstance(value, str):
+                     raise IntegrityError(
+                         "%s is not a str or unicode for %s" % (value, name)
+                     )
+@@ -594,7 +586,7 @@ class FakeRoot(FakeResource):
+         resource_type = application.get_resource_type(
+             application.markup_url + "#service-root"
+         )
+-        super(FakeRoot, self).__init__(application, resource_type)
++        super().__init__(application, resource_type)
+ 
+ 
+ class FakeEntry(FakeResource):
+@@ -612,9 +604,7 @@ class FakeCollection(FakeResource):
+         name=None,
+         child_resource_type=None,
+     ):
+-        super(FakeCollection, self).__init__(
+-            application, resource_type, values
+-        )
++        super().__init__(application, resource_type, values)
+         self.__dict__.update(
+             {"_name": name, "_child_resource_type": child_resource_type}
+         )
+--- a/src/launchpadlib/testing/tests/test_launchpad.py
++++ b/src/launchpadlib/testing/tests/test_launchpad.py
+@@ -160,8 +160,8 @@ class FakeLaunchpadTest(ResourcedTestCas
+         dicts that represent objects.  Plain string values can be represented
+         as C{unicode} strings.
+         """
+-        self.launchpad.me = dict(name=u"foo")
+-        self.assertEqual(u"foo", self.launchpad.me.name)
++        self.launchpad.me = dict(name="foo")
++        self.assertEqual("foo", self.launchpad.me.name)
+ 
+     def test_datetime_property(self):
+         """
+--- a/src/launchpadlib/tests/test_credential_store.py
++++ b/src/launchpadlib/tests/test_credential_store.py
+@@ -169,9 +169,7 @@ class TestKeyringCredentialStore(Credent
+         # handled correctly.  (See bug lp:877374)
+         class UnicodeInMemoryKeyring(InMemoryKeyring):
+             def get_password(self, service, username):
+-                password = super(UnicodeInMemoryKeyring, self).get_password(
+-                    service, username
+-                )
++                password = super().get_password(service, username)
+                 if isinstance(password, unicode_type):
+                     password = password.encode("utf-8")
+                 return password
+@@ -194,9 +192,7 @@ class TestKeyringCredentialStore(Credent
+ 
+         class UnencodedInMemoryKeyring(InMemoryKeyring):
+             def get_password(self, service, username):
+-                pw = super(UnencodedInMemoryKeyring, self).get_password(
+-                    service, username
+-                )
++                pw = super().get_password(service, username)
+                 return b64decode(pw[5:])
+ 
+         self.keyring = UnencodedInMemoryKeyring()
+--- a/src/launchpadlib/tests/test_http.py
++++ b/src/launchpadlib/tests/test_http.py
+@@ -17,15 +17,10 @@
+ """Tests for the LaunchpadOAuthAwareHTTP class."""
+ 
+ from collections import deque
+-from json import dumps
++from json import dumps, JSONDecodeError
+ import tempfile
+ import unittest
+ 
+-try:
+-    from json import JSONDecodeError
+-except ImportError:
+-    JSONDecodeError = ValueError
+-
+ from launchpadlib.errors import Unauthorized
+ from launchpadlib.credentials import UnencryptedFileCredentialStore
+ from launchpadlib.launchpad import (
+@@ -75,7 +70,7 @@ class SimulatedResponsesHttp(LaunchpadOA
+         :param responses: A list of HttpResponse objects to use
+             in response to requests.
+         """
+-        super(SimulatedResponsesHttp, self).__init__(*args)
++        super().__init__(*args)
+         self.sent_responses = []
+         self.unsent_responses = responses
+         self.cache = None
+--- a/src/launchpadlib/tests/test_launchpad.py
++++ b/src/launchpadlib/tests/test_launchpad.py
+@@ -16,8 +16,6 @@
+ 
+ """Tests for the Launchpad class."""
+ 
+-__metaclass__ = type
+-
+ from contextlib import contextmanager
+ import os
+ import shutil
+@@ -25,11 +23,7 @@ import socket
+ import stat
+ import tempfile
+ import unittest
+-
+-try:
+-    from unittest.mock import patch
+-except ImportError:
+-    from mock import patch
++from unittest.mock import patch
+ import warnings
+ 
+ from lazr.restfulclient.resource import ServiceRoot
+@@ -351,11 +345,11 @@ class TestLaunchpadLoginWith(KeyringTest
+     """Tests for Launchpad.login_with()."""
+ 
+     def setUp(self):
+-        super(TestLaunchpadLoginWith, self).setUp()
++        super().setUp()
+         self.temp_dir = tempfile.mkdtemp()
+ 
+     def tearDown(self):
+-        super(TestLaunchpadLoginWith, self).tearDown()
++        super().tearDown()
+         shutil.rmtree(self.temp_dir)
+ 
+     def test_dirs_created(self):
+--- a/src/launchpadlib/uris.py
++++ b/src/launchpadlib/uris.py
+@@ -20,18 +20,15 @@ The code in this module lets users say "
+ "https://api.staging.launchpad.net/".
+ """
+ 
+-__metaclass__ = type
+ __all__ = [
+     "lookup_service_root",
+     "lookup_web_root",
+     "web_root_for_service_root",
+ ]
+-try:
+-    from urllib.parse import urlparse
+-except ImportError:
+-    from urlparse import urlparse
+ 
++from urllib.parse import urlparse
+ import warnings
++
+ from lazr.uri import URI
+ 
+ LPNET_SERVICE_ROOT = "https://api.launchpad.net/"

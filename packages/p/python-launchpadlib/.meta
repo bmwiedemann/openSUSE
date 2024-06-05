@@ -1,0 +1,6 @@
+<package name="python-launchpadlib" project="openSUSE:Factory">
+  <title>Launchpadlib</title>
+  <description>Python client library for Launchpad's web service</description>
+  <devel project="devel:languages:python" package="python-launchpadlib"/>
+  <url>https://pypi.org/project/launchpadlib/</url>
+</package>
