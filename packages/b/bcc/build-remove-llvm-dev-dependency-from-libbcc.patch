@@ -1,0 +1,49 @@
+From 5b8e284d06743e21be814913f187957e43122751 Mon Sep 17 00:00:00 2001
+From: Manu Bretelle <chantr4@gmail.com>
+Date: Wed, 29 May 2024 14:38:22 -0700
+Subject: [PATCH 1/2] build: remove llvm-dev dependency from libbcc
+
+In #4737 I added depedency on llvm-config.h in order to discover what LLVM version
+is being used. This was only meant to be used at build time.
+By adding llvm-config.h in bpf_module.h, a public header of libbcc, I introduced
+a dependency on llvm-dev to libbcc which is unnecessary.
+
+This change removes the include from `bpf_module.h`, which should be enough, and
+add it to `bpf_module.cc` instead.
+
+Fixes #4997
+
+Signed-off-by: Manu Bretelle <chantr4@gmail.com>
+---
+ src/cc/bpf_module.cc | 1 +
+ src/cc/bpf_module.h  | 2 --
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/cc/bpf_module.cc b/src/cc/bpf_module.cc
+index 91ab9af6..c0dd0119 100644
+--- a/src/cc/bpf_module.cc
++++ b/src/cc/bpf_module.cc
+@@ -17,6 +17,7 @@
+ 
+ #include <fcntl.h>
+ #include <linux/bpf.h>
++#include <llvm/Config/llvm-config.h>
+ #if LLVM_VERSION_MAJOR <= 16
+ #include <llvm-c/Transforms/IPO.h>
+ #endif
+diff --git a/src/cc/bpf_module.h b/src/cc/bpf_module.h
+index 56786e90..fc491cfe 100644
+--- a/src/cc/bpf_module.h
++++ b/src/cc/bpf_module.h
+@@ -22,8 +22,6 @@
+ #include <string>
+ #include <vector>
+ 
+-#include <llvm/Config/llvm-config.h>
+-
+ #include "bcc_exception.h"
+ #include "table_storage.h"
+ 
+-- 
+2.45.1
+

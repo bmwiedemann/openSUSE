@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  4 06:14:17 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Add python3-pyelftools as requirement of bcc-tools (boo#1225497)
+
+-------------------------------------------------------------------
+Tue Jun  4 05:41:57 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Remove bcc-devel's requirement on llvm-devel
+  * add build-remove-llvm-dev-dependency-from-libbcc.patch
+
+-------------------------------------------------------------------
 Wed Mar 27 09:57:56 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update to version 0.30.0
