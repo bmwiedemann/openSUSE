@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue May 28 23:55:31 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to 17.0.1:
+  * New default server for Nix, nil, replacing rnix-lsp.
+  * The gopls usePlaceholders setting now defaults to true in the default config,
+    make sure to either add a mapping for lsp-snippets-select-next-placeholders
+    or disable snippets.
+  * gopls default config has been changed so inlay (type) hints require no
+    gopls-specific knobs to turn on. As with other servers, inlay hints are only
+    requested when lsp-inlay-hints-enabled is used.
+  * The default config for HTML/CSS/JSON has been updated to use
+    vscode-{html,css,json}-language-server as server command instead of
+    vscode-{html,css,json}-languageserver.
+  * Support for watching files (workspace/didChangeWatchedFiles) is now disabled
+    by default to avoid performance problems.
+  * Inlay code lenses (used by OCaml and Haskell language servers) are now
+    shown after the referenced line. This requires Kakoune version >= 2024.
+  * lsp-auto-hover-enable no longer takes an argument; that functionality has
+    been moved to lsp-auto-hover-buffer-enable, and it no longer magically spawns
+    a client.
+  * Removed lsp-connect experimental command.
+  * New commands jump-{next,previous} (which have also been added to Kakoune)
+    replace and deprecate lsp-{next,previous}.
+  * lsp-document-symbol no longer renders the same filename in every single
+    line. Commands like jump-next and <ret> still work as before.
+  * New option lsp_hover_max_info_lines replaces and deprecates
+    lsp_hover_max_lines which now defaults to -1 which means
+    lsp_hover_max_info_lines is used to control lines of information in the
+    hover box.
+  * New option lsp_hover_max_diagnostic_lines to limit the lines for diagnostics
+    in the hover box.
+  * Fix gopls code actions like "Extract function".
+  * Various improvements to compatibility with old Kakoune.
+  * Fix startup error when both lsp.kak and Kakoune's jump.kak are autoloaded.
+
+-------------------------------------------------------------------
 Sun Mar  3 08:46:55 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update specfile:
