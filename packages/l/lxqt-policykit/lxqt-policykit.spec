@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-policykit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,26 @@
 
 
 Name:           lxqt-policykit
-Version:        1.4.0
+Version:        2.0.0
 Release:        0
 Summary:        PolicyKit authentication agent
 License:        LGPL-2.1-or-later
 Group:          System/GUI/LXQt
-URL:            http://www.lxqt.org
-Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+URL:            https://github.com/lxqt/lxqt-policykit
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-BuildRequires:  cmake >= 3.1.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.11.0
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  pkgconfig(Qt5UiTools) >= 5.15.0
-BuildRequires:  pkgconfig(Qt5Xdg)
-BuildRequires:  pkgconfig(lxqt) >= %{version}
-BuildRequires:  pkgconfig(lxqt-globalkeys) >= %{version}
+BuildRequires:  cmake(KF6WindowSystem)
+BuildRequires:  cmake(PolkitQt6-1)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(lxqt2-build-tools)
+BuildRequires:  pkgconfig(lxqt) >= 2.0.0
 BuildRequires:  pkgconfig(polkit-agent-1)
-BuildRequires:  pkgconfig(polkit-qt5-core-1)
-Recommends:     %{name}-lang
+Recommends:     %{name}-lang = %{version}-%{release}
 
 %description
 PolicyKit authentication agent for LXQt
@@ -45,28 +44,27 @@ PolicyKit authentication agent for LXQt
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 
 %build
-%cmake -DPULL_TRANSLATIONS=No
+%cmake_qt6
+%{qt6_build}
 
 %install
-%cmake_install
-install -Dm 0644 man/%{name}-agent.1 %{buildroot}%{_mandir}/man1/%{name}-agent.1
+%{qt6_install}
 
-%find_lang lxqt-policykit-agent --with-qt
+%find_lang %{name}-agent --with-qt
 
 %files
+%doc AUTHORS CHANGELOG README.md
+%{_bindir}/%{name}-agent
+%{_mandir}/man?/%{name}-agent.?%{?ext_man}
+%config %{_sysconfdir}/xdg/autostart/%{name}-agent.desktop
 %license LICENSE
-%doc AUTHORS
-%{_bindir}/lxqt-policykit-agent
-%{_mandir}/man?/%{name}-agent.?%{ext_man}
-%config %{_sysconfdir}/xdg/autostart/lxqt-policykit-agent.desktop
 
-%files lang -f lxqt-policykit-agent.lang
-
+%files lang -f %{name}-agent.lang
 %dir %{_datadir}/lxqt
 %dir %{_datadir}/lxqt/translations
-%{_datadir}/lxqt/translations/lxqt-policykit-agent
+%dir %{_datadir}/lxqt/translations/%{name}-agent
 
 %changelog
