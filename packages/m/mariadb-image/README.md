@@ -63,9 +63,10 @@ The only exception is the `MARIADB_AUTO_UPGRADE` environment variable. If it's s
 Information on how to perform backup and restore can be found on the MariaDB Knowledge Base [Container Backup and Restoration](https://mariadb.com/kb/en/container-backup-and-restoration/).
 
 ## Licensing
+
 `SPDX-License-Identifier: MIT`
 
-The build recipe and this documentation is licensed as MIT.
+This documentation and the build recipe are licensed as MIT.
 The container itself contains various software components under various open source licenses listed in the associated
 Software Bill of Materials (SBOM).
 
