@@ -1,0 +1,166 @@
+-------------------------------------------------------------------
+Sat May 11 10:27:23 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Source upload
+  Add: libsysstat.keyring
+
+-------------------------------------------------------------------
+Thu Apr 18 01:02:23 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 2.0.0:
+  * Ported to Qt6
+- Specfile Cleanup and macro updating
+- Change packagename from libsysstat-qtVER
+
+-------------------------------------------------------------------
+Mon Nov  8 09:38:21 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.6:
+  * Bumped minimum required Qt version to 5.15 and dropped dead code.
+
+-------------------------------------------------------------------
+Fri Apr 16 07:03:51 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.5:
+  * Initialized some variables.
+  * Used "= default" to define trivial destructors.
+  * Handled Qt5.15's deprecations.
+
+-------------------------------------------------------------------
+Wed Nov  4 13:35:50 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.4:
+  * Bumped version to 0.4.4
+
+-------------------------------------------------------------------
+Mon Apr 27 10:46:23 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Changed libsysstat-qt5.keyring to tsujan's key
+
+-------------------------------------------------------------------
+Sat Apr 25 10:29:41 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 0.4.3
+  * C++11 code updates.
+  * Removed (duplicated) string casts definitions.
+
+-------------------------------------------------------------------
+Tue Feb  5 14:30:25 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Thu Jan 31 09:46:57 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.2:
+  * Improved cmake scripting and set cmake_minimum_required to 3.1.0
+  * Don't use automatic string conversions
+  * Removes local compile definition
+
+-------------------------------------------------------------------
+Tue May 22 14:08:52 UTC 2018 - mvetter@suse.com
+
+- Update to 0.4.1:
+  * Bump patch version to 1
+  * CMake: Prevent in-source builds
+  * Fixed year and https
+  * Fixes some lxde mentions
+  * Drop Qt foreach.
+  * Handle CMake CMP0024
+  * Don't export github templates
+
+-------------------------------------------------------------------
+Mon Oct 23 10:22:45 UTC 2017 - mvetter@suse.com
+
+- Update to 0.4.0:
+  * correct spelling mistake
+  * bump version and needed version of lxqt-build-tools
+  * liblxqt make no sense here
+  * Copied issue template
+  * Drops Qt5Core_VERSION_STRING
+  * Fixes (#17)
+  * Bump years
+
+-------------------------------------------------------------------
+Fri Feb 24 18:24:20 UTC 2017 - sfalken@opensuse.org
+
+- Update to 0.3.3:
+  * Bump patch version to 3
+  * Simplify include_directories and compile definitions
+  * Adds Building project name and Qt version message
+  * Adds a minimum Qt minimum version requirement
+  * README.md: Add build dependency lxqt-build-tools
+  * Use the lxqt-build-tools LXQtCreatePkgConfigFile
+  * Use the lxqt-build-tools LXQtCreatePortableHeaders module
+  * Use the new lxqt-build-tools package
+  * Remove cpack (#14)
+
+-------------------------------------------------------------------
+Sat Sep 24 19:52:58 UTC 2016 - mvetter@suse.com
+
+- Update to 0.3.2:
+    * rare file descriptor leak fixed
+    * documentation improvements
+
+-------------------------------------------------------------------
+Thu Nov  5 13:15:36 UTC 2015 - mvetter@suse.com
+
+- Upstream release 0.3.1
+
+-------------------------------------------------------------------
+Mon Feb  9 16:33:58 UTC 2015 - sfalken@opensuse.org
+
+- new upstream version 0.3.0
+
+-------------------------------------------------------------------
+Sat Oct 25 13:36:36 UTC 2014 - andrea@opensuse.org
+
+- new upstream version 0.2.0
+
+-------------------------------------------------------------------
+Tue May 13 18:04:57 UTC 2014 - andrea@opensuse.org
+
+- spec file cleanup for factory
+
+-------------------------------------------------------------------
+Tue May 13 16:29:41 UTC 2014 - sfalken@opensuse.org
+
+- Specfile Cleanup
+
+-------------------------------------------------------------------
+Mon May 12 15:31:35 UTC 2014 - sfalken@opensuse.org
+
+- Removed fedora specfile, split into subproject
+  Del: libsysstat-Fedora_20.spec
+
+-------------------------------------------------------------------
+Sat May 10 17:54:32 UTC 2014 - sfalken@opensuse.org
+
+- ran spec-cleaner on specfile
+
+-------------------------------------------------------------------
+Fri May  9 22:39:44 UTC 2014 - sfalken@opensuse.org
+
+- Added specfile for Fedora_20
+  Add: libsysstat-Fedora_20.spec
+
+-------------------------------------------------------------------
+Fri May  9 20:25:15 UTC 2014 - sfalken@opensuse.org
+
+- Added tarball for new stable release
+  Add:  libsysstat-0.1.0.tar.xz
+  Del:  _service
+
+-------------------------------------------------------------------
+Wed Apr  2 14:36:41 UTC 2014 - sfalken@opensuse.org
+
+- Removed direct cmake calls, in favour of %cmake and %cmake_install
+
+-------------------------------------------------------------------
+Wed Apr  2 13:05:28 UTC 2014 - sfalken@opensuse.org
+
+- Initial Source Upload
+  Add: _system
+  Add: libsysstat.spec
+  Add: libsysstat.changes
+

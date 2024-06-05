@@ -1,0 +1,5 @@
+<package name="libsysstat" project="openSUSE:Factory">
+  <title></title>
+  <description>Query system info and statistics</description>
+  <devel project="X11:LXQt" package="libsysstat"/>
+</package>
