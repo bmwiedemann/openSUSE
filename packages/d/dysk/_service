@@ -4,14 +4,9 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v2.8.1</param>
+    <param name="revision">v2.9.0</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-  </service>
-  <service name="tar" mode="buildtime"/>
-  <service name="recompress" mode="buildtime">
-    <param name="file">*.tar</param>
-    <param name="compression">gz</param>
   </service>
   <service name="set_version" mode="manual">
   </service>
@@ -19,7 +14,10 @@
     <param name="update">true</param>
     <param name="srcdir">dysk</param>
   </service>
-  <service name="cargo_audit" mode="manual">
-     <param name="srcdir">dysk</param>
+  <service name="tar" mode="buildtime">
+  </service>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
   </service>
 </services>
