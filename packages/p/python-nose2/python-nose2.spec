@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-nose2
-Version:        0.14.2
+Version:        0.15.1
 Release:        0
 Summary:        The successor to the Python testing framework nose, based on unittest
 License:        BSD-2-Clause AND Python-2.0

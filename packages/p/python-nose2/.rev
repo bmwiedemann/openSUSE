@@ -156,4 +156,31 @@
     plugin on testsuites which invoke subprocesses.</comment>
     <requestid>1172525</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8b39a284a79865df66d48bd65e2c9591</srcmd5>
+    <version>0.15.1</version>
+    <time>1717602140</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.15.1:
+  * Fix a bug with config loading which caused custom ini configs
+    not to load if they were not named with a .cfg extension.
+    Thanks :user:`grhwalls` for the bug report!
+  * Official support for python3.13 betas. nose2 now tests itself
+    against Python 3.13.
+  * Official support for python3.13 betas. nose2 now tests itself
+    against Python 3.13.
+  * nose2 now supports loading configuration data from the
+    tool.nose2 table in pyproject.toml. Thanks to :user:`qequ`
+    for the PR! (:pr:`596`, :pr:`606`) On python 3.11+, tomllib
+    is used to parse TOML data. On python 3.10 and lower, tomli
+    must be installed to enable TOML support. Simply pip install
+    tomli as necessary.
+  * nose2 now supports loading configuration data from the
+    tool.nose2 table in pyproject.toml. Thanks to :user:`qequ`
+    for the PR! (:pr:`596`, :pr:`606`)
+  * On python 3.11+, tomllib is used to parse TOML data. On
+    python 3.10 and lower, tomli must be installed to enable TOML
+    support. Simply pip install tomli as necessary.</comment>
+    <requestid>1178617</requestid>
+  </revision>
 </revisionlist>
