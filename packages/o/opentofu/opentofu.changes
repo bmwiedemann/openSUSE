@@ -1,7 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun 03 15:17:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.7.2:
+  This is a bugfix release and we encourage all OpenTofu 1.7.1
+  users to upgrade.
+  * Fixed - authorization header is not included for HTTP backends
+    (#1656)
+  * Fixed bug in import 'to' parsing in JSON configurations (#1665)
+  * Fix bug where provider functions were unusable in variables and
+    outputs (#1689)
+
+-------------------------------------------------------------------
 Fri May 17 06:57:26 UTC 2024 - Christian Goll <cgoll@suse.com>
 
-- added global bash completion 
+- added global bash completion
 
 -------------------------------------------------------------------
 Wed May 08 16:22:29 UTC 2024 - opensuse_buildservice@ojkastl.de
