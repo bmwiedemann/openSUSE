@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun 05 10:40:21 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240605.c9362873:
+  * Dev: unittest: Adjust unit test for previous commit
+  * Dev: ui_resource: Improve completers for 'crm resource' command
+
+-------------------------------------------------------------------
+Mon Jun 03 08:36:17 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240603.6ad71c93:
+  * Dev: codecov: add flag report in generated comments
+  * Dev: codecov: upload unit tests coverage
+  * Dev: codecov: add 'integration' flags for integration tests
+  * Dev: codecov: remove token from codecov.yml
+  * Dev: github-actions: update actions/checkout to v4
+  * Dev: github-actions: update codevcov-action to v4
+  * Fix: codecov: specify token explicitly
+
+-------------------------------------------------------------------
 Fri May 31 02:13:34 UTC 2024 - XLiang@suse.com
 
 - Update to version 4.6.0+20240531.d386cc4a:
