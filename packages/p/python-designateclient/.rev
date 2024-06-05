@@ -333,4 +333,41 @@
   - Cap jsonschema 3.2.0 as the minimal version</comment>
     <requestid>984029</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>90d4445131e0f4f0e700d3eb2dbd0276</srcmd5>
+    <version>6.0.1</version>
+    <time>1717602122</time>
+    <user>anag+factory</user>
+    <comment>- update to version 6.0.1
+  - Recordset: Remove deprecated --records argument
+  - pyupgrade changes for Python3.8+
+  - Use --record instead of deprecated --records
+  - Update python classifier in setup.cfg
+  - reno: Update master for unmaintained/yoga
+  - Add coveragerc file
+  - Update master for stable/2023.2
+  - Remove translation sections from setup.cfg
+  - Add new API - zone pool move
+
+- update to version 5.3.0
+  - Add shared zone commands
+  - Update zuul queue configuration
+  - Drop explicit queue configuration
+  - Update metadata in setup.cfg
+  - Update master for stable/2023.1
+  - Fix quota list command for non-admin users
+  - Use TOX_CONSTRAINTS_FILE
+  - Add python3.9 support in testing runtime
+  - Provide option for delete zonefiles on zone delete
+  - Update python testing as per zed cycle testing runtime
+  - Update python jobs to zed template
+  - Add Python3 antelope unit tests
+  - Fix missing --target-project-id for transfer req
+  - Drop lower-constraints.txt and its testing
+  - Update master for stable/yoga
+  - Update tox.ini for tox4
+  - Update master for stable/zed
+  - Include SECONDARY zones into list command output</comment>
+    <requestid>1178606</requestid>
+  </revision>
 </revisionlist>

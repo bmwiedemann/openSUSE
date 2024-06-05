@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Jun  4 20:04:37 UTC 2024 - cloud-devel@suse.de
+
+- update to version 6.0.1
+  - Recordset: Remove deprecated --records argument
+  - pyupgrade changes for Python3.8+
+  - Use --record instead of deprecated --records
+  - Update python classifier in setup.cfg
+  - reno: Update master for unmaintained/yoga
+  - Add coveragerc file
+  - Update master for stable/2023.2
+  - Remove translation sections from setup.cfg
+  - Add new API - zone pool move
+
+-------------------------------------------------------------------
+Wed Jan 10 16:48:13 UTC 2024 - cloud-devel@suse.de
+
+- update to version 5.3.0
+  - Add shared zone commands
+  - Update zuul queue configuration
+  - Drop explicit queue configuration
+  - Update metadata in setup.cfg
+  - Update master for stable/2023.1
+  - Fix quota list command for non-admin users
+  - Use TOX_CONSTRAINTS_FILE
+  - Add python3.9 support in testing runtime
+  - Provide option for delete zonefiles on zone delete
+  - Update python testing as per zed cycle testing runtime
+  - Update python jobs to zed template
+  - Add Python3 antelope unit tests
+  - Fix missing --target-project-id for transfer req
+  - Drop lower-constraints.txt and its testing
+  - Update master for stable/yoga
+  - Update tox.ini for tox4
+  - Update master for stable/zed
+  - Include SECONDARY zones into list command output
+  - Add hacking check for line continuation backslash
+
+-------------------------------------------------------------------
 Mon Jun 20 17:26:17 UTC 2022 - cloud-devel@suse.de
 
 - update to version 4.5.0

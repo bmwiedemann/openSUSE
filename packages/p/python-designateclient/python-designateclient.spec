@@ -1,7 +1,7 @@
 #
 # spec file for package python-designateclient
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-designateclient
-Version:        4.5.0
+Version:        6.0.1
 Release:        0
 Summary:        OpenStack DNS as a Service - Client
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-designateclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-designateclient/python-designateclient-4.5.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-designateclient/python-designateclient-6.0.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-jsonschema >= 3.2.0
 BuildRequires:  python3-keystoneauth1 >= 3.4.0
@@ -40,7 +40,6 @@ OpenStack DNS as a Service - Client
 
 %package -n python3-designateclient
 Summary:        OpenStack DNS as a Service - Client
-Requires:       python3-cliff >= 2.8.0
 Requires:       python3-debtcollector >= 1.2.0
 Requires:       python3-jsonschema >= 3.2.0
 Requires:       python3-keystoneauth1 >= 3.4.0
@@ -49,7 +48,6 @@ Requires:       python3-oslo.serialization >= 2.18.0
 Requires:       python3-oslo.utils >= 3.33.0
 Requires:       python3-requests >= 2.14.2
 Requires:       python3-six
-Requires:       python3-stevedore >= 1.20.0
 
 %description -n python3-designateclient
 OpenStack DNS as a Service - Client
@@ -67,14 +65,14 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for the OpenStack DNS as a Service - Client.
 
 %prep
-%autosetup -p1 -n python-designateclient-4.5.0
+%autosetup -p1 -n python-designateclient-6.0.1
 %py_req_cleanup
 
 %build
 %py3_build
 
 # generate docs
-PYTHONPATH=. PBR_VERSION=4.5.0 %sphinx_build -b html doc/source doc/build/html
+PYTHONPATH=. PBR_VERSION=6.0.1 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
@@ -82,7 +80,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %py3_install
 
 %check
-python3 -m stestr.cli run
+%{openstack_stestr_run}
 
 %files -n python3-designateclient
 %license LICENSE
