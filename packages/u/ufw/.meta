@@ -1,0 +1,5 @@
+<package name="ufw" project="openSUSE:Factory">
+  <title>ufw</title>
+  <description>Ufw stands for Uncomplicated Firewall, and is program for managing a netfilter firewall. It provides a command line interface and aims to be uncomplicated and easy to use.</description>
+  <devel project="security" package="ufw"/>
+</package>

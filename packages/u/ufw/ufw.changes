@@ -1,0 +1,210 @@
+-------------------------------------------------------------------
+Sat Jan 29 15:38:15 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.36.1:
+  * update man page for limit since IPv6 has been supported since
+    0.33 (LP: #1831186).
+  * add direction when no interfaces specified in get_app_tuple()
+    (LP: #1838764).
+  * various testsuite adjustments for iptables 1.8
+  * doc/ufw.8:
+    - ::/0 is also a synonym for 'Anywhere'
+    - document --force with 'ufw delete NUM'
+  * prefer python3
+  * empty out IPT_MODULES and update documentation (LP: #1556419)
+  * adjust check-requirements to look for other firewall software
+  * src/backend_iptables.py: unconditionally reload user rules
+    with 'delete' (LP: #1933117).
+- Switch to using default python3 for build and use appropriate
+  python macros (BuildRequires: python3-devel, python-rpm-macros).
+- Move bash completions to %_datadir/bash-completion/completions.
+- Fix env dependent hashbangs.
+
+-------------------------------------------------------------------
+Thu Jan 08 13:44:54 UTC 2019 - alexander_naumov@opensuse.org
+
+- Update to version 0.36
+  * adds snap packaging
+  * concurrent updates
+  * many bug fixes
+  * a new 'prepend' command to better support IPS and dynamic firewalls.
+
+-------------------------------------------------------------------
+Fri Dec 30 20:29:23 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.35
+  * update check-requirements and README for python 3.5
+  * update unit tests to not fail when /proc/net/* has no useful information
+    (Closes: 797020)
+  * update rsyslog example to use 'stop' instead of the deprecated '~'
+    (Closes: 798100)
+  * add --rootdir and --datadir options to ufw and ufw-init to make
+    relocatable
+  * files owned by 'clickpkg' are ok too
+  * add preliminary snappy packaging
+  * add support for comments (LP: #448503)
+  * don't allow 'route delete NUM' and suggest 'delete NUM' instead
+  * move user[6].rules to /etc/ufw (LP: #728128)
+  * update README: python3 < 3.4 is no longer supported
+
+- remove Source2: ufw.service
+  * replaced with upstream provided proper systemd-service file
+- add support for bash completion
+- minor specfile cleanup
+
+-------------------------------------------------------------------
+Wed Dec  2 13:22:00 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.34
+  * refactor capabilities checks and only call when needed
+  * error out early instead of tracing back with iptables errors in
+    get_netfilter_capabilities() (LP: #1044361)
+  * fix TypeError which somehow only manifested itself when using zh_CN
+  * add 'reload' to help (LP: #1059060)
+  * check-requirements now gives iptables output on failure. Patch thanks to
+    S. Nizio.
+  * use conntrack instead of state module. Patch based on work by S. Nizio.
+    (LP: #1065297)
+  * don't use get_netfilter_capabilities() with ipv6 if ipv6 is disabled
+    (LP: #1039729, LP: #1062521)
+  * fix parse error when finding PPID (LP: #1101304)
+  * implement before and after hooks in /etc/ufw/(before|after).init
+    (LP: #1075975) TODO: add tests
+  * add unit test framework and cleanup, remove dead and refactor some code
+  * honor UFW_SKIP_CHECKS=1 environment variable with setup.py, which eases
+    testing
+  * tests/check-requirements: add a check for -m rt --rt-type 0 (LP: #1191197)
+  * match simple rule syntax and don't allow ports with esp and ah protocols
+    with extended rule syntax
+  * when displaying extended rules via parser.get_command(), show "out" if the
+    direction is "out" and there is no corresponding interface
+  * fix return of various invalid extended rules in parser.get_command()
+  * clarify 'limit' command in man page (LP: #1089262)
+  * implement route rules (ie, manage FORWARD, LP: #262421). See man page for
+    details. This change reworked interface parsing and we now allow
+    interfaces with '_' in the name (LP: #1098472)
+  * add state RELATED,ESTABLISHED rule to ufw-before-forward in before*.rules
+    like we do with ufw-before-input. This will only affect systems with ip
+    forwarding enabled via sysctl
+  * add ufw[6]-track-forward chain and handle it the same as for
+    ufw[6]track-input and ufw[6]-track-output
+  * document ufw[6]-track-* in README (dropped in previous commit)
+  * fix for 'status' not distingushing between some v4/v6 targets
+    (LP: #1078665)
+  * add safe icmp packets packets to ufw-before-forward in before*.rules like
+    we do for ufw-before-input. This will only affect systems with ip
+    forwarding enabled via sysctl
+  * update check-requirements for python 3.3 and 3.4
+  * add 5269/tcp to XMPP (LP: #1327162)
+  * fix traceback with forward rule
+  * import new and updated Launchpad translations:
+    - po/ar.po, po/ast.po, po/bg.po, po/bs.po, po/ca.po, po/ce.po, po/cs.po,
+      po/da.po, po/de.po, po/el.po, po/en_AU.po, po/en_GB.po, po/es.po,
+      po/et.po, po/fi.po, po/fr.po, po/he.po, po/hu.po, po/id.po, po/it.po,
+      po/ja.po, po/ko.po, po/lv.po, po/nb.po, po/nl.po, po/pl.po, po/pt_BR.po,
+      po/pt.po, po/ru.po, po/se.po, po/sk.po, po/sl.po, po/sr.po, po/sv.po,
+      po/tl.po, po/tr.po, po/uk.po, po/ur.po, po/zh_CN.po, po/zh_TW.po
+  * also use .lower() on translations for 'yes' (LP: #1438647)
+  * adjust/rearrange before6.rules for rfc4890 'must not be blocked' and
+    'should not be blocked' (LP: #1434525, LP: #1030214)
+  * doc/systemd.example: add service file from Ubuntu (LP: #1341083)
+  * correctly spell qBittorrent (LP: #1273965)
+  * update man page for app rules (LP: #1155292)
+  * support igmp protocol (LP: #946322)
+  * adjust testsuite for systems supporting smtp/udp (LP: #815982)
+  * enforce that basic commands don't have arguments (LP: #1155250)
+  * update command completion for --dry-run, --force, --help and route
+    (LP: #1225666)
+  * support gre protocol (LP: #1418879)
+  * support ./setup.py build (LP: #819600)
+  * doc/ufw.8:
+    - clarify log level behavior (LP: #1461701)
+    - add app profile syntax
+    - add protocol support
+  * skip profiles with invalid port declarations (LP: #1201934)
+  * tests/check-locales: skip locales that fail to install or generate
+
+-------------------------------------------------------------------
+Tue Apr  7 16:09:56 UTC 2015 - p.drouand@gmail.com
+
+- Remove obsolete macros
+- Drop sysvinit support; ufw doesn't build for SLE11 anyway
+- Cleanup specfile
+- Split out translation files
+- Use download Url as source
+
+-------------------------------------------------------------------
+Fri Nov  9 12:28:27 UTC 2012 - johann.luce@wanadoo.fr
+
+-fix problem systemd move in /usr
+ fix various warning OBS 
+
+-------------------------------------------------------------------
+Tue Oct 16 14:53:10 UTC 2012 - johann.luce@wanadoo.fr
+
+-fix systemd tag to start automaticaly ufw
+
+-------------------------------------------------------------------
+Mon Sep 17 12:53:01 UTC 2012 - johann.luce@wanadoo.fr
+
+- Update in 0.33 
+  fix dependance python-base
+  fix lang zh_TW
+
+-------------------------------------------------------------------
+Wed Apr  4 14:02:00 UTC 2012 - johann.luce@wanadoo.fr
+
+- Updated in 0.31.1
+  fix various warning OBS
+  add script init file for systemd
+
+-------------------------------------------------------------------
+Tue Oct 11 15:05:51 UTC 2011 - johann.luce@wanadoo.fr
+
+bug on restart in init file- 
+
+-------------------------------------------------------------------
+Mon Oct 10 16:13:12 UTC 2011 - johann.luce@wanadoo.fr
+
+add opensuse init script - 
+
+-------------------------------------------------------------------
+Thu Oct  6 21:17:36 UTC 2011 - johann.luce@wanadoo.fr
+
+add %lang tag in spec file- 
+
+-------------------------------------------------------------------
+Wed Oct  5 14:56:20 UTC 2011 - johann.luce@wanadoo.fr
+
+OpenSuSE Factory- 
+
+-------------------------------------------------------------------
+Wed Oct  5 12:50:01 UTC 2011 - johann.luce@wanadoo.fr
+
+Delete patch commit.py- 
+
+-------------------------------------------------------------------
+Wed Oct  5 10:15:43 UTC 2011 - johann.luce@wanadoo.fr
+
+Changes in spec file for lang-
+
+-------------------------------------------------------------------
+Tue Oct  4 14:21:01 UTC 2011 - johann.luce@wanadoo.fr
+
+Changes in spec file for python version -
+
+-------------------------------------------------------------------
+Tue Oct  4 14:07:48 UTC 2011 - johann.luce@wanadoo.fr
+
+Changes on buildarch -
+
+-------------------------------------------------------------------
+Tue Oct  4 13:57:07 UTC 2011 - johann.luce@wanadoo.fr
+
+Errors in spec file - 
+
+-------------------------------------------------------------------
+Tue Oct  4 13:49:46 UTC 2011 - johann.luce@wanadoo.fr
+
+first on OpenSUSE 11.4 - 
+
