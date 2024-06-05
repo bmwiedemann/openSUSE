@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  4 20:06:44 UTC 2024 - cloud-devel@suse.de
+
+- update to version 4.5.0
+  - Update master for stable/2024.1
+  - Replace deprecated inspector.getargspec
+  - Display project_id for cluster template
+  - Always use io module
+  - reno: Update master for unmaintained/zed
+
+-------------------------------------------------------------------
 Thu May  2 16:04:42 UTC 2024 - cloud-devel@suse.de
 
 - removed 0001-Fix-test_help_on_subcommand-on-Python-3.10.patch

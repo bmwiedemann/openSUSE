@@ -254,4 +254,17 @@
   - reno: Update master for unmaintained/yoga</comment>
     <requestid>1171413</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8912b99fd04991bf1a2fb0c2597e374d</srcmd5>
+    <version>4.5.0</version>
+    <time>1717602127</time>
+    <user>anag+factory</user>
+    <comment>- update to version 4.5.0
+  - Update master for stable/2024.1
+  - Replace deprecated inspector.getargspec
+  - Display project_id for cluster template
+  - Always use io module
+  - reno: Update master for unmaintained/zed</comment>
+    <requestid>1178609</requestid>
+  </revision>
 </revisionlist>

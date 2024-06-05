@@ -17,13 +17,13 @@
 
 
 Name:           python-magnumclient
-Version:        4.4.0
+Version:        4.5.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Magnum
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-magnumclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-magnumclient/python-magnumclient-4.4.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-magnumclient/python-magnumclient-4.5.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable >= 0.7.2
 BuildRequires:  python3-cryptography >= 3.0
@@ -86,15 +86,15 @@ Client library for Magnum built on the Magnum API. It provides a Python API
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n python-magnumclient-4.4.0
+%autosetup -p1 -n python-magnumclient-4.5.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
 # Build HTML docs and man page
-PBR_VERSION=4.4.0 %sphinx_build -b html doc/source doc/build/html
-PBR_VERSION=4.4.0 %sphinx_build -b man doc/source doc/build/man
+PBR_VERSION=4.5.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=4.5.0 %sphinx_build -b man doc/source doc/build/man
 rm -r doc/build/html/.{doctrees,buildinfo}
 
 %install
