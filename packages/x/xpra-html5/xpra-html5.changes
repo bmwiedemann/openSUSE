@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue May 28 16:07:49 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 13.0+git20240528.6209443:
+  * #308 don't save 'password' (input element), save 'passwords' values
+  * undo some awful formatting, remvoe IE hasOwn workaround
+  * silence some chrome developer warnings
+  * also trigger the links with the keyboard
+  * shwo keyboard focus on the password prompt dialog
+  * can't use argument for default value
+  * cosmetic: logging and easier to read code
+  * update the release notes
+  * undo more dumb formatting changes
+  * #283 let users choose the prefered clipboard format
+  * #301 ssl makes no difference to Firefox?
+  * #301 need to make top bar bigger
+  * undo some infuriatingly awful automated formatting
+  * #301 add clipboard sync to server button
+  * #301 keep clipboard, disable polling
+  * cosmetic: undo some pointless line wrapping
+  * doh: arrays can't be added in JS
+  * do show the text we got
+  * #226 Safari clipboard should work with ssl enabled
+  * more tools
+  * #273 #298 add clipboard test page
+  * update packaging files
+  * update the release notes
+  * also use dashes in URLs, and replace ALL of them
+  * property names can use dash in connection files
+  * include the display (if specified) in connection files
+  * skip values set to their default
+  * boolean options not saved correctly in connection file
+  * outdated and misplaced docstring
+  * show some server information
+  * simplify: has_session_storage does not change
+  * better client URIs
+  * make the button label match the current action selected
+  * #304 'open-url' wasn't moved to file caps
+
+-------------------------------------------------------------------
 Thu Apr 18 15:05:02 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 13.0+git20240408.085e0df:
