@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 18 03:16:01 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 2.0.0:
+  * Ported to Qt6.
+  * Some fixes are made and the code is cleaned up.
+
+-------------------------------------------------------------------
 Wed Jan  3 20:09:16 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix Tumbleweed build (ownership of /usr/share/icons/hicolor/64x64)

@@ -17,28 +17,28 @@
 
 
 Name:           qterminal
-Version:        1.4.0
+Version:        2.0.0
 Release:        0
 Summary:        A Qt-based terminal emulator
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          System/X11/Terminals
 URL:            https://github.com/lxqt/qterminal
-Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+Source:         %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
-BuildRequires:  lxqt-build-tools-devel >= 0.13.0
-BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(qtermwidget5) >= %{version}
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.15.0
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(libcanberra)
-Recommends:     %{name}-lang
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  utempter-devel
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Test)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(lxqt2-build-tools)
+BuildRequires:  cmake(qtermwidget6)
+Recommends:     %{name}-lang = %{version}-%{release}
 
 %description
 The lightweight Qt terminal emulator.
@@ -49,31 +49,34 @@ The lightweight Qt terminal emulator.
 %autosetup -p1
 
 %build
-%cmake
-%cmake_build
+%cmake_qt6
+%{qt6_build}
 
 %install
-%cmake_install
+%{qt6_install}
+
 %find_lang %{name} --with-qt
 
 %check
 %ctest
 
 %files
-%license LICENSE
-%doc AUTHORS README.md CONTRIBUTING*
+%doc AUTHORS CHANGELOG README.md CONTRIBUTING.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/applications/%{name}-drop.desktop
-%dir %{_datadir}/icons/hicolor/64x64
-%dir %{_datadir}/icons/hicolor/64x64/apps
-%{_datadir}/icons/hicolor/64x64/apps/qterminal.png
-%{_datadir}/metainfo/qterminal.metainfo.xml
-%{_datadir}/qterminal/qterminal_bookmarks_example.xml
+%{_datadir}/icons/hicolor/*/apps/%{name}.??g
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/%{name}.metainfo.xml
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/%{name}_bookmarks_example.xml
+%license LICENSE
 
 %files lang -f %{name}.lang
-%license LICENSE
 %dir %{_datadir}/qterminal
-%{_datadir}/qterminal/translations
+%dir %{_datadir}/qterminal/translations
+%if 0%{?sle_version}
+%{_datadir}/%{name}/translations/%{name}_???.qm
+%endif
 
 %changelog
