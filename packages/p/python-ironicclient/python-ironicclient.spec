@@ -17,17 +17,17 @@
 
 
 Name:           python-ironicclient
-Version:        5.5.0
+Version:        5.6.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Ironic
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-ironicclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-ironicclient/python-ironicclient-5.5.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-ironicclient/python-ironicclient-5.6.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Babel
 BuildRequires:  python3-PyYAML >= 3.13
-BuildRequires:  python3-appdirs >= 1.3.0
+BuildRequires:  python3-appdirs
 BuildRequires:  python3-dogpile.cache >= 0.8.0
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-jsonschema >= 3.2.0
@@ -53,7 +53,7 @@ ironicclient module) and a command-line interface (ironic).
 %package -n python3-ironicclient
 Summary:        Python API and CLI for OpenStack Ironic
 Requires:       python3-PyYAML >= 3.13
-Requires:       python3-appdirs >= 1.3.0
+Requires:       python3-appdirs
 Requires:       python3-dogpile.cache >= 0.8.0
 Requires:       python3-jsonschema >= 3.2.0
 Requires:       python3-keystoneauth1 >= 3.11.0
@@ -88,13 +88,13 @@ Each implements 100% of the OpenStack Ironic API.
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-ironicclient-5.5.0
+%autosetup -p1 -n python-ironicclient-5.6.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
-PBR_VERSION=5.5.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=5.6.0 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 

@@ -514,4 +514,18 @@
   - reno: Update master for unmaintained/yoga</comment>
     <requestid>1161187</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>41d38d7a079eb25b6a72021aae0ca621</srcmd5>
+    <version>5.6.0</version>
+    <time>1717602125</time>
+    <user>anag+factory</user>
+    <comment>- update to version 5.6.0
+  - Add Service Steps to client
+  - Update master for stable/2024.1
+  - Fix on-creation ability
+  - Remove old excludes
+  - reno: Update master for unmaintained/zed
+  - Replace appdirs by platformdirs</comment>
+    <requestid>1178608</requestid>
+  </revision>
 </revisionlist>
