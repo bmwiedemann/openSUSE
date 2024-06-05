@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun  4 15:05:05 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Removed %{buildroot}%{_sysconfdir}/xdg/*.conf
+  * Conflicts with libQt6Xdg4, as both packages cannot provide
+    identical conf files, libQt5Xdg won't ever be installed
+    on it's own, with LXQt >= 2.0
+- Specfile Cleanup
+
+-------------------------------------------------------------------
 Sun Nov  5 14:27:40 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.12.0:

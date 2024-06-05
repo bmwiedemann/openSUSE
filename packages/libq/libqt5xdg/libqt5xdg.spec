@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5xdg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        3.12.0
 Release:        0
 Summary:        Qt implementation of xdg specs for lxqt
 License:        GPL-3.0-only
-Group:          Development/Libraries/C and C++
 URL:            https://lxqt.org
 Source:         https://github.com/lxqt/libqtxdg/releases/download/%{version}/%{_name}-%{version}.tar.xz
 Source1:        https://github.com/lxqt/libqtxdg/releases/download/%{version}/%{_name}-%{version}.tar.xz.asc
@@ -46,7 +45,6 @@ Qt implementation of freedesktop.org XDG specs for LXQt
 
 %package -n libQt5Xdg3
 Summary:        Libraries for qtxdg
-Group:          System/Libraries
 Provides:       libqtxdg
 
 %description -n libQt5Xdg3
@@ -54,7 +52,6 @@ QtXDG libraries for development
 
 %package devel
 Summary:        Devel files for libqtxdg
-Group:          Development/Libraries/C and C++
 Requires:       libQt5Xdg3 = %{version}
 Requires:       pkgconfig
 Requires:       pkgconfig(Qt5UiTools)
@@ -65,7 +62,6 @@ QtXDG libraries for development
 
 %package -n libQt5XdgIconLoader3
 Summary:        IconLoader library for QtXDG
-Group:          System/Libraries
 Provides:       libqtxdgiconloader
 
 %description -n libQt5XdgIconLoader3
@@ -73,7 +69,6 @@ QtXDG icon loader libraries used in LXQt
 
 %package -n libQt5XdgIconLoader-devel
 Summary:        Devel files for libQt5XdgIconLoader
-Group:          Development/Libraries/C and C++
 Requires:       libQt5XdgIconLoader3 = %{version}
 
 %description -n libQt5XdgIconLoader-devel
@@ -88,6 +83,8 @@ Development files for QtXDG icon loader libraries used in LXQt
 
 %install
 %cmake_install
+# Remove lxqt-qtxdg.conf and qtxdg.conf, both are now provided by libQt6Xdg4, and cannot be provided by both packages
+rm %{buildroot}%{_sysconfdir}/xdg/*.conf
 %fdupes -s %{buildroot}/%{_datadir}/locale
 
 %post -n libQt5Xdg3 -p /sbin/ldconfig
@@ -99,8 +96,6 @@ Development files for QtXDG icon loader libraries used in LXQt
 %license COPYING
 %doc AUTHORS
 %{_libdir}/libQt5Xdg.so.*
-%config %{_sysconfdir}/xdg/lxqt-qtxdg.conf
-%config %{_sysconfdir}/xdg/qtxdg.conf
 
 %files devel
 %{_datadir}/cmake/qt5xdg

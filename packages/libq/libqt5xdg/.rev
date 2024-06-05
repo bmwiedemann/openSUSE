@@ -459,4 +459,16 @@
 </comment>
     <requestid>1123564</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>38ca03bd69234f074c2849fd6a451345</srcmd5>
+    <version>3.12.0</version>
+    <time>1717601933</time>
+    <user>anag+factory</user>
+    <comment>- Removed %{buildroot}%{_sysconfdir}/xdg/*.conf
+  * Conflicts with libQt6Xdg4, as both packages cannot provide
+    identical conf files, libQt5Xdg won't ever be installed
+    on it's own, with LXQt &gt;= 2.0
+- Specfile Cleanup</comment>
+    <requestid>1178543</requestid>
+  </revision>
 </revisionlist>
