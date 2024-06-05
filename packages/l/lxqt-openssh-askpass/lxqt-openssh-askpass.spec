@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-openssh-askpass
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,51 +17,53 @@
 
 
 Name:           lxqt-openssh-askpass
-Version:        1.4.0
+Version:        2.0.1
 Release:        0
-Summary:        OpenSSH password tool
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+Summary:        GUI to query passwords on behalf of SSH agents
+License:        LGPL-2.1-or-later
 Group:          System/GUI/LXQt
-URL:            http://www.lxqt.org
-Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+URL:            https://github.com/lxqt/lxqt-openssh-askpass
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-BuildRequires:  cmake >= 3.1.0
-BuildRequires:  lxqt-build-tools-devel >= 0.13.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  pkgconfig(Qt5UiTools) >= 5.15
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(lxqt) >= %{version}
-Recommends:     %{name}-lang
+BuildRequires:  cmake(KF6WindowSystem)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(lxqt2-build-tools)
+BuildRequires:  pkgconfig(lxqt) >= 2.0.0
+Recommends:     %{name}-lang = %{version}-%{release}
 
 %description
-Tool that will prompt user for password when using OpenSSH in LXQt
+lxqt-openssh-askpass is a GUI to query credentials on behalf of other
+programs. As indicated by its name it's primarily targeted at ssh-agent,
+the SSH agent of OpenSSH, but it works with other applications like e. g.
+EncFS as well.
 
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 
 %build
-%cmake -DPULL_TRANSLATIONS=No
+%cmake_qt6
+%{qt6_build}
 
 %install
-%cmake_install
-install -Dm 0644 man/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
+%{qt6_install}
 
 %find_lang %{name} --with-qt
 
 %files
-%license LICENSE
-%doc AUTHORS README.md
+%doc AUTHORS CHANGELOG README.md
 %{_bindir}/%{name}
-%{_mandir}/man?/%{name}.?%{ext_man}
+%{_mandir}/man?/%{name}.?%{?ext_man}
+%license LICENSE
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/lxqt
 %dir %{_datadir}/lxqt/translations
-%dir %{_datadir}/lxqt/translations/lxqt-openssh-askpass
-%{_datadir}/lxqt/translations/lxqt-openssh-askpass/*
+%dir %{_datadir}/lxqt/translations/%{name}
 
 %changelog

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat May 18 04:04:22 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 2.0.1:
+  * Fixed the Focus of the input entry with Qt6.
+
+-------------------------------------------------------------------
+Sat May 11 07:03:23 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 2.0.0:
+  * Ported to Qt6.
+
+-------------------------------------------------------------------
 Mon Nov  6 03:02:16 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 1.4.0:
