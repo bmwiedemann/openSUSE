@@ -1,7 +1,7 @@
 #
 # spec file for package ffms2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2016 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define libname lib%{name}
 %define soname 5
 Name:           ffms2
-Version:        2.40+44
+Version:        5.0+0
 Release:        0
 Summary:        Wrapper library around FFmpeg libraries
 License:        MIT
@@ -30,14 +30,14 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 Patch0:         ffms2-pkgconfig.patch
 BuildRequires:  automake
-BuildRequires:  gcc-c++ >= 4.8
+BuildRequires:  c++_compiler
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavutil)
-BuildRequires:  pkgconfig(libswresample)
-BuildRequires:  pkgconfig(libswscale)
+BuildRequires:  pkgconfig(libavcodec) >= 60.31.0
+BuildRequires:  pkgconfig(libavformat) >= 60.16.0
+BuildRequires:  pkgconfig(libavutil) >= 58.29.0
+BuildRequires:  pkgconfig(libswresample) >= 4.12.0
+BuildRequires:  pkgconfig(libswscale) >= 7.5.0
 BuildRequires:  pkgconfig(zlib)
 
 %description

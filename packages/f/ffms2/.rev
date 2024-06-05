@@ -27,4 +27,27 @@ It should be legally okay, as it only links FFmpeg and contains no support for p
     <comment></comment>
     <requestid>1042998</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c7261b3abf3dc2c3996417c0deb231f2</srcmd5>
+    <version>5.0+0</version>
+    <time>1717602134</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.0+0:
+  * Fixed all issues with FFmpeg 6.1 which is now the minimum
+    requirement
+  * Fixed av1 decoding
+  * Added HDR10+ and DolbyVision metadata
+  * Fixed audio decoding that could otherwise get stuck in an
+    infinite loop on certain files
+  * Fixed framerate in Avisynth when using VFR=&gt;CFR mode
+  * Dropped VapourSynth API3 support
+  * Indexer now has a configurable progress update interval
+  * Alpha planes are now correctly marked as being full range
+  * The full set of demuxer options can now be passed using the
+    FFMS2 API
+  * Now sets channel layout in Avisynth+
+  * Removed the unfixable and always broken rffmode from Avisynth
+    source</comment>
+    <requestid>1178598</requestid>
+  </revision>
 </revisionlist>

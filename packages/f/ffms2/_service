@@ -4,7 +4,7 @@
     <param name="url">https://github.com/FFMS/ffms2.git</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
-    <param name="revision">ff61bca</param>
+    <param name="revision">5.0</param>
   </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
