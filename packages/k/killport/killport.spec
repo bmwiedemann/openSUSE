@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           killport
-Version:        0.9.2
+Version:        1.1.0
 Release:        0
 Summary:        A tool to easily kill processes running on a specified port
 License:        MIT
@@ -28,8 +29,8 @@ Source2:        cargo_config
 BuildRequires:  cargo-packaging
 
 %description
-A command-line utility for killing processes listening on specific ports. 
-It's designed to be simple, fast, and effective. 
+A command-line utility for killing processes listening on specific ports.
+It's designed to be simple, fast, and effective.
 
 Features:
 - Kill processes by port number
@@ -46,7 +47,7 @@ Features:
 %{cargo_install}
 
 %check
-%{cargo_test}
+cargo test -- --test-threads=1
 
 %files
 %license LICENSE
@@ -54,4 +55,3 @@ Features:
 %{_bindir}/%{name}
 
 %changelog
-
