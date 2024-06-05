@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  4 20:46:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.1:
+  * Require Python 3.8 or later.
+  * Drop support for Python 3.7.
+  * Add support for Python 3.12.
+  * Ignore methods decorated by @typing.override.
+  * Perform case-sensitive ignore-names globbing on all
+    platforms.
+
+-------------------------------------------------------------------
 Mon Jan  2 09:42:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.13.3:
@@ -21,7 +32,7 @@ Mon Feb  7 04:03:47 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
   * Fix potential stack exhaustion in the N818 check.
   * flake8 3.9.1 or later is now required.
   * N818 checks exception class names for an "Error" suffix
-  * asyncSetUp and asyncTearDown are now exempted by default. 
+  * asyncSetUp and asyncTearDown are now exempted by default.
 - Remove pep8-naming-pr157-exception-names.patch, merged.
 - Add patch add-missing-option-for-testsuite.patch:
   * Merged commit from upstream to make tests pass.
@@ -167,7 +178,7 @@ Mon Aug 14 01:45:25 UTC 2017 - toddrme2178@gmail.com
 Thu Jul 10 12:01:03 UTC 2014 - toddrme2178@gmail.com
 
 - Update to 0.2.2
-  - Do not require setuptools in setup.py. It works around an 
+  - Do not require setuptools in setup.py. It works around an
     issue with pip and Python 3.
   - __new__ is now considered as classmethod implicitly
   - Run unit tests on travis-ci.org for python2.6, 2.7, 3.2, and 3.3

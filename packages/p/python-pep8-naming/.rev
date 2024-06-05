@@ -115,4 +115,21 @@
   * Add support for Python 3.11.</comment>
     <requestid>1046120</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e6de98dc7de5cd71905584374b82e416</srcmd5>
+    <version>0.14.1</version>
+    <time>1717602142</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.14.1:
+  * Require Python 3.8 or later.
+  * Drop support for Python 3.7.
+  * Add support for Python 3.12.
+  * Ignore methods decorated by @typing.override.
+  * Perform case-sensitive ignore-names globbing on all
+    platforms.
+
+  * asyncSetUp and asyncTearDown are now exempted by default.
+  - Do not require setuptools in setup.py. It works around an</comment>
+    <requestid>1178618</requestid>
+  </revision>
 </revisionlist>

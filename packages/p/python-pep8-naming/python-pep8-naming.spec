@@ -1,7 +1,7 @@
 #
 # spec file for package python-pep8-naming
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,21 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pep8-naming
-Version:        0.13.3
+Version:        0.14.1
 Release:        0
 Summary:        Flake8 plugin for checking PEP-8 naming conventions
 License:        MIT
 URL:            https://github.com/PyCQA/pep8-naming
 Source:         https://files.pythonhosted.org/packages/source/p/pep8-naming/pep8-naming-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-flake8 >= 5.0.0
-Requires:       python-flake8-polyfill >= 1.0.2
-Requires:       python-setuptools
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module flake8 >= 5.0.0}
-BuildRequires:  %{python_module flake8-polyfill >= 1.0.2}
 # /SECTION
 %python_subpackages
 
@@ -49,10 +47,10 @@ This module provides a plugin for ``flake8``, the Python code checker.
 %autosetup -p1 -n pep8-naming-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -65,6 +63,6 @@ $python -B run_tests.py
 %license LICENSE
 %{python_sitelib}/pep8ext_naming.py*
 %pycache_only %{python_sitelib}/__pycache__/pep8ext_naming.*.py*
-%{python_sitelib}/pep8_naming-%{version}*-info
+%{python_sitelib}/pep8_naming-%{version}.dist-info
 
 %changelog
