@@ -341,4 +341,16 @@
   * feat: support more languages in napi 19e3baa</comment>
     <requestid>1178224</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>99a90a14c8eb64902512b95127666689</srcmd5>
+    <version>0.22.6+0</version>
+    <time>1717602165</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.22.6:
+  * fix: add Edit to export list #1186
+  * feat: add modify edit range feature in pyo3 1e31253
+  * test: add test for modifying edit 7044811
+  * fix: addClass Edit in pyo3 d81c6c3</comment>
+    <requestid>1178664</requestid>
+  </revision>
 </revisionlist>

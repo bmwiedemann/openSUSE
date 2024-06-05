@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun  5 06:17:51 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.22.6:
+  * fix: add Edit to export list #1186
+  * feat: add modify edit range feature in pyo3 1e31253
+  * test: add test for modifying edit 7044811
+  * fix: addClass Edit in pyo3 d81c6c3
+
+-------------------------------------------------------------------
 Mon Jun  3 06:26:04 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.22.5:
