@@ -1,0 +1,22 @@
+commit 0c6e031c02fb18affd3bb7f15e269d9dd5c3317a
+Author: Christian Boltz <apparmor@cboltz.de>
+Date:   Tue Jun 4 21:45:06 2024 +0200
+
+    abstractions/X: add another xauth path
+    
+    This time it's   /tmp/xauth_?????? r,   which gets used by latest sddm.
+    
+    Fixes: https://bugzilla.opensuse.org/show_bug.cgi?id=1223900
+
+diff --git a/profiles/apparmor.d/abstractions/X b/profiles/apparmor.d/abstractions/X
+index 6f0272d64..6df891185 100644
+--- a/profiles/apparmor.d/abstractions/X
++++ b/profiles/apparmor.d/abstractions/X
+@@ -28,6 +28,7 @@
+   owner @{run}/user/*/gdm/Xauthority r,
+   owner @{run}/user/*/X11/Xauthority r,
+   owner @{run}/user/*/xauth_* r,
++  owner /tmp/xauth_?????? r,
+ 
+   # the unix socket to use to connect to the display
+   /tmp/.X11-unix/* rw,

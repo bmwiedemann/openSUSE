@@ -98,6 +98,12 @@ Patch13:        teardown-unconfined.diff
 Patch14:        utils-relax-mount-rules.diff
 Patch15:        utils-relax-mount-rules-2.diff
 
+# Fix QtWebEngineProcess path in plasmashell profile (merged upstream 2024-06-04 in 4.0 and master - https://gitlab.com/apparmor/apparmor/-/merge_requests/1248)
+Patch16:        plasmashell.diff
+
+# latest sddm uses yet another path for xauth (submitted upstream 2024-06-04 https://gitlab.com/apparmor/apparmor/-/merge_requests/1249)
+Patch17:        sddm-xauth.diff
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
@@ -371,6 +377,8 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch -P 13 -p1
 %patch -P 14 -p1
 %patch -P 15 -p1
+%patch -P 16 -p1
+%patch -P 17 -p1
 
 %build
 export SUSE_ASNEEDED=0

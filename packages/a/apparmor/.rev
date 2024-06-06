@@ -2824,4 +2824,14 @@ This SR adds two more fixes. Especially teardown-unconfined.diff makes this SR a
     <comment>- Also exclude podman profile - boo#1225608 (forwarded request 1177727 from Guillaume_G)</comment>
     <requestid>1177757</requestid>
   </revision>
+  <revision rev="211" vrev="6">
+    <srcmd5>b579e79c9239f67398f34008987ba5c3</srcmd5>
+    <version>4.0.1</version>
+    <time>1717669899</time>
+    <user>anag+factory</user>
+    <comment>- add sddm-xauth.diff - sddm uses a new path for xauth (boo#1223900)
+- add plasmashell.diff - fix QtWebEngineProcess path to prevent a
+  crash in plasmashell (boo#1225961) (forwarded request 1178599 from cboltz)</comment>
+    <requestid>1178600</requestid>
+  </revision>
 </revisionlist>

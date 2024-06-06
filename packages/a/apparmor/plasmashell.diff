@@ -1,0 +1,31 @@
+commit 64469afa2c65eb8a90a19d2b658a9559fb3964b0
+Author: Christian Boltz <apparmor@cboltz.de>
+Date:   Tue Jun 4 21:14:50 2024 +0200
+
+    Add openSUSE path to plasmashell profile
+    
+    While on it,
+    - add some comments explaining what the profile does
+    - adjust the rule with the Debian/Ubuntu path to work with Qt6
+    
+    Fixes: https://bugzilla.opensuse.org/show_bug.cgi?id=1225961
+
+diff --git a/profiles/apparmor.d/plasmashell b/profiles/apparmor.d/plasmashell
+index d743ff7a3..51c50a689 100644
+--- a/profiles/apparmor.d/plasmashell
++++ b/profiles/apparmor.d/plasmashell
+@@ -17,8 +17,13 @@ profile plasmashell /usr/bin/plasmashell {
+   unix,
+   ptrace,
+ 
+-  /usr/lib/x86_64-linux-gnu/qt5/libexec/QtWebEngineProcess cx -> &plasmashell//QtWebEngineProcess,
++  # allow executing QtWebEngineProcess with full permissions including userns (using profile stacking to avoid no_new_privs issues)
++  /usr/lib/x86_64-linux-gnu/qt[56]/libexec/QtWebEngineProcess cx -> &plasmashell//QtWebEngineProcess,
++  /usr/libexec/qt[56]/QtWebEngineProcess                      cx -> &plasmashell//QtWebEngineProcess,
++
++  # allow to execute all other programs under their own profile, or to run unconfined
+   /** pux,
++
+   /{,**} mrwlk,
+ 
+   profile QtWebEngineProcess {

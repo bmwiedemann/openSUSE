@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  4 19:48:47 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
+
+- add sddm-xauth.diff - sddm uses a new path for xauth (boo#1223900)
+- add plasmashell.diff - fix QtWebEngineProcess path to prevent a
+  crash in plasmashell (boo#1225961)
+
+-------------------------------------------------------------------
 Thu May 30 10:19:32 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Also exclude podman profile - boo#1225608
