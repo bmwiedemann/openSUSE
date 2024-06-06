@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 27 17:03:13 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Remove MicroOS GNOME Desktop/Aeon, now installed via own media
+- 20240527
+
+-------------------------------------------------------------------
 Thu May 16 12:02:14 UTC 2024 - Ludwig Nussel <lnussel@suse.com>
 
 - Enable LUKS2 and PBKDF2 by default for compat with grub (boo#1185291)
