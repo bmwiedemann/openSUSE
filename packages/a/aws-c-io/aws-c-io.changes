@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun  5 08:50:30 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.14.9
+  * Fix tests that require a valid cert to use add_net_test_case
+    by @waahm7 in (#637)
+  * Fix signed/unsigned bug with aws_future_wait() timeout value
+    by @graebm in (#638)
+  * Adds Host Resolver IPv6 variations test by @waahm7 in (#639)
+  * Fix bug where last few bytes on socket go unread
+    by @graebm in (#642)
+
+-------------------------------------------------------------------
 Mon May 13 09:16:50 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.14.8
