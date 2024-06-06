@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun 04 19:59:22 UTC 2024 - david.mulder@suse.com
+
+- Update to version 0.9.32~git0.56dfe34:
+  * Prepare for release
+  * Bump cargo version
+  * Use clone_from/clone_into
+  * Do not install the versioned links and lib on Android
+  * docs: add rustls-ffi to README users list
+  * Bump the msrv again
+  * Bump msrv
+  * Bump cargo version
+  * Match the beaviour of meson regarding relative paths in the install directories
+  * Bump cargo version
+
+-------------------------------------------------------------------
 Tue Oct 17 10:43:31 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 0.9.27~git0.54774e0:
