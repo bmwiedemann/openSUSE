@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jun  3 16:43:23 UTC 2024 - Michiel van der Wulp <michiel.vanderwulp@gmail.com> - 124-1
+
+- update to version 124.1
+- This version mostly fixes bugs reported for previous version 124.0, 
+with some features added to the top. There are also some changes related to packaging:
+1. The 124 release made Freetype a required dependency, but the build system 
+was not updated to reflect that. As a result, you could compile Simutrans 
+without Freetype, only for the game to fail at launch because 
+it could not use any font. We have fixed this for the 124.1 release, 
+and now Freetype is also required for building (except for server builds).
+2. The ".desktop" file has been renamed and moved to "src/linux/simutrans.desktop".
+- See for more information about the 124.1 and the 124.0 releases: 
+https://forum.simutrans.com/index.php/board,3.0.html
+- Patch simutrans-makefile.patch added since GNU make version on OpenSuse 15.5 and 15.6 
+does not support hashtags inside shell commands properly 
+while the Gnu Make in Tumbleweed works correctly.
+
+-------------------------------------------------------------------
 Mon Feb 26 13:23:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

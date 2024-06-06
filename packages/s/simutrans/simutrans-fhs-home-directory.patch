@@ -1,11 +1,12 @@
---- old/sys/simsys.cc   2022-01-11 11:20:33.991101481 +0100
-+++ new/sys/simsys.cc   2022-01-11 11:01:19.637291267 +0100
-@@ -395,7 +395,7 @@
- #elif defined __ANDROID__
- 	tstrncpy(buffer,SDL_GetPrefPath("Simutrans Team","simutrans"),lengthof(buffer));
+diff -ru old/src/simutrans/sys/simsys.cc new/src/simutrans/sys/simsys.cc
+--- old/src/simutrans/sys/simsys.cc	2024-05-19 16:34:04.000000000 +0200
++++ new/src/simutrans/sys/simsys.cc	2024-06-03 19:20:41.524515968 +0200
+@@ -554,7 +554,7 @@
+ 	}
  #else
--	sprintf(buffer, "%s/simutrans", getenv("HOME"));
-+	sprintf(buffer, "%s/.simutrans", getenv("HOME"));
- #endif
- 
- 	// create directory and subdirectories
+ 	if( getenv("XDG_DATA_HOME") == NULL ) {
+-		sprintf(buffer, "%s/simutrans", getenv("HOME"));
++		sprintf(buffer, "%s/.simutrans", getenv("HOME"));
+ 	} else {
+ 		sprintf(buffer, "%s/simutrans", getenv("XDG_DATA_HOME"));
+ 	}

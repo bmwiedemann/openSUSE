@@ -1,7 +1,7 @@
 #
 # spec file for package simutrans
 #
-# Copyright (c) 2020-2022 SUSE LLC
+# Copyright (c) 2020-2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define pkgver 123-0-1
+%define pkgver 124-1
 Name:           simutrans
-Version:        123.0.1
+Version:        124.1
 Release:        0
 Summary:        Transport and Economic Simulation Game
 License:        Artistic-1.0
@@ -29,6 +29,7 @@ Source1:        config.default
 Source2:        http://www.simutrans.com/images/resources/simutrans-square.svg
 # PATCH-FIX-UPSTREAM http://forum.simutrans.com/index.php?topic=11173.0
 Patch0:         simutrans-fhs-home-directory.patch
+Patch1:         simutrans-makefile.patch
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  unzip
@@ -43,13 +44,13 @@ BuildRequires:  update-desktop-files
 %endif
 BuildRequires:  dos2unix
 BuildRequires:  hicolor-icon-theme
-# Once we have Leap 15.4, we could follow the advice here: https://forum.simutrans.com/index.php?action=post;quote=198369;topic=21320.0;last_msg=198369
-# BuildRequires:  fluidsynth-devel >= 2.1.0
-# Requires:  fluid-soundfont-gm
+# Since now we have Leap > 15.4, we follow the advice here: https://forum.simutrans.com/index.php?action=post;quote=198369;topic=21320.0;last_msg=198369
+BuildRequires:  fluidsynth-devel >= 2.1.0
+Requires:       fluid-soundfont-gm
 BuildRequires:  libzstd-devel
-Recommends:     %{name}-pak128
-Suggests:       %{name}-pak128-german
-Suggests:       %{name}-pak64
+Recommends:     %{name}-pak128 >= 2.9.1
+Suggests:       %{name}-pak128-german >= 2.2
+Suggests:       %{name}-pak64 >= 124.1
 Suggests:       %{name}-makeobj
 
 %description
