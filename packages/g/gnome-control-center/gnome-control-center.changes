@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  4 09:31:03 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Update gnome-control-center-disable-error-message-for-NM.patch:
+  Add info page to toolbar view instead of navigation page to
+  prevent hiding close button (bsc#1222099).
+
+-------------------------------------------------------------------
 Mon Jun  3 09:40:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.2:

@@ -35,7 +35,7 @@ diff -uraBN temp/gnome-control-center-45.1/panels/network/cc-network-panel.c gno
 +                GtkWidget *status_page;
 +
 +                status_page = adw_status_page_new ();
-+                adw_navigation_page_set_child (ADW_NAVIGATION_PAGE (self), status_page);
++                adw_toolbar_view_set_content (ADW_TOOLBAR_VIEW (self->toolbar_view), status_page);
  
 +                adw_status_page_set_icon_name (ADW_STATUS_PAGE (status_page), "network-error-symbolic");
 +                adw_status_page_set_title (ADW_STATUS_PAGE (status_page), _("Wicked is running"));
