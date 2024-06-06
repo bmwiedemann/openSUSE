@@ -147,4 +147,13 @@
     <comment>- remove jaraco.packaging as it is only needed for docs</comment>
     <requestid>1166500</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>505f870c75b4399b971eb9d673507e39</srcmd5>
+    <version>4.0.1</version>
+    <time>1717669879</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0.1:
+  * No significant changes.</comment>
+    <requestid>1178459</requestid>
+  </revision>
 </revisionlist>

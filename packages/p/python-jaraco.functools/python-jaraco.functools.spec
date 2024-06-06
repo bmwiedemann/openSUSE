@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.functools
-Version:        4.0.0
+Version:        4.0.1
 Release:        0
 Summary:        Tools to work with functools
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/jaraco.functools
-Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.functools/jaraco.functools-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.functools/jaraco_functools-%{version}.tar.gz
 BuildRequires:  %{python_module jaraco.classes}
 BuildRequires:  %{python_module more-itertools}
 BuildRequires:  %{python_module pip}
@@ -47,7 +47,7 @@ jaraco.functools Tools for working with functools.
 Additional functools in the spirit of stdlib’s functools.
 
 %prep
-%setup -q -n jaraco.functools-%{version}
+%setup -q -n jaraco_functools-%{version}
 sed -i 's/--flake8//' pytest.ini
 sed -i 's/--black --cov//' pytest.ini
 rm -rf jaraco.functools.egg-info
