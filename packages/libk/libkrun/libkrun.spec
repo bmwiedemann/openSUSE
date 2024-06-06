@@ -1,7 +1,7 @@
 #
 # spec file for package libkrun
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,14 +32,13 @@ complexity that comes from Virtual Machine management, offering users a simple C
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           libkrun
-Version:        1.4.10
+Version:        1.9.0
 Release:        0
 Summary:        A dynamic library providing KVM-based process isolation capabilities
 License:        Apache-2.0
 URL:            https://github.com/containers/libkrun
 Source0:        libkrun-%{version}.tar.gz
-Source1:        vendor.tar.xz
-Source2:        cargo_config
+Source1:        vendor.tar.zst
 ExclusiveArch:  x86_64 aarch64
 BuildRequires:  cargo >= 1.43.0
 BuildRequires:  gcc
@@ -105,8 +104,6 @@ use libkrun-sev Virtualization-based process isolation capabilities.
 
 %prep
 %autosetup -a1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 export RUSTFLAGS=%{rustflags}
@@ -134,6 +131,7 @@ export RUSTFLAGS=%{rustflags}
 
 %files devel
 %{_libdir}/libkrun.so
+%{_libdir}/pkgconfig/libkrun.pc
 %{_includedir}/libkrun.h
 
 %post -n %{name}1 -p /sbin/ldconfig

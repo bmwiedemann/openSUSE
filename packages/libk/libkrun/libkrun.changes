@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Mon Jun 03 08:46:39 UTC 2024 - dfaggioli@suse.com
+
+- Update to version 1.9.0:
+  * console: send a resize event on PORT_READY by @slp in #179
+  * Fix another batch of new clippy warnings by @slp in #182
+  * Fix constness when taking an array of string pointers by @teohhanhui in #181
+  * Fix new lints in Rust 1.78 by @teohhanhui in #184
+  * Use the correct documentation comment style recognized by clang by @teohhanhui in #183
+  * virtio/snd: import virtio-snd from vhost-user-sound by @slp in #186
+
+- Changes from 1.8.1:
+  * VirtIO optimizations
+
+- Changes from 1.8.0:
+  * Implement stdin/stdout/stderr redirection support using multiport virtio-console
+  * devices/legacy: import PL011 for aarch64
+  * init: accept arguments from the "args" Field
+  * Fix various minor issues on macOS and add a CI workflow for this OS
+  * Add Matej Hrica (mtjhrc) to CODEOWNERS
+  * Implement an EFI flavor
+  * Implement krun_add_vsock_port() and UnixProxy for guest communication with host UNIX sockets.
+  * Implement the infrastructure to support sending shut down signals to the guest
+  * lib: allow having multiple virtio-fs devices
+  * devices/net: allow configuring a custom MAC
+  * Import SECURITY_CTX support from virtiofsd
+  * Makefile: fix EFI library naming
+  * virtio/net: implement gvproxy backend
+  * macos/eventfd: ignore EAGAIN on write
+  * Import rutabaga_gfx+virtio_gpu from crosvm
+  * devices/vsock/unix: implement update_peer_credit
+  * devices/console: implement an empty port input
+  * Extend virtio-gpu to support Venus on macOS
+  * libkrun: Extend API to redirect console to file
+  * virtio/fs/macos: overhaul to use macos inodes
+
+-------------------------------------------------------------------
+Thu May 30 14:14:56 UTC 2024 - dfaggioli@suse.com
+
+- Update to version 1.7.2:
+  * Fix aarch64 build by adapting to changes in kvm-ioctl
+
+- Changes from 1.7.1
+  * Update kbs-types version to 0.5 and release 1.7.1
+
+-------------------------------------------------------------------
+Thu May 30 13:38:30 UTC 2024 - dfaggioli@suse.com
+
+- Update to version 1.7.0:
+  * SNP Attestation
+  * Read TEE config from the end of the block device
+  * De-vendorize kbs-types
+  * Remove libfdt dependency
+  * init: place SEV behind build-time conditional
+  * devices/fs: fix reading the end of init.krun
+  * init: don't build init.c on SEV flavor
+  * Prepare to support libkrunfw 4.x
+  * init: Report an error when execution of the user binary fails
+  * virtio-net implementation using passt
+  * Make krun_set_vm_config use the same argument type for num_vcpus as ...
+  * Update sev crate to 1.2.0
+  * virtio net bugfixes and performance improvement
+  * Makefile: De-couple KBS init sources from SEV-SNP
+  * Update rust-vmm deps and bump version for upcoming release 
+
+- Changes from 1.5.1
+  * Fix CI clippy
+  * Add a pkgconf file
+  * examples: Fix error handling of krun_create_ctx
+  * VSOCK: fix reaper timeout
+  * Fix typo in README.md
+  * macos: implement host->guest time sync
+  * Bump version to v1.5.1
+
+- Changes from 1.5.0
+  * devices: update lru dep to 0.9
+  * Introduce the krun_set_data_disk API.
+
+-------------------------------------------------------------------
+Thu May 30 13:30:22 UTC 2024 - Dario Faggioli <dfaggioli@suse.com>
+
+- The vendored tarball already contains the config these days, so
+  don't mess with that in the spec file
+
+-------------------------------------------------------------------
 Thu Jan 19 08:01:48 UTC 2023 - fcrozat@suse.com
 
 - Update to version 1.4.10:
