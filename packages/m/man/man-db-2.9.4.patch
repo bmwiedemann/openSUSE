@@ -143,8 +143,8 @@ Index: b/src/check_mandirs.c
 -static void mkcatdirs (const char *mandir, const char *catdir)
 +void mkcatdirs (const char *mandir, const char *catdir)
  {
- 	char *manname, *catname;
- 
+ 	if (catdir) {
+ 		char *manname, *catname;
 @@ -409,9 +409,14 @@ static void mkcatdirs (const char *mandi
  			int j;
  			regain_effective_privs ();
@@ -364,15 +364,16 @@ Index: b/src/man.c
 ===================================================================
 --- a/src/man.c
 +++ b/src/man.c
-@@ -56,6 +56,7 @@
+@@ -56,6 +56,8 @@
  #include <time.h>
  #include <sys/types.h>
  #include <sys/stat.h>
 +#include <sys/time.h>
++#include <libalternatives.h>
  
  #include "argp.h"
  #include "attribute.h"
-@@ -118,6 +119,8 @@
+@@ -118,6 +120,8 @@
  #ifdef MAN_OWNER
  extern uid_t ruid;
  extern uid_t euid;
@@ -381,7 +382,7 @@ Index: b/src/man.c
  #endif /* MAN_OWNER */
  
  /* the default preprocessor sequence */
-@@ -241,10 +244,10 @@ static int first_arg;
+@@ -241,10 +245,10 @@ static int first_arg;
  #ifdef MAN_CATS
  static char *tmp_cat_file;	/* for open_cat_stream(), close_cat_stream() */
  static bool created_tmp_cat;	/* dto. */
@@ -393,7 +394,7 @@ Index: b/src/man.c
  
  # ifdef TROFF_IS_GROFF
  static bool ditroff;
-@@ -1576,6 +1579,18 @@ static void setenv_less (pipecmd *cmd, c
+@@ -1574,6 +1583,18 @@ static void setenv_less (pipecmd *cmd, c
  	free (less_opts);
  }
  
@@ -412,7 +413,7 @@ Index: b/src/man.c
  static void add_output_iconv (pipeline *p,
  			      const char *source, const char *target)
  {
-@@ -1706,6 +1721,8 @@ static pipeline *make_display_command (c
+@@ -1704,6 +1725,8 @@ static pipeline *make_display_command (c
  
  	if (pager_cmd) {
  		setenv_less (pager_cmd, title);
@@ -421,7 +422,7 @@ Index: b/src/man.c
  		pipeline_command (p, pager_cmd);
  	}
  	pipeline_ignore_signals (p, 1);
-@@ -1716,7 +1733,7 @@ static pipeline *make_display_command (c
+@@ -1714,7 +1737,7 @@ static pipeline *make_display_command (c
  	return p;
  }
  
@@ -430,7 +431,7 @@ Index: b/src/man.c
  /* return a (malloced) temporary name in cat_file's directory */
  static char *tmp_cat_filename (const char *cat_file)
  {
-@@ -1744,7 +1761,6 @@ static char *tmp_cat_filename (const cha
+@@ -1742,7 +1765,6 @@ static char *tmp_cat_filename (const cha
  		return name;
  }
  
@@ -438,7 +439,7 @@ Index: b/src/man.c
  /* If delete unlink tmp_cat, else commit tmp_cat to cat_file.
     Return non-zero on error.
   */
-@@ -1817,6 +1833,7 @@ static int commit_tmp_cat (const char *c
+@@ -1815,6 +1837,7 @@ static int commit_tmp_cat (const char *c
  
  	return status;
  }
@@ -446,7 +447,7 @@ Index: b/src/man.c
  
  /* TODO: This should all be refactored after work on the decompression
   * library is complete.
-@@ -1853,7 +1870,6 @@ static void cleanup_unlink (void *arg)
+@@ -1851,7 +1874,6 @@ static void cleanup_unlink (void *arg)
  }
  
  #ifdef MAN_CATS
@@ -454,7 +455,7 @@ Index: b/src/man.c
  /* Return pipeline to write formatted manual page to for saving as cat file. */
  static pipeline *open_cat_stream (const char *cat_file, const char *encoding)
  {
-@@ -2085,6 +2101,7 @@ static void format_display (decompress *
+@@ -2083,6 +2105,7 @@ static void format_display (decompress *
  	regain_effective_privs ();
  }
  
@@ -462,7 +463,7 @@ Index: b/src/man.c
  /* "Display" a page in catman mode, which amounts to saving it. */
  /* TODO: merge with format_display_and_save? */
  static void display_catman (const char *cat_file, decompress *d,
-@@ -2130,6 +2147,7 @@ static void display_catman (const char *
+@@ -2128,6 +2151,7 @@ static void display_catman (const char *
  	pop_cleanup (cleanup_unlink, tmpcat);
  	free (tmpcat);
  }
@@ -470,7 +471,7 @@ Index: b/src/man.c
  
  #ifndef TROFF_IS_GROFF
  static void disable_hyphenation (void *data MAYBE_UNUSED)
-@@ -2349,7 +2367,7 @@ static int display (const char *dir, con
+@@ -2347,7 +2371,7 @@ static int display (const char *dir, con
  		format_cmd = NULL;
  		decomp_errno = errno;
  	}
@@ -479,7 +480,7 @@ Index: b/src/man.c
  	/* Get modification time, for commit_tmp_cat(). */
  	if (man_file && *man_file) {
  		struct stat stb;
-@@ -2359,7 +2377,7 @@ static int display (const char *dir, con
+@@ -2357,7 +2381,7 @@ static int display (const char *dir, con
  		} else
  			man_modtime = get_stat_mtime (&stb);
  	}
@@ -488,7 +489,7 @@ Index: b/src/man.c
  	display_to_stdout = troff;
  #ifdef TROFF_IS_GROFF
  	if (htmlout || gxditview)
-@@ -2500,6 +2518,7 @@ static int display (const char *dir, con
+@@ -2498,6 +2522,7 @@ static int display (const char *dir, con
  			}
  			if (printed)
  				putchar ('\n');
@@ -496,7 +497,7 @@ Index: b/src/man.c
  		} else if (catman) {
  			if (format) {
  				if (!save_cat)
-@@ -2512,6 +2531,7 @@ static int display (const char *dir, con
+@@ -2510,6 +2535,7 @@ static int display (const char *dir, con
  							format_cmd,
  							formatted_encoding);
  			}
@@ -504,7 +505,7 @@ Index: b/src/man.c
  		} else if (format) {
  			/* no cat or out of date */
  			pipeline *disp_cmd;
-@@ -4050,17 +4070,20 @@ static int local_man_loop (const char *a
+@@ -4048,17 +4074,20 @@ static int local_man_loop (const char *a
  		/* Check that the file exists and isn't e.g. a directory */
  		if (stat (argv, &st)) {
  			error (0, errno, "%s", argv);
@@ -525,7 +526,7 @@ Index: b/src/man.c
  			return NOT_FOUND;
  		}
  
-@@ -4124,6 +4147,11 @@ executable_out:
+@@ -4122,6 +4151,11 @@ executable_out:
  					argv_abs = xstrdup (argv);
  			}
  			lang = lang_dir (argv_abs);
@@ -537,7 +538,36 @@ Index: b/src/man.c
  			free (argv_abs);
  			if (!display (NULL, argv, NULL, argv_base, NULL)) {
  				if (local_mf)
-@@ -4379,7 +4407,16 @@ int main (int argc, char *argv[])
+@@ -4180,9 +4214,25 @@ static void locate_page_in_manpath (cons
+ {
+ 	char *mp;
+ 
+-	GL_LIST_FOREACH (manpathlist, mp)
+-		*found += locate_page (mp, page_section, page_name,
+-				       candidates);
++	GL_LIST_FOREACH (manpathlist, mp) {
++		int count = locate_page (mp, page_section, page_name, candidates);
++		if (count == 0) {
++			/* Checking if there has been defined another manpage defined in the
++			 * priorities of libalternatives.
++			 */
++			char **alternitives = libalts_get_default_manpages(page_name);
++			for (char **alter = alternitives; *alter; alter++) {
++				char *p_name, *p_section;
++				split_page_name (*alter, &p_name, &p_section);
++				if (p_name && strlen(p_name) > 0 &&
++				    p_section && strlen(p_section) > 0)
++					count = locate_page (mp, p_section, p_name, candidates);
++				free(*alter);
++			}
++			free(alternitives);
++		}
++		*found += count;
++	}
+ }
+ 
+ /*
+@@ -4377,7 +4427,16 @@ int main (int argc, char *argv[])
  	umask (022);
  	init_locale ();
  
@@ -555,7 +585,7 @@ Index: b/src/man.c
  	/* Use LANGUAGE only when LC_MESSAGES locale category is
  	 * neither "C" nor "POSIX". */
  	if (internal_locale && strcmp (internal_locale, "C") &&
-@@ -4424,7 +4461,16 @@ int main (int argc, char *argv[])
+@@ -4422,7 +4481,16 @@ int main (int argc, char *argv[])
  	if (external)
  		do_extern (argc, argv);
  

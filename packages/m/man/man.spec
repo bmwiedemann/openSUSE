@@ -26,7 +26,7 @@
 %global optflags %{optflags} %{**}
 %bcond_without  sdtimer
 Name:           man
-Version:        2.12.0
+Version:        2.12.1
 Release:        0
 Summary:        A Program for Displaying man Pages
 License:        GPL-2.0-or-later
@@ -56,7 +56,6 @@ Patch7:         man-db-2.9.4-no-chown.patch
 Patch8:         man-db-2.9.4.patch
 # PATCH-FEATURE-OPENSUSE -- Add documentation about man0 section (header files)
 Patch9:         man-db-2.6.3-man0.dif
-Patch10:        man-db-2.9.4-alternitive.dif
 # PATCH-FEATURE-OPENSUSE -- Propose to read man pages online
 Patch12:        man-propose-online.patch
 BuildRequires:  automake
@@ -104,7 +103,6 @@ printer (using groff).
 %patch -P7 -p1 -b .p7
 %patch -P8 -p1 -b .p8
 %patch -P9 -b .p9
-%patch -P10 -b .libalernative
 rm -f configure
 %patch -P12 -p1 -b .p12
 

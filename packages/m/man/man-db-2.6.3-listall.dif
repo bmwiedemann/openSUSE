@@ -5,7 +5,7 @@
 
 --- man/man1/man.man1
 +++ man/man1/man.man1	2022-08-17 13:11:29.974677243 +0000
-@@ -1226,6 +1226,14 @@ However, some users want to see them any
+@@ -1246,6 +1246,14 @@ However, some users want to see them any
  .RB $ MAN_KEEP_STDERR
  is set to any non-empty value, error output will be displayed as usual.
  .TP
@@ -22,7 +22,7 @@
  .B %man%
 --- src/man.c
 +++ src/man.c	2022-08-17 13:10:07.436205495 +0000
-@@ -3641,12 +3641,141 @@ static int locate_page (const char *manp
+@@ -3671,12 +3671,141 @@ static int locate_page (const char *manp
  	return found;
  }
  
@@ -164,7 +164,7 @@
  		global_manpath = is_global_mandir (candp->path);
  		if (!global_manpath)
  			drop_effective_privs ();
-@@ -3668,9 +3797,56 @@ static int display_pages (struct candida
+@@ -3698,9 +3827,56 @@ static int display_pages (struct candida
  			regain_effective_privs ();
  
  		if (found && !findall)

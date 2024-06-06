@@ -1048,4 +1048,27 @@
     <comment>- We don't need anymore systemd-tmpfiles (boo#1219370#c13)</comment>
     <requestid>1147518</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>35bdd37fe6afa076cca2b3ebaf9f4b20</srcmd5>
+    <version>2.12.1</version>
+    <time>1717669883</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.12.1 (5 April 2024)
+  * Fix excessive cleanup of `/var/cache/man` by `systemd-tmpfiles`.
+  * `man` matches the display width more accurately to the configured width.
+  * Upgrade to Gnulib `stable-202401`.
+  * Mention `groff`'s `pdf` device in `man(1)`.
+  * Speed up `seccomp` filter slightly.
+  * Document how to format pages using italic rather than underlined text.
+  * Remove the obsolete `chconfig` tool for converting man-db configuration
+    files to the FHS.  This transition took place almost 25 years ago (at
+    least in Debian), so it's not worth keeping it around now.
+- Remove patch man-db-2.9.4-alternitive.dif now upstream
+- Port the patches
+  * man-db-2.6.3-listall.dif
+  * man-db-2.7.1-zio.dif
+  * man-db-2.9.4.patch
+  * man-propose-online.patch</comment>
+    <requestid>1178471</requestid>
+  </revision>
 </revisionlist>
