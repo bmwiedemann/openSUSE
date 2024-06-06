@@ -373,4 +373,13 @@
   * addresses boo#1223454</comment>
     <requestid>1170731</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>f414d7e67e605cf146e6ff09d4aa1c73</srcmd5>
+    <version>550.90.07</version>
+    <time>1717669919</time>
+    <user>anag+factory</user>
+    <comment>- Security Update 550.90.07 (boo#1223356) [CVE-2024-0090,
+  CVE-2024-0091, CVE-2024-0092]</comment>
+    <requestid>1178694</requestid>
+  </revision>
 </revisionlist>
