@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jun  5 05:52:12 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.70:
+  * General
+    - [Server] Policy for Hierarchical Parent relationship.
+      @MUzairS15 (#11098)
+  * Meshery UI
+    - Enhance rtk and redux global injection @codeSafari10 (#11108)
+    - fix:offset fix w/signoff @Jougan-0 (#11064)
+  * Maintenance
+    - Create staging playground deploy workflow and other updates
+      @cpepper96 (#11079)
+  * Documentation
+    - Add Key ID & Monikers @iArchitSharma (#11074)
+
+-------------------------------------------------------------------
 Mon Jun  3 15:24:44 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.69 (.68 does not exist):
