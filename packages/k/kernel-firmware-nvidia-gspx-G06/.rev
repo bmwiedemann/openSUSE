@@ -84,4 +84,13 @@ https://nvidia.custhelp.com/app/answers/detail/a_id/5491/~/security-bulletin%3A-
   * addresses boo#1223454</comment>
     <requestid>1170730</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f005812fd8d883cf9c8e78ba6942d9de</srcmd5>
+    <version>550.90.07</version>
+    <time>1717669906</time>
+    <user>anag+factory</user>
+    <comment>- Security Update 550.90.07
+  * addresses boo#1223356 [CVE-2024-0090, CVE-2024-0091, CVE-2024-0092]</comment>
+    <requestid>1178692</requestid>
+  </revision>
 </revisionlist>

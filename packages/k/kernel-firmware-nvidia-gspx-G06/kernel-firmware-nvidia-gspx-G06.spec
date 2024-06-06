@@ -30,7 +30,7 @@
 
 Name:           kernel-firmware-nvidia-gspx-G06
 URL:            https://www.nvidia.com/en-us/drivers/unix/
-Version:        550.78
+Version:        550.90.07
 Release:        0
 Summary:        Kernel firmware file for open NVIDIA kernel module driver G06
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT

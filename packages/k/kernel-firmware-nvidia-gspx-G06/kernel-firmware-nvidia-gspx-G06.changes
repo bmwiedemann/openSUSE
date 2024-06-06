@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  4 12:53:24 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Security Update 550.90.07
+  * addresses boo#1223356 [CVE-2024-0090, CVE-2024-0091, CVE-2024-0092]
+
+-------------------------------------------------------------------
 Mon Apr 29 09:37:09 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 550.78
