@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May 25 09:16:36 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Add wxwidgets-3.2.5.patch to resolve wxPython FTBFS
+
+-------------------------------------------------------------------
 Fri Feb 23 12:16:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use newly supported shrink{} on OBS to exclude python flavors

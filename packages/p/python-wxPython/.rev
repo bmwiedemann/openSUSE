@@ -167,4 +167,12 @@
     <comment></comment>
     <requestid>1150777</requestid>
   </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>de1387e2fcdca17584bd7b1f54838972</srcmd5>
+    <version>4.2.1</version>
+    <time>1717669868</time>
+    <user>anag+factory</user>
+    <comment>- Add wxwidgets-3.2.5.patch to resolve wxPython FTBFS (forwarded request 1176820 from jengelh)</comment>
+    <requestid>1178778</requestid>
+  </revision>
 </revisionlist>
