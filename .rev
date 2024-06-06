@@ -674,4 +674,13 @@ Wanted for 13.1 (forwarded request 201347 from dimstar)</comment>
   i586 only enabled in LegacyX86). (forwarded request 1155216 from dimstar)</comment>
     <requestid>1155236</requestid>
   </revision>
+  <revision rev="87" vrev="3">
+    <srcmd5>7ebce86fed7957e5d1eac127d8348d65</srcmd5>
+    <version>0.24.2</version>
+    <time>1717669828</time>
+    <user>anag+factory</user>
+    <comment>- Add telepathy-glib-function-type-cast.patch: fix an invalid cast
+  (glfdo#telepathy/telepathy-glib!4). (forwarded request 1178626 from mgorse)</comment>
+    <requestid>1178667</requestid>
+  </revision>
 </revisionlist>

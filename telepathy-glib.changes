@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  4 21:43:45 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Add telepathy-glib-function-type-cast.patch: fix an invalid cast
+  (glfdo#telepathy/telepathy-glib!4).
+
+-------------------------------------------------------------------
 Tue Mar  5 14:05:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop baselibs.conf: the -32bit packages are no longer needed and
