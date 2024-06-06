@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 21 10:25:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace %patchN with %patch -P N: %patchN is deprecated.
+
+-------------------------------------------------------------------
 Sat Dec 25 22:32:52 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.5.0

@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-diff-lcs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,7 @@ Source1:        gem2rpm.yml
 Patch0:         fix-interpreter.patch
 # /MANUAL
 Summary:        Diff::LCS computes the difference between two Enumerable sequences
-License:        MIT AND Artistic-2.0 AND GPL-2.0-only
+License:        Artistic-2.0 AND MIT AND GPL-2.0-only
 Group:          Development/Languages/Ruby
 PreReq:         update-alternatives
 
@@ -60,7 +60,7 @@ major release will completely break compatibility.
 
 %prep
 %gem_unpack
-%patch0 -p1
+%patch -P 0 -p1
 find -type f -print0 | xargs -0 touch -r %{S:0}
 %gem_build
 
