@@ -119,7 +119,7 @@ BuildRequires:  pesign-obs-integration
 %endif
 Provides:       installhint(reboot-needed)
 
-Version:        4.18.2_04
+Version:        4.18.2_05
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -209,6 +209,7 @@ Patch408:       ignore-ip-command-script-errors.patch
 # Needs to go upstream
 Patch420:       suspend_evtchn_lock.patch
 Patch421:       vif-route.patch
+Patch422:       gcc14-fixes.patch
 # Other bug fixes or features
 Patch450:       xen.sysconfig-fillup.patch
 Patch451:       xenconsole-no-multiple-connections.patch

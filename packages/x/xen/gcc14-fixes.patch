@@ -1,0 +1,81 @@
+References: bsc#1225953
+
+Compiling against gcc14.
+ ../../../../../newlib-1.16.0/newlib/libc/stdlib/wcstoull.c: In function ‘wcstoull’:
+ ../../../../../newlib-1.16.0/newlib/libc/stdlib/wcstoull.c:136:16: error: implicit declaration of function ‘_wcstoull_r’; did you mean ‘wcstoull’? [-Wimplicit-function-declaration]
+   136 |         return _wcstoull_r (_REENT, s, ptr, base);
+       |                ^~~~~~~~~~~
+       |                wcstoull
+
+ In file included from ../../../../../newlib-1.16.0/newlib/libc/reent/signalr.c:7:
+ ../../../../../newlib-1.16.0/newlib/libc/reent/signalr.c: In function ‘_kill_r’:
+ ../../../../../newlib-1.16.0/newlib/libc/reent/signalr.c:61:14: error: implicit declaration of function ‘kill’; did you mean ‘_kill’? [-Wimplicit-function-declaration]
+    61 |   if ((ret = _kill (pid, sig)) == -1 && errno != 0)
+       |              ^~~~~
+
+
+Index: xen-4.18.2-testing/stubdom/Makefile
+===================================================================
+--- xen-4.18.2-testing.orig/stubdom/Makefile
++++ xen-4.18.2-testing/stubdom/Makefile
+@@ -97,6 +97,7 @@ newlib-$(NEWLIB_VERSION): newlib-$(NEWLI
+ 	patch -d $@ -p1 < newlib-disable-texinfo.patch
+ 	patch -d $@ -p1 < newlib-cygmon-gmon.patch
+ 	patch -d $@ -p1 < newlib-makedoc.patch
++	patch -d $@ -p1 < newlib-gcc14-pragmas.patch
+ 	find $@ -type f | xargs perl -i.bak \
+ 		-pe 's/\b_(tzname|daylight|timezone)\b/$$1/g'
+ 	touch $@
+Index: xen-4.18.2-testing/stubdom/newlib-gcc14-pragmas.patch
+===================================================================
+--- /dev/null
++++ xen-4.18.2-testing/stubdom/newlib-gcc14-pragmas.patch
+@@ -0,0 +1,36 @@
++--- newlib-1.16.0/newlib/libc/stdlib/wcstoull.c.orig	2024-06-04 15:32:01.495146632 -0600
+++++ newlib-1.16.0/newlib/libc/stdlib/wcstoull.c	2024-06-04 15:38:56.627156524 -0600
++@@ -127,6 +127,10 @@ PORTABILITY
++
++ #ifndef _REENT_ONLY
++
+++#if __GNUC__ >= 14
+++#pragma GCC diagnostic ignored "-Wimplicit-function-declaration"
+++#endif
+++
++ unsigned long long
++ _DEFUN (wcstoull, (s, ptr, base),
++ 	_CONST wchar_t *s _AND
++--- newlib-1.16.0/newlib/libc/reent/signalr.c.orig	2024-06-04 15:39:15.139156966 -0600
+++++ newlib-1.16.0/newlib/libc/reent/signalr.c	2024-06-04 15:40:24.899158628 -0600
++@@ -49,6 +49,10 @@ DESCRIPTION
++ 	<<errno>>.
++ */
++
+++#if __GNUC__ >= 14
+++#pragma GCC diagnostic ignored "-Wimplicit-function-declaration"
+++#endif
+++
++ int
++ _DEFUN (_kill_r, (ptr, pid, sig),
++      struct _reent *ptr _AND
++--- newlib-1.16.0/newlib/doc/makedoc.c.orig	2024-06-04 16:07:54.423197934 -0600
+++++ newlib-1.16.0/newlib/doc/makedoc.c	2024-06-04 16:15:15.395208441 -0600
++@@ -798,6 +798,7 @@ DEFUN( iscommand,(ptr, idx),
++ }
++
++
+++static unsigned int
++ DEFUN(copy_past_newline,(ptr, idx, dst),
++       string_type *ptr AND
++       unsigned int idx AND
+--- xen-4.18.2-testing/extras/mini-os-remote/include/posix/sys/mman.h.orig	2024-06-04 16:27:35.155226069 -0600
++++ xen-4.18.2-testing/extras/mini-os-remote/include/posix/sys/mman.h	2024-06-04 16:31:46.591232060 -0600
+@@ -16,7 +16,7 @@
+ 
+ void *mmap(void *start, size_t length, int prot, int flags, int fd, off_t offset) asm("mmap64");
+ int munmap(void *start, size_t length);
+-static inline mlock(const void *addr, size_t len) { return 0; }
+-static inline munlock(const void *addr, size_t len) { return 0; }
++static inline int mlock(const void *addr, size_t len) { return 0; }
++static inline int munlock(const void *addr, size_t len) { return 0; }
+ 
+ #endif /* _POSIX_SYS_MMAN_H */

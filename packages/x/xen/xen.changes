@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  4 18:09:00 MDT 2024 - carnold@suse.com
+
+- bsc#1225953 - Package xen does not build with gcc14 because of
+  new errors
+  gcc14-fixes.patch
+
+-------------------------------------------------------------------
 Wed May 15 11:15:00 CEST 2024 - jbeulich@suse.com
 
 - bsc#1221984 - VUL-0: CVE-2023-46842: xen: x86 HVM hypercalls may

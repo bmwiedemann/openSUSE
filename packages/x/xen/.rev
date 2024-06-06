@@ -2934,4 +2934,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1175908</requestid>
   </revision>
+  <revision rev="345" vrev="1">
+    <srcmd5>cab6c9cceb564ea4442311184419caf0</srcmd5>
+    <version>4.18.2_05</version>
+    <time>1717669865</time>
+    <user>anag+factory</user>
+    <comment>Fix for bsc#1225953 - Package xen does not build with gcc14</comment>
+    <requestid>1178775</requestid>
+  </revision>
 </revisionlist>
