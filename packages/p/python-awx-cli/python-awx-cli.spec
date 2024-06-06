@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-awx-cli
-Version:        24.4.0
+Version:        24.5.0
 Release:        0
 Summary:        CLI for the AWX Ansible web platform
 License:        Apache-2.0
