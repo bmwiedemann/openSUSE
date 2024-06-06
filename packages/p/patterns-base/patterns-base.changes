@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun  3 18:40:33 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update rpmlintrc W: no-binary to E: no-binary
+- Remove tigervnc
+ * Most users including myself don't even know what a vnc is
+   or how to use one
+
+-------------------------------------------------------------------
 Tue May 14 07:48:15 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add procps into the base pattern as recommended together

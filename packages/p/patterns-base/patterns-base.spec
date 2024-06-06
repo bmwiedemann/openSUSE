@@ -797,7 +797,6 @@ Requires:       xorg-x11-server
 Recommends:     (gdm or lightdm or sddm)
 Recommends:     dejavu-fonts
 Recommends:     noto-sans-fonts
-Recommends:     tigervnc
 Recommends:     x11-tools
 Recommends:     xdmbgrd
 Recommends:     xorg-x11-Xvnc
