@@ -139,7 +139,9 @@ This package contains the Xwayland Server development files.
    -Dlisten_tcp=false \
    -Dlisten_unix=true \
    -Dlisten_local=true \
-   -Ddpms=true \
+%if 0%{?suse_version} < 1550
+   -Ddpms=false \
+%endif
    -Dxf86bigfont=true \
    -Dscreensaver=true \
    -Dxres=true \

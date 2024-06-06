@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  5 11:27:13 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- disable DPMS on sle15 due to missing proto package
+
+-------------------------------------------------------------------
 Wed May 15 17:19:45 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to feature release 24.1.0

@@ -498,4 +498,12 @@
   * xwayland: Do not remove output on withdraw if leased</comment>
     <requestid>1174287</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>9d6141b377c98cd20cab10e934627291</srcmd5>
+    <version>24.1.0</version>
+    <time>1717669837</time>
+    <user>anag+factory</user>
+    <comment>- disable DPMS on sle15 due to missing proto package</comment>
+    <requestid>1178726</requestid>
+  </revision>
 </revisionlist>
