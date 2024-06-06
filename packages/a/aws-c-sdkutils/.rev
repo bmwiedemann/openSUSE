@@ -24,4 +24,12 @@
   * Fix a bunch of places we forget to aws_raise_error()</comment>
     <requestid>1158810</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9032c7ce7d522554b6947de04305842d</srcmd5>
+    <version>0.1.16</version>
+    <time>1717669923</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1178682</requestid>
+  </revision>
 </revisionlist>

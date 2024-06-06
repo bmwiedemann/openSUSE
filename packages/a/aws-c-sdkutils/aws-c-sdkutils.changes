@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  4 13:17:05 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.1.16
+  * Remove is IPv4/IPv6 functions utils from sdkutils to c-common
+    by @waahm7 in (#39)
+
+-------------------------------------------------------------------
 Sun Mar 17 19:17:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.1.15:
