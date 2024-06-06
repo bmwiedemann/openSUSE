@@ -14,8 +14,8 @@
 # You can contact the BCI team via https://github.com/SUSE/bci/discussions
 
 #!ExclusiveArch: aarch64 x86_64
-#!BuildTag: opensuse/bci/spack:%%spack_version%%
-#!BuildTag: opensuse/bci/spack:%%spack_version%%-%RELEASE%
+#!BuildTag: opensuse/bci/spack:0.21.2
+#!BuildTag: opensuse/bci/spack:0.21.2-%RELEASE%
 #!BuildTag: opensuse/bci/spack:%%spack_minor%%
 #!BuildTag: opensuse/bci/spack:%%spack_minor%%-%RELEASE%
 #!BuildTag: opensuse/bci/spack:latest
@@ -28,19 +28,18 @@ MAINTAINER openSUSE (https://www.opensuse.org/)
 # labelprefix=org.opensuse.bci.spack
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Spack development"
 LABEL org.opencontainers.image.description="Spack is a flexible package manager for supercomputers, based on the openSUSE Tumbleweed Base Container Image."
-LABEL org.opencontainers.image.version="%%spack_version%%"
+LABEL org.opencontainers.image.version="0.21.2"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/spack-image/README.md"
-LABEL io.artifacthub.package.logo-url="https://spack.io/assets/images/spack-logo-white.svg"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/spack:%%spack_version%%-%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/spack:0.21.2-%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime"
 LABEL org.opensuse.release-stage="released"
-
 # endlabelprefix
+LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/spack-image/README.md"
+LABEL io.artifacthub.package.logo-url="https://spack.io/assets/images/spack-logo-white.svg"
 
 RUN set -euo pipefail; zypper -n in spack bison cmake-full flex libtool makeinfo patchelf lsb-release zstd libzip-devel libcurl-devel libopenssl-devel ncurses-devel tack xz-devel; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
 ENV SPACK_ROOT="/usr"
@@ -61,6 +60,9 @@ RUN set -euo pipefail; mkdir -p /root/.spack \
     && cp $SPACK_ROOT/share/spack/docker/modules.yaml \
        /root/.spack/modules.yaml \
     && rm -rf /root/*.* /run/nologin
+
+# sanity check that the version from the tag is equal to the version of spack that we expect
+RUN set -euo pipefail; [ "$(rpm -q --qf '%{version}' spack | cut -d '.' -f -3)" = "0.21.2" ]
 
 WORKDIR /root
 SHELL ["docker-shell"]

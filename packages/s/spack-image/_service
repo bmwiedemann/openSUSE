@@ -3,20 +3,8 @@
   <service mode="buildtime" name="kiwi_metainfo_helper"/>
   <service name="replace_using_package_version" mode="buildtime">
     <param name="file">Dockerfile</param>
-    <param name="regex">%%spack_version%%</param>
-    <param name="package">spack</param>
-    <param name="parse-version">patch</param>
-  </service>
-  <service name="replace_using_package_version" mode="buildtime">
-    <param name="file">Dockerfile</param>
     <param name="regex">%%spack_minor%%</param>
     <param name="package">spack</param>
     <param name="parse-version">minor</param>
-  </service>
-  <service name="replace_using_package_version" mode="buildtime">
-    <param name="file">README.md</param>
-    <param name="regex">%%spack_version%%</param>
-    <param name="package">spack</param>
-    <param name="parse-version">patch</param>
   </service>
 </services>
