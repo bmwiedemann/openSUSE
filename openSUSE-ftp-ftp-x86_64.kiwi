@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20240605" schemaversion="4.1">
+<image name="OBS__openSUSE___20240606" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -23,7 +23,7 @@
       <productvar name="DISTNAME">openSUSE</productvar>
       <productvar name="FLAVOR">ftp</productvar>
       <productvar name="MAKE_LISTINGS">true</productvar>
-      <productvar name="MEDIUM_NAME">openSUSE-20240605-x86_64</productvar>
+      <productvar name="MEDIUM_NAME">openSUSE-20240606-x86_64</productvar>
       <productvar name="MULTIPLE_MEDIA">true</productvar>
       <productvar name="PRODUCT_DIR">/</productvar>
       <productvar name="PRODUCT_NAME">$DISTNAME-$FLAVOR</productvar>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20240605</productvar>
+      <productvar name="VERSION">20240606</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20240605,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20240606,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20240605/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20240606/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="DEBUGMEDIUM">2</productoption>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>

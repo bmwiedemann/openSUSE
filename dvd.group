@@ -1999,7 +1999,7 @@
     <package name="libfind4_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libflashrom1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libflatpak0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libfltk1_3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libfltk1_3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="libfmt9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libfolks-eds26" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfolks26" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4050,7 +4050,7 @@
     <package name="thunar-volman" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="thunar-volman-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="thunar-volman-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="tigervnc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="tigervnc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="time" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="timezone" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="tmux" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->

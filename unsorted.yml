@@ -4387,6 +4387,7 @@ unsorted:
   - freerdp-sdl 
   - freerdp-server 
   - freerdp-wayland 
+  - freerdp2 
   - freerdp2-devel 
   - freerdp2-proxy 
   - freerdp2-server 
@@ -13951,7 +13952,7 @@ unsorted:
   - libkrun-sev1 
   - libkrunfw-devel 
   - libkrunfw-sev-devel 
-  - libkrunfw-sev3 
+  - libkrunfw-sev4 
   - libksane-devel 
   - libksane-kf5-devel 
   - libksba-devel 
@@ -16564,6 +16565,7 @@ unsorted:
   - libvirt-nss 
   - libvirt-sandbox-1_0-5 
   - libvirt-sandbox-devel 
+  - libvirt-ssh-proxy 
   - libvisio-devel 
   - libvisio-devel-doc 
   - libvisio-tools 
@@ -16753,91 +16755,91 @@ unsorted:
   - libwv2-4 
   - libwx_base-suse-devel 
   - libwx_base-suse-nostl-devel 
-  - libwx_baseu-suse-nostl10_0_0 
+  - libwx_baseu-suse-nostl11_0_0 
   - libwx_baseu-suse-nostl3_0_5 
-  - libwx_baseu-suse10_0_0 
+  - libwx_baseu-suse11_0_0 
   - libwx_baseu-suse3_0_5 
-  - libwx_baseu_net-suse-nostl10_0_0 
+  - libwx_baseu_net-suse-nostl11_0_0 
   - libwx_baseu_net-suse-nostl3_0_5 
-  - libwx_baseu_net-suse10_0_0 
+  - libwx_baseu_net-suse11_0_0 
   - libwx_baseu_net-suse3_0_5 
-  - libwx_baseu_xml-suse-nostl10_0_0 
+  - libwx_baseu_xml-suse-nostl11_0_0 
   - libwx_baseu_xml-suse-nostl3_0_5 
-  - libwx_baseu_xml-suse10_0_0 
+  - libwx_baseu_xml-suse11_0_0 
   - libwx_baseu_xml-suse3_0_5 
   - libwx_gtk2u_adv-suse-nostl3_0_5 
-  - libwx_gtk2u_adv-suse10_0_0 
+  - libwx_gtk2u_adv-suse11_0_0 
   - libwx_gtk2u_adv-suse3_0_5 
   - libwx_gtk2u_aui-suse-nostl3_0_5 
-  - libwx_gtk2u_aui-suse10_0_0 
+  - libwx_gtk2u_aui-suse11_0_0 
   - libwx_gtk2u_aui-suse3_0_5 
   - libwx_gtk2u_core-suse-nostl3_0_5 
-  - libwx_gtk2u_core-suse10_0_0 
+  - libwx_gtk2u_core-suse11_0_0 
   - libwx_gtk2u_core-suse3_0_5 
   - libwx_gtk2u_gl-suse-nostl3_0_5 
-  - libwx_gtk2u_gl-suse10_0_0 
+  - libwx_gtk2u_gl-suse11_0_0 
   - libwx_gtk2u_gl-suse3_0_5 
   - libwx_gtk2u_html-suse-nostl3_0_5 
-  - libwx_gtk2u_html-suse10_0_0 
+  - libwx_gtk2u_html-suse11_0_0 
   - libwx_gtk2u_html-suse3_0_5 
   - libwx_gtk2u_media-suse-nostl3_0_5 
-  - libwx_gtk2u_media-suse10_0_0 
+  - libwx_gtk2u_media-suse11_0_0 
   - libwx_gtk2u_media-suse3_0_5 
   - libwx_gtk2u_propgrid-suse-nostl3_0_5 
-  - libwx_gtk2u_propgrid-suse10_0_0 
+  - libwx_gtk2u_propgrid-suse11_0_0 
   - libwx_gtk2u_propgrid-suse3_0_5 
   - libwx_gtk2u_qa-suse-nostl3_0_5 
-  - libwx_gtk2u_qa-suse10_0_0 
+  - libwx_gtk2u_qa-suse11_0_0 
   - libwx_gtk2u_qa-suse3_0_5 
   - libwx_gtk2u_ribbon-suse-nostl3_0_5 
-  - libwx_gtk2u_ribbon-suse10_0_0 
+  - libwx_gtk2u_ribbon-suse11_0_0 
   - libwx_gtk2u_ribbon-suse3_0_5 
   - libwx_gtk2u_richtext-suse-nostl3_0_5 
-  - libwx_gtk2u_richtext-suse10_0_0 
+  - libwx_gtk2u_richtext-suse11_0_0 
   - libwx_gtk2u_richtext-suse3_0_5 
   - libwx_gtk2u_stc-suse-nostl3_0_5 
-  - libwx_gtk2u_stc-suse10_0_0 
+  - libwx_gtk2u_stc-suse11_0_0 
   - libwx_gtk2u_stc-suse3_0_5 
   - libwx_gtk2u_xrc-suse-nostl3_0_5 
-  - libwx_gtk2u_xrc-suse10_0_0 
+  - libwx_gtk2u_xrc-suse11_0_0 
   - libwx_gtk2u_xrc-suse3_0_5 
-  - libwx_gtk3u_adv-suse-nostl10_0_0 
-  - libwx_gtk3u_adv-suse10_0_0 
-  - libwx_gtk3u_aui-suse-nostl10_0_0 
-  - libwx_gtk3u_aui-suse10_0_0 
-  - libwx_gtk3u_core-suse-nostl10_0_0 
-  - libwx_gtk3u_core-suse10_0_0 
-  - libwx_gtk3u_gl-suse-nostl10_0_0 
-  - libwx_gtk3u_gl-suse10_0_0 
-  - libwx_gtk3u_html-suse-nostl10_0_0 
-  - libwx_gtk3u_html-suse10_0_0 
-  - libwx_gtk3u_media-suse-nostl10_0_0 
-  - libwx_gtk3u_media-suse10_0_0 
-  - libwx_gtk3u_propgrid-suse-nostl10_0_0 
-  - libwx_gtk3u_propgrid-suse10_0_0 
-  - libwx_gtk3u_qa-suse-nostl10_0_0 
-  - libwx_gtk3u_qa-suse10_0_0 
-  - libwx_gtk3u_ribbon-suse-nostl10_0_0 
-  - libwx_gtk3u_ribbon-suse10_0_0 
-  - libwx_gtk3u_richtext-suse-nostl10_0_0 
-  - libwx_gtk3u_richtext-suse10_0_0 
-  - libwx_gtk3u_stc-suse-nostl10_0_0 
-  - libwx_gtk3u_stc-suse10_0_0 
-  - libwx_gtk3u_webview-suse10_0_0 
-  - libwx_gtk3u_xrc-suse-nostl10_0_0 
-  - libwx_gtk3u_xrc-suse10_0_0 
-  - libwx_qtu_adv-suse10_0_0 
-  - libwx_qtu_aui-suse10_0_0 
-  - libwx_qtu_core-suse10_0_0 
-  - libwx_qtu_gl-suse10_0_0 
-  - libwx_qtu_html-suse10_0_0 
-  - libwx_qtu_media-suse10_0_0 
-  - libwx_qtu_propgrid-suse10_0_0 
-  - libwx_qtu_qa-suse10_0_0 
-  - libwx_qtu_ribbon-suse10_0_0 
-  - libwx_qtu_richtext-suse10_0_0 
-  - libwx_qtu_stc-suse10_0_0 
-  - libwx_qtu_xrc-suse10_0_0 
+  - libwx_gtk3u_adv-suse-nostl11_0_0 
+  - libwx_gtk3u_adv-suse11_0_0 
+  - libwx_gtk3u_aui-suse-nostl11_0_0 
+  - libwx_gtk3u_aui-suse11_0_0 
+  - libwx_gtk3u_core-suse-nostl11_0_0 
+  - libwx_gtk3u_core-suse11_0_0 
+  - libwx_gtk3u_gl-suse-nostl11_0_0 
+  - libwx_gtk3u_gl-suse11_0_0 
+  - libwx_gtk3u_html-suse-nostl11_0_0 
+  - libwx_gtk3u_html-suse11_0_0 
+  - libwx_gtk3u_media-suse-nostl11_0_0 
+  - libwx_gtk3u_media-suse11_0_0 
+  - libwx_gtk3u_propgrid-suse-nostl11_0_0 
+  - libwx_gtk3u_propgrid-suse11_0_0 
+  - libwx_gtk3u_qa-suse-nostl11_0_0 
+  - libwx_gtk3u_qa-suse11_0_0 
+  - libwx_gtk3u_ribbon-suse-nostl11_0_0 
+  - libwx_gtk3u_ribbon-suse11_0_0 
+  - libwx_gtk3u_richtext-suse-nostl11_0_0 
+  - libwx_gtk3u_richtext-suse11_0_0 
+  - libwx_gtk3u_stc-suse-nostl11_0_0 
+  - libwx_gtk3u_stc-suse11_0_0 
+  - libwx_gtk3u_webview-suse11_0_0 
+  - libwx_gtk3u_xrc-suse-nostl11_0_0 
+  - libwx_gtk3u_xrc-suse11_0_0 
+  - libwx_qtu_adv-suse11_0_0 
+  - libwx_qtu_aui-suse11_0_0 
+  - libwx_qtu_core-suse11_0_0 
+  - libwx_qtu_gl-suse11_0_0 
+  - libwx_qtu_html-suse11_0_0 
+  - libwx_qtu_media-suse11_0_0 
+  - libwx_qtu_propgrid-suse11_0_0 
+  - libwx_qtu_qa-suse11_0_0 
+  - libwx_qtu_ribbon-suse11_0_0 
+  - libwx_qtu_richtext-suse11_0_0 
+  - libwx_qtu_stc-suse11_0_0 
+  - libwx_qtu_xrc-suse11_0_0 
   - libwxcode_gtk2u_wxsqlite3-3_2-0 
   - libwxlua 
   - libwxlua-wx32-3_1_0_0 
