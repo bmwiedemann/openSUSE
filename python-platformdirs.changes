@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  4 20:37:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.2:
+  * Fix android detection when python4android is present
+
+-------------------------------------------------------------------
 Sat Apr 27 07:40:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.2.1:
