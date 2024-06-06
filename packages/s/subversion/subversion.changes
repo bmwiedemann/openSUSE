@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  4 17:42:36 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix build with gcc14 (boo#1225929)
+  subversion-1.14.3-gcc14.patch
+  subversion-1.14.3-gcc14-2.patch
+
+-------------------------------------------------------------------
 Sat Dec 30 14:34:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.14.3:

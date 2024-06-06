@@ -1,0 +1,34 @@
+------------------------------------------------------------------------
+r1915236 | futatuki | 2024-01-14 19:29:23 +0100 (Sun, 14 Jan 2024) | 6 lines
+Changed paths:
+   M /subversion/trunk/subversion/bindings/swig/include/svn_containers.swg
+
+swig-rb: Fix condition to check that a apr_hash_t * type value is NULL
+
+* subversion/bindings/swig/include/svn_containers.swg
+  (typemap(in) apr_hash_t *PROPHASH,
+   typemap(in) apr_hash_t *HASH_CSTRING_MAYBENULL): As above
+
+------------------------------------------------------------------------
+Index: trunk/subversion/bindings/swig/include/svn_containers.swg
+===================================================================
+--- trunk/subversion/bindings/swig/include/svn_containers.swg	(revision 1915235)
++++ trunk/subversion/bindings/swig/include/svn_containers.swg	(revision 1915236)
+@@ -299,7 +299,7 @@
+   $1 = svn_swig_rb_hash_to_apr_hash_svn_string($input, _global_pool);
+   _global_pool = NULL;
+   if (!NIL_P(rb_pool)) {
+-    if (NIL_P($1)) {
++    if ($1 == NULL) {
+       svn_swig_rb_destroy_pool(rb_pool);
+     } else {
+       svn_swig_rb_set_pool_for_no_swig_type($input, rb_pool);
+@@ -373,7 +373,7 @@
+     svn_swig_rb_hash_to_apr_hash_string($input, _global_pool);
+   _global_pool = NULL;
+   if (!NIL_P(rb_pool)) {
+-    if (NIL_P($1)) {
++    if ($1 == NULL) {
+       svn_swig_rb_destroy_pool(rb_pool);
+     } else {
+       svn_swig_rb_set_pool_for_no_swig_type($input, rb_pool);

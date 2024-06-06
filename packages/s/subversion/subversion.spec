@@ -1,8 +1,9 @@
 #
-# spec file
+# spec file for package subversion
 #
 # Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2009-2010 Pascal Bleser <pascal.bleser@opensuse.org>
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -74,6 +75,8 @@ Patch46:        remove-kdelibs4support-dependency.patch
 # PATCH-FIX-UPSTREAM danilo.spinella@suse.com bsc#1195486 bsc#1193778
 # Fix testCrash_RequestChannel_nativeRead_AfterException test on aarch64 and ppc64le
 Patch47:        fix-javahl-test.patch
+Patch48:        subversion-1.14.3-gcc14.patch
+Patch49:        subversion-1.14.3-gcc14-2.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel >= 2.2.0
 BuildRequires:  apache2-prefork
@@ -430,7 +433,6 @@ ln -s /dev/shm/svn-test-work subversion/tests/cmdline/
 %endif
 
 %else
-
 %pre -f subversion.pre
 %service_add_pre svnserve.service
 

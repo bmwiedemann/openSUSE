@@ -1715,4 +1715,12 @@
   /usr/lib/tmpfiles.d/svnserve.conf:1: Line references path below</comment>
     <requestid>1135766</requestid>
   </revision>
+  <revision rev="194" vrev="2">
+    <srcmd5>a98b4144f12bbb660e878b9b2409fabf</srcmd5>
+    <version>1.14.3</version>
+    <time>1717669863</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1178773</requestid>
+  </revision>
 </revisionlist>
