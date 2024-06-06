@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  4 14:57:09 UTC 2024 - Reinhard Max <max@suse.com>
+
+- bsc#1225362, chrony-124-tai.patch: make 124-tai more reliable
+
+-------------------------------------------------------------------
+Mon May 27 15:34:40 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Update clknetsim to snapshot 0a11a35.
+
+-------------------------------------------------------------------
 Mon Feb 26 10:33:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
