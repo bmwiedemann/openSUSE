@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun  4 09:13:19 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.4.15
+  * bug(nix:corretto): use autoPatchelfHook on all systems and ignore als… (#4561)
+  * feat(bindings): Add API to check for resumption (#4552)
+  * fix: Send zero-length NST when session key is expired (#4532)
+  * feat: add key preferences to rfc9151 policy (#4540)
+  * chore: bindings release 0.2.5 (#4551)
+  * refactor: Avoid unnecessary s2n_hmac calls in s2n_record_write (#4539)
+  * feat: Modify s2nd/c to do serialization/deserialization (#4533)
+
+-------------------------------------------------------------------
 Mon May 13 09:20:33 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.4.14
