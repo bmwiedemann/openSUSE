@@ -61,4 +61,23 @@
     <comment></comment>
     <requestid>1153952</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>623042f7f2f14ec2723156ff082d429f</srcmd5>
+    <version>1.7.18</version>
+    <time>1717669982</time>
+    <user>anag+factory</user>
+    <comment>- unconditionally apply the revert NULL pointer test
+
+- update to 1.7.18:
+  * CVE-2024-31755: NULL pointer dereference via
+    cJSON_SetValuestring() (boo#1223420)
+  * Remove non-functional list handling of compiler flags
+  * Fix heap buffer overflow
+  * remove misused optimization flag -01
+  * Set free'd pointers to NULL whenever they are not reassigned
+    immediately after
+- revert tests for NULL pointers that fail on Leap 15.5
+  cJSON-1.7.18-misc_tests.patch</comment>
+    <requestid>1178793</requestid>
+  </revision>
 </revisionlist>

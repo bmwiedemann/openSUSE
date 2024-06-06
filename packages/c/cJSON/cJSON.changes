@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun  5 16:34:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- unconditionally apply the revert NULL pointer test
+
+-------------------------------------------------------------------
+Thu May 23 18:03:45 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.7.18:
+  * CVE-2024-31755: NULL pointer dereference via
+    cJSON_SetValuestring() (boo#1223420)
+  * Remove non-functional list handling of compiler flags
+  * Fix heap buffer overflow
+  * remove misused optimization flag -01
+  * Set free'd pointers to NULL whenever they are not reassigned
+    immediately after
+- revert tests for NULL pointers that fail on Leap 15.5
+  cJSON-1.7.18-misc_tests.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 10:45:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

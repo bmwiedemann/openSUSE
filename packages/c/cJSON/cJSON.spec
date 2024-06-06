@@ -1,8 +1,9 @@
 #
 # spec file for package cJSON
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020-2023, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +21,7 @@
 %global sover   1
 %global libname libcjson%{sover}
 Name:           cJSON
-Version:        1.7.17
+Version:        1.7.18
 Release:        0
 Summary:        JSON parser library written in ANSI C
 License:        MIT
@@ -28,6 +29,7 @@ Group:          System/Libraries
 URL:            https://github.com/DaveGamble/cJSON
 Source:         https://github.com/DaveGamble/cJSON/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         cJSON-fix-cmake-include-path.patch
+Patch1:         cJSON-1.7.18-misc_tests.patch
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 
@@ -53,17 +55,19 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libcjson.
 
 %prep
-%autosetup -p1
+%setup -q
+# test is doing an access of freed memory which is undefined and glibc
+# is poisioning our memory so it's failing
+%patch -P1 -p1 -R
 
 %build
 %cmake
-%make_build
+%cmake_build
 
 %install
 %cmake_install
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %check
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
@@ -75,6 +79,7 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 %{_libdir}/libcjson.so.%{sover}*
 
 %files devel
+%license LICENSE
 %dir %{_includedir}/cjson
 %{_includedir}/cjson/cJSON.h
 %dir %{_libdir}/cmake/cJSON
