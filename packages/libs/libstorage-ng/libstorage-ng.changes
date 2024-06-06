@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Tue Jun 4 15:42:17 UTC 2024 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#996
+- make more use of new SystemCmd interface
+- 4.5.207
+
+--------------------------------------------------------------------
 Mon May 27 11:08:16 UTC 2024 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#995
