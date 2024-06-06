@@ -49,4 +49,14 @@
     empty.</comment>
     <requestid>1137641</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a159a99d2e473adb5f57d5d1d2e99e4f</srcmd5>
+    <version>2.3.2</version>
+    <time>1717670072</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.3.2:
+  * Added MAILER_EMAIL_LOG_MESSAGE_DATA setting
+  * Added support for psycopg3 for runmailer_pc</comment>
+    <requestid>1178930</requestid>
+  </revision>
 </revisionlist>

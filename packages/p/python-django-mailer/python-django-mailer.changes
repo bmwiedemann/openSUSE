@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  6 08:29:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.2:
+  * Added MAILER_EMAIL_LOG_MESSAGE_DATA setting
+  * Added support for psycopg3 for runmailer_pc
+
+-------------------------------------------------------------------
 Mon Jan  8 21:00:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.1:

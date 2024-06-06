@@ -18,7 +18,7 @@
 
 %define skip_python36 1
 Name:           python-django-mailer
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 Summary:        A reusable Django app for queuing the sending of email
 License:        MIT
