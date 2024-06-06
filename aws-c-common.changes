@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun  5 09:45:21 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.20
+  * Task scheduler: log at TRACE, instead of DEBUG by @graebm in (#1115)
+  * Update CJson to v1.7.18 by @waahm7 in (#1116)
+  * Avoid overflowing pointers passed to memcpy by @qinheping in (#874)
+  * Fix test skipping by @graebm in (#1118)
+  * Fix CMake Windows ARM typo by @graebm in (#1119)
+  * Fix weird decimal formatting in tests by @graebm in (#1121)
+
+-------------------------------------------------------------------
 Mon May 13 08:31:15 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.19
