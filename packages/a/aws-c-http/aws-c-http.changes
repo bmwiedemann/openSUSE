@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun  5 09:52:17 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.2
+  * Mark some missing Network tests as net_tests. by @waahm7 in (#465)
+  * Add test where connection shuts down before response completes
+    by @graebm in (#468)
+
+-------------------------------------------------------------------
 Tue Feb 20 11:14:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
