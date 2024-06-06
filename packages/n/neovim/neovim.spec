@@ -78,6 +78,7 @@ BuildRequires:  lua51-BitOp
 BuildRequires:  lua51-devel
 %endif
 Requires:       lua51-bit32
+Requires:       lua51-lpeg
 Requires:       lua51-luv
 Recommends:     python3-neovim
 
