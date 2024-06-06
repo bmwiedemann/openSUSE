@@ -30,6 +30,10 @@ Source:         https://bitbucket.org/agriggio/art/downloads/%{name}-%{version}.
 Source1:        https://bitbucket.org/agriggio/art/downloads/%{name}-%{version}.tar.xz.asc
 # https://keys.openpgp.org/vks/v1/by-fingerprint/942FCFB1CBE1E38928A1A6BEA94D951156835A5D
 Source2:        %{name}.keyring
+BuildRequires:  OpenColorIO-devel
+%if 0%{?suse_version} > 1590
+BuildRequires:  ctl-devel
+%endif
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -100,7 +104,12 @@ export CXX=gcc
     -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
     -DCMAKE_C_FLAGS="$CFLAGS" \
     -DCACHE_NAME_SUFFIX="" \
-    -DENABLE_LIBRAW="ON"
+    -DENABLE_LIBRAW="ON" \
+%if 0%{?suse_version} > 1590
+    -DENABLE_CTL="ON" \
+    -DCTL_INCLUDE_DIR="%{_includedir}/CTL" \
+%endif
+    -DENABLE_OCIO="ON"
 %cmake_build
 
 %install
