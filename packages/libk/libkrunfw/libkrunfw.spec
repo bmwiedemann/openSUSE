@@ -1,7 +1,7 @@
 #
 # spec file for package libkrunfw
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sev 1
 
-%global kernel linux-6.0.6
+%global kernel linux-6.4.7
 
 %ifnarch x86_64
 %define sev 0
@@ -33,7 +33,7 @@ directly inject those mappings into the guest without any kind of additional \
 work nor processing.
 
 Name:           libkrunfw
-Version:        3.8.1
+Version:        4.0.0
 Release:        0
 Summary:        A dynamic library bundling a Linux kernel in a convenient storage format
 License:        GPL-2.0-only AND LGPL-2.1-only
@@ -59,16 +59,17 @@ Conflicts:      libkrunfw0 <= 0.7
 %description
 %{summary}
 
-%package -n %{name}3
+%package -n %{name}4
 Summary:        A dynamic library bundling a Linux kernel in a convenient storage format
 Obsoletes:      libkrunfw <= 3.6.3
+Obsoletes:      libkrunfw3
 
-%description -n %{name}3
+%description -n %{name}4
 %{descr}
 
 %package devel
 Summary:        Header files and libraries for libkrunfw development
-Requires:       %{name}3 = %{version}-%{release}
+Requires:       %{name}4 = %{version}-%{release}
 
 %description devel
 %{descr}
@@ -77,11 +78,12 @@ This package contains the libraries needed to develop programs
 that consume the guest payload integrated in libkrunfw.
 
 %if %{sev}
-%package sev3
+%package sev4
 Summary:        A dynamic library bundling the guest payload consumed by libkrun-sev
 Obsoletes:      libkrunfw <= 3.6.3
+Obsoletes:      libkrunfw3
 
-%description sev3
+%description sev4
 %{descr}
 
 This package contains the library bundling the guest payload consumed
@@ -89,7 +91,7 @@ by libkrun-sev.
 
 %package sev-devel
 Summary:        Header files and libraries for libkrunfw-sev development
-Requires:       %{name}-sev3 = %{version}-%{release}
+Requires:       %{name}-sev4 = %{version}-%{release}
 Provides:       %{name}:%{_libdir}/libkrunfw-sev.so
 Obsoletes:      %{name} < %{version}-%{release}
 
@@ -140,29 +142,29 @@ source ./.kernel-binary.spec.buildenv
 install -D -p -m 0755 utils/krunfw_measurement %{buildroot}%{_bindir}/krunfw_measurement
 %endif
 
-%post -n %{name}3 -p /sbin/ldconfig
+%post -n %{name}4 -p /sbin/ldconfig
 
-%postun -n %{name}3 -p /sbin/ldconfig
+%postun -n %{name}4 -p /sbin/ldconfig
 
-%files -n %{name}3
-%{_libdir}/libkrunfw.so.3
+%files -n %{name}4
+%{_libdir}/libkrunfw.so.4
 %{_libdir}/libkrunfw.so.%{version}
 
 %files devel
 %{_libdir}/libkrunfw.so
 
 %if %{sev}
-%files sev3
-%{_libdir}/libkrunfw-sev.so.3
+%files sev4
+%{_libdir}/libkrunfw-sev.so.4
 %{_libdir}/libkrunfw-sev.so.%{version}
 %{_bindir}/krunfw_measurement
 
 %files sev-devel
 %{_libdir}/libkrunfw-sev.so
 
-%post sev3 -p /sbin/ldconfig
+%post sev4 -p /sbin/ldconfig
 
-%postun sev3 -p /sbin/ldconfig
+%postun sev4 -p /sbin/ldconfig
 
 %endif
 

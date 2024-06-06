@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu May 30 11:52:22 UTC 2024 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to v4.0.0
+  * bin2cbundle: Require ELFFile import
+  * Rebase on a 6.1.32 kernel
+  * Add missing elftools to build-on-krunvm.sh
+  * Rebase on a kernel v6.4.7
+
+- Changes from 3.12.0
+  * Force bundle alignment to 16K
+  * Force bundle alignment to 64K
+  * Makefile: use implicit CC variable instead of hardcoding gcc
+  * Rebase kernel on v6.2.14
+
+- Changes from 3.11.0
+  * Fix SNP measurement generation
+  * Rebase kernel on v6.2.9 and update initrd
+
+- Changes from 3.10.0
+  * Rebase kernel on v6.2.1
+
+- Changes from 3.9.0
+  * README.md: Add "Known Limitations" section
+  * Rebase kernel on v6.1.6
+
+-------------------------------------------------------------------
 Tue Jan  3 10:41:29 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Update to v3.8.1:
