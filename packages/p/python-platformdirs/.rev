@@ -152,4 +152,13 @@
   * Allow working without ctypes</comment>
     <requestid>1170433</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0a930e363e8c0c8f76c7d85a1ab50fde</srcmd5>
+    <version>4.2.2</version>
+    <time>1717669901</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.2.2:
+  * Fix android detection when python4android is present</comment>
+    <requestid>1178614</requestid>
+  </revision>
 </revisionlist>
