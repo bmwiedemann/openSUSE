@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  4 07:56:49 UTC 2024 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Switched "sle15sp6" to Update after release (bsc#1224387)
+- Moved "sle_latest" to SLE-15-SP7
+
+-------------------------------------------------------------------
 Tue Sep 12 08:12:16 UTC 2023 - Josef Reidinger <jreidinger@suse.com>
 
 - Adapt "sle15sp6" to GA as it is still in development and it is
