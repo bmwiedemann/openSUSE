@@ -111,6 +111,7 @@ Patch14:        0004-Fix-time_t-ETG-typedef-extend-DateTime.FromTimeT-tes.patch
 Patch112:       0001-Check-HSV-values-in-image-test.patch
 # PATCH-FIX-OPENSUSE - Numpy for Python 3.12 is a thing
 Patch113:       require-numpy.patch
+Patch114:       wxwidgets-3.2.5.patch
 # TODO: Replace deprecated setup.py calls in build.py with PEP517 without building wxWidgets into the wheel
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module devel}
