@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 14 11:07:36 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- zsync-gcc14.patch: fixed gcc14 build issues (some parameter type mismatches)
+
+-------------------------------------------------------------------
 Tue Feb 20 12:11:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -1,0 +1,67 @@
+Index: libzsync/zsync.c
+===================================================================
+--- libzsync/zsync.c.orig
++++ libzsync/zsync.c
+@@ -440,12 +440,12 @@ const char *const *zsync_get_urls(struct
+     if (zs->zmap && zs->nzurl) {
+         *n = zs->nzurl;
+         *t = 1;
+-        return zs->zurl;
++        return (const char*const*)zs->zurl;
+     }
+     else {
+         *n = zs->nurl;
+         *t = 0;
+-        return zs->url;
++        return (const char*const*)zs->url;
+     }
+ }
+ 
+@@ -768,7 +768,7 @@ char *zsync_end(struct zsync_state *zs)
+  */
+ void zsync_configure_zstream_for_zdata(const struct zsync_state *zs,
+                                        struct z_stream_s *zstrm,
+-                                       long zoffset, long long *poutoffset) {
++                                       off_t zoffset, off_t *poutoffset) {
+     configure_zstream_for_zdata(zs->zmap, zstrm, zoffset, poutoffset);
+     {                           /* Load in prev 32k sliding window for backreferences */
+         long long pos = *poutoffset;
+Index: libzsync/zmap.h
+===================================================================
+--- libzsync/zmap.h.orig
++++ libzsync/zmap.h
+@@ -29,7 +29,7 @@ struct zmap* zmap_make(const struct gzbl
+ void zmap_free(struct zmap*);
+ 
+ off_t* zmap_to_compressed_ranges(const struct zmap* zm, off_t* byterange, int nrange, int* num);
+-void configure_zstream_for_zdata(const struct zmap* zm, struct z_stream_s* zs, long zoffset, long long* poutoffset);
++void configure_zstream_for_zdata(const struct zmap* zm, struct z_stream_s* zs, off_t zoffset, off_t * poutoffset);
+ 
+ /* gzip flag byte */
+ #define GZ_ASCII_FLAG   0x01 /* bit 0 set: file probably ascii text */
+Index: libzsync/zmap.c
+===================================================================
+--- libzsync/zmap.c.orig
++++ libzsync/zmap.c
+@@ -333,7 +333,7 @@ int zmap_search(const struct zmap* zm, l
+  * and in the order that it returned them, this condition is satisfied.
+  */
+ void configure_zstream_for_zdata(const struct zmap *zm, z_stream * zs,
+-                                 long zoffset, long long *poutoffset) {
++                                 off_t zoffset, off_t *poutoffset) {
+     /* Find the zmap entry corresponding to this offset */
+     int i = zmap_search(zm, zoffset);
+ 
+Index: client.c
+===================================================================
+--- client.c.orig
++++ client.c
+@@ -146,7 +146,7 @@ long long http_down;
+  * number of entries is passed by reference and updated in place. The new entry
+  * is appended to the list.
+  */
+-static void **append_ptrlist(int *n, void **p, void *a) {
++static char **append_ptrlist(int *n, char **p, char *a) {
+     if (!a)
+         return p;
+     p = realloc(p, (*n + 1) * sizeof *p);

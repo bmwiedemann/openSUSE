@@ -1,7 +1,7 @@
 #
 # spec file for package zsync
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            http://zsync.moria.org.uk/
 Source0:        http://zsync.moria.org.uk/download/zsync-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE avoid build time in generated files for build compare
 Patch0:         zsync-no-build-date.patch
+# PATCH-FIX-OPENSUSE build with gcc14
+Patch1:         zsync-gcc14.patch
 BuildRequires:  gcc
 BuildRequires:  make
 
