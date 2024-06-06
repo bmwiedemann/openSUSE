@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  4 17:16:49 UTC 2024 - Zoltan Balogh <zbalogh@suse.com>
+
+- Fixing bsc#1213929 - zypper-changelog-plugin lacks dependencies (No module named 'rpm') 
+
+-------------------------------------------------------------------
 Fri May 24 12:26:41 UTC 2024 - Zoltan Balogh <zbalogh@suse.com>
 
 - Fixing bsc#1223985 - zypper-changelog-plugin exhausts all memory 
