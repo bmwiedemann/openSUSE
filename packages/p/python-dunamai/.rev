@@ -40,4 +40,15 @@
     the repository is dirty.</comment>
     <requestid>1171535</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ab7a16a8920aa29efbb5dd782ec7f745</srcmd5>
+    <version>1.21.1</version>
+    <time>1717670062</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.21.1:
+  * Fixed: Distance was calculated inconsistently for Git
+  * when there were some tags and none matched the version
+    pattern.</comment>
+    <requestid>1178911</requestid>
+  </revision>
 </revisionlist>
