@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun  5 16:34:15 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.7.0
+  * Some refactoring of the code related to enumerators and
+    iterators, and including a bug fix related to the data files
+    for order 8
+    (https://github.com/gap-packages/smallsemi/issues/34)
+
+-------------------------------------------------------------------
 Sat Nov 19 01:25:42 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.6.13
