@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 13 13:11:36 UTC 2024 - pgajdos@suse.com
+
+- added patches
+  fix build with gcc14
+  + krb5-appl-gcc14.patch
+
+-------------------------------------------------------------------
 Thu Feb 22 12:43:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

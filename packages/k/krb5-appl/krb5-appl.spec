@@ -1,7 +1,7 @@
 #
 # spec file for package krb5-appl
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,7 +21,7 @@
 %define krb5docdir  %{_defaultdocdir}/krb5
 
 Name:           krb5-appl
-Url:            https://web.mit.edu/kerberos/www/
+URL:            https://web.mit.edu/kerberos/www/
 BuildRequires:  bison
 BuildRequires:  krb5-devel
 BuildRequires:  libcom_err-devel
@@ -39,7 +39,9 @@ Patch1:         krb5-appl-1.0-fix-ftp-var-used-uninitialized.dif
 Patch2:         krb5-appl-1.0-fix-var-used-before-value-set.dif
 Patch3:         krb5-appl-1.0-fix-path-in-manpages.dif
 Patch4:         krb5-appl-1.0.3-libc.patch
-Patch5:		krb5-appl-fix-build.patch
+Patch5:         krb5-appl-fix-build.patch
+# build with gcc14
+Patch6:         krb5-appl-gcc14.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -87,6 +89,7 @@ fi
 %patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 5 -p1
+%patch -P 6 -p1
 
 %build
 ./autogen.sh
@@ -100,11 +103,11 @@ LDFLAGS="-pie " \
 	--libexecdir=/usr/lib/mit/sbin \
 	--libdir=%{_libdir} \
 	--includedir=%{_includedir} \
-        --localstatedir=%{_localstatedir}/lib/kerberos 
-make %{?jobs:-j%jobs} 
+        --localstatedir=%{_localstatedir}/lib/kerberos
+make %{?jobs:-j%jobs}
 
 %install
-make DESTDIR=%{buildroot} install 
+make DESTDIR=%{buildroot} install
 mkdir -p %{buildroot}%{_sysconfdir}
 for n in ftpd.8 telnetd.8; do
         mv %{buildroot}%{_mandir}/man8/${n} %{buildroot}%{_mandir}/man8/k${n}
