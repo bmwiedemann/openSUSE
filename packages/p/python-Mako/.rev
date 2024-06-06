@@ -613,4 +613,14 @@ Switching over to update-alternatives for python 3 would be a huge undertaking a
     initial parsing is correct.</comment>
     <requestid>1173914</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>7fffcbf526ebe990d480df1b7a37463c</srcmd5>
+    <version>1.3.5</version>
+    <time>1717669902</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.5:
+  * Reverted the fix for :ticket:`400` as it caused new issues
+    when traversing some bracketed situations.</comment>
+    <requestid>1178620</requestid>
+  </revision>
 </revisionlist>
