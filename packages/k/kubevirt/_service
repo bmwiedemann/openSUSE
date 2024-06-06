@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="manual">
     <param name="filename">kubevirt</param>
-    <param name="revision">v1.2.1</param>
+    <param name="revision">v1.2.2</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/kubevirt/kubevirt</param>

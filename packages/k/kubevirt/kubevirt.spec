@@ -30,7 +30,7 @@
 %endif
 
 Name:           kubevirt
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
