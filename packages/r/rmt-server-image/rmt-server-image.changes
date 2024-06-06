@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  5 15:13:27 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- Don't add artifacthub labels into labelprefix section
+
+-------------------------------------------------------------------
 Tue Jun  4 12:35:15 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Fix grammar mistake in licensing footer
