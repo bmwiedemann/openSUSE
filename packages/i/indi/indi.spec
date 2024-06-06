@@ -179,16 +179,11 @@ export CXXFLAGS="$CFLAGS"
 # delete static libs
 find %{buildroot}%{_libdir} -iname "*.a" -delete
 
-%post -n libindiAlignmentDriver%{so_ver} -p /sbin/ldconfig
-%postun -n libindiAlignmentDriver%{so_ver} -p /sbin/ldconfig
-%post -n libindidriver%{so_ver} -p /sbin/ldconfig
-%postun -n libindidriver%{so_ver} -p /sbin/ldconfig
-%post -n libindilx200-%{so_ver} -p /sbin/ldconfig
-%postun -n libindilx200-%{so_ver} -p /sbin/ldconfig
-%post -n libindiclient%{so_ver} -p /sbin/ldconfig
-%postun -n libindiclient%{so_ver} -p /sbin/ldconfig
-%post -n libindiclientqt%{so_ver} -p /sbin/ldconfig
-%postun -n libindiclientqt%{so_ver} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libindiAlignmentDriver%{so_ver}
+%ldconfig_scriptlets -n libindidriver%{so_ver}
+%ldconfig_scriptlets -n libindilx200-%{so_ver}
+%ldconfig_scriptlets -n libindiclient%{so_ver}
+%ldconfig_scriptlets -n libindiclientqt%{so_ver}
 
 %files
 %license COPYING.* COPYRIGHT LICENSE
