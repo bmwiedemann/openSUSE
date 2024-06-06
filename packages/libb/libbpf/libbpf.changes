@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  4 06:10:48 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- update to 1.4.3:
+  * Fix libbpf unintentionally dropping FD_CLOEXEC flag when (internally)
+    duping FDs
+
+-------------------------------------------------------------------
 Sat May 11 07:03:51 UTC 2024 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - update to 1.4.2:

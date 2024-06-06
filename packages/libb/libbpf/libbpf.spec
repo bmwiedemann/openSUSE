@@ -19,7 +19,7 @@
 %define sover_major 1
 %define libname libbpf%{sover_major}
 Name:           libbpf
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        C library for managing eBPF programs and maps
 License:        LGPL-2.1-only
