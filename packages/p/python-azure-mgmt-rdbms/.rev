@@ -354,4 +354,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1175704 from glaubitz)</comment>
     <requestid>1175812</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>a2c63eee393704db0e0554b52560d984</srcmd5>
+    <version>10.2.0b17</version>
+    <time>1717669971</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 10.2.0b17
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1178671 from glaubitz)</comment>
+    <requestid>1178732</requestid>
+  </revision>
 </revisionlist>
