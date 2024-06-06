@@ -38,10 +38,10 @@
 %define build_ceph 1
 %endif
 
-%define talloc_version 2.4.1
-%define tevent_version 0.15.0
-%define tdb_version    1.4.9
-%define ldb_version    2.8.0
+%define talloc_version 2.4.2
+%define tevent_version 0.16.1
+%define tdb_version    1.4.10
+%define ldb_version    2.9.0
 
 # This table represents the possible combinations of build macros.
 # They are defined only if not already defined in the build service
@@ -160,7 +160,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.20.1+git.335.0a46cdafe2
+Version:        4.20.1+git.339.cf6e153bb2
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
