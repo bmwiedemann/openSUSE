@@ -39,14 +39,13 @@ You can contact the BCI team via https://github.com/SUSE/bci/discussions
             <label name="org.opencontainers.image.vendor" value="openSUSE Project"/>
             <label name="org.opencontainers.image.source" value="%SOURCEURL%"/>
             <label name="org.opencontainers.image.url" value="https://www.opensuse.org"/>
-            <label name="io.artifacthub.package.readme-url" value="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/minimal-image/README.md"/>
-            <label name="io.artifacthub.package.logo-url" value="https://opensource.suse.com/bci/SLE_BCI_logomark_green.svg"/>
             <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/bci/bci-minimal:%OS_VERSION_ID_SP%.%RELEASE%"/>
             <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
-
             <label name="org.opensuse.release-stage" value="released"/>
             <label name="org.opensuse.lifecycle-url" value="https://en.opensuse.org/Lifetime"/>
           </suse_label_helper:add_prefix>
+          <label name="io.artifacthub.package.readme-url" value="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/minimal-image/README.md"/>
+          <label name="io.artifacthub.package.logo-url" value="https://opensource.suse.com/bci/SLE_BCI_logomark_green.svg"/>
         </labels>
       </containerconfig>
     </type>
