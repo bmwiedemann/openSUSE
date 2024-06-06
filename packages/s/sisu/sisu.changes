@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jun  5 14:00:52 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream milestone 0.9.0.M3
+  * Changes
+    + Annotate new method
+    + Update workflow to run on Java 21
+    + Build with final Java 21 on GitHub
+    + Switch to JUnit5
+    + Disable annotation processor by default
+    + Do not silently fail in case of class scanning exceptions
+    + Formatting issues
+    + Update to ASM 9.7
+    + Update CONTRIBUTING.md
+    + Align Plexus ASM version
+    + Rename release profile
+    + Fix Jacoco coverage repots in Sonar
+    + Add a method to allow LifecycleManager to free keys
+    + Licence change: From EPL1 to EPL2
+    + update documentation for exposed core extensions, fix anchors
+    + Trigger Sonarcloud analysis from GHA
+- Build sisu-mojos as a second spec within sisu package, since the
+  sources of sisu-mojos, sisu-inject and sisu-plexus were joined in
+  the same upstream project
+
+-------------------------------------------------------------------
 Thu May 16 13:08:26 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Provide plexus-containers-container-default for easier update

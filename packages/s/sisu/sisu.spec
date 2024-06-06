@@ -18,19 +18,17 @@
 
 %global reltype milestones
 Name:           sisu
-Version:        0.9.0.M2
+Version:        0.9.0.M3
 Release:        0
 Summary:        Eclipse dependency injection framework
-# sisu is EPL-1.0, bundled asm is BSD
-License:        BSD-3-Clause AND EPL-1.0
+License:        BSD-3-Clause AND EPL-1.0 AND EPL-2.0
 Group:          Development/Libraries/Java
 URL:            https://www.eclipse.org/sisu/
-Source0:        https://github.com/eclipse/sisu.inject/archive/refs/tags/%{reltype}/%{version}.tar.gz#/sisu-inject-%{version}.tar.gz
-Source1:        https://github.com/eclipse/sisu.plexus/archive/refs/tags/%{reltype}/%{version}.tar.gz#/sisu-plexus-%{version}.tar.gz
-Source2:        %{name}-build.tar.xz
-Patch1:         %{name}-no-dependency-on-glassfish-servlet-api.patch
-Patch3:         %{name}-osgi-api.patch
-Patch4:         %{name}-reproducible-index.patch
+Source0:        https://github.com/eclipse-sisu/sisu-project/archive/refs/tags/%{reltype}/%{version}.tar.gz#/sisu-project-%{version}.tar.gz
+Source1:        %{name}-build.tar.xz
+Patch1:         sisu-no-dependency-on-glassfish-servlet-api.patch
+Patch3:         sisu-osgi-api.patch
+Patch4:         sisu-reproducible-index.patch
 BuildRequires:  ant
 BuildRequires:  atinject
 BuildRequires:  cdi-api
@@ -82,14 +80,11 @@ Group:          Documentation/HTML
 This package contains %{summary}.
 
 %prep
-%setup -q -c -T
-tar xf %{SOURCE0} && mv sisu.inject-%{reltype}-%{version} sisu-inject
-tar xf %{SOURCE1} && mv sisu.plexus-%{reltype}-%{version} sisu-plexus
-tar xf %{SOURCE2}
+%setup -q -n sisu-project-%{reltype}-%{version} -a1
 
-%patch -P 1
-%patch -P 3
-%patch -P 4 -p1
+%patch -P 1 -p1
+%patch -P 3 -p1
+%patch -P 4 -p2
 
 %build
 mkdir -p lib
@@ -112,9 +107,9 @@ build-jar-repository -s lib \
 %install
 # jar
 install -dm 0755 %{buildroot}%{_javadir}
-install -pm 0644 %{name}-inject/org.eclipse.sisu.inject/target/org.eclipse.sisu.inject-%{version}.jar \
+install -pm 0644 org.eclipse.sisu.inject/target/org.eclipse.sisu.inject-%{version}.jar \
     %{buildroot}%{_javadir}/org.eclipse.sisu.inject.jar
-install -pm 0644 %{name}-plexus/org.eclipse.sisu.plexus/target/org.eclipse.sisu.plexus-%{version}.jar \
+install -pm 0644 org.eclipse.sisu.plexus/target/org.eclipse.sisu.plexus-%{version}.jar \
     %{buildroot}%{_javadir}/org.eclipse.sisu.plexus.jar
 # Compatibility symlink
 install -dm 0755 %{buildroot}%{_javadir}/plexus-containers
@@ -122,26 +117,26 @@ ln -sf %{_javadir}/org.eclipse.sisu.plexus.jar %{buildroot}%{_javadir}/plexus-co
 
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-%{mvn_install_pom} %{name}-inject/org.eclipse.sisu.inject/pom.xml %{buildroot}%{_mavenpomdir}/org.eclipse.sisu.inject.pom
+%{mvn_install_pom} org.eclipse.sisu.inject/pom.xml %{buildroot}%{_mavenpomdir}/org.eclipse.sisu.inject.pom
 %add_maven_depmap org.eclipse.sisu.inject.pom org.eclipse.sisu.inject.jar -f inject
-%{mvn_install_pom} %{name}-plexus/org.eclipse.sisu.plexus/pom.xml %{buildroot}%{_mavenpomdir}/org.eclipse.sisu.plexus.pom
+%{mvn_install_pom} org.eclipse.sisu.plexus/pom.xml %{buildroot}%{_mavenpomdir}/org.eclipse.sisu.plexus.pom
 %add_maven_depmap org.eclipse.sisu.plexus.pom org.eclipse.sisu.plexus.jar -f plexus -a org.sonatype.sisu:sisu-inject-plexus,org.codehaus.plexus:plexus-container-default
 
 # javadoc
 for i in inject plexus; do
   install -dm 0755 %{buildroot}%{_javadocdir}/%{name}/%{name}-${i}
-  cp -pr %{name}-${i}/org.eclipse.sisu.${i}/target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/%{name}-${i}/
+  cp -pr org.eclipse.sisu.${i}/target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/%{name}-${i}/
 done
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files inject -f .mfiles-inject
-%license sisu-inject/LICENSE.txt
+%license LICENSE.txt
 
 %files plexus -f .mfiles-plexus
 %{_javadir}/plexus-containers
 
 %files javadoc
-%license sisu-inject/LICENSE.txt
+%license LICENSE.txt
 %{_javadocdir}/%{name}
 
 %changelog

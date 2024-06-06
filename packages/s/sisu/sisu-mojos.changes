@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Wed Jun  5 14:00:52 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream milestone 0.9.0.M3
+  * Changes
+    + Annotate new method
+    + Update workflow to run on Java 21
+    + Build with final Java 21 on GitHub
+    + Switch to JUnit5
+    + Disable annotation processor by default
+    + Do not silently fail in case of class scanning exceptions
+    + Formatting issues
+    + Update to ASM 9.7
+    + Update CONTRIBUTING.md
+    + Align Plexus ASM version
+    + Rename release profile
+    + Fix Jacoco coverage repots in Sonar
+    + Add a method to allow LifecycleManager to free keys
+    + Licence change: From EPL1 to EPL2
+    + update documentation for exposed core extensions, fix anchors
+    + Trigger Sonarcloud analysis from GHA
+- Build sisu-mojos as a second spec within sisu package, since the
+  sources of sisu-mojos, sisu-inject and sisu-plexus were joined in
+  the same upstream project
+
+-------------------------------------------------------------------
+Tue Sep 19 11:11:52 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Do not require maven-javadoc-plugin that we don't use
+
+-------------------------------------------------------------------
+Wed Sep  6 13:38:16 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 0.9.0 milestone 2
+  * Changes of 0.9.0.M2
+    + Add m2e support
+    + Convert APT to MD
+    + Update plugin
+    + Align to latest Maven plugins
+  * Changes of 0.9.0.M1
+    + On debug, emit scanned entries
+    + Enable Java CI workflow
+    + Enable CodeQL analysis
+    + Avoid rewriting the index if it has not changed
+  * Changes of 0.3.5
+    + Build against CDI API 1.2
+  * Changes of 0.3.4
+    + Reproducible builds
+  * Changes of 0.3.3
+    + Lifecycle maintenance
+  * Changes of 0.3.2
+    + Java9+Jigsaw support
+
+-------------------------------------------------------------------
+Fri May  5 08:10:40 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging with version 0.3.1

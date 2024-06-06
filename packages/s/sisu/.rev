@@ -71,4 +71,12 @@
     <comment>Provide plexus-containers-container-default for easier update</comment>
     <requestid>1174566</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>29c051f899e54a4d104f9997f0f58c9a</srcmd5>
+    <version>0.9.0.M3</version>
+    <time>1717669991</time>
+    <user>anag+factory</user>
+    <comment>Add EPL-2.0</comment>
+    <requestid>1178808</requestid>
+  </revision>
 </revisionlist>
