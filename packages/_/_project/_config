@@ -520,7 +520,7 @@ FileProvides: /usr/sbin/update-alternatives update-alternatives
 FileProvides: /usr/sbin/useradd shadow
 FileProvides: /usr/sbin/userdel shadow
 FileProvides: /usr/sbin/usermod shadow
-
+FileProvides: /usr/bin/zstd zstd
 
 # Files which are provided and required by the same package only
 # are not part of primary.xml.gz, thus missing in the section above.
