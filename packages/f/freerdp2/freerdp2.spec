@@ -34,7 +34,7 @@
 %define libfreerdp_package %{major_version}-%{major_version}
 
 Name:           freerdp2
-Version:        2.11.5
+Version:        2.11.7
 Release:        0
 Summary:        Remote Desktop Viewer Client
 License:        Apache-2.0
@@ -43,19 +43,11 @@ URL:            https://www.freerdp.com/
 Source0:        https://github.com/FreeRDP/FreeRDP/releases/download/%{version}/freerdp-%{version}.tar.gz
 Source1:        freerdp2-rpmlintrc
 # PATCH-FIX-UPSTREAM https://github.com/FreeRDP/FreeRDP/pull/7476
-Patch0:         0001-Make-H.264-codec-optional-during-runtime.patch
-# PATCH-FIX-UPSTREAM CVE-2023-40574, CVE-2023-40575, CVE-2023-40576, bsc#1214869, bsc#1214870, bsc#1214871 -- yu.daike@suse.com
-Patch1:         freerdp-CVE-2023-40574-to-2023-40576.patch
+Patch1:         0001-Make-H.264-codec-optional-during-runtime.patch
 # PATCH-FIX-OPENSUSE -- Don't let 'cmake(WinPR)' require unneeded tools
 Patch2:         0001-Don-t-add-winpr-cli-tools-to-exported-CMake-targets.patch
-# PATCH-FIX-UPSTREAM freerdp-CVE-2024-32659.patch CVE-2024-32659 bsc#1223346 yu.daike@suse.com -- out-of-bounds read if `((nWidth == 0) and (nHeight == 0))`
-Patch3:         freerdp-CVE-2024-32659.patch
-# PATCH-FIX-UPSTREAM freerdp-CVE-2024-32660.patch CVE-2024-32660 bsc#1223347 yu.daike@suse.com -- client crash via invalid huge allocation size
-Patch4:         freerdp-CVE-2024-32660.patch
 # PATCH-FIX-UPSTREAM freerdp-CVE-2024-32661.patch CVE-2024-32661 bsc#1223348 yu.daike@suse.com -- client NULL pointer dereference
-Patch5:         freerdp-CVE-2024-32661.patch
-# PATCH-FIX-UPSTREAM freerdp-CVE-2024-32658.patch CVE-2024-32658 bsc#1223353 yu.daike@suse.com -- out-of-bounds read in Interleaved RLE Bitmap Codec in FreeRDP based clients
-Patch6:         freerdp-CVE-2024-32658.patch
+Patch3:         freerdp-CVE-2024-32661.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  cups-devel
 BuildRequires:  ed
@@ -86,6 +78,18 @@ BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(libavcodec) >= 57.48.101
 BuildRequires:  pkgconfig(libavutil)
 }
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xcursor)
+BuildRequires:  pkgconfig(xdamage)
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xfixes)
+BuildRequires:  pkgconfig(xinerama)
+BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(xkbfile)
+BuildRequires:  pkgconfig(xrandr)
+BuildRequires:  pkgconfig(xrender)
+BuildRequires:  pkgconfig(xtst)
+BuildRequires:  pkgconfig(xv)
 # force installation of latest library version
 Requires:       libfreerdp%{libfreerdp_package} = %{version}-%{release}
 
@@ -197,7 +201,15 @@ fi
         -DWITH_SHADOW_MAC=OFF \
         -DWITH_SOXR=%{?_with_soxr:ON}%{?!_with_soxr:OFF} \
         -DWITH_WAYLAND=OFF \
-        -DWITH_X11=OFF \
+        -DWITH_X11=ON \
+        -DWITH_XCURSOR=ON \
+        -DWITH_XEXT=ON \
+        -DWITH_XKBFILE=ON \
+        -DWITH_XI=ON \
+        -DWITH_XINERAMA=ON \
+        -DWITH_XRENDER=ON \
+        -DWITH_XTEST=ON \
+        -DWITH_XV=ON \
         -DWITH_ZLIB=ON \
 %ifarch x86_64
         -DWITH_SSE2=ON \
@@ -228,6 +240,9 @@ cd build
 %fdupes %{buildroot}%{_libdir}/cmake/
 
 # Update names to not conflict with the ones from freerdp3
+mv %{buildroot}%{_bindir}/xfreerdp %{buildroot}%{_bindir}/x%{name}
+mv %{buildroot}%{_mandir}/man1/xfreerdp.1 %{buildroot}%{_mandir}/man1/x%{name}.1
+
 mv %{buildroot}%{_bindir}/freerdp-shadow-cli %{buildroot}%{_bindir}/%{name}-shadow-cli
 mv %{buildroot}%{_bindir}/winpr-hash %{buildroot}%{_bindir}/winpr2-hash
 mv %{buildroot}%{_bindir}/winpr-makecert %{buildroot}%{_bindir}/winpr2-makecert
@@ -241,6 +256,10 @@ mv %{buildroot}%{_bindir}/freerdp-proxy %{buildroot}%{_bindir}/%{name}-proxy
 %postun -n libfreerdp%{libfreerdp_package} -p /sbin/ldconfig
 %post -n libwinpr%{libfreerdp_package} -p /sbin/ldconfig
 %postun -n libwinpr%{libfreerdp_package} -p /sbin/ldconfig
+
+%files
+%{_bindir}/x%{name}
+%{_mandir}/man1/x%{name}.1%{?ext_man}
 
 %files server
 %{_bindir}/%{name}-shadow-cli

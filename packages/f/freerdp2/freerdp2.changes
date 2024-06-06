@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jun  3 16:39:14 UTC 2024 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 2.11.7
+  + Backported oss-fuzz fixes
+
+- Update to 2.11.6
+  + CVE:
+    * CVE-2024-32041 [Low[ OutOfBound Read in
+      zgfx_decompress_segment
+    * CVE-2024-32039 [Moderate] Integer overflow & OutOfBound Write
+      in clear_decompress_residual_data
+    * CVE-2024-32040 [Low] integer underflow in nsc_rle_decode
+    * CVE-2024-32458 [Low] OutOfBound Read in planar_skip_plane_rle
+    * CVE-2024-32459 [Low] OutOfBound Read in ncrush_decompress
+    * CVE-2024-32460 [Low] OutOfBound Read in
+      interleaved_decompress
+  + Noteworthy changes:
+    * Backported #10077
+- Remove these patches, applied upstream:
+  + freerdp-CVE-2023-40574-to-2023-40576.patch
+  + freerdp-CVE-2024-32658.patch
+  + freerdp-CVE-2024-32659.patch
+  + freerdp-CVE-2024-32660.patch
+
+-------------------------------------------------------------------
 Thu May 23 22:46:05 UTC 2024 - Daike Yu <yu.daike@suse.com>
 
 - Multiple CVE fixes
@@ -10,6 +35,11 @@ Thu May 23 22:46:05 UTC 2024 - Daike Yu <yu.daike@suse.com>
     - client NULL pointer dereference
   + Add freerdp-CVE-2024-32658.patch (bsc#1223353, CVE-2024-32658) 
     - out-of-bounds read in Interleaved RLE Bitmap Codec in FreeRDP based clients
+
+-------------------------------------------------------------------
+Wed Apr 10 15:10:12 UTC 2024 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add xfreerdp binary/man builds back with new name: xfreerdp2
 
 -------------------------------------------------------------------
 Tue Apr  9 19:40:24 UTC 2024 - Christophe Marin <christophe@krop.fr>
