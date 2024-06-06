@@ -30,13 +30,12 @@ LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/openjdk-21-devel-image/README.md"
 LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/openjdk-devel:21-%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime"
 LABEL org.opensuse.release-stage="released"
-
 # endlabelprefix
+LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/openjdk-21-devel-image/README.md"
 
 RUN set -euo pipefail; zypper -n in --no-recommends java-21-openjdk-devel git-core maven; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
 ENV JAVA_BINDIR="/usr/lib64/jvm/java-21-openjdk-21/bin"
