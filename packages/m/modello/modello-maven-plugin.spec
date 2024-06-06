@@ -27,9 +27,9 @@ Group:          Development/Libraries/Java
 URL:            https://codehaus-plexus.github.io/modello/modello-maven-plugin
 Source0:        https://repo1.maven.org/maven2/org/codehaus/%{parent}/%{parent}/%{version}/%{parent}-%{version}-source-release.zip
 Source1:        https://www.apache.org/licenses/LICENSE-2.0.txt
-Patch0:         0001-Fix-ModelloCli-after-moving-from-Plexus-to-JSR330.patch
-Patch1:         0002-Add-support-for-domAsXpp3-and-fail-if-the-old-Java5-.patch
-Patch2:         0003-Fix-Snakeyaml.patch
+Patch0:         0001-Upgrade-to-SnakeYaml-2.2-439.patch
+Patch1:         0002-Update-build-get-rid-of-legacy-fix-CLI-452.patch
+Patch2:         0003-Add-support-for-domAsXpp3-and-fail-if-the-old-Java5-.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  unzip
@@ -92,8 +92,7 @@ cp -p %{SOURCE1} .
 %pom_remove_plugin :maven-enforcer-plugin
 %pom_remove_plugin :sisu-maven-plugin
 
-%pom_remove_dep :sisu-guice modello-core
-%pom_add_dep com.google.inject:guice modello-core
+%pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 modello-core
 
 %pom_change_dep -r :velocity-engine-core :velocity
 

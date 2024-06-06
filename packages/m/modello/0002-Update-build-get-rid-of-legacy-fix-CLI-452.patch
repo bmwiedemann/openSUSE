@@ -1,0 +1,351 @@
+From ba2e53e7b28fa126e030056921930e83a44e2494 Mon Sep 17 00:00:00 2001
+From: Tamas Cservenak <tamas@cservenak.net>
+Date: Wed, 5 Jun 2024 10:16:52 +0200
+Subject: [PATCH 2/3] Update build, get rid of legacy, fix CLI (#452)
+
+Port 90352d3cd8de0382be73d5ce16b5f9d96469e39c to this PR, CLI use nop logging, rest unchanged.
+
+Fixes #434
+---
+ modello-core/pom.xml                          | 84 ++++++++++++++-----
+ .../java/org/codehaus/modello/Modello.java    | 17 ++--
+ .../java/org/codehaus/modello/ModelloCli.java |  3 +-
+ modello-maven-plugin/pom.xml                  | 38 ++++++---
+ pom.xml                                       | 28 ++++---
+ 5 files changed, 120 insertions(+), 50 deletions(-)
+
+diff --git a/modello-core/pom.xml b/modello-core/pom.xml
+index 4fffa729..2af513a2 100644
+--- a/modello-core/pom.xml
++++ b/modello-core/pom.xml
+@@ -19,47 +19,89 @@
+     <dependency>
+       <groupId>org.eclipse.sisu</groupId>
+       <artifactId>org.eclipse.sisu.plexus</artifactId>
+-      <scope>provided</scope>
++      <exclusions>
++        <exclusion>
++          <groupId>javax.annotation</groupId>
++          <artifactId>javax.annotation-api</artifactId>
++        </exclusion>
++        <exclusion>
++          <groupId>javax.enterprise</groupId>
++          <artifactId>cdi-api</artifactId>
++        </exclusion>
++      </exclusions>
+     </dependency>
+     <dependency>
+-      <groupId>org.sonatype.sisu</groupId>
+-      <artifactId>sisu-guice</artifactId>
+-      <classifier>no_aop</classifier>
++      <groupId>com.google.inject</groupId>
++      <artifactId>guice</artifactId>
+       <scope>runtime</scope>
+     </dependency>
+     <dependency>
+       <groupId>org.codehaus.plexus</groupId>
+       <artifactId>plexus-utils</artifactId>
+     </dependency>
+-    <dependency>
+-      <groupId>org.codehaus.plexus</groupId>
+-      <artifactId>plexus-xml</artifactId>
+-    </dependency>
+     <dependency>
+       <groupId>org.slf4j</groupId>
+       <artifactId>slf4j-api</artifactId>
+     </dependency>
+     <dependency>
+       <groupId>org.slf4j</groupId>
+-      <artifactId>slf4j-simple</artifactId>
+-      <scope>test</scope>
++      <artifactId>slf4j-nop</artifactId>
++      <scope>runtime</scope>
++      <optional>true</optional>
+     </dependency>
+   </dependencies>
+ 
+   <build>
+     <plugins>
+       <plugin>
+-        <artifactId>maven-assembly-plugin</artifactId>
+-        <configuration>
+-          <descriptorRefs>
+-            <descriptorRef>jar-with-dependencies</descriptorRef>
+-          </descriptorRefs>
+-          <archive>
+-            <manifest>
+-              <mainClass>org.codehaus.modello.ModelloCli</mainClass>
+-            </manifest>
+-          </archive>
+-        </configuration>
++        <groupId>org.apache.maven.plugins</groupId>
++        <artifactId>maven-shade-plugin</artifactId>
++        <version>3.5.3</version>
++        <executions>
++          <execution>
++            <id>cli</id>
++            <goals>
++              <goal>shade</goal>
++            </goals>
++            <phase>package</phase>
++            <configuration>
++              <shadedClassifierName>cli</shadedClassifierName>
++              <createDependencyReducedPom>false</createDependencyReducedPom>
++              <shadedArtifactAttached>true</shadedArtifactAttached>
++              <transformers>
++                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
++                <transformer implementation="org.apache.maven.plugins.shade.resource.SisuIndexResourceTransformer" />
++                <transformer implementation="org.apache.maven.plugins.shade.resource.ComponentsXmlResourceTransformer" />
++                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
++                  <manifestEntries>
++                    <Main-Class>org.codehaus.modello.ModelloCli</Main-Class>
++                    <Specification-Title>${project.artifactId}</Specification-Title>
++                    <Specification-Version>${project.version}</Specification-Version>
++                    <Implementation-Title>${project.artifactId}</Implementation-Title>
++                    <Implementation-Version>${project.version}</Implementation-Version>
++                    <Implementation-Vendor-Id>${project.groupId}</Implementation-Vendor-Id>
++                  </manifestEntries>
++                </transformer>
++              </transformers>
++              <filters>
++                <filter>
++                  <artifact>*:*</artifact>
++                  <excludes>
++                    <exclude>META-INF/MANIFEST.MF</exclude>
++                    <exclude>META-INF/LICENSE</exclude>
++                    <exclude>META-INF/LICENSE.txt</exclude>
++                    <exclude>META-INF/DEPENDENCIES</exclude>
++                    <exclude>META-INF/NOTICE</exclude>
++                    <exclude>META-INF/NOTICE.txt</exclude>
++                    <exclude>**/module-info.class</exclude>
++                    <exclude>about.html</exclude>
++                    <exclude>overview.html</exclude>
++                  </excludes>
++                </filter>
++              </filters>
++            </configuration>
++          </execution>
++        </executions>
+       </plugin>
+     </plugins>
+   </build>
+diff --git a/modello-core/src/main/java/org/codehaus/modello/Modello.java b/modello-core/src/main/java/org/codehaus/modello/Modello.java
+index 00fb7114..62cb7eb4 100644
+--- a/modello-core/src/main/java/org/codehaus/modello/Modello.java
++++ b/modello-core/src/main/java/org/codehaus/modello/Modello.java
+@@ -22,8 +22,6 @@ package org.codehaus.modello;
+  * SOFTWARE.
+  */
+ 
+-import javax.inject.Inject;
+-
+ import java.io.Reader;
+ import java.io.Writer;
+ import java.util.Map;
+@@ -31,6 +29,9 @@ import java.util.Map;
+ import org.codehaus.modello.core.ModelloCore;
+ import org.codehaus.modello.model.Model;
+ import org.codehaus.modello.model.ModelValidationException;
++import org.codehaus.plexus.DefaultContainerConfiguration;
++import org.codehaus.plexus.DefaultPlexusContainer;
++import org.codehaus.plexus.PlexusConstants;
+ 
+ /**
+  * @author <a href="mailto:jason@maven.org">Jason van Zyl</a>
+@@ -39,9 +40,15 @@ import org.codehaus.modello.model.ModelValidationException;
+ public class Modello {
+     private final ModelloCore core;
+ 
+-    @Inject
+-    public Modello(ModelloCore core) {
+-        this.core = core;
++    public Modello() throws ModelloException {
++        try {
++            this.core = new DefaultPlexusContainer(new DefaultContainerConfiguration()
++                            .setClassPathScanning(PlexusConstants.SCANNING_INDEX)
++                            .setAutoWiring(true))
++                    .lookup(ModelloCore.class);
++        } catch (Exception e) {
++            throw new ModelloException("Error while starting plexus.", e);
++        }
+     }
+ 
+     public void generate(Reader modelReader, String outputType, Map<String, Object> parameters)
+diff --git a/modello-core/src/main/java/org/codehaus/modello/ModelloCli.java b/modello-core/src/main/java/org/codehaus/modello/ModelloCli.java
+index 1b4cd974..a75e4011 100644
+--- a/modello-core/src/main/java/org/codehaus/modello/ModelloCli.java
++++ b/modello-core/src/main/java/org/codehaus/modello/ModelloCli.java
+@@ -26,7 +26,6 @@ import java.io.File;
+ import java.util.HashMap;
+ import java.util.Map;
+ 
+-import org.codehaus.plexus.DefaultPlexusContainer;
+ import org.codehaus.plexus.util.StringUtils;
+ import org.codehaus.plexus.util.xml.XmlStreamReader;
+ 
+@@ -41,7 +40,7 @@ public class ModelloCli {
+     private static Map<String, Object> parameters;
+ 
+     public static void main(String[] args) throws Exception {
+-        Modello modello = new DefaultPlexusContainer().lookup(Modello.class);
++        Modello modello = new Modello();
+ 
+         parseArgumentsFromCommandLine(args);
+ 
+diff --git a/modello-maven-plugin/pom.xml b/modello-maven-plugin/pom.xml
+index cd8d38bd..0765c379 100644
+--- a/modello-maven-plugin/pom.xml
++++ b/modello-maven-plugin/pom.xml
+@@ -19,16 +19,35 @@
+   </prerequisites>
+ 
+   <dependencies>
++    <dependency>
++      <groupId>org.codehaus.modello</groupId>
++      <artifactId>modello-core</artifactId>
++      <exclusions>
++        <exclusion>
++          <groupId>org.eclipse.sisu</groupId>
++          <artifactId>org.eclipse.sisu.plexus</artifactId>
++        </exclusion>
++        <exclusion>
++          <groupId>com.google.inject</groupId>
++          <artifactId>guice</artifactId>
++        </exclusion>
++      </exclusions>
++    </dependency>
++    <dependency>
++      <groupId>org.codehaus.plexus</groupId>
++      <artifactId>plexus-utils</artifactId>
++    </dependency>
++    <dependency>
++      <groupId>org.codehaus.plexus</groupId>
++      <artifactId>plexus-build-api</artifactId>
++    </dependency>
++
+     <dependency>
+       <groupId>org.apache.maven</groupId>
+       <artifactId>maven-plugin-api</artifactId>
+       <version>${mavenVersion}</version>
+       <scope>provided</scope>
+     </dependency>
+-    <dependency>
+-      <groupId>org.codehaus.modello</groupId>
+-      <artifactId>modello-core</artifactId>
+-    </dependency>
+     <dependency>
+       <groupId>org.apache.maven</groupId>
+       <artifactId>maven-model</artifactId>
+@@ -41,10 +60,6 @@
+       <version>${mavenVersion}</version>
+       <scope>provided</scope>
+     </dependency>
+-    <dependency>
+-      <groupId>org.codehaus.plexus</groupId>
+-      <artifactId>plexus-utils</artifactId>
+-    </dependency>
+     <dependency>
+       <groupId>org.apache.maven.plugin-tools</groupId>
+       <artifactId>maven-plugin-annotations</artifactId>
+@@ -70,6 +85,7 @@
+     <dependency>
+       <groupId>org.codehaus.modello</groupId>
+       <artifactId>modello-plugin-java</artifactId>
++      <scope>runtime</scope>
+     </dependency>
+     <dependency>
+       <groupId>org.codehaus.modello</groupId>
+@@ -114,11 +130,9 @@
+     <dependency>
+       <groupId>org.codehaus.modello</groupId>
+       <artifactId>modello-plugin-velocity</artifactId>
++      <!-- Directly used -->
+     </dependency>
+-    <dependency>
+-      <groupId>org.codehaus.plexus</groupId>
+-      <artifactId>plexus-build-api</artifactId>
+-    </dependency>
++
+     <dependency>
+       <groupId>org.slf4j</groupId>
+       <artifactId>slf4j-simple</artifactId>
+diff --git a/pom.xml b/pom.xml
+index 02bcc5de..fb63107f 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -194,7 +194,8 @@
+     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+     <jackson.version>2.17.0</jackson.version>
+     <jdom.version>2.0.2</jdom.version>
+-    <mavenVersion>3.5.4</mavenVersion>
++    <slf4j.version>1.7.36</slf4j.version>
++    <mavenVersion>3.6.3</mavenVersion>
+     <!--
+       ! This controls the minimum java version
+       ! and also the version which is used
+@@ -297,18 +298,17 @@
+       <dependency>
+         <groupId>org.eclipse.sisu</groupId>
+         <artifactId>org.eclipse.sisu.plexus</artifactId>
+-        <version>0.3.5</version>
++        <version>0.9.0.M2</version>
+       </dependency>
+       <dependency>
+-        <groupId>org.sonatype.sisu</groupId>
+-        <artifactId>sisu-guice</artifactId>
+-        <version>4.2.0</version>
+-        <classifier>no_aop</classifier>
++        <groupId>com.google.inject</groupId>
++        <artifactId>guice</artifactId>
++        <version>5.1.0</version>
+       </dependency>
+       <dependency>
+         <groupId>org.codehaus.plexus</groupId>
+         <artifactId>plexus-utils</artifactId>
+-        <version>4.0.1</version>
++        <version>3.5.1</version>
+       </dependency>
+       <dependency>
+         <groupId>org.codehaus.plexus</groupId>
+@@ -323,12 +323,17 @@
+       <dependency>
+         <groupId>org.slf4j</groupId>
+         <artifactId>slf4j-api</artifactId>
+-        <version>1.7.36</version>
++        <version>${slf4j.version}</version>
++      </dependency>
++      <dependency>
++        <groupId>org.slf4j</groupId>
++        <artifactId>slf4j-nop</artifactId>
++        <version>${slf4j.version}</version>
+       </dependency>
+       <dependency>
+         <groupId>org.slf4j</groupId>
+         <artifactId>slf4j-simple</artifactId>
+-        <version>1.7.36</version>
++        <version>${slf4j.version}</version>
+       </dependency>
+       <dependency>
+         <groupId>junit</groupId>
+@@ -369,6 +374,9 @@
+               </goals>
+               <configuration>
+                 <rules>
++                  <requireMavenVersion>
++                    <version>${mavenVersion}</version>
++                  </requireMavenVersion>
+                   <requireJavaVersion>
+                     <version>${javaVersion}</version>
+                   </requireJavaVersion>
+@@ -438,7 +446,7 @@
+           <plugin>
+             <groupId>org.codehaus.modello</groupId>
+             <artifactId>modello-maven-plugin</artifactId>
+-            <version>2.0.0</version>
++            <version>2.4.0</version>
+             <configuration>
+               <models>
+                 <model>src/main/mdo/modello.mdo</model>
+-- 
+2.45.1
+

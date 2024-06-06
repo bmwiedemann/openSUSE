@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jun  5 11:27:39 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patches:
+  * 0001-Fix-ModelloCli-after-moving-from-Plexus-to-JSR330.patch
+    -> 0002-Update-build-get-rid-of-legacy-fix-CLI-452.patch
+    + remove our patch and replace it with an integrated patch that
+      is result of a common work between us and upstream
+  * 0003-Fix-Snakeyaml.patch
+    -> 0001-Upgrade-to-SnakeYaml-2.2-439.patch
+    + move to version of this patch that was integrated upsteam
+  * 0002-Add-support-for-domAsXpp3-and-fail-if-the-old-Java5-.patch
+    -> 0003-Add-support-for-domAsXpp3-and-fail-if-the-old-Java5-.patch
+    + rediff and put last in order because it is our patch that is
+      not to be integrated
+
+-------------------------------------------------------------------
 Thu May 16 05:23:46 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Package both relevant licenses

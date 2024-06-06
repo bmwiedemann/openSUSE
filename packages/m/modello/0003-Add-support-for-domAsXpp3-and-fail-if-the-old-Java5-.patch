@@ -1,7 +1,7 @@
-From 8e04db4d5602a985ef4c5fa72cb862e9b4d6daf4 Mon Sep 17 00:00:00 2001
+From c692c46aa1898e80c225aaf99724207bd98d5bf7 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
 Date: Fri, 12 Apr 2024 09:37:47 +0200
-Subject: [PATCH 2/3] Add support for domAsXpp3 and fail if the old Java5
+Subject: [PATCH 3/3] Add support for domAsXpp3 and fail if the old Java5
  parameter is used
 
 ---
@@ -46,5 +46,5 @@ index a75e4011..db40052c 100644
      }
  }
 -- 
-2.44.0
+2.45.1
 

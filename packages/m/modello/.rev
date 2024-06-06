@@ -137,4 +137,12 @@
     <comment>Package both relevant licenses</comment>
     <requestid>1174351</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>25bfe762092afd97294ab0bfba3880f2</srcmd5>
+    <version>2.4.0</version>
+    <time>1717669989</time>
+    <user>anag+factory</user>
+    <comment>Sync patches with upstream versions</comment>
+    <requestid>1178804</requestid>
+  </revision>
 </revisionlist>
