@@ -445,4 +445,14 @@
   * Fix reloading of modified sources from sourcedir</comment>
     <requestid>1151495</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>8306baa327e4c2548c7dc7522196d9a5</srcmd5>
+    <version>4.5</version>
+    <time>1717669832</time>
+    <user>anag+factory</user>
+    <comment>- bsc#1225362, chrony-124-tai.patch: make 124-tai more reliable
+
+- Update clknetsim to snapshot 0a11a35.</comment>
+    <requestid>1178691</requestid>
+  </revision>
 </revisionlist>
