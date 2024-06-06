@@ -31,14 +31,13 @@ LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/init-image/README.md"
-LABEL io.artifacthub.package.logo-url="https://opensource.suse.com/bci/SLE_BCI_logomark_green.svg"
 LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/bci-init:%OS_VERSION_ID_SP%.%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime"
 LABEL org.opensuse.release-stage="released"
-
 # endlabelprefix
+LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/init-image/README.md"
+LABEL io.artifacthub.package.logo-url="https://opensource.suse.com/bci/SLE_BCI_logomark_green.svg"
 LABEL usage="This container should only be used to build containers for daemons. Add your packages and enable services using systemctl."
 
 RUN set -euo pipefail; zypper -n in --no-recommends systemd gzip; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
