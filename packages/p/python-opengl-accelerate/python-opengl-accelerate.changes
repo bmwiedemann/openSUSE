@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  5 14:28:18 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Cherry-pick upstream patch to fix build with GCC 14
+  * https://github.com/mcfletch/pyopengl/pull/112.patch
+
+-------------------------------------------------------------------
 Thu Jan  4 08:33:49 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Drop test_numpyaccel.py and test_arraydatatypeaccel.py as they are

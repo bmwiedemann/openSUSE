@@ -100,4 +100,13 @@
 - Changing to /master/ vs. hash for Source[1,2] files</comment>
     <requestid>1136719</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>b067a38f11e469e59dbf22b4c1e096d3</srcmd5>
+    <version>3.1.7</version>
+    <time>1717670060</time>
+    <user>anag+factory</user>
+    <comment>- Cherry-pick upstream patch to fix build with GCC 14
+  * https://github.com/mcfletch/pyopengl/pull/112.patch</comment>
+    <requestid>1178903</requestid>
+  </revision>
 </revisionlist>

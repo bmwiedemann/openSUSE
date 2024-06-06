@@ -27,6 +27,8 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            http://pyopengl.sourceforge.net
 Source0:        %{tarname}-%{_version}.tar.gz
+# PATCH-FIX-UPSTREAM - accelerate: Fix C type errors for GCC 14/Clang compatibility
+Patch0:         https://github.com/mcfletch/pyopengl/pull/112.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module opengl >= %{version}}
@@ -46,7 +48,7 @@ arrays extensively speed-up is around 10% compared to unaccelerated
 code.
 
 %prep
-%setup -q -n %{tarname}-%{_version}
+%autosetup -p1 -n %{tarname}-%{_version}
 
 # _service pulldown creates %%{tarname}-%%{_version}/accelerate/<required files>,
 # move them to root of build area and remove 'accelerate' directory
