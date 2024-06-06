@@ -25,7 +25,7 @@ Name:           zabbix
 Version:        6.0.28
 Release:        0
 Summary:        Distributed monitoring system
-License:        GPL-2.0-or-later
+License:        Apache-2.0 AND GPL-2.0-or-later AND EPL-2.0 AND MPL-2.0 AND BSD-3-Clause
 Group:          System/Monitoring
 URL:            https://www.zabbix.com
 Source0:        https://cdn.zabbix.com/zabbix/sources/stable/6.0/zabbix-%{version}.tar.gz
