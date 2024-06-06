@@ -271,4 +271,25 @@
   * go#66697 net/http: TestRequestLimit/h2 becomes significantly more expensive and slower after x/net@v0.23.0 (forwarded request 1172533 from jfkw)</comment>
     <requestid>1172535</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7872a50e534511c1c6e29f6633aa69f1</srcmd5>
+    <version>1.21.11</version>
+    <time>1717669825</time>
+    <user>anag+factory</user>
+    <comment>- go1.21.11 (released 2024-06-04) includes security fixes to the
+  archive/zip and net/netip packages, as well as bug fixes to the
+  compiler, the go command, the runtime, and the os package.
+  Refs boo#1212475 go1.21 release tracking
+  CVE-2024-24789 CVE-2024-24790
+  * go#67553 go#66869 boo#1225973 security: fix CVE-2024-24789 archive/zip: EOCDR comment length handling is inconsistent with other ZIP implementations
+  * go#67681 go#67680 boo#1225974 security: fix CVE-2024-24790 net/netip: unexpected behavior from Is methods for IPv4-mapped IPv6 addresses
+  * go#64586 cmd/go: spurious &quot;v1.x.y is not a tag&quot; error when a tag's commit was previously download without the tag
+  * go#67164 cmd/compile: SIGBUS unaligned access on mips64 via qemu-mips64
+  * go#67187 runtime/metrics: /memory/classes/heap/unused:bytes spikes
+  * go#67235 cmd/go: mod tidy reports toolchain not available with 'go 1.21'
+  * go#67310 cmd/go: TestScript/gotoolchain_issue66175 fails on tip locally
+  * go#67351 crypto/x509: TestPlatformVerifier failures on Windows due to broken connections
+  * go#67695 os: RemoveAll susceptible to symlink race (forwarded request 1178638 from jfkw)</comment>
+    <requestid>1178640</requestid>
+  </revision>
 </revisionlist>
