@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-mysql2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,7 +51,7 @@ A simple, fast Mysql library for Ruby, binding to libmysql.
 
 %prep
 %gem_unpack
-%patch0 -p1
+%patch -P 0 -p1
 find -type f -print0 | xargs -0 touch -r %{S:0}
 %gem_build
 
