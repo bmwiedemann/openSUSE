@@ -107,4 +107,20 @@
   * Get translation changes from CLDR</comment>
     <requestid>1145306</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c4d86fd90be4c3870524ee34c8830c8c</srcmd5>
+    <version>0.0.66</version>
+    <time>1717669901</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.0.66:
+  * Fix syntax error in a keyboard layout name for t
+  * Add mdf
+  * Use “in(eng)” keyboard layout instead of “us” for BD to get
+    AltGr enabled
+  * Get translation changes from CLDR
+  * Add option to include changed translations as well to the
+    script getting translations from CLDR
+  * Fix Makefile twine-upload target for new authentification</comment>
+    <requestid>1178619</requestid>
+  </revision>
 </revisionlist>

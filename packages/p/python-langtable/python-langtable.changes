@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun  4 21:02:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.0.66:
+  * Fix syntax error in a keyboard layout name for t
+  * Add mdf
+  * Use “in(eng)” keyboard layout instead of “us” for BD to get
+    AltGr enabled
+  * Get translation changes from CLDR
+  * Add option to include changed translations as well to the
+    script getting translations from CLDR
+  * Fix Makefile twine-upload target for new authentification
+
+-------------------------------------------------------------------
 Thu Feb  8 21:52:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.0.65:
