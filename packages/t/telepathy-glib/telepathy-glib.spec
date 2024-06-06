@@ -24,6 +24,8 @@ License:        LGPL-2.1-or-later
 Group:          Development/Languages/C and C++
 URL:            http://telepathy.freedesktop.org/
 Source:         http://telepathy.freedesktop.org/releases/telepathy-glib/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM telepathy-glib-function-type-cast.patch boo#1221707 mgorse@suse.com -- fix an invalid cast.
+Patch0:         telepathy-glib-function-type-cast.patch
 
 BuildRequires:  gtk-doc >= 1.17
 BuildRequires:  libxslt-devel
