@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun  3 22:54:40 UTC 2024 - James Fehlig <jfehlig@suse.com>
+
+- Update to sanlock 3.9.3
+  - Make the watchdog timeout configurable
+  - wdmd: close watchdog when not used
+  - userstorage: replace by PyPI userstorage
+  - sanlock: skip short delay in delta lease reacquire
+  - sanlock: use product_uuid for host name
+  - wdmd: fix timing for iTCO_wdt
+  - sanlock: save client_id in token and report in status and use in -C
+  - sanlock: include startup message in syslog
+  - sanlock: improve repeated ballots in paxos_acquire
+  - sanlock: fix zero io timeout for direct requests
+  - sanlock: fix release writing zero dblock values
+  - sanlock: skip delay when same host acquires delta lease
+
+-------------------------------------------------------------------
 Mon Feb 26 13:04:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

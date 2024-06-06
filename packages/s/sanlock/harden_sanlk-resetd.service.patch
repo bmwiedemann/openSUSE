@@ -1,7 +1,7 @@
-Index: sanlock-3.8.5/init.d/sanlk-resetd.service
+Index: sanlock-3.9.3/init.d/sanlk-resetd.service
 ===================================================================
---- sanlock-3.8.5.orig/init.d/sanlk-resetd.service
-+++ sanlock-3.8.5/init.d/sanlk-resetd.service
+--- sanlock-3.9.3.orig/init.d/sanlk-resetd.service
++++ sanlock-3.9.3/init.d/sanlk-resetd.service
 @@ -4,6 +4,17 @@ After=wdmd.service sanlock.service
  Requires=wdmd.service sanlock.service
  

@@ -17,7 +17,7 @@ Index: wdmd/main.c
 ===================================================================
 --- wdmd/main.c.orig
 +++ wdmd/main.c
-@@ -41,6 +41,10 @@
+@@ -43,6 +43,10 @@
  #define GNUC_UNUSED __attribute__((__unused__))
  #endif
  

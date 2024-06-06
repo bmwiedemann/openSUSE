@@ -1,7 +1,7 @@
-Index: sanlock-3.8.5/init.d/sanlock.service
+Index: sanlock-3.9.3/init.d/sanlock.service
 ===================================================================
---- sanlock-3.8.5.orig/init.d/sanlock.service
-+++ sanlock-3.8.5/init.d/sanlock.service
+--- sanlock-3.9.3.orig/init.d/sanlock.service
++++ sanlock-3.9.3/init.d/sanlock.service
 @@ -5,8 +5,10 @@ Wants=wdmd.service
  
  [Service]
@@ -15,16 +15,15 @@ Index: sanlock-3.8.5/init.d/sanlock.service
  
  [Install]
  WantedBy=multi-user.target
-Index: sanlock-3.8.5/init.d/wdmd.service
+Index: sanlock-3.9.3/init.d/wdmd.service
 ===================================================================
---- sanlock-3.8.5.orig/init.d/wdmd.service
-+++ sanlock-3.8.5/init.d/wdmd.service
-@@ -4,8 +4,10 @@ After=syslog.target
- 
- [Service]
+--- sanlock-3.9.3.orig/init.d/wdmd.service
++++ sanlock-3.9.3/init.d/wdmd.service
+@@ -6,7 +6,10 @@ After=syslog.target
  Type=forking
--ExecStart=/lib/systemd/systemd-wdmd start
--ExecStop=/lib/systemd/systemd-wdmd stop
+ ExecStartPre=/lib/systemd/systemd-wdmd watchdog-check
+ ExecStart=/usr/sbin/wdmd
+-SendSIGKILL=no
 +EnvironmentFile=-/etc/sysconfig/wdmd
 +ExecStart=/usr/sbin/wdmd $WDMDOPTS
 +ExecStop=/bin/kill -TERM $MAINPID
@@ -32,10 +31,10 @@ Index: sanlock-3.8.5/init.d/wdmd.service
  
  [Install]
  WantedBy=multi-user.target
-Index: sanlock-3.8.5/init.d/fence_sanlockd.service
+Index: sanlock-3.9.3/init.d/fence_sanlockd.service
 ===================================================================
---- sanlock-3.8.5.orig/init.d/fence_sanlockd.service
-+++ sanlock-3.8.5/init.d/fence_sanlockd.service
+--- sanlock-3.9.3.orig/init.d/fence_sanlockd.service
++++ sanlock-3.9.3/init.d/fence_sanlockd.service
 @@ -5,8 +5,8 @@ Before=corosync.service
  
  [Service]

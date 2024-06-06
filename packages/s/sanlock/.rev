@@ -287,4 +287,24 @@ corruption of the VM's disk image.  See FATE#306399.</comment>
     <comment></comment>
     <requestid>1151906</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>db55b56cb369c3f3cb127a13be29188b</srcmd5>
+    <version>3.9.3</version>
+    <time>1717669875</time>
+    <user>anag+factory</user>
+    <comment>- Update to sanlock 3.9.3
+  - Make the watchdog timeout configurable
+  - wdmd: close watchdog when not used
+  - userstorage: replace by PyPI userstorage
+  - sanlock: skip short delay in delta lease reacquire
+  - sanlock: use product_uuid for host name
+  - wdmd: fix timing for iTCO_wdt
+  - sanlock: save client_id in token and report in status and use in -C
+  - sanlock: include startup message in syslog
+  - sanlock: improve repeated ballots in paxos_acquire
+  - sanlock: fix zero io timeout for direct requests
+  - sanlock: fix release writing zero dblock values
+  - sanlock: skip delay when same host acquires delta lease</comment>
+    <requestid>1178397</requestid>
+  </revision>
 </revisionlist>

@@ -1,8 +1,8 @@
-Index: sanlock-3.8.5/src/main.c
+Index: sanlock-3.9.3/src/main.c
 ===================================================================
---- sanlock-3.8.5.orig/src/main.c
-+++ sanlock-3.8.5/src/main.c
-@@ -2209,8 +2209,8 @@ static int read_command_line(int argc, c
+--- sanlock-3.9.3.orig/src/main.c
++++ sanlock-3.9.3/src/main.c
+@@ -2334,8 +2334,8 @@ static int read_command_line(int argc, c
  	}
  
  	if (!strcmp(arg1, "--version") || !strcmp(arg1, "-V")) {
@@ -13,10 +13,10 @@ Index: sanlock-3.8.5/src/main.c
  		exit(EXIT_SUCCESS);
  	}
  
-Index: sanlock-3.8.5/fence_sanlock/fence_sanlockd.c
+Index: sanlock-3.9.3/fence_sanlock/fence_sanlockd.c
 ===================================================================
---- sanlock-3.8.5.orig/fence_sanlock/fence_sanlockd.c
-+++ sanlock-3.8.5/fence_sanlock/fence_sanlockd.c
+--- sanlock-3.9.3.orig/fence_sanlock/fence_sanlockd.c
++++ sanlock-3.9.3/fence_sanlock/fence_sanlockd.c
 @@ -565,8 +565,7 @@ int main(int argc, char *argv[])
  			print_usage();
  			exit(0);
