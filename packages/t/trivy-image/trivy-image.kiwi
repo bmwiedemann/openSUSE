@@ -39,13 +39,12 @@ You can contact the BCI team via https://github.com/SUSE/bci/discussions
             <label name="org.opencontainers.image.vendor" value="openSUSE Project"/>
             <label name="org.opencontainers.image.source" value="%SOURCEURL%"/>
             <label name="org.opencontainers.image.url" value="https://www.opensuse.org"/>
-            <label name="io.artifacthub.package.readme-url" value="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/trivy-image/README.md"/>
             <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/trivy:%%trivy_version%%-%RELEASE%"/>
             <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
-
             <label name="org.opensuse.release-stage" value="released"/>
             <label name="org.opensuse.lifecycle-url" value="https://en.opensuse.org/Lifetime"/>
           </suse_label_helper:add_prefix>
+          <label name="io.artifacthub.package.readme-url" value="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/trivy-image/README.md"/>
         </labels>
         <subcommand execute="help"/>
         <entrypoint execute="/usr/bin/trivy"/>
