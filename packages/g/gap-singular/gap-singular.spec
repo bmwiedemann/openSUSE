@@ -1,7 +1,7 @@
 #
 # spec file for package gap-singular
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-singular
-Version:        2023.02.09
+Version:        2024.06.03
 Release:        0
 Summary:        GAP: An interface to Singular
 License:        GPL-2.0-or-later
