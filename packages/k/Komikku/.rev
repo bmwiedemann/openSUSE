@@ -116,4 +116,36 @@
     <comment></comment>
     <requestid>1175452</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bbb1492c0c90dee17416bd9f56a80b3e</srcmd5>
+    <version>1.47.0</version>
+    <time>1717669920</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.47.0:
+    * [Reader] Added navigation with J and K keyboard keys
+    * [Servers] Added Aurora Scan (pt_BR)
+    * [Servers] Added Bentoscan (FR)
+    * [Servers] Added Cerise Scan (pt_BR)
+    * [Servers] Added Dango Scan (pt_BR)
+    * [Servers] Added Luratoon Scan (pt_BR)
+    * [Servers] Added Manga Reader (cc) [EN]
+    * [Servers] Added Manga Scan (FR)
+    * [Servers] Added Nazarick Scan (pt_BR)
+    * [Servers] Added RF Dragon Scan (pt_BR)
+    * [Servers] Added Scanvf (FR)
+    * [Servers] Added Sinensistoon (pt_BR)
+    * [Servers] Added Wicked Witch Scan (pt_BR)
+    * [Servers] Hunlight Scans (EN): Reenabled
+    * [Servers] MangaDex: Improved Latest Updates fetching
+    * [Servers] Mangago (EN): Update
+    * [Servers] Manhwa Hentai (EN): Update
+    * [Servers] NHentai (EN/ZH/JA): Update
+    * [Servers] Night scans (EN): Update
+    * [Servers] Perf Scan (FR): Update
+    * [Servers] Tecno Scan (ES): Update
+    * [Servers] Tres Daos (ES): Update
+    * [Servers] Union Mangás (PT): Disabled
+- add new runtime dependency python3-pillow-heif (forwarded request 1178392 from rrahl0)</comment>
+    <requestid>1178665</requestid>
+  </revision>
 </revisionlist>

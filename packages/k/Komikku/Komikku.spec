@@ -17,7 +17,7 @@
 
 
 Name:           Komikku
-Version:        1.46.0
+Version:        1.47.0
 Release:        0
 Summary:        A manga reader for GNOME
 License:        GPL-3.0-or-later
@@ -49,6 +49,7 @@ Requires:       python3-lxml
 Requires:       python3-modern-colorthief >= 0.1.3
 Requires:       python3-natsort
 Requires:       python3-piexif
+Requires:       python3-pillow-heif
 Requires:       python3-pure-protobuf >= 3.0.0
 Requires:       python3-pycairo
 Requires:       python3-python-magic

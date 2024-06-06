@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed May 22 07:40:42 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to 1.47.0:
+    * [Reader] Added navigation with J and K keyboard keys
+    * [Servers] Added Aurora Scan (pt_BR)
+    * [Servers] Added Bentoscan (FR)
+    * [Servers] Added Cerise Scan (pt_BR)
+    * [Servers] Added Dango Scan (pt_BR)
+    * [Servers] Added Luratoon Scan (pt_BR)
+    * [Servers] Added Manga Reader (cc) [EN]
+    * [Servers] Added Manga Scan (FR)
+    * [Servers] Added Nazarick Scan (pt_BR)
+    * [Servers] Added RF Dragon Scan (pt_BR)
+    * [Servers] Added Scanvf (FR)
+    * [Servers] Added Sinensistoon (pt_BR)
+    * [Servers] Added Wicked Witch Scan (pt_BR)
+    * [Servers] Hunlight Scans (EN): Reenabled
+    * [Servers] MangaDex: Improved Latest Updates fetching
+    * [Servers] Mangago (EN): Update
+    * [Servers] Manhwa Hentai (EN): Update
+    * [Servers] NHentai (EN/ZH/JA): Update
+    * [Servers] Night scans (EN): Update
+    * [Servers] Perf Scan (FR): Update
+    * [Servers] Tecno Scan (ES): Update
+    * [Servers] Tres Daos (ES): Update
+    * [Servers] Union Mangás (PT): Disabled
+- add new runtime dependency python3-pillow-heif
+
+
+-------------------------------------------------------------------
 Sat May 18 22:10:46 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - update convert-to-modern-colorthief.patch as python-modern-colorthief got
