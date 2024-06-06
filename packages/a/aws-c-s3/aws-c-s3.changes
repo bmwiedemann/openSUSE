@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  4 13:13:31 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.5.10
+  * Auto - Update S3 Ruleset & Partition by @waahm7 in (#434)
+  * Update test helper by @TingDaoK in (#431)
+  * Add explaination for the code that confuses me by @TingDaoK in (#433)
+
+-------------------------------------------------------------------
 Thu May 23 10:35:18 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.5.9
