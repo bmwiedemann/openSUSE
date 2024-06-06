@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 28 11:25:35 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Update to 21.7.3:
+  * fixes bsc#1222665, CVE-2024-27980 - windows only bug
+
+-------------------------------------------------------------------
 Tue Apr  9 14:13:21 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - Update to 21.7.2:

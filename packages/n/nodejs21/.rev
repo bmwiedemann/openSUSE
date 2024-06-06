@@ -140,4 +140,12 @@ https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V21.md#21.4.0
 - Add libalternative config for corepack</comment>
     <requestid>1166607</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5e7cfea5cf0094844e58c33d780f44a6</srcmd5>
+    <version>21.7.3</version>
+    <time>1717669896</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1178492</requestid>
+  </revision>
 </revisionlist>

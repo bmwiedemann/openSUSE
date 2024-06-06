@@ -31,7 +31,7 @@
 %endif
 
 Name:           nodejs21
-Version:        21.7.2
+Version:        21.7.3
 Release:        0
 
 # Double DWZ memory limits
@@ -659,7 +659,7 @@ tar Jxf %{SOURCE11}
 %endif
 
 # downgrade node-gyp to last version that supports python 3.4 for SLE12
-%if 0%{?suse_version} && 0%{?suse_version} < 1500 && %{node_version_number} >= 16
+%if 0%{?suse_version} && 0%{?suse_version} < 1500 && %{node_version_number} >= 16 && %{node_version_number} < 22
 rm -r  deps/npm/node_modules/node-gyp
 mkdir deps/npm/node_modules/node-gyp
 pushd deps/npm/node_modules/node-gyp
@@ -674,6 +674,8 @@ popd
 
 %patch -P 1 -p1
 %patch -P 3 -p1
+%if 0%{?suse_version} < 1500
+%endif
 %if %{node_version_number} <= 12 && 0%{?suse_version} < 1500
 %patch -P 5 -p1
 %endif
@@ -771,9 +773,6 @@ EOF
 
 . ./spec.build.config
 
-# Node.js 4.x does not include the ICU database in the source tarball.
-%define has_small_icu %(test -d "deps/icu-small" && echo 1 || echo 0)
-
 ./configure \
     --prefix=%{_prefix} \
 %if 0%{?with nodejs_lto}
@@ -788,11 +787,6 @@ EOF
 %endif
 %if ! 0%{with intree_icu}
     --with-intl=system-icu \
-%else
-%if %{has_small_icu}
-    --with-intl=small-icu \
-    --with-icu-source=deps/icu-small \
-%endif
 %endif
 %if ! 0%{with intree_nghttp2}
     --shared-nghttp2 \
