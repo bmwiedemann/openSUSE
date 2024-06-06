@@ -31,13 +31,12 @@ LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/php-apache8-image/README.md"
 LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/php-apache:8-%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime"
 LABEL org.opensuse.release-stage="released"
-
 # endlabelprefix
+LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/php-apache8-image/README.md"
 
 RUN set -euo pipefail; zypper -n in php8 php8-cli php-composer2 php8-curl php8-zip php8-zlib php8-phar php8-mbstring apache2-mod_php8; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
 ENV PHP_VERSION="%%php_version%%"
