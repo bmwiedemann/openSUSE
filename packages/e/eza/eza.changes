@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun  6 06:08:40 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.7:
+  * Add icon for Nushell extension
+  * Bump trycmd from 0.15.1 to 0.15.2
+  * Bump libc from 0.2.154 to 0.2.155
+- Disable cargo vendor filterer for now:
+  Seems to have a problem with true/false right now
+
+-------------------------------------------------------------------
 Fri May 17 06:32:31 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.18.6:

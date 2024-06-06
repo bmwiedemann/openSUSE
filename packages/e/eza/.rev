@@ -562,4 +562,17 @@
   * Use 3 columns for packaging status badge</comment>
     <requestid>1174773</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>250b25610f9287f04773a5354097753a</srcmd5>
+    <version>0.18.17+0</version>
+    <time>1717670055</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.18.7:
+  * Add icon for Nushell extension
+  * Bump trycmd from 0.15.1 to 0.15.2
+  * Bump libc from 0.2.154 to 0.2.155
+- Disable cargo vendor filterer for now:
+  Seems to have a problem with true/false right now</comment>
+    <requestid>1178893</requestid>
+  </revision>
 </revisionlist>
