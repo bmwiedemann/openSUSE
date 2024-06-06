@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Jun 06 01:50:27 UTC 2024 - rrahl0@disroot.org
+
+- Update to version 1.28.0:
+  * Fix man page generation in release workflow (#2132)
+  * Release 1.28.0 (#2131)
+  * Don't check in manpage (#2130)
+  * Document default shell (#2129)
+  * Write shebang recipes to $XDG_RUNTIME_DIR (#2128)
+  * Remove duplicate section in Chinese readme (#2127)
+  * Update Chinese readme (#2124)
+  * Fix typo in readme (#2122)
+  * Don't check in auto-generated completion scripts (#2120)
+  * Add `set dotenv-required` to require an environment file (#2116)
+  * Allow listing recipes in submodules with `--list-submodules` (#2113)
+  * Use space-separated recipe paths in `--choose` (#2115)
+  * Don't display submodule recipes in `--list` (#2112)
+  * Show recipes in submodules with `--show RECIPE::PATH` (#2111)
+  * Add `--timestamp-format` (#2106)
+  * Allow listing submodule recipes with `--list PATH` (#2108)
+  * Print recipe command timestamps with `--timestamps` (#2084)
+  * Add `module_file()` and `module_directory()` functions (#2105)
+  * Fix bash completion for aliases (#2104)
+  * Document when dependencies run in readme (#2103)
+  * Build aarch64-pc-windows-msvc release binaries (#2100)
+  * Clarify that `dotenv-path`-given env file is required (#2099)
+  * Print multi-line doc comments before recipe in `--list` (#2090)
+  * List unsorted imported recipes by import depth and offset (#2092)
+  * Update README.md (#2091)
+
+-------------------------------------------------------------------
 Sat May 25 13:05:59 UTC 2024 - rrahl0@disroot.org
 
 - Update to version 1.27.0:

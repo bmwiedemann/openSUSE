@@ -5,8 +5,9 @@
     <param name="scm">git</param>
     <param name="exclude">.github</param>
     <param name="exclude">www</param>
-    <param name="revision">1.27.0</param>
+    <param name="revision">1.28.0</param>
     <param name="changesgenerate">enable</param>
+    <param name="package-meta">yes</param>
   </service>
   <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
