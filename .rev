@@ -37,4 +37,13 @@
   * Fix license field in pyproject.toml files</comment>
     <requestid>1164278</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>089b34bb04e68422a810413c56550e5e</srcmd5>
+    <version>1.25.0</version>
+    <time>1717670070</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.25.0:
+  * Add OpenTelemetry trove classifiers to PyPI packages</comment>
+    <requestid>1178971</requestid>
+  </revision>
 </revisionlist>

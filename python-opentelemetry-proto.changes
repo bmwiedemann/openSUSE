@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  6 08:54:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.25.0:
+  * Add OpenTelemetry trove classifiers to PyPI packages
+
+-------------------------------------------------------------------
 Wed Apr  3 07:27:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.24.0:
