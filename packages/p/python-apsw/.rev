@@ -374,4 +374,18 @@
   * No APSW changes.</comment>
     <requestid>1169376</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4508738245add88ace515afd1657fc5e</srcmd5>
+    <version>3.46.0.0</version>
+    <time>1717670069</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.46.0.0:
+  * Adjusted levels in :func:`apsw.ext.log_sqlite` to be lower
+    for some SQLite messages like SQLITE_SCHEMA and
+    SQLITE_NOTICE_RECOVER_WAL (:issue:`518`)
+  * Previous source releases were signed with PGP.  Starting with
+    this release Sigstore's cosign tool is used
+    (:ref:`instructions &lt;verifydownload&gt;`). (:issue:`512`)</comment>
+    <requestid>1178935</requestid>
+  </revision>
 </revisionlist>

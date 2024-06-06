@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun  6 08:35:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.46.0.0:
+  * Adjusted levels in :func:`apsw.ext.log_sqlite` to be lower
+    for some SQLite messages like SQLITE_SCHEMA and
+    SQLITE_NOTICE_RECOVER_WAL (:issue:`518`)
+  * Previous source releases were signed with PGP.  Starting with
+    this release Sigstore's cosign tool is used
+    (:ref:`instructions <verifydownload>`). (:issue:`512`)
+
+-------------------------------------------------------------------
 Sat Apr 20 14:09:15 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.45.3.0:
