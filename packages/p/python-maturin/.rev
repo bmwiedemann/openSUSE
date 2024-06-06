@@ -1047,4 +1047,41 @@
     gh#PyO3/maturin#2002</comment>
     <requestid>1163373</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>a70f9565b8bc8ac339b289faddf6d0d0</srcmd5>
+    <version>1.6.0</version>
+    <time>1717669823</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.6.0
+  * Add pypi name validation
+    gh#PyO3/maturin#2007
+  * Add JSON schema generation
+    gh#PyO3/maturin#2005
+  * Detect compiling from Linux gnu to Linux musl as cross compiling
+    gh#PyO3/maturin#2010
+  * Upgrade uniffi to 0.27.0
+    gh#PyO3/maturin#2021
+  * Add instrumentation support for develop
+    gh#PyO3/maturin#2019
+  * Make tracing-subscriber mandatory
+    gh#PyO3/maturin#2022
+  * Import hook upgrade
+    gh#PyO3/maturin#2024
+  * Add uv as develop backend command
+    gh#PyO3/maturin#2015
+  * Also try uv in PATH in develop --uv
+    gh#PyO3/maturin#2026
+  * docs: update pyo3 to match tutorial
+    gh#PyO3/maturin#2029
+  * Add support for AIX
+    gh#PyO3/maturin#2030
+  * Remove rust-cpython from project init/new template
+    gh#PyO3/maturin#2034
+  * Only run uv tests on platforms that has wheel on PyPI or when uv bina…
+    gh#PyO3/maturin#2037
+  * Install cffi and uv on demand in test_develop
+    gh#PyO3/maturin#2043
+  * Add support for wasm32-wasip1 and wasm32-wasip2 targets</comment>
+    <requestid>1178629</requestid>
+  </revision>
 </revisionlist>
