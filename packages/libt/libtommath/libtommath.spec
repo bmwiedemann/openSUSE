@@ -1,7 +1,7 @@
 #
 # spec file for package libtommath
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2009 Exata T.I., Maringa, PR, Brasil.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 Name:           libtommath
 %define libsoname %{name}1
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Routines For a Integer Based Number Theoretic Applications
 License:        Unlicense
