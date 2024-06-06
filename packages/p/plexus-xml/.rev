@@ -7,4 +7,12 @@
     <comment>New package that will be needed by plexus-utils 4.0.0 when we are upgrading</comment>
     <requestid>1157993</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2d87e58b22aaad7ebedc99d814cc9aeb</srcmd5>
+    <version>3.0.1</version>
+    <time>1717669988</time>
+    <user>anag+factory</user>
+    <comment>3.0.1</comment>
+    <requestid>1178803</requestid>
+  </revision>
 </revisionlist>

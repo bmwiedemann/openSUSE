@@ -17,7 +17,7 @@
 
 
 Name:           plexus-xml
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        Plexus XML Utilities
 License:        Apache-2.0

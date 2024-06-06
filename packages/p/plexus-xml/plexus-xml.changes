@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jun  5 11:54:36 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 3.0.1
+  * Bug Fixes
+    + Allow nulls for write elements in MXSerializer
+    + Remove special chars from xml output
+  * Dependency updates
+    + Bump org.codehaus.plexus:plexus from 17 to 18
+    + Bump release-drafter/release-drafter from 5 to 6
+    + Bump parent to 17 and updates
+  * Maintenance
+    + Switch to Junit 5
+    + Switch to shared gh actions setup from master branch
+  * Build
+    + Deploy snapshots for 3.x branch
+
+-------------------------------------------------------------------
 Thu Mar 14 07:20:51 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of plexus-xml 3.0.0 needed by plexus-utils 4.0.0

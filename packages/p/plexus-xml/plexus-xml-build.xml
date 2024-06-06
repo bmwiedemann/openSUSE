@@ -8,7 +8,7 @@
 
   <property name="project.groupId" value="org.codehaus.plexus"/>
   <property name="project.artifactId" value="plexus-xml"/>
-  <property name="project.version" value="3.0.0"/>
+  <property name="project.version" value="3.0.1"/>
 
   <property name="compiler.release" value="8"/>
   <property name="compiler.source" value="1.${compiler.release}"/>
