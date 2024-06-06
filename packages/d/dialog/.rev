@@ -460,4 +460,30 @@ See e.g. editbox.c (forwarded request 150609 from babelworx)</comment>
 - add support for /usr/etc (dialog-1.3-usretc.diff) (forwarded request 1129823 from lnussel)</comment>
     <requestid>1129827</requestid>
   </revision>
+  <revision rev="43" vrev="12">
+    <srcmd5>8c438c2a89e8e80d9ad4b5c8da03b03a</srcmd5>
+    <version>1.3</version>
+    <time>1717669829</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.3-20240307:
+  + add option --color-modes, which can be used to color the content of
+    programbox, tailbox, textbox (requested by Rafał Radziejewski).
+  + updated configure script, e.g., for compiler-warning fixes.
+  + amend change to formbox while revising --max-input to work with the
+    form's &quot;ilen&quot; parameter (report by Anna-Maria Gruber, cf: 2022/04/14)
+  + update config.guess, config.sub
+  + updated configure script, e.g., for compiler-warning fixes.
+  + updated lv.po from
+          http://translationproject.org/latest/dialog/
+  + add/use dlg_print_nowrap(), to handle multibyte character strings in
+    progressbox and tailbox (report/testcase by Sergey Merzlikin).
+  + updated configure script, e.g., for compiler-warning fixes.
+  + update config.guess, config.sub
+  + updated configure script, e.g., for compiler-warning fixes.
+  + minor fixes for manpages to address mandoc warnings.
+  + updated th.po from
+          http://translationproject.org/latest/dialog/
+  + update config.guess, config.sub</comment>
+    <requestid>1178672</requestid>
+  </revision>
 </revisionlist>

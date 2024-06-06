@@ -1,7 +1,7 @@
 #
 # spec file for package dialog
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define src_date 20230209
+%define src_date 20240307
 %define somajor 15
 Name:           dialog
 Version:        1.3
