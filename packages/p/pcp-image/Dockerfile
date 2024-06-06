@@ -14,12 +14,12 @@
 # You can contact the BCI team via https://github.com/SUSE/bci/discussions
 
 
-#!BuildTag: opensuse/pcp:%%pcp_patch%%
-#!BuildTag: opensuse/pcp:%%pcp_patch%%-%RELEASE%
-#!BuildTag: opensuse/pcp:%%pcp_minor%%
-#!BuildTag: opensuse/pcp:%%pcp_minor%%-%RELEASE%
-#!BuildTag: opensuse/pcp:%%pcp_major%%
-#!BuildTag: opensuse/pcp:%%pcp_major%%-%RELEASE%
+#!BuildTag: opensuse/pcp:6.2.1
+#!BuildTag: opensuse/pcp:6.2.1-%RELEASE%
+#!BuildTag: opensuse/pcp:6.2
+#!BuildTag: opensuse/pcp:6.2-%RELEASE%
+#!BuildTag: opensuse/pcp:6
+#!BuildTag: opensuse/pcp:6-%RELEASE%
 #!BuildTag: opensuse/pcp:latest
 
 FROM opensuse/bci/bci-init:latest
@@ -30,18 +30,17 @@ MAINTAINER openSUSE (https://www.opensuse.org/)
 # labelprefix=org.opensuse.application.pcp
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed Performance Co-Pilot (pcp)"
 LABEL org.opencontainers.image.description="Performance Co-Pilot (pcp) container based on the openSUSE Tumbleweed Base Container Image. This container is only supported with podman."
-LABEL org.opencontainers.image.version="%%pcp_patch%%"
+LABEL org.opencontainers.image.version="6.2.1"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/pcp-image/README.md"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/pcp:%%pcp_patch%%-%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/pcp:6.2.1-%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime"
 LABEL org.opensuse.release-stage="released"
-
 # endlabelprefix
+LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/pcp-image/README.md"
 
 RUN set -euo pipefail; zypper -n in --no-recommends pcp hostname shadow gettext-runtime util-linux-systemd; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
 ENTRYPOINT ["/usr/local/bin/container-entrypoint"]

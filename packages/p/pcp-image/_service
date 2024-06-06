@@ -13,10 +13,4 @@
     <param name="package">pcp</param>
     <param name="parse-version">minor</param>
   </service>
-  <service name="replace_using_package_version" mode="buildtime">
-    <param name="file">Dockerfile</param>
-    <param name="regex">%%pcp_patch%%</param>
-    <param name="package">pcp</param>
-    <param name="parse-version">patch</param>
-  </service>
 </services>
