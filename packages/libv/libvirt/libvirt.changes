@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun  3 18:03:34 UTC 2024 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 10.4.0
+  - network: use nftables to setup virtual network firewall rules
+    boo#1201510
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v10-4-0-2024-06-03
+
+-------------------------------------------------------------------
 Wed May  8 22:39:10 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - CVE-2024-4418: rpc: ensure temporary GSource is removed from

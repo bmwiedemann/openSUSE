@@ -4608,4 +4608,16 @@ bsc#1216656</comment>
   bsc#1222584</comment>
     <requestid>1172820</requestid>
   </revision>
+  <revision rev="399" vrev="1">
+    <srcmd5>bec055a0abd28c6d226de3af2cd54b94</srcmd5>
+    <version>10.4.0</version>
+    <time>1717669873</time>
+    <user>anag+factory</user>
+    <comment>- Update to libvirt 10.4.0
+  - network: use nftables to setup virtual network firewall rules
+    boo#1201510
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v10-4-0-2024-06-03</comment>
+    <requestid>1178390</requestid>
+  </revision>
 </revisionlist>

@@ -119,6 +119,16 @@
     %define with_storage_gluster 0
 %endif
 
+# Prefer nftables for Tumbleweed, but keep using iptables for distros based
+# on SLE15 codestream
+%if 0%{?suse_version} > 1500
+    %define prefer_nftables 1
+    %define firewall_backend_priority nftables,iptables
+%else
+    %define prefer_nftables 0
+    %define firewall_backend_priority iptables,nftables
+%endif
+
 # Force QEMU to run as qemu:qemu
 %define qemu_user          qemu
 %define qemu_group         qemu
@@ -135,7 +145,7 @@
 
 Name:           libvirt
 URL:            https://libvirt.org/
-Version:        10.3.0
+Version:        10.4.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -182,7 +192,7 @@ BuildRequires:  libacl-devel
 BuildRequires:  qemu-tools
 %endif
 BuildRequires:  bash-completion-devel >= 2.0
-BuildRequires:  glib2-devel >= 2.56
+BuildRequires:  glib2-devel >= 2.58
 BuildRequires:  libattr-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libgnutls-devel
@@ -211,8 +221,6 @@ BuildRequires:  apparmor-rpm-macros
 BuildRequires:  libapparmor-devel
 %endif
 BuildRequires:  cyrus-sasl-devel
-BuildRequires:  ebtables
-BuildRequires:  iptables
 BuildRequires:  polkit >= 0.112
 %if %{with_nbdkit}
 BuildRequires:  libnbd-devel
@@ -414,7 +422,11 @@ Summary:        Network driver plugin for the libvirtd daemon
 Requires:       %{name}-daemon-common = %{version}-%{release}
 Requires:       %{name}-libs = %{version}-%{release}
 Requires:       dnsmasq >= 2.41
+%if %{prefer_nftables}
+Requires:       nftables
+%else
 Requires:       iptables
+%endif
 
 %description daemon-driver-network
 The network driver plugin for the libvirtd daemon, providing
@@ -596,6 +608,7 @@ Requires:       /usr/bin/bzip2
 Requires:       /usr/bin/gzip
 Requires:       /usr/bin/lzop
 Requires:       /usr/bin/xz
+Requires:       /usr/bin/zstd
 Requires:       qemu
 Requires:       systemd-container
 # swtp is needed to manage <tpm> devices.
@@ -817,6 +830,13 @@ Requires:       %{name}-daemon-driver-network = %{version}-%{release}
 %description nss
 libvirt plugin for NSS for translating domain names into IP addresses.
 
+%package ssh-proxy
+Summary:        Libvirt SSH proxy
+Requires:       %{name}-libs = %{version}-%{release}
+
+%description ssh-proxy
+Allows SSH into domains via VSOCK without need for network.
+
 %prep
 %autosetup -p1
 
@@ -1036,6 +1056,7 @@ libvirt plugin for NSS for translating domain names into IP addresses.
            %{?arg_userfaultfd_sysctl} \
            %{?arg_nbdkit} \
            %{?arg_nbdkit_config_default} \
+           -Dssh_proxy=enabled \
            -Dsysctl_config=enabled \
            -Dcapng=enabled \
            -Dfuse=enabled \
@@ -1066,6 +1087,7 @@ libvirt plugin for NSS for translating domain names into IP addresses.
            -Dexpensive_tests=enabled \
            %{?arg_loader_nvram} \
            -Dinit_script=systemd \
+           -Dfirewall_backend_priority=%{firewall_backend_priority} \
            -Ddocs=enabled \
            -Dtests=enabled \
            -Drpath=disabled \
@@ -1582,6 +1604,9 @@ fi
 %config(noreplace) %{_sysconfdir}/%{name}/virtnetworkd.conf
 %{_datadir}/augeas/lenses/virtnetworkd.aug
 %{_datadir}/augeas/lenses/tests/test_virtnetworkd.aug
+%config(noreplace) %{_sysconfdir}/%{name}/network.conf
+%{_datadir}/augeas/lenses/libvirtd_network.aug
+%{_datadir}/augeas/lenses/tests/test_libvirtd_network.aug
 %{_unitdir}/virtnetworkd.service
 %{_unitdir}/virtnetworkd.socket
 %{_unitdir}/virtnetworkd-ro.socket
@@ -1933,5 +1958,11 @@ fi
 %files nss
 %{_libdir}/libnss_libvirt.so.2
 %{_libdir}/libnss_libvirt_guest.so.2
+
+%files ssh-proxy
+%dir %{_sysconfdir}/ssh/
+%dir %{_sysconfdir}/ssh/ssh_config.d/
+%config(noreplace) %{_sysconfdir}/ssh/ssh_config.d/30-libvirt-ssh-proxy.conf
+%{_libexecdir}/libvirt-ssh-proxy
 
 %changelog
