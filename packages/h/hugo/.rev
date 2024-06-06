@@ -1239,4 +1239,16 @@
   * content adapter: Handle &lt;!--more--&gt; separator in content.value (forwarded request 1178168 from jfkw)</comment>
     <requestid>1178169</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>70e753982082f1ad73303cef8820b6d0</srcmd5>
+    <version>0.127.0</version>
+    <time>1717669980</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.127.0:
+  * Misc remote HTTP/content adapter enhancements
+  * resources: Fix spelling
+  * deps: Upgrade github.com/gohugoio/httpcache v0.6.0 =&gt; v0.7.0
+  * Add a HTTP cache for remote resources. (forwarded request 1178765 from jfkw)</comment>
+    <requestid>1178772</requestid>
+  </revision>
 </revisionlist>
