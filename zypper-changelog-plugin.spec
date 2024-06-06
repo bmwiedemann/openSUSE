@@ -17,15 +17,17 @@
 
 
 Name:           zypper-changelog-plugin
-Version:        0.4
+Version:        0.5
 Release:        0
 Summary:        Changelog listing tool
 License:        GPL-2.0-only
 Group:          System/Packages
 URL:            https://github.com/bzoltan1/zypper-changelog-plugin.git
-Source:         zypper-changelog-plugin-0.4.tar.gz
+Source:         zypper-changelog-plugin-0.5.tar.gz
 Requires:       /usr/bin/python3
 Requires:       python3-requests
+Requires:       python3-rpm
+Requires:       zstd
 BuildArch:      noarch
 
 %description
