@@ -54,7 +54,7 @@ Provides bindings for augeas.
 
 %prep
 %gem_unpack
-%patch0 -p0
+%patch -P 0 -p0
 find -type f -print0 | xargs -0 touch -r %{S:0}
 %gem_build
 

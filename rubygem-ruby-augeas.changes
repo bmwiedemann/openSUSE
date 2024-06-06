@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 21 10:27:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace %patchN with %patch -P N: %patchN is deprecated.
+
+-------------------------------------------------------------------
 Wed Mar 23 12:07:48 UTC 2016 - olaf@aepfle.de
 
 - Force fixed timestamps for patched gems (bsc#916047)
