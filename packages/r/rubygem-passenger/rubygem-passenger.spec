@@ -88,8 +88,8 @@ optimized for performance, low memory usage and ease of use.
 
 %prep
 %gem_unpack
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 # MANUAL
 # those files have been committed accidentally by the developers of passenger with version 6.0.8. they are not needed so
 # we have to remove them (otherwise a suse-filelist-forbidden linter error with a badness of 10000 is raised when .orig

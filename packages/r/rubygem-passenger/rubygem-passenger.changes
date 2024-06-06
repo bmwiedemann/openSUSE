@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 21 10:23:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace %patchN with %patch -P N: %patchN is deprecated.
+
+-------------------------------------------------------------------
 Mon Jan 29 14:19:39 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - New upstream release 6.0.20, see bundled CHANGELOG
