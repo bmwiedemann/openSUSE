@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun 05 05:24:29 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 5.1.1:
+  * Bump to v5.1.1
+  * Update release notes for v5.1.1
+  * libpod: do not leak systemd hc startup unit timer
+  * Check AppleHypervisor before accessing it
+  * [v5.1] Bump c/common to v0.59.1
+  * [v5.1] pkg/rootless: set _CONTAINERS_USERNS_CONFIGURED ... correctly
+  * test/e2e: use local skopeo not image
+  * [v5.1] Mac PM test: Require pre-installed rosetta
+  * Fix typo in release notes
+  * Bump to v5.1.1-dev
+
+-------------------------------------------------------------------
 Thu May 30 05:32:21 UTC 2024 - danish.prakash@suse.com
 
 - Update to version 5.1.0:
