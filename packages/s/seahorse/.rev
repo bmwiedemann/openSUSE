@@ -919,4 +919,13 @@ A couple of patches for this are competing for upstream approval at bgo#659834 -
     <comment>GNOME 46 (forwarded request 1159274 from dimstar)</comment>
     <requestid>1159535</requestid>
   </revision>
+  <revision rev="124" vrev="2">
+    <srcmd5>1e3e1f5b5b3f95f701687a16ce862044</srcmd5>
+    <version>43.0+22</version>
+    <time>1717669827</time>
+    <user>anag+factory</user>
+    <comment>- Add seahorse-gcc14.patch: fix an invalid cast
+  (glgo#GNOME/seahorse!220). (forwarded request 1178597 from mgorse)</comment>
+    <requestid>1178666</requestid>
+  </revision>
 </revisionlist>

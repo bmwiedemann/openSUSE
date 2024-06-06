@@ -24,6 +24,8 @@ License:        GFDL-1.1-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Security
 URL:            https://wiki.gnome.org/Apps/Seahorse
 Source0:        %{name}-%{version}.tar.zst
+# PATCH-FIX-UPSTREAM seahorse-gcc14.patch boo#1225926 mgorse@suse.com -- fix an invalid cast.
+Patch0:         seahorse-gcc14.patch
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets

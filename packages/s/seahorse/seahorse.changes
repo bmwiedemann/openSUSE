@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  4 19:37:12 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Add seahorse-gcc14.patch: fix an invalid cast
+  (glgo#GNOME/seahorse!220).
+
+-------------------------------------------------------------------
 Wed Feb 28 09:09:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 43.0+22:
