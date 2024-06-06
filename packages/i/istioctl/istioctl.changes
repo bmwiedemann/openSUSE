@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun  5 05:53:19 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.22.1:
+  https://istio.io/latest/news/releases/1.22.x/announcing-1.22.1/
+  * Added a new, optional experimental admission policy that only
+    allows stable features/fields to be used in Istio APIs when
+    using a remote Istiod cluster. (Issue #173)
+  * Fixed adding of pod IPs to the host’s ipset to explicitly fail
+    instead of silently overwriting.
+  * Fixed an issue causing outboundstatname in MeshConfig to not be
+    honored for subset clusters.
+  * Fixed custom injection of the istio-proxy container not working
+    properly when SecurityContext.RunAs fields were set.
+  * Fixed returning 503 errors by auto-passthrough gateways created
+    after enabling mTLS.
+  * Fixed serviceRegistry orders influence the proxy labels, so we
+    put the Kubernetes registry in front. (Issue #50968) 
+
+-------------------------------------------------------------------
 Tue May 14 05:39:32 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - major upgrade to 1.22.0:
