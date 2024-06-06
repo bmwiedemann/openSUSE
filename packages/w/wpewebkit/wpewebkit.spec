@@ -1,7 +1,7 @@
 #
 # spec file for package wpewebkit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,20 +23,19 @@
 Name:           wpewebkit
 ### FIXME ### Drop the disabling of LTO on next release/versionbump
 %define _lto_cflags %{nil}
-Version:        2.42.2
+Version:        2.44.2
 Release:        0
 Summary:        Library for rendering web content, WPE Port
 License:        BSD-3-Clause AND LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://wpewebkit.org/
 Source:         %{url}/releases/%{name}-%{version}.tar.xz
-Patch0:         fix-include-dirs.patch
-Patch1:         fix-load-backend-fdo-lib.patch
 
 BuildRequires:  bubblewrap
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gperf >= 3.0.1
+BuildRequires:  libbacktrace-devel
 BuildRequires:  libicu-devel >= 61.2
 BuildRequires:  memory-constraints
 BuildRequires:  ninja
@@ -47,36 +46,34 @@ BuildRequires:  unifdef
 BuildRequires:  xdg-dbus-proxy
 BuildRequires:  pkgconfig(atk) >= 2.16.0
 BuildRequires:  pkgconfig(atk-bridge-2.0)
-BuildRequires:  pkgconfig(libjxl)
-BuildRequires:  pkgconfig(cairo) >= 1.14.0
-BuildRequires:  pkgconfig(epoxy) >= 1.4.0
-BuildRequires:  pkgconfig(fontconfig) >= 2.8.0
-BuildRequires:  pkgconfig(freetype2) >= 2.4.2
+BuildRequires:  pkgconfig(cairo) >= 1.16.0
+BuildRequires:  pkgconfig(epoxy) >= 1.5.4
+BuildRequires:  pkgconfig(freetype2) >= 2.9.0
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.70.0
-BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.16.2
-BuildRequires:  pkgconfig(gstreamer-allocators-1.0) >= 1.16.2
-BuildRequires:  pkgconfig(gstreamer-app-1.0) >= 1.16.2
-BuildRequires:  pkgconfig(gstreamer-audio-1.0) >= 1.16.2
-BuildRequires:  pkgconfig(gstreamer-base-1.0) >= 1.16.2
-BuildRequires:  pkgconfig(gstreamer-codecparsers-1.0) >= 1.16.2
-BuildRequires:  pkgconfig(gstreamer-fft-1.0) >= 1.16.2
-BuildRequires:  pkgconfig(gstreamer-gl-1.0) >= 1.16.2
+BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.18.4
+BuildRequires:  pkgconfig(gstreamer-allocators-1.0) >= 1.18.4
+BuildRequires:  pkgconfig(gstreamer-app-1.0) >= 1.18.4
+BuildRequires:  pkgconfig(gstreamer-audio-1.0) >= 1.18.4
+BuildRequires:  pkgconfig(gstreamer-base-1.0) >= 1.18.4
+BuildRequires:  pkgconfig(gstreamer-codecparsers-1.0) >= 1.18.4
+BuildRequires:  pkgconfig(gstreamer-fft-1.0) >= 1.18.4
+BuildRequires:  pkgconfig(gstreamer-gl-1.0) >= 1.18.4
 BuildRequires:  pkgconfig(gstreamer-mpegts-1.0) >= 1.4.0
-BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= 1.16.2
-BuildRequires:  pkgconfig(gstreamer-rtp-1.0) >= 1.16.2
-BuildRequires:  pkgconfig(gstreamer-sdp-1.0) >= 1.16.2
-BuildRequires:  pkgconfig(gstreamer-tag-1.0) >= 1.16.2
-BuildRequires:  pkgconfig(gstreamer-transcoder-1.0) >= 1.16.2
-BuildRequires:  pkgconfig(gstreamer-video-1.0) >= 1.16.2
-BuildRequires:  pkgconfig(gstreamer-webrtc-1.0) >= 1.16.2
-BuildRequires:  pkgconfig(harfbuzz) >= 0.9.18
+BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= 1.18.4
+BuildRequires:  pkgconfig(gstreamer-rtp-1.0) >= 1.18.4
+BuildRequires:  pkgconfig(gstreamer-sdp-1.0) >= 1.18.4
+BuildRequires:  pkgconfig(gstreamer-tag-1.0) >= 1.18.4
+BuildRequires:  pkgconfig(gstreamer-transcoder-1.0) >= 1.18.4
+BuildRequires:  pkgconfig(gstreamer-video-1.0) >= 1.18.4
+BuildRequires:  pkgconfig(gstreamer-webrtc-1.0) >= 1.18.4
+BuildRequires:  pkgconfig(harfbuzz) >= 1.4.2
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libavif) >= 0.9.0
 BuildRequires:  pkgconfig(libdrm)
-BuildRequires:  pkgconfig(libgcrypt) >= 1.6.0
+BuildRequires:  pkgconfig(libgcrypt) >= 1.7.0
 BuildRequires:  pkgconfig(libjpeg)
-BuildRequires:  pkgconfig(libopenjp2) >= 2.2.0
+BuildRequires:  pkgconfig(libjxl) >= 0.7.0
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libsoup-3.0) >= 3.0.0
@@ -88,12 +85,12 @@ BuildRequires:  pkgconfig(libwoff2dec)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.8.0
 BuildRequires:  pkgconfig(libxslt) >= 1.1.7
 BuildRequires:  pkgconfig(sqlite3)
-BuildRequires:  pkgconfig(wayland-client)
-BuildRequires:  pkgconfig(wayland-egl)
+BuildRequires:  pkgconfig(wayland-client) >= 1.15
+BuildRequires:  pkgconfig(wayland-egl) >= 1.15
 BuildRequires:  pkgconfig(wayland-protocols)
-BuildRequires:  pkgconfig(wayland-server)
+BuildRequires:  pkgconfig(wayland-server) >= 1.15
 BuildRequires:  pkgconfig(wpe-1.0)
-BuildRequires:  pkgconfig(wpebackend-fdo-1.0)
+BuildRequires:  pkgconfig(wpebackend-fdo-1.0) >= 1.3.0
 BuildRequires:  pkgconfig(xkbcommon) >= 0.4.0
 BuildRequires:  pkgconfig(zlib)
 
@@ -172,6 +169,8 @@ embedded mini browsers.
 
 # Use linker flags to reduce memory consumption
 %global optflags %(echo %{optflags} -Wl,--no-keep-memory -Wl,--reduce-memory-overheads | sed 's/-g /-g1 /')
+export CFLAGS="%{optflags} $(pkg-config --cflags wayland-client xkbcommon)"
+export CXXFLAGS="%{optflags} $(pkg-config --cflags wayland-client xkbcommon)"
 %cmake \
   -GNinja \
   -DCMAKE_BUILD_TYPE=Release \
@@ -183,8 +182,6 @@ embedded mini browsers.
   -DLIBEXEC_INSTALL_DIR=%{_libexecdir}/libWPEWebKit-%{_wksover} \
 %ifarch aarch64
   -DENABLE_JIT=OFF \
-  -DENABLE_C_LOOP=ON \
-  -DENABLE_SAMPLING_PROFILER=OFF \
   -DUSE_SYSTEM_MALLOC=ON \
 %endif
 %ninja_build

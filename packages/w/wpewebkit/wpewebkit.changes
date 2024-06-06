@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Jun  4 17:28:23 UTC 2024 - Joan Torres <joan.torres@suse.com>
+
+- Stop passing -DENABLE_SAMPLING_PROFILER=OFF and -DENABLE_C_LOOP=ON 
+  on arch64, it's no longer needed to avoid build failure.
+- Set wayland and xkbcommon includes through CFLAGS and CXXFLAGS,
+  it looks like the compiler can't automatically find them.
+
+-------------------------------------------------------------------
+Thu May 23 08:23:41 UTC 2024 - Joan Torres <joan.torres@suse.com>
+
+- Update to version 2.44.2:
+  * Fix CVE-2024-27834 bsc#1225071
+  * Decrease input notifications for gamepad inputs.
+  * Disable the gst-libav AAC decoder.
+  * Make gamepads visible on axis movements, and not only on button presses.
+  * Make user scripts and style sheets visible in the Web Inspector.
+  * Use the geolocation portal where available, with the existing Geoclue as fallback if the portal is not usable.
+  * Use optimized assembler BoringSSL modules with USE_LIBWEBRTC enabled.
+  * Fix mouse location in WebDriver when output device scaling is in effect.
+  * Fix touch input event propagation.
+  * Fix the build on 32-bit ARM with USE_LIBWEBRTC enabled.
+  * Fix the build with ENABLE_WEBAUDIO disabled.
+  * Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
+Fri May  3 15:09:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.44.1:
+  + Do not schedule layer flushes when drawing area size is empty.
+  + Fix videos with alpha when using the DMA-BUF sink.
+  + Fix the build with ENABLE_WEB_AUDIO=OFF.
+  + Fix the build with ENABLE_VIDEO=OFF.
+  + Fix the build with USE_GBM=OFF.
+  + Fix the build in 32bit platforms
+  + Fix several crashes and rendering issues.
+  + For all changes between 2.42.2 and 2.44.1, please see packaged
+    NEWS file.
+- Add libbacktrace-devel BuildRequires: new dependency.
+- Drop fix-include-dirs.patch and fix-load-backend-fdo-lib.patch:
+  no longer needed.
+
+-------------------------------------------------------------------
 Wed Nov 22 11:12:21 UTC 2023 - Joan Torres <joan.torres@suse.com>
 
 - Update to version 2.42.2:
