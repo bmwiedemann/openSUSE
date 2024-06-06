@@ -1,7 +1,7 @@
 #
 # spec file for package fakeroot
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fakeroot
-Version:        1.29
+Version:        1.34
 Release:        0
 Summary:        Wrapper that gives a fake root environment
 License:        GPL-3.0-or-later
@@ -27,8 +27,6 @@ Source0:        http://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{vers
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM fakeroot-1.21-fix-shell-in-fakeroot.patch (deb#828810)
 Patch0:         fakeroot-1.21-fix-shell-in-fakeroot
-#PATCH-FIX-UPSTREAM also-wrap-stat-library-call.patch (deb#1001961)
-Patch1:         also-wrap-stat-library-call.patch
 BuildRequires:  autoconf >= 2.71
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -43,7 +41,7 @@ BuildRequires:  po4a
 BuildRequires:  sharutils
 BuildRequires:  user(daemon)
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 
 %description
 fakeroot runs a command in an environment wherein it appears to have
@@ -94,7 +92,7 @@ ln -sf faked-sysv %{buildroot}%{_bindir}/faked
 ln -sf fakeroot-sysv %{buildroot}%{_bindir}/fakeroot
 ln -sf faked-sysv.1.gz %{buildroot}%{_mandir}/man1/faked.1.gz
 ln -sf fakeroot-sysv.1.gz %{buildroot}%{_mandir}/man1/fakeroot.1.gz
-for i in de es fr nl pt sv; do
+for i in de es fr nl pt ro sv; do
   ln -sf faked-sysv.1.gz %{buildroot}%{_mandir}/$i/man1/faked.1.gz
   ln -sf fakeroot-sysv.1.gz %{buildroot}%{_mandir}/$i/man1/fakeroot.1.gz
 done
@@ -121,6 +119,8 @@ done
  --slave %{_mandir}/nl/man1/faked.1.gz faked.nl.1.gz %{_mandir}/nl/man1/faked-sysv.1.gz \
  --slave %{_mandir}/pt/man1/fakeroot.1.gz fakeroot.pt.1.gz %{_mandir}/pt/man1/fakeroot-sysv.1.gz \
  --slave %{_mandir}/pt/man1/faked.1.gz faked.pt.1.gz %{_mandir}/pt/man1/faked-sysv.1.gz \
+ --slave %{_mandir}/ro/man1/fakeroot.1.gz fakeroot.ro.1.gz %{_mandir}/ro/man1/fakeroot-sysv.1.gz \
+ --slave %{_mandir}/ro/man1/faked.1.gz faked.ro.1.gz %{_mandir}/ro/man1/faked-sysv.1.gz \
  --slave %{_mandir}/sv/man1/fakeroot.1.gz fakeroot.sv.1.gz %{_mandir}/sv/man1/fakeroot-sysv.1.gz \
  --slave %{_mandir}/sv/man1/faked.1.gz faked.sv.1.gz %{_mandir}/sv/man1/faked-sysv.1.gz
 
@@ -138,6 +138,8 @@ done
  --slave %{_mandir}/nl/man1/faked.1.gz faked.nl.1.gz %{_mandir}/nl/man1/faked-tcp.1.gz \
  --slave %{_mandir}/pt/man1/fakeroot.1.gz fakeroot.pt.1.gz %{_mandir}/pt/man1/fakeroot-tcp.1.gz \
  --slave %{_mandir}/pt/man1/faked.1.gz faked.pt.1.gz %{_mandir}/pt/man1/faked-tcp.1.gz \
+ --slave %{_mandir}/ro/man1/fakeroot.1.gz fakeroot.ro.1.gz %{_mandir}/ro/man1/fakeroot-tcp.1.gz \
+ --slave %{_mandir}/ro/man1/faked.1.gz faked.ro.1.gz %{_mandir}/ro/man1/faked-tcp.1.gz \
  --slave %{_mandir}/sv/man1/fakeroot.1.gz fakeroot.sv.1.gz %{_mandir}/sv/man1/fakeroot-tcp.1.gz \
  --slave %{_mandir}/sv/man1/faked.1.gz faked.sv.1.gz %{_mandir}/sv/man1/faked-tcp.1.gz
 
@@ -169,6 +171,8 @@ fi
 %dir %{_mandir}/nl/man1/
 %dir %{_mandir}/pt/
 %dir %{_mandir}/pt/man1/
+%dir %{_mandir}/ro/
+%dir %{_mandir}/ro/man1/
 %dir %{_mandir}/sv/
 %dir %{_mandir}/sv/man1/
 %ghost %lang(de) %{_mandir}/de/man1/faked.1%{ext_man}
@@ -191,6 +195,10 @@ fi
 %ghost %lang(pt) %{_mandir}/pt/man1/fakeroot.1%{ext_man}
 %lang(pt) %{_mandir}/pt/man1/faked-*.1%{ext_man}
 %lang(pt) %{_mandir}/pt/man1/fakeroot-*.1%{ext_man}
+%ghost %lang(ro) %{_mandir}/ro/man1/faked.1%{ext_man}
+%ghost %lang(ro) %{_mandir}/ro/man1/fakeroot.1%{ext_man}
+%lang(ro) %{_mandir}/ro/man1/faked-*.1%{ext_man}
+%lang(ro) %{_mandir}/ro/man1/fakeroot-*.1%{ext_man}
 %ghost %lang(sv) %{_mandir}/sv/man1/faked.1%{ext_man}
 %ghost %lang(sv) %{_mandir}/sv/man1/fakeroot.1%{ext_man}
 %lang(sv) %{_mandir}/sv/man1/faked-*.1%{ext_man}

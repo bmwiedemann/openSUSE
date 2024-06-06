@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jun  5 08:01:21 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update to 1.34
+  * faked now ignores SIGWINCH.
+- Update to 1.33
+  * Patch from Samuel Thibault to add renameat2 support.
+- Update to 1.32
+  * Updated German translation from Chris Leick.
+  * Patch from John Paul Adrian Glaubitz to add build profile to
+    allow bootstrapping.
+  * Romanian man page translation from Remus-Gabriel Chelu.
+  * patch from Rudi Heitbaum to add missing wrapped.h dependency.
+- Update to 1.31
+  * patch from Johannes Schauer Marin Rodrigues to not use
+    temporary file in chown test.
+- Update to 1.30
+  * tries to cope with time64 on 32-bit architectures.
+  * Drop kludge for glibc 2.33.
+  * fixes and extends time64 support to fstatat64.
+- Remove patch also-wrap-stat-library-call.patch
+
+-------------------------------------------------------------------
 Thu Sep  1 11:20:13 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - The manual pages are already in UTF-8 format, so don't convert
