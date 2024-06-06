@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Mon Jun  3 13:42:13 UTC 2024 - Johannes Segitz <jsegitz@suse.com>
+
+- Remove "Reference" from the package description. It's not the
+  reference policy, but the Fedora branch of the policy
+
+-------------------------------------------------------------------
+Tue May 28 11:12:57 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
+
+- Use python311 tools in 15.4 and 15.5 when building selinux-policy to deprecate
+  python36 tooling
+
+-------------------------------------------------------------------
+Wed May  8 11:06:43 UTC 2024 - Johannes Segitz <jsegitz@suse.com>
+
+- Fixed varrun-convert.sh script to not break because of duplicate
+  entries
+
+-------------------------------------------------------------------
+Mon May  6 07:44:20 UTC 2024 - Johannes Segitz <jsegitz@suse.com>
+
+- Move to %posttrans to ensure selinux-policy got updated before
+  the commands run (bsc#1221720)
+
+-------------------------------------------------------------------
+Mon Apr 15 13:23:40 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
+
+- Add file contexts "forwarding" to file_contexts.sub_dist
+  to fix systemd-gpt-auto-generator and systemd-fstab-generator
+  (bsc#1222736):
+  * /run/systemd/generator.early /usr/lib/systemd/system
+  * /run/systemd/generator.late /usr/lib/systemd/system
+
+-------------------------------------------------------------------
+Thu Apr 11 15:13:31 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20240411:
+  * Remove duplicate in sysnetwork.fc
+  * Rename /var/run/wicked* to /run/wicked*
+  * Remove /var/run/rsyslog/additional-log-sockets.conf from logging.fc
+  * policy: support pidfs
+  * Confine selinux-autorelabel-generator.sh
+  * Allow logwatch_mail_t read/write to init over a unix stream socket
+  * Allow logwatch read logind sessions files
+  * files_dontaudit_getattr_tmpfs_files allowed the access and didn't dontaudit it
+  * files_dontaudit_mounton_modules_object allowed the access and didn't dontaudit it
+  * Allow NetworkManager the sys_ptrace capability in user namespace
+  * dontaudit execmem for modemmanager
+  * Allow dhcpcd use unix_stream_socket
+  * Allow dhcpc read /run/netns files
+  * Update mmap_rw_file_perms to include the lock permission
+  * Allow plymouthd log during shutdown
+  * Add logging_watch_all_log_dirs() and logging_watch_all_log_files()
+  * Allow journalctl_t read filesystem sysctls
+  * Allow cgred_t to get attributes of cgroup filesystems
+  * Allow wdmd read hardware state information
+  * Allow wdmd list the contents of the sysfs directories
+  * Allow linuxptp configure phc2sys and chronyd over a unix domain socket
+  * Allow sulogin relabel tty1
+  * Dontaudit sulogin the checkpoint_restore capability
+  * Modify sudo_role_template() to allow getpgid
+  * Allow userdomain get attributes of files on an nsfs filesystem
+  * Allow opafm create NFS files and directories
+  * Allow virtqemud create and unlink files in /etc/libvirt/
+  * Allow virtqemud domain transition on swtpm execution
+  * Add the swtpm.if interface file for interactions with other domains
+  * Allow samba to have dac_override capability
+  * systemd: allow sys_admin capability for systemd_notify_t
+  * systemd: allow systemd_notify_t to send data to kernel_t datagram sockets
+  * Allow thumb_t to watch and watch_reads mount_var_run_t
+  * Allow krb5kdc_t map krb5kdc_principal_t files
+  * Allow unprivileged confined user dbus chat with setroubleshoot
+  * Allow login_userdomain map files in /var
+  * Allow wireguard work with firewall-cmd
+  * Differentiate between staff and sysadm when executing crontab with sudo
+  * Add crontab_admin_domtrans interface
+  * Allow abrt_t nnp domain transition to abrt_handle_event_t
+  * Allow xdm_t to watch and watch_reads mount_var_run_t
+  * Dontaudit subscription manager setfscreate and read file contexts
+  * Don't audit crontab_domain write attempts to user home
+  * Transition from sudodomains to crontab_t when executing crontab_exec_t
+  * Add crontab_domtrans interface
+  * Fix label of pseudoterminals created from sudodomain
+  * Allow utempter_t use ptmx
+  * Dontaudit rpmdb attempts to connect to sssd over a unix stream socket
+  * Allow admin user read/write on fixed_disk_device_t
+  * Only allow confined user domains to login locally without unconfined_login
+  * Add userdom_spec_domtrans_confined_admin_users interface
+  * Only allow admindomain to execute shell via ssh with ssh_sysadm_login
+  * Add userdom_spec_domtrans_admin_users interface
+  * Move ssh dyntrans to unconfined inside unconfined_login tunable policy
+  * Update ssh_role_template() for user ssh-agent type
+  * Allow init to inherit system DBus file descriptors
+  * Allow init to inherit fds from syslogd
+  * Allow any domain to inherit fds from rpm-ostree
+  * Update afterburn policy
+  * Allow init_t nnp domain transition to abrtd_t
+  * Rename all /var/lock file context entries to /run/lock
+  * Rename all /var/run file context entries to /run
+- Add script varrun-convert.sh for locally existing modules
+  to be able to cope with the /var/run -> /run change
+- Update embedded container-selinux to commit
+  a8e389dbcd3f9b6ed0a7e495c6f559c0383dc49e
+
+-------------------------------------------------------------------
 Thu Mar 21 10:44:09 UTC 2024 - jsegitz@suse.com
 
 - Update to version 20240321:

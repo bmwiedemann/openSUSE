@@ -625,4 +625,13 @@
     <comment></comment>
     <requestid>1160077</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>ccd383b00a3c0103b730b0b40a90224a</srcmd5>
+    <version>20240411</version>
+    <time>1717669852</time>
+    <user>anag+factory</user>
+    <comment>ATTENTION! Please accept this into factory at a similar time as the cockpit update to avoid issues with the cockpit-selinux module:
+https://build.opensuse.org/request/show/1178504 </comment>
+    <requestid>1178674</requestid>
+  </revision>
 </revisionlist>

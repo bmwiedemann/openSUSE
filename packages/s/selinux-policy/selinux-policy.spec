@@ -33,7 +33,7 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20240321
+Version:        20240411
 Release:        0
 Source0:        %{name}-%{version}.tar.xz
 Source1:        container.fc
@@ -61,6 +61,9 @@ Source30:       setrans-targeted.conf
 Source31:       setrans-mls.conf
 Source32:       setrans-minimum.conf
 
+# Script to convert /var/run file context entries to /run
+Source37:       varrun-convert.sh
+
 Source40:       securetty_types-targeted
 Source41:       securetty_types-mls
 Source42:       securetty_types-minimum
@@ -80,20 +83,26 @@ Source95:       macros.selinux-policy
 URL:            https://github.com/fedora-selinux/selinux-policy.git
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
+%if 0%{?suse_version} < 1600
+%define python_for_executables python311
+BuildRequires:  %{python_for_executables}
+BuildRequires:  %{python_for_executables}-policycoreutils
+%else
+BuildRequires:  %primary_python
+BuildRequires:  %{python_module policycoreutils}
+%endif
 BuildRequires:  checkpolicy
 BuildRequires:  gawk
 BuildRequires:  libxml2-tools
 BuildRequires:  m4
 BuildRequires:  policycoreutils
 BuildRequires:  policycoreutils-devel
-BuildRequires:  python3
-BuildRequires:  python3-policycoreutils
 # we need selinuxenabled
 Requires(pre):  policycoreutils >= %{POLICYCOREUTILSVER}
 Requires(pre):  pam-config
-Requires(post): pam-config
-Requires(post): selinux-tools
-Requires(post): /usr/bin/sha512sum
+Requires(posttrans): pam-config
+Requires(posttrans): selinux-tools
+Requires(posttrans): /usr/bin/sha512sum
 Recommends:     audit
 Recommends:     selinux-tools
 # for audit2allow
@@ -212,6 +221,7 @@ rm -f %{buildroot}%{_sharedstatedir}/selinux/%1/active/*.linked \
 %ghost %{_sharedstatedir}/selinux/%1/active/policy.linked \
 %ghost %{_sharedstatedir}/selinux/%1/active/seusers.linked \
 %ghost %{_sharedstatedir}/selinux/%1/active/users_extra.linked \
+%ghost %{_sharedstatedir}/selinux/%1/active/modules/400/extra_varrun \
 %verify(not md5 size mtime) %{_sharedstatedir}/selinux/%1/active/file_contexts.homedirs \
 %nil
 
@@ -248,6 +258,7 @@ fi;
 
 %define postInstall() \
 . %{_sysconfdir}/selinux/config; \
+%{_libexecdir}/selinux/varrun-convert.sh %2; \
 if [ -e %{_sysconfdir}/selinux/%2/.rebuild ]; then \
   rm %{_sysconfdir}/selinux/%2/.rebuild; \
   /usr/sbin/semodule -B -n -s %2; \
@@ -292,9 +303,8 @@ for i in $contrib_modules $base_modules; do \
 done;
 
 %description
-SELinux Reference Policy. A complete SELinux policy that can be used
-as the system policy for a variety of systems and used as the basis for
-creating other policies.
+A complete SELinux policy that can be used as the system policy for a variety
+of systems and used as the basis for creating other policies.
 
 %files
 %defattr(-,root,root,-)
@@ -305,6 +315,7 @@ creating other policies.
 %ghost %config(noreplace) %{_sysconfdir}/selinux/config
 %{_tmpfilesdir}/selinux-policy.conf
 %{_rpmconfigdir}/macros.d/macros.selinux-policy
+%{_libexecdir}/selinux/varrun-convert.sh
 
 %package sandbox
 Summary:        SELinux policy sandbox
@@ -371,6 +382,9 @@ mkdir selinux_config
 for i in %{SOURCE10} %{SOURCE11} %{SOURCE12} %{SOURCE13} %{SOURCE14} %{SOURCE15} %{SOURCE20} %{SOURCE21} %{SOURCE22} %{SOURCE30} %{SOURCE31} %{SOURCE32} %{SOURCE40} %{SOURCE41} %{SOURCE42} %{SOURCE50} %{SOURCE51} %{SOURCE52} %{SOURCE91} %{SOURCE92} %{SOURCE94};do
  cp $i selinux_config
 done
+
+mkdir -p %{buildroot}%{_libexecdir}/selinux
+install -m 755  %{SOURCE37} %{buildroot}%{_libexecdir}/selinux
 
 make clean
 %if %{BUILD_TARGETED}
@@ -527,12 +541,12 @@ Requires(pre):  selinux-policy = %{version}-%{release}
 Requires:       selinux-policy = %{version}-%{release}
 
 %description targeted
-SELinux Reference policy targeted base module.
+SELinux policy targeted base module.
 
 %pre targeted
 %preInstall targeted
 
-%post targeted
+%posttrans targeted
 %postInstall $1 targeted
 exit 0
 
@@ -562,7 +576,7 @@ Requires(pre):  selinux-policy = %{version}-%{release}
 Requires:       selinux-policy = %{version}-%{release}
 
 %description minimum
-SELinux Reference policy minimum base module.
+SELinux policy minimum base module.
 
 %pre minimum
 %preInstall minimum
@@ -623,12 +637,12 @@ Requires(pre):  selinux-policy = %{version}-%{release}
 Requires:       selinux-policy = %{version}-%{release}
 
 %description mls
-SELinux Reference policy mls base module.
+SELinux policy mls base module.
 
 %pre mls
 %preInstall mls
 
-%post mls
+%posttrans mls
 %postInstall $1 mls
 
 %postun mls
