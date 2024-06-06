@@ -231,4 +231,12 @@
     <comment>Add wxWidgets-3_2-Fix-test-suite-on-Linux-s390x-architectures.patch to fix test failure suites on Linux/s390x and maybe other architectures. (forwarded request 1141466 from qzhao)</comment>
     <requestid>1141469</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>5fc8596660da556c6192e90460247a66</srcmd5>
+    <version>3.2.5</version>
+    <time>1717669871</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.2.5</comment>
+    <requestid>1178779</requestid>
+  </revision>
 </revisionlist>

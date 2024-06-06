@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package wxWidgets-3_2
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -65,10 +65,10 @@ wxString and instead rely on the wxChar pointer API.
 # At most one Name: line to not confuse quilt(1)
 %define base_name wxWidgets-3_2
 %define wx_minor 3.2
-%define psonum 10_0_0
-%define sonum 10.0.0
+%define psonum 11_0_0
+%define sonum 11.0.0
 Name:           %this_spec
-Version:        3.2.4
+Version:        3.2.5
 Release:        0
 Summary:        C++ Library for Cross-Platform Development
 License:        LGPL-2.1-or-later WITH WxWindows-exception-3.1
@@ -82,7 +82,6 @@ Source5:        wxWidgets-3_2-rpmlintrc
 Source6:        wxpython-mkdiff.sh
 Patch0:         soversion.diff
 Patch1:         autoconf-2_72.diff
-Patch2:         wxWidgets-3_2-Fix-test-suite-on-Linux-s390x-architectures.patch
 %if "%{flavor}" == "doc"
 BuildRequires:  doxygen
 BuildRequires:  fdupes
