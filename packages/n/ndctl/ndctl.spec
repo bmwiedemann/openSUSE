@@ -1,7 +1,7 @@
 #
 # spec file for package ndctl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2015 Intel Corporation
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,7 @@
 %define lname libndctl6
 %define dname libndctl-devel
 Name:           ndctl
-Version:        78
+Version:        79
 Release:        0
 Summary:        Manage "libnvdimm" subsystem devices (Non-volatile Memory)
 License:        GPL-2.0-only

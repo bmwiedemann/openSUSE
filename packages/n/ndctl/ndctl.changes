@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 30 09:46:50 UTC 2024 - ming li <mli@suse.com>
+
+- Update to version 79
+  * New cxl-wait-sanitize and cxl-set-alert-config commands
+  * Support for QOS Class in cxl-create-region
+
+-------------------------------------------------------------------
 Tue Nov  7 09:50:43 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer
