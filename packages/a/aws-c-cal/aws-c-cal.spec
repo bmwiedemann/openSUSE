@@ -19,7 +19,7 @@
 %define library_version 1.0.0
 %define library_soversion 0unstable
 Name:           aws-c-cal
-Version:        0.6.14
+Version:        0.6.15
 Release:        0
 Summary:        AWS C99 wrapper for cryptography primitives
 License:        Apache-2.0
