@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed May 29 15:52:22 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 5.16.1. Changes since then:
+  * Don't treat `\label{}` and `\ref{}` with macro parameter as label commands
+  * Fix parsing `latexmkrc` for `latexmk` versions older than `v4.8.4`
+  * Remove unused `texlab.rootDirectory` setting from documentation
+  * Add `texlab.experimental.labelDefinitionCommands` setting to customize the list of `\label`-like commands
+  * Extend list of commands treated as command definitions and environment definitions
+  * Allow the server to trigger the forward search in an editor-agnostic way:
+    Running `texlab inverse-search --input <FILE> --line <LINE>` will open the specified document in the editor if the client supports it
+  * Fix detection of log dir when using `latexmkrc` (use `$aux_dir` instead of `$out_dir`)
+  * Fix extracting `$aux_dir` and `$out_dir` from `latexmkrc`
+  * Add support for extracting `$aux_dir` and `$out_dir` from `latexmk >= v4.85` 
+  * Improve log file change detection under Windows
+  * Cleanup diagnostics of deleted files
+  * Let `\declaretheorem` accept a list of environment names instead of just a single name
+  * Use configured directories if not set explicitly by `latexmkrc` file
+  * Replace tilde (`~`), environment variables, `${userHome}`, `${workspaceFolder}` in options
+  * Replace tidle (`~`) and environment variables in `\include`-like commands
+  * Add "Go To Definition" support for user-defined commands with `\def` and `\let`
+  * Add "Find all References" for commands
+  * Support more macros for defining commands
+  * Avoid panicking when malformed URIs are sent to the server
+  * Don't report errors for citations with macro arguments
+  * Fix parsing `\label` with options (for example, when using `cleverref`)
+  * Fix detecting project root if the home directory contains a `.latexmkrc` file
+  * Improve support for handling `Tectonic.toml` projects
+  * Cache results of project detection to improve performance
+  * Triggering completion inside `\label{...}` will suggest undefined labels
+  * Add snippets for `\( ... \)`, `\[ ... \]` and `\{ ... \}`
+  * Don't return document symbol with empty name if `\item[]` is encountered
+  * Fix extracting label numbers inside theorems defined by `ntheorem` package
+  * Fix clearing stale diagnostics reported by the server
+  * Speed up reading bibliographies with many string definitions
+  * Add experimental `texlab.experimental.labelReferenceCommands` setting to customize the list of `\ref`-like commands
+  * Don't report diagnostics for files that are part of the TeX distro
+  * When `workspace/didChangeConfiguration` contains the configuration of multiple LSP servers, `texlab` will try
+    to extract the `texlab` configuration instead of falling back to the default settings
+  * Keep filtering completion lists server-side if prefix matcher is set
+  * Allow brackets and parentheses in label names and similar constructs
+
+-------------------------------------------------------------------
 Thu Feb 15 15:47:41 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update specfile:
