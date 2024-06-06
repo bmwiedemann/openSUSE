@@ -27,10 +27,12 @@ Source0:        https://git.sr.ht/~emersion/kanshi/refs/download/v%{version}/%{n
 Source1:        https://git.sr.ht/~emersion/kanshi/refs/download/v%{version}/%{name}-%{version}.tar.gz.sig
 # https://emersion.fr/.well-known/openpgpkey/hu/dj3498u4hyyarh35rkjfnghbjxug6b19
 Source2:        %{name}.keyring
+Patch1:         wayland-include-dirs.patch
 BuildRequires:  cmake
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  scdoc
+BuildRequires:  pkgconfig(libvarlink)
 BuildRequires:  pkgconfig(scfg)
 BuildRequires:  pkgconfig(wayland-client)
 
@@ -44,7 +46,7 @@ and disabled on hotplug.
 %build
 # Disabled because libvarlink is not available in Factory
 %meson \
-  -Dipc=disabled
+  -Dipc=enabled
 %meson_build
 
 %install
@@ -55,6 +57,7 @@ and disabled on hotplug.
 
 %files
 %{_bindir}/kanshi
+%{_bindir}/kanshictl
 %{_mandir}/man?/%{name}*
 
 %changelog

@@ -39,4 +39,16 @@
     <comment></comment>
     <requestid>1169779</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>18b2bb51fbd84b3ce6ef75f5e866f971</srcmd5>
+    <version>1.6.0</version>
+    <time>1717670051</time>
+    <user>anag+factory</user>
+    <comment>- Add kanshictl. New command when IPC is enabled
+
+- Add ./wayland-include-dirs.patch
+
+- Enable IPC support with libvarlink</comment>
+    <requestid>1178896</requestid>
+  </revision>
 </revisionlist>

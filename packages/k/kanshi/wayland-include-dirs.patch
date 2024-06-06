@@ -1,0 +1,24 @@
+diff -ruN kanshi-1.6.0.orig/include/config.h kanshi-1.6.0/include/config.h
+--- kanshi-1.6.0.orig/include/config.h	2024-05-30 09:13:31.476788919 +0800
++++ kanshi-1.6.0/include/config.h	2024-05-30 09:14:01.283475131 +0800
+@@ -2,7 +2,7 @@
+ #define KANSHI_CONFIG_H
+ 
+ #include <stdbool.h>
+-#include <wayland-client.h>
++#include <wayland/wayland-client.h>
+ 
+ enum kanshi_output_field {
+ 	KANSHI_OUTPUT_ENABLED = 1 << 0,
+diff -ruN kanshi-1.6.0.orig/include/kanshi.h kanshi-1.6.0/include/kanshi.h
+--- kanshi-1.6.0.orig/include/kanshi.h	2024-05-30 09:13:31.476788919 +0800
++++ kanshi-1.6.0/include/kanshi.h	2024-05-30 09:13:50.926801677 +0800
+@@ -2,7 +2,7 @@
+ #define KANSHI_KANSHI_H
+ 
+ #include <stdbool.h>
+-#include <wayland-client.h>
++#include <wayland/wayland-client.h>
+ 
+ struct zwlr_output_manager_v1;
+ 
