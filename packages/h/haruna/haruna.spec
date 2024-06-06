@@ -17,13 +17,13 @@
 
 
 Name:           haruna
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Video player built with Qt/QML on top of libmpv
 License:        CC-BY-4.0 AND GPL-3.0-or-later AND WTFPL
 URL:            https://apps.kde.org/haruna
-Source0:        https://download.kde.org/stable/haruna/%{name}-%{version}.tar.xz
-Source1:        https://download.kde.org/stable/haruna/%{name}-%{version}.tar.xz.sig
+Source0:        https://download.kde.org/stable/haruna/%{version}/%{name}-%{version}.tar.xz
+Source1:        https://download.kde.org/stable/haruna/%{version}/%{name}-%{version}.tar.xz.sig
 Source2:        haruna.keyring
 BuildRequires:  cmake >= 3.15
 BuildRequires:  hicolor-icon-theme
@@ -42,6 +42,7 @@ BuildRequires:  cmake(KF6Kirigami)
 BuildRequires:  cmake(KF6WindowSystem)
 BuildRequires:  cmake(MpvQt)
 BuildRequires:  cmake(Qt6Core) >= 6.6.0
+BuildRequires:  cmake(Qt6Core5Compat)
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6Qml)
