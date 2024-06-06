@@ -15,7 +15,7 @@
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="url">https://github.com/cockpit-project/cockpit.git/</param>
     <param name="scm">git</param>
-    <param name="revision">309</param>
+    <param name="revision">316</param>
     <param name="submodules">disable</param>
   </service>
   <service name="node_modules" mode="manual">

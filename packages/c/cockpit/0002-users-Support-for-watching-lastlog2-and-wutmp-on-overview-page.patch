@@ -1,0 +1,157 @@
+From 059a8d35a3d9e54d86ff8178967a8fc98f428f11 Mon Sep 17 00:00:00 2001
+From: Luna <luna.dragon@suse.com>
+Date: Tue, 21 May 2024 13:21:54 +0530
+Subject: [PATCH] users: Support for watching lastlog2 and wutmp on overview
+ page
+
+---
+ pkg/users/account-details.js | 26 ++++++++++----------------
+ pkg/users/users.js           | 27 +++++++++++++++++----------
+ pkg/users/utils.js           | 14 ++++++++++++++
+ 3 files changed, 41 insertions(+), 26 deletions(-)
+
+diff --git a/pkg/users/account-details.js b/pkg/users/account-details.js
+index 11c7870af..8159a1cf3 100644
+--- a/pkg/users/account-details.js
++++ b/pkg/users/account-details.js
+@@ -48,7 +48,8 @@ import { account_shell_dialog } from "./shell-dialog.js";
+ import { set_password_dialog, reset_password_dialog } from "./password-dialogs.js";
+ import { AccountLogs } from "./account-logs-panel.jsx";
+ import { AuthorizedKeys } from "./authorized-keys-panel.js";
+-import { get_locked } from "./utils.js";
++import { get_locked, getUtmpPath } from "./utils.js";
++import { useInit } from 'hooks.js';
+ 
+ const _ = cockpit.gettext;
+ 
+@@ -98,32 +99,25 @@ function get_expire(name) {
+ 
+ export function AccountDetails({ accounts, groups, current_user, user, shells }) {
+     const [expiration, setExpiration] = useState(null);
+-    const [lastlogpath, setLastlogPath] = useState(null);
++    const [utmppath, setUtmpPath] = useState(null);
+ 
+-    useEffect(() => {
+-        cockpit.spawn(["test", "-e", "/var/run/utmp"], { err: "ignore" }).then(() => {
+-            setLastlogPath("/var/run/utmp");
+-        }).catch(() => {
+-            cockpit.spawn(["test", "-e", "/var/lib/lastlog/lastlog2.db"], { err: "ignore" }).then(() => {
+-                setLastlogPath("/var/lib/lastlog/lastlog2.db");
+-            }).catch(() => {
+-                setLastlogPath(null);
+-            });
+-        });
+-    }, []);
++    // react wants sync functions that wrap async ones to prevent race conditions
++    useInit(async () => {
++        setUtmpPath(await getUtmpPath());
++    });
+ 
+     useEffect(() => {
+-        if (lastlogpath !== null) {
++        if (utmppath !== null) {
+             get_expire(user).then(setExpiration);
+ 
+             // Watch lastlog log to register when user logs in or out
+-            const handle = cockpit.file(lastlogpath, { superuser: "try", binary: true });
++            const handle = cockpit.file(utmppath, { superuser: "try", binary: true });
+             handle.watch(() => {
+                 get_expire(user).then(setExpiration);
+             }, { read: false });
+             return handle.close;
+         }
+-    }, [user, accounts, lastlogpath]);
++    }, [user, accounts, utmppath]);
+ 
+     const [edited_real_name, set_edited_real_name] = useState(null);
+     const [committing_real_name, set_committing_real_name] = useState(false);
+diff --git a/pkg/users/users.js b/pkg/users/users.js
+index 08029bdfa..006acf1c3 100755
+--- a/pkg/users/users.js
++++ b/pkg/users/users.js
+@@ -31,7 +31,7 @@ import { usePageLocation, useLoggedInUser, useFile, useInit } from "hooks.js";
+ import { etc_passwd_syntax, etc_group_syntax, etc_shells_syntax } from "pam_user_parser.js";
+ import { EmptyStatePanel } from "cockpit-components-empty-state.jsx";
+ 
+-import { get_locked } from "./utils.js";
++import { get_locked, getUtmpPath } from "./utils.js";
+ import { AccountsMain } from "./accounts-list.js";
+ import { AccountDetails } from "./account-details.js";
+ 
+@@ -69,15 +69,19 @@ function AccountsPage() {
+     const [max_uid, setMaxUid] = useState(60000);
+     const [details, setDetails] = useState(null);
+ 
+-    useInit(() => {
++    useInit(async () => {
++        const utmppath = await getUtmpPath();
+         const debouncedGetLogins = debounce(100, () => {
+             getLogins().then(setDetails);
+         });
+ 
+-        // Watch `/var/run/utmp` to register when user logs in or out
+-        const handleUtmp = cockpit.file("/var/run/utmp", { superuser: "try", binary: true });
+-        handleUtmp.watch(() => debouncedGetLogins(), { read: false });
++        let handleUtmp;
+ 
++        if (utmppath !== null) {
++            // Watch `/var/run/utmp` or `/var/lib/wtmpdb/wtmp.db` to register when user logs in or out
++            handleUtmp = cockpit.file(utmppath, { superuser: "try", binary: true });
++            handleUtmp.watch(() => debouncedGetLogins(), { read: false });
++        }
+         // Watch /etc/shadow to register lock/unlock/expire changes; but avoid reading it, it's sensitive data
+         const handleShadow = cockpit.file("/etc/shadow", { superuser: "try" });
+         handleShadow.watch(() => debouncedGetLogins(), { read: false });
+@@ -153,19 +157,22 @@ function AccountsPage() {
+     } else if (path.length === 1) {
+         return (
+             <AccountDetails accounts={accountsInfo} groups={groupsExtraInfo}
+-                            current_user={current_user_info?.name} user={path[0]} shells={shells} />
++                current_user={current_user_info?.name} user={path[0]} shells={shells} />
+         );
+     } else return null;
+ }
+ 
+ async function getLogins() {
+-    let lastlog = "";
++    let LastLogPath;
+     try {
+-        lastlog = await cockpit.spawn(["lastlog"], { environ: ["LC_ALL=C"] });
+-    } catch (err) {
+-        console.warn("Unexpected error when getting last login information", err);
++        await cockpit.spawn(["test", "-e", "/var/lib/lastlog/lastlog2.db"], { err: "ignore" });
++        LastLogPath = "lastlog2";
++    } catch (err1) {
++        LastLogPath = "lastlog";
+     }
+ 
++    const lastlog = await cockpit.spawn([LastLogPath], { environ: ["LC_ALL=C"] });
++
+     let currentLogins = [];
+     try {
+         const w = await cockpit.spawn(["w", "-sh"], { environ: ["LC_ALL=C"] });
+diff --git a/pkg/users/utils.js b/pkg/users/utils.js
+index a3837ef3c..b28c6188e 100644
+--- a/pkg/users/utils.js
++++ b/pkg/users/utils.js
+@@ -12,3 +12,17 @@ export const get_locked = name =>
+                     console.warn(`Failed to obtain account lock information for ${name}`, exc);
+                 }
+             });
++
++export async function getUtmpPath() {
++    try {
++        await cockpit.spawn(["test", "-e", "/var/run/utmp"], { err: "ignore" });
++        return "/var/run/utmp";
++    } catch (err1) {
++        try {
++            await cockpit.spawn(["test", "-e", "/var/lib/wtmpdb/wtmp.db"], { err: "ignore" });
++            return "/var/lib/wtmpdb/wtmp.db";
++        } catch (err2) {
++            return null;
++        }
++    }
++}
+-- 
+2.45.1
+

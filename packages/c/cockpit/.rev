@@ -452,4 +452,31 @@
   It's not there</comment>
     <requestid>1168359</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>52b025aa600f9c3db5aa635878c89546</srcmd5>
+    <version>316</version>
+    <time>1717669839</time>
+    <user>anag+factory</user>
+    <comment>- new version 316:
+  * cockpit.js API: Fix format_bytes() units
+- add 0001-users-Support-for-watching-lastlog2.patch (bsc#1220551)
+- add 0002-users-Support-for-watching-lastlog2-and-wutmp-on-overview-page.patch (bsc#1220551)
+
+- new version 315:
+  * Networking: Show additional ports for each firewall zone
+  * Networking: List Firewall active zones when unprivileged
+  * Inline documentation
+  * Support for transient virtual machines
+  * UEFI for virtual machines
+  * Unattended virtual machines installation
+  * Localize times
+  * Better support for various TLS certificate formats
+  * Overview: Add CPU utilization to usage card
+  * Dashboard: Support SSH identity unlocking when adding new machines
+  * SElinux: Introduce an Ansible automation script
+  * Machines: Support “bridge” type network interfaces
+  * Machines: Support “bus” type disk configuration
+- suse_docs.patch, storage-btrfs.patch: refreshed</comment>
+    <requestid>1178504</requestid>
+  </revision>
 </revisionlist>

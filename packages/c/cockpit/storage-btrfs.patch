@@ -1,14 +1,12 @@
-diff --git a/pkg/storaged/format-dialog.jsx b/pkg/storaged/format-dialog.jsx
-index 05b1096..22db61b 100644
---- a/pkg/storaged/block/format-dialog.jsx
-+++ b/pkg/storaged/block/format-dialog.jsx
-@@ -162,7 +162,8 @@ export function format_dialog(client, path, start, size, enable_dos_extended) {
+Index: cockpit/pkg/storaged/block/format-dialog.jsx
+===================================================================
+--- cockpit.orig/pkg/storaged/block/format-dialog.jsx
++++ cockpit/pkg/storaged/block/format-dialog.jsx
+@@ -143,6 +143,7 @@ function format_dialog_internal(client,
      }
  
      const filesystem_options = [];
--    add_fsys("xfs", { value: "xfs", title: "XFS " + _("(recommended)") });
 +    add_fsys("btrfs", { value: "btrfs", title: "BTRFS " + _("(recommended)") });
-+    add_fsys("xfs", { value: "xfs", title: "XFS" });
+     add_fsys("xfs", { value: "xfs", title: "XFS" });
      add_fsys("ext4", { value: "ext4", title: "EXT4" });
-     add_fsys("vfat", { value: "vfat", title: "VFAT" });
-     add_fsys("ntfs", { value: "ntfs", title: "NTFS" });
+     if (client.features.btrfs)

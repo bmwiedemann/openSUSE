@@ -1,0 +1,56 @@
+From 93d0a6d4dbe97937e69b126870b4bd4675c326d5 Mon Sep 17 00:00:00 2001
+From: Luna <luna.dragon@suse.com>
+Date: Fri, 3 May 2024 11:56:22 +0530
+Subject: [PATCH] users: Support for watching lastlog2
+
+---
+ pkg/users/account-details.js | 30 +++++++++++++++++++++++-------
+ 1 file changed, 23 insertions(+), 7 deletions(-)
+
+diff --git a/pkg/users/account-details.js b/pkg/users/account-details.js
+index 52255b474..11c7870af 100644
+--- a/pkg/users/account-details.js
++++ b/pkg/users/account-details.js
+@@ -98,16 +98,32 @@ function get_expire(name) {
+ 
+ export function AccountDetails({ accounts, groups, current_user, user, shells }) {
+     const [expiration, setExpiration] = useState(null);
++    const [lastlogpath, setLastlogPath] = useState(null);
++
+     useEffect(() => {
+-        get_expire(user).then(setExpiration);
++        cockpit.spawn(["test", "-e", "/var/run/utmp"], { err: "ignore" }).then(() => {
++            setLastlogPath("/var/run/utmp");
++        }).catch(() => {
++            cockpit.spawn(["test", "-e", "/var/lib/lastlog/lastlog2.db"], { err: "ignore" }).then(() => {
++                setLastlogPath("/var/lib/lastlog/lastlog2.db");
++            }).catch(() => {
++                setLastlogPath(null);
++            });
++        });
++    }, []);
+ 
+-        // Watch `/var/run/utmp` to register when user logs in or out
+-        const handle = cockpit.file("/var/run/utmp", { superuser: "try", binary: true });
+-        handle.watch(() => {
++    useEffect(() => {
++        if (lastlogpath !== null) {
+             get_expire(user).then(setExpiration);
+-        }, { read: false });
+-        return handle.close;
+-    }, [user, accounts]);
++
++            // Watch lastlog log to register when user logs in or out
++            const handle = cockpit.file(lastlogpath, { superuser: "try", binary: true });
++            handle.watch(() => {
++                get_expire(user).then(setExpiration);
++            }, { read: false });
++            return handle.close;
++        }
++    }, [user, accounts, lastlogpath]);
+ 
+     const [edited_real_name, set_edited_real_name] = useState(null);
+     const [committing_real_name, set_committing_real_name] = useState(false);
+-- 
+2.45.1
+

@@ -24,42 +24,36 @@ Index: cockpit/pkg/kdump/manifest.json
 +            "docs-rh": [
                  {
                      "label": "Configuring kdump",
-                     "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_systems_using_the_rhel_8_web_console/configuring-kdump-in-the-web-console_system-management-using-the-rhel-8-web-console"
+                     "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/configuring-kdump-in-the-web-console_system-management-using-the-rhel-9-web-console"
 Index: cockpit/pkg/networkmanager/manifest.json
 ===================================================================
 --- cockpit.orig/pkg/networkmanager/manifest.json
 +++ cockpit/pkg/networkmanager/manifest.json
-@@ -10,23 +10,25 @@
+@@ -10,23 +10,19 @@
              "docs": [
                  {
                      "label": "Managing networking bonds",
--                    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_systems_using_the_rhel_8_web_console/configuring-network-bonds-using-the-web-console_system-management-using-the-rhel-8-web-console"
+-                    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/configuring-network-bonds-using-the-web-console_system-management-using-the-rhel-9-web-console"
 -                },
 -                {
 -                    "label": "Managing networking teams",
--                    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_systems_using_the_rhel_8_web_console/configuring-network-teams-using-the-web-console_system-management-using-the-rhel-8-web-console"
+-                    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/configuring-network-teams-using-the-web-console_system-management-using-the-rhel-9-web-console"
 +                    "url": "https://documentation.suse.com/smart/systems-management/html/cockpit-slemicro/index.html#cockpit-managing-bonds"
                  },
                  {
                      "label": "Managing networking bridges",
--                    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_systems_using_the_rhel_8_web_console/configuring-network-bridges-in-the-web-console_system-management-using-the-rhel-8-web-console"
+-                    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/configuring-network-bridges-in-the-web-console_system-management-using-the-rhel-9-web-console"
 +                    "url": "https://documentation.suse.com/smart/systems-management/html/cockpit-slemicro/index.html#task-managing-bridges"
                  },
                  {
                      "label": "Managing VLANs",
--                    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_systems_using_the_rhel_8_web_console/configuring-vlans-in-the-web-console_system-management-using-the-rhel-8-web-console"
+-                    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/configuring-vlans-in-the-web-console_system-management-using-the-rhel-9-web-console"
 +                    "url": "https://documentation.suse.com/smart/systems-management/html/cockpit-slemicro/index.html#task-managing-vlans"
                  },
                  {
                      "label": "Managing firewall",
--                    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_systems_using_the_rhel_8_web_console/managing_firewall_using_the_web_console"
+-                    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/managing_firewall_using_the_web_console"
 +                    "url": "https://documentation.suse.com/smart/systems-management/html/cockpit-slemicro/index.html#task-managing-firewall-cockpit"
-+                }
-+            ],
-+            "docs-rh": [
-+                {
-+                    "label": "Managing networking teams",
-+                    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_systems_using_the_rhel_8_web_console/configuring-network-teams-using-the-web-console_system-management-using-the-rhel-8-web-console"
                  }
              ],
              "keywords": [
@@ -75,39 +69,37 @@ Index: cockpit/pkg/packagekit/manifest.json
 +            "docs-rh": [
                  {
                      "label": "Managing software updates",
-                     "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_systems_using_the_rhel_8_web_console/managing-software-updates-in-the-web-console_system-management-using-the-rhel-8-web-console"
+                     "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/managing-software-updates-in-the-web-console_system-management-using-the-rhel-9-web-console"
 Index: cockpit/pkg/storaged/manifest.json
 ===================================================================
 --- cockpit.orig/pkg/storaged/manifest.json
 +++ cockpit/pkg/storaged/manifest.json
-@@ -14,20 +14,22 @@
+@@ -14,20 +14,21 @@
              "docs": [
                  {
                      "label": "Managing partitions",
--                    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_systems_using_the_rhel_8_web_console/managing-partitions-using-the-web-console_system-management-using-the-rhel-8-web-console"
+-                    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/managing-partitions-using-the-web-console_system-management-using-the-rhel-9-web-console"
 +                    "url": "https://documentation.suse.com/smart/systems-management/html/cockpit-slemicro/index.html#glue-cockpit-managing-filesystems"
                  },
                  {
                      "label": "Managing NFS mounts",
--                    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_systems_using_the_rhel_8_web_console/managing-nfs-mounts-in-the-web-console_system-management-using-the-rhel-8-web-console"
+-                    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/managing-nfs-mounts-in-the-web-console_system-management-using-the-rhel-9-web-console"
 +                    "url": "https://documentation.suse.com/smart/systems-management/html/cockpit-slemicro/index.html#task-managing-NFS-mounts"
                  },
                  {
                      "label": "Managing RAIDs",
--                    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_systems_using_the_rhel_8_web_console/managing-redundant-arrays-of-independent-disks-in-the-web-console_system-management-using-the-rhel-8-web-console"
+-                    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/managing-redundant-arrays-of-independent-disks-in-the-web-console_system-management-using-the-rhel-9-web-console"
 +                    "url": "https://documentation.suse.com/smart/systems-management/html/cockpit-slemicro/index.html#id-1.7.6"
                  },
                  {
                      "label": "Managing LVMs",
--                    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_systems_using_the_rhel_8_web_console/using-the-web-console-for-configuring-lvm-logical-volumes_system-management-using-the-rhel-8-web-console"
--                },
+-		    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/using-the-web-console-for-configuring-lvm-logical-volumes_system-management-using-the-rhel-8-web-console"
 +                    "url": "https://documentation.suse.com/smart/systems-management/html/cockpit-slemicro/index.html#id-1.7.7"
-+                }
-+            ],
+                 },
 +            "docs-rh": [
                  {
                      "label": "Managing physical drives",
-                     "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_systems_using_the_rhel_8_web_console/using-the-web-console-for-changing-physical-drives-in-volume-groups_system-management-using-the-rhel-8-web-console"
+                     "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/using-the-web-console-for-changing-physical-drives-in-volume-groups_system-management-using-the-rhel-8-web-console"
 Index: cockpit/pkg/systemd/manifest.json
 ===================================================================
 --- cockpit.orig/pkg/systemd/manifest.json
@@ -116,7 +108,7 @@ Index: cockpit/pkg/systemd/manifest.json
              "docs": [
                  {
                      "label": "Configuring system settings",
--                    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_systems_using_the_rhel_8_web_console/getting-started-with-the-rhel-8-web-console_system-management-using-the-rhel-8-web-console"
+-                    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/getting-started-with-the-rhel-9-web-console_system-management-using-the-rhel-9-web-console"
 +                    "url": "https://documentation.suse.com/smart/systems-management/html/cockpit-slemicro/index.html#cockpit-configuring-servers"
                  }
              ],
@@ -125,7 +117,7 @@ Index: cockpit/pkg/systemd/manifest.json
              "docs": [
                  {
                      "label": "Managing services",
--                    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_systems_using_the_rhel_8_web_console/managing-services-in-the-web-console_system-management-using-the-rhel-8-web-console"
+-                    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/managing-services-in-the-web-console_system-management-using-the-rhel-9-web-console"
 +                    "url": "https://documentation.suse.com/smart/systems-management/html/cockpit-slemicro/index.html#glue-services-management"
                  }
              ],
@@ -134,7 +126,7 @@ Index: cockpit/pkg/systemd/manifest.json
              "docs": [
                  {
                      "label": "Reviewing logs",
--                    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_systems_using_the_rhel_8_web_console/reviewing-logs_system-management-using-the-rhel-8-web-console"
+-                    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/reviewing-logs_system-management-using-the-rhel-9-web-console"
 +                    "url": "https://documentation.suse.com/smart/systems-management/html/cockpit-slemicro/index.html#cockpit-filtering-logs"
                  }
              ],
@@ -147,7 +139,7 @@ Index: cockpit/pkg/users/manifest.json
              "docs": [
                  {
                      "label": "Managing user accounts",
--                    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_systems_using_the_rhel_8_web_console/managing-user-accounts-in-the-web-console_system-management-using-the-rhel-8-web-console"
+-		    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/managing-user-accounts-in-the-web-console_system-management-using-the-rhel-9-web-console"
 +                    "url": "https://documentation.suse.com/smart/systems-management/html/cockpit-slemicro/index.html#glue-managing-users"
                  }
              ],
@@ -164,7 +156,7 @@ Index: cockpit/pkg/shell/manifest.json
 +    "docs-rh": [
          {
              "label": "Web Console",
-             "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_systems_using_the_rhel_8_web_console/index"
+             "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/index"
 @@ -55,4 +55,4 @@
              ]
          }
