@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jun  6 10:00:17 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Simplify install to just cmake
+- Remove now-unneeded make protocols
+- Update to version 0.7.0:
+  Fixes
+  * Fixed IPC with wildcards
+  * Added unload unused
+  * Moved socket to match hyprland 0.40.0
+  MRs
+  * Disable splash message by default
+  * readme: fix typos
+  * ipc: Added listloaded and listactive requests
+  * Fix error checking while changing wallpaper.
+  * Updated link to reflect arch package movement from community to
+    extra
+  * Nix: add home-manager module
+  * Set standard exclusively for c++
+  * Add OpenSuse to the installer method list
+  * hyprpaper: add splash_color configuration option
+  * Added missing hyprlang-devel dependency for Fedora
+  * Remove comma from monitor description
+  * Fix typo in hm-module.nix
+  * Move socket to XDG_RUNTIME_DIR
+
+-------------------------------------------------------------------
 Mon Apr  1 07:54:24 UTC 2024 - ming li <mli@suse.com>
 
 - Update to version 0.6.0:

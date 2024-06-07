@@ -19,7 +19,7 @@
 %global __builder ninja
 Name:           hyprpaper
 Summary:        Wayland wallpaper utility with IPC controls
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 License:        BSD-3-Clause
 URL:            https://github.com/hyprwm/hyprpaper
@@ -51,14 +51,11 @@ image formats.
 %autosetup
 
 %build
-# Necessary to allow build
-make protocols
-
 %cmake
 %cmake_build
 
 %install
-install -Dm0755 -t "%{buildroot}%{_bindir}" "%{_builddir}/%{name}-%{version}/build/%{name}"
+%cmake_install
 
 %files
 %_bindir/hyprpaper
