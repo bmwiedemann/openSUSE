@@ -1,7 +1,7 @@
 #
 # spec file for package unknown-horizons
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2011 Nelson Marques <nmarques@opensuse.org>
 # Copyright (c) Unknown Horizons, http://www.unknown-horizons.org
 #
@@ -83,9 +83,6 @@ python3 horizons/engine/generate_atlases.py 2048
 python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 
 rm -v %{buildroot}%{_datadir}/locale/stats.json
-
-# -- remove *egg-info
-find %{buildroot}%{python_sitelib} -type f -name "*.egg-info" -print -delete
 
 # Install vector icon and remove old one
 install -D -m 0644 content/gui/images/logos/uh_no_text.svg \
