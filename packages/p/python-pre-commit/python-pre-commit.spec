@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pre-commit
-Version:        3.7.0
+Version:        3.7.1
 Release:        0
 Summary:        Multi-language pre-commit hooks
 License:        MIT

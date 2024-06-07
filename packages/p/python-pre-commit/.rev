@@ -232,4 +232,14 @@
   * Fix python healthy() check when python executable goes missing.</comment>
     <requestid>1161391</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>198bd86163229838fa247db84466194d</srcmd5>
+    <version>3.7.1</version>
+    <time>1717765449</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.7.1:
+  * Fix `language: rust` default language version check when
+    `rust-toolchain.toml` is present.</comment>
+    <requestid>1179070</requestid>
+  </revision>
 </revisionlist>

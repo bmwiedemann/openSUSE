@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  6 19:37:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.7.1:
+  * Fix `language: rust` default language version check when
+    `rust-toolchain.toml` is present.
+
+-------------------------------------------------------------------
 Mon Mar 25 13:01:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.7.0:
