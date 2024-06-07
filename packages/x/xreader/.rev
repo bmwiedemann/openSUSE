@@ -487,4 +487,15 @@
     * backends: backends: Don't ask for bug report</comment>
     <requestid>1142074</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>a8af9ffae8cf0eccd5ef4a0a8f74176a</srcmd5>
+    <version>4.2.0</version>
+    <time>1717765533</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.2.0:
+  * epub: Fix an incorrect sizeof call detected by
+    AddressSanitizer (#635)
+  * pdf backend: Ignore FullScreen PageMode catalog entry (#633)</comment>
+    <requestid>1179197</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun  7 11:56:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.0:
+  * epub: Fix an incorrect sizeof call detected by
+    AddressSanitizer (#635)
+  * pdf backend: Ignore FullScreen PageMode catalog entry (#633)
+
+-------------------------------------------------------------------
 Sun Jan 28 10:15:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.2 (CVE-2023-44451, bsc#1218298, CVE-2023-44452,

@@ -20,7 +20,7 @@
 %define typelib1 typelib-1_0-XreaderDocument-1_5
 %define typelib2 typelib-1_0-XreaderView-1_5
 Name:           xreader
-Version:        4.0.2
+Version:        4.2.0
 Release:        0
 Summary:        Document viewer for documents like PDF/PostScript
 License:        GPL-2.0-only AND LGPL-2.0-only
