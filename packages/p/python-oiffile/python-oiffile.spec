@@ -17,7 +17,7 @@
 
 
 Name:           python-oiffile
-Version:        2023.8.30
+Version:        2024.5.24
 Release:        0
 Summary:        Read Olympus(r) image files (OIF and OIB)
 License:        BSD-3-Clause

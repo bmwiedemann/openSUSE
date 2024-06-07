@@ -42,4 +42,14 @@
   * Drop support for Python 3.8 and numpy &lt; 1.22 (NEP29).</comment>
     <requestid>1137818</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>55cb0a2e2baa8766958d019338048092</srcmd5>
+    <version>2024.5.24</version>
+    <time>1717765416</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.5.24:
+  * Support NumPy 2.
+  * Fix docstring examples not correctly rendered on GitHub.</comment>
+    <requestid>1179038</requestid>
+  </revision>
 </revisionlist>
