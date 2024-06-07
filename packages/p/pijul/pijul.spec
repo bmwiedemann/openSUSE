@@ -1,7 +1,7 @@
 #
 # spec file for package pijul
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,68 +16,88 @@
 #
 
 
+%define dlver   1.0.0-beta.9
+
 Name:           pijul
-Version:        1.0.0~beta.6
+Version:        1.0.0~beta.9
 Release:        0
 Summary:        Distributed version control system based on a theory of patches
 License:        GPL-2.0-only
 Group:          Development/Tools/Version Control
 URL:            https://pijul.org/
-# Fetched from https://crates.io/api/v1/crates/pijul/1.0.0-beta.6/download#/pijul-1.0.0-beta.6.tar.gz
-# and renamed to get rid of the second dash.
-Source0:        pijul-1.0.0~beta.6.tar.gz
-Source1:        vendor.tar.xz
-BuildRequires:  cargo
-BuildRequires:  clang-devel
-BuildRequires:  libzstd-devel-static
-BuildRequires:  pkgconfig
-BuildRequires:  rust
-BuildRequires:  rust-std
-BuildRequires:  xxhash-devel
+Source0:        https://crates.io/api/v1/crates/pijul/%{dlver}/download#/%{name}-%{version}.tar.gz
+Source1:        vendor.tar.zst
+BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig(libsodium)
 BuildRequires:  pkgconfig(openssl)
-Conflicts:      pijul-bash-completion
-Conflicts:      pijul-fish-completion
-Conflicts:      pijul-zsh-completion
 
 %description
 Pijul is a distributed version control system. Its distinctive feature is to be
 based on a theory of patches, which makes it really distributed.
 
-%prep
-%setup -qa1
-mkdir cargo-home
-cat >cargo-home/config <<EOF
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and bash-completion)
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+BuildArch:      noarch
 
-[source.crates-io]
-registry = 'https://github.com/rust-lang/crates.io-index'
-replace-with = 'vendored-sources'
-[source.vendored-sources]
-directory = './vendor'
-EOF
+%description bash-completion
+Bash command-line completion support for %{name}.
+
+%package fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and fish)
+Requires:       %{name} = %{version}
+Requires:       fish
+BuildArch:      noarch
+
+%description fish-completion
+Fish command-line completion support for %{name}.
+
+%package zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and zsh)
+Requires:       %{name} = %{version}
+Requires:       zsh
+BuildArch:      noarch
+
+%description zsh-completion
+Zsh command-line completion support for %{name}.
+
+%prep
+%autosetup -a1 -n %{name}-%{dlver}
 
 %build
-# bypass error https://bugzilla.opensuse.org/show_bug.cgi?id=1175502
-# to avoid cargo reported error if config.sub has been changed
-# by build macro.
-%ifarch aarch64
-subname='libsodium/build-aux/config.sub'
-cfgsub="./vendor/libsodium-sys/$subname"
-chkjson='./vendor/libsodium-sys/.cargo-checksum.json'
-if [ -f "$cfgsub" ] && [ -f "$chkjson" ]; then
-  chksum=`sha256sum $cfgsub |sed -e 's/ .*//'`
-  grep -q $subname $chkjson && grep -q $chksum $chkjson || sed -i -e "s#\($subname.:.\)[0-9a-f]*#\1$chksum#" $chkjson
-fi
-%endif
+%{cargo_build}
 
-export CARGO_HOME=`pwd`/cargo-home/
-cargo build --release %{?_smp_mflags} --features git
+%check
+%{cargo_test}
 
 %install
-
-install -Dm0755 target/release/pijul %{buildroot}%{_bindir}/pijul
+%{cargo_install}
+for sh in bash zsh fish; do
+  ./target/release/%{name} completion $sh > %{name}.$sh
+done
+install -Dm644 %{name}.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+install -Dm644 %{name}.zsh %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
+install -Dm644 %{name}.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
 
 %files
 %{_bindir}/pijul
+
+%files bash-completion
+%{_datadir}/bash-completion/*
+
+%files fish-completion
+%dir %{_datadir}/fish
+%{_datadir}/fish/*
+
+%files zsh-completion
+%dir %{_datadir}/zsh
+%{_datadir}/zsh/*
 
 %changelog

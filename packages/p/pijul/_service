@@ -1,4 +1,8 @@
 <services>
-  <service name="cargo_audit" mode="disabled">
+  <service name="download_files" mode="manual"/>
+  <service name="cargo_vendor" mode="manual">
+    <param name="src">pijul*.gz</param>
+    <param name="compression">zst</param>
+    <param name="update">true</param>
   </service>
 </services>

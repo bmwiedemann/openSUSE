@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon May 27 16:50:28 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Enabled tests
+- Removed unneeded completion conflicts and repackaged completions
+- Cleaned BuildRequires of unneeded references
+- Adjust packaging to modern rust standards:
+  * manual vendoring -> cargo_vendor
+  * cargo.toml is now part of the vendoring
+  * setup -> autosetup
+  * cargo_build and cargo_install macros
+- Update to upstream version 1.0.0-beta.9:
+  * No upstream changelog provided. Version tags aren't made to
+    easily pull a rich changelog.
+    See:
+    - https://nest.pijul.com/pijul/pijul/changes
+    - https://nest.pijul.com/pijul/pijul:main/YUJV2OHL2JRZA.EUAAA
+
+-------------------------------------------------------------------
+Wed Dec 20 22:12:44 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to upstream version 1.0.0-beta.8.
+
+-------------------------------------------------------------------
 Mon Sep  4 07:30:24 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Update to upstream version 1.0.0-beta.6.
