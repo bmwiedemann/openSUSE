@@ -17,7 +17,7 @@
 
 
 Name:           nomino
-Version:        1.3.4
+Version:        1.3.5
 Release:        0
 Summary:        Batch rename utility for developers
 License:        Apache-2.0 OR MIT
