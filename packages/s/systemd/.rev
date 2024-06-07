@@ -7231,4 +7231,16 @@ handle manual pages that consist only of a .so directive such as
   extra meson configure options.</comment>
     <requestid>1177954</requestid>
   </revision>
+  <revision rev="425" vrev="2">
+    <srcmd5>94feb480a339391f7e97b4603daabd49</srcmd5>
+    <version>255.7</version>
+    <time>1717765354</time>
+    <user>anag+factory</user>
+    <comment>- Add 5003-Revert-run-pass-the-pty-slave-fd-to-transient-servic.patch
+  This revert the backport of the broken commit 28459ba1f4df until a fix is
+  released in the v255-stable tree (see pr#33216).
+
+- Rename PAM config file 'systemd-user' into 'pam.systemd-user'.</comment>
+    <requestid>1179036</requestid>
+  </revision>
 </revisionlist>

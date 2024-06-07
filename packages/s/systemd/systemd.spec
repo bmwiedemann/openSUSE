@@ -195,7 +195,6 @@ Obsoletes:      suspend <= 1.0
 Obsoletes:      systemd-analyze < 201
 Source0:        systemd-v%{version}%{archive_version}.tar.xz
 Source1:        systemd-rpmlintrc
-Source2:        systemd-user
 Source3:        systemd-update-helper
 %if %{with sysvcompat}
 Source4:        systemd-sysv-install
@@ -203,6 +202,7 @@ Source4:        systemd-sysv-install
 Source5:        tmpfiles-suse.conf
 Source6:        baselibs.conf
 Source7:        triggers.systemd
+Source8:        pam.systemd-user
 Source14:       kbd-model-map.legacy
 
 Source100:      fixlet-container-post.sh
@@ -247,6 +247,7 @@ Patch:          0008-sysv-generator-translate-Required-Start-into-a-Wants.patch
 # will be removed as soon as a proper fix will be merged by upstream.
 Patch:          5001-Revert-udev-update-devlink-with-the-newer-device-nod.patch
 Patch:          5002-Revert-udev-revert-workarounds-for-issues-caused-by-.patch
+Patch:          5003-Revert-run-pass-the-pty-slave-fd-to-transient-servic.patch
 %endif
 
 %description
@@ -927,8 +928,8 @@ mkdir -p %{buildroot}%{_modulesloaddir}
 rm -rf %{buildroot}%{_sysconfdir}/systemd/system/*.target.{requires,wants}
 rm -f %{buildroot}%{_sysconfdir}/systemd/system/default.target
 
-# Replace upstream systemd-user with the openSUSE one.
-install -m0644 -D --target-directory=%{buildroot}%{_pam_vendordir} %{SOURCE2}
+# Replace upstream PAM configuration files with openSUSE ones.
+install -m0644 -D %{SOURCE8} %{buildroot}%{_pam_vendordir}/systemd-user
 
 # Don't enable wall ask password service, it spams every console (bnc#747783).
 rm %{buildroot}%{_unitdir}/multi-user.target.wants/systemd-ask-password-wall.path

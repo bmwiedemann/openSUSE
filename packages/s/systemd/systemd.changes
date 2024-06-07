@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun  6 13:18:29 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Add 5003-Revert-run-pass-the-pty-slave-fd-to-transient-servic.patch
+
+  This revert the backport of the broken commit 28459ba1f4df until a fix is
+  released in the v255-stable tree (see pr#33216).
+
+-------------------------------------------------------------------
+Fri May 31 12:49:46 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Rename PAM config file 'systemd-user' into 'pam.systemd-user'.
+
+-------------------------------------------------------------------
 Fri May 31 11:37:10 UTC 2024 - Franck Bui <fbui@suse.com>
 
 - Import commit 603cd1d4d81147d4f2eccd5e352064a4215119b4 (merge of v255.7)
