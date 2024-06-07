@@ -498,6 +498,7 @@ FileProvides: /usr/bin/xmllint libxml2-tools
 FileProvides: /usr/bin/xsltproc libxslt-tools
 FileProvides: /usr/bin/xz busybox-xz xz
 FileProvides: /usr/bin/zcat busybox-gzip gzip zstd-gzip
+FileProvides: /usr/bin/zstd zstd
 FileProvides: /usr/sbin/a2enflag apache2
 FileProvides: /usr/sbin/a2enmod apache2
 FileProvides: /usr/sbin/agetty util-linux
@@ -520,7 +521,6 @@ FileProvides: /usr/sbin/update-alternatives update-alternatives
 FileProvides: /usr/sbin/useradd shadow
 FileProvides: /usr/sbin/userdel shadow
 FileProvides: /usr/sbin/usermod shadow
-FileProvides: /usr/bin/zstd zstd
 
 # Files which are provided and required by the same package only
 # are not part of primary.xml.gz, thus missing in the section above.
