@@ -25,7 +25,7 @@ URL:            https://github.com/christgau/wsdd
 Source:         https://github.com/christgau/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.xz
 Source1:        %{name}-init.sh
 Source2:        %{name}.service.in
-%if 0%{suse_version} >= 1599
+%if 0%{suse_version} >= 1599 || 0%{?sle_version} >= 150600
 Source3:        %{name}.xml
 %endif
 Source4:        sysconfig.%{name}
