@@ -140,4 +140,18 @@
       * Remove deprecated Artist.get_cover_image,</comment>
     <requestid>1137449</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>13b3e8fb26a434002ea85d784bd5b995</srcmd5>
+    <version>5.3.0</version>
+    <time>1717765468</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.3.0:
+  * Add support for Python 3.13 (#448)
+  * Add type annotations to methods that take timestamp parameter
+  * Replace Flake8 with Ruff (#447)
+  * Fix example_test_pylast.yaml link in README.md
+  * Double read timeout to fix 'The read operation timed out'
+  * Fix incorrect docstrings (#439)</comment>
+    <requestid>1179082</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun  6 20:24:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.0:
+  * Add support for Python 3.13 (#448)
+  * Add type annotations to methods that take timestamp parameter
+  * Replace Flake8 with Ruff (#447)
+  * Fix example_test_pylast.yaml link in README.md
+  * Double read timeout to fix 'The read operation timed out'
+  * Fix incorrect docstrings (#439)
+
+-------------------------------------------------------------------
 Sun Jan  7 21:12:19 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.2.0:

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pylast
-Version:        5.2.0
+Version:        5.3.0
 Release:        0
 Summary:        A python interface to Last.fm
 License:        Apache-2.0
