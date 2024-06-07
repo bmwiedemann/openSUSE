@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  6 15:20:45 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 24.2.4.2 (24.4.4 final)
+  https://wiki.documentfoundation.org/Releases/24.2.4/RC1 and
+  https://wiki.documentfoundation.org/Releases/24.2.4/RC2
+
+-------------------------------------------------------------------
 Thu May 23 14:36:16 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - bsc#1224309: LibreOffice fails to build with ICU 75.
@@ -11,7 +18,7 @@ Thu May 23 14:36:16 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 -------------------------------------------------------------------
 Thu May  2 11:55:42 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
-- Update to 2.4.3.2 (24.2.3 final)
+- Update to 24.2.3.2 (24.2.3 final)
   https://wiki.documentfoundation.org/Releases/24.2.3/RC1 and
   https://wiki.documentfoundation.org/Releases/24.2.3/RC2
 
