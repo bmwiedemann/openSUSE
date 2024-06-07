@@ -1,7 +1,7 @@
 #
 # spec file for package mupen64plus
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,9 @@ Source1:        %{name}.rpmlintrc
 Patch0:         %{name}-fix-cflags.patch
 Patch1:         %{name}-use-system-font.patch
 Patch2:         %{name}-binutils-2_29.patch
-Patch3:         %{name}-ppc64le-aarch64.patch
-Patch4:         don-t-put-globals-in-include-files.patch
+Patch3:         %{name}-libboost-1.85.patch
+Patch4:         %{name}-ppc64le-aarch64.patch
+Patch5:         don-t-put-globals-in-include-files.patch
 BuildRequires:  binutils-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme

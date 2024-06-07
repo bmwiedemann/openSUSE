@@ -1,10 +1,15 @@
 -------------------------------------------------------------------
-Mon Jun 27 03:05:54 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+Thu Jun  6 16:57:26 UTC 2024 - Илья Индиго <ilya@ilya.top>
+
+- Added file mupen64plus-libboost-1.85.patch.
+
+-------------------------------------------------------------------
+Mon Jun 27 03:05:54 UTC 2022 - Илья Индиго <ilya@ilya.top>
 
 - Added file mupen64plus.rpmlinrc to filter build errors in Tumbleweed.
 
 -------------------------------------------------------------------
-Thu Dec  9 12:13:00 UTC 2021 - Илья Индиго <ilya@ilya.cf>
+Thu Dec  9 12:13:00 UTC 2021 - Илья Индиго <ilya@ilya.top>
 
 - Refreshed spec-file via spec-cleaner and manual optimizations.
   * Removed file mupen64plus-rpmlintrc (had no useful effect).

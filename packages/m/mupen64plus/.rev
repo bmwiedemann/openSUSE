@@ -20,4 +20,12 @@
     <comment>- Added file mupen64plus.rpmlinrc to filter build errors in Tumbleweed.</comment>
     <requestid>985189</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b2c08909a8d4833184e6d9355f836a99</srcmd5>
+    <version>2.5.9</version>
+    <time>1717765422</time>
+    <user>anag+factory</user>
+    <comment>- Added file mupen64plus-libboost-1.85.patch.</comment>
+    <requestid>1179052</requestid>
+  </revision>
 </revisionlist>

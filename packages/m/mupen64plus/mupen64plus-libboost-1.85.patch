@@ -1,0 +1,240 @@
+diff -Pdpru mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-video-glide64mk2/src/GlideHQ/TxCache.cpp mupen64plus-bundle-src-2.5.9/source/mupen64plus-video-glide64mk2/src/GlideHQ/TxCache.cpp
+--- mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-video-glide64mk2/src/GlideHQ/TxCache.cpp	2019-02-10 21:25:35.000000000 +0300
++++ mupen64plus-bundle-src-2.5.9/source/mupen64plus-video-glide64mk2/src/GlideHQ/TxCache.cpp	2024-06-06 19:45:49.991946187 +0300
+@@ -237,7 +237,7 @@ TxCache::save(const wchar_t *path, const
+     /* dump cache to disk */
+     char cbuf[MAX_PATH];
+ 
+-    boost::filesystem::wpath cachepath(path);
++    boost::filesystem::path cachepath(path);
+     boost::filesystem::create_directory(cachepath);
+ 
+     /* Ugly hack to enable fopen/gzopen in Win9x */
+@@ -330,7 +330,7 @@ TxCache::load(const wchar_t *path, const
+   /* find it on disk */
+   char cbuf[MAX_PATH];
+ 
+-  boost::filesystem::wpath cachepath(path);
++  boost::filesystem::path cachepath(path);
+ 
+ #ifdef BOOST_WINDOWS_API
+   wchar_t curpath[MAX_PATH];
+diff -Pdpru mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-video-glide64mk2/src/GlideHQ/TxHiResCache.cpp mupen64plus-bundle-src-2.5.9/source/mupen64plus-video-glide64mk2/src/GlideHQ/TxHiResCache.cpp
+--- mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-video-glide64mk2/src/GlideHQ/TxHiResCache.cpp	2019-02-10 21:25:35.000000000 +0300
++++ mupen64plus-bundle-src-2.5.9/source/mupen64plus-video-glide64mk2/src/GlideHQ/TxHiResCache.cpp	2024-06-06 19:45:51.258610300 +0300
+@@ -65,8 +65,8 @@ TxHiResCache::~TxHiResCache()
+   if ((_options & DUMP_HIRESTEXCACHE) && !_haveCache && !_abortLoad) {
+     /* dump cache to disk */
+     std::wstring filename = _ident + L"_HIRESTEXTURES.dat";
+-    boost::filesystem::wpath cachepath(_cachepath);
+-    cachepath /= boost::filesystem::wpath(L"glidehq");
++    boost::filesystem::path cachepath(_cachepath);
++    cachepath /= boost::filesystem::path(L"glidehq");
+     int config = _options & (HIRESTEXTURES_MASK|COMPRESS_HIRESTEX|COMPRESSION_MASK|TILE_HIRESTEX|FORCE16BPP_HIRESTEX|GZ_HIRESTEXCACHE|LET_TEXARTISTS_FLY);
+ 
+     TxCache::save(cachepath.wstring().c_str(), filename.c_str(), config);
+@@ -107,8 +107,8 @@ TxHiResCache::TxHiResCache(int maxwidth,
+   if (_options & DUMP_HIRESTEXCACHE) {
+     /* find it on disk */
+     std::wstring filename = _ident + L"_HIRESTEXTURES.dat";
+-    boost::filesystem::wpath cachepath(_cachepath);
+-    cachepath /= boost::filesystem::wpath(L"glidehq");
++    boost::filesystem::path cachepath(_cachepath);
++    cachepath /= boost::filesystem::path(L"glidehq");
+     int config = _options & (HIRESTEXTURES_MASK|COMPRESS_HIRESTEX|COMPRESSION_MASK|TILE_HIRESTEX|FORCE16BPP_HIRESTEX|GZ_HIRESTEXCACHE|LET_TEXARTISTS_FLY);
+ 
+     _haveCache = TxCache::load(cachepath.wstring().c_str(), filename.c_str(), config);
+@@ -132,7 +132,7 @@ TxHiResCache::load(boolean replace) /* 0
+ 
+     if (!replace) TxCache::clear();
+ 
+-    boost::filesystem::wpath dir_path(_datapath);
++    boost::filesystem::path dir_path(_datapath);
+ 
+     switch (_options & HIRESTEXTURES_MASK) {
+     case GHQ_HIRESTEXTURES:
+@@ -149,8 +149,8 @@ TxHiResCache::load(boolean replace) /* 0
+       INFO(80, L"  usage of only 2) and 3) highly recommended!\n");
+       INFO(80, L"  folder names must be in US-ASCII characters!\n");
+ 
+-      dir_path /= boost::filesystem::wpath(L"hires_texture");
+-      dir_path /= boost::filesystem::wpath(_ident);
++      dir_path /= boost::filesystem::path(L"hires_texture");
++      dir_path /= boost::filesystem::path(_ident);
+       loadHiResTextures(dir_path, replace);
+       break;
+     case JABO_HIRESTEXTURES:
+@@ -164,7 +164,7 @@ TxHiResCache::load(boolean replace) /* 0
+ }
+ 
+ boolean
+-TxHiResCache::loadHiResTextures(boost::filesystem::wpath dir_path, boolean replace)
++TxHiResCache::loadHiResTextures(boost::filesystem::path dir_path, boolean replace)
+ {
+   uint32_t last, now, diff;
+   DBG_INFO(80, L"-----\n");
+@@ -224,7 +224,7 @@ TxHiResCache::loadHiResTextures(boost::f
+     }
+ 
+     DBG_INFO(80, L"-----\n");
+-    DBG_INFO(80, L"file: %ls\n", it->path().leaf().c_str());
++    DBG_INFO(80, L"file: %ls\n", it->path().filename().c_str());
+ 
+     int width = 0, height = 0;
+     uint16 format = 0;
+@@ -257,8 +257,8 @@ TxHiResCache::loadHiResTextures(boost::f
+     /* read in Rice's file naming convention */
+ #define CRCFMTSIZ_LEN 13
+ #define PALCRC_LEN 9
+-    //wcstombs(fname, it->path().leaf().c_str(), MAX_PATH);
+-    strncpy(fname, it->path().leaf().string().c_str(), sizeof(fname));
++    //wcstombs(fname, it->path().filename().c_str(), MAX_PATH);
++    strncpy(fname, it->path().filename().string().c_str(), sizeof(fname));
+     fname[sizeof(fname) - 1] = '\0';
+     /* XXX case sensitivity fiasco!
+      * files must use _a, _rgb, _all, _allciByRGBA, _ciByRGBA, _ci
+@@ -276,7 +276,7 @@ TxHiResCache::loadHiResTextures(boost::f
+ #if !DEBUG
+       INFO(80, L"-----\n");
+       INFO(80, L"path: %ls\n", dir_path.string().c_str());
+-      INFO(80, L"file: %ls\n", it->path().leaf().c_str());
++      INFO(80, L"file: %ls\n", it->path().filename().c_str());
+ #endif
+       INFO(80, L"Error: not png or bmp or dds!\n");
+       continue;
+@@ -295,7 +295,7 @@ TxHiResCache::loadHiResTextures(boost::f
+ #if !DEBUG
+       INFO(80, L"-----\n");
+       INFO(80, L"path: %ls\n", dir_path.string().c_str());
+-      INFO(80, L"file: %ls\n", it->path().leaf().c_str());
++      INFO(80, L"file: %ls\n", it->path().filename().c_str());
+ #endif
+       INFO(80, L"Error: not Rice texture naming convention!\n");
+       continue;
+@@ -304,7 +304,7 @@ TxHiResCache::loadHiResTextures(boost::f
+ #if !DEBUG
+       INFO(80, L"-----\n");
+       INFO(80, L"path: %ls\n", dir_path.string().c_str());
+-      INFO(80, L"file: %ls\n", it->path().leaf().c_str());
++      INFO(80, L"file: %ls\n", it->path().filename().c_str());
+ #endif
+       INFO(80, L"Error: crc32 = 0!\n");
+       continue;
+@@ -319,7 +319,7 @@ TxHiResCache::loadHiResTextures(boost::f
+ #if !DEBUG
+         INFO(80, L"-----\n");
+         INFO(80, L"path: %ls\n", dir_path.string().c_str());
+-        INFO(80, L"file: %ls\n", it->path().leaf().c_str());
++        INFO(80, L"file: %ls\n", it->path().filename().c_str());
+ #endif
+         INFO(80, L"Error: already cached! duplicate texture!\n");
+         continue;
+@@ -355,7 +355,7 @@ TxHiResCache::loadHiResTextures(boost::f
+ #if !DEBUG
+           INFO(80, L"-----\n");
+           INFO(80, L"path: %ls\n", dir_path.string().c_str());
+-          INFO(80, L"file: %ls\n", it->path().leaf().c_str());
++          INFO(80, L"file: %ls\n", it->path().filename().c_str());
+ #endif
+           INFO(80, L"Error: missing _rgb.*! _a.* must be paired with _rgb.*!\n");
+           continue;
+@@ -396,7 +396,7 @@ TxHiResCache::loadHiResTextures(boost::f
+ #if !DEBUG
+           INFO(80, L"-----\n");
+           INFO(80, L"path: %ls\n", dir_path.string().c_str());
+-          INFO(80, L"file: %ls\n", it->path().leaf().c_str());
++          INFO(80, L"file: %ls\n", it->path().filename().c_str());
+ #endif
+           if (!tex) {
+             INFO(80, L"Error: missing _rgb.*!\n");
+@@ -448,7 +448,7 @@ TxHiResCache::loadHiResTextures(boost::f
+ #if !DEBUG
+           INFO(80, L"-----\n");
+           INFO(80, L"path: %ls\n", dir_path.string().c_str());
+-          INFO(80, L"file: %ls\n", it->path().leaf().c_str());
++          INFO(80, L"file: %ls\n", it->path().filename().c_str());
+ #endif
+           INFO(80, L"Warning: missing _a.*! only using _rgb.*. treat as opaque texture.\n");
+           int i;
+@@ -495,7 +495,7 @@ TxHiResCache::loadHiResTextures(boost::f
+ #if !DEBUG
+           INFO(80, L"-----\n");
+           INFO(80, L"path: %ls\n", dir_path.string().c_str());
+-          INFO(80, L"file: %ls\n", it->path().leaf().c_str());
++          INFO(80, L"file: %ls\n", it->path().filename().c_str());
+ #endif
+           INFO(80, L"Error: W:H aspect ratio range not 8:1 - 1:8!\n");
+           continue;
+@@ -507,7 +507,7 @@ TxHiResCache::loadHiResTextures(boost::f
+ #if !DEBUG
+           INFO(80, L"-----\n");
+           INFO(80, L"path: %ls\n", dir_path.string().c_str());
+-          INFO(80, L"file: %ls\n", it->path().leaf().c_str());
++          INFO(80, L"file: %ls\n", it->path().filename().c_str());
+ #endif
+           INFO(80, L"Error: not power of 2 size!\n");
+           continue;
+@@ -520,7 +520,7 @@ TxHiResCache::loadHiResTextures(boost::f
+ #if !DEBUG
+       INFO(80, L"-----\n");
+       INFO(80, L"path: %ls\n", dir_path.string().c_str());
+-      INFO(80, L"file: %ls\n", it->path().leaf().c_str());
++      INFO(80, L"file: %ls\n", it->path().filename().c_str());
+ #endif
+       INFO(80, L"Error: load failed!\n");
+       continue;
+@@ -539,7 +539,7 @@ TxHiResCache::loadHiResTextures(boost::f
+ #if !DEBUG
+       INFO(80, L"-----\n");
+       INFO(80, L"path: %ls\n", dir_path.string().c_str());
+-      INFO(80, L"file: %ls\n", it->path().leaf().c_str());
++      INFO(80, L"file: %ls\n", it->path().filename().c_str());
+ #endif
+       INFO(80, L"Error: not width * height > 4 or 8bit palette color or 32bpp or dxt1 or dxt3 or dxt5!\n");
+       continue;
+@@ -1017,7 +1017,7 @@ TxHiResCache::loadHiResTextures(boost::f
+ #if !DEBUG
+       INFO(80, L"-----\n");
+       INFO(80, L"path: %ls\n", dir_path.string().c_str());
+-      INFO(80, L"file: %ls\n", it->path().leaf().c_str());
++      INFO(80, L"file: %ls\n", it->path().filename().c_str());
+ #endif
+       if (tex) {
+         free(tex);
+diff -Pdpru mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-video-glide64mk2/src/GlideHQ/TxHiResCache.h mupen64plus-bundle-src-2.5.9/source/mupen64plus-video-glide64mk2/src/GlideHQ/TxHiResCache.h
+--- mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-video-glide64mk2/src/GlideHQ/TxHiResCache.h	2019-02-10 21:25:35.000000000 +0300
++++ mupen64plus-bundle-src-2.5.9/source/mupen64plus-video-glide64mk2/src/GlideHQ/TxHiResCache.h	2024-06-06 19:45:52.361941410 +0300
+@@ -47,7 +47,7 @@ private:
+   TxImage *_txImage;
+   TxQuantize *_txQuantize;
+   TxReSample *_txReSample;
+-  boolean loadHiResTextures(boost::filesystem::wpath dir_path, boolean replace);
++  boolean loadHiResTextures(boost::filesystem::path dir_path, boolean replace);
+ public:
+   ~TxHiResCache();
+   TxHiResCache(int maxwidth, int maxheight, int maxbpp, int options,
+diff -Pdpru mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-video-glide64mk2/src/GlideHQ/TxTexCache.cpp mupen64plus-bundle-src-2.5.9/source/mupen64plus-video-glide64mk2/src/GlideHQ/TxTexCache.cpp
+--- mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-video-glide64mk2/src/GlideHQ/TxTexCache.cpp	2019-02-10 21:25:35.000000000 +0300
++++ mupen64plus-bundle-src-2.5.9/source/mupen64plus-video-glide64mk2/src/GlideHQ/TxTexCache.cpp	2024-06-06 19:45:53.458605866 +0300
+@@ -37,8 +37,8 @@ TxTexCache::~TxTexCache()
+   if (_options & DUMP_TEXCACHE) {
+     /* dump cache to disk */
+     std::wstring filename = _ident + L"_MEMORYCACHE.dat";
+-    boost::filesystem::wpath cachepath(_cachepath);
+-    cachepath /= boost::filesystem::wpath(L"glidehq");
++    boost::filesystem::path cachepath(_cachepath);
++    cachepath /= boost::filesystem::path(L"glidehq");
+     int config = _options & (FILTER_MASK|ENHANCEMENT_MASK|COMPRESS_TEX|COMPRESSION_MASK|FORCE16BPP_TEX|GZ_TEXCACHE);
+ 
+     TxCache::save(cachepath.wstring().c_str(), filename.c_str(), config);
+@@ -58,8 +58,8 @@ TxTexCache::TxTexCache(int options, int
+   if (_options & DUMP_TEXCACHE) {
+     /* find it on disk */
+     std::wstring filename = _ident + L"_MEMORYCACHE.dat";
+-    boost::filesystem::wpath cachepath(_cachepath);
+-    cachepath /= boost::filesystem::wpath(L"glidehq");
++    boost::filesystem::path cachepath(_cachepath);
++    cachepath /= boost::filesystem::path(L"glidehq");
+     int config = _options & (FILTER_MASK|ENHANCEMENT_MASK|COMPRESS_TEX|COMPRESSION_MASK|FORCE16BPP_TEX|GZ_TEXCACHE);
+ 
+     TxCache::load(cachepath.wstring().c_str(), filename.c_str(), config);
