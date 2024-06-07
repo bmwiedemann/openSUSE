@@ -313,4 +313,13 @@
   * merge upstream 8.13.36 phonenumber updates</comment>
     <requestid>1172436</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>540cc9171ff92ee0c3c8a4659d9009e6</srcmd5>
+    <version>8.13.38</version>
+    <time>1717765464</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.13.38:
+  * merge upstream 8.13.38 phonenumber updates</comment>
+    <requestid>1179079</requestid>
+  </revision>
 </revisionlist>
