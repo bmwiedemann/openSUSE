@@ -3,7 +3,7 @@
   <service name="tar_scm" mode="manual">
     <param name="url">https://github.com/slackhq/nebula.git</param>
     <param name="scm">git</param>
-    <param name="revision">refs/tags/v1.9.2</param>
+    <param name="revision">refs/tags/v1.9.3</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="package-meta">yes</param>

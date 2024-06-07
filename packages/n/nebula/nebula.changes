@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  7 06:10:38 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to version 1.9.3:
+  * Initialize messageCounter to 2 instead of verifying later
+
+-------------------------------------------------------------------
 Mon Jun  3 23:08:15 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - update to version 1.9.2:

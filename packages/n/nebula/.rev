@@ -33,4 +33,13 @@
   * Ensure messageCounter is set before handshake is complete (forwarded request 1178400 from rrahl0)</comment>
     <requestid>1178401</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8f1dd7e4f7477cd15a0feca97db07029</srcmd5>
+    <version>1.9.3</version>
+    <time>1717765490</time>
+    <user>anag+factory</user>
+    <comment>- update to version 1.9.3:
+  * Initialize messageCounter to 2 instead of verifying later (forwarded request 1179135 from rrahl0)</comment>
+    <requestid>1179136</requestid>
+  </revision>
 </revisionlist>
