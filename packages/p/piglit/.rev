@@ -325,4 +325,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1160370</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>19ff63d16deb9ef73f971b08c22faf5e</srcmd5>
+    <version>1~20240530</version>
+    <time>1717765401</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1~20240530:
+  * glsl-bug-110796: detect missing ES 3.2 support using EGL_BAD_MATCH
+  * glsl-bug-110796: distinguish which context creation failed
+  * Sync .mailmap from Mesa
+  * glsl-bug-110796: check for GL ES 3.2 support
+  * egl-terminate-then-unbind-context: simplify
+  * egl_khr_create_context: improve skip reporting
+  * arb_blend_func_extended: simplify MAX_DUAL_SOURCE_DRAW_BUFFERS detection
+  * arb_blend_func_extended: gles: follow the specification requirements
+  * arb_texture_multisample: require geometry shaders
+  * egl: missing EGLconfig isn't stderr material
+  * ext_external_objects: avoid stderr when we skip the test
+  * util: remove handwritten defines and drop FIXME
+  * texsubimage: fix low bpp formats by expecting less than 8 bits of precision
+  * Use GBM_LDFLAGS to get all options
+  * fix vk_vert_buf_reuse cleanup
+  * arb_texture_view: test for NaN in more cases
+  * ext_direct_state_access: Fix deprecated-non-prototype warnings
+  * arb_fragment_layer_viewport: don't test out-of-range gl_Layer values
+  * glsl-1.30: Test uint to float conversion of sign extended value
+  * arb_draw_buffers_blend: Fix deprecated-non-prototype warnings
+  * arb_sample_shading: do not actually run mask_in_one if it's not supported
+  * clear-stencil: new test to check for problems clearing stencils
+  * read_depth_offset: new test to check depth offset calculation
+  * replayer: create bin/ everytime
+  * Reduce precision in depth clear precision check
+  * Add float from half function
+  * tests/gbm: Add gbm_device_get_fd() test
+  * wayland: Add Wayland dmabuf driver-name test
+  * conversion-explicit: use a different value for normalized +/- min</comment>
+    <requestid>1179022</requestid>
+  </revision>
 </revisionlist>

@@ -26,7 +26,7 @@
 %bcond_without opengles
 %endif
 Name:           piglit
-Version:        1~20240309
+Version:        1~20240530
 Release:        0
 Summary:        OpenGL driver testing framework
 License:        MIT
@@ -53,6 +53,7 @@ BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(waffle-1) >= 1.6.0
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xkbcommon)

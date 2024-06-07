@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Thu Jun  6 13:32:29 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1~20240530:
+  * glsl-bug-110796: detect missing ES 3.2 support using EGL_BAD_MATCH
+  * glsl-bug-110796: distinguish which context creation failed
+  * Sync .mailmap from Mesa
+  * glsl-bug-110796: check for GL ES 3.2 support
+  * egl-terminate-then-unbind-context: simplify
+  * egl_khr_create_context: improve skip reporting
+  * arb_blend_func_extended: simplify MAX_DUAL_SOURCE_DRAW_BUFFERS detection
+  * arb_blend_func_extended: gles: follow the specification requirements
+  * arb_texture_multisample: require geometry shaders
+  * egl: missing EGLconfig isn't stderr material
+  * ext_external_objects: avoid stderr when we skip the test
+  * util: remove handwritten defines and drop FIXME
+  * texsubimage: fix low bpp formats by expecting less than 8 bits of precision
+  * Use GBM_LDFLAGS to get all options
+  * fix vk_vert_buf_reuse cleanup
+  * arb_texture_view: test for NaN in more cases
+  * ext_direct_state_access: Fix deprecated-non-prototype warnings
+  * arb_fragment_layer_viewport: don't test out-of-range gl_Layer values
+  * glsl-1.30: Test uint to float conversion of sign extended value
+  * arb_draw_buffers_blend: Fix deprecated-non-prototype warnings
+  * arb_sample_shading: do not actually run mask_in_one if it's not supported
+  * clear-stencil: new test to check for problems clearing stencils
+  * read_depth_offset: new test to check depth offset calculation
+  * replayer: create bin/ everytime
+  * Reduce precision in depth clear precision check
+  * Add float from half function
+  * tests/gbm: Add gbm_device_get_fd() test
+  * wayland: Add Wayland dmabuf driver-name test
+  * conversion-explicit: use a different value for normalized +/- min
+  * cmake: if we specify PIGLIT_BUILD_GL_TESTS OPENGL_FOUND is always true
+  * README: recommend Ninja by default and switch to cmake --build
+  * cmake: build is compatible up to 3.28
+  * cmake: add workaround for CMP0148
+  * README: ccmake is not that common, regular cmake is enough to build
+  * README: update requirements
+  * cmake: WGL doesn't need Waffle, pass the definition without it
+  * cmake: remove this 12 years old workaround taking too many lines
+  * cmake: implement switch for the EGL tests and simplify test conditions
+  * cmake: make PIGLIT_BUILD_DMA_BUF_TESTS aligned with GBM dependency
+  * cmake: depend on WGL_TESTS being enabled to build WGL
+  * cmake: implement GBM and Wayland controls
+  * cmake: fix unusually formated statement
+  * cmake: implement X11 option (required for GLX)
+  * cmake: move GLX and WGL option to the beggining of the file
+  * cmake: move first batch of option() at the beggining of the file
+  * cmake: rename default values with prefix DEFAULT_
+  * cmake: move defaults into the per-platform section
+  * cmake: predefine defaults depending on the system
+  * cmake: drop unused CMP0042 policy
+  * cmake: respect indentation
+  * texturing: add a test for GPU/CPU sync when creating textures
+  * util: fix multisample_texture_fs_template
+  * tests: add a test for GL_APPLE_sync
+  * ci: codespell ignore list is lowercase
+  * more spelling fixes accross the whole codebase
+  * ci: bump distribution tag
+  * arb_multisample: Fix bitwise-instead-of-logical warning
+  * ext_texture_storage: Fix memory leak on error path
+  * arb_internalformat_query2: fix internalformat selection for max_layers subtest
+  * arb_clear_texture: only test float depth textures when supported
+  * properly check for libgen.h
+  * arb_copy_image-formats: avoid undefined behavior
+  * intel/ppgtt: Use getpagesize fallback with MinGW
+
+-------------------------------------------------------------------
 Thu Mar 14 14:01:00 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1~20240309:
