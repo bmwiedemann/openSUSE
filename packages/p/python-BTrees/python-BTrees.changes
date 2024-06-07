@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  6 07:53:19 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0:
+  * Drop support for Python 3.7.
+  * Build Windows wheels on GHA.
+
+-------------------------------------------------------------------
 Sat Apr 20 13:32:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.2:

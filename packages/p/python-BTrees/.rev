@@ -177,4 +177,14 @@
   * Add preliminary support for Python 3.13 as of 3.13a3.</comment>
     <requestid>1169358</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>cedcde01375cad15aead846b868241e8</srcmd5>
+    <version>6.0</version>
+    <time>1717765332</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.0:
+  * Drop support for Python 3.7.
+  * Build Windows wheels on GHA.</comment>
+    <requestid>1178917</requestid>
+  </revision>
 </revisionlist>
