@@ -1,7 +1,7 @@
 #
 # spec file for package python-cbor2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cbor2
-Version:        5.5.1
+Version:        5.6.4
 Release:        0
 Summary:        Pure Python CBOR (de)serializer with extensive tag support
 License:        MIT
@@ -33,6 +33,8 @@ BuildRequires:  %{python_module setuptools_scm >= 6.4}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -45,20 +47,29 @@ sed -i 's/--cov//' pyproject.toml
 
 %build
 export LANG=en_US.UTF8
+export CBOR2_BUILD_C_EXTENSION=1
 %pyproject_wheel
 
 %install
 export LANG=en_US.UTF8
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+%python_clone -a %{buildroot}%{_bindir}/cbor2
 
 %check
 export LANG=en_US.UTF8
 %pytest_arch
 
+%post
+%python_install_alternative cbor2
+
+%postun
+%python_uninstall_alternative cbor2
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
+%python_alternative %{_bindir}/cbor2
 %{python_sitearch}/*.so
 %{python_sitearch}/cbor2
 %{python_sitearch}/cbor2*-info
