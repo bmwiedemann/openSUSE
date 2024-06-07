@@ -130,4 +130,14 @@
 </comment>
     <requestid>1157870</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>062c4844f540a0482251a5023a3a7392</srcmd5>
+    <version>3.0.27</version>
+    <time>1717765450</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.27:
+  * Limit number of completions to 5k (for performance).
+  * Several typing fixes.</comment>
+    <requestid>1179071</requestid>
+  </revision>
 </revisionlist>

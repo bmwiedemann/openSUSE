@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define skip_python39 1
 Name:           python-ptpython
-Version:        3.0.26
+Version:        3.0.27
 Release:        0
 Summary:        Python REPL build on top of prompt_toolkit
 License:        ISC

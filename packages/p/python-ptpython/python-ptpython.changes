@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  6 19:39:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.27:
+  * Limit number of completions to 5k (for performance).
+  * Several typing fixes.
+
+-------------------------------------------------------------------
 Thu Mar 14 07:37:22 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Don't try to build on Python 3.9, we don't have IPython there anymore.
