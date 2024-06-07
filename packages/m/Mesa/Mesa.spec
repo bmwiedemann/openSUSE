@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package Mesa
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -315,7 +315,7 @@ Requires:       Mesa-libGLESv1_CM-devel = %{version}
 Requires:       Mesa-libGLESv2-devel = %{version}
 Requires:       Mesa-libglapi-devel = %{version}
 Requires:       libOSMesa-devel = %{version}
-Requires:       libgbm-devel
+Requires:       libgbm-devel = %{version}
 Provides:       Mesa-devel-static = %{version}
 Provides:       xorg-x11-Mesa-devel = %{version}
 Requires:       libglvnd-devel >= 1.2.0
@@ -677,7 +677,7 @@ This package contains the Mesa VA-API implementation provided through gallium.
 Summary:        Mesa vulkan driver for Intel GPU
 Group:          System/Libraries
 Supplements:    modalias(pci:v00008086d*sv*sd*bc03sc*i*)
-Requires:       Mesa-vulkan-device-select
+Requires:       Mesa-vulkan-device-select = %{version}
 # get rid of this package, which is no longer neeeded at all
 Provides:       Mesa-libVulkan-devel = 22.0.0
 Obsoletes:      Mesa-libVulkan-devel < 22.0.0
@@ -689,7 +689,7 @@ This package contains the Vulkan parts for Mesa.
 Summary:        Mesa vulkan driver for AMD GPU
 Group:          System/Libraries
 Supplements:    modalias(pci:v00001002d*sv*sd*bc03sc*i*)
-Requires:       Mesa-vulkan-device-select
+Requires:       Mesa-vulkan-device-select = %{version}
 
 %description -n libvulkan_radeon
 This package contains the Vulkan parts for Mesa.
@@ -697,7 +697,7 @@ This package contains the Vulkan parts for Mesa.
 %package -n libvulkan_lvp
 Summary:        Mesa vulkan driver for LVP
 Group:          System/Libraries
-Requires:       Mesa-vulkan-device-select
+Requires:       Mesa-vulkan-device-select = %{version}
 
 %description -n libvulkan_lvp
 This package contains the Vulkan parts for Mesa.

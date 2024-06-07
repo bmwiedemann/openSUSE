@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun  2 16:27:55 UTC 2024 - Yunhe Guo <i@guoyunhe.me>
+
+- Restrict all internal depencency version to match the exact Mesa build,
+  so that users won't install Mesa packages partly from other repos and
+  make the system broken.
+
+-------------------------------------------------------------------
 Thu May 23 11:05:09 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to bugfix release 24.0.8
