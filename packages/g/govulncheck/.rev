@@ -145,4 +145,29 @@
   * internal/vulncheck: use new improved DeleteSyntheticNodes (forwarded request 1176498 from jfkw)</comment>
     <requestid>1176500</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>db7b67036e00bfb667cdb34431b07aba</srcmd5>
+    <version>1.1.2</version>
+    <time>1717765459</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.1.2:
+  * internal/osv: add review status
+  * vulncheck: update documentation for vex
+  * cmd/govulncheck/integration/stackrox-scanner: update expectations
+  * cmd/govulncheck/integration/k8s: update expectations
+  * internal/govulncheck: add more comments for emitted OSVs
+  * go.mod: update golang.org/x dependencies
+  * internal/scan: increase telemetry counter for show flag
+  * internal/scan: add format and scan level telemetry
+  * internal/cmd/govulncheck: remove unnecessary binary dependency
+  * cmd/govulncheck/integration: update go in integration tests
+  * internal/openvex: add hash for doc ID
+  * internal/openvex: add statements to handler
+  * internal/openvex: add handler
+  * all: remove test that runs govulncheck on govulncheck
+  * internal/sarif: fix a typo
+  * internal/scan: limit number of binary traces shown
+  * cmd/govulncheck: record scan mode telemetry (forwarded request 1179095 from jfkw)</comment>
+    <requestid>1179096</requestid>
+  </revision>
 </revisionlist>

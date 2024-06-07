@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jun 06 20:41:57 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.1.2:
+  * internal/osv: add review status
+  * vulncheck: update documentation for vex
+  * cmd/govulncheck/integration/stackrox-scanner: update expectations
+  * cmd/govulncheck/integration/k8s: update expectations
+  * internal/govulncheck: add more comments for emitted OSVs
+  * go.mod: update golang.org/x dependencies
+  * internal/scan: increase telemetry counter for show flag
+  * internal/scan: add format and scan level telemetry
+  * internal/cmd/govulncheck: remove unnecessary binary dependency
+  * cmd/govulncheck/integration: update go in integration tests
+  * internal/openvex: add hash for doc ID
+  * internal/openvex: add statements to handler
+  * internal/openvex: add handler
+  * all: remove test that runs govulncheck on govulncheck
+  * internal/sarif: fix a typo
+  * internal/scan: limit number of binary traces shown
+  * cmd/govulncheck: record scan mode telemetry
+
+-------------------------------------------------------------------
 Thu May 23 14:12:18 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.1.1:
