@@ -296,4 +296,15 @@
   * Define function types for prototype declaration (#230)</comment>
     <requestid>1137907</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1ed12ead1ebda45a38548cae3099aaf6</srcmd5>
+    <version>2024.05.08</version>
+    <time>1717765536</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2024.05.08:
+  * update extension headers with latest extensions (#249)
+  * Fix CMake deprecation warning (#246)
+  * cl_mutable_dispatch_asserts_khr definitions (#243)</comment>
+    <requestid>1179193</requestid>
+  </revision>
 </revisionlist>

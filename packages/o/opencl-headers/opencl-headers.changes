@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun  7 11:48:57 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2024.05.08:
+  * update extension headers with latest extensions (#249)
+  * Fix CMake deprecation warning (#246)
+  * cl_mutable_dispatch_asserts_khr definitions (#243)
+
+-------------------------------------------------------------------
 Wed Jan 10 09:16:46 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2023.12.14:

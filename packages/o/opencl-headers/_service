@@ -7,7 +7,7 @@
     <param name="exclude">.*</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="filename">opencl-headers</param>
-    <param name="revision">refs/tags/v2023.12.14</param>
+    <param name="revision">refs/tags/v2024.05.08</param>
   </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
