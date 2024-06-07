@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun  6 14:46:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.18.4:
+  * Bump uuid from 1.7.0 to 1.8.0
+  * Bump serde from 1.0.197 to 1.0.203
+  * Bump the python-packages group with 6 updates
+  * Uprev `jiter` to v0.4.1
+- update to 2.18.3:
+  * Bump `serde_json` from 1.0.114 to 1.0.116
+  * Bump the python-packages group with 7 updates
+  * Bump `regex` from 1.10.3 to 1.10.4
+  * Bump `pyo3` from 0.21.1 to 0.21.2
+  * Bump `uraimo/run-on-arch-action` from 2.7.1 to 2.7.2
+
+-------------------------------------------------------------------
 Sat Apr 27 07:55:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.18.2:

@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pydantic-core%{psuffix}
-Version:        2.18.2
+Version:        2.18.4
 Release:        0
 Summary:        Core functionality for pydantic validation and serialization
 License:        MIT
