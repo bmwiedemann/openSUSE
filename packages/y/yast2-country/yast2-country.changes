@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 16 20:41:25 UTC 2024 - jjindrak@suse.com
+
+- Rename Europe/Kiev to Europe/Kyiv as per 2022b release of
+  tz code and data by ICANN (bsc#1224387)
+- 5.0.3
+
+-------------------------------------------------------------------
 Tue Oct 24 11:54:32 UTC 2023 - Martin Vidner <mvidner@suse.com>
 
 - BuildRequire kbd to fix the build (bsc#1211104)
