@@ -127,4 +127,13 @@
     <comment>- Update to release 2.1</comment>
     <requestid>1176871</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>fa39b40110fc8c63849cbda423c86c01</srcmd5>
+    <version>2.1.0</version>
+    <time>1717765343</time>
+    <user>anag+factory</user>
+    <comment>- Add patch to fix build on aarch64:
+  * 6096.patch (forwarded request 1178980 from Guillaume_G)</comment>
+    <requestid>1179000</requestid>
+  </revision>
 </revisionlist>

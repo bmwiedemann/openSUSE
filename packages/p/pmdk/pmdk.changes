@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  6 09:22:13 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix build on aarch64:
+  * 6096.patch
+
+-------------------------------------------------------------------
 Fri May 24 10:37:10 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.1

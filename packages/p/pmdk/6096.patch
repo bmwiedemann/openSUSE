@@ -1,0 +1,21 @@
+From 85d138490d1c314d337bb77659fb08bf62c4c099 Mon Sep 17 00:00:00 2001
+From: Guillaume Gardet <Guillaume.Gardet@arm.com>
+Date: Wed, 5 Jun 2024 10:45:16 +0200
+Subject: [PATCH] Add missing log_internal.h to fix build on aarch64
+
+---
+ src/libpmem2/aarch64/init.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/libpmem2/aarch64/init.c b/src/libpmem2/aarch64/init.c
+index d4dd8812b21..f0b504b4b89 100644
+--- a/src/libpmem2/aarch64/init.c
++++ b/src/libpmem2/aarch64/init.c
+@@ -7,6 +7,7 @@
+ 
+ #include "auto_flush.h"
+ #include "flush.h"
++#include "log_internal.h"
+ #include "out.h"
+ #include "pmem2_arch.h"
+ 

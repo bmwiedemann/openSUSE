@@ -31,6 +31,8 @@ Source:         https://github.com/pmem/pmdk/releases/download/%version/%name-%v
 Source2:        https://github.com/pmem/pmdk/releases/download/%version/%name-%version.tar.gz.asc
 Source10:       pregen-doc.tar.xz
 Source99:       gen-doc.sh
+# PATCH-FIX-UPSTREAM - https://github.com/pmem/pmdk/pull/6096
+Patch1:         6096.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  man
@@ -170,7 +172,7 @@ BuildArch:      noarch
 Documentation for the pmem library interface.
 
 %prep
-%autosetup -p0 -a10
+%autosetup -p1 -a10
 # we have pregenerated pages
 find doc -type f -name "*.[0-9].md" -delete
 
