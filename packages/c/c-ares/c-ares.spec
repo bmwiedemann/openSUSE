@@ -26,7 +26,7 @@
 %endif
 
 Name:           c-ares%pkg_suffix
-Version:        1.28.1
+Version:        1.29.0
 Release:        0
 Summary:        Library for asynchronous name resolves
 License:        MIT

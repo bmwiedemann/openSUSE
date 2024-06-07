@@ -367,4 +367,12 @@ Bugfixes:
   * NDots configuration should allow a value of zero. [PR #735]</comment>
     <requestid>1164057</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>fb829ad7bbbd3d8157624dd166f91820</srcmd5>
+    <version>1.29.0</version>
+    <time>1717765336</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1178954</requestid>
+  </revision>
 </revisionlist>
