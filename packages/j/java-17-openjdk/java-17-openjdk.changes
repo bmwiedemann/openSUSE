@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  6 17:02:14 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * reproducible-jlink.patch
+    + make the timestamp in jmods reproducible
+
+-------------------------------------------------------------------
 Thu Apr 18 14:19:16 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-17.0.11+9 (April 2024 CPU)

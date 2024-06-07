@@ -165,6 +165,7 @@ Patch13:        implicit-pointer-decl.patch
 Patch14:        reproducible-properties.patch
 Patch15:        system-pcsclite.patch
 Patch16:        fips.patch
+Patch17:        reproducible-jlink.patch
 #
 Patch20:        loadAssistiveTechnologies.patch
 #
@@ -409,6 +410,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %endif
 
 %patch -P 16 -p1
+%patch -P 17 -p1
 
 %patch -P 20 -p1
 
