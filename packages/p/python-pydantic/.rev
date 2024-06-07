@@ -396,4 +396,20 @@
   * Support changes in pytest 8.x.</comment>
     <requestid>1177661</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a730f09cfb0cf2adb3b19284a375608b</srcmd5>
+    <version>2.7.3</version>
+    <time>1717765351</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.7.3:
+  * Bump `pydantic-core` to `v2.18.4`
+  * Fix u style unicode strings in python @samuelcolvin in
+    pydantic/jiter#110
+  * Replace `__spec__.parent` with `__package__`
+  * Fix validation of `int`s with leading unary minus
+  * Fix `str` subclass validation for enums
+  * Support `BigInt`s in `Literal`s and `Enum`s
+  * Fix: uuid - allow `str` subclass as input</comment>
+    <requestid>1179027</requestid>
+  </revision>
 </revisionlist>
