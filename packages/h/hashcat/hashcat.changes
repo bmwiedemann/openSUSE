@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  6 18:12:31 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Amend system-libs.patch; system lzma-sdk (24.xx) is too new;
+  go back to using bundled lzma-sdk.
+
+-------------------------------------------------------------------
 Sun May  7 20:42:32 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - Update to 6.2.6:

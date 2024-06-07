@@ -1,7 +1,7 @@
 #
 # spec file for package hashcat
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,7 @@ BuildRequires:  xxhash-devel
 BuildRequires:  pkgconfig(clzma)
 BuildRequires:  pkgconfig(minizip)
 BuildRequires:  pkgconfig(zlib)
+Provides:       bundled(lzma-sdk) = 21.02
 ExclusiveArch:  %ix86 x86_64
 
 %description
@@ -79,7 +80,7 @@ find . -name .lock -type f -delete
 
 %build
 %global margs DOCUMENT_FOLDER="%_docdir/%name" our_CFLAGS="%optflags" LIBRARY_FOLDER="%_libdir"
-%make_build %margs
+%make_build %margs -j1
 
 %install
 %make_install %margs

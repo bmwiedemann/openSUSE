@@ -72,4 +72,12 @@
     <comment>- Update to 6.2.6:</comment>
     <requestid>1085356</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>553d8c245fe723080295b30fafe674ce</srcmd5>
+    <version>6.2.6</version>
+    <time>1717765441</time>
+    <user>anag+factory</user>
+    <comment>- Amend system-libs.patch; system lzma-sdk (24.xx) is too new; go back to using bundled lzma-sdk.</comment>
+    <requestid>1179063</requestid>
+  </revision>
 </revisionlist>
