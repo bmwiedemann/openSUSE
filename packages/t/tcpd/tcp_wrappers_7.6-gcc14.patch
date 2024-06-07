@@ -1,0 +1,110 @@
+--- a/hosts_access.c	2024-05-14 09:45:54.109391777 +0200
++++ b/hosts_access.c	2024-05-14 09:28:19.989639524 +0200
+@@ -38,6 +38,7 @@ static char sccsid[] = "@(#) hosts_acces
+ #include <errno.h>
+ #include <setjmp.h>
+ #include <string.h>
++#include <stdlib.h>
+ 
+ extern char *fgets();
+ extern int errno;
+@@ -88,6 +89,7 @@ static int client_match();
+ static int host_match();
+ static int string_match();
+ static int masked_match();
++static int match_pattern_ylo();
+ #ifdef INET6
+ static void ipv6_mask();
+ #endif
+--- a/inetcf.c	2024-05-14 09:45:54.076058239 +0200
++++ b/inetcf.c	2024-05-14 09:39:27.373700870 +0200
+@@ -14,12 +14,14 @@ static char sccsid[] = "@(#) inetcf.c 1.
+ #include <stdio.h>
+ #include <errno.h>
+ #include <string.h>
++#include <stdlib.h>
+ 
+ extern int errno;
+ extern void exit();
+ 
+ #include "tcpd.h"
+ #include "inetcf.h"
++#include "scaffold.h"
+ 
+  /*
+   * Network configuration files may live in unusual places. Here are some
+--- a/misc.c	2024-05-14 09:45:54.102725070 +0200
++++ b/misc.c	2024-05-14 09:35:49.282373657 +0200
+@@ -14,6 +14,8 @@ static char sccsic[] = "@(#) misc.c 1.2
+ #include <arpa/inet.h>
+ #include <stdio.h>
+ #include <string.h>
++#include <ctype.h>
++#include <stdlib.h>
+ 
+ #include "tcpd.h"
+ 
+--- a/safe_finger.c	2024-05-14 09:45:54.069391531 +0200
++++ b/safe_finger.c	2024-05-14 09:45:21.879195309 +0200
+@@ -52,7 +52,9 @@ int     sig;
+     exit(0);
+ }
+ 
+-main(argc, argv)
++static int pipe_stdin();
++
++int main(argc, argv)
+ int     argc;
+ char  **argv;
+ {
+--- a/socket.c	2024-05-14 09:45:54.112725131 +0200
++++ b/socket.c	2024-05-14 09:34:34.351917685 +0200
+@@ -200,7 +200,7 @@ struct host_info *host;
+         case AF_INET6:
+             ap = (char *)&((struct sockaddr_in6 *)sin)->sin6_addr;
+ 	    if (IN6_IS_ADDR_V4MAPPED(ap)) {
+-		ap = &((struct in6_addr *) ap)->s6_addr32[3];
++		ap = (char *)&((struct in6_addr *) ap)->s6_addr32[3];
+ 		af = AF_INET;
+ 	    }
+             break;
+--- a/tcpd.c	2024-05-14 09:45:53.962724209 +0200
++++ b/tcpd.c	2024-05-14 09:15:43.001693796 +0200
+@@ -42,7 +42,7 @@ static char sccsid[] = "@(#) tcpd.c 1.10
+ int     allow_severity = SEVERITY;	/* run-time adjustable */
+ int     deny_severity = LOG_WARNING;	/* ditto */
+ 
+-main(argc, argv)
++int main(argc, argv)
+ int     argc;
+ char  **argv;
+ {
+--- a/tcpd.h	2024-05-14 09:45:54.102725070 +0200
++++ b/tcpd.h	2024-05-14 09:43:00.575000561 +0200
+@@ -89,6 +89,7 @@ extern char *xgets(char *, int, FILE *);
+ extern char *split_at(char *, int);
+ extern unsigned long dot_quad_addr(char *);
+ extern char *skip_ipv6_addrs(char *);
++extern unsigned long prefix_to_netmask(char *);
+ #else
+ extern int hosts_access();		/* access control */
+ extern void shell_cmd();		/* execute shell command */
+@@ -100,6 +101,7 @@ extern char *xgets();			/* fgets() on st
+ extern char *split_at();		/* strchr() and split */
+ extern unsigned long dot_quad_addr();	/* restricted inet_addr() */
+ extern char *skip_ipv6_addrs();
++extern unsigned long prefix_to_netmask();
+ #endif
+ 
+ /* Global variables. */
+--- a/try-from.c	1994-12-28 17:42:55.000000000 +0100
++++ b/try-from.c	2024-05-14 09:39:43.527132682 +0200
+@@ -37,7 +37,7 @@ static char sccsid[] = "@(#) try-from.c
+ int     allow_severity = SEVERITY;	/* run-time adjustable */
+ int     deny_severity = LOG_WARNING;	/* ditto */
+ 
+-main(argc, argv)
++int main(argc, argv)
+ int     argc;
+ char  **argv;
+ {

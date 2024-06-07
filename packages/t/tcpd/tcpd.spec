@@ -1,7 +1,7 @@
 #
 # spec file for package tcpd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,6 +64,7 @@ Patch31:        tcp_wrappers_%{version}-ipv6-subnet.diff
 Patch32:        tcp_wrappers_%{version}-ipv6-host-match.patch
 Patch33:        tcp_wrappers_%{version}-ipv6-mapped-v4.patch
 Patch34:        tcp_wrappers_%{version}-ipv6.fix.fix3.diff
+Patch35:        tcp_wrappers_%{version}-gcc14.patch
 BuildRequires:  linux-kernel-headers
 Provides:       nkitb:%{_sbindir}/tcpd
 # bug437293
@@ -137,6 +138,7 @@ to compile and link programs against the TCP wrapper library.
 %patch -P 32 -p1
 %patch -P 33 -p1
 %patch -P 34
+%patch -P 35 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 14 08:10:05 UTC 2024 - pgajdos@suse.com
+
+- build with gcc14
+- added patches
+  + tcp_wrappers_7.6-gcc14.patch
+
+-------------------------------------------------------------------
 Thu Feb 29 12:32:07 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.
