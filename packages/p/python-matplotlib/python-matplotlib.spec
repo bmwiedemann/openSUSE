@@ -29,17 +29,19 @@ ExclusiveArch:  x86_64 aarch64
 %bcond_with ringdisabled
 %{?sle15_python_module_pythons}
 Name:           python-matplotlib%{psuffix}
-Version:        3.8.4
+Version:        3.9.0
 Release:        0
 Summary:        Plotting Library for Python
 License:        SUSE-Matplotlib
 URL:            https://matplotlib.org
+# SourceRepository: https://github.com/matplotlib/matplotlib
 Source:         https://files.pythonhosted.org/packages/source/m/matplotlib/matplotlib-%{version}.tar.gz
-Source1:        matplotlib-mplsetup.cfg
-# Bundled version of freetype and qhull for testing purposes only
-Source98:       http://www.qhull.org/download/qhull-2020-src-8.0.2.tgz
+# Use fixed versions of freetype and qhull for imagecomparison tests to succeed. See lib/matplotlib/__init__.py:_init_tests() and the meson .wrap files in subprojects/
+Source98:       https://github.com/qhull/qhull/archive/v8.0.2/qhull-8.0.2.tar.gz#/qhull-8.0.2.tgz
 Source99:       https://downloads.sourceforge.net/project/freetype/freetype2/2.6.1/freetype-2.6.1.tar.gz
 Source100:      python-matplotlib.rpmlintrc
+# PATCH-FEATURE-OPENSUSE matplotlib-meson-options-opensuse.patch code@bnavigator.de -- Custom build options for meson-python
+Patch0:         matplotlib-meson-options-opensuse.patch
 Recommends:     ghostscript
 Recommends:     libxml2-tools
 Recommends:     poppler-tools
@@ -49,12 +51,11 @@ Provides:       python-matplotlib-gtk = %{version}
 Obsoletes:      python-matplotlib-gtk < %{version}
 # SECTION build
 BuildRequires:  %{python_module devel >= 3.9}
+BuildRequires:  %{python_module meson-python >= 0.13.1}
 BuildRequires:  %{python_module numpy-devel >= 1.25 with %python-numpy-devel < 2.3}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pybind11-devel >= 2.6}
-BuildRequires:  %{python_module setuptools >= 64}
 BuildRequires:  %{python_module setuptools_scm >= 7}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -68,12 +69,12 @@ BuildRequires:  pkgconfig(libpng) >= 1.2
 BuildRequires:  pkgconfig(tcl)
 # /SECTION
 # SECTION runtime
-Requires:       python-numpy >= 1.21
 Requires:       python-Cycler >= 0.10
 Requires:       python-FontTools >= 4.22.0
 Requires:       python-Pillow >= 8
 Requires:       python-contourpy >= 1.0.1
 Requires:       python-kiwisolver >= 1.3.1
+Requires:       python-numpy >= 1.23
 Requires:       python-packaging >= 20.0
 Requires:       python-pyparsing > 2.3.1
 Requires:       python-python-dateutil >= 2.7
@@ -281,19 +282,16 @@ for %{name} plotting package
 
 %prep
 %autosetup -p1 -n matplotlib-%{version}
-%{python_expand # Extract freetype and qhull to the right location, so that matplotlib will not try to download it
-mkdir build
-pushd build
-tar xfz %{SOURCE98}
-tar xfz %{SOURCE99}
-popd
-}
-
+# Copy freetype and qhull to the right location, so that matplotlib will not try to download it
+mkdir subprojects/packagecache
+cp %{SOURCE98} %{SOURCE99} subprojects/packagecache/
 chmod -x lib/matplotlib/mpl-data/images/*.svg
 find lib/matplotlib lib/mpl_toolkits/mplot3d -type f -name "*.py" -exec sed -i "1{/#!.*python/ d}" {} \;
-cp %{SOURCE1} mplsetup.cfg
-# The setup procedure wants certifi to download packages over https. Not applicable here.
-sed -i '/"certifi>=.*"/ d' pyproject.toml
+%{python_expand # use the last python in the buildset as generator (only the pythons in the buildset have setuptools_scm installed)
+myprimarypython=%{__$python}
+}
+sed -i "s|find_program('python3')|'$myprimarypython'|" meson.build
+find tools -type f -name "*.py" -exec sed -i "1{s|^#!.*python\S*|#!$myprimarypython|}" {} \;
 
 %build
 %if %{without test}
@@ -363,7 +361,6 @@ $python -m pytest --pyargs matplotlib.tests \
 %files %{python_files}
 %doc README.md
 %license LICENSE/
-%license doc/users/project/license.rst
 %{python_sitearch}/matplotlib
 %{python_sitearch}/matplotlib-%{version}.dist-info
 %dir %{python_sitearch}/mpl_toolkits
@@ -425,17 +422,14 @@ $python -m pytest --pyargs matplotlib.tests \
 # Dummy package to pull in latex dependencies.
 %files %{python_files latex}
 %license LICENSE/
-%license doc/users/project/license.rst
 
 %files %{python_files cairo}
 %license LICENSE/
-%license doc/users/project/license.rst
 %{python_sitearch}/matplotlib/backends/backend_cairo.py*
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_cairo.*.py*
 
 %files %{python_files gtk3}
 %license LICENSE/
-%license doc/users/project/license.rst
 %{python_sitearch}/matplotlib/backends/backend_gtk3.py*
 %{python_sitearch}/matplotlib/backends/backend_gtk3agg.py*
 %{python_sitearch}/matplotlib/backends/backend_gtk3cairo.py*
@@ -445,7 +439,6 @@ $python -m pytest --pyargs matplotlib.tests \
 
 %files %{python_files gtk4}
 %license LICENSE/
-%license doc/users/project/license.rst
 %{python_sitearch}/matplotlib/backends/backend_gtk4.py*
 %{python_sitearch}/matplotlib/backends/backend_gtk4agg.py*
 %{python_sitearch}/matplotlib/backends/backend_gtk4cairo.py*
@@ -455,21 +448,18 @@ $python -m pytest --pyargs matplotlib.tests \
 
 %files %{python_files gtk-common}
 %license LICENSE/
-%license doc/users/project/license.rst
 %{python_sitearch}/matplotlib/backends/_backend_gtk.py
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/_backend_gtk.*.py*
 
 %if 0%{?suse_version} > 1500 && 0%{?python_version_nodots} >= 310
 %files %{python_files nbagg}
 %license LICENSE/
-%license doc/users/project/license.rst
 %{python_sitearch}/matplotlib/backends/backend_nbagg.py*
 %pycache_only %{python_sitearch}/matplotlib/backends/__pycache__/backend_nbagg.*.py*
 %endif
 
 %files %{python_files qt}
 %license LICENSE/
-%license doc/users/project/license.rst
 %{python_sitearch}/matplotlib/backends/backend_qt5.py*
 %{python_sitearch}/matplotlib/backends/backend_qt5agg.py*
 %{python_sitearch}/matplotlib/backends/backend_qt5cairo.py*
@@ -482,7 +472,6 @@ $python -m pytest --pyargs matplotlib.tests \
 
 %files %{python_files testdata}
 %license LICENSE/
-%license doc/users/project/license.rst
 %{python_sitearch}/matplotlib/tests/baseline_images
 %{python_sitearch}/mpl_toolkits/axes_grid1/tests/baseline_images
 %{python_sitearch}/mpl_toolkits/axisartist/tests/baseline_images
@@ -493,7 +482,6 @@ $python -m pytest --pyargs matplotlib.tests \
 
 %files %{python_files tk}
 %license LICENSE/
-%license doc/users/project/license.rst
 %{python_sitearch}/matplotlib/backends/_backend_tk.py*
 %{python_sitearch}/matplotlib/backends/backend_tkagg.py*
 %{python_sitearch}/matplotlib/backends/backend_tkcairo.py*
@@ -503,7 +491,6 @@ $python -m pytest --pyargs matplotlib.tests \
 
 %files %{python_files web}
 %license LICENSE/
-%license doc/users/project/license.rst
 %{python_sitearch}/matplotlib/backends/backend_webagg.py*
 %{python_sitearch}/matplotlib/backends/backend_webagg_core.py*
 %{python_sitearch}/matplotlib/backends/web_backend/
@@ -514,7 +501,6 @@ $python -m pytest --pyargs matplotlib.tests \
 %if 0%{?suse_version} > 1500
 %files %{python_files wx}
 %license LICENSE/
-%license doc/users/project/license.rst
 %{python_sitearch}/matplotlib/backends/backend_wx.py*
 %{python_sitearch}/matplotlib/backends/backend_wxagg.py*
 %{python_sitearch}/matplotlib/backends/backend_wxcairo.py*

@@ -958,4 +958,12 @@ http://forums.opensuse.org/showthread.php/416182-Python-matplolib (forwarded req
     * fix quiver3d incorrect arrow colors</comment>
     <requestid>1169287</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>1970824d398c89d7eee94322d4c60743</srcmd5>
+    <version>3.9.0</version>
+    <time>1717765324</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1178866</requestid>
+  </revision>
 </revisionlist>

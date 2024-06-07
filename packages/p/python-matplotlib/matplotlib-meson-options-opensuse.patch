@@ -1,0 +1,13 @@
+Index: matplotlib-3.9.0/pyproject.toml
+===================================================================
+--- matplotlib-3.9.0.orig/pyproject.toml
++++ matplotlib-3.9.0/pyproject.toml
+@@ -90,7 +90,7 @@ requires = [
+ ]
+ 
+ [tool.meson-python.args]
+-install = ['--tags=data,python-runtime,runtime']
++install = ['--tags=data,python-runtime,runtime,tests']
+ 
+ [tool.setuptools_scm]
+ version_scheme = "release-branch-semver"

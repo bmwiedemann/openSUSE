@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Jun  5 12:55:45 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.9.0
+  ## Plotting and Annotation improvements
+  * Axes.inset_axes is no longer experimental
+  * Legend support for Boxplot
+  * Percent sign in pie labels auto-escaped with usetex=True
+  * hatch parameter for stackplot
+  * Add option to plot only one half of violin plot
+  * axhline and axhspan on polar axes
+  * Subplot titles can now be automatically aligned
+  * axisartist can now be used together with standard Formatters
+  * Toggle minorticks on Axis
+  * StrMethodFormatter now respects axes.unicode_minus
+  ## Figure, Axes, and Legend Layout
+  * Subfigures now have controllable zorders
+  * Getters for xmargin, ymargin and zmargin
+  ## Mathtext improvements
+  * mathtext documentation improvements
+  * mathtext spacing corrections
+  ## Widget Improvements
+  * Check and Radio Button widgets support clearing
+  ## 3D plotting improvements
+  * Setting 3D axis limits now set the limits exactly
+  ## Other improvements
+  * New BackendRegistry for plotting backends
+  * Add widths, heights and angles setter to EllipseCollection
+  * image.interpolation_stage rcParam
+  * Arrow patch position is now modifiable
+  * NonUniformImage now has mouseover support
+- Add matplotlib-meson-options-opensuse.patch
+
+-------------------------------------------------------------------
 Thu Apr 18 20:52:01 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.8.4
