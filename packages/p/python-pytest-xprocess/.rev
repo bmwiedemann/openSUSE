@@ -94,4 +94,13 @@ python-Werkzeug 2.0.1 (currently in Staging:F)</comment>
     both.</comment>
     <requestid>1167778</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>257d88b9fd5227e6dc79b6a8ddfbb0ba</srcmd5>
+    <version>1.0.2</version>
+    <time>1717765313</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.2:
+  * remove tests from source installation</comment>
+    <requestid>1179145</requestid>
+  </revision>
 </revisionlist>

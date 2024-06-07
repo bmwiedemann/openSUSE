@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-xprocess
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        A pytest plugin for managing processes across test runs
 License:        MIT
@@ -42,6 +42,8 @@ test-specific databases (i.e. Postgres, Couchdb).
 
 %prep
 %setup -q -n pytest-xprocess-%{version}
+rm -rvf tests/__pycache__
+chmod -x README.rst
 
 %build
 %python_build
@@ -54,7 +56,7 @@ test-specific databases (i.e. Postgres, Couchdb).
 %pytest
 
 %files %{python_files}
-%doc %attr(0644, -, -) README.rst
+%doc README.rst
 %license LICENSE
 %{python_sitelib}/xprocess
 %{python_sitelib}/pytest_xprocess-%{version}*-info
