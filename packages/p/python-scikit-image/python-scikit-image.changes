@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Thu Jun  6 17:13:16 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add skimage-pr7414-np2.patch gh#scikit-image/scikit-image#7414
+
+-------------------------------------------------------------------
+Sun May  5 14:31:34 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.23.2
+  ## Bug Fixes
+  * Make sure skimage.util.img_as_ubyte supports the edge case
+    where dtype('uint64').type of the provided image is
+    np.ulonglong instead of np.uint64 (#7392).
+  ## Documentation
+  * Add date to 0.23.1 release notes (#7384).
+  * Fix docstring of connectivity parameter in
+    skimage.segmentation.watershed (#7360).
+  ## Infrastructure
+  * Ignore Sphinx warning about unpickable cache (#7400).
+  * Simplify instructions on changelist in PR template (#7401).
+  ## Maintenance
+  * Use numpy.inf instead of deprecated numpy.infty (#7386).
+  * Update Ruff config (#7387).
+  * Update matrix and names of Azure pipelines configuration
+    (#7390).
+  * Use upload- and download-artifact v4 (#7389).
+  * Ignore arch specific cast warnings originating from astype in
+    tests (#7393).
+  * Update link to numpydoc example.py (#7395).
+- Release 0.23.1/0.23.0
+  ## Highlights
+  * Ensure skimage.morphology.closing and
+    skimage.morphology.opening are extensive and anti-extensive,
+    respectively, if the footprint is not mirror symmetric (#6695).
+  * Add parameter mode to binary_erosion, binary_dilation,
+    binary_opening and binary_closing in skimage.morphology. These
+    new parameters determine how array borders are handled (#6695).
+  * Add parameters mode and cval to erosion, dilation, opening,
+    closing, white_tophat, and black_tophat in skimage.morphology.
+    These new parameters determine how array borders are handled
+    (#6695).
+  * Speedup skimage.util.map_array by parallelization with Cython's
+    prange (#7266).
+  ## New Features
+  * Add new intensity_std property to skimage.measure.regionprops
+    which computes the standard deviation of the intensity in a
+    region (#6712).
+  * Add parameter mode to binary_erosion, binary_dilation,
+    binary_opening and binary_closing in skimage.morphology. These
+    new parameters determine how array borders are handled (#6695).
+  * Add functions mirror_footprint and pad_footprint to
+    skimage.morphology (#6695).
+  * Add parameters mode and cval to erosion, dilation, opening,
+    closing, white_tophat, and black_tophat in skimage.morphology.
+    These new parameters determine how array borders are handled
+    (#6695).
+  * Add new parameter spacing to segmentation.expand_labels to
+    support anisotropic images (#7080).
+  ## API Changes
+  * Drop support for Python 3.9 (#7217).
+  * Parameters shift_x and shift_y in skimage.morphology.erosion
+    and skimage.morphology.dilation are deprecated. Use
+    pad_footprint or modify the footprint manually instead (#6695).
+  * Remove unexpected value scaling in
+    skimage.morphology.skeletonize_3d for non-binary input images.
+    skeletonize_3d now always returns a binary array like similar
+    functions (#7095).
+  * Deprecate function skimage.feature.plot_matches in favor of
+    skimage.feature.plot_matched_features (#7255).
+  * Deprecate skimage.morphology.skeletonize_3d in favor of just
+    skimage.morphology.skeletonize (#7094).
+  * Deprecate parameter output in skimage.filters.gaussian; use out
+    instead (#7225).
+  * Change the default value of the parameters shift_x, shift_y and
+    shift_z from False to 0 in the skimage.filters.rank functions.
+    This has not impact on the results. Warn in case boolean shifts
+    are provided from now on (#7320).
+  * Performance
+  * Add lazy loading to skimage.metrics module (#7211).
+  * Speedup skimage.util.map_array by parallelization with Cython's
+    prange (#7266).
+  ## Bug Fixes
+  * Add exception to avoid surprising result when image is too
+    small for the given parameters in skimage.feature.hog (#7153).
+  * Ensure skimage.morphology.closing and
+    skimage.morphology.opening are extensive and anti-extensive,
+    respectively, if the footprint is not mirror symmetric (#6695).
+  * Avoid a TypeError in
+    skimage.registration.phase_cross_correlation when the real-time
+    shift cannot be determined (disambiguate=True). Display a
+    warning instead (#7259).
+  * Fix logic in skimage.graph.pixel_graph which raised a TypeError
+    when the parameter edge_function was provided without a mask
+    (#7310).
+  * Ensure cache stays empty when cache=False is passed to
+    skimage.measure.regionprops (#7333).
+
+-------------------------------------------------------------------
 Sat Mar 16 20:10:32 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.22.0:

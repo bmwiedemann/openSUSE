@@ -1,0 +1,187 @@
+From 24e84822508a886c0433875889608f7aa31848ed Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Lars=20Gr=C3=BCter?= <lagru@mailbox.org>
+Date: Tue, 7 May 2024 20:07:48 +0200
+Subject: [PATCH 1/5] Fix NumPy2 dtype promotion issues in pywt dependent code
+
+---
+ skimage/metrics/simple_metrics.py | 1 +
+ skimage/restoration/_denoise.py   | 4 +++-
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/skimage/metrics/simple_metrics.py b/skimage/metrics/simple_metrics.py
+index 37cd69ee1c9..7bb13acf189 100644
+--- a/skimage/metrics/simple_metrics.py
++++ b/skimage/metrics/simple_metrics.py
+@@ -164,6 +164,7 @@ def peak_signal_noise_ratio(image_true, image_test, *, data_range=None):
+     image_true, image_test = _as_floats(image_true, image_test)
+ 
+     err = mean_squared_error(image_true, image_test)
++    data_range = float(data_range)  # prevent overflow for small integer types
+     return 10 * np.log10((data_range**2) / err)
+ 
+ 
+diff --git a/skimage/restoration/_denoise.py b/skimage/restoration/_denoise.py
+index 791a8c9f25b..4f4a235ac40 100644
+--- a/skimage/restoration/_denoise.py
++++ b/skimage/restoration/_denoise.py
+@@ -788,7 +788,9 @@ def _wavelet_threshold(
+             for thresh, level in zip(threshold, dcoeffs)
+         ]
+     denoised_coeffs = [coeffs[0]] + denoised_detail
+-    return pywt.waverecn(denoised_coeffs, wavelet)[original_extent]
++    out = pywt.waverecn(denoised_coeffs, wavelet)[original_extent]
++    out = out.astype(image.dtype)
++    return out
+ 
+ 
+ def _scale_sigma_and_image_consistently(image, sigma, multichannel, rescale_sigma):
+
+From bfbf88aad4fbd04b3657c682266d43aa0fe01ec4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Lars=20Gr=C3=BCter?= <lagru+github@mailbox.org>
+Date: Wed, 8 May 2024 00:17:00 +0200
+Subject: [PATCH 2/5] Update skimage/metrics/simple_metrics.py
+
+Co-authored-by: Mark Harfouche <mark.harfouche@gmail.com>
+---
+ skimage/metrics/simple_metrics.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/skimage/metrics/simple_metrics.py b/skimage/metrics/simple_metrics.py
+index 7bb13acf189..6a255ed4211 100644
+--- a/skimage/metrics/simple_metrics.py
++++ b/skimage/metrics/simple_metrics.py
+@@ -164,8 +164,7 @@ def peak_signal_noise_ratio(image_true, image_test, *, data_range=None):
+     image_true, image_test = _as_floats(image_true, image_test)
+ 
+     err = mean_squared_error(image_true, image_test)
+-    data_range = float(data_range)  # prevent overflow for small integer types
+-    return 10 * np.log10((data_range**2) / err)
++    return 20 * np.log10(data_range / err)
+ 
+ 
+ def _pad_to(arr, shape):
+
+From b90376cbfbbfdf7d3a8f910b4fec03621b3cc2a5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Lars=20Gr=C3=BCter?= <lagru@mailbox.org>
+Date: Wed, 8 May 2024 00:41:34 +0200
+Subject: [PATCH 3/5] Catch and warn about pyamg not supporting NumPy 2 yet
+
+---
+ TODO.txt                                           |  4 ++++
+ pyproject.toml                                     |  1 +
+ skimage/segmentation/random_walker_segmentation.py | 10 ++++++++++
+ 3 files changed, 15 insertions(+)
+
+diff --git a/TODO.txt b/TODO.txt
+index f8b35a6ea39..476f160dcd2 100644
+--- a/TODO.txt
++++ b/TODO.txt
+@@ -27,6 +27,10 @@ Other
+       skimage/exposure/tests/test_exposure.py::test_rescale_nan_warning
+ * Finalize ``skimage.future.manual_segmentation`` API,
+   see https://github.com/scikit-image/scikit-image/issues/2624
++* Remove ``except AttributeError`` block in
++  ``skimage/segmentation/random_walker_segmentation.py`` as well as the warning filter
++  in ``pyproject.toml``, once pyamg supports NumPy 2
++  (see https://github.com/pyamg/pyamg/issues/406).
+ 
+ Post numpy 2
+ ------------
+diff --git a/pyproject.toml b/pyproject.toml
+index 9e839b4b098..0ff6f176e9e 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -195,6 +195,7 @@ python_classes = ["Test*", "*Suite"]
+ python_functions = ["time_*", "test_*", "peakmem_*"]
+ filterwarnings = [
+     "error",
++    'default:.*pyamg, which cannot \(yet\) be imported with NumPy >=2:RuntimeWarning'
+ ]
+ 
+ [tool.coverage.run]
+diff --git a/skimage/segmentation/random_walker_segmentation.py b/skimage/segmentation/random_walker_segmentation.py
+index c4dd2fe314b..d5c2cabcff7 100644
+--- a/skimage/segmentation/random_walker_segmentation.py
++++ b/skimage/segmentation/random_walker_segmentation.py
+@@ -43,6 +43,16 @@ def new_del(self):
+     amg_loaded = True
+ except ImportError:
+     amg_loaded = False
++except AttributeError as e:
++    if "`np.deprecate` was removed" not in e.args[0]:
++        raise e
++    warn(
++        "found optional dependency pyamg, which cannot (yet) be imported with "
++        "NumPy >=2 and will be treated as if not available",
++        RuntimeWarning,
++    )
++    amg_loaded = False
++
+ 
+ from ..util import img_as_float
+ 
+
+From ad081e184464f74be2057060812d5ba745317b1d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Lars=20Gr=C3=BCter?= <lagru@mailbox.org>
+Date: Wed, 8 May 2024 00:50:28 +0200
+Subject: [PATCH 4/5] Revert "Update skimage/metrics/simple_metrics.py"
+
+This reverts commit bfbf88aad4fbd04b3657c682266d43aa0fe01ec4.
+---
+ skimage/metrics/simple_metrics.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/skimage/metrics/simple_metrics.py b/skimage/metrics/simple_metrics.py
+index 6a255ed4211..7bb13acf189 100644
+--- a/skimage/metrics/simple_metrics.py
++++ b/skimage/metrics/simple_metrics.py
+@@ -164,7 +164,8 @@ def peak_signal_noise_ratio(image_true, image_test, *, data_range=None):
+     image_true, image_test = _as_floats(image_true, image_test)
+ 
+     err = mean_squared_error(image_true, image_test)
+-    return 20 * np.log10(data_range / err)
++    data_range = float(data_range)  # prevent overflow for small integer types
++    return 10 * np.log10((data_range**2) / err)
+ 
+ 
+ def _pad_to(arr, shape):
+
+From 05d585cff4ccdef84db024fc1c99841b9fb57a38 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Lars=20Gr=C3=BCter?= <lagru@mailbox.org>
+Date: Wed, 8 May 2024 10:14:40 +0200
+Subject: [PATCH 5/5] Simplify except block a little bit
+
+---
+ .../random_walker_segmentation.py             | 19 ++++++++++---------
+ 1 file changed, 10 insertions(+), 9 deletions(-)
+
+diff --git a/skimage/segmentation/random_walker_segmentation.py b/skimage/segmentation/random_walker_segmentation.py
+index d5c2cabcff7..68d7c46cd1d 100644
+--- a/skimage/segmentation/random_walker_segmentation.py
++++ b/skimage/segmentation/random_walker_segmentation.py
+@@ -43,15 +43,16 @@ def new_del(self):
+     amg_loaded = True
+ except ImportError:
+     amg_loaded = False
+-except AttributeError as e:
+-    if "`np.deprecate` was removed" not in e.args[0]:
+-        raise e
+-    warn(
+-        "found optional dependency pyamg, which cannot (yet) be imported with "
+-        "NumPy >=2 and will be treated as if not available",
+-        RuntimeWarning,
+-    )
+-    amg_loaded = False
++except AttributeError as error:
++    if "`np.deprecate` was removed" in error.args[0]:
++        warn(
++            "found optional dependency pyamg, which cannot (yet) be imported with "
++            "NumPy >=2 and will be treated as if not available",
++            RuntimeWarning,
++        )
++        amg_loaded = False
++    else:
++        raise error
+ 
+ 
+ from ..util import img_as_float

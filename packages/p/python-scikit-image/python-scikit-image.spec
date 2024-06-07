@@ -26,16 +26,19 @@
 %bcond_with test
 %endif
 Name:           python-scikit-image%{psuffix}
-Version:        0.22.0
+Version:        0.23.2
 Release:        0
 Summary:        Collection of algorithms for image processing in Python
 License:        BSD-3-Clause
 URL:            https://scikit-image.org/
+# SourceRepository: https://github.com/scikit-image/scikit-image
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-image/%{srcname}-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 0.29.21}
-BuildRequires:  %{python_module devel >= 3.7}
-BuildRequires:  %{python_module meson-python}
-BuildRequires:  %{python_module numpy-devel >= 1.21.1}
+# PATCH-FIX-UPSTREAM skimage-pr7414-np2.patch gh#scikit-image/scikit-image#7414
+Patch0:         https://github.com/scikit-image/scikit-image/pull/7414.patch#/skimage-pr7414-np2.patch
+BuildRequires:  %{python_module Cython >= 3.0.4}
+BuildRequires:  %{python_module devel >= 3.10}
+BuildRequires:  %{python_module meson-python >= 0.15}
+BuildRequires:  %{python_module numpy-devel >= 1.23}
 BuildRequires:  %{python_module packaging >= 20}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pythran}
@@ -45,14 +48,14 @@ BuildRequires:  fdupes
 BuildRequires:  freeimage-devel
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-Requires:       python-Pillow >= 9.0.1
+Requires:       python-Pillow >= 9.1
 Requires:       python-PyWavelets >= 1.1.1
-Requires:       python-imageio >= 2.7
-Requires:       python-lazy-loader >= 0.2
+Requires:       python-imageio >= 2.33
+Requires:       python-lazy-loader >= 0.4
 Requires:       python-networkx >= 2.8
-Requires:       python-numpy >= 1.21.1
+Requires:       python-numpy >= 1.23
 Requires:       python-packaging >= 21.0
-Requires:       python-scipy >= 1.8
+Requires:       python-scipy >= 1.9
 Requires:       python-tifffile >= 2022.8.12
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -62,12 +65,12 @@ Recommends:     python-astropy >= 3.1.2
 Recommends:     python-cloudpickle >= 0.2.1
 Recommends:     python-dask-array >= 1.0.0
 Recommends:     python-imread >= 0.5.1
-Recommends:     python-matplotlib >= 3.0.3
+Recommends:     python-matplotlib >= 3.6
 Recommends:     python-pooch >= 1.3.0
 Recommends:     python-pyamg
 %if %{with test}
 BuildRequires:  %{python_module dask-array >= 1.0.0}
-BuildRequires:  %{python_module matplotlib >= 3.0.3}
+BuildRequires:  %{python_module matplotlib >= 3.6}
 BuildRequires:  %{python_module numpydoc}
 BuildRequires:  %{python_module pytest >= 4.0}
 BuildRequires:  %{python_module pytest-localserver}
@@ -85,6 +88,7 @@ It is available free of charge and free of restriction.
 %if !%{with test}
 %autosetup -p1 -n %{srcname}-%{version}
 sed -Ei "1{s@/usr/bin/env python@%{_bindir}/python3@}" ./skimage/_build_utils/*.py
+chmod -x skimage/measure/{__init__,_find_contours}.py
 %else
 %setup -q -c scikit-image-%{version}-test -D -T
 %endif
@@ -97,9 +101,7 @@ sed -Ei "1{s@/usr/bin/env python@%{_bindir}/python3@}" ./skimage/_build_utils/*.
 %install
 %if !%{with test}
 %pyproject_install
-%{python_expand %fdupes %{buildroot}%{$python_sitearch}
-chmod -x %{buildroot}%{$python_sitearch}/skimage/measure/{__init__,_find_contours}.py
-}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 %endif
 
 %if %{with test}
