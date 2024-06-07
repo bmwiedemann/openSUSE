@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  6 20:26:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.23.7:
+  * Silence deprecation warnings about unclosed event loops that
+    occurred with certain CPython patch releases
+
+-------------------------------------------------------------------
 Thu Mar 21 17:04:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.23.6:

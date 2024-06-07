@@ -222,4 +222,14 @@ required by mycroft-core</comment>
   * compatibiltiy with pytest 8.2</comment>
     <requestid>1160433</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5dbb1da2ff9e0b042d0956ae89e0fdd0</srcmd5>
+    <version>0.23.7</version>
+    <time>1717765311</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.23.7:
+  * Silence deprecation warnings about unclosed event loops that
+    occurred with certain CPython patch releases</comment>
+    <requestid>1179085</requestid>
+  </revision>
 </revisionlist>
