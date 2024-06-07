@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun  4 12:47:02 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- update to 3.29.4
+  * cmCxxModuleMapper: add a query for the open mode for the modmap
+  * CMP0037: Restore diagnostic message for invalid ALIAS target names
+  * libuv: win/spawn: disable extra-file-descriptor support not needed by CMake
+  * Tests/RunCMake/execute_process: Check STARTUPINFOW reserved members
+
+-------------------------------------------------------------------
 Wed May  8 14:30:20 UTC 2024 - Christoph G <foss@grueninger.de>
 
 - update to 3.29.3

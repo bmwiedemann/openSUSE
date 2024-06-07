@@ -52,7 +52,7 @@
 %define pyver 3
 %endif
 Name:           cmake%{?psuffix}
-Version:        3.29.3
+Version:        3.29.4
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause
