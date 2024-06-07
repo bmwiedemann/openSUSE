@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-sql
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Library to write SQL queries
 License:        BSD-3-Clause

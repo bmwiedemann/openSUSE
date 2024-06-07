@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  6 20:23:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.1:
+  * Use parameter for start and end of WINDOW FRAME
+  * Use parameter for limit and offset
+
+-------------------------------------------------------------------
 Mon May 20 18:19:43 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up the SPEC file.

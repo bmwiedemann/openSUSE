@@ -111,4 +111,14 @@
 </comment>
     <requestid>1175383</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>55e7eccced4060fb98f15a0c61524997</srcmd5>
+    <version>1.5.1</version>
+    <time>1717765466</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.5.1:
+  * Use parameter for start and end of WINDOW FRAME
+  * Use parameter for limit and offset</comment>
+    <requestid>1179081</requestid>
+  </revision>
 </revisionlist>
