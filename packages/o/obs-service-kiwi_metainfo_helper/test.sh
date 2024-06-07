@@ -85,6 +85,46 @@ DISTURL=obs://build.suse.de/SUSE:SLE-15-SP3:Update:CR/images/5f0a221b7877396cbf9
 SOURCEURL=https://sources.suse.com/SUSE:SLE-15-SP3:Update:CR/sles15-image/5f0a221b7877396cbf977205e64690d2/
 EOF
 
+# Test _multibuild
+cat >.data <<EOF
+DISTURL="obs://build.opensuse.org/openSUSE:Factory/images/0f40c57dd619e1dff9e512949b6bca09-opensuse-tumbleweed-image:docker"
+RELEASE=4.2
+RELEASE=4.2
+RECIPEFILE=_service:foobar:Dockerfile.FLAVOR
+BUILD_ARCH=aarch64:aarch64_ilp32:armv8l
+EOF
+export BUILD_DIST=.dist
+
+cat >Dockerfile.FLAVOR <<EOF
+RELEASE=%RELEASE%
+EOF
+
+bash "${script}"
+
+diff -u Dockerfile.FLAVOR - <<EOF
+RELEASE=4.2
+EOF
+
+# Test _multibuild when not a Dockerfile
+cat >.data <<EOF
+DISTURL="obs://build.opensuse.org/openSUSE:Factory/images/0f40c57dd619e1dff9e512949b6bca09-opensuse-tumbleweed-image:docker"
+RELEASE=4.2
+RELEASE=4.2
+RECIPEFILE=_service:foobar:NotADockerfile
+BUILD_ARCH=aarch64:aarch64_ilp32:armv8l
+EOF
+export BUILD_DIST=.dist
+
+cat >NotADockerfile <<EOF
+RELEASE=%RELEASE%
+EOF
+
+bash "${script}"
+
+diff -u NotADockerfile - <<EOF
+RELEASE=%RELEASE%
+EOF
+
 # Now test without build data (osc chroot build) and that without %OS_*% it doesn't need a release RPM
 rm -r ./.data ./repos/
 

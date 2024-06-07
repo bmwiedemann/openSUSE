@@ -16,8 +16,8 @@ if [ -e "${BUILD_DATA}" ]; then
 	# The build script renames the recipe (to strip _service:foo:), but doesn't update .data
 	RECIPEFILE="${RECIPEFILE##*:}"
 
-	if [ "${RECIPEFILE##*.}" != "kiwi" ] && [ "${RECIPEFILE}" != "Dockerfile" ] && [ "${RECIPEFILE}" != "Chart.yaml" ]; then
-		echo "Recipe is neither Dockerfile, kiwi recipe nor helm chart - exiting"
+	if [ "${RECIPEFILE##*.}" != "kiwi" ] && [[ ! "${RECIPEFILE}" =~ ^Dockerfile.* ]] && [ "${RECIPEFILE}" != "Chart.yaml" ]; then
+		echo "Recipe ${RECIPEFILE} is neither Dockerfile, kiwi recipe nor helm chart - exiting"
 		exit 0
 	fi
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  7 08:35:33 UTC 2024 - Andrea Mazzotti <andrea.mazzotti@suse.com>
+
+- Support Docker.FLAVOR in _multibuild (boo#1226010)
+
+-------------------------------------------------------------------
 Thu Feb  1 15:54:12 UTC 2024 - Marina Latini <marina.latini@suse.com>
 
 - Replace %ARCH% with the architecture in images for supporting
