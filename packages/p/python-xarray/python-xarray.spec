@@ -25,11 +25,11 @@
 %define psuffix %{nil}
 %endif
 
-%define ghversion 2024.03.0
+%define ghversion 2024.05.0
 
 %{?sle15_python_module_pythons}
 Name:           python-xarray%{psuffix}
-Version:        2024.3.0
+Version:        2024.5.0
 Release:        0
 Summary:        N-D labeled arrays and datasets in Python
 License:        Apache-2.0
@@ -38,8 +38,10 @@ Source:         https://github.com/pydata/xarray/archive/refs/tags/v%{ghversion}
 # PATCH-FEATURE-UPSTREAM local_dataset.patch gh#pydata/xarray#5377 mcepl@suse.com
 # fix xr.tutorial.open_dataset to work with the preloaded cache.
 Patch0:         local_dataset.patch
-# PATCH-FIX-UPSTREAM xarray-pr8953-nodatatreeprune.patch gh#pydata/xarray#8953
-Patch1:         xarray-pr8953-nodatatreeprune.patch
+# PATCH-FIX-UPSTREAM xarray-pr8854-np2.patch gh#pydata/xarray#8854
+Patch1:         xarray-pr8854-np2.patch
+# PATCH-FIX-UPSTREAM xarray-pr9305-cftime.patch gh#pydata/xarray#9305
+Patch2:         xarray-pr9305-cftime.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
@@ -48,8 +50,8 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.23
-Requires:       python-packaging >= 22
-Requires:       python-pandas >= 1.5
+Requires:       python-packaging >= 23.1
+Requires:       python-pandas >= 2
 Obsoletes:      python-xray <= 0.7
 BuildArch:      noarch
 %if %{with test}
@@ -175,6 +177,7 @@ if [ $(getconf LONG_BIT) -eq 32 ]; then
   donttest="$donttest or (test_interpolate_chunk_advanced and linear)"
   # tests for 64bit types
   donttest="$donttest or TestZarrDictStore or TestZarrDirectoryStore or TestZarrWriteEmpty"
+  donttest="$donttest or test_repr_multiindex or test_array_repr_dtypes_unix"
 fi
 # h5py was built without ROS3 support, can't use ros3 driver
 donttest="$donttest or TestH5NetCDFDataRos3Driver"

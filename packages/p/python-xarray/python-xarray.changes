@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Wed Jun  5 15:00:43 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2024.5.0
+  * Update reference to 'Weighted quantile estimators' by
+    @AndreyAkinshin in #8898
+  * Update docstring for compute and persist by @saschahofmann in
+    #8903
+  * Stateful tests with Dataset by @dcherian in #8658
+  * Trigger hypothesis stateful tests nightly by @dcherian in #8907
+  * Don't access data when creating DataArray from Variable. by
+    @dcherian in #8754
+  * Add typing to test_plot.py by @Illviljan in #8889
+  * Update hypothesis action to always save the cache by @dcherian
+    in #8913
+  * Add typing to some functions in indexing.py by @Illviljan in
+    #8922
+  * Enhance the ugly error in constructor when no data passed by
+    @aimtsou in #8920
+  * Migrate iterators.py for datatree. by @owenlittlejohns in #8879
+  * use pd.to_timedelta instead of TimedeltaIndex by @keewis in
+    #8938
+  * adapt more tests to the copy-on-write behavior of pandas by
+    @keewis in #8940
+  * Correct save_mfdataset docstring by @TomNicholas in #8934
+  * Convert 360_day calendars by choosing random dates to drop or
+    add by @aulemahal in #8603
+  * Migrate datatree mapping.py by @owenlittlejohns in #8948
+  * (feat): Support for pandas ExtensionArray by @ilan-gold in
+    #8723
+  * Migrate formatting_html.py into xarray core by @eni-awowale in
+    #8930
+  * use nan instead of NaN by @keewis in #8961
+  * stop pruning datatree_ directory from distribution by
+    @flamingbear in #8953
+  * Delete pynio backend. by @dcherian in #8971
+  * Migrate datatreee assertions/extensions/formatting by
+    @owenlittlejohns in #8967
+  * Bump dependencies incl pandas>=2 by @dcherian in #8968
+  * Option to not auto-create index during expand_dims by
+    @TomNicholas in #8960
+  * Raise errors on new warnings from within xarray by @max-sixty
+    in #8974
+  * more engine environment tricks in preparation for numpy>=2 by
+    @keewis in #8978
+  * Switch all methods to dim by @max-sixty in #8982
+  * Docstring and documentation improvement for the Dataset class
+    by @noahbenson in #8973
+  * Add notes on when to add ignores to warnings by @max-sixty in
+    #8987
+  * Remove .drop warning allow by @max-sixty in #8988
+  * Skip flaky test_open_mfdataset_manyfiles test by @max-sixty in
+    #8989
+  * avoid a couple of warnings in polyfit by @keewis in #8939
+  * Migration of datatree/ops.py -> datatree_ops.py by @flamingbear
+    in #8976
+  * Mark test_use_cftime_false_standard_calendar_in_range as an
+    expected failure by @spencerkclark in #8996
+  * call np.cross with 3D vectors only by @keewis in #8993
+  * Fix syntax error in test related to cupy by @hmaarrfk in #9000
+  * Add argument check_dims to assert_allclose to allow transposed
+    inputs (#5733) by @ignamv in #8991
+  * Faster fastpath by @hmaarrfk in #9001
+  * Speed up localize by @Illviljan in #8536
+  * Port negative frequency fix for pandas.date_range to
+    cftime_range by @spencerkclark in #8999
+  * Zarr: Optimize region="auto" detection by @dcherian in #8997
+  * Add a benchmark to monitor performance for large dataset
+    indexing by @hmaarrfk in #9012
+  * Avoid extra read from disk when creating Pandas Index. by
+    @dcherian in #8893
+  * Avoid auto creation of indexes in concat by @TomNicholas in
+    #8872
+  * Zarr: Optimize appending by @dcherian in #8998
+- Drop xarray-pr8953-nodatatreeprune.patch
+- Add xarray-pr8854-np2.patch gh#pydata/xarray#8854
+- Add xarray-pr9305-cftime.patch gh#pydata/xarray#9305
+
+-------------------------------------------------------------------
 Fri May  3 13:02:26 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2024.3.0

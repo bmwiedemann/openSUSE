@@ -1,0 +1,73 @@
+From cc4daebf1a4a41483c6b60fc57d82d8bc30911e5 Mon Sep 17 00:00:00 2001
+From: Mark Harfouche <mark.harfouche@gmail.com>
+Date: Sat, 18 May 2024 12:54:03 -0400
+Subject: [PATCH] Use ME in test_plot instead of M
+
+```
+pytest xarray/tests/test_plot.py::TestNcAxisNotInstalled::test_ncaxis_notinstalled_line_plot
+```
+
+would return the following error
+
+```
+xarray/tests/test_plot.py E                                                    [100%]
+
+======================================= ERRORS =======================================
+____ ERROR at setup of TestNcAxisNotInstalled.test_ncaxis_notinstalled_line_plot _____
+
+self = <xarray.tests.test_plot.TestNcAxisNotInstalled object at 0x78ed1992aa10>
+
+    @pytest.fixture(autouse=True)
+    def setUp(self) -> None:
+        """
+        Create a DataArray with a time-axis that contains cftime.datetime
+        objects.
+        """
+        month = np.arange(1, 13, 1)
+        data = np.sin(2 * np.pi * month / 12.0)
+        darray = DataArray(data, dims=["time"])
+>       darray.coords["time"] = xr.cftime_range(
+            start="2017", periods=12, freq="1M", calendar="noleap"
+        )
+
+/home/mark/git/xarray/xarray/tests/test_plot.py:3004:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+/home/mark/git/xarray/xarray/coding/cftime_offsets.py:1129: in cftime_range
+    offset = to_offset(freq)
+/home/mark/git/xarray/xarray/coding/cftime_offsets.py:767: in to_offset
+    _emit_freq_deprecation_warning(freq)
+/home/mark/git/xarray/xarray/coding/cftime_offsets.py:751: in _emit_freq_deprecation_warning
+    emit_user_level_warning(message, FutureWarning)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+message = "'M' is deprecated and will be removed in a future version. Please use 'ME' instead of 'M'."
+category = <class 'FutureWarning'>
+
+    def emit_user_level_warning(message, category=None) -> None:
+        """Emit a warning at the user level by inspecting the stack trace."""
+        stacklevel = find_stack_level()
+>       return warnings.warn(message, category=category, stacklevel=stacklevel)
+E       FutureWarning: 'M' is deprecated and will be removed in a future version. Please use 'ME' instead of 'M'.
+
+/home/mark/git/xarray/xarray/core/utils.py:1112: FutureWarning
+============================== short test summary info ===============================
+ERROR xarray/tests/test_plot.py::TestNcAxisNotInstalled::test_ncaxis_notinstalled_line_plot - FutureWarning: 'M' is deprecated and will be removed in a future version. Please ...
+================================== 1 error in 0.64s ==================================
+```
+---
+ xarray/tests/test_plot.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/xarray/tests/test_plot.py b/xarray/tests/test_plot.py
+index e636be5589f..27f4ded5646 100644
+--- a/xarray/tests/test_plot.py
++++ b/xarray/tests/test_plot.py
+@@ -3002,7 +3002,7 @@ def setUp(self) -> None:
+         data = np.sin(2 * np.pi * month / 12.0)
+         darray = DataArray(data, dims=["time"])
+         darray.coords["time"] = xr.cftime_range(
+-            start="2017", periods=12, freq="1M", calendar="noleap"
++            start="2017", periods=12, freq="1ME", calendar="noleap"
+         )
+ 
+         self.darray = darray
