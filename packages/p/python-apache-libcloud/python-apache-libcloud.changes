@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun  6 02:51:26 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject and autosetup macros.
+- No more greedy globs in %files.
+- Tidy up {Build,}Requires on typing and lxml.
+- Stop skipping a bunch of tests, requests-mock has been fixed.
+- Add patches support-pytest-8.patch, support-pytest-8.2.patch:
+  * Support running under pytest 8.2.x.
+
+-------------------------------------------------------------------
 Tue Sep 26 00:00:00 PM CEST 2023 - ecsosa <ecsos@opensuse.org>
 
 - Update to 3.8.0

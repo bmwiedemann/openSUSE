@@ -1,0 +1,440 @@
+From 6a646d0c3fd3c1d33183bb338235aaa43f86d1f8 Mon Sep 17 00:00:00 2001
+From: "dependabot[bot]" <49699333+dependabot[bot]@users.noreply.github.com>
+Date: Mon, 26 Feb 2024 17:44:37 +0000
+Subject: [PATCH 01/15] Bump pytest from 7.4.0 to 8.0.2
+
+Bumps [pytest](https://github.com/pytest-dev/pytest) from 7.4.0 to 8.0.2.
+- [Release notes](https://github.com/pytest-dev/pytest/releases)
+- [Changelog](https://github.com/pytest-dev/pytest/blob/main/CHANGELOG.rst)
+- [Commits](https://github.com/pytest-dev/pytest/compare/7.4.0...8.0.2)
+
+---
+updated-dependencies:
+- dependency-name: pytest
+  dependency-type: direct:production
+  update-type: version-update:semver-major
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+---
+ requirements-tests.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: apache-libcloud-3.8.0/requirements-tests.txt
+===================================================================
+--- apache-libcloud-3.8.0.orig/requirements-tests.txt
++++ apache-libcloud-3.8.0/requirements-tests.txt
+@@ -1,7 +1,7 @@
+ coverage[toml]==7.2.7; python_version >= '3.8'
+ requests>=2.31.0
+ requests_mock==1.11.0
+-pytest==7.4.0
++pytest==8.0.2
+ pytest-xdist==3.3.1
+ pytest-timeout==2.1.0
+ pytest-benchmark[histogram]==4.0.0
+Index: apache-libcloud-3.8.0/tox.ini
+===================================================================
+--- apache-libcloud-3.8.0.orig/tox.ini
++++ apache-libcloud-3.8.0/tox.ini
+@@ -39,8 +39,11 @@ setenv =
+ # To avoid per-test function process safety issues we run all tests in a single
+ # file in the same worker process.
+ # for pytest-xdist, we want to distribute tests by file aka --dist loadfile
++# Tests which are not safe to run in paralell are marked with "serial" tag
++# and run separately at the end
+ commands = cp libcloud/test/secrets.py-dist libcloud/test/secrets.py
+-           pytest --color=yes -rsx -vvv --capture=tee-sys -o log_cli=True --durations=10 --timeout=15 -n auto --dist loadfile --ignore libcloud/test/benchmarks/ --ignore-glob "*test_list_objects_filtering_performance*"
++           pytest --color=yes -rsx -vvv --capture=tee-sys -o log_cli=True --durations=10 --timeout=15 -n auto --dist loadfile --ignore libcloud/test/benchmarks/ --ignore-glob "*test_list_objects_filtering_performance*" -m "not serial"
++           pytest --color=yes -rsx -vvv --capture=tee-sys -o log_cli=True --durations=10 --timeout=15 --ignore libcloud/test/benchmarks/ --ignore-glob "*test_list_objects_filtering_performance*" -m "serial"
+ 
+ [testenv:py3.6-dist]
+ # Verify library installs without any dependencies when using python setup.py
+Index: apache-libcloud-3.8.0/libcloud/test/test_init.py
+===================================================================
+--- apache-libcloud-3.8.0.orig/libcloud/test/test_init.py
++++ apache-libcloud-3.8.0/libcloud/test/test_init.py
+@@ -19,6 +19,8 @@ import logging
+ import tempfile
+ from unittest.mock import patch
+ 
++import pytest
++
+ import libcloud
+ from libcloud import _init_once
+ from libcloud.base import DriverTypeNotFoundError
+@@ -38,6 +40,7 @@ class TestUtils(unittest.TestCase):
+         if "LIBCLOUD_DEBUG" in os.environ:
+             del os.environ["LIBCLOUD_DEBUG"]
+ 
++    @pytest.mark.serial
+     def test_init_once_and_debug_mode(self):
+         if have_paramiko:
+             paramiko_logger = logging.getLogger("paramiko")
+Index: apache-libcloud-3.8.0/libcloud/test/common/test_digitalocean_v2.py
+===================================================================
+--- apache-libcloud-3.8.0.orig/libcloud/test/common/test_digitalocean_v2.py
++++ apache-libcloud-3.8.0/libcloud/test/common/test_digitalocean_v2.py
+@@ -15,22 +15,28 @@
+ import sys
+ import unittest
+ 
++from libcloud.http import LibcloudConnection
+ from libcloud.test import MockHttp, LibcloudTestCase
+ from libcloud.utils.py3 import httplib
+ from libcloud.common.types import InvalidCredsError
+ from libcloud.test.secrets import DIGITALOCEAN_v2_PARAMS
+ from libcloud.test.file_fixtures import FileFixtures
+-from libcloud.common.digitalocean import DigitalOceanBaseDriver
++from libcloud.common.digitalocean import DigitalOceanBaseDriver, DigitalOcean_v2_BaseDriver
+ 
+ 
+ class DigitalOceanTests(LibcloudTestCase):
+     def setUp(self):
+-        DigitalOceanBaseDriver.connectionCls.conn_class = DigitalOceanMockHttp
+-        DigitalOceanMockHttp.type = None
++        DigitalOceanBaseDriver.connectionCls.conn_class = DigitalOceanCommonMockHttp
++        DigitalOcean_v2_BaseDriver.connectionCls.conn_class = DigitalOceanCommonMockHttp
++        DigitalOceanCommonMockHttp.type = None
+         self.driver = DigitalOceanBaseDriver(*DIGITALOCEAN_v2_PARAMS)
+ 
++    def tearDown(self):
++        LibcloudConnection.type = None
++        DigitalOceanCommonMockHttp.type = None
++
+     def test_authentication(self):
+-        DigitalOceanMockHttp.type = "UNAUTHORIZED"
++        DigitalOceanCommonMockHttp.type = "UNAUTHORIZED"
+         self.assertRaises(InvalidCredsError, self.driver.ex_account_info)
+ 
+     def test_ex_account_info(self):
+@@ -51,13 +57,13 @@ class DigitalOceanTests(LibcloudTestCase
+         self.assertEqual(action["type"], "power_on")
+ 
+     def test__paginated_request(self):
+-        DigitalOceanMockHttp.type = "page_1"
++        DigitalOceanCommonMockHttp.type = "page_1"
+         actions = self.driver._paginated_request("/v2/actions", "actions")
+         self.assertEqual(actions[0]["id"], 12345671)
+         self.assertEqual(actions[0]["status"], "completed")
+ 
+ 
+-class DigitalOceanMockHttp(MockHttp):
++class DigitalOceanCommonMockHttp(MockHttp):
+     fixtures = FileFixtures("common", "digitalocean")
+ 
+     response = {
+Index: apache-libcloud-3.8.0/libcloud/test/compute/test_digitalocean_v2.py
+===================================================================
+--- apache-libcloud-3.8.0.orig/libcloud/test/compute/test_digitalocean_v2.py
++++ apache-libcloud-3.8.0/libcloud/test/compute/test_digitalocean_v2.py
+@@ -16,6 +16,7 @@ import sys
+ import unittest
+ from datetime import datetime
+ 
++from libcloud.http import LibcloudConnection
+ from libcloud.test import MockHttp, LibcloudTestCase
+ from libcloud.utils.py3 import httplib, assertRaisesRegex
+ from libcloud.common.types import InvalidCredsError
+@@ -23,8 +24,15 @@ from libcloud.compute.base import NodeIm
+ from libcloud.test.secrets import DIGITALOCEAN_v1_PARAMS, DIGITALOCEAN_v2_PARAMS
+ from libcloud.utils.iso8601 import UTC
+ from libcloud.test.file_fixtures import ComputeFileFixtures
+-from libcloud.common.digitalocean import DigitalOcean_v1_Error
+-from libcloud.compute.drivers.digitalocean import DigitalOceanNodeDriver
++from libcloud.common.digitalocean import (
++    DigitalOcean_v1_Error,
++    DigitalOceanBaseDriver,
++    DigitalOcean_v2_BaseDriver,
++)
++from libcloud.compute.drivers.digitalocean import (
++    DigitalOceanNodeDriver,
++    DigitalOcean_v2_NodeDriver,
++)
+ 
+ try:
+     import simplejson as json
+@@ -35,10 +43,17 @@ except ImportError:
+ # class DigitalOceanTests(unittest.TestCase, TestCaseMixin):
+ class DigitalOcean_v2_Tests(LibcloudTestCase):
+     def setUp(self):
+-        DigitalOceanNodeDriver.connectionCls.conn_class = DigitalOceanMockHttp
+-        DigitalOceanMockHttp.type = None
++        DigitalOceanBaseDriver.connectionCls.conn_class = DigitalOceanComputeMockHttp
++        DigitalOcean_v2_BaseDriver.connectionCls.conn_class = DigitalOceanComputeMockHttp
++        DigitalOceanNodeDriver.connectionCls.conn_class = DigitalOceanComputeMockHttp
++        DigitalOcean_v2_NodeDriver.connectionCls.conn_class = DigitalOceanComputeMockHttp
++        DigitalOceanComputeMockHttp.type = None
+         self.driver = DigitalOceanNodeDriver(*DIGITALOCEAN_v2_PARAMS)
+ 
++    def tearDown(self):
++        LibcloudConnection.type = None
++        DigitalOceanComputeMockHttp.type = None
++
+     def test_v1_Error(self):
+         self.assertRaises(
+             DigitalOcean_v1_Error,
+@@ -56,7 +71,7 @@ class DigitalOcean_v2_Tests(LibcloudTest
+         )
+ 
+     def test_authentication(self):
+-        DigitalOceanMockHttp.type = "UNAUTHORIZED"
++        DigitalOceanComputeMockHttp.type = "UNAUTHORIZED"
+         self.assertRaises(InvalidCredsError, self.driver.list_nodes)
+ 
+     def test_list_images_success(self):
+@@ -128,7 +143,7 @@ class DigitalOcean_v2_Tests(LibcloudTest
+         size = self.driver.list_sizes()[0]
+         location = self.driver.list_locations()[0]
+ 
+-        DigitalOceanMockHttp.type = "INVALID_IMAGE"
++        DigitalOceanComputeMockHttp.type = "INVALID_IMAGE"
+         expected_msg = (
+             r"You specified an invalid image for Droplet creation."
+             + r" \(code: (404|HTTPStatus.NOT_FOUND)\)"
+@@ -146,13 +161,13 @@ class DigitalOcean_v2_Tests(LibcloudTest
+ 
+     def test_reboot_node_success(self):
+         node = self.driver.list_nodes()[0]
+-        DigitalOceanMockHttp.type = "REBOOT"
++        DigitalOceanComputeMockHttp.type = "REBOOT"
+         result = self.driver.reboot_node(node)
+         self.assertTrue(result)
+ 
+     def test_create_image_success(self):
+         node = self.driver.list_nodes()[0]
+-        DigitalOceanMockHttp.type = "SNAPSHOT"
++        DigitalOceanComputeMockHttp.type = "SNAPSHOT"
+         result = self.driver.create_image(node, "My snapshot")
+         self.assertTrue(result)
+ 
+@@ -164,62 +179,62 @@ class DigitalOcean_v2_Tests(LibcloudTest
+ 
+     def test_delete_image_success(self):
+         image = self.driver.get_image(12345)
+-        DigitalOceanMockHttp.type = "DESTROY"
++        DigitalOceanComputeMockHttp.type = "DESTROY"
+         result = self.driver.delete_image(image)
+         self.assertTrue(result)
+ 
+     def test_ex_power_on_node_success(self):
+         node = self.driver.list_nodes()[0]
+-        DigitalOceanMockHttp.type = "POWERON"
++        DigitalOceanComputeMockHttp.type = "POWERON"
+         result = self.driver.ex_power_on_node(node)
+         self.assertTrue(result)
+ 
+     def test_ex_shutdown_node_success(self):
+         node = self.driver.list_nodes()[0]
+-        DigitalOceanMockHttp.type = "SHUTDOWN"
++        DigitalOceanComputeMockHttp.type = "SHUTDOWN"
+         result = self.driver.ex_shutdown_node(node)
+         self.assertTrue(result)
+ 
+     def test_ex_hard_reboot_success(self):
+         node = self.driver.list_nodes()[0]
+-        DigitalOceanMockHttp.type = "POWERCYCLE"
++        DigitalOceanComputeMockHttp.type = "POWERCYCLE"
+         result = self.driver.ex_hard_reboot(node)
+         self.assertTrue(result)
+ 
+     def test_ex_rebuild_node_success(self):
+         node = self.driver.list_nodes()[0]
+-        DigitalOceanMockHttp.type = "REBUILD"
++        DigitalOceanComputeMockHttp.type = "REBUILD"
+         result = self.driver.ex_rebuild_node(node)
+         self.assertTrue(result)
+ 
+     def test_ex_resize_node_success(self):
+         node = self.driver.list_nodes()[0]
+         size = self.driver.list_sizes()[0]
+-        DigitalOceanMockHttp.type = "RESIZE"
++        DigitalOceanComputeMockHttp.type = "RESIZE"
+         result = self.driver.ex_resize_node(node, size)
+         self.assertTrue(result)
+ 
+     def test_destroy_node_success(self):
+         node = self.driver.list_nodes()[0]
+-        DigitalOceanMockHttp.type = "DESTROY"
++        DigitalOceanComputeMockHttp.type = "DESTROY"
+         result = self.driver.destroy_node(node)
+         self.assertTrue(result)
+ 
+     def test_ex_change_kernel_success(self):
+         node = self.driver.list_nodes()[0]
+-        DigitalOceanMockHttp.type = "KERNELCHANGE"
++        DigitalOceanComputeMockHttp.type = "KERNELCHANGE"
+         result = self.driver.ex_change_kernel(node, 7515)
+         self.assertTrue(result)
+ 
+     def test_ex_enable_ipv6_success(self):
+         node = self.driver.list_nodes()[0]
+-        DigitalOceanMockHttp.type = "ENABLEIPV6"
++        DigitalOceanComputeMockHttp.type = "ENABLEIPV6"
+         result = self.driver.ex_enable_ipv6(node)
+         self.assertTrue(result)
+ 
+     def test_ex_rename_node_success(self):
+         node = self.driver.list_nodes()[0]
+-        DigitalOceanMockHttp.type = "RENAME"
++        DigitalOceanComputeMockHttp.type = "RENAME"
+         result = self.driver.ex_rename_node(node, "fedora helios")
+         self.assertTrue(result)
+ 
+@@ -231,7 +246,7 @@ class DigitalOcean_v2_Tests(LibcloudTest
+         self.assertEqual(keys[0].public_key, "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAQQDGk5 example")
+ 
+     def test_create_key_pair(self):
+-        DigitalOceanMockHttp.type = "CREATE"
++        DigitalOceanComputeMockHttp.type = "CREATE"
+         key = self.driver.create_key_pair(
+             name="test1", public_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQsxRiUKn example"
+         )
+@@ -250,7 +265,7 @@ class DigitalOcean_v2_Tests(LibcloudTest
+         self.assertEqual(nodes[0]["size_slug"], "s-1vcpu-1gb")
+ 
+     def test__paginated_request_two_pages(self):
+-        DigitalOceanMockHttp.type = "PAGE_ONE"
++        DigitalOceanComputeMockHttp.type = "PAGE_ONE"
+         nodes = self.driver._paginated_request("/v2/droplets", "droplets")
+         self.assertEqual(len(nodes), 2)
+ 
+@@ -264,13 +279,13 @@ class DigitalOcean_v2_Tests(LibcloudTest
+         self.assertEqual(volume.driver, self.driver)
+ 
+     def test_list_volumes_empty(self):
+-        DigitalOceanMockHttp.type = "EMPTY"
++        DigitalOceanComputeMockHttp.type = "EMPTY"
+         volumes = self.driver.list_volumes()
+         self.assertEqual(len(volumes), 0)
+ 
+     def test_create_volume(self):
+         nyc1 = [r for r in self.driver.list_locations() if r.id == "nyc1"][0]
+-        DigitalOceanMockHttp.type = "CREATE"
++        DigitalOceanComputeMockHttp.type = "CREATE"
+         volume = self.driver.create_volume(4, "example", nyc1)
+         self.assertEqual(volume.id, "62766883-2c28-11e6-b8e6-000f53306ae1")
+         self.assertEqual(volume.name, "example")
+@@ -280,19 +295,19 @@ class DigitalOcean_v2_Tests(LibcloudTest
+     def test_attach_volume(self):
+         node = self.driver.list_nodes()[0]
+         volume = self.driver.list_volumes()[0]
+-        DigitalOceanMockHttp.type = "ATTACH"
++        DigitalOceanComputeMockHttp.type = "ATTACH"
+         resp = self.driver.attach_volume(node, volume)
+         self.assertTrue(resp)
+ 
+     def test_detach_volume(self):
+         volume = self.driver.list_volumes()[0]
+-        DigitalOceanMockHttp.type = "DETACH"
++        DigitalOceanComputeMockHttp.type = "DETACH"
+         resp = self.driver.detach_volume(volume)
+         self.assertTrue(resp)
+ 
+     def test_destroy_volume(self):
+         volume = self.driver.list_volumes()[0]
+-        DigitalOceanMockHttp.type = "DESTROY"
++        DigitalOceanComputeMockHttp.type = "DESTROY"
+         resp = self.driver.destroy_volume(volume)
+         self.assertTrue(resp)
+ 
+@@ -307,7 +322,7 @@ class DigitalOcean_v2_Tests(LibcloudTest
+ 
+     def test_create_volume_snapshot(self):
+         volume = self.driver.list_volumes()[0]
+-        DigitalOceanMockHttp.type = "CREATE"
++        DigitalOceanComputeMockHttp.type = "CREATE"
+         snapshot = self.driver.create_volume_snapshot(volume, "test-snapshot")
+         self.assertEqual(snapshot.id, "c0def940-9324-11e6-9a56-000f533176b1")
+         self.assertEqual(snapshot.name, "test-snapshot")
+@@ -316,7 +331,7 @@ class DigitalOcean_v2_Tests(LibcloudTest
+     def test_delete_volume_snapshot(self):
+         volume = self.driver.list_volumes()[0]
+         snapshot = self.driver.list_volume_snapshots(volume)[0]
+-        DigitalOceanMockHttp.type = "DELETE"
++        DigitalOceanComputeMockHttp.type = "DELETE"
+         result = self.driver.delete_volume_snapshot(snapshot)
+         self.assertTrue(result)
+ 
+@@ -396,7 +411,7 @@ class DigitalOcean_v2_Tests(LibcloudTest
+         self.assertTrue(ret)
+ 
+ 
+-class DigitalOceanMockHttp(MockHttp):
++class DigitalOceanComputeMockHttp(MockHttp):
+     fixtures = ComputeFileFixtures("digitalocean_v2")
+ 
+     def _v2_regions(self, method, url, body, headers):
+Index: apache-libcloud-3.8.0/libcloud/test/dns/test_digitalocean.py
+===================================================================
+--- apache-libcloud-3.8.0.orig/libcloud/test/dns/test_digitalocean.py
++++ apache-libcloud-3.8.0/libcloud/test/dns/test_digitalocean.py
+@@ -15,20 +15,28 @@
+ import sys
+ import unittest
+ 
++from libcloud.http import LibcloudConnection
+ from libcloud.test import MockHttp, LibcloudTestCase
+ from libcloud.dns.types import RecordType
+ from libcloud.utils.py3 import httplib
+ from libcloud.test.secrets import DIGITALOCEAN_v2_PARAMS
+ from libcloud.test.file_fixtures import DNSFileFixtures
++from libcloud.common.digitalocean import DigitalOceanBaseDriver, DigitalOcean_v2_BaseDriver
+ from libcloud.dns.drivers.digitalocean import DigitalOceanDNSDriver
+ 
+ 
+ class DigitalOceanDNSTests(LibcloudTestCase):
+     def setUp(self):
++        DigitalOceanBaseDriver.connectionCls.conn_class = DigitalOceanDNSMockHttp
++        DigitalOcean_v2_BaseDriver.connectionCls.conn_class = DigitalOceanDNSMockHttp
+         DigitalOceanDNSDriver.connectionCls.conn_class = DigitalOceanDNSMockHttp
+         DigitalOceanDNSMockHttp.type = None
+         self.driver = DigitalOceanDNSDriver(*DIGITALOCEAN_v2_PARAMS)
+ 
++    def tearDown(self):
++        LibcloudConnection.type = None
++        DigitalOceanDNSMockHttp.type = None
++
+     def test_list_zones(self):
+         zones = self.driver.list_zones()
+         self.assertTrue(len(zones) >= 1)
+Index: apache-libcloud-3.8.0/libcloud/test/__init__.py
+===================================================================
+--- apache-libcloud-3.8.0.orig/libcloud/test/__init__.py
++++ apache-libcloud-3.8.0/libcloud/test/__init__.py
+@@ -205,7 +205,7 @@ class MockHttp(LibcloudConnection):
+         )  # Python 3.7 no longer quotes ~
+ 
+         if type:
+-            meth_name = "{}_{}".format(meth_name, self.type)
++            meth_name = "{}_{}".format(meth_name, type)
+ 
+         if use_param and use_param in qs:
+             param = qs[use_param][0].replace(".", "_").replace("-", "_")
+Index: apache-libcloud-3.8.0/CHANGES.rst
+===================================================================
+--- apache-libcloud-3.8.0.orig/CHANGES.rst
++++ apache-libcloud-3.8.0/CHANGES.rst
+@@ -1,6 +1,22 @@
+ Changelog
+ =========
+ 
++Other / Development
++~~~~~--------------
++
++- pytest library used for running tests and microbenchmarks has been upgraded to
++  v8.1.
++
++  Changes in the pytest test discovery and collection mechanism and ordering
++  have uncovered some race conditions and cross test pollution which has been
++  addressed.
++
++  Now all the tests are passing, but it's possible that there are still some
++  race conditions hiding which many only pop up in the future (since we run
++  tests in parallel and order in which they run is not fully deterministic).
++  (#1994)
++  [Tomaz Muraus - @Kami]
++
+ Changes in Apache Libcloud 3.8.0
+ --------------------------------
+ 

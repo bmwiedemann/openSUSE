@@ -545,4 +545,17 @@ https://github.com/apache/libcloud/blob/trunk/CHANGES.rst#changes-in-apache-libc
     - [S3] Support all available storage classes. Previously only</comment>
     <requestid>1114461</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>c89c3e31b79a19197c82286149a3dcac</srcmd5>
+    <version>3.8.0</version>
+    <time>1717765326</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject and autosetup macros.
+- No more greedy globs in %files.
+- Tidy up {Build,}Requires on typing and lxml.
+- Stop skipping a bunch of tests, requests-mock has been fixed.
+- Add patches support-pytest-8.patch, support-pytest-8.2.patch:
+  * Support running under pytest 8.2.x.</comment>
+    <requestid>1178871</requestid>
+  </revision>
 </revisionlist>
