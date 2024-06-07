@@ -153,4 +153,14 @@
   * Configuration option bdd_features_base_dir is interpreted as relative</comment>
     <requestid>1172299</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fb4c60ee95473397e723746f9d97f5bd</srcmd5>
+    <version>7.2.0</version>
+    <time>1717765485</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.2.0:
+  * Fix compatibility issue with Python 3.13.
+  * Declare compatibility with Python 3.13.</comment>
+    <requestid>1179139</requestid>
+  </revision>
 </revisionlist>

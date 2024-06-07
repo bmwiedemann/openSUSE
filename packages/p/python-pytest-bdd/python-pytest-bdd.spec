@@ -17,7 +17,7 @@
 
 
 Name:           python-pytest-bdd
-Version:        7.1.2
+Version:        7.2.0
 Release:        0
 Summary:        BDD for pytest
 License:        MIT

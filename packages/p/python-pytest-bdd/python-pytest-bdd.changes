@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun  7 07:00:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.2.0:
+  * Fix compatibility issue with Python 3.13.
+  * Declare compatibility with Python 3.13.
+
+-------------------------------------------------------------------
 Mon May  6 06:41:12 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 7.1.2:
