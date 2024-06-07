@@ -1,4 +1,132 @@
 -------------------------------------------------------------------
+Thu May 30 16:03:50 UTC 2024 - i@guoyunhe.me
+
+- Update to version 0.0.32~git20240530:
+  * PPU Progress Hint: Show it as long as it needs
+  * PPU Analyzer: Unuse per-instruction compilation on fallback
+  * System.cpp: Fix crash on fatal error during Ready state
+  * LLVM: Prevent crash on disk space shortage
+  * LLVM: Fix nullptr deref when accessing broken cache files
+  * SPU Debug: Fix crash on missing directory
+  * SPU: Add block prefix to log if available
+  * fix typo from PR 15636
+  * vk: Fix typo
+  * vk: Add support for NVK driver
+  * vk: Use std::set
+  * vk: Don't always preserve the renderpass for all drivers when doing transform hot-patch
+  * Overlays: allow ldd input even if len is 0
+  * cellKbCnvRawCode: don't use caps lock as shift lock unless we are using the qwertz or azerty layout
+  * osk: use cell key code in CellOskDialogKeyMessage (:facepalm: we don't need the Qt code)
+  * cellKb: Clarify cellKbCnvRawCode alphabet conversion
+  * input: remove unused parameter
+  * Add 7zip submodule
+  * Remove 7z copy pasta repo
+  * input: only unregister devices if there is no other handler registered
+  * input: fix ingame raw mouse enumeration
+  * input/qt: enumerate raw mouse devices once a seconds in the config dialog
+  * qt: ignore right click to clear input config button if the button is disabled
+  * input/qt: increase max raw mouse devices to 16
+  * input: implement raw mouse hot swap
+  * input: add mutex for raw mice
+  * input: only unregister raw mouse devices if they were registered
+  * input: add all mice that were requested. only connect the ones that exist
+  * input: add timer to raw mouse enumeration
+  * input: move raw mouse register logic to own function
+  * SPU LLVM: Implement PUTLLC16 for accurate RSX reservations
+  * Update curl to 8.8.0
+  * SPU LLVM: Disable PUTLLC16 optimization on accurate RSX reservations
+  * RSX/SPU: Import and improve RSX accurate reservations functionality
+  * Savestates/SPU LLVM: Fix sinking store finally
+  * input: fix now_connect in raw mouse handler
+  * input/qt: Keep configured raw mouse device in list even if it is not connected
+  * input/qt: fix out of bounds exception when using button ids in raw mouse config dialog
+  * input: fix reading mouse buttons from guncon cfg
+  * input: remove No Button string from raw mouse config
+  * input/qt: allow to map mouse buttons in the guncon config
+  * input/qt: let user choose raw mouse device
+  * raw_mouse: fix out of bounds error
+  * input: add horizontal mouse scroll/tilt to mouse handlers
+  * input: move mouse handler code to cpp
+  * Qt: use mouse input to map basic mouse buttons
+  * implement mouse handler config
+  * Add 2 more slots for Power Discs on Infinity Base
+  * SPU Analyzer: Minor bugfix
+  * SPU Analyzer: Implement loop analysis
+  * SPU Analyzer: Improve value propagation
+  * SPU LLVM: Avoid notifications in cellSync SPU functions
+  * SPU LLVM: PUTLLC 16 Optimization
+  * Replace src_loc with std::soource_location
+  * Rename Suspsend to Anti-Cheat Savestates
+  * StrFmt.h: Fix throw_exception log message
+  * SPU Debug: Fix GUI thread halt on log massive messages
+  * sys_tty: Reduce thread dump log spam
+  * Reduce logging of some SPU debug data
+  * rsx/vk: Derstroy shader workers on thread exit
+  * Settings: Tell the user how to disable log limit
+  * Improve match2 ctx context start
+  * Improve CB accuracy for Avc2
+  * cellSysutil: Implement dispatcher callback unloading
+  * Avoid repeating the -march flag
+  * Fix GunCon3 encoding
+  * memory_viewer_panel: use existing thread_class instead of extra enum
+  * fix GunCon3 warnings
+  * Fix some warnings
+  * Replace get_thread_class with static cast for performance reasons
+  * Fix spu_thread audit check
+  * Add comment for thread_scheduler_mode::old to get_affinity_mask
+  * CPUThread: remove m_class member due to bad ppu cache design
+  * rsx: Initialize some uninitialized members
+  * threads: replace magic number id_type with thread_class
+  * overlays/input: allow ldd pad input
+  * PAD: Fix ldd_data transfer
+  * Add Skylander Dump File Types
+  * USB: Add GunCon 3 config window
+  * Consolidate input products in a single place
+  * Add matching2 option handling
+  * spullvm: fix compilation: reference to local binding 'b2' declared in enclosing function
+  * fix size calculation in get_member_and_attrs
+  * gl: Handle GCM_FORMAT_G8B8 readback compatibility check
+  * CMake fixes
+  * Savestates: Warn on invalid SPU save state
+  * Savestates/SPU LLVM: Fix sinking stores
+  * Log SPU access violation in always-level
+  * Savestates: Multi-threaded compression, use ZSTD
+  * Savestates: Fix SPU pause from access violation handler
+  * Hide Game Window as soon as emulation closes
+  * Progress Dialog: Extremely important text fix
+  * sys_fs: Fix race in file stream API
+  * rsx: Fix processing of deferred indexed draw parameter updates
+  * Remove duplicated code for USB connection/disconnection
+  * Remove the redundant config for GunCon3
+  * Hotplug support for emulated devices
+  * Create a device class for GunCon3 which is ignored by cellPad
+  * Rename is_fake_move to fit other devices
+  * sys_net improvements (#15584)
+  * vk: Perform the buffer update without splitting the renderpasses
+  * vk: Allow barriers to optionally skip renderpass splitting
+  * rsx: Initialize some vars
+  * rsx: Use range intersection to speed up xform constants patching
+  * rsx: Add a base class for vertex programs and implement range intersection for constant IDs
+  * gl: Implement transform constants patching
+  * gl: Memoize the bound range for a buffer
+  * vk: Minor cleanup
+  * vk: Whitespace fix
+  * vk: Silence some warnings
+  * rsx/vk: Implement batched transform constant updates
+  * rsx: Provide a supplementary argument to the command barriers
+  * rsx: Start splitting off some stuff into the graph backend class
+  * vk: Fix a spec violation
+  * vk: Implement dynamic transform constant updates
+  * rsx: Implement deferred request size io buffer where we do not know the size beforehand.
+  * rsx: Implement deferred transform constants load
+  * cellPad: don't report fake move pads as connected
+  * vfs_directory: try to fix compilation on gcc 14.1
+  * USB: Disconnect the virtual device only for TRANSFER_NO_DEVICE error
+  * Update SDL to 2.30.3
+  * Update FAudio to 24.05
+  * Split normal sockets and p2p sockets handling v2
+
+-------------------------------------------------------------------
 Wed May 08 12:52:39 UTC 2024 - i@guoyunhe.me
 
 - Update to version 0.0.32~git20240507:
