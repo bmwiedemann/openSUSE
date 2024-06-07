@@ -24,6 +24,8 @@ License:        HPND AND MIT
 URL:            https://github.com/Unidata/netcdf4-python
 Source:         https://files.pythonhosted.org/packages/source/n/netCDF4/netCDF4-%{version}.tar.gz
 Source99:       python-netCDF4.rpmlintrc
+# PATCH-FIX-UPSTREAM Fix incompatbile pointer argument to nc_put_att_string()
+Patch0:         https://github.com/Unidata/netcdf4-python/pull/1322.patch
 BuildRequires:  %{python_module Cython >= 0.29 with %python-Cython < 3}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module cftime}
@@ -44,7 +46,7 @@ Requires:       python-certifi
 Requires:       python-cftime
 Requires:       python-numpy >= 1.10.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # SECTION tests
 BuildRequires:  %{python_module pytest}
 BuildRequires:  netcdf
@@ -67,7 +69,7 @@ types are not. Mixtures of compound and vlen data types (compound types
 containing vlens, and vlens containing compound types) are not supported.
 
 %prep
-%setup -q -n netCDF4-%{version}
+%autosetup -p1 -n netCDF4-%{version}
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jun  6 08:39:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Re-download 1322.patch: ensure it matches the contant as provided
+  the URL specified in the spec file.
+
+-------------------------------------------------------------------
+Wed May 29 21:17:41 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up the SPEC file.
+
+-------------------------------------------------------------------
+Wed May 29 14:15:42 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Cherry-pick upstream patch to fix build with GCC 14
+  * https://github.com/Unidata/netcdf4-python/pull/1322.patch
+
+-------------------------------------------------------------------
 Thu Jan 18 13:25:55 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable broken tests for s390x, gh#Unidata/netcdf4-python#1124,
