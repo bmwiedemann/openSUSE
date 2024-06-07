@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun  6 20:03:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.1.4:
+  * remove get_read_from_map_from_permutation,
+    get_write_to_map_from_permutation
+  * KeyBuilder: support function hashing
+  * PersistentDict: Use sqlite as backend storage v2
+
+-------------------------------------------------------------------
 Sat Apr 27 07:43:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.1.2:

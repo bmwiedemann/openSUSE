@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytools
-Version:        2024.1.2
+Version:        2024.1.4
 Release:        0
 Summary:        A collection of tools for Python
 License:        MIT
@@ -30,6 +30,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module platformdirs >= 2.2.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module sqlite3}
 BuildRequires:  %{python_module typing_extensions if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
