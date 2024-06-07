@@ -26,6 +26,8 @@ URL:            https://github.com/sunpy/sunpy
 Source0:        https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE use custom hypothesis profile for slow OBS executions
 Patch1:         sunpy-obs-profile.patch
+# PATCH-FIX-UPSTREAM Update ANA for GCC 14
+Patch2:         https://github.com/sunpy/sunpy/pull/7662.patch
 BuildRequires:  %{python_module aioftp}
 BuildRequires:  %{python_module astropy >= 5.0.6}
 BuildRequires:  %{python_module base => 3.9}

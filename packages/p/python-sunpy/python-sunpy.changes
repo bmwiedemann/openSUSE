@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  6 07:53:25 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Cherry-pick upstream patch to fix build with GCC 14
+  * https://github.com/sunpy/sunpy/pull/7662.patch
+
+-------------------------------------------------------------------
 Sat May 25 10:17:09 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.1.3
