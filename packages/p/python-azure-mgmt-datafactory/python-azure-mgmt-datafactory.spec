@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-datafactory
-Version:        7.1.0
+Version:        8.0.0
 Release:        0
 Summary:        Microsoft Azure Data Factory Management Client Library
 License:        MIT

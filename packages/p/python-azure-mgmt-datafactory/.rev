@@ -338,4 +338,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1173585 from glaubitz)</comment>
     <requestid>1173672</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>9d3a60edba9aa3203a097cdb687e5211</srcmd5>
+    <version>8.0.0</version>
+    <time>1717765547</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 8.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1179172 from glaubitz)</comment>
+    <requestid>1179204</requestid>
+  </revision>
 </revisionlist>
