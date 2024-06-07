@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-testinfra
-Version:        10.1.0
+Version:        10.1.1
 Release:        0
 Summary:        Python module to test infrastructures
 License:        Apache-2.0
