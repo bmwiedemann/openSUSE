@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  7 08:57:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Enforce c++-17 to fix build with icu 75
+
+-------------------------------------------------------------------
 Wed Feb  7 16:21:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Build using python3 rather than python2

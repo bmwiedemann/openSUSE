@@ -100,7 +100,7 @@ This package contains the SQLite3 driver for the Database connectivity and creat
 sed -i 's#/usr/bin/env python$#/usr/bin/python3#' tools/sdc.py
 
 %build
-%cmake_kf5 -d build
+%cmake_kf5 -d build -- -DCMAKE_CXX_STANDARD=17
 
 %cmake_build
 

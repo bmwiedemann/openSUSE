@@ -121,4 +121,12 @@
   * 0001-Find-also-Python3-with-find_package-PythonInterp.patch</comment>
     <requestid>1144973</requestid>
   </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>99ad938871fbd9a2463ea7adaa03dd93</srcmd5>
+    <version>3.2.0</version>
+    <time>1717765495</time>
+    <user>anag+factory</user>
+    <comment>- Enforce c++-17 to fix build with icu 75</comment>
+    <requestid>1179159</requestid>
+  </revision>
 </revisionlist>
