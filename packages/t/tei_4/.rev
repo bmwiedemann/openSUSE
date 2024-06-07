@@ -107,4 +107,15 @@
     <comment></comment>
     <requestid>1151509</requestid>
   </revision>
+  <revision rev="17" vrev="21">
+    <srcmd5>91c1e7426172786bcede2c3126461db0</srcmd5>
+    <version>2006.8.14</version>
+    <time>1717765499</time>
+    <user>anag+factory</user>
+    <comment>- Do not use source url for sources as they seem to be not available
+  anymore
+
+- Generic spec file cleanup (using spec-cleaner).</comment>
+    <requestid>1179161</requestid>
+  </revision>
 </revisionlist>

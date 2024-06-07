@@ -1,7 +1,7 @@
 #
-# spec file for package tei_4 (Version 2006.8.14)
+# spec file for package tei_4
 #
-# Copyright (c) 2010 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,36 +12,40 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# norootforbuild
 
-
+%define regcat %{_bindir}/sgml-register-catalog
 Name:           tei_4
-BuildRequires:  sgml-skel
+Version:        2006.8.14
+Release:        0
+Summary:        TEI 4 DTD (SGML and XML)
 License:        BSD-3-Clause
 Group:          Productivity/Publishing/SGML
-AutoReqProv:    on
-Summary:        TEI 4 DTD (SGML and XML)
-Version:        2006.8.14
-Release:        1
-Source0:        http://www.tei-c.org/Guidelines2/p4html.tar.gz
-# # Also in p4html.tar.gz:
+URL:            https://www.tei-c.org/
+Source0:        p4html.tar.gz
 # Source1: http://www.tei-c.org/P4X/DTD/dtd.zip
-Source2:        http://www.tei-c.org/Schemas/RelaxNG/P4X/teirng.zip
 # Source1: tei4sgml.dec
+# # Also in p4html.tar.gz:
+Source2:        teirng.zip
 # Source3: teicatalog.xml
-# Patch: tei_4-catalog.diff
-Url:            http://www.tei-c.org/
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  sgml-skel
+Requires:       iso_ent
+Requires:       libxml2
+Requires:       sgml-skel
+Requires:       xmlcharent
+# FIXME: use proper Requires(pre/post/preun/...)
+PreReq:         %{_bindir}/edit-xml-catalog
+PreReq:         %{_bindir}/install
+PreReq:         %{_bindir}/xmlcatalog
+PreReq:         %{regcat}
+PreReq:         /bin/touch
+PreReq:         awk
+PreReq:         grep
+PreReq:         sed
+PreReq:         zlib
 BuildArch:      noarch
-%define regcat /usr/bin/sgml-register-catalog
-PreReq:         %{regcat} /usr/bin/xmlcatalog /usr/bin/edit-xml-catalog
-PreReq:         /bin/touch /usr/bin/install
-PreReq:         sed grep awk zlib
-Requires:       iso_ent xmlcharent
-Requires:       sgml-skel libxml2
 
 %description
 If you want to mark up literary and linguistic texts for online
@@ -50,23 +54,13 @@ is the way to go. The TEI DTD comes with special markup elements and
 attributes for poems, plays, and novels as well as for critical
 apparatus, taxonomy systems, etc.
 
-
-
-Authors:
---------
-    C M Sperberg-McQueen
-    Lou Burnard
-    Syd Bauman
-    Steven DeRose
-    Sebastian Rahtz
-
 %define INSTALL install -m755 -s
 %define INSTALL_DIR install -d -m755
 %define INSTALL_DATA install -m644
 %define INSTALL_SCRIPT install -m755
-%define sgml_config_dir /var/lib/sgml
+%define sgml_config_dir %{_localstatedir}/lib/sgml
 %define sgml_sysconf_dir %{_sysconfdir}/sgml
-%define xml_config_dir /var/lib/xml
+%define xml_config_dir %{_localstatedir}/lib/xml
 %define xml_sysconf_dir %{_sysconfdir}/xml
 %define sgml_dir %{_datadir}/sgml
 %define sgml_tei_dir %{sgml_dir}/tei
@@ -85,12 +79,11 @@ Authors:
 %autosetup -p1 -n TEI_P4
 chmod -R a+rX,g-w,o-w,u+w .
 find -type d | xargs chmod 755
-# %patch0 -p 1
 
 %build
 # Prep XML catalog fragment
 %define FOR_ROOT_CAT for-catalog-%{name}-%{version}.xml
-xmlcatbin=/usr/bin/xmlcatalog
+xmlcatbin=%{_bindir}/xmlcatalog
 # build root catalog fragment
 rm -f %{FOR_ROOT_CAT}.tmp
 $xmlcatbin --noout --create %{FOR_ROOT_CAT}.tmp
@@ -119,81 +112,72 @@ sed '/<catalog/a\
 
 %install
 if [ ! "x" = "x$RPM_BUILD_ROOT" ] ; then
-   rm -fr $RPM_BUILD_ROOT
-   %{INSTALL_DIR} $RPM_BUILD_ROOT
+   %{INSTALL_DIR} %{buildroot}
 fi
 # TEI
-%{INSTALL_DIR} $RPM_BUILD_ROOT%{sgml_tei_dtd4_dir}
-# %{INSTALL_DATA} tei*.{dec,dtd,ent} $RPM_BUILD_ROOT%{sgml_tei_dir}
-%{INSTALL_DATA} DTD/* $RPM_BUILD_ROOT%{sgml_tei_dtd4_dir}
-mkdir -p $RPM_BUILD_ROOT%{_docdir}/%{name}/html
-cp -a . $RPM_BUILD_ROOT%{_docdir}/%{name}/html
-rm -fr $RPM_BUILD_ROOT%{_docdir}/%{name}/html/DTD
-ln -sf %{sgml_tei_dtd4_dir} $RPM_BUILD_ROOT%{_docdir}/%{name}/html/DTD
+%{INSTALL_DIR} %{buildroot}%{sgml_tei_dtd4_dir}
+# %%{INSTALL_DATA} tei*.{dec,dtd,ent} $RPM_BUILD_ROOT%%{sgml_tei_dir}
+%{INSTALL_DATA} DTD/* %{buildroot}%{sgml_tei_dtd4_dir}
+mkdir -p %{buildroot}%{_docdir}/%{name}/html
+cp -a . %{buildroot}%{_docdir}/%{name}/html
+rm -fr %{buildroot}%{_docdir}/%{name}/html/DTD
+ln -sf %{sgml_tei_dtd4_dir} %{buildroot}%{_docdir}/%{name}/html/DTD
 # normalize catalog and remove duplicates
 awk '/^ *PUBLIC/ {print f;f=$0;}; /^[[:lower:]].*/ {f=f " " $0}' \
   DTD/catalog.tei \
   | sed 's/^ *//;s/ [ ]\+/ /;s:&DTDpath;:%{sgml_tei_dtd4_dir}/:' \
   | grep -v wdgis2.ent \
-  | sort -u > $RPM_BUILD_ROOT%{sgml_tei_dtd4_dir}/catalog.tei
-%{INSTALL_DIR} $RPM_BUILD_ROOT%{sgml_config_dir}
-cp $RPM_BUILD_ROOT%{sgml_tei_dtd4_dir}/catalog.tei \
-  $RPM_BUILD_ROOT%{sgml_config_dir}/CATALOG.tei_4
+  | sort -u > %{buildroot}%{sgml_tei_dtd4_dir}/catalog.tei
+%{INSTALL_DIR} %{buildroot}%{sgml_config_dir}
+cp %{buildroot}%{sgml_tei_dtd4_dir}/catalog.tei \
+  %{buildroot}%{sgml_config_dir}/CATALOG.tei_4
 { echo "CATALOG %{sgml_config_dir}/CATALOG.iso_ent";
   echo "OVERRIDE YES";
   echo "DTDDECL \"-//TEI P4//DTD Main DTD Driver File//EN\" %{sgml_tei_dtd4_dir}/teisgml.dec";
   echo "CATALOG %{sgml_config_dir}/CATALOG.tei_4";
-} >$RPM_BUILD_ROOT%{sgml_config_dir}/CATALOG.tei_4sgml
+} >%{buildroot}%{sgml_config_dir}/CATALOG.tei_4sgml
 { echo "-- CATALOG %{sgml_config_dir}/CATALOG.db41xml --";
   echo "OVERRIDE YES";
   echo "-- DTDDECL \"-//TEI P4//DTD Main DTD Driver File XML//EN\" %{sgml_tei_dtd4_dir}/teilitex.dec --";
   echo "SGMLDECL %{sgml_tei_dtd4_dir}/teilitex.dec";
   echo "CATALOG %{sgml_config_dir}/CATALOG.tei_4";
-} >$RPM_BUILD_ROOT%{sgml_config_dir}/CATALOG.tei_4xml
-pushd $RPM_BUILD_ROOT%{sgml_dir}
+} >%{buildroot}%{sgml_config_dir}/CATALOG.tei_4xml
+pushd %{buildroot}%{sgml_dir}
   for c in CATALOG.*; do
     ln -sf ../../..%{sgml_config_dir}/$c .
-    # ln -sf %{sgml_config_dir}/$c .
+    # ln -sf %%{sgml_config_dir}/$c .
   done
 popd
-# parse-sgml-catalog.sh $RPM_BUILD_ROOT%{sgml_config_dir}/CATALOG.tei_4 \
+# parse-sgml-catalog.sh $RPM_BUILD_ROOT%%{sgml_config_dir}/CATALOG.tei_4 \
 #   | sort | uniq > CATALOG.norm
-sgml2xmlcat.sh -i $RPM_BUILD_ROOT%{sgml_config_dir}/CATALOG.tei_4 \
-  -l -s '%{buildroot}/usr/share/sgml' \
-  -p $(echo %{sgml_tei_dtd4_dir} | sed 's|/usr/share/sgml/||') \
+sgml2xmlcat.sh -i %{buildroot}%{sgml_config_dir}/CATALOG.tei_4 \
+  -l -s '%{buildroot}%{_datadir}/sgml' \
+  -p $(echo %{sgml_tei_dtd4_dir} | sed 's|%{_datadir}/sgml/||') \
   -x tei-xmlcat
-%{INSTALL_DIR} $RPM_BUILD_ROOT%{xml_sysconf_dir}
+%{INSTALL_DIR} %{buildroot}%{xml_sysconf_dir}
 sed "s|http://www.tei-c.org/Guidelines/DTD|file://%{sgml_tei_dtd4_dir}|" \
   DTD/teicatalog.xml \
-  >$RPM_BUILD_ROOT%{_sysconfdir}/xml/tei_4.xml
+  >%{buildroot}%{_sysconfdir}/xml/tei_4.xml
 for f in $(sed -n 's:.*uri=\"\(.*\)\".*:\1:p' DTD/teicatalog.xml); do
   g=${f##*/}
   xmlcatalog --noout --add "system" "$f" "file://%{sgml_tei_dtd4_dir}/$g" \
-    $RPM_BUILD_ROOT%{_sysconfdir}/xml/tei_4.xml
+    %{buildroot}%{_sysconfdir}/xml/tei_4.xml
 done
-mkdir -p ${RPM_BUILD_ROOT}%{xml_sysconf_dir}
-install -m644 %{FOR_ROOT_CAT} ${RPM_BUILD_ROOT}%{xml_sysconf_dir}
+mkdir -p %{buildroot}%{xml_sysconf_dir}
+install -m644 %{FOR_ROOT_CAT} %{buildroot}%{xml_sysconf_dir}
 #
 %define all_cat %{name} tei_4sgml
 
 %post
 if [ -x %{regcat} ]; then
   for c in  %{all_cat}; do
-    grep -q -e "%{sgml_dir}/CATALOG.$c\\>" /etc/sgml/catalog \
+    grep -q -e "%{sgml_dir}/CATALOG.$c\\>" %{_sysconfdir}/sgml/catalog \
       || %{regcat} -a %{sgml_dir}/CATALOG.$c >/dev/null 2>&1 || :
   done
 fi
 xmlcatbin=usr/bin/xmlcatalog
-%if %suse_version < 810
-  # autobuild on 8.0 does not install it early enough
-  [ -x $xmlcatbin ] || {
-    echo "warning: $xmlcatbin does not exist"
-    echo "create etc/xml/catalog etc. manually"
-    exit 0
-  }
-%endif
-edit-xml-catalog --group --catalog /etc/xml/suse-catalog.xml \
-  --add /etc/xml/%{FOR_ROOT_CAT}
+edit-xml-catalog --group --catalog %{_sysconfdir}/xml/suse-catalog.xml \
+  --add %{_sysconfdir}/xml/%{FOR_ROOT_CAT}
 
 %postun
 if [ "$1" = "0" -a -x %{regcat} ]; then
@@ -202,18 +186,13 @@ if [ "$1" = "0" -a -x %{regcat} ]; then
   done
 fi
 # remove entries only on removal of file
-if [ ! -f %{xml_sysconf_dir}/%{FOR_ROOT_CAT} -a -x /usr/bin/edit-xml-catalog ] ; then
-  edit-xml-catalog --group --catalog /etc/xml/suse-catalog.xml \
+if [ ! -f %{xml_sysconf_dir}/%{FOR_ROOT_CAT} -a -x %{_bindir}/edit-xml-catalog ] ; then
+  edit-xml-catalog --group --catalog %{_sysconfdir}/xml/suse-catalog.xml \
     --del %{name}-%{version}
 fi
 
-%clean
-rm -fr $RPM_BUILD_ROOT
-
 %files
-%defattr(-, root, root)
 %{_docdir}/%{name}
-# %doc fpi/teifpi.doc fpi/teifpi.html
 %config %{xml_sysconf_dir}/%{FOR_ROOT_CAT}
 %config %{xml_sysconf_dir}/tei_4.xml
 %{sgml_tei_dtd4_dir}

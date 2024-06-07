@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun  7 09:15:45 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Do not use source url for sources as they seem to be not available
+  anymore
+
+-------------------------------------------------------------------
+Wed May 22 06:35:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Generic spec file cleanup (using spec-cleaner).
+
+-------------------------------------------------------------------
 Mon Feb 26 12:30:20 UTC 2024 - pgajdos@suse.com
 
 - use %autosetup
