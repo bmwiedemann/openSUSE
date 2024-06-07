@@ -122,4 +122,25 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1128295</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ce63b0f530abdcb1080e322d07bf09a0</srcmd5>
+    <version>2.1.1</version>
+    <time>1717765331</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.1:
+  * Fixed typo 'marking' instead of 'marketing' in case-
+    insensitive mailbox name list.
+  * When DNS-based deliverability checks fail, in some cases
+    exceptions are now thrown with `raise ... from` for better
+    nested exception tracking.
+  * Fixed tests to work when no local resolver can be configured.
+  * This project is now licensed under the Unlicense (instead of
+    CC0).
+  * Minor improvements to tests.
+  * Minor improvements to code style.
+- drop dont-require-resolv-tests.patch: obsolete
+
+  * Ignore warning as error from requests-toolbelt via dnspython.</comment>
+    <requestid>1178915</requestid>
+  </revision>
 </revisionlist>

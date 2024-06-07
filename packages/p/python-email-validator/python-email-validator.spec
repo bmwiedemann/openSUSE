@@ -1,7 +1,7 @@
 #
 # spec file for package python-email-validator
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-email-validator
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        A robust email syntax and deliverability validation library for Python
 License:        CC0-1.0
@@ -27,8 +27,6 @@ Source:         https://github.com/JoshData/python-email-validator/archive/refs/
 # PATCH-FIX-OPENSUSE Ignore DeprecationWarning until requests-toolbelt is fixed
 # (Pulled in by dnspython)
 Patch0:         ignore-urllib3-pyopenssl-warning.patch
-# PATCH-FIX-OPENSUSE do not require /etc/resolv.conf for testing
-Patch1:         dont-require-resolv-tests.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module dnspython >= 1.15.0}
 BuildRequires:  %{python_module idna >= 2.0.0}
@@ -40,7 +38,7 @@ Requires:       python-dnspython >= 1.15.0
 Requires:       python-idna >= 2.0.0
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       python-email_validator = %{version}-%{release}
 Obsoletes:      python-email_validator < %{version}-%{release}
 BuildArch:      noarch

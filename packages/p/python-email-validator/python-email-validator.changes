@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun  6 07:38:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * Fixed typo 'marking' instead of 'marketing' in case-
+    insensitive mailbox name list.
+  * When DNS-based deliverability checks fail, in some cases
+    exceptions are now thrown with `raise ... from` for better
+    nested exception tracking.
+  * Fixed tests to work when no local resolver can be configured.
+  * This project is now licensed under the Unlicense (instead of
+    CC0).
+  * Minor improvements to tests.
+  * Minor improvements to code style.
+- drop dont-require-resolv-tests.patch: obsolete
+
+-------------------------------------------------------------------
 Thu Nov 16 10:02:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.0:
@@ -111,7 +127,7 @@ Thu Sep  8 07:24:18 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
     TEST_ENVIRONMENT, and DEFAULT_TIMEOUT can be used to change the default
     values of the keyword arguments.
 - Add patch ignore-urllib3-pyopenssl-warning.patch:
-  * Ignore warning as error from requests-toolbelt via dnspython. 
+  * Ignore warning as error from requests-toolbelt via dnspython.
 
 -------------------------------------------------------------------
 Tue Apr 19 17:42:44 UTC 2022 - Matej Cepl <mcepl@suse.com>
