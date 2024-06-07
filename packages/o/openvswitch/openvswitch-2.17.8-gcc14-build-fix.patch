@@ -1,0 +1,38 @@
+From 335a5deac3ff91448ca14651e92f39dfdd512fcf Mon Sep 17 00:00:00 2001
+From: Ilya Maximets <i.maximets@ovn.org>
+Date: Thu, 18 Jan 2024 15:59:05 +0100
+Subject: [PATCH] ovs-atomic: Fix inclusion of Clang header by GCC 14.
+
+GCC 14 started to advertise c_atomic extension, older versions didn't
+do that.  Add check for __clang__, so GCC doesn't include headers
+designed for Clang.
+
+Another option would be to prefer stdatomic implementation instead,
+but some older versions of Clang are not able to use stdatomic.h
+supplied by GCC as described in commit:
+  07ece367fb5f ("ovs-atomic: Prefer Clang intrinsics over <stdatomic.h>.")
+
+This change fixes OVS build with GCC on Fedora Rawhide (40).
+
+Reported-by: Jakob Meng <code@jakobmeng.de>
+Acked-by: Jakob Meng <jmeng@redhat.com>
+Acked-by: Eelco Chaudron <echaudro@redhat.com>
+Acked-by: Simon Horman <horms@ovn.org>
+Signed-off-by: Ilya Maximets <i.maximets@ovn.org>
+---
+ lib/ovs-atomic.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/ovs-atomic.h b/lib/ovs-atomic.h
+index ab9ce6b2e0f..f140d25feba 100644
+--- a/lib/ovs-atomic.h
++++ b/lib/ovs-atomic.h
+@@ -328,7 +328,7 @@
+     #if __CHECKER__
+         /* sparse doesn't understand some GCC extensions we use. */
+         #include "ovs-atomic-pthreads.h"
+-    #elif __has_extension(c_atomic)
++    #elif __clang__ &&  __has_extension(c_atomic)
+         #include "ovs-atomic-clang.h"
+     #elif HAVE_ATOMIC && __cplusplus >= 201103L
+         #include "ovs-atomic-c++.h"

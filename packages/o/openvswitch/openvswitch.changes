@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  4 09:48:39 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- GCC 14 started to advertise c_atomic extension, older versions
+  didn't do that.  Add check for __clang__, so GCC doesn't include
+  headers designed for Clang
+  (openvswitch-2.17.8-gcc14-build-fix.patch) [boo#1225906]
+  
+-------------------------------------------------------------------
 Mon Feb 26 12:38:17 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

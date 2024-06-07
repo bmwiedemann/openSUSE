@@ -83,6 +83,8 @@ Patch5:         CVE-2023-1668.patch
 Patch6:         CVE-2023-5366.patch
 # Fix CVE-2023-3966 [bsc#1219465] -- Invalid memory access in Geneve with HW offload
 Patch7:         openvswitch-CVE-2023-3966.patch
+# boo#1225906: Restore build with gcc14
+Patch8:         openvswitch-2.17.8-gcc14-build-fix.patch
 #OVN patches
 # PATCH-FIX-OPENSUSE: 0001-Run-ovn-as-openvswitch-openvswitch.patch
 Patch20:        0001-Run-ovn-as-openvswitch-openvswitch.patch
@@ -133,9 +135,9 @@ BuildRequires:  openssl-devel
 BuildRequires:  python3-rpm-macros
 BuildRequires:  systemd-units
 Requires(post): systemd-units
-Requires(postun):systemd-units
+Requires(postun): systemd-units
 Requires(pre):  shadow-utils
-Requires(preun):systemd-units
+Requires(preun): systemd-units
 %endif
 # Needed by the testsuite
 %if %{with check}
@@ -425,6 +427,7 @@ Devel libraries and headers for Open Virtual Network.
 %patch -P 5 -p1
 %patch -P 6 -p1
 %patch -P 7 -p1
+%patch -P 8 -p1
 # remove python/ovs/dirs.py - this is generated from template to have proper paths
 rm python/ovs/dirs.py
 cd %{ovn_dir}
