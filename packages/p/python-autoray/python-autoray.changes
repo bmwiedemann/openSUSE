@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jun  6 08:45:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.12:
+  * add `torch.indices` and `tensorflow.indices`
+- update to 0.6.11:
+  * Fix creation functions with builtin `like` kwarg
+  * Allow additional keyword arguments in `tensorflow_diag`
+- update to 0.6.10:
+  * The following functions now inherit default `dtype` and
+    possibly `device` (when using torch) when the `like` kwarg is
+    an explicit array:
+    * `"empty"`
+    * `"eye"`
+    * `"full"`
+    * `"identity"`
+    * `"ones"`
+    * `"zeros"`
+  * fix NumpyMimic special attribute access
+  * fix `"diag"` for tensorflow.
+
+-------------------------------------------------------------------
 Sat Apr  6 18:52:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.9:

@@ -97,4 +97,28 @@
   * torch: alias min/max to amin/amax</comment>
     <requestid>1165863</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6393ed3573eeafde29819ab8d20d575e</srcmd5>
+    <version>0.6.12</version>
+    <time>1717765378</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.12:
+  * add `torch.indices` and `tensorflow.indices`
+- update to 0.6.11:
+  * Fix creation functions with builtin `like` kwarg
+  * Allow additional keyword arguments in `tensorflow_diag`
+- update to 0.6.10:
+  * The following functions now inherit default `dtype` and
+    possibly `device` (when using torch) when the `like` kwarg is
+    an explicit array:
+    * `&quot;empty&quot;`
+    * `&quot;eye&quot;`
+    * `&quot;full&quot;`
+    * `&quot;identity&quot;`
+    * `&quot;ones&quot;`
+    * `&quot;zeros&quot;`
+  * fix NumpyMimic special attribute access
+  * fix `&quot;diag&quot;` for tensorflow.</comment>
+    <requestid>1178963</requestid>
+  </revision>
 </revisionlist>
