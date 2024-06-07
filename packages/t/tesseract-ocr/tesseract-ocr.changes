@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jun  7 10:57:13 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 5.4.0:
+  * Build fixes, code refactoring and other smaller changes.
+  * Fix grey result of indexed PNG in pdfrenderer.
+  * Rename frk -> deu_latf (ISO 639-3, ISO 15924).
+  * Remove broken Dockerfile.
+  * Fixes for several issues reported by Coverity Scan.
+  * Remove unsupported OpenCL code and related API functions (#4220).
+  * Facilitate vectorization for generic build (#4223).
+  * Add PAGE XML renderer / export (#4214).
+  * Support training without lstmf files.
+  * Improve CCUtil::main_setup (fixes issue #4230 related to Coda).
+  * Allow for text angle/gradient to be retrieved (#4070).
+  * Fix setup of datadir on installations with Conda (issue #4230) (#4240)
+  * Fix FP exception in Wordrec::angle_change (issue #4242) (#4243)
+  * Small build fixes and code improvements 
+
+-------------------------------------------------------------------
+Fri Jun  7 09:17:16 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Disable opencl support due to boo#1213370:x 
+
+-------------------------------------------------------------------
 Fri Jan 19 11:25:23 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.3.4

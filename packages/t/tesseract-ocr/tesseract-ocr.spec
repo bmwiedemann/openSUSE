@@ -18,7 +18,7 @@
 
 %define lname	libtesseract5
 Name:           tesseract-ocr
-Version:        5.3.4
+Version:        5.4.0
 Release:        0
 Summary:        Open Source OCR Engine
 License:        Apache-2.0 AND GPL-2.0-or-later
@@ -32,11 +32,6 @@ BuildRequires:  chrpath
 BuildRequires:  curl-devel
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-%if 0%{?suse_version} > 1550
-BuildRequires:  gcc-c++
-%else
-BuildRequires:  gcc12-c++
-%endif
 BuildRequires:  libtool
 BuildRequires:  libxslt-tools
 BuildRequires:  opencl-headers
@@ -54,6 +49,11 @@ BuildRequires:  pkgconfig(pangocairo) >= 1.22.0
 BuildRequires:  pkgconfig(pangoft2) >= 1.22.0
 Recommends:     tesseract-ocr-traineddata-english
 %{?suse_build_hwcaps_libs}
+%if 0%{?suse_version} > 1550
+BuildRequires:  gcc-c++
+%else
+BuildRequires:  gcc12-c++
+%endif
 
 %description
 A commercial quality OCR engine originally developed at HP between 1985 and
@@ -82,14 +82,13 @@ open-sourced by HP and UNLV in 2005. From 2007 it is developed by Google.
 %autosetup -n tesseract-%{version} -p1
 
 %build
-%if 0%{suse_version} < 1550
+%if 0%{?suse_version} < 1550
 export CC=gcc-12
 export CXX=g++-12
 %endif
 
 autoreconf -fiv
 %configure \
-  --enable-opencl \
    --disable-static\
    --with-gnu-ld
 
@@ -108,8 +107,7 @@ cp -a tessdata/pdf.ttf %{buildroot}/%{_datadir}/tessdata/
 # Fix rpmlint warning "files-duplicate"
 %fdupes -s %{buildroot}
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %files
 %doc AUTHORS ChangeLog README.md

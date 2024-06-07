@@ -188,4 +188,28 @@
     <comment></comment>
     <requestid>1140004</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a23ee796d4115ebf083ba4a053c96f51</srcmd5>
+    <version>5.4.0</version>
+    <time>1717765506</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.4.0:
+  * Build fixes, code refactoring and other smaller changes.
+  * Fix grey result of indexed PNG in pdfrenderer.
+  * Rename frk -&gt; deu_latf (ISO 639-3, ISO 15924).
+  * Remove broken Dockerfile.
+  * Fixes for several issues reported by Coverity Scan.
+  * Remove unsupported OpenCL code and related API functions (#4220).
+  * Facilitate vectorization for generic build (#4223).
+  * Add PAGE XML renderer / export (#4214).
+  * Support training without lstmf files.
+  * Improve CCUtil::main_setup (fixes issue #4230 related to Coda).
+  * Allow for text angle/gradient to be retrieved (#4070).
+  * Fix setup of datadir on installations with Conda (issue #4230) (#4240)
+  * Fix FP exception in Wordrec::angle_change (issue #4242) (#4243)
+  * Small build fixes and code improvements 
+
+- Disable opencl support due to boo#1213370:x</comment>
+    <requestid>1179190</requestid>
+  </revision>
 </revisionlist>
