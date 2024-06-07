@@ -1,4 +1,25 @@
 --------------------------------------------------------------------
+Thu Jun 6 18:21:29 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#74
+- fix --no-joliet option and add warning about too long Joliet file
+  names
+- add more mkisofs log output in verbosity level 3
+- ensure mksusecd error code is preserved
+- add info about Joliet file name limit to man page
+- 2.18
+
+--------------------------------------------------------------------
+Thu Jun 6 15:22:55 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#73
+- fix integrating software modules containing debuginfo packages
+  (bsc#1226047)
+- increase initrd xz compression level
+- enforce de-duplication in mkisofs
+- 2.17
+
+--------------------------------------------------------------------
 Fri Apr 5 11:20:29 UTC 2024 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#72
