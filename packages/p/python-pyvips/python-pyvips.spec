@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyvips
-Version:        2.2.2
+Version:        2.2.3
 Release:        0
 Summary:        Python bindings for VIPS image processing library
 License:        MIT

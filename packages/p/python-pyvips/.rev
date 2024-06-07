@@ -32,4 +32,17 @@
   update for libvips 8.13 [jcupitt]</comment>
     <requestid>1137113</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4c3f5c17e7d0c207b3aacda8cce998a0</srcmd5>
+    <version>2.2.3</version>
+    <time>1717765461</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.2.3:
+  * Fix -Wincompatible-function-pointer-types warning on Clang
+  * Fix flake8 warnings
+  * new_from_source keeps a ref to the source
+  * improve generation of enums.py
+  * Ensure compatibility with a single shared libvips library</comment>
+    <requestid>1179076</requestid>
+  </revision>
 </revisionlist>

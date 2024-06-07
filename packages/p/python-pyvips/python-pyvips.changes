@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun  6 20:11:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.3:
+  * Fix -Wincompatible-function-pointer-types warning on Clang
+  * Fix flake8 warnings
+  * new_from_source keeps a ref to the source
+  * improve generation of enums.py
+  * Ensure compatibility with a single shared libvips library
+
+-------------------------------------------------------------------
 Fri Jan  5 17:10:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.2:
