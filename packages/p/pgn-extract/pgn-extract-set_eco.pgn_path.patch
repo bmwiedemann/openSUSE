@@ -15,7 +15,7 @@ Index: pgn-extract/help.html
 ===================================================================
 --- pgn-extract.orig/help.html
 +++ pgn-extract/help.html
-@@ -243,7 +243,7 @@ of this page before attempting to use pg
+@@ -248,7 +248,7 @@ of this page before attempting to use pg
        <li>-D - don't output duplicate extracted game scores.
        <li>-eECO_file - perform ECO classification of games. The optional
              ECO_file should contain a PGN format list of ECO lines
@@ -24,7 +24,7 @@ Index: pgn-extract/help.html
        <li>-E[123 etc.] - split output into separate files according to ECO.
          <ul>
              <li>E1 : Produce files from ECO letter, A.pgn, B.pgn, ...
-@@ -1627,7 +1627,7 @@ believe that this was put together by Ew
+@@ -1674,7 +1674,7 @@ believe that this was put together by Ew
  others, to whom appropriate thanks is due.  The -e flag requests
  pgn-extract to add/replace ECO classifications in the games it outputs.
  This is done by firstly reading a file of ECO lines in PGN format

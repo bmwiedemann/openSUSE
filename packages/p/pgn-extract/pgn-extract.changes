@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun  5 05:59:23 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 24.09
+  * For tag matches using <> in which all matches are negative, 
+    the absence of that tag from a game will result in the game being retained.
+  * Bug fix for relational operators matching numeric tags. 
+    Comparisons are now 'anded' rather than 'ored'.
+  * Bug fix affecting material matches for games with a FEN tag in which Black is to move.
+  * Added options --commented , --insufficient, --suppressmatched and -n stdout
+  * <> relational operator now available for non-numeric tag values. 
+  * EloDiff pseudo-tag added for matching differences in Elo rating between opponents
+  * Detect wrong to-move status in FEN string when the other side is in check.
+
+-------------------------------------------------------------------
 Thu Feb 29 14:57:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
