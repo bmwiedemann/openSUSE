@@ -690,4 +690,17 @@
   * Add geo for `sk_SK`. Thanks @george0st.</comment>
     <requestid>1173187</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>9dc94ddcc4028f99f7c1e11c5915c360</srcmd5>
+    <version>25.5.0</version>
+    <time>1717765338</time>
+    <user>anag+factory</user>
+    <comment>- update to 25.5.0:
+  * Fix data in geo for `pl_PL`. Thanks @george0st.
+  * Add landmarks in `geo` for `pl_PL`. Thanks @george0st.
+  * Add more iOS versions to `user_agent`. Thanks @george0st.
+  * Update VAT generation in `nl_BE` to align with correct
+    Belgian format. Thanks @JorisSpruyt.</comment>
+    <requestid>1178962</requestid>
+  </revision>
 </revisionlist>

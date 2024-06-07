@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun  6 08:44:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 25.5.0:
+  * Fix data in geo for `pl_PL`. Thanks @george0st.
+  * Add landmarks in `geo` for `pl_PL`. Thanks @george0st.
+  * Add more iOS versions to `user_agent`. Thanks @george0st.
+  * Update VAT generation in `nl_BE` to align with correct
+    Belgian format. Thanks @JorisSpruyt.
+
+-------------------------------------------------------------------
 Fri May 10 13:52:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 25.1.0:
