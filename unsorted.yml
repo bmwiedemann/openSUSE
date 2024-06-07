@@ -2502,6 +2502,10 @@ unsorted:
   - cool-retro-term 
   - coolkey 
   - coolkey-devel 
+  - copacetic 
+  - copacetic-bash-completion 
+  - copacetic-fish-completion 
+  - copacetic-zsh-completion 
   - coppwr 
   - coq 
   - coq-devel 
@@ -8540,6 +8544,7 @@ unsorted:
   - hyprland-zsh-completion 
   - hyprlang-devel 
   - hyprpaper 
+  - hyprpicker 
   - hyprshot 
   - hyprwayland-scanner 
   - i18nspector 
@@ -10021,6 +10026,8 @@ unsorted:
   - klee-uclibc-devel-static 
   - klettres 
   - klettres-lang 
+  - klevernotes 
+  - klevernotes-lang 
   - klfbackend-devel 
   - klftools-devel 
   - klib 
@@ -10050,6 +10057,7 @@ unsorted:
   - knetwalk-lang 
   - knewstuff-core-devel 
   - knewstuff-devel 
+  - knewstuff-imports 
   - knewstuff-quick-devel 
   - knights 
   - knights-lang 
@@ -17992,9 +18000,6 @@ unsorted:
   - mathgl-cgi 
   - mathgl-devel 
   - mathgl-devel-static 
-  - mathgl-doc 
-  - mathgl-doc-pdf 
-  - mathgl-doc-ru 
   - mathgl-examples 
   - mathgl-fonts 
   - mathgl-lang 
@@ -22458,6 +22463,9 @@ unsorted:
   - pidgin-plugin-xmpp-receipts 
   - piglit 
   - pijul 
+  - pijul-bash-completion 
+  - pijul-fish-completion 
+  - pijul-zsh-completion 
   - pika-backup 
   - pika-backup-lang 
   - pilot 

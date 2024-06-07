@@ -881,8 +881,6 @@
     <package name="kcalutils-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kcharselect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kcharselect-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="kcm_sddm" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="kcm_sddm-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="kcolorchooser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_imaging -->
     <package name="kcolorchooser-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_imaging -->
     <package name="kconf_update5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1129,7 +1127,6 @@
     <package name="kmplot" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kmplot-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="knewstuff" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="knewstuff-imports" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="knotes" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="knotes-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kompare" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
