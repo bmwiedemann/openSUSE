@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun  6 07:04:23 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.26
+  * Touchpads can now configure a clickfinger button map
+  * Tablet pads now have an API for relative dials.
+  * A new configuration option for tablet tools allow reducing
+    the available logical range.
+  * Tablet tools can now use BTN_STYLUS3 too and tablet pad strip
+    support should now work for non-Wacom devices, for systems
+    where the kernel driver implements it.
+
+-------------------------------------------------------------------
 Tue Mar 26 10:25:10 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

@@ -1027,4 +1027,12 @@ Peter Hutterer (3):
     <comment></comment>
     <requestid>1161704</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>04829f6473956f662ed9ec8a95b1f0bf</srcmd5>
+    <version>1.26.0</version>
+    <time>1717765329</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.26</comment>
+    <requestid>1178914</requestid>
+  </revision>
 </revisionlist>
