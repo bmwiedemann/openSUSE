@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 06 20:14:02 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1717576421.21904f82:
+  * Add documentation for codespaces
+  * Bump @eslint-community/regexpp from 4.10.0 to 4.10.1
+  * Bump prettier from 3.2.5 to 3.3.0
+  * Document cloning jobs mentioned in PR comments
+
+-------------------------------------------------------------------
 Mon Jun 03 13:35:13 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1717421670.f468030a:
