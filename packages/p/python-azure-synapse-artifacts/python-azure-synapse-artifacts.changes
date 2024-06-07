@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun  7 09:58:34 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 0.19.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+
+-------------------------------------------------------------------
 Thu Apr  4 13:08:15 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Switch package to modern Python Stack on SLE-15

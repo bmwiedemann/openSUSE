@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-synapse-artifacts
-Version:        0.18.0
+Version:        0.19.0
 Release:        0
 Summary:        Microsoft Azure Synapse Artifacts Client Library for Python
 License:        MIT
