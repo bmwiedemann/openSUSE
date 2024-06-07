@@ -17,7 +17,7 @@
 
 
 Name:           Kalpa-release
-Version:        20240606
+Version:        20240607
 Release:        0
 Summary:        openSUSE Kalpa 
 License:        GPL-2.0-or-later
@@ -174,9 +174,9 @@ ExclusiveArch:  %ix86 x86_64 ppc64le s390x aarch64 %arm
 %include %{SOURCE100}
 Provides:       %name-%version
 Provides:       product() = Kalpa
-Provides:       product(Kalpa) = 20240606-0
+Provides:       product(Kalpa) = 20240607-0
 Provides:       product-label() = openSUSE%20Kalpa
-Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Akalpa%3A20240606
+Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Akalpa%3A20240607
 Provides:       product-url(releasenotes) = http%3A%2F%2Fdoc.opensuse.org%2Frelease%2Dnotes%2Fx86_64%2FopenSUSE%2FTumbleweed%2Frelease%2Dnotes%2DopenSUSE.rpm
 Provides:       product-endoflife()
 Requires:       product_flavor(Kalpa)
@@ -192,7 +192,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance)
-Provides:       product_flavor(Kalpa) = 20240606-0
+Provides:       product_flavor(Kalpa) = 20240607-0
 Summary:        openSUSE Kalpa%{?betaversion: %{betaversion}}
 
 %description appliance
@@ -257,11 +257,11 @@ cat >%{buildroot}%{_sysconfdir}/products.d/Kalpa.prod << EOF
 <product schemeversion="0">
   <vendor>openSUSE</vendor>
   <name>Kalpa</name>
-  <version>20240606</version>
+  <version>20240607</version>
   <release>0</release>
   <endoflife></endoflife>
   <arch>%{_target_cpu}</arch>
-  <cpeid>cpe:/o:opensuse:kalpa:20240606</cpeid>
+  <cpeid>cpe:/o:opensuse:kalpa:20240607</cpeid>
   <productline>Kalpa</productline>
   <register>
     <pool>
