@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  8 20:26:51 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable generation of docs, this has been a constant source of
+  build failures and pain (and will be again when GCC14 becomes
+  default).
+
+-------------------------------------------------------------------
 Tue Feb 27 21:27:24 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Add dependency on setuptools.

@@ -35,6 +35,9 @@
 # Octave is too recent for oS >= 1699, and swig is too old for Leap 15.x
 %bcond_with    octave
 
+# Drop doc package as it is a constant source of build pain
+%bcond_with docs
+
 %if 0%{?fedora_version}
 %define _defaultdocdir %{_docdir}
 %endif
@@ -77,9 +80,7 @@ BuildRequires:  lua51-devel
 BuildRequires:  openmpi-macros-devel
 BuildRequires:  swig
 BuildRequires:  sz2-devel
-BuildRequires:  texinfo
 BuildRequires:  texlive-filesystem
-BuildRequires:  texlive-latex
 BuildRequires:  wxGTK3-devel
 %if %{with python}
 BuildRequires:  %{python_module devel}
@@ -95,10 +96,16 @@ BuildRequires:  swig >= 4.0
 %if 0%{?fedora_version}
 BuildRequires:  fltk-fluid
 BuildRequires:  libXmu-devel
+%endif
+%if %{with docs}
+%if 0%{?fedora_version}
 BuildRequires:  texi2html
 BuildRequires:  texinfo-tex
+%else
+BuildRequires:  texinfo
+BuildRequires:  texlive-latex
 %endif
-
+%endif
 %python_subpackages
 
 %description
@@ -183,7 +190,9 @@ Requires:       %{libname}-wnd%{libversion} = %{version}
 Requires:       %{libname}-wx%{libversion} = %{version}
 Requires:       cmake
 %if 0%{?suse_version}
+%if %{with docs}
 Recommends:     %{name}-doc
+%endif
 %endif
 
 %description    devel
@@ -374,8 +383,8 @@ pushd .
       -DPY3VERSION_DOTTED=%{$python_version}  \
       -Denable-json-sample=off                \
 %if "%{$python_provides}" == "python3" || "$python_" == "python3_"
-      -Denable-doc-html=on                    \
-      -Denable-doc-pdf-en=on                  \
+      -Denable-doc-html=%{?with_docs:on}%{!?with_docs:off} \
+      -Denable-doc-pdf-en=%{?with_docs:on}%{!?with_docs:off} \
       -Denable-fltk=on                        \
       -Denable-glut=on                        \
       -Denable-lua=on                         \
@@ -443,11 +452,13 @@ popd
 %endif
 }
 
+%if %{with docs}
 # R-B diagnostics
 # fexport.prc is nontrivial to fix, as it contains a time based UUID
 # fexport.pdf is non-reproducible due to embedded fexport.prc
 grep `date +'%Y'` %{buildroot}%{_docdir}/mathgl/png/fexport*.{eps,svg}
 sha256sum %{buildroot}%{_docdir}/mathgl/png/fexport*.{prc,pdf,eps,svg}
+%endif
 
 # %%post doc
 # %%install_info --info-dir=%%{_infodir} %%{_infodir}/%%{name}_en.info.gz
@@ -525,7 +536,9 @@ rm -f %{_localstatedir}/run/texlive/run-update
 
 %files -n %{name}-cgi
 /srv/www/cgi-bin/mgl.cgi
+%if %{with docs}
 %{_mandir}/man1/mgl.cgi.1%{?ext_man}
+%endif
 
 %files -n %{name}-devel
 %license COPYING
@@ -542,6 +555,7 @@ rm -f %{_localstatedir}/run/texlive/run-update
 %files -n %{name}-devel-static
 %{_libdir}/*.a
 
+%if %{with docs}
 %files -n %{name}-doc
 %dir %{_docdir}/mathgl
 %doc %{_docdir}/mathgl/png/
@@ -559,6 +573,7 @@ rm -f %{_localstatedir}/run/texlive/run-update
 %files -n %{name}-doc-ru
 %doc %{_docdir}/mathgl/mathgl_ru.html
 %doc %{_docdir}/mathgl/mgl_ru.html
+%endif
 
 %files -n %{name}-examples
 %{_bindir}/mgl*example
@@ -596,9 +611,11 @@ rm -f %{_localstatedir}/run/texlive/run-update
 %{_bindir}/mglconv
 %{_bindir}/mglview
 %{_bindir}/mgltask
+%if %{with docs}
 %{_mandir}/man1/mglconv.1%{?ext_man}
 %{_mandir}/man1/mglview.1%{?ext_man}
 %{_mandir}/man5/mgl.5%{?ext_man}
+%endif
 
 %files -n udav
 %{_bindir}/udav
@@ -606,7 +623,9 @@ rm -f %{_localstatedir}/run/texlive/run-update
 %{_datadir}/applications/udav.desktop
 %{_datadir}/mime/packages/mgl.xml
 %{_datadir}/udav/
+%if %{with docs}
 %{_mandir}/man1/udav.1%{?ext_man}
+%endif
 # mgllab's .desktop file uses the same icon as udav's, so we have to bundle them in the same package
 %{_bindir}/mgllab
 %{_datadir}/applications/mgllab.desktop
