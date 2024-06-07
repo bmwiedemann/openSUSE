@@ -1548,4 +1548,20 @@ Now with build cycle removed.</comment>
   * Add shop.brendly.hr (#1762)</comment>
     <requestid>1174788</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>ae01282bfeb55518609eef282dcae3cb</srcmd5>
+    <version>20240603</version>
+    <time>1717765339</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240603:
+  * Add Cloudflare CNAME setup domains (#1963)
+  * util: gTLD data autopull updates for 2024-05-31T15:16:08 UTC (#1988)
+  * Add `hypernode.io` domain (#1970)
+  * Add `wixstudio.com` (#1971)
+  * Fix set union (#1986)
+  * Bump dnspython from 2.5.0 to 2.6.1 in /tools/pr_checker (#1985)
+  * Add Github workflow to check _psl DNS entries on PRs (#1933)
+  * Clean up list to fix rule sorting within orgs (#1968)</comment>
+    <requestid>1178974</requestid>
+  </revision>
 </revisionlist>
