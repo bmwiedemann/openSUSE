@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun  7 08:22:32 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.9:
+  * iw: remove sizer section and related code
+  * util: clarify comment about 'parsed' pointer
+  * iw: add puncturing support
+  * iw: refactor frequency help
+  * bump version to 6.9
+  * channel: report punctured subchannel bitmap
+  * wowlan: add a wake event
+  * update nl80211.h
+
+-------------------------------------------------------------------
 Thu Jan  4 08:18:35 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.7:
