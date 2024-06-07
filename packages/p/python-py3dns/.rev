@@ -46,4 +46,14 @@
     SyntaxWarning for invalid escape sequence with python3.12</comment>
     <requestid>1153851</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e1a480e2ac032ae0baff9aad4f1943fd</srcmd5>
+    <version>4.0.2</version>
+    <time>1717765468</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0.2:
+  * Update expected test results due to changed example.com IP
+    addresses.</comment>
+    <requestid>1179083</requestid>
+  </revision>
 </revisionlist>

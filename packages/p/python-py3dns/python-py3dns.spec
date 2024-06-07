@@ -17,7 +17,7 @@
 
 
 Name:           python-py3dns
-Version:        4.0.1
+Version:        4.0.2
 Release:        0
 Summary:        Python module for DNS (Domain Name Service)
 License:        CNRI-Python
