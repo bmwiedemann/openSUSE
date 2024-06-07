@@ -1,7 +1,7 @@
 #
 # spec file for package python-sparse
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sparse
-Version:        0.14.0
+Version:        0.15.4
 Release:        0
 Summary:        Sparse n-dimensional arrays for Python
 License:        BSD-3-Clause
@@ -27,7 +27,8 @@ URL:            https://github.com/pydata/sparse
 Source:         https://files.pythonhosted.org/packages/source/s/sparse/sparse-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 64}
+BuildRequires:  %{python_module setuptools_scm >= 8}
 BuildRequires:  %{python_module wheel}
 # SECTION test requirements
 BuildRequires:  %{python_module dask-array}
@@ -56,6 +57,7 @@ intended for somewhat general use.
 
 %prep
 %autosetup -p1 -n sparse-%{version}
+sed -i /addopts/d pytest.ini
 
 %build
 %pyproject_wheel
@@ -65,11 +67,9 @@ intended for somewhat general use.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://github.com/pydata/sparse/issues/594
-donttest="test_tensordot"
 # 32bit fails in half of the test suite because the tests try to convert to 64bit types
 if [ $(getconf LONG_BIT) -eq 64 ]; then
-%pytest -k "not ($donttest)"
+%pytest
 fi
 
 %files %{python_files}

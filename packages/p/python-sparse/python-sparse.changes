@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jun  6 18:03:14 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.15.4
+  * no changelog since 0.15.1
+- Release 0.15.1
+  * Fix regression where with XArray by supporting all API
+    functions via the Array API standard. (PR #622 thanks
+    @hameerabbasi)
+- Release 0.15.0
+  * Fix regression where DeprecationWarning`s were being fired
+    unexpectedly. (:pr:`581 thanks @hameerabbasi)
+  * Extended sparse.einsum support (PR #579 thanks @HadrienNU)
+  * General code clean-up (PR #586 thanks @MHRasmy, PR #598 thanks
+    @jamestwebber)
+  * Bug fixes with respect to NumPy compatibility (PR #598 thanks
+    @hameerabbasi, PR #609 thanks @Illviljan, PR #620 thanks
+    @mtsokol)
+  * Bug fixes with respect to GCXS (PR #611 thanks @EuGig, PR #601
+    thanks @jamestwebber)
+  * Array API standard support (PR #612, PR #613, PR #614, PR #615,
+    PR #619, PR #620 thanks @mtsokol)
+  * matrepr support for display of sparse data (PR #605, PR #606
+    thanks @alugowski).
+  * Larger code clean-up with Ruff formatter and linter (PR #617,
+    PR #621 thanks @hameerabbasi)
+
+-------------------------------------------------------------------
 Fri Mar 29 14:21:45 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
