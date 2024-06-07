@@ -105,4 +105,26 @@
     <comment></comment>
     <requestid>1095994</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ea322ebc8d72eea00e7e17c9e95bb175</srcmd5>
+    <version>1.13</version>
+    <time>1717765308</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.13:
+  * Remove outdated pystrings.swg (#508).
+  * Fix segfault from repr attempting to access attrs on uninitialized
+    instance (#520).
+  * Add Python 3.12 support (#486).
+  * Copy edges keys when copying a graph 
+  * Drop Python 3.8 support per SPEC 0 (#465).
+  * Drop Python 3.9 support (#487).
+  * Update documentation building requirements (#488).
+  * Add pyproject.toml (#471).
+  * Stop building pdf of the docs (#503).
+- Drop patch docdir.patch, no longer needed.
+- Build the documentation by hand, since now we need to, and do so in
+  its own flavor.
+- Switch to pyproject macros.</comment>
+    <requestid>1175976</requestid>
+  </revision>
 </revisionlist>

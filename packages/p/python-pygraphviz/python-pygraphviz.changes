@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu May 23 02:32:41 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.13:
+  * Remove outdated pystrings.swg (#508).
+  * Fix segfault from repr attempting to access attrs on uninitialized
+    instance (#520).
+  * Add Python 3.12 support (#486).
+  * Copy edges keys when copying a graph 
+  * Drop Python 3.8 support per SPEC 0 (#465).
+  * Drop Python 3.9 support (#487).
+  * Update documentation building requirements (#488).
+  * Add pyproject.toml (#471).
+  * Stop building pdf of the docs (#503).
+- Drop patch docdir.patch, no longer needed.
+- Build the documentation by hand, since now we need to, and do so in
+  its own flavor.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Thu Jun 29 07:00:11 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 1.11
