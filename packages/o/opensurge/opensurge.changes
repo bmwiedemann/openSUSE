@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun May 19 10:25:41 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 0.6.1
+  * Partial rewrite of the engine. Made the engine mobile-ready
+    with a massive performance update covering many areas:
+    rendering, scripting, collision detection, entity and brick
+    systems, loading times, and more!
+  * Improved the physics system. Made it faster and more robust
+  * Introduced the mobile mode and the mobile level editor
+  * Introduced the MOD loader and its compatibility mode
+  * Introduced the Import Utility for upgrading MODs
+  * Introduced support for Player 2 & AI-controlled characters
+  * Introduced player transformations and numerous player flags
+  * Introduced keyframe-based animations and custom sprite
+    properties
+  * Introduced wavy water effects and internal support for shaders
+  * Introduced a new Pause Menu
+  * Introduced a new Options Screen
+  * Added support for various special characters in bitmap fonts
+  * Made numerous additions to the SurgeScript API
+  * Updated several SurgeScript objects. Introduced new items and
+    new components
+  * Reimplemented nanoparser, the asset system, the animation
+    system, the entity system, the brick system, the particle
+    system, the level height sampler, and more
+- Run spec-cleaner
+- Use gcc11 for openSUSE Leap
+- Update BuildRequires pkgconfig(allegro_color-5),
+  pkgconfig(allegro_main-5), pkgconfig(allegro_physfs-5) and
+  pkgconfig(physfs)
+
+-------------------------------------------------------------------
 Tue Nov  8 17:34:16 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Fix building for openSUSE Leap: using gcc10
