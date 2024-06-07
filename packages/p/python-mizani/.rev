@@ -118,4 +118,22 @@
     has been changed from a comma to nothing.</comment>
     <requestid>1164285</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>44686d2125c8e9f4f7e2827a307359b8</srcmd5>
+    <version>0.11.4</version>
+    <time>1717765419</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.11.4:
+  * Fixed :class:`~mizani.bounds.squish` and
+    :class:`~mizani.bounds.squish_infinite` so that they do not
+    reuse numpy arrays. The users object is not modified.
+  * Fixed bug when calculating monthly breaks where when the limits
+    are narrow and do not align with the start and end of the
+    month, there were no dates returned.
+  * Added the ability to create reversed colormap for
+    :class:`~mizani.palettes.cmap_pal` and
+    :class:`~mizani.palettes.cmap_d_pal` using the matplotlib
+    convention of `name_r`.</comment>
+    <requestid>1179041</requestid>
+  </revision>
 </revisionlist>

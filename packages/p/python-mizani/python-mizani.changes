@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun  6 15:13:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.4:
+  * Fixed :class:`~mizani.bounds.squish` and
+    :class:`~mizani.bounds.squish_infinite` so that they do not
+    reuse numpy arrays. The users object is not modified.
+  * Fixed bug when calculating monthly breaks where when the limits
+    are narrow and do not align with the start and end of the
+    month, there were no dates returned.
+  * Added the ability to create reversed colormap for
+    :class:`~mizani.palettes.cmap_pal` and
+    :class:`~mizani.palettes.cmap_d_pal` using the matplotlib
+    convention of `name_r`.
+
+-------------------------------------------------------------------
 Wed Apr  3 07:46:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.11.1:
