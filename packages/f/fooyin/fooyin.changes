@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun  6 20:22:28 UTC 2024 - Julius Enriquez <win8linux@gmail.com>
+
+- Update to upstream release 0.4.5
+  * Fixes
+    * Fix playback on startup if current output not found
+    * Fix pause not pausing playback position
+- Release notes for interim release 0.4.4 can be found here:
+https://github.com/ludouzi/fooyin/releases/tag/v0.4.4
+
+-------------------------------------------------------------------
 Wed May 29 01:45:24 UTC 2024 - Julius Enriquez <win8linux@gmail.com>
 
 - Update to new upstream release 0.4.3

@@ -44,4 +44,18 @@ This request has significant cleanups in the spec file and puts everything neces
   * Part of a commit to use more reverse DNS: https://github.com/ludouzi/fooyin/commit/fab7933ced4347d7593c1ea378ebe56081d930a5</comment>
     <requestid>1177424</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cd43ec4dc14eb8bcaa28ca5ba9f8a806</srcmd5>
+    <version>0.4.5</version>
+    <time>1717765528</time>
+    <user>anag+factory</user>
+    <comment>- Update to upstream release 0.4.5
+  * Fixes
+    * Fix playback on startup if current output not found
+  * Fix pause not pausing playback position
+- Release notes for interim release 0.4.4 can be found here:
+https://github.com/ludouzi/fooyin/releases/tag/v0.4.4
+</comment>
+    <requestid>1179174</requestid>
+  </revision>
 </revisionlist>

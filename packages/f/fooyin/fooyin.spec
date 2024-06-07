@@ -17,7 +17,7 @@
 
 
 Name:           fooyin
-Version:        0.4.3
+Version:        0.4.5
 Release:        0
 Summary:        A customisable music player built with Qt
 License:        GPL-3.0-only
