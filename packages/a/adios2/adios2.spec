@@ -19,7 +19,7 @@
 %define flavor @BUILD_FLAVOR@%{nil}
 %define major_ver 2
 %define minor_ver 10
-%define patch_ver 0
+%define patch_ver 1
 # Name the suffix of the pkg
 %if "%{flavor}" != "%{nil}"
   %define pkg_suffix -%{flavor}
