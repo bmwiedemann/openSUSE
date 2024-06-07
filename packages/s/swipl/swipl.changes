@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun  6 08:59:44 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 9.3.7:
+  Complete changelog is
+  https://www.swi-prolog.org/ChangeLog?branch=development&from=9.3.2&to=9.3.7
+  and upstream still doesn’t provide any abbreviated version.
+- Skipping build on 32bit platforms (gh#SWI-Prolog/swipl-devel#1139)
+
+-------------------------------------------------------------------
 Mon Mar  4 17:41:37 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to the devel version 9.3.2. Unfortunately, the number

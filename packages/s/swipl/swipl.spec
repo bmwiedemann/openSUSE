@@ -17,7 +17,7 @@
 
 
 Name:           swipl
-Version:        9.3.2
+Version:        9.3.7
 Release:        0
 Summary:        Prolog Compiler
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -63,6 +63,8 @@ Provides:       swi-prolog = %{version}
 Provides:       swi_pl = %{version}
 Obsoletes:      swi-prolog < %{version}
 Obsoletes:      swi_pl < %{version}
+# Builds on i586 don't seem to work (gh#SWI-Prolog/swipl-devel#1139)
+ExcludeArch:    %ix86
 
 #  jpackage-utils
 
