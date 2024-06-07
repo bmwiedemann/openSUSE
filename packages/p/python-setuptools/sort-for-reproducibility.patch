@@ -6,11 +6,11 @@
  setuptools/tests/test_wheel.py     |    8 ++++----
  5 files changed, 8 insertions(+), 8 deletions(-)
 
-Index: setuptools-69.0.2/setuptools/command/easy_install.py
+Index: setuptools-70.0.0/setuptools/command/easy_install.py
 ===================================================================
---- setuptools-69.0.2.orig/setuptools/command/easy_install.py
-+++ setuptools-69.0.2/setuptools/command/easy_install.py
-@@ -441,7 +441,7 @@ class easy_install(Command):
+--- setuptools-70.0.0.orig/setuptools/command/easy_install.py
++++ setuptools-70.0.0/setuptools/command/easy_install.py
+@@ -436,7 +436,7 @@ class easy_install(Command):
              for spec in self.args:
                  self.easy_install(spec, not self.no_deps)
              if self.record:
@@ -19,31 +19,31 @@ Index: setuptools-69.0.2/setuptools/command/easy_install.py
                  if self.root:  # strip any package prefix
                      root_len = len(self.root)
                      for counter in range(len(outputs)):
-Index: setuptools-69.0.2/setuptools/tests/test_wheel.py
+Index: setuptools-70.0.0/setuptools/tests/test_wheel.py
 ===================================================================
---- setuptools-69.0.2.orig/setuptools/tests/test_wheel.py
-+++ setuptools-69.0.2/setuptools/tests/test_wheel.py
-@@ -424,30 +424,30 @@ WHEEL_INSTALL_TESTS = (
+--- setuptools-70.0.0.orig/setuptools/tests/test_wheel.py
++++ setuptools-70.0.0/setuptools/tests/test_wheel.py
+@@ -411,30 +411,30 @@ WHEEL_INSTALL_TESTS = (
      dict(
          id='requires_ensure_order',
-         install_requires='''
+         install_requires="""
 -        foo
          bar
          baz
 +        foo
          qux
-         ''',
+         """,
          extras_require={
-             'extra': '''
+             'extra': """
 -            foobar>3
              barbaz>4
              bazqux>5
 +            foobar>3
              quxzap>6
-             ''',
+             """,
          },
          requires_txt=DALS(
-             '''
+             """
 -            foo
              bar
              baz
@@ -56,5 +56,5 @@ Index: setuptools-69.0.2/setuptools/tests/test_wheel.py
              bazqux>5
 +            foobar>3
              quxzap>6
-             '''
+             """
          ),

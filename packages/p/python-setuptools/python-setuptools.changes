@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue May 28 05:20:31 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 70.0.0:
+  * Features
+    + Emit a warning when [tools.setuptools] is present in pyproject.toml and
+      will be ignored.
+    + Improved AttributeError error message if pkg_resources.EntryPoint.require
+      is called without extras or distribution Gracefully "do nothing" when
+      trying to activate a pkg_resources.Distribution with a None location,
+      rather than raising a TypeError.
+    + Refresh unpinned vendored dependencies.
+    + Updated vendored packaging to version 24.0.
+    + Merged with pypa/distutils@55982565e.
+    + Support PEP 625 by canonicalizing package name and version in filenames.
+    + Explicitly use encoding="locale" for .pth files whenever possible, to
+      reduce EncodingWarnings.
+    + Updated and removed obsolete Python < 3.8 code and comments.
+    + Updated pkg_resources to use stdlib importlib.machinery instead of
+      importlib_machinery.
+  * Bugfixes
+    + In install command, use super to call the superclass methods. Avoids
+      race conditions when monkeypatching from _distutils_system_mod occurs
+      late.
+    + Fix finder template for lenient editable installs of implicit nested
+      namespaces constructed by using package_dir to reorganise directory
+      structure.
+    + Remove attempt to canonicalize the version. It's already canonical
+      enough.
+    + Clarify some pkg_resources methods return bytes, not str. Also return an
+      empty bytes in EmptyProvider._get.
+    + Return an empty list by default in
+      pkg_resources.ResourceManager.cleanup_resources.
+    + Made pkg_resoursces.NullProvider's has_metadata and metadata_isdir
+      methods return actual booleans like all other Providers.
+    + In tests, rely on pytest-home for reusable fixture.
+    + Explicitely marked as Protocol and fixed missing self argument in
+      interfaces pkg_resources.IMetadataProvider and
+      pkg_resources.IResourceProvider.
+    + Restored expectation that egg-link files would be named with dash
+      separators for compatibility with pip prior to version 24.
+- Refresh patch sort-for-reproducibility.patch
+
+-------------------------------------------------------------------
 Tue Jan  2 21:55:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 69.0.3:

@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-setuptools
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -31,7 +31,7 @@
 %define mypython python
 %{?sle15_python_module_pythons}
 Name:           python-setuptools%{psuffix}
-Version:        69.0.3
+Version:        70.0.0
 Release:        0
 Summary:        Download, build, install, upgrade, and uninstall Python packages
 License:        Apache-2.0 AND MIT AND BSD-2-Clause AND Python-2.0
@@ -45,7 +45,7 @@ BuildRequires:  %{python_module wheel >= 0.42}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module build}
@@ -58,6 +58,8 @@ BuildRequires:  %{python_module jaraco.path >= 3.2.0}
 BuildRequires:  %{python_module pip >= 19.1}
 BuildRequires:  %{python_module pip-run >= 8.8}
 BuildRequires:  %{python_module pytest >= 6}
+BuildRequires:  %{python_module pytest-home}
+BuildRequires:  %{python_module pytest-subprocess}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module setuptools = %{version}}
@@ -123,6 +125,8 @@ export PYTHONPATH=$(pwd)
 donttest="(test_apply_pyproject_equivalent_to_setupcfg and https)"
 # test_pbr_integration tries to install pbr from network using pip
 donttest+=" or test_pbr_integration"
+# test_example_file_in_sdist wants wheel.whl
+donttest+=" or test_example_file_in_sdist"
 %pytest -rfE -n auto -k "not ($donttest)"
 %endif
 

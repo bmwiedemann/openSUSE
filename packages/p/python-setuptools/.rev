@@ -1193,4 +1193,41 @@
   package</comment>
     <requestid>1136302</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>d932c63e789d60e562336e773ade3e2f</srcmd5>
+    <version>70.0.0</version>
+    <time>1717765306</time>
+    <user>anag+factory</user>
+    <comment>- Update to 70.0.0:
+  * Features
+    + Emit a warning when [tools.setuptools] is present in pyproject.toml and
+      will be ignored.
+    + Improved AttributeError error message if pkg_resources.EntryPoint.require
+      is called without extras or distribution Gracefully &quot;do nothing&quot; when
+      trying to activate a pkg_resources.Distribution with a None location,
+      rather than raising a TypeError.
+    + Refresh unpinned vendored dependencies.
+    + Updated vendored packaging to version 24.0.
+    + Merged with pypa/distutils@55982565e.
+    + Support PEP 625 by canonicalizing package name and version in filenames.
+    + Explicitly use encoding=&quot;locale&quot; for .pth files whenever possible, to
+      reduce EncodingWarnings.
+    + Updated and removed obsolete Python &lt; 3.8 code and comments.
+    + Updated pkg_resources to use stdlib importlib.machinery instead of
+      importlib_machinery.
+  * Bugfixes
+    + In install command, use super to call the superclass methods. Avoids
+      race conditions when monkeypatching from _distutils_system_mod occurs
+      late.
+    + Fix finder template for lenient editable installs of implicit nested
+      namespaces constructed by using package_dir to reorganise directory
+      structure.
+    + Remove attempt to canonicalize the version. It's already canonical
+      enough.
+    + Clarify some pkg_resources methods return bytes, not str. Also return an
+      empty bytes in EmptyProvider._get.
+    + Return an empty list by default in
+      pkg_resources.ResourceManager.cleanup_resources.</comment>
+    <requestid>1177203</requestid>
+  </revision>
 </revisionlist>
