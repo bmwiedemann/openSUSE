@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jun  6 18:02:42 UTC 2024 - Robert Frohl <rfrohl@suse.com>
+
+- update to 1.1.3
+  * Fix typo in CLI --help message: "privilges" -> "privileges"
+  * Harden service file: Set OOMScoreAdjust to -1000
+  * Specify what happens when neither RuleFile nor RuleFolder is set
+  * The parent process should wait for the first child process to finish in forking mode(-f)
+  * dbus: check whether the client wanted interactive authentication
+  * Add missing .adoc files to the tarball
+  * Replace problematic terms with alternatives
+  * Fix CI by fixing calls to ldap-utils
+  * Describe comments in the manual page
+  * Store permanent rules even if RuleFile is not set but RuleFolder is.
+  * Fix build for GCC 13 + make GitHub Actions cover build with GCC 13
+  * Bump GitHub Actions off deprecated actions/checkout@v2
+  * Actions(deps): Bump actions/checkout from 3.5.2 to 4.1.1
+  * Add "--version" option to the usbguard CLI
+  * ruleset: detect integer overflow of the ID and bail out
+  * Enable RuleFolder by default
+  * Fix CI and RuleSet::assignID regressions
+- Removed build_gcc13.patch, included upstream
+
+-------------------------------------------------------------------
 Tue Feb 20 15:58:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

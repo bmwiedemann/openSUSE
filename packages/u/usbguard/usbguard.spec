@@ -1,7 +1,7 @@
 #
 # spec file for package usbguard
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global _hardened_build 1
 %define lname libusbguard1
 Name:           usbguard
-Version:        1.1.2
+Version:        1.1.3
 Release:        0
 Summary:        A tool for implementing USB device usage policy
 ## Not installed
@@ -33,7 +33,6 @@ Source2:        usbguard.keyring
 Source3:        usbguard-daemon.conf
 Source4:        usbguard-rpmlintrc
 Patch0:         usbguard-pthread.patch
-Patch1:         build_gcc13.patch
 BuildRequires:  asciidoc
 BuildRequires:  audit-devel
 BuildRequires:  autoconf
