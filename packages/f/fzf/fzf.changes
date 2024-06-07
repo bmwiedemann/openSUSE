@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jun  6 13:47:28 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.53.0:
+  * fzf can now display multi-line items. To disable multi-line
+    display, use --no-multi-line
+  * CTRL-R bindings of bash, zsh, and fish have been updated to
+    leverage multi-line display
+  * The default --pointer and --marker have been changed from > to
+    Unicode bar characters as they look better with multi-line
+    items
+  * Added --marker-multi-line to customize the select marker for
+    multi-line entries with the default set to ╻┃╹
+  * Added --tmux option to replace fzf-tmux script and simplify
+    distribution
+  * Added support for endless input streams. Added --tail=NUM
+    option to limit the number of items to keep in memory. This is
+    useful when you want to browse an endless stream of data (e.g.
+    log stream) with fzf while limiting memory usage.
+  * man page is now embedded in the binary; fzf --man to see it
+  * Changed the default --scroll-off to 3, as we think it's a
+    better default
+  * Process started by execute action now directly writes to and
+    reads from /dev/tty. Manual /dev/tty redirection for
+    interactive programs is no longer required.
+  * Added print(...) action to queue an arbitrary string to be
+    printed on exit. This was mainly added to work around the
+    limitation of --expect where it's not compatible with --bind on
+    the same key and it would ignore other actions bound to it.
+  * NO_COLOR environment variable is now respected. If the variable
+    is set, fzf defaults to --no-color unless otherwise specified.
+
+-------------------------------------------------------------------
 Tue May  7 15:55:13 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 0.52.0:
