@@ -91,6 +91,9 @@ Patch27:        openssl-CVE-2024-0727.patch
 Patch28:        openssl-CVE-2024-2511.patch
 # PATCH-FIX-UPSTREAM: bsc#1224388 CVE-2024-4603: excessive time spent checking DSA keys and parameters
 Patch29:        openssl-CVE-2024-4603.patch
+# PATCH-FIX-UPSTREAM: bsc#1225291 NVMe/TCP TLS connection fails due to handshake failure
+Patch30:        openssl-Fix-EVP_PKEY_CTX_add1_hkdf_info-behavior.patch
+Patch31:        openssl-Handle-empty-param-in-EVP_PKEY_CTX_add1_hkdf_info.patch
 BuildRequires:  pkgconfig
 %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
 BuildRequires:  ulp-macros

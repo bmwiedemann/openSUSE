@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 29 13:30:21 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Fix HDKF key derivation (bsc#1225291, gh#openssl/openssl#23448,
+  gh#openssl/openssl#23456)
+  * Add openssl-Fix-EVP_PKEY_CTX_add1_hkdf_info-behavior.patch
+  * Add openssl-Handle-empty-param-in-EVP_PKEY_CTX_add1_hkdf_info.patch
+
+-------------------------------------------------------------------
 Mon May 20 12:24:03 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Security fix: [bsc#1224388, CVE-2024-4603]
