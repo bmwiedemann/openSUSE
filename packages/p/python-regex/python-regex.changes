@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  6 20:28:06 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.5.15:
+  * fix hangs with fuzzy and optionals￼
+  * Updated for Python 3.13.￼
+
+-------------------------------------------------------------------
 Thu May  2 08:57:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.4.28:

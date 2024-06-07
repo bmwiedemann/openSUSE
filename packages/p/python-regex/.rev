@@ -247,4 +247,14 @@
   * Git issue 527: `VERBOSE`/`X` flag breaks `\N` escapes</comment>
     <requestid>1171297</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>8cda0a00f1374a25ef6d8f69c83c82da</srcmd5>
+    <version>2024.5.15</version>
+    <time>1717765313</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.5.15:
+  * fix hangs with fuzzy and optionals￼
+  * Updated for Python 3.13.￼</comment>
+    <requestid>1179137</requestid>
+  </revision>
 </revisionlist>
