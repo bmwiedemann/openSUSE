@@ -1,5 +1,6 @@
 ddiss: rebase atop 37fda2c ("autofs-5.1.8 - add soucre parameter to
        module functions")
+       Fix xmlStructuredErrorFunc callback parameter type (bsc#1221682)
 
 ---
  Makefile.conf.in        |    3 
@@ -1970,7 +1971,7 @@ Index: autofs-5.1.9/modules/lookup_udisks.c
 +}
 +
 +#ifdef LIBXML_TREE_ENABLED
-+static void xmlerror(void *context, xmlErrorPtr err)
++static void xmlerror(void *context, const xmlError *err)
 +{
 +	struct lookup_context *ctxt = (struct lookup_context*)context;
 +	char *message = err->message;

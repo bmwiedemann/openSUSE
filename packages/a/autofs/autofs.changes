@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun  3 02:21:09 UTC 2024 - David Disseldorp <ddiss@suse.com>
+
+- Fix xmlStructuredErrorFunc callback parameter type (bsc#1221682)
+  * Refresh autofs-5.1.1-dbus-udisks-monitor.patch
+- Use upstream sasl_callback_t patch
+  * Remove autofs-5.1.9-cast-sasl_callback_t-function-pointers.patch
+  * Add autofs-5.1.9-Fix-incompatible-function-pointer-types.patch
+
+-------------------------------------------------------------------
 Wed Mar 20 01:27:16 UTC 2024 - David Disseldorp <ddiss@suse.com>
 
 - Fix -Werror=incompatible-pointer-types issues (bsc#1221682)

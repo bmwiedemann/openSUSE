@@ -61,7 +61,7 @@ Patch106:       autofs-nsswitch-usr-etc.patch
 Patch108:       autofs-suse-manpage-remove-initdir.patch
 # bsc#1221682 - GCC 14: autofs package fails
 Patch109:       autofs-5.1.9-fix-ldap_parse_page_control-check.patch
-Patch110:       autofs-5.1.9-cast-sasl_callback_t-function-pointers.patch
+Patch110:       autofs-5.1.9-Fix-incompatible-function-pointer-types.patch
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  cyrus-sasl-devel
