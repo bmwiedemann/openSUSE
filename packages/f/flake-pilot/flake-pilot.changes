@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 06 17:02:12 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.0.12 → 3.0.13
+
+-------------------------------------------------------------------
+Thu Jun 06 17:00:37 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Rebuild with rustls fix
+
+  The crate index was updated and the vendor source seems to have
+  fixed the rustls security issue. This fixes bsc#1223217
+
+-------------------------------------------------------------------
 Wed Apr 10 12:13:56 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Turn terminal flag setup into function

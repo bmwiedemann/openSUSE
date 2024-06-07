@@ -76,4 +76,16 @@ https://github.com/OSInside/flake-pilot?tab=readme-ov-file#flake-pilot</comment>
   2. The behavior in interactive sessions differs compared to socat.</comment>
     <requestid>1166791</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4705757046d6a649c648bc54b0359c72</srcmd5>
+    <version>3.0.13</version>
+    <time>1717765413</time>
+    <user>anag+factory</user>
+    <comment>- Bump version: 3.0.12 → 3.0.13
+
+- Rebuild with rustls fix
+  The crate index was updated and the vendor source seems to have
+  fixed the rustls security issue. This fixes bsc#1223217</comment>
+    <requestid>1179039</requestid>
+  </revision>
 </revisionlist>
