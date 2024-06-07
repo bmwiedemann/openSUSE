@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun  6 20:17:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.17.5:
+  * Fixes package installation issue on 3.12 and newer introduced
+    in the last version.
+- update to 3.17.4:
+  * Fix bug that could occur when using CASE inside a function,
+    and one or more of the CASE clauses consisted of a subquery.
+    Refs #2873. new fix in #2872 for regression in truthiness of
+    cursor.
+  * Fix bug in the conversion of TIMESTAMP type in Sqlite on
+    Python 3.12+.
+  * Fix for hybrid properties on subclasses when aliased (#2888).
+  * Many fixes for SqliteQueueDatabase (#2874, #2876, #2877).
+
+-------------------------------------------------------------------
 Thu May  2 16:33:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.17.3:
