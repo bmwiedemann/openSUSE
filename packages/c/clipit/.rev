@@ -25,4 +25,21 @@
 </comment>
     <requestid>742517</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a727d1657fb21257f439e9e3e10ab7fe</srcmd5>
+    <version>1.4.5</version>
+    <time>1717765399</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.4.5
+  * All changes from github:
+    https://github.com/CristianHenzel/ClipIt/compare/1.4.2...v1.4.5
+- Add autoconf automake BuildRequires: new dependencies, needed to
+  bootstrap configure.
+- Run autoreconf, as the tarballs are no longer bootstrapped.
+- Build using GTK3:
+  + Replace pkgconfig(gtk+-2.0) BuildRequires with
+    pkgconfig(gtk+-3.0).
+  + Pass --with-gtk3 to configure.</comment>
+    <requestid>1179028</requestid>
+  </revision>
 </revisionlist>
