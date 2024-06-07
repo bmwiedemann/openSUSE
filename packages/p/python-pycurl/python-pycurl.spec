@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-pycurl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pycurl%{psuffix}
-Version:        7.45.2
+Version:        7.45.3
 Release:        0
 Summary:        PycURL -- cURL library module
 License:        LGPL-2.1-or-later AND MIT
@@ -41,8 +41,6 @@ Patch2:         disable_randomly_failing_tests.patch
 # PATCH-FIX-OPENSUSE make-leap15-compat.patch mcepl@suse.com
 # Make tests passing with Leap 15.2
 Patch3:         make-leap15-compat.patch
-# PATCH-FIX-OPENSUSE xfail a test around pause/unpause not behaving
-Patch4:         pause-unpause-xfail.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

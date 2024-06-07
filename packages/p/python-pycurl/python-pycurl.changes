@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Jun  6 15:17:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.45.3:
+  * Add CURLOPT_REQUEST_TARGET option
+  * Add missing 2nd parameters to METH_NOARGS functions
+  * Add CURLOPT_AWS_SIGV4 option (patch by Scott Talbert).
+  * Add consistent names for newer Curl version constants
+  * Only run HTTP version 3 option constant test if curl
+    supported
+  * Expose COMPILE_SSL_LIB in Python and use for test filtering
+  * Filter tests based on *compile* libcurl version not runtime
+    version
+  * Use print function in callbacks documentation
+  * Add missing shebang to tests/ext/test-suite.sh
+  * Officially declare support for Python 3.12
+  * Fix curl_multi_info_read flow that loses messages
+  * Support using environment variables for setup on Windows
+  * Add support for Schannel SSL backend (patch by Scott Talbert)
+  * Skip HTTP2 tests based on a curl support check
+  * Fix fake-curl tests so they work when run out of tree
+  * xfail test_easy_pause_unpause unconditionally
+  * Provide generic error strings in pycurl.error objects
+  * Change URLs to new curl mailing list (patch by Michael C).
+  * Add missing HTTPS proxy options (patch by Jean Hominal).
+  * Add support for setting CURLOPT_SSLCERT_BLOB
+  * Add support for setting rest of CURLOPTTYPE_BLOB fields
+  * Build wheels on Linux/macOS/Windows (patch by Scott Talbert).
+- drop pause-unpause-xfail.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Dec 15 01:53:16 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch pause-unpause-xfail.patch:
@@ -130,7 +160,7 @@ Wed Apr  8 12:05:25 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 Tue Mar  3 12:01:13 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 7.43.0.5
-- refresh python-pycurl-7.43.0-tls-backend.patch 
+- refresh python-pycurl-7.43.0-tls-backend.patch
  * added python 3.8 support
  * officialy ended support for python 2
 
@@ -579,18 +609,18 @@ Tue May 20 12:13:23 UTC 2014 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Fri Aug 30 18:07:30 UTC 2013 - crrodriguez@opensuse.org
 
-- remove runtime curl version check and __DATE__ __TIME__ usage 
+- remove runtime curl version check and __DATE__ __TIME__ usage
   (pycurl-no-runtime-curlvercheck.patch)
 
 -------------------------------------------------------------------
 Fri Apr  5 13:16:51 UTC 2013 - idonmez@suse.com
 
-- Add Source URL, see https://en.opensuse.org/SourceUrls 
+- Add Source URL, see https://en.opensuse.org/SourceUrls
 
 -------------------------------------------------------------------
 Sat Apr 28 06:42:57 UTC 2012 - highwaystar.ru@gmail.com
 
-- added python3 package 
+- added python3 package
 - spec file slighly cleaned (old buildroot macro replaced)
 
 -------------------------------------------------------------------
@@ -608,7 +638,7 @@ Tue Sep 20 11:54:25 UTC 2011 - saschpe@suse.de
 Wed Feb 10 11:45:01 UTC 2010 - jfunk@funktronics.ca
 
 - Update to 7.19.0:
-  * Added CURLFILE, ADDRESS_SCOPE and ISSUERCERT options, 
+  * Added CURLFILE, ADDRESS_SCOPE and ISSUERCERT options,
     as well as the APPCONNECT_TIME info.
   * Added PRIMARY_IP info (patch by
     Yuhui H <eyecat at gmail.com>).

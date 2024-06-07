@@ -429,4 +429,41 @@
   * XFAIL a test due to gh#pycurl/pycurl#729 (bsc#1218062)</comment>
     <requestid>1133226</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>02c55abc8c6760b200e3e5d98d1def4e</srcmd5>
+    <version>7.45.3</version>
+    <time>1717765308</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.45.3:
+  * Add CURLOPT_REQUEST_TARGET option
+  * Add missing 2nd parameters to METH_NOARGS functions
+  * Add CURLOPT_AWS_SIGV4 option (patch by Scott Talbert).
+  * Add consistent names for newer Curl version constants
+  * Only run HTTP version 3 option constant test if curl
+    supported
+  * Expose COMPILE_SSL_LIB in Python and use for test filtering
+  * Filter tests based on *compile* libcurl version not runtime
+    version
+  * Use print function in callbacks documentation
+  * Add missing shebang to tests/ext/test-suite.sh
+  * Officially declare support for Python 3.12
+  * Fix curl_multi_info_read flow that loses messages
+  * Support using environment variables for setup on Windows
+  * Add support for Schannel SSL backend (patch by Scott Talbert)
+  * Skip HTTP2 tests based on a curl support check
+  * Fix fake-curl tests so they work when run out of tree
+  * xfail test_easy_pause_unpause unconditionally
+  * Provide generic error strings in pycurl.error objects
+  * Change URLs to new curl mailing list (patch by Michael C).
+  * Add missing HTTPS proxy options (patch by Jean Hominal).
+  * Add support for setting CURLOPT_SSLCERT_BLOB
+  * Add support for setting rest of CURLOPTTYPE_BLOB fields
+  * Build wheels on Linux/macOS/Windows (patch by Scott Talbert).
+- drop pause-unpause-xfail.patch (upstream)
+
+- refresh python-pycurl-7.43.0-tls-backend.patch
+- remove runtime curl version check and __DATE__ __TIME__ usage
+- Add Source URL, see https://en.opensuse.org/SourceUrls</comment>
+    <requestid>1179069</requestid>
+  </revision>
 </revisionlist>
