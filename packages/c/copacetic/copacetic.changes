@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Thu May 30 10:26:45 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package copacetic: CLI tool for directly patching container
+  images using reports from vulnerability scanners
