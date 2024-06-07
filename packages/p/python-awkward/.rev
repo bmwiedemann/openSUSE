@@ -480,4 +480,21 @@
   * fix: UnmaskedArray was missing its _nextcarry_outindex</comment>
     <requestid>1172539</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>f1f526ef0050ea297cd8194144e19678</srcmd5>
+    <version>2.6.5</version>
+    <time>1717765386</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.6.5:
+  * feat: 2772 pyarrow doesnt permit selective reading with
+    extensionarray
+  * fix: skip failing test when jax is not installed
+  * fix: skip tests that require pyarrow when it is not installed
+  * fix: generate array view
+  * fix: Header-only fix is_valid for empty Indexed or
+    IndexedOption
+  * fix: wait for Jitify performing a one-time only warm-up
+  * fix: prevent exponential memory growth in UnionArray</comment>
+    <requestid>1178926</requestid>
+  </revision>
 </revisionlist>

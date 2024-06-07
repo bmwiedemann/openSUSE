@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun  6 08:25:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.5:
+  * feat: 2772 pyarrow doesnt permit selective reading with
+    extensionarray
+  * fix: skip failing test when jax is not installed
+  * fix: skip tests that require pyarrow when it is not installed
+  * fix: generate array view
+  * fix: Header-only fix is_valid for empty Indexed or
+    IndexedOption
+  * fix: wait for Jitify performing a one-time only warm-up
+  * fix: prevent exponential memory growth in UnionArray
+
+-------------------------------------------------------------------
 Tue May  7 21:00:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.4:

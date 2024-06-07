@@ -16,14 +16,14 @@
 #
 
 
-%define awkward_cpp_version 33
+%define awkward_cpp_version 34
 %{?sle15_python_module_pythons}
 Name:           python-awkward
-Version:        2.6.4
+Version:        2.6.5
 Release:        0
 Summary:        Manipulate arrays of complex data structures as easily as Numpy
 License:        BSD-3-Clause
-URL:            https://awkward-array.org/
+URL:            https://github.com/scikit-hep/awkward
 # SourceRepository: https://github.com/scikit-hep/awkward
 Source0:        https://files.pythonhosted.org/packages/source/a/awkward/awkward-%{version}.tar.gz
 Source1:        python-awkward.rpmlintrc
