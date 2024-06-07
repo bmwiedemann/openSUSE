@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Jun 06 23:38:53 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 1.2.4:
+  * Development on onion services, and on the RPC subsystem.
+  * This release restores the faravahar directory authority,
+    which has a new location and keys.
+  * Fixed two-medium security issues, tracked as TROVE-2024-005
+    and TROVE-2024-006.
+  * For a full changelog, refer to the installed package changelog
+    (/usr/share/doc/packages/arti/CHANGELOG.md)
+
+
+- Update to version 1.2.3:
+  * Fixes a high-severity issue affecting onion services and
+    clients connecting to onion services with 'lite' vanguards
+    (the default) enabled. TROVE-2024-003
+  * This release also fixes a medium-severity issue affecting
+    'full' vanguards. TROVE-2024-004
+  * For a full changelog, refer to the installed package changelog
+    (/usr/share/doc/packages/arti/CHANGELOG.md)
+
+
+- Update to version 1.2.2:
+  * Arti now supports Vanguards for improved security
+    against guard discovery for onion service circuits.
+    By default, we use the vanguards-lite algorithm;
+    the vanguards-full algorithm can be configured.
+  * Update to use the new identity key for the tor26 directory
+    authority.
+  * Fix an inadvertent recursion bug when converting TorAddrError
+    to arti_client::Error.
+  * Improve reliability of bootstrap status reporting.
+  * Convert to use figment instead of config-rs as our
+    configuration backend, for improved error messages.
+  * For a full changelog, refer to the installed package changelog
+    (/usr/share/doc/packages/arti/CHANGELOG.md)
+
+-------------------------------------------------------------------
 Thu Apr  4 15:40:41 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update constraints to build on more workers (especially for aarch64)
@@ -20,14 +58,14 @@ Tue Apr 02 16:00:31 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
     which are needed to improve onion service security.
     This is not yet complete.
   * Added support for unmanaged pluggable transports
-  * Begun work to improve Tor's relay cell protocol with support 
+  * Begun work to improve Tor's relay cell protocol with support
     for packed and fragmented messages
 
 - Update to version 1.2.0
   * Initial support for running onion services.
   * Fixed a number of bugs and security issues.
   * Made the onion-service-service feature non-experimental.
-  
+
   For a full changelog, refer to the package changelog
   (/usr/share/doc/packages/arti/CHANGELOG.md)
 

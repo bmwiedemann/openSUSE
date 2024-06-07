@@ -3,9 +3,9 @@
         <param name="url">https://gitlab.torproject.org/tpo/core/arti.git</param>
         <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
         <param name="scm">git</param>
-        <param name="revision">arti-1.2.1</param>
+        <param name="revision">arti-v1.2.4</param>
         <param name="match-tag">*</param>
-        <param name="versionrewrite-pattern">arti-(\d+\.\d+\.\d+)</param>
+        <param name="versionrewrite-pattern">arti-v(\d+\.\d+\.\d+)</param>
         <param name="versionrewrite-replacement">\1</param>
         <param name="changesgenerate">enable</param>
     </service>
@@ -16,7 +16,7 @@
         <param name="compression">zst</param>
         <param name="update">true</param>
 
-        <!-- 
+        <!--
         From https://gitlab.torproject.org/tpo/core/arti/-/blob/2db5ccf16d2f977c073ba3f142513b920fb7b6a1/maint/cargo_audit
         -->
 
@@ -33,7 +33,7 @@
         <!--
         As of 28 Nov 2023, all versions of the rsa crate have a variable
         timing attack that can leak private keys.
-        
+
         We do not use (yet) do any private-key rsa operations in arti:
         we only use it to verify signatures.
         -->
@@ -46,7 +46,7 @@
         experimental).
         -->
         <param name="i-accept-the-risk">RUSTSEC-2024-0014</param>
-        
+
     </service>
 
     <service name="cargo_audit" mode="manual">
