@@ -1,0 +1,22 @@
+<package name="klevernotes" project="openSUSE:Factory">
+  <title>Note taking and management application</title>
+  <description>KleverNotes allows you to create and preview a Markdown note while giving you
+the freedom to customize the preview from settings or using a CSS theme.
+You can organize your notes however you want with a combination of categories
+and groups, which will be directly reflected on your system in the hierarchy of
+your KleverNotes storage folders. Simply choose your storage location and
+you're ready to write!
+
+You can print your notes, add small sketches and even create specific tasks for
+each of them.
+
+Notes are saved as Markdown files in your KleverNotes storage for easy access.
+They support the entire CommonMark specification with extensive syntax.
+KleverNotes also introduces a small collection of opt-in “plugins” to extend
+basic markdown features, such as: code highlighting, note linking, quick
+emoji, etc.
+
+</description>
+  <devel project="KDE:Extra" package="klevernotes"/>
+  <url>https://apps.kde.org/klevernotes/</url>
+</package>
