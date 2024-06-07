@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-crontab
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        Python Crontab API
 License:        LGPL-3.0-only

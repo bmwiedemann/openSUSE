@@ -68,4 +68,51 @@
   * Cause an error when setting an invalid frequency</comment>
     <requestid>1136017</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>194f1495e8f317cf738240b876708eb3</srcmd5>
+    <version>3.1.0</version>
+    <time>1717765465</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1.0:
+  * Fix a few basic parsing issues
+-This line, and those below, will be ignored--
+
+old: openSUSE:Factory/python-python-crontab
+new: devel:languages:python/python-python-crontab rev None
+Index: python-python-crontab.changes
+===================================================================
+--- python-python-crontab.changes (revision 8)
++++ python-python-crontab.changes (revision 20)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Thu Jun  6 20:21:25 UTC 2024 - Dirk Müller &lt;dmueller@suse.com&gt;
++
++- update to 3.1.0:
++  * Fix a few basic parsing issues
++
++-------------------------------------------------------------------
+ Mon Jan  1 20:28:24 UTC 2024 - Dirk Müller &lt;dmueller@suse.com&gt;
+ 
+ - update to 3.0.0:
+Index: python-python-crontab.spec
+===================================================================
+--- python-python-crontab.spec (revision 8)
++++ python-python-crontab.spec (revision 20)
+@@ -18,7 +18,7 @@
+ 
+ %{?sle15_python_module_pythons}
+ Name:           python-python-crontab
+-Version:        3.0.0
++Version:        3.1.0
+ Release:        0
+ Summary:        Python Crontab API
+ License:        LGPL-3.0-only
+Index: python-crontab-3.1.0.tar.gz
+===================================================================
+Binary file python-crontab-3.1.0.tar.gz (revision 20) added
+Index: python-crontab-3.0.0.tar.gz
+===================================================================
+Binary file python-crontab-3.0.0.tar.gz (revision 8) deleted</comment>
+    <requestid>1179080</requestid>
+  </revision>
 </revisionlist>
