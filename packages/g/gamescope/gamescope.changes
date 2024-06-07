@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jun 05 18:57:26 UTC 2024 - opensuse@dstoecker.de
+
+- Update to version 3.14.18:
+  * wayland_backend: Fix fractional scale bug
+  * wayland_backend: Fix cursor position with display scaling
+  * main: hide disabled backends from user
+  * Fix `sdl2_backend=disabled`
+  * layer: Attempt at fixing CI
+  * steamcompmgr: Handle FIFO stuff for Wayland windows
+  * layer: Get working with native Wayland applications
+  * steamcompmgr: Hook up more common stuff to XDG code
+  * all: Refactor IBackendFb to be owned by CVulkanTexture
+  * steamcompmgr: Don't re-enable applyOutputColorMgmt when dumping screen buffer for screenshots
+- Drop libliftoff-fix-gcc14-calloc-transposed-args.patch
+
+-------------------------------------------------------------------
 Wed May 08 13:35:00 UTC 2024 - antonio.teixeira@suse.com
 
 - Update to version 3.14.13:

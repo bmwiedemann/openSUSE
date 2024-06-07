@@ -18,15 +18,13 @@
 
 %bcond_without  intree_libs
 Name:           gamescope
-Version:        3.14.13
+Version:        3.14.18
 Release:        0
 Summary:        Micro-compositor optimized for running video games on Wayland
 License:        BSD-2-Clause
 Group:          Amusements/Games/Other
 URL:            https://github.com/Plagman/gamescope
 Source:         %{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM libliftoff-fix-gcc14-calloc-transposed-args.patch -- Fixes libliftoff build with gcc14
-Patch1:         libliftoff-fix-gcc14-calloc-transposed-args.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  glslang-devel
@@ -128,6 +126,7 @@ sed -i "s|#include <libei-1.0/libeis.h>|#include <libeis.h>|g" src/InputEmulatio
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
+%{_bindir}/%{name}stream
 %{_libdir}/libVkLayer_FROG_gamescope_wsi_%{_arch}.so
 %dir %{_datadir}/vulkan/implicit_layer.d/
 %{_datadir}/vulkan/implicit_layer.d/VkLayer_FROG_gamescope_wsi.%{_arch}.json
