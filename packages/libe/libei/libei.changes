@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  5 18:28:34 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Remove explicit includedir as it already installs to a
+  subdirectory
+
+-------------------------------------------------------------------
 Wed Feb 14 10:02:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add baselibs.conf: GNOME 46's at-spi2-core newly linkes libei,

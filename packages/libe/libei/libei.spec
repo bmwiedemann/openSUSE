@@ -15,17 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-Name:           libei
 %define lname libei1
+Name:           libei
 Version:        1.2.1
 Release:        0
 Summary:        Library for emulated input in Wayland
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/libinput/libei/
-
-Source:         https://gitlab.freedesktop.org/libinput/libei/-/archive/%version/%name-%version.tar.gz
+Source0:        https://gitlab.freedesktop.org/libinput/libei/-/archive/%version/%name-%version.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  meson >= 0.57
 BuildRequires:  ninja
@@ -70,7 +68,7 @@ libei is a library for Emulated Input, targeting the Wayland stack.
 %autosetup -p1
 
 %build
-%meson --includedir="%_includedir/%name" -Dtests=disabled
+%meson -Dtests=disabled
 %meson_build
 
 %install
@@ -84,7 +82,7 @@ libei is a library for Emulated Input, targeting the Wayland stack.
 
 %files devel
 %_bindir/ei-debug-*
-%_includedir/%name/
+%_includedir/%name-1.0
 %_libdir/pkgconfig/*.pc
 %_libdir/*.so
 %license COPYING

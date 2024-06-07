@@ -122,4 +122,12 @@
   and the at-spi stack is made available bi-arch. (forwarded request 1146547 from dimstar)</comment>
     <requestid>1146616</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>e02229c42689363fbb0756e32950bd37</srcmd5>
+    <version>1.2.1</version>
+    <time>1717765323</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1178809</requestid>
+  </revision>
 </revisionlist>
