@@ -887,4 +887,25 @@
     <comment></comment>
     <requestid>1175867</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>8604f56c07dd3ec01e65ceaf53bfd5b9</srcmd5>
+    <version>2.32.3</version>
+    <time>1717765312</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.32.3:
+  * Fixed bug breaking the ability to specify custom SSLContexts
+    in sub-classes of HTTPAdapter.
+  * Fixed issue where Requests started failing to run on Python
+    versions compiled without the `ssl` module.
+
+  * To provide a more stable migration for custom HTTPAdapters impacted by the CVE changes in 2.32.0,
+    we've renamed _get_connection to a new public API, get_connection_with_tls_context. Existing
+    custom HTTPAdapters will need to migrate their code to use this new API. get_connection is
+  * Fixed an issue where setting verify=False on the first request from a Session
+    will cause subsequent requests to the same origin to also ignore cert verification,
+  * verify=True now reuses a global SSLContext which should improve request time
+  * Requests now supports optional use of character detection (chardet or charset_normalizer)
+    when repackaged or vendored. This enables pip and other projects to minimize their</comment>
+    <requestid>1179087</requestid>
+  </revision>
 </revisionlist>

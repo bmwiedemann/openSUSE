@@ -1,23 +1,32 @@
 -------------------------------------------------------------------
+Thu Jun  6 19:38:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.32.3:
+  * Fixed bug breaking the ability to specify custom SSLContexts
+    in sub-classes of HTTPAdapter.
+  * Fixed issue where Requests started failing to run on Python
+    versions compiled without the `ssl` module.
+
+-------------------------------------------------------------------
 Wed May 22 14:00:50 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.32.2
-  * To provide a more stable migration for custom HTTPAdapters impacted by the CVE changes in 2.32.0, 
-    we've renamed _get_connection to a new public API, get_connection_with_tls_context. Existing 
-    custom HTTPAdapters will need to migrate their code to use this new API. get_connection is 
+  * To provide a more stable migration for custom HTTPAdapters impacted by the CVE changes in 2.32.0,
+    we've renamed _get_connection to a new public API, get_connection_with_tls_context. Existing
+    custom HTTPAdapters will need to migrate their code to use this new API. get_connection is
     considered deprecated in all versions of Requests>=2.32.0.
 
 -------------------------------------------------------------------
 Tue May 21 12:33:41 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.32.1
-  * Fixed an issue where setting verify=False on the first request from a Session 
-    will cause subsequent requests to the same origin to also ignore cert verification, 
+  * Fixed an issue where setting verify=False on the first request from a Session
+    will cause subsequent requests to the same origin to also ignore cert verification,
     regardless of the value of verify. (bsc#1224788, CVE-2024-35195)
-  * verify=True now reuses a global SSLContext which should improve request time 
+  * verify=True now reuses a global SSLContext which should improve request time
     variance between first and subsequent requests.
-  * Requests now supports optional use of character detection (chardet or charset_normalizer) 
-    when repackaged or vendored. This enables pip and other projects to minimize their 
+  * Requests now supports optional use of character detection (chardet or charset_normalizer)
+    when repackaged or vendored. This enables pip and other projects to minimize their
     vendoring surface area.
   * Requests has officially added support for CPython 3.12 and dropped support for CPython 3.7.
   * Starting in Requests 2.33.0, Requests will migrate to a PEP 517 build system using hatchling.

@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-requests%{psuffix}
-Version:        2.32.2
+Version:        2.32.3
 Release:        0
 Summary:        Python HTTP Library
 License:        Apache-2.0
