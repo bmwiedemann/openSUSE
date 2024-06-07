@@ -1817,6 +1817,7 @@ BuildFlags: onlybuild:deltarpm
 BuildFlags: onlybuild:desktop-file-utils
 BuildFlags: onlybuild:devscripts
 BuildFlags: onlybuild:devscripts:checkbashisms
+BuildFlags: onlybuild:dhcp
 BuildFlags: onlybuild:dialog
 BuildFlags: onlybuild:diffutils
 BuildFlags: onlybuild:dirac
@@ -3158,6 +3159,7 @@ BuildFlags: onlybuild:tpm2-0-tss
 BuildFlags: onlybuild:tracker
 BuildFlags: onlybuild:transfig
 BuildFlags: onlybuild:translation-update-upstream
+BuildFlags: onlybuild:tree
 BuildFlags: onlybuild:tslib
 BuildFlags: onlybuild:ttf-converter
 BuildFlags: onlybuild:twolame
