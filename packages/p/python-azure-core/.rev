@@ -506,4 +506,15 @@
     <comment></comment>
     <requestid>1166374</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>dcb555bc2f576680d2a46e7a60aab64f</srcmd5>
+    <version>1.30.2</version>
+    <time>1717765545</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.30.2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1179170 from glaubitz)</comment>
+    <requestid>1179202</requestid>
+  </revision>
 </revisionlist>
