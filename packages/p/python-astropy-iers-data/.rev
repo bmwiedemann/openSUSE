@@ -44,4 +44,13 @@
   * Update IERS Earth rotation and leap second tables (forwarded request 1171968 from bnavigator)</comment>
     <requestid>1171969</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>603056b0a306f5c36d6235ca5f48ef83</srcmd5>
+    <version>0.2024.6.3.0.31.14</version>
+    <time>1717765377</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.2024.06.03.00.31.14:
+  * Update IERS Earth rotation and leap second tables</comment>
+    <requestid>1178961</requestid>
+  </revision>
 </revisionlist>
