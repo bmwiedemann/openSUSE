@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Thu Jun 06 09:35:03 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Switch build to cmake
+- Remove deprecated Group tag
+- Migrate from deprecated disabled to manual in _service
+- Update to version 0.3.0:
+  * README: Fixed getconf command in build instructions
+  * Makefile: remove
+  * CMake: add protocol building and install rule
+  * output: colorize BG instead of FG
+  * fix: cmyk conversion on pure black
+  * core: switch to server-side cursors
+  * core: implement more safety around cursor themes
+
+-------------------------------------------------------------------
+Sun Apr  7 02:35:12 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Ensure package neutrality
+
+-------------------------------------------------------------------
+Mon Oct 30 02:10:33 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.2.0:
+  * core: support conversions from 10-bit formats
+  * events: Use xkbcommon for keyboard event handling
+  * use crosshair instead of left pointer as cursor
+
+-------------------------------------------------------------------
+Wed May 31 08:52:27 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.1.1:
+  * core: avoid leaving garbage buffers on exit
+  * readme: include new options
+
+-------------------------------------------------------------------
+Thu May 18 20:58:25 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0eea883:
+  * flake.lock: update nixpkgs
+  * CI: update nix install action
+
+-------------------------------------------------------------------
+Mon May 01 23:00:03 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 97c5134:
+  * readme: include new options
+  * clang-format, no-zoom and render-inactive
+  * Add support for 24 bit formats
+
+-------------------------------------------------------------------
+Tue Mar 07 12:22:58 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version e4c2672:
+  * clear LSes at finish
+  * disconnect from display on finish
+  * don't flush display after disconnect
+  * fix autocopy.
+  * fix clang build
+  * CI: update actions
+  * Nix: push to Cachix
+  * Add keyboard listener and listen to escape to quit hyprpicker
+  * fix issue #17: hyprpicker stops working after a couple of uses
+  * Document the --autocopy flag
+
+-------------------------------------------------------------------
+Wed Dec  7 00:19:50 UTC 2022 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Initial commit for git hyprpicker
