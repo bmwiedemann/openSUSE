@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun  5 17:28:21 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Fix description-shorter-than-summary rpmlint warning
+- Update to 0.9.1
+  * Fixed display issue where remembered session would display
+    command instead of session name
+  * Fixed issue with greetd IPC when no session is selected
+  * Automatically select first session in list
+
+-------------------------------------------------------------------
 Tue May  7 06:46:11 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Enable tests

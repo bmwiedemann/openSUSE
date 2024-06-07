@@ -17,7 +17,7 @@
 
 
 Name:           tuigreet
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        Graphical console greeter for greetd
 License:        GPL-3.0-only
@@ -29,7 +29,7 @@ BuildRequires:  cargo-packaging
 Recommends:     greetd
 
 %description
-Console UI greeter (using tui-rs)
+Graphical console UI greeter for greetd (using tui-rs)
 
 %prep
 %autosetup -p1 -a1
