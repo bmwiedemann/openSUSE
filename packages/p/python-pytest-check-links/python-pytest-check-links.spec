@@ -20,7 +20,7 @@
 %bcond_with test
 %{?sle15_python_module_pythons}
 Name:           python-pytest-check-links
-Version:        0.9.3
+Version:        0.10.1
 Release:        0
 Summary:        Pytest plugin for checking links in files
 License:        BSD-3-Clause

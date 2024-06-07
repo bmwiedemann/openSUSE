@@ -119,4 +119,15 @@
   * Enforce pytest 7</comment>
     <requestid>1158478</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3aa0153b7486a525b2013363f9b7e497</srcmd5>
+    <version>0.10.1</version>
+    <time>1717765485</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.10.1:
+  * Fix min dependencies
+  * Bump the actions group with 1 update
+  * Support Pytest 8.1</comment>
+    <requestid>1179141</requestid>
+  </revision>
 </revisionlist>

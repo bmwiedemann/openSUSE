@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun  7 07:01:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.1:
+  * Fix min dependencies
+  * Bump the actions group with 1 update
+  * Support Pytest 8.1
+
+-------------------------------------------------------------------
 Sat Mar 16 13:08:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.3:
