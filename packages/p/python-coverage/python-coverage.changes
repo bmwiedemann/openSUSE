@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Jun  6 07:29:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.5.3:
+  * Performance improvements for combining data files, especially
+    when measuring line coverage. A few different quadratic
+    behaviors were eliminated. In one extreme case of combining
+    700+ data files, the time dropped from more than three hours
+    to seven minutes.  Thanks for Kraken Tech for funding the
+    fix.
+  * Performance improvements for generating HTML reports, with a
+    side benefit of reducing memory use, closing issue 1791.
+    Thanks to Daniel Diniz for helping to diagnose the problem.
+  * Fix: nested matches of exclude patterns could exclude too
+    much code, as reported in issue 1779.  This is now fixed.
+  * Changed: previously, coverage.py would consider a module
+    docstring to be an executable statement if it appeared after
+    line 1 in the file, but not executable if it was the first
+    line.  Now module docstrings are never counted as executable
+    statements.  This can change coverage.py's count of the
+    number of statements in a file, which can slightly change the
+    coverage percentage reported.
+  * In the HTML report, the filter term and "hide covered"
+    checkbox settings are remembered between viewings, thanks to
+    Daniel Diniz.
+  * Python 3.13.0b1 is supported.
+  * Fix: parsing error handling is improved to ensure bizarre
+    source files are handled gracefully, and to unblock oss-fuzz
+    fuzzing, thanks to Liam DeVoe. Closes issue 1787.
+
+-------------------------------------------------------------------
 Fri May 10 03:05:12 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 7.5.1:

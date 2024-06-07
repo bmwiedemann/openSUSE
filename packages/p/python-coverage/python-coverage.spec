@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-coverage
-Version:        7.5.1
+Version:        7.5.3
 Release:        0
 Summary:        Code coverage measurement for Python
 License:        Apache-2.0
