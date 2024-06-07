@@ -19,14 +19,16 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-openpyxl
-Version:        3.1.2
+Version:        3.1.3
 Release:        0
 Summary:        A Python library to read/write Excel 2010 xlsx/xlsm files
 License:        MIT AND Python-2.0
 URL:            https://foss.heptapod.net/openpyxl/openpyxl
 Source:         https://files.pythonhosted.org/packages/source/o/openpyxl/openpyxl-%{version}.tar.gz
 BuildRequires:  %{python_module et_xmlfile}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-et_xmlfile
@@ -43,19 +45,17 @@ It is ported from the PHPExcel project
 %setup -q -n openpyxl-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 mv LICENCE.rst LICENSE.rst
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst
 %license LICENSE.rst
-%dir %{python_sitelib}/openpyxl
-%{python_sitelib}/openpyxl/*
-%dir %{python_sitelib}/openpyxl-%{version}-py*.egg-info
-%{python_sitelib}/openpyxl-%{version}-py*.egg-info/*
+%{python_sitelib}/openpyxl
+%{python_sitelib}/openpyxl-%{version}.dist-info
 
 %changelog

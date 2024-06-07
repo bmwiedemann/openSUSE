@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jun  6 15:11:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.3:
+  * #1401 Column name caches are slow and use a lot of memory
+  * #1457 Improved handling of duplicate named styles
+  * #1842 Rich-text can be saved if lxml is not installed
+  * #1954 Documentation for sheet views is incorrect
+  * #1973 Timedeltas not read properly in read-only mode
+  * #1987 List of formulae names contains mistakes
+  * #1967 Filters does not handle non-numerical filters
+  * #2054 Type checking increases exponentially
+  * #2057 Loading pivot tables can be unnecessarily slow
+  * #2102 Improve performance when reading files with lots of
+    custom properties
+  * #2106 Setting Trendline.name attribute raises exception when
+    saving
+  * #2120 Timezone and Zombie formatting cannot be combined.
+  * #2107 Column name generation is inefficient and slow
+  * #2122 File handlers not always released in read-only mode
+  * #2149 Workbook files not properly closed on Python ≥ 3.11.8
+    and Windows
+  * #2161 Pivot cache definitions using tupleCache had
+    serialisation issues
+
+-------------------------------------------------------------------
 Tue Jan  9 22:13:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.2:
