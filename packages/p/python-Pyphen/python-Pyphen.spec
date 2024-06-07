@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Pyphen
-Version:        0.14.0
+Version:        0.15.0
 Release:        0
 Summary:        Pure Python module to hyphenate text
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MPL-1.1

@@ -73,4 +73,17 @@
     <comment>- Add %{?sle15_python_module_pythons} to build for python 3.11 in Leap</comment>
     <requestid>1138080</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9c965ea405dc58de8689ac0e03a08e7d</srcmd5>
+    <version>0.15.0</version>
+    <time>1717765461</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.15.0:
+  * Support Python 3.12, drop Python 3.7 support.
+  * Add READMEs for dictionaries.
+  * Add Basque hyphenation dictionary.
+  * Update Catalan and Hungarian dictionaries.
+  * Use Ruff instead of Flake8 and isort.</comment>
+    <requestid>1179077</requestid>
+  </revision>
 </revisionlist>

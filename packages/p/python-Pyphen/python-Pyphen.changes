@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun  6 20:13:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15.0:
+  * Support Python 3.12, drop Python 3.7 support.
+  * Add READMEs for dictionaries.
+  * Add Basque hyphenation dictionary.
+  * Update Catalan and Hungarian dictionaries.
+  * Use Ruff instead of Flake8 and isort.
+
+-------------------------------------------------------------------
 Thu Jan 11 08:57:10 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add %{?sle15_python_module_pythons} to build for python 3.11 in Leap
