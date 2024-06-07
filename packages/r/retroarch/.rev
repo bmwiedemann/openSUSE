@@ -1396,4 +1396,12 @@
     <comment>- Update to version 1.18.0</comment>
     <requestid>1160933</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b7dc2d7a3fad30549003334f675619ac</srcmd5>
+    <version>1.19.0</version>
+    <time>1717765410</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1179037</requestid>
+  </revision>
 </revisionlist>
