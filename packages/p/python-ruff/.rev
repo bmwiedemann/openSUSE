@@ -956,4 +956,41 @@
    * Recognise assignments such as __all__ = builtins.list([&quot;foo&quot;, &quot;bar&quot;]) as valid __all__ definitions</comment>
     <requestid>1173634</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>84a9a0f89747f4113eb74ba73ed55b14</srcmd5>
+    <version>0.4.8</version>
+    <time>1717765341</time>
+    <user>anag+factory</user>
+    <comment>- update ruff: 
+* 0.4.8
+ * Performance
+    * Linter performance has been improved by around 10% on some microbenchmarks
+    *  by refactoring the lexer and parser to maintain synchronicity between them 
+ * Preview features
+    * [flake8-bugbear] Implement return-in-generator (B901) 
+    * [flake8-pyi] Implement PYI063 
+    * [pygrep_hooks] Check blanket ignores via file-level pragmas (PGH004) 
+ * Rule changes
+    * [pyupgrade] Update UP035 for Python 3.13 and the latest version of typing_extensions 
+    * [numpy] Update NPY001 rule for NumPy 2.0 
+ * Server
+    * Formatting a document with syntax problems no longer spams a visible error popup 
+ * CLI
+    * Add RDJson support for --output-format flag 
+ * Bug fixes
+    * [pyupgrade] Write empty string in lieu of panic when fixing UP032 
+    * [flake8-simplify] Simplify double negatives in SIM103 
+    * Ensure the expression generator adds a newline before type statements 
+    * Respect per-file ignores for blanket and redirected noqa rules 
+* 0.4.7
+ * Preview features
+    * [flake8-pyi] Implement PYI064 
+    * [flake8-pyi] Implement PYI066 
+    * [flake8-pyi] Implement PYI057 
+    * [pyflakes] Enable F822 in __init__.py files by default 
+ * Formatter
+    * Fix incorrect placement of trailing stub function comments 
+ * Server</comment>
+    <requestid>1178989</requestid>
+  </revision>
 </revisionlist>

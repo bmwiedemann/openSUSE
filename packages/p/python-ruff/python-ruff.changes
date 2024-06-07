@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Thu Jun  6 09:28:05 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update ruff: 
+* 0.4.8
+ * Performance
+    * Linter performance has been improved by around 10% on some microbenchmarks
+    *  by refactoring the lexer and parser to maintain synchronicity between them 
+ * Preview features
+    * [flake8-bugbear] Implement return-in-generator (B901) 
+    * [flake8-pyi] Implement PYI063 
+    * [pygrep_hooks] Check blanket ignores via file-level pragmas (PGH004) 
+ * Rule changes
+    * [pyupgrade] Update UP035 for Python 3.13 and the latest version of typing_extensions 
+    * [numpy] Update NPY001 rule for NumPy 2.0 
+ * Server
+    * Formatting a document with syntax problems no longer spams a visible error popup 
+ * CLI
+    * Add RDJson support for --output-format flag 
+ * Bug fixes
+    * [pyupgrade] Write empty string in lieu of panic when fixing UP032 
+    * [flake8-simplify] Simplify double negatives in SIM103 
+    * Ensure the expression generator adds a newline before type statements 
+    * Respect per-file ignores for blanket and redirected noqa rules 
+* 0.4.7
+ * Preview features
+    * [flake8-pyi] Implement PYI064 
+    * [flake8-pyi] Implement PYI066 
+    * [flake8-pyi] Implement PYI057 
+    * [pyflakes] Enable F822 in __init__.py files by default 
+ * Formatter
+    * Fix incorrect placement of trailing stub function comments 
+ * Server
+    * Respect file exclusions in ruff server 
+    * Add support for documents not exist on disk 
+    * Add Vim and Kate setup guide for ruff server 
+ * Bug fixes
+    * Avoid removing newlines between docstring headers and rST blocks 
+    * Infer indentation with imports when logical indent is absent 
+    * Use char index rather than position for indent slice 
+    * [flake8-comprehension] Strip parentheses around generators in C400 
+    * Mark repeated-isinstance-calls as unsafe on Python 3.10 and later 
+* 0.4.6
+ * Breaking changes
+    * Use project-relative paths when calculating GitLab fingerprints 
+ * Preview features
+    * [flake8-async] Sleep with >24 hour interval should usually sleep forever (ASYNC116) 
+ * Rule changes
+    * [numpy] Add missing functions to NumPy 2.0 migration rule 
+    * [mccabe] Consider irrefutable pattern similar to if .. else for C901 
+    * Consider match-case statements for C901, PLR0912, and PLR0915 
+    * Remove empty strings when converting to f-string (UP032) 
+    * [flake8-bandit] request-without-timeout should warn for requests.request 
+    * [flake8-self] Ignore sunder accesses in flake8-self rules 
+    * [pyupgrade] Lint for TypeAliasType usages (UP040) 
+ * Server
+    * Respect excludes in ruff server configuration discovery 
+    * Use default settings if initialization options is empty or not provided 
+    * ruff server correctly treats .pyi files as stub files 
+    * ruff server searches for configuration in parent directories 
+    * ruff server: An empty code action filter no longer returns notebook source actions 
+ * Bug fixes
+    * [flake8-logging-format] Fix autofix title in logging-warn (G010) 
+    * [refurb] Avoid recommending operator.itemgetter with dependence on lambda arguments 
+    * [flake8-simplify] Avoid recommending context manager in __enter__ implementations 
+    * Create intermediary directories for --output-file 
+    * Propagate reads on global variables 
+    * Treat all singledispatch arguments as runtime-required 
+* 0.4.5
+    * Ruff's language server is now in Beta
+ * Rule changes
+    * [flake8-future-annotations] Reword future-rewritable-type-annotation (FA100) message 
+    * [pycodestyle] Consider soft keywords for E27 rules 
+    * [pyflakes] Recommend adding unused import bindings to __all__ 
+    * [pyflakes] Update documentation and deprecate ignore_init_module_imports 
+    * [pyupgrade] Mark quotes as unnecessary for non-evaluated annotations 
+ * Formatter
+    * Avoid multiline quotes warning with quote-style = preserve 
+ * Server
+    * Support Jupyter Notebook files 
+    * Support noqa comment code actions 
+    * Fix automatic configuration reloading 
+    * Fix several issues with configuration in Neovim and Helix 
+ * CLI
+    * Add --output-format as a CLI option for ruff config 
+ * Bug fixes
+    * Avoid PLE0237 for property with setter 
+    * Avoid TCH005 for if stmt with elif/else block 
+    * Avoid flagging __future__ annotations as required for non-evaluated type annotations 
+    * Check for ruff executable in 'bin' directory as installed by 'pip install --target'. 
+    * Sort edits prior to deduplicating in quotation fix 
+    * Treat escaped newline as valid sequence 
+    * [flake8-pie] Preserve parentheses in unnecessary-dict-kwargs 
+    * [pylint] Ignore __slots__ with dynamic values 
+    * [pylint] Remove try body from branch counting 
+    * [refurb] Respect operator precedence in FURB110 
+ * Documentation
+    * Add --preview to the README 
+    * Add Python 3.13 to list of allowed Python versions 
+    * Simplify Neovim setup documentation 
+    * Update CONTRIBUTING.md to reflect the new parser 
+    * Update server documentation with new migration guide 
+    * [pycodestyle] Clarify motivation for E713 and E714 
+    * [pyflakes] Update docs to describe WAI behavior (F541) 
+    * [pylint] Clearly indicate what is counted as a branch 
+
+-------------------------------------------------------------------
 Mon May 13 11:08:03 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.4.4
