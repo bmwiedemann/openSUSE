@@ -1,5 +1,95 @@
 -------------------------------------------------------------------
-Fri May 17 19:43:20 UTC 2024 - dmueller@suse.com
+Thu Jun 06 13:09:56 UTC 2024 - dmueller@suse.com
+
+- Update to version 0.52.0 (bsc#1224781, CVE-2024-35192):
+  * release: v0.52.0 [main] (#6809)
+  * fix(plugin): initialize logger (#6836)
+  * chore(deps): bump alpine from 3.19.1 to 3.20.0 in the docker group (#6835)
+  * fix(cli): always output fatal errors to stderr (#6827)
+  * fix: close testfile (#6830)
+  * docs(julia): add scanner table (#6826)
+  * feat(python): add license support for `requirement.txt` files (#6782)
+  * docs: add more workarounds for out-of-disk (#6821)
+  * chore: improve error message for image not found (#6822)
+  * fix(sbom): fix panic for `convert` mode when scanning json file derived from sbom file (#6808)
+  * ci(deps): use modules instead of incompatible version (#6805)
+  * ci: set initial version to v0.51.1 (#6810)
+  * ci: replace PAT with ORG_REPO_TOKEN (#6806)
+  * chore(deps): bump the common group with 3 updates (#6789)
+  * fix: clean up golangci lint configuration (#6797)
+  * ci: introduce Release Please for automated release management (#6795)
+  * fix(python): add package name and version validation for `requirements.txt` files. (#6804)
+  * feat(vex): improve relationship support in CSAF VEX (#6735)
+  * chore(alpine): add eol date for Alpine 3.20 (#6800)
+  * docs(plugin): add missed `plugin` section (#6799)
+  * fix: include packages unless it is not needed (#6765)
+  * ci(deps): fix ineffassign and bodyclose in ".*_test.go$" (#6777)
+  * chore(deps): Bump trivy-aws and trivy-checks (#6796)
+  * feat(misconf): support for VPC resources for inbound/outbound rules (#6779)
+  * ci(deps): fix govet in ".*_test.go$" (#6736)
+  * ci(deps): simplify gosec rules exclusion (#6778)
+  * chore: replace interface{} with any (#6751)
+  * fix: close settings.xml (#6768)
+  * refactor(go): add priority for gobinary module versions from `ldflags` (#6745)
+  * ci(deps): fix gocritic in ".*_test.go$" (#6763)
+  * build: use main package instead of main.go (#6766)
+  * feat(misconf): resolve tf module from OpenTofu compatible registry (#6743)
+  * chore(deps): bump the common group across 1 directory with 29 updates (#6756)
+  * ci(deps): fix tenv in ".*_test.go$" (#6748)
+  * chore(deps): bump the aws group with 8 updates (#6738)
+  * chore(deps): bump the docker group with 2 updates (#6739)
+  * chore(deps): bump the github-actions group with 4 updates (#6737)
+  * chore(deps): bump the testcontainers group with 2 updates (#6740)
+  * docs: add info on adding compliance checks (#6275)
+  * docs: Add documentation for contributing additional checks to the trivy policies repo (#6234)
+  * ci: add groups for `dependabot` (#6734)
+  * ci(deps): fix gci and gofmt in ".*_test.go$" (#6721)
+  * feat(nodejs): add v9 pnpm lock file support (#6617)
+  * feat(vex): support non-root components for products in OpenVEX (#6728)
+  * feat(python): add line number support for `requirement.txt` files (#6729)
+  * chore: respect timeout value in .golangci.yaml (#6724)
+  * ci(deps): enable `require-error` rule from `testifylint` linter (#6718)
+  * chore(deps): bump golangci-lint to v1.58.2 (#6719)
+  * fix: node-collector high and critical cves (#6707)
+  * Merge pull request from GHSA-xcq4-m2r3-cmrj
+  * chore: auto-bump golang patch versions (#6711)
+  * fix(misconf): don't shift ignore rule related to code (#6708)
+  * feat(plugin): specify plugin version (#6683)
+  * chore: enforce golangci-lint version (#6700)
+  * ci(deps): update golangci-lint-action and enable testifylint linter on "integration/*" (#6706)
+  * fix(go): include only `.version`|`.ver` (no prefixes) ldflags for `gobinaries` (#6705)
+  * fix(go): add only non-empty root modules for `gobinaries` (#6710)
+  * refactor: unify package addition and vulnerability scanning (#6579)
+  * fix: Golang version parsing from binaries w/GOEXPERIMENT (#6696)
+  * ci(deps): enable testifylint linter on .*_test.go$ (#6688)
+  * feat(misconf): Add support for deprecating a check (#6664)
+  * chore(deps): use `google.golang.org/protobuf/types/known` instead of `github.com/golang/protobuf/ptypes` (#6681)
+  * feat: Add Julia language analyzer support (#5635)
+  * feat(misconf): register builtin Rego funcs from trivy-checks (#6616)
+  * fix(report): hide empty tables if all vulns has been filtered (#6352)
+  * feat(report): Include licenses and secrets filtered by rego to ModifiedFindings (#6483)
+  * feat: add support for plugin index (#6674)
+  * fix(conda): add support `pip` deps for `environment.yml` files (#6675)
+  * docs: add support table for client server mode (#6498)
+  * fix: close APKINDEX archive file (#6672)
+  * fix(misconf): skip Rego errors with a nil location (#6666)
+  * refactor: move artifact types under artifact package to avoid import cycles (#6652)
+  * refactor(misconf): remove extrafs (#6656)
+  * refactor: re-define module structs for serialization (#6655)
+  * chore(misconf): Clean up iac logger (#6642)
+  * feat(misconf): support symlinks inside of Helm archives (#6621)
+  * feat(misconf): add Terraform 'removed' block to schema (#6640)
+  * refactor: unify Library and Package structs (#6633)
+  * fix: use of specified context to obtain cluster name (#6645)
+  * perf(misconf): parse rego input once (#6615)
+  * fix(misconf): skip Rego errors with a nil location (#6638)
+  * ci: add `generic` dir to deb deploy script (#6636)
+  * docs: link warning to both timeout config options (#6620)
+  * docs: fix usage of image-config-scanners (#6635)
+  * chore(deps): bump `knqyf263/trivy-issue-action` to v0.0.6 (#6632)
+
+-------------------------------------------------------------------
+Thu May 09 13:21:53 UTC 2024 - dmueller@suse.com
 
 - Update to version 0.51.1:
   * fix(fs): handle default skip dirs properly (#6628)
@@ -1855,7 +1945,7 @@ Fri Apr 01 07:03:41 UTC 2022 - kastl@b1-systems.de
 -------------------------------------------------------------------
 Tue Mar 22 10:46:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- tie to go.17 as 1.18 became available 
+- tie to go.17 as 1.18 became available
 
 -------------------------------------------------------------------
 Fri Mar 18 10:21:14 UTC 2022 - kastl@b1-systems.de
@@ -2172,7 +2262,7 @@ Thu Jun 10 12:46:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Thu Jun 10 08:31:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- strip binaries 
+- strip binaries
 
 -------------------------------------------------------------------
 Mon Jun 07 19:14:07 UTC 2021 - dmueller@suse.com
@@ -2309,7 +2399,7 @@ Thu Nov 26 15:23:00 UTC 2020 - dmueller@suse.com
 -------------------------------------------------------------------
 Fri Oct 30 14:52:37 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
-- add 0001-Add-suse-sles-15.2-to-the-EOL-list-as-well.patch 
+- add 0001-Add-suse-sles-15.2-to-the-EOL-list-as-well.patch
 
 -------------------------------------------------------------------
 Wed Oct 28 12:47:30 UTC 2020 - Dirk Mueller <dmueller@suse.com>
@@ -2327,7 +2417,7 @@ Thu Oct 22 14:20:24 UTC 2020 - Stefan Nica <snica@suse.com>
 -------------------------------------------------------------------
 Thu Oct 22 13:16:40 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
-- add update-end-of-life-dates.patch 
+- add update-end-of-life-dates.patch
 
 -------------------------------------------------------------------
 Tue Oct 20 13:13:39 UTC 2020 - msabate@suse.com
