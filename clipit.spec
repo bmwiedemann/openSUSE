@@ -1,7 +1,7 @@
 #
 # spec file for package clipit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           clipit
-Version:        1.4.2
+Version:        1.4.5
 Release:        0
 Summary:        A lightweight GTK+ clipboard manager
 License:        GPL-3.0-or-later
 Group:          Productivity/Other
-Url:            https://github.com/shantzu/ClipIt/
+URL:            https://github.com/shantzu/ClipIt/
 Source:         https://github.com/downloads/shantzu/ClipIt/%{name}-%{version}.tar.gz
 BuildRequires:  intltool >= 0.23
 %if 0%{suse_version} >= 1550
@@ -30,8 +30,10 @@ BuildRequires:  rsvg-convert
 %else
 BuildRequires:  rsvg-view
 %endif
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(gtk+-2.0) 
+BuildRequires:  pkgconfig(gtk+-3.0)
 Recommends:     xdotool
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -47,10 +49,11 @@ ClipIts main features are:
  – Exclude specific items from history.
 
 %prep
-%setup -q
+%setup -q -n ClipIt-%{version}
 
 %build
-%configure
+autoreconf -vif
+%configure --with-gtk3
 make %{?_smp_mflags}
 sed -i -e '/^Icon/s/=.*/=clipit-trayicon/' data/clipit.desktop
 rsvg-convert -h 32 -w 32 data/clipit-trayicon.svg -o data/clipit-trayicon.png
@@ -67,12 +70,13 @@ install -m 644 \
 
 %files -f %{name}.lang
 %defattr(-,root,root,-)
-%doc AUTHORS ChangeLog COPYING README NEWS
+%doc AUTHORS ChangeLog COPYING
 %config(noreplace) %{_sysconfdir}/xdg/autostart/%{name}-startup.desktop
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}-trayicon.png
 %{_datadir}/icons/hicolor/scalable/apps/%{name}-trayicon.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{name}-trayicon-offline.svg
 %{_mandir}/man1/*
 
 %changelog
