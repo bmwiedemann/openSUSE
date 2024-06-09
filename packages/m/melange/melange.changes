@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Jun 07 19:34:23 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.8.5:
+  * Add a new property that defaults to pom.xml and allows an
+    override so we can call multiple uses: maven/pombump and pass
+    in the somewhere-else/pom.xml
+  * go/build: remove subpackage input
+
+-------------------------------------------------------------------
+Fri Jun 07 19:30:47 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.8.4:
+  * build(deps): bump chainguard.dev/apko
+  * Drop go-apk to pull in faster pkginfo access
+  * build(deps): bump google.golang.org/api from 0.182.0 to 0.183.0
+  * build(deps): bump golang.org/x/sys from 0.20.0 to 0.21.0
+  * build(deps): bump golang.org/x/text from 0.15.0 to 0.16.0
+  * update schema
+  * support HTTP auth
+  * order
+  * fix
+  * doc
+  * ordering
+  * bump go and lint
+  * build(deps): bump chainguard.dev/apko from 0.14.3 to 0.14.7
+  * build(deps): bump dagger.io/dagger from 0.11.4 to 0.11.6
+  * build(deps): bump google.golang.org/api from 0.181.0 to 0.182.0
+  * build(deps): bump docker/login-action from 3.1.0 to 3.2.0
+  * Drop version from .PKGINFO
+  * Speed up presubmit
+  * Add --env-file to melange test
+
+-------------------------------------------------------------------
 Thu May 30 11:00:34 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.8.3:
