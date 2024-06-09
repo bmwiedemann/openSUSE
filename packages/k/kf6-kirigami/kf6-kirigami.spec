@@ -19,13 +19,13 @@
 %define qt6_version 6.6.0
 
 %define rname kirigami
-# Full KF6 version (e.g. 6.2.0)
+# Full KF6 version (e.g. 6.3.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kirigami
-Version:        6.2.1
+Version:        6.3.0
 Release:        0
 Summary:        Set of QtQuick components
 License:        LGPL-2.1-or-later
@@ -111,7 +111,10 @@ Development files.
 %doc README.md
 %{_kf6_libdir}/libKirigami.so.*
 %{_kf6_libdir}/libKirigamiDelegates.so.*
+%{_kf6_libdir}/libKirigamiDialogs.so.*
+%{_kf6_libdir}/libKirigamiLayouts.so.*
 %{_kf6_libdir}/libKirigamiPlatform.so.*
+%{_kf6_libdir}/libKirigamiPrimitives.so.*
 
 %files devel
 %doc %{_kf6_qchdir}/KF6KirigamiPlatform.*
@@ -122,7 +125,10 @@ Development files.
 %{_kf6_includedir}/Kirigami/Platform/
 %{_kf6_libdir}/libKirigami.so
 %{_kf6_libdir}/libKirigamiDelegates.so
+%{_kf6_libdir}/libKirigamiDialogs.so
+%{_kf6_libdir}/libKirigamiLayouts.so
 %{_kf6_libdir}/libKirigamiPlatform.so
+%{_kf6_libdir}/libKirigamiPrimitives.so
 %{_kf6_sharedir}/kdevappwizard/templates/kirigami6.tar.bz2
 
 %files lang -f libkirigami6.lang
