@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-glean
-Version:        1.23.0
+Version:        1.24.0
 Release:        0
 Summary:        Program to write static config from config-drive
 License:        Apache-2.0
@@ -32,7 +32,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 # The OpenStack package oslotest is only available for the primary python3 flavor on TW.

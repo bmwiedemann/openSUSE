@@ -116,4 +116,15 @@
   * Fix Gentoo &quot;is&quot; comparisons</comment>
     <requestid>1137293</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>429bfc7660758dc8171dfc6ca558e8ea</srcmd5>
+    <version>1.24.0</version>
+    <time>1717957340</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.24.0:
+  * Use importlib when pkg\_resources isn't available
+  * Fix glean docs build
+  * Drop opensuse jobs</comment>
+    <requestid>1179405</requestid>
+  </revision>
 </revisionlist>

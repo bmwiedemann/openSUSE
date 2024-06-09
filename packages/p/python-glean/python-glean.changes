@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun  7 21:34:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.24.0:
+  * Use importlib when pkg\_resources isn't available
+  * Fix glean docs build
+  * Drop opensuse jobs
+
+-------------------------------------------------------------------
 Sat Jan  6 20:15:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.23.0:
