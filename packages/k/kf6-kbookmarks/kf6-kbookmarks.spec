@@ -19,13 +19,13 @@
 %define qt6_version 6.6.0
 
 %define rname kbookmarks
-# Full KF6 version (e.g. 6.2.0)
+# Full KF6 version (e.g. 6.3.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kbookmarks
-Version:        6.2.0
+Version:        6.3.0
 Release:        0
 Summary:        Framework for manipulating bookmarks in XBEL format
 License:        LGPL-2.1-or-later
