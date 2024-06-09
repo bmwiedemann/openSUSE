@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jun  5 10:11:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.3.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.3.0/
+- Changes since 6.2.0:
+  * KAbstractFileItemActionPlugin: Remove wrong sentence in documentation
+  * don't install header for pure dbus class if no dbus
+  * disable dbus not only for android but windows & mac, too
+  * Drop errorpage handling from worker
+  * [http] Implement resuming at offset again (kde#480506)
+  * CI: Require passing tests on Linux and FreeBSD
+  * Deprecate KFileWidget::readConfig
+  * SSL Info UI file: use notr="true" instead of old comment="KDE::DoNotExtract"
+  * kfileitem: cache group names (kde#486956)
+  * Move HAVE_STATX cmake test to core (kde#487015)
+  * Remove unused includes
+  * Properties dialogue URL tab: Fix vertical alignment
+  * systemdprocessrunner: change the order launchmodes are returned
+  * systemdprocessrunner: change env var names
+  * Use ellipsis character instead of three dots in UI strings
+
+-------------------------------------------------------------------
 Mon May  6 12:22:40 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.2.0
