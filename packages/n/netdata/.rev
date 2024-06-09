@@ -4508,4 +4508,15 @@ Other Notable Changes
     gh#netdata/netdata#17398</comment>
     <requestid>1176835</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>6927ea694f96160f4884778ad43fc3db</srcmd5>
+    <version>1.45.6</version>
+    <time>1717957357</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.45.6
+  * Fixed a service discovery issue that affected applications
+    without parameters in their command line
+    gh#netdata/netdata#17763 (go.d.plugin)</comment>
+    <requestid>1179410</requestid>
+  </revision>
 </revisionlist>
