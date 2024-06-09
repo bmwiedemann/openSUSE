@@ -31,4 +31,12 @@
     <comment>- Update qqc2-desktop-style-lang obsoleted version</comment>
     <requestid>1175860</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8c3ed04fe41db0a9b7ad2bc13a81ccf1</srcmd5>
+    <version>6.3.0</version>
+    <time>1717957213</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 6.3.0 (forwarded request 1178724 from krop)</comment>
+    <requestid>1179316</requestid>
+  </revision>
 </revisionlist>

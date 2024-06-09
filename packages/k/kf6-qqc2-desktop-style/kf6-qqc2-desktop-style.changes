@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jun  5 10:12:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.3.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.3.0/
+- Changes since 6.2.0:
+  * Fix rendering the focus of our items (kde#486041)
+  * Update background of Dialog
+  * TreeViewDelegate: Replace top/bottom padding with vertical
+  * TreeViewDelegate: Add return type annotations to methods
+  * TreeViewDelegate: Make it actually vertically centered
+  * Remove explicit maintainer from metainfo
+  * TextArea, TextField: Fix position of a "selection end" cursor
+  * TextField: Fix mobile cursor positioning for fields with custom padding
+  * Context Menus: Port to pragma ComponentBehavior: Bound
+  * Context Menus: Use controls directly instead of via QQC2
+  * MobileTextActionsToolBar: Slightly refactor expressions
+  * MobileTextActionsToolBar: Set text and display mode for action buttons
+  * MobileTextActionsToolBar: Use symbolic versions of icons
+  * ComboBox: Clip the ListView when its relevant
+  * ComboBox: Use strict === equality operator
+  * ComboBox: Replace magic numbers with standard named units
+  * [TextArea] Access controlRoot directly
+  * [TextArea] Enabled ComponentBehavior: Bound
+  * [Combobox] Use Popup directly instead of via QQC2
+  * DialogButtonBox: Use largeSpacing as padding
+
+-------------------------------------------------------------------
 Wed May 22 13:45:27 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update qqc2-desktop-style-lang obsoleted version
