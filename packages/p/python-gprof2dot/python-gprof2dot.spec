@@ -1,7 +1,7 @@
 #
 # spec file for package python-gprof2dot
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,22 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-gprof2dot
-Version:        2022.7.29
+Version:        2024.6.6
 Release:        0
 Summary:        Script to generate a dot graph from the output of several profilers
 License:        LGPL-3.0-or-later
 URL:            https://github.com/jrfonseca/gprof2dot
 Source:         https://files.pythonhosted.org/packages/source/g/gprof2dot/gprof2dot-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -41,10 +44,10 @@ profilers into a dot graph.
 sed -i -e '/^#!\//, 1d' gprof2dot.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/gprof2dot
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -56,7 +59,10 @@ sed -i -e '/^#!\//, 1d' gprof2dot.py
 
 %files %{python_files}
 %license LICENSE.txt
+%doc README.md
 %python_alternative %{_bindir}/gprof2dot
-%{python_sitelib}/*
+%{python_sitelib}/gprof2dot.py
+%pycache_only %{python_sitelib}/__pycache__/gprof2dot*
+%{python_sitelib}/gprof2dot-%{version}.dist-info
 
 %changelog
