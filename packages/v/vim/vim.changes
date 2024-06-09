@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Jun  6 00:55:27 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 9.1.0470:
+  * tests Test_ColonEight_MultiByte() fails sporadically
+  * Cannot have buffer-local value for 'completeopt'
+  * GvimExt does not consult HKEY_CURRENT_USER
+  * typos in some comments
+  * runtime(vim): Update base-syntax, allow whitespace before
+    :substitute pattern
+  * Missing comments for fuzzy completion
+  * runtime(man): update Vim manpage
+  * runtime(comment): clarify the usage of 'commentstring' option
+    value
+  * runtime(doc): clarify how fuzzy 'completeopt' should work
+  * runtime(netrw): prevent accidental data loss
+  * missing filecopy() function
+  * no whitespace padding in commentstring option in ftplugins
+  * no fuzzy-matching support for insert-completion
+  * eval5() and eval7 are too complex
+  * too many strlen() calls in drawline.c
+  * filetype lintstagedrc files are not recognized
+  * Vim9 import autoload does not work with symlink
+  * Coverity complains about division by zero
+  * tests test_gui fails on Wayland
+  * Left shift is incorrect with vartabstop and shiftwidth=0
+  * runtime(doc): clarify 'shortmess' flag "S"
+  * MS-Windows compiler warning for size_t to int conversion
+  * runtime(doc): include some vim9 script examples in the help
+  * minor issues in test_filetype with rasi test
+  * filetype rasi files are not recognized
+  * runtime(java): Improve the matching of lambda expressions
+  * Configure checks for libelf unnecessarily
+  * No test for escaping '<' with shellescape()
+  * check.vim complains about overlong comment lines
+  * translation(it): Update Italian translation
+  * evalc. code too complex
+  * MS-Windows Compiler warnings 
+
+-------------------------------------------------------------------
 Wed May 29 12:49:57 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to 9.1.0448:
