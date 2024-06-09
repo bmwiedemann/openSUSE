@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 07 19:52:59 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.13.5:
+  * Modify version to 0.13.5
+  * Modify changelog for 0.13.5 release
+  * Bump golang to v1.21.11
+  * chore(deps): update github/codeql-action action to v3.25.8
+  * chore(deps): update github/codeql-action action to v3.25.7
+  * chore(deps): update docker/login-action action to v3.2.0
+  * chore(deps): update all github action dependencies
+  * chore(deps): update golang stable
+  * Prepare for v0.13.5 development
+
+-------------------------------------------------------------------
 Tue May 14 05:23:16 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.13.4:
