@@ -21,7 +21,7 @@ Name:           orthanc-neuro
 Summary:        Neuroimaging plugin for Orthanc
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        1.0
+Version:        1.1
 Release:        0
 URL:            http://orthanc-server.com
 Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancNeuro-%{version}.tar.gz

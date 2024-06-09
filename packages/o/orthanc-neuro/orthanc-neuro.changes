@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun  7 06:35:21 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.1
+  * Upgrade to Orthanc framework 1.12.3
+  * Support Philips private tags for rescale slope/intercept
+
+-------------------------------------------------------------------
 Wed Mar 13 13:09:16 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - enable gcc13 for Leap 15
