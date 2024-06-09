@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jun  5 10:11:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.3.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.3.0/
+- Changes since 6.2.0:
+  * ensure the color name text is visible (kde#487068)
+  * ensure we not reset the dynamic word wrap state (kde#487216)
+  * Port to KStandardActions
+  * Never remove trailing spaces on diff file type
+  * Remove explicit maintainer from metainfo
+  * Screenshot dialog: support drag of image
+  * make tests independent of the user's environment
+  * Modernize use designated init
+  * do not display diff result in script tests when -silent is used
+  * fix raw string indentation with cstyle + C++
+  * Use ellipsis character instead of three dots in UI strings
+
+-------------------------------------------------------------------
 Mon May  6 12:22:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.2.0
