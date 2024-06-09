@@ -7,4 +7,61 @@
     <comment>Initial package for openSUSE</comment>
     <requestid>1170993</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b8e657f1180a2568433b5aa9176e20e8</srcmd5>
+    <version>5.2.3.0</version>
+    <time>1717957376</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.2.3.0
+  + Update translations from weblate
+  + const: Shared constant defining RPM transaction lock file
+  + main: Implement checking of privileges before executing commands
+  + exception: Add new exception for user insufficient privileges
+  + locker: Move to public API
+  + distro-sync: Add downloadonly option
+  + commands: Fix using store option
+  + Enhance warning about RPMs that were not validate by RPM
+  + Vars::substitute: fix use-out-of-scope leaks
+  + docs: correct the default for pluginconfpath
+  + cli: Add skipped packages to the transaction table
+  + i18n: Improve formatting an error message for multiple streams
+  + Add/fix documentation for rpm::PackageQuery methods
+  + i18n: Unwind &quot;No {} to remove for argument: {}&quot;
+  + `history list`: count also groups and envs in total `Altered`
+  + Fix typo in translatable string
+  + [libdnf5] Actions plugin: Add hooks `repos_configured`, `repos_loaded`, `pre/post_add_cmdline_packages`
+  + Option `--providers-of` doesn't require available repos
+  + Improve docs regarding the keepcache option and download command
+  + needs_restarting: Fix invalid reference usage
+  + download: add `--source` alias for `--srpm`
+  + automatic: Fix documentation and ship config file
+  + fix: quote `dnf5-command({})' in command suggestion when plugin not found
+  + i18n: Unwind &quot;Cannot {} package \&quot;{}\&quot;&quot; message
+  + base: Add repository to solver problem messages
+  + conf: New classes for append options
+  + docs: Document changes to repoinfo and repolist
+  + dnf5daemon: The buildtime attribute has been added to the package_attrs option
+  + bindings: Tests for using struct attributes in Python
+  + bindings: Add Python attributes for structs
+  + docs: Fix diff link on the dnf 5.2.0.0 changes page
+  + docs: Add diff with API changes in dnf5-5.2.0.0
+  + docs: Add a page about public API changes in dnf 5.2.0.0
+  + system-upgrade: fix missing \n before transaction test
+  + system-upgrade: comment to clarify progress bar logic
+  + system-upgrade: drop [[maybe_unused]] from reboot() arg
+  + system-upgrade: fix progress bars, set transaction description
+  + system-upgrade: adapt to new transaction serialization format
+  + system-upgrade: clean up releasever logic
+  + system-upgrade: fix poweroff_after
+  + copr: the dnf5 copr enable sets CoprRepoPart.enabled = true
+  + Add file search result for repoquery --whatprovides
+  + doc: Add enviroment variables and clarify options for loading the plugins
+  + dnfdaemon: Fix Rpm interface introspection file
+- Refresh patches
+  + dnf5-with-static-libsolvext.patch
+  + dnf5-Use-usr-lib-sysimage-for-the-persistent-state-dir.patch
+  + dnf5-Switch-default-reposdir-to-etc-dnf-repos.d.patch
+  + dnf5-disable-Werror.patch</comment>
+    <requestid>1179516</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,4 @@
-From eb81e61716f713da72469c3be89fe55014aed2bb Mon Sep 17 00:00:00 2001
+From 3469bf75e60900f868d503d371f7762ae2757b37 Mon Sep 17 00:00:00 2001
 From: Neal Gompa <ngompa@opensuse.org>
 Date: Wed, 19 Jul 2023 08:07:52 -0400
 Subject: [PATCH] Use /usr/lib/sysimage for the persistent state directory
@@ -13,10 +13,10 @@ This aligns us with the location where the RPM database is stored.
  5 files changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/doc/dnf5.8.rst b/doc/dnf5.8.rst
-index 005a5cdc..bacdfb4a 100644
+index 1c3f2a00..347e51eb 100644
 --- a/doc/dnf5.8.rst
 +++ b/doc/dnf5.8.rst
-@@ -340,7 +340,7 @@ Files
+@@ -383,7 +383,7 @@ Files
      /etc/yum.repos.d/
  
  ``Repository Persistence``
@@ -26,7 +26,7 @@ index 005a5cdc..bacdfb4a 100644
  ``System State``
      /usr/lib/sysimage/libdnf5/
 diff --git a/include/libdnf5/conf/const.hpp b/include/libdnf5/conf/const.hpp
-index 6f64a678..39fde64c 100644
+index d7c0af7b..96bcaa68 100644
 --- a/include/libdnf5/conf/const.hpp
 +++ b/include/libdnf5/conf/const.hpp
 @@ -27,7 +27,7 @@ along with libdnf.  If not, see <https://www.gnu.org/licenses/>.
@@ -78,5 +78,5 @@ index 9ff17aaf..ae584f88 100644
  Transformer::Transformer(const std::string & inputDir, const std::string & outputFile)
      : inputDir(inputDir),
 -- 
-2.43.0
+2.45.1
 

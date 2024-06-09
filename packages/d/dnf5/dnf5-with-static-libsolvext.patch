@@ -1,4 +1,4 @@
-From 5e0d4736f8efdd0bb7c2555cdc1d485ad34f08f6 Mon Sep 17 00:00:00 2001
+From ead23935896021491771553e73a43f8adc844520 Mon Sep 17 00:00:00 2001
 From: Neal Gompa <ngompa@opensuse.org>
 Date: Thu, 21 Sep 2023 05:50:40 -0400
 Subject: [PATCH] Add build option to link libsolvext dynamic library
@@ -18,10 +18,10 @@ in libsolv, since it's not easy to fix there, given upstream constraints.
  2 files changed, 22 insertions(+), 1 deletion(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 0626c9d5..fd609e84 100644
+index 5bc551a7..3014b3e0 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -55,6 +55,9 @@ option(WITH_PERL5 "Build Perl 5 bindings" ON)
+@@ -56,6 +56,9 @@ option(WITH_PERL5 "Build Perl 5 bindings" ON)
  option(WITH_PYTHON3 "Build Python 3 bindings" ON)
  option(WITH_RUBY "Build Ruby bindings" ON)
  
@@ -32,7 +32,7 @@ index 0626c9d5..fd609e84 100644
  if(WITH_PERFORMANCE_TESTS AND WITH_SANITIZERS)
      message(FATAL_ERROR "Cannot perform performance tests with sanitizers enabled because they influence the results. Disable sanitizers to continue.")
 diff --git a/libdnf5/CMakeLists.txt b/libdnf5/CMakeLists.txt
-index ddcee4fa..f799bc69 100644
+index 237ac9e4..7151c63a 100644
 --- a/libdnf5/CMakeLists.txt
 +++ b/libdnf5/CMakeLists.txt
 @@ -63,7 +63,25 @@ pkg_check_modules(RPM REQUIRED rpm>=4.17.0)
@@ -63,5 +63,5 @@ index ddcee4fa..f799bc69 100644
      list(APPEND LIBDNF5_PC_REQUIRES_PRIVATE "${LIBXML2_MODULE_NAME}")
      include_directories(${LIBXML2_INCLUDE_DIRS})
 -- 
-2.43.0
+2.45.1
 

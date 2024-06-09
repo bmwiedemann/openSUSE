@@ -1,4 +1,4 @@
-From 49b4255bbb7b9f74391cf0185e73cea3e4d905b5 Mon Sep 17 00:00:00 2001
+From f64d95ae3b575adbf5f64578b4e5c59267b968ce Mon Sep 17 00:00:00 2001
 From: Neal Gompa <ngompa@opensuse.org>
 Date: Wed, 19 Jul 2023 08:04:17 -0400
 Subject: [PATCH] Switch default reposdir to /etc/dnf/repos.d
@@ -8,10 +8,10 @@ Subject: [PATCH] Switch default reposdir to /etc/dnf/repos.d
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/include/libdnf5/conf/const.hpp b/include/libdnf5/conf/const.hpp
-index 39fde64c..92d89b72 100644
+index d7561058..d7c0af7b 100644
 --- a/include/libdnf5/conf/const.hpp
 +++ b/include/libdnf5/conf/const.hpp
-@@ -37,7 +37,7 @@ constexpr const char * CONF_DIRECTORY = "/etc/dnf/libdnf5.conf.d";
+@@ -39,7 +39,7 @@ constexpr const char * VERSIONLOCK_CONF_FILENAME = "/etc/dnf/versionlock.toml";
  constexpr const char * PLUGINS_CONF_DIR = "/etc/dnf/libdnf5-plugins";
  
  const std::vector<std::string> REPOSITORY_CONF_DIRS{
@@ -19,7 +19,7 @@ index 39fde64c..92d89b72 100644
 +    "/etc/dnf/repos.d", "/etc/yum.repos.d", "/etc/distro.repos.d", "/usr/share/dnf5/repos.d"};
  constexpr const char * REPOS_OVERRIDE_DIR = "/etc/dnf/repos.override.d";
  
- // More important varsdirs must be on the end of vector
+ constexpr const char * TRANSACTION_LOCK_FILEPATH = "/run/dnf/rpmtransaction.lock";
 -- 
-2.43.0
+2.45.1
 
