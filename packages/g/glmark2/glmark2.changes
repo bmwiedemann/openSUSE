@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jun  7 13:03:20 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20240425:
+  * Use std::filesystem throughout the codebase
+  * android: Build native code with C++17
+  * Doc: Recommend meson for building win32 flavors
+  * github: Build win32 flavors with msvc in CI
+  * github: Build win32 flavors with mingw in CI
+  * include/getopt: Always use non-const char array to avoid MSVC errors
+  * libmatrix: Add utility function to get idle time
+  * libmatrix: Add utility function to get process times
+  * libmatrix: Add utility function to get the number of processors
+  * libmatrix: Use C++ std::chrono instead of clock_gettime
+  * libmatrix: Use C++17 std::filesystem instead of dirent
+  * Build: Add support for win32 flavors in meson
+  * libmatrix: Provide a copy of the va_list to __android_log_vprint
+  * NativeStateX11: Fix WM_DELETE_WINDOW handling
+
+-------------------------------------------------------------------
 Fri Feb 16 09:01:26 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20240215:
