@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun  7 02:13:08 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Add blscfg support
+  * 0001-blscfg-add-blscfg-module-to-parse-Boot-Loader-Specif.patch
+  * 0002-Add-BLS-support-to-grub-mkconfig.patch
+  * 0003-Add-grub2-switch-to-blscfg.patch
+  * 0004-blscfg-Don-t-root-device-in-emu-builds.patch
+  * 0005-blscfg-check-for-mounted-boot-in-emu.patch
+  * 0006-Follow-the-device-where-blscfg-is-discovered.patch
+  * 0007-grub-switch-to-blscfg-adapt-to-openSUSE.patch
+  * 0008-blscfg-reading-bls-fragments-if-boot-present.patch
+  * 0009-10_linux-Some-refinement-for-BLS.patch
+
+-------------------------------------------------------------------
 Mon May 20 07:22:09 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Only enable grub-protect for EFI systems

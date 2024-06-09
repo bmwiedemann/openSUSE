@@ -1,0 +1,264 @@
+From 855b3e5cd4d672e961a366ff0f53e3a09a1ad0cc Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Fri, 30 Jun 2023 14:37:41 +0800
+Subject: [PATCH 7/9] grub-switch-to-blscfg: adapt to openSUSE
+
+A few tweaks to make it 'just works' for openSUSE:
+
+- remove RHEL specific $grub_get_kernel_settings and all reference to it.
+- make $grubdir and $startlink to the path in openSUSE
+- change the bls template to openSUSE
+- make $cmdline account for btrfs subvolumes, among others
+- remove RHEL specific $GRUB_LINUX_MAKE_DEBUG and all related code
+- remove ostree specific hack
+- ignore increment.mod
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ util/grub-switch-to-blscfg.in | 144 ++++++++++++++++++++--------------
+ 1 file changed, 87 insertions(+), 57 deletions(-)
+
+diff --git a/util/grub-switch-to-blscfg.in b/util/grub-switch-to-blscfg.in
+index a851424be..66ecc0cae 100644
+--- a/util/grub-switch-to-blscfg.in
++++ b/util/grub-switch-to-blscfg.in
+@@ -34,21 +34,18 @@ fi
+ 
+ self=`basename $0`
+ 
+-grub_get_kernel_settings="${sbindir}/@grub_get_kernel_settings@"
+ grub_editenv=${bindir}/@grub_editenv@
+-etcdefaultgrub=/etc/default/grub
++grub_probe="${sbindir}/@grub_probe@"
++etcdefaultgrub=${sysconfdir}/default/grub
+ 
+-eval "$("${grub_get_kernel_settings}")" || true
+-
+-EFIDIR=$(grep ^ID= /etc/os-release | sed -e 's/^ID=//' -e 's/rhel/redhat/' -e 's/\"//g')
+-if [ -d /sys/firmware/efi/efivars/ ]; then
+-    startlink=/etc/grub2-efi.cfg
+-    grubdir=`echo "/@bootdirname@/efi/EFI/${EFIDIR}/" | sed 's,//*,/,g'`
+-else
+-    startlink=/etc/grub2.cfg
+-    grubdir=`echo "/@bootdirname@/@grubdirname@" | sed 's,//*,/,g'`
++if test -f "$etcdefaultgrub" ; then
++    # shellcheck source=/etc/default/grub
++    . "$etcdefaultgrub"
+ fi
+ 
++grubdir=`echo "/@bootdirname@/@grubdirname@" | sed 's,//*,/,g'`
++startlink="${grubdir}/grub.cfg"
++
+ blsdir=`echo "/@bootdirname@/loader/entries" | sed 's,//*,/,g'`
+ 
+ backupsuffix=.bak
+@@ -58,19 +55,80 @@ arch="$(uname -m)"
+ export TEXTDOMAIN=@PACKAGE@
+ export TEXTDOMAINDIR="@localedir@"
+ 
++# shellcheck source=/usr/share/grub2/grub-mkconfig_lib
+ . "${pkgdatadir}/grub-mkconfig_lib"
+ 
++# FIXME: Abort if grub_probe fails
++
++GRUB_DEVICE="`${grub_probe} --target=device /`"
++GRUB_DEVICE_UUID="`${grub_probe} --device ${GRUB_DEVICE} --target=fs_uuid 2> /dev/null`" || true
++GRUB_DEVICE_PARTUUID="`${grub_probe} --device ${GRUB_DEVICE} --target=partuuid 2> /dev/null`" || true
++GRUB_FS="`${grub_probe} --device ${GRUB_DEVICE} --target=fs 2> /dev/null || echo unknown`"
++
++# loop-AES arranges things so that /dev/loop/X can be our root device, but
++# the initrds that Linux uses don't like that.
++case ${GRUB_DEVICE} in
++  /dev/loop/*|/dev/loop[0-9])
++    GRUB_DEVICE=$(losetup "${GRUB_DEVICE}" | sed -e "s/^[^(]*(\([^)]\+\)).*/\1/")
++  ;;
++esac
++
++# Default to disabling partition uuid support to maintian compatibility with
++# older kernels.
++GRUB_DISABLE_LINUX_PARTUUID=${GRUB_DISABLE_LINUX_PARTUUID-true}
++
++# btrfs may reside on multiple devices. We cannot pass them as value of root= parameter
++# and mounting btrfs requires user space scanning, so force UUID in this case.
++if ( [ "x${GRUB_DEVICE_UUID}" = "x" ] && [ "x${GRUB_DEVICE_PARTUUID}" = "x" ] ) \
++    || ( [ "x${GRUB_DISABLE_LINUX_UUID}" = "xtrue" ] \
++	&& [ "x${GRUB_DISABLE_LINUX_PARTUUID}" = "xtrue" ] ) \
++    || ( ! test -e "/dev/disk/by-uuid/${GRUB_DEVICE_UUID}" \
++	&& ! test -e "/dev/disk/by-partuuid/${GRUB_DEVICE_PARTUUID}" ) \
++    || ( test -e "${GRUB_DEVICE}" && uses_abstraction "${GRUB_DEVICE}" lvm ); then
++  LINUX_ROOT_DEVICE=${GRUB_DEVICE}
++elif [ "x${GRUB_DEVICE_UUID}" = "x" ] \
++    || [ "x${GRUB_DISABLE_LINUX_UUID}" = "xtrue" ]; then
++  LINUX_ROOT_DEVICE=PARTUUID=${GRUB_DEVICE_PARTUUID}
++else
++  LINUX_ROOT_DEVICE=UUID=${GRUB_DEVICE_UUID}
++fi
++
++if [ "x$GRUB_CONMODE" != "x" ]; then
++  GRUB_CMDLINE_LINUX="conmode=${GRUB_CONMODE} ${GRUB_CMDLINE_LINUX}"
++fi
++
++case x"$GRUB_FS" in
++    xbtrfs)
++	if [ "x${SUSE_BTRFS_SNAPSHOT_BOOTING}" != "xtrue" ]; then
++	    rootsubvol="`make_system_path_relative_to_its_root /`"
++	    rootsubvol="${rootsubvol#/}"
++	    if [ "x${rootsubvol}" != x ] && [ "x$SUSE_REMOVE_LINUX_ROOT_PARAM" != "xtrue" ]; then
++	        GRUB_CMDLINE_LINUX="rootflags=subvol=${rootsubvol} ${GRUB_CMDLINE_LINUX}"
++	    fi
++	fi
++	;;
++    xzfs)
++	rpool=`${grub_probe} --device ${GRUB_DEVICE} --target=fs_label 2>/dev/null || true`
++	bootfs="`make_system_path_relative_to_its_root / | sed -e "s,@$,,"`"
++	LINUX_ROOT_DEVICE="ZFS=${rpool}${bootfs%/}"
++	;;
++esac
++
++if [ "x$SUSE_REMOVE_LINUX_ROOT_PARAM" = "xtrue" ]; then
++  LINUX_ROOT_DEVICE=""
++fi
++
+ # Usage: usage
+ # Print the usage.
+ usage () {
+     gettext_printf "Usage: %s\n" "$self"
+-    gettext "Switch to BLS config files.\n"; echo
++    gettext "Switch to BLS config files. Only for testing purpose !!!\n"; echo
+     echo
+     print_option_help "-h, --help" "$(gettext "print this message and exit")"
+     print_option_help "-V, --version" "$(gettext "print the version information and exit")"
+     echo
+     print_option_help "--backup-suffix=$(gettext "SUFFIX")" "$backupsuffix"
+-    print_option_help "--bls-directory=$(gettext "DIR")" "$blsdir"
++    print_option_help "--bls-directory=$(gettext "DIR")" "Noop, always $blsdir"
+     print_option_help "--config-file=$(gettext "FILE")" "$startlink"
+     print_option_help "--grub-defaults=$(gettext "FILE")" "$etcdefaultgrub"
+     print_option_help "--grub-directory=$(gettext "DIR")" "$grubdir"
+@@ -112,11 +170,15 @@ do
+         ;;
+ 
+     --bls-directory)
+-        blsdir=`argument $option "$@"`
++        # blsdir=`argument $option "$@"`
++        gettext_printf "WARN: --bls-directory is currently disabled, it's always $blsdir !!!\n"
++        gettext_printf "WARN: use kernel-install instead if you want to test bls directory on ESP !!!\n"
+         shift
+         ;;
+     --bls-directory=*)
+-        blsdir=`echo "$option" | sed 's/--bls-directory=//'`
++        # blsdir=`echo "$option" | sed 's/--bls-directory=//'`
++        gettext_printf "WARN: --bls-directory is currently disabled, it's always $blsdir !!!\n"
++        gettext_printf "WARN: use kernel-install instead if you want to test bls directory on ESP !!!\n"
+         ;;
+ 
+     --config-file)
+@@ -172,7 +234,7 @@ find_grub_cfg() {
+     return 1
+ }
+ 
+-if ! find_grub_cfg ${startlink} ${grubdir}/grub.cfg ; then
++if ! find_grub_cfg "${startlink}" ; then
+   gettext_printf "Couldn't find config file\n" 1>&2
+   exit 1
+ fi
+@@ -190,27 +252,22 @@ fi
+ mkbls() {
+     local kernelver=$1 && shift
+     local datetime=$1 && shift
++    local prefix=$1 && shift
+     local kernelopts=$1 && shift
+ 
+-    local debugname=""
+-    local debugid=""
+     local flavor=""
+ 
+     if [ "$kernelver" == *\+* ] ; then
+         local flavor=-"${kernelver##*+}"
+-        if [ "${flavor}" == "-debug" ]; then
+-            local debugname=" with debugging"
+-            local debugid="-debug"
+-        fi
+     fi
+     (
+         source /etc/os-release
+ 
+         cat <<EOF
+-title ${NAME} (${kernelver}) ${VERSION}${debugname}
+-version ${kernelver}${debugid}
+-linux /vmlinuz-${kernelver}
+-initrd /initramfs-${kernelver}.img
++title ${NAME} (${kernelver}) ${VERSION}
++version ${kernelver}$
++linux ${prefix}/vmlinuz-${kernelver}
++initrd ${prefix}/initrd-${kernelver}
+ options ${kernelopts}
+ grub_users \$grub_users
+ grub_arg --unrestricted
+@@ -233,42 +290,15 @@ copy_bls() {
+             continue
+ 	fi
+ 
+-	linux_relpath="$("${grub_mkrelpath}" "${linux_path}")"
+-	bootprefix="${linux_relpath%%"${linux}"}"
++	bootprefix="$(make_system_path_relative_to_its_root /boot)"
+ 	cmdline="root=${LINUX_ROOT_DEVICE} ro ${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_DEFAULT}"
+ 
+ 	mkbls "${kernelver}" \
+ 	      "$(date -u +%Y%m%d%H%M%S -d "$(stat -c '%y' "${kernel_dir}")")" \
+ 	      "${bootprefix}" "${cmdline}" >"${bls_target}"
+-
+-	if [ "x$GRUB_LINUX_MAKE_DEBUG" = "xtrue" ]; then
+-            bls_debug="$(echo ${bls_target} | sed -e "s/${kernelver}/${kernelver}~debug/")"
+-            cp -aT  "${bls_target}" "${bls_debug}"
+-            title="$(grep '^title[ \t]' "${bls_debug}" | sed -e 's/^title[ \t]*//')"
+-            options="$(echo "${cmdline} ${GRUB_CMDLINE_LINUX_DEBUG}" | sed -e 's/\//\\\//g')"
+-            sed -i -e "s/^title.*/title ${title}${GRUB_LINUX_DEBUG_TITLE_POSTFIX}/" "${bls_debug}"
+-            sed -i -e "s/^options.*/options ${options}/" "${bls_debug}"
+-	fi
+     done
+-
+-    if [ -f "/boot/vmlinuz-0-rescue-${MACHINE_ID}" ]; then
+-	mkbls "0-rescue-${MACHINE_ID}" "0" "${bootprefix}" >"${blsdir}/${MACHINE_ID}-0-rescue.conf"
+-    fi
+ }
+ 
+-# The grub2 EFI binary is not copied to the ESP as a part of an ostree
+-# transaction. Make sure a grub2 version with BLS support is installed
+-# but only do this if the blsdir is not set, to make sure that the BLS
+-# parsing module will search for the BLS snippets in the default path.
+-if test -f /run/ostree-booted && test -d /sys/firmware/efi/efivars && \
+-   ! ${grub_editenv} - list | grep -q blsdir && \
+-   mountpoint -q /boot; then
+-    grub_binary="$(find /usr/lib/ostree-boot/efi/EFI/${EFIDIR}/ -name grub*.efi)"
+-    install -m 700 ${grub_binary} ${grubdir} || exit 1
+-    # Create a hidden file to indicate that grub2 now has BLS support.
+-    touch /boot/grub2/.grub2-blscfg-supported
+-fi
+-
+ GENERATE=0
+ if grep '^GRUB_ENABLE_BLSCFG=.*' "${etcdefaultgrub}" \
+         | grep -vq '^GRUB_ENABLE_BLSCFG="*true"*\s*$' ; then
+@@ -297,9 +327,7 @@ if [ "${GENERATE}" -eq 1 ] ; then
+     fi
+ 
+     if [ -n "${mod_dir}" ]; then
+-	for mod in blscfg increment; do
+-	    install -m 700 ${prefix}/lib/grub/${mod_dir}/${mod}.mod ${grubdir}/$mod_dir/ || exit 1
+-	done
++	install -m 700 "${pkgdatadir}/${mod_dir}/blscfg.mod" "${grubdir}/$mod_dir/" || exit 1
+     fi
+ 
+     cp -af "${GRUB_CONFIG_FILE}" "${GRUB_CONFIG_FILE}${backupsuffix}"
+@@ -311,6 +339,8 @@ if [ "${GENERATE}" -eq 1 ] ; then
+         gettext_printf "Updating %s failed\n" "${GRUB_CONFIG_FILE}"
+         exit 1
+     fi
++else
++    gettext_printf "Do nothing because \$GRUB_ENABLE_BLSCFG is already true in %s\n" "${GRUB_CONFIG_FILE}"
+ fi
+ 
+ # Bye.
+-- 
+2.44.0
+

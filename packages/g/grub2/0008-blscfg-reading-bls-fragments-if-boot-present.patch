@@ -1,0 +1,75 @@
+From 2b0e6effc31ec166bbbe35a3cd2b4c73051f38bb Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Fri, 16 Jun 2023 15:54:50 +0800
+Subject: [PATCH 8/9] blscfg: reading bls fragments if boot present
+
+The Boot Loader Specification (BLS) designates the EFI System Partition
+(ESP) as a primary location for $BOOT, where boot menu entries can be
+stored. The specification encourages boot loaders to retrieve menu
+entries from the ESP, even when XBOOTLDR is present.
+
+This commit aligns with the BLS specification by introducing the
+capability to search for the ESP in addition to the default root
+partition or any specified location via blscfg's command line. The $boot
+environment variable is utilized as a reference to the ESP device for
+the blscfg command. Initialization of $boot in grub.cfg is demonstrated
+as follows:
+
+  insmod part_gpt
+  insmod fat
+  search --no-floppy --fs-uuid --set=boot F414-5A9F
+
+If $boot is unset, no additional search for the BLS location will be
+performed.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/commands/blscfg.c | 10 ++++++++++
+ util/grub.d/10_linux.in     |  3 ++-
+ 2 files changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/grub-core/commands/blscfg.c b/grub-core/commands/blscfg.c
+index c872bcef0..cbe2a289e 100644
+--- a/grub-core/commands/blscfg.c
++++ b/grub-core/commands/blscfg.c
+@@ -1186,6 +1186,7 @@ grub_cmd_blscfg (grub_extcmd_context_t ctxt UNUSED,
+   char *entry_id = NULL;
+   bool show_default = true;
+   bool show_non_default = true;
++  const char *boot = NULL;
+ 
+   if (argc == 1) {
+     if (grub_strcmp (args[0], "default") == 0) {
+@@ -1205,6 +1206,15 @@ grub_cmd_blscfg (grub_extcmd_context_t ctxt UNUSED,
+   if (r)
+     return r;
+ 
++  boot = grub_env_get("boot");
++  path = (boot) ? grub_xasprintf("(%s)" GRUB_BLS_CONFIG_PATH, boot) : NULL;
++  if (path)
++    {
++      bls_load_entries(path);
++      grub_print_error();
++    }
++  grub_free(path);
++
+   return bls_create_entries(show_default, show_non_default, entry_id);
+ }
+ 
+diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
+index 45eefb332..edf0fca55 100644
+--- a/util/grub.d/10_linux.in
++++ b/util/grub.d/10_linux.in
+@@ -201,7 +201,8 @@ populate_menu()
+ }
+ 
+ # Make BLS the default if GRUB_ENABLE_BLSCFG was not set and grubby is not installed.
+-if [ -z "${GRUB_ENABLE_BLSCFG}" ] && ! command -v new-kernel-pkg >/dev/null; then
++# FIXME: The test should be aligned to openSUSE, grubby is not our default tool  
++if [ -z "${GRUB_ENABLE_BLSCFG}" ] && ! command -v new-kernel-pkg >/dev/null && false; then
+ 	  GRUB_ENABLE_BLSCFG="true"
+ fi
+ 
+-- 
+2.44.0
+

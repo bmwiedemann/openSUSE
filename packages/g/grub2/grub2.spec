@@ -395,6 +395,15 @@ Patch204:       0001-ofdisk-Enhance-canonical-path-handling-for-bootpath.patch
 Patch205:       0001-10_linux-Ensure-persistence-of-root-file-system-moun.patch
 Patch206:       0001-util-bash-completion-Fix-for-bash-completion-2.12.patch
 Patch207:       0001-util-enable-grub-protect-only-for-EFI-systems.patch
+Patch208:       0001-blscfg-add-blscfg-module-to-parse-Boot-Loader-Specif.patch
+Patch209:       0002-Add-BLS-support-to-grub-mkconfig.patch
+Patch210:       0003-Add-grub2-switch-to-blscfg.patch
+Patch211:       0004-blscfg-Don-t-root-device-in-emu-builds.patch
+Patch212:       0005-blscfg-check-for-mounted-boot-in-emu.patch
+Patch213:       0006-Follow-the-device-where-blscfg-is-discovered.patch
+Patch214:       0007-grub-switch-to-blscfg-adapt-to-openSUSE.patch
+Patch215:       0008-blscfg-reading-bls-fragments-if-boot-present.patch
+Patch216:       0009-10_linux-Some-refinement-for-BLS.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
@@ -697,7 +706,7 @@ CD_MODULES="all_video boot cat configfile echo true \
 PXE_MODULES="tftp http"
 CRYPTO_MODULES="luks luks2 gcry_rijndael gcry_sha1 gcry_sha256 gcry_sha512 crypttab"
 %ifarch %{efi}
-CD_MODULES="${CD_MODULES} chain efifwsetup efinet read tpm tpm2 memdisk tar squash4 xzio"
+CD_MODULES="${CD_MODULES} chain efifwsetup efinet read tpm tpm2 memdisk tar squash4 xzio blscfg"
 PXE_MODULES="${PXE_MODULES} efinet"
 %else
 CD_MODULES="${CD_MODULES} net ofnet"
@@ -1180,6 +1189,7 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %{_sbindir}/%{name}-probe
 %{_sbindir}/%{name}-reboot
 %{_sbindir}/%{name}-set-default
+%{_sbindir}/%{name}-switch-to-blscfg
 %{_sbindir}/%{name}-check-default
 %{_bindir}/%{name}-editenv
 %{_bindir}/%{name}-file
@@ -1232,6 +1242,7 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %{_mandir}/man8/%{name}-probe.8.*
 %{_mandir}/man8/%{name}-reboot.8.*
 %{_mandir}/man8/%{name}-set-default.8.*
+%{_mandir}/man8/%{name}-switch-to-blscfg.8.*
 %if %{emu}
 %{_bindir}/%{name}-emu
 %{_mandir}/man1/%{name}-emu.1.*
