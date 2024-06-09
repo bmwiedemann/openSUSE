@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jun  5 10:11:54 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.3.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.3.0/
+- Changes since 6.2.0:
+  * Fix X-KDE-ConfigModule not working for DBus runners
+  * Fix same query not yielding results in new match session
+  * Remove explicit maintainer from metainfo
+  * templates/runner6python: Only depend on shebang line for executing
+  * Rename entrypoint file to always be main.py
+  * Document krunner-plugininstallerrc file
+  * Document how AbstractRunner::config is resolved
+  * runnercontext: Fix saving the launch counts
+
+-------------------------------------------------------------------
 Mon May  6 12:22:52 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.2.0
