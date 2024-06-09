@@ -128,6 +128,9 @@ BuildRequires:  timezone
 %if %{with yjit}
 BuildRequires:  cargo >= 1.56.0
 BuildRequires:  rust >= 1.56.0
+Provides:       %{name}-with-yjit = %{version}-%{release}
+%else
+Provides:       %{name}-without-yjit = %{version}-%{release}
 %endif
 %if %{with system_ruby}
 BuildRequires:  ruby
