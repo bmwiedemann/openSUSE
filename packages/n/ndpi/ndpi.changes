@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 22 13:56:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Thu Aug 26 16:30:53 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Add conflicts for ndpi-common package, as version 3 did not follow

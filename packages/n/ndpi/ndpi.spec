@@ -107,10 +107,7 @@ available only on the paid version of OpenDPI.
 This package contains common files used by nDPI.
 
 %prep
-%setup -q -n nDPI-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n nDPI-%{version}
 
 %build
 sh autogen.sh
