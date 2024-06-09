@@ -608,4 +608,15 @@
     <comment></comment>
     <requestid>1160414</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>3508fdf10f9319b2effb4cb35594aa3f</srcmd5>
+    <version>5.1.0</version>
+    <time>1717957234</time>
+    <user>anag+factory</user>
+    <comment>- Version 5.1.0
+  * Use checkout@v4 for CI
+  * Update issue templates
+  * Increase prio from 90 to 70 for packman/openh264 repos</comment>
+    <requestid>1179230</requestid>
+  </revision>
 </revisionlist>
