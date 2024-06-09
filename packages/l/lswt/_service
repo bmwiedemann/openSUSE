@@ -1,0 +1,17 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://git.sr.ht/~leon_plickat/lswt</param>
+    <param name="filename">lswt</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="revision">v2.0.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+</services>

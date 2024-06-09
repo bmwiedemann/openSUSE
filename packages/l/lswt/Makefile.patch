@@ -1,8 +1,8 @@
-diff --git a/Makefile.orig b/Makefile
-index 27b588e..c247262 100644
---- a/Makefile.orig
+diff --git a/Makefile b/Makefile
+index 5b609c7..406f974 100644
+--- a/Makefile
 +++ b/Makefile
-@@ -1,12 +1,12 @@
+@@ -1,13 +1,13 @@
  SCANNER := wayland-scanner
  
 -PREFIX=/usr/local
@@ -11,19 +11,20 @@ index 27b588e..c247262 100644
  MANDIR=$(PREFIX)/share/man
  BASHCOMPDIR=$(PREFIX)/share/bash-completion/completions
  
--CFLAGS=-Wall -Werror -Wextra -Wpedantic -Wno-unused-parameter -Wconversion -Wformat-security -Wformat -Wsign-conversion -Wfloat-conversion -Wunused-result
+ CFLAGS+=-Wall -Werror -Wextra -Wpedantic
+-CFLAGS+=-Wno-unused-parameter -Wconversion -Wformat-security -Wformat -Wsign-conversion -Wfloat-conversion -Wunused-result
 -LIBS=-lwayland-client
 +CFLAGS=-Wall -Werror -Wextra -Wpedantic -Wno-unused-parameter -Wconversion -Wformat-security -Wformat -Wsign-conversion -Wfloat-conversion -Wunused-result $(shell pkg-config --cflags wayland-client)
 +LIBS=$(shell pkg-config --libs wayland-client)
- OBJ=lswt.o wlr-foreign-toplevel-management-unstable-v1.o
- GEN=wlr-foreign-toplevel-management-unstable-v1.c wlr-foreign-toplevel-management-unstable-v1.h
+ OBJ=lswt.o wlr-foreign-toplevel-management-unstable-v1.o ext-foreign-toplevel-list-v1.o
+ GEN=wlr-foreign-toplevel-management-unstable-v1.c wlr-foreign-toplevel-management-unstable-v1.h ext-foreign-toplevel-list-v1.c ext-foreign-toplevel-list-v1.h
  
-@@ -24,7 +24,7 @@ $(OBJ): $(GEN)
- install: lswt
- 	install        -D lswt            $(DESTDIR)$(BINDIR)/lswt
- 	install -m 644 -D lswt.1          $(DESTDIR)$(MANDIR)/man1/lswt.1
--	install        -D bash-completion $(DESTDIR)$(BASHCOMPDIR)/lswt
-+	install -m 644 -D bash-completion $(DESTDIR)$(BASHCOMPDIR)/lswt
+@@ -28,7 +28,7 @@ install: lswt
+ 	install -d                     $(DESTDIR)$(MANDIR)/man1
+ 	install -m 644 lswt.1          $(DESTDIR)$(MANDIR)/man1
+ 	install -d                     $(DESTDIR)$(BASHCOMPDIR)
+-	install        bash-completion $(DESTDIR)$(BASHCOMPDIR)/lswt
++	install -m 644 bash-completion $(DESTDIR)$(BASHCOMPDIR)/lswt
  
  uninstall:
  	$(RM) $(DESTDIR)$(BINDIR)/lswt

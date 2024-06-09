@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Jun 08 05:48:16 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update Makefile.patch to current Makefile
+- Update to version 2.0.0:
+  * Human readable output format has changed.
+  * Added watch mode, which will make lswt run continously,
+    printing any updates to title and app-id of all toplevels as
+    they happen.
+  * Added support for the new ext-foreign-toplevel-info-v1
+    protocol. lswt now supports both the ext- and the old wlr-
+    protocol. Note that the feature set of these protocols is not
+    congruent. The new ext- protocol offers unique identifiers for
+    each toplevel, which should allow greater scripting abilities,
+    while the older wlr- protocol supports states such as activated
+    ("focused"), minimized, maximized and fullscreen. Should the
+    Wayland server support both protocols, the newer ext- protocol
+    is preferred.
+  * The JSON output format has changed significantly. It gained a
+    field indicating it's version and a field showing which
+    toplevel states supported.
+  * The TSV output format has been replaced by the more common and
+    more widely supported CSV output format. Fields can be
+    specified using a simple format string.
+  * Fixed various bugs around printing NULL values and escaping
+    strings for the machine readable output formats.
+  * Fixed minor memory leak.
+  * The Makefile has been updated to allow building on FreeBSD more
+    easily.
+  * lswt can now be build with clang more easiely.
+
+-------------------------------------------------------------------
 Tue Nov  7 09:09:26 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer

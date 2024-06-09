@@ -1,7 +1,7 @@
 #
 # spec file for package lswt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           lswt
-Version:        1.0.4
+Version:        2.0.0
 Release:        0
 Summary:        Wayland toplevel lister
 License:        GPL-3.0-only
 Group:          System/X11/Utilities
 URL:            https://git.sr.ht/~leon_plickat/lswt
-Source:         https://git.sr.ht/~leon_plickat/lswt/archive/v%{version}.tar.gz
+Source:         %{name}-%{version}.tar.zst
 Patch0:         Makefile.patch
-BuildRequires:  pkgconfig
 BuildRequires:  scdoc >= 1.9.2
 BuildRequires:  pkgconfig(wayland-client)
 
@@ -36,7 +35,7 @@ Requires the Wayland server to implement the foreign-toplevel-management-unstabl
 protocol extension.
 
 %prep
-%autosetup -n %{name}-v%{version}
+%autosetup
 
 %build
 %make_build
