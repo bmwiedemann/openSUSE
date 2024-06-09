@@ -25,7 +25,7 @@
 %endif
 
 Name:           greetd
-Version:        0.10.0
+Version:        0.10.3
 Release:        0
 Summary:        Minimal and flexible login manager daemon
 License:        GPL-3.0-only

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jun  7 13:06:46 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.10.3:
+  * fixes an incorrect cast in the PAM ffi code that could lead
+    to periodic failures.
+- Update to 0.10.2:
+  * fixes builds on stable rust toolchains
+  * greetd_ipc: Only set feature flag for docsrs
+
+-------------------------------------------------------------------
+Thu Jun  6 02:19:14 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.10.1:
+  * Reintroduce the XDG_VTNR environment variable which some X11
+    sessions were relying on
+  * context: Error on unexpected auth message response
+  * greetd: Scramble response texts after use
+  * greetd_ipc: Fix docs.rs build
+  * greetd_ipc: Show required codec features in docs
+
+-------------------------------------------------------------------
 Thu May 23 05:52:57 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - create /var/lib/greetd by default
