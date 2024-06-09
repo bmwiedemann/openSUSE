@@ -1042,4 +1042,41 @@
   * fix(deps): update module github.com/aws/aws-sdk-go to v1.53.6 (#2867) (forwarded request 1177456 from ph03nix)</comment>
     <requestid>1177603</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>a880c7ab67e16c1474460c2e5faea346</srcmd5>
+    <version>3.78.0</version>
+    <time>1717957325</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.78.0:
+  * Make the github action work with a path as input (#2908)
+  * feat(extensions): ignore dia diagrams (#2939)
+  * [chore] Polish channelmetrics package (#2938)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.53.17 (#2914)
+  * refactor(cache): use generics (#2930)
+  * [chore] - address comments (#2920)
+  * feat(git): improve scan logging (#2923)
+  * [fix] - Correctly calculate EntireSpanChunkCalculator span (#2924)
+  * remove stutter in naming (#2926)
+  * Update Jenkins in tui (#2925)
+  * continue on error (#2921)
+  * Go should be installed before codeql initializes (#2919)
+  * [feat] - Optimize detector performance by reducing data passed to regex (#2812)
+  * [feat] - Introduce `channelmetrics` Package for Channel Metrics Collection (#2889)
+  * Add flag to get information if trufflehog being ran from TUI (#1644)
+  * feat(openai): add project and service account keys (#2863)
+  * refactor(github): improve wiki err handling (#2917)
+  * Add elasticsearch to tui (#2915)
+  * fix(deps): update module github.com/microsoft/go-mssqldb to v1.7.2 (#2912)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.53.15 (#2911)
+  * Add Jenkins scanning (#2892)
+  * [chore] Always log git repositories being scanned (#2909)
+  * chore: fix some comments (#2903)
+  * fix(deps): update module github.com/azure/go-autorest/autorest/azure/auth to v0.5.13 (#2902)
+  * integration testing for mongodb. (#2907)
+  * fix(deps): update module github.com/hashicorp/go-retryablehttp to v0.7.7 (#2904)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.53.14 (#2900)
+  * refactor(github): enumerateWithToken flow &amp; tests (#2880)
+  * Redis integration test (#2901) (forwarded request 1179347 from ph03nix)</comment>
+    <requestid>1179353</requestid>
+  </revision>
 </revisionlist>

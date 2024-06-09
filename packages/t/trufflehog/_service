@@ -3,7 +3,7 @@
     <param name="url">https://github.com/trufflesecurity/trufflehog.git</param>
     <param name="scm">git</param>
     <param name="revision">main</param>
-    <param name="version">v3.77.0</param>
+    <param name="version">v3.78.0</param>
   	<param name="versionrewrite-pattern">v(.*)</param>
 	<param name="changesgenerate">enable</param>
   </service>
