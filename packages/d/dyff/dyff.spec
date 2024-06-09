@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           dyff
-Version:        1.7.1
+Version:        1.8.0
 Release:        0
 Summary:        Diff tool for YAML files, and sometimes JSON
 License:        MIT
@@ -50,7 +50,7 @@ BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || dat
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags="-s -w -X github.com/homeport/dyff/internal/cmd.version=%{version}" \
+   -ldflags="-X github.com/homeport/dyff/internal/cmd.version=%{version}" \
    -o bin/dyff ./cmd/dyff
 
 %install

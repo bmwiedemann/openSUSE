@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Jun 07 19:53:22 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.0:
+  * Refactor message to fix misspell finding
+  * Fix `BeLike` expected error type
+  * Bump golangci/golangci-lint-action from 5 to 6
+  * Support different syntax highlighters
+  * Add markdown report output
+  * Bump github.com/onsi/ginkgo/v2 from 2.18.0 to 2.19.0
+  * updated-dependencies:
+    - dependency-name: github.com/onsi/ginkgo/v2
+      dependency-type: direct:production   
+      update-type: version-update:semver-minor ...
+  * Use `directory` instead of `folder` in GoReleaser
+  * Bump github.com/onsi/ginkgo/v2 from 2.17.2 to 2.17.3
+  * Bump github.com/onsi/gomega from 1.33.0 to 1.33.1
+  * Bump dependabot/fetch-metadata from 1.6.0 to 2.1.0
+  * Bump golangci/golangci-lint-action from 4 to 5
+  * Bump github.com/onsi/ginkgo/v2 from 2.17.1 to 2.17.2
+  * Bump github.com/onsi/gomega from 1.32.0 to 1.33.0
+  * This doesn't work since golang 1.20
+  * Bump github.com/onsi/ginkgo/v2 from 2.15.0 to 2.17.1
+  * Bump github.com/onsi/gomega from 1.31.1 to 1.32.0
+  * Bump codecov/codecov-action from 3 to 4
+  * Bump actions/checkout from 3 to 4
+  * Bump actions/setup-go from 3 to 5
+  * Bump dependabot/fetch-metadata from 1.3.5 to 1.6.0
+  * Bump goreleaser/goreleaser-action from 2 to 5
+  * Bump golangci/golangci-lint-action from 3 to 4
+  * Add `github-actions` to Dependabot
+
+-------------------------------------------------------------------
+Sat May 18 16:02:11 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- do not strip aka remove -s -w ldflags
+
+-------------------------------------------------------------------
 Sun Feb 11 08:22:57 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.7.1:
