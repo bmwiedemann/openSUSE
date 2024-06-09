@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun  5 10:11:56 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.3.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.3.0/
+- Changes since 6.2.0:
+  * Support for fractional scaling
+  * Color also absolute path images (kde#485801)
+  * Reapply "Port to declarative type registration"
+
+-------------------------------------------------------------------
 Mon May  6 12:22:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.2.0
