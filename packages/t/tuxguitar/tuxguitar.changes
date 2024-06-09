@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jun  6 19:17:52 UTC 2024 - guiv42 <guiv42@tuta.io>
+
+- Updated to new upstream release 1.6.3
+- Remove achitecture-specific patches, no more needed:
+  * 0001-tuxguitar-aarch64.patch
+  * 0002-tuxguitar-armv6hl.patch
+  * 0003-tuxguitar-armv7hl.patch
+  * 0004-tuxguitar-ppc64.patch
+  * 0005-tuxguitar-ppc64le.patch
+  * 0006-tuxguitar-riscv64.patch
+  * 0007-tuxguitar-s390x.patch
+  * 0008-tuxguitar-x86.patch
+- Updated patches, no more architecture-specific:
+  * 0009-no-lv2.patch
+  * 0010-no-fluidsynth.patch
+
+-------------------------------------------------------------------
 Thu Apr 11 08:14:30 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Updated to new upstream release 1.6.2

@@ -16,49 +16,14 @@
 #
 
 
-%ifarch x86_64
-%global bit x86_64
-%endif
-%ifarch armv7hl
-%global bit armv7hl
-%endif
-%ifarch armv6hl
-%global bit armv6hl
-%endif
-%ifarch ppc64
-%global bit ppc64
-%endif
-%ifarch ppc64le
-%global bit ppc64le
-%endif
-%ifarch riscv64
-%global bit riscv64
-%endif
-%ifarch s390x
-%global bit s390x
-%endif
-%ifarch aarch64
-%global bit aarch64
-%endif
-%ifarch %{ix86}
-%global bit x86
-%endif
 Name:           tuxguitar
-Version:        1.6.2
+Version:        1.6.3
 Release:        0
 Summary:        A multitrack tablature editor and player written in Java-SWT
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://github.com/helge17/tuxguitar
 Source0:        https://github.com/helge17/tuxguitar/archive/refs/tags/%{version}.tar.gz
-Patch0:         0001-tuxguitar-aarch64.patch
-Patch1:         0002-tuxguitar-armv6hl.patch
-Patch2:         0003-tuxguitar-armv7hl.patch
-Patch3:         0004-tuxguitar-ppc64.patch
-Patch4:         0005-tuxguitar-ppc64le.patch
-Patch5:         0006-tuxguitar-riscv64.patch
-Patch6:         0007-tuxguitar-s390x.patch
-Patch7:         0008-tuxguitar-x86.patch
 Patch11:        0009-no-lv2.patch
 Patch12:        0010-no-fluidsynth.patch
 Patch20:        0011-default-soundfont.patch
@@ -105,20 +70,12 @@ find . -name "*.sf2" -print -delete
 find . -name "*.jar" -print -delete
 find . -name "*.so" -print -delete
 
-%patch -P 0 -p1
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 3 -p1
-%patch -P 4 -p1
-%patch -P 5 -p1
-%patch -P 6 -p1
-%patch -P 7 -p1
-
 # In source archive, all modules have an attribute "VERSION" set to "SNAPSHOT"
 # this attribute is set during build/delivery
 # Refer to application delivery process :
 #   https://github.com/helge17/tuxguitar/blob/bd6b29c9539d66b625a625e70bd8718497aa107b/misc/build_tuxguitar_from_source.sh#L148
-find . \( -name "*.xml" -or -name "*.gradle"  -or -name "*.properties" -or -name "*.html" -or -name control -or -name Info.plist \) -and -not -path "./website/*" -and -type f -exec sed -i "s/SNAPSHOT/%{version}/" '{}' \;
+find . \( -name "*.xml" -or -name "*.gradle"  -or -name "*.properties" -or -name "*.html" -or -name control -or -name Info.plist -or -name CHANGES \) -and -not -path "./website/*" -and -type f -exec sed -i "s/9.99-SNAPSHOT/%{version}/" '{}' \;
+
 # Also set the version in the "Help - About" dialog
 sed -i "s/static final String RELEASE_NAME =.*/static final String RELEASE_NAME = (TGApplication.NAME + \" %{version}\");/" desktop/TuxGuitar/src/org/herac/tuxguitar/app/view/dialog/about/TGAboutDialog.java
 
@@ -133,19 +90,19 @@ sed -i "s/static final String RELEASE_NAME =.*/static final String RELEASE_NAME 
 %patch -P 21 -p1
 %patch -P 22 -p1
 
-%pom_xpath_remove "pom:profile[pom:id[text()='platform-windows-all']]" desktop/pom.xml
-%pom_xpath_remove "pom:profile[pom:id[text()='platform-macos-cocoa-64']]" desktop/pom.xml
-%pom_xpath_remove "pom:profile[pom:id[text()='platform-freebsd-x86_64']]" desktop/pom.xml
+%pom_xpath_remove "pom:profile[pom:id[text()='platform-windows']]" desktop/pom.xml
+%pom_xpath_remove "pom:profile[pom:id[text()='platform-macos-cocoa']]" desktop/pom.xml
+%pom_xpath_remove "pom:profile[pom:id[text()='platform-freebsd']]" desktop/pom.xml
 %pom_xpath_set -r pom:org.eclipse.swt.artifactId org.eclipse.swt  desktop/pom.xml
-%pom_xpath_set -r pom:org.eclipse.swt.artifactId org.eclipse.swt desktop/build-scripts/%{name}-linux-swt-%{bit}
-%pom_xpath_remove "pom:artifactItem[pom:destFileName[text()='swt.jar']]" desktop/build-scripts/%{name}-linux-swt-%{bit}
-%pom_remove_dep :org.eclipse.swt.gtk.linux.x86_64 desktop/pom.xml
-%pom_remove_dep :org.eclipse.swt.win32.win32.x86_64 desktop/pom.xml
-%pom_remove_dep :org.eclipse.swt.cocoa.macosx.x86_64 desktop/pom.xml
+%pom_xpath_set -r pom:org.eclipse.swt.artifactId org.eclipse.swt desktop/build-scripts/%{name}-linux-swt
+%pom_xpath_remove "pom:artifactItem[pom:destFileName[text()='swt.jar']]" desktop/build-scripts/%{name}-linux-swt
+%pom_remove_dep :org.eclipse.swt.gtk.linux desktop/pom.xml
+%pom_remove_dep :org.eclipse.swt.win32.win32 desktop/pom.xml
+%pom_remove_dep :org.eclipse.swt.cocoa.macosx desktop/pom.xml
 
 %build
 %{mvn_build} -j -f -- \
-    -e -f desktop/build-scripts/%{name}-linux-swt-%{bit}/pom.xml \
+    -e -f desktop/build-scripts/%{name}-linux-swt/pom.xml \
     -Dproject.build.sourceEncoding=UTF-8 -Dnative-modules=true
 
 %install
@@ -170,8 +127,9 @@ cp -a desktop/build-scripts/common-resources/common-linux/share/mime/packages/tu
 # data files
 mkdir -p %{buildroot}/%{_datadir}/%{name}
 cp -a desktop/TuxGuitar/share/* %{buildroot}/%{_datadir}/%{name}
+cp -a common/resources/* %{buildroot}/%{_datadir}/%{name}
 cp -a misc/tuxguitar.tg %{buildroot}/%{_datadir}/%{name}
-cp -a desktop/build-scripts/%{name}-linux-swt-%{bit}/target/%{name}-%{version}-linux-swt-%{bit}/dist/* %{buildroot}/%{_datadir}/%{name}
+cp -a desktop/build-scripts/%{name}-linux-swt/target/%{name}-%{version}-linux-swt/dist/* %{buildroot}/%{_datadir}/%{name}
 
 # desktop files
 install -dm 755 %{buildroot}/%{_datadir}/applications
