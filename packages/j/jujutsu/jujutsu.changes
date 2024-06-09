@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Fri Jun  7 20:02:25 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.18.0:
+  * Breaking changes
+    - Dropped support for ui.default-revset config (replaced by
+      revsets.log in 0.8.0).
+    - The commit_summary_no_branches template is superseded by
+      templates.branch_list.
+    - jj split will now refuse to split an empty commit.
+    - jj config list now uses multi-line strings and single-quoted
+      strings in the output when appropriate.
+    - jj config get/list/set now parse name argument as TOML key.
+      Quote meta characters as needed.  Example: jj config get
+      "revset-aliases.'trunk()'"
+    - When updating the working copy away from an empty and
+      undescribed commit, it is now abandoned even if it is a merge
+      commit.
+    - If a new working-copy commit is created because the old one
+      was abandoned, and the old commit was merge, then the new
+      commit will now also be.  #2859
+    - jj new's --insert-before/--insert-after options must now be
+      set for each commit the new commit will be inserted
+      before/after. Previously, those options were global flags and
+      specifying them once would insert the new commit before/
+      after all the specified commits.
+  * Deprecations
+    - Attempting to alias a built-in command now gives a warning, rather than being
+      silently ignored.
+  * New features
+    - jj branch list/tag list now accept -T/--template option. The
+      tag list prints commit summary along with the tag name by
+      default.
+    - Conflict markers now include an explanation of what each part
+      of the conflict represents.
+    - ui.color = "debug" prints active labels alongside the regular
+      colored output.
+    - jj branch track now show conflicts if there are some.
+    - A new revset reachable(srcs, domain) will return all commits
+      that are reachable from srcs within domain.
+    - There are now prebuilt binaries for
+      aarch64-linux-unknown-musl.  Note, these are cross compiled
+      and currently untested.  We plan on providing fully tested
+      builds later once our CI system allows it.
+    - Added new revsets mutable() and immutable().
+    - Upgraded scm-record from v0.2.0 to v0.3.0. See release notes
+      at https://github.com/arxanas/scm-record/releases/tag/v0.3.0
+    - New command jj fix that can be configured to update commits
+      by running code formatters (or similar tools) on changed
+      files. The configuration schema and flags are minimal for
+      now, with a number of improvements planned (for example,
+      #3800 and #3801).
+    - jj new's --insert-before and --insert-after options can now
+      be used simultaneously.
+    - jj git push now can push commits with empty descriptions with
+      the --allow-empty-description flag
+  * Fixed bugs
+    - Previously, jj git push only made sure that the branch is in
+      the expected location on the remote server when pushing a
+      branch forward (as opposed to sideways or backwards). Now, jj
+      git push makes a safety check in all cases and fails whenever
+      jj git fetch would have introduced a conflict.
+      In other words, previously branches that moved sideways or
+      backward were pushed similarly to Git's git push --force; now
+      they have protections similar to git push --force-with-lease
+      (though not identical to it, to match the behavior of jj git
+      fetch). Note also that because of the way jj git fetch works,
+      jj does not suffer from the same problems as Git's git push
+      --force-with-lease in situations when git fetch is run in the
+      background.
+    - When the working copy commit becomes immutable, a new one is
+      automatically created on top of it to avoid letting the user
+      edit the immutable one.
+    - jj config list now properly escapes TOML keys (#1322).
+    - Files with conflicts are now checked out as executable if all
+      sides of the conflict are executable.
+    - The progress bar (visible when using e.g. jj git clone)
+      clears the remainder of the cursor row after drawing rather
+      than clearing the entire row before drawing, eliminating the
+      "flicker" effect seen on some terminals.
+
+-------------------------------------------------------------------
 Wed May  8 06:55:40 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - update to 0.17.1:
