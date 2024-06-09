@@ -1386,4 +1386,41 @@
   - Move new exception catching for metadata errors</comment>
     <requestid>1163989</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>ff2b97961f821e12008f6147d0fed0a4</srcmd5>
+    <version>4.35.0</version>
+    <time>1717957243</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.35.0:
+  * Add download_finished_signal for Action Chains #1073
+  * New Site: touchfluffytail.org thanks dbhmw
+  * adapter_wattpadcom: Improve error reporting when story not
+    found / connection refused.
+  * base_xenforo2 better detect whether logged in.
+  * adapter_deviantartcom: Streamline login vs watchers vs
+    mature See #1070
+  * adapter_inkbunny: Fix author &amp; category thanks dbhmw
+  * base_xenforo2forum: Prefix tag collecting too much.
+  * datetime.utcnow() deprecated in more recent py3 versions
+  * Skip invalid images, detect img types thanks dbhmw
+  * Fix for WebToEpub firefox cache key changing
+  * QQ: Doesn't need reader_posts_per_page:30 anymore
+  * adapter_forumquestionablequestingcom:Switch to
+    BaseXenForo2ForumAdapter
+  * adapter_ficbooknet: Remove py3 string handling that breaks on
+    py2
+  * Update bundled certifi cacert.pem and version, not core.py
+- update to 4.34.1:
+  * adapter_ficbooknet: Remove py3 string handling that breaks on
+    py2
+  * Update bundled certifi cacert.pem and version
+- update to 4.34.0:
+  * FanFicFare is delivered as a `pip` Python package.
+  * adapter_literotica: &quot;Beta&quot; site changes #1058
+  * Ficbook.net More metadata collection #1064 Thanks, dbhmw
+  * Ficbook.net Add chapter dates for TOC #1065 Thanks, dbhmw
+  * Ficbook.net Fix categories and add chapter notes #1063
+    Thanks, dbhmw</comment>
+    <requestid>1179247</requestid>
+  </revision>
 </revisionlist>
