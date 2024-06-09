@@ -206,4 +206,12 @@
     <comment>- Add support-Qt-5_15_13.patch to support qt 5.15.13 (forwarded request 1160686 from hillwood)</comment>
     <requestid>1160687</requestid>
   </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>d7232f069e2b5c62f023ffe5f0ad58fe</srcmd5>
+    <version>5.6.12</version>
+    <time>1717957233</time>
+    <user>anag+factory</user>
+    <comment>- Add support-Qt-5_15_14.patch (forwarded request 1179228 from hillwood)</comment>
+    <requestid>1179229</requestid>
+  </revision>
 </revisionlist>
