@@ -3,8 +3,8 @@
     <param name="url">https://github.com/argoproj/argo-cd</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v2.11.2</param>
-    <param name="match-tag">v2.11.2</param>
+    <param name="revision">v2.11.3</param>
+    <param name="match-tag">v2.11.3</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
@@ -18,6 +18,6 @@
     <param name="compression">gz</param>
   </service>
   <service name="go_modules" mode="manual">
-    <param name="archive">argo-cd-2.11.2.obscpio</param>
+    <param name="archive">argo-cd-2.11.3.obscpio</param>
   </service>
 </services>

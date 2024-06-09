@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 07 19:45:08 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.11.3:
+  * Bump version to 2.11.3 (#18520)
+  * Merge pull request from GHSA-3cqf-953p-h5cp
+  * Merge pull request from GHSA-87p9-x75h-p4j2
+  * fix: app names with non-alphanumeric characters in position 63
+    break syncs (issue #18237) (#18256) (#18439)
+  * fix source ordering issue in manifest generation for
+    multi-source app while using manifests and diff commands
+    (#18395) (#18408)
+
+-------------------------------------------------------------------
 Thu May 23 20:07:14 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.11.2:

@@ -21,7 +21,7 @@
 %define executable_name argocd
 
 Name:           argocd-cli
-Version:        2.11.2
+Version:        2.11.3
 Release:        0
 Summary:        CLI for the ArgoCD declarative continuous deployment tool
 License:        Apache-2.0
