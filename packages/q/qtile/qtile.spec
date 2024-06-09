@@ -16,10 +16,11 @@
 #
 
 
-%bcond_without     test
+%global _minimum_wlroots_ver 0.17.0
+%global _conflict_wlroots_ver 0.18.0
 
 Name:           qtile
-Version:        0.24.0
+Version:        0.26.0
 Release:        0
 Summary:        A pure-Python tiling window manager
 # All MIT except for: libqtile/widget/pacman.py:GPL (v3 or later)
@@ -41,7 +42,7 @@ BuildRequires:  python3-cffi >= 1.1.0
 BuildRequires:  python3-devel
 BuildRequires:  python3-pip
 BuildRequires:  python3-pycairo >= 1.25.1
-BuildRequires:  python3-pywlroots
+BuildRequires:  python3-pywlroots >= %{_minimum_wlroots_ver}
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-setuptools_scm
 BuildRequires:  python3-wheel
@@ -50,8 +51,8 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libinput)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(wlroots) >= 0.16.0
-BuildConflicts: pkgconfig(wlroots) >= 0.17.0
+BuildRequires:  pkgconfig(wlroots) >= %{_minimum_wlroots_ver}
+BuildConflicts: pkgconfig(wlroots) >= %{_conflict_wlroots_ver}
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xwayland)
 Requires:       gdk-pixbuf-loader-rsvg
@@ -82,10 +83,13 @@ Suggests:       xdg-desktop-portal-hyprland
 # v0.21.0 has lots of additional failures on i586
 ExcludeArch:    %{ix86} %arm %arm64
 
-%if %{with test}
+# Tests
 BuildRequires:  ImageMagick
 BuildRequires:  dbus-1
+BuildRequires:  dbus-1-tools
 BuildRequires:  graphviz
+BuildRequires:  gtk-layer-shell-devel
+BuildRequires:  gtk3-tools
 BuildRequires:  libgtk-3-0
 BuildRequires:  libnotify
 BuildRequires:  libnotify-tools
@@ -100,8 +104,9 @@ BuildRequires:  python3-importlib-metadata
 BuildRequires:  python3-importlib-resources
 BuildRequires:  python3-isort
 BuildRequires:  python3-libcst
-BuildRequires:  python3-mypy
+# BuildRequires:  python3-mypy
 BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest-isort
 BuildRequires:  python3-pyxdg
 BuildRequires:  xcalc
 BuildRequires:  xclock
@@ -111,7 +116,6 @@ BuildRequires:  xrandr
 BuildRequires:  xterm
 BuildRequires:  xvfb-run
 BuildRequires:  xwayland
-%endif
 
 %description
 A pure-Python tiling window manager.
@@ -127,12 +131,14 @@ A pure-Python tiling window manager.
 %autosetup -p1
 # Fix rpmlint warning
 sed -i '/#!\/usr\/bin\/env python/d' libqtile/scripts/cmd_obj.py
+sed -i '/#!\/usr\/bin\/env python/d' setup.py
 
 # Disable use of scm
-sed -i '104s/True/False/' setup.py
+sed -i '65s/True/False/' setup.py
 
 %build
 export CFLAGS="%optflags $(pkg-config --cflags wayland-client libinput xkbcommon wlroots) -I/usr/include/wlr"
+export LDFLAGS="-L%{_libdir}/libwlroots.so.12"
 # Initial steps from https://github.com/qtile/qtile/blob/master/scripts/ffibuild
 export PYTHONPATH="$PWD:$PYTHONPATH"
 ./scripts/ffibuild -v
@@ -140,6 +146,7 @@ export PYTHONPATH="$PWD:$PYTHONPATH"
 
 %install
 export CFLAGS="%optflags $(pkg-config --cflags wayland-client libinput xkbcommon wlroots) -I/usr/include/wlr"
+export LDFLAGS="-L%{_libdir}/libwlroots.so.12"
 # Initial steps from https://github.com/qtile/qtile/blob/master/scripts/ffibuild
 export PYTHONPATH="$PWD:$PYTHONPATH"
 ./scripts/ffibuild -v
@@ -156,19 +163,19 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
 ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
 
-%fdupes %{buildroot}%{python3_sitearch}
+%fdupes %{buildroot}%{%python3_sitearch}
 
-%if %{with test}
 %check
 mkdir -vp ${PWD}/bin
 ln -svf %{buildroot}%{_bindir}/qtile ${PWD}/bin/qtile
 export CFLAGS="%optflags $(pkg-config --cflags wayland-client libinput xkbcommon wlroots) -I/usr/include/wlr"
 export LC_TYPE=en_US.UTF-8
-export PYTHONPATH=%{buildroot}%{python3_sitearch}:%{python3_sitearch}
+export PYTHONPATH=%{buildroot}%{python3_sitearch}:%{python3_sitearch}:$PWD
 export PATH="${PWD}/bin:${PATH}"
 export PYTHONDONTWRITEBYTECODE=1
-%{_bindir}/xvfb-run python3 -m pytest -vv -rs --backend x11 --backend wayland
-%endif
+# Workaround for broken pytest
+# https://github.com/openSUSE/python-rpm-macros/issues/170#issuecomment-2152944000
+%{_bindir}/xvfb-run %{_bindir}/python%{python_version} -m pytest -vvv -rs --backend x11 --backend wayland
 
 %post
 %{_sbindir}/update-alternatives --install %{_datadir}/xsessions/default.desktop \

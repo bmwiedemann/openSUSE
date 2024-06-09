@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sat Jun  8 04:41:33 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Attempt to remove mypy for now as this might be the cause of failed tests (?)
+  * need to confirm from upstream
+
+-------------------------------------------------------------------
+Thu Jun  6 23:57:11 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Add gtk-layer-shell and dbus-1-tools for tests and remove the bcond macro
+
+-------------------------------------------------------------------
+Thu May 30 06:47:16 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Make the wlroots version more specific so we don't get false ideas of build failures
+
+-------------------------------------------------------------------
+Sun May 26 00:11:29 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.26.0
+  - this release drops support for python 3.9
+  - deleted the (very old) libqtile/command_* deprecation wrappers
+  - SIGUSR2 no longer restarts qtile, instead it dumps stack traces
+  - lazy.<object>.when(when_floating=X) now behaves differently: the lazy call will be executed
+    independently of the current window's float state by default, and can be limited to when it
+    is floating or tiled by passing when_floating as True or False respectively.
+  - Dropped support for KDE idle protocol on Wayland
+  - Qtile's Wayland backend now requires wlroots 0.17.x, pywlroots 0.17.x and pywayland >= 0.4.17.
+  - We currently do not build for pypy-3.10 as there seems to be a resolution error in either pypy or pip (https://github.com/pypy/pypy/issues/4956)
+  - For Wayland you can now set the cursor theme and size to forcefully use in Qtile,
+    set `wl_xcursor_theme` and `wl_xcursor_size` in the configuration
+  - automatically lift types to their annotated type when specified via
+    the `qtile cmd-obj` command line
+  - Add `Plasma` layout. The original layout (https://github.com/numirias/qtile-plasma) appears to be unmaintained
+    so we have added this to the main codebase.
+  - Add ability to specify muted and unmuted formats for `Volume` and `PulseVolume` widgets.
+  - Add back server-side opacity support for Wayland backend
+- Attempt to use tests without xvfb
+
+-------------------------------------------------------------------
+Tue May 21 14:36:38 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.25.0:
+  * features
+    - The Battery widget now supports dynamic charge control, allowing for
+      protecting battery life.
+    - To support the above (plus the other widgets that modify sysfs), qtile
+      now ships with its own udev rules, located at
+      /resources/99-qtile.rules; distro packagers will probably want to
+      install this rule set.
+  * bugfixes
+    - Fix groups marked with `persist=False` not being deleted when their last window is moved to another group.
+    - Fallback icon in StatusNotifier widget
+
+-------------------------------------------------------------------
 Tue Apr  9 04:09:29 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Require python3-cairocffi-pixbuf at runtime
