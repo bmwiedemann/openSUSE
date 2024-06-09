@@ -20,7 +20,7 @@
 %define modnamedown fanficfare
 %define skip_python2 1
 Name:           python-fanficfare
-Version:        4.33.0
+Version:        4.35.0
 Release:        0
 Summary:        Tool for making eBooks from stories on fanfiction and other web sites
 License:        GPL-3.0-only
