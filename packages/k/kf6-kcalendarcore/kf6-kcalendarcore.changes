@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun  5 10:11:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.3.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.3.0/
+- Changes since 6.2.0:
+  * tests: Remove workaround not needed anymore after 80f773
+  * CI: Require passing tests on Linux and Windows
+  * Adapt date/time output for tests to Qt 6.7 formatting behavior changes
+  * Remove explicit maintainer from metainfo
+
+-------------------------------------------------------------------
 Mon May  6 12:22:20 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.2.0
