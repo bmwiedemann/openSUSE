@@ -63,4 +63,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148902</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>a7d05d73ed058368cc5ef120bcb83f87</srcmd5>
+    <version>2.0.2</version>
+    <time>1717957336</time>
+    <user>anag+factory</user>
+    <comment>Build against javax.inject:javax.inject artifact</comment>
+    <requestid>1179403</requestid>
+  </revision>
 </revisionlist>

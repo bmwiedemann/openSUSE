@@ -50,6 +50,7 @@ cp %{SOURCE1} api/build.xml
 
 # Use newer version of interceptors API
 %pom_change_dep "jakarta.interceptor:jakarta.interceptor-api" "org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.2_spec" api
+%pom_change_dep "jakarta.inject:jakarta.inject-api" "javax.inject:javax.inject" api
 
 %pom_remove_dep :jakarta.el-api api
 
