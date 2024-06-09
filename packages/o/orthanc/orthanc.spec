@@ -18,7 +18,7 @@
 
 
 Name:           orthanc
-Version:        1.12.3
+Version:        1.12.4
 Release:        0
 Summary:        RESTful DICOM server for healthcare and medical research
 License:        GPL-3.0-or-later
@@ -39,7 +39,7 @@ Source12:       https://orthanc.uclouvain.be/downloads/third-party-downloads/jqu
 Source13:       https://orthanc.uclouvain.be/downloads/third-party-downloads/dicom-web/vuejs-2.6.10.tar.gz
 
 Patch0:         dcmtk.diff
-Patch1:         boost185.diff
+## Patch1:         boost185.diff
 BuildRequires:  civetweb-devel
 BuildRequires:  cmake >= 2.8.0
 BuildRequires:  curl-devel
@@ -196,7 +196,7 @@ tar --strip-components 1 -xzf %{S:0} -C %{buildroot}/usr/src/%{name}/
 patch %{buildroot}/usr/src/%{name}/OrthancFramework/Resources/CMake/DcmtkConfiguration.cmake < %{P:0}
 
 #Apply boost patch
-patch -p1 -d %{buildroot}/usr/src/%{name} < %{P:1}
+## patch -p1 -d %{buildroot}/usr/src/%{name} < %{P:1}
 
 # Do not mark Python scripts as executable
 find %{buildroot}/usr/src/%{name} -name '*.py' -exec chmod a-x "{}" +
