@@ -1,7 +1,7 @@
 #
 # spec file for package plee-the-bear
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Source1:        bear-%{bear_ver}.tar.xz
 Source2:        CMakeLists.txt
 # PATCH-FIX-UPSTREAM ptb-boost-placeholders.patch
 Patch0:         ptb-boost-placeholders.patch
+# PATCH-FIX-UPSTREAM bear-fix-building-with-boost-1.85.patch - fix building with boost-1.85
+Patch1:         bear-fix-building-with-boost-1.85.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -42,6 +44,7 @@ BuildRequires:  libclaw-devel >= 1.7.0
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libxslt-tools
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  wxWidgets-devel
 BuildRequires:  pkgconfig(SDL2_mixer)
@@ -70,8 +73,12 @@ This subpackage contains the game data files.
 %prep
 %setup -q -D -T -c -n bear-project -a0
 %setup -q -T -D -n bear-project -a1
-cp %{S:2} ./
-%autopatch -p1
+cp %{SOURCE2} ./
+%patch -P 0 -p1
+# Patch1 is only needed for openSUSE Tumbleweed
+%if 0%{?suse_version} > 1600
+%patch -P 1 -p1
+%endif
 
 %build
 mv %{name}-%{version} %{name}
