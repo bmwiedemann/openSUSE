@@ -1,7 +1,7 @@
 #
 # spec file for package clknetsim
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           clknetsim
-Version:        0+git.20231005
+Version:        0+git.20240424
 Release:        0
 Summary:        Clock and Network Simulator
 License:        GPL-2.0-only

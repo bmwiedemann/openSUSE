@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun  7 13:33:49 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0+git.20240424:
+  * fix parsing of 64-bit CLKNETSIM_START_DATE on 32-bit systems
+  * add support for 64-bit-time_t variants of fstat/stat
+  * bash: remove linker error from logs with valgrind
+  * ignore PTP transportSpecific field in transparent clock
+
+-------------------------------------------------------------------
 Mon Dec 18 14:49:24 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0+git.20231005:

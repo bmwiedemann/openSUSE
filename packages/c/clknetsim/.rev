@@ -29,4 +29,16 @@
   * add PTP one-step E2E transparent clock</comment>
     <requestid>1133879</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>662ccbfc94d1089c96039f067c41131a</srcmd5>
+    <version>0+git.20240424</version>
+    <time>1717957235</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0+git.20240424:
+  * fix parsing of 64-bit CLKNETSIM_START_DATE on 32-bit systems
+  * add support for 64-bit-time_t variants of fstat/stat
+  * bash: remove linker error from logs with valgrind
+  * ignore PTP transportSpecific field in transparent clock</comment>
+    <requestid>1179235</requestid>
+  </revision>
 </revisionlist>
