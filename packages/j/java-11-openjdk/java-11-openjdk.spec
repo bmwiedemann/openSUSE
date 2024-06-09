@@ -221,6 +221,7 @@ Patch19:        fips.patch
 Patch20:        loadAssistiveTechnologies.patch
 #
 Patch21:        reproducible-javadoc-timestamp.patch
+Patch22:        reproducible-jlink.patch
 #
 Patch30:        JDK-8208602.patch
 #
@@ -504,6 +505,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch -P 20 -p1
 
 %patch -P 21 -p1
+%patch -P 22 -p1
 
 %patch -P 30 -p1
 

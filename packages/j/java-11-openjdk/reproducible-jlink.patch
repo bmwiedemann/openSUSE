@@ -1,0 +1,11 @@
+--- a/src/jdk.jlink/share/classes/jdk/tools/jlink/internal/JlinkTask.java
++++ b/src/jdk.jlink/share/classes/jdk/tools/jlink/internal/JlinkTask.java
+@@ -726,7 +726,7 @@ public class JlinkTask {
+ 
+     private String getSaveOpts() {
+         StringBuilder sb = new StringBuilder();
+-        sb.append('#').append(new Date()).append("\n");
++        sb.append('#').append(System.getenv("SOURCE_DATE_EPOCH") != null ? new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"))) : new Date()).append("\n");
+         for (String c : optionsHelper.getInputCommand()) {
+             sb.append(c).append(" ");
+         }
