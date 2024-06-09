@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://git.sr.ht/~kennylevinsen/greetd</param>
     <param name="scm">git</param>
-    <param name="revision">0.10.0</param>
+    <param name="revision">0.10.3</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
