@@ -16,11 +16,11 @@ Signed-off-by: Arjen de Korte <build+github@de-korte.org>
  ext/phar/zip.c           |  2 +-
  6 files changed, 18 insertions(+), 5 deletions(-)
 
-Index: php-8.3.3/ext/phar/phar.c
+Index: php-8.3.8/ext/phar/phar.c
 ===================================================================
---- php-8.3.3.orig/ext/phar/phar.c
-+++ php-8.3.3/ext/phar/phar.c
-@@ -2993,7 +2993,7 @@ int phar_flush(phar_archive_data *phar,
+--- php-8.3.8.orig/ext/phar/phar.c
++++ php-8.3.8/ext/phar/phar.c
+@@ -2996,7 +2996,7 @@ int phar_flush(phar_archive_data *phar,
  			4: metadata-len
  			+: metadata
  		*/
@@ -29,10 +29,10 @@ Index: php-8.3.3/ext/phar/phar.c
  		phar_set_32(entry_buffer, entry->uncompressed_filesize);
  		phar_set_32(entry_buffer+4, mytime);
  		phar_set_32(entry_buffer+8, entry->compressed_filesize);
-Index: php-8.3.3/ext/phar/phar_internal.h
+Index: php-8.3.8/ext/phar/phar_internal.h
 ===================================================================
---- php-8.3.3.orig/ext/phar/phar_internal.h
-+++ php-8.3.3/ext/phar/phar_internal.h
+--- php-8.3.8.orig/ext/phar/phar_internal.h
++++ php-8.3.8/ext/phar/phar_internal.h
 @@ -427,6 +427,21 @@ static inline enum phar_fp_type phar_get
  	return PHAR_G(cached_fp)[entry->phar->phar_pos].manifest[entry->manifest_pos].fp_type;
  }
@@ -55,10 +55,10 @@ Index: php-8.3.3/ext/phar/phar_internal.h
  static inline zend_off_t phar_get_fp_offset(phar_entry_info *entry)
  {
  	if (!entry->is_persistent) {
-Index: php-8.3.3/ext/phar/stream.c
+Index: php-8.3.8/ext/phar/stream.c
 ===================================================================
---- php-8.3.3.orig/ext/phar/stream.c
-+++ php-8.3.3/ext/phar/stream.c
+--- php-8.3.8.orig/ext/phar/stream.c
++++ php-8.3.8/ext/phar/stream.c
 @@ -474,7 +474,7 @@ static int phar_stream_flush(php_stream
  	phar_entry_data *data = (phar_entry_data *) stream->abstract;
  
@@ -68,10 +68,10 @@ Index: php-8.3.3/ext/phar/stream.c
  		ret = phar_flush(data->phar, 0, 0, 0, &error);
  		if (error) {
  			php_stream_wrapper_log_error(stream->wrapper, REPORT_ERRORS, "%s", error);
-Index: php-8.3.3/ext/phar/tar.c
+Index: php-8.3.8/ext/phar/tar.c
 ===================================================================
---- php-8.3.3.orig/ext/phar/tar.c
-+++ php-8.3.3/ext/phar/tar.c
+--- php-8.3.8.orig/ext/phar/tar.c
++++ php-8.3.8/ext/phar/tar.c
 @@ -965,7 +965,7 @@ int phar_tar_flush(phar_archive_data *ph
  	char halt_stub[] = "__HALT_COMPILER();";
  
@@ -81,10 +81,10 @@ Index: php-8.3.3/ext/phar/tar.c
  	entry.is_modified = 1;
  	entry.is_crc_checked = 1;
  	entry.is_tar = 1;
-Index: php-8.3.3/ext/phar/util.c
+Index: php-8.3.8/ext/phar/util.c
 ===================================================================
---- php-8.3.3.orig/ext/phar/util.c
-+++ php-8.3.3/ext/phar/util.c
+--- php-8.3.8.orig/ext/phar/util.c
++++ php-8.3.8/ext/phar/util.c
 @@ -584,7 +584,7 @@ phar_entry_data *phar_get_or_create_entr
  
  	phar_add_virtual_dirs(phar, path, path_len);
@@ -94,10 +94,10 @@ Index: php-8.3.3/ext/phar/util.c
  	etemp.is_crc_checked = 1;
  	etemp.phar = phar;
  	etemp.filename = estrndup(path, path_len);
-Index: php-8.3.3/ext/phar/zip.c
+Index: php-8.3.8/ext/phar/zip.c
 ===================================================================
---- php-8.3.3.orig/ext/phar/zip.c
-+++ php-8.3.3/ext/phar/zip.c
+--- php-8.3.8.orig/ext/phar/zip.c
++++ php-8.3.8/ext/phar/zip.c
 @@ -1236,7 +1236,7 @@ int phar_zip_flush(phar_archive_data *ph
  
  	pass.error = &temperr;
