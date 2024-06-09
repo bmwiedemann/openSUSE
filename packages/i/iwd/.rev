@@ -437,4 +437,16 @@
     <comment></comment>
     <requestid>1163986</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>2f3dff3cfa0e191f948975cadbd8fcc5</srcmd5>
+    <version>2.18</version>
+    <time>1717957348</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.18
+  * Fix issue with handling BSS with invalid HE capabilities.
+  * Fix issue with neighbor reports with invalid country codes.
+  * Fix issue with EAP-TTLS Start packets with L flag set.
+  * Add support for enabling SAE for AP mode operation. (forwarded request 1179176 from alois)</comment>
+    <requestid>1179407</requestid>
+  </revision>
 </revisionlist>
