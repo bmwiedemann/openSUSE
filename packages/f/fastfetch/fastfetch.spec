@@ -17,7 +17,7 @@
 
 
 Name:           fastfetch
-Version:        2.14.0
+Version:        2.15.0
 Release:        0
 Summary:        Neofetch-like tool written mostly in C
 License:        MIT
@@ -30,6 +30,13 @@ BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  opencl-headers
 BuildRequires:  vulkan-headers
+# For some reason these don't build on 15.5
+# Once the 15.6 repo is enabled, check to see if it builds there
+%if 0%{?suse_version} > 1600
+%ifarch %{ix86} x86_64
+BuildRequires:  pkgconfig(DirectX-Headers)
+%endif
+%endif
 BuildRequires:  pkgconfig(ImageMagick)
 BuildRequires:  pkgconfig(chafa)
 BuildRequires:  pkgconfig(dbus-1)
@@ -84,9 +91,6 @@ Bash command-line completion support for %{name}.
 
 %prep
 %setup -q
-
-sed -i "s|\#\!\/usr\/bin\/env bash||g" completions/bash
-sed -i "s|\#\!\/usr\/bin\/env fish||g" completions/fish
 
 %build
 %cmake
