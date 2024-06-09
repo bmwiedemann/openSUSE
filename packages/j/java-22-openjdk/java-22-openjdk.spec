@@ -158,6 +158,7 @@ Patch8:         zero-ranges.patch
 # From icedtea: Increase default memory limits
 Patch10:        memory-limits.patch
 Patch11:        reproducible-properties.patch
+Patch12:        reproducible-jlink.patch
 # Fix: implicit-pointer-decl
 Patch13:        implicit-pointer-decl.patch
 Patch15:        system-pcsclite.patch
@@ -388,6 +389,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch -P 8 -p1
 %patch -P 10 -p1
 %patch -P 11 -p1
+%patch -P 12 -p1
 %patch -P 13 -p1
 
 %if %{with_system_pcsc}

@@ -15,4 +15,12 @@
     <comment>April 2024 CPU</comment>
     <requestid>1168901</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d2f0bcc99cccfa3cb410d86e480c39cd</srcmd5>
+    <version>22.0.1.0</version>
+    <time>1717957221</time>
+    <user>anag+factory</user>
+    <comment>reproducible jlink for reproducible jmods</comment>
+    <requestid>1179189</requestid>
+  </revision>
 </revisionlist>
