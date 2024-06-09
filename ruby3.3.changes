@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  5 11:59:12 UTC 2024 - José Gómez <jose.gomez@suse.com>
+
+- Add Provides for yjit-enabled builds.
+
+-------------------------------------------------------------------
 Thu May 30 22:20:12 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.3.2

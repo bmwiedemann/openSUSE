@@ -46,4 +46,12 @@
     <comment>- Update to 3.3.2</comment>
     <requestid>1177821</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>4d4d3c312533932e1c272607d5b23e31</srcmd5>
+    <version>3.3.2</version>
+    <time>1717957142</time>
+    <user>anag+factory</user>
+    <comment>- Add Provides for yjit-enabled builds.</comment>
+    <requestid>1179323</requestid>
+  </revision>
 </revisionlist>
