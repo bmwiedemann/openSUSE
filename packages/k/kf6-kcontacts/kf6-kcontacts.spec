@@ -18,13 +18,13 @@
 %define qt6_version 6.6.0
 
 %define rname kcontacts
-# Full KF6 version (e.g. 6.2.0)
+# Full KF6 version (e.g. 6.3.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kcontacts
-Version:        6.2.0
+Version:        6.3.0
 Release:        0
 Summary:        KDE Frameworks based address book API
 License:        LGPL-2.1-or-later
@@ -41,11 +41,19 @@ BuildRequires:  cmake(KF6Config) >= %{_kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{_kf6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 
 %description
 kcontacts is a Qt library which provides an API
 to access address book data stored in different formats.
+
+%package imports
+Summary:        QML imports for kcontacts
+
+%description imports
+This package provides a QML module that exposes some of the kcontacts classes
+as QML value types.
 
 %package -n libKF6Contacts6
 Summary:        KDE Frameworks based address book API
@@ -86,6 +94,9 @@ Development files for kcontacts, a Qt library to access address books.
 %files
 %{_kf6_debugdir}/kcontacts.categories
 %{_kf6_debugdir}/kcontacts.renamecategories
+
+%files imports
+%{_kf6_qmldir}/org/kde/contacts/
 
 %files -n libKF6Contacts6
 %license LICENSES/*
