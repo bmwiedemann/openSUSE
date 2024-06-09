@@ -350,4 +350,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1174054</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>e024e7434c54b3313364679bda222ff9</srcmd5>
+    <version>42.0.8</version>
+    <time>1717957126</time>
+    <user>anag+factory</user>
+    <comment>- update to 42.0.8:
+  * Update test vectors to match python-cryptography 42.0.8</comment>
+    <requestid>1179509</requestid>
+  </revision>
 </revisionlist>
