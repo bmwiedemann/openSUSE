@@ -17,7 +17,7 @@
 
 
 Name:           opensurge
-Version:        0.6.1
+Version:        0.6.1.1
 Release:        0
 Summary:        Game based on Sonic the Hedgehog Universe
 License:        Apache-2.0 AND GPL-3.0-or-later AND LGPL-2.1-or-later AND CC-BY-3.0 AND OFL-1.1 AND MIT

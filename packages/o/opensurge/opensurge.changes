@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun  9 05:08:39 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 0.6.1.1
+  * Fixed a memory-related bug in the Entity Manager
+  * Updated metadata and translations
+  * Tweaked the water effect for extra performance
+  * Reintroduced the Create option at the Main Menu
+  * Updated the Thanks for Playing screen
+  * Other minor changes
+
+-------------------------------------------------------------------
 Sun May 19 10:25:41 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 0.6.1
