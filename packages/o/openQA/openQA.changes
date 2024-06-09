@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 09 04:14:13 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1717835518.1501646c:
+  * Fix editing parent job group properties
+  * Update version requirement of `rubygem(sass)` to 3.7.4 for Bootstrap 5
+  * Improve documentation for DELETE /job_groups/id
+  * Fix SUSE:CA repo selection on SLE
+  * Bump tslib from 2.6.2 to 2.6.3
+  * Bump prettier from 3.3.0 to 3.3.1
+
+-------------------------------------------------------------------
 Thu Jun 06 20:14:02 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1717576421.21904f82:

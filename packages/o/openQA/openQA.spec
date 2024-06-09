@@ -58,7 +58,7 @@
 # The following line is generated from dependencies.yaml
 %define worker_requires bsdtar openQA-client optipng os-autoinst < 5 perl(Capture::Tiny) perl(File::Map) perl(Minion::Backend::SQLite) >= 5.0.7 perl(Mojo::IOLoop::ReadWriteProcess) >= 0.26 perl(Mojo::SQLite) psmisc sqlite3 >= 3.24.0
 # The following line is generated from dependencies.yaml
-%define build_requires %assetpack_requires npm rubygem(sass)
+%define build_requires %assetpack_requires npm rubygem(sass) >= 3.7.4
 
 # All requirements needed by the tests executed during build-time.
 # Do not require on this in individual sub-packages except for the devel
@@ -78,7 +78,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        4.6.1717576421.21904f82
+Version:        4.6.1717835518.1501646c
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
