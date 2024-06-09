@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun  7 17:50:48 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add bear-fix-building-with-boost-1.85.patch, fixes building with
+  boost >= 1.85
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Wed Sep 23 09:33:59 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Install correct license file corresponding to each subpackage:
