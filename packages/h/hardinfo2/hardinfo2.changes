@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jun  3 06:00:46 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 2.1.11:
+  * Fixed theme change not supporting native system settings
+    theme setup.
+  * Fixed background light/dark mode could be wrong depending
+    on DE version
+- Changes in version 2.1.8:
+  * Fixed critical error - app was unreadable due to faulty
+    dark mode detection
+  * Added gsettings and dynamic darkmode for newer distros
+- Changes in version 2.1.5:
+  * PACKAGING: Recommends updated: add fwupd
+  * Build updated to CMake 3.0.2 and more verbose/check during
+    CPack builds
+  * Build hardcoded prefix=/usr - we only build packages or
+    install directly to package destination.
+  * Fixed Translations not working in all distros/Packages
+  * Fixed Memory Devices asked for root
+  * Added loong64 as loongarch64 architecture
+  * Added mips64el as mips architecture
+  * Added Hungarian language
+  * Minor: Fixed GCC warnings for modules/architectures, implicit
+    function declarations, runtime warnings
+
+-------------------------------------------------------------------
 Mon May 20 16:21:52 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 2.1.2:
