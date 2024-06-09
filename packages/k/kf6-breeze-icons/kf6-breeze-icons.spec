@@ -19,13 +19,13 @@
 %define qt6_version 6.6.0
 
 %define rname breeze-icons
-# Full KF6 version (e.g. 6.2.0)
+# Full KF6 version (e.g. 6.3.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-breeze-icons
-Version:        6.2.0
+Version:        6.3.0
 Release:        0
 Summary:        Breeze icon theme
 License:        LGPL-3.0-only
@@ -48,6 +48,14 @@ Obsoletes:      breeze5-icons < %{version}
 %description
 Breeze-icons is a freedesktop.org compatible icon theme.
 
+%package -n libKF6BreezeIcons6
+Summary:        Breeze icon theme - icon library
+
+%description -n libKF6BreezeIcons6
+Breeze-icons is a freedesktop.org compatible icon theme.
+This package provides a library containing icons, resources, and functions
+to use them. It is meant to be used for self contained deployments.
+
 %package rcc
 Summary:        Breeze icon theme - rcc file
 Provides:       breeze5-icons-rcc = %{version}
@@ -60,6 +68,7 @@ This contains the Breeze (non-dark) icons in a QResource file, used by Kexi.
 %package devel
 Summary:        CMake config files for kf6-breeze-icons
 Requires:       kf6-breeze-icons = %{version}
+Requires:       libKF6BreezeIcons6 = %{version}
 
 %description devel
 This package provides CMake config files for projects that wish to ensure
@@ -69,6 +78,8 @@ the Breeze icons are available at build time.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
+%define _lto_cflags %{nil}
+
 # kexi needs the icons resource
 %cmake_kf6 \
   -DBINARY_ICONS_RESOURCE:BOOL=TRUE \
@@ -87,6 +98,8 @@ ln -s yast-software-group.svg %{buildroot}%{_kf6_iconsdir}/breeze/preferences/32
 %icon_theme_cache_create_ghost breeze
 %icon_theme_cache_create_ghost breeze-dark
 
+%ldconfig_scriptlets -n libKF6BreezeIcons6
+
 %files
 %license COPYING*
 %ghost %{_kf6_iconsdir}/breeze/icon-theme.cache
@@ -96,6 +109,9 @@ ln -s yast-software-group.svg %{buildroot}%{_kf6_iconsdir}/breeze/preferences/32
 %{_kf6_iconsdir}/breeze/
 %{_kf6_iconsdir}/breeze-dark/
 
+%files -n libKF6BreezeIcons6
+%{_kf6_libdir}/libKF6BreezeIcons.so.*
+
 %files rcc
 %dir %{_kf6_iconsdir}/breeze
 # Kexi does not need the -dark variant.
@@ -103,5 +119,7 @@ ln -s yast-software-group.svg %{buildroot}%{_kf6_iconsdir}/breeze/preferences/32
 
 %files devel
 %{_kf6_cmakedir}/KF6BreezeIcons/
+%{_kf6_includedir}/BreezeIcons/
+%{_kf6_libdir}/libKF6BreezeIcons.so
 
 %changelog
