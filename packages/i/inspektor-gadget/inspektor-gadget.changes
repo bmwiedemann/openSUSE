@@ -1,0 +1,247 @@
+-------------------------------------------------------------------
+Mon Jun 03 12:59:40 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- update to version 0.29.0:
+  * Welcome to the v0.29.0 release of Inspektor Gadget. The most
+    relevant changes for this version are:
+    - API: Support running gadgets from files and memory by
+      @mauriciovasquezbernal in #2853
+    - gadgets: Add trace_lsm by @i-Pear in #2827
+    - gadgets: Add trace_ssl by @i-Pear in #2745
+    - add filter operator by @flyth in #2805
+  * General Improvements
+    - Improve "CStrings" handling by @mauriciovasquezbernal in
+      #2797
+    - UserGroupCache: Move OnceValue to global scope by @burak-ok
+      in #2809
+    - kubernetes: cgroupfs: mount read-only by @alban in #2685
+    - datasources: Add Bool accessors by @mauriciovasquezbernal in
+      #2796
+    - gadgets/trace_malloc: support more memory operations by
+      @i-Pear in #2748
+    - datasources: Add missing setters, allocate memory and add
+      tests by @mauriciovasquezbernal in #2823
+    - trace_dns: convert domain to dot notation (without wasm) by
+      @alban in #2845
+    - pkg/datasource: remove dependency on pkg/gadgets by @flyth in
+      #2850
+    - pkg/operators/ebpf: Avoid adding netns field to snapshot
+      process by @blanquicet in #2838
+    - snapshotters: Support sending and JSON-printing output as an
+      array by @blanquicet in #2709
+    - profile/block-io: use core type matches relocations by @alban
+      in #2542
+    - Add support for more iterators: task_file, ksym by @alban in
+      #2839
+    - minikube: Upgrade to v1.33.1 by @mqasimsarfraz in #2841
+    - datasource: Allow setting smaller static strings by
+      @mauriciovasquezbernal in #2832
+    - sockets-map.h: remove most defines from socket enricher
+      header by @alban in #2846
+    - local/kube manager operators: Print warning for multiple
+      net/mnt ns fields by @blanquicet in #2877
+    - Revert "gadgets/trace_dns: add empty wasm module" by
+      @mauriciovasquezbernal in #2886
+    - cmd: Add JSON output to image list command. by @eiffel-fl in
+      #2885
+    - cmd/image/build: Add progress bar when pulling builder image
+      by @mauriciovasquezbernal in #2888
+    - charts: Set container filesystem as read only. by @eiffel-fl
+      in #2442
+    - pkg/{runcfanotify, container-hook}: Refactor code to use
+      notify package. by @eiffel-fl in #2766
+    - clean up operator initialization code by @flyth in #2901
+    - Auto detect container runtime socket path by @dorser in #2794
+    - Updates to dependabot by @mauriciovasquezbernal in #2915
+    - pkg/operators/formatters: Add syscall formatter by @i-Pear in
+      #2913
+    - dependabot: Group gomod updates by dependency by
+      @mauriciovasquezbernal in #2916
+    - dependabot: Disable updating indirect dependencies by
+      @mauriciovasquezbernal in #2955
+  * Bug Fixes
+    - oci-handler: Fix typo in error message by @mqasimsarfraz in
+      #2806
+    - kubectl-gadget: Multiple fixes around skipInfo logic by
+      @mauriciovasquezbernal in #2774
+    - trace/network: Close Operators after closing the tracer by
+      @burak-ok in #2814
+    - container-hook: fix sys_exit_execve from thread by @alban in
+      #2804
+    - oci: Fail is start image operator fails by
+      @mauriciovasquezbernal in #2828
+    - trace exec builtin gadget: fix memory usage by @alban in
+      #2840
+    - pkg/operators/simple: fix onStop() callback being called if
+      only onStart is set by @flyth in #2851
+    - version: Fix server version for ig-k8s by @mqasimsarfraz in
+      #2852
+    - trace_dns: fix padding by @alban in #2860
+    - pkg/gadgets: Update comment about mntns_filter.h location by
+      @blanquicet in #2866
+    - localmanager: Avoid crashing if container collection isn't
+      available by @mauriciovasquezbernal in #2874
+    - pkg/operators: Fix tracing host events for mount namespace ID
+      attache… by @eiffel-fl in #2879
+    - Add runc symlink for rancher rke2 by @matthyx in #2764
+    - Remove usage of go workspaces by @mauriciovasquezbernal in
+      #2914
+    - oci: Return error if op.Prepare() fails by
+      @mauriciovasquezbernal in #2947
+  * Documentation Improvements
+    - Artifact Hub: Update gadgets version to v0.28.0 by
+      @github-actions in #2808
+    - Artifact Hub: Update gadgets version to v0.28.1 by
+      @github-actions in #2861
+    - Implement image-based gadgets examples by
+      @mauriciovasquezbernal in #2753
+    - docs: Add installation steps for helm charts by
+      @mqasimsarfraz in #2878
+    - docs/hello-world-gadget: Add missing --verify-image=false by
+      @mauriciovasquezbernal in #2887
+    - docs: Add documentation on how to sign image-based gadgets.
+      by @eiffel-fl in #2894
+    - docs: Use relative link to point to verification
+      documentation. by @eiffel-fl in #2895
+    - docs: Add initial wasm design doc by @mauriciovasquezbernal
+      in #2896
+  * Testing and Continue Integration
+    - ci: Do not run cloud-cleanup on fork by @mqasimsarfraz in
+      #2807
+    - ci: Shifting deploy and undeploy logic for IG to actions by
+      @pawarpranav83 in #2833
+    - tests: Add tests for image export and import by
+      @mauriciovasquezbernal in #2906
+
+-------------------------------------------------------------------
+Mon Jun 03 12:58:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- update to version 0.28.1:
+  This is a Bugfix release which includes the following fixes:
+  * container-hook: fix sys_exit_execve from thread by @alban in
+    #2804
+  * trace exec builtin gadget: fix memory usage by @alban in #2840
+  * version: Fix server version for ig-k8s by @mqasimsarfraz in
+    #2852
+
+-------------------------------------------------------------------
+Mon Jun 03 12:48:43 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- update to version 0.28.0:
+  Welcome to the v0.28.0 release of Inspektor Gadget. The most
+  relevant changes for this version are:
+  * pkg/uprobetracer: add support for USDT tracepoints by @i-Pear
+    in #2655
+  * cmd: Verifying container image if policy controller is present.
+    by @eiffel-fl in #2703
+  * operators/ebpf: Support associate programs (iterators) to
+    snapshotters by @blanquicet in #2637
+  * Bump Go version to 1.22.0 by @burak-ok in #2744
+  * Remove bpftrace by @eiffel-fl in #2757
+  General Improvements
+  * gadget-context: Don't add op instance's params if op is not
+    requested by @blanquicet in #2667
+  * pkg/uprobetracer: use kfilefields to identify inodes by @i-Pear
+    in #2669
+  * artifacthub-pkg.yml: update gadget versions to new release by
+    @alban in #2679
+  * re-add support for jsonpretty + yaml to image based gadgets by
+    @flyth in #2652
+  * trace/open: Compute error and file descriptor fields on eBPF
+    code by @blanquicet in #2687
+  * rename methods/structs/interfaces from Gadget... to
+    BuiltInGadget... by @flyth in #2559
+  * pkg/datasource: Don't use sync.Pool for data by @blanquicet in
+    #2708
+  * Cleanup custom-columns CLI flag by @shivaabhishek07 in #2465
+  * cmd: Add --seccomp-profile to specify seccomp profile to apply
+    to Inspektor Gadget by @eiffel-fl in #2710
+  * treewide: remove run gadget by @flyth in #2673
+  * add version skew warning by @mauriciovasquezbernal in #2718
+  * run: Remove dead code by @mauriciovasquezbernal in #2740
+  * cmd: Do not truncate output when listing image-based gadgets.
+    by @eiffel-fl in #2743
+  * tests.mk: Update kube-apiserver to 1.30.0 by @burak-ok in #2750
+  * oci: Remove dead code by @mauriciovasquezbernal in #2754
+  * Sign image based gadgets by @eiffel-fl in #2678
+  * image/build: Implement option to keep built file by
+    @mauriciovasquezbernal in #2738
+  * pkg/uprobetracer: support LSM trace points by @i-Pear in #2747
+  * trace/{dns,sni}: Split NewTracer() logic by @amirmalka in #2768
+  * Verify image based gadget by @eiffel-fl in #2707
+  * Add signal formatter by @mauriciovasquezbernal in #2630
+  * gadget-service: Improve address validation by
+    @mauriciovasquezbernal in #2780
+  * cmd: Implement image import and export commands by
+    @mauriciovasquezbernal in #2779
+  * columns/filter: Add support for time.Duration by @mqasimsarfraz
+    in #2791
+  * trace exec: Add user and group field by @burak-ok in #2751
+  * image-based gadgets: Implement btfgen support by
+    @mauriciovasquezbernal in #2598
+  Bug Fixes
+  * charts: Add '/host/var' to volumeMounts by @mqasimsarfraz in
+    #2664
+  * image based gadgets: fix hostNetwork info by @flyth in #2674
+  * image based gadgets: return error if no valid gadget layers are
+    found by @flyth in #2691
+  * resolve symlinks in runtime path by @matthyx in #2656
+  * fix: re-add timeout for image-based gadgets by @flyth in #2713
+  * ebpf: Remove trailing garbage when reading sample from perf
+    event array by @mauriciovasquezbernal in #2720
+  * KubeInventoryCache: Keep old pods/svcs in a cached for
+    enrichment by @burak-ok in #2659
+  * cmd: Require experimental flag for run command. by
+    @mauriciovasquezbernal in #2778
+  * fix gRPC timeout for image-based gadgets on GetGadgetInfo() by
+    @flyth in #2712
+  * pkg/oci: Use Singleton for getLocalOciStore by @burak-ok in
+    #2803
+  Documentation Improvements
+  * docs/devel: Update hello world gadget guide by @blanquicet in
+    #2668
+  * docs: Document how to verify container image at runtime using
+    policy-controller by @eiffel-fl in #2675
+  * docs: Fix instructions to verify container image by
+    @mauriciovasquezbernal in #2711
+  * install-kubernetes.md: Fix and update table of contents by
+    @burak-ok in #2749
+  * examples: Move gadgets to builtin-gadgets by
+    @mauriciovasquezbernal in #2769
+  Testing and Continuous Integration
+  * release: automatically update artifact hub version by @alban in
+    #2681
+  * integration: Separate and simplify container-related stuff by
+    @blanquicet in #2666
+  * ci: Add wait to ensure GKE clusters are deleted by
+    @mqasimsarfraz in #2682
+  * ci/lint: Skip package cache by @burak-ok in #2694
+  * Avoid repeated code on inspektor-gadget and kubectl-gadget
+    integration tests by @pawarpranav83 in #2450
+  * ci: Check that metadata file is updated to
+    build-and-push-gadgets by @mauriciovasquezbernal in #2702
+  * Testing package for image-based gadgets by @pawarpranav83 in
+    #2607
+  * ci: Always build helper images on main and release branches by
+    @mauriciovasquezbernal in #2737
+  * integration: Add timestamp to Run/Start/Stop by @burak-ok in
+    #2661
+  * gadgets/trace_open/test: Verify container name and ID by
+    @blanquicet in #2759
+  * ci: Add workflow to clean eks resources by @burak-ok in #2686
+  * test-integration-eks: Fix missing quotes + define explicit
+    timeformat by @burak-ok in #2777
+  * eks-cleanup: Don't error when stack can't be deleted by
+    @burak-ok in #2784
+  * TestRunTraceOOMKill: Add sleep after starting ig/kubectl-gadget
+    by @burak-ok in #2785
+  * integration: Logging timestamp before calling step.Stop by
+    @burak-ok in #2790
+  * tools: Rewrite check-readme in go by @mauriciovasquezbernal in
+    #2786
+
+-------------------------------------------------------------------
+Thu Apr 25 18:42:39 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package inspektor-gadget: eBPF tool and systems inspection
+  framework for Kubernetes, containers and Linux hosts
