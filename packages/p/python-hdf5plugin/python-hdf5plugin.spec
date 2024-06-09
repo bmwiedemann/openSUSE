@@ -21,32 +21,34 @@ Name:           python-hdf5plugin
 Version:        4.4.0
 Release:        0
 Summary:        Compression filters for h5py
-License:        MIT AND BSD-2-Clause AND BSD-3-Clause AND CC-BY-3.0 AND Zlib
+License:        BSD-2-Clause AND MIT AND BSD-3-Clause AND CC-BY-3.0 AND Zlib
 URL:            https://github.com/silx-kit/hdf5plugin
 Source:         https://files.pythonhosted.org/packages/source/h/hdf5plugin/hdf5plugin-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE hdf5plugin-system-libs.patch code@bnavigator.de -- debundle as much as we can, disable SSE3 and AVX512
 Patch0:         hdf5plugin-system-libs.patch
+# PATCH-FIX-UPSTREAM Fix warnings related to const for blosc_filter.c
+Patch1:         hdf5plugin-fix-gcc14.patch
 BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module blosc2}
 BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module blosc2}
 BuildRequires:  %{python_module py-cpuinfo >= 8.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel >= 0.34.0}
 BuildRequires:  fdupes
-BuildRequires:  pkgconfig
 BuildRequires:  hdf5-devel
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(blosc)
 BuildRequires:  pkgconfig(blosc2)
 BuildRequires:  pkgconfig(bzip2)
 # Cannot unbundle charls: fcidecomp expects charls < 2 with interface.h
 # BuildRequires:  pkgconfig(charls)
 BuildRequires:  pkgconfig(libzstd)
-BuildRequires:  pkgconfig(liblz4)
-BuildRequires:  pkgconfig(zlib)
-BuildRequires:  pkgconfig(snappy)
 BuildRequires:  c++_compiler
 BuildRequires:  python-rpm-macros
+BuildRequires:  pkgconfig(liblz4)
+BuildRequires:  pkgconfig(snappy)
+BuildRequires:  pkgconfig(zlib)
 Requires:       python-h5py
 # not for 32-bit
 ExcludeArch:    %ix86 %arm

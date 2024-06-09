@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  7 10:13:42 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Cherry-pick upstream patch to fix build with GCC 14
+  * hdf5plugin-fix-gcc14.patch
+
+-------------------------------------------------------------------
 Fri Mar  1 18:05:32 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v4.4.0 required by python-fabio

@@ -1,0 +1,24 @@
+From 526e3f40420abbdef7e34f4fd01be97eb405bec9 Mon Sep 17 00:00:00 2001
+From: matchy233 <matchy233@gmail.com>
+Date: Fri, 17 Jun 2022 00:53:53 +0900
+Subject: [PATCH] Fix warnings related to const for blosc_filter.c
+
+---
+ src/blosc_filter.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/hdf5-blosc/src/blosc_filter.c b/src/hdf5-blosc/src/blosc_filter.c
+index bfd8c3e..a099e2d 100644
+--- a/src/hdf5-blosc/src/blosc_filter.c
++++ b/src/hdf5-blosc/src/blosc_filter.c
+@@ -155,8 +155,8 @@ size_t blosc_filter(unsigned flags, size_t cd_nelmts,
+   int doshuffle = 1;             /* Shuffle default */
+   int compcode;                  /* Blosc compressor */
+   int code;
+-  char* compname = "blosclz";    /* The compressor by default */
+-  char* complist;
++  const char* compname = "blosclz";    /* The compressor by default */
++  const char* complist;
+   char errmsg[256];
+ 
+   /* Filter params that are always set */
