@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jun 07 19:38:02 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.4.2:
+  * fix(pdb): fix nil pointer in pdb when selector.matchLabels is
+    nil (#297)
+  * style: add GitHub action to validate exceptions JSON sorting
+    (#295)
+  * feat: add helm chart testing (#293)
+  * fix(helm): Add missing labels key in metadata (#292)
+  * feat: add AWS EKS defaults (#291)
+  * chore: Add 'kor' to .gitignore (#290)
+  * Feat: add failed jobs as unused (#283)
+  * docs: add values.yaml descriptions to README.md (#281)
+  * chore(pull_request_template): Update PR template (#282)
+  * chore(charts): run helm-docs (#280)
+  * feat: add K3S exceptions (#270)
+  * fix(formatOutput): fix spacing between tables (#269)
+
+-------------------------------------------------------------------
 Thu May 23 19:44:30 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.4.1:

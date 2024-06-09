@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kor
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        Tool to discover unused Kubernetes Resources
 License:        MIT
