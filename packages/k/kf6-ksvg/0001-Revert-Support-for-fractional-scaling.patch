@@ -1,0 +1,607 @@
+From 42fd5bfb92893cd6e90e7ea0b88e33f4636d2ebf Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sun, 9 Jun 2024 21:42:10 +0200
+Subject: [PATCH] Revert "Support for fractional scaling"
+
+This reverts commit 3dd28b0640d2c613654f992ad3453a0b92beebe1.
+---
+ src/declarativeimports/framesvgitem.cpp |   9 ++-
+ src/declarativeimports/svgitem.cpp      |   7 +-
+ src/ksvg/framesvg.cpp                   | 102 ++++++++++--------------
+ src/ksvg/private/framesvg_helpers.h     |  22 ++---
+ src/ksvg/private/framesvg_p.h           |  62 +++++++-------
+ src/ksvg/private/svg_p.h                |   6 +-
+ src/ksvg/svg.cpp                        |  27 ++++---
+ 7 files changed, 115 insertions(+), 120 deletions(-)
+
+diff --git a/src/declarativeimports/framesvgitem.cpp b/src/declarativeimports/framesvgitem.cpp
+index 56c2b3a8..678bdcbe 100644
+--- a/src/declarativeimports/framesvgitem.cpp
++++ b/src/declarativeimports/framesvgitem.cpp
+@@ -122,7 +122,7 @@ public:
+ 
+     void reposition(const QRect &frameGeometry, QSize &fullSize)
+     {
+-        QRectF nodeRect = FrameSvgHelpers::sectionRect(m_border, frameGeometry, fullSize);
++        QRect nodeRect = FrameSvgHelpers::sectionRect(m_border, frameGeometry, fullSize);
+ 
+         // ensure we're not passing a weird rectangle to updateTexturedRectGeometry
+         if (!nodeRect.isValid() || nodeRect.isEmpty()) {
+@@ -152,7 +152,7 @@ public:
+             QString elementId = prefix + FrameSvgHelpers::borderToElementId(m_border);
+ 
+             // re-render the SVG at new size
+-            updateTexture(nodeRect.size().toSize(), elementId);
++            updateTexture(nodeRect.size(), elementId);
+             textureRect = texture()->normalizedTextureSubRect();
+         } else if (texture()) { // for fast stretch.
+             textureRect = texture()->normalizedTextureSubRect();
+@@ -726,7 +726,10 @@ void FrameSvgItem::componentComplete()
+ 
+ void FrameSvgItem::updateDevicePixelRatio()
+ {
+-    const auto newDevicePixelRatio = std::max<qreal>(1.0, (window() ? window()->devicePixelRatio() : qApp->devicePixelRatio()));
++    // devicepixelratio is always set integer in the svg, so needs at least 192dpi to double up.
++    //(it needs to be integer to have lines contained inside a svg piece to keep being pixel aligned)
++    const auto newDevicePixelRatio = std::max<qreal>(1.0, floor(window() ? window()->devicePixelRatio() : qApp->devicePixelRatio()));
++
+     if (newDevicePixelRatio != m_frameSvg->devicePixelRatio()) {
+         m_frameSvg->setDevicePixelRatio(newDevicePixelRatio);
+         m_textureChanged = true;
+diff --git a/src/declarativeimports/svgitem.cpp b/src/declarativeimports/svgitem.cpp
+index bec45330..aa1f2a26 100644
+--- a/src/declarativeimports/svgitem.cpp
++++ b/src/declarativeimports/svgitem.cpp
+@@ -16,6 +16,8 @@
+ 
+ #include "managedtexturenode.h"
+ 
++#include <cmath> //floor()
++
+ #include <Kirigami/Platform/PlatformTheme>
+ #include <debug_p.h>
+ 
+@@ -265,7 +267,10 @@ void SvgItem::geometryChange(const QRectF &newGeometry, const QRectF &oldGeometr
+ 
+ void SvgItem::updateDevicePixelRatio()
+ {
+-    const auto newDevicePixelRatio = std::max<qreal>(1.0, (window() ? window()->devicePixelRatio() : qApp->devicePixelRatio()));
++    // devicepixelratio is always set integer in the svg, so needs at least 192dpi to double up.
++    //(it needs to be integer to have lines contained inside a svg piece to keep being pixel aligned)
++    const auto newDevicePixelRatio = std::max<qreal>(1.0, floor(window() ? window()->devicePixelRatio() : qApp->devicePixelRatio()));
++
+     if (newDevicePixelRatio != m_svg->devicePixelRatio()) {
+         m_svg->setDevicePixelRatio(newDevicePixelRatio);
+         m_textureChanged = true;
+diff --git a/src/ksvg/framesvg.cpp b/src/ksvg/framesvg.cpp
+index c1d22b1a..ecb5f5b8 100644
+--- a/src/ksvg/framesvg.cpp
++++ b/src/ksvg/framesvg.cpp
+@@ -15,7 +15,7 @@
+ #include <QCryptographicHash>
+ #include <QPainter>
+ #include <QRegion>
+-#include <QSizeF>
++#include <QSize>
+ #include <QStringBuilder>
+ #include <QTimer>
+ 
+@@ -188,7 +188,7 @@ void FrameSvg::resizeFrame(const QSizeF &size)
+ QSizeF FrameSvg::frameSize() const
+ {
+     if (!d->frame) {
+-        return QSizeF(-1, -1);
++        return QSize(-1, -1);
+     } else {
+         return d->frameSize(d->frame.data());
+     }
+@@ -478,6 +478,9 @@ QPixmap FrameSvgPrivate::alphaMask()
+ 
+     if (maskFrame->cachedBackground.isNull()) {
+         generateBackground(maskFrame);
++        // When we take the maskFrame from cache, the pixel ratio gets
++        // reset to 1
++        maskFrame->cachedBackground.setDevicePixelRatio(q->devicePixelRatio());
+     }
+ 
+     return maskFrame->cachedBackground;
+@@ -536,8 +539,8 @@ void FrameSvgPrivate::generateBackground(const QSharedPointer<FrameData> &frame)
+     }
+ 
+     // Overlays
+-    QSizeF overlaySize;
+-    QPointF actualOverlayPos = QPointF(0, 0);
++    QSize overlaySize;
++    QPoint actualOverlayPos = QPoint(0, 0);
+     if (overlayAvailable && !overlayCached) {
+         overlaySize = q->elementSize(frame->prefix % QLatin1String("overlay")).toSize();
+ 
+@@ -563,13 +566,13 @@ void FrameSvgPrivate::generateBackground(const QSharedPointer<FrameData> &frame)
+         // Tiling?
+         if (q->hasElement(frame->prefix % QLatin1String("hint-overlay-tile-horizontal"))
+             || q->hasElement(frame->prefix % QLatin1String("hint-overlay-tile-vertical"))) {
+-            QSizeF s = q->size().toSize();
++            QSize s = q->size().toSize();
+             q->resize(q->elementSize(frame->prefix % QLatin1String("overlay")));
+ 
+-            overlayPainter.drawTiledPixmap(QRectF(QPointF(0, 0), overlaySize), q->pixmap(frame->prefix % QLatin1String("overlay")));
++            overlayPainter.drawTiledPixmap(QRect(QPoint(0, 0), overlaySize), q->pixmap(frame->prefix % QLatin1String("overlay")));
+             q->resize(s);
+         } else {
+-            q->paint(&overlayPainter, QRectF(actualOverlayPos, overlaySize), frame->prefix % QLatin1String("overlay"));
++            q->paint(&overlayPainter, QRect(actualOverlayPos, overlaySize), frame->prefix % QLatin1String("overlay"));
+         }
+ 
+         overlayPainter.end();
+@@ -582,14 +585,14 @@ void FrameSvgPrivate::generateBackground(const QSharedPointer<FrameData> &frame)
+     if (!overlay.isNull()) {
+         QPainter p(&frame->cachedBackground);
+         p.setCompositionMode(QPainter::CompositionMode_SourceOver);
+-        p.drawPixmap(actualOverlayPos, overlay, QRectF(actualOverlayPos, overlaySize));
++        p.drawPixmap(actualOverlayPos, overlay, QRect(actualOverlayPos, overlaySize));
+     }
+ }
+ 
+ void FrameSvgPrivate::generateFrameBackground(const QSharedPointer<FrameData> &frame)
+ {
+     // qCDebug(LOG_KSVG) << "generating background";
+-    const QSizeF size = frameSize(frame) * q->devicePixelRatio();
++    const QSize size = frameSize(frame).toSize() * q->devicePixelRatio();
+ 
+     if (!size.isValid()) {
+ #ifndef NDEBUG
+@@ -602,14 +605,13 @@ void FrameSvgPrivate::generateFrameBackground(const QSharedPointer<FrameData> &f
+         return;
+     }
+ 
+-    // Don't cut away pieces of the frame
+-    frame->cachedBackground = QPixmap(QSize(std::ceil(size.width()), std::ceil(size.height())));
++    frame->cachedBackground = QPixmap(size);
+     frame->cachedBackground.fill(Qt::transparent);
+     QPainter p(&frame->cachedBackground);
+     p.setCompositionMode(QPainter::CompositionMode_Source);
+     p.setRenderHint(QPainter::SmoothPixmapTransform);
+ 
+-    QRectF contentRect = contentGeometry(frame, size);
++    QRect contentRect = contentGeometry(frame, size);
+     paintCenter(p, frame, contentRect, size);
+ 
+     paintCorner(p, frame, FrameSvg::LeftBorder | FrameSvg::TopBorder, contentRect);
+@@ -618,26 +620,25 @@ void FrameSvgPrivate::generateFrameBackground(const QSharedPointer<FrameData> &f
+     paintCorner(p, frame, FrameSvg::RightBorder | FrameSvg::BottomBorder, contentRect);
+ 
+     // Sides
+-    const qreal leftHeight = q->elementSize(frame->prefix % QLatin1String("left")).height();
+-    paintBorder(p, frame, FrameSvg::LeftBorder, QSizeF(frame->leftWidth, leftHeight) * q->devicePixelRatio(), contentRect);
+-    const qreal rightHeight = q->elementSize(frame->prefix % QLatin1String("right")).height();
+-    paintBorder(p, frame, FrameSvg::RightBorder, QSizeF(frame->rightWidth, rightHeight) * q->devicePixelRatio(), contentRect);
+-
+-    const qreal topWidth = q->elementSize(frame->prefix % QLatin1String("top")).width();
+-    paintBorder(p, frame, FrameSvg::TopBorder, QSizeF(topWidth, frame->topHeight) * q->devicePixelRatio(), contentRect);
+-    const qreal bottomWidth = q->elementSize(frame->prefix % QLatin1String("bottom")).width();
+-    paintBorder(p, frame, FrameSvg::BottomBorder, QSizeF(bottomWidth, frame->bottomHeight) * q->devicePixelRatio(), contentRect);
++    const int leftHeight = q->elementSize(frame->prefix % QLatin1String("left")).height();
++    paintBorder(p, frame, FrameSvg::LeftBorder, QSize(frame->leftWidth, leftHeight) * q->devicePixelRatio(), contentRect);
++    const int rightHeight = q->elementSize(frame->prefix % QLatin1String("right")).height();
++    paintBorder(p, frame, FrameSvg::RightBorder, QSize(frame->rightWidth, rightHeight) * q->devicePixelRatio(), contentRect);
++
++    const int topWidth = q->elementSize(frame->prefix % QLatin1String("top")).width();
++    paintBorder(p, frame, FrameSvg::TopBorder, QSize(topWidth, frame->topHeight) * q->devicePixelRatio(), contentRect);
++    const int bottomWidth = q->elementSize(frame->prefix % QLatin1String("bottom")).width();
++    paintBorder(p, frame, FrameSvg::BottomBorder, QSize(bottomWidth, frame->bottomHeight) * q->devicePixelRatio(), contentRect);
+     p.end();
+ 
+-    // Set the devicePixelRatio only at the end, drawing all happened in device pixels
+     frame->cachedBackground.setDevicePixelRatio(q->devicePixelRatio());
+ }
+ 
+-QRectF FrameSvgPrivate::contentGeometry(const QSharedPointer<FrameData> &frame, const QSizeF &size) const
++QRect FrameSvgPrivate::contentGeometry(const QSharedPointer<FrameData> &frame, const QSize &size) const
+ {
+-    const QSizeF contentSize(size.width() - frame->leftWidth * q->devicePixelRatio() - frame->rightWidth * q->devicePixelRatio(),
+-                             size.height() - frame->topHeight * q->devicePixelRatio() - frame->bottomHeight * q->devicePixelRatio());
+-    QRectF contentRect(QPointF(0, 0), contentSize);
++    const QSize contentSize(size.width() - frame->leftWidth * q->devicePixelRatio() - frame->rightWidth * q->devicePixelRatio(),
++                            size.height() - frame->topHeight * q->devicePixelRatio() - frame->bottomHeight * q->devicePixelRatio());
++    QRect contentRect(QPoint(0, 0), contentSize);
+     if (frame->enabledBorders & FrameSvg::LeftBorder && q->hasElement(frame->prefix % QLatin1String("left"))) {
+         contentRect.translate(frame->leftWidth * q->devicePixelRatio(), 0);
+     }
+@@ -659,7 +660,7 @@ void FrameSvgPrivate::updateFrameData(uint lastModified, UpdateType updateType)
+ 
+         const QString oldPath = fd->imagePath;
+         const FrameSvg::EnabledBorders oldBorders = fd->enabledBorders;
+-        const QSizeF currentSize = fd->frameSize;
++        const QSize currentSize = fd->frameSize;
+ 
+         fd->enabledBorders = enabledBorders;
+         fd->frameSize = pendingFrameSize;
+@@ -716,28 +717,27 @@ void FrameSvgPrivate::updateFrameData(uint lastModified, UpdateType updateType)
+     }
+ }
+ 
+-void FrameSvgPrivate::paintCenter(QPainter &p, const QSharedPointer<FrameData> &frame, const QRectF &contentRect, const QSizeF &fullSize)
++void FrameSvgPrivate::paintCenter(QPainter &p, const QSharedPointer<FrameData> &frame, const QRect &contentRect, const QSize &fullSize)
+ {
+-    // fullSize and contentRect are in device pixels
+     if (!contentRect.isEmpty()) {
+         const QString centerElementId = frame->prefix % QLatin1String("center");
+         if (frame->tileCenter) {
+-            QSizeF centerTileSize = q->elementSize(centerElementId);
+-            QPixmap center(centerTileSize.toSize());
++            QSize centerTileSize = q->elementSize(centerElementId).toSize();
++            QPixmap center(centerTileSize);
+             center.fill(Qt::transparent);
+ 
+             QPainter centerPainter(&center);
+             centerPainter.setCompositionMode(QPainter::CompositionMode_Source);
+-            q->paint(&centerPainter, QRectF(QPointF(0, 0), centerTileSize), centerElementId);
++            q->paint(&centerPainter, QRect(QPoint(0, 0), centerTileSize), centerElementId);
+ 
+             if (frame->composeOverBorder) {
+-                p.drawTiledPixmap(QRectF(QPointF(0, 0), fullSize), center);
++                p.drawTiledPixmap(QRect(QPoint(0, 0), fullSize), center);
+             } else {
+                 p.drawTiledPixmap(FrameSvgHelpers::sectionRect(FrameSvg::NoBorder, contentRect, fullSize * q->devicePixelRatio()), center);
+             }
+         } else {
+             if (frame->composeOverBorder) {
+-                q->paint(&p, QRectF(QPointF(0, 0), fullSize), centerElementId);
++                q->paint(&p, QRect(QPoint(0, 0), fullSize), centerElementId);
+             } else {
+                 q->paint(&p, FrameSvgHelpers::sectionRect(FrameSvg::NoBorder, contentRect, fullSize * q->devicePixelRatio()), centerElementId);
+             }
+@@ -746,7 +746,7 @@ void FrameSvgPrivate::paintCenter(QPainter &p, const QSharedPointer<FrameData> &
+ 
+     if (frame->composeOverBorder) {
+         p.setCompositionMode(QPainter::CompositionMode_DestinationIn);
+-        p.drawPixmap(QRectF(QPointF(0, 0), fullSize), alphaMask(), QRectF(QPointF(0, 0), alphaMask().size()));
++        p.drawPixmap(QRect(QPoint(0, 0), fullSize), alphaMask());
+         p.setCompositionMode(QPainter::CompositionMode_SourceOver);
+     }
+ }
+@@ -754,51 +754,35 @@ void FrameSvgPrivate::paintCenter(QPainter &p, const QSharedPointer<FrameData> &
+ void FrameSvgPrivate::paintBorder(QPainter &p,
+                                   const QSharedPointer<FrameData> &frame,
+                                   const FrameSvg::EnabledBorders borders,
+-                                  const QSizeF &size,
+-                                  const QRectF &contentRect) const
++                                  const QSize &size,
++                                  const QRect &contentRect) const
+ {
+-    // size and contentRect are in device pixels
+     QString side = frame->prefix % FrameSvgHelpers::borderToElementId(borders);
+     if (frame->enabledBorders & borders && q->hasElement(side) && !size.isEmpty()) {
+         if (frame->stretchBorders) {
+             q->paint(&p, FrameSvgHelpers::sectionRect(borders, contentRect, frame->frameSize * q->devicePixelRatio()), side);
+         } else {
+-            QSize grownSize(std::ceil(size.width()), std::ceil(size.height()));
+-            QPixmap px(grownSize);
+-            // QPixmap px(QSize(std::ceil(size.width()), std::ceil(size.height())));
++            QPixmap px(size);
+             px.fill(Qt::transparent);
+ 
+             QPainter sidePainter(&px);
+             sidePainter.setCompositionMode(QPainter::CompositionMode_Source);
+-            // A QRect as we have to exactly fill a QPixmap of integer size, prefer going slightly outside it to not have empty edges in the pixmap to tile
+-            q->paint(&sidePainter, QRect(QPoint(0, 0), grownSize), side);
++            q->paint(&sidePainter, QRect(QPoint(0, 0), size), side);
+ 
+-            // We are composing QPixmaps here, so all objects with integer size
+-            // Rounding the position and ceiling the size is the way that gives better tiled results
+-            auto r = FrameSvgHelpers::sectionRect(borders, contentRect, frame->frameSize * q->devicePixelRatio());
+-            r.setTopLeft(r.topLeft().toPoint());
+-            r.setSize(QSizeF(std::ceil(r.size().width()), std::ceil(r.size().height())));
+-
+-            p.drawTiledPixmap(r, px);
++            p.drawTiledPixmap(FrameSvgHelpers::sectionRect(borders, contentRect, frame->frameSize * q->devicePixelRatio()), px);
+         }
+     }
+ }
+ 
+-void FrameSvgPrivate::paintCorner(QPainter &p, const QSharedPointer<FrameData> &frame, KSvg::FrameSvg::EnabledBorders border, const QRectF &contentRect) const
++void FrameSvgPrivate::paintCorner(QPainter &p, const QSharedPointer<FrameData> &frame, KSvg::FrameSvg::EnabledBorders border, const QRect &contentRect) const
+ {
+-    // contentRect is in device pixels
+     // Draw the corner only if both borders in both directions are enabled.
+     if ((frame->enabledBorders & border) != border) {
+         return;
+     }
+     const QString corner = frame->prefix % FrameSvgHelpers::borderToElementId(border);
+     if (q->hasElement(corner)) {
+-        auto r = FrameSvgHelpers::sectionRect(border, contentRect, frame->frameSize * q->devicePixelRatio());
+-        // We are composing QPixmaps here, so all objects with integer size
+-        // Rounding the position and ceiling the size is the way that gives better tiled results
+-        r.setTopLeft(r.topLeft().toPoint());
+-        r.setSize(QSizeF(std::ceil(r.size().width()), std::ceil(r.size().height())));
+-        q->paint(&p, r.toRect(), corner);
++        q->paint(&p, FrameSvgHelpers::sectionRect(border, contentRect, frame->frameSize * q->devicePixelRatio()), corner);
+     }
+ }
+ 
+@@ -846,7 +830,7 @@ void FrameSvgPrivate::updateSizes(FrameData *frame) const
+     // qCDebug(LOG_KSVG) << "!!!!!!!!!!!!!!!!!!!!!! updating sizes" << prefix;
+     Q_ASSERT(frame);
+ 
+-    QSizeF s = q->size();
++    QSize s = q->size().toSize();
+     q->resize();
+     if (!frame->cachedBackground.isNull()) {
+         frame->cachedBackground = QPixmap();
+diff --git a/src/ksvg/private/framesvg_helpers.h b/src/ksvg/private/framesvg_helpers.h
+index 95cd6ba8..691aa3c1 100644
+--- a/src/ksvg/private/framesvg_helpers.h
++++ b/src/ksvg/private/framesvg_helpers.h
+@@ -45,7 +45,7 @@ QString borderToElementId(FrameSvg::EnabledBorders borders)
+ /**
+  * @returns the suggested geometry for the @p borders given a @p fullSize frame size and a @p contentRect
+  */
+-QRectF sectionRect(KSvg::FrameSvg::EnabledBorders borders, const QRectF &contentRect, const QSizeF &fullSize)
++QRect sectionRect(KSvg::FrameSvg::EnabledBorders borders, const QRect &contentRect, const QSize &fullSize)
+ {
+     // don't use QRect corner methods here, they have semantics that might come as unexpected.
+     // prefer constructing the points explicitly. e.g. from QRect::topRight docs:
+@@ -54,26 +54,26 @@ QRectF sectionRect(KSvg::FrameSvg::EnabledBorders borders, const QRectF &content
+     if (borders == FrameSvg::NoBorder) {
+         return contentRect;
+     } else if (borders == FrameSvg::TopBorder) {
+-        return QRectF(QPointF(contentRect.left(), 0), QSizeF(contentRect.width(), contentRect.top()));
++        return QRect(QPoint(contentRect.left(), 0), QSize(contentRect.width(), contentRect.top()));
+     } else if (borders == FrameSvg::BottomBorder) {
+-        return QRectF(QPointF(contentRect.left(), contentRect.bottom()), QSizeF(contentRect.width(), fullSize.height() - contentRect.bottom()));
++        return QRect(QPoint(contentRect.left(), contentRect.bottom() + 1), QSize(contentRect.width(), fullSize.height() - contentRect.bottom() - 1));
+     } else if (borders == FrameSvg::LeftBorder) {
+-        return QRectF(QPointF(0, contentRect.top()), QSizeF(contentRect.left(), contentRect.height()));
++        return QRect(QPoint(0, contentRect.top()), QSize(contentRect.left(), contentRect.height()));
+     } else if (borders == FrameSvg::RightBorder) {
+-        return QRectF(QPointF(contentRect.right(), contentRect.top()), QSizeF(fullSize.width() - contentRect.right(), contentRect.height()));
++        return QRect(QPoint(contentRect.right() + 1, contentRect.top()), QSize(fullSize.width() - contentRect.right() - 1, contentRect.height()));
+     } else if (borders == (FrameSvg::TopBorder | FrameSvg::LeftBorder)) {
+-        return QRectF(QPointF(0, 0), QSizeF(contentRect.left(), contentRect.top()));
++        return QRect(QPoint(0, 0), QSize(contentRect.left(), contentRect.top()));
+     } else if (borders == (FrameSvg::TopBorder | FrameSvg::RightBorder)) {
+-        return QRectF(QPointF(contentRect.right(), 0), QSizeF(fullSize.width() - contentRect.right(), contentRect.top()));
++        return QRect(QPoint(contentRect.right() + 1, 0), QSize(fullSize.width() - contentRect.right() - 1, contentRect.top()));
+     } else if (borders == (FrameSvg::BottomBorder | FrameSvg::LeftBorder)) {
+-        return QRectF(QPointF(0, contentRect.bottom()), QSizeF(contentRect.left(), fullSize.height() - contentRect.bottom()));
++        return QRect(QPoint(0, contentRect.bottom() + 1), QSize(contentRect.left(), fullSize.height() - contentRect.bottom() - 1));
+     } else if (borders == (FrameSvg::BottomBorder | FrameSvg::RightBorder)) {
+-        return QRectF(QPointF(contentRect.right(), contentRect.bottom()),
+-                      QSizeF(fullSize.width() - contentRect.right(), fullSize.height() - contentRect.bottom()));
++        return QRect(QPoint(contentRect.right() + 1, contentRect.bottom() + 1),
++                     QSize(fullSize.width() - contentRect.right() - 1, fullSize.height() - contentRect.bottom() - 1));
+     } else {
+         qWarning() << "unrecognized border" << borders;
+     }
+-    return QRectF();
++    return QRect();
+ }
+ 
+ }
+diff --git a/src/ksvg/private/framesvg_p.h b/src/ksvg/private/framesvg_p.h
+index 463b2ee4..2b9e881d 100644
+--- a/src/ksvg/private/framesvg_p.h
++++ b/src/ksvg/private/framesvg_p.h
+@@ -78,39 +78,38 @@ public:
+     static const int MAX_CACHED_MASKS = 10;
+     uint lastModified = 0;
+ 
+-    // Those sizes are in logical pixels
+-    QSizeF frameSize;
++    QSize frameSize;
+     uint cacheId;
+ 
+     // measures
+-    qreal topHeight;
+-    qreal leftWidth;
+-    qreal rightWidth;
+-    qreal bottomHeight;
++    int topHeight;
++    int leftWidth;
++    int rightWidth;
++    int bottomHeight;
+ 
+     // margins, are equal to the measures by default
+-    qreal topMargin;
+-    qreal leftMargin;
+-    qreal rightMargin;
+-    qreal bottomMargin;
++    int topMargin;
++    int leftMargin;
++    int rightMargin;
++    int bottomMargin;
+ 
+     // measures
+-    qreal fixedTopHeight;
+-    qreal fixedLeftWidth;
+-    qreal fixedRightWidth;
+-    qreal fixedBottomHeight;
++    int fixedTopHeight;
++    int fixedLeftWidth;
++    int fixedRightWidth;
++    int fixedBottomHeight;
+ 
+     // margins, are equal to the measures by default
+-    qreal fixedTopMargin;
+-    qreal fixedLeftMargin;
+-    qreal fixedRightMargin;
+-    qreal fixedBottomMargin;
++    int fixedTopMargin;
++    int fixedLeftMargin;
++    int fixedRightMargin;
++    int fixedBottomMargin;
+ 
+-    // margins, we only have the hqreal for insets
+-    qreal insetTopMargin;
+-    qreal insetLeftMargin;
+-    qreal insetRightMargin;
+-    qreal insetBottomMargin;
++    // margins, we only have the hint for insets
++    int insetTopMargin;
++    int insetLeftMargin;
++    int insetRightMargin;
++    int insetBottomMargin;
+ 
+     // size of the svg where the size of the "center"
+     // element is contentWidth x contentHeight
+@@ -159,17 +158,14 @@ public:
+         return frameSize(frame.data());
+     }
+     QSizeF frameSize(FrameData *frame) const;
+-
+-    // paintBorder, paintCorder and paintCenter sizes are in device pixels
+     void paintBorder(QPainter &p,
+                      const QSharedPointer<FrameData> &frame,
+                      KSvg::FrameSvg::EnabledBorders border,
+-                     const QSizeF &originalSize,
+-                     const QRectF &output) const;
+-    void paintCorner(QPainter &p, const QSharedPointer<FrameData> &frame, KSvg::FrameSvg::EnabledBorders border, const QRectF &output) const;
+-    void paintCenter(QPainter &p, const QSharedPointer<FrameData> &frame, const QRectF &contentRect, const QSizeF &fullSize);
+-
+-    QRectF contentGeometry(const QSharedPointer<FrameData> &frame, const QSizeF &size) const;
++                     const QSize &originalSize,
++                     const QRect &output) const;
++    void paintCorner(QPainter &p, const QSharedPointer<FrameData> &frame, KSvg::FrameSvg::EnabledBorders border, const QRect &output) const;
++    void paintCenter(QPainter &p, const QSharedPointer<FrameData> &frame, const QRect &contentRect, const QSize &fullSize);
++    QRect contentGeometry(const QSharedPointer<FrameData> &frame, const QSize &size) const;
+     void updateFrameData(uint lastModified, UpdateType updateType = UpdateFrameAndMargins);
+     QSharedPointer<FrameData> lookupOrCreateMaskFrame(const QSharedPointer<FrameData> &frame, const QString &maskPrefix, const QString &maskRequestedPrefix);
+ 
+@@ -181,7 +177,7 @@ public:
+ 
+     FrameSvg *const q;
+ 
+-    QPointF overlayPos;
++    QPoint overlayPos;
+ 
+     QSharedPointer<FrameData> frame;
+     QSharedPointer<FrameData> maskFrame;
+@@ -189,7 +185,7 @@ public:
+     // those can differ from frame->enabledBorders if we are in a transition
+     FrameSvg::EnabledBorders enabledBorders;
+     // this can differ from frame->frameSize if we are in a transition
+-    QSizeF pendingFrameSize;
++    QSize pendingFrameSize;
+ 
+     static QHash<ImageSetPrivate *, QHash<uint, QWeakPointer<FrameData>>> s_sharedFrames;
+ 
+diff --git a/src/ksvg/private/svg_p.h b/src/ksvg/private/svg_p.h
+index 818a4777..bb80c753 100644
+--- a/src/ksvg/private/svg_p.h
++++ b/src/ksvg/private/svg_p.h
+@@ -138,8 +138,8 @@ public:
+     void setNaturalSize(const QString &path, const QSizeF &size);
+     QSizeF naturalSize(const QString &path);
+ 
+-    QList<QSizeF> sizeHintsForId(const QString &path, const QString &id);
+-    void insertSizeHintForId(const QString &path, const QString &id, const QSizeF &size);
++    QList<QSize> sizeHintsForId(const QString &path, const QString &id);
++    void insertSizeHintForId(const QString &path, const QString &id, const QSize &size);
+ 
+     QString iconThemePath();
+     void setIconThemePath(const QString &path);
+@@ -166,7 +166,7 @@ private:
+      */
+     QHash<size_t, QRectF> m_localRectCache;
+     QHash<QString, QSet<unsigned int>> m_invalidElements;
+-    QHash<QString, QList<QSizeF>> m_sizeHintsForId;
++    QHash<QString, QList<QSize>> m_sizeHintsForId;
+     QHash<QString, unsigned int> m_lastModifiedTimes;
+ };
+ }
+diff --git a/src/ksvg/svg.cpp b/src/ksvg/svg.cpp
+index 1bdafd6b..01ce0581 100644
+--- a/src/ksvg/svg.cpp
++++ b/src/ksvg/svg.cpp
+@@ -272,7 +272,7 @@ void SvgRectsCache::dropImageFromCache(const QString &path)
+     QMetaObject::invokeMethod(m_configSyncTimer, qOverload<>(&QTimer::start));
+ }
+ 
+-QList<QSizeF> SvgRectsCache::sizeHintsForId(const QString &path, const QString &id)
++QList<QSize> SvgRectsCache::sizeHintsForId(const QString &path, const QString &id)
+ {
+     const QString pathId = path % id;
+ 
+@@ -280,7 +280,7 @@ QList<QSizeF> SvgRectsCache::sizeHintsForId(const QString &path, const QString &
+     if (it == m_sizeHintsForId.constEnd()) {
+         KConfigGroup imageGroup(m_svgElementsCache, path);
+         const QStringList &encoded = imageGroup.readEntry(id, QStringList());
+-        QList<QSizeF> sizes;
++        QList<QSize> sizes;
+         for (const auto &token : encoded) {
+             const auto &parts = token.split(QLatin1Char('x'));
+             if (parts.size() != 2) {
+@@ -298,10 +298,10 @@ QList<QSizeF> SvgRectsCache::sizeHintsForId(const QString &path, const QString &
+     return *it;
+ }
+ 
+-void SvgRectsCache::insertSizeHintForId(const QString &path, const QString &id, const QSizeF &size)
++void SvgRectsCache::insertSizeHintForId(const QString &path, const QString &id, const QSize &size)
+ {
+     // TODO: need to make this more efficient
+-    auto sizeListToString = [](const QList<QSizeF> &list) {
++    auto sizeListToString = [](const QList<QSize> &list) {
+         QString ret;
+         for (const auto &s : list) {
+             ret += QString::number(s.width()) % QLatin1Char('x') % QString::number(s.height()) % QLatin1Char(',');
+@@ -561,7 +561,7 @@ QPixmap SvgPrivate::findInCache(const QString &elementId, qreal ratio, const QSi
+     // Look at the size hinted elements and try to find the smallest one with an
+     // identical aspect ratio.
+     if (s.isValid() && !elementId.isEmpty()) {
+-        const QList<QSizeF> elementSizeHints = SvgRectsCache::instance()->sizeHintsForId(path, elementId);
++        const QList<QSize> elementSizeHints = SvgRectsCache::instance()->sizeHintsForId(path, elementId);
+ 
+         if (!elementSizeHints.isEmpty()) {
+             QSizeF bestFit(-1, -1);
+@@ -873,11 +873,18 @@ Svg::~Svg()
+ 
+ void Svg::setDevicePixelRatio(qreal ratio)
+ {
++    // be completely integer for now
++    // devicepixelratio is always set integer in the svg, so needs at least 192dpi to double up.
++    //(it needs to be integer to have lines contained inside a svg piece to keep being pixel aligned)
++    if (floor(d->devicePixelRatio) == floor(ratio)) {
++        return;
++    }
++
+     if (FrameSvg *f = qobject_cast<FrameSvg *>(this)) {
+         f->clearCache();
+     }
+ 
+-    d->devicePixelRatio = ratio;
++    d->devicePixelRatio = floor(ratio);
+ 
+     Q_EMIT repaintNeeded();
+ }
+@@ -905,7 +912,7 @@ QImage Svg::image(const QSize &size, const QString &elementID)
+ void Svg::paint(QPainter *painter, const QPointF &point, const QString &elementID)
+ {
+     Q_ASSERT(painter->device());
+-    const qreal ratio = painter->device()->devicePixelRatio();
++    const int ratio = painter->device()->devicePixelRatio();
+     QPixmap pix((elementID.isNull() || d->multipleImages) ? d->findInCache(elementID, ratio, size()) : d->findInCache(elementID, ratio));
+ 
+     if (pix.isNull()) {
+@@ -923,16 +930,16 @@ void Svg::paint(QPainter *painter, int x, int y, const QString &elementID)
+ void Svg::paint(QPainter *painter, const QRectF &rect, const QString &elementID)
+ {
+     Q_ASSERT(painter->device());
+-    const qreal ratio = painter->device()->devicePixelRatio();
++    const int ratio = painter->device()->devicePixelRatio();
+     QPixmap pix(d->findInCache(elementID, ratio, rect.size()));
+ 
+-    painter->drawPixmap(rect, pix, QRect(QPoint(0, 0), pix.size()));
++    painter->drawPixmap(QRectF(rect.topLeft(), rect.size()), pix, QRectF(QPointF(0, 0), pix.size()));
+ }
+ 
+ void Svg::paint(QPainter *painter, int x, int y, int width, int height, const QString &elementID)
+ {
+     Q_ASSERT(painter->device());
+-    const qreal ratio = painter->device()->devicePixelRatio();
++    const int ratio = painter->device()->devicePixelRatio();
+     QPixmap pix(d->findInCache(elementID, ratio, QSizeF(width, height)));
+     painter->drawPixmap(x, y, pix, 0, 0, pix.size().width(), pix.size().height());
+ }
+-- 
+2.45.1
+

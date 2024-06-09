@@ -35,6 +35,8 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Revert-Support-for-fractional-scaling.patch
 BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6Archive) >= %{_kf6_bugfix_version}

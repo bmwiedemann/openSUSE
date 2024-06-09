@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun  9 20:14:24 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to work around themes having incorrect fractional sizes
+  (kde#487625):
+  * 0001-Revert-Support-for-fractional-scaling.patch
+
+-------------------------------------------------------------------
 Wed Jun  5 10:11:56 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.3.0

@@ -31,4 +31,14 @@
     <comment>KDE Frameworks 6.3.0 (forwarded request 1178724 from krop)</comment>
     <requestid>1179302</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e44609f30cb6bfa551468af6effbaffd</srcmd5>
+    <version>6.3.0</version>
+    <time>1717964614</time>
+    <user>anag+factory</user>
+    <comment>- Add patch to work around themes having incorrect fractional sizes
+  (kde#487625):
+  * 0001-Revert-Support-for-fractional-scaling.patch (forwarded request 1179585 from Vogtinator)</comment>
+    <requestid>1179586</requestid>
+  </revision>
 </revisionlist>
