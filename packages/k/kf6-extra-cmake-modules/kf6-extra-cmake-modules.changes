@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun  5 10:11:18 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.3.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.3.0/
+- Changes since 6.2.0:
+  * Skip app template packaging when cross-compiling
+  * Remove explicit maintainer from metainfo
+  * ECMQueryQt: Provide better error message when Qt6 qpaths is not found
+
+-------------------------------------------------------------------
 Mon May  6 12:22:15 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.2.0
