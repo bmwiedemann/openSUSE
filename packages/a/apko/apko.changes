@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jun 07 19:38:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.14.8:
+  * Add expandapk.Split and use it
+  * Fix some lints carried over from go-apk
+  * update go-apk
+  * undo diff-causing change
+  * get outta here submodule
+  * rm pkg/apk
+  * go mod tidy
+  * go away
+  * goimports -local to make linter a little happier
+  * WIP: unsplit go-apk
+  * change deprecated flags
+  * build(deps): bump goreleaser/goreleaser-action from 5.1.0 to
+    6.0.0
+  * build(deps): bump github/codeql-action from 3.25.7 to 3.25.8
+  * add test that images with old packages can build
+  * build(deps): bump golang.org/x/sys from 0.20.0 to 0.21.0
+  * appease linter
+  * fix tests
+  * use latest go-apk
+  * enable per-host auth
+
+-------------------------------------------------------------------
 Sat Jun 01 09:23:29 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.14.7:
