@@ -338,4 +338,35 @@
     <comment></comment>
     <requestid>1177653</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>28f3935f1247300e3a5d9ba67282ea60</srcmd5>
+    <version>1.10.4</version>
+    <time>1717957349</time>
+    <user>anag+factory</user>
+    <comment>- Fix build. typo caused a misconfigure:
+  JULIA_CPU_TARGETS -&gt; JULIA_CPU_TARGET
+- Update ./disable-doc-gen-in-makefile.patch. Upstream has patched to allow offline
+  builds but added commands in the `doc/Makefile` that needs network.
+- Update to version 1.10.4:
+  * correctly track freed bytes in array_to_string
+  * Add inventory writing via DocumenterInventoryWritingBackport
+  * Overload Base.literal_pow for AbstractQ
+  * LinearAlgebra: Correct zero element in _generic_matvecmul! for block adj/trans
+  * set MAX_OS_WRITE on unix
+  * fix typo in gc_mark_memory8 when chunking a large array
+  * typeintersect: fix another stack overflow caused by circular constraints
+  * Fix an off-by-one error in interpreter's do_invoke
+  * Make TestLogger thread-safe (introduce a lock)
+  * Add a missing doc
+  * typeintersect: conservative typevar subtitution during `finish_unionall
+  * typeintersect: followup cleanup for the nothrow path of type instantiation
+  * merge backports for 1.10.4
+- Update description
+  * Julia now works as it follows closely with build sources with some exceptions.
+  * Recommend to use juliaup.
+  * Remove experimental. This works quite well now even with LinearAlgebra and
+    Sundials.
+</comment>
+    <requestid>1179409</requestid>
+  </revision>
 </revisionlist>

@@ -28,9 +28,9 @@
 
 # If not Tumbleweed. Leap 15.6 seems to have trouble with libpthread
 %if 0%{?suse_version} < 1600
-%global __julia_opts USE_BINARYBUILDER=0 USE_SYSTEM_CSL=1 USE_SYSTEM_LLVM=0 USE_SYSTEM_LLD=0 OPENBLAS_USE_THREAD=0 OPENBLAS_TARGET_ARCH=NEHALEM OPENBLAS_SYMBOLSUFFIX="%{?__isa_bits}_" OPENBLAS_LIBNAMESUFFIX="%{?__isa_bits}_" OPENBLAS_CFLAGS="${CFLAGS}" LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_ SUITESPARSE_LIB="-lumfpack64_ -lcholmod64_ -lamd64_ -lcamd64_ -lcolamd64_ -lspqr64_" USE_SYSTEM_LIBUNWIND=1 USE_SYSTEM_PCRE=0 USE_SYSTEM_BLAS=0 USE_SYSTEM_LAPACK=0 USE_SYSTEM_LIBBLASTRAMPOLINE=0 USE_SYSTEM_GMP=0 USE_SYSTEM_MPFR=0 USE_SYSTEM_LIBSUITESPARSE=0 USE_SYSTEM_SUITESPARSE=0 USE_INTEL_JITEVENTS=0 USE_SYSTEM_LIBWHICH=1 USE_SYSTEM_DSFMT=0 USE_SYSTEM_LIBUV=0 USE_SYSTEM_UTF8PROC=1 USE_SYSTEM_LIBGIT2=0 USE_SYSTEM_LIBSSH2=0 USE_SYSTEM_MBEDTLS=0 USE_SYSTEM_CURL=1 USE_SYSTEM_PATCHELF=1 USE_SYSTEM_ZLIB=1 USE_SYSTEM_P7ZIP=1 USE_SYSTEM_OPENLIBM=1 USE_BLAS64=1 JLDFLAGS="$LDFLAGS" USE_BINARYBUILDER_BLASTRAMPOLINE=0 USE_BINARYBUILDER_CURL=0 USE_BINARYBUILDER_DSFMT=0 USE_BINARYBUILDER_GMP=0 USE_BINARYBUILDER_LIBGIT2=0 USE_BINARYBUILDER_LIBSSH2=0 USE_BINARYBUILDER_LIBSUITESPARSE=0 USE_BINARYBUILDER_LIBTRACYCLIENT=0 USE_BINARYBUILDER_LIBUNWIND=0 USE_BINARYBUILDER_LIBUV=0 USE_BINARYBUILDER_LLVM=0 USE_BINARYBUILDER_MBEDTLS=0 USE_BINARYBUILDER_MPFR=0 USE_BINARYBUILDER_OPENBLAS=0 USE_BINARYBUILDER_OPENLIBM=0 USE_BINARYBUILDER_P7ZIP=0 USE_BINARYBUILDER_PCRE=0 USE_BINARYBUILDER_ZLIB=0 VERBOSE=0
+%global __julia_opts NO_GIT=1 DEPS_GIT=0 BUILD_LLD=1 BUILD_LLDB=1 USE_CCACHE=1 USE_BINARYBUILDER=0 USE_SYSTEM_CSL=1 USE_SYSTEM_LLVM=0 USE_SYSTEM_LLD=0 OPENBLAS_USE_THREAD=0 OPENBLAS_TARGET_ARCH=NEHALEM OPENBLAS_SYMBOLSUFFIX="%{?__isa_bits}_" OPENBLAS_LIBNAMESUFFIX="%{?__isa_bits}_" OPENBLAS_CFLAGS="${CFLAGS}" LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_ SUITESPARSE_LIB="-lumfpack64_ -lcholmod64_ -lamd64_ -lcamd64_ -lcolamd64_ -lspqr64_" USE_SYSTEM_LIBUNWIND=1 USE_SYSTEM_PCRE=0 USE_SYSTEM_BLAS=0 USE_SYSTEM_LAPACK=0 USE_SYSTEM_LIBBLASTRAMPOLINE=0 USE_SYSTEM_GMP=0 USE_SYSTEM_MPFR=0 USE_SYSTEM_LIBSUITESPARSE=0 USE_SYSTEM_SUITESPARSE=0 USE_INTEL_JITEVENTS=0 USE_SYSTEM_LIBWHICH=1 USE_SYSTEM_DSFMT=0 USE_SYSTEM_LIBUV=0 USE_SYSTEM_UTF8PROC=1 USE_SYSTEM_LIBGIT2=0 USE_SYSTEM_LIBSSH2=0 USE_SYSTEM_MBEDTLS=0 USE_SYSTEM_CURL=1 USE_SYSTEM_PATCHELF=1 USE_SYSTEM_ZLIB=1 USE_SYSTEM_P7ZIP=1 USE_SYSTEM_OPENLIBM=1 USE_BLAS64=1 JLDFLAGS="$LDFLAGS" USE_BINARYBUILDER_BLASTRAMPOLINE=0 USE_BINARYBUILDER_CURL=0 USE_BINARYBUILDER_DSFMT=0 USE_BINARYBUILDER_GMP=0 USE_BINARYBUILDER_LIBGIT2=0 USE_BINARYBUILDER_LIBSSH2=0 USE_BINARYBUILDER_LIBSUITESPARSE=0 USE_BINARYBUILDER_LIBTRACYCLIENT=0 USE_BINARYBUILDER_LIBUNWIND=0 USE_BINARYBUILDER_LIBUV=0 USE_BINARYBUILDER_LLVM=0 USE_BINARYBUILDER_MBEDTLS=0 USE_BINARYBUILDER_MPFR=0 USE_BINARYBUILDER_OPENBLAS=0 USE_BINARYBUILDER_OPENLIBM=0 USE_BINARYBUILDER_P7ZIP=0 USE_BINARYBUILDER_PCRE=0 USE_BINARYBUILDER_ZLIB=0 VERBOSE=0
 %else
-%global __julia_opts USE_BINARYBUILDER=0 USE_SYSTEM_CSL=1 USE_SYSTEM_LLVM=0 USE_SYSTEM_LLD=0 OPENBLAS_SYMBOLSUFFIX="%{?__isa_bits}_" OPENBLAS_LIBNAMESUFFIX="%{?__isa_bits}_" OPENBLAS_CFLAGS="${CFLAGS}" LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_ SUITESPARSE_LIB="-lumfpack64_ -lcholmod64_ -lamd64_ -lcamd64_ -lcolamd64_ -lspqr64_" USE_SYSTEM_LIBUNWIND=1 USE_SYSTEM_PCRE=0 USE_SYSTEM_BLAS=0 USE_SYSTEM_LAPACK=0 USE_SYSTEM_LIBBLASTRAMPOLINE=0 USE_SYSTEM_GMP=0 USE_SYSTEM_MPFR=0 USE_SYSTEM_LIBSUITESPARSE=0 USE_SYSTEM_SUITESPARSE=0 USE_INTEL_JITEVENTS=0 USE_SYSTEM_LIBWHICH=1 USE_SYSTEM_DSFMT=0 USE_SYSTEM_LIBUV=0 USE_SYSTEM_UTF8PROC=1 USE_SYSTEM_LIBGIT2=0 USE_SYSTEM_LIBSSH2=0 USE_SYSTEM_MBEDTLS=0 USE_SYSTEM_CURL=1 USE_SYSTEM_PATCHELF=1 USE_SYSTEM_ZLIB=1 USE_SYSTEM_P7ZIP=1 USE_SYSTEM_OPENLIBM=1 USE_BLAS64=1 JLDFLAGS="$LDFLAGS" USE_BINARYBUILDER_BLASTRAMPOLINE=0 USE_BINARYBUILDER_CURL=0 USE_BINARYBUILDER_DSFMT=0 USE_BINARYBUILDER_GMP=0 USE_BINARYBUILDER_LIBGIT2=0 USE_BINARYBUILDER_LIBSSH2=0 USE_BINARYBUILDER_LIBSUITESPARSE=0 USE_BINARYBUILDER_LIBTRACYCLIENT=0 USE_BINARYBUILDER_LIBUNWIND=0 USE_BINARYBUILDER_LIBUV=0 USE_BINARYBUILDER_LLVM=0 USE_BINARYBUILDER_MBEDTLS=0 USE_BINARYBUILDER_MPFR=0 USE_BINARYBUILDER_OPENBLAS=0 USE_BINARYBUILDER_OPENLIBM=0 USE_BINARYBUILDER_P7ZIP=0 USE_BINARYBUILDER_PCRE=0 USE_BINARYBUILDER_ZLIB=0 VERBOSE=0
+%global __julia_opts NO_GIT=1 DEPS_GIT=0 BUILD_LLD=1 BUILD_LLDB=1 USE_CCACHE=1 USE_BINARYBUILDER=0 USE_SYSTEM_CSL=1 USE_SYSTEM_LLVM=0 USE_SYSTEM_LLD=0 OPENBLAS_SYMBOLSUFFIX="%{?__isa_bits}_" OPENBLAS_LIBNAMESUFFIX="%{?__isa_bits}_" OPENBLAS_CFLAGS="${CFLAGS}" LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_ SUITESPARSE_LIB="-lumfpack64_ -lcholmod64_ -lamd64_ -lcamd64_ -lcolamd64_ -lspqr64_" USE_SYSTEM_LIBUNWIND=1 USE_SYSTEM_PCRE=0 USE_SYSTEM_BLAS=0 USE_SYSTEM_LAPACK=0 USE_SYSTEM_LIBBLASTRAMPOLINE=0 USE_SYSTEM_GMP=0 USE_SYSTEM_MPFR=0 USE_SYSTEM_LIBSUITESPARSE=0 USE_SYSTEM_SUITESPARSE=0 USE_INTEL_JITEVENTS=0 USE_SYSTEM_LIBWHICH=1 USE_SYSTEM_DSFMT=0 USE_SYSTEM_LIBUV=0 USE_SYSTEM_UTF8PROC=1 USE_SYSTEM_LIBGIT2=0 USE_SYSTEM_LIBSSH2=0 USE_SYSTEM_MBEDTLS=0 USE_SYSTEM_CURL=1 USE_SYSTEM_PATCHELF=1 USE_SYSTEM_ZLIB=1 USE_SYSTEM_P7ZIP=1 USE_SYSTEM_OPENLIBM=1 USE_BLAS64=1 JLDFLAGS="$LDFLAGS" USE_BINARYBUILDER_BLASTRAMPOLINE=0 USE_BINARYBUILDER_CURL=0 USE_BINARYBUILDER_DSFMT=0 USE_BINARYBUILDER_GMP=0 USE_BINARYBUILDER_LIBGIT2=0 USE_BINARYBUILDER_LIBSSH2=0 USE_BINARYBUILDER_LIBSUITESPARSE=0 USE_BINARYBUILDER_LIBTRACYCLIENT=0 USE_BINARYBUILDER_LIBUNWIND=0 USE_BINARYBUILDER_LIBUV=0 USE_BINARYBUILDER_LLVM=0 USE_BINARYBUILDER_MBEDTLS=0 USE_BINARYBUILDER_MPFR=0 USE_BINARYBUILDER_OPENBLAS=0 USE_BINARYBUILDER_OPENLIBM=0 USE_BINARYBUILDER_P7ZIP=0 USE_BINARYBUILDER_PCRE=0 USE_BINARYBUILDER_ZLIB=0 VERBOSE=0
 %endif
 
 # List all bundled libraries.
@@ -57,7 +57,7 @@
 # LTO currently makes building blastrampoline and Julia itself fail
 # It is not enabled upstream anyway
 %global _lto_cflags %nil
-Version:        1.10.3
+Version:        1.10.4
 Release:        0
 URL:            http://julialang.org/
 Source0:        https://github.com/JuliaLang/julia/releases/download/v%{version}/julia-%{version}-full.tar.gz
@@ -68,10 +68,10 @@ Source4:        julia-rpmlintrc
 
 # PATCH-FIX-OPENSUSE julia-env-script-interpreter.patch ronisbr@gmail.com -- Change script interpreted to avoid errors in rpmlint.
 Patch1:         julia-env-script-interpreter.patch
+# PATCH-FIX-OPENSUSE disable-doc-gen-in-makefile.patch -- this patch ACTUALLY DISABLES the offline builds 😉
+Patch2:         disable-doc-gen-in-makefile.patch
 # PATCH-FIX-OPENSUSE -- Despite having no network, build looks for UnicodeData.txt (now Source3). Disabled with this patch.
-Patch2:         disable-download-of-unicode-for-doc-gen.patch
-# PATCH-FIX-OPENSUSE -- Despite having no network, doc gen still wants to generate. Disabled with this patch.
-Patch3:         disable-doc-gen-in-makefile.patch
+Patch3:         disable-download-of-unicode-for-doc-gen.patch
 %if 0%{?suse_version} > 1600
 # Based on https://gitlab.archlinux.org/archlinux/packaging/packages/julia/-/raw/main/julia-libunwind-1.6.patch?ref_type=heads -- System libunwind compatibility
 Patch4:         julia-libunwind-1.9.patch
@@ -284,8 +284,8 @@ library. The library, largely written in Julia itself, also integrates mature,
 best-of-breed C and Fortran libraries for linear algebra, random number
 generation, signal processing, and string processing.
 
-This package is experimental and by no means supported by upstream. If you want
-to use julia, please install juliaup instead.
+This package is experimental and by no means supported by upstream. To use
+upstream sources, you can use the alternative called juliaup.
 
 %package        devel
 Summary:        Julia development, debugging and testing files
@@ -328,13 +328,8 @@ echo "true" | tee deps/tools/jldownload
 %build
 # Just use native
 # Offline mode
-export NO_GIT=1
 export CFLAGS="%{optflags}"
 export CXXLAGS="%{optflags}"
-export USE_CCACHE=1
-export DEPS_GIT=0
-export BUILD_LLD=1
-export BUILD_LLDB=1
 
 # Needed when USE_SYSTEM_CSL=1
 # https://github.com/JuliaLang/julia/issues/39637
@@ -379,10 +374,10 @@ RELEASE_BANNER="openSUSE Leap ${SLE_VERSION} - Built on $(date -u)"
 make %{?_smp_mflags} \
                      MARCH="%{julia_march}" \
 %ifarch x86_64 || x86_64_v3
-                     JULIA_CPU_TARGETS="generic;sandybridge,-xsaveopt,clone_all;haswell,-rdrnd,base(1)" \
+                     JULIA_CPU_TARGET="generic;sandybridge,-xsaveopt,clone_all;haswell,-rdrnd,base(1)" \
 %endif
 %ifarch aarch64
-                     JULIA_CPU_TARGETS="generic;cortex-a53;cortex-a55;cortex-a57;cortex-a72;arm_cortex_a78;arm_cortex_x1;neoverse-512tvb,base(3);arm_neoverse_n1;arm_neoverse_v1;arm_neoverse_n2;carmel,clone_all;apple-m1,base(3)" \
+                     JULIA_CPU_TARGET="generic;cortex-a53;cortex-a55;cortex-a57;cortex-a72;arm_cortex_a78;arm_cortex_x1;neoverse-512tvb,base(3);arm_neoverse_n1;arm_neoverse_v1;arm_neoverse_n2;carmel,clone_all;apple-m1,base(3)" \
 %endif
                      build_prefix="%{_builddir}/%{buildsubdir}/build%{_prefix}" \
                      build_libdir="%{_builddir}/%{buildsubdir}/build%{_libdir}" \
@@ -442,10 +437,10 @@ RELEASE_BANNER="openSUSE Leap ${SLE_VERSION} - Built on $(date -u)"
 make install DESTDIR="%{buildroot}" \
              MARCH="%{julia_march}" \
 %ifarch x86_64 || x86_64_v3
-             JULIA_CPU_TARGETS="generic;sandybridge,-xsaveopt,clone_all;haswell,-rdrnd,base(1)" \
+             JULIA_CPU_TARGET="generic;sandybridge,-xsaveopt,clone_all;haswell,-rdrnd,base(1)" \
 %endif
 %ifarch aarch64
-             JULIA_CPU_TARGETS="generic;cortex-a53;cortex-a55;cortex-a57;cortex-a72;arm_cortex_a78;arm_cortex_x1;neoverse-512tvb,base(3);arm_neoverse_n1;arm_neoverse_v1;arm_neoverse_n2;carmel,clone_all;apple-m1,base(3)" \
+             JULIA_CPU_TARGET="generic;cortex-a53;cortex-a55;cortex-a57;cortex-a72;arm_cortex_a78;arm_cortex_x1;neoverse-512tvb,base(3);arm_neoverse_n1;arm_neoverse_v1;arm_neoverse_n2;carmel,clone_all;apple-m1,base(3)" \
 %endif
              build_prefix="%{_builddir}/%{buildsubdir}/build%{_prefix}" \
              build_libdir="%{_builddir}/%{buildsubdir}/build%{_libdir}" \
