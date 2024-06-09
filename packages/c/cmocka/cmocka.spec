@@ -1,7 +1,7 @@
 #
 # spec file for package cmocka
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -107,8 +107,8 @@ Documentation for the cmocka unit testing library.
 %package -n libcmocka-cmake
 Summary:        cmake support for the cmocka library
 Group:          Development/Libraries/C and C++
-Requires:       libcmocka-devel = %{version}
 Requires:       cmake
+Requires:       libcmocka-devel = %{version}
 Provides:       libcmocka-devel:%{_libdir}/cmake/cmocka
 
 %description -n libcmocka-cmake

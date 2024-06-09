@@ -199,4 +199,13 @@
     <comment></comment>
     <requestid>1108441</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>10841ef26bad42761995f311ddf4ce11</srcmd5>
+    <version>1.1.7</version>
+    <time>1717957144</time>
+    <user>anag+factory</user>
+    <comment>- Fix baselibs.conf for libcmocka-cmake subpackage
+</comment>
+    <requestid>1179326</requestid>
+  </revision>
 </revisionlist>

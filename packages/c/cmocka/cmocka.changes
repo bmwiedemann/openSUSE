@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  7 11:09:17 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix baselibs.conf for libcmocka-cmake subpackage
+
+-------------------------------------------------------------------
 Wed Aug 23 06:30:05 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
 - split off -doc and -cmake subpackages, which aren't necessary
