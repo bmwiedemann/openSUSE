@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun  5 10:11:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.3.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.3.0/
+- Changes since 6.2.0:
+  * Remove custom definitions of pi
+  * Proofreading
+  * Remove explicit maintainer from metainfo
+  * Latvia holiday grammar corrections
+
+-------------------------------------------------------------------
 Mon May  6 12:22:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.2.0
