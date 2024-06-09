@@ -8,8 +8,8 @@
 
   <property file="build.properties"/>
 
-  <property name="project.groupId" value="jakarta.inject"/>
-  <property name="project.artifactId" value="jakarta.inject-api"/>
+  <property name="project.groupId" value="javax.inject"/>
+  <property name="project.artifactId" value="javax.inject"/>
   <property name="project.version" value="1.0.5"/>
 
   <property name="compiler.release" value="8"/>
@@ -123,8 +123,7 @@
 		<attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
 		<attribute name="Bundle-ManifestVersion" value="2"/>
 		<attribute name="Bundle-Name" value="Jakarta Dependency Injection"/>
-		<attribute name="Bundle-SymbolicName" value="${project.groupId}.${project.artifactId}"/>
-		<!-- <attribute name="Bundle-SymbolicName" value="javax.inject"/> -->
+		<attribute name="Bundle-SymbolicName" value="javax.inject"/>
 		<attribute name="Bundle-Version" value="${project.version}"/>
 		<attribute name="Export-Package" value="javax.inject;version=&quot;${project.version}&quot;"/>
 		<attribute name="Implementation-Version" value="1.1"/>

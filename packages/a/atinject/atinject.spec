@@ -55,13 +55,9 @@ cp %{SOURCE1} build.xml
 %install
 # jars
 install -dm 755 %{buildroot}%{_javadir}/javax.inject
-install -m 0644 target/jakarta.inject-api-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
+install -m 0644 target/javax.inject-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 (cd %{buildroot}%{_javadir}/javax.inject && ln -s ../%{name}.jar .)
-
-# pom
-install -dm 755 %{buildroot}%{_mavenpomdir}
-%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
-%add_maven_depmap %{name}.pom %{name}.jar -a javax.inject:javax.inject
+%add_maven_depmap javax.inject:javax.inject:%{version} %{name}.jar
 
 # javadoc
 install -dm 755 %{buildroot}%{_javadocdir}/%{name}

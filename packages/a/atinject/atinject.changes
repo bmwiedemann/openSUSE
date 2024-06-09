@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun  7 12:10:33 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Don't distribute as jakarta.inject:jakarta-inject-api artifact
+  to prevent conflicts with the version 2.x that actually has
+  classes in jakarta.inject namespace and thus is incompatible
+
+-------------------------------------------------------------------
 Wed Apr 10 08:19:26 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 1.0.5 and switch to sources in

@@ -39,4 +39,12 @@
     <comment>1.0.5</comment>
     <requestid>1166715</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>399b4b3a91b5f7feac66d980f75c32dd</srcmd5>
+    <version>1.0.5</version>
+    <time>1717957336</time>
+    <user>anag+factory</user>
+    <comment>Avoid conflicts with upcoming jakarta-inject package</comment>
+    <requestid>1179402</requestid>
+  </revision>
 </revisionlist>
