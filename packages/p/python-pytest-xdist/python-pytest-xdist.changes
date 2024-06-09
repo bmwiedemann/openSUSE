@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun  6 09:35:35 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- update to 3.6.1
+  * pytest-xdist workers now always execute the tests in the main thread.
+  * Added proper handling of shouldstop and shouldfail conditions in workers.
+  * Fixed compatibility issue between looponfail and editable installs.
+  * Use the new main_thread_only execnet “execmodel” so that code which 
+    expects to only run in the main thread will now work as expected.
+  * Add backward compatibility for deadlock issue with the execnet new 
+    main_thread_only “execmodel” triggered when pytest-cov accesses rinfo.
+
+-------------------------------------------------------------------
 Mon Nov 27 20:03:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.5.0:

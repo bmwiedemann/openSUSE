@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-xdist
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-xdist
-Version:        3.5.0
+Version:        3.6.1
 Release:        0
 Summary:        Distributed testing and loop-on-failing for py.test
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-xdist
-Source0:        https://files.pythonhosted.org/packages/source/p/pytest-xdist/pytest-xdist-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/pytest-xdist/pytest_xdist-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module execnet >= 1.1}
 BuildRequires:  %{python_module filelock}
@@ -66,7 +66,7 @@ are reported back and displayed to your local terminal.
 You may specify different Python versions and interpreters.
 
 %prep
-%autosetup -p1 -n pytest-xdist-%{version}
+%autosetup -p1 -n pytest_xdist-%{version}
 sed -i 's/\r//' README.rst
 
 %build
