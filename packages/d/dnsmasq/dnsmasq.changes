@@ -5,6 +5,7 @@ Wed Feb 14 17:39:46 UTC 2024 - Reinhard Max <max@suse.com>
   * CVE-2023-50387, CVE-2023-50868, bsc#1219823, bsc#1219826:
     Denial Of Service while trying to validate specially crafted
     DNSSEC responses
+  * CVE-2023-49441, bsc#1226091: integer overflow via forward_query
   * Fix reversion in --rev-server introduced in 2.88 which caused
     breakage if the prefix length is not exactly divisible by 8
     (IPv4) or 4 (IPv6).

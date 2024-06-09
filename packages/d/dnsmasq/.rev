@@ -922,4 +922,14 @@ Most of the source code files give a choice of either GPL-2.0 or GPL-3.0 (not GP
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1148852</requestid>
   </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>75c943c030cd440baf441995fdfa7a7f</srcmd5>
+    <version>2.90</version>
+    <time>1717957206</time>
+    <user>anag+factory</user>
+    <comment>Added another bug reference to the latest changes entry.
+
+  * CVE-2023-49441, bsc#1226091: integer overflow via forward_query</comment>
+    <requestid>1179330</requestid>
+  </revision>
 </revisionlist>
