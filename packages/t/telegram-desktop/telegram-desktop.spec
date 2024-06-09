@@ -38,7 +38,7 @@
 %define qt_major_version 6
 
 Name:           telegram-desktop
-Version:        5.0.1
+Version:        5.1.5
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -75,7 +75,6 @@ BuildRequires:  clang
 BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
 BuildRequires:  enchant-devel
-BuildRequires:  ffmpeg-devel
 %if %{with compiler_upgrade} || %{with compiler_downgrade}
 BuildRequires:  gcc12
 BuildRequires:  gcc12-c++

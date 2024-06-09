@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Fri Jun  7 14:30:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Clean up spec file:
+  + BuildRequiring a library package is never correct (the devel
+    packages are supposed to pull in the needed libraries).
+  + Drop ffmpeg-devel BuildReuqires: pkgconfig(libav*) are
+    translating to the distro default providers.
+
+-------------------------------------------------------------------
+Fri Jun  7 07:29:11 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 5.1.5
+  * Return WebView on Windows.
+
+- Updated to version 5.1.4
+  * Improve design of search in chat.
+  * Show vCard information for shared contacts.
+  * Allow scheduling media in topic groups.
+  * Several minor bugfixes.
+
+- Updated to version 5.1.3
+  * Rebuild version for macOS to fix the phrases.
+
+-------------------------------------------------------------------
+Tue Jun  4 07:10:00 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 5.1.2
+  * Several bugs fixed including a couple of crashes.
+- Make libav* build requirements more explicit to distinguish from
+  ffmpeg-6-mini-libs
+
+-------------------------------------------------------------------
+Sun Jun  2 08:02:38 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 5.1.1
+  * Fix caption display on some media.
+  * Fix collapsed blockquotes rendering.
+  * Fully close search in chat by "Cancel" click.
+  * Allow editing caption placement and spoiler in topics.
+  * Disable effects on forwarded messages and inline results.
+
+-------------------------------------------------------------------
+Sat Jun  1 07:32:23 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 5.1.0
+  * Send messages with effects.
+  * Move photo or video captions above the media.
+  * Chat preview on chat photo long press or Alt+Click.
+
+- Updated to version 5.0.6
+  * Fix chat preview with non-default themes.
+  * Fix chat preview crash when scrolling up.
+  * Jump to chat from preview only by Double-Click.
+  * Show chat preview with Force Touch on macOS.
+
+- Updated to version 5.0.5
+  * Long press on chat userpic to show quick preview.
+  * Alt+Click on chat to show quick preview.
+  * Show author userpics in forwarded messages.
+
+-------------------------------------------------------------------
+Wed May 29 05:45:59 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 5.0.4
+  * Fix reply to last message by Ctrl+Up in topics.
+  * Some other bug fixes.
+
+- Updated to version 5.0.3
+  * Ctrl+Click on Reply in menu to Reply in another chat.
+  * Allow Zero-Width-Space character in text rendering.
+  * Fix creating custom links in the message field.
+  * Fix jump to the topic with last unread message.
+  * Fix newline entering via Shift+Enter on Linux.
+  * Fix forum search open by Ctrl+F.
+
+-------------------------------------------------------------------
+Sun May 26 08:31:27 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 5.0.2
+  * Toggle chats search focus by Tab key.
+  * Unfocus empty search by Backspace key.
+  * Add a spoiler to already sent media when editing.
+  * Forward by drag-n-drop to frequent contacts / recent searches.
+  * Allow wide chats list in empty window with narrow list when a
+    chat is opened.
+  * Improve custom font support in the input fields.
+  * Fix input method typing from unfocused search.
+  * Fix possible media reordering on batch send.
+  * Fix crash in group emoji set saving.
+  * Fix possible hang on quit on macOS.
+
+-------------------------------------------------------------------
 Sun May  5 07:31:20 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Updated to version 5.0.1
