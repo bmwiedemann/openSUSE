@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun  7 13:49:23 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.20.0+git.20240530:
+  * fix use after free in recent commit
+  * Add support for Data Digest
+  * login: add support for gnutls
+  * login: do not try to "emulate" the libgcrypt API
+  * configure: add --with-libgcrypt option
+  * A possible 'fix' for https://github.com/sahlberg/libiscsi/issues/415 This patch adds a timestamp before each logged line. That could help correlating a logging to a network-trace. Because of offsets in time between the tracer and the test and the DUT, this does not always help.
+  * Manually set task to null after free to avoid double free issue
+  * lun_reset cancelling lun tasks only
+
+-------------------------------------------------------------------
 Thu Feb 29 13:02:24 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.20.0+git.20240206:

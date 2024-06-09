@@ -354,4 +354,20 @@
   * Drain DATAOUT PDU on timeout</comment>
     <requestid>1153223</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b07032c9507f832e85b75b88ae21853c</srcmd5>
+    <version>1.20.0+git.20240530</version>
+    <time>1717957140</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.20.0+git.20240530:
+  * fix use after free in recent commit
+  * Add support for Data Digest
+  * login: add support for gnutls
+  * login: do not try to &quot;emulate&quot; the libgcrypt API
+  * configure: add --with-libgcrypt option
+  * A possible 'fix' for https://github.com/sahlberg/libiscsi/issues/415 This patch adds a timestamp before each logged line. That could help correlating a logging to a network-trace. Because of offsets in time between the tracer and the test and the DUT, this does not always help.
+  * Manually set task to null after free to avoid double free issue
+  * lun_reset cancelling lun tasks only</comment>
+    <requestid>1179242</requestid>
+  </revision>
 </revisionlist>
