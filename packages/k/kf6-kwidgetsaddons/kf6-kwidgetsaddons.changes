@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun  5 10:12:02 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.3.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.3.0/
+- Changes since 6.2.0:
+  * Fix KMessageWidget background color
+  * KMessageWidget: Avoid calling polish() inside of palette update (kde#487247)
+  * Use ellipsis character instead of three dots in UI strings
+  * Skip tests that need GUI on Windows CI
+  * KViewStateSerializer: fix docu: setTreeView -> setView
+  * KBusyIndicatorWidget: fix warning when hiding on startup
+
+-------------------------------------------------------------------
 Mon May 27 10:20:15 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.2.2. Hotfix release:
