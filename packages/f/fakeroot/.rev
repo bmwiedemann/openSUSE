@@ -130,4 +130,14 @@
     <comment></comment>
     <requestid>1178749</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b2b758d131a13f3868d8114f52d5afb5</srcmd5>
+    <version>1.35</version>
+    <time>1717957260</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.35:
+  * build fix for platforms that do not have the close_range
+  * function</comment>
+    <requestid>1179341</requestid>
+  </revision>
 </revisionlist>

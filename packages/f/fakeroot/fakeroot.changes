@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun  7 15:53:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.35:
+  * build fix for platforms that do not have the close_range
+  * function
+
+-------------------------------------------------------------------
 Wed Jun  5 08:01:21 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Update to 1.34
@@ -60,7 +67,7 @@ Fri Mar 25 18:03:42 UTC 2022 - Sarah Kriesch <sarah.kriesch@opensuse.org>
   * Remove 0001-glibc-2.33-compatibility-fixes.patch
   * Remove fakeroot-1.20-lib32.patch
   * Remove stat-ver-riscv.patch
-  
+
 -------------------------------------------------------------------
 Sun May 16 21:18:43 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
