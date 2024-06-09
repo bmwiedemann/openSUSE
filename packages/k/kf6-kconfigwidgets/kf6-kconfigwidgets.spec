@@ -19,13 +19,13 @@
 %define qt6_version 6.6.0
 
 %define rname kconfigwidgets
-# Full KF6 version (e.g. 6.2.0)
+# Full KF6 version (e.g. 6.3.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kconfigwidgets
-Version:        6.2.0
+Version:        6.3.0
 Release:        0
 Summary:        Widgets for configuration dialogs
 License:        LGPL-2.1-or-later
@@ -38,6 +38,7 @@ Source2:        frameworks.keyring
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
+BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6ColorScheme) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6Config) >= %{_kf6_bugfix_version}
@@ -46,6 +47,7 @@ BuildRequires:  cmake(KF6GuiAddons) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6I18n) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6UiPlugin) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
