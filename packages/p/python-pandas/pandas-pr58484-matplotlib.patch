@@ -1,0 +1,71 @@
+From 0cab756077f5291f8d6a7fcfacaf374f62b866a0 Mon Sep 17 00:00:00 2001
+From: Elliott Sales de Andrade <quantum.analyst@gmail.com>
+Date: Mon, 29 Apr 2024 23:11:21 -0400
+Subject: [PATCH 1/2] Remove deprecated plot_date calls
+
+These were deprecated in Matplotlib 3.9.
+---
+ pandas/tests/plotting/test_datetimelike.py | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/pandas/tests/plotting/test_datetimelike.py b/pandas/tests/plotting/test_datetimelike.py
+index 6b709522bab70..b91bde41bf4c4 100644
+--- a/pandas/tests/plotting/test_datetimelike.py
++++ b/pandas/tests/plotting/test_datetimelike.py
+@@ -1432,13 +1432,11 @@ def test_mpl_nopandas(self):
+         values1 = np.arange(10.0, 11.0, 0.5)
+         values2 = np.arange(11.0, 12.0, 0.5)
+ 
+-        kw = {"fmt": "-", "lw": 4}
+-
+         _, ax = mpl.pyplot.subplots()
+-        ax.plot_date([x.toordinal() for x in dates], values1, **kw)
+-        ax.plot_date([x.toordinal() for x in dates], values2, **kw)
+-
+-        line1, line2 = ax.get_lines()
++        line1, line2, = ax.plot(
++            [x.toordinal() for x in dates], values1, "-",
++            [x.toordinal() for x in dates], values2, "-",
++            linewidth=4)
+ 
+         exp = np.array([x.toordinal() for x in dates], dtype=np.float64)
+         tm.assert_numpy_array_equal(line1.get_xydata()[:, 0], exp)
+
+From 6d6574c4e71e3bab91503f85c8aa80c927785865 Mon Sep 17 00:00:00 2001
+From: "pre-commit-ci[bot]"
+ <66853113+pre-commit-ci[bot]@users.noreply.github.com>
+Date: Tue, 30 Apr 2024 16:47:26 +0000
+Subject: [PATCH 2/2] [pre-commit.ci] auto fixes from pre-commit.com hooks
+
+for more information, see https://pre-commit.ci
+---
+ pandas/tests/plotting/test_datetimelike.py | 16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/pandas/tests/plotting/test_datetimelike.py b/pandas/tests/plotting/test_datetimelike.py
+index b91bde41bf4c4..4b4eeada58366 100644
+--- a/pandas/tests/plotting/test_datetimelike.py
++++ b/pandas/tests/plotting/test_datetimelike.py
+@@ -1433,10 +1433,18 @@ def test_mpl_nopandas(self):
+         values2 = np.arange(11.0, 12.0, 0.5)
+ 
+         _, ax = mpl.pyplot.subplots()
+-        line1, line2, = ax.plot(
+-            [x.toordinal() for x in dates], values1, "-",
+-            [x.toordinal() for x in dates], values2, "-",
+-            linewidth=4)
++        (
++            line1,
++            line2,
++        ) = ax.plot(
++            [x.toordinal() for x in dates],
++            values1,
++            "-",
++            [x.toordinal() for x in dates],
++            values2,
++            "-",
++            linewidth=4,
++        )
+ 
+         exp = np.array([x.toordinal() for x in dates], dtype=np.float64)
+         tm.assert_numpy_array_equal(line1.get_xydata()[:, 0], exp)

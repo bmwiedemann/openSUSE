@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
 Sun May 12 17:57:39 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
-- Reverting, apparently it was a bad idea.
+- Add pandas-pr58269-pyarrow16xpass.patch
+  (gh#pandas-dev/pandas!58269)
+- Add pandas-pr58720-xarray-dp.patch
+  (gh#pandas-dev/pandas!58720), which makes pandas compatible
+  with the modern xarray
+- Add pandas-pr58484-matplotlib.patch
+  (gh#pandas-dev/pandas!58484), which makes pandas compatible
+  with the modern matplotlib
+- Skip also test_plot_scatter_shape (gh#pandas-dev/pandas#58851)
 
 -------------------------------------------------------------------
 Thu May  9 23:44:42 UTC 2024 - Matej Cepl <mcepl@cepl.eu>

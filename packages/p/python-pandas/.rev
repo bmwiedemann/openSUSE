@@ -685,4 +685,20 @@ All packages broken by this update should be fixed now.</comment>
 - Skip build on Python 3.10 ... too many dependencies are missing.</comment>
     <requestid>1173512</requestid>
   </revision>
+  <revision rev="66" vrev="3">
+    <srcmd5>89813156252b79b8812270d3d2eb1cd2</srcmd5>
+    <version>2.2.2</version>
+    <time>1717957123</time>
+    <user>anag+factory</user>
+    <comment>- Add pandas-pr58269-pyarrow16xpass.patch
+  (gh#pandas-dev/pandas!58269)
+- Add pandas-pr58720-xarray-dp.patch
+  (gh#pandas-dev/pandas!58720), which makes pandas compatible
+  with the modern xarray
+- Add pandas-pr58484-matplotlib.patch
+  (gh#pandas-dev/pandas!58484), which makes pandas compatible
+  with the modern matplotlib
+- Skip also test_plot_scatter_shape (gh#pandas-dev/pandas#58851)</comment>
+    <requestid>1179390</requestid>
+  </revision>
 </revisionlist>

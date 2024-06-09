@@ -1,0 +1,41 @@
+From d36f6dac81b577504386b53357270d9f05a9bc89 Mon Sep 17 00:00:00 2001
+From: Matthew Roeschke <10647082+mroeschke@users.noreply.github.com>
+Date: Tue, 14 May 2024 09:04:20 -1000
+Subject: [PATCH] Backport PR #58719: CI: xfail test_to_xarray_index_types due
+ to new 2024.5 release
+
+---
+ pandas/tests/generic/test_to_xarray.py | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/pandas/tests/generic/test_to_xarray.py b/pandas/tests/generic/test_to_xarray.py
+index d8401a8b2ae3f..491f621783a76 100644
+--- a/pandas/tests/generic/test_to_xarray.py
++++ b/pandas/tests/generic/test_to_xarray.py
+@@ -9,6 +9,7 @@
+     date_range,
+ )
+ import pandas._testing as tm
++from pandas.util.version import Version
+ 
+ pytest.importorskip("xarray")
+ 
+@@ -29,11 +30,17 @@ def df(self):
+             }
+         )
+ 
+-    def test_to_xarray_index_types(self, index_flat, df, using_infer_string):
++    def test_to_xarray_index_types(self, index_flat, df, using_infer_string, request):
+         index = index_flat
+         # MultiIndex is tested in test_to_xarray_with_multiindex
+         if len(index) == 0:
+             pytest.skip("Test doesn't make sense for empty index")
++        import xarray
++
++        if Version(xarray.__version__) >= Version("2024.5"):
++            request.applymarker(
++                pytest.mark.xfail(reason="https://github.com/pydata/xarray/issues/9026")
++            )
+ 
+         from xarray import Dataset
+ 
