@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Jun  9 10:41:50 UTC 2024 - Martin Liška <martin.liska@hey.com>
+
+- Update to version 2.32.0
+  * mold supports a feature called Identical Code Folding, or ICF. As the name
+    suggests, ICF finds identical functions and merges them to reduce the size of an
+    output file. This is especially effective for template-heavy C++ programs since
+    templates tend to be instantiated to the same machine code for different types.
+    For example, std::vector<int> is likely to be instantiated to the same code as
+    std::vector<unsigned>. We've made an improvement to our ICF algorithm so that
+    the --icf feature is ~50% faster than the previous version. (fa8e95a)
+  * The -z rodynamic option is now supported for compatibility with LLVM lld. With
+    the option, mold places the .dynamic section into a read-only segment. (9a233df)
+  * Previously, mold behaved differently compared to other linkers if both -z defs
+    and --undefined=ignore-in-object-files were given (#1270). Now, they override
+    each other so that the mold's behavior is compatible with others. (8cd85aa)
+  * Previously, --dependency-file mistakenly recorded response files as dependencies
+    (#1258). This bug has been fixed. (4281f45)
+  * There was a bug that mold corrupted debug info section contents when the
+    --relocatable option was given (#1265). This issue has been fixed. (08b0a16)
+  * [PPC64] The R_PPC64_TPREL16_LO_DS relocation type is supported. (a8cd2e8)
+  * [ARM64, PPC64, LoongArch] mold 2.31.0 or earlier may have failed with an
+    assertion failure when creating a large output file (#1224). This issue has been
+    resolved. (c7c8583)
+
+-------------------------------------------------------------------
 Fri May  3 05:46:37 UTC 2024 - Martin Liška <martin.liska@hey.com>
 
 - Update to version 2.31.0
