@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 07 19:58:54 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.14.6:
+  * Update cmd/ctl's go.mod to v1.14.5
+
+-------------------------------------------------------------------
 Thu Apr 25 19:06:40 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.14.5:
