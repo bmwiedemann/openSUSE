@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun  7 06:15:44 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.7
+  * WADO-RS retrieve frame: fix issue 219 (https://orthanc.uclouvain.be/bugs/show_bug.cgi?id=219)
+    by converting BigEndianExplicitVR to LittleEndianExplicitVR.
+  * QIDO-RS: now returning sequences that are listed in includefield
+    https://discourse.orthanc-server.org/t/qido-includefield-with-sequences/4746
+  * The plugin now uses the new logging primitives from Orthanc 1.12.4
+
+-------------------------------------------------------------------
 Wed Mar 13 13:00:07 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - enable gcc13 for Leap 15
