@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun  5 10:12:11 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.3.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.3.0/
+- Changes since 6.2.0:
+  * Updates to Catppuccin themes
+  * nix: Version 2 -> 3
+  * nix: Correctly highlight first key in set when it is quoted
+  * nix: Correctly highlight bare ${}
+  * nix: More correctly model inherit syntax
+  * build with QT_NO_CONTEXTLESS_CONNECT
+  * Remove explicit maintainer from metainfo
+  * Use ellipsis character instead of three dots in UI strings
+  * xml: add fictionbook format
+
+-------------------------------------------------------------------
 Mon May  6 12:23:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.2.0
