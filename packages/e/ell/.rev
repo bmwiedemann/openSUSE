@@ -343,4 +343,17 @@
     <comment></comment>
     <requestid>1163985</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>f7458f3bfe0c137385510a6855d54f05</srcmd5>
+    <version>0.66</version>
+    <time>1717957125</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.66
+  * Fix issue with handling event callback when stopping ACD.
+  * Fix issue with handling ICMPv6 DNS and domain lists.
+  * Add support for notification lists.
+  version 0.65:
+  * Add support for bitmaps manipulation macros. (forwarded request 1179175 from alois)</comment>
+    <requestid>1179406</requestid>
+  </revision>
 </revisionlist>
