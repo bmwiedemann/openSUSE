@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c1cec99a8c63bff366d4bd11c751d328</srcmd5>
+    <version>3.4.1</version>
+    <time>1717957366</time>
+    <user>anag+factory</user>
+    <comment>I want to maintain pueue in Factory. This is now part of my packaging workflow and useful for others. Thanks Dimstar for correcting the completions.</comment>
+    <requestid>1179568</requestid>
+  </revision>
+</revisionlist>
