@@ -186,4 +186,12 @@
   libcpuset-init-buf-2.patch</comment>
     <requestid>402454</requestid>
   </revision>
+  <revision rev="26" vrev="37">
+    <srcmd5>edfd9491f805688a4c9b986c1682709e</srcmd5>
+    <version>1.0</version>
+    <time>1717957244</time>
+    <user>anag+factory</user>
+    <comment>No more source URL - tarball is no longer there (forwarded request 1179324 from dimstar)</comment>
+    <requestid>1179325</requestid>
+  </revision>
 </revisionlist>

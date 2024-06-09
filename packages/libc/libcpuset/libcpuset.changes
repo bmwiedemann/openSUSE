@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun  7 14:16:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer specify source URL: the source tarballs are no longer
+  available at ftp://oss.sgi.com
+
+-------------------------------------------------------------------
+Mon Jun  7 23:18:11 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop --with-pic (no effect with --disable-static).
+- Modernize rpm macro constructs.
+
+-------------------------------------------------------------------
 Wed Jun 15 16:53:24 UTC 2016 - mgalbraith@suse.com
 
 - Add missing patch.  (SUSE bnc#546310, bnc#984832)

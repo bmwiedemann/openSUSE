@@ -1,7 +1,7 @@
 #
 # spec file for package libcpuset
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,10 +21,11 @@ Name:           libcpuset
 Version:        1.0
 Release:        0
 Summary:        cpuset processor and memory placement library
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://oss.sgi.com/projects/cpusets/
-Source:         ftp://oss.sgi.com/projects/cpusets/download/libcpuset-%{version}.tar.bz2
+URL:            http://oss.sgi.com/projects/cpusets/
+#Source:         ftp://oss.sgi.com/projects/cpusets/download/libcpuset-%{version}.tar.bz2
+Source:         libcpuset-%{version}.tar.bz2
 Patch0:         libcpuset-fix-missing-syscall.diff
 Patch1:         libcpuset-rm-cpuonline.diff
 Patch2:         bug-514127_libcpuset-cpuset_set_iopt-adds.patch
@@ -36,7 +37,6 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libbitmask-devel
 BuildRequires:  libtool
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The Cpuset System is a processor and memory placement mechanism that
@@ -46,7 +46,7 @@ library provides a convenient 'C' API to cpusets.
 
 %package -n libcpuset1
 Summary:        cpuset processor and memory placement library
-Group:          Development/Libraries/C and C++
+Group:          System/Libraries
 
 %description -n libcpuset1
 The Cpuset System is a processor and memory placement mechanism that
@@ -67,25 +67,16 @@ CPUs, and to allocating memory on certain Memory Nodes.  The libcpuset
 library provides a convenient 'C' API to cpusets.
 
 %prep
-%setup -q -n %{name}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+%autosetup -p1 -n %{name}
 
 %build
 sed -i -e 's@-Werror@@g' configure.in
 autoreconf -fiv
-%configure \
-  --disable-static \
-  --with-pic
-make %{?_smp_mflags}
+%configure --disable-static
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n libcpuset1 -p /sbin/ldconfig
@@ -93,11 +84,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n libcpuset1 -p /sbin/ldconfig
 
 %files -n libcpuset1
-%defattr(-,root,root)
 %{_libdir}/lib*so.*
 
 %files -n libcpuset-devel
-%defattr(-,root,root)
 %{_mandir}/man3/*
 %{_mandir}/man4/*
 %{_includedir}/*
