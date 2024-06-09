@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun  5 10:11:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.3.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.3.0/
+- Changes since 6.2.0:
+  * It compiles fine without qt6.7 deprecated methods
+  * AbstractKCM,SimpleKCM: Stop overlapping the 1px of content with a header Separator
+  * SimpleKCM: Port header's wrapper from QQC2.Control to Kirigami.Padding
+  * SimpleKCM: Drop unnecessary id qualifier from the bindings at the top-level component
+  * AbstractKCM,SimpleKCM: Unify header/footer content swapping
+  * AbstractKCM,SimpleKCM: Unify OverlaySheet detection, port to cool iterators
+
+-------------------------------------------------------------------
 Mon May  6 12:22:21 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.2.0
