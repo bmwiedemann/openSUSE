@@ -38,7 +38,7 @@
 %endif
 
 Name:           ansible
-Version:        9.6.0
+Version:        9.6.1
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0+
