@@ -99,4 +99,12 @@
   * Remove requirement on mock, now as a patch, rather than sed.</comment>
     <requestid>1177005</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a176809f6268678a514f4d565fc89e13</srcmd5>
+    <version>8.13.1</version>
+    <time>1717957122</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1179344</requestid>
+  </revision>
 </revisionlist>

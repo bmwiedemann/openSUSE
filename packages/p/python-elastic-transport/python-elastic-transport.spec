@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-elastic-transport
-Version:        8.13.0
+Version:        8.13.1
 Release:        0
 Summary:        Transport classes and utilities shared among Python Elastic client libraries
 License:        Apache-2.0
 URL:            https://github.com/elastic/elastic-transport-python
 Source:         https://github.com/elastic/elastic-transport-python/archive/refs/tags/v%{version}.tar.gz#/elastic-transport-python-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/elastic/elastic-transport-python/pull/164 Fix requests 2.32 compatibility
-Patch0:         requests232.patch
 # PATCH-FIX-UPSTREAM gh#elastic/elastic-transport-python#163
 Patch1:         remove-mock.patch
 BuildRequires:  %{python_module base >= 3.7}

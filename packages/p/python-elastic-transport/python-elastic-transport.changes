@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun  6 09:45:48 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 8.13.1
+  * Fixed requests 2.32 compatibility
+  * Fixed TypeError when two nodes are declared dead at the same time
+  * Added TransportApiResponse
+- Drop merged requests232.patch
+
+-------------------------------------------------------------------
 Mon May 27 04:24:39 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
