@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun  8 12:04:15 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 42.0.8:
+  * Updated Windows, macOS, and Linux wheels to be compiled with
+    OpenSSL 3.2.2.
+
+-------------------------------------------------------------------
 Tue May  7 16:14:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 42.0.7:

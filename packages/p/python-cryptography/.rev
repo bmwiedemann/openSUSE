@@ -1082,4 +1082,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1174053</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>4a9fea3a5f30acc746b74fabe86cd76f</srcmd5>
+    <version>42.0.8</version>
+    <time>1717957125</time>
+    <user>anag+factory</user>
+    <comment>- update to 42.0.8:
+  * Updated Windows, macOS, and Linux wheels to be compiled with
+    OpenSSL 3.2.2.</comment>
+    <requestid>1179508</requestid>
+  </revision>
 </revisionlist>
