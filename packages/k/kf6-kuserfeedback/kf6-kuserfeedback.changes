@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun  5 10:12:01 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.3.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.3.0/
+- Changes since 6.2.0:
+  * CI: Require tests to pass on Linux and FreeBSD
+  * Add homepage url, CI was complaining
+  * Fix target names in metainfo
+  * Remove explicit maintainer from metainfo
+  * Use ellipsis character instead of three dots in UI strings
+
+-------------------------------------------------------------------
 Mon May  6 12:22:59 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.2.0
