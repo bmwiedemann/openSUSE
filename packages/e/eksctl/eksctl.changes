@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jun 07 19:52:24 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.182.0:
+  * Add release notes for v0.182.0
+  * coredns script should exclude preview versions
+  * update aws-node to latest version
+  * fix typo for iam policy
+  * Fix upgrading AL2 ARM64 nodegroups
+  * Update pkg/addons/assets/efa-device-plugin.yaml
+  * Update pkg/addons/assets/efa-device-plugin.yaml
+  * Subnets availability validation should use AZs resolved by
+    `EC2::DescribeSubnets` call (#7816)
+  * G6 support
+  * apply same formatting fix for addons.md file
+  * Fix formatting for notes in documentation
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Tue Jun 04 04:39:16 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.181.0:
