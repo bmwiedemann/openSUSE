@@ -108,4 +108,21 @@
     <comment></comment>
     <requestid>1077838</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1602460022a3bd8e0a38a4f0628081f6</srcmd5>
+    <version>0.11.0</version>
+    <time>1717957402</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.11.0:
+  * update announce.rst for a 0.11.0 release
+  * Remove use of six
+  * Replace inspect.getargspec with getfullargspec
+  * Drop support for Python &lt; 3.8
+- drop python-sphinxcontrib-pecanwsme-no-six.patch (upstream)
+
+- drop unused dependency on openstack-suse-macros
+- remove d2to1 dependency
+- Initial package (0.2)</comment>
+    <requestid>1179530</requestid>
+  </revision>
 </revisionlist>

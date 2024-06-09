@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-pecanwsme
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           python-sphinxcontrib-pecanwsme
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        Extension to Sphinx for documenting APIs built with Pecan and WSME
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/dreamhost/sphinxcontrib-pecanwsme
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-pecanwsme/sphinxcontrib-pecanwsme-%{version}.tar.gz
-# https://github.com/sphinx-contrib/pecanwsme/issues/21
-Patch0:         python-sphinxcontrib-pecanwsme-no-six.patch
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sphinxcontrib-httpdomain}
