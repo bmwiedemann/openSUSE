@@ -116,19 +116,19 @@ index ae1f0242..c0010c77 100644
  bool ZigLLDLinkCOFF(int argc, const char **argv, bool can_exit_early, bool disable_output) {
 -    std::vector<const char *> args(argv, argv + argc);
 -    return lld::coff::link(args, llvm::outs(), llvm::errs(), can_exit_early, disable_output);
-+    return InvokeLld("lld-link-17", llvm::ArrayRef<const char *>(argv, argc), llvm::outs(), llvm::errs(), disable_output);
++    return InvokeLld("lld-link-18", llvm::ArrayRef<const char *>(argv, argc), llvm::outs(), llvm::errs(), disable_output);
  }
  
  bool ZigLLDLinkELF(int argc, const char **argv, bool can_exit_early, bool disable_output) {
 -    std::vector<const char *> args(argv, argv + argc);
 -    return lld::elf::link(args, llvm::outs(), llvm::errs(), can_exit_early, disable_output);
-+    return InvokeLld("ld.lld-17", llvm::ArrayRef<const char *>(argv, argc), llvm::outs(), llvm::errs(), disable_output);
++    return InvokeLld("ld.lld-18", llvm::ArrayRef<const char *>(argv, argc), llvm::outs(), llvm::errs(), disable_output);
  }
  
  bool ZigLLDLinkWasm(int argc, const char **argv, bool can_exit_early, bool disable_output) {
 -    std::vector<const char *> args(argv, argv + argc);
 -    return lld::wasm::link(args, llvm::outs(), llvm::errs(), can_exit_early, disable_output);
-+    return InvokeLld("wasm-ld-17", llvm::ArrayRef<const char *>(argv, argc), llvm::outs(), llvm::errs(), disable_output);
++    return InvokeLld("wasm-ld-18", llvm::ArrayRef<const char *>(argv, argc), llvm::outs(), llvm::errs(), disable_output);
  }
  
  static_assert((Triple::ArchType)ZigLLVM_UnknownArch == Triple::UnknownArch, "");

@@ -1,32 +1,26 @@
-We invoke LLD so we also commented/remove it out as well.
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 92be8fb..e19d18e 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -136,7 +136,7 @@
+diff -ruN zig-0.13.0.orig/CMakeLists.txt zig-0.13.0/CMakeLists.txt
+--- zig-0.13.0.orig/CMakeLists.txt	2024-06-08 02:06:52.784489192 +0800
++++ zig-0.13.0/CMakeLists.txt	2024-06-08 02:07:26.458213443 +0800
+@@ -139,7 +139,7 @@
  
- find_package(llvm 17)
- find_package(clang 17)
--find_package(lld 17)
-+# find_package(lld 17)
+ find_package(llvm 18)
+ find_package(clang 18)
+-find_package(lld 18)
++# find_package(lld 18)
  
  if(ZIG_STATIC_ZLIB)
      if (MSVC)
-@@ -183,7 +183,7 @@
- endforeach(CONFIG_TYPE CMAKE_CONFIGURATION_TYPES)
- 
- include_directories(${LLVM_INCLUDE_DIRS})
--include_directories(${LLD_INCLUDE_DIRS})
-+# include_directories(${LLD_INCLUDE_DIRS})
- include_directories(${CLANG_INCLUDE_DIRS})
- 
- find_package(Threads)
-@@ -707,7 +707,7 @@
- 
- target_link_libraries(zigcpp LINK_PUBLIC
+@@ -736,11 +736,11 @@
+ target_include_directories(zigcpp PUBLIC
+     ${CLANG_INCLUDE_DIRS}
+     ${LLVM_INCLUDE_DIRS}
+-    ${LLD_INCLUDE_DIRS}
++#    ${LLD_INCLUDE_DIRS}
+ )
+ target_link_libraries(zigcpp PUBLIC
      ${CLANG_LIBRARIES}
 -    ${LLD_LIBRARIES}
-+    # ${LLD_LIBRARIES}
++#    ${LLD_LIBRARIES}
      ${LLVM_LIBRARIES}
      ${CMAKE_THREAD_LIBS_INIT}
  )

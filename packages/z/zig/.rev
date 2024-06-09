@@ -60,4 +60,19 @@
     <comment></comment>
     <requestid>1171998</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>74028e700cb1fbede27016e337c4577a</srcmd5>
+    <version>0.13.0</version>
+    <time>1717957342</time>
+    <user>anag+factory</user>
+    <comment>- Update patchsets for llvm18 changes
+  ./0000-remove-lld-in-cmakelist.patch
+  ./0001-invoke-lld.patch
+- Update to version 0.13.0:
+  ** CHANGELOG TOO LONG **
+  See https://ziglang.org/download/0.12.0/release-notes.html
+  * Release focuses more on the LLVM18 support
+</comment>
+    <requestid>1179408</requestid>
+  </revision>
 </revisionlist>

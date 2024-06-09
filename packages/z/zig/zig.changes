@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jun  7 17:56:48 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update patchsets for llvm18 changes
+  ./0000-remove-lld-in-cmakelist.patch
+  ./0001-invoke-lld.patch
+
+-------------------------------------------------------------------
+Fri Jun  7 17:35:24 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.13.0:
+  ** CHANGELOG TOO LONG **
+  See https://ziglang.org/download/0.12.0/release-notes.html
+  * Release focuses more on the LLVM18 support
+
+-------------------------------------------------------------------
 Sat May  4 15:13:58 UTC 2024 - Michael Burge <michael.burge77@gmail.com>
 
 - Update to version 0.12.0:
