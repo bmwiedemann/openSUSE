@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bdce0caddfd756331374e55ebad02772</srcmd5>
+    <version>0~git631</version>
+    <time>1717957220</time>
+    <user>anag+factory</user>
+    <comment>Hi there,
+
+I am resubmitting tvision for inclusion into openSUSE Factory. This is a modernised port of the Turbo Vision 2.0 framework, originally from the public domain release by Borland. It has cross-platform and Unicode support, striving to be a relatively easy way to create applications with TUIs (text-based user interfaces) that are consistent across platforms without app developers needing to handle platform-specific quirks.
+
+The spec file generates two packages:
+* tvision-devel-static - static library, headers, and help file compiler of Turbo Vision 2.0
+* tvision-demos - demo programs showing off Turbo Vision 2.0
+
+The two demo programs in tvision-demos:
+* tvdemo - demo program with multiple applets showing off Turbo Vision widgets
+* tvedit - basic text editor demoing Turbo Vision in a practical application
+
+This request is a necessary prerequisite for the turbo editor to be packaged later:
+https://github.com/magiblot/turbo
+
+This request has a significantly cleaner changes file, dependencies have also been cleaned up, devel merged into devel-static, and a patch from an earlier revision has been removed due to being merged upstream:
+
+https://github.com/magiblot/tvision/pull/163</comment>
+    <requestid>1177428</requestid>
+  </revision>
+</revisionlist>
