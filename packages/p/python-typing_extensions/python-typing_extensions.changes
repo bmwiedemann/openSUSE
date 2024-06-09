@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Jun  8 13:12:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.12.2:
+  * Fix regression in v4.12.0 where specialization of certain
+  * generics with an overridden `__eq__` method would raise
+    errors.
+  * Fix tests so they pass on 3.13.0b2
+  * Preliminary changes for compatibility with the draft
+    implementation of PEP 649 in Python 3.14.
+  * Fix regression in v4.12.0 where nested `Annotated` types
+    would cause `TypeError` to be raised if the nested
+    `Annotated` type had unhashable metadata.
+  * Fix incorrect behaviour of `typing_extensions.ParamSpec` on
+    Python 3.8 and 3.9 that meant that
+    `isinstance(typing_extensions.ParamSpec("P"),
+    typing.TypeVar)` would have a different result in some
+    situations depending on whether or not a profiling
+    function had been set using `sys.setprofile`.
+  * This release focuses on compatibility with the upcoming
+    release of Python 3.13. Most changes are related to the
+    implementation of type parameter defaults (PEP 696).
+
+-------------------------------------------------------------------
 Sat Apr  6 17:27:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.11.0:

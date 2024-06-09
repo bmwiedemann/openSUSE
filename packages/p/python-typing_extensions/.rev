@@ -273,4 +273,30 @@
     `ReadOnly` from the annotation.</comment>
     <requestid>1165856</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>22ec4cb8694963f69563c89b20844545</srcmd5>
+    <version>4.12.2</version>
+    <time>1717957128</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.12.2:
+  * Fix regression in v4.12.0 where specialization of certain
+  * generics with an overridden `__eq__` method would raise
+    errors.
+  * Fix tests so they pass on 3.13.0b2
+  * Preliminary changes for compatibility with the draft
+    implementation of PEP 649 in Python 3.14.
+  * Fix regression in v4.12.0 where nested `Annotated` types
+    would cause `TypeError` to be raised if the nested
+    `Annotated` type had unhashable metadata.
+  * Fix incorrect behaviour of `typing_extensions.ParamSpec` on
+    Python 3.8 and 3.9 that meant that
+    `isinstance(typing_extensions.ParamSpec(&quot;P&quot;),
+    typing.TypeVar)` would have a different result in some
+    situations depending on whether or not a profiling
+    function had been set using `sys.setprofile`.
+  * This release focuses on compatibility with the upcoming
+    release of Python 3.13. Most changes are related to the
+    implementation of type parameter defaults (PEP 696).</comment>
+    <requestid>1179515</requestid>
+  </revision>
 </revisionlist>
