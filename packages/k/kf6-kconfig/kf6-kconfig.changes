@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun  5 10:11:26 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.3.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.3.0/
+- Changes since 6.2.0:
+  * ensure test works with Qt 6.7 on Windows
+  * Use QT_TRANSLATE_NOOP instead of QT_TR_NOOP for KStandardActions
+  * Add helper method to fully move a group to another
+  * Deprecate ctor that takes a backend
+  * Move parts of KStandardAction to KConfigGui
+  * Remove KConfigBackend abstraction
+  * Add a mutex to protect globalData
+  * kconfigxt: Remove docs for SourceExtension parameter which was removed in KF6
+  * Remove explicit maintainer from metainfo
+  * Use ellipsis character instead of three dots in UI strings
+
+-------------------------------------------------------------------
 Mon May  6 12:22:24 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.2.0
