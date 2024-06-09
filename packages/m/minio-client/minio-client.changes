@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 07 19:31:40 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240605T181330Z:
+  * add vulncheck with go upgrade
+  * add space between upload/download indicators
+  * Add sizes to mc admin trace (#4949)
+
+-------------------------------------------------------------------
 Wed Jun 05 05:29:26 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240601T150335Z:
