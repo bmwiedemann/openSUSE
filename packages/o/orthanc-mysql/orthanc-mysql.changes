@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun  7 10:04:25 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- version 5.2
+  * Fix check of Orthanc runtime version
+  * Optimized resources deletion (https://discourse.orthanc-server.org/t/image-insert-are-too-slow-databse-performance-too-poor-when-using-mysql-mariadb/3820/19)
+
+-------------------------------------------------------------------
 Wed Mar 13 09:38:15 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - enable gcc13 for Leap 15.6

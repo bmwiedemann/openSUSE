@@ -21,7 +21,7 @@ Name:           orthanc-mysql
 Summary:        Database plugin for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Databases/Tools
-Version:        5.1
+Version:        5.2
 Release:        0
 URL:            http://orthanc-server.com
 Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancMySQL-%{version}.tar.gz
