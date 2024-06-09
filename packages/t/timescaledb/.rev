@@ -240,4 +240,13 @@
     <comment>- Update to version 2.15.1</comment>
     <requestid>1177419</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2f0b25f36ef2ef4a6a604c0d8e496f11</srcmd5>
+    <version>2.15.2</version>
+    <time>1717957251</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.15.2
+  https://github.com/timescale/timescaledb/releases/tag/2.15.2</comment>
+    <requestid>1179333</requestid>
+  </revision>
 </revisionlist>
