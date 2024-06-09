@@ -31,4 +31,12 @@
     <comment>Update to 6.2.1</comment>
     <requestid>1177095</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b7265fa20076953f08715c6979c91d60</srcmd5>
+    <version>6.3.0</version>
+    <time>1717957200</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 6.3.0 (forwarded request 1178724 from krop)</comment>
+    <requestid>1179308</requestid>
+  </revision>
 </revisionlist>
