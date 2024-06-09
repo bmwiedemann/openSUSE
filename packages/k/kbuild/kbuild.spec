@@ -1,7 +1,7 @@
 #
 # spec file for package kbuild
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,17 @@ Patch8:         kbuild-wrong-memset.patch
 Patch9:         ppc64le.patch
 Patch10:        aarch64.patch
 Patch13:        glob-lstat.patch
+
+# C99 compatibility patches to resolve boo#1225792:
+# From from https://bugzilla.redhat.com/show_bug.cgi?id=2154544
+Patch14:        kBuild-configure-c99.patch
+# Somehow RedHat did not need this one:
+Patch15:        kBuild-configure-c99-2.patch
+# From from https://bugzilla.redhat.com/show_bug.cgi?id=2154544
+Patch16:        kBuild-c99.patch
+# From from https://bugzilla.redhat.com/show_bug.cgi?id=2154544
+Patch17:        kBuild-c99-2.patch
+
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  byacc
@@ -66,6 +77,10 @@ The goals of the kBuild framework:
 %patch -P 9 -p1
 %patch -P 10 -p1
 %patch -P 13 -p1
+%patch -P 14 -p1
+%patch -P 15 -p1
+%patch -P 16 -p1
+%patch -P 17 -p0
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"

@@ -1,0 +1,16 @@
+The eval_buffer function expects the end of the string as the
+(optional) last argument, not its length.
+
+Index: src/kmk/loadapi.c
+===================================================================
+--- src/kmk/loadapi.c	(revision 3600)
++++ src/kmk/loadapi.c	(working copy)
+@@ -59,7 +59,7 @@
+   install_variable_buffer (&pbuf, &plen);
+ 
+   s = xstrdup (buffer);
+-  eval_buffer (s, flp IF_WITH_VALUE_LENGTH_PARAM (strlen (s) /** @todo suboptimal */));
++  eval_buffer (s, flp IF_WITH_VALUE_LENGTH_PARAM (s + strlen (s) /** @todo suboptimal */));
+   free (s);
+ 
+   restore_variable_buffer (pbuf, plen);

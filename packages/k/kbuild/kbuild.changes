@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun  7 11:04:30 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Make kbuild buildable with GCC 14 (boo#1225792)
+  * Changes to configure machinery so that it does not fail and detect
+    what it has detected with previous GCC versions.
+    (kBuild-configure-c99.patch, kBuild-configure-c99-2.patch)
+  * Add many missing includes (kBuild-c99.patch).
+  * Fix an actual bug in a call to eval_buffer that also manifests as
+    a C99 violation (kBuild-c99-2.patch).
+
+-------------------------------------------------------------------
 Thu Feb 22 12:41:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

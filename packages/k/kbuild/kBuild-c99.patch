@@ -1,0 +1,158 @@
+Do not treat <strings.h> as an umbrella header for <string.h>
+The two are distinct on GNU/Linux.
+    
+Also add missing #include <string.h> in some files.
+
+Index: kbuild-0.1.9998svn3427/src/sed/lib/getline.c
+===================================================================
+--- kbuild-0.1.9998svn3427.orig/src/sed/lib/getline.c
++++ kbuild-0.1.9998svn3427/src/sed/lib/getline.c
+@@ -9,10 +9,10 @@
+ #include <stdio.h>
+ #undef getline 			/* bird */
+ 
++#include <string.h>
++
+ #ifdef HAVE_STRINGS_H
+ # include <strings.h>
+-#else
+-# include <string.h>
+ #endif /* HAVE_STRINGS_H */
+ 
+ #ifdef HAVE_STDLIB_H
+Index: kbuild-0.1.9998svn3427/src/sed/lib/mkstemp.c
+===================================================================
+--- kbuild-0.1.9998svn3427.orig/src/sed/lib/mkstemp.c
++++ kbuild-0.1.9998svn3427/src/sed/lib/mkstemp.c
+@@ -2,10 +2,10 @@
+ #include "config.h"
+ #endif
+ 
++#include <string.h>
++
+ #ifdef HAVE_STRINGS_H
+ # include <strings.h>
+-#else
+-# include <string.h>
+ #endif /* HAVE_STRINGS_H */
+ 
+ #ifdef HAVE_STDLIB_H
+Index: kbuild-0.1.9998svn3427/src/sed/lib/utils.c
+===================================================================
+--- kbuild-0.1.9998svn3427.orig/src/sed/lib/utils.c
++++ kbuild-0.1.9998svn3427/src/sed/lib/utils.c
+@@ -19,16 +19,17 @@
+ #include "config.h"
+ 
+ #include <stdio.h>
++#include <unistd.h>
+ 
+ #include <errno.h>
+ #ifndef errno
+   extern int errno;
+ #endif
+ 
++#include <string.h>
++
+ #ifdef HAVE_STRINGS_H
+ # include <strings.h>
+-#else
+-# include <string.h>
+ #endif /* HAVE_STRINGS_H */
+ 
+ #ifdef HAVE_STDLIB_H
+Index: kbuild-0.1.9998svn3427/src/sed/sed/compile.c
+===================================================================
+--- kbuild-0.1.9998svn3427.orig/src/sed/sed/compile.c
++++ kbuild-0.1.9998svn3427/src/sed/sed/compile.c
+@@ -22,14 +22,13 @@
+ #include "strverscmp.h"
+ #include <stdio.h>
+ #include <ctype.h>
++#include <string.h>
+ 
+ #ifdef HAVE_STRINGS_H
+ # include <strings.h>
+ # ifdef HAVE_MEMORY_H
+ #  include <memory.h>
+ # endif
+-#else
+-# include <string.h>
+ #endif /* HAVE_STRINGS_H */
+ 
+ #ifdef HAVE_STDLIB_H
+Index: kbuild-0.1.9998svn3427/src/sed/sed/execute.c
+===================================================================
+--- kbuild-0.1.9998svn3427.orig/src/sed/sed/execute.c
++++ kbuild-0.1.9998svn3427/src/sed/sed/execute.c
+@@ -24,6 +24,7 @@
+ 
+ #include <stdio.h>
+ #include <ctype.h>
++#include <string.h>
+ 
+ #include <errno.h>
+ #ifndef errno
+@@ -46,8 +47,6 @@ extern int errno;
+ 
+ #ifdef HAVE_STRINGS_H
+ # include <strings.h>
+-#else
+-# include <string.h>
+ #endif /*HAVE_STRINGS_H*/
+ #ifdef HAVE_MEMORY_H
+ # include <memory.h>
+Index: kbuild-0.1.9998svn3427/src/sed/sed/fmt.c
+===================================================================
+--- kbuild-0.1.9998svn3427.orig/src/sed/sed/fmt.c
++++ kbuild-0.1.9998svn3427/src/sed/sed/fmt.c
+@@ -22,6 +22,7 @@
+ #include <stdio.h>
+ #include <ctype.h>
+ #include <sys/types.h>
++#include <string.h>
+ 
+ #if HAVE_LIMITS_H
+ # include <limits.h>
+Index: kbuild-0.1.9998svn3427/src/sed/sed/mbcs.c
+===================================================================
+--- kbuild-0.1.9998svn3427.orig/src/sed/sed/mbcs.c
++++ kbuild-0.1.9998svn3427/src/sed/sed/mbcs.c
+@@ -17,6 +17,7 @@
+ 
+ #include "sed.h"
+ #include <stdlib.h>
++#include <string.h>
+ 
+ int mb_cur_max;
+ 
+Index: kbuild-0.1.9998svn3427/src/sed/sed/regexp.c
+===================================================================
+--- kbuild-0.1.9998svn3427.orig/src/sed/sed/regexp.c
++++ kbuild-0.1.9998svn3427/src/sed/sed/regexp.c
+@@ -19,6 +19,7 @@
+ 
+ #include <ctype.h>
+ #include <stdio.h>
++#include <string.h>
+ #ifdef HAVE_STDLIB_H
+ # include <stdlib.h>
+ #endif
+Index: kbuild-0.1.9998svn3427/src/sed/sed/sed.c
+===================================================================
+--- kbuild-0.1.9998svn3427.orig/src/sed/sed/sed.c
++++ kbuild-0.1.9998svn3427/src/sed/sed/sed.c
+@@ -22,12 +22,10 @@
+ 
+ #include "sed.h"
+ 
+-
+ #include <stdio.h>
++#include <string.h>
+ #ifdef HAVE_STRINGS_H
+ # include <strings.h>
+-#else
+-# include <string.h>
+ #endif /*HAVE_STRINGS_H*/
+ #ifdef HAVE_MEMORY_H
+ # include <memory.h>

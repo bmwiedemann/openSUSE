@@ -1,0 +1,12 @@
+Index: kbuild-0.1.9998svn3427/src/kmk/configure.ac
+===================================================================
+--- kbuild-0.1.9998svn3427.orig/src/kmk/configure.ac
++++ kbuild-0.1.9998svn3427/src/kmk/configure.ac
+@@ -121,6 +121,7 @@ pds_AC_DOS_PATHS
+ AC_CACHE_CHECK([for standard gettimeofday], [ac_cv_func_gettimeofday],
+   [ac_cv_func_gettimeofday=no
+    AC_RUN_IFELSE([AC_LANG_SOURCE([[#include <sys/time.h>
++                  #include <stdlib.h>
+                   int main ()
+                   {
+                     struct timeval t; t.tv_sec = -1; t.tv_usec = -1;
