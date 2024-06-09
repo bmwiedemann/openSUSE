@@ -17,7 +17,7 @@
 
 
 Name:           retroarch
-Version:        1.19.0
+Version:        1.19.1
 Release:        0
 Summary:        Emulator frontend
 License:        GPL-3.0-only
@@ -143,7 +143,7 @@ install -m 0755 %{SOURCE1} %{buildroot}%{_bindir}/%{name}_migrate_old_config
 %{_bindir}/%{name}
 %{_bindir}/%{name}_migrate_old_config
 %{_bindir}/%{name}-cg2glsl
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/org.libretro.RetroArch.desktop
 %{_datadir}/metainfo/com.libretro.*.xml
 %{_datadir}/pixmaps/%{name}.svg
 %{_mandir}/man?/%{name}.?*

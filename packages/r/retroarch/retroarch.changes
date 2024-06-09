@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jun  8 03:15:24 UTC 2024 - Yunhe Guo <i@guoyunhe.me>
+
+- Update to version 1.19.1
+  * Savestates: Revert savestate changes, was causing corruption and other issues
+
+-------------------------------------------------------------------
+Sat Jun  8 01:05:45 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to version 1.19.1:
+  * (WASAPI) Only write when running and fix deadlock.
+
+-------------------------------------------------------------------
 Thu May 30 14:31:49 UTC 2024 - Yunhe Guo <i@guoyunhe.me>
 
 - Update to version 1.19.0

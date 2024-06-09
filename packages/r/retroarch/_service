@@ -5,7 +5,7 @@
     <param name="filename">retroarch</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">v1.19.0</param>
+    <param name="revision">v1.19.1</param>
     <param name="exclude">.github</param>
     <param name="exclude">.vscode</param>
     <param name="exclude">bootstrap</param>
