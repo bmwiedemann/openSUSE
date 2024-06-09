@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jun 08 09:14:14 UTC 2024 - andrea.manzini@suse.com
+
+- Update to version 0.7.1:
+  * refactor: replace deprecated qAsConst with std::as_const() (#1565)
+  * fix(registry): save non-zero docset revision in meta.json
+  * fix(browser): send key events to web view's focus proxy
+  * fix(ui): use async selection in search edit
+  * fix(ui): add tool tip when global shortcuts are not supported
+- remove patch zeal-deprecate-qAsConst.patch as already merged in upstream
+
+-------------------------------------------------------------------
 Thu Nov  9 09:40:47 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Build against Qt6.

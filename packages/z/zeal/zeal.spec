@@ -1,7 +1,7 @@
 #
 # spec file for package zeal
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global optflags %{optflags} -Wno-unused-variable
 
 Name:           zeal
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        Offline API documentation browser
 License:        GPL-3.0-only
@@ -28,8 +28,6 @@ URL:            https://zealdocs.org
 Source0:        %{name}-%{version}.tar.xz
 # `help2man zeal > zeal.1` can't be run without X started.
 Source9:        zeal.1
-# PATCH-FIX-UPSTREAM zeal-deprecate-qAsConst.patch gh#zealdocs/zeal#1565 badshah400@gmail.com --  replace deprecated qAsConst with std::as_const()
-Patch0:         https://github.com/zealdocs/zeal/commit/9630cc94c155d87295e51b41fbab2bd5798f8229.patch#/%{name}-deprecate-qAsConst.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
@@ -49,8 +47,8 @@ BuildRequires:  pkgconfig(xcb-keysyms)
 Requires:       libQt6Sql6 >= 6.2.0
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
-Requires(postun):hicolor-icon-theme
-Requires(postun):update-desktop-files
+Requires(postun): hicolor-icon-theme
+Requires(postun): update-desktop-files
 
 %description
 Zeal is an offline API documentation browser inspired by Dash
