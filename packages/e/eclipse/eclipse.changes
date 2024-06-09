@@ -1,13 +1,4 @@
 -------------------------------------------------------------------
-Wed Apr 10 20:15:34 UTC 2024 - Fridrich Strba <fstrba@suse.com>
-
-- Added patch:
-  * new-atinject.patch
-    + fix build against atinject 1.0.5, where the bundle name is
-      jakarta.inject.jakarta.inject-api and not javax.inject like
-      in the widely used previous version
-
--------------------------------------------------------------------
 Wed Mar 20 17:36:32 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

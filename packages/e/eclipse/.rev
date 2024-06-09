@@ -199,4 +199,13 @@
     <comment>fix build with atinject 1.0.5</comment>
     <requestid>1166717</requestid>
   </revision>
+  <revision rev="26" vrev="15">
+    <srcmd5>3526a1f039fd0ff281de4a1b460f3765</srcmd5>
+    <version>4.15</version>
+    <time>1717957337</time>
+    <user>anag+factory</user>
+    <comment>Fix build with the new/old artifact javax.inject:javax.inject
+revert previous change</comment>
+    <requestid>1179413</requestid>
+  </revision>
 </revisionlist>
