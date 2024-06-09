@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 07 00:42:26 UTC 2024 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- add patch mozilla-bmo1896958.patch adapted from
+  https://bugzilla.mozilla.org/show_bug.cgi?id=1896958 to fix
+  compilation with rust >= 1.78
+- add patch mozilla-bmo1862601.patch adapted from
+  https://bugzilla.mozilla.org/show_bug.cgi?id=1862601 to fix
+  build failure using --system-icu on Tumbleweed
+
+-------------------------------------------------------------------
 Thu Mar 28 15:00:02 UTC 2024 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - update to SeaMonkey 2.53.18.2

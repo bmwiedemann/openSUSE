@@ -93,6 +93,8 @@ Patch3:         seamonkey-lto.patch
 Patch4:         seamonkey-man-page.patch
 Patch5:         reproducible.patch
 Patch6:         mozilla-bmo531915.patch
+Patch7:         mozilla-bmo1896958.patch
+Patch8:         mozilla-bmo1862601.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh coreutils
 Provides:       seamonkey-mail = %{version}
@@ -229,6 +231,16 @@ cp %{SOURCE12} GNUmakefile
 %patch -P 5 -p1
 %patch -P 6 -p1
 
+# Fix Rust builds on Tumbleweed; see https://bugzilla.mozilla.org/show_bug.cgi?id=1896958
+%if 0%{?suse_version} > 1600
+%patch -P 7 -p1
+%endif
+
+# Fix --system-icu builds on Tumbleweed; see https://bugzilla.mozilla.org/show_bug.cgi?id=1862601
+%if 0%{?suse_version} > 1600
+%patch -P 8 -p1
+%endif
+
 cat << EOF > .mozconfig
 mk_add_options MOZILLA_OFFICIAL=1
 mk_add_options BUILD_OFFICIAL=1
@@ -261,7 +273,7 @@ ac_add_options --with-system-nss
 %endif
 ac_add_options --with-system-zlib
 ac_add_options --with-system-bz2
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200 && 0%{?is_opensuse}
+%if 0%{?suse_version} > 1600 || 0%{?sle_version} >= 150200 && 0%{?is_opensuse}
 ac_add_options --with-system-webp
 ac_add_options --with-system-icu
 %endif
@@ -318,7 +330,7 @@ find . -regex ".*\.c\|.*\.cpp\|.*\.h" \
 # As of 2.53.13, Tumbleweed builds are failing due to the linker
 # issue <https://bugzilla.mozilla.org/show_bug.cgi?id=1778981>
 # so we disable LTO.
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1600
 %define _lto_cflags %{nil}
 %endif
 export SUSE_ASNEEDED=0
