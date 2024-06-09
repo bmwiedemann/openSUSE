@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun  7 13:52:41 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- refactor the jemalloc requires code so that it can accomodate
+  more feature flags
+- add requires for yjit enabled ruby
+
+-------------------------------------------------------------------
 Thu Nov 16 14:20:31 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - gem_cleanup macro: yet another place which got hit by ruby 3.3

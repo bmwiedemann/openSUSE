@@ -287,4 +287,14 @@ For staging:n</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1128358</requestid>
   </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>0bdeb77719f2a9eafc4d968bd1a2834e</srcmd5>
+    <version>3.2.1</version>
+    <time>1717957142</time>
+    <user>anag+factory</user>
+    <comment>- refactor the jemalloc requires code so that it can accomodate
+  more feature flags
+- add requires for yjit enabled ruby</comment>
+    <requestid>1179322</requestid>
+  </revision>
 </revisionlist>

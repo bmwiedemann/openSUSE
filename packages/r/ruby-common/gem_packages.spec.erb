@@ -13,28 +13,29 @@
     path
   end
 
-  def self.rpm_jemalloc_prefix
-    jemalloc_prefix = nil
+
+  def self.rpm_suffix_for_feature(feature)
+    rpm_prefix = nil
 
     package_name = RbConfig::CONFIG['RUBY_SO_NAME']
 
     IO.popen("rpm -q --provides #{package_name}") {|rpm_io|
       rpm_provides = rpm_io.read
-      mo = /(?<jemalloc_prefix>with(out)?-jemalloc)/.match(rpm_provides)
+      mo = /(?<rpm_prefix>with(out)?-#{feature})/.match(rpm_provides)
 
       if mo
-        jemalloc_prefix = mo[:jemalloc_prefix]
+        rpm_prefix = mo[:rpm_prefix]
       end
     }
 
-    jemalloc_prefix
+    rpm_prefix
   end
 
-  def self.jemalloc_requires
-    jemalloc_prefix = rpm_jemalloc_prefix
+  def self.requires_for_feature(feature)
+    found_rpm_prefix = rpm_suffix_for_feature(feature)
 
-    if jemalloc_prefix
-      return "Requires:       #{RbConfig::CONFIG['RUBY_SO_NAME']}-#{jemalloc_prefix} >= #{RbConfig::CONFIG['RUBY_PROGRAM_VERSION']}"
+    if found_rpm_prefix
+      return "Requires:       #{RbConfig::CONFIG['RUBY_SO_NAME']}-#{found_rpm_prefix} >= #{RbConfig::CONFIG['RUBY_PROGRAM_VERSION']}"
     end
     #
     return ""
@@ -149,7 +150,8 @@
 <% end -%>
 # /MANUAL
 <% unless spec.extensions.empty? -%>
-<%= jemalloc_requires %>
+<%= requires_for_feature('jemalloc') %>
+<%= requires_for_feature('yjit') %>
 <% end -%>
 Summary:        <%= config[:summary] or spec.summary %>
 Group:          Development/Languages/Ruby
