@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jun 07 19:39:26 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.13:
+  * Cause doctl to fail with 404 for armv7l
+  * doctl: Resolve versions based on GitHub releases
+  * repoint cmctl references to new github location
+  * remove k10multicluster from downloads
+  * add system install powershell
+  * add better error handling
+  * Add concurrency workers to chart/upgrade
+  * Bump golang.org/x/mod from 0.17.0 to 0.18.0
+  * Bump golang.org/x/crypto from 0.23.0 to 0.24.0
+  * fix chart upgrade to handle v prefix
+  * Add consul as a tool & fix tests
+
+-------------------------------------------------------------------
 Tue May 14 14:17:22 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.11.12:
