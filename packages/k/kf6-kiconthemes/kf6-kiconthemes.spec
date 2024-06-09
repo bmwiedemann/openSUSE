@@ -19,13 +19,13 @@
 %define qt6_version 6.6.0
 
 %define rname kiconthemes
-# Full KF6 version (e.g. 6.2.0)
+# Full KF6 version (e.g. 6.3.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kiconthemes
-Version:        6.2.0
+Version:        6.3.0
 Release:        0
 Summary:        Icon GUI utilities
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -40,6 +40,7 @@ BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  cmake(KF6Archive) >= %{_kf6_bugfix_version}
+BuildRequires:  cmake(KF6BreezeIcons) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6ColorScheme) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6ConfigWidgets) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}
@@ -116,8 +117,9 @@ in applications using the KDE Frameworks. Development files.
 %files
 %{_kf6_debugdir}/kiconthemes.categories
 %{_kf6_debugdir}/kiconthemes.renamecategories
-%dir %{_kf6_plugindir}/iconengines
-%{_kf6_plugindir}/iconengines/KIconEnginePlugin.so
+%dir %{_kf6_plugindir}/kiconthemes6/
+%dir %{_kf6_plugindir}/kiconthemes6/iconengines
+%{_kf6_plugindir}/kiconthemes6/iconengines/KIconEnginePlugin.so
 
 %files imports
 %{_kf6_qmldir}/org/kde/iconthemes/

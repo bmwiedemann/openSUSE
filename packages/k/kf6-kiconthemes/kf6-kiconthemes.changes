@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jun  5 10:11:40 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.3.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.3.0/
+- Changes since 6.2.0:
+  * Add missing include
+  * KIconDialog: Prevent briefly visible mini-window from showing up (kde#487762)
+  * Update file kicontheme.cpp
+  * include only if needed, avoid extra define
+  * Set QML module base version to 1.0
+  * Windows tests work now
+  * use Qt to fill in the generic mime-type icon information
+  * use Qt to fill in the generic mime-type icon information
+  * ensure tests pass locally with KDE platform theme, too
+  * ensure we not clash with breeze from resource
+  * adapt test to fact we now have Breeze with hicolor inherits
+  * remove not used files
+  * remove my old rcc test, no longer done
+  * always require the icon library
+  * Add KIconTheme::initTheme() to configure proper icon set as opt-in
+
+-------------------------------------------------------------------
 Mon May  6 12:22:38 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.2.0
