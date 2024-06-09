@@ -1,0 +1,12 @@
+diff --git a/src/plugins/dataforms/dataforms.cpp b/src/plugins/dataforms/dataforms.cpp
+index 0dc17cd..1bf52e1 100644
+--- a/src/plugins/dataforms/dataforms.cpp
++++ b/src/plugins/dataforms/dataforms.cpp
+@@ -811,6 +811,7 @@ IDataForm DataForms::dataSubmit(const IDataForm &AForm) const
+ 		{
+ 			IDataField submField;
+ 			submField.var = field.var;
++			submField.type = field.type;
+ 			submField.value = field.value;
+ 			submField.required = false;
+ 			form.fields.append(submField);

@@ -184,4 +184,12 @@
 </comment>
     <requestid>738671</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>159f7956ad18e472d9e442433d98e067</srcmd5>
+    <version>1.3.0+git1639054987.g0abd5e1</version>
+    <time>1717957245</time>
+    <user>anag+factory</user>
+    <comment>Enhance changelog, make it acceptable by review team (forwarded request 1179245 from dimstar)</comment>
+    <requestid>1179246</requestid>
+  </revision>
 </revisionlist>

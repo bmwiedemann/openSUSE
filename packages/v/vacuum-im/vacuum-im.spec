@@ -1,7 +1,7 @@
 #
 # spec file for package vacuum-im
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,23 @@
 
 
 %define sname vacuum
-%define rtime 1571036065
-%define rhash 9f3952b2
+%define rtime 1639054987
+%define rhash g0abd5e1
 Name:           %{sname}-im
 Version:        1.3.0+git%{rtime}.%{rhash}
 Release:        0
 Summary:        Jabber client written with Qt
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Instant Messenger
-Url:            http://www.vacuum-im.org/
+URL:            http://www.vacuum-im.org/
 Source:         %{name}-r%{rhash}.tar.xz
 # PATCH-FEATURE-OPENSUSE paranoia.patch
 Patch1:         paranoia.patch
 # PATCH-FEATURE-OPENSUSE fix_default_smiles.patch
 Patch2:         fix_default_smiles.patch
+# Fix sending of type attribute in data forms
+# PATCH-FIX-UPSTREAM dataform_submit_type_attr.patch
+Patch3:         dataform_submit_type_attr.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -101,10 +104,7 @@ This plugin needed to collect application statistics.
 %lang_package
 
 %prep
-%setup -q -n vacuum-im
-
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n vacuum-im
 
 %build
 %cmake \
@@ -159,6 +159,7 @@ mv %{buildroot}%{_bindir}/%{sname} %{buildroot}%{_bindir}/%{name}
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
+%{_datadir}/metainfo/vacuum-im.metainfo.xml
 
 %files -n %{libname}
 %defattr(-,root,root)

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb 20 13:12:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
+Fri Jul 15 18:41:55 UTC 2022 - D. Berge <opensuse@navlost.eu>
+
+- update source to revision 0abd5e11dd3e2538b8c47f5a06febedf73ae99ee
+  + Don't hide trayicon manually on exit, fix for #965
+  + SCRAM-SHA-256/384/512 support. But 384 doesn't work on
+    https://lightwitch.org/ for some unknown reasons.
+- added patch dataform_submit_type_attr.patch to fix bug with
+  XEP-0004 form submission
+
+-------------------------------------------------------------------
 Tue Oct 15 18:00:34 UTC 2019 - Andrey Karepin <egdfree@opensuse.org>
 
 - update source to 9f3952b21b8d3ee1ef76b31abbb027fb21d8ed89
