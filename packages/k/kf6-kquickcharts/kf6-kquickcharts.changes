@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Jun  5 10:11:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.3.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.3.0/
+- Changes since 6.2.0:
+  * Set a better default size for the example application
+  * Don't crash if we try to access an item from an empty ArraySource
+  * Enable highlighting for most pages in the charts example
+  * Port example pages to use ChartPage
+  * Add a common base type for pages in the chart example
+  * Remove API selection from charts example
+  * Convert chart example to use an executable QML module
+  * Expose highlight property on PieChartControl
+  * Support highlighting in LineChartControl
+  * controls: Add support for highlighting hovered items in Legend
+  * Fix normalized line size calculation in LineChartNode
+  * Support highlight in BarChart
+  * Support highlight in PieChart
+  * Support highlight property in LineChart
+  * Add a protected method to Chart to deemphasise non-highlighted items
+  * Add a `highlight` property to Chart
+  * Remove explicit maintainer from metainfo
+  * controls: Ceil all components of preferredWidth in LegendDelegate contents (kde#486411)
+
+-------------------------------------------------------------------
 Mon May  6 12:22:51 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.2.0
