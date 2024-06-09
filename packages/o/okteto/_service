@@ -3,10 +3,10 @@
     <param name="url">https://github.com/okteto/okteto</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">2.27.4</param>
+    <param name="revision">2.28.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
-    <param name="match-tag">2.27.4</param>
+    <param name="match-tag">2.28.0</param>
   </service>
   <service name="set_version" mode="manual">
     <param name="basename">okteto</param>

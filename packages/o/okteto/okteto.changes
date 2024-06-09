@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Jun 07 19:29:12 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.28.0:
+  * fix: use the correct image on okteteo test (#4326) (#4330)
+  * [Backport release-2.28] fix: CVE-2023-47108 (#4328)
+  * fix test logs (#4325)
+  * okteto exec to work the same as kubectl exec (#4289)
+  * Add OKTETO_DOMAIN to remote test runner (#4324)
+  * fix: panics on command initialsation (#4322)
+  * [okteto test] only deploy when using `--deploy` flag (#4320)
+  * Use .oktetoignore in deploy and destroy remote (#4316)
+  * fix panic when inferring stack with empty image (#4312)
+  * okteto test: return info log instead of failing when no tests
+    defined (#4317)
+  * DEV-335 Repository is not being calculated correctly for Smart
+    Builds when the manifest is within a subdirectory of a
+    repository (#4307)
+  * Use /etc for cache key in remote runner image (#4315)
+  * remove unused code (build) (#4311)
+  * Partial implementation of artifacts for test command (#4302)
+  * --- (#4308)
+  * Validate Test section to avoid panic if test section is not
+    populated properly (#4309)
+  * remove unused code (#4310)
+  * fix: warning displayed even when the file was invalid (#4304)
+  * `Preserve local env vars if also declared in `.env` + Add E2E
+    test for Okteto Variables (#4303)
+  * Fix regression with `OKTETO_TOKEN` and improve DevX for invalid
+    token (#4297)
+  * Add ignore root section to .oktetoignore (#4295)
+  * Include all manifest properties to "friendly err" util + Add
+    okteto test alias (#4298)
+  * chore: update golang-ci to 2.5.0 (#4299)
+  * chore: use debian bookworm (#4291)
+  * account for no tags in github action script (#4293)
+  * fix: separate multiple cache statements (#4294)
+  * chore: upgrade deps (PLAT-485) (#4290)
+  * Remove deprecated code related to okteto chart `0.10.8` (#4260)
+  * Initialize ignore package (#4277)
+  * build(deps): Bump werkzeug from 2.3.8 to 3.0.3 in
+    /samples/python (#4280)
+  * set okteto context and namespace from env vars (#4247)
+  * [Refactor] Add `Syncthing.Fs` (#4266)
+  * fix: retry builds on depot (#4285)
+  * fix linter (#4283)
+  * fix: not show unwanted warning (#4282)
+  * build(deps): Bump jinja2 from 3.1.3 to 3.1.4 in /samples/python
+    (#4281)
+
+-------------------------------------------------------------------
 Thu May 30 11:32:35 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.27.4:
