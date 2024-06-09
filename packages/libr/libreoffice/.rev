@@ -3527,4 +3527,12 @@ Petr</comment>
     <comment>24.2.4</comment>
     <requestid>1179042</requestid>
   </revision>
+  <revision rev="292" vrev="2">
+    <srcmd5>f85afd97ec8ac74278147f1802c4db03</srcmd5>
+    <version>24.2.4.2</version>
+    <time>1717957187</time>
+    <user>anag+factory</user>
+    <comment>fix changes</comment>
+    <requestid>1179249</requestid>
+  </revision>
 </revisionlist>
