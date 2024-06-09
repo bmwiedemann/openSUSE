@@ -30,6 +30,8 @@ Source0:        https://github.com/OpenBoard-org/OpenBoard/archive/refs/tags/v%{
 Patch569:       0569-scale-mirror-pixmap.patch
 # https://github.com/OpenBoard-org/OpenBoard/pull/955
 Patch955:       0955-shortcut-configuration.patch
+# https://github.com/OpenBoard-org/OpenBoard/pull/1010
+Patch1010:      1010-fix-qapp-cast.patch
 # https://github.com/letsfindaway/OpenBoard/pull/117
 Patch9117:      9117-disable-software-update.patch
 BuildRequires:  desktop-file-utils

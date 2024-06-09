@@ -1,0 +1,26 @@
+From 67b9d8701164e3065c1bb01f0045c1b1e7a03697 Mon Sep 17 00:00:00 2001
+From: letsfindaway <me@letsfindaway.de>
+Date: Sun, 9 Jun 2024 07:38:44 +0200
+Subject: [PATCH] fix: cast for object during construction
+
+- avoid to static_cast UBApplication object while constructor
+  is still not completed
+- fixes problem to determine userDirectory before ApplicationName
+  and OrganizationName are defined
+---
+ src/core/UBApplication.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/core/UBApplication.h b/src/core/UBApplication.h
+index 662d31464..9347c5b63 100644
+--- a/src/core/UBApplication.h
++++ b/src/core/UBApplication.h
+@@ -80,7 +80,7 @@ class UBApplication : public SingleApplication
+ 
+         static UBApplication* app()
+         {
+-            return static_cast<UBApplication*>qApp;
++            return dynamic_cast<UBApplication*>qApp;
+         }
+ 
+         static const QString mimeTypeUniboardDocument;

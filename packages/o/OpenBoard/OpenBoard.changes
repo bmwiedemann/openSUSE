@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun  9 08:35:35 UTC 2024 - Martin Winter <me@letsfindaway.de>
+
+- fix a problem with latest plasma5 security patches
+  * add 1010-fix-qapp-cast.patch
+
+-------------------------------------------------------------------
 Wed May  8 09:01:25 UTC 2024 - Martin Winter <me@letsfindaway.de>
 
 - update to release version 1.7.1
