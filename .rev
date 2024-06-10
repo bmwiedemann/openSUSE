@@ -102,4 +102,21 @@
     <comment></comment>
     <requestid>1122204</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ebc49f065cae1c79a4024a7d1a8042db</srcmd5>
+    <version>1.3.14</version>
+    <time>1718033878</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.14:
+  * XMLSec 1.3.x compliance
+  * Make DES/3DES/KW-3DES support conditional on DES availability
+    in XMLSec
+  * PKCS11 support
+  * Improved libxml2 version check
+  * Several test improvements
+
+- Normalize the tests call
+- Update BuildRequires.</comment>
+    <requestid>1179647</requestid>
+  </revision>
 </revisionlist>
