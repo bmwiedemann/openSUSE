@@ -19,7 +19,7 @@
 
 
 Name:           deno
-Version:        1.41.2
+Version:        1.44.1
 Release:        0
 Summary:        A secure JavaScript and TypeScript runtime
 License:        MIT
@@ -29,8 +29,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 Source99:       revendor_source.sh
-Patch0:         deno-disable-update-check.patch
-Patch1:         deno-rm-upgrade-cmd.patch
+Patch1:         deno-rm-upgrade.patch
 BuildRequires:  cargo-packaging
 # gcc-c++ needed to build SPIRV-Cross
 BuildRequires:  clang
@@ -69,11 +68,12 @@ updated with the --reload flag.
 
 %prep
 %autosetup -a1 -p1
-cp %{SOURCE2} .cargo/config
 # Drop lock file due to revendor_source.sh breaking check
 rm Cargo.lock
 # drop checksum for ICU 72 -> 73
 echo '{"files":{},"package":""}' > vendor/deno_core/.cargo-checksum.json
+
+cp %{SOURCE2} .cargo/config
 
 %build
 export V8_FROM_SOURCE=1
