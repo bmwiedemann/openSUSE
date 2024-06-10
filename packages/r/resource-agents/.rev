@@ -1741,4 +1741,34 @@
   * galera: allow joiner to report non-Primary during initial IST</comment>
     <requestid>1165659</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>7da93417e7afd10e20bb3ecabca9b360</srcmd5>
+    <version>4.14.0+git15.c784b83c</version>
+    <time>1718033825</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.14.0+git15.c784b83c:
+  * ocf-shellfuncs: fix version regex in ocf_local_nodename()
+  * azure-events-az: update to API versions, add retry functionality for metadata requests, update tests
+  * Mid: storage-mon: Add logging to daemon mode.
+  * outscale: new resource agent (#1938)
+  * Azure-lb fails if IPv6 disabled (#1939)
+  * Filesystem: fail when leading or trailing whitespace is present in device or directory parameters
+  * AWS agents: use curl_retry()
+  * Filesystem: fail when incorrect device mounted on mountpoint, and dont unmount the mountpoint in this case, or if mountpoint set to &quot;/&quot;
+  * ocf-shellfuncs: add curl_retry()
+  * build: update ChangeLog for 4.14.0
+  * doc: writing-python-agents: add description of is_probe() and distro()
+  * build: update ChangeLog for 4.14.0-rc1
+  * db2: fix OCF_SUCESS name in db2_notify (#1933)
+  * docs: writing-python-agents: update required Python version to 3.6+
+  * findif.sh: fix corner cases
+  * portblock: remove write to tcp_tw_recycle
+- Normalize log format from RAs with one of Pacemaker  (bsc#1217456)
+- Remove unsupported RAs from resource-agents package (jsc#PED-5577) (jsc#PED-8232)
+  add-patch:
+    drop-deprecated-agents.patch 
+  remove-patch:
+    0001-LVM-Default-partial_activation-to-true-in-SLE-HAE.patch</comment>
+    <requestid>1179621</requestid>
+  </revision>
 </revisionlist>
