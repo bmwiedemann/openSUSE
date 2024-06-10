@@ -24,6 +24,8 @@ Wed May  1 11:58:56 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
   * Whenever an error occurs, the keystroke buffer is cleared, thus
     stopping the execution of a macro or a string bind.
   * The mousewheel scrolls the viewport instead of moving the cursor.
+  * CVE-2024-5742: Avoid privilege escalations via symlink attacks
+    on emergency save file (boo#1226099)
 
 -------------------------------------------------------------------
 Fri Jan 20 05:33:37 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
