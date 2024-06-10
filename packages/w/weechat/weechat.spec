@@ -1,7 +1,7 @@
 #
 # spec file for package weechat
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           weechat
-Version:        4.2.1
+Version:        4.3.1
 Release:        0
 Summary:        Multi-protocol extensible Chat Client
 License:        GPL-3.0-or-later
@@ -37,8 +37,8 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libgpg-error-devel
 BuildRequires:  libtool
-BuildRequires:  lzo-devel
 BuildRequires:  libzstd-devel
+BuildRequires:  lzo-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
@@ -46,8 +46,9 @@ BuildRequires:  ruby-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(enchant)
 BuildRequires:  pkgconfig(gnutls)
-BuildRequires:  pkgconfig(lua)
+BuildRequires:  pkgconfig(libcjson)
 BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(tcl)
 Requires:       ca-certificates

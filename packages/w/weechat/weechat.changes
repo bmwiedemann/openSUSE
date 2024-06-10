@@ -1,4 +1,121 @@
 -------------------------------------------------------------------
+Sun Jun  2 22:08:20 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Update to version 4.3.1:
+  *  irc: close /list buffer when the server buffer is closed (#2121)
+  *  xfer: fix send of data on the DCC chat buffer after /upgrade if the buffer was opened before the upgrade (#2092)
+  *  php: fix return value of function hdata_longlong
+  *  tcl: fix return value of function hdata_longlong (#2119)
+  *  core: fix detection of libgcrypt ≥ 1.11 (debian #1071960)
+  *  core, relay: fix include directory of libcjson and libzstd
+  *  tests: fix relay tests on s390x (#2118)
+  *  tests: fix check of php plugin (#2117)
+  *  tests: fix compilation of tests on Fedora 40 (#2116)
+  *  tests: fix compilation of tests on Rocky 9.4
+
+- From version 4.3.0:
+  - Changed:
+    * reaking: irc: add server option "autojoin_delay" (delay before autojoin), use option "command_delay" before execution of the command (#862)
+    * breaking: irc: rename option irc.color.item_channel_modes to weechat.color.status_modes
+    * breaking: irc: add option -all in command /allchan, do not execute command on parted channels by default (#2085)
+    * breaking: relay: rename option relay.weechat.commands to relay.network.commands and change default to *,!quit (#2066)
+    * breaking: relay: change option type relay.look.auto_open_buffer to string (#2066)
+    * breaking: core: add buffer properties "input_prompt" and "modes", used to display bar items (#2066)
+    * breaking: core: add bar item "lag" to display lag on relay remote buffers (#2066)
+    * breaking: core: send signal "buffer_line_added" on buffers with free content
+    * breaking: core: convert option weechat.look.hotlist_sort to a list of fields (#2097)
+    * breaking: core: rename variables with creation time in hdata "hotlist": "creation_time.tv_sec" to "time" and "creation_time.tv_usec" to "time_usec"
+    * breaking: api: return -1 or 1 if one input string is NULL and not the other in string comparison functions
+    * breaking: api: use whole replacement string instead of first char in function string_remove_color
+    * core: use nick offline color for nick in action message
+    * core: display a specific message when the value of option is unchanged after /set command
+    * core: add variable ${highlight} in option weechat.look.buffer_time_format (#2079)
+    * core: reintroduce help on the variables and operators in /help eval (#2005)
+    * core: allow case insensitive search of partial buffer name with (?i)name in command /buffer
+    * core: use function util_strftimeval in evaluation of expression date:xxx
+    * fset: allow filename starting with "~" in command /fset -export
+    * irc: store lag in channel and private buffers (local variable "lag"), in addition to the server buffer
+    * irc: allow range in commands /unban and /unquiet (#2113)
+    * tcl: add support of Tcl 9.0 (#2075)
+  - Added:
+    *  relay: add "api" protocol (HTTP REST API), add options relay.look.display_clients, relay.api.remote_get_lines and relay.network.time_window (#2066)
+    *  relay: add command /remote to connect to remote WeeChat relay servers (#2066)
+    *  relay: add support of websocket extension "permessage-deflate" (#1549)
+    *  core, api: add unique identifier "id" in buffer and nicklist (group and nick), add function "hdata_longlong", allow search by buffer id in function buffer_search, allow search by group and nick id in functions nicklist_search_group and nicklist_search_nick (#2081)
+    *  core: add support of XDG "state" directory (#2106, #1747)
+    *  core: add support of SGR mouse events (#2082)
+    *  fset: add option -import in command /fset
+    *  core: add option -s in command /command to execute multiple commands separated by semicolons
+    *  core: add option malloc_trim in command /sys
+    *  core: add option weechat.look.config_permissions (#2057)
+    *  core: add option weechat.look.highlight_prefix (#2079)
+    *  core: add option weechat.completion.case_sensitive
+    *  api: add functions config_option_get_{string|pointer} and config_{boolean|integer|string|color|enum}_inherited in scripting API
+    *  api: add modifier "color_decode" to decode WeeChat colors with a replacement string
+    *  api: add support of base64url in encode/decode functions
+    *  api: add support of specifier %! for timestamp in function util_strftimeval
+    *  api: add info "plugin_loaded"
+    *  script: add option enable in command /script
+    *  script: add info "script_loaded"
+  - Fixed:
+    *  core: fix conversion of WeeChat colors to ANSI colors: "default", "bar_fg", "bar_bg", "bar_delim"
+    *  core: fix recursive search of group in nicklist
+    *  core: use nick offline highlight color for prefix of action message when the nick is offline with a highlight
+    *  core: add missing hdata name "buffer" in hdata "hotlist"
+    *  core: fix reset to initial scroll position after search of text in buffer (#2093)
+    *  core: add missing mouse events "alt-ctrl-button2" and "alt-ctrl-button3"
+    *  core: remove trailing directory separators in home directories (#2070)
+    *  exec: remove trailing space on buffers with free content when line numbers are not displayed
+    *  exec: add missing exec tags in lines of buffers with free content (#2086)
+    *  irc: fix crash in split of IRC message containing a newline if the server is not given
+    *  irc: fix display of reply for CTCP request received on a channel when capability echo-message is enabled
+    *  irc: display CTCP reply to a nick in server buffer instead of channel
+    *  irc: add missing tags on self action messages when capability echo-message is enabled (#2074)
+    *  irc: don't strip monospace color code 0x11 from incoming messages (#2073)
+    *  irc: fix random date displayed when a received message contains tags but no "time" (#2064)
+    *  lua: fix freeze on call to "debug.debug" (#1906, #1907)
+    *  python: fix truncation of unsigned long long integer returned by function string_parse_size
+    *  relay: set the last IRC client disconnection time only after a successful connection (#2103)
+    *  script: always display list of scripts when searching scripts with /script search (#2077)
+    *  script: fix default mouse keys (#2076)
+    *  scripts: fix crash on script unload when a hook is created in a buffer close callback (#2067)
+    *  tcl: fix truncation of long integer returned by function hdata_long
+    *  trigger: fix memory leak when adding a new trigger with /trigger command
+
+- From version 4.2.3:
+  *  xfer: fix send of data on the DCC chat buffer after /upgrade if the buffer was opened before the upgrade (#2092)
+  *  irc: fix crash in split of IRC message containing a newline if the server is not given
+  *  core, relay: fix include directory of libzstd
+
+-------------------------------------------------------------------
+Sun Apr 28 14:53:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.2:
+  * core: fix reset to initial scroll position after search
+    of text in buffer (issue #2093)
+  * core: add missing mouse events "alt-ctrl-button2" and
+    "alt-ctrl-button3"
+  * exec: remove trailing space on buffers with free content when
+    line numbers are not displayed
+  * exec: add missing exec tags in lines of buffers with free
+    content (issue #2086)
+  * irc: add missing tags on self action messages when capability
+    echo-message is enabled (issue #2074)
+  * python: fix truncation of unsigned long long integer returned
+    by function string_parse_size
+  * relay: set the last IRC client disconnection time only after
+    a successful connection (issue #2103)
+  * script: always display list of scripts when searching scripts
+    with `/script search` (issue #2077)
+  * script: fix default mouse keys (issue #2076)
+  * scripts: fix crash on script unload when a hook is created
+    in a buffer close callback (issue #2067)
+  * tcl: fix truncation of long integer returned by function
+    hdata_long
+  * trigger: fix memory leak when adding a new trigger with
+    `/trigger` command
+
+-------------------------------------------------------------------
 Tue Feb  6 07:47:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.2.1:
@@ -316,15 +433,15 @@ Wed Nov  9 15:24:53 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 3.7.1:
   * core: add option -save in command /upgrade
-  * core: add option weechat.look.highlight_disable_regex and buffer property "highlight_disable_regex" 
-  * core: sort filters by name 
+  * core: add option weechat.look.highlight_disable_regex and buffer property "highlight_disable_regex"
+  * core: sort filters by name
   * core: add key Alt+Backspace to delete previous word, change key Ctrl+w to delete previous word until whitespace
   * core: fix wrong terminal title on terminal resize, fix page scroll in bare display
-  * api: rename function string_build_with_split_string to string_rebuild_split_string, 
+  * api: rename function string_build_with_split_string to string_rebuild_split_string,
          add arguments "index_start" and "index_end"
-  * irc: display SETNAME command in channels and private buffers, 
+  * irc: display SETNAME command in channels and private buffers,
     add options irc.color.message_setname and irc.look.smart_filter_setname
-  * trigger: add elapsed time for trigger execution on monitor buffer when trigger debug is set, 
+  * trigger: add elapsed time for trigger execution on monitor buffer when trigger debug is set,
     add option trigger.color.identifier, add variable ${tg_hook_type}
 
 -------------------------------------------------------------------
@@ -870,7 +987,7 @@ Mon Mar 19 10:09:51 UTC 2018 - mimi.vx@gmail.com
 
 - update to 2.1
 - build python plugin against python3
-* core: add binary weechat-headless to run WeeChat without interface, with 
+* core: add binary weechat-headless to run WeeChat without interface, with
    optional daemon mode (command line option "--daemon")
 * core: add options "-newbuffer", "-free" and "-switch" in command /print
 * core: add option "-y" in command /print, add support of buffers with free content
@@ -884,7 +1001,7 @@ Mon Mar 19 10:09:51 UTC 2018 - mimi.vx@gmail.com
 * scripts: add configuration file for each script plugin
 * scripts: add "eval" option in script commands and info "xxx_eval"
 * scripts: add infos "xxx_interpreter" and "xxx_version" in script plugins
-* scripts: add option "version" in script commands 
+* scripts: add option "version" in script commands
 * api: add time in info "date" (WeeChat compilation date/time)
 * irc: allow ${irc_server.xxx} and ${server} in server evaluated options
 * script: change default value of option script.look.sort from "p,n" to "i,p,n"
@@ -904,9 +1021,9 @@ Thu Dec 21 17:19:23 UTC 2017 - mimi.vx@gmail.com
 * alias: add infolist "alias_default" (list of default aliases)
 * buflist: add two new bar items ("buflist2" and "buflist3") using the same
     format configuration options
-* buflist: add option buflist.look.add_newline 
+* buflist: add option buflist.look.add_newline
 * fset: new plugin "fset" (fast set of WeeChat and plugins options)
-* core: make value optional in command /buffer set 
+* core: make value optional in command /buffer set
 * core: allow floating point and hexadecimal numbers in comparison of evaluated values
 * core: add option weechat.look.save_config_with_fsync
 * api: add support of prefix "quiet:" in function key_unbind() to quietly remove keys
@@ -928,7 +1045,7 @@ Thu Dec 21 17:19:23 UTC 2017 - mimi.vx@gmail.com
     the option irc.look.buffer_open_before_join is on
 * irc: fix CTCP PING reply when the option irc.ctcp.ping is set to non-empty value
 * lua: fix boolean return value (as integer) in API functions
-* relay: fix parsing of CAP command without arguments in irc protocol, send ACK 
+* relay: fix parsing of CAP command without arguments in irc protocol, send ACK
     only if all capabilities received are OK and NAK otherwise
 * core: fix build with ncurses and separate tinfo
 
@@ -1064,7 +1181,7 @@ Documentation
 -------------------------------------------------------------------
 Tue Jun 14 13:10:49 UTC 2016 - mimi.vx@gmail.com
 
-- fix typo in %if conditional 
+- fix typo in %if conditional
 
 -------------------------------------------------------------------
 Sun May 15 10:27:51 UTC 2016 - mimi.vx@gmail.com
@@ -1075,7 +1192,7 @@ Sun May 15 10:27:51 UTC 2016 - mimi.vx@gmail.com
 	+ core: change default value of option weechat.look.nick_color_hash to "djb2"
 	+ core: move nick coloring from irc plugin to core, move options
 		irc.look.nick_color_force, irc.look.nick_color_hash and
-		irc.look.nick_color_stop_chars to core, add info "nick_color" and 
+		irc.look.nick_color_stop_chars to core, add info "nick_color" and
 		"nick_color_name", deprecate info "irc_nick_color" and "irc_color_name"
 	+ core: move irc bar item "away" to core, move options irc.look.item_away_message
 		 and irc.color.item_away to core
@@ -1122,19 +1239,19 @@ Sun Mar 20 18:45:20 UTC 2016 - bwiedemann@suse.com
 -------------------------------------------------------------------
 Thu Feb 18 11:58:33 UTC 2016 - mimi.vx@gmail.com
 
-- fix sle12 conditional 
+- fix sle12 conditional
 
 -------------------------------------------------------------------
 Mon Jan 11 06:38:16 UTC 2016 - mimi.vx@gmail.com
 
-- add weechat.keyring and verify source tarball by gpg 
+- add weechat.keyring and verify source tarball by gpg
 
 -------------------------------------------------------------------
 Sun Jan 10 12:59:27 UTC 2016 - mimi.vx@gmail.com
 
 - Version bump to 1.4
 + New features:
-	* core: add a parent name in options, display inherited values if null in /set 
+	* core: add a parent name in options, display inherited values if null in /set
 		output, add option weechat.color.chat_value_null
 	* core: add tag "term_warning" in warnings about wrong $TERM on startup
 	* core: add option weechat.look.paste_auto_add_newline
@@ -1147,13 +1264,13 @@ Sun Jan 10 12:59:27 UTC 2016 - mimi.vx@gmail.com
 	* irc: move option irc.network.alternate_nick into servers
 		 (irc.server.xxx.nicks_alternate)
 	* irc: track real names using extended-join and WHO
-	* irc: add support of SNI (Server Name Indication) in SSL connection 
+	* irc: add support of SNI (Server Name Indication) in SSL connection
 		to IRC server
 	* irc: use current channel and current server channels first in completions
 		 "irc_server_channels" and "irc_channels"
 	* irc: add support of "cap-notify" capability
 	* irc: add command /cap
-	* irc: add hex dump of messages in raw buffer when debug is enabled for irc 
+	* irc: add hex dump of messages in raw buffer when debug is enabled for irc
 		plugin (level 2 or more)
 	* logger: display system error when the log file can not be written
 	* relay: add option relay.irc.backlog_since_last_message
@@ -1163,7 +1280,7 @@ Sun Jan 10 12:59:27 UTC 2016 - mimi.vx@gmail.com
 	* doc: add Czech man page and quickstart guide
 	* tests: check if all plugins are loaded
 + Bugs fixed:
-	* core: fix execution of empty command name ("/" and "/ " are not valid 
+	* core: fix execution of empty command name ("/" and "/ " are not valid
 		commands)
 	* core: fix memory leak when using multiple "-d" or "-r" in command line
 		 arguments
@@ -1173,7 +1290,7 @@ Sun Jan 10 12:59:27 UTC 2016 - mimi.vx@gmail.com
 		 (for example a zero width space: U+200B)
 	* api: fix handle of invalid escape in function string_convert_escaped_chars()
 	* alias: do not allow slashes and spaces in alias name
-	* irc: fix channel forwarding when option 
+	* irc: fix channel forwarding when option
 		irc.look.buffer_open_before_{autojoin|join} is on
 	* irc: add a missing colon before the password in PASS message, if the password
 		 has spaces or begins with a colon
@@ -1191,27 +1308,27 @@ Sun Aug 16 10:23:57 UTC 2015 - mimi.vx@gmail.com
 
 - Version bump to 1.3:
  * core: add completion "colors" (issue #481)
- * core: start/stop search in buffer at current scroll position by default, add 
+ * core: start/stop search in buffer at current scroll position by default, add
    key Ctrl+q to stop search and reset scroll (issue #76, issue #393)
- * core: add option weechat.look.key_grab_delay to set the default delay when 
+ * core: add option weechat.look.key_grab_delay to set the default delay when
    grabbing a key with Alt+k
  * core: add option weechat.look.confirm_upgrade (issue #463)
  * core: allow Ctrl+c to exit WeeChat when the passphrase is asked on startup (issue #452)
  * core: allow pointer as list name in evaluation of hdata (issue #450)
  * core: add signal "signal_sighup"
- * api: add support of evaluated sub-strings and current date/time in function 
+ * api: add support of evaluated sub-strings and current date/time in function
    string_eval_expression() and command /eval
  * api: add function string_eval_path_home()
- * alias: add options "add", "addcompletion" and "del" in command /alias, remove 
+ * alias: add options "add", "addcompletion" and "del" in command /alias, remove
    command /unalias (issue #458)
  * irc: add option irc.network.channel_encode (issue #218, issue #482)
  * irc: add option irc.color.topic_current (issue #475)
  * irc: evaluate content of server option "nicks"
  * logger: evaluate content of option logger.file.path (issue #388)
  * relay: display value of HTTP header "X-Real-IP" for websocket connections (issue #440)
- * script: rename option script.scripts.dir to script.scripts.path, evaluate content 
+ * script: rename option script.scripts.dir to script.scripts.path, evaluate content
    of option (issue #388)
- * xfer: evaluate content of options xfer.file.download_path and xfer.file.upload_path (issue #388) 
+ * xfer: evaluate content of options xfer.file.download_path and xfer.file.upload_path (issue #388)
  * many bug fixes
 
 -------------------------------------------------------------------
@@ -1506,7 +1623,7 @@ Mon Jun  4 07:22:22 UTC 2012 - gber@opensuse.org
 Mon May 21 11:49:18 UTC 2012 - badshah400@gmail.com
 
 - Use BuildRequires: libgnutls-devel instead of gnutls-devel for
-  Factory in keeping with gnutls package naming changes. 
+  Factory in keeping with gnutls package naming changes.
 
 -------------------------------------------------------------------
 Sun Feb 26 15:14:28 UTC 2012 - pascal.bleser@opensuse.org
