@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 10 08:20:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.14:
+  * XMLSec 1.3.x compliance
+  * Make DES/3DES/KW-3DES support conditional on DES availability
+    in XMLSec
+  * PKCS11 support
+  * Improved libxml2 version check
+  * Several test improvements
+
+-------------------------------------------------------------------
 Thu Nov  2 08:36:18 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Use sle15_python_module_pythons
@@ -25,7 +36,7 @@ Tue Oct 18 13:13:45 UTC 2022 - Markéta Machová <mmachova@suse.com>
   * remove pkgconfig as it's only a build-system requirement
   * exclude lxml 4.7 because the wheels are missing the lxml includes
 - Drop merged avoid_lxml_tests_failing.patch
-- Normalize the tests call 
+- Normalize the tests call
 
 -------------------------------------------------------------------
 Wed May 11 12:39:21 UTC 2022 - Matej Cepl <mcepl@suse.com>
@@ -64,7 +75,7 @@ Tue Jun  2 06:38:20 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
   * No upstream changelog.
 - Drop reproducible.patch, included upstream.
 - Switch to PyPI tarball due to use of setuptools_scm.
-- Update BuildRequires. 
+- Update BuildRequires.
 
 -------------------------------------------------------------------
 Mon Jun 24 04:32:51 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
