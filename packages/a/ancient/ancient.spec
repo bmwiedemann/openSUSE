@@ -1,7 +1,7 @@
 #
 # spec file for package ancient
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define sover 2
 %define libname libancient%{sover}
 Name:           ancient
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        Decompression routines for ancient formats
 License:        BSD-2-Clause

@@ -26,4 +26,12 @@
   * Making builds/prs gated on warnings. Added VS2022 to the gate</comment>
     <requestid>1124358</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bab834990657c0a54fd5c0482d34d974</srcmd5>
+    <version>2.2.0</version>
+    <time>1718033866</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1179626</requestid>
+  </revision>
 </revisionlist>

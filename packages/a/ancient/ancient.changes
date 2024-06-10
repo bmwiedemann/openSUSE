@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jun  9 15:55:05 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 2.2.0:
+  * Fixed a potential security issue where a malicious file can lead 
+    to undefined behavior and double free (fuzzing, thanks Sagamusix)
+  * Fixed cases where malicious files could take a long time to fail (fuzzing)
+  * Added more sanity checking and operations through index-checked 
+    containers instead of raw pointers
+  * Added support for RNC2 old bitstream
+  * Added support for VIC2 and Vice formats (Amiga)
+  * Added support for clone-formats (changed ids)
+  * Refactored SHR3 and SHRI to be a single implementation
+
+-------------------------------------------------------------------
 Thu Nov  9 08:41:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.1:
