@@ -3886,6 +3886,7 @@ unsorted:
   - fail2ban 
   - fairymax 
   - fake-gcs-server 
+  - fake-hwclock 
   - fakechroot 
   - fakeroot 
   - falkon 
@@ -9020,6 +9021,8 @@ unsorted:
   - jakarta-commons-launcher 
   - jakarta-commons-launcher-javadoc 
   - jakarta-commons-transaction 
+  - jakarta-inject 
+  - jakarta-inject-javadoc 
   - jakarta-mail 
   - jakarta-mail-javadoc 
   - jakarta-servlet 
@@ -14715,10 +14718,10 @@ unsorted:
   - libopenblas-gnu-hpc-devel 
   - libopenblas-pthreads-gnu-hpc 
   - libopenblas-pthreads-gnu-hpc-devel 
-  - libopenblas-pthreads_0_3_26-gnu-hpc 
-  - libopenblas-pthreads_0_3_26-gnu-hpc-devel 
-  - libopenblas_0_3_26-gnu-hpc 
-  - libopenblas_0_3_26-gnu-hpc-devel 
+  - libopenblas-pthreads_0_3_27-gnu-hpc 
+  - libopenblas-pthreads_0_3_27-gnu-hpc-devel 
+  - libopenblas_0_3_27-gnu-hpc 
+  - libopenblas_0_3_27-gnu-hpc-devel 
   - libopenblas_openmp-devel 
   - libopenblas_pthreads-devel 
   - libopenblas_pthreads-devel-32bit 
@@ -20116,8 +20119,8 @@ unsorted:
   - openbabel-devel 
   - openbabel-gui 
   - openblas-common-devel 
-  - openblas-pthreads_0_3_26-gnu-hpc-devel-static 
-  - openblas_0_3_26-gnu-hpc-devel-static 
+  - openblas-pthreads_0_3_27-gnu-hpc-devel-static 
+  - openblas_0_3_27-gnu-hpc-devel-static 
   - openblas_openmp-devel-static 
   - openblas_pthreads-devel-static 
   - openblas_serial-devel-static 
@@ -22005,6 +22008,7 @@ unsorted:
   - perl-Test-Class-Most 
   - perl-Test-ClassAPI 
   - perl-Test-CleanNamespaces 
+  - perl-Test-Cmd 
   - perl-Test-Command 
   - perl-Test-Compile 
   - perl-Test-Deep 
@@ -24312,6 +24316,7 @@ unsorted:
   - python310-azure-mgmt-desktopvirtualization 
   - python310-azure-mgmt-devcenter 
   - python310-azure-mgmt-devhub 
+  - python310-azure-mgmt-deviceregistry 
   - python310-azure-mgmt-deviceupdate 
   - python310-azure-mgmt-devopsinfrastructure 
   - python310-azure-mgmt-devspaces 
@@ -27895,6 +27900,7 @@ unsorted:
   - python311-azure-mgmt-desktopvirtualization 
   - python311-azure-mgmt-devcenter 
   - python311-azure-mgmt-devhub 
+  - python311-azure-mgmt-deviceregistry 
   - python311-azure-mgmt-deviceupdate 
   - python311-azure-mgmt-devopsinfrastructure 
   - python311-azure-mgmt-devspaces 
@@ -31394,6 +31400,7 @@ unsorted:
   - python312-azure-mgmt-desktopvirtualization 
   - python312-azure-mgmt-devcenter 
   - python312-azure-mgmt-devhub 
+  - python312-azure-mgmt-deviceregistry 
   - python312-azure-mgmt-deviceupdate 
   - python312-azure-mgmt-devopsinfrastructure 
   - python312-azure-mgmt-devspaces 
@@ -35167,7 +35174,6 @@ unsorted:
   - rds-tools-devel 
   - rdtk0-devel 
   - re-devel 
-  - re2-10-devel 
   - re2-devel 
   - read-edid 
   - read-only-root-fs-volatile 
