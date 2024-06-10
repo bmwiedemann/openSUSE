@@ -17,7 +17,7 @@
 
 
 Name:           ytree
-Version:        2.08
+Version:        2.09
 Release:        0
 Summary:        A filemanager similar to XTree
 License:        GPL-2.0-only
