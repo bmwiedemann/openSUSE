@@ -335,7 +335,7 @@ Index: openssh-8.9p1/ldap-helper.c
 ===================================================================
 --- /dev/null
 +++ openssh-8.9p1/ldap-helper.c
-@@ -0,0 +1,155 @@
+@@ -0,0 +1,156 @@
 +/* $OpenBSD: ssh-pka-ldap.c,v 1.1 2009/12/03 03:34:42 jfch Exp $ */
 +/*
 + * Copyright (c) 2009 Jan F. Chadima.  All rights reserved.
@@ -369,6 +369,7 @@ Index: openssh-8.9p1/ldap-helper.c
 +#include "ldapbody.h"
 +#include <string.h>
 +#include <unistd.h>
++#include <stdlib.h>
 +
 +static int config_debug = 0;
 +int config_exclusive_config_file = 0;
@@ -1175,7 +1176,7 @@ Index: openssh-8.9p1/ldapconf.c
 ===================================================================
 --- /dev/null
 +++ openssh-8.9p1/ldapconf.c
-@@ -0,0 +1,711 @@
+@@ -0,0 +1,712 @@
 +/* $OpenBSD: ldapconf.c,v 1.1 2009/12/03 03:34:42 jfch Exp $ */
 +/*
 + * Copyright (c) 2009 Jan F. Chadima.  All rights reserved.
@@ -1209,6 +1210,7 @@ Index: openssh-8.9p1/ldapconf.c
 +#include "ldapconf.h"
 +#include <unistd.h>
 +#include <string.h>
++#include <stdlib.h>
 +
 +/* Keyword tokens. */
 +

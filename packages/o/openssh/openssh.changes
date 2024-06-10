@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 10 07:10:48 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add #include <stdlib.h> in some files added by the ldap patch to
+  fix build with gcc14 (boo#1225904).
+  * openssh-7.7p1-ldap.patch
+
+-------------------------------------------------------------------
 Fri May 17 07:45:38 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Remove the recommendation for openssh-server-config-rootlogin
