@@ -23,7 +23,7 @@
 # Internal QML import
 %global __requires_exclude qmlimport\\((KStarsLiteEnums|TelescopeLiteEnums).*
 Name:           kstars
-Version:        3.7.0
+Version:        3.7.1
 Release:        0
 Summary:        Desktop Planetarium
 # Note for legal: the Apache licensed files in the tarball are for the

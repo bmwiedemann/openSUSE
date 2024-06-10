@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 10 07:18:39 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.7.1:
+  * New mount panel
+  * Add support to obtain all object names
+  * Multiple cameras support (still ongoing)
+  * Various bugs fixed
+  * Full changelog: https://invent.kde.org/education/kstars/-/blob/master/ChangeLog
+
+-------------------------------------------------------------------
 Tue Apr  2 12:03:57 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 3.7.0:
