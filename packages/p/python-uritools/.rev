@@ -37,4 +37,14 @@
 - Update to version 4.0.0</comment>
     <requestid>1130724</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e5eb8a6d7fcc78558674b2c78870d0a9</srcmd5>
+    <version>4.0.3</version>
+    <time>1718033865</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0.3:
+  * Prepare for Python 3.13.
+- use PEP 517 build</comment>
+    <requestid>1179633</requestid>
+  </revision>
 </revisionlist>

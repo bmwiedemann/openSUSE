@@ -1,7 +1,7 @@
 #
 # spec file for package python-uritools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-uritools
-Version:        4.0.2
+Version:        4.0.3
 Release:        0
 Summary:        URI parsing, classification and composition
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/tkem/uritools/
 Source:         https://files.pythonhosted.org/packages/source/u/uritools/uritools-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -38,10 +40,10 @@ URI parsing, classification and composition.
 %setup -q -n uritools-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -50,6 +52,7 @@ URI parsing, classification and composition.
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/uritools
+%{python_sitelib}/uritools-%{version}.dist-info
 
 %changelog

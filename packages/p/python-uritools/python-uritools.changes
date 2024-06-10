@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 10 07:47:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.3:
+  * Prepare for Python 3.13.
+- use PEP 517 build
+
+-------------------------------------------------------------------
 Mon Dec  4 11:29:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.2:
