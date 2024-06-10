@@ -147,4 +147,18 @@
     @s-t-e-v-e-n-k</comment>
     <requestid>1155397</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d989be0b4a48c3747bc5752006299183</srcmd5>
+    <version>3.27.2</version>
+    <time>1718033869</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.27.2:
+  * #1498 Fix #1496 Async client uses blocking call when
+    uploading file with v
+  * #1492 Fix #1468 `RichTextElement.elements` items are never
+    promoted to a proper Python object type
+
+  * #1459 Fix #1458 internal error within aiohttp-based socket mode</comment>
+    <requestid>1179640</requestid>
+  </revision>
 </revisionlist>

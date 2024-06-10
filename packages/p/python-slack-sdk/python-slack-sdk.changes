@@ -1,8 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun 10 07:58:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.27.2:
+  * #1498 Fix #1496 Async client uses blocking call when
+    uploading file with v
+  * #1492 Fix #1468 `RichTextElement.elements` items are never
+    promoted to a proper Python object type
+
+-------------------------------------------------------------------
 Wed Mar  6 03:18:20 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.27.1:
-  * #1459 Fix #1458 internal error within aiohttp-based socket mode 
+  * #1459 Fix #1458 internal error within aiohttp-based socket mode
     client - Thanks @seratch @jhofeditz
   * #1450 #1452 Add "slack_file" properties to "image" blocks/elements
     under slack_sdk.models - Thanks @seratch
