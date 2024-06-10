@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jun  9 21:57:42 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.7.8:
+  * [Sec] Potential heap out-of-bounds read with malformed Dynamic
+    Studio DSm files.
+  * MED: Additional command pages can now be read.
+  * MED: Echo DSP is now emulated.
+  * AMS: Default channel panning was broken, using all-center
+    panning instead of MOD-style panning.
+  * STP: Correctly import volume slides where both nibbles are set.
+  * MDL: Pitch slide depth was wrong since libopenmpt 0.6.0.
+  * DTM: Fix pitch slide depth for samples with finetune.
+  * DSm: Don’t import as Amiga module (and thus allow Amig
+    a resampler to be enabled), as this PC format can easily
+    exceed the Amiga frequency range.
+  * DSm: Only the first 48 samples were ever read.
+  * STM / STX: Don’t set channel panning.
+    ScreamTracker 2 only outputs mono sound.
+  * PSM: File header probing was stricter than actual file loader,
+    rejecting manipulated files that would otherwise load fine.
+
+-------------------------------------------------------------------
 Sat May 25 11:59:56 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.7.7:

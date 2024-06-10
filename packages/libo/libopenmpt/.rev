@@ -890,4 +890,29 @@ Changes in 0.5.3:
   * ULT: Support the highest three octaves.</comment>
     <requestid>1176837</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>1cac103a7ddd4fc7d90c38cd849a6314</srcmd5>
+    <version>0.7.8</version>
+    <time>1718033818</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.7.8:
+  * [Sec] Potential heap out-of-bounds read with malformed Dynamic
+    Studio DSm files.
+  * MED: Additional command pages can now be read.
+  * MED: Echo DSP is now emulated.
+  * AMS: Default channel panning was broken, using all-center
+    panning instead of MOD-style panning.
+  * STP: Correctly import volume slides where both nibbles are set.
+  * MDL: Pitch slide depth was wrong since libopenmpt 0.6.0.
+  * DTM: Fix pitch slide depth for samples with finetune.
+  * DSm: Don’t import as Amiga module (and thus allow Amig
+    a resampler to be enabled), as this PC format can easily
+    exceed the Amiga frequency range.
+  * DSm: Only the first 48 samples were ever read.
+  * STM / STX: Don’t set channel panning.
+    ScreamTracker 2 only outputs mono sound.
+  * PSM: File header probing was stricter than actual file loader,
+    rejecting manipulated files that would otherwise load fine.</comment>
+    <requestid>1179592</requestid>
+  </revision>
 </revisionlist>
