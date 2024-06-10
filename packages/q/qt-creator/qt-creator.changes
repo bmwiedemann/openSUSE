@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jun  7 07:08:48 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 13.0.2
+  https://www.qt.io/blog/qt-creator-13.0.2-released
+  * Fixed that the -client option could start a new Qt Creator
+    instance instead of using a running one
+  * Fixed that closing files with the tool button didn't add an
+    entry to the navigation history
+  * Fixed that Use Qt module name in #include-directive used Qt 4
+    module names
+  * Adapted to changes in the Copilot neovim plugin
+  * CMake: Fixed the environment macro expansion for Presets
+  * Meson: Fixed a crash when selecting kits
+  * Terminal: Fixed the handling of environment variables with an
+    equal sign = in the value
+  * Git: Fixed a crash in Instant Blame when reloading externally
+    modified files
+
+-------------------------------------------------------------------
 Wed May  8 11:07:14 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 13.0.1
