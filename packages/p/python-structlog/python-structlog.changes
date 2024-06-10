@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jun 10 08:28:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.2.0:
+  * It is now possible to disable log level-padding in
+    `structlog.dev.LogLevelColumnFormatter` and
+    `structlog.dev.ConsoleRenderer`.
+  * The `structlog.processors.CallsiteParameterAdder` can now be
+    pickled.
+  * `structlog.processors.CallsiteParameterAdder` now also works
+    with `structlog.stdlib.BoundLogger`'s non-standard async
+    methods (`ainfo()`, and so forth)
+  * `structlog.processors.LogfmtRenderer` now escapes newlines.
+  * `structlog.processors.LogfmtRenderer` now escapes backslashes
+    and double quotes.
+  * `structlog.processors.CallsiteParameterAdder` has been
+    optimized to be about 2x faster.
+  * `structlog.stdlib.render_to_log_kwargs` now correctly passes
+    stacklevel as a kwarg to stdlib logging.
+
+-------------------------------------------------------------------
 Wed Jan 24 07:35:08 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

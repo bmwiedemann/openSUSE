@@ -198,4 +198,27 @@
     <comment></comment>
     <requestid>1141528</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>749b1b4f70e6ec62ee8bf2372b453f3c</srcmd5>
+    <version>24.2.0</version>
+    <time>1718033882</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.2.0:
+  * It is now possible to disable log level-padding in
+    `structlog.dev.LogLevelColumnFormatter` and
+    `structlog.dev.ConsoleRenderer`.
+  * The `structlog.processors.CallsiteParameterAdder` can now be
+    pickled.
+  * `structlog.processors.CallsiteParameterAdder` now also works
+    with `structlog.stdlib.BoundLogger`'s non-standard async
+    methods (`ainfo()`, and so forth)
+  * `structlog.processors.LogfmtRenderer` now escapes newlines.
+  * `structlog.processors.LogfmtRenderer` now escapes backslashes
+    and double quotes.
+  * `structlog.processors.CallsiteParameterAdder` has been
+    optimized to be about 2x faster.
+  * `structlog.stdlib.render_to_log_kwargs` now correctly passes
+    stacklevel as a kwarg to stdlib logging.</comment>
+    <requestid>1179653</requestid>
+  </revision>
 </revisionlist>

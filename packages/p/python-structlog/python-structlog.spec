@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-structlog
-Version:        24.1.0
+Version:        24.2.0
 Release:        0
 Summary:        Structured Logging for Python
 License:        Apache-2.0 OR MIT
