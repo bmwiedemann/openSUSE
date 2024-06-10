@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun Jun 09 18:33:04 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.5.0:
+  * chore: fix CC/CXX entries
+  * chore: remove deprecated "replacements"
+  * chore: update cross version
+  * chore: fix version
+  * docs: add deprecation note
+  * chore: CGO_ENABLED=1
+  * chore: switch to `jdkato/choco-cross`
+  * chore: add stage for GoReleaser dry run
+  * chore: fix workflow spacing
+  * chore: add step for testing release
+  * chore: switch to `goreleaser-cross`
+  * chore: upgrade tree-sitter
+  * docs: Add xsltproc and dita to prerequisites (#842)
+  * feat: YAML, CSS, and Protocol Buffers
+  * refactor: deprecate regex-based comment parsing
+  * feat: JavaScript support
+  * feat: C/C++ support
+  * feat: Ruby support
+  * feat: Rust support
+  * feat: Python support
+  * feat: support multi-line, line-scope comments
+  * refactor: fix `callRst` on Windows
+  * refactor: fix rst error formatting
+  * chore: install docutils
+  * chore: enable CGO for AppVeyor
+  * feat: tree-sitter powered fragments
+  * docs: fix OC embed [ci skip]
+  * test: fix local env
+  * feat: multiple queries
+  * test: add another rst case
+  * refactor: move to JSON-formatted tests
+  * refactor: move comment processing to tree-sitter
+  * docs: remove old review link
+- Packaging:
+  * Add BuildRequires: gcc-c++ required by linked C++ library:
+    github.com/smacker/go-tree-sitter/yaml
+
+-------------------------------------------------------------------
 Wed May 01 03:45:27 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.4.2:

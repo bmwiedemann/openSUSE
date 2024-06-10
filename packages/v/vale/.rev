@@ -659,4 +659,16 @@
   * docs: add Digital Ocean (forwarded request 1171069 from jfkw)</comment>
     <requestid>1171070</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>10799d95677657fb9e6b27295403434e</srcmd5>
+    <version>3.5.0</version>
+    <time>1718033831</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.5.0:
+  * feat: tree-sitter powered fragments
+- Packaging:
+  * Add BuildRequires: gcc-c++ required by linked C++ library:
+    github.com/smacker/go-tree-sitter/yaml (forwarded request 1179584 from jfkw)</comment>
+    <requestid>1179587</requestid>
+  </revision>
 </revisionlist>
