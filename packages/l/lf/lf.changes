@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun  9 21:29:22 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Add main package to completion Requires
+
+-------------------------------------------------------------------
 Sun Mar 31 21:29:30 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Switch _service to use manual instead of the deprecated disabled

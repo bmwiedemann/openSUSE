@@ -35,6 +35,7 @@ heavy inspiration from ranger file manager
 Summary:        Bash Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and bash-completion)
+Requires:       %{name} = %{version}
 Requires:       bash-completion
 BuildArch:      noarch
 
@@ -45,6 +46,7 @@ Bash command-line completion support for %{name}.
 Summary:        Fish Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and fish)
+Requires:       %{name} = %{version}
 Requires:       fish
 BuildArch:      noarch
 
@@ -55,6 +57,7 @@ Fish command-line completion support for %{name}.
 Summary:        Zsh Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and zsh)
+Requires:       %{name} = %{version}
 Requires:       zsh
 BuildArch:      noarch
 
