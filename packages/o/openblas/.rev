@@ -754,4 +754,12 @@ Currently, openSUSE:Factory:Staging:E.
     - related to architectures presently not supported on SUSE (forwarded request 1160107 from eeich)</comment>
     <requestid>1173654</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>e82207d3833fb9bb002852b0bf17e588</srcmd5>
+    <version>0.3.27</version>
+    <time>1718033823</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1179612</requestid>
+  </revision>
 </revisionlist>

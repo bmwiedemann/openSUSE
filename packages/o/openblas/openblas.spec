@@ -18,8 +18,8 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define _vers 0_3_26
-%define vers 0.3.26
+%define _vers 0_3_27
+%define vers 0.3.27
 %define so_v 0
 %define pname openblas
 
@@ -421,7 +421,7 @@ EOF
 # Do not use LIBNAMESUFFIX for new builds as it will not allow
 # the different flavors to be plugin replacements of each other
 %if 0%{?suse_version} <= 1500 && %{without hpc}
-%define libnamesuffix LIBNAMESUFFIX=%flavor
+%define libnamesuffix LIBNAMESUFFIX=_%{flavor}
 %endif
 make MAKE_NB_JOBS=$jobs %{?openblas_target} %{?build_flags} \
      %{?openblas_opt} \
