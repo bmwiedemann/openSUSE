@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 10 01:12:34 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Version 1.1.2
+  * Followed Qt 6.7 by giving all available space to text rectangles
+    of view items (fixes a regression with Qt ≥ 6.7).
+  * Workaround for an inconsistency in Qt, where a persistent editor
+    can be opened for an uneditable view item.
+
+-------------------------------------------------------------------
 Thu May 16 06:02:54 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Version 1.1.1

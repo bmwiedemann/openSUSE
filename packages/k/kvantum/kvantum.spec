@@ -31,7 +31,7 @@ ExclusiveArch:  do_not_build
 %define dsc_suffix Qt5
 %endif
 Name:           kvantum%{?pkg_suffix}
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        SVG-based theme engine for Qt5 and Qt6
 License:        GPL-3.0-or-later
