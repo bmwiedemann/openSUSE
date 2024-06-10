@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Wed Oct 28 10:23:14 UTC 2015 - coolo@suse.com
+
+- updated to 1.09
+   see /usr/share/doc/packages/perl-Test-Cmd/Changes
+
+  1.09 2015-10-25 NEILB
+      - README updated with current location of Aegis project.
+        Thanks to @SparkeyG for the pull request
+      - Updated github repo URL after changing my github username
+      - Switched to Dist::Zilla
+
+-------------------------------------------------------------------
+Tue Apr 14 19:31:54 UTC 2015 - coolo@suse.com
+
+- updated to 1.08
+   see /usr/share/doc/packages/perl-Test-Cmd/Changes
+
+  1.08 2015-01-25 NEILB
+      - Documentation improvements from JMATES++.
+  
+  1.07 2015-01-07 NEILB
+      - Linkify external module references. JMATES++
+      - Added Test::Pod as a release test. JMATES++
+
+-------------------------------------------------------------------
+Mon Apr 21 18:34:52 UTC 2014 - mardnh@gmx.de
+
+- update to version 1.06
+
+-------------------------------------------------------------------
+Mon Oct 10 05:40:27 UTC 2011 - coolo@suse.com
+
+- initial package 1.05
+    * created by cpanspec 1.78.06
+
