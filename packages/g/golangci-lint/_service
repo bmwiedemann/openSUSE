@@ -3,7 +3,7 @@
     <param name="scm">git</param>
     <param name="url">https://github.com/golangci/golangci-lint.git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v1.59.0</param>
+    <param name="revision">v1.59.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="filename">golangci-lint</param>
     <param name="versionrewrite-pattern">v(.*)</param>
