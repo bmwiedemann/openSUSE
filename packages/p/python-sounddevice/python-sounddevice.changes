@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 10 09:16:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.7:
+  * support paWinWasapiAutoConvert with auto_convert flag in
+    WasapiSettings
+  * Avoid exception in PortAudioError.__str__()
+
+-------------------------------------------------------------------
 Fri Dec 29 09:41:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.4.6:

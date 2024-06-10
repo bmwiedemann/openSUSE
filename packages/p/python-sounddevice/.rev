@@ -98,4 +98,15 @@
   * Redirect stderr with os.dup2() instead of CFFI calls</comment>
     <requestid>1136463</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9ac1160ecf95813248fe54c0dada75bf</srcmd5>
+    <version>0.4.7</version>
+    <time>1718033892</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.7:
+  * support paWinWasapiAutoConvert with auto_convert flag in
+    WasapiSettings
+  * Avoid exception in PortAudioError.__str__()</comment>
+    <requestid>1179664</requestid>
+  </revision>
 </revisionlist>
