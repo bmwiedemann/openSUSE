@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jun 10 12:47:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.2.0
+  * Allow to increase/decrease font (CTRL++/CTRL+-)
+  * Add channel list style (Condensed/Medium/Extended)
+  * Add forward message
+  * Improve mentions support.
+  * Add support for deep linking Deep Linking.
+  * Implement block actions.
+  * Implement personal token authentication. Bug 481400
+  * Add Plasma Activities Support
+  * Add Report User Support
+  * Implement Channel Sound Notification.
+  * Implement New Room Sound Notification.
+  * Implement Sorted/Unsorted markdown list.
+  * Fix dark mode support.
+  * Fix jitsi support.Fix translate message in direct channel.
+  * Don't show @here/@all as user.
+  * Reduce memory footprint.
+  * Use RESTAPI for logging.
+  * Allow to send multi files.
+  * Fix preview url.
+
+-------------------------------------------------------------------
 Fri Mar 22 14:26:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.1.1. No changelog

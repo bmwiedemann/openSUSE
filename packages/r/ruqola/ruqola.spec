@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           ruqola
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        Rocket.chat Client
 License:        GPL-2.0-or-later
@@ -47,17 +47,18 @@ BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6NetworkManagerQt) >= %{kf6_version}
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6NotifyConfig) >= %{kf6_version}
+BuildRequires:  cmake(PlasmaActivities)
 BuildRequires:  cmake(KF6Prison) >= %{kf6_version}
 BuildRequires:  cmake(KF6Purpose) >= %{kf6_version}
 BuildRequires:  cmake(KF6Sonnet) >= %{kf6_version}
 BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
 BuildRequires:  cmake(KF6SyntaxHighlighting) >= %{kf6_version}
-BuildRequires:  cmake(KF6TextAutoCorrectionWidgets) >= 1.5.3
-BuildRequires:  cmake(KF6TextCustomEditor) >= 1.5.3
-BuildRequires:  cmake(KF6TextEditTextToSpeech) >= 1.5.3
-BuildRequires:  cmake(KF6TextEmoticonsWidgets) >= 1.5.3
-BuildRequires:  cmake(KF6TextTranslator) >= 1.5.3
-BuildRequires:  cmake(KF6TextUtils) >= 1.5.3
+BuildRequires:  cmake(KF6TextAutoCorrectionWidgets) >= 1.5.4
+BuildRequires:  cmake(KF6TextCustomEditor) >= 1.5.4
+BuildRequires:  cmake(KF6TextEditTextToSpeech) >= 1.5.4
+BuildRequires:  cmake(KF6TextEmoticonsWidgets) >= 1.5.4
+BuildRequires:  cmake(KF6TextTranslator) >= 1.5.4
+BuildRequires:  cmake(KF6TextUtils) >= 1.5.4
 BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6UserFeedback) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
@@ -120,9 +121,13 @@ available from Rocket.Chat project.
 %{_kf6_plugindir}/ruqolaplugins/authentication/ruqola_githubauthenticationplugin.so
 %{_kf6_plugindir}/ruqolaplugins/authentication/ruqola_gitlabauthenticationplugin.so
 %{_kf6_plugindir}/ruqolaplugins/authentication/ruqola_passwordauthenticationplugin.so
+%{_kf6_plugindir}/ruqolaplugins/authentication/ruqola_personalaccesstokenauthenticationplugin.so
 %dir %{_kf6_plugindir}/ruqolaplugins/textplugins
 %{_kf6_plugindir}/ruqolaplugins/textplugins/ruqola_sharetextplugin.so
 %{_kf6_plugindir}/ruqolaplugins/textplugins/ruqola_webshortcuttextplugin.so
+%dir %{_kf6_sharedir}/messageviewer
+%dir %{_kf6_sharedir}/messageviewer/openurlwith
+%{_kf6_sharedir}/messageviewer/openurlwith/ruqola.openurl
 
 %files lang -f %{name}.lang
 %exclude %{_kf6_htmldir}/en/ruqola/
