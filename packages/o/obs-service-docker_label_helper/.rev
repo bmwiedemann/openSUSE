@@ -50,4 +50,12 @@
 - Handle LABEL values containing &quot;=&quot; properly</comment>
     <requestid>1068356</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>aaa909addea4b68d3143ac9c83073f33</srcmd5>
+    <version>0.0</version>
+    <time>1718033918</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1179700</requestid>
+  </revision>
 </revisionlist>

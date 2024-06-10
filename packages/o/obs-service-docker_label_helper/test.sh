@@ -57,3 +57,42 @@ LABEL org.opensuse.nano.whitespace="Two  spaces. One	tab."
 LABEL	test.whitespace="Two  spaces. One	tab."
 LABEL not.expanded.label="example"
 EOF
+
+# Test _multibuild
+cat >Dockerfile.FLAVOR <<EOF
+# labelprefix=org.opensuse.nano
+LABEL org.opencontainers.image.title="Example container."
+# endlabelprefix
+EOF
+
+export BUILD_DIST="$tmpdir/test_multibuild/.build/build.dist"
+mkdir -p "$tmpdir/test_multibuild/.build"
+cat >"$tmpdir/test_multibuild/.build/build.data" <<EOF
+RECIPEFILE=_service:obs_scm:Dockerfile.FLAVOR
+EOF
+sh "${script}"
+
+diff -u Dockerfile.FLAVOR - <<EOF
+LABEL org.opensuse.nano.title="Example container."
+LABEL org.opencontainers.image.title="Example container."
+EOF
+
+# Test _multibuild when not a Dockerfile.*
+cat >NotADockerfile <<EOF
+# labelprefix=org.opensuse.nano
+LABEL org.opencontainers.image.title="Example container."
+# endlabelprefix
+EOF
+
+export BUILD_DIST="$tmpdir/test_multibuild/.build/build.dist"
+mkdir -p "$tmpdir/test_multibuild/.build"
+cat >"$tmpdir/test_multibuild/.build/build.data" <<EOF
+RECIPEFILE=_service:obs_scm:NotADockerfile
+EOF
+sh "${script}"
+
+diff -u NotADockerfile - <<EOF
+# labelprefix=org.opensuse.nano
+LABEL org.opencontainers.image.title="Example container."
+# endlabelprefix
+EOF

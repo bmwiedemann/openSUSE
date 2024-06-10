@@ -1,6 +1,8 @@
 #!/bin/bash
 set -eu
 
+file="Dockerfile"
+
 if [ "${BUILD_DIST+x}" != "x" ]; then
 	echo "Not running in an OBS build container"
 	exit 1
@@ -11,10 +13,10 @@ if [ -e "${BUILD_DATA}" ]; then
 	. "${BUILD_DATA}"
 
 	# The build script renames the recipe (to strip _service:foo:), but doesn't update .data
-	RECIPEFILE="${RECIPEFILE##*:}"
+	file="${RECIPEFILE##*:}"
 
-	if [ "${RECIPEFILE}" != "Dockerfile" ]; then
-		echo "Recipe is not a Dockerfile - exiting"
+	if [[ ! "${file}" =~ ^Dockerfile.* ]]; then
+		echo "Recipe ${file} is not a Dockerfile - exiting"
 		exit 0
 	fi
 fi
@@ -24,4 +26,4 @@ gawk -i inplace '
     match($0, /^# labelprefix=(.*)$/, m) { labelprefix=m[1]; next }
     labelprefix != "" && match($0, /^(PREFIXED)?LABEL[[:space:]]+[^=]*\.([^.=]*)=(.*)$/, m) { printf "LABEL %s.%s=%s\n", labelprefix, m[2], m[3]; gsub(/^PREFIXEDLABEL/, "LABEL") }
     match($0, /^# endlabelprefix/) { labelprefix=""; next }
-    1' Dockerfile
+    1' "${file}"
