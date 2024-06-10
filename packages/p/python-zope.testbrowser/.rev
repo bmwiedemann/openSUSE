@@ -123,4 +123,27 @@
     <comment></comment>
     <requestid>1077171</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e2489e44a369f51c1c38066b474b097c</srcmd5>
+    <version>7.0</version>
+    <time>1718033891</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.0:
+  * Add support for Python 3.12 and 3.13 as of 3.13b1.
+  * Drop support for Python 3.7.
+- use PEP517 build
+
+- update to 5.6.1
+  * Add error checking to the setters for ListControl.displayValue and CheckboxListControl.displayValue:
+    in line with the old mechanize-based implementation, these will now raise ItemNotFoundError
+    if any of the given values are not found, or ItemCountError on trying to set more than one value
+  * Fix a bug where browser.goBack() did not invalidate caches, so subsequent queries could use data
+  * Fix a bug where you couldn’t set a cookie expiration date when
+  * Fix an incompatibility with BeautifulSoup4 &gt;= 4.7 that could
+  * Fix narrative doctests that started failing on January 1st,
+  * Fix mechRepr of CheckboxListControl to always return a
+- Added patch zope.testbrowser-remove-bad-test.patch to disable
+  * It seems to me that Google has changed the robot policy again</comment>
+    <requestid>1179663</requestid>
+  </revision>
 </revisionlist>

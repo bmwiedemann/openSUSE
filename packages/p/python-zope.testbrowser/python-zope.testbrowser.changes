@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 10 09:12:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0:
+  * Add support for Python 3.12 and 3.13 as of 3.13b1.
+  * Drop support for Python 3.7.
+- use PEP517 build
+
+-------------------------------------------------------------------
 Mon Apr  3 09:34:27 UTC 2023 - pgajdos@suse.com
 
 - version update to 6.0
@@ -12,7 +20,7 @@ Mon Apr  3 09:34:27 UTC 2023 - pgajdos@suse.com
 -------------------------------------------------------------------
 Fri Sep 16 19:36:33 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- update to 5.6.1 
+- update to 5.6.1
   * Ensure all objects have consistent resolution orders.
 
 - update to 5.6.0
@@ -33,12 +41,12 @@ Tue Jan 21 10:36:36 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 5.5.1
   * Stop sending a Referer header when browser.open or browser.post is called directly.
-  * Add error checking to the setters for ListControl.displayValue and CheckboxListControl.displayValue: 
-    in line with the old mechanize-based implementation, these will now raise ItemNotFoundError 
-    if any of the given values are not found, or ItemCountError on trying to set more than one value 
+  * Add error checking to the setters for ListControl.displayValue and CheckboxListControl.displayValue:
+    in line with the old mechanize-based implementation, these will now raise ItemNotFoundError
+    if any of the given values are not found, or ItemCountError on trying to set more than one value
     on a single-valued control.
   * Fix AttributeError in add_file when trying to add to a control which is not a file upload.
-  * Fix a bug where browser.goBack() did not invalidate caches, so subsequent queries could use data 
+  * Fix a bug where browser.goBack() did not invalidate caches, so subsequent queries could use data
     from the wrong response.
   * Support telling the browser not to follow redirects by setting Browser.follow_redirects to False.
 
@@ -60,13 +68,13 @@ Mon Jul 22 10:57:47 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 Mon Apr  8 15:39:10 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 5.3.2
-  * Fix a bug where you couldn’t set a cookie expiration date when 
+  * Fix a bug where you couldn’t set a cookie expiration date when
     your locale was not English.
-  * Fix an incompatibility with BeautifulSoup4 >= 4.7 that could 
+  * Fix an incompatibility with BeautifulSoup4 >= 4.7 that could
     result in a SyntaxError from browser.getControl().
     * note: BeautifulSoup is not in requirements in setup.py and
       we are successfully building the package without it
-  * Fix narrative doctests that started failing on January 1st, 
+  * Fix narrative doctests that started failing on January 1st,
     2019 due to a hardcoded “future” date.
   5.3.1
   * Fix a DeprecationWarning on Python 3.
@@ -74,12 +82,12 @@ Mon Apr  8 15:39:10 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
   * Add support for Python 3.7.
   * Drop support for Python 3.3 and 3.4.
   * Drop support for pystone as Python 3.7 dropped pystone.
-  * Fix mechRepr of CheckboxListControl to always return a 
+  * Fix mechRepr of CheckboxListControl to always return a
     native str.
   * Add mechRepr to input fields having the type email.
-- Added patch zope.testbrowser-remove-bad-test.patch to disable 
+- Added patch zope.testbrowser-remove-bad-test.patch to disable
   failing test.
-  * It seems to me that Google has changed the robot policy again 
+  * It seems to me that Google has changed the robot policy again
     and therefore it is not a bug in the software itself (similar
     to upstream issue #12).
 

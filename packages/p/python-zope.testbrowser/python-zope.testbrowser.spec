@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-zope.testbrowser
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,13 +25,16 @@
 %bcond_with test
 %endif
 Name:           python-zope.testbrowser%{psuffix}
-Version:        6.0
+Version:        7.0
 Release:        0
 Summary:        Programmable browser for functional black-box tests
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/zope.testbrowser
 Source:         https://files.pythonhosted.org/packages/source/z/zope.testbrowser/zope.testbrowser-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-WSGIProxy2
@@ -74,12 +77,12 @@ site.
 
 %build
 %if !%{with test}
-%python_build
+%pyproject_wheel
 %endif
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -94,7 +97,10 @@ cd src
 %if !%{with test}
 %doc CHANGES.rst README.rst
 %license LICENSE.rst
-%{python_sitelib}/zope*
+%dir %{python_sitelib}/zope
+%{python_sitelib}/zope/testbrowser
+%{python_sitelib}/zope.testbrowser-%{version}-py*-nspkg.pth
+%{python_sitelib}/zope.testbrowser-%{version}.dist-info
 %endif
 
 %changelog
