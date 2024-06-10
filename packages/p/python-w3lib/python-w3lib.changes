@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun 10 09:25:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.0:
+  * Dropped Python 3.7 support (#214).
+  * Added Python 3.12 and PyPy 3.10 support (#218).
+  * Added the description to the package metadata (#227).
+  * Improved type hints (#226).
+  * Added the ``pre-commit`` configuration, code reformatted with
+    ``black``
+  * Updated CI configuration (#217, #227).
+- use PEP517 build
+
+-------------------------------------------------------------------
 Fri Jan 12 08:28:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.2:

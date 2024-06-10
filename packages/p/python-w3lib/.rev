@@ -101,4 +101,20 @@
   * :func:`w3lib.url.url_query_cleaner` no longer adds an</comment>
     <requestid>1138240</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>95a79498936d10c10f1c6b9f360fb456</srcmd5>
+    <version>2.2.0</version>
+    <time>1718033895</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.2.0:
+  * Dropped Python 3.7 support (#214).
+  * Added Python 3.12 and PyPy 3.10 support (#218).
+  * Added the description to the package metadata (#227).
+  * Improved type hints (#226).
+  * Added the ``pre-commit`` configuration, code reformatted with
+    ``black``
+  * Updated CI configuration (#217, #227).
+- use PEP517 build</comment>
+    <requestid>1179666</requestid>
+  </revision>
 </revisionlist>

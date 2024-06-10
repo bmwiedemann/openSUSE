@@ -18,15 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-w3lib
-Version:        2.1.2
+Version:        2.2.0
 Release:        0
 Summary:        Library of Web-Related Functions
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/scrapy/w3lib
 Source:         https://files.pythonhosted.org/packages/source/w/w3lib/w3lib-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -59,10 +61,10 @@ This is a Python library of web-related functions, such as:
 %autosetup -p1 -n w3lib-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -71,6 +73,7 @@ This is a Python library of web-related functions, such as:
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/w3lib
+%{python_sitelib}/w3lib-%{version}.dist-info
 
 %changelog
