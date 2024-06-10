@@ -17,7 +17,7 @@
 
 
 Name:           resource-agents
-Version:        4.13.0+git41.828c175c
+Version:        4.14.0+git15.c784b83c
 Release:        0
 Summary:        HA Reusable Cluster Resource Scripts
 License:        GPL-2.0-only AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -26,16 +26,17 @@ URL:            http://linux-ha.org/
 Source:         resource-agents-%{version}.tar.xz
 Source1:        monitoring-plugins-metadata.tar.bz2
 
-# PATCH-FIX-OPENSUSE: activate VG with partial PV by default
-Patch1:         0001-LVM-Default-partial_activation-to-true-in-SLE-HAE.patch
+Patch1:         drop-deprecated-agents.patch
 # PATCH-FIX-OPENSUSE: fix path to sm-notify
 Patch2:         0002-nfsserver-fix-path-to-sm-notify.patch
 # PATCH-FIX-OPENSUSE: ldirectord: don't create subsys lock
 Patch3:         0003-ldirectord-don-t-create-subsys-lock.patch
 # PATCH-FIX-OPENSUSE: Revert moving binaries to /usr/libexec
 Patch4:         0004-Revert-Low-build-Move-binaries-in-usr-lib-heartbeat-.patch
+%if 0%{?suse_version} < 1600
 # PATCH-FIX-OPENSUSE: Revert ocf_log: use same log format at pacemaker
 Patch6:         0006-Revert-ocf_log-use-same-log-format-as-pacemaker.patch
+%endif
 # PATCH-FIX-OPENSUSE:
 Patch7:         0007-Request-to-add-gcp-vpc-move-route.patch
 
@@ -128,7 +129,9 @@ pages of individual nagios plugins.
 %patch -P 2 -p1
 %patch -P 3 -p1
 %patch -P 4 -p1
+%if 0%{?suse_version} < 1600
 %patch -P 6 -p1
+%endif
 %patch -P 7 -p0
 %patch -P 8 -p0
 %patch -P 9 -p0

@@ -1,0 +1,29 @@
+--- a/heartbeat/Makefile.am	2024-06-07 07:19:37.336355067 +0200
++++ b/heartbeat/Makefile.am	2024-06-07 08:43:49.674399158 +0200
+@@ -60,10 +60,8 @@ ocf_SCRIPTS	      = AoEtarget		\
+ 			Evmsd			\
+ 			Filesystem		\
+ 			ICP			\
+-			IPaddr			\
+ 			IPaddr2			\
+ 			IPsrcaddr		\
+-			LVM			\
+ 			LinuxSCSI		\
+ 			lvmlockd		\
+ 			LVM-activate		\
+@@ -137,7 +135,6 @@ ocf_SCRIPTS	      = AoEtarget		\
+ 			minio			\
+ 			mysql			\
+ 			mysql-proxy		\
+-			nagios			\
+ 			named			\
+ 			nfsnotify		\
+ 			nfsserver		\
+@@ -166,7 +163,6 @@ ocf_SCRIPTS	      = AoEtarget		\
+ 			rabbitmq-cluster	\
+ 			rabbitmq-server-ha	\
+ 			redis			\
+-			rkt			\
+ 			rsyncd			\
+ 			rsyslog			\
+ 			scsi2reservation	\
