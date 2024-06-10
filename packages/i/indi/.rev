@@ -37,4 +37,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1178761</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>12d870329f9caa6400ef0b7f912e4d96</srcmd5>
+    <version>2.0.8</version>
+    <time>1718033859</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.0.8:
+  * Avoid using .getName() for new INDI properties 
+  * Migrate drivers to new properties
+  * Various fixes
+</comment>
+    <requestid>1179620</requestid>
+  </revision>
 </revisionlist>

@@ -22,7 +22,7 @@
 
 %define so_ver 2
 Name:           indi
-Version:        2.0.7
+Version:        2.0.8
 Release:        0
 Summary:        Instrument Neutral Distributed Interface
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later

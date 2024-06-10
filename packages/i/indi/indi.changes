@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 10 07:05:24 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0.8:
+  * Avoid using .getName() for new INDI properties 
+  * Migrate drivers to new properties
+  * Various fixes
+
+-------------------------------------------------------------------
 Wed May 29 13:44:37 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Use ldconfig_scriptlets macro
