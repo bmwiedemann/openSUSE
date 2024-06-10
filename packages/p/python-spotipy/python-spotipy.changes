@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun 10 09:22:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.24.0:
+  * Added `MemcacheCacheHandler`, a cache handler that stores the
+    token info using pymemcache.
+  * Added support for audiobook endpoints: `get_audiobook`,
+    `get_audiobooks`, and `get_audiobook_chapters`.
+  * Added integration tests for audiobook endpoints.
+  * Added `update` field to `current_user_follow_playlist`.
+  * Fixed error obfuscation when Spotify class is being inherited
+    and an error is raised in the Child's `__init__`
+  * Replaced `artist_albums(album_type=...)` with
+    `artist_albums(include_groups=...)` due to an API change.
+  * Updated `_regex_spotify_url` to ignore `/intl-<countrycode>`
+    in Spotify links
+
+-------------------------------------------------------------------
 Fri Dec  8 13:45:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.23.0:

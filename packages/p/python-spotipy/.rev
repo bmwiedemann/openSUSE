@@ -125,4 +125,24 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1133445</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>51538a6b21d2a1b049c3963dd1668b8f</srcmd5>
+    <version>2.24.0</version>
+    <time>1718033894</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.24.0:
+  * Added `MemcacheCacheHandler`, a cache handler that stores the
+    token info using pymemcache.
+  * Added support for audiobook endpoints: `get_audiobook`,
+    `get_audiobooks`, and `get_audiobook_chapters`.
+  * Added integration tests for audiobook endpoints.
+  * Added `update` field to `current_user_follow_playlist`.
+  * Fixed error obfuscation when Spotify class is being inherited
+    and an error is raised in the Child's `__init__`
+  * Replaced `artist_albums(album_type=...)` with
+    `artist_albums(include_groups=...)` due to an API change.
+  * Updated `_regex_spotify_url` to ignore `/intl-&lt;countrycode&gt;`
+    in Spotify links</comment>
+    <requestid>1179665</requestid>
+  </revision>
 </revisionlist>
