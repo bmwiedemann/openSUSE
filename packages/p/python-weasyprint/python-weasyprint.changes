@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon Jun 10 09:58:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 62.2:
+  * #2142, #2162: Support grid-auto-flow: column, with financial
+    support from Menutech
+  * #2167: Fix space added by CSS gap at the end
+  * #2134: Remove absolute placeholders from discarded content
+  * #2154: Don’t crash when grid items have auto margins
+  * 8cdd66f: Fix CSS nesting for nested selectors with comma
+  * 3359db5: Fix and test grid shorthand
+  * 82deda4: Fix wrong resume_at for split floats
+  * ff2acf1: Ensure that gradient size is positive to please some
+  * #2144, #2149: Avoid broken fonts when generating multiple
+    documents
+  * c10c6892: Display at least one grid row on empty pages
+  * #2146: Don’t crash when flex container’s parent’s height is
+    auto
+  * Python 3.9+ is now needed, Python 3.7 and 3.8 are not
+    supported anymore
+  * pydyf 0.10.0+ is now needed
+  * tinycss2 1.3.0+ is now needed
+  * Features:
+  * #543, #2121: Support CSS Grid layout
+  * #2124, #2125: Support border-image-* properties
+  * #2084, #2077: Support CSS nesting
+  * #2101: Support HTML maxlength attribute for form fields
+  * #2095: Apply overflow to replaced boxes
+  * 245e4f5: Add support of PDF/A-?u
+  * Bug fixes:
+  * #2136: Don’t clip aligned text in SVG
+  * #2135: Allow column-direction flex containers to use
+    percentage-based heights
+  * #2128: Don’t crash when a FontConfig object is destroyed
+    early
+  * #2079: Fix executable file for some Windows versions
+  * #2131: Fix alpha for images before/after transparent text
+  * #2111: Handle auto and none values for CSS quotes property
+  * #2103: Don’t crash with overconstrained columns
+  * #2100: Fix rounding error when detecting overflows
+  * #2093, #2097, #2094: Mark use of md5() and sha1() as not for
+    security
+  * #1956, #2087: Use CSS table module level 3 to compute widths
+  * #2086: Fix selects with empty values displaying None
+  * #1112, #2082, #2085: Fix computation for outer min-content
+    width for table cells
+  * 016bd81: Fix many different bugs with SVG markers
+  * Performance:
+  * #2130: Cache font key instead of whole font content
+  * Documentation:
+  * #2108: Update documentation about CSS leader() function
+
+-------------------------------------------------------------------
 Sat Mar 16 16:22:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 61.2:
