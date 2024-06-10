@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Tue Jun  4 16:37:10 UTC 2024 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 0.13
+
+-------------------------------------------------------------------
+Sun Mar 27 18:28:07 UTC 2022 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- add timer for regularly saving the fake hwclock timestamp
+
+-------------------------------------------------------------------
+Sun Mar 27 17:54:10 UTC 2022 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- initial version 0.12
