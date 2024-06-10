@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Tue Jun  4 11:55:48 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.42.0
+  * [BREAKING] Capacity Management Service
+    * Optional parameter --resource-type accepts only 2 values CAPACITY_CONSTRAINT, SERVER_HW
+    * Optional parameter --workload-type accepts only 3 values GENERIC, ROW, US_PROD
+      * ``oci capacity-management occ-availability-collection list``
+      * ``oci capacity-management occ-availability-catalog-collection list-internal``
+  * Control Center service
+    * Support for Demand Signal features
+      * ``oci demand-signal occ-demand-signal-collection list-occ-demand-signals``
+      * ``oci demand-signal occ-demand-signal change-compartment``
+      * ``oci demand-signal occ-demand-signal create``
+      * ``oci demand-signal occ-demand-signal delete``
+      * ``oci demand-signal occ-demand-signal get``
+      * ``oci demand-signal occ-demand-signal update``
+      * ``oci demand-signal occ-demand-signal patch``
+    * Support for Capacity Management features
+      * ``oci capacity-management occ-capacity-request patch-internal``
+      * ``oci capacity-management occ-overview-collection list-internal-namespace-occ-overviews``
+      * ``oci capacity-management occ-overview-collection list``
+  * Database Management service
+    * Support for Standby Database Monitoring
+      * ``oci database-management peer-database-metrics get``
+      * ``oci database-management dataguard-performance-metrics get``
+  * Database service
+    * Support for External Database Connector
+      * ``oci db external-db-connector create-macs-connector --connection-credentials``
+      * ``oci db external-db-connector update-macs-connector --connection-credentials``
+  * Java Management Service
+    * Support for tagging related optional parameters in Downloads API
+      * ``oci jms-java-downloads java-download-report create --defined-tags, --freeform-tags``
+      * ``oci jms-java-downloads java-license-acceptance-record create --defined-tags, --freeform-tags``
+      * ``oci jms-java-downloads java-license-acceptance-record update --defined-tags, --freeform-tags``
+- from version 3.41.0
+  * Data Science Service
+    * Support for Nested Resource Principal
+      * ``oci data-science job-run create --opc-parent-rpt-url``
+      * ``oci data-science model-deployment create --opc-parent-rpt-url``
+      * ``oci data-science pipeline-run create --opc-parent-rpt-url``
+    * Support for ML Pipelines v2
+      * ``oci data-science pipeline update --infrastructure-configuration-details``
+      * ``oci data-science pipeline-run cancel --terminate-gracefully``
+  * Support for managing Schedules in new Resource Scheduler Service
+    * ``oci resource-scheduler``
+  * Support for backup and replacement of MASTER, UTILITY and EDGE NODES in Big Data Service
+    * ``oci bds instance backup-node``
+    * ``oci bds instance create-node-backup-configuration``
+    * ``oci bds instance create-node-replace-configuration``
+    * ``oci bds instance get-node-backup``
+    * ``oci bds instance get-node-backup-configuration``
+    * ``oci bds instance get-node-replace-configuration``
+    * ``oci bds instance list-node-backup-configurations``
+    * ``oci bds instance list-node-backups``
+    * ``oci bds instance list-node-replace-configurations``
+    * ``oci bds instance replace-node``
+    * ``oci bds instance update-node-backup-configuration``
+    * ``oci bds instance update-node-replace-configuration``
+    * ``oci bds node-backup delete``
+    * ``oci bds node-backup-configuration delete``
+    * ``oci bds node-replace-configuration remove``
+- Refresh patches for new version
+  * oc_relax-python-depends.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Wed May 15 09:07:21 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.40.3
