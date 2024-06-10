@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 10 08:51:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.5:
+  * fix: don't add sign if the float is negative
+  * fix: Construction of OutOfOrderTableProxy can cause newlines
+    to be inserted
+
+-------------------------------------------------------------------
 Wed Mar 13 10:17:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.12.4:

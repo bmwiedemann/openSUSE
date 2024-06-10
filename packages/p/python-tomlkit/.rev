@@ -211,4 +211,15 @@
   * Fix an index error when setting dotted keys in a table.</comment>
     <requestid>1157519</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2af01d9a609fe08d7da9d452a5406596</srcmd5>
+    <version>0.12.5</version>
+    <time>1718033883</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.12.5:
+  * fix: don't add sign if the float is negative
+  * fix: Construction of OutOfOrderTableProxy can cause newlines
+    to be inserted</comment>
+    <requestid>1179656</requestid>
+  </revision>
 </revisionlist>
