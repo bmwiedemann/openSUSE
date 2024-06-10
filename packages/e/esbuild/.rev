@@ -105,4 +105,34 @@
 </comment>
     <requestid>1172604</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5e3029146b890cd42e5faf59149cd061</srcmd5>
+    <version>0.21.5</version>
+    <time>1718033833</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.21.5:
+ * Fix internal error with --supported:object-accessors=false (#3794)
+ * Support ${configDir} in tsconfig.json files (#3782)
+ * Support import attributes with glob-style imports (#3797)
+ * Allow unknown import attributes to be used with the copy loader (#3792)
+ * Fix Symbol.metadata on classes without a class decorator (#3781)
+- update to 0.21.4:
+  * Update support for import assertions and import attributes in
+    node (#3778)
+  * Fix for await transform when a label is present
+  * Do additional constant folding after cross-module enum
+    inlining (#3416, #3425)
+  * Pass import attributes to on-resolve plugins (#3384, #3639, #3646)
+  * Formatting support for the @position-try rule (#3773)
+  * Always allow internal string import and export aliases (#3343)
+- includes 0.21.3:
+  * Implement the decorator metadata proposal (#3760)
+  * Fix bundled decorators in derived classes (#3768)
+  * Fix tsconfig.json files inside symlinked directories (#3767)
+- includes 0.21.2:
+  * Correct this in field and accessor decorators (#3761)
+  * Allow es2023 as a target environment (#3762)
+</comment>
+    <requestid>1179593</requestid>
+  </revision>
 </revisionlist>
