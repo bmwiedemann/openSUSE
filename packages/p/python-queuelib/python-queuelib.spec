@@ -1,7 +1,7 @@
 #
 # spec file for package python-queuelib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-queuelib
-Version:        1.6.2
+Version:        1.7.0
 Release:        0
 Summary:        Collection of Persistent (Disk-Based) Queues
 License:        BSD-2-Clause

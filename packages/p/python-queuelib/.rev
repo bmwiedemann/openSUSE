@@ -39,4 +39,17 @@
     <comment></comment>
     <requestid>917458</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cd48954b26ec144ee80241f88fc30ff7</srcmd5>
+    <version>1.7.0</version>
+    <time>1718033900</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.7.0:
+  * Added support for Python 3.10-3.12 and PyPy 3.10
+  * Removed support for Python 3.5-3.7
+  * Improved type annotations and added the ``py.typed`` file
+  * Added ``pre-commit`` configuration
+  * Improved linting and CI configuration</comment>
+    <requestid>1179672</requestid>
+  </revision>
 </revisionlist>

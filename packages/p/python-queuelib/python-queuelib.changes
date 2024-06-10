@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 10 09:52:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.0:
+  * Added support for Python 3.10-3.12 and PyPy 3.10
+  * Removed support for Python 3.5-3.7
+  * Improved type annotations and added the ``py.typed`` file
+  * Added ``pre-commit`` configuration
+  * Improved linting and CI configuration
+
+-------------------------------------------------------------------
 Mon Sep  6 09:07:34 UTC 2021 - pgajdos@suse.com
 
 - version update to 1.6.2
