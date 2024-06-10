@@ -79,4 +79,17 @@
     <comment></comment>
     <requestid>999912</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>457049c25d4edd8de63dfe411abf5b05</srcmd5>
+    <version>0.4.3</version>
+    <time>1718033886</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.3:
+  * improves response to Pulseaudio runtime failures
+  * implements named channel map elements on Linux
+
+- Update to 0.4.2:
+  * fixes silence recording on macOS</comment>
+    <requestid>1179658</requestid>
+  </revision>
 </revisionlist>

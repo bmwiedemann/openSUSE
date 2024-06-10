@@ -1,7 +1,7 @@
 #
 # spec file for package python-SoundCard
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define         skip_python36 1
 %endif
 Name:           python-SoundCard
-Version:        0.4.2
+Version:        0.4.3
 Release:        0
 Summary:        Python package to play and record audio
 License:        BSD-3-Clause
