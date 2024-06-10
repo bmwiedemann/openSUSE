@@ -1,0 +1,29 @@
+From af92241a00f4bf7f4a47649d7488902e936af321 Mon Sep 17 00:00:00 2001
+From: Johannes Thumshirn <jth@kernel.org>
+Date: Mon, 10 Jun 2024 11:53:04 +0200
+Subject: [PATCH] virtme-ng: fix virtiofsd search path on openSUSE
+
+On openSUSE based systems, virtiofsd is in /usr/lib/virtiofsd/virtiofsd.
+
+Fix the search path for it.
+
+Signed-off-by: Johannes Thumshirn <jth@kernel.org>
+---
+ virtme/commands/run.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/virtme/commands/run.py b/virtme/commands/run.py
+index 95f7684b4821..a3a2f0b5ab1e 100644
+--- a/virtme/commands/run.py
++++ b/virtme/commands/run.py
+@@ -582,6 +582,7 @@ class VirtioFS:
+             f"{self.guest_tools_path}/bin/virtiofsd",
+             which("virtiofsd"),
+             "/usr/libexec/virtiofsd",
++            "/usr/lib/virtiofsd/virtiofsd",
+             "/usr/lib/virtiofsd",
+             "/usr/lib/qemu/virtiofsd",
+         )
+-- 
+2.43.0
+

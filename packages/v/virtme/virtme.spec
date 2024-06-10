@@ -29,6 +29,7 @@ License:        GPL-2.0-only
 Group:          Development/Tools/Other
 URL:            https://github.com/arighi/virtme-ng
 Source0:        %{name}-ng-%{version}.tar.xz
+Patch0:         0001-virtme-ng-fix-virtiofsd-search-path-on-openSUSE.patch
 BuildRequires:  %{pythons}-argcomplete
 BuildRequires:  %{pythons}-requests
 BuildRequires:  %{pythons}-setuptools

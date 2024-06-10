@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 10 10:00:40 UTC 2024 - Johannes Thumshirn <jth@kernel.org>
+
+- Fix virtiofsd search path
+  + 0001-virtme-ng-fix-virtiofsd-search-path-on-openSUSE.patch
+
+-------------------------------------------------------------------
 Wed May 22 06:19:47 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.25:
