@@ -1,7 +1,7 @@
 #
 # spec file for package python-tenacity
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-tenacity
-Version:        8.2.3
+Version:        8.3.0
 Release:        0
 Summary:        Python module for retrying code until it succeeeds
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/jd/tenacity
 Source:         https://files.pythonhosted.org/packages/source/t/tenacity/tenacity-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado}
 BuildRequires:  %{python_module typeguard}
 BuildRequires:  %{python_module typing-extensions}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-tornado
@@ -53,10 +55,10 @@ Features
 %setup -q -n tenacity-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -66,6 +68,6 @@ Features
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/tenacity
-%{python_sitelib}/tenacity-*egg-info
+%{python_sitelib}/tenacity-%{version}.dist-info
 
 %changelog

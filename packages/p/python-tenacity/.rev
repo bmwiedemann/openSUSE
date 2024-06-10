@@ -213,4 +213,21 @@
 - update to 3.3.0:</comment>
     <requestid>1129194</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c59b8d0859b00dab2ded9c0c1e521fc6</srcmd5>
+    <version>8.3.0</version>
+    <time>1718033871</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.3.0:
+  * Added a new stop function: `stop_before_delay`, which will
+    stop execution if the next sleep time would cause overall
+    delay to exceed the specified delay. Useful for use cases
+    where you have some upper bound on retry times that you must
+    not exceed, so returning before that timeout is preferable
+    than returning after that timeout.
+  * Preserve __defaults__ and __kwdefaults__ through retry
+    decorator
+- use PEP517 build</comment>
+    <requestid>1179634</requestid>
+  </revision>
 </revisionlist>

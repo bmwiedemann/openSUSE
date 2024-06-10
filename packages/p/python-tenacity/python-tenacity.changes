@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 10 07:49:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.3.0:
+  * Added a new stop function: `stop_before_delay`, which will
+    stop execution if the next sleep time would cause overall
+    delay to exceed the specified delay. Useful for use cases
+    where you have some upper bound on retry times that you must
+    not exceed, so returning before that timeout is preferable
+    than returning after that timeout.
+  * Preserve __defaults__ and __kwdefaults__ through retry
+    decorator
+- use PEP517 build
+
+-------------------------------------------------------------------
 Mon Nov 27 16:09:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.3:
