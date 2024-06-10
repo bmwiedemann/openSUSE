@@ -107,4 +107,15 @@
     <comment></comment>
     <requestid>1163235</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1e2a081008d8ce92b581f5b83f9a476f</srcmd5>
+    <version>5.4.1</version>
+    <time>1718033898</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.4.1 (bsc#1223373, CVE-2024-32879):
+  * Added reverse migration for JSON field
+  * Fixed improper handling of case sensitivity with
+    MySQL/MariaDB (CVE-2024-32879)</comment>
+    <requestid>1179662</requestid>
+  </revision>
 </revisionlist>

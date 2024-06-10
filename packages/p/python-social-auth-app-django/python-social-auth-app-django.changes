@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 10 09:09:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.4.1 (bsc#1223373, CVE-2024-32879):
+  * Added reverse migration for JSON field
+  * Fixed improper handling of case sensitivity with
+    MySQL/MariaDB (CVE-2024-32879)
+
+-------------------------------------------------------------------
 Thu Mar 28 05:50:23 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Add %{?sle15_python_module_pythons}

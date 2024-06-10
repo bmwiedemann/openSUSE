@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-social-auth-app-django
-Version:        5.4.0
+Version:        5.4.1
 Release:        0
 Summary:        Python Social Authentication, Django integration
 License:        BSD-3-Clause
