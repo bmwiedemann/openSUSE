@@ -326,6 +326,7 @@ unsorted:
   - Srain 
   - Srain-lang 
   - StyLua 
+  - SwayAudioIdleInhibit 
   - SwayNotificationCenter 
   - SwayNotificationCenter-bash-completion 
   - SwayNotificationCenter-fish-completion 
@@ -8764,6 +8765,10 @@ unsorted:
   - input-pad-xtest 
   - insighttoolkit-devel 
   - inspectrum 
+  - inspektor-gadget 
+  - inspektor-gadget-bash-completion 
+  - inspektor-gadget-fish-completion 
+  - inspektor-gadget-zsh-completion 
   - inst-source-utils 
   - install-initrd-MicroOS 
   - install-initrd-openSUSE 
@@ -9803,6 +9808,7 @@ unsorted:
   - kf6-kconfig-devel 
   - kf6-kconfigwidgets-devel 
   - kf6-kcontacts-devel 
+  - kf6-kcontacts-imports 
   - kf6-kcoreaddons-devel 
   - kf6-kcrash-devel 
   - kf6-kdav-devel 
@@ -12255,6 +12261,7 @@ unsorted:
   - libcmis-c-devel 
   - libcmis-devel 
   - libcmocka-cmake 
+  - libcmocka-cmake-32bit 
   - libcmocka-devel 
   - libcmocka-devel-32bit 
   - libcmocka-doc 
@@ -23178,6 +23185,10 @@ unsorted:
   - ptscotch_6_1_0-gnu-openmpi4-hpc 
   - ptscotch_6_1_0-gnu-openmpi4-hpc-devel 
   - ptscotch_6_1_0-gnu-openmpi4-hpc-devel-static 
+  - pueue 
+  - pueue-bash-completion 
+  - pueue-fish-completion 
+  - pueue-zsh-completion 
   - pugixml-devel 
   - pulseaudio 
   - pulseaudio-bash-completion 
@@ -46727,6 +46738,8 @@ unsorted:
   - tv-fonts 
   - tvbrowser 
   - tvheadend 
+  - tvision-demos 
+  - tvision-devel-static 
   - tvm-devel 
   - tvmc 
   - tvtime 

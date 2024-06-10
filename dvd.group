@@ -1338,6 +1338,7 @@
     <package name="libKF6Bookmarks6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF6Bookmarks6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF6BookmarksWidgets6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKF6BreezeIcons6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF6CalendarCore6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF6CalendarEvents6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF6CalendarEvents6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3764,7 +3765,7 @@
     <package name="qemu-x86" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qqc2-breeze-style6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="qqc2-desktop-style" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="qqc2-desktop-style-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="qqc2-desktop-style-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="qt6-declarative-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="qt6-imageformats" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="qt6-multimedia" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
