@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 10 06:49:48 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.2:
+  + Fix memory leaks.
+  + Fix print button not displaying.
+
+-------------------------------------------------------------------
 Mon May  6 10:05:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.1:

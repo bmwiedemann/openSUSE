@@ -420,4 +420,14 @@
     <comment></comment>
     <requestid>1172170</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>bbfe858e9520ae7b9dc2d64d51fc9959</srcmd5>
+    <version>46.2</version>
+    <time>1718033889</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.2:
+  + Fix memory leaks.
+  + Fix print button not displaying. (forwarded request 1179613 from dimstar)</comment>
+    <requestid>1179669</requestid>
+  </revision>
 </revisionlist>
