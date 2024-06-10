@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %{?python_enable_dependency_generator}
 Name:           python-wcmatch
-Version:        8.5.1
+Version:        8.5.2
 Release:        0
 Summary:        Wildcard/glob file name matcher
 License:        MIT

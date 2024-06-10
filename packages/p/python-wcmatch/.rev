@@ -45,4 +45,15 @@
   * Fix issue with type check failure in `wcmatch.glob`.</comment>
     <requestid>1157753</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5f818551d9e912a8d6d760037f7f4923</srcmd5>
+    <version>8.5.2</version>
+    <time>1718033880</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.5.2:
+  * Fix `pathlib` issue with inheritance on Python
+    versions greater than 3.12.
+  * Fix `EXTMATCH` case with `!(...)` patterns.</comment>
+    <requestid>1179650</requestid>
+  </revision>
 </revisionlist>
