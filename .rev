@@ -98,4 +98,12 @@
     <comment></comment>
     <requestid>1154945</requestid>
   </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>f362cadd4022a9fc7f4e7b18e4b7b0ce</srcmd5>
+    <version>5.6.4</version>
+    <time>1718033913</time>
+    <user>anag+factory</user>
+    <comment>- Add fix-build-on-icu-75.patch, icu 75 needs c++17</comment>
+    <requestid>1179695</requestid>
+  </revision>
 </revisionlist>
