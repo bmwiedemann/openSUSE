@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 22 15:43:14 UTC 2024 - malcolmlewis@opensuse.org
+
+- Updated to version 4.1:
+  + Add Python 3.12 support, (gh#jrnl-org/jrnl#1761).
+  + Set new required build fields in the ReadTheDocs config file,
+    (gh#jrnl-org/jrnl#1803).
+  + Replace flake8 and isort with ruff linter and add black --check
+    to linting step, (gh#jrnl-org/jrnl#1763).
+  + Add note about messages going to stderr and the implication for
+    piping, (gh#jrnl-org/jrnl#1768).
+- Drop requires on ansiwrap.
+- Add note about using the keyring to encrypt, (boo#1223003,
+  gh#jrnl-org/jrnl#1883 and gh#marcus-h/python-keyring-keyutils#1).
+
+-------------------------------------------------------------------
 Sat Aug 19 14:03:40 UTC 2023 - malcolmlewis@opensuse.org
 
 - Initial build at version 4.0.1.
