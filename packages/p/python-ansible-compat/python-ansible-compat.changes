@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun  7 19:53:49 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.6.1:
+  * Bugfixes
+    - Allow the caller to set the ANSIBLE_COLLECTIONS_PATH (#388)
+      @cidrblock
+    - Don't nuke the collections path (#387) @cidrblock
+
+-------------------------------------------------------------------
 Thu May 30 09:40:44 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 24.6.0:
