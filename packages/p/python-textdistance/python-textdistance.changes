@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 10 09:27:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.6.2:
+  * Levenstein: ensure the return type is int
+
+-------------------------------------------------------------------
 Sun Jan 14 15:13:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.6.1:

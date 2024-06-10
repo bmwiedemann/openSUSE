@@ -82,4 +82,13 @@
   * Remove abydos references from libraries.json</comment>
     <requestid>1138586</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ab2cc4fc6cc7213efb3bc112469c5f6f</srcmd5>
+    <version>4.6.2</version>
+    <time>1718033896</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.6.2:
+  * Levenstein: ensure the return type is int</comment>
+    <requestid>1179667</requestid>
+  </revision>
 </revisionlist>
