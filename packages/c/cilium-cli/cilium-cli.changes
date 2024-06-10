@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Jun 08 09:57:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.10:
+  * Prepare for v0.16.10 release
+  * fix(deps): update module golang.org/x/term to v0.21.0
+  * fix(deps): update all go dependencies main
+  * connectivity: Introduce local redirect policy tests
+  * connectivity: Add ResultCurlTimeout
+  * connectivity: Add a scenario getter
+  * features: Add LocalRedirectPolicy
+  * connectivity: add egress-gateway-with-l7-policy test
+  * connectivity: add pod to external with DNS case in EGW scenario
+  * chore(deps): update golang docker tag to v1.22.4
+  * chore(deps): update docker.io/library/busybox:stable-glibc
+    docker digest to 25e9fcb
+  * Update go.mod
+  * fix: properly count wrapped lines in status output in --wait
+    mode
+  * chore(deps): update go to v1.22.4
+  * chore(deps): update docker.io/library/busybox:stable-glibc
+    docker digest to 082a03d
+  * fix: conn tests JUnit file name
+  * Update stable release to v0.16.9
+
+-------------------------------------------------------------------
 Sat Jun 01 09:11:49 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.16.9:
