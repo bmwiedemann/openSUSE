@@ -627,6 +627,9 @@ Prefer: -freerdp-devel
 # have choice for registries-conf >= 20240408 needed by libcontainers-common: registries-conf-default registries-conf-suse
 Prefer: -registries-conf-suse
 
+# have choice for cmake(cmocka): libcmocka-cmake libcmocka-cmake-32bit
+Prefer: -libcmocka-cmake-32bit 
+
 #---
 
 Preinstall: aaa_base filesystem attr bash bash-sh coreutils diffutils
