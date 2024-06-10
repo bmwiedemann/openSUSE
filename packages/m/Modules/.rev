@@ -225,4 +225,13 @@
     <comment></comment>
     <requestid>910816</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>dbe2f93c967f77917b8da1ada8177dd3</srcmd5>
+    <version>4.8.0</version>
+    <time>1718033827</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro: allows us to eliminate usage of deprecated
+  %patchN syntax. (forwarded request 1175519 from dimstar)</comment>
+    <requestid>1179629</requestid>
+  </revision>
 </revisionlist>

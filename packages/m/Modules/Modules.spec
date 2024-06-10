@@ -1,7 +1,7 @@
 #
 # spec file for package Modules
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -93,8 +93,8 @@ applications.
 %define vimdatadir %{_datadir}/vim/site
 
 %prep
-%setup -q -n modules-%{version}
-%patch1 -p1
+%autosetup -p1 -n modules-%{version}
+
 # This is debatable:
 # if the replace 'bash' consecutive calls to 'modules' would still
 # run with the original bash. Maybe not intended.

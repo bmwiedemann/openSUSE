@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 21 10:40:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro: allows us to eliminate usage of deprecated
+  %patchN syntax.
+
+-------------------------------------------------------------------
 Sat Jul 31 16:52:07 UTC 2021 - Philipp Wagner <mail@philipp-wagner.com>
 
 - Update to upstream version 4.8.0
