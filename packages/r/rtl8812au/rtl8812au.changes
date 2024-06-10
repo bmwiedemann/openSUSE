@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 26 06:55:40 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Change source to newer version:
+  https://github.com/morrownr/8812au-20210820
+- Update _services
+
+-------------------------------------------------------------------
 Fri Apr 19 12:34:20 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to fix build in Leap 15.6 whose 6.4 kernel includes
