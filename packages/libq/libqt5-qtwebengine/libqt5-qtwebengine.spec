@@ -169,8 +169,6 @@ BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(pangoft2)
 BuildRequires:  pkgconfig(poppler-cpp)
 BuildRequires:  pkgconfig(protobuf)
-# re2 >= 2023-07-01 breaks the build, use libre2-10-devel if needed
-BuildRequires:  pkgconfig(re2) <= 10.0.0
 BuildRequires:  pkgconfig(speex)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(vpx) >= 1.8.0

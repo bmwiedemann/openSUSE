@@ -961,4 +961,12 @@ of the last blockers as we're still waiting for an upstream fix. (forwarded requ
     <comment></comment>
     <requestid>1176497</requestid>
   </revision>
+  <revision rev="99" vrev="2">
+    <srcmd5>d092752b638005a2a5504be5c5b32f99</srcmd5>
+    <version>5.15.17</version>
+    <time>1718033816</time>
+    <user>anag+factory</user>
+    <comment>- use bundled re2 (boo#1226119)</comment>
+    <requestid>1179641</requestid>
+  </revision>
 </revisionlist>
