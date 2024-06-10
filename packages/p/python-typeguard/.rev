@@ -97,4 +97,32 @@
     quotes stripped from its contents, thus typically causing</comment>
     <requestid>1130725</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9a6aa16306c64f0a8c75a01a7355ffc9</srcmd5>
+    <version>4.3.0</version>
+    <time>1718033818</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.3.0:
+  * Added support for checking against static protocols
+  * Fixed some compatibility problems when running on Python 3.13
+  * Fixed test suite incompatibility with pytest 8.2
+  * Fixed pytest plugin crashing on pytest version older than
+    v7.0.0 (even if it's just present)
+  * Fixed missing typing_extensions dependency for Python 3.12
+  * Fixed deprecation warning in the test suite on Python 3.13
+  * Added support for specifying options for the pytest plugin
+    via pytest config files
+  * Avoid creating reference cycles when type checking unions (PR
+    by Shantanu)
+  * Fixed Optional[...] being removed from the AST if it was
+    located within a subscript
+  * Fixed TypedDict from typing_extensions not being recognized
+    as one
+  * Fixed typing types (dict[str, int], List[str], etc.) not
+    passing checks against type or Type
+  * Fixed detection of optional fields (NotRequired[...]) in
+    TypedDict when using forward references
+  * Fixed mapping checks against Django's MultiValueDict</comment>
+    <requestid>1179514</requestid>
+  </revision>
 </revisionlist>
