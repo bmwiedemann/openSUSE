@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 21 07:34:47 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- switch to python 3.11
+
+-------------------------------------------------------------------
+Tue Feb 20 16:00:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
 Tue Sep 26 13:06:49 UTC 2023 - Adrian Schröter <adrian@suse.de>
 
 - switch to python3.10

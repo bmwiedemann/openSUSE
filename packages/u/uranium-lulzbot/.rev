@@ -121,4 +121,12 @@
     <comment>- switch to python3.10</comment>
     <requestid>1113680</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>4b6401fba2b3e0eacaaf7d0fc1b14b9f</srcmd5>
+    <version>3.6.21</version>
+    <time>1718033874</time>
+    <user>anag+factory</user>
+    <comment>Submit piled up fixes/ RPM4.20</comment>
+    <requestid>1179644</requestid>
+  </revision>
 </revisionlist>
