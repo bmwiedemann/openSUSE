@@ -17,14 +17,14 @@
 
 
 Name:           ncdu
-Version:        1.19
+Version:        1.20
 Release:        0
 Summary:        NCurses Disk Usage
 License:        MIT
 URL:            https://dev.yorhel.nl/ncdu/
 Source0:        https://dev.yorhel.nl/download/%{name}-%{version}.tar.gz
 Source1:        https://dev.yorhel.nl/download/%{name}-%{version}.tar.gz.asc
-Source2:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x74460d32b80810eba9afa2e962394c698c2739fa#/%{name}.keyring
+Source2:        https://yorhel.nl/key.asc#/%{name}.keyring
 BuildRequires:  pkgconfig(ncurses)
 
 %description
@@ -41,6 +41,9 @@ directories are using your disk space.
 
 %install
 %make_install
+
+%check
+%make_build check
 
 %files
 %license COPYING

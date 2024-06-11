@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  1 18:59:38 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.20:
+  * Revert default color scheme back to ‘off’
+  * Rewrite man page in mdoc, drop pod2man dependency
+
+-------------------------------------------------------------------
 Thu Mar 21 12:34:15 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - update to 1.19
