@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Tue Jun 04 07:35:46 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240530.09c4d6d2e:
+- libstonithd: free escaped metadata descriptions with g_free() (bsc#1224869, gh#ClusterLabs/pacemaker#3480)
+- libstonithd: avoid use-after-free when retrieving metadata of Linux-HA fence agents (bsc#1224869, gh#ClusterLabs/pacemaker#3480)
+
+-------------------------------------------------------------------
+Tue Jun 04 07:31:53 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240529.c7e11c771:
+- libcrmcommon: support PCMK_panic_action="off" or "sync-off"
+- libcrmcommon: avoid possible buffer overflow in pcmk__time_format_hr()
+- libcrmcommon: avoid possible buffer overflow in parse_date()
+
+-------------------------------------------------------------------
+Mon Jun 03 14:38:26 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240515.39ef08240 (Pacemaker-2.1.8-rc1):
+- ChangeLog: update for 2.1.8-rc1 release
+
+-------------------------------------------------------------------
+Mon Jun 03 14:15:26 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240514.9d0f30818:
+- scheduler: avoid memory leaks when updating action names
+- libcrmcommon: fix readable interval
+- tools: make crm_simulate output for bad input more understandable
+- libcrmcommon: Avoid leaking gnutls session
+- libcrmcluster: Fix a typo in an info message.
+- executor: Avoid memory leak in get_schema_files()
+- tools: Use crm_exit() consistently
+- executor: Spawn remoted pid 1 before allocating dynamic memory
+- libcib: Fix memory leak in cib_client_fetch_schemas()
+- libpacemaker: Fix mem leak in pcmk__acl_evaled_render()
+- libcrmcommon: avoid memory leaks when loading and freeing schemas
+- libcib: avoid memory leak in async calls
+- scheduler,tools: compare resource history IDs case-sensitively
+- executor: avoid pacemaker-remoted crash
+- libcrmcommon: Fix memory leak in pcmk__build_schema_xml_node()
+- libcrmcommon: Fix memory leak in ipc_proxy_dispatch()
+- fencer: Fix memory leak in handle_local_reply_and_notify()
+- fencer: Fix memory leak in stonith_query_capable_device_cb()
+- schemas: Add a schema for the new crm_resource output.
+- CIB: deprecate "default" and "#default" as explicit meta-attribute values
+- CIB: deprecate special handling of literal value "default" for meta-attributes
+- libpe_status,libpacemaker: enable deprecation warnings even in compatibility builds
+- CIB: deprecate omitting validate-with attribute from cib element
+- CIB: deprecate disabling schema validation
+- CIB: deprecate support for unknown schemas in validate-with
+- tools: skip overall error message with crm_verify --quiet
+- tools: crm_verify respects verbosity for configuration issues
+- scheduler: improve deprecated schema warning
+- scheduler: improve messages about orphaned resources
+
+-------------------------------------------------------------------
+Mon Jun 03 09:32:06 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240430.1dd728559:
+- tools: make crm_mon exit upon loss of the attached pseudo-terminal (bsc#1220229, gh#ClusterLabs/pacemaker#3430)
+
+-------------------------------------------------------------------
+Mon Jun 03 09:25:20 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240430.8ba07347b:
+- tools: Deprecate score expansion by default in crm_attribute
+- tools: Deprecate score expansion by default in cibadmin
+- tools: --score option for cibadmin and crm_attribute
+- tools: Unset crm_attribute promotion_score if attr name is given
+- tools: Fix cibadmin sync call return code logic
+- libcib: Fix handling of return values in CIB attr update/delete
+- libcrmcommon: Ensure crm_schema_init() initializes only once
+- scheduler: Check return code in node_xml.
+- libcrmcommon: simplify update_validation() logs
+- libcrmcommon: don't assume next schema will validate when not transforming
+- libcrmcommon: max should apply even if transform is false in update_validation()
+- libcrmcommon: don't validate with first schema for an unknown schema name
+- libcrmcommon: improve apply_upgrade() messages
+- xml: restore "pacemaker-next" schema functionality
+- lrmd: Warn on insecure and undocumented key handling behaviors.
+- agents: Mark the o2cb resource agent as deprecated. (gh#ClusterLabs/pacemaker#3425)
+- scheduler: compare nvpair block IDs case-sensitively
+
+-------------------------------------------------------------------
 Tue Apr 16 15:03:28 UTC 2024 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.1.7+20240411.81041cf0b:

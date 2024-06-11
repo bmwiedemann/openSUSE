@@ -2284,4 +2284,41 @@
 - schemas: restructure rule schema for planned incompatible changes</comment>
     <requestid>1168817</requestid>
   </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>6ec532a39aa9e3a73234db087f8ee4ed</srcmd5>
+    <version>2.1.7+20240530.09c4d6d2e</version>
+    <time>1718123224</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.1.7+20240530.09c4d6d2e:
+- libstonithd: free escaped metadata descriptions with g_free() (bsc#1224869, gh#ClusterLabs/pacemaker#3480)
+- libstonithd: avoid use-after-free when retrieving metadata of Linux-HA fence agents (bsc#1224869, gh#ClusterLabs/pacemaker#3480)
+
+- Update to version 2.1.7+20240529.c7e11c771:
+- libcrmcommon: support PCMK_panic_action=&quot;off&quot; or &quot;sync-off&quot;
+- libcrmcommon: avoid possible buffer overflow in pcmk__time_format_hr()
+- libcrmcommon: avoid possible buffer overflow in parse_date()
+
+- Update to version 2.1.7+20240515.39ef08240 (Pacemaker-2.1.8-rc1):
+- ChangeLog: update for 2.1.8-rc1 release
+
+- Update to version 2.1.7+20240514.9d0f30818:
+- scheduler: avoid memory leaks when updating action names
+- libcrmcommon: fix readable interval
+- tools: make crm_simulate output for bad input more understandable
+- libcrmcommon: Avoid leaking gnutls session
+- libcrmcluster: Fix a typo in an info message.
+- executor: Avoid memory leak in get_schema_files()
+- tools: Use crm_exit() consistently
+- executor: Spawn remoted pid 1 before allocating dynamic memory
+- libcib: Fix memory leak in cib_client_fetch_schemas()
+- libpacemaker: Fix mem leak in pcmk__acl_evaled_render()
+- libcrmcommon: avoid memory leaks when loading and freeing schemas
+- libcib: avoid memory leak in async calls
+- scheduler,tools: compare resource history IDs case-sensitively
+- executor: avoid pacemaker-remoted crash
+- libcrmcommon: Fix memory leak in pcmk__build_schema_xml_node()
+- libcrmcommon: Fix memory leak in ipc_proxy_dispatch()
+- fencer: Fix memory leak in handle_local_reply_and_notify()</comment>
+    <requestid>1179895</requestid>
+  </revision>
 </revisionlist>
