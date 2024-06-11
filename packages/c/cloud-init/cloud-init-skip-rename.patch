@@ -1,0 +1,24 @@
+--- cloudinit/net/__init__.py.orig
++++ cloudinit/net/__init__.py
+@@ -7,6 +7,7 @@
+ 
+ import errno
+ import functools
++import glob
+ import ipaddress
+ import logging
+ import os
+@@ -702,6 +703,13 @@ def _rename_interfaces(
+         LOG.debug("no interfaces to rename")
+         return
+ 
++    net_devs = glob.glob('/sys/class/net/*')
++    for dev in net_devs:
++        dev_name = dev.split('/')[-1]
++        for dev_data in renames:
++            if dev_name in dev_data:
++                del renames[renames.index(dev_data)]
++
+     if current_info is None:
+         current_info = _get_current_rename_info()
+ 

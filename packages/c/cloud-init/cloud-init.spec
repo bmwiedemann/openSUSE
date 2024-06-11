@@ -51,6 +51,8 @@ Patch12:       cloud-init-no-openstack-guess.patch
 Patch13:       cloud-init-no-nmcfg-needed.patch
 # FIXME https://github.com/canonical/cloud-init/pull/5161
 Patch14:       cloud-init-usr-sudoers.patch
+# FIXME https://github.com/canonical/cloud-init/issues/5075
+Patch15:       cloud-init-skip-rename.patch
 BuildRequires:  fdupes
 BuildRequires:  filesystem
 # pkg-config is needed to find correct systemd unit dir
@@ -163,6 +165,7 @@ Documentation and examples for cloud-init tools
 %patch -P 12
 %patch -P 13
 %patch -P 14
+%patch -P 15
 
 # patch in the full version to version.py
 version_pys=$(find . -name version.py -type f)

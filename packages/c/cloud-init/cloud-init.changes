@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  3 19:53:46 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Add cloud-init-skip-rename.patch (bsc#1219680)
+  + Brute force appraoch to skip renames if the device is already present
+
+-------------------------------------------------------------------
 Mon Apr 29 21:49:48 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Add cloud-init-usr-sudoers.patch (bsc#1223469)
