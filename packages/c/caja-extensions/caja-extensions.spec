@@ -35,7 +35,9 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
 BuildRequires:  pkgconfig(gstreamer-tag-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
+%if 0%{?suse_version} >= 1560
 BuildRequires:  pkgconfig(gupnp-1.6)
+%endif
 BuildRequires:  pkgconfig(libcaja-extension) >= %{_version}
 BuildRequires:  pkgconfig(mate-desktop-2.0) >= %{_version}
 
@@ -131,6 +133,7 @@ Obsoletes:      caja-sendto-pidgin < %{version}
 %description -n  caja-extension-sendto-pidgin
 This package provides Pidgin integration to the Caja file manager.
 
+%if 0%{?suse_version} >= 1560
 %package -n  caja-extension-sendto-upnp
 Summary:        UPnP integration for the MATE Desktop file manager
 Requires:       caja-extension-sendto = %{version}
@@ -145,12 +148,15 @@ Obsoletes:      caja-sendto-upnp < %{version}
 This package provides the functionality to the Caja file manager to
 send files over e-mail or instant messaging protocols via Evolution,
 Empathy and Pidgin.
+%endif
 
 %package -n caja-extension-sendto-devel
 Summary:        Development files for caja-sendto
 Requires:       caja-extension-sendto = %{version}
 Requires:       caja-extension-sendto-pidgin = %{version}
+%if 0%{?suse_version} >= 1560
 Requires:       caja-extension-sendto-upnp = %{version}
+%endif
 # mate-file-manager-sendto-devel is last seen in openSUSE 13.1.
 Provides:       mate-file-manager-sendto-devel = %{version}
 Obsoletes:      mate-file-manager-sendto-devel < %{version}
@@ -295,10 +301,12 @@ rm %{buildroot}%{_libdir}/caja-sendto/plugins/libnstgajim.so
 %doc AUTHORS NEWS README
 %{_libdir}/caja-sendto/plugins/libnstpidgin.so
 
+%if 0%{?suse_version} >= 1560
 %files -n caja-extension-sendto-upnp
 %license COPYING
 %doc AUTHORS NEWS README
 %{_libdir}/caja-sendto/plugins/libnstupnp.so
+%endif
 
 %files -n caja-extension-sendto-devel
 %license COPYING

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 11 09:22:00 UTC 2024 - Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+
+- Don't build caja-sendto-upnp on SUSE << 15.6. BRs can't be fullfilled
+  before SUSE 15.6.
+
+-------------------------------------------------------------------
 Sun Mar 24 08:08:41 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.28.0
