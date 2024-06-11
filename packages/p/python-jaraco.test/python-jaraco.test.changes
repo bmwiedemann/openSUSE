@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 11 07:56:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add testsuite runtime dependency
+
+-------------------------------------------------------------------
 Fri May 31 01:29:54 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Allow testsuite to fail due to upstream pytest bug with 8.1+. 
+- Allow testsuite to fail due to upstream pytest bug with 8.1+.
 - Clean up Suggests.
 
 -------------------------------------------------------------------

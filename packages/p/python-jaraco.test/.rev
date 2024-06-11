@@ -34,4 +34,14 @@
 - Clean up Suggests.</comment>
     <requestid>1177823</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>b015421418af57570cd57f65816e3492</srcmd5>
+    <version>5.4.0</version>
+    <time>1718123227</time>
+    <user>anag+factory</user>
+    <comment>- add testsuite runtime dependency
+
+- Allow testsuite to fail due to upstream pytest bug with 8.1+.</comment>
+    <requestid>1179935</requestid>
+  </revision>
 </revisionlist>

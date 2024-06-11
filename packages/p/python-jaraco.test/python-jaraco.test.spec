@@ -40,6 +40,7 @@ BuildRequires:  fdupes
 Requires:       python-jaraco.collections
 Requires:       python-jaraco.context
 Requires:       python-jaraco.functools
+Requires:       python-testsuite
 Suggests:       python-sphinx >= 3.5
 Suggests:       python-jaraco.packaging >= 9
 Suggests:       python-rst.linker >= 1.9
