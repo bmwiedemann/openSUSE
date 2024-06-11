@@ -619,4 +619,13 @@
   * Increase prio from 90 to 70 for packman/openh264 repos</comment>
     <requestid>1179230</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>3e7915ce6caeb047543e795ecdb74ff2</srcmd5>
+    <version>5.2.0</version>
+    <time>1718123520</time>
+    <user>anag+factory</user>
+    <comment>- Version 5.2.0
+  * Add config option to reverse option order</comment>
+    <requestid>1180023</requestid>
+  </revision>
 </revisionlist>
