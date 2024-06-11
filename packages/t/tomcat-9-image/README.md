@@ -1,7 +1,6 @@
 # Tomcat 9 Container Image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-
 ## Description
 Apache Tomcat (Tomcat for short) is a free and open-source implementation of the
 Jakarta Servlet, Jakarta Expression Language, and WebSocket technologies. It
