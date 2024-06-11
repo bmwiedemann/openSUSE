@@ -1,7 +1,6 @@
 # The openSUSE Tumbleweed BCI Ruby 3.3 Container Image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-
 Ruby 3.3 container based on the openSUSE Tumbleweed Base Container Image.
 
 ## Licensing
