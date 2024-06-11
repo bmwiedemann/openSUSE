@@ -1,7 +1,7 @@
 #
 # spec file for package mingw32-cross-gcc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@
 %define cpplibdir %{_prefix}/lib
 %endif
 
-%define __os_install_post %{_prefix}/lib/rpm/brp-compress %{nil}
 %define include_ada 0
 Name:           mingw32-cross-gcc
 Version:        13.2.0
@@ -33,7 +32,8 @@ Group:          Development/Languages/C and C++
 URL:            http://www.mingw.org/
 Source0:        ftp://ftp.gnu.org/gnu/gcc/gcc-%{version}/gcc-%{version}.tar.xz
 Source100:      mingw32-gcc-rpmlintrc
-Patch1:         gcc-make-xmmintrin-header-cplusplus-compatible.patch
+Patch0:         gcc-make-xmmintrin-header-cplusplus-compatible.patch
+Patch1:         gcc-13.2.0-build-with-fpie.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel >= 4.2.0
 BuildRequires:  mingw32-cross-binutils
@@ -106,14 +106,9 @@ MinGW Windows cross-compiler for Ada
 %endif
 
 %prep
-%setup -q -c
-pushd gcc-%{version}
-%patch -P 1
-popd
+%autosetup -p1 -n gcc-%{version}
 
 %build
-cd gcc-%{version}
-
 mkdir -p build
 cd build
 
@@ -126,7 +121,8 @@ ada_options=-enable-libada
 ada_options=
 %endif
 
-CC="gcc %{optflags}" \
+CC="gcc %{optflags} -fPIC -fPIE -pie" \
+CXX="g++ %{optflags} -fPIC -fPIE -pie" \
 CFLAGS_FOR_TARGET="-DGC_NOT_DLL %{_mingw32_cflags} -Wno-error=format -Wno-error=format-extra-args" \
 CXXFLAGS_FOR_TARGET="-DGC_NOT_DLL %{_mingw32_cflags} -Wno-error=format -Wno-error=format-extra-args" \
 CPPFLAGS_FOR_TARGET="-DGC_NOT_DLL %{_mingw32_cflags}" \
@@ -144,7 +140,9 @@ CPPFLAGS_FOR_TARGET="-DGC_NOT_DLL %{_mingw32_cflags}" \
   --with-gnu-as --with-gnu-ld --verbose \
   --without-newlib \
   --disable-multilib \
+  --enable-default-pie=no \
   --enable-shared \
+  --enable-default-pie=no \
   --disable-plugin \
   --with-system-zlib \
   --disable-nls --without-included-gettext \
@@ -166,7 +164,6 @@ CPPFLAGS_FOR_TARGET="-DGC_NOT_DLL %{_mingw32_cflags}" \
 make %{?_smp_mflags} all || make all
 
 %install
-cd gcc-%{version}
 cd build
 %make_install
 

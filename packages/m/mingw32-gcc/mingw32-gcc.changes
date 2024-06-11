@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  4 08:05:39 UTC 2024 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Use %autosetup
+
+-------------------------------------------------------------------
 Fri Feb 23 09:46:30 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.

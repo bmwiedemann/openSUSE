@@ -1,7 +1,7 @@
 #
 # spec file for package mingw32-gcc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,8 @@ Group:          Development/Languages/C and C++
 URL:            http://www.mingw.org/
 Source0:        ftp://ftp.gnu.org/gnu/gcc/gcc-%{version}/gcc-%{version}.tar.xz
 Source100:      mingw32-gcc-rpmlintrc
-Patch1:         gcc-make-xmmintrin-header-cplusplus-compatible.patch
-Patch2:         gcc-12.1.0-fix-install-gdb-support-files.patch
+Patch0:         gcc-make-xmmintrin-header-cplusplus-compatible.patch
+Patch1:         gcc-12.1.0-fix-install-gdb-support-files.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  mingw32-cross-binutils
@@ -207,15 +207,9 @@ MinGW Windows compiler for Objective-C and Objective-C++ shared libraries
 %_mingw32_debug_package
 
 %prep
-%setup -q -c
-pushd gcc-%{version}
-%patch -P 1
-%patch -P 2 -p1
-popd
+%autosetup -p1 -n gcc-%{version}
 
 %build
-cd gcc-%{version}
-
 mkdir -p build
 cd build
 
@@ -270,7 +264,6 @@ CPPFLAGS_FOR_TARGET="-DGC_NOT_DLL %{_mingw32_cflags}" \
 make %{?_smp_mflags} all || make all
 
 %install
-cd gcc-%{version}
 cd build
 
 %make_install

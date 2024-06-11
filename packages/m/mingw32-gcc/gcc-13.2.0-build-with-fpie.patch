@@ -1,0 +1,16 @@
+diff -ur gcc-13.2.0.orig/gcc/Makefile.in gcc-13.2.0/gcc/Makefile.in
+--- gcc-13.2.0.orig/gcc/Makefile.in	2023-07-27 10:13:03.000000000 +0200
++++ gcc-13.2.0/gcc/Makefile.in	2024-06-05 08:48:16.609057439 +0200
+@@ -275,10 +275,10 @@
+ DO_LINK_MUTEX = @DO_LINK_MUTEX@
+ 
+ # We don't want to compile the compilers with -fPIE, it make PCH fail.
+-COMPILER += $(NO_PIE_CFLAGS)
++#COMPILER += $(NO_PIE_CFLAGS)
+ 
+ # Link with -no-pie since we compile the compiler with -fno-PIE.
+-LINKER += $(NO_PIE_FLAG)
++#LINKER += $(NO_PIE_FLAG)
+ 
+ # Like LINKER, but use a mutex for serializing front end links.
+ ifeq (@DO_LINK_MUTEX@,true)

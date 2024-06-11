@@ -1,5 +1,5 @@
---- gcc/config/i386/xmmintrin.h	2015-01-05 13:33:28.000000000 +0100
-+++ gcc/config/i386/xmmintrin.h	2015-04-23 21:31:22.155138087 +0200
+--- a/gcc/config/i386/xmmintrin.h	2015-01-05 13:33:28.000000000 +0100
++++ b/gcc/config/i386/xmmintrin.h	2015-04-23 21:31:22.155138087 +0200
 @@ -64,6 +64,10 @@
  #define __DISABLE_SSE__
  #endif /* __SSE__ */
