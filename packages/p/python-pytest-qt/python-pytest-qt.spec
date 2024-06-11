@@ -124,10 +124,7 @@ sed -i /xfail_strict/d setup.cfg
 export QT_QPA_PLATFORM=offscreen
 export PYTEST_QT_API=%{test_qtapi}
 
-# Fails with pyside6
-donttest="test_destroyed"
-
-%pytest %{?testflavorargs} -rsxXfE -k "not $donttest"
+%pytest %{?testflavorargs} -rsxXfE
 %endif
 
 %if ! %{with test}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 29 10:45:04 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Run test_destroyed again, the problem was fixed in the
+  python3-pyside6 package.
+
+-------------------------------------------------------------------
 Tue May 28 06:16:27 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Skip test_destroyed, this test fails with pyside6 6.7.0

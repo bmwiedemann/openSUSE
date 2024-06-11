@@ -201,4 +201,13 @@
     <comment>- Skip test_destroyed, this test fails with pyside6 6.7.0</comment>
     <requestid>1177275</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>20ea77b12ac51dc015848f44064f27cb</srcmd5>
+    <version>4.4.0</version>
+    <time>1718123484</time>
+    <user>anag+factory</user>
+    <comment>- Run test_destroyed again, the problem was fixed in the
+  python3-pyside6 package.</comment>
+    <requestid>1180008</requestid>
+  </revision>
 </revisionlist>
