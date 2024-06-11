@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Jun 10 07:50:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update nmh.keyring, basedon key published on savanna:
+  gpg: Signature made Sa 18 Feb 2023 15:58:05 CET
+  gpg:        using EDDSA key CF8FA47FD50BCC46CE4933D0F9DCD55451BEEF5A
+  gpg: Good signature from "David Levine <levinedl@acm.org>" [unknown]
+
+-------------------------------------------------------------------
+Thu Feb 22 14:11:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
+Fri Jun 30 10:23:07 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Update to version 1.8.0
+  * Support for Content-MD5 header fields, MIME content cache
+    functionality, and the message/partial MIME type have been
+    removed.
+  * Gmail OAuth2/XOAUTH support for desktop applications has been
+    effectively dropped, so nmh no longer supports it.
+  * nmh support for Gmail API access is experimental, please post
+    to nmh-workers@nongnu.org if you'd like to help with test and
+    development.
+  * repl(1) -convertargs now allows editing of the composition
+    draft between translation and any encoding of text content.
+    Because encoding can wrap long lines, the use of a paragraph
+    formatter has been removed from mhn.defaults. 
+
+-------------------------------------------------------------------
 Mon Jul 23 09:27:26 UTC 2018 - bwiedemann@suse.com
 
 - Update to version 1.7.1

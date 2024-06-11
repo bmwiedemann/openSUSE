@@ -10,10 +10,8 @@ and https://reproducible-builds.org/specs/source-date-epoch/
 for the definition of this variable.
 This date call only works with GNU date.
 
-Index: nmh-1.7.1/config/version.sh
-===================================================================
---- nmh-1.7.1.orig/config/version.sh
-+++ nmh-1.7.1/config/version.sh
+--- config/version.sh.orig
++++ config/version.sh
 @@ -6,13 +6,13 @@
  set -e
  
@@ -30,16 +28,14 @@ Index: nmh-1.7.1/config/version.sh
  
  cat <<E
  char *version_str = "nmh-$version$git built $date on $host";
-Index: nmh-1.7.1/man/mh-chart-gen.sh
-===================================================================
---- nmh-1.7.1.orig/man/mh-chart-gen.sh
-+++ nmh-1.7.1/man/mh-chart-gen.sh
-@@ -13,7 +13,7 @@ nmhmandir=`dirname $0`
+--- man/mh-chart-gen.sh.orig
++++ man/mh-chart-gen.sh
+@@ -13,7 +13,7 @@ nmhmandir=$(dirname $0)
  # from the local build environment when building distribution packages.
  LC_TIME=C; export LC_TIME
  unset LANG
--datestamp=`date +%Y-%m-%d`
+-datestamp=$(date +%Y-%m-%d)
 +datestamp="$(date --utc --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" '+%B %d, %Y')"
  
- cat <<__HOOPY_FROOD
- .TH MH-CHART %manext7% "${datestamp}" "%nmhversion%"
+ our_name="mh-chart"
+ our_desc="chart of all nmh commands and their options"

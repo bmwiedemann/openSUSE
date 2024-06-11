@@ -1,7 +1,7 @@
 #
 # spec file for package nmh
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,12 +25,12 @@ Requires:       less
 Requires:       smtp_daemon
 Provides:       mh
 Obsoletes:      mh <= 6.8.4
-Version:        1.7.1
+Version:        1.8
 Release:        0
 Summary:        Unix Mail Handler
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Email/Clients
-Url:            https://www.nongnu.org/nmh/
+URL:            https://www.nongnu.org/nmh/
 Source0:        https://download.savannah.nongnu.org/releases/nmh/%{name}-%{version}.tar.gz
 Source1:        https://download.savannah.nongnu.org/releases/nmh/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
@@ -52,8 +52,7 @@ prompt or write custom scripts that use these commands in flexible
 ways.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p0
 
 %build
 export HOSTNAME=OBS # for boo#1084909
@@ -65,7 +64,7 @@ export HOSTNAME=OBS # for boo#1084909
 make
 
 %install
-make DESTDIR=$RPM_BUILD_ROOT install 
+make DESTDIR=$RPM_BUILD_ROOT install
 
 %files
 %defattr(-,root,root)
