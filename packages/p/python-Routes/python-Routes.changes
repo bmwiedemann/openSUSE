@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  7 12:54:57 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add remove-six.patch to get rid of six
+
+-------------------------------------------------------------------
 Thu Aug 18 15:15:10 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Clean specfile, remove coverage

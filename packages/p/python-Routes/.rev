@@ -156,4 +156,14 @@
     <comment></comment>
     <requestid>998081</requestid>
   </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>9d19a56ff1958052f45755f914f21517</srcmd5>
+    <version>2.5.1</version>
+    <time>1718123222</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1179223 from mcalabkova
+
+- Add remove-six.patch to get rid of six</comment>
+    <requestid>1179858</requestid>
+  </revision>
 </revisionlist>

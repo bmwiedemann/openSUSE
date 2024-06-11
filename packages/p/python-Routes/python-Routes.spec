@@ -1,7 +1,7 @@
 #
 # spec file for package python-Routes
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Routes
 Version:        2.5.1
 Release:        0
@@ -24,17 +23,17 @@ Summary:        Routing Recognition and Generation Tools
 License:        BSD-3-Clause
 URL:            https://routes.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/R/Routes/Routes-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/bbangert/routes/pull/113 remove python2 support
+Patch:          remove-six.patch
 # for testing
 BuildRequires:  %{python_module WebOb}
 BuildRequires:  %{python_module WebTest}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module repoze.lru}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-repoze.lru >= 0.3
-Requires:       python-six
 Provides:       python-routes = %{version}-%{release}
 Obsoletes:      python-routes < %{version}-%{release}
 BuildArch:      noarch
@@ -44,7 +43,7 @@ BuildArch:      noarch
 A Routing package for Python that matches URL's to dicts and vice versa.
 
 %prep
-%setup -q -n Routes-%{version}
+%autosetup -p1 -n Routes-%{version}
 
 %build
 %python_build
