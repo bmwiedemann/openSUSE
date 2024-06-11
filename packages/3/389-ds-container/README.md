@@ -1,7 +1,6 @@
 # The openSUSE Tumbleweed 389 Directory Server Container Image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-
 389 Directory Server container based on the openSUSE Tumbleweed Base Container Image.
 
 ## Licensing
