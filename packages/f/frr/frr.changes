@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun  4 21:27:48 UTC 2024 - Marius Tomaschewski <mt@suse.com>
+
+- Apply upstream fix solving ospfd denial of service via get_edge()
+  function returning a NULL pointer (CVE-2024-34088,bsc#1223786,
+  gh#FRRouting/frr#16088).
+  [+ 0023-ospfd-protect-call-to-get_edge-in-ospf_te.c.patch]
+- Apply upstream fix solving ospfd buffer overflow and daemon crash
+  in ospf_te_parse_ext_link for OSPF LSA packets during an attempt
+  to read Segment Routing Adjacency SID subTLVs (CVE-2024-31951,
+  bsc#1222528,gh#FRRouting/frr#16088).
+  [+ 0022-ospfd-Correct-Opaque-LSA-Extended-parser.patch]
+- Apply upstream fix solving ospfd buffer overflow and daemon crash
+  in RI parsing with OSPF TE (CVE-2024-31950,bsc#1222526,
+  gh#FRRouting/frr#16088).
+  [+ 0021-ospfd-Solved-crash-in-RI-parsing-with-OSPF-TE.patch]
+
+-------------------------------------------------------------------
 Wed Apr 24 10:40:57 UTC 2024 - Marius Tomaschewski <mt@suse.com>
 
 - Apply upstream fix solving crash in OSPF TE parsing (bsc#1220548,

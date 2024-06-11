@@ -59,6 +59,9 @@ Patch17:        0017-bgpd-Fix-use-beyond-end-of-stream-of-labeled-unicast.patch
 Patch18:        0018-bgpd-Flowspec-overflow-issue.patch
 Patch19:        0019-bgpd-fix-error-handling-when-receiving-BGP-Prefix-SID-attribute.patch
 Patch20:        0020-ospfd-Solved-crash-in-OSPF-TE-parsing.patch
+Patch21:        0021-ospfd-Solved-crash-in-RI-parsing-with-OSPF-TE.patch
+Patch22:        0022-ospfd-Correct-Opaque-LSA-Extended-parser.patch
+Patch23:        0023-ospfd-protect-call-to-get_edge-in-ospf_te.c.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison >= 2.7
