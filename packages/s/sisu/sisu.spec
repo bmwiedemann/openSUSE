@@ -36,6 +36,7 @@ BuildRequires:  fdupes
 BuildRequires:  glassfish-annotation-api
 BuildRequires:  google-guice
 BuildRequires:  guice-servlet
+BuildRequires:  jakarta-inject
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  junit
 BuildRequires:  junit5-minimal
@@ -89,10 +90,11 @@ This package contains %{summary}.
 %build
 mkdir -p lib
 build-jar-repository -s lib \
+  atinject \
+  cdi-api \
   glassfish-annotation-api \
   google-guice-no_aop \
-  javax.enterprise.inject/cdi-api \
-  javax.inject/atinject \
+  jakarta-inject \
   junit \
   junit5 \
   osgi-core/osgi.core \

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 10 14:02:10 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Add dependency on jakarta-inject, needed by google-guice 6.0.0
+
+-------------------------------------------------------------------
 Wed Jun  5 14:00:52 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream milestone 0.9.0.M3
