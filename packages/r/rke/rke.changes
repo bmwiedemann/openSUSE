@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 11 05:26:02 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.5.10:
+  * RKE Kubernetes versions
+    - v1.25.16-rancher2-3
+    - v1.26.15-rancher1-1
+    - v1.27.14-rancher1-1
+    - v1.28.10-rancher1-1 (default)
+
+-------------------------------------------------------------------
 Tue May 14 06:05:39 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.5.9:
