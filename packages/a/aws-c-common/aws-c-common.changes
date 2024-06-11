@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 11 07:27:41 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.21
+  * Fix memtracer bad assumptions on the size of stack trace
+    by @DmitriyMusatkin in (#1122)
+  * Disable optimization was not working by @TingDaoK in (#1123)
+
+-------------------------------------------------------------------
 Wed Jun  5 09:45:21 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.20
