@@ -1,7 +1,7 @@
-From 7f5a36bb82728a6cce66b15e6bb656ce05cf5978 Mon Sep 17 00:00:00 2001
+From 5f5dc57da2ee1abc3bf63e5389294d97a6027ae8 Mon Sep 17 00:00:00 2001
 From: Gary Lin <glin@suse.com>
 Date: Tue, 5 Mar 2024 14:51:57 +0800
-Subject: [PATCH] macros.fde-tpm-helper: conditionally requires the helper
+Subject: [PATCH 1/2] macros.fde-tpm-helper: conditionally requires the helper
 
 fde-tpm-helper is only used when fde-tools is installed. Update the rpm
 macro to make fde-tpm-helper an conditional "Requires".
@@ -21,6 +21,56 @@ index 1ec3a4e..3c89e2b 100644
  
  %fde_tpm_update_post() \
  mkdir -p %{_rundir}/fde-tpm-helper/ \
+-- 
+2.35.3
+
+
+From 222c145943cde082959de52f5a76dbdf0f254c92 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Fri, 7 Jun 2024 10:58:45 +0800
+Subject: [PATCH 2/2] macros.fde-tpm-helper: check if fde-tpm-helper exists
+
+Those rpm macros are only valid for the system with fde-tpm-helper so
+those commands should be skipped if fde-tpm-helper is not there.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ rpm-build/macros.fde-tpm-helper | 20 ++++++++++++--------
+ 1 file changed, 12 insertions(+), 8 deletions(-)
+
+diff --git a/rpm-build/macros.fde-tpm-helper b/rpm-build/macros.fde-tpm-helper
+index 3c89e2b..4ce09e9 100644
+--- a/rpm-build/macros.fde-tpm-helper
++++ b/rpm-build/macros.fde-tpm-helper
+@@ -1,16 +1,20 @@
+ %fde_tpm_update_requires Requires(posttrans): (fde-tpm-helper if fde-tools)
+ 
+ %fde_tpm_update_post() \
+-mkdir -p %{_rundir}/fde-tpm-helper/ \
+-touch %{_rundir}/fde-tpm-helper/update \
+-for bl in %{?*}; do \
+-  echo ${bl} >> %{_rundir}/fde-tpm-helper/update \
+-done \
++if test -x %{_libexecdir}/fde/fde-tpm-helper; then \
++  mkdir -p %{_rundir}/fde-tpm-helper/ \
++  touch %{_rundir}/fde-tpm-helper/update \
++  for bl in %{?*}; do \
++    echo ${bl} >> %{_rundir}/fde-tpm-helper/update \
++  done \
++fi \
+ %nil
+ 
+ %fde_tpm_update_posttrans() \
+-if test -f %{_rundir}/fde-tpm-helper/update; then \
+-  %{_libexecdir}/fde/fde-tpm-helper "`cat %{_rundir}/fde-tpm-helper/update | uniq`" || : \
+-  rm -f %{_rundir}/fde-tpm-helper/update \
++if test -x %{_libexecdir}/fde/fde-tpm-helper; then \
++  if test -f %{_rundir}/fde-tpm-helper/update; then \
++    %{_libexecdir}/fde/fde-tpm-helper "`cat %{_rundir}/fde-tpm-helper/update | uniq`" || : \
++    rm -f %{_rundir}/fde-tpm-helper/update \
++  fi \
+ fi \
+ %nil
 -- 
 2.35.3
 
