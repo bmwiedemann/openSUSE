@@ -1,7 +1,6 @@
 # The openSUSE Tumbleweed Kubernetes Package Manager Container Image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-
 Kubernetes Package Manager container based on the openSUSE Tumbleweed Base Container Image.
 
 ## Licensing
