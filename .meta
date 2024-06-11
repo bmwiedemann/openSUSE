@@ -1,0 +1,5 @@
+<package name="klog" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="utilities" package="klog"/>
+</package>
