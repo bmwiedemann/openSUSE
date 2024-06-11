@@ -17,7 +17,8 @@
 
   <property name="spec.version" value="0.13"/>
 
-  <property name="compiler.source" value="1.8"/>
+  <property name="compiler.release" value="8"/>
+  <property name="compiler.source" value="1.${compiler.release}"/>
   <property name="compiler.target" value="${compiler.source}"/>
 
   <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
@@ -61,6 +62,7 @@
            encoding="UTF-8"
            optimize="false"
            deprecation="true"
+           release="${compiler.release}"
            target="${compiler.target}"
            verbose="false"
            fork="false"
@@ -80,15 +82,11 @@
           depends="compile"
           description="Generate Plexus component.xml">
     <mkdir dir="${build.outputDir}/META-INF/plexus"/>
-    <java classname="org.codehaus.plexus.metadata.PlexusMetadataGeneratorCli"
-          failonerror="true"
-          fork="true">
-      <!-- jvmarg value="-verbose"/ -->
-      <classpath>
-        <path refid="build.classpath"/>
-        <pathelement location="${build.outputDir}"/>
-      </classpath>
-      <arg value="-X"/>
+    <pathconvert property="classpath.string" pathsep=":">
+      <path refid="build.classpath"/>
+    </pathconvert>
+    <exec executable="plexus-metadata-generator" failonerror="true">
+      <env key="CLASSPATH" value="${build.outputDir}:${classpath.string}"/>
       <arg value="-s"/>
       <arg value="${build.srcDir}"/>
       <arg value="-c"/>
@@ -97,7 +95,7 @@
       <arg value="${build.outputDir}/META-INF/plexus"/>
       <arg value="-o"/>
       <arg value="${build.outputDir}/META-INF/plexus/components.xml"/>
-    </java>
+    </exec>
   </target>
 
   <!-- ====================================================================== -->
@@ -115,6 +113,7 @@
            encoding="UTF-8"
            optimize="false"
            deprecation="true"
+           release="${compiler.release}"
            target="${compiler.target}"
            verbose="false"
            fork="false"

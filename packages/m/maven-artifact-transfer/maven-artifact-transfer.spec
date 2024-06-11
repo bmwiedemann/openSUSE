@@ -29,32 +29,21 @@ Patch0:         0001-Compatibility-with-Maven-3.0.3-and-later.patch
 Patch1:         0002-Remove-support-for-maven-3.0.X.patch
 Patch2:         0003-Port-to-maven-3.8.1.patch
 BuildRequires:  ant
-BuildRequires:  apache-commons-cli
-BuildRequires:  apache-commons-codec
-BuildRequires:  atinject
 BuildRequires:  fdupes
-BuildRequires:  google-guice
-BuildRequires:  guava
 BuildRequires:  javapackages-local >= 6
-BuildRequires:  jdom2
 BuildRequires:  maven-common-artifact-filters
 BuildRequires:  maven-lib
 BuildRequires:  maven-resolver-api
 BuildRequires:  maven-resolver-impl
 BuildRequires:  maven-resolver-util
-BuildRequires:  objectweb-asm
 BuildRequires:  plexus-classworlds
-BuildRequires:  plexus-cli
 BuildRequires:  plexus-containers-component-annotations
 BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-xml
-BuildRequires:  qdox
-BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
 BuildRequires:  slf4j
 BuildRequires:  unzip
-BuildRequires:  xbean
 BuildArch:      noarch
 
 %description
@@ -85,35 +74,22 @@ find -name Maven30\*.java -delete
 %build
 mkdir -p lib
 build-jar-repository -s lib \
-	atinject \
-	commons-cli \
-	commons-codec \
-	guava/guava \
-	guice/google-guice-no_aop \
-	jdom2/jdom2 \
-	maven-common-artifact-filters/maven-common-artifact-filters \
-	maven/maven-artifact \
-	maven/maven-core \
-	maven/maven-model \
-	maven-resolver/maven-resolver-api \
-	maven-resolver/maven-resolver-impl \
-	maven-resolver/maven-resolver-util \
-	objectweb-asm/asm \
-	org.eclipse.sisu.inject \
-	org.eclipse.sisu.plexus \
-	plexus-classworlds \
-	plexus/cli \
-	plexus-containers/plexus-component-annotations \
-	plexus-metadata-generator \
-	plexus/utils \
-	plexus/xml \
-	qdox \
-	slf4j/api \
-	slf4j/simple \
-	xbean/xbean-reflect
+    maven-common-artifact-filters/maven-common-artifact-filters \
+    maven/maven-artifact \
+    maven/maven-core \
+    maven/maven-model \
+    maven-resolver/maven-resolver-api \
+    maven-resolver/maven-resolver-impl \
+    maven-resolver/maven-resolver-util \
+    org.eclipse.sisu.plexus \
+    plexus-classworlds \
+    plexus-containers/plexus-component-annotations \
+    plexus/utils \
+    plexus/xml \
+    slf4j/api
 
 %{ant} \
-	package javadoc
+    package javadoc
 
 %install
 # jar
