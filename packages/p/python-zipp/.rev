@@ -241,4 +241,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1160959</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b9c8497cc22f5880c77b53c8f4678669</srcmd5>
+    <version>3.19.2</version>
+    <time>1718123228</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.19.2:
+  * No significant changes.
+  * Improved handling of malformed zip files.
+  * Implement is_symlink.
+  * No significant changes.</comment>
+    <requestid>1179936</requestid>
+  </revision>
 </revisionlist>

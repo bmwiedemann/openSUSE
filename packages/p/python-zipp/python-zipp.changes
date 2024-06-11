@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 10 11:06:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.19.2:
+  * No significant changes.
+  * Improved handling of malformed zip files.
+  * Implement is_symlink.
+  * No significant changes.
+
+-------------------------------------------------------------------
 Sat Mar 16 13:12:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.18.1:

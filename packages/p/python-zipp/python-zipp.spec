@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-zipp%{psuffix}
-Version:        3.18.1
+Version:        3.19.2
 Release:        0
 Summary:        Pathlib-compatible object wrapper for zip files
 License:        MIT
@@ -44,8 +44,10 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module jaraco.functools}
 BuildRequires:  %{python_module jaraco.itertools}
+BuildRequires:  %{python_module jaraco.test}
 BuildRequires:  %{python_module more-itertools}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module zipp >= %{version}}
 %endif
 %python_subpackages
 
