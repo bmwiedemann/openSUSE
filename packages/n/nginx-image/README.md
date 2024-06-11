@@ -1,7 +1,6 @@
 # The openSUSE Tumbleweed NGINX Container Image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-
 NGINX open source all-in-one load balancer, content cache and web server based on the openSUSE Tumbleweed Base Container Image.
 
 ## Licensing
