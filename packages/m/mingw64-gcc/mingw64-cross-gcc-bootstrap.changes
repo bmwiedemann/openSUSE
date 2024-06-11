@@ -1,10 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun  4 08:05:39 UTC 2024 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Fix not stripping some executables (boo#1225877)
+- Add patch:
+  * gcc-13.2.0-build-with-fpie.patch
+- Fix warning 'position-independent-executable-suggested' (boo#1225900)
+
+-------------------------------------------------------------------
 Mon Nov  6 09:28:02 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 13.2.0
 
 -------------------------------------------------------------------
-Wed Jun 29 10:49:41 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+Wed Aug 24 11:13:06 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to version 12.2.0
+
+-------------------------------------------------------------------
+Wed Jun 29 10:32:46 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to version 12.1.0
 

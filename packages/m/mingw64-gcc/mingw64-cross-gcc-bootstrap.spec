@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-cross-gcc-bootstrap
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@
 %define cpplibdir %{_prefix}/lib
 %endif
 
-%define __os_install_post %{_prefix}/lib/rpm/brp-compress %{nil}
 Name:           mingw64-cross-gcc-bootstrap
 Version:        13.2.0
 Release:        0
@@ -31,7 +30,8 @@ License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 URL:            http://www.mingw.org/
 Source:         ftp://ftp.gnu.org/gnu/gcc/gcc-%{version}/gcc-%{version}.tar.xz
-Source10:       mingw64-gcc-rpmlintrc
+Source100:      mingw64-gcc-rpmlintrc
+Patch0:         gcc-13.2.0-build-with-fpie.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel >= 4.2.0
 BuildRequires:  mingw64-cross-binutils
@@ -63,17 +63,16 @@ Group:          Development/Languages/C and C++
 MinGW Windows cross-C Preprocessor
 
 %prep
-%setup -q -c
+%autosetup -p1 -n gcc-%{version}
 
 %build
-cd gcc-%{version}
-
 mkdir -p build
 cd build
 
 languages="c"
 
-CC="gcc %{optflags}" \
+CC="gcc %{optflags} -fPIC -fPIE -pie" \
+CXX="g++ %{optflags} -fPIC -fPIE -pie" \
 ../configure \
   --prefix=%{_prefix} \
   --bindir=%{_bindir} \
@@ -88,6 +87,7 @@ CC="gcc %{optflags}" \
   --with-gnu-as --with-gnu-ld --verbose \
   --without-newlib \
   --disable-multilib \
+  --enable-default-pie=no \
   --enable-shared \
   --disable-plugin \
   --with-system-zlib \
@@ -103,7 +103,6 @@ CC="gcc %{optflags}" \
 make %{?_smp_mflags} all-gcc || make all-gcc
 
 %install
-cd gcc-%{version}
 cd build
 make DESTDIR=%{buildroot} install-gcc
 

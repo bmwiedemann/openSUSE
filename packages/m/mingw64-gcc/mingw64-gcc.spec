@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-gcc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,9 +26,9 @@ License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 URL:            http://www.mingw.org/
 Source0:        ftp://ftp.gnu.org/gnu/gcc/gcc-%{version}/gcc-%{version}.tar.xz
-Source10:       mingw64-gcc-rpmlintrc
-Patch1:         gcc-make-xmmintrin-header-cplusplus-compatible.patch
-Patch2:         gcc-12.1.0-fix-install-gdb-support-files.patch
+Source100:      mingw64-gcc-rpmlintrc
+Patch0:         gcc-make-xmmintrin-header-cplusplus-compatible.patch
+Patch1:         gcc-12.1.0-fix-install-gdb-support-files.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  mingw64-cross-binutils
@@ -61,6 +61,7 @@ Requires:       mingw64-winpthreads-devel
 BuildRequires:  gcc-ada
 BuildRequires:  mingw64-cross-gcc-ada >= %{version}
 %endif
+BuildArch:      noarch
 # bugzilla.opensuse.org/1184052
 #!BuildIgnore:  mingw64(libstdc++-6.dll)
 #!BuildIgnore:  mingw64(libgcc_s_sjlj-1.dll)
@@ -206,15 +207,9 @@ MinGW Windows compiler for Objective-C and Objective-C++ shared libraries
 %_mingw64_debug_package
 
 %prep
-%setup -q -c
-pushd gcc-%{version}
-%patch -P 1
-%patch -P 2 -p1
-popd
+%autosetup -p1 -n gcc-%{version}
 
 %build
-cd gcc-%{version}
-
 mkdir -p build
 cd build
 
@@ -269,7 +264,6 @@ CPPFLAGS_FOR_TARGET="-DGC_NOT_DLL %{_mingw64_cflags}" \
 make %{?_smp_mflags} all || make all
 
 %install
-cd gcc-%{version}
 cd build
 
 %make_install

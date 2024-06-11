@@ -1,5 +1,10 @@
 -------------------------------------------------------------------
-Fri Feb 23 09:36:12 UTC 2024 - pgajdos@suse.com
+Tue Jun  4 08:05:39 UTC 2024 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Use %autosetup
+
+-------------------------------------------------------------------
+Fri Feb 23 09:46:30 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.
 
@@ -9,7 +14,7 @@ Mon Nov  6 09:28:02 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 - Update to release 13.2.0
 
 -------------------------------------------------------------------
-Thu May  4 16:11:38 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+Thu May  4 16:12:21 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add _multibuild to define 2nd spec file as additional flavor.
   Eliminates the need for source package links in OBS.
@@ -27,12 +32,12 @@ Thu Aug 26 12:33:22 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
 - Add gcc-12.1.0-fix-install-gdb-support-files.patch
 
 -------------------------------------------------------------------
-Thu Aug 25 08:10:09 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+Wed Aug 24 11:13:06 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to version 12.2.0
 
 -------------------------------------------------------------------
-Wed Jun 29 10:49:41 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+Wed Jun 29 10:32:46 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to version 12.1.0
 
