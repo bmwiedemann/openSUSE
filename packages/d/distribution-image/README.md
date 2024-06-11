@@ -1,7 +1,6 @@
 # openSUSE Tumbleweed OCI Container Registry (Distribution): Suitable for running a local OCI registry
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-
 ## Description
 This container image allows to run a local OCI registry.
 
