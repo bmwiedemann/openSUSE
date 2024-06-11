@@ -2,7 +2,6 @@
 
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-
 ## Description
 
 PostgreSQL (often spelled as Postgres) is an extensible and SQL-compliant relational database management system (RDBMS).
