@@ -89,7 +89,8 @@ This package contains the documentation for atril
 %{_bindir}/mate-power-preferences
 %{_bindir}/mate-power-statistics
 %{_sbindir}/mate-power-backlight-helper
-%{_libexecdir}/*
+%{_libexecdir}/mate-brightness-applet
+%{_libexecdir}/mate-inhibit-applet
 %{_datadir}/applications/mate-power-preferences.desktop
 %{_datadir}/applications/mate-power-statistics.desktop
 %{_datadir}/dbus-1/services/*.service

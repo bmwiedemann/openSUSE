@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 11 09:47:50 UTC 2024 - Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+
+- Adjust %files section, install {_libexecdir}/mate-brightness-applet and
+  {_libexecdir}/mate-inhibit-applet, not {_libexecdir}/* into bin:pkg. On
+  openSUSE Leap, this avoids debug files ending up in the bin:pkg
+  mate-power-manager (which is diskliked with badness 10000 by rpmlint).
+
+-------------------------------------------------------------------
 Sun Mar 31 07:52:42 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.28.1
