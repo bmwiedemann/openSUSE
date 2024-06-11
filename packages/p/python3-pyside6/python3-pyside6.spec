@@ -53,6 +53,8 @@ Source:         https://download.qt.io/official_releases/QtForPython/pyside6/PyS
 Patch0:         0001-Always-link-to-python-libraries.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-shiboken-add-missing-include.patch
+# PATCH-FIX-UPSTREAM https://codereview.qt-project.org/c/pyside/pyside-setup/+/567559
+Patch2:         fix-pytest-qt.patch
 # SECTION common_dependencies
 BuildRequires:  clang-devel
 BuildRequires:  %{mypython}-Sphinx

@@ -1,0 +1,41 @@
+From: Antonio Larrosa <alarrosa@suse.com>
+Subject: Fix for pytest-qt test_destroyed failure
+
+This fixes the issue in the python-pytest-qt package (test-pyside6 flavor)
+that triggered the following failure:
+
+[   90s] ________________________________ test_destroyed ________________________________
+[   90s] CALL ERROR: Exceptions caught in Qt event loop:
+[   90s] ________________________________________________________________________________
+[   90s] RuntimeError: Internal C++ object (Obj) already deleted.
+[   90s] 
+[   90s] The above exception was the direct cause of the following exception:
+[   90s] 
+[   90s] Traceback (most recent call last):
+[   90s]   File "/usr/lib/python3.11/site-packages/pytestqt/wait_signal.py", line 219, in _quit_loop_by_signal
+[   90s]     self._cleanup()
+[   90s]   File "/usr/lib/python3.11/site-packages/pytestqt/wait_signal.py", line 226, in _cleanup
+[   90s]     _silent_disconnect(signal, self._quit_loop_by_signal)
+[   90s]   File "/usr/lib/python3.11/site-packages/pytestqt/wait_signal.py", line 741, in _silent_disconnect
+[   90s]     signal.disconnect(slot)
+[   90s] SystemError: <class 'RuntimeError'> returned a result with an exception set
+
+This happened because PyObject_CallObject (or PyObject_GetAttr) was
+setting an exception and warnDisconnectFailed was generating a new one
+without the first one being processed yet.
+
+Submitted to upstream in https://codereview.qt-project.org/c/pyside/pyside-setup/+/567559
+
+Index: pyside-setup-everywhere-src-6.7.1/sources/pyside6/libpyside/pysidesignal.cpp
+===================================================================
+--- pyside-setup-everywhere-src-6.7.1.orig/sources/pyside6/libpyside/pysidesignal.cpp
++++ pyside-setup-everywhere-src-6.7.1/sources/pyside6/libpyside/pysidesignal.cpp
+@@ -718,7 +718,7 @@ static PyObject *signalInstanceDisconnec
+         Shiboken::AutoDecRef pyMethod(PyObject_GetAttr(source->d->source,
+                                                        PySide::PySideName::qtDisconnect()));
+         PyObject *result = PyObject_CallObject(pyMethod, tupleArgs);
+-        if (result != Py_True)
++        if (result && result != Py_True)
+             warnDisconnectFailed(slot, source->d->signature);
+         return result;
+     }

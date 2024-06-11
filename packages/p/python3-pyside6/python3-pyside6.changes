@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 29 07:28:11 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to fix build of python-pytest-qt with test-pyside6
+  flavor, which fails the test_destroyed test with a SystemError
+  exception:
+  * fix-pytest-qt.patch
+
+-------------------------------------------------------------------
 Tue May 28 15:46:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update build constraints
