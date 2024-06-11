@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  4 07:57:07 UTC 2024 - ming li <mli@suse.com>
+
+- Update to verion 0.9.2:
+  * UDPPORT, UDP: increase buffer read size on larger packets
+  * General updates to support Octave 9+
+  * Updates to package documentation
+
+-------------------------------------------------------------------
 Mon Feb 26 12:42:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
