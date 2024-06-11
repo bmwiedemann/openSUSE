@@ -1,7 +1,6 @@
 # The openSUSE Tumbleweed BCI Node.js 20 development Container Image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-
 Node.js 20 development container based on the openSUSE Tumbleweed Base Container Image.
 
 ## Licensing
