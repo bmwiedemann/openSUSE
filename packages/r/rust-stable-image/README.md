@@ -1,7 +1,6 @@
 # The openSUSE Tumbleweed BCI Rust 1.78 Container Image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-
 Rust 1.78 container based on the openSUSE Tumbleweed Base Container Image.
 
 ## Licensing
