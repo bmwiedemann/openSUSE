@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun 10 11:11:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.25.2:
+  * Mulligan on 0.25.1 to run release pipeline correctly.
+  * Added `matchers.body_matcher` for matching string request
+    bodies. See #717
+  * Fixed tests failures during RPM package builds. See #706
+  * Fix mocked HEAD responses that have `Content-Length` set. See
+  * Fixed error messages when matches fail: inputs are not sorted
+    or reformatted. See #704
+- drop use-asyncio-markers.patch (upstream)
+
+-------------------------------------------------------------------
 Tue May  7 07:29:01 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch use-asyncio-markers.patch:

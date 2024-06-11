@@ -402,4 +402,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1173906</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>383a20c8d1d3b46522da2d5d3c191b47</srcmd5>
+    <version>0.25.2</version>
+    <time>1718123239</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.25.2:
+  * Mulligan on 0.25.1 to run release pipeline correctly.
+  * Added `matchers.body_matcher` for matching string request
+    bodies. See #717
+  * Fixed tests failures during RPM package builds. See #706
+  * Fix mocked HEAD responses that have `Content-Length` set. See
+  * Fixed error messages when matches fail: inputs are not sorted
+    or reformatted. See #704
+- drop use-asyncio-markers.patch (upstream)</comment>
+    <requestid>1179687</requestid>
+  </revision>
 </revisionlist>
