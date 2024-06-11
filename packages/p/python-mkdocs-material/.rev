@@ -459,4 +459,14 @@ Related request sr#1160541</comment>
     <comment></comment>
     <requestid>1177754</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>796b7fe403ce888478ff9f047db15e20</srcmd5>
+    <version>9.5.26</version>
+    <time>1718123378</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1179364 from ojkastl_buildservice
+
+update to 9.5.26</comment>
+    <requestid>1179861</requestid>
+  </revision>
 </revisionlist>

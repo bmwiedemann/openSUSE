@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun  7 19:36:50 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.26:
+  * Fixed #7232
+    <https://github.com/squidfunk/mkdocs-material/issues/7232>:
+    Tab switches on scroll when linking tabs (9.5.19 regression)
+  * Fixed #7230
+    <https://github.com/squidfunk/mkdocs-material/issues/7230>:
+    Blog author avatar broken when referring to local file
+
+-------------------------------------------------------------------
 Thu May 30 10:55:49 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.5.25:
