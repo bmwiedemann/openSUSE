@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define skip_python39 1
 Name:           python-libeconf
-Version:        0.6.3
+Version:        0.7.1
 Release:        0
 Summary:        Python bindings for libeconf
 License:        LGPL-2.1-or-later

@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Mon Jun 10 07:36:06 UTC 2024 - schubi@suse.com
+
+- Update to version 0.7.1:
+* Improved error handling while parsing values with the wrong format.
+  Added new return value ECONF_VALUE_CONVERSION_ERROR.
+* Setting parsing options via econf_file struct.
+  see econf_newKeyFile_with_options. These options will be used by
+  econf_readConfig and econf_readConfigWithCallback.
+  Following options are supported:
+   JOIN_SAME_ENTRIES  (default 0)
+     Parsed entries with the same name will not be replaces but
+     will be joined to one entry.
+   PYTHON_STYLE  (default 0)
+     E.G. Identations will be handled like multiline entries.
+   PARSING_DIRS (default /usr/etc/:/run:/etc)
+     List of directories from which the configuration files have to be parsed.
+     The list is a string, divides by ":". The last entry has the highest
+     priority. E.g.: "PARSING_DIRS=/usr/etc/:/run:/etc"
+   CONFIG_DIRS (default <empty>)
+     List of directory structures (with order) which describes the directories
+     in which the files have to be parsed.
+     The list is a string, divides by ":". The last entry has the highest
+     priority. E.g. with the given list: "CONFIG_DIRS=.conf.d:.d" files in
+     following directories will be parsed:
+            "<default_dirs>/<config_name>.conf.d/"
+            "<default_dirs>/<config_name>.d/"
+            "<default_dirs>/<config_name>/"
+* CAUTION: From now on every econf_file element MUST be intialized if
+           econf_readConfig and econf_readConfigWithCallback is used.
+  Either with NULL or:
+   econf_file *key_file = NULL;
+   if (error = econf_newKeyFile_with_options(&key_file, "PYTHON_STYLE=1"))
+   {
+      fprintf (stderr, "ERROR: couldn't create new key file: %s\n",
+               econf_errString(error));
+      return 1;
+   }
+   error = econf_readConfig (&key_file,
+                             "foo",
+                             "/usr/lib",
+                             "example",
+                             "conf",
+                             "=", "#");
+
+-------------------------------------------------------------------
+Tue Jun 04 11:08:28 UTC 2024 - schubi@suse.com
+
+- Update to version 0.7.0:
+  * Defining manual parsing directories (#209)
+  * parsing config files in python style
+  * econf_readConfig: set usr_subdir to empty string if it is NULL
+  * Fix static analyzer detected issues (#202)
+  * comment string can be in the parsed value which is defined with quotes (#207)
+  * tst-comments2: comment sign in quoted string (#205)
+  * Setting options via new econf_newKeyFile_with_options. (#206)
+
+-------------------------------------------------------------------
 Fri Apr 12 10:47:39 UTC 2024 - schubi@suse.com
 
 - Update to version 0.6.3:
