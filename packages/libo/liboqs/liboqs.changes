@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 11 08:39:32 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.10.1:
+  This release is a security release which fixes potential
+  non-constant-time behaviour in ML-KEM and Kyber. (bsc#1226162
+  CVE-2024-36405)
+
+  It also includes a fix for incorrectly named macros in the ML-DSA
+  implementation.
+
+-------------------------------------------------------------------
 Sat Mar 23 13:40:29 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - updated to 0.10.0:

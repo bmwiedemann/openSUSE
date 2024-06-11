@@ -17,7 +17,7 @@
 
 
 Name:           liboqs
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        C library for quantum-resistant cryptographic algorithms
 License:        MIT
