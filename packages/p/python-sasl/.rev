@@ -37,4 +37,14 @@
 - Switch to pyproject macros.</comment>
     <requestid>1157784</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>4e8cb45ed58823adeb446ad9a3652456</srcmd5>
+    <version>0.3.1</version>
+    <time>1718123376</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1179327 from mcalabkova
+
+- Add remove-six.patch to drop no-longer-needed six dependency</comment>
+    <requestid>1179860</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,44 @@
+Index: sasl-0.3.1/sasl/saslwrapper.pyx
+===================================================================
+--- sasl-0.3.1.orig/sasl/saslwrapper.pyx
++++ sasl-0.3.1/sasl/saslwrapper.pyx
+@@ -14,8 +14,6 @@
+ 
+ #cython: language_level=3
+ 
+-from six import string_types, PY3
+-
+ from libcpp cimport bool
+ from libc.stdint cimport uint32_t
+ from libcpp.string cimport string as string_t
+@@ -36,7 +34,7 @@ cdef extern from 'saslwrapper.h' namespa
+ 
+ 
+ cpdef string_t to_bytes(bytes_or_str):
+-    if PY3 and isinstance(bytes_or_str, string_types):
++    if isinstance(bytes_or_str, str):
+         return bytes_or_str.encode('utf-8')
+     return bytes_or_str
+ 
+@@ -53,7 +51,7 @@ cdef class Client:
+     cpdef setAttr(self, key, value):
+         if isinstance(value, int):
+             return self._this.setAttr(to_bytes(key), <uint32_t> value)
+-        elif isinstance(value, string_types):
++        elif isinstance(value, str):
+             return self._this.setAttr(to_bytes(key), <string_t> to_bytes(value))
+ 
+     cpdef init(self):
+Index: sasl-0.3.1/setup.py
+===================================================================
+--- sasl-0.3.1.orig/setup.py
++++ sasl-0.3.1/setup.py
+@@ -54,7 +54,7 @@ setup(name='sasl',
+         'Programming Language :: Python :: 3',
+       ],
+       packages=['sasl'],
+-      install_requires=['six'],
++      install_requires=[],
+       ext_modules=cythonize([sasl_module]),
+       include_package_data=True,
+       license='Apache License, Version 2.0')

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  7 14:11:48 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add remove-six.patch to drop no-longer-needed six dependency
+
+-------------------------------------------------------------------
 Thu Mar 14 03:58:47 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Drop patch python-311.patch, does not work with Python 3.12.

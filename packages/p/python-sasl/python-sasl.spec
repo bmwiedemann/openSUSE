@@ -26,18 +26,18 @@ URL:            https://github.com/cloudera/python-sasl
 Source:         https://files.pythonhosted.org/packages/source/s/sasl/sasl-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM Based on gh#cloudera/python-sasl#32
 Patch0:         cythonize-during-build.patch
+# PATCH-FIX-UPSTREAM https://github.com/cloudera/python-sasl/pull/33 Drop python-six dependency
+Patch1:         remove-six.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libsasl2)
-Requires:       python-six
 %python_subpackages
 
 %description
