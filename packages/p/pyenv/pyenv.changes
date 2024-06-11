@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jun  9 14:55:27 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.2
+
+- Update to 2.4.2
+  - Add script to install graalpy development builds in #2969
+  - Correct the Explanation of PATH Variable Lookup in #2975
+  - Document PYTHON_BUILD_CURL_OPTS, PYTHON_BUILD_WGET_OPTS, PYTHON_BUILD_ARIA2_OPTS
+    in #2976
+  - Add sed and greadlink to shim exceptions in #2977
+  - Add CPython 3.13.0b2 in #2978
+  - Add CPython 3.12.4 in #2981
+
+Full Changelog: https://github.com/pyenv/pyenv/compare/v2.4.1...v2.4.2
+
+-------------------------------------------------------------------
 Thu May  9 12:35:43 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.1
 
 - Update to 2.4.1
