@@ -19,7 +19,7 @@
 %define _libexecdir %_prefix/libexec
 
 Name:           gromox
-Version:        2.28
+Version:        2.29
 Release:        0
 Summary:        Groupware server backend with RPC, IMAP,POP3, PHP-MAPI support
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later
@@ -37,6 +37,7 @@ BuildRequires:  openldap2-devel
 BuildRequires:  mariadb-devel >= 5.6
 BuildRequires:  openldap-devel
 %endif
+BuildRequires:  libtool >= 2
 BuildRequires:  make
 BuildRequires:  pam-devel
 BuildRequires:  pkg-config
@@ -222,9 +223,9 @@ fi
 
 %files
 %_sysconfdir/php*
-# grommunio permission is exercised by grommunio-admin-api.
-# pam.cfg needs to be readable by all (hence d0755).
-%attr(0755,grommunio,gromox) %dir %_sysconfdir/%name/
+# "grommunio" permission is exercised by grommunio-admin-api.
+# pam.cfg needs to be accessible by arbitrary programs (hence we need at least 0751).
+%attr(0755,grommunio,gromoxcf) %dir %_sysconfdir/%name/
 %_sbindir/gromox-*
 %_libdir/*.so.*
 %_libdir/%name/

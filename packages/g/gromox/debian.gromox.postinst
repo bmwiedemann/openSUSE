@@ -17,7 +17,7 @@ set_perms()
 
 xpostinst()
 {
-set_perms grommunio gromoxcf 0750 /etc/gromox || :
+set_perms grommunio gromoxcf 0755 /etc/gromox || :
 for i in /var/lib/gromox \
 	/var/lib/gromox/domain \
 	/var/lib/gromox/user \

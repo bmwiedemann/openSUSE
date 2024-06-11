@@ -239,4 +239,12 @@
     <comment>- Update to release 2.28</comment>
     <requestid>1171324</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>12ed7d47fe8072e0c1c611d92d8be610</srcmd5>
+    <version>2.29</version>
+    <time>1718123479</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1179959</requestid>
+  </revision>
 </revisionlist>

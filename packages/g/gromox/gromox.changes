@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun  3 23:17:28 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.29
+  * dnsbl_filter: support DNSBL servers that do not emit TXT records
+  * email_lib: cure IMAP Structure Descriptions indicating a mail
+    size 2 bytes larger than it is
+  * imap: cope with truncated EML files
+  * exmdb: delete leftover stray ROLLBACK statement
+  * ews: cure null dereference in tInternetMessageHeader::parse
+  * ews: use vmime parser to break down IMHs and reset an Apple
+    workaround for "From" lines
+
+-------------------------------------------------------------------
 Thu May  2 08:29:01 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.28

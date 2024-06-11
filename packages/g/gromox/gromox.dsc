@@ -1,7 +1,7 @@
 Format: 1.0
 Source: gromox
 Architecture: any
-Version: 2.28
+Version: 2.29
 DEBTRANSFORM-RELEASE: 1
 Maintainer: Gromox <null@gromox.com>
 Homepage: https://gromox.com

@@ -9,7 +9,8 @@ INSTDIR := debian/gromox
 override_dh_auto_install:
 	dh_auto_install
 	find ${INSTDIR} -type f -name "*.la" -print -delete
-	perl -i -lpe 's{Type=simple}{Type=simple\nRestart=on-failure}' ${INSTDIR}/lib/systemd/system/*.service
+	find ${INSTDIR} -type f -name "*.service" -exec \
+		perl -i -lpe 's{Type=simple}{Type=simple\nRestart=on-failure}' {} +
 	for i in /etc/gromox /var/lib/gromox /var/lib/gromox/domain \
 	    /var/lib/gromox/queue \
 	    /var/lib/gromox/queue/mess /var/lib/gromox/queue/save \
@@ -19,8 +20,11 @@ override_dh_auto_install:
 	    /usr/lib/sysctl.d; do \
 		mkdir -pv debian/gromox/$$i; \
 	done
+    
 	mkdir -pv debian/gromox${phpdir}/fpm/pool.d
 	cp -av debian/gromox/usr/share/gromox/fpm-gromox.conf.sample debian/gromox${phpdir}/fpm/pool.d/gromox.conf
+	sed -i 's#/run/php-fpm/php-gromox-fpm.sock#/run/php/php-gromox-fpm.sock#g' debian/gromox${phpdir}/fpm/pool.d/gromox.conf
+    
 	mkdir -pv debian/gromox${phpdir}/mods-available debian/gromox${phpdir}/cli/conf.d debian/gromox${phpdir}/fpm/conf.d
 	mv -v debian/gromox${phpdir}/cli/conf.d/mapi.ini debian/gromox${phpdir}/mods-available/
 	ln -s ${phpdir}/mods-available/mapi.ini debian/gromox${phpdir}/cli/conf.d/mapi.ini
