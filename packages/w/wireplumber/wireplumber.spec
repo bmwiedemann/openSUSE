@@ -22,7 +22,7 @@
 %define sover 0
 %define libwireplumber libwireplumber-%{apiver_str}-%{sover}
 Name:           wireplumber
-Version:        0.5.2
+Version:        0.5.3
 Release:        0
 Summary:        Session / policy manager implementation for PipeWire
 License:        MIT
@@ -30,13 +30,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/pipewire/wireplumber
 Source0:        wireplumber-%{version}.tar.xz
 Source1:        split-config-file.py
-Patch0:         0001-lua-json-fix-error-ouput.patch
-Patch1:         0002-lua-json-add-method-to-merge-json-containers.patch
-Patch2:         0003-json-utils-fix-overriding-of-non-container-values-when.patch
-Patch3:         0004-transition-fix-memleak-when-error-set.patch
-Patch4:         0005-transition-ensure-single-completion-and-finish.patch
-Patch5:         0006-linking-return-after-aborting-transition.patch
-Patch6:         0007-state-stream-fix-using-default-volume.patch
 # docs
 BuildRequires:  doxygen
 BuildRequires:  graphviz
@@ -72,7 +65,7 @@ Provides:       pipewire-session-manager
 BuildRequires:  gcc9
 BuildRequires:  gcc9-c++
 %else
-BuildRequires:  gcc-c++
+BuildRequires:  c++_compiler
 %endif
 %{?systemd_ordering}
 

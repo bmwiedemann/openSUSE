@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Jun  4 22:08:54 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.5.3:
+  * Fixes:
+    - Fix a long standing issue that would cause many device nodes
+      to have inconsistent naming, with a '.N' suffix (where N is
+      a number >= 2) being appended at seemingly random times.
+    - Fix an issue that would cause unavailable device profiles to
+      be selected if they were previously stored in the state file,
+      sometimes requiring users to manually remove the state file
+      to get things working again.
+    - Fix an occasional crash that could sometimes be triggered by
+      hovering the volume icon on the KDE taskbar, and possibly
+      other similar actions.
+    - Fix camera device deduplication logic when the same device
+      is available through both V4L2 and libcamera, and the
+      libcamera one groups multiple V4L2 devices together.
+    - Fix applying the default volume on streams that have no
+      volume previously stored in the state file.
+    - Fix an issue that would prevent some camera nodes,
+      in some cases, from being destroyed when the camera device
+      is removed.
+    - Fix an issue that would cause video stream nodes to be
+      linked with audio smart filters, if smart audio filters were
+      configured.
+    - Fix an issue that would cause WP to re-activate device
+      profiles even though they were already active.
+    - Configuration files in standard JSON format (starting with a
+      '{', among other things) are now correctly parsed.
+    - Fix overriding non-container values when merging JSON
+      objects.
+    - Functions marked with WP_PRIVATE_API are now also marked as
+      non-introspectable in the gobject-introspection metadata.
+  * Improvements:
+    - Logging on the systemd journal now includes the log topic
+      and also the log level and location directly on the message
+      string when the log level is high enough, which is useful
+      for gathering additional context in logs submitted by users.
+    - Add a video-only profile in wireplumber.conf, for systems
+      where only camera & screensharing are to be used.
+    - Improve seat state monitoring so that Bluetooth devices are
+      only enabled when the user is active on a local seat,
+      instead of allowing remote users as well.
+    - Improve how main filter nodes are detected for the smart
+      filters.
+    - Add Lua method to merge JSON containers.
+- Remove patch already included upstream:
+  * 0001-lua-json-fix-error-ouput.patch
+  * 0002-lua-json-add-method-to-merge-json-containers.patch
+  * 0003-json-utils-fix-overriding-of-non-container-values-when.patch
+  * 0004-transition-fix-memleak-when-error-set.patch
+  * 0005-transition-ensure-single-completion-and-finish.patch
+  * 0006-linking-return-after-aborting-transition.patch
+  * 0007-state-stream-fix-using-default-volume.patch
+
+-------------------------------------------------------------------
 Sat May 25 13:28:01 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Add patches from upstream to fix a crash for aborted links:
