@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 11 10:18:59 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 12.86:
+  * Added a new value for a couple of Olympus tags
+  * Improved handling of ID3 user-defined tags
+  * Decode all JPEG segments from RICO box in Ricoh MOV videos
+  * Decode a few new values for some tags written by Canon EOS R cameras
+  * Patched some Olympus WB_RBLevels tags to allow 4 values to
+    be written as per some newer models
+  * Fixed issue when writing IPTC date tags with a date/time value
+    containing subseconds with 4 or more digits
+
+-------------------------------------------------------------------
 Wed May 22 13:22:01 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 12.85:
