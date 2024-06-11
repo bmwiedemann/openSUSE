@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jun 10 07:41:21 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 2.1.0:
+  * v2.1.0
+  * Build(deps): Bump golang.org/x/net from 0.20.0 to 0.23.0
+  * feat: add new none network
+  * Build(deps): Bump golang.org/x/sys from 0.18.0 to 0.19.0
+  * testing: add test for systemd socket activation
+  * child: createCmd: propogate systemd files to actual process within namespace
+  * parent: setupFilesAndEnv: retrieve socket count from systemd environment variable
+  * parent: setupFilesAndEnv: systemd socket activation concept
+  * parent: setupFilesAndEnv: introduce dynamic array for cmd.ExtraFiles
+  * parent: setupFilesAndEnv: avoid hardcoded file descriptor numbers
+  * parent: refactor cmd files and environment to helper function
+  * Build(deps): Bump github.com/containernetworking/plugins
+  * v2.0.2+dev
+
+-------------------------------------------------------------------
 Mon Mar 11 10:48:03 UTC 2024 - danish.prakash@suse.com
 
 - Update to version 2.0.2:
