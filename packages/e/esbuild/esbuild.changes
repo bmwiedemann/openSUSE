@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 10 20:15:09 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Use correct optflags for generated C code
+- Fix broken debuginfo (work around bsc#1215402)
+- 15.6+ and Fedora: don't use vendor
+- Run test suite in %check
+
+-------------------------------------------------------------------
 Sun Jun  9 22:48:48 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 0.21.5:

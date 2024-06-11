@@ -15,6 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600
+# Go source packages are horribly broken on Leap (mismatching versions between libraries and compiler)
+%bcond_with vendor
+%else
+%bcond_without vendor
+%endif
 
 #macros for Fedora
 %global goipath  github.com/evanw/esbuild
@@ -39,28 +45,67 @@ BuildRequires:  golang-packaging
 BuildRequires:  golang(API)
 %endif
 
+%if %{without vendor}
+%if 0%{?fedora}
+BuildRequires: golang-ipath(golang.org/x/sys)
+%else
+BuildRequires: golang-org-x-sys
+%endif
+%endif
+
 %description
 esbuild is a JavaScript bundler and minifier.
 
 %{gopkg}
 
 %prep
+%if %{with vendor}
 %autosetup -a1 -p1
+%else
+%autosetup -p1
+%endif
 
 %build
-export CFLAGS="%{optflags}"
-export CXXFLAGS="%{optflags}"
+export CFLAGS="%{optflags} -fpie -fno-fat-lto-objects"
+export CXXFLAGS="$CFLAGS"
+
+export CGO_CFLAGS="$CFLAGS"
+export CGO_CXXFLAGS="$CFLAGS"
+export CGO_LDFLAGS="%{?build_ldflags}"
+
+export GOFLAGS='-ldflags=-compressdwarf=false' #fix broken debuginfo bsc#1215402
 
 %if 0%{?fedora}
 %goprep -k -e
-%gobuild ./cmd/esbuild
 %else
-%{goprep} .
-go build -v -p 4 -x -buildmode=pie -mod vendor ./cmd/esbuild
+%goprep %goipath
+export GO111MODULE=off
 %endif
+%gobuild ./cmd/esbuild
+
 
 %install
-install -pvDm755 %{name} "%{buildroot}/%{_bindir}/%{name}"
+install -pvDm755 \
+%if 0%{?fedora}
+%name \
+%else
+%{_builddir}/go/bin/%{name} \
+%endif
+"%{buildroot}/%{_bindir}/%{name}"
+
+%check
+export CFLAGS="%{optflags} -fpie -fno-fat-lto-objects"
+export CXXFLAGS="$CFLAGS"
+export CGO_CFLAGS="$CFLAGS"
+export CGO_CXXFLAGS="$CFLAGS"
+export CGO_LDFLAGS="%{?build_ldflags}"
+export GOFLAGS='-ldflags=-compressdwarf=false'
+%if 0%{?fedora}
+%gocheck
+%else
+export GO111MODULE=off
+%gotest %goipath/...
+%endif
 
 %files
 %license LICENSE.md
