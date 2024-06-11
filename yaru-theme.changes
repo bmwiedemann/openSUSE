@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Apr 14 15:50:18 UTC 2024 - draskmont@protonmail.com
+
+- Update to version 24.04.0:
+  * See /usr/share/doc/packages/metatheme-yaru-common/changelog or
+    https://github.com/ubuntu/yaru/blob/20.04.0/debian/changelog
+- Changes in 22.04.2:
+  * Added accent colors, separated by themes.
+  * Added HiDPI variants to xfmw4 theme.
+- Changes in 22.04.1:
+  * Added Cinnamon theme support.
+- Changes in 21.10.2:
+  * Added support for xfce (#2971)
+- Changes in 21.10.1:
+  * Remove "yaru-light" and keep "yaru" as the fully light theme 
+    #2922
+- Changes in 21.04.1:
+  * Added Metacity and GtkSourceView themes.
+- Moved the GNOME Shell theme to its own separate package:
+  * gnome-shell required version in line with 'Breaks' field in
+    debian/control file.
+
+-------------------------------------------------------------------
 Thu May  6 12:27:19 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 20.10.6.1: 
