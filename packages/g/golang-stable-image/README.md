@@ -2,7 +2,6 @@
 
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-
 ## Description
 
 [Go](https://go.dev/) (a.k.a., Golang) is a statically-typed programming language, with syntax loosely derived from C. Go offers additional features such as garbage collection, type safety, certain dynamic-typing capabilities, additional built-in types (for example, variable-length arrays and key-value maps) as well as a large standard library.
