@@ -1,7 +1,6 @@
 # The openSUSE Tumbleweed Blackbox Exporter Container Image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-
 Blackbox Exporter container based on the openSUSE Tumbleweed Base Container Image.
 
 ## Licensing
