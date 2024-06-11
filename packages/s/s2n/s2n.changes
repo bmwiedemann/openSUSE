@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jun 11 07:33:04 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.4.16
+  * Merge pull request from GHSA-52xf-5p2m-9wrv
+  * chore(bindings): release 0.2.7 (#4580)
+  * fix: Validate received signature algorithm in EVP verify (#4574)
+  * refactor: add try_compile feature probe for RSA-PSS signing (#4569)
+  * feat: Configurable blinding (#4562)
+  * docs: document s2n_cert_auth_type behavior (#4454)
+  * fix: init implicit iv for serialization feature (#4572)
+  * [Nix] adjust pytest retrys (#4558)
+  * fix: cert verify test fix (#4545)
+  * fix: update default security policies (#4523)
+  * feat(bindings): Associate an application context with a Connection (#4563)
+  * chore(bindings): version bump (#4566)
+  * Additional test cases for s2n_constant_time_equals() (#4559)
+  * test: backwards compatibility test for the serialization feature (#4548)
+  * chore(bench): upgrade rustls (#4554)
+
+-------------------------------------------------------------------
 Tue Jun  4 09:13:19 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.4.15
