@@ -5352,4 +5352,12 @@ I cannot test locally unfortunately.
     and Thunderbird 115.11</comment>
     <requestid>1175556</requestid>
   </revision>
+  <revision rev="336" vrev="1">
+    <srcmd5>8b3ccc42933e76e1f3b55c12a83a79c3</srcmd5>
+    <version>115.11.1</version>
+    <time>1718123461</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1179943</requestid>
+  </revision>
 </revisionlist>
