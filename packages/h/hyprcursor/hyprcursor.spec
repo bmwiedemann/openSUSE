@@ -20,7 +20,7 @@
 %define sover 0
 
 Name:           hyprcursor
-Version:        0.1.7
+Version:        0.1.9
 Release:        0
 Summary:        Library and utilities for the hyprland cursor format
 License:        BSD-3-Clause

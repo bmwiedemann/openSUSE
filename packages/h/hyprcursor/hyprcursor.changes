@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jun 10 17:39:28 UTC 2024 - Florian "spirit" <sp1rit@disroot.org>
+
+- Update to version 0.1.9:
+  + A small housekeeping update with a few minor patches.
+  + Fixes:
+    - fixed nearest size search for png cursor themes
+    - Fixed getconf command in build instructions
+    - add option to not use default fallbacks (env and first
+      available)
+
+- Changes from version 0.1.8:
+  + A minor update with some cleanups
+  + Fixes:
+    - util: fixed printing overrides
+    - Count cursor-less themes as invalid
+  + Other:
+    - Add validation for cursor file names and propagate the error
+      from parsing HL cursor
+    - Properly report error on zip_close
+
+-------------------------------------------------------------------
 Sat Apr 13 17:27:14 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to 0.1.7:
