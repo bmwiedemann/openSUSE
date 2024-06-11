@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jun 10 13:30:34 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 5.0.0:
+  * Update XEP-0425 to latest version.
+  * Parse XEP-0172 nickname in MUC presences.
+  * Add support for multi language bodies and fallbacks.
+  * XEP-0490: Message Displayed Synchronization.
+  * XEP-0317: Hats.
+  * MUC: Process muc user data for all message types.
+  * XEP-0424: Message Retraction.
+  * Add Jingle Feedback namespace.
+  * Add XEP-0215 namespace.
+  * Protocol: Improve error message when parsing JIDs.
+  * Add new moderation namespace disco info property.
+  * Improve support for full stanza encryption.
+  * Add EncryptionData struct.
+  * Replies: Return JID instead of string.
+  * Protocol: Remove deprecated "code" attribute usage in Errors.
+  * Message: Fix false positive muc pm detection.
+  * IBB: Fix parsing open stanza.
+
+-------------------------------------------------------------------
 Fri Apr 19 11:24:06 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Switch to python3.11 for Leap15 by added %{?sle15_python_module_pythons}
@@ -6,11 +28,10 @@ Fri Apr 19 11:24:06 UTC 2024 - Max Lin <mlin@suse.com>
   %{?python_enable_dependency_generator} won't work for Leap 15.
   also removed %{?python_enable_dependency_generator}
 
-
 -------------------------------------------------------------------
 Tue Feb 13 13:23:17 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
 
-- Update to version 2.5.4:
+- Update to version 4.5.4:
   * Add XEP-0353 namespace.
   * Correctly discover subject change.
   * DateTime: Be more strict with parsing.
@@ -18,7 +39,7 @@ Tue Feb 13 13:23:17 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
 -------------------------------------------------------------------
 Sat Nov 25 14:25:50 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
-- Update to version 2.5.3:
+- Update to version 4.5.3:
   * Websocket: Make TLS properties available.
   * SASL2: Make login test mode work.
   * Websocket: Set user agent.

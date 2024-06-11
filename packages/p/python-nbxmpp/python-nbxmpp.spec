@@ -22,7 +22,7 @@
 %{?sle15_python_module_pythons}
 %define _name   nbxmpp
 Name:           python-nbxmpp
-Version:        4.5.4
+Version:        5.0.0
 Release:        0
 Summary:        XMPP library by Gajim team
 License:        GPL-3.0-or-later
@@ -42,10 +42,10 @@ BuildRequires:  %{python_module precis-i18n}
 BuildRequires:  %{python_module sqlite3}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  typelib(Soup) = 3.0
-Requires:       python-idna
-Requires:       python-precis-i18n >= 1.0.0
-Requires:       python-packaging
 Requires:       python-gobject >= 3.42
+Requires:       python-idna
+Requires:       python-packaging
+Requires:       python-precis-i18n >= 1.0.0
 Recommends:     python-gssapi
 BuildArch:      noarch
 
