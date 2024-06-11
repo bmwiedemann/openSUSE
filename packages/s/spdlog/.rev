@@ -525,4 +525,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1173209</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>1cb9f46c80f8ac43a28930ececa913b7</srcmd5>
+    <version>1.14.1</version>
+    <time>1718123225</time>
+    <user>anag+factory</user>
+    <comment>- fix build for leap by pulling gcc 13
+
+- update fmt dependency to verrsion 10.0</comment>
+    <requestid>1179915</requestid>
+  </revision>
 </revisionlist>

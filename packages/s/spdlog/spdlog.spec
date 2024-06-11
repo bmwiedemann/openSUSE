@@ -30,9 +30,9 @@ Source99:       baselibs.conf
 #Patch0:         https://patch-diff.githubusercontent.com/raw/gabime/spdlog/pull/2827.patch
 BuildRequires:  cmake >= 3.10
 %if 0%{?suse_version} > 1500
-BuildRequires:  gcc-c++ >= 8
+BuildRequires:  gcc-c++ >= 13
 %else
-BuildRequires:  gcc8-c++
+BuildRequires:  gcc13-c++
 %endif
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
@@ -76,7 +76,7 @@ sed -i -e "s,\r,," README.md LICENSE
 
 %build
 export CXX=g++
-test -x "$(type -p g++-8)" && export CXX=g++-8
+test -x "$(type -p g++-13)" && export CXX=g++-13
 
 # spdlog embodies fmt ABI; add some symvers so both ld.so and rpm notice the change.
 v=v$(rpm -q --qf="%%{VERSION}" --whatprovides "pkgconfig(fmt)" | sed -e 's/\..*//')

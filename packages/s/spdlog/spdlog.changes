@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 11 07:47:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- fix build for leap by pulling gcc 13
+
+-------------------------------------------------------------------
 Fri May  3 15:11:30 UTC 2024 - Bernd Ritter <comrad@opensuse.org>
 
-- update fmt dependency to verrsion 10.0 
+- update fmt dependency to verrsion 10.0
 
 -------------------------------------------------------------------
 Fri May  3 14:27:01 UTC 2024 - Bernd Ritter <comrad@opensuse.org>
