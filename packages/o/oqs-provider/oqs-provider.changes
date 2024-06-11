@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun 11 08:56:30 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.6.0
+  - First availability of standardized PQ algorithms, e.g., ML-KEM, ML-DSA
+  - Support for Composite PQ operations
+  - Alignment with PQ algorithm implementations as provided by liboqs 0.10.0, most notably updating HQC and Falcon.
+  - Implementation of security code review recommendations
+  - Support for more hybrid operations as fully documented here.
+  - Support for extraction of classical and hybrid key material
+- updated to 0.5.3
+  - only tracking parallel liboqs security update
+- updated to 0.5.2
+  - Algorithm updates as documented in the liboqs 0.9.0 release notes
+  - Standard coding style
+  - Enhanced memory leak protection
+  - Added community cooperation documentation
+  - (optional) KEM algorithm en-/decoder feature
+
+-------------------------------------------------------------------
 Tue Sep 19 12:16:31 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - updated to 0.5.1
