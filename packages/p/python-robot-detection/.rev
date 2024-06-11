@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>1093762</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>deb8f7f85b6247cd7d7a511d66e71869</srcmd5>
+    <version>0.4.0</version>
+    <time>1718123375</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1179217 from mcalabkova
+
+- Add no-six.patch to get rid of the six dependency</comment>
+    <requestid>1179857</requestid>
+  </revision>
 </revisionlist>

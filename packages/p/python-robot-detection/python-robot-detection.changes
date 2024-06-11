@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  7 12:24:11 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add no-six.patch to get rid of the six dependency
+
+-------------------------------------------------------------------
 Mon Jun 19 08:02:23 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Use {?sle15_python_module_pythons}

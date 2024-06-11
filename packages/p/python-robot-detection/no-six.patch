@@ -1,0 +1,36 @@
+Index: robot-detection-0.4.0/robot_detection.py
+===================================================================
+--- robot-detection-0.4.0.orig/robot_detection.py
++++ robot-detection-0.4.0/robot_detection.py
+@@ -1,7 +1,6 @@
+ from __future__ import print_function
+ 
+ import sys, os.path, codecs, re
+-import six
+ 
+ robot_useragents = [
+         'appie',
+@@ -661,7 +660,7 @@ robot_useragents = [
+ robot_useragents = [re.compile(x) for x in robot_useragents]
+ 
+ def is_robot(user_agent):
+-    if not isinstance(user_agent, six.string_types):
++    if not isinstance(user_agent, str):
+         raise TypeError
+     if len(user_agent) == 0:
+         raise ValueError
+Index: robot-detection-0.4.0/setup.py
+===================================================================
+--- robot-detection-0.4.0.orig/setup.py
++++ robot-detection-0.4.0/setup.py
+@@ -12,9 +12,7 @@ setup(name="robot-detection",
+       url="https://github.com/rory/robot-detection",
+       license="GPLv3+",
+       test_suite='tests',
+-      install_requires = [
+-          "six",
+-      ],
++      install_requires = [],
+       classifiers=[
+             'Development Status :: 4 - Beta',
+             'Environment :: Web Environment',
