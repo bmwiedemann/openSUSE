@@ -3,8 +3,9 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/ipfs/kubo</param>
     <param name="scm">git</param>
-    <param name="revision">v0.27.0</param>
-    <param name="version">0.27.0</param>
+    <param name="revision">v0.29.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
   </service>
   <service name="go_modules" mode="manual">
     <param name="compression">zst</param>

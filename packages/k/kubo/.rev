@@ -104,4 +104,17 @@ now with fixed build</comment>
   quic-go memory exhaustion attack (boo#1222479, CVE-2024-22189)</comment>
     <requestid>1166258</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8812c196773411b64785069293305097</srcmd5>
+    <version>0.29.0</version>
+    <time>1718123481</time>
+    <user>anag+factory</user>
+    <comment>Update to 0.29.0 - for details see
+  * https://github.com/ipfs/kubo/releases/tag/v0.29.0
+  * Add search functionality for pin names
+  * Customizing ipfs add defaults
+- drop upstream 10243.patch
+- drop upstream kubo-0.27.0-CVE-2024-22189.patch</comment>
+    <requestid>1179970</requestid>
+  </revision>
 </revisionlist>
