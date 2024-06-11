@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 11 10:05:58 UTC 2024 - Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+
+- Support building on SUSE version 1550: instead of pkgconfig(libmagic)
+  build-depend on file-devel for older versions of SUSE. 
+- Build with --enable-magic configure option set.
+
+-------------------------------------------------------------------
 Sun Mar 31 08:27:56 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.28.1

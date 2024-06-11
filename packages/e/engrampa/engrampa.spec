@@ -35,7 +35,11 @@ BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libcaja-extension) >= %{_version}
+%if 0%{?suse_version} >= 1560
 BuildRequires:  pkgconfig(libmagic)
+%else
+BuildRequires:  file-devel
+%endif
 BuildRequires:  pkgconfig(sm)
 Recommends:     %{name}-lang
 # Formats that we likely want to support by default.
@@ -102,6 +106,7 @@ NOCONFIGURE=1 mate-autogen
 %configure \
   --disable-static                    \
   --disable-scrollkeeper              \
+  --enable-magic                      \
   --libexecdir=%{_libexecdir}/%{name}
 %make_build
 
