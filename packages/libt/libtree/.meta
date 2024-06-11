@@ -1,0 +1,7 @@
+<package name="libtree" project="openSUSE:Factory">
+  <title>Ldd as a tree</title>
+  <description>Libtree is tool that turns ldd into a tree, and explains how shared libraries
+are found or why they cannot be located.</description>
+  <devel project="utilities" package="libtree"/>
+  <url>https://github.com/haampie/libtree</url>
+</package>
