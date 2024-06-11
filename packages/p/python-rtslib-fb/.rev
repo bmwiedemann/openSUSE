@@ -301,4 +301,14 @@
     <comment></comment>
     <requestid>1174673</requestid>
   </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>0762fd7392dfeb7db7fdb9dddac1b3b1</srcmd5>
+    <version>2.1.76</version>
+    <time>1718123224</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1179237 from mcalabkova
+
+- Add rtslib-refactor-to-python3.patch to get rid of six</comment>
+    <requestid>1179859</requestid>
+  </revision>
 </revisionlist>

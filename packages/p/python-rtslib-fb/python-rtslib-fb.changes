@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  7 13:12:41 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add rtslib-refactor-to-python3.patch to get rid of six
+
+-------------------------------------------------------------------
 Thu May 16 15:10:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro: allows us to eliminate usage of deprecated

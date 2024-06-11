@@ -1,0 +1,1156 @@
+From dc1bfe302a461daa96515d685abaa8188ec1586b Mon Sep 17 00:00:00 2001
+From: Martin Hoyer <mhoyer@redhat.com>
+Date: Thu, 16 May 2024 17:24:17 +0200
+Subject: [PATCH] Refactor code to Python>=3.9 to pass pyupgrade
+
+---
+ rtslib/alua.py    | 41 ++++++++++++-----------
+ rtslib/fabric.py  | 38 ++++++++++------------
+ rtslib/node.py    |  2 +-
+ rtslib/root.py    | 45 ++++++++++---------------
+ rtslib/target.py  | 83 +++++++++++++++++++++++------------------------
+ rtslib/tcm.py     | 56 +++++++++++++++-----------------
+ rtslib/utils.py   | 12 +++----
+ scripts/targetctl |  3 +-
+ 8 files changed, 130 insertions(+), 150 deletions(-)
+
+Index: python-rtslib-fb-v2.1.76/rtslib/alua.py
+===================================================================
+--- python-rtslib-fb-v2.1.76.orig/rtslib/alua.py
++++ python-rtslib-fb-v2.1.76/rtslib/alua.py
+@@ -19,7 +19,6 @@ a copy of the License at
+ 
+ from .node import CFSNode
+ from .utils import RTSLibError, RTSLibALUANotSupported, fread, fwrite
+-import six
+ 
+ alua_rw_params = ['alua_access_state', 'alua_access_status',
+                   'alua_write_metadata', 'alua_access_type', 'preferred',
+@@ -54,7 +53,7 @@ class ALUATargetPortGroup(CFSNode):
+         if tag is not None and (tag > 65535 or tag < 1):
+             raise RTSLibError("The TPG Tag must be between 1 and 65535")
+ 
+-        super(ALUATargetPortGroup, self).__init__()
++        super().__init__()
+         self.name = name
+         self.storage_object = storage_object
+ 
+@@ -68,7 +67,7 @@ class ALUATargetPortGroup(CFSNode):
+ 
+             try:
+                 fwrite("%s/tg_pt_gp_id" % self._path, tag)
+-            except IOError as msg:
++            except OSError as msg:
+                 self.delete()
+                 raise RTSLibError("Cannot set id to %d: %s" % (tag, str(msg)))
+         else:
+@@ -90,7 +89,7 @@ class ALUATargetPortGroup(CFSNode):
+             raise RTSLibError("Can not delete default_tg_pt_gp")
+ 
+         # This will reset the ALUA tpg to default_tg_pt_gp
+-        super(ALUATargetPortGroup, self).delete()
++        super().delete()
+ 
+     def _get_alua_access_state(self):
+         self._check_self()
+@@ -102,7 +101,7 @@ class ALUATargetPortGroup(CFSNode):
+         path = "%s/alua_access_state" % self.path
+         try:
+             fwrite(path, str(int(newstate)))
+-        except IOError as e:
++        except OSError as e:
+             raise RTSLibError("Cannot change ALUA state: %s" % e)
+ 
+     def _get_alua_access_status(self):
+@@ -116,7 +115,7 @@ class ALUATargetPortGroup(CFSNode):
+         path = "%s/alua_access_status" % self.path
+         try:
+             fwrite(path, str(int(newstatus)))
+-        except IOError as e:
++        except OSError as e:
+             raise RTSLibError("Cannot change ALUA status: %s" % e)
+ 
+     def _get_alua_access_type(self):
+@@ -130,7 +129,7 @@ class ALUATargetPortGroup(CFSNode):
+         path = "%s/alua_access_type" % self.path
+         try:
+             fwrite(path, str(int(access_type)))
+-        except IOError as e:
++        except OSError as e:
+             raise RTSLibError("Cannot change ALUA access type: %s" % e)
+ 
+     def _get_preferred(self):
+@@ -143,7 +142,7 @@ class ALUATargetPortGroup(CFSNode):
+         path = "%s/preferred" % self.path
+         try:
+             fwrite(path, str(int(pref)))
+-        except IOError as e:
++        except OSError as e:
+             raise RTSLibError("Cannot set preferred: %s" % e)
+ 
+     def _get_alua_write_metadata(self):
+@@ -156,7 +155,7 @@ class ALUATargetPortGroup(CFSNode):
+         path = "%s/alua_write_metadata" % self.path
+         try:
+             fwrite(path, str(int(pref)))
+-        except IOError as e:
++        except OSError as e:
+             raise RTSLibError("Cannot set alua_write_metadata: %s" % e)
+ 
+     def _get_alua_support_active_nonoptimized(self):
+@@ -169,7 +168,7 @@ class ALUATargetPortGroup(CFSNode):
+         path = "%s/alua_support_active_nonoptimized" % self.path
+         try:
+             fwrite(path, str(int(enabled)))
+-        except IOError as e:
++        except OSError as e:
+             raise RTSLibError("Cannot set alua_support_active_nonoptimized: %s" % e)
+ 
+     def _get_alua_support_active_optimized(self):
+@@ -182,7 +181,7 @@ class ALUATargetPortGroup(CFSNode):
+         path = "%s/alua_support_active_optimized" % self.path
+         try:
+             fwrite(path, str(int(enabled)))
+-        except IOError as e:
++        except OSError as e:
+             raise RTSLibError("Cannot set alua_support_active_optimized: %s" % e)
+ 
+     def _get_alua_support_offline(self):
+@@ -195,7 +194,7 @@ class ALUATargetPortGroup(CFSNode):
+         path = "%s/alua_support_offline" % self.path
+         try:
+             fwrite(path, str(int(enabled)))
+-        except IOError as e:
++        except OSError as e:
+             raise RTSLibError("Cannot set alua_support_offline: %s" % e)
+ 
+     def _get_alua_support_unavailable(self):
+@@ -208,7 +207,7 @@ class ALUATargetPortGroup(CFSNode):
+         path = "%s/alua_support_unavailable" % self.path
+         try:
+             fwrite(path, str(int(enabled)))
+-        except IOError as e:
++        except OSError as e:
+             raise RTSLibError("Cannot set alua_support_unavailable: %s" % e)
+ 
+     def _get_alua_support_standby(self):
+@@ -221,7 +220,7 @@ class ALUATargetPortGroup(CFSNode):
+         path = "%s/alua_support_standby" % self.path
+         try:
+             fwrite(path, str(int(enabled)))
+-        except IOError as e:
++        except OSError as e:
+             raise RTSLibError("Cannot set alua_support_standby: %s" % e)
+ 
+     def _get_alua_support_transitioning(self):
+@@ -234,7 +233,7 @@ class ALUATargetPortGroup(CFSNode):
+         path = "%s/alua_support_transitioning" % self.path
+         try:
+             fwrite(path, str(int(enabled)))
+-        except IOError as e:
++        except OSError as e:
+             raise RTSLibError("Cannot set alua_support_transitioning: %s" % e)
+ 
+     def _get_alua_support_lba_dependent(self):
+@@ -272,7 +271,7 @@ class ALUATargetPortGroup(CFSNode):
+         path = "%s/trans_delay_msecs" % self.path
+         try:
+             fwrite(path, str(int(secs)))
+-        except IOError as e:
++        except OSError as e:
+             raise RTSLibError("Cannot set trans_delay_msecs: %s" % e)
+ 
+     def _get_implicit_trans_secs(self):
+@@ -285,7 +284,7 @@ class ALUATargetPortGroup(CFSNode):
+         path = "%s/implicit_trans_secs" % self.path
+         try:
+             fwrite(path, str(int(secs)))
+-        except IOError as e:
++        except OSError as e:
+             raise RTSLibError("Cannot set implicit_trans_secs: %s" % e)
+ 
+     def _get_nonop_delay_msecs(self):
+@@ -298,11 +297,11 @@ class ALUATargetPortGroup(CFSNode):
+         path = "%s/nonop_delay_msecs" % self.path
+         try:
+             fwrite(path, str(int(delay)))
+-        except IOError as e:
++        except OSError as e:
+             raise RTSLibError("Cannot set nonop_delay_msecs: %s" % e)
+ 
+     def dump(self):
+-        d = super(ALUATargetPortGroup, self).dump()
++        d = super().dump()
+         d['name'] = self.name
+         d['tg_pt_gp_id'] = self.tg_pt_gp_id
+         for param in alua_rw_params:
+@@ -394,7 +393,7 @@ class ALUATargetPortGroup(CFSNode):
+             return
+ 
+         alua_tpg_obj = cls(storage_obj, name, alua_tpg['tg_pt_gp_id'])
+-        for param, value in six.iteritems(alua_tpg):
++        for param, value in alua_tpg.items():
+             if param != 'name' and param != 'tg_pt_gp_id':
+                 try:
+                     setattr(alua_tpg_obj, param, value)
+Index: python-rtslib-fb-v2.1.76/rtslib/fabric.py
+===================================================================
+--- python-rtslib-fb-v2.1.76.orig/rtslib/fabric.py
++++ python-rtslib-fb-v2.1.76/rtslib/fabric.py
+@@ -108,9 +108,7 @@ Example: self._path = "%s/%s" % (self.co
+ '''
+ 
+ from functools import partial
+-from glob import iglob as glob
+-import os
+-import six
++from pathlib import Path
+ 
+ from .node import CFSNode
+ from .utils import fread, fwrite, normalize_wwn, colonize
+@@ -146,7 +144,7 @@ class _BaseFabricModule(CFSNode):
+         @param name: the name of the FabricModule object.
+         @type name: str
+         '''
+-        super(_BaseFabricModule, self).__init__()
++        super().__init__()
+         self.name = name
+         self.spec_file = "N/A"
+         self._path = "%s/%s" % (self.configfs_dir, self.name)
+@@ -164,7 +162,7 @@ class _BaseFabricModule(CFSNode):
+             except RTSLibError:
+                 modprobe(self.kernel_module)
+                 self._create_in_cfs_ine('any')
+-        super(_BaseFabricModule, self)._check_self()
++        super()._check_self()
+ 
+     def has_feature(self, feature):
+         # Handle a renamed feature
+@@ -324,7 +322,7 @@ class _BaseFabricModule(CFSNode):
+         '''
+         Setup fabricmodule with settings from fm dict.
+         '''
+-        for name, value in six.iteritems(fm):
++        for name, value in fm.items():
+             if name != 'name':
+                 try:
+                     setattr(self, name, value)
+@@ -332,7 +330,7 @@ class _BaseFabricModule(CFSNode):
+                     err_func("Could not set fabric %s attribute '%s'" % (fm['name'], name))
+ 
+     def dump(self):
+-        d = super(_BaseFabricModule, self).dump()
++        d = super().dump()
+         d['name'] = self.name
+         if self.has_feature("discovery_auth"):
+             for attr in ("userid", "password", "mutual_userid", "mutual_password"):
+@@ -346,13 +344,13 @@ class _BaseFabricModule(CFSNode):
+ class ISCSIFabricModule(_BaseFabricModule):
+ 
+     def __init__(self):
+-        super(ISCSIFabricModule, self).__init__('iscsi')
++        super().__init__('iscsi')
+         self.wwn_types = ('iqn', 'naa', 'eui')
+ 
+ 
+ class LoopbackFabricModule(_BaseFabricModule):
+     def __init__(self):
+-        super(LoopbackFabricModule, self).__init__('loopback')
++        super().__init__('loopback')
+         self.features = ("nexus",)
+         self.wwn_types = ('naa',)
+         self.kernel_module = "tcm_loop"
+@@ -360,7 +358,7 @@ class LoopbackFabricModule(_BaseFabricMo
+ 
+ class SBPFabricModule(_BaseFabricModule):
+     def __init__(self):
+-        super(SBPFabricModule, self).__init__('sbp')
++        super().__init__('sbp')
+         self.features = ()
+         self.wwn_types = ('eui',)
+         self.kernel_module = "sbp_target"
+@@ -383,7 +381,7 @@ class SBPFabricModule(_BaseFabricModule)
+ 
+ class Qla2xxxFabricModule(_BaseFabricModule):
+     def __init__(self):
+-        super(Qla2xxxFabricModule, self).__init__('qla2xxx')
++        super().__init__('qla2xxx')
+         self.features = ("acls",)
+         self.wwn_types = ('naa',)
+         self.kernel_module = "tcm_qla2xxx"
+@@ -408,7 +406,7 @@ class Qla2xxxFabricModule(_BaseFabricMod
+ 
+ class EfctFabricModule(_BaseFabricModule):
+     def __init__(self):
+-        super(EfctFabricModule, self).__init__('efct')
++        super().__init__('efct')
+         self.features = ("acls",)
+         self.wwn_types = ('naa',)
+         self.kernel_module = "efct"
+@@ -433,7 +431,7 @@ class EfctFabricModule(_BaseFabricModule
+ 
+ class SRPTFabricModule(_BaseFabricModule):
+     def __init__(self):
+-        super(SRPTFabricModule, self).__init__('srpt')
++        super().__init__('srpt')
+         self.features = ("acls",)
+         self.wwn_types = ('ib',)
+         self.kernel_module = "ib_srpt"
+@@ -453,7 +451,7 @@ class SRPTFabricModule(_BaseFabricModule
+ 
+ class FCoEFabricModule(_BaseFabricModule):
+     def __init__(self):
+-        super(FCoEFabricModule, self).__init__('tcm_fc')
++        super().__init__('tcm_fc')
+ 
+         self.features = ("acls",)
+         self.kernel_module = "tcm_fc"
+@@ -480,7 +478,7 @@ class FCoEFabricModule(_BaseFabricModule
+ 
+ class USBGadgetFabricModule(_BaseFabricModule):
+     def __init__(self):
+-        super(USBGadgetFabricModule, self).__init__('usb_gadget')
++        super().__init__('usb_gadget')
+         self.features = ("nexus",)
+         self.wwn_types = ('naa',)
+         self.kernel_module = "tcm_usb_gadget"
+@@ -488,14 +486,14 @@ class USBGadgetFabricModule(_BaseFabricM
+ 
+ class VhostFabricModule(_BaseFabricModule):
+     def __init__(self):
+-        super(VhostFabricModule, self).__init__('vhost')
++        super.__init__('vhost')
+         self.features = ("nexus", "acls", "tpgts")
+         self.wwn_types = ('naa',)
+         self.kernel_module = "tcm_vhost"
+ 
+ class XenPvScsiFabricModule(_BaseFabricModule):
+     def __init__(self):
+-        super(XenPvScsiFabricModule, self).__init__('xen-pvscsi')
++        super.__init__('xen-pvscsi')
+         self._path = "%s/%s" % (self.configfs_dir, 'xen-pvscsi')
+         self.features = ("nexus", "tpgts")
+         self.wwn_types = ('naa',)
+@@ -504,7 +502,7 @@ class XenPvScsiFabricModule(_BaseFabricM
+ 
+ class IbmvscsisFabricModule(_BaseFabricModule):
+     def __init__(self):
+-        super(IbmvscsisFabricModule, self).__init__('ibmvscsis')
++        super().__init__('ibmvscsis')
+         self.features = ()
+         self.kernel_module = "ibmvscsis"
+ 
+@@ -533,14 +531,14 @@ fabric_modules = {
+ # Maintain compatibility with existing FabricModule(fabricname) usage
+ # e.g. FabricModule('iscsi') returns an ISCSIFabricModule
+ #
+-class FabricModule(object):
++class FabricModule:
+ 
+     def __new__(cls, name):
+         return fabric_modules[name]()
+ 
+     @classmethod
+     def all(cls):
+-        for mod in six.itervalues(fabric_modules):
++        for mod in fabric_modules.values():
+             yield mod()
+ 
+     @classmethod
+Index: python-rtslib-fb-v2.1.76/rtslib/node.py
+===================================================================
+--- python-rtslib-fb-v2.1.76.orig/rtslib/node.py
++++ python-rtslib-fb-v2.1.76/rtslib/node.py
+@@ -24,7 +24,7 @@ import errno
+ from .utils import fread, fwrite, RTSLibError, RTSLibNotInCFS
+ 
+ 
+-class CFSNode(object):
++class CFSNode:
+ 
+     # Where is the configfs base LIO directory ?
+     configfs_dir = '/sys/kernel/config/target'
+Index: python-rtslib-fb-v2.1.76/rtslib/root.py
+===================================================================
+--- python-rtslib-fb-v2.1.76.orig/rtslib/root.py
++++ python-rtslib-fb-v2.1.76/rtslib/root.py
+@@ -72,7 +72,7 @@ class RTSRoot(CFSNode):
+         Instantiate an RTSRoot object. Basically checks for configfs setup and
+         base kernel modules (tcm)
+         '''
+-        super(RTSRoot, self).__init__()
++        super().__init__()
+         try:
+             mount_configfs()
+         except RTSLibError:
+@@ -90,61 +90,51 @@ class RTSRoot(CFSNode):
+     def _list_targets(self):
+         self._check_self()
+         for fabric_module in self.fabric_modules:
+-            for target in fabric_module.targets:
+-                yield target
++            yield from fabric_module.targets
+ 
+     def _list_storage_objects(self):
+         self._check_self()
+-        for so in StorageObject.all():
+-            yield so
++        yield from StorageObject.all()
+ 
+     def _list_alua_tpgs(self):
+         self._check_self()
+         for so in self.storage_objects:
+-            for a in so.alua_tpgs:
+-                yield a
++            yield from so.alua_tpgs
+ 
+     def _list_tpgs(self):
+         self._check_self()
+         for t in self.targets:
+-            for tpg in t.tpgs:
+-                yield tpg
++            yield from t.tpgs
+ 
+     def _list_node_acls(self):
+         self._check_self()
+         for t in self.tpgs:
+-            for node_acl in t.node_acls:
+-                yield node_acl
++            yield from t.node_acls
+ 
+     def _list_node_acl_groups(self):
+         self._check_self()
+         for t in self.tpgs:
+-            for nag in t.node_acl_groups:
+-                yield nag
++            yield from t.node_acl_groups
+ 
+     def _list_mapped_luns(self):
+         self._check_self()
+         for na in self.node_acls:
+-            for mlun in na.mapped_luns:
+-                yield mlun
++            yield from na.mapped_luns
+ 
+     def _list_mapped_lun_groups(self):
+         self._check_self()
+         for nag in self.node_acl_groups:
+-            for mlg in nag.mapped_lun_groups:
+-                yield mlg
++            yield from nag.mapped_lun_groups
+ 
+     def _list_network_portals(self):
+         self._check_self()
+         for t in self.tpgs:
+-            for p in t.network_portals:
+-                yield p
++            yield from t.network_portals
+ 
+     def _list_luns(self):
+         self._check_self()
+         for t in self.tpgs:
+-            for lun in t.luns:
+-                yield lun
++            yield from t.luns
+ 
+     def _list_sessions(self):
+         self._check_self()
+@@ -154,8 +144,7 @@ class RTSRoot(CFSNode):
+ 
+     def _list_fabric_modules(self):
+         self._check_self()
+-        for mod in FabricModule.all():
+-            yield mod
++        yield from FabricModule.all()
+ 
+     def __str__(self):
+         return "rtslib"
+@@ -195,13 +184,13 @@ class RTSRoot(CFSNode):
+         current = self.dump()
+ 
+         try:
+-            with open(save_file, "r") as f:
++            with open(save_file) as f:
+                 saveconf = json.loads(f.read())
+-        except IOError as e:
++        except OSError as e:
+             if e.errno == errno.ENOENT:
+                 saveconf = {'storage_objects': [], 'targets': []}
+             else:
+-                raise ExecutionError("Could not open %s" % save_file)
++                raise OSError("Could not open %s" % save_file)
+ 
+         fetch_cur_so = False
+         fetch_cur_tg = False
+@@ -276,7 +265,7 @@ class RTSRoot(CFSNode):
+         config, suitable for serialization/deserialization, and then
+         handing to restore().
+         '''
+-        d = super(RTSRoot, self).dump()
++        d = super().dump()
+         d['storage_objects'] = [so.dump() for so in self.storage_objects]
+         d['targets'] = [t.dump() for t in self.targets]
+         d['fabric_modules'] = [f.dump() for f in self.fabric_modules
+@@ -503,7 +492,7 @@ class RTSRoot(CFSNode):
+         if not restore_file:
+             restore_file = default_save_file
+ 
+-        with open(restore_file, "r") as f:
++        with open(restore_file) as f:
+             config = json.loads(f.read())
+             return self.restore(config, target, storage_object,
+                                 clear_existing=clear_existing,
+Index: python-rtslib-fb-v2.1.76/rtslib/target.py
+===================================================================
+--- python-rtslib-fb-v2.1.76.orig/rtslib/target.py
++++ python-rtslib-fb-v2.1.76/rtslib/target.py
+@@ -21,7 +21,6 @@ under the License.
+ import os
+ from glob import iglob as glob
+ from functools import partial
+-from six.moves import range
+ import uuid
+ 
+ from .node import CFSNode
+@@ -31,8 +30,6 @@ from .utils import dict_remove, set_attr
+ from .utils import _get_auth_attr, _set_auth_attr
+ from . import tcm
+ 
+-import six
+-
+ auth_params = ('userid', 'password', 'mutual_userid', 'mutual_password')
+ 
+ class Target(CFSNode):
+@@ -63,7 +60,7 @@ class Target(CFSNode):
+         @return: A Target object.
+         '''
+ 
+-        super(Target, self).__init__()
++        super().__init__()
+         self.fabric_module = fabric_module
+ 
+         fabric_module._check_self()
+@@ -107,7 +104,7 @@ class Target(CFSNode):
+         self._check_self()
+         for tpg in self.tpgs:
+             tpg.delete()
+-        super(Target, self).delete()
++        super().delete()
+ 
+     tpgs = property(_list_tpgs, doc="Get the list of TPG for the Target.")
+ 
+@@ -133,7 +130,7 @@ class Target(CFSNode):
+             TPG.setup(t_obj, tpg, err_func)
+ 
+     def dump(self):
+-        d = super(Target, self).dump()
++        d = super().dump()
+         d['wwn'] = self.wwn
+         d['fabric'] = self.fabric_module.name
+         d['tpgs'] = [tpg.dump() for tpg in self.tpgs]
+@@ -169,7 +166,7 @@ class TPG(CFSNode):
+         @return: A TPG object.
+         '''
+ 
+-        super(TPG, self).__init__()
++        super().__init__()
+ 
+         if tag is None:
+             tags = [tpg.tag for tpg in parent_target.tpgs]
+@@ -241,7 +238,7 @@ class TPG(CFSNode):
+         if os.path.isfile(path) and (boolean != self._get_enable()):
+             try:
+                 fwrite(path, str(int(boolean)))
+-            except IOError as e:
++            except OSError as e:
+                 raise RTSLibError("Cannot change enable state: %s" % e)
+ 
+     def _get_nexus(self):
+@@ -252,7 +249,7 @@ class TPG(CFSNode):
+         if self.has_feature('nexus'):
+             try:
+                 nexus_wwn = fread("%s/nexus" % self.path)
+-            except IOError:
++            except OSError:
+                 nexus_wwn = ''
+             return nexus_wwn
+         else:
+@@ -344,7 +341,7 @@ class TPG(CFSNode):
+             lun.delete()
+         for portal in self.network_portals:
+             portal.delete()
+-        super(TPG, self).delete()
++        super().delete()
+ 
+     def node_acl(self, node_wwn, mode='any'):
+         '''
+@@ -435,7 +432,7 @@ class TPG(CFSNode):
+         tpg_obj.enable = tpg.get('enable', True)
+         dict_remove(tpg, ('luns', 'portals', 'node_acls', 'tag',
+                           'attributes', 'parameters', 'enable'))
+-        for name, value in six.iteritems(tpg):
++        for name, value in tpg.items():
+             if value:
+                 try:
+                     setattr(tpg_obj, name, value)
+@@ -444,7 +441,7 @@ class TPG(CFSNode):
+                              (tpg_obj.tag, name))
+ 
+     def dump(self):
+-        d = super(TPG, self).dump()
++        d = super().dump()
+         d['tag'] = self.tag
+         d['enable'] = self.enable
+         d['luns'] = [lun.dump() for lun in self.luns]
+@@ -495,7 +492,7 @@ class LUN(CFSNode):
+         @type alias: string
+         @return: A LUN object.
+         '''
+-        super(LUN, self).__init__()
++        super().__init__()
+ 
+         if isinstance(parent_tpg, TPG):
+             self._parent_tpg = parent_tpg
+@@ -603,7 +600,7 @@ class LUN(CFSNode):
+                 return None
+             group_line = info.splitlines()[0]
+             return group_line.split(':')[1].strip()
+-        except IOError as e:
++        except OSError as e:
+             return None
+ 
+     def _set_alua_tg_pt_gp_name(self, group_name):
+@@ -615,7 +612,7 @@ class LUN(CFSNode):
+         path = "%s/alua_tg_pt_gp" % self.path
+         try:
+             fwrite(path, group_name)
+-        except IOError as e:
++        except OSError as e:
+             return -1
+ 
+         return 0
+@@ -641,7 +638,7 @@ class LUN(CFSNode):
+             if os.path.islink("%s/%s" % (self.path, link)):
+                 os.unlink("%s/%s" % (self.path, link))
+ 
+-        super(LUN, self).delete()
++        super().delete()
+ 
+     parent_tpg = property(_get_parent_tpg,
+             doc="Get the parent TPG object.")
+@@ -689,7 +686,7 @@ class LUN(CFSNode):
+             pass
+ 
+     def dump(self):
+-        d = super(LUN, self).dump()
++        d = super().dump()
+         d['storage_object'] = "/backstores/%s/%s" % \
+             (self.storage_object.plugin,  self.storage_object.name)
+         d['index'] = self.lun
+@@ -729,7 +726,7 @@ class NetworkPortal(CFSNode):
+         @type mode:string
+         @return: A NetworkPortal object.
+         '''
+-        super(NetworkPortal, self).__init__()
++        super().__init__()
+ 
+         self._ip_address = str(ip_address)
+ 
+@@ -763,14 +760,14 @@ class NetworkPortal(CFSNode):
+     def _get_iser(self):
+         try:
+             return bool(int(fread("%s/iser" % self.path)))
+-        except IOError:
++        except OSError:
+             return False
+ 
+     def _set_iser(self, boolean):
+         path = "%s/iser" % self.path
+         try:
+             fwrite(path, str(int(boolean)))
+-        except IOError:
++        except OSError:
+             # b/w compat: don't complain if iser entry is missing
+             if os.path.isfile(path):
+                 raise RTSLibError("Cannot change iser")
+@@ -779,14 +776,14 @@ class NetworkPortal(CFSNode):
+         try:
+             # only offload at the moment is cxgbit
+             return bool(int(fread("%s/cxgbit" % self.path)))
+-        except IOError:
++        except OSError:
+             return False
+ 
+     def _set_offload(self, boolean):
+         path = "%s/cxgbit" % self.path
+         try:
+             fwrite(path, str(int(boolean)))
+-        except IOError:
++        except OSError:
+             # b/w compat: don't complain if cxgbit entry is missing
+             if os.path.isfile(path):
+                 raise RTSLibError("Cannot change offload")
+@@ -796,7 +793,7 @@ class NetworkPortal(CFSNode):
+     def delete(self):
+         self.iser = False
+         self.offload = False
+-        super(NetworkPortal, self).delete()
++        super().delete()
+ 
+     parent_tpg = property(_get_parent_tpg,
+             doc="Get the parent TPG object.")
+@@ -829,7 +826,7 @@ class NetworkPortal(CFSNode):
+                      (p['ip_address'], p['port'], e))
+ 
+     def dump(self):
+-        d = super(NetworkPortal, self).dump()
++        d = super().dump()
+         d['port'] = self.port
+         d['ip_address'] = self.ip_address
+         d['iser'] = self.iser
+@@ -864,7 +861,7 @@ class NodeACL(CFSNode):
+         @return: A NodeACL object.
+         '''
+ 
+-        super(NodeACL, self).__init__()
++        super().__init__()
+ 
+         if isinstance(parent_tpg, TPG):
+             self._parent_tpg = parent_tpg
+@@ -892,7 +889,7 @@ class NodeACL(CFSNode):
+         path = "%s/cmdsn_depth" % self.path
+         try:
+             fwrite(path, "%s" % depth)
+-        except IOError as msg:
++        except OSError as msg:
+             msg = msg[1]
+             raise RTSLibError("Cannot set tcq_depth: %s" % str(msg))
+ 
+@@ -903,11 +900,11 @@ class NodeACL(CFSNode):
+             if tag:
+                 return tag
+             return None
+-        except IOError:
++        except OSError:
+             return None
+ 
+     def _set_tag(self, tag_str):
+-        with ignored(IOError):
++        with ignored(OSError):
+             if tag_str is None:
+                 fwrite("%s/tag" % self.path, 'NULL')
+             else:
+@@ -922,7 +919,7 @@ class NodeACL(CFSNode):
+     def _get_session(self):
+         try:
+             lines = fread("%s/info" % self.path).splitlines()
+-        except IOError:
++        except OSError:
+             return None
+ 
+         if lines[0].startswith("No active"):
+@@ -967,7 +964,7 @@ class NodeACL(CFSNode):
+         self._check_self()
+         for mapped_lun in self.mapped_luns:
+             mapped_lun.delete()
+-        super(NodeACL, self).delete()
++        super().delete()
+ 
+     def mapped_lun(self, mapped_lun, tpg_lun=None, write_protect=None):
+         '''
+@@ -1029,7 +1026,7 @@ class NodeACL(CFSNode):
+             MappedLUN.setup(tpg_obj, acl_obj, mlun, err_func)
+ 
+         dict_remove(acl, ('attributes', 'mapped_luns', 'node_wwn'))
+-        for name, value in six.iteritems(acl):
++        for name, value in acl.items():
+             if value:
+                 try:
+                     setattr(acl_obj, name, value)
+@@ -1038,7 +1035,7 @@ class NodeACL(CFSNode):
+                              (acl['node_wwn'], name))
+ 
+     def dump(self):
+-        d = super(NodeACL, self).dump()
++        d = super().dump()
+         d['node_wwn'] = self.node_wwn
+         d['mapped_luns'] = [lun.dump() for lun in self.mapped_luns]
+         if self.tag:
+@@ -1091,7 +1088,7 @@ class MappedLUN(CFSNode):
+         @type write_protect: bool
+         '''
+ 
+-        super(MappedLUN, self).__init__()
++        super().__init__()
+ 
+         if not isinstance(parent_nodeacl, NodeACL):
+             raise RTSLibError("The parent_nodeacl parameter must be " \
+@@ -1207,7 +1204,7 @@ class MappedLUN(CFSNode):
+         else:
+             if os.path.islink(lun_link):
+                 os.unlink(lun_link)
+-        super(MappedLUN, self).delete()
++        super().delete()
+ 
+     mapped_lun = property(_get_mapped_lun,
+             doc="Get the integer MappedLUN mapped_lun index.")
+@@ -1251,7 +1248,7 @@ class MappedLUN(CFSNode):
+             err_func("Creating MappedLUN object %d failed" % mlun['index'])
+ 
+     def dump(self):
+-        d = super(MappedLUN, self).dump()
++        d = super().dump()
+         d['write_protect'] = self.write_protect
+         d['index'] = self.mapped_lun
+         d['tpg_lun'] = self.tpg_lun.lun
+@@ -1259,7 +1256,7 @@ class MappedLUN(CFSNode):
+         return d
+ 
+ 
+-class Group(object):
++class Group:
+     '''
+     An abstract base class akin to CFSNode, but for classes that
+     emulate a higher-level group object across the actual NodeACL
+@@ -1345,7 +1342,7 @@ class NodeACLGroup(Group):
+         return "<NodeACLGroup %s>" % self.name
+ 
+     def __init__(self, parent_tpg, name):
+-        super(NodeACLGroup, self).__init__(NodeACLGroup._node_acls.fget)
++        super().__init__(NodeACLGroup._node_acls.fget)
+         _check_group_name(name)
+         self._name = name
+         self._parent_tpg = parent_tpg
+@@ -1545,7 +1542,7 @@ class MappedLUNGroup(Group):
+         return "<MappedLUNGroup %s:lun %d>" % (self._nag.name, self._mapped_lun)
+ 
+     def __init__(self, nodeaclgroup, mapped_lun, *args, **kwargs):
+-        super(MappedLUNGroup, self).__init__(MappedLUNGroup._mapped_luns.fget)
++        super().__init__(MappedLUNGroup._mapped_luns.fget)
+         self._nag = nodeaclgroup
+         self._mapped_lun = mapped_lun
+         for na in self._nag._node_acls:
+Index: python-rtslib-fb-v2.1.76/rtslib/tcm.py
+===================================================================
+--- python-rtslib-fb-v2.1.76.orig/rtslib/tcm.py
++++ python-rtslib-fb-v2.1.76/rtslib/tcm.py
+@@ -24,7 +24,6 @@ import re
+ import glob
+ import fcntl
+ import resource
+-from six.moves import range
+ 
+ from .alua import ALUATargetPortGroup
+ from .node import CFSNode
+@@ -60,7 +59,7 @@ class StorageObject(CFSNode):
+         return "<%s %s/%s>" % (self.__class__.__name__, self.plugin, self.name)
+ 
+     def __init__(self, name, mode, index=None):
+-        super(StorageObject, self).__init__()
++        super().__init__()
+         if "/" in name or " " in name or "\t" in name or "\n" in name:
+             raise RTSLibError("A storage object's name cannot contain "
+                               " /, newline or spaces/tabs")
+@@ -233,8 +232,7 @@ class StorageObject(CFSNode):
+         Generates all luns attached to a storage object.
+         '''
+         self._check_self()
+-        for lun in self._gen_attached_luns():
+-            yield lun
++        yield from self._gen_attached_luns()
+ 
+     def _list_alua_tpgs(self):
+         '''
+@@ -275,7 +273,7 @@ class StorageObject(CFSNode):
+                 else:
+                     lun.delete()
+ 
+-        super(StorageObject, self).delete()
++        super().delete()
+         self._backstore.delete()
+         if save:
+             from .root import RTSRoot, default_save_file
+@@ -313,7 +311,7 @@ class StorageObject(CFSNode):
+             doc="Returns true if ALUA can be setup. False if not supported.")
+ 
+     def dump(self):
+-        d = super(StorageObject, self).dump()
++        d = super().dump()
+         d['name'] = self.name
+         d['plugin'] = self.plugin
+         d['alua_tpgs'] = [tpg.dump() for tpg in self.alua_tpgs]
+@@ -349,14 +347,14 @@ class PSCSIStorageObject(StorageObject):
+         @return: A PSCSIStorageObject object.
+         '''
+         if dev is not None:
+-            super(PSCSIStorageObject, self).__init__(name, 'create', index)
++            super().__init__(name, 'create', index)
+             try:
+                 self._configure(dev)
+             except:
+                 self.delete()
+                 raise
+         else:
+-            super(PSCSIStorageObject, self).__init__(name, 'lookup', index)
++            super().__init__(name, 'lookup', index)
+ 
+     def _configure(self, dev):
+         self._check_self()
+@@ -402,7 +400,7 @@ class PSCSIStorageObject(StorageObject):
+         self._set_udev_path(udev_path)
+         self._enable()
+ 
+-        super(PSCSIStorageObject, self)._configure()
++        super()._configure()
+ 
+     def _set_wwn(self, wwn):
+         # pscsi doesn't support setting wwn
+@@ -467,7 +465,7 @@ class PSCSIStorageObject(StorageObject):
+             doc="Returns true if ALUA can be setup. False if not supported.")
+ 
+     def dump(self):
+-        d = super(PSCSIStorageObject, self).dump()
++        d = super().dump()
+         d['dev'] = self.udev_path
+         return d
+ 
+@@ -504,14 +502,14 @@ class RDMCPStorageObject(StorageObject):
+         '''
+ 
+         if size is not None:
+-            super(RDMCPStorageObject, self).__init__(name, 'create', index)
++            super().__init__(name, 'create', index)
+             try:
+                 self._configure(size, wwn, nullio)
+             except:
+                 self.delete()
+                 raise
+         else:
+-            super(RDMCPStorageObject, self).__init__(name, 'lookup', index)
++            super().__init__(name, 'lookup', index)
+ 
+     def _configure(self, size, wwn, nullio):
+         self._check_self()
+@@ -525,7 +523,7 @@ class RDMCPStorageObject(StorageObject):
+             self._control("rd_nullio=1")
+         self._enable()
+ 
+-        super(RDMCPStorageObject, self)._configure(wwn)
++        super()._configure(wwn)
+ 
+     def _get_page_size(self):
+         self._check_self()
+@@ -560,7 +558,7 @@ class RDMCPStorageObject(StorageObject):
+             doc="Get the nullio status.")
+ 
+     def dump(self):
+-        d = super(RDMCPStorageObject, self).dump()
++        d = super().dump()
+         d['wwn'] = self.wwn
+         d['size'] = self.size
+         # only dump nullio if enabled
+@@ -609,14 +607,14 @@ class FileIOStorageObject(StorageObject)
+         '''
+ 
+         if dev is not None:
+-            super(FileIOStorageObject, self).__init__(name, 'create', index)
++            super().__init__(name, 'create', index)
+             try:
+                 self._configure(dev, size, wwn, write_back, aio)
+             except:
+                 self.delete()
+                 raise
+         else:
+-            super(FileIOStorageObject, self).__init__(name, 'lookup', index)
++            super().__init__(name, 'lookup', index)
+ 
+     def _configure(self, dev, size, wwn, write_back, aio):
+         self._check_self()
+@@ -653,7 +651,7 @@ class FileIOStorageObject(StorageObject)
+ 
+         self._enable()
+ 
+-        super(FileIOStorageObject, self)._configure(wwn)
++        super()._configure(wwn)
+ 
+     def _get_wb_enabled(self):
+         self._check_self()
+@@ -692,7 +690,7 @@ class FileIOStorageObject(StorageObject)
+             doc="True if asynchronous I/O is enabled")
+ 
+     def dump(self):
+-        d = super(FileIOStorageObject, self).dump()
++        d = super().dump()
+         d['write_back'] = self.write_back
+         d['wwn'] = self.wwn
+         d['dev'] = self.udev_path
+@@ -735,14 +733,14 @@ class BlockStorageObject(StorageObject):
+         '''
+ 
+         if dev is not None:
+-            super(BlockStorageObject, self).__init__(name, 'create', index)
++            super().__init__(name, 'create', index)
+             try:
+                 self._configure(dev, wwn, readonly)
+             except:
+                 self.delete()
+                 raise
+         else:
+-            super(BlockStorageObject, self).__init__(name, 'lookup', index)
++            super().__init__(name, 'lookup', index)
+ 
+     def _configure(self, dev, wwn, readonly):
+         self._check_self()
+@@ -756,7 +754,7 @@ class BlockStorageObject(StorageObject):
+         self._control("readonly=%d" % readonly)
+         self._enable()
+ 
+-        super(BlockStorageObject, self)._configure(wwn)
++        super()._configure(wwn)
+ 
+     def _get_major(self):
+         self._check_self()
+@@ -796,7 +794,7 @@ class BlockStorageObject(StorageObject):
+             doc="True if the device is read-only, False if read/write")
+ 
+     def dump(self):
+-        d = super(BlockStorageObject, self).dump()
++        d = super().dump()
+         d['write_back'] = self.write_back
+         d['readonly'] = self.readonly
+         d['wwn'] = self.wwn
+@@ -836,14 +834,14 @@ class UserBackedStorageObject(StorageObj
+             if '/' not in config:
+                 raise RTSLibError("'config' must contain a '/' separating subtype "
+                                   "from its configuration string")
+-            super(UserBackedStorageObject, self).__init__(name, 'create', index)
++            super().__init__(name, 'create', index)
+             try:
+                 self._configure(config, size, wwn, hw_max_sectors, control)
+             except:
+                 self.delete()
+                 raise
+         else:
+-            super(UserBackedStorageObject, self).__init__(name, 'lookup', index)
++            super().__init__(name, 'lookup', index)
+ 
+     def _configure(self, config, size, wwn, hw_max_sectors, control):
+         self._check_self()
+@@ -858,7 +856,7 @@ class UserBackedStorageObject(StorageObj
+             self._control(control)
+         self._enable()
+ 
+-        super(UserBackedStorageObject, self)._configure(wwn)
++        super()._configure(wwn)
+ 
+     def _get_size(self):
+         self._check_self()
+@@ -909,7 +907,7 @@ class UserBackedStorageObject(StorageObj
+             doc="Returns true if ALUA can be setup. False if not supported.")
+ 
+     def dump(self):
+-        d = super(UserBackedStorageObject, self).dump()
++        d = super().dump()
+         d['wwn'] = self.wwn
+         d['size'] = self.size
+         d['config'] = self.config
+@@ -919,7 +917,7 @@ class UserBackedStorageObject(StorageObj
+         return d
+ 
+ 
+-class StorageObjectFactory(object):
++class StorageObjectFactory:
+     """
+     Create a storage object based on a given path.
+     Only works for file & block.
+@@ -968,7 +966,7 @@ class _Backstore(CFSNode):
+     """
+ 
+     def __init__(self, name, storage_object_cls, mode, index=None):
+-        super(_Backstore, self).__init__()
++        super().__init__()
+         self._so_cls = storage_object_cls
+         self._plugin = bs_params[self._so_cls]['name']
+ 
+@@ -1025,7 +1023,7 @@ class _Backstore(CFSNode):
+             raise
+ 
+     def delete(self):
+-        super(_Backstore, self).delete()
++        super().delete()
+         if self._lookup_key in bs_cache:
+             del bs_cache[self._lookup_key]
+ 
+Index: python-rtslib-fb-v2.1.76/rtslib/utils.py
+===================================================================
+--- python-rtslib-fb-v2.1.76.orig/rtslib/utils.py
++++ python-rtslib-fb-v2.1.76/rtslib/utils.py
+@@ -97,7 +97,7 @@ def fread(path):
+     @return: A string containing the file's contents.
+ 
+     '''
+-    with open(path, 'r') as file_fd:
++    with open(path) as file_fd:
+         return file_fd.read().strip()
+ 
+ def is_dev_in_use(path):
+@@ -115,7 +115,7 @@ def is_dev_in_use(path):
+     path = os.path.realpath(str(path))
+     try:
+         device = pyudev.Device.from_device_file(_CONTEXT, path)
+-        if device.subsystem == u'scsi_generic':
++        if device.subsystem == 'scsi_generic':
+             file_fd = os.open(path, os.O_EXCL|os.O_NDELAY|os.O_RDWR)
+         else:
+             file_fd = os.open(path, os.O_EXCL|os.O_NDELAY)
+@@ -220,10 +220,10 @@ def get_blockdev_type(path):
+     '''
+     try:
+         device = pyudev.Device.from_device_file(_CONTEXT, path)
+-    except (pyudev.DeviceNotFoundError, EnvironmentError, ValueError):
++    except (OSError, pyudev.DeviceNotFoundError, ValueError):
+         return None
+ 
+-    if device.subsystem != u'block':
++    if device.subsystem != 'block':
+         return None
+ 
+     attributes = device.attributes
+@@ -505,14 +505,14 @@ def _set_auth_attr(self, value, attribut
+             raise
+ 
+ def set_attributes(obj, attr_dict, err_func):
+-    for name, value in six.iteritems(attr_dict):
++    for name, value in attr_dict.items():
+         try:
+             obj.set_attribute(name, value)
+         except RTSLibError as e:
+             err_func(str(e))
+ 
+ def set_parameters(obj, param_dict, err_func):
+-    for name, value in six.iteritems(param_dict):
++    for name, value in param_dict.items():
+         try:
+             obj.set_parameter(name, value)
+         except RTSLibError as e:
+Index: python-rtslib-fb-v2.1.76/scripts/targetctl
+===================================================================
+--- python-rtslib-fb-v2.1.76.orig/scripts/targetctl
++++ python-rtslib-fb-v2.1.76/scripts/targetctl
+@@ -22,7 +22,6 @@ under the License.
+ # A script to save/restore LIO configuration to/from a file in json format
+ #
+ 
+-from __future__ import print_function
+ 
+ from rtslib_fb import RTSRoot
+ import os
+@@ -45,7 +44,7 @@ def restore(from_file):
+ 
+     try:
+         errors = RTSRoot().restore_from_file(restore_file=from_file)
+-    except IOError:
++    except OSError:
+         # Not an error if the restore file is not present
+         print("No saved config file at %s, ok, exiting" % from_file)
+         sys.exit(0)
