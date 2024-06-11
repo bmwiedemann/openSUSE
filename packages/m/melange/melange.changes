@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 11 05:36:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.8.6:
+  * build(deps): bump step-security/harden-runner from 2.8.0 to
+    2.8.1
+  * Add ${{build.goarch}} substitution
+  * fix: error out when pipeline contains with but no uses
+  * Remove depth option from git clone if inputs.depth is set to -1
+
+-------------------------------------------------------------------
 Fri Jun 07 19:34:23 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.8.5:
