@@ -3,7 +3,7 @@
     <param name="url">https://github.com/alexellis/k3sup</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">0.13.5</param>
+    <param name="revision">0.13.6</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">(.*)</param>

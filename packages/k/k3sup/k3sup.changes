@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 10 19:33:02 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.13.6:
+  * Update to message in get.sh
+  * Update support message
+  * Update example with three hosts
+  * fix example and make it valid JSON
+
+-------------------------------------------------------------------
 Fri Feb 02 09:59:40 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.13.5:
