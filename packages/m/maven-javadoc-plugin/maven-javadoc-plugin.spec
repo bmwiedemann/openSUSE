@@ -34,18 +34,13 @@ Source1:        %{base_name}-build.xml
 Patch0:         %{base_name}-bootstrap-resources.patch
 Patch1:         stale-data-encoding.patch
 Patch2:         no-override.patch
-BuildRequires:  apache-commons-cli
-BuildRequires:  apache-commons-io
 BuildRequires:  apache-commons-lang3
 BuildRequires:  apache-commons-text
 BuildRequires:  atinject
 BuildRequires:  fdupes
-BuildRequires:  google-guice
-BuildRequires:  guava
 BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
 BuildRequires:  javapackages-local
-BuildRequires:  jdom2
 BuildRequires:  maven-archiver
 BuildRequires:  maven-common-artifact-filters
 BuildRequires:  maven-doxia-core
@@ -61,11 +56,7 @@ BuildRequires:  maven-resolver-api
 BuildRequires:  maven-resolver-util
 BuildRequires:  maven-shared-utils
 BuildRequires:  maven-wagon-provider-api
-BuildRequires:  objectweb-asm
 BuildRequires:  plexus-archiver
-BuildRequires:  plexus-classworlds
-BuildRequires:  plexus-cli
-BuildRequires:  plexus-containers-component-annotations
 BuildRequires:  plexus-interactivity-api
 BuildRequires:  plexus-io
 BuildRequires:  plexus-languages
@@ -75,7 +66,6 @@ BuildRequires:  qdox
 BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
 BuildRequires:  unzip
-BuildRequires:  xbean
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugins:pom:)
@@ -84,7 +74,6 @@ BuildArch:      noarch
 Name:           %{base_name}-bootstrap
 BuildRequires:  ant
 BuildRequires:  modello >= 2.0.0
-BuildRequires:  plexus-metadata-generator
 %else
 Name:           %{base_name}
 BuildRequires:  xmvn
@@ -96,7 +85,6 @@ BuildRequires:  mvn(org.apache.maven.plugins:maven-plugins:pom:) >= 40
 BuildRequires:  mvn(org.apache.maven.plugins:maven-resources-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-surefire-plugin)
 BuildRequires:  mvn(org.codehaus.modello:modello-maven-plugin)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-component-metadata)
 BuildRequires:  mvn(org.eclipse.sisu:sisu-maven-plugin)
 Obsoletes:      %{base_name}-bootstrap
 #!BuildRequires: maven-compiler-plugin-bootstrap
@@ -141,13 +129,8 @@ build-jar-repository -s lib \
     apache-commons-lang3 \
     apache-commons-text \
     atinject \
-    commons-cli \
-    commons-io \
-    guava/guava \
-    guice/google-guice-no_aop \
     httpcomponents/httpclient \
     httpcomponents/httpcore \
-    jdom2/jdom2 \
     maven-archiver/maven-archiver \
     maven-common-artifact-filters/maven-common-artifact-filters \
     maven-doxia/doxia-core \
@@ -169,21 +152,15 @@ build-jar-repository -s lib \
     maven-reporting-api/maven-reporting-api \
     maven-shared-utils/maven-shared-utils \
     maven-wagon/provider-api \
-    objectweb-asm/asm \
     org.eclipse.sisu.inject \
     org.eclipse.sisu.plexus \
     plexus/archiver \
-    plexus-classworlds \
-    plexus/cli \
-    plexus-containers/plexus-component-annotations \
     plexus/interactivity-api \
     plexus/io \
     plexus-languages/plexus-java \
-    plexus-metadata-generator \
     plexus/utils \
     plexus/xml \
-    qdox \
-    xbean/xbean-reflect
+    qdox
 %{ant} -Dtest.skip=true jar
 %else
 xmvn --batch-mode --offline \

@@ -143,34 +143,6 @@
   </target>
 
   <!-- ====================================================================== -->
-  <!-- Target to generate Plexus component.xml                                -->
-  <!-- ====================================================================== -->
-
-  <target name="plexus"
-          depends="compile"
-          description="Generate Plexus component.xml">
-    <mkdir dir="${build.outputDir}/META-INF/plexus"/>
-    <java classname="org.codehaus.plexus.metadata.PlexusMetadataGeneratorCli"
-          failonerror="true"
-          fork="true">
-      <!-- <jvmarg value="-verbose"/> -->
-      <classpath>
-        <path refid="build.classpath"/>
-        <pathelement location="${build.outputDir}"/>
-      </classpath>
-      <arg value="-X"/>
-      <arg value="-s"/>
-      <arg value="${build.srcDir}"/>
-      <arg value="-c"/>
-      <arg value="${build.outputDir}"/>
-      <arg value="-m"/>
-      <arg value="${build.outputDir}/META-INF/plexus"/>
-      <arg value="-o"/>
-      <arg value="${build.outputDir}/META-INF/plexus/components.xml"/>
-    </java>
-  </target>
-
-  <!-- ====================================================================== -->
   <!-- Sisu javax.inject.Named generation target                              -->
   <!-- ====================================================================== -->
 
@@ -197,7 +169,7 @@
   <!-- ====================================================================== -->
 
   <target name="compile-tests"
-          depends="plexus"
+          depends="compile"
           description="Compile the test code"
           unless="test.skip">
     <mkdir dir="${build.testOutputDir}"/>
@@ -225,41 +197,11 @@
   </target>
 
   <!-- ====================================================================== -->
-  <!-- Target to generate Plexus component.xml                                -->
-  <!-- ====================================================================== -->
-
-  <target name="plexus-tests"
-          depends="compile-tests"
-          description="Generate Plexus component.xml for tests"
-          unless="test.skip">
-    <mkdir dir="${build.outputDir}/META-INF/plexus"/>
-    <java classname="org.codehaus.plexus.metadata.PlexusMetadataGeneratorCli"
-          failonerror="true"
-          fork="true">
-      <!-- <jvmarg value="-verbose"/> -->
-      <classpath>
-        <path refid="build.testclasspath"/>
-        <pathelement location="${build.outputDir}"/>
-        <pathelement location="${build.restOutputDir}"/>
-      </classpath>
-      <arg value="-X"/>
-      <arg value="-s"/>
-      <arg value="${build.testDir}"/>
-      <arg value="-c"/>
-      <arg value="${build.restOutputDir}"/>
-      <arg value="-m"/>
-      <arg value="${build.restOutputDir}/META-INF/plexus"/>
-      <arg value="-o"/>
-      <arg value="${build.restOutputDir}/META-INF/plexus/components.xml"/>
-    </java>
-  </target>
-
-  <!-- ====================================================================== -->
   <!-- Run all tests                                                          -->
   <!-- ====================================================================== -->
 
   <target name="test"
-          depends="plexus-tests, junit-missing"
+          depends="junit-missing"
           unless="junit.skipped"
           description="Run the test cases">
     <mkdir dir="${test.reports}"/>
@@ -355,7 +297,7 @@
   <!-- Package target                                                         -->
   <!-- ====================================================================== -->
 
-  <target name="package" depends="sisu,plexus,test" description="Package the application">
+  <target name="package" depends="sisu,test" description="Package the application">
     <jar jarfile="${build.dir}/${build.finalName}.jar"
          compress="true"
          index="false"

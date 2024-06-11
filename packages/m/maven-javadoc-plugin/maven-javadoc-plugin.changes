@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 10 16:33:19 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Remove dependency on plexus-metadata-generator,
+  plexus-component-metadata and on their dependencies, since there
+  is no plexus @Component annotation any more
+
+-------------------------------------------------------------------
 Tue Apr  2 17:26:28 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on plexus-xml where relevant

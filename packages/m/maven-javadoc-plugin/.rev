@@ -112,4 +112,13 @@
     <comment></comment>
     <requestid>1164212</requestid>
   </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>2cd3fc0e19d89e1763071683392320f3</srcmd5>
+    <version>3.6.0</version>
+    <time>1718123258</time>
+    <user>anag+factory</user>
+    <comment>guice 6.0.0 + dependent changes
+put into adi:2</comment>
+    <requestid>1179762</requestid>
+  </revision>
 </revisionlist>
