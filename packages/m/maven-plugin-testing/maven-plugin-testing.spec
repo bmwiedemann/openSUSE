@@ -29,33 +29,24 @@ Patch0:         0001-Port-to-plexus-utils-3.0.21.patch
 Patch1:         0002-Port-to-current-maven-artifact.patch
 Patch2:         %{name}-blocked.patch
 BuildRequires:  ant
-BuildRequires:  apache-commons-cli
 BuildRequires:  apache-commons-io
-BuildRequires:  atinject
 BuildRequires:  easymock
 BuildRequires:  fdupes
 BuildRequires:  google-guice
-BuildRequires:  guava
 BuildRequires:  javapackages-local
-BuildRequires:  jdom2
 BuildRequires:  junit
 BuildRequires:  maven-invoker
 BuildRequires:  maven-lib
 BuildRequires:  maven-resolver-api
 BuildRequires:  maven-wagon-provider-api
-BuildRequires:  objectweb-asm
 BuildRequires:  plexus-archiver
 BuildRequires:  plexus-classworlds
-BuildRequires:  plexus-cli
 BuildRequires:  plexus-containers-component-annotations
 BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-xml
-BuildRequires:  qdox
-BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
 BuildRequires:  unzip
-BuildRequires:  xbean
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
 BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
@@ -119,41 +110,31 @@ rm maven-plugin-testing-tools/src/test/java/org/apache/maven/shared/test/plugin/
 %build
 mkdir -p lib
 build-jar-repository -s lib \
-	atinject \
-	commons-cli \
-	commons-io \
-	easymock \
-	guava/guava \
-	guice/google-guice-no_aop \
-	jdom2/jdom2 \
-	junit \
-	maven-invoker/maven-invoker \
-	maven/maven-artifact \
-	maven/maven-compat \
-	maven/maven-core \
-	maven/maven-model-builder \
-	maven/maven-model \
-	maven/maven-plugin-api \
-	maven/maven-resolver-provider \
-	maven/maven-settings \
-	maven-resolver/maven-resolver-api \
-	maven-shared-utils/maven-shared-utils \
-	maven-wagon/provider-api \
-	objectweb-asm/asm \
-	org.eclipse.sisu.inject \
-	org.eclipse.sisu.plexus \
-	plexus/archiver \
-	plexus-classworlds \
-	plexus/cli \
-	plexus-containers/plexus-component-annotations \
-	plexus-metadata-generator \
-	plexus/utils \
-	plexus/xml \
-	qdox \
-	xbean/xbean-reflect
+    commons-io \
+    easymock \
+    google-guice \
+    junit \
+    maven-invoker/maven-invoker \
+    maven/maven-artifact \
+    maven/maven-compat \
+    maven/maven-core \
+    maven/maven-model-builder \
+    maven/maven-model \
+    maven/maven-plugin-api \
+    maven/maven-resolver-provider \
+    maven/maven-settings \
+    maven-resolver/maven-resolver-api \
+    maven-shared-utils/maven-shared-utils \
+    maven-wagon/provider-api \
+    org.eclipse.sisu.plexus \
+    plexus/archiver \
+    plexus-classworlds \
+    plexus-containers/plexus-component-annotations \
+    plexus/utils \
+    plexus/xml
 %{ant} \
-	-Dtest.skip=true \
-	package javadoc
+    -Dtest.skip=true \
+    package javadoc
 
 %{mvn_artifact} pom.xml
 mkdir -p target/site/apidocs
