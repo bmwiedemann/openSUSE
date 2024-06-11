@@ -1,7 +1,7 @@
 #
 # spec file for package dhcp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -347,31 +347,6 @@ install    -m0644 $RPM_SOURCE_DIR/dhcrelay.service          \
 install    -m0644 $RPM_SOURCE_DIR/dhcrelay6.service         \
                   %{buildroot}%{_unitdir}/dhcrelay6.service
 sed -e 's,@LIBEXECDIR@,%{_libexecdir},g' -i %{buildroot}%{_unitdir}/d*
-# rcservice links
-ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcdhcpd
-ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcdhcpd6
-ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcdhcrelay
-ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcdhcrelay6
-# rcservice actions
-legacy_actionsdir=%{buildroot}%{_libexecdir}/initscripts/legacy-actions
-cat >dhcpd.action <<'EOF'
-#!/bin/bash
-exec %{_libexecdir}/dhcp/dhcpd -4 ${0##*/}
-EOF
-install -d -m0755 ${legacy_actionsdir}/dhcpd
-install    -m0755 dhcpd.action  ${legacy_actionsdir}/dhcpd/syntax-check
-ln -sf            syntax-check  ${legacy_actionsdir}/dhcpd/check-syntax
-ln -sf            syntax-check  ${legacy_actionsdir}/dhcpd/check-lease
-rm -f             dhcpd.action
-cat >dhcpd.action <<'EOF'
-#!/bin/bash
-exec %{_libexecdir}/dhcp/dhcpd -6 ${0##*/}
-EOF
-install -d -m0755 ${legacy_actionsdir}/dhcpd6
-install    -m0755 dhcpd.action  ${legacy_actionsdir}/dhcpd6/syntax-check
-ln -sf            syntax-check  ${legacy_actionsdir}/dhcpd6/check-syntax
-ln -sf            syntax-check  ${legacy_actionsdir}/dhcpd6/check-lease
-rm -f             dhcpd.action
 # sysconfig files
 install    -m0644 $RPM_SOURCE_DIR/sysconfig.dhcpd           \
                   %{buildroot}%{_fillupdir}/
@@ -497,17 +472,11 @@ fi
 %files server
 %{_sbindir}/dhcpd
 %{_sbindir}/dhcpd6
-%{_sbindir}/rcdhcpd
-%{_sbindir}/rcdhcpd6
 %{_unitdir}/dhcpd.service
 %{_unitdir}/dhcpd6.service
 %if %{with sysusers}
 %{_sysusersdir}/dhcp-user.conf
 %endif
-%dir %{_libexecdir}/initscripts/legacy-actions/dhcpd
-%{_libexecdir}/initscripts/legacy-actions/dhcpd/*
-%dir %{_libexecdir}/initscripts/legacy-actions/dhcpd6
-%{_libexecdir}/initscripts/legacy-actions/dhcpd6/*
 %config(noreplace) %{_sysconfdir}/dhcpd.conf
 %config(noreplace) %{_sysconfdir}/dhcpd6.conf
 %attr(755,root,root) %dir %config(noreplace) %ghost %{_sysconfdir}/dhcpd.d/
@@ -563,8 +532,6 @@ fi
 %files relay
 %{_sbindir}/dhcrelay
 %{_sbindir}/dhcrelay6
-%{_sbindir}/rcdhcrelay
-%{_sbindir}/rcdhcrelay6
 %dir %{_libexecdir}/dhcp
 %{_libexecdir}/dhcp/dhcrelay
 %{_unitdir}/dhcrelay.service

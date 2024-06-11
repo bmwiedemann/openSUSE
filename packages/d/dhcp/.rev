@@ -1271,4 +1271,12 @@ a dhcpv6 server assert crash (bnc#767661), and other bugs
     <comment></comment>
     <requestid>1151674</requestid>
   </revision>
+  <revision rev="142" vrev="18">
+    <srcmd5>7e62c3b1602585e643dfe0406e9f085c</srcmd5>
+    <version>4.4.2.P1</version>
+    <time>1718123243</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1179721</requestid>
+  </revision>
 </revisionlist>

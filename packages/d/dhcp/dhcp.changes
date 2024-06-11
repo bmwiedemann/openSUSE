@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 24 13:51:57 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Drop initscripts-legacy support [jsc#PED264]
+- Drop rc<service> symlinks [jsc#PED-264], [jsc#PED-266]
+
+-------------------------------------------------------------------
 Mon Feb 26 07:45:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
