@@ -1,7 +1,6 @@
 # The {self.title} Container Image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-
 # Purpose
 
 This chart deploys a SUSE Repository Mirroring Tool (RMT) server on Kubernetes.
