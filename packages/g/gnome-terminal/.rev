@@ -2485,4 +2485,14 @@
   + prefs: Follow the theme variant setting. (forwarded request 1171350 from dimstar)</comment>
     <requestid>1171401</requestid>
   </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>33eec4e9d13faa37408449420e01ed1f</srcmd5>
+    <version>3.52.2</version>
+    <time>1718123237</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.52.2:
+  + client: legacy: Error out on extra arguments after parsing.
+  + client: legacy: Error out when specifying more than one argv. (forwarded request 1179616 from dimstar)</comment>
+    <requestid>1179671</requestid>
+  </revision>
 </revisionlist>

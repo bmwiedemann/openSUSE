@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 10 06:55:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.52.2:
+  + client: legacy: Error out on extra arguments after parsing.
+  + client: legacy: Error out when specifying more than one argv.
+
+-------------------------------------------------------------------
 Thu May  2 08:58:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.52.1:
