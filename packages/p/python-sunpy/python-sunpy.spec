@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sunpy
-Version:        5.1.3
+Version:        5.1.4
 Release:        0
 Summary:        SunPy core package: Python for Solar Physics
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT
@@ -26,8 +26,6 @@ URL:            https://github.com/sunpy/sunpy
 Source0:        https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE use custom hypothesis profile for slow OBS executions
 Patch1:         sunpy-obs-profile.patch
-# PATCH-FIX-UPSTREAM Update ANA for GCC 14
-Patch2:         https://github.com/sunpy/sunpy/pull/7662.patch
 BuildRequires:  %{python_module aioftp}
 BuildRequires:  %{python_module astropy >= 5.0.6}
 BuildRequires:  %{python_module base => 3.9}

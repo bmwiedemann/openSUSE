@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 10 19:26:13 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 5.1.4
+  * Fixed bug where conversion of results from the HEKClient to Astropy
+    Time failed when some values where empty or missing for the values
+    of event_strattime, event_endtime or event_peaktime (#7627)
+  * Fix compilation with gcc 14, avoid implicit pointer conversions. (#7662)
+- Drop patches for issues fixed upstream
+  * https://github.com/sunpy/sunpy/pull/7662.patch
+
+-------------------------------------------------------------------
 Thu Jun  6 07:53:25 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Cherry-pick upstream patch to fix build with GCC 14
