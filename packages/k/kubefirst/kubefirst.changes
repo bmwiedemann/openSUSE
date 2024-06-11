@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 11 05:36:00 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.4.10:
+  * pinning cli kubefist chart to 2.4.10 (#2198)
+  * bump runtime and kubefirst-api to latest in kubefirst cli
+    (#2197)
+  * chore: changing brews spec for repository name
+
+-------------------------------------------------------------------
 Mon Jun 10 06:46:28 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.4.9:
