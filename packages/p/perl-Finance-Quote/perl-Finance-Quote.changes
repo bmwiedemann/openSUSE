@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun 10 18:13:08 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
+
+- updated to 1.62
+   see /usr/share/doc/packages/perl-Finance-Quote/Changes
+- Explicitly set license to GPL-2.0-or-later in cpanspec.yml.
+
+-------------------------------------------------------------------
+Fri Apr  5 13:27:53 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
+
+- updated to 1.59
+  see /usr/share/doc/packages/perl-Finance-Quote/Changes
+- Drop patch Fix-FTFunds-regex.patch. Now in the upstream.
+- Drop patch perl-Finance-Quote-66235-Cdnfundlibrary-row.patch. It
+  is fixed in the upstream for years, the openSUSE one was
+  incorrectly ported and breaks the module.
+
+-------------------------------------------------------------------
 Thu May 11 15:29:29 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Update cpanspec.yml and regenerate spec file

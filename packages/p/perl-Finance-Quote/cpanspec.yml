@@ -4,9 +4,7 @@
 #sources:
 #  - source1
 #  - source2
-patches:
- https://github.com/finance-quote/finance-quote/commit/504fcc1ae35f.patch#/Fix-FTFunds-regex.patch: -p1 PATCH-FIX-UPSTREAM https://github.com/finance-quote/finance-quote/commit/504fcc1ae35fd9c1e59949281e2939bda6a971a5
- perl-Finance-Quote-66235-Cdnfundlibrary-row.patch: -p1 PATCH-FIX-UPSTREAM https://rt.cpan.org/Public/Bug/Display.html?id=66235
+#patches:
 #preamble: |-
 # BuildRequires:  gcc-c++
 #post_prep: |-
