@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 11 10:36:14 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.49.0:
+  - Features
+    * feat: Add stub for removed remove command
+    * feat: Rename remove command to destroy
+  - Fixes
+    * fix: Fix panic when parsing some commands
+  - Documentation updates
+    * docs: Update comparison-table.md
+
+-------------------------------------------------------------------
 Mon Jun  3 14:54:22 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.48.2:
