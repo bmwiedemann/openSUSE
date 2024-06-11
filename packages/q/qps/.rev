@@ -229,4 +229,14 @@
     <comment></comment>
     <requestid>1123567</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a12e5ede3ed5bf7119df740d87762037</srcmd5>
+    <version>2.9.0</version>
+    <time>1718123276</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.9.0:
+  * Ported to Qt6.
+</comment>
+    <requestid>1179740</requestid>
+  </revision>
 </revisionlist>

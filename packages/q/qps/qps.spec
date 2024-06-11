@@ -1,7 +1,7 @@
 #
 # spec file for package qps
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,31 +17,25 @@
 
 
 Name:           qps
-Version:        2.8.0
+Version:        2.9.0
 Release:        0
 Summary:        Visual Process Manager
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+License:        GPL-2.0-or-later
 Group:          System/Monitoring
-URL:            https://github.com/lxqt/qps/
-Source0:        https://github.com/lxqt/qps/releases/download/%{version}/qps-%{version}.tar.xz
-Source1:        https://github.com/lxqt/qps/releases/download/%{version}/qps-%{version}.tar.xz.asc
-Source2:        qps.keyring
-BuildRequires:  cmake >= 3.1.0
+URL:            https://github.com/lxqt/qps
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+Source2:        %{name}.keyring
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  gcc-c++
-BuildRequires:  glibc
-BuildRequires:  glibc-devel
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  lxqt-build-tools-devel >= 0.13.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5WindowSystem) >= 5.36.0
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.15
-BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(lxqt) >= 1.3.0
-BuildRequires:  pkgconfig(xrender)
+BuildRequires:  cmake(KF6WindowSystem)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(lxqt2-build-tools)
+BuildRequires:  pkgconfig(lxqt) >= 2.0.0
 
 %description
 Qps is a visual process manager, an X11 version of "top" or "ps" that
@@ -52,28 +46,32 @@ processes.
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 
 %build
-%cmake
+%cmake_qt6
+%{qt6_build}
 
 %install
-%cmake_install
+%{qt6_install}
 %suse_update_desktop_file -r %{name} System Monitor
 
 %find_lang %{name} --with-qt
 
 %files
 %doc CHANGELOG README.md
-%license COPYING
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.??g
-%{_datadir}/metainfo/*.xml
-%{_mandir}/man?/%{name}.?%{ext_man}
+%{_datadir}/metainfo/org.lxqt.Qps.appdata.xml
+%{_mandir}/man?/%{name}.?%{?ext_man}
+%license COPYING
 
 %files lang -f %{name}.lang
-%dir %{_datadir}/qps/
-%{_datadir}/qps/translations/
+%dir %{_datadir}/%{name}/
+%dir %{_datadir}/%{name}/translations/
+%if 0%{?sle_version}
+%{_datadir}/%{name}/translations/%{name}_???.qm
+%endif
 
 %changelog
