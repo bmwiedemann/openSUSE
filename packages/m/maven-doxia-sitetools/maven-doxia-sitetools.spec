@@ -29,17 +29,12 @@ Source0:        https://repo1.maven.org/maven2/org/apache/maven/doxia/doxia-site
 Source1:        %{name}-build.tar.xz
 Patch1:         0002-Remove-dependency-on-velocity-tools.patch
 BuildRequires:  ant
-BuildRequires:  apache-commons-cli
 BuildRequires:  apache-commons-collections
 BuildRequires:  apache-commons-io
 BuildRequires:  apache-commons-lang3
-BuildRequires:  atinject
 BuildRequires:  fdupes
-BuildRequires:  google-guice
-BuildRequires:  guava
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
-BuildRequires:  jdom2
 BuildRequires:  maven-doxia-core
 BuildRequires:  maven-doxia-logging-api
 BuildRequires:  maven-doxia-module-fo
@@ -48,9 +43,6 @@ BuildRequires:  maven-doxia-sink-api
 BuildRequires:  maven-lib
 BuildRequires:  maven-reporting-api
 BuildRequires:  modello >= 2.0.0
-BuildRequires:  objectweb-asm
-BuildRequires:  plexus-classworlds
-BuildRequires:  plexus-cli
 BuildRequires:  plexus-containers-component-annotations
 BuildRequires:  plexus-i18n
 BuildRequires:  plexus-interpolation
@@ -58,12 +50,9 @@ BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-velocity
 BuildRequires:  plexus-xml
-BuildRequires:  qdox
-BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
 BuildRequires:  unzip
 BuildRequires:  velocity
-BuildRequires:  xbean
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
 BuildRequires:  xz
@@ -118,14 +107,9 @@ done
 %build
 mkdir -p lib
 build-jar-repository -s lib \
-    atinject \
     apache-commons-collections \
     apache-commons-lang3 \
-    commons-cli \
     commons-io \
-    guava/guava \
-    guice/google-guice \
-    jdom2/jdom2 \
     maven-doxia/doxia-core \
     maven-doxia/doxia-logging-api \
     maven-doxia/doxia-module-fo \
@@ -137,21 +121,14 @@ build-jar-repository -s lib \
     maven/maven-plugin-api \
     maven/maven-project \
     maven-reporting-api/maven-reporting-api \
-    objectweb-asm/asm \
-    org.eclipse.sisu.inject \
     org.eclipse.sisu.plexus \
-    plexus-classworlds \
-    plexus/cli \
     plexus-containers/plexus-component-annotations \
     plexus-i18n/plexus-i18n \
     plexus/interpolation \
-    plexus-metadata-generator \
     plexus/utils \
     plexus/xml \
     plexus-velocity/plexus-velocity \
-    qdox \
-    velocity \
-    xbean/xbean-reflect
+    velocity
 # tests can't run because of missing deps
 %{ant} -Dtest.skip=true package javadoc
 
