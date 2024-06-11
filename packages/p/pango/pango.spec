@@ -17,7 +17,7 @@
 
 
 Name:           pango
-Version:        1.52.2
+Version:        1.54.0
 Release:        0
 Summary:        Library for Layout and Rendering of Text
 License:        LGPL-2.1-or-later
@@ -29,7 +29,7 @@ Source99:       baselibs.conf
 
 BuildRequires:  gcc-c++
 BuildRequires:  help2man
-BuildRequires:  meson >= 0.55.3
+BuildRequires:  meson >= 0.63.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo) >= 1.12.10
 BuildRequires:  pkgconfig(fontconfig) >= 2.13
@@ -124,7 +124,6 @@ to develop applications that require these.
 %build
 %meson \
 	-Dintrospection=enabled \
-	-Dinstall-tests=false \
 	%{nil}
 %meson_build
 

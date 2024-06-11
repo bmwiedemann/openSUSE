@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 10 06:50:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.54.0:
+  + Build fixes.
+  + Memory leak fixes.
+  + Drop the install-tests build option.
+  + Add build-examples and build-tests build options.
+  + Require meson 0.63.
+  + Add pango_item_get_char_offset.
+  + Update to Unicode 15.1.
+  + Fix wrong use of GWeakRef, leading to crashes.
+- Drop -Dinstall-tests meson parameter: no longer supported.
+
+-------------------------------------------------------------------
 Thu Apr  4 08:04:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.52.2:

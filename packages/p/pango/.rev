@@ -1214,4 +1214,21 @@ pango-view: When running GraphicsMagick 'gm display' command: Failed to execute 
   + Fix hexbox drawing. (forwarded request 1177029 from dimstar)</comment>
     <requestid>1177055</requestid>
   </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>8f095c4f4c98f889eb6a07029036b4f9</srcmd5>
+    <version>1.54.0</version>
+    <time>1718123235</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.54.0:
+  + Build fixes.
+  + Memory leak fixes.
+  + Drop the install-tests build option.
+  + Add build-examples and build-tests build options.
+  + Require meson 0.63.
+  + Add pango_item_get_char_offset.
+  + Update to Unicode 15.1.
+  + Fix wrong use of GWeakRef, leading to crashes.
+- Drop -Dinstall-tests meson parameter: no longer supported. (forwarded request 1179614 from dimstar)</comment>
+    <requestid>1179670</requestid>
+  </revision>
 </revisionlist>
