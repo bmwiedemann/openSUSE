@@ -1,7 +1,6 @@
 # Spack 0.21.2 Container Image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-
 ## Description
 Spack is a package manager for supercomputers. It provides build recipes
 for more than 6000 software components, and it allows to build entire
