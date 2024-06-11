@@ -901,4 +901,12 @@
 - clean up rpmlintrc</comment>
     <requestid>1178052</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>ea6cf3f8e1886777c511ecda36858cfc</srcmd5>
+    <version>2.128.0</version>
+    <time>1718123445</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1179911</requestid>
+  </revision>
 </revisionlist>
