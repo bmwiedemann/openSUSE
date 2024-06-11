@@ -1500,4 +1500,36 @@
   &quot;p post_mortem&quot; support</comment>
     <requestid>1177941</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>b4f0c06aaa357c0fe1a3aa5064d289fe</srcmd5>
+    <version>3.0.1+git0.471a1b2f1</version>
+    <time>1718123249</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.0.1+git0.471a1b2f1:
+  * [RELEASE] Released version 3.0.1
+  * BUG/MINOR: mux-h1: Use the right variable to set NEGO_FF_FL_EXACT_SIZE flag
+  * BUG/MAJOR: mux-h1:  Properly copy chunked input data during zero-copy nego
+  * BUG/MEDIUM: stconn/mux-h1: Fix suspect change causing timeouts
+  * BUG/MINOR: quic: ensure Tx buf is always purged
+  * BUG/MINOR: quic: fix computed length of emitted STREAM frames
+  * BUG/MEDIUM: ssl: bad auth selection with TLS1.2 and WolfSSL
+  * BUG/MEDIUM: ssl: wrong priority whem limiting ECDSA ciphers in ECDSA+RSA configuration
+  * BUG/MEDIUM: mux-quic: Don't unblock zero-copy fwding if blocked during nego
+  * CLEANUP: hlua: simplify ambiguous lua_insert() usage in hlua_ctx_resume()
+  * BUG/MINOR: hlua: fix leak in hlua_ckch_set() error path
+  * BUG/MINOR: hlua: prevent LJMP in hlua_traceback()
+  * BUG/MINOR: hlua: fix unsafe hlua_pusherror() usage
+  * BUG/MINOR: hlua: don't use lua_pushfstring() when we don't expect LJMP
+  * CLEANUP: hlua: use hlua_pusherror() where relevant
+  * BUG/MINOR: quic: prevent crash on qc_kill_conn()
+  * BUG/MEDIUM: mux-quic: Unblock zero-copy forwarding if the txbuf can be released
+  * MEDIUM: stconn: Be able to unblock zero-copy data forwarding from done_fastfwd
+  * BUG/MEDIUM: h1-htx: Don't state interim responses are bodyless
+  * BUG/MINOR: hlua: use CertCache.set() from various hlua contexts
+  * DOC: configuration: add an example for keywords from crt-store
+  * BUG/MINOR: tools: fix possible null-deref in env_expand() on out-of-memory
+  * BUG/MINOR: tcpcheck: report correct error in tcp-check rule parser
+  * BUG/MINOR: cfgparse: remove the correct option on httpcheck send-state warning</comment>
+    <requestid>1179720</requestid>
+  </revision>
 </revisionlist>
