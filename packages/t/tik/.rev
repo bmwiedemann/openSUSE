@@ -91,4 +91,14 @@
   * Migrate bluetooth configuration also</comment>
     <requestid>1177866</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1e683389ddfe09cc43d3184c2afd3702</srcmd5>
+    <version>1.0.7</version>
+    <time>1718123360</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.7:
+  * mig: always unmount the probed partition before mounting another (boo#1226120)
+  * mig: wait for the encrypted device to appear, and relax luksClose requirement on cleanup (boo#1225882)</comment>
+    <requestid>1179827</requestid>
+  </revision>
 </revisionlist>

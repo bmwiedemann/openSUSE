@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 10 18:44:51 UTC 2024 - rbrown@suse.com
+
+- Update to version 1.0.7:
+  * mig: always unmount the probed partition before mounting another (boo#1226120)
+  * mig: wait for the encrypted device to appear, and relax luksClose requirement on cleanup (boo#1225882)
+
+-------------------------------------------------------------------
 Fri May 31 08:32:04 UTC 2024 - rbrown@suse.com
 
 - Update to version 1.0.6:
