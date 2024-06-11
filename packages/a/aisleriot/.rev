@@ -608,4 +608,13 @@
   + Fixes and optimisations. (forwarded request 1173991 from dimstar)</comment>
     <requestid>1174001</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>cdfe78833d72b88bade21d533b0ddc30</srcmd5>
+    <version>3.22.33</version>
+    <time>1718123516</time>
+    <user>anag+factory</user>
+    <comment>m Update to version 3.22.33:
+  + README: Update user manual URI. (forwarded request 1180012 from dimstar)</comment>
+    <requestid>1180016</requestid>
+  </revision>
 </revisionlist>
