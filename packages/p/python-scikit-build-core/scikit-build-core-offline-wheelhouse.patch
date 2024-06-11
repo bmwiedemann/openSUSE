@@ -2,7 +2,7 @@ Index: scikit_build_core-0.4.7/tests/conftest.py
 ===================================================================
 --- scikit_build_core-0.4.7.orig/tests/conftest.py
 +++ scikit_build_core-0.4.7/tests/conftest.py
-@@ -36,50 +36,7 @@ BASE = DIR.parent
+@@ -34,52 +34,7 @@ BASE = DIR.parent
  
  @pytest.fixture(scope="session")
  def pep518_wheelhouse(tmp_path_factory: pytest.TempPathFactory) -> Path:
@@ -16,14 +16,16 @@ Index: scikit_build_core-0.4.7/tests/conftest.py
 -            "wheel",
 -            "--wheel-dir",
 -            str(wheelhouse),
--            f"{BASE}[pyproject]",
+-            f"{BASE}",
 -        ],
 -        check=True,
 -    )
 -    packages = [
 -        "build",
+-        "cython",
 -        "hatchling",
--        "pip>=23",
+-        "pip>=23; python_version<'3.13'",
+-        "pip>=24.1b1; python_version>='3.13'",
 -        "pybind11",
 -        "setuptools",
 -        "virtualenv",
@@ -53,4 +55,4 @@ Index: scikit_build_core-0.4.7/tests/conftest.py
 +    return os.getcwd() + '/build'
  
  
- class VEnv(EnvBuilder):
+ class VEnv:

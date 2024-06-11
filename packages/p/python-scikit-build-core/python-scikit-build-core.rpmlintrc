@@ -1,6 +1,0 @@
-# False positives due to rpmlint's inability to read python versioned requires
-addFilter("W: python-missing-require exceptiongroup")
-addFilter("W: python-missing-require importlib-metadata")
-addFilter("W: python-missing-require importlib-resources")
-addFilter("W: python-missing-require typing-extensions")
-addFilter("W: python-missing-require tomli")

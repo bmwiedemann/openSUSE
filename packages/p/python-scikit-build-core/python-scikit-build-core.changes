@@ -1,4 +1,231 @@
 -------------------------------------------------------------------
+Sun Jun  9 18:50:49 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.5
+  * Support Windows free-threading by @henryiii in #759
+  * Strip whitespace around generator so that it's passed through
+    correctly by @vyasr in #748
+- Version 0.9.4
+  * This version supports the newly available free-threading
+    variant of Python 3.13b1 (mostly related to skipping the stable
+    ABI). We test this via the manylinux/musllinux images. There's
+    also a new feature requested by third-party packagers; the
+    ability to pass args directly to the build tool
+  * Add build.tool-args by @henryiii in #733
+  ## Fixes:
+  * Support free-threaded builds of Python 3.13+ on Linux by
+    @henryiii in #741
+  * Slightly better stable ABI behavior using PyPy by @henryiii in
+    #741
+- Version 0.9.3
+  * This version ensures the Hatchling plugin correctly indicates
+    editable mode is not yet supported, supports CMAKE_ARGS that
+    have spaces, and has a bit of other minor cleanup.
+  ## Fixes:
+  * Properly indicate lack of editable support in Hatch plugin by
+    @ofek in #728
+  * Don't generate entrypoints.txt if none set by @henryiii in #729
+  * Don't warn if lib not found on UNIX, just debug by @henryiii in
+    #730
+  * Support CMAKE_ARGS that may have spaces inside quotes by @vyasr
+    in #727
+- Version 0.9.2
+  * Quick fix for quick fix in 0.9.1; if cmake is a broken script
+    (which can happen if you pip install outside an environment
+    then enter an environment, there was an unbound local error
+    instead of ignoring the broken cmake script.)
+  ## Fixes:
+  * Unbound local error by @henryiii in #719
+- Version 0.9.1
+  * Quick fix for Pyodide (WebAssembly) builds.
+  ## Fixes:
+  * Try --version if -E capabilities fails by @henryiii in #717
+- Version 0.9.0
+  * This version adds the ability to inherit in override tables,
+    matching a similar feature added to cibuildwheel 2.17's
+    overrides. You can now write out extra metadata to
+    ${SKBUILD_METADATA_DIR}. A new Hatchling plugin is provided as
+    an experimental feature (will likely be made a separate package
+    in the future like the setuptools plugin).
+  * The meaning of wheel.exclude has been changed to match on the
+    wheel path, rather than the source path. We could not find any
+    projects that would be affected by this change, so it was not
+    added to the minimum-version protection policy. This now allows
+    you to ignore CMake outputs as well.
+  ## Features:
+  * Preserve additivity of cmake.define across overrides tables by
+    @stubbiali in #564
+  * Add metadata dir access by @henryiii in #702
+  * Experimental hatchling builder by @henryiii and
+    @aryamanjeendgar in #637
+  * Vendor pyproject-metadata by @henryiii in #703
+  * Always require pathspec by @henryiii in #711
+  ## Fixes:
+  * Exclude installed files if listed in exclude by @henryiii in
+    #652
+  * Make .git_archival.txt reproducible by @LecrisUT in #706
+  * Use cmake -E capabilities instead of cmake --version by
+    @KyleFromNVIDIA in #675
+  * Ensure many/musl tags not selected by @henryiii in #698
+  * purelib should set py3 tag if unset by @henryiii in #661
+  * Validate description for 0.9+ by @henryiii in #709
+  * Support bools in config settings by @henryiii in #712
+  ## API changes:
+  * extra_settings for SettingsReader by @henryiii in #697
+  * GetRequires args changed by @henryiii in #699
+  * Make from_file a little more powerful by @henryiii in #700
+  * Metadata is part of the build backend by @henryiii in #708
+- Version 0.8.2
+  * This version fixes a few small issues related to configuration.
+    The wheel tag is fixed when wheel.platlib is False, inplace
+    editable installs ignore build-dir, and install-dir no longer
+    affects the generate path.
+  ## Fixes:
+  * Ensure wheel.platlib being false sets <abi>-<platform> as
+    "none-any" by @jcfr in #655
+  * Inplace editable install should ignore build-dir by @henryiii
+    in #644
+  * install-dir shouldn't affect generate path by @henryiii in #654
+  * Expand info printing by @henryiii in #651
+- Version 0.8.1
+  * This version fixes two small issues with specific situations:
+    if ninja/cmake is present but not executable, and ninja on
+    Windows not respecting the build type.
+  ## Fixes:
+  * Do not exit with exec permission error in ninja check by
+    @thewtex in #626
+  * Include CMAKE_BUILD_TYPE on Windows Ninja by @henryiii in #640
+  * Use - vs _ in error message by @nbelakovski in #638
+  * Make run command logged at info by @LecrisUT in #639
+- Version 0.8.0
+  * This version replaces the cmake/ninja minimum-version config
+    option with a more powerful free-form version field.
+    Scikit-build-core will now respect CMAKE_EXECUTABLE for finding
+    CMake. You can override based on the build state, allowing
+    overrides for editable installs, for example. You can specify a
+    build tag (AKA build number). And you can define CMake
+    variables from environment variables.
+  ## Features:
+  * Add build-tag by @henryiii in #612
+  * Add if.state to overrides by @henryiii in #600
+  * Add cmake.version and ninja.version by @henryiii in #602
+  * Support CMAKE_EXECUTABLE by @henryiii in #603
+  * Config to set CMake variables with environment variables by
+    @stubbiali in #565
+  ## Fixes:
+  * Include license file entry in search by @henryiii in #601
+  * Make sure purelib is indicated by @henryiii in #613
+  * Project version should always be CMake parsable by @henryiii in
+    #608
+- Version 0.7.1
+  * This is a quick fix for a downstream change in
+    hatch-fancy-pypi-readme that broke our plugin wrapper.
+  ## Fixes:
+  * Patch for change in hatch-fancy-pypi-readme by @henryiii in
+    #593
+- Version 0.7.0
+  * This release features several large improvements to overrides:
+    a new if.any group to allow selections based on any item being
+    true, and a new if.env option for selecting an override based
+    on environment variables. You can now build pure Python
+    packages with wheel.cmake = false, perfect for providing a
+    slower pure Python version of a package on unsupported systems
+    via overrides.
+  * There's also a new inplace mode for editable installs, which
+    has drawbacks but feels like the classic "--inplace" setting in
+    setuptools and can enable some tooling that would otherwise not
+    support modern editable installs to work. If you are using
+    Cython to access .pxd files, modern ("redirect") editable
+    installs now support that. And to help avoid collisions with a
+    future user feature, config settings can now be passed with an
+    optional namespace, skbuild., as well.
+  ## Features:
+  * Add inplace mode for editable installs by @henryiii in #553
+  * Add wheel.exclude by @henryiii in #560
+  * Support cmake-less runs (for overrides) by @henryiii in #550
+  * Support if.any by @henryiii in #548
+  * Support if.env by @henryiii in #549
+  * Support namespaced config settings (skbuild.) by @henryiii in
+    #556
+  ## Fixes:
+  * Correct issue with editable template & add more tests by
+    @henryiii in #552
+  * Support editable installs of Cython .pxd files by @vyasr in
+    #516
+- Version 0.6.1
+  ## Fixes:
+  * Editable package imports fix (regression in 0.6.0) by @henryiii
+    in #546
+  * Filter CMAKE_ARGS and debug printout by @henryiii in #543
+- Version 0.6.0
+  * This release features overrides, a system similar to mypy and
+    cibuildwheel's overrides, allowing static configuration of
+    special cases, like different settings per operating system or
+    Python version ranges. It also features preliminary support for
+    importlib.resources in editable mode.
+  ## Features:
+  * Adding overrides by @henryiii in #514
+  * Overrides platform node by @0xTowel in #526
+  * Support importlib.resources in editable installs by @LecrisUT
+    in #399
+  ## Fixes:
+  * Better handling for -G by @henryiii in #483
+  * Nicer error message when SCM version missing by @henryiii in
+    #528
+  * (schema) Fix a typo and better metadata support by @henryiii in
+    #522
+  * (setuptools) Remove DEBUG envvar by @henryiii in #527
+- Version 0.5.1
+  ## Features:
+  * Add {build_type} and {state} to build-dir by @henryiii in #504
+  * Include 'python' dir as an auto search path by @henryiii in
+    #499
+  ## Fixes:
+  * Parse CMake version strings containing '-' by @jllllll in #508
+  * Set NumPy include directory if known by @henryiii in #482
+  * Adapt for setuptools_scm 8 writing change by @henryiii in #509
+  * (setuptools) Support build_type set in toml by @henryiii in
+    #498
+- Version 0.5.0
+  * This release sees the addition of a generated schema, which has
+    also been contributed to SchemaStore, enabling
+    tool.scikit-build to be understood by most editors. There's
+    also now a way to enable CMake during the SDist step, a new
+    regex plugin, and a mechanism to write metadata to a file
+    without having to depend on the plugin.
+  ## Features:
+  * Add option to run CMake during SDist creation by @henryiii in
+    #454
+  * Add a schema for validate-pyproject by @henryiii in #447, #450,
+    #455
+  * Added regex plugin and dynamic-metadata rewrite by @henryiii in
+    #457
+  * Add configuration option to write metadata to file by @henryiii
+    in #459
+  ## Fixes:
+  * Normalize sdist names by @henryiii in #434
+  * Report cmake/ninja required if already present by @henryiii in
+    #462
+- Version 0.4.8
+  * This release focus on two fixes that correct some interference
+    issues with other setuptools plugins. A few new features were
+    added (opt-in only): the ability to select build targets,
+    install components, and opt-in --strip (will be opt-out in 0.5
+    if the minimum-version is set to 0.5+ or unset).
+  ## Features:
+  * Add build target support by @henryiii in #432
+  * Add component support and strip support by @henryiii in #430
+  ## Fixes:
+  * (setuptools) Avoid instantiating build too soon by @henryiii in
+    #443
+  * (setuptools) Avoid interfering with other setuptools plugins by
+    @henryiii in #414
+  * Only link to valid module paths (not things like gitignore) in
+    editable installs by @henryiii in #444
+- Add scikit-build-core-pr764-printversion.patch
+  * gh#scikit-build/scikit-build-core#764
+
+-------------------------------------------------------------------
 Mon Apr  8 10:39:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons
