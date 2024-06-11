@@ -34,6 +34,7 @@ BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  guava
 BuildRequires:  jackson-core
+BuildRequires:  jakarta-inject
 BuildRequires:  javadoc-parser
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsoup
@@ -53,6 +54,7 @@ Requires:       atinject
 Requires:       google-guice
 Requires:       guava
 Requires:       jackson-core
+Requires:       jakarta-inject
 Requires:       javadoc-parser
 Requires:       javapackages-tools
 Requires:       plexus-build-api
@@ -118,6 +120,7 @@ build-jar-repository -s lib \
     atinject \
     guava/guava \
     jackson-core \
+    jakarta-inject \
     javadoc-parser \
     jsoup \
     junit \
@@ -163,7 +166,7 @@ done
 %fdupes -s %{buildroot}%{_javadocdir}
 
 # script
-%jpackage_script org.codehaus.modello.ModelloCli "" "" modello:aopalliance:atinject:google-guice:guava:jackson-core:javadoc-parser:plexus/plexus-build-api:plexus/plexus-build-api0:plexus/classworlds:plexus-containers/plexus-component-annotations:plexus/utils:plexus/xml:org.eclipse.sisu.inject:org.eclipse.sisu.plexus:slf4j/api:slf4j/simple:snakeyaml:velocity %{name} true
+%jpackage_script org.codehaus.modello.ModelloCli "" "" modello:aopalliance:atinject:google-guice:guava:jackson-core:jakarta-inject:javadoc-parser:plexus/plexus-build-api:plexus/plexus-build-api0:plexus/classworlds:plexus-containers/plexus-component-annotations:plexus/utils:plexus/xml:org.eclipse.sisu.inject:org.eclipse.sisu.plexus:slf4j/api:slf4j/simple:snakeyaml:velocity %{name} true
 
 %files -f .mfiles -f .mfiles-core
 %license LICENSE.txt LICENSE-2.0.txt

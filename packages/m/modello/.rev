@@ -145,4 +145,12 @@
     <comment>Sync patches with upstream versions</comment>
     <requestid>1178804</requestid>
   </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>b03a9173e9032815a83d3dda97d31c58</srcmd5>
+    <version>2.4.0</version>
+    <time>1718123254</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1179732</requestid>
+  </revision>
 </revisionlist>
