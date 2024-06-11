@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Mon Jun 10 18:29:10 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.9.0:
+  * Raise minimum nbxmpp version to 5.0.0.
+  * Add Voice Messages.
+  * Support XEP-0425 0.3.0.
+  * Add XEP-0444: Message Reactions.
+  * Add support for XEP-0461: Message Replies.
+  * Display emoji-only messages with a larger font.
+  * Feedback on affiliation change failures.
+  * Hide/show main menu bar.
+  * Add option to remove group chat avatar.
+  * Plugins: Add extension point for adding chat commands.
+  * Use default encryption setting for group chats.
+  * MessageInputTextView: Change to GtkSource.View and refactor
+    buffer handling.
+  * StartChat: Show roster groups.
+  * StartChat: Show last seen.
+  * StartChat: Show contact tooltip on avatar.
+  * StartChat: Show status message.
+  * Menus: Rename "Modify Accounts" to "Manage Accounts".
+  * AdHocCommands: Display note type icon.
+  * Preferences: Relax preconditions for audio settings.
+  * SearchView: Show only time_format in result rows.
+  * AudioPreview: Use symbolic icon.
+  * MessageRow: Pop up chat row menu to the top.
+  * Add transport icons to MUC avatars.
+  * ConversationView: Add MessageRowActions.
+  * XML Console: Add jump to end button.
+  * Dismiss invitation notification when MUC is joined.
+  * MessageActionsBox: Show connection state and correction hint.
+  * ChatCommands: Handle /me command.
+  * Notifications: Make avatars available on more platforms.
+  * Notify of new members in private MUCs.
+  * Change "Topic" to "Subject" in group chat details.
+  * GroupChat: Improve default room config.
+  * ChatPage: Show workspace settings button on hover and move
+    filter button next to search bar.
+  * ChatBanner: Use better tooltip for chat details button.
+  * StartChat: Improve label layout.
+  * Rename XML Console to Debug Console.
+  * MessageLabel: Prevent potential segfault.
+  * Preview: Catch permissions related exceptions when trying to
+    save as.
+  * Jingle: Fix IBB fallback.
+  * Application: Reactived feature actions after sm resume.
+  * AccountWizard: Fix layout for SecurityWarning heading
+  * Store message drafts when switching workspaces (#11824)
+  * Cursors: Attempt to fix getting default cursor on Wayland
+  * ChatControl: Don't fail when trying to jump to deleted message
+  * VCardAvatars: Don’t fail when there is no disco info available
+  * ServerInfo: Don't fail if there is no certificate (#11822)
+  * Prevent message row merging if message receipt status differ
+  * Icons: Convert feather/lucide icons to paths in order to fix
+    rendering issues.
+  * Replies: Fix icon color contrast in dark mode.
+  * ConversationView: Allow consecutive highlights for the same
+    row.
+  * MessageRow: Check for message direction when trying to merge rows.
+  * Keyring: Catch more exceptions for delete_password.
+  * ServiceDiscoveryWindow: Catch RuntimeError when starting
+    without connection.
+  * MessageInput: Fix Hangul last-letter bug.
+  * Utils: Catch exceptions when trying to load surfaces and icons.
+  * HTTPFileTransfer: Improve error fallbacks.
+  * ComponentSearch: Convert all items to str when copying result
+    row.
+  * Catch errors when trying to store pasted image.
+  * Advertise message styling support.
+  * Preview: Set downloading state early to avoid having multiple
+    downloads simultaneously.
+  * ChatActionProcessor: Fix text buffer interaction.
+  * ChatBanner: Disable selecting name_label.
+  * AdHoc: Send adhoc command to resource if there is one.
+  * Settings: Include all default settings as fallback.
+  * DBus: Don’t fail if no file descriptor list is returned.
+  * Require a space after /me.
+  * Don’t fail to start on sentry_sdk import error.
+  * OMEMO: Process events only once per account.
+  * MessageInput: Don’t shift focs when pressing SHIFT.
+  * Shortcuts: Fix focus issues with Ctrl+ shortcuts.
+  * Servers: Remove defunct servers from server list.
+
+-------------------------------------------------------------------
 Fri Apr 19 11:25:39 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Fix Leap15 build

@@ -1,7 +1,7 @@
 #
 # spec file for package gajim
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,14 +25,14 @@
 %{?sle15_python_module_pythons}
 %endif
 Name:           gajim
-Version:        1.8.4
+Version:        1.9.0
 Release:        0
 Summary:        XMPP client written in Python and GTK
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Talk/Clients
 URL:            https://gajim.org/
-Source:         https://gajim.org/downloads/1.8/gajim-%{version}.tar.gz
-BuildRequires:  %{python_module nbxmpp >= 4.5.3}
+Source:         https://gajim.org/downloads/1.9/gajim-%{version}.tar.gz
+BuildRequires:  %{python_module nbxmpp >= 5.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module precis-i18n >= 1.0.0}
 BuildRequires:  %{python_module wheel}
@@ -45,13 +45,15 @@ BuildRequires:  p11-kit-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-generators >= 20220912
 BuildRequires:  python-rpm-macros >= 20220912
+BuildRequires:  sqlite3 >= 3.35.0
 BuildRequires:  update-desktop-files
+Requires:       %{python_flavor}-gobject-Gdk
+Requires:       %{python_flavor}-gobject-cairo
 Requires:       %{python_flavor}-gssapi
 Requires:       %{python_flavor}-omemo-dr
 Requires:       %{python_flavor}-qrcode
-Requires:       %{python_flavor}-gobject-Gdk
-Requires:       %{python_flavor}-gobject-cairo
 Requires:       ca-certificates-mozilla
+Requires:       sqlite3 >= 3.35.0
 Requires:       typelib(GtkSource) = 4
 Requires:       typelib(Soup) = 3.0
 Obsoletes:      gajim-plugin-omemo <= 2.9.0
@@ -121,7 +123,7 @@ mkdir %{buildroot}%{_datadir}/%{name}/plugins/
 %{_datadir}/applications/*%{name}*.desktop
 %{_datadir}/icons/hicolor/*/apps/*%{name}*.*
 %dir %{_datadir}/metainfo/
-%{_datadir}/metainfo/*%{name}*.appdata.xml
+%{_datadir}/metainfo/*%{name}*.metainfo.xml
 %{_mandir}/man?/%{name}*%{?ext_man}
 
 %files lang -f %{name}.lang
