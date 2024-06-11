@@ -1,0 +1,26 @@
+diff -ru orig/plug-ins/file-tiff/file-tiff-load.c mod/plug-ins/file-tiff/file-tiff-load.c
+--- orig/plug-ins/file-tiff/file-tiff-load.c	2024-05-03 02:33:35.000000000 +0200
++++ mod/plug-ins/file-tiff/file-tiff-load.c	2024-05-21 13:18:49.443359344 +0200
+@@ -1301,8 +1301,8 @@
+ 
+       /* any resolution info in the file? */
+       {
+-        gfloat   xres = 72.0;
+-        gfloat   yres = 72.0;
++        gdouble   xres = 72.0;
++        gdouble   yres = 72.0;
+         gushort  read_unit;
+         GimpUnit unit = GIMP_UNIT_PIXEL; /* invalid unit */
+ 
+diff -ru orig/plug-ins/metadata/metadata-editor.c mod/plug-ins/metadata/metadata-editor.c
+--- orig/plug-ins/metadata/metadata-editor.c	2024-05-03 02:33:35.000000000 +0200
++++ mod/plug-ins/metadata/metadata-editor.c	2024-05-21 13:20:13.900525624 +0200
+@@ -2140,7 +2140,7 @@
+                             }
+                           else
+                             {
+-                              if (! g_strv_contains (values, equiv_values[evi]))
++                              if (! g_strv_contains ((const gchar * const*)values, equiv_values[evi]))
+                                 {
+                                   gchar *tmpvalue;
+ 

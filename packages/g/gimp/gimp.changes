@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 21 08:45:44 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add fix-gcc14-build.patch (fix bsc#1223892)
+
+-------------------------------------------------------------------
 Mon May  6 07:20:05 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.10.38:

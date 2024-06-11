@@ -42,6 +42,8 @@ Source:         https://download.gimp.org/pub/gimp/v2.10/%{name}-%{version}.tar.
 Source1:        macros.gimp
 # openSUSE palette file
 Source2:        openSUSE.gpl
+# PATCH-FIX-UPSTREAM fix-gcc14-build.patch bsc#1223892
+Patch0:         fix-gcc14-build.patch
 
 BuildRequires:  aalib-devel
 BuildRequires:  alsa-devel >= 1.0.0
@@ -207,8 +209,7 @@ applications that want to make use of the GIMP libraries.
 %lang_package
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
