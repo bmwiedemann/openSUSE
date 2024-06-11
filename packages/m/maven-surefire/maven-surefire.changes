@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 10 19:00:07 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use plexus-metadata-generator executable directly to simplify
+  build classpath
+
+-------------------------------------------------------------------
 Wed Apr 10 10:54:02 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 3.2.5

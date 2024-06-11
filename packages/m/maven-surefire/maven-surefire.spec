@@ -30,14 +30,11 @@ Source10:       %{name}-build.tar.xz
 Patch0:         0001-Port-to-TestNG-7.4.0.patch
 Patch10:        %{name}-bootstrap-resources.patch
 BuildRequires:  ant
-BuildRequires:  apache-commons-cli
 BuildRequires:  apache-commons-compress
 BuildRequires:  apache-commons-io
 BuildRequires:  apache-commons-lang3
 BuildRequires:  atinject
 BuildRequires:  fdupes
-BuildRequires:  google-guice
-BuildRequires:  guava
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javacc
 BuildRequires:  javapackages-local
@@ -55,16 +52,12 @@ BuildRequires:  maven-reporting-api
 BuildRequires:  maven-reporting-impl
 BuildRequires:  maven-resolver
 BuildRequires:  maven-shared-utils
-BuildRequires:  objectweb-asm
-BuildRequires:  plexus-classworlds
-BuildRequires:  plexus-cli
 BuildRequires:  plexus-i18n
 BuildRequires:  plexus-interpolation
 BuildRequires:  plexus-languages
 BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-xml
-BuildRequires:  qdox
 BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
 BuildRequires:  testng
@@ -187,13 +180,9 @@ mkdir -p lib
 build-jar-repository -s -p lib \
     atinject \
     apache-commons-lang3 \
-    commons-cli \
     commons-compress \
     commons-io \
-    guava/guava \
-    guice/google-guice \
     javacc \
-    jdom2/jdom2 \
     jsr-305 \
     junit \
     maven-common-artifact-filters/maven-common-artifact-filters \
@@ -213,19 +202,14 @@ build-jar-repository -s -p lib \
     maven-resolver/maven-resolver-api \
     maven-resolver/maven-resolver-util \
     maven-shared-utils/maven-shared-utils \
-    objectweb-asm/asm \
     org.eclipse.sisu.plexus \
     org.eclipse.sisu.inject \
-    plexus-classworlds \
-    plexus/cli \
     plexus-containers/plexus-component-annotations \
     plexus-i18n/plexus-i18n \
     plexus/interpolation \
     plexus-languages/plexus-java \
-    plexus-metadata-generator \
     plexus/utils \
     plexus/xml \
-    qdox \
     testng
 
 %{ant} \
