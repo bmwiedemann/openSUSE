@@ -17,7 +17,7 @@
 
 
 Name:           ignition
-Version:        2.18.0
+Version:        2.19.0
 Release:        0
 Summary:        First boot installer and configuration tool
 License:        Apache-2.0
@@ -94,7 +94,10 @@ cp %{SOURCE12} dracut/30ignition/ignition-kargs-helper.sh
 
 %build
 sed -i -e 's|go build -ldflags|go build -buildmode=pie -ldflags|g' build
-env VERSION=%{version} GLDFLAGS='-X github.com/coreos/ignition/v2/internal/distro.selinuxRelabel=false -X github.com/coreos/ignition/v2/internal/distro.writeAuthorizedKeysFragment=false ' bash -x ./build
+VERSION=%{version} GLDFLAGS='-X github.com/coreos/ignition/v2/internal/distro.selinuxRelabel=false -X github.com/coreos/ignition/v2/internal/distro.writeAuthorizedKeysFragment=false ' ./build
+
+%check
+VERSION=%{version} ./build_blackbox_tests
 
 %install
 make -o all install DESTDIR=%{buildroot}

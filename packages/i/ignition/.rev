@@ -764,4 +764,16 @@ This makes it possible to use Ignition also on bare metal (e.g. when dumping ima
 - Increased required Go version</comment>
     <requestid>1158044</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>50c6c32c6483fed9ff316d0db53df837</srcmd5>
+    <version>2.19.0</version>
+    <time>1718123242</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.19.0:
+  * Support LUKS encryption using IBM CEX secure keys on s390x
+  * providers: add &quot;akamai&quot; provider
+- Adding %check section
+- Build scripts are executable by themselves now, remove explicit Bash call</comment>
+    <requestid>1179717</requestid>
+  </revision>
 </revisionlist>

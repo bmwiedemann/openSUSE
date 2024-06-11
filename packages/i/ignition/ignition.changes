@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 10 14:24:04 UTC 2024 - iforster@suse.com
+
+- Update to version 2.19.0:
+  * Support LUKS encryption using IBM CEX secure keys on s390x
+  * providers: add "akamai" provider
+- Adding %check section
+- Build scripts are executable by themselves now, remove explicit
+  Bash call
+
+-------------------------------------------------------------------
 Fri Mar 08 11:49:12 UTC 2024 - iforster@suse.com
 
 - Update to version 2.18.0:

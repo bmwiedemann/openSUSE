@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="version">2.18.0</param>
-    <param name="revision">v2.18.0</param>
+    <param name="version">2.19.0</param>
+    <param name="revision">v2.19.0</param>
     <param name="url">https://github.com/coreos/ignition</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
