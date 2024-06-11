@@ -27,34 +27,22 @@ Source0:        https://repo1.maven.org/maven2/org/apache/maven/doxia/doxia/%{ve
 Source1:        %{name}-build.tar.xz
 Patch0:         0002-Commons-configuration2.patch
 BuildRequires:  ant
-BuildRequires:  apache-commons-cli
-BuildRequires:  apache-commons-collections
 BuildRequires:  apache-commons-configuration2
 BuildRequires:  apache-commons-lang3
 BuildRequires:  apache-commons-text
-BuildRequires:  atinject
 BuildRequires:  fdupes
-BuildRequires:  google-guice
-BuildRequires:  guava
 BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
 BuildRequires:  javapackages-local
-BuildRequires:  jdom2
 BuildRequires:  modello >= 2.0.0
-BuildRequires:  objectweb-asm
 BuildRequires:  parboiled
 BuildRequires:  pegdown
-BuildRequires:  plexus-classworlds
-BuildRequires:  plexus-cli
 BuildRequires:  plexus-containers-component-annotations
 BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-xml
-BuildRequires:  qdox
-BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
 BuildRequires:  unzip
-BuildRequires:  xbean
 BuildRequires:  xmlgraphics-commons
 BuildRequires:  xmlgraphics-fop
 BuildRequires:  xmlunit
@@ -212,29 +200,17 @@ done
 %build
 mkdir -p lib
 build-jar-repository -s lib \
-    atinject \
     apache-commons-text \
-    commons-cli \
     commons-configuration2 \
     commons-lang3 \
-    guava/guava \
-    guice/google-guice \
     httpcomponents/httpclient \
     httpcomponents/httpcore \
-    jdom2/jdom2 \
-    objectweb-asm/asm \
-    org.eclipse.sisu.inject \
     org.eclipse.sisu.plexus \
     parboiled/core \
     pegdown \
-    plexus-classworlds \
-    plexus/cli \
     plexus-containers/plexus-component-annotations \
-    plexus-metadata-generator \
     plexus/utils \
     plexus/xml \
-    qdox \
-    xbean/xbean-reflect \
     xmlgraphics-commons \
     xmlgraphics-fop
 

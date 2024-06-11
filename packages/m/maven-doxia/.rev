@@ -98,4 +98,12 @@
     <comment></comment>
     <requestid>1164216</requestid>
   </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>8b30e95078f635e9f57e4b8ee3abddb1</srcmd5>
+    <version>1.12.0</version>
+    <time>1718123266</time>
+    <user>anag+factory</user>
+    <comment>guice 6.0.0 + dependent changes</comment>
+    <requestid>1179962</requestid>
+  </revision>
 </revisionlist>
