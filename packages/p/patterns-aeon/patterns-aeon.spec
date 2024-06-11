@@ -268,6 +268,7 @@ Requires:       gnome-control-center-goa
 Requires:       gnome-online-accounts
 Requires:       gnome-shell-calendar
 # For seeing thumbnails in Nautilus
+Requires:       jxl-thumbnailer
 Requires:       gdk-pixbuf-thumbnailer
 Requires:       gsf-office-thumbnailer
 Requires:       rsvg-thumbnailer
@@ -390,6 +391,12 @@ Requires:       libvulkan_intel
 ### Support fingerprint scanners boo#1212071
 Requires:       fprintd
 Requires:       fprintd-pam
+
+### Support bluetooth filetransfer boo#1225682
+Requires:       bluez-obexd
+
+### Support CIFS mounting via mount boo#1216138
+Requires:       cifs-utils
 
 %description base
 This is the openSUSE Aeon base system. It contains only fully working immutable desktop system.

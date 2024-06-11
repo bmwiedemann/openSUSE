@@ -65,4 +65,14 @@
 - Require gsettings-backend-dconf (boo#1224473, boo#1224472)</comment>
     <requestid>1175816</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>abce2c1dee9b7656a9615318ba0a7ca6</srcmd5>
+    <version>5.0</version>
+    <time>1718123495</time>
+    <user>anag+factory</user>
+    <comment>- Support bluetooth filetransfer (boo#1225682)
+- Support CIFS mounting via mount (boo#1216138)
+- Support jpegxl thumbnailing (boo#1226172)</comment>
+    <requestid>1179986</requestid>
+  </revision>
 </revisionlist>

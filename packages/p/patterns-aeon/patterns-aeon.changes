@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 11 11:01:47 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Support bluetooth filetransfer (boo#1225682)
+- Support CIFS mounting via mount (boo#1216138)
+- Support jpegxl thumbnailing (boo#1226172)
+
+-------------------------------------------------------------------
 Wed May 22 12:01:35 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Require coreutils-systemd (boo#1224812)
