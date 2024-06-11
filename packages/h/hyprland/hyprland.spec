@@ -20,7 +20,7 @@
 %bcond_without devel
 
 Name:           hyprland
-Version:        0.40.0
+Version:        0.41.0
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
@@ -39,9 +39,9 @@ BuildRequires:  pkgconfig(gbm) >= 17.1.0
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(hwdata)
-BuildRequires:  pkgconfig(hyprcursor) >= 0.1.7
+BuildRequires:  pkgconfig(hyprcursor) >= 0.1.9
 BuildRequires:  pkgconfig(hyprlang) >= 0.3.2
-BuildRequires:  pkgconfig(hyprwayland-scanner)
+BuildRequires:  pkgconfig(hyprwayland-scanner) >= 0.3.8
 BuildRequires:  pkgconfig(libdisplay-info)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.118
 BuildRequires:  pkgconfig(libinput) >= 1.14.0
@@ -145,7 +145,7 @@ The official zsh completion script for %{name}.
 %install
 %meson_install --tags runtime,man%{?with_devel:,devel}
 %if %{with devel}
-rm %{buildroot}/%{_libdir}/libwlroots.a %{buildroot}/%{_libdir}/pkgconfig/wlroots.pc
+rm %{buildroot}/%{_libdir}/libwlroots.a %{buildroot}/%{_datadir}/pkgconfig/wlroots.pc
 rm -rf %{buildroot}/%{_includedir}/wlr/
 %endif
 
