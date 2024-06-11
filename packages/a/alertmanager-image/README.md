@@ -1,7 +1,6 @@
 # The openSUSE Tumbleweed Alertmanager Container Image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-
 Alertmanager container based on the openSUSE Tumbleweed Base Container Image.
 
 ## Licensing
