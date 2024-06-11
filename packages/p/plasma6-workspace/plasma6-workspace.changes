@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 10 12:38:47 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix a regression introduced by the preceding change
+  (kde#487912, boo#1226110):
+  * 0001-Fix-writing-ICEAuthority-file.patch
+
+-------------------------------------------------------------------
 Fri May 31 18:56:41 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patches to fix ksmserver authentication (CVE-2024-36041, boo#1225774):
