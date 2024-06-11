@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 10 19:46:23 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.14:
+  * Update support message variation
+  * Rotate support message
+  * update doctl tests to standard binary pattern
+
+-------------------------------------------------------------------
 Fri Jun 07 19:39:26 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.11.13:
