@@ -2,7 +2,7 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/google/guice.git</param>
-		<param name="revision">5.1.0</param>
+		<param name="revision">6.0.0</param>
 		<param name="versionformat">@PARENT_TAG@</param>
         <param name="filename">google-guice</param>
 	</service>

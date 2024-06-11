@@ -18,7 +18,7 @@
 
 %global short_name guice
 Name:           google-%{short_name}
-Version:        5.1.0
+Version:        6.0.0
 Release:        0
 Summary:        Dependency injection framework for Java 5 and above
 License:        Apache-2.0
@@ -34,6 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  glassfish-servlet-api
 BuildRequires:  google-errorprone-annotations
 BuildRequires:  guava
+BuildRequires:  jakarta-inject
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsr-305
@@ -176,6 +177,7 @@ build-jar-repository -s lib \
     glassfish-servlet-api \
     google-errorprone/annotations \
     guava/guava \
+    jakarta-inject \
     jsr-305 \
     objectweb-asm/asm \
 

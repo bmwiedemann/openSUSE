@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Mon Jun 10 13:45:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 6.0.0
+  * JEE Jakarta Transition
+    + Guice 6.0 adds support for jakarta.inject, the new namespace
+      for the JSR330 spec (after the javax -> jakarta JEE
+      transition).
+      Guice 6.0 is intended to help users migrate their code to the
+      jakarta namespace. It continues to fully support the
+      javax.inject namespace while also mostly supporting the
+      jakarta.inject namespace. The only part of Guice 6.0 that
+      doesn't support jakarta.inject are the bind(..).toProvider
+      methods. Those methods still require javax.inject or
+      com.google.inject Providers.
+    + The Guice 6.0 servlet & persist extensions only support the
+      javax.servlet and javax.persistence namespaces respectively.
+    + Guice 6.0 can help with incremental migrations to the
+      jakarta.inject namespace, by incrementally replacing
+      javax.inject references to jakarta.inject. This works
+      everywhere, except for code where a jakarta Provider is passed
+      to bind(..).toProvider.
+  * Guice Core
+    + Adds jakarta.inject support.
+    + Support Java 21 (via updating ASM to 9.5 and other changes).
+    + Improve AOP support on JVMs such as Azul.
+    + Fix a deadlock or crash associated with recursively loading
+      just-in-time bindings.
+    + Make PrivateModule.binder() non-private, to allow subclass
+      customization, such as calling skipSources.
+    + Fix an endloop loop (that can OOM) in singleton lock cycle
+      detection.
+    + Fix tests to pass on Windows, despite the different line
+      separator.
+    + Improvements to OSGi metadata.
+    + Mark the JSR305 dependency as optional (since it's not
+      required at runtime).
+    + Fix Binder.requestInjection(TypeLiteral<T>, T) to use the
+      TypeLiteral.
+    + Honor scoping annotations on concrete types when provisioned
+      by their @ProvidedBy annotation
+    + Add a way to tell if a class is "enhanced" by Guice, and
+      retrieve the original class.
+    + Ensure the order of bind(...) statements does not matter when
+      referring to JIT bindings.
+    + Implement Matcher.and and Matcher.or as default methods
+      directly in Matcher, so that the AbstractMatcher subclass
+      isn't required.
+    + Mark the error_prone_annotations dependency as optional.
+  * Servlet
+    + Fix an NPE if contextPath is null
+  * Persist
+    + Persist had a number of changes, some of which are backwards
+      incompatible. Notably: injection of EntityManager no longer
+      implicitly starts a unit of work (because this led to leaks).
+      Users can opt-in to the legacy behavior by constructing the
+      JpaPersistModule with a JpaPersistOptions that sets
+      setAutoBeginWorkOnEntityManagerCreation to true.
+    + EntityManager provisioning no longer automatically starts a
+      unit of work.
+    + Ignore multiple start/stop calls, rather than throwing an
+      exception.
+    + Support manually initiated rollbacks.
+    + Don't wrap Object-defined methods (e.g: toString, finalize,
+      equals, hashCode) in transactions.
+
+-------------------------------------------------------------------
 Wed Feb 21 22:04:06 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Clean the spec file and simplify it a bit
@@ -94,7 +160,7 @@ Thu Jun 10 10:16:03 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 - Modified patches:
   * google-guice-throwingproviderbinder.patch
     + do not add the override of virtual function
-	+ build with source/target 8 so that the default override
+    + build with source/target 8 so that the default override
       from the interface can be used
   * guice-4.1-javadoc.patch
     + build javadoc with source level 8
