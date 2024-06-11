@@ -812,4 +812,12 @@
     XML:</comment>
     <requestid>1179157</requestid>
   </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>d67e00d1bbf785134c99c81ba9c6d040</srcmd5>
+    <version>8.3.8</version>
+    <time>1718123306</time>
+    <user>anag+factory</user>
+    <comment>- version update to 8.3.6 [bsc#1222857] [bsc#1222858]</comment>
+    <requestid>1180000</requestid>
+  </revision>
 </revisionlist>

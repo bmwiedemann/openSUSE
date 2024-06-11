@@ -91,7 +91,7 @@ Thu May  9 15:57:56 UTC 2024 - pgajdos@suse.com
 -------------------------------------------------------------------
 Fri Apr 12 07:37:23 UTC 2024 - pgajdos@suse.com
 
-- version update to 8.3.6
+- version update to 8.3.6 [bsc#1222857] [bsc#1222858]
     Core:
         Fixed GH-13569 (GC buffer unnecessarily grows up to GC_MAX_BUF_SIZE when scanning WeakMaps).
         Fixed bug GH-13612 (Corrupted memory in destructor with weak references).
