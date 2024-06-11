@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jun  6 10:11:02 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Change parts of _service to run at buildtime instead to properly
+  utilize the obscpio
+- Remove empty %check section
+- Update to version 0.3.9:
+  * core: forward declare all used ifaces
+  * core: fix external type checks
+  * core: avoid uaf in resource data
+  * source: set user data after checks
+- Updates from version 0.3.8:
+  * core: added support for nullable string types
+  * core: avoid calling inert parents
+  * cmake: add hpp header as target dependency
+- Updates from version 0.3.7:
+  * Added --wayland-enums for core wayland.xml to be compat with
+    the headers
+  * Added raw events for when we don't have a wrapped resource
+- Updates from version 0.3.6:
+  * Fix usage of C++ reserved keywords
+- Updates from version 0.3.5:
+  * Fixed protocol types in events sometimes unrecognized
+
+-------------------------------------------------------------------
 Sat May  4 22:35:17 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Initial packaging of hyprwayland-scanner version 0.3.4

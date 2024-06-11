@@ -16,8 +16,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           hyprwayland-scanner
-Version:        0.3.4
+Version:        0.3.9
 Release:        0
 Summary:        Hyprland implementation of wayland-scanner
 License:        BSD-3-Clause
@@ -41,8 +42,6 @@ A Hyprland implementation of wayland-scanner, in and for C++.
 
 %install
 %cmake_install
-
-%check
 
 %files
 %license LICENSE

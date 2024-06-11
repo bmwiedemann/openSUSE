@@ -8,8 +8,8 @@
 		<param name="revision">@PARENT_TAG@</param>
 		<param name="submodule">enable</param>
 	</service>
-	<service name="tar" mode="manual" />
-	<service name="recompress" mode="manual">
+	<service name="tar" mode="buildtime" />
+	<service name="recompress" mode="buildtime">
 		<param name="file">*.tar</param>
 		<param name="compression">xz</param>
 	</service>
