@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 10 08:58:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 20.26.2:
+  * virtualenv.pyz no longer fails when zipapp path contains a
+    symlink
+  * Fix bad return code from activate.sh if hashing is disabled
+
+-------------------------------------------------------------------
 Sun May 12 12:26:09 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 20.26.1:

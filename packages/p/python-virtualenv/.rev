@@ -801,4 +801,15 @@ ers toes by using a lock while creating the base images. By :user:`gaborbernat`.
     <comment></comment>
     <requestid>1173647</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>c335f9e94edd4c9013e2cd76941522fc</srcmd5>
+    <version>20.26.2</version>
+    <time>1718123232</time>
+    <user>anag+factory</user>
+    <comment>- update to 20.26.2:
+  * virtualenv.pyz no longer fails when zipapp path contains a
+    symlink
+  * Fix bad return code from activate.sh if hashing is disabled</comment>
+    <requestid>1179659</requestid>
+  </revision>
 </revisionlist>
