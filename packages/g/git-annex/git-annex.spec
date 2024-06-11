@@ -17,7 +17,7 @@
 
 
 Name:           git-annex
-Version:        10.20240430
+Version:        10.20240531
 Release:        0
 Summary:        Manage files with git, without checking their contents into git
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND MIT AND GPL-2.0-only
@@ -287,6 +287,7 @@ rm %{buildroot}%{_datadir}/zsh/site-functions/_git-annex
 %{_bindir}/%{name}
 %{_bindir}/%{name}-shell
 %{_bindir}/git-remote-tor-annex
+%{_bindir}/git-remote-annex
 %dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/16x16
 %dir %{_datadir}/icons/hicolor/16x16/apps
@@ -295,6 +296,7 @@ rm %{buildroot}%{_datadir}/zsh/site-functions/_git-annex
 %{_sysconfdir}/xdg/autostart/git-annex.desktop
 %{_mandir}/man1/git-annex*.1%{?ext_man}
 %{_mandir}/man1/git-remote-tor-annex.1%{?ext_man}
+%{_mandir}/man1/git-remote-annex.1%{?ext_man}
 %{_datadir}/applications/git-annex.desktop
 %{_datadir}/icons/hicolor/16x16/apps/git-annex.png
 %{_datadir}/icons/hicolor/scalable/apps/git-annex.svg

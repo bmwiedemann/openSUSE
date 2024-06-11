@@ -303,4 +303,12 @@
     <comment>version update</comment>
     <requestid>1171799</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>e8b695d8c9be3903122821fb352a5b16</srcmd5>
+    <version>10.20240531</version>
+    <time>1718123293</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1179756</requestid>
+  </revision>
 </revisionlist>
