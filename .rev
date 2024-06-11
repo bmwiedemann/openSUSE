@@ -825,4 +825,13 @@ for -ldl. (forwarded request 586626 from jengelh)</comment>
   + Updated translations. (forwarded request 1173999 from dimstar)</comment>
     <requestid>1174002</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>a7dec595535f4a95cc523a60c59ceaf9</srcmd5>
+    <version>15.1.5</version>
+    <time>1718123514</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 15.1.5:
+  + Updated translations. (forwarded request 1180010 from dimstar)</comment>
+    <requestid>1180015</requestid>
+  </revision>
 </revisionlist>
