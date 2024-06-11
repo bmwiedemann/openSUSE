@@ -19,7 +19,7 @@
 %define library_version 1.0.0
 %define library_soversion 1
 Name:           aws-c-common
-Version:        0.9.20
+Version:        0.9.21
 Release:        0
 Summary:        Core C99 package for AWS SDK for C
 License:        Apache-2.0
