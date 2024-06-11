@@ -1,7 +1,6 @@
 # openSUSE Tumbleweed Performance Co-Pilot (pcp): Performance Co-Pilot
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-
 ## Description
 Performance Co-Pilot ([PCP](https://pcp.io)) is a system performance analysis toolkit.
 
