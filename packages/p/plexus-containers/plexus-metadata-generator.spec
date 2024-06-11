@@ -55,6 +55,7 @@ Requires:       apache-commons-cli
 Requires:       atinject
 Requires:       google-guice
 Requires:       guava
+Requires:       jakarta-inject
 Requires:       jdom2
 Requires:       objectweb-asm >= 7
 Requires:       plexus-cli
@@ -158,7 +159,7 @@ install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr plexus-%{comp_name}/target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
 # script
-%jpackage_script org.codehaus.plexus.metadata.PlexusMetadataGeneratorCli "" "" %{name}:atinject:org.eclipse.sisu.plexus:org.eclipse.sisu.inject:guice/google-guice:%{base_name}/plexus-component-annotations:objectweb-asm/asm:plexus-classworlds:plexus/utils:plexus/xml:jdom2/jdom2:commons-cli:qdox:plexus/cli:guava/guava:xbean/xbean-reflect %{name}
+%jpackage_script org.codehaus.plexus.metadata.PlexusMetadataGeneratorCli "" "" %{name}:atinject:jakarta-inject:org.eclipse.sisu.plexus:org.eclipse.sisu.inject:guice/google-guice:%{base_name}/plexus-component-annotations:objectweb-asm/asm:plexus-classworlds:plexus/utils:plexus/xml:jdom2/jdom2:commons-cli:qdox:plexus/cli:guava/guava:xbean/xbean-reflect %{name}
 
 %files -f .mfiles
 %license LICENSE-2.0.txt LICENSE.MIT

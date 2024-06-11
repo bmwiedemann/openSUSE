@@ -116,4 +116,12 @@
     <comment>2.2.0</comment>
     <requestid>1174583</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>41d473ab5fcc6bcf181ebb3d9d6a70b5</srcmd5>
+    <version>2.2.0</version>
+    <time>1718123256</time>
+    <user>anag+factory</user>
+    <comment>guice 6.0.0 + dependent changes</comment>
+    <requestid>1179739</requestid>
+  </revision>
 </revisionlist>

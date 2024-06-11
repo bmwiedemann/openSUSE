@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 10 16:12:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Add dependency on jakarta-inject, needed by google-guice 6.0.0
+
+-------------------------------------------------------------------
 Thu May 16 12:59:05 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 2.2.0
