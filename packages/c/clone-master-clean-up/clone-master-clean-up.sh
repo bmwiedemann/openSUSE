@@ -95,10 +95,11 @@ done
 
 echo 'Clearing systemd journal'
 pushd /etc/systemd > /dev/null
-cp journald.conf journald.conf.bak
+[ -e journald.conf ] && cp journald.conf journald.conf.bak
 echo -e '\nSystemMaxUse=1K' >> journald.conf
 systemctl restart systemd-journald
-mv journald.conf.bak journald.conf
+rm journald.conf
+[ -e journald.conf.bak ] && mv journald.conf.bak journald.conf
 popd > /dev/null
 
 echo 'Clearing machine ID file'

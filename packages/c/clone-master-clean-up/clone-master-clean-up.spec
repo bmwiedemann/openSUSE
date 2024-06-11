@@ -1,7 +1,7 @@
 #
 # spec file for package clone-master-clean-up
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           clone-master-clean-up
-Version:        1.11
+Version:        1.12
 Release:        0
 Summary:        Tool to clean up a system for cloning preparation
 License:        GPL-2.0-or-later

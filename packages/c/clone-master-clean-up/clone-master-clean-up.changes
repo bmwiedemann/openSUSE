@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 19 06:28:29 UTC 2024 - Peter Varkoly <varkoly@suse.com>
+
+- Error message about 'journald.conf' (bsc#1221533)
+  Check if journald.conf does exist.
+- 1.12 
+
+-------------------------------------------------------------------
 Tue Feb  7 12:26:43 UTC 2023 - Peter Varkoly <varkoly@suse.com>
 
 - Bump version to 1.11
