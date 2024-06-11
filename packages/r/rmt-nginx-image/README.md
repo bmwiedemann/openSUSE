@@ -1,7 +1,6 @@
 # The openSUSE Tumbleweed NGINX for SUSE RMT Container Image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-
 NGINX for SUSE RMT container based on the openSUSE Tumbleweed Base Container Image.
 
 ## Licensing
