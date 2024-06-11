@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun  4 04:02:09 UTC 2024 - ming li <mli@suse.com>
+
+- Update to version 4.0.1:
+  * warning messages do not include trace information anymore
+  * mktito: changed name of inputs and outputs for
+    compatibility (bug #63736)
+  * more robust test using Markov parameters for several
+    model reduction routines (bug #65218)
+  * fix graphic styles in pzmap (bug #57716) -doc_control
+    ('license') displays license and copyright information
+
+-------------------------------------------------------------------
 Fri Jan  5 16:14:20 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 3.6.1:

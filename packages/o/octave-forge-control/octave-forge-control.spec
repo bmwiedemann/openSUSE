@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package octave-forge-control
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -18,7 +18,7 @@
 
 %define octpkg  control
 Name:           octave-forge-%{octpkg}
-Version:        4.0.0
+Version:        4.0.1
 Release:        0
 Summary:        Computer-Aided Control System Design (CACSD) Tools
 License:        GPL-3.0-or-later
