@@ -1,7 +1,6 @@
 # openSUSE Tumbleweed BCI Minimal: Base Container image without Zypper
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-
 ## Description
 This image comes without Zypper, but it does have the RPM package manager installed.
 While RPM can install and remove packages, it lacks support for repositories and automated dependency resolution.
