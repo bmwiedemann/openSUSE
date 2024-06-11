@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jun 01 20:57:04 UTC 2024 - jonatas.sgoncalves@gmail.com
+
+- Update to version 1.1.1:
+  * update version to 1.10
+  * update qt6pas url
+  * FIX: Update dependencies definition to QT6
+  * Update README.md
+  * Update README.md
+  * Update app logo and centralize main app window
+  * Disable AF and Mipmap if value is 0
+  * Update io.github.benjamimgois.goverlay.desktop
+  * Add files via upload
+  * Add files via upload
+  * Add files via upload
+
+-------------------------------------------------------------------
 Thu Feb 22 11:54:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not use %attr(644,-,-) %license: this happens to also create

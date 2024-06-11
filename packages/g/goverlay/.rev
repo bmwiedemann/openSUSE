@@ -122,4 +122,24 @@ This package depend on mangohud, so I think mangohud should be accept first.</co
   Rather remove the spurious exec bits from the files during prep. (forwarded request 1149279 from dimstar)</comment>
     <requestid>1149526</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>37eeed881b49eef4182aa64eb4749984</srcmd5>
+    <version>1.1.1</version>
+    <time>1718123366</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.1.1:
+  * update version to 1.10
+  * update qt6pas url
+  * FIX: Update dependencies definition to QT6
+  * Update README.md
+  * Update README.md
+  * Update app logo and centralize main app window
+  * Disable AF and Mipmap if value is 0
+  * Update io.github.benjamimgois.goverlay.desktop
+  * Add files via upload
+  * Add files via upload
+  * Add files via upload
+</comment>
+    <requestid>1179834</requestid>
+  </revision>
 </revisionlist>

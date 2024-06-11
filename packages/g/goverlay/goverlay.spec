@@ -17,7 +17,7 @@
 
 
 Name:           goverlay
-Version:        1.0
+Version:        1.1.1
 Release:        0
 Summary:        Graphical UI to help manage overlays
 License:        GPL-3.0-or-later
@@ -32,12 +32,13 @@ BuildRequires:  libQt5Pas-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-3.0)
+ExclusiveArch:  x86_64 aarch64
 Requires:       mangohud
 Recommends:     Mesa-demo
 Recommends:     vkbasalt
 Recommends:     vulkan-tools
 %if 0%{?suse_version} > 1500
-BuildRequires:  lazarus-lcl-qt5
+BuildRequires:  lazarus-lcl-qt6
 %endif
 
 %description
@@ -54,6 +55,7 @@ chmod -x LICENSE README.md
 %install
 %make_install prefix=%{_prefix} libexecdir=/%{_lib}
 %suse_update_desktop_file -r io.github.benjamimgois.%{name} Development Profiling
+%{__strip} %{buildroot}/usr/lib64/goverlay
 
 %check
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
