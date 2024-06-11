@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 31 22:57:05 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update toml-parser to version 2.0.1.0.
+  ## 2.0.1.0
+
+  * Added `ToValue UTCTime` and `FromValue UTCTime`. These correspond
+    to offset data-times with the timezone translated to UTC.
+
+-------------------------------------------------------------------
 Mon May 13 16:26:55 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update toml-parser to version 2.0.0.0 revision 2.
