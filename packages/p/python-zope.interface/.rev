@@ -331,4 +331,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1174206</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>bdb5b2a090677cc265de6372f6bb7141</srcmd5>
+    <version>6.4.post2</version>
+    <time>1718123230</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.4.post2:
+  * Publish missing Windows wheels, second attempt.
+  * Publish missing Windows wheels.
+  * The sdist of version 6.4 was uploaded to PyPI as
+    zope_interface-6.4.tar.gz instead of
+    zope.interface-6.4-py2.tar.gz which cannot be installed by
+    zc.buildout.  This release is a re-release of version 6.4
+    with the correct sdist name.
+  * Adjust for incompatible changes in Python 3.13b1.
+  * Build windows wheels on GHA.</comment>
+    <requestid>1179654</requestid>
+  </revision>
 </revisionlist>

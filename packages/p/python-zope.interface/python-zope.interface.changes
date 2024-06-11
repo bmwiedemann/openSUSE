@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 10 08:29:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.4.post2:
+  * Publish missing Windows wheels, second attempt.
+  * Publish missing Windows wheels.
+  * The sdist of version 6.4 was uploaded to PyPI as
+    zope_interface-6.4.tar.gz instead of
+    zope.interface-6.4-py2.tar.gz which cannot be installed by
+    zc.buildout.  This release is a re-release of version 6.4
+    with the correct sdist name.
+  * Adjust for incompatible changes in Python 3.13b1.
+  * Build windows wheels on GHA.
+
+-------------------------------------------------------------------
 Wed May  8 10:59:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.3:
