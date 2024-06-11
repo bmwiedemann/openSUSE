@@ -17,7 +17,7 @@
 
 
 Name:           goxel
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        Voxel graphics editor
 License:        GPL-3.0-only
@@ -71,6 +71,6 @@ sed -i 's/\${SNAP}\/icon.png/%{name}/g' %{buildroot}%{_datadir}/applications/%{n
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
-%{_datadir}/metainfo/io.github.guillaumechereau.Goxel.appdata.xml
+%{_datadir}/metainfo/io.github.guillaumechereau.Goxel.metainfo.xml
 
 %changelog
