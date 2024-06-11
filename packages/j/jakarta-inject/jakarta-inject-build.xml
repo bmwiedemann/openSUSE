@@ -12,6 +12,8 @@
   <property name="project.artifactId" value="jakarta.inject-api"/>
   <property name="project.version" value="2.0.1"/>
 
+  <property name="spec.version" value="2.0"/>
+
   <property name="compiler.release" value="8"/>
   <property name="compiler.source" value="1.${compiler.release}"/>
   <property name="compiler.target" value="${compiler.source}"/>
@@ -53,7 +55,7 @@
       <src>
         <pathelement location="${build.srcDir}"/>
       </src>
-	  <exclude name="**/module-info.java"/>
+      <exclude name="**/module-info.java"/>
     </javac>
     <!-- compile the module-info.java -->
     <javac destdir="${build.outputDir}"
@@ -68,7 +70,7 @@
       <src>
         <pathelement location="${build.srcDir}"/>
       </src>
-	  <include name="**/module-info.java"/>
+      <include name="**/module-info.java"/>
     </javac>
     <mkdir dir="${build.outputDir}/META-INF"/>
     <copy todir="${build.outputDir}/META-INF">
@@ -117,20 +119,20 @@
          basedir="${build.outputDir}" 
          excludes="**/package.html">
       <manifest>
-		<attribute name="Bundle-Description" value="Jakarta Dependency Injection"/>
-		<attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
-		<attribute name="Bundle-ManifestVersion" value="2"/>
-		<attribute name="Bundle-Name" value="Jakarta Dependency Injection"/>
-		<attribute name="Bundle-SymbolicName" value="${project.groupId}.${project.artifactId}"/>
-		<!-- <attribute name="Bundle-SymbolicName" value="javax.inject"/> -->
-		<attribute name="Bundle-Version" value="${project.version}"/>
-		<attribute name="Export-Package" value="javax.inject;version=&quot;${project.version}&quot;"/>
-		<attribute name="Implementation-Version" value="1.1"/>
-		<attribute name="JavaPackages-ArtifactId" value="${project.artifactId}"/>
-		<attribute name="JavaPackages-GroupId" value="${project.groupId}"/>
-		<attribute name="JavaPackages-Version" value="${project.version}"/>
-		<attribute name="Multi-Release" value="true"/>
-		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
+        <attribute name="Bundle-Description" value="Jakarta Dependency Injection"/>
+        <attribute name="Bundle-DocURL" value="https://www.eclipse.org"/>
+        <attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+        <attribute name="Bundle-ManifestVersion" value="2"/>
+        <attribute name="Bundle-Name" value="Jakarta Dependency Injection"/>
+        <attribute name="Bundle-SymbolicName" value="${project.groupId}.${project.artifactId}"/>
+        <attribute name="Bundle-Vendor" value="Eclipse Foundation"/>
+        <attribute name="Bundle-Version" value="${project.version}"/>
+        <attribute name="Export-Package" value="jakarta.inject;version=&quot;${project.version}&quot;"/>
+        <attribute name="Implementation-Version" value="${spec.version}"/>
+        <attribute name="JavaPackages-ArtifactId" value="${project.artifactId}"/>
+        <attribute name="JavaPackages-GroupId" value="${project.groupId}"/>
+        <attribute name="JavaPackages-Version" value="${project.version}"/>
+        <attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
       </manifest>
     </jar>
   </target>

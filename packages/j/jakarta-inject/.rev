@@ -7,4 +7,13 @@
     <comment>new package</comment>
     <requestid>1179677</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>69507052417b0e0cf6a005af1a65b9bb</srcmd5>
+    <version>2.0.1</version>
+    <time>1718123265</time>
+    <user>anag+factory</user>
+    <comment>Fix bundle manifest
+put to adi:2</comment>
+    <requestid>1179897</requestid>
+  </revision>
 </revisionlist>
