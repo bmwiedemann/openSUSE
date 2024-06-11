@@ -1,7 +1,6 @@
 # openSUSE Tumbleweed BCI Micro: Suitable for deploying static binaries
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-
 ## Description
 This image is similar to Minimal but without the RPM package manager.
 The primary use case for the image is deploying static binaries produced
