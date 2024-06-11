@@ -1,0 +1,46 @@
+From: Egbert Eich <eich@suse.com>
+Date: Thu May 16 18:34:42 2024 +0200
+Subject: Move 'site' config scope before 'system' scope
+Patch-mainline: Not yet
+Git-commit: 55febdb317328ac0e60cb486eac27fe1371cf120
+References: 
+
+For spack, the 'site' scope if meant for the Spack installation
+which a system may have multiple of. Therefore, it lives in
+the Spack installation it is meant for. It should override the
+'system-wide' settings from the 'system' scope which is usually
+located in /etc/spack.
+Our Spack package is meant to be system wide, the site scope
+will therefore host vendor provided or generated configs which
+a local admin should therefore be able to override.
+It must therefore have a lower priority that the system scope.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ lib/spack/spack/config.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+diff --git a/lib/spack/spack/config.py b/lib/spack/spack/config.py
+index 2a2f180f..3eac8542 100644
+--- a/lib/spack/spack/config.py
++++ b/lib/spack/spack/config.py
+@@ -832,15 +832,15 @@ def create() -> Configuration:
+ 
+     disable_local_config = "SPACK_DISABLE_LOCAL_CONFIG" in os.environ
+ 
++    # Site configuration is per spack instance, for sites or projects
++    # No site-level configs should be checked into spack by default.
++    configuration_paths.append(("site", os.path.join(spack.paths.etc_path)))
++
+     # System configuration is per machine.
+     # This is disabled if user asks for no local configuration.
+     if not disable_local_config:
+         configuration_paths.append(("system", spack.paths.system_config_path))
+ 
+-    # Site configuration is per spack instance, for sites or projects
+-    # No site-level configs should be checked into spack by default.
+-    configuration_paths.append(("site", os.path.join(spack.paths.etc_path)))
+-
+     # Python package's can register configuration scopes via entry_points
+     configuration_paths.extend(config_paths_from_entry_points())
+ 

@@ -503,4 +503,41 @@
     <comment></comment>
     <requestid>1168847</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>ba33275df2fd4e13f1643a16d5b36009</srcmd5>
+    <version>0.22.0</version>
+    <time>1718123475</time>
+    <user>anag+factory</user>
+    <comment>- Move-site-config-scope-before-system-scope.patch:
+  Give 'site' scope a lower precedence than 'system' scope.
+  The 'site wide' config scope was meant to be per Spack
+  installation. A single system may have multiple Spack
+  installations, so was is meant for overriding the
+  'system' wide setting per installation.
+  The Spack package is OS-vendor provided. The vendor provides
+  pr generates a configuration which a local admin may want to
+  override. This can now be done from within the 'system' scope.
+  Previously the vendor-supplied configuration was mixed with
+  the 'system' scope - local modifications collided with
+  vendor autoconfiguration.
+- Add a build-dependency package which will cause build tools
+  and libraries used frequently by Spack to be installed.
+  All these packages are recommended by the main Spack package
+  already. This package may be used in environments where the
+  installation of recommended packages is disabled by default.
+
+- Update Spack to version 0.22.0
+  * New features:
+    - Compiler dependencies:
+      Spack is in the process of making compilers proper dependencies.
+      For this, compiler dependencies are moving from `compilers.yaml`
+      to `packages.yaml` to make this consistent with other externals.
+      For this, dependency graphs will not show the compiler runtime
+      libraries like `gcc-runtime` or `libgfortran`.
+      To minimize disruption, an existing `compilers.yaml` file will
+      continue to work, however, users are encourage to migrate
+      before v0.23.
+      + Packages compiled with `%gcc` now depend on a new package</comment>
+    <requestid>1179953</requestid>
+  </revision>
 </revisionlist>

@@ -14,33 +14,44 @@ addpath() {
 
 find_packages() {
     if [ $scope = user ]; then
-	test -e  /etc/spack/packages.yaml && mv /etc/spack/packages.yaml /etc/spack/packages.yaml.old
+	# In case a packages.yaml is left in the system scope
+	# from an old installation get it out of the way.
+	if [ ! -e /usr/etc/spack/packages.yaml ]; then
+	    test -e  /etc/spack/packages.yaml -a ! -e /etc/packages.yaml.rpmsave && \
+		mv /etc/spack/packages.yaml /etc/spack/packages.yaml.rpmsave
+	    rm -f /etc/spack/packages.yaml
+	fi
+	test -e  /usr/etc/spack/packages.yaml -a ! -e /usr/etc/packages.yaml.rpmsave && \
+	    mv /usr/etc/spack/packages.yaml /usr/etc/spack/packages.yaml.rpmsave
 	# drop all root rights, when calling external find
 	sudo -u nobody PATH=${mypath}:${PATH} spack external find --scope user --all #--exclude 'installdbgsymbols'
 	if [ -e /var/lib/nobody/.spack/packages.yaml ] ; then
-	    mv -v /var/lib/nobody/.spack/packages.yaml /etc/spack/packages.yaml
-	    chown root:root /etc/spack/packages.yaml
+	    chown root:root /var/lib/nobody/.spack/packages.yaml
+	    mv -v /var/lib/nobody/.spack/packages.yaml /usr/etc/spack/packages.yaml
+	    rm -rf /var/lib/nobody/.spack
 	fi
-	rm -r /var/lib/nobody/.spack
     else
 	# May run in a container...
 	PATH=${mypath}:${PATH} spack external find --scope system --all #--exclude 'installdbgsymbols'
     fi
+    test -e /usr/etc/spack/packages.yaml.rpmsave && \
+	{ diff -q /usr/etc/spack/packages.yaml.rpmsave /usr/etc/spack/packages.yaml &> /dev/null && \
+	rm /usr/etc/spack/packages.yaml.rpmsave; } || true
 }
 
 find_compilers() {
     if [ $scope = user ]; then
-	test -e  /etc/spack/compilers.yaml && mv /etc/spack/compilers.yaml /etc/spack/compilers.yaml.old
-	# drop all root rights, when calling external find
-	sudo -u nobody PATH=${cpath}:${PATH} spack compiler find --scope user
-	if [ -e /var/lib/nobody/.spack/compilers.yaml ] ; then
-	    mv -v /var/lib/nobody/.spack/compilers.yaml /etc/spack/compilers.yaml
-	    chown root:root /etc/spack/compilers.yaml
-	fi
-    else
-	# May run in a container...
-	PATH=${cpath}:${PATH} spack compiler find --scope system
+	test -e  /etc/spack/compilers.yaml \
+	     -a ! -e /etc/spack/compilers.yaml.rpmsave && \
+	    mv /etc/spack/compilers.yaml /etc/spack/compilers.yaml.rpmsave
+	rm -f /etc/spack/compilers.yaml
     fi
+    diff -q /etc/spack/compilers.yaml.rpmsave /etc/spack/compilers.yaml &> /dev/null \
+	&& rm /etc/spack/compilers.yaml.rpmsave
+    test -e /etc/spack/compilers.yaml.rpmsave && \
+	echo -e "/etc/spack/compilers.yaml.rpmsave exists,\n"\
+	     " compilers are handled in /etc/spack/packages.yaml, now.\n"\
+	     " Please check files for compilers you may have added manually" || true
 }
 
 if [ -e /etc/spack/no_rpm_trigger ] ; then

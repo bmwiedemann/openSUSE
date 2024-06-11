@@ -63,7 +63,7 @@ ExclusiveArch:  do_not_build
 %define mypython python%{?mypyver}
 
 Name:           spack
-Version:        0.21.2
+Version:        0.22.0
 Release:        0
 Summary:        Package manager for HPC systems
 License:        Apache-2.0 AND MIT AND Python-2.0 AND BSD-3-Clause
@@ -72,7 +72,9 @@ Source0:        https://github.com/spack/spack/archive/v%{version}.tar.gz#/spack
 Source1:        README.SUSE
 Source2:        spack-rpmlintrc
 Source3:        run-find-external.sh.in
-Source4:        https://en.opensuse.org/index.php?title=Spack&action=raw&ref=157522#/README-oo-wiki
+# without `--header "Accept-Language: en" en.opensuse.org returns 406
+#Source4:        https://en.opensuse.org/index.php?title=Spack&action=raw&ref=157522#/README-oo-wiki
+Source4:        README-oo-wiki
 # Source5 is from https://docs.python.org/3/objects.inv, but has permanent changes so using a static version
 Source5:        objects.inv
 Source6:        spack_get_libs.sh
@@ -83,6 +85,7 @@ Patch6:         Fix-error-during-documentation-build-due-to-recursive-module-inc
 Patch7:         Fix-Spinx-configuration-to-avoid-throwing-errors.patch
 Patch8:         Set-modules-default-to-lmod.patch
 Patch9:         Add-support-for-container-building-using-a-SLE-base-container.patch
+Patch10:        Move-site-config-scope-before-system-scope.patch
 %if %{without doc}
 BuildRequires:  %{mypython}-urllib3
 BuildRequires:  fdupes
@@ -107,6 +110,7 @@ Requires:       make
 Requires:       patch
 Requires:       polkit
 Requires:       sudo
+Requires:       system-user-nobody
 Requires:       tar
 Requires:       unzip
 Requires:       xz
@@ -194,6 +198,24 @@ using different compilers, options, and MPI implementations.
 
 This package contains the info page.
 
+%package build-dependencies
+Summary:        Spack Build Dependencies
+Requires:       bison
+Requires:       cmake-full
+Requires:       flex
+Requires:       libcurl-devel
+Requires:       libopenssl-devel
+Requires:       libtool
+Requires:       libzip-devel
+Requires:       ncurses-devel
+Requires:       xz-devel
+Requires:       zip
+
+%description build-dependencies
+This package provides dependencies to packages of some frequently used
+build tools. If Spack finds these on the system it will not attempt to
+build them.
+
 %prep
 %setup -q
 %autopatch -p1
@@ -246,23 +268,6 @@ grep -rl '/var/lib/spack/repos' | grep -v "cmd/list.py" | \
 # spack cannot run without knowing at least the compiler, so we inject
 # a dummy one
 mkdir -p ${HOME}/.spack/linux/
-cat >  ${HOME}/.spack/linux/compilers.yaml <<EOF
-compilers:
-- compiler:
-    spec: gcc@7.5.0
-    paths:
-      cc: %{_bindir}/gcc
-      cxx: %{_bindir}/g++
-      f77: %{_bindir}/gfortran
-      fc: %{_bindir}/gfortran
-    flags: {}
-    operating_system: SUSE
-    target: x86_64
-    modules: []
-    environment:
-      unset: []
-    extra_rpaths: []
-EOF
 source /usr/share/spack/setup-env.sh
 make man info || { cat /tmp/sphinx-err-*.log; exit 1; } #text dirhtml
 rm -rf $tmpdir
@@ -295,7 +300,7 @@ cp %{S:1} .
 rm -rf lib/spack/spack/test
 rm -rf share/spack/qa
 rm -rf share/spack/logo
-rm -rf var/spack/repos/builtin.mock  var/spack/gpg.mock var/spack/mock_configs
+rm -rf var/spack/repos/builtin.mock  var/spack/gpg.mock var/spack/mock_configs var/spack/repos/duplicates.test
 rm -rf lib/spack/external/ruamel/yaml/.ruamel
 find . -type f -name .gitignore -delete
 find . -type f -name .nojekyll -delete
@@ -364,26 +369,6 @@ EOF
 
 # make shell scripts executeable
 find %{buildroot}%{_localstatedir}/lib/spack/ -type f -name \*.sh  -exec chmod 755 {} \;
-
-# Create %{_sysconfdir}/spack/compilers.yaml
-mkdir -p %{buildroot}%{spack_dir}/etc/spack/
-cat >  %{buildroot}%{spack_dir}/etc/spack/compilers.yaml <<EOF
-compilers:
-- compiler:
-    spec: gcc@GCC_FULL_VERSION
-    paths:
-      cc: %{_bindir}/gcc-GCC_VERSION
-      cxx: %{_bindir}/g++-GCC_VERSION
-      f77: %{_bindir}/gfortran-GCC_VERSION
-      fc: %{_bindir}/gfortran-GCC_VERSION
-    flags: {}
-    operating_system: SUSE_VERSION
-    target: HOSTTYPE
-    modules: []
-    environment:
-      unset: []
-    extra_rpaths: []
-EOF
 
 # Create %{_sysconfdir}/profile.d/spack.sh
 # This file properly sets MODULEPATH so lua-lmod can find the modules created by spack
@@ -479,10 +464,6 @@ cp -r texinfo/Spack.info.gz %{buildroot}%{_infodir}
 %pre -f %{name}.pre
 
 %post
-# Replace %{_sysconfdir}/spack/compilers.yaml
-export GCC_VERSION=`gcc -dumpversion`
-export GCC_FULL_VERSION=`gcc -dumpfullversion`
-#sed -i "s@GCC_FULL_VERSION@$GCC_FULL_VERSION@" %{spack_dir}/etc/spack/modules.yaml
 if [ -e /etc/os-release ] ;  then
   source /etc/os-release
   if [ "${ID}" = "opensuse-tumbleweed" ] ; then
@@ -490,12 +471,8 @@ if [ -e /etc/os-release ] ;  then
   else
     export SPACK_NAME="${ID/-/_}${VERSION_ID/.*/}"
   fi
-  sed -i "s@SUSE_VERSION@$SPACK_NAME@" %{spack_dir}/etc/spack/compilers.yaml
   sed -i "s@SUSE_VERSION@$SPACK_NAME@g" %{_sysconfdir}/profile.d/spack.sh
 fi
-sed -i "s@GCC_FULL_VERSION@$GCC_FULL_VERSION@" %{spack_dir}/etc/spack/compilers.yaml
-sed -i "s@GCC_VERSION@$GCC_VERSION@" %{spack_dir}/etc/spack/compilers.yaml
-sed -i "s@HOSTTYPE@$HOSTTYPE@" %{spack_dir}/etc/spack/compilers.yaml
 mkdir -p /opt/spack
 chgrp spack /opt/spack
 chmod 0775 /opt/spack
@@ -521,7 +498,6 @@ chmod 0775 /opt/spack
 %dir %{_prefix}/etc
 %endif
 %{_prefix}/etc/spack
-%ghost %config %{_sysconfdir}/spack/compilers.yaml
 %attr(0775, root, spack) %{_localstatedir}/lib/spack/junit-report
 %attr(0775, root, spack) %{spack_dir}/opt
 %attr(0775, root, spack) %{_localstatedir}/cache/spack
@@ -544,6 +520,8 @@ chmod 0775 /opt/spack
 %license COPYRIGHT LICENSE-APACHE LICENSE-MIT
 %doc CHANGELOG.md NOTICE README.md
 %{_datarootdir}/spack/repos
+
+%files build-dependencies
 
 #%{without doc}
 %else

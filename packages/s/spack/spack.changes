@@ -1,4 +1,212 @@
 -------------------------------------------------------------------
+Thu May 16 17:03:50 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Move-site-config-scope-before-system-scope.patch:
+  Give 'site' scope a lower precedence than 'system' scope.
+  The 'site wide' config scope was meant to be per Spack
+  installation. A single system may have multiple Spack
+  installations, so was is meant for overriding the
+  'system' wide setting per installation.
+  The Spack package is OS-vendor provided. The vendor provides
+  pr generates a configuration which a local admin may want to
+  override. This can now be done from within the 'system' scope.
+  Previously the vendor-supplied configuration was mixed with
+  the 'system' scope - local modifications collided with
+  vendor autoconfiguration.
+- Add a build-dependency package which will cause build tools
+  and libraries used frequently by Spack to be installed.
+  All these packages are recommended by the main Spack package
+  already. This package may be used in environments where the
+  installation of recommended packages is disabled by default.
+
+-------------------------------------------------------------------
+Mon May 13 13:12:22 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Update Spack to version 0.22.0
+  * New features:
+    - Compiler dependencies:
+      Spack is in the process of making compilers proper dependencies.
+      For this, compiler dependencies are moving from `compilers.yaml`
+      to `packages.yaml` to make this consistent with other externals.
+      For this, dependency graphs will not show the compiler runtime
+      libraries like `gcc-runtime` or `libgfortran`.
+      To minimize disruption, an existing `compilers.yaml` file will
+      continue to work, however, users are encourage to migrate
+      before v0.23.
+      + Packages compiled with `%gcc` now depend on a new package
+        `gcc-runtime`, which contains a copy of the shared compiler
+        runtime libraries. This enables gcc runtime libraries to be
+        installed and relocated when using a build cache.
+        When building minimal Spack-generated container images it
+        is no longer necessary to install libgfortran, libgomp
+        etc. using the system package manager.
+      + Packages compiled with `%oneapi` now depend on a new package
+        `intel-oneapi-runtime`. This is similar to gcc-runtime.
+        This allows us to model library soname compatibility and
+        allows compilers like %oneapi to provide virtuals like sycl
+        (which can also be provided by standalone libraries).
+      + Changes to the optimization criteria of the solver improve
+        the hit-rate of buildcaches by a fair amount. The solver has
+        more relaxed compatibility rules and will not try to strictly
+        match compilers or targets of reused specs. Users can still
+        enforce the previous strict behavior with require: sections
+        in packages.yaml.
+        Note that to enforce correct linking, Spack will not reuse
+        old %gcc and %oneapi specs that do not have the runtime
+        libraries as a dependency.
+      + Spack will reuse specs built with compilers that are not
+        explicitly configured in `compilers.yaml`. Because we can
+        now keep runtime libraries in build cache, we do not require
+        you to also have a local configured compiler to use the
+        runtime libraries. This improves reuse in buildcaches and
+        avoids conflicts with OS updates that happen underneath
+        Spack.
+      + Binary compatibility on `linux` is now based on the `libc`
+        version, instead of on the OS tag. Spack builds now detect
+        the host `libc` (`glibc`) and add it as an implicit external
+        node in the dependency graph. Binaries with a `libc` with
+        the same name and a version less than or equal to that of
+        the detected libc can be reused.
+      + Each package that can provide a compiler is now detectable
+        using spack external find. External packages defining
+        compiler paths are effectively used as compilers, and spack
+        external find -t compiler` can be used as a substitute for
+        `spack compiler find. More details on this transition are
+        in [the docs](https://spack.readthedocs.io/en/latest/getting_started.html#manual-compiler-configuration).
+    - Improved spack find UI for Environments:
+      `spack find` in environments shows information about
+      * What are the roots
+      * Which ones are installed / not installed
+      * What's been added that still needs to be concretized
+      much more clearly. An option `--only-roots`/`-r` has been added
+      to `spack find` that will only show env roots, if you don't want
+      to look at all the installed specs.
+    - Improved command-line string quoting
+      Spack now parses specs in the CLI respecting shell quoting. Instead
+      of:
+      ```
+      spack install zlib cflags=\"-O2 -g\"
+      ```
+      you should use:
+      ```
+      spack install zlib cflags="-O2 -g"
+      ```
+      The old form will now result in an error.
+      This allows to include special characters, flags like
+      ```
+      spack intall zlib ldflags='-Wl,-rpath=$ORIGIN/_libs'
+      ```
+      may now be supplied. To reduce ambiguities during paring, quotes
+      are no longer allowed around `=` and `==`. Commands like:
+      ```
+      spack install zlib cflags = "-O2 -g"
+      ```
+      will result in an error.
+    - Revert default spack install behavior to `--reuse`
+      In v0.20 the default concretizer behavior was changed from
+      `--reuse` to `--reuse-deps`, which meant that *every* `spack
+      install` invocation would attempt to build a new version of
+      the requested package / any environment roots.
+      While this is a common ask for *upgrading* and for *developer
+      workflows*, it shouldn't be the default for a package manager.
+    - The `install` command now offers the three options:
+      * `--reuse` (default): reuse as many existing installations
+        as possible.
+      * `--reuse-deps` or `--fresh-roots`: upgrade (freshen) roots
+        but reuse dependencies if possible.
+      * --fresh: install fresh versions of requested packages
+        (roots) and their dependencies.
+    - More control over reused specs
+      Spack now provides better control over which packages to reuse
+      and how. There is a new `concretizer:reuse` config option,
+      which accepts the following properties:
+      * `roots`: true to reuse roots, false to reuse just dependencies
+      * `exclude`: list of constraints used to select which specs
+        not to reuse.
+      * `include`: list of constraints used to select which specs
+        to reuse.
+      * `from`: list of sources for reused specs (some combination
+         of `local`, `buildcache`, or `external`).
+    - New `conflict:` and `prefer:` syntax for package preferences
+      Instead of having to express conflicts and preferences just
+      using `require:`, these can now be expressed explicitly.
+    - `include_concrete` in environments
+      This directive allows to build on the *cncrete* contents of
+      another environment without changing this environment by
+      includeing the concrete specs from this environment's
+      `spack.lock`:
+      ```
+       spack:
+         specs: []
+         concretizer:
+             unify: true
+         include_concrete:
+         - /path/to/environment1
+         - /path/to/environment2
+      ```
+      When this environment is concretized, it will bring the
+      already concrete specs from `environment1` and `environment2`,
+      and build on top of them without changing them.
+    - `python-venv` isolation
+      Spack now insert a small `python-venv` package in between
+      `python` and packages that need to install Python code to
+      isolate Spack's build environment and shield Spack form
+      potential issues with an external python.
+    - Packages can now specify whether they may be distributed in
+      source or binary form.
+  * New commands, options and directives
+    - Allow packages to be pushed to build cache after install from
+      source.
+    _ `spack develop`: stage build artifacts in same root as non-dev
+      builds.
+    - Don't delete spack develop build artifacts after install.
+    - `spack find`: add options for local/upstream only.
+    - `spack logs`: print log files for packages (either partially
+      built or installed).
+    - `patch`: support reversing patches.
+    - `develop`: Add `-b`/`--build-directory` option to set
+      build_directory package attribute.
+    - `spack list`: add `--namesapce` / `--repo` option.
+    - spack gc: add options for environments and build dependencies.
+    - Add `--create` to `spack env activate`.
+  * Performance improvements
+    - environment.py: Fix excessive re-reads.
+    - ruamel yaml: Fix quadratic complexity bug.
+    - Refactor to improve `spec format` speed.
+    - Do not acquire a write lock on the env post install if no views.
+    - `asp.py`: fewer calls to `spec.copy()`
+    - `spec.py`: early return in `__str__`
+    - avoid `jinja2` import at startup unless needed.
+  * Other new features of note
+    - `archspec`: update to v0.2.4: bugfixes for `neoverse-v1` and
+      `neoverse-v2` detection.
+    - `spack config` get/blame: with no args, show entire config
+    - `spack env create <env>`: dir if dir-like
+    - Add handling of custom ssl certs in urllib ops.
+    - Add ability to rename environments.
+    - Add config option and compiler support to reuse across OS's.
+    - Support for prereleases.
+    - Only reuse externals when configured.
+    - Environments: Add support for including views.
+  * Binary caches
+    Build cache: make signed/unsigned a mirror property.
+  * Removals, deprecations, and syntax changes
+    - Remove `dpcpp` compiler and package.
+    - `spack load`: remove `--only` argument.
+  * Notable Bugfixes
+    - repo.py: drop deleted packages from provider cache.
+    - Allow `+` in module file names.
+    - `cmd/python`: use runpy to allow multiprocessing in scripts.
+    - Show extension commands with `spack -h`.
+    - Support environment variable expansion inside module
+      projections.
+    - Alert user to failed concretizations.
+    - `shell`: fix `zsh` color formatting for PS1 in environments.
+    - `spack mirror create --all`: include patches.
+- Update `run-find-external.sh` script to address the deprecation
+  of `compilers.yaml`.
+
+-------------------------------------------------------------------
 Thu Apr 18 06:54:54 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - Add lsb-release and zstd as new requires to match upstream
