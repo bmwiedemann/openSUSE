@@ -578,9 +578,6 @@ Prefer: -cni-plugins -cni
 # have choice for suse-kernel-rpm-scriptlets: sdbootutil-rpm-scriptlets suse-module-tools-scriptlets
 Prefer: -sdbootutil-rpm-scriptlets
 
-# have choice for chromedriver needed by openQA-devel: chromedriver ungoogled-chromium-chromedriver
-Prefer: -ungoogled-chromium-chromedriver
-
 # have choice for pkgconfig(libmarkdown): libmarkdown-devel libmarkdown2-devel
 Prefer: -libmarkdown2-devel
 
@@ -637,6 +634,9 @@ Preinstall: fillup glibc grep pam permissions rpm rpm-config-SUSE sed tar
 Preinstall: libbz2-1 libgcc_s1 libncurses6 libreadline8 libz1 libselinux1
 Preinstall: libgcrypt20 libgpg-error0 liblzma5 libcap2 libacl1 libattr1
 Preinstall: libpopt0 libelf1 libzstd1 libpcre2-8-0
+
+# unresolvable: have choice for pkgconfig(re2): re2-10-devel re2-devel 
+Prefer: -re2-10-devel
 
 #Runscripts: aaa_base
 
@@ -757,7 +757,6 @@ Prefer: lightdm-gtk-greeter:lightdm-gtk-greeter-branding-upstream
 Prefer: mate-desktop-gschemas:mate-desktop-gschemas-branding-upstream
 Prefer: NetworkManager:NetworkManager-branding-openSUSE
 Prefer: PackageKit:PackageKit-branding-upstream
-Prefer: sddm:sddm-branding-upstream
 Prefer: sway:sway-branding-upstream
 Prefer: systemd-presets-branding-openSUSE
 Prefer: wallpaper-branding-openSUSE
@@ -878,8 +877,6 @@ Conflict: systemd-mini-devel:systemd
 # Cmake exists as a -mini flavor, which is not linked against curl.
 Prefer: cmake-mini
 
-Prefer: -re2-10-devel
-
 # python-pip inside OBS never connects to the net, so we don't use certs
 Ignore: python310-pip:ca-certificates
 Ignore: python311-pip:ca-certificates
@@ -959,7 +956,6 @@ Prefer: -libpxbackend-1_0
 Prefer: -scout-command-not-found
 
 # have choice for kubernetes-kubelet-common (de-prefer the old versions, ensuring to have a new unresolvable when a new version shows up)
-Prefer: -kubernetes1.20-kubelet-common -kubernetes1.21-kubelet-common -kubernetes1.22-kubelet-common -kubernetes1.23-client-common
 Prefer: -kubernetes1.24-client-common -kubernetes1.25-client-common
 
 # have choice for cmake(KWinDBusInterface) >= MACRO: deepin-kwin-devel kwin5-devel
@@ -1027,9 +1023,6 @@ Prefer: -libomp15-devel -libomp16-devel -libomp17-devel
 Prefer: -python310-jupyterlab
 Prefer: -python310-nbclassic -python312-nbclassic
 prefer: -python310-notebook -python312-notebook
-
-# have choice for container:opensuse/nginx:latest: container:opensuse-nginx-1.25 container:opensuse-nginx-image
-Prefer: -container:opensuse-nginx-1.25
 
 # have choice for (sysvinit(network) or service(network)) needed by sysconfig: NetworkManager wicked-service
 Prefer: -NetworkManager
@@ -1506,8 +1499,6 @@ Prefer: libsane1
 Prefer: libglfw3
 # have choice for (xclip or wl-clipboard) needed by password-store: wl-clipboard xclip
 Prefer: -wl-clipboard
-# have choice for pkgconfig(libhs): hyperscan-devel vectorscan-devel. hyperscan is no longer free - de-prefer it
-Prefer: -hyperscan-devel
 
 Ignore: installation-images-openSUSE:cracklib-dict-full
 Ignore: openSUSE-release:openSUSE-release-ftp,openSUSE-release-dvd5,openSUSE-release-biarch,openSUSE-release-livecdkde,openSUSE-release-livecdgnome
