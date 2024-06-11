@@ -21,7 +21,7 @@
 %define so_gucharmap 7
 %define pc_api 2.90
 Name:           gucharmap
-Version:        15.1.4
+Version:        15.1.5
 Release:        0
 Summary:        A Featureful Unicode Character Map
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
