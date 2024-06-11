@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun  9 10:39:23 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.6.4
+ * return empty array if one provided to date2num (issue #315).
+ * numpy 2.0 compatibility (issue #325).
+ * handle nan/inf in num2date (issue #328).
+- Build PEP517
+
+-------------------------------------------------------------------
 Fri Dec  1 11:31:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.3:

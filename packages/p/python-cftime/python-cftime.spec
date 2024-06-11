@@ -1,7 +1,7 @@
 #
 # spec file for package python-cftime
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cftime
-Version:        1.6.3
+Version:        1.6.4
 Release:        0
 Summary:        Time-handling functionality from netcdf4-python
 License:        MIT
 URL:            https://github.com/Unidata/cftime
 Source:         https://files.pythonhosted.org/packages/source/c/cftime/cftime-%{version}.tar.gz
+
 BuildRequires:  %{python_module Cython >= 0.29.20}
 BuildRequires:  %{python_module numpy-devel}
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 18.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Cython >= 0.29.20
 Requires:       python-numpy
 %python_subpackages
 
@@ -45,18 +46,19 @@ Was split out from netcfd4-python in 2016.
 rm setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_expand PYTHONPATH="%{buildroot}%{$python_sitearch}" py.test-%{$python_bin_suffix} -v
+%pytest_arch
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitearch}/*
+%{python_sitearch}/cftime
+%{python_sitearch}/cftime-%{version}.dist-info
 
 %changelog

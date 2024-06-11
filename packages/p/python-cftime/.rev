@@ -220,4 +220,12 @@
   * fix for date2num error when converting a DatetimeProlepticGregorian</comment>
     <requestid>1130212</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c375aeb7055bb55cfdb0c79e4e03a964</srcmd5>
+    <version>1.6.4</version>
+    <time>1718123458</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1179939</requestid>
+  </revision>
 </revisionlist>
