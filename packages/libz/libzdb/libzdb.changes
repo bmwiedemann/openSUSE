@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Thu Apr 11 17:57:00 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Update to 3.2.3:
+  * New: Provide better error reporting if a Connection cannot be obtained from the Connection Pool.
+  * Fixed: In C++, added a guard against stopping the Connection Pool with live active Connections
+    to prevent a dealloc sequence problem.
+  * Fixed: Plus many more minor improvements and fixes
+
+-------------------------------------------------------------------
+Thu Feb  4 22:50:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.2.2. Changes since 3.1:
+  * Fix: Removed Thread.h from the API.
+  * New: C++17 support via zdbpp.h which is distributed with libzdb
+  for more idiomatic use of libzdb from C++.
+  * New: Support prefetch rows for MySQL and Oracle. Either
+    programatically via Connection_setFetchSize() or via
+    ResultSet_setFetchSize() or via a new global 'fetch-size'
+    URL option.
+  * New: MySQL 5.7 and later. Added session query timeout accessible via
+    Connection_setQueryTimeout()
+  * New: MySQL 8. Added a new URL option 'auth-plugin' which specify
+    the authentication plugin to use when connecting to a MySQL server.
+  * New: Oracle: Added a new URL option 'sysdba' for connecting with
+    sysdba privileges.
+  * Fixed: Revert previous fix and remove last SQL terminator character ';' in
+    statements, except if preceded with END; to allow for ending a pl/sql block.
+  * Fixed: Oracle: Set SQL null value in prepared statement
+  * Fixed: Oracle: Handle date/time literal values
+
+-------------------------------------------------------------------
+Sat Apr  2 14:13:07 UTC 2016 - mpluskal@suse.com
+
+- Update to 3.1
+  * New: Support Literal IPv6 Addresses in the Database Connection 
+    URL. Ref. RFC2732
+  * New: Honour timezone information if provided with date-time 
+    column values in Result Sets
+  * Fixed: Issue #7 Removed onstop handler
+  * Fixed: #8 Do not remove trailing SQL termination charachter ';' 
+    from statement
+- Small spec file cleanup
+- Enable openssl and sqliteunlock
+- Update dependencies
+
+-------------------------------------------------------------------
+Sat Mar 22 17:26:21 UTC 2014 - chris@computersalat.de
+
+- fix LICENSE: GPL-3.0 -> GPL-3.0+
+- fix subpkg and deps
+  * add libsoname
+  * devel requires libsoname(libzdb11) and not name(libzdb)
+- fix configure
+  * --disable-static
+- add changes file
+
+-------------------------------------------------------------------
+Tue Mar 11 19:43:23 UTC 2014 - bajizs@cnt.rs
+
+- Version update 3.0
+
+-------------------------------------------------------------------
+Thu Dec 26 17:49:03 UTC 2013 - bajizs@cnt.rs
+
+- Version update 2.12
+
+-------------------------------------------------------------------
+Fri Apr 26 09:09:29 UTC 2013 - bajizs@cnt.rs
+
+- Version update 2.11.2
+
+-------------------------------------------------------------------
+Sun Aug 14 22:54:13 UTC 2011 - bajizs@cnt.rs
+
+- Initial package 2.8.1
+
