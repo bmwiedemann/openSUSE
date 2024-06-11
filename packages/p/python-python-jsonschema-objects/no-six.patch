@@ -1,0 +1,437 @@
+Index: python_jsonschema_objects-0.5.4/python_jsonschema_objects/__init__.py
+===================================================================
+--- python_jsonschema_objects-0.5.4.orig/python_jsonschema_objects/__init__.py
++++ python_jsonschema_objects-0.5.4/python_jsonschema_objects/__init__.py
+@@ -14,7 +14,6 @@ import jsonschema
+ import referencing.jsonschema
+ import referencing.retrieval
+ import referencing._core
+-import six
+ from referencing import Registry, Resource
+ 
+ import python_jsonschema_objects.classbuilder as classbuilder
+@@ -43,7 +42,7 @@ class ObjectBuilder(object):
+         resolver: Optional[referencing.typing.Retrieve] = None,
+         specification_uri: Optional[str] = None,
+     ):
+-        if isinstance(schema_uri, six.string_types):
++        if isinstance(schema_uri, str):
+             uri = os.path.normpath(schema_uri)
+             self.basedir = os.path.dirname(uri)
+             with codecs.open(uri, "r", "utf-8") as fin:
+@@ -220,7 +219,7 @@ class ObjectBuilder(object):
+         """
+         kw = {"strict": strict, "any_of": any_of}
+         builder = classbuilder.ClassBuilder(self.resolver)
+-        for nm, defn in six.iteritems(self.schema.get("definitions", {})):
++        for nm, defn in self.schema.get("definitions", {}).items():
+             resolved = self.resolver.lookup("#/definitions/" + nm)
+             uri = python_jsonschema_objects.util.resolve_ref_uri(
+                 self.resolver._base_uri, "#/definitions/" + nm
+@@ -229,19 +228,19 @@ class ObjectBuilder(object):
+ 
+         if standardize_names:
+             name_transform = lambda t: inflection.camelize(
+-                inflection.parameterize(six.text_type(t), "_")
++                inflection.parameterize(str(t), "_")
+             )
+         else:
+             name_transform = lambda t: t
+ 
+         nm = self.schema["title"] if "title" in self.schema else self.schema["$id"]
+-        nm = inflection.parameterize(six.text_type(nm), "_")
++        nm = inflection.parameterize(str(nm), "_")
+ 
+         builder.construct(nm, self.schema, **kw)
+         self._resolved = builder.resolved
+ 
+         classes = {}
+-        for uri, klass in six.iteritems(builder.resolved):
++        for uri, klass in builder.resolved.items():
+             title = getattr(klass, "__title__", None)
+             if title is not None:
+                 classes[name_transform(title)] = klass
+Index: python_jsonschema_objects-0.5.4/python_jsonschema_objects/classbuilder.py
+===================================================================
+--- python_jsonschema_objects-0.5.4.orig/python_jsonschema_objects/classbuilder.py
++++ python_jsonschema_objects-0.5.4/python_jsonschema_objects/classbuilder.py
+@@ -6,7 +6,6 @@ import sys
+ 
+ import jsonschema.exceptions
+ import referencing._core
+-import six
+ 
+ from python_jsonschema_objects import (
+     pattern_properties,
+@@ -81,26 +80,26 @@ class ProtocolBase(collections.abc.Mutab
+         return self.as_dict() == other.as_dict()
+ 
+     def __str__(self):
+-        inverter = dict((v, k) for k, v in six.iteritems(self.__prop_names__))
++        inverter = dict((v, k) for k, v in self.__prop_names__.items())
+         props = sorted(
+             [
+                 "%s" % (inverter.get(k, k),)
+                 for k, v in itertools.chain(
+-                    six.iteritems(self._properties),
+-                    six.iteritems(self._extended_properties),
++                    self._properties.items(),
++                    self._extended_properties.items(),
+                 )
+             ]
+         )
+         return "<%s attributes: %s>" % (self.__class__.__name__, ", ".join(props))
+ 
+     def __repr__(self):
+-        inverter = dict((v, k) for k, v in six.iteritems(self.__prop_names__))
++        inverter = dict((v, k) for k, v in self.__prop_names__.items())
+         props = sorted(
+             [
+                 "%s=%s" % (inverter.get(k, k), repr(v))
+                 for k, v in itertools.chain(
+-                    six.iteritems(self._properties),
+-                    six.iteritems(self._extended_properties),
++                    self._properties.items(),
++                    self._extended_properties.items(),
+                 )
+             ]
+         )
+@@ -177,7 +176,7 @@ class ProtocolBase(collections.abc.Mutab
+         self._properties = dict(
+             zip(
+                 self.__prop_names__.values(),
+-                [None for x in six.moves.xrange(len(self.__prop_names__))],
++                [None for x in range(len(self.__prop_names__))],
+             )
+         )
+ 
+@@ -216,16 +215,13 @@ class ProtocolBase(collections.abc.Mutab
+             except validators.ValidationError as e:
+                 import sys
+ 
+-                raise six.reraise(
+-                    type(e),
+-                    type(e)(
++                e = type(e)(
+                         str(e)
+                         + " \nwhile setting '{0}' in {1}".format(
+                             prop, self.__class__.__name__
+                         )
+-                    ),
+-                    sys.exc_info()[2],
+-                )
++                    )
++                raise e.with_traceback(sys.exc_info()[2])
+ 
+         if getattr(self, "__strict__", None):
+             self.validate()
+@@ -258,7 +254,7 @@ class ProtocolBase(collections.abc.Mutab
+         import itertools
+ 
+         return itertools.chain(
+-            six.iterkeys(self._extended_properties), six.iterkeys(self._properties)
++            self._extended_properties.keys(), self._properties.keys()
+         )
+ 
+     def __len__(self):
+@@ -330,7 +326,7 @@ class ProtocolBase(collections.abc.Mutab
+                 )
+             )
+ 
+-        for prop, val in six.iteritems(self._properties):
++        for prop, val in self._properties.items():
+             if val is None:
+                 continue
+             if isinstance(val, ProtocolBase):
+@@ -593,7 +589,7 @@ class ClassBuilder(object):
+         elif isinstance(clsdata.get("type"), list):
+             types = []
+             for i, item_detail in enumerate(clsdata["type"]):
+-                subdata = {k: v for k, v in six.iteritems(clsdata) if k != "type"}
++                subdata = {k: v for k, v in clsdata.items() if k != "type"}
+                 subdata["type"] = item_detail
+                 types.append(self._build_literal(uri + "_%s" % i, subdata))
+ 
+Index: python_jsonschema_objects-0.5.4/python_jsonschema_objects/descriptors.py
+===================================================================
+--- python_jsonschema_objects-0.5.4.orig/python_jsonschema_objects/descriptors.py
++++ python_jsonschema_objects-0.5.4/python_jsonschema_objects/descriptors.py
+@@ -60,7 +60,7 @@ class AttributeDescriptor(object):
+                 elif util.safe_issubclass(typ, ProtocolBase):
+                     # Force conversion- thus the val rather than validator assignment.
+                     try:
+-                        val = typ(**util.coerce_for_expansion(val))
++                        val = typ(**val)
+                         val.validate()
+                     except Exception as e:
+                         errors.append("Failed to coerce to '{0}': {1}".format(typ, e))
+@@ -82,7 +82,6 @@ class AttributeDescriptor(object):
+                     try:
+                         # Handle keyword expansion according to expected types. Using
+                         # keywords like oneOf, value can be an object, array or literal.
+-                        val = util.coerce_for_expansion(val)
+                         if isinstance(val, dict):
+                             val = typ(**val)
+                         else:
+@@ -120,12 +119,11 @@ class AttributeDescriptor(object):
+ 
+         elif util.safe_issubclass(info["type"], ProtocolBase):
+             if not isinstance(val, info["type"]):
+-                val = info["type"](**util.coerce_for_expansion(val))
++                val = info["type"](**val)
+ 
+             val.validate()
+ 
+         elif isinstance(info["type"], TypeProxy):
+-            val = util.coerce_for_expansion(val)
+             if isinstance(val, dict):
+                 val = info["type"](**val)
+             else:
+Index: python_jsonschema_objects-0.5.4/python_jsonschema_objects/literals.py
+===================================================================
+--- python_jsonschema_objects-0.5.4.orig/python_jsonschema_objects/literals.py
++++ python_jsonschema_objects-0.5.4/python_jsonschema_objects/literals.py
+@@ -1,7 +1,6 @@
+ import functools
+ import operator
+ 
+-import six
+ 
+ from python_jsonschema_objects import util, validators
+ 
+@@ -77,7 +76,7 @@ class LiteralValue(object):
+         return "<Literal<%s> %s>" % (self._value.__class__.__name__, str(self._value))
+ 
+     def __str__(self):
+-        if isinstance(self._value, six.string_types):
++        if isinstance(self._value, str):
+             return self._value
+         return str(self._value)
+ 
+@@ -87,7 +86,7 @@ class LiteralValue(object):
+         # TODO: this duplicates logic in validators.ArrayValidator.check_items;
+         # unify it.
+         for param, paramval in sorted(
+-            six.iteritems(info), key=lambda x: x[0].lower() != "type"
++            info.items(), key=lambda x: x[0].lower() != "type"
+         ):
+             validator = validators.registry(param)
+             if validator is not None:
+Index: python_jsonschema_objects-0.5.4/python_jsonschema_objects/pattern_properties.py
+===================================================================
+--- python_jsonschema_objects-0.5.4.orig/python_jsonschema_objects/pattern_properties.py
++++ python_jsonschema_objects-0.5.4/python_jsonschema_objects/pattern_properties.py
+@@ -2,7 +2,6 @@ import collections
+ import logging
+ import re
+ 
+-import six
+ 
+ from python_jsonschema_objects import util, validators, wrapper_types
+ from python_jsonschema_objects.literals import MakeLiteral
+@@ -39,7 +38,7 @@ class ExtensibleValidator(object):
+ 
+             self._additional_type = typ
+ 
+-        for pattern, typedef in six.iteritems(schemadef.get("patternProperties", {})):
++        for pattern, typedef in schemadef.get("patternProperties", {}).items():
+             if "$ref" in typedef:
+                 typ = builder.resolve_type(typedef["$ref"], name)
+             else:
+@@ -61,13 +60,12 @@ class ExtensibleValidator(object):
+             return typ(val)
+ 
+         if util.safe_issubclass(typ, cb.ProtocolBase):
+-            return typ(**util.coerce_for_expansion(val))
++            return typ(**val)
+ 
+         if util.safe_issubclass(typ, wrapper_types.ArrayWrapper):
+             return typ(val)
+ 
+         if isinstance(typ, cb.TypeProxy):
+-            val = util.coerce_for_expansion(val)
+             if isinstance(val, dict):
+                 val = typ(**val)
+             else:
+Index: python_jsonschema_objects-0.5.4/python_jsonschema_objects/util.py
+===================================================================
+--- python_jsonschema_objects-0.5.4.orig/python_jsonschema_objects/util.py
++++ python_jsonschema_objects-0.5.4/python_jsonschema_objects/util.py
+@@ -6,7 +6,6 @@ import copy
+ import json
+ from collections.abc import Mapping, Sequence
+ 
+-import six
+ 
+ 
+ class lazy_format(object):
+@@ -36,17 +35,6 @@ def safe_issubclass(x, y):
+         return False
+ 
+ 
+-def coerce_for_expansion(mapping):
+-    """Given a value, make sure it is usable for f(**val) expansion.
+-
+-    In py2.7, the value must be a dictionary- thus a as_dict() method
+-    will be invoked if available.  In py3k, the raw mapping is returned
+-    unmodified.
+-    """
+-    if six.PY2 and hasattr(mapping, "as_dict"):
+-        return mapping.as_dict()
+-    return mapping
+-
+ 
+ class ProtocolJSONEncoder(json.JSONEncoder):
+     def default(self, obj):
+@@ -69,13 +57,13 @@ def propmerge(into, data_from):
+     """Merge JSON schema requirements into a dictionary"""
+     newprops = copy.deepcopy(into)
+ 
+-    for prop, propval in six.iteritems(data_from):
++    for prop, propval in data_from.items():
+         if prop not in newprops:
+             newprops[prop] = propval
+             continue
+ 
+         new_sp = newprops[prop]
+-        for subprop, spval in six.iteritems(propval):
++        for subprop, spval in propval.items():
+             if subprop not in new_sp:
+                 new_sp[subprop] = spval
+ 
+Index: python_jsonschema_objects-0.5.4/python_jsonschema_objects/validators.py
+===================================================================
+--- python_jsonschema_objects-0.5.4.orig/python_jsonschema_objects/validators.py
++++ python_jsonschema_objects-0.5.4/python_jsonschema_objects/validators.py
+@@ -1,17 +1,17 @@
+ import decimal
+ import logging
++import numbers
+ 
+-import six
+ 
+ logger = logging.getLogger(__name__)
+ 
+ SCHEMA_TYPE_MAPPING = (
+     ("array", list),
+     ("boolean", bool),
+-    ("integer", six.integer_types),
+-    ("number", six.integer_types + (float,)),
++    ("integer", int),
++    ("number", numbers.Real),
+     ("null", type(None)),
+-    ("string", six.string_types),
++    ("string", str),
+     ("object", dict),
+ )
+ """Sequence of schema type mappings to be checked in precedence order."""
+@@ -140,7 +140,7 @@ def check_integer_type(param, value, _):
+ 
+ @type_registry.register(name="number")
+ def check_number_type(param, value, _):
+-    if not isinstance(value, six.integer_types + (float,)) or isinstance(value, bool):
++    if not isinstance(value, numbers.Real):
+         raise ValidationError("{0} is neither an integer nor a float".format(value))
+ 
+ 
+@@ -152,7 +152,7 @@ def check_null_type(param, value, _):
+ 
+ @type_registry.register(name="string")
+ def check_string_type(param, value, _):
+-    if not isinstance(value, six.string_types):
++    if not isinstance(value, str):
+         raise ValidationError("{0} is not a string".format(value))
+ 
+ 
+Index: python_jsonschema_objects-0.5.4/python_jsonschema_objects/wrapper_types.py
+===================================================================
+--- python_jsonschema_objects-0.5.4.orig/python_jsonschema_objects/wrapper_types.py
++++ python_jsonschema_objects-0.5.4/python_jsonschema_objects/wrapper_types.py
+@@ -1,7 +1,6 @@
+ import collections
+ import logging
+ 
+-import six
+ 
+ from python_jsonschema_objects import util
+ from python_jsonschema_objects.util import lazy_format as fmt
+@@ -174,7 +173,7 @@ class ArrayWrapper(collections.abc.Mutab
+         typed_elems = []
+         for elem, typ in zip(self.data, type_checks):
+             if isinstance(typ, dict):
+-                for param, paramval in six.iteritems(typ):
++                for param, paramval in typ.items():
+                     validator = registry(param)
+                     if validator is not None:
+                         validator(paramval, elem, typ)
+@@ -188,11 +187,11 @@ class ArrayWrapper(collections.abc.Mutab
+                 if not isinstance(elem, typ):
+                     try:
+                         if isinstance(
+-                            elem, (six.string_types, six.integer_types, float)
++                            elem, (str, int, float)
+                         ):
+                             val = typ(elem)
+                         else:
+-                            val = typ(**util.coerce_for_expansion(elem))
++                            val = typ(**elem)
+                     except TypeError as e:
+                         raise ValidationError(
+                             "'{0}' is not a valid value for '{1}': {2}".format(
+@@ -211,12 +210,12 @@ class ArrayWrapper(collections.abc.Mutab
+ 
+             elif isinstance(typ, (classbuilder.TypeProxy, classbuilder.TypeRef)):
+                 try:
+-                    if isinstance(elem, (six.string_types, six.integer_types, float)):
++                    if isinstance(elem, (str, int, float)):
+                         val = typ(elem)
+                     elif isinstance(elem, classbuilder.LiteralValue):
+                         val = typ(elem._value)
+                     else:
+-                        val = typ(**util.coerce_for_expansion(elem))
++                        val = typ(**elem)
+                 except TypeError as e:
+                     raise ValidationError(
+                         "'{0}' is not a valid value for '{1}': {2}".format(elem, typ, e)
+Index: python_jsonschema_objects-0.5.4/python_jsonschema_objects.egg-info/requires.txt
+===================================================================
+--- python_jsonschema_objects-0.5.4.orig/python_jsonschema_objects.egg-info/requires.txt
++++ python_jsonschema_objects-0.5.4/python_jsonschema_objects.egg-info/requires.txt
+@@ -1,4 +1,3 @@
+ inflection>=0.2
+ Markdown>=2.4
+ jsonschema>=4.18
+-six>=1.5.2
+Index: python_jsonschema_objects-0.5.4/setup.py
+===================================================================
+--- python_jsonschema_objects-0.5.4.orig/setup.py
++++ python_jsonschema_objects-0.5.4/setup.py
+@@ -42,7 +42,6 @@ if __name__ == "__main__":
+             "inflection>=0.2",
+             "Markdown>=2.4",
+             "jsonschema>=4.18",
+-            "six>=1.5.2",
+         ],
+         python_requires=">=3.8",
+         cmdclass=versioneer.get_cmdclass(),
+Index: python_jsonschema_objects-0.5.4/test/test_pytest.py
+===================================================================
+--- python_jsonschema_objects-0.5.4.orig/test/test_pytest.py
++++ python_jsonschema_objects-0.5.4/test/test_pytest.py
+@@ -4,7 +4,6 @@ import warnings
+ 
+ import jsonschema
+ import pytest
+-import six
+ 
+ import python_jsonschema_objects as pjs
+ 
+@@ -216,7 +215,7 @@ def test_object_builder_loads_memory_ref
+ 
+ 
+ def test_object_builder_reads_all_definitions(markdown_examples):
+-    for nm, ex in six.iteritems(markdown_examples):
++    for nm, ex in markdown_examples.items():
+         builder = pjs.ObjectBuilder(ex, resolved=markdown_examples)
+         assert builder
+ 

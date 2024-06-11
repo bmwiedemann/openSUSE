@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun  6 14:16:19 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.5.4
+  * bugfix: Update the way specifications are retrieved
+  * tests: Add tests to validate expected behavior on some issues
+  * handle nested anyof, ensure that data gets passed down via object creators
+  * feature: Add support for the const keyword
+- Add no-six.patch to get rid of six
+- Drop no-longer-needed use-specification-obj.patch
+
+-------------------------------------------------------------------
 Mon Dec 11 05:31:28 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.5.1:

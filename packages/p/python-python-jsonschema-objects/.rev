@@ -81,4 +81,20 @@
   * Stop passing string schemas, convert it to a Specification object</comment>
     <requestid>1132394</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a788e1966f71aa1d9d0af8947f12a7ab</srcmd5>
+    <version>0.5.4</version>
+    <time>1718123375</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1179152 from mcalabkova
+
+- Update to 0.5.4
+    * bugfix: Update the way specifications are retrieved
+    * tests: Add tests to validate expected behavior on some issues
+    * handle nested anyof, ensure that data gets passed down via object creators
+    * feature: Add support for the const keyword
+  - Add no-six.patch to get rid of six
+  - Drop no-longer-needed use-specification-obj.patch</comment>
+    <requestid>1179856</requestid>
+  </revision>
 </revisionlist>
