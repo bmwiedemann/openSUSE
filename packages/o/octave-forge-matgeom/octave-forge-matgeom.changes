@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun  5 07:46:05 UTC 2024 - ming li <mli@suse.com>
+
+- Update to 1.2.4:
+  * This release corresponds to upstream matgeom-1.2.2 + developments
+  * Removed spurious files from octave distribution
+    (see https://savannah.gnu.org/bugs/?60744)
+  * Latest fixes and developments from upstream were added.
+    Refer to the original matgeom website for news on that
+
+-------------------------------------------------------------------
 Thu Sep 15 00:40:08 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 1.2.3:
