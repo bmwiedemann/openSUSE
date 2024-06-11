@@ -19,13 +19,12 @@
 %global pkg_name hledger-ui
 %global pkgver %{pkg_name}-%{version}
 Name:           %{pkg_name}
-Version:        1.33.1
+Version:        1.34
 Release:        0
 Summary:        Terminal interface for the hledger accounting system
 License:        GPL-3.0-or-later
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/1.cabal#/%{name}.cabal
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-ansi-terminal-devel
@@ -52,6 +51,8 @@ BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-fsnotify-devel
 BuildRequires:  ghc-fsnotify-prof
+BuildRequires:  ghc-githash-devel
+BuildRequires:  ghc-githash-prof
 BuildRequires:  ghc-hledger-devel
 BuildRequires:  ghc-hledger-lib-devel
 BuildRequires:  ghc-hledger-lib-prof
@@ -134,7 +135,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup
-cp -p %{SOURCE1} %{name}.cabal
 
 %build
 %ghc_lib_build

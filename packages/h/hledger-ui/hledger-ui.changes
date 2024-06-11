@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun  2 00:46:14 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update hledger-ui to version 1.34.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hledger-ui-1.34/src/CHANGES.md
+
+-------------------------------------------------------------------
 Sat May 18 02:04:43 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update hledger-ui to version 1.33.1 revision 1.
