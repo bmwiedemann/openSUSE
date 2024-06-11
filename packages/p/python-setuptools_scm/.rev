@@ -327,4 +327,25 @@
     <comment></comment>
     <requestid>1172052</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>13749722294b1b8d375f128f00090204</srcmd5>
+    <version>8.1.0</version>
+    <time>1718123230</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.1.0:
+  * correctly handle project config overrides when the version
+    keyword is used together with pyproject.toml
+  * Reword docker usage hint
+  * Updated `entangled-cli` to account for not having `rich`
+    extra
+  * Documenting
+    `SETUPTOOLS_SCM_PRETEND_VERSION_FOR_${NORMALIZED_DIST_NAME}`
+  * Update URL
+  * Fix misspelling found by codespell
+  * Only depend on typing_extensions for Python &lt; 3.10
+  * fix 1018 allow non normalized semver
+- drop setuptools-scm-issue1038-git-2-45-0.patch,
+  setuptools-scm-issue953-nowarn.patch: obsolete</comment>
+    <requestid>1179651</requestid>
+  </revision>
 </revisionlist>

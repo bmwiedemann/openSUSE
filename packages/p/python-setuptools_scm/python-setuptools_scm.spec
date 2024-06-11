@@ -27,16 +27,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-setuptools_scm%{psuffix}
-Version:        8.0.4
+Version:        8.1.0
 Release:        0
 Summary:        Python setuptools handler for SCM tags
 License:        MIT
 URL:            https://github.com/pypa/setuptools_scm/
-Source:         https://files.pythonhosted.org/packages/source/s/setuptools-scm/setuptools-scm-%{version}.tar.gz
-# PATCH-FEATURE-OPENSUSE setuptools-scm-issue953-nowarn.patch gh#pypa/setuptools_scm#953 -- don't warn if setuptools_scm is present but not directly used
-Patch0:         setuptools-scm-issue953-nowarn.patch
-# PATCH-FIX-UPSTREAM setuptools-scm-issue1038-git-2-45-0.patch gp#pypa/setuptools_scm#1038 -- fix build with git 2.45.0
-Patch1:         setuptools-scm-issue1038-git-2-45-0.patch
+Source:         https://files.pythonhosted.org/packages/source/s/setuptools-scm/setuptools_scm-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61}
@@ -46,7 +42,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-packaging >= 20.0
 Requires:       python-setuptools
-Requires:       python-typing-extensions
 BuildArch:      noarch
 %if 0%{?python_version_nodots} < 311
 Requires:       python-tomli >= 1
@@ -56,6 +51,7 @@ Requires:       python-tomli >= 1
 BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm = %{version}}
+BuildRequires:  %{python_module typing-extensions if %python-base < 3.11}
 BuildRequires:  git-core
 BuildRequires:  mercurial
 %endif
@@ -69,7 +65,7 @@ The setuptools_scm package handles managing one's Python package versions
 in SCM metadata. It also handles file finders for the supperted SCMs.
 
 %prep
-%autosetup -p1 -n setuptools-scm-%{version}
+%autosetup -p1 -n setuptools_scm-%{version}
 
 %build
 %pyproject_wheel

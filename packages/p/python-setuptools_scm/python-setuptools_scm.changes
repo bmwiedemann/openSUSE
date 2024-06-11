@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jun 10 07:55:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.1.0:
+  * correctly handle project config overrides when the version
+    keyword is used together with pyproject.toml
+  * Reword docker usage hint
+  * Updated `entangled-cli` to account for not having `rich`
+    extra
+  * Documenting
+    `SETUPTOOLS_SCM_PRETEND_VERSION_FOR_${NORMALIZED_DIST_NAME}`
+  * Update URL
+  * Fix misspelling found by codespell
+  * Only depend on typing_extensions for Python < 3.10
+  * fix 1018 allow non normalized semver
+- drop setuptools-scm-issue1038-git-2-45-0.patch,
+  setuptools-scm-issue953-nowarn.patch: obsolete
+
+-------------------------------------------------------------------
 Fri May  3 17:19:17 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix tests with git 2.45.0 (boo#1223839)
