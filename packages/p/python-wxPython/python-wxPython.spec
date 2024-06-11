@@ -112,6 +112,8 @@ Patch112:       0001-Check-HSV-values-in-image-test.patch
 # PATCH-FIX-OPENSUSE - Numpy for Python 3.12 is a thing
 Patch113:       require-numpy.patch
 Patch114:       wxwidgets-3.2.5.patch
+# PATCH-FIX-UPSTREAM https://github.com/wxWidgets/Phoenix/pull/2540
+Patch115:       drop-py2.patch
 # TODO: Replace deprecated setup.py calls in build.py with PEP517 without building wxWidgets into the wheel
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module devel}
@@ -145,7 +147,6 @@ BuildRequires:  pkgconfig(xtst)
 %endif
 Requires:       %{pprefix}-Pillow
 Requires:       %{pprefix}-numpy
-Requires:       %{pprefix}-six
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Conflicts:      %{pprefix}-wxWidgets
@@ -163,7 +164,6 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest-forked}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 BuildRequires:  Mesa-dri
 # Need at least one font installed
 BuildRequires:  google-opensans-fonts

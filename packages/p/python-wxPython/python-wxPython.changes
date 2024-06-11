@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 30 13:08:43 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add drop-py2.patch to get rid of the six dependency (it will die
+  with Python 3.13)
+
+-------------------------------------------------------------------
 Sat May 25 09:16:36 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Add wxwidgets-3.2.5.patch to resolve wxPython FTBFS
