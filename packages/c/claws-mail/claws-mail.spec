@@ -32,7 +32,7 @@
 %endif
 
 Name:           claws-mail
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
 Summary:        A configurable email client
 License:        GPL-3.0-or-later
@@ -231,7 +231,7 @@ EOF
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README README.tools TODO
+%doc AUTHORS ChangeLog NEWS README README.tools
 %{_bindir}/claws-mail
 %dir %{_libdir}/claws-mail
 %dir %{_libdir}/claws-mail/plugins

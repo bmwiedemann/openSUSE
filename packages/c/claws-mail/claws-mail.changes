@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Mon Jun 10 12:08:01 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.3.0:
+  * Compose window: when the focus is in the message text, copied files
+    can be pasted as attachments using /Edit/paste or Ctrl+V.
+    (The context menu's Paste will still insert the list of files into
+    the message body.)
+  * '/Mark/Mark all read in folder' and 'Mark/Mark all unread in
+    folder' have been re-added to the Message List context menu.
+  * It is now possible to use '/Tools/Remove references' when
+    forwarding mail.
+  * Keyboard shortcuts: The "Choose preset keyboard shortcuts" selector
+    has been integrated into the main preferences page.
+    When 'Current' is the selected preset, Apply/OK will keep the
+    existing settings.
+  * An MBOX file can now be imported from the command line using
+    `claws-mail --import-mbox %f` where %f is the full path to the
+    MBOX file.
+  * OAUTH2 support for Microsoft 365 GCC High has been added.
+  * LiteHTML Viewer plugin: Updated to LiteHTML 0.9.
+  * The menurc file is now backed-up on startup.
+  * Removed support for the obsolete Avant Window Navigator.
+  * Various code cleanups.
+  * The manual has been updated.
+  * New translation: Albanian.
+  * Updated translations: Catalan, Czech, French, Hungarian, Indonesian,
+    Polish, Romanian, Slovak, Spanish, Swedish, Turkish.
+  * bug 4668, 'Sometimes, at program start, message list takes
+               all the vertical space'
+  * bug 4720, 'matcher: release regex_t in
+               matcherprop_string_match'
+  * bug 4724, 'set proper availability status to sign/encrypt
+               toolbar buttons'
+  * bug 4725, 'oauth2: remove trailing zero from transmit
+               buffer in oauth2_contact_server'
+  * bug 4728, 'socket: handle GNUTLS_E_PREMATURE_TERMINATION in
+               ssl_read'
+  * bug 4730, 'oauth2: fix string handling in
+               oauth2_contact_server'
+  * bug 4733, 'Line breaks lost in headers'
+  * bug 4734, 'ssl_certificate: remove unhelpful warnings from
+               certificate check'
+  * bug 4746, 'matcher: remove incorrect condition in
+               matcherprop_free'
+  * bug 4747, 'matcher: simplify matcherprop_new'
+  * bug 4749, 'release regex_t in
+               summary_compile_simplify_regexp'
+  * bug 4750, 'remove regcomp wrapper and call regcomp
+               directly'
+  * bug 4752, 'Adjust incorrect debug_printf call in pgp
+               plugins'
+  * bug 4754, 'text/enriched literal less-than sign sequence
+               handled incorrectly
+  * bug 4757, 'remove AX_FUNC_MKDIR'
+  * bug 4758, 'remove unused check for bind_textdomain_codeset'
+  * bug 4759, 'remove unused function checks from
+               AC_CHECK_FUNCS'
+  * bug 4760, 'use correct type for move_bar_id'
+  * bug 4762, 'oauth2: preserve an existing refresh token'
+  * bug 4765, 'only store smtp auth if authorization method is
+               OAUTH2'
+  * bug 4766, 'preserve the expiry value of SMTP auth type is
+               not OAUTH2'
+  * bug 4768, 'Adjust logic while evaluating enable_avatars'
+  * bug 4770, 'remove intl from list of include directories'
+  * bug 4773, 'remove obsolescent AC_C_CONST'
+  * bug 4780, 'use proper prototype for two archiver functions'
+  * bug 4781, 'use correct prototype for
+               privacy_free_signature_data'
+  * bug 4782, 'use correct prototype for stop_archiving'
+  * bug 4786, 'remove type confusion in getsockopt call in
+               sock_connect_async_cb'
+  * bug 4787, 'Use correct function for memory transfer in
+               crypt_cfb_buf'
+  * bug 4788, '"Change primary passphrase" disabled status
+               handling'
+  * bug 4790, 'widget spacing in "Changing primary passphrase"
+               dialog'
+  * bug 4791, 'remove obsolete glib version check'
+  * bug 4795, 'Please remove -no-cpp-precomp flag for Apple'
+  * bug 4796, 'URL with wide character doesn't work'
+  * bug 4798, 'Quoting wrong when format=flowed and
+               respect_flowed_format is set'
+  * CIDs 1220325, 1491306 and 1491315, 'Explicit null
+    dereferenced (FORWARD_NULL)'
+  * CIDs 1491064, 1491074, 1491211, 1491105, 1491139, 1491164,
+    1491166, 1491168, 1491169, 1491178, 1491232, 1491242,
+    1492281 and 1591844 'Use after free (USE_AFTER_FREE)'
+  * CID 1491137 'Out-of-bounds access (OVERRUN)'
+  * CID 1591952 values overwritten before being used
+  * CID 1596594 (CHECKED_RETURN)
+  * CID 1596595 'Resource leak'
+  * errors caused by invalid MIME viewer command-line
+  * building on non-X11 systems
+  * Use CFLAGS provided by nettle.pc
+  * Fancy plugin, recognise mid and data embedded images
+
+-------------------------------------------------------------------
 Tue Nov 21 08:09:09 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.2.0:
