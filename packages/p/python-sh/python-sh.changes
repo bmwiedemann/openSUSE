@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 10 09:09:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.7:
+  * Fix `sh.glob` arguments #708
+  * Misc modernizations
+
+-------------------------------------------------------------------
 Tue Oct 17 06:31:32 UTC 2023 - Daniel Garcia Moreno <daniel.garcia@suse.com>
 
 - Use pytest for running tests

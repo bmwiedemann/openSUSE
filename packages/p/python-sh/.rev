@@ -178,4 +178,14 @@
 </comment>
     <requestid>1118203</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a0a531e7f72344e8341d890f86ce68af</srcmd5>
+    <version>2.0.7</version>
+    <time>1718123234</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.7:
+  * Fix `sh.glob` arguments #708
+  * Misc modernizations</comment>
+    <requestid>1179661</requestid>
+  </revision>
 </revisionlist>
