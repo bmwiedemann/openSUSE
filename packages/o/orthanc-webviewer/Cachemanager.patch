@@ -1,0 +1,13 @@
+diff -r af985076f647 Plugin/Cache/CacheManager.h
+--- a/Plugin/Cache/CacheManager.h	Tue Feb 22 08:33:59 2022 +0100
++++ b/Plugin/Cache/CacheManager.h	Tue Jun 11 09:09:24 2024 +0200
+@@ -29,6 +29,9 @@
+ 
+ #include <boost/shared_ptr.hpp>
+ 
++#include <map>
++#include <list>
++
+ namespace OrthancPlugins
+ {
+   enum CacheProperty

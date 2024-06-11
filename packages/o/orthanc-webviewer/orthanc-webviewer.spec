@@ -33,6 +33,7 @@ Source5:        https://orthanc.uclouvain.be/downloads/third-party-downloads/web
 Source6:        https://orthanc.uclouvain.be/downloads/third-party-downloads/web-viewer/pdfjs-2.5.207-dist.zip
 Source11:       orthanc-webviewer-readme.SUSE
 Source12:       webviewer.json
+Patch0:         Cachemanager.patch
 
 BuildRequires:  cmake
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
@@ -64,7 +65,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Webviewer plugin for Orthanc
 
 %prep
-%autosetup -n OrthancWebViewer-%{version}
+%autosetup -p1 -n OrthancWebViewer-%{version}
 
 #OrthanPlugin may ask for additional files to be loaded
 #Putting them into this folder prevents download of sources from the web

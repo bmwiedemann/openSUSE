@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 11 10:05:19 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- Cachemanager.patch applied to fix TW build issue
+
+-------------------------------------------------------------------
 Wed Mar 13 13:46:10 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - enable gcc13 for Leap 15
