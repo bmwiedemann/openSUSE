@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jun  7 15:46:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Package monitoring-plugins-bind9-sudoers as documentation.
+
+-------------------------------------------------------------------
+Fri Feb 23 08:44:42 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
+Tue Aug 30 17:20:13 UTC 2022 - lars@linux-schulserver.de - 1.0.0
+
+- add nrpe configuration snipplet (/etc/nrpe.d/check_bind9.cfg)
+- add sudoers configuration example (/etc/sudoers.d/check_bind9)
+-> both configuration files just contain comments and need to be 
+   reviewed/changed by an administrator to their real values.
+- switch recommend: sudo -> require: sudo
+- Buildrequire sudo as well to be clear about the directory ownership
+
+-------------------------------------------------------------------
 Sun Jun  2 15:30:50 UTC 2019 - lars@linux-schulserver.de - 1.0.0
 
 - added monitoring-plugins-bind9-increase_stats-seek.patch :

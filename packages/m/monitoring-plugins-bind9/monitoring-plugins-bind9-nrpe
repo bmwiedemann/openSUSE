@@ -1,0 +1,7 @@
+#
+# Below is just an example that need adjustments!
+#
+# Please check/update /etc/sudoers.d/check_bind9 as well, if 
+# you decide to use sudo for executing the command
+#
+#command[check_bind]=/usr/bin/sudo /usr/lib/nagios/plugins/check_bind9.pl --pid-path /run/named/named.pid --stats-path /var/log/named/stats --rndc-path /usr/sbin/rndc --sudo-path /usr/bin/sudo

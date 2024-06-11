@@ -1,0 +1,11 @@
+#
+# Please adjust the following to your needs before using in production
+#
+# The path names here and in /etc/nrpe.d/check_bind9.cfg should be 
+# identical!
+#
+#nagios,icinga ALL=(ALL) NOPASSWD: /usr/lib/nagios/plugins/check_bind9.pl \
+#                                  --pid-path /run/named/named.pid \
+#                                  --stats-path /var/log/named/stats \
+#                                  --rndc-path /usr/sbin/rndc \
+#                                  --sudo-path /usr/bin/sudo
