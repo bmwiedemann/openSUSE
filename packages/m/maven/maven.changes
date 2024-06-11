@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 10 13:58:23 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Add dependency on jakarta-inject, needed by google-guice 6.0.0
+
+-------------------------------------------------------------------
 Tue Apr  2 17:21:14 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on plexus-xml where relevant

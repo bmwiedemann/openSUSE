@@ -52,6 +52,7 @@ BuildRequires:  google-guice
 BuildRequires:  guava
 BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
+BuildRequires:  jakarta-inject
 BuildRequires:  jansi
 BuildRequires:  javapackages-local
 BuildRequires:  jcl-over-slf4j
@@ -125,6 +126,7 @@ Requires:       google-guice
 Requires:       guava
 Requires:       httpcomponents-client
 Requires:       httpcomponents-core
+Requires:       jakarta-inject
 Requires:       jansi
 Requires:       javapackages-tools
 Requires:       jcl-over-slf4j
@@ -232,9 +234,8 @@ build-jar-repository -s lib \
     atinject \
     commons-cli \
     glassfish-annotation-api \
-    guava/guava \
     guice/google-guice \
-    jdom2/jdom2 \
+    jakarta-inject \
     maven-resolver/maven-resolver-api \
     maven-resolver/maven-resolver-impl \
     maven-resolver/maven-resolver-named-locks \
@@ -247,18 +248,14 @@ build-jar-repository -s lib \
     org.eclipse.sisu.inject \
     org.eclipse.sisu.plexus \
     plexus-classworlds \
-    plexus/cli \
     plexus-containers/plexus-component-annotations \
     plexus/interpolation \
-    plexus-metadata-generator \
     plexus/plexus-cipher \
     plexus/plexus-sec-dispatcher \
     plexus/utils \
     plexus/xml \
-    qdox \
     slf4j/api \
-    slf4j/simple \
-    xbean/xbean-reflect
+    slf4j/simple
 ln -s $(build-classpath slf4j/slf4j-simple-sources) lib/
 %{ant} \
   -Dtest.skip=true \
@@ -309,6 +306,7 @@ build-jar-repository -p %{buildroot}%{homedir}/lib \
     guice/google-guice \
     httpcomponents/httpclient \
     httpcomponents/httpcore \
+    jakarta-inject \
     jansi/jansi \
     maven-resolver/maven-resolver-api \
     maven-resolver/maven-resolver-connector-basic \
