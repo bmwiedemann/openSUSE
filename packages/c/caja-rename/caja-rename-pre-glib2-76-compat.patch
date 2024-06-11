@@ -1,0 +1,26 @@
+--- a/src/caja-rename.c
++++ b/src/caja-rename.c
+@@ -131,7 +131,11 @@
+             GString *sString = g_string_new (sName);
+             g_free (sName);
+             g_string_replace (sString, sSearch, sWith, 0);
++#if !GLIB_CHECK_VERSION(2, 76, 0)
++            sName = g_string_free (sString, FALSE);
++#else
+             sName = g_string_free_and_steal (sString);
++#endif
+         }
+ 
+         if (sName)
+@@ -172,7 +176,11 @@
+     GString *sString = g_string_new (sText);
+     g_string_replace (sString, "/", "", 0);
+     g_string_replace (sString, "\\", "", 0);
++#if !GLIB_CHECK_VERSION(2, 76, 0)
++    gchar *sNewText = g_string_free (sString, FALSE);
++#else
+     gchar *sNewText = g_string_free_and_steal (sString);
++#endif
+ 
+     if (sNewText)
+     {

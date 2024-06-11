@@ -1,0 +1,14 @@
+--- a/src/titlecase.h
++++ b/src/titlecase.h
+@@ -22,6 +22,11 @@
+ #define SMALL "a|an|and|as|at|but|by|en|for|if|in|of|on|or|the|to|v\\.?|via|vs\\.?"
+ #define PUNCT "!\"#$%&'‘()*+,-./:;?@[\\]_`{|}~"
+ 
++#if !GLIB_CHECK_VERSION(2, 74, 0)
++# define G_REGEX_DEFAULT 0
++# define G_REGEX_MATCH_DEFAULT 0
++#endif
++
+ static GRegex *m_pSmallWords = NULL;
+ static GRegex *m_pInlinePeriod = NULL;
+ static GRegex *m_pUcElsewhere = NULL;

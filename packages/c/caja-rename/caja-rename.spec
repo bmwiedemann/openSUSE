@@ -33,13 +33,17 @@ done \
 %define _name   cajarename
 %define _version 1.28
 Name:           caja-rename
-Version:        24.2.1
+Version:        24.5.1
 Release:        0
 Summary:        Batch renaming extension for Caja
 License:        GPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/tari01/caja-rename
 Source0:        https://github.com/tari01/caja-rename/archive/%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM caja-rename-pre-glib2-74-compat.patch Gracefully continue when building against glib-2.0 << 2.74.0.
+Patch0:         caja-rename-pre-glib2-74-compat.patch
+# PATCH-FIX-UPSTREAM caja-rename-pre-glib2-76-compat.patch Gracefully continue when building against glib-2.0 << 2.76.0.
+Patch1:         caja-rename-pre-glib2-76-compat.patch
 BuildRequires:  %{python_module polib}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake

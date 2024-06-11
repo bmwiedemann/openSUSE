@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jun 11 06:46:25 UTC 2024 - Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+
+- Update version to 24.5.1
+ * Translated using Weblate (Hungarian) (f4635f9)
+ * Added translation using Weblate (Hungarian) (4b56629)
+- Update version to 24.4.1
+ * Translated using Weblate (Chinese (Simplified)) (a0e4550)
+
+- Add caja-rename-pre-glib2-74-compat.patch. Gracefully continue when building
+  against glib-2.0 << 2.74.0.
+- Add caja-rename-pre-glib2-76-compat.patch. Gracefully continue when building
+  against glib-2.0 << 2.76.0.
+
+-------------------------------------------------------------------
 Sun Mar 24 09:42:38 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 24.2.1
