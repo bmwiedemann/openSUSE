@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.7.6
+Version:        1.7.7
 Release:        0
 Summary:        X509 reader and writer
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-asn1-encoding-devel
 BuildRequires:  ghc-asn1-encoding-prof
@@ -59,8 +58,6 @@ BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-prof
 BuildRequires:  ghc-tasty-quickcheck-devel
 BuildRequires:  ghc-tasty-quickcheck-prof
-BuildRequires:  ghc-x509-devel
-BuildRequires:  ghc-x509-prof
 %endif
 
 %description
@@ -94,7 +91,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

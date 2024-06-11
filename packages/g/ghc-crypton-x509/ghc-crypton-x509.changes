@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 30 02:19:42 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update crypton-x509 to version 1.7.7.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Mon May  6 13:59:40 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update crypton-x509 to version 1.7.6 revision 2.
