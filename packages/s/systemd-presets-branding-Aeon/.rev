@@ -23,4 +23,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1172203</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>8c3cf2def64ee4cf2213e7fa7602fd4c</srcmd5>
+    <version>20231005</version>
+    <time>1718123496</time>
+    <user>anag+factory</user>
+    <comment>- Support bluetooth filetransfer (boo#1225682)</comment>
+    <requestid>1179987</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 11 10:57:48 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Support bluetooth filetransfer (boo#1225682) 
+
+-------------------------------------------------------------------
 Mon Apr 29 14:33:26 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Enable x86_64_v3-transactional-update.service for automated refresh
