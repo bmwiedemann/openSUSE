@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 10 17:13:06 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Add ntfs3g-unistr-use-after-free.patch: fix a use after free in
+  ntfs_uppercase_mbs (boo#1226007).
+- No longer call autoconf; likely not needed anymore.
+
+-------------------------------------------------------------------
 Tue Dec 27 13:13:17 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

@@ -1,7 +1,7 @@
 #
 # spec file for package ntfs-3g_ntfsprogs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,8 @@ License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://github.com/tuxera/ntfs-3g/
 Source:         https://tuxera.com/opensource/%{name}-%{version}.tgz
-BuildRequires:  autoconf
+# PATCH-FIX-UPSTREAM ntfs3g-unistr-use-after-free.patch boo#1226007 mgorse@suse.com -- fix use after free in ntfs_uppercase_mbs.
+Patch0:         ntfs3g-unistr-use-after-free.patch
 BuildRequires:  gnutls-devel
 BuildRequires:  hwinfo-devel
 BuildRequires:  libgcrypt-devel
@@ -51,7 +52,7 @@ Provides:       ntfsprogs-fuse = 1.13.1
 Obsoletes:      ntfsprogs-fuse < 1.13.1
 %if 0%{?suse_version}
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Supplements:    filesystem(ntfs-3g)
 %endif
 
@@ -108,9 +109,7 @@ In particular ntfsck is just a place holder.  Distributions are expected not to 
 They have been orphaned for ten years and are unlikely to be upgraded (except ntfsfallocate, if there is some demand).
 
 %prep
-%setup -q
-# Rebuild configure to pick up the updated AC_HEADER_MAJOR
-autoconf
+%autosetup -p1
 
 %build
 #
