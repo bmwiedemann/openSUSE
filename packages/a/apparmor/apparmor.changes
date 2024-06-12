@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 11 12:05:38 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
+
+- add logprof-mount-empty-source.diff: add support for mount rules
+  with quoted paths and empty source (boo#1226031)
+
+-------------------------------------------------------------------
 Tue Jun  4 19:48:47 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
 
 - add sddm-xauth.diff - sddm uses a new path for xauth (boo#1223900)

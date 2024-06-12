@@ -1,0 +1,166 @@
+From aada708bc1c1787d190529aeafce66e3ce52fb7e Mon Sep 17 00:00:00 2001
+From: Christian Boltz <apparmor@cboltz.de>
+Date: Sun, 9 Jun 2024 21:51:01 +0200
+Subject: [PATCH 1/2] MountRule: add support for quoted paths
+
+While on it, make the output for failing tests more verbose for easier
+debugging.
+
+(cherry picked from commit 900f233101553182cffb29aab53e014d25138489,
+test-mount.py adjusted for 4.0 branch)
+---
+ utils/apparmor/rule/mount.py | 6 +++---
+ utils/test/test-mount.py     | 4 +++-
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/utils/apparmor/rule/mount.py b/utils/apparmor/rule/mount.py
+index b2d73a27b..992c29142 100644
+--- a/utils/apparmor/rule/mount.py
++++ b/utils/apparmor/rule/mount.py
+@@ -15,7 +15,7 @@ import re
+ 
+ from apparmor.common import AppArmorBug, AppArmorException
+ 
+-from apparmor.regex import RE_PROFILE_MOUNT, strip_parenthesis
++from apparmor.regex import RE_PROFILE_MOUNT, strip_parenthesis, strip_quotes
+ from apparmor.rule import AARE
+ from apparmor.rule import BaseRule, BaseRuleset, parse_modifiers, logprof_value_or_all, check_and_split_list
+ 
+@@ -171,12 +171,12 @@ class MountRule(BaseRule):
+                 options = cls.ALL
+ 
+             if operation == 'mount' and r['source_file'] is not None:  # Umount cannot have a source
+-                source = r['source_file']
++                source = strip_quotes(r['source_file'])
+             else:
+                 source = cls.ALL
+ 
+             if r['dest_file'] is not None:
+-                dest = r['dest_file']
++                dest = strip_quotes(r['dest_file'])
+             else:
+                 dest = cls.ALL
+ 
+diff --git a/utils/test/test-mount.py b/utils/test/test-mount.py
+index cb1a89630..6dfe1ac85 100644
+--- a/utils/test/test-mount.py
++++ b/utils/test/test-mount.py
+@@ -42,7 +42,9 @@ class MountTestParse(AATest):
+         ('mount fstype=(ext3, ext4) options=(ro),',                         MountRule('mount',   ('=', ['ext3', 'ext4']),  ('=', ('ro')),           MountRule.ALL,  MountRule.ALL,  False, False, False, ''     )),
+         ('mount @{mntpnt},',                                                MountRule('mount',   MountRule.ALL,            MountRule.ALL,           '@{mntpnt}',    MountRule.ALL,  False, False, False, ''     )),
+         ('mount /a,',                                                       MountRule('mount',   MountRule.ALL,            MountRule.ALL,           '/a',           MountRule.ALL,  False, False, False, ''     )),
++        ('mount "/a space",',                                               MountRule('mount',   MountRule.ALL,            MountRule.ALL,           '/a space',     MountRule.ALL,  False, False, False, '')),
+         ('mount fstype=(ext3, ext4) /a -> /b,',                             MountRule('mount',   ('=', ['ext3', 'ext4']),  MountRule.ALL,           '/a',           '/b',           False, False, False, ''     )),
++        ('mount fstype=(ext3, ext4) /a -> "/bar space",',                   MountRule('mount',   ('=', ['ext3', 'ext4']),  MountRule.ALL,           '/a',           '/bar space',   False, False, False, '')),
+         ('mount fstype=(ext3, ext4) options=(ro, sync) /a -> /b,',          MountRule('mount',   ('=', ['ext3', 'ext4']),  ('=', ('ro', 'sync')),   '/a',           '/b',           False, False, False, ''     )),
+         ('mount fstype=(ext3, ext4) options=(ro, sync) /a -> /b, #cmt',     MountRule('mount',   ('=', ['ext3', 'ext4']),  ('=', ('ro', 'sync')),   '/a',           '/b',           False, False, False, ' #cmt')),
+         ('mount fstype=({ext3,ext4}) options in (ro, sync) /a -> /b,',      MountRule('mount',   ('=', ['{ext3,ext4}']),   ('in', ('ro', 'sync')),  '/a',           '/b',           False, False, False, ''     )),
+@@ -66,7 +68,7 @@ class MountTestParse(AATest):
+         self.assertTrue(MountRule.match(rawrule))
+         obj = MountRule.create_instance(rawrule)
+         expected.raw_rule = rawrule.strip()
+-        self.assertTrue(obj.is_equal(expected, True))
++        self.assertTrue(obj.is_equal(expected, True), f'\n  {rawrule}   expected,\n  {obj.get_clean()}   returned by obj.get_clean()\n  {expected.get_clean()}   returned by expected.get_clean()')
+ 
+     def test_valid_mount_changing_propagation(self):
+         # Rules changing propagation type can either specify a source or a dest (these are equivalent for apparmor_parser in this specific case) but not both.
+-- 
+GitLab
+
+
+From 98a0a2fee92b86155de258711c554f068ead8f6c Mon Sep 17 00:00:00 2001
+From: Christian Boltz <apparmor@cboltz.de>
+Date: Sun, 9 Jun 2024 23:03:13 +0200
+Subject: [PATCH 2/2] MountRule: Add support for empty ("") source
+
+This needs adding of an empty_ok flag in _aare_or_all().
+
+Also add a few tests from boo#1226031 to utils and parser tests.
+
+Fixes: https://bugzilla.opensuse.org/show_bug.cgi?id=1226031
+
+(cherry picked from commit 1f33fc9b29c174698fdf0116a4a9f50680ec4fdb,
+test-mount.py changes adjusted for 4.0 branch)
+---
+ parser/tst/simple_tests/mount/ok_quoted_1.sd | 9 +++++++++
+ utils/apparmor/rule/__init__.py              | 4 ++--
+ utils/apparmor/rule/mount.py                 | 4 ++--
+ utils/test/test-mount.py                     | 2 ++
+ 4 files changed, 15 insertions(+), 4 deletions(-)
+ create mode 100644 parser/tst/simple_tests/mount/ok_quoted_1.sd
+
+diff --git a/parser/tst/simple_tests/mount/ok_quoted_1.sd b/parser/tst/simple_tests/mount/ok_quoted_1.sd
+new file mode 100644
+index 000000000..c819caea3
+--- /dev/null
++++ b/parser/tst/simple_tests/mount/ok_quoted_1.sd
+@@ -0,0 +1,9 @@
++#
++#=Description basic mount rules with quoted paths
++#=EXRESULT PASS
++#
++/usr/bin/foo {
++  mount    ""  -> "/",
++  mount    ""  -> "/tmp/",
++  umount "/",
++}
+diff --git a/utils/apparmor/rule/__init__.py b/utils/apparmor/rule/__init__.py
+index ede7909ca..11e2f1f17 100644
+--- a/utils/apparmor/rule/__init__.py
++++ b/utils/apparmor/rule/__init__.py
+@@ -51,7 +51,7 @@ class BaseRule(metaclass=ABCMeta):
+         # Set only in the parse() class method
+         self.raw_rule = None
+ 
+-    def _aare_or_all(self, rulepart, partname, is_path, log_event):
++    def _aare_or_all(self, rulepart, partname, is_path, log_event, empty_ok=False):
+         """checks rulepart and returns
+            - (AARE, False) if rulepart is a (non-empty) string
+            - (None, True) if rulepart is all_obj (typically *Rule.ALL)
+@@ -67,7 +67,7 @@ class BaseRule(metaclass=ABCMeta):
+         if rulepart == self.ALL:
+             return None, True
+         elif isinstance(rulepart, str):
+-            if not rulepart.strip():
++            if not rulepart.strip() and not empty_ok:
+                 raise AppArmorBug(
+                     'Passed empty %(partname)s to %(classname)s: %(rulepart)s'
+                     % {'partname': partname, 'classname': self.__class__.__name__, 'rulepart': str(rulepart)})
+diff --git a/utils/apparmor/rule/mount.py b/utils/apparmor/rule/mount.py
+index 992c29142..d20522971 100644
+--- a/utils/apparmor/rule/mount.py
++++ b/utils/apparmor/rule/mount.py
+@@ -66,7 +66,7 @@ mount_condition_pattern = rf'({fs_type_pattern})?\s*({option_pattern})?'
+ # - A path          : /foo
+ # - A globbed Path  : **
+ 
+-glob_pattern = r'(\s*(?P<%s>(([/{]|\*\*)\S*|"([/{]|\*\*)[^"]*"|@{\S+}\S*|"@{\S+}[^"]*")|\w+))'
++glob_pattern = r'(\s*(?P<%s>(([/{]|\*\*)\S*|"([/{]|\*\*)[^"]*"|@{\S+}\S*|"@{\S+}[^"]*"|"")|\w+))'
+ source_fileglob_pattern = glob_pattern % 'source_file'
+ dest_fileglob_pattern = glob_pattern % 'dest_file'
+ 
+@@ -114,7 +114,7 @@ class MountRule(BaseRule):
+             raise AppArmorException(_('Passed unknown options keyword to %s: %s') % (type(self).__name__, ' '.join(unknown_items)))
+         self.is_options_equal = options[0] if not self.all_options else None
+ 
+-        self.source, self.all_source = self._aare_or_all(source, 'source', is_path=False, log_event=log_event)
++        self.source, self.all_source = self._aare_or_all(source, 'source', is_path=False, log_event=log_event, empty_ok=True)
+         self.dest, self.all_dest = self._aare_or_all(dest, 'dest', is_path=False, log_event=log_event)
+ 
+         if not self.all_fstype and self.is_fstype_equal not in ('=', 'in'):
+diff --git a/utils/test/test-mount.py b/utils/test/test-mount.py
+index 6dfe1ac85..7af46a5d8 100644
+--- a/utils/test/test-mount.py
++++ b/utils/test/test-mount.py
+@@ -55,6 +55,8 @@ class MountTestParse(AATest):
+                                                                             MountRule('mount',   MountRule.ALL,            ('=', ('rw', 'rbind')),  '{,/usr}/lib{,32,64,x32}/modules/',
+                                                                                                                                                                    '/tmp/snap.rootfs_*{,/usr}/lib/modules/',
+                                                                                                                                                                                     False, False, False, ''     )),
++        ('mount options=(runbindable, rw) -> /,',                           MountRule('mount',   MountRule.ALL,            ('=', ['runbindable', 'rw']), MountRule.ALL, '/',        False, False, False, '')),
++        ('mount "" -> /,',                                                  MountRule('mount',   MountRule.ALL,            MountRule.ALL,           '',             '/',            False, False, False, '')),
+         ('umount,',                                                         MountRule('umount',  MountRule.ALL,            MountRule.ALL,           MountRule.ALL,  MountRule.ALL,  False, False, False, ''     )),
+         ('umount fstype=ext3,',                                             MountRule('umount',  ('=', ['ext3']),          MountRule.ALL,           MountRule.ALL,  MountRule.ALL,  False, False, False, ''     )),
+         ('umount /a,',                                                      MountRule('umount',  MountRule.ALL,            MountRule.ALL,           MountRule.ALL,  '/a',           False, False, False, ''     )),
+-- 
+GitLab
+
