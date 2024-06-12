@@ -94,7 +94,7 @@ This package contains javadoc for %{name}.
 
 %build
 
-%{mvn_build} -f -s -- -Dmojo.java.target=1.8 -Dmaven.test.failure.ignore=true -Dsource=8
+%{mvn_build} -f -s -- -Dmojo.java.target=8 -Dmaven.test.failure.ignore=true -Dsource=8
 
 %install
 %mvn_install

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 12 10:09:55 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with mojo-parent >= 3.1.0
+
+-------------------------------------------------------------------
 Tue Apr 30 13:03:24 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to maven-native 1.0-M1
