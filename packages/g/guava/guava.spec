@@ -17,7 +17,7 @@
 
 
 Name:           guava
-Version:        33.1.0
+Version:        33.2.1
 Release:        0
 Summary:        Google Core Libraries for Java
 License:        Apache-2.0 AND CC0-1.0

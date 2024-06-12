@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Jun 12 10:14:08 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to guava 33.2.1
+  * Changes of version 33.2.1
+    + net: Changed InetAddress-String conversion methods to preserve
+      the IPv6 scope ID if present. The scope ID can be necessary
+      for IPv6-capable devices with multiple network interfaces.
+      However, preserving it can also lead to problems for callers
+      that rely on the returned values not to include the scope ID:
+      - Callers might compensate for the old behavior of the methods
+        by appending the scope ID to a returned string themselves.
+        If so, you can update your code to stop doing so at the same
+        time as you upgrade Guava. Of, if your code might run
+        against multiple versions of Guava, you can check whether
+        Guava has included a scope ID before you add one yourself.
+      - Callers might pass the returned string to another system
+        that does not understand scope IDs. If so, you can strip the
+        scope ID off, whether by truncating the string form at a %
+        character (leaving behind any trailing ] character in the
+        case of forUriString) or by replacing the returned
+        InetAddress with a new instance constructed by calling
+        InetAddress.getByAddress(addr).
+      - java.net.InetAddress validates any provided scope ID against
+        the interfaces available on the machine. As a result,
+        methods in InetAddresses may now fail if the scope ID fails
+        validation.
+        * Notable cases in which this may happen include:
+          - if the code runs in an Android app without networking
+            permission
+          - if code passes InetAddress instances or strings across
+            devices
+        * If this is not the behavior that you want, then you can
+          strip off the scope ID from the input string before
+          passing it to Guava, as discussed above.
+  * Changes of version 33.2.0
+    + Dropped testing for Android versions before Lollipop (API
+      Level 21). Guava may stop working under older versions in
+      the future, or it may have done so already.
+    + Fixed a GWT compilation breakage under Gradle.
+    + collect: Made our Collector APIs (e.g.,
+      ImmutableList.toImmutableList()) available in guava-android.
+      More Java 8 APIs will follow in future releases.
+      - As always, streams are available to Android code only when
+        that code enables library desugaring or targets a new enough
+        API Level (24 (Nougat) for many stream APIs). (But note that
+        we test only with library desugaring, so we don't currently
+        know if API Level 24 is high enough to use our Collector
+        APIs unless you have also enabled library desugaring.) Guava
+        users who avoid the Collector APIs do not need to meet this
+        requirement.
+    + collect: Fixed a potential NullPointerException in
+     ImmutableMap.Builder on a rare code path.
+    + net: Added HttpHeaders constants Ad-Auction-Allowed,
+      Permissions-Policy-Report-Only, and Sec-GPC.
+
+-------------------------------------------------------------------
 Wed Apr 17 16:34:39 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to guava 33.1.0
