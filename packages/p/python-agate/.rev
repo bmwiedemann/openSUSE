@@ -181,4 +181,17 @@
     tablesets.</comment>
     <requestid>1171534</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9899ee99e7d623fb9513e9d10f8092d6</srcmd5>
+    <version>1.11.0</version>
+    <time>1718199539</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.11.0:
+  * fix: The key argument to :meth:`.Table.to_json` errors if two
+    values are equal, even if their CSV representation is
+    different: for example, &quot;1/1/2020&quot; and &quot;01/01/2020&quot;. However,
+    until now, this was not the case for numbers: for example,
+    &quot;3.0&quot; was treated as unequal to &quot;3.00&quot;.</comment>
+    <requestid>1180144</requestid>
+  </revision>
 </revisionlist>
