@@ -141,6 +141,6 @@
 <group name="opensuse_aeon.x86_64">
   <conditional name="only_x86_64"/>
   <packagelist relationship="recommends">
-    <package name=" patterns-aeon-base uninstallable: package patterns-aeon-base-5.0-8.1.x86_64 requires gnome-backgrounds, but none of the providers can be installed" supportstatus="unsupported"/>
+    <package name=" patterns-aeon-base uninstallable: package patterns-aeon-base-5.0-9.1.x86_64 requires gnome-backgrounds, but none of the providers can be installed" supportstatus="unsupported"/>
   </packagelist>
 </group>

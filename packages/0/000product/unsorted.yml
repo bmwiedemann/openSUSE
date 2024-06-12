@@ -2143,6 +2143,7 @@ unsorted:
   - cinnamon-theme-adapta 
   - cinnamon-theme-dracula 
   - cinnamon-theme-matcha 
+  - cinnamon-theme-yaru 
   - cint-devel 
   - circuslinux 
   - civetweb 
@@ -7259,6 +7260,7 @@ unsorted:
   - gnome-shell-theme-adapta 
   - gnome-shell-theme-dracula 
   - gnome-shell-theme-matcha 
+  - gnome-shell-theme-yaru 
   - gnome-software-devel 
   - gnome-sound-recorder 
   - gnome-sound-recorder-lang 
@@ -8117,6 +8119,7 @@ unsorted:
   - gtkpod-devel 
   - gtkpod-lang 
   - gtksourceview-devel 
+  - gtksourceview-theme-yaru 
   - gtksourceview2-devel 
   - gtksourceview2-lang 
   - gtksourceview4-devel 
@@ -10045,6 +10048,10 @@ unsorted:
   - klickety-lang 
   - klines 
   - klines-lang 
+  - klog 
+  - klog-bash-completion 
+  - klog-fish-completion 
+  - klog-zsh-completion 
   - kmailtransport-devel 
   - kmarkdownwebview 
   - kmarkdownwebview-lang 
@@ -16317,6 +16324,7 @@ unsorted:
   - libtranscript-devel 
   - libtranscript1 
   - libtre5 
+  - libtree 
   - libtrilinos-gnu-mpich-hpc 
   - libtrilinos-gnu-mvapich2-hpc 
   - libtrilinos-gnu-openmpi4-hpc 
@@ -17096,6 +17104,8 @@ unsorted:
   - libzbc-tools 
   - libzbc5 
   - libzck-devel 
+  - libzdb-devel 
+  - libzdb13 
   - libze_intel_gpu1 
   - libzeitgeist-1_0-1 
   - libzeitgeist-devel 
@@ -18314,6 +18324,7 @@ unsorted:
   - metacity-theme-adapta 
   - metacity-theme-dracula 
   - metacity-theme-matcha 
+  - metacity-theme-yaru 
   - metacity-tools 
   - metainf-services 
   - metainf-services-javadoc 
@@ -36535,6 +36546,7 @@ unsorted:
   - spacefm 
   - spacefm-lang 
   - spack 
+  - spack-build-dependencies 
   - spack-info 
   - spack-man 
   - spack-recipes 
@@ -47987,6 +47999,7 @@ unsorted:
   - xfwm4-theme-adapta 
   - xfwm4-theme-dracula 
   - xfwm4-theme-matcha 
+  - xfwm4-theme-yaru 
   - xgalaga++ 
   - xgalaga-sdl 
   - xgamma 
