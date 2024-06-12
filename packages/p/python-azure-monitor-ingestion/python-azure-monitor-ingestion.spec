@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-monitor-ingestion
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Summary:        Microsoft Azure Monitor Ingestion Client Library for Python
 License:        MIT
@@ -36,7 +36,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-azure-monitor-nspkg >= 1.0.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-isodate >= 0.6.0
-Requires:       (python-azure-core >= 1.24.0 with python-azure-core < 2.0.0)
+Requires:       (python-azure-core >= 1.28.0 with python-azure-core < 2.0.0)
 Requires:       (python-typing_extensions >= 4.0.1 if python-base < 3.8)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
