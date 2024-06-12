@@ -666,4 +666,41 @@
     <comment></comment>
     <requestid>1172097</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>de95ccbf24a466b2da205cc5d568f0ef</srcmd5>
+    <version>1.5.0</version>
+    <time>1718199440</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.5.0 (bsc#1226185, CVE-2024-5206):
+  ## Security
+  * Fix feature_extraction.text.CountVectorizer and
+    feature_extraction.text.TfidfVectorizer no longer store discarded
+    tokens from the training set in their stop_words_ attribute. This
+    attribute would hold too frequent (above max_df) but also too rare
+    tokens (below min_df). This fixes a potential security issue (data
+    leak) if the discarded rare tokens hold sensitive information from
+    the training set without the model developer’s knowledge.
+  ## Changed models
+  * Efficiency The subsampling in preprocessing.QuantileTransformer is
+    now more efficient for dense arrays but the fitted quantiles and
+    the results of transform may be slightly different than before
+    (keeping the same statistical properties). #27344 by Xuefeng Xu.
+  * Enhancement decomposition.PCA, decomposition.SparsePCA and
+    decomposition.TruncatedSVD now set the sign of the components_
+    attribute based on the component values instead of using the
+    transformed data as reference. This change is needed to be able to
+    offer consistent component signs across all PCA solvers, including
+    the new svd_solver=&quot;covariance_eigh&quot; option introduced in this
+    release.
+  ## Changes impacting many modules
+  * Fix Raise ValueError with an informative error message when
+    passing 1D sparse arrays to methods that expect 2D sparse inputs.
+    #28988 by Olivier Grisel.
+  * API Change The name of the input of the inverse_transform method
+    of estimators has been standardized to X. As a consequence, Xt is
+    deprecated and will be removed in version 1.7 in the following
+    estimators: cluster.FeatureAgglomeration,
+    decomposition.MiniBatchNMF, decomposition.NMF,</comment>
+    <requestid>1180116</requestid>
+  </revision>
 </revisionlist>

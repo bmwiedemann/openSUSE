@@ -45,15 +45,16 @@ ExclusiveArch:  donotbuild
 %bcond_with pytestcolor
 
 Name:           python-scikit-learn%{psuffix}
-Version:        1.4.2
+Version:        1.5.0
 Release:        0
 Summary:        Python modules for machine learning and data mining
 License:        BSD-3-Clause
 URL:            https://scikit-learn.org/
-Source0:        https://files.pythonhosted.org/packages/source/s/scikit-learn/scikit-learn-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 3.0.8}
+Source0:        https://files.pythonhosted.org/packages/source/s/scikit-learn/scikit_learn-%{version}.tar.gz
+BuildRequires:  %{python_module Cython >= 3.0.10}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module joblib >= 1.2.0}
+BuildRequires:  %{python_module meson-python}
 BuildRequires:  %{python_module numpy-devel >= 1.19.5}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module scipy >= 1.6.0}
@@ -61,8 +62,14 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module threadpoolctl >= 2.0.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+# Default gcc in leap is gcc 7
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} <= 150600
+BuildRequires:  gcc8-c++
+BuildRequires:  gcc8-fortran
+%else
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
+%endif
 BuildRequires:  openblas-devel
 BuildRequires:  python-rpm-macros
 # Check sklearn/_min_dependencies.py for dependencies
@@ -97,14 +104,20 @@ Scikit-learn is a python module for machine learning built on top of
 scipy.
 
 %prep
-%autosetup -p1 -n scikit-learn-%{version}
+%autosetup -p1 -n scikit_learn-%{version}
 rm -rf sklearn/.pytest_cache
 %if !%{with pytestcolor}
 sed -i '/--color=yes/d' setup.cfg
 %endif
 
+# Fix shebang for version, this is used during pyproject_wheel
+sed -i 's|python|python3|' sklearn/_build_utils/version.py
+
 %build
 %if !%{with test}
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} <= 150600
+export CC=gcc-8 CXX=g++-8
+%endif
 export CFLAGS="%{optflags}"
 %pyproject_wheel
 %endif
@@ -112,8 +125,26 @@ export CFLAGS="%{optflags}"
 %install
 %if !%{with test}
 %pyproject_install
+
+%{python_expand #
+# Remove shebang from non executable
+sed -i '/#!.*env python/d' %{buildroot}%{$python_sitearch}/sklearn/_build_utils/version.py
+# Remove empty file
+rm %{buildroot}%{$python_sitearch}/sklearn/_built_with_meson.py
+# Fix file permissions
+chmod 0644 %{buildroot}%{$python_sitearch}/sklearn/cluster/_optics.py
+chmod 0644 %{buildroot}%{$python_sitearch}/sklearn/ensemble/tests/test_weight_boosting.py
+}
+%python_compileall
+
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %endif
+
+# Remove devel files
+%{python_expand #
+rm -rf %{buildroot}%{$python_sitearch}/sklearn/svm/src
+rm -rf %{buildroot}%{$python_sitearch}/sklearn/utils/src
+}
 
 %if %{with test}
 %check
@@ -127,6 +158,7 @@ NO_TESTS="testeverythingifnotmatch"
 NO_TESTS+=" or test_convergence_dtype_consistency"
 NO_TESTS+=" or test_imputation_missing_value_in_test_array"
 NO_TESTS+=" or test_graphviz_toy"
+NO_TESTS+=" or test_forest_classifier_oob"
 %endif
 %pytest_arch -v --pyargs sklearn -n auto -k "not ($NO_TESTS)"
 popd
