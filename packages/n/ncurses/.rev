@@ -4590,4 +4590,17 @@
     --enable-widec, to provide more choices of underlying curses library</comment>
     <requestid>1178235</requestid>
   </revision>
+  <revision rev="266" vrev="39">
+    <srcmd5>10afc67d3881e939e77529f04efff2e8</srcmd5>
+    <version>unknown</version>
+    <time>1718199474</time>
+    <user>anag+factory</user>
+    <comment>- Add ncurses patch 20240608
+  + change winwstr to return wide character count instead of OK (patch
+    by Branden Robinson).
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + rename testing dpkg's for ncurses6 to resolve a naming conflict with
+    Debian's ncurses packages.</comment>
+    <requestid>1179693</requestid>
+  </revision>
 </revisionlist>

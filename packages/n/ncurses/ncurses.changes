@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 10 06:07:51 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20240608
+  + change winwstr to return wide character count instead of OK (patch
+    by Branden Robinson).
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + rename testing dpkg's for ncurses6 to resolve a naming conflict with
+    Debian's ncurses packages.
+
+-------------------------------------------------------------------
 Mon Jun  3 06:16:18 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20240601
