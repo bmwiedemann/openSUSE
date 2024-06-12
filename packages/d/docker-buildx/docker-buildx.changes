@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Jun 11 20:02:07 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.0:
+  * New --call option allows setting evaluation method for a build,
+    replacing the previous experimental --print flag. #2498 #2487
+    #2513 In addition to default "build", the following methods are
+    implemented by Dockerfile frontend:
+    - check - Run validation routines for your build configuration.
+      These are the same validations that would show up as warnings
+      during build. There is also shortcut flag --check for this
+      option.
+    - outline - Show configuration that would be used by current
+      build, including all the build-args, secrets, SSH etc that
+      your build would use.
+    - targets- Show all available targets and their descriptions.
+  * New --prefer-index flag has been added to imagetools create
+    command to control the behavior of creating image out of one
+    single-platform image manifest. #2482
+  * Kubernetes driver allows configuring deployment timeout #2492
+  * New metrics definitions have been added for build warning types
+    #2482 #2507
+  * Prune and Disk usage commands now support negative and prefix
+    filters #2473
+  * Building Compose files with Bake now supports passing SSH
+    forwarding configuration #2445
+  * Compose compatibility has been updated to v2.1.2 #2502 #2425
+  * Fix issue with configuring Kubernetes driver with custom TLS
+    certificates #2454
+  * Fix concurrent kubeconfig access when loading nodes #2497
+
+-------------------------------------------------------------------
 Wed May 22 17:32:10 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.14.1:
