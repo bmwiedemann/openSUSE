@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 09 10:18:24 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1717928296.ae652c1:
+  * Lower GIT_CACHE_DIR_LIMIT used in the tests
+  * Modernize perl code
+  * Update Perl::Tidy version to 20240511.0.0
+  * Update to Leap 15.6 in CI workflow
+  * Change workflow logic to assume default root user
+
+-------------------------------------------------------------------
 Tue Jun 04 15:16:28 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1717514179.6646558:
