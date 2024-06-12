@@ -1,7 +1,17 @@
-diff -Naur a/prog/detect/sensors-detect b/prog/detect/sensors-detect
---- a/prog/detect/sensors-detect	2018-11-23 19:04:09.562152712 -0600
-+++ b/prog/detect/sensors-detect	2018-11-23 19:08:21.037599155 -0600
-@@ -3051,13 +3051,16 @@
+From c4b5b7114a43b771331a68317c46644aef42ebb5 Mon Sep 17 00:00:00 2001
+From: "jdelvare@suse.de" <jdelvare@suse.de>
+Date: Tue, 14 Oct 2008 14:34:53 +0200
+Subject: [PATCH 04/11] lm_sensors-3.0.3-hint-at-kernel-extra-package
+
+---
+ prog/detect/sensors-detect | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/prog/detect/sensors-detect b/prog/detect/sensors-detect
+index fed2b3b6..f5b890ba 100755
+--- a/prog/detect/sensors-detect
++++ b/prog/detect/sensors-detect
+@@ -3090,13 +3090,16 @@ sub initialize_conf
  # [2] -> SUBLEVEL
  # [3] -> EXTRAVERSION
  #
@@ -19,7 +29,7 @@ diff -Naur a/prog/detect/sensors-detect b/prog/detect/sensors-detect
  	chomp($kernel_arch = `uname -m`);
  
  	# We only support kernels >= 2.6.5
-@@ -7303,6 +7306,9 @@
+@@ -7389,6 +7392,9 @@ sub generate_modprobes
  				print "Warning: the required module $driver is not currently installed\n".
  				      "on your system. Check https://hwmon.wiki.kernel.org/device_support_status for\n".
  				      "driver availability.\n\n";
@@ -29,3 +39,6 @@ diff -Naur a/prog/detect/sensors-detect b/prog/detect/sensors-detect
  			} else {
  				$hwmon_modules{$driver}++
  					unless hwmon_is_autoloaded($driver);
+-- 
+2.43.0
+

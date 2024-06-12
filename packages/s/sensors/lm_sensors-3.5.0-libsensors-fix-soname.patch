@@ -1,5 +1,7 @@
+From f3f6488b0b15d1eea89c4312e7dc646e2b959fa5 Mon Sep 17 00:00:00 2001
 From: Jean Delvare <jdelvare@suse.de>
-Subject: libsensors: Undo gratuitous library version bump
+Date: Sun, 16 Dec 2018 12:19:48 +0000
+Subject: [PATCH 06/11] libsensors: Undo gratuitous library version bump
 
 The new library is compatible with previous versions, it only has
 added symbols, no changes nor removals. So the major version number
@@ -7,12 +9,14 @@ shall stay the same.
 
 Signed-off-by: Jean Delvare <jdelvare@suse.de>
 ---
- lib/Module.mk |    4 ++--
+ lib/Module.mk | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
+diff --git a/lib/Module.mk b/lib/Module.mk
+index ca25e7bb..fbc4114f 100644
 --- a/lib/Module.mk
 +++ b/lib/Module.mk
-@@ -32,8 +32,8 @@ LIBMAN5FILES := $(MODULE_DIR)/sensors.co
+@@ -32,8 +32,8 @@ LIBMAN5FILES := $(MODULE_DIR)/sensors.conf.5
  # The library soname (major number) must be changed if and only if the interface is
  # changed in a backward incompatible way.  The interface is defined by
  # the public header files - in this case they are error.h and sensors.h.
@@ -23,3 +27,6 @@ Signed-off-by: Jean Delvare <jdelvare@suse.de>
  LIBVER := $(LIBMAINVER).$(LIBMINORVER)
  
  # The static lib name, the shared lib name, and the internal ('so') name of
+-- 
+2.43.0
+

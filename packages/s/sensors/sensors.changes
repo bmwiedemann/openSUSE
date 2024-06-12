@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Sat Jan 13 16:09:14 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 3.6.2:
+  * sensor quantitiy and units
+  * new json format
+  * SENSORS_SYSFS_ROOT environment variable
+  * service files updated
+- Drop upstreamed patches
+  * harden_fancontrol.service.patch
+  * harden_lm_sensors.service.patch
+  * harden_sensord.service.patch
+  * lm_sensors-3.4.0-sensord-service-extra-args.patch
+  * var-run-deprecated.patch
+  * rrd-drop-useless-cast.patch
+  * pwmconfig-raise-fan-threshold.patch
+  * sysfs-Expand-filename-buffer-to-quiet-warning.patch
+- Run tests
+
+-------------------------------------------------------------------
+Mon Dec 25 17:51:48 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 3.6.1:
+  * configs: Added a number of new configuration files
+  * fancontrol: Add executable commands as temp sensors
+  * pwmconfig, fancontrol: Allow read-only pwm*_enable
+  * sensors: Handle json trailing ',' when no features are listed
+           Add support for rated values
+           Only do conversion to Fahrenheit on temperatures
+  * sensors-detect: Add support for NCT6687D
+                  Add support for AMD CPU Family 19h
+                  Add support for FTS Teutates Chip
+                  Fix the driver for Nuvoton W83677HG-I
+  * sensord: Add support of emergency alarm
+           Change PIDFile path from /var/run to /run
+  * Allow subfeatures to be ignored too
+  * Flag allow-no-sensors added
+  * Add support for dev_name formatted like "a000000.wifi"
+  * Add ZSH completion for sensors and sensors-detect
+  * Add ISA ACPI sensor driver name support
+  * Add support for static only build
+  * Add SDIO attached sensor support
+  * Add PWM and frequency sensor support
+- Drop trailing space from hardedning patches
+  * harden_fancontrol.service.patch
+  * harden_lm_sensors.service.patch
+  * harden_sensord.service.patch
+- Refresh
+  * lm_sensors-3.4.0-sensord-service-extra-args.patch
+  * var-run-deprecated.patch
+- Add rrd-drop-useless-cast.patch
+- Drop usptreamed patches
+  * change-pidfile-path-from-var-run-to-run.patch
+  * lm_sensors-3.4.0-sensors-detect-add-ftsteutates-support.patch
+  * lm_sensors-3.6.0-sensors-detect-fix-driver-for-w83677hgi.patch
+  * pwmconfig-handle-fan-input-error.patch
+- Drop obsolete spec file constructs, use autopatch.
+
+-------------------------------------------------------------------
 Mon Dec 13 16:22:02 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Also remove ProtectKernelTunables from harden_fancontrol.service.patch,
@@ -590,6 +648,7 @@ Mon Jul 20 09:59:32 CEST 2009 - jdelvare@suse.de
   * Completely reworked sensors-detect
   * Support for multiple configuration files
   * New default sensors.conf file
+  * add lm_sensors-3.1.1-build.patch
 - Include our own init script instead of patching upstream's to no
   end.
 - Fix init script Provides (lm_sensors instead of sensors.)
@@ -743,6 +802,7 @@ Mon Nov 26 13:34:08 CET 2007 - jdelvare@suse.de
     device-specific code)
   * libsensors has a new SONAME (libsensors.so.4)
   * fancontrol.pl is gone
+  * Add lm_sensors-3.0.0-sensord-separate.patch lm_sensors-3.0.0-sysconfig_metadata.patch
 
 -------------------------------------------------------------------
 Thu Nov 22 11:31:49 CET 2007 - jdelvare@suse.de

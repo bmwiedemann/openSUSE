@@ -1,6 +1,17 @@
---- lm_sensors-3.1.1.orig/Makefile
-+++ lm_sensors-3.1.1/Makefile
-@@ -141,7 +141,7 @@ ifeq ($(DEBUG),1)
+From 00066aab63916e9c5b8aec9f412fd30a7a040563 Mon Sep 17 00:00:00 2001
+From: "jdelvare@suse.de" <jdelvare@suse.de>
+Date: Mon, 20 Jul 2009 09:59:32 +0200
+Subject: [PATCH 01/11] lm_sensors-3.1.1-build
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index f1e72258..c2e0615a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -152,7 +152,7 @@ ifeq ($(DEBUG),1)
  ALL_CPPFLAGS += -DDEBUG
  ALL_CFLAGS += -O -g
  else
@@ -9,3 +20,6 @@
  endif
  
  ifeq ($(WARN),1)
+-- 
+2.43.0
+

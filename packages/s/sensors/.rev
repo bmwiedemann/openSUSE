@@ -908,4 +908,12 @@
   breaks service (boo#1193149) (forwarded request 940302 from jsegitz)</comment>
     <requestid>940445</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>edca96e6fcbb37708f1274d3c0f98118</srcmd5>
+    <version>MACRO</version>
+    <time>1718199452</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1142254</requestid>
+  </revision>
 </revisionlist>

@@ -1,10 +1,17 @@
+From d68c760c8065ba542391c30863b5543d703e5b1b Mon Sep 17 00:00:00 2001
+From: "jdelvare@suse.de" <jdelvare@suse.de>
+Date: Mon, 26 Nov 2007 13:34:08 +0100
+Subject: [PATCH 02/11] lm_sensors-3.0.0-sensord-separate
+
 ---
- doc/progs |    2 ++
+ doc/progs | 2 ++
  1 file changed, 2 insertions(+)
 
+diff --git a/doc/progs b/doc/progs
+index 0c5464df..63f6e260 100644
 --- a/doc/progs
 +++ b/doc/progs
-@@ -53,6 +53,8 @@ see http://www.lm-sensors.org/wiki/Usefu
+@@ -56,6 +56,8 @@ see https://github.com/lm-sensors/lm-sensors/
    the sensors hardware to syslog, and to alert (using syslog level ALERT)
    when a sensor alarm is signalled; for example, if a fan fails, a temperature
    limit is exceeded, etc.
@@ -13,3 +20,6 @@
  
  * prog/sensors/sensors (written in C, installed by `make install')
    This pretty-prints the information provided by the modules. It is a normal
+-- 
+2.43.0
+

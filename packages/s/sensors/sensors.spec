@@ -1,7 +1,7 @@
 #
 # spec file for package sensors
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,46 +19,32 @@
 #%%define   commit          1c48b191c8a2b9fc747e3db3816247c666c5c3f1
 #%%define   shortcommit     1c48b19
 %define   _name           lm-sensors
-%define   _version        3-6-0
+%define   _version        3-6-2
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           sensors
-Version:        3.6.0
+Version:        %(echo %{_version} | tr '-' '.')
 Release:        0
 Summary:        Hardware health monitoring for Linux
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            https://github.com/lm-sensors/%{_name}
-Source0:        https://github.com/lm-sensors/%{_name}/archive/V%{_version}.tar.gz#/%{_name}-%{_version}.tar.gz
-#Source0:        https://github.com/groeck/lm-sensors/archive/%%{commit}/%%{_name}-%%{shortcommit}.tar.gz
+Source0:        https://github.com/hramrach/%{_name}/archive/V%{_version}.tar.gz#/%{_name}-%{_version}.tar.gz
 Source1:        sysconfig.sensord
 Source2:        baselibs.conf
 Patch1:         lm_sensors-3.1.1-build.patch
 Patch2:         lm_sensors-3.0.0-sensord-separate.patch
 Patch3:         lm_sensors-3.0.0-sysconfig_metadata.patch
 Patch4:         lm_sensors-3.0.3-hint-at-kernel-extra-package.patch
-Patch6:         lm_sensors-3.4.0-sensord-service-extra-args.patch
-#PATCH-FEATURE-UPSTREAM add ftsteutates support
-Patch7:         lm_sensors-3.4.0-sensors-detect-add-ftsteutates-support.patch
 Patch8:         lm_sensors-3.5.0-libsensors-fix-soname.patch
-#PATCH-FEATURE-UPSTREAM fix w83677hgi support
-Patch9:         lm_sensors-3.6.0-sensors-detect-fix-driver-for-w83677hgi.patch
-#PATCH-FIX-UPSTREAM Deal gracefully with unreadable fan inputs
-Patch10:        pwmconfig-handle-fan-input-error.patch
-#PATCH-FIX-UPSTREAM Further raise the fan threshold
-Patch11:        pwmconfig-raise-fan-threshold.patch
-#PATCH-FIX-UPSTREAM Change PIDFile path from /var/run to /run
-Patch12:        change-pidfile-path-from-var-run-to-run.patch
-Patch13:        var-run-deprecated.patch
-Patch14:        harden_fancontrol.service.patch
-Patch15:        harden_lm_sensors.service.patch
-Patch16:        harden_sensord.service.patch
 BuildRequires:  bison
 BuildRequires:  flex
+BuildRequires:  perl-Test-Cmd
 BuildRequires:  rrdtool-devel
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  valgrind
 Requires:       modutils
 %{?systemd_requires}
 
@@ -113,23 +99,7 @@ have to be applied for the specific hardware, so that the output makes
 sense to the user.
 
 %prep
-%setup -q -n %{_name}-%{_version}
-#%%setup -q -n lm-%%{name}-%%{commit}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
+%autosetup -p1 -n %{_name}-%{_version}
 
 %build
 RPM_OPT_FLAGS="%{optflags}"
@@ -151,6 +121,9 @@ make %{?_smp_mflags} PROG_EXTRA:=sensord BUILD_STATIC_LIB:=0 PREFIX=%{_prefix} M
     ln -sf service			%{buildroot}%{_sbindir}/rcfancontrol
     ln -sf service			%{buildroot}%{_sbindir}/rcsensord
     cp -a %{SOURCE1}			%{buildroot}/%{_fillupdir}
+
+%check
+make test
 
 %pre
 %service_add_pre lm_sensors.service fancontrol.service
@@ -200,11 +173,9 @@ fi
 %service_del_postun sensord.service
 
 %post -n libsensors4 -p /sbin/ldconfig
-
 %postun -n libsensors4 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %{_unitdir}/lm_sensors.service
 %{_sbindir}/rclm_sensors
 %{_unitdir}/fancontrol.service
@@ -234,9 +205,9 @@ fi
 %{_mandir}/man8/pwmconfig.8%{?ext_man}
 %{_mandir}/man8/sensors-conf-convert.8%{?ext_man}
 %{_mandir}/man8/sensors-detect.8%{?ext_man}
+%{_datadir}/zsh/site-functions/
 
 %files -n sensord
-%defattr(-,root,root)
 %{_unitdir}/sensord.service
 %{_sbindir}/rcsensord
 %{_fillupdir}/sysconfig.sensord
@@ -246,7 +217,6 @@ fi
 %{_mandir}/man8/sensord.8%{?ext_man}
 
 %files -n libsensors4
-%defattr(-,root,root)
 %config %{_sysconfdir}/sensors3.conf
 %config %{_sysconfdir}/sensors.d/
 %{_libdir}/libsensors.so.4*
@@ -255,7 +225,6 @@ fi
 %{_mandir}/man5/*.5%{?ext_man}
 
 %files -n libsensors4-devel
-%defattr(-,root,root)
 %{_includedir}/sensors/
 %{_libdir}/libsensors.so
 %dir %{_docdir}/sensors
