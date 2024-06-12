@@ -2,6 +2,7 @@
 # spec file for package xscreensaver
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           xscreensaver
-Version:        6.08
+Version:        6.09
 Release:        0
 Summary:        A screen saver and locker for the X Window System
 License:        BSD-3-Clause AND GPL-2.0-or-later
