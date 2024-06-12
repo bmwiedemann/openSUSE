@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 11 12:09:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240610T164415Z:
+  * info: Add --offline flag to show only offline nodes (#4955)
+  * fix: mc mirror got zero exit code when access denied (#4952)
+
+-------------------------------------------------------------------
 Fri Jun 07 19:31:40 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240605T181330Z:
