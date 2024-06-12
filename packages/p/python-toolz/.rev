@@ -132,4 +132,14 @@
   * drop python 2.x</comment>
     <requestid>1158484</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>290116abbe4144536594cd3be5d28f66</srcmd5>
+    <version>0.12.1</version>
+    <time>1718199526</time>
+    <user>anag+factory</user>
+    <comment>- switch to PEP517 build
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1180115</requestid>
+  </revision>
 </revisionlist>

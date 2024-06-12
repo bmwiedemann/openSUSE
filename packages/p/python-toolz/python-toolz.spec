@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%global skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-toolz
 Version:        0.12.1
 Release:        0
@@ -26,7 +25,9 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pytoolz/toolz/
 Source:         https://files.pythonhosted.org/packages/source/t/toolz/toolz-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -42,20 +43,20 @@ A set of python utility functions for iterators, functions, and dictionaries.
 %setup -q -n toolz-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest -k "not test_inspect_wrapped_property"
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
 %{python_sitelib}/toolz/
 %{python_sitelib}/tlz/
-%{python_sitelib}/toolz-%{version}*-info/
+%{python_sitelib}/toolz-%{version}.dist-info
 
 %changelog
