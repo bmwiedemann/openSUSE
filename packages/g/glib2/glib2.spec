@@ -37,7 +37,7 @@
 %define libgthread libgthread-%{libver}
 %define libgirepository libgirepository-%{libver}
 Name:           glib2%{psuffix}
-Version:        2.80.2
+Version:        2.80.3
 Release:        0
 Summary:        General-Purpose Utility Library
 License:        LGPL-2.1-or-later
