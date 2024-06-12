@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Tue Jun 04 11:13:01 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.20 → 10.0.21
+
+-------------------------------------------------------------------
+Mon Jun 03 21:30:46 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add missing write_meta_data method to BLS base
+
+  The standard bootloader interface class provided a method
+  named write_meta_data which is expected to be implemented
+  in the specialized bootloader implementation. For BLS
+  bootloaders this method was missing in the BLS base class.
+  write_meta_data can provide additional cmdline options
+  for booting. If not covered some boot options might be
+  missing. This patch fixes it
+
+-------------------------------------------------------------------
+Mon Jun 03 17:59:18 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix TW integration test to build outside OBS
+
+-------------------------------------------------------------------
+Mon Jun 03 17:46:52 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make sure BootLoaderConfig fixes are effective
+
+  The BootLoaderConfigGrub2 class has methods to fix the grub-mkconfig
+  generated files. It does that by mounting the system and changing the
+  respective files after the mkconfig call. However, after the change
+  the class instance stays open in combination with BootLoaderInstallGrub2
+  instance which itself under certain circumstances also mounts the
+  system to call grub-install. At the time grub-install is called it
+  cannot be guaranteed that all changes has been written unless an
+  explicit umount in the BootLoaderConfigGrub2 class instance happened.
+  This commit address the potential race condition.
+
+-------------------------------------------------------------------
+Mon Jun 03 09:22:00 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.19 → 10.0.20
+
+-------------------------------------------------------------------
+Mon Jun 03 08:25:11 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update rawhide integration test
+
+  Use new arch attribute for testing in the repository
+  element of the rawhide/test-image-live-disk integration
+  test.
+
+-------------------------------------------------------------------
+Sat Jun 01 20:55:02 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for arch attr in repository element
+
+  Allow to provide different repository sections per architecture
+
+-------------------------------------------------------------------
+Fri May 31 12:38:04 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add --list-profiles to image info
+
+  Allow to list available profiles from the processed image
+  description
+
+-------------------------------------------------------------------
 Thu May 30 21:55:20 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.0.18 → 10.0.19

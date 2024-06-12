@@ -2447,4 +2447,12 @@
   the use of pkg_resources is obsolete and will cause issues.</comment>
     <requestid>1177852</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>23011a2156956466466f0be5dd163708</srcmd5>
+    <version>10.0.21</version>
+    <time>1718199448</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1179969</requestid>
+  </revision>
 </revisionlist>
