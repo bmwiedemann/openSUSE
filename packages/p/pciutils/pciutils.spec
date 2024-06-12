@@ -2,6 +2,7 @@
 # spec file for package pciutils
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +20,17 @@
 %define sover   3
 %define lname   libpci%{sover}
 Name:           pciutils
-Version:        3.10.0
+Version:        3.12.0
 Release:        0
 Summary:        PCI utilities for the Linux Kernel
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
-URL:            https://atrey.karlin.mff.cuni.cz/~mj/pciutils.shtml
+URL:            https://mj.ucw.cz/sw/pciutils/
 Source:         https://www.kernel.org/pub/software/utils/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://www.kernel.org/pub/software/utils/%{name}/%{name}-%{version}.tar.sign
 Source2:        baselibs.conf
-Source3:        https://keys.openpgp.org/vks/v1/by-fingerprint/C466A56CADA981F4297D20C31F3D0761D9B65F0B#/pciutils.keyring
+# https://mj.ucw.cz/pgp.html
+Source3:        https://mj.ucw.cz/pgpkey.txt#/%{name}.keyring
 Patch0:         pciutils-3.1.9_pkgconfig.patch
 Patch1:         pciutils-endianh.patch
 Patch2:         pciutils-ocloexec.patch
@@ -83,37 +85,44 @@ ln -sf %{_libdir}/libpci.so.3 %{buildroot}%{_libdir}/libpci.so
 
 %if 0%{?suse_version} < 1550
 mkdir %{buildroot}/sbin
-ln -s %{_bindir}/{lspci,setpci} %{buildroot}/sbin
+ln -s %{_bindir}/{lspci,setpci,pcilmr} %{buildroot}/sbin
 %endif
 
 mkdir %{buildroot}%{_sbindir}
-ln -s %{_bindir}/{lspci,setpci} %{buildroot}%{_sbindir}
+ln -s %{_bindir}/{lspci,setpci,pcilmr} %{buildroot}%{_sbindir}
 
 rm %{buildroot}%{_bindir}/update-pciids
 rm %{buildroot}%{_mandir}/man8/update-pciids.8
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%check
+%make_build tests
+
+%ldconfig_scriptlets -n %{lname}
 
 %files
 %license COPYING
 %doc README
 %if 0%{?suse_version} < 1550
 /sbin/lspci
+/sbin/pcilmr
 /sbin/setpci
 %endif
 %{_bindir}/lspci
+%{_bindir}/pcilmr
 %{_bindir}/setpci
 %{_sbindir}/lspci
+%{_sbindir}/pcilmr
 %{_sbindir}/setpci
 %{_mandir}/man7/pcilib.7%{?ext_man}
 %{_mandir}/man8/lspci.8%{?ext_man}
+%{_mandir}/man8/pcilmr.8%{?ext_man}
 %{_mandir}/man8/setpci.8%{?ext_man}
 %{_mandir}/man5/pci.ids.5%{?ext_man}
 
 %files -n %{lname}
 %license COPYING
-%{_libdir}/libpci.so.*
+%{_libdir}/libpci.so.%{sover}
+%{_libdir}/libpci.so.%{sover}.*
 
 %files devel
 %license COPYING

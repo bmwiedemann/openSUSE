@@ -1,12 +1,21 @@
---- pciutils-3.8.0/lib/sysdep.h.orig	2022-04-21 09:44:42.293087550 +0200
-+++ pciutils-3.8.0/lib/sysdep.h	2022-04-21 09:48:40.958962299 +0200
-@@ -20,97 +20,10 @@
+Index: pciutils-3.12.0/lib/sysdep.h
+===================================================================
+--- pciutils-3.12.0.orig/lib/sysdep.h
++++ pciutils-3.12.0/lib/sysdep.h
+@@ -22,112 +22,9 @@
  typedef u8 byte;
  typedef u16 word;
  
 -#ifdef PCI_OS_WINDOWS
 -#define strcasecmp _strcmpi
 -#define strncasecmp _strnicmp
+-#if defined(_MSC_VER) && _MSC_VER < 1800
+-#if _MSC_VER < 1300
+-#define strtoull strtoul
+-#else
+-#define strtoull _strtoui64
+-#endif
+-#endif
 -#if defined(_MSC_VER) && _MSC_VER < 1900
 -#define snprintf _snprintf
 -#define vsnprintf _vsnprintf
@@ -58,14 +67,22 @@
 -#endif
 -#endif
 -
--#ifdef PCI_OS_SYLIXOS
+-#ifdef PCI_OS_HAIKU
  #include <endian.h>
+-#endif
+-
+-#ifdef PCI_OS_SYLIXOS
+-#include <endian.h>
 -#endif
 -
 -#ifdef PCI_OS_DJGPP
 -  #define BIG_ENDIAN 4321
 -  #define LITTLE_ENDIAN	1234
 -  #define BYTE_ORDER LITTLE_ENDIAN
+-#endif
+-
+-#ifdef PCI_OS_AMIGAOS
+-  #include <machine/endian.h>
 -#endif
 -
 -#if !defined(BYTE_ORDER)
@@ -82,7 +99,7 @@
 -{
 -  return (w << 8) | ((w >> 8) & 0xff);
 -}
- 
+-
 -static inline u32 swab32(u32 w)
 -{
 -  return ((w & 0xff000000) >> 24) |

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Jun  9 14:56:50 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.12.0:
+  * lspci decodes the IDE (Integrity & Data Encryption) and
+    TEE-IO extended capabilities.
+  * Optimization flags used for compiling individual object files
+    should be the same as optimization flags for linking the final
+    executable to make link-time optimization possible.
+  * no longer look up subsystems in the HWDB
+  * Updated pci.ids
+- include changes from 3.11:
+  * update-pciids now supports XZ compression
+  * update-pciids now sends itself as the User-Agent.
+  * Added a pcilmr utility for PCIe lane margining
+  * ECAM back-end now scans ACPI and BIOS memory faster.
+  * Linux systems without pread/pwrite are no longer supported
+  * Improved decoding of PCIe control and status registers.
+  * Decoding of CXL capabilities now supports up to CXL 3.0.
+  * lspci now displays interrupt message numbers consistently across
+    different capabilities.
+  * Cache of IDs resolved via DNS, which was located in ~/.pci-ids
+    by default, is now stored according to the XDG base directory
+    specification in $XDG_CACHE_HOME/pci-ids.
+  * All source files now have SPDX license identifiers.
+  * various minor bug fixes and updated pci.ids.
+
+-------------------------------------------------------------------
 Thu May 11 08:20:57 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.10.0:

@@ -1,8 +1,8 @@
-Index: pciutils-3.8.0/lib/dump.c
+Index: pciutils-3.12.0/lib/dump.c
 ===================================================================
---- pciutils-3.8.0.orig/lib/dump.c
-+++ pciutils-3.8.0/lib/dump.c
-@@ -64,7 +64,7 @@ dump_init(struct pci_access *a)
+--- pciutils-3.12.0.orig/lib/dump.c
++++ pciutils-3.12.0/lib/dump.c
+@@ -66,7 +66,7 @@ dump_init(struct pci_access *a)
  
    if (!name)
      a->error("dump: File name not given.");
@@ -11,11 +11,11 @@ Index: pciutils-3.8.0/lib/dump.c
      a->error("dump: Cannot open %s: %s", name, strerror(errno));
    while (fgets(buf, sizeof(buf)-1, f))
      {
-Index: pciutils-3.8.0/lib/names-cache.c
+Index: pciutils-3.12.0/lib/names-cache.c
 ===================================================================
---- pciutils-3.8.0.orig/lib/names-cache.c
-+++ pciutils-3.8.0/lib/names-cache.c
-@@ -63,7 +63,7 @@ pci_id_cache_load(struct pci_access *a,
+--- pciutils-3.12.0.orig/lib/names-cache.c
++++ pciutils-3.12.0/lib/names-cache.c
+@@ -121,7 +121,7 @@ pci_id_cache_load(struct pci_access *a,
        return 0;
      }
  
@@ -24,7 +24,7 @@ Index: pciutils-3.8.0/lib/names-cache.c
    if (!f)
      {
        a->debug("Cache file does not exist\n");
-@@ -136,7 +136,7 @@ pci_id_cache_flush(struct pci_access *a)
+@@ -196,7 +196,7 @@ pci_id_cache_flush(struct pci_access *a)
    tmpname = pci_malloc(a, strlen(name) + strlen(hostname) + 64);
    sprintf(tmpname, "%s.tmp-%s-%d", name, hostname, this_pid);
  
@@ -33,11 +33,11 @@ Index: pciutils-3.8.0/lib/names-cache.c
    if (!f)
      {
        a->warning("Cannot write to %s: %s", name, strerror(errno));
-Index: pciutils-3.8.0/lib/names-parse.c
+Index: pciutils-3.12.0/lib/names-parse.c
 ===================================================================
---- pciutils-3.8.0.orig/lib/names-parse.c
-+++ pciutils-3.8.0/lib/names-parse.c
-@@ -52,7 +52,7 @@ static pci_file pci_open(struct pci_acce
+--- pciutils-3.12.0.orig/lib/names-parse.c
++++ pciutils-3.12.0/lib/names-parse.c
+@@ -54,7 +54,7 @@ static pci_file pci_open(struct pci_acce
  typedef FILE * pci_file;
  #define pci_gets(f, l, s)	fgets(l, s, f)
  #define pci_eof(f)		feof(f)
@@ -46,11 +46,11 @@ Index: pciutils-3.8.0/lib/names-parse.c
  #define pci_close(f)		fclose(f)
  #define PCI_ERROR(f, err)	if (!err && ferror(f))	err = "I/O error";
  #endif
-Index: pciutils-3.8.0/lib/proc.c
+Index: pciutils-3.12.0/lib/proc.c
 ===================================================================
---- pciutils-3.8.0.orig/lib/proc.c
-+++ pciutils-3.8.0/lib/proc.c
-@@ -63,7 +63,7 @@ proc_scan(struct pci_access *a)
+--- pciutils-3.12.0.orig/lib/proc.c
++++ pciutils-3.12.0/lib/proc.c
+@@ -64,7 +64,7 @@ proc_scan(struct pci_access *a)
  
    if (snprintf(buf, sizeof(buf), "%s/devices", pci_get_param(a, "proc.path")) == sizeof(buf))
      a->error("File name too long");
@@ -59,7 +59,7 @@ Index: pciutils-3.8.0/lib/proc.c
    if (!f)
      a->error("Cannot open %s", buf);
    while (fgets(buf, sizeof(buf)-1, f))
-@@ -147,7 +147,7 @@ proc_setup(struct pci_dev *d, int rw)
+@@ -148,7 +148,7 @@ proc_setup(struct pci_dev *d, int rw)
        if (e < 0 || e >= (int) sizeof(buf))
  	a->error("File name too long");
        a->fd_rw = a->writeable || rw;
@@ -68,7 +68,7 @@ Index: pciutils-3.8.0/lib/proc.c
        if (a->fd < 0)
  	{
  	  e = snprintf(buf, sizeof(buf), "%s/%04x:%02x/%02x.%d",
-@@ -155,7 +155,7 @@ proc_setup(struct pci_dev *d, int rw)
+@@ -156,7 +156,7 @@ proc_setup(struct pci_dev *d, int rw)
  		       d->domain, d->bus, d->dev, d->func);
  	  if (e < 0 || e >= (int) sizeof(buf))
  	    a->error("File name too long");
@@ -77,11 +77,11 @@ Index: pciutils-3.8.0/lib/proc.c
  	}
        if (a->fd < 0)
  	a->warning("Cannot open %s", buf);
-Index: pciutils-3.8.0/lib/sysfs.c
+Index: pciutils-3.12.0/lib/sysfs.c
 ===================================================================
---- pciutils-3.8.0.orig/lib/sysfs.c
-+++ pciutils-3.8.0/lib/sysfs.c
-@@ -96,7 +96,7 @@ sysfs_get_string(struct pci_dev *d, char
+--- pciutils-3.12.0.orig/lib/sysfs.c
++++ pciutils-3.12.0/lib/sysfs.c
+@@ -97,7 +97,7 @@ sysfs_get_string(struct pci_dev *d, char
    void (*warn)(char *msg, ...) = (mandatory ? a->error : a->warning);
  
    sysfs_obj_name(d, object, namebuf);
@@ -90,7 +90,7 @@ Index: pciutils-3.8.0/lib/sysfs.c
    if (fd < 0)
      {
        if (mandatory || errno != ENOENT)
-@@ -160,7 +160,7 @@ sysfs_get_resources(struct pci_dev *d)
+@@ -162,7 +162,7 @@ sysfs_get_resources(struct pci_dev *d)
  
    have_bar_bases = have_rom_base = have_bridge_bases = 0;
    sysfs_obj_name(d, "resource", namebuf);
@@ -99,7 +99,7 @@ Index: pciutils-3.8.0/lib/sysfs.c
    if (!file)
      a->error("Cannot open %s: %s", namebuf, strerror(errno));
    for (i = 0; i < 7+6+4+1; i++)
-@@ -300,7 +300,7 @@ sysfs_fill_slots(struct pci_access *a)
+@@ -302,7 +302,7 @@ sysfs_fill_slots(struct pci_access *a)
        n = snprintf(namebuf, OBJNAMELEN, "%s/%s/%s", dirname, entry->d_name, "address");
        if (n < 0 || n >= OBJNAMELEN)
  	a->error("File name too long");
@@ -108,7 +108,7 @@ Index: pciutils-3.8.0/lib/sysfs.c
        /*
         * Old versions of Linux had a fakephp which didn't have an 'address'
         * file.  There's no useful information to be gleaned from these
-@@ -503,7 +503,7 @@ sysfs_setup(struct pci_dev *d, int inten
+@@ -511,7 +511,7 @@ sysfs_setup(struct pci_dev *d, int inten
        if (a->fd_vpd < 0)
  	{
  	  sysfs_obj_name(d, "vpd", namebuf);
@@ -117,7 +117,7 @@ Index: pciutils-3.8.0/lib/sysfs.c
  	  /* No warning on error; vpd may be absent or accessible only to root */
  	}
        return a->fd_vpd;
-@@ -513,7 +513,7 @@ sysfs_setup(struct pci_dev *d, int inten
+@@ -521,7 +521,7 @@ sysfs_setup(struct pci_dev *d, int inten
      {
        sysfs_obj_name(d, "config", namebuf);
        a->fd_rw = a->writeable || intent == SETUP_WRITE_CONFIG;
@@ -125,4 +125,4 @@ Index: pciutils-3.8.0/lib/sysfs.c
 +      a->fd = open(namebuf, (a->fd_rw ? O_RDWR : O_RDONLY) | O_CLOEXEC);
        if (a->fd < 0)
  	a->warning("Cannot open %s", namebuf);
-       a->fd_pos = 0;
+     }
