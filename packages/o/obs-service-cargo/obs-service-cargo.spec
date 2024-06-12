@@ -21,10 +21,10 @@ Summary:        OBS Source Service and utilities for Rust software packaging
 License:        MPL-2.0
 Group:          Development/Tools/Building
 # Repository name subject to change
-URL:            https://github.com/openSUSE/obs-service-cargo_vendor
-Version:        1.3.2
+URL:            https://github.com/Firstyear/%{name}
+Version:        1.3.6
 Release:        0
-Source0:        https://github.com/openSUSE/obs-service-cargo_vendor/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/Firstyear/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
@@ -48,16 +48,15 @@ This is an OBS Source Service that contains two main utilities:
 This vendors and audits dependencies for packaging Rust software.
 
 %prep
-# -n will be removed in the future if name changed
-%autosetup -a1 -n %{name}_vendor-%{version}
+%autosetup -a1
 
 %build
 %{cargo_build}
 
 %install
 mkdir -p %{buildroot}%{_prefix}/lib/obs/service
-install -m0755 %{_builddir}/%{name}_vendor-%{version}/target/release/cargo_vendor %{buildroot}%{_prefix}/lib/obs/service
-install -m0755 %{_builddir}/%{name}_vendor-%{version}/target/release/cargo_audit  %{buildroot}%{_prefix}/lib/obs/service
+install -m0755 %{_builddir}/%{name}-%{version}/target/release/cargo_vendor %{buildroot}%{_prefix}/lib/obs/service
+install -m0755 %{_builddir}/%{name}-%{version}/target/release/cargo_audit  %{buildroot}%{_prefix}/lib/obs/service
 install -m0644 cargo_vendor.service %{buildroot}%{_prefix}/lib/obs/service
 install -m0644 cargo_audit.service %{buildroot}%{_prefix}/lib/obs/service
 
