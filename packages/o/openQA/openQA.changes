@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jun 12 04:57:24 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1718116578.4bca4b7b:
+  * Bump ace-builds from 1.34.2 to 1.35.0
+  * Bump prettier from 3.3.1 to 3.3.2
+  * Make it clear why restarting is disabled
+  * Explain where to find advanced restart options in help popover
+  * Enable automatic cloning of Git repos in openqa-bootstrap setups
+  * docs: Fix typos in single-instance container usage
+  * docs: Add instruction how to trigger and clone tests
+  * Update list of Bootstrap files after migration to Bootstrap 5
+  * Fix validation of job/parent group forms
+  * Migrate validation code of job group form to Bootstrap 5
+  * Improve darkmode using dark theme of Bootstrap itself
+  * Fix invalid/problematic HTML
+  * Migrate remaining parts of our frontend code and tests to Bootstrap 5
+  * Migrate further aspects of our Bootstrap usage to Bootstrap 5
+  * Migrate modals and dropdowns to Boostrap 5
+  * Update to Bootstrap to 5.3.3
+  * Read GitHub token from config file
+
+-------------------------------------------------------------------
 Sun Jun 09 04:14:13 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1717835518.1501646c:
