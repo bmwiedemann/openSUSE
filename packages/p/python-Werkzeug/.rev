@@ -812,4 +812,38 @@
   * Explicitly marked the PathConverter as non path isolating.</comment>
     <requestid>1120656</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>ef22843d4929ed929c74885b9d7056ac</srcmd5>
+    <version>3.0.3</version>
+    <time>1718199442</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.0.3:
+  * Only allow ``localhost``, ``.localhost``, ``127.0.0.1``, or the
+    specified hostname when running the dev server, to make debugger
+    requests. Additional hosts can be added by using the debugger
+    middleware directly. The debugger UI makes requests using the
+    full URL rather than only the path.  :ghsa:`2g68-c3qc-8985`
+    (CVE-2024-34069, bsc#1223979)
+  * Make reloader more robust when ``&quot;&quot;`` is in ``sys.path``.
+    :pr:`2823`
+  * Better TLS cert format with ``adhoc`` dev certs. :pr:`2891`
+  * Inform Python &lt; 3.12 how to handle ``itms-services`` URIs
+    correctly, rather than using an overly-broad workaround in
+    Werkzeug that caused some redirect URIs to be passed on without
+    encoding. :issue:`2828`
+  * Type annotation for ``Rule.endpoint`` and other uses of
+    ``endpoint`` is ``Any``. :issue:`2836`
+- Update to 3.0.2:
+  * Ensure setting ``merge_slashes`` to ``False`` results in
+    ``NotFound`` for repeated-slash requests against single slash
+    routes. :issue:`2834`
+  * Fix handling of ``TypeError`` in ``TypeConversionDict.get()`` to
+    match ``ValueError``. :issue:`2843`
+  * Fix ``response_wrapper`` type check in test client. :issue:`2831`
+  * Make the return type of ``MultiPartParser.parse`` more precise.
+    :issue:`2840`
+  * Raise an error if converter arguments cannot be parsed.
+    :issue:`2822`</comment>
+    <requestid>1172322</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-Werkzeug
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Werkzeug%{psuffix}
-Version:        3.0.1
+Version:        3.0.3
 Release:        0
 Summary:        The Swiss Army knife of Python web development
 License:        BSD-3-Clause
@@ -91,14 +91,31 @@ sed -i "1d" examples/manage-{i18nurls,simplewiki,shorty,couchy,cupoftee,webpylik
 %check
 %if %{with test}
 export LANG=en_US.UTF-8
-# workaround pytest 6.2 (like https://github.com/pallets/werkzeug/commit/16718f461d016b88b6457d3ef63816b7df1f0d1f, but shorter)
-%pytest -k 'not (dev_server or test_reloader_sys_path or test_chunked_encoding or test_basic or test_server or test_ssl or test_http_proxy or test_500_error or test_untrusted_host or test_double_slash_path or test_wrong_protocol or test_content_type_and_length or test_multiple_headers_concatenated or test_multiline_header_folding or test_exclude_patterns)'
+# Tests that requires connection
+donttest="test_basic"
+donttest+=" or test_http_proxy"
+donttest+=" or test_server"
+donttest+=" or test_ssl_dev_cert"
+donttest+=" or test_ssl_object"
+donttest+=" or test_reloader_sys_path"
+donttest+=" or test_chunked_request"
+donttest+=" or test_streaming_close_response"
+donttest+=" or test_streaming_chunked_response"
+donttest+=" or test_streaming_chunked_truncation"
+donttest+=" or test_untrusted_host"
+donttest+=" or test_double_slash_path"
+donttest+=" or test_500_error"
+donttest+=" or test_wrong_protocol"
+donttest+=" or test_content_type_and_length"
+donttest+=" or test_multiple_headers_concatenated"
+donttest+=" or test_multiline_header_folding"
+%pytest -k "not ($donttest)"
 %endif
 
 %if ! %{with test}
 %files %{python_files}
-%license LICENSE.rst
-%doc CHANGES.rst README.rst
+%license LICENSE.txt
+%doc CHANGES.rst README.md
 %{python_sitelib}/werkzeug
 %{python_sitelib}/werkzeug-%{version}.dist-info
 %endif
