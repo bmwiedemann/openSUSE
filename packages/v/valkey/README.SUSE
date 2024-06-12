@@ -1,0 +1,90 @@
+ README.SUSE
+-------------
+
+ Valkey Server
+==============
+
+1. cp -a /etc/valkey/default.conf.example /etc/valkey/instancename.conf
+
+We use the "cp -a" here, so that our permissions are preserved.
+In case you copied the file with out the "-a"
+
+chown root:valkey  /etc/valkey/instancename.conf
+chmod u=rw,g=r,o= /etc/valkey/instancename.conf
+
+2. change at least pidfile, logfile and dir setting
+# the pid file *has* to match your config filename without the ".conf"
+
+pidfile /run/valkey/instancename.pid
+logfile /var/log/valkey/instancename.log
+dir /var/lib/valkey/instancename/
+
+If you want to run more than one instance you also have to change the
+socket path and/or the ip:port combination.
+ e.g. /run/valkey/instancename.sock
+
+Also make sure if you copy configurations from somewhere, that "daemonize"
+should be set to "no".
+
+3. create the database dir:
+$ install -d -o valkey -g valkey -m 0750 /var/lib/valkey/instancename/
+
+4. systemctl start valkey@instancename
+5. systemctl enable valkey@instancename
+
+6. To stop/restart all instances at the same time use:
+
+systemctl restart valkey.target
+systemctl stop valkey.target
+
+ Valkey Sentinel
+================
+
+1. cp -a /etc/valkey/sentinel.conf.example /etc/valkey/sentinel-instancename.conf
+
+We use the "cp -a" here, so that our permissions are preserved.
+In case you copied the file with out the "-a"
+
+chown root:valkey  /etc/valkey/sentinel-instancename.conf
+chmod u=rw,g=rw,o= /etc/valkey/sentinel-instancename.conf
+
+Please note that the sentinel config needs write permissions for the group.
+The chmod line differs from the line for the normal valkey server.
+
+2. change at least pidfile, logfile setting
+# the pid file *has* to match your config filename without the ".conf"
+
+pidfile /run/valkey/instancename.pid
+logfile /var/log/valkey/instancename.log
+
+If you want to run more than one instance you also have to change the
+socket path and/or the ip:port combination.
+ e.g. /run/valkey/instancename.sock
+
+Also make sure if you copy configurations from somewhere, that "daemonize"
+should be set to "no".
+
+4. systemctl start valkey-sentinel@instancename
+5. systemctl enable valkey-sentinel@instancename
+
+6. To stop/restart all instances at the same time use:
+
+systemctl restart valkey-sentinel.target
+systemctl stop valkey-sentinel.target
+
+ Integration with apache when using unix domain sockets
+=========================================================
+
+If you plan to use valkey in combination with apache, then you should
+add 'valkey' to apache group and set 'unixsocketperm 770':
+$ usermod -a -G valkey wwwrun
+$ systemctl restart apache2
+then apache is able to connect to valkey socket
+
+
+ Migrating from Redis
+=======================
+
+Migrating from Redis to Valkey is simple to execute. Just install "valkey-compat-redis" package.
+
+The scriptlet should automatically take care of the necessary transitions.

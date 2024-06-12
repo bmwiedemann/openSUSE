@@ -1,0 +1,12 @@
+### remove valkey Warnings about
+
+# WARNING: The TCP backlog setting of 511 cannot be enforced because
+#  /proc/sys/net/core/somaxconn is set to the lower value of 128.
+net.core.somaxconn=512
+
+# WARNING overcommit_memory is set to 0! Background save may fail
+# under low memory condition. To fix this issue add
+# 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or
+# run the command 'sysctl -w vm.overcommit_memory=1' for this to take
+# effect.
+vm.overcommit_memory=1

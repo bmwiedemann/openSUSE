@@ -1,0 +1,32 @@
+From eecfc29b3dc809e4481a74e570b98d6bfa03edaa Mon Sep 17 00:00:00 2001
+From: Neal Gompa <neal@gompa.dev>
+Date: Thu, 6 Jun 2024 16:07:37 -0400
+Subject: [PATCH] src/Makefile: Link libatomic on POWER systems
+
+This ensures that fallbacks for unsupported atomic operations
+are available for POWER systems.
+
+Signed-off-by: Neal Gompa <neal@gompa.dev>
+---
+ src/Makefile | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/Makefile b/src/Makefile
+index 6defebed8..302ad06b8 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -150,6 +150,11 @@ DEBUG=-g -ggdb
+ # Linux ARM32 needs -latomic at linking time
+ ifneq (,$(findstring armv,$(uname_M)))
+         FINAL_LIBS+=-latomic
++else
++# Linux POWER needs -latomic at linking time
++ifneq (,$(findstring ppc,$(uname_M)))
++        FINAL_LIBS+=-latomic
++endif
+ endif
+ 
+ ifeq ($(uname_S),SunOS)
+-- 
+2.45.1
+

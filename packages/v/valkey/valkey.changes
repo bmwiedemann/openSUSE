@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Thu Jun  6 18:26:19 UTC 2024 - Neal Gompa <ngompa@opensuse.org>
+
+- Initial package based on the redis package and Fedora valkey package
+- Ported over patch from redis package
+  + Added valkey-conf.patch
+- Backport patch from upstream submission
+  + Added ppc-atomic.patch
+

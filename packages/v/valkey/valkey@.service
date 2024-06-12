@@ -1,0 +1,30 @@
+[Unit]
+Description=Valkey instance: %i
+After=network.target
+PartOf=valkey.target
+
+[Service]
+Type=notify
+User=valkey
+Group=valkey
+PrivateTmp=true
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
+PIDFile=/run/valkey/%i.pid
+ExecStart=/usr/bin/valkey-server /etc/valkey/%i.conf
+LimitNOFILE=10240
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target valkey.target
