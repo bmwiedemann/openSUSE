@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Mon Jun 10 19:29:03 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- fix Source URL
+
+-------------------------------------------------------------------
+Wed May 29 20:40:57 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package python-demosh: Run code in Markdown files or shell
+  scripts very interactively, to allow more engaging demos
