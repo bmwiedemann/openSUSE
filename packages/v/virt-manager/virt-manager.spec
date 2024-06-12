@@ -127,7 +127,8 @@ Patch86:        086-virtManager-ignore-agen-livecycle-event-for-shutoff-VMs.patc
 Patch87:        087-Allow-serial-console-resize-to-beyond-80-columns.patch
 Patch88:        088-tests-Fix-host-copy-XML-with-libvirt-10.1.0.patch
 Patch89:        089-hostdev-Fix-error-when-mdev-type_id-is-missing.patch
-Patch90:        090-uitests-Fix-with-GtkFileChooserNative.patch
+Patch90:        090-db1b2fbc-Use-GtkFileChooserNative.patch
+Patch91:        091-uitests-Fix-with-GtkFileChooserNative.patch
 Patch100:       revert-363fca41-virt-install-Require-osinfo-for-non-x86-HVM-case-too.patch
 # SUSE Only
 Patch150:       virtman-desktop.patch

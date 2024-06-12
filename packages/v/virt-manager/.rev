@@ -2014,4 +2014,12 @@
     <comment>Several upstream bug fixes and enhancements.</comment>
     <requestid>1176759</requestid>
   </revision>
+  <revision rev="255" vrev="21">
+    <srcmd5>630fa3406ea4e188e25a160ea8d5fa40</srcmd5>
+    <version>4.1.0</version>
+    <time>1718199434</time>
+    <user>anag+factory</user>
+    <comment>Fix for bsc#1226173 - virt-manager: Browse local does not work anymore</comment>
+    <requestid>1180071</requestid>
+  </revision>
 </revisionlist>

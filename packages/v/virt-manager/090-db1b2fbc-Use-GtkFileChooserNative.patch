@@ -1,0 +1,93 @@
+Subject: Use GtkFileChooserNative
+From: Michael Weghorn m.weghorn@posteo.de Wed Mar 20 07:41:29 2024 +0100
+Date: Sun Apr 7 15:54:47 2024 -0400:
+Git: db1b2fbce3c287e8127b3c744b2f8d49ad8ed2bc
+
+Use GtkFileChooserNative [1] instead of GtkFileChooserDialog [2]
+to integrate better with the platform (e.g. use the portal
+implementation when run with GTK_USE_PORTAL=1, resulting in
+the KDE Frameworks implementation being used when
+xdg-desktop-portal-kde is in use). Quoting from
+the GtkFileChooserDialog doc [2]:
+
+> If you want to integrate well with the platform you should use the
+> GtkFileChooserNative API, which will use a platform-specific dialog if
+> available and fall back to GtkFileChooserDialog otherwise.
+
+Also replace the use of GTK_STOCK_CANCEL [3] and GTK_STOCK_OPEN [4]
+which were deprecated in GTK 3.10:
+
+Both, the `accept_label` and `cancel_label` params of
+`Gtk.FileChooserNative.new` can be `None` to use the default
+text ("Open", "Cancel"). [5]
+
+Adjust the only caller (in `vmmVMWindow#_takeScreenshot`)
+that was passing an explicit label/icon name for the
+accept button to pass `_("_Save")` as label, rather than
+the also deprecated Gtk.STOCK_SAVE [6].
+(GtkFileChooserDialog has special handling for Gtk.STOCK_SAVE
+etc., but that's not generally the case for native dialogs).
+
+Rename the method param from `choose_button` to `choose_label`
+to make clearer that this is a label.
+
+[1] https://docs.gtk.org/gtk3/class.FileChooserNative.html
+[2] https://docs.gtk.org/gtk3/class.FileChooserDialog.html
+[3] https://docs.gtk.org/gtk3/const.STOCK_CANCEL.html
+[4] https://docs.gtk.org/gtk3/const.STOCK_OPEN.html
+[5] http://pygobject-doc.gitee.io/pgi-docs/Gtk-3.0/classes/FileChooserNative.html#Gtk.FileChooserNative.new
+[6] https://docs.gtk.org/gtk3/const.STOCK_SAVE.html
+
+Fixes #315
+
+diff --git a/virtManager/error.py b/virtManager/error.py
+index 593c89ca..2b3a99f5 100644
+--- a/virtManager/error.py
++++ b/virtManager/error.py
+@@ -234,7 +234,7 @@ class vmmErrorDialog(vmmGObject):
+ 
+     def browse_local(self, dialog_name, start_folder=None,
+                      _type=None, dialog_type=None,
+-                     choose_button=None, default_name=None,
++                     choose_label=None, default_name=None,
+                      confirm_overwrite=False):
+         """
+         Helper function for launching a filechooser
+@@ -246,19 +246,11 @@ class vmmErrorDialog(vmmGObject):
+         """
+         if dialog_type is None:
+             dialog_type = Gtk.FileChooserAction.OPEN
+-        if choose_button is None:
+-            choose_button = Gtk.STOCK_OPEN
+-
+-        buttons = (Gtk.STOCK_CANCEL,
+-                   Gtk.ResponseType.CANCEL,
+-                   choose_button,
+-                   Gtk.ResponseType.ACCEPT)
+-
+-        fcdialog = Gtk.FileChooserDialog(title=dialog_name,
+-                                    parent=self.get_parent(),
+-                                    action=dialog_type,
+-                                    buttons=buttons)
+-        fcdialog.set_default_response(Gtk.ResponseType.ACCEPT)
++
++        fcdialog = Gtk.FileChooserNative.new(title=dialog_name,
++                                             parent=self.get_parent(),
++                                             action=dialog_type,
++                                             accept_label=choose_label)
+ 
+         if default_name:
+             fcdialog.set_current_name(default_name)
+diff --git a/virtManager/vmwindow.py b/virtManager/vmwindow.py
+index d5549454..4a4d2842 100644
+--- a/virtManager/vmwindow.py
++++ b/virtManager/vmwindow.py
+@@ -558,7 +558,7 @@ class vmmVMWindow(vmmGObjectUI):
+             _("Save Virtual Machine Screenshot"),
+             _type=("png", _("PNG files")),
+             dialog_type=Gtk.FileChooserAction.SAVE,
+-            choose_button=Gtk.STOCK_SAVE,
++            choose_label=_("_Save"),
+             start_folder=start_folder,
+             default_name=default,
+             confirm_overwrite=True)

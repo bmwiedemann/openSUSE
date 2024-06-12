@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 11 13:24:45 MDT 2024 - carnold@suse.com
+
+- bsc#1226173 - virt-manager: Browse local does not work anymore
+  090-db1b2fbc-Use-GtkFileChooserNative.patch
+  Renamed 090-uitests-Fix-with-GtkFileChooserNative.patch to
+  091-uitests-Fix-with-GtkFileChooserNative.patch
+
+-------------------------------------------------------------------
 Thu May 23 13:34:59 MDT 2024 - carnold@suse.com
 
 - Upstream bug fixes (bsc#1027942) (jsc#PED-6305)
