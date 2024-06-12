@@ -6,7 +6,7 @@
     <param name="versionformat">@PARENT_TAG@+%cd.%h</param>
     <param name="versionrewrite-pattern">(\d+\.\d+\.\d+)(?:-[a-z]+\d*)?(.*)</param>
     <param name="versionrewrite-replacement">\1\2</param>
-    <param name="revision">crmsh-4.6</param>
+    <param name="revision">master</param>
     <param name="changesgenerate">enable</param>
   </service>
 

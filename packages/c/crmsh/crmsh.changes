@@ -1,99 +1,215 @@
 -------------------------------------------------------------------
-Wed Jun 05 10:40:21 UTC 2024 - XLiang@suse.com
+Wed Jun 12 06:08:45 UTC 2024 - XLiang@suse.com
 
-- Update to version 4.6.0+20240605.c9362873:
+- Update to version 5.0.0+20240612.49d57d50:
+  * Dev: spec: bump python requirement to >= 3.10
+  * Dev: workflows: Relace OBS_PROJECT and TARGET_PROJECT with plain text
+  * Dev: workflows: Enable submit CD stage for master branch
+
+-------------------------------------------------------------------
+Wed Jun 12 03:56:58 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240612.cd025007:
+  * Dev: Dockerfile: Update dockerfile
+  * Dev: testcases: Other Adjustments for original testcases
+  * Dev: testcases: Remove unknown resource meta attribute
+  * Dev: testcases: Apply constraints to the group instead of the grouped resource
+  * Dev: testcases: Avoid multiple rule in a location constraint
+  * Dev: testcases: Convert 'ms' or 'master' command into promotable clone
+
+-------------------------------------------------------------------
+Fri Jun 07 09:16:51 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240607.92252e3b:
+  * Dev: bootstrap: warn about cleartext traffic in corosync
+
+-------------------------------------------------------------------
+Thu Jun 06 08:26:54 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240606.c078907b:
+  * Dev: Hide lsb and service resource agent class type from UI and doc (jsc#PED-5577)
+
+-------------------------------------------------------------------
+Wed Jun 05 10:38:51 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240605.622cca25:
+  * Dev: ui_resource: Set role as Promoted/Unpromoted when promote/demote (jsc#PED-8550)
   * Dev: unittest: Adjust unit test for previous commit
   * Dev: ui_resource: Improve completers for 'crm resource' command
 
 -------------------------------------------------------------------
-Mon Jun 03 08:36:17 UTC 2024 - XLiang@suse.com
+Tue Jun 04 06:46:32 UTC 2024 - XLiang@suse.com
 
-- Update to version 4.6.0+20240603.6ad71c93:
+- Update to version 5.0.0+20240604.b5b23f4c:
+  * Dev: testcases: Adjust testcases for previous commit
+  * Dev: Parsing resource meta attributes dynamically (jsc#PED-8261, jsc#PED-8249)
+
+-------------------------------------------------------------------
+Mon Jun 03 02:15:43 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240603.014eb0cf:
+  * Dev: codecov: add codecov badge to README.md
   * Dev: codecov: add flag report in generated comments
   * Dev: codecov: upload unit tests coverage
   * Dev: codecov: add 'integration' flags for integration tests
   * Dev: codecov: remove token from codecov.yml
   * Dev: github-actions: update actions/checkout to v4
+  * Dev: github-actions: update host environment to ubuntu 24.04
   * Dev: github-actions: update codevcov-action to v4
   * Fix: codecov: specify token explicitly
 
 -------------------------------------------------------------------
-Fri May 31 02:13:34 UTC 2024 - XLiang@suse.com
+Fri May 31 14:49:18 UTC 2024 - XLiang@suse.com
 
-- Update to version 4.6.0+20240531.d386cc4a:
+- Update to version 5.0.0+20240531.a1e0fb15:
+  * Dev: testcases: Adjust original testcases for previous changes
+  * Dev: behave: Add functional test about auto convert deprecated roles
+  * Dev: config: Set OCF_1_1_SUPPORT to yes (jsc#PED-8550)
+
+-------------------------------------------------------------------
+Fri May 31 05:08:35 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240531.bab7d7e1:
+  * Dev: cibconfig: Remove unused code about v1 format of diff, which is deprecated
+
+-------------------------------------------------------------------
+Fri May 31 01:56:23 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240531.c9a83780:
   * Fix: cmd_status: call crm_mon without shell (#1429)
 
 -------------------------------------------------------------------
-Tue May 28 06:17:20 UTC 2024 - nicholas.yang@suse.com
+Tue May 28 10:09:44 UTC 2024 - XLiang@suse.com
 
-- Update to version 4.6.0+20240528.85681c69:
+- Update to version 5.0.0+20240528.c723009c:
+  * Dev: behave: Adjust functional test for previous changes
+  * Dev: bootstrap: Minor refactoring of the get_address_list function
+  * Dev: bootstrap: On join side, adjust the condition of comparing the link number
+  * Dev: utils: Give valid value list for the -i option when the value is invalid
+
+-------------------------------------------------------------------
+Tue May 28 06:00:18 UTC 2024 - nicholas.yang@suse.com
+
+- Update to version 5.0.0+20240528.d55edf88:
   * Dev: log an error when fencing node without stonith device configured and running
 
 -------------------------------------------------------------------
-Mon May 20 08:18:47 UTC 2024 - XLiang@suse.com
+Mon May 20 08:01:21 UTC 2024 - XLiang@suse.com
 
-- Update to version 4.6.0+20240520.13b2906a:
+- Update to version 5.0.0+20240520.964151e0:
   * Fix: healthcheck: KeyError when local nodename not found in cib (bsc#1223438)
 
 -------------------------------------------------------------------
-Thu May 09 07:48:15 UTC 2024 - XLiang@suse.com
+Thu May 09 07:30:32 UTC 2024 - XLiang@suse.com
 
-- Update to version 4.6.0+20240509.37a1c4e3:
+- Update to version 5.0.0+20240509.ea6db174:
+  * Dev: Change the RA name string format (jsc#PED-106)
   * Dev: unittest: Adjust unit test for previous commit
   * Dev: utils: Add info when property is newly added
 
 -------------------------------------------------------------------
-Tue Apr 30 01:30:45 UTC 2024 - XLiang@suse.com
+Wed May 08 02:10:37 UTC 2024 - XLiang@suse.com
 
-- Update to version 4.6.0+20240430.5d7136c8:
+- Update to version 5.0.0+20240508.ec25d367:
+  * Dev: unittest: Adjust unit test for previous commit
+  * Dev: corosync_config_format: Enable to parse comments
+  * Dev: corosync_config_format: Add new line between sections
+
+-------------------------------------------------------------------
+Mon May 06 10:26:19 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240506.8f4bef4a:
+  * Dev: Drop nagios related code, the help text, and the man page (jsc#PED-8259, jsc#PED-8232)
+  * Fix: bootstrap: open corosync ports in firewalld
+  * Dev: unittest: Adjust unit test for previous commit
+  * Dev: Drop SuSEfirewall2 support
+
+-------------------------------------------------------------------
+Tue Apr 30 08:18:35 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240430.42ad4f1e:
+  * Dev: corosync: Show corosync cpg status in `crm corosync status cpg`
+
+-------------------------------------------------------------------
+Tue Apr 30 01:12:50 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240430.c840652f:
   * Dev: doc/website-v1: update man-4.6 (#1409)
   * Fix: doc/toolchain: fix missing anchor in generated AIO doc (#1409)
 
 -------------------------------------------------------------------
-Mon Apr 29 23:59:04 UTC 2024 - XLiang@suse.com
+Tue Apr 30 00:13:39 UTC 2024 - XLiang@suse.com
 
-- Update to version 4.6.0+20240430.641cb15b:
+- Update to version 5.0.0+20240430.6ec5681d:
+  * Dev: doc: Don't show the usage of 'crm ra info cluster'
   * Fix: main: Set PATH environment first
   * Dev: bash_completion: Enable complete 'id=' on non-interactive mode
 
 -------------------------------------------------------------------
-Thu Apr 25 08:32:10 UTC 2024 - XLiang@suse.com
+Mon Apr 29 07:11:02 UTC 2024 - XLiang@suse.com
 
-- Update to version 4.6.0+20240425.c75d131a:
+- Update to version 5.0.0+20240429.11eff3d0:
+  * Dev: corosync: Add corosync.is_valid_corosync_conf function
+
+-------------------------------------------------------------------
+Sun Apr 28 06:35:03 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240428.1a81df0b:
+  * Fix: ui_cluster: do_start should parse cmdline args before doing any checks
+  * Revert "Fix: corosync: should not raise ValueError when failing to open config file"
+  * Dev: ui_context: make help subcommands to exit with 0 (#1374)
+  * Fix: corosync: should not raise ValueError when failing to open config file
+  * Fix: corosync: ConfigParser.get_all(nonexsistent) should return an empty list
+
+-------------------------------------------------------------------
+Sun Apr 28 01:44:19 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240428.33a59842:
   * Doc: regenerate man-4.6
   * Dev: ui_context: ignore requirements when option --help is specified
 
 -------------------------------------------------------------------
-Wed Apr 24 09:43:44 UTC 2024 - XLiang@suse.com
+Thu Apr 25 13:59:12 UTC 2024 - XLiang@suse.com
 
-- Update to version 4.6.0+20240424.11e262d0:
+- Update to version 5.0.0+20240425.1c0f1969:
+  * Refactor: corosync: move conf_parser.ConfParser to corosync.ConfParser
+  * Dev: ui_corosync: add completer for `corosync get` and `corosync set`
+  * Dev: corosync_config_format: add more unit tests
+  * Dev: unittest: adjust unit tests for previous changes
+  * Dev: conf_parser: use the new implementation
+  * Fix: open_atomic: no need to fsync on exception
+  * Dev: corosync_config_format: new parser and serializer for corosync configuration file
+
+-------------------------------------------------------------------
+Thu Apr 25 08:15:42 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240425.e18847d4:
   * Dev: behave: Add functional test for previous change
   * Dev: ui_context: Skip querying CIB when in a sublevel or help command
+
+-------------------------------------------------------------------
+Wed Apr 24 02:33:21 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240424.43605231:
+  * Dev: Remove unused code
+
+-------------------------------------------------------------------
+Tue Apr 23 14:59:33 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240423.44a32f7b:
   * Dev: unittest: Adjust unit test for previous commit
   * Dev: behave: Adjust functional test for previous changes
   * Dev: bootstrap: Setup the stage dependency on init and join side (bsc#1175865, bsc#1219940)
   * Dev: ui_cluster: Remove unused codes
   * Dev: bootstrap: Enhance stage validation
   * Dev: bootstrap: Remove unused function join_remote_auth
-
--------------------------------------------------------------------
-Mon Apr 22 07:38:44 UTC 2024 - XLiang@suse.com
-
-- Update to version 4.6.0+20240422.73eaf02a:
   * Fix: healthcheck: Add crmsh.constants.SSH_OPTION when doing ssh in check_local
   * Fix: healthcheck: Missing 'id_' prefix while checking the ssh key existence
 
 -------------------------------------------------------------------
-Tue Apr 16 07:54:40 UTC 2024 - XLiang@suse.com
+Mon Apr 22 03:24:41 UTC 2024 - XLiang@suse.com
 
-- Update to version 4.6.0+20240416.3c953893:
-  * Dev: unittest: Adjust unit test for previous commit
-  * Fix: bootstrap: Detect cluster service on init node before saving the canonical hostname (bsc#1222714)
-
--------------------------------------------------------------------
-Thu Apr 11 06:55:00 UTC 2024 - XLiang@suse.com
-
-- Update to version 4.6.0+20240411.9c4bf6c1:
+- Update to version 5.0.0+20240422.8c7f5aef:
   * add doc/website-v1/news.adoc to .gitignore
   * Dev: doc: update howto build the website (#1374)
   * Dev: doc: add website target in Makefile (#1374)
@@ -101,11 +217,6 @@ Thu Apr 11 06:55:00 UTC 2024 - XLiang@suse.com
   * Dev: doc/website-v1: add man-4.6 (#1374)
   * Dev: doc/toolchain: implement adocaio (#1374)
   * Dev: doc/website-v1: adapt to python3 (#1374)
-
--------------------------------------------------------------------
-Thu Apr 11 03:59:16 UTC 2024 - nicholas.yang@suse.com
-
-- Update to version 4.6.0+20240411.bfd7f062:
   * Dev: doc/toolchain: add asciidoctor (#1374)
   * Dev: doc/toolchain: implement generating include statement for asciidoc (#1374)
   * Dev: doc/toolchain: add Containerfile (#1374)
@@ -113,67 +224,70 @@ Thu Apr 11 03:59:16 UTC 2024 - nicholas.yang@suse.com
   * Dev: doc/toolchain: implement help2adoc (#1374)
 
 -------------------------------------------------------------------
-Sun Apr 07 09:46:37 UTC 2024 - XLiang@suse.com
+Tue Apr 16 13:31:37 UTC 2024 - XLiang@suse.com
 
-- Update to version 4.6.0+20240407.9eb2f755:
-  * Dev: unittest: Adjust unit test for previous commit
-  * Dev: report: Collect quorum/qdevice/qnetd status
+- Update to version 5.0.0+20240416.300e2099:
+  * Dev: log: Set the log format for crmsh.log as rfc5424
 
 -------------------------------------------------------------------
-Wed Apr 03 03:33:06 UTC 2024 - XLiang@suse.com
+Tue Apr 16 07:10:46 UTC 2024 - XLiang@suse.com
 
-- Update to version 4.6.0+20240403.3ed4d839:
+- Update to version 5.0.0+20240416.1b89f200:
+  * Dev: unittest: Adjust unit test for previous commit
+  * Fix: bootstrap: Detect cluster service on init node before saving the canonical hostname (bsc#1222714)
+  * Dev: behave: Add functional test for previous commit
+  * Dev: doc: Drop the options for the old daemon names, pengine, crmd, cib and stonithd in the help/man
+  * Dev: unittest: Adjust unit test
+  * Dev: testcases: Adjust original testcases to match the new behavior
+  * Dev: ra: Show related info when "advanced", "generated" and "deprecated" detected in metadata
+  * Dev: ra: Parsing select values in cluster option metadata
+  * Dev: ra: Get cluster option metadata from crm_attribute command (jsc#PED-8037, jsc#PED-8016)
   * Dev: unittest: Adjust unit test for previous commit
   * Dev: behave: Adjust functional test for previous commit
   * Fix: ui_node: When `utils.list_cluster_nodes` return None, try to get ip list from corosync.conf
 
 -------------------------------------------------------------------
-Mon Apr 01 08:00:47 UTC 2024 - XLiang@suse.com
+Wed Mar 27 07:48:26 UTC 2024 - XLiang@suse.com
 
-- Update to version 4.6.0+20240401.d4bf74c8:
+- Update to version 5.0.0+20240327.ed9189d9:
   * Dev: unittest: Adjust unit test for previous commit
-  * Dev: bootstrap: Add all nodes' keys to qnetd authroized_keys even init
-  * Fix: bootstrap: fix NameError
-  * Dev: qdevice: Refactor init_qdevice function
-  * Dev: qdevice: Add all nodes' keys to qnetd authorized_keys
-  * Fix: ui_node: prevent traceback on node online
-  * Fix: ui_node: prevent traceback on node standby
+  * Dev: report: Collect quorum/qdevice/qnetd status
 
 -------------------------------------------------------------------
-Sat Mar 30 12:13:23 UTC 2024 - XLiang@suse.com
+Wed Mar 27 06:48:05 UTC 2024 - XLiang@suse.com
 
-- Update to version 4.6.0+20240330.3473a5ba:
+- Update to version 5.0.0+20240327.e5522426:
+  * Dev: bootstrap: Add all nodes' keys to qnetd authroized_keys even init
   * Dev: behave: Addd functional test for previous commit
   * Dev: bootstrap: Give a warning when detecting $SSH_AUTH_SOCK but not use --use-ssh-agent option
+  * Fix: bootstrap: fix NameError
+  * Dev: unittest: Adjust unit test for previous commit
+  * Dev: qdevice: Refactor init_qdevice function
+  * Dev: qdevice: Add all nodes' keys to qnetd authorized_keys
 
 -------------------------------------------------------------------
-Wed Mar 27 08:04:12 UTC 2024 - XLiang@suse.com
+Mon Mar 25 08:14:00 UTC 2024 - XLiang@suse.com
 
-- Update to version 4.6.0+20240327.74a899fc:
-  * Dev: ui_context: make help subcommands to exit with 0 (#1374)
-
--------------------------------------------------------------------
-Mon Mar 25 08:29:51 UTC 2024 - XLiang@suse.com
-
-- Update to version 4.6.0+20240325.bb913aba:
+- Update to version 5.0.0+20240325.c91eef27:
   * Dev: behave: Adjust functional test for previous commit
   * Fix: sh: Return the value of AuthorizationError.diagnose if it is not None
 
 -------------------------------------------------------------------
-Fri Mar 15 07:03:07 UTC 2024 - XLiang@suse.com
+Fri Mar 15 06:48:46 UTC 2024 - XLiang@suse.com
 
-- Update to version 4.6.0+20240315.053594ab:
+- Update to version 5.0.0+20240315.77a0cf32:
   * Dev: unittest: Adjust unit test for previous commit
   * Dev: bootstrap: Remove unused ssh_remote related code
+  * Dev: Remove unused vgfs term from the code
   * Dev: unittest: Adjust unit test for previous commit
   * Dev: bootstrap: Remove unused function bootstrap.append_unique
   * Dev: ssh_key: Extract duplicate code about list keys from ssh-agent to a function
   * Dev: bootstrap: Refactor qdevice user parsing and finding
 
 -------------------------------------------------------------------
-Wed Mar 13 14:26:02 UTC 2024 - XLiang@suse.com
+Thu Mar 14 04:26:45 UTC 2024 - XLiang@suse.com
 
-- Update to version 4.6.0+20240313.8278d949:
+- Update to version 5.0.0+20240314.389eebee:
   * Fix: utils: set env `CIB_shadow` using `os.environ` (bsc#1205925)
   * Fix: pass env to child process explicitly (bsc#1205925)
   * Fix: term: unset env `COLUMNS` and `ROWS` (bsc#1205925)
@@ -181,181 +295,96 @@ Wed Mar 13 14:26:02 UTC 2024 - XLiang@suse.com
   * Fix: sh: pass env to child process explicitly (bsc#1205925)
 
 -------------------------------------------------------------------
-Wed Mar 13 10:43:31 UTC 2024 - XLiang@suse.com
+Wed Mar 13 10:57:24 UTC 2024 - XLiang@suse.com
 
-- Update to version 4.6.0+20240313.0c382be4:
+- Update to version 5.0.0+20240313.bb7bb5d1:
   * Dev: sh: Fix typo in docstring
 
 -------------------------------------------------------------------
-Tue Mar 12 07:04:54 UTC 2024 - XLiang@suse.com
+Tue Mar 12 07:05:07 UTC 2024 - XLiang@suse.com
 
-- Update to version 4.6.0+20240312.24df92aa:
-  * Dev: unittest: Adjust unit test for previous change
+- Update to version 5.0.0+20240312.9b93d857:
+  * Dev: unittest: Adjust unit test for previous commit
   * Fix: bootstrap: Remove unused -i option when calling csync2_remote and ssh_remote stage (bsc#1212080)
   * Dev: unitest: Adjust unit test for previous change
   * Fix: report: Show different perspectives of cluster
 
 -------------------------------------------------------------------
-Tue Feb 27 15:11:03 UTC 2024 - XLiang@suse.com
+Mon Mar 04 14:41:30 UTC 2024 - XLiang@suse.com
 
-- Update to version 4.6.0+20240227.21cbb9ee:
-  * Fix: add diagnostic messages when crm report cannot find ssh-agent (bsc#1219538)
+- Update to version 5.0.0+20240304.94b4c39b:
+  * Fix: ui_node: prevent traceback on node online
+  * Fix: ui_node: prevent traceback on node standby
 
 -------------------------------------------------------------------
-Mon Feb 26 09:41:00 UTC 2024 - XLiang@suse.com
+Mon Mar 04 06:28:26 UTC 2024 - nicholas.yang@suse.com
 
-- Update to version 4.6.0+20240226.cf0a94f2:
+- Update to version 5.0.0+20240304.17fd3413:
+  * Dev: workflows: Remove the redundant stage condition
+
+-------------------------------------------------------------------
+Mon Mar 04 04:02:10 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.6.0+20240302.43c4f758:
+  * Fix cluster init example on the start guide.
+  * Dev: unittests: Adjust unit test for previous changes
+  * Dev: behave: Adjust functional test for previous changes
+  * Dev: minor fix to align with branch crmsh-4.6
+  * Dev: utils: Add IP.is_valid_ip back
+  * Dev: run-functional-tests: Change report compress command as bzip2
+  * Dev: report: Add config.report.compress_prog option
+  * Fix: add diagnostic messages when crm report cannot find ssh-agent (bsc#1219538)
   * Dev: unittest: adjust unit tests for previous changes
   * Dev: use ClusterShell for the changes in the previous commit
   * Fix: crm report hangs in the root passwordless with ssh-agent
   * Dev: unittest: adjust unit tests for previous changes
   * Fix: report: use ClusterShell for ssh (bsc#1220170)
-
--------------------------------------------------------------------
-Wed Feb 21 04:31:29 UTC 2024 - nicholas.yang@suse.com
-
-- Update to version 4.6.0+20240221.58aa13d1:
-  * Dev: spec: Add setuptools as BuildRequires
-
--------------------------------------------------------------------
-Wed Feb 21 03:44:40 UTC 2024 - XLiang@suse.com
-
-- Update to version 4.6.0+20240221.6f7105bd:
-  * Dev: ui_configure: verify all cib objects even if there is no primitive resource configured
-
--------------------------------------------------------------------
-Tue Feb 20 15:02:05 UTC 2024 - XLiang@suse.com
-
-- Update to version 4.6.0+20240220.8a6e04b5:
+  * Fix: ui_node: clearstate command needs adjustment (bsc#1219831)
   * Dev: unittest: adjust unit tests for previous changes
   * Fix: bootstrap: fail to join a cluster with hostname alias
   * Dev: behave: add functional tests for previous changes
   * Fix: bootstrap: clear stall data about ssh users left possiblely from previous setups (bsc#1219476)
-
--------------------------------------------------------------------
-Tue Feb 20 14:14:36 UTC 2024 - XLiang@suse.com
-
-- Update to version 4.6.0+20240220.9101383b:
-  * Fix: ui_node: clearstate command needs adjustment (bsc#1219831)
-
--------------------------------------------------------------------
-Tue Feb 20 03:23:08 UTC 2024 - XLiang@suse.com
-
-- Update to version 4.6.0+20240220.1ffead16:
+  * Dev: spec: Add setuptools as BuildRequires
   * Dev: behave: Adjust functional test for previous change
   * Fix: report: Escape special characters in pattern (bsc#1220022)
-
--------------------------------------------------------------------
-Tue Feb 06 10:08:38 UTC 2024 - XLiang@suse.com
-
-- Update to version 4.6.0+20240206.b95d3dfd:
+  * Dev: ui_configure: verify all cib objects even if there is no primitive resource configured
   * Dev: ui_configure: bundle: support podman container
   * Dev: constants: Update the bundle help text
   * Dev: parse: Assign meaningful id to the bundle's port-mapping and storage-mapping
   * Dev: testcases: Adjust original regression test cases
   * Dev: cibconfig: Hide the id of bundle port-mapping and storage-mapping
   * Dev: cibconfig: Change the multiline format for bundle
-
--------------------------------------------------------------------
-Mon Jan 29 01:46:29 UTC 2024 - XLiang@suse.com
-
-- Update to version 4.6.0+20240129.1d89c5ba:
   * Dev: utils: Return empty list if corosync.conf does not exist
-
--------------------------------------------------------------------
-Fri Jan 26 07:47:11 UTC 2024 - XLiang@suse.com
-
-- Update to version 4.6.0+20240126.e227ccf6:
   * Dev: unittest: Adjust unit test for previous change
   * Dev: behave: Add functional test for previous change
   * Dev: report: Enable crm report even cib.xml does not exist
   * Dev: utils: Query pacemaker_remote node correctly
   * Fix: ui_cluster: Can't start cluster with --all option if no cib (bsc#1219052)
-
--------------------------------------------------------------------
-Wed Jan 24 01:34:45 UTC 2024 - XLiang@suse.com
-
-- Update to version 4.6.0+20240124.feea55a9:
-  * Fix: sh: guide users to setup key-based ssh authentication when non-interactive authentcation fails (bsc#1219045)
-
--------------------------------------------------------------------
-Wed Jan 24 01:10:00 UTC 2024 - XLiang@suse.com
-
-- Update to version 4.6.0+20240124.c9e4a0a1:
   * Fix: bootstrap: ssh key of the init node is duplicated in the authorized_keys files of other node (bsc#1218940)
-
--------------------------------------------------------------------
-Tue Jan 23 08:50:35 UTC 2024 - XLiang@suse.com
-
-- Update to version 4.6.0+20240123.680089b0:
+  * Fix: sh: guide users to setup key-based ssh authentication when non-interactive authentcation fails (bsc#1219045)
   * Dev: unittest: Adjust unit test for previous changes
   * Dev: testcases: Adjust original regression test cases
   * Dev: behave: Adjust functional test for previous change
   * Fix: parse: Automatically append 's' as default time unit for timeout and interval (#1304)
   * Dev: ui_configure: Update the operation id after the monitor interval changed
-
--------------------------------------------------------------------
-Tue Jan 09 09:02:11 UTC 2024 - XLiang@suse.com
-
-- Update to version 4.6.0+20240109.1eb53276:
   * Dev: ChangeLog: update ChangeLog for release 4.6.0
-
--------------------------------------------------------------------
-Tue Jan 09 04:34:42 UTC 2024 - XLiang@suse.com
-
-- Update to version 4.6.0+20240109.288ef6c4:
   * Dev: codecov: ignore crm report module
   * Dev: unittest: Adjust unit test for prevous changes
   * Dev: behave: Adjust functional test for previous changes
   * Fix: report: Unable to gather log files that are in the syslog format (bsc#1218491)
   * Fix: pin the tag of container image used in test
-
--------------------------------------------------------------------
-Thu Dec 28 06:39:58 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.6.0+20231228.83bf1514:
   * Dev: ui_corosync: Add a completer for corosync.set to enumerate all current paths
-
--------------------------------------------------------------------
-Mon Dec 25 07:42:42 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.6.0+20231225.3e2ff633:
   * Dev: bootstrap: Assign hosts with _context.node_list_in_cluster in join_ssh_merge (bsc#1218331)
-
--------------------------------------------------------------------
-Fri Dec 22 08:51:45 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.6.0+20231222.b7650ca3:
   * Dev: ChangeLog: update ChangeLog for release 4.6.0-rc2
-
--------------------------------------------------------------------
-Fri Dec 15 07:25:30 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.6.0+20231215.4b06740f:
   * Fix: github-actions: fix file owner for git
   * Dev: github-actions: update container image used in CD
-
--------------------------------------------------------------------
-Thu Dec 14 08:21:04 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.6.0rc1+20231214.b2728f3b:
   * Dev: behave: Adjust functional test for previous change
   * Dev: ui_cluster: Move --use-ssh-agent to optional arguments
   * Fix: autoconf: --with-version does not override the variable used in `version.in`
   * Dev: unify version string used in setup.py and autotools
-
--------------------------------------------------------------------
-Tue Dec 12 03:10:42 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.6.0+20231212.54751d3f:
   * Dev: unittest: Adjust unit test for previous change
   * Dev: behave: Add functional test for previous change
   * Fix: ui_cluster: Improve the process of 'crm cluster stop' (bsc#1213889)
-
--------------------------------------------------------------------
-Mon Dec 11 03:00:33 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.6.0+20231211.4b74412a:
   * Fix: scripts.health: call `setup_logging()` before importing crmsh.reprot.utils
   * Dev: unittest: adjuest unit tests for previous changes
   * Dev: behave: adjust regression tests for previous changes
@@ -368,17 +397,7 @@ Mon Dec 11 03:00:33 UTC 2023 - XLiang@suse.com
   * Refactor: log: unused code removal
   * Refactor: log: refactor DEBUG2 into a standard Logger interface
   * Refactor: log: refactor ConsoleCustomFormatter
-
--------------------------------------------------------------------
-Thu Dec 07 09:44:56 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.6.0+20231207.89c74e6c:
   * Dev: ChangeLog: update ChangeLog for release 4.6.0-rc1
-
--------------------------------------------------------------------
-Wed Dec 06 07:40:45 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.6.0+20231206.a903b854:
   * Dev: unittest: Add unit test for crm report module
   * Dev: report: Consider ssh agent case in crm report
   * Dev: behave: Complete test case for crm report with ssh-agent
@@ -393,37 +412,17 @@ Wed Dec 06 07:40:45 UTC 2023 - XLiang@suse.com
   * Dev: utils: Remove unused codes
   * Dev: config: Exclude pacemaker.log from collect_extra_logs
   * Dev: log: Add funcName for DEBUG2 log level
-
--------------------------------------------------------------------
-Tue Dec 05 09:02:43 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.6.0+20231205.38304a77:
-  * Dev: unittest: Adjust unit test for previous changes
-  * Dev: xmlutil: refactor class CrmMonXmlParser
-  * Dev: completers: Add online_nodes and standby_nodes
-
--------------------------------------------------------------------
-Tue Dec 05 05:15:52 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.6.0+20231205.779324d5:
   * Dev: utils: To prevent shell injection, manipulate the argument array instead of the command line string
-  * Dev: report: Redirect warning and error from remote node into stderr
-  * Fix: utils: Add 'sudo' only when there is a sudoer(bsc#1215549)
-  * Dev: behave: Move path setting into background
-
--------------------------------------------------------------------
-Wed Nov 29 14:32:32 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.6.0+20231129.576a86e2:
   * Fix: bootstrap: fix the owner and permission of file authorized_keys (bsc#1217279)
   * Dev: behave: add a test case for bsc#1217279
   * Dev: unittest: add a test case for the previous change
   * Fix: prun: should not call user_pair_for_ssh() when target host is localhost (bsc#1217094)
-
--------------------------------------------------------------------
-Thu Nov 23 09:26:50 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.6.0+20231123.50296e9e:
+  * Dev: report: Redirect warning and error from remote node into stderr
+  * Fix: utils: Add 'sudo' only when there is a sudoer(bsc#1215549)
+  * Dev: behave: Move path setting into background
+  * Dev: unittest: Adjust unit test for previous changes
+  * Dev: xmlutil: refactor class CrmMonXmlParser
+  * Dev: completers: Add online_nodes and standby_nodes
   * Fix: bootstrap: add informative logging for generating new ssh keypairs
   * Fix: forward ssh-agent for `crm report __slave`
   * Dev: behave: adjust test cases for non-root ssh-agent scenoria
@@ -438,36 +437,11 @@ Thu Nov 23 09:26:50 UTC 2023 - XLiang@suse.com
   * Dev: bootstrap: refine key swap for user `hacluster`
   * Dev: bootstrap: implement ssh-agent support for qdevice (jsc#PED-5774)
   * Dev: bootstrap: implement ssh-agent support (jsc#PED-5774)
-
--------------------------------------------------------------------
-Thu Nov 23 02:30:43 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.6.0+20231123.373ddb9d:
   * Dev: regression.sh: Show error messages when test fails
-
--------------------------------------------------------------------
-Mon Nov 13 08:05:37 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.6.0+20231113.d7b4639a:
   * Dev: behave: Adjust functional test for previous change
-  * Dev: ui_utils: Supports '=' when setting node/resource attributes
-
--------------------------------------------------------------------
-Mon Nov 13 05:29:55 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.6.0+20231113.1957d80b:
   * Dev: cmd_status: Show error correctly for crm status
-
--------------------------------------------------------------------
-Tue Oct 10 02:01:00 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.6.0+20231010.247218bf:
+  * Dev: ui_utils: Supports '=' when setting node/resource attributes
   * Fix: report: Pick up tarball suffix dynamically (bsc#1215438)
-
--------------------------------------------------------------------
-Sun Oct 08 08:36:39 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.6.0+20231008.7a0df6c5:
   * Fix: report: Pick 'gzip' as the first compress prog for cross-platform compatibility(bsc#1215438)
   * Fix: constants: Add several resource meta attributes (bsc#1215319)
   * refactor: move get_stdout and get_stdout_stderr to crmsh.sh.ShellUtils
@@ -479,101 +453,27 @@ Sun Oct 08 08:36:39 UTC 2023 - XLiang@suse.com
   * Dev: unittest: create unit tests for sh.py and service_manager.py
   * Dev: refactor shell calling routines
   * Dev: workflows: Enable delivery and submit CD stages for branch crmsh-4.6
-
--------------------------------------------------------------------
-Thu Sep 28 03:29:51 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.5.0+20230928.7e006329:
-  * Fix: report: Pick 'gzip' as the first compress prog for cross-platform compatibility(bsc#1215438)
-
--------------------------------------------------------------------
-Fri Sep 22 09:58:56 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.5.0+20230922.100fb67b:
-  * Fix: constants: Add several resource meta attributes (bsc#1215319)
-
--------------------------------------------------------------------
-Tue Sep 19 23:02:25 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.5.0+20230920.7a060972:
-  * Dev: workflows: Enable delivery and submit CD stages for branch crmsh-4.6
-
--------------------------------------------------------------------
-Mon Aug 21 08:35:13 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.5.0+20230821.76d42b85:
   * Dev: codecov: allow minor drop (< 0.1%) in coverage checks
   * [crmsh-4.5] Fix: github-actions: add condition to prevent crm-cd.yml running in a forked repo
-
--------------------------------------------------------------------
-Wed Aug 16 14:26:30 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.5.0+20230816.24bf5f1f:
   * Dev: utils: strip new line when get_stdout_or_raise_error returns
-
--------------------------------------------------------------------
-Thu Aug 10 09:15:15 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.5.0+20230810.74b9b4d5:
   * Fix: codecov: delay notifications until all reports are uploaded
   * Dev: behave: adjust functional tests for previous changes
   * Dev: unittest: adjust unittest for previous changes
   * Fix: prun: setsid to prevent ssh from asking a password from terminal
   * Fix: upgradeutil: reduce the timeout for getting sequence from remote node (bsc#1213797)
-
--------------------------------------------------------------------
-Thu Aug 10 02:12:36 UTC 2023 - nicholas.yang@suse.com
-
-- Update to version 4.5.0+20230810.01db025c:
   * Dev: behave: Adjust functional test based on previous change
   * Dev: corosync: Enable logging.to_logfile
-
--------------------------------------------------------------------
-Tue Aug 08 22:45:16 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.5.0+20230809.ddb17a0b:
   * Dev: github-workflows: do not build when push to a forked repo
   * Fix: codecov: add token in plaintext
   * Revert "Fix: codecov: specify token explicitly"
   * Fix: userdir: Get the effictive user name instead of using getpass.getuser (bsc#1213821)
-
--------------------------------------------------------------------
-Wed Jul 26 07:30:31 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.5.0+20230726.6efcdd30:
   * Dev: requirements: remove parallax
-
--------------------------------------------------------------------
-Tue Jul 25 09:31:23 UTC 2023 - nicholas.yang@suse.com
-
-- Update to version 4.5.0+20230725.5d35bb6c:
   * Dev: spec: Adjust spec file for Fedora
   * Dev: spec: Rewrite SPEC file to use modern pip+wheel and don't use deprecated setup.py
-
--------------------------------------------------------------------
-Mon Jul 24 08:21:30 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.5.0+20230724.6495aa19:
   * Dev: behave: add a function test for the previous change
   * Fix: upgradeutil: support the change of path of upgrade_seq in crmsh-4.5 (bsc#1213050)
-
--------------------------------------------------------------------
-Thu Jul 13 09:16:00 UTC 2023 - XinLiang <XLiang@suse.com>
-
-- Dev: spec: Define python3_sitelib if it is not defined 
-- Dev: spec: Update package dependency
-
--------------------------------------------------------------------
-Wed Jul 05 13:45:36 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.5.0+20230705.ea8c76ff:
   * Fix: codecov: specify token explicitly
   * Fix: ui_context: wait4dc should assume a subcommand completes successfully if no exceptions are raised (bsc#1212992)
-
--------------------------------------------------------------------
-Tue Jul 04 06:55:43 UTC 2023 - XLiang@suse.com
-
-- Update to version 4.5.0+20230704.509d113d:
   * Fix: unittest: fix unit tests for crmsh.bootstrap.Context.set_context
   * Dev: codecov: do not post comment in pull requests until all behave tests are finished
   * Dev: testcases: update the cases to adapt to updated version of pacemaker
@@ -594,41 +494,284 @@ Tue Jul 04 06:55:43 UTC 2023 - XLiang@suse.com
   * Fix: behave: specify username explicitly in non-root cases for option --qnetd-hostname/--cluster-node
   * Dev: behave: rewrite check_service_state with the new agent
   * Dev: behave: use a standalone agent instead of crmsh.parallax to run commands
+  * medium: ui_node: fix cib rollback race on node standby
+  * Dev: unittest: Adjust unit test for previous changes
+  * Dev: behave: Add functional test for previous change
+  * Dev: remove unused codes
+  * Dev: ui_cluster: Use 'CustomAppendAction' instead of 'append' argparse action
+  * Dev: bootstrap: Configure ssh key when fetch geo config
+  * Dev: cmd_status: Use --output-as option instead of deprecated --as-html and --as-xml options
+  * Dev: cmd_status: Append 'with quorum' and 'WITHOUT quorum' to display keyword list
+  * Dev: workflows: Deliver package to network:ha-clustering:Stable
 
 -------------------------------------------------------------------
-Mon Jun 19 06:36:03 UTC 2023 - XLiang@suse.com
+Thu Feb 29 15:06:42 UTC 2024 - XLiang@suse.com
 
-- Update to version 4.5.0+20230619.01463a46:
+- Update to version 4.5.0+20240229.6003a756:
+  * Dev: unittest: disable python 3.10 in test matrix
+
+-------------------------------------------------------------------
+Thu Feb 29 03:57:57 UTC 2024 - nicholas.yang@suse.com
+
+- Update to version 4.5.0+20240229.5b80fde1:
+  * Dev: unittests: avoid using importlib.reload to reload module
+  * Dev: utils: Add functools.wraps to memoize decorator
+  * Dev: Dockerfile: Adjust dockerfile based on the latest tumbleweed image
+  * Dev: unittest: Add unit test for previous changes
+  * Dev: testcases: Adjust testcases since package upgrade in CI image
+  * Dev: run-functional-tests: start sshd.service after deploying node
+  * Dev: run-functional-tests: Write configuration into /etc/sudoers.d/ instead of /etc/sudoers
+  * unittests: use 'importlib' instead of 'imp' for Python 3.12
+  * Dev: Add 'packaging' dependency to crmsh for version comparison
+  * Dev: utils: Replace LooseVersion with packaging.version
+  * Dev: unittest: Enable python 3.12 in the CI
+  * Dev: ra: Remove unused codes about lrmadmin
+
+-------------------------------------------------------------------
+Thu Jan 25 08:56:27 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.5.0+20240125.e3d1170e:
+  * Import missing sys library in config.py
+
+-------------------------------------------------------------------
+Sat Jan 20 06:55:51 UTC 2024 - XLiang@suse.com
+
+- Update to version 4.5.0+20240120.312fce26:
+  * Fix a typo in update_err()
+
+-------------------------------------------------------------------
+Thu Dec 14 08:52:21 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20231214.d797e044:
+  * Add profile for AWS and GCP with recommended corosync token timeout
+
+-------------------------------------------------------------------
+Tue Dec 05 08:58:33 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20231205.02233764:
+  * Dev: unittest: Adjust unit test for previous changes
+  * Dev: xmlutil: refactor class CrmMonXmlParser
+  * Dev: completers: Add online_nodes and standby_nodes
+
+-------------------------------------------------------------------
+Tue Dec 05 05:22:14 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20231205.5a8cb632:
+  * Dev: utils: To prevent shell injection, manipulate the argument array instead of the command line string
+  * Dev: behave: Move path setting into background
+  * Dev: report: Redirect warning and error from remote node into stderr
+  * Fix: utils: Add 'sudo' only when there is a sudoer(bsc#1215549)
+
+-------------------------------------------------------------------
+Thu Nov 23 02:23:28 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20231123.d533f2da:
+  * Dev: regression.sh: Show error messages when test fails
+
+-------------------------------------------------------------------
+Wed Nov 22 06:56:31 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20231122.0efc476c:
+  * Dev: unittest: Adjust unit test cases
+  * Dev: workflows: Enable unit test for the master branch
+
+-------------------------------------------------------------------
+Mon Nov 13 07:54:04 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20231113.4095895e:
+  * Dev: behave: Adjust functional test for previous change
+  * Dev: ui_utils: Supports '=' when setting node/resource attributes
+
+-------------------------------------------------------------------
+Mon Nov 13 05:21:16 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20231113.31d3ebb7:
+  * Dev: cmd_status: Show error correctly for crm status
+
+-------------------------------------------------------------------
+Sun Oct 08 07:37:32 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20231008.2d66012a:
+  * Dev: spec: Remove %generate_buildrequires to prevent OBS build failures on SLE15SP5 and Leap15.5
+
+-------------------------------------------------------------------
+Fri Sep 22 09:23:42 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230922.08be0ca4:
+  * Fix: constants: Add several resource meta attributes (bsc#1215319)
+
+-------------------------------------------------------------------
+Mon Aug 21 09:59:56 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230821.31ab66ca:
+  * Dev: behave: Adjust functional test for previous changes
+  * Dev: bootstrap: Check if the join side provides the corresponding network interface
+  * Dev: bootstrap: Move detect/create mountpoint code to a specific function
+  * Dev: unittest: Adjust unit test for previous changes
+  * Dev: testcases: Adjust regression.sh to skip new grep version warning
+  * Dev: workflows: Disable unit test on python 3.6 and 3.8
+  * Dev: run-functional-tests: Enable corosync3 and knet
+  * Dev: Dockerfile: Install corosync3 and knet
+  * Dev: bootstrap: A scaffold for crmsh to configure cluster with corosync3
+  * Dev: profiles: Add new 'knet-default' profile type to keep knet only parameters
+  * Dev: bootstrap: Validate network potions
+  * Dev: ui_cluster: Add -t/--transport option and change -i/--interface option
+  * Dev: Add new parser to parse corosync.conf
+  * Dev: bootstrap: Remove bootstrap.update_expected_votes
+  * Dev: behave: Adjust functional test for previous changes
+  * Dev: ui_cluster: Drop deprecated options
+
+-------------------------------------------------------------------
+Mon Aug 21 08:34:54 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230821.44144a88:
+  * Dev: codecov: allow minor drop (< 0.1%) in coverage checks
+  * Fix: github-actions: add condition to prevent crm-cd.yml running in a forked repo
+  * add vim modeline to shell script run-functional-tests
+
+-------------------------------------------------------------------
+Wed Aug 16 14:34:28 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230816.1205b7c0:
+  * Dev: utils: strip new line when get_stdout_or_raise_error returns
+
+-------------------------------------------------------------------
+Thu Aug 10 02:11:17 UTC 2023 - nicholas.yang@suse.com
+
+- Update to version 4.5.0+20230810.4e4e0452:
+  * Dev: behave: Adjust functional test based on previous change
+  * Dev: corosync: Enable logging.to_logfile
+
+-------------------------------------------------------------------
+Wed Aug 09 11:26:16 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230809.9714e8ea:
+  * Fix: codecov: delay notifications until all reports are uploaded
+
+-------------------------------------------------------------------
+Tue Aug 08 22:44:19 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230809.91c2de47:
+  * Dev: github-workflows: do not build when push to a forked repo
+  * Fix: codecov: add token in plaintext
+  * Revert "Fix: codecov: specify token explicitly"
+
+-------------------------------------------------------------------
+Wed Aug 02 16:01:11 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230802.a753fadc:
+  * Dev: behave: adjust functional tests for previous changes
+  * Dev: unittest: adjust unittest for previous changes
+  * Fix: prun: setsid to prevent ssh from asking a password from terminal
+  * Fix: upgradeutil: reduce the timeout for getting sequence from remote node (bsc#1213797)
+  * Fix: unittest: fix unit tests for crmsh.bootstrap.Context.set_context
+
+-------------------------------------------------------------------
+Tue Aug 01 23:21:14 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230802.4a06200b:
+  * Fix: userdir: Get the effictive user name instead of using getpass.getuser (bsc#1213821)
+  * Dev: requirements: remove parallax
+
+-------------------------------------------------------------------
+Tue Jul 25 09:31:07 UTC 2023 - nicholas.yang@suse.com
+
+- Update to version 4.5.0+20230725.cf4a40a4:
+  * Dev: spec: Adjust spec file for Fedora
+  * Dev: spec: Rewrite SPEC file to use modern pip+wheel and don't use deprecated setup.py
+
+-------------------------------------------------------------------
+Mon Jul 24 07:28:12 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230724.3b4b1f6d:
+  * Dev: behave: add a function test for the previous change
+  * Fix: upgradeutil: support the change of path of upgrade_seq in crmsh-4.5 (bsc#1213050)
+
+-------------------------------------------------------------------
+Fri Jul 14 03:01:27 UTC 2023 - XinLiang <XLiang@suse.com>
+
+- Dev: spec: Define python3_sitelib if it is not defined
+- Dev: spec: Update package dependency
+ 
+-------------------------------------------------------------------
+Wed Jul 05 13:40:48 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230705.be003475:
+  * Fix: codecov: specify token explicitly
+  * Fix: ui_context: wait4dc should assume a subcommand completes successfully if no exceptions are raised (bsc#1212992)
+
+-------------------------------------------------------------------
+Sat Jul 01 08:03:35 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230701.3fb634fe:
+  * Dev: codecov: do not post comment in pull requests until all behave tests are finished
+  * Dev: testcases: update the cases to adapt to updated version of pacemaker
+  * Dev: behave: install coverage.py in docker image
+  * Dev: test_container: refactor Dockerfile for better performance
+  * Dev: github-actions: add codecov
+  * Dev: behave: add coverage to functional test
+  * Fix: upgradeutil: do not tried to upgrade when the cluster is partially set up
+  * Dev: behave: adjust functional tests for previous changes
+  * Dev: unittest: add unit tests for bootstrap.Context.initialize_user
+  * Dev: unittest: adjust unit tests for previous changes
+  * Fix: bootstrap: fix the validation of option -N and -c (bsc#1212436)
+
+-------------------------------------------------------------------
+Mon Jun 19 06:30:37 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230619.c62e66bb:
   * medium: ui_node: fix cib rollback race on node standby
 
 -------------------------------------------------------------------
-Fri Jun 16 08:49:12 UTC 2023 - XLiang@suse.com
+Fri Jun 16 08:47:03 UTC 2023 - XLiang@suse.com
 
-- Update to version 4.5.0+20230616.cf763cd1:
+- Update to version 4.5.0+20230616.6eb1cea0:
+  * Dev: tox: Remove py3.6 and py3.8 for current master branch
   * Dev: unittest: Adjust unit test for previous changes
   * Dev: behave: Add functional test for previous change
   * Dev: remove unused codes
   * Dev: ui_cluster: Use 'CustomAppendAction' instead of 'append' argparse action
 
 -------------------------------------------------------------------
-Thu Jun 01 02:12:23 UTC 2023 - XLiang@suse.com
+Tue Jun 06 04:00:23 UTC 2023 - XLiang@suse.com
 
-- Update to version 4.5.0+20230531.b167a2d7:
-  * Dev: bootstrap: Configure ssh key when fetch geo config
-  * Dev: cmd_status: Use --output-as option instead of deprecated --as-html and --as-xml options
-  * Dev: cmd_status: Append 'with quorum' and 'WITHOUT quorum' to display keyword list
+- Update to version 4.5.0+20230606.b511e42b:
+  * switch to the new container image
+  * Dev: behave: adjust functional test for previous changes
+  * Fix: geo_cluster: the behavior of choosing a default user in geo_join/geo_init_arbitrator is different with `cluster join` (bsc#1211817)
+  * Fix: utils: do not use sudoer user to create ssh session unless it is specified explicitly (bsc#1211817)
+  * Dev: behave: add a function `assert_in` to print the difference when the assertion fails
+  * Fix: behave: specify username explicitly in non-root cases for option --qnetd-hostname/--cluster-node
+  * Dev: behave: rewrite check_service_state with the new agent
+  * Dev: behave: use a standalone agent instead of crmsh.parallax to run commands
 
 -------------------------------------------------------------------
-Tue May 23 06:01:47 UTC 2023 - Matej Cepl <mcepl@suse.com>
+Tue Jun 06 01:35:51 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230606.9a8fab45:
+  * Dev: remove unused codes
+  * Dev: ui_corosync: Remove add-node and del-node subcommands
+
+-------------------------------------------------------------------
+Thu Jun  1 02:20:42 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Rewrite SPEC file to use modern pip+wheel and don't use
-  deprecated setup.py.
+  deprecated setup.py. 
 
 -------------------------------------------------------------------
-Wed May 17 14:34:05 UTC 2023 - XLiang@suse.com
+Wed May 31 07:55:46 UTC 2023 - XLiang@suse.com
 
-- Update to version 4.5.0+20230517.b2cb988b:
-  * Dev: workflows: Deliver package to network:ha-clustering:Stable
+- Update to version 4.5.0+20230531.9de3e687:
+  * Dev: bootstrap: Configure ssh key when fetch geo config
+
+-------------------------------------------------------------------
+Thu May 18 14:52:02 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230518.37907c1f:
+  * Dev: workflows: Temporarily remove unit_test from needs list for delivery job
+  * Dev: cmd_status: Use --output-as option instead of deprecated --as-html and --as-xml options
+  * Dev: cmd_status: Append 'with quorum' and 'WITHOUT quorum' to display keyword list
+  * Dev: workflows: Temporarily disabled unit_test and submit job
 
 -------------------------------------------------------------------
 Mon May 15 08:08:25 UTC 2023 - XLiang@suse.com
