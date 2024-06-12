@@ -703,4 +703,16 @@
     Belgian format. Thanks @JorisSpruyt.</comment>
     <requestid>1178962</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>b31b5b545ef5dd90449bd6393256c708</srcmd5>
+    <version>25.8.0</version>
+    <time>1718199445</time>
+    <user>anag+factory</user>
+    <comment>- update to 25.8.0:
+  * Add handshake emoji with different color variations to emoji
+    provider list.
+  * Add missing translation for countries in `pt-BR`.
+  * Fix data in geo for `pl_PL`.</comment>
+    <requestid>1179942</requestid>
+  </revision>
 </revisionlist>

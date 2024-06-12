@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 11 08:06:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 25.8.0:
+  * Add handshake emoji with different color variations to emoji
+    provider list.
+  * Add missing translation for countries in `pt-BR`.
+  * Fix data in geo for `pl_PL`.
+
+-------------------------------------------------------------------
 Thu Jun  6 08:44:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 25.5.0:
