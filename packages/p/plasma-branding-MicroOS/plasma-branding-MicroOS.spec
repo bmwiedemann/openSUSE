@@ -32,12 +32,11 @@ BuildRequires:  flatpak
 BuildRequires:  transactional-update
 Requires:       flatpak
 Requires:       kdialog
-Requires:       kdialog
 Requires:       libqt5-qdbus
 Requires:       sound-theme-freedesktop
 Requires:       transactional-update
 Conflicts:      gnome-branding-MicroOS
-Version:        20240401
+Version:        20240611
 Release:        0
 
 %description

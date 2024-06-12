@@ -99,7 +99,7 @@ Name[uk]=Сюди (як TAR.GZ)
 Name[x-test]=xxHere (as TAR.GZ)xx
 Name[zh_CN]=此处 (作为 TAR.GZ)
 Name[zh_TW]=在此壓成 TAR.GZ 壓縮檔
-Icon=ark
+Icon=archive-insert
 Exec=flatpak run org.kde.ark --changetofirstpath --add --autofilename tar.gz %F
 
 [Desktop Action compressHereAsZip]
@@ -136,7 +136,7 @@ Name[uk]=Сюди (як ZIP)
 Name[x-test]=xxHere (as ZIP)xx
 Name[zh_CN]=此处 (作为 ZIP)
 Name[zh_TW]=在此壓成 ZIP 壓縮檔
-Icon=ark
+Icon=archive-insert
 Exec=flatpak run org.kde.ark --changetofirstpath --add --autofilename zip %F
 
 [Desktop Action compressTo]
@@ -174,5 +174,5 @@ Name[uk]=Стиснути…
 Name[x-test]=xxCompress to...xx
 Name[zh_CN]=压缩到...
 Name[zh_TW]=壓縮為...
-Icon=ark
+Icon=archive-insert
 Exec=flatpak run org.kde.ark --add --changetofirstpath --dialog %F
