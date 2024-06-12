@@ -1550,4 +1550,26 @@
   ## Changes</comment>
     <requestid>1163560</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>1d29a36a1cb04901d217e359f055999e</srcmd5>
+    <version>8.25.0</version>
+    <time>1718199443</time>
+    <user>anag+factory</user>
+    <comment>- Reenable testing matplotlib
+- Update to 8.25.0:
+  * Rplaces the unicode micro symbol with greek letter mu, visually
+    identical but should fix nfkc normalisations issues.
+  * Introduces intersphinx_registry as a new dependency which is recommended
+    only to build documentation.
+  * Improve inference from return type annotations in completer and the
+    introduction of the optional target ipython[matplotlib] to explicitly
+    request the matplotlib optional dependencies.
+  * Move of the matplotlib backend handling from IPython to matplotlib.
+  * pytest 8 compatibility.
+  * typing-extension now needs 4.6 or newer. It was already the case, but
+    not explicated.
+  * Attempt to speed running code under debugger in some cases.
+</comment>
+    <requestid>1178448</requestid>
+  </revision>
 </revisionlist>

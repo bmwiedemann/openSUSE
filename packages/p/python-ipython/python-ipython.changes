@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jun  4 06:55:22 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Reenable testing matplotlib
+
+-------------------------------------------------------------------
+Tue Jun  4 03:19:44 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 8.25.0:
+  * Rplaces the unicode micro symbol with greek letter mu, visually
+    identical but should fix nfkc normalisations issues.
+  * Introduces intersphinx_registry as a new dependency which is recommended
+    only to build documentation.
+  * Improve inference from return type annotations in completer and the
+    introduction of the optional target ipython[matplotlib] to explicitly
+    request the matplotlib optional dependencies.
+  * Move of the matplotlib backend handling from IPython to matplotlib.
+  * pytest 8 compatibility.
+  * typing-extension now needs 4.6 or newer. It was already the case, but
+    not explicated.
+  * Attempt to speed running code under debugger in some cases.
+
+-------------------------------------------------------------------
 Fri Mar 29 17:16:13 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.22.2
