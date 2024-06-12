@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Tue Jun 11 08:28:32 UTC 2024 - Johannes Meixner <jsmeix@suse.com>
+
+- cups-2.4.8-CVE-2024-35235.patch is derived
+  from the upstream patch against master (CUPS 2.5)
+  to apply to CUPS 2.4.8 in openSUSE Factory to fix CVE-2024-35235
+  "cupsd Listen port arbitrary chmod 0140777"
+  https://github.com/OpenPrinting/cups/security/advisories/GHSA-vvwp-mv6j-hw6f
+  bsc#1225365
+
+-------------------------------------------------------------------
+Wed May 29 12:29:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.4.8:
+  See https://github.com/openprinting/cups/releases
+  CUPS 2.4.8 brings many bug fixes which aggregated over the last
+  half a year. It brings the important fix for race conditions
+  and errors which can happen when installing permanent
+  IPP Everywhere printer, support for PAM modules password-auth
+  and system-auth and new option for lpstat which can show only
+  the successful jobs.
+  Detailed list (from CHANGES.md):
+  * Added warning if the device has to be asked for
+    'all,media-col-database' separately (Issue #829)
+  * Added new value for 'lpstat' option '-W' - successfull - for
+    getting successfully printed jobs (Issue #830)
+  * Added support for PAM modules password-auth
+    and system-auth (Issue #892)
+  * Updated IPP Everywhere printer creation error
+    reporting (Issue #347)
+  * Updated and documented the MIME typing buffering
+    limit (Issue #925)
+  * Raised 'cups_enum_dests()' timeout for listing
+    available IPP printers (Issue #751)
+  * Now report an error for temporary printer defaults
+    with lpadmin (Issue #237)
+  * Fixed mapping of PPD InputSlot, MediaType,
+    and OutputBin values (Issue #238)
+  * Fixed "document-unprintable-error" handling (Issue #391)
+  * Fixed the web interface not showing an error
+    for a non-existent printer (Issue #423)
+  * Fixed printing of jobs with job name longer than 255 chars
+    on older printers (Issue #644)
+  * Really backported fix for Issue #742
+  * Fixed 'cupsCopyDestInfo' device connection
+    detection (Issue #586)
+  * Fixed "Upgrade" header handling when there is
+    no TLS support (Issue #775)
+  * Fixed memory leak when unloading a job (Issue #813)
+  * Fixed memory leak when creating color profiles (Issue #815)
+  * Fixed a punch finishing bug in the IPP Everywhere
+    support (Issue #821)
+  * Fixed crash in 'scan_ps()' if incoming argument
+    is NULL (Issue #831)
+  * Fixed setting job state reasons for successful
+    jobs (Issue #832)
+  * Fixed infinite loop in IPP backend if hostname
+    is IP address with Kerberos (Issue #838)
+  * Added additional check on socket if 'revents' from 'poll()'
+    returns POLLHUP together with POLLIN or POLLOUT
+    in 'httpAddrConnect2()' (Issue #839)
+  * Fixed crash in 'ppdEmitString()' if 'size' is NULL (Issue #850)
+  * Fixed reporting 'media-source-supported' when
+    sharing printer  which has numbers as strings instead of
+    keywords as 'InputSlot' values (Issue #859)
+  * Fixed IPP backend to support the "print-scaling" option
+    with IPP printers (Issue #862)
+  * Fixed potential race condition for the creation
+    of temporary queues (Issue #871)
+  * Fixed 'httpGets' timeout handling (Issue #879)
+  * Fixed checking for required attributes during
+    PPD generation (Issue #890)
+  * Fixed encoding of IPv6 addresses in HTTP requests (Issue #903)
+  * Fixed sending response headers to client (Issue #927)
+  * Fixed CGI program initialization and validation
+    of form checkbox and text fields.
+  Issues are those at https://github.com/OpenPrinting/cups/issues
+- Adapted downgrade-autoconf-requirement.patch for CUPS 2.4.8
+
+-------------------------------------------------------------------
 Mon Feb 26 10:48:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

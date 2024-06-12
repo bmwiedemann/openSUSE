@@ -40,7 +40,7 @@ Name:           cups
 # "zypper vcmp 2.3.b99 2.3.0" shows "2.3.b99 is older than 2.3.0" and
 # "zypper vcmp 2.2.99 2.3b6" show "2.2.99 is older than 2.3b6" so that
 # version upgrades from 2.2.x via 2.3.b* to 2.3.0 work:
-Version:        2.4.7
+Version:        2.4.8
 Release:        0
 Summary:        The Common UNIX Printing System
 License:        Apache-2.0
@@ -48,10 +48,10 @@ Group:          Hardware/Printing
 URL:            https://openprinting.github.io/cups
 # To get Source0 go to https://github.com/OpenPrinting/cups/releases or use e.g.
 # wget --no-check-certificate -O cups-2.4.7-source.tar.gz https://github.com/OpenPrinting/cups/releases/download/v2.4.7/cups-2.4.7-source.tar.gz
-Source0:        https://github.com/OpenPrinting/cups/releases/download/v2.4.7/cups-2.4.7-source.tar.gz
+Source0:        https://github.com/OpenPrinting/cups/releases/download/v2.4.8/cups-2.4.8-source.tar.gz
 # To get Source1 go to https://github.com/OpenPrinting/cups/releases or use e.g.
 # wget --no-check-certificate -O cups-2.4.7-source.tar.gz.sig https://github.com/OpenPrinting/cups/releases/download/v2.4.7/cups-2.4.7-source.tar.gz.sig
-Source1:        https://github.com/OpenPrinting/cups/releases/download/v2.4.7/cups-2.4.7-source.tar.gz.sig
+Source1:        https://github.com/OpenPrinting/cups/releases/download/v2.4.8/cups-2.4.8-source.tar.gz.sig
 # To make Source2 use e.g.
 #   gpg --keyserver keys.openpgp.org --recv-keys 7082A0A50A2E92640F3880E0E4522DCC9B246FF7
 #   gpg --export --armor 7082A0A50A2E92640F3880E0E4522DCC9B246FF7 >cups.keyring
@@ -103,6 +103,13 @@ Patch108:       downgrade-autoconf-requirement.patch
 # Patch112 cups-2.4.2-additional_policies.patch adds the 'allowallforanybody' policy to cupsd.conf
 # see SUSE FATE 303515 and https://bugzilla.suse.com/show_bug.cgi?id=936309
 Patch112:       cups-2.4.2-additional_policies.patch
+# Patch113 cups-2.4.8-CVE-2024-35235.patch is derived from the upstream patch against master (CUPS 2.5)
+# https://github.com/OpenPrinting/cups/security/advisories/GHSA-vvwp-mv6j-hw6f#advisory-comment-102901
+# to apply to CUPS 2.4.8 in openSUSE Factory
+# to fix CVE-2024-35235 "cupsd Listen port arbitrary chmod 0140777"
+# https://github.com/OpenPrinting/cups/security/advisories/GHSA-vvwp-mv6j-hw6f
+# https://bugzilla.suse.com/show_bug.cgi?id=1225365
+Patch113:       cups-2.4.8-CVE-2024-35235.patch
 # Build Requirements:
 BuildRequires:  dbus-1-devel
 BuildRequires:  fdupes
@@ -330,6 +337,13 @@ printer drivers for CUPS.
 # Patch112 cups-2.4.2-additional_policies.patch adds the 'allowallforanybody' policy to cupsd.conf
 # see SUSE FATE 303515 and https://bugzilla.suse.com/show_bug.cgi?id=936309
 %patch -P 112 -b cups-2.4.2-additional_policies.orig
+# Patch113 cups-2.4.8-CVE-2024-35235.patch is derived from the upstream patch against master (CUPS 2.5)
+# https://github.com/OpenPrinting/cups/security/advisories/GHSA-vvwp-mv6j-hw6f#advisory-comment-102901
+# to apply to CUPS 2.4.8 in openSUSE Factory
+# to fix CVE-2024-35235 "cupsd Listen port arbitrary chmod 0140777"
+# https://github.com/OpenPrinting/cups/security/advisories/GHSA-vvwp-mv6j-hw6f
+# https://bugzilla.suse.com/show_bug.cgi?id=1225365
+%patch -P 113 -b cups-2.4.8-CVE-2024-35235.orig
 
 %build
 # Remove ".SILENT" rule for verbose build output
