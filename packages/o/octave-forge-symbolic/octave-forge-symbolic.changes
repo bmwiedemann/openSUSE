@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 12 04:09:12 UTC 2024 - ming li <mli@suse.com>
+
+- Update to version 3.2.1:
+  * New symbolic commands: collect, fplot
+  * Move repo to https://github.com/gnu-octave/symbolic
+  * `sym(<array>, ratflag)` now respects `ratflag` (issue #1273).
+  * Changed metainfo.xml ID and corrected long-standing "Addon"
+    link to GNU Octave.
+  * Misc changes for SymPy development changes.
+  * v3.2.0 was incorrectly released.
+
+-------------------------------------------------------------------
 Mon Oct 30 16:01:19 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update URL to point to 'https://gnu-octave.github.io/packages/'
