@@ -1,8 +1,8 @@
-Index: sysstat-11.6.1/common.h
+Index: sysstat-12.7.5/common.h
 ===================================================================
---- sysstat-11.6.1.orig/common.h
-+++ sysstat-11.6.1/common.h
-@@ -178,8 +178,8 @@ extern unsigned int kb_shift;
+--- sysstat-12.7.5.orig/common.h
++++ sysstat-12.7.5/common.h
+@@ -191,8 +191,8 @@ extern unsigned int kb_shift;
   * kB <-> number of pages.
   * Page size depends on machine architecture (4 kB, 8 kB, 16 kB, 64 kB...)
   */

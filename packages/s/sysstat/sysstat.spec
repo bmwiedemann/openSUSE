@@ -1,7 +1,7 @@
 #
 # spec file for package sysstat
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sysstat
-Version:        12.6.2
+Version:        12.7.5
 Release:        0
 Summary:        Sar and Iostat Commands for Linux
 License:        GPL-2.0-or-later
@@ -34,8 +34,6 @@ Patch2:         sysstat-8.0.4-pagesize.diff
 # PATCH-FIX-OPENSUSE bsc#1151453
 Patch3:         sysstat-service.patch
 Patch4:         harden_sysstat.service.patch
-# PATCH-FIX-UPSTREAM CVE-2023-33204, bsc#1211507 https://github.com/sysstat/sysstat/pull/360.patch
-Patch5:         sysstat-CVE-2023-33204.patch
 BuildRequires:  findutils
 BuildRequires:  gettext-runtime
 BuildRequires:  libpcp-devel
@@ -72,15 +70,10 @@ system activity data stored in a binary data produced by a sar command
 from a sysstat package.
 
 %prep
-%setup -q
-%patch -P 0 -p1
-%patch -P 2 -p1
-%patch -P 3 -p1
+%autosetup -p1
 cp %{SOURCE1} .
 # remove date and time from objects
 find ./ -name \*.c -exec sed -i -e 's: " compiled " __DATE__ " " __TIME__::g' {} \;
-%patch -P 4 -p1
-%patch -P 5 -p1
 
 %build
 export conf_dir="%{_sysconfdir}/sysstat"
@@ -122,27 +115,19 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcsysstat
 # make %%{?_smp_mflags} test
 
 %pre
-%service_add_pre sysstat.service sysstat-collect.timer sysstat-summary.timer
+%service_add_pre sysstat.service sysstat-collect.service sysstat-collect.timer sysstat-summary.service sysstat-summary.timer sysstat-rotate.service syssstat-rotate.timer
 
 %post
-%service_add_post sysstat.service sysstat-collect.timer sysstat-summary.timer
+%service_add_post sysstat.service sysstat-collect.service sysstat-collect.timer sysstat-summary.service sysstat-summary.timer sysstat-rotate.service syssstat-rotate.timer
 # Earlier versions used cron, remove leftover
 rm -f /etc/cron.d/sysstat || :
 
 %preun
-%service_del_preun sysstat.service sysstat-collect.timer sysstat-summary.timer
+%service_del_preun sysstat.service sysstat-collect.service sysstat-collect.timer sysstat-summary.service sysstat-summary.timer sysstat-rotate.service syssstat-rotate.timer
 [ "$1" -gt 0 ] || rm -rf %{_localstatedir}/log/sa/*
 
 %postun
-%service_del_postun sysstat.service sysstat-collect.timer sysstat-summary.timer
-
-%if 0%{?suse_version} < 1500
-%post isag
-%desktop_database_post
-
-%postun isag
-%desktop_database_postun
-%endif
+%service_del_postun sysstat.service sysstat-collect.service sysstat-collect.timer sysstat-summary.service sysstat-summary.timer sysstat-rotate.service syssstat-rotate.timer
 
 %files -f "%{name}.lang"
 %license COPYING
@@ -169,6 +154,8 @@ rm -f /etc/cron.d/sysstat || :
 %{_unitdir}/sysstat-collect.timer
 %{_unitdir}/sysstat-summary.service
 %{_unitdir}/sysstat-summary.timer
+%{_unitdir}/sysstat-rotate.service
+%{_unitdir}/sysstat-rotate.timer
 %{_systemd_util_dir}/system-sleep/sysstat.sleep
 %dir %{_localstatedir}/log/sa
 %{_sbindir}/rcsysstat

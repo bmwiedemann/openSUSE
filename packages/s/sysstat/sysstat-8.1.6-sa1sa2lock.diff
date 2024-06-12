@@ -1,7 +1,7 @@
-Index: sysstat-12.6.0/sa1.in
+Index: sysstat-12.7.5/sa1.in
 ===================================================================
---- sysstat-12.6.0.orig/sa1.in
-+++ sysstat-12.6.0/sa1.in
+--- sysstat-12.7.5.orig/sa1.in
++++ sysstat-12.7.5/sa1.in
 @@ -31,8 +31,14 @@ then
  	LONG_NAME=y
  fi
@@ -34,10 +34,10 @@ Index: sysstat-12.6.0/sa1.in
 -	exec ${ENDIR}/sadc -F -L ${SADC_OPTIONS} $* ${SA_DIR}
 +	${ENDIR}/sadc -F -L ${SADC_OPTIONS} $* ${SA_DIR}
  fi
-Index: sysstat-12.6.0/sa2.in
+Index: sysstat-12.7.5/sa2.in
 ===================================================================
---- sysstat-12.6.0.orig/sa2.in
-+++ sysstat-12.6.0/sa2.in
+--- sysstat-12.7.5.orig/sa2.in
++++ sysstat-12.7.5/sa2.in
 @@ -59,6 +59,17 @@ fi
  
  [ -f "${DFILE}" ] || exit 0
@@ -55,4 +55,4 @@ Index: sysstat-12.6.0/sa2.in
 +
  if [ x${REPORTS} != xfalse ]
  then
- 	${ENDIR}/sar $* -f ${DFILE} > ${RPT}
+ 	S_REPEAT_HEADER=${REPEAT_HEADER} ${ENDIR}/sar $* -f ${DFILE} > ${RPT}
