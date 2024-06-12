@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Jun 11 14:14:54 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.0.5
+    * Update Coreaudio support.
+    * Added to MidiNote holdmode, first/last velocity support and sendAllNotesOff method.
+    * UI: Improved handling of system's dark mode.
+    * Fixed PY_SSIZE_T_CLEAN macro must be defined for '#' formats.
+    * Fixed OscReceive.addAddress not polling the address immediately.
+    * Fixed memory leak in trigmodule.
+    * Ensure that there is no leaking audio streams in the server when objects are deleted.
+    * Fix Keyboard widget note off handling in hold mode.
+    * Made SndTable, NewTable and DataTable size attribute mutable.
+    * Improved behavior consistency of PyoTableObject.setSize method.
+    * Fixed bug when making the size of a table bigger at runtime.
+    * Objects writing samples in tables can now write to any PyoTableObject.
+    * Made getRate() and getDur() methods available to all PyoTableObject.
+    * Allow more than 10 controls in PyoObjectControl window.
+    * Fixed linux libasound and libjack symlinks (included in version 1.0.4).
+- from version 1.0.4
+    * Replaced unsecure vsprintf function with vsnprintf in server logging functions (fixed issue #222).
+    * Removed useless string copy in the Jack backend (fixed issue #221).
+    * TableMorph checks table sizes before interpolating to prevent segmentation fault.
+    * Scale's exp argument now supports float or PyoObject.
+    * Added documentation for IFFTMatrix object.
+    * Added support for item assigment in PyoObjectBase.
+    * Replaced all allocation functions with python's memory interface.
+    * Fixed Select counter type range (now accept a long long value).
+    * Removed unwanted call to Server_process_buffers at start of an embedded audio server.
+    * Fixed segfault in embedded pyo_end_interpreter function.
+    * Fixed FreqShift backward shifting (issue #193).
+    * Fixed wx assertion in Scope color rendering.
+    * Removed deprecated files.
+    * Added Visaul Studio Code integration for Windows, MacOS and Linux.
+    * Fixed array out-of-bound bug in SVF2 object.
+    * Fixed memory allocation in expr's initexpr function (issue #190).
+    * Added rt library to linker on linux (should fix shm_unlink undefined symbol) (issue #129).
+    * On 64-bit architecture, use long instead of int as PyoObjectTable size.
+    * PyoTableObject get(), put() and copyData() methods can read backward with negative indices.
+    * Fixed crash when DataTable or NewTable size != len(init).
+    * Fixed PadSynthTable crash on Windows.
+    * VarPort now updates its increment when the time attribute changes.
+    * Added a level argument to PyoMatrixObject.normalize() method.
+    * Fixed segmentation fault in PyoMatrixObject.read() method.
+    * Added a div method to PyoTableObject.
+    * Added a shape argument to PyoTableObject.fadein() and PyoTableObject.fadeout() methods.
+    * Added a level argument to PyoTableObject.normalize() method.
+    * Fix bug in isPlaying() returning wrong value when set from out().
+    * Prevent normal order to happen in out() function when scrambling channels.
+    * Added PyoObjectBase.getStopDelay() method (mainly for unit testing).
+- Cherry-pick upstream 277.patch to fix build with GCC 14
+  * https://github.com/belangeo/pyo/pull/277
+- Drop patches for issues fixed upstream
+  * py39.patch
+
+-------------------------------------------------------------------
 Thu Apr 29 06:57:28 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.0.3
@@ -17,10 +72,10 @@ Thu Apr 29 06:57:28 UTC 2021 - Markéta Machová <mmachova@suse.com>
 Wed Oct 31 01:57:15 UTC 2018 - Todd R <toddrme2178@gmail.com>
 
 - Update to version 0.9.1
-  * On Windows, use 'directsound' as the default audio host (much more 
+  * On Windows, use 'directsound' as the default audio host (much more
     reliable than 'wasapi').
   * Fixed phase shifting between the frequency bands of FourBand and MultiBand.
-  * Added a new object: MultiBand, frequency splitter using Linkwitz-Riley 
+  * Added a new object: MultiBand, frequency splitter using Linkwitz-Riley
     crossover filters.
   * Fixed Compress output level when input's rms is above unity.
   * Added the ability to remove a project from the project tree.
@@ -46,9 +101,9 @@ Wed May 16 15:41:48 UTC 2018 - toddrme2178@gmail.com
   - Bug Fixes:
     * Fixed erroneous condition in listscramble function.
     * Fixed pa_get_devices_infos() function on Windows.
-    * Fixed segfault at exit when a Server object is created but never 
+    * Fixed segfault at exit when a Server object is created but never
       booted (fixed issue #117).
-    * Fixed window shape in the Harmonizer object (use an halfsine instead 
+    * Fixed window shape in the Harmonizer object (use an halfsine instead
       of an hanning).
     * Fixed crash when trying to draw a ControlSlider with width or height of 0.
   - Enhancements:
@@ -86,13 +141,13 @@ Wed May 16 15:41:48 UTC 2018 - toddrme2178@gmail.com
       jack2-dbus is used instead of jackd.
     * Fixed bugs in Expr object's unicode handling.
     * Fixed windows 10 dependencies.
-    * Fixed ending point of TableRec's time stream (now keep the last 
+    * Fixed ending point of TableRec's time stream (now keep the last
       value instead of switching back to 0).
     * Fixed clean-up of VoiceManager object.
     * Fixed encoding of file path on windows for various objects.
   - Enhancements:
     * The server now allow up to 16 channel rms outputs for GUI drawing.
-    * Added getInterpolated method to PyoMatrixObject class. Returns the 
+    * Added getInterpolated method to PyoMatrixObject class. Returns the
       interpolated value for a floating-point position in the matrix.
     * OscDataSend now can send more than one message per buffer size.
     * Update MacOS and Windows build routine to compile for python 2.7,
@@ -114,12 +169,12 @@ Wed May 16 15:41:48 UTC 2018 - toddrme2178@gmail.com
     * Added a "Copy" menu item in PyoObject.ctrl() and DataTable.graph() windows.
 - Update to version 0.8.5
   - What's new:
-    * Added pa_get_default_devices_from_host(host) function. This function can 
-      greatly help finding the device indexes (especially on Windows) to give to 
+    * Added pa_get_default_devices_from_host(host) function. This function can
+      greatly help finding the device indexes (especially on Windows) to give to
       the server in order to use to desired audio host.
     * Added a new winhost argument to the Server's initialization. On Windows, it
       defaults to WASAPI.
-    * Check the jack api version before compiling to ensure existing functions are 
+    * Check the jack api version before compiling to ensure existing functions are
       used (jack_port_set_name/jack_port_rename).
     * Added two examples in 07-effects, 01-flanger.py and 02-schroeder-reverb.py.
 - Update to version 0.8.4
@@ -155,26 +210,26 @@ Wed May 16 15:41:48 UTC 2018 - toddrme2178@gmail.com
     * LogiMap, random generator based on the logistic map.
   - New functionalities:
     * Added a method (sysexout()) to send sysex messages to the Server object.
-    * Added PyoTableObject.getBuffer() method. The PyoTableObject now support 
-      the buffer protocol (see PEP 3118), which allow a table to share its data 
+    * Added PyoTableObject.getBuffer() method. The PyoTableObject now support
+      the buffer protocol (see PEP 3118), which allow a table to share its data
       memory with any object that support the buffer protocol (ex. numpy array).
     * Added Server.setCallback() method to allow the user to define a custom
-      process function. This function will be called once per buffer size, just 
+      process function. This function will be called once per buffer size, just
       before the computation of the audio objects tree.
     * Added Server.getCurrentTime() and Server.getCurrentAmp() methods.
-    * Improve Looper object: Added a time stream, which gives the current 
+    * Improve Looper object: Added a time stream, which gives the current
       normalized position. Added loopnow() method, which allows to start a new
-      loop immediately with crossfade. Added appendFadeTime() and fadeInSeconds() 
+      loop immediately with crossfade. Added appendFadeTime() and fadeInSeconds()
       methods to give a more flexible control of the behavior of the object.
-    * Added an 'inverse' argument to PVGate object. When set to True, the 
+    * Added an 'inverse' argument to PVGate object. When set to True, the
       damping factor is applied to bins with an amplitude above the threshold.
     * Added a `callback` argument to PyoObject.set() method. The given callback
       will be executed at the end of the ramp.
     * Added ctrl() method (and some missing setter) to midi objects.
-    * TableWrite object now takes into account the feedback argument of NewTable 
-      object and interpolates to fill in gaps if its writing pointer moves faster 
+    * TableWrite object now takes into account the feedback argument of NewTable
+      object and interpolates to fill in gaps if its writing pointer moves faster
       than the sampling rate.
-    * Added a reset() method to various delay line-based objects (AllpassWG, 
+    * Added a reset() method to various delay line-based objects (AllpassWG,
       Chorus, Freeverb, Harmonizer, STRev, WGVerb, Waveguide).
     * All objects can be used as iterator (will iterate over its internal sterams).
     * SigTo ramp time now can be controlled at audio rate.
@@ -185,11 +240,11 @@ Wed May 16 15:41:48 UTC 2018 - toddrme2178@gmail.com
     * Several minor bug fixes.
   - Improvements:
     * Added low-latency driver WDMKS in the portaudio build routine for Windows.
-    * Replaced all printf calls with PySys_WriteStdout. This allow to redirect 
+    * Replaced all printf calls with PySys_WriteStdout. This allow to redirect
       messages from pyo to a string or a file, instead of the stdout.
   - Documentation:
     * Added new examples, 05-envelopes/ and 06-filters/.
-    * Added a new file, called "How to improve performance of your pyo programs", 
+    * Added a new file, called "How to improve performance of your pyo programs",
       to the documentation.
 - Implement single-spec version
 
@@ -201,91 +256,91 @@ Tue Nov 18 13:25:21 UTC 2014 - toddrme2178@gmail.com
   * E-Pyo: Fix marker's line numbering.
   * E-Pyo: Added Save As Template... menu item.
   * Fixed bug in Fader decreasing ramp.
-  * Added midi output methods to the Server object. noteout, afterout, ctlout, 
+  * Added midi output methods to the Server object. noteout, afterout, ctlout,
     programout, pressout and bendout.
-  * Server.setMidiOutputDevice(idx) with `idx` greater than the higher portmidi 
+  * Server.setMidiOutputDevice(idx) with `idx` greater than the higher portmidi
     devices index opens all available output devices.
-  * Added new object: FToM, converts an audio stream containning frequencies in 
+  * Added new object: FToM, converts an audio stream containning frequencies in
     hertz to a midi note audio stream.
-  * Added new function: hzToMidi, converts a frequency in hertz to a midi note 
+  * Added new function: hzToMidi, converts a frequency in hertz to a midi note
     value.
 - Update to version 0.7.2
-  * Server.setMidiInputDevice(idx) with `idx` greater than the higher portmidi 
+  * Server.setMidiInputDevice(idx) with `idx` greater than the higher portmidi
     input index opens all available devices.
-  * OSX installer: Also install pyo in anaconda site-packages directory if 
+  * OSX installer: Also install pyo in anaconda site-packages directory if
     exist.
-  * Added new object : TrigBurst, generates a time/amplitude expandable trigger 
+  * Added new object : TrigBurst, generates a time/amplitude expandable trigger
     pattern.
   * Added new object : Euclide, Euclidean rhythm generator.
-  * Windows installers now check for the current python installation directory 
+  * Windows installers now check for the current python installation directory
     before installing files.
   * E-Pyo: Fixed inconsistencies in Find/Replace behaviours.
-  * Added new object : SmoothDelay, a delay line that does not produce clicks 
+  * Added new object : SmoothDelay, a delay line that does not produce clicks
     or pitch shifting when the delay time is changing.
   * Added new object : AttackDetector, audio signal onset detection.
-  * Added new object : Centroid, Computes the spectral centroid of an input 
+  * Added new object : Centroid, Computes the spectral centroid of an input
     signal.
 - Update to version 0.7.2
-  * E-Pyo: Added RadioPyo to the template choices.  
-  * Fixed Compare when used with None or a string. Print a warning and set 
-    'comp' attribute to 0. 
-  * Fixed live interpreter of the server window when using arrow keys 
+  * E-Pyo: Added RadioPyo to the template choices.
+  * Fixed Compare when used with None or a string. Print a warning and set
+    'comp' attribute to 0.
+  * Fixed live interpreter of the server window when using arrow keys
     navigation.
   * E-Pyo: Check if WxPython 3.0 is installed, otherwise uses 2.8.
-  * Added anti-aliasing to PyoTableObject's grapher widget. Fixed Ctrl+W on the 
+  * Added anti-aliasing to PyoTableObject's grapher widget. Fixed Ctrl+W on the
     grapher.
 - Update to version 0.7.0
-  * pyo can now be used without any GUI toolkit (WxPython or TKinter). Widgets 
+  * pyo can now be used without any GUI toolkit (WxPython or TKinter). Widgets
     are simply disabled.
   * Added Server methods to auto-connect Jack ports to already opened ports.
   * E-Pyo: output log now in realtime.
   * Added new object: Tanh, hyperbolic tangent function on audio signal.
 - Update to version 0.6.9
-  * Added lot of methods to PyoTableObject (retify, bipolarGain, invert, 
+  * Added lot of methods to PyoTableObject (retify, bipolarGain, invert,
     lowpass, fadein, fadeout, pow).
-  * Added new object: PartialTable, generates waveforms made of inharmonic 
+  * Added new object: PartialTable, generates waveforms made of inharmonic
     components.
   * Added a Scope example in examples/utilities.
   * Added new object: STRev, Stereo reverb.
-  * Added dataOnly argument to SLMap. User can now control parameters, in ctrl 
+  * Added dataOnly argument to SLMap. User can now control parameters, in ctrl
     window, that do not accept audio signal but discreet values.
   * Added new object: ComplexRes, Complex one-pole resonator filter.
-  * Added new object: TrackHold, Performs a 'thru' and hold on its input 
+  * Added new object: TrackHold, Performs a 'thru' and hold on its input
     signal.
 - Update to version 0.6.8
-  * Added multi server facility and and embeded callback support for plugin 
+  * Added multi server facility and and embeded callback support for plugin
     development (code by Guillaume Barrette).
   * Add a channel offset to the server physical inputs and outputs.
-  * Added support for reading/writing various soundfile formats. FLAC and OGG 
+  * Added support for reading/writing various soundfile formats. FLAC and OGG
     need libsndfile to be compiled with both of them enabled.
-  * Added new object: PVMix, Mix the most prominent components from two phase 
+  * Added new object: PVMix, Mix the most prominent components from two phase
     vocoder streaming objects.
-  * Added new object: TableScale, Scales values from a table and writes them 
+  * Added new object: TableScale, Scales values from a table and writes them
     into another table.
   * Added new object: Granule, another granular synthesis generator.
-  * Added new object: PVBufTabLoops, phase vocoder buffer with bin independent 
+  * Added new object: PVBufTabLoops, phase vocoder buffer with bin independent
     speed playback (controlled with a PyoTableObject).
-  * Added new object: PVBufLoops, phase vocoder buffer with bin independent 
+  * Added new object: PVBufLoops, phase vocoder buffer with bin independent
     speed playback.
-  * Added new objects: PVShift, spectral frequency shifter. PVAmpMod and 
-    PVFreqMod, frequency independent modulations. 
-  * Added new objects: PVDelay, spectral delays and PVBuffer, phase vocoder 
-    recorder and playback. 
-  * Added setJackAuto method to the Server to disable (enabled by default) Jack 
+  * Added new objects: PVShift, spectral frequency shifter. PVAmpMod and
+    PVFreqMod, frequency independent modulations.
+  * Added new objects: PVDelay, spectral delays and PVBuffer, phase vocoder
+    recorder and playback.
+  * Added setJackAuto method to the Server to disable (enabled by default) Jack
     ports auto-connection.
-  * Added graph() method to DataTable object. Opens a multisliders window to 
-    edit the table content. 
+  * Added graph() method to DataTable object. Opens a multisliders window to
+    edit the table content.
   * Added new object: PVFilter. Spectral filtering.
   * Added new object: PVCross, PVMult, PVMorph. Spectral morphing.
   * Added new object: PVAddSynth, Phase Vocoder additive synthesis object.
-  * Phase Vocoder, first draft. PVAnal, PVSynth, PVTranspose, PVVerb and 
+  * Phase Vocoder, first draft. PVAnal, PVSynth, PVTranspose, PVVerb and
     PVGate.
   * E-Pyo: Added "Search in Project Files" option.
   * E-Pyo: Added Filters Menu. User-defined text processing functions.
   * Now using Sphinx to generate the API documentation.
-  * Added new objects: ButLP, ButHP, ButBP, ButBR, second-order Butterworth 
+  * Added new objects: ButLP, ButHP, ButBP, ButBR, second-order Butterworth
     filters.
-  * Added new objects: Reson and Resonx, second-order resonant bandpass 
+  * Added new objects: Reson and Resonx, second-order resonant bandpass
     filters.
 
 -------------------------------------------------------------------

@@ -33,4 +33,41 @@
 - Pull LICENSE from github because it isn't in the tarball</comment>
     <requestid>889206</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>213e0b47058caf74a6b015461f8c7103</srcmd5>
+    <version>1.0.5</version>
+    <time>1718199528</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.0.5
+    * Update Coreaudio support.
+    * Added to MidiNote holdmode, first/last velocity support and sendAllNotesOff method.
+    * UI: Improved handling of system's dark mode.
+    * Fixed PY_SSIZE_T_CLEAN macro must be defined for '#' formats.
+    * Fixed OscReceive.addAddress not polling the address immediately.
+    * Fixed memory leak in trigmodule.
+    * Ensure that there is no leaking audio streams in the server when objects are deleted.
+    * Fix Keyboard widget note off handling in hold mode.
+    * Made SndTable, NewTable and DataTable size attribute mutable.
+    * Improved behavior consistency of PyoTableObject.setSize method.
+    * Fixed bug when making the size of a table bigger at runtime.
+    * Objects writing samples in tables can now write to any PyoTableObject.
+    * Made getRate() and getDur() methods available to all PyoTableObject.
+    * Allow more than 10 controls in PyoObjectControl window.
+    * Fixed linux libasound and libjack symlinks (included in version 1.0.4).
+- from version 1.0.4
+    * Replaced unsecure vsprintf function with vsnprintf in server logging functions (fixed issue #222).
+    * Removed useless string copy in the Jack backend (fixed issue #221).
+    * TableMorph checks table sizes before interpolating to prevent segmentation fault.
+    * Scale's exp argument now supports float or PyoObject.
+    * Added documentation for IFFTMatrix object.
+    * Added support for item assigment in PyoObjectBase.
+    * Replaced all allocation functions with python's memory interface.
+    * Fixed Select counter type range (now accept a long long value).
+    * Removed unwanted call to Server_process_buffers at start of an embedded audio server.
+    * Fixed segfault in embedded pyo_end_interpreter function.
+    * Fixed FreqShift backward shifting (issue #193).
+    * Fixed wx assertion in Scope color rendering.
+    * Removed deprecated files.</comment>
+    <requestid>1180113</requestid>
+  </revision>
 </revisionlist>

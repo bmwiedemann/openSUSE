@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-pyo
-Version:        1.0.3
+Version:        1.0.5
 Release:        0
 Summary:        Python digital signal processing module
 License:        LGPL-3.0-or-later
@@ -27,7 +27,8 @@ Group:          Development/Languages/Python
 URL:            http://ajaxsoundstudio.com/software/pyo/
 Source:         https://files.pythonhosted.org/packages/source/p/pyo/pyo-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/belangeo/pyo/master/LICENSE
-Patch0:         py39.patch
+# PATCH-FIX-UPSTREAM - Fix multiple incorrect declarations and signatures of callback functions
+Patch:          https://github.com/belangeo/pyo/pull/277.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
