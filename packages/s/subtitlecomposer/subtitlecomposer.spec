@@ -1,7 +1,7 @@
 #
 # spec file for package subtitlecomposer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           subtitlecomposer
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        A text-based subtitle editor
 License:        GPL-2.0-or-later
@@ -26,8 +26,6 @@ URL:            https://invent.kde.org/multimedia/subtitlecomposer
 Source0:        https://download.kde.org/stable/subtitlecomposer/%{name}-%{version}.tar.xz
 Source1:        https://download.kde.org/stable/subtitlecomposer/%{name}-%{version}.tar.xz.sig
 Source2:        subtitlecomposer.keyring
-# PATCH-FIX-UPSTREAM -- icu 75 compatibility
-Patch0:         0001-Increased-required-std-to-C-17-100.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libQt5Widgets-private-headers-devel

@@ -136,4 +136,12 @@
   * 0001-Increased-required-std-to-C-17-100.patch</comment>
     <requestid>1177187</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>fd301464b181f2bde0826ddeaebbde4b</srcmd5>
+    <version>0.8.1</version>
+    <time>1718199524</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1180114</requestid>
+  </revision>
 </revisionlist>

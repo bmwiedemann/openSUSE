@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jun 11 12:19:54 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.8.1
+  * Fixed (rare) memory issues and crashes
+  * Fixed crashes on waveform widget
+  * Fixed video player rendering in Qt 6.7
+  * Fixed scripts manager assert failures
+  * Fixed inability to view non-script files in scripts manager
+  * Fixed seeking in some media formats
+  * Fixed video player subtitle rendering
+  * Fixed broken rendering on hi-res videos
+  * Fixed HDR video rendering (SMPTE-ST-2084 gamma transfer)
+  * Added check for maximum number of characters per line
+  * Added MinT translate engine
+  * Improved translation support and UI
+  * Improved video player scaling
+  * Dropped KIO file operations
+- Drop 0001-Increased-required-std-to-C-17-100.patch (merged
+  upstream)
+
+-------------------------------------------------------------------
 Mon May 27 19:56:20 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream build fix:
