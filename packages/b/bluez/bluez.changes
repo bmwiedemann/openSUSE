@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 11 09:15:31 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix python3 shebang from test files (bsc#1212476)
+
+-------------------------------------------------------------------
 Wed Feb 28 08:07:28 UTC 2024 - Yifan Jiang <yfjiang@suse.com>
 
 - Add necessary Supplements (gnome-bluetooth, blueman, bluedevil5)

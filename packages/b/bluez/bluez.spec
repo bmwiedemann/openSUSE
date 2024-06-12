@@ -236,8 +236,8 @@ cp -a doc/*.txt dbus-apis/
 # for auto-enable subpackage
 sed -i '/^#AutoEnable=false/aAutoEnable=true' src/main.conf
 
-# 2to3 does not fix the #! line
-sed -i '1s#/usr/bin/python$#/usr/bin/python3#' test/*
+# Fix shebangs in test files
+%{?python3_fix_shebang_path:%python3_fix_shebang_path test/*}
 
 %build
 %if 0%{?suse_version} < 1550
@@ -307,9 +307,6 @@ install --mode 0644 -D src/main.conf %{buildroot}/%{_sysconfdir}/bluetooth/main.
 # rpmlint warnings...
 cd %{buildroot}%{_libdir}/bluez/test
 chmod 0644 *.py *.xml *.dtd
-
-# fix python shebang
-sed -i -e '1s/env p/p/' %{buildroot}%{_libdir}/bluez/test/{example-gatt-{client,server},test-mesh}
 
 mkdir -p %{buildroot}%{_defaultdocdir}/%{name}
 cp %{SOURCE9} %{buildroot}%{_defaultdocdir}/%{name}
