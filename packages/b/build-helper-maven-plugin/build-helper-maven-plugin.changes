@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Tue Jun 11 16:14:33 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upsteam version 3.6.0
+  * New features and improvements
+    + Provide the Mojos logger as variable in the Interpreter context
+    + Get rid of ArtifactRepository - ${localRepository}
+    + Added a property name to the "sources" parameter for CLI usage
+    + Add skipIfMissing flag
+    + Add skip flags
+    + Deprecate maven-version goal
+    + Deprecate remove-project-artifact goal
+    + Parallel execution of uptodate-properties
+  * Bug Fixes
+    + Fixes #108, released-version does not detect version if maven
+      repository is not configured to look for snapshot
+    + Add missing whitespace to output of reserve-network-port
+    + Use UTF-8 for the pom
+
+-------------------------------------------------------------------
+Tue Jun 11 16:13:46 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Rename package:
+  maven-plugin-build-helper -> build-helper-maven-plugin
+  + corresponds to the source name
+
+-------------------------------------------------------------------
+Thu Oct 26 10:39:33 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Build javadoc with source level 8
+
+-------------------------------------------------------------------
+Tue Sep  8 18:48:28 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.2.0
+  * Integrated pull requests:
+    + Set a property based on the maven.build.timestamp
+    + rootlocation does not correctly work
+    + Add profile to avoid showing warnings for maven plugin
+      plugin goals not supported in m2e
+    + Site: Properly showing 'value' tag on regex-properties usage
+      page
+    + Integration test reserve-ports-with-urls fails on windows
+    + IllegalArgumentException when using goal released-version with
+      maven 3.6.2
+    + NPE in 3.1.0-SNAPSHOT when no qualifier is present
+    + parse-version goal fails when build number is greater than
+      Integer.MAX_VALUE enhancement
+    + Create directory before writing file in reserve-network-port
+      bug
+    + released-version does not allow access to the build number
+    + Qualifier Prefix
+
+-------------------------------------------------------------------
+Fri Apr  5 14:39:18 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of maven-plugin-build-helper 1.9.1
