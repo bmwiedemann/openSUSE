@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun 12 10:33:43 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.9.20
+  * Bug
+    + MRESOLVER-483: PreorderNodeListGenerator bug: may print
+      trailing ":"
+    + MRESOLVER-522: File locking threads not entering critical
+      region were "oversleeping"
+    + MRESOLVER-547: BF collector always copies artifacts, even
+      when it should not
+  * Improvement
+    + MRESOLVER-536: Skip setting last modified time when FS does
+      not support it
+
+-------------------------------------------------------------------
 Tue Apr  2 17:30:32 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on plexus-xml where relevant

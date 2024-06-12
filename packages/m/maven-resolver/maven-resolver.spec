@@ -19,7 +19,7 @@
 %define _buildshell /bin/bash
 %bcond_with tests
 Name:           maven-resolver
-Version:        1.9.18
+Version:        1.9.20
 Release:        0
 Summary:        Apache Maven Artifact Resolver library
 License:        Apache-2.0
