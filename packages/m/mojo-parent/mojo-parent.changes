@@ -1,21 +1,74 @@
 -------------------------------------------------------------------
+Wed Jun 12 09:38:58 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 82:
+  * Potentially Breaking Changes
+    + mojo.java.target should be set as "8", without "1."; it is
+      now used for release options
+    + spotless plugin must be executed by JDK 11 at least, use
+      profile if needed
+    + ossrh-snapshots repository was removed from parent; if needed
+      please add in project where it is used
+  * New features and improvements
+    + Do not include tests code in JavaDocs
+    + Remove SHA-512 checksum for source release artifact
+    + Use only project version as tag for release
+    + Add space before close empty elements in poms by spotless
+    + Using Checkstyle together with Spotless
+    + Introduce spotless for automatic code formatting
+    + Introduce enforcer rule for minimal version of Java and Maven
+    + Remove jxr from reporting
+    + Remove taglist from reporting
+    + Remove Surefire from reporting
+    + Use new Plugin Tools report - maven-plugin-report-plugin
+    + Remove PMD from reporting
+    + Remove Checkstyle from reporting
+    + Add sisu-maven-plugin
+    + Introduce maven.version property - allow projects to override
+    + Execute spotless by JDK 11 at least
+    + Use release options for m-compiler-p with newer JDKs
+    + Allow override of invoker.streamLogsOnFailures
+    + Require Maven 3.9.x at least for releases
+    + Add maven-wrapper-plugin to pluginManagement
+    + Remove ossrh-snapshots repository from MojoHaus parent
+    + Add build-helper-maven-plugin to pluginManagement
+    + Require Maven 3.6.3+
+    + Update palantirJavaFormat for spotless - JDK 21 compatible
+    + Add dependencyManagement for maven-shade-plugin
+    + Remove dead markmail.org from mailing lists
+    + simplify life for using spotless (active per default),
+      document property to de activate it
+    + Drop recommendedJavaBuildVersion property
+    + Format Markdown files with Spotless Plugin
+  * Bug Fixes
+    + Restore source release distribution in child projects
+    + Rename property maven.version to mavenVersion
+    + minimalMavenBuildVersion should not be overriding by
+      mavenVersion
+    + Use simple checkstyle rules since spotless is executed by
+      default
+    + Use old spotless version only for JDK < 11
+    + Fix spotless configuration for markdown - exclude generated
+      files
+
+-------------------------------------------------------------------
 Sun Dec  4 14:45:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 70:
   * Improvement checkstyle configuration
   * Add modello-maven-plugin to pluginManagement 
-  * Remove Google search box due to privacy (#274) @slawekjaranowski
-  * Put version for mrm-maven-plugin in property (#273) @slawekjaranowski
-  * Add streamLogsOnFailures to m-invoker-p (#272) @slawekjaranowski
-  * Add property for maven-fluido-skin version (#268) @slawekjaranowski
-  * Setup Apache Matomo analytics (#259) @slawekjaranowski
+  * Remove Google search box due to privacy
+  * Put version for mrm-maven-plugin in property
+  * Add streamLogsOnFailures to m-invoker-p
+  * Add property for maven-fluido-skin version
+  * Setup Apache Matomo analytics
   * Downgrade Checkstyle to 9.3. 10.x requires Java 11(ecfb1d1)
   * remove requirement to use ssh for github scm devCon
-  * Require Maven 3.2.5 (#215) @slachiewicz
-  * [#225] add SHA-512 hashes (#226) @bmarwell
-  * Extract plugin version as variable so child pom can override if needed (#84) @nhojpatrick
-  * remove issue-tracking as do not exists anymore (#148) @olamy
-  * remove cim report as it do not exists anymore (#147) @olamy
+  * Require Maven 3.2.5
+  * [#225] add SHA-512 hashes
+  * Extract plugin version as variable so child pom can override if needed
+  * remove issue-tracking as do not exists anymore
+  * remove cim report as it do not exists anymore
 
 -------------------------------------------------------------------
 Fri Mar 25 07:56:42 UTC 2022 - Fridrich Strba <fstrba@suse.com>

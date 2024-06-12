@@ -1,7 +1,7 @@
 #
 # spec file for package mojo-parent
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           mojo-parent
-Version:        70
+Version:        82
 Release:        0
 Summary:        Codehaus MOJO parent project pom file
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://www.mojohaus.org/mojo-parent/
-Source0:        https://github.com/mojohaus/mojo-parent/archive/%{name}-%{version}.tar.gz
+Source0:        https://github.com/mojohaus/%{name}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 BuildRequires:  javapackages-local
 Requires:       mvn(org.junit:junit-bom:pom:)
@@ -33,11 +33,12 @@ BuildArch:      noarch
 Codehaus MOJO parent project pom file
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
+%setup -q
 # Not needed
 %pom_remove_plugin :maven-enforcer-plugin
 %pom_remove_plugin :maven-site-plugin
 %pom_remove_plugin :maven-checkstyle-plugin
+%pom_remove_plugin :spotless-maven-plugin
 
 cp %{SOURCE1} .
 
