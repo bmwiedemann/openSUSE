@@ -26,13 +26,13 @@
 %endif
 
 Name:           c-ares%pkg_suffix
-Version:        1.29.0
+Version:        1.30.0
 Release:        0
 Summary:        Library for asynchronous name resolves
 License:        MIT
 URL:            https://c-ares.org/
-Source0:        https://c-ares.org/download/c-ares-%{version}.tar.gz
-Source1:        https://c-ares.org/download/c-ares-%{version}.tar.gz.asc
+Source0:        https://github.com/c-ares/c-ares/releases/download/v%{version}/c-ares-%{version}.tar.gz
+Source1:        https://github.com/c-ares/c-ares/releases/download/v%{version}/c-ares-%{version}.tar.gz.asc
 Source3:        c-ares.keyring
 Source4:        baselibs.conf
 BuildRequires:  c++_compiler

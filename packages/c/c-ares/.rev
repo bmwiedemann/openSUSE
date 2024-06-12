@@ -375,4 +375,21 @@ Bugfixes:
     <comment></comment>
     <requestid>1178954</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>43861cdbc7841d9c307d705e871df073</srcmd5>
+    <version>1.30.0</version>
+    <time>1718199453</time>
+    <user>anag+factory</user>
+    <comment>- c-ares 1.30.0
+Features:
+* Basic support for SIG RR record (RFC 2931 / RFC 2535) [PR #773]
+Changes:
+* Validation that DNS strings can only consist of printable ascii characters
+  otherwise will trigger a parse failure. [75de16c] and [40fb125]
+Bugfixes:
+* QueryCache: Fix issue where purging on server changes wasn't working. [a6c8fe6]
+- updated dowload URLs to point to github
+- updated keyring to include Brad House DA7D64E4C82C6294CB73A20E22E3D13B5411B7CA</comment>
+    <requestid>1179976</requestid>
+  </revision>
 </revisionlist>
