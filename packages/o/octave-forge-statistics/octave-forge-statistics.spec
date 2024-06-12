@@ -18,7 +18,7 @@
 
 %define octpkg  statistics
 Name:           octave-forge-%{octpkg}
-Version:        1.6.5
+Version:        1.6.6
 Release:        0
 Summary:        Additional statistics functions for Octave
 License:        GPL-3.0-or-later AND SUSE-Public-Domain
