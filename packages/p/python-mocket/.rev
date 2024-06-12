@@ -549,4 +549,12 @@
  - Add getblocking() method by @mindflayer in #228</comment>
     <requestid>1172444</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>eb32107bd9f4ce9114af1f044720f719</srcmd5>
+    <version>3.12.8</version>
+    <time>1718199447</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1179958</requestid>
+  </revision>
 </revisionlist>

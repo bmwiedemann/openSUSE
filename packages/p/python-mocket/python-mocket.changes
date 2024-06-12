@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  4 08:17:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.12.8:
+  * Fix regression
+  * Begin mypy type-checking
+  * Make Mocket work with big requests
+
+-------------------------------------------------------------------
 Sun May  5 12:58:39 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 3.12.6:

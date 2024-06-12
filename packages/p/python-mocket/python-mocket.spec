@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-mocket
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mocket%{psuffix}
-Version:        3.12.6
+Version:        3.12.8
 Release:        0
 Summary:        Python socket mock framework
 License:        BSD-3-Clause
