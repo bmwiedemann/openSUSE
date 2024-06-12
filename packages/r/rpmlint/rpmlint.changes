@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 11 15:05:20 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 2.5.0+git20240611.11134e8:
+  * whitelist valkey (bsc#1226083)
+
+-------------------------------------------------------------------
 Wed May 22 14:19:15 UTC 2024 - filippo.bonazzi@suse.com
 
 - Update to version 2.5.0+git20240522.59c66e6:
