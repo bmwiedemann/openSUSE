@@ -48,4 +48,13 @@
     <comment></comment>
     <requestid>1139184</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>74fa10dc9c9bcce2213f1c81cd38a32b</srcmd5>
+    <version>20240103.0</version>
+    <time>1718199529</time>
+    <user>anag+factory</user>
+    <comment>- remove package name based perl requires
+</comment>
+    <requestid>1180125</requestid>
+  </revision>
 </revisionlist>

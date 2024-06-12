@@ -24,9 +24,9 @@ License:        GPL-2.0-only
 Group:          Productivity/Networking/Email/Clients
 URL:            https://jetmore.org/john/code/swaks/
 Source:         https://jetmore.org/john/code/swaks/files/swaks-%{version}.tar.gz
-Requires:       perl-IO-Socket-IP
-Requires:       perl-Net-DNS
-Requires:       perl-Net-SSLeay
+Requires:       perl(IO::Socket::IP)
+Requires:       perl(Net::DNS)
+Requires:       perl(Net::SSLeay)
 BuildArch:      noarch
 
 %description
