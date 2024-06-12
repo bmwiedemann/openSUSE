@@ -5,7 +5,7 @@
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
-    <param name="revision">0.76.2</param>
+    <param name="revision">0.76.3</param>
     <param name="exclude">doc/vttest.*</param>
   </service>
   <service name="tar" mode="buildtime" />
