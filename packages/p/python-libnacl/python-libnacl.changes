@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 12 09:50:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to libsodium26
+
+-------------------------------------------------------------------
 Fri Mar  1 03:20:14 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.1.0:
@@ -16,7 +21,7 @@ Wed Jul  5 08:28:58 UTC 2023 - ecsos <ecsos@opensuse.org>
 -------------------------------------------------------------------
 Fri Jun 11 22:36:47 UTC 2021 - Niels Abspoel <aboe76@gmail.com>
 
-- add crypto_kdf_derive.patch to fix crypto_kdf_derive_from_key() on 32-bit platforms 
+- add crypto_kdf_derive.patch to fix crypto_kdf_derive_from_key() on 32-bit platforms
 
 -------------------------------------------------------------------
 Thu Feb 18 20:17:07 UTC 2021 - Niels Abspoel <aboe76@gmail.com>
@@ -82,7 +87,7 @@ Mon Jan  4 20:13:15 UTC 2016 - aboe76@gmail.com
 - Updated to 1.4.4
   - Add pack_nonce options to secretbox
     libnacl secretbox has been packing the nonce in each message,
-    the new pack_nonce option allows for the nonce to be omitted 
+    the new pack_nonce option allows for the nonce to be omitted
     which allows for more flexible options
   - Add soversion 17 detection
     Added explicit soversion support for libsodium 17
@@ -98,7 +103,7 @@ Mon Jan  4 20:13:15 UTC 2016 - aboe76@gmail.com
   - Updated the description
   - Removed the patch for soname: libnacl-1.4.3_bump_libsodium_soversion.patch
     not needed anymore
-    
+
 -------------------------------------------------------------------
 Thu Nov 19 17:04:26 UTC 2015 - mrueckert@suse.de
 
@@ -182,17 +187,17 @@ Thu Aug 14 18:57:32 UTC 2014 - aboe76@gmail.com
 Wed Jul 30 19:04:29 UTC 2014 - aboe76@gmail.com
 
 - Updated to 1.2.0
-his release introduces the DualKey class, secure key saving and loading, 
+his release introduces the DualKey class, secure key saving and loading,
 as well as enhancements to the time_nonce function.
 
 Dual Key Class
-Dual Keys are classes which can encrypt and sign data. These classes generate 
+Dual Keys are classes which can encrypt and sign data. These classes generate
 and maintain both Curve25519 and Ed25519 keys, as well as all methods for both encryption and signing.
 
 Time Nonce Improvements
-The original time nonce routine used the first 20 chars of the 24 char nonce for the microsecond 
-timestamp (based on salt's jid), leaving 4 chars for random data. This new nonce uses far fewer 
-chars for the timestamp by hex encoding the float of microseconds into just 13 chars, 
+The original time nonce routine used the first 20 chars of the 24 char nonce for the microsecond
+timestamp (based on salt's jid), leaving 4 chars for random data. This new nonce uses far fewer
+chars for the timestamp by hex encoding the float of microseconds into just 13 chars,
 leaving 11 chars of random data. This makes the default nonce safer and more secure.on.
 
 -------------------------------------------------------------------

@@ -191,4 +191,20 @@
 - Drop patch crypto_kdf_derive.patch, no longer required.</comment>
     <requestid>1153722</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>48f68328e72df6a217b8513987bab9f2</srcmd5>
+    <version>2.1.0</version>
+    <time>1718199534</time>
+    <user>anag+factory</user>
+    <comment>- update to libsodium26
+
+- add crypto_kdf_derive.patch to fix crypto_kdf_derive_from_key() on 32-bit platforms
+    the new pack_nonce option allows for the nonce to be omitted
+his release introduces the DualKey class, secure key saving and loading,
+Dual Keys are classes which can encrypt and sign data. These classes generate
+The original time nonce routine used the first 20 chars of the 24 char nonce for the microsecond
+timestamp (based on salt's jid), leaving 4 chars for random data. This new nonce uses far fewer
+chars for the timestamp by hex encoding the float of microseconds into just 13 chars,</comment>
+    <requestid>1180151</requestid>
+  </revision>
 </revisionlist>

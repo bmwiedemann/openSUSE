@@ -34,7 +34,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libsodium)
 # This will need updating and verification but smart magic is not copied by
 #  singlespec macros
-Requires:       libsodium23
+Requires:       libsodium26
 BuildArch:      noarch
 %python_subpackages
 
