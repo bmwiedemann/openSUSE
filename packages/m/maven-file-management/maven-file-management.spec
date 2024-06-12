@@ -17,7 +17,7 @@
 
 
 Name:           maven-file-management
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        Maven File Management API
 License:        Apache-2.0
@@ -26,15 +26,14 @@ URL:            https://maven.apache.org/shared/file-management
 Source0:        https://repo1.maven.org/maven2/org/apache/maven/shared/file-management/%{version}/file-management-%{version}-source-release.zip
 Source1:        %{name}-build.xml
 BuildRequires:  ant
+BuildRequires:  apache-commons-io
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  maven-lib
-BuildRequires:  maven-shared-io
-BuildRequires:  maven-shared-utils
 BuildRequires:  modello >= 2.0.0
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-xml
-BuildRequires:  sisu-plexus
+BuildRequires:  slf4j
 BuildRequires:  unzip
 BuildArch:      noarch
 
@@ -57,12 +56,11 @@ cp %{SOURCE1} build.xml
 %build
 mkdir -p lib
 build-jar-repository -s lib \
+    commons-io \
     maven/maven-plugin-api \
-    maven-shared-io/maven-shared-io \
-    maven-shared-utils/maven-shared-utils \
-    org.eclipse.sisu.plexus \
     plexus/utils \
-    plexus/xml
+    plexus/xml \
+    slf4j/api
 
 %{ant} \
     jar javadoc

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 12 10:00:20 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 3.1.0
+  * Changes:
+    + remove vestigial file
+    + deps: update JUnit
+    + ignore .checkstyle
+    + update plexus-utils
+    + Remove dependency on maven-shared-io
+    + Use try with resources
+    + Remove deprecated methods in favor of Apache Commons IO
+    + MSHARED-1090: Update module
+
+-------------------------------------------------------------------
 Thu May 16 05:20:13 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use sisu-plexus instead of plexus-containers-container-default
