@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Jun 11 15:23:33 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.9.7
+  * Bug
+    + MNG-8106: Maven Metadata corruption if repository directory
+      role overlaps
+    + MNG-8121: NullPointerException at
+      org.apache.maven.artifact.repository.metadata.Metadata.merge
+      (Metadata.java:293)
+  * New Feature
+    + MNG-5726: Update OS Activation To Allow Wildcards In OS
+      Version
+    + MNG-8030: Backport: Add ability to ignore dependency
+      repositories: mvn -itr
+  * Improvement
+    + MNG-8019: Streamline update policy of
+      pluginRepository/repository of Maven Central in Super POM
+    + MNG-8029: improve documentation of mirror in settings
+    + MNG-8031: Backport: Make Maven transfer listener used with
+      Resolver more concurrent friendly
+    + MNG-8081: default profile activation should consider available
+      system and user properties
+    + MNG-8085: swtich from png+imagemap to svg
+    + MNG-8117: Improve prerequisite evaluation and plugin version
+      selection logging
+  * Task
+    + MNG-7309: Remove redundant MojoDescriptor parameterMap
+    + MNG-8011: Minimize and make generic the README.txt
+    + MNG-8055: Investigate possible solutions for build number
+      diffs on deploy
+  * Dependency upgrade
+    + MNG-8094: Resolver 1.9.19
+    + MNG-8100: Upgrade default plugin bindings
+    + MNG-8101: Upgrade Parent to 42
+    + MNG-8109: Resolver 1.9.20
+    + MNG-8115: Upgrade minimal set of dependencies
+    + MNG-8125: (build) Bump buildhelper-maven-plugin to 3.6.0 (was
+      3.4.0)
+    + MNG-8126: Bump logback classic to 1.2.13 (was 1.2.12)
+    + MNG-8127: Bump guava to 33.2.0-jre
+
+-------------------------------------------------------------------
 Mon Jun 10 13:58:23 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on jakarta-inject, needed by google-guice 6.0.0
@@ -18,7 +60,6 @@ Wed Feb 21 15:10:43 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 Tue Jan 30 07:13:33 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade tu upstream version 3.9.6
-
   * Bug
     + MNG-7851: Error message when modelVersion is 4.0 is confusing
   * Improvement

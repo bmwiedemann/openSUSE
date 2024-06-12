@@ -20,7 +20,7 @@
 %global homedir %{_datadir}/%{name}%{?maven_version_suffix}
 %global confdir %{_sysconfdir}/%{name}%{?maven_version_suffix}
 Name:           maven
-Version:        3.9.6
+Version:        3.9.7
 Release:        0
 Summary:        Java project management and project comprehension tool
 # maven itself is ASL 2.0
