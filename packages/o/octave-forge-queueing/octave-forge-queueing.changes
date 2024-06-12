@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 12 04:02:36 UTC 2024 - ming li <mli@suse.com>
+
+- Update to version 1.2.8:
+  * New demo blocks for qsmmm(), ctmc() and qmcmmvabs()
+  * Removed deprecated operators .- and .+
+  * Fixed a few syntax errors
+  * Fixed automatic generation of PDF documentation
+  * Fixed documentation
+  * Migrated source repository to GitHub
+
+-------------------------------------------------------------------
 Thu May  7 17:55:24 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.2.6:

@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-queueing
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define octpkg  queueing
 Name:           octave-forge-%{octpkg}
-Version:        1.2.7
+Version:        1.2.8
 Release:        0
 Summary:        Queueing Networks and Markov chains analysis for Octave
 License:        GPL-3.0-or-later
