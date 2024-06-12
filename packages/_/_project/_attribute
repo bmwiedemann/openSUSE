@@ -4,7 +4,7 @@
   <attribute namespace="OBS" name="ApprovedRequestSource"/>
   <attribute namespace="OSRT" name="IgnoredIssues">
     <value>last_seen:
-  boo#0: '20240605'
+  boo#0: '20240611'
   boo#1172073: '20240205'
   boo#1207390: '20240611'
   boo#1207940: '20240611'
@@ -136,6 +136,7 @@
   poo#161372: '20240611'
   poo#161378: '20240611'
   poo#161738: '20240611'
+  poo#162170: '20240611'
   poo#63397: '20240524'
 </value>
   </attribute>
@@ -188,7 +189,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20240611</value>
+    <value>20240612</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -478,8 +479,8 @@ products:
     - x86_64
   - samba-image:
     - x86_64
-#  - spack-image:
-#    - x86_64
+  - spack-image:
+    - x86_64
   - tomcat-image:
     - x86_64
   - tomcat-9-image:
@@ -596,8 +597,8 @@ set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
     <value>failed: ''
-published: '20240610'
-publishing: '20240610'
+published: '20240611'
+publishing: '20240611'
 testing: '20240611'
 </value>
   </attribute>
