@@ -125,4 +125,17 @@
     django.core.urlresolvers to django.urls.</comment>
     <requestid>1165950</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8b8c4b8bb8fd0baef4093da264057a5e</srcmd5>
+    <version>1.18.0</version>
+    <time>1718199536</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.18.0:
+  * Support Django 5.1 as a target version.
+  * Add Django 5.1+ fixer to rewrite the check keyword argument
+    of CheckConstraint to condition.
+  * Add fixer selection options: --only &lt;name&gt;, --skip &lt;name&gt;,
+    and --list-fixers.</comment>
+    <requestid>1180148</requestid>
+  </revision>
 </revisionlist>
