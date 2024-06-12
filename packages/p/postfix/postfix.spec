@@ -240,9 +240,19 @@ export PIE=-pie
 # using SHLIB_RPATH to specify unrelated linker flags, because LDFLAGS is
 # ignored
 %make_build makefiles pie=yes shared=yes dynamicmaps=yes \
+  daemon_directory=%{pf_daemon_directory} \
   shlib_directory=%{_prefix}/lib/%{name} \
   meta_directory=%{_prefix}/lib/%{name} \
-  config_directory=%{_sysconfdir}/%{name} \
+  config_directory=%{pf_config_directory} \
+  command_directory=%{pf_command_directory} \
+  queue_directory=/%{pf_queue_directory} \
+  sendmail_path=%{pf_sendmail_path} \
+  newaliases_path=%{pf_newaliases_path} \
+  mailq_path=%{pf_mailq_path} \
+  manpage_directory=%{_mandir} \
+  setgid_group=%{pf_setgid_group} \
+  readme_directory=%{pf_readme_directory} \
+  data_directory=%{pf_data_directory} \
   SHLIB_RPATH="-Wl,-rpath,%{pf_shlib_directory} -Wl,-z,relro,-z,now"
 %make_build
 # Create postfix user

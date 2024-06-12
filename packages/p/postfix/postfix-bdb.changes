@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 11 11:58:50 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Set built-in path values to suse values (bsc#1215689)
+
+-------------------------------------------------------------------
 Mon May 20 20:45:06 UTC 2024 - chris@computersalat.de
 
 - Update update_chroot.systemd

@@ -2325,4 +2325,12 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment>Update update_chroot.systemd (forwarded request 1175397 from computersalat)</comment>
     <requestid>1175398</requestid>
   </revision>
+  <revision rev="241" vrev="4">
+    <srcmd5>a83de41c82e977e1c99f5d064932b399</srcmd5>
+    <version>3.9.0</version>
+    <time>1718199464</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1180049</requestid>
+  </revision>
 </revisionlist>

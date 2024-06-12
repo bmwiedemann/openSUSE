@@ -224,7 +224,17 @@ export PIE=-pie
 make makefiles pie=yes shared=yes dynamicmaps=yes \
   shlib_directory=%{_prefix}/lib/postfix \
   meta_directory=%{_prefix}/lib/postfix \
-  config_directory=%{_sysconfdir}/postfix \
+  config_directory=%{pf_config_directory} \
+  daemon_directory=%{pf_daemon_directory} \
+  command_directory=%{pf_command_directory} \
+  queue_directory=/%{pf_queue_directory} \
+  sendmail_path=%{pf_sendmail_path} \
+  newaliases_path=%{pf_newaliases_path} \
+  mailq_path=%{pf_mailq_path} \
+  manpage_directory=%{_mandir} \
+  setgid_group=%{pf_setgid_group} \
+  readme_directory=%{pf_readme_directory} \
+  data_directory=%{pf_data_directory} \
   SHLIB_RPATH="-Wl,-rpath,%{pf_shlib_directory} -Wl,-z,relro,-z,now"
 make %{?_smp_mflags}
 %if 0%{?suse_version} >= 1330
