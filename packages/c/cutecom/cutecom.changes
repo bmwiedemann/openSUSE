@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 12 12:33:14 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 0.60. (RC1) - support Qt6
+- Drop 0001-Fix-build-with-Qt-5.15.patch (included upstream)
+
+-------------------------------------------------------------------
 Fri Jun  5 06:48:59 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Small packaging adjustements:
