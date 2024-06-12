@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 11 20:01:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.183.0:
+  * Add release notes for v0.183.0
+  * Fix tests
+  * Make EKS 1.30 the default
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Fri Jun 07 19:52:24 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.182.0:
