@@ -147,4 +147,17 @@
 - update to 0.9.27:</comment>
     <requestid>1160806</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b388f265ffac33cb6958d1e0ba68fb46</srcmd5>
+    <version>0.9.33</version>
+    <time>1718199543</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.33:
+  * fixes for multiple list comprehensions (addressing #126)
+  * add testing with optionally installed numpy_financial to CI
+  * test existence of all numpy imports to better safeguard
+    against missing functions (for safer numpy 2 transition)
+  * update rendered doc to include PDF and zipped HTML</comment>
+    <requestid>1180154</requestid>
+  </revision>
 </revisionlist>

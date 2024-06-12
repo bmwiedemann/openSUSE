@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 12 09:58:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.33:
+  * fixes for multiple list comprehensions (addressing #126)
+  * add testing with optionally installed numpy_financial to CI
+  * test existence of all numpy imports to better safeguard
+    against missing functions (for safer numpy 2 transition)
+  * update rendered doc to include PDF and zipped HTML
+
+-------------------------------------------------------------------
 Fri Mar 22 19:39:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.32:
