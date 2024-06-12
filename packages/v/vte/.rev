@@ -1270,4 +1270,15 @@ New upstream release</comment>
   * build: Post release version bump (forwarded request 1177039 from dimstar)</comment>
     <requestid>1177062</requestid>
   </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>f825ebe81d76fb2c6caf0882ef3d6796</srcmd5>
+    <version>0.76.3</version>
+    <time>1718199455</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.76.3:
+  * emulation: Restrict resize request to sane numbers
+  * widget: Add safety limit to widget size requests
+  * build: Post release version bump (forwarded request 1179625 from dimstar)</comment>
+    <requestid>1180001</requestid>
+  </revision>
 </revisionlist>

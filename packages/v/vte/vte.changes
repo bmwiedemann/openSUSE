@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 10 06:54:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.76.3:
+  * emulation: Restrict resize request to sane numbers
+  * widget: Add safety limit to widget size requests
+  * build: Post release version bump
+
+-------------------------------------------------------------------
 Mon May 27 07:05:53 UTC 2024 - dimstar@opensuse.org
 
 - Update to version 0.76.2:
