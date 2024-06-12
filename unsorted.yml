@@ -1679,6 +1679,8 @@ unsorted:
   - bugzilla-lang-de 
   - build 
   - build-compare 
+  - build-helper-maven-plugin 
+  - build-helper-maven-plugin-javadoc 
   - build-initvm-x86_64 
   - build-mkbaselibs 
   - build-mkdrpms 
@@ -7131,8 +7133,6 @@ unsorted:
   - glycin-loaders 
   - glyr-devel 
   - glyrc 
-  - gmavenplus-plugin 
-  - gmavenplus-plugin-javadoc 
   - gmic 
   - gmic-bash-completion 
   - gmic-data 
@@ -24800,6 +24800,7 @@ unsorted:
   - python310-defcon 
   - python310-defusedxml 
   - python310-delegator.py 
+  - python310-demosh 
   - python310-dennis 
   - python310-dep-logic 
   - python310-deprecation 
@@ -28367,6 +28368,7 @@ unsorted:
   - python311-defcon 
   - python311-defusedxml 
   - python311-delegator.py 
+  - python311-demosh 
   - python311-dennis 
   - python311-dep-logic 
   - python311-deprecation 
@@ -31883,6 +31885,7 @@ unsorted:
   - python312-defcon 
   - python312-defusedxml 
   - python312-delegator.py 
+  - python312-demosh 
   - python312-dennis 
   - python312-dep-logic 
   - python312-deprecation 
