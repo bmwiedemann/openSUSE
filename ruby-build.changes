@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 12 12:42:41 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20240612.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20240612
+  * Clarify RUBY_BUILD_ROOT env var by @jasonkarns in #2392
+  * Use LTS version of OpenSSL 3 by @hsbt in #2402
+  * Update to openssl-3.0.14 by @hsbt in #2407
+  * Simplify JRuby version check by @mislav in #2406
+  * Fix package name for openssl-3.0.14 by @mislav in #2408
+  * Add Ruby 3.3.3 by @k0kubun in #2409
+
+-------------------------------------------------------------------
 Thu May 30 18:11:20 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20240530.1.
