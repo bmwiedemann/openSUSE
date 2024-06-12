@@ -749,4 +749,12 @@ Version 1.11.66
   * Add analytics to activity toggles (https://github.com/matrix-org/matrix-react-sdk/pull/12418). Contributed by @dbkr.</comment>
     <requestid>1175898</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>95651be0d79e2558437f966a640bb6de</srcmd5>
+    <version>1.11.68</version>
+    <time>1718199486</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1180072</requestid>
+  </revision>
 </revisionlist>

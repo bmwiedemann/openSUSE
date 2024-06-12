@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jun  4 19:13:24 UTC 2024 - Dominik Heidler <dheidler@suse.com>
+
+- Version 1.11.68
+  ## ✨ Features
+  
+  * Tooltip: Improve accessibility for  context menus (https://github.com/matrix-org/matrix-react-sdk/pull/12462). Contributed by @florianduros.
+  * Tooltip: Improve accessibility of space panel (https://github.com/matrix-org/matrix-react-sdk/pull/12525). Contributed by @florianduros.
+  
+  ## 🐛 Bug Fixes
+  
+  * Close the release announcement when a dialog is opened (https://github.com/matrix-org/matrix-react-sdk/pull/12559). Contributed by @florianduros.
+  * Tooltip: close field tooltip when ESC is pressed (https://github.com/matrix-org/matrix-react-sdk/pull/12553). Contributed by @florianduros.
+  * Fix tabbedview breakpoint width (https://github.com/matrix-org/matrix-react-sdk/pull/12556). Contributed by @dbkr.
+  * Fix E2E icon display in room header (https://github.com/matrix-org/matrix-react-sdk/pull/12545). Contributed by @florianduros.
+  * Tooltip: Improve placement for space settings (https://github.com/matrix-org/matrix-react-sdk/pull/12541). Contributed by @florianduros.
+  * Fix deformed avatar in a call in a narrow timeline (https://github.com/matrix-org/matrix-react-sdk/pull/12538). Contributed by @florianduros.
+  * Shown own sent state indicator even when showReadReceipts is disabled (https://github.com/matrix-org/matrix-react-sdk/pull/12540). Contributed by @t3chguy.
+  * Ensure we do not fire the verification mismatch modal multiple times (https://github.com/matrix-org/matrix-react-sdk/pull/12526). Contributed by @t3chguy.
+  * Fix avatar in chat export (https://github.com/matrix-org/matrix-react-sdk/pull/12537). Contributed by @florianduros.
+  * Use `*` for italics as it doesn't break when used mid-word (https://github.com/matrix-org/matrix-react-sdk/pull/12523). Contributed by @t3chguy.
+
+-------------------------------------------------------------------
 Wed May 22 13:57:28 UTC 2024 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.11.67
