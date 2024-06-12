@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jun 10 19:52:37 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.6.0:
+  * Added Features
+    - Add relationships for go binary packages [#2912 @wagoodman]
+    - Add classifier for util-linux [#2933 @LaurentGoderre]
+    - Lua: Add support for more advanced syntax [#2908
+      @LaurentGoderre]
+    - add license field to ELF binary package metadata [#2890
+      @brian-ebarb]
+    - install.sh: check checksums file's signature [#2884 #2941
+      @wagoodman]
+    - Detect ELF package notes from fedora binaries [#2713 #2939
+      @wagoodman]
+  * Bug Fixes
+    - Use redhat as namespace for redhat rpms [#2914 @ralphbean]
+    - Close sqlite driver after testing sqlite availability [#2922
+      @ttc0419]
+    - syft does not find anything in archives if /tmp is a tmpfs
+      [#2894 #2918 @willmurphyscode]
+    - Scanning a git repository folder present in /tmp produce an
+      empty sbom [#2847 #2918 @willmurphyscode]
+  * Additional Changes
+    - update unit tests to use pinned patch version [#2932
+      @spiffcs]
+    - fix comments and spelling [#2920 @dufucun]
+
+-------------------------------------------------------------------
 Fri May 31 14:28:58 UTC 2024 - andrea.manzini@suse.com
 
 - Update to version 1.5.0:
