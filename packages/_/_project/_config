@@ -635,9 +635,6 @@ Preinstall: libbz2-1 libgcc_s1 libncurses6 libreadline8 libz1 libselinux1
 Preinstall: libgcrypt20 libgpg-error0 liblzma5 libcap2 libacl1 libattr1
 Preinstall: libpopt0 libelf1 libzstd1 libpcre2-8-0
 
-# unresolvable: have choice for pkgconfig(re2): re2-10-devel re2-devel 
-Prefer: -re2-10-devel
-
 #Runscripts: aaa_base
 
 Prefer: libdb-4_8-devel
@@ -1045,6 +1042,9 @@ Prefer: libpulse0-32bit libsane1-32bit -pipewire-pulseaudio
 # Have choice for vtk-java/vtk-tcl/python3-vtk needed by vtk-devel
 Prefer: vtk-java
 Prefer: eclipse-swt
+
+# have choice for mvn(org.codehaus.mojo:build-helper-maven-plugin): build-helper-maven-plugin maven-plugin-build-helper
+Prefer: -maven-plugin-build-helper
 
 # have choice for distribution-release: Aeon-release Kalpa-release openSUSE-release
 Prefer: -Aeon-release -Kalpa-release
@@ -2616,6 +2616,7 @@ BuildFlags: onlybuild:perl-Syntax-Keyword-Try
 BuildFlags: onlybuild:perl-Term-ReadKey
 BuildFlags: onlybuild:perl-Term-Table
 BuildFlags: onlybuild:perl-Test-Base
+BuildFlags: onlybuild:perl-Test-Cmd
 BuildFlags: onlybuild:perl-Test-CPAN-Meta
 BuildFlags: onlybuild:perl-Test-Deep
 BuildFlags: onlybuild:perl-Test-Differences
