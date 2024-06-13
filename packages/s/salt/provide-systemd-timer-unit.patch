@@ -1,0 +1,43 @@
+From e3809178f7f6db4b0a5dcca48441100cec45c69d Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Thu, 6 Jun 2024 10:11:26 +0200
+Subject: [PATCH] Provide systemd timer unit
+
+---
+ pkg/common/venv-salt-minion-postinstall.service | 7 +++++++
+ pkg/common/venv-salt-minion-postinstall.timer   | 9 +++++++++
+ 2 files changed, 16 insertions(+)
+ create mode 100644 pkg/common/venv-salt-minion-postinstall.service
+ create mode 100644 pkg/common/venv-salt-minion-postinstall.timer
+
+diff --git a/pkg/common/venv-salt-minion-postinstall.service b/pkg/common/venv-salt-minion-postinstall.service
+new file mode 100644
+index 00000000000..b122d7d6eab
+--- /dev/null
++++ b/pkg/common/venv-salt-minion-postinstall.service
+@@ -0,0 +1,7 @@
++[Unit]
++Description=Clean old environment for venv-salt-minion
++
++[Service]
++ExecStart=/bin/sh -c '/usr/lib/venv-salt-minion/bin/post_start_cleanup.sh || :'
++Type=oneshot
++
+diff --git a/pkg/common/venv-salt-minion-postinstall.timer b/pkg/common/venv-salt-minion-postinstall.timer
+new file mode 100644
+index 00000000000..e6bd86d86e7
+--- /dev/null
++++ b/pkg/common/venv-salt-minion-postinstall.timer
+@@ -0,0 +1,9 @@
++[Unit]
++Description=Clean old venv-salt-minion environment in 60 seconds
++
++[Timer]
++OnActiveSec=60
++
++[Install]
++WantedBy=timers.target
++
+-- 
+2.45.1
+

@@ -2368,4 +2368,12 @@ let build start it or we will get libvirt errors.
   * make-reactor-engine-less-blocking-the-eventpublisher.patch</comment>
     <requestid>1177117</requestid>
   </revision>
+  <revision rev="150" vrev="14">
+    <srcmd5>72d02026f972ac9db74e960db88070c5</srcmd5>
+    <version>3006.0</version>
+    <time>1718285871</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1180239</requestid>
+  </revision>
 </revisionlist>

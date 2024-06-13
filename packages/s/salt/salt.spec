@@ -396,6 +396,10 @@ Patch117:       do-not-call-the-async-wrapper-calls-with-the-separat.patch
 Patch118:       speed-up-salt.matcher.confirm_top-by-using-__context.patch
 # PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/66593
 Patch119:       several-fixes-for-tests-to-avoid-errors-and-failures.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/656
+Patch120:       provide-systemd-timer-unit.patch
+# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/66630
+Patch121:       skip-certain-tests-if-necessary-and-mark-some-flaky-.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END

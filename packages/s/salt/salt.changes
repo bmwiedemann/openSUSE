@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jun 12 08:44:38 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Skip certain tests if necessary for some OSes and set flaky ones
+
+- Added:
+  * skip-certain-tests-if-necessary-and-mark-some-flaky-.patch
+
+-------------------------------------------------------------------
+Thu Jun  6 08:41:14 UTC 2024 - Marek Czernek <marek.czernek@suse.com>
+
+- Add a timer to delete old env post update for venv-minion
+
+- Added:
+  * provide-systemd-timer-unit.patch
+
+-------------------------------------------------------------------
 Mon May 27 11:07:26 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Several fixes for tests to avoid errors and failures in some OSes
