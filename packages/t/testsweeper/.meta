@@ -1,0 +1,9 @@
+<package name="testsweeper" project="openSUSE:Factory">
+  <title>C++ testing framework for parameter sweeps</title>
+  <description>TestSweeper is a C++ testing framework for parameter sweeps. It handles parsing
+command line options, iterating over the test space, and printing results. This
+simplifies test functions by allowing them to concentrate on setting up and
+solving one problem at a time.</description>
+  <devel project="devel:libraries:c_c++" package="testsweeper"/>
+  <url>https://github.com/icl-utk-edu/testsweeper</url>
+</package>

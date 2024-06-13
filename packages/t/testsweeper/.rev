@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>37a8eeaf861a6e722cf95df7f76fe1a9</srcmd5>
+    <version>2024.05.31</version>
+    <time>1718285876</time>
+    <user>anag+factory</user>
+    <comment>C++ testing framework for parameter sweeps.
+
+Needed by new package blaspp (currently incubating in home:badshah400:lapack2023, but to be submitted to science and thence to oS:F) to run its tests.
+</comment>
+    <requestid>1180241</requestid>
+  </revision>
+</revisionlist>
