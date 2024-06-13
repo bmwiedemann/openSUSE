@@ -206,4 +206,14 @@
   * Type improvements</comment>
     <requestid>1171531</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a9552745d713a150c038160f478b2ce3</srcmd5>
+    <version>1.5.1</version>
+    <time>1718285856</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.5.1:
+  * Fix the typing of the `tick()` method, and improve it's
+    behaviour.</comment>
+    <requestid>1180146</requestid>
+  </revision>
 </revisionlist>
