@@ -1079,4 +1079,41 @@
   * Redis integration test (#2901) (forwarded request 1179347 from ph03nix)</comment>
     <requestid>1179353</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>94e302c27c0ffef26019446cec0bdfe7</srcmd5>
+    <version>3.78.1</version>
+    <time>1718285909</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.78.1:
+  * use @master (#2959)
+  * pin archiver dependency (#2958)
+  * [feat] - Update span calculation logic to use offset magnitude (#2957)
+  * [fix] - Refactor Filtering Logic to Fix Known False Positive Handling in Overlapping Cases (#2946)
+  * [chore] - Update `discordwebhook` detector keyword (#2954)
+  * fix(maxmind): prevent npd panic (#2948)
+  * refactor(filesystem): change symlink err handling (#2941)
+  * [bug] - Ensure BufferedFileWriter Flushes Buffer Contents to File Correctly (#2943)
+  * fix(deps): update module github.com/launchdarkly/go-server-sdk/v7 to v7.4.1 (#2947)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.53.19 (#2944)
+  * fix(deps): update module github.com/snowflakedb/gosnowflake to v1.10.1 (#2913)
+  * Make the github action work with a path as input (#2908)
+  * feat(extensions): ignore dia diagrams (#2939)
+  * [chore] Polish channelmetrics package (#2938)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.53.17 (#2914)
+  * refactor(cache): use generics (#2930)
+  * [chore] - address comments (#2920)
+  * feat(git): improve scan logging (#2923)
+  * [fix] - Correctly calculate EntireSpanChunkCalculator span (#2924)
+  * remove stutter in naming (#2926)
+  * Update Jenkins in tui (#2925)
+  * continue on error (#2921)
+  * Go should be installed before codeql initializes (#2919)
+  * [feat] - Optimize detector performance by reducing data passed to regex (#2812)
+  * [feat] - Introduce `channelmetrics` Package for Channel Metrics Collection (#2889)
+  * Add flag to get information if trufflehog being ran from TUI (#1644)
+  * feat(openai): add project and service account keys (#2863)
+  * refactor(github): improve wiki err handling (#2917)
+  * Add elasticsearch to tui (#2915) (forwarded request 1180111 from ph03nix)</comment>
+    <requestid>1180206</requestid>
+  </revision>
 </revisionlist>
