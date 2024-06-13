@@ -1781,4 +1781,16 @@ Changes:
 - Support %bcond of rpm 4.17.1</comment>
     <requestid>1174403</requestid>
   </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>3b66e5596b4adf0621d56deed3b0698f</srcmd5>
+    <version>20240612</version>
+    <time>1718285846</time>
+    <user>anag+factory</user>
+    <comment>- tumbleweed build config update
+- support the %load macro
+- improve container filename generation (docker)
+- fix hanging curl calls during build (docker)
+- productcompose: fix milestone query</comment>
+    <requestid>1180152</requestid>
+  </revision>
 </revisionlist>

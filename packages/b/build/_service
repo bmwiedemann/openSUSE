@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="manual">
-    <param name="revision">20240516</param>
-    <param name="version">20240516</param>
+    <param name="revision">20240612</param>
+    <param name="version">20240612</param>
     <param name="url">https://github.com/openSUSE/obs-build.git</param>
     <param name="scm">git</param>
     <param name="extract">dist/build.changes</param>

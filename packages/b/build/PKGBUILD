@@ -1,6 +1,6 @@
 pkgname=build
-pkgver=20240516
-pkgrel=29b6aeaff2ac1cd75c4f5075424adb75
+pkgver=20240612
+pkgrel=55d01635957160b09013643f53de17f9
 pkgdesc="Build packages in sandbox"
 arch=('i686' 'x86_64')
 url="https://www.github.com/openSUSE/obs-build"
