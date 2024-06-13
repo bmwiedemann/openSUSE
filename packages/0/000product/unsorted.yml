@@ -3472,6 +3472,7 @@ unsorted:
   - dvgt 
   - dwarf2json 
   - dwarves 
+  - dwarves-devel 
   - dwayland-devel 
   - dwz 
   - dwz-testsuite 
@@ -3695,6 +3696,8 @@ unsorted:
   - entangle-plugin-shooter 
   - entr 
   - envoy-build-tools 
+  - envsubst 
+  - envsubst-mini 
   - envy24control 
   - eog-devel 
   - eog-plugin-exif-display 
@@ -12617,7 +12620,6 @@ unsorted:
   - libdwarf-doc 
   - libdwarf-tools 
   - libdwarf0 
-  - libdwarves-devel 
   - libdwarves1 
   - libdxflib-3_26_4-1 
   - libdxfrw-devel 
@@ -16237,6 +16239,7 @@ unsorted:
   - libtesseract5 
   - libtesseract5-x86-64-v3 
   - libtestshade1_12 
+  - libtestsweeper1 
   - libtevent-devel 
   - libtexlua53-5 
   - libtexluajit2 
@@ -25582,6 +25585,7 @@ unsorted:
   - python310-libfwnt 
   - python310-libfwps 
   - python310-libfwsi 
+  - python310-libgravatar 
   - python310-liblarch 
   - python310-liblarch-gtk 
   - python310-liblnk 
@@ -29122,6 +29126,7 @@ unsorted:
   - python311-libfwnt 
   - python311-libfwps 
   - python311-libfwsi 
+  - python311-libgravatar 
   - python311-liblarch 
   - python311-liblarch-gtk 
   - python311-liblnk 
@@ -32664,6 +32669,7 @@ unsorted:
   - python312-libfwnt 
   - python312-libfwps 
   - python312-libfwsi 
+  - python312-libgravatar 
   - python312-liblarch 
   - python312-liblarch-gtk 
   - python312-liblnk 
@@ -37320,6 +37326,7 @@ unsorted:
   - testng-javadoc 
   - testrec0 
   - testssl.sh 
+  - testsweeper-devel 
   - tetragon 
   - tetragon-cli 
   - tetragon-cli-bash-completion 

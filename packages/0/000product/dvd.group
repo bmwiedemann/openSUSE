@@ -3122,8 +3122,6 @@
     <package name="mjpegtools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="mkfontscale" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="mkisofs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="mlocate" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="mlocate-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="mlterm-common" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="mlterm-fcitx" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="mlterm-sdl2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
