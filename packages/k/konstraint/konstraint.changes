@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jun 13 05:15:53 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.37.0:
+  * build(deps): bump k8s.io/apiextensions-apiserver from 0.29.3 to
+    0.30.2 (#515)
+  * ci: Include patch version in go.mod (#517)
+  * build(deps): bump golang from 1.22.3-alpine to 1.22.4-alpine
+    (#514)
+  * ci: Fix golangci (#500)
+  * build(deps): bump golang.org/x/text from 0.15.0 to 0.16.0
+    (#513)
+  * build(deps): bump github.com/spf13/viper from 1.18.2 to 1.19.0
+    (#512)
+  * build(deps): bump github.com/open-policy-agent/opa from 0.64.1
+    to 0.65.0 (#511)
+  * build(deps): bump alpine from 3.19.1 to 3.20.0 (#510)
+  * build(deps): bump golang from 1.22.2-alpine to 1.22.3-alpine
+    (#507)
+  * build(deps): bump golangci/golangci-lint-action from 5 to 6
+    (#506)
+  * chore: multi arch builds (#504)
+  * build(deps): bump golang.org/x/text from 0.14.0 to 0.15.0
+    (#501)
+  * docs: Fix doc for examples and add for --no-rego.md. (#503)
+  * build(deps): bump github.com/open-policy-agent/opa from 0.63.0
+    to 0.64.1 (#498)
+  * build(deps): bump golangci/golangci-lint-action from 4 to 5
+    (#499)
+  * build(deps): bump golang from 1.22.1-alpine to 1.22.2-alpine
+    (#491)
+
+-------------------------------------------------------------------
 Mon Apr 08 05:34:14 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.36.0:
