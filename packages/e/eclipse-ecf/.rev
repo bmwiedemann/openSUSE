@@ -79,4 +79,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148559</requestid>
   </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>51ba7886a875b99d3bebb83796440f82</srcmd5>
+    <version>3.14.8</version>
+    <time>1718286090</time>
+    <user>anag+factory</user>
+    <comment>Adapt to change maven-plugin-build-helper -&gt; build-helper-maven-plugin</comment>
+    <requestid>1180379</requestid>
+  </revision>
 </revisionlist>

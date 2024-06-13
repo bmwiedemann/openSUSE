@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 13 10:29:02 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Adapt to change maven-plugin-build-helper
+  -> build-helper-maven-plugin
+
+-------------------------------------------------------------------
 Wed Feb 21 10:41:40 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -43,6 +43,7 @@ Patch0:         0001-Avoid-hard-coding-dependency-versions-by-using-featu.patch
 Patch1:         0002-Remove-unneeded-dep-on-jdt-annotations.patch
 BuildRequires:  apache-commons-codec
 BuildRequires:  apache-commons-logging
+BuildRequires:  build-helper-maven-plugin
 BuildRequires:  eclipse-license2
 BuildRequires:  fdupes
 BuildRequires:  glassfish-annotation-api
@@ -50,7 +51,6 @@ BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
 BuildRequires:  java-devel >= 9
 BuildRequires:  maven-local
-BuildRequires:  maven-plugin-build-helper
 BuildRequires:  osgi-annotation
 BuildConflicts: java >= 12
 BuildConflicts: java-devel >= 12
