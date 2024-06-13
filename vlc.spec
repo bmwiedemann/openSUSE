@@ -32,7 +32,7 @@
 %bcond_with faad
 
 Name:           vlc
-Version:        3.0.20
+Version:        3.0.21
 Release:        0
 Summary:        Graphical media player
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -54,10 +54,6 @@ Patch4:         fix-build-with-fdk-2.0.patch
 Patch5:         vlc-libplacebo-5.patch
 # PATCH-FIX-UPSTREAM vlc-taglib-2.0.patch dimstar@opensuse.org -- Fix build against taglib 2.0
 Patch6:         vlc-taglib-2.0.patch
-# PATCH-FIX-UPSTREAM
-Patch7:         https://code.videolan.org/videolan/vlc/-/merge_requests/4645.patch
-# PATCH-FIX-UPSTREAM -- chromaprint, missing cast
-Patch8:         https://code.videolan.org/videolan/vlc/-/commit/770789f2.patch
 # PATCH-FEATURE-OPENSUSE vlc-projectM-qt5.patch -- Build against projectM-qt5; openSUSE provides projectM as -qt and -qt5 variant
 Patch100:       vlc-projectM-qt5.patch
 # PATCH-FIX-UPSTREAM -- Use OpenCV C++ API
@@ -121,9 +117,6 @@ BuildRequires:  pkgconfig(libplacebo) < 6.292.0
 BuildRequires:  speex-devel >= 1.0.5
 BuildRequires:  update-desktop-files
 BuildRequires:  vcdimager-devel
-BuildRequires:  (pkgconfig(libavcodec) >= 57.37.100 with pkgconfig(libavcodec) < 59)
-BuildRequires:  (pkgconfig(libavformat) >= 53.21.0 with pkgconfig(libavformat) < 59)
-BuildRequires:  (pkgconfig(libavutil) >= 52.4.0 with pkgconfig(libavutil) < 57)
 BuildRequires:  pkgconfig(Qt5Core) >= 5.5.0
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Svg)
@@ -137,6 +130,9 @@ BuildRequires:  pkgconfig(fdk-aac)
 BuildRequires:  pkgconfig(gnutls) >= 3.2.0
 BuildRequires:  pkgconfig(libarchive) >= 3.1.0
 BuildRequires:  pkgconfig(libass) >= 0.9.8
+BuildRequires:  pkgconfig(libavcodec) >= 57.37.100
+BuildRequires:  pkgconfig(libavformat) >= 53.21.0
+BuildRequires:  pkgconfig(libavutil) >= 52.4.0
 BuildRequires:  pkgconfig(libbluray) >= 0.6.2
 BuildRequires:  pkgconfig(libdca) >= 0.0.5
 BuildRequires:  pkgconfig(libgme)
@@ -285,8 +281,6 @@ Requires:       libvlccore%{libvlccore} = %{version}-%{release}
 # having a strange ABI/API break between 0.3 and 0.7
 %requires_ge    libbluray1
 Recommends:     %{name}-codecs
-# lang subpackage
-Recommends:     %{name}-lang
 Recommends:     libdvdcss
 Conflicts:      %{conflicts}-noX
 # The lang-package was renamed to vlc-lang to assist AppStream building
@@ -418,8 +412,6 @@ OpenCV based video filters and a face detection example.
 %patch -P 1 -p1
 %patch -P 4 -p1
 %patch -P 6 -p1
-%patch -P 7 -p1
-%patch -P 8 -p1
 %if 0%{?suse_version} > 1320 && 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
 %patch -P 100 -p1
 %endif
