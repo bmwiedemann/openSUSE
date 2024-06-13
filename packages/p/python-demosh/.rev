@@ -7,4 +7,14 @@
     <comment>new package python-demosh: Run code in Markdown files or shell scripts very interactively, to allow more engaging demos</comment>
     <requestid>1180066</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c8f1768fa2c32b71272a037b68fc4b05</srcmd5>
+    <version>0.5.0</version>
+    <time>1718286014</time>
+    <user>anag+factory</user>
+    <comment>- Add required python-curses dependency
+- Remove not needed shebangs from installed files in sitelib
+- Add %check section to run the script, it's just running with --version</comment>
+    <requestid>1180321</requestid>
+  </revision>
 </revisionlist>

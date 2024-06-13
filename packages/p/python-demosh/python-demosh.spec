@@ -24,6 +24,7 @@ Summary:        Run code in Markdown files or shell scripts very interactively
 License:        Apache-2.0
 URL:            https://github.com/BuoyantIO/demosh
 Source:         https://github.com/BuoyantIO/demosh/archive/v%{version}.tar.gz#/demosh-%{version}.tar.gz
+BuildRequires:  %{python_module curses}
 BuildRequires:  %{python_module flit}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -35,6 +36,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Requires:       python-curses
 BuildArch:      noarch
 %python_subpackages
 
@@ -47,19 +49,24 @@ examples.
 
 %prep
 %autosetup -n demosh-%{version}
-
-sed -i 's#usr/bin/env python#usr/bin/python3#g' demosh/*.py
+# Remove shebangs
+sed -i '/#!.*env python/d' demosh/*.py
+chmod 0644 demosh/__init__.py
 
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
-%python_expand chmod +x %{buildroot}/%{$python_sitelib}/demosh/*.py
 %python_expand %fdupes %{buildroot}/%{$python_sitelib}/
 %python_clone -a %{buildroot}%{_bindir}/demosh
 
-# no checks available upstream
+%check
+# Test that the command works
+%{python_expand #
+export PYTHONPATH=%{buildroot}%{$python_sitelib}
+%{buildroot}%{_bindir}/demosh-%{$python_version} --version
+}
 
 %post
 %python_install_alternative demosh
@@ -73,6 +80,5 @@ sed -i 's#usr/bin/env python#usr/bin/python3#g' demosh/*.py
 %python_alternative %{_bindir}/demosh
 %{python_sitelib}/demosh
 %{python_sitelib}/demosh-%{version}*-info
-%pycache_only %{python_sitelib}/demosh/__pycache__/
 
 %changelog

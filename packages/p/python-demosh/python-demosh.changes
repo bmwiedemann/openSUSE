@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 13 07:09:01 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add required python-curses dependency
+- Remove not needed shebangs from installed files in sitelib
+- Add %check section to run the script, it's just running with --version
+
+-------------------------------------------------------------------
 Mon Jun 10 19:29:03 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - fix Source URL
