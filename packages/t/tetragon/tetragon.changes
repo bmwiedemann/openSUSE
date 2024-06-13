@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jun 12 16:18:43 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.1.2:
+  * Bugfixes:
+    - Don't create PodInfo if the pod is being deleted
+    - [v1.1] backport: bpf: use CORE for execve hook
+    - enforcer: fix issue when using multiple calls with fmod_ret
+  * Minor Changes:
+    - backports:1.1:tests: fix trace module testing
+    - backports:1.1: uid username resolution support
+    - helm: Add tetragon.livenessProbe value
+    - backport:v1.1: btf: take first entry on multiple function
+      matches
+  * Misc Changes:
+    - Prepare for v1.1.0 release
+    - Use gRPC-based liveness probe instead of tetra status.
+    - [v1.1] Introduce upgrade notes
+    - Prepare for v1.1.1 release
+    - [v1.1] Makefile: exclude api tags from version
+    - v1.1: misc updates relating to release process
+    - Prepare for v1.1.2 release
+
+-------------------------------------------------------------------
 Tue Apr 30 18:11:26 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package tetragon: eBPF-based Security Observability and
