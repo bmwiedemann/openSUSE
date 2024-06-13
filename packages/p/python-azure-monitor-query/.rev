@@ -111,4 +111,15 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164917 from glaubitz)</comment>
     <requestid>1165310</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5b2c0eebf1c97d0573b578bac73d80e0</srcmd5>
+    <version>1.4.0</version>
+    <time>1718286000</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.4.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1180129 from glaubitz)</comment>
+    <requestid>1180272</requestid>
+  </revision>
 </revisionlist>

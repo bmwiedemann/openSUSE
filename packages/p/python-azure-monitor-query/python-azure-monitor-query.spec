@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-monitor-query
-Version:        1.2.1
+Version:        1.4.0
 Release:        0
 Summary:        Microsoft Azure Azure Monitor Query Client Library for Python
 License:        MIT
