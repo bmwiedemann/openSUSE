@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 13 05:24:51 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.17.4:
+  * Prepare release v4.17.4
+  * chore: update linter (#2206)
+  * chore: update dependencies (#2205)
+  * chore: improve issue templates
+  * Detach v4.17.3
+
+-------------------------------------------------------------------
 Thu May 30 15:00:04 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 4.17.3 (no release between 4.16.1 and this

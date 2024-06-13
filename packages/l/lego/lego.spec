@@ -1,7 +1,7 @@
 #
 # spec file for package lego
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           lego
-Version:        4.17.3
+Version:        4.17.4
 Release:        0
 Summary:        Let's Encrypt/ACME client and library written in Go
 License:        MIT
