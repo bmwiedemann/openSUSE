@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 13 08:26:44 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Drop the dependency on /usr/bin/python3 symlink
+  * boo#1212476
+
+-------------------------------------------------------------------
 Thu Apr 11 16:18:35 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.89

@@ -41,6 +41,7 @@ BuildRequires:  libboost_thread-devel
 %endif
 BuildRequires:  makeinfo
 BuildRequires:  ncurses-devel
+BuildRequires:  python-rpm-macros
 BuildRequires:  readline-devel
 BuildRequires:  texinfo
 BuildRequires:  texlive-dvips-bin
@@ -83,7 +84,7 @@ if [ ! -e configure ]; then autoreconf -fiv; fi
 mv "%buildroot/usr/local/share"/* "%buildroot/%_datadir/"
 chmod a-x "%buildroot/%_datadir/asymptote/shaders"/*.glsl
 find "%buildroot/%_datadir/asymptote/GUI" -type f -name "*.py" \
-	-exec perl -i -lpe 's{^#!/usr/bin/env }{#!/usr/bin/}g' {} +
+	-exec perl -i -lpe "s{^#!/usr/bin/env python3}{#!/usr/bin/python%python3_bin_suffix}g" {} +
 
 %files
 %_bindir/asy

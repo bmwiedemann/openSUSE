@@ -36,4 +36,12 @@
     <comment>- Update to release 2.89</comment>
     <requestid>1166921</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>fe63473d6076a5ed736fab32a847d781</srcmd5>
+    <version>2.89</version>
+    <time>1718286030</time>
+    <user>anag+factory</user>
+    <comment>- Drop the dependency on /usr/bin/python3 symlink [boo#1212476]</comment>
+    <requestid>1180338</requestid>
+  </revision>
 </revisionlist>
