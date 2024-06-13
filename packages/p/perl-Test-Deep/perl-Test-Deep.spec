@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Deep
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ Requires:       perl(Test::More) >= 0.96
 %{perl_requires}
 # MANUAL BEGIN
 # necessary because Test::Deep::NoTest does "require Test::Builder"
-Requires:       perl-Test-Simple
+Requires:       perl(Test::Simple)
 # MANUAL END
 
 %description

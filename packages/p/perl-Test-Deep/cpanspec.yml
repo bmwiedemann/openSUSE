@@ -1,5 +1,4 @@
 ---
 preamble: |-
  # necessary because Test::Deep::NoTest does "require Test::Builder"
- Requires:       perl-Test-Simple
-
+ Requires:       perl(Test::Simple)

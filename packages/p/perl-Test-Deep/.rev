@@ -218,4 +218,13 @@
     <comment></comment>
     <requestid>1062237</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>a637e0d7d11a60a70978651c44ad3122</srcmd5>
+    <version>1.204</version>
+    <time>1718285851</time>
+    <user>anag+factory</user>
+    <comment>- refresh spec file (remove package name based requires)
+</comment>
+    <requestid>1180120</requestid>
+  </revision>
 </revisionlist>
