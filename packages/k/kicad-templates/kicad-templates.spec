@@ -20,7 +20,7 @@
 %define compatversion 8.0.0
 
 Name:           kicad-templates
-Version:        8.0.2
+Version:        8.0.3
 Release:        0
 Summary:        Project templates for KiCad
 # License is CC-BY-SA-4.0 but there is an exception
