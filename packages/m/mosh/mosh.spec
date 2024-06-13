@@ -36,8 +36,8 @@ BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(zlib)
 Requires:       openssh
-Requires:       perl-IO-Socket-IP
-Requires:       perl-IO-Tty
+Requires:       perl(IO::Socket::IP)
+Requires:       perl(IO::Tty)
 
 %description
 Remote terminal application that allows roaming, supports

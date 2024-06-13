@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 12 08:10:35 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- remove package name based perl requires
+
+-------------------------------------------------------------------
 Mon Jan 15 12:19:22 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Remove the deprecated perl-IO-Socket-INET6 dependency.
@@ -400,4 +405,3 @@ Tue Apr 10 11:43:46 UTC 2012 - fcastelli@suse.com
 Tue Apr 10 08:50:38 UTC 2012 - fcastelli@suse.com
 
 - Initial package (v1.1.3)
-
