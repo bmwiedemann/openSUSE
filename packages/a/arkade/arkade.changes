@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 13 05:25:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.15:
+  * Fix tests
+  * Add region for Hetzner for inlets-operator app
+  * add support for lazydocker
+  * Fix atuin due to rename of archive
+  * add caddy system install
+  * add caddy server as system install
+  * add support of kubecolor binary
+
+-------------------------------------------------------------------
 Mon Jun 10 19:46:23 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.11.14:
