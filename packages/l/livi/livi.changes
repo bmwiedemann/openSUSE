@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 13 06:55:17 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.2.0:
+  * Allow to use gtk4paintablesink instead of in-tree sink
+  * Allow to list recent videos on the command line
+  * Allow to preprocess when pasting URLs
+- Add test script to validate files 
+
+-------------------------------------------------------------------
 Sat Mar 23 08:44:26 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Initial package

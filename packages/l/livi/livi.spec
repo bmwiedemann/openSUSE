@@ -16,9 +16,10 @@
 #
 
 
+%bcond_without test
 %define appid org.sigxcpu.Livi
 Name:           livi
-Version:        0.1.0
+Version:        0.2.0
 Release:        0
 Summary:        A light video player with hardware acceleration support
 License:        GPL-3.0-or-later
@@ -53,6 +54,11 @@ to make playing hw accelerated videos with hantro and OpenGL simple.
 %meson_install
 
 #find_lang #{name} #{?no_lang_C}
+
+%check
+%if %{with test}
+%meson_test
+%endif
 
 %files
 %license COPYING
