@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 13 12:41:13 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1718279846.45578bb:
+  * backend/qemu.pm: Fix typo: It's riscv64, not risv64
+  * ustreamer: restrict to aarch64 and x86_64
+  * Lower GIT_CACHE_DIR_LIMIT used in the tests
+  * Modernize perl code
+  * Update Perl::Tidy version to 20240511.0.0
+
+-------------------------------------------------------------------
 Sun Jun 09 10:18:24 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1717928296.ae652c1:

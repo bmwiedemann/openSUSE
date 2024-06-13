@@ -18,7 +18,7 @@
 
 %define         short_name os-autoinst-devel
 Name:           %{short_name}-test
-Version:        4.6.1717928296.ae652c1
+Version:        4.6.1718279846.45578bb
 Release:        0
 Summary:        Test package for %{short_name}
 License:        GPL-2.0-or-later
