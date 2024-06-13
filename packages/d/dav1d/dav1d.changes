@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 12 15:13:55 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.4.3
+  * AArch64: Fix potential out of bounds access in DotProd H/HV
+    filters
+  * cli: Prevent buffer over-read
+
+-------------------------------------------------------------------
 Sat May 25 09:12:12 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.4.2
