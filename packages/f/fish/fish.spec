@@ -40,6 +40,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  procps
 Requires:       awk
 Requires:       bc
+Requires:       gzip
 Requires:       man
 Recommends:     terminfo
 

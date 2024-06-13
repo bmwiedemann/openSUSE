@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 12 15:55:31 UTC 2024 - Elisei Roca <eroca@suse.com>
+
+- add Requires: gzip for extracting manual archives
+  for example when running `fish_config -h`
+
+-------------------------------------------------------------------
 Thu Apr  4 09:09:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.7.1:
