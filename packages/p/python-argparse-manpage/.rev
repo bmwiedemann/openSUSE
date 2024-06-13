@@ -142,4 +142,13 @@ tools.</comment>
 - Update to v4</comment>
     <requestid>1114782</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d92b75fee6a97fa0ff730e2a8edecc2f</srcmd5>
+    <version>4.6</version>
+    <time>1718285858</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.6:
+  * Fix build against Python 3.13</comment>
+    <requestid>1180149</requestid>
+  </revision>
 </revisionlist>

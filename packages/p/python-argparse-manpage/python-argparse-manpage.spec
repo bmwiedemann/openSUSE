@@ -1,7 +1,7 @@
 #
 # spec file for package python-argparse-manpage
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define mod_name argparse-manpage
 Name:           python-argparse-manpage
-Version:        4.5
+Version:        4.6
 Release:        0
 Summary:        Tool for automatic manual page building from a Python ArgumentParser object
 License:        Apache-2.0
@@ -36,7 +36,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires:       python-tomli
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 12 09:22:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.6:
+  * Fix build against Python 3.13
+
+-------------------------------------------------------------------
 Mon Oct  2 09:23:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.5:
