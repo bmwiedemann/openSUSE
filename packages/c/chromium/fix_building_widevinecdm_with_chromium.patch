@@ -9,3 +9,15 @@ Index: chromium-79.0.3941.4/third_party/widevine/cdm/widevine_cdm_version.h
 +#define WIDEVINE_CDM_VERSION_STRING "unknown"
  
  #endif  // WIDEVINE_CDM_VERSION_H_
+
+--- chromium-125.0.6422.141.orig/third_party/widevine/cdm/widevine.gni
++++ chromium-125.0.6422.141/third_party/widevine/cdm/widevine.gni
+@@ -27,7 +27,7 @@
+ library_widevine_cdm_available =
+     (is_chromeos &&
+      (target_cpu == "x64" || target_cpu == "arm" || target_cpu == "arm64")) ||
+-    (target_os == "linux" && target_cpu == "x64") ||
++    (target_os == "linux" && (target_cpu == "x64" || target_cpu == "arm64")) ||
+     (target_os == "mac" && (target_cpu == "x64" || target_cpu == "arm64")) ||
+     (target_os == "win" &&
+      (target_cpu == "x86" || target_cpu == "x64" || target_cpu == "arm64"))
