@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-crfsuite
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/scrapinghub/python-crfsuite
 Source:         https://files.pythonhosted.org/packages/source/p/python-crfsuite/python-crfsuite-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM - Define _POSIX_C_SOURCE for crfsuite source files
+Patch:          https://github.com/scrapinghub/python-crfsuite/pull/159.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

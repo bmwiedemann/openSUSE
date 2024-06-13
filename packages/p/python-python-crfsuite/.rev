@@ -54,4 +54,12 @@
     fix the build for Python 3.10.</comment>
     <requestid>1135196</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>6828a6850c63f92cf437c04b75195eb9</srcmd5>
+    <version>0.9.10</version>
+    <time>1718286016</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1180324</requestid>
+  </revision>
 </revisionlist>
