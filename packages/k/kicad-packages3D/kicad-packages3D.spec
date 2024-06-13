@@ -24,7 +24,7 @@
 %define _binary_payload w5T.xzdio
 
 Name:           kicad-packages3D
-Version:        8.0.2
+Version:        8.0.3
 Release:        0
 Summary:        3D model libraries for rendering and MCAD integration
 # License is CC-BY-SA-4.0 but there is an exception
