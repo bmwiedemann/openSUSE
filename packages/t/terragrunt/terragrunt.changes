@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jun 13 09:46:46 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.59.2:
+  * build(deps): bump
+    github.com/Azure/azure-sdk-for-go/sdk/azidentity (#3199)
+  * chore: Updating copy on README.md (#3200)
+
+-------------------------------------------------------------------
+Wed Jun 12 13:46:38 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.59.1:
+  * feat: Adding caching for role assumptions (#3197)
+  * feat: Adding initialization check caching (#3193)
+  * chore: Updating mac release machine to `macos.m1.medium.gen1`
+    (#3186)
+
+-------------------------------------------------------------------
+Wed Jun 12 13:34:15 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.59.0:
+  * feat: Moving `cache` to `internal` (#3192)
+  * feat: dynamic authentication (#3194)
+
+-------------------------------------------------------------------
 Mon Jun 10 13:47:56 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.58.15:
