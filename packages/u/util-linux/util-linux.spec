@@ -119,7 +119,6 @@ BuildRequires:  audit-devel
 BuildRequires:  bc
 BuildRequires:  binutils-devel
 BuildRequires:  fdupes
-BuildRequires:  file-devel
 BuildRequires:  gettext-devel
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libeconf-devel-static
@@ -483,6 +482,10 @@ function configure_and_build() {
 
 # configure options depending on ulbuild and ulsubset values
 configure_options=""
+# libmagic is only used for determining in more(1) whether or not a file
+# is binary. but it has builtin code that is doing the same with a simpler
+# check and the libmagic database dependency is rather large (9MB+)
+configure_options+="--without-libmagic "
 
 %if "%ulbuild" == "python"
 %define _configure ../configure
@@ -1038,7 +1041,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %core %{_bindir}/irqtop
 %core %{_bindir}/isosize
 
-%if 0%{?suse_version} >= 1599
+%if 0%{?suse_version} >= 1600
 # last provided by wtmpdb, btmp support dropped
 %exclude %{_bindir}/last
 %exclude %{_bindir}/lastb
@@ -1046,7 +1049,6 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %core %{_bindir}/last
 %core %{_bindir}/lastb
 %endif
-# 0%{?suse_version} >= 1599
 
 %core %{_bindir}/line
 %core %{_bindir}/look
@@ -1147,7 +1149,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %{_datadir}/bash-completion/completions/uuidd
 
 # wtmpdb
-%if 0%{?suse_version} >= 1599
+%if 0%{?suse_version} >= 1600
 %exclude %{_datadir}/bash-completion/completions/last
 %exclude %{_datadir}/bash-completion/completions/lastb
 %endif
@@ -1246,14 +1248,13 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %core %{_mandir}/man1/ipcrm.1.gz
 %core %{_mandir}/man1/ipcs.1.gz
 
-%if 0%{?suse_version} >= 1599
+%if 0%{?suse_version} >= 1600
 %exclude %{_mandir}/man1/last.1.gz
 %exclude %{_mandir}/man1/lastb.1.gz
 %else
 %core %{_mandir}/man1/last.1.gz
 %core %{_mandir}/man1/lastb.1.gz
 %endif
-# 0%{?suse_version} >= 1599
 
 %core %{_mandir}/man1/line.1.gz
 %core %{_mandir}/man1/login.1.gz

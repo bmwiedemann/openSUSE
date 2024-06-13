@@ -2598,4 +2598,20 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
     <comment></comment>
     <requestid>1174411</requestid>
   </revision>
+  <revision rev="286" vrev="3">
+    <srcmd5>742ce7dec4a42e513f8f6905c19184bc</srcmd5>
+    <version>2.40.1</version>
+    <time>1718285842</time>
+    <user>anag+factory</user>
+    <comment>- disable libmagic in more(1) for binary detection (bsc#1225197)
+
+- Suppress error messages for grep command where the input file
+- clean up spec file slightly
+- Fix tests not passing when '@' character is in build path:
+  This release fixes two security mount(8) and umount(8) issues:
+  * libuuid: Improved to match
+  util-linux-lscpu-cleanup-DMI-detection-return-codes.patch
+  util-linux-losetup-Add-support-for-setting-logical-blocksize.patch</comment>
+    <requestid>1179952</requestid>
+  </revision>
 </revisionlist>
