@@ -23,4 +23,12 @@
     <comment>Reduce dependencies a bit</comment>
     <requestid>1109369</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>3f637d51aea5e5ed52e756885eec41c6</srcmd5>
+    <version>1.1</version>
+    <time>1718286046</time>
+    <user>anag+factory</user>
+    <comment>Use sisu-plexus instead of the old plexus-component-api</comment>
+    <requestid>1180383</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package maven-shared-incremental
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,8 @@ BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  maven-lib
 BuildRequires:  maven-shared-utils
-BuildRequires:  plexus-component-api
 BuildRequires:  plexus-containers-component-annotations
+BuildRequires:  sisu-plexus
 BuildRequires:  unzip
 BuildArch:      noarch
 
@@ -50,6 +50,8 @@ This package provides %{summary}.
 %setup -q
 cp %{SOURCE1} build.xml
 
+%pom_change_dep :plexus-component-api org.eclipse.sisu:org.eclipse.sisu.plexus:0.9.0.M2
+
 %build
 mkdir -p lib
 build-jar-repository -s lib \
@@ -57,11 +59,10 @@ build-jar-repository -s lib \
   maven/maven-model \
   maven/maven-plugin-api \
   maven-shared-utils/maven-shared-utils \
-  plexus-component-api/plexus-component-api \
+  org.eclipse.sisu.plexus \
   plexus-containers/plexus-component-annotations
 
 %{ant} \
-  -Dtest.skip=true \
   jar javadoc
 
 %install
