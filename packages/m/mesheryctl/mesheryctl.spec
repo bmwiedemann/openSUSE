@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           mesheryctl
-Version:        0.7.72
+Version:        0.7.73
 Release:        0
 Summary:        CLI for the meshery cloud native management plane
 License:        Apache-2.0
