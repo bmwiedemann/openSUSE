@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jun 12 09:32:13 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.3.3
+  - RubyGems 3.5.11
+  - Bundler 2.5.11
+  - REXML 3.2.8
+  - strscan 3.0.9
+  - --dump=prism_parsetree is replaced by --parser=prism
+    --dump=parsetree
+  - Invalid encoding symbols raise SyntaxError instead of
+    EncodingError
+  - Memory leak fix in Ripper parsing
+  - Bugfixes for YJIT, **{}, Ripper.tokenize,
+    RubyVM::InstructionSequence#to_binary, --with-gmp, and some
+    build environments
+
+-------------------------------------------------------------------
 Tue Jun  5 11:59:12 UTC 2024 - José Gómez <jose.gomez@suse.com>
 
 - Add Provides for yjit-enabled builds.

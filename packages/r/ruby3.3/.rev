@@ -54,4 +54,24 @@
     <comment>- Add Provides for yjit-enabled builds.</comment>
     <requestid>1179323</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>75b25d967163eb9ca732f62657c55dcf</srcmd5>
+    <version>3.3.3</version>
+    <time>1718285859</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.3.3
+  - RubyGems 3.5.11
+  - Bundler 2.5.11
+  - REXML 3.2.8
+  - strscan 3.0.9
+  - --dump=prism_parsetree is replaced by --parser=prism
+    --dump=parsetree
+  - Invalid encoding symbols raise SyntaxError instead of
+    EncodingError
+  - Memory leak fix in Ripper parsing
+  - Bugfixes for YJIT, **{}, Ripper.tokenize,
+    RubyVM::InstructionSequence#to_binary, --with-gmp, and some
+    build environments</comment>
+    <requestid>1180150</requestid>
+  </revision>
 </revisionlist>
