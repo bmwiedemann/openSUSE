@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 12 11:35:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.12.8:
+  + parser: Fix performance regression when parsing namespaces.
+
+-------------------------------------------------------------------
 Tue May 14 08:45:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.12.7:
