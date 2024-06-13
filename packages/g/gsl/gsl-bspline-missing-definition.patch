@@ -1,0 +1,17 @@
+---
+ bspline/gsl_bspline.h |    2 ++
+ 1 file changed, 2 insertions(+)
+
+Index: gsl-2.8/bspline/gsl_bspline.h
+===================================================================
+--- gsl-2.8.orig/bspline/gsl_bspline.h
++++ gsl-2.8/bspline/gsl_bspline.h
+@@ -191,6 +191,8 @@ size_t gsl_bspline_ncoeffs (gsl_bspline_
+ int gsl_bspline_knots (const gsl_vector * breakpts, gsl_bspline_workspace * w);
+ int gsl_bspline_knots_uniform (const double a, const double b, gsl_bspline_workspace * w);
+ int gsl_bspline_eval (const double x, gsl_vector * B, gsl_bspline_workspace * w);
++int gsl_bspline_eval_nonzero (const double x, gsl_vector * Bk, size_t * istart,
++                              size_t * iend, gsl_bspline_workspace * w);
+ int gsl_bspline_deriv_eval (const double x, const size_t nderiv,
+                             gsl_matrix * dB, gsl_bspline_workspace * w);
+ int gsl_bspline_knots_greville (const gsl_vector *abscissae,

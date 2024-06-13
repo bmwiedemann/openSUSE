@@ -122,6 +122,8 @@ Source1:        https://ftp.gnu.org/pub/gnu/%{pname}/%{pname}-%{version}.tar.gz.
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=gsl&download=1#/%{pname}.keyring
 Patch6:         gsl-qawc-test-x86-precision.diff
 Patch7:         gsl-disable-fma.patch
+# PATCH-FIX-UPSTREAM gsl-bspline-missing-definition.patch svg#65868 badshah400@gmail.com -- Add missing definition for gsl_bspline_eval_nonzero
+Patch8:         gsl-bspline-missing-definition.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -130,7 +132,7 @@ BuildRequires:  pkgconfig
 %if %{without hpc}
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 %else
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  lua-lmod
@@ -218,7 +220,7 @@ high level languages.
 Summary:        Documentation for the GNU Scientific Library
 Group:          Documentation/Other
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 BuildArch:      noarch
 
 %description    doc
@@ -259,6 +261,7 @@ library packages.
 %setup -q -n %{pname}-%{version}
 %patch -P 6
 %patch -P 7 -p1
+%patch -P 8 -p1
 
 %build
 

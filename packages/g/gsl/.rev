@@ -494,4 +494,12 @@
 - 989a193268b963aa1047814f7f1402084fb7d859.patch: removed, upstreamed</comment>
     <requestid>1177587</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>185632cbbb61f6358f6a429b7a0d01c6</srcmd5>
+    <version>2.8</version>
+    <time>1718285860</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1180168</requestid>
+  </revision>
 </revisionlist>

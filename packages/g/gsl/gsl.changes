@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 11 05:03:47 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add gsl-bspline-missing-definition.patch: Add missing definition
+  for gsl_bspline_eval_nonzero (svg#65868).
+
+-------------------------------------------------------------------
 Wed May 29 12:44:56 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - update to gsl 2.8:
