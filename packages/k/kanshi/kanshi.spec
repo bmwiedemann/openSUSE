@@ -17,7 +17,7 @@
 
 
 Name:           kanshi
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Dynamic display configuration
 License:        MIT
@@ -44,7 +44,6 @@ and disabled on hotplug.
 %autosetup -p1
 
 %build
-# Disabled because libvarlink is not available in Factory
 %meson \
   -Dipc=enabled
 %meson_build

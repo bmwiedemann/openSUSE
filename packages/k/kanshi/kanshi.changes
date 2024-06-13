@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 13 06:49:39 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to v1.7.0:
+  * parser: implements global output defaults
+  * parser: disallow duplicate outputs
+  * parser: implements output alias directive
+  * config: fix fields bitmask in apply_output_defaults()
+  * config: disallow using wildcard outputs in global scope
+  * build: add fallback for libscfg
+  * Fix cleanup of uninitialized values in error codepath
+  * doc: fully document output criteria
+  * Rename parser.c to config.c
+  * Attempt switching all profiles with the same name
+
+-------------------------------------------------------------------
 Thu Jun  6 06:27:49 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Add kanshictl. New command when IPC is enabled

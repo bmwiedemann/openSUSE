@@ -51,4 +51,12 @@
 - Enable IPC support with libvarlink</comment>
     <requestid>1178896</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4c72cd36809cb1d732a1d20749b0a081</srcmd5>
+    <version>1.7.0</version>
+    <time>1718286088</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1180401</requestid>
+  </revision>
 </revisionlist>
