@@ -1,7 +1,7 @@
 #
 # spec file for package python-usbsdmux
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define           skip_python2 1
-%define           orig_name usbsdmux
+%define         skip_python2 1
+%define         orig_name usbsdmux
 Name:           python-usbsdmux
-Version:        0.2.1
+Version:        24.01.1
 Release:        0
 Summary:        Tool to control an usb-sd-mux from the command line
 License:        LGPL-2.1-or-later
 URL:            https://shop.linux-automation.com/index.php?route=product/product&product_id=50
-Source0:        https://github.com/pengutronix/usbsdmux/archive/%{version}.tar.gz#/%{orig_name}-%{version}.tar.gz
+Source0:        https://github.com/linux-automation/usbsdmux/archive/%{version}.tar.gz#/%{orig_name}-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -34,7 +33,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(udev)
 Requires:       %{orig_name}-udev
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -57,14 +56,17 @@ Udev rules for usbsdmux
 %install
 %python_install
 # Fix interpreter
-for i in %{buildroot}%{python_sitelib}/usbsdmux/{__main__.py,ctypehelper.py,pca9536.py,service.py,usb2642eeprom.py,usb2642i2c.py,usbsdmux.py}; do
+%{python_expand # Fix all supported python version
+for i in %{buildroot}%{$python_sitelib}/usbsdmux/*.py; do
     sed -i 's#%{_bindir}/env python3#%{_bindir}/python3#' $i
     chmod +x $i
 done
+}
 %python_clone -a %{buildroot}%{_bindir}/usbsdmux
 %python_clone -a %{buildroot}%{_bindir}/usbsdmux-configure
 %python_clone -a %{buildroot}%{_bindir}/usbsdmux-service
-# Install udev rules
+# Install udev rules (and switch from 'plugdev' group to 'disk' group)
+sed -i 's/plugdev/disk/' contrib/udev/99-usbsdmux.rules
 mkdir -p %{buildroot}%{_udevrulesdir}
 cp contrib/udev/99-usbsdmux.rules %{buildroot}%{_udevrulesdir}
 # Run fdupes

@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Jun 13 07:52:14 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Switch from 'plugdev' group to 'disk' group for udev rule
+- Update to 24.01.1:
+  * introduce (optional) logging of meta-data via MQTT.
+    See the README for more details on how to use it.
+  * What's Changed
+    - Add statistics via mqtt by @BedaKraus in #68
+    - README: Update DCO to follow the kernel wording by @SmithChart in #70
+- Skipped 24.01:
+  * Our tool can now read the SCR, CID and CSD SD card registers from
+    the card reader ID, decode their contents and print the result on
+    the screen. Give the usbsdmux /dev/sg0 info command a try.
+  * Since the register contents are structured information we decided
+    to add a JSON-output, so the information can be used by other tools.
+  * What's Changed
+    - implement 'info' command to show SD card SCR, CID and CSD by @jluebbe in #58
+    - Add JSON status output for all commands and errors by @SmithChart in #60
+    - Add support for decoding SCR, CID and CSD registers by @jluebbe in #62
+    - Add pytest tests and a GitHub Actions workflow for SD register decoding by @jluebbe in #63
+    - add test that checks README.rst against usbsdmux -h output by @jluebbe in #65
+- Skipped 0.3.0:
+  * add support for a new hardware revision of our USB-SD-Mux.
+  * The new hardware features two open-drain outputs and is built
+    around a new I2C port expander and a faster analog switch for
+    the SD-Card.
+  * Breaking Changes:
+    - If you are using this tool as a Python library: This release
+      changes the API. The usbsdmux.UsbSdMux class is now an abstract
+      base class and can not be instantiated directly. Use the
+      usbsdmux.autoselect_driver() function to obtain an instance of
+      the correct type.
+  * What's Changed:
+    - Cleanups for usb2642i2c by @ukleinek in #42
+    - create a basic debian package by @jluebbe in #38
+    - flake8 and black: Fix Problems and add Actions for verification by @SmithChart in #47
+    - README: fix typo in UDEV rule path by @remes-codasip in #54
+    - Drop debian packaging by @ukleinek in #53
+    - Add support for the USB-SD-Mux FAST by @SmithChart in #52
+    - Increment package version to 0.3.0 by @SmithChart in #56
+
+-------------------------------------------------------------------
 Thu Mar 17 08:56:58 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 0.2.1. Main changes:
