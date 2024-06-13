@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 12 09:09:41 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.27
+  * Inject kfunc decl tags into BTF from the BTF IDs ELF section
+    in the Linux kernel vmlinux file.
+  * Support parallel reproducible builds, where it doesn't matter
+    how many threads are used, the end BTF encoding result is the
+    same.
+  * Initial support for BTF_KIND_DECL_TAG
+  * Fix pretty-printing of hole discovery with inheritance in C++.
+
+-------------------------------------------------------------------
 Wed Feb 28 20:35:36 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.26

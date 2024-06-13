@@ -25,7 +25,7 @@
 %endif
 
 Name:           dwarves
-Version:        1.26
+Version:        1.27
 Release:        0
 Summary:        DWARF utilities
 License:        GPL-2.0-only
@@ -87,12 +87,14 @@ dwarves is a set of tools that use the DWARF debugging information
 inserted in ELF binaries by compilers such as GCC, used by well known
 debuggers such as GDB, and more recent ones such as systemtap.
 
-%package -n libdwarves-devel
+%package devel
 Summary:        DWARF processing library development files
 Group:          Development/Libraries/C and C++
 Requires:       libdwarves1 = %version-%release
+Obsoletes:      libdwarves-devel < %version-%release
+Provides:       libdwarves-devel = %version-%release
 
-%description -n libdwarves-devel
+%description devel
 This package contains the development files for libdwarves, a library
 for processing DWARF, a debugging data format for ELF files.
 
@@ -113,8 +115,7 @@ echo "DWARVES_$ver{ global: *; };" >"$sv"
 %install
 %cmake_install
 
-%post   -n libdwarves1 -p /sbin/ldconfig
-%postun -n libdwarves1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libdwarves1
 
 %files
 %doc README NEWS
@@ -124,7 +125,7 @@ echo "DWARVES_$ver{ global: *; };" >"$sv"
 %files -n libdwarves1
 %_libdir/*.so.1*
 
-%files -n libdwarves-devel
+%files devel
 %_libdir/*.so
 %_includedir/*
 %_datadir/%name
