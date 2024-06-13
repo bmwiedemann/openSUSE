@@ -62,6 +62,7 @@ BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(bigreqsproto) >= 1.1.0
 BuildRequires:  pkgconfig(compositeproto)
@@ -146,7 +147,7 @@ Requires:       libpixman-1-0 >= 0.24
 Requires:       Mesa
 %if 0%{?suse_version} >= 1315
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 Provides:       xorg-x11-server-glx
 Obsoletes:      xorg-x11-server-glx
@@ -525,6 +526,8 @@ rm -f %{buildroot}/usr/src/xserver/config/fdi2iclass.py
 chmod 0755 %{buildroot}/usr/src/xserver/config.guess
 chmod 0755 %{buildroot}/usr/src/xserver/config.sub
 chmod 0755 %{buildroot}/usr/src/xserver/install-sh
+# Fix python shebang, use specific python version to do not depend on /usr/bin/python3
+%{?python3_fix_shebang_path:%python3_fix_shebang_path %{buildroot}/usr/src/xserver/hw/xwin/glx/gen_gl_wrappers.py}
 
 %post
 %tmpfiles_create xkb.conf

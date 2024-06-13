@@ -4104,4 +4104,12 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
     boo#1222442, gitlab xserver issue #1659)</comment>
     <requestid>1166666</requestid>
   </revision>
+  <revision rev="431" vrev="3">
+    <srcmd5>29d2f57b8dc69e5a407ca4ee9cd629f8</srcmd5>
+    <version>21.1.12</version>
+    <time>1718285864</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1180219</requestid>
+  </revision>
 </revisionlist>

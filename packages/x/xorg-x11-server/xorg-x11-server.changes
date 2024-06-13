@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 12 09:08:15 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix python3 shebang in source python script to use specific python
+  interpreter and remove dependency on /usr/bin/python3
+  (bsc#1212476)
+
+-------------------------------------------------------------------
 Wed Apr 10 13:20:43 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_render-Avoid-possible-double-free-in-ProcRenderAddGl.patch
