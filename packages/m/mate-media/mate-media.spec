@@ -25,7 +25,8 @@ Summary:        MATE Desktop multimedia stack
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/X11/Utilities
 URL:            https://mate-desktop.org/
-Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
+Source0:        https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
+Source1:        %{name}-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  itstool
 BuildRequires:  mate-common >= %{_version}

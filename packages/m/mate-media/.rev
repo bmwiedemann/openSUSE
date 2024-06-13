@@ -190,4 +190,12 @@
     <comment></comment>
     <requestid>1165585</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>30dbbdb27ccc687938537c95d4eebea1</srcmd5>
+    <version>1.28.1</version>
+    <time>1718286086</time>
+    <user>anag+factory</user>
+    <comment>- Add mate-media-rpmlintrc, ignore badness for 'shlib-policy-name-error'. (forwarded request 1180649 from hillwood)</comment>
+    <requestid>1180650</requestid>
+  </revision>
 </revisionlist>
