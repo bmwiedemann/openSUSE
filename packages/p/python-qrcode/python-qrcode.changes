@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 12 12:06:29 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Cherry-pick upstream patch to fix build with GCC 14
+  * https://github.com/lincolnloop/python-qrcode/pull/364.patch
+
+-------------------------------------------------------------------
 Mon Feb  5 07:00:36 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing Requires on pypng.

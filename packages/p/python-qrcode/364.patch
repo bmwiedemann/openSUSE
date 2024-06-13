@@ -1,0 +1,33 @@
+From 0fd5649d6f971e5c19ac7f6953e9d6737d3fbb0b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20Van=C4=9Bk?= <arkamar@atlas.cz>
+Date: Mon, 10 Jun 2024 13:22:24 +0200
+Subject: [PATCH] Add buffer and fileno for mocked sys.stdout
+
+This change fixes the issue of two failing tests because the sys.stdout
+seems not to be properly mocked. Both tests need a buffer and test_piped
+additionally needs fileno method.
+---
+ qrcode/tests/test_script.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/qrcode/tests/test_script.py b/qrcode/tests/test_script.py
+index 4ae4ccbc..96458e4c 100644
+--- a/qrcode/tests/test_script.py
++++ b/qrcode/tests/test_script.py
+@@ -30,6 +30,8 @@ def test_isatty(self, mock_print_ascii):
+     @mock.patch("sys.stdout")
+     @unittest.skipIf(not Image, "Requires PIL")
+     def test_piped(self, mock_stdout):
++        mock_stdout.buffer = io.BytesIO()
++        mock_stdout.fileno = lambda: 999
+         main(["testtext"])
+ 
+     @mock.patch("os.isatty", lambda *args: True)
+@@ -61,6 +63,7 @@ def test_optimize(self, mock_print_ascii):
+ 
+     @mock.patch("sys.stdout")
+     def test_factory(self, mock_stdout):
++        mock_stdout.buffer = io.BytesIO()
+         main("testtext --factory svg".split())
+ 
+     @mock.patch("sys.stderr")

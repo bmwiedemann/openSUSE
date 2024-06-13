@@ -110,4 +110,12 @@
 - Stop using greedy globs in %files.</comment>
     <requestid>1144106</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>63832f8a70dbff59663bdc726443b89b</srcmd5>
+    <version>7.4.2</version>
+    <time>1718286014</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1180322</requestid>
+  </revision>
 </revisionlist>

@@ -24,6 +24,8 @@ Summary:        QR Code image generator
 License:        BSD-3-Clause
 URL:            https://github.com/lincolnloop/python-qrcode
 Source:         https://files.pythonhosted.org/packages/source/q/qrcode/qrcode-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM - Add buffer and fileno for mocked sys.stdout
+Patch:          https://github.com/lincolnloop/python-qrcode/pull/364.patch
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pypng}
@@ -48,6 +50,7 @@ of QR Codes.
 
 %prep
 %setup -q -n qrcode-%{version}
+%patch -P0 -p1
 # drop shebang from console_scripts
 sed -i '1s@^#!.*@@' qrcode/console_scripts.py
 
