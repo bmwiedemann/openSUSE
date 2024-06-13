@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jun 12 13:44:52 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 6.7.4
+  Exceptional release following a critical regression causing possible data loss
+  in certain conditions:
+
+    * inline-changelog: fix a critical bug in write_pending that delete data 
+      (3cf9e52f5e27)
+    * inline-changelog: fix pending transaction visibility when splitting 
+      (1721d983dd6d)
+
+  Other changes in this release:
+
+    * exchange: fix locking to actually be scoped
+    * chistedit: change action for the correct item
+    * rust-status: sort the failed matches when printing them
+    * hooks: add a prewlock and a prelock hooks
+    * bookmark: fix remote bookmark deletion when the push is raced
+
+-------------------------------------------------------------------
 Tue May  7 09:21:00 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 6.7.3

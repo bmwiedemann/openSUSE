@@ -1766,4 +1766,24 @@ As usual, a lot of patches don't make it to this list since they're more interna
     <comment>Mercurial 6.7.3 (forwarded request 1172397 from develop7)</comment>
     <requestid>1172398</requestid>
   </revision>
+  <revision rev="200" vrev="1">
+    <srcmd5>f5ea6264a331462d2f9e122e42c7a4eb</srcmd5>
+    <version>6.7.4</version>
+    <time>1718285867</time>
+    <user>anag+factory</user>
+    <comment>- Mercurial 6.7.4
+  Exceptional release following a critical regression causing possible data loss
+  in certain conditions:
+    * inline-changelog: fix a critical bug in write_pending that delete data 
+      (3cf9e52f5e27)
+    * inline-changelog: fix pending transaction visibility when splitting 
+      (1721d983dd6d)
+  Other changes in this release:
+    * exchange: fix locking to actually be scoped
+    * chistedit: change action for the correct item
+    * rust-status: sort the failed matches when printing them
+    * hooks: add a prewlock and a prelock hooks
+    * bookmark: fix remote bookmark deletion when the push is raced (forwarded request 1180231 from develop7)</comment>
+    <requestid>1180232</requestid>
+  </revision>
 </revisionlist>

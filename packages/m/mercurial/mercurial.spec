@@ -20,7 +20,7 @@
 %{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 %endif
 Name:           mercurial
-Version:        6.7.3
+Version:        6.7.4
 Release:        0
 Summary:        Scalable Distributed SCM
 License:        GPL-2.0-or-later
