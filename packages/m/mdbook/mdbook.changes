@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  6 00:51:35 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.4.40:
+  * Reverted the update to pulldown-cmark which broke the semver API.
+
+-------------------------------------------------------------------
 Fri Jan 26 12:06:54 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Fix FTBFS by updating how we use obs-service-cargo to automate
