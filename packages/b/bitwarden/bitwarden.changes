@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 12 16:13:30 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 2024.6.0
+  * Added password protected export
+  * Fixed issue with email alias provider keys being stored in plaintext
+
+-------------------------------------------------------------------
 Tue May 21 21:38:33 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 2024.5.0

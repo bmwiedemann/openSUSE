@@ -2,8 +2,8 @@
 	<service name="obs_scm" mode="manual">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/bitwarden/clients.git</param>
-		<param name="revision">desktop-v2024.5.0</param>
-		<param name="version">2024.5.0</param>
+		<param name="revision">desktop-v2024.6.0</param>
+		<param name="version">2024.6.0</param>
 		<param name="filename">bitwarden</param>
 		<param name="exclude">bitwarden_license/*</param>
    <!-- The code in bitwarden_license MUST NOT be included in published tarballs as it is non-redistributable! -->
