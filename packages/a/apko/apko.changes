@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 12 13:34:40 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.14.9:
+  * remove all SBOM formats except SPDX
+  * fix: Add lockfile option to publish command
+
+-------------------------------------------------------------------
 Fri Jun 07 19:38:30 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.14.8:
