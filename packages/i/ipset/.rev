@@ -412,4 +412,12 @@
     <comment>- Update to release 7.21</comment>
     <requestid>1146171</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>606748f41a9a9a44c1a4a35203f6ea97</srcmd5>
+    <version>7.22</version>
+    <time>1718285862</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1180191</requestid>
+  </revision>
 </revisionlist>

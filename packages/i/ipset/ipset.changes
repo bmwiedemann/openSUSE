@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun  5 11:07:43 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.22
+  * ipset: fix json output format for IPSET_OPT_IP
+  * netfilter: ipset: Fix race between namespace cleanup and gc
+    in the list:set type
+
+-------------------------------------------------------------------
 Mon Feb 12 12:41:44 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.21
