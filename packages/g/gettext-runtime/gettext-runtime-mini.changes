@@ -1,7 +1,28 @@
 -------------------------------------------------------------------
+Thu Jun  6 14:23:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix envsubst-mini:
+  + Conflicts with the 'full' envsubst
+  + Require 'this-is-only-for-build-envs': ensure this does not
+    find it's way out of OBS onto installations.
+
+-------------------------------------------------------------------
+Tue Jun  4 09:36:01 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- add optional -mini suffix to envsubst package
+
+-------------------------------------------------------------------
 Tue May 21 10:25:25 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Require glibc-gconv-modules-extra by the gettext-tools packages
+
+-------------------------------------------------------------------
+Tue May 14 10:06:12 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- Split out envsubst into a separate package
+  This allows us to pull in envsubst into containers without enlarging them
+  substantially. Additionally, this binary is standalone and useful outside of
+  the context of gettext.
 
 -------------------------------------------------------------------
 Mon Apr 15 07:24:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>

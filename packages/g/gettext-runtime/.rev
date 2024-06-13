@@ -825,4 +825,18 @@ Using build service only atm, any additional work might take a while again... (f
     <comment></comment>
     <requestid>1177111</requestid>
   </revision>
+  <revision rev="95" vrev="5">
+    <srcmd5>02b7b09b57888108e10a7ffed369de93</srcmd5>
+    <version>0.22.5</version>
+    <time>1718285844</time>
+    <user>anag+factory</user>
+    <comment>I try again:
+
+address the issues between gettext-runtime and the -mini flavor:
+  + envsubst-mini and envsubst need to conflict (as they do on file level)
+  + Ensure envsubst-mini is never used outside of OBS with the relevant requires
+
+sync the changes and spec file by actually calling pre_checkin.sh - not syncing stuff manually (forwarded request 1179032 from dimstar)</comment>
+    <requestid>1179033</requestid>
+  </revision>
 </revisionlist>

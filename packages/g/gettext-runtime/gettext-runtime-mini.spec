@@ -92,6 +92,8 @@ License:        LGPL-2.1-or-later
 Group:          Development/Tools/Other
 Requires:       %{name} = %{version}
 Requires:       xz
+# gettext.sh requires envsubst
+Requires:       envsubst%{?with_mini:-mini} = %{version}
 # autopoint requires find
 Requires:       findutils
 # For non-UTF encodings
@@ -138,6 +140,17 @@ BuildArch:      noarch
 %description tools-doc
 This subpackage contains the HTML version of the gettext documentation
 as well as project examples.
+
+%package -n envsubst%{?with_mini:-mini}
+Summary:        Environment substitution helper binary
+%if %{with mini}
+Conflicts:      envsubst
+Requires:       this-is-only-for-build-envs
+%endif
+
+%description -n envsubst%{?with_mini:-mini}
+This package contains the envsubst helper binary to replace values from the
+environment.
 
 %if %{without mini}
 %package     -n libtextstyle0
@@ -278,7 +291,6 @@ make check || {
 %doc %dir %_docdir/%name/
 %doc %_docdir/%name/gettext.1.html
 %doc %_docdir/%name/ngettext.1.html
-%doc %_docdir/%name/envsubst.1.html
 %doc %_docdir/%name/*.3.html
 %doc %_docdir/%name/AUTHORS
 %doc %_docdir/%name/NEWS
@@ -286,7 +298,6 @@ make check || {
 %doc %_docdir/%name/FAQ.html
 %_bindir/gettext
 %_bindir/ngettext
-%_bindir/envsubst
 %_bindir/gettext.sh
 %_bindir/msgfmt
 %_libdir/libgettextlib-*.so
@@ -294,7 +305,6 @@ make check || {
 %_libdir/libasprintf.so.*
 %doc %_mandir/man1/gettext.1.gz
 %doc %_mandir/man1/ngettext.1.gz
-%doc %_mandir/man1/envsubst.1.gz
 %doc %_mandir/man1/msgfmt.1.gz
 %doc %_mandir/man3/*
 %_datadir/gettext/ABOUT-NLS
@@ -304,6 +314,12 @@ make check || {
 %_datadir/emacs/site-lisp/po-mode.*
 %_datadir/emacs/site-lisp/start-po.*
 %_datadir/emacs/site-lisp/suse-start-po-mode.el
+
+%files -n envsubst%{?with_mini:-mini}
+%license COPYING
+%_bindir/envsubst
+%doc %_mandir/man1/envsubst.1.gz
+%doc %_docdir/%name/envsubst.1.html
 
 %files -n gettext-tools%{?with_mini:-mini} -f gettext-tools.lang
 %defattr(-,root,root)
