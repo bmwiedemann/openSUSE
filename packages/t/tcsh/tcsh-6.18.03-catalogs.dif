@@ -59,8 +59,8 @@
  german.cat: ${srcdir}/german/charset ${srcdir}/german/*set[0-9]*
  	@${CATGEN} $(GENCAT) $@ $^ $>
  
--INSTALLED+=${localedir}/gr/LC_MESSAGES/tcsh.cat
--${localedir}/gr/LC_MESSAGES/tcsh.cat:	greek.cat
+-INSTALLED+=${localedir}/el/LC_MESSAGES/tcsh.cat
+-${localedir}/el/LC_MESSAGES/tcsh.cat:	greek.cat
 +INSTALLED+=${localedir}/el_GR/LC_MESSAGES/tcsh
 +${localedir}/el_GR/LC_MESSAGES/tcsh:	greek.cat
  	$(MKDIR_P) $(@D)

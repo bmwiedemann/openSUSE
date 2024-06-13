@@ -187,7 +187,7 @@
  
  #else
  
-@@ -1961,7 +1965,7 @@ getremotehost(int dest_fd)
+@@ -1965,7 +1965,7 @@ getremotehost(int dest_fd)
  	     * have not caught up yet.
  	     */
  	    addr.s_addr = inet_addr(name);

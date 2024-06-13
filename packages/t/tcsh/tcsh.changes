@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 12 07:48:40 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update to tcsh 6.24.13 - 2024-06-12
+  * Fix !^:h and !^:t failing when no / found (Kimmo Suominen)
+  * Add cross-build support for gethost (josefs10)
+  * Add support for $?< (Matheus Garcia)
+- Port patches
+  * tcsh-6.15.00-pipe.dif
+  * tcsh-6.18.03-catalogs.dif
+  * tcsh-6.21.00.dif
+
+-------------------------------------------------------------------
 Fri Apr  5 09:08:30 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Update to tcsh 6.24.12 - 2024-04-05

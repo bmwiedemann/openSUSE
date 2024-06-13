@@ -4,7 +4,7 @@
 
 --- sh.dol.c
 +++ sh.dol.c	2016-11-25 08:00:30.455106978 +0000
-@@ -462,6 +462,8 @@ Dgetdol(void)
+@@ -473,6 +473,8 @@ Dgetdol(void)
  	    size_t cbp = 0;
  	    int old_pintr_disabled;
  

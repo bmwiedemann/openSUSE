@@ -1104,4 +1104,19 @@
 - Port patch tcsh-6.22.02-local-dotlock.dif (corrected offsets)</comment>
     <requestid>1165473</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>72ee3ffbaff8ce4b8f49c1f5201520fa</srcmd5>
+    <version>6.24.13</version>
+    <time>1718285853</time>
+    <user>anag+factory</user>
+    <comment>- Update to tcsh 6.24.13 - 2024-06-12
+  * Fix !^:h and !^:t failing when no / found (Kimmo Suominen)
+  * Add cross-build support for gethost (josefs10)
+  * Add support for $?&lt; (Matheus Garcia)
+- Port patches
+  * tcsh-6.15.00-pipe.dif
+  * tcsh-6.18.03-catalogs.dif
+  * tcsh-6.21.00.dif</comment>
+    <requestid>1180140</requestid>
+  </revision>
 </revisionlist>
