@@ -1,7 +1,7 @@
 #
 # spec file for package libbytesize
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ BuildRequires:  gmp-devel
 BuildRequires:  gtk-doc
 BuildRequires:  mpfr-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
 BuildRequires:  pkgconfig(libpcre2-8)
 
@@ -98,6 +99,7 @@ install -m 644 -t . %{SOURCE1}
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} %{?no_lang_C}
+%python3_fix_shebang
 
 %post -n libbytesize%{soversion} -p /sbin/ldconfig
 %postun -n libbytesize%{soversion} -p /sbin/ldconfig
