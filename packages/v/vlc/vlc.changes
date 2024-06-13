@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Jun 12 14:26:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Updte to version 3.0.21:
+  + Decoders:
+    * Improve Opus ambisonic support
+    * Fix some ASS subtitle rendering issues
+    * Fix Opus in MP4 behaviour
+    * Fix VAAPI hw decoding with some drivers
+  + Input:
+    * Add support for HTTP content range handling according to RFC
+      9110
+    * Fix some HLS Adaptive Streaming not working in audio-only
+      mode
+  + Video Output:
+    * Super Resolution scaling with AMD GPUs
+    * The D3D11 HDR option can also turn on/off HDR for all sources
+      regardless of the display
+    * Improve subtitles rendering on Apple platforms of notably
+      Asian languages by correcting font fallback lookups
+  + Video Filter:
+    * New AMD VQ Enhancer filter
+    * Add D3D11 option to use NVIDIA TrueHDR to generate HDR from
+      SDR sources
+  + Audio Output:
+    * Fix regression on macOS causing crashes when using audio
+      devices with more than 9 channels
+  + Services Discovery:
+    * Fix exposed UPnP directory URL schemes to be compliant with
+      RFC 3986
+  + libVLC:
+    * the HWND passed to libvlc_media_player_set_hwnd must have the
+     WS_CLIPCHILDREN style set.
+    * Fix crashes when using caopengllayer
+  + Misc:
+    * Fix various warnings, leaks and potential crashes
+    * Fix security integer overflow in MMS module
+- Drop 4645.patch and 770789f2.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Wed May 22 12:52:19 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 770789f2.patch: Fix missing cast in chromaprint
