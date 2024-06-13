@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Thu Jun 13 03:56:44 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Add qrcode to Requires -- software does not start without it
+- Update to version 1.8.4:
+  * Add a 'restart' item to the menu.
+  * warpinator-launch.py: Fix hardcoded paths.
+  * warpinator-launch.py: (bwrap) Deal with systems that use /tmp
+    for their dbus session bus address.
+  * warpinator.py: Don't inhibit the session until the transfer
+    starts.
+  * remote.py: Fix a debugging line.
+  * Remove restrictions on having a save directory in /run/*
+  * Update appdata screenshots.
+  * Fix test/demo mode.
+  * appdata: Update to follow the latest Flathub guidelines.
+  * warpinator-launch.py: Catch a potential error in landlock
+    check.
+  * src/transfers.py: Follow toplevel symbolic links when gathering
+    files to send.
+  * warpinator-launch: Unset GTK3_MODULES for Flatpak installs.
+  * Some more appstream spec updates.
+  * prefs: Fix escape code SyntaxWarning during bytecompile.
+  * appstream: Only provide screenshots at 1x scale.
+  * l10n: Update POT
+- Updates from 1.8.3:
+  * l10n: Update translations
+- Updates from 1.8.2:
+  * Remove duplicate line in ProcessTransferOpRequest handler
+- Updates from 1.8.1:
+  * l10n: Update translations
+- Updates from 1.8.0:
+  * Include and build grpc 1.59 and protobuf 4.24.4.
+  * Regenerate protobuf files.
+  * Increase startup server timeout.
+  * Bundle zeroconf instead of downloading at build time.
+  * Update deb build, readme, dependencies, .gitignore.
+  * Update note in generate-protobuf.
+  * Manual connection
+  * Tweak layout of manual connect dialog, and simplify
+    translations.
+  * warpinator.py: Fix dbus method failing when the network is
+    down.
+  * warpinator.py: Disable manual connection when there is no
+    server.
+  * manual connect: Use a glade file, tweak some more.
+  * manual connect: Fix qr code rendering for different ui scales.
+  * warpinator.py: Remove invalid line.
+  * Don't allow bubblewrap mode in Flatpak builds.
+  * README markdown: Switch to using relative image paths.
+  * Add issue templates.
+  * Fix readme link in bug_report.yaml
+  * Allow /run/media/* for a save location, as some systems mount
+    removable drives there (like Steam Deck).
+  * Update README, fix a typo, add a link to another Window's
+    version in the no-remotes page, link to the README from the
+    bad-folder page.
+  * Add issue link to bug report template.
+  * fix NameError for 'sleep'
+  * warpinator.py: Set our own dbus StatusIcon name.
+  * notifications.py: Show the recipient (not the sender) in the
+    local notification when using warpinator-send.
+  * warpinator-send.in: Remove a comment leftover from copy/paste.
+  * thread pool: Always use a minimum of 4 threads.
+  * warpinator-send: Allow uris and paths.
+  * save folder: Fully resolve the save location before performing
+    any path safety checks.
+
+-------------------------------------------------------------------
 Sun Jul 16 12:05:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.4:

@@ -1,7 +1,7 @@
 #
 # spec file for package warpinator
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           warpinator
-Version:        1.6.4
+Version:        1.8.4
 Release:        0
 Summary:        Share files across the LAN
 License:        GPL-3.0-or-later
@@ -40,6 +40,7 @@ Requires:       python3-gobject-Gdk
 Requires:       python3-grpcio
 Requires:       python3-netifaces
 Requires:       python3-protobuf
+Requires:       python3-qrcode
 Requires:       python3-setproctitle
 Requires:       python3-xapp
 Requires:       python3-zeroconf
@@ -71,6 +72,7 @@ This package provides an extension to use warpinator from nemo file browser.
        --sysconfdir=%{_distconfdir} \
 %endif
        -Dbundle-zeroconf=false \
+       -Dbundle-grpc=false \
        -Dinclude-firewall-mod=false
 %meson_build
 
