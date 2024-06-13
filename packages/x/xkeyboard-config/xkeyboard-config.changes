@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun  8 22:11:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.42:
+  * Translations updated
+
+-------------------------------------------------------------------
 Sun Mar 17 09:45:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.41:
@@ -23,7 +29,7 @@ Wed Nov 22 12:33:07 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 -------------------------------------------------------------------
 Tue Nov 21 18:28:31 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
-- includes fixes for 
+- includes fixes for
   * missing mappings for evdev keys KEY_RFKILL and KEY_WWAN
     (boo#1123784)
   * capslock in Old Hungarian layout (boo#1153774)
@@ -38,7 +44,7 @@ Tue Nov 21 15:52:53 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 - supersedes a patch called 'U_fixed-keycode-comment.patch' from
   sle15-sp5, which wasn't applied there any longer either.
 
-    <I247> = 247;   // #define KEY_UWB                 239 
+    <I247> = 247;   // #define KEY_UWB                 239
 
   is defined in keycodes/evdev since a long time ...
 
@@ -47,7 +53,7 @@ Mon Oct  9 10:49:43 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 2.40
   * mostly updated translation
-  * a few bugfixes 
+  * a few bugfixes
 
 -------------------------------------------------------------------
 Mon Jun 12 09:21:27 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
@@ -113,22 +119,22 @@ Thu Jun  2 13:35:01 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 -------------------------------------------------------------------
 Thu Jun  2 02:21:07 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
-- Update to version 2.36 
+- Update to version 2.36
   * bugfixes
   * removed autotools support :-(
-- switched to meson 
+- switched to meson
 
 -------------------------------------------------------------------
 Fri Feb 18 17:36:39 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
-- removed n_suse-ctrl-alt-bksp-terminate.patch 
+- removed n_suse-ctrl-alt-bksp-terminate.patch
   * no longer needed; made it impossible to disable Ctrl-Alt-BS
     on Wayland (boo#1195871)
 
 -------------------------------------------------------------------
 Mon Oct  4 12:56:20 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
-- update to version 2.34 
+- update to version 2.34
   * xml2lst: use dynamic Perl path
   * Resolved 101key Old Hungarian II
   * Old turkish f layout (with pc104 support) added.
@@ -161,11 +167,11 @@ Sat Jul 17 15:34:56 UTC 2021 - Dirk Müller <dmueller@suse.com>
 - update to version 2.33
   * translation updates
   * Replaced division slash with fraction slash on Neo2 (de) layout
-  * rules: correct Indic IPA to use iso639 code "eng" 
+  * rules: correct Indic IPA to use iso639 code "eng"
   * rules: remove two non-existing ISO639 codes
-  * rules: change ISO639 language codes to 639-2/T only 
-  * rules: the xkb.dtd file is not an XML document 
-  * symbols/nl: Add a "Dutch (US)" variant 
+  * rules: change ISO639 language codes to 639-2/T only
+  * rules: the xkb.dtd file is not an XML document
+  * symbols/nl: Add a "Dutch (US)" variant
   * Simplify gb(basic) so that Shift+Right Alt behaves the same as Right Alt+Shift.
 
 -------------------------------------------------------------------
@@ -211,7 +217,7 @@ Fri Oct 11 17:20:30 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 - Update to version 2.27
   * bugfix release
 - supersedes U_Fix-typo-in-Polish-symbols-file.patch
-- adjusted n_disable-2xalt_2xctrl-toggle.diff 
+- adjusted n_disable-2xalt_2xctrl-toggle.diff
 
 -------------------------------------------------------------------
 Fri Feb  2 11:20:56 UTC 2018 - sndirsch@suse.com
@@ -223,7 +229,7 @@ Fri Feb  2 11:20:56 UTC 2018 - sndirsch@suse.com
 Thu Feb  1 13:12:26 UTC 2018 - sndirsch@suse.com
 
 - Update to version 2.23.1
-  * Fixing the build 
+  * Fixing the build
 
 -------------------------------------------------------------------
 Wed Jan 31 13:18:45 UTC 2018 - sndirsch@suse.com
@@ -318,12 +324,12 @@ Wed Feb  1 13:32:05 UTC 2017 - sndirsch@suse.com
 
 - Update to version 2.20
   * Bug fixes and performance improvements
- 
+
 -------------------------------------------------------------------
 Tue Oct  4 12:21:23 UTC 2016 - sndirsch@suse.com
 
 - Update to version 2.19
-  * Bug fixes and performance improvements  
+  * Bug fixes and performance improvements
 
 -------------------------------------------------------------------
 Wed Jun  8 07:46:48 UTC 2016 - tchvatal@suse.com
@@ -396,8 +402,8 @@ Tue Oct 20 14:59:44 UTC 2015 - tobias.johannes.klausmann@mni.thm.de
 
 - Rename n_suse.patch -> n_suse-ctrl-alt-bksp-terminate.patch to
   reflect patch usage
-- Rename disable-2xalt_2xctrl-toggle.diff -> 
-  n_disable-2xalt_2xctrl-toggle.diff to follow X11:XOrg patch 
+- Rename disable-2xalt_2xctrl-toggle.diff ->
+  n_disable-2xalt_2xctrl-toggle.diff to follow X11:XOrg patch
   guidelines
 
 -------------------------------------------------------------------
@@ -463,7 +469,7 @@ Wed Jun  4 09:39:03 UTC 2014 - sndirsch@suse.com
 -------------------------------------------------------------------
 Tue Feb  4 15:06:41 UTC 2014 - sndirsch@suse.com
 
-- U_Let-KPDL-key-on-it-fr-and-nl-keyboards-generate-KP_S.patch 
+- U_Let-KPDL-key-on-it-fr-and-nl-keyboards-generate-KP_S.patch
   * reverse apply the above patch in order to fix again the KPDL
     key on french, italian and netherland keyboards (bnc#671931)
 
@@ -477,7 +483,7 @@ Thu Jan 30 11:08:13 UTC 2014 - sndirsch@suse.com
 -------------------------------------------------------------------
 Mon Oct  7 13:43:44 UTC 2013 - sndirsch@suse.com
 
-- fixed source link in specfile 
+- fixed source link in specfile
 
 -------------------------------------------------------------------
 Fri Oct  4 13:56:29 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
@@ -504,7 +510,7 @@ Tue Sep 10 09:06:00 UTC 2013 - sndirsch@suse.com
 -------------------------------------------------------------------
 Wed Sep  4 13:41:51 UTC 2013 - sndirsch@suse.com
 
-- renamed u_zhe-dze.patch to 
+- renamed u_zhe-dze.patch to
   U_rs-cyralpha-The-key-z-on-US-keyboard-should-give-dze.patch
   after having it upstreamed (#fdo#68754)
 
@@ -557,7 +563,7 @@ Wed May 29 22:26:15 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
 -------------------------------------------------------------------
 Tue Mar 26 16:23:14 UTC 2013 - sndirsch@suse.com
 
-- u_zhe-dze.patch 
+- u_zhe-dze.patch
   The key (z on US keyboard) should give dze (&#1029; [capital]
   / &#1109;) but it gives zhe (&#1046; [capital] / &#1078;)
   (bnc#780230)
@@ -579,8 +585,8 @@ Thu Sep 27 13:55:41 UTC 2012 - cfarrell@suse.com
 Wed Sep 26 15:17:29 UTC 2012 - tobias.johannes.klausmann@mni.thm.de
 
 - Update to version 2.7:
-  + Several bugs fixed, most notably - the issue with functional 
-    keys and Shift. 
+  + Several bugs fixed, most notably - the issue with functional
+    keys and Shift.
   + Unneeded .dir files are not generated any more.
   + Some translations are updated!
 
@@ -709,13 +715,13 @@ Sat Feb  5 12:28:55 UTC 2011 - sndirsch@novell.com
 - xkeyboard-config 2.1
   * Again, some tweaks and additions, here and there. Updated 12
     translations, thanks to TP.
-- refreshed patches 
+- refreshed patches
 
 -------------------------------------------------------------------
 Wed Sep 29 01:36:28 UTC 2010 - sndirsch@novell.com
 
 - xkeyboard-config 2.0
-  * More layouts, more options. Updated translations. 
+  * More layouts, more options. Updated translations.
 - adjusted ibm_space_saver.diff
 
 -------------------------------------------------------------------
@@ -723,7 +729,7 @@ Sat Sep  4 17:29:23 UTC 2010 - sndirsch@novell.com
 
 - xkeyboard 1.9
 - obsolete patches
-  * xkeyboard-config.mainline-cvs.mac-es.patch 
+  * xkeyboard-config.mainline-cvs.mac-es.patch
   * xkeyboard-config-commit-81d9313.diff
   * xkeyboard-config-commit-dc87d0c.diff
 - adjusted patches
@@ -740,14 +746,14 @@ Sat Sep  4 17:29:23 UTC 2010 - sndirsch@novell.com
 Sat Jun 19 14:19:48 CEST 2010 - sndirsch@suse.de
 
 - xkeyboard-config.ctrl_alt_bksp.patch
-  * enable zapping by default (still protected by ZapWarning) 
+  * enable zapping by default (still protected by ZapWarning)
     (bnc #576481)
 
 -------------------------------------------------------------------
 Sun May 16 00:29:57 CEST 2010 - sndirsch@suse.de
 
 - xkeyboard-config-commit-dc87d0c.diff
-  * Enhancement to hu keymap (bnc #599318, bfo #28091)  
+  * Enhancement to hu keymap (bnc #599318, bfo #28091)
 
 -------------------------------------------------------------------
 Thu May  6 06:58:38 CEST 2010 - sndirsch@suse.de
@@ -772,14 +778,14 @@ Tue Nov 17 11:04:20 CET 2009 - sndirsch@suse.de
   * Around 30 bugs from freedesktop.org bugzilla were fixed.
   * Restructured rules-generating scripts.
 - obsoletes ucw_suse.diff, xkeyboard-config.sr@latin.diff, cs.po.diff
-- adjusted microsoftnek4k.diff, p_suse.diff, 
-  xkeyboard-config.macintosh.patch, 
+- adjusted microsoftnek4k.diff, p_suse.diff,
+  xkeyboard-config.macintosh.patch,
   xkeyboard-config.inet.microsoftpro.patch
 
 -------------------------------------------------------------------
 Mon Apr 27 22:41:57 CEST 2009 - sndirsch@suse.de
 
-- removed tp-menu.diff 
+- removed tp-menu.diff
 
 -------------------------------------------------------------------
 Mon Apr 27 17:45:03 CEST 2009 - sndirsch@suse.de
@@ -788,30 +794,30 @@ Mon Apr 27 17:45:03 CEST 2009 - sndirsch@suse.de
   * adds microsoftpro internet keyboard keys to any keyboard when
     adding the line: Option "XkbOptions" "inet:microsoftpro" to the
     keybaord input device section of xorg.conf.
-  * obsoletes xkeyboard-config.jp.jp106_inet.patch, 
+  * obsoletes xkeyboard-config.jp.jp106_inet.patch,
     xkeyboard-config.br.abnt2_inet.patch
 
 -------------------------------------------------------------------
 Sat Apr 25 16:37:27 CEST 2009 - sndirsch@suse.de
 
 - xkeyboard-config.jp.jp106_inet.patch
-  * new jp106_inet xkbmodel required for jp layout (bnc #497647) 
+  * new jp106_inet xkbmodel required for jp layout (bnc #497647)
 
 -------------------------------------------------------------------
 Sat Apr 25 13:20:39 CEST 2009 - sndirsch@suse.de
 
 - xkeyboard-config.br.abnt2_inet.patch
-  * new abnt2_inet xkbmodel required for br layout (bnc #497647) 
+  * new abnt2_inet xkbmodel required for br layout (bnc #497647)
 
 -------------------------------------------------------------------
 Thu Apr  9 02:32:00 CEST 2009 - sndirsch@suse.de
 
-- minor cleanup 
+- minor cleanup
 
 -------------------------------------------------------------------
 Mon Apr  6 15:32:55 CEST 2009 - eich@suse.de
 
-- Update patches to apply without fuzz to current package. 
+- Update patches to apply without fuzz to current package.
 
 -------------------------------------------------------------------
 Tue Mar  3 12:52:55 CET 2009 - sndirsch@suse.de
@@ -821,7 +827,7 @@ Tue Mar  3 12:52:55 CET 2009 - sndirsch@suse.de
     symbols/inet restructured.
 - obsoletes xkeyboard-config.powerbook-usb-iso-keyboard.patch,
   unknown-keysym.diff
-- adjusted MDSW-change-keycode.diff, xkeyboard-config.inet.patch 
+- adjusted MDSW-change-keycode.diff, xkeyboard-config.inet.patch
   disable-2xalt_2xctrl-toggle.diff, ucw_suse.diff
 - cs.po.diff
   * removed dup to fix build
@@ -835,7 +841,7 @@ Mon Feb  9 10:27:48 CET 2009 - sndirsch@suse.de
 Thu Feb  5 09:49:28 CET 2009 - sndirsch@suse.de
 
 - added /usr/share/locale/sr@Latn{,LC_MESSAGES} as directories to
-  filelist to fix build for factory 
+  filelist to fix build for factory
 
 -------------------------------------------------------------------
 Mon Sep 15 16:24:33 CEST 2008 - sndirsch@suse.de
@@ -858,8 +864,8 @@ Sun Jul 20 05:32:56 CEST 2008 - sndirsch@suse.de
 
 - xkeyboard-config 1.3
   * Around 40 bugs from freedesktop.org bugzilla were fixed. Dropped
-    old rulesets sgi and sun. Added a lot of metadata, related to 
-    countries and languages. 
+    old rulesets sgi and sun. Added a lot of metadata, related to
+    countries and languages.
 - obsoletes lv.diff
 
 -------------------------------------------------------------------
@@ -871,7 +877,7 @@ Mon Jul  7 18:26:41 CEST 2008 - sndirsch@suse.de
 Wed Jul  2 14:01:32 CEST 2008 - sndirsch@suse.de
 
 - cz_sk-dropKPDL.diff
-  * drop KPDL from cz/sk keyboard layout (bnc #405055, bfo #14479) 
+  * drop KPDL from cz/sk keyboard layout (bnc #405055, bfo #14479)
 
 -------------------------------------------------------------------
 Fri May 16 21:56:42 CEST 2008 - sndirsch@suse.de
@@ -883,7 +889,7 @@ Fri May 16 21:56:42 CEST 2008 - sndirsch@suse.de
 Thu May 15 08:23:45 CEST 2008 - sndirsch@suse.de
 
 - MDSW-change-keycode.diff
-  * change keycode for virtual <MDSW> key (bnc #389943) 
+  * change keycode for virtual <MDSW> key (bnc #389943)
 
 -------------------------------------------------------------------
 Tue May 13 14:45:28 CEST 2008 - sndirsch@suse.de
@@ -910,7 +916,7 @@ Mon Mar 10 16:55:20 CET 2008 - sndirsch@suse.de
 Sat Mar  8 23:51:33 CET 2008 - sndirsch@suse.de
 
 - added support for 'Microsoft Natural Ergonomic Keyboard 4000'
-  (bnc #366515) 
+  (bnc #366515)
 
 -------------------------------------------------------------------
 Tue Mar  4 00:14:31 CET 2008 - sndirsch@suse.de
@@ -973,7 +979,7 @@ Thu Jul 12 04:27:49 CEST 2007 - sndirsch@suse.de
 -------------------------------------------------------------------
 Tue May 22 13:56:32 CEST 2007 - sndirsch@suse.de
 
-- tp-menu.diff: 
+- tp-menu.diff:
   * add mapping for Menu key on new Thinkpads like T60 (Bug #253397)
 
 -------------------------------------------------------------------
@@ -1037,7 +1043,7 @@ Tue Oct 17 11:34:14 CEST 2006 - olh@suse.de
 -------------------------------------------------------------------
 Tue Oct 17 00:08:50 CEST 2006 - olh@suse.de
 
-- fix symbols on macintosh 
+- fix symbols on macintosh
 
 -------------------------------------------------------------------
 Tue Oct 10 11:03:05 CEST 2006 - sndirsch@suse.de
@@ -1050,7 +1056,7 @@ Tue Oct 10 11:03:05 CEST 2006 - sndirsch@suse.de
 - adjusted ibm_space_saver.diff, p_suse.diff
 - obsoletes ISO_Level5.diff, c300.diff, logitech.diff, ralt.diff,
   xkeyboard-config_korean.diff
-- disabled p_macintosh-kb.diff since it no longer applies due to 
+- disabled p_macintosh-kb.diff since it no longer applies due to
   radical changes for Macintosh layout (see above); hopefully it's
   no longer required ...
 
@@ -1058,12 +1064,12 @@ Tue Oct 10 11:03:05 CEST 2006 - sndirsch@suse.de
 Tue Aug  1 20:55:23 CEST 2006 - sndirsch@suse.de
 
 - added xorg-x11 to Requires/BuildRequires to fix build
-- cleanup 
+- cleanup
 
 -------------------------------------------------------------------
 Fri Jul 28 14:43:39 CEST 2006 - sndirsch@suse.de
 
-- use "-fno-strict-aliasing" 
+- use "-fno-strict-aliasing"
 
 -------------------------------------------------------------------
 Thu Jul 27 12:49:40 CEST 2006 - sndirsch@suse.de
@@ -1092,7 +1098,7 @@ Wed Jun 14 06:19:39 CEST 2006 - sndirsch@suse.de
 Sat Jun 10 21:05:15 CEST 2006 - sndirsch@suse.de
 
 - ISO_Level5.diff:
-  * obsoletes ca_multi.diff (Bug #158951, X.Org Bug #4411) 
+  * obsoletes ca_multi.diff (Bug #158951, X.Org Bug #4411)
 
 -------------------------------------------------------------------
 Fri Jun  9 17:51:50 CEST 2006 - sndirsch@suse.de
@@ -1103,7 +1109,7 @@ Fri Jun  9 17:51:50 CEST 2006 - sndirsch@suse.de
 -------------------------------------------------------------------
 Sat Apr 15 21:57:21 CEST 2006 - sndirsch@suse.de
 
-- updated to release 0.8 
+- updated to release 0.8
   * obsoletes khmer.diff, numlock-scrollLock.diff
 
 -------------------------------------------------------------------
@@ -1178,13 +1184,13 @@ Tue Sep  6 11:58:10 CEST 2005 - sndirsch@suse.de
 Thu Aug 25 08:54:33 CEST 2005 - sndirsch@suse.de
 
 - updated to new version 0.6
-  * move Macedonian to country-based 
+  * move Macedonian to country-based
   * translation updates
 
 -------------------------------------------------------------------
 Wed Aug 24 21:59:35 CEST 2005 - sndirsch@suse.de
 
-- updated to current CVS release (2005-08-24) 
+- updated to current CVS release (2005-08-24)
   * fr-latin9 compatibility rule added
   * added Thaana Keyboard Map
   * "Major Balkanian revolution" (Danilo Segan)
@@ -1193,7 +1199,7 @@ Wed Aug 24 21:59:35 CEST 2005 - sndirsch@suse.de
 -------------------------------------------------------------------
 Sat Aug 20 01:16:45 CEST 2005 - sndirsch@suse.de
 
-- updated to current CVS release (2005-08-20) 
+- updated to current CVS release (2005-08-20)
   * updated Iranian layout to new standard (fd.o Bug #4102)
   * updated translations for tr
 
@@ -1243,13 +1249,13 @@ Thu Jul 28 23:36:18 CEST 2005 - sndirsch@suse.de
 -------------------------------------------------------------------
 Tue Jul 26 15:12:41 CEST 2005 - sndirsch@suse.de
 
-- finally remove /etc/X11/xkb/symbols/pc directory of xorg-x11 
+- finally remove /etc/X11/xkb/symbols/pc directory of xorg-x11
   package (%pre)
 
 -------------------------------------------------------------------
 Thu Jul 14 11:08:17 CEST 2005 - sndirsch@suse.de
 
-- added /etc/X11/xkb/xkbcomp to package instead of 
+- added /etc/X11/xkb/xkbcomp to package instead of
   creating/removing the symlink in %post/%preun
 
 -------------------------------------------------------------------
@@ -1262,13 +1268,13 @@ Mon Jul 11 12:36:29 CEST 2005 - sndirsch@suse.de
 -------------------------------------------------------------------
 Wed Jul  6 23:29:01 CEST 2005 - sndirsch@suse.de
 
-- add symlink /usr/X11R6/lib/X11/xkb --> /etc/X11/xkb 
+- add symlink /usr/X11R6/lib/X11/xkb --> /etc/X11/xkb
 
 -------------------------------------------------------------------
 Wed Jul  6 15:19:06 CEST 2005 - sndirsch@suse.de
 
 - install package during update when xorg-x11/XFree86 package was
-  already installed 
+  already installed
 
 -------------------------------------------------------------------
 Wed Jul  6 14:59:37 CEST 2005 - sndirsch@suse.de
@@ -1279,7 +1285,7 @@ Wed Jul  6 14:59:37 CEST 2005 - sndirsch@suse.de
 -------------------------------------------------------------------
 Fri May 13 04:52:20 CEST 2005 - sndirsch@suse.de
 
-- use norootforbuild 
+- use norootforbuild
 
 -------------------------------------------------------------------
 Sun Apr 17 20:00:08 CEST 2005 - sndirsch@suse.de
@@ -1291,10 +1297,10 @@ Sun Feb  6 02:12:30 CET 2005 - sndirsch@suse.de
 
 - updated to release 0.5:
   * More bugs from freedesktop.org bugzilla fixed.
-    The group names now are matching the descriptions - and the 
+    The group names now are matching the descriptions - and the
     validating scripts are implemented.
     Some layouts, variants, models are added/fixed.
-    Some translations are updated (though the overall translation 
+    Some translations are updated (though the overall translation
     activity is disappointinly low).
   * obsoletes p_xkb-cherryblueb.diff
 
@@ -1308,8 +1314,8 @@ Sun Oct 24 22:56:16 CEST 2004 - sndirsch@suse.de
 Sun Oct  3 19:24:51 CEST 2004 - sndirsch@suse.de
 
 - updated to release 0.4:
-  * A lot of fixes. More univeral EURO handling. New urdu layout. 
-    Improved handling for indicators. 
+  * A lot of fixes. More univeral EURO handling. New urdu layout.
+    Improved handling for indicators.
 
 -------------------------------------------------------------------
 Wed Sep 29 18:36:30 CEST 2004 - sndirsch@suse.de
@@ -1320,7 +1326,7 @@ Wed Sep 29 18:36:30 CEST 2004 - sndirsch@suse.de
 Sat Jul 24 02:13:58 CEST 2004 - sndirsch@suse.de
 
 - updated to release 0.3
-  * adjusted patches p_XFree86-4.3-kbdmapping.diff, 
+  * adjusted patches p_XFree86-4.3-kbdmapping.diff,
     p_xkb-cherryblueb.diff
   * adjusted filelist (.mo files no longer exist, added HOWTO.testing)
 
@@ -1333,10 +1339,10 @@ Wed Jul 21 11:21:09 CEST 2004 - sndirsch@suse.de
 Sun Jun 13 00:32:45 CEST 2004 - sndirsch@suse.de
 
 - added required hunks of X.Org patches for xkb:
-  * p_suse.diff  
-  * p_fixes.diff  
+  * p_suse.diff
+  * p_fixes.diff
   * p_xkb-cherryblueb.diff
-  * p_XFree86-4.3-kbdmapping.diff  
+  * p_XFree86-4.3-kbdmapping.diff
   * p_macintosh-kb.diff
 
 -------------------------------------------------------------------

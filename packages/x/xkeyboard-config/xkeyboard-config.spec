@@ -17,7 +17,7 @@
 
 
 Name:           xkeyboard-config
-Version:        2.41
+Version:        2.42
 Release:        0
 Summary:        The X Keyboard Extension
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
