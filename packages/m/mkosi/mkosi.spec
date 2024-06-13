@@ -19,15 +19,13 @@
 %define pythons python3
 
 Name:           mkosi
-Version:        22
+Version:        23.1
 Release:        0
 Summary:        Build Legacy-Free OS Images
 License:        LGPL-2.1-or-later
 Group:          System/Management
 URL:            https://github.com/systemd/mkosi
 Source:         https://github.com/systemd/mkosi/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/systemd/mkosi/pull/2606
-Patch0:         opensuse-dont-install-distribution-release-by-default.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
