@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">v0.52.0</param>
+    <param name="revision">v0.53.0</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual">
