@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 10 22:26:15 UTC 2024 - João Pedro Blos Lopes <jpblopes@gmail.com>
+
+- Fix build with ICU >= 75.
+- Add patch:
+  * use_cxx17_standard.patch
+- Patch from Arch Linux.
+
+-------------------------------------------------------------------
 Tue Apr 23 00:21:57 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 5.8.0

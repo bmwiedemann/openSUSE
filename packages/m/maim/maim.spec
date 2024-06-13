@@ -40,6 +40,10 @@ BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(zlib)
+%if 0%{?suse_version} > 1600
+# We must use the C++17 standard if we're using ICU >= 75
+Patch0:         use_cxx17_standard.patch
+%endif
 
 %description
 maim (Make Image) is a utility that takes screenshots of the desktop
