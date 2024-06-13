@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 12 14:19:45 UTC 2024 - dmueller@suse.com
+
+- Update to version 0.52.1:
+  * release: v0.52.1 [release/v0.52] (#6877)
+  * fix(nodejs): fix infinite loop when package link from `package-lock.json` file is broken [backport: release/v0.52] (#6888)
+  * fix(sbom): don't overwrite `srcEpoch` when decoding SBOM files [backport: release/v0.52] (#6881)
+  * fix(python): compare pkg names from `poetry.lock` and `pyproject.toml` in lowercase [backport: release/v0.52] (#6878)
+  * docs: explain how VEX is applied (#6864)
+  * fix(nodejs): fix infinity loops for `pnpm` with cyclic imports (#6857)
+
+-------------------------------------------------------------------
 Thu Jun 06 13:09:56 UTC 2024 - dmueller@suse.com
 
 - Update to version 0.52.0 (bsc#1224781, CVE-2024-35192):
