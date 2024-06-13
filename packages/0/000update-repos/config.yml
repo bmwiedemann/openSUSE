@@ -48,3 +48,23 @@
 - 15.4:non-oss:update:
     refresh: true
     url: http://downloadcontent.opensuse.org/update/leap/15.4/non-oss
+- 15.5:
+    url: http://downloadcontent.opensuse.org/distribution/leap/15.5/repo/oss
+- 15.5:non-oss:
+    url: http://downloadcontent.opensuse.org/distribution/leap/15.5/repo/non-oss
+- 15.5:update:
+    refresh: true
+    url: http://downloadcontent.opensuse.org/update/leap/15.5/oss
+- 15.5:non-oss:update:
+    refresh: true
+    url: http://downloadcontent.opensuse.org/update/leap/15.5/non-oss
+- 15.6:
+    url: http://downloadcontent.opensuse.org/distribution/leap/15.6/repo/oss
+- 15.6:non-oss:
+    url: http://downloadcontent.opensuse.org/distribution/leap/15.6/repo/non-oss
+- 15.6:update:
+    refresh: true
+    url: http://downloadcontent.opensuse.org/update/leap/15.6/oss
+- 15.6:non-oss:update:
+    refresh: true
+    url: http://downloadcontent.opensuse.org/update/leap/15.6/non-oss
