@@ -1243,4 +1243,12 @@
     <comment>KDE release 24.05.0 (forwarded request 1175936 from krop)</comment>
     <requestid>1176264</requestid>
   </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>7ad0f1a8faf50a5250ae83475447efe5</srcmd5>
+    <version>24.05.1</version>
+    <time>1718384299</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 24.05.1 (forwarded request 1180225 from krop)</comment>
+    <requestid>1180476</requestid>
+  </revision>
 </revisionlist>
