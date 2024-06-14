@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-power-manager
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define panel_version 4.12.0
 %bcond_with git
 Name:           xfce4-power-manager
-Version:        4.18.3
+Version:        4.18.4
 Release:        0
 Summary:        Power Management for the Xfce Desktop Environment
 License:        GPL-2.0-or-later

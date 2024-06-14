@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jun  9 18:24:42 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.4
+  * Update copyright year
+  * power: Fix overall charge state calculation
+  * systray-icon: Handle scroll events
+  * Only show desktop files in Xfce
+  * main: Add missing newline in version info
+  * Remove outdated references to xfce-goodies
+  * pm-helper: Add missing GError initialization
+  * settings: Fix debug log
+  * settings: Fix inconsistent ref values between ui and gobject
+  * Fix initial state of "Handle brightness keys" switch in settings UI
+  * Ungrab brightness keys when not handling them
+  * Revert "Fix system-sleep-inactivity min value"
+  * Fix system-sleep-inactivity min value
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Nov 30 17:16:07 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.18.3
