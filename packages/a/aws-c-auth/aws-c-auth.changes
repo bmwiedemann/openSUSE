@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 13 12:32:10 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.22
+  * trivial: add_net_test_case for credentials_provider_ecs_basic_success_uri_env
+    test by @waahm7 in (#240)
+
+-------------------------------------------------------------------
 Mon May 13 08:36:07 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.7.21
