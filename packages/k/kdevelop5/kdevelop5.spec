@@ -20,7 +20,7 @@
 %define libkdev_major 514
 %bcond_without released
 Name:           kdevelop5
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        Plugin-extensible IDE for C/C++ and other programming languages
 License:        GPL-2.0-or-later
@@ -30,7 +30,7 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{riscv}
+ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{x86_64} %{riscv}
 BuildRequires:  clang-devel
 BuildRequires:  extra-cmake-modules
 %if 0%{?suse_version} == 1500
