@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-io
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           plexus-io
-Version:        3.4.1
+Version:        3.4.2
 Release:        0
 Summary:        Plexus IO Components
 License:        Apache-2.0
@@ -51,9 +51,6 @@ API documentation for %{name}.
 %setup -q -n %{name}-%{name}-%{version}
 cp %{SOURCE1} build.xml
 cp %{SOURCE2} .
-
-%pom_remove_plugin :animal-sniffer-maven-plugin
-%pom_remove_plugin :maven-enforcer-plugin
 
 %build
 mkdir -p lib
