@@ -18,11 +18,11 @@
 
 %define kf6_version 6.0.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.80
+%define kpim6_version 6.1.1
 
 %bcond_without released
 Name:           akonadiconsole
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        Management and debugging console for akonadi
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -62,7 +62,7 @@ BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Obsoletes:      akonadi_resources < %{version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 %{x86_64} aarch64 riscv64
 
 %description
 Akonadi Console is a utility that can be used to explore or manage
