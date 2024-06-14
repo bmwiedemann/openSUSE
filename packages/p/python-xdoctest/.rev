@@ -67,4 +67,19 @@
 - No more globs in %files.</comment>
     <requestid>1143162</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cbf6d93a55b3438c36d32ee19483adee</srcmd5>
+    <version>1.1.5</version>
+    <time>1718384510</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.5:
+  * Minor modification to `xdoctest --version-info` and exposed
+    it in CLI help.
+  * `ub.modname_to_modpath` fixed in cases where editable
+    installs use type annotations in their MAPPING definition.
+  * Working around a `modname_to_modpath` issue.
+
+- drop 97.patch, upstream</comment>
+    <requestid>1180729</requestid>
+  </revision>
 </revisionlist>
