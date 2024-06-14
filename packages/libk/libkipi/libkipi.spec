@@ -19,7 +19,7 @@
 %define _soversion 32_0_0
 %bcond_without released
 Name:           libkipi
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        KDE Image Plugin Interface
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
