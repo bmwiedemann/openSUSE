@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 13 14:51:29 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Update to alsa-lib 1.2.12:
+  * pcm: plug support for iec958 subframe samples
+  * pcm: ladspa - Skip missing ladspa directories
+  * topology: correct version script path
+  * ucm: define and describe Syntax 7
+  * async handler cleanup fix
+  * conf updates
+  For details, see:
+    https://www.alsa-project.org/wiki/Changes_v1.2.11_v1.2.12#alsa-lib
+
+-------------------------------------------------------------------
 Fri Feb  2 14:49:30 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
 - Updated to alsa-lib 1.2.11:
