@@ -62,4 +62,12 @@ Fixed requires for glxinfo and rpm category since we're at it.</comment>
     <comment></comment>
     <requestid>1156115</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>aeb288797aa96707ba037da3796ca0b7</srcmd5>
+    <version>0.2</version>
+    <time>1718384516</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1180739</requestid>
+  </revision>
 </revisionlist>

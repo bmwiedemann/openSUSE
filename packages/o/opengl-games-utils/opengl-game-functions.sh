@@ -1,6 +1,6 @@
 # check if DRI is available, true if it is, false otherwise
 
-function hasDri ()
+hasDri ()
 {
   if [ "`glxinfo | grep "direct rendering: " | head -n 1 | cut -d " " -f 3`" != Yes ] ||
      glxinfo | grep -qE "OpenGL renderer string: Software Rasterizer|OpenGL renderer string: Gallium .* on llvmpipe"; then
@@ -12,7 +12,7 @@ function hasDri ()
 
 # check if DRI is available, show an error and exit if it isn't
 
-function checkDriOK ()
+checkDriOK ()
 {
   if ! hasDri; then
     zenity --error --text="Your system currently is not capable of hardware \

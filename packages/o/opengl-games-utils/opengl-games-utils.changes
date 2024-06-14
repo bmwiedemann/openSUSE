@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 13 09:29:07 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Fix dash compatibility again (bsc#1195391)
+
+-------------------------------------------------------------------
 Mon Feb 26 12:46:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autopatch macro. Allows to eliminate the usage of deprecated
