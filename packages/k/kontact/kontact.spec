@@ -18,11 +18,11 @@
 
 %define kf6_version 6.0.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.80
+%define kpim6_version 6.1.1
 
 %bcond_without released
 Name:           kontact
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        Personal Information Manager
 License:        GPL-2.0-or-later
@@ -55,7 +55,7 @@ Suggests:       korganizer
 Provides:       kontact5 = %{version}
 Obsoletes:      kontact5 < %{version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 %{x86_64} aarch64 riscv64
 
 %description
 Kontact combines the individual applications KMail, KAddressBook and
