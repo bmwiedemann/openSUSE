@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 13 17:09:48 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.27.0
+  * New features and improvements
+    + Added support for PPC64LE
+    + Add dependabot and release drafter configuration
+    + Move to Junit5
+  * Dependency updates
+    + Bump plexus from 7 to 16
+    + Bump maven-bundle-plugin from 3.0.1 to 5.1.9
+
+-------------------------------------------------------------------
 Sun Mar 20 15:43:05 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 1.8
