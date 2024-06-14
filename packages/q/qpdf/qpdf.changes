@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 13 15:34:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 11.9.1:
+  * Rewrite a recursive function to be iterative in linearization
+    to enable more complex files to be linearized, especially on
+    Windows.
+  * Avoid non-standard use of `std::basic_string_view`.
+
+-------------------------------------------------------------------
 Thu Feb 29 12:11:58 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 11.9.0:

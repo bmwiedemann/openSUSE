@@ -934,4 +934,16 @@
     <comment></comment>
     <requestid>1153455</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>d0b64b8116059a02173f664215b71c8f</srcmd5>
+    <version>11.9.1</version>
+    <time>1718384271</time>
+    <user>anag+factory</user>
+    <comment>- update to 11.9.1:
+  * Rewrite a recursive function to be iterative in linearization
+    to enable more complex files to be linearized, especially on
+    Windows.
+  * Avoid non-standard use of `std::basic_string_view`.</comment>
+    <requestid>1180732</requestid>
+  </revision>
 </revisionlist>
