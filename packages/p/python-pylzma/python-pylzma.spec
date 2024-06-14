@@ -27,6 +27,8 @@ Source0:        https://github.com/fancycode/pylzma/archive/v%{version}.tar.gz
 # PATCH-FIX-UPSTREAM python-pylzma-test-python3.patch gh#fancycode/pylzma#76 mcepl@suse.com
 # use python3 syntax in test_usage.py
 Patch0:         python-pylzma-test-python3.patch
+# PATCH-FIX-UPSTREAM python-pylzma-gcc14.patch gh#fancycode/pylzma#81 glaubitz@suse.com
+Patch1:         python-pylzma-gcc14.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

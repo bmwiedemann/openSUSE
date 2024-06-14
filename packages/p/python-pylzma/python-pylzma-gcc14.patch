@@ -1,0 +1,352 @@
+From fd87f83df086feb85eaf75a5a7267b10329e05be Mon Sep 17 00:00:00 2001
+From: John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>
+Date: Thu, 13 Jun 2024 13:09:00 +0200
+Subject: [PATCH] Fix multiple instances of incorrect definitions of
+ PyTypeObject
+
+Fixes #80
+---
+ src/pylzma/pylzma_aes.c                  | 60 +++++++++-------
+ src/pylzma/pylzma_compressfile.c         | 62 ++++++++++-------
+ src/pylzma/pylzma_decompressobj.c        | 60 +++++++++-------
+ src/pylzma/pylzma_decompressobj_compat.c | 88 ++++++++++++++----------
+ 4 files changed, 159 insertions(+), 111 deletions(-)
+
+diff --git a/src/pylzma/pylzma_aes.c b/src/pylzma/pylzma_aes.c
+index 4d9a32b..d2af5e6 100644
+--- a/src/pylzma/pylzma_aes.c
++++ b/src/pylzma/pylzma_aes.c
+@@ -155,10 +155,10 @@ CAESDecrypt_Type = {
+     sizeof(CAESDecryptObject),           /* int tp_basicsize; */
+     0,                                   /* int tp_itemsize;       // not used much */
+     NULL,                                /* destructor tp_dealloc; */
+-    NULL,                                /* printfunc  tp_print;   */
++    0,                                   /* Py_ssize_t tp_vectorcall_offset; */
+     NULL,                                /* getattrfunc  tp_getattr; // __getattr__ */
+     NULL,                                /* setattrfunc  tp_setattr;  // __setattr__ */
+-    NULL,                                /* cmpfunc  tp_compare;  // __cmp__ */
++    NULL,                                /* PyAsyncMethods *tp_as_async; */
+     NULL,                                /* reprfunc  tp_repr;    // __repr__ */
+     NULL,                                /* PyNumberMethods *tp_as_number; */
+     NULL,                                /* PySequenceMethods *tp_as_sequence; */
+@@ -166,26 +166,38 @@ CAESDecrypt_Type = {
+     NULL,                                /* hashfunc tp_hash;     // __hash__ */
+     NULL,                                /* ternaryfunc tp_call;  // __call__ */
+     NULL,                                /* reprfunc tp_str;      // __str__ */
+-    0,                                   /* tp_getattro*/
+-    0,                                   /* tp_setattro*/
+-    0,                                   /* tp_as_buffer*/
+-    Py_TPFLAGS_DEFAULT,  /*tp_flags*/
+-    "AES decryption class",                 /* tp_doc */
+-    0,                                   /* tp_traverse */
+-    0,                                   /* tp_clear */
+-    0,                                   /* tp_richcompare */
+-    0,                                   /* tp_weaklistoffset */
+-    0,                                   /* tp_iter */
+-    0,                                   /* tp_iternext */
+-    aesdecrypt_methods,                  /* tp_methods */
+-    0,                                   /* tp_members */
+-    0,                                   /* tp_getset */
+-    0,                                   /* tp_base */
+-    0,                                   /* tp_dict */
+-    0,                                   /* tp_descr_get */
+-    0,                                   /* tp_descr_set */
+-    0,                                   /* tp_dictoffset */
+-    (initproc)aesdecrypt_init,           /* tp_init */
+-    0,                                   /* tp_alloc */
+-    0,                                   /* tp_new */
++    0,                                   /* getattrofunc tp_getattro; */
++    0,                                   /* setattrofunc tp_setattro; */
++    NULL,                                /* PyBufferProcs *tp_as_buffer; */
++    Py_TPFLAGS_DEFAULT,                  /* unsigned long tp_flags; */
++    "AES decryption class",              /* const char *tp_doc; */
++    0,                                   /* traverseproc tp_traverse; */
++    0,                                   /* inquiry tp_clear; */
++    0,                                   /* richcmpfunc tp_richcompare; */
++    0,                                   /* Py_ssize_t tp_weaklistoffset; */
++    0,                                   /* getiterfunc tp_iter; */
++    0,                                   /* iternextfunc tp_iternext; */
++    aesdecrypt_methods,                  /* struct PyMethodDef *tp_methods; */
++    NULL,                                /* struct PyMemberDef *tp_members; */
++    NULL,                                /* struct PyGetSetDef *tp_getset; */
++    NULL,                                /* struct _typeobject *tp_base; */
++    NULL,                                /* PyObject *tp_dict; */
++    0,                                   /* descrgetfunc tp_descr_get; */
++    0,                                   /* descrsetfunc tp_descr_set; */
++    0,                                   /* Py_ssize_t tp_dictoffset; */
++    (initproc)aesdecrypt_init,           /* initproc tp_init; */
++    NULL,                                /* allocfunc tp_alloc; */
++    NULL,                                /* newfunc tp_new; */
++    NULL,                                /* freefunc tp_free; */
++    NULL,                                /* inquiry tp_is_gc; */
++    NULL,                                /* PyObject *tp_bases; */
++    NULL,                                /* PyObject *tp_mro; */
++    NULL,                                /* PyObject *tp_cache; */
++    NULL,                                /* PyObject *tp_subclasses; */
++    NULL,                                /* PyObject *tp_weaklist; */
++    NULL,                                /* destructor tp_del; */
++    0,                                   /* unsigned int tp_version_tag; */
++    NULL,                                /* destructor tp_finalize; */
++    NULL,                                /* vectorcallfunc tp_vectorcall; */
++    0                                    /* unsigned char tp_watched; */
+ };
+diff --git a/src/pylzma/pylzma_compressfile.c b/src/pylzma/pylzma_compressfile.c
+index 269f7aa..1d73016 100644
+--- a/src/pylzma/pylzma_compressfile.c
++++ b/src/pylzma/pylzma_compressfile.c
+@@ -227,14 +227,14 @@ pylzma_compfile_init(CCompressionFileObject *self, PyObject *args, PyObject *kwa
+ PyTypeObject
+ CCompressionFileObject_Type = {
+     PyVarObject_HEAD_INIT(NULL, 0)
+-    "pylzma.compressfile",                  /* char *tp_name; */
++    "pylzma.compressfile",               /* char *tp_name; */
+     sizeof(CCompressionFileObject),      /* int tp_basicsize; */
+     0,                                   /* int tp_itemsize;       // not used much */
+     (destructor)pylzma_compfile_dealloc, /* destructor tp_dealloc; */
+-    NULL,                                /* printfunc  tp_print;   */
++    0,                                   /* Py_ssize_t tp_vectorcall_offset; */
+     NULL,                                /* getattrfunc  tp_getattr; // __getattr__ */
+     NULL,                                /* setattrfunc  tp_setattr;  // __setattr__ */
+-    NULL,                                /* cmpfunc  tp_compare;  // __cmp__ */
++    NULL,                                /* PyAsyncMethods *tp_as_async; */
+     NULL,                                /* reprfunc  tp_repr;    // __repr__ */
+     NULL,                                /* PyNumberMethods *tp_as_number; */
+     NULL,                                /* PySequenceMethods *tp_as_sequence; */
+@@ -242,26 +242,38 @@ CCompressionFileObject_Type = {
+     NULL,                                /* hashfunc tp_hash;     // __hash__ */
+     NULL,                                /* ternaryfunc tp_call;  // __call__ */
+     NULL,                                /* reprfunc tp_str;      // __str__ */
+-    0,                                   /* tp_getattro*/
+-    0,                                   /* tp_setattro*/
+-    0,                                   /* tp_as_buffer*/
+-    Py_TPFLAGS_DEFAULT,  /*tp_flags*/
+-    "File compression class",           /* tp_doc */
+-    0,                                   /* tp_traverse */
+-    0,                                   /* tp_clear */
+-    0,                                   /* tp_richcompare */
+-    0,                                   /* tp_weaklistoffset */
+-    0,                                   /* tp_iter */
+-    0,                                   /* tp_iternext */
+-    pylzma_compfile_methods,             /* tp_methods */
+-    0,                                   /* tp_members */
+-    0,                                   /* tp_getset */
+-    0,                                   /* tp_base */
+-    0,                                   /* tp_dict */
+-    0,                                   /* tp_descr_get */
+-    0,                                   /* tp_descr_set */
+-    0,                                   /* tp_dictoffset */
+-    (initproc)pylzma_compfile_init,      /* tp_init */
+-    0,                                   /* tp_alloc */
+-    0,                                   /* tp_new */
++    0,                                   /* getattrofunc tp_getattro; */
++    0,                                   /* setattrofunc tp_setattro; */
++    NULL,                                /* PyBufferProcs *tp_as_buffer; */
++    Py_TPFLAGS_DEFAULT,                  /* unsigned long tp_flags; */
++    "File compression class",            /* const char *tp_doc; */
++    0,                                   /* traverseproc tp_traverse; */
++    0,                                   /* inquiry tp_clear; */
++    0,                                   /* richcmpfunc tp_richcompare; */
++    0,                                   /* Py_ssize_t tp_weaklistoffset; */
++    0,                                   /* getiterfunc tp_iter; */
++    0,                                   /* iternextfunc tp_iternext; */
++    pylzma_compfile_methods,             /* struct PyMethodDef *tp_methods; */
++    NULL,                                /* struct PyMemberDef *tp_members; */
++    NULL,                                /* struct PyGetSetDef *tp_getset; */
++    NULL,                                /* struct _typeobject *tp_base; */
++    NULL,                                /* PyObject *tp_dict; */
++    0,                                   /* descrgetfunc tp_descr_get; */
++    0,                                   /* descrsetfunc tp_descr_set; */
++    0,                                   /* Py_ssize_t tp_dictoffset; */
++    (initproc)pylzma_compfile_init,      /* initproc tp_init; */
++    NULL,                                /* allocfunc tp_alloc; */
++    NULL,                                /* newfunc tp_new; */
++    NULL,                                /* freefunc tp_free; */
++    NULL,                                /* inquiry tp_is_gc; */
++    NULL,                                /* PyObject *tp_bases; */
++    NULL,                                /* PyObject *tp_mro; */
++    NULL,                                /* PyObject *tp_cache; */
++    NULL,                                /* PyObject *tp_subclasses; */
++    NULL,                                /* PyObject *tp_weaklist; */
++    NULL,                                /* destructor tp_del; */
++    0,                                   /* unsigned int tp_version_tag; */
++    NULL,                                /* destructor tp_finalize; */
++    NULL,                                /* vectorcallfunc tp_vectorcall; */
++    0                                    /* unsigned char tp_watched; */
+ };
+diff --git a/src/pylzma/pylzma_decompressobj.c b/src/pylzma/pylzma_decompressobj.c
+index 5f452c7..d32a32c 100644
+--- a/src/pylzma/pylzma_decompressobj.c
++++ b/src/pylzma/pylzma_decompressobj.c
+@@ -382,10 +382,10 @@ CDecompressionObject_Type = {
+     sizeof(CDecompressionObject),        /* int tp_basicsize; */
+     0,                                   /* int tp_itemsize;       // not used much */
+     (destructor)pylzma_decomp_dealloc,   /* destructor tp_dealloc; */
+-    NULL,                                /* printfunc  tp_print;   */
++    0,                                   /* Py_ssize_t tp_vectorcall_offset; */
+     NULL,                                /* getattrfunc  tp_getattr; // __getattr__ */
+     NULL,                                /* setattrfunc  tp_setattr;  // __setattr__ */
+-    NULL,                                /* cmpfunc  tp_compare;  // __cmp__ */
++    NULL,                                /* PyAsyncMethods *tp_as_async; */
+     NULL,                                /* reprfunc  tp_repr;    // __repr__ */
+     NULL,                                /* PyNumberMethods *tp_as_number; */
+     NULL,                                /* PySequenceMethods *tp_as_sequence; */
+@@ -393,26 +393,38 @@ CDecompressionObject_Type = {
+     NULL,                                /* hashfunc tp_hash;     // __hash__ */
+     NULL,                                /* ternaryfunc tp_call;  // __call__ */
+     NULL,                                /* reprfunc tp_str;      // __str__ */
+-    0,                                   /* tp_getattro*/
+-    0,                                   /* tp_setattro*/
+-    0,                                   /* tp_as_buffer*/
+-    Py_TPFLAGS_DEFAULT,                  /*tp_flags*/
+-    "Decompression class",               /* tp_doc */
+-    0,                                   /* tp_traverse */
+-    0,                                   /* tp_clear */
+-    0,                                   /* tp_richcompare */
+-    0,                                   /* tp_weaklistoffset */
+-    0,                                   /* tp_iter */
+-    0,                                   /* tp_iternext */
+-    pylzma_decomp_methods,               /* tp_methods */
+-    0,                                   /* tp_members */
+-    0,                                   /* tp_getset */
+-    0,                                   /* tp_base */
+-    0,                                   /* tp_dict */
+-    0,                                   /* tp_descr_get */
+-    0,                                   /* tp_descr_set */
+-    0,                                   /* tp_dictoffset */
+-    (initproc)pylzma_decomp_init,        /* tp_init */
+-    0,                                   /* tp_alloc */
+-    0,                                   /* tp_new */
++    0,                                   /* getattrofunc tp_getattro; */
++    0,                                   /* setattrofunc tp_setattro; */
++    NULL,                                /* PyBufferProcs *tp_as_buffer; */
++    Py_TPFLAGS_DEFAULT,                  /* unsigned long tp_flags; */
++    "Decompression class",               /* const char *tp_doc; */
++    0,                                   /* traverseproc tp_traverse; */
++    0,                                   /* inquiry tp_clear; */
++    0,                                   /* richcmpfunc tp_richcompare; */
++    0,                                   /* Py_ssize_t tp_weaklistoffset; */
++    0,                                   /* getiterfunc tp_iter; */
++    0,                                   /* iternextfunc tp_iternext; */
++    pylzma_decomp_methods,               /* struct PyMethodDef *tp_methods; */
++    NULL,                                /* struct PyMemberDef *tp_members; */
++    NULL,                                /* struct PyGetSetDef *tp_getset; */
++    NULL,                                /* struct _typeobject *tp_base; */
++    NULL,                                /* PyObject *tp_dict; */
++    0,                                   /* descrgetfunc tp_descr_get; */
++    0,                                   /* descrsetfunc tp_descr_set; */
++    0,                                   /* Py_ssize_t tp_dictoffset; */
++    (initproc)pylzma_decomp_init,        /* initproc tp_init; */
++    NULL,                                /* allocfunc tp_alloc; */
++    NULL,                                /* newfunc tp_new; */
++    NULL,                                /* freefunc tp_free; */
++    NULL,                                /* inquiry tp_is_gc; */
++    NULL,                                /* PyObject *tp_bases; */
++    NULL,                                /* PyObject *tp_mro; */
++    NULL,                                /* PyObject *tp_cache; */
++    NULL,                                /* PyObject *tp_subclasses; */
++    NULL,                                /* PyObject *tp_weaklist; */
++    NULL,                                /* destructor tp_del; */
++    0,                                   /* unsigned int tp_version_tag; */
++    NULL,                                /* destructor tp_finalize; */
++    NULL,                                /* vectorcallfunc tp_vectorcall; */
++    0                                    /* unsigned char tp_watched; */
+ };
+diff --git a/src/pylzma/pylzma_decompressobj_compat.c b/src/pylzma/pylzma_decompressobj_compat.c
+index 484a695..05f48b8 100644
+--- a/src/pylzma/pylzma_decompressobj_compat.c
++++ b/src/pylzma/pylzma_decompressobj_compat.c
+@@ -197,44 +197,56 @@ PyMemberDef pylzma_decomp_compat_members[] = {
+ };
+ 
+ PyTypeObject CompatDecompressionObject_Type = {
+-  PyVarObject_HEAD_INIT(NULL, 0)
+-  "LZMACompatDecompress",              /* char *tp_name; */
+-  sizeof(CCompatDecompressionObject),  /* int tp_basicsize; */
+-  0,                                   /* int tp_itemsize;       // not used much */
+-  (destructor)pylzma_decomp_dealloc,   /* destructor tp_dealloc; */
+-  NULL,                                /* printfunc  tp_print;   */
+-  NULL,                                /* getattrfunc  tp_getattr; // __getattr__ */
+-  NULL,                                /* setattrfunc  tp_setattr;  // __setattr__ */
+-  NULL,                                /* cmpfunc  tp_compare;  // __cmp__ */
+-  NULL,                                /* reprfunc  tp_repr;    // __repr__ */
+-  NULL,                                /* PyNumberMethods *tp_as_number; */
+-  NULL,                                /* PySequenceMethods *tp_as_sequence; */
+-  NULL,                                /* PyMappingMethods *tp_as_mapping; */
+-  NULL,                                /* hashfunc tp_hash;     // __hash__ */
+-  NULL,                                /* ternaryfunc tp_call;  // __call__ */
+-  NULL,                                /* reprfunc tp_str;      // __str__ */
+-  NULL,                                /* tp_getattro*/
+-  NULL,                                /* tp_setattro*/
+-  NULL,                                /* tp_as_buffer*/
+-  Py_TPFLAGS_DEFAULT,                  /* tp_flags*/
+-  "Compat decompression class",        /* tp_doc */
+-  NULL,                                /* tp_traverse */
+-  NULL,                                /* tp_clear */
+-  NULL,                                /* tp_richcompare */
+-  0,                                   /* tp_weaklistoffset */
+-  NULL,                                /* tp_iter */
+-  NULL,                                /* tp_iternext */
+-  pylzma_decomp_compat_methods,        /* tp_methods */
+-  pylzma_decomp_compat_members,        /* tp_members */
+-  NULL,                                /* tp_getset */
+-  NULL,                                /* tp_base */
+-  NULL,                                /* tp_dict */
+-  NULL,                                /* tp_descr_get */
+-  NULL,                                /* tp_descr_set */
+-  0,                                   /* tp_dictoffset */
+-  NULL,                                /* tp_init */
+-  NULL,                                /* tp_alloc */
+-  NULL,                                /* tp_new */
++    PyVarObject_HEAD_INIT(NULL, 0)
++    "LZMACompatDecompress",              /* char *tp_name; */
++    sizeof(CCompatDecompressionObject),  /* int tp_basicsize; */
++    0,                                   /* int tp_itemsize;       // not used much */
++    (destructor)pylzma_decomp_dealloc,   /* destructor tp_dealloc; */
++    0,                                   /* Py_ssize_t tp_vectorcall_offset; */
++    NULL,                                /* getattrfunc  tp_getattr; // __getattr__ */
++    NULL,                                /* setattrfunc  tp_setattr;  // __setattr__ */
++    NULL,                                /* PyAsyncMethods *tp_as_async; */
++    NULL,                                /* reprfunc  tp_repr;    // __repr__ */
++    NULL,                                /* PyNumberMethods *tp_as_number; */
++    NULL,                                /* PySequenceMethods *tp_as_sequence; */
++    NULL,                                /* PyMappingMethods *tp_as_mapping; */
++    NULL,                                /* hashfunc tp_hash;     // __hash__ */
++    NULL,                                /* ternaryfunc tp_call;  // __call__ */
++    NULL,                                /* reprfunc tp_str;      // __str__ */
++    0,                                   /* getattrofunc tp_getattro; */
++    0,                                   /* setattrofunc tp_setattro; */
++    NULL,                                /* PyBufferProcs *tp_as_buffer; */
++    Py_TPFLAGS_DEFAULT,                  /* unsigned long tp_flags; */
++    "Compat decompression class",        /* const char *tp_doc; */
++    0,                                   /* traverseproc tp_traverse; */
++    0,                                   /* inquiry tp_clear; */
++    0,                                   /* richcmpfunc tp_richcompare; */
++    0,                                   /* Py_ssize_t tp_weaklistoffset; */
++    0,                                   /* getiterfunc tp_iter; */
++    0,                                   /* iternextfunc tp_iternext; */
++    pylzma_decomp_compat_methods,        /* struct PyMethodDef *tp_methods; */
++    pylzma_decomp_compat_members,        /* struct PyMemberDef *tp_members; */
++    NULL,                                /* struct PyGetSetDef *tp_getset; */
++    NULL,                                /* struct _typeobject *tp_base; */
++    NULL,                                /* PyObject *tp_dict; */
++    0,                                   /* descrgetfunc tp_descr_get; */
++    0,                                   /* descrsetfunc tp_descr_set; */
++    0,                                   /* Py_ssize_t tp_dictoffset; */
++    NULL,                                /* initproc tp_init; */
++    NULL,                                /* allocfunc tp_alloc; */
++    NULL,                                /* newfunc tp_new; */
++    NULL,                                /* freefunc tp_free; */
++    NULL,                                /* inquiry tp_is_gc; */
++    NULL,                                /* PyObject *tp_bases; */
++    NULL,                                /* PyObject *tp_mro; */
++    NULL,                                /* PyObject *tp_cache; */
++    NULL,                                /* PyObject *tp_subclasses; */
++    NULL,                                /* PyObject *tp_weaklist; */
++    NULL,                                /* destructor tp_del; */
++    0,                                   /* unsigned int tp_version_tag; */
++    NULL,                                /* destructor tp_finalize; */
++    NULL,                                /* vectorcallfunc tp_vectorcall; */
++    0                                    /* unsigned char tp_watched; */
+ };
+ 
+ const char doc_decompressobj_compat[] = \

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 13 11:16:31 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Cherry-pick upstream patch to fix build with GCC 14
+  * python-pylzma-gcc14.patch
+
+-------------------------------------------------------------------
 Fri Mar  8 04:17:08 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to autosetup and pyproject macro.
