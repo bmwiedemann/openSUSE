@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kosmindoormap
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        OSM multi-floor indoor map renderer
 License:        LGPL-2.0-or-later AND CC0-1.0
@@ -42,7 +42,10 @@ BuildRequires:  cmake(KPublicTransport)
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+# Fails because of https://bugzilla.opensuse.org/show_bug.cgi?id=1222343
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150500
 BuildRequires:  pkgconfig(protobuf)
+%endif
 BuildRequires:  pkgconfig(zlib)
 
 %description
