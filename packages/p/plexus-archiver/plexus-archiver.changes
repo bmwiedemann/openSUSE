@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun 13 16:12:11 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 4.9.2
+  * New features and improvements
+    + Allow copy all files without timestamp checking by
+      DirectoryArchiver
+    + Provide fluent setter for usingDefaultExcludes flag in
+      AbstractFileSet
+    + Upgrade many dependencies
+- Modified patches:
+  * 0001-Remove-support-for-snappy.patch
+  * plexus-archiver-4.8.0-no_zstd.patch ->
+    0002-Remove-support-for-zstd.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
 Tue Feb 20 14:53:23 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

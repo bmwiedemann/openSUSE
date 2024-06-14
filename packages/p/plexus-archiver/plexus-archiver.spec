@@ -17,7 +17,7 @@
 
 
 Name:           plexus-archiver
-Version:        4.8.0
+Version:        4.9.2
 Release:        0
 Summary:        Plexus Archiver Component
 License:        Apache-2.0
@@ -26,7 +26,7 @@ URL:            https://codehaus-plexus.github.io/plexus-archiver
 Source0:        https://github.com/codehaus-plexus/plexus-archiver/archive/plexus-archiver-%{version}.tar.gz
 Source1:        %{name}-build.xml
 Patch0:         0001-Remove-support-for-snappy.patch
-Patch1:         plexus-archiver-4.8.0-no_zstd.patch
+Patch1:         0002-Remove-support-for-zstd.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-compress
 BuildRequires:  apache-commons-io
