@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Thu Jun 13 08:12:47 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20240613:
+  * Allow systemd_fstab_generator_t read tmpfs files (bsc#1223599)
+
+-------------------------------------------------------------------
+Wed Jun 12 08:43:02 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20240612:
+  * Allow all domains read and write z90crypt device
+  * Allow tpm2 generator setfscreate
+  * Allow systemd (PID 1) manage systemd conf files
+  * Allow pulseaudio map its runtime files
+  * Update policy for getty-generator
+  * Allow systemd-hwdb send messages to kernel unix datagram sockets
+  * Allow systemd-machined manage runtime sockets
+  * Allow fstab-generator create unit file symlinks
+  * Update policy for cryptsetup-generator
+  * Update policy for fstab-generator
+  * Allow virtqemud read vm sysctls
+  * Allow collectd to trace processes in user namespace
+  * Allow bootupd search efivarfs dirs
+  * Add policy for systemd-mountfsd
+  * Add policy for systemd-nsresourced
+  * Update policy generators
+  * Add policy for anaconda-generator
+  * Update policy for fstab and gpt generators
+  * Add policy for kdump-dep-generator
+  * Add policy for a generic generator
+  * Add policy for tpm2 generator
+  * Add policy for ssh-generator
+  * Add policy for second batch of generators
+  * Update policy for systemd generators
+  * ci: Adjust Cockpit test plans
+  * Allow journald read systemd config files and directories
+  * Allow systemd_domain read systemd_conf_t dirs
+  * Fix bad Python regexp escapes
+  * Allow fido services connect to postgres database
+  * Revert "Update the README.md file with the c10s branch information"
+  * Update the README.md file with the c10s branch information
+  * Allow postfix smtpd map aliases file
+  * Ensure dbus communication is allowed bidirectionally
+  * Label systemd configuration files with systemd_conf_t
+  * Label /run/systemd/machine with systemd_machined_var_run_t
+  * Allow systemd-hostnamed read the vsock device
+  * Allow sysadm execute dmidecode using sudo
+  * Allow sudodomain list files in /var
+  * Allow setroubleshootd get attributes of all sysctls
+  * Allow various services read and write z90crypt device
+  * Allow nfsidmap connect to systemd-homed
+  * Allow sandbox_x_client_t dbus chat with accountsd
+  * Allow system_cronjob_t dbus chat with avahi_t
+  * Allow staff_t the io_uring sqpoll permission
+  * Allow staff_t use the io_uring API
+  * Add support for secretmem anon inode
+  * Allow virtqemud read vfio devices
+  * Allow virtqemud get attributes of a tmpfs filesystem
+  * Allow svirt_t read vm sysctls
+  * Allow virtqemud create and unlink files in /etc/libvirt/
+  * Allow virtqemud get attributes of cifs files
+  * Allow virtqemud get attributes of filesystems with extended attributes
+  * Allow virtqemud get attributes of NFS filesystems
+  * Allow virt_domain read and write usb devices conditionally
+  * Allow virtstoraged use the io_uring API
+  * Allow virtstoraged execute lvm programs in the lvm domain
+  * Allow virtnodevd_t map /var/lib files
+  * Allow svirt_tcg_t map svirt_image_t files
+  * Allow abrt-dump-journal-core connect to systemd-homed
+  * Allow abrt-dump-journal-core connect to systemd-machined
+  * Allow sssd create and use io_uring
+  * Allow selinux-relabel-generator create units dir
+  * Allow dbus-broker read/write inherited user ttys
+  * Define transitions for /run/libvirt/common and /run/libvirt/qemu
+  * Allow systemd-sleep read raw disk data
+  * Allow numad to trace processes in user namespace
+  * Allow abrt-dump-journal-core connect to systemd-userdbd
+  * Allow plymouthd read efivarfs files
+  * Update the auth_dontaudit_read_passwd_file() interface
+  * Label /dev/mmcblk0rpmb character device with removable_device_t
+  * fix hibernate on btrfs swapfile (F40)
+  * Allow nut to statfs()
+  * Allow system dbusd service status systemd services
+  * Allow systemd-timedated get the timemaster service status
+  * Allow keyutils-dns-resolver connect to the system log service
+  * Allow qemu-ga read vm sysctls
+  * postfix: allow qmgr to delete mails in bounce/ directory
+
+-------------------------------------------------------------------
 Mon Jun  3 13:42:13 UTC 2024 - Johannes Segitz <jsegitz@suse.com>
 
 - Remove "Reference" from the package description. It's not the
