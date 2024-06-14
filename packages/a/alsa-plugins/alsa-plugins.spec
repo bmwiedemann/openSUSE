@@ -1,7 +1,7 @@
 #
 # spec file for package alsa-plugins
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           alsa-plugins
-Version:        1.2.7.1
+Version:        1.2.12
 Release:        0
 Summary:        Extra Plug-Ins for ALSA Library
 License:        LGPL-2.1-or-later
@@ -41,9 +41,9 @@ BuildRequires:  pkgconfig(avtp)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(jack) >= 0.98
 BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libpulse) >= 0.9.11
+BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(speexdsp) >= 1.2
 %ifarch s390x

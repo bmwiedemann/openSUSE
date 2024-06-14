@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 13 15:00:17 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Update to alsa-plugins 1.2.12:
+  * add support for FFMPEG 7.0
+  * various compile fixes
+  For details, see:
+    https://www.alsa-project.org/wiki/Changes_v1.2.11_v1.2.12#alsa-plugins
+
+-------------------------------------------------------------------
 Sat Dec 10 20:49:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace pkgconfig(libavresample) with pkgconfig(libswresample)
