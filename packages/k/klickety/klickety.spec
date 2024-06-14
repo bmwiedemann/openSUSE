@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           klickety
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        Strategic board game
 License:        GPL-2.0-or-later
