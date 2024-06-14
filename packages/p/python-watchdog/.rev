@@ -260,4 +260,13 @@
   * [watchmedo] Support setting verbosity level via ``-q/--quiet`` and ``-v/--verbose`` arguments.</comment>
     <requestid>1158534</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>31888fbf2d4724d7b7b543086f72bf68</srcmd5>
+    <version>4.0.1</version>
+    <time>1718384268</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0.1:
+  * [inotify] Fix missing event_filter for the full emitter</comment>
+    <requestid>1180728</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 13 15:32:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.1:
+  * [inotify] Fix missing event_filter for the full emitter
+
+-------------------------------------------------------------------
 Sat Mar 16 16:27:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.0:

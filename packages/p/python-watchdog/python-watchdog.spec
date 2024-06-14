@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-watchdog
-Version:        4.0.0
+Version:        4.0.1
 Release:        0
 Summary:        Filesystem events monitoring
 License:        Apache-2.0
