@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 13 12:27:12 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1718267941.228ceaf1:
+  * Fix `sed` command in `openqa-bootstrap` after f4c71d4ff2
+  * Document what the OBS rsync Minion job does
+  * Prevent ambiguous 'localhost' worker connection
+
+-------------------------------------------------------------------
 Wed Jun 12 04:57:24 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1718116578.4bca4b7b:
