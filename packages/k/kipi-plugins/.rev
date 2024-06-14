@@ -484,4 +484,12 @@ kipi-plugins will not be part of digikam 6.0.0 anymore, but it is still used by 
     <comment>KDE release 24.05.0 (forwarded request 1175936 from krop)</comment>
     <requestid>1176309</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>f53e9eb441adca3ff778cc0352aac0ac</srcmd5>
+    <version>24.05.1</version>
+    <time>1718384421</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 24.05.1 (forwarded request 1180225 from krop)</comment>
+    <requestid>1180521</requestid>
+  </revision>
 </revisionlist>
