@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Jun 12 07:32:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.1/
+- Changes since 24.05.0:
+  * Don't try renaming sequence on double click in empty area of
+    timeline tab bar
+  * Fix deletion of wrong effect wihh multiple instances of an
+    effect and group effects enabled
+  * Fix single selected clip disappearing from timeline when
+    dragging a new clip in timeline
+  * [cmd rendering] Ensure proper kdenlive_render path for AppImage
+  * Fix freeze/crash on undo/redo track insertion
+  * Fix crash on undo/redo multiple track insertion
+  * Project settings: don't list embedded title clips as empty
+    files in the project files tab
+  * Fix undo move effect up/down. On effect move, also move the
+    active index, increase margins between effects Related to #1786
+  * Fix removing a composition from favorites
+  * Properly activate effect when added to a timeline clip
+  * Fix spacer tool can move backwards and overlap existing clips Fixes #1879
+  * Fix crash deleting subtitle when the file url was selected. (kde#487872)
+  * Fix possible crash on project opening
+  * Fix extra dash added to custom clip job output
+  * Fix usage of QUrl for LUT lists
+  * Fix default keyframe type referencing the old deprecated smooth type
+  * Be more clever splitting custom ffmpeg commands around quotes
+  * Fix effect name focus in save effect
+  * Fix tests
+  * fix selection when cutting an unselected clip under mouse
+  * Fix loading timeline clip with disabled stack should be
+    disabled Create undo entry when disabling clip effect stack
+  * Fix crash trying to save effect with slash in name (kde#487224)
+  * Remove quotes in custom clip jobe, fix progress display
+  * Fix setting sequence thumbnail from clip monitor
+  * Fix locked track items don't have red background on project open
+  * Fix spacer tool doing fake moves with clips in locked tracks
+  * Hide timeline clip status tooltip when mouse leaves
+- Drop patch, merged upstream:
+  * 0001-Fix-build-when-using-GLES.patch
+
+-------------------------------------------------------------------
 Tue May 28 11:40:35 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add fix for ARM builds (kde#483425)
