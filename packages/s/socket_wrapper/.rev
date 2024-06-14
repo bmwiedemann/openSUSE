@@ -237,4 +237,17 @@ Note: socket_wrapper fails if built on 'lamb'</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1109454</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d25f77989b5c7a9b21b55fedee5146f3</srcmd5>
+    <version>1.4.3</version>
+    <time>1718384246</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.4.3
+  * Added support to find libc via LIBC_SO define
+  * Fixed uid_wrapper running with jemalloc compiled binaries
+  * Fixed socket_wrapper interaction test
+  * Fixed thread sanitizer on modern Linux Kernels
+</comment>
+    <requestid>1180654</requestid>
+  </revision>
 </revisionlist>

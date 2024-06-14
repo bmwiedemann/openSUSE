@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 13 05:50:23 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.4.3
+  * Added support to find libc via LIBC_SO define
+  * Fixed uid_wrapper running with jemalloc compiled binaries
+  * Fixed socket_wrapper interaction test
+  * Fixed thread sanitizer on modern Linux Kernels
+
+-------------------------------------------------------------------
 Thu Aug 31 07:06:43 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update BuildRequires
