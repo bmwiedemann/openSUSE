@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kontrast
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        Contrast checker
 License:        GPL-3.0-or-later AND CC0-1.0
