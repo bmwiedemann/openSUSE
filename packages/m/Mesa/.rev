@@ -5686,4 +5686,15 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment></comment>
     <requestid>1179017</requestid>
   </revision>
+  <revision rev="506" vrev="378">
+    <srcmd5>2ea93aa2961e997d6679a6b87cb07a3a</srcmd5>
+    <version>unknown</version>
+    <time>1718384259</time>
+    <user>anag+factory</user>
+    <comment>- Update to bugfix release 24.0.9
+  --&gt; https://docs.mesa3d.org/relnotes/24.0.9.html
+  * This is the last release of the 24.0 series. Users are encouraged
+    to switch to the 24.1 series to continue receiving bugfixes.</comment>
+    <requestid>1180699</requestid>
+  </revision>
 </revisionlist>

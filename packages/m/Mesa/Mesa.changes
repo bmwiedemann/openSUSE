@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 13 13:26:14 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to bugfix release 24.0.9
+  --> https://docs.mesa3d.org/relnotes/24.0.9.html
+  * This is the last release of the 24.0 series. Users are encouraged
+    to switch to the 24.1 series to continue receiving bugfixes.
+
+-------------------------------------------------------------------
 Sun Jun  2 16:27:55 UTC 2024 - Yunhe Guo <i@guoyunhe.me>
 
 - Restrict all internal depencency version to match the exact Mesa build,
