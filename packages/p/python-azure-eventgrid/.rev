@@ -288,4 +288,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1166820 from glaubitz)</comment>
     <requestid>1166874</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>07fc17453ef6c22b2faa5cfc772dc8d7</srcmd5>
+    <version>4.20.0</version>
+    <time>1718384528</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 4.19.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1180343 from glaubitz)</comment>
+    <requestid>1180746</requestid>
+  </revision>
 </revisionlist>

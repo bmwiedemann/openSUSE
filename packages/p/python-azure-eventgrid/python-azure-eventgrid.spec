@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-eventgrid
-Version:        4.19.0
+Version:        4.20.0
 Release:        0
 Summary:        Microsoft Azure Event Grid Client Library
 License:        MIT
@@ -33,7 +33,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       (python-azure-core >= 1.24.0 with python-azure-core < 2.0.0)
+Requires:       (python-azure-core >= 1.30.0 with python-azure-core < 2.0.0)
 Requires:       (python-isodate >= 0.6.1 with python-isodate < 1.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
