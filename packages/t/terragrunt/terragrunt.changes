@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 13 18:44:43 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.59.3:
+  * Add support for AssumeRoleWithWebIdentity (#2997)
+
+-------------------------------------------------------------------
 Thu Jun 13 09:46:46 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.59.2:
