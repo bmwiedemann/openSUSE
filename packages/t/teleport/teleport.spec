@@ -19,17 +19,22 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           teleport
-Version:        15.4.2
+Version:        15.4.3
 Release:        0
 Summary:        Identity-aware, multi-protocol access proxy
 License:        Apache-2.0
 URL:            https://github.com/gravitational/teleport
 Source:         %{name}-%{version}.tar.gz
+# go vendoring
 Source1:        vendor.tar.gz
 Source2:        webassets.tar.gz
 Source3:        teleport.service
 Source4:        teleport.yaml
 Source5:        tbot.yaml
+# Rust vendoring
+Source6:        vendor.tar.zst
+BuildRequires:  cargo >= 1.69
+BuildRequires:  cargo-packaging
 BuildRequires:  git-core
 BuildRequires:  go >= 1.20
 BuildRequires:  pam-devel
@@ -69,10 +74,18 @@ License:        Apache-2.0
 Machine ID is a service that programmatically issues and renews short-lived certificates to any service account (e.g., a CI/CD server) by retrieving credentials from the Teleport Auth Service. This enables fine-grained role-based access controls and audit.
 tbot is the executable belonging to the Machine ID service.
 
+%package -n teleport-fdpass-teleport
+Summary:        Significantly reduce resource consumption by large numbers of SSH connections
+License:        Apache-2.0
+
+%description -n teleport-fdpass-teleport
+fdpass-teleport can be optionally used by Machine ID to significantly reduce resource consumption in use-cases that create large numbers of SSH connections (e.g. Ansible).
+
 %prep
 %setup -q
 %setup -q -T -D -a 1
 %setup -q -T -D -a 2
+tar xvf %{SOURCE6} -C tool/fdpass-teleport
 
 %build
 
@@ -97,7 +110,6 @@ go build \
    -buildmode=pie \
    -ldflags="-w -s -X main.VERSION=%{version}" \
    -o tbot ./tool/tbot
-
 go build \
    -tags "pam" \
    -mod=vendor \
@@ -105,11 +117,15 @@ go build \
    -ldflags="-w -s -X main.VERSION=%{version}" \
    -o tctl ./tool/tctl
 
+cd tool/fdpass-teleport
+%{cargo_build}
+
 %install
 # Install the binary.
 install -D -m 0755 tsh "%{buildroot}/%{_bindir}/tsh"
 install -D -m 0755 tctl "%{buildroot}/%{_bindir}/tctl"
 install -D -m 0755 tbot "%{buildroot}/%{_bindir}/tbot"
+install -D -m 0755 tool/fdpass-teleport/target/release/fdpass-teleport "%{buildroot}/%{_bindir}/fdpass-teleport"
 install -D -m 0755 teleport "%{buildroot}/%{_sbindir}/teleport"
 install -D -m 644 %{SOURCE3} %{buildroot}%{_unitdir}/teleport.service
 install -D -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/teleport.yaml
@@ -167,5 +183,10 @@ install -D -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/tbot.yaml
 %{_bindir}/tbot
 %{_unitdir}/machine-id.service
 %config(noreplace) %{_sysconfdir}/tbot.yaml
+
+%files -n teleport-fdpass-teleport
+%doc README.md
+%license LICENSE
+%{_bindir}/fdpass-teleport
 
 %changelog

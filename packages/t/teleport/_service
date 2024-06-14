@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="exclude">.git</param>
-    <param name="revision">v15.4.2</param>
+    <param name="revision">v15.4.3</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">disable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
@@ -31,5 +31,9 @@
     <param name="compression">gz</param>
   </service>
   <service name="go_modules" mode="manual">
+  </service>
+  <service name="cargo_vendor" mode="manual">
+    <param name="update">true</param>
+    <param name="srcdir">teleport/tool/fdpass-teleport</param>
   </service>
 </services>
