@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jun  9 18:20:02 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.4
+  * Update copyright year
+  * Explicitly depend on gio-unix-2.0
+  * Replace deprecated xfce_spawn_command_line_on_screen()
+  * Add missing G_(BEGIN|END)_DECLS
+  * Add xapp for Wallpaper and Screenshot in xfce-portals.conf
+  * Add minimal xdg-desktop-portal conf file for Xfce (Fixes #181)
+  * Ensure all various XDG_* etc. env vars are passed to DBus and systemd
+  * Add missing export for XDG_CONFIG_HOME and XDG_CACHE_HOME
+  * Clean up SVG icon metadata for 24px, 48px actions
+  * Add action icons at 96px
+  * Add icons at missing sizes, clean up SVG metadata
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Oct 26 07:11:11 UTC 2023 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Added xfce-portals.conf file. XDP 0.18.0 requires desktop and other 

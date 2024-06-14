@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-session
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with git
 Name:           xfce4-session
-Version:        4.18.3
+Version:        4.18.4
 Release:        0
 Summary:        Xfce Session Manager
 License:        GPL-2.0-only
@@ -44,6 +44,7 @@ BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
@@ -63,7 +64,7 @@ Requires:       xfconf
 # bnc#845264
 Requires:       iceauth
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     %{name}-doc = %{version}
 Recommends:     %{name}-lang = %{version}
 # minimal packages for an Xfce session
