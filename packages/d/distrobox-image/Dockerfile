@@ -30,6 +30,7 @@ RUN zypper --non-interactive install --no-recommends bash \
     glibc-locale \
     glibc-locale-base \
     gnupg \
+    host-spawn \
     hostname \
     iputils \
     keyutils \
