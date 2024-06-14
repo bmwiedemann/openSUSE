@@ -1,0 +1,14 @@
+--- LuminanceHDR-2.6.0~git.20240411/src/Libpfs/manip/resize.hxx.orig	2024-06-13 08:01:46.772261556 +0200
++++ LuminanceHDR-2.6.0~git.20240411/src/Libpfs/manip/resize.hxx	2024-06-13 08:03:50.606277430 +0200
+@@ -22,6 +22,11 @@
+ #ifndef PFS_RESIZE_HXX
+ #define PFS_RESIZE_HXX
+ 
++#include <boost/version.hpp>
++
++#if BOOST_VERSION >= 108500
++#include <boost/numeric/conversion/bounds.hpp>
++#endif
+ #include <boost/math/constants/constants.hpp>
+ #include "copy.h"
+ #include "resize.h"

@@ -1,0 +1,13 @@
+--- LuminanceHDR-2.6.0~git.20240411/CMakeLists.txt.orig	2024-06-13 07:53:43.186266143 +0200
++++ LuminanceHDR-2.6.0~git.20240411/CMakeLists.txt	2024-06-13 07:53:52.162981993 +0200
+@@ -110,8 +110,8 @@
+     get_git_head_revision(GIT_REFSPEC GIT_SHA1)
+ ENDIF()
+ 
+-##find_package(PkgConfig)
+-##pkg_check_modules(RTPROCESS REQUIRED rtprocess>=0.2.0)
++find_package(PkgConfig)
++pkg_check_modules(RTPROCESS REQUIRED rtprocess>=0.2.0)
+ 
+ IF(WIN32)
+ 

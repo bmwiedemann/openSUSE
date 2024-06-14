@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Mon Apr 22 13:13:41 UTC 2024 - info@paolostivanin.com
+
+- Update to version 2.6.0+git304.6107989:
+  * Drop height restriction of advanced editing tools window
+  * Fix build with >=exiv2-0.28.0, raise minimum to 0.27.0
+  * Fix various typos
+  * call enableBMFF() to support reading CR3 EXIF files. Does not harm loading non-CR3 files.
+  * replacing space with "_" in LHDR_VERSION_STR_SUFFIX for build to work correctly.
+  * Fix mac build for packages installed via brew on mac.
+- Add use-system-rtprocess.patch.
+- Add fix-boost1_85.patch.
+- Add fix-version.patch.
+
+-------------------------------------------------------------------
+Mon Apr 22 13:13:02 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- First OBS release.

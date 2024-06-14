@@ -1,0 +1,16 @@
+--- LuminanceHDR-2.6.1.1~git.20240411/build_files/Modules/Version.cmake.orig	2024-06-13 08:20:14.140071754 +0200
++++ LuminanceHDR-2.6.1.1~git.20240411/build_files/Modules/Version.cmake	2024-06-13 08:20:35.333519564 +0200
+@@ -1,13 +1,10 @@
+ INCLUDE(build_files/Modules/GetGitRevisionDescription.cmake)
+-get_git_head_revision(GIT_REFSPEC GIT_SHA1)
+-STRING(SUBSTRING ${GIT_SHA1} 0 6 HEAD_HASH)
+ SET(LHDR_NAME "Luminance HDR")
+ 
+ # Numeric version values
+ SET(LHDR_VERSION_MAJOR "2")
+ SET(LHDR_VERSION_MINOR "6")
+ SET(LHDR_VERSION_PATCH "1")
+-SET(LHDR_VERSION_STR_SUFFIX "_GIT-${HEAD_HASH}")
+ 
+ SET(LHDR_VERSION "${LHDR_VERSION_MAJOR}.${LHDR_VERSION_MINOR}.${LHDR_VERSION_PATCH}${LHDR_VERSION_STR_SUFFIX}")
+ SET(LHDR_VENDOR "Luminance HDR Development Team")

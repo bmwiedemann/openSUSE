@@ -1,0 +1,5 @@
+<package name="LuminanceHDR" project="openSUSE:Factory">
+  <title>LuminanceHDR</title>
+  <description></description>
+  <devel project="graphics" package="LuminanceHDR"/>
+</package>
