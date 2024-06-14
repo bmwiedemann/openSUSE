@@ -21,6 +21,11 @@
 # systemd-rpm-macros is wrong in 15.3 and below
 %define _modprobedir /lib/modprobe.d
 %endif
+%ifarch x86_64
+%if 0%{?suse_version} > 1600
+%define kmp_longterm 1
+%endif
+%endif
 %global modprobe_d_files 98-v4l2loopback.conf
 %{!?_modulesloaddir: %define _modulesloaddir /usr/lib/modules-load.d/}
 
@@ -36,6 +41,9 @@ Source1:        preamble
 Source2:        modprobe.d_98-v4l2loopback.conf
 Source3:        modules-load.d_v4l2loopback.conf
 BuildRequires:  %{kernel_module_package_buildreqs}
+%if 0%{?kmp_longterm}
+BuildRequires:  kernel-syms-longterm
+%endif
 BuildRequires:  help2man
 
 %if 0%{?is_opensuse}
