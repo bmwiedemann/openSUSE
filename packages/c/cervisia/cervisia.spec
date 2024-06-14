@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           cervisia
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        CVS Frontend
 License:        GPL-2.0-only AND GFDL-1.2-only AND LGPL-2.0-only
