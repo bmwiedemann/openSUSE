@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 13 18:21:19 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Remove systemd hardening from distrobox-upgrade-all.service.
+  Prevents automatic update of containers.
+
+-------------------------------------------------------------------
 Mon May 27 15:19:36 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Skip privacy page in gnome-initial-setup.

@@ -41,4 +41,13 @@
   by default</comment>
     <requestid>1177173</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>f6b71ed7a84e14e4d4e443be0afbe44d</srcmd5>
+    <version>20231005</version>
+    <time>1718384530</time>
+    <user>anag+factory</user>
+    <comment>- Remove systemd hardening from distrobox-upgrade-all.service.
+  Prevents automatic update of containers.</comment>
+    <requestid>1180763</requestid>
+  </revision>
 </revisionlist>
