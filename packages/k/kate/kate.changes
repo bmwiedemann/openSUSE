@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 12 07:32:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.1/
+- Changes since 24.05.0:
+  * guard more dbus headers
+  * add missing KWindowSystem include
+  * guard fillinRunningKateAppInstances
+  * guard dbus header
+  * guard dbus app adaptor
+
+-------------------------------------------------------------------
 Sun May 19 09:55:24 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.0
