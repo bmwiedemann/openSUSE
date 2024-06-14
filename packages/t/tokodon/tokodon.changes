@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jun 12 07:35:07 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.1/
+- Changes since 24.05.0:
+  * Support PageUp/PageDown keys to quickly navigate the timeline (kde#487507)
+  * 🍒 Fix possible segfault after logout on timeline pages
+  * Only clear page stack if authentication was successful
+  * Don't allow continuing without inputting an authorization code
+  * 🍒 Fix non-functional authorization link
+  * Fix wrong "%1 boosted" label on certain posts (kde#485637)
+  * Revert "Re-enable Appium tests on the CI"
+
+-------------------------------------------------------------------
 Sun May 19 09:57:54 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.0
