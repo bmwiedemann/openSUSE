@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           angelfish
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        Mobile web browser
 License:        GPL-2.0-or-later
@@ -64,7 +64,7 @@ Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kirigami-addons6
 Requires:       qt6-sql-sqlite >= %{qt6_version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 %{x86_64} aarch64 riscv64
 
 %description
 Angelfish is a mobile web browser. It supports typical browser features, such
