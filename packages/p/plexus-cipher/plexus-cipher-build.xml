@@ -10,7 +10,7 @@
 
   <property name="project.artifactId" value="plexus-cipher"/>
   <property name="project.groupId" value="org.codehaus.plexus"/>
-  <property name="project.version" value="2.0"/>
+  <property name="project.version" value="2.1.0"/>
   <property name="project.name" value="Plexus Cipher: encryption/decryption Component"/>
   <property name="project.url" value="https://github.com/codehaus-plexus/plexus-cipher"/>
   <property name="project.organization.name" value="Sonatype, Inc."/>

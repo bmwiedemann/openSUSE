@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 13 16:23:05 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 2.1.0
+  * Changes:
+    + Switch to java.util.Base64
+    + Move code to Java 8
+    + Fixed insecure cryptography in PBECipher.java
+    + Enable missed decryption test and adjust to new algorithm
+
+-------------------------------------------------------------------
 Wed Oct 25 15:16:02 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source and target levels 8
