@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           ktorrent
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        KDE BitTorrent Client
 License:        GPL-2.0-or-later
@@ -74,7 +74,7 @@ BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(taglib)
 BuildRequires:  pkgconfig(libmaxminddb)
-%ifarch aarch64 x86_64 riscv64
+%ifarch aarch64 x86_64 %{x86_64} riscv64
 BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
 %endif
 
@@ -143,12 +143,12 @@ find %{buildroot} -name "*.py" -perm 0644 -exec grep -l '#!' {} + | \
 %{_kf6_plugindir}/ktorrent_plugins/StatsPlugin.so
 %{_kf6_plugindir}/ktorrent_plugins/UPnPPlugin.so
 %{_kf6_plugindir}/ktorrent_plugins/ZeroconfPlugin.so
-%ifarch aarch64 x86_64 riscv64
+%ifarch aarch64 x86_64 %{x86_64} riscv64
 %{_kf6_plugindir}/ktorrent_plugins/SearchPlugin.so
 %{_kf6_plugindir}/ktorrent_plugins/SyndicationPlugin.so
 %endif
 
-%ifarch aarch64 x86_64 riscv64
+%ifarch aarch64 x86_64 %{x86_64} riscv64
 %{_kf6_sharedir}/ktorrent/
 %endif
 
