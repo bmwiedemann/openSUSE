@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 13 14:57:35 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 1.2.12:
+  * Various updates for codecs, soundwire and SOF devices
+  For details, see:
+    https://www.alsa-project.org/wiki/Changes_v1.2.11_v1.2.12#alsa-ucm-conf
+
+-------------------------------------------------------------------
 Fri Feb  2 15:01:05 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 1.2.11:

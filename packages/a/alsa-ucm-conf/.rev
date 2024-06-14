@@ -244,4 +244,12 @@ Now required by the upcoming alsa-1.2.1 release</comment>
 - Update to version 1.2.8 (jsc#PED-850):</comment>
     <requestid>1143708</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>0d0d0b8887d4e4d7d6c02133987fc11b</srcmd5>
+    <version>1.2.12</version>
+    <time>1718384266</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1180722</requestid>
+  </revision>
 </revisionlist>
