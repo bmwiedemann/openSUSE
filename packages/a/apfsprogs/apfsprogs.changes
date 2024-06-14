@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 13 12:39:11 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0~git491
+  * Allow snapshot xids to match the current xid
+
+-------------------------------------------------------------------
 Tue May 14 13:48:12 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0~git490
