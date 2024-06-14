@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Jun 12 15:36:49 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.1.0
+  * Added:
+    + (flags) Added absl.flags.override_value function to provide
+      FlagHolder with a construct to modify values.
+    + (testing) Added a new method
+      absltest.TestCase.assertDataclassEqual that tests equality of
+      dataclass.dataclass objects with better error messages when
+      the assert fails.
+  * Changed
+    + (flags) absl.flags.argparse_flags.ArgumentParser now
+      correctly inherits an empty instance of FlagValues to ensure
+      that absl flags, such as --flagfile, --undefok are supported.
+    + (testing) Do not exit 5 if tests were skipped on Python 3.12.
+      This follows the CPython change in python/cpython#113856.
+  * Fixed
+    + (flags) The flag foo no longer retains the value bar after
+      FLAGS.foo = bar fails due to a validation error.
+    + (testing) Fixed an issue caused by this Python 3.12.1 change
+      where the test reporter crashes when all tests are skipped.
+- Update to version 2.0.0 
+  * Changed
+    + absl-py no longer supports Python 3.6.
+    + Support Python 3.12.
+    + (logging) logging.exception can now take exc_info as
+      argument, with default value True.
+    + (testing) For Python 3.11+, the calls to
+      absltest.TestCase.enter_context are forwarded to
+      unittest.TestCase.enterContext (when called via instance)
+      or unittest.TestCase.enterClassContext (when called via
+      class) now.
+    + (testing) absltest.TestCase.assertSameStructure() now uses
+      the test case's equality functions (registered with
+      TestCase.addTypeEqualityFunc()) for comparing leaves
+      of the structure.
+    + (testing) abslTest.TestCase.fail() now names its arguments
+      (self, msg=None, user_msg=None), and not (self, msg=None,
+      prefix=None), better reflecting the behavior and usage of
+      the two message arguments.
+    + DEFINE_enum, DEFINE_multi_enum, and EnumParser now raise
+      errors when enum_values is provided as a single string value.
+      Additionally, EnumParser.enum_values is now stored as a list
+      copy of the provided enum_values parameter.
+    + (testing) Updated paramaterized.CoopTestCase() to use
+      Python 3 metaclass idioms.
+    + (testing) absltest.TestCase.assertSequenceStartsWith now
+      explicitly fail when passed a Mapping or Set object as the
+      whole argument.
+
+-------------------------------------------------------------------
 Tue Apr 30 11:54:36 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - spec: use %{?sle15allpythons} instead of

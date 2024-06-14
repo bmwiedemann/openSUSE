@@ -1,7 +1,7 @@
 #
 # spec file for package python-abseil
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%{?sle15allpythons}
+%{?sle15_python_module_pythons}
 Name:           python-abseil
-Version:        1.4.0
+Version:        2.1.0
 Release:        0
 Summary:        Abseil Python Common Libraries
 License:        Apache-2.0
