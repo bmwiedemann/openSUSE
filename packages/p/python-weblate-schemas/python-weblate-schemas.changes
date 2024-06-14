@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 13 14:54:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.1:
+  * Dropped support for Python 3.7 and 3.8.
+  * Added support for Python 3.12.
+  * Clarified address field on user data.
+
+-------------------------------------------------------------------
 Sat Jul  1 14:19:13 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2023.3

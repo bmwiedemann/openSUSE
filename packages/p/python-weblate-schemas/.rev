@@ -55,4 +55,15 @@
     <comment></comment>
     <requestid>1096484</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1ea7d224caad0213eb06d8f570ad56f0</srcmd5>
+    <version>2024.1</version>
+    <time>1718384505</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.1:
+  * Dropped support for Python 3.7 and 3.8.
+  * Added support for Python 3.12.
+  * Clarified address field on user data.</comment>
+    <requestid>1180710</requestid>
+  </revision>
 </revisionlist>
