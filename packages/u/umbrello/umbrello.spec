@@ -16,12 +16,12 @@
 #
 
 
-%ifarch %{arm} aarch64 %{ix86} x86_64 %{riscv}
+%ifarch %{arm} aarch64 %{ix86} x86_64 %{x86_64} %{riscv}
 %bcond_without kdevelop
 %endif
 %bcond_without released
 Name:           umbrello
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        UML Modeller
 License:        GPL-2.0-only AND GFDL-1.2-only AND GPL-3.0-or-later
