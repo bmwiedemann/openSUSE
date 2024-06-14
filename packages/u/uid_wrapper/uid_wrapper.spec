@@ -1,7 +1,7 @@
 #
 # spec file for package uid_wrapper
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 #
 ############################# NOTE ##################################
 Name:           uid_wrapper
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        A wrapper for privilege seperation
 License:        GPL-3.0-or-later
@@ -33,7 +33,6 @@ Source0:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Source2:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz.asc
 Source3:        uid_wrapper.keyring
-Patch0:         uid_wrapper-fix-cmocka-1.1.6+-support.patch
 BuildRequires:  cmake
 BuildRequires:  libcmocka-devel
 BuildRequires:  pkgconf

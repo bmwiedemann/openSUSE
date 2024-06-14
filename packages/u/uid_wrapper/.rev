@@ -146,4 +146,18 @@
     <comment></comment>
     <requestid>1068981</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6ca7209414c19f568800d01a83c3fe44</srcmd5>
+    <version>1.3.1</version>
+    <time>1718384247</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.3.1
+  * Added support to find libc via LIBC_SO define
+  * Fixed uid_wrapper running with jemalloc compiled binaries
+  * Fixed socket_wrapper interaction test
+  * Fixed thread sanitizer on modern Linux Kernels
+- Removed uid_wrapper-fix-cmocka-1.1.6+-support.patch
+</comment>
+    <requestid>1180655</requestid>
+  </revision>
 </revisionlist>
