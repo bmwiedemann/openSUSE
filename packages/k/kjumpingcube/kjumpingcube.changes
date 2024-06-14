@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 12 07:33:28 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.1/
+- Changes since 24.05.0:
+  * Remove unused kcfg_* name from settings.ui QGroupBox item
+
+-------------------------------------------------------------------
 Sun May 19 09:56:17 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.0
