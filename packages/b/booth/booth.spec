@@ -1,7 +1,7 @@
 #
 # spec file for package booth
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 %define _fwdefdir %{_prefix}/lib/firewalld/services
 
 Name:           booth
-Version:        1.1+git0.09b0074
+Version:        1.2+git0.322fea0
 Release:        0
 Summary:        Ticket Manager for Multi-site Clusters
 License:        GPL-2.0-or-later
@@ -100,7 +100,7 @@ ln -s service %{buildroot}%{_sbindir}/rcbooth-arbitrator
 
 #install test-parts
 mkdir -p %{buildroot}/%{test_path}/conf
-cp -a unit-tests/ script/unit-test.py test %{buildroot}/%{test_path}/
+cp -a test %{buildroot}/%{test_path}/
 cp -a conf/booth.conf.example %{buildroot}/%{test_path}/conf/
 chmod +x %{buildroot}/%{test_path}/test/booth_path
 chmod +x %{buildroot}/%{test_path}/test/live_test.sh
@@ -113,7 +113,6 @@ rm -f %{buildroot}/%{test_path}/test/*.pyc
 #Firewalld rule
 mkdir -p $RPM_BUILD_ROOT/%{_fwdefdir}
 install -m 644 contrib/geo-cluster.firewalld.xml $RPM_BUILD_ROOT/%{_fwdefdir}/booth.xml
-#install -m 644 %{S:2} $RPM_BUILD_ROOT/%{_fwdefdir}/booth
 %endif
 
 %pre

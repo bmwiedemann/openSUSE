@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jun 11 07:46:46 UTC 2024 - pgajdos@suse.com
+
+- Update to version 1.2+git0.322fea0 (CVE-2024-3049 [bsc#1226032]):
+  * build: Prepare version 1.2 release
+  * Add support for GnuTLS
+  * configure: Add option to select HMAC library
+  * configure: Remove duplicate mhash.h check
+  * auth: Check result of gcrypt gcry_md_get_algo_dlen
+  * attr: Fix reading of server_reply
+  * pacemaker: Store booth-cfg-name attribute
+  * transport: Fix _find_myself for kernel 6.9
+  * tests: Remove the unit-tests directory.
+  * query_get_string_answer: Remove duplicate line
+  * pacemaker: Remove const warning
+  * pacemaker: Use long format for crm_ticket -v
+  * pacemaker: Check snprintf return values
+  * pacemaker: Don't add explicit error prefix in log
+  * pacemaker: Remove non-atomic grant of ticket
+
+-------------------------------------------------------------------
 Thu Feb 22 10:30:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
