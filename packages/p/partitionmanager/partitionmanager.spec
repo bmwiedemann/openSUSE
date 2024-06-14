@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           partitionmanager
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        Easily manage disks, partitions and file systems on your KDE Desktop
 License:        GPL-3.0-or-later
