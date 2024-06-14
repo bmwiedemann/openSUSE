@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun 12 07:32:12 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.1/
+- Changes since 24.05.0:
+  * Fix running on Windows (QtWinExtras no longer exists)
+  * Fix potential crash when enqueueing from empty files view (kde#441525)
+  * Fix DBus service activation (kde#487905)
+  * Remove unneeded function
+  * Fix 1px padding between playlist panel and right edge of window
+  * Adapt to source incompatible changes in Qt's 6.7 JNI API
+
+-------------------------------------------------------------------
 Sun May 19 09:55:00 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.0
