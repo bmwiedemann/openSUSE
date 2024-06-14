@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 13 10:19:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix dependenices: the FastCGI perl module is called FCGI.
+
+-------------------------------------------------------------------
+Wed Jun 12 08:21:32 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- remove package name based perl requires
+
+-------------------------------------------------------------------
 Mon Mar 18 09:58:18 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using
@@ -561,4 +571,3 @@ Wed Sep  4 00:00:00 UTC 2002 - ingvar@linpro.no
 Tue Jun 18 00:00:00 UTC 2002 - kjetilho@linpro.no
 
 - new package
-

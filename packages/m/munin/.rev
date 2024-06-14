@@ -283,4 +283,254 @@
     <comment></comment>
     <requestid>1158960</requestid>
   </revision>
+  <revision rev="36" vrev="8">
+    <srcmd5>6b43db729971b4abcbdd93eb0aea1842</srcmd5>
+    <version>2.0.72</version>
+    <time>1718384261</time>
+    <user>anag+factory</user>
+    <comment>- Fix dependenices: the FastCGI perl module is called FCGI.
+- remove package name based perl requires
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang_path macro, [bsc#1212476]
+- Use %patch -P N instead of deprecated %patchN.
+- Provide user(munin) and group(munin): the user and group are
+  created during in the pre script.
+- Use IO::Socket::IP instead of IO::Socket::INET[6]
+  * Remove the dependency on perl(IO::Socket::INET6) as it has been
+    deprecated by upstream, is no longer suitable for use and its not
+    being maintained. A compatible replacement for this package is
+    perl(IO::Socket::IP) which is shipped by the perl-base package.
+  * Upstream commit back-ported:
+    https://github.com/munin-monitoring/munin/commit/012b33a7
+  * Add upstream munin-remove-deprecated-INET6.patch
+- Drop manual requires for python (boo#1210588)
+- Use python3 as the interpreter in ipmi_sensor_ and
+  smart_, boo#1210588
+- Update to 2.0.72 
+  * Import custom css file in style-new.css
+- Drop harmful chown in %post scripts (boo#1155078)
+- Update to 2.0.71
+  * fix the fix for Date::Manip
+- Changes in 2.0.70
+  * plugins/http_loadtime: enable saving cookies between requests
+  * UpdateWorker: prevent use of uninitialized value $first_epoch
+  * fix html_strategy to point to munin-cgi-html
+  * plugin fail2ban: allow configuration of warning/critical
+    thresholds
+  * Plugin haproxy_: handle backends with special characters
+  * [snmp__df_ram] Update title to match the memory plugin
+  * [snmp__cpuload] Update title to match the cpu plugin
+  * Plugin df_inode : Exclude msdosfs on FreeBSD as there's no
+    concept of inode
+  * Plugin bind9: stabilize order of values in graph
+  * Plugin bind9: Author's blog has moved to .no TLD
+  * Plugin bind9: Move 'Other' to bottom of list
+  * Update munin-graph.in
+  * Update munin-cgi-graph.in
+- Run spec-cleaner
+- Fix rpmlint warning: This script uses 'env' as an interpreter.
+- UsrMerge: move stuff from /sbin to /usr/sbin (boo#1191080)
+- update to 2.0.69
+  * bugfixes
+  * Handle NVME drives in the Linux iostat plugin
+  * munin-run: allow to pass additional arguments to the plugin
+  * use dedicated munin SNMP plugin
+- require the www group (boo#1195732)
+- Removed
+  * PrivateDevices=true
+  * ProtectClock=true
+  * RestrictRealtime=true
+  from munin-node.service (bsc#1193118)
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * munin-cgi-graph.service
+  * munin-cgi-html.service
+  * munin-cron.service
+  * munin-node.service
+- Run munin-update as user munin [bsc#1183078]
+- add upstream singing key and verify source signature
+- update to 2.0.66:
+  * unknown_limit: do not misinterpret zero as one
+  * unknown_limit: fix handling of value &quot;1&quot;
+  * SpoolReader: process spooled content lines separately
+  * async: fetch spooled data in order of timestamps
+  * async: use name squashing rules when determining the names of spooled files
+  * async: clarify handling of timestamp
+  * doc: describe &quot;timeout_fetch_all_nodes&quot; and &quot;timeout_fetch_one_node&quot;
+  * Make sensors_ temperature plugin work on musl libc
+  * Symlink and custom name support for diskstat_
+  * fix reporting on URL in the munin-update log (stable-2.0)
+  * make it possible to configure global munin-update timeouts
+  * Use configured plugin group as primary group
+  * plugins/memory: add per-cpu counter
+  * Munin thresholds support for http_loadtime
+  * adjust_threshold: strings indexes are 1 based in AWK
+  * Plugin apt_all: prevent ambiguity between slash and hyphen in release names
+  * Fix utf8 encoding in plugins
+  * Fix special character for author name (Kristian Lyngst370l)
+  * Plugin snmp__if_err_: clarify authors list
+  * Plugin nomadix_users_: clarify formatting of authors
+  * Plugin vserver_cpu_: clarify copyright statement
+  * Plugin snmp__uptime: clarify authors
+  * Unify spelling of author &quot;Dagfinn Ilmari Manns345ker&quot;
+  * Unify more author names
+  * Fix template error in case of an empty host list
+- pwdutils is long gone, use shadow
+- Don't hard require systemd
+- Update to 2.0.64
+  * several bugfixes in minor releases
+  https://github.com/munin-monitoring/munin/blob/stable-2.0/ChangeLog
+- Stop abusing %{_libexecdir} for the firewalld service files.
+- add service definition for firewalld
+- update to 2.0.56
+  * several bugfixes in minor releases
+  https://github.com/munin-monitoring/munin/blob/stable-2.0/ChangeLog
+- use systemd timer instead of cron for new distributions (boo#1115448)
+- require perl-rrdtool (boo#1149880)
+- removed old (non-systemd) conditionals from spec
+- Package /etc/cron.d as this is now part of cron which we don't
+  want to require
+- Allow OBS to pick better candidates to shorten rebuild queues
+- update to 2.0.49
+  * fixes and improvements
+- update to 2.0.48
+  * many fixes and improvements in plugins
+- update to 2.0.40
+  * many fixes and improvements in plugins
+  * fixes and improvements of the build system
+- removed obsolete patch
+  munin-plugin-quota_usage_warnings.patch
+- update to 2.0.37
+  * Add support for IBM i
+  * Update lighttpd.rst
+  * Update nginx.rst
+  * ejabberd improvements
+  * add example plugin graphs
+  * Add support for MySQL 5.5/5.6
+  * Added HP-UX support to processes plugin
+  * snmp__if_multi: Set warning to 75% of interface speed instead of 133%
+  * Add support for rndc options in bind9_rndc plugin
+  * Correcting mysql_queries plugin random hash ordering
+  * Add PostgreSQL 10 support to postgres_xlog
+  * mysql improvements
+  * Add IPv6 support
+  * many other improvements
+- require also perl-rrdtool where it exists (boo#1094776)
+- remove obsolete mysql55.patch
+- add perl526.patch to compile with perl 5.26 (no more . in @INC)
+- add Requires(pre): user(nobody) and group(nobody) to munin-node to fix
+  Tumbleweed build
+- add %ghost /run/munin to munin and munin-node to fix a rpmlint warning
+  (Tumbleweed only, would cause build failures on SLE11)
+- fix source url
+- update to 2.0.32
+- remove CVE-2017-6188-fix-parameter-injection.patch (applied upstream)
+- fix CVE-2017-6188: munin-cgi-graph local file write vulnerability
+  (boo#1026539, CVE-2017-6188-fix-parameter-injection.patch)
+- update to version 2.0.30
+  Bugfix releases (closes the following issues since 2.0.25)
+  2.0.26: Closes: D:761190, GH:426
+  2.0.27: Closes: D:767032, D:768553, D:825136, D:834194, GH:690, GH:714
+  2.0.29: Closes: D:847649, D:849383
+  2.0.30: Closes: GH:745, GH:771, GH:783
+- override build host's hostname to make build reproducible
+- apply upstream change to work correctly for MySQL &gt;= 5.5
+  (mysql55.patch
+- Add perl(Module::Build) BuildRequires: Fix build with perl 5.22.
+- fix munin-node start (bnc#940287)
+- update to version 2.0.25
+  Bugfix release.
+  Closes: GH:304, D:769415, D:770745, D:770746, D:770826
+  * p/irqstats: Improve generated labels
+  * ip/iostat_ios: also support /dev/xvdX devices
+  * p/iostat_ios: also support /dev/vdX devices
+  * plugins/df_abs: fix the naming for regular devices
+  * p/pgsql: Detect &quot;rc&quot; postgresql versions
+  * p/ping_: honor ping env variable
+- cleanup sysvinit scriptlets to fix the issue which always
+  disabled the service on update
+- update to version 2.0.24
+  * bugfix release
+    compatibility with perl 5.20
+- update to version 2.0.21
+  * bugfix release
+    It fixes the &quot;start should be less than end&quot; bug.
+- remove conditions on Sources and include them regardless
+- require perl-libwww-perl to enable apache plugins (bnc#859046)
+- recommend logdigest to allow removal of it w/o breaking deps
+  (munin-node likes to have logtail which is part of logdigest
+  but the daily cronjob of logdigest is probably unwanted on some
+  systems)
+- update to version 2.0.19 (bnc#853570)
+  * CVE-2013-6048, a node could cause excessive memory consumption
+    on the Munin master
+  * CVE-2013-6359, a malicious plug-in could prevent data collection
+    for the node.
+  * more bugfixes
+- fix requires for main munin package
+- update to version 2.0.14:
+  * fixes for computing of absolute values
+  * timeout code decoupled for global and plugin timeout.
+  * fixes for ntp
+  * TMPDIR reuse fixes
+- do NOT autostart from %post
+- Add missing perl-URI and perl-FastCGI dependencies
+- Add systemd service units to start the HTML and Graph CGI servers
+  with the aid of spawn-fcgi
+  NOTE: the FastCGI server listens on an UNIX socket in /var/run/munin
+  and members of the &quot;www&quot; group can write to it.
+- Add the missing [Install] section of the munin-node service unit
+- Add an SNMP wildcard plugin to monitor the Google Search Appliance
+    https://github.com/ifad/munin-gsa
+- Include an improved quota usage plugin that gets warning and
+  critical values from the configured soft and hard quotas.
+  Found in the wild on
+    https://svn.koumbit.net/koumbit/trunk/munin-plugins/quota-usage
+  tested and adapted.
+- Update to 2.0.11.1
+- Add nginx plugins from http://github.com/ifad/nginx-munin 
+- BuildRequire perl-IO-Socket-INET6 
+- update to bugfix release 1.4.7
+- fixed CVE-2012-2147 (bnc#759910)
+- new upstream version &lt;1.4.5&gt;
+ * bugfix release
+- new upstream version &lt;1.4.4&gt;
+- new upstream release &lt;1.4.3&gt;
+- new upstream release &lt;1.4.2&gt;
+- new upstream release &lt;1.4.1&gt;
+- new upstream release &lt;1.4.0&gt;
+- add UTF8 patch
+- new upstream release &lt;1.2.6&gt;
+- new upstream release &lt;1.2.5&gt;
+- Fixed missing /sbin/rcmunin-node
+- First build for packman
+- 1.2.3 release
+- 1.2.2 release
+- Fixed SF bug 1164481 (missing /srv/www/htdocs/munin)
+- Fixed SF bug 1164477 (patch for Net::Domain on PPC64)
+- 1.2.1 release
+- Fixed erronumous path to web directory
+- Added start of node if not running
+- Fixed some build path problems
+- New major release
+- Updated to version 1.2.0rc2.
+- Removed Nagios stuff
+- Added noreplace for some central configuration files
+- Updated to version 1.0.4
+- Updated version 1.0.3 / sync with redhat-build
+- Initial SuSE build
+- Sync with CVS. Version 1.0.0pre2
+- Sync with CVS. Change names to munin.
+- Lot of small fixes. Now builds on more RPM distros
+- Sync with CVS
+- 0.9.5-1
+- Sync with CVS
+- Makefile-based install of core files
+- Build doc (only pod2man)
+- Sync with CVS, auto rpmbuild
+- Fix spec file for RedHat 8.0 and new version of lrrd
+- Small bugfixes in the rpm package
+- new package
+</comment>
+    <requestid>1180707</requestid>
+  </revision>
 </revisionlist>
