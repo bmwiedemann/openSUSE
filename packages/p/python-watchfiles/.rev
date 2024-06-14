@@ -31,4 +31,21 @@
     <comment></comment>
     <requestid>1145405</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dc07eaefe5a60984275976f59a1f9ece</srcmd5>
+    <version>0.22.0</version>
+    <time>1718384512</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.22.0:
+  * fix `list-pypi-files` CI task
+  * pip show wrong homepage
+  * Update PyO3
+  * really drop python&lt;=3.7 support
+  * uprev pyo3 and minimum rust version
+  * drop black and isort
+  * pre-commit block main - related to `notify` update
+  * Bump idna from 3.3 to 3.7 in /requirements
+  * uprev linting, testing and docs requirements</comment>
+    <requestid>1180735</requestid>
+  </revision>
 </revisionlist>

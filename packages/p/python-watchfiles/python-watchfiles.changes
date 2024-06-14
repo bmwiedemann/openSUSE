@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 13 15:42:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.22.0:
+  * fix `list-pypi-files` CI task
+  * pip show wrong homepage
+  * Update PyO3
+  * really drop python<=3.7 support
+  * uprev pyo3 and minimum rust version
+  * drop black and isort
+  * pre-commit block main - related to `notify` update
+  * Bump idna from 3.3 to 3.7 in /requirements
+  * uprev linting, testing and docs requirements
+
+-------------------------------------------------------------------
 Fri Feb  9 11:08:59 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Pin to anyio < 4: gh#samuelcolvin/watchfiles#254

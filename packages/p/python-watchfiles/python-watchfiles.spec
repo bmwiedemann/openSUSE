@@ -17,7 +17,7 @@
 
 
 Name:           python-watchfiles
-Version:        0.21.0
+Version:        0.22.0
 Release:        0
 Summary:        File watching and code reload in python
 License:        MIT

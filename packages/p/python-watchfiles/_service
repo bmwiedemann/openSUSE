@@ -1,8 +1,9 @@
 <services>
-  <service name="cargo_vendor" mode="disabled">
-    <param name="srctar">watchfiles-0.21.0-gh.tar.gz</param>
+  <service name="download_files" mode="manual"></service>
+  <service name="cargo_vendor" mode="manual">
+    <param name="srctar">watchfiles-0.22.0-gh.tar.gz</param>
     <param name="compression">xz</param>
     <param name="update">true</param>
   </service>
-  <service name="cargo_audit" mode="disabled"></service>
+  <service name="cargo_audit" mode="manual"></service>
 </services>
