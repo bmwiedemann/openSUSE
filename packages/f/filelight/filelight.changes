@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun 12 07:32:15 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.1/
+- Changes since 24.05.0:
+  * disable the context menu on fake shapes (kde#487930)
+  * manually position tooltip so it's correct (kde#487339)
+  * use a better name than object
+  * assert or continue
+  * repair action icons after qt6 port
+  * ci: remove unused deploy jobs
+  * windows: remove unused kdewin dep
+  * add windows CI
+  * style++
+  * windows: treat unpinned files as compressed (kde#486549)
+
+-------------------------------------------------------------------
 Sun May 19 09:55:03 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.0
