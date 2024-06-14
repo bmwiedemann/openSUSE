@@ -19,7 +19,7 @@
 %define rname   kdev-php
 %bcond_without released
 Name:           kdevelop5-plugin-php
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        PHP plugin for Kdevelop5 Integrated Development Environment
 License:        GPL-2.0-or-later
