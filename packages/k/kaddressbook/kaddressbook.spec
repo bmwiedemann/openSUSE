@@ -18,11 +18,11 @@
 
 %define kf6_version 6.0.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.80
+%define kpim6_version 6.1.1
 
 %bcond_without released
 Name:           kaddressbook
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        Address book application to manage contacts
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -58,7 +58,7 @@ Recommends:     kaddressbook-doc
 Provides:       kaddressbook5 = %{version}
 Obsoletes:      kaddressbook5 < %{version}
 # kdepim-runtime requires Qt Webengine
-ExclusiveArch:  x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 %{x86_64} aarch64 riscv64
 
 %description
 KAddressbook is an application by KDE to manage contacts.
