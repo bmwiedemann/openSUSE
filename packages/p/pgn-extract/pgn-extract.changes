@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 13 09:21:37 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 24.10
+  * Bug fix for -n resulting from failing to completely check 
+    the validity of non-matching games.
+
+-------------------------------------------------------------------
 Wed Jun  5 05:59:23 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 24.09

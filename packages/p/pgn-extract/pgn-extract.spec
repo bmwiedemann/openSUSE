@@ -18,8 +18,8 @@
 
 
 Name:           pgn-extract
-Version:        24.09
-%define mver    24-09
+Version:        24.10
+%define mver    24-10
 Release:        0
 Summary:        A CLI program for manipulating PGN files
 License:        GPL-3.0-or-later
