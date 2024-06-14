@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun  7 07:20:17 UTC 2024 - Ákos Szőts <szotsaki@gmail.com>
+
+- Filtered out false positive rpmlint error message
+- Update to 3.2.1
+  * Enhancement: add option for logging bad PUT request content
+  * Enhancement: extend logging with step where bad PUT request failed
+  * Fix: support for recurrence "full day"
+  * Fix: list of web_files related to HTML pages
+  * Test: update/adjustments for workflows (pytest>=7, typeguard<4.3) 
+
+-------------------------------------------------------------------
 Sun May  5 10:21:51 UTC 2024 - Ákos Szőts <szotsaki@gmail.com>
 
 - Update to 3.2.0
