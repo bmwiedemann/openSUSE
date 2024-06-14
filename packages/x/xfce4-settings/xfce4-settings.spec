@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-settings
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,34 +19,36 @@
 %bcond_with git
 
 Name:           xfce4-settings
-Version:        4.18.4
+Version:        4.18.6
 Release:        0
 Summary:        Tools for Managing Xfce Settings
 License:        GPL-2.0-only AND GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/xfce/xfce4-settings/start
 Source:         https://archive.xfce.org/src/xfce/xfce4-settings/4.18/%{name}-%{version}.tar.bz2
+BuildRequires:  colord >= 1.0.2
 BuildRequires:  intltool
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(exo-2) >= 0.11.0
 BuildRequires:  pkgconfig(fontconfig) >= 2.6.0
 BuildRequires:  pkgconfig(garcon-1) >= 0.1.10
 BuildRequires:  pkgconfig(gio-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(libcanberra)
-BuildRequires:  pkgconfig(libnotify)
+BuildRequires:  pkgconfig(libnotify) >= 0.1.3
 BuildRequires:  pkgconfig(libxfce4kbd-private-3) >= 4.12.0
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.17.0
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.17.2
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.13.0
-BuildRequires:  pkgconfig(libxklavier)
-BuildRequires:  pkgconfig(upower-glib)
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xcursor)
-BuildRequires:  pkgconfig(xi)
-BuildRequires:  pkgconfig(xorg-libinput)
-BuildRequires:  pkgconfig(xrandr)
+BuildRequires:  pkgconfig(libxklavier) >= 0.3.0
+BuildRequires:  pkgconfig(upower-glib) >= 0.9.8
+BuildRequires:  pkgconfig(x11) >= 1.0.0
+BuildRequires:  pkgconfig(xcursor) >= 1.1.0
+BuildRequires:  pkgconfig(xi) >= 1.2.0
+BuildRequires:  pkgconfig(xorg-libinput) >= 0.6.0
+BuildRequires:  pkgconfig(xrandr) >= 1.2.0
 %if 0%{?suse_version} > 1500
 BuildRequires:  xorgproto-devel
 %endif

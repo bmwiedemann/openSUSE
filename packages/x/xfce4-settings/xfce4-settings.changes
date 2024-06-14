@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jun 11 14:21:22 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.6
+  * Revert "x11: displays: Disable new outputs if /Notify is set to
+    "Do nothing""
+
+-------------------------------------------------------------------
+Sun Jun  9 07:49:49 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.5
+  * keyboard-settings: Escape markup characters in command tooltips
+  * xfce-randr: Take RR_DoubleScan and RR_Interlace flags into account
+  * Update copyright year
+  * display-settings: Better fit with the way GApplication works
+  * display-settings: Fix xfconf warning
+  * display-settings: Fix cairo surface management
+  * Fix memory leaks around display_settings_get_profiles()
+  * x11: displays: Fix use of deprecation macros
+  * x11: displays: Disable new outputs if /Notify is set to "Do nothing"
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Nov 30 17:20:12 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.18.4
