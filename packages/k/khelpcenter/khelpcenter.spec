@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           khelpcenter
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        KDE Documentation Application
 License:        GPL-2.0-or-later
@@ -54,7 +54,7 @@ BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
 BuildRequires:  pkgconfig(libxml-2.0)
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 %{x86_64} aarch64 riscv64
 # khelpcenter uses some images and stylesheets from kdoctools (boo#1011094)
 Requires:       kf6-kdoctools >= %{kf6_version}
 Conflicts:      kdebase4-runtime < 17.04.1
