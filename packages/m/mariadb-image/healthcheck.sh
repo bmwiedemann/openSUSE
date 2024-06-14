@@ -10,8 +10,8 @@
 # the --replication option. This allows a different set of replication checks
 # on different connections.
 #
-# --su{=|-mysql} is option to run the healthcheck as a different unix user.
-# Useful if mysql@localhost user exists with unix socket authentication
+# --su{=|-mariadb} is option to run the healthcheck as a different unix user.
+# Useful if mariadb@localhost user exists with unix socket authentication
 # Using this option disregards previous options set, so should usually be the
 # first option.
 #
@@ -26,7 +26,7 @@
 # replication               REPLICATION_CLIENT (<10.5)or REPLICA MONITOR (10.5+)
 # mariadbupgrade            none, however unix user permissions on datadir
 #
-# The SQL user used is the default for the mysql client. This can be the unix user
+# The SQL user used is the default for the mariadb client. This can be the unix user
 # if no user(or password) is set in the [mariadb-client] section of a configuration
 # file. --defaults-{file,extra-file,group-suffix} can specify a file/configuration
 # different from elsewhere.
@@ -38,11 +38,10 @@ set -eo pipefail
 
 _process_sql()
 {
-	mysql ${nodefaults:+--no-defaults} \
+	mariadb ${nodefaults:+--no-defaults} \
 		${def['file']:+--defaults-file=${def['file']}} \
 		${def['extra_file']:+--defaults-extra-file=${def['extra_file']}} \
 		${def['group_suffix']:+--defaults-group-suffix=${def['group_suffix']}} \
-		--skip-ssl --skip-ssl-verify-server-cert \
 		-B "$@"
 }
 
@@ -59,11 +58,10 @@ connect()
 	set +e +o pipefail
 	# (on second extra_file)
 	# shellcheck disable=SC2086
-	mysql ${nodefaults:+--no-defaults} \
+	mariadb ${nodefaults:+--no-defaults} \
 		${def['file']:+--defaults-file=${def['file']}} \
 		${def['extra_file']:+--defaults-extra-file=${def['extra_file']}}  \
 		${def['group_suffix']:+--defaults-group-suffix=${def['group_suffix']}}  \
-		--skip-ssl --skip-ssl-verify-server-cert \
 		-h localhost --protocol tcp -e 'select 1' 2>&1 \
 		| grep -qF "Can't connect"
 	local ret=${PIPESTATUS[1]}
@@ -201,11 +199,11 @@ replication()
 
 # mariadbupgrade
 #
-# Test the lock on the file $datadir/mysql_upgrade_info
+# Test the lock on the file $datadir/mariadb_upgrade_info
 # https://jira.mariadb.org/browse/MDEV-27068
 mariadbupgrade()
 {
-	local f="$datadir/mysql_upgrade_info"
+	local f="$datadir/mariadb_upgrade_info"
 	if [ -r "$f" ]; then
 		flock --exclusive --nonblock -n 9 9<"$f"
 		return $?
