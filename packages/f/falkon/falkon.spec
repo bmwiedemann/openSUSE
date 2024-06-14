@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           falkon
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        Modern web browser
 License:        GPL-3.0-or-later
@@ -69,7 +69,7 @@ Provides:       web_browser
 Provides:       falkon-gnome-keyring = %{version}
 Obsoletes:      falkon-gnome-keyring < %{version}
 # No QtWebEngine for other archs
-ExclusiveArch:  aarch64 x86_64 riscv64
+ExclusiveArch:  aarch64 x86_64 %{x86_64} riscv64
 
 %description
 Falkon is a web browser designed to well integrate with all
