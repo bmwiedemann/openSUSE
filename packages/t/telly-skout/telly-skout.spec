@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           telly-skout
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        Kirigami TV guide
 License:        LGPL-2.1-or-later
