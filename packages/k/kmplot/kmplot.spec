@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kmplot
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        Mathematical Function Plotter
 License:        GPL-2.0-or-later
