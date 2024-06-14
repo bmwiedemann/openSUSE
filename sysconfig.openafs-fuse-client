@@ -1,5 +1,5 @@
 #
-# startup options for the openAFS client.
+# startup options for the openAFS FUSE client.
 # see man afsd for details
 
 AFSD_ARGS="-fakestat -memcache -blocks 102400 -dynroot -afsdb"

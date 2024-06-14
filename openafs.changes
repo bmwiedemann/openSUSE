@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 14 05:47:03 UTC 2024 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- change source-code base to git branch stable-1_8_x
+  * required for keeping up with Linux kernel development.
+- new versioning scheme: openafs-$LAST_OFFICIAL_RELEASE.git$DATE_OF_NEWEST_COMMIT
+- add note in RELNOTES about this change
+- update ChangeLog from git
+
+-------------------------------------------------------------------
 Mon Feb 26 12:45:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
