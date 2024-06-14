@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://gitlab.gnome.org/World/Fragments.git</param>
     <param name="scm">git</param>
-    <param name="revision">refs/tags/2.1.1</param>
+    <param name="revision">refs/tags/3.0.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>

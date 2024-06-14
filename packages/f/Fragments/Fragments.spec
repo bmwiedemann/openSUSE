@@ -1,7 +1,7 @@
 #
 # spec file for package Fragments
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 
 Name:           Fragments
-Version:        2.1.1
+Version:        3.0.1
 Release:        0
 Summary:        A GTK4 BitTorrent Client
 License:        GPL-3.0-only
@@ -27,7 +27,6 @@ Group:          Productivity/Networking/Other
 URL:            https://gitlab.gnome.org/World/Fragments
 Source:         %{name}-%{version}.tar.xz
 Source2:        vendor.tar.zst
-Source3:        cargo_config
 
 BuildRequires:  appstream-glib
 BuildRequires:  c++_compiler
@@ -56,8 +55,6 @@ GNOME HIG and includes well thought-out features.
 
 %prep
 %autosetup -p1 -a2
-mkdir .cargo
-cp %{SOURCE3} .cargo/config
 
 %build
 export RUSTFLAGS="%{build_rustflags}"
