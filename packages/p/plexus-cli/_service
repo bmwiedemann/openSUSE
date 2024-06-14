@@ -2,9 +2,10 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/codehaus-plexus/plexus-cli.git</param>
-		<param name="revision">8927458e81</param>
-		<param name="versionformat">1.6</param>
-		<param name="filename">plexus-cli</param>
+		<param name="revision">plexus-cli-1.7</param>
+		<param name="match-tag">plexus-cli-*</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="versionrewrite-pattern">plexus-cli-(.*)</param>
 	</service>
 	<service name="recompress" mode="disabled">
 		<param name="file">*.tar</param>

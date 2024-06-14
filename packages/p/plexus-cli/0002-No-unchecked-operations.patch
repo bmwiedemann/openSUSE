@@ -1,4 +1,4 @@
-From ebc5470ee49188a0bdf07aa39138fc78c76f3698 Mon Sep 17 00:00:00 2001
+From d737f134f7a93b2443db04031fb4f5949ccb3de3 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
 Date: Thu, 19 May 2022 09:30:58 +0200
 Subject: [PATCH 2/2] No unchecked operations
@@ -8,18 +8,18 @@ Subject: [PATCH 2/2] No unchecked operations
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/main/java/org/codehaus/plexus/tools/cli/AbstractCli.java b/src/main/java/org/codehaus/plexus/tools/cli/AbstractCli.java
-index e173774..575c539 100644
+index 7e72f08..9619836 100644
 --- a/src/main/java/org/codehaus/plexus/tools/cli/AbstractCli.java
 +++ b/src/main/java/org/codehaus/plexus/tools/cli/AbstractCli.java
-@@ -374,7 +374,7 @@ public abstract class AbstractCli
+@@ -323,7 +323,7 @@ public abstract class AbstractCli implements Cli {
+     }
  
-     private static String[] cleanArgs( String[] args )
-     {
+     private static String[] cleanArgs(String[] args) {
 -        List cleaned = new ArrayList();
 +        List<String> cleaned = new ArrayList<String>();
  
          StringBuffer currentArg = null;
  
 -- 
-2.36.1
+2.45.2
 

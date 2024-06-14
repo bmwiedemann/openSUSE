@@ -16,9 +16,8 @@
 #
 
 
-%bcond_with tests
 Name:           plexus-cli
-Version:        1.6
+Version:        1.7
 Release:        0
 Summary:        Command Line Interface facilitator for Plexus
 License:        Apache-2.0
@@ -38,10 +37,6 @@ BuildRequires:  plexus-utils
 BuildRequires:  sisu-plexus
 BuildRequires:  xz
 BuildArch:      noarch
-%if %{with tests}
-BuildRequires:  ant-junit
-BuildRequires:  guava
-%endif
 
 %description
 Plexus contains end-to-end developer tools for writing applications.
@@ -64,19 +59,11 @@ Javadoc for %{name}.
 cp -p %{SOURCE1} .
 cp -p %{SOURCE100} build.xml
 
-%pom_change_dep :plexus-container-default org.eclipse.sisu:org.eclipse.sisu.plexus:0.9.0.M2
-
 mkdir -p lib
 build-jar-repository -s lib commons-cli plexus/utils plexus/classworlds org.eclipse.sisu.plexus
-%if %{with tests}
-build-jar-repository -s lib guava/guava
-%endif
 
 %build
 ant \
-%if %{without tests}
-  -Dtest.skip=true \
-%endif
   jar javadoc
 
 %install

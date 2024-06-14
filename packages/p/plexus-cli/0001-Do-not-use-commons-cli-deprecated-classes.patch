@@ -1,18 +1,18 @@
-From 50b6e1d26fdcecbfa40302d6b8f4ea6dbecb3e93 Mon Sep 17 00:00:00 2001
+From c35c0ecf6be620469b50cc904efc2152ba3d7dbc Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
 Date: Thu, 19 May 2022 09:30:24 +0200
 Subject: [PATCH 1/2] Do not use commons-cli deprecated classes
 
 ---
- .../plexus/tools/cli/AbstractCli.java         | 32 +++++++++----------
- .../codehaus/plexus/tools/cli/TestCli.java    |  4 +--
- 2 files changed, 17 insertions(+), 19 deletions(-)
+ .../plexus/tools/cli/AbstractCli.java         | 60 ++++++++++---------
+ .../codehaus/plexus/tools/cli/TestCli.java    |  9 +--
+ 2 files changed, 38 insertions(+), 31 deletions(-)
 
 diff --git a/src/main/java/org/codehaus/plexus/tools/cli/AbstractCli.java b/src/main/java/org/codehaus/plexus/tools/cli/AbstractCli.java
-index 1763c5a..e173774 100644
+index 505c128..7e72f08 100644
 --- a/src/main/java/org/codehaus/plexus/tools/cli/AbstractCli.java
 +++ b/src/main/java/org/codehaus/plexus/tools/cli/AbstractCli.java
-@@ -18,9 +18,9 @@ package org.codehaus.plexus.tools.cli;
+@@ -24,9 +24,9 @@ import java.util.Properties;
  
  import org.apache.commons.cli.CommandLine;
  import org.apache.commons.cli.CommandLineParser;
@@ -24,7 +24,7 @@ index 1763c5a..e173774 100644
  import org.apache.commons.cli.Options;
  import org.apache.commons.cli.ParseException;
  import org.codehaus.plexus.ContainerConfiguration;
-@@ -49,17 +49,17 @@ public abstract class AbstractCli
+@@ -45,17 +45,17 @@ public abstract class AbstractCli implements Cli {
      // These are standard options that we would want to use for all our projects.
      // ----------------------------------------------------------------------------
  
@@ -48,63 +48,93 @@ index 1763c5a..e173774 100644
  
      // ----------------------------------------------------------------------------
      // Abstract methods
-@@ -346,19 +346,17 @@ public abstract class AbstractCli
+@@ -284,25 +284,31 @@ public abstract class AbstractCli implements Cli {
+     public Options buildDefaultCliOptions() {
          options = new Options();
  
-         options.addOption(
--            OptionBuilder.withLongOpt( "define" ).hasArg().withDescription( "Define a system property" ).create(
--                SET_SYSTEM_PROPERTY ) );
-+            Option.builder( SET_SYSTEM_PROPERTY ).longOpt( "define" ).hasArg().desc( "Define a system property" ).build() );
-         options.addOption(
--            OptionBuilder.withLongOpt( "help" ).withDescription( "Display help information" ).create( HELP ) );
-+            Option.builder( HELP ).longOpt( "help" ).desc( "Display help information" ).build() );
-         options.addOption(
--            OptionBuilder.withLongOpt( "version" ).withDescription( "Display version information" ).create( VERSION ) );
-+            Option.builder( VERSION ).longOpt( "version" ).desc( "Display version information" ).build() );
-         options.addOption(
--            OptionBuilder.withLongOpt( "quiet" ).withDescription( "Quiet output - only show errors" ).create( QUIET ) );
-+            Option.builder( QUIET ).longOpt( "quiet" ).desc( "Quiet output - only show errors" ).build() );
-         options.addOption(
--            OptionBuilder.withLongOpt( "debug" ).withDescription( "Produce execution debug output" ).create( DEBUG ) );
-+            Option.builder( DEBUG ).longOpt( "debug" ).desc( "Produce execution debug output" ).build() );
-         options.addOption(
--            OptionBuilder.withLongOpt( "errors" ).withDescription( "Produce execution error messages" ).create(
--                ERRORS ) );
-+            Option.builder( ERRORS ).longOpt( "errors" ).desc( "Produce execution error messages" ).build() );
+-        options.addOption(OptionBuilder.withLongOpt("define")
++        options.addOption(Option.builder( SET_SYSTEM_PROPERTY )
++                .longOpt( "define" )
+                 .hasArg()
+-                .withDescription("Define a system property")
+-                .create(SET_SYSTEM_PROPERTY));
+-        options.addOption(OptionBuilder.withLongOpt("help")
+-                .withDescription("Display help information")
+-                .create(HELP));
+-        options.addOption(OptionBuilder.withLongOpt("version")
+-                .withDescription("Display version information")
+-                .create(VERSION));
+-        options.addOption(OptionBuilder.withLongOpt("quiet")
+-                .withDescription("Quiet output - only show errors")
+-                .create(QUIET));
+-        options.addOption(OptionBuilder.withLongOpt("debug")
+-                .withDescription("Produce execution debug output")
+-                .create(DEBUG));
+-        options.addOption(OptionBuilder.withLongOpt("errors")
+-                .withDescription("Produce execution error messages")
+-                .create(ERRORS));
++                .desc( "Define a system property" )
++                .build() );
++        options.addOption(Option.builder( HELP )
++                .longOpt( "help" )
++                .desc( "Display help information" )
++                .build() );
++        options.addOption(Option.builder( VERSION )
++                .longOpt( "version" )
++                .desc( "Display version information" )
++                .build() );
++        options.addOption(Option.builder( QUIET )
++                .longOpt( "quiet" )
++                .desc( "Quiet output - only show errors" )
++                .build() );
++        options.addOption(Option.builder( DEBUG )
++                .longOpt( "debug" )
++                .desc( "Produce execution debug output" )
++                .build() );
++        options.addOption(Option.builder( ERRORS )
++                .longOpt( "errors" )
++                .desc( "Produce execution error messages" )
++                .build() );
  
-         return buildCliOptions( options );
+         return buildCliOptions(options);
      }
-@@ -369,7 +367,7 @@ public abstract class AbstractCli
+@@ -311,7 +317,7 @@ public abstract class AbstractCli implements Cli {
          // We need to eat any quotes surrounding arguments...
-         String[] cleanArgs = cleanArgs( args );
+         String[] cleanArgs = cleanArgs(args);
  
 -        CommandLineParser parser = new GnuParser();
 +        CommandLineParser parser = new DefaultParser();
  
-         return parser.parse( buildDefaultCliOptions(), cleanArgs );
+         return parser.parse(buildDefaultCliOptions(), cleanArgs);
      }
 diff --git a/src/test/java/org/codehaus/plexus/tools/cli/TestCli.java b/src/test/java/org/codehaus/plexus/tools/cli/TestCli.java
-index 35b1a31..416edcc 100644
+index 90f487c..9e2b318 100644
 --- a/src/test/java/org/codehaus/plexus/tools/cli/TestCli.java
 +++ b/src/test/java/org/codehaus/plexus/tools/cli/TestCli.java
-@@ -20,7 +20,7 @@ import org.codehaus.plexus.PlexusContainer;
- import org.codehaus.plexus.util.FileUtils;
- import org.apache.commons.cli.Options;
+@@ -19,7 +19,7 @@ package org.codehaus.plexus.tools.cli;
+ import java.io.File;
+ 
  import org.apache.commons.cli.CommandLine;
 -import org.apache.commons.cli.OptionBuilder;
 +import org.apache.commons.cli.Option;
+ import org.apache.commons.cli.Options;
+ import org.codehaus.plexus.PlexusContainer;
+ import org.codehaus.plexus.util.FileUtils;
+@@ -33,10 +33,11 @@ public class TestCli extends AbstractCli {
+     }
  
- import java.io.File;
- 
-@@ -39,7 +39,7 @@ public class TestCli
-     public Options buildCliOptions( Options options )
-     {
-         options.addOption(
--            OptionBuilder.withLongOpt( "name" ).withDescription( "Display name." ).hasArg().create( 'n' ) );
-+            Option.builder( "n" ).longOpt( "name" ).desc( "Display name." ).hasArg().build() );
+     public Options buildCliOptions(Options options) {
+-        options.addOption(OptionBuilder.withLongOpt("name")
+-                .withDescription("Display name.")
++        options.addOption(Option.builder( "n" )
++                .longOpt( "name" )
++                .desc( "Display name." )
+                 .hasArg()
+-                .create('n'));
++                .build() );
  
          return options;
      }
 -- 
-2.36.1
+2.45.2
 
