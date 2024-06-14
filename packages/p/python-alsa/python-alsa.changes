@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 13 15:03:18 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 1.2.12:
+  * Improvements on hcontrol and mixer
+  * Fixes for setup.py
+  * Segfault fix for alsaseq
+  For details, see:
+    https://www.alsa-project.org/wiki/Changes_v1.2.11_v1.2.12#alsa-python
+
+-------------------------------------------------------------------
 Wed Nov  9 11:00:43 UTC 2022 - Takashi Iwai <tiwai@suse.com>
 
 - Add keyring
