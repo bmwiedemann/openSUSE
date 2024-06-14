@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 13 14:54:47 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Update to alsa-utils 1.2.12:
+  * alsactl: NULL pointer fix
+  * alsa-info.sh: log SoundWire devices reported in ACPI
+  * alsamixer: fix calculation in set_normalized_volume (overflow)
+  * topology: nhlt fixes
+  * aplay: fix S24_LE wav header
+  * aseqdump: Add dump for UMP Utility and System messages
+  * Addition of aseqsend
+  For details, see:
+    https://www.alsa-project.org/wiki/Changes_v1.2.11_v1.2.12#alsa-utils
+
+-------------------------------------------------------------------
 Thu May 30 13:13:53 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Require tree which is used by alsa-info.sh (bsc#1225665)
