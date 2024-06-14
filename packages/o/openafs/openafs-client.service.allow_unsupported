@@ -15,7 +15,6 @@ ExecStartPost=/usr/bin/fs setcrypt $CRYPT
 ExecStop=/usr/bin/umount /afs
 ExecStop=/usr/sbin/afsd -shutdown
 ExecStop=/sbin/rmmod libafs
-KillMode=none
 
 [Install]
 WantedBy=multi-user.target remote-fs.target

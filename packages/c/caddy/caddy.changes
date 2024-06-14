@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jun 14 10:21:50 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Add OBS manual service download_files
+
+-------------------------------------------------------------------
+Tue Jun 11 14:55:47 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Source Caddyfile and index.html from upstream
+- Remove part of inaccurate description
+- Package shell completion separately
+- Generate shell completion during build
+- Include manpages
+- Remove compatibility with SLE-12
+- Source buildable-artifact tar from github to embed version
+  information (https://github.com/golang/go/issues/29228)
+- Check binary with version subcommand
+- Raise golang(API) required version
+
+-------------------------------------------------------------------
 Sun Jun 02 14:15:59 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 2.8.4:

@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri Jun 14 09:27:31 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20240611.01
+  * Network subsystem remove os rules (#396)
+  * oslogin: don't remove sshca watcher when oslogin is disabled (#398)
+  * update dependencies to catch up on CVE fixes (#397)
+  * Network manager netplan implementation (#386)
+  * update dependencies to catch up on CVE fixes (#391)
+  * Log current available routes on error (#388)
+  * Fix command monitor bugs (#389)
+  * windows account: ignore "user already belogs to group" error (#387)
+  * Add more error logging in snapshot handling requests, use common retry util (#384)
+  * All non-200 status code from MDS should raise error (#383)
+  * change metadata key to enable-oslogin-certificates (#382)
+  * Update dhclient pid/lease file directory to abide apparmor rules (#381)
+  * Add COS homedir-gid patch to upstream. (#365)
+  * Add require-oslogin-certificates logic to disable keys (#368)
+  * systemd-networkd: support debian 12's version (#372)
+  * Minor update typo in comment (#380)
+  * NetworkManager: only set secondary interfaces as up (#378)
+  * address manager: make sure we check for oldMetadata (#375)
+  * network: early setup network (#374)
+  * NetworkManager: fix ipv6 and ipv4 mode attribute (#373)
+  * Network Manager: make sure we clean up ifcfg files (#371)
+  * metadata script runner: fix script download (#370)
+  * oslogin: avoid adding extra empty line at the end of /etc/security/group.conf (#369)
+  * Dynamic vlan (#361)
+  * Check for nil response (#366)
+  * Create NetworkManager implementation (#362)
+  * Skip interface manager on Windows (#363)
+  * network: remove ignore setup (#360)
+  * Create wicked network service implementation and its respective unit (#356)
+  * Update metadata script runner, add tests (#357)
+  * Refactor guest-agent to use common retry util (#355)
+  * Flush logs before exiting #358 (#359)
+  * Create systemd-networkd unit tests. (#354)
+  * Update network manager unit tests (#351)
+  * Implement retry util (#350)
+  * Refactor utils package to not dump everything unrelated into one file (#352)
+  * Set version on metadata script runner (#353)
+  * Implement cleanup of deprecated configuration directives (#348)
+  * ignore DHCP offered routes only for secondary nics (#347)
+  * Deprecate DHClient in favor of systemd-networkd (#342)
+  * Generate windows and linux licenses (#346)
+  * Remove quintonamore from OWNERS (#345)
+  * Delete integration tests (#343)
+- from version 20240528.00
+  * update dep: golang.org/x/crypto to v0.17.0
+  * update dep: google.golang.org/protobuf to 1.33.0
+  * update dep: golang.org/x/net to 0.17.0
+  * update dep: google.golang.org/grpc to v1.57.1
+
+-------------------------------------------------------------------
 Fri Mar 22 12:00:11 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20240314.00 (bsc#1221900, bsc#1221901)

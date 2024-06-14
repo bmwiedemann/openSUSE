@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jun 14 08:46:34 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 12.87:
+  * Added ability to write Google Container XMP tags (using the
+    namespace prefix 'GContainer' to avoid conflict with the Google
+    Device Container prefix)
+  * Decode a few new tags for the Canon EOS R5
+  * Decode battery information for the Pentax K-3 III
+  * Decode RAFCompression from FujiFilm RAF images
+  * Avoid reporting FileSize of 0 for pipes
+  * Updated Geolocation databases from current geonames.org files
+  * Skip over Matroska Cluster if necessary to read Tags if
+    referenced in SeekHead
+  * Changed conversion for Matroska SeekID (now in hex with tag
+    name in brackets) and SeekPosition (now returns an absolute offset)
+  * Fixed problem writing XMP-Device:EarthPos coordinates
+  * Fixed typo in a value of Canon:DigitalLensOptimizer
+  * Fixed decoding of Matroska VideoScanType
+  * Fixed misleading error message when -o option was used to
+    write to an unsupported file type
+
+-------------------------------------------------------------------
 Tue Jun 11 10:18:59 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 12.86:

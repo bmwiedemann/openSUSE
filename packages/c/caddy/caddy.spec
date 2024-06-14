@@ -16,14 +16,6 @@
 #
 
 
-# SLE-12 _sharedstatedir was /usr/com, _localstatedir is /var as expected
-# SLE-15+ _sharedstatedir is /var/lib, _localstatedir is /var
-# _sharedstatedir used here as home directory for newly created user caddy
-# If not redefined build fails with empty /usr/com not owned by any package
-%if 0%{?suse_version} < 1500
-%define _sharedstatedir /var/lib
-%endif
-
 Name:           caddy
 Version:        2.8.4
 Release:        0
@@ -31,17 +23,16 @@ Summary:        Fast, multi-platform web server with automatic HTTPS
 License:        Apache-2.0
 Group:          Productivity/Networking/Web/Proxy
 URL:            https://caddyserver.com/
-Source0:        %{name}-%{version}.tar.gz
+# bug https://github.com/golang/go/issues/29228
+Source0:        https://github.com/caddyserver/%{name}/releases/download/v%{version}/%{name}_%{version}_buildable-artifact.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Source2:        Caddyfile
+Source2:        https://github.com/caddyserver/dist/raw/v%{version}/config/Caddyfile
 Source3:        caddy.service
-Source4:        index.html
-Source5:        bash-completion
-Source6:        zsh-completion
-Source7:        caddy.sysusers
+Source4:        https://github.com/caddyserver/dist/raw/v%{version}/welcome/index.html
+Source5:        caddy.sysusers
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
-BuildRequires:  golang(API) >= 1.21
+BuildRequires:  golang(API) >= 1.22
 %{?systemd_requires}
 %{sysusers_requires}
 
@@ -49,22 +40,47 @@ BuildRequires:  golang(API) >= 1.21
 Caddy is a powerful, extensible platform to serve your sites, services, and
 apps, written in Go.
 
-It operates primarily at L4 (transport layer) and L7 (application layer) of
-the OSI model, though it has the ability to work with other layers.
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       bash-completion
+Supplements:    (%{name} and bash)
+BuildArch:      noarch
+
+%description bash-completion
+Bash completion script for %{name}, generated during the build.
+
+%package zsh-completion
+Summary:        ZSH Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+ZSH completion script for %{name}, generated during the build.
+
+%package fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and fish)
+BuildArch:      noarch
+
+%description fish-completion
+Fish shell completion script for %{name}, generated during the build.
 
 %prep
-%autosetup -a 1
+%autosetup -a 1 -c
 
 %build
 # Build the binary.
 %ifnarch ppc64
 export GOFLAGS="-buildmode=pie"
 %endif
-go build ./cmd/%{name}
+go build -v -x
 
 %check
-# execute the binary as a basic check
-./%{name} --help
+# Execute binary and check version
+[[ "$(./%{name} version)" == "v%{version}" ]] || exit 1
 
 %install
 install -d %{buildroot}/%{_sbindir}
@@ -76,7 +92,7 @@ install -D -p -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/%{name}/Caddyfile
 # service
 install -D -p -m 0644 %{SOURCE3} %{buildroot}%{_unitdir}/%{name}.service
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
-install -Dpm0644 %{SOURCE7} %{buildroot}%{_sysusersdir}/%{name}.conf
+install -Dpm0644 %{SOURCE5} %{buildroot}%{_sysusersdir}/%{name}.conf
 
 # data directory
 install -d -m 0750 %{buildroot}%{_sharedstatedir}/%{name}
@@ -85,10 +101,21 @@ install -d -m 0750 %{buildroot}%{_sharedstatedir}/%{name}
 install -D -p -m 0644 %{SOURCE4} %{buildroot}%{_datadir}/%{name}/index.html
 
 # bash completion
-install -D -p -m 0644 %{SOURCE5} %{buildroot}%{_datadir}/bash-completion/completions/%{name}
-install -D -p -m 0644 %{SOURCE6} %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
+install -d -p -m 0755 %{buildroot}%{_datadir}/bash-completion/completions
+./%{name} completion bash > %{buildroot}%{_datadir}/bash-completion/completions/%{name}
 
-%sysusers_generate_pre %{SOURCE7} %{name} %{name}.conf
+# zsh completion
+install -d -p -m 0755 %{buildroot}%{_datadir}/zsh/site-functions
+./%{name} completion zsh > %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
+
+# fish completion
+install -d -p -m 0755 %{buildroot}%{_datadir}/fish/vendor_completions.d
+./%{name} completion fish > %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
+
+# man pages
+./%{name} manpage --directory %{buildroot}%{_mandir}/man8
+
+%sysusers_generate_pre %{SOURCE5} %{name} %{name}.conf
 
 %pre -f %{name}.pre
 %service_add_pre %{name}.service
@@ -106,6 +133,7 @@ install -D -p -m 0644 %{SOURCE6} %{buildroot}%{_datadir}/zsh/site-functions/_%{n
 %files
 %license LICENSE
 %doc AUTHORS README.md
+%{_mandir}/man8/caddy*.8%{?ext_man}
 %{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_unitdir}/%{name}.service
@@ -114,11 +142,14 @@ install -D -p -m 0644 %{SOURCE6} %{buildroot}%{_datadir}/zsh/site-functions/_%{n
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/Caddyfile
 %dir %attr(0750, %{name}, %{name}) %{_sharedstatedir}/%{name}
-# filesystem owns all the parent directories here
-%{_datadir}/bash-completion/completions/%{name}
-# own parent directories in case zsh is not installed
-%dir %{_datadir}/zsh
-%dir %{_datadir}/zsh/site-functions
-%{_datadir}/zsh/site-functions/_%{name}
+
+%files bash-completion
+%{_datadir}/bash-completion
+
+%files fish-completion
+%{_datadir}/fish
+
+%files zsh-completion
+%{_datadir}/zsh
 
 %changelog

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun  5 10:11:02 UTC 2024 - Dawid Adam <nyslay@gmail.com>
+
+- update to 3.58:
+  * conky module: skip invalid conky errors
+  * weather_owm module: switch to 3.0 API endpoint as 2.5 is deprecated
+
+-------------------------------------------------------------------
 Fri May 31 09:50:50 UTC 2024 - Dawid Adam <nyslay@gmail.com>
 
 - update to 3.57:

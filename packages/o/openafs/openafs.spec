@@ -57,11 +57,11 @@
 
 # used for %setup only
 # leave upstream tar-balls untouched for integrity checks.
-%define upstream_version 1.8.11pre1
+%define upstream_version stable-1_8_x
 
 Name:           openafs
 
-Version:        1.8.11~pre1
+Version:        1.8.11.g20240530
 Release:        0
 Summary:        OpenAFS Distributed File System
 License:        IPL-1.0
@@ -103,7 +103,6 @@ Source58:       openafs.cacheinfo
 Source98:       kmp_only.files
 Source99:       openafs.changes
 
-# PATCH-FIX-UPSTREAM fix build with kernel 6.5
 # PATCH-HANDLE-BACKPORTS
 # some kernel-features from 6.5 are apparently in 6.4
 Patch99:        handle_backports.diff

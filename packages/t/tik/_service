@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <services>
-  <service name="obs_scm" mode="localonly">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/sysrich/tik.git</param>
     <param name="scm">git</param>
-    <param name="revision">v1.0.7</param>
+    <param name="revision">v1.1.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
-  <service name="set_version" mode="localonly"/>
-  <service name="tar" mode="localonly"/>
-  <service name="recompress" mode="localonly">
+  <service name="set_version" mode="manual"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
     <param name="compression">xz</param>
     <param name="file">*.tar</param>
   </service>

@@ -433,4 +433,41 @@
     <comment></comment>
     <requestid>1161371</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>1d47d1dbf782588e397840f031c4661c</srcmd5>
+    <version>20240611.01</version>
+    <time>1718384570</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240611.01
+  * Network subsystem remove os rules (#396)
+  * oslogin: don't remove sshca watcher when oslogin is disabled (#398)
+  * update dependencies to catch up on CVE fixes (#397)
+  * Network manager netplan implementation (#386)
+  * update dependencies to catch up on CVE fixes (#391)
+  * Log current available routes on error (#388)
+  * Fix command monitor bugs (#389)
+  * windows account: ignore &quot;user already belogs to group&quot; error (#387)
+  * Add more error logging in snapshot handling requests, use common retry util (#384)
+  * All non-200 status code from MDS should raise error (#383)
+  * change metadata key to enable-oslogin-certificates (#382)
+  * Update dhclient pid/lease file directory to abide apparmor rules (#381)
+  * Add COS homedir-gid patch to upstream. (#365)
+  * Add require-oslogin-certificates logic to disable keys (#368)
+  * systemd-networkd: support debian 12's version (#372)
+  * Minor update typo in comment (#380)
+  * NetworkManager: only set secondary interfaces as up (#378)
+  * address manager: make sure we check for oldMetadata (#375)
+  * network: early setup network (#374)
+  * NetworkManager: fix ipv6 and ipv4 mode attribute (#373)
+  * Network Manager: make sure we clean up ifcfg files (#371)
+  * metadata script runner: fix script download (#370)
+  * oslogin: avoid adding extra empty line at the end of /etc/security/group.conf (#369)
+  * Dynamic vlan (#361)
+  * Check for nil response (#366)
+  * Create NetworkManager implementation (#362)
+  * Skip interface manager on Windows (#363)
+  * network: remove ignore setup (#360)
+  * Create wicked network service implementation and its respective unit (#356) (forwarded request 1180854 from glaubitz)</comment>
+    <requestid>1180855</requestid>
+  </revision>
 </revisionlist>

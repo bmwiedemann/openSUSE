@@ -236,7 +236,7 @@ cp -r tests %{buildroot}/%{python_sitelib}/azurelinuxagent
 # preserver the previousl config file that was flavor customized during
 # image build
 if [ -e /etc/waagent.conf ]; then
-    cp /etc/waagent.conf /etc/waagent.conf.bak
+    cp -Z /etc/waagent.conf /etc/waagent.conf.bak
 fi
 
 %if 0%{?suse_version} > 1500
@@ -251,11 +251,11 @@ done
 # put the oldfile back if we do not have another config file
 if [ ! -e /etc/waagent.conf ]; then
     if [ -e /etc/waagent.conf.bak ]; then
-        mv /etc/waagent.conf.bak /etc/waagent.conf
+        mv -Z /etc/waagent.conf.bak /etc/waagent.conf
     # Making the assumption that the rpmsave file was generated because of
     # of the previously broken package upgrade.
     elif [ -e /etc/waagent.conf.rpmsave ]; then
-        cp /etc/waagent.conf.rpmsave /etc/waagent.conf
+        cp -Z /etc/waagent.conf.rpmsave /etc/waagent.conf
     fi
 fi
 %if 0%{?suse_version} > 1500

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Jun 14 11:47:31 UTC 2024 - rbrown@suse.com
+
+- Update to version 1.1.1:
+  * Make disk selection window a little larger to be comfortable with extra info
+
+-------------------------------------------------------------------
+Fri Jun 14 11:12:32 UTC 2024 - rbrown@suse.com
+
+- Update to version 1.0.991:
+  * Revert "Added condition to check batteries for charging state"
+
+-------------------------------------------------------------------
+Fri Jun 14 10:43:35 UTC 2024 - rbrown@suse.com
+
+- Update to version 1.0.99:
+  * Unify /etc and /usr copies of config
+  * Fix display error in selection dialog if disk has no partitions.
+  * Added condition to check batteries for charging state which would indicate they are connected to power, and removed the hard block so it would only warn the user if they are about to install via battery
+  * Filters USB devices to not be listed in disk selection dialog. Add a config value to allow USB devices to show in selection dialog. Fixes installation on USB devices.
+  * Change how partition info is displayed
+
+-------------------------------------------------------------------
+Fri Jun 14 07:47:22 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Tune up _service for easier automation 
+
+-------------------------------------------------------------------
 Mon Jun 10 18:44:51 UTC 2024 - rbrown@suse.com
 
 - Update to version 1.0.7:

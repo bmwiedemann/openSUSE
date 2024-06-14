@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Sat Jun  1 20:38:22 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase for descriptions.
+
+-------------------------------------------------------------------
+Fri May 31 07:11:00 UTC 2024 - Sai Karthik Karra <kskarthik@disroot.org>
+
+This release includes our most requested feature, SMTP support.
+
+With Pop v0.2.0, you can now send emails using your own SMTP server configuration.
+
+To get started, export the following environment variables:
+
+export POP_SMTP_HOST=smtp.gmail.com
+export POP_SMTP_PORT=587
+export POP_SMTP_USERNAME=azure.diamond@gmail.com
+export POP_SMTP_PASSWORD=hunter2
+
+Then, run pop and send emails like you normally would: 

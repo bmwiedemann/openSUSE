@@ -575,4 +575,16 @@
   Seems to have a problem with true/false right now</comment>
     <requestid>1178893</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>4148bef014e80ca5271e514a9c2a16c0</srcmd5>
+    <version>0.18.18+0</version>
+    <time>1718384568</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.18.8:
+  * Extend deny check in audit workflow to all
+  * Add deny.toml and workflow file to audit workflow paths
+  * Run on all features by default
+  * Ask for shell and terminal in bug report template</comment>
+    <requestid>1180852</requestid>
+  </revision>
 </revisionlist>

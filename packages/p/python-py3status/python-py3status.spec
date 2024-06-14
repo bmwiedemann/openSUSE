@@ -1,7 +1,7 @@
 #
 # spec file for package python-py3status
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define skip_python2 1
 Name:           python-py3status
-Version:        3.57
+Version:        3.58
 Release:        0
 Summary:        Python extensible i3status wrapper
 License:        BSD-3-Clause
 URL:            https://github.com/ultrabug/py3status
-Source:         https://github.com/ultrabug/py3status/archive/3.57.tar.gz#/py3status-3.57.tar.gz
+Source:         https://github.com/ultrabug/py3status/archive/%{version}.tar.gz#/py3status-%{version}.tar.gz
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -65,6 +65,7 @@ a py3status-modules-only i3bar.
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/py3status
 %python_clone -a %{buildroot}%{_bindir}/py3-cmd
+%python_expand chmod -x %{buildroot}%{$python_sitelib}/py3status/__init__.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

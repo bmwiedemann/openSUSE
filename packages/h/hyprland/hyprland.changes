@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Jun 13 15:36:52 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.41.1:
+  + Hello there! After 0.41.0's bumpy start, we're bringing 0.41.1 to
+    you to fix a bunch of bugs and issues.
+  + New features:
+    - binds: Add description to key binds (#6358)
+  + Fixes:
+    - compositor: update suspended states on moveworkspacetomonitor
+    - foreign-toplevel: fixup output resource finding
+    - formats: fixup for legacy_renderer builds
+    - groupbar: fix groupbar position rounding (#6433)
+    - input: fix input regions being ignored on ls-es (#6413)
+    - keybinds: fix bindm (#6429)
+    - layershell: Fix keyboard focus grabs (#4968) (#6394)
+    - layershell: minor fixes to re-mapping of layers
+    - seat: fixup touch event handling
+    - seatmgr: fix missing nullcheck in updateActiveKeyboardData
+    - session-lock: fix refocus after unlocking (#6423)
+    - sessionLock: fix focus not being tied to mouse (#6414)
+    - virtualkeyboard: check if VirtualKeyboard is valid before
+      accessing client. (#6460)
+    - wayland: consistently check mmap error after 6967a31 (#6402)
+  + Other:
+    - core: move to hyprutils for utils (#6385)
+    - datadevice: only send actions for ver >= 3
+    - groupbar: Don't apply monitor scale twice to groupbar text
+      (#6411)
+    - hyprpm: print all types of cmake errors during configure
+    - input: fallback to main surface if not found on window
+    - layer: don't close special ws when restoring focus (#6424)
+    - renderer: properly software lock cursors with zoom_factor
+      (#6434)
+
+-------------------------------------------------------------------
 Mon Jun 10 17:10:38 UTC 2024 - Florian "spirit" <sp1rit@disroot.org>
 
 - Update to version 0.41.0:

@@ -1,0 +1,3 @@
+usermod grommunio -aG groweb || :
+find /var/lib/grommunio-web/sqlite-index/ -mindepth 1 "(" -type d -o -type f ")" -exec chmod g+w,o-w {} + || :
+find /var/lib/grommunio-web/sqlite-index/ -mindepth 1 "(" -type d -o -type f ")" -exec chgrp -h groweb {} + || :

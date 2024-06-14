@@ -401,4 +401,12 @@
   * build(deps): bump golangci/golangci-lint-action from 5 to 6 (#6361) (forwarded request 1178167 from jfkw)</comment>
     <requestid>1178203</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>9423d5750ed521bb880150fc8d92bba4</srcmd5>
+    <version>2.8.4</version>
+    <time>1718384576</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1180883</requestid>
+  </revision>
 </revisionlist>

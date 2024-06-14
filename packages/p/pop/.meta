@@ -1,0 +1,5 @@
+<package name="pop" project="openSUSE:Factory">
+  <title> Send emails from your terminal 📬 </title>
+  <description></description>
+  <devel project="server:mail" package="pop"/>
+</package>

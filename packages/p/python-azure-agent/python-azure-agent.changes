@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  5 18:58:43 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Use the -Z option for mv and cp in the posttrans to properly handle
+  SELinux context (bsc#1225946)
+
+-------------------------------------------------------------------
 Wed Apr 10 22:53:47 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Keep the existing config file (bsc#1222620)

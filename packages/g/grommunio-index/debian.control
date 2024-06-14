@@ -10,5 +10,7 @@ Standards-Version: 4.5.1
 Package: grommunio-index
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Requires: system-user-groindex,
+ system-group-groweb, system-group-gromoxcf
 Description: Generator for grommunio-web search indexes
  .

@@ -20,7 +20,7 @@
 %bcond_without devel
 
 Name:           hyprland
-Version:        0.41.0
+Version:        0.41.1
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
@@ -41,6 +41,7 @@ BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(hwdata)
 BuildRequires:  pkgconfig(hyprcursor) >= 0.1.9
 BuildRequires:  pkgconfig(hyprlang) >= 0.3.2
+BuildRequires:  pkgconfig(hyprutils) >= 0.1.2
 BuildRequires:  pkgconfig(hyprwayland-scanner) >= 0.3.8
 BuildRequires:  pkgconfig(libdisplay-info)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.118
