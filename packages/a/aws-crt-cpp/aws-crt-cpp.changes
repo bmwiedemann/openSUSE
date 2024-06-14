@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 13 12:03:06 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.26.12.
+  * Fix bug where last few bytes on socket go unread by @graebm in (#624)
+
+-------------------------------------------------------------------
 Tue Jun  4 09:36:23 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.26.11
