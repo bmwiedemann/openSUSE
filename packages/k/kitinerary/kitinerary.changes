@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jun 12 07:33:26 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.1/
+- Changes since 24.05.0:
+  * Add tobilet.pl event ticket extractor script
+  * Deal with Flixbus disruption notes
+  * Fix wrong results for Flixbus multi-column seat information
+  * Handle more Flixbus ticket token variants in JSON-LD data
+  * Loosen the Flixbus extractor trigger pattern a bit
+  * Special-case comparing Flixbus ticket tokens
+  * Handle Air Asia booking email with departure terminals
+  * Add generic extractor for ERA FCB customer card data
+  * Decode ERA FCB CustomerCardData validity time ranges
+  * Support Amadeus Cytric booking confirmations
+  * Handle German language variants of Trenitalia tickets
+  * Remove implausible time zones during post-processing
+  * Fix filtering of invalid IATA BCBP child nodes
+  * Make the Eurostar PDF extractor more robust against layout variations
+
+-------------------------------------------------------------------
 Sun May 19 09:56:16 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.0
