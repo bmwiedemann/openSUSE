@@ -18,11 +18,11 @@
 
 %define kf6_version 6.0.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.80
+%define kpim6_version 6.1.1
 
 %bcond_without released
 Name:           pim-sieve-editor
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        Sieve scripts editor for KDE PIM applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -54,7 +54,7 @@ BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Requires:       kmail
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 %{x86_64} aarch64 riscv64
 
 %description
 This package provides an editor, complete with syntax highlighting and
