@@ -1,0 +1,40 @@
+From e9eda8f8456c98e3c3a438bfd2ff41d90f59a8ec Mon Sep 17 00:00:00 2001
+From: "trop[bot]" <37223003+trop[bot]@users.noreply.github.com>
+Date: Tue, 14 May 2024 21:26:51 +0000
+Subject: [PATCH] Fix cast in ElectronDesktopWindowTreeHostLinux
+
+The frame view of the widget is an `ClientFrameViewLinux` instance only
+when both `frame` and `client_frame` booleans are set to `true`.
+Otherwise it is an instance of a different class and thus casting to
+`ClientFrameViewLinux` is incorrect and leads to crashes.
+
+Fix: #41839
+
+Co-authored-by: Fedor Indutny <indutny@signal.org>
+---
+ .../ui/electron_desktop_window_tree_host_linux.cc    | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/shell/browser/ui/electron_desktop_window_tree_host_linux.cc b/shell/browser/ui/electron_desktop_window_tree_host_linux.cc
+index cfc87f6fb7efd..17936ba352a1c 100644
+--- a/electron/shell/browser/ui/electron_desktop_window_tree_host_linux.cc
++++ b/electron/shell/browser/ui/electron_desktop_window_tree_host_linux.cc
+@@ -71,9 +71,15 @@ void ElectronDesktopWindowTreeHostLinux::OnWindowStateChanged(
+ 
+ void ElectronDesktopWindowTreeHostLinux::OnWindowTiledStateChanged(
+     ui::WindowTiledEdges new_tiled_edges) {
+-  static_cast<ClientFrameViewLinux*>(
+-      native_window_view_->widget()->non_client_view()->frame_view())
+-      ->set_tiled_edges(new_tiled_edges);
++  // CreateNonClientFrameView creates `ClientFrameViewLinux` only when both
++  // frame and client_frame booleans are set, otherwise it is a different type
++  // of view.
++  if (native_window_view_->has_frame() &&
++      native_window_view_->has_client_frame()) {
++    static_cast<ClientFrameViewLinux*>(
++        native_window_view_->widget()->non_client_view()->frame_view())
++        ->set_tiled_edges(new_tiled_edges);
++  }
+   UpdateFrameHints();
+ }
+ 

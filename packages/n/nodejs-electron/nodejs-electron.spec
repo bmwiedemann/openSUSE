@@ -96,11 +96,6 @@ BuildArch:      i686
 %bcond_with system_minizip
 %endif
 
-%if 0%{?suse_version} || 0%{?fedora} >= 39
-%bcond_without icu_73
-%else
-%bcond_with icu_73
-%endif
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora}
 %bcond_without system_aom
@@ -234,9 +229,6 @@ Source402:      Cr122-ffmpeg-new-channel-layout.patch
 # and against harfbuzz 4
 Source415:      harfbuzz-replace-chromium-scoped-type.patch
 Source416:      harfbuzz-replace-HbScopedPointer.patch
-# and icu 71
-Source417:      v8-icu73-alt_calendar.patch
-Source418:      v8-icu73-simple-case-folding.patch
 # and wayland 1.31
 Source450:      wayland-proto-31-cursor-shape.patch
 
@@ -281,6 +273,7 @@ Patch586:       aom-vpx-no-thread-wrapper.patch
 Patch587:       remove-openscreen.patch
 Patch588:       remove-password-manager-and-policy.patch
 Patch589:       remove-puffin.patch
+Patch590:       remove-sync.patch
 
 
 
@@ -388,6 +381,7 @@ Patch3149:      boringssl-internal-addc-cxx.patch
 Patch3150:      InternalAllocator-too-many-initializers.patch
 Patch3151:      distributed_point_functions-evaluate_prg_hwy-signature.patch
 Patch3152:      fake_ssl_socket_client-Wlto-type-mismatch.patch
+Patch3153:      ElectronDesktopWindowTreeHostLinux-OnWindowTiledStateChanged-crash.patch
 
 # Patches to re-enable upstream force disabled features.
 # There's no sense in submitting them but they may be reused as-is by other packagers.
@@ -531,12 +525,7 @@ BuildRequires:  pkgconfig(harfbuzz) >= 3
 %if %{with harfbuzz_5}
 BuildRequires:  pkgconfig(harfbuzz) >= 5
 %endif
-BuildRequires:  pkgconfig(icu-i18n) >= 71
-%if %{with icu_73}
 BuildRequires:  pkgconfig(icu-i18n) >= 73
-%else
-BuildRequires:  pkgconfig(icu-i18n) >= 71
-%endif
 BuildRequires:  pkgconfig(jsoncpp)
 %if 0%{?fedora}
 Recommends: (ffmpeg-libs%{_isa} or libavcodec-freeworld%{_isa})
@@ -621,6 +610,7 @@ BuildRequires:  spirv-headers
 BuildRequires:  spirv-headers-devel
 %endif
 BuildRequires:  pkgconfig(SPIRV-Tools) >= 2022.2
+BuildRequires:  vulkan-headers >= 1.3
 %endif
 %if %{with link_vulkan}
 BuildRequires:  pkgconfig(vulkan) >= 1.3
@@ -760,10 +750,6 @@ patch -R -p1 < %SOURCE415
 patch -R -p1 < %SOURCE416
 %endif
 
-%if %{without icu_73}
-patch -R -p1 < %SOURCE417
-patch -R -p1 < %SOURCE418
-%endif
 
 %if %{without wayland_32}
 patch -R -p1 < %SOURCE450
@@ -912,7 +898,7 @@ unset MALLOC_PERTURB_
 
 %if %{with lto}
 %ifarch aarch64
-export LDFLAGS="$LDFLAGS -flto=2 --param ggc-min-expand=20 --param ggc-min-heapsize=32768 --param lto-max-streaming-parallelism=1 -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
+export LDFLAGS="$LDFLAGS -flto=auto --param ggc-min-expand=20 --param ggc-min-heapsize=32768 --param lto-max-streaming-parallelism=1 -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
 %else
 # x64 is fine with the the default settings (the machines have 30GB+ ram)
 export LDFLAGS="$LDFLAGS -flto=auto"
@@ -1005,8 +991,7 @@ gn_system_libraries+=( re2 )
 find  third_party/swiftshader/third_party/SPIRV-Headers/ -type f ! -name "*.gn" -a ! -name "*.gni"  -delete
 find  third_party/swiftshader/third_party/SPIRV-Tools/ -type f ! -name "*.gn" -a ! -name "*.gni"  -delete
 
-find third_party/vulkan-deps/spirv-headers/ -type f ! -name "*.gn" -a ! -name "*.gni"  -delete
-find third_party/vulkan-deps/spirv-tools/ -type f ! -name "*.gn" -a ! -name "*.gni"  -delete
+find third_party/vulkan-deps/ -type f ! -name "*.gn" -a ! -name "*.gni"  -delete
 
 gn_system_libraries+=(
    swiftshader-SPIRV-Headers
@@ -1262,10 +1247,6 @@ myconf_gn+=" is_component_build=false"
 myconf_gn+=" use_sysroot=false"
 myconf_gn+=" fatal_linker_warnings=false"
 
-#disable malloc interposer - bsc#1223366
-myconf_gn+=' use_allocator_shim=false'
-myconf_gn+=' enable_backup_ref_ptr_support=false'
-myconf_gn+=" use_partition_alloc=true"
 
 
 myconf_gn+=" disable_fieldtrial_testing_config=true"

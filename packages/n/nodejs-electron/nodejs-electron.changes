@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 12 14:54:32 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Do not build //components/sync to reduce linker load and binary size (remove-sync.patch)
+- Add backported ElectronDesktopWindowTreeHostLinux-OnWindowTiledStateChanged-crash.patch
+  to fix segfault due to type confusion (bsc#1223366 gh#electron/electron#41839)
+- Re-enable custom malloc now that the crash is fixed
+- Use system vulkan headers wherever system spirv is used
+- Drop Fedora 38 support
+  * drop v8-icu73-alt_calendar.patch
+  * drop v8-icu73-simple-case-folding.patch
+
+-------------------------------------------------------------------
 Wed May 29 20:19:39 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 29.4.2

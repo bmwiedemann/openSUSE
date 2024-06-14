@@ -1,0 +1,283 @@
+Do not build //components/sync with its massive protos.
+It's unused in Electron (it's only there to support Google profile login) and dropping it saves about 1~2 MB binary size.
+
+
+Inspired by:
+* https://code.qt.io/cgit/qt/qtwebengine-chromium.git/commit?h=122-based&id=8a9d741f4c4cf8170d5c50a336d51fe5d1b16ce8
+* https://code.qt.io/cgit/qt/qtwebengine-chromium.git/commit?h=122-based&id=6a11e9169f5889883bf63a3522d0c3f8f23552b0
+
+--- src/components/search_engines/BUILD.gn.orig
++++ src/components/search_engines/BUILD.gn
+@@ -66,7 +66,6 @@ static_library("search_engines") {
+     "//components/google/core/common",
+     "//components/keyed_service/core",
+     "//components/prefs",
+-    "//components/sync",
+     "//components/webdata/common",
+     "//third_party/metrics_proto",
+   ]
+--- src/electron/BUILD.gn.orig
++++ src/electron/BUILD.gn
+@@ -1204,6 +1204,8 @@ if (is_mac) {
+       "//electron/buildflags",
+       "//ui/strings",
+     ]
++    
++    assert_no_deps = [ "//components/sync/*" ]
+ 
+     data = []
+     data_deps = []
+--- src/electron/chromium_src/BUILD.gn.orig
++++ src/electron/chromium_src/BUILD.gn
+@@ -493,7 +493,6 @@ source_set("chrome_spellchecker") {
+       "//base:base_static",
+       "//components/language/core/browser",
+       "//components/spellcheck:buildflags",
+-      "//components/sync",
+     ]
+ 
+     public_deps += [ "//chrome/common:constants" ]
+--- src/chrome/browser/spellchecker/spellcheck_custom_dictionary.cc.orig
++++ src/chrome/browser/spellchecker/spellcheck_custom_dictionary.cc
+@@ -27,10 +27,6 @@
+ #include "chrome/common/chrome_constants.h"
+ #include "components/spellcheck/browser/spellcheck_host_metrics.h"
+ #include "components/spellcheck/common/spellcheck_common.h"
+-#include "components/sync/model/sync_change.h"
+-#include "components/sync/model/sync_change_processor.h"
+-#include "components/sync/protocol/dictionary_specifics.pb.h"
+-#include "components/sync/protocol/entity_specifics.pb.h"
+ #include "content/public/browser/browser_task_traits.h"
+ #include "content/public/browser/browser_thread.h"
+ 
+@@ -256,7 +252,6 @@ bool SpellcheckCustomDictionary::AddWord
+   int result = dictionary_change->Sanitize(GetWords());
+   Apply(*dictionary_change);
+   Notify(*dictionary_change);
+-  Sync(*dictionary_change);
+   Save(std::move(dictionary_change));
+   return result == VALID_CHANGE;
+ }
+@@ -268,7 +263,6 @@ bool SpellcheckCustomDictionary::RemoveW
+   int result = dictionary_change->Sanitize(GetWords());
+   Apply(*dictionary_change);
+   Notify(*dictionary_change);
+-  Sync(*dictionary_change);
+   Save(std::move(dictionary_change));
+   return result == VALID_CHANGE;
+ }
+@@ -302,10 +296,12 @@ bool SpellcheckCustomDictionary::IsLoade
+   return is_loaded_;
+ }
+ 
++#if 0
+ bool SpellcheckCustomDictionary::IsSyncing() {
+   DCHECK_CURRENTLY_ON(BrowserThread::UI);
+   return !!sync_processor_.get();
+ }
++#endif
+ 
+ void SpellcheckCustomDictionary::Load() {
+   DCHECK_CURRENTLY_ON(BrowserThread::UI);
+@@ -317,6 +313,7 @@ void SpellcheckCustomDictionary::Load()
+                      weak_ptr_factory_.GetWeakPtr()));
+ }
+ 
++#if 0
+ void SpellcheckCustomDictionary::WaitUntilReadyToSync(base::OnceClosure done) {
+   DCHECK(!wait_until_ready_to_sync_cb_);
+   if (is_loaded_)
+@@ -414,6 +411,7 @@ SpellcheckCustomDictionary::ProcessSyncC
+ base::WeakPtr<syncer::SyncableService> SpellcheckCustomDictionary::AsWeakPtr() {
+   return weak_ptr_factory_.GetWeakPtr();
+ }
++#endif
+ 
+ SpellcheckCustomDictionary::LoadFileResult::LoadFileResult()
+     : is_valid_file(false) {}
+@@ -460,7 +458,6 @@ void SpellcheckCustomDictionary::OnLoade
+   dictionary_change.AddWords(result->words);
+   dictionary_change.Sanitize(GetWords());
+   Apply(dictionary_change);
+-  Sync(dictionary_change);
+   is_loaded_ = true;
+   if (wait_until_ready_to_sync_cb_)
+     std::move(wait_until_ready_to_sync_cb_).Run();
+@@ -507,6 +504,7 @@ void SpellcheckCustomDictionary::Save(
+                      std::move(dictionary_change), custom_dictionary_path_));
+ }
+ 
++#if 0
+ std::optional<syncer::ModelError> SpellcheckCustomDictionary::Sync(
+     const Change& dictionary_change) {
+   DCHECK_CURRENTLY_ON(BrowserThread::UI);
+@@ -558,6 +556,7 @@ std::optional<syncer::ModelError> Spellc
+ 
+   return std::nullopt;
+ }
++#endif
+ 
+ void SpellcheckCustomDictionary::Notify(const Change& dictionary_change) {
+   DCHECK_CURRENTLY_ON(BrowserThread::UI);
+--- src/chrome/browser/spellchecker/spellcheck_custom_dictionary.h.orig
++++ src/chrome/browser/spellchecker/spellcheck_custom_dictionary.h
+@@ -17,9 +17,6 @@
+ #include "base/observer_list.h"
+ #include "base/task/sequenced_task_runner.h"
+ #include "components/spellcheck/browser/spellcheck_dictionary.h"
+-#include "components/sync/model/model_error.h"
+-#include "components/sync/model/sync_data.h"
+-#include "components/sync/model/syncable_service.h"
+ 
+ namespace base {
+ class Location;
+@@ -38,8 +35,7 @@ class SyncChangeProcessor;
+ //   foo
+ //   checksum_v1 = ec3df4034567e59e119fcf87f2d9bad4
+ //
+-class SpellcheckCustomDictionary final : public SpellcheckDictionary,
+-                                         public syncer::SyncableService {
++class SpellcheckCustomDictionary final : public SpellcheckDictionary {
+  public:
+   // A change to the dictionary.
+   class Change {
+@@ -162,11 +158,11 @@ class SpellcheckCustomDictionary final :
+   bool IsLoaded();
+ 
+   // Returns true if the dictionary is being synced. Otherwise returns false.
+-  bool IsSyncing();
+ 
+   // Overridden from SpellcheckDictionary:
+   void Load() override;
+ 
++#if 0
+   // Overridden from syncer::SyncableService:
+   void WaitUntilReadyToSync(base::OnceClosure done) override;
+   std::optional<syncer::ModelError> MergeDataAndStartSyncing(
+@@ -179,6 +175,7 @@ class SpellcheckCustomDictionary final :
+       const base::Location& from_here,
+       const syncer::SyncChangeList& change_list) override;
+   base::WeakPtr<SyncableService> AsWeakPtr() override;
++#endif
+ 
+  private:
+   friend class DictionarySyncIntegrationTestHelper;
+@@ -217,7 +214,6 @@ class SpellcheckCustomDictionary final :
+   // Notifies the sync service of the |dictionary_change|. Syncs up to the
+   // maximum syncable words on the server. Disables syncing of this dictionary
+   // if the server contains the maximum number of syncable words.
+-  std::optional<syncer::ModelError> Sync(const Change& dictionary_change);
+ 
+   // Notifies observers of the dictionary change if the dictionary has been
+   // changed.
+@@ -236,7 +232,6 @@ class SpellcheckCustomDictionary final :
+   base::ObserverList<Observer>::Unchecked observers_;
+ 
+   // Used to send local changes to the sync infrastructure.
+-  std::unique_ptr<syncer::SyncChangeProcessor> sync_processor_;
+ 
+   // True if the dictionary has been loaded. Otherwise false.
+   bool is_loaded_;
+--- src/device/fido/BUILD.gn.orig
++++ src/device/fido/BUILD.gn
+@@ -148,20 +148,6 @@ component("fido") {
+       "device_operation.h",
+       "device_response_converter.cc",
+       "device_response_converter.h",
+-      "enclave/constants.cc",
+-      "enclave/constants.h",
+-      "enclave/enclave_authenticator.cc",
+-      "enclave/enclave_authenticator.h",
+-      "enclave/enclave_discovery.cc",
+-      "enclave/enclave_discovery.h",
+-      "enclave/enclave_protocol_utils.cc",
+-      "enclave/enclave_protocol_utils.h",
+-      "enclave/enclave_websocket_client.cc",
+-      "enclave/enclave_websocket_client.h",
+-      "enclave/transact.cc",
+-      "enclave/transact.h",
+-      "enclave/types.cc",
+-      "enclave/types.h",
+       "fido_authenticator.cc",
+       "fido_authenticator.h",
+       "fido_device.cc",
+@@ -229,7 +215,6 @@ component("fido") {
+     ]
+ 
+     deps += [
+-      "//components/sync/protocol:protocol",
+       "//services/device/public/cpp/hid",
+       "//services/device/public/cpp/usb",
+       "//services/device/public/mojom",
+--- src/device/fido/fido_discovery_factory.cc.orig
++++ src/device/fido/fido_discovery_factory.cc
+@@ -37,7 +37,7 @@
+ #include "device/fido/cros/discovery.h"
+ #endif  // BUILDFLAG(IS_CHROMEOS)
+ 
+-#if !BUILDFLAG(IS_CHROMEOS)
++#if 0
+ #include "device/fido/enclave/enclave_discovery.h"
+ #endif
+ 
+@@ -108,7 +108,7 @@ std::vector<std::unique_ptr<FidoDiscover
+ #if BUILDFLAG(IS_MAC) || BUILDFLAG(IS_CHROMEOS)
+       discoveries = MaybeCreatePlatformDiscovery();
+ #endif
+-#if !BUILDFLAG(IS_CHROMEOS)
++#if 0
+       MaybeCreateEnclaveDiscovery(discoveries);
+ #endif
+       return discoveries;
+@@ -183,11 +183,13 @@ void FidoDiscoveryFactory::set_hid_ignor
+   hid_ignore_list_ = std::move(hid_ignore_list);
+ }
+ 
++#if 0
+ void FidoDiscoveryFactory::set_enclave_passkey_creation_callback(
+     base::RepeatingCallback<void(sync_pb::WebauthnCredentialSpecifics)>
+         callback) {
+   enclave_passkey_creation_callback_ = callback;
+ }
++#endif
+ 
+ void FidoDiscoveryFactory::set_enclave_ui_request_stream(
+     std::unique_ptr<FidoDiscoveryBase::EventStream<
+@@ -266,7 +268,7 @@ void FidoDiscoveryFactory::
+ }
+ #endif
+ 
+-#if !BUILDFLAG(IS_CHROMEOS)
++#if 0
+ void FidoDiscoveryFactory::MaybeCreateEnclaveDiscovery(
+     std::vector<std::unique_ptr<FidoDiscoveryBase>>& discoveries) {
+   if (!base::FeatureList::IsEnabled(kWebAuthnEnclaveAuthenticator) ||
+--- src/device/fido/fido_discovery_factory.h.orig
++++ src/device/fido/fido_discovery_factory.h
+@@ -15,7 +15,6 @@
+ #include "base/memory/raw_ptr.h"
+ #include "build/build_config.h"
+ #include "build/chromeos_buildflags.h"
+-#include "components/sync/protocol/webauthn_credential_specifics.pb.h"
+ #include "device/fido/cable/cable_discovery_data.h"
+ #include "device/fido/cable/v2_constants.h"
+ #include "device/fido/ctap_get_assertion_request.h"
+@@ -99,9 +98,6 @@ class COMPONENT_EXPORT(DEVICE_FIDO) Fido
+ 
+   // Provides a callback that will be called when a passkey is created with
+   // the enclave authenticator in order to save the new passkey to sync data.
+-  void set_enclave_passkey_creation_callback(
+-      base::RepeatingCallback<void(sync_pb::WebauthnCredentialSpecifics)>
+-          callback);
+ 
+   void set_enclave_ui_request_stream(
+       std::unique_ptr<FidoDiscoveryBase::EventStream<
+@@ -192,8 +188,6 @@ class COMPONENT_EXPORT(DEVICE_FIDO) Fido
+       get_assertion_request_for_legacy_credential_check_;
+ #endif  // BUILDFLAG(IS_CHROMEOS)
+   base::flat_set<VidPid> hid_ignore_list_;
+-  base::RepeatingCallback<void(sync_pb::WebauthnCredentialSpecifics)>
+-      enclave_passkey_creation_callback_;
+   std::unique_ptr<FidoDiscoveryBase::EventStream<
+       std::unique_ptr<enclave::CredentialRequest>>>
+       enclave_ui_request_stream_;
