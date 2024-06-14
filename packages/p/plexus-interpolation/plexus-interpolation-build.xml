@@ -10,9 +10,10 @@
 
   <property name="project.artifactId" value="plexus-interpolation"/>
   <property name="project.groupId" value="org.codehaus.plexus"/>
-  <property name="project.version" value="1.26"/>
+  <property name="project.version" value="1.27.0"/>
 
-  <property name="compiler.source" value="1.8"/>
+  <property name="compiler.release" value="8"/>
+  <property name="compiler.source" value="1.${compiler.release}"/>
   <property name="compiler.target" value="${compiler.source}"/>
 
   <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
