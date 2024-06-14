@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jun 12 07:32:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.1/
+- Changes since 24.05.0:
+  * Fix disabling development mode
+  * Fix storing the arrival time when editing a ferry reservation (kde#487885)
+  * Fix notifyrc qrc path
+  * Less eagerly continue trip group searching after finding a loop
+  * Make sure we only show arrival delays if we show the arrival time
+  * Work around Kirigami Addons now having a QtWidgets dependency
+  * Add Google Play publishing job template
+  * Use 6.7 Flatpak runtime
+  * Work around Emoji fonts configuration being broken in Flatpak
+  * Fix FreeBSD asserts due to QCoreApplication being used during teardown
+  * Fix invalid XML in SVG icons
+  * Add 24.05.0 release notes
+
+-------------------------------------------------------------------
 Sun May 19 09:55:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.0
