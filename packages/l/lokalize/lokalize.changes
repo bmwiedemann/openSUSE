@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 12 07:34:40 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.1/
+- Changes since 24.05.0:
+  * Fix language tool not working (kde#458681)
+
+-------------------------------------------------------------------
 Sun May 19 09:57:28 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.0
