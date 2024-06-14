@@ -1,7 +1,7 @@
 #
 # spec file for package msmtp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           msmtp
-Version:        1.8.25
+Version:        1.8.26
 Release:        0
 BuildRequires:  gnutls-devel >= 3.4
 BuildRequires:  libidn2-devel
@@ -28,7 +28,7 @@ BuildRequires:  xz
 BuildRequires:  libsecret-devel
 %endif
 %if 0%{?suse_version}
-BuildRequires:  libgsasl-devel
+BuildRequires:  libgsasl-devel >= 2.1.0
 %endif
 # for the directory
 %if 0%{?centos_version}
@@ -40,11 +40,11 @@ BuildRequires:  vim-base
 %endif #centos_version
 %if 0%{?suse_version}
 Requires(post): %install_info_prereq
-Requires(preun):%install_info_prereq
+Requires(preun): %install_info_prereq
 %endif
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
 Requires(post): /sbin/install-info
-Requires(preun):/sbin/install-info
+Requires(preun): /sbin/install-info
 %endif
 Summary:        Lightweight SMTP Client
 License:        GPL-3.0-or-later

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 13 16:35:20 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.8.26:
+  * Add support for SCRAM-SHA-256-PLUS and SCRAM-SHA-1-PLUS
+    authentication, and prefer SCRAM methods over the PLAIN method
+    because of their superior properties.
+  * With --read-envelope-from, a Resent-From header is now used if
+    it is present and appears before any From header
+- require libgsasl >= 2.1.0: needed for supporting SCRAM
+
+-------------------------------------------------------------------
 Sun Oct 29 18:32:58 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.8.25:
