@@ -18,11 +18,11 @@
 
 %define kf6_version 6.0.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.80
+%define kpim6_version 6.1.1
 
 %bcond_without released
 Name:           akregator
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        RSS Feed Reader
 License:        GPL-2.0-or-later
@@ -62,7 +62,7 @@ BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Provides:       akregator5 = %{version}
 Obsoletes:      akregator5 < %{version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 %{x86_64} aarch64 riscv64
 
 %description
 Akregator is a news feed reader. It enables you to follow news sites,
