@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Jun 11 09:21:24 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 127.0
+  https://www.mozilla.org/en-US/firefox/127.0/releasenotes
+  MFSA 2024-25 (bsc#1226027)
+  * CVE-2024-5687 (bmo#1889066)
+    An incorrect principal could have been used when opening new tabs
+  * CVE-2024-5688 (bmo#1895086)
+    Use-after-free in JavaScript object transplant
+  * CVE-2024-5689 (bmo#1389707)
+    User confusion and possible phishing vector via Firefox Screenshots
+  * CVE-2024-5690 (bmo#1883693)
+    External protocol handlers leaked by timing attack
+  * CVE-2024-5691 (bmo#1888695)
+    Sandboxed iframes were able to bypass sandbox restrictions to
+    open a new window
+  * CVE-2024-5692 (bmo#1837514, bmo#1891234)
+    Bypass of file name restrictions during saving
+  * CVE-2024-5693 (bmo#1891319)
+    Cross-Origin Image leak via Offscreen Canvas
+  * CVE-2024-5694 (bmo#1895055)
+    Use-after-free in JavaScript Strings
+  * CVE-2024-5695 (bmo#1895579)
+    Memory Corruption using allocation using out-of-memory conditions
+  * CVE-2024-5696 (bmo#1896555)
+    Memory Corruption in Text Fragments
+  * CVE-2024-5697 (bmo#1414937)
+    Website was able to detect when Firefox was taking a
+    screenshot of them
+  * CVE-2024-5698 (bmo#1828259)
+    Data-list could have overlaid address bar
+  * CVE-2024-5699 (bmo#1891349)
+    Cookie prefixes not treated as case-sensitive
+  * CVE-2024-5700 (bmo#1862809, bmo#1889355, bmo#1893388, bmo#1895123)
+    Memory safety bugs fixed in Firefox 127, Firefox ESR 115.12,
+    and Thunderbird 115.12
+  * CVE-2024-5701 (bmo#1890909, bmo#1891422, bmo#1893915,
+    bmo#1894047, bmo#1896024)
+    Memory safety bugs fixed in Firefox 127
+- removed obsolete mozilla-bmo1886378.patch
+
+-------------------------------------------------------------------
 Wed May 29 06:05:07 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 126.0.1

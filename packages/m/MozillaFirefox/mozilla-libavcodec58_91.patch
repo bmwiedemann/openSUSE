@@ -1,16 +1,16 @@
 # HG changeset patch
-# Parent  60fc1933af9d4f1769025a6f1d9a60db6b899315
+# Parent  fdc16b43f28c2e974929ca702563aaac52799654
 
 diff --git a/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp b/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp
 --- a/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp
 +++ b/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp
-@@ -36,16 +36,18 @@ static const char* sLibs[] = {
-   "libavcodec.54.dylib",
+@@ -44,16 +44,18 @@ static const char* sLibs[] = {
    "libavcodec.53.dylib",
  #elif defined(XP_OPENBSD)
    "libavcodec.so", // OpenBSD hardly controls the major/minor library version
                     // of ffmpeg and update it regulary on ABI/API changes
  #else
+   "libavcodec.so.61",
    "libavcodec.so.60",
    "libavcodec.so.59",
 +  "libavcodec.so.58.134",

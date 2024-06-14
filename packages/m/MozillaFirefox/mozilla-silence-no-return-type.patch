@@ -1,5 +1,5 @@
 # HG changeset patch
-# Parent  af0655f894a27ef60aa8438af7939a5ebc498df0
+# Parent  45b7287e677b0d0a47091f763c19d75955c291a1
 
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 --- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
@@ -462,7 +462,7 @@ diff --git a/third_party/libwebrtc/api/adaptation/resource.cc b/third_party/libw
 diff --git a/third_party/libwebrtc/api/rtp_parameters.cc b/third_party/libwebrtc/api/rtp_parameters.cc
 --- a/third_party/libwebrtc/api/rtp_parameters.cc
 +++ b/third_party/libwebrtc/api/rtp_parameters.cc
-@@ -27,16 +27,17 @@ const char* DegradationPreferenceToStrin
+@@ -28,16 +28,17 @@ const char* DegradationPreferenceToStrin
      case DegradationPreference::MAINTAIN_FRAMERATE:
        return "maintain-framerate";
      case DegradationPreference::MAINTAIN_RESOLUTION:
@@ -505,7 +505,7 @@ diff --git a/third_party/libwebrtc/api/video/video_frame_buffer.cc b/third_party
 diff --git a/third_party/libwebrtc/api/video_codecs/video_codec.cc b/third_party/libwebrtc/api/video_codecs/video_codec.cc
 --- a/third_party/libwebrtc/api/video_codecs/video_codec.cc
 +++ b/third_party/libwebrtc/api/video_codecs/video_codec.cc
-@@ -126,16 +126,17 @@ const char* CodecTypeToPayloadString(Vid
+@@ -156,16 +156,17 @@ const char* CodecTypeToPayloadString(Vid
      case kVideoCodecMultiplex:
        return kPayloadNameMultiplex;
      case kVideoCodecGeneric:
@@ -526,7 +526,7 @@ diff --git a/third_party/libwebrtc/api/video_codecs/video_codec.cc b/third_party
 diff --git a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc b/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
 --- a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
 +++ b/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
-@@ -183,16 +183,17 @@ class VideoEncoderSoftwareFallbackWrappe
+@@ -184,16 +184,17 @@ class VideoEncoderSoftwareFallbackWrappe
          [[fallthrough]];
        case EncoderState::kMainEncoderUsed:
          return encoder_.get();
@@ -544,7 +544,7 @@ diff --git a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallb
  
    // Settings used in the last InitEncode call and used if a dynamic fallback to
    // software is required.
-@@ -363,16 +364,17 @@ int32_t VideoEncoderSoftwareFallbackWrap
+@@ -377,16 +378,17 @@ int32_t VideoEncoderSoftwareFallbackWrap
      case EncoderState::kMainEncoderUsed: {
        return EncodeWithMainEncoder(frame, frame_types);
      }
@@ -684,7 +684,7 @@ diff --git a/third_party/libwebrtc/call/video_send_stream.cc b/third_party/libwe
 diff --git a/third_party/libwebrtc/media/base/codec.cc b/third_party/libwebrtc/media/base/codec.cc
 --- a/third_party/libwebrtc/media/base/codec.cc
 +++ b/third_party/libwebrtc/media/base/codec.cc
-@@ -200,16 +200,17 @@ bool Codec::Matches(const Codec& codec) 
+@@ -228,16 +228,17 @@ bool Codec::Matches(const Codec& codec) 
                 (codec.bitrate == 0 || bitrate <= 0 ||
                  bitrate == codec.bitrate) &&
                 ((codec.channels < 2 && channels < 2) ||
@@ -765,7 +765,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.
 diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
 --- a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
 +++ b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
-@@ -94,16 +94,17 @@ GainControl::Mode Agc1ConfigModeToInterf
+@@ -96,16 +96,17 @@ GainControl::Mode Agc1ConfigModeToInterf
      case Agc1Config::kAdaptiveAnalog:
        return GainControl::kAdaptiveAnalog;
      case Agc1Config::kAdaptiveDigital:
@@ -783,7 +783,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_imp
  
  // Maximum lengths that frame of samples being passed from the render side to
  // the capture side can have (does not apply to AEC3).
-@@ -161,17 +162,17 @@ int AudioFormatValidityToErrorCode(Audio
+@@ -163,17 +164,17 @@ int AudioFormatValidityToErrorCode(Audio
      case AudioFormatValidity::kValidAndSupported:
        return AudioProcessing::kNoError;
      case AudioFormatValidity::kValidButUnsupportedSampleRate:  // fall-through
@@ -802,7 +802,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_imp
      const StreamConfig& input_config,
      const StreamConfig& output_config) {
    AudioFormatValidity input_validity = ValidateAudioFormat(input_config);
-@@ -2416,16 +2417,17 @@ void AudioProcessingImpl::InitializeNois
+@@ -2420,16 +2421,17 @@ void AudioProcessingImpl::InitializeNois
              case NoiseSuppresionConfig::kModerate:
                return NsConfig::SuppressionLevel::k12dB;
              case NoiseSuppresionConfig::kHigh:
@@ -921,12 +921,12 @@ diff --git a/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screenc
 diff --git a/third_party/libwebrtc/modules/pacing/bitrate_prober.cc b/third_party/libwebrtc/modules/pacing/bitrate_prober.cc
 --- a/third_party/libwebrtc/modules/pacing/bitrate_prober.cc
 +++ b/third_party/libwebrtc/modules/pacing/bitrate_prober.cc
-@@ -64,16 +64,17 @@ bool BitrateProber::ReadyToSetActiveStat
-       return false;
-     case ProbingState::kInactive:
-       // If config_.min_packet_size > 0, a "large enough" packet must be sent
-       // first, before a probe can be generated and sent. Otherwise, send the
-       // probe asap.
+@@ -79,16 +79,17 @@ bool BitrateProber::ReadyToSetActiveStat
+         return true;
+       }
+       // If config_.min_packet_size > 0, a "large enough" packet must be
+       // sent first, before a probe can be generated and sent. Otherwise,
+       // send the probe asap.
        return packet_size >=
               std::min(RecommendedMinProbeSize(), config_.min_packet_size.Get());
    }
@@ -934,18 +934,18 @@ diff --git a/third_party/libwebrtc/modules/pacing/bitrate_prober.cc b/third_part
  }
  
  void BitrateProber::OnIncomingPacket(DataSize packet_size) {
-   if (ReadyToSetActiveState(packet_size)) {
-     next_probe_time_ = Timestamp::MinusInfinity();
-     probing_state_ = ProbingState::kActive;
-   }
+   MaybeSetActiveState(packet_size);
  }
+ 
+ void BitrateProber::CreateProbeCluster(
+     const ProbeClusterConfig& cluster_config) {
 diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
 --- a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
 +++ b/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
-@@ -36,11 +36,12 @@ std::unique_ptr<VideoRtpDepacketizer> Cr
-     case kVideoCodecH265:
-       // TODO(bugs.webrtc.org/13485): Implement VideoRtpDepacketizerH265.
+@@ -42,11 +42,12 @@ std::unique_ptr<VideoRtpDepacketizer> Cr
+ #else
        return nullptr;
+ #endif
      case kVideoCodecGeneric:
      case kVideoCodecMultiplex:
        return std::make_unique<VideoRtpDepacketizerGeneric>();

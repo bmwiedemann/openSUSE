@@ -1,18 +1,18 @@
 # HG changeset patch
-# Parent  83a5e219b271976ee9dfa46b74ecc1c1c6d49f94
+# Parent  8c5b7b10f09b8cd6a8a6e0e29b92ec88cec6d4ce
 
 diff --git a/Cargo.toml b/Cargo.toml
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -234,8 +234,14 @@ mio_0_8 = { package = "mio", git = "http
- path = "third_party/rust/mio-0.6.23"
+@@ -238,8 +238,14 @@ mio_0_8 = { package = "mio", git = "http
+ # Patch `gpu-descriptor` 0.3.0 to remove unnecessary `allocator-api2` dep.:
+ # Still waiting for the now-merged <https://github.com/zakarumych/gpu-descriptor/pull/40> to be released.
+ gpu-descriptor = { git = "https://github.com/zakarumych/gpu-descriptor", rev = "7b71a4e47c81903ad75e2c53deb5ab1310f6ff4d" }
  
- [patch."https://github.com/mozilla/uniffi-rs.git"]
- uniffi = "0.27.1"
- uniffi_bindgen = "0.27.1"
- uniffi_build = "0.27.1"
- uniffi_macros = "0.27.1"
- weedle2 = "=5.0.0"
+ # Patch mio 0.6 to use winapi 0.3 and miow 0.3, getting rid of winapi 0.2.
+ # There is not going to be new version of mio 0.6, mio now being >= 0.7.11.
+ [patch.crates-io.mio]
+ path = "third_party/rust/mio-0.6.23"
 +
 +# Package code v0.1.4 uses code "that will be rejected by a future version of Rust"
 +# Shut up such messages for now to make the build succeed
