@@ -20,7 +20,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           k0sctl
-Version:        0.17.8
+Version:        0.18.0
 Release:        0
 Summary:        A bootstrapping and management tool for k0s clusters
 License:        Apache-2.0

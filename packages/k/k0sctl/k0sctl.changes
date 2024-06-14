@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jun 10 13:33:22 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.18.0:
+  * Simplify kubeconfig retrieval by using k0s kubeconfig command
+    (#720)
+  * Include k0sctl config path in "k0sctl kubeconfig" tip on apply
+    success (#729)
+  * Check new controllers against etcd member-list to detect
+    replaced hosts (#714)
+  * Bump github.com/k0sproject/rig from 0.18.3 to 0.18.4 (#728)
+  * Bump golang.org/x/text from 0.15.0 to 0.16.0 (#727)
+  * Bump github.com/go-playground/validator/v10 from 10.20.0 to
+    10.21.0 (#726)
+  * Don't cordon all workers at once before upgrading (#723)
+  * Bump github.com/k0sproject/rig from 0.18.2 to 0.18.3 (#718)
+  * Bump k8s.io/client-go from 0.30.0 to 0.30.1 (#715)
+  * Reduce verbosity of host lockfile management (#713)
+  * Enable stderr logging for file uploads (#709)
+  * Bump github.com/k0sproject/rig from 0.18.1 to 0.18.2 (#712)
+  * Don't try to use gotest as "go test" (#711)
+
+-------------------------------------------------------------------
 Fri May 10 08:25:15 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.17.8:
