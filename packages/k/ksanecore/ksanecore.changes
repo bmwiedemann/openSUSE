@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 12 07:34:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.1/
+- No code change since 24.05.0
+
+-------------------------------------------------------------------
 Wed May 29 20:24:49 UTC 2024 - Javier Llorente <javier@opensuse.org>
 
 - Add fix-scanner-search-crash.patch (kde#444987)
