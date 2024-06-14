@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Jun  9 16:25:46 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Use pytest-xdist in order to avoid non-terminating processes in
+  tests
+- Fix files section and version info (setuptools_scm required to
+  build)
+- Simplify python flavor declaration
+
+-------------------------------------------------------------------
+Sat May 18 08:39:38 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.4.0:
+  * Bug Fixes
+    - Honor inventory filepath by @Akasurde in #1065
+    - Ensure that UTC ISO8601 datetimes include timezone info by
+      @sivel in #1238
+    - Fix for non-str ident by @Shrews in #1268
+    - Pass inventory directory path instead of file path when using
+      containerization by @christophert in #1304
+    - Validate inventory from CLI early by @Shrews in #1307
+    - Allow shutil to copy into existing isolation directory by
+      @christophert in #1311
+    - Fix invalid inventory with relative pvt data dir by @Shrews
+      in #1316
+    - Add lib symlink to bwrap call by @christophert in #1312
+
+-------------------------------------------------------------------
 Sat Mar 16 14:25:23 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.3.6:
