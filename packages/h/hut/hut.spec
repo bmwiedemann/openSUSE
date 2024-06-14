@@ -1,7 +1,7 @@
 #
 # spec file for package hut
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           hut
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        A CLI tool for sr.ht
 License:        AGPL-3.0-or-later
 Group:          Development/Tools/Navigators
-URL:            https://sr.ht/~emersion/hut
-Source0:        https://git.sr.ht/~emersion/hut/archive/v%{version}.tar.gz
+URL:            https://sr.ht/~xenrox/hut
+Source0:        https://git.sr.ht/~xenrox/hut/archive/v%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  go >= 1.17
 BuildRequires:  golang-packaging
@@ -64,14 +64,16 @@ BuildArch:      noarch
 The official zsh completion script for hut.
 
 %prep
-%setup -q -n %{name}-v%{version}
-%setup -q -D -T -a 1 -n %{name}-v%{version}
+%autosetup -p1 -a1 -n %{name}-v%{version}
 
 %build
 make GOFLAGS='-mod=vendor -buildmode=pie -ldflags=-s'
 
 %install
 %make_install PREFIX=%{_prefix}
+
+%check
+go test -v
 
 %files
 %license LICENSE

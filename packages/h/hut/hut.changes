@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Jun  8 10:16:33 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Change upstream to the new location https://sr.ht/~xenrox/hut
+- Update to version 0.5.0:
+  - Upgrade dependencies
+  - Update GraphQL schema
+  - Upgrade hg schema
+  - export/lists: add visibility
+  - export/paste: ignore empty filenames
+  - export/meta: write info.json file
+  - export: fix writeExportStamp return value
+  - client: remove unused Client.Hostname
+  - import: accept multiple directories
+  - config: use scfg decoder to read config file
+  - todo ticket edit: new command
+  - todo ticket list: Add status filtering
+  - pager/editor: Use shlex to parse command
+  - export/git: add readme and head
+  - export/hg: add readme and nonPublishing
+  - Add the import command
+  - export: Support specifying services and resources
+  - import: Fix wrong import path
+- At least pretend we run some tests (there is almost no test
+  coverage upstream).
+- I believe _service should have all tests to "manual", not
+  "localonly".
+
+-------------------------------------------------------------------
 Tue Dec 19 09:26:52 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.4.0
