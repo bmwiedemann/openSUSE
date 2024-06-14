@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 13 23:04:48 UTC 2024 - Michael Hamilton <michael@actrix.gen.nz>
+
+- 1.0.9
+  - Fixed a GetCapabilitiesMetadata bug that caused some VCP features to lack metadata values.
+  - Fixed the return of feature-name and feature-description from GetVcpMetadata.
+  - Fixed potential hot-plug/DPMS polling memory leaks and simplified event locking.
+  - Recoded hot-plug/DPMS polling to avoid a potential libddcutil assertion failure.
+  - Fixed code/doc typos, improved code readability/structure, reduced IDE warnings.
+  - Updated documentation to caution against excessive updates when coding loops, as this may impact VDU NVRAM lifespan.
+  - Updated documentation to caution against experimenting with non-standard features, as it may risk damage to the VDU.
+
+-------------------------------------------------------------------
 Thu May 16 00:25:06 UTC 2024 - Michael Hamilton <michael@actrix.gen.nz>
 
 - 1.0.7
