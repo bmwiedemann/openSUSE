@@ -16,40 +16,48 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%global pname lapack
+%if "%{flavor}" == "static"
+%define psuffix -static
+%bcond_with shared
+# Generate man files for the static flavour to avoid additional deps/build time
+# for main flavour
+%bcond_without man
+%else
+%define psuffix %{nil}
+%bcond_without shared
+%bcond_with man
+%endif
+%define __builder ninja
+%define so_ver 3
 %bcond_without tmg
 
-%if 0%{?suse_version} > 1500
+# For Leap 15.X, we do not need arch dependent symlink names because no baselibs are generated
+%if 0%{?suse_version} >= 1500
 %define a_x _%{_arch}
 %endif
-
-Name:           lapack
-Version:        3.9.0
+Name:           %{pname}%{?psuffix}
+Version:        3.12.0
 Release:        0
-Summary:        Linear Algebra Package
+Summary:        Linear Algebra PACKage
 License:        BSD-3-Clause
-Group:          Development/Libraries/Parallel
 URL:            https://www.netlib.org/lapack/
-Source0:        https://github.com/Reference-LAPACK/lapack/archive/v%{version}.tar.gz#/lapack-%{version}.tar.gz
+Source0:        https://github.com/Reference-LAPACK/lapack/archive/v%{version}.tar.gz#/%{pname}-%{version}.tar.gz
 Source98:       lapack.rpmlintrc
 Source99:       baselibs.conf
-Patch1:         lapack-3.2.2.patch
-# PATCH-FIX-UPSTREAM -- https://github.com/Reference-LAPACK/lapack/commit/489a2884c22e.patch
-Patch2:         Fix-MinGW-build-error.patch
-# PATCH-FIX-UPSTREAM -- https://github.com/Reference-LAPACK/lapack/commit/d168b4d2ae67.patch
-Patch3:         Fix-some-minor-inconsistencies-in-LAPACKE_czgesvdq.patch
-# PATCH-FIX-UPSTREAM -- https://github.com/Reference-LAPACK/lapack/commit/ea2a102d3827.patch
-Patch4:         Avoid-out-of-bounds-accesses-in-complex-EIG-tests.patch
-# PATCH-FIX-UPSTREAM -- https://github.com/Reference-LAPACK/lapack/commit/38f3eeee3108b18158409ca2a100e6fe03754781
-Patch5:         Fix-out-of-bounds-read.patch
-# PATCH-FIX-UPSTREAM
-Patch6:         https://github.com/Reference-LAPACK/lapack/commit/87536aa3c8bb.patch#/Restore_missing_deprecated_prototypes.patch
-# PATCH-FIX-UPSTREAM -- https://github.com/Reference-LAPACK/lapack/commit/64e8a7500d817869e5fcde35afd39af8bc7a8086
-Patch7:         Fix-testing-input.patch
-
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
+BuildRequires:  ninja
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
-BuildRequires:  update-alternatives
-Requires(pre):  update-alternatives
+# SECTION Requirements for MAN files
+%if %{with man}
+BuildRequires:  doxygen
+BuildRequires:  graphviz
+%endif
+# /SECTION
 
 %description
 LAPACK provides routines for solving systems of simultaneous linear
@@ -62,12 +70,14 @@ matrices are handled, but not general sparse matrices. In all areas,
 similar functionality is provided for real and complex matrices, in
 both single and double precision.
 
-%package     -n liblapack3
-Summary:        LAPACK Shared Library
-Group:          Development/Libraries/Parallel
-Requires(pre):  update-alternatives
 
-%description -n liblapack3
+# LAPACK
+%package     -n liblapack%{so_ver}
+Summary:        Linear Algebra PACKage: Shared Library
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+
+%description -n liblapack%{so_ver}
 LAPACK provides routines for solving systems of simultaneous linear
 equations, least-squares solutions of linear systems of equations,
 eigenvalue problems, and singular value problems. The associated matrix
@@ -78,55 +88,62 @@ matrices are handled, but not general sparse matrices. In all areas,
 similar functionality is provided for real and complex matrices, in
 both single and double precision.
 
-%package     -n libblas3
-Summary:        BLAS Shared Library
-Group:          Development/Libraries/Parallel
-Requires(pre):  update-alternatives
+This package provides the shared library for LAPACK.
 
-%description -n libblas3
+%package -n %{pname}-devel
+Summary:        Linear Algebra PACKage: headers and source files for development
+Requires:       blas-devel = %{version}
+Requires:       liblapack%{so_ver} = %{version}
+Recommends:     lapack-man = %{version}
+Provides:       lapack = %{version}
+Obsoletes:      lapack < %{version}
+
+%description -n %{pname}-devel
+LAPACK provides routines for solving systems of simultaneous linear
+equations, least-squares solutions of linear systems of equations,
+eigenvalue problems, and singular value problems. The associated matrix
+factorizations (LU, Cholesky, QR, SVD, Schur, generalized Schur) are
+also provided, as are related computations such as reordering of the
+Schur factorizations and estimating condition numbers. Dense and banded
+matrices are handled, but not general sparse matrices. In all areas,
+similar functionality is provided for real and complex matrices, in
+both single and double precision.
+
+%package -n %{pname}-devel-static
+Summary:        Linear Algebra PACKage - static libraries
+Requires:       lapack-devel = %{version}
+
+%description -n %{pname}-devel-static
+LAPACK provides routines for solving systems of simultaneous linear
+equations, least-squares solutions of linear systems of equations,
+eigenvalue problems, and singular value problems. The associated matrix
+factorizations (LU, Cholesky, QR, SVD, Schur, generalized Schur) are
+also provided, as are related computations such as reordering of the
+Schur factorizations and estimating condition numbers. Dense and banded
+matrices are handled, but not general sparse matrices. In all areas,
+similar functionality is provided for real and complex matrices, in
+both single and double precision.
+
+This package provides the static library for LAPACK.
+
+
+# BLAS
+%package     -n libblas%{so_ver}
+Summary:        Basic Linear Algebra Subprograms: Shared Library
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+
+%description -n libblas%{so_ver}
 BLAS (Basic Linear Algebra Subprograms) is a standard library for
 numerical algebra.  BLAS provides a number of basic algorithms for
 linear algebra.
 
-%package        devel
-Summary:        Linear Algebra Package
-Group:          Development/Libraries/Parallel
-Requires:       blas-devel = %{version}
-Requires:       liblapack3 = %{version}
-Provides:       lapack = %{version}
-Obsoletes:      lapack < %{version}
-
-%description    devel
-LAPACK provides routines for solving systems of simultaneous linear
-equations, least-squares solutions of linear systems of equations,
-eigenvalue problems, and singular value problems. The associated matrix
-factorizations (LU, Cholesky, QR, SVD, Schur, generalized Schur) are
-also provided, as are related computations such as reordering of the
-Schur factorizations and estimating condition numbers. Dense and banded
-matrices are handled, but not general sparse matrices. In all areas,
-similar functionality is provided for real and complex matrices, in
-both single and double precision.
-
-%package        devel-static
-Summary:        Linear Algebra Package - static libraries
-Group:          Development/Libraries/Parallel
-Requires:       lapack-devel = %{version}
-
-%description    devel-static
-LAPACK provides routines for solving systems of simultaneous linear
-equations, least-squares solutions of linear systems of equations,
-eigenvalue problems, and singular value problems. The associated matrix
-factorizations (LU, Cholesky, QR, SVD, Schur, generalized Schur) are
-also provided, as are related computations such as reordering of the
-Schur factorizations and estimating condition numbers. Dense and banded
-matrices are handled, but not general sparse matrices. In all areas,
-similar functionality is provided for real and complex matrices, in
-both single and double precision.
+This package provides the shared library for BLAS.
 
 %package     -n blas-devel
-Summary:        Basic Linear Algebra Subprograms
-Group:          Development/Libraries/Parallel
-Requires:       libblas3 = %{version}
+Summary:        Basic Linear Algebra Subprograms: headers and sources for development
+Requires:       libblas%{so_ver} = %{version}
+Recommends:     lapack-man = %{version}
 Provides:       blas = %{version}
 Obsoletes:      blas < %{version}
 
@@ -138,8 +155,7 @@ and built with gfortran. BLAS manual pages are available in the
 blas-man package.
 
 %package     -n blas-devel-static
-Summary:        Basic Linear Algebra Subprograms
-Group:          Development/Libraries/Parallel
+Summary:        Basic Linear Algebra Subprograms: static library
 Requires:       blas-devel = %{version}
 
 %description -n blas-devel-static
@@ -149,299 +165,336 @@ linear algebra. BLAS is fast and well-tested, was written in FORTRAN 77
 and built with gfortran. BLAS manual pages are available in the
 blas-man package.
 
-%package     -n liblapacke3
-Summary:        LAPACKE development files
-Group:          Development/Libraries/C and C++
-Requires(pre):  update-alternatives
+This package provides the static library for BLAS.
 
-%description -n liblapacke3
+
+# LAPACKE
+%package     -n liblapacke%{so_ver}
+Summary:        Native C Interface to LAPACK: shared library
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+
+%description -n liblapacke%{so_ver}
 This library provides a native C interface to LAPACK routines available
 at www.netlib.org/lapack to facilitate usage of LAPACK functionality
 for C programmers.
 
-This implementation introduces:
-- row-major and column-major matrix layout controlled by the first function
-  parameter;
-- an implementation with working arrays (middle-level interface) as well as
-  without working arrays (high-level interface);
-- input scalars passed by value;
-- error code as a return value instead of the INFO parameter.
-
 %package     -n lapacke-devel
-Summary:        LAPACKE development files
-Group:          Development/Libraries/C and C++
-Requires:       liblapacke3 = %{version}
+Summary:        Native C Interface to LAPACK: headers and sources for development
+Requires:       liblapacke%{so_ver} = %{version}
+Recommends:     lapack-man = %{version}
 Provides:       lapacke = %{version}
 
 %description -n lapacke-devel
-LAPACKE headers and development files.
+LAPACKE provides a native C interface to LAPACK routines available
+at www.netlib.org/lapack to facilitate usage of LAPACK functionality
+for C programmers.
+
+This package provides LAPACKE headers and development files.
 
 %package     -n lapacke-devel-static
-Summary:        LAPACKE static libraries
-Group:          Development/Libraries/C and C++
+Summary:        Native C Interface to LAPACK: static library
 Requires:       lapacke-devel = %{version}
 
 %description -n lapacke-devel-static
-LAPACKE development files - static libraries.
+LAPACKE provides a native C interface to LAPACK routines available
+at www.netlib.org/lapack to facilitate usage of LAPACK functionality
+for C programmers.
 
-%package     -n libcblas3
-Summary:        CBLAS Shared Library
-Group:          Development/Libraries/C and C++
-Requires(pre):  update-alternatives
-# Only version ever packaged separately
-Obsoletes:      libcblas3 == 20110120
+This package provides the static library for LAPACKE.
 
-%description -n libcblas3
+
+# CBLAS
+%package     -n libcblas%{so_ver}
+Summary:        Native C interface to BLAS: Shared Library
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+
+%description -n libcblas%{so_ver}
 This library provides a native C interface to BLAS routines available
 at www.netlib.org/blas to facilitate usage of BLAS functionality
 for C programmers.
 
 %package     -n cblas-devel
-Summary:        CBLAS development files
-Group:          Development/Libraries/C and C++
-Requires:       libcblas3 = %{version}
+Summary:        Native C interface to BLAS: headers and sources for development
+Requires:       libcblas%{so_ver} = %{version}
+Recommends:     lapack-man = %{version}
 Provides:       cblas = %{version}
 
 %description -n cblas-devel
-cblas headers and development files.
+This library provides a native C interface to BLAS routines available
+at www.netlib.org/blas to facilitate usage of BLAS functionality
+for C programmers.
+
+This package provides the cblas headers and development files.
 
 %package     -n cblas-devel-static
-Summary:        CBLAS - static libraries
-Group:          Development/Libraries/C and C++
+Summary:        Native C interface to BLAS: static library
 Requires:       cblas-devel = %{version}
 
 %description -n cblas-devel-static
-The cblas-devel-static package contains the CBLAS static libraries
-for -static linking. You do not need these, unless you link
-statically, which is highly discouraged.
+This library provides a native C interface to BLAS routines available
+at www.netlib.org/blas to facilitate usage of BLAS functionality
+for C programmers.
 
+This package contains the CBLAS static libraries.
+
+
+# TMGLIB
+%package -n libtmglib%{so_ver}
+Summary:        Test Matrix Generator Library: shared library
+
+%description -n libtmglib%{so_ver}
+This package provides the shared library for tmglib, the Test Matrix Generator
+Library.
+
+%package -n tmglib-devel
+Summary:        Test Matrix Generator Library: headers and sources for development
+Requires:       libtmglib%{so_ver} = %{version}
+
+%description -n tmglib-devel
+This package provides the headers and sources needed to develop against tmglib,
+the Test Matrix Generator Library.
+
+%package -n tmglib-devel-static
+Summary:        Test Matrix Generator Library: static library
+Requires:       tmglib-devel
+
+%description -n tmglib-devel-static
+This package provides the headers and sources needed to develop against the
+tmglib as a static library.
+
+
+# MAN Pages
+%package -n lapack-man
+Summary:        Man pages for BLAS, CBLAS, and LAPACK
+
+%description -n lapack-man
+This package provides the man pages for BLAS, CBLAS, and LAPACK.
+
+%prep
+%autosetup -p1 -n %{pname}-%{version}
+sed -i -E '1{s@#!/usr/bin/env python[0-9]*@#!%{_bindir}/python%{python3_version}@}' lapack_testing.py
+
+%build
 %ifarch %{ix86}
 %if 0%{?sle_version:%sle_version} >= 150000
 %global precflags "-mfpmath=sse"
-%global test_precflags %precflags
+%global test_precflags %{precflags}
 %else
 %global test_precflags "-ffloat-store"
 %endif
 %endif
 
-%prep
-%setup -q
-%autopatch -p1
-sed -i -e '1 s@env python@python3@' lapack_testing.py
-
-%build
+%if %{without shared}
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%endif
 %global optflags_f %{optflags}
 
-cp make.inc.example make.inc
-# for ABI compatibility we need to build the deprecated interfaces
-echo 'BUILD_DEPRECATED = Yes' >> make.inc
-%{?with_tmg:echo 'LAPACKE_WITH_TMG = Yes' >> make.inc}
+%cmake \
+  -DBUILD_SHARED_LIBS=%{?with_shared:ON}%{!?with_shared:OFF} \
+  -DBLAS++=OFF \
+  -DLAPACK++=OFF \
+  -DCBLAS=ON \
+  -DLAPACKE=ON \
+  -DLAPACKE_WITH_TMG=%{?with_tmglib:ON}%{!?with_tmglib:OFF} \
+  -DBUILD_DEPRECATED=ON \
+  -DBUILD_MAN_DOCUMENTATION=%{?with_man:ON}%{!?with_man:OFF} \
+  -DBUILD_TESTING=ON \
+  %{nil}
+%cmake_build
 
-%make_build cleanlib
-%make_build blaslib \
-  FFLAGS="%{optflags_f} %{?precflags} -fPIC"
-mkdir tmp
-( cd tmp; ar x ../librefblas.a )
-gfortran -shared -Wl,-soname=libblas.so.3 -o libblas.so.%{version} -Wl,--no-undefined tmp/*.o
-ln -s libblas.so.%{version} libblas.so
-rm -rf tmp
-
-%make_build cblaslib \
-  CFLAGS="%{optflags} %{?precflags} -fPIC -DADD_ "
-mkdir tmp
-( cd tmp; ar x ../libcblas.a )
-gfortran -shared -Wl,-soname=libcblas.so.3 -o libcblas.so.%{version} -Wl,--no-undefined tmp/*.o -L. -lblas
-ln -s libcblas.so.%{version} libcblas.so
-rm -rf tmp
-
-# May need to be included in liblapack
-%make_build -C TESTING/MATGEN FFLAGS="%{optflags_f} %{?test_precflags} %{?with_tmg:-fPIC}"
-
-%make_build lapacklib \
-  FFLAGS="%{optflags_f} %{?precflags} -fPIC"
-mkdir tmp
-( cd tmp; ar x ../liblapack.a; %{?with_tmg: ar x ../libtmglib.a; ar cr ../liblapack.a *.o; ranlib ../liblapack.a })
-gfortran -shared -Wl,-soname=liblapack.so.3 -o liblapack.so.%{version} -Wl,--no-undefined tmp/*.o -L. -lblas
-ln -s liblapack.so.%{version} liblapack.so
-rm -rf tmp
-
-make %{?_smp_mflags} lapackelib \
-  CFLAGS="%{optflags}  %{?precflags} -fPIC -DADD_ -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE"
-mkdir tmp
-( cd tmp; ar x ../liblapacke.a )
-gfortran -shared -Wl,-soname=liblapacke.so.3 -o liblapacke.so.%{version} -Wl,--no-undefined tmp/*.o -L. -llapack
-ln -s liblapacke.so.%{version} liblapacke.so
-rm -rf tmp
-
-# Build test binaries - blas
-%make_build -C BLAS/TESTING FFLAGS="%{optflags_f} %{?test_precflags}"
-# Build test binaries - cblas
-%make_build -C CBLAS/testing FFLAGS="%{optflags_f} %{?test_precflags}"
-# Build test binaries - lapack
-%make_build -C TESTING/LIN FFLAGS="%{optflags_f} %{?test_precflags}"
-%make_build -C TESTING/EIG FFLAGS="%{optflags_f} %{?test_precflags}"
-
-%check
-# Increase stack size, required for xeigtstz, see
-# https://github.com/Reference-LAPACK/lapack/issues/335
-# Remove for lapack > 3.9
-ulimit -s 16384
-
-%make_build blas_testing FFLAGS="%{optflags_f} %{?test_precflags}"
-if grep -B15 -A15 FAIL BLAS/TESTING/*.out; then
-  echo
-  echo "blas_testing FAILED"
-  false
-fi
-
-%make_build cblas_testing CFLAGS="%{optflags} -fPIC"
-grep -B15 -A15 FAIL CBLAS/testing/*.out && false
-
-%make_build lapack_testing FFLAGS="%{optflags_f} %{?test_precflags}"
-if grep -B15 -A15 FAIL TESTING/*.out; then
-  echo
-  echo "lapack_testing FAILED"
-  false
-fi
+%if %{with man}
+doxygen Doxyfile.man
+%endif
 
 %install
-install -d %{buildroot}/%{_libdir}
-install -d %{buildroot}/%{_sysconfdir}/alternatives
-install -d %{buildroot}/%{_includedir}
-## BLAS
-install -d %{buildroot}/%{_libdir}/blas
-install -m 644 librefblas.a %{buildroot}/%{_libdir}/libblas.a
-install -m 755 libblas.so.%{version} %{buildroot}/%{_libdir}/blas
-ln -s libblas.so.%{version} %{buildroot}/%{_libdir}/blas/libblas.so.3
-ln -s blas/libblas.so.%{version} %{buildroot}/%{_libdir}/libblas.so
-ln -s %{_sysconfdir}/alternatives/libblas.so.3%{?a_x} %{buildroot}/%{_libdir}/libblas.so.3
-## CBLAS
-install -m 644 CBLAS/include/*.h %{buildroot}/%{_includedir}
-install -m 644 libcblas.a %{buildroot}/%{_libdir}
-install -m 755 libcblas.so.%{version} %{buildroot}/%{_libdir}/blas
-ln -s libcblas.so.%{version} %{buildroot}/%{_libdir}/blas/libcblas.so.3
-ln -s blas/libcblas.so.%{version} %{buildroot}/%{_libdir}/libcblas.so
-ln -s %{_sysconfdir}/alternatives/libcblas.so.3%{?a_x} %{buildroot}/%{_libdir}/libcblas.so.3
-## LAPACK
-install -d %{buildroot}/%{_libdir}/lapack
-install -m 644 liblapack.a %{buildroot}/%{_libdir}
-install -m 755 liblapack.so.%{version} %{buildroot}/%{_libdir}/lapack
-ln -s liblapack.so.%{version} %{buildroot}/%{_libdir}/lapack/liblapack.so.3
-ln -s lapack/liblapack.so.%{version} %{buildroot}/%{_libdir}/liblapack.so
-ln -s %{_sysconfdir}/alternatives/liblapack.so.3%{?a_x} %{buildroot}/%{_libdir}/liblapack.so.3
-## LAPACKE
-install -m 644 LAPACKE/include/*.h %{buildroot}/%{_includedir}
-install -m 644 liblapacke.a %{buildroot}/%{_libdir}
-install -m 755 liblapacke.so.%{version} %{buildroot}/%{_libdir}/lapack
-ln -s liblapacke.so.%{version} %{buildroot}/%{_libdir}/lapack/liblapacke.so.3
-ln -s lapack/liblapacke.so.%{version} %{buildroot}/%{_libdir}/liblapacke.so
-ln -s %{_sysconfdir}/alternatives/liblapacke.so.3%{?a_x} %{buildroot}/%{_libdir}/liblapacke.so.3
+%cmake_install
 
-%post -n libblas3
+%if %{with shared}
+# Prepare for update-alternatives
+install -d %{buildroot}%{_sysconfdir}/alternatives
+install -d %{buildroot}%{_libdir}/{lapack,blas}
+mv %{buildroot}%{_libdir}/liblapack{,e}.so.* %{buildroot}%{_libdir}/lapack/
+mv %{buildroot}%{_libdir}/lib{,c}blas.so.* %{buildroot}%{_libdir}/blas/
+
+# Create the symlinks
+for t in blas cblas lapack lapacke
+do
+  ln -s %{_sysconfdir}/alternatives/lib${t}.so.%{so_ver}%{?a_x} %{buildroot}%{_libdir}/lib${t}.so.%{so_ver}
+done
+
+%else
+# Remove headers and script files for static flavour to avoid file conflicts
+rm -fr %{buildroot}%{_includedir}/*.h \
+       %{buildroot}%{_libdir}/cmake \
+       %{buildroot}%{_libdir}/pkgconfig
+%endif
+
+%if %{with man}
+# Delete weirdly named man files
+rm %{__builddir}/DOCS/man/man3/_*_.3
+# Rename isnan to avoid conflict with libm's isnan man file (package man-pages)
+mv %{__builddir}/DOCS/man/man3/isnan{,-lapack}.3
+# Install man pages
+mkdir -p %{buildroot}%{_mandir}
+cp -r %{__builddir}/DOCS/man/man3 %{buildroot}%{_mandir}/
+%endif
+
+%check
+%ctest
+
+%if %{with shared}
+%ldconfig_scriptlets -n libtmglib%{so_ver}
+
+# BLAS
+%post -n libblas%{so_ver}
 %{_sbindir}/update-alternatives --install \
-   %{_libdir}/libblas.so.3 libblas.so.3%{?a_x} %{_libdir}/blas/libblas.so.3  50
+  %{_libdir}/libblas.so.%{so_ver} libblas.so.%{so_ver}%{?a_x} %{_libdir}/blas/libblas.so.%{so_ver}  50
 /sbin/ldconfig
 
-%postun -n libblas3
+%postun -n libblas%{so_ver}
 /sbin/ldconfig
-if [ ! %{_libdir}/blas/libblas.so.3 ] ; then
-   %{_sbindir}/update-alternatives --remove libblas.so.3%{?a_x}  %{_libdir}/blas/libblas.so.3
+if [ ! %{_libdir}/blas/libblas.so.%{so_ver} ] ; then
+  %{_sbindir}/update-alternatives --remove libblas.so.%{so_ver}%{?a_x}  %{_libdir}/blas/libblas.so.%{so_ver}
 fi
+# /BLAS
 
-%post -n liblapack3
+# LAPACK
+%post -n liblapack%{so_ver}
 %{_sbindir}/update-alternatives --install \
-   %{_libdir}/liblapack.so.3 liblapack.so.3%{?a_x} %{_libdir}/lapack/liblapack.so.3  50
+  %{_libdir}/liblapack.so.%{so_ver} liblapack.so.%{so_ver}%{?a_x} %{_libdir}/lapack/liblapack.so.%{so_ver}  50
 /sbin/ldconfig
 
-%postun -n liblapack3
+%postun -n liblapack%{so_ver}
 /sbin/ldconfig
-if [ ! -f  %{_libdir}/lapack/liblapack.so.3 ] ; then
-   %{_sbindir}/update-alternatives --remove liblapack.so.3%{?a_x} %{_libdir}/lapack/liblapack.so.3
+if [ ! -f  %{_libdir}/lapack/liblapack.so.%{so_ver} ] ; then
+  %{_sbindir}/update-alternatives --remove liblapack.so.%{so_ver}%{?a_x} %{_libdir}/lapack/liblapack.so.%{so_ver}
 fi
+# /LAPACK
 
-%post -n libcblas3
+# CBLAS
+%post -n libcblas%{so_ver}
 %{_sbindir}/update-alternatives --install \
-   %{_libdir}/libcblas.so.3 libcblas.so.3%{?a_x} %{_libdir}/blas/libcblas.so.3  50
+  %{_libdir}/libcblas.so.%{so_ver} libcblas.so.%{so_ver}%{?a_x} %{_libdir}/blas/libcblas.so.%{so_ver}  50
 /sbin/ldconfig
 
-%postun -n libcblas3
+%postun -n libcblas%{so_ver}
 /sbin/ldconfig
-if [ ! -f %{_libdir}/blas/libcblas.so.3 ] ; then
-   %{_sbindir}/update-alternatives --remove libcblas.so.3%{?a_x}  %{_libdir}/blas/libcblas.so.3
+if [ ! -f %{_libdir}/blas/libcblas.so.%{so_ver} ] ; then
+  %{_sbindir}/update-alternatives --remove libcblas.so.%{so_ver}%{?a_x}  %{_libdir}/blas/libcblas.so.%{so_ver}
 fi
+# /CBLAS
 
-%post -n liblapacke3
+# LAPACKE
+%post -n liblapacke%{so_ver}
 %{_sbindir}/update-alternatives --install \
-   %{_libdir}/liblapacke.so.3 liblapacke.so.3%{?a_x} %{_libdir}/lapack/liblapacke.so.3  50
+  %{_libdir}/liblapacke.so.%{so_ver} liblapacke.so.%{so_ver}%{?a_x} %{_libdir}/lapack/liblapacke.so.%{so_ver}  50
 /sbin/ldconfig
 
-%postun -n liblapacke3
+%postun -n liblapacke%{so_ver}
 /sbin/ldconfig
-if [ ! -f %{_libdir}/lapack/liblapacke.so.3 ] ; then
-   %{_sbindir}/update-alternatives --remove liblapacke.so.3%{?a_x} %{_libdir}/lapack/liblapacke.so.3
+if [ ! -f %{_libdir}/lapack/liblapacke.so.%{so_ver} ] ; then
+  %{_sbindir}/update-alternatives --remove liblapacke.so.%{so_ver}%{?a_x} %{_libdir}/lapack/liblapacke.so.%{so_ver}
 fi
+# /LAPACKE
+%endif
 
-%files -n liblapack3
+# SECTION main vs static flavour packages
+%if %{with shared}
+%files -n liblapack%{so_ver}
 %doc README.md
 %license LICENSE
 %dir %{_libdir}/lapack
-%{_libdir}/lapack/liblapack.so.%{version}
-%{_libdir}/lapack/liblapack.so.3
-%ghost %{_libdir}/liblapack.so.3
-%ghost %{_sysconfdir}/alternatives/liblapack.so.3%{?a_x}
+%{_libdir}/lapack/liblapack.so.*
+%ghost %{_libdir}/liblapack.so.%{so_ver}
+%ghost %{_sysconfdir}/alternatives/liblapack.so.%{so_ver}%{?a_x}
 
-%files -n libblas3
+%files -n libblas%{so_ver}
 %doc README.md
 %license LICENSE
 %dir %{_libdir}/blas
-%{_libdir}/blas/libblas.so.%{version}
-%{_libdir}/blas/libblas.so.3
-%ghost %{_libdir}/libblas.so.3
-%ghost %{_sysconfdir}/alternatives/libblas.so.3%{?a_x}
+%{_libdir}/blas/libblas.so.*
+%ghost %{_libdir}/libblas.so.%{so_ver}
+%ghost %{_sysconfdir}/alternatives/libblas.so.%{so_ver}%{?a_x}
 
-%files devel
+%files -n liblapacke%{so_ver}
+%dir %{_libdir}/lapack
+%{_libdir}/lapack/liblapacke.so.*
+%ghost %{_libdir}/liblapacke.so.%{so_ver}
+%ghost %{_sysconfdir}/alternatives/liblapacke.so.%{so_ver}%{?a_x}
+
+%files -n libcblas%{so_ver}
+%doc README.md
+%license LICENSE
+%dir %{_libdir}/blas
+%{_libdir}/blas/libcblas.so.*
+%ghost %{_libdir}/libcblas.so.%{so_ver}
+%ghost %{_sysconfdir}/alternatives/libcblas.so.%{so_ver}%{?a_x}
+
+%files -n libtmglib%{so_ver}
+%license LICENSE
+%{_libdir}/libtmglib.so.%{so_ver}*
+
+%files -n tmglib-devel
+%license LICENSE
+%{_libdir}/libtmglib.so
+
+%files -n %{pname}-devel
 %{_libdir}/liblapack.so
-
-%files devel-static
-%{_libdir}/liblapack.a
+%{_includedir}/lapack.h
+%{_libdir}/cmake/lapack-%{version}/
+%{_libdir}/pkgconfig/lapack.pc
 
 %files -n blas-devel
 %{_libdir}/libblas.so
-
-%files -n blas-devel-static
-%{_libdir}/libblas.a
-
-%files -n liblapacke3
-%{_libdir}/lapack/liblapacke.so.%{version}
-%{_libdir}/lapack/liblapacke.so.3
-%ghost %{_libdir}/liblapacke.so.3
-%ghost %{_sysconfdir}/alternatives/liblapacke.so.3%{?a_x}
+%{_libdir}/pkgconfig/blas.pc
 
 %files -n lapacke-devel
 %doc LAPACKE/README
 %license LAPACKE/LICENSE
 %{_libdir}/liblapacke.so
-%{_includedir}/lapack*.h
-
-%files -n lapacke-devel-static
-%{_libdir}/liblapacke.a
-
-%files -n libcblas3
-%doc README.md
-%license LICENSE
-%dir %{_libdir}/blas
-%{_libdir}/blas/libcblas.so.%{version}
-%{_libdir}/blas/libcblas.so.3
-%ghost %{_libdir}/libcblas.so.3
-%ghost %{_sysconfdir}/alternatives/libcblas.so.3%{?a_x}
+%{_includedir}/lapacke*.h
+%{_libdir}/cmake/lapacke-%{version}/
+%{_libdir}/pkgconfig/lapacke.pc
 
 %files -n cblas-devel
 %doc CBLAS/README
 %{_libdir}/libcblas.so
 %{_includedir}/cblas*.h
+%{_libdir}/cmake/cblas-%{version}/
+%{_libdir}/pkgconfig/cblas.pc
+
+# End of packages built for main flavour
+%else
+
+# Start of static flavour
+%files -n %{pname}-devel-static
+%license LICENSE
+%{_libdir}/liblapack.a
 
 %files -n cblas-devel-static
+%license LICENSE
 %{_libdir}/libcblas.a
+
+%files -n blas-devel-static
+%license LICENSE
+%{_libdir}/libblas.a
+
+%files -n lapacke-devel-static
+%license LICENSE
+%{_libdir}/liblapacke.a
+
+%files -n tmglib-devel-static
+%license LICENSE
+%{_libdir}/libtmglib.a
+
+%endif
+# /SECTION main vs static flavour pkgs
+
+%if %{with man}
+%files -n lapack-man
+%{_mandir}/man3/*.3%{?ext_man}
+%endif
 
 %changelog

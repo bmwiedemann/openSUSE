@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Jun 14 03:09:33 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Rename isnan man file to avoid conflict with libm's isnan (from
+  package man-pages).
+
+-------------------------------------------------------------------
+Sat May  4 20:55:24 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.12.0 (boo#1223783):
+  * Long list of changes, see
+    <https://netlib.org/lapack/lapack-3.12.0.html>.
+- Drop all upstreamed or otherwise fixed patches:
+  * lapack-3.2.2.patch
+  * Fix-MinGW-build-error.patch
+  * Fix-some-minor-inconsistencies-in-LAPACKE_czgesvdq.patch
+  * Avoid-out-of-bounds-accesses-in-complex-EIG-tests.patch
+  * Fix-out-of-bounds-read.patch
+  * Restore_missing_deprecated_prototypes.patch
+  * Fix-testing-input.patch
+- Use cmake for configure and ninja for build.
+- Package pkgconf and cmake scripts for -devel pkgs.
+- Drop multibuild flavour for man files.
+- Add multibuild flavour for static libs (also used to build man
+  files).
+- Build man files using doxygen instead of using pre-built files.
+- Explicitly symlink library to relocated shared libs in
+  baselibs.conf (boo#1207563).
+- Recommend lapack-man package from
+  {blas,lapack,lapacke,cblas}-devel packages.
+
+-------------------------------------------------------------------
 Mon Mar 11 11:42:31 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Add Fix-testing-input.patch to remove stray ';' in the input data
