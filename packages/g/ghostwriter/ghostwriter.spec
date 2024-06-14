@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           ghostwriter
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        A distraction-free Markdown editor
 License:        GPL-3.0-or-later
@@ -50,7 +50,7 @@ BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(hunspell)
 Recommends:     multimarkdown
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 %{x86_64} aarch64 riscv64
 
 %description
 ghostwriter is a text editor for Markdown, which is a plain text markup format.
