@@ -101,11 +101,14 @@ Patch104:       selinux_libdir.patch
 %define build_pcp 0
 %endif
 %endif
-
+%if 0%{?suse_version} == 0 || 0%{?suse_version} > 1500
 # Ship custom SELinux policy
 %define selinuxtype targeted
 %define selinux_configure_arg --enable-selinux-policy=%{selinuxtype}
 %define with_selinux 1
+%else
+%define selinux_configure_arg --enable-selinux-policy=no
+%endif
 
 BuildRequires: gcc
 BuildRequires: pkgconfig(gio-unix-2.0)
@@ -246,6 +249,7 @@ autoreconf -fvi -I tools
     --with-cockpit-ws-instance-user=cockpit-wsinstance \
 %if 0%{?suse_version}
     --docdir=%_defaultdocdir/%{name} \
+    --libexecdir=%_libexecdir \
 %endif
     --with-pamdir='%{pamdir}' \
 %if %{build_pcp} == 0

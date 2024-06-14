@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 13 11:02:10 UTC 2024 - Luna D Dragon <luna.dragon@suse.com>
+
+- disable selinux on leap versions without selinux
+- set libexec dir to %_libexecdir (bsc#1223533)
+
+-------------------------------------------------------------------
 Thu May 16 08:12:47 UTC 2024 - Luna D Dragon <luna.dragon@suse.com>
 
 - new version 316:

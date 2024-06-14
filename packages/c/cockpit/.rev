@@ -479,4 +479,13 @@
 - suse_docs.patch, storage-btrfs.patch: refreshed</comment>
     <requestid>1178504</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>bdd2746a72e0bab9c9816181b219a4ab</srcmd5>
+    <version>316</version>
+    <time>1718384235</time>
+    <user>anag+factory</user>
+    <comment>- disable selinux on leap versions without selinux
+- set libexec dir to %_libexecdir (bsc#1223533)</comment>
+    <requestid>1180404</requestid>
+  </revision>
 </revisionlist>
