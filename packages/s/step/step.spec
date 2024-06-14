@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           step
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        An interactive physics simulator
 License:        GPL-2.0-or-later
