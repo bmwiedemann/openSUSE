@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           audex
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        Tool for ripping compact discs
 License:        GPL-3.0-or-later
@@ -84,7 +84,7 @@ Audex is an audio grabber tool for CD-ROM drives.
 %{_kf6_applicationsdir}/org.kde.audex.desktop
 %{_kf6_appstreamdir}/org.kde.audex.appdata.xml
 %{_kf6_bindir}/audex
-%{_kf6_iconsdir}/hicolor/*/apps/audex.png
+%{_kf6_iconsdir}/hicolor/*/apps/org.kde.audex.svg
 %{_kf6_sharedir}/audex/
 %dir %{_kf6_sharedir}/solid
 %dir %{_kf6_sharedir}/solid/actions
