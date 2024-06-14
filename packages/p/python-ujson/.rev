@@ -224,4 +224,13 @@
     <comment></comment>
     <requestid>1137243</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b1dc15b76b1be5064fc66e6c535503c6</srcmd5>
+    <version>5.10.0</version>
+    <time>1718384514</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.10.0:
+  * Add support for Python 3.13 (#628) @hugovk</comment>
+    <requestid>1180736</requestid>
+  </revision>
 </revisionlist>

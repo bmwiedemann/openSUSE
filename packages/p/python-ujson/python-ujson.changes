@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 13 15:43:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.10.0:
+  * Add support for Python 3.13 (#628) @hugovk
+
+-------------------------------------------------------------------
 Wed Dec 13 10:14:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.9.0:
