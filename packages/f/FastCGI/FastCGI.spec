@@ -67,17 +67,19 @@ FastCGI is a language independent, scalable, open extension to CGI that
 provides high performance without the limitations of server specific
 APIs.
 
-%package -n perl-FastCGI
+%package -n perl-FCGI
 Summary:        A scalable, open extension to CGI
 Group:          Development/Languages/C and C++
 Requires:       %{name} = %{version}
+Provides:       perl-FastCGI = %{version}
+Obsoletes:      perl-FastCGI <= %{version}
 %if 0%{?suse_version} < 1120
 Requires:       perl >= 5.8.0
 %else
 %{perl_requires}
 %endif
 
-%description -n perl-FastCGI
+%description -n perl-FCGI
 FastCGI is a language independent, scalable, open extension to CGI that
 provides high performance without the limitations of server specific
 APIs.
@@ -148,7 +150,7 @@ rm -f %{buildroot}%{_libdir}/libfcgi*.la
 %defattr(-,root,root)
 %{_libdir}/libfcgi*.so.*
 
-%files -n perl-FastCGI
+%files -n perl-FCGI
 %defattr(-,root,root)
 %{_mandir}/man3/*.3pm.gz
 %{perl_vendorarch}/FCGI.pm

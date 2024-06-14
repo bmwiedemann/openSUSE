@@ -231,4 +231,15 @@ Use SUSE- proprietary prefix until license is accepted upstream by SPDX.org. Fed
     <comment></comment>
     <requestid>1178131</requestid>
   </revision>
+  <revision rev="32" vrev="175">
+    <srcmd5>53f0ce7c1f71dcea37e368c33fd8fb64</srcmd5>
+    <version>2.4.0</version>
+    <time>1718384233</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1180337 from dimstar
+
+- Rename perl-FastCGI subpackage to perl-FCGI: adjust the package
+  name to the actual perl module name.</comment>
+    <requestid>1180339</requestid>
+  </revision>
 </revisionlist>

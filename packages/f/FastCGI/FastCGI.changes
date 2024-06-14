@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 13 08:49:48 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rename perl-FastCGI subpackage to perl-FCGI: adjust the package
+  name to the actual perl module name.
+
+-------------------------------------------------------------------
 Wed May 15 07:42:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro: allows us to eliminate usage of deprecated
