@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 21 10:42:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace %patchN with %patch -P N: %patchN is deprecated.
+
+-------------------------------------------------------------------
 Tue Mar 19 10:44:15 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 -  fix iserv and hpc deps

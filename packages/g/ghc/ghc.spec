@@ -1,7 +1,7 @@
 #
 # spec file for package ghc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -172,9 +172,9 @@ Haskell home page at <http://www.haskell.org/>.
 %package compiler
 Summary:        GHC compiler and utilities
 License:        BSD-3-Clause
+Requires:       %{name}-filesystem = %{version}-%{release}
 Requires:       gcc
 Requires:       ghc-base-devel = %{base_ver}-%{release}
-Requires:       %{name}-filesystem = %{version}-%{release}
 Provides:       hsc2hs-%{hsc2hs_ver}-%{release}
 %ifarch riscv64 s390x
 Requires:       clang%{llvm_major}
@@ -216,7 +216,6 @@ This package provides some common directories used for
 Haskell libraries documentation.
 %endif
 
-
 %if %{with manual}
 %package manual
 Summary:        GHC manual
@@ -227,7 +226,6 @@ BuildArch:      noarch
 %description manual
 This package provides the User Guide and Haddock manual.
 %endif
-
 
 %global ghc_version_override %{version}
 %global ghc_pkg_c_deps ghc-compiler = %{ghc_version_override}-%{release}
@@ -298,15 +296,15 @@ Installing this package causes %{name}-*-prof packages corresponding to
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 %ifarch s390x
-%patch3 -p1
+%patch -P 3 -p1
 %endif
-%patch100 -p1
-%patch101 -p1
+%patch -P 100 -p1
+%patch -P 101 -p1
 %ifarch ppc64le s390x riscv64
-%patch200 -p1
+%patch -P 200 -p1
 %endif
 
 rm libffi-tarballs/libffi-*.tar.gz
@@ -358,7 +356,7 @@ python3 boot.source --hadrian
 %endif
 %global jobs_nr %{?_smp_mflags}
 %else
-%global jobs_nr -j1 
+%global jobs_nr -j1
 %endif
 %{hadrian} %{jobs_nr} --flavour=%{?with_quickbuild:quick+no_profiled_libs}%{!?with_quickbuild:perf%{!?with_ghc_prof:+no_profiled_libs}}%{?hadrian_llvm} %{hadrian_docs} binary-dist-dir --hash-unit-ids
 
@@ -377,22 +375,20 @@ for i in $(find %{buildroot} -type f -executable -exec sh -c "file {} | grep -q 
   chrpath -d $i
 done
 
-
 %if %{with haddock}
 # remove short hashes
 for d in %{buildroot}%{ghc_html_libraries_dir}/*/; do
 mv $d $(echo $d | sed -e "s/\(.*\)-.*/\\1/")
 done
 %endif
- 
+
 # containers src moved to a subdir
 cp -p libraries/containers/containers/LICENSE libraries/containers/LICENSE
 # hack for Cabal-syntax/LICENSE
 mkdir -p libraries/Cabal-syntax
 cp -p libraries/Cabal/Cabal-syntax/LICENSE libraries/Cabal-syntax
- 
-rm -f %{name}-*.files
 
+rm -f %{name}-*.files
 
 # FIXME replace with ghc_subpackages_list
 for i in %{ghc_packages_list}; do
@@ -438,7 +434,6 @@ echo "%%dir %{ghcliblib}/bin"
 sed -i -e "s|^%{buildroot}||g" %{name}-base*.files
 sed -i -e "s|%{buildroot}||g" %{buildroot}%{_bindir}/*
 
-
 %if %{with haddock}
 rm %{buildroot}%{_docdir}/ghc-%{version}/archives/libraries.html.tar.xz
 %endif
@@ -447,12 +442,10 @@ rm %{buildroot}%{_docdir}/ghc-%{version}/archives/Haddock.html.tar.xz
 rm %{buildroot}%{_docdir}/ghc-%{version}/archives/users_guide.html.tar.xz
 %endif
 
-
 mkdir -p %{buildroot}%{_mandir}/man1
 install -p -m 0644 %{SOURCE5} %{buildroot}%{_mandir}/man1/ghc-pkg.1
 install -p -m 0644 %{SOURCE6} %{buildroot}%{_mandir}/man1/haddock.1
 install -p -m 0644 %{SOURCE7} %{buildroot}%{_mandir}/man1/runghc.1
-
 
 rm %{buildroot}%{ghclibdir}/lib/package.conf.d/.stamp
 rm %{buildroot}%{ghclibdir}/lib/package.conf.d/*.conf.copy
