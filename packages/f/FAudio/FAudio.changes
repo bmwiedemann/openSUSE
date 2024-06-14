@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun  7 14:12:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.06:
+  * Fix a possible deadlock in voice callbacks when the
+    application has aggressive mutex locking
+  * Minor fixes for implicit conversion warnings on MSVC
+  * Wine/Win32:
+  * Fix a crash when GetDefaultAudioEndpoint fails
+  * Exit cleanly when opened audio devices disconnect
+  * Properly list all audio devices, rather than just the default
+
+-------------------------------------------------------------------
 Fri May 17 21:56:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 -update to 24.05:
