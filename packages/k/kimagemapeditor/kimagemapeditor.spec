@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kimagemapeditor
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        HTML Image Map Editor
 License:        GPL-2.0-or-later
@@ -49,7 +49,7 @@ BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 # No QtWebEngine for other archs
-ExclusiveArch:  x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 %{x86_64} aarch64 riscv64
 
 %description
 A tool to edit image maps of HTML files
