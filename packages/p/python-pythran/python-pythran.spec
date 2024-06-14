@@ -44,7 +44,7 @@ ExclusiveArch:  x86_64
 %endif
 
 Name:           python-pythran%{psuffix}
-Version:        0.16.0
+Version:        0.16.1
 Release:        0
 Summary:        Ahead of Time compiler for numeric kernels
 License:        BSD-3-Clause

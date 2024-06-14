@@ -174,4 +174,12 @@ now with fixed empty debuginfo extraction</comment>
     <comment></comment>
     <requestid>1177345</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6b8a445807cb303c0c3a66d28fd29214</srcmd5>
+    <version>0.16.1</version>
+    <time>1718384272</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1180776</requestid>
+  </revision>
 </revisionlist>
