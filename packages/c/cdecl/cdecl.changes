@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 13 22:13:35 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 17.0
+  * Support abbreviated function template parameter packs
+  * Added ``help`` option suggestions
+  * Support ``auto`` parameters in typedefs
+  * Recognize structured binding declarations
+
+-------------------------------------------------------------------
 Tue May 28 13:26:31 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 16.4.1
