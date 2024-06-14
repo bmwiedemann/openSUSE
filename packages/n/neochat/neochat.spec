@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           neochat
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        A chat client for Matrix, the decentralized communication protocol
 License:        BSD-2-Clause AND GPL-3.0-only AND GPL-3.0-or-later
@@ -71,7 +71,7 @@ BuildRequires:  cmake(QuotientQt6) >= 0.7.0
 BuildRequires:  pkgconfig(icu-uc) >= 61.0
 BuildRequires:  pkgconfig(libcmark)
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 %{x86_64} aarch64 riscv64
 Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kf6-kitemmodels-imports >= %{kf6_version}
 Requires:       kf6-kquickcharts >= %{kf6_version}

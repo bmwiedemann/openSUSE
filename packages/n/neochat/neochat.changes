@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jun 12 07:34:49 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.1/
+- Changes since 24.05.0:
+  * Fix keyboard navigation on search pages
+  * Fix the tooltips for the two drawer buttons at the top
+  * Fix keyboard navigation in space drawer
+  * Add keyboard navigation for server selection in room search dialog
+  * Remove room member highlight on click
+  * Use Qt.alpha in ThemeRadioButton
+  * Add focus border for the theme radio button, used on the Appearance page
+  * Fix QR code not showing when tapping the button under account settings
+  * Fix map copyright link activation
+  * Don't show the map if there's no locations available
+  * Fixup AttachDialog
+  * CreateRoomDialog: Add missing formcard separators
+  * Fix if X11 on apple
+  * Cleanup quick switcher
+  * Fix spacing of HiddenDelegate
+  * Fix micro spacing inconsistency in SpaceHierarchyDelegate
+
+-------------------------------------------------------------------
 Sun May 19 09:57:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.0
