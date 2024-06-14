@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kde-inotify-survey
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        Monitor inotify limits and inform the user when they are reached
 License:        GPL-2.0-or-later
