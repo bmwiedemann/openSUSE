@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 12 08:07:31 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Backport patch to fix PAC/BTI support on aarch64:
+  * 563.patch
+
+-------------------------------------------------------------------
 Thu Mar  7 12:31:25 UTC 2024 - pgajdos@suse.com
 
 - version update to 1.6.43

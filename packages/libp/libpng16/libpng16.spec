@@ -34,6 +34,8 @@ Source0:        https://prdownloads.sourceforge.net/libpng/libpng-%{version}.tar
 Source2:        libpng16.keyring
 Source3:        rpm-macros.libpng-tools
 Source4:        baselibs.conf
+# PATCH-FIX-UPSTREAM - https://github.com/pnggroup/libpng/pull/563
+Patch1:         563.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
@@ -91,7 +93,7 @@ Package consists of low level tools for manipulating and fixing particular
 PNG files.
 
 %prep
-%autosetup -n libpng-%{version}
+%autosetup -p1 -n libpng-%{version}
 
 %build
 # PNG_SAFE_LIMITS_SUPPORTED: http://www.openwall.com/lists/oss-security/2015/01/10/1
@@ -100,6 +102,8 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 %if %{debug_build}
 export CFLAGS="$CFLAGS -Og"
 %endif
+# autoreconf required by Patch1
+autoreconf -f
 %configure \
               --enable-hardware-optimizations=yes \
 %ifarch armv6l armv6hl

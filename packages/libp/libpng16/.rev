@@ -800,4 +800,13 @@
   * Added version consistency verification to pngtest.c also.</comment>
     <requestid>1155898</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>e1778f857906dabbc7a47c6e9d29a492</srcmd5>
+    <version>1.6.43</version>
+    <time>1718384232</time>
+    <user>anag+factory</user>
+    <comment>- Backport patch to fix PAC/BTI support on aarch64:
+  * 563.patch (forwarded request 1180119 from Guillaume_G)</comment>
+    <requestid>1180336</requestid>
+  </revision>
 </revisionlist>

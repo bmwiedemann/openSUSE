@@ -1,0 +1,98 @@
+From ceed2a3cf6af420a0782e7f6147d5965b01b772a Mon Sep 17 00:00:00 2001
+From: John Bowler <jbowler@acm.org>
+Date: Thu, 30 May 2024 07:53:42 -0700
+Subject: [PATCH] SECURITY: disable build of filter_neon.S on arm
+
+This fixes the bug https://github.com/pnggroup/libpng/issues/505
+"libpng does not support PAC/BTI on aarch64 targets" which arises
+because the build mechanisms (both cmake and configure) assemble
+arm/filter_neon.S even though it ends up completely empty.  The empty
+file effectively poisons the so that the PAC/BTI support gets disabled.
+
+The fix is minimal; it simply removes arm/filter_neon.S from the list of
+sources included in the 64-bit ARM builds build.  Note that this was
+already done in cmake for MSVC - it's not clear whether this change was
+a partial fix for the same issue.
+
+This version of the fix ONLY affects aarch64 (arm64) builds; 32-bit ARM
+systems can still invoke the assembler if required and, indeed, there
+should be no change whatsover to those builds.
+
+The assembler code could not be used on 64-bit systems in any case so
+in practice there is no material change to 64-bit builds either.
+
+TESTING: pull the changes then type "autoreconf" if using configure (not
+required for cmake).
+
+TESTS: cmake has not been tested because cross-builds with cmake
+currently fail to find the zlib installation from the cmake system root
+path.  The following has been tested with configure cross builds:
+
+armv7-linux-gnueabi [no neon support]
+armv7a-linux-gnueabi [no neon support]
+armv7a-hardfloat-linux-gnueabi [neon support not enabled]
+armv7a-hardfloat-linux-gnueabi -mfpu=neon [uses intrinics]
+armv7a-hardfloat-linux-gnueabi -mfpu=neon
+        -DPNG_ARM_NEON_IMPLEMENTATION=2 [uses assembler]
+aarch64-linux-gnu [uses intrinsics]
+aarch64-linux-gnu -DPNG_ARM_NEON_OPT=0 [neon support disabled]
+
+Signed-off-by: John Bowler <jbowler@acm.org>
+---
+ CMakeLists.txt |  2 +-
+ Makefile.am    |  6 ++++--
+ configure.ac   | 10 ++++++++++
+ 3 files changed, 15 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 77e5398b6a..11bbe36d2a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -153,7 +153,7 @@ if(TARGET_ARCH MATCHES "^(ARM|arm|aarch)")
+         arm/arm_init.c
+         arm/filter_neon_intrinsics.c
+         arm/palette_neon_intrinsics.c)
+-    if(NOT MSVC)
++    if(NOT MSVC AND NOT TARGET_ARCH MATCHES "^(ARM64|arm64|aarch64)")
+       list(APPEND libpng_arm_sources arm/filter_neon.S)
+     endif()
+     if(PNG_ARM_NEON STREQUAL "on")
+diff --git a/Makefile.am b/Makefile.am
+index 1f06c703a1..5cc27a4c8f 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -107,9 +107,11 @@ libpng@PNGLIB_MAJOR@@PNGLIB_MINOR@_la_SOURCES = png.c pngerror.c\
+ 	png.h pngconf.h pngdebug.h pnginfo.h pngpriv.h pngstruct.h pngusr.dfa
+ 
+ if PNG_ARM_NEON
++if PNG_ARM_NEON_ASM
++libpng@PNGLIB_MAJOR@@PNGLIB_MINOR@_la_SOURCES += arm/filter_neon.S
++endif
+ libpng@PNGLIB_MAJOR@@PNGLIB_MINOR@_la_SOURCES += arm/arm_init.c\
+-	arm/filter_neon.S arm/filter_neon_intrinsics.c \
+-	arm/palette_neon_intrinsics.c
++	arm/filter_neon_intrinsics.c arm/palette_neon_intrinsics.c
+ endif
+ 
+ if PNG_MIPS_MSA
+diff --git a/configure.ac b/configure.ac
+index 2c6b3333c6..e3c1536f0c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -425,6 +425,16 @@ AM_CONDITIONAL([PNG_ARM_NEON],
+       *)    test "$enable_arm_neon" != '' ;;
+     esac])
+ 
++# Add the assembler implementation source file.  This only works on 32-bit
++# ARM and causes problems even if empty on 64-bit ARM.
++AM_CONDITIONAL([PNG_ARM_NEON_ASM],
++   [test "$enable_arm_neon" != 'no' &&
++    case "$host_cpu" in
++      arm64*|aarch64*) false ;;
++      arm*) true ;;
++      *)    test "$enable_arm_neon" != '' ;;
++    esac])
++
+ # MIPS MSA
+ # ========
+ 
