@@ -73,4 +73,14 @@
 </comment>
     <requestid>1159683</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1c2f067d8020683560a6c29a1bd6bdc1</srcmd5>
+    <version>1.0.3</version>
+    <time>1718384511</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.3:
+  * Temporarily depend on pysnmp-lextudio &lt; 6 to fix stuck SNMP
+    requests.</comment>
+    <requestid>1180730</requestid>
+  </revision>
 </revisionlist>

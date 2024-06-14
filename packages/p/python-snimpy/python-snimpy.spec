@@ -18,7 +18,7 @@
 
 
 Name:           python-snimpy
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        Interactive SNMP tool
 License:        ISC
