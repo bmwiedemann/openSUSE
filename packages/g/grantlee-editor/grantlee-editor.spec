@@ -18,11 +18,11 @@
 
 %define kf6_version 6.0.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.80
+%define kpim6_version 6.1.1
 
 %bcond_without released
 Name:           grantlee-editor
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        Messageviewer header theme editor based on Grantlee
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -55,7 +55,7 @@ BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Requires:       kaddressbook
 Requires:       kmail-application-icons
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 %{x86_64} aarch64 riscv64
 
 %description
 A theme editor for messageviewer based on Grantlee. Once created or modified,
