@@ -20,7 +20,7 @@
 %define _so_astro 1
 %bcond_without released
 Name:           marble
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        Generic map viewer
 # License note: the tools directory contains GPL-3 tools, but they are neither built nor installed by the package
@@ -79,7 +79,7 @@ Requires:       marble-frontend = %{version}
 Recommends:     %{name}-doc = %{version}
 Obsoletes:      marble5 < %{version}
 Provides:       marble5 < %{version}
-%ifarch %{ix86} x86_64 %{arm} aarch64
+%ifarch %{ix86} x86_64 %{x86_64} %{arm} aarch64
 # Only include WebEngine on platforms where it is available
 BuildRequires:  cmake(Qt5WebEngineWidgets)
 %endif
@@ -125,7 +125,7 @@ Requires:       cmake(Qt5Widgets)
 Requires:       cmake(Qt5Xml)
 Obsoletes:      marble5-devel < %{version}
 Provides:       marble5-devel = %{version}
-%ifarch %{ix86} x86_64 %{arm} aarch64
+%ifarch %{ix86} x86_64 %{x86_64} %{arm} aarch64
 Requires:       cmake(Qt5WebEngineWidgets)
 %endif
 
