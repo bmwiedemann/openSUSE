@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Jun  6 08:42:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.36.1:
+  * [fix] eventlet.websocket is not always used from
+    eventlet.wsgi, so do not assume eventlet.set_idle exists
+  * [fix] Make sure asyncio hub doesn't use greendns for asyncio
+    DNS APIs
+  * [fix] Make asyncio.to_thread work with the same semantics as
+    normal asyncio
+  * [fix] Refactor congruence checks based on assert at runtime
+  * [tests] Run tests on macOS in CI, and some fixes to get it in
+    reasonable state (#list
+  * [fix] Fix wsgi.server shutdown for in-flight requests
+  * [feature] Add debug convenience helpers - asyncio, threads
+  * [fix] Handle errors better.
+  * [fix] Fix tool.setuptools/packages list
+  * [security] Dnspython 2.6.1 - Address DoS via the Tudoor
+    mechanism (CVE-2023-29483)
+  * [doc] add asyncio into the doc hub page
+  * [clean] clean obsolete python 2 code from the ssl module
+  * [fix] Add get_server_info to db_pool.py
+  * [fix] wsgi: Handle Timeouts from applications
+  * [fix] shrinks window before connecting
+  * [fix] Do not allow failed patching to stop execution
+  * [doc] Basic documentation for asyncio migration
+  * [tests] add minimal linting
+  * [doc] officially host docs on readthedocs
+  * [fix] fix truncate size nullable
+  * [fix] Handle transport endpoint shutdown in conditions
+  * [fix] Rework reject_bad_requests option
+  * [fix] Fix NameError introduced by #826
+  * [feature] Support awaiting GreenThread in an `async def`
+    context https://github.com/eventlet/eventlet/pull/889
+  * [infra] Extend test cert to 2049
+  * [feature] Asyncio hub support for Python 3.7 to 3.9
+  * [infra] Modernize doc generation
+  * [fix] Fix bad exceptions handlings
+  * [feature] Support using asyncio coroutines from inside
+    greenlets https://github.com/eventlet/eventlet/pull/877
+  * [removal] Remove deprecated CGIHTTPServer and
+    SimpleHTTPServer
+  * [governance] Update maintenance goals
+  * [feature] Add an asyncio hub for eventlet
+
+-------------------------------------------------------------------
 Fri Jan 19 08:47:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.34.3:

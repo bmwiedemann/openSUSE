@@ -585,4 +585,12 @@
   solved differently upstream</comment>
     <requestid>1139942</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>bace5ab1d1608f79be8a8b25fe9121fe</srcmd5>
+    <version>0.36.1</version>
+    <time>1718384233</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1180340</requestid>
+  </revision>
 </revisionlist>
