@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-zope.exceptions
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-zope.exceptions%{psuffix}
-Version:        5.0.1
+Version:        5.1
 Release:        0
 Summary:        Zope Exceptions
 License:        ZPL-2.1

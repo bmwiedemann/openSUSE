@@ -139,4 +139,14 @@
   * Fix handling of unicode supplemental traceback information on</comment>
     <requestid>1133587</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ec92bad5ff577a142ad3e083bbc5b3c1</srcmd5>
+    <version>5.1</version>
+    <time>1718384269</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.1:
+  * Add support for Python 3.12.
+  * Include code from PEP302 loaders in tracebacks</comment>
+    <requestid>1180731</requestid>
+  </revision>
 </revisionlist>
