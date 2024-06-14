@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kbounce
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        Bounce ball game
 License:        LGPL-2.0-or-later
