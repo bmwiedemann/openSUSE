@@ -6634,4 +6634,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.9.3 &amp; 6.9.2 &amp; other fixes</comment>
     <requestid>1177722</requestid>
   </revision>
+  <revision rev="735" vrev="1">
+    <srcmd5>a72e25c8678a6250ee8d2c9ca23ab8f3</srcmd5>
+    <version>6.9.4</version>
+    <time>1718384350</time>
+    <user>anag+factory</user>
+    <comment>6.9.4 &amp; bluetooth fix</comment>
+    <requestid>1180254</requestid>
+  </revision>
 </revisionlist>
