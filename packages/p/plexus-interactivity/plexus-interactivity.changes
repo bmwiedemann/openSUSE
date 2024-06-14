@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jun 13 11:04:22 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.3
+  * New features and improvements
+    + ensure prompter does not double colon
+    + java 8 as mininum
+    + Move off plexus
+- The class previously in plexus-interactivity-jdom artifact is
+  folded into the main plexus-interactivity-api.
+- Removed patch:
+  * plexus-interactivity-dependencies.patch
+    + not needed any more
+- Modified patch:
+  * plexus-interactivity-jline2.patch
+    + port from jline3 to jline2
+
+-------------------------------------------------------------------
 Tue Feb 20 15:00:51 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

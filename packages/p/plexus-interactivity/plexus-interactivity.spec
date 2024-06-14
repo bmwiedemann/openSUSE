@@ -16,31 +16,24 @@
 #
 
 
-%global base_ver 1.0
-%global alpha_ver 6
-%global namedversion %{base_ver}-alpha-%{alpha_ver}
 Name:           plexus-interactivity
-Version:        %{base_ver}~alpha%{alpha_ver}
+Version:        1.3
 Release:        0
 Summary:        Plexus Interactivity Handler Component
 License:        MIT
 Group:          Development/Libraries/Java
 URL:            https://github.com/codehaus-plexus/plexus-interactivity
-# svn export \
-#   http://svn.codehaus.org/plexus/plexus-components/tags/plexus-interactivity-1.0-alpha-6/
-# tar caf plexus-interactivity-1.0-alpha-6-src.tar.xz \
-#   plexus-interactivity-1.0-alpha-6
-Source0:        %{name}-%{namedversion}-src.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        LICENSE.MIT
 Source100:      %{name}-build.tar.xz
-Patch1:         %{name}-dependencies.patch
-Patch2:         %{name}-jline2.patch
+Patch0:         %{name}-jline2.patch
 BuildRequires:  ant
+BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  jline >= 2
-BuildRequires:  plexus-component-api
 BuildRequires:  plexus-utils
+BuildRequires:  sisu-inject
 BuildArch:      noarch
 
 %description
@@ -60,54 +53,43 @@ This package provides %{summary}.
 %package api
 Summary:        API for %{name}
 Group:          Development/Libraries/Java
+Obsoletes:      %{name}-jline
 
 %description api
 API module for %{name}.
 
-%package jline
-Summary:        jline module for %{name}
-Group:          Development/Libraries/Java
-Requires:       %{name}-api = %{version}
-
-%description jline
-jline module for %{name}.
-
 %prep
-%setup -q -n %{name}-%{namedversion} -a100
-%patch -P 1 -p1
-%patch -P 2 -p1
+%setup -q -a100
+
+%patch -P 0 -p1
+%pom_change_dep :jline-reader jline:jline:2.10 %{name}-api
 
 cp %{SOURCE1} .
 
 %build
 mkdir -p lib
-build-jar-repository -s lib jline plexus-component-api plexus/utils
+build-jar-repository -s lib atinject jline org.eclipse.sisu.inject plexus/utils
 %{ant} package javadoc
 
 %install
+
 # jar
 install -dm 0755 %{buildroot}%{_javadir}/plexus
-for i in api jline; do
-  install -pm 0644 %{name}-${i}/target/%{name}-${i}-%{namedversion}.jar %{buildroot}%{_javadir}/plexus/interactivity-${i}.jar
-done
+install -pm 0644 %{name}-api/target/%{name}-api-%{version}.jar %{buildroot}%{_javadir}/plexus/interactivity-api.jar
+
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/plexus
-for i in api jline; do
-  %{mvn_install_pom} %{name}-${i}/pom.xml %{buildroot}%{_mavenpomdir}/plexus/interactivity-${i}.pom
-  %add_maven_depmap plexus/interactivity-${i}.pom plexus/interactivity-${i}.jar -f ${i}
-done
+%{mvn_install_pom} %{name}-api/pom.xml %{buildroot}%{_mavenpomdir}/plexus/interactivity-api.pom
+%add_maven_depmap plexus/interactivity-api.pom plexus/interactivity-api.jar -f api
+
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
-for i in api jline; do
-  install -dm 0755 %{buildroot}%{_javadocdir}/%{name}/${i}
-  cp -pr %{name}-${i}/target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/${i}/
-done
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}/api
+cp -pr %{name}-api/target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/api/
+
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files api -f .mfiles-api
-%license LICENSE.MIT
-
-%files jline -f .mfiles-jline
 %license LICENSE.MIT
 
 %files javadoc
