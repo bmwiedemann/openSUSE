@@ -18,7 +18,7 @@
 
 %define kf6_version 6.0.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.0.80
+%define kpim6_version 6.1.1
 
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150500
 %bcond_without etebase
@@ -26,7 +26,7 @@
 
 %bcond_without released
 Name:           kdepim-runtime
-Version:        24.05.0
+Version:        24.05.1
 Release:        0
 Summary:        Akonadi resources for PIM applications
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -94,7 +94,7 @@ Provides:       kio-pimlibs = %{version}
 Obsoletes:      kdepim4-runtime < %{version}
 Obsoletes:      kio-pimlibs < %{version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 %{x86_64} aarch64 riscv64
 
 %description
 This package contains the Akonadi resources, agents and plugins needed to
