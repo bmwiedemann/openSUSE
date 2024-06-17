@@ -37,7 +37,7 @@
 %define roslyn no
 %endif
 
-%define version_suffix 122
+%define version_suffix 199
 
 Name:           mono-core
 Version:        6.12.0

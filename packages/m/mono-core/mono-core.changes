@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Thu May 30 20:18:08 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to version 6.12.0.199.
+  * Bump nuget.exe to v6.6.1
+- Changes from 6.12.0.198:
+  * Fix xar url again
+  * Switch back to original xar version
+  * Fix xar download url
+  * Use `unsigned char` when computing UTF8 string hashes
+  * Set status on success; avoid mmap on Android
+  * Fix url to gtksharp msi
+  * Fix build on macOS 13 / Xcode 14
+  * Disable a failing test
+- Changes from 6.12.0.190:
+  * Change download URL for PCL reference assemblies
+  * Bump llvm to pick up 7424e2ca2f78a3c338fe5b07a2d4eb6dd6574195
+- Changes from 6.12.0.188:
+  * Bump NuGetSdkResolver in msbuild
+  * Bump nuget.exe to v6.3.1
+  * Fix incorrect version comparison in loader
+- Changes from 6.12.0.182:
+  * Fix for NuGet security issue
+    https://github.com/NuGet/Home/issues/11883
+  * Various bugfixes
+- Changes from 6.12.0.174:
+  * Ensure generic parameter constraint type is included when building
+    image
+  * Handle MONO_TYPE_FNPTR case in collect_type_images
+  * Trying to open a pseudo-tty throws an exception
+  * Ignore EINVAL errors on ioctl TIOCMGET/TIOCMSET
+  * Backport Apple silicon support
+  * Fix VARIANT and BSTR marshaling in structs
+  * Fix the System.String.Replace throwing NotImplementedException
+  * Bump msbuild, roslyn and nuget
+  * Backport r4-conv-i fixes
+  * Fix wrong marshalling in gsharedvt transition
+  * bump corefx
+  * Handle ReadDir EINTR
+  * Wrap calls to open() in EINTR handling
+  * Fix leak in assembly-specific dllmap lookups
+  * Update to vs16.10 branch
+  * Fix memory leak during data registration (#21107)
+  * Start a dedicated thread for MERP crash reporting
+  * Fix race during mono_image_storage_open
+  * Add GC Unsafe transitions in mono_pmip
+  * Adding null check to avoid abort when invalid IL is encountered
+  * Write true string wire length
+  * Ignore inherit param for ParameterInfo.GetCustomAttributes
+  * Trying to open a pseudo-tty throws an exception on 5.13+ Linux
+    kernels
+  * Some pseudo-tty fixes
+  * Don’t add unbox tramopline on generic DIM calls
+  * Add F# targets to VisualStudio/v17.0 directory
+  * Don’t leak unbox trampolines
+  * Allow nfloat to be in the ObjCRuntime namespace, and make it work
+    for Xamarin.MacCatalyst.dll as well
+  * Prepend the assembly name to the names of gsharedvt wrappers to
+    avoid duplicate symbol errors during static linking
+  * Adds full path to libcairo for correct assembly directory
+    resolution in monterey
+  * Add coop handle enter/return on native CCW methods
+  * transform sgen_get_descriptor to parallel safe version in
+    job_major_mod_union_preclean
+  * Remove hack for nint/nfloat
+  * Add missing handle function enter/return macros
+  * Use .short directive instead of .hword
+  * Avoid an assert in ves_icall_RuntimeFieldInfo_SetValueInternal
+  * vtable setup fix for generic default interface methods in mono
+    runtime
+  * Fix mono-api-html MarkdownFormatter.cs to avoid a NRE
+  * Workaround for invalid return value from clock_nanosleep
+  * Workaround for invalid return value from clock_nanosleep
+  * Don’t set the ‘CorrectedSynthesize’ flag in the objc_imageinfo
+    section
+  * Fix CCW memory leak
+  * Use upstream zlib 1.2.12
+  * Remove some of the restrictions on constrained calls from gsha
+  * Bump corefx to get MaxResponseHeadersLength fix
+
+-------------------------------------------------------------------
 Thu Feb 22 15:33:26 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.
