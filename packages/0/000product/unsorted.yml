@@ -105,6 +105,8 @@ unsorted:
   - LiE 
   - LiE-doc 
   - LibVNCServer-devel 
+  - LuminanceHDR 
+  - LuminanceHDR-doc 
   - Mesa-32bit 
   - Mesa-KHR-devel 
   - Mesa-demo 
@@ -1826,6 +1828,9 @@ unsorted:
   - cadabra2-examples 
   - cadabra2-gui 
   - caddy 
+  - caddy-bash-completion 
+  - caddy-fish-completion 
+  - caddy-zsh-completion 
   - cadsondemak-fonts 
   - cadvisor 
   - cage 
@@ -8554,6 +8559,7 @@ unsorted:
   - hyprpaper 
   - hyprpicker 
   - hyprshot 
+  - hyprutils-devel 
   - hyprwayland-scanner 
   - i18nspector 
   - i2c-tools 
@@ -13654,6 +13660,7 @@ unsorted:
   - libhyphen0-32bit 
   - libhyprcursor0 
   - libhyprlang2 
+  - libhyprutils0 
   - libi2c0 
   - libi2c0-devel 
   - libibdm1 
@@ -16286,6 +16293,7 @@ unsorted:
   - libtirpc-devel 
   - libtirpc3-32bit 
   - libtls29 
+  - libtmglib3 
   - libtntdb-devel 
   - libtntdb5 
   - libtolua++-5_1-1 
@@ -18151,8 +18159,6 @@ unsorted:
   - maven-osgi-javadoc 
   - maven-parent 
   - maven-plugin-annotations 
-  - maven-plugin-build-helper 
-  - maven-plugin-build-helper-javadoc 
   - maven-plugin-plugin 
   - maven-plugin-plugin-bootstrap 
   - maven-plugin-plugin-javadoc 
@@ -21314,8 +21320,8 @@ unsorted:
   - perl-ExtUtils-PkgConfig 
   - perl-ExtUtils-Typemaps-Default 
   - perl-ExtUtils-XSpp 
+  - perl-FCGI 
   - perl-FFI-CheckLib 
-  - perl-FastCGI 
   - perl-Feature-Compat-Try 
   - perl-Feed-Find 
   - perl-Fennec-Lite 
@@ -22624,7 +22630,6 @@ unsorted:
   - plexus-i18n-javadoc 
   - plexus-interactivity-api 
   - plexus-interactivity-javadoc 
-  - plexus-interactivity-jline 
   - plexus-interpolation 
   - plexus-interpolation-javadoc 
   - plexus-io 
@@ -22781,6 +22786,7 @@ unsorted:
   - polymake-devel 
   - pommed 
   - pongix 
+  - pop 
   - popeye 
   - poppler-data 
   - poppler-data-devel 
@@ -37107,6 +37113,7 @@ unsorted:
   - telepathy-rakia-devel 
   - telepathy-sipe 
   - teleport 
+  - teleport-fdpass-teleport 
   - teleport-tbot 
   - teleport-tctl 
   - teleport-tsh 
@@ -46489,6 +46496,8 @@ unsorted:
   - tls 
   - tlswrap 
   - tmate 
+  - tmglib-devel 
+  - tmglib-devel-static 
   - tmon 
   - tmpwatch 
   - tmux-powerline 
@@ -47277,6 +47286,7 @@ unsorted:
   - v4l-utils-lang 
   - v4l2loopback-autoload 
   - v4l2loopback-kmp-default 
+  - v4l2loopback-kmp-longterm 
   - v4l2loopback-utils 
   - vacuum-im 
   - vacuum-im-devel 
