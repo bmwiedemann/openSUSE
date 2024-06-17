@@ -1,0 +1,148 @@
+-------------------------------------------------------------------
+Mon Jun 10 21:25:12 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Build version 0.13.0 (boo#1226151)
+  * Provides Buildsystem requirements for Qt5 based LXQt Components
+- Add Conflicts: lxqt-build-tools-devel
+
+-------------------------------------------------------------------
+Wed Apr 17 21:14:01 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 2.0.0
+  * Ported to Qt6 with the new project name lxqt2-build-tools, such
+    that the Qt5-based version 0.13.0 can be installed alongside it.
+- Specfile modernization and cleanup
+
+-------------------------------------------------------------------
+Sat Apr 15 17:01:20 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 0.13.0
+  * Bumped minimum compatibility level to C++17
+- Remove lxqt-build-tools-0.12.0-cpp17.patch
+
+-------------------------------------------------------------------
+Tue Feb 14 12:41:31 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- boo#1208217: Bump required C++ version
+  See also: gh/lxqt/lxqt-config#903
+  Add lxqt-build-tools-0.12.0-cpp17.patch
+
+-------------------------------------------------------------------
+Sat Nov  5 16:28:08 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Update to 0.12.0
+  * Support absolute `CMAKE_INSTALL_{INCLUDE,LIB}DIR` in
+    `LXQtCreatePkgConfigFile'
+  * Use `gdesktopappinfo.h` to find gio-unix-2.0 in
+    `FindGLIB.cmake`
+  * Drop use of `-Bsymbolic` in `LXQtCompilerSettings`
+- Remove lxqt-build-tools-symbolic.patch
+- Remove 4991811-fix-FindGLIB.cmake.patch
+
+-------------------------------------------------------------------
+Thu Sep 29 09:18:23 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix libqt5xdg with latest glib-2.0:
+  * 4991811-fix-FindGLIB.cmake.patch
+
+-------------------------------------------------------------------
+Mon Aug 29 14:23:55 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1195421: Add lxqt-build-tools-symbolic.patch
+  Thanks to Fabian Vogt
+
+-------------------------------------------------------------------
+Wed Apr 20 19:09:51 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.11.0
+  * Fixed build scripts for GLib 2.71.1
+
+-------------------------------------------------------------------
+Fri Nov  5 15:42:21 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.0:
+  * Set the minimum required version of Qt to 5.15.
+
+-------------------------------------------------------------------
+Fri Apr 16 06:32:51 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.0:
+  * A CMake FindXTerm module is added.
+
+-------------------------------------------------------------------
+Wed Nov  4 13:15:13 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.0:
+  * Removed version checks for some LXQt dependencies.
+  * Added a Fontconfig CMake find module.
+  * Suppressed warning about find_package_handle_standard_args
+    package name mismatch.
+
+-------------------------------------------------------------------
+Fri Apr 24 19:41:58 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 0.7.0
+  * String casts are forbidden explicitly.
+  * CMake find modules are added for some xdg-utils tools.
+  * The minimum Qt version is incremented to 5.10.
+
+-------------------------------------------------------------------
+Thu Jan 31 09:59:32 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.0:
+  * Introduced lxqt-transupdate for translation updates
+  * Set cmake_minimum_required to 3.1.0
+  * Consider QT_SELECT - some distributions use this tool
+  * Drop 0X and 11 support, require c++14
+  * Removed obsolete FindFm module
+
+-------------------------------------------------------------------
+Tue May 22 14:00:41 UTC 2018 - mvetter@suse.com
+
+- Update to 0.5.0:
+  * LXQtCompilerSettings: Set CMAKE_C_VISIBILITY_PRESET to hidden
+  * Don’t allow Qt foreach/Q_FOREACH
+  * Require Qt 5.7.1
+  * Adds a FindXKBCommon CMake module
+  * Adds ECMFindModuleHelpers CMake module
+
+-------------------------------------------------------------------
+Mon Oct 23 09:48:31 UTC 2017 - mvetter@suse.com
+
+- Update to 0.4.0:
+  * Bump version to 0.4.0
+  * Added needed versions
+  * remove version set from LXQtConfigVars.in
+  * Move LXQt version to liblxqt
+  * Fixes a FTBFS with superbuild mode
+  * Adds a FindExif module
+  * LXQtCompilerSettings: Fixes a typo in diagnostics-color
+  * Adds (Ninja) colored diagnostics for GCC (>=4.9)
+  * Enable strict iterators for debug builds
+
+-------------------------------------------------------------------
+Tue Jun 20 14:55:29 UTC 2017 - alarrosa@suse.com
+
+- Update to 0.3.2
+  * Bump version to 0.3.2 - finally the build tools are arch: all (#15)
+  * Warnings (#16)
+  * Remove arched bits from version.cmake-file (#14) 
+  * Fixed missing point in version string
+- Update Source URLs
+
+-------------------------------------------------------------------
+Sat Mar  4 19:20:45 UTC 2017 - sfalken@opensuse.org
+
+- Update Source URLs
+- Normalize .spec file to match with version in X11:LXQt:git
+
+-------------------------------------------------------------------
+Sat Mar  4 08:21:04 UTC 2017 - mvetter@suse.com
+
+- Install BSD License file
+
+-------------------------------------------------------------------
+Thu Feb 23 05:15:22 UTC 2017 - sfalken@opensuse.org
+
+- Initial Commit.   New Package that will be needed for building
+  lxqt going forward.

@@ -1,0 +1,5 @@
+<package name="lxqt-build-tools-qt5" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:LXQt" package="lxqt-build-tools-qt5"/>
+</package>
