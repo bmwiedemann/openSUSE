@@ -1078,4 +1078,41 @@ Send to Staging:E.
 </comment>
     <requestid>1146785</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>b0276e42e478452f9c48e22f0c7ca5ad</srcmd5>
+    <version>5.2.2</version>
+    <time>1718645226</time>
+    <user>anag+factory</user>
+    <comment>- Remove not needed patch skip-test-under-libexpat-2.6.0.patch
+- Update to 5.2.2:
+  - GH#417: The test_feed_parser test could fail if lxml_html_clean
+    was not installed.  It is now skipped in that case.
+  - LP#2059910: The minimum CPU architecture for the Linux x86 binary
+    wheels was set back to &quot;core2&quot;, without SSE 4.2.
+  - If libxml2 uses iconv, the compile time version is available as
+    etree.ICONV_COMPILED_VERSION.
+- 5.2.1
+  - LP#2059910: The minimum CPU architecture for the Linux x86 binary
+    wheels was set back to &quot;core2&quot;, but with SSE 4.2 enabled.
+  - LP#2059977: ``Element.iterfind(&quot;//absolute_path&quot;)`` failed with a
+    ``SyntaxError`` where it should have issued a warning.
+  - GH#416: The documentation build was using the non-standard
+    ``which`` command.  Patch by Michał Górny.
+- 5.2.0
+  - LP#1958539: The ``lxml.html.clean`` implementation suffered from
+    several (only if used) security issues in the past and was now
+    extracted into a separate library:
+    https://github.com/fedora-python/lxml_html_clean
+    Projects that use lxml without &quot;lxml.html.clean&quot; will not notice
+    any difference, except that they won't have potentially vulnerable
+    code installed.  The module is available as an &quot;extra&quot; setuptools
+    dependency &quot;lxml[html_clean]&quot;, so that Projects that need
+    &quot;lxml.html.clean&quot; will need to switch their requirements from
+    &quot;lxml&quot; to &quot;lxml[html_clean]&quot;, or install the new library
+    themselves.
+  - The minimum CPU architecture for the Linux x86 binary wheels was
+    upgraded to &quot;sandybridge&quot; (launched 2011), and glibc 2.28 / gcc 12
+    (manylinux_2_28) wheels were added.</comment>
+    <requestid>1180847</requestid>
+  </revision>
 </revisionlist>

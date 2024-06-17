@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lxml
-Version:        5.1.0
+Version:        5.2.2
 Release:        0
 Summary:        Pythonic XML processing library
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -33,9 +33,6 @@ Patch1:         skip-test-under-libxml2-2.10.4.patch
 # PATCH-FIX-OPENSUSE Skip a test under libxml2 2.11.1+
 # https://bugs.launchpad.net/lxml/+bug/2018522
 Patch2:         skip-test-under-libxml2-2.11.1.patch
-# PATCH-FIX-OPENSUSE Skip a test under libexpat 2.6.0+
-# Same test gh#python/cpython#115133
-Patch3:         skip-test-under-libexpat-2.6.0.patch
 BuildRequires:  %{python_module Cython >= 3.0.7}
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module cssselect >= 0.9.1}
