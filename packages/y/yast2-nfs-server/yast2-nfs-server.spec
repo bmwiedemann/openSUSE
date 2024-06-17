@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-nfs-server
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           yast2-nfs-server
 Summary:        YaST2 - NFS Server Configuration
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 URL:            https://github.com/yast/yast-nfs-server
 Group:          System/YaST
@@ -85,6 +85,5 @@ Common data for the NFS client and server modules
 
 %files -n yast2-nfs-common
 %{yast_scrconfdir}/cfg_nfs.scr
-%{yast_scrconfdir}/etc_idmapd_conf.scr
 
 %changelog

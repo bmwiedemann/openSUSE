@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 12 08:22:45 UTC 2024 - Michal Filka <mfilka@suse.com>
+
+- bsc#1218158
+  - dropped reading/writing domain from/to idmapd.conf 
+- 5.0.1
+
+-------------------------------------------------------------------
 Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
 
 - 5.0.0 (bsc#1185510)
