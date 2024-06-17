@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun  8 11:17:19 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNUnet 0.21.2:
+  * UTIL: change return type to 'bool' from GNUNET_is_zero()
+  * Added GNUNET_GNS_parse_ztld helper API
+  * bug fixes
+  * updates to tests
+
+-------------------------------------------------------------------
 Sun Mar 17 13:23:55 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNUnet 0.21.1 - completely reworked package

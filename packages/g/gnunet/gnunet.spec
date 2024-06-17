@@ -1,9 +1,9 @@
 #
 # spec file for package gnunet
 #
-# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 
 Name:           gnunet
-Version:        0.21.1
+Version:        0.21.2
 Release:        0
 Summary:        Security focused Peer-to-Peer Framework
 License:        AGPL-3.0-or-later
@@ -72,7 +72,6 @@ GNUnet is a part of the GNU project (https://www.gnu.org/).
 %gnunet_libpackage -l gnunetcadet -s 7\
 %gnunet_libpackage -l gnunetconsensus -s 0\
 %gnunet_libpackage -l gnunetcore -s 0\
-%gnunet_libpackage -l gnunetcoretesting -s 0\
 %gnunet_libpackage -l gnunetcurl -s 0\
 %gnunet_libpackage -l gnunetdatacache -s 0\
 %gnunet_libpackage -l gnunetdatastore -s 1\
@@ -87,7 +86,6 @@ GNUnet is a part of the GNU project (https://www.gnu.org/).
 %gnunet_libpackage -l gnunetidentity -s 1\
 %gnunet_libpackage -l gnunetjson -s 0\
 %gnunet_libpackage -l gnunetmessenger -s 0\
-%gnunet_libpackage -l gnunetmessengertesting -s 0\
 %gnunet_libpackage -l gnunetnamecache -s 0\
 %gnunet_libpackage -l gnunetnamestore -s 0\
 %gnunet_libpackage -l gnunetnatauto -s 0\
@@ -107,12 +105,15 @@ GNUnet is a part of the GNU project (https://www.gnu.org/).
 %gnunet_libpackage -l gnunetsetu -s 0\
 %gnunet_libpackage -l gnunetsq -s 0\
 %gnunet_libpackage -l gnunetstatistics -s 2\
-%gnunet_libpackage -l gnunettesting -s 1\
+%gnunet_libpackage -l gnunettestbed -s 0\
+%gnunet_libpackage -l gnunettestingarm -s 0\
+%gnunet_libpackage -l gnunettesting -s 3\
+%gnunet_libpackage -l gnunettestingtestbed -s 0\
+%gnunet_libpackage -l gnunettestingtransport -s 0\
 %gnunet_libpackage -l gnunettransportapplication -s 0\
 %gnunet_libpackage -l gnunettransportcommunicator -s 0\
 %gnunet_libpackage -l gnunettransportcore -s 0\
 %gnunet_libpackage -l gnunettransportmonitor -s 0\
-%gnunet_libpackage -l gnunettransporttesting2 -s 0 -d \-\
 %gnunet_libpackage -l gnunetutil -s 16\
 %gnunet_libpackage -l gnunetvpn -s 0\
 %gnunet_libpackage -l nss_gns4 -s 2 -d \-\
