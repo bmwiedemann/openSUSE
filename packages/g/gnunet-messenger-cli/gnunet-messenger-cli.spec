@@ -17,7 +17,7 @@
 
 
 Name:           gnunet-messenger-cli
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        Terminal application using the GNUnet Messenger service
 License:        AGPL-3.0-or-later
@@ -28,7 +28,7 @@ Source2:        http://ftpmirror.gnu.org/gnunet/messenger-cli-%{version}.tar.gz.
 Source3:        %{name}.keyring
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gnunetchat)
+BuildRequires:  pkgconfig(gnunetchat) >= 0.5.0
 BuildRequires:  pkgconfig(gnunetutil)
 BuildRequires:  pkgconfig(ncurses)
 

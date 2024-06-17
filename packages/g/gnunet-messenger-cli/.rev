@@ -9,4 +9,12 @@ libextractor -&gt; gnunet -&gt; libgnunetchat -&gt; gnunet-messenger-gtk
 libextractor -&gt; gnunet -&gt; gnunet-fuse </comment>
     <requestid>1160911</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>17a50476a8622da18669b1d8962ad47d</srcmd5>
+    <version>0.3.0</version>
+    <time>1718645379</time>
+    <user>anag+factory</user>
+    <comment>gnunet-messenger-cli 0.3.0 (forwarded request 1181019 from AndreasStieger)</comment>
+    <requestid>1181020</requestid>
+  </revision>
 </revisionlist>
