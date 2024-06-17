@@ -1,7 +1,7 @@
 #
 # spec file for package quotatool
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           quotatool
-Version:        1.6.2
+Version:        1.6.4
 Release:        0
 Summary:        A utility for setting and manipulating filesystem quotas from the command line
 License:        GPL-2.0-only
 Group:          System/Filesystems
-URL:            http://quotatool.ekenberg.se
+URL:            https://quotatool.ekenberg.se
 Source0:        https://github.com/ekenberg/quotatool/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 %description
@@ -35,7 +35,7 @@ with ext2, ext3, ReiserFS, and XFS), Solaris, and AIX.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 install -Dpm 0755 quotatool \
@@ -45,7 +45,7 @@ install -Dpm 0644 man/quotatool.8 \
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog README TODO
+%doc AUTHORS ChangeLog README.md TODO
 %{_sbindir}/quotatool
 %{_mandir}/man8/quotatool.8%{?ext_man}
 
