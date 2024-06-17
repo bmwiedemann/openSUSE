@@ -23,7 +23,7 @@
 %define _udevdir %(pkg-config --variable udev_dir udev)
 %endif
 Name:           google-guest-configs
-Version:        20240514.00
+Version:        20240607.00
 Release:        0
 Summary:        Google Cloud Guest Configs
 License:        Apache-2.0

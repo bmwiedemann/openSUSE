@@ -209,4 +209,13 @@
     dhclient compat script (#70) (forwarded request 1174485 from glaubitz)</comment>
     <requestid>1174496</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ffe3bd75912e733f52f16ce13862288f</srcmd5>
+    <version>20240607.00</version>
+    <time>1718645279</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240607.00
+  * Update is_a3_platform to include A3-edge shape (#73) (forwarded request 1180856 from glaubitz)</comment>
+    <requestid>1180947</requestid>
+  </revision>
 </revisionlist>
