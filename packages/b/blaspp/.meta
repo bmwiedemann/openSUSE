@@ -1,0 +1,9 @@
+<package name="blaspp" project="openSUSE:Factory">
+  <title>C++ API for the Basic Linear Algebra Subroutines</title>
+  <description>The objective of BLAS++ is to provide a performance oriented API for
+development in the C++ language, that, for the most part, preserves established
+conventions, while, at the same time, takes advantages of modern C++ features,
+such as: namespaces, templates, exceptions, etc.</description>
+  <devel project="science" package="blaspp"/>
+  <url>https://icl.utk.edu/slate/</url>
+</package>

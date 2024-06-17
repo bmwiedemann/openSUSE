@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Fri Jun 14 09:52:35 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add pkgconfig(blas) as Requires for blaspp-devel.
+
+-------------------------------------------------------------------
+Sun Jun  9 14:23:14 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.
