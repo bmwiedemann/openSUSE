@@ -43,63 +43,63 @@
 %endif
 
 %if %{with sctp}
-BuildRequires: lksctp-tools-devel
+BuildRequires:  lksctp-tools-devel
 %endif
 %if %{with nss}
 %if 0%{suse_version}
-BuildRequires: mozilla-nss-devel
+BuildRequires:  mozilla-nss-devel
 %else
-BuildRequires: nss-devel
+BuildRequires:  nss-devel
 %endif
 %endif
 %if %{with openssl}
 %if 0%{?suse_version}
-BuildRequires: libopenssl-devel
+BuildRequires:  libopenssl-devel
 %else
-BuildRequires: openssl-devel
+BuildRequires:  openssl-devel
 %endif
 %endif
 %if %{with zlib}
-BuildRequires: zlib-devel
+BuildRequires:  zlib-devel
 %endif
 %if %{with lz4}
 %if 0%{?suse_version}
-BuildRequires: liblz4-devel
+BuildRequires:  liblz4-devel
 %else
-BuildRequires: lz4-devel
+BuildRequires:  lz4-devel
 %endif
 %endif
 %if %{with lzo2}
-BuildRequires: lzo-devel
+BuildRequires:  lzo-devel
 %endif
 %if %{with lzma}
-BuildRequires: xz-devel
+BuildRequires:  xz-devel
 %endif
 %if %{with bzip2}
 %if 0%{?suse_version}
-BuildRequires: libbz2-devel
+BuildRequires:  libbz2-devel
 %else
-BuildRequires: bzip2-devel
+BuildRequires:  bzip2-devel
 %endif
 %endif
 %if %{with zstd}
-BuildRequires: libzstd-devel
+BuildRequires:  libzstd-devel
 %endif
 %if %{with libnozzle}
-BuildRequires: libnl3-devel
+BuildRequires:  libnl3-devel
 %endif
 %if %{with kronosnetd}
-BuildRequires: pam-devel
+BuildRequires:  pam-devel
 %endif
 %if %{with runautogen}
-BuildRequires: autoconf
-BuildRequires: automake
-BuildRequires: libtool
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
 %endif
 %if %{with buildman}
-BuildRequires: doxygen
-BuildRequires: libqb-devel
-BuildRequires: libxml2-devel
+BuildRequires:  doxygen
+BuildRequires:  libqb-devel
+BuildRequires:  libxml2-devel
 %endif
 # main (empty) package
 # http://www.rpm.org/max-rpm/s1-rpm-subpack-spec-file-changes.html
@@ -121,48 +121,48 @@ BuildRequires:  pkgconfig
 %endif
 # required to build man pages
 %if %{defined buildmanpages}
-BuildRequires: doxygen
-BuildRequires: libqb-devel
-BuildRequires: libxml2-devel
+BuildRequires:  doxygen
+BuildRequires:  libqb-devel
+BuildRequires:  libxml2-devel
 %endif
 %if %{defined buildsctp}
-BuildRequires: lksctp-tools-devel
+BuildRequires:  lksctp-tools-devel
 %endif
 %if %{defined buildcryptonss}
-BuildRequires: mozilla-nss-devel
+BuildRequires:  mozilla-nss-devel
 %endif
 %if %{defined buildcryptoopenssl}
-BuildRequires: openssl-devel
+BuildRequires:  openssl-devel
 %endif
 %if %{defined buildcompresszlib}
-BuildRequires: zlib-devel
+BuildRequires:  zlib-devel
 %endif
 %if %{defined buildcompresslz4}
-BuildRequires: liblz4-devel
+BuildRequires:  liblz4-devel
 %endif
 %if %{defined buildcompresslzo2}
-BuildRequires: lzo-devel
+BuildRequires:  lzo-devel
 %endif
 %if %{defined buildcompresslzma}
-BuildRequires: xz-devel
+BuildRequires:  xz-devel
 %endif
 %if %{defined buildcompressbzip2}
-BuildRequires: libbz2-devel
+BuildRequires:  libbz2-devel
 %endif
 %if %{defined buildcompresszstd}
-BuildRequires: libzstd-devel
+BuildRequires:  libzstd-devel
 %endif
 %if %{defined buildkronosnetd}
-BuildRequires: libqb-devel
-BuildRequires: pam-devel
+BuildRequires:  libqb-devel
+BuildRequires:  pam-devel
 %endif
 %if %{defined buildautogen}
-BuildRequires: autoconf
-BuildRequires: automake
-BuildRequires: libtool
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
 %endif
 %if %{defined buildlibnozzle}
-BuildRequires: libnl3-devel
+BuildRequires:  libnl3-devel
 %endif
 
 %prep
@@ -271,10 +271,10 @@ Summary:        Multipoint-to-Multipoint VPN daemon
 Group:          Productivity/Clustering/HA
 Requires(post): systemd-sysv
 Requires(post): systemd-units
-Requires(preun):systemd-units
-Requires(postun):systemd-units
+Requires(preun): systemd-units
+Requires(postun): systemd-units
 Requires(post): shadow-utils
-Requires(preun):shadow-utils
+Requires(preun): shadow-utils
 Requires:       /etc/pam.d/passwd
 Requires:       pam
 
@@ -327,17 +327,19 @@ pre-up.d/up.d/down.d/post-down.d infrastructure.
 %postun -n libnozzle1 -p /sbin/ldconfig
 %endif
 
-%package -n libnozzle1-devel
+%package -n libnozzle-devel
 Summary:        Simple userland wrapper around kernel tap devices (developer files)
 Requires:       libnozzle1%{_isa} = %{version}-%{release}
+Provides:       libnozzle1-devel = %{version}
+Obsoletes:      libnozzle1-devel <= %{version}
 Requires:       pkgconfig
 
-%description -n libnozzle1-devel
+%description -n libnozzle-devel
 This is an over-engineered commodity library to manage a pool
 of tap devices and provides the basic
 pre-up.d/up.d/down.d/post-down.d infrastructure.
 
-%files -n libnozzle1-devel
+%files -n libnozzle-devel
 %license COPYING.* COPYRIGHT
 %{_libdir}/libnozzle.so
 %{_includedir}/libnozzle.h
@@ -368,18 +370,20 @@ information.
 %postun -n libknet1 -p /sbin/ldconfig
 %endif
 
-%package -n libknet1-devel
+%package -n libknet-devel
 Summary:        Development files fro the Kronosnet core switching implementation
 Group:          Development/Libraries/C and C++
 Requires:       libknet1%{_isa} = %{version}-%{release}
 Requires:       pkgconfig
+Provides:       libknet1-devel = %{version}
+Obsoletes:      libknet1-devel <= %{version}
 
-%description -n libknet1-devel
+%description -n libknet-devel
 The whole kronosnet core is implemented in this library.
 Please refer to the not-yet-existing documentation for further
 information.
 
-%files -n libknet1-devel
+%files -n libknet-devel
 %license COPYING.* COPYRIGHT
 %{_libdir}/libknet.so
 %{_includedir}/libknet.h

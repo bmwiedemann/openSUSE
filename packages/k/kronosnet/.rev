@@ -47,4 +47,14 @@
     <comment></comment>
     <requestid>1163332</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>77a531f2a8180de90172b06698b50baa</srcmd5>
+    <version>1.28</version>
+    <time>1718645660</time>
+    <user>anag+factory</user>
+    <comment>Rename libknet1-devel to libknet-devel
+Rename libnozzle1-devel to libnozzle-devel
+Fix a typo from this change.</comment>
+    <requestid>1181327</requestid>
+  </revision>
 </revisionlist>
