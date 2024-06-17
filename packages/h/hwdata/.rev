@@ -709,4 +709,12 @@
   * Update pci, usb and vendor ids</comment>
     <requestid>1174237</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>6b1286a59b51f926b1e2e8be10f9d482</srcmd5>
+    <version>0.383</version>
+    <time>1718645230</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1181290</requestid>
+  </revision>
 </revisionlist>
