@@ -121,4 +121,12 @@ known issue: KMPs not yet propetly supported</comment>
     <comment>aarch64 config, for ARM Factory</comment>
     <requestid>1177387</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>61c7d2518a95e2949076c5c15bcff351</srcmd5>
+    <version>6.6.33</version>
+    <time>1718645220</time>
+    <user>anag+factory</user>
+    <comment>6.6.33</comment>
+    <requestid>1180830</requestid>
+  </revision>
 </revisionlist>
