@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 14 12:41:07 UTC 2024 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Fixed a problem when trying to locate a Btrfs root file-system
+  directly on top of a disk (gh#openSUSE/agama#1339).
+- 5.0.15
+
+-------------------------------------------------------------------
+Thu Jun 13 15:16:24 UTC 2024 - José Iván López González <jlopez@suse.com>
+
+- Fix device description for encrypted PV
+  (gh#yast/yast-storage-ng#1384).
+
+-------------------------------------------------------------------
 Tue May  7 14:38:42 UTC 2024 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Proposal: Make the encryption method and the key derivation
