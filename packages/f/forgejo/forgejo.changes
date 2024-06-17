@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Jun 16 12:52:27 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to 7.0.4:
+  * Fixed: CVE-2024-24789: the archive/zip package's handling of certain types
+    of invalid zip files differs from the behavior of most zip implementations.
+    This misalignment could be exploited to create an zip file with contents that
+    vary depending on the implementation reading the file.
+  * the OAuth2 implementation does not always require authentication for public
+    clients, a requirement of RFC 6749 Section 10.2
+  * forgejo migrate-storage --type actions-artifacts always fails because it picks the wrong path.
+  * avatar files can be found in storage while they do not exist in the database.
+  * repository admins are always denied the right to force merge and instance admins
+    are subject to restrictions to merge that must only apply to repository admins.
+  * non conformance with the Nix tarball fetcher immutable link protocol.
+  * migrated activities (such as reviews) are mapped to the user who initiated the
+    migration rather than the Ghost user, if the external user cannot be mapped to a
+    local one. This mapping mismatch leads to internal server errors in some cases.
+  *  a v7.0.0 regression causes [admin].SEND_NOTIFICATION_EMAIL_ON_NEW_USER=true to always be ignored.
+  * using a subquery for user deletion is a performance bottleneck when using mariadb 10
+    because only mariadb 11 takes advantage of the available index.
+  * a v7.0.3 regression causes the expanding diffs in pull requests to fail with a 404 error.
+  * SourceHut Builds webhook fail when the triggers field is used.
+  * the label list rendering in the issue and pull request timeline is displayed on
+    multiple lines instead of a single one.
+  * Git hooks of this repository seem to be broken." warning when pushing more than one branch at a time.
+  * automerge does not happen when the approval count reaches the required threshold.
+  * the FORCE_PRIVATE=true setting is not consistently enforced.
+  * CSRF validation errors when OAuth is not enabled.
+  * headlines in rendered org-mode do not have a margin on the top
+
+-------------------------------------------------------------------
 Wed May 22 20:41:58 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - update to 7.0.3:
