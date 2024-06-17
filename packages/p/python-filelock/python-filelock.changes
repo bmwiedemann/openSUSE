@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 17 06:00:15 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.15.1:
+  * Hotfix: Restore __init__ method; more robust initialization
+    for singleton locks
+- update to 3.15.0:
+  * asyncio support
+  * Don't initialize BaseFileLock when just returning existing
+    instance
+
+-------------------------------------------------------------------
 Fri May  3 07:35:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.14.0:

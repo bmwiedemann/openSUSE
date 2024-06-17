@@ -19,15 +19,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-filelock
-Version:        3.14.0
+Version:        3.15.1
 Release:        0
 Summary:        Platform Independent File Lock in Python
 License:        Unlicense
 URL:            https://github.com/tox-dev/py-filelock
 Source:         https://files.pythonhosted.org/packages/source/f/filelock/filelock-%{version}.tar.gz
+BuildRequires:  %{python_module asyncio}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
@@ -36,6 +38,7 @@ BuildRequires:  python-rpm-macros
 %if 0%{?python_version_nodots} < 311
 Requires:       python-typing_extensions >= 4.7.1
 %endif
+Requires:       python-asyncio
 BuildArch:      noarch
 %python_subpackages
 

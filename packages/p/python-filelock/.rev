@@ -197,4 +197,18 @@
     docs</comment>
     <requestid>1171540</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>03b97ca96524ff16f65bfeb57a2cd0be</srcmd5>
+    <version>3.15.1</version>
+    <time>1718645253</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.15.1:
+  * Hotfix: Restore __init__ method; more robust initialization
+    for singleton locks
+- update to 3.15.0:
+  * asyncio support
+  * Don't initialize BaseFileLock when just returning existing
+    instance</comment>
+    <requestid>1181236</requestid>
+  </revision>
 </revisionlist>
