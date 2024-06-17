@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun 16 09:07:43 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.20.0
+  * Making HTTP requests with local-http's HttpClient implementation, mainly
+    for supporting outbound_* socket configurations.
+  * Support SIP008 Online Configuration. Pull servers from remote servers
+    automatically. (Experimental)
+  * Add basic, full, full-extra features makes building command line arguments
+    shorter
+  * Binaries support --plugin-mode command line argument
+  * local-tun is enabled by default for Windows targets in CI builds
+  * Fix bugs
+- Drop fix-boo-1223239.patch, merged by upstream
+
+-------------------------------------------------------------------
 Mon Apr 22 14:26:29 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.18.3

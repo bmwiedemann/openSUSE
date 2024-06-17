@@ -17,16 +17,13 @@
 
 
 Name:           shadowsocks-rust
-Version:        1.18.3
+Version:        1.20.0
 Release:        0
 Summary:        Rust port of Shadowsocks
 License:        MIT
 Group:          Productivity/Networking/Web/Proxy
 URL:            https://github.com/shadowsocks/shadowsocks-rust
 Source0:        https://github.com/shadowsocks/shadowsocks-rust/archive/v%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-boo-1223239.patch hillwood@opensuse.org - Fix CVE-2024-32650 boo#1223239
-# https://github.com/shadowsocks/shadowsocks-rust/pull/1513
-Patch0:         fix-boo-1223239.patch
 Source1:        vendor.tar.gz
 Source2:        %{name}.json
 Source3:        %{name}-client.service

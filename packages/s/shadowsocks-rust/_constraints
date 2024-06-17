@@ -14,6 +14,7 @@
 <overwrite>
   <conditions>
     <arch>aarch64</arch>
+    <arch>s390x</arch>
   </conditions>
   <hardware>
     <physicalmemory>
