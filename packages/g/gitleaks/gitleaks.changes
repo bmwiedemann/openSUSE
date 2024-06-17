@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 14 18:14:02 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 8.18.4:
+  * Limit hashicorp-tf-password to .tf/.hcl files (#1420)
+  * rm print
+  * reduce telegram... todo url and xml for later
+  * coderabbit.ai <3
+  * Add NewRelic insert key detection (#1417)
+  * Improved Telegram bot token rule regex and added more test
+    cases (#1404)
+  * Add intra42 client secret (#1408)
+
+-------------------------------------------------------------------
 Sat Jun 01 15:28:13 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 8.18.3:
