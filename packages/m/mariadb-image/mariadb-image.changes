@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 17 08:07:32 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- Use service to set version in docker-entrypoint.sh
+
+-------------------------------------------------------------------
 Thu Jun 13 14:30:53 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - switch to the flavored entrypoint scripts from upstream
