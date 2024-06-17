@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 16 21:13:24 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 24.06.16:
+  * show less connection errors from Radio Browser,
+  * fix choosing desired video stream,
+  * fix colorspace for ARIB STD-B67,
+  * improve recording status,
+  * update translations.
+
+-------------------------------------------------------------------
 Fri May 24 14:43:57 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 24.05.23:

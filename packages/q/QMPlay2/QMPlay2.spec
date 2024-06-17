@@ -19,11 +19,11 @@
 %define __builder Ninja
 %bcond_without qt6
 
-%define _mtime 1716497960
-%define _commit 8cb3483
+%define _mtime 1718569701
+%define _commit 935a51e
 
 Name:           QMPlay2
-Version:        24.05.23
+Version:        24.06.16
 Release:        0
 Summary:        A Qt based media player, streamer and downloader
 License:        LGPL-3.0-or-later
