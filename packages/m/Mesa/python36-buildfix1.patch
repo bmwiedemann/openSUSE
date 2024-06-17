@@ -1,6 +1,8 @@
---- mesa-23.3.3/src/nouveau/headers/class_parser.py.orig	2024-01-20 12:47:36.464476669 +0100
-+++ mesa-23.3.3/src/nouveau/headers/class_parser.py	2024-01-20 13:04:30.212851443 +0100
-@@ -9,6 +9,16 @@
+Index: mesa-24.1.0/src/nouveau/headers/class_parser.py
+===================================================================
+--- mesa-24.1.0.orig/src/nouveau/headers/class_parser.py
++++ mesa-24.1.0/src/nouveau/headers/class_parser.py
+@@ -9,6 +9,16 @@ import sys
  
  from mako.template import Template
  
@@ -15,9 +17,9 @@
 +    return s
 +
  METHOD_ARRAY_SIZES = {
-     'BIND_GROUP_CONSTANT_BUFFER'        : 16,
-     'CALL_MME_DATA'                     : 256,
-@@ -273,7 +283,7 @@
+     'BIND_GROUP_CONSTANT_BUFFER'                        : 16,
+     'CALL_MME_DATA'                                     : 256,
+@@ -293,7 +303,7 @@ def parse_header(nvcl, f):
                  if ":" in list[2]:
                      state = 1
                  elif teststr in list[1]:
@@ -26,7 +28,7 @@
                  else:
                      state = 1
  
-@@ -283,7 +293,7 @@
+@@ -303,7 +313,7 @@ def parse_header(nvcl, f):
                      if ("0x" in list[2]):
                          state = 1
                      else:
@@ -35,7 +37,7 @@
                          bitfield = list[2].split(":")
                          curmthd.field_name_start[field] = bitfield[1]
                          curmthd.field_name_end[field] = bitfield[0]
-@@ -304,13 +314,13 @@
+@@ -324,13 +334,13 @@ def parse_header(nvcl, f):
                  is_array = 0
                  if (':' in list[2]):
                      continue
@@ -52,7 +54,7 @@
                  x = method()
                  x.name = name
                  x.addr = list[2]
-@@ -336,8 +346,8 @@
+@@ -357,8 +367,8 @@ def main():
  
      clheader = os.path.basename(args.in_h)
      nvcl = clheader

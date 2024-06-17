@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Jun 14 09:24:21 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to new feature release 24.1.0
+  --> https://docs.mesa3d.org/relnotes/24.1.0
+- Some interesting highlights include:
+  * NVIDIA Vulkan driver NVK is now considered ready for prime time.
+    Distro packagers are now recommended to include `nouveau` in the
+    `vulkan-drivers` list so that their users can have the option of using it
+    instead of the proprietary NVIDIA driver.
+  * Intel Vulkan driver Anv switched to truly asynchronous VM bind, and Xe
+    support for error dump to debug GPU hangs was added.
+  * Apple OpenGL driver Asahi has reached OpenGL 4.6 and OpenGL ES 3.2
+    support.
+  * Broadcom Vulkan driver V3DV gained support for VK_KHR_dynamic_rendering.
+  * Arm Mali OpenGL driver Panfrost was prepared for Gen10 (Gxxx), and
+    Vulkan driver PanVK was modernised for better Midgard (Txxx) and
+    Bifrost (Gxxx) support.
+  * All Vulkan drivers have gained support for explicit synchronisation on
+    Wayland and X11.
+- adjusted patches:
+  * n_stop-iris-flicker.patch
+  * python36-buildfix1.patch
+- supersedes patches:
+  * 0001-loader-delete-unused-param-from-pipe_loader_sw_probe.patch
+  * 0002-glx-fix-some-indentation.patch
+  * 0003-glx-add-an-implicit-param-to-createScreen.patch
+  * 0004-glx-pass-implicit-load-param-through-allocation.patch
+  * 0005-dri-plumb-a-implicit-param-through-createNewScreen-i.patch
+  * 0006-gbm-plumb-an-implicit-param-through-device-creation.patch
+  * 0007-frontends-dri-plumb-an-implicit-param-through-screen.patch
+  * 0008-pipe-loader-plumb-a-flag-for-implicit-driver-load-th.patch
+  * 0009-zink-don-t-print-error-messages-when-failing-an-impl.patch
+  * 0010-glx-silence-more-implicit-load-zink-errors.patch
+- added libvdpau_d3d12 package
+- small cleanup in specfile
+
+-------------------------------------------------------------------
 Thu Jun 13 13:26:14 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to bugfix release 24.0.9

@@ -42,7 +42,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 24.0.9
+%define _version 24.1.0
 %define with_opencl 0
 %define with_rusticl 0
 %define with_vulkan 0
@@ -57,11 +57,15 @@
 %define vdpau_nouveau 0
 %define vdpau_radeon 0
 %define vdpau_virtio_gpu 0
+%define vdpau_d3d12 0
 
 %ifarch %{ix86} x86_64 aarch64 %{arm} ppc64 ppc64le riscv64
   %define vdpau_nouveau 1
   %define vdpau_radeon 1
   %define vdpau_virtio_gpu 1
+%ifarch %{ix86} x86_64
+  %define vdpau_d3d12 1
+%endif
 %endif
 
 %ifarch %{ix86} x86_64
@@ -118,12 +122,15 @@
   # Not built because virtio_gpu driver is not built.
   %define vdpau_virtio_gpu 0
 
+  # Not built because d3d12 driver is not built.
+  %define vdpau_d3d12 0
+
   # Vulkan includes radv driver which requires llvm
   %define with_vulkan 0
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        24.0.9
+Version:        24.1.0
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -147,16 +154,6 @@ Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch58:        u_dep_xcb.patch
 Patch100:       U_fix-mpeg1_2-decode-mesa-20.2.patch
 Patch400:       n_stop-iris-flicker.patch
-Patch501:       0001-loader-delete-unused-param-from-pipe_loader_sw_probe.patch
-Patch502:       0002-glx-fix-some-indentation.patch
-Patch503:       0003-glx-add-an-implicit-param-to-createScreen.patch
-Patch504:       0004-glx-pass-implicit-load-param-through-allocation.patch
-Patch505:       0005-dri-plumb-a-implicit-param-through-createNewScreen-i.patch
-Patch506:       0006-gbm-plumb-an-implicit-param-through-device-creation.patch
-Patch507:       0007-frontends-dri-plumb-an-implicit-param-through-screen.patch
-Patch508:       0008-pipe-loader-plumb-a-flag-for-implicit-driver-load-th.patch
-Patch509:       0009-zink-don-t-print-error-messages-when-failing-an-impl.patch
-Patch510:       0010-glx-silence-more-implicit-load-zink-errors.patch
 %ifarch %{ix86} x86_64
 BuildRequires:  DirectX-Headers
 %endif
@@ -641,6 +638,13 @@ Group:          System/Libraries
 %description -n libvdpau_virtio_gpu
 This package contains the VDPAU state tracker for VirtIO GPU.
 
+%package -n libvdpau_d3d12
+Summary:        VDPAU state tracker for d3d12
+Group:          System/Libraries
+
+%description -n libvdpau_d3d12
+This package contains the VDPAU state tracker for d3d12
+
 %package -n Mesa-libOpenCL
 Summary:        Mesa OpenCL implementation (Clover)
 Group:          System/Libraries
@@ -778,16 +782,6 @@ rm -rf docs/README.{VMS,WIN32,OS2}
 %patch -P 58 -p1
 %patch -P 100 -p1
 %patch -P 400 -p1
-%patch -P 501 -p1
-%patch -P 502 -p1
-%patch -P 503 -p1
-%patch -P 504 -p1
-%patch -P 505 -p1
-%patch -P 506 -p1
-%patch -P 507 -p1
-%patch -P 508 -p1
-%patch -P 509 -p1
-%patch -P 510 -p1
 
 # Remove requires to vulkan libs from baselibs.conf on platforms
 # where vulkan build is disabled; ugly ...
@@ -877,6 +871,8 @@ egl_platforms=x11,wayland
 %endif
   %ifarch %{ix86} x86_64
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast,svga,virgl,iris,crocus,i915,d3d12,zink \
+            -Dgallium-d3d12-video=enabled \
+            -Dgallium-d3d12-graphics=enabled \
   %else
   %ifarch %{arm} aarch64
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast,virgl,freedreno,vc4,etnaviv,lima,panfrost,v3d,svga,tegra,zink \
@@ -1103,15 +1099,12 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %{_libdir}/vdpau/libvdpau_r600.so.1
 %{_libdir}/vdpau/libvdpau_r600.so.1.0
 %{_libdir}/vdpau/libvdpau_r600.so.1.0.0
-%endif
 
-%ifarch %{ix86} x86_64 ppc64 ppc64le %{arm} aarch64 riscv64
 %files -n libvdpau_radeonsi
 %{_libdir}/vdpau/libvdpau_radeonsi.so
 %{_libdir}/vdpau/libvdpau_radeonsi.so.1
 %{_libdir}/vdpau/libvdpau_radeonsi.so.1.0
 %{_libdir}/vdpau/libvdpau_radeonsi.so.1.0.0
-%endif
 %endif
 
 %if %{vdpau_virtio_gpu}
@@ -1120,6 +1113,15 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %{_libdir}/vdpau/libvdpau_virtio_gpu.so.1
 %{_libdir}/vdpau/libvdpau_virtio_gpu.so.1.0
 %{_libdir}/vdpau/libvdpau_virtio_gpu.so.1.0.0
+%endif
+
+%if %{vdpau_d3d12}
+%files -n libvdpau_d3d12
+%{_libdir}/vdpau/libvdpau_d3d12.so
+%{_libdir}/vdpau/libvdpau_d3d12.so.1
+%{_libdir}/vdpau/libvdpau_d3d12.so.1.0
+%{_libdir}/vdpau/libvdpau_d3d12.so.1.0.0
+%endif
 %endif
 
 %if "%{flavor}" != "drivers"
