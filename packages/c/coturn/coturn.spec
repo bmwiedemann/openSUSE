@@ -41,7 +41,6 @@ Source7:        README.SUSE
 Source8:        %{name}-apparmor-usr.bin.turnserver
 Source9:        %{name}@.service
 Patch0:         %{name}-turnserver_conf.patch
-BuildRequires:  fdupes
 BuildRequires:  firewall-macros
 BuildRequires:  libevent-devel >= 2.0.0
 BuildRequires:  libmysqld-devel
@@ -70,7 +69,7 @@ BuildRequires:  apparmor-rpm-macros
 %endif
 %endif
 
-%{?systemd_requires}
+%{?systemd_ordering}
 %sysusers_requires
 
 %description

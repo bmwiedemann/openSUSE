@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 15 16:14:52 UTC 2024 - Adam Majer <amajer@suse.com>
+
+- Don't hard require systemd -- not needed in containers
+
+-------------------------------------------------------------------
 Mon Feb 26 11:05:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
