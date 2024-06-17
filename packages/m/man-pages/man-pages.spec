@@ -17,9 +17,9 @@
 
 
 Name:           man-pages
-Version:        6.8
+Version:        6.9
 Release:        0
-Summary:        Linux  Manual Pages
+Summary:        Linux Manual Pages
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
 Group:          Documentation/Man
 URL:            https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/
@@ -61,6 +61,8 @@ rm man5/motd.5
 # conflicts with mandoc; man.7 is not so link on groff_man.7,
 # which is part of groff-full
 rm man7/man.7
+# ioctl_ficlone.2 does not exist
+rm man2const/FICLONERANGE.2const
 
 %install
 for i in man[0-9]*; do
@@ -71,17 +73,16 @@ cd "%{buildroot}/%{_mandir}/"
 RETVAL=0
 ARE_MISSING=""
 for i in */* ; do
-    FOUND=0
-    grep "^.so man" "$i" && FOUND=1
-    if [ "$FOUND" == 1 ] ; then
-      if [ ! -f `grep "^.so man" "$i" | awk '{print $2}'` ]; then
-	ARE_MISSING="$i $ARE_MISSING"
+    so_ref="$(grep '^.so man' $i | awk '{print $2}')"
+    if [ -n $so_ref ] ; then
+      if [ ! -f $so_ref ]; then
+	ARE_MISSING="$i $ARE_MISSING ($so_ref missing)"
         RETVAL=1
       fi
     fi
 done
 echo ""
-echo "The following manual pages are now missing (for .so reference):"
+echo "The following manual pages have wrong .so reference:"
 echo "$ARE_MISSING"
 echo ""
 if [ "$RETVAL" -ne 0 ] ; then
@@ -100,6 +101,7 @@ fi
 %dir %{_mandir}/man3const
 %dir %{_mandir}/man3head
 %dir %{_mandir}/man3type
+%dir %{_mandir}/man2const
 %{_mandir}/man*/*.gz
 
 %changelog
