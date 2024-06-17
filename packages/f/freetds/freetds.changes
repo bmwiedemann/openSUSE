@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun  7 14:02:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.17:
+  * _blk_get_col_data: Consistently return TDS_FAIL on failure.
+  * Support very old Sybase ASE versions
+  * datacopy: Increase CREATE TABLE command buffer to accommodate
+    larger queries
+  * datacopy fails on tables with an unusually high number of
+    columns.
+  * Change some file license from GPL to LGPL
+  * Support Sybase server not configured with UTF-8 charset
+
+-------------------------------------------------------------------
 Tue Apr  2 13:56:39 UTC 2024 - pgajdos@suse.com
 
 - version update to 1.4.12
