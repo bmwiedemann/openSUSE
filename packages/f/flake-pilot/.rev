@@ -88,4 +88,12 @@ https://github.com/OSInside/flake-pilot?tab=readme-ov-file#flake-pilot</comment>
   fixed the rustls security issue. This fixes bsc#1223217</comment>
     <requestid>1179039</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>71d62765d63c213a3605e9514e9ef743</srcmd5>
+    <version>3.0.13</version>
+    <time>1718645613</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1181265</requestid>
+  </revision>
 </revisionlist>

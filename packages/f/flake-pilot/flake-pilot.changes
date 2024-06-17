@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 06 17:26:31 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make clippy happy
+
+  assigning the result of `ToOwned::to_owned()` may be inefficient
+
+-------------------------------------------------------------------
 Thu Jun 06 17:02:12 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 3.0.12 → 3.0.13
