@@ -315,4 +315,12 @@ Fix specfile to not let river own `/usr/share/pkgconfig`</comment>
 </comment>
     <requestid>1175606</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>49c1565da3036565253414813cd5dc9b</srcmd5>
+    <version>0.3.3</version>
+    <time>1718645309</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1181025</requestid>
+  </revision>
 </revisionlist>

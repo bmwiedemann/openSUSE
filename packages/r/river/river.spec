@@ -17,11 +17,11 @@
 
 
 Name:           river
-Version:        0.3.2
+Version:        0.3.3
 Release:        0
 Summary:        A dynamic tiling Wayland compositor
 License:        GPL-3.0-only
-URL:            https://github.com/riverwm/river
+URL:            https://codeberg.org/river/river
 Source0:        https://codeberg.org/river/river/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        https://codeberg.org/river/river/releases/download/v%{version}/%{name}-%{version}.tar.gz.sig
 Source2:        vendor.tar.zst
