@@ -3,7 +3,7 @@
     <param name="url">https://github.com/keylime/rust-keylime.git</param>
     <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <!-- <param name="revision">v0.2.5</param> -->
+    <param name="revision">v0.2.6</param>
     <param name="revision">master</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>

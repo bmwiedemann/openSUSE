@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 14 07:39:29 UTC 2024 - aplanas@suse.com
+
+- Update to version 0.2.6~0:
+  * Bump version to 0.2.6
+  * build(deps): bump libc from 0.2.153 to 0.2.155
+  * build(deps): bump serde from 1.0.196 to 1.0.203
+  * rpm/fedora: Update rust macro usage
+  * config: Support hostnames in registrar_ip option
+  * added use of persisted IAK and IDevID and authorisation values
+  * config changes
+  * Adding /agent/info API to agent
+  * Fix leftover 'unnecessary qualification' warnings on tests
+
+-------------------------------------------------------------------
 Thu May 16 13:40:05 UTC 2024 - aplanas@suse.com
 
 - Update to version 0.2.5~4:
