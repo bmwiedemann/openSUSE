@@ -19,11 +19,10 @@
 %bcond_with betatest
 
 Name:           patterns-lxqt
-Version:        20240126
+Version:        20240611
 Release:        0
 Summary:        Patterns for Installation (LXQt)
 License:        MIT
-Group:          Metapackages
 URL:            https://github.com/openSUSE/patterns
 Source0:        %{name}-rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -40,8 +39,8 @@ This particular package contains the LXQt patterns.
 
 
 
-################################################################################
 
+################################################################################
 %package lxqt
 %pattern_graphicalenvironments
 Summary:        LXQt Desktop Environment
@@ -68,6 +67,9 @@ Requires:       lxqt-themes
 # boo#1218288 -- mvetter@suse.com
 Requires:       liblxqt
 Requires:       oxygen5-icon-theme
+# boo#1226151 -- sfalken@opensuse.org
+Requires:       libfm-qt5
+Requires:       lxqt-qt5plugin
 Requires:       pattern() = x11
 Recommends:     xdg-desktop-portal-lxqt
 Recommends:     pattern() = multimedia

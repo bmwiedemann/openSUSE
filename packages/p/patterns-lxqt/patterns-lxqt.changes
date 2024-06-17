@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 11 14:08:04 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Bumped version to 20240611
+- Added:
+  * Requires: libfm-qt5 (boo#1226151)
+  * Requires: lxqt-qt5plugin (boo#1226151)
+
+-------------------------------------------------------------------
 Fri Jan 26 23:02:23 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Bumped version to 20240126

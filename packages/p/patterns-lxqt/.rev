@@ -163,4 +163,15 @@
   * Recommends: picom-conf</comment>
     <requestid>1141858</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>da59f842bb92827ddfdd65a418f9f658</srcmd5>
+    <version>20240611</version>
+    <time>1718645268</time>
+    <user>anag+factory</user>
+    <comment>- Bumped version to 20240611
+- Added:
+  * Requires: libfm-qt5 (boo#1226151)
+  * Requires: lxqt-qt5plugin (boo#1226151)</comment>
+    <requestid>1180018</requestid>
+  </revision>
 </revisionlist>
