@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 15 14:03:55 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 2.8.0:
+  * vgrep can now gracefully handle errors from *grep such as eperms.
+  * bump dependencies
+
+-------------------------------------------------------------------
 Fri Oct 20 14:42:55 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 2.7.0:
