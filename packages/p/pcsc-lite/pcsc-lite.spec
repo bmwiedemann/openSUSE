@@ -26,29 +26,34 @@
 %define PKG_USER	scard
 %define PKG_GROUP	scard
 Name:           pcsc-lite
-Version:        2.1.0
+Version:        2.2.3
 Release:        0
 Summary:        PC/SC Smart Cards Library
 License:        BSD-3-Clause AND GPL-3.0-or-later
 Group:          Productivity/Security
 URL:            https://pcsclite.apdu.fr/
-Source:         https://pcsclite.apdu.fr/files/%{name}-%{version}.tar.bz2
+Source:         https://pcsclite.apdu.fr/files/%{name}-%{version}.tar.xz
 Source1:        %{name}.sysconfig
 Source2:        README.SUSE
 Source4:        baselibs.conf
 Source6:        pcsc-lite-reader-conf
-Source7:        https://pcsclite.apdu.fr/files/%{name}-%{version}.tar.bz2.asc
+Source7:        https://pcsclite.apdu.fr/files/%{name}-%{version}.tar.xz.asc
 Source8:        %{name}.keyring
 Source9:        %{name}.sysusers
 Patch0:         systemd-service.patch
 Patch1:         harden_pcscd.service.patch
+BuildRequires:  cmake
 BuildRequires:  flex
 BuildRequires:  gcc
 BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  sysuser-tools
+## BuildRequires:  systemd-devel
+BuildRequires:  xz
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(systemd)
 Requires:       libpcsclite1 = %{version}
 Requires(post): %fillup_prereq
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -110,25 +115,23 @@ This package contains the development files for pcsc-lite. It allows to
 compile plugins for the pcsc-lite package.
 
 %prep
-%setup -q
+%setup
 %patch -P 0 -p1
 cp -a %{SOURCE1} %{SOURCE2} %{SOURCE6} .
 %patch -P 1 -p1
 
 %build
 %sysusers_generate_pre %{SOURCE9} %{PKG_USER} %{PKG_USER}.conf
-%configure \
-	--disable-silent-rules \
-	--docdir=%{_docdir}/%{name} \
-	--enable-usbdropdir=%{ifddir} \
-	--with-systemdsystemunitdir=%{_unitdir} \
-	--enable-polkit \
-	--enable-filter \
-	--disable-static
-	make %{?_smp_mflags}
+%meson \
+       -D usbdropdir=%{ifddir} \
+       -D polkit=TRUE \
+       -D libsystemd=TRUE \
+       -D systemdunit=system
+
+%meson_build %{?_smp_mflags}
 
 %install
-%make_install
+%meson_install
 mkdir -p %{buildroot}%{ifddir}
 mkdir -p %{buildroot}%{_sysconfdir}/reader.conf.d/
 sed s:@ifddir@:%{ifddir}: <pcsc-lite-reader-conf >%{buildroot}%{_sysconfdir}/reader.conf.d/reader.conf
@@ -137,6 +140,8 @@ mkdir -p %{buildroot}%{_fillupdir}
 cp %{name}.sysconfig %{buildroot}%{_fillupdir}/sysconfig.pcscd
 mkdir -p %{buildroot}%{_docdir}/%{name}
 cp -a AUTHORS ChangeLog COPYING HELP NEWS README README.SUSE SECURITY %{buildroot}%{_docdir}/%{name}
+mv %{buildroot}/usr/share/doc/%{name}/* %{buildroot}%{_docdir}/%{name}
+rm -d %{buildroot}/usr/share/doc/%{name}
 # Remove useless la files
 find %{buildroot} -type f -name "*.la" -delete -print
 install -Dm0644 %{SOURCE9} %{buildroot}%{_sysusersdir}/%{PKG_USER}.conf
@@ -167,21 +172,20 @@ install -Dm0644 %{SOURCE9} %{buildroot}%{_sysusersdir}/%{PKG_USER}.conf
 %defattr(-,root,root)
 %docdir %{_docdir}/%{name}
 %dir %{_docdir}/%{name}
+%{_docdir}/%{name}/setup_spy.sh
 %{_docdir}/%{name}/AUTHORS
 %{_docdir}/%{name}/COPYING
 %{_docdir}/%{name}/HELP
 %{_docdir}/%{name}/NEWS
 %{_docdir}/%{name}/README
 %{_docdir}/%{name}/README.SUSE
-%{_docdir}/%{name}/README.polkit
 %{_docdir}/%{name}/SECURITY
-%{_docdir}/%{name}/setup_spy.sh
 %doc %{_mandir}/man?/*.*
 %{_sbindir}/*
 %dir %{_sysconfdir}/reader.conf.d
 %config(noreplace) %{_sysconfdir}/reader.conf.d/reader.conf
 %{ifddir}
-%{_unitdir}/*
+%{_unitdir}/pcsc*
 %{_sysusersdir}/%{PKG_USER}.conf
 %{_fillupdir}/sysconfig.pcscd
 # libpcsclite.so should stay in the main package (#732911). Third party packages may need it for dlopen().

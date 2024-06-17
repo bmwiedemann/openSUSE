@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jun  7 10:15:11 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- version 2.2.3
+  * switch to meson build system
+    . Fix build on Slackware 15
+    . fail if both libusb and libudev are used
+  - Fix memory leak on exit
+  - libpcscspy: dump an output buffer only if the call succeeded
+  - Some code cleanup
+  - Serial support is ENABLED by default
+  - fix meson related issues
+  - Some code cleanup
+  - provide files for meson build tool (replaces autoconf/auoomake)
+  - fix a missing symbol in libpcscspy (bug introduced by the previous version)
+  - fix shutdown issues with hotplug_libusb
+  - update pcsc-spy manpage
+  - update copyright date
+  - Some other minor improvements
+
+-------------------------------------------------------------------
 Tue Apr 23 08:15:56 UTC 2024 - Stephan Hemeier <Sauerlandlinux@gmx.de>
 
 - Update the spec for building with version 2.1.0
