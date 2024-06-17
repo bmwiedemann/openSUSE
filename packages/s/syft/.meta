@@ -1,0 +1,6 @@
+<package name="syft" project="openSUSE:Factory">
+  <title>syft</title>
+  <description>CLI tool and library for generating a Software Bill of Materials from container images and filesystems</description>
+  <devel project="devel:kubic" package="syft"/>
+  <url>https://github.com/anchore/syft</url>
+</package>
