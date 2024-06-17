@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-joserfc
-Version:        0.10.0
+Version:        0.12.0
 Release:        0
 Summary:        The ultimate Python library for JOSE RFCs
 License:        BSD-3-Clause

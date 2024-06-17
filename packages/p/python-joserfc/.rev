@@ -23,4 +23,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1175483</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a31824576288d7b8ad9775c518a58ed5</srcmd5>
+    <version>0.12.0</version>
+    <time>1718645413</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.12.0:
+  * Limit DEF decompress size to 250k bytes.
+  * Fix claims validation, , via :issue:`23`.
+  * Remove validating typ header with jwt.decode method.
+  * jwe.decrypt_json allows to verify only one recipient.
+  * Prevent OctKey to import ssh-dss.
+  * Deprecate use of string and bytes as key.</comment>
+    <requestid>1181243</requestid>
+  </revision>
 </revisionlist>
