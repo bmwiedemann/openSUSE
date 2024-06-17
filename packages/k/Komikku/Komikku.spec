@@ -17,7 +17,7 @@
 
 
 Name:           Komikku
-Version:        1.47.0
+Version:        1.48.1
 Release:        0
 Summary:        A manga reader for GNOME
 License:        GPL-3.0-or-later

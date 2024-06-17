@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jun 16 13:15:00 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to 1.48.1:
+  * Fixed backdrop bug
+  * Local: Fixed wrong location of cover files
+  * Luratoon Scan (pt_BR): Disabled
+- update to 1.48.0:
+  * Continuously updated servers modules
+  * Added MangaFire (EN/ES/ES_LA/FR/JA/PT/pt_BR)
+  * Reenabled Argos Comics (PT)
+  * Flame Comics (EN): Update
+  * Fr-Scan (FR): Update
+  * Luratoon Scan (pt_BR): Update
+  * MangaCrab (ES): Update
+  * MangaWorld (IT): Update
+  * Manga/in/ua (UK): Update
+  * Added Swedish translation
+  * Updated Arabic, French, German, Portuguese (Brazil), Spanish and Ukrainian translations
+
+-------------------------------------------------------------------
 Wed May 22 07:40:42 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - update to 1.47.0:

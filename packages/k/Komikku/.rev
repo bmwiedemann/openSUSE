@@ -148,4 +148,12 @@
 - add new runtime dependency python3-pillow-heif (forwarded request 1178392 from rrahl0)</comment>
     <requestid>1178665</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>155884c1aeda16c0cb4d558632cc680f</srcmd5>
+    <version>1.48.1</version>
+    <time>1718645662</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1181347</requestid>
+  </revision>
 </revisionlist>
