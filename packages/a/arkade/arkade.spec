@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           arkade
-Version:        0.11.15
+Version:        0.11.16
 Release:        0
 Summary:        Open Source Kubernetes Marketplace
 License:        Apache-2.0
