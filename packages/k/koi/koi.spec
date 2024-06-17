@@ -17,29 +17,28 @@
 
 
 Name:           koi
-Version:        0.2.4
+Version:        0.3
 Release:        0
 Summary:        Theme scheduling for the KDE Plasma Desktop
 License:        LGPL-3.0-only
 URL:            https://github.com/baduhai/Koi
-Source:         https://github.com/baduhai/Koi/archive/refs/tags/%{version}.tar.gz
-BuildRequires:  extra-cmake-modules
-BuildRequires:  fdupes
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5Xml)
+Source0:        https://github.com/baduhai/Koi/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  kf6-extra-cmake-modules
+BuildRequires:  cmake(KF6Config)
+BuildRequires:  cmake(KF6CoreAddons)
+BuildRequires:  cmake(KF6WidgetsAddons)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6Test)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Xml)
 Requires:       hicolor-icon-theme
-Requires:       plasma-framework
-Requires:       plasma-framework-components
-Requires:       plasma-framework-desktoptheme
-Requires:       plasma5-desktop
-Requires:       plasma5-workspace
+Requires:       libplasma6-components
+Requires:       libplasma6-desktoptheme
+Requires:       plasma6-desktop
+Requires:       plasma6-workspace
 
 %description
 Koi is a program designed to provide the KDE Plasma Desktop functionality
@@ -53,22 +52,22 @@ different desktop environments, they are unlikely to work and untested.
 
 %build
 pushd src
-%cmake
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 popd
 
 %install
 pushd src
-%cmake_install
+%kf6_install
 popd
-
-%fdupes %{buildroot}
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/koi
 %{_datadir}/applications/koi.desktop
-%{_datadir}/icons/hicolor/scalable/apps/*
+%{_datadir}/icons/hicolor/scalable/apps/koi.svg
+%{_datadir}/icons/hicolor/scalable/apps/koi_tray.svg
 
 %changelog

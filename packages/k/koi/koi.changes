@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 16 09:25:52 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.3
+  * Update to QT 6 Build Tools / KF 6 libraries
+  * Updated bundled libraries to their latest changes
+  * Updated UI; Updated Screenshot
+  * Updated README with appropriate build instructions and more
+
+-------------------------------------------------------------------
 Fri Dec 15 22:03:08 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Require extra-cmake-modules at build time

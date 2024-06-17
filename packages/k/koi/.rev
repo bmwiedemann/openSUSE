@@ -23,4 +23,12 @@
     <comment>Require extra-cmake-modules at build time</comment>
     <requestid>1133539</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bd1569bb0a0e47c7718b05520824bbb6</srcmd5>
+    <version>0.3</version>
+    <time>1718645309</time>
+    <user>anag+factory</user>
+    <comment>Update to 0.3</comment>
+    <requestid>1181101</requestid>
+  </revision>
 </revisionlist>
