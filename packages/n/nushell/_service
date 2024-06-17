@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="filename">nushell</param>
+    <param name="url">https://github.com/nushell/nushell.git</param>
+    <param name="scm">git</param>
+    <param name="version">git-master</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="revision">0.94.2</param>
+    <param name="changesgenerate">disable</param>
+    <param name="changesauthor">dead_mozay@opensuse.org</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="cargo_vendor" mode="manual">
+    <param name="srcdir">nushell</param>
+    <param name="compression">zst</param>
+  </service>
+  <service name="cargo_audit" mode="manual">
+     <param name="srcdir">nushell</param>
+  </service>
+</services>

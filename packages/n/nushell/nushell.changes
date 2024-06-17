@@ -1,0 +1,2918 @@
+-------------------------------------------------------------------
+Fri Jun 14 15:44:10 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Removed post scriptlets that add and remove shells in /etc/shells. 
+
+-------------------------------------------------------------------
+Tue Jun  4 04:50:29 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.94.2:
+  * Fix external command name parsing with backslashes.
+  * Preserving absolute paths when expanding globs. 
+
+-------------------------------------------------------------------
+Fri May 31 03:11:15 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.94.1:
+  * estore tilde expansion on external command names.
+  * Fix handling of rest args in `do`.
+  * Restore `path type` behavior.
+
+-------------------------------------------------------------------
+Wed May 29 03:44:47 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.94.0:
+  * Fixing path and PWD handling.
+  * Case-preserving environment.
+  * Streaming all the things.
+  * New language feature: raw strings.
+  * Removal of deprecated features.
+  * Shell integration config.
+  * New commands:
+    - `sys` subcommands.
+    - `ps` support on BSD systems.
+    - `debug profile --lines`
+  * Changes to existing commands:
+    - Making range semantics consistent.
+    - `scope commands`
+    - `which`
+    - `describe`
+    - Streaming more commands
+    - `cd` and `pwd`
+    - `collect`
+    - `complete`
+    - `each`
+    - `ls`
+    - `bytes build`
+    - `from nuon` and `to nuon`
+    - `save`
+    - `hide-env`
+    - PWD fixes
+    - `nu-highlight`
+    - `into sqlite`
+    - `stor insert`
+    - `decode base64` and `encode base64`
+    - `char`
+    - Deprecated commands
+    - `sys`
+    - `str contains --not`
+    - Removed commands
+    - `lazy make`
+    - `describe --collect-lazyrecords`
+    - List of environment variables support in `with-env`
+
+-------------------------------------------------------------------
+Fri May 10 10:16:33 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to version 0.93.0:
+  * Redesigned plugin management commands
+  * New plugin cache format
+  * Improved terminal interaction for plugins
+  * Introduction of the Polars Plugin
+  * Dataframes deprecation
+  * Lazy record deprecation
+  * Stricter rules around setting environment variables
+  * Improved parsing of input/output types
+  * New CLI flag: --no-newline
+  * New commands
+    + `plugin add`
+    + `plugin rm`
+    + `plugin use`
+    + `from msgpack`
+    + `to msgpack`
+    + `from msgpackz`
+    + `to msgpackz`
+    + `metadata set`
+  * Changes to existing commands
+    + `with-env`
+    + `load-env`
+    + `last`
+    + `drop`
+    + `skip`
+    + `group-by`
+    + `timeit`
+    + `kill`
+    + `each`
+    + `ls`
+    + `du`
+    + `try`
+    + `version`
+    + `into-filesize`
+    + `view source`
+    + `grid`
+    + `explain`
+  * Deprecated commands
+    + `register`
+    + `lazy make`
+    + `describe --collect-lazyrecords`
+  * Removed commands and flags
+    + `run external` flags
+    + `commandline` flags
+  * Breaking changes [[toc](#table-of-content)]
+    - Remove deprecated flags on `run-external`
+    - Remove deprecated flags on `commandline`
+    - Shrink the size of `Expr`
+    - Make the same file error more likely to appear
+    - Overhaul the plugin cache file with a new msgpack+brotli format
+    - Remove the `Value::Block` case
+    - Don't allow skip on external stream
+    - Removed the polars dtypes command
+    - Update crate feature flags
+    - Make `group-by` return errors in closure
+    - Improve `with-env` robustness
+    - Disallow setting the `PWD` via `load-env` input
+    - Refactor `first` and `last`
+    - Return value instead of stream from `kill`
+    - `drop` refactor
+    - Force timeit to not capture stdout
+    - Implement `De`-/`Serialize` for `Record` manually
+  * Bug fixes
+    + restore `query web --as-table` to working order
+    + Make exit code available in `catch` block
+    + make `grid` throw an error when not enough columns
+    + Fix an `into bits` example
+    + `each` signature fix
+    + Make the same file error more likely to appear
+    + set the type of default NU_LIB_DIRS and NU_PLUGIN_DIRS to list\<string\>
+    + Replace subtraction of Instants and Durations with saturating subtractions
+    + fix std log
+    + Fix negative value file size for "into filesize" (issue #12396)
+    + `explain` refactor
+    + Don't check if stderr empty in test_xdg_config_symlink
+    + Prevent panic on date overflow
+    + Fix merging child stack into parent
+    + Fix #12416 by canonicalizing XDG_CONFIG_HOME before comparing to config_dir()
+    + `Range` refactor
+    + prevent `select` (negative number) from hanging shell
+    + Make auto-cd check for permissions
+    + Add BufWriter to ChildStdin on the plugin interface
+    + Fix deadlock on PluginCustomValue drop
+    + Fix stop suggesting `--trash` when already enabled (issue #12361)
+    + Fix #12391: mkdir uses process startup directory instead of current script directory
+    + prevent parser from parsing variables as units
+    + Fix hooks on 0.92.0
+    + Make default config conservative about clipboard
+    + Avoid panic when pipe a variable to a custom command which have recursive call
+    + fix(shell_integration): set window title on startup
+    + Ensure `currently_parsed_cwd` is set for config files
+    + Fix circular source causing Nushell to crash
+    + Fix circular source causing Nushell to crash
+-------------------------------------------------------------------
+Thu Apr  4 16:48:53 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.92.1:
+  * The configured hooks should again properly affect the scope
+    (e.g. virtualenv integrations using a hook to activate
+    as an overlay).
+  * mkdir/touch did not correctly resolve relative paths after
+    using cd.
+  * The default config file created by 0.92.0 assumed
+    that you built with the default feature set including
+    the system-clipboard. This is not working on platforms like
+    Android/Termux (termux builds with default-no-clipboard).
+    Now we only create keybindings in config.nu that are supported
+    on all platforms and provide suggestions as comments.
+  * The timing of drop notifications sent to plugins has been
+    corrected.
+
+-------------------------------------------------------------------
+Wed Apr  3 04:41:31 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.92.0:
+  * External command output changes.
+  * Scoped file redirections.
+  * Tilde expansion.
+  * Support for XDG_CONFIG_HOME.
+  * Incorporating the extra feature by default.
+  * Persistent plugins.
+  * Plugin API overhaul.
+  * Plugin engine calls.
+  * Improved plugin custom values.
+  * Plugin test support crate.
+  * Official plugin template.
+  * Debugging support and proof-of-concept profiler.
+  * Support for binary data in explore.
+  * Performance improvements.
+  * Bug fixes:
+    - Make autocd return exit code 0.
+    - into sqlite: Fix insertion of null values.
+    - Fix return in filter closure eval.
+    - fix: use environment variables to prevent command_not_found
+      from recursing.
+    - Fix: missing parse error when extra tokens are given to
+      let bindings.
+    - to json -r not removing whitespaces fix.
+    - Fix usage of --tabs flag while converting to json.
+    - Fix inaccurate sleep duration.
+    - Use rest argument in export use to match use.
+    - Adjust permissions using umask in mkdir.
+    - fix ls with empty string.
+    - Fix up ctrl+C handling in into sqlite.
+    - Fix unexpected sqlite insert behaviour (attempt 2).
+    - Fix: lex now throws error on unbalanced closing parentheses
+      (issue #11982).
+    - Fix: Convert help example results to text.
+    - Remove unused/incorrect input type from start.
+    - fix du --exclude globbing bug.
+  * New commands:
+    - plugin list.
+    - plugin stop.
+    - debug profile.
+    - uname.
+    - query db --params.
+    - detect columns --guess.
+  * Changes to existing commands:
+    - echo.
+    - table.
+    - into bits.
+    - nu-check.
+    - mkdir.
+    - ls.
+    - version.
+    - filter.
+    - insert.
+    - do.
+    - complete.
+    - ignore.
+    - export use.
+    - sleep.
+    - into sqlite.
+    - to json.
+    - du.
+    - histogram.
+    - into string.
+  * Deprecated commands:
+    - run-external flags.
+  * Removed commands:
+    - str escape-glob.
+
+-------------------------------------------------------------------
+Wed Mar  6 04:21:56 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.91.0:
+  * Handling globs for variables.
+  * Plugin protocol overhaul.
+  * Stderr pipeling support.
+  * REPL stability and panic recovery.
+  * ur set of commands is evolving.
+  * New commands:
+    - 'tee'
+    - 'interleave'
+    - 'is-not-empty'
+    - 'commandline'
+  * Changes to existing commands:
+    - 'zip' supports closures.
+    - 'bits' supports binary values.
+    - 'into int --signed'
+  * Migrating more commands to use 'uutils'
+  * List spreading for filesystem commands.
+  * Duplicate record keys now error.
+  * Removing list of cell path support.
+  * Deprecated commands:
+    - 'str escape-glob'
+    - Certain flags for 'commandline'.
+  * Removed command:
+    - 'umv' has been renamed to 'mv'.
+    - 'umkdir' has been renamed to 'mkdir'.
+
+-------------------------------------------------------------------
+Wed Feb  7 16:26:58 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.90.1:
+  * New Reedline coolness.
+  * From this release, we unified glob rules for the following
+    commands: open, rm, cp, umv, mv, du, ls.
+  * Parse-time evaluation.
+  * Integration of more uutils commands.
+  * Dataframes: allow specifying schema.
+  * New CLI flag: --no-history.
+  * Strict JSON parsing.
+  * Our set of commands is evolving.
+  * New commands:
+    - Apart from commands already mentioned above, into cell-path
+      can now be used to create cell paths dynamically.
+  * Breaking changes:
+    - 'query web --query' should return 'list<list<string>>'
+      like the scraper crate's 'ElementRef::text()'
+    - Fix precedence of 'not' operator.
+    - hide std testing.
+    - Remove '--flag: bool' support.
+    - Plugin explicit flags.
+    - Fix parsing of strings with special characters.
+    - Allow plugins to receive configuration from the nushell
+      configuration.
+  * Full changelog:
+    - https://www.nushell.sh/blog/2024-02-06-nushell_0_90_0.html
+
+-------------------------------------------------------------------
+Thu Jan 11 03:30:16 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.89.0:
+  * Spread operator for commands.
+  * Editor Improvements.
+  * Deprecation of --flag: bool.
+  * New commands:
+    - 'ulimit'.
+  * Breaking changes:
+    - remove 'std clip'.
+    - Lock out new direct construction of 'Record'.
+    - Remove 'Expr::MatchPattern'.
+    - Rename extra's 'format' to 'format pattern'.
+    - Remove 'Value::MatchPattern'.
+    - Bubble up errors passed to 'complete'.
+    - disable directory submodule auto export.
+  * Full changelog:
+    - https://www.nushell.sh/blog/2024-01-09-nushell_0_89_0.html.
+
+-------------------------------------------------------------------
+Mon Dec 18 14:23:07 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.88.1:
+  * No changelog was made available.
+
+-------------------------------------------------------------------
+Wed Dec 13 04:28:07 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.88.0:
+  * Bug fixes:
+    - into binary -c: return 0 as single byte.
+    - Fix table nested list indices are off after 1 "chunk".
+    - tweak table example/parameter text.
+    - add "default" table theme.
+    - correct table example syntax.
+    - optimize/clean up a few of the table changes.
+    - Fix the output type for 'view files'.
+    - Fix toolkit to run workspace.
+    - fix the link to the nu_scripts in std clip deprecation.
+    - cp target expansion.
+    - Add metadata to some filters.
+    - Revert "Adding support for Polars structs".
+    - Fix spans passed to external_completer.
+    - Add boundary check for str index-of.
+    - When using redirection, if a command generates non-zero exit
+      code, the script should stop running.
+    - Fix span of invalid range.
+    - Fix capacity overflow caused by large range of ports.
+    - Fix get -i ignoring errors for only the first cellpath.
+    - Fix Option<&str> == Option<&String> build error when using
+      rust_decimal/rkyv feature.
+    - Add checks for ports.
+    - Fix highlighting of spread subexpressions in records.
+    - Fix overlay_use_main_not_exported hanging when an external
+      spam command exists.
+    - Fixes markdown formatting on LSP hover.
+    - Add more descriptive error message when passing list to from_csv.
+    - Respect non-zero exit code in subexpressions and blocks.
+    - Error on use path item1 item2, if item1 is not a module.
+    - Match ++= capabilities with ++.
+  * New spread operator for list and record literals.
+  * Passing boolean switches dynamically.
+  * Redirection to standard streams is getting better.
+  * One-time theming of tables is there.
+  * Exposing name of script to the wild.
+  * Parsing human-friendly dates into Nushell values.
+  * Show found externals via syntax highlighting in the REPL.
+  * New "out of bound" error.
+  * In the previous release, the extern-wrapped command has been
+    deprecated and it is now being removed. An issue did persist
+    though, making def --wrapped not a suitable replacement for
+    the old command... which was fixed.
+  * Restricting use of internal variables.
+  * A small update on the LSP.
+  * New commands:
+    - is-terminal.
+    - std null-device.
+    - mktemp.
+    - stor.
+  * Removed commands:
+    - 'extern-wrapped' and 'export extern-wrapped' in favor of 'def --wrapped'.
+    - '--not' from 'glob' in favor of '--exclude'.
+    - 'size' in favor of 'str stats'.
+    - 'unfold' in favor of 'generate'.
+    - 'def-env' and 'export def-env' in favor of 'def --env'.
+  * Breaking changes:
+    - Respect non-zero exit code in subexpressions and blocks
+      Starting with this release, if a subexpression (eg (echo foo.txt))
+      or block (eg if true { echo foo.txt } evaluated to a non-zero
+      exit code, it will no longer be lost and instead will be
+      the exit code of that expression. This allows them to act
+      more naturally when an external command fails.
+    - No longer allow '{a: 1, a: 2}'.
+    - remove 'def-env' and 'export def-env'.
+    - remove 'extern-wrapped' and 'export extern-wrapped'.
+    - remove the 'unfold' command.
+    - remove 'size' command in favor of 'str stats'.
+    - remove '--not' from 'glob'.
+    - nu-table/ Add '-t/theme' argument && Replace '-n/start-number'
+      with '-i/index' To make how to update the table numbering
+      more clear, we've replaced 'table -n' with 'table -i/table --index'.
+  * Full changelog:
+    - https://www.nushell.sh/blog/2023-12-12-nushell_0_88_0.html.
+
+-------------------------------------------------------------------
+Tue Nov 21 02:57:16 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.87.1:
+  * Nushell's cp command in 0.87.0 did not correctly handle
+    changes to the directory by the Nushell internal cd when
+    invoked inside a block. Furthermore the rm command was not
+    able to correctly handle paths requiring expansion.
+  * Removed Source2: cargo_config, cargo_config is no longer
+    created - it's part of the vendor.tar
+
+-------------------------------------------------------------------
+Thu Nov 16 10:23:59 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.87.0:
+  * Bug fixes:
+    - fix the flag type on release-pkg.nu
+    - update release-pkg.nu with updated manual instructions.
+    - remove the last mention to let-env
+    - Do not use white text in the default light theme.
+    - fix: Ensure consistent vals and cols when parsing
+      with --flexible.
+    - Fix describe -d for lazy records.
+    - updated NU_LIB_DIRS delimiter for command line.
+    - redirection: fix internal commands error with o+e> redirection.
+    - sync $env.config.filesize.metric.
+    - use to_lowercase in str downcase.
+    - fix: preserve path when completing intermediate directory.
+    - Improve case insensitivity consistency.
+    - Add "shape_keyword" to default config.
+    - Fix issues with error make refactor.
+    - Fix (http) get HTTP_PROXY from $env.
+    - allow items to properly evaluate block settings.
+    - fix custom command's default value.
+  * Enhancing the documentation.
+  * Changes to the internals of Nushell.
+  * LSP is coming to Nushell.
+  * Living in the terminal: completions and hints.
+  * Handling exotic paths.
+  * Improving the match command.
+  * Pipeline redirections.
+  * Some work on the standard library.
+  * New allowed operands to the modulo operator.
+  * Disallowing invalid table definitions and manipulations.
+  * The documentation becomes better.
+  * Some progress in the "dataframe" department.
+  * Our set of commands is evolving.
+  * Changes to existing commands.
+  * Deprecated commands:
+    - extern-wrapped in favor of def --wrapped.
+    - def-env in favor of def --env.
+    - unfold in favor of generate.
+    - size in favor of str stats.
+    - glob --not in favor of glob --exclude.
+  * Removed commands:
+    - the $nothing variable.
+    - random integer in favor of random int.
+    - profile.
+  * Breaking changes:
+    - Improve case insensitivity consistency.
+    - Refactor error make.
+    - Change input list to return null.
+    - Disallow duplicated columns in table literals.
+    - Improve registry value return types.
+    - Finish removing profile command and related data.
+    - remove random integer in favor of random int.
+    - Remove to xml --pretty.
+    - remove the $nothing variable
+* Full changelog:
+  - https://www.nushell.sh/blog/2023-11-14-nushell_0_87_0.html
+
+-------------------------------------------------------------------
+Wed Oct 18 03:19:26 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.86.0:
+  *  Bug fixes:
+     - Fix exponential parser time on sequence of [[[[.
+     - Fix tilde-expansion for multi-byte unicode chars.
+     - Improve select row perf for large N.
+     - Prevent cubic time on nested parentheses.
+     - fix public boolean switches in the standard library.
+     - std dt datetime-diff: fix uninitialized field ref when
+       borrowing.
+     - Fix default argument value type checking.
+     - fix magenta_reverse and friends.
+     - nu-table: Fix failing test (relied on termwidth assumptions).
+     - Fix editor config for reedline and config nu/env.
+     - Fix Default Prompt Tilde Insertion Logic.
+     - fix windows default prompt slash direction.
+     - fix: complete paths surrounded by quotes or backticks.
+     - ucp: Change error when directory is specified
+       but not recursive.
+     - nu-explore: Try to fix a truncation issue in expand view.
+     - Fix wrong parsing of signatures in predecl scan.
+     - Fix parsing of signature inp/out types in predecls.
+     - fix labelled error from shell error.
+     - Fix registry query flag validation.
+     - Fix clippy in registry_query.rs.
+     - fix clippy.
+     - Fix output types of math commands to be narrower.
+     - nu-table: Use config color scheme in kv tables and table -e.
+     - fix: only escape path containing numbers if they can
+       be valid floating points.
+     - evaluate $nu during --ide-check.
+     - allow early return outside of main.
+     - Preserve relative paths for local files.
+     - glob with ../ prefix now works;.
+     - Add support for HTTP proxy in network commands.
+  * Enhancing the documentation.
+  * Improving the completions in the REPL.
+  * The type system.
+  * Unified command definitions.
+  * Some news with the standard library.
+  * Nushell now supports the keyboard enhancement protocol from
+    Kitty with the work of @Abdillah in #10540. This feature is off
+    by default but can be turned on in config.nu with
+    the $env.use_kitty_protocol config option.
+  * New commands.
+  * Changes to existing commands.
+  * Deprecated commands:
+    - random int in favor of random integer.
+    - the $nothing built-in variable in favor of the null.
+    - to xml --pretty {int} in favor of to xml --indent {int}.
+  * Removed commands:
+    - random decimal in favor of random float.
+    - into decimal in favor of into float.
+  * Breaking changes:
+    - differentiating between --x and --x: bool.
+    - Use heck for string casing (again)
+    - remove into decimal.
+    - remove random decimal.
+    - Remove cd w/ abbreviations.
+    - Rename: change the SyntaxShape of -c flag from list to record.
+  * Full changelog:
+    - https://www.nushell.sh/blog/2023-10-17-nushell_0_86.html
+
+-------------------------------------------------------------------
+Thu Sep 21 05:09:07 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.85.0:
+  * Bug fixes:
+    - Fix tab completion order of directories to consistent with
+      order of files.
+    - Fix 9156 endian consistency.
+    - fixed usages of deprecated chrono DateTime::from_utc.
+    - Fix inspect output header may be misaligned.
+    - Fix example history command pipeline.
+    - fix default after an empty where.
+    - handle empty pipeline while parsing let.
+    - Fix variables not allowed in ucp.
+    - fix #10319: allow json request of value type list.
+    - fix 'let' to properly redirect.
+    - fix the pretty printing of failing tests in std.
+    - fix input --until-bytes: now stops at any of given bytes.
+    - nu-table: Fix expand table unnessary color in trail head
+      config when wrap is used.
+    - fix some new chrono warnings.
+    - prevent crash when use redirection with let/mut.
+    - Allow operator in constants.
+    - nu-table: Patch restore lead trail space bg color.
+    - nu-table: Strip custom color in the header when used on border.
+  * Consistent use of float for our floating point type.
+  * Some updates on explore.
+  * Improvements to parse-time evaluation.
+  * Improving accessibility.
+  * Improved history isolation.
+  * Full changelog
+    https://www.nushell.sh/blog/2023-09-19-nushell_0_85_0.html
+
+-------------------------------------------------------------------
+Wed Aug 23 05:15:00 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Use ExclusiveArch: %{rust_tier1_arches}.
+
+-------------------------------------------------------------------
+Wed Aug 23 04:58:02 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.84.0:
+  * New features:
+    - str replace matches substring by default.
+    - Constants from modules.
+    - New options for more compact table display.
+    - More consistent format ... commands.
+    - scope commands enhancements.
+    - http commands now handle headers better.
+    - Work on the optional dataframe features.
+    - Changes to other commands.
+    - Command organization.
+    - Deprecation and removal of commands.
+    - A panic when parsing the context of let assignments has
+      been fixed.
+    - Invoking --help on a script with a def main command will now
+      report the script's name instead of a more confusing main.
+    - Serious bugs in parse that produced incorrect output when
+      given a long input stream have been fixed.
+  * Bugfixes:
+    - Fix ~ | path type returning empty string.
+    - Fix the panic when type a statement similar
+      to let f = 'f' $ in the nushell.
+    - Revert #9693 to prevent CPU hangs.
+    - Nothing has the correct return type.
+    - Force version to update when installing with toolkit.nu
+    - Fix panic with lines on an error.
+    - Fix watch not handling all file changes.
+    - Fix a crash when moving the cursor after accepting
+      a suggestion from the help menu.
+    - Fix parser to not update plugin.nu file on nu startup.
+    - nu-table: Fix padding 0 width issues.
+    - Remove potential panic from path join.
+    - Fix wrong path expansion in save.
+    - nu-table: Fix issue with truncation and text border.
+    - Fix default_env.nu after latest changes to str replace.
+    - Allow return to return any nushell value.
+    - Fix into datetime to accept more date/time formats.
+  * Full changelog
+    https://www.nushell.sh/blog/2023-08-22-nushell_0_84_0.html
+
+-------------------------------------------------------------------
+Mon Jul 31 04:22:09 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.83.1:
+  * Bring the let-env command back to life.
+  * Fully fix the dataframe integration.
+  * Breaking changes for plugin authors.
+
+-------------------------------------------------------------------
+Thu Jul 27 05:37:40 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.83.0:
+  * Fixes, stabilization and shoutouts:
+    - Redirection: make o>, e>, o+e>'s target support variables
+      and string interpolation.
+    - Fix broken constants in scopes.
+    - Fix: return all headers with the same name from http <method>.
+    - make the behaviours of last and first more consistent.
+    - Fix explore crashes on {}.
+    - Fix: update engine_state when history.isolation is true (#9268).
+    - Fix headers command handling of missing values.
+    - fixes which showing aliases as built-in nushell commands.
+    - fix the command cp -u src dst/mv -u src dst doesn't work when the…
+  * Changes to commands:
+    - which returns the type of the command instead of only whether
+      it is builtin or not and uses more explicit column names.
+    - str expand now allows empty member in brace expansion, e.g.
+      A{,B,C} would expand to [A, AB, AC].
+    - keybinding listen gives more information about keys like
+      home and end, namely their kind and state.
+    - input listen allows to query for a single key press, e.g.
+      the following will take a 4-char input 1..4 | each
+      { input listen } | where key_type == char | get code | str join.
+    _ path commands lose the -c flag; instead, use update
+      to update table columns.
+  * Until now, declaration keywords such as let and mut have
+    required the use of parentheses around pipelines to assign
+    the output of a chain of command to a variable. this syntax
+    has been relaxed for let and mut. Let's give some examples!
+  * Input / output type checking and annotations.
+  * Configuration tweaks.
+  * The standard library.
+  * Breaking changes:
+    - Removal of let-env (now use the $env.FOO = "BAR" form instead).
+    - Stricter checking of input/output types.
+
+-------------------------------------------------------------------
+Mon Jul  3 04:37:21 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.82.0:
+  * Custom datetime format.
+  * Support for comments in multiline pipes.
+  * Continuing cratification effort.
+  * Splitting the $nu variable.
+  * Entering Linguist support.
+  * REPL: Mark line entries as excluded from the history
+    by leading with a space.
+  * New commands:
+    - http options.
+    - scope aliases.
+    - scope commands.
+    - scope engine-stats.
+    - scope modules.
+    - scope variables.
+    - scope.
+  * Breaking changes:
+    - Clean up config by removing legacy options that were
+      previously deprecated.
+    - Split $nu variable into scope commands and simpler $nu.
+    - The filesize prefixes Z/Zi have been removed as their
+      underlying values where not correctly representable.
+    - In the ls --long output the uid column has been renamed
+      to user to be consistent with group.
+    - Don't allow save command to save both stdout and stderr to
+      the same file.
+
+-------------------------------------------------------------------
+Thu Jun 15 05:17:23 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.81.0:
+  * Startup time improvements.
+  * Breaking changes:
+    - Exclude globs now need square brackets.
+    - view source now works over rest arguments.
+    - alias calls are now position dependent.
+
+-------------------------------------------------------------------
+Wed May 17 06:36:33 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.80.0:
+  * Record type annotations.
+  * Modules from directories.
+  * Stdlib update.
+  * Breaking changes:
+    - Change type of parameter default values to Option<Value>.
+    - Fix unexpected flattening of data by par-each.
+    - REFACTOR: remove deprecated commands (old-alias).
+
+-------------------------------------------------------------------
+Wed Apr 26 03:52:52 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.79.0:
+  * Standard library.
+  * enhanced IDE support in our VS code extension.
+  * atuin now supports Nushell.
+  * Relaxed parsing rules.
+  * Removed old alias implementation.
+  * Changes to default files locations.
+  * Breaking changes:
+    - old-alias is no longer available.
+    - str index-of -r now uses ranges.
+    - config nu and config env now open $nu.config-path and
+      $nu.env-path, respectively.
+    - Aliasing math expressions now shows error immediately instead
+      of failing silently and showing a confusing error later.
+    - exec inherits Nushell's environment variables.
+    - NU_LIB_DIRS definition in env.nu changed.
+
+-------------------------------------------------------------------
+Wed Apr  5 13:57:51 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.78.0:
+  * Pattern matching.
+  * Aliases now can shadow.
+  * Old alias still keeps working.
+  * Speed improvements.
+  * Optional cell path members.
+  * better error handling in error make.
+  * Support for pretty output format in to nuon.
+  * Breaking changes:
+    - let requires surrounding parentheses for saving command output.
+    - || now required in closures.
+    - We no longer automatically print values as part of a script.
+    - Bare words can't start with a number.
+    - Fields can only be defined once.
+    - Thread configuration moves to par-each.
+    - Ranges become the standard range specifier.
+    - Alias recursion has been disabled.
+    - Empty lists handled more consistently.
+    - Comparison operators now allow null.
+
+-------------------------------------------------------------------
+Sat Mar 18 17:29:16 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.77.1:
+  * Fixes an issue related to subexpressions not properly
+    handling output values.
+
+-------------------------------------------------------------------
+Wed Mar 15 04:04:59 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.77.0:
+  * Reworked aliases (Breaking changes!).
+  * More consistent timestamp handling.
+  * New XML format.
+  * New additions to $nu.
+  * Reworked http subcommands.
+  * Breaking changes:
+    - Alias changes, see above.
+    - env command has been removed, use $env instead
+      (https://github.com/nushell/nushell/pull/8185).
+    - str trim no longer has --all, --both, and --format flags.
+      str replace should be an adequate replacement; please
+      let us know if it is not (#8205).
+    + The changes to timestamp handling noted above (#8244)
+      can require code changes to existing scripts:
+      - Saved data containing the results of an old
+        datetime-to-timestamp conversion will not deserialize
+        correctly when read back by the current version of Nushell.
+        In general, Nushell will produce incorrect datetime
+        values without noting an error.
+      - <int> | into datetime now assumes nanosecond scaling
+        for all timestamps. You must ensure all timestamps computed
+        by your script or retrieved from external sources
+        are scaled appropriately.
+      - <date> | into int can now fail, as noted above. You cannot
+        rely on this operation to persist a arbitrary date.
+    - The change to from xml and to xml commands noted above (#7947)
+      will require to update scripts relying on old
+      output/input format.
+    - mkdir, cp, mv and rm return nothing. Errors and actions with
+      --verbose flag are printed to stderr instead (#8014).
+    - Plugin authors relying on nu_protocol::Value may need to
+      update their code to account for a change
+      to Value::Error (#8375).
+    - Different types of lists can now be appended.
+      This can break scripts that were relying on the stricter
+      bhavior (https://github.com/nushell/nushell/pull/8157).
+
+-------------------------------------------------------------------
+Wed Feb 22 04:20:43 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add constraints. Make 12GB of physical memory.
+- Update to version 0.76.0:
+  * Fix PATH vs Path for command completions
+  * New debugging commands
+    - ast
+    - debug
+    - explain
+  * BREAKING CHANGES:
+    - load-env can not accidentally set $env.PWD anymore
+    - The --numbered flag to enumerate entries has been removed from each, par-each,
+      each while, and reduce. Use the enumerate command added in 0.75 instead.
+    - Plugin system: nu_plugin::Plugin::signature has changed from
+      fn signature(&self) -> Vec<Signature> to fn signature(&self) -> Vec<PluginSignature>
+      to support examples on plugin commands. Plugin authors have to update
+      the relative structure to apply these changes. Normally you just need to
+      perform a global search/replace from Signature to PluginSignature,
+      then rebuild and run with the latest nushell version.
+    - benchmark renamed to timeit.
+    - dataframe commands renamed with a prefix of dfr
+    - view-source renamed to view source
+    - Plugin commands can now include examples, which necessitated a change to
+      the plugin signature, which causes all plugins to need to be recompiled for use
+    - from ini, from vcf, from ics, from eml commands are moved to
+      plugin called nu_plugin_formats to reduce the number of commands in nushell
+      core, you need to install and register the plugin manually to use these command
+    - str lpad and str rpad have been superceeded by fill in order to provide alignment
+    - http get -t,--timeout parameter is now -m,--max-time.
+    - Filesystem commands now print to stderr when using --verbose flag
+    - The parse command will now create 0 indexed columns instead of 1 indexed
+
+- Use zstd compression for vendored tarball
+
+-------------------------------------------------------------------
+Wed Feb  1 03:56:36 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.75.0:
+  * Changed Unicode escapes in strings.
+  * New enumerate command.
+  * Breaking changes to the web-related commands.
+  * main command exported from module defines top-level module
+    command.
+  * Progress bar for save command.
+
+-------------------------------------------------------------------
+Wed Jan 11 10:19:23 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.74.0:
+  * Known externals commands and exec now have "fall-through"
+    signatures.
+  * help is now more helpful.
+  * Initial support for parse-time constants.
+  * New url encode command to percent-encode URLs.
+  * values command to programmatically interact with records.
+  * get, select, cell path access on tables will now error when
+    encountering a hole.
+  * Behavior of -i/--ignore-errors flag for get and select when
+    the entire column is absent has changed.
+  * Certain misused punctuation in def definitions are now errors.
+  * $in now works in catch closures.
+  * MIME-types are supported in ls with an additional flag.
+  * Regular expression queries are cached for performance.
+  * All built-in commands now declare their pipeline input
+    and output types.
+  * get and select now error when encountering a hole.
+  * the behaviour of -i on get and select has changed.
+  * columns will now error for data that is not a table or a record.
+  * The dataframe specific command fill-na has been renamed to
+    fill-nan to better represent its capabilities.
+  * The requirements for the names of a nu command and a command
+    alias have been tightened to avoid some problems.
+  * to toml will only produce output for records now as the output
+    for tables is ambiguous and may be invalid to parse.
+  * exec and known externals don't throw errors when unknowns
+    parameters are passed to them.
+  * help command has been thoroughly refactored and includes
+    several more subcommands. help <word> now matches commands,
+    aliases, and modules.
+  * command names in help commands and $nu.scope.commands are
+    displayed correctly if they were imported from a module
+    with a prefix.
+  * hide command no longer hides environment variables.
+    Use hide-env instead.
+  * math eval has been removed in favour of the direct math
+    commands and expressions (see help operators as well).
+  * last, skip, drop, take until, take while, skip until,
+    skip while, where, reverse, shuffle, and sort-by are now
+    stricter about which types of data they accept.
+
+-------------------------------------------------------------------
+Wed Dec 21 04:26:28 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.73.0:
+  * The boolean && is now and and the boolean || is now or.
+    These were deprecated in the 0.72 release and have now been
+    removed. Existing scripts will need to be updated to the
+    new syntax to run in 0.73.
+  * Experimental interactive explore command.
+  * New math commands.
+  * Changes to commands with predicates:
+    any, all, skip until, skip while, take until, and take while
+    now accept a closure instead of a row condition.
+  * New filter command and simpler where.
+  * New command uniq-by.
+  * Mutable data structures can now have their inner values mutated
+    using =.
+  * More sophisticated coloring of data values using closures.
+  * save no longer overwrites files by default, you must use the
+    new -f/--force flag to overwrite an existing file.
+  * split row command will retain an empty string if splitted
+    string is empty.
+  * split list now properly removes the separator in all positions.
+  * The --show-created-paths flag has been replaced by --verbose
+    from mkdir.
+  * fetch removes --output, --bin, --append flags, use fetch with
+    save to save fetched page to a file.
+  * changes to how get works with deep cell paths.
+  * mkdir's -s/--show-created-paths has been renamed to
+    -v/--verbose for better consistency.
+  * && is now and and || is now or.
+  * any, all, skip until, skip while, take until, take while
+    now take only a closure as an argument.
+  * where now takes only row condition argument, -b flag removed.
+
+-------------------------------------------------------------------
+Tue Dec  6 03:55:57 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.72.1:
+  * With this release, we have also statically linked OpenSSL
+    into the binary to make it easier to use across a larger range
+    of platforms.
+
+-------------------------------------------------------------------
+Wed Nov 30 14:47:58 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.72.0:
+  * Try/catch. Starting with 0.72, it's now much easier to run
+    a command that might fail and then handle the failure
+    if it happens.
+  * Auto-expanding data views. With the new default config,
+    we now also detect the terminal width and will automatically
+    expand the data view to include more information
+    if it's available.
+  * Redirection. This release also includes a new way
+    of redirecting the stdout and/or stderr of external commands.
+    This gives easier access to the output streams than was
+    previously possible.
+  * Closures/blocks. We have now split closures and blocks into
+    two separate value types. A closure can have parameters,
+    can close over variables outside of its scope,
+    and can be passed as a value.
+  * Mutation. Starting in this release, you can create local
+    mutable variables. You can create mutable variables using
+    the mut keyword.
+  * Loop/while. The 0.72 release also includes a few new
+    looping commands: loop and while.
+  * Break/continue. Loops can now also use the break and continue
+    feature common in many programming languages. break will break
+    out of the current loop. And continue will continue the loop
+    at the next iteration.
+  * Return. The 0.72 release also includes the ability to return
+    early from a closure or command.
+  * Command refinement, simplification, and elimination.
+  * Dataframes no longer included by default - smaller binaries.
+  * Allow reloading overlay definitions.
+  * virtualenv activation changes.
+  * Nu's SQLite DSL commands have been removed.
+    open foo.db and open foo.db | query db "SELECT * ..." still work,
+    but the commands which mapped 1-to-1 with SQL clauses
+    (ex: open foo.db | into db | select * | from table some_table
+    | order-by some_column) have been removed. These commands were
+    an interesting experiment but they didn't work out,
+    and we're removing them to simplify database access in Nu.
+  * The is_plugin, is_custom, and is_keyword columns in
+    help commands have been replaced with a single
+    command_type column.
+  * date format now returns an error if not given an input.
+    Previously it would default to the current time.
+  * first and last will now return an error if given a negative index.
+    Previously the behavior was undefined and may have returned
+    entries due to an underflow.
+  * The --predicate flag has been removed from find. where can be
+    used in all situations where find --predicate was previously used.
+  * sort-by now requires a column name to sort by.
+    To sort lists without specifying a column name, sort can be used.
+  * seq, seq char, and seq date no longer have --separator and
+    --terminator flags (#7045, #7054, #7096). This helps ensure
+    that the return type for those commands is consistent,
+    and str join can be used to accomplish the same effect.
+  * The build-string command has been removed. To concatenate strings,
+    use the + operator, string interpolation, or str join.
+  * wrap now expands ranges. It works the same as with lists or seq.
+  * url parse url scheme, url host, url path, and url query
+    commands have been removed. We added the command url parse.
+    This new command returns a Record with scheme, username,
+    password, host, path, query, params (as a Record) and fragment.
+  * sort, sort-by, str contains and find have had their
+    --insensitive flags renamed to --ignore-case.
+    --ignore-case is used by uniq, as well as popular external
+    commands like less, grep and wget, so it could be considered
+    a standard flag name.
+  * New boolean operator xor - Planned operator simplification.
+    To complement our logical boolean operators and/&& and or/||
+    we added boolean xor. This is consistent with bit-and, bit-xor,
+    and bit-or. We are currently considering to deprecate the
+    C-style symbols &&/|| in favor of the spelled out and/or to
+    increase consistency and provide more actionable error
+    messages when trying to use &&/|| in a similar fashion to bash.
+  * Config options have been grouped together.
+    The structure of $env.config (and thus the record used with
+    let-env config = statements in config.nu and other places) has
+    been reorganised. Various options are now grouped into subrecords
+    (similar to table_trim) and had their names shortened.
+    This allows config.nu files to be better structured,
+    and thus easier to edit and read.
+
+-------------------------------------------------------------------
+Wed Nov  9 05:18:21 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.71.0:
+  * New ++ operator.
+  * Improved consistency across commands and types.
+  * Right prompts can now be on the last line.
+  * Configuring the default value viewer via display_output hook.
+  * Completion actions now more familiar.
+  * New --force (-f) flag for the mv command. This change alters mv
+    default behavior. By default overwriting existing files is now
+    prevented (You can use alias mv = mv -f in you config to get
+    the old defaults back).
+  * The column name for the command name in $nu.scope.commands
+    has been changed from command to name. Thus,
+    $nu.scope.commands | where name =~ zip would give you
+    specific command info.
+  * The str distance command now directly returns an Int instead
+    of a record {"distance": <Int>}.
+  * The argument order of format filesize was made consistent
+    with other commands that accept a CellPath to specify fields
+    that should be affected by it. Now the string specifying
+    the format is the first positional argument and the cell
+    path is specified in the following positional argument(s).
+  * The --perf flag for Nu was removed as part of an effort to
+    simplify diagnostics logging.
+
+-------------------------------------------------------------------
+Wed Oct 19 03:18:53 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.70.0:
+  * New table flags --expand
+  * The command first 1 now returns a list with the single value
+    rather than the value itself. This brings it in line with
+    the behaviour of last 1.
+  * The dataframe command with-sql or query dfr has been renamed
+    to query df for consistency.
+
+-------------------------------------------------------------------
+Wed Sep 28 07:11:31 UTC 2022 - Dead Mozay <dead-mozay@opensuse.org>
+
+- Update to version 0.69.1:
+  + Summary of deprecations
+    - source.
+    - source-env.
+    - use.
+    - hide.
+    - hide-env.
+    - export env.
+    - export-env.
+    - export ...
+    - config.nu.
+    - env.nu.
+    - login.nu.
+  * Upcoming virtualenv activation changes.
+  * Grammar Experiments.
+  + Breaking changes
+    - We found a regression in the correctness of the -d and -t
+      flags of touch. To get the release out, we've removed these
+      flags, but hope to replace them with correct implementations
+      in the future. We also removed support for duration literals
+      above weeks, including month, year, and decade literals.
+      These were found to be confusing as it's unclear what a
+      duration of a month is (30 days? 31 days?) The str collect
+      command is now str join.
+
+-------------------------------------------------------------------
+Fri Sep  9 03:01:36 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.68.1:
+  * This addresses a bug with blocks and source-env.
+
+-------------------------------------------------------------------
+Wed Sep  7 15:38:25 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.68.0:
+  * source becomes source-env.
+  * Module envrionment changes.
+  * Syntax unification.
+  * Overlay changes.
+  * Allow parentheses around command signatures.
+  * We added a new command str distance which implements the
+    Levenshtein alorithm.
+  * We added string duration conversion to named durations.
+  * External Completions (experimental).
+  * Renaming of all? to all, any? to any, and empty? to is-empty.
+  * Renaming overlay commands.
+
+-------------------------------------------------------------------
+Wed Aug 17 06:52:00 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.67.0:
+  * We have a new welcome banner.
+  * WARNING! Breaking change!
+  * Relative paths in scripts are file-relative.
+  * Writing SQLite files.
+  * Shell integration (Visual Studio Code).
+  * The error message when an external command is not found has
+    been improved.
+  * Nushell now has a full array of bits and bytes commands for
+    working with binary data.
+  * A new hide-env command is added that can hide environmnet
+    variables in the current scope.
+  * The overlay add spam command would take all commands and aliases
+    from the module and put them directly into the current namespace.
+  * You can now change the name of the added overlay using the
+    new as keyword.
+
+-------------------------------------------------------------------
+Fri Jul 29 03:10:33 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.66.2:
+  * Fix for a crash when using ls on an unknown directory.
+
+-------------------------------------------------------------------
+Thu Jul 28 03:15:19 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.66.1:
+  * Hotfix release of 0.66. It includes a fix for a crash when
+    using ls on an unknown directory.
+
+-------------------------------------------------------------------
+Wed Jul 27 04:00:56 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.66.0:
+  * New table output.
+  * Exit codes:
+    - We've done work in this release that will cause pipelines
+      and commands to stop a script from continuing if they hit
+      a non-zero exit case, much in the same way as a && b in bash
+      does not run b if a returns with a non-zero exit code.
+    - This has been extended to also work when running the full
+      script, so that nu itself will return an non-zero exit code
+      matching the error the script saw when it stopped.
+
+-------------------------------------------------------------------
+Wed Jul  6 04:46:36 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.65.0:
+  * Better support for binary data:
+    - New operators bit-and, bit-or, bit-xor, as well as
+      renamed bit-shl and bit-shr. These correspond to bitwise and,
+      or, exclusive or, shift left, and shift right.
+    - A new encode command as well as binary support for hash.
+    - Improved binary support for skip and take.
+  * Nu-check:
+    - Starting with this release, Nushell now provides a
+      nu-check command which can do a check over a source file
+      for potential parsing and typechecking errors.
+  * Unification continues:
+    - In this release, db and mysql support has simplified,
+      bringing it closer to the already existing dataframe support.
+  * Additional new commands:
+    - You can now use the port command to find the next available port.
+
+-------------------------------------------------------------------
+Wed Jun 15 06:38:54 UTC 2022 - dead_mozay@opensuse.org
+
+- Update to version 0.64.0:
+  * Add --values flag to sort record by values,
+    by default, sort record by keys, and sort not change shape,
+    and path join support multi path, and fix arg parse, and While
+    starting nu, force PWD to be current working directory,
+    and handle SIGQUIT, and add as record tag to transfer
+    result to record, and print warning message if meet non
+    utf-8 path, and fix argument type, and expand env for path,
+    and make ls works better with glob, and base64 command more
+    friendly, and make cp can copy folders contains dangling symbolic
+    link, and make sure no duplicate column exists during
+    eval and merge.
+  * Pin reedline v0.7.0 for the nushell v0.64.0 release, and
+    Address lints from clippy for beta/nightly, and Use search
+    terms in the help menu search, and Update nu-ansi-term to remove
+    Deref impl, and Improve internal documentation of save command,
+    and Update reedline, and Clarify error message for let in pipeline,
+    and Update reedline: Support more bindings in vi mode, and Improve
+    test coverage of command examples, and Add search terms for
+    describe, and Unpin reedline for regular development.
+  * Bool type for binary operations, and each while command,
+    and filesize conversion, and expression to literal, and Remove
+    dfr from dataframe commands, and input and output types,
+    and Lazy dataframes.
+  * Add option to sort-by naturally, and Attempts to add // math operator,
+    and add search terms to alias, and Improves help str substring,
+    and Attempts to add a command that checks if nushell is running
+    with admin priveleges, and Make range require its positional
+    argument, and Small typo fix in signature.rs, and prevent panic
+    with let alone in pipeline, and Add '-o'/--output flag to fetch
+    to download to file, and Add search terms to error make.
+  * Add NU config to allow user be able to turn off external completion,
+    and Support completion for alias and sub-command, and Fix cp bug.
+  * More verbose error handling, and make to text work more
+    intuitively, and add case_sensitive_completions config option.
+  * Add $nu.scope.engine_state, and Fix wrong path help message,
+    and Shorten the links of parser keywords help msgs,
+    and Add 'overlay new' command.
+  * feat: add search terms to category of strings.
+  * SQLite History MVP with timestamp, duration, working directory,
+    exit status metadata.
+  * Added loginshell config file.
+  * fix[table]: Panic when passthru small number of table -w.,
+    and feat[table]: Allow specific table width with -w,
+    like command grid.
+  * Minor fixes to shell integation in repl.,
+    and Improve table output of 'to html'.
+  * Add completions for nu.
+  * Add search terms for all?, any?, length, and keybindings.
+  * feat: add search terms to random & typo fix.
+  * Fix drop nth bug
+
+-------------------------------------------------------------------
+Wed May 04 04:13:04 UTC 2022 - dead_mozay@opensuse.org
+
+- Update to version 0.62.0:
+  * added open editor event in config parsing (#5426)
+  * Fix coloring when string has spaces (#5425)
+  * Update path completions to handle spaces (#5419)
+  * Database commands (#5417)
+  * Fix erroneous removal of "./" folder prefix (#5416)
+  * remove ctrl-l from config.nu (#5415)
+  * Don't resuggest accepted completions (#5369)
+  * Fixed ctrl-c in recursion loop bug #5362 (#5409)
+  * Add ends-with operator and fix dataframe operator behavior (#5395)
+  * Fixed interrupting a for-loop over a list bug #5378 (#5408)
+  * event ClearScrollback is now working in reedline / update default config.nu (#5405)
+  * Rename =^ to 'starts-with' (#5407)
+  * More escaping/unescaping fixes (#5403)
+  * Update reedline to use partial completion changes (#5401)
+  * Adds error printing back in a couple places (#5400)
+  * Add unescaping to external command parsing (#5399)
+  * Move uses of trim_quotes to unescape for filenames (#5398)
+  * a little database cleanup (#5394)
+  * Fix PATH update example (#5393)
+  * Line buffer keybinding (#5390)
+  * Error printing changes for `watch` (#5389)
+  * Remove 'empty' block support reminders, for now. (#5214)
+  * Remove "./" prefix for file path completions (#5387)
+  * Make if else more lazy (#5386)
+  * nu-cli/completions: complete external args as filepath (#5385)
+  * nu-cli/completions: apply correctly nesting for env vars (#5382)
+  * Fix quoting for command line args (#5384)
+  * Line buffer editor (#5381)
+  * allows for nushell to have tables without the index column (#5380)
+  * Revert "nu-cli/completions: better fix for files with special characters (#5254)" (#5372)
+  * Avoid using time conversion methods that may panic (#5365)
+  * Change description of `sort` (#5355)
+  * Add watch command (#5331)
+  * nu-cli/completions: better fix for files with special characters (#5254)
+  * Openssl feature (#5352)
+  * mute false import warning for nu-command test where_ (#5350)
+  * Statically link OpenSSL (#5349)
+  * improve inc plugin docs (#5346)
+  * fixes an issue with an empty selector panic (#5345)
+  * Database commands (#5343)
+  * `db info` tweaks (#5338)
+  * `db info` command (#5335)
+  * Fix 'range' range exclusive (#5334)
+  * Fix use of `export/alias --help` bug (#5332)
+  * Move print_pipeline_data to nu-protocol (#5328)
+  * Allow bare words to interpolate (#5327)
+  * activates optional trim in 'from csv' and 'from tsv' (#5326)
+  * Allows cd (and other commands that depend on current working directory) to use path of type '~user' (#5323)
+  * add database feature to extra (#5322)
+  * Adding ~user tilde recognition in file paths (#5251)
+  * Fuzzy completion matching (#5320)
+  * update build status badge (#5321)
+  * Warn if we see let config = ../.. (#5318)
+  * nu-command/filesystem: clean whitespaces from paths in cd and open (#5310)
+  * update contrib to max=500 (#5317)
+  * Database commands (#5307)
+  * fix: remove `println!()` from `exec` builtin (#5311)
+  * consolidate shell integration behind config setting (#5302)
+  * update sys with new items, add kernel version to os-info (#5308)
+  * Add MatchAlgorithm for completion suggestions (#5244)
+  * feat: add search terms to date (#5306)
+  * nu-cli/completions: added completion for $nu (#5303)
+  * Fix cd - (#5301)
+  * nu-cli: directory syntax shape + completions (#5299)
+  * nu-cli/completions: support record for custom completions (#5298)
+  * Add 'and' and 'or' operators (#5297)
+  * add virtualenv to integrations (#5280)
+  * Clean up tests and unused documentation code (#5273)
+  * Delete obsolete+unused files (#5272)
+  * Use better quoting for commandline args (#5271)
+  * Some cleanups for clippy (#5266)
+  * update os-info os to name (#5265)
+  * git completion: 'git fetch' for remotes (#5253)
+  * typo: seach -> search (#5264)
+  * feat: add search terms for conversions (#5259)
+  * add newlines to end of the default configs (#5256)
+  * refactor html module (#5246)
+  * Set to reedline main branch for development cycle (#5249)
+  * Handle custom values in describe command (#5248)
+  * SQLite overhaul: custom value, `query db` command (#5247)
+  * nu-cli/completions: fix file completions with quotes (#5242)
+  * nu-cli: added tests for file completions (#5232)
+  * add os to $nu based on rust's understanding (#5243)
+  * Feature/refactor completion options (#5228)
+  * move config back to config.nu (#5237)
+  * Move config to be an env var (#5230)
+  * allow par-each to receive $in (#5229)
+  * add custom_completion field to .scope command (#5227)
+  * Added search terms to math commands (#5224)
+  * nu-cli/completions: completion for use and source (#5210)
+  * update miette and switch to GenericErrors (#5222)
+  * Simplify known external tests (#5219)
+  * `nth` -> `select` command (#5217)
+  * Add known external tests (#5216)
+  * Simplify known external name recovery (#5213)
+  * Shell Integration (#5162)
+  * [ls, path relative-to] Fix use of `ls ~ | path relative-to ~` (#5212)
+  * add hex color parsing to ansi (#5209)
+  * cleanup nu-command, remove redundant code (#5208)
+  * nu-cli/completions: removed unnecessary bool (#5207)
+  * Fix env capture (#5205)
+  * nu-cli/completions: add completion for record vars (#5204)
+  * nu-cli/completions: add completion for $env. (#5199)
+  * fix: reduce command have not redirected block's evaluation output (#5193)
+  * fix timestamp parsing on 32-bit platforms (#5192)
+  * Add `char -i` for chars from integers (#5183)
+  * Fix completions for `git push` and `git checkout` close: #5021 and #4599 (#5188)
+  * documented ShellError errors. (#5172)
+  * update crate chrono-tz to its latest version (#5184)
+  * Initial SQLite functionality (#5182)
+  * don't join paths to cwd ever in calls to external functions (#5180)
+  * allow default color shortcut names (#5177)
+  * Add a dockerfile example based on debian bullseye-slim (#5176)
+  * Allow integer to `char -u` (#5174)
+
+-------------------------------------------------------------------
+Wed Apr 13 03:58:57 UTC 2022 - dead_mozay@opensuse.org
+
+- Update to version 0.61.0:
+  * Fix typo in link (#5168)
+  * Fix failing unit tests on Windows (#5142) (#5143)
+  * Support binary literals with binary format (#5149)
+  * Support unbinding a particular key event (#5152)
+  * Allow overriding of menu keybindings (#5148)
+  * Allows aliases in use lists (#5150)
+  * enable `ls` to output datetime in local time vs utc (#5141)
+  * Fix known externals, fix operator spans (#5140)
+  * Track call arguments in a single list (#5125)
+  * rename menu/fix type-o (#5139)
+  * Improve `$in` handling (#5137)
+  * Let 'each' also send input to block (#5136)
+  * Soften the block arity checking (#5135)
+  * doc change from engine-q to nushell (#5134)
+  * added ability to opt in to normal string replacement in `replace` cmd (#5133)
+  * Update LICENSE
+  * Revert "nu-cli/completions: cache layer for fetching (#5114)" (#5132)
+  * Include license text in all crates (#5094)
+  * Fix command descriptions+examples (#5129)
+  * nu-cli/completions: removed default filter for command (#5126)
+  * add keep deprecated commands (#5124)
+  * Move 'keep' to 'take' (#5123)
+  * nu-cli/completions: cache layer for fetching (#5114)
+  * nu-cli/completions: fix file completions filtering (#5122)
+  * Implement rest of `touch` flags (#5119)
+  * Change string contains operators to regex (#5117)
+  * Add datetime to math-like (#5118)
+  * Improve describe to be more accurate (#5116)
+  * Remove external name exceptions (#5115)
+  * Add unary not (#5111)
+  * Add env.nu file for environment config (#5099)
+  * nu-cli/completions: prioritize non hidden folders (#5108)
+  * use arc to avoid cloning entire engine for menus (#5104)
+  * nu-cli: refactor completions (#5102)
+  * Load plugins for scripts and commands, too (#5105)
+  * Trim newline from `input` results (#5097)
+  * enables find to search records with regex (#5100)
+  * Fix Format for non-basic data types (#5095)
+  * Add search terms to many commands (#5096)
+  * allow record as text style (#5092)
+  * Update reedline to mut Completer API
+  * new `glob` command (#5087)
+  * Add raw strings, use raw strings for env (#5090)
+  * feature: Add some context to completions (#5078)
+  * Add quiet and feedback to mv command (#5073)
+  * Generic menus (#5085)
+  * Set LAST_EXIT_CODE on parse error (#5084)
+  * Fix Python plugin (missing search terms) (#5083)
+  * Tweak append+prepend help (#5080)
+  * Fix for search terms in `help --find` (#5081)
+  * Add support for single value row conditions (#5072)
+  * Add command descriptions to completions (#5063)
+  * Allow open to work with 'from ...' block commands (#5049)
+  * Add starts with operator (#5061)
+  * let a simple last be a single value (#5060)
+  * Add 'date to-record' (#5058)
+  * Fix sort signature (#5055)
+  * Allow strings for prompt env vars (#5052)
+  * Sort command (#5054)
+  * Update reedline to new constructor API (#5051)
+  * Fix load-env unsupported input error message (#5039)
+  * Lift line editor construction out of loop (#5041)
+  * feat: add --suppress-output (-s) to input command (#5017)
+  * finish hooking up completion descriptions (#5047)
+  * Add record, list, and table to signature types (#5040)
+  * evaluate indicators as commands (#5026)
+  * Fix which-support feature (#5038)
+  * update nu-glob README (#5037)
+  * Fix env var shorthand when value contains `=` (#5022)
+  * Clean up which/which-support Cargo feature (#5019)
+  * Strip '+ ' decoration in git branch list (#5016)
+  * Use real stack during custom completion (#5010)
+  * fix: pass metadata to more filter commands for `ls_colors` (#5009)
+  * corrects menu selection (#5004)
+  * Fix for loop ctrlc not terminating (#5003)
+  * See if levenshtein sorting feels goofor completions (#5001)
+  * Add a README about changing capnp schema (#4998)
+  * did_you_mean: case-insensitive edit distance, tests (#4999)
+  * Help menu improvements (#4997)
+  * Add search terms to Command and Signature (#4980)
+  * Help menu (#4992)
+  * Check same-string-different-case in did_you_mean (#4991)
+  * Nu ansi term update (#4988)
+  * Add streaming support to save for ExternalStream data (#4985)
+  * Support binary data to stdin of run-external (#4984)
+  * Limit mem usage + back-pressure via bounded channels (#4986)
+  * fix ls when file is a socket on mac (#4983)
+  * Improve escaping in string interpolation (#4982)
+  * Add parser keyword note to help and $nu.scope (#4978)
+  * Remove is_private from $nu.scope.commands (#4979)
+  * Termux/Android target support for v0.60.0 (#4956)
+  * Don't include trailing separator when expanding tilde (#4974)
+  * Fix alias import (#4968)
+  * Improve the 'use' and 'source' errors (#4966)
+  * Fix single quote environment values (#4960)
+  * Add escapes to 'to nuon' (#4964)
+  * Fix path join on streams (#4959)
+  * align all of the serde_json crates to the same version (#4949)
+  * Fix operator precedence parser (#4947)
+  * Fix #4942, and add a table sorting example for `sort-by` command (#4948)
+  * add .mailmap to .gitignore
+  * Set the minimum Rust version to 1.59 (#4940)
+  * bump csv crate to the latest 1.1.6 (#4939)
+  * Fix parse_string_strict() to detect unbalanced quotes properly (#4928)
+  * CantConvert improvements (#4926)
+  * Don't assume external `ls` (#4925)
+  * added missing metadata for drop and uniq #4763 (#4908)
+  * rename export def to export alias (#4912)
+  * update link (#4915)
+  * chore: Update default register examples (#4904)
+  * Pass `/D` flag to `cmd.exe` to disable AutoRun (#4903)
+  * add ability to execute on demand (#4896)
+
+-------------------------------------------------------------------
+Wed Mar 23 09:49:55 UTC 2022 - dead_mozay@opensuse.org
+
+- Update to version 0.60.0:
+  * See the full list of changes:
+    https://www.nushell.sh/blog/2022-03-22-nushell_0_60.html
+
+-------------------------------------------------------------------
+Tue Feb 08 11:31:43 UTC 2022 - dead_mozay@opensuse.org
+
+- Update to version 0.44.0:
+  * Drop with iter range (#4242)
+
+-------------------------------------------------------------------
+Wed Jan 19 05:34:22 UTC 2022 - dead_mozay@opensuse.org
+
+- Update to version 0.43.0:
+  * Fix clippy lints (#4262)
+
+-------------------------------------------------------------------
+Wed Dec 29 03:23:05 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.42.0:
+  * bat: use regex-onig instead of regex-fancy (#4226)
+  * allow insecure server connections when using SSL (#4219)
+  * Don't panic if the other end of std{out,err} is closed (#4179)
+  * use heck for string casing (#4081)
+  * fix: Implicit coercion of boolean false and empty value #4094 (#4120)
+  * fix: change `into column_path` to `into column-path` (breaking change) (#4185) (#4189)
+
+-------------------------------------------------------------------
+Wed Dec 08 08:54:27 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.41.0:
+  * avoid unnecessary allocation (#4178)
+  * Fix clippy warnings (#4176)
+  * Seems like accessing $it outside each is not possible now (#4000)
+  * add login shell flag (#4175)
+  * Remove 'arboard' (#4174)
+  * Sanitize arguments to external commands a bit better (#4157)
+  * save --append: create file if it doesn't exist (#4156)
+  * Correct spelling (#4152)
+
+-------------------------------------------------------------------
+Wed Nov 17 11:53:40 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.40.0:
+  * Add 'detect columns' command (#4127)
+  * missed from_mp4, added back (#4128)
+  * trying upx and strip (#4125)
+  * update release to allow running manually (#4123)
+  * fix: panic! during parsing (#4107)
+  * Get rid of header bold option (#4076)
+  * Fix #4070: Inconsistent file matching rule for ls and rm (#4099)
+
+-------------------------------------------------------------------
+Wed Oct 27 03:32:13 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.39.0:
+  * fix regression (#4086)
+  * remove history file after clearing it (#4069)
+
+-------------------------------------------------------------------
+Wed Oct 06 03:33:31 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.38.0:
+  * Remove the broken scrolling support (#4063)
+  * Add `-c` flag to `select` command (#4062)
+  * expand tilde when reading plugin_dirs (#4052)
+  * remove ansi colors if this is not a tty (#4058)
+  * new command: into column_path (#4048)
+  * Add `-c` flag to `update cells` subcommand (#4039)
+  * Fix 90 degrees tables problem (#4043)
+  * Added BigInt handling to the delimited file format for the 'to' command (#4034)
+  * Scraping multiple tables (#4036)
+  * merge span (#4031)
+  * Flexibility updating table's cells. (#4027)
+  * Support completion when cursor inside an argument (#4023)
+  * Fix #3090: `let` binding in command leaks when error occurs (#4022)
+  * add command g to switch shell quickly (#4014)
+  * add table selector for downloading web tables (#4004)
+  * fix: enable SIMD (#4021)
+  * Move nu-path tests to integration tests (#4015)
+  * Update to polars 0.16 (#4013)
+  * Path commands: Put column path args behid flag; Allow `path join` appending without flag (#4008)
+
+-------------------------------------------------------------------
+Wed Sep 15 03:58:33 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.37.0:
+  * change name to command_prompt (#4003)
+  * Small fixes and refactors to paths & source command (#3998)
+  * Fix clippy warnings (#3997)
+  * Improve error message when bash-style alias syntax is mistakenly used (#3995)
+  * support appending when saving file (#3992)
+  * Allow knowing the command name tag given no input. (#3988)
+  * Create errors from tables. (#3986)
+  * Add subcommand `into filesize` (#3987)
+  * feat: spawn the executables directly if possible (#3974)
+  * Move sys, ps, fetch, post to internal commands (#3983)
+  * added more escapes to support ansi art (#3973)
+  * nu-path crate refactor (#3730)
+  * Remove duplicate dependencies (#3961)
+  * introducing the `find` command (#3971)
+  * Allow different names for ...rest (#3954)
+  * Allow environment variables to be hidden (#3950)
+  * rename command and rename for melt (#3968)
+  * Allow custom lib dir path for sourcing nu script libraries. (#3940)
+  * tweak the version | pivot instructions (#3964)
+
+-------------------------------------------------------------------
+Wed Aug 25 02:52:01 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.36.0:
+  * Rolling and cumulative commands (#3960)
+  * update the config part (#3962)
+  * Add a 'tutor' command (#3949)
+  * added `help --find` to search usage and extra_usage text for strings (#3948)
+  * Allow `source` to accept paths with emojis (#3939)
+  * Only allow unaliasing in current scope, add tests (#3936)
+  * Add the ability to remove and list aliases (#3879)
+  * Switch back to building for size (#3924)
+  * Add trailing slash in completion of symlinked dir (#3921)
+  * allow fetch to follow redirects (#3923)
+  * The zip command. (#3919)
+  * PROMPT_STRING env variable (#3918)
+  * Rustyline bug fixes (#3916)
+  * Flexible dropping of rows (by desired row number) (#3917)
+  * document engine-p porting (#3868)
+  * Count the size of the directories when calculating the size in DirInfo (#3902)
+  * describe command (#3907)
+  * in/not-in for strings (#3906)
+  * Use bigdecimal-rs patch (#3905)
+  * source config from $NU_CONFIG_DIR if it exists (#3883)
+  * Reimplement parsers with nu-serde (#3880)
+  * Datetime commands (#3894)
+  * Implement PartialEq for ReturnSuccess (#3888)
+  * add officially supported by section (#3895)
+  * Normalize capitalization in issue templates (#3891)
+
+-------------------------------------------------------------------
+Wed Aug 04 04:27:39 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.35.0:
+  * Better representation in nested dataframes (#3875)
+  * simple contains arguments (#3874)
+  * Support equals sign in shorthand environment variable values (#3869)
+  * Add support for mult-doc YAML files (#3870)
+  * Adding parse fix for power operator error on negative integers and de… (#3821)
+  * fix interpolated strings when using unicode (#3866)
+  * add performance metrics for measuring startup time (#3854)
+  * Add named positionals to all (#3863)
+  * Improve md5 and sha256 code (#3841)
+  * Fix select to insert nulls in sparse tables instead of ignoring absent values (#3857)
+  * added the ability to compare time units like 1hr < 2hr (#3845)
+  * append dataframes (#3839)
+  * Add sha256 to the hash command (#3836)
+  * All is a DataFrame (#3812)
+  * use chrono_humanize for datetime formatting (#3834)
+  * add `date humanize` command (#3833)
+  * Read from standard input in `rm` (#3763)
+  * change describe so it doesn't output colored strings (#3832)
+  *  Support other variables than PATH in pathvar (2nd attempt) (#3828)
+  * Fix wrong path separator (#3829)
+  * Revert "Support other variables than PATH in pathvar (#3791)" (#3827)
+  * Implement into path conversion (#3811)
+  * port capitalize to engine-p (#3794)
+  * Support other variables than PATH in pathvar (#3791)
+  * Fix expected age of mockup files in example tests (#3808)
+  * Dataframe Shape command (#3805)
+  * `bat` theme wasn't getting set properly (#3807)
+  * Updated polars version for faster CSV reader (#3781)
+  * fixed `show_hints` option to allow hints to be turned off (#3780)
+  * corrected position of dataframes (#3776)
+  * Add the -s parameter to submit package to winget in pipeline (#3767)
+
+-------------------------------------------------------------------
+Fri Jul 16 04:56:44 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.34.0:
+  * Into binary changes (#3758)
+  * #3385: Add unique option for uniq command (#3754)
+  * port strings size engine-p (#3690) (#3753)
+  * a few things that make it easier to debug keybindings (#3752)
+  * Fix nothing string comparison (#3750)
+  * add a couple more features (#3749)
+  * Simplify `is_executable` in `nu-completion`. (#3742)
+  * try to use regular trim commands as much as possible (#3743)
+  * Update wasm sample gitignore for node_modules. (#3747)
+  * Downgrade crossterm to fix pager compilation (#3740)
+  * ^ls doesn't exist on windows (#3745)
+  * Remove ptree dep from nu-command, remove associated feature. (#3741)
+  * Update minus, tui to remove crossterm 0.18 dep. (#3739)
+  * Remove empty `trace` feature. (#3732)
+  * Bump a few source compatible nu-command dependencies (#3724)
+  * New take command (#3722)
+  * Wasm fix (#3729)
+  * Submit package to winget during release. (#3717)
+  * move `lang` command to `$nu` (#3720)
+  * Removed list from dataframe command signatures (#3713)
+  * nu-cli ctrl-c feature support. (#3718)
+  * add ansi osc string terminator (#3712)
+  * Remove unused dep on nu-cli from nu_plugin_chart. (#3709)
+  * a new command to query the nushell internals (#3704)
+  * Casting operations for Series with differents types (#3702)
+  * Add Test Case for Special Character Paths (#3596)
+  * Removed bug occurring with f64 (#3697)
+  * Adding all-trim option (with format and all-flag) (#3696)
+  * Add paste command (#3694)
+  * Support multiple shorthand env vars (#3692)
+  * port network url to engine-p (#3690)
+  * Add support for arbitrarily nested subcommands (#3688)
+  * Fix string interpolation is not working with external command (#3686)
+  * documentation: consistent abbreviation for URL (#3684)
+  * No infer schema (#3683)
+  * Clean column names (#3678)
+  * Make lexing configurable wrt newlines (#3682)
+  * Improve def parse errors (#3681)
+  * Add `pathvar` command (#3670)
+  * Always read textview input from stream (#3680)
+  * update filesize -> filesize math to fix coercion errors (#3675)
+  * make nu-cli mod app public (#3673)
+  * Enable dataframe command by default (#3672)
+  * Variable completions. (#3666)
+  * Fixed panic on math with large durations (#3669)
+
+-------------------------------------------------------------------
+Wed Jun 23 02:45:14 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.33.0:
+  * speed up windows completions (#3665)
+  * updated `main` in table so that it outputs again (#3662)
+  * Add built-in var to refer to pipeline values (#3661)
+  * update/add path separators and environment separators to char (#3660)
+  * Move path handling to nu-path (#3653)
+  * Series commands (#3652)
+  * port string case commands to engine-p (#3649)
+  * Add `unlet_env` command (#3629)
+  * Begin directory contrib docs and split commands (#3650)
+  * Remove dir-s/ectories/ectories-support features (#3647)
+  * Fix the ignore example (#3644)
+  * Relax groups and blocks to output at pipeline level (#3643)
+  * Fix issue in external subexpression paths (#3642)
+  * Add back disks and net to sys (#3639)
+  * Only discard command comment if prev token was comment (#3628)
+  * Shellcheck (#3635)
+  * Extract completions into subcrate. (#3631)
+  * Add file not found error for nu cmd args (#3627)
+  * Nu's rest arguments are source(s) files scripts to run. (#3624)
+  * Remove 'help' Nu bin positional support. (#3621)
+  * Make Nu bootstrap itself from main. (#3619)
+  * Dataframe commands (#3608)
+  * Begin porting mkdir (#3607)
+  * Fix syntax hightlight when using Circumflex-Operator (#3613)
+  * Add support to run external command with string evaluation (#3611)
+  * enable theming of the command line syntax (#3606)
+  * Make arg eval lazy, remove old arg evaluation code (#3603)
+  * Series arithmetic (#3602)
+  * add single quote and double quote to char command (#3601)
+  * from xlsx/ods: Add parameter --sheets (#3600)
+  * Further improve arg errors (#3598)
+  * Improve the errors for arg types (#3597)
+  * Add help flag support to alias (#3595)
+  * Improve alias highlighting/completions (#3594)
+  * Clarify `exec` help message; Update to engine-p (#3588)
+  * Improve expr parse (#3584)
+  * change command duration env var to emit duration in milliseconds and also change var name to CMD_DURATION_MS (#3581)
+  * Improve external quoting logic (#3579)
+  * Improve quoted completions (#3577)
+  * Improve completions inside of a pipeline (#3575)
+  * Fix completion crash (#3574)
+  * Column selector using FullColumnPath (#3572)
+  * Add support for subcommand completions (#3571)
+  * Fix duration literals in `where` docs (#3573)
+  * added ansi gradient in the spirit of fun (#3570)
+  * Series Operation (#3563)
+  * Rename the use of invocation to subexpression (#3568)
+  * Simpler parse improvement (#3566)
+  * Improve partial completion/highlight (#3564)
+  * Path expand fixes (#3505)
+  * Respect territory in locale (e.g. de_CH) for byte formatting (#3560)
+  * Add hex, octal, binary (#3562)
+  * More fixes for bigint duration (#3557)
+  * port group-by date to engine-p (#3556)
+  * Switch duration back to bigint (#3554)
+  * Finish removing arg deserialization (#3552)
+  * add list of installed plugins to version command (#3548)
+  * Fix VCS markers not showing up in textview (#3530)
+  * Dataframe commands (#3502)
+  * accomodate decimals when converting gjson numbers (#3544)
+  * fixed the prompt (#3539)
+  * Retain tag when accessing a var (#3535)
+  * from sqlite: Add parameter --tables (#3529)
+
+-------------------------------------------------------------------
+Wed Jun 02 11:00:28 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.32.0:
+  * fix: filename quoting #  and update and unify surf dependency (#3524)
+  * to sqlite: Fix panic caused by empty tables (#3522)
+  * feat: add attribute selection to nu_plugion_selector (#3519)
+  * Ensure correct partial key=value flag. (#3518)
+  * Resolve issues with `rm *` globbing (#3516)
+  * Parse key=value named flag support. (#3515)
+  * Autogenerate missing docs (#3514)
+  * update keybindings to support new rustyline functionality (#3511)
+  * remove expect so that config doesn't fail (#3510)
+  * Cleanup let varname and rhs (#3507)
+  * Add for..in command (#3504)
+  * Convert do command to engine-p; Fix flag name (#3503)
+  * fix polars compile warnings (#3501)
+  * remove str from (#3500)
+  * remove into int references (#3499)
+  * Dataframe commands (#3498)
+  * add locale for ls size (#3497)
+  * Fix path dots expansion (#3491)
+  * Allow aliases to expand and ignore painting outside of lines (#3492)
+  * Add the load-env command (#3484)
+  * correctly escape pipe in windows/cmd.exe (#3489)
+  * error message cleanup for into string (#3488)
+  * Fix bad operator (#3479)
+  * Pass command's span correctly when reporting unexpected flags. (#3478)
+  * Add params to `do` (#3477)
+  * Groupby operations on dataframes (#3473)
+  * Add path separator to `char`; Update char to engine-p; List all names of all possible chars (#3470)
+  * Commands to engine (#3448)
+  * Implement `path relative-to` subcommand (#3461)
+  * Use enginep style in enter command (#3469)
+  * delete crates/nu-command/src/commands/date/utc.rs (#3464)
+  * let date commands pull default date (#3463)
+  * update min rust version (#3462)
+  * port group-by to engine-p (#3458)
+  * nothing converted to string should return nothing and not fail (#3459)
+  * add addition characters that can be hard to work with in nushell (#3457)
+  * Do a bit more cleanup of block params (#3455)
+  * Split unit into duration and filesize (#3453)
+  * Paren interpolation (#3452)
+  * updated round to support i64 (#3451)
+  * Improve block params (#3450)
+  * Remove rest_args() from evaluated CommandArgs (#3449)
+  * Add explicit block params (#3444)
+  * Just treat u64 like i64 for now (#3442)
+  * Fix path join argument type and a typo (#3441)
+  * Load parquet and json files (#3437)
+  * updated to the latest rustyline (#3439)
+  * don't let externals break ansi escapes (#3438)
+  * Negative indexing for range (#3427)
+  * Add Support for Partial Completions (#3432)
+  * Dataframe new commands (#3425)
+  * re-enable ansi support when externals break it (#3429)
+  * Commands to engine p (#3426)
+  * Make the default int an i64 (#3428)
+  * changed comment slightly
+  * Dataframe feature for plugins (#3424)
+  * commands to engine p (#3417)
+  * Improve missing var in var-path error (#3415)
+  * Do less work in sys (#3413)
+  * Fix string interp/shorthand overlap (#3412)
+  * date commands ported (#3410)
+  * Config commands to engine p (#3408)
+  * Migrate last to engine-p (#3406)
+  * Simplify string interpolation (#3401)
+  * Simplify expressions (#3389)
+  * Complete Dataframe MVP (#3373)
+  * make seq more nu-like by returning numbers when possible (#3409)
+
+-------------------------------------------------------------------
+Wed May 12 05:32:54 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.31.0:
+  * Remove unnecessary work from ps (#3407)
+  * Commands to engine p (#3404)
+  * add into string (#3403)
+  * Convert the rest of "random" subcommands to engine-p (#3399)
+  * engine-p: build-string remove ActionStream (#3394)
+  * Port random integer & decimal to engine-p + related refactoring (#3393)
+  * Clippy fixes for new Rust version (#3392)
+  * Juicy features cargo installer wrapper (#3388)
+  *  #3385: Add ignore-case and duplicated options to uniq command  (#3387)
+  * Add first prototype of functionality to parse numbers in parantheses (#3209)
+  * Dont unwrap rustyline helper in cli (#3382)
+  * Simplify down to one type of context (#3379)
+  * Port range to engine-p (#3377)
+  * added check for endian-ness, added a bytes and skip (#3375)
+  * added ability to change "#" color using header_color (#3374)
+  * add nu-pretty-hex, add into binary, update binaryview (#3370)
+  * tweaked the error handling to show specific errors (#3367)
+  * updated to a quicker levenshtein implementation (#3366)
+  * Fix #3231: Pick up nu-env if cd with shortcuts (#3344)
+  * Fix array index out of bounds error in nu_protocol::value::levenshtein_distance() (#3358)
+  * #3298: reduce --numbered bug (#3354)
+  * Fix table-pager feature compilation (#3359)
+  * allow start to handle urls (#3351)
+  * ichwh removed (#3349)
+  * Move any to enginep style (#3324)
+  * Fix external redirect (#3345)
+
+-------------------------------------------------------------------
+Wed Apr 21 07:12:52 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.30.0:
+  * Properly evaluate dynamic blocks (#3339)
+  * Make finding the path variable more robust (#3336)
+  * Add a sync from the known path to the env (#3335)
+  * Path Enhancement Project #2: parse, join and split (#3256)
+  * Use new functions in which (#3310)
+  * Fix parsing dot dot path (#3331)
+  * add query json plugin for experimentation (#3327)
+  * Make nth more stream-able (#3330)
+  * Engine-p style in compact (#3325)
+  * Enginep/all (#3312)
+  * Implementing Nu command guide. (#3326)
+  * Fix Running echo .. starts printing integers forever (#3322)
+  * change $scope.variables output to a table (#3323)
+  * Move to* and from* to engine-p (#3320)
+  * sort scope.aliases, commands, variables (#3319)
+  * Make sure that scripts can also have custom commands. (#3309)
+  * Use append_history instead of save_history to preserve existing history (#3314)
+  * Deserialization and outputstream math commands (#3315)
+  * add variables to $scope (#3316)
+  * remote --help/-h from $scope.commands display (#3311)
+  * remove dupes in get_commands/get_command_names (#3308)
+  * Fix the auto-conversion regression (#3307)
+  * A few optimisations (#3306)
+  * Add commands to scope variable (#3272)
+  * Fix #3213 Rest arg is not optional (#3303)
+  * Split OutputStream into ActionStream/OutputStream (#3304)
+  * Fix type error when Value is viewed as file path (#3305)
+  * Remove take_while from internal iterator (#3301)
+  * Improve range and internal iteration (#3300)
+  * preparing for into subcommands (#3299)
+  * clean up error handling a bit (#3297)
+  * move out call info deserializing from `str` (#3294)
+  * Disallow rm to trash if built without trash-support enabled. (#3278)
+  * Remove length collecting its input (#3292)
+  * Fix ansi rgb fg (#3293)
+  * Simplify the default feature list (#3288)
+  * Remove x1b, update prompt (#3291)
+  * add "into int" behavior (#3279)
+  * Move from using a Block to an Arc'd Block (#3289)
+  * Refactor/config commands (#3265)
+  * Do not store whitespace entries into history (#3019) (#3286)
+  * make Table, Autoview read in memory config. (#3287)
+  * Remove some clones and improve when autoview reads config (#3285)
+  * Runnable contexts move. (#3283)
+  * Begin migration away from arg serialization (#3281)
+  * Fix externals busy waiting (#3280)
+  * [fix] crashing issues when the given timestamp is out of range (#3271)
+  * Remove `yr` and `mon` (#3262)
+  * account for startup commands in the scope. (#3261)
+  * add TiB and PiB (#3257)
+  * Remove unused help shell. Slight cleanup and improvement. (#3258)
+  * Impl one configurable function to run scripts (#3242)
+  * Fix typos and capitalization of "Unicode" (#3234)
+  * commands: any? all? (#3252)
+  * Parse decimal units (#3243)
+  * fix lack of auto-suggestion for aliases (#3249)
+  * Mathsqrt (#3239)
+  * Fix #3244: Add tag reloaded frame (#3246)
+  * Fixes error when trying to delete a FIFO (#3235)
+  * Output error when ls into a file without permission (#3218)
+  * Stop nu panicks in math.round on a large decimal value(Most of the time) (#3224)
+  * Refactor nu-cli/env* (#3041)
+
+-------------------------------------------------------------------
+Wed Mar 31 02:49:41 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.29.0:
+  * echo $scope.aliases | pivot to see all of your aliases (#3203)
+  * update date to-timezone usage (#3223)
+  * History, more test coverage improvements, and refactorings. (#3217)
+  * add ability to cd to ~/blah (#3210)
+  * add support for timestamp-based time conversion by specifying timezone (#3207)
+  * fix: prompt does not find external commands #3134 (#3189)
+  * support forward slash for directory completion in Windows (#3201)
+  * Add basic support for md5 hashing strings and binary data (#3197)
+  * added the ability to create multi-byte unicode chars like emoji (#3195)
+  * ✨ Add `--signal` option to `kill` command (#3077) (#3079)
+  * Make opening a directory list its contents (#3118)
+  * Move script to nu engine (#3092)
+  * fix: unicode byte counting error #3150 (#3159)
+  * Lines no longer treats a text buffer as a line (#3153)
+  * move from h1-client-rustls to hyper-client (#3154)
+
+-------------------------------------------------------------------
+Wed Mar 10 01:19:10 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.28.0:
+  * move bel and backspace to char since they're not ansi (#3144)
+  * Fix trash functionality (#3146)
+  * Allow composing help message from two parts (#3124)
+  * fix: deadlock when printing errors (#3140)
+  * print string returned by draw_table, in autoview when pivot mode is on (#3135)
+  * Add exit code argument (#3132)
+  * hopefully fixes the coercion error when comparing $nothing to $var (#3133)
+  * use add_exit_callback, update to rezural/nushell which contains add_exit_callback, and contains updated keybindings (#3121)
+  * Refactor arguments of path subcommands & Add path join subcommand (#3123)
+  * Preserve order when serializing/deserialize json by default. (#3126)
+  * Add option to invert match command selection (#3114)
+  * Use writer from host instead of always std::err (#3112)
+  * help generate_docs | flatten crashes nushell (#3099)
+  * refactor parse_math_expression, reduce indentation (#3093)
+  * Allow dropping columns. (#3107)
+  * enabled the easy access use of nu-ansi-term's "Light" colors (#3100)
+  * add ansi strip subcommand (#3095)
+  * Table content rolling. (#3097)
+  * return string from draw_table instead of printing directly (#3088)
+  * Make sure `CurDir` is filtered out in absolutize. (#3084)
+  * Remove parking_lot crate reference from nu-data (#3091)
+  * 90 degree table rotations (clockwise and counter-clockwise) (#3086)
+  * add "-0" as short for --headerless in "from" commands (#3042)
+  * add the ability to time commands (#3081)
+  * Set skip_welcome_message to false by default and add note (#3069)
+  * this example now runs out of the box instead of failing with no value or the wrong value (#3067)
+
+-------------------------------------------------------------------
+Sun Mar  7 16:00:51 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Enable features extra.
+
+-------------------------------------------------------------------
+Fri Feb 19 05:52:19 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.27.1:
+  * add height method to Host trait, and implementors (#3064)
+
+-------------------------------------------------------------------
+Wed Feb 17 03:22:33 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.27.0:
+  * Add back in column truncation (#3061)
+  * fix sample_config: date --format no longer supported (#3060)
+  * Source path including tilda (#3059)
+  * fix prompts on startup (#3056)
+  * Fix quick command reference link in README (#3052)
+  * refactor parser: rename method pub fn block to parse_block (#3047)
+  * add config "filesize_metric = true" for default formatting of filesize (#3045)
+  * display boolean config options as true/false instead of Yes/No (#3043)
+  * New termsize command (#3038)
+  * added comment for table_mode (#3036)
+  * Fix fmt and small cleaning in nu-parser (#3033)
+  * sort_by: support -r flag for reverse (#3025)
+  * which: accept several applications/commands (#3024)
+  * Soft rest arguments column path cohersions. (#3016)
+  * Fix 'ps -l' output when a process doesn't have a parent process. (#3015)
+  * Ensure selection of columns are done once per column (#3012)
+  * fix the ps command's virtual mem (#3007)
+  * standardize on how to get file size (#2992)
+  * Minimal markdown syntax per element support. (#2997)
+  * add $nothing and tests (#2995)
+  * Move filesize to use bigint (#2984)
+  * added pow operator, and filesize math (#2976)
+  * allow str from to convert more things to string (#2977)
+  * Add possibility to declare optional parameters and switch flags (#2966)
+  * add % operator for modulus, work with decimals (#2975)
+
+-------------------------------------------------------------------
+Wed Jan 27 06:12:42 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.26.0:
+  * allow pad to use multi-byte chars (#2973)
+  * Remove unnecessary `clone()` (#2970)
+  * Add a new animated demo (#2971)
+  * Use equality assert macros (#2969)
+  * Fix ps sys units (#2967)
+  * Error on bad row in column path (#2964)
+  * Parity and anchor carrying for str command suite. (#2965)
+  * fixed char signature (#2963)
+  * Add rest support to blocks (#2962)
+  * fix some misalignment errors (#2959)
+  * parser/add rest args to def (#2961)
+  * Clean up and refactoring  examples tests. (#2957)
+  * added more char escapes (#2955)
+  * Add --skip flag to nth command (#2953)
+  * Temporarily(?) switch from heim+uom to sysinfo (#2954)
+  * Replace dirs and directories with maintained (#2949)
+  * Flush out! lines, helps autoview (#2952)
+  * fix: error Variable not in scope for a def parameter #2901 (#2951)
+  * parser/split long short flags (#2944)
+  * Add def documentation (#2939)
+  * a small regex optimization (#2937)
+  * str set sub command removal. (#2940)
+  * move keybinding_path to nu-data (#2927)
+  * Revert tab completion changes (#2929)
+  * Improve tab completion behaviour (#2916)
+  * remove set from windows cmd_builtins (#2924)
+  * Update alias docs (#2925)
+  * Don't throw err on typename as parameter name (#2926)
+  * Add dirs dependency to nu-engine (#2922)
+  * Update alias docs to new syntax (#2917)
+  * RangeIterator can also go down (#2913)
+  * Don't print description in help if none exists (#2915)
+  * Feature/def signature with comments (#2905)
+  * working for comparing filepath to string (#2906)
+  * Split nu-cli into nu-cli/nu-engine (#2898)
+  * compare filepath and string (#2897)
+  * Add aliased command to which output (#2894)
+  * Fix reading/writing bigint and bigdecimal (#2893)
+  * Obey precedence rules in which; Fix #2875 (#2885)
+  * Rename the Path and Pattern primitives (#2889)
+  * Treat all the startup commands as a single script file (#2890)
+  * Remove the line primitive (#2887)
+  * Add comments to next LiteCommand (#2846)
+  * Document lexer (#2865)
+  * Adding coerce filesize functionality to math avg median (#2848)
+
+-------------------------------------------------------------------
+Wed Jan 06 13:27:46 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.25.1:
+  * Add proper shadowing (#2851)
+  * Don't leak set/set-env/source scopes via actions (#2849)
+  * Tighten how input streams handle nothing, and related (#2847)
+  * Improve some errors, streamline internal error handling (#2839)
+  * Display aliases and custom commands in which; fix #2810 (#2834)
+  * Properly handle commands defined inside of other commands (#2837)
+  * Properly error when 'source' argument can't be found (#2836)
+  * Nucli refactor script mod (#2831)
+  * Simplify run_block slightly (#2830)
+  * Change ls to output path (#2829)
+  * Add support for custom subcommands (#2814)
+  * Add experimental support for flags in custom commands (#2808)
+  * Rename cond math (#2807)
+  * Simplifies 'if' to work on the available scope rather than a stream (#2805)
+  * Add script sourcing (#2803)
+  * Add set-env for setting environment variables (#2802)
+  * Improve errors on success (#2801)
+  * Parse mid-line comments (#2800)
+  * Removing the defs inside of blocks for now (#2798)
+  * Don't print a nothing value (#2796)
+  * highlight trailing spaces in tables in darkgray (#2794)
+  * Multiline scripts part 2 (#2795)
+
+-------------------------------------------------------------------
+Wed Dec 16 01:22:41 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.24.0:
+  * Added math abs command. (#2789)
+  * Date utility commands (#2780)
+  * Add random chars cmd (#2782)
+  * Parsing: Explain parsing errors and show sample lines. (#2774)
+  * Tell Nu to look for hash's rest columns paths first. (#2777)
+  * Make run_block public (#2772)
+  * enhanced version command with more info (#2773)
+  * Add hash command with base64 subcommand (#2769)
+
+-------------------------------------------------------------------
+Wed Nov 25 13:09:38 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.23.0:
+  * Avoid subtract overflow when no ending index given. (#2764)
+  * Initial implementation of the random decimal subcommand. (#2762)
+  * Path Command Enhancement Project (#2742)
+  * Fix new clippy warnings (#2760)
+  * Fix broken links to the documentation (#2755)
+  * helps table columns align a little bit better (#2753)
+  * fix zipped themes by adding zip feature (#2752)
+  * these changes reduce size by 24mb (#2747)
+  * Seq with dates (#2746)
+  * Revert "Getting closer to multiline scripts (#2738)" (#2745)
+  * Getting closer to multiline scripts (#2738)
+  * added as_html switch so a selector can be passed to a selector (#2739)
+  * Getting ready for multiline scripts (#2737)
+  * Flag to clear history file (#2720)
+  * Fix `to md` errors (#2729)
+  * Change Nu Shell and NuShell to Nushell (#2728)
+  * web scraping with css selectors (#2725)
+
+-------------------------------------------------------------------
+Wed Nov 04 08:26:06 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.22.0:
+  * Remove the recursely-dep'd tests (#2727)
+  * Bump to 0.22 (#2726)
+  * Delete comments showing output of older nu version (#2717)
+  * bugfix for when pathext ends in ';' (#2723)
+  * Support broad range of escape sequences (#2719)
+  * handle precision a tiny bit better than just hard coding to 4 decimal places. (#2712)
+  * Inode added to ls -l (#2711)
+  * Update required rust version (#2718)
+  * Seq for nushell (#2704)
+  * Precision added to round cmd (#2710)
+  * Change alias shape inference to proposal of RFC#4 (#2685)
+  * add unicode to char command to print any unicode character (#2709)
+  * Improve parameter inference for blocks (#2708)
+  * Add in parameter inference for blocks (#2706)
+  * Always escape non-literal arguments when running external command (#2697)
+  * Added a bunch of extensions as helpers (#2698)
+  * bump to 0.21.1 (#2702)
+  * Remove it expansion (#2701)
+  * Radix added to str decimal conversion (#2696)
+  * added some weather symbols back and changed to emoji (#2695)
+  * Allow appending table literals. (#2693)
+  * Set weather chars as emoji only (#2691)
+  * Add rounding functionalties (#2672)
+  * Add Tau constant (#2673)
+  * fixed a bug where 'B' wasn't showing up (#2690)
+  * add heavy & none table border options (#2686)
+  * Fix filesize "B" regression (#2688)
+  * fix: remove duplicated "to" (#2682)
+  * Flatten rows containing same sub-table columns with distinct column names. (#2684)
+  * Move command changes. Refactorings. (#2683)
+  * added num-format to allow bytes to be formatted with commas. (#2681)
+  * add filesize_format to config (#2676)
+  * Add parser improvements (#2679)
+  * Refactor `to md` and Add Padding for Pretty Flag (#2678)
+  * LS support for other number formatting (#2650)
+  * ColumnPath creation flexibility. (#2674)
+  * Add pretty flag to `to md` (#2640)
+  * add bson and sqlite to wix (#2668)
+  * Fix typo in test support crate description (#2669)
+  * Flatten command. (#2670)
+
+-------------------------------------------------------------------
+Wed Oct 14 08:40:21 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.21.0:
+  * Include chart binaries. (#2667)
+  * Disable rustyline bracketed paste mode by default (#2659)
+  * Root level cleanup (#2654)
+  * Add tests for get_data_by_key (#2658)
+  * Restore bigint/bigdecimal serialization. (#2662)
+  * Extract out xpath to a plugin. (#2661)
+  * xpath command for nushell (#2656)
+  * Use iterator chain instead of string concat. (#2655)
+  * Handle inf/nan in delimited data (#2652)
+  * handle duration overflow error (#2616)
+  * Allow config to work with column paths. (#2653)
+  * Fix clippy lints (#2651)
+  * Debugging tips for contributors (#2647)
+  * Added -1 back when determining term_width (#2646)
+  * [wasi] Update time & instant crates (#2645)
+  * Parse decimals as BigDecimal (#2644)
+  * Begin adding wasi support (#2643)
+  * Parse integers as BigInt (#2642)
+  * Bump dtparse to fix panic (#2632)
+  * empty? rewrite. (#2641)
+  * Fix to_md function name (#2636)
+  * added blink and underline options to coloring (#2638)
+  * Ensure Wix lists Nu plugin binaries. (#2637)
+  * update wix to include _core_ and _extra_ plugins + s3, chart, line (#2634)
+  * Nushell internal commands. Anchor locations tracker surveying. (#2635)
+  * Fix defaulting alias var values (#2631)
+  * Left Pad and Right Pad String (#2630)
+  * Fix broken removal of sockets (#2629)
+  * Add examples to update cmd (#2628)
+  * Line charts. Chart plugin sub command extraction. (#2627)
+  * chart tweaks for windows (#2626)
+  * Convert to string before clip (#2624)
+  * Fix "mv allows moving a directory into itself" (#2619)
+  * Exit bar visualization if any key is pressed other than left and right arrow keys. (#2623)
+  * Bar Chart baseline. (#2621)
+  * Move BTreeMap to IndexMap to preserve order (#2617)
+  * fix select for column names with spaces (#2613)
+  * Tidy up crates in nu-protocol (#2611)
+  * did_you_mean without dependency (#2610)
+  * Describe object now matches cmd name (#2603)
+  * Move non-essential deps into specific crates (#2601)
+  * Refactor scope (#2602)
+  * Add env var during benchmark to randomize stack (#2600)
+  * Removed unused files in nu-data (#2598)
+  * Consolidate suggestions code (#2597)
+  * did_you_mean returns just the word matches (#2595)
+  * added .cargo/config.toml to build with bigger stack on windows (#2594)
+  * remove without check path exist, `rm -f` (#2590)
+
+-------------------------------------------------------------------
+Wed Sep 23 02:52:33 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.20.0:
+  * add support for the text/csv content-type (#2587)
+  * Add space between column suggestions (#2586)
+  * Implement passthrough for benchmark (#2580)
+  * Update bigint/bigdecimal (#2585)
+  * Fix subcommands column on `help commands` (#2584)
+  * Added test for `ls -a` (#2582)
+  * CtrlD exits current shell (#2583)
+  * Add global mode to str trim (#2576)
+  * Context cleanup (#2581)
+  * Remove panics from random integer and make the constraint more idiomatic (#2578)
+  * Include subcommands in `help commands` (#2575)
+  * Add system, user and idle times to benchmark command (#2571)
+  * more table themes rounded and reinforced (#2579)
+  * Exclude internal commands from 'help command' (#2573)
+  * Limit open streaming to non-files, and files > 32mb (#2570)
+  * add replace all option to str find-replace (#2569)
+  * Cleanup code in get and nu-value-ext (#2563)
+  * Tidy up help command text (#2566)
+  * implementing case-sensitive & case-insensitive completion matching (#2556)
+  * Update rustyline to latest (#2565)
+  * Make the sleep command pass data through. (#2558)
+  * Slim down configuration readings and nu_cli clean up. (#2559)
+  * Remove trim in favor of str trim (#2560)
+  * Make the sleep command respond to Ctrl+C (#2550)
+  * Refactor completion trait (#2555)
+  * add a few more ansi escape sequences (#2553)
+  * Ctrl c exit issue (#2548)
+  * Update rawkey for ARM support (#2547)
+  * Core nu plugin load capability. (#2544)
+  * Simplify a few boolean creations (#2543)
+  * Fix yanked crossterm version (#2542)
+  * Implement exclusive and inclusive ranges with ..< and .. (#2541)
+  * Set active shell column to boolean (#2540)
+  * Allow `math avg` to work on durations (#2529)
+  * Allow folding with tables. (#2538)
+  * support key-value argument in with-env(#2490) (#2530)
+  * accept multiple variables in with-env(#2490) (#2526)
+  * Further clarify duration conversion (#2522)
+  * Fix path completions for `cd` command. (#2525)
+  * remove unused dependencies (#2520)
+  * updated dependencies (#2517)
+  * allow decimals as a range boundary (#2509)
+  * `each group` and `each window` subcommands.  (#2508)
+  * Add cpu time to ps -l (#2507)
+  * Improve range parsing and handling (#2506)
+  * Add modulo operator and simplify in/not-in (#2505)
+  * Show completions more than one level below ~ (#2503)
+  * Num links added to ls -l output (#2496)
+  * Interpreting ranges for substring (#2499)
+  * Weather symbol cleanup (#2502)
+  * Weather chars (#2500)
+  * Remove space from command name completion suggestion. (#2498)
+  * implement exec for unix platforms (#2495)
+  * Provide path as part of the suggestion from the path completer. (#2497)
+  * `ls **/*` does not show hidden files without the `-a` flag (#2407)
+  * Ensure ansi mode windows (#2494)
+  * use fs_extra to recursively move folders (#2487)
+  * Initial implementation of random integer subcommand. (#2489)
+  * Update clipboard feature (#2491)
+  * Size: count unicode graphmemes as single char (#2482)
+
+-------------------------------------------------------------------
+Wed Sep 02 05:18:07 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.19.0:
+  * Default alignment (#2481)
+  * Support ~ (home directory) in completions.
+  * Color info for config.toml (#2478)
+  * Add minor theme support (#2449)
+  * More bug fixes for completions (#2476)
+  * Add examples to uniq (#2472)
+  * Size command: rename max length to bytes (#2473)
+  * Improve support for completing within quotes. (#2474)
+  * Only requote path arguments. (#2471)
+  * tolerate os error while executing ls command (#2466)
+  * with_love table theme (#2468)
+  * added compact_double table theme for funsies (#2467)
+  * Improve quoting for path completions. (#2464)
+  * Set auto-pivot to never by default (#2462)
+  * Add a custom path completer to nushell. (#2463)
+  * Minor updates to variance (#2458)
+  * Changing the directory to '.' doesn't modify the prompt anymore (#2457)
+  * Add support for multiline rustyline edits (#2456)
+  * Light fixes (#2455)
+  * Add optional commas for items in lists and tables (#2454)
+  * Add table literals (#2453)
+  * Minor stddev updates (#2452)
+  * CONTRIBUTING: useful commands as list (#2448)
+  * Add missing math commands to docs (#2447)
+  * Show directories and executable for command completion. (#2446)
+  * Create benign email test fixture (#2445)
+  * Ensure command name available for Argument completion locations (#2443)
+  * make cd command complete only folders (#2431)
+  * Fix out of bounds in header command when row size is different (#2437)
+  * Add spans to pipelines.
+  * Update config.yml
+  * Remove unnecessary reference to ichwh in command completer (#2435)
+  * Extract out history parts.
+  * Slim down cli plugin logic.
+  * Added `math product` support  (#2249)
+  * Move alias type inference (experimental) behind --infer/-i flag (#2418)
+  * added -e --end to search from the end of the string for the pattern (#2430)
+  * Add configuration option to disable hinter (#2403) (#2405)
+  * Allow the calculation of bytes and int. (#2160)
+  * Path dirname and filestem (#2428)
+  * cleaned up sample ps1 script and added more comments. (#2429)
+  * plugin changes to support script plugins (#2315)
+  * Command especific configuration extraction baseline.
+  * Allow invocations and fix span error reporting.
+  * Add some cross-references to usage texts (#2417)
+  * Update battery version (#2413)
+  * Command expression need not carry span information.
+  * Improve the error message if alias type inference fails (#2399)
+  * Sort subcommands in the help text (#2396)
+  * Fix Dockerfile (cache clear of apt) (#2394)
+  * Add some minor fixes (#2391)
+  * Date subcommands (#2383)
+  * Have lite-parse complete return a complete bare form. (#2389)
+  * Fix the version command to include the commit hash (#2390)
+  * `ls .file` and `ls **/.*` show hidden files (#2379)
+  * Support completions for a single hyphen argument. (#2388)
+  * touch: support multiple arguments (#2386)
+  * Remove rustyline context from nu's completion context (#2387)
+  * Add method to convert ClassifiedBlock into completion locations. (#2316)
+  * Sleep command (#2381)
+  * Add text_color and line_color for table theming (#2378)
+  * SyntaxShape checking in Alias (#2377)
+  * Fix column count to not break on empty tables (#2374)
+  * Add wasm sample for CI (#2372)
+  * Move nu-data out of nu-cli (#2369)
+  * Err message for sort-by invalid types now shows the mismatched types (#2366)
+  * Run exitscripts in original dir (#2352)
+  * added various case conversion commands for str. Added the inflection … (#2363)
+  * Solving the issue "`sort-by` should fail gracefully if mismatched types are compared" (#2360)
+  * added the other table "themes" so that they could be used via config (#2365)
+  * Config refactoring baseline.
+  * Pass metadata in 'to json' (#2359)
+  * Add test file for count command (#2358)
+  * Renamed time units (#2356)
+  * Add column flag to count command
+  * Add random_numbers.csv to repo, so it is easier to update histogram examples
+  * Update histogram examples
+  * Split extra (#2348)
+  * removed syntect dependency, limited bat to regex-fancy and paging (#2347)
+  * Bump to 0.18.2. Move starship external. (#2345)
+  * Only have commit hash in version if git doesn't error (#2336)
+  * Remove `with-symlink-targets` flag from `ls` (#2334)
+  * Fetch content from S3 (#2328)
+  * Lint [result|option]_unwrap_used as been renamed to clippy::unwrap_used
+  * histogram: rename 'count' column to 'ocurrences'
+  * histogram: optionally use a valuator for histogram value.
+  * histogram gives back percentage column. (#2340)
+  * apply all the block run's stream. (#2339)
+
+-------------------------------------------------------------------
+Wed Aug 12 08:33:23 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.18.1:
+  * Display built features. Long/Short commit hashes display removed due to cargo publishing. (#2333)
+  * Histogram no longer requires a `wrap` command before it on unnamed columns (#2332)
+  * Autoenv fix: Exitscripts incorrectly running when visiting a subdirectory (#2326)
+  * moved theme assets local to crate (#2329)
+  * Make history file location configurable (#2320)
+  * added pkg_mgr/winget + yaml (#2297)
+  * Add 228 json html themes for to html (#2308)
+  * Allow disabling welcome message on launch (#2314)
+  * Add commit hash to version command (#2312)
+  * Sample variance and Sample standard deviation. (#2310)
+  * Add stderr back when using `do -i` (#2309)
+  * removed rustyline config duplication (#2306)
+  * Update rustyline defaults (#2305)
+  * parse most common date formats using dtparse crate (#2303)
+  * Add command "reduce" (#2292)
+  * histogram: support regular values. (#2300)
+  * String funcs - Contains and IndexOf (#2298)
+  * Data summarize reporting overhaul. (#2299)
+  * Match cleanup (#2294)
+  * Switch to maintained app_dirs (#2293)
+  * Match cleanup (#2290)
+  * Add --partial to 'to html' (#2291)
+  * Make `str collect` take an optional separator value (#2289)
+  * Return incomplete parse from lite_parse (#2284)
+  * Fix no longer working histogram example (#2271)
+  * Change `f`/`full` flag to `l`/`long` for `ls` and `ps` commands (#2283)
+  * docs/alias: simplify the 'persistent' section, using --save (#2285)
+  * Remove build.rs and nu-build (#2282)
+  * updated cmd builtin commands (#2266)
+  * set default edit_mode to emacs instead of vi (#2278)
+  * 🐛 Fix `path` command error messages (#2261). (#2276)
+  * Make insert take in a block (#2265)
+  * Add list output for `to html` (#2273)
+  * starts_with ends_with match functions for string (#2269)
+  * Add url commands (#2274)
+  * Add two further path cmds - type and exists (#2264)
+  * ltrim and rtrim for string (#2262)
+  * WIP: Path utility commands (#2255)
+  * Make all bullet point items uppercase (#2257)
+  * add example to parse command, with row output (#2256)
+  * Simplify NuCompleter. (#2254)
+  * Match cleanup (#2248)
+  * `to-xml.md` documentation update (#2253)
+  * Refactor all completion logic into `NuCompleter` (#2252)
+  * Remove unnecessary peekable iterator (#2251)
+  * ✨ Add `to xml` command (#2141) (#2155)
+  * Remove piping of stderr. (#2247)
+  * Step 1 for to html theme-ing (#2245)
+  * added documentation of available binding options (#2246)
+  * if config file doesn't exist, set defaults. (#2244)
+  * added defaults. fixed but of not loading history. (#2243)
+  * update sample configs (#2242)
+  * Expose all rustyline configuration points (#2238)
+  * update config documentation (#2178)
+  * Convert table of primitives to positional arguments for external cmd (#2232)
+
+-------------------------------------------------------------------
+Wed Jul 22 03:11:43 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.17.0:
+  * Bump to 0.17.0 (#2237)
+  * Revert "hopefully the final fix for history (#2222)" (#2235)
+  * sample config settigns (#2233)
+  * added ansi example (#2230)
+  * Char example (#2231)
+  * Add flag for case-insensitive sort-by (#2225)
+  * Campbell colors (#2219)
+  * fix internal command parsing (args.is_last) (#2224)
+  * Add benchmark command (#2223)
+  * hopefully the final fix for history (#2222)
+  * Add some tests for `parse_arg` (#2220)
+  * Add hex pretty print to 'to html' (#2221)
+  * Add hex pretty print to 'to html' (#2217)
+  * Add hex pretty print to 'to html' (#2216)
+  * Expose more registry APIs (#2215)
+  * Fix uniq to work with simple values (#2214)
+  * Clean up lines command (#2207)
+  * Fix if description (#2204) (#2213)
+  * made it easier to change colors (#2212)
+  * Export more defs from nu-cli (#2205)
+  * Rename `calc` to `math eval` and allow it to optionally take an expression as an argument (#2195)
+  * update history max size with two different calls. (#2202)
+  * Introduce completion abstractions to nushell. (#2198)
+  * Add wasm support (#2199)
+  * User error propagation operator (#2201)
+  * Auto-Generate Documentation for nushell.com (#2139)
+  * changed colors as per Jörn's suggestion. (#2200)
+  * Keep until and while as subcommands of keep (#2197)
+  * Silence Rust 1.45 Clippy warnings (#2196)
+  * Use '?' for error propagation, remove `match` (#2194)
+  * added ability to supply --dark_bg to to html (#2189)
+  * Keybindings and invocation fix (#2186)
+  * Match cleanup (#2184)
+  * Remove unnecessary match (#2183)
+  * Indices are (now) green, bold, right-aligned (#2181)
+  * Remove commands meant for internal use. (#2182)
+  * Merge skip command varieties into one command with sub commands. (#2179)
+  * Remove unnecessary match statement (#2177)
+  * Use `matches!()` for true/false returning match statements (#2176)
+  * Add str reverse subcommand (#2170)
+  * Fix autoenv executing scripts multiple times (#2171)
+  * Add variance and stddev subcommands to math command (#2154)
+  * Make str more strict. (#2173)
+  * group-by can generate custom grouping key by block evaluation. (#2172)
+  * Ensure source buffer is cleared after reading in MaybeTextCodec. (#2168)
+  * Fix str --to-int usages (#2167)
+  * Extend 'Shell' with open and save capabilities (#2165)
+  * Update documentation to properly refer to subcommands with spaces (#2164)
+  * Documentation for autoenv (#2163)
+  * add --char flag to 'str trim' (#2162)
+  * To html with color (#2158)
+  * Tests for autoenv (and fixes for bugs the tests found) (#2148)
+  * Add 'str from' subcommand (#2125)
+  * added more verbose message to assert (#2157)
+  * fix the name of 'do' (#2152)
+  * Rename 'bytes' to 'filesize' (#2153)
+  * Split key/value in 'config set' (#2151)
+  * Updates `config` to use subcommands (#2146)
+  * make duration pretty print clearer (#2150)
+  * Return iter from `sort by` (#2149)
+  * 1747 add ns to duration (#2128)
+  * Remove duplicate method (retag) (#2147)
+  * Return an iter from `last` command (#2143)
+  * Fix variable name (#2142)
+  * Refactor Fetch command (No logic changes)  (#2131)
+  * Return iter from `from vcf` (#2137)
+  * str substring additions. (#2140)
+  * add requoting for completions (#2129)
+  * Add space to special prompt chars (#2122)
+  * Add "move column" command. (#2123)
+  * Make `every` stream-able (#2120)
+  * Return iter from `every` command (#2118)
+  * Update config.yml
+  * Update azure-pipelines.yml
+  * Bump to 0.16.1 (#2116)
+  * Stream results of drop command (#2114)
+  * Slightly nicer "rm" message  (#2113)
+  * Autoenv rewrite, security and scripting (#2083)
+  * Show entire table if number of rows requested for `last` is greater than table size (#2112)
+  * More informative error messages when "rm" fails (#2109)
+  * Fix buffering in lines command (#2111)
+  * Oops, fix crash in parser updates (#2108)
+  * Align tables in "ls -f" (#2105)
+  * If command and touchups (#2106)
+  * Return error for unterminated string in bareword parser (#2103)
+  * Add 'str length' command (#2102)
+  * Convert open/fetch to stream (#2028)
+  * Add 'split chars' command (#2101)
+  * Numbered `each` (#2100)
+  * Added license and license-for-less to wix build (#2097)
+  * Remove custom escaping for external args. (#2095)
+  * updated less license to raw gh link (#2088)
+  * Add a histogram example to the random dice documentation (#2087)
+  * added a few more command chars (#2086)
+  * Update README.md
+  * updated to include less and nushell licenses (#2085)
+
+-------------------------------------------------------------------
+Wed Jul 01 17:20:44 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.16.0:
+  * Add dice subcommand to random command (#2082)
+  * Bubble errors even if pipeline isn't used (#2080)
+  * Cal improvements (#2074)
+  * added raw to date for string output (#2075)
+  * Docs autoview pwd touch (#2068)
+  * added ability to request the date in a format (#2073)
+  * Add command for printing special characters (#2072)
+  * Properly redirect invocations (#2070)
+  * More ansi (#2067)
+  * Fix it expansion and add collect (#2065)
+  * Configurable built-in prompts (#2064)
+  * added match plugin and readme.txt for msi (#2063)
+  * Add bool subcommand to random (#2061)
+  * Add ThemedPalette (#1873)
+  * Update main.wxs (#2060)
+  * updated wxs to have the right exes (#2059)
+  * update to make closer to volta's (#2058)
+  * Gh actions with wix (#2057)
+  * Gh actions with wix, added --nocapture (#2056)
+  * Added wix to gh workflow (#2055)
+  * Wix addition for creating msi (#2054)
+  * Update Cargo.lock (#2053)
+  * Adds random command with uuid subcommand (#2050)
+  * Made starship usage configurable (#2049)
+  * Add release automation with GitHub Actions (#2048)
+  * Make mode subcommand: math mode (#2043)
+  * Fix cal command week-start example (#2040)
+  * Cleanup header to work like before (#2039)
+  * Refactor out RunnableContext from calculate (#2037)
+  * First pass at updating all documentation formatting and cleaning up output of examples (#2031)
+  * bump which from 3 to 4.0.1 (#2035)
+  * removed some comments (#2032)
+  * Add error for division by zero using "=" (#2002) (#2030)
+  * Adds a test case for changing drives using drive letter in Windows  (#2022)
+  * Uniq: `--count` flag to count occurences (#2017)
+  * Fix wrap of carriage returns in cells (#2027)
+  * Finish move to nu-table (#2025)
+  * Upgrade heim to 0.1.0-beta.3 (#2019)
+  * Simplify textview match (#2024)
+  * Math median tests and documentation additions (#2018)
+  * Sort primitives explictly. (#2016)
+  * Nu table (#2015)
+  * Fixed grammar (#2012)
+  * Rename average to avg
+  * textview config docs (#2011)
+  * Bat config (#2010)
+  * Minor Math Sum Additions (#2007)
+  * Convert sum command into subcommand of the math command (#2004)
+  * Math#media - ability to compute median value.
+  * Add support to allow the week day start in cal to be configured via a flag (#1996)
+  * Fix regression. skip-until 'skips' until condition is met.
+  * Remove unused pattern matched tag fields.
+  * Refactoring and more split-by flexibility.
+  * Refactoring and more group-by flexibility.
+  * Cat with wings (#1993)
+  * Cal command code cleanup (#1990)
+  * Add 'every' command to select (or skip) every nth row (#1992)
+  * issue1332 - Fix for yamls with unquoted double curly braces (#1988)
+  * Pass the borrow instead of clone. (#1986)
+  * Bump to 0.15.1 (#1984)
+  * Last batch of removing async_stream (#1983)
+  * Math Documentation (#1982)
+  * Another batch of removing async_stream (#1981)
+  * Another batch of removing async_stream (#1979)
+  * 1882-Add min, max in addition to average for acting lists  (#1969)
+  * Another batch of removing async_stream (#1978)
+  * Remove async_stream from some commands (#1976)
+  * Updated Readme to include Roadmap project board. (#1975)
+  * Another batch of converting commands away from async_stream (#1974)
+  * Removing async_stream! from some more commands (#1973)
+  * Another batch of removing async_stream (#1972)
+  * Another batch of removing async_stream (#1971)
+  * Another batch of removing async_stream (#1970)
+  * use encoding on open for #1939 (#1949)
+  * Allow config to be readonly (#1967)
+  * Proper precedence history in math (#1966)
+
+-------------------------------------------------------------------
+Wed Jun 10 02:41:20 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.15.0:
+  * Rename env file to .nu-env (#1953)
+  * Remove async_stream! from some commands (#1951)
+  * Assign variables when passed as an argument. (#1947)
+  * Cal updates (#1945)
+  * When the nushell is located in a path that has a space in it, these tests break, this fixes it (#1944)
+  * Implement an option to show paths made of mkdir. (#1932)
+  * Removing async_stream! from some commands (#1940)
+  * Bring back parse as built-in.
+  * Moving some commands off of async stream (#1934)
+  * Cut out a function to generate a pharase in the Flags section. (#1930)
+  * Remove no_auto_pivot (#1931)
+  * changed to-float to to-decimal (#1926)
+  * Batch of moving commands off async_stream #3 (#1919)
+  * Add `rm_always_trash` option to config (#1869)
+  * ISSUE-1744-Glob support for start command (#1912)
+  * Support average for tables.
+  * Batch of moving commands off async_stream (#1917)
+  * Implement login for the fetch command (#1915)
+  * Move run to be async (#1913)
+  * Add plugin_dir to docs (#1911)
+  * Simplify plugin directory scanning (#1910)
+  * Str plugin promoted to built-in Nu command.
+  * Simplify parse plugin code. (#1904)
+  * Allow echo to iterate ranges (#1905)
+  * Make it-expansion work when in a list (#1903)
+  * Implement ctrl+c for the du command (#1901)
+  * Fix warnings and split Scope (#1902)
+  * Fix for inconsistency when quoted strings are used with with_env shorthand (#1900)
+  * Cal documentation updates (#1895)
+  * change the test to use the origin column (#1878)
+  * Merge pivot options (#1888)
+  * Improve the simplified parse form. (#1875)
+  * Remove as many of the typecasts as possible in the cal command (#1886)
+  * Fix broken ordering of args when parsing command with env vars. (#1841)
+  * docs: add alias --save flag (#1874)
+  * Show error when trying to sort by invalid column (#1880)
+  * Add useful commands to CONTRIBUTING.md (#1865)
+  * added examples and explanation to trim (#1876)
+  * Split split command to sub commands.
+  * Add completion for binaries on PATH (#1866)
+  * Issue 1787 (#1827)
+  * Add space to bottom of table in 'light' mode (#1871)
+  * Add `--regex` flag to `parse` (#1863)
+  * Tweak auto-rotate for single row output (#1861)
+  * Fix completer handling of paths with spaces (#1858)
+  * Save alias (#1852)
+  * Added a count column on the histogram command (#1853)
+  * default history size to 100k (#1845)
+  * String interpolation (#1849)
+  * Fix missing invocation errors (#1846)
+  * let format access variables also (#1842)
+  * Update test command (#1840)
+  * added documentation for no_auto_pivot (#1828)
+  * add support for specifying max history size in config (#1829) (#1837)
+  * Remove interpretation of `Primitive::Nothing` as the number 0. (#1836)
+  * Move from language-reporting to codespan (#1825)
+  * Fix newly added examples. (#1830)
+  * Add (near) automatic testing for command examples (#1777)
+  * added config check to disable auto pivoting of single row outputs (#1791)
+  * Add docs for the shuffle command (#1824)
+  * Remove the -n flag from shuffle (#1823)
+  * Add some examples (#1821)
+  * Fix starship not getting the correct pwd (#1822)
+  * Call external correctly.
+  * Remove test-bins feature.
+  * Check capture group count (#1814)
+  * Allow user to specify the indentation setting on the pretty flag for the to json command (#1818)
+  * create Palette trait (#1813)
+  * add docs for start command (#1816)
+  * Fix the insert command (#1815)
+  * Adds support to pretty format the json in `to json` (#1812)
+  * Remove the old it-hacks from fetch and post (#1807)
+  * Fix parsing of invocations with a dot (#1804)
+  * Cal command updates (#1758)
+  * Evaluation of command arguments (#1801)
+  * added nothing value for incalcuable dir sizes (#1789)
+  * Extracted grouping by date to it's own subcommand. (#1792)
+  * Use the directories crate instead of app_dirs (#1782)
+  * doc: add rename command page (#1781)
+  * Allow external binary to register custom commands. (#1780)
+  * doc: add more from command pages (#1778)
+  * cal: fix thursday typo (#1776)
+  * doc: add headers command page (#1775)
+  * doc: rename edit command to update (#1774)
+  * Fix type in config flag description (#1769)
+  * doc: fix nth examples (#1768)
+  * Simplify `mv` in `FilesystemShell` (#1587)
+
+-------------------------------------------------------------------
+Thu Jun  4 04:49:43 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Shell added to allowed list
+
+-------------------------------------------------------------------
+Thu Jun 04 04:02:20 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.14.0:
+  * Add examples for some more commands (#1765)
+  * Add a batch of help examples (#1759)
+  * It-expansion fixes (#1757)
+  * Add a batch of help examples (#1755)
+  * Adding coloring to help examples (#1754)
+  * Improve list view and ranges (#1753)
+  * Add examples to commands (#1752)
+  * Add a simplified list view (#1749)
+  * Improve duration math and printing (#1748)
+  * update cal documentation (#1746)
+  * Don't include year and month by default, adds an option to display th… (#1745)
+  * Add cal command (#1739)
+  * Move 'start' to use ShellError (#1743)
+  * Bug fix start (#1738)
+  * Fix help text for alias command. (#1742)
+  * Make grouping more flexible. (#1741)
+  * `start` command in nushell (#1727)
+  * [Gitpod] Refactor Gitpod configuration and add full Debugging support (#1728)
+  * Use playground instead of depending on fixture format files. (#1726)
+  * Pick->Select rename. Integration tests changes. (#1725)
+  * Rename edit command to update. (#1724)
+  * Read exit status before failing in failed read from stdout pipe (#1723)
+  * Ignore empty arguments passed to externals (#1722)
+  * Fix changing to a new Windows drive (#1721)
+  * Bash-like shorthand with-env (#1718)
+  * Add with-env command (#1717)
+  * docs/commands: add to.md, update subcommands (#1715)
+  * docs/commands: add from.md, update subcommands (#1712)
+  * Extend to/from usage text to indicate subcommands (#1711)
+  * Properly deserialize history args (#1710)
+  * Changes to allow plugins to be loaded in a multi-threaded manner (#1694)
+  * Add subcommands. Switch from-* and to-* to them (#1708)
+  * Properly drain iterating pipe so we can see errors (#1707)
+  * Fix column bugs associated with previous refactoring (#1705)
+  * Basic documentation for the wrap command (#1704)
+  * Display either dir metadata size or dir apparent size in `ls` (#1696)
+  * docs/commands: add alias.md (#1697)
+  * Parse file size (byte) units in all mixes of case (#1693)
+  * Reduce some repetitive code in files.rs (#1692)
+  * Gitignore JetBrains' IDE items (#1691)
+  * Remove bin.is_file() because it's expensive (#1689)
+  * Escape some symbols in external args (#1687)
+  * Table operating commands. (#1686)
+  * Finish remove the last traces of per-item (#1685)
+  * Add .DS_Store to .gitignore (#1684)
+  * Convert if expression to match (#1683)
+  * extend it-expansion to externals (#1682)
+  * make it-expansion work through blocks when necessary (#1681)
+  * Show symlink sizes in ls (#1680)
+  * Replace `ichwh` with `which` and some fixes for auto-cd (canonicalization) (#1672)
+  * bump to 0.13.1 (#1670)
+  * Fix per-item run_alias (#1669)
+  * It expansion (#1668)
+  * Resolves https://github.com/nushell/nushell/issues/1658 (#1660)
+  * Rows and values can be checked for emptiness. Allows to set a value if desired. (#1665)
+  * make trim apply to strings contained in tables (also at deeper nesting (#1664)
+  * Adds `drop` number of rows command (#1663)
+  * Fix access to columns with quoted names (#1662)
+  * Add not-in: operator (#1661)
+  * Add `from-eml` command (#1656)
+  * suppress the parser error for an insufficient number of required arguments if the named keyword argument 'help' is given (#1659)
+  * Fix cd'ing to symlinked directories (#1651)
+  * Docs: Mention how to use `str --find-replace` in the docs. (#1653)
+  * str plugin can capitalize and trim strings. (#1652)
+  * Add key_timeout config option (#1649)
+  * Values can be used as keys for grouping. (#1648)
+  * [docs]: How to run tests. (#1647)
+  * [docs/enter] Warn about `enter` opening multiple shells (#1645)
+  * Bump rustyline (#1644)
+  * Update azure-pipelines.yml
+  * Update azure-pipelines.yml
+  * Update azure-pipelines.yml
+  * Be more resilient with startup lines (#1642)
+  * Support completion for paths with multiple dots (#1640)
+  * Make default completion mode OS dependent (#1636)
+  * Fix to-csv command (#1635)
+  * Bump `ichwh` to version 0.3.4 (#1627)
+  * Add config to disable table index column (#1623)
+  * Fix the panic running a bad alias (#1624)
+  * Add exit code verification (#1622)
+  * Add booleans and fix semicolon shortcircuit (#1620)
+  * External vars (#1615)
+  * fix empty table and missing spans (#1614)
+  * Semicolon (#1613)
+  * Move alias arguments to optional arguments (#1612)
+  * Move external closer to internal (#1611)
+  * Bump `ichwh` minimum version to 0.3.3 (#1607)
+  * Simplify cp command and allow multiple recursive copying  (#1580)
+  * Fix precedence parsing of parens. Limit use (#1606)
+  * Add better docs to parser (#1604)
+  * Fix the versions up a bit to prevent breakage (#1602)
+  * Math operators (#1601)
+  * A random set of fixes (#1600)
+  * WIP fix for the error bubbling (#1597)
+  * Redesign custom canonicalize, enable multiple dots expansion earlier. (#1588)
+  * Add alias support to scripts and -c (#1593)
+  * Aliases (#1589)
+  * Canonical expr block (#1584)
+  * Pipeline blocks (#1579)
+  * Add more cmd builtins (#1583)
+  * move rustyline to 6.1.1 to fix windows crash (#1581)
+  * Split canonicalize function in two for missing and existing behavior (#1576)
+  * Remove erronous GPL license header (#1578)
+  * Add quickcheck (#1574)
+  * Unified path expansion under new module and better canonicalize (#1571)
+  * Update CONTRIBUTING.md
+  * Create CONTRIBUTING.md (#998)
+  * Move uptime to being a duration value (#1573)
+  * Make trash support optional (#1572)
+  * Remove source text where not needed (#1567)
+  * some minor improvements and removing dead code (#1563)
+  * More dep bumps (#1562)
+  * actually bump version (#1559)
+  * fix nu variable. tweak shells (#1558)
+  * Enable the use of multiple dots in FS Shell commands (#1547)
+  * Add experimental new parser (#1554)
+  * Have FilesystemShell#rm correctly delete symlinks (#1550)
+  * ci(docker-publish): force remove non-executable (#1540)
+  * Add configurations for table headers (#1537)
+  * Change `get` to remove blanks (#1534)
+  * A few improvements to du implementation: (#1533)
+  * Fix poor message for executable that user doesn't have permissi… (#1535)
+  * Some small improvements to du readability.
+  * Make use of interruptible stream in various places
+  * Introduce `InterruptibleStream` type.
+  * Split input and output streams into separate modules
+  * WIP: 1486/first row as headers (#1530)
+  * Respect CARGO_TARGET_DIR when set (#1528)
+  * Add support for removing multiple files at once (#1526)
+  * Improve the rotated row wrap (#1524)
+  * testing fix to matrix to define all variables (#1522)
+  * Fix '/' and '..' not being valid mv targets (#1519)
+  * Add experimental auto-rotate (#1516)
+  * Add quickstart option to Docker section in README (#1515)
+  * Fixes the crash for `ps --full` in Windows (#1514)
+  * Simplify and improve listing for which. (#1510)
+  * Add documentation for from-ics and from-vcf (#1509)
+  * Fix numeric comparison with nothing (#1508)
+  * WIP: Add vcard/ical support (#1504)
+  * Add a --full mode to ps (#1507)
+  * Add is_dir check to auto-cd (#1506)
+  * Add markdown output (#1503)
+  * Make sum plugin as internal command. (#1501)
+  * Windows needs to remember auto-cd paths when changing drives (#1500)
+  * Add documentation for skip and skip-while (#1499)
+  * Add automatic change directory (#1496)
+  * Open fails silently, fix #1493 (#1495)
+  * Infer types from regular delimited plain text unstructured files. (#1494)
+  * Csv errors (#1490)
+  * Add svg support to to-html (#1492)
+  * Custom canonicalize method on Filesystem Shell.  (#1485)
+  * Add simple to-html output and bump version (#1487)
+  * Added new flag '--all/-a' for Ls, also refactor some code (#1483)
+  * Fix whitespace and typos (#1481)
+  * Fixes #1204 : `sys | get host.users` displays the same user (#1480)
+  * fix typo in calc command documentation (#1477)
+
+-------------------------------------------------------------------
+Thu Mar 26 05:50:32 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.11.0:
+  * More relaxed file modes for now. (#1476)
+  * Merge shuffle nu plugin as core command. (#1475)
+  * Fixes #1427: Prints help message with -h switch (#1454)
+  * Remove unused parsing logic. (#1473)
+
+-------------------------------------------------------------------
+Thu Mar 26 05:44:16 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Initial package

@@ -1,0 +1,5 @@
+<package name="nushell" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="shells" package="nushell"/>
+</package>

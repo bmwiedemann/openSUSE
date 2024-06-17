@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/nushell/nushell.git</param>
+              <param name="changesrevision">bc38a6a795f438ab1465dd987adf92efd9530529</param></service></servicedata>
