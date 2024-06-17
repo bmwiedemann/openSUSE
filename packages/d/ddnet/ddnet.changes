@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sat Jun 15 15:20:33 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 18.3:
+  * [Client] Add confetti particles on finish
+  * [Client] Add team0mode indicator
+  * [Client] Show percentage of loaded rcon commands
+  * [Client] Fix truncated scoreboard recording notification
+  * [Client] Keep respawned players in multi view list on
+    pvp servers
+  * [Client] Add cl_showhud_time_cp_diff
+  * [Client] Fix console search highlighting
+  * [Client] Fix potential client crash and console not keeping
+    scrolling position when console backlog is full
+  * [Client] Add option to show only messages by team members
+  * [Client] Fix smoke particles sometimes being stuck inside
+    solid tiles
+  * [Client] Fix language file being loaded twice when starting,
+    improve error handling for invalid translation files
+  * [Client] Prevent UI elements from being hovered while key
+    reader is active
+  * [Client] Fix segfault when swapchain images change
+    (e.g. toggling Vsync)
+  * [Client] Fix demo seekbar tooltip not shown while seekbar is
+    active, fix demo seekbar being activated by held button press
+  * [Client] Android build improvements
+  * [Client] Fix wrong file extension being removed in demo
+    cut popup
+  * [Client] Fix potential client crash and console not keeping
+    scrolling position when console backlog is full
+  * [Client] Video recorder: improve error handling and log
+    messages, fix crashes
+  * [Client] Fix wrong server address used in password popup
+    when redirected
+  * [Client] Fix OOB accesses rendering ghosts, fix ghost hook
+    collision line
+  * [Editor] Fix crashes and memory leaks related to editor map
+    sounds and opus file decoding
+  * [Editor] Fix inconsistent behavior of scrollbars, key readers,
+    edit boxes, value selectors and editor sound seekbars
+  * [Client+Server] Use network tokens in big-endian byte order
+    consistently
+  * [Server] Add /rescuemode
+  * [Server] Add /practicecmdlist
+  * [Server] Add chat commands for toggling weapons in practice
+    mode
+  * [Server] Fix goto_tele not finding all teleporters
+  * [Server] Allow econ to succeed, even if ipv6 econ fails to
+    bind to socket
+  * [Server] Store player names in teehistorian and
+    Finish/TeamFinish v2
+  * [Tooling] Add delta debug dump
+  * [Tooling] Also print external module/symbol names in
+    parse_drmingw.sh
+  * [Tooling] Fix issues with map_create_pixelart
+
+-------------------------------------------------------------------
 Sat May  4 08:05:13 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 18.2:
