@@ -40,7 +40,7 @@
 %define docs 0
 
 Name:           fwupd
-Version:        1.9.20
+Version:        1.9.21
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -285,6 +285,10 @@ rm -fr %{buildroot}%{_datadir}/installed-tests
 
 %if %{without fish_support}
 rm -fr %{buildroot}%{_datadir}/fish
+%endif
+
+%if %{suse_version} >= 1600
+%python3_fix_shebang_path %{buildroot}%{_datadir}/%{name}/*
 %endif
 
 %check

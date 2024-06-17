@@ -4,7 +4,7 @@
     <param name="url">https://github.com/fwupd/fwupd.git</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
-    <param name="revision">1.9.20</param>
+    <param name="revision">1.9.21</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>

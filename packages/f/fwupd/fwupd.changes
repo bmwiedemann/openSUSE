@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jun 14 12:47:11 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang_path macro, [bsc#1212476]
+
+-------------------------------------------------------------------
+Fri Jun 14 07:23:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.9.21:
+  + This release adds the following features:
+     - Add a fwupd.conf option to ignore CHID requirements for
+       development.
+  + This release fixes the following bugs:
+    - Allow loading Wacom device flags from metadata.
+    - Check for needs-shutdown like we do needs-reboot.
+    - Fix updating the Aerox 3 Wireless Mouse.
+  + This release adds support for the following hardware:
+    - Synaptics Carrera devices.
+    - Wacom Movink devices.
+
+-------------------------------------------------------------------
 Tue May 21 07:51:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.9.20:
