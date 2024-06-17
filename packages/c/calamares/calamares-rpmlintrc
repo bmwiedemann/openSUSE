@@ -1,5 +1,0 @@
-# /usr/lib/calamares/libcalamares.so is just symlink, without it Calamares does not work. 
-addFilter("calamares.*devel-file-in-non-devel-package.*/usr/lib.*/calamares/libcalamares.so.*")
-
-# /usr/bin/kdesu provided by kde-cli-tools5, kde-cli-tools5 is among requirements of Calamares.
-addFilter("calamares.*desktopfile-without-binary.*calamares.desktop kdesu")

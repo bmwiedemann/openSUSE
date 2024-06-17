@@ -1,5 +1,0 @@
-<package name="python-gwcs" project="openSUSE:Factory">
-  <title>python-gwcs</title>
-  <description>An Astropy affiliated package providing tools for managing the World Coordinate System of astronomical data.</description>
-  <devel project="devel:languages:python:numeric" package="python-gwcs"/>
-</package>

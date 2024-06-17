@@ -1,6 +1,0 @@
-<package name="liblo" project="openSUSE:Factory">
-  <title>Lightweight OSC Implementation</title>
-  <description>This is a lightweight, easy-to-use implementation of the OSC protocol
-(see http://www.cnmat.berkeley.edu/OpenSoundControl/ for details).</description>
-  <devel project="multimedia:libs" package="liblo"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="gstreamer-devtools" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="multimedia:libs" package="gstreamer-devtools"/>
-</package>

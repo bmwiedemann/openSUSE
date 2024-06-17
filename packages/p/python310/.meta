@@ -1,7 +1,0 @@
-<package name="python310" project="openSUSE:Factory">
-  <title>Python-3 Interpreter</title>
-  <description>Python is an interpreted, object-oriented programming language, and is often compared to Tcl, Perl, Scheme, or Java.
-Python-3 is the next step in Python language evolution.</description>
-  <devel project="devel:languages:python:Factory" package="python310"/>
-  <url>http://www.python.org/</url>
-</package>

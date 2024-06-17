@@ -1,6 +1,0 @@
-<package name="fortio" project="openSUSE:Factory">
-  <title>fortio</title>
-  <description>Fortio load testing library, command line tool, advanced echo server and web UI in go (golang). Allows to specify a set query-per-second load and record latency histograms and other useful stats.</description>
-  <devel project="devel:kubic" package="fortio"/>
-  <url>https://github.com/fortio/fortio</url>
-</package>

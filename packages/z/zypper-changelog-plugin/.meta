@@ -1,5 +1,0 @@
-<package name="zypper-changelog-plugin" project="openSUSE:Factory">
-  <title>zypper-changelog-plugin</title>
-  <description>Simple tool to fetch the changelog of packages from the rpm repositories. With rpm -q --changelog it is possible to list the changelogs of the installed packages, but there is no available tool what could list the changelogs of the packages not installed. This feature is useful before installing or upgrading a package to see what changes are going to be installed.</description>
-  <devel project="zypp:plugins" package="zypper-changelog-plugin"/>
-</package>

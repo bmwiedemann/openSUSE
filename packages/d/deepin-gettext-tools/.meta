@@ -1,7 +1,0 @@
-<package name="deepin-gettext-tools" project="openSUSE:Factory">
-  <title>gettext function wrapper</title>
-  <description>The tools of gettext function wrapper.
-
-Currently supported languages: Python, QML, Go lang</description>
-  <devel project="X11:Deepin" package="deepin-gettext-tools"/>
-</package>

@@ -1,7 +1,0 @@
-<package name="python-pycairo" project="openSUSE:Factory">
-  <title>Python Bindings for Cairo</title>
-  <description>Python bindings for cairo.
-
-</description>
-  <devel project="devel:languages:python" package="python-pycairo"/>
-</package>

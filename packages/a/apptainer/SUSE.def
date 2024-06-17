@@ -1,7 +1,0 @@
-# Install container from the repos of the host
-BootStrap: zypper
-
-%post
-    update-ca-certificates
-    echo "Hello from post boot strap"
-    zypper in -y vim

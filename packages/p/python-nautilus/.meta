@@ -1,7 +1,0 @@
-<package name="python-nautilus" project="openSUSE:Factory">
-  <title>Python bindings for Nautilus</title>
-  <description>This package contains bindings to write Nautilus extensions with Python.
-It allows writing menu, property pages and column providers extensions,
-so that Nautilus functionality can be easily extended.</description>
-  <devel project="GNOME:Apps" package="python-nautilus"/>
-</package>

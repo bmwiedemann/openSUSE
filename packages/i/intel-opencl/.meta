@@ -1,8 +1,0 @@
-<package name="intel-opencl" project="openSUSE:Factory">
-  <title>Intel(R) Graphics Compute Runtime for OpenCL(TM)</title>
-  <description>Intel(R) Graphics Compute Runtime for OpenCL(TM).
-
-</description>
-  <devel project="X11:XOrg" package="intel-opencl"/>
-  <url>https://github.com/intel/compute-runtime</url>
-</package>

@@ -1,8 +1,0 @@
-<package name="gthumb" project="openSUSE:Factory">
-  <title>An Image Viewer and Browser for GNOME</title>
-  <description>gThumb lets you browse your hard disk, showing you thumbnails of image
-files. It also lets you view single files (including GIF animations),
-add comments to images, organize images in catalogs, print images, view
-slide shows, set your desktop background, and more.</description>
-  <devel project="GNOME:Apps" package="gthumb"/>
-</package>

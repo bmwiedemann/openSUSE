@@ -1,6 +1,0 @@
-<package name="python-wirerope" project="openSUSE:Factory">
-  <title>python-wirerope</title>
-  <description>wirerope.rope.WireRope is the wrapper for callables. By wrapping a function with WireRope with a custom subclass of the wirerope.wire.Wire class, the wire object will be created by each function or bound method.</description>
-  <devel project="devel:languages:python" package="python-wirerope"/>
-  <url>https://github.com/youknowone/wirerope</url>
-</package>

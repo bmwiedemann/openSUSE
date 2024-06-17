@@ -1,9 +1,0 @@
-<package name="latencytop" project="openSUSE:Factory">
-  <title>Kernel latency measuring tool</title>
-  <description>LatencyTOP is a Linux* tool for software developers (both kernel and
-userspace), aimed at identifying where in the system latency is
-happening, and what kind of operation/action is causing the latency to
-happen so that the code can be changed to avoid the worst latency
-hiccups. A version with graphic interface is available as xlatencytop.</description>
-  <devel project="devel:tools" package="latencytop"/>
-</package>

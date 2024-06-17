@@ -1,5 +1,0 @@
-# Changing this is complicated as ADIOS2 is multi-platform
-addFilter("adios2.* binary-or-shlib-calls-gethostbyname")
-
-# We need this as ADIOS2 is a distributed framework
-addFilter("adios2.* shared-lib-calls-exit")

@@ -1,5 +1,0 @@
-<package name="cjs" project="openSUSE:Factory">
-  <title>JavaScript module used by Cinnamon</title>
-  <description>This module contains JavaScript bindings based on GObject Introspection for the Cinnamon Desktop.</description>
-  <devel project="X11:Cinnamon:Factory" package="cjs"/>
-</package>

@@ -1,9 +1,0 @@
-<package name="python-mpmath" project="openSUSE:Factory">
-  <title>Python library for arbitrary-precision floating-point arithmetic</title>
-  <description>Mpmath is a pure-Python library for multiprecision floating-point arithmetic. It provides an extensive set of transcendental functions, unlimited exponent sizes, complex numbers, interval arithmetic, numerical integration and differentiation, root-finding, linear algebra, and much more. Almost any calculation can be performed just as well at 10-digit or 1000-digit precision, and in many cases mpmath implements asymptotically fast algorithms that scale well for extremely high precision work. If available, mpmath will (optionally) use gmpy to speed up high precision operations.
-
-Mpmath is free (BSD license) and easy to install or include in other software due to being written entirely in Python with no additional dependencies. It runs on Python 2.4, 2.5 and 2.6. It can be used as a library, interactively via the Python interpreter, or via SymPy which uses it for numerical evaluation of symbolic expressions.
-
-If matplotlib is available, mpmath also provides a convenient plotting interface.</description>
-  <devel project="devel:languages:python:numeric" package="python-mpmath"/>
-</package>

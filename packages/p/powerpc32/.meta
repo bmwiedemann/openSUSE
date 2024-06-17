@@ -1,8 +1,0 @@
-<package name="powerpc32" project="openSUSE:Factory">
-  <title>PowerPC32 compilation environment for PowerPC64</title>
-  <description>Powerpc32 is a simple utility for compiling PowerPC32 packages on
-PowerPC64 machines. Powerpc32 creates an environment for the specified
-program (shell) and all child processes. In the created environment,
-uname -m returns ppc, so you can create 32 bit PowerPC programs.</description>
-  <devel project="Base:System" package="powerpc32"/>
-</package>

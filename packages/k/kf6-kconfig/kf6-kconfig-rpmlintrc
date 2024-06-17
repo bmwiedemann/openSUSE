@@ -1,2 +1,0 @@
-# rpmlint score is too high on leap
-addFilter("shlib-fixed-dependency .*")

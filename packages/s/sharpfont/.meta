@@ -1,6 +1,0 @@
-<package name="sharpfont" project="openSUSE:Factory">
-  <title>SharpFont</title>
-  <description>Cross-platform FreeType bindings for .NET</description>
-  <devel project="Mono:Factory" package="sharpfont"/>
-  <url>https://github.com/Robmaister/SharpFont</url>
-</package>

@@ -1,5 +1,0 @@
-<package name="python-lupa" project="openSUSE:Factory">
-  <title></title>
-  <description>Python wrapper around Lua and LuaJIT.</description>
-  <devel project="devel:languages:python" package="python-lupa"/>
-</package>

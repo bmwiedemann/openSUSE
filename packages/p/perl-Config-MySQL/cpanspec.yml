@@ -1,3 +1,0 @@
----
-post_prep:
- sed -i -e 's/use inc::Module::Install/use lib q[.];\nuse inc::Module::Install/' Makefile.PL

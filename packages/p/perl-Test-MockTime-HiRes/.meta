@@ -1,8 +1,0 @@
-<package name="perl-Test-MockTime-HiRes" project="openSUSE:Factory">
-  <title>Replaces actual time with simulated high resolution time</title>
-  <description>Test::MockTime::HiRes is a Time::HiRes compatible version of Test::MockTime. You can wait milliseconds in simulated time.
-
-It also provides mock_time to restrict the effect of the simulation in a code block.</description>
-  <devel project="devel:languages:perl" package="perl-Test-MockTime-HiRes"/>
-  <url>https://metacpan.org/dist/Test-MockTime-HiRes</url>
-</package>

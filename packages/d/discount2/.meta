@@ -1,9 +1,0 @@
-<package name="discount2" project="openSUSE:Factory">
-  <title>Markdown markup language as implemented in Discount 2.x series</title>
-  <description>DISCOUNT is a C language implementation of the Markdown markup language. This
-package provides series 2.x of libmarkdown.
-
-</description>
-  <devel project="Publishing" package="discount2"/>
-  <url>https://github.com/Orc/discount</url>
-</package>

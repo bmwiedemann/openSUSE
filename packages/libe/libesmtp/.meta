@@ -1,9 +1,0 @@
-<package name="libesmtp" project="openSUSE:Factory">
-  <title>A Library for Posting Electronic Mail</title>
-  <description>libESMTP is a library to manage posting (or submission of) electronic
-mail using SMTP to a preconfigured Mail Transport Agent (MTA) such as
-Exim. It may be used as part of a Mail User Agent (MUA) or another
-program that must be able to post electronic mail but where mail
-functionality is not that program's primary purpose.</description>
-  <devel project="server:mail" package="libesmtp"/>
-</package>

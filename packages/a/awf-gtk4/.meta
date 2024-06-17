@@ -1,6 +1,0 @@
-<package name="awf-gtk4" project="openSUSE:Factory">
-  <title></title>
-  <description>A widget factory is a theme preview application for GTK. It displays the various widget types provided by GTK in a single window allowing to see the visual effect of the applied theme.</description>
-  <devel project="X11:common:Factory" package="awf-gtk4"/>
-  <url>https://github.com/luigifab/awf-extended</url>
-</package>

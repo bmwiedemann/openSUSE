@@ -1,6 +1,0 @@
-<package name="python-pyp" project="openSUSE:Factory">
-  <title>Easily run Python at the shell</title>
-  <description>Easily run Python at the shell! Magical, but never mysterious.</description>
-  <devel project="devel:languages:python" package="python-pyp"/>
-  <url>https://github.com/hauntsaninja/pyp</url>
-</package>

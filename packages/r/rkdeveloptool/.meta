@@ -1,5 +1,0 @@
-<package name="rkdeveloptool" project="openSUSE:Factory">
-  <title></title>
-  <description>rkdeveloptool gives you a simple way to read/write rockusb devices.</description>
-  <devel project="hardware" package="rkdeveloptool"/>
-</package>

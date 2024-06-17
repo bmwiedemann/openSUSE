@@ -1,5 +1,0 @@
-<package name="python-py-ubjson" project="openSUSE:Factory">
-  <title>Universal Binary JSON encoder/decoder</title>
-  <description>This is a Python v3.2+ (and 2.7+) Universal Binary JSON encoder/decoder based on the draft-12 specification.</description>
-  <devel project="devel:languages:python" package="python-py-ubjson"/>
-</package>

@@ -1,8 +1,0 @@
-<package name="rubygem-llhttp-ffi" project="openSUSE:Factory">
-  <title>Ruby FFI bindings for llhttp</title>
-  <description>Ruby FFI bindings for llhttp.
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-llhttp-ffi"/>
-  <url>https://github.com/metabahn/llhttp/</url>
-</package>

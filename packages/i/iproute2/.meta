@@ -1,8 +1,0 @@
-<package name="iproute2" project="openSUSE:Factory">
-  <title>Advanced Routing</title>
-  <description>This package provides the tools ip, tc, and rtmon needed to use the new
-and advanced routing options of the Linux kernel. The SUSE Linux
-distribution has used this package for network setup since SuSE Linux
-8.0.</description>
-  <devel project="security:netfilter" package="iproute2"/>
-</package>

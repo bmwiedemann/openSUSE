@@ -1,8 +1,0 @@
-<package name="rubygem-ruby-augeas" project="openSUSE:Factory">
-  <title>Ruby bindings for augeas</title>
-  <description>Provides bindings for augeas.
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-ruby-augeas"/>
-  <url>http://augeas.net/</url>
-</package>

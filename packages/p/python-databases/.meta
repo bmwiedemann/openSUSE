@@ -1,5 +1,0 @@
-<package name="python-databases" project="openSUSE:Factory">
-  <title></title>
-  <description>Async database support for Python</description>
-  <devel project="devel:languages:python" package="python-databases"/>
-</package>

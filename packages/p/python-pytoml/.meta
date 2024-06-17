@@ -1,7 +1,0 @@
-<package name="python-pytoml" project="openSUSE:Factory">
-  <title>python parser and writer for TOML</title>
-  <description>This project aims at being a specs-conforming and strict parser and writer for TOML files. The library currently supports version 0.4.0 of the specs and runs with Python 2.6+ and 3.3+.
-
-https://github.com/avakar/pytoml</description>
-  <devel project="devel:languages:python" package="python-pytoml"/>
-</package>

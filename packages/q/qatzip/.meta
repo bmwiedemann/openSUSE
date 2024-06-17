@@ -1,6 +1,0 @@
-<package name="qatzip" project="openSUSE:Factory">
-  <title>qatzip - compression utility accelerated by QAT</title>
-  <description>QATzip is a user space library and command-line tool for file compression which builds on top of QAT (intel QuickAssist).</description>
-  <devel project="security" package="qatzip"/>
-  <url>https://github.com/intel/QATzip</url>
-</package>

@@ -1,7 +1,0 @@
-<package name="drawing" project="openSUSE:Factory">
-  <title>A simple drawing application for Linux.</title>
-  <description>This application is a free basic image editor, similar to Microsoft Paint, but aiming at the GNOME desktop.
-https://maoschanz.github.io/drawing/
-  </description>
-  <devel project="graphics" package="drawing"/>
-</package>

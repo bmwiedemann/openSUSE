@@ -1,9 +1,0 @@
-<package name="python-sphinxcontrib-plantuml" project="openSUSE:Factory">
-  <title>PlantUML extension for Sphinx</title>
-  <description>Once you enable this extension, a very simple string like this:
-
-    &quot;Alice -&gt; Bob: Hi!&quot;
-
-will create a nice UML schema. WIth PlantUML, you can specify things like height, width, scale, caption and so on. For details, please see PlantUML documentation at: http://plantuml.sourceforge.net/.</description>
-  <devel project="devel:languages:python" package="python-sphinxcontrib-plantuml"/>
-</package>

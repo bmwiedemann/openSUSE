@@ -1,7 +1,0 @@
-<package name="python-peppercorn" project="openSUSE:Factory">
-  <title>Library for converting a token stream into a data structure for use in web form posts</title>
-  <description>A library for converting a token stream into a data structure comprised of sequences, mappings, and scalars, developed primarily for converting HTTP form post data into a richer data structure.
-
-Please see http://docs.pylonsproject.org/projects/peppercorn/en/latest/ for the documentation.</description>
-  <devel project="devel:languages:python" package="python-peppercorn"/>
-</package>

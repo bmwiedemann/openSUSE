@@ -1,8 +1,0 @@
-<package name="python-shtab" project="openSUSE:Factory">
-  <title>Automagic shell tab completion for Python CLI applications</title>
-  <description>Automagic shell tab completion for Python CLI applications
-
-</description>
-  <devel project="devel:languages:python" package="python-shtab"/>
-  <url>https://github.com/iterative/shtab</url>
-</package>

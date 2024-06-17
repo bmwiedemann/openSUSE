@@ -1,5 +1,0 @@
-<package name="taigo" project="openSUSE:Factory">
-  <title>Taigo</title>
-  <description>A virtual pet for your desktop.</description>
-  <devel project="games" package="taigo"/>
-</package>

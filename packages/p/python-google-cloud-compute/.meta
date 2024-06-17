@@ -1,5 +1,0 @@
-<package name="python-google-cloud-compute" project="openSUSE:Factory">
-  <title>Google Compute Engine API</title>
-  <description>Python idiomatic library to access the Google Compute Engine API</description>
-  <devel project="devel:languages:python:google" package="python-google-cloud-compute"/>
-</package>

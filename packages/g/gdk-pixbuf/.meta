@@ -1,7 +1,0 @@
-<package name="gdk-pixbuf" project="openSUSE:Factory">
-  <title>An image loading library</title>
-  <description>gdk-pixbuf is an image loading library that can be extended by loadable
-modules for new image formats. It is used by toolkits such as GTK+ or
-Clutter.</description>
-  <devel project="GNOME:Factory" package="gdk-pixbuf"/>
-</package>

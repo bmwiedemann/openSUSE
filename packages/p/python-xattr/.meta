@@ -1,8 +1,0 @@
-<package name="python-xattr" project="openSUSE:Factory">
-  <title>Python Wrapper for Extended Filesytem Attributes</title>
-  <description>xattr is a Python wrapper for Darwin, Linux, and FreeBSD extended filesystem attributes.
-
-Extended attributes extend the basic attributes of files and directories in the file system. They are stored as name:data pairs associated with file system objects (files, directories, symlinks, etc).</description>
-  <devel project="devel:languages:python" package="python-xattr"/>
-  <url>http://www.undefined.org/python/#xattr</url>
-</package>

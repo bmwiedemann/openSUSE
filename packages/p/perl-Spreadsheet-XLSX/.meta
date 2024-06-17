@@ -1,9 +1,0 @@
-<package name="perl-Spreadsheet-XLSX" project="openSUSE:Factory">
-  <title>Perl extension for reading MS Excel 2007 files;</title>
-  <description>This module is a (quick and dirty) emulation of Spreadsheet::ParseExcel for
-Excel 2007 (.xlsx) file format. It supports styles and many of Excel's
-quirks, but not all. It populates the classes from Spreadsheet::ParseExcel
-for interoperability; including Workbook, Worksheet, and Cell.</description>
-  <devel project="devel:languages:perl" package="perl-Spreadsheet-XLSX"/>
-  <url>http://search.cpan.org/dist/Spreadsheet-XLSX/</url>
-</package>

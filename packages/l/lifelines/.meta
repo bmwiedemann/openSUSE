@@ -1,7 +1,0 @@
-<package name="lifelines" project="openSUSE:Factory">
-  <title>The Lifelines Genealogy Program</title>
-  <description>Lifelines is terminal-based program that allows the tracking of
-genealogical information.  The lifelines reports are the power of the
-system but requires knowledge in the ll format.</description>
-  <devel project="science" package="lifelines"/>
-</package>

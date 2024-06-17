@@ -1,9 +1,0 @@
-<package name="mxml" project="openSUSE:Factory">
-  <title>Small XML Parsing Library</title>
-  <description>Mini-XML is a small XML parsing library that you can use to read XML
-and XML-like data files in your application without requiring large
-nonstandard libraries.
-
-This package holds the commandline tools for mxml.</description>
-  <devel project="devel:libraries:c_c++" package="mxml"/>
-</package>

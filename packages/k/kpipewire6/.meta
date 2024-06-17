@@ -1,8 +1,0 @@
-<package name="kpipewire6" project="openSUSE:Factory">
-  <title>PipeWire integration for KDE Plasma</title>
-  <description>KPipeWire provides PipeWire integration for the Plasma desktop and mobile shells.
-
-</description>
-  <devel project="KDE:Frameworks" package="kpipewire6"/>
-  <url>https://www.kde.org</url>
-</package>

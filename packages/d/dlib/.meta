@@ -1,9 +1,0 @@
-<package name="dlib" project="openSUSE:Factory">
-  <title>A toolkit for making real world machine learning and data analysis applications</title>
-  <description>dlib is a toolkit for making real world machine learning and data analysis
-applications using Python
-
-</description>
-  <devel project="science:machinelearning" package="dlib"/>
-  <url>https://github.com/davisking/dlib</url>
-</package>

@@ -1,3 +1,0 @@
-Requires:  kernel-%1
-Requires:  %{name}-client = %{version}
-Conflicts: %{name}-fuse-client = %{version}

@@ -1,5 +1,0 @@
-<package name="deepin-editor" project="openSUSE:Factory">
-  <title>A text editor for the Deepin environment</title>
-  <description>Deepin Editor is a desktop text editor that supports common text editing features.</description>
-  <devel project="X11:Deepin" package="deepin-editor"/>
-</package>

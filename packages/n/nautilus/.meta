@@ -1,5 +1,0 @@
-<package name="nautilus" project="openSUSE:Factory">
-  <title>File Manager for the GNOME Desktop</title>
-  <description>Nautilus is the file manager for the GNOME desktop.</description>
-  <devel project="GNOME:Factory" package="nautilus"/>
-</package>

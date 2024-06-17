@@ -1,5 +1,0 @@
-<package name="plymouth-theme-opensuse-beat" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="X11:common:Factory" package="plymouth-theme-opensuse-beat"/>
-</package>

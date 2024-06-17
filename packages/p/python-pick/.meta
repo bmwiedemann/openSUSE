@@ -1,6 +1,0 @@
-<package name="python-pick" project="openSUSE:Factory">
-  <title>Create curses based interactive selection list in the terminal</title>
-  <description>pick is a small python library to help you create curses based interactive selection list in the terminal.</description>
-  <devel project="devel:languages:python" package="python-pick"/>
-  <url>https://github.com/wong2/pick</url>
-</package>

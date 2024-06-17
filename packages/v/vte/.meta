@@ -1,7 +1,0 @@
-<package name="vte" project="openSUSE:Factory">
-  <title>Terminal Emulator Library</title>
-  <description>VTE is a terminal emulator library that provides a terminal widget for
-use with GTK+ as well as handling of child process and terminal
-emulation settings.</description>
-  <devel project="GNOME:Factory" package="vte"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="screen-message" project="openSUSE:Factory">
-  <title>screen-message</title>
-  <description>Screen Message is a small program to display a text as large as possible on your screen. You can edit the text while Screen Message is running. To blank the text, press Esc. To quit Screen Message, press Ctrl-Q or press Esc twice.</description>
-  <devel project="X11:Utilities" package="screen-message"/>
-</package>

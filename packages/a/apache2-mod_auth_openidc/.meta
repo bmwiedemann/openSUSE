@@ -1,5 +1,0 @@
-<package name="apache2-mod_auth_openidc" project="openSUSE:Factory">
-  <title>OpenID Connect Relying Party and OAuth 2.0 Resource Server for Apache HTTP Server 2.x</title>
-  <description>OpenID Connect Relying Party and OAuth 2.0 Resource Server for Apache HTTP Server 2.x</description>
-  <devel project="Apache:Modules" package="apache2-mod_auth_openidc"/>
-</package>

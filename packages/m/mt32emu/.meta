@@ -1,8 +1,0 @@
-<package name="mt32emu" project="openSUSE:Factory">
-  <title>Roland MT-32 emulator</title>
-  <description>
-A multi-platform software synthesiser emulating pre-GM MIDI devices such as the Roland MT-32, CM-32L, CM-64 and LAPC-I.
-  </description>
-  <devel project="multimedia:libs" package="mt32emu"/>
-  <url>https://github.com/munt/munt</url>
-</package>

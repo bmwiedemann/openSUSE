@@ -1,6 +1,0 @@
-<package name="perl-Class-C3-Adopt-NEXT" project="openSUSE:Factory">
-  <title>Make NEXT suck less</title>
-  <description>This module is intended as a drop-in replacement for NEXT, supporting the same interface, but using Class::C3 to do the hard work. You can then write new code without NEXT, and migrate individual source files to use Class::C3 or method modifiers as appropriate, at whatever pace you're comfortable with.</description>
-  <devel project="devel:languages:perl" package="perl-Class-C3-Adopt-NEXT"/>
-  <url>http://search.cpan.org/dist/Class-C3-Adopt-NEXT</url>
-</package>

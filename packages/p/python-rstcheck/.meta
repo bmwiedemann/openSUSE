@@ -1,5 +1,0 @@
-<package name="python-rstcheck" project="openSUSE:Factory">
-  <title>python-rstcheck</title>
-  <description>Checks syntax of reStructuredText</description>
-  <devel project="devel:languages:python" package="python-rstcheck"/>
-</package>

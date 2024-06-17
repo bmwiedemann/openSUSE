@@ -1,8 +1,0 @@
-<package name="kf6-kdoctools" project="openSUSE:Factory">
-  <title>Tools to create documentation from DocBook</title>
-  <description>Provides tools to generate documentation in various format from DocBook files.
-
-</description>
-  <devel project="KDE:Frameworks" package="kf6-kdoctools"/>
-  <url>https://www.kde.org</url>
-</package>

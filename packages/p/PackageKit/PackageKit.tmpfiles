@@ -1,3 +1,0 @@
-d /var/cache/PackageKit 0755 root root -
-d /var/lib/PackageKit/ 0755 root root -
-L+ /var/lib/PackageKit/transactions.db - - - - ../../../usr/share/PackageKit/transactions.db

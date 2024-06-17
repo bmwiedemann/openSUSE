@@ -1,7 +1,0 @@
-<services>
-  <service name="cargo_vendor" mode="manual">
-    <param name="srcdir">ruby-3.3.3/yjit</param>
-    <param name="update">false</param>
-    <param name="compression">xz</param>
-  </service>
-</services>

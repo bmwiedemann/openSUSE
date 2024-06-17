@@ -1,9 +1,0 @@
-<package name="kf6-kiconthemes" project="openSUSE:Factory">
-  <title>Icon GUI utilities</title>
-  <description>This library contains classes to improve the handling of icons
-in applications using the KDE Frameworks.
-
-</description>
-  <devel project="KDE:Frameworks" package="kf6-kiconthemes"/>
-  <url>https://www.kde.org</url>
-</package>

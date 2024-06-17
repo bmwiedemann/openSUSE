@@ -1,4 +1,0 @@
-#!/bin/sh
-tar -xzf wxPython-*.gz
-rm -r wxPython-*/packaging
-tar -czf wxPython-*.gz wxPython-*/

@@ -1,6 +1,0 @@
-<package name="ruby-build" project="openSUSE:Factory">
-  <title></title>
-  <description>ruby-build provides a simple way to compile and install different versions of Ruby on UNIX-like systems.
-</description>
-  <devel project="devel:languages:ruby:extensions" package="ruby-build"/>
-</package>

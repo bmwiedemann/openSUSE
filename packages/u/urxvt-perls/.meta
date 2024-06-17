@@ -1,9 +1,0 @@
-<package name="urxvt-perls" project="openSUSE:Factory">
-  <title>Perl extensions for the rxvt-unicode terminal emulator</title>
-  <description>A small collection of perl extensions for the urxvt-unicode terminal emulator.
-keyboard-select: Use keyboard shortcuts to select and copy text.
-url-select: Use keyboard shortcuts to select URLs.
-clipboard: Use keyboard shortcuts to copy the selection to the clipboard and
-to paste the clipboard contents (optionally escaping all special characters).</description>
-  <devel project="X11:Utilities" package="urxvt-perls"/>
-</package>

@@ -1,9 +1,0 @@
-[Unit]
-Description=noVNC Web Server
-
-[Socket]
-ListenStream=5801
-Accept=False
-
-[Install]
-WantedBy=sockets.target

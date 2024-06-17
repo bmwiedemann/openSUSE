@@ -1,5 +1,0 @@
-<package name="aspell-dictionaries" project="openSUSE:Factory">
-  <title>aspell-dictionaries</title>
-  <description>NOTE: Automatically created during Factory devel project migration by admin.</description>
-  <devel project="devel:libraries:c_c++" package="aspell-dictionaries"/>
-</package>

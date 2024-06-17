@@ -1,6 +1,0 @@
-<package name="scim" project="openSUSE:Factory">
-  <title>Smart Chinese/Common Input Method platform</title>
-  <description>SCIM is a developing platform to significantly reduce the difficulty of
-input method development.</description>
-  <devel project="M17N" package="scim"/>
-</package>

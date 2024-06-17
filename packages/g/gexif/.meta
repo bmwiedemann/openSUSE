@@ -1,6 +1,0 @@
-<package name="gexif" project="openSUSE:Factory">
-  <title>GTK Tool for Viewing EXIF Information</title>
-  <description>This tool contains simple GTK interface for viewing EXIF information
-within JPEG images created by some digital cameras.</description>
-  <devel project="graphics" package="gexif"/>
-</package>

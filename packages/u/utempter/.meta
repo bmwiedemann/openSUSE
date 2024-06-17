@@ -1,7 +1,0 @@
-<package name="utempter" project="openSUSE:Factory">
-  <title>A privileged helper for utmp and wtmp updates</title>
-  <description>Utempter is a utility that allows non-privileged applications such as
-terminal emulators to modify the utmp database without having to be
-setuid root.</description>
-  <devel project="Base:System" package="utempter"/>
-</package>

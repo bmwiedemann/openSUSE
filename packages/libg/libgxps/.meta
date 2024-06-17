@@ -1,8 +1,0 @@
-<package name="libgxps" project="openSUSE:Factory">
-  <title>Library for Rendering PostScript Documents</title>
-  <description>libspectre is a small library for rendering Postscript documents. It
-provides a convenient easy to use API for handling and rendering
-Postscript documents.
-</description>
-  <devel project="X11:common:Factory" package="libgxps"/>
-</package>
