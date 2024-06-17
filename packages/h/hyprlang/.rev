@@ -23,4 +23,16 @@
     <comment></comment>
     <requestid>1169775</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>55a9b76c2c409a3a555a282a59a1c239</srcmd5>
+    <version>0.5.2</version>
+    <time>1718645651</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.5.2
+  * fixed getconf command
+- remove _service and obsinfo and obscpio
+  * use upstream sources
+</comment>
+    <requestid>1181321</requestid>
+  </revision>
 </revisionlist>

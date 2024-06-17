@@ -19,12 +19,12 @@
 %define sover 2
 
 Name:           hyprlang
-Version:        0.5.1
+Version:        0.5.2
 License:        LGPL-3.0-only
 Release:        0
 Summary:        A configuration language for Linux applications
 URL:            https://github.com/hyprwm/hyprlang
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://github.com/hyprwm/hyprlang/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 

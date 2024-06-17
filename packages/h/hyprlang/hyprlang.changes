@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 17 13:03:16 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 0.5.2
+  * fixed getconf command
+- remove _service and obsinfo and obscpio
+  * use upstream sources
+
+-------------------------------------------------------------------
 Mon Apr 22 23:11:00 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 0.5.1:
