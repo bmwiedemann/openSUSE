@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 17 08:14:23 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- Use envsubst to reduce image size
+
+-------------------------------------------------------------------
 Mon Jun 10 15:11:25 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - update README; reduce unnecessary newlines
