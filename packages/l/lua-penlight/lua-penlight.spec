@@ -1,7 +1,7 @@
 #
 # spec file for package lua-penlight
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Togan Muftuoglu toganm@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@
 %ifluadefault
 %define with_main 1
 %endif
-Version:        1.13.1
+Version:        1.14.0
 Release:        0
 Summary:        Generally useful modules inspired by the Python standard libraries
 License:        MIT

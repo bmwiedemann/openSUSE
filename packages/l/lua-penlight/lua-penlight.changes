@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 13 16:05:42 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to version 0.14.0:
+  * fix(path): make `path.expanduser` more sturdy
+  * feat(func): extend `compose` to support N functions
+  * fix(utils) `nil` values in `utils.choose(cond, val1, val2)`
+  * fix(template) using `%` as an escape character caused the
+    expression to not be recognized
+  * enhance(template): Preserve line numbers
+
+-------------------------------------------------------------------
 Wed Nov 23 10:43:32 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix missing dependency on lua-macros (boo#1205612)
