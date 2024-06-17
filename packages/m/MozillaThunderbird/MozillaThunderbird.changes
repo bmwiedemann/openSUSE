@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jun 17 07:43:27 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 115.12.0
+  https://www.thunderbird.net/en-US/thunderbird/115.12.0/releasenotes
+  MFSA 2024-28 (bsc#1226027)
+  * CVE-2024-5702 (bmo#1193389)
+    Use-after-free in networking
+  * CVE-2024-5688 (bmo#1895086)
+    Use-after-free in JavaScript object transplant
+  * CVE-2024-5690 (bmo#1883693)
+    External protocol handlers leaked by timing attack
+  * CVE-2024-5691 (bmo#1888695)
+    Sandboxed iframes were able to bypass sandbox restrictions to
+    open a new window
+  * CVE-2024-5692 (bmo#1891234)
+    Bypass of file name restrictions during saving
+  * CVE-2024-5693 (bmo#1891319)
+    Cross-Origin Image leak via Offscreen Canvas
+  * CVE-2024-5696 (bmo#1896555)
+    Memory Corruption in Text Fragments
+  * CVE-2024-5700 (bmo#1862809, bmo#1889355, bmo#1893388, bmo#1895123)
+    Memory safety bugs fixed in Firefox 127, Firefox ESR 115.12,
+    and Thunderbird 115.12
+
+-------------------------------------------------------------------
 Wed May 29 06:30:51 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 115.11.1
