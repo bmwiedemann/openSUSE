@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Apr 22 02:56:13 UTC 2024 - Neil Brown <nfbrown@suse.com>
+
+- nfs-utils.spec: Provide nfsidmap as well as obsoleting it.
+  (bsc#1222947)
+
+-------------------------------------------------------------------
+Tue Dec  5 01:19:38 UTC 2023 - Neil Brown <nfbrown@suse.com>
+
+- Update to version 2.6.4
+  - https://kernel.org/pub/linux/utils/nfs-utils/2.6.4/2.6.4-Changelog
+  - includes fixes for bsc#1210997
+- Removed patchs from this release
+  - 0001-export-fix-handling-of-error-from-match_fsid.patch
+- Added some upstream patches
+  - 0001-exportfs-remove-warning-if-neither-subtree_check-or-.patch
+  - 0002-conffile-don-t-report-error-from-conf_init_file.patch
+  - 0003-conffile-allow-usr-etc-to-provide-any-config-files-e.patch
+  - 0004-fsidd-call-anonymous-sockets-by-their-name-only-don-.patch
+  These fix minor bugs and allow config files to be in /usr/etc.
+  So also move config files to /usr/etc and create directories
+  foo.conf.d for each config file, so other config file can easily
+  be addded.
+  (boo#1216740)
+
+-------------------------------------------------------------------
 Wed Nov 15 00:03:44 UTC 2023 - Neil Brown <nfbrown@suse.com>
 
 - Build with --enable-junction so that nfsref is built

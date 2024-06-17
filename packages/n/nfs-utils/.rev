@@ -1745,4 +1745,29 @@
   https://lore.kernel.org/linux-nfs/DFBBA6DD-7F22-4A38-BAA2-DBD40EB81BB9@oracle.com/</comment>
     <requestid>1126501</requestid>
   </revision>
+  <revision rev="181" vrev="42">
+    <srcmd5>51f6841eb546fa72402bce276d342fe4</srcmd5>
+    <version>unknown</version>
+    <time>1718645237</time>
+    <user>anag+factory</user>
+    <comment>- nfs-utils.spec: Provide nfsidmap as well as obsoleting it.
+  (bsc#1222947)
+
+- Update to version 2.6.4
+  - https://kernel.org/pub/linux/utils/nfs-utils/2.6.4/2.6.4-Changelog
+  - includes fixes for bsc#1210997
+- Removed patchs from this release
+  - 0001-export-fix-handling-of-error-from-match_fsid.patch
+- Added some upstream patches
+  - 0001-exportfs-remove-warning-if-neither-subtree_check-or-.patch
+  - 0002-conffile-don-t-report-error-from-conf_init_file.patch
+  - 0003-conffile-allow-usr-etc-to-provide-any-config-files-e.patch
+  - 0004-fsidd-call-anonymous-sockets-by-their-name-only-don-.patch
+  These fix minor bugs and allow config files to be in /usr/etc.
+  So also move config files to /usr/etc and create directories
+  foo.conf.d for each config file, so other config file can easily
+  be addded.
+  (boo#1216740)</comment>
+    <requestid>1169773</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package nfs-utils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           nfs-utils
-Version:        2.6.3
+Version:        2.6.4
 Release:        0
 Summary:        Support Utilities for Kernel nfsd
 License:        GPL-2.0-or-later
@@ -42,7 +42,10 @@ Source25:       rpc-svcgssd.options.conf
 Source26:       nfs.conf
 Source27:       nfs-kernel-server.tmpfiles.conf
 Patch0:         nfs-utils-1.0.7-bind-syntax.patch
-Patch1:         0001-export-fix-handling-of-error-from-match_fsid.patch
+Patch1:         0001-exportfs-remove-warning-if-neither-subtree_check-or-.patch
+Patch2:         0002-conffile-don-t-report-error-from-conf_init_file.patch
+Patch3:         0003-conffile-allow-usr-etc-to-provide-any-config-files-e.patch
+Patch4:         0004-fsidd-call-anonymous-sockets-by-their-name-only-don-.patch
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -106,7 +109,8 @@ Summary:        NFSv4 ID Mapping Library
 Group:          Productivity/Networking/NFS
 Version:        1.0
 Release:        0
-Obsoletes:      nfsidmap
+Obsoletes:      nfsidmap < 1.0
+Provides:       nfsidmap = 1.0
 
 %package -n nfsidmap-devel
 Summary:        NFSv4 ID Mapping Library development libraries
@@ -158,7 +162,9 @@ install -D -m 644 %{SOURCE22} %{buildroot}%{_unitdir}/rpc-gssd.service.d/10-opti
 install -D -m 644 %{SOURCE23} %{buildroot}%{_unitdir}/rpc-statd.service.d/10-options.conf
 install -D -m 644 %{SOURCE24} %{buildroot}%{_unitdir}/rpc-statd-notify.service.d/10-options.conf
 install -D -m 644 %{SOURCE25} %{buildroot}%{_unitdir}/rpc-svcgssd.service.d/10-options.conf
-install -D -m 644 %{SOURCE26} %{buildroot}%{_sysconfdir}/nfs.conf
+install -D -m 644 %{SOURCE26} %{buildroot}%{_prefix}%{_sysconfdir}/nfs.conf
+mkdir -p -m 755 %{buildroot}%{_prefix}%{_sysconfdir}/nfs.conf.d
+mkdir -p -m 755 %{buildroot}%{_sysconfdir}/nfs.conf.d
 install -D -m 644 %{SOURCE27} %{buildroot}%{_prefix}/lib/tmpfiles.d/nfs-kernel-server.conf
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcnfs-server
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcnfs-client
@@ -166,7 +172,9 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcnfs-client
 mkdir -p %{buildroot}%{_fillupdir}
 install -m 644 %{SOURCE4} %{buildroot}%{_fillupdir}
 # idmapd setup
-install -D -m 644 %{SOURCE11} %{buildroot}%{_sysconfdir}/idmapd.conf
+install -D -m 644 %{SOURCE11} %{buildroot}%{_prefix}%{_sysconfdir}/idmapd.conf
+mkdir -p -m 755 %{buildroot}%{_prefix}%{_sysconfdir}/idmapd.conf.d
+mkdir -p -m 755 %{buildroot}%{_sysconfdir}/idmapd.conf.d
 mkdir -p -m 755 %{buildroot}%{_localstatedir}/lib/nfs/rpc_pipefs
 mkdir -p -m 755 %{buildroot}%{_localstatedir}/lib/nfs/v4recovery
 # sm-notify state
@@ -174,7 +182,8 @@ mkdir -p -m 755 %{buildroot}%{_localstatedir}/lib/nfs/sm
 mkdir -p -m 755 %{buildroot}%{_localstatedir}/lib/nfs/sm.bak
 touch %{buildroot}%{_localstatedir}/lib/nfs/state
 mkdir -p %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services
-install -m 644 utils/mount/nfsmount.conf %{buildroot}%{_sysconfdir}/nfsmount.conf
+mkdir -p -m 755 %{buildroot}%{_prefix}%{_sysconfdir}/nfsmount.conf.d
+mkdir -p -m 755 %{buildroot}%{_sysconfdir}/nfsmount.conf.d
 #
 # hack to avoid automatic python dependency
 chmod 644 `grep -l -r '^#!/usr/bin/python' %{buildroot}%{_sbindir}`
@@ -254,9 +263,15 @@ fi
 
 %files -n nfs-client
 %license COPYING
-%config %{_sysconfdir}/idmapd.conf
-%config %{_sysconfdir}/nfsmount.conf
-%config %{_sysconfdir}/nfs.conf
+%{_prefix}%{_sysconfdir}/idmapd.conf
+%dir %{_prefix}%{_sysconfdir}/idmapd.conf.d
+%dir %{_sysconfdir}/idmapd.conf.d
+%dir %{_prefix}%{_sysconfdir}/nfsmount.conf.d
+%dir %{_sysconfdir}/nfsmount.conf.d
+%doc utils/mount/nfsmount.conf
+%{_prefix}%{_sysconfdir}/nfs.conf
+%dir %{_prefix}%{_sysconfdir}/nfs.conf.d
+%dir %{_sysconfdir}/nfs.conf.d
 %verify(not mode) %attr(0755,root,root) %{_sbindir}/mount.nfs
 %{_sbindir}/mount.nfs4
 %{_sbindir}/umount.nfs
