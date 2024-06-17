@@ -376,4 +376,13 @@
 - Update vendor, fix CVE-2024-22189 boo#1222488 (forwarded request 1167661 from hillwood)</comment>
     <requestid>1167662</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>cd2e32b1f0fa01923fc938b0596fe6c2</srcmd5>
+    <version>5.16.1</version>
+    <time>1718645385</time>
+    <user>anag+factory</user>
+    <comment>- Update version to 5.16.1
+  * Add Keep-Alive to removed headers (forwarded request 1181096 from hillwood)</comment>
+    <requestid>1181097</requestid>
+  </revision>
 </revisionlist>
