@@ -448,4 +448,13 @@
 - remove remove_mock_dependency.patch</comment>
     <requestid>1137099</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>9d6aa6905fd5eec366943cb98cb2f5dd</srcmd5>
+    <version>7.1.0</version>
+    <time>1718645257</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.1.0:
+  * require pycodestyle 2.12.0</comment>
+    <requestid>1181242</requestid>
+  </revision>
 </revisionlist>

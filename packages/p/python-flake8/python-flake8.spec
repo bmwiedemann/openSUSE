@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flake8
-Version:        7.0.0
+Version:        7.1.0
 Release:        0
 Summary:        Modular source code checker: pep8, pyflakes and co
 License:        MIT
@@ -34,17 +34,17 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module mccabe >= 0.7.0 with %python-mccabe < 0.8.0}
-BuildRequires:  %{python_module pycodestyle >= 2.11.0 with %python-pycodestyle < 2.12.0}
+BuildRequires:  %{python_module pycodestyle >= 2.12.0 with %python-pycodestyle < 2.13.0}
 BuildRequires:  %{python_module pyflakes >= 3.2.0 with %python-pyflakes < 3.3.0}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildArch:      noarch
 # https://flake8.pycqa.org/en/latest/faq.html#why-does-flake8-use-ranges-for-its-dependencies
 Requires:       (python-mccabe >= 0.7.0 with python-mccabe < 0.8.0)
-Requires:       (python-pycodestyle >= 2.11.0 with python-pycodestyle < 2.12.0)
+Requires:       (python-pycodestyle >= 2.12.0 with python-pycodestyle < 2.13.0)
 Requires:       (python-pyflakes >= 3.2.0 with python-pyflakes < 3.3.0)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
