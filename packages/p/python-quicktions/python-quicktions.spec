@@ -17,7 +17,7 @@
 
 
 Name:           python-quicktions
-Version:        1.17
+Version:        1.18
 Release:        0
 Summary:        Fast fractions data type for rational numbers
 License:        Python-2.0
@@ -26,7 +26,9 @@ URL:            https://github.com/scoder/quicktions
 Source:         https://files.pythonhosted.org/packages/source/q/quicktions/quicktions-%{version}.tar.gz
 BuildRequires:  %{python_module Cython >= 3}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -54,10 +56,10 @@ Py3.4, quicktions is currently about 10x faster, and still about
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -67,6 +69,7 @@ export PYTHONDONTWRITEBYTECODE=1
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/quicktions.cpython-*so
+%{python_sitearch}/quicktions-%{version}.dist-info
 
 %changelog

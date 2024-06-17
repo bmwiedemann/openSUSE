@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 10 09:45:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.18:
+  * New binary wheels were added built with gcc 12
+    (manylinux_2_28).
+- use PEP517/wheel build
+
+-------------------------------------------------------------------
 Mon Mar 25 12:27:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.17:
