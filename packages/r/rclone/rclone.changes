@@ -1,4 +1,269 @@
 -------------------------------------------------------------------
+Fri Jun 14 20:51:39 UTC 2024 - mrueckert@suse.de
+
+- Update to version 1.67.0:
+  * Version v1.67.0
+  * s3: fix 405 error on HEAD for delete marker with versionId
+  * gitannex: make tests run more quietly - use go test -v for more info
+  * jottacloud: set metadata on server side copy and move - fixes #7900
+  * qingstor: disable integration tests as test account suspended
+  * operations: add operations.ReadFile to read the contents of a file into memory
+  * fs: make ConfigFs take an fs.Info which makes it more useful
+  * touch: fix using -R on certain backends
+  * serve s3: fix XML of error message
+  * fs/logger: make the tests deterministic
+  * zoho: sleep for 60 seconds if rate limit error received
+  * zoho: remove simple file names complication which is no longer needed
+  * zoho: retry reading info if size wasn't returned
+  * zoho: fix throttling problem when uploading files
+  * zoho: use cursor listing for improved performance
+  * operations: fix hashing problem in integration tests
+  * Add Bill Fraser to contributors
+  * Add Florian Klink to contributors
+  * Add Michał Dzienisiewicz to contributors
+  * build(deps): bump github.com/Azure/azure-sdk-for-go/sdk/azidentity
+  * pikpak: implement configurable chunk size for multipart upload
+  * docs: added info about --progress terminal width
+  * pikpak: remove PublicLink from integration tests
+  * onedrive: add --onedrive-hard-delete to permanently delete files
+  * dropbox: add option to override root namespace
+  * tree-wide: replace /bin/bash with /usr/bin/env bash
+  * protondrive: don't auth with an empty access token
+  * serve s3: fix in-memory metadata storing wrong modtime
+  * vfs: fix renaming a directory
+  * fstest: make RandomRemoteName shorter
+  * googlephotos: remove unnecessary nil check
+  * s3, googlecloudstorage, azureblob: fix encoding issue with dir path comparison
+  * sync: don't test reading metadata if we can't write it
+  * linkbox: ignore TestListDirSorted test until encoding is implemented
+  * Add Tomasz Melcer to contributors
+  * pikpak: improve upload reliability and resolve potential file conflicts
+  * sftp: --sftp-connections to limit maximum number of connections
+  * ulozto: fix panic in various integration tests
+  * swift: fix integration tester with use_segments_container=false
+  * drive: fix tests for backend query command
+  * mailru: attempt to fix throttling by decreasing min sleep to 100ms
+  * sync: fix expecting SFTP to have MkdirMetadata method: optional feature not implemented
+  * operations: fix incorrect modtime on some multipart transfers
+  * sync: fix tests on backends which can't have empty directories
+  * cache: fix tests when testing for Object.SetMetadata
+  * Add Charles Hamilton to contributors
+  * Add Thomas Schneider to contributors
+  * Add Bruno Fernandes to contributors
+  * windows: make rclone work with SeBackupPrivilege and/or SeRestorePrivilege
+  * cmd/gitannex: Update command docs
+  * cmd/gitannex: Support synonyms of config values
+  * S3: Ceph Backend use already exist changed to true (now tested) - fixes #7871
+  * s3: Add Magalu S3 Object Storage as provider
+  * config: fix default value for description
+  * b2: update URLs to new home
+  * Add yumeiyin to contributors
+  * serve dlna: make BrowseMetadata more compliant - fixes #7883
+  * Fix new lint issues reported by golangci-lint v1.59.0
+  * docs: fix some comments
+  * build: update all dependencies
+  * drive: debug when we are ignoring permissions #7853
+  * Add Dominik Joe Pantůček to contributors
+  * docs: crypt: fix incorrect terminology
+  * operations: rework rcat so that it doesn't call the --metadata-mapper twice
+  * operations: ensure SrcFsType is set correctly when using --metadata-mapper
+  * onedrive: allow setting permissions to fail if failok flag is set
+  * Add Evan McBeth to contributors
+  * docs: improve readability in faq
+  * fs: fix panic when using --metadata-mapper on large google doc files
+  * Add JT Olio to contributors
+  * Add overallteach to contributors
+  * go.mod: update storj.io/uplink to latest release
+  * chore: fix function name in comment
+  * build: update issue label notification machinery
+  * operations: fix missing metadata for multipart transfers to local disk
+  * local: implement Object.SetMetadata
+  * fs: define the optional interface SetMetadata and implement it in wrapping backends
+  * drive: allow setting metadata to fail if failok flag is set
+  * cmd/gitannex: When tags do not match, run e2e tests anyway
+  * build: Inject rclone version tag when testing
+  * cmd/gitannex: Remove assumption in e2e test version check
+  * .github/workflows: Install git-annex-remote-rclone on Linux and macOS
+  * cmd/gitannex: Add TestEndToEndMigration tests
+  * cmd/gitannex: Describe new rclonelayout config in help
+  * cmd/gitannex: Drop chdir from e2e tests
+  * cmd/gitannex: Repeat TestEndToEnd for all layout modes
+  * cmd/gitannex: Refactor e2e tests, add layout compat tests
+  * cmd/gitannex: Add support for different layouts
+  * cmd/gitannex: Simplify messageParser's finalParameter() func
+  * chunker: fix `finalizer already set` error
+  * mailru: use --tpslimit 10 on bisync tests
+  * bisync: ignore "Implicitly create directory" messages on tests
+  * quatrix: fix f.String() not including subpath
+  * operations: fix lsjson --encrypted when using --crypt-XXX parameters
+  * Add Sunny to contributors
+  * Add Michael Terry to contributors
+  * serve http: added content-length header when html directory is served
+  * docs: minor formatting improvement
+  * oauthutil: clear client secret if client ID is set
+  * drive: fix description being overwritten on server side moves
+  * bump golangci/golangci-lint-action from 4 to 6
+  * onedrive: add support for group permissions
+  * onedrive: fix references to deprecated permissions properties
+  * onedrive: skip writing permissions with 'owner' role
+  * build: add issue label notification machinery
+  * union: fix deleting dirs when all remotes can't have empty dirs
+  * pikpak: improve getFile() usage
+  * docs: exit code 9 requires --error-on-no-transfer
+  * ulozto: Fix handling of root paths with leading / trailing slashes.
+  * fstest: reduce precision of directory time checks on CI
+  * sync: remove now superfluous copyEmptyDirectories function
+  * sync: fix failed to update directory timestamp or metadata: directory not found
+  * sync: fix directory modification times not being set
+  * sync: don't need to sync directories if they haven't been modified
+  * sync: fix creation of empty directories when --create-empty-src-dirs=false
+  * sync: fix management of empty directories to make it more accurate
+  * drive: be more explicit in debug when setting permissions fail
+  * onedrive,drive: make errors setting permissions into no retry errors
+  * docs: add Backblaze as a sponsor
+  * storj: update bio on request
+  * docs: note that newer linux kernel version is required for ARMv5
+  * build: migrate bucket storage for the project to new provider
+  * Add hidewrong to contributors
+  * swift: implement --swift-use-segments-container to allow >5G files on Blomp
+  * random: update Password docs
+  * build: add linting for different values of GOOS
+  * build: fix linting issues reported by running golangci-lint with different GOOS
+  * build: fix linting issues reported by golangci-lint on windows
+  * log: fix lint issue SA1019: syscall.Syscall has been deprecated since Go 1.18: Use SyscallN instead.
+  * build: run go mod tidy
+  * backend http: Adding no-escape flag for option to not escape URL metacharacters in path names - fixes issue #7637
+  * bisync: avoid starting tests we don't have time to finish
+  * bisync: skip test if config string contains a space
+  * fs accounting: Add deleted files total size to status summary line - fixes issue #7190
+  * build: remove build constraint syntax for go 1.16 and older
+  * build: remove separate go module cache step as its done by setup-go
+  * Convert source files with crlf to lf
+  * fix spelling
+  * bisync: make session path even shorter on tests
+  * build: make integration tests run better on macOS and Windows
+  * docs: fix heading anchor
+  * Add pawsey-kbuckley to contributors
+  * Add Katia Esposito to contributors
+  * lsjson: small docs change to clarify options
+  * genautocomplete: remove Ubuntu-ism from docs and clarify non-root use
+  * docs: fix macOS install from source link
+  * ncdu: Do not quit on Esc
+  * fix: test_all re-running too much stuff
+  * Add Dave Nicolson to contributors
+  * Add Butanediol to contributors
+  * Add yudrywet to contributors
+  * docs: Add left and right padding to prevent icon truncation
+  * serve s3: fix Last-Modified header format
+  * chore: fix function names in comment
+  * onedrive: set all metadata permissions and return error summary
+  * fs rc: fixes incorrect Content-Type in HTTP API - fixes #7726
+  * operations: fix move when dst is nil and fdst is case-insensitive
+  * sync: fix case normalisation on s3
+  * operations: fix retries downloading too much data with certain backends
+  * operations: add more assertions to ReOpen tests to check seek positions
+  * Add static-moonlight to contributors
+  * doc: add example how to run serve s3
+  * serve s3: adjust to move of Mikubill/gofakes3 to rclone/gofakes3
+  * Add guangwu to contributors
+  * Add jakzoe to contributors
+  * Add go mod and sum to gitattributes for consistent line endings
+  * bisync: rename extended_char_paths test
+  * chunker: fix case-insensitive comparison on local without metadata
+  * chunker: fix NewFs when root points to composite multi-chunk file without metadata
+  * bisync: more fixes for integration tests
+  * bisync: fix endless loop if lockfile decoder errors
+  * bisync: make tempDir path shorter
+  * fix: close cpu profile
+  * docs: fix typo in filtering.md
+  * drive: set all metadata permissions and return error summary
+  * crypt: fix max suggested length of filenames
+  * bisync: fix io.PipeWriter not getting closed on tests
+  * pikpak: fix a typo in a comment
+  * docs: ensure empty line between text and a following heading
+  * .github/workflows: Upgrade deprecated macos-11 to macos-latest
+  * cmd/gitannex: Downgrade to protocol version 1
+  * cmd/gitannex: Replace e2e test script with Go test
+  * docs: clarify option syntax
+  * build: fix CVE-2023-45288 by upgrading golang.org/x/net
+  * ulozto: remove use of github.com/pkg/errors
+  * Add Pieter van Oostrum to contributors
+  * docs: fix MANUAL formatting problems
+  * backend koofr: remove trailing bracket - fixes #7600
+  * webdav: fix SetModTime erasing checksums on owncloud and nextcloud
+  * bisync: use fstest.RandomRemote on tests
+  * hdfs: fix f.String() not including subpath
+  * local: disable unreliable test
+  * docs: update warp sponsorship
+  * copy: fix nil pointer dereference when corrupted on transfer with nil dst
+  * Add Erisa A to contributors
+  * Add yoelvini to contributors
+  * Add Alexandre Lavigne to contributors
+  * test info: improve cleanup of temp files - fixes #7209
+  * onedrive: fix --metadata-mapper called twice if writing permissions
+  * b2: Add tests for new `cleanup` and `cleanup-hidden` backend commands.
+  * rcserver: set `ModTime` for dirs and files served by `--rc-serve`
+  * docs: Add R2 note about no_check_bucket
+  * s3: add new AWS region il-central-1 Tel Aviv
+  * bisync: more fixes for integration tests
+  * s3: update Scaleway's configuration options - fixes #7507
+  * bisync: several fixes for integration tests
+  * ulozto: make password config item be obscured
+  * operations: fix very long file names when using copy with --partial
+  * Add Warrentheo to contributors
+  * Add Alex Garel to contributors
+  * onedrive: fix typo
+  * config: show more user friendly names of custom types in ui
+  * config: add ending period on description option help text
+  * docs: add an indication in case of recursive shortcuts in drive
+  * ulozto: implement Mover and DirMover interfaces.
+  * ulozto: revert the temporary file size limitations
+  * ulozto: set Content-Length header if the file size is known.
+  * local: fix and update -l docs
+  * serve webdav: fix webdav with --baseurl under Windows
+  * memory: fix incorrect list entries when rooted at subdirectory
+  * memory: fix deadlock in operations.Purge
+  * bisync: add to integration tests - fixes #7665
+  * memory: fix dst mutating src after server-side copy
+  * mount,cmount,mount2: add --direct-io flag to force uncached access
+  * vfs: fix download loop when file size shrunk
+  * local: add --local-time-type to use mtime/atime/btime/ctime as the time
+  * Add psychopatt to contributors
+  * docs: remove email from authors
+  * rc: fix stats groups being ignored in operations/check
+  * drive: fix server side copy with metadata from my drive to shared drive
+  * drive: stop sending notification emails when setting permissions
+  * Add iotmaestro to contributors
+  * Add Vitaly to contributors
+  * Add hoyho to contributors
+  * Add Lewis Hook to contributors
+  * Add a new backend for uloz.to
+  * cmd/gitannex: Add the gitannex subcommand
+  * linkbox: fix list paging and optimized synchronization.
+  * linkbox: fix working with names longer than 8-25 Unicode chars.
+  * b2: Add new `cleanup` and `cleanup-hidden` backend commands.
+  * s3: validate CopyCutoff size before copy
+  * Improve error messages when objects have been corrupted on transfer - fixes #5268
+  * onedrive: fix "unauthenticated: Unauthenticated" errors when downloading
+  * lib/rest: Add Client.Do function to call http.Client.Do
+  * lib/rest: add CheckRedirect function for redirect management
+  * operations: Fix "optional feature not implemented" error with a crypted sftp
+  * Add Kyle Reynolds to contributors
+  * Add YukiUnHappy to contributors
+  * Add Gachoud Philippe to contributors
+  * Add racerole to contributors
+  * Add John-Paul Smith to contributors
+  * onedrive: make server-side copy to work in more scenarios
+  * docs: Proton Drive, correct typo
+  * docs: drive: corrected relative path of scopes to absolute
+  * docs: clarify `shell_type = none` and `ssh = ` behaviour
+  * fs: improve JSON Unmarshalling for Duration
+  * docs: remove repeated words
+  * owncloud: add config owncloud_exclude_mounts which allows to exclude mounted folders when listing remote resources
+  * drive: backend query command
+  * Start v1.67.0-DEV development
+
+-------------------------------------------------------------------
 Thu May 30 15:42:19 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Remove %go_nostrip, not necessary and bloats the binary

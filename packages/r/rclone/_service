@@ -5,7 +5,7 @@
     <param name="exclude">.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">v1.66.0</param>
+    <param name="revision">v1.67.0</param>
     <param name="filename">rclone</param>
     <param name="changesgenerate">enable</param>
   </service>
