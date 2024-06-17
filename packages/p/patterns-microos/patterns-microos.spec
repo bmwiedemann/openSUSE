@@ -265,8 +265,12 @@ Provides:       pattern-category() = MicroOS
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 9060
 Provides:       pattern-visible()
-Requires:       cockpit-podman
+Requires:       cockpit-networkmanager
 Requires:       cockpit-system
+Requires:       cockpit-ws
+Requires:       (cockpit-machines if libvirt-daemon-qemu)
+Requires:       (cockpit-podman if podman)
+Requires:       (cockpit-tukit if transactional-update)
 # If PackageKit pattern is installed, pull in Cockpit's PackageKit module
 Requires:       (cockpit-packagekit if patterns-microos-base-packagekit)
 

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 11 08:33:39 UTC 2024 - Frederic Crozat <fcrozat@suse.com>
+
+- Add cockpit-ws and cockpit-networkmanager as dependency to
+  cockpit pattern,  make cockpit-podman dependency optional
+  and add cockpit-machines, cockpit-tukit as optional dependencies.
+
+-------------------------------------------------------------------
 Thu Mar 21 23:00:32 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Adjust KDE pattern to switch everything to Plasma6/Qt6
