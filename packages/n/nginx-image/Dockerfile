@@ -14,8 +14,8 @@
 # You can contact the BCI team via https://github.com/SUSE/bci/discussions
 
 
-#!BuildTag: opensuse/nginx:%%nginx_version%%
-#!BuildTag: opensuse/nginx:%%nginx_version%%-%RELEASE%
+#!BuildTag: opensuse/nginx:1.27
+#!BuildTag: opensuse/nginx:1.27-%RELEASE%
 #!BuildTag: opensuse/nginx:latest
 
 FROM opensuse/tumbleweed:latest
@@ -26,22 +26,24 @@ MAINTAINER openSUSE (https://www.opensuse.org/)
 # labelprefix=org.opensuse.application.nginx
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed NGINX"
 LABEL org.opencontainers.image.description="NGINX open source all-in-one load balancer, content cache and web server based on the openSUSE Tumbleweed Base Container Image."
-LABEL org.opencontainers.image.version="%%nginx_version%%"
+LABEL org.opencontainers.image.version="1.27"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/nginx:%%nginx_version%%-%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/nginx:1.27-%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime"
 LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/nginx-image/README.md"
 
-RUN set -euo pipefail; zypper -n in --no-recommends gawk nginx findutils gettext-runtime; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
+RUN set -euo pipefail; zypper -n in --no-recommends gawk nginx findutils envsubst; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]
 EXPOSE 80
+# sanity check that the version from the tag is equal to the version of nginx that we expect
+RUN set -euo pipefail; [ "$(rpm -q --qf '%{version}' nginx | cut -d '.' -f -2)" = "1.27" ]
 RUN set -euo pipefail; mkdir /docker-entrypoint.d
 COPY [1-3]0-*.sh /docker-entrypoint.d/
 COPY docker-entrypoint.sh /usr/local/bin
