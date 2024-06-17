@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  8 09:28:46 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Enable installpxe for SelfInstall
+
+-------------------------------------------------------------------
 Thu Mar 21 08:48:34 UTC 2024 - Ludwig Nussel <lnussel@suse.com>
 
 - Add systemd-experimental for systemd-pcrlock support

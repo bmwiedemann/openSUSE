@@ -636,6 +636,7 @@
             firmware="uefi"
             initrd_system="dracut"
             installiso="true"
+            installpxe="true"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
