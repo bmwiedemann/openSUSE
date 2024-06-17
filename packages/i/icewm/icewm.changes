@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 17 06:45:58 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.6.0:
+  * Support composing characters in the address bar with X input method.
+  * Double-click the border to maximize just that side of the window.
+  * Repeat the double-click to restore that side. Also for corners.
+  * Ignore duplicate requests from GNOME to move or resize a window.
+  * Restore the moving of windows by dragging with the right button down.
+  * Avoid constructing invalid work areas.
+  * Don't dispatch events to destroyed windows.
+  * Don't install mouse bindings when the frame is being destroyed.
+  * Don't create a Window handle for a destroyed or orphaned window.
+
+-------------------------------------------------------------------
 Wed May 22 07:52:14 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.5.0:
