@@ -314,4 +314,21 @@
     code, lint fixes</comment>
     <requestid>1171537</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e06dcb656497947c55b3b9c73af46404</srcmd5>
+    <version>2.20.0</version>
+    <time>1718645412</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.20.0:
+  * extra AI api endpoints
+  * more api endpoints
+  * moved 2.20.* warnings into
+    a proper Python PendingDeprecationWarning message
+  * reduce processing of
+    OpenAPI logic when content-type is application/json
+  * warning now in its own file and warning sent to stderr
+    or logging only if release number 2.20 or above
+  * HTTPError can show up when you plan with the URL value</comment>
+    <requestid>1181214</requestid>
+  </revision>
 </revisionlist>

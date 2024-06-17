@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 17 05:56:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.20.0:
+  * extra AI api endpoints
+  * more api endpoints
+  * moved 2.20.* warnings into
+    a proper Python PendingDeprecationWarning message
+  * reduce processing of
+    OpenAPI logic when content-type is application/json
+  * warning now in its own file and warning sent to stderr
+    or logging only if release number 2.20 or above
+  * HTTPError can show up when you plan with the URL value
+
+-------------------------------------------------------------------
 Fri May  3 07:31:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.19.4:
