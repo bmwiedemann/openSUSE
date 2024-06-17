@@ -3,8 +3,8 @@
     <param name="url">https://github.com/GoogleCloudPlatform/osconfig</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">20240517.00</param>
-    <param name="revision">20240517.00</param>
+    <param name="versionformat">20240607.00</param>
+    <param name="revision">20240607.00</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="disabled">
@@ -15,6 +15,6 @@
     <param name="basename">osconfig</param>
   </service>
   <service name="go_modules" mode="disabled">
-    <param name="archive">osconfig-20240517.00.tar.gz</param>
+    <param name="archive">osconfig-20240607.00.tar.gz</param>
   </service>
 </services>

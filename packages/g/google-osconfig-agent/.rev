@@ -408,4 +408,41 @@
   * Bump google.golang.org/grpc from 1.63.2 to 1.64.0 (#593) (forwarded request 1175749 from glaubitz)</comment>
     <requestid>1175758</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ad86a8b085e7a4d05fac076073195ab0</srcmd5>
+    <version>20240607.00</version>
+    <time>1718645279</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240607.00
+  * Update e2e tests to use VMM team's GCP project for pkgs testing version (#621)
+- from version 20240606.00
+  * Disable SUSE tests to run with testing agent repo (#619)
+- from version 20240604.00
+  * Fix the logic of pick region for Artifact Registry function (#618)
+- from version 20240603.00
+  * Disable centos-stream-8 tests as it reached EOL in May 31 (#617)
+- from version 20240529.00
+  * Merge pull request #610 from savijatv/patch-3
+  * Update cis-level1-once-a-day-policy.yaml
+- from version 20240528.00
+  * Merge pull request #616 from MahmoudOuka/allow-windows-e2e-tests-to-\
+    install-testing-version-of-agent-from-private-artifact-registry-repos
+  * Allow Windows e2e tests to pull osconfig-agent pkg from testing (private)
+    repos from Artifact registry
+- from version 20240527.01
+  * Merge pull request #615 from MahmoudOuka/fix-SUSE-e2e-tests
+  * fix SUSE e2e tests
+- from version 20240527.00
+  * Merge pull request #614 from MahmoudOuka/allow-apt-and-yum-\
+    e2e-tests-to-pull-osconfig-agent-pkg-from-testing-repos
+  * fix golint comments
+  * Allow Apt &amp; Yum e2e tests to pull osconfig-agent pkg from testing repos
+- from version 20240524.03
+  * Merge pull request #611 from savijatv/patch-ospolicy-samples
+  * Update to the CIS OS policy samples
+- from version 20240524.00
+  * Merge pull request #612 from MahmoudOuka/update-apt-e2e-tests-\
+    to-pull-osconfig-agent-pkg-from-new-ar-repos (forwarded request 1180865 from glaubitz)</comment>
+    <requestid>1180948</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Jun 14 10:12:06 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20240607.00
+  * Update e2e tests to use VMM team's GCP project for pkgs testing version (#621)
+- from version 20240606.00
+  * Disable SUSE tests to run with testing agent repo (#619)
+- from version 20240604.00
+  * Fix the logic of pick region for Artifact Registry function (#618)
+- from version 20240603.00
+  * Disable centos-stream-8 tests as it reached EOL in May 31 (#617)
+- from version 20240529.00
+  * Merge pull request #610 from savijatv/patch-3
+  * Update cis-level1-once-a-day-policy.yaml
+- from version 20240528.00
+  * Merge pull request #616 from MahmoudOuka/allow-windows-e2e-tests-to-\
+    install-testing-version-of-agent-from-private-artifact-registry-repos
+  * Allow Windows e2e tests to pull osconfig-agent pkg from testing (private)
+    repos from Artifact registry
+- from version 20240527.01
+  * Merge pull request #615 from MahmoudOuka/fix-SUSE-e2e-tests
+  * fix SUSE e2e tests
+- from version 20240527.00
+  * Merge pull request #614 from MahmoudOuka/allow-apt-and-yum-\
+    e2e-tests-to-pull-osconfig-agent-pkg-from-testing-repos
+  * fix golint comments
+  * Allow Apt & Yum e2e tests to pull osconfig-agent pkg from testing repos
+- from version 20240524.03
+  * Merge pull request #611 from savijatv/patch-ospolicy-samples
+  * Update to the CIS OS policy samples
+- from version 20240524.00
+  * Merge pull request #612 from MahmoudOuka/update-apt-e2e-tests-\
+    to-pull-osconfig-agent-pkg-from-new-ar-repos
+  * fix golint comment
+  * Update Apt e2e tests to pull osconfig-agent pkg from new AR repos instead of rapture
+- from version 20240523.02
+  * bump golang.org/x/crypto version (#613)
+- from version 20240523.00
+  * update go-cmp dependency (#604)
+- from version 20240522.00
+  * rollback masive dependency update (#603)
+  * Bump google.golang.org/api from 0.180.0 to 0.181.0 (#596)
+
+-------------------------------------------------------------------
 Wed May 22 11:04:41 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20240517.00
