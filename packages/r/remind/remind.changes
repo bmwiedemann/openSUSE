@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Mon Jun 10 09:44:53 UTC 2024 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 5.0 Patch 1 - 2024-06-08
+
+* MINOR IMPROVEMENT: Add short-circuit evaluation to the isany() function,
+  which now only evaluates those arguments absolutely necessary to determine
+  the result.
+
+* BUG FIX: Mark weekno() as a non-constant function (the zero-argument form
+  depends on external conditions.)
+
+* BUG FIX: Fix a couple of memory leaks.
+
+* BUG FIX: Don't rely on support for unnamed function parameters; this caused
+  compilation failures with older versions of gcc.
+
+-------------------------------------------------------------------
+Thu Jun  6 15:05:04 UTC 2024 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 5.0 Patch 0 - 2024-06-06
+
+* MAJOR CHANGE: The expression evaluation engine has been completely replaced
+  with a new one that splits parsing and evaluating into two separate steps.
+  It also features short-circuit evaluation of &&, ||, iif() and choose().
+  This should speed up expression-heavy reminder files.
+
+  NOTE INCOMPATIBILITY: In expressions with side-effects, the short-circuit
+  evaluation might change the result you get.  For example, consider
+  running the following file through: remind file.rem 2024-06-04
+
+    SET a trig("Mon +7") || trig("Thu +7")
+    MSG trig = [trig()]
+
+  Older Remind versions will output:
+
+    trig = 2024-06-06
+
+  whereas this version outputs:
+
+    trig = 2024-06-10
+
+  because the second part of the "||" expression is not evaluated.  The vast
+  majority of Remind expressions do not have side-effects and should yield
+  the same results as before.
+
+  The newer expression engine also permits recursive functions, but
+  these are not recommended.  Still, if you want to, you can do:
+
+    fset factorial(n) iif(n <= 1, 1, n*factorial(n-1))
+
+  and it will work for values of n that don't cause integer overflow.
+
+* IMPROVEMENT: If there's an unmatched PUSH-OMIT-CONTEXT, print the
+  filename and line number containing it.
+
+* IMPROVEMENT: If there's an IF with a missing ENDIF, print the filename
+  and line number of the IF statement.
+
+* NEW FEATURE: Add EXPR OFF command to completely disable expression
+  evaluation.  Useful if you INCLUDE files that you don't expect to
+  contain expressions and may come from slightly untrustworthy sources.
+
+* NEW FEATURE: Add $ExpressionTimeLimit system variable to enforce a
+  maximum limit on how long evaluating an expression is allowed to take.
+
+* NEW FEATURE: Add --max-execution-time=n command-line option to terminate
+  Remind if it runs for more than n seconds.
+
+* CHANGE: Make the command-line option "-ifoo" equivalent to "-ifoo=0"
+
+* CHANGE: Permit a literal [ in a reminder by using the sequence [[
+  The old ["["] still works.
+
+* BUG FIX: In "purge" mode, Remind would sometimes purge reminders with
+  a relative "SCANFROM" which haven't actually expired.  This has been fixed.
+
+* BUG FIX: Disallow something like: FSET func(x, x) expr
+  which shouldn't have been allowed in the first place.
+
+* BUG FIX: Replace leading spaces with tabs in Makefiles (per Emanuele Torre
+  and Tim Chase)
+
+-------------------------------------------------------------------
 Tue Apr 30 08:41:56 UTC 2024 - Detlef Steuer <detlef.steuer@gmx.de>
 - VERSION 4.3 Patch 7 - 2024-04-29
 
