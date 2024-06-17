@@ -7,4 +7,12 @@
     <comment>libgnunetchat, goes with gnunet, dependency of gnunetchat-cli and -gtk</comment>
     <requestid>1161332</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ea0d23091a3cd3057a4075175582281a</srcmd5>
+    <version>0.5.0</version>
+    <time>1718645379</time>
+    <user>anag+factory</user>
+    <comment>libgnunetchat v0.5.0 (forwarded request 1181017 from AndreasStieger)</comment>
+    <requestid>1181018</requestid>
+  </revision>
 </revisionlist>

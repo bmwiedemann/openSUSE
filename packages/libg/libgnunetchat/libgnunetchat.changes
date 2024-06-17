@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jun 15 11:55:12 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.5.0:
+  * Requires the GNUnet Messenger Service 0.5
+  * Implement tickets to share attributes with contacts
+  * Implement functionality to get recipient of sent private messages
+  * Allow file sharing without additional encryption key
+  * Implement discourses to send data in live channels
+  * Fix memory violations and duplicate storage entries
+  * Adjust callbacks regarding account states
+  * Fix deletions of accounts and lobbies
+  * Fix multiple synchronization bugs
+
+-------------------------------------------------------------------
 Sun Mar 24 15:28:05 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - initial version 0.3.1
