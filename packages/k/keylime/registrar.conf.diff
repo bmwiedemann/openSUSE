@@ -1,7 +1,9 @@
---- config/registrar.conf.ORIG	2024-01-31 09:54:18.487372896 +0100
-+++ config/registrar.conf	2024-01-31 09:54:40.910700043 +0100
+diff --git a/config/registrar.conf b/config/registrar.conf
+index 19f7cb1..3492453 100644
+--- a/config/registrar.conf
++++ b/config/registrar.conf
 @@ -5,7 +5,8 @@
- version = 2.2
+ version = 2.3
  
  # The binding address and port for the registrar server
 -ip = "127.0.0.1"

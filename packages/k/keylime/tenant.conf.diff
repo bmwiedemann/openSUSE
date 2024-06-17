@@ -1,6 +1,8 @@
---- config/tenant.conf.ORIG	2024-01-31 09:54:23.807371427 +0100
-+++ config/tenant.conf	2024-01-31 09:55:09.827358730 +0100
-@@ -106,7 +106,8 @@
+diff --git a/config/tenant.conf b/config/tenant.conf
+index ead02b8..1b3d921 100644
+--- a/config/tenant.conf
++++ b/config/tenant.conf
+@@ -106,7 +106,8 @@ request_timeout = 60
  # might provide a signed list of EK public key hashes.  Then you could write
  # an ek_check_script that checks the signature of the allowlist and then
  # compares the hash of the given EK with the allowlist.

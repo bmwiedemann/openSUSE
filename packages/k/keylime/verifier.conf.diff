@@ -1,6 +1,8 @@
---- config/verifier.conf.ORIG	2024-01-31 09:54:29.240703257 +0100
-+++ config/verifier.conf	2024-01-31 09:55:21.884022063 +0100
-@@ -8,7 +8,8 @@
+diff --git a/config/verifier.conf b/config/verifier.conf
+index 9f65039..4e6191d 100644
+--- a/config/verifier.conf
++++ b/config/verifier.conf
+@@ -8,7 +8,8 @@ version = 2.3
  uuid = default
  
  # The binding address and port for the verifier server
@@ -10,7 +12,7 @@
  port = 8881
  
  # The address and port of registrar server that the verifier communicates with
-@@ -242,7 +243,8 @@
+@@ -245,7 +246,8 @@ require_allow_list_signatures = False
  enabled_revocation_notifications = ['agent']
  
  # The binding address and port of the revocation notifier service via ZeroMQ.

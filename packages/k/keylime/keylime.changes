@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jun 14 08:04:48 UTC 2024 - aplanas@suse.com
+
+- Update to version v7.11.0:
+  * "Monthly" Release (7.11.0)
+  * template mapping change for persisted idevids
+  * add config options for the persisted idevid and iak handles and passwords
+  * templates: Restore the default values
+  * templates: Add version 2.3
+  * convert_config: Use the latest default value for --default
+  * Add new /verify/identity API
+  * PSS padding fix - salt length changed to byte length of digest from length of signature
+  * sign_runtime_policy: Display error message if non-EC key is provided
+  * packit: enable /regression/CVE-2023-3674 (suggested by Karel Srot)
+  * Fix durable attestation in absence of mb_policy
+  * tests: Fix coverage download by supporting new webdrives
+  * templates: verifier: Add require_allow_list_signatures to config file
+  * runtime policy: Raise error on missing key if signature required
+  * runtime policy: Raise error on unsigned policy if signature required
+  * dsse: Remove unused type: ignore comment (mypy)
+
+-------------------------------------------------------------------
 Fri Mar 15 09:11:41 UTC 2024 - aplanas@suse.com
 
 - Update to version v7.10.0:
