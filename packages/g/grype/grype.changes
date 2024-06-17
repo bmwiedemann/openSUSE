@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Jun 15 16:15:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.79.0:
+  * chore: Update syft v1.7.0 (#1945)
+  * chore(deps): bump github/codeql-action from 3.25.8 to 3.25.10
+    (#1940)
+  * chore(deps): update tools to latest versions (#1943)
+  * fix match sort ordering for different locations (#1944)
+  * chore(deps): bump actions/checkout from 4.1.6 to 4.1.7 (#1941)
+  * Updating maven URLs in README.md (#1934)
+  * sort order for matches should consider fix info (#1933)
+  * chore(deps): update tools to latest versions (#1925)
+  * chore(deps): update tools to latest versions (#1921)
+  * chore(deps): update tools to latest versions (#1919)
+  * chore(deps): bump actions/checkout from 4.1.1 to 4.1.6 (#1920)
+  * feat(signature): Checksum signature verification (#1670)
+  * add skopeo to managed utilities (#1915)
+  * chore(deps): bump github/codeql-action from 3.25.7 to 3.25.8
+    (#1909)
+  * chore(deps): bump github.com/docker/docker (#1916)
+  * remove dco workflow (#1914)
+  * use dco tool during gh app outage (#1910)
+  * chore(deps): bump github/codeql-action from 3.25.6 to 3.25.7
+    (#1901)
+  * chore(deps): bump github.com/charmbracelet/bubbletea (#1902)
+  * fix: add note about TMPDIR env var (#1880)
+  * fix: uppercased package in json (#1900)
+  * fix: main mod pseudo version default off (#1894)
+  * chore(deps): update tools to latest versions (#1898)
+
+-------------------------------------------------------------------
 Thu May 30 09:30:59 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.78.0:
