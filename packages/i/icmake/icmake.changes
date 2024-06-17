@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 15 03:05:57 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to make package build reproducible
+
+-------------------------------------------------------------------
 Tue Feb 28 15:15:24 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Add gcc-13-fix.patch in order to fix the upstream issue:

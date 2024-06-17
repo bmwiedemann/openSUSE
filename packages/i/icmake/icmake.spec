@@ -26,6 +26,8 @@ URL:            https://gitlab.com/fbb-git/icmake
 Source:         %{URL}/-/archive/%{version}/icmake-%{version}.tar.bz2
 Patch1:         prevent-double-slash.patch
 Patch2:         gcc-13-fix.patch
+# PATCH-FIX-UPSTREAM https://gitlab.com/fbb-git/icmake/-/merge_requests/5
+Patch3:         reproducible.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc-c++

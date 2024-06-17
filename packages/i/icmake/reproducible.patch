@@ -1,0 +1,52 @@
+https://gitlab.com/fbb-git/icmake/-/merge_requests/5
+From cf873922def05742c3076bb53dc77e44d2cf3eb7 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Sun, 6 Nov 2022 04:26:47 +0100
+Subject: [PATCH] Sort input file list
+
+so that libsupport.a builds in a reproducible way
+in spite of non-deterministic filesystem readdir order
+
+See https://reproducible-builds.org/ for why this is good.
+
+This patch was done while working on reproducible builds for openSUSE.
+---
+ icmake/bootstrap/functions | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+Index: icmake-10.03.00/icmake/bootstrap/functions
+===================================================================
+--- icmake-10.03.00.orig/icmake/bootstrap/functions
++++ icmake-10.03.00/icmake/bootstrap/functions
+@@ -10,11 +10,11 @@ subdirs()
+ {
+     [ "`find ./  -mindepth 1 -maxdepth 1 -type d -name ORG`" != "" ] && return
+ 
+-    for subdir in `find ./  -mindepth 1 -maxdepth 1 -type d` ; do
++    for subdir in `find ./  -mindepth 1 -maxdepth 1 -type d | sort` ; do
+         try cd $subdir
+         add=0
+         srclist=`find -mindepth 1 -maxdepth 1 -type f -name '*.cc' \
+-                                  -exec basename '{}' ';'`
++                                  -exec basename '{}' ';' | sort`
+         if [ "$srclist" != "" ]
+         then
+             ih=${subdir}.ih
+@@ -23,7 +23,7 @@ subdirs()
+                 try ${CXX} ${CXXFLAGS} -x c++-header $ih
+             fi
+             for src in `find -mindepth 1 -maxdepth 1 -type f -name '*.cc' \
+-                                    -exec basename '{}' ';'` ; do
++                                    -exec basename '{}' ';' | sort` ; do
+                 obj=../${dir}${src%%.*}.o
+                 if [ $src -nt ${obj} ] ; then 
+                     try ${CXX}  ${CXXFLAGS} -o${obj} -c $src
+@@ -39,7 +39,7 @@ subdirs()
+ maindir()   #         $1: destination program path, 
+ {           # unused: $2: optional -s, use LDFLAGS
+     for src in `find -mindepth 1 -maxdepth 1 -type f -name '*.cc' \
+-                            -exec basename '{}' ';'` ; do
++                            -exec basename '{}' ';' | sort` ; do
+         if [ "$src" != "main.cc" ] ; then
+             obj=${src%%.*}.o
+             if [ $src -nt ${obj} ] ; then 
