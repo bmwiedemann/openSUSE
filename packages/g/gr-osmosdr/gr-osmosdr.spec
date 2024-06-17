@@ -1,7 +1,7 @@
 #
 # spec file for package gr-osmosdr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define libname libgnuradio-osmosdr
 %define sover 0_2_0
 Name:           gr-osmosdr
-Version:        0.2.4
+Version:        0.2.6
 Release:        0
 Summary:        Gnuradio Source for OsmoSDR
 License:        GPL-3.0-or-later
@@ -150,7 +150,7 @@ mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}%{_docdir}
 
 %files
 %license COPYING
-%doc AUTHORS README
+%doc AUTHORS README.md
 %{_bindir}/osmocom_*
 %{_datadir}/gnuradio/grc/blocks/*.yml
 %exclude %{_docdir}/%{name}/html

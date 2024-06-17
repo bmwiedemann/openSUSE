@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 12 19:47:52 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to release (tag) 0.2.6
+  * lib/xtrx: honouring/using the loglevel parameter
+- Update to release (tag) 0.2.5
+  * Fix compilation of retpitaya and rtl_tcp with MinGW
+
+-------------------------------------------------------------------
 Tue Feb 27 11:18:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
