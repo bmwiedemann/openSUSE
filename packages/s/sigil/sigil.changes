@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Jun 15 08:49:22 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.2.0
+  * New Features
+    - add support for Windows live switching from dark to light and light to dark modes
+    - add support for Linux kde and gtk3 live switching from dark to light and light to dark modes
+    - add new environment variable: SIGIL_PREVIEW_TIMEOUT (in milliseconds) to allow user control
+      of the Preview updating intervals, valid range 100 - 10000. default value: 1000.
+      Set only once at Sigil startup.
+    - add new Find and Replace targets: Selected SVG files, Selected Javascript Files, and Selected Misc XML
+    - add new Find and Replace Regular Expression menu option: Unicode Property (*UCP)
+    - add ability to rename files when new name is just a case variant on case insensitive filesystems
+    - extended the number of clips that can be assigned to toolbars (total now of 60 clips supported)
+    - Accessibility improvements:
+    - add abiity to highlight the widget with current focus (Thanks BeckyEbook)
+    - add ability to double text insertion point width throughout Sigil
+    - Extend Python Plugin Interface with info on preferred font mangling information
+    - replacement strings in F&R can now use \x{hhhh} hex escape codes to represent unicode characters numerically
+  * Other Changes
+    - There will be no more built-in HighDPI settings in Sigil's prefs. 
+      If you have special needs in that regard, you can still set your own Qt highdpi environment variables.
+  * Bug Fixes
+    - reformating css with multiline now adds space after selector comma
+    - add in bulk resource move and use bulk delete to handle epubs with thousands of files
+    - add in bulk resource rename to handle epubs with thousands of files
+    - if Replace has focus and Find done, CodeView should get focus (Thanks BeckyEbook)
+    - fix dark mode Toolbar continuation symbols for Windows (Thank you BeckyEbook)
+    - fixed bug in Save-As context menu action in ImageTabs
+    - fix dark mode live switching on macOS issues qith QTreeView and QStandardItemModels
+    - fix bug in missing CharToEntity in the Create TOC process
+    - fix TabManager tab close symbol on macOS to match that used in dockwidgets
+    - use Unciode NormalizationForm C inside Sigil and for io
+    - fix macOS stuck at Maximized size issue
+
+-------------------------------------------------------------------
 Tue Apr  2 21:19:37 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.1.0

@@ -18,7 +18,7 @@
 
 %define sigil_doc_version 2022.05.17
 Name:           sigil
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        WYSIWYG Ebook Editor
 License:        GPL-3.0-only
