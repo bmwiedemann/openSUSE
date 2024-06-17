@@ -1542,4 +1542,17 @@ fixes build in packman, evergreen and all that. (forwarded request 230247 from o
      WS_CLIPCHILDREN style set.</comment>
     <requestid>1180238</requestid>
   </revision>
+  <revision rev="149" vrev="2">
+    <srcmd5>b6277312cb980104e13e992c1f67c33a</srcmd5>
+    <version>3.0.21</version>
+    <time>1718645229</time>
+    <user>anag+factory</user>
+    <comment>- Build dca support only on Leap 15.6 and newer when not using 3rd
+  party repositories (BUILD_ORIG): Leap prior to 15.6 do not have
+  libdca.
+
+- Disable chromecast support on Leap &lt; 15.6: not supported as
+  of now.</comment>
+    <requestid>1180920</requestid>
+  </revision>
 </revisionlist>

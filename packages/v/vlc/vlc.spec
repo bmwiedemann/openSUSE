@@ -30,6 +30,8 @@
 # VNC support - the module is not really usable in most cases tested so far (e.g. against qemu-kvm -vnc :xx)
 %bcond_with vnc
 %bcond_with faad
+%define chromecast 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150600
+%define dca        0%{?suse_version} > 1500 || 0%{?sle_version} >= 150600 || 0%{?BUILD_ORIG}
 
 Name:           vlc
 Version:        3.0.21
@@ -134,7 +136,9 @@ BuildRequires:  pkgconfig(libavcodec) >= 57.37.100
 BuildRequires:  pkgconfig(libavformat) >= 53.21.0
 BuildRequires:  pkgconfig(libavutil) >= 52.4.0
 BuildRequires:  pkgconfig(libbluray) >= 0.6.2
+%if %dca
 BuildRequires:  pkgconfig(libdca) >= 0.0.5
+%endif
 BuildRequires:  pkgconfig(libgme)
 #BuildRequires:  pkgconfig(libmodplug) >= 0.8.9
 BuildRequires:  pkgconfig(libmpeg2) > 0.3.2
@@ -449,8 +453,16 @@ autoreconf -fiv
    --enable-aa                          \
    --enable-alsa                        \
    --enable-avcodec                     \
+%if %chromecast
    --enable-chromecast                  \
+%else
+   --disable-chromecast                 \
+%endif
+%if %dca
    --enable-dca                         \
+%else
+   --disable-dca                        \
+%endif
    --enable-dvbpsi                      \
    --enable-dvdnav                      \
    --enable-dvdread                     \
@@ -908,7 +920,9 @@ fi
 %if 0%{?suse_version} >= 1550
 %{_libdir}/vlc/plugins/codec/libdav1d_plugin.so
 %endif
+%if %dca
 %{_libdir}/vlc/plugins/codec/libdca_plugin.so
+%endif
 %{_libdir}/vlc/plugins/codec/libddummy_plugin.so
 %{_libdir}/vlc/plugins/codec/libdvbsub_plugin.so
 %{_libdir}/vlc/plugins/codec/libedummy_plugin.so
@@ -965,7 +979,9 @@ fi
 %{_libdir}/vlc/plugins/demux/libavi_plugin.so
 %{_libdir}/vlc/plugins/demux/libcaf_plugin.so
 %{_libdir}/vlc/plugins/demux/libdemux_cdg_plugin.so
+%if %chromecast
 %{_libdir}/vlc/plugins/demux/libdemux_chromecast_plugin.so
+%endif
 %{_libdir}/vlc/plugins/demux/libdemuxdump_plugin.so
 %{_libdir}/vlc/plugins/demux/libdemux_stl_plugin.so
 %{_libdir}/vlc/plugins/demux/libdiracsys_plugin.so
@@ -1079,7 +1095,9 @@ fi
 %{_libdir}/vlc/plugins/stream_filter/libskiptags_plugin.so
 %{_libdir}/vlc/plugins/stream_out/libstream_out_autodel_plugin.so
 %{_libdir}/vlc/plugins/stream_out/libstream_out_bridge_plugin.so
+%if %chromecast
 %{_libdir}/vlc/plugins/stream_out/libstream_out_chromecast_plugin.so
+%endif
 %{_libdir}/vlc/plugins/stream_out/libstream_out_cycle_plugin.so
 %{_libdir}/vlc/plugins/stream_out/libstream_out_delay_plugin.so
 %{_libdir}/vlc/plugins/stream_out/libstream_out_description_plugin.so
