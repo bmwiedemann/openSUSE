@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Jun  8 18:10:17 UTC 2024 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to version 6.12
+  * usr/share/byobu/profiles/bashrc:
+    - export PS1
+  * usr/bin/byobu-janitor.in:
+    - add byobu prompt to .bashrc in Wolfi
+  * usr/share/byobu/profiles/bashrc, usr/share/man/man1/byobu-prompt.1:
+    - add a bash timer, that shows the runtime of the previous command
+      at the beginning of the prompt
+  * usr/bin/byobu.in:
+    - if we're in a busybox/ash shell, but real bash is available, use bash
+  * usr/share/byobu/keybindings/f-keys.tmux:
+    - have F1 pull up the keybindings text
+  * usr/share/byobu/profiles/bashrc:
+    - fix timer string logic
+  * usr/share/byobu/profiles/bashrc:
+    - fix BYOBU_RUN_DIR and BYOBU_PREFIX issue
+    - https://github.com/dustinkirkland/byobu/pull/62
+    - https://launchpad.net/bugs/2051995 LP: #2051995
+  * usr/bin/byobu-launcher-install.in:
+    - Fix for VSCode, fish and byobu installations
+    - https://github.com/dustinkirkland/byobu/commit/f917d2169afdec623f5b32723d93bfd91d34b92f#commitcomment-137955113
+  * usr/lib/byobu/updates_available:
+    - added support for dnf package manager
+    - https://code.launchpad.net/~sanjay-ankur/byobu/byobu/+merge/415959
+  * usr/share/byobu/profiles/bashrc:
+    - added git branch to bash ps1 prompt
+
+-------------------------------------------------------------------
 Wed Jan 10 03:17:22 UTC 2024 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Update to version 6.5:

@@ -18,7 +18,7 @@
 
 
 Name:           byobu
-Version:        6.5
+Version:        6.12
 Release:        0
 Summary:        Enhanced profile and configuration utilities for GNU Screen and tmux
 License:        GPL-3.0-only
