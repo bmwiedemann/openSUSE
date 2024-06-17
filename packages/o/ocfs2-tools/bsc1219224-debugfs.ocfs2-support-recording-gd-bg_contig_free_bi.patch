@@ -1,0 +1,409 @@
+From 05bf5364ce5f7a3aa271455d59481fe8ca0984b5 Mon Sep 17 00:00:00 2001
+From: Heming Zhao <heming.zhao@suse.com>
+Date: Fri, 10 May 2024 22:53:13 +0800
+Subject: [PATCH] debugfs.ocfs2: support recording gd bg_contig_free_bits
+
+This commit introduces a new feature for debugfs.ocfs2, which can
+record contiguous free bits for each //global_bitmap group
+descriptor block. In kernel space, the ocfs2 module can use the
+recorded contiguous free bits to speed up the allocation from
+//global_bitmap.
+
+It's very useful for the users who want to speed up IO performance,
+when ocfs2 volume fragmentation rate is high.
+
+Please note, this commit requires kernel supporting 'struct
+ocfs2_group_desc' new member 'bg_contig_free_bits'.
+
+Signed-off-by: Heming Zhao <heming.zhao@suse.com>
+---
+ debugfs.ocfs2/commands.c         |  85 ++++++++++++++++++++++-
+ debugfs.ocfs2/debugfs.ocfs2.8.in |   6 ++
+ debugfs.ocfs2/dump.c             |  28 ++++++++
+ debugfs.ocfs2/include/dump.h     |   1 +
+ debugfs.ocfs2/include/utils.h    |   8 ++-
+ debugfs.ocfs2/stat_sysdir.c      |   2 +-
+ debugfs.ocfs2/utils.c            | 111 +++++++++++++++++++++++++++----
+ include/ocfs2-kernel/ocfs2_fs.h  |   3 +-
+ 8 files changed, 226 insertions(+), 18 deletions(-)
+
+diff --git a/debugfs.ocfs2/commands.c b/debugfs.ocfs2/commands.c
+index b1ee61729849..76a5d7fb3faa 100644
+--- a/debugfs.ocfs2/commands.c
++++ b/debugfs.ocfs2/commands.c
+@@ -63,6 +63,7 @@ static void do_encode_lockres(char **args);
+ static void do_extent(char **args);
+ static void do_frag(char **args);
+ static void do_fs_locks(char **args);
++static void do_gd_free_bits(char **args);
+ static void do_group(char **args);
+ static void do_grpextents(char **args);
+ static void do_hb(char **args);
+@@ -184,6 +185,11 @@ static struct command commands[] = {
+ 		"fs_locks [-f <file>] [-l] [-B]",
+ 		"Show live fs locking state",
+ 	},
++	{ "gd_free_bits",
++		do_gd_free_bits,
++		"gd_free_bits [-s]",
++		"Show/save free bits of gd block.",
++	},
+ 	{ "group",
+ 		do_group,
+ 		"group <block#>",
+@@ -1048,7 +1054,8 @@ static void do_stat(char **args)
+ 			dump_local_alloc(out, &(inode->id2.i_lab));
+ 		else if ((inode->i_flags & OCFS2_CHAIN_FL))
+ 			ret = traverse_chains(gbls.fs,
+-					      &(inode->id2.i_chain), out);
++					      &(inode->id2.i_chain), out,
++					      DUMP_GD);
+ 		else if (S_ISLNK(inode->i_mode) && !inode->i_clusters)
+ 			dump_fast_symlink(out,
+ 					  (char *)inode->id2.i_symlink);
+@@ -1218,6 +1225,82 @@ static void do_logdump(char **args)
+ 	return;
+ }
+ 
++/*
++ * How to work:
++ * scan '//global_bitmap' and show the contiguous free bits for each
++ * gd (group describe) block. if '-s' is set, this function will
++ * record the free bits info into gd block.
++ */
++static void do_gd_free_bits(char **args)
++{
++	struct ocfs2_dinode *inode;
++	uint64_t blkno;
++	char *buf = NULL;
++	FILE *out;
++	errcode_t ret = 0;
++	const char *gd_free_bits_usage = "usage: gd_free_bits [-s]";
++	int index = 1, save = 0, argc = 0;
++
++	if (check_device_open())
++		return;
++
++	for (argc = 0; (args[argc]); ++argc);
++
++	if (argc == 2) {
++		if (!strncmp(args[argc-1], "-s", 2)) {
++			save = 1;
++		} else {
++			fprintf(stderr, "%s\n", gd_free_bits_usage);
++			return;
++		}
++	}
++
++	ret = string_to_inode(gbls.fs, gbls.root_blkno, gbls.cwd_blkno,
++			      "//global_bitmap", &blkno);
++	if (ret) {
++		com_err(args[0], ret, "'%s'", args[index]);
++		return;
++	}
++
++	buf = gbls.blockbuf;
++	ret = ocfs2_read_inode(gbls.fs, blkno, buf);
++	if (ret) {
++		com_err(args[0], ret, "while reading inode %"PRIu64"", blkno);
++		return;
++	}
++
++	inode = (struct ocfs2_dinode *)buf;
++
++	if (!(inode->i_flags & OCFS2_CHAIN_FL)) {
++		ret = OCFS2_ET_INODE_NOT_VALID;
++		com_err(args[0], ret, "//global_bitmap format is wrong\n");
++	}
++
++	out = open_pager(gbls.interactive);
++
++	if (save) {
++		ret = traverse_chains(gbls.fs, &(inode->id2.i_chain), out,
++			       RECORD_GD_FREE_BITS);
++		if (ret)
++			com_err(args[0], ret, "while recording free_bits at block "
++					"%"PRIu64, blkno);
++		else
++			fprintf(out, "recording succeed\n");
++
++	} else {
++		dump_inode(out, inode);
++		ret = traverse_chains(gbls.fs, &(inode->id2.i_chain), out,
++			       DUMP_GD_FREE_BITS);
++		if (ret)
++			com_err(args[0], ret, "while traversing inode at block "
++					"%"PRIu64, blkno);
++	}
++
++	close_pager(out);
++
++	return;
++}
++
+ static void do_group(char **args)
+ {
+ 	struct ocfs2_group_desc *grp;
+diff --git a/debugfs.ocfs2/debugfs.ocfs2.8.in b/debugfs.ocfs2/debugfs.ocfs2.8.in
+index 03c921f950bb..392be221e448 100644
+--- a/debugfs.ocfs2/debugfs.ocfs2.8.in
++++ b/debugfs.ocfs2/debugfs.ocfs2.8.in
+@@ -188,6 +188,12 @@ Use \fIlockname(s)\fR to limit the output to the given lock resources,
+ contents of the lock value block and \fI-f <file>\fR to specify a
+ saved copy of /sys/kernel/debug/ocfs2/<UUID>/locking_state.
+ 
++.TP
++\fIgd_free_bits [-s]\fR
++Display the contiguous free bits of group descriptor blocks which are
++managed by //global_bitmap. \fI-s\fR to record contiguous free bits
++in group descriptor block. The [-s] option requires debugfs.ocfs2 option \fI-w\fR.
++
+ .TP
+ \fIgroup <block#>\fR
+ Display the contents of the group descriptor at \fIblock#\fR.
+diff --git a/debugfs.ocfs2/dump.c b/debugfs.ocfs2/dump.c
+index 137e7c895f2c..d4c37316368f 100644
+--- a/debugfs.ocfs2/dump.c
++++ b/debugfs.ocfs2/dump.c
+@@ -490,6 +490,34 @@ void dump_group_descriptor(FILE *out, struct ocfs2_group_desc *grp, int index)
+ 	return ;
+ }
+ 
++/* copy from dump_group_descriptor() */
++void dump_gd_free_bits(FILE *out, struct ocfs2_group_desc *grp, int index)
++{
++	int max_contig_free_bits = 0;
++
++	if (!index) {
++		fprintf(out, "\tGroup Chain: %u   Parent Inode: %"PRIu64"  "
++			 "Generation: %u\n",
++			 grp->bg_chain,
++			 (uint64_t)grp->bg_parent_dinode,
++			 grp->bg_generation);
++		dump_block_check(out, &grp->bg_check, grp);
++
++		fprintf(out, "\t##   %-15s   %-6s   %-6s   %-6s   %-6s   %-6s   %-6s\n",
++			"Block#", "Total", "Used", "Free", "Contig", "Disk-contig", "Size");
++	}
++
++	find_max_contig_free_bits(grp, &max_contig_free_bits);
++
++	fprintf(out, "\t%-2d   %-15"PRIu64"   %-6u   %-6u   %-6u   %-6u   %-11u   %-6u\n",
++		index, (uint64_t)grp->bg_blkno, grp->bg_bits,
++		(grp->bg_bits - grp->bg_free_bits_count),
++		grp->bg_free_bits_count, max_contig_free_bits,
++		grp->bg_contig_free_bits, grp->bg_size);
++
++	return ;
++}
++
+ void dump_group_extents(FILE *out, struct ocfs2_group_desc *grp)
+ {
+ 	fprintf(out, "\tGroup# %"PRIu64"   Total: %u   Used: %u   Free: %u\n",
+diff --git a/debugfs.ocfs2/include/dump.h b/debugfs.ocfs2/include/dump.h
+index f31358c5c80e..30796058d573 100644
+--- a/debugfs.ocfs2/include/dump.h
++++ b/debugfs.ocfs2/include/dump.h
+@@ -42,6 +42,7 @@ void dump_extent_list (FILE *out, struct ocfs2_extent_list *ext);
+ void dump_chain_list (FILE *out, struct ocfs2_chain_list *cl);
+ void dump_extent_block (FILE *out, struct ocfs2_extent_block *blk);
+ void dump_group_descriptor (FILE *out, struct ocfs2_group_desc *grp, int index);
++void dump_gd_free_bits (FILE *out, struct ocfs2_group_desc *grp, int index);
+ void dump_group_extents(FILE *out, struct ocfs2_group_desc *grp);
+ int  dump_dir_entry (struct ocfs2_dir_entry *rec, uint64_t blocknr, int offset, int blocksize,
+ 		     char *buf, void *priv_data);
+diff --git a/debugfs.ocfs2/include/utils.h b/debugfs.ocfs2/include/utils.h
+index 1faa0ae37279..26a59a8f59a7 100644
+--- a/debugfs.ocfs2/include/utils.h
++++ b/debugfs.ocfs2/include/utils.h
+@@ -37,6 +37,12 @@ struct strings {
+ 	struct list_head s_list;
+ };
+ 
++enum ocfs2_traverse_chains_action {
++	DUMP_GD = 0,
++	DUMP_GD_FREE_BITS,
++	RECORD_GD_FREE_BITS,
++};
++
+ void get_incompat_flag(struct ocfs2_super_block *sb, char *buf, size_t count);
+ void get_tunefs_flag(struct ocfs2_super_block *sb, char *buf, size_t count);
+ void get_compat_flag(struct ocfs2_super_block *sb, char *buf, size_t count);
+@@ -78,7 +84,7 @@ int del_from_stringlist(char *str, struct list_head *strlist);
+ errcode_t traverse_extents(ocfs2_filesys *fs, struct ocfs2_extent_list *el,
+ 			   FILE *out);
+ errcode_t traverse_chains(ocfs2_filesys *fs, struct ocfs2_chain_list *cl,
+-			  FILE *out);
++			  FILE *out, enum ocfs2_traverse_chains_action action);
+ 
+ enum dump_block_type detect_block (char *buf);
+ 
+diff --git a/debugfs.ocfs2/stat_sysdir.c b/debugfs.ocfs2/stat_sysdir.c
+index e770cad976c4..d363d16986a7 100644
+--- a/debugfs.ocfs2/stat_sysdir.c
++++ b/debugfs.ocfs2/stat_sysdir.c
+@@ -64,7 +64,7 @@ static int show_system_inode(struct ocfs2_dir_entry *rec, uint64_t blocknr,
+ 	if ((di->i_flags & OCFS2_LOCAL_ALLOC_FL))
+ 		dump_local_alloc(out, &(di->id2.i_lab));
+ 	else if ((di->i_flags & OCFS2_CHAIN_FL))
+-		ret = traverse_chains(fs, &(di->id2.i_chain), out);
++		ret = traverse_chains(fs, &(di->id2.i_chain), out, DUMP_GD);
+ 	else if (S_ISLNK(di->i_mode) && !di->i_clusters)
+ 		dump_fast_symlink(out, (char *)di->id2.i_symlink);
+ 	else if (di->i_flags & OCFS2_DEALLOC_FL)
+diff --git a/debugfs.ocfs2/utils.c b/debugfs.ocfs2/utils.c
+index 57c5e6bb6cdc..d833192f9159 100644
+--- a/debugfs.ocfs2/utils.c
++++ b/debugfs.ocfs2/utils.c
+@@ -1061,8 +1061,80 @@ bail:
+ 	return ret;
+ }
+ 
++static int show_gd(ocfs2_filesys *fs, struct ocfs2_group_desc *grp,
++		uint64_t *blkno, char *buf, FILE *out)
++{
++	int ret = 0;
++	int index = 0;
++
++	while (*blkno) {
++		ret = ocfs2_read_group_desc(fs, *blkno, buf);
++		if (ret)
++			goto bail;
++
++		grp = (struct ocfs2_group_desc *)buf;
++		dump_group_descriptor(out, grp, index);
++		*blkno = grp->bg_next_group;
++		index++;
++	}
++bail:
++	return ret;
++}
++
++static int show_gd_free_bits(ocfs2_filesys *fs, struct ocfs2_group_desc *grp,
++			uint64_t *blkno, char *buf, FILE *out)
++{
++	int ret = 0;
++	int index = 0;
++
++	while (*blkno) {
++		ret = ocfs2_read_group_desc(fs, *blkno, buf);
++		if (ret) {
++			fprintf(stderr, "read group descriptor error\n");
++			goto bail;
++		}
++
++		grp = (struct ocfs2_group_desc *)buf;
++		dump_gd_free_bits(out, grp, index);
++		*blkno = grp->bg_next_group;
++		index++;
++
++	}
++bail:
++	return ret;
++}
++
++static int record_gd_free_bits(ocfs2_filesys *fs, struct ocfs2_group_desc *grp,
++			uint64_t *blkno, char *buf, FILE *out)
++{
++	int ret = 0;
++	int max_contig_free_bits = 0;
++
++	while (*blkno) {
++		ret = ocfs2_read_group_desc(fs, *blkno, buf);
++		if (ret) {
++			fprintf(stderr, "read group descriptor error\n");
++			goto bail;
++		}
++
++		grp = (struct ocfs2_group_desc *)buf;
++		*blkno = grp->bg_next_group;
++
++		find_max_contig_free_bits(grp, &max_contig_free_bits);
++		if (max_contig_free_bits <= grp->bg_free_bits_count)
++			grp->bg_contig_free_bits = max_contig_free_bits;
++		ret = ocfs2_write_group_desc(fs, grp->bg_blkno, buf);
++		if (ret) {
++			fprintf(stderr, "write group descriptor error\n");
++			goto bail;
++		}
++	}
++bail:
++	return ret;
++}
++
+ errcode_t traverse_chains(ocfs2_filesys *fs, struct ocfs2_chain_list *cl,
+-			  FILE *out)
++			  FILE *out, enum ocfs2_traverse_chains_action action)
+ {
+ 	struct ocfs2_group_desc *grp;
+ 	struct ocfs2_chain_rec *rec;
+@@ -1070,9 +1142,16 @@ errcode_t traverse_chains(ocfs2_filesys *fs, struct ocfs2_chain_list *cl,
+ 	char *buf = NULL;
+ 	uint64_t blkno;
+ 	int i;
+-	int index;
+ 
+-	dump_chain_list(out, cl);
++	switch (action) {
++	case DUMP_GD:
++		/* fallthrough */
++	case DUMP_GD_FREE_BITS:
++		dump_chain_list(out, cl);
++		break;
++	default:
++		break;
++	}
+ 
+ 	ret = ocfs2_malloc_block(gbls.fs->fs_io, &buf);
+ 	if (ret)
+@@ -1081,18 +1160,22 @@ errcode_t traverse_chains(ocfs2_filesys *fs, struct ocfs2_chain_list *cl,
+ 	for (i = 0; i < cl->cl_next_free_rec; ++i) {
+ 		rec = &(cl->cl_recs[i]);
+ 		blkno = rec->c_blkno;
+-		index = 0;
+-		fprintf(out, "\n");
+-		while (blkno) {
+-			ret = ocfs2_read_group_desc(fs, blkno, buf);
+-			if (ret)
+-				goto bail;
+-
+-			grp = (struct ocfs2_group_desc *)buf;
+-			dump_group_descriptor(out, grp, index);
+-			blkno = grp->bg_next_group;
+-			index++;
++		switch (action) {
++		case DUMP_GD:
++			fprintf(out, "\n");
++			ret = show_gd(fs, grp, &blkno, buf, out);
++			break;
++		case DUMP_GD_FREE_BITS:
++			fprintf(out, "\n");
++			ret = show_gd_free_bits(fs, grp, &blkno, buf, out);
++			break;
++		case RECORD_GD_FREE_BITS:
++			fprintf(out, "Chain rec list: %lu\n", blkno);
++			ret = record_gd_free_bits(fs, grp, &blkno, buf, out);
++			break;
+ 		}
++		if (ret)
++			goto bail;
+ 	}
+ 
+ bail:
+diff --git a/include/ocfs2-kernel/ocfs2_fs.h b/include/ocfs2-kernel/ocfs2_fs.h
+index a981b5276dca..4d68210b0c1b 100644
+--- a/include/ocfs2-kernel/ocfs2_fs.h
++++ b/include/ocfs2-kernel/ocfs2_fs.h
+@@ -934,7 +934,8 @@ struct ocfs2_group_desc
+ 	__le16	bg_free_bits_count;     /* Free bits count */
+ 	__le16   bg_chain;               /* What chain I am in. */
+ /*10*/	__le32   bg_generation;
+-	__le32	bg_reserved1;
++	__le16   bg_contig_free_bits;   /* max contig free bits length */
++	__le16   bg_reserved1;
+ 	__le64   bg_next_group;          /* Next group in my list, in
+ 					   blocks */
+ /*20*/	__le64   bg_parent_dinode;       /* dinode which owns me, in
+-- 
+2.35.3
+

@@ -68,6 +68,7 @@ Patch406:       0008-ocfs2-tools-add-systemd-support-fix.patch
 # upstream patches (start from Patch501)
 Patch501:       mkfs.ocfs2-verify-the-number-of-clusters.patch
 Patch502:       bsc1216834-fsck.ocfs2-add-the-ability-to-clear-jbd2-errno.patch
+Patch503:       bsc1219224-debugfs.ocfs2-support-recording-gd-bg_contig_free_bi.patch
 
 BuildRequires:  autoconf
 BuildRequires:  e2fsprogs-devel

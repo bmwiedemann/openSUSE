@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 16 13:54:00 UTC 2024 - Heming Zhao <heming.zhao@suse.com>
+
+- OCFS2 writes delay on large volumes - slow la window lookup from global_bitmap (bsc#1219224)
+  * bsc1219224-debugfs.ocfs2-support-recording-gd-bg_contig_free_bi.patch
+
+-------------------------------------------------------------------
 Mon Apr 15 02:44:00 UTC 2024 - Heming Zhao <heming.zhao@suse.com>
 
 - Update ocfs2-tools to latest code (78060fac433e)
