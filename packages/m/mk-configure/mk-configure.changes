@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Jun 16 18:17:10 UTC 2024 - vle@gmx.net
+
+- Update to 0.39.3
+
+  mkc_check_common.sh: do not hide stderr in function "find_n_match"
+  used by MKC_CHECK_PROGS. As a result stderr of mkc_which and
+  program we search for will be a part of
+  _mkc_{custom_,}prog_XXX.res. This helps debugging.
+
+  Before using gmake in mk/mkc_imp.foreign_autotools.mk and
+  builtins/prog_gmake always unset environment variable MAKEFLAGS
+  because bmake and gmake are incompatible.
+  
+  tests/WARNERR: improve test for clang-16.0.6 that does not warn
+  about sign/unsigned pointer mistype
+
+  Fix "bad condition" in mkc_imp.platform.mk. Affected versions: 0.39.1
+
+  Fix support for WARNERR=yes mode where -Werror option should be
+  passed to compiler.  The problem happens when WARNS is set to 4 in
+  Makefile.{common,inc}.
+
+  Add support for multi-token CC, CXX, CPP (e.g., cc -E), NM, ID,
+  INSTALL, mkdep_cmd and makedepend_cmd
+
+-------------------------------------------------------------------
 Thu May 23 10:42:00 UTC 2024 - vle@gmx.net
 
 - Update to 0.39.0
