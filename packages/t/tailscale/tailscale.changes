@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 16 13:30:20 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to 1.68.1:
+  * Fixed: 4via6 subnet router advertisement works as expected.
+  * Fixed: Tailscale SSH access to Security-Enhanced Linux (SELinux) machines works as expected.
+- update to 1.68.0:
+  * New: Auto-updates are allowed in containers, but ignore the tailnet-wide default
+  * New: Apply auto-updates even if the node is down or disconnected from the coordination server.
+  * New: tailscale lock status now prints the node's signature.
+
+-------------------------------------------------------------------
 Wed May 22 08:36:37 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - update to 1.66.4:
