@@ -43,6 +43,7 @@ URL:            http://www.gnu.org/software/freeipmi/
 Source0:        http://ftp.gnu.org/gnu/freeipmi/%{name}-%{srcversion}.tar.gz
 Source1:        http://ftp.gnu.org/gnu/freeipmi/%{name}-%{srcversion}.tar.gz.sig
 Source2:        %{name}.keyring
+Patch1:         gcc-14.patch
 Summary:        IPMI Service Processor, BMC management tool
 License:        GPL-3.0-or-later
 Group:          System/Management
@@ -177,7 +178,7 @@ Platform Management Interface specification.
 This package contains the libfreeipmi library.
 
 %prep
-%setup -q -n %{name}-%{srcversion}
+%autosetup -p1 -n %{name}-%{srcversion}
 
 %build
 # simple .spec expressions for SLE10

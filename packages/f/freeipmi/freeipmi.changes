@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun  3 14:40:55 UTC 2024 - Klaus Kämpf <kkaempf@suse.com>
+
+- use %autosetup
+
+- apply patches with -p1
+
+-------------------------------------------------------------------
+Thu Mar  7 13:07:37 UTC 2024 - Klaus Kämpf <kkaempf@suse.com>
+
+- fix gcc-14 build: gcc-14.patch (bsc#1220476)
+
+-------------------------------------------------------------------
 Mon Jan 29 08:34:51 UTC 2024 - Klaus Kämpf <kkaempf@suse.com>
 
 - freeipmi 1.6.14
