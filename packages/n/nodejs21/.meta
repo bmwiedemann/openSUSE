@@ -1,6 +1,0 @@
-<package name="nodejs21" project="openSUSE:Factory">
-  <title>NodeJS 21.x</title>
-  <description>CURRENT-only codestream</description>
-  <devel project="devel:languages:nodejs" package="nodejs21"/>
-  <url>https://nodejs.org/</url>
-</package>
