@@ -1,7 +1,7 @@
 #
 # spec file for package python-ijson
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ijson
-Version:        3.2.3
+Version:        3.3.0
 Release:        0
 Summary:        Iterative JSON parser with a standard Python iterator interface
 License:        BSD-3-Clause

@@ -59,4 +59,20 @@
 - drop tests_asyncio.py source - this comes in the tarball now</comment>
     <requestid>1100746</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>126ba9b303f65ca787f371032c8c76bf</srcmd5>
+    <version>3.3.0</version>
+    <time>1718645414</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.3.0:
+  * Removed support for Python 2.7 and 3.4, 3.5+ is still
+    supported.
+  * Distribute the existing `benchmark.py` script
+    as ``ijson.benchmark``.
+
+  * Adapted ``yajl2_c`` async generators to work against PyPy
+    when building ijson to force/skip building the
+- update to 3.1.4</comment>
+    <requestid>1181244</requestid>
+  </revision>
 </revisionlist>
