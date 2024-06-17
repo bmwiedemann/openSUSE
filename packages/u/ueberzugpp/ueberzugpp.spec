@@ -18,7 +18,7 @@
 
 %define short_name ueberzug
 Name:           ueberzugpp
-Version:        2.9.4+git20240225.aa26e11
+Version:        2.9.6+git20240609.7051b04
 Release:        0
 Summary:        Utility to render images in terminals
 License:        GPL-3.0

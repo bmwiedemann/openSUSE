@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Jun 10 00:49:35 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 2.9.6+git20240609.7051b04:
+  * bump version
+
+-------------------------------------------------------------------
+Sat May 18 15:52:24 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 2.9.5+git20240518.c3fd1c7:
+  * forgot string
+  * handle open error
+  * handle error when trying to open not existant pty
+
+-------------------------------------------------------------------
+Sat May 11 22:54:14 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 2.9.5+git20240511.46fb226:
+  * default to chafa and crash if output is not supported
+  * bump version
+  * update for hyprland 0.40 socket path change
+  * update dependencies
+  * don't use std::endl
+  * use std::filesystem
+  * explicit string include
+
+-------------------------------------------------------------------
+Mon Apr 29 13:52:17 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 2.9.4+git20240406.986be28:
+  * code cleanup
+  * drop libexif and handle other orientation values
+  * initial dbus files
+  * add dbus flag
+  * add jetbrains support
+  * egl changes
+  * don't pass mutex with shared_ptr
+  * minimum cmake required is now 3.22
+  * add CODE_OF_CONDUCT.md
+
+-------------------------------------------------------------------
 Mon Feb 26 00:33:29 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 2.9.4+git20240225.aa26e11:
