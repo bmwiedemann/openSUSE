@@ -174,6 +174,8 @@ chmod 755 %{buildroot}%{_datadir}/%{tname}/python/ffado_dbus_util.py
 find ./ -empty -delete
 %fdupes -s %{buildroot}%{_datadir}
 
+%python3_fix_shebang
+
 %files
 %defattr(-,root,root)
 %{_bindir}/ffado-mixer

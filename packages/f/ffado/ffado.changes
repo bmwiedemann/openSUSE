@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 14 13:24:58 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Fri Mar 22 09:48:40 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Remove unnecessary BuildRequires on xdg-utils and update-desktop-files

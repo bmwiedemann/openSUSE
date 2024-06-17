@@ -165,6 +165,8 @@ rm -rf %{buildroot}%{_libdir}/libffado
 
 %fdupes -s %{buildroot}%{_datadir}
 
+%python3_fix_shebang
+
 %post -n libffado%{sover} -p /sbin/ldconfig
 %postun -n libffado%{sover} -p /sbin/ldconfig
 
