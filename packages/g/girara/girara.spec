@@ -17,9 +17,9 @@
 
 
 %define libname libgirara-gtk3
-%define so_ver  3
+%define so_ver  4
 Name:           girara
-Version:        0.4.2
+Version:        0.4.4
 Release:        0
 Summary:        Graphical user interface library
 License:        Zlib
@@ -73,7 +73,7 @@ Requires:       %{libname}-%{so_ver} = %{version}-%{release}
 Header files for the girara user interface library.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 export CFLAGS="%{optflags}"

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 13 05:37:13 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Migrate from deprecated setup to autosetup
+- Update to version 0.4.4:
+  * Reduce minimum glib verson
+- Updates from version 0.4.3:
+  * Fix font weight mapping
+  * Remove deprecated functions
+  * Various fixes and improvements
+
+-------------------------------------------------------------------
 Mon Mar 25 07:38:16 UTC 2024 - ming li <mli@suse.com>
 
 - Update to version 0.4.2:
