@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun  5 11:54:09 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 0.6.8.2
+  * Adds firmware filename to modinfo 
+- Add tag for requiring the firmware in the preamble file 
+
+-------------------------------------------------------------------
 Thu May 16 13:28:54 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 0.6.8.1
