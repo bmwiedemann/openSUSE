@@ -17,4 +17,21 @@
 - Add %{?sle15_python_module_pythons}</comment>
     <requestid>1157047</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>851d54162463a2d65f9a0c98f5a68296</srcmd5>
+    <version>0.7.0</version>
+    <time>1718645252</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.0:
+  * Allow `tzinfo` objects for `Timezone`
+  * add URLs to `pyproject.toml`
+  * suggested fix on typo
+  * Correct misstatement in README
+  * Fix IsDigit -&gt; IsDigits
+  * Add `Unit` type
+  * Improve handling of GroupedMetadata (First try)
+
+- Initial release of 0.6.0</comment>
+    <requestid>1181212</requestid>
+  </revision>
 </revisionlist>

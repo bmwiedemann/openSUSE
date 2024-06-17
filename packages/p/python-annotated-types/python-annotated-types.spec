@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-annotated-types
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        Reusable constraint types to use with typing.Annotated
 License:        MIT
