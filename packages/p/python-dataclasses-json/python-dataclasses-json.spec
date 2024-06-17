@@ -17,7 +17,7 @@
 
 
 Name:           python-dataclasses-json
-Version:        0.6.6
+Version:        0.6.7
 Release:        0
 Summary:        API for encoding and decoding dataclasses to and from JSON
 License:        MIT

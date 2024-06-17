@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 15 15:36:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.7:
+  * feat: support abstract collections
+  * Warn about buggy type resolution
+
+-------------------------------------------------------------------
 Tue May 21 11:50:26 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.6.6
@@ -7,4 +14,4 @@ Tue May 21 11:50:26 UTC 2024 - Markéta Machová <mmachova@suse.com>
 -------------------------------------------------------------------
 Thu May  2 13:30:20 UTC 2024 - Christian Goll <cgoll@suse.com>
 
-- initial commit of dataclasses-json 
+- initial commit of dataclasses-json

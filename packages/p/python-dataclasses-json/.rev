@@ -7,4 +7,16 @@
     <comment>new package - probably popular and needed by something</comment>
     <requestid>1175548</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d2bebb61ddbc0171a5a2556ef0c259a0</srcmd5>
+    <version>0.6.7</version>
+    <time>1718645375</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.7:
+  * feat: support abstract collections
+  * Warn about buggy type resolution
+
+- initial commit of dataclasses-json</comment>
+    <requestid>1181039</requestid>
+  </revision>
 </revisionlist>
