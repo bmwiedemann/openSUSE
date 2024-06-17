@@ -287,4 +287,12 @@ Should fix problem with non-downloadable source file.</comment>
 - update to 2.6.3:</comment>
     <requestid>1165860</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3749dcd104024c6774e9588037f94126</srcmd5>
+    <version>2.6.13</version>
+    <time>1718645624</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1181279</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun 10 09:53:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.13:
+  * Adopt `ExceptionGroup` handling without an external library
+    in python 3.11+
+- update to 2.6.12:
+  * Prevent a possible infinite loop in
+    WidgetDecoration.base_widget
+  * ScrollBar will check wrapped widgets for SupportsScroll
+- update to 2.6.11:
+  * Fix `Widget.rows` annotation
+  * Do not use deprecated positioning in the code and examples
+  * Docs: partial update of screenshots
+
+-------------------------------------------------------------------
 Sat Apr  6 17:38:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.10:
