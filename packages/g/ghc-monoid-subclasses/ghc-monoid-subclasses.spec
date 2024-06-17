@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.2.5
+Version:        1.2.5.1
 Release:        0
 Summary:        Subclasses of Monoid
 License:        BSD-3-Clause

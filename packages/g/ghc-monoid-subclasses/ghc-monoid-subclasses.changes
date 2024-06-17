@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May 18 14:59:00 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update monoid-subclasses to version 1.2.5.1.
+  Version 1.2.5.1
+  ---------------
+
+  * Bumped the `containers` dependency upper bound
+
+-------------------------------------------------------------------
 Sat Apr 13 02:13:22 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update monoid-subclasses to version 1.2.5.
