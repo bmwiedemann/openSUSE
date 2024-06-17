@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 15 08:57:49 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.12.8:
+  * lib/ec_glob: plug leak of nums utarray
+
+-------------------------------------------------------------------
 Sun Apr 14 07:34:33 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.12.7:
