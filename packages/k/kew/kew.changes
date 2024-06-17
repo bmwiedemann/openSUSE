@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 17 04:46:18 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2.5.0
+  * Fuzzy search! Press F5 to search your library.
+  * You can now quit with Esc. Handy when you are in search view,
+    because pressing 'q' will just add that letter to the search
+    string.
+  * Fixed issue where after completing a playthrough of a playlist
+    and then starting over, only the first song would be played.
+  * Fine tuning of the spectrum visualizer. Still not perfect but
+    I think this one is better. I might be wrong though.
+  * Made scrolling quicker.
+
+-------------------------------------------------------------------
 Wed Mar 27 03:33:29 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2.4.4
