@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun 10 05:22:06 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update hslua-module-doclayout to version 1.1.1.2.
+  ## 1.1.1.2
+
+  Released 2024-06-10.
+
+  -   Fixed another documentation bugs: `render` returns a `string`.
+
+  ## 1.1.1.1
+
+  Released 2024-06-09.
+
+  -   Fixed minor typos in docstrings.
+
+-------------------------------------------------------------------
 Tue Jan 23 09:54:16 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update hslua-module-doclayout to version 1.1.1.

@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.1.1
+Version:        1.1.1.2
 Release:        0
 Summary:        Lua module wrapping Text.DocLayout
 License:        MIT
