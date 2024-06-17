@@ -14,8 +14,10 @@
  test/test_UCharsTrie.py        |    2 +-
  13 files changed, 27 insertions(+), 28 deletions(-)
 
---- a/setup.py
-+++ b/setup.py
+Index: pyicu-2.13.1/setup.py
+===================================================================
+--- pyicu-2.13.1.orig/setup.py
++++ pyicu-2.13.1/setup.py
 @@ -1,4 +1,3 @@
 -
  import os, sys
@@ -28,7 +30,7 @@
 -Please install pkg-config on your system or set the PYICU_CFLAGS environment 
 +Please install pkg-config on your system or set the PYICU_CFLAGS environment
  variable to the flags required by the C++ compiler to find the header files
- for ICU, and possibly -std=c++11 if using ICU version >= 60
+ for ICU, and possibly -std=c++11 if using ICU version >= 60 or -std=c++17 if using ICU version >= 75
              ''')
 @@ -234,7 +233,7 @@ else:
  Please install pkg-config on your system or set the PYICU_LFLAGS environment
@@ -45,8 +47,10 @@
        packages=['icu'],
 -      tests_require=['pytest', 'six'])
 +      tests_require=['pytest'])
---- a/test/test_BytesTrie.py
-+++ b/test/test_BytesTrie.py
+Index: pyicu-2.13.1/test/test_BytesTrie.py
+===================================================================
+--- pyicu-2.13.1.orig/test/test_BytesTrie.py
++++ pyicu-2.13.1/test/test_BytesTrie.py
 @@ -21,7 +21,7 @@
  # DEALINGS IN THE SOFTWARE.
  # ====================================================================
@@ -56,8 +60,10 @@
  
  from unittest import TestCase, main
  from icu import *
---- a/test/test_Charset.py
-+++ b/test/test_Charset.py
+Index: pyicu-2.13.1/test/test_Charset.py
+===================================================================
+--- pyicu-2.13.1.orig/test/test_Charset.py
++++ pyicu-2.13.1/test/test_Charset.py
 @@ -21,7 +21,7 @@
  # ====================================================================
  #
@@ -76,8 +82,10 @@
  
          self.assertTrue(ustring.encode('iso-8859-1') == bytes)
  
---- a/test/test_Collator.py
-+++ b/test/test_Collator.py
+Index: pyicu-2.13.1/test/test_Collator.py
+===================================================================
+--- pyicu-2.13.1.orig/test/test_Collator.py
++++ pyicu-2.13.1/test/test_Collator.py
 @@ -21,7 +21,7 @@
  # ====================================================================
  #
@@ -96,8 +104,10 @@
          input.close()
          ecole = names[0]
  
---- a/test/test_LayoutEngine.py
-+++ b/test/test_LayoutEngine.py
+Index: pyicu-2.13.1/test/test_LayoutEngine.py
+===================================================================
+--- pyicu-2.13.1.orig/test/test_LayoutEngine.py
++++ pyicu-2.13.1/test/test_LayoutEngine.py
 @@ -22,7 +22,7 @@
  # ====================================================================
  #
@@ -107,8 +117,10 @@
  
  from unittest import TestCase, main
  from icu import *
---- a/test/test_Locale.py
-+++ b/test/test_Locale.py
+Index: pyicu-2.13.1/test/test_Locale.py
+===================================================================
+--- pyicu-2.13.1.orig/test/test_Locale.py
++++ pyicu-2.13.1/test/test_Locale.py
 @@ -21,7 +21,7 @@
  # DEALINGS IN THE SOFTWARE.
  # ====================================================================
@@ -118,8 +130,10 @@
  
  from unittest import TestCase, main
  from icu import *
---- a/test/test_LocaleData.py
-+++ b/test/test_LocaleData.py
+Index: pyicu-2.13.1/test/test_LocaleData.py
+===================================================================
+--- pyicu-2.13.1.orig/test/test_LocaleData.py
++++ pyicu-2.13.1/test/test_LocaleData.py
 @@ -22,7 +22,7 @@
  #
  # This is a python translation of ICU's LocaleDataTest.java
@@ -155,8 +169,10 @@
              self.assertTrue(locale + " case-folded is a superset", exemplarSets[2].containsAll(exemplarSets[0]))
              self.assertTrue(locale + " case-folder is a superset", exemplarSets[3].containsAll(exemplarSets[1]))
              if (exemplarSets[2] == exemplarSets[0]):
---- a/test/test_LocaleMatcher.py
-+++ b/test/test_LocaleMatcher.py
+Index: pyicu-2.13.1/test/test_LocaleMatcher.py
+===================================================================
+--- pyicu-2.13.1.orig/test/test_LocaleMatcher.py
++++ pyicu-2.13.1/test/test_LocaleMatcher.py
 @@ -21,7 +21,7 @@
  # DEALINGS IN THE SOFTWARE.
  # ====================================================================
@@ -166,8 +182,10 @@
  
  from unittest import TestCase, main, SkipTest
  from icu import *
---- a/test/test_PythonReplaceable.py
-+++ b/test/test_PythonReplaceable.py
+Index: pyicu-2.13.1/test/test_PythonReplaceable.py
+===================================================================
+--- pyicu-2.13.1.orig/test/test_PythonReplaceable.py
++++ pyicu-2.13.1/test/test_PythonReplaceable.py
 @@ -21,7 +21,7 @@
  # DEALINGS IN THE SOFTWARE.
  # ====================================================================
@@ -177,8 +195,10 @@
  
  from unittest import TestCase, main
  from icu import *
---- a/test/test_Script.py
-+++ b/test/test_Script.py
+Index: pyicu-2.13.1/test/test_Script.py
+===================================================================
+--- pyicu-2.13.1.orig/test/test_Script.py
++++ pyicu-2.13.1/test/test_Script.py
 @@ -21,7 +21,7 @@
  # ====================================================================
  #
@@ -210,8 +230,10 @@
  
  if __name__ == "__main__":
      main()
---- a/test/test_TimeZone.py
-+++ b/test/test_TimeZone.py
+Index: pyicu-2.13.1/test/test_TimeZone.py
+===================================================================
+--- pyicu-2.13.1.orig/test/test_TimeZone.py
++++ pyicu-2.13.1/test/test_TimeZone.py
 @@ -21,7 +21,7 @@
  # ====================================================================
  #
@@ -221,8 +243,10 @@
  
  from unittest import TestCase, main
  from icu import *
---- a/test/test_Transliterator.py
-+++ b/test/test_Transliterator.py
+Index: pyicu-2.13.1/test/test_Transliterator.py
+===================================================================
+--- pyicu-2.13.1.orig/test/test_Transliterator.py
++++ pyicu-2.13.1/test/test_Transliterator.py
 @@ -22,7 +22,7 @@
  # ====================================================================
  #
@@ -241,8 +265,23 @@
          self.assertTrue(trans.transliterate(string) == result)
          self.assertTrue(string == result)
  
---- a/test/test_UCharsTrie.py
-+++ b/test/test_UCharsTrie.py
+Index: pyicu-2.13.1/test/test_UCharsTrie.py
+===================================================================
+--- pyicu-2.13.1.orig/test/test_UCharsTrie.py
++++ pyicu-2.13.1/test/test_UCharsTrie.py
+@@ -21,7 +21,7 @@
+ # DEALINGS IN THE SOFTWARE.
+ # ====================================================================
+ 
+-import sys, os, six
++import sys, os
+ 
+ from unittest import TestCase, main
+ from icu import *
+Index: pyicu-2.13.1/test/test_Regex.py
+===================================================================
+--- pyicu-2.13.1.orig/test/test_Regex.py
++++ pyicu-2.13.1/test/test_Regex.py
 @@ -21,7 +21,7 @@
  # DEALINGS IN THE SOFTWARE.
  # ====================================================================

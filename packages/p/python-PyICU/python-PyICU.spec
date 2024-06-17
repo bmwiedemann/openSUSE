@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-PyICU
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %global modname PyICU
 Name:           python-%{modname}
-Version:        2.12
+Version:        2.13.1
 Release:        0
 Summary:        Python Extension Wrapping the ICU C++ API
 License:        MIT
@@ -50,7 +50,7 @@ Python extension wrapping IBM's International Components for Unicode C++
 library (ICU).
 
 %prep
-%autosetup -p1 -n %{modname}-%{version}
+%autosetup -p1 -n pyicu-%{version}
 
 %build
 export CXXFLAGS="%{optflags} -fno-strict-aliasing"

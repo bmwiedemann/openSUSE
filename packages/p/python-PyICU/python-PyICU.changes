@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jun 14 08:14:34 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 2.13.1:
+  - change c++11 to c++17 in setup.py as current versions of ICU require it
+- 2.13
+  - fixed build issues on Windows
+  - added wrappers for MeasureUnit(locale, width) and getUnitDisplayName()
+  - added wrappers for DateFormatSymbols.getEra|ZodiacNames()
+  - added wrappers for DateFormatSymbols.getZoneStrings()
+  - added wrappers for LocaleDisplayNames
+  - fixed bug dealloc calling wrong destructor on most types (Fredrik Roubert)
+  - added support for ICU 75.1
+  - added wrappers for LocalizedNumber|Range|Formatter.withoutLocale()
+  - added wrappers for UIdentifierType, Char.hasIDType(), Char.getIDTypes()
+  - added wrappers for UIdentifierStatus
+  - added wrappers for UProperty.IDENTIFIER_TYPE, UProperty.IDENTIFIER_STATUS
+
+-------------------------------------------------------------------
 Mon Dec 18 14:06:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.12:
