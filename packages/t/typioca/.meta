@@ -1,0 +1,6 @@
+<package name="typioca" project="openSUSE:Factory">
+  <title>typioca</title>
+  <description>Minimal terminal based typing speed tester</description>
+  <devel project="devel:languages:go" package="typioca"/>
+  <url>https://github.com/bloznelis/typioca</url>
+</package>

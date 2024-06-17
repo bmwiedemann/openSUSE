@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Fri Jun 14 12:29:29 UTC 2024 - Sai Karthik Karra <kskarthik@disroot.org>
+
+- Packaging improvements:
+  * Added Requires Field for shell completion packages
+  * Fix rpm lint for incorrect non-standard-group
+  * Temporarily bump Release: 1, revert to 0 on next version update
+
+-------------------------------------------------------------------
+Thu Jun  6 03:21:53 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Summary and Description clarify the purpose of this TUI tool
+  * Remove unused BuildRequires: zstd does not match archive format
+  * _service recompress change from xz to gz. The source archive is
+    not large and xz unpack times are noticeably slower. If gz is
+    not ideal for a given application, zstd is a good alternative.
+  * Normalize go build invocation extracted from upstream Makefile
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+  * Remove go build -a forced rebuild of packages. Rebuild is not
+    needed in an OBS rpmbuild environment.
+  * Remove forced use of pure Go DNS resolver via -tags netgo or
+    GODEBUG=netdns=go. The Go DNS resolver is already the default
+    (https://pkg.go.dev/net#hdr-Name_Resolution).
+  * Remove ldflags -X entries for upstream import path and version.
+    This information is embedded in binaries with go1.18+ and
+    available via go version -m or runtime/debug.ReadBuildInfo().
+  * Move %check section directly after %build
+
+-------------------------------------------------------------------
+Sun Jun 02 17:29:36 UTC 2024 - Sai Karthik Karra <kskarthik@disroot.org>
+
+- Update to version 2.11.2:
+  * fix: AUR PKGBUILD template
+  * fix: specify more concrete go version
+  * feat: improves how words are randomized (#141)
+  * Bump softprops/action-gh-release from 1 to 2 (#136)
+  * Bump github.com/guptarohit/asciigraph from 0.5.6 to 0.7.1 (#138)
+  * Bump github.com/charmbracelet/wish from 1.3.1 to 1.3.2 (#137)
+  * Bump github.com/charmbracelet/lipgloss from 0.9.1 to 0.10.0 (#139)
+  * Bump golang.org/x/term from 0.16.0 to 0.18.0 (#140)
+  * docs: add nix installation instruction
+  * Bump actions/upload-artifact from 3 to 4 (#126)
