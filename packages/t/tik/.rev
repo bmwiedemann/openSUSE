@@ -122,4 +122,12 @@
 - Tune up _service for easier automation</comment>
     <requestid>1180890</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>547ef651e3a7649cf0c91122bf0cd8c3</srcmd5>
+    <version>1.1.8</version>
+    <time>1718645377</time>
+    <user>anag+factory</user>
+    <comment>Package update to 1.1.8</comment>
+    <requestid>1181341</requestid>
+  </revision>
 </revisionlist>

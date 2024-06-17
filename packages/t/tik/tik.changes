@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Jun 17 15:39:11 UTC 2024 - rbrown@suse.com
+
+- Update to version 1.1.8:
+  * Error message UEFI instead of EFI
+  * Refined error message. Tested with UEFI system with inverted check.
+  * initial implementation. Not tested yet.
+  * Moved log message so it won't display multiple times.
+  * Edited log message to reflect upower output
+  * Fixed code indenting
+  * Get rid of unneeded global variable and moved it locally.
+  * Changed all tab indents to 4 spaces because it started to look strange on gitlab
+  * Converted code to use upower instead of straight bash.
+  * Bug in the previous Pull request would cause an infinite loop because the BAT* wildcard would follow symlinks recursively. This change would fix that bug using grep -r which would skip recursive symlinks.
+  * Revert "Added condition to check batteries for charging state"
+
+-------------------------------------------------------------------
+Sat Jun 15 19:20:01 UTC 2024 - rbrown@suse.com
+
+- Update to version 1.1.7:
+  * crypt: tidy up unmounts
+
+-------------------------------------------------------------------
+Sat Jun 15 17:34:32 UTC 2024 - rbrown@suse.com
+
+- Update to version 1.1.6:
+  * crypt: resize partitions before encrypting them. minor bugfixes
+
+-------------------------------------------------------------------
+Sat Jun 15 16:30:54 UTC 2024 - rbrown@suse.com
+
+- Update to version 1.1.5:
+  * crypt: mount /var
+
+-------------------------------------------------------------------
+Sat Jun 15 16:09:01 UTC 2024 - rbrown@suse.com
+
+- Update to version 1.1.4:
+  * crypt: fix btrfs repair after resize
+
+-------------------------------------------------------------------
+Sat Jun 15 15:45:51 UTC 2024 - rbrown@suse.com
+
+- Update to version 1.1.3:
+  * crypt: bugfixes and workflow tuneups
+
+-------------------------------------------------------------------
+Sat Jun 15 15:01:08 UTC 2024 - rbrown@suse.com
+
+- Update to version 1.1.2:
+  * encrypt: prototype crypt module, force encrypts using a recovery key only, not for production use
+  * mig: Backup openvpn config
+  * Cleanup bluetooth backup
+
+-------------------------------------------------------------------
 Fri Jun 14 11:47:31 UTC 2024 - rbrown@suse.com
 
 - Update to version 1.1.1:
