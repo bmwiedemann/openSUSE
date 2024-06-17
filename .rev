@@ -2120,4 +2120,15 @@
           elf.5</comment>
     <requestid>1175310</requestid>
   </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>df519c4ab8ebed974d6745fe5b7ef51c</srcmd5>
+    <version>6.9</version>
+    <time>1718645232</time>
+    <user>anag+factory</user>
+    <comment>- version update to 6.9
+  * Split several huge pages into smaller pages.
+  * Rename some ioctl_*(2) pages for consistency.
+  * new dir man2const/</comment>
+    <requestid>1181301</requestid>
+  </revision>
 </revisionlist>

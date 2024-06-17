@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 17 10:24:06 UTC 2024 - pgajdos@suse.com
+
+- version update to 6.9
+  * Split several huge pages into smaller pages.
+  * Rename some ioctl_*(2) pages for consistency.
+  * new dir man2const/
+
+-------------------------------------------------------------------
 Mon May 20 07:13:02 UTC 2024 - pgajdos@suse.com
 
 - version update to 6.8
