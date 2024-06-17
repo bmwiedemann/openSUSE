@@ -294,4 +294,12 @@ See http://lists.opensuse.org/opensuse-factory/2013-07/msg00409.html</comment>
     <comment>version update</comment>
     <requestid>1171789</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>10124f0dbfa4c3286902037122d76759</srcmd5>
+    <version>1.4.6.0</version>
+    <time>1718645368</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1181058</requestid>
+  </revision>
 </revisionlist>

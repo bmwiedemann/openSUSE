@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jun 11 19:44:31 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Disable use of invalid -march flag.
+
+-------------------------------------------------------------------
+Sun Jun  9 19:43:26 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update hashable to version 1.4.6.0.
+  ## Version 1.4.6.0
+
+    * Use GND&DerivingVia to derive `newtype` intances (`Data.Semigroup`, `Data.Monoid`, `Identity` etc).
+
+  ## Version 1.4.5.0
+
+    * Drop support for GHCs prior 8.6.5
+    * Use xxhash for hashing bytestrings and bytearrays.
+      Note: when compiling binaries for distribution, you may need to disable
+      `arch-native` flag.
+
+-------------------------------------------------------------------
 Wed Apr  3 13:35:27 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update hashable to version 1.4.4.0 revision 1.

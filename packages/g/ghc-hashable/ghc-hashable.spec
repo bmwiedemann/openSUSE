@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.4.4.0
+Version:        1.4.6.0
 Release:        0
 Summary:        A class for types that can be converted to a hash value
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
@@ -49,14 +48,16 @@ BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-HUnit-prof
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-QuickCheck-prof
+BuildRequires:  ghc-primitive-devel
+BuildRequires:  ghc-primitive-prof
 BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-random-prof
-BuildRequires:  ghc-test-framework-devel
-BuildRequires:  ghc-test-framework-hunit-devel
-BuildRequires:  ghc-test-framework-hunit-prof
-BuildRequires:  ghc-test-framework-prof
-BuildRequires:  ghc-test-framework-quickcheck2-devel
-BuildRequires:  ghc-test-framework-quickcheck2-prof
+BuildRequires:  ghc-tasty-devel
+BuildRequires:  ghc-tasty-hunit-devel
+BuildRequires:  ghc-tasty-hunit-prof
+BuildRequires:  ghc-tasty-prof
+BuildRequires:  ghc-tasty-quickcheck-devel
+BuildRequires:  ghc-tasty-quickcheck-prof
 BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-unix-prof
 %endif
@@ -67,9 +68,17 @@ hash value. This class exists for the benefit of hashing-based data structures.
 The package provides instances for basic types and a way to combine hash
 values.
 
-The 'Hashable' 'hash' values are not guaranteed to be stable across library
-versions, operating systems or architectures. For stable hashing use named
-hashes: SHA256, CRC32 etc.
+'Hashable' is intended exclusively for use in in-memory data structures.
+
+'Hashable' does /not/ have a fixed standard. This allows it to improve over
+time.
+
+Because it does not have a fixed standard, different computers or computers on
+different versions of the code will observe different hash values. As such,
+'hashable' is not recommended for use other than in-memory datastructures.
+Specifically, 'hashable' is not intended for network use or in applications
+which persist hashed values. For stable hashing use named hashes: sha256,
+crc32, xxhash etc.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -99,9 +108,9 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
+%define cabal_configure_options -f-arch-native
 %ghc_lib_build
 
 %install
