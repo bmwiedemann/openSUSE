@@ -1,0 +1,188 @@
+From 6a714409b17ad2cca99d497129fc944a808eb446 Mon Sep 17 00:00:00 2001
+From: NeilBrown <neilb@suse.de>
+Date: Mon, 27 Nov 2023 10:35:56 -0500
+Subject: [PATCH] conffile: allow /usr/etc to provide any config files expected
+ in /etc
+
+If any config file is configured to be in /etc, also read from /usr/etc.
+This followed a growing trend of moving as much as possible out of /
+and into /usr.
+
+See https://en.opensuse.org/openSUSE:Packaging_UsrEtc
+
+Signed-off-by: NeilBrown <neilb@suse.de>
+Signed-off-by: Steve Dickson <steved@redhat.com>
+---
+ support/nfs/conffile.c         |   26 +++++++++++++++-----------
+ support/nfsidmap/idmapd.conf.5 |   15 ++++++++++++++-
+ systemd/nfs.conf.man           |   23 ++++++++++++++---------
+ systemd/nfs.systemd.man        |   10 +++++++++-
+ utils/mount/nfsmount.conf.man  |   19 ++++++++++---------
+ 5 files changed, 62 insertions(+), 31 deletions(-)
+
+--- a/support/nfs/conffile.c
++++ b/support/nfs/conffile.c
+@@ -763,19 +763,23 @@ conf_init_file(const char *conf_file)
+ 	if (conf_file == NULL)
+ 		conf_file = NFS_CONFFILE;
+ 
+-	/*
+-	 * First parse the give config file
+-	 * then parse the config.conf.d directory
+-	 * (if it exists)
++	/* If the config file is in /etc (normal) then check
++	 * /usr/etc first.  Also check config.conf.d for files
++	 * names *.conf.
++	 *
++	 * Content or later files always over-rides earlier
++	 * files.
+ 	 */
+-	conf_load_file(conf_file);
++	if (strncmp(conf_file, "/etc/", 5) == 0) {
++		char *usrconf = NULL;
+ 
+-	/*
+-	 * When the same variable is set in both files
+-	 * the conf.d file will override the config file.
+-	 * This allows automated admin systems to
+-	 * have the final say.
+-	 */
++		if (asprintf(&usrconf, "/usr%s", conf_file) > 0 && usrconf) {
++			conf_load_file(usrconf);
++			conf_init_dir(usrconf);
++			free(usrconf);
++		}
++	}
++	conf_load_file(conf_file);
+ 	conf_init_dir(conf_file);
+ }
+ 
+--- a/support/nfsidmap/idmapd.conf.5
++++ b/support/nfsidmap/idmapd.conf.5
+@@ -37,7 +37,7 @@ Configuration file for libnfsidmap.  Use
+ .SH DESCRIPTION
+ The
+ .B idmapd.conf
+-configuration file consists of several sections, initiated by strings of the
++configuration files consists of several sections, initiated by strings of the
+ form [General] and [Mapping].  Each section may contain lines of the form
+ .nf
+   variable = value
+@@ -398,6 +398,19 @@ LDAP_base = dc=org,dc=domain
+ .\" Additional sections
+ .\" -------------------------------------------------------------------
+ .\"
++.SH FILES
++.I /usr/etc/idmapd.conf
++.br
++.I /usr/etc/idmapd.conf.d/*.conf
++.br
++.I /etc/idmapd.conf
++.br
++.I /etc/idmapd.conf.d/*.conf
++.br
++.IP
++Files are read in the order listed.  Later settings override earlier
++settings.
++
+ .SH SEE ALSO
+ .BR idmapd (8)
+ .BR svcgssd (8)
+--- a/systemd/nfs.conf.man
++++ b/systemd/nfs.conf.man
+@@ -2,10 +2,13 @@
+ .SH NAME
+ nfs.conf \- general configuration for NFS daemons and tools
+ .SH SYNOPSIS
++.I /usr/etc/nfs.conf
++.I /usr/etc/nfs.conf.d/
+ .I /etc/nfs.conf
++.I /etc/nfs.conf.d/
+ .SH DESCRIPTION
+ .PP
+-This file contains site-specific configuration for various NFS daemons
++These files contain site-specific configuration for various NFS daemons
+ and other processes.  Most configuration can also be passed to
+ processes via command line arguments, but it can be more convenient to
+ have a central file.  In particular, this encourages consistent
+@@ -314,15 +317,17 @@ See
+ for deatils.
+ 
+ .SH FILES
+-.TP 10n
++.I /usr/etc/nfs.conf
++.br
++.I /usr/etc/nfs.conf.d/*.conf
++.br
+ .I /etc/nfs.conf
+-Default NFS client configuration file
+-.TP 10n
+-.I /etc/nfs.conf.d
+-When this directory exists and files ending 
+-with ".conf" exist, those files will be
+-used to set configuration variables. These
+-files will override variables set in /etc/nfs.conf
++.br
++.I /etc/nfs.conf.d/*.conf
++.br
++.IP
++Various configuration files read in order.  Later settings override
++earlier settings.
+ .SH SEE ALSO
+ .BR nfsdcltrack (8),
+ .BR rpc.nfsd (8),
+--- a/systemd/nfs.systemd.man
++++ b/systemd/nfs.systemd.man
+@@ -27,7 +27,9 @@ any command line arguments to daemons so
+ behavior.  In many case such configuration can be performed by making
+ changes to
+ .I /etc/nfs.conf
+-or other configuration files.  When that is not convenient, a
++or other configuration files (see
++.BR nfs.conf (5)).
++When that is not convenient, a
+ distribution might provide systemd "drop-in" files which replace the
+ .B ExecStart=
+ setting to start the program with different arguments.  For example a
+@@ -171,6 +173,12 @@ running, it can be masked with
+ /etc/nfsmount.conf
+ .br
+ /etc/idmapd.conf
++.P
++Also similar files in 
++.B /usr/etc
++and in related
++.I conf.d
++drop-in directories.
+ .SH SEE ALSO
+ .BR systemd.unit (5),
+ .BR nfs.conf (5),
+--- a/utils/mount/nfsmount.conf.man
++++ b/utils/mount/nfsmount.conf.man
+@@ -115,16 +115,17 @@ All mounts to the '/export/home' export
+ the background (i.e. done asynchronously).
+ .RE
+ .SH FILES
+-.TP 10n
++.I /usr/etc/nfsmount.conf
++.br
++.I /usr/etc/nfsmount.conf.d/*.conf
++.br
+ .I /etc/nfsmount.conf
+-Default NFS mount configuration file
+-.TP 10n
+-.I /etc/nfsmount.conf.d
+-When this directory exists and files ending
+-with ".conf" exist, those files will be
+-used to set configuration variables. These
+-files will override variables set
+-in /etc/nfsmount.conf
++.br
++.I /etc/nfsmount.conf.d/*.conf
++.br
++.IP
++Default NFS mount configuration files, variables set in the later file
++over-ride those in the earlier file.
+ .PD
+ .SH SEE ALSO
+ .BR nfs (5),
