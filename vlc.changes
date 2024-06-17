@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 14 13:14:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Build dca support only on Leap 15.6 and newer when not using 3rd
+  party repositories (BUILD_ORIG): Leap prior to 15.6 do not have
+  libdca.
+
+-------------------------------------------------------------------
+Thu Jun 13 12:34:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Disable chromecast support on Leap < 15.6: not supported as
+  of now.
+
+-------------------------------------------------------------------
 Wed Jun 12 14:26:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Updte to version 3.0.21:
