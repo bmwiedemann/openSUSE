@@ -24,4 +24,17 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164683 from glaubitz)</comment>
     <requestid>1165080</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>893e05c50053c24dc96391a98ac9e524</srcmd5>
+    <version>1.0.0</version>
+    <time>1718645280</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override
+- Update Requires from setup.py (forwarded request 1180850 from glaubitz)</comment>
+    <requestid>1180950</requestid>
+  </revision>
 </revisionlist>

@@ -16,16 +16,14 @@
 #
 
 
-%define realversion 1.0.0b3
-
 %{?sle15_python_module_pythons}
 Name:           python-azure-developer-devcenter
-Version:        1.0.0~b3
+Version:        1.0.0
 Release:        0
 Summary:        Microsoft Azure Developer DevCenter Service Client Library for Python
 License:        MIT
 URL:            https://github.com/Azure/azure-sdk-for-python/tree/main/sdk
-Source:         https://files.pythonhosted.org/packages/source/a/azure-developer-devcenter/azure-developer-devcenter-%{realversion}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure-developer-devcenter/azure-developer-devcenter-%{version}.tar.gz
 BuildRequires:  %{python_module azure-core < 2.0.0}
 BuildRequires:  %{python_module azure-core >= 1.28.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -37,9 +35,9 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       (python-azure-core >= 1.28.0 with python-azure-core < 2.0.0)
+Requires:       python-typing_extensions >= 4.6.0
+Requires:       (python-azure-core >= 1.30.0 with python-azure-core < 2.0.0)
 Requires:       (python-isodate >= 0.6.1 with python-isodate < 2.0.0)
-Requires:       (python-typing_extensions >= 4.3.0 if python-base < 3.8)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-developer-devcenter < 1.0.0~b3
@@ -59,7 +57,7 @@ Create, access, manage, and delete Dev Box resources Create,
 deploy, manage, and delete Environment resources
 
 %prep
-%setup -q -n azure-developer-devcenter-%{realversion}
+%setup -q -n azure-developer-devcenter-%{version}
 
 %build
 %pyproject_wheel

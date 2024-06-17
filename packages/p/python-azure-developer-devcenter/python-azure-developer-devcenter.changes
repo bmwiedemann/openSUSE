@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun 14 08:40:02 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Thu Apr  4 12:51:22 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Switch package to modern Python Stack on SLE-15
