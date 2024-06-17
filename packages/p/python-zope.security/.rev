@@ -141,4 +141,12 @@
   dependency loop and other zope-related problems, see</comment>
     <requestid>1132430</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>53660047843fd24202b864af9373e18c</srcmd5>
+    <version>7.0</version>
+    <time>1718645265</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1181266</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-zope.security
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013-2022 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-zope.security%{psuffix}
-Version:        6.2
+Version:        7.0
 Release:        0
 Summary:        Zope Security Framework
 License:        ZPL-2.1
