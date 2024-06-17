@@ -1,7 +1,7 @@
 #
 # spec file for package shadowsocks-v2ray-plugin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,24 +20,24 @@
 #%define   shortcommit     ddd7ab4
 %define   provider        github
 %define   provider_tld    com
-%define   project         shadowsocks
+%define   project         teddysun
 %define   repo            v2ray-plugin
 # https://github.com/shadowsocks/v2ray-plugin
 %define   provider_prefix %{provider}.%{provider_tld}/%{project}/%{repo}
 %define   import_path     %{provider_prefix}
 
 Name:           shadowsocks-v2ray-plugin
-Version:        1.3.2
+Version:        5.15.1
 Release:        0
 Summary:        SIP003 plugin for shadowsocks
 License:        MIT
 Group:          Productivity/Networking/Security
-URL:            https://github.com/shadowsocks/v2ray-plugin
-Source0:        https://github.com/shadowsocks/v2ray-plugin/archive/v%{version}/%{repo}-%{version}.tar.gz
+URL:            https://github.com/teddysun/v2ray-plugin
+Source0:        https://github.com/teddysun/v2ray-plugin/archive/v%{version}/%{repo}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  fdupes
-# BuildRequires:  golang-github-v2fly-v2ray-core
 BuildRequires:  golang-packaging
+BuildRequires:  golang(API) = 1.22
 AutoReqProv:    Off
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{go_provides}
@@ -48,7 +48,6 @@ Yet another SIP003 plugin for shadowsocks, based on v2ray
 %package -n golang-%{provider}-%{project}-%{repo}
 Summary:        Additional mobile libraries
 Group:          Development/Languages/Golang
-Requires:       golang-github-v2fly-v2ray-core
 BuildArch:      noarch
 
 %description -n golang-%{provider}-%{project}-%{repo}
@@ -58,10 +57,6 @@ This package provide source code for shadowsocks-%{repo}
 
 %prep
 %autosetup -p1 -a1 -n %{repo}-%{version}
-# Use v2ray-core in system default
-# sed -i 's|github.com/golang/protobuf v1.5.2||g; s|github.com/v2fly/v2ray-core/v4 v4.38.3||g' go.mod
-#rm go.sum vendor/modules.txt
-#rm -rf vender/github.com/v2fly
 
 %build
 export GO111MODULE=off
@@ -71,6 +66,7 @@ export GO111MODULE=off
 %install
 %goinstall
 %gosrc
+rm -rf %{buildroot}%{go_contribsrcdir}/%{import_path}/vendor
 %gofilelist
 %fdupes %{buildroot}
 
