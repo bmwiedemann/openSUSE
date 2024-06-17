@@ -1,0 +1,1393 @@
+-------------------------------------------------------------------
+Sun Jun 16 21:13:24 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 24.06.16:
+  * show less connection errors from Radio Browser,
+  * fix choosing desired video stream,
+  * fix colorspace for ARIB STD-B67,
+  * improve recording status,
+  * update translations.
+
+-------------------------------------------------------------------
+Fri May 24 14:43:57 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 24.05.23:
+  * don't try to split title/artist on internet radio stations,
+  * fix "blend" and "discard" deinterlacing filters on Vulkan,
+  * remove "USE_LINK_TIME_OPTIMIZATION" CMake parameter,
+  * don't automatically clear "stop after" on playlist,
+  * allow to change more colors for custom appearance,
+  * add "negative" video filter (Vulkan and OpenGL),
+  * don't show "windows11" style on older Windows,
+  * allow to choose desired video stream quality,
+  * allow to load playlists from YouTube link,
+  * move downloader path to general settings,
+  * fix screen saver inhibition on Windows,
+  * require CMake 3.16, C++17, and Ninja,
+  * use native file dialogs on Android,
+  * download only best video stream,
+  * add recording for live streams,
+  * add removing files from disk,
+  * add paste and play function,
+  * drop Qt older than 5.15.2,
+  * downloader improvements,
+  * display AVIF images,
+  * remove VDPAU,
+  * other minor fixes.
+
+-------------------------------------------------------------------
+Sun Apr 07 20:06:24 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 24.04.07:
+  * fix wrong path separator on Windows after accepting file properties,
+  * fix file properties crash on Windows distribution (taglib bug),
+  * add hotkeys for playlist and info dock visibility,
+  * inhibit screensaver through D-Bus interface,
+  * don't show vizualizations by default,
+  * change hide menu hotkey to Shift+M,
+  * lock widgets by default,
+  * other minor fixes.
+
+-------------------------------------------------------------------
+Fri Apr 05 00:19:56 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 24.04.02:
+  * improve restoring playback position feature and make it enabled by default,
+  * remove possibility to move files from playlist using middle mouse button,
+  * minor RadioBrowser improvement for some server errors,
+  * fix executing FFmpeg process in downloader on Qt6,
+  * fix opening multiple files in QMPlay2 on Windows,
+  * set accurate seeking enabled but default,
+  * minor Vulkan fixes for old hardware,
+  * set Ctrl+Q as default close key,
+  * full Qt6 support on Windows,
+  * other minor fixes.
+- Adjusted 0001-add-opensuse-customizations.patch for the new
+  version
+- Switch to generating tarball directly from git to harden package
+  against supply chain attacks
+
+-------------------------------------------------------------------
+Sat Mar 16 17:25:23 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 24.03.16
+   * set dark title bar on Windows if QMPlay2 theme is dark,
+   * support reading lyrics meta-data from ID3v2 tags,
+   * add new Vulkan Video decoder (experimental),
+   * don't use Qt for loading Vulkan library,
+   * improve Vulkan device lost recovery,
+   * better support for FFmpeg 6.1,
+   * various Vulkan improvements,
+   * add support for TagLib 2.0,
+   * make Qt6 build default,
+   * Qt6 build for Android,
+   * other minor fixes.
+- Drop 0001-fix-taglib2-build.patch as it is merged upstream
+- QMPlay2 is now built againt Qt6 instead of Qt5 to follow
+  upstream more closely
+
+-------------------------------------------------------------------
+Wed Jan 31 17:05:29 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Add 0001-fix-taglib2-build.patch to fix build with taglib >= 2.0
+
+-------------------------------------------------------------------
+Sun Oct 22 11:35:39 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 23.10.22
+   * fix loading of Vulkan library in some Linux distributions,
+   * add Mesa 23.3.0 interlaced video workaround for VA-API,
+   * (re)store compact view on application launch,
+   * unescape HTML content in subtitles,
+   * yt-dlp fixes.
+
+-------------------------------------------------------------------
+Tue Sep  5 23:43:19 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 23.09.05
+   * Wayland Vulkan crash fix for Qt <= 6.4,
+   * RadioBrowser improvements and fixes,
+   * ALSA crash fix on early pause,
+   * tray menu fixes.
+
+-------------------------------------------------------------------
+Tue Aug 22 21:05:33 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 23.08.22
+   * don't display empty color space name in Information panel,
+   * Yadif: Remove inline assembly and optimize C++ code,
+   * convert HDR->SDR on OpenGL + DXVA2,
+   * HWAccel fixes with legacy outputs,
+   * DXVA2 and D3D11VA 10-bit fixes,
+   * other minor fixes.
+
+-------------------------------------------------------------------
+Tue Aug  8 15:40:25 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 23.08.08
+   * improve playback of HDR10 videos on SDR displays (OpenGL >= 3
+     and Vulkan),
+   * don't set BT.709 for video height > 576 if color space is not
+     specified,
+   * remove direct address and rename autodetect address to direct
+     address,
+   * add option to restore playback position per playlist entry,
+   * add experimental HDR10 mode option on Vulkan on Windows,
+   * add option to use nearest neighbor scaling on Vulkan,
+   * make Yadif 2x default deinterlacing filter for CPU,
+   * allow optionally HDR for VP9 codec for YouTube,
+   * fix black screen on VDPAU and CUVID on OpenGL,
+   * add support for 10-bit videos on OpenGL,
+   * allow to use Vulkan software rasterizer,
+   * Vulkan improvements and optimizations,
+   * fix playback of some MPEG-TS streams,
+   * display video color information,
+   * get primary X11 GPU on Vulkan,
+   * add AV1 codec for YouTube,
+   * decode MP4 text subtitles,
+   * minor OpenGL improvements,
+   * other fixes and improvements.
+
+-------------------------------------------------------------------
+Sun Jun 18 10:27:31 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 23.06.17
+   * improve video playback if it's far too slow (display only key
+     frames),
+   * change network buffering options from packets to seconds,
+   * more HWAccel stabilizations (mostly VTB and VA-API),
+   * demux/download only selected streams (if possible),
+   * add more info into audio and video streams menu,
+   * choose best quality for HLS and DASH streams,
+   * add separate live streams buffering option,
+   * generally improve live streams playback,
+   * audio equalizer optimizations,
+   * improve bitrate information,
+   * fix YouTube live streams,
+   * other minor changes.
+- Adjusted 0001-add-opensuse-customizations.patch for the new
+  version
+
+-------------------------------------------------------------------
+Sun Jun  4 14:07:47 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 23.06.04
+   * display 10 bit RGB images as 10 bit using Vulkan if possible,
+   * load external subtitles that are in sub-directories,
+   * add file name and time into screenshot file name,
+   * more precission for playback speed control,
+   * don't display "Deep color" using Vulkan,
+   * improve bitmap subtitles aspect ratio,
+   * add WebP as screenshots file format,
+   * PipeWire mono and 4 chnannels fix,
+   * VA-API fixes for AMD Radeon GPUs,
+   * remove makeitpersonal.co lyrics,
+   * add FPS Doubler video filter,
+   * "Always on top" improvement,
+   * Qt6 support for Linux,
+   * Wayland Vulkan fixes,
+   * YouTube fixes,
+   * other minor fixes and improvements.
+- Added support for building with Qt6
+- Removed 0001-fix-broken-yt-dlp.patch as it is merged upstream
+- Removed 0001-fix-mono-playback.patch as it is merged upstream
+- Removed 0001-fix-overlay-focus.patch as it is merged upstream
+
+-------------------------------------------------------------------
+Thu Apr  6 21:42:15 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Improve patch comments in spec file to better comply with
+  packaging guidelines
+
+-------------------------------------------------------------------
+Sun Apr  2 19:49:35 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Optimize 0001-fix-overlay-focus.patch to also fix focus for the
+  about window
+
+-------------------------------------------------------------------
+Tue Mar 30 19:24:18 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Add 0001-fix-overlay-focus.patch to ensure the correct
+  QMPlay2 window is always focussed
+
+-------------------------------------------------------------------
+Tue Mar 21 22:26:47 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Switch from GCC compiler to clang/llvm compiler to better
+  conform with upstream decisions
+- Switch devel package BuildArch to noarch as it contains
+  no binaries
+
+-------------------------------------------------------------------
+Mon Mar 13 22:48:16 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Added 0001-fix-broken-yt-dlp.patch to fix broken youtube video quality
+
+-------------------------------------------------------------------
+Thu Feb  9 01:23:42 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Added 0001-fix-mono-playback.patch to fix pipewire mono playback
+
+-------------------------------------------------------------------
+Sun Feb  5 14:10:36 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update some comments in spec file
+- Update to version 23.02.05
+   * add Turkish translation (mobilturka, sabriunal),
+   * fix CUVID + Vulkan on modern Nvidia hardware,
+   * fix aspect ratio specified in MKV container,
+   * unlocked last column in MediaBrowser,
+   * add YUVJ420P and YUV420P10 for VTB,
+   * add YUV420P10 for VA-API + OpenGL,
+   * fix PipeWire channel downmixing,
+   * add AV1 codec for D3D11VA,
+   * other minor fixes.
+
+-------------------------------------------------------------------
+Tue Nov 29 12:21:56 UTC 2022 - munix9@googlemail.com
+
+- Fix icon name after gunzip
+
+-------------------------------------------------------------------
+Sun Oct 23 11:33:29 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
+
+- Removed 0001-fix-older-qt-compilation.patch as it is merged upstream
+- Enabled RubberBand support on openSUSE Leap 15.5 and SLE15SP5+
+- Dropped support for openSUSE Leap 15.3 and SLE15SP3 as they can't satisfy QMPlay2's future build requirements anymore
+- Switched to gcc11 on openSUSE Leap and SLE
+- Update to version 22.10.23
+   * allow to use CPU Vulkan implementation by "QMPLAY2_ALLOW_VULKAN_CPU" environment variable,
+   * allow to skip "yt-dlp" updates (configuration file only),
+   * export "My Radio Stations" to PLS or M3U playlists,
+   * add "My Radio Stations" to system tray menu,
+   * fix subtitles synchronization with video,
+   * fix language detextion for some locales,
+   * fix various subtitles scaling issues,
+   * fix AV1 aspect ratio in some cases,
+   * other minoir subtitles fixes,
+   * other minor fixes.
+
+-------------------------------------------------------------------
+Fri Aug 26 23:16:47 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
+
+- Added 0001-fix-older-qt-compilation.patch to fix a compile error on openSUSE Leap 15.3
+- Update to version 22.08.21
+   * use RubberBand to keep audio pitch across playback speed,
+   * revert OpenSSL to 1.1.1 to fix https issues on Win 7,
+   * use the song name as the title for GME (cspiegel),
+   * fix displaying bitmap subtitles without duration,
+   * fix color space on limited YUV range,
+   * change HQ image downscale threshold,
+   * update Dutch translation (Vistaus),
+   * improve HQ image upscaling,
+   * fix crash with Vulkan 1.0,
+   * other minor fixes.
+
+-------------------------------------------------------------------
+Thu Jun 16 14:15:19 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 22.06.16
+   * make possible to increase but not decrease the effective number of audio channels (RJVB),
+   * fix VA-API on Vulkan on modern Intel GPUs (use VK_EXT_image_drm_format_modifier),
+   * fix timeout error on exclusive full screen on AMD Radeon on Vulkan on Windows,
+   * reorganize menu shortcuts (zo-shin),
+   * fix video rotation with FFmpeg 5.0,
+   * require CMake 3.12.
+
+-------------------------------------------------------------------
+Sat Mar 19 23:42:47 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
+
+- Removed 0001-fix-pipewire-build-error.patch as it is merged upstream
+- Removed 0001-fix-ffmpeg-5-compilation.patch as it is merged upstream
+- Changed 0001-add-opensuse-customizations.patch to patch the new python command detection in QMPlay2 22.03.19 and higher
+- Update to version 22.03.19
+   * fix possible crashes in software video output and screenshots,
+   * fix yt-dlp on macOS where python3 can be in "/usr/local/bin",
+   * Vulkan can be now used on more devices (including R-Pi),
+   * fix some Vulkan issues on AMD Radeon on Windows,
+   * fix building with PipeWire older then 0.3.33,
+   * fix reading playlists with "\r" line ending,
+   * show YouTube description in Lyrics panel,
+   * fix compilation with FFmpeg 5.0,
+   * VA-API AV1 video decoder,
+   * other minor fixes.
+
+-------------------------------------------------------------------
+Sun Jan 23 11:55:36 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
+
+- Added 0001-fix-ffmpeg-5-compilation.patch to fix a compilation error with FFmpeg >= 5.0.0
+- Dropped support for openSUSE Leap 15.2 and SLE15SP2 as they are EOL and can't satisfy QMPlay2's future build requirements anymore
+
+-------------------------------------------------------------------
+Thu Dec 23 22:54:14 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
+
+- Added 0001-fix-pipewire-build-error.patch to fix a compilation error on openSUSE Leap 15.3
+- Update to version 21.12.24
+   * add audio, video, subtitles streams, programs and chapters into menu,
+   * add key shortcuts to change audio and subtitles streams,
+   * improve Vulkan initialization,
+   * fix some possible crashes,
+   * other minor fixes.
+
+-------------------------------------------------------------------
+Tue Dec  7 21:41:49 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
+
+- Removed Added 0001-fix-vulkan-instance-initialization.patch as it is merged upstream
+- Removed 0001-switch-to-yt-dlp.patch as it is merged upstream
+- Changed 0001-add-opensuse-customizations.patch to patch the new python command detection in QMPlay2 21.12.07 and higher
+- Enabled GLSLC and PortAudio features
+- Update to version 21.12.07
+   * fix possible crash on Windows when system audio settings was changed during playback,
+   * add option to set negative amplify if replay gain is not stored,
+   * insert URL from clipboard into add address dialog,
+   * add option to show YouTube related videos (ivbauer),
+   * fix some Vulkan problems and crashes,
+   * set VP9 YouTube codec as preferred,
+   * update zh_CN translation (zo-shin),
+   * add Slovak translation (jose1711),
+   * add Dutch translation (Vistaus),
+   * add zh_TW translation (lks-wu),
+   * replace youtube-dl by yt-dlp,
+   * minor PipeWire fixes.
+
+-------------------------------------------------------------------
+Mon Nov 29 10:08:48 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
+
+- Added 0001-fix-vulkan-instance-initialization.patch to prevent an initialization error of QMPlay2's submodule QmVk when Tumbleweed updates vulkan to version 1.2.199 or higher
+
+-------------------------------------------------------------------
+Wed Oct 13 08:50:32 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
+
+- Added 0001-switch-to-yt-dlp.patch to fix several youtube-dl related issues such as buffering being unreliable
+- Optimized spec file formatting for more compactness
+
+-------------------------------------------------------------------
+Thu Jul 29 11:28:38 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
+
+- Re-enabled PipeWire support on openSUSE Leap 15.3+ as well as SLE15SP3+ because the required gcc and libpipewire versions are now avilable
+- Forced C and CXX compiler to GCC10 on openSUSE Leap 15.3+ as well as SLE15SP3+ to avoid a PipeWire modules compilation error with GCC7
+
+-------------------------------------------------------------------
+Mon Jun 14 00:39:11 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
+
+- Changed python dependency from "python > 3.0.0" to "python3" to avoid dependency errors
+- Cleaned up obsolete python2 dependencies
+- Optimized 0001-add-opensuse-customizations.patch to not throw any "/usr/bin/env" errors
+
+-------------------------------------------------------------------
+Mon Jun  7 21:25:43 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
+
+- Removed 0001-fix-youtube-search.patch as it is merged upstream
+- Removed 0001-fix-driver-crash.patch as it is merged upstream
+- Removed 0001-fix-kde-startup-warning.patch as it is merged upstream
+- Update to version 21.06.07
+   * use WASAPI via PortAudio on Windows (including exclusive mode),
+   * set default config directory to "~/.config/QMPlay2" (Linux),
+   * use QtDBus API for suspend instead of QProcess (Linux),
+   * improve playlist sorting for entries with numbers,
+   * VA-API fix for Vulkan and new Radeon/Mesa driver,
+   * fix setting the VDPAU driver path for AppImage,
+   * fix SVG icon engine warning after KDE update,
+   * enable bypass compositor by default (Vulkan),
+   * update YouTube browser for YouTube changes,
+   * fix downloading of some network streams,
+   * add PT_BR translations (fabianski7),
+   * store/restore radio station image,
+   * fix default Vulkan GPU on Linux,
+   * other minor fixes.
+
+-------------------------------------------------------------------
+Thu Apr  1 21:56:04 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
+
+- Added 0001-fix-youtube-search.patch to fix YouTube Search not working
+
+-------------------------------------------------------------------
+Tue Mar 29 22:34:12 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
+
+- Added 0001-fix-driver-crash.patch to fix possible AMD/mesa driver crash
+
+-------------------------------------------------------------------
+Wed Mar 17 16:38:27 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
+
+- Added 0001-fix-kde-startup-warning.patch to fix SVG warning with Plasma >= 5.21.3
+- Disabled PipeWire support on openSUSE Leap 15.X and SLE15SPX as they don't provide a recent enough version of PipeWire
+- Increase _constraints requirements to fix rare compilation issues
+
+-------------------------------------------------------------------
+Tue Mar  9 18:21:12 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
+
+- Removed 0001-fix-youtube-quality.patch as it is merged upstream
+- Converted 0001-fix-broken-python-detection.patch into 0001-add-opensuse-customizations.patch as it adds branding for better distinction from vanilla builds now.
+- Dropped support for openSUSE Leap 15.1 and SLE15SP1 as they are EOL and can't satisfy QMPlay2's build requirements anymore
+- Update to version 21.03.09
+   * drop support for Qt < 5.10, CMake < 3.9, TagLib < 1.9, FFmpeg < 4.0,
+   * fix possible freeze on Windows when Vulkan is enabled,
+   * add PipeWire audio output,
+   * fix YouTube videos,
+   * minor fixes.
+
+-------------------------------------------------------------------
+Fri Mar  5 17:54:41 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
+
+- Added 0001-fix-youtube-quality.patch to fix wrong YouTube quality selection
+
+-------------------------------------------------------------------
+Wed Dec 16 16:37:44 UTC 2020 - Simon Vogl <simon.vogl@gmx.net>
+
+- Removed 0002-fix-youtube-offset.patch as it is merged upstream
+- Update to version 20.12.16
+   * fix playback of some network streams,
+   * change CDDB server to gnudb.org.
+
+-------------------------------------------------------------------
+Thu Dec 10 17:06:11 UTC 2020 - Simon Vogl <simon.vogl@gmx.net>
+
+- Added 0002-fix-youtube-offset.patch to fix wrong YouTube video playback offset
+
+-------------------------------------------------------------------
+Tue Dec  8 13:22:54 UTC 2020 - Simon Vogl <simon.vogl@gmx.net>
+
+- Removed 0001-fix-build-error-lp151.patch as it is merged upstream
+- Removed 0003-fix-youtube-search.patch as it is merged upstream
+- Renamed 0002-fix-broken-python-detection.patch to 0001-fix-broken-python-detection.patch as it is the first patch now
+- Update to version 20.12.07
+   * fix displaying of subtitles from media file in some rare cases,
+   * load fonts from media file when using subtitles from file,
+   * fix inactive streams text color in Information panel,
+   * add Japanese language file (harujisaku),
+   * fix CUVID/Vulkan on some hardware,
+   * improve CMake files for Windows,
+   * fix "wmalossless" audio time,
+   * fix YouTube search,
+   * fix for SDP files,
+   * minor fixes.
+
+-------------------------------------------------------------------
+Fri Nov 27 11:20:23 UTC 2020 - Simon Vogl <simon.vogl@gmx.net>
+
+- Adjusted 0003-fix-youtube-search.patch to fix QMPlay2's YouTube search not working once again
+
+-------------------------------------------------------------------
+Fri Nov  6 11:30:41 UTC 2020 - Simon Vogl <simon.vogl@gmx.net>
+
+- Added 0003-fix-youtube-search.patch to fix QMPlay2's YouTube search not working
+
+-------------------------------------------------------------------
+Mon Aug 17 21:15:29 UTC 2020 - Simon Vogl <simon.vogl@gmx.net>
+
+- No longer Require python-xml as it isn't necessary
+- Require python3 as it's required to run youtube-dl
+- Added 0002-fix-broken-python-detection.patch to fix QMPlay2 always perferring python2 over python3 for executing youtube-dl which could cause youtube-dl to crash
+
+-------------------------------------------------------------------
+Wed Aug  5 16:56:21 UTC 2020 - Simon Vogl <simon.vogl@gmx.net>
+
+- Require python-xml as the YouTube play function crashes when python-xml is not installed
+- Corrected a wrong comment in the specfile
+
+-------------------------------------------------------------------
+Tue Jul  7 12:32:57 UTC 2020 - Simon Vogl <simon.vogl@gmx.net>
+
+- Added 0001-fix-build-error-lp151.patch to fix compilation on openSUSE Leap 15.1
+- Switch to Ninja as build system
+- Update to version 20.07.04
+   * discard some frames on hardware decoding if hardware is too slow (was removed in 20.05.02),
+   * add workaround for VA-API/Vulkan for AMD GPUs on Mesa 20.1,
+   * use D-Bus for suspend (systemd and ConsoleKit),
+   * fix compilation with older FFmpeg version,
+   * fix duration for some WavPack files,
+   * remove QMPlay2 radio stations list,
+   * add architecture to about window,
+   * fix seeking on raw audio data,
+   * fix OpenGL linking on Linux,
+   * fix YouTube search.
+
+-------------------------------------------------------------------
+Sun May 16 15:47:33 UTC 2020 - Simon Vogl <simon.vogl@gmx.net>
+
+- Re-enable PHC compilation for ppc64 and ppc64le architectures by using _constrains
+
+-------------------------------------------------------------------
+Sun May  3 13:37:24 UTC 2020 - Simon Vogl <simon.vogl@gmx.net>
+
+- Temporarily disable PCH compilation for ppc64 and ppc64le architectures as the build servers do not support it yet.
+
+-------------------------------------------------------------------
+Sun May  3 08:15:30 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Simplify spec file - drop old distribution support
+- Enable LTO
+
+-------------------------------------------------------------------
+Sat May  2 16:33:41 UTC 2020 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 20.05.02
+   * add Vulkan renderer (default, Linux and Windows only):
+   * bypass compositor option (exclusive fullscreen),
+   * VA-API, CUVID, D3D11VA interoperation,
+   * high quality video scaling options,
+   * Yadif deinterlacing on GPU,
+   * faster subtitles rendering,
+   * deep color support,
+   * zero-copy decoding,
+   * remove option to enforce of video copy to host memory for OpenGL renderer,
+   * don't open left panel on fullscreen when there is a screen on the left,
+   * fix video dock margins issue on fullscreen with some Qt styles,
+   * add renderer settings page: Vulkan (default), OpenGL, Legacy,
+   * add PCH compilation with CMake >= 3.16 (disabled by default),
+   * a lot of code changes (e.g. use more FFmpeg structures),
+   * remove high quality video scaling for OpenGL,
+   * update translation files,
+   * require C++14.
+
+-------------------------------------------------------------------
+Sun Dec 22 00:04:26 UTC 2019 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 19.12.19
+   * fix VA-API low quality deinterlaced image on AMD GPUs (workaround for driver bug),
+   * fix VA-API GLX regression,
+   * fix VA-API EGL detection.
+
+-------------------------------------------------------------------
+Wed Dec  4 19:05:57 UTC 2019 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 19.12.04
+   * Fix reading of titles for some M3U playlists,
+   * fix possible corrupted DXVA2 video playback,
+   * refactor HWAccelInterface class,
+   * minor fixes.
+
+-------------------------------------------------------------------
+Wed Nov 27 14:01:32 UTC 2019 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 19.11.26
+   * Move OpenGL mode check boxes from visualizations and OpenGL2 settings into general settings,
+   * improve (again) bypassing compositor on Windows platform and OpenGL,
+   * fix YouTube subtitles if default subtitles language is set,
+   * fix FFmpeg < 4.0 compilation for VDPAU and VA-API,
+   * add option to store playback enabled state,
+   * DXVA2 improvements; add video filtering,
+   * add submenus for YouTube context menu,
+   * minor VDPAU and VA-API fixes,
+   * minor macOS improvements.
+
+-------------------------------------------------------------------
+Wed Nov  6 21:43:27 UTC 2019 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 19.11.06 and fix Leap:15.2 build failure.
+   * Remove dedicated VDPAU video output and add VDPAU interoperation with OpenGL,
+   * add more search patch for VA-API and VDPAU drivers (for AppImage),
+   * fix colorspace issues when using CPU deinterlacing filters,
+   * improve bypassing compositor on Windows platform and OpenGL,
+   * remove dedicated VA-API video output (use OpenGL instead),
+   * add bypass compositor option on X11 platform and OpenGL,
+   * fix playback error with VA-API deinterlacing filters,
+   * always download x86-64 installer on x86-64 Windows,
+   * fix EGL detection on X11/Intel (for VA-API),
+   * allow to enlarge small cover images,
+   * update Ukrainian translation file,
+   * add VP9 codec support for VDPAU,
+   * playlist quick sync fixes,
+   * fix RTSP playback,
+   * other minor fixes.
+
+-------------------------------------------------------------------
+Wed Sep  4 06:14:16 UTC 2019 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Removed QMPlay2-desktop-warnings.diff (no warnings any more)
+- Trimed previous changes entry.
+
+-------------------------------------------------------------------
+Tue Sep  3 22:31:53 UTC 2019 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 19.09.03
+   * fix possible compilation error with FFTSpectrum (all OSes),
+   * add code for finding VA-API and VDPAU drivers directory,
+   * fixes in "QMPlay2.1", "QMPlay2.desktop", "QMPlay2.appdata.xml",
+   * improve checking for EGL in X11 - less possibility to fail,
+   * add (again) YouTube quality settings into settings widget,
+   * update translation files (martinkg, Alexey Lugin),
+   * allow only YUV420P videos in VideoToolBox.
+
+-------------------------------------------------------------------
+Tue Aug 27 20:16:47 UTC 2019 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 19.08.27
+   * A lot of VA-API improvements including zero-copy on OpenGL (some old drivers might cease to work - I can't test them),
+   * fix loading of QMPlay2 modules (on some OS'es it leads to crash),
+   * improve full screen switching (fixes regression since 18.12.26),
+   * add "CustomUserAgent" into a "General" section in QMPlay2.ini,
+   * fix black video when decoding videos with color palette,
+   * add option to disable subtitles at program startup,
+   * remove QMake build system, added Android to CMake,
+   * display FFT spectrum in logarithmic scale,
+   * improve displaying of graphical subtitles,
+   * rewrite MediaBrowser, now use JavaScript,
+   * a lot of YouTube and youtube-dl changes,
+   * show native window file path separator,
+   * add "opennew" command line argument,
+   * display lyrics from file metadata,
+   * fix language codes for MKV files,
+   * add initial colorspace support,
+   * add stereo channels swapping,
+   * add "always on top" option,
+   * bugfixes and improvements,
+   * LastFM scrobble fixes,
+   * require FFmpeg 3.3.
+
+-------------------------------------------------------------------
+Wed Aug 21 15:38:11 UTC 2019 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 19.05.27+git.1566388634.946797cf
+   * Fixed QMPlay2 crashing on openSUSE Tumbleweed,
+   * fixed several VA-API related bugs,
+   * fixed compilation with FFmpeg < 4.0,
+   * don't use DeepBind for loading modules,
+   * added .m3u8 file extension to playlists,
+   * updated several translations,
+   * now requires Qt5Qml as a build dependency,
+   * other minor bugfixes.
+
+-------------------------------------------------------------------
+Tue May  7 15:12:30 UTC 2019 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to version 18.12.26 
+   * Use audio resampler/channel converter before filters/visualization (default option),
+   * fixed loading Ogg Opus file when file extension is "ogg" in tag editor,
+   * improved Youtube detection by YouTube extension (youtu.be),
+   * don't load CUE files which uses more then one audio file,
+   * fixed mono playback with different volume per channel,
+   * added key shortcuts and OSD for video adjustments,
+   * updated Ukrainian and Hungarian translation files,
+   * fixed YouTube seeking on streams with subtitles,
+   * update Ukrainian and German translation files,
+   * don't load playlist files within other files,
+   * added *.opus to Windows file association,
+   * use QSaveFile for QMPlay2FileWriter,
+   * add 1440p into YouTube presets,
+   * replaced Datmusic by MyFreeMP3,
+   * removed direct zlib dependency,
+   * minor workarounds for Qt 5.12,
+   * CUVID fixes for FFmpeg 4.0,
+   * minor bugfix.
+
+
+-------------------------------------------------------------------
+Sun Nov 11 20:26:53 UTC 2018 - olaf@aepfle.de
+
+- Use gcc7 in Leap42 and SLE12 to fix build.
+
+-------------------------------------------------------------------
+Sat Aug 25 23:24:26 UTC 2018 - kah0922@gmail.com
+
+- Update to 18.07.04
+   * Added button to open URL from playlist entry properties,
+   * fix possible crash when group is synchronized,
+   * use new FFmpeg 3.1 API for decoding frames,
+   * autodetection of pasted YouTube address,
+   * fix sorting playlist items by length,
+   * drop support for FFmpeg < 3.1,
+   * add FFmpeg 4.0 compatibility,
+   * minor QPainter HiDPI fix.
+
+
+-------------------------------------------------------------------
+Tue Apr  3 06:28:17 UTC 2018 - kah0922@gmail.com
+
+- Update to 18.04.01
+  * Enable audio fade in/out on play/stop for video contents,
+  * fix problems with playlist quick sync,
+  * update Hungarian translation file,
+  * update for Wbijam changes,
+  * fix proxy on Windows.
+
+-------------------------------------------------------------------
+Thu Mar  8 22:09:27 UTC 2018 - kah0922@gmail.com
+
+- Update to 18.03.02
+  * Allow to move video and subtitles in OpenGL2 video output (Ctrl and Shift key modifiers),
+  * add option to automatically perform non-recursive quick sync on playlist group,
+  * add high quality video scaling in OpenGL2 video output (disabled by default),
+  * add bit-perfect audio option for PortAudio module on macOS (René Bertin),
+  * automatically restore main window when new video file is loaded (option),
+  * move "My radio stations" into "Radio Browser" tab and add Drag and drop,
+  * properly open YouTube M3U8 live streams (through youtube-dl),
+  * option to convert media file after download (e.g. to MP3),
+  * audio fade in/out is now disabled for video contents,
+  * don't unpause when seeking (default option),
+  * QPainter video output optimizations,
+  * add sorting YouTube search results,
+  * add Hungarian translation file,
+  * fix subtitles on YouTube,
+  * contrast improvements.
+- Updated patch QMPlay2-desktop-warnings.diff
+
+-------------------------------------------------------------------
+Mon Jan  8 07:03:50 UTC 2018 - kah0922@gmail.com
+
+- Update to 17.12.31
+  * Automaticaly rotate movie or set spherical view if is set in
+    metadata.
+  * update Ukrainian translation file (Alexey Lugin)/
+  * add reading of CUE files.
+  * VA-API/OpenGL fixes.
+
+-------------------------------------------------------------------
+Sat Dec 16 07:44:22 UTC 2017 - mpluskal@suse.com
+
+- Fix download url
+- Update project url
+- Update dependencies (support for svg)
+- Refresh QMPlay2-desktop-warnings.diff
+
+-------------------------------------------------------------------
+Thu Dec 14 02:40:13 UTC 2017 - kah0922@gmail.com
+
+- Update to 17.12.1
+   * Use pan gesture for scrolling on Windows (native) and Android (QScroller),
+   * add task bar playback progress and tool buttons on Windows,
+   * drop support for Qt < 5.6, CMake < 3.1, and FFmpeg < 2.5,
+   * add Ukrainian translation file (Alexey Lugin),
+   * update Russian translation file (victorr2007),
+   * more mouse interaction with system tray,
+   * remove already fixed Qt bug workarounds,
+   * use Qt5 JSON parser instead of Json11,
+   * add Toast notifications for Android,
+   * simplify LineEdit using Qt 5.2 API,
+   * remove SoundCloud and ProstoPleer,
+   * use "QCommandLineParser".
+
+-------------------------------------------------------------------
+Fri Oct 27 07:44:29 UTC 2017 - mpluskal@suse.com
+
+- Small spec file clenup:
+  * Run spec-clener
+  * Use more cmake macros
+
+-------------------------------------------------------------------
+Thu Oct 26 08:49:07 UTC 2017 - kah0922@gmail.com
+
+- Update to 17.10.24
+  * Add option to stop playback after every file,
+  * fix crash in FFmpeg settings on Windows XP,
+  * add Datmusic (VK) as Pleer replacement,
+  * fix possible crash in RadioBrowser.
+
+-------------------------------------------------------------------
+Mon Oct  9 18:21:25 UTC 2017 - kah0922@gmail.com
+
+- Update to 17.10.04
+  * Command line seeking bugfix
+  * update for Wbijam changes,
+  * CUVID bugfix
+
+-------------------------------------------------------------------
+Tue Sep 19 03:38:11 UTC 2017 - kah0922@gmail.com
+
+- Update to 17.09.16
+  * Fix playback position regression introduced in 17.09.13,
+  * update German translation (martinkg).
+- Updated URL
+
+-------------------------------------------------------------------
+Sat Aug 26 08:33:58 UTC 2017 - dap.darkness@gmail.com
+
+- Update to 17.07.25:
+  * minor CUVID bugfix (missing PTS in some videos),
+  * added option to hide artist metadata,
+  * Tekstowo: minor improvement,
+  * don't delete Radio settings,
+  * minor QPainter bugfix,
+  * fix YouTube images.
+- Removed obsoletion actual till Leap 42.1.
+- Finally replaced QMPlay2-no-prostopleer.diff by cmake option.
+
+-------------------------------------------------------------------
+Wed Jul 12 20:02:07 UTC 2017 - dap.darkness@gmail.com
+
+- Added QMPlay2-no-prostopleer.diff back because Prostopleer
+  extension still provides illegal audio; updated.
+- Added QMPlay2-desktop-warnings.diff vs. WARNING: invalid-
+  desktopfile contains group, but ones extending the format should
+  start with "X-".
+- Resolved WARNING: gzipped-svg-icon (Not all DE that support SVG
+  icons support them gzipped (.svgz). Install the icon as plain
+  uncompressed SVG).
+
+-------------------------------------------------------------------
+Fri Jul  7 06:49:21 UTC 2017 - kah0922@gmail.com
+
+- Update to 17.06.09:
+  * more acurate seeking
+  * Support for openssl-1.1
+  * Various fixes
+- Drop patch QMPlay2-no-prostopleer.diff
+
+-------------------------------------------------------------------
+Tue Nov 22 18:07:00 UTC 2016 - dap.darkness@gmail.com
+
+- Update to 16.11.20:
+  * Display real FPS and interlaced video information,
+  * VA-API displays using OpenGL (default behavior),
+  * Updated German translation (martinkg),
+  * Add DXVA2 decoder (limited features),
+  * Fix seeking on interlaced videos,
+  * CUVID bugfix.
+- Cmake macro.
+- Deleted QMPlay2-Qt53-lrelease.diff because openSUSE 13.*
+  became unresolvable because of pkgconfig(libva-glx) required.
+- Mime tricks.
+
+-------------------------------------------------------------------
+Wed Nov  2 03:22:08 UTC 2016 - dap.darkness@gmail.com
+
+- Update to 16.11.01:
+  * Properly read styles from MPL, MicroDVD and SubRip format,
+  * Added CUVID decoder,
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Sun Oct 16 09:24:24 UTC 2016 - dap.darkness@gmail.com
+
+- Update to 16.10.14:
+  * Fix issue (deadlock/crash) if playback has been stopped
+    when FFmpeg resolves a hostname,
+  * PortAudio fixes,
+  * Better finding subtitles files for video,
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Sun Sep 25 09:05:27 UTC 2016 - dap.darkness@gmail.com
+
+- Update to 16.09.24:
+  * Use namespace on libmodplug -
+    don't mix system and QMPlay2 modplug,
+  * Fix screen saver inhibition regression.
+
+-------------------------------------------------------------------
+Thu Sep 22 17:40:03 UTC 2016 - dap.darkness@gmail.com
+
+- Update to 16.09.21:
+  * Updated icon for YouTube quality button,
+  * Fixed screen saver blocking behavior,
+  * OpenGL2 bugfix.
+
+-------------------------------------------------------------------
+Mon Sep  5 03:27:52 UTC 2016 - dap.darkness@gmail.com
+
+- Update to 16.09.04:
+  * Don't load subtitles which needs decoder without the decoder,
+  * add checkbox to disable PBO in OpenGL2 module settings,
+  * fix displaying multi-line graphical subtitles,
+  * don't crop non-graphics subtitles on zoom,
+  * add quality button in YouTube browser,
+  * download "youtube-dl" if necessary,
+  * get rid of "QtNetwork" module,
+  * add MPEG-TS programs support.
+
+-------------------------------------------------------------------
+Sun Aug 21 08:19:50 UTC 2016 - dap.darkness@gmail.com
+
+- Update to 16.08.19:
+  * Add key shortcuts editor to Settings (thanks Zamarin Arthur),
+  * respect HTML tags in classic subtitles,
+  * use scroll area for equalizer sliders,
+  * add presets to equalizer,
+  * playlist bugfix,
+  * OpenGL2 bugfix.
+- Updated QMPlay2-no-prostopleer.diff.
+
+-------------------------------------------------------------------
+Wed Jul 20 17:16:30 UTC 2016 - dap.darkness@gmail.com
+
+- Update to 16.07.20:
+  * Don't fetch the stream url twice on add and play action,
+  * move most settings Ui from C++ to Qt forms,
+  * play the entire audio if playback has been finished,
+  * block screen saver on full screen when only audio is playing,
+  * add sharpness to video adjustment (OpenGL2 and VDPAU only),
+  * add key bindings (currently only in settings file),
+  * sort current group instead of entire playlist,
+  * HW and SW filters settings in the same place,
+  * rename video equalizer -> video adjustment,
+  * fix OGG pictures for taglib 1.11 and newer,
+  * fix bug in tag editor (non-Windows OS'es),
+  * updated Russian translation (victorr2007),
+  * fix downloading cover art from Last FM,
+  * move OpenGL2 shaders to resources,
+  * handle multimedia keys on Windows,
+  * properly handle chained OGG files,
+  * add sharpness shader to OpenGL2,
+  * move online contents to GitHub,
+  * add contributors tab,
+  * bugfix.
+
+-------------------------------------------------------------------
+Thu Jul  7 17:04:57 UTC 2016 - dap.darkness@gmail.com
+
+- Update to 16.07.07:
+  * Ubuntu Unity integration (MPRIS2 and shortcut groups),
+  * added video equalizer to "Settings/Video filters",
+  * new "Concept" icons by Alexey Varfolomeev,
+  * updated Russian translation (victorr2007),
+  * properly add many files containing tracks,
+  * better detection of subtitles text codec,
+  * handle audio parameters changes,
+  * MPRIS2 and PLS fixes.
+- Updated QMPlay2-no-prostopleer.diff.
+
+-------------------------------------------------------------------
+Sun Jul  3 09:46:30 UTC 2016 - dap.darkness@gmail.com
+
+- Update to 16.07.02:
+  * update pause and buffered data info when demuxer is busy,
+  * move "modules" directory from "share/qmplay2" to "lib/qmplay2",
+  * allow file group and Audio CD tracks synchronization:
+    + synchronize automatically when loading the same playlist,
+    + synchronize automatically when loading Audio CD tracks,
+    + on "F5" key,
+  * show more warnings in VDPAU and appearance settings,
+  * fixed colour in graphics subtitles (e.g. dvdsub),
+  * reading files doesn't depend on FFmpeg module,
+  * hide mouse cursor when cover image is visible,
+  * updated Russian translation (victorr2007),
+  * allow mouse wheel to change the volume,
+  * show blurred covers as a background,
+  * OpenGL2 now uses PBO if available,
+  * bugfix.
+- Man page was merged into upstream.
+- Updated QMPlay2-no-prostopleer.diff.
+
+-------------------------------------------------------------------
+Sat Jun  4 11:50:51 UTC 2016 - dap.darkness@gmail.com
+
+- Update to 16.06.01:
+  * diplaying and filtering all planar 8-bit YUV pixel formats,
+  * allow to display only file names in playlist,
+  * update Russian translation (victorr2007),
+  * allow to detach from receiving commands,
+  * allow to remember the repeat mode,
+  * added random and repeat playback,
+  * minor fixes in FPS and A/V sync,
+  * support video size changes,
+  * fix "rawvideo" playback,
+  * bugfix.
+- Added man page.
+
+-------------------------------------------------------------------
+Sat May  7 17:11:47 UTC 2016 - dap.darkness@gmail.com
+
+- Update to 16.05.06:
+  * split muted icon to muted and not muted,
+  * bugfix.
+- Updated QMPlay2-no-prostopleer.diff.
+
+-------------------------------------------------------------------
+Mon May  2 15:37:58 UTC 2016 - dap.darkness@gmail.com
+
+- Update to 16.05.02:
+  * fixed command line argument processing,
+  * playlist uses floating-point variables for storing length,
+  * added audio balance,
+  * don't play next entry after playback error by default,
+  * fix restoring dock widgets state and window geometry,
+  * added YouTube playlists and subtitles,
+  * restore mute state on start-up,
+  * seeking improvements,
+  * bugfix.
+
+-------------------------------------------------------------------
+Sun Apr 24 10:29:33 UTC 2016 - dap.darkness@gmail.com
+
+- Update to 16.04.23:
+  * VDPAU decoder without VDPAU writer is now available,
+  * added spherical view for video playback (Ctrl+3; OpenGL only),
+  * added Simplified Chinese translation (king Lee),
+  * move video filtering to separate thread,
+  * added Yadif deinterlacing filter,
+  * better frame skipping,
+  * replay gain fixes,
+  * bugfix.
+- Updated QMPlay2-no-prostopleer.diff.
+
+-------------------------------------------------------------------
+Mon Mar 28 17:23:37 UTC 2016 - dap.darkness@gmail.com
+
+- Update to 16.03.24:
+  * XVideo SHM and OpenGL2(Qt >= 5.6) bugfix,
+  * Bob deint bugfix for odd video height/2.
+
+-------------------------------------------------------------------
+Sat Mar 12 09:50:27 UTC 2016 - dap.darkness@gmail.com
+
+- Update to 16.03.11:
+  * updated Russian translation (victorr2007).
+- Added QMPlay2-no-prostopleer.diff  because Prostopleer extension
+  provides illegal audio.
+
+-------------------------------------------------------------------
+Wed Mar  9 18:09:39 UTC 2016 - dap.darkness@gmail.com
+
+- Update to 16.03.08:
+  * feature: suspend the computer after playback is finished,
+  * fix VA-API driver Intel >= 1.6.2 video filtering,
+  * fix slow seeking on some slow network streams,
+  * zero-copy demuxing and decoding (if possible),
+  * updated Russian translation (victorr2007),
+  * 90°/270° video rotation (OpenGL only),
+  * visualization and VDPAU/DDraw bugfix,
+  * feature: A-B Repeat,
+  * OpenGL 2 bugfix.
+
+-------------------------------------------------------------------
+Sat Feb 20 15:11:26 UTC 2016 - dap.darkness@gmail.com
+
+- Added QMPlay2-Qt53-lrelease.diff and hack vs. Qt<=5.3 lrelease
+  issue. Read more at https://github.com/zaps166/QMPlay2/issues/10
+
+-------------------------------------------------------------------
+Sun Feb 14 18:23:05 UTC 2016 - dap.darkness@gmail.com
+
+- Update to 16.02.08:
+  * play multiple streams in FFmpeg,
+  * move ungrouped playlist entry to the end of the playlist,
+  * QOpenGLWindow and QOpenGLWidget are used instead of QGLWidget,
+  * FFmpeg module can play e.g. v4l2 on Linux/BSD,
+  * display icons on playlist for AudioCD and Chiptines,
+  * updated German translation (Daniel Meiß-Wilhelm),
+  * added Spanish translation (Pedro Álamo),
+  * VDPAU and DirectDraw overlay fixes,
+  * English is now default language,
+  * bugfix.
+
+-------------------------------------------------------------------
+Mon Dec 28 19:28:38 UTC 2015 - dap.darkness@gmail.com
+
+- Update to 15.12.25:
+  * KF5 Breeze style fixes in full screen;
+  * OpenGL 2 bugfix.
+- New requirements recommended by upstream.
+- Removed QMPlay2-Qt51.diff.
+
+-------------------------------------------------------------------
+Tue Dec 22 18:30:12 UTC 2015 - dap.darkness@gmail.com
+
+- Added QMPlay2-Qt51.diff to fix openSUSE 13.1' default Qt 5.1
+  build issue.
+- Fixed translations absence.
+
+-------------------------------------------------------------------
+Sun Dec 20 17:36:54 UTC 2015 - dap.darkness@gmail.com
+
+- Update to 15.12.06 (changes since 15.10.18):
+  * support for HEVC, VP8 and VP9 decoding in VA-API,
+  * setting priorities of decoders and A/V outputs
+    is now more convenient,
+  * improve QOpenGLWidget performance,
+  * support for HEVC decoding in VDPAU,
+  * simple visualization shows RMS of displayed signal
+    in side bars,
+  * fixes in AudioCD module, so any tracks must be added again,
+  * falling horizontal lines behave better in visualizations,
+  * play next entry after playback error (as default),
+  * removed console for Windows,
+  * added chiptune playback,
+  * fix decoding Bink Video,
+  * bugfix.
+
+-------------------------------------------------------------------
+Mon Oct 19 16:32:48 UTC 2015 - dap.darkness@gmail.com
+
+- Update to 15.10.18 (changes since 15.10.03):
+  * due to new libass, FontConfig is used only on 32-bit WinXP,
+  * correct display information about buffered time and size,
+  * DirectDraw improvements,
+  * many minor fixes,
+  * new OpenGL 2 module (with OpenGL|ES 2.0 support).
+- Removed QMPlay2-arm-no-opengl.diff.
+
+-------------------------------------------------------------------
+Tue Oct  6 18:35:32 UTC 2015 - dap.darkness@gmail.com
+
+- Added QMPlay2-arm-no-opengl.diff vs. vs. arm build issue, see
+  more at https://github.com/zaps166/QMPlay2/issues/6
+
+-------------------------------------------------------------------
+Sun Oct  4 08:26:27 UTC 2015 - dap.darkness@gmail.com
+
+- Update to 15.10.03 (changes since 15.08.12):
+  * user can hide menu bar by pressing Alt+Ctrl+M
+    or from "Widgets" context menu,
+  * minimum and maximum frequency in equalizer can be changed,
+  * basic WebVTT subtitles support (SRT module),
+  * added preamp and dB tooltip to equalizer,
+  * fixed possible deadlock in AudioCD,
+  * small bugfix.
+
+-------------------------------------------------------------------
+Mon Jul 13 18:06:19 UTC 2015 - dap.darkness@gmail.com
+
+- Update to 15.08.12 (changes since 15.07.13):
+  * deinterlacing fixes in VAApi,
+  * MPRIS2 bugfix.
+
+-------------------------------------------------------------------
+Mon Jul 13 18:06:19 UTC 2015 - dap.darkness@gmail.com
+
+- Update to 15.07.13 (changes since 15.06.26):
+  * fixed problem with playing video
+    (sometimes video plays at maximum speed).
+
+-------------------------------------------------------------------
+Tue Jul  7 08:39:51 UTC 2015 - cfarrell@suse.com
+
+- license update: LGPL-3.0+
+  According to website and COPYING this is LGPL-3.0+
+
+-------------------------------------------------------------------
+Fri Jul  3 19:18:26 UTC 2015 - dap.darkness@gmail.com
+
+- Update to 15.06.26 (changes since 15.06.06):
+  * better VSync support for OpenGL video output;
+  * minor bug fixes.
+
+-------------------------------------------------------------------
+Mon Jun  8 19:49:55 UTC 2015 - dap.darkness@gmail.com
+
+- Let's not support KDE4.
+- Let's use Qt5.
+
+-------------------------------------------------------------------
+Sat Jun  6 11:36:03 UTC 2015 - dap.darkness@gmail.com
+
+- Update to 15.06.06 (changes since 15.05.30):
+  * more panel changes for touch screens;
+  * zoom on a touch screen (pinch gesture);
+  * fixed reading disk cover from the directory;
+  * compatible with FFMpeg 2.0 and 2.1;
+  * AudioCD as a separate module.
+
+-------------------------------------------------------------------
+Sun May 31 13:12:43 UTC 2015 - dap.darkness@gmail.com
+
+- Update to 15.05.30 (changes since 15.05.10):
+  * drag and drop in the playlist was improved;
+  * playlist loading became faster;
+  * operations on directories were improved;
+  * minor bug fixing.
+- Packman → OBS.
+- _service → tarball.
+
+-------------------------------------------------------------------
+Sun May 10 17:11:05 UTC 2015 - dap.darkness@gmail.com
+
+- Update to 15.05.10 (changes since 15.03.28):
+  * YouTube search was fixed.
+
+-------------------------------------------------------------------
+Sun Mar 29 10:42:19 UTC 2015 - dap.darkness@gmail.com
+
+- Update to 15.03.28 (changes since 14.12.28):
+  * exit the window via the mouse in fullscreen mode causes
+    the closing of all widgets;
+  * option to select the default language for subtitles and audio;
+  * HttpReader FileReader and replaced by FFReader;
+  * support for additional YouTube formats;
+  * changes to the default windows configuration;
+  * changes in the "Information" window;
+  * amendments in the pgssub credits;
+  * ability to save groups;
+  * FFMpeg 2.6 support;
+  * minor bug fixing.
+
+-------------------------------------------------------------------
+Sat Dec 29 20:53:31 UTC 2014 - dap.darkness@gmail.com
+
+- Update to 14.12.28 (changes since 14.12.23):
+  * fixed fonts loading from folders with subtitles
+    (not recursively);
+  * the main toolbar can be split out from the main window;
+  * fixed crash if built with AVResample;
+  * fixed names displaying at YouTube playlist;
+  * minor bug fixing.
+
+-------------------------------------------------------------------
+Sat Dec 27 21:53:31 UTC 2014 - dap.darkness@gmail.com
+
+- Update to 14.12.23 (changes since 14.12.01):
+  * fixed playing stopping during operation `youtube-dl`,
+    as well as with protocols other than HTTP and HTTPS;
+  * ability to rewind streams network without reconnecting to the server;
+  * Support MPRIS2 songs titles, even if they do not contain a header;
+  * removed the ability to upgrade in systems other than Windows;
+  * automatic program updates `youtube-dl`;
+  * minor fixes search in YouTube;
+  * added cache for a class of parameters;
+  * improved caching.
+
+-------------------------------------------------------------------
+Tue Dec  2 15:36:22 UTC 2014 - dap.darkness@gmail.com
+
+- Update to 14.12.01 (changes since 14.10.07):
+  * subtitles fonts loading from the directory,
+    that provides ASS/SSA subtitles;
+  * added "User-Agent" for HTTP connections
+    (ProstoPleer working again);
+  * minor bug fixing.
+
+-------------------------------------------------------------------
+Tue Oct  7 16:05:13 UTC 2014 - dap.darkness@gmail.com
+
+- Update to 14.10.07 (changes since 14.07.27):
+  * the action of ASS subtitles restoring
+    from Matroska container in FFMpeg 2.4.x;
+  * metadata changes support for using FFMpeg 2.4.x;
+  * saving equalizer settings video;
+  * added to the playlist directories sorting;
+  * improved work with YouTube;
+  * added support for pleer.com;
+  * improved OpenGL operation;
+  * bug fixes.
+
+-------------------------------------------------------------------
+Mon Jul 28 17:35:46 UTC 2014 - dap.darkness@gmail.com
+
+- Update to 14.07.27 (changes since 14.03.05):
+  * icons can be loaded from the system icon set;
+  * added new icons,
+  * any video site support through via `youtube-dl`;
+  * noise, sharpness, and levels of zoom filters support in VDPAU;
+  * ability to block widgets
+    (removes the header row and blocks the toolbar);
+  * ability to load modules from a directory settings
+    (about/.qmplay2/Modules);
+  * ability to customize colors and Wallpaper (as in QMPlay1);
+  * reading/recording-playing improvements;
+  * changed the way to save window position;
+  * thread switching was improved;
+  * MPRIS2 support;
+  * image files, OGG support;
+  * minor fixes in HttpReader;
+  * VDPAU improvement;
+  * service HTTPS improvement;
+  * other small changes;
+  * bug fixes.
+
+-------------------------------------------------------------------
+Thu Mar  6 17:59:27 UTC 2014 - dap.darkness@gmail.com
+
+- Update to 14.03.05 (changes since 14.02.17):
+  * Improvement of the functionality of the YouTube
+    service in the framework of the program "youtube-dl"
+    (the path must be entered in the options);
+  * The name of the disk AudioCD appears as an album;
+  * OSD update bug was fixed;
+  * Tags editing bug was fixed.
+
+-------------------------------------------------------------------
+Mon Feb 17 17:55:56 UTC 2014 - dap.darkness@gmail.com
+
+- Update to 14.02.17 (changes since 14.01.10):
+
+  * CDDB database support was added;
+    (freedb.org, freedb.musicbrainz.org);
+  * Tags could be edited via taglib library;
+  * Various issues associated with VAApi were fixed;
+  * Fast switching tracks in AudioCD was implemented;
+  * Minor bugs in FFDecSW were fixed;
+  * Echo effect was added;
+  * Minor fixes.
+
+-------------------------------------------------------------------
+Thu Jan 16 18:47:28 UTC 2014 - dap.darkness@gmail.com
+
+- Update to 14.01.10 (changes since 14.01.05):
+
+  * Added support for algorithms that eliminates
+    Intel VAApi card (VAEntrypointVideoProc);
+  * Fixed a lot of VAApi errors;
+  * Minor fixes in the code.
+
+-------------------------------------------------------------------
+Mon Jan  6 20:13:56 UTC 2014 - dap.darkness@gmail.com
+
+- Update to 14.01.05 (changes since 14.01.03):
+
+  * Optional possibility of preview decoding through VDPAU;
+  * Fixed building with the old version of alsa-lib;
+  * The ability to playback in random order in the group;
+  * Improved VAApi performance and stability;
+  * Minor fixes in "VDPAU Writer.
+
+-------------------------------------------------------------------
+Fri Jan  3 19:43:19 UTC 2014 - dap.darkness@gmail.com
+
+- Update to 14.01.03 (changes since 13.12.15):
+  * Method processParams () from "PrepareForHWBobDeint" was fixed;
+  * Automatic search for the correct settings for sound;
+  * Ability to add your own radio stations;
+  * Improved modules ALSA and PortAudio;
+  * Fixed a bug in ALSA plugin because of bad sound cards;
+  * Added German translation (Daniel Meiß-Wilhelm);
+  * "Playback setting" menu was fixed; 
+  * Possibility to save the skin;
+  * Minor code fixes.
+- pkgconfig(alsa) >= 1.0.26 became required to prevent build issue.
+
+-------------------------------------------------------------------
+Sun Dec 15 13:04:50 UTC 2013 - dap.darkness@gmail.com
+
+- Update to 13.12.15 (changes since 13.12.07):
+  * Added ability to set the tabs at the top of the main window;
+  * Added ability to select the audio channel in the Playback menu;
+  * Restoration of validity HWAccel with FFMpeg 1.2;
+  * Minor Bug fixes.
+
+-------------------------------------------------------------------
+Sun Dec  8 17:24:06 UTC 2013 - dap.darkness@gmail.com
+
+- Update to 13.12.07 (changes since 13.10.24):
+  * Window will be opened automatically when the movie opens;
+  * Shuffles play songs without repetitions;
+  * Allows only one instance;
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Wed Oct 30 14:34:55 UTC 2013 - dap.darkness@gmail.com
+
+- Update to 13.10.24 (changes since 13.09.08):
+  * actual number of frames per second representation;
+  * OSD in DirectDraw improved;
+  * LastFM support;
+  * connections through a proxy server support;
+  * display OSD in XVideo and DirectDraw improved;
+  * hardware decoding via VDPAU added;
+  * OSD display optimization;
+  * ALSA module improved;
+  * bug fixes.
+- Spec-file was fixed up via `spec-cleaner`.
+- KDE integration subpackage was added.
+
+-------------------------------------------------------------------
+Wed Sep 11 18:16:09 UTC 2013 - fisiu@opensuse.org
+
+- Update to 13.09.08 (changes since 13.08.18):
+  * support SHOUTcast titles
+  * ALSA output support
+  * allow to setup decoders priority
+  * new sound filter - phase reverse
+  * fix WMA audio playback
+  * fix video display using openGL and XVideo
+  * many minor fixes
+
+-------------------------------------------------------------------
+Tue Sep  3 19:20:01 UTC 2013 - obs@botter.cc
+
+- add kdebase4-workspace to buildrequires to add KDE default action 
+
+-------------------------------------------------------------------
+Sun Sep  1 18:44:34 UTC 2013 - dap.darkness@gmail.com
+
+- Initial build.
+
