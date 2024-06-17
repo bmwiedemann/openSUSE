@@ -1,22 +1,9 @@
 <services>
-  <service name="tar_scm" mode="manual">
-    <param name="url">https://github.com/casey/just</param>
-    <param name="versionformat">@PARENT_TAG@</param>
-    <param name="scm">git</param>
-    <param name="exclude">.github</param>
-    <param name="exclude">www</param>
-    <param name="revision">1.28.0</param>
-    <param name="changesgenerate">enable</param>
-    <param name="package-meta">yes</param>
-  </service>
-  <service name="recompress" mode="manual">
-    <param name="file">*.tar</param>
-    <param name="compression">zstd</param>
-  </service>
-  <service  name="set_version" mode="manual" />
+  <service name="download_files" mode="manual" />
   <service name="cargo_vendor" mode="manual">
-     <param name="src">*.tar.zst</param>
+     <param name="src">just*.tar.*</param>
      <param name="update">true</param>
+     <param name="filter">true</param>
   </service>
   <service name="cargo_audit" mode="disabled" />
 </services>

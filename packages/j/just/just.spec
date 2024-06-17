@@ -17,18 +17,23 @@
 
 
 Name:           just
-Version:        1.28.0
+Version:        1.29.1
 Release:        0
 Summary:        Commmand runner
 License:        (Apache-2.0 OR MIT) AND Unicode-DFS-2016 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (MIT OR Unlicense) AND Apache-2.0 AND BSD-3-Clause AND CC0-1.0 AND MIT AND CC0-1.0
 Group:          Development/Tools/Building
 URL:            https://github.com/casey/just
-Source0:        %{name}-%{version}.tar.zst
+Source0:        https://github.com/casey/just/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 # this test only fails on OBS, locally it runs fine
-Patch0:         ignore-test.patch
+# Patch0:         ignore-test.patch
 BuildRequires:  cargo-packaging
+BuildRequires:  bash-completion
+BuildRequires:  fish
+BuildRequires:  git
 BuildRequires:  git-core
+BuildRequires:  python3-base
+BuildRequires:  zsh
 BuildRequires:  zstd
 
 %description
@@ -71,6 +76,7 @@ Zsh command-line completion support for %{name}.
 
 %build
 %{cargo_build} --all-features
+mkdir completions
 ./target/release/just --completions bash > completions/just.bash
 ./target/release/just --completions fish > completions/just.fish
 ./target/release/just --completions zsh > completions/just.zsh
@@ -82,7 +88,10 @@ install -Dm644 -T completions/%{name}.fish %{buildroot}%{_datadir}/fish/vendor_c
 install -Dm644 -T completions/%{name}.zsh %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 
 %check
-%{cargo_test}
+# Bash uses `git rev-parse --show-toplevel`
+# for the bash tests to work
+git init
+%{cargo_test} --all
 
 %files
 %license LICENSE

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jun 17 02:09:18 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Various shell completion packages are needed for tests
+  * fish, bash, zsh
+- Service file update
+  * replace glob to avoid vendoring the vendored tarball although likely
+    it does not happen but just in case.
+  * set filter to true
+- Source0 tarball points to github releases/tags
+- Remove patch ignore-test.patch.
+- Add python for tests
+
+-------------------------------------------------------------------
+Sun Jun 16 12:44:34 UTC 2024 - rrahl0@disroot.org
+
+- Update to version 1.29.1:
+  * Release 1.29.1 (#2159)
+  * Fix unexport syntax conflicts (#2158)
+  * Release 1.29.0 (#2155)
+  * Improve argument parsing and error handling for submodules (#2154)
+  * Document shell expanded string defaults (#2153)
+  * Load environment file from dotenv-path relative to working directory (#2152)
+  * Add [positional-arguments] attribute (#2151)
+  * Test bare bash path in shebang on windows (#2144)
+  * Use `--justfile` in Fish shell completions (#2148)
+  * Test shell not found error messages (#2145)
+  * Add `is_dependency()` function (#2139)
+  * Fix `fzf` chooser preview with space-separated module paths (#2141)
+  * Allow printing nu completion script with `just --completions nushell` (#2140)
+  * Add `[ATTRIBUTE: VALUE]` shorthand (#2136)
+  * Refactor evaluator (#2138)
+  * Allow unexporting environment variables (#2098)
+
+-------------------------------------------------------------------
 Thu Jun 06 01:50:27 UTC 2024 - rrahl0@disroot.org
 
 - Update to version 1.28.0:
