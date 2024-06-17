@@ -64,4 +64,12 @@
   * updated crypto/crypto_onetimeauth_poly1305.c</comment>
     <requestid>1141978</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>e72662fcdd19844b134e6dd5e03bdbf1</srcmd5>
+    <version>20240101</version>
+    <time>1718645654</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1181317</requestid>
+  </revision>
 </revisionlist>

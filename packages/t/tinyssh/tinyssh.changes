@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 13 10:28:06 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Compatibility fix for upcoming gcc14 release.
+  * tinyssh-gcc14-compat.patch adds a missing #include statement
+    that prevents tinyssh from building with gcc14
+
+-------------------------------------------------------------------
 Sat Jan 27 16:28:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 20240101 (bsc#1218197, CVE-2023-48795):

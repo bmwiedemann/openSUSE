@@ -1,0 +1,10 @@
+--- a/tinyssh/packet_put.c
++++ b/tinyssh/packet_put.c
+@@ -10,6 +10,7 @@ Public domain.
+ #include "ssh.h"
+ #include "log.h"
+ #include "packet.h"
++#include "global.h"
+ 
+ static void packet_put_plain_(struct buf *b) {
+ 

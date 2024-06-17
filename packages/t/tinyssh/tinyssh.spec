@@ -24,6 +24,7 @@ License:        CC0-1.0
 Group:          Productivity/Networking/SSH
 URL:            https://tinyssh.org/
 Source:         https://github.com/janmojzis/tinyssh/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         tinyssh-gcc14-compat.patch
 
 %description
 tinyssh is a minimalistic SSH server which implements only a subset of SSHv2
@@ -36,6 +37,7 @@ use dynamic memory allocation (no allocation failures, etc.)
 
 %prep
 %setup -q
+%patch -P 0 -p1
 echo %{optflags} > conf-cflags
 echo %{_sbindir} > conf-bin
 echo %{_mandir} > conf-man
