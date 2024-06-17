@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jun 15 16:14:00 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.7.0:
+  * Added Features
+    - index known CPEs for wordpress plugins and themes [#2963
+      @westonsteimel]
+    - Consider Author field for wordpress plugins when generating
+      CPEs [#2946 @wagoodman]
+  * Bug Fixes
+    - improve version extraction from ldflags for pingcap TiDB
+      [#2962 @westonsteimel]
+    - Trim whitespace from wordpress values [#2945 @wagoodman]
+    - Issue scanning Poetry Project with Syft 1.6 and
+      cataloger=python-package-cataloger [#2954 #2965 @spiffcs]
+    - Poetry's multiple constraints seems to break the parser
+      [#2947 #2965 @spiffcs]
+    - Golang: Search remote licenses not working in a CI pipeline
+      when scanning Docker image [#2798 #2852 @kzantow]
+
+-------------------------------------------------------------------
 Mon Jun 10 19:52:37 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.6.0:
