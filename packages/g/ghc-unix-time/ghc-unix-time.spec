@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.4.14
+Version:        0.4.15
 Release:        0
 Summary:        Unix time parser/formatter and utilities
 License:        BSD-3-Clause
