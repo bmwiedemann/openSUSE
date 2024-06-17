@@ -20,15 +20,14 @@
 %if 0%{?suse_version} > 1500
 %global pythons %primary_python
 %endif
-%global python3_authlib_min_version 1.2.0
+%global python3_authlib_min_version 1.3.0
 %global python3_azure_identity_min_version 1.15
 %global python3_azure_mgmt_rdbms_min_version 10.1
 %global python3_azure_mgmt_resource_min_version 23.0.1
 %global python3_azure_mgmt_subscription_min_version 3.1.1
 %global python3_bcrypt_min_version 4.0
 %global python3_boto3_min_version 1.33
-%global python3_botocore_min_version 1.31
-%global python3_cryptography_min_version 41.0
+%global python3_cryptography_min_version 42.0
 %global python3_eventlet_min_version 0.33.3
 %global python3_flask_babel_min_version 4.0.0
 %global python3_flask_compress_min_version 1.4.0
@@ -36,17 +35,18 @@
 %global python3_flask_login_min_version 0.4.1
 %global python3_flask_mail_min_version 0.9.1
 %global python3_flask_migrate_min_version 4.0
-%global python3_flask_min_version 2.3
+%global python3_flask_min_version 3.0
 %global python3_flask_paranoid_min_version 0.2.0
-%global python3_flask_security_too_min_version 5.3.0
+%global python3_flask_security_too_min_version 5.4.0
 %global python3_flask_socketio_min_version 5.3.0
 %global python3_flask_sqlalchemy_min_version 3.1
 %global python3_flask_wtf_min_version 1.2
 %global python3_httpagentparser_min_version 1.9
 %global python3_jsonformatter_min_version 0.3.2
 %global python3_google_api_python_client_min_version 2.0
-%global python3_google_auth_oauthlib_min_version 1.1.0
+%global python3_google_auth_oauthlib_min_version 1.2.0
 %global python3_ldap3_min_version 2.5.1
+%global python3_libgravatar_min_version 1.0.0
 %global python3_pillow_min_version 9.0
 %global python3_pyotp_min_version 2.0
 %global python3_keyring_min_version 24.0
@@ -54,14 +54,14 @@
 %global python3_psutil_min_version 5.9.0
 %global python3_psycopg_min_version 3.1.12
 %global python3_python_dateutil_min_version 2.8.0
-%global python3_pytz_min_version 2023.0
+%global python3_pytz_min_version 2024.0
 %global python3_qrcode_min_version 7.0
 %global python3_sqlalchemy_min_version 2.0
 %global python3_sqlparse_min_version 0.3.0
 %global python3_sshtunnel_min_version 0.1.5
-%global python3_typer_min_version 0.9.0
+%global python3_typer_min_version 0.12.0
 %global python3_user_agents_min_version 2.2
-%global python3_werkzeug_min_version 2.3
+%global python3_werkzeug_min_version 3.0
 %global python3_wtforms_min_version 3.1
 
 %global	pgadmin4instdir %{_libdir}/pgadmin4-%{version}
@@ -69,7 +69,7 @@
 %global user_group_name pgadmin
 
 Name:           pgadmin4
-Version:        8.5
+Version:        8.8
 Release:        0
 Summary:        Management tool for PostgreSQL
 License:        PostgreSQL
@@ -104,7 +104,6 @@ BuildRequires:  %{python_module Authlib >= %{python3_authlib_min_version}}
 BuildRequires:  %{python_module Flask >= %{python3_flask_min_version}}
 BuildRequires:  %{python_module Flask-Babel >= %{python3_flask_babel_min_version}}
 BuildRequires:  %{python_module Flask-Compress >= %{python3_flask_compress_min_version}}
-BuildRequires:  %{python_module Flask-Gravatar >= %{python3_flask_gravatar_min_version}}
 BuildRequires:  %{python_module Flask-Login >= %{python3_flask_login_min_version}}
 BuildRequires:  %{python_module Flask-Mail >= %{python3_flask_mail_min_version}}
 BuildRequires:  %{python_module Flask-Migrate >= %{python3_flask_migrate_min_version}}
@@ -123,6 +122,7 @@ BuildRequires:  %{python_module httpagentparser >= %{python3_httpagentparser_min
 BuildRequires:  %{python_module jsonformatter >= %{python3_jsonformatter_min_version}}
 BuildRequires:  %{python_module keyring >= %{python3_keyring_min_version}}
 BuildRequires:  %{python_module ldap3 >= %{python3_ldap3_min_version}}
+BuildRequires:  %{python_module libgravatar >= %{python3_libgravatar_min_version}}
 BuildRequires:  %{python_module passlib >= %{python3_passlib_min_version}}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil >= %{python3_psutil_min_version}}
@@ -149,7 +149,6 @@ Requires:       %{python_module Authlib >= %{python3_authlib_min_version}}
 Requires:       %{python_module Flask >= %{python3_flask_min_version}}
 Requires:       %{python_module Flask-Babel >= %{python3_flask_babel_min_version}}
 Requires:       %{python_module Flask-Compress >= %{python3_flask_compress_min_version}}
-Requires:       %{python_module Flask-Gravatar >= %{python3_flask_gravatar_min_version}}
 Requires:       %{python_module Flask-Login >= %{python3_flask_login_min_version}}
 Requires:       %{python_module Flask-Mail >= %{python3_flask_mail_min_version}}
 Requires:       %{python_module Flask-Migrate >= %{python3_flask_migrate_min_version}}
@@ -168,6 +167,7 @@ Requires:       %{python_module httpagentparser >= %{python3_httpagentparser_min
 Requires:       %{python_module jsonformatter >= %{python3_jsonformatter_min_version}}
 Requires:       %{python_module keyring >= %{python3_keyring_min_version}}
 Requires:       %{python_module ldap3 >= %{python3_ldap3_min_version}}
+Requires:       %{python_module libgravatar >= %{python3_libgravatar_min_version}}
 Requires:       %{python_module passlib >= %{python3_passlib_min_version}}
 Requires:       %{python_module psutil >= %{python3_psutil_min_version}}
 Requires:       %{python_module psycopg >= %{python3_psycopg_min_version}}
@@ -256,7 +256,6 @@ BuildRequires:  %{python_module azure-mgmt-rdbms >= %{python3_azure_mgmt_rdbms_m
 BuildRequires:  %{python_module azure-mgmt-resource >= %{python3_azure_mgmt_resource_min_version}}
 BuildRequires:  %{python_module azure-mgmt-subscription >= %{python3_azure_mgmt_subscription_min_version}}
 BuildRequires:  %{python_module boto3 >= %{python3_boto3_min_version}}
-BuildRequires:  %{python_module botocore >= %{python3_botocore_min_version}}
 BuildRequires:  %{python_module google-api-python-client >= %{python3_google_api_python_client_min_version}}
 BuildRequires:  %{python_module google-auth-oauthlib >= %{python3_google_auth_oauthlib_min_version}}
 %endif
@@ -266,7 +265,6 @@ Requires:       %{python_module azure-mgmt-rdbms >= %{python3_azure_mgmt_rdbms_m
 Requires:       %{python_module azure-mgmt-resource >= %{python3_azure_mgmt_resource_min_version}}
 Requires:       %{python_module azure-mgmt-subscription >= %{python3_azure_mgmt_subscription_min_version}}
 Requires:       %{python_module boto3 >= %{python3_boto3_min_version}}
-Requires:       %{python_module botocore >= %{python3_botocore_min_version}}
 Requires:       %{python_module google-api-python-client >= %{python3_google_api_python_client_min_version}}
 Requires:       %{python_module google-auth-oauthlib >= %{python3_google_auth_oauthlib_min_version}}
 

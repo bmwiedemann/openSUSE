@@ -1,4 +1,112 @@
 -------------------------------------------------------------------
+Mon Jun 17 10:11:42 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- update to 8.8:
+  * supported database servers
+    - postgresql: 12, 13, 14, 15, and 16
+    - edb advanced server: 12, 13, 14, 15, and 16
+  * bundled postgresql utilities
+    - psql, pg_dump, pg_dumpall, pg_restore: 16.3
+  * Bug fixes
+    - Fix an issue where user authentication fails with special
+      characters in password.
+    - Fixed an issue where canceling a query without privilege does
+      not display any message on query tool.
+    - Fix the issue where docker with SSL v8.7 fails to start.
+    - Fixed an issue where the size displayed as 'NaN B' for all
+      databases in the statistics tab.
+    - Fixed an issue where backup and restore operations failed
+      with the error 'This build does not support compression with
+      gzip'.
+
+- update to 8.7:
+  * supported database servers
+    - postgresql: 12, 13, 14, 15, and 16
+    - edb advanced server: 12, 13, 14, 15, and 16
+  * bundled postgresql utilities
+    - psql, pg_dump, pg_dumpall, pg_restore: 16.3
+  * New features
+    - Added support for the 'Add to macros' feature and fixed
+      various usability issues.
+    - Added support for executing the query at the cursor position
+      in the query tool.
+    - Changes in Query Tool, Debugger, and ERD Tool shortcuts to
+      remove the use of Accesskey which will allow them to be
+      customized.
+    - Added support for viewing PGD Clusters.
+    - Enhance the Delete dialog by highlighting the names of the
+      objects to be deleted in bold.
+    - Added support for platform Ubuntu 24.04 and Fedora 40.
+  * Housekeeping
+    - Upgrade react-table from v7 to v8.
+    - Replace the current FontAwesome based PSQL tool icon with MUI
+      Terminal icon.
+  * Bug fixes
+    - Ensure that Schema Diff does not indicate a table as
+      different when the trigger names are the same but the trigger
+      function body is different.
+    - Disable ERD for system catalogs.
+    - Disable Debugger for system catalogs.
+    - Fixed an issue where drag and drop publication and
+      subscription name in SQL editors was not working.
+    - Fixed an issue of the pgAdmin window size increasing each
+      time it was reopened.
+    - Update the documentation for preferences dialog and keyboard
+      shortcuts.
+    - Fixed an issue where pgAdmin fails to start when Ubuntu OS is
+      upgraded to a major version.
+    - Remove query info notifier timeout field from Query Tool
+      Preferences Dialog.
+    - Fixed incorrect highlighting for C-Style escape strings in
+      SQL editor.
+    - Fixed an issue where the recover password button was enabled
+      even when no email was provided.
+    - Fixed an issue where resetting the password from the password
+      reset link was not working.
+
+- update to 8.6:
+  * supported database servers
+    - postgresql: 12, 13, 14, 15, and 16
+    - edb advanced server: 12, 13, 14, 15, and 16
+  * bundled postgresql utilities
+    - psql, pg_dump, pg_dumpall, pg_restore: 16.1
+  * New features
+    - Added the new columns "last_seq_scan" and "last_idx_scan"
+      from the pg_stat_all_tables and pg_stat_all_indexes tables
+      respectively to the Statistics tab.
+    - Added support for excluding multiple tables while taking
+      Backup.
+  * Housekeeping
+    - Update UI library MUI from v4 to v5, more details here
+    - Upgraded Flask, Flask-Security-Too, Werkzeug, and other
+      dependencies, ensuring compatibility with Python 3.7.
+  * Bug fixes
+    - Fixed all input boxes in pgAdmin to show browser auto-fill
+      only where it is relevant.
+    - Install dbus-python, an in-direct dependency of the Keyring
+      package as a system package for Debian platforms.
+    - Fixed an issue where debugger was not scrolling automatically
+      on stepping.
+    - Fixed an XSS vulnerability in the /settings/store endpoint
+      (CVE-2024-4216, bsc#1223868).
+    - Fixed an issue where double dollar quoted code is treated as
+      string in syntax highlighter.
+    - Fixed an issue where pressing backspace should remove the
+      spaces and not the entire tab width, on enabling
+      'Use spaces?' in the preferences.
+    - Fixed an issue where incorrect select/exec scripts were
+      generated for functions/procedures.
+    - Fixed an issue where connection to the database is not
+      automatically re-established after connectivity drop.
+    - Fixed an issue when closing the view data second tab; it
+      raises the error that the 'ViewCommand' object has no
+      attribute 'auto_commit'.
+    - Fixed violates check constraint issue when creating a pgAgent
+      schedule.
+    - Fixed Multi-Factor Authentication bypass vulnerability
+      (CVE-2024-4215, bsc#1223867).
+
+-------------------------------------------------------------------
 Mon Apr  8 09:08:22 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - update to 8.5:
