@@ -388,4 +388,18 @@ Other changes:
     class scopes if the class is known to be an enum class.</comment>
     <requestid>1169364</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>912104e60a34a00c5d2e9d65c7f41738</srcmd5>
+    <version>24.6.0</version>
+    <time>1718645375</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.6.0:
+  * Allow the use of `typing_extensions.TypeVar` in stubs.
+  * `typing_extensions.TypeVar` has the *default* parameter,
+    which only exists on Python 3.13+ when using `typing.TypeVar`.
+  * Reduce false positives from Y052 in relation to enum
+    subclasses.
+  * Declare support for Python 3.13</comment>
+    <requestid>1181038</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jun 15 15:36:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.6.0:
+  * Allow the use of `typing_extensions.TypeVar` in stubs.
+  * `typing_extensions.TypeVar` has the *default* parameter,
+    which only exists on Python 3.13+ when using `typing.TypeVar`.
+  * Reduce false positives from Y052 in relation to enum
+    subclasses.
+  * Declare support for Python 3.13
+
+-------------------------------------------------------------------
 Sat Apr 20 13:45:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.4.1:
