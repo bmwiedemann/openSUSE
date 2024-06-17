@@ -1,3 +1,11 @@
+gpxsee (13.22) stable; urgency=low
+
+  * Improved marine maps (ENC & IMG) rendering.
+  * Fixed multiple IMG DEM/hilshading issues.
+  * Added (zoomed) graph scrolling using the mouse.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sat, 15 Jun 2024 13:55:14 +0200
+
 gpxsee (13.21) stable; urgency=low
 
   * Added hillshading settings.

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 15 13:51:35 CEST 2024 - tumic@cbox.cz
+
+- Update to version 13.22
+  * Improved marine maps (ENC & IMG) rendering.
+  * Fixed multiple IMG DEM/hilshading issues.
+  * Added (zoomed) graph scrolling using the mouse.
+
+-------------------------------------------------------------------
 Wed May 29 21:19:29 CEST 2024 - tumic@cbox.cz
 
 - Update to version 13.21
