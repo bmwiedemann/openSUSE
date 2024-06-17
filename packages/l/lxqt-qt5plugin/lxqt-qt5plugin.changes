@@ -1,0 +1,250 @@
+-------------------------------------------------------------------
+Mon Jun 10 23:09:04 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Build 1.4.1 Version (boo#1226151)
+  * Required for Qt5 Application Support
+
+-------------------------------------------------------------------
+Sat May 11 09:20:11 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 2.0.0:
+  * Ported to Qt6
+  * The existence of qApp is checked to prevent crashes.
+
+-------------------------------------------------------------------
+Fri Apr 12 14:12:24 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4.1:
+  * This point release is made because of a backward incompatible
+    change in Qt6's font descriptions. It includes a workaround
+    which makes Qt5-based apps have correct fonts when fonts are
+    set by the Qt6-based LXQt 2.0.0.
+
+-------------------------------------------------------------------
+Sun Nov  5 21:42:14 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 1.4.0:
+  * Just corrected a case of code readability
+  * Bumped the Version 
+
+-------------------------------------------------------------------
+Sat Apr 15 19:40:46 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 1.3.0:
+  * Bumped the version and update the dependencies
+
+-------------------------------------------------------------------
+Sat Nov  5 16:42:03 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Update to 1.2.0:
+  * Bumped the version to 1.2.0 and updated the dependencies.
+
+-------------------------------------------------------------------
+Thu Apr 28 08:34:50 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.1.0:
+  * Bumped the version to 1.1.0 and updated the dependencies.
+
+-------------------------------------------------------------------
+Mon Nov  8 09:29:02 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.0.0:
+  * Added workarounds for Qt's poor handling of some dark palettes.
+  * Used the C++11 override specifier in some places.
+
+-------------------------------------------------------------------
+Fri Apr 16 06:54:33 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.0:
+  * Handled Qt 5.15 deprecations.
+  * Don't check before deleting a pointer.
+  * Don't use implicit conversions.
+  * Fixed a palette/highlight color related typo.
+
+-------------------------------------------------------------------
+Wed Nov  4 13:29:29 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.0:
+  * Do not reset widget palettes on changing style.
+  * Support more palette colors for better customization.
+
+-------------------------------------------------------------------
+Mon Jun  1 05:54:21 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15.1:
+  * Fixed Fusion's window color with Qt 5.15.
+  * Made the window color configurable.
+
+-------------------------------------------------------------------
+Mon Apr 27 11:00:52 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Changed lxqt-qtplugin.keyring to tsujan's key
+
+-------------------------------------------------------------------
+Sat Apr 25 11:12:05 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 0.15.0
+  * Set minimum required Qt version to 5.10.0.
+  * Added libfm-qt as a dependency (for LXQt file dialog).
+  * Added support for flatpak and working without context menu (to status notifier).
+  * Removed deprecated QImage methods and updated the code for C++11.
+
+-------------------------------------------------------------------
+Thu Jan 31 10:21:21 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.0:
+  * Dynamically load libfm-qt on demand to create
+    the file dialog helper.
+  * Don't use automatic string conversions
+  * Improved cmake scripting
+    - Set cmake_minimum_required to 3.1.0
+    - Removed locale compile definitons
+    - Removed the superfluous libfm-qt dependency
+- Move translation from lxqt-l10n into package
+
+-------------------------------------------------------------------
+Tue May 22 15:14:06 UTC 2018 - mvetter@suse.com
+
+- Update to 0.13.0:
+  * lxqtplatformtheme: Initialize “folowColorScheme” once
+  * Fix icon colorizing at startup
+  * Remember the view mode
+
+-------------------------------------------------------------------
+Mon Oct 23 11:27:07 UTC 2017 - mvetter@suse.com
+
+- Update to 0.12.0:
+  * Set an informal patch version
+  * Don't export github templates
+  * Flag unused vars in onServiceOwnerChanged
+  * Fix missing variable declaration
+  * Handle QML (as @PCMan suggested)
+  * Use mime functions added by @PCMan
+  * Loading and saving window/splitter size
+  * Central positioning with respect to parent
+  * Set window title correctly
+  * Qt version conditions
+  * Just made it compilable
+  * Handle mime-type filters for file dialog. Set custom file dialog labels.
+  * Update options properly.
+  * Implement a basic file dialog helper using libfm-qt's Fm::FileDialog.
+  * Avoid using Qt-specific keywords such as signal/slot and foreach. Instead, use macros.
+  * LXQtPlatformTheme: Make Qt use default palette (#22)
+  * LXQtPlatformTheme: Add icon FollowColorScheme config (#21)
+  * Prevent a possible C++11 range for detach (#20)
+  * Use the CMake MODULE library type.
+  * LXQtPlatformTheme: Propagate wheelScrollLines
+  * LXQtPlatformTheme: Do not provide own palette
+  * Fix multiple StatusNotifierItems.
+  * Bump year
+  * Updates lxqt-build-tools required version
+
+-------------------------------------------------------------------
+Sat Mar  4 18:59:19 UTC 2017 - sfalken@opensuse.org
+
+- Update Source URLs
+
+-------------------------------------------------------------------
+Fri Feb 24 19:17:13 UTC 2017 - sfalken@opensuse.org
+
+- Update to 0.11.1:
+  * Use lxqt-build-tools
+  * Use the new lxqt-build-tools package
+  * Remove cpack (#14)
+
+-------------------------------------------------------------------
+Sat Sep 24 21:43:18 UTC 2016 - mvetter@suse.com
+
+- Update to 0.11.0:
+  * Add Qt5XdgIconLoader as dependency (#13)
+  * Update README.md
+  * statusnotifieritem: Correctly handle menu
+  * Cleaned up licenses
+  * Use XdgIconLoader library (#10)
+  * xdgIconThemePaths: Use QString::SkipEmptyParts
+  * xdgIconThemePaths: Remove duplicated paths
+  * Adds $XDG_DATA_HOME to the XdgIconThemePaths
+  * Bump year in AUTHORS
+- Add keyring
+- Require pkgconfig(Qt5XdgIconLoader) instead of pkgconfig(Qt5Xdg)
+  because IconLoader has its own package now and got split out
+  of libqt5xdg.
+
+-------------------------------------------------------------------
+Fri Nov  6 16:33:28 UTC 2015 - mvetter@suse.com
+
+- Upstream release 0.10.0
+
+-------------------------------------------------------------------
+Fri Feb 20 20:48:04 UTC 2015 - sfalken@opensuse.org
+
+- Changed %build and %install to use cmake macros 
+
+-------------------------------------------------------------------
+Mon Feb  9 21:32:01 UTC 2015 - sfalken@opensuse.org
+
+- New upstream version 0.9.0
+
+-------------------------------------------------------------------
+Mon Jan 26 00:29:57 UTC 2015 - sfalken@opensuse.org
+
+- Added conditionals to enable Fedora Builds 
+
+-------------------------------------------------------------------
+Thu Dec 25 16:32:10 UTC 2014 - hrvoje.senjan@gmail.com
+
+- lxqt-qtplugin is using private QPA API, which can, and does break BC
+  even in point releases, so we need to hardcode libQt5Gui5 version
+
+-------------------------------------------------------------------
+Tue Nov 11 09:21:04 UTC 2014 - andrea@opensuse.org
+
+- Fixed license tag 
+
+-------------------------------------------------------------------
+Sat Oct 25 11:55:34 UTC 2014 - andrea@opensuse.org
+
+- new upstream version 0.8.0 
+
+-------------------------------------------------------------------
+Tue May 13 18:01:14 UTC 2014 - andrea@opensuse.org
+
+- removed unused build requires 
+
+-------------------------------------------------------------------
+Tue May 13 15:29:43 UTC 2014 - andrea@opensuse.org
+
+- spec file clean up 
+
+-------------------------------------------------------------------
+Mon May 12 16:23:28 UTC 2014 - sfalken@opensuse.org
+
+- removed fedora spec, split into subproject
+  Del: lxqt-qtplugin-Fedora_20.spec 
+
+-------------------------------------------------------------------
+Sat May 10 21:25:08 UTC 2014 - sfalken@opensuse.org
+
+- ran spec-cleaner on openSUSE specfile 
+
+-------------------------------------------------------------------
+Fri May  9 23:08:21 UTC 2014 - sfalken@opensuse.org
+
+- Added specfile for Fedora_20
+  Add:  lxqt-qtplugin-Fedora_20.spec 
+
+-------------------------------------------------------------------
+Fri May  9 16:54:18 UTC 2014 - sfalken@opensuse.org
+
+- Added tarball for new stable release
+  Add:  lxqt-qtplugin-0.7.0.tar.xz
+  Del:  _service 
+
+-------------------------------------------------------------------
+Thu Apr  3 18:53:28 UTC 2014 - sfalken@opensuse.org
+
+- Initial Source Upload
+  Add: _service
+  Add: lxqt-qtplugin.spec  
+  Add: lxqt-qtplugin.changes
+
