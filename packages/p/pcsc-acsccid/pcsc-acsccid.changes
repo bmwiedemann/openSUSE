@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 10 07:52:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N syntax instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Mar 27 09:23:03 UTC 2024 - Godfrey Chung <godfrey.chung@acs.com.hk>
 
 - Updated to version 1.1.11.

@@ -187,10 +187,10 @@ pcsc-lite package.
 %prep
 %setup -q -n %{_name}-%{version}
 %if 0%{?sles_version} == 11
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 %endif
 cp -a src/openct/LICENSE LICENSE.openct
 cp -a src/towitoko/README README.towitoko
