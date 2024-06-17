@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="exclude">.git</param>
-    <param name="revision">v15.4.3</param>
+    <param name="revision">v15.4.4</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">disable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
