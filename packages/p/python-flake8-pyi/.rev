@@ -1,0 +1,405 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e2c271e321d1ee5e293e8243d3912348</srcmd5>
+    <version>18.3.1</version>
+    <time>1540320103</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial packaging effort for flake8-pyi 18.3.1
+</comment>
+    <requestid>643917</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>830addc8f502f55ec1c60e23d6473765</srcmd5>
+    <version>18.3.1</version>
+    <time>1544441367</time>
+    <user>dimstar_suse</user>
+    <comment>- Use tarball from the master as of 2018-12-08 to test #16
+</comment>
+    <requestid>656429</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a0bc0e63df65c5ad3e83622c72d733df</srcmd5>
+    <version>19.2.0</version>
+    <time>1551455308</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680080</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3478753904e6219711e780d8c0545d85</srcmd5>
+    <version>19.3.0</version>
+    <time>1552207047</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>682604</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ca124f06258ef21fec9efa5c4fdcad9e</srcmd5>
+    <version>20.5.0</version>
+    <time>1590649620</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>805997</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c30f1bd384872bf1fc587dec51dae03d</srcmd5>
+    <version>20.10.0</version>
+    <time>1620158455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890238</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8dc5775d47bff1956a7621f23bfa19a6</srcmd5>
+    <version>22.10.0</version>
+    <time>1667595606</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove LICENSE source, it's now in the release
+- Remove python_module macro definition
+- Update to 22.10.0:
+  # Bugfixes:
+  - Do not emit Y020 for empty strings. Y020 concerns &quot;quoted annotations&quot;,
+  - but an empty string can never be a quoted annotation.
+  - Add special-casing so that Y020 is not emitted for __slots__ definitions
+  - inside class blocks.
+  - Expand Y035 to cover __slots__ definitions as well as __match_args__ and
+  - __all__ definitions.
+  - Expand Y015 so that errors are emitted for assignments to negative numbers.
+  # Other changes:
+  - Since v22.8.1, flake8-pyi has emitted a FutureWarning if run with flake8&lt;5,
+    warning that the plugin would soon become incompatible with flake8&lt;5. Due
+    to some issues that mean that some users are unable to upgrade to
+    flake8&gt;=5, however, flake8-pyi no longer intends to remove support for
+    running the plugin with flake8&lt;5 before Python 3.7 has reached end-of-life.
+    As such, the FutureWarning is no longer emitted.
+- 22.8.2:
+  # New error codes:
+  - Y047: Detect unused TypeAlias declarations.
+  - Y049: Detect unused TypedDict definitions.
+  - Y050: Prefer typing_extensions.Never for argument annotations over
+    typing.NoReturn.
+  - Y051: Detect redundant unions between Literal types and builtin supertypes
+    (e.g. Literal[&quot;foo&quot;] | str, or Literal[5] | int).
+  # Other enhancements:
+  - Support mypy_extensions.TypedDict.
+- 22.8.1:
+  - Add support for flake8 &gt;= 5.0.0.
+- 22.8.0:
+  # New error codes:
+  - Y046: Detect unused Protocols.
+  - Y048: Function bodies should contain exactly one statement.
+  # Bugfixes:
+  - Improve error message for the case where a function body contains a
+    docstring and a ... or pass statement.
+  # Other changes:
+  - Pin required flake8 version to &lt;5.0.0 (flake8-pyi is not currently
+    compatible with flake8 5.0.0).
+- 22.7.0
+  # New error codes:
+  - Introduce Y041: Ban redundant numeric unions (int | float, int | complex,
+    float | complex).
+  - Introduce Y042: Type alias names should use CamelCase rather than
+    snake_case
+  - Introduce Y043: Ban type aliases from having names ending with an uppercase
+    &quot;T&quot;.
+  - Introduce Y044: Discourage unnecessary from __future__ import annotations
+    import. Contributed by Torsten Wörtwein.
+  - Introduce Y045: Ban returning (Async)Iterable from __(a)iter__ methods.
+  # Other enhancements and behaviour changes:
+  - Improve error message for Y026 check.
+  - Expand Y026 check. Since version 22.4.0, this has only emitted an error for
+    assignments to typing.Literal, typing.Union, and PEP 604 unions. It now
+    also emits an error for any subscription on the right-hand side of a simple
+    assignment, as well as for assignments to typing.Any and None.
+  - Support typing_extensions.overload and typing_extensions.NamedTuple.
+  - Slightly expand Y034 to cover the case where a class inheriting from
+    (Async)Iterator returns (Async)Iterable from __(a)iter__. These classes
+    should nearly always return Self from these methods.
+  - Support Python 3.11.
+- 22.5.1:
+  # Behaviour changes:
+  - Relax Y020 check slightly, enabling the idiom __all__ += [&quot;foo&quot;, &quot;bar&quot;] to
+    be used in a stub file.
+- 22.5.0:
+  # Features:
+  - Introduce Y039: Use str instead of typing.Text for Python 3 stubs.
+  - Teach the Y036 check that builtins.object (as well as the unqualified
+    object) is acceptable as an annotation for an __(a)exit__ method argument.
+  - Teach the Y029 check to emit errors for __repr__ and __str__ methods that
+    return builtins.str (as opposed to the unqualified str).
+  - Introduce Y040: Never explicitly inherit from object in Python 3 stubs.
+- 22.4.1:
+  # Features:
+  - Expand Y027 check to prohibit importing any objects from the typing module
+    that are aliases for objects living collections.abc (except for
+    typing.AbstractSet, which is special-cased).
+  - Introduce Y038: Use from collections.abc import Set as AbstractSet instead
+    of from typing import AbstractSet.
+  # Bugfixes:
+  - Improve inaccurate error messages for Y036.
+- 22.4.0:
+  # Features:
+  - Introduce Y036 (check for badly defined __exit__ and __aexit__ methods).
+  - Introduce Y037 (Use PEP 604 syntax instead of typing.Union and
+    typing.Optional). Contributed by Oleg Höfling.
+  # Behaviour changes:
+  - Expand Y035 to cover __match_args__ inside class definitions, as well as
+    __all__ in the global scope.
+  # Bugfixes:
+  - Improve Y026 check (regarding typing.TypeAlias) to reduce false-positive
+    errors emitted when the plugin encountered variable aliases in a stub file.
+- 22.3.0:
+  # Bugfixes:
+  - fix bug where incorrect quoted annotations were not detected within if
+    blocks
+  # Behaviour changes:
+  - Add special-casing so that string literals are allowed in the context of
+    __match_args__ assignments inside a class definition.
+  - Add special-casing so that arbitrary values can be assigned to a variable
+    in a stub file if the variable is annotated with Final.
+- 22.2.0:
+  # Bugfixes:
+  - fix bugs in several error codes so that e.g. _T = typing.TypeVar(&quot;_T&quot;) is
+    recognised as a TypeVar definition (previously only _T = TypeVar(&quot;_T&quot;) was
+    recognised).
+  - fix bug where foo = False at the module level did not trigger a Y015 error.
+  - fix bug where TypeVars were erroneously flagged as unused if they were only
+    used in a typing.Union subscript.
+  - improve unclear error messages for Y022, Y023 and Y027 error codes.
+  # Features:
+  - introduce Y032 (prefer object to Any for the second argument in __eq__ and
+    __ne__ methods).
+  - introduce Y033 (always use annotations in stubs, rather than type
+    comments).
+  - introduce Y034 (detect common errors where return types are hardcoded, but
+    they should use TypeVars instead).
+  - introduce Y035 (__all__ in a stub has the same semantics as at runtime).
+- 22.1.0:
+  - extend Y001 to cover ParamSpec and TypeVarTuple in addition to TypeVar
+  - detect usage of non-integer indices in sys.version_info checks
+  - extend Y010 to check async functions in addition to normal functions
+  - extend Y010 to cover what was previously included in Y090 (disallow
+    assignments in __init__ methods) and Y091 (disallow raise statements). The
+    previous checks were disabled by default.
+  - introduce Y016 (duplicate union member)
+  - introduce Y017 (disallows assignments with multiple targets or non-name
+    targets)
+  - introduce Y018 (detect unused TypeVars)
+  - introduce Y019 (detect TypeVars that should be _typeshed.Self, but aren't)
+  - introduce Y020 (never use quoted annotations in stubs)
+  - introduce Y021 (docstrings should not be included in stubs)
+  - introduce Y022 (prefer stdlib classes over typing aliases)
+  - introduce Y023 (prefer typing over typing_extensions)
+  - introduce Y024 (prefer typing.NamedTuple to collections.namedtuple)
+  - introduce Y026 (require using TypeAlias for type aliases)
+  - introduce Y025 (always alias collections.abc.Set)
+  - introduce Y027 (Python 2-incompatible extension of Y022)
+  - introduce Y028 (Use class-based syntax for NamedTuples)
+  - introduce Y029 (never define __repr__ or __str__)
+  - introduce Y030 (use Literal['foo', 'bar'] instead of Literal['foo'] |
+    Literal['bar'])
+  - introduce Y031 (use class-based syntax for TypedDicts where possible)
+  - all errors are now enabled by default
+  - remove Y092 (top-level attribute must not have a default value)
+  - attrs is no longer a dependency
+  - ast_decompiler has been added as a dependency on Python 3.8 and 3.7
+  - support Python 3.10
+  - discontinue support for Python 3.6
+</comment>
+    <requestid>1033576</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>92902d6449ff6488f43a8d74fd1aeb66</srcmd5>
+    <version>22.11.0</version>
+    <time>1670333063</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1040478 from yarunachalam
+
+- Update to version 22.11.0: 
+    * Bugfixes:
+      Specify encoding when opening files. Prevents UnicodeDecodeError on Windows when the file contains non-CP1252 characters. Contributed by Avasam.
+      Significant changes have been made to the Y041 check. Previously, Y041 flagged &quot;redundant numeric unions&quot;
+      (e.g. float | int, complex | float or complex | int) in all contexts outside of type aliases. This was incorrect.
+      PEP 484 only specifies that type checkers should treat int as an implicit subtype of float in the specific context of parameter annotations
+      for functions and methods. Y041 has therefore been revised to only emit errors on &quot;redundant numeric unions&quot; in the context of parameter annotations.
+    * Other changes:
+      Support running with flake8 v6.</comment>
+    <requestid>1040556</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8ca8792c7a8627d1f15d9473a4d9abc9</srcmd5>
+    <version>23.1.2</version>
+    <time>1678125419</time>
+    <user>dimstar_suse</user>
+    <comment>- Add set-tests-python-path.patch to fix tests inside osc build
+  environment, running the flake8 process with shell=True and forcing
+  the PYTHONPATH.
+- Update to 23.1.2:
+  * Y011/Y014/Y015: Increase the maximum character length of literal
+    numbers in default values from 7 to 10, allowing hexadecimal
+    representation of 32-bit integers. Contributed by Avasam.
+- 23.1.1
+New error codes:
+  * Y052: Disallow default values in global or class namespaces where
+    the assignment does not have a type annotation. Stubs should be
+    explicit about the type of all variables in the stub; without type
+    annotations, the type checker is forced to make inferences, which
+    may have unpredictable consequences. Enum members are excluded
+    from this check, as are various special assignments such as
+    __all__ and __match_args__.
+Other changes:
+  * Disallow numeric default values where len(str(default)) &gt; 7. If a
+    function has a default value where the string representation is
+    greater than 7 characters, it is likely to be an implementation
+    detail or a constant that varies depending on the system you're
+    running on, such as sys.maxsize.
+  * Disallow str or bytes defaults where the default is &gt;50 characters
+    long, for similar reasons.
+  * Allow ast.Attribute nodes as default values for a small number of
+    special cases, such as sys.maxsize and sys.executable.
+  * Fewer Y020 false positives are now emitted when encountering
+    default values in stub files.
+- 23.1.0
+Bugfixes:
+  * Do not emit Y020 (quoted annotations) for strings in parameter defaults.
+  * Fix checking of defaults for functions with positional-only parameters.
+Other changes:
+  * Modify Y036 so that _typeshed.Unused is allowed as an annotation
+    for parameters in __(a)exit__ methods. Contributed by Avasam
+  * Several changes have been made to error codes relating to imports:
+    - The Y027 error code has been removed.
+    - All errors that used to result in Y027 being emitted now result
+      in Y022 being emitted instead.
+    - Some errors that used to result in Y023 being emitted now result
+      in Y022 being emitted instead.
+    - typing.Match and typing.Pattern have been added to the list of
+      imports banned by Y022. Use re.Match and re.Pattern instead.
+  * flake8-pyi no longer supports stub files that aim to support
+    Python 2. If your stubs need to support Python 2, pin flake8-pyi
+    to 22.11.0 or lower.
+  * Y011, Y014 and Y015 have all been significantly relaxed. None,
+    bools, ints, floats, complex numbers, strings and bytes are all
+    now allowed as default values for parameter annotations or
+    assignments.
+  * Hatchling is now used as the build backend. This should have
+    minimal, if any, user-facing impact.
+</comment>
+    <requestid>1069697</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f0593a05b9404b7dfd82e08a228a1a6f</srcmd5>
+    <version>23.6.0</version>
+    <time>1693235642</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105954</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9ddbdbd21d4f8f119247a87d15cecc9b</srcmd5>
+    <version>23.11.0</version>
+    <time>1701902890</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.11.0:
+  * Y058: Use `Iterator` rather than `Generator` as the return
+    value for simple `__iter__` methods, and `AsyncIterator` rather
+    than `AsyncGenerator` as the return value for simple `__aiter__`
+    methods.
+  * Y059: `Generic[]` should always be the last base class, if it
+    is present in the bases of a class.
+  * Y060, which flags redundant inheritance from `Generic[]`.
+  * Y061: Do not use `None` inside a `Literal[]` slice.
+  * For example, use `Literal[&quot;foo&quot;] | None` instead of
+    `Literal[&quot;foo&quot;, None]`.
+  * Y022 and Y037 now flag more imports from `typing_extensions`.
+  * Y034 now attempts to avoid flagging methods inside classes
+    that inherit from `builtins.type`, `abc.ABCMeta` and/or
+    `enum.EnumMeta`.  Classes that have one or more of these as
+    bases are metaclasses, and PEP 673 forbids the use of
+    `typing(_extensions).Self` for metaclasses.
+  * Attempting to import `typing_extensions.Text` now causes Y039
+    to be emitted rather than Y023.
+  * Y053 will no longer be emitted for the argument to
+    `@typing_extensions.deprecated`.
+  * Introduce Y090, which warns if you have an annotation such as
+    `tuple[int]` or `Tuple[int]`. These mean &quot;a tuple of length 1,
+    in which the sole element is of type `int`&quot;. This is sometimes
+    what you want, but more usually you'll want `tuple[int, ...]`,
+    which means &quot;a tuple of arbitrary (possibly 0) length, in
+    which all elements are of type `int`&quot;.
+  * Y011 now ignores `sentinel` and `_typeshed.sentinel` in
+    default values.</comment>
+    <requestid>1131208</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5a5a5bd91b395368dcde1ecc66fb001c</srcmd5>
+    <version>24.1.0</version>
+    <time>1704562498</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 24.1.0:
+  * Y062: Disallow duplicate elements inside `Literal[]` slices.
+  * Support flake8&gt;=7.0.0
+  * Y061 is no longer emitted in situations where Y062 would also
+    be emitted.
+  * Improve error message for Y060.
+  * Y023 now bans more imports from `typing_extensions` now that
+    typeshed has dropped support for Python 3.7.
+  * Y016: Fix false positive if a method had positional-only
+    parameters (using PEP 570 syntax and the first
+    positional-or-keyword parameter following the positional-only
+    parameters used a custom TypeVar (see #455).
+  * Y046: Fix false negative where an unused protocol would not
+    be detected if the protocol was generic.</comment>
+    <requestid>1137279</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cd4561904e493d5fea7885e3f0925f9d</srcmd5>
+    <version>24.3.0</version>
+    <time>1711477572</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.3.0:
+  * Y063: Use PEP 570 syntax to mark positional-only arguments,
+    rather than the older Python 3.7-compatible syntax
+    described in PEP 484.</comment>
+    <requestid>1161521</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f8e1d6517b9cb44931cdc20c4671594f</srcmd5>
+    <version>24.3.1</version>
+    <time>1712520794</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.3.1:
+  * Y064: Use simpler syntax to define final literal types.
+  * For example, use `x: Final = 42` instead of `x:
+    Final[Literal[42]]`
+  * Y065: Don't use bare `Incomplete` in parameter and return
+    annotations.
+  * Y090: Fix false positive for `tuple[Unpack[Ts]]`.</comment>
+    <requestid>1165947</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1431eb523c0db6980e6a76416d46e17a</srcmd5>
+    <version>24.4.1</version>
+    <time>1713724029</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.4.1:
+  * Y066: When using if/else with `sys.version_info`,
+    put the code for new Python versions first.
+  * Fix Y026 false positive: allow simple assignment to `None` in
+    class scopes if the class is known to be an enum class.</comment>
+    <requestid>1169364</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>912104e60a34a00c5d2e9d65c7f41738</srcmd5>
+    <version>24.6.0</version>
+    <time>1718645375</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.6.0:
+  * Allow the use of `typing_extensions.TypeVar` in stubs.
+  * `typing_extensions.TypeVar` has the *default* parameter,
+    which only exists on Python 3.13+ when using `typing.TypeVar`.
+  * Reduce false positives from Y052 in relation to enum
+    subclasses.
+  * Declare support for Python 3.13</comment>
+    <requestid>1181038</requestid>
+  </revision>
+</revisionlist>

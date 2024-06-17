@@ -1,0 +1,23 @@
+Index: flake8_pyi-23.11.0/tests/test_pyi_files.py
+===================================================================
+--- flake8_pyi-23.11.0.orig/tests/test_pyi_files.py
++++ flake8_pyi-23.11.0/tests/test_pyi_files.py
+@@ -43,6 +43,9 @@ def test_pyi_file(path: str) -> None:
+         option = flag.split("=")[0]
+         assert option not in {"--ignore", "--select"}, bad_flag_msg(option[2:])
+ 
++    pythonpath = os.environ.get("PYTHONPATH")
++    pythonpath = f"PYTHONPATH={pythonpath}:."
++
+     # Silence DeprecationWarnings from our dependencies (pyflakes, flake8-bugbear, etc.)
+     #
+     # For DeprecationWarnings coming from flake8-pyi itself,
+@@ -51,6 +54,8 @@ def test_pyi_file(path: str) -> None:
+     # but the test failure report that pytest gives is much easier to read
+     # if we use `-Wdefault:::pyi`
+     flake8_invocation = [
++        "env",
++        pythonpath,
+         sys.executable,
+         "-Wignore",
+         "-Wdefault:::pyi",
