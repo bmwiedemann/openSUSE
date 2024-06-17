@@ -47329,6 +47329,9 @@ unsorted:
   - valgrind-client-headers 
   - valgrind-devel 
   - valijson-devel 
+  - valkey 
+  - valkey-compat-redis 
+  - valkey-devel 
   - vamp-plugin-sdk 
   - vamp-plugin-sdk-devel 
   - vapoursynth-devel 
