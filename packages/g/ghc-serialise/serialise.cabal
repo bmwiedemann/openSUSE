@@ -1,6 +1,6 @@
 name:                serialise
 version:             0.2.6.1
-x-revision:          2
+x-revision: 3
 synopsis:            A binary serialisation library for Haskell values.
 description:
   This package (formerly @binary-serialise-cbor@) provides pure, efficient
@@ -70,7 +70,7 @@ library
     Codec.Serialise.Internal.GeneralisedUTF8
 
   build-depends:
-    base                    >= 4.11    && < 4.20,
+    base                    >= 4.11    && < 4.21,
     array                   >= 0.4     && < 0.6,
     bytestring              >= 0.10.4  && < 0.13,
     cborg                   == 0.2.*,
@@ -87,7 +87,7 @@ library
 
   if flag(newtime15)
     build-depends:
-      time                  >= 1.5     && < 1.14
+      time                  >= 1.5     && < 1.15
   else
     build-depends:
       time                  >= 1.4     && < 1.5,
@@ -128,7 +128,7 @@ test-suite tests
     base                    >= 4.11    && < 4.20,
     bytestring              >= 0.10.4  && < 0.13,
     directory               >= 1.0     && < 1.4,
-    filepath                >= 1.0     && < 1.5,
+    filepath                >= 1.0     && < 1.6,
     text                    >= 1.1     && < 2.2,
     time                    >= 1.4     && < 1.14,
     containers              >= 0.5     && < 0.8,
@@ -136,7 +136,7 @@ test-suite tests
     primitive               >= 0.5     && < 0.10,
     cborg,
     serialise,
-    QuickCheck              >= 2.9     && < 2.15,
+    QuickCheck              >= 2.9     && < 2.16,
     tasty                   >= 0.11    && < 1.6,
     tasty-hunit             >= 0.9     && < 0.11,
     tasty-quickcheck        >= 0.8     && < 0.11,
@@ -162,7 +162,7 @@ benchmark instances
     Instances.Time
 
   build-depends:
-    base                    >= 4.11    && < 4.20,
+    base                    >= 4.11    && < 4.21,
     binary                  >= 0.7     && < 0.11,
     bytestring              >= 0.10.4  && < 0.13,
     vector                  >= 0.10    && < 0.14,
@@ -174,7 +174,7 @@ benchmark instances
 
   if flag(newtime15)
     build-depends:
-      time                  >= 1.5     && < 1.14
+      time                  >= 1.5     && < 1.15
   else
     build-depends:
       time                  >= 1.4     && < 1.5,
@@ -264,7 +264,7 @@ benchmark versus
     cborg,
     serialise,
 
-    filepath                >= 1.0     && < 1.5,
+    filepath                >= 1.0     && < 1.6,
     containers              >= 0.5     && < 0.8,
     deepseq                 >= 1.0     && < 1.6,
     aeson                   >= 0.7     && < 2.3,
@@ -279,7 +279,7 @@ benchmark versus
 
   if flag(newtime15)
     build-depends:
-      time                  >= 1.5     && < 1.14
+      time                  >= 1.5     && < 1.15
   else
     build-depends:
       time                  >= 1.4     && < 1.5,
