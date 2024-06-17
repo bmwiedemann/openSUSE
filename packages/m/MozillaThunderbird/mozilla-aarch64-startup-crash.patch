@@ -1,0 +1,26 @@
+# HG changeset patch
+# User msirringhaus@suse.de
+# Date 1558442998 -7200
+#      Tue May 21 14:49:58 2019 +0200
+# Node ID 386083b58d8558141901d796ec6919a4aba7ad3a
+# Parent  76b747f7d113bddbb8593184d81e1bfe5fd51af0
+bsc#991344 - Rpi3: Firefox crashes after a few seconds of usage
+bmo#1302554 - ARM/AARCH64: Firefox crashes on NULL nsIChannel** result pointer in nsIOService::NewChannelFromURIWithProxyFlagsInternal()
+
+diff --git a/netwerk/base/nsIOService.cpp b/netwerk/base/nsIOService.cpp
+--- a/netwerk/base/nsIOService.cpp
++++ b/netwerk/base/nsIOService.cpp
+@@ -1159,7 +1159,13 @@ nsresult nsIOService::NewChannelFromURIW
+     }
+   }
+ 
++#if defined(__aarch64__)
++  if (result) {
++    channel.forget(result);
++  }
++#else
+   channel.forget(result);
++#endif
+   return NS_OK;
+ }
+ 

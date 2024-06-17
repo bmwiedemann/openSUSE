@@ -1,0 +1,26 @@
+# HG changeset patch
+# Parent  3de59fe1b8708c01e134ce698c4232b8a854f617
+Problem:  webGL sites are displayed in the wrong color (usually blue-ish)
+Solution: Problem is with skia once again. Output of webgl seems endian-correct, but skia only
+          knows how to deal with little endian.
+          So we swizzle the output of webgl after reading it from readpixels()
+Note:     This does not fix all webGL sites, but is a step in the right direction
+
+Index: firefox-115.0/gfx/gl/GLContext.h
+===================================================================
+--- firefox-115.0.orig/gfx/gl/GLContext.h
++++ firefox-115.0/gfx/gl/GLContext.h
+@@ -1560,6 +1560,13 @@ class GLContext : public GenericAtomicRe
+     BEFORE_GL_CALL;
+     mSymbols.fReadPixels(x, y, width, height, format, type, pixels);
+     OnSyncCall();
++#if MOZ_BIG_ENDIAN()
++    uint8_t* itr = (uint8_t*)pixels;
++    for (GLsizei i = 0; i < width * height; i++) {
++      NativeEndian::swapToLittleEndianInPlace((uint32_t*)itr, 1);
++      itr += 4;
++    }
++#endif
+     AFTER_GL_CALL;
+     mHeavyGLCallsSinceLastFlush = true;
+   }

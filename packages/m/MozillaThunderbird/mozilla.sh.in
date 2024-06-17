@@ -1,0 +1,210 @@
+#!/bin/sh
+#
+# ***** BEGIN LICENSE BLOCK *****
+# Version: MPL 1.1/GPL 2.0/LGPL 2.1
+#
+# The contents of this file are subject to the Mozilla Public License Version
+# 1.1 (the "License"); you may not use this file except in compliance with
+# the License. You may obtain a copy of the License at
+# http://www.mozilla.org/MPL/
+#
+# Software distributed under the License is distributed on an "AS IS" basis,
+# WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+# for the specific language governing rights and limitations under the
+# License.
+#
+# The Original Code is mozilla.org Code.
+#
+# The Initial Developer of the Original Code is
+# Netscape Communications Corporation.
+# Portions created by the Initial Developer are Copyright (C) 1998
+# the Initial Developer. All Rights Reserved.
+#
+# Contributor(s):
+#    Wolfgang Rosenauer <wolfgang.rosenauer@suse.de>
+#                       <wr@rosenauer.org>
+#
+# Alternatively, the contents of this file may be used under the terms of
+# either the GNU General Public License Version 2 or later (the "GPL"), or
+# the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+# in which case the provisions of the GPL or the LGPL are applicable instead
+# of those above. If you wish to allow use of your version of this file only
+# under the terms of either the GPL or the LGPL, and not to allow others to
+# use your version of this file under the terms of the MPL, indicate your
+# decision by deleting the provisions above and replace them with the notice
+# and other provisions required by the GPL or the LGPL. If you do not delete
+# the provisions above, a recipient may use your version of this file under
+# the terms of any one of the MPL, the GPL or the LGPL.
+#
+# ***** END LICENSE BLOCK *****
+
+##
+## Usage:
+##
+## $ mozilla [args]
+##
+## This script is meant to run a mozilla program from the mozilla
+## rpm installation.
+##
+## The script will setup all the environment voodoo needed to make
+## mozilla work.
+
+cmdname=`basename $0`
+
+##
+## Variables
+##
+MOZ_DIST_BIN="%PREFIX"
+MOZ_DIST_LIB="%PROGDIR"
+MOZ_APPNAME="%APPNAME"
+MOZ_PROGRAM="$MOZ_DIST_LIB/$MOZ_APPNAME-bin"
+MOZ_LANGPACKS_DIR="$MOZ_DIST_LIB/langpacks"
+MOZ_EXTENSIONS_PROFILE_DIR="$HOME/.mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+
+MOZ_APP_LAUNCHER="$MOZ_DIST_LIB/$MOZ_APPNAME.sh"
+if [ "$0" = "$MOZ_APP_LAUNCHER" ]; then
+  [ -h "/usr/bin/$MOZ_APPNAME" ] && \
+   _link=$(readlink -f "/usr/bin/$MOZ_APPNAME")
+  if [ "$_link" = "$MOZ_APP_LAUNCHER" ]; then
+    export MOZ_APP_LAUNCHER="/usr/bin/$MOZ_APPNAME"
+  fi
+else
+  export MOZ_APP_LAUNCHER="/usr/bin/$MOZ_APPNAME"
+fi
+
+MOZILLA_FIVE_HOME="$MOZ_DIST_LIB"
+export MOZILLA_FIVE_HOME
+LD_LIBRARY_PATH=$MOZ_DIST_LIB${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH
+
+# needed for SUN Java under Xorg >= 7.2
+export LIBXCB_ALLOW_SLOPPY_LOCK=1
+
+# disable Gnome crash dialog (doesn't make sense anyway)
+export GNOME_DISABLE_CRASH_DIALOG=1
+
+# Wayland
+# Only supported on newer systems
+WAYLAND_SUPPORTED=%WAYLAND_SUPPORTED
+
+# $XDG_SESSION_TYPE should contain either x11 or wayland
+if [ $WAYLAND_SUPPORTED -eq 1 ] && [ "$XDG_SESSION_TYPE" = "wayland" ] && [ -z "$MOZ_ENABLE_WAYLAND" ]; then
+  export MOZ_ENABLE_WAYLAND=1
+fi
+
+##
+## Use D-Bus remote exclusively when there's Wayland display.
+##
+if [ "$WAYLAND_DISPLAY" ]; then
+  export MOZ_DBUS_REMOTE=1
+fi
+
+# xinput2 (boo#1173320)
+. /etc/os-release
+if [ "$ID" = "opensuse-tumbleweed" ]; then
+  export MOZ_USE_XINPUT2=1
+fi
+
+##
+## To disable the use of Firefox localization handling for
+## the home profile, set MOZ_DISABLE_LANGPACKS=1
+## in your environment before launching Firefox.
+## currently disabled by default since langpacks
+## are shipped as app sideloading addons
+##
+#
+MOZ_DISABLE_LANGPACKS=1
+export MOZ_DISABLE_LANGPACKS
+#
+
+##
+## Automatically installed langpacks are tracked by .suse-langpack-install
+## config file.
+##
+SUSE_LANGPACK_CONFIG="$MOZ_EXTENSIONS_PROFILE_DIR/.suse-langpack-install"
+
+# MOZ_DISABLE_LANGPACKS disables language packs completely
+MOZILLA_DOWN=0
+if ! [ $MOZ_DISABLE_LANGPACKS ] || [ $MOZ_DISABLE_LANGPACKS -eq 0 ]; then
+    if [ -x $MOZ_PROGRAM ]; then
+        # Is firefox running?
+        /bin/pidof %APPNAME% > /dev/null 2>&1
+        MOZILLA_DOWN=$?
+    fi
+fi
+
+# Modify language pack configuration only when firefox is not running
+# and language packs are not disabled
+if [ $MOZILLA_DOWN -ne 0 ]; then
+    # Clear already installed langpacks
+    mkdir -p $MOZ_EXTENSIONS_PROFILE_DIR
+    if [ -f $SUSE_LANGPACK_CONFIG ]; then
+        rm `cat $SUSE_LANGPACK_CONFIG` > /dev/null 2>&1
+        rm $SUSE_LANGPACK_CONFIG > /dev/null 2>&1
+        # remove all empty langpacks dirs while they block installation of langpacks
+        rmdir $MOZ_EXTENSIONS_PROFILE_DIR/langpack* > /dev/null 2>&1
+    fi
+    # Get locale from system
+    CURRENT_LOCALE=$LC_ALL
+    CURRENT_LOCALE=${CURRENT_LOCALE:-$LC_MESSAGES}
+    CURRENT_LOCALE=${CURRENT_LOCALE:-$LANG}
+    # Try with a local variant first, then without a local variant
+    SHORTMOZLOCALE=`echo $CURRENT_LOCALE | sed "s|_\([^.]*\).*||g" | sed "s|\..*||g"`
+    MOZLOCALE=`echo $CURRENT_LOCALE | sed "s|_\([^.]*\).*|-\1|g" | sed "s|\..*||g"`
+    create_langpack_link() {
+        local language=$*
+        local langpack=langpack-${language}@firefox.mozilla.org.xpi
+        if [ -f $MOZ_LANGPACKS_DIR/$langpack ]; then
+            rm -rf $MOZ_EXTENSIONS_PROFILE_DIR/$langpack
+            # If the target file is a symlink (the fallback langpack),
+            # install the original file instead of the fallback one
+            if [ -h $MOZ_LANGPACKS_DIR/$langpack ]; then
+                langpack=`readlink $MOZ_LANGPACKS_DIR/$langpack`
+            fi
+            ln -s $MOZ_LANGPACKS_DIR/$langpack \
+                  $MOZ_EXTENSIONS_PROFILE_DIR/$langpack
+            echo $MOZ_EXTENSIONS_PROFILE_DIR/$langpack > $SUSE_LANGPACK_CONFIG
+            return 0
+        fi
+        return 1
+    }
+    create_langpack_link $MOZLOCALE || create_langpack_link $SHORTMOZLOCALE || true
+fi
+
+
+moz_debug=0
+script_args=""
+pass_arg_count=0
+while [ $# -gt $pass_arg_count ]
+do
+  case "$1" in
+    -d | --debugger)
+      moz_debugger=$2;
+      if [ "${moz_debugger}" != "" ]; then
+        shift 2
+        moz_debug=1
+      else
+        echo "-d requires an argument"
+        exit 1
+      fi
+      ;;
+    *)
+      # Move the unrecognized argument to the end of the list.
+      arg="$1"
+      shift
+      set -- "$@" "$arg"
+      pass_arg_count=`expr $pass_arg_count + 1`
+      ;;
+  esac
+done
+
+if [ $moz_debug -eq 1 ]; then
+  tmpfile=`mktemp /tmp/mozargs.XXXXXX` || { echo "Cannot create temporary file" >&2; exit 1; }
+  trap " [ -f \"$tmpfile\" ] && /bin/rm -f -- \"$tmpfile\"" 0 1 2 3 13 15
+  echo "set args ${1+"$@"}" > $tmpfile
+  echo "run" >> $tmpfile
+  echo "$moz_debugger $MOZ_PROGRAM -x $tmpfile"
+  exec $moz_debugger "$MOZ_PROGRAM" -x $tmpfile
+else
+  exec $MOZ_PROGRAM "$@"
+fi

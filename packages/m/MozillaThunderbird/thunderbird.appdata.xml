@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Upstream does not want to ship it https://bugzilla.mozilla.org/show_bug.cgi?id=1071065
+so maintain a stub in here.
+-->
+
+<application>
+  <id type="desktop">thunderbird.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <description>
+    <p>
+      Thunderbird is a free, open-source, cross-platform application for
+      managing email, news feeds, chat, and news groups. It is a local
+      (rather than browser- or web-based) email application that is powerful
+      yet easy to use.
+    </p>
+  </description>
+  <url type="homepage">https://www.thunderbird.net/</url>
+  <screenshots>
+    <screenshot type="default">https://upload.wikimedia.org/wikipedia/commons/9/9d/Mozilla_Thunderbird_GNOME.png</screenshot>
+  </screenshots>
+</application>

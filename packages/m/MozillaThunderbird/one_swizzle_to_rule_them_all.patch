@@ -1,0 +1,34 @@
+# HG changeset patch
+# User M. Sirringhaus <msirringhaus@suse.de>
+# Date 1645518286 -3600
+#      Tue Feb 22 09:24:46 2022 +0100
+# Node ID 494640792b4677f6462e95b90a54a4e22aeb738b
+# Parent  81832d035e101471dcf52dd91de287268add7a91
+imported patch one_swizzle_to_rule_them_all.patch
+
+Index: firefox-115.0/gfx/webrender_bindings/RenderCompositorSWGL.cpp
+===================================================================
+--- firefox-115.0.orig/gfx/webrender_bindings/RenderCompositorSWGL.cpp
++++ firefox-115.0/gfx/webrender_bindings/RenderCompositorSWGL.cpp
+@@ -7,6 +7,7 @@
+ #include "RenderCompositorSWGL.h"
+ 
+ #include "mozilla/gfx/Logging.h"
++#include "mozilla/gfx/Swizzle.h"
+ #include "mozilla/widget/CompositorWidget.h"
+ 
+ #ifdef MOZ_WIDGET_GTK
+@@ -242,6 +243,13 @@ void RenderCompositorSWGL::CommitMappedB
+   }
+   mDT->Flush();
+ 
++#if MOZ_BIG_ENDIAN()
++  // One swizzle to rule them all.
++  gfx::SwizzleData(mMappedData, mMappedStride, gfx::SurfaceFormat::B8G8R8A8,
++                   mMappedData, mMappedStride, gfx::SurfaceFormat::A8R8G8B8,
++                   mDT->GetSize());
++#endif
++
+   // Done with the DT. Hand it back to the widget and clear out any trace of it.
+   mWidget->EndRemoteDrawingInRegion(mDT, mDirtyRegion);
+   mDirtyRegion.SetEmpty();
