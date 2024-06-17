@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6362c0b4a27d490da1015eab499ca364</srcmd5>
+    <version>2.5.1</version>
+    <time>1571653924</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>741418</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1aed607b313b8ff528bb6e8e7400b2ad</srcmd5>
+    <version>3.0</version>
+    <time>1586775187</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793337</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a26bdbd9a3afa0670c3810639ae62844</srcmd5>
+    <version>3.1.4</version>
+    <time>1638131422</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934416</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>59483585cbb6f93c6b0211b2e9404bf4</srcmd5>
+    <version>3.1.4</version>
+    <time>1686506173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092288</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6b4982372afd070ca1693ef2a5ff8259</srcmd5>
+    <version>3.2.3</version>
+    <time>1690370670</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2.3:
+  * Fixed several issues in the ``yajl2_c`` backend
+    and its async generators that were only made apparent
+    when running it with PyPy and/or a CPython debug build (#101).
+  * Adapted ``yajl2_c`` async generators to work against PyPy 
+    shortcomings
+  * Fixed compilation and ``async`` support
+    of the ``yajl2_c`` backend in pyhthon 3.12 (#98).
+  * Check ``IJSON_BUILD_YAJL2C`` environment variable
+    when building ijson to force/skip building the 
+    ``yajl2_c`` backend (#102).
+  * Added support for Python 3.12.
+  * Fixed a memory leak in the ``yajl2_c`` backend
+    triggered only when the underlying ``yajl`` functions
+    reported a failure (#97).
+  * New ``ijson.dump`` command-line utility
+  * Fixed bug in ``yajl2_c`` backend introduced in 3.1.2
+    where random crashes could occur due to an unsafe reference decrement
+    when constructing the parse/items/kvitems generators (#66).
+  * Mark Python 3.10 and 3.11 as explicitly supported.
+- drop tests_asyncio.py source - this comes in the tarball now</comment>
+    <requestid>1100746</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>126ba9b303f65ca787f371032c8c76bf</srcmd5>
+    <version>3.3.0</version>
+    <time>1718645414</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.3.0:
+  * Removed support for Python 2.7 and 3.4, 3.5+ is still
+    supported.
+  * Distribute the existing `benchmark.py` script
+    as ``ijson.benchmark``.
+
+  * Adapted ``yajl2_c`` async generators to work against PyPy
+    when building ijson to force/skip building the
+- update to 3.1.4</comment>
+    <requestid>1181244</requestid>
+  </revision>
+</revisionlist>
