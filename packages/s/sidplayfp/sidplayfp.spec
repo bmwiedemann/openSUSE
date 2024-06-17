@@ -18,14 +18,14 @@
 
 
 Name:           sidplayfp
-Version:        2.7.0
+Version:        2.8.0
 Release:        0
 Summary:        SID chip music module player
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 #Git-Clone:     https://github.com/libsidplayfp/sidplayfp.git
 URL:            https://sourceforge.net/projects/sidplay-residfp/
-Source0:        https://sourceforge.net/projects/sidplay-residfp/files/sidplayfp/2.7/sidplayfp-%{version}.tar.gz
+Source0:        https://sourceforge.net/projects/sidplay-residfp/files/sidplayfp/2.8/sidplayfp-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)

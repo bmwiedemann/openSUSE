@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun 15 12:48:46 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.8.0
+  * be explicit if Songlenth DB is not loaded.
+  * look for Songlengths file in data path.
+  * require a c++11 compiler.
+  * added sanity check for filter parameters.
+
+-------------------------------------------------------------------
 Fri Mar 29 19:27:43 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.7.0
