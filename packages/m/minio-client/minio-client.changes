@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 14 18:12:51 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240612T143403Z:
+  * fix replicate status display for older replication config
+    (#4957)
+  * switch RX and TX arrow marks correctly
+
+-------------------------------------------------------------------
 Tue Jun 11 12:09:34 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240610T164415Z:
