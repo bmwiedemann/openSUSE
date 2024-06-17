@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 14 10:34:54 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- remove dependency on /usr/bin/python3 via using the macros (bsc#1212476)
+
+-------------------------------------------------------------------
 Mon Jun  3 19:53:46 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Add cloud-init-skip-rename.patch (bsc#1219680)
