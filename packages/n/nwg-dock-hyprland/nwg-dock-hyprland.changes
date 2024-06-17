@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Jun 12 16:41:31 UTC 2024 - malcolmlewis@opensuse.org
+
+- Updated to version 0.1.9:
+  + Fixed crash on icons missing from GTK theme,
+    (gh#nwg-piotr/nwg-dock-hyprland#25).
+  + Fixed XDG_DATA_HOME detection,
+    (gh#nwg-piotr/nwg-dock-hyprland#36 and 
+    gh#nwg-piotr/nwg-dock-hyprlandcloses #35).
+  + Added setting namespace for gtk-layer-shell,
+    (gh#nwg-piotr/nwg-dock-hyprland#37).
+  + Fixed mapping output->Gdk.Monitor on gtk3-1:3.24.42.
+- Changes from version 0.1.8:
+  + Get ready for Hyprland socket files moved to
+    $XDG_RUNTIME_DIR/hypr, (gh#nwg-piotr/nwg-dock-hyprland#30).
+  + While searching .desktop files, first look for exact
+    'class.desktop' file, (gh#nwg-piotr/nwg-dock-hyprland#31).
+- Changes from version 0.1.7:
+  + Prevent crash on image not found,
+    (gh#nwg-piotr/nwg-dock-hyprland#25 and
+    gh#nwg-piotr/nwg-dock-hyprland#24).
+  + Use different lock files for various users (ported from
+    nwg-dock).
+- Changes from version 0.1.6:
+  + Fixed nil pointer dereference while creating the fallback icon,
+    (gh#nwg-piotr/nwg-dock-hyprland#24).
+- Changes from version 0.1.5:
+  + Added dispatch bringactivetotop after dispatch focuswindow,
+    (gh#nwg-piotr/nwg-dock-hyprland#14).
+  + Updated dependencies: gotk3, gotk3-layershell, logrus.
+  + Added -ico string argument, to specify name or full path to an
+    alternative launcher ICOn,
+    (gh#nwg-piotr/nwg-dock-hyprland#15 and
+    gh#nwg-piotr/nwg-dock-hyprland#17).
+  + Added support for apps on the special workspace,
+    (gh#nwg-piotr/nwg-dock-hyprland#13).
+  + Fixed searching icons in org.*.desktop files.
+- Changes from version 0.1.4:
+  + Split appName string by " ", use the 1st part while searching
+    the icon name, (gh#nwg-piotr/nwg-dock-hyprland#11).
+  + Do not force use of the overlay layer when -d (autohide)
+    argument used, (gh#nwg-piotr/nwg-dock-hyprland#12).
+- Update build requires on go >= 1.22.
+
+-------------------------------------------------------------------
 Mon Jul 17 13:51:03 UTC 2023 - malcolmlewis@opensuse.org
 
 - Initial build at version 0.1.3.
