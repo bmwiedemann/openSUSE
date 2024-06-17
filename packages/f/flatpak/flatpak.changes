@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 14 13:51:38 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Tue Apr 23 13:23:52 UTC 2024 - Robert Frohl <rfrohl@suse.com>
 
 - disable parental controls for now by using '-Dmalcontent=disabled', to work around
