@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jun 15 12:32:28 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.8.0
+  * Optimized event scheduler.
+  * Stop pretendig we support pre-c++11 compilers.
+  * Fixed thread unsafety for psid_driver.
+  * residfp: do not cache resampling tables.
+  * resid/residfp: tuned oscillator leakage.
+- Temporarily disable SIMD optimization on x86_64
+
+-------------------------------------------------------------------
 Sun May 19 12:52:40 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.7.1
