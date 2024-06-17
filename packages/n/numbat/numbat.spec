@@ -17,7 +17,7 @@
 
 
 Name:           numbat
-Version:        1.11.0
+Version:        1.12.0
 Release:        0
 URL:            https://github.com/sharkdp/numbat
 Summary:        Statically typed programming language for scientific computations
@@ -38,6 +38,7 @@ with first class support for physical dimensions and units.
 
 %build
 %{cargo_build} --all-features
+rm book/.gitignore
 
 %install
 pushd numbat-cli

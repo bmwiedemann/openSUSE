@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Jun 17 06:04:54 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.12.0
+  * Add support for struct/record types (see documentation)
+  * Extended number formatting 
+  * Function decorators 
+  * Added random function 
+  * Random distribution sampling
+  * Add NaN, inf, is_nan and is_infinite 
+  * Add function to solve quadratic equations
+  * Add element(…) function for retrieving properties of chemical elements 
+  * Implement 'Never' type (!) 
+  * Fix callables in binary operators
+  * Add jansky and solar flux unit 
+  * Add "darcy" unit 
+  * Add yuan as renminbi alias
+  * Add permille unit 
+  * Tokenize three periods as ellipsis (not just unicode character …)
+  * style: status badge for CICD in README.md 
+  * Do some minor cleanup in parser.rs
+  * feat: nicer error messages during development
+  * Bump iana-time-zone to no longer use a yanked package
+  * Fix formatting issue in list-functions.md
+  * Fix clippy lints
+  * Proper subtyping rules for Never type
+
+-------------------------------------------------------------------
 Thu Mar 21 14:35:08 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 1.11.0

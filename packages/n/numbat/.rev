@@ -7,4 +7,12 @@
     <comment>I want to add numbat to openSUSE:Factory</comment>
     <requestid>1160397</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e324cb6d9382a00d654ea68942d439a8</srcmd5>
+    <version>1.12.0</version>
+    <time>1718645625</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1181283</requestid>
+  </revision>
 </revisionlist>
