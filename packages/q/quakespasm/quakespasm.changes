@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jun 13 14:58:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.96.2:
+  * Fix stack buffer overrun Mod_PolyForUnlitSurface: fixes crash
+    when loading lim_daviddg.bsp from Liminal Spaces Jam.
+  * Fix potential buffer overflow in progs global string functions.
+  * Fix potential buffer overflow in Mod_LoadAliasFrame()
+  * Optimize BoxOnPlaneSide()
+  * Reserve enough space in PF_makestatic() for worst case scenarios.
+  * Improve handling of huge entities in SV_FindTouchedLeafs()
+  * Warn about bad maps with only 1 or 2 edges per face
+  * Apply FOV gun scaling for r_showtris
+  * Sliders with visible values in options menu.
+  * game command now refuses setting a non-existing game directory
+  * Fix build in C23 mode.
+  * Minor code cleanups. Updated third party code, e.g. SDL,
+    music codecs, etc.
+
+-------------------------------------------------------------------
 Sun Dec 10 11:11:19 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.96.1
@@ -290,10 +309,10 @@ Tue Jul 19 09:34:12 UTC 2016 - rpm@fthiessen.de
 -------------------------------------------------------------------
 Mon Jul 18 20:46:43 UTC 2016 - luke.nukem.jones@gmail.com
 
-- Update to v0.92.0 
+- Update to v0.92.0
 
 -------------------------------------------------------------------
 Fri Jul 15 19:45:26 UTC 2016 - luke.nukem.jones@gmail.com
 
-- Prepare packaging for inclusion in Factory 
+- Prepare packaging for inclusion in Factory
 

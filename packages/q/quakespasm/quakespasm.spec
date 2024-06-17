@@ -1,7 +1,7 @@
 #
 # spec file for package quakespasm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2017 Luke Jones <luke.nukem.jones@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           quakespasm
-Version:        0.96.1
+Version:        0.96.2
 Release:        0
 Summary:        A Quake Engine
 License:        GPL-2.0-or-later
