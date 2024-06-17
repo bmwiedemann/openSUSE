@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 17 06:30:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.12.0:
+ ￼* E721: Fix false positive of the form `x.type(...) ==`.
+￼ * E502: Fix false-negative with a backslash escape in a comment.
+￼ * E204: New lint forbidding whitespace after decorator `@`.
+
+-------------------------------------------------------------------
 Mon Nov 27 15:56:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.11.1:

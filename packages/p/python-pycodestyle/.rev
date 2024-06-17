@@ -181,4 +181,15 @@
   * Report E227 or E228 instead of E225 for whitespace around bitwise,</comment>
     <requestid>1129190</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>756aac2965d97314109565ec28eb7de8</srcmd5>
+    <version>2.12.0</version>
+    <time>1718645256</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.12.0:
+ ￼* E721: Fix false positive of the form `x.type(...) ==`.
+￼ * E502: Fix false-negative with a backslash escape in a comment.
+￼ * E204: New lint forbidding whitespace after decorator `@`.</comment>
+    <requestid>1181240</requestid>
+  </revision>
 </revisionlist>
