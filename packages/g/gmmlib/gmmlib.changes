@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 17 10:48:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.3.20:
+  * fail if pTextureCalc is NULL
+  * add RGB format perftag
+  * add more device IDs
+  * Revert "Failing the resource allocation if the U plane offset
+    exceeds the HW"
+
+-------------------------------------------------------------------
 Tue Mar 26 05:54:49 UTC 2024 - ming li <mli@suse.com>
 
 - Update to version 22.3.18:
