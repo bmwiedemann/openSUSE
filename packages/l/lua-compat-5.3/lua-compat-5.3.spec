@@ -1,7 +1,7 @@
 #
 # spec file for package lua-compat-5.3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %else
 %bcond_without bit32
 %endif
-%define mversion 0.10
+%define mversion 0.13
 Version:        %{mversion}
 Release:        0
 Summary:        Lua-5.3-style APIs for Lua 5.2 and 5.1

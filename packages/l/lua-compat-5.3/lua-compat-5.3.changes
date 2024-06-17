@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 13 16:12:25 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 0.13:
+  * Support for getting io.popen results on file:close() on PUC-Rio Lua 5.1
+  * Avoids attempting to use strerror_r on mingw
+  * Converted lua_pushlstring from a macro to a function
+
+-------------------------------------------------------------------
 Thu Mar 16 18:22:42 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Change upstream homepage to the current one at Lunar Modules.
