@@ -1,7 +1,7 @@
 #
 # spec file for package appres
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           appres
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Summary:        Utility to list the resource database of an X application
 License:        X11
 Group:          System/X11/Utilities
 URL:            http://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
+BuildRequires:  meson
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
@@ -43,11 +44,11 @@ program will load.
 %setup -q
 
 %build
-%configure
-make %{?_smp_mflags}
+%{meson}
+%{meson_build}
 
 %install
-%make_install
+%{meson_install}
 
 %files
 %defattr(-,root,root)

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 16 18:21:07 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.7
+  * This release includes support for building with meson as well as autoconf.
+    Please test building with meson and report any issues you hit to our
+    gitlab issue tracker at:
+    https://gitlab.freedesktop.org/xorg/app/appres/-/issues
+    as we plan on removing the autoconf build support in a future release.
+- switched to meson build
+
+-------------------------------------------------------------------
 Sun Apr  3 19:02:12 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.6

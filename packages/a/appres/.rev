@@ -74,4 +74,18 @@
   * bugfix release</comment>
     <requestid>966685</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>34be6fd760ebb9240ae723862ce0b1c8</srcmd5>
+    <version>1.0.7</version>
+    <time>1718645406</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.7
+  * This release includes support for building with meson as well as autoconf.
+    Please test building with meson and report any issues you hit to our
+    gitlab issue tracker at:
+    https://gitlab.freedesktop.org/xorg/app/appres/-/issues
+    as we plan on removing the autoconf build support in a future release.
+- switched to meson build</comment>
+    <requestid>1181188</requestid>
+  </revision>
 </revisionlist>
