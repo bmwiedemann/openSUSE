@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.1.14
+Version:        3.1.15
 Release:        0
 Summary:        Provides some basic WAI handlers and middleware
 License:        MIT

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 15 00:48:13 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update wai-extra to version 3.1.15.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/wai-extra-3.1.15/src/ChangeLog.md
+
+-------------------------------------------------------------------
 Fri Jan 12 06:29:36 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update wai-extra to version 3.1.14.
