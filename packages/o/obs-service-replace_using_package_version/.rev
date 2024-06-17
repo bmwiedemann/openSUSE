@@ -90,4 +90,12 @@ of another package.</comment>
 </comment>
     <requestid>1132949</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ec422405f2c9a0885700ea990cbaa175</srcmd5>
+    <version>0.0.9</version>
+    <time>1718645265</time>
+    <user>anag+factory</user>
+    <comment>Fix shebang of the script to use the explicit version of Python</comment>
+    <requestid>1181281</requestid>
+  </revision>
 </revisionlist>

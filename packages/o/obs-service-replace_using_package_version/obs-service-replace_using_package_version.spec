@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package obs-service-replace_using_package_version
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Source0:        %{service}.py
 Source1:        %{service}.service
 Source2:        LICENSE
 BuildRequires:  sed
+# for the __python3 macro
+BuildRequires:  python-rpm-macros
 Requires:       python3-docopt
 Requires:       python3-rpm
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -51,6 +53,9 @@ sed -i "s|#!/usr/bin/env python3|#!/usr/bin/python3|g" %{service}.py
 
 install -D -m 755 %{service}.py %{buildroot}%{_prefix}/lib/obs/service/%{service}
 install -D -m 644 %{service}.service %{buildroot}%{_prefix}/lib/obs/service/%{service}.service
+# Doing %%python3_fix_shebang_path old fashioned way for the backward compatibility
+sed -i "1s@#\\!.*python\S*@#\\!$(realpath %__python3)@" \
+    %{buildroot}%{_prefix}/lib/obs/service/%{service}
 
 %files
 %defattr(-,root,root)

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 14 18:33:15 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix shebang of the script to use the explicit version of Python
+  (bsc#1212476).
+
+-------------------------------------------------------------------
 Wed Dec 13 20:47:44 UTC 2023 - containers@suse.com
 
 - Update to version 1702495728.72fe58b:
