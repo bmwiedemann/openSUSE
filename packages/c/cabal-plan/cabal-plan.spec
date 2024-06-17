@@ -19,13 +19,12 @@
 %global pkg_name cabal-plan
 %global pkgver %{pkg_name}-%{version}
 Name:           %{pkg_name}
-Version:        0.7.3.0
+Version:        0.7.4.0
 Release:        0
 Summary:        Library and utility for processing cabal's plan.json file
 License:        GPL-2.0-or-later
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/3.cabal#/%{name}.cabal
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
@@ -34,8 +33,6 @@ BuildRequires:  ghc-ansi-terminal-devel
 BuildRequires:  ghc-ansi-terminal-prof
 BuildRequires:  ghc-async-devel
 BuildRequires:  ghc-async-prof
-BuildRequires:  ghc-base-compat-devel
-BuildRequires:  ghc-base-compat-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-base16-bytestring-devel
@@ -140,10 +137,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup
-cp -p %{SOURCE1} %{name}.cabal
-cabal-tweak-dep-ver base "^>=4.18.0.0" "< 5"
-cabal-tweak-dep-ver bytestring "^>=0.11.1.0" "< 1"
-cabal-tweak-dep-ver text "^>=2.0.1" "< 3"
+cabal-tweak-dep-ver ansi-terminal "^>=1.1" "< 2"
 
 %build
 %define cabal_configure_options -fexe
