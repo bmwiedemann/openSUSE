@@ -1,0 +1,10 @@
+<package name="sigil" project="openSUSE:Factory">
+  <title>Multi-platform WYSIWYG Ebook Editor</title>
+  <description>Sigil is a free and open source editor for the EPUB format. It is designed for easy, WYSIWYG editing of EPUB files and for converting other formats to EPUB. It also provides features for advanced users, like direct XHTML, CSS and XPGT editing. You can use it to add any of the metadata entries supported by the EPUB specification and create a hierarchical Table of Contents.
+
+
+
+</description>
+  <devel project="Documentation:Tools" package="sigil"/>
+  <url>http://code.google.com/p/sigil/</url>
+</package>

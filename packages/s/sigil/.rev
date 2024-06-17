@@ -1,0 +1,316 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c5007076bbe0f16a05356940db6c304b</srcmd5>
+    <version>0.9.7</version>
+    <time>1494087998</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>456754</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>862baa0d489bbb526c4dbcc77bdf1dca</srcmd5>
+    <version>0.9.8</version>
+    <time>1497274305</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501671</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ebb396f19963b5c3c1f9fbb08623b6e0</srcmd5>
+    <version>0.9.9</version>
+    <time>1515506019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562311</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2c4f02b67c86096181e34dce2c49128a</srcmd5>
+    <version>0.9.9</version>
+    <time>1529402071</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>615909</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0007e0452fbacd8ff77271f099700bcc</srcmd5>
+    <version>0.9.10</version>
+    <time>1534543449</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629529</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>40fefc8d497fea42e7d2f73d6542bb60</srcmd5>
+    <version>0.9.10</version>
+    <time>1537787603</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637101</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9254e4d6eaea2d36baf180f2c4ac3465</srcmd5>
+    <version>0.9.15</version>
+    <time>1562843686</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713274</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>05e77e52eba714fa094ca92073aa0261</srcmd5>
+    <version>0.9.16</version>
+    <time>1563914105</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717457</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fedc18389375649df4efbfaf5f96dec8</srcmd5>
+    <version>0.9.17</version>
+    <time>1565695165</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722215</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>98779f3207300f033f27b223a9766af9</srcmd5>
+    <version>0.9.18</version>
+    <time>1567680218</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728245</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>81e18ee397fdd158cd9dc94944ade2a2</srcmd5>
+    <version>1.0.0</version>
+    <time>1576676797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>757709</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1301b69c589fc556d2ed402231a54c05</srcmd5>
+    <version>1.1.0</version>
+    <time>1581087473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>771061</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ada3a6859f897d7d3e6157433cd3fa09</srcmd5>
+    <version>1.2.1</version>
+    <time>1585602225</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789583</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3d18e7fcd2922c44de96b47e74f5f0d8</srcmd5>
+    <version>1.3.0</version>
+    <time>1595864316</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822760</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2a15eed65258f9ef59bfb04dd81c28c1</srcmd5>
+    <version>1.4.1</version>
+    <time>1605644600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848964</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a8f9002eb15fd8fb5e371cdf71675ea8</srcmd5>
+    <version>1.4.2</version>
+    <time>1606142542</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849952</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ff6fa22d8327ab766e97f2dd1e569ae3</srcmd5>
+    <version>1.4.3</version>
+    <time>1607113736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>852939</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b933b68984fa611e999fd5d6942a0fb2</srcmd5>
+    <version>1.5.1</version>
+    <time>1616925399</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>881576</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3ae62848326d7de4610c84bd30c752e7</srcmd5>
+    <version>1.6.0</version>
+    <time>1622536779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896410</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>0fca6947d1a68eca8762268582c6afd0</srcmd5>
+    <version>1.6.0</version>
+    <time>1624999379</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902802</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>208888ce53b919b56af235b8451064cf</srcmd5>
+    <version>1.7.0</version>
+    <time>1627076469</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907886</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>0e9d7201295e50421db56077f8fbc0ed</srcmd5>
+    <version>1.8.0</version>
+    <time>1635272018</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927306</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d04210a03eb2ddf1451b5ecd5f6ebc88</srcmd5>
+    <version>1.9.0</version>
+    <time>1645723258</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957231</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>56dbd0beaf2e9224f924cdeb9b44ae74</srcmd5>
+    <version>1.9.1</version>
+    <time>1646487880</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959611</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>de9ee5f6c302aaba1e2174b32fc60155</srcmd5>
+    <version>1.9.2</version>
+    <time>1647101733</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961296</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>94379bb4b2540ce2a6c6974b51b55afa</srcmd5>
+    <version>1.9.10</version>
+    <time>1653321019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978742</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>5b9982cd4392ebe4b232ca2b8f8e18b8</srcmd5>
+    <version>1.9.10</version>
+    <time>1655396424</time>
+    <user>dimstar_suse</user>
+    <comment>- Add sigil-lto.patch to fix boo#1199981 
+  (Sigil EBUP editor terminates with SIGSEGV on startup.)
+  This can be removed again in version &gt; 1.9.10
+  https://github.com/Sigil-Ebook/Sigil/commit/3fd17410c31aca2000134ee28af9d42779fc88ea
+</comment>
+    <requestid>982738</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>46cbfc208b07574f7099c0d98d9a6882</srcmd5>
+    <version>1.9.20</version>
+    <time>1662322307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001091</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>3fd8b569c96bd36c6c063a089f786981</srcmd5>
+    <version>1.9.30</version>
+    <time>1679003942</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072335</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f48ac72dd722c76a2260adc56ba7ecf5</srcmd5>
+    <version>2.0.0</version>
+    <time>1692611069</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.0.0
+  * Bug Fixes
+    - fix incorrect assert in sigil-gumbo
+    - recognize application/pdf mediatype on epub import
+    - remove compiler build warnings to clean up the build output
+    - recognize source tag attribute srcset for xhtml source updates
+    - fix Preview disconnect bug after split at cursor
+    - fixed sigil-gumbo interface for plugins
+    - added workaround for ADE epub3 bug with scaled cover images
+    - fix encoding for named entities in opf metadata
+    - fix drag/drop crash by disabling drop inside CodeViewEditor
+    - fix CodeView to Preview syncing on text after an inline xhtml comment
+  * New Features
+    - updated to Qt 6.5.2 which is now used for official releases
+    - updated to Python 3.11.3 and uses the latest EmbededPython interface
+    - updated to the latest jquery version 3.6.4
+    - supports use of embedded pdfs ala ADE
+    - added dark window titlebars for Windows platforms
+    - add support for a user's cover-template2.xhtml and cover-template3.xhtml
+    - add user preference to control printing dpi and add busy indicator icon
+- We'll stick with qt5 for now, which is also still the default in
+  the Makefile, due to Leap and plugins.
+</comment>
+    <requestid>1104873</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>128c3820fe9edbb60a18207f9230a2b9</srcmd5>
+    <version>2.0.1</version>
+    <time>1692795523</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105459</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>70d5b58ea70ed949983cbeb7612ae7d8</srcmd5>
+    <version>2.0.2</version>
+    <time>1705526317</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1139460</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>2715a448b8a351c1e483790f69942751</srcmd5>
+    <version>2.0.2</version>
+    <time>1709070363</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1150749</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>b9726f169196e3d4005fb7a57be411e8</srcmd5>
+    <version>2.0.2</version>
+    <time>1709146049</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1152890</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>48d80656a9f4197e9b1dcb142f5bf64a</srcmd5>
+    <version>2.1.0</version>
+    <time>1712157621</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1164236</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>ed9fc7e938e519242fc4ded3d4719748</srcmd5>
+    <version>2.2.0</version>
+    <time>1718645305</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1181006</requestid>
+  </revision>
+</revisionlist>
