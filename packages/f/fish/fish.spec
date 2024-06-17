@@ -83,6 +83,10 @@ rm %{buildroot}/%{_datadir}/doc/packages/fish/.buildinfo
 
 %suse_update_desktop_file -G "Command-line interpreter" fish TerminalEmulator
 
+%if %{suse_version} >= 1600
+%python3_fix_shebang_path %{buildroot}/%{_datadir}/%{name}/tools/*.py
+%endif
+
 %check
 pushd build
 %make_build test

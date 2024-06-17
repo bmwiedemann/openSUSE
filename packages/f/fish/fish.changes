@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 14 12:38:33 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang_path macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Wed Jun 12 15:55:31 UTC 2024 - Elisei Roca <eroca@suse.com>
 
 - add Requires: gzip for extracting manual archives
