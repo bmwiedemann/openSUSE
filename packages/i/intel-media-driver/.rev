@@ -446,4 +446,12 @@ versions of libva(2)</comment>
 - updated hardware Supplmeents</comment>
     <requestid>1143795</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>742a480a981919be9ab7d1ab72e4f59f</srcmd5>
+    <version>24.1.5</version>
+    <time>1718645645</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1181303</requestid>
+  </revision>
 </revisionlist>
