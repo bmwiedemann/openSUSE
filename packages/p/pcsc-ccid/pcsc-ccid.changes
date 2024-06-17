@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun  5 10:25:22 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.6.0
+  - uses meson build system now
+    - Add support of
+    - Aladdin R.D. JCR SecurBio
+    - AvidCard CAC Smart Card Reader
+    - FujitsuTechnologySolutions GmbH Dual Smartcard Reader D321
+    - Ledger Stax
+    - NXP Pegoda 3
+    - authenton #1- CTAP2.1
+  - provide files for meson build tool (replaces autoconf/automake)
+   - Add possibility to set/get NAD on T=1 for MEP
+   - multi-slots readers
+     - Better handling of reader removal
+     - Use CLOCK_MONOTONIC for timeouts
+   - Some other minor improvements
+
+-------------------------------------------------------------------
 Thu Feb 29 09:30:20 UTC 2024 - jun wang <jgwang@suse.com>
 
 - Update to version 1.5.5
