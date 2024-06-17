@@ -27,7 +27,7 @@ Source1:        intel-ittapi.tar.xz
 Patch1:         fix-test-files.patch
 Patch2:         fix-toolbar-color.patch
 BuildRequires:  gcc-c++
-BuildRequires:  llvm16-devel
+BuildRequires:  (llvm-devel >= 16 with llvm-devel <= 18)
 BuildRequires:  cmake(x86-64) >= 3.14.1
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libedit)
