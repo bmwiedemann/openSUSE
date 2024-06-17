@@ -17,7 +17,7 @@
 
 
 Name:           waylock
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Small screenlocker for Wayland compositors
 License:        ISC
