@@ -1275,4 +1275,12 @@
     <comment>submit new version 5.0.14</comment>
     <requestid>1172660</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>03a2f66451f1c82660686a2e9fcedd90</srcmd5>
+    <version>5.0.15</version>
+    <time>1718645228</time>
+    <user>anag+factory</user>
+    <comment>submit new version 5.0.15</comment>
+    <requestid>1180916</requestid>
+  </revision>
 </revisionlist>
