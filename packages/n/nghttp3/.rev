@@ -22,4 +22,35 @@
   * Fix doc</comment>
     <requestid>1135546</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fd4c76c1f149d4742ddb5440cfc8e31e</srcmd5>
+    <version>1.4.0</version>
+    <time>1718743885</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.4.0:
+  * Introduce typed nghttp3_min and nghttp3_max
+  * Remove nghttp3_min and nghttp3_max
+  * Added options to command find_package
+  * Adjust memory pool allocation units to reduce allocation size
+- update to 1.3.0:
+  * Refactor stream data acknowledgement
+  * Do not call acked_data with 0 length data
+  * Qpack tweak
+  * Avoid assigning zero after memset
+  * Lower decoder stream limit
+  * Workaround llvm issue on github ubuntu runner
+  * cmake: add BUILD_TESTING, fix MSVC with static + shared
+- update to 1.2.0:
+  * Clarify the behavior when a stream is not found
+  * Fix typo
+  * cmake: restore `ENABLE_STATIC_CRT` and `ENABLE_ASAN` options
+  * Add nghttp3_conn_update_ack_offset
+  * Add include path to munit directory
+  * Bump munit
+  * Shrink nghttp3_stream size
+  * Fix typo
+  * Bump munit
+  * Bump submodules</comment>
+    <requestid>1181356</requestid>
+  </revision>
 </revisionlist>

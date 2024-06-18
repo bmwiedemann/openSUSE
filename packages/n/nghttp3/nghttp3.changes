@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jun 17 18:00:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.0:
+  * Introduce typed nghttp3_min and nghttp3_max
+  * Remove nghttp3_min and nghttp3_max
+  * Added options to command find_package
+  * Adjust memory pool allocation units to reduce allocation size
+- update to 1.3.0:
+  * Refactor stream data acknowledgement
+  * Do not call acked_data with 0 length data
+  * Qpack tweak
+  * Avoid assigning zero after memset
+  * Lower decoder stream limit
+  * Workaround llvm issue on github ubuntu runner
+  * cmake: add BUILD_TESTING, fix MSVC with static + shared
+- update to 1.2.0:
+  * Clarify the behavior when a stream is not found
+  * Fix typo
+  * cmake: restore `ENABLE_STATIC_CRT` and `ENABLE_ASAN` options
+  * Add nghttp3_conn_update_ack_offset
+  * Add include path to munit directory
+  * Bump munit
+  * Shrink nghttp3_stream size
+  * Fix typo
+  * Bump munit
+  * Bump submodules
+
+-------------------------------------------------------------------
 Thu Dec 28 21:06:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.0:
