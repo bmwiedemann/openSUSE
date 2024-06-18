@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 17 14:36:01 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20240617:
+  * Allow gnome control center to set autologin (bsc#1222978)
+  * Dontaudit xdm_t to getattr on root_t (bsc#1223145)
+
+-------------------------------------------------------------------
 Thu Jun 13 08:12:47 UTC 2024 - cathy.hu@suse.com
 
 - Update to version 20240613:
