@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 17 17:25:11 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1718351393.546b928:
+  * Wrap README text consistently at 80 characters
+  * Fix typo in README
+  * Mention possibility to run `isotovideo` in a CI runner
+  * backend/qemu.pm: Fix typo: It's riscv64, not risv64
+  * ustreamer: restrict to aarch64 and x86_64
+  * Lower GIT_CACHE_DIR_LIMIT used in the tests
+
+-------------------------------------------------------------------
 Thu Jun 13 12:41:13 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1718279846.45578bb:
