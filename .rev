@@ -110,4 +110,13 @@
   Add more emoji translations gh/dino/dino#1207</comment>
     <requestid>1160567</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>40823666598f51fc017b0c51f813b257</srcmd5>
+    <version>0.4.3</version>
+    <time>1718743896</time>
+    <user>anag+factory</user>
+    <comment>- Fix build with valac &gt;= 0.56.17 (gh/dino/dino#1576):
+  Add dino-0.4.3-vala.patch</comment>
+    <requestid>1181405</requestid>
+  </revision>
 </revisionlist>

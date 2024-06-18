@@ -34,6 +34,8 @@ URL:            https://github.com/dino/dino
 Source:         https://github.com/dino/dino/releases/download/v%{version}/dino-%{version}.tar.gz
 # PATCH-FEATURE-UPSTREAM -- Add more emoji translations gh/dino/dino#1207
 Patch0:         dino-0.4.3-emoji.patch
+# PATCH-FIX-UPSTREAM -- Fix build with vala >= 0.56.17 gh/dino/dino#1576
+Patch1:         dino-0.4.3-vala.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 %if 0%{?suse_version}

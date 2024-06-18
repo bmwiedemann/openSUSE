@@ -1,0 +1,24 @@
+See https://github.com/dino/dino/commit/657502955567dd538e56f300e075c7db52e25d74
+Index: dino-0.4.3/plugins/gpgme-vala/vapi/gpgme_public.vapi
+===================================================================
+--- dino-0.4.3.orig/plugins/gpgme-vala/vapi/gpgme_public.vapi
++++ dino-0.4.3/plugins/gpgme-vala/vapi/gpgme_public.vapi
+@@ -22,9 +22,9 @@ public class Key {
+     public string issuer_name;
+     public string chain_id;
+     public Validity owner_trust;
+-    [CCode(array_null_terminated = true)]
++    [CCode (array_length = false, array_null_terminated = true)]
+     public SubKey[] subkeys;
+-    [CCode(array_null_terminated = true)]
++    [CCode (array_length = false, array_null_terminated = true)]
+     public UserID[] uids;
+     public KeylistMode keylist_mode;
+     // public string fpr; // requires gpgme >= 1.7.0
+@@ -159,4 +159,4 @@ public enum Validity {
+     ULTIMATE
+ }
+ 
+-}
+\ No newline at end of file
++}

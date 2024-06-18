@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 18 07:26:48 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Fix build with valac >= 0.56.17 (gh/dino/dino#1576):
+  Add dino-0.4.3-vala.patch
+
+-------------------------------------------------------------------
 Fri Mar 22 08:32:14 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Add dino-0.4.3-emoji.patch:
