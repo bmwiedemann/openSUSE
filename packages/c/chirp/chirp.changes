@@ -1,0 +1,1050 @@
+-------------------------------------------------------------------
+Mon Jun 17 20:25:36 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- drop chirp-backport-to-python36.patch, no longer needed
+
+-------------------------------------------------------------------
+Mon Jun 17 10:57:50 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Remove shebang from lib files
+- Rebase chirp-no-phone-home.patch
+
+-------------------------------------------------------------------
+Mon Jun 17 10:15:54 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Remove dependency on python3-future
+
+-------------------------------------------------------------------
+Sat Jun 15 12:47:02 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 20240614:
+  * New and updated supported radio models
+  * Fix import issues from multiple sources
+  * Bug fixes
+
+-------------------------------------------------------------------
+Fri Mar 29 22:17:51 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 20240322:
+  * Many new and updated supported radio models
+
+-------------------------------------------------------------------
+Thu Dec 21 19:38:49 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 20231220:
+  * Add Quansheng UV-K6 as alias to Quansheng UV-K5
+  * Add Retevis RA79
+  * Add FT-450 support to FT450D driver
+
+-------------------------------------------------------------------
+Fri Oct 20 23:01:59 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 20231016
+
+-------------------------------------------------------------------
+Mon Aug 21 18:27:59 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20230818:
+  * add Abbree AR-730, AR-F5, Baofeng W31E, Radtel RT-470X
+  * fix RB15/RB615: fix tone squelch issue
+  * FT818: Add PMS as possible scan mode
+  * Fix import DVMemory to D74
+  * Fix leaving live radio serial port open
+
+-------------------------------------------------------------------
+Sun Jul 23 20:02:03 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20230722:
+  * Created stock config file for SP / Poland (SP)
+  * UI fixes and bug fixes, translation updates
+  * Add subclasses for BF1901 and BF1904
+  * Add Baofeng BF-1902 and BF-1903 to alias map
+  * Fix th7800
+  * UV-K5: add UV-K5(8) as an alias, add option to disable tx on a
+    channel
+  * Baofeng UV-6R: fix broken upload/download
+  * tk3140: Add battery save settings
+  * uv5r: Multiple changes 
+  * Retevis RT-470: Expand Supported Frequency Ranges 
+  * Model Alias Map Update: RB27B, RB27V and RB627B can be
+    programed with the RB27 model selection.
+
+-------------------------------------------------------------------
+Sun Jul  2 18:33:18 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- Update to version 20230701:
+  * Support full band TX/RX for Retevis RB75, H777s, RT24, RB27
+  * Allow overriding stock_configs directory
+  * Clean up legacy stock config files
+  * Retevis RB627B/RB27B/RB27V: Update Time-Out-Timer list
+  * Overhaul of Kenwood D7 Driver
+  * UI fixes and bug fixes
+
+-------------------------------------------------------------------
+Sun Jun 25 15:30:15 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- Update to version 20230622:
+  * Implement simple import function
+  * Make radio browser read-only in frozen builds
+  * Small UI dialog improvements
+
+-------------------------------------------------------------------
+Sat Jun 24 19:50:19 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Rebase patch chirp-backport-to-python36.patch to current snapshot
+
+-------------------------------------------------------------------
+Tue Jun 20 19:27:56 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- Update to version 20230619:
+  * Improve IC9x driver
+  * Allow interacting with sub-device radios
+  * Allow interacting with live drivers
+  * Bump new version warning interval
+  * Add PR check for added driver with no added image
+  * Make fast-driver fall back to all drivers
+  * Make fast-driver look for dependencies
+  * RT29: Add Extra DTCS Codes
+  * Fix broken FTM-7250 driver for recent FTx changes
+  * Disable HARDWARE_FLOW for Kenwood TH-F6
+
+-------------------------------------------------------------------
+Mon Jun 12 15:52:25 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 20230611:
+  * Update Spanish Translation
+  * Fix setting extras (mem.extra) on non-english translations
+  * Remove extraneous debug from uv5r driver
+
+-------------------------------------------------------------------
+Sat Jun 10 11:20:04 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- Update to 20230608:
+  * RT-470: support firmware update v1.22
+  * Fix FT2800 driver
+  * Add support for Hiroyasu HI-8811
+  * Add support for changing knob controls on tk3140
+  * Add support for Anysecu UV-A37
+
+-------------------------------------------------------------------
+Fri Jun  2 19:37:14 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- Update to 20230602:
+  * Updates to FT-450 driver
+  * Fix config issues with % in filenames
+  * Fix frequency range for IC-7300
+  * DV Mode fixes
+  * Fix setting extra fields on IC-V80
+
+-------------------------------------------------------------------
+Wed May 17 10:22:52 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 20230515:
+  * Mark Alinco DJ-G7T as working in py3
+  * Fix px888k for python3
+  * Add Baofeng BF-M4
+  * Add alias for TG-UV2
+  * Add Radtel RT-470L fixes
+  * Record BF-777S alias of FB-888
+  * Fix thd72 tone list
+  * Fix right-click in memedit on linux
+- fix up spec to standard Python for Factory submission
+- disable phone home feature, add chirp-no-phone-home.patch
+- simplify icon packaging and package the scalable version
+
+-------------------------------------------------------------------
+Fri Apr 21 10:09:56 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- updated to version (snapshot) 20230421
+
+-------------------------------------------------------------------
+Tue Apr  4 21:53:33 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- updated to version (snapshot) 20230404
+
+-------------------------------------------------------------------
+Sun Apr  2 11:34:40 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- updated to version (snapshot) 20230402
+
+-------------------------------------------------------------------
+Tue Mar 28 09:27:31 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- updated to version (snapshot) 20230328
+
+-------------------------------------------------------------------
+Sat Mar 25 00:25:34 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- updated to version (snapshot) 20230322
+
+-------------------------------------------------------------------
+Mon Mar 13 23:12:47 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- updated to version (snapshot) 20230313
+
+-------------------------------------------------------------------
+Sat Mar  4 13:45:44 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- updated to version (snapshot) 20230304
+
+-------------------------------------------------------------------
+Fri Feb 24 12:02:19 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- updated to version (snapshot) 20230224
+- patch chirp-backport-to-python36.patch to fix compatibility with
+  earlier python version (only for Leap 15.4)
+
+-------------------------------------------------------------------
+Mon Feb 20 23:29:49 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- updated to version (snapshot) 20230219
+- fixed runtime dependencies
+
+-------------------------------------------------------------------
+Sun Feb 19 09:26:28 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- updated to version (snapshot) 20230218
+- fixed runtime dependencies
+
+-------------------------------------------------------------------
+Fri Feb 17 18:42:40 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- updated to version (snapshot) 20230217
+- builds with python 3 (up to 3.9)
+- added icon files extracted from .ico file that was included in
+  older Python 2 versions.
+
+-------------------------------------------------------------------
+Sat Dec 17 10:13:15 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20221217
+
+-------------------------------------------------------------------
+Wed Dec 14 18:37:38 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20221214
+
+-------------------------------------------------------------------
+Wed Dec  7 19:47:38 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20221207
+
+-------------------------------------------------------------------
+Wed Nov 30 21:36:41 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20221130
+
+-------------------------------------------------------------------
+Wed Nov 23 20:41:00 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20221123
+
+-------------------------------------------------------------------
+Sun Nov 20 09:22:42 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20221120
+
+-------------------------------------------------------------------
+Wed Nov  9 21:53:04 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20221109
+
+-------------------------------------------------------------------
+Wed Oct 26 20:36:21 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20221025
+
+-------------------------------------------------------------------
+Sat Oct 22 15:22:41 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20221022
+
+-------------------------------------------------------------------
+Wed Oct 19 19:16:41 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20221019
+
+-------------------------------------------------------------------
+Thu Oct 13 07:36:10 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20221012
+
+-------------------------------------------------------------------
+Mon Oct 10 19:35:47 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20221010
+
+-------------------------------------------------------------------
+Sun Oct  2 22:17:44 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20221002
+
+-------------------------------------------------------------------
+Sat Sep 17 15:23:35 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20220917
+
+-------------------------------------------------------------------
+Sun Sep 11 23:28:06 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20220911
+
+-------------------------------------------------------------------
+Sat Sep 10 17:19:36 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20220909
+
+-------------------------------------------------------------------
+Tue Aug 23 20:54:19 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20220823
+
+-------------------------------------------------------------------
+Mon Aug 22 21:44:29 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20220822
+
+-------------------------------------------------------------------
+Sun Aug 14 13:35:08 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20220808
+
+-------------------------------------------------------------------
+Tue Jul 26 21:56:09 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20220726
+
+-------------------------------------------------------------------
+Mon Jul  4 16:52:03 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20220703
+
+-------------------------------------------------------------------
+Mon Jun 20 17:18:36 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20220620
+
+-------------------------------------------------------------------
+Mon Jun 13 19:18:13 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20220613
+
+-------------------------------------------------------------------
+Sun Jun  5 14:14:23 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20220604
+
+-------------------------------------------------------------------
+Sat Jun  4 06:55:30 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20220602
+
+-------------------------------------------------------------------
+Wed Jun  1 13:17:34 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20220531
+
+-------------------------------------------------------------------
+Mon May 16 20:38:25 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20220515
+
+-------------------------------------------------------------------
+Fri Apr  8 20:37:02 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20220408
+
+-------------------------------------------------------------------
+Sat Apr  2 15:23:32 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20220402
+
+-------------------------------------------------------------------
+Tue Mar  8 22:17:26 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20220308
+
+-------------------------------------------------------------------
+Sat Feb 19 22:44:16 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20220219
+
+-------------------------------------------------------------------
+Fri Feb 11 21:55:12 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20220210
+
+-------------------------------------------------------------------
+Wed Feb  2 17:17:20 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20220202
+
+-------------------------------------------------------------------
+Tue Jan 18 22:45:21 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20220118
+
+-------------------------------------------------------------------
+Sun Jan 16 20:51:58 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20220115
+
+-------------------------------------------------------------------
+Wed Jan  5 00:22:58 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20220103
+
+-------------------------------------------------------------------
+Wed Dec 22 21:54:11 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20211221
+
+-------------------------------------------------------------------
+Thu Dec 16 20:25:54 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20211216
+
+-------------------------------------------------------------------
+Mon Dec 13 21:42:50 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20211213
+
+-------------------------------------------------------------------
+Tue Dec  7 22:00:07 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20211207
+
+-------------------------------------------------------------------
+Thu Nov 18 23:54:14 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20211118
+
+-------------------------------------------------------------------
+Tue Nov 16 22:04:14 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20211116
+
+-------------------------------------------------------------------
+Fri Nov  5 23:13:12 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20211105
+
+-------------------------------------------------------------------
+Sun Oct 17 13:37:11 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20211016
+
+-------------------------------------------------------------------
+Thu Sep 30 21:27:47 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20210930
+
+-------------------------------------------------------------------
+Thu Sep 23 19:54:26 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20210922
+
+-------------------------------------------------------------------
+Sun Sep 19 19:20:50 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20210919
+
+-------------------------------------------------------------------
+Mon Aug 30 19:22:39 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20210830
+
+-------------------------------------------------------------------
+Sat Aug 21 09:22:29 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20210821
+
+-------------------------------------------------------------------
+Sat Aug 14 23:20:42 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20210814
+
+-------------------------------------------------------------------
+Sat Jul 24 20:46:27 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20210724
+
+-------------------------------------------------------------------
+Thu Jul 15 11:25:33 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20210706
+
+-------------------------------------------------------------------
+Mon Jul  5 15:38:43 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20210705
+
+-------------------------------------------------------------------
+Sun Jun 20 23:38:18 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20210618
+
+-------------------------------------------------------------------
+Mon Jun 14 19:51:34 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20210612
+
+-------------------------------------------------------------------
+Fri May 21 17:39:30 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20210520
+
+-------------------------------------------------------------------
+Sun May  2 21:12:16 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20210429
+
+-------------------------------------------------------------------
+Wed Apr 28 20:02:17 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20210428
+
+-------------------------------------------------------------------
+Fri Apr 16 21:55:15 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20210416
+
+-------------------------------------------------------------------
+Wed Apr  7 19:04:45 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20210406
+
+-------------------------------------------------------------------
+Wed Mar 10 23:28:34 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20210310
+
+-------------------------------------------------------------------
+Sun Mar  7 14:28:07 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20210307
+
+-------------------------------------------------------------------
+Fri Feb 12 22:19:37 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20210212
+
+-------------------------------------------------------------------
+Wed Jan 13 00:06:37 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20210110
+
+-------------------------------------------------------------------
+Mon Dec 21 22:52:12 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20201221
+
+-------------------------------------------------------------------
+Mon Nov 30 23:37:27 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20201128
+
+-------------------------------------------------------------------
+Thu Nov 26 22:34:13 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20201125
+
+-------------------------------------------------------------------
+Sun Nov 22 14:41:47 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20201121
+
+-------------------------------------------------------------------
+Fri Nov 20 23:36:04 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 20201120 
+
+-------------------------------------------------------------------
+Wed Oct 14 18:43:09 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily 20201014
+
+-------------------------------------------------------------------
+Sat Oct 10 18:22:54 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily 20201008
+
+-------------------------------------------------------------------
+Wed Sep  9 18:37:00 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily 20200909
+
+-------------------------------------------------------------------
+Wed Sep  2 21:58:56 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily 20200902
+
+-------------------------------------------------------------------
+Thu Aug 27 17:16:14 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily 20200827
+
+-------------------------------------------------------------------
+Fri Aug  7 19:21:57 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily 20200807
+
+-------------------------------------------------------------------
+Mon Jul 20 21:49:12 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily 20200718
+
+-------------------------------------------------------------------
+Mon Jul 13 10:29:00 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily 20200711
+
+-------------------------------------------------------------------
+Mon Jun 22 22:55:05 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily 20200622
+
+-------------------------------------------------------------------
+Fri Jun  5 22:39:00 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily 20200603
+
+-------------------------------------------------------------------
+Thu May 21 16:21:42 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily 20200521
+
+-------------------------------------------------------------------
+Sat May 16 10:55:27 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily 20200516
+
+-------------------------------------------------------------------
+Thu Apr 30 18:32:06 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily 20200430
+
+-------------------------------------------------------------------
+Fri Apr 10 12:23:34 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily 20200409
+
+-------------------------------------------------------------------
+Thu Feb 27 11:07:36 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily 20200227
+
+-------------------------------------------------------------------
+Thu Feb 13 23:28:45 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily 20200213
+
+-------------------------------------------------------------------
+Sat Feb  8 09:22:48 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily 20200207
+- fixed build for Tumbleweed and Factory
+
+-------------------------------------------------------------------
+Wed Feb  5 00:25:01 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20200204
+
+-------------------------------------------------------------------
+Fri Jan 10 20:54:46 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20200107
+
+-------------------------------------------------------------------
+Sat Jan  4 11:45:07 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20200104
+
+-------------------------------------------------------------------
+Sat Dec 21 17:36:37 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20191221
+
+-------------------------------------------------------------------
+Sun Dec  8 08:41:12 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20191206
+
+-------------------------------------------------------------------
+Thu Dec  5 10:28:52 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20191205
+
+-------------------------------------------------------------------
+Sat Nov 23 17:15:13 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20191123
+
+-------------------------------------------------------------------
+Tue Nov 19 22:33:01 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20191119
+
+-------------------------------------------------------------------
+Fri Nov 15 20:45:53 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20191110
+
+-------------------------------------------------------------------
+Tue Oct 29 23:13:01 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20191029
+
+-------------------------------------------------------------------
+Fri Oct 25 22:04:40 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20191022
+
+-------------------------------------------------------------------
+Sat Oct 19 19:07:15 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20191018
+
+-------------------------------------------------------------------
+Wed Sep 25 21:01:51 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20190925
+- fix build for Tumbleweed
+
+-------------------------------------------------------------------
+Thu Sep  5 19:52:47 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20190905
+
+-------------------------------------------------------------------
+Thu Aug 29 19:41:37 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20190829
+
+-------------------------------------------------------------------
+Sat Aug 24 20:05:54 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20190824
+
+-------------------------------------------------------------------
+Sun Aug 18 17:36:32 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20190817
+
+-------------------------------------------------------------------
+Fri Aug 16 18:32:10 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20190812
+
+-------------------------------------------------------------------
+Sat Jul 20 21:08:55 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20190718
+
+-------------------------------------------------------------------
+Sat Jul 13 19:57:29 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20190713
+
+-------------------------------------------------------------------
+Fri Jul 12 17:59:02 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20190712
+
+-------------------------------------------------------------------
+Thu Jul  4 17:58:57 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20190703
+
+-------------------------------------------------------------------
+Thu Jun 27 17:53:05 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20190626
+
+-------------------------------------------------------------------
+Sun Jun  2 10:30:17 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20190601
+
+-------------------------------------------------------------------
+Fri May 24 18:30:55 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20190524
+
+-------------------------------------------------------------------
+Thu May 16 21:25:22 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20190516
+
+-------------------------------------------------------------------
+Sat May 11 19:43:56 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20190511
+
+-------------------------------------------------------------------
+Mon Apr 29 19:15:30 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20190429
+
+-------------------------------------------------------------------
+Thu Apr 25 18:33:39 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20190424
+
+-------------------------------------------------------------------
+Thu Apr 18 20:12:40 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20190412
+
+-------------------------------------------------------------------
+Thu Mar 21 21:58:10 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20190321
+
+-------------------------------------------------------------------
+Tue Mar  5 23:45:38 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20190304
+
+-------------------------------------------------------------------
+Fri Feb 22 20:09:32 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20190222
+
+-------------------------------------------------------------------
+Wed Feb  6 23:36:03 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20190206
+
+-------------------------------------------------------------------
+Sun Feb  3 10:35:13 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20190201
+
+-------------------------------------------------------------------
+Tue Jan 22 22:56:30 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20190120
+
+-------------------------------------------------------------------
+Sun Jan 13 23:46:42 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20190112
+
+-------------------------------------------------------------------
+Fri Jan  4 19:44:25 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20190104
+
+-------------------------------------------------------------------
+Sat Dec 15 10:58:30 UTC 2018 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20181214
+
+-------------------------------------------------------------------
+Thu Dec  6 23:13:54 UTC 2018 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20181205
+
+-------------------------------------------------------------------
+Wed Nov 28 23:51:46 UTC 2018 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20181128
+
+-------------------------------------------------------------------
+Thu Oct 18 20:31:46 UTC 2018 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20181018
+
+-------------------------------------------------------------------
+Wed Oct 10 23:54:30 UTC 2018 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version daily-20181009
+
+-------------------------------------------------------------------
+Sat Sep  8 18:38:25 UTC 2018 - wk@ire.pw.edu.pl
+
+- update to version daily-20180906
+
+-------------------------------------------------------------------
+Mon Aug 20 23:21:08 UTC 2018 - wk@ire.pw.edu.pl
+
+- update to version daily-20180815
+
+-------------------------------------------------------------------
+Sat Jul  7 11:47:05 UTC 2018 - wk@ire.pw.edu.pl
+
+- update to version daily-20180707
+
+-------------------------------------------------------------------
+Sat Jun 23 18:09:30 UTC 2018 - wk@ire.pw.edu.pl
+
+- update to version daily-20180623
+
+-------------------------------------------------------------------
+Wed Jun  6 09:49:01 UTC 2018 - wk@ire.pw.edu.pl
+
+- update to version daily-20180606
+
+-------------------------------------------------------------------
+Sun May 20 10:44:20 UTC 2018 - wk@ire.pw.edu.pl
+
+- update to version daily-20180519
+
+-------------------------------------------------------------------
+Sat May 12 07:27:25 UTC 2018 - wk@ire.pw.edu.pl
+
+- update to version daily-20180510
+
+-------------------------------------------------------------------
+Sat Apr 14 19:28:14 UTC 2018 - wk@ire.pw.edu.pl
+
+- update to version daily-20180412
+
+-------------------------------------------------------------------
+Sun Mar 25 16:03:59 UTC 2018 - wk@ire.pw.edu.pl
+
+- update to version daily-20180325
+
+-------------------------------------------------------------------
+Sun Mar 11 19:31:26 UTC 2018 - wk@ire.pw.edu.pl
+
+- update to version daily-20180309
+
+-------------------------------------------------------------------
+Sun Feb 11 19:19:59 UTC 2018 - wk@ire.pw.edu.pl
+
+- update to version daily-20180210
+
+-------------------------------------------------------------------
+Sat Jan 20 21:03:31 UTC 2018 - wk@ire.pw.edu.pl
+
+- update to version daily-20180115
+
+-------------------------------------------------------------------
+Thu Jan  4 22:03:50 UTC 2018 - wk@ire.pw.edu.pl
+
+- update to version daily-20180104
+
+-------------------------------------------------------------------
+Fri Dec 29 14:07:24 UTC 2017 - wk@ire.pw.edu.pl
+
+- update to version daily-20171229
+
+-------------------------------------------------------------------
+Mon Dec  4 23:24:10 UTC 2017 - wk@ire.pw.edu.pl
+
+- update to version daily-20171204
+
+-------------------------------------------------------------------
+Thu Nov 23 23:32:44 UTC 2017 - wk@ire.pw.edu.pl
+
+- update to version daily-20171120
+
+-------------------------------------------------------------------
+Fri Oct 13 11:03:38 UTC 2017 - wk@ire.pw.edu.pl
+
+- update to version daily-20171013
+
+-------------------------------------------------------------------
+Tue Oct 10 23:17:43 UTC 2017 - wk@ire.pw.edu.pl
+
+- update to version daily-20171008
+
+-------------------------------------------------------------------
+Sun Jul 16 22:19:56 UTC 2017 - wk@ire.pw.edu.pl
+
+- update to version daily-20170714
+
+-------------------------------------------------------------------
+Thu Jun 15 08:24:57 UTC 2017 - wk@ire.pw.edu.pl
+
+- update to version daily-20170608
+
+-------------------------------------------------------------------
+Sat May  6 17:34:29 UTC 2017 - frede@b1-systems.de
+
+- update to version daily-20170501
+
+-------------------------------------------------------------------
+Fri Mar 31 10:25:15 UTC 2017 - wk@ire.pw.edu.pl
+
+- update to version daily-20170330
+
+-------------------------------------------------------------------
+Sat Mar 25 22:28:57 UTC 2017 - wk@ire.pw.edu.pl
+
+- update to version daily-20170324
+
+-------------------------------------------------------------------
+Wed Dec 28 20:47:45 UTC 2016 - wk@ire.pw.edu.pl
+
+- update to version daily-20161220
+
+-------------------------------------------------------------------
+Sun Oct 23 20:29:17 UTC 2016 - wk@ire.pw.edu.pl
+
+- update to version daily-20161018
+
+-------------------------------------------------------------------
+Thu Sep  1 21:05:37 UTC 2016 - wk@ire.pw.edu.pl
+
+- update to version daily-20160830
+
+-------------------------------------------------------------------
+Mon Jul 25 19:22:34 UTC 2016 - wk@ire.pw.edu.pl
+
+- update to version daily-20160717
+
+-------------------------------------------------------------------
+Sun Jun 19 23:25:11 UTC 2016 - wk@ire.pw.edu.pl
+
+-  update to version daily-20160615
+
+-------------------------------------------------------------------
+Sat Jun  4 22:27:35 UTC 2016 - wk@ire.pw.edu.pl
+
+- update to version daily-20160604
+
+-------------------------------------------------------------------
+Sat May 21 21:15:24 UTC 2016 - wk@ire.pw.edu.pl
+
+- update to version daily-20160517
+
+-------------------------------------------------------------------
+Fri Mar 11 23:02:10 CET 2016 - frede@b1-systems.de
+
+- update to version daily-20160309
+
+-------------------------------------------------------------------
+Fri Jan 31 11:42:42 CET 2016 - frede@b1-systems.de
+
+- update to version daily-20160128
+
+-------------------------------------------------------------------
+Fri Jan 22 09:11:42 CET 2016 - frede@b1-systems.de
+
+- update to version daily-20160116
+
+-------------------------------------------------------------------
+Tue Oct 21 09:58:47 UTC 2014 - dl8fcl@darc.de
+
+- updated to version 0.4.1
+
+-------------------------------------------------------------------
+Mon Apr 21 10:29:52 UTC 2014 - dl8fcl@darc.de
+
+- spec file updated for openSUSE
+- GenericName in desktop file changed
+
+-------------------------------------------------------------------
+Sat Apr  5 17:35:19 UTC 2014 - wk@ire.pw.edu.pl - 0.4.0-2
+
+- updated to version 0.4.0
+
+-------------------------------------------------------------------
+Mon Feb 17 23:03:43 UTC 2014 - wk@ire.pw.edu.pl - 0.3.1-1
+
+- version 0.3.1
+- initial specfile
+

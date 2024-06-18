@@ -1,0 +1,55 @@
+From: Andreas Stieger <Andreas.Stieger@gmx.de>
+Date: Wed, 03 May 2023 01:50:32 +0200
+Subject: [PATCH] disable privacy-defeaing reporting feature
+Upstream: no
+
+The upstream developer has seen fit to have this program by default,
+during first start-up and every subsequent run, without warning or
+transport encryption, to report the following data to his server:
+
+* a unique and persistent install ID
+* the installed version
+* the OS and python version in use
+
+Additionaly it reported the following items during interactive use:
+
+* All of the above data
+* the radio make and model
+* the operation performed on the radio
+* (implicitly) the time and sequence of these operations
+
+This patch disables this functionality.
+
+Index: chirp-20240614/chirp/wxui/main.py
+===================================================================
+--- chirp-20240614/chirp/wxui/main.py	2024-05-24 11:10:24.000000000 +0200
++++ chirp-20240614/chirp/wxui/main.py	2024-06-17 12:24:59.214869060 +0200
+@@ -920,6 +920,7 @@
+         self.Bind(wx.EVT_MENU, self._menu_about, about_item)
+         help_menu.Append(about_item)
+ 
++        '''
+         developer_menu = wx.MenuItem(help_menu, wx.NewId(),
+                                      _('Developer Mode'),
+                                      kind=wx.ITEM_CHECK)
+@@ -961,6 +962,7 @@
+                                 _('Load module from issue...'))
+         self.Bind(wx.EVT_MENU, self._menu_load_from_issue, lmfi_menu)
+         help_menu.Append(lmfi_menu)
++        '''
+ 
+         menu_bar = wx.MenuBar()
+         menu_bar.Append(file_menu, wx.GetStockLabel(wx.ID_FILE))
+Index: chirp-20240614/chirp/wxui/report.py
+===================================================================
+--- chirp-20240614/chirp/wxui/report.py	2024-03-06 11:09:53.000000000 +0100
++++ chirp-20240614/chirp/wxui/report.py	2024-06-17 12:24:59.214869060 +0200
+@@ -32,7 +32,7 @@
+ LOG = logging.getLogger(__name__)
+ logging.getLogger('urllib3.connectionpool').setLevel(logging.INFO)
+ SESSION = None
+-DISABLED = False
++DISABLED = True
+ SEM = threading.Semaphore(2)
+ BASE = 'http://chirpmyradio.com/report'
+ 
