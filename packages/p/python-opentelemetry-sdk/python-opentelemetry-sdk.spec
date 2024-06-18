@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-sdk
-Version:        1.24.0
+Version:        1.25.0
 Release:        0
 Summary:        OpenTelemetry Python SDK
 License:        Apache-2.0

@@ -50,4 +50,33 @@
   * Fix license field in pyproject.toml files</comment>
     <requestid>1164296</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>71d3679fa01b3b4a4c001413d57b9319</srcmd5>
+    <version>1.25.0</version>
+    <time>1718743860</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.25.0:
+  * Fix class BoundedAttributes to have RLock rather than Lock
+  * Remove thread lock by loading RuntimeContext explicitly.
+  * Update proto version to v1.2.0
+  * Add to_json method to ExponentialHistogram
+  * Bump mypy to 1.9.0
+  * Fix exponential histograms
+  * Fix otlp exporter to export log_record.observed_timestamp
+  * Add capture the fully qualified type name for raised
+    exceptions in spans
+  * Prometheus exporter sort label keys to prevent duplicate
+    metrics when user input changes order
+  * Update semantic conventions to version 1.25.0.
+  * Rename test objects to avoid pytest warnings
+  * Add span flags to OTLP spans and links
+  * Record links with invalid SpanContext if either attributes or
+    TraceState are not empty
+  * Add OpenTelemetry trove classifiers to PyPI packages
+  * Fix prometheus metric name and unit conversion
+  * Add parameters for Distros and configurators to configure
+    autoinstrumentation in addition to existing environment
+    variables.</comment>
+    <requestid>1181306</requestid>
+  </revision>
 </revisionlist>
