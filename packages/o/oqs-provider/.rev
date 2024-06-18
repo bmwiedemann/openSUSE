@@ -80,4 +80,14 @@
   - (optional) KEM algorithm en-/decoder feature (forwarded request 1179956 from msmeissn)</comment>
     <requestid>1179957</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>11fd9ba1bbeaa92314de75254e765043</srcmd5>
+    <version>0.6.1</version>
+    <time>1718743946</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.6.1
+  - CVE-2024-37305: Fixed buffer overflow in deserialization of hybrid
+    keys and signatures (bsc#1226468) (forwarded request 1181500 from msmeissn)</comment>
+    <requestid>1181501</requestid>
+  </revision>
 </revisionlist>

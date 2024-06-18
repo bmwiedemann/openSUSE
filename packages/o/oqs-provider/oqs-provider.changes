@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 18 12:44:27 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.6.1
+  - CVE-2024-37305: Fixed buffer overflow in deserialization of hybrid
+    keys and signatures (bsc#1226468)
+
+-------------------------------------------------------------------
 Tue Jun 11 08:56:30 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - updated to 0.6.0
