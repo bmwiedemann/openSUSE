@@ -1,7 +1,7 @@
 #
 # spec file for package libosmocore
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libosmocore
-Version:        1.9.2
+Version:        1.9.3
 Release:        0
 Summary:        The Open Source Mobile Communications Core Library
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -342,24 +342,15 @@ find "%buildroot/%_libdir" -type f -name "*.la" -delete
 %check
 %make_build check || (find . -name testsuite.log -exec cat {} +)
 
-%post   -n libosmocodec4 -p /sbin/ldconfig
-%postun -n libosmocodec4 -p /sbin/ldconfig
-%post   -n libosmocoding0 -p /sbin/ldconfig
-%postun -n libosmocoding0 -p /sbin/ldconfig
-%post   -n libosmocore21 -p /sbin/ldconfig
-%postun -n libosmocore21 -p /sbin/ldconfig
-%post   -n libosmoctrl0 -p /sbin/ldconfig
-%postun -n libosmoctrl0 -p /sbin/ldconfig
-%post   -n libosmogb14 -p /sbin/ldconfig
-%postun -n libosmogb14 -p /sbin/ldconfig
-%post   -n libosmogsm20 -p /sbin/ldconfig
-%postun -n libosmogsm20 -p /sbin/ldconfig
-%post   -n libosmosim2 -p /sbin/ldconfig
-%postun -n libosmosim2 -p /sbin/ldconfig
-%post   -n libosmousb0 -p /sbin/ldconfig
-%postun -n libosmousb0 -p /sbin/ldconfig
-%post   -n libosmovty13 -p /sbin/ldconfig
-%postun -n libosmovty13 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libosmocodec4
+%ldconfig_scriptlets -n libosmocoding0
+%ldconfig_scriptlets -n libosmocore21
+%ldconfig_scriptlets -n libosmoctrl0
+%ldconfig_scriptlets -n libosmogb14
+%ldconfig_scriptlets -n libosmogsm20
+%ldconfig_scriptlets -n libosmosim2
+%ldconfig_scriptlets -n libosmousb0
+%ldconfig_scriptlets -n libosmovty13
 
 %files tools
 %_bindir/osmo-*
