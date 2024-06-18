@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jun 11 09:03:51 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update to 0.8.0
+ * Changed project license to GPLv3.
+ * Greatly simplify the compilation process.
+ * Fix deprecated calls to the cl library.
+ * Deprecated XEmacs support. Bump minimal GNU Emacs version to 24.3.
+ * Add a gnuplot-program-args variable for passing additional
+   arguments to the gnuplot program binary.
+ * The gnuplot-inline-image-mode can now take three values: nil,
+   inline, dedicated.
+ * Add the gnuplot-use-context-sensitive-completion configuration
+   option.
+ * Removed the gnuplot-bug-report function.
+ * The provided gnuplot.info manual file has been updated for gnuplot
+   version 5.2.6.
+ * Add the gnuplot-program-args customization option to pass
+   additional arguments to the gnuplot process.
+ * Use syntax-proprietize-rules in gnuplot buffers.
+ * gnuplot-context-sensitive-mode is now a normal minor mode.
+ * Enable completion-at-point in gnuplot comint buffers.
+ * Remove the unused dotemacs.el file.
+ * comint-process-echoes is now buffer-local. 
+
+-------------------------------------------------------------------
 Thu Mar 11 07:04:22 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Make sure that Upstream source tar ball fits local copy 

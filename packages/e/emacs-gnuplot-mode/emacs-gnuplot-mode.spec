@@ -1,7 +1,7 @@
 #
 # spec file for package emacs-gnuplot-mode
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _sitedir %{_datadir}/emacs/site-lisp
 
 Name:           emacs-gnuplot-mode
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Gnuplot mode for EMACS
 License:        GPL-2.0-or-later
@@ -50,7 +50,8 @@ This package contains the Gnuplot mode documentation in PDF format.
 %setup -q -n gnuplot-%{version}
 
 %build
-make -f Makefile.dst default pdf
+make -f Makefile default
+pdflatex gpelcard.tex
 
 %install
 install -pm 755 -d %{buildroot}%{_sitedir}
@@ -58,8 +59,8 @@ install -pm 644 gnuplot*.el %{buildroot}%{_sitedir}/
 install -pm 644 gnuplot*.elc %{buildroot}%{_sitedir}/
 
 %files
-%license COPYING
-%doc README.org dotemacs.el
+%license LICENSE
+%doc README.org
 %dir %{_sitedir}
 %{_sitedir}/gnuplot*el
 %{_sitedir}/gnuplot*elc
