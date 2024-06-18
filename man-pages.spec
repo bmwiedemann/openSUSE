@@ -17,7 +17,7 @@
 
 
 Name:           man-pages
-Version:        6.9
+Version:        6.9.1
 Release:        0
 Summary:        Linux Manual Pages
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
@@ -49,7 +49,6 @@ only).
 
 %prep
 %autosetup -p1
-find -name "*.orig" | xargs rm -fv
 
 %build
 # glibc
@@ -61,8 +60,6 @@ rm man5/motd.5
 # conflicts with mandoc; man.7 is not so link on groff_man.7,
 # which is part of groff-full
 rm man7/man.7
-# ioctl_ficlone.2 does not exist
-rm man2const/FICLONERANGE.2const
 
 %install
 for i in man[0-9]*; do
@@ -96,7 +93,6 @@ fi
 %defattr(644,root,root,755)
 %doc README Changes Changes.old CONTRIBUTING lsm
 %license LICENSES/*.txt
-#%dir %{_mandir}/man7mp
 %dir %{_mandir}/man2type
 %dir %{_mandir}/man3const
 %dir %{_mandir}/man3head

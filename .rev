@@ -2131,4 +2131,13 @@
   * new dir man2const/</comment>
     <requestid>1181301</requestid>
   </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>95e3653954e431f2be3797ac190f8284</srcmd5>
+    <version>6.9.1</version>
+    <time>1718743845</time>
+    <user>anag+factory</user>
+    <comment>- version update to 6.9.1
+  * remove broken .so link</comment>
+    <requestid>1181447</requestid>
+  </revision>
 </revisionlist>
