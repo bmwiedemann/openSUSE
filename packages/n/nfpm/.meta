@@ -1,0 +1,14 @@
+<package name="nfpm" project="openSUSE:Factory">
+  <title>Simple deb, rpm, apk and arch linux packager written in Go</title>
+  <description>nFPM is a simple and 0-dependencies deb, rpm, apk and arch linux packager written in Go
+
+## Why
+
+While fpm is great, for me, it is a bummer that it depends on ruby, tar and other software.
+
+I wanted something that could be used as a binary and/or as a library and that was really simple.
+
+So I created nFPM: a simpler, 0-dependency, as-little-assumptions-as-possible alternative to fpm.</description>
+  <devel project="devel:tools:building" package="nfpm"/>
+  <url>https://github.com/goreleaser/nfpm</url>
+</package>

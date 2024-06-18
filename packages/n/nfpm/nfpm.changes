@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Mon Jun 17 18:48:05 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.37.1:
+  * fix: move mod back to go 1.21
+  * docs: update cmd docs
+  * test: test enumarate
+  * chore(deps): update go-rpmutils (#814)
+  * docs: update cmd docs
+  * feat: support for ipk packages (#818)
+  * chore(deps): update go-rpmutils
+  * chore(deps): bump golangci/golangci-lint-action from 5 to 6 (#819)
+  * chore(deps): bump anchore/sbom-action from 0.15.10 to 0.15.11 (#817)
+  * chore(deps): bump golangci/golangci-lint-action from 4 to 5 (#816)
+
+-------------------------------------------------------------------
+Mon Jun 17 18:47:53 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package nfpm: a simple deb, rpm, apk and arch linux packager
+  written in Go

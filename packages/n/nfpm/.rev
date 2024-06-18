@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>57b969ba69340fdf4cea80b5c0b0e5b9</srcmd5>
+    <version>2.37.1</version>
+    <time>1718743959</time>
+    <user>anag+factory</user>
+    <comment>new package nfpm: a simple deb, rpm, apk and arch linux packager written in Go</comment>
+    <requestid>1181523</requestid>
+  </revision>
+</revisionlist>
