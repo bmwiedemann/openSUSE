@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 13 05:55:16 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update patches to current version:
+  * 0001-Don-t-link-against-gumbo.patch
+  * 0002-Revert-Rework-detection-of-mupdf.patch
+- Update to 0.4.3:
+  * Fix crash due to multi-threading issues
+  * Various fixes and improvements
+- Updates from 0.4.2:
+  * Compatible with mupdf 1.24
+  * Various fixes and improvements
+
+-------------------------------------------------------------------
 Tue Feb 20 12:07:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

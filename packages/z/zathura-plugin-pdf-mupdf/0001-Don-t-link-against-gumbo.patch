@@ -1,17 +1,17 @@
-From 9eabe363db92c006d7542dca38619f2d0d65dd3a Mon Sep 17 00:00:00 2001
-From: llyyr <llyyr.public@gmail.com>
-Date: Tue, 7 Mar 2023 06:39:12 +0530
-Subject: [PATCH] Don't link against gumbo
+From d7630c61b492e1d01004c760a8c37861f59386be Mon Sep 17 00:00:00 2001
+From: Josh <jsmithfpv@disroot.org>
+Date: Thu, 13 Jun 2024 02:06:19 -0400
+Subject: [PATCH 1/2] nogumbo
 
 ---
  meson.build | 2 --
  1 file changed, 2 deletions(-)
 
 diff --git a/meson.build b/meson.build
-index c7b5a8b..1f628af 100644
+index 2d1c6a2..85ccad7 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -40,7 +40,6 @@ else
+@@ -54,7 +54,6 @@ else
    libjpeg = dependency('libjpeg')
    libjbig2dec = cc.find_library('jbig2dec')
    libopenjp2 = dependency('libopenjp2')
@@ -19,7 +19,7 @@ index c7b5a8b..1f628af 100644
    tesseract = dependency('tesseract')
    leptonica = dependency('lept')
    mujs = dependency('mujs')
-@@ -49,7 +48,6 @@ else
+@@ -63,7 +62,6 @@ else
      libjpeg,
      libjbig2dec,
      libopenjp2,
@@ -28,5 +28,5 @@ index c7b5a8b..1f628af 100644
      leptonica,
      mujs
 -- 
-2.39.2
+2.45.2
 
