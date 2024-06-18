@@ -946,4 +946,14 @@ mostly-working synapse than nothing at all) and the package has been update to
 - Update to 1.108.0</comment>
     <requestid>1177340</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>98c146adce684aa5ba3ef5f0c7ac30d5</srcmd5>
+    <version>1.109.0</version>
+    <time>1718743924</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1181473 from darix
+
+- Update to 1.109.0</comment>
+    <requestid>1181474</requestid>
+  </revision>
 </revisionlist>

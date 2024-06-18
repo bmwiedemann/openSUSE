@@ -23,49 +23,50 @@
 %global Jinja2_version                3.1.2
 %global Pillow_version                10.2.0
 %global PyYAML_version                6.0.1
-%global attrs_version                 23.1.0
-%global bcrypt_version                4.0.1
-%global bleach_version                5.0.1
+%global attrs_version                 23.2.0
+%global bcrypt_version                4.1.3
+%global bleach_version                6.1.0
 %global canonicaljson_version         2.0.0
-# TODO: 42.0.5
-%global cryptography_version          42.0.4
-%global immutabledict_version         3.0.0
-%global idna_version                  3.6
+%global cryptography_version          42.0.7
+%global immutabledict_version         4.2.0
+%global idna_version                  3.7
 %global ijson_version                 3.2.3
 %global jsonschema_version            4.20.0
 %global matrix_common_version         1.3.0
 %global matrix_common_max_version     2
 %global msgpack_version               1.0.7
-%global netaddr_version               0.9.0
+%global netaddr_version               1.2.1
 %global phonenumbers_version          8.13.33
 %global prometheus_client_version     0.20.0
 %global psutil_version                2.0.0
-%global pyOpenSSL_version             23.3.0
-%global pyasn1_version                0.5.1
+%global pyOpenSSL_version             24.1.0
+%global pyasn1_version                0.6.0
 %global pyasn1_modules_version        0.3.0
 %global pymacaroons_version           0.13.0
-%global service_identity_version      23.1.0
+%global service_identity_version      24.1.0
 %global signedjson_version            1.1.4
 %global signedjson_max_version        2
 %global sortedcontainers_version      2.4.0
-%global systemd_version               234
+%global systemd_version               235
 %global typing_extensions_version     4.1.1
 %global treq_version                  23.11.0
 %global unpaddedbase64_version        2.1.0
 %global matrix_synapse_ldap3_version  0.3.0
-%global packaging_version             23.2
+%global packaging_version             24.0
 %global psycopg2_version              2.9.9
 %global pysaml2_version               7.3.1
-%global Authlib_version               1.2.1
-%global lxml_version                  4.9.3
-%global sentry_sdk_version            1.36.0
-%global PyJWT_version                 2.4.0
+%global Authlib_version               1.3.0
+# TODO: 5.2.2
+%global lxml_version                  5.1.0
+%global sentry_sdk_version            2.1.1
+%global PyJWT_version                 2.6.0
 %global jaeger_client_version         4.8.0
 %global opentracing_version           2.4.0
-%global hiredis_version               2.2.3
-%global txredisapi_version            1.4.9
+%global hiredis_version               2.3.2
+%global txredisapi_version            1.4.10
 %global Pympler_version               1.0.1
-%global pydantic_version              1.9.1
+%global pydantic_version              2.7.1
+# TODO: 2.13.1
 %global pyicu_version                 2.12
 %else
 # some version locks based on poetry.lock
@@ -86,7 +87,7 @@
 %global matrix_common_max_version     2
 %global msgpack_version               0.5.2
 %global netaddr_version               0.7.18
-%global phonenumbers_version          8.2.0
+%global phonenumbers_version          8.13.37
 %global prometheus_client_version     0.4.0
 %global psutil_version                2.0.0
 %global pyOpenSSL_version             16.0.0
@@ -149,7 +150,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.108.0
+Version:        1.109.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later

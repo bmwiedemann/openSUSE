@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Tue Jun 18 11:01:41 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.109.0
+  - Features
+    - Add the ability to auto-accept invites on the behalf of
+      users. See the auto_accept_invites config option for details.
+      (#17147)
+    - Add experimental MSC3575 Sliding Sync /sync/e2ee endpoint for
+      to-device messages and device encryption info. (#17167)
+    - Support MSC3916 by adding unstable media endpoints to
+      /_matrix/client. (#17213)
+    - Add logging to tasks managed by the task scheduler, showing
+      CPU and database usage. (#17219)
+  - Bugfixes
+    - When rolling back to a previous Synapse version and then
+      forwards again to this release, don't require server
+      operators to manually run SQL. (#17305, #17309)
+    - Fix bug where one-time-keys were not always included in /sync
+      response when using workers. Introduced in v1.109.0rc1.
+      (#17275)
+    - Fix bug where /sync could get stuck due to edge case in
+      device lists handling. Introduced in v1.109.0rc1. (#17292)
+    - Fix deduplicating of membership events to not create unused
+      state groups. (#17164)
+    - Fix bug where duplicate events could be sent down sync when
+      using workers that are overloaded. (#17215)
+    - Ignore attempts to send to-device messages to bad users, to
+      avoid log spam when we try to connect to the bad server.
+      (#17240)
+    - Fix handling of duplicate concurrent uploading of device
+      one-time-keys. (#17241)
+    - Fix reporting of default tags to Sentry, such as worker name.
+      Broke in v1.108.0. (#17251)
+    - Fix bug where typing updates would not be sent when using
+      workers after a restart. (#17252)
+  - Improved Documentation
+    - Update the LemonLDAP documentation to say that claims should
+      be explicitly included in the returned id_token, as Synapse
+      won't request them. (#17204)
+  - Internal Changes
+    - Fix the building of binary wheels for macOS by switching to
+      macOS 12 CI runners. (#17319)
+    - Use the release branch for sytest in release-branch PRs.
+      (#17306)
+    - Improve DB usage when fetching related events. (#17083)
+    - Log exceptions when failing to auto-join new user according
+      to the auto_join_rooms option. (#17176)
+    - Reduce work of calculating outbound device lists updates.
+      (#17211)
+    - Improve performance of calculating device lists changes in
+      /sync. (#17216)
+    - Move towards using MultiWriterIdGenerator everywhere.
+      (#17226)
+    - Replaces all usages of StreamIdGenerator with
+      MultiWriterIdGenerator. (#17229)
+    - Change the allow_unsafe_locale config option to also apply
+      when setting up new databases. (#17238)
+    - Fix errors in logs about closing incorrect logging contexts
+      when media gets rejected by a module. (#17239, #17246)
+    - Clean out invalid destinations from device_federation_outbox
+      table. (#17242)
+    - Stop logging errors when receiving invalid User IDs in key
+      querys requests. (#17250)
+
+-------------------------------------------------------------------
 Tue May 28 12:37:01 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.108.0
