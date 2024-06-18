@@ -17,12 +17,13 @@
 
 
 Name:           zathura
-Version:        0.5.4
+Version:        0.5.6
 Release:        0
 Summary:        A customizable document viewer
 License:        Zlib
 URL:            https://pwmt.org/projects/zathura/
 Source:         %{url}/download/%{name}-%{version}.tar.xz
+# PATCH-FIX-OPENSUSE no-parallel-xvfb.patch smolsheep@opensuse.org -- Fix tests that rely on xvfb
 Patch0:         no-parallel-xvfb.patch
 BuildRequires:  appstream-glib
 BuildRequires:  cmake
@@ -36,7 +37,7 @@ BuildRequires:  rsvg-convert
 BuildRequires:  xvfb-run
 BuildRequires:  zsh
 BuildRequires:  pkgconfig(check)
-BuildRequires:  pkgconfig(girara-gtk3) >= 0.4.1
+BuildRequires:  pkgconfig(girara-gtk3) >= 0.4.3
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(sqlite3)
 Recommends:     %{name}-lang
@@ -63,7 +64,7 @@ Development and header files for the zathura package.
 Summary:        Zathura Bash completion
 Requires:       %{name} = %{version}
 Requires:       bash-completion
-Supplements:    (%{name} and bash)
+Supplements:    (%{name} and bash-completion)
 
 %description bash-completion
 Optional dependency offering bash completion for zathura
@@ -89,8 +90,7 @@ Optional dependency offering fish completion for zathura
 %lang_package
 
 %prep
-%setup -q
-%patch -p1 0
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags}"

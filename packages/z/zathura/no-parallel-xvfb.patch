@@ -2,23 +2,23 @@
  1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/tests/meson.build b/tests/meson.build
-index 1b2e81a..6b4ff87 100644
+index 10531a5..85c1a67 100644
 --- a/tests/meson.build
 +++ b/tests/meson.build
-@@ -43,7 +43,8 @@ if check.found()
+@@ -52,7 +52,8 @@ if check.found()
      )
      test('session', xvfb,
-       args: ['-a', '-s', '-screen 0 1400x900x24 -ac +extension GLX +render -noreset', session],
+       args: xvfb_args + [session],
 -      timeout: 60*60
 +      timeout: 60*60,
 +      is_parallel: false
      )
  
      if seccomp.found()
-@@ -54,7 +55,8 @@ if check.found()
+@@ -63,7 +64,8 @@ if check.found()
        )
        test('sandbox', xvfb,
-         args: ['-a', '-s', '-screen 0 1400x900x24 -ac +extension GLX +render -noreset', sandbox],
+         args: xvfb_args + [sandbox],
 -        timeout: 60*60
 +        timeout: 60*60,
 +        is_parallel: false

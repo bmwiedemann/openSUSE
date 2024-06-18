@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jun 13 04:38:36 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update no-parallel-xvfb.patch to current version
+- Migrate from deprecated setup to autosetup
+- Update to 0.5.6:
+  * Move to Github
+  * Reduce minimum glib version
+  * Remove normal sandbox mode
+  * Various fixes and improvements
+- Updates from 0.5.5:
+  * Compatibility with girara 0.4.3
+  * Remove highlight-transparency setting. Set the alpha component
+    of highlight-color, highlight-active-color and highlight-fg
+    instead.
+  * Remove smooth-reload setting. Smooth reloading is now always
+    enabled.
+  * Remove plain database backend. The sqlite database backend
+    imports the data from the plain database the first time. sqlite
+    is now a hard dependency.
+  * Fix a segfault if dbus is not enabled.
+
+-------------------------------------------------------------------
 Wed Feb 21 15:20:00 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Skip test_session in qemu emulation
