@@ -3,7 +3,19 @@
   <service mode="buildtime" name="kiwi_metainfo_helper"/>
   <service name="replace_using_package_version" mode="buildtime">
     <param name="file">Dockerfile</param>
-    <param name="regex">%%prometheus_version%%</param>
+    <param name="regex">%%prometheus_major_version%%</param>
+    <param name="package">golang-github-prometheus-prometheus</param>
+    <param name="parse-version">major</param>
+  </service>
+  <service name="replace_using_package_version" mode="buildtime">
+    <param name="file">Dockerfile</param>
+    <param name="regex">%%prometheus_minor_version%%</param>
+    <param name="package">golang-github-prometheus-prometheus</param>
+    <param name="parse-version">minor</param>
+  </service>
+  <service name="replace_using_package_version" mode="buildtime">
+    <param name="file">Dockerfile</param>
+    <param name="regex">%%prometheus_patch_version%%</param>
     <param name="package">golang-github-prometheus-prometheus</param>
     <param name="parse-version">patch</param>
   </service>
