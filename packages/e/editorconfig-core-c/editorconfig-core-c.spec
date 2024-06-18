@@ -18,7 +18,7 @@
 
 
 Name:           editorconfig-core-c
-Version:        0.12.8
+Version:        0.12.9
 Release:        0
 Summary:        EditorConfig core library written in C
 License:        BSD-2-Clause AND BSD-3-Clause

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 17 08:49:42 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.12.9:
+  * fix potentially uninitialized local (variable|pointer)
+
+-------------------------------------------------------------------
 Sat Jun 15 08:57:49 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.12.8:
