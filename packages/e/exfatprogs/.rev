@@ -179,4 +179,15 @@
   * tune.exfat: Fix an error that accepts invalid serial numbers.</comment>
     <requestid>1176000</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b7f2f24c7b215255a694625108763c3a</srcmd5>
+    <version>1.2.4</version>
+    <time>1718743867</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.2.4:
+  * tune.exfat: Fix &quot;invalid serial number&quot; error when setting
+    an serial number.
+  * fsck.exfat: Fix memory leak in an error path</comment>
+    <requestid>1181389</requestid>
+  </revision>
 </revisionlist>

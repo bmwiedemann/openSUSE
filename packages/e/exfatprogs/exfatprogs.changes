@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 18 05:55:08 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.2.4:
+  * tune.exfat: Fix "invalid serial number" error when setting
+    an serial number.
+  * fsck.exfat: Fix memory leak in an error path
+
+-------------------------------------------------------------------
 Thu May 23 06:03:08 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.2.3:
