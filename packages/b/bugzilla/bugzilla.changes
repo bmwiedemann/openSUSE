@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 13 08:51:16 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang_path macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Tue Apr 18 14:54:37 UTC 2023 - Max Lin <mlin@suse.com>
 
 - Port jb2bz.py to python3

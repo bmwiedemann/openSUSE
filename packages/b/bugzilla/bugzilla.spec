@@ -1,7 +1,7 @@
 #
 # spec file for package bugzilla
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ Patch2:         modernize-bugzilla-submit.patch
 Patch3:         bugzilla-py3-jb2bz.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(systemd)
 Requires:       patchutils
 Requires:       perl-Authen-SASL
@@ -158,6 +159,11 @@ find . -type f -print0 | xargs -0r grep -l '^#!' | \
 	xargs -r perl -i -pe 's{^#!%{_prefix}/local/}{#!%{_prefix}/}' "{}" "+"
 mkdir -p "%{buildroot}%{apache_serverroot}"
 cp -a . "%{buildroot}%{apache_serverroot}/%{name}"
+
+%if %{suse_version} >= 1600
+# both occurences of /usr/bin/python3 are introduced by our patches, is there a more straightforward way?
+%python3_fix_shebang_path %{buildroot}%{apache_serverroot}/%{name}/contrib/bugzilla-submit/bugzilla-submit %{buildroot}%{apache_serverroot}/%{name}/contrib/jb2bz.py
+%endif
 
 %fdupes %{buildroot}/srv
 
