@@ -91,8 +91,6 @@ autoreconf -fi
 b="%buildroot"
 %make_install
 find "$b" -type f -name "*.la" -delete -print
-install -d "$b/%_sbindir"
-ln -s "%_sbindir/service" "$b/%_sbindir/rc%name"
 install -d "$b/%_sysconfdir/osmocom"
 install -m 0644 doc/examples/osmo-ggsn.cfg "$b/%_sysconfdir/osmocom/osmo-ggsn.cfg"
 install -m 0644 doc/examples/sgsnemu.conf "$b/%_sysconfdir/osmocom/sgsnemu.conf"
@@ -109,8 +107,7 @@ install -m 0644 doc/examples/sgsnemu.conf "$b/%_sysconfdir/osmocom/sgsnemu.conf"
 %postun
 %service_del_postun %name.service
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files
 %license COPYING
@@ -120,7 +117,6 @@ install -m 0644 doc/examples/sgsnemu.conf "$b/%_sysconfdir/osmocom/sgsnemu.conf"
 %_mandir/man8/osmo-ggsn.8*
 %_mandir/man8/sgsnemu.8*
 %_unitdir/%name.service
-%_sbindir/rc%name
 %dir %_docdir/%name/examples
 %_docdir/%name/examples/osmo-ggsn-kernel-gtp.cfg
 %_docdir/%name/examples/osmo-ggsn.cfg

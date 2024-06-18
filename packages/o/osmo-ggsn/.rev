@@ -95,4 +95,12 @@
     <comment>- Update to release 1.11.0</comment>
     <requestid>1166992</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>31d45f04b488db1d5e276b237a75abac</srcmd5>
+    <version>1.11.0</version>
+    <time>1718743911</time>
+    <user>anag+factory</user>
+    <comment>- Remove old rc* symlinks</comment>
+    <requestid>1181430</requestid>
+  </revision>
 </revisionlist>
