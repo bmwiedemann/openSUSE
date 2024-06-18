@@ -116,4 +116,12 @@ fix openssl build error</comment>
     <comment>- Update to snapshot 0.81.g3</comment>
     <requestid>643177</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>f38e868a651fd458f46867ed75deecbc</srcmd5>
+    <version>0.81.g3</version>
+    <time>1718743920</time>
+    <user>anag+factory</user>
+    <comment>- Remove rc* symlinks</comment>
+    <requestid>1181445</requestid>
+  </revision>
 </revisionlist>

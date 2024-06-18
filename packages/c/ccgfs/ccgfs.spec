@@ -1,7 +1,7 @@
 #
 # spec file for package ccgfs
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,11 @@ Release:        0
 Summary:        Transport-agnostic network filesystem
 License:        GPL-3.0-only
 Group:          System/Filesystems
-Url:            http://ccgfs.sf.net/
-
-#Git-Clone:	git://ccgfs.sf.net/gitroot/ccgfs/ccgfs
-#Source:         http://downloads.sf.net/ccgfs/%name-%version.tar.xz
+URL:            https://inai.de/projects/ccgfs/
+#Git-Clone:	https://codeberg.org/jengelh/ccgfs
+#Source:        https://inai.de/files/ccgfs/ccgfs-0.81.tar.xz
 Source:         %name-%version.tar.xz
 Source3:        %name.keyring
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  automake
 BuildRequires:  libattr-devel
 BuildRequires:  pkgconfig >= 0.19
@@ -47,16 +45,15 @@ connections from the DMZ as would be the case with the pull model.
 Any transport can be used, e.g. ssh for encryption.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf -fi
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install unitdir="%{?_unitdir}"
-ln -s ccgfs-super "%buildroot/%_sbindir/rcccgfs-super"
 # Remove unwanted sysvinit script if system provides systemd support
 rm -Rfv "%buildroot/%_initddir"
 
@@ -73,7 +70,6 @@ rm -Rfv "%buildroot/%_initddir"
 %service_del_postun ccgfs-super.service
 
 %files
-%defattr(-,root,root)
 %_unitdir/*.service
 %_sbindir/*
 %doc doc/*.txt
