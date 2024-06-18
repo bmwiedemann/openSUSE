@@ -1,7 +1,7 @@
 #
 # spec file for package containers-systemd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,14 +56,11 @@ for i in %{containers}; do
     mkdir -p %{buildroot}/srv/$i
     install -m 644 container-$i.default %{buildroot}%{_distconfdir}/default/container-$i
     install -m 644 container-$i.service %{buildroot}%{_unitdir}/
-    # create symlink for rccontainer-*
-    ln -s /sbin/service %{buildroot}%{_sbindir}/rccontainer-$i
 done
 install -m 644 container-certbot.default %{buildroot}%{_distconfdir}/default/container-certbot
 install -m 644 container-certbot-renew.service %{buildroot}%{_unitdir}/
 install -m 644 container-certbot-renew.timer %{buildroot}%{_unitdir}/
 install -m 644 container-dhcp6-server.service %{buildroot}%{_unitdir}/
-ln -s /sbin/service %{buildroot}%{_sbindir}/rccontainer-dhcp6-server
 install -m 644 container-image-prune.service %{buildroot}%{_unitdir}/
 install -m 644 container-image-prune.timer %{buildroot}%{_unitdir}/
 mkdir -p %{buildroot}%{_sysconfdir}/mariadb-secrets
@@ -97,11 +94,9 @@ done
 %doc README.md
 %{_unitdir}/container-bind.service
 %{_distconfdir}/default/container-bind
-%{_sbindir}/rccontainer-bind
 %ghost %dir /srv/bind
 %{_unitdir}/container-cups.service
 %{_distconfdir}/default/container-cups
-%{_sbindir}/rccontainer-cups
 %ghost %dir /srv/cups
 %{_unitdir}/container-certbot-renew.service
 %{_unitdir}/container-certbot-renew.timer
@@ -109,23 +104,17 @@ done
 %{_unitdir}/container-dhcp-server.service
 %{_unitdir}/container-dhcp6-server.service
 %{_distconfdir}/default/container-dhcp-server
-%{_sbindir}/rccontainer-dhcp-server
-%{_sbindir}/rccontainer-dhcp6-server
 %ghost %dir /srv/dhcp-server
 %{_unitdir}/container-dovecot.service
 %{_distconfdir}/default/container-dovecot
-%{_sbindir}/rccontainer-dovecot
 %ghost %dir /srv/dovecot
 %{_unitdir}/container-fetchmail.service
 %{_distconfdir}/default/container-fetchmail
-%{_sbindir}/rccontainer-fetchmail
 %{_unitdir}/container-haproxy.service
 %{_distconfdir}/default/container-haproxy
-%{_sbindir}/rccontainer-haproxy
 %ghost %dir /srv/haproxy
 %{_unitdir}/container-mariadb.service
 %{_distconfdir}/default/container-mariadb
-%{_sbindir}/rccontainer-mariadb
 %ghost %dir /srv/mariadb
 %dir %attr(0700,root,root) %{_sysconfdir}/mariadb-secrets
 %config(noreplace) %attr(0600,root,root) %{_sysconfdir}/mariadb-secrets/MYSQL_ROOT_PASSWORD
@@ -135,44 +124,34 @@ done
 %config(noreplace) %attr(0600,root,root) %{_sysconfdir}/mariadb-secrets/MYSQL_PASSWORD
 %{_unitdir}/container-minidlna.service
 %{_distconfdir}/default/container-minidlna
-%{_sbindir}/rccontainer-minidlna
 %{_unitdir}/container-nfs-server.service
 %{_distconfdir}/default/container-nfs-server
-%{_sbindir}/rccontainer-nfs-server
 %{_unitdir}/container-nginx.service
 %{_distconfdir}/default/container-nginx
-%{_sbindir}/rccontainer-nginx
 %ghost %dir /srv/nginx
 %{_unitdir}/container-openldap.service
 %{_distconfdir}/default/container-openldap
-%{_sbindir}/rccontainer-openldap
 %ghost %dir /srv/openldap
 %dir %attr(0700,root,root) %{_sysconfdir}/openldap-secrets
 %config(noreplace) %attr(0600,root,root) %{_sysconfdir}/openldap-secrets/LDAP_ADMIN_PASSWORD
 %config(noreplace) %attr(0600,root,root) %{_sysconfdir}/openldap-secrets/LDAP_CONFIG_PASSWORD
 %{_unitdir}/container-postfix.service
 %{_distconfdir}/default/container-postfix
-%{_sbindir}/rccontainer-postfix
 %ghost %dir /srv/postfix
 %dir %attr(0700,root,root) %{_sysconfdir}/postfix-secrets
 %config(noreplace) %attr(0600,root,root) %{_sysconfdir}/postfix-secrets/SMTP_PASSWORD
 %config(noreplace) %attr(0600,root,root) %{_sysconfdir}/postfix-secrets/LDAP_BIND_PASSWORD
 %{_unitdir}/container-roundcube.service
 %{_distconfdir}/default/container-roundcube
-%{_sbindir}/rccontainer-roundcube
 %{_unitdir}/container-samba.service
 %{_distconfdir}/default/container-samba
-%{_sbindir}/rccontainer-samba
 %{_unitdir}/container-spamassassin.service
 %{_distconfdir}/default/container-spamassassin
-%{_sbindir}/rccontainer-spamassassin
 %{_unitdir}/container-squid.service
 %{_distconfdir}/default/container-squid
-%{_sbindir}/rccontainer-squid
 %ghost %dir /srv/squid
 %{_unitdir}/container-wsdd.service
 %{_distconfdir}/default/container-wsdd
-%{_sbindir}/rccontainer-wsdd
 %{_unitdir}/container-image-prune.service
 %{_unitdir}/container-image-prune.timer
 

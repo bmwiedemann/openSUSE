@@ -364,4 +364,12 @@
   * wsdd: don't run binary to set HOSTNAME</comment>
     <requestid>1132103</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>1e4559e01e718daa78a3dc5f7e82c05d</srcmd5>
+    <version>0.0+git20231208.299201e</version>
+    <time>1718743841</time>
+    <user>anag+factory</user>
+    <comment>- Remove rc* symlinks [jsc#PED-266]</comment>
+    <requestid>1181408</requestid>
+  </revision>
 </revisionlist>
