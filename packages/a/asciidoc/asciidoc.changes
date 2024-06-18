@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 11 07:50:00 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python3 shebang from sitelib files (bsc#1212476)
+
+-------------------------------------------------------------------
 Thu Jun 23 11:33:12 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 10.2.0:

@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package asciidoc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -82,7 +82,9 @@ latex dependencies that we don't want to have by default. So this package is opt
 %prep
 %setup -q -n asciidoc-%{version}
 # do not use env
-find ./ -name \*.py -exec sed -i -e 's:/usr/bin/env\ :%{_bindir}/:g' {} \;
+# Remove python shebang from sitelib files, this will remove the
+# automatic dependency on /usr/bin/python3
+find asciidoc -name \*.py -exec sed -i -e '/\/usr\/bin\/env/d' {} \;
 
 %if "%{flavor}" == "latextest"
 %build
