@@ -17,7 +17,7 @@
 
 
 Name:           chafa
-Version:        1.14.0
+Version:        1.14.1
 Release:        0
 Summary:        Image-to-text converter for terminal
 License:        LGPL-3.0-or-later
@@ -25,14 +25,14 @@ Group:          Amusements/Toys/Graphics
 URL:            https://hpjansson.org/chafa/
 Source0:        https://github.com/hpjansson/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  freetype2-devel
-BuildRequires:  libjpeg-devel
-BuildRequires:  librsvg-devel
-BuildRequires:  libtiff-devel
-BuildRequires:  libwebp-devel
 BuildRequires:  gcc
 BuildRequires:  glib2-devel >= 2.26
 BuildRequires:  gtk-doc
+BuildRequires:  libjpeg-devel
+BuildRequires:  librsvg-devel
+BuildRequires:  libtiff-devel
 BuildRequires:  libtool
+BuildRequires:  libwebp-devel
 Requires:       libchafa0 = %{version}
 
 %description

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun 18 05:52:35 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.14.1:
+  * A JPEG XL (.jxl) loader was added using libjxl (#188).
+  * Added detection of the Eat "Emulate a Terminal" Emacs terminal.
+  * Symbols mode was sped up significantly on AVX2-capable platforms.
+  * Tests: A new test driver was added. It will log the specifics
+    of any failures, which aids debugging of CI builds.
+  * Bug fixes:
+    #189 Fix installation of zsh completions.
+    #190 Fix a small memory leak in ChafaCanvas.
+    #192 Wrong sixel padding in some circumstances.
+    #195 tmux passthrough enabled when already set.
+    #196 iTerm mode not enabled automatically.
+
+-------------------------------------------------------------------
 Tue May 21 04:38:30 UTC 2024 - pallas wept <pallaswept@proton.me>
 
 - Enable optional image formats

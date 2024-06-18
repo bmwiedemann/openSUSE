@@ -376,4 +376,23 @@
     <comment></comment>
     <requestid>1175427</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>52af1de8f637f4ab6c39ce56b36cd3de</srcmd5>
+    <version>1.14.1</version>
+    <time>1718743892</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.14.1:
+  * A JPEG XL (.jxl) loader was added using libjxl (#188).
+  * Added detection of the Eat &quot;Emulate a Terminal&quot; Emacs terminal.
+  * Symbols mode was sped up significantly on AVX2-capable platforms.
+  * Tests: A new test driver was added. It will log the specifics
+    of any failures, which aids debugging of CI builds.
+  * Bug fixes:
+    #189 Fix installation of zsh completions.
+    #190 Fix a small memory leak in ChafaCanvas.
+    #192 Wrong sixel padding in some circumstances.
+    #195 tmux passthrough enabled when already set.
+    #196 iTerm mode not enabled automatically.</comment>
+    <requestid>1181390</requestid>
+  </revision>
 </revisionlist>
