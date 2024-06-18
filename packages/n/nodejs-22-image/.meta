@@ -1,0 +1,5 @@
+<package name="nodejs-22-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed BCI Node.js 22 development</title>
+  <description>Node.js 22 development container based on the openSUSE Tumbleweed Base Container Image.</description>
+  <devel project="devel:BCI:Tumbleweed" package="nodejs-22-image"/>
+</package>
