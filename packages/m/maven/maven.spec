@@ -20,7 +20,7 @@
 %global homedir %{_datadir}/%{name}%{?maven_version_suffix}
 %global confdir %{_sysconfdir}/%{name}%{?maven_version_suffix}
 Name:           maven
-Version:        3.9.7
+Version:        3.9.8
 Release:        0
 Summary:        Java project management and project comprehension tool
 # maven itself is ASL 2.0
@@ -42,7 +42,6 @@ BuildRequires:  ant
 BuildRequires:  aopalliance
 BuildRequires:  apache-commons-cli
 BuildRequires:  apache-commons-codec
-BuildRequires:  apache-commons-lang3
 BuildRequires:  apache-commons-logging
 BuildRequires:  atinject
 BuildRequires:  dos2unix
@@ -118,7 +117,6 @@ Group:          Development/Tools/Building
 Requires:       aopalliance
 Requires:       apache-commons-cli
 Requires:       apache-commons-codec
-Requires:       apache-commons-lang3
 Requires:       apache-commons-logging
 Requires:       atinject
 Requires:       glassfish-annotation-api
@@ -230,7 +228,6 @@ done
 %build
 mkdir -p lib
 build-jar-repository -s lib \
-    apache-commons-lang3 \
     atinject \
     commons-cli \
     glassfish-annotation-api \
@@ -297,7 +294,6 @@ chmod -x %{buildroot}%{homedir}/bin/*.cmd %{buildroot}%{homedir}/bin/*.conf
 # Transitive deps of wagon-http, missing because of unshading
 build-jar-repository -p %{buildroot}%{homedir}/lib \
     aopalliance \
-    apache-commons-lang3 \
     atinject \
     commons-cli \
     commons-codec \

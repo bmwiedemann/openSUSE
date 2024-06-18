@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Jun 18 08:12:47 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.9.8
+  * Bug
+    + MNG-7758: o.e.aether.resolution.ArtifactResolutionException
+      incorrectly examined when multiple repositories are involved
+    + MNG-8066: Maven hangs on self-referencing exceptions
+    + MNG-8116: Plugin configuration can randomly fail in case of
+      method overloading as it doesn't take into account
+      implementation attribute
+    + MNG-8131: Property replacement in dependency pom no longer
+      works
+    + MNG-8135: Profile activation based on OS properties is no
+      longer case insensitive
+    + MNG-8142: If JDK profile activator gets "invalid" JDK version
+      for whatever reason, it chokes but does not tell why
+    + MNG-8147: Profile interpolation broke their evaluation in case
+      of duplicate IDs
+  * Improvement
+    + MNG-7902: Sort plugins in validation report
+    + MNG-8140: When a model is discarded (by model builder) for
+      whatever reason, show why it happened
+    + MNG-8141: Model Builder should report if not sure about
+      "fully correct" outcome
+    + MNG-8150: Make SimplexTransferListener handle absent
+      source/target files
+  * Task
+    + MNG-8146: Drop use of commons-lang
+  * Dependency upgrade
+    + MNG-8136: Update to Eclipse Sisu 0.9.0.M3
+    + MNG-8143: Update to commons-cli 1.8.0
+    + MNG-8144: Update to Guava 32.2.1-jre
+    + MNG-8154: Upgrade default plugin bindings
+
+-------------------------------------------------------------------
 Tue Jun 11 15:23:33 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.9.7
