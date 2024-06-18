@@ -294,4 +294,12 @@
     <comment>- Update to release 1.4.8</comment>
     <requestid>1114328</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>875710ebc8846be1859c29a8d514ded4</srcmd5>
+    <version>1.4.8</version>
+    <time>1718743921</time>
+    <user>anag+factory</user>
+    <comment>- Remove rc* symlinks</comment>
+    <requestid>1181449</requestid>
+  </revision>
 </revisionlist>

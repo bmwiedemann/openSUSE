@@ -1,7 +1,7 @@
 #
 # spec file for package conntrack-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,7 @@ Release:        0
 Summary:        Userspace tools for interacting with the Connection Tracking System
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
-URL:            http://conntrack-tools.netfilter.org/
-
+URL:            https://conntrack-tools.netfilter.org/
 #Git-Clone:	git://git.netfilter.org/conntrack-tools
 Source:         https://www.netfilter.org/projects/conntrack-tools/files/conntrack-tools-%version.tar.xz
 Source2:        https://www.netfilter.org/projects/conntrack-tools/files/conntrack-tools-%version.tar.xz.sig
@@ -38,7 +37,6 @@ Source6:        conntrackd.README.SUSE
 Source7:        conntrackd.logrotate
 Source8:        conntrackd.sysconfig
 Source9:        conntrackd.conf
-
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  flex >= 2.5.33
@@ -93,7 +91,6 @@ autoreconf -vif
 %install
 %make_install
 b="%buildroot"
-ln -s service "$b/%_sbindir/rcconntrackd"
 find "$b/%_libdir" -type f -name "*.la" -delete
 install -Dpm0644 "%_sourcedir"/conntrackd.service "$b/%_unitdir/conntrackd.service"
 install -Dpm0644 "%_sourcedir/conntrackd.sysconfig" "$b/%_fillupdir/sysconfig.conntrackd"
@@ -129,7 +126,6 @@ fi
 %files -n conntrackd
 %_sysconfdir/logrotate.d/conntrackd*
 %_sbindir/conntrackd
-%_sbindir/rcconntrackd
 %_mandir/man5/conntrackd*
 %_mandir/man8/conntrackd*
 %dir %_docdir/%name
