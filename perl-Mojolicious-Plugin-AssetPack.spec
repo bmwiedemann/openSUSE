@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojolicious-Plugin-AssetPack
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Source0:        https://cpan.metacpan.org/authors/id/S/SR/SRI/%{cpan_name}-%{ver
 Source1:        cpanspec.yml
 # PATCH-FIX-UPSTREAM https://github.com/mojolicious/mojo-assetpack/pull/149
 Patch0:         mojolicious-deprecate-spurt.patch
+# PATCH-FIX-UPSTREAM https://github.com/mojolicious/mojo-assetpack/pull/150
+Patch1:         sass-trace.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros

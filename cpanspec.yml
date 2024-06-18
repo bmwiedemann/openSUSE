@@ -6,6 +6,7 @@
 #  - source2
 patches:
   mojolicious-deprecate-spurt.patch: -p1 PATCH-FIX-UPSTREAM https://github.com/mojolicious/mojo-assetpack/pull/149
+  sass-trace.patch: -p1 PATCH-FIX-UPSTREAM https://github.com/mojolicious/mojo-assetpack/pull/150
 #  bar.patch:
 preamble: |-
   BuildRequires:  perl(Mojolicious) >= 9.34

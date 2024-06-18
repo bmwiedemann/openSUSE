@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 17 15:38:49 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Add sass-trace.patch. See https://github.com/mojolicious/mojo-assetpack/pull/150
+
+-------------------------------------------------------------------
 Tue Sep 19 15:50:13 UTC 2023 - Tina Müller <tina.mueller@suse.com>
 
 - Add mojolicious-deprecate-spurt.patch from
