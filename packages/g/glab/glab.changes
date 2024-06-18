@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Jun 17 18:48:36 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.42.0:
+  * feat(stacked-diffs): add stacked diffs feature
+  * Revert "Merge branch..."
+  * ci: use the danger-review component
+  * fix: require user configuration files to only have 600
+    permissions
+  * chore(deps): update module github.com/briandowns/spinner to
+    v1.23.1
+  * feat(mr create): Add --signoff option
+  * feat(user): Add json format option to events
+  * chore(deps): update module k8s.io/client-go to v0.30.2
+  * chore(deps): update golang to v1.22.4
+  * fix: Mention all available token environment variables in
+    warning
+  * chore: remove multi-version Go testing from CI
+  * chore(deps): update github.com/hashicorp/go-retryablehttp to
+    v0.7.7
+  * chore(ci): fail on linting issues
+  * chore(deps): update module github.com/gdamore/tcell/v2 to
+    v2.7.4
+  * chore(deps): update module golang.org/x/text to v0.16.0
+  * chore(deps): update module github.com/otiai10/copy to v1.14.0
+  * chore(deps): update module github.com/charmbracelet/glamour to
+    v0.7.0
+  * chore(deps): update module golang.org/x/term to v0.21.0
+  * chore(deps): update dependency golang to v1.22.3
+  * chore: update docs linting image and check Markdown links in
+    pipelines
+  * chore(deps): update module github.com/spf13/viper to v1.19.0
+  * fix(cluster agent): fix joining KAS proxy subpaths
+  * chore: fix code_navigation job for latest GO_VERSION
+  * docs: minor update to GitLab Duo title
+  * chore(deps): update module github.com/makenowjust/heredoc to v2
+  * chore(deps): update module github.com/muesli/termenv to v0.15.2
+  * chore(deps): update module github.com/mattn/go-isatty to
+    v0.0.20
+
+-------------------------------------------------------------------
 Wed May 29 08:13:29 UTC 2024 - pdostal@suse.com
 
 - Update to version 1.41.0:

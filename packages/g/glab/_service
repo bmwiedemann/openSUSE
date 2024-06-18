@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://gitlab.com/gitlab-org/cli.git</param>
     <param name="scm">git</param>
-    <param name="revision">v1.41.0</param>
+    <param name="revision">v1.42.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="filename">glab</param>
@@ -15,6 +15,6 @@
     <param name="compression">gz</param>
   </service>
   <service name="go_modules" mode="manual">
-      <param name="archive">glab-1.41.0.obscpio</param>
+      <param name="archive">glab-1.42.0.obscpio</param>
   </service>
 </services>
