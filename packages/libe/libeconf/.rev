@@ -232,4 +232,18 @@
     <comment></comment>
     <requestid>1179643</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>898b9bf33ee8d72dd5ec5d4a972ff276</srcmd5>
+    <version>0.7.2</version>
+    <time>1718743839</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.7.2:
+  * Do not check errno while float conversion. This is a false
+    alarm for S390 and PPC (#210)
+- Update to version 0.7.2:
+  * Do not check errno while float conversion. This is a false
+    alarm for S390 and PPC (#210).
+</comment>
+    <requestid>1180840</requestid>
+  </revision>
 </revisionlist>
