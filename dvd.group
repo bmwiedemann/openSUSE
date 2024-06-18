@@ -1920,7 +1920,7 @@
     <package name="libdrm2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libdrm_amdgpu1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libdrm_intel1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libdrm_nouveau2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libdrm_nouveau2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libdrm_radeon1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libduktape207" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libdv4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2461,6 +2461,7 @@
     <package name="libnewt0_52" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libnfnetlink0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnfs14" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libnfsidmap-sss" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libnfsidmap1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libnftables1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnftnl11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

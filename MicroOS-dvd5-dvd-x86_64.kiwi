@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20240614" schemaversion="4.1">
+<image name="OBS__MicroOS___20240617" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20240614</productvar>
+      <productvar name="VERSION">20240617</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20240614,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20240617,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20240614/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20240617/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -118,9 +118,12 @@
       <repopackage name="cloud-init"/>
       <repopackage name="cloud-init-config-MicroOS"/>
       <repopackage name="cockpit-bridge"/>
+      <repopackage name="cockpit-networkmanager"/>
       <repopackage name="cockpit-packagekit"/>
       <repopackage name="cockpit-podman"/>
       <repopackage name="cockpit-system"/>
+      <repopackage name="cockpit-tukit"/>
+      <repopackage name="cockpit-ws"/>
       <repopackage name="colord"/>
       <repopackage name="colord-color-profiles"/>
       <repopackage name="compat-usrmerge-tools"/>
@@ -164,6 +167,7 @@
       <repopackage name="discover6-backend-flatpak"/>
       <repopackage name="discover6-backend-fwupd"/>
       <repopackage name="discover6-notifier"/>
+      <repopackage name="distribution-logos-openSUSE-Aeon"/>
       <repopackage name="distribution-logos-openSUSE-icons"/>
       <repopackage name="distribution-logos-openSUSE-MicroOS"/>
       <repopackage name="distrobox"/>
@@ -660,7 +664,6 @@
       <repopackage name="libdrm2"/>
       <repopackage name="libdrm_amdgpu1"/>
       <repopackage name="libdrm_intel1"/>
-      <repopackage name="libdrm_nouveau2"/>
       <repopackage name="libdrm_radeon1"/>
       <repopackage name="libduktape207"/>
       <repopackage name="libdvbpsi10"/>
@@ -1900,6 +1903,7 @@
       <repopackage name="transactional-update-zypp-config"/>
       <repopackage name="trash_kcm"/>
       <repopackage name="tukit"/>
+      <repopackage name="tukitd"/>
       <repopackage name="typelib-1_0-AccountsService-1_0"/>
       <repopackage name="typelib-1_0-Adw-1"/>
       <repopackage name="typelib-1_0-Atk-1_0"/>

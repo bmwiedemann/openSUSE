@@ -1430,6 +1430,7 @@ unsorted:
   - blas-devel-32bit 
   - blas-devel-static 
   - blasphemer 
+  - blaspp-devel 
   - blaze-devel 
   - blaze-devel-doc 
   - bleachbit 
@@ -2321,12 +2322,9 @@ unsorted:
   - cockpit-doc 
   - cockpit-kdump 
   - cockpit-machines 
-  - cockpit-networkmanager 
   - cockpit-pcp 
   - cockpit-selinux 
   - cockpit-storaged 
-  - cockpit-tukit 
-  - cockpit-ws 
   - codec2 
   - codec2-devel 
   - codec2-examples 
@@ -2540,7 +2538,6 @@ unsorted:
   - coreos-installer 
   - corepack-default 
   - corepack20 
-  - corepack21 
   - corepack22 
   - coreutils-doc 
   - coreutils-single 
@@ -5303,6 +5300,10 @@ unsorted:
   - ghc-cereal-devel 
   - ghc-cereal-doc 
   - ghc-cereal-prof 
+  - ghc-character-ps 
+  - ghc-character-ps-devel 
+  - ghc-character-ps-doc 
+  - ghc-character-ps-prof 
   - ghc-cipher-aes 
   - ghc-cipher-aes-devel 
   - ghc-cipher-aes-doc 
@@ -7454,7 +7455,7 @@ unsorted:
   - golang-github-prometheus-node_exporter 
   - golang-github-prometheus-prometheus 
   - golang-github-prometheus-promu 
-  - golang-github-shadowsocks-v2ray-plugin 
+  - golang-github-teddysun-v2ray-plugin 
   - golang-github-v2fly-v2ray-core 
   - golang-github-vpenso-prometheus_slurm_exporter 
   - golang-gopkgin-check 
@@ -11877,6 +11878,7 @@ unsorted:
   - libbladeRF2 
   - libbladeRF2-doc 
   - libblas3-32bit 
+  - libblaspp1 
   - libblastrampoline-devel 
   - libblastrampoline5 
   - libblis4 
@@ -12909,6 +12911,9 @@ unsorted:
   - libfm-gtk-devel 
   - libfm-gtk4 
   - libfm-lang 
+  - libfm-qt5-14 
+  - libfm-qt5-devel 
+  - libfm-qt5-lang 
   - libfm-qt6-14 
   - libfm-qt6-data 
   - libfm-qt6-devel 
@@ -13171,7 +13176,7 @@ unsorted:
   - libgio-2_0-0-32bit 
   - libgio-qt0 
   - libgiomm-2_4-1-32bit 
-  - libgirara-gtk3-3 
+  - libgirara-gtk3-4 
   - libgirepository-1_0-1-32bit 
   - libgirepository-2_0-0 
   - libgit2-devel 
@@ -13242,7 +13247,6 @@ unsorted:
   - libgnunetchat-devel 
   - libgnunetconsensus0 
   - libgnunetcore0 
-  - libgnunetcoretesting0 
   - libgnunetcurl0 
   - libgnunetdatacache0 
   - libgnunetdatastore1 
@@ -13257,7 +13261,6 @@ unsorted:
   - libgnunetidentity1 
   - libgnunetjson0 
   - libgnunetmessenger0 
-  - libgnunetmessengertesting0 
   - libgnunetnamecache0 
   - libgnunetnamestore0 
   - libgnunetnatauto0 
@@ -13277,12 +13280,15 @@ unsorted:
   - libgnunetsetu0 
   - libgnunetsq0 
   - libgnunetstatistics2 
-  - libgnunettesting1 
+  - libgnunettestbed0 
+  - libgnunettesting3 
+  - libgnunettestingarm0 
+  - libgnunettestingtestbed0 
+  - libgnunettestingtransport0 
   - libgnunettransportapplication0 
   - libgnunettransportcommunicator0 
   - libgnunettransportcore0 
   - libgnunettransportmonitor0 
-  - libgnunettransporttesting2-0 
   - libgnunetutil16 
   - libgnunetvpn0 
   - libgnuradio-3_10_10 
@@ -13959,6 +13965,7 @@ unsorted:
   - libkmip-tools 
   - libkmip0 
   - libkmod-devel 
+  - libknet-devel 
   - libknet1 
   - libknet1-compress-bzip2-plugin 
   - libknet1-compress-lz4-plugin 
@@ -13970,7 +13977,6 @@ unsorted:
   - libknet1-crypto-nss-plugin 
   - libknet1-crypto-openssl-plugin 
   - libknet1-crypto-plugins-all 
-  - libknet1-devel 
   - libknet1-plugins-all 
   - libknot14 
   - libkokkos-4_3 
@@ -14566,7 +14572,6 @@ unsorted:
   - libnfnetlink-devel 
   - libnfnetlink0-32bit 
   - libnfs-devel 
-  - libnfsidmap-sss 
   - libnftnl-devel 
   - libnghttp2-14-32bit 
   - libnghttp2-devel 
@@ -14615,8 +14620,8 @@ unsorted:
   - libnotmuch5 
   - libnova-0_15-0 
   - libnova-devel 
+  - libnozzle-devel 
   - libnozzle1 
-  - libnozzle1-devel 
   - libnpupnp-devel 
   - libnpupnp13 
   - libnscd-devel 
@@ -16554,6 +16559,7 @@ unsorted:
   - libvdpau-devel 
   - libvdpau-devel-32bit 
   - libvdpau1-32bit 
+  - libvdpau_d3d12 
   - libvdpau_nouveau 
   - libvdpau_nouveau-32bit 
   - libvdpau_r600 
@@ -17766,6 +17772,7 @@ unsorted:
   - lxqt-archiver 
   - lxqt-archiver-lang 
   - lxqt-build-tools-devel 
+  - lxqt-build-tools-qt5-devel 
   - lxqt-config 
   - lxqt-config-lang 
   - lxqt-globalkeys 
@@ -17784,6 +17791,7 @@ unsorted:
   - lxqt-policykit-lang 
   - lxqt-powermanagement 
   - lxqt-powermanagement-lang 
+  - lxqt-qt5plugin 
   - lxqt-qtplugin 
   - lxqt-runner 
   - lxqt-runner-lang 
@@ -19536,9 +19544,6 @@ unsorted:
   - nodejs20 
   - nodejs20-devel 
   - nodejs20-docs 
-  - nodejs21 
-  - nodejs21-devel 
-  - nodejs21-docs 
   - nodejs22 
   - nodejs22-devel 
   - nodejs22-docs 
@@ -19582,7 +19587,6 @@ unsorted:
   - npkg 
   - npm-default 
   - npm20 
-  - npm21 
   - npm22 
   - npth-devel 
   - nqp 
@@ -19628,6 +19632,7 @@ unsorted:
   - nuntius-lang 
   - nuosu-fonts 
   - nuoveXT2-icon-theme 
+  - nushell 
   - nuspell 
   - nuspell-devel 
   - nuspell-doc 
@@ -20484,7 +20489,6 @@ unsorted:
   - ovn-host 
   - ovn-vtep 
   - ovpn-dco-kmp-default 
-  - ovpn-dco-kmp-longterm 
   - owasp-modsecurity-crs 
   - owasp-modsecurity-crs-apache2 
   - owncloud-client 
@@ -22620,8 +22624,6 @@ unsorted:
   - plexus-compiler 
   - plexus-compiler-extras 
   - plexus-compiler-javadoc 
-  - plexus-component-api 
-  - plexus-component-api-javadoc 
   - plexus-component-metadata 
   - plexus-component-metadata-javadoc 
   - plexus-containers-component-annotations 
@@ -46426,6 +46428,7 @@ unsorted:
   - tik 
   - tik-config-Aeon 
   - tik-config-generic 
+  - tik-module-encrypt 
   - tik-module-mig 
   - tik-module-welcome 
   - tilda 
@@ -46723,7 +46726,6 @@ unsorted:
   - tudu 
   - tuigreet 
   - tuimoji 
-  - tukitd 
   - tuladha-jejeg-fonts 
   - tumbler-devel 
   - tumbler-doc 
@@ -47036,6 +47038,9 @@ unsorted:
   - typelib-1_0-libmirage-3_2 
   - typesafe-config 
   - typescript 
+  - typioca 
+  - typioca-bash-completion 
+  - typioca-zsh-completion 
   - typst 
   - typst-bash-completion 
   - typst-fish-completion 
