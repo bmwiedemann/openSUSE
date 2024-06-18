@@ -311,4 +311,12 @@
 - Add rtslib-refactor-to-python3.patch to get rid of six</comment>
     <requestid>1179859</requestid>
   </revision>
+  <revision rev="37" vrev="5">
+    <srcmd5>2b1fb7e3e9f200f111350aff1fc5475c</srcmd5>
+    <version>2.1.76</version>
+    <time>1718743864</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1181351</requestid>
+  </revision>
 </revisionlist>

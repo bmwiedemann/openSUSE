@@ -35,8 +35,6 @@ URL:            https://github.com/open-iscsi/rtslib-fb.git
 Source:         python-rtslib-fb-v%{version}.tar.xz
 Patch2:         rtslib-Fix-handling-of-sysfs-RW-attrs-that-are-actually-RO.patch
 Patch3:         rtslib-target-service-for-suse.patch
-# PATCH-FIX-UPSTREAM picked from https://github.com/open-iscsi/rtslib-fb/pull/197 Refactoring to Python>=3.9
-Patch4:         rtslib-refactor-to-python3.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyudev}
 BuildRequires:  %{python_module setuptools}
@@ -53,7 +51,7 @@ BuildRequires:  alts
 Requires:       alts
 %else
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %endif
 %python_subpackages
 
