@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jun 17 19:17:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.12.4:
+  * release v1.12.4 (#10479)
+  * feat: fix custom sigstore conformance tests (#10473) (#10480)
+  * release v1.12.4-rc.2 (#10466)
+  * fix: avoid creating duplicate urs for background policies
+    (#10431) (#10444)
+  * fix: remove dropped flag (#10433)
+  * Release v1.12.4-rc.1 (#10429)
+  * chore: add chainsaw test for controllers leader election
+    (#10416) (#10427)
+  * fix: cancel context for proper shutdown in reports-controller
+    (#10415) (#10426)
+  * fix: add verbosity to background scanner log (#10404) (#10405)
+  * fix(gctx): returning old error (#10398) (#10400)
+  * chore: add condition checking to notary attestation verify
+    chainsaw tests (#10288) (#10349)
+
+-------------------------------------------------------------------
 Fri May 31 12:29:57 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.12.3:
