@@ -18,13 +18,14 @@
 
 
 Name:           timeshift
-Version:        24.01.1
+Version:        24.06.1
 Release:        0
 Summary:        System restore utility
 License:        GPL-3.0-only
 URL:            https://github.com/linuxmint/timeshift
 Source0:        https://codeload.github.com/linuxmint/timeshift/tar.gz/refs/tags/%{version}#/%{name}-%{version}.tar.gz
 BuildRequires:  chrpath
+BuildRequires:  fdupes
 BuildRequires:  help2man
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -75,6 +76,8 @@ install -d %{buildroot}%{_localstatedir}/log/timeshift
 install -d %{buildroot}%{_localstatedir}/log/timeshift-btrfs
 %suse_update_desktop_file -r timeshift-gtk Utility Archiving
 %find_lang %{name} %{?no_lang_C}
+
+%fdupes %{buildroot}%{_datadir}
 
 %files
 %license LICENSES/*

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun  8 22:24:20 UTC 2024 - malcolmlewis@opensuse.org
+
+- Update to 24.06.1:
+  * l10n: Update translations. 
+- Fix duplicate file warning with fdupes in spec file.
+
+-------------------------------------------------------------------
 Sat Jan 27 13:27:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.01.1:
