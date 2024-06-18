@@ -17,7 +17,7 @@
 
 
 Name:           gap-yangbaxter
-Version:        0.10.3
+Version:        0.10.5
 Release:        0
 Summary:        GAP: Combinatorial Solutions for the Yang-Baxter equation
 License:        GPL-3.0-only
