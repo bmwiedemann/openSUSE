@@ -100,7 +100,6 @@ mkdir -p "$b/%_docdir/%name"
 install -m 0644 contrib/*.php contrib/*.pl TODO "$b/%_docdir/%name"
 
 mkdir -p "$b/%_unitdir" "$b/%_prefix/lib/tmpfiles.d" "$b/%_sysusersdir"
-ln -s service "$b/%_sbindir/rcatheme"
 cat >"$b/%_unitdir/atheme.service" <<-EOF
 	[Unit]
 	Description=Atheme IRC Services
@@ -148,7 +147,6 @@ systemd-tmpfiles --create atheme.conf || :
 %_sbindir/atheme-services
 %_sbindir/*dbverify
 %_sbindir/*ecdsakeygen
-%_sbindir/rcatheme
 %_libdir/%name/
 %_datadir/%name/
 %_docdir/%name/
