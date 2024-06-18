@@ -516,4 +516,12 @@
     <comment>- Update to release 2.30.3</comment>
     <requestid>1171177</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>ad7f490d51eb5a9e09464e0af167ddb7</srcmd5>
+    <version>2.30.4</version>
+    <time>1718743841</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.30.4</comment>
+    <requestid>1181406</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 18 07:32:33 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.30.4
+  * Added support for the Saitek Cyborg V.3 Rumble Pad in PS3 mode
+  * Added support for the Razer Kitsune in PS5 mode
+  * Added Linux bindings for the Qanba Drone 2 Arcade Joystick
+  * Leave Nintendo Online controllers in simple report mode so
+    they work with DirectInput games
+  * Enable using libusb for GameCube controllers when available
+
+-------------------------------------------------------------------
 Wed May  1 19:03:52 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.30.3
