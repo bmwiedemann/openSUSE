@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-urllib3
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -34,6 +34,8 @@ URL:            https://urllib3.readthedocs.org/
 Source:         https://files.pythonhosted.org/packages/source/u/urllib3/urllib3-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE openssl-3.2.patch gh#urllib3/urllib3#3271
 Patch1:         openssl-3.2.patch
+# PATCH-FIX-UPSTREAM https://github.com/urllib3/urllib3/commit/accff72ecc2f6cf5a76d9570198a93ac7c90270e Strip Proxy-Authorization header on redirects
+Patch2:         CVE-2024-37891.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}

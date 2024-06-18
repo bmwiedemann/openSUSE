@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 18 09:46:57 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add CVE-2024-37891.patch (bsc#1226469)
+
+-------------------------------------------------------------------
 Thu Jan 11 11:46:04 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add upstream patch openssl-3.2.patch, to fix tests with opennssl
