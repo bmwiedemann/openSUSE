@@ -92,6 +92,7 @@ ti-vpe:		media
 wl1251:		ti
 wl12xx:		ti		wl12xx wl12xx_sdio wl12xx_spi
 wl18xx:		ti		wl18xx wlcore
+cc33xx:		ti
 TI_ST:		ti
 tlg2300:	media		poseidon
 r8712u:		realtek

@@ -90,6 +90,7 @@ brcmfmac:	brcm		LICENCE.broadcom_bcm43xx LICENCE.cypress GPL-2
 wl1251:		ti		LICENCE.wl1251
 wl12xx:		ti		LICENCE.ti-connectivity
 wl18xx:		ti		LICENCE.ti-connectivity
+cc33xx:		ti		LICENCE.ti-connectivity
 TI_ST:		ti		LICENCE.ti-connectivity
 tlg2300:	media
 r8712u:		realtek		LICENCE.rtlwifi_firmware.txt

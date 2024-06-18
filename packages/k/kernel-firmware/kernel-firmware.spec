@@ -21,11 +21,11 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20240519
+%define version_unconverted 20240618
 # Force bzip2 instead of lzma compression (bsc#1176981)
 %define _binary_payload w9.bzdio
 Name:           kernel-firmware
-Version:        20240519
+Version:        20240618
 Release:        0
 Summary:        Linux kernel firmware files
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
@@ -1680,6 +1680,8 @@ Supplements:    modalias(pci:v00008086d000056BAsv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d000056BBsv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d000056BCsv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d000056BDsv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d000056BEsv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d000056BFsv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d000056C0sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d000056C1sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d000056C2sv*sd*bc03sc*i*)
@@ -1823,6 +1825,7 @@ Supplements:    modalias(acpi*:INTC1009%3A*)
 Supplements:    modalias(acpi*:INTC1058%3A*)
 Supplements:    modalias(acpi*:INTC1094%3A*)
 Supplements:    modalias(acpi*:INTC10D0%3A*)
+Supplements:    modalias(auxiliary:intel_ipu6.isys)
 Supplements:    modalias(pci:v00008086d00000435sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00001919sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000019E2sv*sd*bc*sc*i*)
@@ -2653,6 +2656,7 @@ Supplements:    modalias(pci:v00008086d000043F0sv*sd000040A4bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000043F0sv*sd00004234bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000043F0sv*sd00004244bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000043F0sv*sd000042A4bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004D40sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00004DF0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000051F0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000051F1sv*sd*bc*sc*i*)
@@ -3104,6 +3108,7 @@ Supplements:    modalias(pci:v000014C3d00007630sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007650sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007662sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007663sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000014C3d00007920sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007922sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007925sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007961sv*sd*bc*sc*i*)
@@ -3448,6 +3453,12 @@ Supplements:    modalias(pci:v00008086d000012D1sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000012D2sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000012D3sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000012D4sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000012D5sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000012D8sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000012DAsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000012DCsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000012DDsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000012DEsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000151Dsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00001591sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00001592sv*sd*bc*sc*i*)
@@ -3652,6 +3663,7 @@ Conflicts:      filesystem < 84
 Supplements:    modalias(acpi*:AMDI0100%3A*)
 Supplements:    modalias(acpi*:AMDI0102%3A*)
 Supplements:    modalias(acpi*:AMDI0103%3A*)
+Supplements:    modalias(acpi*:AMDI0105%3A*)
 Supplements:    modalias(acpi*:AMDI0C00%3A*)
 Supplements:    modalias(eisa:sABP7401*)
 Supplements:    modalias(eisa:sABP7501*)

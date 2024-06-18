@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Tue Jun 18 11:57:27 UTC 2024 - tiwai@suse.com
+
+- Update to version 20240618 (git commit 7d931f8afa51):
+  * amlogic: Update bluetooth firmware binary
+  * linux-firmware: Update firmware file for Intel BlazarU core
+  * linux-firmware: Update firmware file for Intel Bluetooth Magnetor core
+  * linux-firmware: Update firmware file for Intel Bluetooth Solar core
+  * linux-firmware: Update firmware file for Intel Bluetooth Pulsar core
+  * rtl_bt: Update RTL8822C BT UART firmware to 0xB5D6_6DCB
+  * rtl_bt: Update RTL8822C BT USB firmware to 0xAED6_6DCB
+  * amdgpu: update DMCUB to v0.0.222.0 for DCN314
+  * iwlwifi: add ty/So/Ma firmwares for core88-87 release
+  * iwlwifi: update cc/Qu/QuZ firmwares for core88-87 release
+  * linux-firmware: add new cc33xx firmware for cc33xx chips
+  * cirrus: cs35l56: Update firmware for Cirrus CS35L56 for ASUS UM5606 laptop
+  * cirrus: cs35l56: Update firmware for Cirrus CS35L56 for various ASUS laptops
+  * linux-firmware: Add firmware for Lenovo Thinkbooks
+  * amdgpu: update yellow carp firmware
+  * amdgpu: update VCN 4.0.4 firmware
+  * amdgpu: update SDMA 6.0.2 firmware
+  * amdgpu: update PSP 13.0.7 firmware
+  * amdgpu: update GC 11.0.2 firmware
+  * amdgpu: update navi10 firmware
+  * amdgpu: update raven2 firmware
+  * amdgpu: update raven firmware
+  * amdgpu: update SMU 13.0.10 firmware
+  * amdgpu: update SDMA 6.0.3 firmware
+  * amdgpu: update PSP 13.0.10 firmware
+  * amdgpu: update GC 11.0.3 firmware
+  * amdgpu: update VCN 3.1.2 firmware
+  * amdgpu: update PSP 13.0.5 firmware
+  * amdgpu: update psp 13.0.8 firmware
+  * amdgpu: update vega20 firmware
+  * amdgpu: update vega12 firmware
+  * amdgpu: update vega10 firmware
+  * amdgpu: update VCN 4.0.0 firmware
+  * amdgpu: update smu 13.0.0 firmware
+  * amdgpu: update SDMA 6.0.0 firmware
+  * amdgpu: update PSP 13.0.0 firmware
+  * amdgpu: update GC 11.0.0 firmware
+  * amdgpu: update picasso firmware
+  * amdgpu: update beige goby firmware
+  * amdgpu: update vangogh firmware
+  * amdgpu: update dimgrey cavefish firmware
+  * amdgpu: update green sardine firmware
+  * amdgpu: update navy flounder firmware
+  * amdgpu: update PSP 13.0.11 firmware
+  * amdgpu: update GC 11.0.4 firmware
+  * amdgpu: update VCN 4.0.2 firmware
+  * amdgpu: update SDMA 6.0.1 firmware
+  * amdgpu: update PSP 13.0.4 firmware
+  * amdgpu: update GC 11.0.1 firmware
+  * amdgpu: update sienna cichlid firmware
+  * amdgpu: update VCN 4.0.5 firmware
+  * amdgpu: update PSP 14.0.0 firmware
+  * amdgpu: update GC 11.5.0 firmware
+  * amdgpu: update navi14 firmware
+  * amdgpu: update SMU 13.0.6 firmware
+  * amdgpu: update PSP 13.0.6 firmware
+  * amdgpu: update GC 9.4.3 firmware
+  * amdgpu: update renoir firmware
+  * amdgpu: update navi12 firmware
+  * amdgpu: update aldebaran firmware
+  * amdgpu: add support for PSP 14.0.1
+  * amdgpu: add support for VPE 6.1.1
+  * amdgpu: add support for VCN 4.0.6
+  * amdgpu: add support for SDMA 6.1.1
+  * amdgpu: add support for GC 11.5.1
+  * amdgpu: Add support for DCN 3.5.1
+  * QCA: Update Bluetooth QCA2066 firmware to 2.1.0-00639
+  * cnm: update chips&media wave521c firmware.
+  * linux-firmware: Add ordinary firmware for RTL8821AU device
+
+-------------------------------------------------------------------
 Tue May 21 16:03:54 UTC 2024 - tiwai@suse.com
 
 - Update to version 20240519 (git commit aae8224390e2):

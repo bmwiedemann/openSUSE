@@ -27,6 +27,7 @@ ambassador: pci:v000010B6d00001002sv*sd*bc*sc*i*
 amd_pmf: acpi*:AMDI0100%3A*
 amd_pmf: acpi*:AMDI0102%3A*
 amd_pmf: acpi*:AMDI0103%3A*
+amd_pmf: acpi*:AMDI0105%3A*
 amdgpu: pci:v00001002d*sv*sd*bc03sc00i00*
 amdgpu: pci:v00001002d*sv*sd*bc03sc80i00*
 amdgpu: pci:v00001002d*sv*sd*bc12sc00i00*
@@ -1623,6 +1624,8 @@ i915: pci:v00008086d000056BAsv*sd*bc03sc*i*
 i915: pci:v00008086d000056BBsv*sd*bc03sc*i*
 i915: pci:v00008086d000056BCsv*sd*bc03sc*i*
 i915: pci:v00008086d000056BDsv*sd*bc03sc*i*
+i915: pci:v00008086d000056BEsv*sd*bc03sc*i*
+i915: pci:v00008086d000056BFsv*sd*bc03sc*i*
 i915: pci:v00008086d000056C0sv*sd*bc03sc*i*
 i915: pci:v00008086d000056C1sv*sd*bc03sc*i*
 i915: pci:v00008086d000056C2sv*sd*bc03sc*i*
@@ -1753,6 +1756,12 @@ ice: pci:v00008086d000012D1sv*sd*bc*sc*i*
 ice: pci:v00008086d000012D2sv*sd*bc*sc*i*
 ice: pci:v00008086d000012D3sv*sd*bc*sc*i*
 ice: pci:v00008086d000012D4sv*sd*bc*sc*i*
+ice: pci:v00008086d000012D5sv*sd*bc*sc*i*
+ice: pci:v00008086d000012D8sv*sd*bc*sc*i*
+ice: pci:v00008086d000012DAsv*sd*bc*sc*i*
+ice: pci:v00008086d000012DCsv*sd*bc*sc*i*
+ice: pci:v00008086d000012DDsv*sd*bc*sc*i*
+ice: pci:v00008086d000012DEsv*sd*bc*sc*i*
 ice: pci:v00008086d0000151Dsv*sd*bc*sc*i*
 ice: pci:v00008086d00001591sv*sd*bc*sc*i*
 ice: pci:v00008086d00001592sv*sd*bc*sc*i*
@@ -1805,6 +1814,7 @@ imx_sdma: platform:imx53-sdma
 imx_sdma: platform:imx6q-sdma
 imx_sdma: platform:imx7d-sdma
 imx_sdma: platform:imx8mq-sdma
+intel_ipu6_isys: auxiliary:intel_ipu6.isys
 io_edgeport: usb:v0404p0202d*dc*dsc*dp*ic*isc*ip*in*
 io_edgeport: usb:v0404p0203d*dc*dsc*dp*ic*isc*ip*in*
 io_edgeport: usb:v0404p0310d*dc*dsc*dp*ic*isc*ip*in*
@@ -2657,6 +2667,7 @@ iwlwifi: pci:v00008086d000043F0sv*sd000040A4bc*sc*i*
 iwlwifi: pci:v00008086d000043F0sv*sd00004234bc*sc*i*
 iwlwifi: pci:v00008086d000043F0sv*sd00004244bc*sc*i*
 iwlwifi: pci:v00008086d000043F0sv*sd000042A4bc*sc*i*
+iwlwifi: pci:v00008086d00004D40sv*sd*bc*sc*i*
 iwlwifi: pci:v00008086d00004DF0sv*sd*bc*sc*i*
 iwlwifi: pci:v00008086d000051F0sv*sd*bc*sc*i*
 iwlwifi: pci:v00008086d000051F1sv*sd*bc*sc*i*
@@ -3047,6 +3058,7 @@ mt76x2u: usb:v7392pB711d*dc*dsc*dp*ic*isc*ip*in*
 mt7921e: pci:v00000B48d00007922sv*sd*bc*sc*i*
 mt7921e: pci:v000014C3d00000608sv*sd*bc*sc*i*
 mt7921e: pci:v000014C3d00000616sv*sd*bc*sc*i*
+mt7921e: pci:v000014C3d00007920sv*sd*bc*sc*i*
 mt7921e: pci:v000014C3d00007922sv*sd*bc*sc*i*
 mt7921e: pci:v000014C3d00007961sv*sd*bc*sc*i*
 mt7921s: sdio:c*v037Ad7901*
@@ -5780,6 +5792,8 @@ xe: pci:v00008086d000056BAsv*sd*bc03sc*i*
 xe: pci:v00008086d000056BBsv*sd*bc03sc*i*
 xe: pci:v00008086d000056BCsv*sd*bc03sc*i*
 xe: pci:v00008086d000056BDsv*sd*bc03sc*i*
+xe: pci:v00008086d000056BEsv*sd*bc03sc*i*
+xe: pci:v00008086d000056BFsv*sd*bc03sc*i*
 xe: pci:v00008086d000056C0sv*sd*bc03sc*i*
 xe: pci:v00008086d000056C1sv*sd*bc03sc*i*
 xe: pci:v00008086d000056C2sv*sd*bc03sc*i*
@@ -5787,10 +5801,13 @@ xe: pci:v00008086d00006420sv*sd*bc03sc*i*
 xe: pci:v00008086d000064A0sv*sd*bc03sc*i*
 xe: pci:v00008086d000064B0sv*sd*bc03sc*i*
 xe: pci:v00008086d00007D40sv*sd*bc03sc*i*
+xe: pci:v00008086d00007D41sv*sd*bc03sc*i*
 xe: pci:v00008086d00007D45sv*sd*bc03sc*i*
+xe: pci:v00008086d00007D51sv*sd*bc03sc*i*
 xe: pci:v00008086d00007D55sv*sd*bc03sc*i*
 xe: pci:v00008086d00007D60sv*sd*bc03sc*i*
 xe: pci:v00008086d00007D67sv*sd*bc03sc*i*
+xe: pci:v00008086d00007DD1sv*sd*bc03sc*i*
 xe: pci:v00008086d00007DD5sv*sd*bc03sc*i*
 xe: pci:v00008086d00009A40sv*sd*bc03sc*i*
 xe: pci:v00008086d00009A49sv*sd*bc03sc*i*
