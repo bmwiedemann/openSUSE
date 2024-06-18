@@ -1,7 +1,7 @@
 #
 # spec file for package dante
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -115,7 +115,7 @@ CFLAGS=$(echo "%{optflags}" | sed "s|-grecord-gcc-switches||")
   --enable-drt-fallback \
   --enable-shared \
   --with-libc=$DANTELIBC
-make %{?_smp_mflags} V=1
+%make_build V=1
 
 %install
 %make_install
@@ -128,7 +128,6 @@ install -d 	%{buildroot}%{_unitdir} \
 install -m 644 example/socks.conf %{buildroot}/%{_sysconfdir}
 install -m 644 example/sockd.conf %{buildroot}/%{_sysconfdir}
 install -m 644 %{SOURCE1}	  %{buildroot}/%{_unitdir}/sockd.service
-ln -sf          ../../%{_unitdir}/sockd.service	%{buildroot}%{_sbindir}/rcsockd
 #
 # fix bug #23141
 #
@@ -147,8 +146,7 @@ rm INSTALL
 %preun server
 %service_del_preun sockd.service
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %post server
 %service_add_post sockd.service
@@ -175,7 +173,6 @@ rm INSTALL
 %attr(755,root,root) %{_sbindir}/sockd
 %config(noreplace) %{_sysconfdir}/sockd.conf
 %{_unitdir}/sockd.service
-%{_sbindir}/rcsockd
 
 %files devel
 %{_libdir}/libsocks.so
