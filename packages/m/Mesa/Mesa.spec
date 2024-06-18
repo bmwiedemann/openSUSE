@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package Mesa
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -42,7 +42,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 24.1.0
+%define _version 24.1.1
 %define with_opencl 0
 %define with_rusticl 0
 %define with_vulkan 0
@@ -130,7 +130,7 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        24.1.0
+Version:        24.1.1
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -231,6 +231,7 @@ Obsoletes:      libXvMC_r600 < %{version}
 Provides:       libtxc_dxtn = %{version}
 Obsoletes:      libtxc_dxtn < %{version}
 %ifarch %{arm} aarch64
+BuildRequires:  python3-pycparser >= 2.20
 BuildRequires:  pkgconfig(libdrm_etnaviv) >= 2.4.89
 BuildRequires:  pkgconfig(libdrm_freedreno) >= 2.4.74
 BuildRequires:  pkgconfig(libelf)

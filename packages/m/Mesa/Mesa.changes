@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 18 06:18:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire python3-pycparser when building drivers on ARM:
+  etnaviv drm module requires this module to build.
+
+-------------------------------------------------------------------
+Fri Jun 14 18:20:50 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to bugfix release 24.1.1
+  --> https://docs.mesa3d.org/relnotes/24.1.1
+
+-------------------------------------------------------------------
 Fri Jun 14 09:24:21 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to new feature release 24.1.0
