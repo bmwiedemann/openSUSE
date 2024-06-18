@@ -1,7 +1,7 @@
 #
 # spec file for package libosmo-sccp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libosmo-sccp
-Version:        1.8.1
+Version:        1.8.2
 Release:        0
 %define libversion %(echo "%version" | sed 's/\\./_/g')
 Summary:        Osmocom library for the A-bis interface between BTS and BSC
@@ -180,14 +180,10 @@ if ! %make_build check; then
 %endif
 fi
 
-%post   -n libosmo-mtp-%libversion -p /sbin/ldconfig
-%postun -n libosmo-mtp-%libversion -p /sbin/ldconfig
-%post   -n libosmo-sccp-%libversion -p /sbin/ldconfig
-%postun -n libosmo-sccp-%libversion -p /sbin/ldconfig
-%post   -n libosmo-sigtran9 -p /sbin/ldconfig
-%postun -n libosmo-sigtran9 -p /sbin/ldconfig
-%post   -n libosmo-xua-%libversion -p /sbin/ldconfig
-%postun -n libosmo-xua-%libversion -p /sbin/ldconfig
+%ldconfig_scriptlets -n libosmo-mtp-%libversion
+%ldconfig_scriptlets -n libosmo-sccp-%libversion
+%ldconfig_scriptlets -n libosmo-sigtran9
+%ldconfig_scriptlets -n libosmo-xua-%libversion
 
 %preun -n osmo-stp
 %service_del_preun osmo-stp.service
