@@ -1,0 +1,23 @@
+From ce1da838d74031cfbd3c4dae3a28b9c3c11b5000 Mon Sep 17 00:00:00 2001
+From: Robert Scheck <robert@fedoraproject.org>
+Date: Sun, 16 Jun 2024 19:03:43 +0200
+Subject: [PATCH] Change incompatible pointer type from RadixNodeObject to
+ PyObject
+
+---
+ radix/_radix.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/radix/_radix.c b/radix/_radix.c
+index 5a1b88f..5dcfc59 100644
+--- a/radix/_radix.c
++++ b/radix/_radix.c
+@@ -524,7 +524,7 @@ add_node_to_list(radix_node_t *node, void *arg)
+         PyObject *ret = arg;
+ 
+         if (node->data != NULL)
+-                PyList_Append(ret, ((RadixNodeObject *)node->data));
++                PyList_Append(ret, ((PyObject *)node->data));
+         return (0);
+ }
+ 

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 18 10:45:53 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Cherry-pick upstream patch to fix build with GCC 14
+  * https://github.com/mjschultz/py-radix/pull/58.patch
+- Switch package to modern Python Stack on SLE-15
+  + Use Python 3.11 on SLE-15 by default
+  + Drop support for older Python versions
+
+-------------------------------------------------------------------
 Thu Jan 25 11:52:58 UTC 2018 - sebix+novell.com@sebix.at
 
 - shorten and rephrase package description

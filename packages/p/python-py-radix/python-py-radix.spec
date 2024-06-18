@@ -1,7 +1,7 @@
 #
 # spec file for package python-py-radix
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-py-radix
 Version:        0.10.0
 Release:        0
 Summary:        Radix tree implementation
-License:        ISC AND BSD-4-Clause
+License:        BSD-4-Clause AND ISC
 Group:          Development/Languages/Python
-Url:            https://github.com/mjschultz/py-radix
+URL:            https://github.com/mjschultz/py-radix
 Source:         https://files.pythonhosted.org/packages/source/p/py-radix/py-radix-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM - Change incompatible pointer type from RadixNodeObject to PyObject
+Patch:          https://github.com/mjschultz/py-radix/pull/58.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -43,6 +45,7 @@ This package includes the C-extension.
 
 %prep
 %setup -q -n py-radix-%{version}
+%patch -P0 -p1
 
 %build
 export CFLAGS="%{optflags}"
