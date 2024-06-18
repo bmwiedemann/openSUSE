@@ -19,7 +19,7 @@
 
 #!BuildIgnore: post-build-checks
 
-%define patchversion 6.9.4
+%define patchversion 6.9.5
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -38,16 +38,16 @@
 %endif
 %endif
 %endif
-%global kernel_package kernel%kernel_flavor-srchash-ad8659c479407dcc64c3899ad277bc2746fb9ea7
+%global kernel_package kernel%kernel_flavor-srchash-c9c2e244cf9031882276be043b882ccf33835a4f
 %endif
 %if 0%{?rhel_version}
 %global kernel_package kernel
 %endif
 
 Name:           kernel-obs-build
-Version:        6.9.4
+Version:        6.9.5
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gad8659c
+Release:        <RELEASE>.gc9c2e24
 %else
 Release:        0
 %endif
@@ -123,7 +123,12 @@ echo 127.0.0.1 localhost > /etc/hosts # omit build-machine host name (boo#108490
 
 # a longer list to have them also available for qemu cross builds where x86_64 kernel runs in eg. arm env.
 # this list of modules where available on build workers of build.opensuse.org, so we stay compatible.
-export KERNEL_MODULES="loop dm-crypt essiv dm-mod dm-snapshot binfmt-misc fuse kqemu squashfs ext2 ext3 ext4 btrfs xfs nf_conntrack_ipv6 binfmt_misc virtio_pci virtio_mmio virtio_blk virtio_rng fat vfat nls_cp437 nls_iso8859-1 ibmvscsi sd_mod e1000 ibmveth overlay 9p 9pnet_virtio qemu_fw_cfg"
+export KERNEL_MODULES="
+	loop dm-crypt essiv dm-mod dm-snapshot binfmt-misc fuse kqemu squashfs ext2 ext3 ext4 btrfs
+	xfs nf_conntrack_ipv6 binfmt_misc virtio_pci virtio_mmio virtio_blk virtio_rng fat vfat
+	nls_cp437 nls_iso8859-1 ibmvscsi sd_mod e1000 ibmveth overlay 9p 9pnet_virtio qemu_fw_cfg
+	aegis128 xts bridge br_netfilter nf_nat xt_conntrack iptable_nat iptable_filter
+	iso9660"
 
 # manually load all modules to make sure they're available
 for i in $KERNEL_MODULES; do

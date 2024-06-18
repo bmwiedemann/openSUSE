@@ -6642,4 +6642,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.9.4 &amp; bluetooth fix</comment>
     <requestid>1180254</requestid>
   </revision>
+  <revision rev="736" vrev="1">
+    <srcmd5>1c2a8ee1160f31c0bfa18a0f28326db4</srcmd5>
+    <version>6.9.5</version>
+    <time>1718743873</time>
+    <user>anag+factory</user>
+    <comment>6.9.5 &amp; algif removal (to fix openssl) &amp; ata fix &amp; more kernel-obs-build modules for containers</comment>
+    <requestid>1181416</requestid>
+  </revision>
 </revisionlist>
