@@ -27,8 +27,14 @@ Source0:        https://github.com/tectonic-typesetting/tectonic/archive/refs/ta
 Source1:        vendor.tar.zst
 Patch1:         0001-build-set-c-standard-to-c-17.patch
 Patch2:         0002-fix-update-symbols-tags_from_lang-hb_ot_tag_from_lan.patch
+%if 0%{?suse_version} > 1600
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
+%else
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
+BuildRequires:  libstdc++6-devel-gcc13
+%endif
 BuildRequires:  cargo-packaging
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(fontconfig)
@@ -51,6 +57,10 @@ XeTeX and TeXLive.
 %build
 
 %install
+%if 0%{?suse_version} <= 1600
+export CC=gcc-13
+export CXX=g++-13
+%endif
 %{cargo_install} --features external-harfbuzz
 
 %files

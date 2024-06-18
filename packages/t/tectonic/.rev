@@ -108,4 +108,13 @@
 </comment>
     <requestid>1177200</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>589b81c1cdcd260e0795bc3047ff5045</srcmd5>
+    <version>0.15.0</version>
+    <time>1718743944</time>
+    <user>anag+factory</user>
+    <comment>- Fix leap builds
+</comment>
+    <requestid>1181499</requestid>
+  </revision>
 </revisionlist>
