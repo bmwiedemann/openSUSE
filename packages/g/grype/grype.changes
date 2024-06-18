@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 18 10:49:00 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.79.1:
+  * chore: update CI to install golang at latest version (#1949)
+  * chore(deps): bump github.com/google/go-containerregistry
+    (#1948)
+  * chore(deps): bump github.com/spf13/cobra from 1.8.0 to 1.8.1
+    (#1947)
+
+-------------------------------------------------------------------
 Sat Jun 15 16:15:49 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.79.0:
