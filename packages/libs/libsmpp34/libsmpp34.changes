@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 18 08:43:00 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.4
+  * fix compiler warnings about implicit declaration of strtol()
+
+-------------------------------------------------------------------
 Wed Nov  1 19:49:35 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.14.3

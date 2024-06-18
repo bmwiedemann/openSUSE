@@ -1,7 +1,7 @@
 #
 # spec file for package libsmpp34
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define sover 1
 Name:           libsmpp34
-Version:        1.14.3
+Version:        1.14.4
 Release:        0
 Summary:        PDU SMPP packaging and unpackaging tool
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -80,8 +80,7 @@ rm -f "%buildroot/%_libdir"/*.la
 %check
 %make_build check || (find . -name testsuite.log -exec cat {} +)
 
-%post   -n libsmpp34-%sover -p /sbin/ldconfig
-%postun -n libsmpp34-%sover -p /sbin/ldconfig
+%ldconfig_scriptlets -n libsmpp34-%sover
 
 %files -n libsmpp34-%sover
 %_libdir/libsmpp34.so.%{sover}*
