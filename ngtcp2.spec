@@ -21,7 +21,7 @@
 %global gnutls_soname libngtcp2_crypto_gnutls
 %global gnutls_sover 8
 Name:           ngtcp2
-Version:        1.2.0
+Version:        1.6.0
 Release:        0
 Summary:        Implementation of the IETF QUIC protocol
 License:        MIT
@@ -34,7 +34,6 @@ Source3:        baselibs.conf
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(cunit)
 BuildRequires:  pkgconfig(gnutls) >= 3
 BuildRequires:  pkgconfig(libnghttp3) >= 1.0.0
 
@@ -87,7 +86,6 @@ Documentation for ngtcp2, which includes a shared C library
   --disable-static        \
   --disable-silent-rules  \
   --enable-lib-only       \
-  --with-cunit            \
   --with-libnghttp3       \
   --with-gnutls           \
   --without-openssl       \

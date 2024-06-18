@@ -70,4 +70,41 @@
   * cmake: Require nghttp3 &gt;= v1.0.0</comment>
     <requestid>1142109</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6aa7e0b055ccb84708e88172913151b3</srcmd5>
+    <version>1.6.0</version>
+    <time>1718743885</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.6.0:
+  * examples: Print negotiated group if TLS stack gives that
+    information
+  * Remove ngtcp2_min and ngtcp2_max
+  * Keep-alive packet should trigger PTO
+  * Fix ngtcp2_conn_stat.max_tx_udp_payload_size update
+  * Adjust memory pool allocation units to reduce allocation size
+  * Adjust NGTCP2_ACKTR_MAX_ENT to match NGTCP2_MAX_ACK_RANGES +
+    1
+  * Allocate ngtcp2_acktr_entry at once not to waste memory
+  * Fix memory leak when stream datacnt gets below allocation
+    threshold
+  * Refactor ngtcp2_frame_chain allocation for ngtcp2_stream
+- update to 1.5.0:
+  * Pack more QUIC packets on large PMTUD probes
+  * Drop UDP datagram if it comes from a well-known port
+  * Rework transmitting empty STREAM frame
+  * Take into account SCID length when computing minimum packet
+    size
+  * More prohibited ports
+  * client: Handle error from feed_data
+  * server: Send stateless reset
+  * crypto: Adjust token stack buffer sizes
+  * crypto: Reduce NGTCP2_CRYPTO_TOKEN_RAND_DATALEN to 16
+  * Adopt std::to_array
+  * server: Use std::span for sized binary data
+  * client: Use std::span for sized binary data
+  * examples: More std::span
+  * std::unordered_map lookup by std::string_view
+  * Refactor format_hex</comment>
+    <requestid>1181358</requestid>
+  </revision>
 </revisionlist>
