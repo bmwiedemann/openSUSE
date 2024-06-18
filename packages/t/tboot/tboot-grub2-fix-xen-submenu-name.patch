@@ -4,13 +4,13 @@ Subject: fix xen submenu name to show tboot version
 References: bnc#865815
 Patch-Mainline: no
 
-Index: tboot-1.11.1/tboot/20_linux_xen_tboot
+Index: tboot-1.11.4/tboot/20_linux_xen_tboot
 ===================================================================
---- tboot-1.11.1.orig/tboot/20_linux_xen_tboot
-+++ tboot-1.11.1/tboot/20_linux_xen_tboot
+--- tboot-1.11.4.orig/tboot/20_linux_xen_tboot
++++ tboot-1.11.4/tboot/20_linux_xen_tboot
 @@ -246,7 +246,7 @@ while [ "x${xen_list}" != "x" ] ; do
          rel_tboot_dirname=`make_system_path_relative_to_its_root $tboot_dirname`
-         tboot_version="1.11.1"
+         tboot_version="1.11.4"
          list="${linux_list}"
 -        echo "submenu \"Xen ${xen_version}\" \"Tboot ${tboot_version}\"{"
 +        echo "submenu \"Xen ${xen_version} with Tboot ${tboot_version}\"{"

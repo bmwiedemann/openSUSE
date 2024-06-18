@@ -1,7 +1,7 @@
 #
 # spec file for package tboot
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tboot
-%define ver 1.11.1
+%define ver 1.11.4
 Version:        20210614_%{ver}
 Release:        0
 Summary:        Program for performing a verified launch using Intel TXT
@@ -25,6 +25,7 @@ License:        BSD-3-Clause
 Group:          Productivity/Security
 URL:            https://sourceforge.net/projects/tboot/
 Source0:        https://downloads.sourceforge.net/project/tboot/tboot/tboot-%{ver}.tar.gz
+Source1:        tboot.rpmlintrc
 Patch3:         tboot-grub2-fix-menu-in-xen-host-server.patch
 Patch4:         tboot-grub2-fix-xen-submenu-name.patch
 Patch7:         tboot-distributor.patch
@@ -79,8 +80,8 @@ make debug=y install DISTDIR="%{buildroot}" MANPATH="%{buildroot}/%{_mandir}"
 /boot/tboot-syms
 %{_mandir}/man8/*
 %dir %{_sysconfdir}/grub.d/
-%{_sysconfdir}/grub.d/20_linux_tboot
-%{_sysconfdir}/grub.d/20_linux_xen_tboot
+%config(noreplace) %{_sysconfdir}/grub.d/20_linux_tboot
+%config(noreplace) %{_sysconfdir}/grub.d/20_linux_xen_tboot
 
 %post
 %if 0%{?update_bootloader_check_type_reinit_post:1}

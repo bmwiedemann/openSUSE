@@ -658,4 +658,32 @@
       - Remove poly1305 object files on clean</comment>
     <requestid>1063392</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>8d02585e82c6dd64d60f4fbdf5187261</srcmd5>
+    <version>20210614_1.11.4</version>
+    <time>1718743900</time>
+    <user>anag+factory</user>
+    <comment>- add tboot.rpmlintrc: suppress warning about missing %check section. There's
+  no testsuite for tboot.
+- mark grub.d snippets as %config (noreplace) to satisfy rpmlint warning
+  (the grub2 package itself marks its snippets this way, so it seems to be
+  common standard to do so).
+- update to v1.11.4:
+  * v1.11.4
+    Increase the TBOOT log size from 32 KB to 64 KB. For some Intel server
+    platforms, it was noticed that TBOOT_SERIAL_LOG memory section was too
+    small to hold all of the print logs, produced by TBOOT. Due to this
+    reason TBOOT log section memory size had to be increase to 64KB.
+  * v1.11.3
+    Fix the hanging TBOOT issue, which appeared during the RLPs wakeup process
+    on the Intel's multisocket platform. This problem appeared during the AP
+    stacks allocations for these RLPs. TBOOT allocated memory for them depending
+    on the woken-up CPUs X2 APIC values. When some of them exceeded the NR_CPUS (1024),
+    then the RLP wakeup process execution halted. For the current moment,
+    the maximal X2 APID value was increased from 1024 to 8192. This kind of
+    solution fixed the given problem.
+  * v1.11.2
+    Fix the RAM memory allocation algorithm for the initrd.</comment>
+    <requestid>1181402</requestid>
+  </revision>
 </revisionlist>
