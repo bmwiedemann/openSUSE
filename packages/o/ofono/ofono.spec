@@ -19,7 +19,7 @@
 
 
 Name:           ofono
-Version:        2.6
+Version:        2.7
 Release:        0
 Summary:        Mobile telephony application development framework
 License:        GPL-2.0-only
@@ -27,6 +27,7 @@ URL:            https://01.org/ofono
 Source0:        https://www.kernel.org/pub/linux/network/ofono/%{name}-%{version}.tar.xz
 Patch0:         harden_ofono.service.patch
 BuildRequires:  pkgconfig
+BuildRequires:  xz
 BuildRequires:  pkgconfig(bluez) >= 4.85
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(glib-2.0)
