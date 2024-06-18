@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 18 08:15:35 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove rc* symlinks [jsc#PED-266]
+
+-------------------------------------------------------------------
 Thu May 27 14:59:26 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.13

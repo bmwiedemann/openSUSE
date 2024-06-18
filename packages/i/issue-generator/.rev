@@ -162,4 +162,12 @@
   - SELinux: Do not call agetty --reload [bsc#1186178]</comment>
     <requestid>895786</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>c88667087ccf08de278f084ceef2afd6</srcmd5>
+    <version>1.13</version>
+    <time>1718743843</time>
+    <user>anag+factory</user>
+    <comment>- Remove rc* symlinks [jsc#PED-266]</comment>
+    <requestid>1181421</requestid>
+  </revision>
 </revisionlist>

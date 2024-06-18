@@ -1,7 +1,7 @@
 #
 # spec file for package issue-generator
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,8 +44,6 @@ sed -i -e 's|NETWORK_INTERFACE_REGEX=.*|NETWORK_INTERFACE_REGEX="^[beqich]"|g' u
 
 %install
 %make_install
-ln -sf service %{buildroot}%{_sbindir}/rcissue-generator
-ln -sf service %{buildroot}%{_sbindir}/rcissue-add-ssh-keys
 mkdir -p %{buildroot}%{_fillupdir}
 install -m 644 udev/sysconfig.issue-generator %{buildroot}%{_fillupdir}/
 %fdupes %{buildroot}%{_mandir}
@@ -79,8 +77,6 @@ install -m 644 udev/sysconfig.issue-generator %{buildroot}%{_fillupdir}/
 %{_prefix}/lib/systemd/system/issue-generator.path
 %{_prefix}/lib/systemd/system/issue-generator.service
 %{_sbindir}/issue-generator
-%{_sbindir}/rcissue-generator
-%{_sbindir}/rcissue-add-ssh-keys
 %{_mandir}/man5/issue.d.5%{ext_man}
 %{_mandir}/man8/issue-generator.8%{ext_man}
 %{_mandir}/man8/90-issue-generator.rules.8%{ext_man}
