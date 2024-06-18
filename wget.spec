@@ -1,7 +1,7 @@
 #
 # spec file for package wget
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -35,6 +35,7 @@ Patch7:         wget-fix-pod-syntax.diff
 Patch8:         wget-errno-clobber.patch
 Patch9:         remove-env-from-shebang.patch
 Patch10:        wget-do-not-propagate-credentials.patch
+Patch11:        properly-re-implement-userinfo-parsing.patch
 BuildRequires:  gpgme-devel >= 0.4.2
 BuildRequires:  libcares-devel
 BuildRequires:  libidn2-devel

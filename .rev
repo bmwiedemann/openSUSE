@@ -544,4 +544,12 @@
     <comment></comment>
     <requestid>1156879</requestid>
   </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>065a14127e337661a888c74735bb85ae</srcmd5>
+    <version>1.24.5</version>
+    <time>1718743857</time>
+    <user>anag+factory</user>
+    <comment>fix mishandled semicolons in the userinfo subcomponent, bsc#1226419, CVE-2024-38428</comment>
+    <requestid>1181529</requestid>
+  </revision>
 </revisionlist>

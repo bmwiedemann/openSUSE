@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 18 07:54:22 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Fix mishandled semicolons in the userinfo subcomponent could lead to an
+  insecure behavior in which data that was supposed to be in the userinfo
+  subcomponent is misinterpreted to be part of the host subcomponent.
+  [bsc#1226419, CVE-2024-38428, properly-re-implement-userinfo-parsing.patch] 
+
+-------------------------------------------------------------------
 Sun Mar 10 20:45:15 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU wget 1.24.5:
