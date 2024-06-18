@@ -16,9 +16,8 @@
 #
 
 
-%bcond_with tests
 Name:           maven-shared-utils
-Version:        3.3.4
+Version:        3.4.2
 Release:        0
 Summary:        Maven shared utility classes
 License:        Apache-2.0
@@ -34,18 +33,9 @@ BuildRequires:  fdupes
 BuildRequires:  jansi
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsr-305
-BuildRequires:  plexus-classworlds
-BuildRequires:  plexus-utils
-BuildRequires:  sisu-plexus
+BuildRequires:  slf4j
 BuildRequires:  unzip
 BuildArch:      noarch
-%if %{with tests}
-BuildRequires:  ant-junit
-BuildRequires:  apache-commons-lang3
-BuildRequires:  maven-lib
-BuildRequires:  maven-plugin-testing-harness
-BuildRequires:  maven-resolver-api
-%endif
 
 %description
 This project aims to be a functional replacement for plexus-utils in Maven.
@@ -63,26 +53,14 @@ API documentation for %{name}.
 
 %prep
 %setup -q
-cp %{SOURCE1} build.xml
-
 %patch -P 0 -p1
-
-%pom_change_dep :plexus-container-default org.eclipse.sisu:org.eclipse.sisu.plexus:0.9.0.M2
+cp %{SOURCE1} build.xml
 
 %build
 mkdir -p lib
-build-jar-repository -s lib commons-io jansi/jansi jsr305 \
-  org.eclipse.sisu.plexus plexus/classworlds plexus/utils
-%if %{with tests}
-  build-jar-repository -s lib commons-lang3 maven/maven-artifact maven/maven-core \
-    maven/maven-model maven-plugin-testing/maven-plugin-testing-harness \
-    maven-resolver/maven-resolver-api
-%endif
+build-jar-repository -s lib commons-io jansi/jansi slf4j/api jsr305
 
 %{ant} \
-%if %{without tests}
-  -Dtest.skip=true \
-%endif
   jar javadoc
 
 %install

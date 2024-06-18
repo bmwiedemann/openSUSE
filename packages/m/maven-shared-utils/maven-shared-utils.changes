@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Jun 18 08:48:53 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.4.2
+  * New features and improvements
+    + [MNG-7729] - deprecate questionable IsEmpty/IsNotEmpty methods
+    + [MSHARED-1014] - Make Commandline.addSystemEnvironment public
+      and deprecated
+    + Deprecate newXmlWriter
+    + [MSHARED-1172] - Deprecate redundant isEmptyString method
+    + [MSHARED-1169] - deprecate join methods now available in
+      Java 8 String class
+    + [MSHARED-1122] - FileUtils: avoid getCanonicalPath()
+    + [MSHARED-1079] - add build() method and document toString()
+      method
+    + [MSHARED-1014] - Optionally inherit system environment
+      variables by Commandline
+    + [MSHARED-983] - Drop plexus container default
+  * Bug Fixes
+    + [MSHARED-953] - don't trim
+    + [MSHARED-1072] - fix blocking in StreamFeeder
+    + [MSHARED-1109] - Ignore MessageUtilsTest methods on
+      unsupported platforms
+    + [MSHARED-1107] - Make copyFile succeed with source file
+      having lastModified() = 0
+    + [MSHARED-985] - XmlWriterUtil platform independent and
+      consistent
+    + [MSHARED-1072] - Poll data from input stream
+- Modified patch:
+  * 0001-Restore-compatibility-with-current-maven.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
 Sun May 26 22:42:50 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use the org.eclipse.sisu:org.eclipse.sisu.plexus artifact in

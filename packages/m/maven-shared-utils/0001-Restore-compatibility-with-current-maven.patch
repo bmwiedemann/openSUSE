@@ -1,20 +1,20 @@
-From e3d2a29743e1b36beaf1063567da9dfd2e5a8aa8 Mon Sep 17 00:00:00 2001
+From 9b56e978de98c6927e8c88456154cfaf6dfeb7c9 Mon Sep 17 00:00:00 2001
 From: Michael Simacek <msimacek@redhat.com>
 Date: Mon, 26 Feb 2018 16:21:04 +0100
 Subject: [PATCH] Restore compatibility with current maven
 
 ---
- .../maven/shared/utils/logging/AnsiMessageBuilder.java | 18 ++++++++++++++++++
- .../maven/shared/utils/logging/MessageBuilder.java     |  3 +++
- .../shared/utils/logging/PlainMessageBuilder.java      | 18 ++++++++++++++++++
+ .../utils/logging/AnsiMessageBuilder.java      | 18 ++++++++++++++++++
+ .../shared/utils/logging/MessageBuilder.java   |  3 +++
+ .../utils/logging/PlainMessageBuilder.java     | 18 ++++++++++++++++++
  3 files changed, 39 insertions(+)
 
 diff --git a/src/main/java/org/apache/maven/shared/utils/logging/AnsiMessageBuilder.java b/src/main/java/org/apache/maven/shared/utils/logging/AnsiMessageBuilder.java
-index 0103a6b..23b6d14 100644
+index ddb9ab7..6fc9012 100644
 --- a/src/main/java/org/apache/maven/shared/utils/logging/AnsiMessageBuilder.java
 +++ b/src/main/java/org/apache/maven/shared/utils/logging/AnsiMessageBuilder.java
-@@ -153,4 +153,22 @@ class AnsiMessageBuilder
-     {
+@@ -133,4 +133,22 @@ class AnsiMessageBuilder implements MessageBuilder, LoggerLevelRenderer {
+     public String build() {
          return ansi.toString();
      }
 +
@@ -37,25 +37,25 @@ index 0103a6b..23b6d14 100644
 +    }
  }
 diff --git a/src/main/java/org/apache/maven/shared/utils/logging/MessageBuilder.java b/src/main/java/org/apache/maven/shared/utils/logging/MessageBuilder.java
-index b60bb4e..1dc2624 100644
+index fa1c07b..5cc49cc 100644
 --- a/src/main/java/org/apache/maven/shared/utils/logging/MessageBuilder.java
 +++ b/src/main/java/org/apache/maven/shared/utils/logging/MessageBuilder.java
-@@ -26,6 +26,9 @@ package org.apache.maven.shared.utils.logging;
+@@ -30,6 +30,9 @@ import java.util.Formatter;
+  * @since 3.1.0
   */
- public interface MessageBuilder
- {
-+    MessageBuilder debug( Object message );
-+    MessageBuilder info( Object message );
-+    MessageBuilder error( Object message );
+ public interface MessageBuilder {
++    MessageBuilder debug(Object message);
++    MessageBuilder info(Object message);
++    MessageBuilder error(Object message);
      /**
       * Append message content in success style.
       * By default, bold green
 diff --git a/src/main/java/org/apache/maven/shared/utils/logging/PlainMessageBuilder.java b/src/main/java/org/apache/maven/shared/utils/logging/PlainMessageBuilder.java
-index 2eec001..5236e99 100644
+index 86b3e2a..a3f9685 100644
 --- a/src/main/java/org/apache/maven/shared/utils/logging/PlainMessageBuilder.java
 +++ b/src/main/java/org/apache/maven/shared/utils/logging/PlainMessageBuilder.java
-@@ -139,4 +139,22 @@ class PlainMessageBuilder
-     {
+@@ -120,4 +120,22 @@ class PlainMessageBuilder implements MessageBuilder, LoggerLevelRenderer {
+     public String build() {
          return buffer.toString();
      }
 +
@@ -78,5 +78,5 @@ index 2eec001..5236e99 100644
 +    }
  }
 -- 
-2.14.3
+2.45.2
 
