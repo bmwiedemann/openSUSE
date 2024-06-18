@@ -23,4 +23,12 @@
     <comment>Remove dependency on maven2</comment>
     <requestid>1113424</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a71a490aee435ec1a27c90a6e0e0cae5</srcmd5>
+    <version>3.0.0</version>
+    <time>1718743930</time>
+    <user>anag+factory</user>
+    <comment>fix build with maven-shared-utils 3.4.2</comment>
+    <requestid>1181480</requestid>
+  </revision>
 </revisionlist>

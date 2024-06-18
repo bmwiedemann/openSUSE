@@ -1,7 +1,7 @@
 #
 # spec file for package maven-shared-jarsigner
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/shared/maven-jarsigner/
 Source0:        https://repo1.maven.org/maven2/org/apache/maven/shared/maven-jarsigner/%{version}/maven-jarsigner-%{version}-source-release.zip
+Patch0:         %{name}-logger.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  unzip
@@ -47,6 +48,7 @@ This package provides %{summary}.
 
 %prep
 %setup -q -n maven-jarsigner-%{version}
+%patch -P 0 -p1
 find -name \*.jar -delete
 
 %pom_xpath_set pom:properties/pom:javaVersion "8"

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 18 08:38:55 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * maven-shared-jarsigner-logger.patch
+    + port to maven-shared-utils 3.4.2
+
+-------------------------------------------------------------------
 Mon Sep 25 09:44:14 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Remove dependency on maven2

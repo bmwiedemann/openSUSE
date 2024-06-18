@@ -1,0 +1,54 @@
+--- maven-jarsigner-3.0.0/pom.xml	2024-06-18 10:36:28.145110690 +0200
++++ maven-jarsigner-3.0.0/pom.xml	2024-06-18 10:36:46.038568757 +0200
+@@ -64,7 +64,7 @@
+     <dependency>
+       <groupId>org.apache.maven.shared</groupId>
+       <artifactId>maven-shared-utils</artifactId>
+-      <version>3.2.1</version>
++      <version>3.4.2</version>
+     </dependency>
+ 
+     <dependency>
+--- maven-jarsigner-3.0.0/src/main/java/org/apache/maven/shared/jarsigner/DefaultJarSigner.java	2024-06-18 10:36:28.145110690 +0200
++++ maven-jarsigner-3.0.0/src/main/java/org/apache/maven/shared/jarsigner/DefaultJarSigner.java	2024-06-18 10:36:46.041902113 +0200
+@@ -24,6 +24,7 @@
+ import org.apache.maven.shared.utils.cli.javatool.AbstractJavaTool;
+ import org.apache.maven.shared.utils.cli.javatool.JavaToolException;
+ import org.codehaus.plexus.component.annotations.Component;
++import org.slf4j.LoggerFactory;
+ 
+ /**
+  * Default implementation of component {@link JarSigner}.
+@@ -47,7 +48,7 @@
+         throws JavaToolException
+     {
+         JarSignerCommandLineBuilder cliBuilder = new JarSignerCommandLineBuilder();
+-        cliBuilder.setLogger( getLogger() );
++        cliBuilder.setLogger( LoggerFactory.getLogger(this.getClass()) );
+         cliBuilder.setJarSignerFile( javaToolFile );
+         try
+         {
+--- maven-jarsigner-3.0.0/src/main/java/org/apache/maven/shared/jarsigner/JarSignerCommandLineBuilder.java	2024-06-18 10:36:28.145110690 +0200
++++ maven-jarsigner-3.0.0/src/main/java/org/apache/maven/shared/jarsigner/JarSignerCommandLineBuilder.java	2024-06-18 10:36:46.041902113 +0200
+@@ -22,8 +22,8 @@
+ import org.apache.maven.shared.utils.StringUtils;
+ import org.apache.maven.shared.utils.cli.Arg;
+ import org.apache.maven.shared.utils.cli.Commandline;
+-import org.codehaus.plexus.logging.Logger;
+-import org.codehaus.plexus.logging.console.ConsoleLogger;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+ 
+ import java.io.File;
+ import java.io.IOException;
+@@ -36,9 +36,7 @@
+  */
+ public class JarSignerCommandLineBuilder
+ {
+-    private static final Logger DEFAULT_LOGGER = new ConsoleLogger( 0, JarSignerCommandLineBuilder.class.getName() );
+-
+-    private Logger logger = DEFAULT_LOGGER;
++    private Logger logger = LoggerFactory.getLogger(this.getClass());
+ 
+     private String jarSignerFile;
+ 
