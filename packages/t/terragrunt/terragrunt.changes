@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 17 19:15:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.59.4:
+  * Fixed fetching compressed data from a network mirror server
+    (#3208)
+  * Remove TERRAGRUNT_PROVIDER_CACHE_DISABLE_PARTIAL_LOCK_FILE
+    reference (#3206)
+
+-------------------------------------------------------------------
 Thu Jun 13 18:44:43 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.59.3:
