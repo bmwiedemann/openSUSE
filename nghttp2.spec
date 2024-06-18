@@ -20,7 +20,7 @@
 %global sover   14
 %global flavor @BUILD_FLAVOR@%{nil}
 Name:           nghttp2
-Version:        1.61.0
+Version:        1.62.1
 Release:        0
 Summary:        Implementation of Hypertext Transfer Protocol version 2 in C
 License:        MIT
@@ -30,8 +30,11 @@ Source0:        https://github.com/nghttp2/nghttp2/releases/download/v%{version}
 Source1:        https://github.com/nghttp2/nghttp2/releases/download/v%{version}/nghttp2-%{version}.tar.xz.asc
 Source2:        nghttp2.keyring
 Source3:        baselibs.conf
-Patch1:         gcc7.patch
+%if 0%{?suse_version} && 0%{?suse_version} == 1500
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  pkgconfig
@@ -96,6 +99,10 @@ HTTP/2 client, server and proxy.
 %autosetup -p1 -n nghttp2-%{version}
 
 %build
+%if 0%{?suse_version} && 0%{?suse_version} == 1500
+export CC=/usr/bin/gcc-13
+export CXX=/usr/bin/g++-13
+%endif
 %configure \
   --disable-static        \
   --disable-silent-rules  \

@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Jun 17 18:02:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.62.1:
+  * nghttpx: Fix batch UDP QUIC packet dropped on GRO read
+- update to 1.62.0:
+  * nghttpx: Fix QUIC stateless reset stack buffer overflow
+  * Require c-ares >= 1.16.0 for ares_getaddrinfo
+  * Require C++20 compiler
+  * Adopt std::to_array and remove make_array
+  * nghttpx: Define APIEndpoints separately
+  * nghttpx: Do not send error/status body when method is HEAD
+  * nghttpx: Fix alignment issues in BlockAllocator
+  * nghttpx: Simplify parameter declaration for ipc_fd functions
+  * nghttpx: Add extent to ipc_fd explicitly
+  * Make make_byte_ref return std::span
+  * Make util::decode_hex return std::span
+  * Rewrite util::parse_uint
+  * Let base64::decode return std::span
+  * Refactor StringRef
+  * Stringref refactor c str and str
+  * Add StringRef literal operator and remove StringRef::from_lit
+  * Make StringRef(const std::string&) implicit
+  * Add http2::make_field family functions
+  * Remove std::string conversion operator from StringRef
+  * Optimize StringRef comparisons against c-string
+  * Pack more quic pkt
+  * nghttpx: Dynamic GSO failover
+  * Refactor ImmutableString
+  * nghttpx: Refactor QUIC data path
+  * nghttpx: Fix inherited TCP port comparison
+  * make_websocket_accept_token: Lesser conversions
+  * Add http3::make_field family functions
+  * Remove unnecessary namespace qualifications
+  * Refactor http utils
+  * Refactor streq
+  * Remove util::streq and let StringRef operator== deal with it
+  * Update the link for the Prefix.pdf document. fix #2178
+  * Introduce typed nghttp2_min and nghttp2_max
+- drop gcc7.patch (obsolete, we require C++20 now)
+
+-------------------------------------------------------------------
 Thu Apr  4 09:47:27 UTC 2024 - pgajdos@suse.com
 
 - version update to 1.61.0
@@ -48,7 +89,7 @@ Wed Apr  3 10:31:13 UTC 2024 - Adam Majer <adam.majer@suse.de>
 -------------------------------------------------------------------
 Mon Mar 18 12:59:00 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
-- Update keyring with current key 
+- Update keyring with current key
 
 -------------------------------------------------------------------
 Mon Mar 18 08:35:17 UTC 2024 - pgajdos@suse.com

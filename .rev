@@ -866,4 +866,41 @@
     <comment></comment>
     <requestid>1164560</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>5b9bef5780e58ec701179c337c07ebb0</srcmd5>
+    <version>1.62.1</version>
+    <time>1718743865</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.62.1:
+  * nghttpx: Fix batch UDP QUIC packet dropped on GRO read
+- update to 1.62.0:
+  * nghttpx: Fix QUIC stateless reset stack buffer overflow
+  * Require c-ares &gt;= 1.16.0 for ares_getaddrinfo
+  * Require C++20 compiler
+  * Adopt std::to_array and remove make_array
+  * nghttpx: Define APIEndpoints separately
+  * nghttpx: Do not send error/status body when method is HEAD
+  * nghttpx: Fix alignment issues in BlockAllocator
+  * nghttpx: Simplify parameter declaration for ipc_fd functions
+  * nghttpx: Add extent to ipc_fd explicitly
+  * Make make_byte_ref return std::span
+  * Make util::decode_hex return std::span
+  * Rewrite util::parse_uint
+  * Let base64::decode return std::span
+  * Refactor StringRef
+  * Stringref refactor c str and str
+  * Add StringRef literal operator and remove StringRef::from_lit
+  * Make StringRef(const std::string&amp;) implicit
+  * Add http2::make_field family functions
+  * Remove std::string conversion operator from StringRef
+  * Optimize StringRef comparisons against c-string
+  * Pack more quic pkt
+  * nghttpx: Dynamic GSO failover
+  * Refactor ImmutableString
+  * nghttpx: Refactor QUIC data path
+  * nghttpx: Fix inherited TCP port comparison
+  * make_websocket_accept_token: Lesser conversions
+  * Add http3::make_field family functions</comment>
+    <requestid>1181357</requestid>
+  </revision>
 </revisionlist>
