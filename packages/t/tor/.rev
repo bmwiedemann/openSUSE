@@ -1116,4 +1116,12 @@ nicer version with try-reload-or-restart</comment>
   * See https://gitlab.torproject.org/tpo/core/tor/-/raw/release-0.4.8/ReleaseNotes</comment>
     <requestid>1166822</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>c29973ecde48c4ee58ff8b7687db5e23</srcmd5>
+    <version>0.4.8.12</version>
+    <time>1718743923</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1181475</requestid>
+  </revision>
 </revisionlist>
