@@ -17,7 +17,7 @@
 
 
 Name:           ollama
-Version:        0.1.40
+Version:        0.1.44
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT
@@ -75,6 +75,9 @@ install -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.service
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/%{name}-user.conf
 install -d %{buildroot}/var/lib/%{name}
 
+mkdir -p "%buildroot/%_docdir/%name"
+cp -Ra docs/* "%buildroot/%_docdir/%name"
+
 %pre -f %{name}.pre
 %service_add_pre %{name}.service
 
@@ -90,6 +93,7 @@ install -d %{buildroot}/var/lib/%{name}
 %files
 %doc README.md
 %license LICENSE
+%{_docdir}/%{name}
 %{_bindir}/%{name}
 %{_unitdir}/%{name}.service
 %{_sysusersdir}/%{name}-user.conf

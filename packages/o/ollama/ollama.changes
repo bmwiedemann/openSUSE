@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Jun 18 12:12:41 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Added documentation files to .spec 
+
+- Update to version 0.1.44:
+  * Fixed issue where unicode characters such as emojis would not 
+    be loaded correctly when running ollama create
+  * Fixed certain cases where Nvidia GPUs would not be detected and
+    reported as compute capability 1.0 devices
+
+- Update to version 0.1.43:
+  * New import.md guide for converting and importing models to 
+    Ollama
+  * Fixed issue where embedding vectors resulting from 
+    /api/embeddings would not be accurate
+  * JSON mode responses will no longer include invalid escape 
+    characters
+  * Removing a model will no longer show incorrect File not found 
+    errors
+  * Fixed issue where running ollama create would result in an 
+    error on Windows with certain file formatting
+
+- Update to version 0.1.42:
+  * New models: Qwen 2: a new series of large language models 
+    from Alibaba group
+  * Qwen 2: a new series of large language models from Alibaba 
+    group
+  * ollama pull is now faster if it detects a model is already 
+    downloaded
+  * ollama create will now automatically detect prompt templates
+    for popular model architectures such as Llama, Gemma, Phi and 
+    more.
+  * Ollama can now be accessed from local apps built with Electron 
+    and Tauri, as well as in developing apps in local html files
+  * Update welcome prompt in Windows to llama3
+  * Fixed issues where /api/ps and /api/tags would show invalid 
+    timestamps in responses
+
+- Update to version 0.1.41:
+  * Fixed issue on Windows 10 and 11 with Intel CPUs with 
+    integrated GPUs where Ollama would encounter an error
+
+-------------------------------------------------------------------
 Sat Jun 01 21:12:20 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.1.40:
