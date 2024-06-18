@@ -24,7 +24,7 @@
 %endif
 
 Name:           typst
-Version:        0.11.0
+Version:        0.11.1
 Release:        0
 Summary:        A new markup-based typesetting system that is powerful and easy to learn
 License:        Apache-2.0
@@ -60,7 +60,7 @@ BuildArch:      noarch
 Fish command-line completion support for %{name}.
 
 %package -n     hayagriva
-Summary:        Standalone CLI of built-in bibliography management tool.
+Summary:        Standalone CLI of built-in bibliography management tool
 Supplements:    %{name}
 
 %description -n hayagriva
