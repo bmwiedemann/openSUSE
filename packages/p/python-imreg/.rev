@@ -44,4 +44,14 @@
 - skip python 36 build</comment>
     <requestid>1137304</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6e0f042b0fc3e2226e6d6f49226c4b25</srcmd5>
+    <version>2024.5.24</version>
+    <time>1718808041</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.5.24:
+  * Support NumPy 2.
+  * Fix docstring examples not correctly rendered on GitHub.</comment>
+    <requestid>1181695</requestid>
+  </revision>
 </revisionlist>

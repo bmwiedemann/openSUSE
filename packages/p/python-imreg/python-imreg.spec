@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-imreg
-Version:        2024.1.2
+Version:        2024.5.24
 Release:        0
 Summary:        FFT based image registration
 License:        BSD-3-Clause
