@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 19 04:46:26 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.5.1:
+  * feat: Add OpenShift exceptions (#311)
+  * fix: remove reason shorthand (#314)
+
+-------------------------------------------------------------------
 Tue Jun 18 11:26:38 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.5.0:
