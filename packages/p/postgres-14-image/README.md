@@ -1,4 +1,4 @@
-# PostgreSQL 14 Container Image
+# PostgreSQL 14 container image
 
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
