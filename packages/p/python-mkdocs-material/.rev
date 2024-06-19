@@ -469,4 +469,12 @@ Related request sr#1160541</comment>
 update to 9.5.26</comment>
     <requestid>1179861</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>d6f0c17ab19e7dfddb92304446cf7d49</srcmd5>
+    <version>9.5.27</version>
+    <time>1718807831</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1181544</requestid>
+  </revision>
 </revisionlist>
