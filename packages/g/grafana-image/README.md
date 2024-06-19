@@ -1,4 +1,4 @@
-# The openSUSE Tumbleweed Grafana Container Image
+# The openSUSE Tumbleweed Grafana container image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
 Grafana container based on the openSUSE Tumbleweed Base Container Image.
