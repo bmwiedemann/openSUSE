@@ -1,4 +1,4 @@
-# The openSUSE Tumbleweed BCI Python 3.11 development Container Image
+# The openSUSE Tumbleweed BCI Python 3.11 development container image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
 Python 3.11 development container based on the openSUSE Tumbleweed Base Container Image.
