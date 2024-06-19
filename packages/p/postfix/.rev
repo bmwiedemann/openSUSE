@@ -2333,4 +2333,12 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment></comment>
     <requestid>1180049</requestid>
   </revision>
+  <revision rev="242" vrev="5">
+    <srcmd5>fb9efcbf7980fe4c95435aafa69979b2</srcmd5>
+    <version>3.9.0</version>
+    <time>1718807809</time>
+    <user>anag+factory</user>
+    <comment>Fix for Invalid cross-device link (etc/localtime) (forwarded request 1181561 from computersalat)</comment>
+    <requestid>1181563</requestid>
+  </revision>
 </revisionlist>

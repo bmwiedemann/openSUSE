@@ -1,5 +1,11 @@
 -------------------------------------------------------------------
-Tue Jun 11 11:58:50 UTC 2024 - Adam Majer <adam.majer@suse.de>
+Tue Jun 18 18:15:47 UTC 2024 - chris@computersalat.de
+
+- fix for Invalid cross-device link
+  * failed to create hard link 'etc/localtime' => '/usr/share/zoneinfo/Etc/UTC'
+
+-------------------------------------------------------------------
+Tue Jun 11 11:57:53 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - Set built-in path values to suse values (bsc#1215689)
 
