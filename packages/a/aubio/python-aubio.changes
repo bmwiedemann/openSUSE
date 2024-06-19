@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 19 07:19:39 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Cherry-pick upstream patch to fix build with GCC 14
+  * 95ff046c.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 18:19:12 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add patch waflib_python312.patch to support python3.12

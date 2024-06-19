@@ -28,6 +28,9 @@ Source1:        http://aubio.org/pub/aubio-%{version}.tar.bz2.asc
 # PATCH-FIX-UPSTREAM waflib_python312.patch gh#aubio/aubio#394
 # https://gitlab.com/ita1024/waf/-/commit/d2060dfd8af4edb5824153ff24e207b39ecd67a2
 Patch1:         waflib_python312.patch
+# PATCH-FIX-UPSTREAM 95ff046c.patch
+# https://github.com/aubio/aubio/commit/95ff046c698156f21e2ca0d1d8a02c23ab76969f
+Patch2:         95ff046c.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pytest}
