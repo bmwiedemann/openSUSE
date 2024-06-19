@@ -63,4 +63,16 @@
   A fix for closing the std stream.</comment>
     <requestid>1133658</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d53664c18bc18257441871170aa2c53c</srcmd5>
+    <version>0.5.1</version>
+    <time>1718808048</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5.1:
+  * Prevent __init__.py from being \deleted
+- update to 0.5.0:
+  * Replace pkg_resources with importlib.resources
+  * Add a null filter to re-enable frame count</comment>
+    <requestid>1181701</requestid>
+  </revision>
 </revisionlist>
