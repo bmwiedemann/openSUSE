@@ -1,0 +1,7 @@
+<package name="pgpdump" project="openSUSE:Factory">
+  <title>PGP packet visualizer</title>
+  <description>pgpdump is a PGP packet visualizer which displays the packet format of OpenPGP
+(RFC 4880) and PGP version 2 (RFC 1991).</description>
+  <devel project="security:privacy" package="pgpdump"/>
+  <url>https://www.mew.org/~kazu/proj/pgpdump/en/</url>
+</package>
