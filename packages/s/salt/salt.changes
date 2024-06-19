@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 18 15:00:44 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix "status.diskusage" function and exclude some tests for Salt Bundle
+
+- Added:
+  * fix-status.diskusage-and-exclude-some-tests-to-run-w.patch
+
+-------------------------------------------------------------------
 Wed Jun 12 08:44:38 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Skip certain tests if necessary for some OSes and set flaky ones

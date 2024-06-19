@@ -1,0 +1,243 @@
+From 4555f215614c2f2d5c4b5c376264df9b3f23a55b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Tue, 18 Jun 2024 15:55:31 +0100
+Subject: [PATCH] Fix "status.diskusage" and exclude some tests to run
+ when testing Salt Bundle (#659)
+
+* Show warning instead of crashing when stats cannot be fetched
+
+* Skip tests that are not compatible with Salt Bundle
+
+* test_syndic_eauth: do not produce error if docker service is not running
+
+* test_cmdmod: assert properly in case of DeprecationsWarnings
+
+* Include path as part of output in case of errors
+
+Co-authored-by: Marek Czernek <marek.czernek@suse.com>
+
+---------
+
+Co-authored-by: Marek Czernek <marek.czernek@suse.com>
+---
+ salt/modules/status.py                             | 14 +++++++++-----
+ tests/integration/modules/test_pip.py              |  5 +++++
+ tests/integration/ssh/test_state.py                |  5 +++++
+ tests/pytests/functional/modules/test_pip.py       |  4 ++++
+ .../functional/modules/test_virtualenv_mod.py      |  5 +++++
+ tests/pytests/functional/states/test_pip_state.py  |  4 ++++
+ tests/pytests/integration/cli/test_syndic_eauth.py |  3 +++
+ tests/pytests/integration/modules/test_cmdmod.py   |  4 +++-
+ .../pytests/integration/netapi/test_ssh_client.py  |  6 ++++++
+ tests/pytests/integration/ssh/conftest.py          |  9 +++++++++
+ tests/unit/utils/test_thin.py                      |  4 ++++
+ 11 files changed, 57 insertions(+), 6 deletions(-)
+ create mode 100644 tests/pytests/integration/ssh/conftest.py
+
+diff --git a/salt/modules/status.py b/salt/modules/status.py
+index 33e5d7b8df5..8d6241a9dce 100644
+--- a/salt/modules/status.py
++++ b/salt/modules/status.py
+@@ -1053,11 +1053,15 @@ def diskusage(*args):
+     ret = {}
+     for path in selected:
+         if os.path.exists(path):
+-            fsstats = os.statvfs(path)
+-            blksz = fsstats.f_bsize
+-            available = fsstats.f_bavail * blksz
+-            total = fsstats.f_blocks * blksz
+-            ret[path] = {"available": available, "total": total}
++            try:
++                fsstats = os.statvfs(path)
++                blksz = fsstats.f_bsize
++                available = fsstats.f_bavail * blksz
++                total = fsstats.f_blocks * blksz
++                ret[path] = {"available": available, "total": total}
++            except OSError as exc:
++                log.warning("Cannot get stats from '{}': {}".format(path, exc))
++                ret[path] = {"available": None, "total": None}
+     return ret
+ 
+ 
+diff --git a/tests/integration/modules/test_pip.py b/tests/integration/modules/test_pip.py
+index d57e9cd2aea..85045dec90b 100644
+--- a/tests/integration/modules/test_pip.py
++++ b/tests/integration/modules/test_pip.py
+@@ -2,6 +2,7 @@ import os
+ import pprint
+ import re
+ import shutil
++import sys
+ import tempfile
+ 
+ import pytest
+@@ -16,6 +17,10 @@ from tests.support.runtests import RUNTIME_VARS
+ 
+ 
+ @pytest.mark.skip_if_binaries_missing(*KNOWN_BINARY_NAMES, check_all=False)
++@pytest.mark.skipif(
++    "venv-salt-minion" in sys.executable,
++    reason="Skipping for Salt Bundle (tests are not compatible)",
++)
+ @pytest.mark.windows_whitelisted
+ class PipModuleTest(ModuleCase):
+     def setUp(self):
+diff --git a/tests/integration/ssh/test_state.py b/tests/integration/ssh/test_state.py
+index 69245454e85..daa478b45be 100644
+--- a/tests/integration/ssh/test_state.py
++++ b/tests/integration/ssh/test_state.py
+@@ -2,6 +2,7 @@ import glob
+ import logging
+ import os
+ import shutil
++import sys
+ import threading
+ import time
+ 
+@@ -18,6 +19,10 @@ log = logging.getLogger(__name__)
+ 
+ 
+ @pytest.mark.slow_test
++@pytest.mark.skipif(
++    "venv-salt-minion" in sys.executable,
++    reason="Skipping for Salt Bundle (tests are not compatible)",
++)
+ class SSHStateTest(SSHCase):
+     """
+     testing the state system with salt-ssh
+diff --git a/tests/pytests/functional/modules/test_pip.py b/tests/pytests/functional/modules/test_pip.py
+index e04baa7c43f..1f0104e3e6d 100644
+--- a/tests/pytests/functional/modules/test_pip.py
++++ b/tests/pytests/functional/modules/test_pip.py
+@@ -23,6 +23,10 @@ from tests.support.helpers import VirtualEnv
+ @pytest.mark.requires_network
+ @pytest.mark.slow_test
+ @pytest.mark.skip_if_binaries_missing("virtualenv", reason="Needs virtualenv binary")
++@pytest.mark.skipif(
++    "venv-salt-minion" in sys.executable,
++    reason="Skipping for Salt Bundle (tests are not compatible)",
++)
+ def test_list_available_packages(modules, pip_version, tmp_path):
+     with VirtualEnv(venv_dir=tmp_path, pip_requirement=pip_version) as virtualenv:
+         virtualenv.install("-U", pip_version)
+diff --git a/tests/pytests/functional/modules/test_virtualenv_mod.py b/tests/pytests/functional/modules/test_virtualenv_mod.py
+index 2b6abf91e23..69e1866c6e3 100644
+--- a/tests/pytests/functional/modules/test_virtualenv_mod.py
++++ b/tests/pytests/functional/modules/test_virtualenv_mod.py
+@@ -1,4 +1,5 @@
+ import shutil
++import sys
+ 
+ import pytest
+ 
+@@ -68,6 +69,10 @@ def test_clear(virtualenv, venv_dir, modules):
+     bool(salt.utils.path.which("transactional-update")),
+     reason="Skipping on transactional systems",
+ )
++@pytest.mark.skipif(
++    "venv-salt-minion" in sys.executable,
++    reason="Skipping for Salt Bundle (tests are not compatible)",
++)
+ def test_virtualenv_ver(virtualenv, venv_dir):
+     ret = virtualenv.create(str(venv_dir))
+     assert ret
+diff --git a/tests/pytests/functional/states/test_pip_state.py b/tests/pytests/functional/states/test_pip_state.py
+index 1f2080f1f86..28c1f9fd1f3 100644
+--- a/tests/pytests/functional/states/test_pip_state.py
++++ b/tests/pytests/functional/states/test_pip_state.py
+@@ -84,6 +84,10 @@ def create_virtualenv(modules):
+     bool(salt.utils.path.which("transactional-update")),
+     reason="Skipping on transactional systems",
+ )
++@pytest.mark.skipif(
++    "venv-salt-minion" in sys.executable,
++    reason="Skipping for Salt Bundle (tests are not compatible)",
++)
+ def test_pip_installed_removed(modules, states):
+     """
+     Tests installed and removed states
+diff --git a/tests/pytests/integration/cli/test_syndic_eauth.py b/tests/pytests/integration/cli/test_syndic_eauth.py
+index dde4c25bc91..f2d36c13abb 100644
+--- a/tests/pytests/integration/cli/test_syndic_eauth.py
++++ b/tests/pytests/integration/cli/test_syndic_eauth.py
+@@ -68,6 +68,9 @@ def syndic_network():
+     try:
+         network = client.networks.create(name="syndic_test_net", ipam=ipam_config)
+         yield network.name
++    except Exception as e:
++        # Docker failed, it's gonna be an environment issue, let's just skip
++        pytest.skip(f"Docker failed with error {e}")
+     finally:
+         if network is not None:
+             network.remove()
+diff --git a/tests/pytests/integration/modules/test_cmdmod.py b/tests/pytests/integration/modules/test_cmdmod.py
+index d0b993ddbcf..20a6f808933 100644
+--- a/tests/pytests/integration/modules/test_cmdmod.py
++++ b/tests/pytests/integration/modules/test_cmdmod.py
+@@ -75,7 +75,9 @@ def test_blacklist_glob(salt_call_cli):
+     )
+ 
+     assert (
+-        ret.stderr.rstrip()
++        ret.stderr.rstrip().split("\n")[
++            -1
++        ]  # Taking only the last line in case of DeprecationWarnings
+         == "Error running 'cmd.run': The shell command \"bad_command --foo\" is not permitted"
+     )
+ 
+diff --git a/tests/pytests/integration/netapi/test_ssh_client.py b/tests/pytests/integration/netapi/test_ssh_client.py
+index 42db6d0eacd..457c151c94f 100644
+--- a/tests/pytests/integration/netapi/test_ssh_client.py
++++ b/tests/pytests/integration/netapi/test_ssh_client.py
+@@ -1,3 +1,5 @@
++import sys
++
+ import pytest
+ 
+ import salt.netapi
+@@ -8,6 +10,10 @@ from tests.support.mock import patch
+ pytestmark = [
+     pytest.mark.slow_test,
+     pytest.mark.requires_sshd_server,
++    pytest.mark.skipif(
++        "venv-salt-minion" in sys.executable,
++        reason="Skipping for Salt Bundle (tests are not compatible)",
++    ),
+ ]
+ 
+ 
+diff --git a/tests/pytests/integration/ssh/conftest.py b/tests/pytests/integration/ssh/conftest.py
+new file mode 100644
+index 00000000000..ba6e5f2773a
+--- /dev/null
++++ b/tests/pytests/integration/ssh/conftest.py
+@@ -0,0 +1,9 @@
++import sys
++
++import pytest
++
++
++@pytest.fixture(scope="package", autouse=True)
++def _auto_skip_on_salt_bundle():
++    if "venv-salt-minion" in sys.executable:
++        pytest.skip("Skipping for Salt Bundle (tests are not compatible)")
+diff --git a/tests/unit/utils/test_thin.py b/tests/unit/utils/test_thin.py
+index c4e9c3b3bef..b31199976c8 100644
+--- a/tests/unit/utils/test_thin.py
++++ b/tests/unit/utils/test_thin.py
+@@ -1383,6 +1383,10 @@ class SSHThinTestCase(TestCase):
+         "virtualenv", reason="Needs virtualenv binary"
+     )
+     @pytest.mark.skip_on_windows(reason="salt-ssh does not deploy to/from windows")
++    @pytest.mark.skipif(
++        "venv-salt-minion" in sys.executable,
++        reason="Skipping for Salt Bundle (tests are not compatible)",
++    )
+     def test_thin_dir(self):
+         """
+         Test the thin dir to make sure salt-call can run
+-- 
+2.44.0
+
+
