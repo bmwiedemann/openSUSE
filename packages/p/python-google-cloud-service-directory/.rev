@@ -36,4 +36,15 @@
   * fix ValueError in test__validate_universe_domain</comment>
     <requestid>1165952</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>de4eafb0b731efcfce6867b382134444</srcmd5>
+    <version>1.11.4</version>
+    <time>1718808053</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.11.4:
+  * add maximum page_size to ListEndpoint API documentation
+  * add maximum page_size to ListNamespace API documentation
+  * add maximum page_size to ListService API documentation</comment>
+    <requestid>1181702</requestid>
+  </revision>
 </revisionlist>

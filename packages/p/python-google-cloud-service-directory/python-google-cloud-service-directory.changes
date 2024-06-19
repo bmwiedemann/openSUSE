@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 19 08:52:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11.4:
+  * add maximum page_size to ListEndpoint API documentation
+  * add maximum page_size to ListNamespace API documentation
+  * add maximum page_size to ListService API documentation
+
+-------------------------------------------------------------------
 Sun Apr  7 09:10:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.11.3:
