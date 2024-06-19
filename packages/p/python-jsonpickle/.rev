@@ -225,4 +225,29 @@
      removed.</comment>
     <requestid>1167627</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>724f82eea842d14e917d58568b948d16</srcmd5>
+    <version>3.2.1</version>
+    <time>1718808049</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2.1:
+  * The ``ignorereserved`` parameter to the private
+    ``_restore_from_dict()`` function has been restored for
+    backwards compatibility. (+501)
+  * Nested dictionaries in `py/state` are now correctly restored when
+    tracking object references. (+501) (#500)
+  * `jsonpickle.ext.numpy.register_handlers` now provides options
+    that are forwarded to the `NumpyNDArrayHandler` constructor.
+  * Fix bug of not handling ``classes`` argument to
+    `jsonpickle.decode` being a dict. Previously, the keys were
+    ignored and only values were used. (+494)
+  * Allow the ``classes`` argument to `jsonpickle.pickle` to have
+    class objects as keys. This extends the current functionality
+    of only having class name strings as keys. (+494)
+  * The ``garden setup/dev`` action and ``requirements-dev.txt``
+    requirements file now include test dependencies for use
+    during development.
+  * Added support for Python 3.13. (+505) (#504)</comment>
+    <requestid>1181704</requestid>
+  </revision>
 </revisionlist>
