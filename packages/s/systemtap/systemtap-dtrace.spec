@@ -20,7 +20,7 @@
 %define _rundir %{_localstatedir}/run
 %endif
 Name:           systemtap-dtrace
-Version:        5.0
+Version:        5.1
 Release:        0
 Summary:        SystemTap dtrace utility
 License:        GPL-2.0-or-later

@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon Jun 17 22:40:06 UTC 2024 - Tony Jones <tonyj@suse.com>
+
+- Update to version 5.1
+
+  Summary of changes:
+  * SystemTap frontend (stap) changes
+    - An experimental "--build-as=USER" flag to reduce privilege during
+      script compilation, which is a security improvement effort.
+    - New probe-points for userland hardware breakpoints/watchpoints
+      targeting processes (PR31180):
+        probe process.data(ADDRESS).write
+        probe process.data(ADDRESS).rw
+        probe process.data(ADDRESS).length(LEN).write
+        probe process.data(ADDRESS).length(LEN).rw
+    - Support for stap --remote=bpf.
+    - Improved searching heuristics for probing symbol names with/without
+      symbol-version suffixes and with/without weak names.
+    - Made long-running debuginfod downloads more cleanly interruptible.
+    - Improved stap-prep heuristics for finding debuginfo for "-rt"
+      (real-time) kernels.
+  
+  * SystemTap backend changes
+    - Dynamic namespace switching for processes targeted via "-x PID",
+      allowing processes running within containers to be probed.
+    - Improved message transport robustness for heavy traffic (individual
+      messages spanning pages) and for short runs (avoiding loss of
+      last-gasp messages).
+    - Added MTAG macro on several internal memory allocation routines
+      to improve leak warnings.  Corrected a bunch of leaks.
+    - "stap -t" now reports module initialization timings too.
+    - Ported runtime for GCC14 compatibility, with its more recent C
+      dialect warnings.
+    - Support for DW_OP_bra in DWARF location lists, which makes a few
+      more $context variables accessible to systemtap.
+  
+  * SystemTap tapset changes
+    - Portability fixes for more recent kernels, as always.
+    - set_kernel_string* tapset functions improved range checking.
+    - print_ubacktrace_fileline() works with PIE binaries.
+    - Many portability improvements and some fixes in the testsuite.
+    - Enhancements for the tcp, nfs, memory tapsets.
+
+  Drop following patches (upstream):
+    - bpf-translate.cxx-fix-build-against-upcoming-gcc14.patch
+    - get-shm_flag-defines-from-the-appropriate-include-file-for-linux-6.8-kernel.patch
+    - pr31288-build-with-gcc14-cont.patch
+    - pr31288-build-with-gcc14.patch
+    - pr31373-deal-with-the-removal-of-strlcpy-from-linux-6.8.patch
+    - staprun-fix-build-against-upcoming-gcc14.patch
+    - stapvirt.c-more-gcc-14-werror-calloc-transposed-args-compatibility.patch
+
+-------------------------------------------------------------------
 Tue Apr  2 17:32:02 UTC 2024 - Tony Jones <tonyj@suse.com>
 
 - Fix runtime issues with v6.8 kernel (bsc#1222249)

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 17 22:44:47 UTC 2024 - Tony Jones <tonyj@suse.com>
+
+- Upgrade to version 5.1. See systemtap.changes for changelog 
+
+-------------------------------------------------------------------
 Fri Mar  8 15:56:21 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

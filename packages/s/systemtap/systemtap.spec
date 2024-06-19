@@ -20,7 +20,7 @@
 %define _rundir %{_localstatedir}/run
 %endif
 Name:           systemtap
-Version:        5.0
+Version:        5.1
 Release:        0
 Summary:        Instrumentation System
 License:        GPL-2.0-or-later
@@ -33,13 +33,6 @@ Source3:        README-BEFORE-ADDING-PATCHES
 Source4:        README-KEYRING
 Source5:        stap-server.conf
 Patch1:         systemtap-build-source-dir.patch
-Patch2:         staprun-fix-build-against-upcoming-gcc14.patch
-Patch3:         bpf-translate.cxx-fix-build-against-upcoming-gcc14.patch
-Patch4:         stapvirt.c-more-gcc-14-werror-calloc-transposed-args-compatibility.patch
-Patch5:         pr31288-build-with-gcc14.patch
-Patch6:         pr31288-build-with-gcc14-cont.patch
-Patch7:         get-shm_flag-defines-from-the-appropriate-include-file-for-linux-6.8-kernel.patch
-Patch8:         pr31373-deal-with-the-removal-of-strlcpy-from-linux-6.8.patch
 
 BuildRequires:  autoconf >= 2.71
 BuildRequires:  automake
