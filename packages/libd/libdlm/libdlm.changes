@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed May  8 06:24:00 UTC 2024 - heming.zhao@suse.com - 4.3.0
+
+- update libdlm to version 4.3.0: no changelog available (jsc#PED-8085)
+  * remove patches which are already included by upstream code
+    - 0001-Revert-treewide-add-fcf-protection-full-to-CFLAGS.patch
+    - 0002-dlm_controld-increase-uevent-recv-buffer.patch
+    - 0003-dlm_controld-constify-lsnames.patch
+    - 0004-dlm_controld-better-uevent-filtering.patch
+    - 0005-libdlm_lt-fix-pc-file.patch
+    - 0006-dlm_tool-add-fail-functionality-if-dump-failed.patch
+    - 0007-dlm_controld-always-create-logdir.patch
+    - 0008-dlm_controld-move-processing-of-saved-messages-to-pl.patch
+    - 0009-dlm_controld-remove-ls-parameter.patch
+    - 0010-dlm_controld-constify-timeval-of-dt_usec.patch
+    - 0011-dlm_controld-add-gcc-format-printf-attribute-to-log_.patch
+    - 0012-dlm_controld-use-write_result.patch
+    - 0013-dlm_controld-be-sure-we-stop-lockspaces-before-shutd.patch
+    - 0014-dlm_controld-constify-name_in-in-log_level.patch
+    - 0015-dlm_controld-initialize-waiter-flags.patch
+    - 0016-dlm_controld-get-rid-of-unnecessary-memset.patch
+    - 0017-dlm_controld-remove-unnecessary-list_empty-check.patch
+    - 0018-dlm_controld-set-posix_lock-flags-to-zero.patch
+    - 0019-dlm_controld-init-plocks_data-to-zero.patch
+    - 0020-dlm_tool-fix-missing-fclose-calls.patch
+    - 0005-build-dlm_controld-disable-annobin-plugin.patch
+    - bug-1212767-dlm_controld-remove-unnecessary-header-include.patch
+
+  * remove patches for supporting corosync3
+    - bug-1191734_0015-Revert-dlm_controld-add-version-check-for-libquorum.patch
+    - bug-1191734_0016-Revert-dlm_controld-use-new-quorum-api-to-detect-mis.patch
+
+  * update BuildRequires in libdlm.spec to specific corosync3 libs
+    - update libdlm.spec
+
+-------------------------------------------------------------------
 Wed Sep 20 02:59:00 UTC 2023 - heming.zhao@suse.com
 
 - update libdlm to latest code (e5ca08c20e6f) (jsc#PED-6362)
