@@ -1,0 +1,9 @@
+<package name="apk-tools" project="openSUSE:Factory">
+  <title>Alpine package manager</title>
+  <description>Alpine Package Keeper (apk) is a package manager originally built for
+Alpine Linux, but now used by several other distributions as well.
+
+</description>
+  <devel project="system:packagemanager" package="apk-tools"/>
+  <url>https://git.alpinelinux.org/apk-tools/</url>
+</package>
