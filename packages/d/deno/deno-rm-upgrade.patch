@@ -58,6 +58,16 @@ index 72841df..1c93da1 100644
        | Vendor(_) => None,
        Install(_) => {
          if *DENO_FUTURE {
+@@ -1062,9 +1061,6 @@ static ENV_VARIABLES_HELP: &str = color_print::cstr!(
+     <g>DENO_NO_PROMPT</>       Set to disable permission prompts on access
+                          (alternative to passing --no-prompt on invocation)
+ 
+-    <g>DENO_NO_UPDATE_CHECK</> Set to disable checking if a newer Deno version is
+-                         available
+-
+     <g>DENO_TLS_CA_STORE</>    Comma-separated list of order dependent certificate
+                          stores. Possible values: "system", "mozilla".
+                          Defaults to "mozilla".
 @@ -944,7 +934,6 @@ pub fn flags_from_vec(args: Vec<String>) -> clap::error::Result<Flags> {
        "test" => test_parse(&mut flags, &mut m),
        "types" => types_parse(&mut flags, &mut m),
