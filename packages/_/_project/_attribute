@@ -414,6 +414,8 @@ products:
     - x86_64
   - nodejs-20-image:
     - x86_64
+  - nodejs-22-image:
+    - x86_64
   - openjdk-11-devel-image:
     - x86_64
   - openjdk-11-image:
@@ -600,7 +602,7 @@ set_snapshot_number: True</value>
     <value>failed: ''
 published: '20240617'
 publishing: '20240617'
-testing: '20240617'
+testing: '20240618'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">

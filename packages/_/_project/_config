@@ -3019,12 +3019,12 @@ BuildFlags: onlybuild:rubygem-rdiscount
 BuildFlags: onlybuild:rubygem-ronn
 BuildFlags: onlybuild:rust
 BuildFlags: onlybuild:rust-bindgen
-BuildFlags: onlybuild:rust1.73
 BuildFlags: onlybuild:rust1.74
 BuildFlags: onlybuild:rust1.75
 BuildFlags: onlybuild:rust1.76
 BuildFlags: onlybuild:rust1.77
 BuildFlags: onlybuild:rust1.78
+BuildFlags: onlybuild:rust1.79
 BuildFlags: onlybuild:samba
 BuildFlags: onlybuild:sane-backends
 BuildFlags: onlybuild:sassc
