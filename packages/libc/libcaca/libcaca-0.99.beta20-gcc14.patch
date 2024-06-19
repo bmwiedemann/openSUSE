@@ -1,0 +1,66 @@
+index 5dc66ab..826d4d8 100644
+--- a/ruby/caca-canvas.c
++++ b/ruby/caca-canvas.c
+@@ -16,6 +16,7 @@
+ #include <errno.h>
+ #include "caca-dither.h"
+ #include "caca-font.h"
++#include "caca_internals.h"
+ #include "common.h"
+ 
+ VALUE cCanvas;
+@@ -143,7 +143,7 @@ static VALUE put_str(VALUE self, VALUE x
+     return self;
+ }
+ 
+-static VALUE get_attr(VALUE self, VALUE x, VALUE y)
++static VALUE get_attr(VALUE self, VALUE x, VALUE y, VALUE)
+ {
+     unsigned long int ch;
+     ch = caca_get_attr(_SELF, NUM2INT(x), NUM2INT(y));
+@@ -454,7 +454,7 @@ static VALUE fill_triangle(VALUE self, V
+     return self;
+ }
+ 
+-static VALUE fill_triangle_textured(VALUE self, VALUE coords, VALUE texture, VALUE uv)
++static VALUE fill_triangle_textured(VALUE self, VALUE coords, VALUE texture, VALUE uv, VALUE)
+ {
+     caca_canvas_t *ctexture;
+     int i, l;
+index ac29daf..36020a9 100644
+--- a/ruby/caca-display.c
++++ b/ruby/caca-display.c
+@@ -226,7 +226,7 @@ static VALUE get_event(VALUE self, VALUE event_mask, VALUE timeout)
+     return e;
+ }
+ 
+-static VALUE driver_list(void)
++static VALUE driver_list(VALUE)
+ {
+     VALUE ary;
+     char const* const* list;
+index 705f928..c5f5d27 100644
+--- a/ruby/caca-font.c
++++ b/ruby/caca-font.c
+@@ -41,7 +41,7 @@ static VALUE font_initialize(VALUE self, VALUE name)
+     return self;
+ }
+ 
+-static VALUE font_list(void)
++static VALUE font_list(VALUE)
+ {
+     VALUE ary;
+     char const* const* list;
+Index: libcaca-0.99.beta20/ruby/common.h
+===================================================================
+--- libcaca-0.99.beta20.orig/ruby/common.h
++++ libcaca-0.99.beta20/ruby/common.h
+@@ -16,7 +16,7 @@
+ #define _SELF  (DATA_PTR(self))
+ 
+ #define get_singleton_double_list(x)                      \
+-static VALUE x##_list(void)                     \
++static VALUE x##_list(VALUE)                    \
+ {                                               \
+     VALUE ary, ary2;                            \
+     char const* const* list;                    \

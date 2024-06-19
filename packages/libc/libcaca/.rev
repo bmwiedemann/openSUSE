@@ -424,4 +424,13 @@ SPDX format (choose from http://www.spdx.org/licenses or the list linked at lice
     <comment></comment>
     <requestid>1149995</requestid>
   </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>82cd6adf314c99b7fe5ab2f4911d3996</srcmd5>
+    <version>0.99.beta20</version>
+    <time>1718807791</time>
+    <user>anag+factory</user>
+    <comment>- Updated spec-file with manual optimizations.
+- Added file libcaca-0.99.beta20-gcc14.patch (boo#1225795).</comment>
+    <requestid>1181507</requestid>
+  </revision>
 </revisionlist>

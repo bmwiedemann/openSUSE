@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 17 19:39:46 UTC 2024 - Илья Индиго <ilya@ilya.top>
+
+- Updated spec-file with manual optimizations.
+
+-------------------------------------------------------------------
+Mon Jun 17 16:54:04 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Added file libcaca-0.99.beta20-gcc14.patch (boo#1225795).
+
+-------------------------------------------------------------------
 Fri Feb 23 08:48:14 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Use %autosetup, prepare for RPM 4.20.
@@ -67,10 +77,10 @@ Tue Mar 10 15:20:55 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
   [libcaca-prevent-overflow.patch]
 
 -------------------------------------------------------------------
-Wed Feb 26 16:47:50 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Wed Feb 26 16:47:50 UTC 2020 - Илья Индиго <ilya@ilya.top>
 
-- Refresh spec-file via spec-cleaner.
-- Add Requires:toilet for caca-utils, because need for cacaclock.
+- Refreshed spec-file via spec-cleaner.
+- Added Requires:toilet for caca-utils, because need for cacaclock.
 
 -------------------------------------------------------------------
 Thu Aug  1 09:46:57 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>

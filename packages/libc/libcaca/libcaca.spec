@@ -25,18 +25,18 @@ Group:          Development/Languages/C and C++
 URL:            http://caca.zoy.org
 Source0:        https://github.com/cacalabs/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-Patch:          libcaca-X11_test.patch
-Patch:          libcaca-ruby_am_cflags.patch
-Patch:          libcaca-ruby_vendor_install.patch
-Patch:          libcaca-0.99.beta16-missing-GLU.patch
-Patch:          caca-no-build-date.patch
-Patch:          libcaca-0.99-texbuild.patch
-Patch:          libcaca-ncurses6.patch
-Patch:          Bug1143286_libcaca_configure_ac_chg_for_lto.patch
-Patch:          bsc1184751-add-space-for-NUL-byte.patch
-# PATCH-FIX-UPSTREAM correctly-handle-zero-width-or-height-images.patch bsc#1197028
-Patch:          bsc1197028-correctly-handle-zero-width-or-height-images.patch
-Patch:          libcaca-autoconf-2.69.patch
+Patch0:         %{name}-X11_test.patch
+Patch1:         %{name}-ruby_am_cflags.patch
+Patch2:         %{name}-ruby_vendor_install.patch
+Patch3:         %{name}-0.99.beta16-missing-GLU.patch
+Patch4:         caca-no-build-date.patch
+Patch5:         %{name}-0.99-texbuild.patch
+Patch6:         %{name}-ncurses6.patch
+Patch7:         Bug1143286_libcaca_configure_ac_chg_for_lto.patch
+Patch8:         bsc1184751-add-space-for-NUL-byte.patch
+Patch9:         bsc1197028-correctly-handle-zero-width-or-height-images.patch
+Patch10:        %{name}-autoconf-2.69.patch
+Patch11:        %{name}-0.99.beta20-gcc14.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
@@ -61,11 +61,11 @@ functions for colour text drawing, simple primitives for line, polygon
 and ellipse drawing, as well as powerful image to text conversion
 routines.
 
-%package -n libcaca0
+%package -n %{name}0
 Summary:        Library for Colour ASCII Art, text mode graphics
 Group:          Development/Languages/C and C++
-Provides:       libcaca = %{version}
-Obsoletes:      libcaca < %{version}
+Provides:       %{name} = %{version}
+Obsoletes:      %{name} < %{version}
 
 %description -n libcaca0
 libcaca is the Colour AsCii Art library. It provides high level
@@ -84,7 +84,7 @@ This package contains the header files and static libraries needed to
 compile applications or shared objects that use libcaca.
 
 %package -n python3-caca
-Summary:        Python3 support for libcaca
+Summary:        Python3 support for %{name}
 Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 BuildArch:      noarch
@@ -93,7 +93,7 @@ BuildArch:      noarch
 This package contains all that is needed to use libcaca from python3.
 
 %package -n libcaca0-plugins
-Summary:        Plugins for libcaca
+Summary:        Plugins for %{name}
 Group:          Development/Languages/C and C++
 Requires:       %{name} = %{version}
 
@@ -101,7 +101,7 @@ Requires:       %{name} = %{version}
 This package contains gl and x11 plugins for caca.
 
 %package ruby
-Summary:        Ruby bindings for libcaca
+Summary:        Ruby bindings for %{name}
 Group:          Development/Languages/Ruby
 Requires:       %{name} = %{version}
 Requires:       ruby
@@ -210,7 +210,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/cacaclock
 %{_bindir}/cacaserver
 %{_bindir}/img2txt
-%{_datadir}/libcaca
+%{_datadir}/%{name}
 %{_mandir}/man1/cacademo.1%{?ext_man}
 %{_mandir}/man1/cacafire.1%{?ext_man}
 %{_mandir}/man1/cacaview.1%{?ext_man}
