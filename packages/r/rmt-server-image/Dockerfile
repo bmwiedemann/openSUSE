@@ -24,8 +24,8 @@ MAINTAINER openSUSE (https://www.opensuse.org/)
 
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.application.rmt-server
-LABEL org.opencontainers.image.title="openSUSE Tumbleweed SUSE RMT Server"
-LABEL org.opencontainers.image.description="SUSE RMT Server container based on the openSUSE Tumbleweed Base Container Image."
+LABEL org.opencontainers.image.title="openSUSE Tumbleweed SUSE RMT server"
+LABEL org.opencontainers.image.description="SUSE RMT server container based on the openSUSE Tumbleweed Base Container Image."
 LABEL org.opencontainers.image.version="%%rmt_version%%"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"

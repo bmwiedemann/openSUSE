@@ -1,4 +1,4 @@
-# The {self.title} Container Image
+# The {self.title} container image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
 # Purpose
