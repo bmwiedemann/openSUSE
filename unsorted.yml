@@ -787,6 +787,8 @@ unsorted:
   - apitrace 
   - apitrace-wrappers 
   - apitrace-wrappers-32bit 
+  - apk-devel 
+  - apk-tools 
   - apko 
   - apko-bash-completion 
   - apko-fish-completion 
@@ -2545,9 +2547,8 @@ unsorted:
   - coreutils-single 
   - coreutils-testsuite 
   - corosync 
-  - corosync-qdevice 
-  - corosync-qnetd 
-  - corosync-testagents 
+  - corosync-devel 
+  - corosync-libs 
   - corrosion 
   - cosign 
   - cosign-bash-completion 
@@ -10561,6 +10562,7 @@ unsorted:
   - lapacke-devel 
   - lapacke-devel-32bit 
   - lapacke-devel-static 
+  - lapackpp-devel 
   - lapce 
   - lapdog 
   - laptop-mode-tools 
@@ -11629,6 +11631,7 @@ unsorted:
   - libaom-devel 
   - libaom-devel-doc 
   - libaom3-32bit 
+  - libapk2_14_0 
   - libapparmor-devel 
   - libapparmor1-32bit 
   - libappindicator-devel 
@@ -12195,7 +12198,6 @@ unsorted:
   - libcerf2 
   - libcerror-devel 
   - libcerror1 
-  - libcfg6 
   - libcfg6-32bit 
   - libcfile-devel 
   - libcfile1 
@@ -12274,7 +12276,6 @@ unsorted:
   - libclzma-suse1 
   - libclzma-suse1-x86-64-v3 
   - libcm1 
-  - libcmap4 
   - libcmap4-32bit 
   - libcmh0 
   - libcmis-0_6-6 
@@ -12329,8 +12330,6 @@ unsorted:
   - libconfuse2 
   - libcontainers-openSUSE-policy 
   - libcontainers-sles-mounts 
-  - libcorosync-devel 
-  - libcorosync_common4 
   - libcorosync_common4-32bit 
   - libcorrect-devel 
   - libcorrect0_0_0 
@@ -12342,7 +12341,6 @@ unsorted:
   - libcowsql0 
   - libcpath-devel 
   - libcpath1 
-  - libcpg4 
   - libcpg4-32bit 
   - libcpluff-devel 
   - libcpluff0 
@@ -14025,6 +14023,7 @@ unsorted:
   - liblapack3-32bit 
   - liblapacke3 
   - liblapacke3-32bit 
+  - liblapackpp1 
   - liblasem-0_4-4 
   - liblash1 
   - liblasso-devel 
@@ -15504,7 +15503,6 @@ unsorted:
   - libquicktime0-32bit 
   - libquo-devel 
   - libquo8 
-  - libquorum5 
   - libquorum5-32bit 
   - libquvi-0_9-0_9_4 
   - libquvi-devel 
@@ -15784,7 +15782,6 @@ unsorted:
   - libs3-4 
   - libs3-devel 
   - libs3-tools 
-  - libsam4 
   - libsam4-32bit 
   - libsamba-policy-devel 
   - libsamba-policy-python3-devel 
@@ -16322,7 +16319,6 @@ unsorted:
   - libtorrent-rasterbar-doc 
   - libtorrent-rasterbar2_0 
   - libtorrent21 
-  - libtotem_pg5 
   - libtotem_pg5-32bit 
   - libtoxcore2 
   - libtpl-extensions3 
@@ -16653,7 +16649,6 @@ unsorted:
   - libvorbisfile3-32bit 
   - libvoro++0 
   - libvotca2024 
-  - libvotequorum8 
   - libvotequorum8-32bit 
   - libvpd-2_2-3 
   - libvpd-base 
@@ -22360,6 +22355,7 @@ unsorted:
   - pgbadger 
   - pgloader 
   - pgn-extract 
+  - pgpdump 
   - phetsarath-fonts 
   - phobos-devel 
   - phobos-devel-static 
@@ -25097,7 +25093,6 @@ unsorted:
   - python310-flake8-deprecated 
   - python310-flake8-docstrings 
   - python310-flake8-import-order 
-  - python310-flake8-imports 
   - python310-flake8-isort 
   - python310-flake8-pep3101 
   - python310-flake8-polyfill 
@@ -26290,7 +26285,6 @@ unsorted:
   - python310-pyjokes 
   - python310-pyjsparser 
   - python310-pyjwkest 
-  - python310-pykafka 
   - python310-pykdumpfile 
   - python310-pykeepass 
   - python310-pykerberos 
@@ -28663,7 +28657,6 @@ unsorted:
   - python311-flake8-deprecated 
   - python311-flake8-docstrings 
   - python311-flake8-import-order 
-  - python311-flake8-imports 
   - python311-flake8-isort 
   - python311-flake8-pep3101 
   - python311-flake8-polyfill 
@@ -29796,7 +29789,6 @@ unsorted:
   - python311-pyjokes 
   - python311-pyjsparser 
   - python311-pyjwkest 
-  - python311-pykafka 
   - python311-pykdumpfile 
   - python311-pykeepass 
   - python311-pykerberos 
@@ -32184,7 +32176,6 @@ unsorted:
   - python312-flake8-deprecated 
   - python312-flake8-docstrings 
   - python312-flake8-import-order 
-  - python312-flake8-imports 
   - python312-flake8-isort 
   - python312-flake8-pep3101 
   - python312-flake8-polyfill 
@@ -33371,7 +33362,6 @@ unsorted:
   - python312-pyjokes 
   - python312-pyjsparser 
   - python312-pyjwkest 
-  - python312-pykafka 
   - python312-pykdumpfile 
   - python312-pykeepass 
   - python312-pykerberos 
@@ -36340,6 +36330,9 @@ unsorted:
   - sil-padauk-fonts 
   - silan 
   - sile 
+  - sile-bash-completion 
+  - sile-fish-completion 
+  - sile-zsh-completion 
   - simde-devel 
   - simh 
   - simple-ccsm 
