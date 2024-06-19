@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Jun 19 04:46:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.35.0:
+  * Release v1.35.0 (#6775)
+  * updating ansible plugin version to latest (#6773)
+  * (helm/v1): fix role.yaml init scaffolding (#6769)
+  * Fix documentation link issues: (#6766)
+  * Update ubi-minimal to version 8.10 in all Dockerfiles to fix
+    critical security vulnerabilities (#6764)
+  * Update quickstart.md (#6732)
+  * Bump ansible operator plugin to v1.34.2 (#6749)
+  * Change DefaultIndexImage to UBI (#6726)
+  * update Designing Lean Operators docs to use new Kubebuilder
+    cache config options (#6743)
+  * update cncf-maintainers (#6741)
+  * Bump actions/setup-go from 4 to 5 (#6638)
+  * docs: correct spelling of Operator scope (#6728)
+  * Add OchiengEd to sdk-approvers (#6735)
+  * Change docs to reflect updated controller runtime options for
+    caching select namespaces (#6719)
+  * bumping docker and oras (since docker types changed location)
+    (#6720)
+  * chore: fix some comments (#6717)
+  * feat: support helm dryrun=server (#6691)
+  * add acornett21 to sdk-approves list (#6711)
+  * Release v1.34.0 (#6688)
+
+-------------------------------------------------------------------
 Sat May 18 07:49:28 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.34.2:

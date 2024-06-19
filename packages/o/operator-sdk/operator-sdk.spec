@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           operator-sdk
-Version:        1.34.2
+Version:        1.35.0
 Release:        0
 Summary:        CLI for installing the Operator Lifecycle Manager
 License:        Apache-2.0
