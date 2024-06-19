@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Jun 19 05:07:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.16.8:
+  * ci: refresh dev dependencies
+  * clarify how to verify collection-level docs (#1589) (#1594)
+  * cause people keep doing this (#1567) (#1583)
+  * Update uptime.py (#1524) (#1580)
+  * Update playbooks_loops.rst (#1569) (#1577)
+  * Merge pull request #1568 from samccann/bullhorn-edit
+  * Merge pull request #1566 from samccann/intersphinx
+  * Merge pull request #1562 from M15terHyde/patch-1
+  * update conf.py for Ansible 10 (#1544) (#1560)
+  * Update release table for Ansible 10 and 9 (#1543) (#1557)
+  * Update playbooks_blocks.rst (#1546) (#1553)
+  * Merge pull request #1527 from ansible/pip-compile/devel/dev
+  * Python collection requirements: restructure (#1459) (#1541)
+  * Merge pull request #1529 from
+    Andersson007/update_overview_links
+  * Merge pull request #1530 from oraNod/fix-spelling
+  * release_and_maintenance: mark 8.x unmaintained as 8.7.0
+    released (#1522) (#1525)
+  *  mark 2.14 EOL in the release table (#1502) (#1520)
+  * update backport instructions for 2.17 (#1504) (#1516)
+  * Merge pull request #1321 from vojtam/feature/#357
+  * Update collection_checklist.md links to point to new location
+    (#1505) (#1507)
+  * Move Ansible package collection removal process to
+    docs.ansible.com (#1492) (#1509)
+  * Add Ansible community 9.6.0 porting guide (#1493)
+  * ci: refresh dev dependencies
+  * update version switcher to suppor 2.17 (#1464) (#1485)
+  * collection_requirements: update community topic links (#1421)
+    (#1483)
+
+-------------------------------------------------------------------
 Thu May 23 11:04:38 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.16.7:
