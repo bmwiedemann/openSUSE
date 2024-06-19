@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-domains
-Version:        1.7.1
+Version:        1.7.3
 Release:        0
 Summary:        Google Cloud Domains API client library
 License:        Apache-2.0

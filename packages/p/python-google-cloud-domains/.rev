@@ -21,4 +21,15 @@
   * Allow users to explicitly configure universe domain</comment>
     <requestid>1151466</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>03f8698cffeaa2c4fa3a4a96e0dc9909</srcmd5>
+    <version>1.7.3</version>
+    <time>1718808037</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.7.3:
+  * Exclude google-auth 2.24.0 and 2.25.
+  * fix ValueError in test__validate_universe_domain
+  * deps: [Many APIs] Require google-api-core&gt;=1.34.1</comment>
+    <requestid>1181685</requestid>
+  </revision>
 </revisionlist>
