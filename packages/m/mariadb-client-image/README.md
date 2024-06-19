@@ -1,4 +1,4 @@
-# The openSUSE Tumbleweed MariaDB Client Container Image
+# The openSUSE Tumbleweed MariaDB Client container image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
 MariaDB Client container based on the openSUSE Tumbleweed Base Container Image.
