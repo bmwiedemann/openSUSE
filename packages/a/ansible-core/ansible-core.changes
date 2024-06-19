@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jun 19 05:05:30 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.16.8:
+  https://github.com/ansible/ansible/blob/v2.16.8/changelogs/CHANGELOG-v2.16.rst
+  * Minor Changes
+    - ansible-test - Update pypi-test-container to version 3.1.0.
+  * Bugfixes
+    - Fix the task attribute resolved_action to show the FQCN
+      instead of None when action or local_action is used in the
+      playbook.
+    - Fix using module_defaults with local_action/action (#81905).
+    - fixed unit test test_borken_cowsay to address mock not been
+      properly applied when existing unix system already have
+      cowsay installed.
+    - powershell - Implement more robust deletion mechanism for C#
+      code compilation temporary files. This should avoid scenarios
+      where the underlying temporary directory may be temporarily
+      locked by antivirus tools or other IO problems. A failure to
+      delete one of these temporary directories will result in a
+      warning rather than an outright failure.
+
+-------------------------------------------------------------------
 Thu May 23 11:07:12 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.16.7:
