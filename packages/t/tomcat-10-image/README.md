@@ -1,4 +1,4 @@
-# Tomcat 10 Container Image
+# Tomcat 10 container image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
 ## Description
