@@ -1,7 +1,7 @@
 #
 # spec file for package tesseract
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tesseract
-Version:        2018_02_01
+Version:        2024_06_15
 Release:        0
 Summary:        First-person shooter with cooperative in-game map editing
 License:        Zlib

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 15 11:14:41 UTC 2024 - hui <sturm-fr@web.de>
+
+- update to current SVN (no change log available)
+
+-------------------------------------------------------------------
 Sun Mar  7 09:02:33 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Fixed build on Factory, use correct libexec path for symlink
@@ -35,4 +40,3 @@ Sat Jun 20 10:38:31 UTC 2015 - mailaender@opensuse.org
 Sat May 24 15:50:01 UTC 2014 - mailaender@opensuse.org
 
 - initial packaging
-
