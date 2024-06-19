@@ -1,4 +1,4 @@
 <servicedata>
 <service name="tar_scm">
-                <param name="url">git://github.com/corosync/corosync.git</param>
-              <param name="changesrevision">64010f573801b73222e80821a19140c59b003f5c</param></service></servicedata>
+                <param name="url">https://github.com/corosync/corosync.git</param>
+              <param name="changesrevision">40e08b219de94f3850f8f39291d89a5713e32f06</param></service></servicedata>

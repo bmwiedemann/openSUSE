@@ -1163,4 +1163,12 @@ v2.3.5
     <comment></comment>
     <requestid>1156937</requestid>
   </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>f1db00bcc473bdd2f9c50ede1edbedbe</srcmd5>
+    <version>3.1.8</version>
+    <time>1718807782</time>
+    <user>anag+factory</user>
+    <comment>Fixed build against new dependencies libknet-devel and libnozzle-devel</comment>
+    <requestid>1181313</requestid>
+  </revision>
 </revisionlist>
