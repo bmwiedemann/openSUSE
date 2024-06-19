@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jun 19 05:11:36 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.0:
+  * Skip over "." when creating directories
+  * build(deps): bump github.com/spf13/cobra from 1.8.0 to 1.8.1
+  * Plumb through the notion of build-time repositories.
+  * whoops
+  * remove --log-policy flag
+  * build(deps): bump actions/checkout from 4.1.6 to 4.1.7
+  * build(deps): bump github/codeql-action from 3.25.8 to 3.25.10
+  * build(deps): bump k8s.io/apimachinery from 0.29.2 to 0.30.2
+  * build(deps): bump imjasonh/setup-crane from 0.3 to 0.4
+  * build(deps): bump github.com/klauspost/compress from 1.17.8 to
+    1.17.9
+  * Add note about --repository-append
+  * Add include-paths to build and lock
+  * build(deps): bump step-security/harden-runner from 2.8.0 to
+    2.8.1
+
+-------------------------------------------------------------------
 Wed Jun 12 13:34:40 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.14.9:
