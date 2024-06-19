@@ -1,4 +1,4 @@
-# The PHP FPM 8 Container Image
+# The PHP FPM 8 container image
 
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
