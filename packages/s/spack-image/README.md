@@ -1,4 +1,4 @@
-# Spack 0.22.0 Container Image
+# Spack 0.22.0 container image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
 ## Description
