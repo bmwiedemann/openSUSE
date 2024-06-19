@@ -1096,4 +1096,41 @@ eplacement for google-api-python-client, follow our naming convention</comment>
     * **orgpolicy:** Update the api</comment>
     <requestid>1177164</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>b4f48a94e7b96603c69de101b1594987</srcmd5>
+    <version>2.133.0</version>
+    <time>1718808032</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.133.0:
+  * **accessapproval:** Update the api
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **androidmanagement:** Update the api
+  * **bigqueryconnection:** Update the api
+  * **bigquery:** Update the api
+  * **clouddeploy:** Update the api
+  * **connectors:** Update the api
+  * **contactcenteraiplatform:** Update the api
+  * **dataplex:** Update the api
+  * **dataproc:** Update the api
+  * **datastream:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **dns:** Update the api
+  * **domains:** Update the api
+  * **games:** Update the api
+  * **memcache:** Update the api
+  * **networkconnectivity:** Update the api
+  * **notebooks:** Update the api
+  * **pubsub:** Update the api
+  * **redis:** Update the api
+  * **sqladmin:** Update the api
+  * **vmmigration:** Update the api
+- update to 2.132.0:
+  * **aiplatform:** Update the api
+  * **analyticsadmin:** Update the api
+  * **androidmanagement:** Update the api
+  * **backupdr:** Update the api</comment>
+    <requestid>1181687</requestid>
+  </revision>
 </revisionlist>

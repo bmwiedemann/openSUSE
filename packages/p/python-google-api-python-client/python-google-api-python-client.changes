@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Wed Jun 19 07:15:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.133.0:
+  * **accessapproval:** Update the api
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **androidmanagement:** Update the api
+  * **bigqueryconnection:** Update the api
+  * **bigquery:** Update the api
+  * **clouddeploy:** Update the api
+  * **connectors:** Update the api
+  * **contactcenteraiplatform:** Update the api
+  * **dataplex:** Update the api
+  * **dataproc:** Update the api
+  * **datastream:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **dns:** Update the api
+  * **domains:** Update the api
+  * **games:** Update the api
+  * **memcache:** Update the api
+  * **networkconnectivity:** Update the api
+  * **notebooks:** Update the api
+  * **pubsub:** Update the api
+  * **redis:** Update the api
+  * **sqladmin:** Update the api
+  * **vmmigration:** Update the api
+- update to 2.132.0:
+  * **aiplatform:** Update the api
+  * **analyticsadmin:** Update the api
+  * **androidmanagement:** Update the api
+  * **backupdr:** Update the api
+  * **chromemanagement:** Update the api
+  * **cloudbilling:** Update the api
+  * **cloudfunctions:** Update the api
+  * **cloudsearch:** Update the api
+  * **compute:** Update the api
+  * **connectors:** Update the api
+  * **datastream:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **documentai:** Update the api
+  * **fcmdata:** Update the api
+  * **firebaseappcheck:** Update the api
+  * **healthcare:** Update the api
+  * **iam:** Update the api
+  * **integrations:** Update the api
+  * **migrationcenter:** Update the api
+  * **networkconnectivity:** Update the api
+  * **policyanalyzer:** Update the api
+  * **resourcesettings:** Update the api
+  * **run:** Update the api
+  * **servicecontrol:** Update the api
+  * **spanner:** Update the api
+  * **versionhistory:** Update the api
+  * **beyondcorp:** Update the api
+  * **composer:** Update the api
+  * **compute:** Update the api
+  * **contactcenteraiplatform:** Update the api
+  * **file:** Update the api
+  * **firebaseml:** Update the api
+  * **gkebackup:** Update the api
+  * **gmail:** Update the api
+  * **ids:** Update the api
+  * **networkmanagement:** Update the api
+  * **networkservices:** Update the api
+  * **recaptchaenterprise:** Update the api
+  * **redis:** Update the api
+  * **sqladmin:** Update the api
+  * **storage:** Update the api
+  * **tasks:** Update the api
+  * **workstations:** Update the api
+  * **drive:** Update the api
+  * **prod_tt_sasportal:** Update the api
+  * **sasportal:** Update the api
+  * **secretmanager:** Update the api
+
+-------------------------------------------------------------------
 Mon May 27 08:25:35 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.130.0
