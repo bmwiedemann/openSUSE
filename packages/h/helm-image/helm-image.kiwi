@@ -14,7 +14,7 @@ https://github.com/SUSE/BCI-dockerfile-generator
 Please submit bugfixes or comments via https://bugs.opensuse.org/
 You can contact the BCI team via https://github.com/SUSE/bci/discussions
 -->
-<!-- OBS-AddTag: opensuse/helm:%%helm_version%% opensuse/helm:%%helm_version%%-%RELEASE% opensuse/helm:latest -->
+<!-- OBS-AddTag: opensuse/helm:3.15 opensuse/helm:3.15-%RELEASE% opensuse/helm:latest -->
 <!-- OBS-Imagerepo: obsrepositories:/ -->
 
 <image schemaversion="7.4" name="helm-image" xmlns:suse_label_helper="com.suse.label_helper">
@@ -27,19 +27,19 @@ You can contact the BCI team via https://github.com/SUSE/bci/discussions
     <type image="docker" derived_from="obsrepositories:/opensuse/bci/bci-micro#latest">
       <containerconfig
           name="opensuse/helm"
-          tag="%%helm_version%%"
+          tag="3.15"
           maintainer="openSUSE (https://www.opensuse.org/)"
-          additionaltags="%%helm_version%%-%RELEASE%,latest">
+          additionaltags="3.15-%RELEASE%,latest">
         <labels>
           <suse_label_helper:add_prefix prefix="org.opensuse.application.helm">
             <label name="org.opencontainers.image.title" value="openSUSE Tumbleweed Kubernetes Package Manager"/>
             <label name="org.opencontainers.image.description" value="Kubernetes Package Manager container based on the openSUSE Tumbleweed Base Container Image."/>
-            <label name="org.opencontainers.image.version" value="%%helm_version%%"/>
+            <label name="org.opencontainers.image.version" value="3.15"/>
             <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
             <label name="org.opencontainers.image.vendor" value="openSUSE Project"/>
             <label name="org.opencontainers.image.source" value="%SOURCEURL%"/>
             <label name="org.opencontainers.image.url" value="https://www.opensuse.org"/>
-            <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/helm:%%helm_version%%-%RELEASE%"/>
+            <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/helm:3.15-%RELEASE%"/>
             <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
             <label name="org.opensuse.release-stage" value="released"/>
             <label name="org.opensuse.lifecycle-url" value="https://en.opensuse.org/Lifetime"/>

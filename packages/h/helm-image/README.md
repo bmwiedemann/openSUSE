@@ -10,12 +10,16 @@
 
 ## Usage
 
-To run Helm, use the following comamand:
+To run Helm, use the following command:
 
 ```ShellSession
-# podman run --rm -it  registry.opensuse.org/opensuse/helm:%%helm_version%% <helm-sub-command>
+$ podman run --rm -it  registry.opensuse.org/opensuse/helm:3.15 <helm-sub-command>
+```
 
-podman run --rm -it registry.opensuse.org/opensuse/helm:%%helm_version%% version
+For instance, to display the Helm version, run:
+```ShellSession
+$ podman run --rm -it registry.opensuse.org/opensuse/helm:3.15 version --template='{{.Version}}'
+v3.15
 ```
 
 Refer to the full list of Helm commands, flags and environment variables, in the [official Helm documentation](https://helm.sh/docs/helm/helm/).
@@ -24,10 +28,11 @@ For a comprehensive guide on getting started with Helm, refer to the [official H
 
 ### Connecting Helm container to the Host's Kubernetes Cluster
 
-To interact with a Kubernetes cluster running on the host, mount the Kubernetes configuration file (`kubeconfig`) into the container (use `--net=host` flag to allow container to use host’s network):
+
+To interact with a Kubernetes cluster, mount the Kubernetes configuration file (`kubeconfig`) from the container host into the container (use the `--net=host` flag to allow the container to use the host’s network):
 
 ```ShellSession
-podman run --rm -it --net=host -v /path/to/kubeconfig:/root/.kube/config registry.opensuse.org/opensuse/helm:%%helm_version%%
+$ podman run --rm -it --net=host -v /path/to/kubeconfig:/root/.kube/config:Z registry.opensuse.org/opensuse/helm:3.15
 ```
 
 ## Licensing
