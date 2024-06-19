@@ -26,6 +26,7 @@ Group:          Productivity/Telephony/Utilities
 URL:            https://github.com/irontec/sngrep
 #Git-Clone:     https://github.com/irontec/sngrep.git
 Source:         https://github.com/irontec/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         sngrep-1.8.1-CVE-2024-35434.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libpcap-devel
@@ -44,11 +45,11 @@ It supports SIP UDP and TCP transports (when each message is
 delivered in one packet).
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf -fi
-export CFLAGS="%optflags $(pkg-config --cflags ncursesw)"
+export CFLAGS="%{optflags} $(pkg-config --cflags ncursesw)"
 %configure \
     --enable-unicode \
     --with-openssl \
@@ -56,16 +57,19 @@ export CFLAGS="%optflags $(pkg-config --cflags ncursesw)"
     --enable-ipv6 \
     --enable-eep
 
-make V=1 %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
+
+%check
+%make_build tests
 
 %files
 %license LICENSE
 %doc AUTHORS README.md
 %config %{_sysconfdir}/sngreprc
 %{_bindir}/sngrep
-%{_mandir}/man8/sngrep.8%{ext_man}
+%{_mandir}/man8/sngrep.8%{?ext_man}
 
 %changelog

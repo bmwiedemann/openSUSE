@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 30 20:02:23 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- CVE-2024-35434: heap buffer overflow in rtp_check_packet 
+  add sngrep-1.8.1-CVE-2024-35434.patch (boo#1225638)
+- run tests
+
+-------------------------------------------------------------------
 Wed Apr 10 08:18:13 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.8.1
