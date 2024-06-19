@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 18 04:09:00 UTC 2024 - Glass Su <glass.su@suse.com>
+
+- change BuildRequires due to corosync devel package rename
+  * update lvm2.spec, use pkgconfig(corosync)
+
+-------------------------------------------------------------------
 Sat Jun  1 01:46:00 UTC 2024 - Heming Zhao <heming.zhao@suse.com>
 
 - add rpm dependency in spec file for aligning new DM udev rules (bsc#1225783)

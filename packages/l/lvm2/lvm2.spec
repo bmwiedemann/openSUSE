@@ -113,7 +113,7 @@ BuildRequires:  suse-module-tools
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libsepol)
 %else
-BuildRequires:  libcorosync-devel
+BuildRequires:  pkgconfig(corosync)
 BuildRequires:  pkgconfig(blkid)
 %if %{with lockd}
 BuildRequires:  libdlm-devel >= %{dlm_version}
