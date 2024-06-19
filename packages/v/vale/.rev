@@ -671,4 +671,15 @@
     github.com/smacker/go-tree-sitter/yaml (forwarded request 1179584 from jfkw)</comment>
     <requestid>1179587</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>4f22fee32a0214cfad4bb34788504099</srcmd5>
+    <version>3.6.0</version>
+    <time>1718807991</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.6.0:
+  * chore: add mingw dep
+  * feat: support exceptions in `Repetition`
+  * chore: add `build-base` to Docker [ci skip] (forwarded request 1181639 from jfkw)</comment>
+    <requestid>1181640</requestid>
+  </revision>
 </revisionlist>

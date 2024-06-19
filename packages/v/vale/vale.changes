@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 19 04:47:44 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.6.0:
+  * chore: add mingw dep
+  * feat: support exceptions in `Repetition`
+  * chore: add `build-base` to Docker [ci skip]
+
+-------------------------------------------------------------------
 Sun Jun 09 18:33:04 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.5.0:
