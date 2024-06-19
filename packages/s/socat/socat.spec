@@ -32,6 +32,8 @@ Source2:        socat-test-dhparam
 Patch1:         socat-ignore-tests-failure-boo1078346.patch
 # Support build environments without a TTY
 Patch2:         socat-test-without-tty.patch
+# FIX from termux , https://bugzilla.suse.com/show_bug.cgi?id=1226459, https://github.com/termux/termux-packages/issues/18645
+Patch3:         0004-udp-listen-bind4.patch
 BuildRequires:  iputils
 BuildRequires:  net-tools
 BuildRequires:  openssl-devel

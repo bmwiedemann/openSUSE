@@ -403,4 +403,12 @@ See README (forwarded request 157221 from babelworx)</comment>
     addresses.</comment>
     <requestid>1171319</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>d4c61a1c16de94096decf80e8d213894</srcmd5>
+    <version>1.8.0.0</version>
+    <time>1718807789</time>
+    <user>anag+factory</user>
+    <comment>- 0004-udp-listen-bind4.patch: fixed a UDP listen error (bsc#1226459) (forwarded request 1181502 from msmeissn)</comment>
+    <requestid>1181503</requestid>
+  </revision>
 </revisionlist>

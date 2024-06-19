@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 18 12:42:37 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- 0004-udp-listen-bind4.patch: fixed a UDP listen error (bsc#1226459)
+
+-------------------------------------------------------------------
 Wed May  1 18:50:03 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
 
 - Update to 1.8.0.0:
