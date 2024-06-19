@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-mobilenetwork
-Version:        3.2.0
+Version:        3.3.0
 Release:        0
 Summary:        Microsoft Azure Mobilenetwork Management Client Library for Python
 License:        MIT

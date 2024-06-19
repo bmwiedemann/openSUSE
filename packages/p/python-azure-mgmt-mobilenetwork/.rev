@@ -111,4 +111,15 @@
 - Update Requires from setup.py (forwarded request 1166338 from glaubitz)</comment>
     <requestid>1166425</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8955d9fb6b8b059ee8df7ae39598b975</srcmd5>
+    <version>3.3.0</version>
+    <time>1718808000</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 3.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1181410 from glaubitz)</comment>
+    <requestid>1181671</requestid>
+  </revision>
 </revisionlist>
