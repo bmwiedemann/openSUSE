@@ -46,7 +46,12 @@ BuildRequires:  %{python_module QDarkStyle = %{version}}
 BuildRequires:  %{python_module QtPy >= 2}
 BuildRequires:  %{python_module qt5-devel}
 # pyside2 is for primary python3 flavor only
+# but the exception was in Leap 15.6 has both built with 3.6 and 3.11
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150500
+BuildRequires:  %{python_module pyside2}
+%else
 BuildRequires:  python3-pyside2
+%endif
 BuildRequires:  xvfb-run
 %endif
 %python_subpackages
@@ -77,7 +82,7 @@ sed -i '1{\,^#!%{_bindir}/env python,d}' qdarkstyle/*.py qdarkstyle/*/*.py
 export LANG=C.UTF-8
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} xvfb-run $python -B -m qdarkstyle.example --qt_from=pyqt5 --test
 # pyside2 is for primary python3 flavor only
-PYTHONPATH=%{buildroot}%{python3_sitelib} xvfb-run python3 -B -m qdarkstyle.example --qt_from=pyside2 --test
+PYTHONPATH=%{buildroot}%{python3_sitelib} xvfb-run python%{python_bin_suffix} -B -m qdarkstyle.example --qt_from=pyside2 --test
 # no qtsass compiler (extras_require 'develop')
 #%%pytest
 %endif
