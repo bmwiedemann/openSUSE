@@ -1,4 +1,4 @@
-# The openSUSE Tumbleweed BCI OpenJDK 21 development Container Image
+# The openSUSE Tumbleweed BCI OpenJDK 21 development container image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
 OpenJDK 21 development container based on the openSUSE Tumbleweed Base Container Image.
