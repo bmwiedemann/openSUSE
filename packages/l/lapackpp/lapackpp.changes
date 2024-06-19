@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Fri Jun 14 10:00:04 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2024.05.31:
+  * Added shared library version (ABI version 1.0.0)
+  * Updated enum parameters to have to_string, from_string;
+    deprecated <enum>2str, str2<enum>
+  * Removed some deprecated functions
+- Drop lapackpp-so-versioning.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu May  2 23:39:06 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.
+- Add lapackpp-so-versioning.patch -- Enforce shared library
+  versioning

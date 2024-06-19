@@ -1,0 +1,8 @@
+<package name="lapackpp" project="openSUSE:Factory">
+  <title>C++ API for the Linear Algebra PACKage</title>
+  <description>LAPACK++ is a C++ wrapper around LAPACK and LAPACK-like linear algebra libraries.
+
+</description>
+  <devel project="science" package="lapackpp"/>
+  <url>https://icl.utk.edu/slate/</url>
+</package>
