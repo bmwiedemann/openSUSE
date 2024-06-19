@@ -1,4 +1,4 @@
-# The openSUSE Tumbleweed BCI OpenJDK 17 runtime Container Image
+# The openSUSE Tumbleweed BCI OpenJDK 17 runtime container image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
 OpenJDK 17 runtime container based on the openSUSE Tumbleweed Base Container Image.
