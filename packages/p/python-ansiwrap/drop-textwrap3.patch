@@ -1,0 +1,42 @@
+Index: ansiwrap-0.8.4/ansiwrap/core.py
+===================================================================
+--- ansiwrap-0.8.4.orig/ansiwrap/core.py
++++ ansiwrap-0.8.4/ansiwrap/core.py
+@@ -5,10 +5,10 @@ import re
+ import sys
+ import importlib
+ 
+-# import a copy of textwrap3 which we will viciously monkey-patch
++# import a copy of textwrap which we will viciously monkey-patch
+ # to use our version of len, not the built-in
+ import os
+-a_textwrap = importlib.import_module('textwrap3')
++a_textwrap = importlib.import_module('textwrap')
+ 
+ 
+ __all__ = 'wrap fill shorten strip_color ansilen ansi_terminate_lines'.split()
+Index: ansiwrap-0.8.4/setup.py
+===================================================================
+--- ansiwrap-0.8.4.orig/setup.py
++++ ansiwrap-0.8.4/setup.py
+@@ -23,7 +23,7 @@ setup(
+     license='Apache License 2.0',
+     packages=['ansiwrap'],
+     setup_requires=[],
+-    install_requires=['textwrap3>=0.9.2'],
++    install_requires=["textwrap3>=0.9.2; python_version < '3.6'"],
+     tests_require=['tox', 'pytest', 'ansicolors>=1.1.8', 'coverage', 'pytest-cov'],
+     test_suite="test",
+     zip_safe=False,
+Index: ansiwrap-0.8.4/test/test_ansiwrap.py
+===================================================================
+--- ansiwrap-0.8.4.orig/test/test_ansiwrap.py
++++ ansiwrap-0.8.4/test/test_ansiwrap.py
+@@ -1,6 +1,6 @@
+ # -*- coding: utf-8 -*-
+ 
+-import textwrap3 as textwrap
++import textwrap
+ from colors import *  # must come before ansiwrap import
+                       # so ansiwrap's better strip_color prevails
+ 

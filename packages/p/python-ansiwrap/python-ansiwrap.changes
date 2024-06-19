@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 19 06:44:55 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch drop-textwrap3.patch:
+  * Use textwrap, textwrap3 is a backport for Python < 3.6.
+
+-------------------------------------------------------------------
 Tue Jan 16 03:29:03 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python312.patch:

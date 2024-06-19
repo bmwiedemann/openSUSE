@@ -25,6 +25,8 @@ URL:            https://github.com/jonathaneunice/ansiwrap
 Source:         https://files.pythonhosted.org/packages/source/a/ansiwrap/ansiwrap-%{version}.zip
 # PATCH-FIX-UPSTREAM gh#jonathaneunice/ansiwrap#20
 Patch0:         support-python312.patch
+# PATCH-FIX-UPSTREAM Based on gh#jonathaneunice/ansiwrap#16
+Patch1:         drop-textwrap3.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -34,7 +36,6 @@ BuildRequires:  unzip
 # SECTION test requirements
 BuildRequires:  %{python_module ansicolors >= 1.1.8}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module textwrap3}
 # /SECTION
 Requires:       python-textwrap3
 BuildArch:      noarch

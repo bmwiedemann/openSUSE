@@ -25,4 +25,13 @@
 - Drop patch ansiwrap-pr18-py311.patch, included in above.</comment>
     <requestid>1139057</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>4793ca0cabd7fa4359dba7d1ed28bce1</srcmd5>
+    <version>0.8.4</version>
+    <time>1718808029</time>
+    <user>anag+factory</user>
+    <comment>- Add patch drop-textwrap3.patch:
+  * Use textwrap, textwrap3 is a backport for Python &lt; 3.6.</comment>
+    <requestid>1181677</requestid>
+  </revision>
 </revisionlist>
