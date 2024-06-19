@@ -65,4 +65,18 @@
 - drop cython3.patch (upstream)</comment>
     <requestid>1165867</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fcd52949631a4b7cb25b5fc299e20a03</srcmd5>
+    <version>2.3.12</version>
+    <time>1718808039</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.3.12:
+  * Improved subsequence matching (stop at knee, symbolization,
+    ...)
+  * Improved support for multivariate series (innerdist, bugfixes)
+  * Changed differencing to the gust method
+  * Removed unnecessary C files to not confuse compilers on
+    various platforms</comment>
+    <requestid>1181686</requestid>
+  </revision>
 </revisionlist>

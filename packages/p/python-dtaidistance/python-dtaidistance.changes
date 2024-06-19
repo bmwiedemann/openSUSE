@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 19 07:14:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.12:
+  * Improved subsequence matching (stop at knee, symbolization,
+    ...)
+  * Improved support for multivariate series (innerdist, bugfixes)
+  * Changed differencing to the gust method
+  * Removed unnecessary C files to not confuse compilers on
+    various platforms
+
+-------------------------------------------------------------------
 Sat Apr  6 19:02:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.11:

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-dtaidistance
-Version:        2.3.11
+Version:        2.3.12
 Release:        0
 Summary:        Dynamic Time Warping (DTW) package
 License:        Apache-2.0
