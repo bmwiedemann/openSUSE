@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 19 07:09:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.3.3:
+  * Added support for decimal.Decimal objects (see #60). Thanks
+    @pourhouse for this improvement.
+
+-------------------------------------------------------------------
 Thu Sep 29 14:18:09 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v0.4.3.2

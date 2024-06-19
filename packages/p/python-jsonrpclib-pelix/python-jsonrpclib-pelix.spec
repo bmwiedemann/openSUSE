@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonrpclib-pelix
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jsonrpclib-pelix
-Version:        0.4.3.2
+Version:        0.4.3.3
 Release:        0
 Summary:        JSPN-RPC over HTTP Library for Pelix Remote Services
 License:        Apache-2.0

@@ -40,4 +40,14 @@
     <comment></comment>
     <requestid>1007079</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a2683208764e0a20d801a4517c9fa117</srcmd5>
+    <version>0.4.3.3</version>
+    <time>1718808030</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.3.3:
+  * Added support for decimal.Decimal objects (see #60). Thanks
+    @pourhouse for this improvement.</comment>
+    <requestid>1181683</requestid>
+  </revision>
 </revisionlist>
