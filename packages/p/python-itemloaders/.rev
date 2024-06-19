@@ -63,4 +63,14 @@
   * Made the docs builds reproducible</comment>
     <requestid>1178615</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1cc2999ce2ac173fa9d5db3bd84b5850</srcmd5>
+    <version>1.3.1</version>
+    <time>1718808033</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.1:
+  * Fixed an error when using nested loaders with empty matches
+    that was introduced in 1.3.0</comment>
+    <requestid>1181688</requestid>
+  </revision>
 </revisionlist>
