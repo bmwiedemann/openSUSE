@@ -1,2 +1,2 @@
-# Without the Requires, lua54-zlib module isn't counted as a dependency
-addFilter("explicit-lib-dependency lua54-zlib")
+# Without the Requires, lua51-zlib module isn't counted as a dependency
+addFilter("explicit-lib-dependency lua51-zlib")

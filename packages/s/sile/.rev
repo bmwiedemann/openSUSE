@@ -240,4 +240,40 @@
     <comment></comment>
     <requestid>1176522</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>cbabd76d3320b5afe8066580d7641cdb</srcmd5>
+    <version>0.15.3</version>
+    <time>1718807826</time>
+    <user>anag+factory</user>
+    <comment>- Add export LUA_INCLUDE=&quot;$(pkg-config --cflags-only-I luajit)&quot;
+  so that we are finally building with LuaJIT headers.
+  * I don't know why the configure file does not detect them by default
+    are they placed in a non-standard location?
+  * Since the headers exist I will close boo#1226307 I guess...
+- Point to use LuaJIT headers and use LuaJIT for Sile
+- Add zsh completion subpackage
+- Fixup rpmlintrc
+- Document that we are using lua51 includes because luajit includes
+  are missing from the openSUSE package
+  * boo#1226307
+- Switch back to gcc because clang fails on armv7l
+- Update to 0.15.3:
+  * A lot of breaking changes in the transition to 0.15.0
+    https://github.com/sile-typesetter/sile/releases/tag/v0.15.0
+  * Bug Fixes
+   - build: Distribute vendored compat-5.3.c source file
+   - build: Remove Git from configure dependencies
+   - classes: Correct order of operations when paragraphs are ended manually
+   - packages: Change retrograde package so 'target' version works as expected
+   - build: Bundle all assets in source distribution
+   - core: Allow LUA_PATH env var to take effect at runtime
+- New build dependencies
+  * cargo/rust
+  * clang to replicate upstream's choice of c compiler
+  * jq
+- Switch to lua51 for luajit. luajit only supports lua51 for now
+- New subpackages: fish and bash completions
+</comment>
+    <requestid>1181622</requestid>
+  </revision>
 </revisionlist>

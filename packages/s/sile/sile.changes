@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Jun 18 17:16:10 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Add export LUA_INCLUDE="$(pkg-config --cflags-only-I luajit)"
+  so that we are finally building with LuaJIT headers.
+  * I don't know why the configure file does not detect them by default
+    are they placed in a non-standard location?
+  * Since the headers exist I will close boo#1226307 I guess...
+
+-------------------------------------------------------------------
+Tue Jun 18 15:10:43 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Point to use LuaJIT headers and use LuaJIT for Sile
+
+-------------------------------------------------------------------
+Fri Jun 14 16:42:20 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Add zsh completion subpackage
+- Fixup rpmlintrc
+- Document that we are using lua51 includes because luajit includes
+  are missing from the openSUSE package
+  * boo#1226307
+- Switch back to gcc because clang fails on armv7l
+
+-------------------------------------------------------------------
+Fri Jun 14 10:20:53 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to 0.15.3:
+  * A lot of breaking changes in the transition to 0.15.0
+    https://github.com/sile-typesetter/sile/releases/tag/v0.15.0
+  * Bug Fixes
+   - build: Distribute vendored compat-5.3.c source file
+   - build: Remove Git from configure dependencies
+   - classes: Correct order of operations when paragraphs are ended manually
+   - packages: Change retrograde package so 'target' version works as expected
+   - build: Bundle all assets in source distribution
+   - core: Allow LUA_PATH env var to take effect at runtime
+- New build dependencies
+  * cargo/rust
+  * clang to replicate upstream's choice of c compiler
+  * jq
+- Switch to lua51 for luajit. luajit only supports lua51 for now
+- New subpackages: fish and bash completions
+
+-------------------------------------------------------------------
 Thu May 23 09:56:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Change package to use obs_scm source service. Upstream now longer

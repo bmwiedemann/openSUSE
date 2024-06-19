@@ -18,53 +18,55 @@
 
 %bcond_without  tests
 Name:           sile
-Version:        0.14.17
+Version:        0.15.3
 Release:        0
 Summary:        Simon’s Improved Layout Engine
-Group:          Productivity/Publishing
 License:        MIT
 URL:            https://sile-typesetter.org/
-Source0:        sile-0.14.17.tar.zst
-Source1:        sile-rpmlintrc
-Source2:        LICENSE
+Source0:        sile-%{version}.tar.zst
+Source1:        vendor.tar.zst
+Source2:        sile-rpmlintrc
+Source3:        LICENSE
 
 # Lua modules
-Requires:       lua54
-BuildRequires:  lua54-bit32
-BuildRequires:  lua54-devel
-Requires:       lua54-bit32
-BuildRequires:  lua54-cassowary
-Requires:       lua54-cassowary
-Requires:       lua54-cldr
-BuildRequires:  lua54-cliargs
-Requires:       lua54-cliargs
-BuildRequires:  lua54-cosmo
-Requires:       lua54-cosmo
-BuildRequires:  lua54-luaexpat
-Requires:       lua54-luaexpat
-BuildRequires:  lua54-luafilesystem
-Requires:       lua54-luafilesystem
-BuildRequires:  lua54-fluent
-Requires:       lua54-fluent
-BuildRequires:  lua54-linenoise
-Requires:       lua54-linenoise
-BuildRequires:  lua54-loadkit
-Requires:       lua54-loadkit
-Requires:       lua54-lpeg
-Requires:       lua54-luaepnf
-BuildRequires:  lua54-luarepl
-Requires:       lua54-luarepl
-BuildRequires:  lua54-luautf8
-Requires:       lua54-luautf8
-Requires:       lua54-penlight
-BuildRequires:  lua54-luasec
-Requires:       lua54-luasec
-Requires:       lua54-luasocket
-BuildRequires:  lua54-vstruct
-Requires:       lua54-vstruct
-BuildRequires:  lua54-zlib
-# Without this Requires, lua54-zlib isn't counted as a dependency
-Requires:       lua54-zlib
+BuildRequires:  luajit
+BuildRequires:  luajit-devel
+BuildRequires:  lua51-bit32
+Requires:       lua51-bit32
+BuildRequires:  lua51-cassowary
+Requires:       lua51-cassowary
+Requires:       lua51-cldr
+BuildRequires:  lua51-cliargs
+Requires:       lua51-cliargs
+BuildRequires:  lua51-compat-5.3
+Requires:       lua51-compat-5.3
+BuildRequires:  lua51-cosmo
+Requires:       lua51-cosmo
+BuildRequires:  lua51-luaexpat
+Requires:       lua51-luaexpat
+BuildRequires:  lua51-luafilesystem
+Requires:       lua51-luafilesystem
+BuildRequires:  lua51-fluent
+Requires:       lua51-fluent
+BuildRequires:  lua51-linenoise
+Requires:       lua51-linenoise
+BuildRequires:  lua51-loadkit
+Requires:       lua51-loadkit
+Requires:       lua51-lpeg
+Requires:       lua51-luaepnf
+BuildRequires:  lua51-luarepl
+Requires:       lua51-luarepl
+BuildRequires:  lua51-luautf8
+Requires:       lua51-luautf8
+Requires:       lua51-penlight
+BuildRequires:  lua51-luasec
+Requires:       lua51-luasec
+Requires:       lua51-luasocket
+BuildRequires:  lua51-vstruct
+Requires:       lua51-vstruct
+BuildRequires:  lua51-zlib
+# Without this Requires, lua51-zlib isn't counted as a dependency
+Requires:       lua51-zlib
 
 # Other Dependencies
 %if %{with tests}
@@ -73,7 +75,6 @@ BuildRequires:  sil-gentium-fonts
 %endif
 BuildRequires:  automake
 BuildRequires:  fontconfig-devel
-BuildRequires:  libtool
 Requires:       fontconfig
 BuildRequires:  freetype2-devel
 Requires:       freetype2
@@ -85,9 +86,12 @@ BuildRequires:  glibc-devel
 Requires:       glibc
 # Harfbuzz's minimum version is now 6 https://github.com/sile-typesetter/sile/releases/tag/v0.14.8
 BuildRequires:  harfbuzz-devel >= 6.0.0
+BuildRequires:  jq
 BuildRequires:  libicu-devel
 Requires:       icu
 BuildRequires:  libpng16-compat-devel
+BuildRequires:  libtool
+BuildRequires:  pkgconf-pkg-config
 BuildRequires:  zlib-devel
 # Default font for SILE
 # Without this, you have to specify the font every time you write a new .sil
@@ -98,6 +102,12 @@ Suggests:       libertinus-fonts
 Suggests:       noto-sans-cjk-fonts
 # Default mono font
 Suggests:       hack-fonts
+
+# Rust build dependencies. We don't need cargo packaging.
+# Sile has a flags we have to respect it
+BuildRequires:  cargo
+# For tar scm lol
+BuildRequires:  zstd
 
 %description
 SILE is a typesetting system; its job is to produce beautiful printed documents.
@@ -118,7 +128,6 @@ This package contains the shared library for libtexpdf.
 
 %package -n libtexpdf-devel
 Summary:        Development files for libtexpdf
-Group:          Productivity/Publishing
 License:        GPL-2.0-or-later
 Requires:       libtexpdf0 = %{version}
 
@@ -126,17 +135,68 @@ Requires:       libtexpdf0 = %{version}
 A PDF library extracted from TeX's dvipdfmx. Used in software such as SILE.
 This package contains the development files for libtexpdf.
 
-%prep
-%autosetup -p1
+%package        bash-completion
+Summary:        Bash Completion for %{name}
+Supplements:    (%{name} and bash-completion)
+Requires:       bash-completion
+Requires:       sile
+BuildArch:      noarch
 
-cp %{SOURCE2} .
+%description    bash-completion
+Bash command-line completion support for %{name}.
+
+%package        fish-completion
+Summary:        Fish Completion for %{name}
+Supplements:    (%{name} and fish)
+Requires:       fish
+Requires:       sile
+BuildArch:      noarch
+
+%description    fish-completion
+Fish command-line completion support for %{name}.
+
+%package        zsh-completion
+Summary:        Zsh Completion for %{name}
+Supplements:    (%{name} and zsh)
+Requires:       sile
+Requires:       zsh
+BuildArch:      noarch
+
+%description    zsh-completion
+Zsh command-line completion support for %{name}.
+
+%prep
+%autosetup -p1 -a1
+cp %{SOURCE3} .
 
 %build
-autoreconf -fiv
-%configure --disable-static --with-system-luarocks
+# The macros uses this but we have to respect what upstream config.toml
+# uses for the RUSTFLAGS
+unset LIBSSH2_SYS_USE_PKG_CONFIG
+export RUSTFLAGS=" -Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2 -C incremental=false -C strip=none"
+export CARGO_AUDITABLE=auditable
+export CARGO_FEATURE_VENDORED=1
+export LUA_INCLUDE="$(pkg-config --cflags-only-I luajit)"
+export CFLAGS="%optflags $(pkg-config --cflags-only-I luajit)"
+export CXXFLAGS="%optflags $(pkg-config --cflags-only-I luajit)"
+%configure \
+	--disable-static \
+	--disable-embeded-resources \
+	--with-system-lua-sources \
+	--with-system-luarocks
+
 %make_build all
 
 %install
+# The macros uses this but we have to respect what upstream config.toml
+# uses for the RUSTFLAGS
+unset LIBSSH2_SYS_USE_PKG_CONFIG
+export RUSTFLAGS=" -Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2 -C incremental=false -C strip=none"
+export CARGO_AUDITABLE=auditable
+export CARGO_FEATURE_VENDORED=1
+export LUA_INCLUDE="$(pkg-config --cflags-only-I luajit)"
+export CFLAGS="%optflags $(pkg-config --cflags-only-I luajit)"
+export CXXFLAGS="%optflags $(pkg-config --cflags-only-I luajit)"
 %make_install
 rm %{buildroot}%{_libdir}/*.la
 %fdupes %{buildroot}
@@ -150,15 +210,16 @@ make check
 %ldconfig_scriptlets -n libtexpdf-devel
 
 %files
-%license %{_datadir}/licenses/sile/LICENSE
-%license %{_datadir}/licenses/sile/LICENSE-lunamark
+%license LICENSE.md
 %doc %{_datadir}/doc/sile/*
 %dir %{_datadir}/doc/sile
 %dir %{_datadir}/licenses/sile
 %{_bindir}/sile
+%{_bindir}/sile-lua
 %{_datadir}/sile
 %{_libdir}/sile
-%{_mandir}/man1/sile.1.gz
+%{_mandir}/man1/sile.1%{?ext_man}
+%{_mandir}/man1/sile-lua.1%{?ext_man}
 
 %files -n libtexpdf0
 %license LICENSE
@@ -167,5 +228,23 @@ make check
 %files -n libtexpdf-devel
 %{_includedir}/libtexpdf
 %{_libdir}/libtexpdf.so
+
+%files bash-completion
+%license LICENSE.md
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/%{name}
+
+%files fish-completion
+%license LICENSE.md
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/%{name}.fish
+
+%files zsh-completion
+%license LICENSE.md
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_%{name}
 
 %changelog
