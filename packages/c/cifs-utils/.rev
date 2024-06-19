@@ -727,4 +727,12 @@ on CentOS, Fedora, and RHEL systems.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1154631</requestid>
   </revision>
+  <revision rev="74" vrev="4">
+    <srcmd5>b442fce2d206fd9b889a1a6cca3c9c19</srcmd5>
+    <version>7.0</version>
+    <time>1718807804</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1181545</requestid>
+  </revision>
 </revisionlist>

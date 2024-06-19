@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 13 11:17:37 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- remove dependency on /usr/bin/python3 (bsc#1212476)
+
+-------------------------------------------------------------------
 Mon Feb 26 10:44:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
