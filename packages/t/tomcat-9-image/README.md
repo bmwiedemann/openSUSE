@@ -1,4 +1,4 @@
-# Tomcat 9 Container Image
+# Tomcat 9 container image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
 ## Description
