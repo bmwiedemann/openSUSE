@@ -1,4 +1,4 @@
-# MariaDB Server Container Image
+# MariaDB Server container image
 
 ## Description
 MariaDB is an open-source, multi-threaded, relational database management system. It's a backward-compatible branch of the MySQL Community Server that provides a drop-in replacement for MySQL.
