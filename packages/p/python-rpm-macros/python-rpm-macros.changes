@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun 18 10:24:42 UTC 2024 - mcepl@cepl.eu
+
+- Update to version 20240618.1e386da:
+  * Fix python_clone sed regex
+
+-------------------------------------------------------------------
+Mon Jun 17 06:42:43 UTC 2024 - mcepl@cepl.eu
+
+- Update to version 20240614.02920b8:
+  * Make sure that RPM_BUILD_ROOT env is set
+  * don't eliminate any cmdline arguments in the shebang line
+  * Create python313 macros
+
+-------------------------------------------------------------------
 Mon May 27 12:43:48 UTC 2024 - mcepl@cepl.eu
 
 - Update to version 20240415.c664b45:

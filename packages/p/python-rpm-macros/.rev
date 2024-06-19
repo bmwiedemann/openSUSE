@@ -650,4 +650,18 @@ prerequisite for new python submission</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1178328</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>e603715313b8d9a59b63f4487eaee2e3</srcmd5>
+    <version>20240618.1e386da</version>
+    <time>1718807777</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240618.1e386da:
+  * Fix python_clone sed regex
+- Update to version 20240614.02920b8:
+  * Make sure that RPM_BUILD_ROOT env is set
+  * don't eliminate any cmdline arguments in the shebang line
+  * Create python313 macros
+</comment>
+    <requestid>1181469</requestid>
+  </revision>
 </revisionlist>
