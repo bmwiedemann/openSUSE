@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jun 11 19:32:18 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update aeson to version 2.2.3.0.
+  ### 2.2.3.0
+
+  * Support `hashable-1.4.6.0`.
+  * Fix an issue where `Hashable Key` wasn't newtype instance over underlying `Text`,
+    so with `-ordered-keymap` there were correctness issues.
+  * Add instances for `Data.Semigroup.Sum`, `Product`, `Any`, `All`
+
+-------------------------------------------------------------------
+Fri May 17 03:42:00 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update aeson to version 2.2.2.0 revision 1.
+  ### 2.2.2.0
+
+  * Support GHC-8.6.5...9.10.1
+  * Depend on `character-ps` instead of defining own Word8 pattern synonyms
+
+-------------------------------------------------------------------
 Mon Oct 16 15:54:05 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update aeson to version 2.2.1.0 revision 1.
