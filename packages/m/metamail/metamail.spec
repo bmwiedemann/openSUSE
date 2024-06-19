@@ -1,7 +1,7 @@
 #
 # spec file for package metamail
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,6 +48,9 @@ Metamail is required for reading multimedia mail messages (such as
 those using the Andrew toolkit) with elm.
 
 %prep
+# Workaround for boo#1225862
+%global optflags %{optflags} -fpermissive
+
 %setup -n metamail-2.7-19 -b 3 -b 4
 %autopatch -p1
 

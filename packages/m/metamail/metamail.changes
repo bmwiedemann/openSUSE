@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 18 11:40:30 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Add -fpermissive to compiler options to work around GCC 14 not allowing
+  some violations of the C99 standard. [boo#1225862]
+
+-------------------------------------------------------------------
 Wed Dec 20 12:02:33 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Have fixed date in mgrep.1 (boo#1047218)
