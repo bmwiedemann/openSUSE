@@ -22,7 +22,7 @@ Name:           teleport
 Version:        15.4.4
 Release:        0
 Summary:        Identity-aware, multi-protocol access proxy
-License:        Apache-2.0
+License:        AGPL-3.0-only
 URL:            https://github.com/gravitational/teleport
 Source:         %{name}-%{version}.tar.gz
 # go vendoring

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 19 04:42:25 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- change license to AGPL-3.0-only, as license was changed upstream
+  in 15.0.0 already
+
+-------------------------------------------------------------------
 Fri Jun 14 18:14:03 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 15.4.4:
