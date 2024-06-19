@@ -1,4 +1,4 @@
-# openSUSE Tumbleweed BCI GNU Compiler Collection Container Image (GCC)
+# openSUSE Tumbleweed BCI GNU Compiler Collection container image (GCC)
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
 # Description
