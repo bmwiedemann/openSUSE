@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 19 08:48:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.0:
+  * Implement the /sys/wrapping/wrap endpoint (GH-1172)
+  * add support for Vault Raft auto-snapshot endpoints. (GH-1169)
+
+-------------------------------------------------------------------
 Tue May  7 21:05:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.0:

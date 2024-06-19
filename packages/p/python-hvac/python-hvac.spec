@@ -17,7 +17,7 @@
 
 
 Name:           python-hvac
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        HashiCorp Vault API client
 License:        BSD-3-Clause

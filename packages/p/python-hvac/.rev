@@ -246,4 +246,14 @@
     params (GH-1125)</comment>
     <requestid>1172540</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d1ac1922da57c92effe72ae08161af1c</srcmd5>
+    <version>2.3.0</version>
+    <time>1718808045</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.3.0:
+  * Implement the /sys/wrapping/wrap endpoint (GH-1172)
+  * add support for Vault Raft auto-snapshot endpoints. (GH-1169)</comment>
+    <requestid>1181700</requestid>
+  </revision>
 </revisionlist>
