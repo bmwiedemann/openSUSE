@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Wed Jun 19 04:44:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.9.0:
+  * Quote issues when evaluating the depth condition by @dakaneye
+    in #1268
+  * build(deps): bump github.com/vektah/gqlparser/v2 from 2.5.11 to
+    2.5.14 in the go_modules group by @dependabot in #1271
+  * test: Drop seemingly useless mkdir -p by @jonjohnsonjr in #1276
+  * Remove dead tarfilter code by @jonjohnsonjr in #1279
+  * Add build flag to override host libc flavor by @jonjohnsonjr in
+    #1270
+  * Separate compilation from execution by @jonjohnsonjr in #1267
+  * Remove build.PipelineBuild as a concept by @jonjohnsonjr in
+    #1280
+  * Remove ability to set logging policy by @krishjainx in #1274
+  * unbreak build at head from log policy removal by @k4leung4 in
+    #1288
+  * build(deps): bump chainguard.dev/apko from 0.14.8 to 0.14.9 by
+    @dependabot in #1282
+  * build(deps): bump github.com/klauspost/compress from 1.17.8 to
+    1.17.9 by @dependabot in #1286
+  * build(deps): bump k8s.io/apimachinery from 0.30.1 to 0.30.2 by
+    @dependabot in #1287
+  * build(deps): bump google.golang.org/api from 0.183.0 to 0.184.0
+    by @dependabot in #1285
+  * build(deps): bump cloud.google.com/go/storage from 1.41.0 to
+    1.42.0 by @dependabot in #1284
+  * Populate history for --interactive builds by @jonjohnsonjr in
+    #1289
+  * chore(autoconf/configure): Generate configuration with
+    autoreconf when configuration doesn't exist by @EyeCantCU in
+    #1290
+  * Check for nil everywhere in Compile by @jonjohnsonjr in #1292
+  * stop using deprecated flags for goreleaser by @k4leung4 in
+    #1269
+  * git-checkout - try harder if getting hash from tag fails. by
+    @smoser in #1277
+  * build(deps): bump actions/checkout from 4.1.6 to 4.1.7 by
+    @dependabot in #1293
+  * build(deps): bump github.com/spf13/cobra from 1.8.0 to 1.8.1 by
+    @dependabot in #1294
+  * build(deps): bump github.com/chainguard-dev/yam from 0.0.7 to
+    0.0.8 by @dependabot in #1295
+  * build(deps): bump github.com/google/go-containerregistry from
+    0.19.1 to 0.19.2 by @dependabot in #1296
+  * Fix missing commit in ranged subpackages by @jonjohnsonjr in
+    #1304
+  * melange numpy test include python-3.12 by @pnasrat in #1308
+  * add go/bump as a default pipeline by @willswire in #1058
+  * Bump apko to v0.15.0 by @jonjohnsonjr in #1309
+
+-------------------------------------------------------------------
 Tue Jun 11 05:36:09 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.8.6:
