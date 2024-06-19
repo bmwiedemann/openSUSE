@@ -209,4 +209,16 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164908 from glaubitz)</comment>
     <requestid>1165301</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>44d4a108c90c1b33897cef76784b2997</srcmd5>
+    <version>7.3.0</version>
+    <time>1718808005</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 7.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1181435 from glaubitz)</comment>
+    <requestid>1181673</requestid>
+  </revision>
 </revisionlist>
