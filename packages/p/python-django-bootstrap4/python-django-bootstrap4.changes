@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 19 07:09:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.3:
+  * Reinstate setuptools_scm for build (#707).
+  * Remove setuptools_scm (#704).
+  * Fix Read the Docs (#703).
+  * Remove support for Django 3.2 (EOL).
+
+-------------------------------------------------------------------
 Tue Jan 30 12:25:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.1:

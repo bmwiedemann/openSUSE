@@ -85,4 +85,16 @@
   * Fix CheckboxSelectMultiple on Django&gt;4 (#672, @heso).</comment>
     <requestid>1142779</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8b5f3793e627488ed2bafc10d86e79c2</srcmd5>
+    <version>24.3</version>
+    <time>1718808036</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.3:
+  * Reinstate setuptools_scm for build (#707).
+  * Remove setuptools_scm (#704).
+  * Fix Read the Docs (#703).
+  * Remove support for Django 3.2 (EOL).</comment>
+    <requestid>1181684</requestid>
+  </revision>
 </revisionlist>
