@@ -1,4 +1,4 @@
-# Go 1.22 development Container Image
+# Go 1.22 development container image
 
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
@@ -11,7 +11,7 @@
 To compile and deploy an application, copy the sources, fetch dependencies (assuming go.mod is used for dependency management), and build the binary:
 
 ```Dockerfile
-# Build the application using the Go 1.22 development Container Image
+# Build the application using the Go 1.22 development container image
 FROM registry.opensuse.org/opensuse/bci/golang:1.22 as build
 
 WORKDIR /app
