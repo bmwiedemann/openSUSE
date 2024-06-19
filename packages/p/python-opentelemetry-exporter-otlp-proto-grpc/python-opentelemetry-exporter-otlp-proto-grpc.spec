@@ -17,7 +17,7 @@
 
 
 Name:           python-opentelemetry-exporter-otlp-proto-grpc
-Version:        1.24.0
+Version:        1.25.0
 Release:        0
 Summary:        OpenTelemetry Collector Protobuf over gRPC Exporter
 License:        Apache-2.0
