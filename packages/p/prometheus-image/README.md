@@ -1,4 +1,4 @@
-# The openSUSE Tumbleweed Prometheus Container Image
+# The openSUSE Tumbleweed Prometheus container image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
 Prometheus container based on the openSUSE Tumbleweed Base Container Image.
