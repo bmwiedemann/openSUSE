@@ -42,4 +42,41 @@
     <comment>- use modern python on sle15</comment>
     <requestid>1171760</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5e5c3235e27567bee5c209f5d20286fa</srcmd5>
+    <version>1.25.0</version>
+    <time>1718807817</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.25.0:
+  * Fix class BoundedAttributes to have RLock rather than Lock
+  * Remove thread lock by loading RuntimeContext explicitly.
+  * Add to_json method to ExponentialHistogram
+  * Fix exponential histograms
+  * Fix otlp exporter to export log_record.observed_timestamp
+  * Add capture the fully qualified type name for raised
+    exceptions in spans
+  * Prometheus exporter sort label keys to prevent duplicate
+    metrics when user input changes order
+  * Rename test objects to avoid pytest warnings
+  * Add span flags to OTLP spans and links
+  * Record links with invalid SpanContext if either attributes or
+    TraceState are not empty
+  * Add OpenTelemetry trove classifiers to PyPI packages ([#3913]
+    (https://github.com/open-telemetry/opentelemetry-
+    python/pull/3913))
+  * Fix prometheus metric name and unit conversion (#3924)  -
+    this is a breaking change to prometheus metric names so they
+    comply with the specification.  - you can temporarily opt-out
+    of the unit normalization by setting the environment variable
+    `OTEL_PYTHON_EXPERIMENTAL_DISABLE_PROMETHEUS_UNIT_NORMALIZATI
+    ON=true`  - common unit abbreviations are converted to
+    Prometheus conventions (`s` -&gt; `seconds`), following the
+    collector's implementation  - repeated `_` are replaced with
+    a single `_`  - unit annotations (enclosed in curly braces
+    like `{requests}`) are stripped away  - units with slash are
+    converted e.g. `m/s` -&gt; `meters_per_second`.  - The
+    exporter's API is not changed
+  * Add parameters for Distros and configurators to configure</comment>
+    <requestid>1181318</requestid>
+  </revision>
 </revisionlist>
