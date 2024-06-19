@@ -1,4 +1,4 @@
-# The openSUSE Tumbleweed with Git Container Image
+# The openSUSE Tumbleweed with Git container image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
 A micro environment with Git based on the openSUSE Tumbleweed Base Container Image.
