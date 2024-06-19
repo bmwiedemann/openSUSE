@@ -1,3 +1,10 @@
+-------------------------------------------------------------------
+Wed Jun 19 07:54:17 UTC 2024 - heming zhao <heming.zhao@suse.com>
+
+- drbd: fix build error against kernel v6.9.3 (boo#1226510)
+  * add patch
+    + bsc1226510-fix-build-err-against-6.9.3.patch
+
 ------------------------------------------------------------------
 Tue Apr 15 07:50:00 UTC 2024 - Glass Su <glass.su@suse.com>
 
