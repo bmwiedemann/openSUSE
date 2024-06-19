@@ -1945,6 +1945,7 @@ unsorted:
   - cargo1.76 
   - cargo1.77 
   - cargo1.78 
+  - cargo1.79 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -2102,6 +2103,7 @@ unsorted:
   - chezmoi-zsh-completion 
   - chezscheme 
   - chezscheme-petite 
+  - chirp 
   - chmlib-devel 
   - chmlib-examples 
   - chntpw 
@@ -7289,8 +7291,6 @@ unsorted:
   - gnome-user-docs-lang 
   - gnome-video-effects-devel 
   - gnomekbd-tools 
-  - gnonograms 
-  - gnonograms-lang 
   - gnote 
   - gnote-lang 
   - gns3-gui 
@@ -11649,8 +11649,8 @@ unsorted:
   - libargtable2-0 
   - libargtable2-devel 
   - libaria2-0 
-  - libarm_compute35 
-  - libarm_compute_graph35 
+  - libarm_compute37 
+  - libarm_compute_graph37 
   - libarmadillo12 
   - libarmnn33 
   - libarmnn33-opencl 
@@ -14881,7 +14881,7 @@ unsorted:
   - libosmo-mgcp-devel 
   - libosmo-mslookup-devel 
   - libosmo-mslookup0 
-  - libosmo-mtp-1_8_1 
+  - libosmo-mtp-1_8_2 
   - libosmo-mtp-devel 
   - libosmo-octoi2 
   - libosmo-ranap-devel 
@@ -14892,13 +14892,13 @@ unsorted:
   - libosmo-rua0 
   - libosmo-sabp-devel 
   - libosmo-sabp1 
-  - libosmo-sccp-1_8_1 
+  - libosmo-sccp-1_8_2 
   - libosmo-sccp-devel 
   - libosmo-sigtran-devel 
   - libosmo-sigtran9 
   - libosmo-simtrace2-1 
   - libosmo-simtrace2-devel 
-  - libosmo-xua-1_8_1 
+  - libosmo-xua-1_8_2 
   - libosmo-xua-devel 
   - libosmoabis-devel 
   - libosmoabis13 
@@ -19481,6 +19481,10 @@ unsorted:
   - nfdump-devel 
   - nfoview 
   - nfoview-lang 
+  - nfpm 
+  - nfpm-bash-completion 
+  - nfpm-fish-completion 
+  - nfpm-zsh-completion 
   - nfs-client-provisioner 
   - nfs-client-provisioner-k8s-yaml 
   - nfs4-acl-tools 
@@ -35929,6 +35933,7 @@ unsorted:
   - rust1.76 
   - rust1.77 
   - rust1.78 
+  - rust1.79 
   - rustdesk-server 
   - rustdesk-server-hbbr 
   - rustdesk-server-hbbs 
