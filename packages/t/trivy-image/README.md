@@ -1,4 +1,4 @@
-# The openSUSE Tumbleweed Container Vulnerability Scanner Container Image
+# The openSUSE Tumbleweed Container Vulnerability Scanner container image
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
 Container Vulnerability Scanner container based on the openSUSE Tumbleweed Base Container Image.
