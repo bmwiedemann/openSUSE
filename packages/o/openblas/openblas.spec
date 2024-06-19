@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package openblas
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -228,6 +228,7 @@ Patch101:       Link-library-with-z-noexecstack.patch
 # PATCH port
 Patch102:       Handle-s390-correctly.patch
 Patch103:       openblas-ppc64be_up2_p8.patch
+Patch104:       no-static.patch
 
 #BuildRequires:  cmake
 BuildRequires:  memory-constraints
@@ -238,7 +239,7 @@ BuildRequires:  gcc%{?cc_v}-fortran
 BuildRequires:  gcc-fortran
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 %else
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  lua-lmod
@@ -255,7 +256,7 @@ Group:          System/Libraries
 %if %{without hpc}
 Requires(post): update-alternatives
 Requires(post): coreutils
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
  %if "%flavor" == "serial"
 Obsoletes:      lib%{pname}%{so_v} < %{version}
 Provides:       lib%{pname}%{so_v} = %{version}

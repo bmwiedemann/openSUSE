@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 13 07:32:23 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- no-static.patch: do not link statically
+
+-------------------------------------------------------------------
 Sun Jun  9 07:07:51 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - Update to version 0.3.27 (boo#1225869):

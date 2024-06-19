@@ -1,0 +1,11 @@
+Index: OpenBLAS-0.3.27/Makefile.riscv64
+===================================================================
+--- OpenBLAS-0.3.27.orig/Makefile.riscv64
++++ OpenBLAS-0.3.27/Makefile.riscv64
+@@ -16,5 +16,5 @@ FCOMMON_OPT += -march=rv64imafdcv -mabi=
+ endif
+ ifeq ($(CORE), RISCV64_GENERIC)
+ CCOMMON_OPT += -march=rv64imafdc -mabi=lp64d
+-FCOMMON_OPT += -march=rv64imafdc -mabi=lp64d -static
++FCOMMON_OPT += -march=rv64imafdc -mabi=lp64d
+ endif
