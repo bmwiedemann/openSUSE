@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 19 01:15:28 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update gdm-sysconfig-settings.patch: work with SELinux policy
+  (bsc#1222978).
+
+-------------------------------------------------------------------
 Mon Jun  3 09:50:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.2:

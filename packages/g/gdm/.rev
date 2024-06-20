@@ -2076,4 +2076,13 @@
 - Rebase gdm-initial-setup-hardening.patch. (forwarded request 1178274 from dimstar)</comment>
     <requestid>1178280</requestid>
   </revision>
+  <revision rev="268" vrev="2">
+    <srcmd5>31a6c629ccd963d2e89994580bf5037a</srcmd5>
+    <version>46.2</version>
+    <time>1718894794</time>
+    <user>anag+factory</user>
+    <comment>- Update gdm-sysconfig-settings.patch: work with SELinux policy
+  (bsc#1222978). (forwarded request 1181625 from xiaoguang_wang)</comment>
+    <requestid>1181710</requestid>
+  </revision>
 </revisionlist>

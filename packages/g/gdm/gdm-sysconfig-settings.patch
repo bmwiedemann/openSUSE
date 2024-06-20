@@ -1,7 +1,7 @@
-Index: gdm-46.alpha/common/gdm-settings-system-backend.c
+Index: gdm-46.0/common/gdm-settings-system-backend.c
 ===================================================================
 --- /dev/null
-+++ gdm-46.alpha/common/gdm-settings-system-backend.c
++++ gdm-46.0/common/gdm-settings-system-backend.c
 @@ -0,0 +1,372 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -375,10 +375,10 @@ Index: gdm-46.alpha/common/gdm-settings-system-backend.c
 +
 +        return GDM_SETTINGS_BACKEND (object);
 +}
-Index: gdm-46.alpha/common/gdm-settings-system-backend.h
+Index: gdm-46.0/common/gdm-settings-system-backend.h
 ===================================================================
 --- /dev/null
-+++ gdm-46.alpha/common/gdm-settings-system-backend.h
++++ gdm-46.0/common/gdm-settings-system-backend.h
 @@ -0,0 +1,56 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -436,10 +436,10 @@ Index: gdm-46.alpha/common/gdm-settings-system-backend.h
 +G_END_DECLS
 +
 +#endif /* __GDM_SETTINGS_SYSTEM_BACKEND_H */
-Index: gdm-46.alpha/common/gdm-settings.c
+Index: gdm-46.0/common/gdm-settings.c
 ===================================================================
---- gdm-46.alpha.orig/common/gdm-settings.c
-+++ gdm-46.alpha/common/gdm-settings.c
+--- gdm-46.0.orig/common/gdm-settings.c
++++ gdm-46.0/common/gdm-settings.c
 @@ -38,6 +38,7 @@
  #include "gdm-settings.h"
  
@@ -459,11 +459,11 @@ Index: gdm-46.alpha/common/gdm-settings.c
          backend = gdm_settings_desktop_backend_new (GDM_RUNTIME_CONF);
          if (backend)
                  settings->backends = g_list_prepend (settings->backends, backend);
-Index: gdm-46.alpha/common/gdm-sysconfig.c
+Index: gdm-46.0/common/gdm-sysconfig.c
 ===================================================================
 --- /dev/null
-+++ gdm-46.alpha/common/gdm-sysconfig.c
-@@ -0,0 +1,484 @@
++++ gdm-46.0/common/gdm-sysconfig.c
+@@ -0,0 +1,509 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
 + * Copyright (C) 2008 Hans Petter Jansson <hpj@novell.com>
@@ -505,6 +505,7 @@ Index: gdm-46.alpha/common/gdm-sysconfig.c
 +#include <glib.h>
 +#include <glib/gi18n.h>
 +#include <glib/gstdio.h>
++#include <gio/gio.h>
 +
 +#include "gdm-sysconfig.h"
 +
@@ -558,10 +559,17 @@ Index: gdm-46.alpha/common/gdm-sysconfig.c
 +{
 +        GIOStatus   last_status = G_IO_STATUS_ERROR;
 +        GIOChannel *channel     = NULL;
-+        gchar      *temp_file_name;
++        g_autofree gchar      *temp_file_name = NULL;
 +        gint        i;
++        gchar                 *path = NULL;
++        g_autofree char       *template = NULL;
 +
-+        temp_file_name = g_strdup_printf ("%s.new.%u", file_name, g_random_int ());
++        template = g_strdup_printf ("/run/sysconfig.XXXXXX");
++        path = g_mkdtemp (template);
++        if (path == NULL)
++                goto out;
++
++        temp_file_name = g_strdup_printf ("%s/%s.new",path, g_path_get_basename(file_name));
 +
 +        channel = g_io_channel_new_file (temp_file_name, "w", NULL);
 +        if (!channel)
@@ -594,10 +602,27 @@ Index: gdm-46.alpha/common/gdm-sysconfig.c
 +                g_io_channel_unref (channel);
 +        }
 +
-+        if (last_status == G_IO_STATUS_NORMAL && g_rename (temp_file_name, file_name) != 0)
++        gboolean result = FALSE;
++        if (last_status == G_IO_STATUS_NORMAL && temp_file_name) {
++                g_autoptr (GFile) old_file = g_file_new_for_path(temp_file_name);
++                g_autoptr (GFile) new_file = g_file_new_for_path(file_name);
++                g_remove(file_name);
++                result = g_file_move (old_file,
++                                      new_file,
++                                      G_FILE_COPY_OVERWRITE,
++                                      NULL,
++                                      NULL,
++                                      NULL,
++                                      NULL);
++        }
++
++        if (last_status == G_IO_STATUS_NORMAL && !result)
 +                last_status = G_IO_STATUS_ERROR;
 +
-+        g_free (temp_file_name);
++        if (path) {
++                g_rmdir(path);
++        }
++
 +        return last_status == G_IO_STATUS_NORMAL ? TRUE : FALSE;
 +}
 +
@@ -948,10 +973,10 @@ Index: gdm-46.alpha/common/gdm-sysconfig.c
 +        g_strfreev (lines);
 +        return result;
 +}
-Index: gdm-46.alpha/common/gdm-sysconfig.h
+Index: gdm-46.0/common/gdm-sysconfig.h
 ===================================================================
 --- /dev/null
-+++ gdm-46.alpha/common/gdm-sysconfig.h
++++ gdm-46.0/common/gdm-sysconfig.h
 @@ -0,0 +1,43 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -996,10 +1021,10 @@ Index: gdm-46.alpha/common/gdm-sysconfig.h
 +G_END_DECLS
 +
 +#endif /* __GDM_SYSCONFIG_H */
-Index: gdm-46.alpha/data/gdm.conf-custom.in
+Index: gdm-46.0/data/gdm.conf-custom.in
 ===================================================================
---- gdm-46.alpha.orig/data/gdm.conf-custom.in
-+++ gdm-46.alpha/data/gdm.conf-custom.in
+--- gdm-46.0.orig/data/gdm.conf-custom.in
++++ gdm-46.0/data/gdm.conf-custom.in
 @@ -1,4 +1,7 @@
  # GDM configuration storage
 +#
@@ -1008,10 +1033,10 @@ Index: gdm-46.alpha/data/gdm.conf-custom.in
  
  [daemon]
  # Uncomment the line below to force the login screen to use Xorg
-Index: gdm-46.alpha/common/meson.build
+Index: gdm-46.0/common/meson.build
 ===================================================================
---- gdm-46.alpha.orig/common/meson.build
-+++ gdm-46.alpha/common/meson.build
+--- gdm-46.0.orig/common/meson.build
++++ gdm-46.0/common/meson.build
 @@ -5,9 +5,11 @@ libgdmcommon_src = files(
    'gdm-profile.c',
    'gdm-settings-backend.c',
