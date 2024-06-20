@@ -17,11 +17,10 @@
 
 
 Name:           fastfetch
-Version:        2.15.0
+Version:        2.16.0
 Release:        0
 Summary:        Neofetch-like tool written mostly in C
 License:        MIT
-Group:          Productivity/Text/Utilities
 URL:            https://github.com/fastfetch-cli/fastfetch
 Source:         https://github.com/fastfetch-cli/fastfetch/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  Mesa-devel
@@ -30,8 +29,7 @@ BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  opencl-headers
 BuildRequires:  vulkan-headers
-# For some reason these don't build on 15.5
-# Once the 15.6 repo is enabled, check to see if it builds there
+# For some reason these don't build on Leap
 %if 0%{?suse_version} > 1600
 %ifarch %{ix86} x86_64
 BuildRequires:  pkgconfig(DirectX-Headers)
@@ -71,7 +69,6 @@ MacOS and Windows 7+ are supported.
 
 %package        fish-completion
 Summary:        Fish Completion for %{name}
-Group:          System/Shells
 Supplements:    (%{name} and fish)
 Requires:       fish
 BuildArch:      noarch
@@ -81,7 +78,6 @@ Fish command-line completion support for %{name}.
 
 %package        bash-completion
 Summary:        Bash Completion for %{name}
-Group:          System/Shells
 Supplements:    (%{name} and bash-completion)
 Requires:       bash-completion
 BuildArch:      noarch
@@ -90,7 +86,7 @@ BuildArch:      noarch
 Bash command-line completion support for %{name}.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %cmake

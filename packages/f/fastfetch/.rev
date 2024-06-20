@@ -578,4 +578,29 @@ Bugfixes:
     * Don't display duplicate entries (OS, Linux)</comment>
     <requestid>1179399</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>2961d0fe6579592ef348801846070966</srcmd5>
+    <version>2.16.0</version>
+    <time>1718894852</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.16.0
+   Changes:
+    * Fastfetch now prefers `/etc/os-release` over `/etc/lsb-release` when detecting distro info. 
+     - This may break some distros (notably some debian based distros).
+       File a bug with the content of `os-release` and `lsb-release` if it breaks your distro.
+   Features:
+    * Add new option `--users-myself-only` to display current login user only (Users)
+    * Add new module `DNS` to show active DNS servers (DNS)
+    * Add new option `--loadavg-compact`. Defaults to true (Loadavg)
+     - Use `--loadavg-compact false` to display load averages in different lines
+    * Detect MTU size (LocalIP)
+    * Support version detection of pluma, which is the default editor of OpenIndiana (Editor)
+    * Print used OGL library, eg EGL, GLX or OSMesa (OpenGL)
+   Bugfixes:
+    * Report error if cache size is unavailable (CPUCache, Android)
+    * Trim white spaces in device name (Sound, Linux)
+    * Fix `display.bar.border{Left,Right}` doesn't work in JSON config files (Config)
+    * Fix invalid call to `realpath(3)` (Platform, Linux)</comment>
+    <requestid>1181769</requestid>
+  </revision>
 </revisionlist>
