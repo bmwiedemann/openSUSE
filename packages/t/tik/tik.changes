@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 19 12:11:44 UTC 2024 - rbrown@suse.com
+
+- Update to version 1.1.9:
+  * Fix indentations
+  * Add support for migrating fprint fingerprints
+
+-------------------------------------------------------------------
 Mon Jun 17 15:39:11 UTC 2024 - rbrown@suse.com
 
 - Update to version 1.1.8:

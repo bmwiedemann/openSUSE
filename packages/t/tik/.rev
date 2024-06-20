@@ -130,4 +130,14 @@
     <comment>Package update to 1.1.8</comment>
     <requestid>1181341</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>70d169240d7e8f97adcdc738b9868bee</srcmd5>
+    <version>1.1.9</version>
+    <time>1718894840</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.1.9:
+  * Fix indentations
+  * Add support for migrating fprint fingerprints</comment>
+    <requestid>1181742</requestid>
+  </revision>
 </revisionlist>
