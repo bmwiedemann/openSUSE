@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun 18 23:07:10 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to 1.0.136:
+  * reinstate Debian codename symlinks
+  * drop unneeded addition of "test extras"
+  * avoid setting DEF_MIRROR to https://https://...
+- remove patch revert-symlink-removal.patch as it's unneeded now
+
+-------------------------------------------------------------------
+Tue Jun 18 13:34:24 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to 1.0.135:
+  * fix quoting to allow spaces in target directory
+  * Use correct keyring and mirror for Ubuntu
+  * Ubuntu: test for dpkg zstd support for Hirsute+
+  * Remove hardcoded HTTPS mirror and use inline substitution
+- add patch revert-symlink-removal.patch for not breaking workflows
+
+-------------------------------------------------------------------
 Sun Feb 11 20:32:19 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - update to 1.0.134
