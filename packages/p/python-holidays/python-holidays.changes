@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jun 19 06:53:26 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to 0.51:
+  * Update Aruba and Curaçao holidays l10n (split locales) (#1827 by @KJhellico)
+  * Update Brazil holidays: add new Nov 20 holiday (#1832 by @KJhellico)
+  * Update CI/CD job concurrency (#1823 by @arkid15r)
+  * Update CI/CD job concurrency (#1830 by @arkid15r)
+  * Update README.rst (#1828 by @arkid15r)
+  * Update ruff configuration (#1819 by @arkid15r)
+  * Align India subdivisions with ISO 3166-2 (#1821 by @KJhellico)
+  * Migrate to codecov.io (#1818 by @arkid15r)
+  * Narrow down ignored warnings (#1816 by @arkid15r)
+  * Refactor some holidays with uncommon rules (#1807 by @KJhellico)
+  * Add Greenland holidays (#1811 by @Klintrup, @arkid15r)
+  * Fix docs: update Italy docstring (#1808 by @arkid15r)
+  * Update Italy holidays (#1805 by @KJhellico)
+  * Add 2024 Russian Substituted Holidays (#1799 by @PPsyrius)
+  * Add Georgian government holiday for May 17, 2024 (#1802 by @PPsyrius, @arkid15r)
+  * Add v1 future incompatibility warning (#1801 by @arkid15r)
+  * Migrate Japan holidays to ObservedHolidayBase (#1810 by @KJhellico)
+  * Synchronize entity dynamic imports (#1794 by @Izzette)
+  * Add IFEU holidays (#1792 by @benjfield, @arkid15r)
+  * Update Hong Kong holidays (#1767 by @KJhellico, @arkid15r)
+  * Update Malaysia holidays (#1791 by @KJhellico)
+  * Update observed rules: add holiday removal support (#1796 by @arkid15r)
+  * Address numpy int argument conversion issue (#1782 by @arkid15r)
+  * Replace `datetime::timedelta` with custom function (#1785 by @KJhellico)
+
+-------------------------------------------------------------------
 Tue May  7 20:54:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.48:

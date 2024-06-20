@@ -17,7 +17,7 @@
 
 
 Name:           python-holidays
-Version:        0.48
+Version:        0.51
 Release:        0
 Summary:        Python library for generating holidays on the fly
 License:        MIT
@@ -27,6 +27,7 @@ BuildRequires:  %{python_module convertdate}
 BuildRequires:  %{python_module hijri-converter >= 2.2}
 BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module korean-lunar-calendar}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module polib}
 BuildRequires:  %{python_module pytest}
