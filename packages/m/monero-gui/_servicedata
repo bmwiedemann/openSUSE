@@ -1,6 +1,0 @@
-<servicedata>
-<service name="tar_scm">
-                <param name="url">https://github.com/monero-project/monero-gui.git</param>
-              <param name="changesrevision">8444a9563e959fb8cac599b0178faae33eada25d</param></service><service name="tar_scm">
-                <param name="url">https://github.com/monero-project/monero-gui</param>
-              <param name="changesrevision">f0b1b8cd0896b8de6e5272d2206014d7db892942</param></service></servicedata>
