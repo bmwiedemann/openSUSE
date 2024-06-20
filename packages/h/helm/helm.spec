@@ -19,7 +19,7 @@
 %define goipath helm.sh/helm/v3
 %define git_dirty clean
 Name:           helm
-Version:        3.15.1
+Version:        3.15.2
 Release:        0
 Summary:        The Kubernetes Package Manager
 License:        Apache-2.0
@@ -71,7 +71,9 @@ Fish command line completion support for %{name}.
 %goprep %{goipath}
 export K8S_MINOR=$(grep k8s.io/client-go go.mod | cut -d. -f3)
 export GO111MODULE=on
+%ifnarch s390x
 export CGO_ENABLED=0
+%endif
 %gobuild -trimpath -tags '' -mod vendor -buildmode pie -ldflags \
     "-X %{goipath}/internal/version.version=v%{version} \
      -X %{goipath}/internal/version.gitCommit=$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo) \

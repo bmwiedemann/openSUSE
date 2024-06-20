@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 13 05:16:23 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.15.2:
+  * fix: wrong cli description
+  * fix typo in load_plugins.go
+  * fix docs of DeployedAll
+  * Bump github.com/docker/docker
+  * bump oras minor version
+  * feat(load.go): add warning on requirements.lock
+
+-------------------------------------------------------------------
 Thu May 23 19:45:52 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.15.1:
