@@ -26,6 +26,8 @@ Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
 URL:            https://hyprland.org/
 Source0:        %{name}-%{version}.tar.xz
+Source99:       %{name}.rpmlintrc
+Patch100:       opensuse-hyprpm-use-hyprland-devel-subpkg.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++ >= 11
 BuildRequires:  git
@@ -137,6 +139,20 @@ The official zsh completion script for %{name}.
 
 %prep
 %autosetup -p1
+# at this point of time we do not have repository information anymore
+# don't attemt to generate version.h from git, use our own.
+sed -i '/version_h/d' meson.build
+cat > src/version.h << EOF
+#pragma once
+#define GIT_COMMIT_HASH    "0000000000000000000000000000000000000000"
+#define GIT_BRANCH         "openSUSE"
+#define GIT_COMMIT_MESSAGE "Built for %_host"
+#define GIT_COMMIT_DATE    "Thu Jan 01 00:00:00 1970"
+#define GIT_DIRTY          ""
+#define GIT_TAG            "%{version}"
+#define GIT_COMMITS        "-1"
+EOF
+sed -i 's;REPLACE_ME_WITH_PREFIX;%{_prefix};' hyprpm/src/core/DataState.cpp
 
 %build
 %meson \

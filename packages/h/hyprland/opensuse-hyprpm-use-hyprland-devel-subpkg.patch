@@ -1,0 +1,212 @@
+From 1f2015ee57b0b8f45db60078f76012a0ac0a8e59 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Florian=20=22sp1rit=22=E2=80=8B?= <sp1rit@disroot.org>
+Date: Fri, 14 Jun 2024 23:43:46 +0200
+Subject: [PATCH] openSUSE: Use hyprland-devel instead of downloading from
+ upstream
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The plugin manager needs headers in order to build plugins for hyprland.
+This patch removes the ability of hyprpm to download another copy of
+hyprland upstream and instead forces hyprpm to use the headers already
+installed from the hyprland-devel subpackage.
+
+It also adds a new check to ensure that the subpackage is instealled.
+
+Signed-off-by: Florian "sp1rit"​ <sp1rit@disroot.org>
+---
+ hyprpm/src/core/DataState.cpp     |   2 +-
+ hyprpm/src/core/PluginManager.cpp | 133 +++++-------------------------
+ 2 files changed, 20 insertions(+), 115 deletions(-)
+
+diff --git a/hyprpm/src/core/DataState.cpp b/hyprpm/src/core/DataState.cpp
+index 61ad336..aaceebe 100644
+--- a/hyprpm/src/core/DataState.cpp
++++ b/hyprpm/src/core/DataState.cpp
+@@ -21,7 +21,7 @@ std::string DataState::getDataStatePath() {
+ }
+ 
+ std::string DataState::getHeadersPath() {
+-    return getDataStatePath() + "/headersRoot";
++    return "REPLACE_ME_WITH_PREFIX/";
+ }
+ 
+ void DataState::ensureStateStoreExists() {
+diff --git a/hyprpm/src/core/PluginManager.cpp b/hyprpm/src/core/PluginManager.cpp
+index f9e9664..a948edb 100644
+--- a/hyprpm/src/core/PluginManager.cpp
++++ b/hyprpm/src/core/PluginManager.cpp
+@@ -14,6 +14,7 @@
+ 
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <sys/wait.h>
+ #include <pwd.h>
+ #include <unistd.h>
+ 
+@@ -396,136 +397,27 @@ bool CPluginManager::updateHeaders(bool force) {
+     const auto HLVER = getHyprlandVersion();
+ 
+     if (!hasDeps()) {
+-        std::cerr << "\n" << Colors::RED << "✖" << Colors::RESET << " Could not update. Dependencies not satisfied. Hyprpm requires: cmake, meson, cpio\n";
++        std::cerr << "\n" << Colors::RED << "✖" << Colors::RESET << " Could not update. Dependencies not satisfied. Hyprpm requires: hyprland-devel, cmake, meson, cpio\n";
+         return false;
+     }
+ 
+-    if (!std::filesystem::exists("/tmp/hyprpm")) {
+-        std::filesystem::create_directory("/tmp/hyprpm");
+-        std::filesystem::permissions("/tmp/hyprpm", std::filesystem::perms::all, std::filesystem::perm_options::replace);
+-    }
+-
+-    if (!force && headersValid() == HEADERS_OK) {
+-        std::cout << "\n" << std::string{Colors::GREEN} + "✔" + Colors::RESET + " Headers up to date.\n";
+-        return true;
+-    }
+-
+     CProgressBar progress;
+-    progress.m_iMaxSteps        = 5;
++    progress.m_iMaxSteps        = 1;
+     progress.m_iSteps           = 0;
+-    progress.m_szCurrentMessage = "Cloning the hyprland repository";
+-    progress.print();
+-
+-    const std::string USERNAME   = getpwuid(getuid())->pw_name;
+-    const auto        WORKINGDIR = "/tmp/hyprpm/hyprland-" + USERNAME;
+-
+-    if (!createSafeDirectory(WORKINGDIR)) {
+-        std::cerr << "\n" << Colors::RED << "✖" << Colors::RESET << " Could not prepare working dir for hl\n";
+-        return false;
+-    }
+-
+-    progress.printMessageAbove(std::string{Colors::YELLOW} + "!" + Colors::RESET + " Cloning https://github.com/hyprwm/hyprland, this might take a moment.");
+-
+-    const bool bShallow = HLVER.branch == "main" || HLVER.branch == "";
+-
+-    // let us give a bit of leg-room for shallowing
+-    // due to timezones, etc.
+-    const std::string SHALLOW_DATE =
+-        trim(HLVER.date).empty() ? "" : execAndGet("LC_TIME=\"en_US.UTF-8\" date --date='" + HLVER.date + " - 1 weeks' '+\%a \%b \%d \%H:\%M:\%S \%Y'");
+-
+-    if (m_bVerbose && bShallow)
+-        progress.printMessageAbove(std::string{Colors::BLUE} + "[v] " + Colors::RESET + "will shallow since: " + SHALLOW_DATE);
+-
+-    std::string ret =
+-        execAndGet("cd /tmp/hyprpm && git clone --recursive https://github.com/hyprwm/hyprland hyprland-" + USERNAME + (bShallow ? " --shallow-since='" + SHALLOW_DATE + "'" : ""));
+-
+-    if (!std::filesystem::exists(WORKINGDIR)) {
+-        progress.printMessageAbove(std::string{Colors::RED} + "✖" + Colors::RESET + " Clone failed. Retrying without shallow.");
+-        ret = execAndGet("cd /tmp/hyprpm && git clone --recursive https://github.com/hyprwm/hyprland hyprland-" + USERNAME);
+-    }
+-
+-    if (!std::filesystem::exists(WORKINGDIR + "/.git")) {
+-        std::cerr << "\n" << Colors::RED << "✖" << Colors::RESET << " Could not clone the hyprland repository. shell returned:\n" << ret << "\n";
+-        return false;
+-    }
+-
+-    progress.printMessageAbove(std::string{Colors::GREEN} + "✔" + Colors::RESET + " cloned");
+-    progress.m_iSteps           = 2;
+-    progress.m_szCurrentMessage = "Checking out sources";
+-    progress.print();
+-
+-    ret = execAndGet("cd " + WORKINGDIR + " && git checkout " + HLVER.branch + " 2>&1");
+-
+-    if (m_bVerbose)
+-        progress.printMessageAbove(std::string{Colors::BLUE} + "[v] " + Colors::RESET + "git returned (co): " + ret);
+-
+-    ret = execAndGet("cd " + WORKINGDIR + " && git rm subprojects/tracy && git submodule update --init 2>&1 && git reset --hard --recurse-submodules " + HLVER.hash);
+-
+-    if (m_bVerbose)
+-        progress.printMessageAbove(std::string{Colors::BLUE} + "[v] " + Colors::RESET + "git returned (rs): " + ret);
+-
+-    progress.printMessageAbove(std::string{Colors::GREEN} + "✔" + Colors::RESET + " checked out to running ver");
+-    progress.m_iSteps           = 3;
+-    progress.m_szCurrentMessage = "Building Hyprland";
+-    progress.print();
+-
+-    progress.printMessageAbove(std::string{Colors::YELLOW} + "!" + Colors::RESET + " configuring Hyprland");
+-
+-    if (m_bVerbose)
+-        progress.printMessageAbove(std::string{Colors::BLUE} + "[v] " + Colors::RESET + "setting PREFIX for cmake to " + DataState::getHeadersPath());
+-
+-    ret = execAndGet(std::format("cd {} && cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:STRING=\"{}\" -S . -B ./build -G Ninja", WORKINGDIR,
+-                                 DataState::getHeadersPath()));
+-    if (m_bVerbose)
+-        progress.printMessageAbove(std::string{Colors::BLUE} + "[v] " + Colors::RESET + "cmake returned: " + ret);
+-
+-    if (ret.contains("CMake Error at")) {
+-        // missing deps, let the user know.
+-        std::string missing = ret.substr(ret.find("CMake Error at"));
+-        missing             = ret.substr(ret.find_first_of('\n') + 1);
+-        missing             = missing.substr(0, missing.find("-- Configuring incomplete"));
+-        missing             = missing.substr(0, missing.find_last_of('\n'));
+-
+-        std::cerr << "\n"
+-                  << Colors::RED << "✖" << Colors::RESET << " Could not configure the hyprland source, cmake complained:\n"
+-                  << missing << "\n\nThis likely means that you are missing the above dependencies or they are out of date.\n";
+-        return false;
+-    }
+-
+-    // le hack. Wlroots has to generate its build/include
+-    ret = execAndGet("cd " + WORKINGDIR + "/subprojects/wlroots-hyprland && meson setup -Drenderers=gles2 -Dexamples=false build");
+-    if (m_bVerbose)
+-        progress.printMessageAbove(std::string{Colors::BLUE} + "[v] " + Colors::RESET + "meson returned: " + ret);
+-
+-    progress.printMessageAbove(std::string{Colors::GREEN} + "✔" + Colors::RESET + " configured Hyprland");
+-    progress.m_iSteps           = 4;
+-    progress.m_szCurrentMessage = "Installing sources";
++    progress.m_szCurrentMessage = "Checking headers";
+     progress.print();
+ 
+-    std::string cmd =
+-        std::format("sed -i -e \"s#PREFIX = /usr/local#PREFIX = {}#\" {}/Makefile && cd {} && make installheaders", DataState::getHeadersPath(), WORKINGDIR, WORKINGDIR);
+-    if (m_bVerbose)
+-        progress.printMessageAbove(std::string{Colors::BLUE} + "[v] " + Colors::RESET + "installation will run: " + cmd);
+-
+-    ret = execAndGet(cmd);
+-
+-    if (m_bVerbose)
+-        std::cout << Colors::BLUE << "[v] " << Colors::RESET << "installer returned: " << ret << "\n";
+-
+-    // remove build files
+-    std::filesystem::remove_all(WORKINGDIR);
+-
+     auto HEADERSVALID = headersValid();
+     if (HEADERSVALID == HEADERS_OK) {
+         progress.printMessageAbove(std::string{Colors::GREEN} + "✔" + Colors::RESET + " installed headers");
+-        progress.m_iSteps           = 5;
++        progress.m_iSteps           = 1;
+         progress.m_szCurrentMessage = "Done!";
+         progress.print();
+ 
+         std::cout << "\n";
+     } else {
+         progress.printMessageAbove(std::string{Colors::RED} + "✖" + Colors::RESET + " failed to install headers with error code " + std::to_string((int)HEADERSVALID));
+-        progress.m_iSteps           = 5;
++        progress.m_iSteps           = 1;
+         progress.m_szCurrentMessage = "Failed";
+         progress.print();
+ 
+@@ -876,6 +768,19 @@ std::string CPluginManager::headerError(const eHeadersErrors err) {
+ }
+ 
+ bool CPluginManager::hasDeps() {
++    pid_t pid = fork();
++    if (pid == 0) {
++        close(STDOUT_FILENO);
++        execlp("rpm", "rpm", "-q", "hyprland-devel", NULL);
++        exit(1);
++    }
++    int status;
++    pid = waitpid(pid, &status, 0);
++    if (pid < 0)
++        return false;
++    if (!WIFEXITED(status) || WEXITSTATUS(status) != 0)
++        return false;
++
+     std::vector<std::string> deps = {"meson", "cpio", "cmake"};
+     for (auto& d : deps) {
+         if (!execAndGet("which " + d + " 2>&1").contains("/"))
+-- 
+2.45.1
+

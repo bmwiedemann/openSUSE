@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 14 21:51:19 UTC 2024 - Florian "spirit" <sp1rit@disroot.org>
+
+- Added support for loading plugins using "hyprpm"
+  + Added "opensuse-hyprpm-use-hyprland-devel-subpkg.patch" needed
+    for this purpose
+
+-------------------------------------------------------------------
 Thu Jun 13 15:36:52 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to version 0.41.1:

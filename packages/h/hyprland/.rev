@@ -186,4 +186,12 @@ depends on 1159012</comment>
     <comment></comment>
     <requestid>1180875</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>1d84758091fc752c3475be7fe091932c</srcmd5>
+    <version>0.41.1</version>
+    <time>1718894837</time>
+    <user>anag+factory</user>
+    <comment>Added support for loading plugins using &quot;hyprpm&quot;</comment>
+    <requestid>1181747</requestid>
+  </revision>
 </revisionlist>
