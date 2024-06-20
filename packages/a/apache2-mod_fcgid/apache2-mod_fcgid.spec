@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_fcgid
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,9 +30,6 @@ Patch0:         mod_fcgid-2.3.5_suse_paths.patch
 Patch1:         mod_fcgid-2.3.9-CVE-2016-1000104.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
-# for testing
-BuildRequires:  apache-rex
-%apache_rex_deps
 BuildRequires:  perl-FastCGI
 Requires:       %{apache_mmn}
 Requires:       %{apache_suse_maintenance_mmn}
@@ -66,9 +63,6 @@ make %{?_smp_mflags}
 make %{?_smp_mflags} DESTDIR=%{buildroot} install
 install -D -m 0644 %{SOURCE1} %{buildroot}%{apache_sysconfdir}/conf.d/mod_fcgid.conf
 install -d -m 0755 %{buildroot}%{_localstatedir}/lib/apache2/fcgid/
-
-%check
-%apache_rex_check -m modules/fcgid/.libs mod_fcgid-basic
 
 %files
 %defattr(-,root,root)

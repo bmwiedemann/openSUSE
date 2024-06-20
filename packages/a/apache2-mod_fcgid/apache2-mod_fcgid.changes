@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 20 09:14:29 UTC 2024 - pgajdos@suse.com
+
+- drop unmaintained apache-rex usage
+
+-------------------------------------------------------------------
 Tue Feb 20 11:01:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

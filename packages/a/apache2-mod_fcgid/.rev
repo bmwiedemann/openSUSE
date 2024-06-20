@@ -254,4 +254,12 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1147826 from dimstar)</comment>
     <requestid>1149078</requestid>
   </revision>
+  <revision rev="34" vrev="13">
+    <srcmd5>30bcc958c9ea3b2870493e2ee79a4b0b</srcmd5>
+    <version>2.3.9</version>
+    <time>1718894919</time>
+    <user>anag+factory</user>
+    <comment>- drop unmaintained apache-rex usage</comment>
+    <requestid>1181892</requestid>
+  </revision>
 </revisionlist>
