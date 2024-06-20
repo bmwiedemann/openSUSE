@@ -1,7 +1,7 @@
-Index: nim-2.0.4/bin/nim-gdb
+Index: nim-2.0.6/bin/nim-gdb
 ===================================================================
---- nim-2.0.4.orig/bin/nim-gdb
-+++ nim-2.0.4/bin/nim-gdb
+--- nim-2.0.6.orig/bin/nim-gdb
++++ nim-2.0.6/bin/nim-gdb
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env bash
 +#!/usr/bin/bash

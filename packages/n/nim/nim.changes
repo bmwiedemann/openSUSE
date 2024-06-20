@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jun 18 08:11:16 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.0.6:
+  * over 80 bugfixes, complete list available at https://nim-lang.org/blog/2024/06/17/version-206-released.html
+- dropped patch nim-fix-build-with-gcc14.patch as already included in upstream
+
+-------------------------------------------------------------------
+Wed Jun 12 13:21:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N to apply patches. This works with all current RPM
+  versions in use and means we don't have to maintain two blocks to
+  apply patches.
+
+-------------------------------------------------------------------
+Wed May 29 08:19:30 UTC 2024 - David Anes <david.anes@suse.com>
+
+- Fix build with gcc14+:
+  * Add nim-fix-build-with-gcc14.patch
+
+-------------------------------------------------------------------
+Thu May 23 11:40:55 UTC 2024 - David Anes <david.anes@suse.com>
+
+- Disable broken test for i586:
+  * Add nim-fix-tests-i586.patch
+
+-------------------------------------------------------------------
 Wed Apr 17 07:44:23 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.0.4:

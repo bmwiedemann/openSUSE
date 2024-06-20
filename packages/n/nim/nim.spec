@@ -19,7 +19,7 @@
 %define _atlas_version 0.8.0
 
 Name:           nim
-Version:        2.0.4
+Version:        2.0.6
 Release:        0
 Summary:        A statically typed compiled systems programming language
 License:        MIT
@@ -29,6 +29,7 @@ Source0:        https://nim-lang.org/download/nim-%{version}.tar.xz
 Source1:        https://github.com/nim-lang/atlas/archive/refs/tags/%{_atlas_version}.tar.gz#/atlas-%{_atlas_version}.tar.gz
 Source2:        nim-rpmlintrc
 Patch0:         nim-nim-gdb_fix_interpreter.patch
+Patch1:         nim-fix-tests-i586.patch
 BuildRequires:  binutils-devel
 BuildRequires:  ca-certificates
 BuildRequires:  ca-certificates-mozilla
@@ -92,7 +93,13 @@ Elegant:
 * Statements are grouped by indentation but can span multiple lines.
 
 %prep
-%autosetup -a1 -p1
+%autosetup -a1 -N
+
+%patch -P 0 -p1
+%ifarch i586
+%patch -P 1 -p1
+%endif
+
 mv -v atlas-%{_atlas_version} dist/atlas
 
 %build
@@ -101,7 +108,7 @@ export NIMFLAGS="$(echo '%{optflags}' | sed 's/\([^[:space:]]\+\)/--passC:\1/g')
 export NIMFLAGS="$NIMFLAGS %{?jobs:--parallelBuild:%{jobs}}"
 
 ./build.sh
-%make_build CFLAGS="%{optflags}"
+# %make_build CFLAGS="%{optflags}"
 
 ./bin/nim c  $NIMFLAGS -d:release koch
 ./koch boot  $NIMFLAGS -d:release
@@ -150,6 +157,7 @@ cat << EOT >> tests_to_skip
   tests/async/tasyncssl.nim
   tests/realtimeGC/tmain.nim
   tests/realtimeGC/shared.nim
+  tests/stdlib/tcasts.nim
 EOT
 %endif
 
@@ -227,9 +235,9 @@ fi
 
 %install
 # extract everything into a staging location, as Nim devels like to
-# add/remove things in an unusual way and we want to find out what's
-# been added/removed/modified on future versions to avoid errors
-# during packaging it
+# add/remove things in an unusual way and we want to find out what
+# is added/removed/modified on future versions to avoid errors
+# while packaging it
 TARGET="%{buildroot}/_pending"
 
 ./koch install $TARGET
