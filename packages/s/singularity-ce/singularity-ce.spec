@@ -1,7 +1,7 @@
 #
 # spec file for package singularity-ce
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2017-2022, SyLabs, Inc. All rights reserved.
 # Copyright (c) 2017, SingularityWare, LLC. All rights reserved.
 # Copyright (c) 2015-2017, Gregory M. Kurtzer. All rights reserved.
@@ -22,13 +22,15 @@
 #
 
 
+ExcludeArch:    i586
+
 %undefine _debugsource_packages
 # will define the singularity group for comaptibilty to non community version
 %define noncename singularity
 
 Summary:        Application and environment virtualization
 Name:           singularity-ce
-Version:        3.10.2
+Version:        4.1.3
 Release:        0
 License:        Apache-2.0 AND BSD-3-Clause-LBNL
 URL:            https://www.sylabs.io/singularity/
@@ -37,6 +39,7 @@ Obsoletes:      singularity <= 3.8.5
 Source:         https://github.com/sylabs/singularity/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        README.SUSE
 Patch1:         useful_error_message.patch
+Patch100:       Fix-CVE-2024-3727-bsc-1224129.patch
 ExclusiveOS: linux
 
 BuildRequires:  cryptsetup
@@ -90,8 +93,6 @@ cp %{S:1} .
 # Setup an empty GOPATH for the build
 export GOPATH=$PWD/gopath
 mkdir -p "$GOPATH"
-# remove stray binary https://github.com/sylabs/singularity/issues/941
-rm third_party/conmon/bin/conmon
 
 # Not all of these parameters currently have an effect, but they might be
 #  used someday.  They are the same parameters as in the configure macro.
@@ -110,6 +111,8 @@ rm third_party/conmon/bin/conmon
         --sharedstatedir=%{_sharedstatedir} \
         --mandir=%{_mandir} \
         --infodir=%{_infodir} \
+	--without-squashfuse \
+	--without-conmon \
 
 make -C builddir old_config=
 
@@ -117,10 +120,6 @@ make -C builddir old_config=
 export GOPATH=$PWD/gopath
 
 make -C builddir DESTDIR=%{buildroot} install
-
-# cleanup stuff
-mkdir -p %{buildroot}%{_datadir}/bash-completion/completions/
-mv %{buildroot}%{_sysconfdir}/bash_completion.d/* %{buildroot}%{_datadir}/bash-completion/completions/
 
 echo "g %noncename -" > system-group-%{name}.conf
 %sysusers_generate_pre system-group-%{name}.conf %{name} system-group-%{name}.conf
@@ -155,8 +154,7 @@ install -D -m 644 system-group-%{name}.conf %{buildroot}%{_sysusersdir}/system-g
 %config(noreplace) %{_sysconfdir}/singularity/cgroups/*
 %config(noreplace) %{_sysconfdir}/singularity/network/*
 %config(noreplace) %{_sysconfdir}/singularity/seccomp-profiles/*
-%dir %{_sysconfdir}/bash_completion.d
-%{_datadir}/bash-completion/completions/*
+%dir %{_datadir}/bash-completion/completions
 %dir %{_localstatedir}/lib/singularity
 %dir %{_localstatedir}/lib/singularity/mnt
 %dir %{_localstatedir}/lib/singularity/mnt/session
@@ -170,5 +168,6 @@ install -D -m 644 system-group-%{name}.conf %{buildroot}%{_sysusersdir}/system-g
 %doc CONTRIBUTING.md
 %doc CONTRIBUTORS.md
 %{_sysusersdir}/system-group-%{name}.conf
+%{_datadir}/bash-completion/completions/singularity
 
 %changelog
