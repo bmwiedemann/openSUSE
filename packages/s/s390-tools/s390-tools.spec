@@ -231,8 +231,10 @@ zgetdump - tool to get linux system dumps from DASD
  - x86_64
 genprotimg - create a protected virtualization image
 pvattest   - create, perform, and verify protected virtualization attestation measurements
+pvsecret   - manage secrets for IBM Secure Execution guests.
+pvapconfig - used to automatically set up the AP configuration within an IBM Secure Execution guest.
 
-Note: The package requires - s390-tools-genprotimg-data-*.noarch.rpm - installed
+Note: Auxiliary data package - s390-tools-genprotimg-data
 
 %package -n osasnmpd
 Summary:        OSA-Express SNMP subagent

@@ -37,9 +37,9 @@ enum datatypes {
 #define	WITHOUT_KEY	0
 #define	WITH_KEY	1
 
-static char *versionstring	= "Version 1.0.4 2023-12-17 06:58";
+static char *versionstring	= "Version 1.0.5 2024-06-20 14:30";
 
-static char *version	   	= "1.0.4";
+static char *version	   	= "1.0.5";
 
 void	*configuration_handle	= NULL;
 int	layers			= -1;
@@ -249,6 +249,7 @@ void print_scc()
 {
 print_version();
 print_attribute("Type", 0, qc_type, string, WITH_KEY);
+print_attribute("Type Name", 0, qc_type_name, string, WITH_KEY);
 print_attribute("Sequence Code", 0, qc_sequence_code, string, WITH_KEY);
 print_attribute("CPUs Total", 0, qc_num_ifl_total, integer, WITH_KEY);
 print_attribute("CPUs IFL", 0, qc_num_ifl_total, integer, WITH_KEY);
@@ -368,7 +369,7 @@ struct utsname uts;
 		} /* endif */
 	} /* endif */
 
-	for ( i = 0; i < 8; i++) {
+	for ( i = 0; i < layers; i++) {
             erg = qc_get_attribute_int(configuration_handle, qc_layer_type_num, i, &Layer);
 	    if (erg == 1) {
 	       print_attribute("Secure mode on  ", i, qc_has_secure, integer, WITH_KEY);
