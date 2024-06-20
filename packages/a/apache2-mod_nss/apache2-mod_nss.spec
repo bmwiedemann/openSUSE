@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_nss
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,14 +42,12 @@ Patch1:         mod_nss-migrate.patch
 Patch2:         mod_nss-gencert-correct-ownership.patch
 Patch4:         mod_nss-gencert_use_ss_instead_of_netstat.patch
 Patch5:         mod_nss-gencert_stronger_password.patch
-BuildRequires:  apache-rex
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel >= 2.4.18
 BuildRequires:  apr-devel
 BuildRequires:  apr-util-devel
 BuildRequires:  automake
 BuildRequires:  bison
-%apache_rex_deps
 BuildRequires:  curl
 BuildRequires:  findutils
 BuildRequires:  flex
@@ -142,11 +140,6 @@ touch %{buildroot}%{apache_sysconf_nssdir}/key4.db
 %endif
 touch %{buildroot}%{apache_sysconf_nssdir}/install.log
 perl -pi -e "s:$NSS_LIB_DIR:$NSS_BIN:" %{buildroot}%{_sbindir}/gencert
-
-%check
-# specific file name format for module is required by apache-rex
-ln .libs/libmodnss.so .libs/mod_nss.so
-%apache_rex_check -m .libs/ -b . mod_nss-basic
 
 %post
 umask 077

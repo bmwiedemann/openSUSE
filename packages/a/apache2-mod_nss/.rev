@@ -381,4 +381,12 @@
     <comment>- use apache rpm macros</comment>
     <requestid>851861</requestid>
   </revision>
+  <revision rev="37" vrev="7">
+    <srcmd5>cd4ced7c3823f0abf7b58395d76a6983</srcmd5>
+    <version>1.0.18</version>
+    <time>1718894921</time>
+    <user>anag+factory</user>
+    <comment>- drop unmaintained apache-rex usage</comment>
+    <requestid>1181893</requestid>
+  </revision>
 </revisionlist>
