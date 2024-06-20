@@ -76,7 +76,7 @@ Name:           openSUSE-repos
 %else
 Name:           openSUSE-repos-%{theme}
 %endif
-Version:        20240516.5431918
+Version:        20240618.8c4e429
 Release:        0
 Summary:        openSUSE package repositories
 License:        MIT
@@ -120,6 +120,13 @@ Requires:       openSUSE-repos-%{theme}
 Supplements:    modalias(pci:v000010DEd*sv*sd*bc03sc*i*)
 Provides:       openSUSE-repos-NVIDIA
 Conflicts:      otherproviders(openSUSE-repos-NVIDIA)
+
+# Issue 62: Ensure package gets removed on migration
+# to commercial products
+Conflicts:      product(SLES)
+Conflicts:      product(SL-Micro)
+Conflicts:      product(SLE-Micro)
+Conflicts:      product(SLED)
 
 %if "%{?theme}" == "Tumbleweed"
 Obsoletes:      openSUSE-repos-Leap-NVIDIA
@@ -235,7 +242,13 @@ install opensuse-%{branding}-repoindex.xml -pm 0644 %{buildroot}%{_datadir}/zypp
 
 %if "%{theme}" == "LeapMicro"
 %ifarch x86_64 aarch64
-install opensuse-%{branding}-repoindex.xml -pm 0644 %{buildroot}%{_datadir}/zypp/local/service/openSUSE/repo
+%if 0%{?suse_version} >= 1600
+# Micro 6.X
+install opensuse-%{branding}6-repoindex.xml -pm 0644 %{buildroot}%{_datadir}/zypp/local/service/openSUSE/repo/opensuse-%{branding}-repoindex.xml
+%else
+# Micro 5.X
+install opensuse-%{branding}5-repoindex.xml -pm 0644 %{buildroot}%{_datadir}/zypp/local/service/openSUSE/repo/opensuse-%{branding}-repoindex.xml
+%endif
 %endif
 %endif
 

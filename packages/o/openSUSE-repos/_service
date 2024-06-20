@@ -1,5 +1,5 @@
 <services>
-  <service name="obs_scm" mode="disabled">
+  <service name="obs_scm" mode="manual">
     <param name="versionformat">%cd.%h</param>
     <param name="url">https://github.com/openSUSE/openSUSE-repos.git</param>
     <param name="scm">git</param>
@@ -8,7 +8,7 @@
     <param name="filename">openSUSE-repos</param>
     <param name="changesauthor">opensuse-releaseteam@opensuse.org</param>
   </service>
-  <service name="set_version" mode="disabled" />
+  <service name="set_version" mode="manual" />
   <service name="tar" mode="buildtime" />
   <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
