@@ -32,7 +32,7 @@ ExclusiveArch:  do-not-build
 
 %define _name   libproxy
 Name:           libproxy%{?dash}%{?name_suffix}
-Version:        0.5.6
+Version:        0.5.7
 Release:        0
 Summary:        Automatic proxy configuration management for applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
