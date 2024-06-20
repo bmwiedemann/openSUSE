@@ -30,6 +30,7 @@ URL:            https://salsa.debian.org/a11y-team/check-a11y
 Source:         %{name}-%{version}.tar.gz
 Patch0:         Fix-qt6.patch
 Patch1:         Intall-target.patch
+Patch2:         %{name}-java8.patch
 BuildRequires:  at-spi2-atk-devel
 BuildRequires:  dbus-1-devel
 BuildRequires:  gtk-sharp2
@@ -37,7 +38,7 @@ BuildRequires:  gtk-sharp3
 BuildRequires:  gtk2-devel
 BuildRequires:  gtk3-devel
 BuildRequires:  gtk4-devel
-BuildRequires:  java-17-openjdk-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-base-devel
@@ -54,7 +55,6 @@ sed -i -E -e 's|#!/usr/bin/env ([a-z0-9]+)|#!/usr/bin/\1|' atspi-top show_py* tr
 
 %build
 CXX=g++%{?gcc_suffix} %make_build
-
 
 %install
 CXX=g++%{?gcc_suffix} %make_install

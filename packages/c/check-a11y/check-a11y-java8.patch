@@ -1,0 +1,11 @@
+--- a/Makefile	2024-06-20 10:37:39.833503714 +0200
++++ b/Makefile	2024-06-20 10:38:20.093786533 +0200
+@@ -225,7 +225,7 @@
+ endif
+ 
+ %.class: %.java
+-	javac -source 1.7 -target 1.7 $<
++	javac -source 1.8 -target 1.8 $<
+ 
+ ifneq (,$(wildcard /usr/lib/jvm/java-7-openjdk-amd64/bin/java))
+ JAVA7=Y
