@@ -2549,6 +2549,8 @@ unsorted:
   - corosync 
   - corosync-devel 
   - corosync-libs 
+  - corosync-qdevice 
+  - corosync-qnetd 
   - corrosion 
   - cosign 
   - cosign-bash-completion 
@@ -7712,9 +7714,6 @@ unsorted:
   - google-noto-serif-yezidi-fonts 
   - google-noto-traditionalnushu-fonts 
   - google-noto-znamennymusicalnotation-fonts 
-  - google-or-tools 
-  - google-or-tools-devel 
-  - google-or-tools-minizinc 
   - google-osconfig-agent 
   - google-quiche-source 
   - google-roboto-mono-fonts 
@@ -14847,8 +14846,6 @@ unsorted:
   - liborigin-doc 
   - liborigin-tools 
   - liborigin3 
-  - libortools9 
-  - libortools_flatzinc9 
   - libortp15 
   - libosdCPU3_6_0 
   - libosg2vsg-devel 
@@ -15028,11 +15025,11 @@ unsorted:
   - libpetsc-gnu-mpich-hpc 
   - libpetsc-gnu-mvapich2-hpc 
   - libpetsc-gnu-openmpi4-hpc 
-  - libpetsc3_18 
-  - libpetsc3_18-openmpi4 
-  - libpetsc_3_18_5-gnu-mpich-hpc 
-  - libpetsc_3_18_5-gnu-mvapich2-hpc 
-  - libpetsc_3_18_5-gnu-openmpi4-hpc 
+  - libpetsc3_21 
+  - libpetsc3_21-openmpi4 
+  - libpetsc_3_21_2-gnu-mpich-hpc 
+  - libpetsc_3_21_2-gnu-mvapich2-hpc 
+  - libpetsc_3_21_2-gnu-openmpi4-hpc 
   - libpff-devel 
   - libpff-tools 
   - libpff1 
@@ -16621,7 +16618,7 @@ unsorted:
   - libvmem-devel 
   - libvmem1 
   - libvmime-devel 
-  - libvmime-suse6 
+  - libvmime-suse8 
   - libvmmalloc-devel 
   - libvmmalloc1 
   - libvmtools-devel 
@@ -18613,10 +18610,6 @@ unsorted:
   - molsketch 
   - molsketch-devel 
   - molsketch-doc 
-  - monero-devel 
-  - monero-gui 
-  - monero-utils 
-  - monerod 
   - mongolian-fonts 
   - monitoring-plugins 
   - monitoring-plugins-all 
@@ -22320,12 +22313,12 @@ unsorted:
   - petsc-gnu-mvapich2-hpc-devel 
   - petsc-gnu-openmpi4-hpc-devel 
   - petsc-openmpi4-devel 
-  - petsc_3_18_5-gnu-mpich-hpc-devel 
-  - petsc_3_18_5-gnu-mpich-hpc-saws 
-  - petsc_3_18_5-gnu-mvapich2-hpc-devel 
-  - petsc_3_18_5-gnu-mvapich2-hpc-saws 
-  - petsc_3_18_5-gnu-openmpi4-hpc-devel 
-  - petsc_3_18_5-gnu-openmpi4-hpc-saws 
+  - petsc_3_21_2-gnu-mpich-hpc-devel 
+  - petsc_3_21_2-gnu-mpich-hpc-saws 
+  - petsc_3_21_2-gnu-mvapich2-hpc-devel 
+  - petsc_3_21_2-gnu-mvapich2-hpc-saws 
+  - petsc_3_21_2-gnu-openmpi4-hpc-devel 
+  - petsc_3_21_2-gnu-openmpi4-hpc-saws 
   - pfsalign 
   - pfscalibration 
   - pfsglview 
@@ -23631,7 +23624,6 @@ unsorted:
   - python3-openvino 
   - python3-openvino-telemetry 
   - python3-openwsman 
-  - python3-ortools 
   - python3-os-client-config 
   - python3-os-service-types 
   - python3-osc-lib 
@@ -36085,7 +36077,6 @@ unsorted:
   - scdl 
   - scdoc 
   - schedtool 
-  - schedtop 
   - schemaspy 
   - scheme48 
   - scheme48-devel 
@@ -36243,7 +36234,6 @@ unsorted:
   - sexpp-devel 
   - sfcgal 
   - sfcgal-devel 
-  - sfftobmp 
   - sffview 
   - sfml2-devel 
   - sfml2-doc 
