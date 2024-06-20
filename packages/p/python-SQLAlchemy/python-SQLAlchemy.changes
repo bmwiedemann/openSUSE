@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 19 06:49:52 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to 2.0.31
+  * https://docs.sqlalchemy.org/en/20/changelog/changelog_20.html#change-2.0.31
+    - Python 3.13 support
+
+-------------------------------------------------------------------
 Thu Mar  7 08:30:24 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - update to 2.0.28:
