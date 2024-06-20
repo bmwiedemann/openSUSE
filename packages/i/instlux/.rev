@@ -588,4 +588,15 @@
 </comment>
     <requestid>1172848</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>0f948c432e1d599abf91b28debae98db</srcmd5>
+    <version>15.6.2</version>
+    <time>1718894899</time>
+    <user>anag+factory</user>
+    <comment>- upgraded to 15.6.2.
+  * added Leap 15.6 WSL
+- Fix version number
+</comment>
+    <requestid>1181849</requestid>
+  </revision>
 </revisionlist>
