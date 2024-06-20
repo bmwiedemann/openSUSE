@@ -19,6 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 %define repo_name flux2
+%define executable_name flux
 
 # check these versions on updates
 # see flux2/manifests/bases/*/kustomization.yaml
@@ -136,41 +137,41 @@ go build \
    -mod=vendor \
    -buildmode=pie \
    -ldflags="-X main.VERSION=%{version}" \
-   -o bin/flux ./cmd/flux
+   -o bin/%{executable_name} ./cmd/%{executable_name}
 
 %install
 # Install the binary.
-install -D -m 0755 bin/flux "%{buildroot}/%{_bindir}/flux"
+install -D -m 0755 bin/%{executable_name} %{buildroot}/%{_bindir}/%{executable_name}
 
 # create the bash completion file
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions
-%{buildroot}/%{_bindir}/flux completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
+%{buildroot}/%{_bindir}/flux completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{executable_name}
 
 # create the zsh completion file
 mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d
-%{buildroot}/%{_bindir}/flux completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
+%{buildroot}/%{_bindir}/flux completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{executable_name}
 
 # create the fish completion file
 mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
-%{buildroot}/%{_bindir}/flux completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/flux.fish
+%{buildroot}/%{_bindir}/flux completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{executable_name}.fish
 
 %files
 %doc README.md
 %license LICENSE
-%{_bindir}/flux
+%{_bindir}/%{executable_name}
 
 %files -n %{name}-bash-completion
 %dir %{_datarootdir}/bash-completion/completions/
-%{_datarootdir}/bash-completion/completions/%{name}
+%{_datarootdir}/bash-completion/completions/%{executable_name}
 
 %files -n %{name}-zsh-completion
 %defattr(-,root,root)
 %dir %{_datarootdir}/zsh_completion.d/
-%{_datarootdir}/zsh_completion.d/_%{name}
+%{_datarootdir}/zsh_completion.d/_%{executable_name}
 
 %files -n %{name}-fish-completion
 %dir %{_datarootdir}/fish
 %dir %{_datarootdir}/fish/vendor_completions.d
-%{_datarootdir}/fish/vendor_completions.d/flux.fish
+%{_datarootdir}/fish/vendor_completions.d/%{executable_name}.fish
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 15 16:59:08 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- fix completions by using executable_name as file name, not
+  flux2-cli
+
+-------------------------------------------------------------------
 Sat May 18 16:06:15 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - do not strip aka remove -s -w ldflags
