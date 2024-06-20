@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jun 19 19:55:02 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to release v1.9.1:
+  * improve editorconfig to include sh scripts
+  * fix: remove newlines from passphrase
+  * fix: search for key in all keyrings
+- Updates from release v1.9.0:
+  * add BCACHEFS_BLOCK_SCAN environment variable for users that
+  * add BCACHEFS_KERNEL_ONLY environment variable for test
+    bcachefs, utilize it. Otherwise, resort to traversing block
+    devices and checking for bcachefs super blocks.
+    environments
+  * Handle mount with FS with 1 device
+    have a broken blkid which renders the udev db as incomplete
+  * manpage: incorrect "delete" to "snapshot"
+  * mount: If the udev database contains information about
+  * mount: Make udev_bcachefs_info more idiomatic
+  * fix typo that causes encrypted drives to become stuck in a
+    busy loop
+  * check_for_key before ask_for_passphrase -- check if there is
+    already a key in the keyring available before trying to get the
+    key from some more involved means
+
+-------------------------------------------------------------------
 Thu Apr 18 00:07:11 UTC 2024 - David Disseldorp <ddiss@suse.de>
 
 - Update to release v1.7.0

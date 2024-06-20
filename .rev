@@ -83,4 +83,32 @@
     <comment>- Update to release v1.7.0</comment>
     <requestid>1168908</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ae3b8ae989bd997ca8b52d80986bd7dd</srcmd5>
+    <version>1.9.1</version>
+    <time>1718894923</time>
+    <user>anag+factory</user>
+    <comment>- Build with _FORTIFY_SOURCE=2 -- gh/koverstreet/bcachefs-tools#237
+- Update to release v1.9.1:
+  * improve editorconfig to include sh scripts
+  * fix: remove newlines from passphrase
+  * fix: search for key in all keyrings
+- Updates from release v1.9.0:
+  * add BCACHEFS_BLOCK_SCAN environment variable for users that
+  * add BCACHEFS_KERNEL_ONLY environment variable for test
+    bcachefs, utilize it. Otherwise, resort to traversing block
+    devices and checking for bcachefs super blocks.
+    environments
+  * Handle mount with FS with 1 device
+    have a broken blkid which renders the udev db as incomplete
+  * manpage: incorrect &quot;delete&quot; to &quot;snapshot&quot;
+  * mount: If the udev database contains information about
+  * mount: Make udev_bcachefs_info more idiomatic
+  * fix typo that causes encrypted drives to become stuck in a
+    busy loop
+  * check_for_key before ask_for_passphrase -- check if there is
+    already a key in the keyring available before trying to get the
+    key from some more involved means (forwarded request 1181823 from smolsheep)</comment>
+    <requestid>1181897</requestid>
+  </revision>
 </revisionlist>

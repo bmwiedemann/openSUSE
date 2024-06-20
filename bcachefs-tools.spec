@@ -17,7 +17,7 @@
 
 
 Name:           bcachefs-tools
-Version:        1.7.0
+Version:        1.9.1
 Release:        0
 Summary:        Configuration utilities for bcachefs
 License:        GPL-2.0-or-later
@@ -62,8 +62,12 @@ This package contains utilities for creating and mounting bcachefs.
 %autosetup -p1
 
 %build
-%make_build PREFIX="%_prefix" ROOT_SBINDIR="%_sbindir" \
-	EXTRA_CFLAGS="%optflags"
+# gh/koverstreet/bcachefs-tools#237
+# bcachefs-tools uses malloc_usable_size, which is incompatible
+# with fortification level 3
+export CFLAGS="${RPM_OPT_FLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+export CXXFLAGS="${RPM_OPT_FLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+%make_build PREFIX="%_prefix" ROOT_SBINDIR="%_sbindir"
 
 %install
 %make_install PREFIX="%_prefix" ROOT_SBINDIR="%_sbindir"
