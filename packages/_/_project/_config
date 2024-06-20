@@ -2037,6 +2037,7 @@ BuildFlags: onlybuild:kmod
 BuildFlags: onlybuild:knotifications
 BuildFlags: onlybuild:krb5
 BuildFlags: onlybuild:krb5:krb5-mini
+BuildFlags: onlybuild:kronosnet
 BuildFlags: onlybuild:kservice
 BuildFlags: onlybuild:kwallet
 BuildFlags: onlybuild:kwidgetsaddons
