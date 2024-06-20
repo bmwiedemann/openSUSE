@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 20 13:48:18 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Collect component Role rules under operator Role instead of
+  ClusterRole (bsc#1223965, CVE-2024-33394)
+  0001-Collect-component-Role-rules-under-operator-Role-ins.patch
+
+-------------------------------------------------------------------
 Thu Jun  6 06:54:11 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Update to version 1.2.2
