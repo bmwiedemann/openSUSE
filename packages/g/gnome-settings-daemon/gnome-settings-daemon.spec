@@ -46,6 +46,8 @@ Patch1:         gnome-settings-daemon-switch-Japanese-default-input-to-mozc.patc
 Patch2:         gnome-settings-daemon-bgo793253.patch
 # PATCH-FIX-UPSTREAM gnome-settings-daemon-stop-service-when-no-network.patch [merged] joan.torres@suse.com -- Stop assigned services only when no network connection
 Patch3:         gnome-settings-daemon-stop-service-when-no-network.patch
+# PATCH-FIX-UPSTREAM 0001-usb-protection-Treat-hubs-and-HID-devices-like-any-o.patch glgo#GNOME/gnome-settings-daemon#780, bsc#1226423 sckang@suse.com -- usb-protection: Treat hubs and HID devices like any other USB gadget
+Patch4:         0001-usb-protection-Treat-hubs-and-HID-devices-like-any-o.patch
 
 ## SLE/LEAP-only patches start at 1000
 # PATCH-FEATURE-OPENSUSE gnome-settings-daemon-notify-idle-resumed.patch bnc#439018 bnc#708182 bgo#575467 hpj@suse.com -- notify user about auto suspend when returning from sleep
@@ -151,6 +153,7 @@ contact the settings daemon via its DBus interface.
 %patch -P 0 -p1
 %patch -P 1 -p1
 %patch -P 2 -p1
+%patch -P 4 -p1
 %endif
 
 # Enable the patches for both Leap 15 and SLE 15, please find the clarification at bsc#1158476.

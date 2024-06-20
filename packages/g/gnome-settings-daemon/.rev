@@ -1544,4 +1544,14 @@ work. (forwarded request 640069 from iznogood)</comment>
   Allows the g-r-d handover service to be started on wifi network.</comment>
     <requestid>1178363</requestid>
   </revision>
+  <revision rev="194" vrev="4">
+    <srcmd5>2bb790e98fcb4740f7b3c747afdb82ad</srcmd5>
+    <version>46.0</version>
+    <time>1718894798</time>
+    <user>anag+factory</user>
+    <comment>- Add 0001-usb-protection-Treat-hubs-and-HID-devices-like-any-o.patch:
+  usb-protection: Treat hubs and HID devices like any other USB
+  gadget(glgo#GNOME/gnome-settings-daemon#780, bsc#1226423). (forwarded request 1181634 from JonathanKang)</comment>
+    <requestid>1181712</requestid>
+  </revision>
 </revisionlist>

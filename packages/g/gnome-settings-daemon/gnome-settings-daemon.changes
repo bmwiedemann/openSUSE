@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 19 02:38:55 UTC 2024 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add 0001-usb-protection-Treat-hubs-and-HID-devices-like-any-o.patch:
+  usb-protection: Treat hubs and HID devices like any other USB
+  gadget(glgo#GNOME/gnome-settings-daemon#780, bsc#1226423).
+
+-------------------------------------------------------------------
 Fri Apr 19 21:19:11 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Update gnome-settings-daemon-bgo793253.patch to fix the build
