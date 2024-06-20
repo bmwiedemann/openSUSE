@@ -1,0 +1,125 @@
+From 4c7dab250c3581e691c2da87395e80244074d8bf Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 10 Jun 2024 17:53:30 +0200
+Subject: [PATCH] [gdb/python] Fix gdb.python/py-disasm.exp on arm-linux
+
+After fixing test-case gdb.python/py-disasm.exp to recognize the arm nop:
+...
+	nop	{0}
+...
+we run into:
+...
+disassemble test^M
+Dump of assembler code for function test:^M
+   0x004004d8 <+0>:     push    {r11}           @ (str r11, [sp, #-4]!)^M
+   0x004004dc <+4>:     add     r11, sp, #0^M
+   0x004004e0 <+8>:     nop     {0}^M
+=> 0x004004e4 <+12>:    Python Exception <class 'ValueError'>: Buffer \
+  returned from read_memory is sized 0 instead of the expected 4^M
+^M
+unknown disassembler error (error = -1)^M
+(gdb) FAIL: $exp: global_disassembler=ShowInfoRepr: disassemble test
+...
+
+This is caused by this code in gdbpy_disassembler::read_memory_func:
+...
+  gdbpy_ref<> result_obj (PyObject_CallMethod ((PyObject *) obj,
+                                              "read_memory",
+                                              "KL", len, offset));
+...
+where len has type "unsigned int", while "K" means "unsigned long long" [1].
+
+Fix this by using "I" instead, meaning "unsigned int".
+
+Also, offset has type LONGEST, which is typedef'ed to int64_t, while "L" means
+"long long".
+
+Fix this by using type gdb_py_longest for offset, in combination with format
+character "GDB_PY_LL_ARG".  Likewise in disasmpy_info_read_memory.
+
+Tested on arm-linux.
+
+Reviewed-By: Alexandra Petlanova Hajkova <ahajkova@redhat.com>
+Approved-By: Tom Tromey <tom@tromey.com>
+
+PR python/31845
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31845
+
+[1] https://docs.python.org/3/c-api/arg.html
+
+(cherry picked from commit 4cd214dce4579f86a85a96c882e0fc8c4d94601c)
+---
+ gdb/python/py-disasm.c                 | 12 +++++++-----
+ gdb/testsuite/gdb.python/py-disasm.exp |  2 +-
+ gdb/testsuite/gdb.python/py-disasm.py  |  2 +-
+ 3 files changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/gdb/python/py-disasm.c b/gdb/python/py-disasm.c
+index 6f0fed137e6..b2e95b3cba6 100644
+--- a/gdb/python/py-disasm.c
++++ b/gdb/python/py-disasm.c
+@@ -668,12 +668,13 @@ disasmpy_info_read_memory (PyObject *self, PyObject *args, PyObject *kw)
+   disasm_info_object *obj = (disasm_info_object *) self;
+   DISASMPY_DISASM_INFO_REQUIRE_VALID (obj);
+ 
+-  LONGEST length, offset = 0;
++  gdb_py_longest length, offset = 0;
+   gdb::unique_xmalloc_ptr<gdb_byte> buffer;
+   static const char *keywords[] = { "length", "offset", nullptr };
+ 
+-  if (!gdb_PyArg_ParseTupleAndKeywords (args, kw, "L|L", keywords,
+-					&length, &offset))
++  if (!gdb_PyArg_ParseTupleAndKeywords (args, kw,
++					GDB_PY_LL_ARG "|" GDB_PY_LL_ARG,
++					keywords, &length, &offset))
+     return nullptr;
+ 
+   /* The apparent address from which we are reading memory.  Note that in
+@@ -850,13 +851,14 @@ gdbpy_disassembler::read_memory_func (bfd_vma memaddr, gdb_byte *buff,
+   /* The DisassembleInfo.read_memory method expects an offset from the
+      address stored within the DisassembleInfo object; calculate that
+      offset here.  */
+-  LONGEST offset = (LONGEST) memaddr - (LONGEST) obj->address;
++  gdb_py_longest offset
++    = (gdb_py_longest) memaddr - (gdb_py_longest) obj->address;
+ 
+   /* Now call the DisassembleInfo.read_memory method.  This might have been
+      overridden by the user.  */
+   gdbpy_ref<> result_obj (PyObject_CallMethod ((PyObject *) obj,
+ 					       "read_memory",
+-					       "KL", len, offset));
++					       "I" GDB_PY_LL_ARG, len, offset));
+ 
+   /* Handle any exceptions.  */
+   if (result_obj == nullptr)
+diff --git a/gdb/testsuite/gdb.python/py-disasm.exp b/gdb/testsuite/gdb.python/py-disasm.exp
+index f2f9225168a..9d0f6ec1d01 100644
+--- a/gdb/testsuite/gdb.python/py-disasm.exp
++++ b/gdb/testsuite/gdb.python/py-disasm.exp
+@@ -65,7 +65,7 @@ proc py_remove_all_disassemblers {} {
+ #
+ # Each different disassembler tests some different feature of the
+ # Python disassembler API.
+-set nop "(nop|nop\t0)"
++set nop "(nop|nop\t0|[string_to_regexp nop\t{0}])"
+ set unknown_error_pattern "unknown disassembler error \\(error = -1\\)"
+ set addr_pattern "\r\n=> ${curr_pc_pattern} <\[^>\]+>:\\s+"
+ set base_pattern "${addr_pattern}${nop}"
+diff --git a/gdb/testsuite/gdb.python/py-disasm.py b/gdb/testsuite/gdb.python/py-disasm.py
+index 67ba6756ea9..6a39b0764e6 100644
+--- a/gdb/testsuite/gdb.python/py-disasm.py
++++ b/gdb/testsuite/gdb.python/py-disasm.py
+@@ -46,7 +46,7 @@ def check_building_disassemble_result():
+ 
+ 
+ def is_nop(s):
+-    return s == "nop" or s == "nop\t0"
++    return s == "nop" or s == "nop\t0" or s == "nop\t{0}"
+ 
+ 
+ # Remove all currently registered disassemblers.
+
+base-commit: 22383ac8031b0e626e8ecd62e4378266065d067c
+-- 
+2.35.3
+

@@ -1,4 +1,524 @@
 -------------------------------------------------------------------
+Wed Jun 19 09:46:17 UTC 2024 - Tom de Vries <tdevries@suse.com>
+
+- Mention changes in GDB 14:
+  * GDB now supports the AArch64 Scalable Matrix Extension 2
+    (SME2), which includes a new 512 bit lookup table register
+    named ZT0.
+  * GDB now supports the AArch64 Scalable Matrix Extension (SME),
+    which includes a new matrix register named ZA, a new thread
+    register TPIDR2 and a new vector length register SVG
+    (streaming vector granule).  GDB also supports tracking ZA
+    state across signal frames.  Some features are still under
+    development or are dependent on ABI specs that are still in
+    alpha stage.  For example, manual function calls with ZA state
+    don't have any special handling, and tracking of SVG changes
+    based on DWARF information is still not implemented, but there
+    are plans to do so in the future.
+  * GDB now recognizes the NO_COLOR environment variable and
+    disables styling according to the spec.  See
+    https://no-color.org/.  Styling can be re-enabled with
+    "set style enabled on".
+  * The AArch64 'org.gnu.gdb.aarch64.pauth' Pointer Authentication
+    feature string has been deprecated in favor of the
+    'org.gnu.gdb.aarch64.pauth_v2' feature string.
+  * GDB now has some support for integer types larger than 64 bits.
+  * Multi-target feature configuration.
+    GDB now supports the individual configuration of remote
+    targets' feature sets.  Based on the current selection of a
+    target, the commands 'set remote <name>-packet (on|off|auto)'
+    and 'show remote <name>-packet' can be used to configure a
+    target's feature packet and to display its configuration,
+    respectively.
+  * GDB has initial built-in support for the Debugger Adapter
+    Protocol.
+  * For the break command, multiple uses of the 'thread' or 'task'
+    keywords will now give an error instead of just using the
+    thread or task id from the last instance of the keyword.  E.g.:
+      break foo thread 1 thread 2
+    will now give an error rather than using 'thread 2'.
+  * For the watch command, multiple uses of the 'task' keyword will
+    now give an error instead of just using the task id from the
+    last instance of the keyword.  E.g.:
+      watch my_var task 1 task 2
+    will now give an error rather than using 'task 2'.  The
+    'thread' keyword already gave an error when used multiple times
+    with the watch command, this remains unchanged.
+  * The 'set print elements' setting now helps when printing large
+    arrays.  If an array would otherwise exceed max-value-size, but
+    'print elements' is set such that the size of elements to print
+    is less than or equal to 'max-value-size', GDB will now still
+    print the array, however only 'max-value-size' worth of data
+    will be added into the value history.
+  * For both the break and watch commands, it is now invalid to use
+    both the 'thread' and 'task' keywords within the same command.
+    For example the following commnds will now give an error:
+      break foo thread 1 task 1
+      watch var thread 2 task 3
+  * The printf command now accepts a '%V' output format which will
+    format an expression just as the 'print' command would.  Print
+    options can be placed withing '[...]' after the '%V' to modify
+    how the value is printed.  E.g:
+      printf "%V", some_array
+      printf "%V[-array-indexes on]", some_array
+    will print the array without, or with array indexes included,
+    just as the array would be printed by the 'print' command.
+    This functionality is also available for dprintf when
+    dprintf-style is 'gdb'.
+  * When the printf command requires a string to be fetched from
+    the	inferior, GDB now uses the existing 'max-value-size'
+    setting to the limit the memory allocated within GDB.  The
+    default 'max-value-size' is 64k.  To print longer strings you
+    should increase 'max-value-size'.
+  * The Ada 2022 Enum_Rep and Enum_Val attributes are now
+    supported.
+  * The Ada 2022 target name symbol ('@') is now supported by the
+    Ada expression parser.
+  * The 'list' command now accepts '.' as an argument, which tells
+    GDB to print the location around the point of execution within
+    the current frame.  If the inferior hasn't started yet, the
+    command will print around the beginning of the 'main' function.
+  * Using the 'list' command with no arguments in a situation where
+    the command would attempt to list past the end of the file now
+    warns the user that the end of file has been reached, refers
+    the user to the newly added '.' argument
+  * Breakpoints can now be inferior-specific.  This is similar to
+    the	existing thread-specific breakpoint support.  Breakpoint
+    conditions can include the 'inferior' keyword followed by an
+    inferior id (as displayed in the 'info inferiors' output).
+    It is invalid to use the 'inferior' keyword with either the
+    'thread' or 'task' keywords when creating a breakpoint.
+  * New convenience function "$_shell", to execute a shell command
+    and return the result.  This lets you run shell commands in
+    expressions.  Some examples:
+     (gdb) p $_shell("true")
+     $1 = 0
+     (gdb) p $_shell("false")
+     $2 = 1
+     (gdb) break func if $_shell("some command") == 0
+  * New commands:
+    * set debug breakpoint on|off
+      show debug breakpoint
+      Print additional debug messages about breakpoint insertion
+      and removal.
+    * maintenance print record-instruction [ N ]
+      Print the recorded information for a given instruction.  If N
+      is not given prints how GDB would undo the last instruction
+      executed.  If N is negative, prints how GDB would undo the
+      N-th previous instruction, and if N is positive, it prints
+      how GDB will redo the N-th following instruction.
+    * maintenance info frame-unwinders
+      List the frame unwinders currently in effect, starting with
+      the highest priority.
+    * maintenance wait-for-index-cache
+      Wait until all pending writes to the index cache have
+      completed.
+    * set always-read-ctf on|off
+      show always-read-ctf
+      When off, CTF is only read if DWARF is not present.  When on,
+      CTF is read regardless of whether DWARF is present.  Off by
+      default.
+    * info main
+      Get main symbol to identify entry point into program.
+    * set tui mouse-events [on|off]
+      show tui mouse-events
+      When on (default), mouse clicks control the TUI and can be
+      accessed by Python extensions.  When off, mouse clicks are
+      handled by the terminal, enabling terminal-native text
+      selection.
+  * MI changes:
+    * MI version 1 has been removed.
+    * mi now reports 'no-history' as a stop reason when hitting the
+      end of the reverse execution history.
+    * When creating a thread-specific breakpoint using the '-p'
+      option, the -break-insert command would report the 'thread'
+      field twice in the reply.  The content of both fields was
+      always identical.  This has now been fixed; the 'thread'
+      field will be reported just once for thread-specific
+      breakpoints, or not at all for breakpoints without a thread
+      restriction.  The same is also true for the 'task' field of
+      an Ada task-specific breakpoint.
+      * It is no longer possible to create a thread-specific
+      breakpoint for a thread that doesn't exist using
+      '-break-insert -p ID'.  Creating breakpoints for
+      non-existent threads is not allowed when using the CLI, that
+      the MI allowed it was a long standing bug, which has now
+      been fixed.
+    * The '--simple-values' argument to the
+      '-stack-list-arguments','-stack-list-locals',
+      '-stack-list-variables', and '-var-list-children' commands now
+      takes reference types into account: that is, a value is now
+      considered simple if it is neither an array, structure, or
+      union, nor a reference to an array, structure, or union.
+      (Previously all references were considered simple.)  Support
+      for this feature can be verified by using the
+      '-list-features' command, which should contain
+      "simple-values-ref-types".
+    * The -break-insert command now accepts a '-g thread-group-id'
+      option to allow for the creation of inferior-specific
+      breakpoints.
+    * The bkpt tuple, which appears in breakpoint-created
+      notifications, and in the result of the -break-insert
+      command can now include an optional 'inferior' field for both
+      the main breakpoint, and each location, when the breakpoint
+      is inferior-specific.
+  * Python API:
+    * gdb.ThreadExitedEvent added.  Emits a ThreadEvent.
+    * The gdb.unwinder.Unwinder.name attribute is now read-only.
+    * The name argument passed to gdb.unwinder.Unwinder.__init__
+      must now be of type 'str' otherwise a TypeError will be
+      raised.
+    * The gdb.unwinder.Unwinder.enabled attribute can now only
+      accept values of type 'bool'.  Changing this attribute will
+      now invalidate GDB's frame-cache, which means GDB will need
+      to rebuild its frame-cache when next required - either with,
+      or without the particular unwinder, depending on how
+      'enabled' was changed.
+    * New methods added to the gdb.PendingFrame class.  These
+      methods have the same behaviour as the corresponding
+      methods on gdb.Frame.  The new methods are:
+      * gdb.PendingFrame.name: Return the name for the frame's
+        function, or None.
+      * gdb.PendingFrame.is_valid: Return True if the pending
+      	frame object is valid.
+      * gdb.PendingFrame.pc: Return the $pc register value for
+        this frame.
+      * gdb.PendingFrame.language: Return a string containing the
+        language for this frame, or None.
+      * gdb.PendingFrame.find_sal: Return a gdb.Symtab_and_line
+        object for the current location within the pending frame,
+	or None.
+      * gdb.PendingFrame.block: Return a gdb.Block for the current
+        pending frame, or None.
+      * gdb.PendingFrame.function: Return a gdb.Symbol for the
+        current pending frame, or None.
+    * The frame-id passed to gdb.PendingFrame.create_unwind_info
+      can now use either an integer or a gdb.Value object for each
+      of its 'sp', 'pc', and 'special' attributes.
+    * A new class gdb.unwinder.FrameId has been added.  Instances
+      of this class are constructed with 'sp' (stack-pointer) and
+      'pc' (program-counter) values, and can be used as the
+      frame-id when calling gdb.PendingFrame.create_unwind_info.
+    * It is now no longer possible to sub-class the
+      gdb.disassembler.DisassemblerResult type.
+    * The Disassembler API from the gdb.disassembler module has
+      been extended to include styling support:
+      * The DisassemblerResult class can now be initialized with a
+        list of parts.  Each part represents part of the
+	disassembled instruction along with the associated style
+	information.  This list of parts can be accessed with the
+	new DisassemblerResult.parts property.
+      * New constants gdb.disassembler.STYLE_* representing all the
+        different styles part of an instruction might have.
+      * New methods DisassembleInfo.text_part and
+        DisassembleInfo.address_part which are used to create the
+	new styled parts of a disassembled instruction.
+      * Changes are backwards compatible, the older API can still
+      	be used to disassemble instructions without styling.
+    * New function gdb.execute_mi(COMMAND, [ARG]...), that invokes
+      a GDB/MI command and returns the output as a Python
+      dictionary.
+    * New function gdb.block_signals().  This returns a context
+      manager that blocks any signals that GDB needs to handle
+      itself.
+    * New class gdb.Thread.  This is a subclass of threading.Thread
+      that calls gdb.block_signals in its "start" method.
+    * gdb.parse_and_eval now has a new "global_context" parameter.
+      This can be used to request that the parse only examine
+      global symbols.
+    * gdb.Inferior now has a new "arguments" attribute.  This holds
+      the command-line arguments to the inferior, if known.
+    * gdb.Inferior now has a new "main_name" attribute.  This holds
+      the name of the inferior's "main", if known.
+    * gdb.Inferior now has new methods "clear_env", "set_env", and
+      "unset_env".  These can be used to modify the inferior's
+      environment before it is started.
+    * gdb.Value now has the 'assign' method.
+    * gdb.Value now has the 'to_array' method.  This converts an
+      array-like Value to an array.
+    * gdb.Progspace now has the new method "objfile_for_address".
+      This returns the gdb.Objfile, if any, that covers a given
+      address.
+    * gdb.Breakpoint now has an "inferior" attribute.  If the
+      Breakpoint object is inferior specific then this attribute
+      holds the inferior-id (an integer).  If the Breakpoint
+      object is not inferior specific, then this field contains
+      None.  This field can be written too.
+    * gdb.Type now has the "is_array_like" and "is_string_like"
+      methods.  These reflect GDB's internal idea of whether a
+      type might be array- or string-like, even if they do not
+      have the corresponding type code.
+    * gdb.ValuePrinter is a new class that can be used as the base
+      class for the result of applying a pretty-printer.  As a
+      base class, it signals to gdb that the printer may implement
+      new pretty-printer methods.
+    * New attribute Progspace.symbol_file.  This attribute holds
+      the gdb.Objfile that corresponds to Progspace.filename (when
+      Progspace.filename is not None), otherwise, this attribute is
+      itself None.
+    * New attribute Progspace.executable_filename.  This attribute
+      holds a string containing a file name set by the "exec-file"
+      or "file" commands, or None if no executable file is set.
+      This isn't the exact string passed by the user to these
+      commands; the file name will have been partially resolved to
+      an absolute file name.
+    * A new executable_changed event registry is available.  This
+      event emits ExecutableChangedEvent objects, which have
+      'progspace' (a gdb.Progspace) and 'reload' (a Boolean)
+      attributes.  This event is emitted when
+      gdb.Progspace.executable_filename changes.
+    * New event registries gdb.events.new_progspace and
+      gdb.events.free_progspace, these emit NewProgspaceEvent and
+       FreeProgspaceEvent event types respectively.  Both of these
+       event types have a single 'progspace' attribute, which is
+       the gdb.Progspace that is either being added to GDB, or
+       removed from GDB.
+    * gdb.LazyString now implements the __str__ method.
+    * New method gdb.Frame.static_link that returns the outer
+     frame of a nested function frame.
+
+-------------------------------------------------------------------
+Tue Jun 18 12:20:33 UTC 2024 - Tom de Vries <tdevries@suse.com>
+
+- Fix mention of gdb-exp-redo-cast-handling-for-indirection.patch.
+
+-------------------------------------------------------------------
+Thu Jun 13 09:26:39 UTC 2024 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa-remote.sh:
+  * Filter out SLE-11.
+- Maintenance script qa.sh:
+  * Add gdb.guile/scm-breakpoint.exp kfail.
+  * Fix kfail_powerpc64le_sle12 selection.
+
+-------------------------------------------------------------------
+Thu Jun 13 07:07:11 UTC 2024 - Tom de Vries <tdevries@suse.com>
+
+- Patches dropped:
+  * fix-gdb.threads-threads-after-exec.exp-race.patch
+  * add-maint-info-linux-lwps-command.patch
+- Patches added:
+  * gdb-python-fix-gdb.python-py-disasm.exp-on-arm-linux.patch
+  * gdb-testsuite-fix-gdb.fortran-array-bounds.exp-on-ar.patch
+  * gdb-python-make-gdb.unwindinfo.add_saved_register-mo-fixup.patch
+  * gdb-exp-redo-cast-handling-for-indirection.patch
+  * gdb-tdep-fix-gdb.base-watchpoint-running-on-arm-ppc6.patch
+
+-------------------------------------------------------------------
+Sat Jun  1 06:10:43 UTC 2024 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  * Add PR31831 kfail.
+  * Expand PR28617 kfail.
+  * Expand PR28561 kfail.
+  * Expand PR19675 kfail.
+- Patches dropped:
+  * gdb-linux-delete-all-other-lwps-immediately-on-ptrac.patch
+
+-------------------------------------------------------------------
+Fri May 31 06:27:25 UTC 2024 - Tom de Vries <tdevries@suse.com>
+
+- Patches added:
+  * gdb-build-fix-gdbserver-linux-aarch64-low.cc-build.patch
+  * powerpc-fix-test-gdb.ada-finish-large.exp.patch
+  * gdb-testsuite-fix-timeout-in-gdb.tui-resize-2.exp.patch
+- Maintenance script qa.sh:
+  * Remove PR26761 kfail.
+  * Add PR31061, PR31823, PR31825, PR31826, PR31827 and PR31564
+    kfail.
+  * Remove PKRU-related kfails.
+  * Improve report format for known clean configs.
+  * Add more configs as known clean.
+  * Expand scope of PR29253 kfail.
+
+-------------------------------------------------------------------
+Wed May  1 07:32:34 UTC 2024 - Tom de Vries <tdevries@suse.com>
+
+- Rebase to 14.2 release (fedora rawhide @ 779f05e).
+  * Replace gdb-13.2.tar.bz2 with gdb-14.2.tar.bz2.
+- Maintenance script import-fedora.sh:
+  * Drop patch skips:
+    * gdb-6.5-BEA-testsuite.patch
+- Maintenance script qa-local.sh:
+  * Drop SLE-11.  GDB 14.2 requires MPFR, and the SLE-11 version
+    (2.3.2) is older than required (3.1.0+).
+  * Add ALP.
+  * Update version to 14.2.
+- Maintenance script qa.sh:
+  * Add PR30480, PR31440, PR31806 kfail.
+  * Add PR31810, PR31809, PR31811 kfail.
+  * Expand gdb.base/rtld-step.exp kfail.
+  * Add gdb.threads/thread-specific-bp.exp kfail.
+- Fedora patches updated:
+  * gdb-6.3-gstack-20050411.patch
+  * gdb-6.5-bz185337-resolve-tls-without-debuginfo-v2.patch
+  * gdb-6.6-buildid-locate-rpm.patch
+  * gdb-6.6-buildid-locate-solib-missing-ids.patch
+  * gdb-6.6-buildid-locate.patch
+  * gdb-6.6-testsuite-timeouts.patch
+  * gdb-core-open-vdso-warning.patch
+  * gdb-fedora-libncursesw.patch
+  * gdb-linux_perf-bundle.patch
+  * gdb-rhbz-2232086-cpp-ify-mapped-symtab.patch
+  * gdb-rhbz-2232086-generate-dwarf-5-index-consistently.patch
+  * gdb-rhbz-2232086-generate-gdb-index-consistently.patch
+- Fedora patches removed:
+  * gdb-binutils29988-read_indexed_address.patch
+  * gdb-bz2196395-debuginfod-legacy-openssl-crash.patch
+  * gdb-bz2237392-dwarf-obstack-allocation.patch
+  * gdb-bz2237515-debuginfod-double-free.patch
+  * gdb-rhbz1773651-gdb-index-internal-error.patch
+  * gdb-rhbz2160211-excessive-core-file-warnings.patch
+  * gdb-rhbz2192105-ftbs-dangling-pointer
+  * gdb-rhbz2233961-CVE-2022-4806.patch
+  * gdb-rhbz2233965-memory-leak.patch
+- Fedora patches added:
+  *  gdb-ftbs-swapped-calloc-args.patch
+  *  gdb-rhbz2250652-avoid-PyOS_ReadlineTState.patch
+  *  gdb-rhbz2250652-gdbpy_gil.patch
+  *  gdb-rhbz2261580-intrusive_list-assertion-fix.patch
+- Fedora fixup patches added:
+  * fixup-skip-tests.patch
+- Fedora fixup patches updated:  
+  * fixup-gdb-linux_perf-bundle.patch
+- Patches updated:
+  * gdb-symtab-work-around-pr-gas-29517.patch
+  * gdb-symtab-work-around-gas-pr28629.patch
+  * gdb-testsuite-ada-pie.patch
+  * gdb-python-finishbreakpoint-update.patch
+  * gdb-testsuite-prevent-compilation-fails-with-unix-fpie-pie.patch
+  * gdb-fix-segfault-in-for_each_block-part-1.patch
+  * gdb-fix-segfault-in-for_each_block-part-2.patch
+  * gdb-symtab-don-t-defer-backward-refs-inter-cu-intra-.patch
+  * gdb-symtab-factor-out-m_deferred_entries-usage.patch
+  * gdb-symtab-factor-out-m_die_range_map-usage.patch
+  * gdb-symtab-fix-dw_tag_inlined_subroutine-entries-in-.patch
+  * gdb-symtab-handle-nullptr-parent-in-parent_map-set_p.patch
+  * gdb-symtab-keep-track-of-all-parents-for-cooked-inde.patch
+  * gdb-symtab-keep-track-of-processed-dies-in-shard.patch
+  * gdb-symtab-recurse-into-c-dw_tag_subprogram-dies-for.patch
+  * gdb-symtab-refactor-condition-in-scan_attributes.patch
+  * gdb-symtab-resolve-deferred-entries-inter-shard-case.patch
+  * gdb-symtab-resolve-deferred-entries-intra-shard-case.patch
+- Patches added:
+  * gdb-symtab-work-around-pr-gas-29517-dwarf2-case.patch
+  * fix-the-gdb.ada-inline-section-gc.exp-test.patch
+  * gdb-testsuite-handle-pac-marker.patch
+  * change-gdb.base-examine-backwards.exp-for-aix.patch
+  * gdb-testsuite-fix-spurious-fails-with-examine-backwa.patch
+  * gdb-testsuite-make-gdb.base-solib-search.exp-more-ro.patch
+  * gdb-testsuite-fix-regexp-in-vgdb_start.patch
+  * powerpc-and-aarch64-fix-reverse-stepping-failure.patch
+  * gdb-tdep-fix-gdb.base-watch-bitfields.exp-on-aarch64.patch
+  * gdb-tdep-fix-gdb.base-watchpoint-unaligned.exp-on-aa.patch
+  * gdb-testsuite-add-pr-gdb-26967-kfail-in-two-more-tes.patch
+  * gdb-testsuite-fix-gdb.base-eh_return.exp.patch
+  * fixup-powerpc-and-aarch64-fix-reverse-stepping-failu.patch
+  * gdb-exp-fix-printing-of-out-of-bounds-struct-members.patch
+  * gdb-fix-heap-use-after-free-in-select_event_lwp.patch
+  * fix-regression-on-aarch64-linux-gdbserver.patch
+  * gdb-testsuite-factor-out-proc-get_portnum.patch
+  * gdb-testsuite-make-portnum-a-persistent-global.patch
+  * gdb-testsuite-factor-out-proc-with_lock.patch
+  * gdb-testsuite-factor-out-proc-lock_dir.patch
+  * gdb-testsuite-move-gpu-parallel.lock-to-cache-dir.patch
+  * gdb-testsuite-use-unique-portnum-in-parallel-testing.patch
+  * gdb-testsuite-use-unique-portnum-in-parallel-testing-check-slash-slash-case.patch
+  * gdb-tdep-fix-reverse-execution-of-ldr-immediate-t4.patch
+  * gdb-exp-fix-cast-handling-for-indirection.patch
+  * gdb-remote-fix-abort-on-remote_close_error.patch
+  * gdb-testsuite-use-find_gnatmake-instead-of-gdb_find_.patch
+  * gdb-testsuite-simplify-gdb.server-server-kill-python.patch
+  * gdb-testsuite-fix-gdbserver-pid-in-gdb.server-server.patch
+  * gdb-testsuite-add-missing-include-in-gdb.base-ctf-pt.patch
+  * gdb-testsuite-fix-gdb.ada-verylong.exp-on-32-bit-tar.patch
+  * gdb-testsuite-add-missing-includes-in-gdb.trace-coll.patch
+  * gdb-testsuite-fix-missing-return-type-in-gdb.linespe.patch
+  * gdb-testsuite-fix-gdb.base-ending-run.exp-on-manjaro.patch
+  * gdb-testsuite-fix-test-case-gdb.threads-attach-stopp.patch
+  * gdb-testsuite-add-missing-include-in-gdb.base-rtld-s.patch
+  * gdb-testsuite-fix-valgrind-tests-on-debian.patch
+  * gdb-testsuite-fix-gdb.server-server-connect.exp-for-.patch
+  * gdb-testsuite-handle-core-without-build-id-in-gdb.ba.patch
+  * gdb-testsuite-fix-gdb.base-list-no-debug.exp-on-debi.patch
+  * gdb-testsuite-reset-errcnt-and-warncnt-in-default_gd.patch
+  * gdb-testsuite-fix-test-in-gdb.python-py-finish-break.patch
+  * gdb-testsuite-further-handle-long-filenames-in-gdb.b.patch
+  * gdb-testsuite-fix-license-text-in-gdb.reverse-map-to.patch
+  * gdb-testsuite-call-ldd-version-in-gdb.testsuite-dump.patch
+  * gdb-testsuite-fix-gdb.mi-mi-dprintf.exp-with-read1.patch
+  * gdb-testsuite-fix-gdb.cp-namespace.exp-with-read1.patch
+  * gdb-testsuite-fix-typo-in-gdb.base-catch-syscall.exp.patch
+  * gdb-testsuite-use-more-progbits-for-arm.patch
+  * gdb-testsuite-fix-gdb.dwarf2-dw2-gas-workaround.exp.patch
+  * gdb-testsuite-add-gdb.dwarf2-backward-spec-inter-cu..patch
+  * gdb-testsuite-add-gdb.dwarf2-forward-spec-inter-cu.e.patch
+  * gdb-symtab-workaround-pr-gas-31115.patch
+  * gdb-arm-remove-tpidruro-register-from-non-freebsd-ta.patch
+  * gdb-tdep-fix-catching-syscall-execve-exit-for-arm.patch
+  * gdb-arm-fix-epilogue-frame-id.patch
+  * gdb-linux-delete-all-other-lwps-immediately-on-ptrac.patch
+  * add-maint-info-linux-lwps-command.patch
+  * fix-gdb.threads-threads-after-exec.exp-race.patch
+  * rs6000-unwind-on-each-instruction-fix.patch
+  * gdb-python-make-gdb.unwindinfo.add_saved_register-mo.patch
+  * gdb-arm-remove-thumb-bit-in-arm_adjust_breakpoint_ad.patch
+  * gdb-testsuite-fix-error-in-gdb.server-server-kill-py.patch
+- Patches dropped:
+  * remove-some-unnecessary-includes-from-exp.y.patch
+  * gdb-testsuite-fix-gdb.gdb-python-helper.exp-with-o2-.patch
+  * gdb-testsuite-simplify-gdb.base-unwind-on-each-insn..patch
+  * gdb-testsuite-handle-output-after-prompt-in-gdb.thre.patch
+  * gdb-testsuite-add-xfail-in-gdb.arch-i386-pkru.exp.patch
+  * gdb-testsuite-factor-out-proc-linux_kernel_version.patch
+  * gdb-testsuite-add-xfail-in-gdb.python-py-record-btra.patch
+  * gdb-testsuite-fix-gdb.threads-schedlock.exp-on-fast-.patch
+  * gdb-testsuite-simplify-gdb.arch-amd64-disp-step-avx..patch
+  * gdb-testsuite-fix-gdb.threads-schedlock.exp-for-gcc-.patch
+  * gdb-testsuite-add-xfail-case-in-gdb.python-py-record.patch
+  * aarch64-avoid-initializers-for-vlas.patch
+  * gdb-tdep-aarch64-fix-frame-address-of-last-insn.patch
+  * fix-pr30369-regression-on-aarch64-arm-pr30506.patch
+  * gdb-testsuite-fix-breakpoint-regexp-in-gdb.ada-out_o.patch
+  * gdb-testsuite-relax-breakpoint-count-check-in-gdb.py.patch
+  * gdb-testsuite-fix-buffer-overflow-in-gdb.base-signed.patch
+  * gdb-testsuite-require-syscall-time-in-gdb.reverse-ti.patch
+  * gdb-testsuite-handle-missing-gdc-in-gdb.dlang-dlang-.patch
+  * gdb-testsuite-add-basic-lmap-for-tcl-8.6.patch
+  * gdb-testsuite-fix-gdb.rust-watch.exp-on-ppc64le.patch
+  * gdb-testsuite-fix-gdb.python-py-breakpoint.exp-timeo.patch
+  * powerpc-fix-for-gdb.reverse-finish-precsave.exp-and-.patch
+  * powerpc-regression-fix-for-reverse-finish-command.patch
+  * gdb-testsuite-don-t-use-string-cat-in-gdb.dwarf2-dw2.patch
+  * move-step_until-procedure.patch
+  * gdb-testsuite-fix-gdb.arch-i386-signal.exp-on-x86_64.patch
+  * gdb-testsuite-fix-regexps-in-gdb.base-step-over-sysc.patch
+  * gdb-testsuite-add-kfail-for-pr-ada-30908.patch
+  * gdb-testsuite-fix-gdb.ada-mi_task_arg.exp-with-newer.patch
+  * gdb-testsuite-fix-gdb.cp-m-static.exp-regression-on-.patch
+  * gdb-symtab-fix-line-number-of-static-const-class-mem.patch
+  * gdb-symtab-handle-pu-in-iterate_over_some_symtabs.patch
+  * gdb-testsuite-fix-gdb.dwarf2-nullptr_t.exp-with-cc-w.patch
+  * gdb-symtab-fix-too-many-symbols-in-gdbpy_lookup_stat.patch
+  * gdb-support-rseq-auxvs.patch
+  * gdb-testsuite-add-xfail-for-gdb-29965-in-gdb.threads.patch
+  * gdb-cli-handle-pending-c-after-rl_callback_read_char.patch
+  * gdb-testsuite-add-have_host_locale.patch
+  * gdb-symtab-find-main-language-without-symtab-expansi.patch
+  * gdb-symtab-don-t-deduplicate-variables-in-gdb-index.patch
+  * xcoffread.c-fix-werror-dangling-pointer-issue-with-m.patch
+  * avoid-manual-memory-management-in-go-lang.c.patch
+  * gdb-go-handle-v3-go_0-mangled-prefix.patch
+  * gdb-symtab-handle-self-reference-die.patch
+  * gdb-symtab-handle-self-reference-in-inherit_abstract.patch
+  * gdb-symtab-add-optimized-out-static-var-to-cooked-in.patch
+  * gdb-testsuite-fix-gdb.python-py-breakpoint.exp-with-.patch
+  * gdb-tui-fix-segfault-in-tui_find_disassembly_address.patch
+  * gdb-testsuite-add-wait_for_msg-arg-to-term-resize-fi.patch
+  * gdb-testsuite-fix-gdb-server-ext-run-exp-for-obs.patch  
+  * gdb-testsuite-work-around-skip_prologue-problems-in-gdb.threads-process-dies-while-detaching.exp.patch
+
+-------------------------------------------------------------------
 Wed Apr 24 13:07:21 UTC 2024 - Tom de Vries <tdevries@suse.com>
 
 - Maintenance script qa.sh:

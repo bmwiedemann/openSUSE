@@ -1,8 +1,7 @@
-From ea9f87de71b8d5cd0f9d62ebca57cef7ee879324 Mon Sep 17 00:00:00 2001
+From 469aebc4403f2135d02cb15dba1739264a4c1a17 Mon Sep 17 00:00:00 2001
 From: Tom de Vries <tdevries@suse.de>
 Date: Fri, 21 Apr 2023 18:01:00 +0200
-Subject: [PATCH 5/5] [gdb/testsuite] Prevent compilation fails with
- unix/-fPIE/-pie
+Subject: [PATCH 1/2] Prevent compilation fails with unix/-fPIE/-pie
 
 A regular test-case will produce an executable, and depending on the compiler
 default, it will be a PIE or not.  A test-case can force one or the other
@@ -56,10 +55,10 @@ Tested on x86_64-linux.
  1 file changed, 53 insertions(+)
 
 diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
-index 2be69479d70..85ef279bfe9 100644
+index 6c1f59ef4a6..09bb7cc30e4 100644
 --- a/gdb/testsuite/lib/gdb.exp
 +++ b/gdb/testsuite/lib/gdb.exp
-@@ -4966,6 +4966,17 @@ proc gdb_compile {source dest type options} {
+@@ -5519,6 +5519,17 @@ proc gdb_compile {source dest type options} {
        set options [lreplace $options $macros $macros $flag]
    }
  
@@ -77,7 +76,7 @@ index 2be69479d70..85ef279bfe9 100644
      if { $type == "executable" } {
  	if { ([istarget "*-*-mingw*"]
  	      || [istarget "*-*-*djgpp"]
-@@ -8875,6 +8886,48 @@ gdb_caching_proc linker_supports_image_base_flag {
+@@ -9608,6 +9619,48 @@ gdb_caching_proc linker_supports_image_base_flag {} {
  }
  
  
@@ -86,7 +85,7 @@ index 2be69479d70..85ef279bfe9 100644
 +
 +# Return 1 if nopie fails to prevent a PIE, 0 if nopie prevented a PIE,
 +# and -1 if an error occurred.
-+gdb_caching_proc pie_forced {
++gdb_caching_proc pie_forced {} {
 +    set me "pie_forced"
 +    set src { int main() { return 0; } }
 +    # gdb_compile calls pie_forced when nopie is passed, so pretend it
@@ -107,7 +106,7 @@ index 2be69479d70..85ef279bfe9 100644
 +
 +# Return 1 if pie fails to generated a PIE, 0 if pie generated a PIE,
 +# and -1 if an error occurred.
-+gdb_caching_proc nopie_forced {
++gdb_caching_proc nopie_forced {} {
 +    set me "nopie_forced"
 +    set src { int main() { return 0; } }
 +    # gdb_compile calls nopie_forced when pie is passed, so pretend it
@@ -125,7 +124,9 @@ index 2be69479d70..85ef279bfe9 100644
 +
  # Return 1 if compiler supports scalar_storage_order attribute, otherwise
  # return 0.
- gdb_caching_proc supports_scalar_storage_order_attribute {
+ gdb_caching_proc supports_scalar_storage_order_attribute {} {
+
+base-commit: adfcabe4cc43766996a61bdf08ce1e9db7f18dcc
 -- 
 2.35.3
 

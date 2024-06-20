@@ -1,6 +1,6 @@
-From 75617e6d28b93814ac46ad85ad4fc2b133f61114 Mon Sep 17 00:00:00 2001
+From 1d02ba0f4adcba2595a67e88fb1ba6d35c7f8e5b Mon Sep 17 00:00:00 2001
 From: Tom de Vries <tdevries@suse.de>
-Date: Fri, 3 Nov 2023 16:25:33 +0100
+Date: Tue, 7 May 2024 11:33:57 +0200
 Subject: [PATCH] [gdb] Fix segfault in for_each_block, part 1
 
 When running test-case gdb.base/vfork-follow-parent.exp on powerpc64 (likewise
@@ -75,7 +75,7 @@ Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=30547
  gdb/breakpoint.c               | 29 ++++++++-------
  gdb/inferior.c                 |  8 ++---
  gdb/inferior.h                 |  2 +-
- gdb/infrun.c                   | 20 +++++------
+ gdb/infrun.c                   | 18 +++++-----
  gdb/linux-nat.c                |  2 +-
  gdb/process-stratum-target.c   |  2 +-
  gdb/progspace.c                | 22 +++++-------
@@ -85,13 +85,13 @@ Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=30547
  gdb/scoped-mock-context.h      |  2 +-
  gdb/target-dcache.c            | 11 +++---
  gdbsupport/refcounted-object.h | 17 +++++++++
- 13 files changed, 103 insertions(+), 80 deletions(-)
+ 13 files changed, 102 insertions(+), 79 deletions(-)
 
 diff --git a/gdb/breakpoint.c b/gdb/breakpoint.c
-index f8d19356828..f4acb4ea8c4 100644
+index 01f187ca4fe..a22bdb091cd 100644
 --- a/gdb/breakpoint.c
 +++ b/gdb/breakpoint.c
-@@ -1605,7 +1605,7 @@ one_breakpoint_xfer_memory (gdb_byte *readbuf, gdb_byte *writebuf,
+@@ -1723,7 +1723,7 @@ one_breakpoint_xfer_memory (gdb_byte *readbuf, gdb_byte *writebuf,
    int bptoffset = 0;
  
    if (!breakpoint_address_match (target_info->placed_address_space, 0,
@@ -100,7 +100,7 @@ index f8d19356828..f4acb4ea8c4 100644
      {
        /* The breakpoint is inserted in a different address space.  */
        return;
-@@ -2278,7 +2278,7 @@ should_be_inserted (struct bp_location *bl)
+@@ -2409,7 +2409,7 @@ should_be_inserted (struct bp_location *bl)
       a breakpoint.  */
    if ((bl->loc_type == bp_loc_software_breakpoint
         || bl->loc_type == bp_loc_hardware_breakpoint)
@@ -109,7 +109,7 @@ index f8d19356828..f4acb4ea8c4 100644
  				       bl->address)
        /* The single-step breakpoint may be inserted at the location
  	 we're trying to step if the instruction branches to itself.
-@@ -2713,7 +2713,7 @@ insert_bp_location (struct bp_location *bl,
+@@ -2847,7 +2847,7 @@ insert_bp_location (struct bp_location *bl,
       read the breakpoint instead of returning the data saved in
       the breakpoint location's shadow contents.  */
    bl->target_info.reqstd_address = bl->address;
@@ -118,7 +118,7 @@ index f8d19356828..f4acb4ea8c4 100644
    bl->target_info.length = bl->length;
  
    /* When working with target-side conditions, we must pass all the conditions
-@@ -4276,7 +4276,7 @@ bp_location_inserted_here_p (const struct bp_location *bl,
+@@ -4429,7 +4429,7 @@ bp_location_inserted_here_p (const struct bp_location *bl,
  			     const address_space *aspace, CORE_ADDR pc)
  {
    if (bl->inserted
@@ -127,16 +127,16 @@ index f8d19356828..f4acb4ea8c4 100644
  				   aspace, pc))
      {
        /* An unmapped overlay can't be a match.  */
-@@ -4355,7 +4355,7 @@ hardware_watchpoint_inserted_in_range (const address_space *aspace,
+@@ -4508,7 +4508,7 @@ hardware_watchpoint_inserted_in_range (const address_space *aspace,
  	continue;
  
-       for (bp_location *loc : bpt->locations ())
--	if (loc->pspace->aspace == aspace && loc->inserted)
-+	if (loc->pspace->aspace.get () == aspace && loc->inserted)
+       for (bp_location &loc : bpt.locations ())
+-	if (loc.pspace->aspace == aspace && loc.inserted)
++	if (loc.pspace->aspace.get () == aspace && loc.inserted)
  	  {
  	    CORE_ADDR l, h;
  
-@@ -7153,10 +7153,10 @@ breakpoint_location_address_match (struct bp_location *bl,
+@@ -7330,10 +7330,10 @@ breakpoint_location_address_match (struct bp_location *bl,
  				   const address_space *aspace,
  				   CORE_ADDR addr)
  {
@@ -149,7 +149,7 @@ index f8d19356828..f4acb4ea8c4 100644
  						 bl->address, bl->length,
  						 aspace, addr)));
  }
-@@ -7173,7 +7173,7 @@ breakpoint_location_address_range_overlap (struct bp_location *bl,
+@@ -7350,7 +7350,7 @@ breakpoint_location_address_range_overlap (struct bp_location *bl,
  					   CORE_ADDR addr, int len)
  {
    if (gdbarch_has_global_breakpoints (target_gdbarch ())
@@ -158,7 +158,7 @@ index f8d19356828..f4acb4ea8c4 100644
      {
        int bl_len = bl->length != 0 ? bl->length : 1;
  
-@@ -7230,8 +7230,10 @@ breakpoint_locations_match (const struct bp_location *loc1,
+@@ -7407,8 +7407,10 @@ breakpoint_locations_match (const struct bp_location *loc1,
      /* We compare bp_location.length in order to cover ranged
         breakpoints.  Keep this in sync with
         bp_location_is_less_than.  */
@@ -171,7 +171,7 @@ index f8d19356828..f4acb4ea8c4 100644
  	    && (loc1->loc_type == loc2->loc_type || sw_hw_bps_match)
  	    && loc1->length == loc2->length);
  }
-@@ -9297,8 +9299,9 @@ ranged_breakpoint::breakpoint_hit (const struct bp_location *bl,
+@@ -9568,8 +9570,9 @@ ranged_breakpoint::breakpoint_hit (const struct bp_location *bl,
        || ws.sig () != GDB_SIGNAL_TRAP)
      return 0;
  
@@ -183,7 +183,7 @@ index f8d19356828..f4acb4ea8c4 100644
  }
  
  /* Implement the "resources_needed" method for ranged breakpoints.  */
-@@ -11696,7 +11699,7 @@ code_breakpoint::breakpoint_hit (const struct bp_location *bl,
+@@ -12018,7 +12021,7 @@ code_breakpoint::breakpoint_hit (const struct bp_location *bl,
        || ws.sig () != GDB_SIGNAL_TRAP)
      return 0;
  
@@ -193,10 +193,10 @@ index f8d19356828..f4acb4ea8c4 100644
      return 0;
  
 diff --git a/gdb/inferior.c b/gdb/inferior.c
-index b0ecca8b63a..87c61eeafd7 100644
+index 550bbd2827c..461f4fc076a 100644
 --- a/gdb/inferior.c
 +++ b/gdb/inferior.c
-@@ -775,15 +775,13 @@ remove_inferior_command (const char *args, int from_tty)
+@@ -831,15 +831,13 @@ remove_inferior_command (const char *args, int from_tty)
  struct inferior *
  add_inferior_with_spaces (void)
  {
@@ -213,7 +213,7 @@ index b0ecca8b63a..87c61eeafd7 100644
    inf = add_inferior (0);
    inf->pspace = pspace;
    inf->aspace = pspace->aspace;
-@@ -946,15 +944,13 @@ clone_inferior_command (const char *args, int from_tty)
+@@ -1002,15 +1000,13 @@ clone_inferior_command (const char *args, int from_tty)
  
    for (i = 0; i < copies; ++i)
      {
@@ -231,10 +231,10 @@ index b0ecca8b63a..87c61eeafd7 100644
        inf->pspace = pspace;
        inf->aspace = pspace->aspace;
 diff --git a/gdb/inferior.h b/gdb/inferior.h
-index 4d001b0ad50..fa5c3c92eeb 100644
+index 29c90d15efa..4139791740f 100644
 --- a/gdb/inferior.h
 +++ b/gdb/inferior.h
-@@ -541,7 +541,7 @@ class inferior : public refcounted_object,
+@@ -577,7 +577,7 @@ class inferior : public refcounted_object,
    bool removable = false;
  
    /* The address space bound to this inferior.  */
@@ -244,10 +244,10 @@ index 4d001b0ad50..fa5c3c92eeb 100644
    /* The program space bound to this inferior.  */
    struct program_space *pspace = NULL;
 diff --git a/gdb/infrun.c b/gdb/infrun.c
-index c078098a6f8..4073150d80c 100644
+index 7be98cfc252..3854c66bf6c 100644
 --- a/gdb/infrun.c
 +++ b/gdb/infrun.c
-@@ -501,8 +501,8 @@ holding the child stopped.  Try \"set detach-on-fork\" or \
+@@ -531,8 +531,8 @@ holding the child stopped.  Try \"set detach-on-fork\" or \
  	    }
  	  else
  	    {
@@ -258,7 +258,7 @@ index c078098a6f8..4073150d80c 100644
  	      child_inf->removable = true;
  	      clone_program_space (child_inf->pspace, parent_inf->pspace);
  	    }
-@@ -573,8 +573,8 @@ holding the child stopped.  Try \"set detach-on-fork\" or \
+@@ -610,8 +610,8 @@ holding the child stopped.  Try \"set detach-on-fork\" or \
  
  	  child_inf->aspace = parent_inf->aspace;
  	  child_inf->pspace = parent_inf->pspace;
@@ -269,7 +269,7 @@ index c078098a6f8..4073150d80c 100644
  	  clone_program_space (parent_inf->pspace, child_inf->pspace);
  
  	  /* The parent inferior is still the current one, so keep things
-@@ -583,8 +583,8 @@ holding the child stopped.  Try \"set detach-on-fork\" or \
+@@ -620,8 +620,8 @@ holding the child stopped.  Try \"set detach-on-fork\" or \
  	}
        else
  	{
@@ -280,7 +280,7 @@ index c078098a6f8..4073150d80c 100644
  	  child_inf->removable = true;
  	  child_inf->symfile_flags = SYMFILE_NO_READ;
  	  clone_program_space (child_inf->pspace, parent_inf->pspace);
-@@ -938,7 +938,6 @@ handle_vfork_child_exec_or_exit (int exec)
+@@ -1031,7 +1031,6 @@ handle_vfork_child_exec_or_exit (int exec)
        if (vfork_parent->pending_detach)
  	{
  	  struct program_space *pspace;
@@ -288,7 +288,7 @@ index c078098a6f8..4073150d80c 100644
  
  	  /* follow-fork child, detach-on-fork on.  */
  
-@@ -963,9 +962,8 @@ handle_vfork_child_exec_or_exit (int exec)
+@@ -1056,9 +1055,8 @@ handle_vfork_child_exec_or_exit (int exec)
  	     of" a hack.  */
  
  	  pspace = inf->pspace;
@@ -299,17 +299,8 @@ index c078098a6f8..4073150d80c 100644
  
  	  if (print_inferior_events)
  	    {
-@@ -1019,7 +1017,7 @@ handle_vfork_child_exec_or_exit (int exec)
- 	  /* Temporarily switch to the vfork parent, to facilitate ptrace
- 	     calls done during maybe_new_address_space.  */
- 	  switch_to_thread (any_live_thread_of_inferior (vfork_parent));
--	  address_space *aspace = maybe_new_address_space ();
-+	  address_space_ref_ptr aspace = maybe_new_address_space ();
- 
- 	  /* Switch back to the vfork child inferior.  Switch to no-thread
- 	     while running clone_program_space, so that clone_program_space
-@@ -5639,7 +5637,7 @@ handle_inferior_event (struct execution_control_state *ecs)
- 	      = get_thread_arch_aspace_regcache (parent_inf->process_target (),
+@@ -5906,7 +5904,7 @@ handle_inferior_event (struct execution_control_state *ecs)
+ 	      = get_thread_arch_aspace_regcache (parent_inf,
  						 ecs->ws.child_ptid (),
  						 gdbarch,
 -						 parent_inf->aspace);
@@ -318,10 +309,10 @@ index c078098a6f8..4073150d80c 100644
  	    parent_pc = regcache_read_pc (regcache);
  
 diff --git a/gdb/linux-nat.c b/gdb/linux-nat.c
-index 2b206a4ec1e..474d3c7f945 100644
+index ed445c5e5bb..c8991cc3da4 100644
 --- a/gdb/linux-nat.c
 +++ b/gdb/linux-nat.c
-@@ -4316,7 +4316,7 @@ linux_nat_target::thread_address_space (ptid_t ptid)
+@@ -4365,7 +4365,7 @@ linux_nat_target::thread_address_space (ptid_t ptid)
  
    inf = find_inferior_pid (this, pid);
    gdb_assert (inf != NULL);
@@ -331,7 +322,7 @@ index 2b206a4ec1e..474d3c7f945 100644
  
  /* Return the cached value of the processor core for thread PTID.  */
 diff --git a/gdb/process-stratum-target.c b/gdb/process-stratum-target.c
-index 4722c5a0f28..e67012a8591 100644
+index 5c031203e89..4bcca4f39c2 100644
 --- a/gdb/process-stratum-target.c
 +++ b/gdb/process-stratum-target.c
 @@ -37,7 +37,7 @@ process_stratum_target::thread_address_space (ptid_t ptid)
@@ -344,10 +335,10 @@ index 4722c5a0f28..e67012a8591 100644
  
  struct gdbarch *
 diff --git a/gdb/progspace.c b/gdb/progspace.c
-index 32bdfebcf7c..55df3b65dfe 100644
+index 1dbcd5875dd..b4d25ba6196 100644
 --- a/gdb/progspace.c
 +++ b/gdb/progspace.c
-@@ -54,8 +54,8 @@ address_space::address_space ()
+@@ -55,8 +55,8 @@ address_space::address_space ()
     return a pointer to an existing address space, in case inferiors
     share an address space on this target system.  */
  
@@ -358,7 +349,7 @@ index 32bdfebcf7c..55df3b65dfe 100644
  {
    int shared_aspace = gdbarch_has_shared_address_space (target_gdbarch ());
  
-@@ -65,7 +65,7 @@ maybe_new_address_space (void)
+@@ -66,7 +66,7 @@ maybe_new_address_space (void)
        return program_spaces[0]->aspace;
      }
  
@@ -367,7 +358,7 @@ index 32bdfebcf7c..55df3b65dfe 100644
  }
  
  /* Start counting over from scratch.  */
-@@ -93,9 +93,9 @@ remove_program_space (program_space *pspace)
+@@ -94,9 +94,9 @@ remove_program_space (program_space *pspace)
  
  /* See progspace.h.  */
  
@@ -378,8 +369,8 @@ index 32bdfebcf7c..55df3b65dfe 100644
 +    aspace (std::move (aspace_))
  {
    program_spaces.push_back (this);
- }
-@@ -118,8 +118,6 @@ program_space::~program_space ()
+   gdb::observers::new_program_space.notify (this);
+@@ -121,8 +121,6 @@ program_space::~program_space ()
    /* Defer breakpoint re-set because we don't want to create new
       locations for this pspace which we're tearing down.  */
    clear_symtab_users (SYMFILE_DEFER_BP_RESET);
@@ -388,7 +379,7 @@ index 32bdfebcf7c..55df3b65dfe 100644
  }
  
  /* See progspace.h.  */
-@@ -389,18 +387,14 @@ update_address_spaces (void)
+@@ -408,18 +406,14 @@ update_address_spaces (void)
  
    if (shared_aspace)
      {
@@ -409,7 +400,7 @@ index 32bdfebcf7c..55df3b65dfe 100644
  
    for (inferior *inf : all_inferiors ())
      if (gdbarch_has_global_solist (target_gdbarch ()))
-@@ -437,5 +431,5 @@ initialize_progspace (void)
+@@ -456,5 +450,5 @@ initialize_progspace (void)
       modules have done that.  Do this before
       initialize_current_architecture, because that accesses the ebfd
       of current_program_space.  */
@@ -417,7 +408,7 @@ index 32bdfebcf7c..55df3b65dfe 100644
 +  current_program_space = new program_space (new_address_space ());
  }
 diff --git a/gdb/progspace.h b/gdb/progspace.h
-index 85215f0e2f1..07cca8c675c 100644
+index ee12d89c173..12f113f6d9c 100644
 --- a/gdb/progspace.h
 +++ b/gdb/progspace.h
 @@ -28,6 +28,8 @@
@@ -479,7 +470,7 @@ index 85215f0e2f1..07cca8c675c 100644
  
    /* Releases a program space, and all its contents (shared libraries,
       objfiles, and any other references to the program space in other
-@@ -332,7 +368,7 @@ struct program_space
+@@ -336,7 +372,7 @@ struct program_space
       are global, then this field is ignored (we don't currently
       support inferiors sharing a program space if the target doesn't
       make breakpoints global).  */
@@ -488,7 +479,7 @@ index 85215f0e2f1..07cca8c675c 100644
  
    /* True if this program space's section offsets don't yet represent
       the final offsets of the "live" address space (that is, the
-@@ -379,28 +415,6 @@ struct program_space
+@@ -383,28 +419,6 @@ struct program_space
    target_section_table m_target_sections;
  };
  
@@ -517,7 +508,7 @@ index 85215f0e2f1..07cca8c675c 100644
  /* The list of all program spaces.  There's always at least one.  */
  extern std::vector<struct program_space *>program_spaces;
  
-@@ -443,7 +457,7 @@ class scoped_restore_current_program_space
+@@ -447,7 +461,7 @@ class scoped_restore_current_program_space
  /* Maybe create a new address space object, and add it to the list, or
     return a pointer to an existing address space, in case inferiors
     share an address space.  */
@@ -527,10 +518,10 @@ index 85215f0e2f1..07cca8c675c 100644
  /* Update all program spaces matching to address spaces.  The user may
     have created several program spaces, and loaded executables into
 diff --git a/gdb/record-btrace.c b/gdb/record-btrace.c
-index 0daba893813..276cdcc03b8 100644
+index 97447d3e8f8..a4d6c1b5bf2 100644
 --- a/gdb/record-btrace.c
 +++ b/gdb/record-btrace.c
-@@ -2314,7 +2314,7 @@ record_btrace_replay_at_breakpoint (struct thread_info *tp)
+@@ -2321,7 +2321,7 @@ record_btrace_replay_at_breakpoint (struct thread_info *tp)
    if (insn == NULL)
      return 0;
  
@@ -540,17 +531,17 @@ index 0daba893813..276cdcc03b8 100644
  }
  
 diff --git a/gdb/regcache.c b/gdb/regcache.c
-index 56b6d047874..8a0b57e67b8 100644
+index 91b20b7a2a2..a78fe0a80e7 100644
 --- a/gdb/regcache.c
 +++ b/gdb/regcache.c
-@@ -1617,7 +1617,7 @@ get_thread_arch_aspace_regcache_and_check (process_stratum_target *target,
+@@ -1628,7 +1628,7 @@ get_thread_arch_aspace_regcache_and_check (inferior *inf_for_target_calls,
       the current inferior's gdbarch.  Also use the current inferior's address
       space.  */
-   gdbarch *arch = current_inferior ()->gdbarch;
--  address_space *aspace = current_inferior ()->aspace;
-+  address_space *aspace = current_inferior ()->aspace.get ();
-   regcache *regcache
-     = get_thread_arch_aspace_regcache (target, ptid, arch, aspace);
+   gdbarch *arch = inf_for_target_calls->gdbarch;
+-  address_space *aspace = inf_for_target_calls->aspace;
++  address_space *aspace = inf_for_target_calls->aspace.get ();
+   regcache *regcache = get_thread_arch_aspace_regcache (inf_for_target_calls,
+ 							ptid, arch, aspace);
  
 diff --git a/gdb/scoped-mock-context.h b/gdb/scoped-mock-context.h
 index 9ad7ebf5f0c..5f25dc7ed6b 100644
@@ -639,7 +630,7 @@ index d8fdb950043..294fd873df1 100644
 +
  #endif /* COMMON_REFCOUNTED_OBJECT_H */
 
-base-commit: c55a452eaf9390d5659d3205f762aa2cb84511e1
+base-commit: 0bb6f49bb9ad577667075550ca2ad4cb49931078
 -- 
 2.35.3
 

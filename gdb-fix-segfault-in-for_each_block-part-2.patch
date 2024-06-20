@@ -1,7 +1,7 @@
-From 1cd845ab3d405412aabf9b959aa527dd60143826 Mon Sep 17 00:00:00 2001
+From 3490f51a80a10d46dc1885ba672d9390a8221170 Mon Sep 17 00:00:00 2001
 From: Tom de Vries <tdevries@suse.de>
 Date: Thu, 2 Nov 2023 14:51:02 +0100
-Subject: [PATCH] [gdb] Fix segfault in for_each_block, part 2
+Subject: [PATCH] Fix segfault in for_each_block, part 2
 
 The previous commit describes PR gdb/30547, a segfault when running test-case
 gdb.base/vfork-follow-parent.exp on powerpc64 (likewise on s390x).
@@ -81,10 +81,10 @@ Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=30547
  4 files changed, 19 insertions(+), 6 deletions(-)
 
 diff --git a/gdb/infrun.c b/gdb/infrun.c
-index 9c1b1f04e4d..c078098a6f8 100644
+index 3854c66bf6c..d259e81df84 100644
 --- a/gdb/infrun.c
 +++ b/gdb/infrun.c
-@@ -1014,13 +1014,19 @@ handle_vfork_child_exec_or_exit (int exec)
+@@ -1105,13 +1105,19 @@ handle_vfork_child_exec_or_exit (int exec)
  	     go ahead and create a new one for this exiting
  	     inferior.  */
  
@@ -98,14 +98,14 @@ index 9c1b1f04e4d..c078098a6f8 100644
 +	  /* Temporarily switch to the vfork parent, to facilitate ptrace
 +	     calls done during maybe_new_address_space.  */
 +	  switch_to_thread (any_live_thread_of_inferior (vfork_parent));
-+	  address_space *aspace = maybe_new_address_space ();
++	  address_space_ref_ptr aspace = maybe_new_address_space ();
 +
 +	  /* Switch back to the vfork child inferior.  Switch to no-thread
 +	     while running clone_program_space, so that clone_program_space
 +	     doesn't want to read the selected frame of a dead process.  */
 +	  switch_to_inferior_no_thread (inf);
 +
-+	  inf->pspace = new program_space (aspace);
++	  inf->pspace = new program_space (std::move (aspace));
  	  inf->aspace = inf->pspace->aspace;
  	  set_current_program_space (inf->pspace);
  	  inf->removable = true;
@@ -123,10 +123,10 @@ index 0957d1b58a7..74549754806 100644
  
    /* Check for 64-bit inferior process.  This is the case when the host is
 diff --git a/gdb/ppc-linux-nat.c b/gdb/ppc-linux-nat.c
-index d8a8fbdf706..500fb566bc1 100644
+index d14aba694e5..817505ea73e 100644
 --- a/gdb/ppc-linux-nat.c
 +++ b/gdb/ppc-linux-nat.c
-@@ -1918,6 +1918,8 @@ ppc_linux_nat_target::auxv_parse (const gdb_byte **readptr,
+@@ -1914,6 +1914,8 @@ ppc_linux_nat_target::auxv_parse (const gdb_byte **readptr,
  				  const gdb_byte *endptr, CORE_ADDR *typep,
  				  CORE_ADDR *valp)
  {
@@ -136,7 +136,7 @@ index d8a8fbdf706..500fb566bc1 100644
    if (tid == 0)
      tid = inferior_ptid.pid ();
 diff --git a/gdb/s390-linux-nat.c b/gdb/s390-linux-nat.c
-index fc3917d30be..403f37d690d 100644
+index 8f54e9f6322..54167f49480 100644
 --- a/gdb/s390-linux-nat.c
 +++ b/gdb/s390-linux-nat.c
 @@ -949,10 +949,12 @@ s390_target_wordsize (void)
@@ -162,7 +162,7 @@ index fc3917d30be..403f37d690d 100644
    enum bfd_endian byte_order = gdbarch_byte_order (target_gdbarch ());
    const gdb_byte *ptr = *readptr;
 
-base-commit: 59053f06bd94be51efacfa80f9a1f738e3e1ee9c
+base-commit: 1d02ba0f4adcba2595a67e88fb1ba6d35c7f8e5b
 -- 
 2.35.3
 

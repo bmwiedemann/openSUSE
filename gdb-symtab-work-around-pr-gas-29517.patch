@@ -1,7 +1,7 @@
-From 92a5f5ae1b71d152d943ee896bf6cd073d50daa7 Mon Sep 17 00:00:00 2001
+From 7a2731d9d1c0926d22905b9d07e32a7b63c43b34 Mon Sep 17 00:00:00 2001
 From: Tom de Vries <tdevries@suse.de>
 Date: Thu, 28 Sep 2023 13:55:07 +0200
-Subject: [PATCH 02/12] [gdb/symtab] Work around PR gas/29517
+Subject: [PATCH 57/65] Work around PR gas/29517
 
 When using glibc debuginfo generated with gas 2.39, we run into PR gas/29517:
 ...
@@ -61,14 +61,14 @@ Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=30911
 ---
  gdb/dwarf2/cu.c                               |  1 +
  gdb/dwarf2/cu.h                               |  1 +
- gdb/dwarf2/read.c                             | 22 ++++++++++++
+ gdb/dwarf2/read.c                             | 23 ++++++++++++
  gdb/producer.c                                |  8 ++++-
  .../gdb.dwarf2/dw2-unspecified-type.c         |  9 ++++-
  .../gdb.dwarf2/dw2-unspecified-type.exp       | 36 +++++++++++++++----
- 6 files changed, 68 insertions(+), 9 deletions(-)
+ 6 files changed, 69 insertions(+), 9 deletions(-)
 
 diff --git a/gdb/dwarf2/cu.c b/gdb/dwarf2/cu.c
-index 9c1691c90e9..42fd4f4441b 100644
+index 89de40daab0..a908ec908cd 100644
 --- a/gdb/dwarf2/cu.c
 +++ b/gdb/dwarf2/cu.c
 @@ -40,6 +40,7 @@ dwarf2_cu::dwarf2_cu (dwarf2_per_cu_data *per_cu,
@@ -80,7 +80,7 @@ index 9c1691c90e9..42fd4f4441b 100644
      load_all_dies (false)
  {
 diff --git a/gdb/dwarf2/cu.h b/gdb/dwarf2/cu.h
-index e8dbde9c019..710aeb5b237 100644
+index 0c15d8b02db..6c611710503 100644
 --- a/gdb/dwarf2/cu.h
 +++ b/gdb/dwarf2/cu.h
 @@ -265,6 +265,7 @@ struct dwarf2_cu
@@ -92,10 +92,10 @@ index e8dbde9c019..710aeb5b237 100644
    /* When true, the file that we're processing is known to have
       debugging info for C++ namespaces.  GCC 3.3.x did not produce
 diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
-index b9e7e18f2a6..f39eba7a008 100644
+index a5c48baa6f8..e5e557c17d3 100644
 --- a/gdb/dwarf2/read.c
 +++ b/gdb/dwarf2/read.c
-@@ -13370,6 +13370,8 @@ check_producer (struct dwarf2_cu *cu)
+@@ -11426,6 +11426,8 @@ check_producer (struct dwarf2_cu *cu)
      cu->producer_is_codewarrior = true;
    else if (producer_is_clang (cu->producer, &major, &minor))
      cu->producer_is_clang = true;
@@ -104,7 +104,7 @@ index b9e7e18f2a6..f39eba7a008 100644
    else
      {
        /* For other non-GCC compilers, expect their behavior is DWARF version
-@@ -13405,6 +13407,15 @@ producer_is_codewarrior (struct dwarf2_cu *cu)
+@@ -11461,6 +11463,15 @@ producer_is_codewarrior (struct dwarf2_cu *cu)
    return cu->producer_is_codewarrior;
  }
  
@@ -120,7 +120,7 @@ index b9e7e18f2a6..f39eba7a008 100644
  /* Return the accessibility of DIE, as given by DW_AT_accessibility.
     If that attribute is not available, return the appropriate
     default.  */
-@@ -16581,6 +16592,17 @@ read_subroutine_type (struct die_info *die, struct dwarf2_cu *cu)
+@@ -14635,6 +14646,18 @@ read_subroutine_type (struct die_info *die, struct dwarf2_cu *cu)
  
    type = die_type (die, cu);
  
@@ -131,7 +131,8 @@ index b9e7e18f2a6..f39eba7a008 100644
 +    {
 +      /* Work around PR gas/29517, pretend we have an DW_TAG_unspecified_type
 +	 return type.  */
-+      type = init_type (cu->per_objfile->objfile, TYPE_CODE_VOID, 0, NULL);
++      type = (type_allocator (cu->per_objfile->objfile, cu->lang ())
++	      .new_type (TYPE_CODE_VOID, 0, nullptr));
 +      type->set_is_stub (true);
 +    }
 +
@@ -186,10 +187,10 @@ index 1df09214d4a..e07d9517ff2 100644
    return res;
  }
 diff --git a/gdb/testsuite/gdb.dwarf2/dw2-unspecified-type.exp b/gdb/testsuite/gdb.dwarf2/dw2-unspecified-type.exp
-index a353395592e..bd707204fba 100644
+index 5fa6ee544b2..a6f2a57e33e 100644
 --- a/gdb/testsuite/gdb.dwarf2/dw2-unspecified-type.exp
 +++ b/gdb/testsuite/gdb.dwarf2/dw2-unspecified-type.exp
-@@ -29,10 +29,18 @@ lassign $foo_res \
+@@ -27,10 +27,18 @@ lassign $foo_res \
      foo_start foo_len
  set foo_end "$foo_start + $foo_len"
  
@@ -208,7 +209,7 @@ index a353395592e..bd707204fba 100644
      declare_labels unspecified_type_label
  
      cu {} {
-@@ -47,7 +55,19 @@ Dwarf::assemble $asm_file {
+@@ -45,7 +53,19 @@ Dwarf::assemble $asm_file {
  		{high_pc $foo_end addr}
  		{type :$unspecified_type_label}
  	    }
@@ -228,7 +229,7 @@ index a353395592e..bd707204fba 100644
  	}
      }
  }
-@@ -61,12 +81,14 @@ if ![runto_main] {
+@@ -59,12 +79,14 @@ if ![runto_main] {
      return -1
  }
  

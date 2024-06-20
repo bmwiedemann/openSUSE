@@ -1,0 +1,41 @@
+From 254988c36fe592e89af5d92e1d35a6eb4b09cbb0 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 6 Nov 2023 08:32:54 +0100
+Subject: [PATCH 2/2] [gdb/testsuite] Fix gdb.dwarf2/dw2-gas-workaround.exp
+
+Recently added test-case gdb.dwarf2/dw2-gas-workaround.exp:
+- passes when gdb is configured using $(cd ../src; pwd)/configure, but
+- fails when using ../src/configure.
+
+Fix this by making the matching more precise:
+...
+-    -re -wrap "$objdir.*" {
++    -re -wrap "name_for_id = $objdir/$srcfile\r\n.*" {
+...
+such that we only fail on the line:
+...
+[symtab-create] start_subfile: name = dw2-lines.c, name_for_id = \
+  /data/vries/gdb/leap-15-4/build/gdb/testsuite/dw2-lines.c^M
+...
+
+Reported-By: Carl Love <cel@us.ibm.com>
+---
+ gdb/testsuite/gdb.dwarf2/dw2-gas-workaround.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-gas-workaround.exp b/gdb/testsuite/gdb.dwarf2/dw2-gas-workaround.exp
+index ca2b10f23b3..7d5375a920a 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-gas-workaround.exp
++++ b/gdb/testsuite/gdb.dwarf2/dw2-gas-workaround.exp
+@@ -83,7 +83,7 @@ if { [prepare_for_testing "failed to prepare" ${testfile} \
+ 
+ gdb_test_no_output "set debug symtab-create 1"
+ gdb_test_multiple "ptype bar" "" {
+-    -re -wrap "$objdir.*" {
++    -re -wrap "name_for_id = $objdir/$srcfile\r\n.*" {
+ 	fail $gdb_test_name
+     }
+     -re -wrap "" {
+-- 
+2.35.3
+

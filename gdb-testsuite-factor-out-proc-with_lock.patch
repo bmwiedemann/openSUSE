@@ -1,0 +1,160 @@
+From d96f9a0ef44eb3a3f41e2a478b817c1d00e6e0a1 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sat, 4 May 2024 10:41:09 +0200
+Subject: [PATCH 18/48] [gdb/testsuite] Factor out proc with_lock
+
+Factor out proc with_lock from with_rocm_gpu_lock, and move required procs
+lock_file_acquire and lock_file_release to lib/gdb-utils.exp.
+
+Tested on aarch64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+---
+ gdb/testsuite/lib/gdb-utils.exp | 59 +++++++++++++++++++++++++++++++++
+ gdb/testsuite/lib/rocm.exp      | 55 +-----------------------------
+ 2 files changed, 60 insertions(+), 54 deletions(-)
+
+diff --git a/gdb/testsuite/lib/gdb-utils.exp b/gdb/testsuite/lib/gdb-utils.exp
+index a010e14fc04..3dc4b3a3ebc 100644
+--- a/gdb/testsuite/lib/gdb-utils.exp
++++ b/gdb/testsuite/lib/gdb-utils.exp
+@@ -138,3 +138,62 @@ proc version_compare { l1 op l2 } {
+     }
+     return 1
+ }
++
++# Acquire lock file LOCKFILE.  Tries forever until the lock file is
++# successfully created.
++
++proc lock_file_acquire {lockfile} {
++    verbose -log "acquiring lock file: $::subdir/${::gdb_test_file_name}.exp"
++    while {true} {
++	if {![catch {open $lockfile {WRONLY CREAT EXCL}} rc]} {
++	    set msg "locked by $::subdir/${::gdb_test_file_name}.exp"
++	    verbose -log "lock file: $msg"
++	    # For debugging, put info in the lockfile about who owns
++	    # it.
++	    puts  $rc $msg
++	    flush $rc
++	    return [list $rc $lockfile]
++	}
++	after 10
++    }
++}
++
++# Release a lock file.
++
++proc lock_file_release {info} {
++    verbose -log "releasing lock file: $::subdir/${::gdb_test_file_name}.exp"
++
++    if {![catch {fconfigure [lindex $info 0]}]} {
++	if {![catch {
++	    close [lindex $info 0]
++	    file delete -force [lindex $info 1]
++	} rc]} {
++	    return ""
++	} else {
++	    return -code error "Error releasing lockfile: '$rc'"
++	}
++    } else {
++	error "invalid lock"
++    }
++}
++
++# Run body under lock LOCK_FILE.
++
++proc with_lock { lock_file body } {
++    if {[info exists ::GDB_PARALLEL]} {
++	set lock_rc [lock_file_acquire $lock_file]
++    }
++
++    set code [catch {uplevel 1 $body} result]
++
++    if {[info exists ::GDB_PARALLEL]} {
++	lock_file_release $lock_rc
++    }
++
++    if {$code == 1} {
++	global errorInfo errorCode
++	return -code $code -errorinfo $errorInfo -errorcode $errorCode $result
++    } else {
++	return -code $code $result
++    }
++}
+diff --git a/gdb/testsuite/lib/rocm.exp b/gdb/testsuite/lib/rocm.exp
+index fcdf665aef9..86ec29567da 100644
+--- a/gdb/testsuite/lib/rocm.exp
++++ b/gdb/testsuite/lib/rocm.exp
+@@ -107,68 +107,15 @@ gdb_caching_proc allow_hipcc_tests {} {
+ # at a time.
+ set gpu_lock_filename $objdir/gpu-parallel.lock
+ 
+-# Acquire lock file LOCKFILE.  Tries forever until the lock file is
+-# successfully created.
+-
+-proc lock_file_acquire {lockfile} {
+-    verbose -log "acquiring lock file: $::subdir/${::gdb_test_file_name}.exp"
+-    while {true} {
+-	if {![catch {open $lockfile {WRONLY CREAT EXCL}} rc]} {
+-	    set msg "locked by $::subdir/${::gdb_test_file_name}.exp"
+-	    verbose -log "lock file: $msg"
+-	    # For debugging, put info in the lockfile about who owns
+-	    # it.
+-	    puts  $rc $msg
+-	    flush $rc
+-	    return [list $rc $lockfile]
+-	}
+-	after 10
+-    }
+-}
+-
+-# Release a lock file.
+-
+-proc lock_file_release {info} {
+-    verbose -log "releasing lock file: $::subdir/${::gdb_test_file_name}.exp"
+-
+-    if {![catch {fconfigure [lindex $info 0]}]} {
+-	if {![catch {
+-	    close [lindex $info 0]
+-	    file delete -force [lindex $info 1]
+-	} rc]} {
+-	    return ""
+-	} else {
+-	    return -code error "Error releasing lockfile: '$rc'"
+-	}
+-    } else {
+-	error "invalid lock"
+-    }
+-}
+-
+ # Run body under the GPU lock.  Also calls gdb_exit before releasing
+ # the GPU lock.
+ 
+ proc with_rocm_gpu_lock { body } {
+-    if {[info exists ::GDB_PARALLEL]} {
+-	set lock_rc [lock_file_acquire $::gpu_lock_filename]
+-    }
+-
+-    set code [catch {uplevel 1 $body} result]
++    with_lock $::gpu_lock_filename $body
+ 
+     # In case BODY returned early due to some testcase failing, and
+     # left GDB running, debugging the GPU.
+     gdb_exit
+-
+-    if {[info exists ::GDB_PARALLEL]} {
+-	lock_file_release $lock_rc
+-    }
+-
+-    if {$code == 1} {
+-	global errorInfo errorCode
+-	return -code $code -errorinfo $errorInfo -errorcode $errorCode $result
+-    } else {
+-	return -code $code $result
+-    }
+ }
+ 
+ # Return true if all the devices support debugging multiple processes
+-- 
+2.35.3
+

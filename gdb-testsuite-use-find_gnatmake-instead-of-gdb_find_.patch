@@ -1,0 +1,139 @@
+From 6914ab446b7eb9b284b6bfef8d04c3bacafcaa97 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 18 Apr 2024 17:02:13 +0200
+Subject: [PATCH 26/48] [gdb/testsuite] Use find_gnatmake instead of
+ gdb_find_gnatmake
+
+On SLE-11, with an older dejagnu version, I ran into:
+...
+Running gdb.ada/mi_prot.exp ...
+UNRESOLVED: gdb.ada/mi_prot.exp: \
+  testcase aborted due to invalid command name: gdb_find_gnatmake
+ERROR: tcl error sourcing gdb.ada/mi_prot.exp.
+ERROR: invalid command name "gdb_find_gnatmake"
+    while executing
+"::gdb_tcl_unknown gdb_find_gnatmake"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel 1 ::gdb_tcl_unknown $args"
+    (procedure "::unknown" line 5)
+    invoked from within
+"gdb_find_gnatmake"
+    (procedure "gnatmake_version_at_least" line 2)
+    invoked from within
+...
+
+Proc gdb_find_gnatmake is actually a backup for find_gnatmake:
+...
+if {[info procs find_gnatmake] == ""} {
+    rename gdb_find_gnatmake find_gnatmake
+...
+so gnatmake_version_at_least should use find_gnatmake instead.
+
+For a recent dejagnu with find_gnatmake, gdb_find_gnatmake is kept, and we
+don't run into this error.
+
+For an older dejagnu without find_gnatmake, gdb_find_gnatmake is renamed to
+find_gnatmake, and we do run into the error.
+
+It's confusing that we're using the gdb_ prefix for gdb_find_gnatmake, it
+seems something legitimate to use.  Maybe we should use future_ or gdb_future_
+prefix instead to make this more clear, but I've left that alone for now.
+
+Fix this by:
+- triggering the same error with a recent dejagnu by removing
+  gdb_find_gnatmake unless used (and likewise for other procs in future.exp),
+  and
+- using find_gnatmake in gnatmake_version_at_least.
+
+Tested on x86_64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+PR testsuite/31647
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31647
+---
+ gdb/testsuite/lib/ada.exp    |  2 +-
+ gdb/testsuite/lib/future.exp | 15 +++++++++++++++
+ 2 files changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/lib/ada.exp b/gdb/testsuite/lib/ada.exp
+index d45d75994dd..4bf1368f29f 100644
+--- a/gdb/testsuite/lib/ada.exp
++++ b/gdb/testsuite/lib/ada.exp
+@@ -151,7 +151,7 @@ proc find_ada_tool {tool} {
+ # Return 1 if gnatmake is at least version $MAJOR.x.x
+ 
+ proc gnatmake_version_at_least { major } {
+-    set gnatmake [gdb_find_gnatmake]
++    set gnatmake [find_gnatmake]
+     set gnatmake [lindex [split $gnatmake] 0]
+     if {[catch {exec $gnatmake --version} output]} {
+ 	return 0
+diff --git a/gdb/testsuite/lib/future.exp b/gdb/testsuite/lib/future.exp
+index 807053b8f94..204e11effa4 100644
+--- a/gdb/testsuite/lib/future.exp
++++ b/gdb/testsuite/lib/future.exp
+@@ -694,12 +694,16 @@ if {[info procs find_gnatmake] == ""} {
+     rename gdb_find_gnatmake find_gnatmake
+     set use_gdb_compile(ada) 1
+     gdb_note [join [list $note_prefix "Ada" $note_suffix] ""]
++} else {
++    rename gdb_find_gnatmake ""
+ }
+ 
+ if {[info procs find_gfortran] == ""} {
+     rename gdb_find_gfortran find_gfortran
+     set use_gdb_compile(fortran) 1
+     gdb_note [join [list $note_prefix "Fortran" $note_suffix] ""]
++} else {
++    rename gdb_find_gfortran ""
+ }
+ 
+ if {[info procs find_go_linker] == ""} {
+@@ -707,24 +711,33 @@ if {[info procs find_go_linker] == ""} {
+     rename gdb_find_go_linker find_go_linker
+     set use_gdb_compile(go) 1
+     gdb_note [join [list $note_prefix "Go" $note_suffix] ""]
++} else {
++    rename gdb_find_go ""
++    rename gdb_find_go_linker ""
+ }
+ 
+ if {[info procs find_gdc] == ""} {
+     rename gdb_find_gdc find_gdc
+     set use_gdb_compile(d) 1
+     gdb_note [join [list $note_prefix "D" $note_suffix] ""]
++} else {
++    rename gdb_find_gdc ""
+ }
+ 
+ if {[info procs find_rustc] == ""} {
+     rename gdb_find_rustc find_rustc
+     set use_gdb_compile(rust) 1
+     gdb_note [join [list $note_prefix "Rust" $note_suffix] ""]
++} else {
++    rename gdb_find_rustc ""
+ }
+ 
+ if {[info procs find_hipcc] == ""} {
+     rename gdb_find_hipcc find_hipcc
+     set use_gdb_compile(hip) 1
+     gdb_note [join [list $note_prefix "HIP" $note_suffix] ""]
++} else {
++    rename gdb_find_hipcc ""
+ }
+ 
+ # If dejagnu's default_target_compile is missing support for any language,
+@@ -732,6 +745,8 @@ if {[info procs find_hipcc] == ""} {
+ if { [array size use_gdb_compile] != 0 } {
+     catch {rename default_target_compile dejagnu_default_target_compile}
+     rename gdb_default_target_compile default_target_compile
++} else {
++    rename gdb_default_target_compile ""
+ }
+ 
+ 
+-- 
+2.35.3
+

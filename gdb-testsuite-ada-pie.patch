@@ -1,8 +1,7 @@
-From e9faa078c28b14386609a12d307471cb142547d6 Mon Sep 17 00:00:00 2001
+From 6de9111c512de99fd8cb3ea89f9890b1d72f6ef0 Mon Sep 17 00:00:00 2001
 From: Tom de Vries <tdevries@suse.de>
 Date: Fri, 21 Apr 2023 09:12:35 +0200
-Subject: [PATCH 2/5] [gdb/testsuite] Compile ada hello world for
- skip_ada_tests
+Subject: [PATCH] Compile ada hello world for skip_ada_tests
 
 For openSUSE Leap 15.0 with gcc-PIE installed (which makes gcc create PIE
 executables by default) we get:
@@ -38,14 +37,14 @@ gdb/testsuite/ChangeLog:
 	(skip_ada_tests): Return 1 if !gdb_can_compile_ada.
 ---
  gdb/testsuite/lib/ada.exp | 31 +++++++++++++++++++++++++++++++
- gdb/testsuite/lib/gdb.exp |  6 ++++++
- 2 files changed, 37 insertions(+)
+ gdb/testsuite/lib/gdb.exp |  8 ++++++++
+ 2 files changed, 39 insertions(+)
 
 diff --git a/gdb/testsuite/lib/ada.exp b/gdb/testsuite/lib/ada.exp
-index f5bf2dcbb71..48dcd00bbe3 100644
+index 4bf1368f29f..7d8fbf01fbd 100644
 --- a/gdb/testsuite/lib/ada.exp
 +++ b/gdb/testsuite/lib/ada.exp
-@@ -85,12 +85,43 @@ proc gdb_compile_ada_1 {source dest type options} {
+@@ -90,12 +90,43 @@ proc gdb_compile_ada_1 {source dest type options} {
  # compile was successful.
  
  proc gdb_compile_ada {source dest type options} {
@@ -60,7 +59,7 @@ index f5bf2dcbb71..48dcd00bbe3 100644
      return $result
  }
  
-+gdb_caching_proc gdb_can_compile_ada {
++gdb_caching_proc gdb_can_compile_ada {} {
 +    set name "hello"
 +    set dir "[pwd]/tmp-ada-hello-[pid]"
 +    set src "$dir/$name.adb"
@@ -90,10 +89,10 @@ index f5bf2dcbb71..48dcd00bbe3 100644
  # used a different naming convention from many of the other gdb tests,
  # and this difference was preserved during the conversion to
 diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
-index 31856fa3721..85c0bfb897f 100644
+index 990d0c8a70f..6c1f59ef4a6 100644
 --- a/gdb/testsuite/lib/gdb.exp
 +++ b/gdb/testsuite/lib/gdb.exp
-@@ -137,6 +137,7 @@ load_lib cache.exp
+@@ -145,6 +145,7 @@ load_lib cache.exp
  load_lib gdb-utils.exp
  load_lib memory.exp
  load_lib check-test-names.exp
@@ -101,18 +100,22 @@ index 31856fa3721..85c0bfb897f 100644
  
  # The path to the GDB binary to test.
  global GDB
-@@ -2450,6 +2451,11 @@ proc skip_fortran_tests {} {
- # Return a 1 if I don't even want to try to test ada.
- 
- proc skip_ada_tests {} {
+@@ -2538,6 +2539,13 @@ proc allow_ada_tests {} {
+ 	# Currently gdb_ada_compile doesn't support remote host.
+ 	return 0
+     }
++
 +    if { [gdb_can_compile_ada] == 0 } {
 +	global gdb_test_file_name
 +	unsupported "$gdb_test_file_name"
-+	return 1
++	return 0
 +    }
-     return 0
++
+     return 1
  }
  
+
+base-commit: af4a87e2b3c2ac5acae1e6f4405fc59e1218de74
 -- 
 2.35.3
 

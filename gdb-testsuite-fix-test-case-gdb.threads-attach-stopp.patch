@@ -1,0 +1,65 @@
+From 3596f8119753089d8dd8c0aff800dbf2e283a111 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 28 Mar 2024 08:26:31 +0100
+Subject: [PATCH 34/48] [gdb/testsuite] Fix test-case
+ gdb.threads/attach-stopped.exp on manjaro linux
+
+When running test-case gdb.threads/attach-stopped.exp on aarch64-linux, using
+the manjaro linux distro, I get:
+...
+ (gdb) thread apply all bt^M
+ ^M
+ Thread 2 (Thread 0xffff8d8af120 (LWP 278116) "attach-stopped"):^M
+ #0  0x0000ffff8d964864 in clock_nanosleep () from /usr/lib/libc.so.6^M
+ #1  0x0000ffff8d969cac in nanosleep () from /usr/lib/libc.so.6^M
+ #2  0x0000ffff8d969b68 in sleep () from /usr/lib/libc.so.6^M
+ #3  0x0000aaaade370828 in func (arg=0x0) at attach-stopped.c:29^M
+ #4  0x0000ffff8d930aec in ?? () from /usr/lib/libc.so.6^M
+ #5  0x0000ffff8d99a5dc in ?? () from /usr/lib/libc.so.6^M
+ ^M
+ Thread 1 (Thread 0xffff8db62020 (LWP 278111) "attach-stopped"):^M
+ #0  0x0000ffff8d92d2d8 in ?? () from /usr/lib/libc.so.6^M
+ #1  0x0000ffff8d9324b8 in ?? () from /usr/lib/libc.so.6^M
+ #2  0x0000aaaade37086c in main () at attach-stopped.c:45^M
+ (gdb) FAIL: gdb.threads/attach-stopped.exp: threaded: attach2 to stopped bt
+...
+
+The problem is that the test-case expects to see start_thread:
+...
+	gdb_test "thread apply all bt" ".*sleep.*start_thread.*" \
+	    "$threadtype: attach2 to stopped bt"
+...
+but lack of symbols makes that impossible.
+
+Fix this by allowing " in ?? () from " as well.
+
+Tested on aarch64-linux.
+
+PR testsuite/31451
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31451
+---
+ gdb/testsuite/gdb.threads/attach-stopped.exp | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.threads/attach-stopped.exp b/gdb/testsuite/gdb.threads/attach-stopped.exp
+index acdfcb5d8c5..b28fbd1a3d3 100644
+--- a/gdb/testsuite/gdb.threads/attach-stopped.exp
++++ b/gdb/testsuite/gdb.threads/attach-stopped.exp
+@@ -54,10 +54,12 @@ proc corefunc { threadtype } {
+     }
+ 
+     # ".*sleep.*clone.*" would fail on s390x as bt stops at START_THREAD there.
++    set test "$threadtype: attach2 to stopped bt"
+     if {[string equal $threadtype threaded]} {
+-	gdb_test "thread apply all bt" ".*sleep.*start_thread.*" "$threadtype: attach2 to stopped bt"
++	gdb_test "thread apply all bt" \
++	    ".*sleep.*(start_thread| in \\?\\? \\(\\) from ).*" $test
+     } else {
+-	gdb_test "bt" ".*sleep.*main.*" "$threadtype: attach2 to stopped bt"
++	gdb_test "bt" ".*sleep.*main.*" $test
+     }
+ 
+     gdb_exit
+-- 
+2.35.3
+

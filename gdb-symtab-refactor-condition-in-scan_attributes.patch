@@ -1,7 +1,7 @@
-From 0bba1c5bdbcb404327ba4d5f35254b96d2e48108 Mon Sep 17 00:00:00 2001
+From f72f115b4c012e3748a2e702d7b970be19974885 Mon Sep 17 00:00:00 2001
 From: Tom de Vries <tdevries@suse.de>
 Date: Mon, 11 Dec 2023 15:41:26 +0100
-Subject: [PATCH 01/11] [gdb/symtab] Refactor condition in scan_attributes
+Subject: [PATCH 01/13] [gdb/symtab] Refactor condition in scan_attributes
 
 In scan_attributes there's code:
 ...
@@ -34,10 +34,10 @@ Tested on x86_64-linux.
  1 file changed, 10 insertions(+), 8 deletions(-)
 
 diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
-index 2339cceb829..00471d20d41 100644
+index 50fa302b43a..466d3e59878 100644
 --- a/gdb/dwarf2/read.c
 +++ b/gdb/dwarf2/read.c
-@@ -18315,15 +18315,17 @@ cooked_indexer::scan_attributes (dwarf2_per_cu_data *scanning_per_cu,
+@@ -16410,15 +16410,17 @@ cooked_indexer::scan_attributes (dwarf2_per_cu_data *scanning_per_cu,
  	  const gdb_byte *new_info_ptr = (new_reader->buffer
  					  + to_underlying (origin_offset));
  
@@ -49,8 +49,8 @@ index 2339cceb829..00471d20d41 100644
 +	  if (*parent_entry == nullptr)
  	    {
 -	      CORE_ADDR lookup = form_addr (origin_offset, origin_is_dwz);
--	      *parent_entry
--		= (cooked_index_entry *) m_die_range_map.find (lookup);
+-	      void *obj = m_die_range_map.find (lookup);
+-	      *parent_entry = static_cast <cooked_index_entry *> (obj);
 +	      CORE_ADDR addr = form_addr (origin_offset, origin_is_dwz);
 +	      if (new_reader->cu == reader->cu
 +		  && new_info_ptr > watermark_ptr)
@@ -64,7 +64,7 @@ index 2339cceb829..00471d20d41 100644
  
  	  unsigned int bytes_read;
 
-base-commit: d445b7300b129a4886132ec31a23c7c2c894fa75
+base-commit: 3490f51a80a10d46dc1885ba672d9390a8221170
 -- 
 2.35.3
 

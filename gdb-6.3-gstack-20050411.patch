@@ -16,7 +16,7 @@ Subject: gdb-6.3-gstack-20050411.patch
 diff --git a/gdb/Makefile.in b/gdb/Makefile.in
 --- a/gdb/Makefile.in
 +++ b/gdb/Makefile.in
-@@ -2011,7 +2011,7 @@ info install-info clean-info dvi pdf install-pdf html install-html: force
+@@ -2035,7 +2035,7 @@ info install-info clean-info dvi pdf install-pdf html install-html: force
  install: all
  	@$(MAKE) $(FLAGS_TO_PASS) install-only
  
@@ -25,7 +25,7 @@ diff --git a/gdb/Makefile.in b/gdb/Makefile.in
  	transformed_name=`t='$(program_transform_name)'; \
  			  echo gdb | sed -e "$$t"` ; \
  		if test "x$$transformed_name" = x; then \
-@@ -2061,7 +2061,25 @@ install-guile:
+@@ -2085,7 +2085,25 @@ install-guile:
  install-python:
  	$(SHELL) $(srcdir)/../mkinstalldirs $(DESTDIR)$(GDB_DATADIR)/python/gdb
  
@@ -52,7 +52,7 @@ diff --git a/gdb/Makefile.in b/gdb/Makefile.in
  	transformed_name=`t='$(program_transform_name)'; \
  			  echo gdb | sed -e $$t` ; \
  		if test "x$$transformed_name" = x; then \
-@@ -2092,6 +2110,18 @@ uninstall: force $(CONFIG_UNINSTALL)
+@@ -2116,6 +2134,18 @@ uninstall: force $(CONFIG_UNINSTALL)
  	rm -f $(DESTDIR)$(bindir)/$$transformed_name
  	@$(MAKE) DO=uninstall "DODIRS=$(SUBDIRS)" $(FLAGS_TO_PASS) subdir_do
  

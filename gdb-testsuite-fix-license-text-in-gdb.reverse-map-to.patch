@@ -1,0 +1,49 @@
+From 5b840a3cb41ada4cee1456d16993809abeb30eda Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 22 Feb 2024 12:09:14 +0100
+Subject: [PATCH 43/48] [gdb/testsuite] Fix license text in
+ gdb.reverse/map-to-same-line.{c,exp}
+
+I noticed in gdb.reverse/map-to-same-line.{c,exp} that the license urls are
+using some kind of indirection via urldefense.proofpoint.com.
+
+Fix this by removing this indirection.
+
+Tested on x86_64-linux.
+
+PR testsuite/31358
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31358
+---
+ gdb/testsuite/gdb.reverse/map-to-same-line.c   | 2 +-
+ gdb/testsuite/gdb.reverse/map-to-same-line.exp | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.reverse/map-to-same-line.c b/gdb/testsuite/gdb.reverse/map-to-same-line.c
+index 3086e849231..f6b4f10dbf7 100644
+--- a/gdb/testsuite/gdb.reverse/map-to-same-line.c
++++ b/gdb/testsuite/gdb.reverse/map-to-same-line.c
+@@ -11,7 +11,7 @@
+    GNU General Public License for more details.
+ 
+    You should have received a copy of the GNU General Public License
+-   along with this program.  If not, see <https://urldefense.proofpoint.com/v2/url?u=http-3A__www.gnu.org_licenses_&d=DwIDAg&c=jf_iaSHvJObTbx-siA1ZOg&r=RFEmMkZAk--_wFGN5tkM_A&m=hvslrRyYSFfiB2uOFjd7I62ZBKNJkGFWTdsHWVjwDIkK3MWESdWS4tI89FoblXn9&s=Ety3VhMg8aZcBncPPcPCS5XzUde9hjKVulkt8r7mD2k&e= >.  */
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+ 
+ /* The purpose of this test is to create a DWARF line table that contains two
+    or more entries for the same line.  When stepping (forwards or backwards),
+diff --git a/gdb/testsuite/gdb.reverse/map-to-same-line.exp b/gdb/testsuite/gdb.reverse/map-to-same-line.exp
+index 63f8c9c76b3..1510cf98d0c 100644
+--- a/gdb/testsuite/gdb.reverse/map-to-same-line.exp
++++ b/gdb/testsuite/gdb.reverse/map-to-same-line.exp
+@@ -11,7 +11,7 @@
+ # GNU General Public License for more details.
+ #
+ # You should have received a copy of the GNU General Public License
+-# along with this program.  If not, see <https://urldefense.proofpoint.com/v2/url?u=http-3A__www.gnu.org_licenses_&d=DwIDAg&c=jf_iaSHvJObTbx-siA1ZOg&r=RFEmMkZAk--_wFGN5tkM_A&m=hvslrRyYSFfiB2uOFjd7I62ZBKNJkGFWTdsHWVjwDIkK3MWESdWS4tI89FoblXn9&s=Ety3VhMg8aZcBncPPcPCS5XzUde9hjKVulkt8r7mD2k&e= >.
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ # When stepping (forwards or backwards), GDB should step over the entire line
+ # and not just a particular entry in the line table. This test was added to
+-- 
+2.35.3
+

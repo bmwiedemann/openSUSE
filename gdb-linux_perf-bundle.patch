@@ -9,9 +9,9 @@ Subject: gdb-linux_perf-bundle.patch
 diff --git a/gdb/gdb.c b/gdb/gdb.c
 --- a/gdb/gdb.c
 +++ b/gdb/gdb.c
-@@ -20,11 +20,19 @@
- #include "main.h"
+@@ -21,6 +21,10 @@
  #include "interps.h"
+ #include "run-on-main-thread.h"
  
 +#ifdef PERF_ATTR_SIZE_VER5_BUNDLE
 +extern "C" void __libipt_init(void);
@@ -20,6 +20,8 @@ diff --git a/gdb/gdb.c b/gdb/gdb.c
  int
  main (int argc, char **argv)
  {
+@@ -32,6 +36,10 @@ main (int argc, char **argv)
+ 
    struct captured_main_args args;
  
 +#ifdef PERF_ATTR_SIZE_VER5_BUNDLE
@@ -32,7 +34,7 @@ diff --git a/gdb/gdb.c b/gdb/gdb.c
 diff --git a/gdb/nat/linux-btrace.h b/gdb/nat/linux-btrace.h
 --- a/gdb/nat/linux-btrace.h
 +++ b/gdb/nat/linux-btrace.h
-@@ -27,6 +27,177 @@
+@@ -28,6 +28,177 @@
  #  include <linux/perf_event.h>
  #endif
  
@@ -213,7 +215,7 @@ diff --git a/gdb/nat/linux-btrace.h b/gdb/nat/linux-btrace.h
 diff --git a/gdbsupport/common.m4 b/gdbsupport/common.m4
 --- a/gdbsupport/common.m4
 +++ b/gdbsupport/common.m4
-@@ -166,7 +166,7 @@ AC_DEFUN([GDB_AC_COMMON], [
+@@ -168,7 +168,7 @@ AC_DEFUN([GDB_AC_COMMON], [
      AC_PREPROC_IFELSE([AC_LANG_SOURCE([[
    #include <linux/perf_event.h>
    #ifndef PERF_ATTR_SIZE_VER5

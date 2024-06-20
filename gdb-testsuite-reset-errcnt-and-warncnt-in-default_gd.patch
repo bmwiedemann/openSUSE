@@ -1,0 +1,68 @@
+From 37b67fd94ed38959fecc67847666b758b29fe31c Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 27 Feb 2024 16:24:15 +0100
+Subject: [PATCH 40/48] [gdb/testsuite] Reset errcnt and warncnt in
+ default_gdb_init
+
+Say we do:
+...
+$ make check RUNTESTFLAGS="gdb.dap/ada-nested.exp gdb.dap/pause.exp"
+...
+and add a perror at the end of pause.exp:
+...
+ dap_shutdown
++
++perror "foo"
+...
+
+We run into:
+...
+UNRESOLVED: gdb.dap/ada-nested.exp: compilation prog.adb
+...
+
+This happens because the perror increases the errcnt, which is not reset at
+the end of the test-case, and consequently the first pass in the following
+test-case is changed into an unresolved.
+
+Version 1.6.3 of dejagnu contains a fix which produces an unresolved at the
+end of the test-case, which does reset the errcnt, but this is with version
+1.6.1.
+
+Furthermore, we reset the errcnt in clean_restart, but the pass is produced
+before, so that doesn't help either.
+
+Fix this by resetting errcnt and warncnt in default_gdb_init.
+
+Tested on x86_64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+PR testsuite/31351
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31351
+---
+ gdb/testsuite/lib/gdb.exp | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
+index 70c2db4ac84..990d0c8a70f 100644
+--- a/gdb/testsuite/lib/gdb.exp
++++ b/gdb/testsuite/lib/gdb.exp
+@@ -6851,6 +6851,15 @@ proc default_gdb_init { test_file_name } {
+ 	    return [uplevel 1 ::gdb_tcl_unknown $args]
+ 	}
+     }
++
++    # Dejagnu version 1.6.3 and later produce an unresolved at the end of a
++    # testcase if an error triggered, resetting errcnt and warncnt to 0, in
++    # order to avoid errors in one test-case influencing the following
++    # test-case.  Do this manually here, to support older versions.
++    global errcnt
++    global warncnt
++    set errcnt 0
++    set warncnt 0
+ }
+ 
+ # Return a path using GDB_PARALLEL.
+-- 
+2.35.3
+

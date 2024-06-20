@@ -1,0 +1,229 @@
+From 0ad71e3088f345101085a1f72e81a000a100db18 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sat, 27 Apr 2024 17:48:22 +0200
+Subject: [PATCH 25/48] [gdb/remote] Fix abort on REMOTE_CLOSE_ERROR
+
+When running test-case gdb.server/connect-with-no-symbol-file.exp on
+aarch64-linux (specifically, an opensuse leap 15.5 container on a
+fedora asahi 39 system), I run into:
+...
+(gdb) detach^M
+Detaching from program: target:connect-with-no-symbol-file, process 185104^M
+Ending remote debugging.^M
+terminate called after throwing an instance of 'gdb_exception_error'^M
+...
+
+The detailed backtrace of the corefile is:
+...
+ (gdb) bt
+ #0  0x0000ffff75504f54 in raise () from /lib64/libpthread.so.0
+ #1  0x00000000007a86b4 in handle_fatal_signal (sig=6)
+     at gdb/event-top.c:926
+ #2  <signal handler called>
+ #3  0x0000ffff74b977b4 in raise () from /lib64/libc.so.6
+ #4  0x0000ffff74b98c18 in abort () from /lib64/libc.so.6
+ #5  0x0000ffff74ea26f4 in __gnu_cxx::__verbose_terminate_handler() ()
+    from /usr/lib64/libstdc++.so.6
+ #6  0x0000ffff74ea011c in ?? () from /usr/lib64/libstdc++.so.6
+ #7  0x0000ffff74ea0180 in std::terminate() () from /usr/lib64/libstdc++.so.6
+ #8  0x0000ffff74ea0464 in __cxa_throw () from /usr/lib64/libstdc++.so.6
+ #9  0x0000000001548870 in throw_it (reason=RETURN_ERROR,
+     error=TARGET_CLOSE_ERROR, fmt=0x16c7810 "Remote connection closed", ap=...)
+     at gdbsupport/common-exceptions.cc:203
+ #10 0x0000000001548920 in throw_verror (error=TARGET_CLOSE_ERROR,
+     fmt=0x16c7810 "Remote connection closed", ap=...)
+     at gdbsupport/common-exceptions.cc:211
+ #11 0x0000000001548a00 in throw_error (error=TARGET_CLOSE_ERROR,
+     fmt=0x16c7810 "Remote connection closed")
+     at gdbsupport/common-exceptions.cc:226
+ #12 0x0000000000ac8f2c in remote_target::readchar (this=0x233d3d90, timeout=2)
+     at gdb/remote.c:9856
+ #13 0x0000000000ac9f04 in remote_target::getpkt (this=0x233d3d90,
+     buf=0x233d40a8, forever=false, is_notif=0x0) at gdb/remote.c:10326
+ #14 0x0000000000acf3d0 in remote_target::remote_hostio_send_command
+     (this=0x233d3d90, command_bytes=13, which_packet=17,
+     remote_errno=0xfffff1a3cf38, attachment=0xfffff1a3ce88,
+     attachment_len=0xfffff1a3ce90) at gdb/remote.c:12567
+ #15 0x0000000000ad03bc in remote_target::fileio_fstat (this=0x233d3d90, fd=3,
+     st=0xfffff1a3d020, remote_errno=0xfffff1a3cf38)
+     at gdb/remote.c:12979
+ #16 0x0000000000c39878 in target_fileio_fstat (fd=0, sb=0xfffff1a3d020,
+     target_errno=0xfffff1a3cf38) at gdb/target.c:3315
+ #17 0x00000000007eee5c in target_fileio_stream::stat (this=0x233d4400,
+     abfd=0x2323fc40, sb=0xfffff1a3d020) at gdb/gdb_bfd.c:467
+ #18 0x00000000007f012c in <lambda(bfd*, void*, stat*)>::operator()(bfd *,
+     void *, stat *) const (__closure=0x0, abfd=0x2323fc40, stream=0x233d4400,
+     sb=0xfffff1a3d020) at gdb/gdb_bfd.c:955
+ #19 0x00000000007f015c in <lambda(bfd*, void*, stat*)>::_FUN(bfd *, void *,
+     stat *) () at gdb/gdb_bfd.c:956
+ #20 0x0000000000f9b838 in opncls_bstat (abfd=0x2323fc40, sb=0xfffff1a3d020)
+     at bfd/opncls.c:665
+ #21 0x0000000000f90adc in bfd_stat (abfd=0x2323fc40, statbuf=0xfffff1a3d020)
+     at bfd/bfdio.c:431
+ #22 0x000000000065fe20 in reopen_exec_file () at gdb/corefile.c:52
+ #23 0x0000000000c3a3e8 in generic_mourn_inferior ()
+     at gdb/target.c:3642
+ #24 0x0000000000abf3f0 in remote_unpush_target (target=0x233d3d90)
+     at gdb/remote.c:6067
+ #25 0x0000000000aca8b0 in remote_target::mourn_inferior (this=0x233d3d90)
+     at gdb/remote.c:10587
+ #26 0x0000000000c387cc in target_mourn_inferior (
+     ptid=<error reading variable: Cannot access memory at address 0x2d310>)
+     at gdb/target.c:2738
+ #27 0x0000000000abfff0 in remote_target::remote_detach_1 (this=0x233d3d90,
+     inf=0x22fce540, from_tty=1) at gdb/remote.c:6421
+ #28 0x0000000000ac0094 in remote_target::detach (this=0x233d3d90,
+     inf=0x22fce540, from_tty=1) at gdb/remote.c:6436
+ #29 0x0000000000c37c3c in target_detach (inf=0x22fce540, from_tty=1)
+     at gdb/target.c:2526
+ #30 0x0000000000860424 in detach_command (args=0x0, from_tty=1)
+    at gdb/infcmd.c:2817
+ #31 0x000000000060b594 in do_simple_func (args=0x0, from_tty=1, c=0x231431a0)
+     at gdb/cli/cli-decode.c:94
+ #32 0x00000000006108c8 in cmd_func (cmd=0x231431a0, args=0x0, from_tty=1)
+     at gdb/cli/cli-decode.c:2741
+ #33 0x0000000000c65a94 in execute_command (p=0x232e52f6 "", from_tty=1)
+     at gdb/top.c:570
+ #34 0x00000000007a7d2c in command_handler (command=0x232e52f0 "")
+     at gdb/event-top.c:566
+ #35 0x00000000007a8290 in command_line_handler (rl=...)
+     at gdb/event-top.c:802
+ #36 0x0000000000c9092c in tui_command_line_handler (rl=...)
+     at gdb/tui/tui-interp.c:103
+ #37 0x00000000007a750c in gdb_rl_callback_handler (rl=0x23385330 "detach")
+     at gdb/event-top.c:258
+ #38 0x0000000000d910f4 in rl_callback_read_char ()
+     at readline/readline/callback.c:290
+ #39 0x00000000007a7338 in gdb_rl_callback_read_char_wrapper_noexcept ()
+     at gdb/event-top.c:194
+ #40 0x00000000007a73f0 in gdb_rl_callback_read_char_wrapper
+     (client_data=0x22fbf640) at gdb/event-top.c:233
+ #41 0x0000000000cbee1c in stdin_event_handler (error=0, client_data=0x22fbf640)
+     at gdb/ui.c:154
+ #42 0x000000000154ed60 in handle_file_event (file_ptr=0x232be730, ready_mask=1)
+     at gdbsupport/event-loop.cc:572
+ #43 0x000000000154f21c in gdb_wait_for_event (block=1)
+     at gdbsupport/event-loop.cc:693
+ #44 0x000000000154dec4 in gdb_do_one_event (mstimeout=-1)
+    at gdbsupport/event-loop.cc:263
+ #45 0x0000000000910f98 in start_event_loop () at gdb/main.c:400
+ #46 0x0000000000911130 in captured_command_loop () at gdb/main.c:464
+ #47 0x0000000000912b5c in captured_main (data=0xfffff1a3db58)
+     at gdb/main.c:1338
+ #48 0x0000000000912bf4 in gdb_main (args=0xfffff1a3db58)
+     at gdb/main.c:1357
+ #49 0x00000000004170f4 in main (argc=10, argv=0xfffff1a3dcc8)
+     at gdb/gdb.c:38
+ (gdb)
+...
+
+The abort happens because a c++ exception escapes to c code, specifically
+opncls_bstat in bfd/opncls.c.  Compiling with -fexceptions works around this.
+
+Fix this by catching the exception just before it escapes, in stat_trampoline
+and likewise in few similar spot.
+
+Add a new template catch_exceptions to do so in a consistent way.
+
+Tested on aarch64-linux.
+
+Approved-by: Pedro Alves <pedro@palves.net>
+
+PR remote/31577
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31577
+---
+ gdb/gdb_bfd.c | 59 ++++++++++++++++++++++++++++++++++++++++++++++++---
+ 1 file changed, 56 insertions(+), 3 deletions(-)
+
+diff --git a/gdb/gdb_bfd.c b/gdb/gdb_bfd.c
+index 217753cf914..3c34cc5693f 100644
+--- a/gdb/gdb_bfd.c
++++ b/gdb/gdb_bfd.c
+@@ -887,6 +887,29 @@ gdb_bfd_openw (const char *filename, const char *target)
+   return gdb_bfd_ref_ptr::new_reference (result);
+ }
+ 
++/* Wrap f (args) and handle exceptions by:
++   - returning val, and
++   - calling set_quit_flag or set_force_quit_flag, if needed.  */
++
++template <typename R, R val, typename F, typename... Args>
++static R
++catch_exceptions (F &&f, Args&&... args)
++{
++   try
++     {
++       return f (std::forward<Args> (args)...);
++     }
++   catch (const gdb_exception &ex)
++     {
++       if (ex.reason == RETURN_QUIT)
++	 set_quit_flag ();
++       else if (ex.reason == RETURN_FORCED_QUIT)
++	 set_force_quit_flag ();
++     }
++
++   return val;
++}
++
+ /* See gdb_bfd.h.  */
+ 
+ gdb_bfd_ref_ptr
+@@ -896,21 +919,51 @@ gdb_bfd_openr_iovec (const char *filename, const char *target,
+   auto do_open = [] (bfd *nbfd, void *closure) -> void *
+   {
+     auto real_opener = static_cast<gdb_iovec_opener_ftype *> (closure);
+-    return (*real_opener) (nbfd);
++    /* Prevent exceptions from escaping to C code and triggering an abort.  */
++    auto res = catch_exceptions<gdb_bfd_iovec_base *, nullptr> ([&]
++      {
++	return (*real_opener) (nbfd);
++      });
++    if (res == nullptr)
++      {
++	errno = EIO;
++	bfd_set_error (bfd_error_system_call);
++      }
++      return res;
+   };
+ 
+   auto read_trampoline = [] (bfd *nbfd, void *stream, void *buf,
+ 			     file_ptr nbytes, file_ptr offset) -> file_ptr
+   {
+     gdb_bfd_iovec_base *obj = static_cast<gdb_bfd_iovec_base *> (stream);
+-    return obj->read (nbfd, buf, nbytes, offset);
++    /* Prevent exceptions from escaping to C code and triggering an abort.  */
++    auto res = catch_exceptions<long int, -1> ([&]
++      {
++	return obj->read (nbfd, buf, nbytes, offset);
++      });
++    if (res == -1)
++      {
++	errno = EIO;
++	bfd_set_error (bfd_error_system_call);
++      }
++    return res;
+   };
+ 
+   auto stat_trampoline = [] (struct bfd *abfd, void *stream,
+ 			     struct stat *sb) -> int
+   {
+     gdb_bfd_iovec_base *obj = static_cast<gdb_bfd_iovec_base *> (stream);
+-    return obj->stat (abfd, sb);
++    /* Prevent exceptions from escaping to C code and triggering an abort.  */
++    auto res = catch_exceptions<int, -1> ([&]
++      {
++	return obj->stat (abfd, sb);
++      });
++    if (res == -1)
++      {
++	errno = EIO;
++	bfd_set_error (bfd_error_system_call);
++      }
++    return res;
+   };
+ 
+   auto close_trampoline = [] (struct bfd *nbfd, void *stream) -> int
+-- 
+2.35.3
+

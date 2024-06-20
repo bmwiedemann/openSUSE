@@ -1,0 +1,858 @@
+From d9951c3c9ea2e542d071710e9706ed505046fe36 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Fri, 24 Nov 2023 15:41:22 +0100
+Subject: [PATCH 48/48] [gdb/testsuite] Use more %progbits for arm
+
+On pinebook I ran into:
+...
+Running gdb.tui/tui-layout-asm-short-prog.exp ...
+gdb compile failed, gdb.tui/tui-layout-asm-short-prog.S: Assembler messages:
+gdb.tui/tui-layout-asm-short-prog.S:23: Error: \
+  junk at end of line, first unrecognized character is `,'
+...
+
+Fix this by using %progbits instead of @progbits for arm.
+
+Approved-by: Luis Machado <luis.machado@arm.com>
+
+Tested on x86_64-linux and pinebook.
+---
+ gdb/testsuite/gdb.arch/pr25124.S                     |  2 +-
+ gdb/testsuite/gdb.base/dup-sect.S                    |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dup-psym.S                  |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-abs-hi-pc-hello-dbg.S   |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-abs-hi-pc-world-dbg.S   |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-ada-ffffffff.S          |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-anon-mptr.S             |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-anonymous-func.S        |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-bad-elf-other.S         |  8 ++++++++
+ gdb/testsuite/gdb.dwarf2/dw2-bad-parameter-type.S    |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-basic.S                 |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-canonicalize-type.S     |  4 ++++
+ .../gdb.dwarf2/dw2-case-insensitive-debug.S          |  8 ++++++++
+ gdb/testsuite/gdb.dwarf2/dw2-compdir-oldgcc.S        |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-compressed.S            |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-const.S                 |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-cp-infcall-ref-static.S |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-cu-size.S               |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-dos-drive.S             |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-double-set-die-type.S   |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-dummy-cu.S              |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-empty-namespace.S       |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-empty-pc-range.S        |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-entry-value.S           |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-filename.S              |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-icc-opaque.S            |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-icycle.S                | 12 ++++++++++++
+ gdb/testsuite/gdb.dwarf2/dw2-inheritance.S           |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-inline-param.S          |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-intercu.S               |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-intermix.S              |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-linkage-name-trust.S    |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-minsym-in-cu.S          |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-modula2-self-type.S     |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-noloc.S                 |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-objfile-overlap-inner.S |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-objfile-overlap-outer.S |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-op-call.S               |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-op-stack-value.S        |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-param-error.S           |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-producer.S              |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-ref-missing-frame.S     |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-simple-locdesc.S        |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-skip-prologue.S         |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-stack-boundary.S        |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-strp.S                  |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-unresolved.S            |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw2-var-zero-addr.S         |  4 ++++
+ gdb/testsuite/gdb.dwarf2/dw4-sig-type-unused.S       |  4 ++++
+ gdb/testsuite/gdb.dwarf2/fission-reread.S            |  4 ++++
+ .../gdb.dwarf2/frame-inlined-in-outer-frame.S        |  4 ++++
+ gdb/testsuite/gdb.dwarf2/mac-fileno.S                |  4 ++++
+ gdb/testsuite/gdb.dwarf2/pr11465.S                   |  4 ++++
+ gdb/testsuite/gdb.dwarf2/pr13961.S                   |  4 ++++
+ gdb/testsuite/gdb.linespec/break-asm-file.exp        |  4 ++--
+ .../{break-asm-file0.s => break-asm-file0.S}         | 12 ++++++++----
+ .../{break-asm-file1.s => break-asm-file1.S}         |  8 ++++++--
+ gdb/testsuite/gdb.mi/dw2-ref-missing-frame.S         |  4 ++++
+ gdb/testsuite/gdb.tui/tui-layout-asm-short-prog.S    |  4 ++++
+ 59 files changed, 253 insertions(+), 9 deletions(-)
+ rename gdb/testsuite/gdb.linespec/{break-asm-file0.s => break-asm-file0.S} (96%)
+ rename gdb/testsuite/gdb.linespec/{break-asm-file1.s => break-asm-file1.S} (97%)
+
+diff --git a/gdb/testsuite/gdb.arch/pr25124.S b/gdb/testsuite/gdb.arch/pr25124.S
+index a7ed1a02472..27b4e683488 100644
+--- a/gdb/testsuite/gdb.arch/pr25124.S
++++ b/gdb/testsuite/gdb.arch/pr25124.S
+@@ -33,4 +33,4 @@ main:
+ 	mov	r0, #0
+ 	bx	lr
+ 	.size	main, .-main
+-	.section	.note.GNU-stack,"",@progbits
++	.section	.note.GNU-stack,"",%progbits
+diff --git a/gdb/testsuite/gdb.base/dup-sect.S b/gdb/testsuite/gdb.base/dup-sect.S
+index e374d578dc0..c51bc91d6d8 100644
+--- a/gdb/testsuite/gdb.base/dup-sect.S
++++ b/gdb/testsuite/gdb.base/dup-sect.S
+@@ -20,4 +20,8 @@ var1:	.byte	1
+ 
+ 	.section	sect2, "a"
+ var2:	.byte	2
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dup-psym.S b/gdb/testsuite/gdb.dwarf2/dup-psym.S
+index ec180e65080..4e50c0fe885 100644
+--- a/gdb/testsuite/gdb.dwarf2/dup-psym.S
++++ b/gdb/testsuite/gdb.dwarf2/dup-psym.S
+@@ -197,4 +197,8 @@ func_cu1:
+ 	.byte		1
+ 
+ .Lline1_end:
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-abs-hi-pc-hello-dbg.S b/gdb/testsuite/gdb.dwarf2/dw2-abs-hi-pc-hello-dbg.S
+index f0276adf3be..e1fccd1979f 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-abs-hi-pc-hello-dbg.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-abs-hi-pc-hello-dbg.S
+@@ -149,4 +149,8 @@ LELTP:
+         .uleb128 0x1
+         .byte   0x1
+ LELT:
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-abs-hi-pc-world-dbg.S b/gdb/testsuite/gdb.dwarf2/dw2-abs-hi-pc-world-dbg.S
+index 59dd26c3c85..2ff445e36a4 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-abs-hi-pc-world-dbg.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-abs-hi-pc-world-dbg.S
+@@ -149,4 +149,8 @@ LELTP:
+         .uleb128 0x1
+         .byte   0x1
+ LELT:
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-ada-ffffffff.S b/gdb/testsuite/gdb.dwarf2/dw2-ada-ffffffff.S
+index 960a97c39a8..d58c8bfedf8 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-ada-ffffffff.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-ada-ffffffff.S
+@@ -53,4 +53,8 @@ debug_end:
+ 	.byte	0x0
+ 	.byte	0x0
+ 	.byte	0x0
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-anon-mptr.S b/gdb/testsuite/gdb.dwarf2/dw2-anon-mptr.S
+index 2c62b613c57..dc6b86648bd 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-anon-mptr.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-anon-mptr.S
+@@ -375,4 +375,8 @@
+ 
+ 	.section	.debug_line
+ .Ldebug_line0:
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-anonymous-func.S b/gdb/testsuite/gdb.dwarf2/dw2-anonymous-func.S
+index 8b88ba6d1ef..45cd7c42fb8 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-anonymous-func.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-anonymous-func.S
+@@ -246,4 +246,8 @@ func_cu2:
+ 	.byte		1
+ 
+ .Lline1_end:
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-bad-elf-other.S b/gdb/testsuite/gdb.dwarf2/dw2-bad-elf-other.S
+index d90d4e2b4ac..192bfac844f 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-bad-elf-other.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-bad-elf-other.S
+@@ -15,7 +15,11 @@
+ 
+ 	.section ".other", "x"
+ 	.global some_func, some_func_end
++#ifdef __arm__
++	.type   some_func, %function
++#else
+ 	.type   some_func, @function
++#endif
+ 	nop
+ 	nop
+ 	nop
+@@ -27,4 +31,8 @@ some_func:
+ 	.size some_func,.-some_func
+ some_func_end:
+ 	nop
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-bad-parameter-type.S b/gdb/testsuite/gdb.dwarf2/dw2-bad-parameter-type.S
+index d7654bb1c14..10ea1ae24cb 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-bad-parameter-type.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-bad-parameter-type.S
+@@ -71,4 +71,8 @@ debug_end:
+ 	.byte	0x0
+ 	.byte	0x0
+ 	.byte	0x0
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-basic.S b/gdb/testsuite/gdb.dwarf2/dw2-basic.S
+index 372ab23cb3b..7b37162b037 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-basic.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-basic.S
+@@ -197,4 +197,8 @@ func_cu1:
+ 	.byte		1
+ 
+ .Lline1_end:
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-canonicalize-type.S b/gdb/testsuite/gdb.dwarf2/dw2-canonicalize-type.S
+index 39e462b7149..ffe29d17a3a 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-canonicalize-type.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-canonicalize-type.S
+@@ -154,4 +154,8 @@ debug_end:
+ 	.byte	0x0
+ 	.byte	0x0
+ 	.byte	0x0
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-case-insensitive-debug.S b/gdb/testsuite/gdb.dwarf2/dw2-case-insensitive-debug.S
+index 1059ace3b3e..84e6ee9a485 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-case-insensitive-debug.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-case-insensitive-debug.S
+@@ -60,7 +60,11 @@
+ 	/* The .debug_names-based index support depends on
+ 	   .debug_aranges generated by GCC.  (.gdb_index includes a
+ 	   gdb-generated map instead.)	*/
++#ifdef __arm__
++	.section	.debug_aranges,"",%progbits
++#else
+ 	.section	.debug_aranges,"",@progbits
++#endif
+ 	.4byte	.Laranges_end - .Laranges_start	// Length of Address Ranges Info
+ .Laranges_start:
+ 	.2byte	0x2	// DWARF Version
+@@ -126,4 +130,8 @@
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-compdir-oldgcc.S b/gdb/testsuite/gdb.dwarf2/dw2-compdir-oldgcc.S
+index 8a8ecfc397b..4d626817f1a 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-compdir-oldgcc.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-compdir-oldgcc.S
+@@ -239,4 +239,8 @@ gcc43:	.globl gcc43
+ 	.uleb128	1
+ 	.byte		1
+ .Lgcc43_end:
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-compressed.S b/gdb/testsuite/gdb.dwarf2/dw2-compressed.S
+index 509fbea4a3b..14cf286f393 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-compressed.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-compressed.S
+@@ -218,4 +218,8 @@ func_cu1:
+ 	.byte		0x9c
+ 	.byte		0x00
+ 	.byte		0x92
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-const.S b/gdb/testsuite/gdb.dwarf2/dw2-const.S
+index dfc882ac530..ff81c18732d 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-const.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-const.S
+@@ -249,4 +249,8 @@ func_cu1:
+ 	.byte		1
+ 
+ .Lline1_end:
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-cp-infcall-ref-static.S b/gdb/testsuite/gdb.dwarf2/dw2-cp-infcall-ref-static.S
+index 070f24b407d..e217c736dd8 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-cp-infcall-ref-static.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-cp-infcall-ref-static.S
+@@ -113,4 +113,8 @@
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-cu-size.S b/gdb/testsuite/gdb.dwarf2/dw2-cu-size.S
+index 99465e2c015..b6f8a2117b3 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-cu-size.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-cu-size.S
+@@ -107,4 +107,8 @@
+ 
+ 	.byte		0x0			/* Terminator .debug_abbrev
+ 						   section.  */
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-dos-drive.S b/gdb/testsuite/gdb.dwarf2/dw2-dos-drive.S
+index d0bdce9ef8b..e4d13a8cd04 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-dos-drive.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-dos-drive.S
+@@ -74,4 +74,8 @@ dieb:
+ 	.byte	0x0
+ 
+ 	.byte	0x0
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-double-set-die-type.S b/gdb/testsuite/gdb.dwarf2/dw2-double-set-die-type.S
+index 973d5020342..d4fdb1d3077 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-double-set-die-type.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-double-set-die-type.S
+@@ -617,4 +617,8 @@
+ 	.byte	0x0
+ 	.byte	0x0
+ 
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-dummy-cu.S b/gdb/testsuite/gdb.dwarf2/dw2-dummy-cu.S
+index 781b87e7115..f44db05f266 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-dummy-cu.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-dummy-cu.S
+@@ -31,4 +31,8 @@ main_end:
+ 	.section	.debug_abbrev
+ .Ldebug_abbrev0:
+ 	.byte	0x0
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-empty-namespace.S b/gdb/testsuite/gdb.dwarf2/dw2-empty-namespace.S
+index d78b7e87ff5..5e08776ba39 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-empty-namespace.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-empty-namespace.S
+@@ -106,4 +106,8 @@ var:	.4byte	1
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++#ifdef __arm__
++	.type   some_func, %function
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-empty-pc-range.S b/gdb/testsuite/gdb.dwarf2/dw2-empty-pc-range.S
+index ea8dd092cb0..e4678d86695 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-empty-pc-range.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-empty-pc-range.S
+@@ -80,4 +80,8 @@ dieb:
+ 	.byte	0x0
+ 
+ 	.byte	0x0
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-entry-value.S b/gdb/testsuite/gdb.dwarf2/dw2-entry-value.S
+index 82d4549b8b5..5fdfeecbb09 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-entry-value.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-entry-value.S
+@@ -102,4 +102,8 @@ loclist:
+ 	.byte	0x0
+ 	.byte	0x0
+ 	.byte	0x0
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-filename.S b/gdb/testsuite/gdb.dwarf2/dw2-filename.S
+index 1cdd94a12f5..a1f0867aed5 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-filename.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-filename.S
+@@ -51,4 +51,8 @@
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-icc-opaque.S b/gdb/testsuite/gdb.dwarf2/dw2-icc-opaque.S
+index f954c4f7cc7..67ba8a47d37 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-icc-opaque.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-icc-opaque.S
+@@ -252,4 +252,8 @@ debug_info_seg3_end:
+ 	.byte 0x08	/* DW_FORM_string. */
+ 	.2byte 0x0000	/* End abbrev. */
+ 	.byte 0x00	/* End abbrev table. */
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-icycle.S b/gdb/testsuite/gdb.dwarf2/dw2-icycle.S
+index 8856eb6e5d3..e432f629cae 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-icycle.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-icycle.S
+@@ -18,7 +18,11 @@
+ 	.text
+ 
+ .Ltext0:
++#ifdef __arm__
++	.type	p__top__middle__inside.3062, %function
++#else
+ 	.type	p__top__middle__inside.3062, @function
++#endif
+ p__top__middle__inside.3062:
+ .LFB4:
+ 	.file 1 "p.adb"
+@@ -26,7 +30,11 @@ p__top__middle__inside.3062:
+ .LBE6:
+ 
+ 	.globl	p__top
++#ifdef __arm__
++	.type	p__top, %function
++#else
+ 	.type	p__top, @function
++#endif
+ p__top:
+ .LFB2:
+         .4byte 0
+@@ -246,4 +254,8 @@ p__top:
+ .Lline1_begin:
+         .byte   0
+ 
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-inheritance.S b/gdb/testsuite/gdb.dwarf2/dw2-inheritance.S
+index f83762503ac..1585d8ac576 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-inheritance.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-inheritance.S
+@@ -96,4 +96,8 @@
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-inline-param.S b/gdb/testsuite/gdb.dwarf2/dw2-inline-param.S
+index 540bbb38342..c460dddb732 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-inline-param.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-inline-param.S
+@@ -150,4 +150,8 @@
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-intercu.S b/gdb/testsuite/gdb.dwarf2/dw2-intercu.S
+index a068ba116f9..2cdc3049bc0 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-intercu.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-intercu.S
+@@ -314,4 +314,8 @@ func_cu1:
+ 	.byte		1
+ 
+ .Lline1_end:
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-intermix.S b/gdb/testsuite/gdb.dwarf2/dw2-intermix.S
+index a9a474e2b7c..010bdb22454 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-intermix.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-intermix.S
+@@ -198,4 +198,8 @@ func_cu1:
+ 	.byte		1
+ 
+ .Lline1_end:
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-linkage-name-trust.S b/gdb/testsuite/gdb.dwarf2/dw2-linkage-name-trust.S
+index aa3ec9d486c..8a16022bd8f 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-linkage-name-trust.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-linkage-name-trust.S
+@@ -132,4 +132,8 @@ c:	.4byte	0
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-minsym-in-cu.S b/gdb/testsuite/gdb.dwarf2/dw2-minsym-in-cu.S
+index 4169f720837..cbc1c87bb91 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-minsym-in-cu.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-minsym-in-cu.S
+@@ -115,4 +115,8 @@ func2:
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-modula2-self-type.S b/gdb/testsuite/gdb.dwarf2/dw2-modula2-self-type.S
+index 82236a7091a..6289c36f01e 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-modula2-self-type.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-modula2-self-type.S
+@@ -121,4 +121,8 @@ die221:
+ 	.string	"GNU Modula-2 0.78 (20100402) grafted onto GCC 4.1.2"
+ .LASF2:
+ 	.string	""
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-noloc.S b/gdb/testsuite/gdb.dwarf2/dw2-noloc.S
+index 4b742437b56..d9e31d30ed9 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-noloc.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-noloc.S
+@@ -324,4 +324,8 @@ resolvable:
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-objfile-overlap-inner.S b/gdb/testsuite/gdb.dwarf2/dw2-objfile-overlap-inner.S
+index 93abcf6e09a..57c58123fb8 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-objfile-overlap-inner.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-objfile-overlap-inner.S
+@@ -178,4 +178,8 @@ inner:
+ 	.byte		1
+ 
+ .Lline1_end:
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-objfile-overlap-outer.S b/gdb/testsuite/gdb.dwarf2/dw2-objfile-overlap-outer.S
+index 6031ad26d93..99ff8c1151e 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-objfile-overlap-outer.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-objfile-overlap-outer.S
+@@ -209,4 +209,8 @@ outer_after:
+ 	.byte		1
+ 
+ .Lline1_end:
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-op-call.S b/gdb/testsuite/gdb.dwarf2/dw2-op-call.S
+index 2ae7bae9a4b..e5bba2cf053 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-op-call.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-op-call.S
+@@ -166,4 +166,8 @@ loclist:
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-op-stack-value.S b/gdb/testsuite/gdb.dwarf2/dw2-op-stack-value.S
+index 003732618b2..6983f0ed675 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-op-stack-value.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-op-stack-value.S
+@@ -130,4 +130,8 @@ aa551234:	.byte	0xaa, 0x55, 0x12, 0x34
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-param-error.S b/gdb/testsuite/gdb.dwarf2/dw2-param-error.S
+index 3c7ca3c8ad3..a8b8155b966 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-param-error.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-param-error.S
+@@ -106,4 +106,8 @@ debug_end:
+ 	.byte	0x0
+ 	.byte	0x0
+ 	.byte	0x0
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-producer.S b/gdb/testsuite/gdb.dwarf2/dw2-producer.S
+index ca63697e90d..30338ebd652 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-producer.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-producer.S
+@@ -198,4 +198,8 @@ func_cu1:
+ 	.byte		1
+ 
+ .Lline1_end:
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-ref-missing-frame.S b/gdb/testsuite/gdb.dwarf2/dw2-ref-missing-frame.S
+index 1091dbc895e..3e3502a441b 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-ref-missing-frame.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-ref-missing-frame.S
+@@ -149,4 +149,8 @@
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-simple-locdesc.S b/gdb/testsuite/gdb.dwarf2/dw2-simple-locdesc.S
+index f199994bcdf..5844ebe4f6d 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-simple-locdesc.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-simple-locdesc.S
+@@ -167,4 +167,8 @@ d:
+ 	.string	"sizetype"
+ .LASF1:
+ 	.string	"char"
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-skip-prologue.S b/gdb/testsuite/gdb.dwarf2/dw2-skip-prologue.S
+index d19ee72ebf3..c94147430c3 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-skip-prologue.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-skip-prologue.S
+@@ -397,4 +397,8 @@ loclist:
+ 	.byte		1
+ 
+ .Lline1_end:
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-stack-boundary.S b/gdb/testsuite/gdb.dwarf2/dw2-stack-boundary.S
+index 8ea03b126ac..6d4a7be3834 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-stack-boundary.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-stack-boundary.S
+@@ -66,4 +66,8 @@ debug_end:
+ 	.byte	0x0
+ 	.byte	0x0
+ 	.byte	0x0
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-strp.S b/gdb/testsuite/gdb.dwarf2/dw2-strp.S
+index dd4eb4fe46a..e0e27ce7548 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-strp.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-strp.S
+@@ -176,4 +176,8 @@
+ 	.string		"hello world!\n"
+ .Lemptyname:
+ 	.string		""
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-unresolved.S b/gdb/testsuite/gdb.dwarf2/dw2-unresolved.S
+index c52852d7463..2a0a8de6793 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-unresolved.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-unresolved.S
+@@ -178,4 +178,8 @@ SYMBOL(var):	.byte	2
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-var-zero-addr.S b/gdb/testsuite/gdb.dwarf2/dw2-var-zero-addr.S
+index f2fb3c39a23..2abb4f7ee25 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-var-zero-addr.S
++++ b/gdb/testsuite/gdb.dwarf2/dw2-var-zero-addr.S
+@@ -90,4 +90,8 @@
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/dw4-sig-type-unused.S b/gdb/testsuite/gdb.dwarf2/dw4-sig-type-unused.S
+index d4b4bb64a3c..4678c0fe0f2 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw4-sig-type-unused.S
++++ b/gdb/testsuite/gdb.dwarf2/dw4-sig-type-unused.S
+@@ -85,4 +85,8 @@ types_start:
+ 	.byte	0x0
+ 	.byte	0x0
+ 	.byte	0x0
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/fission-reread.S b/gdb/testsuite/gdb.dwarf2/fission-reread.S
+index bdb20e76330..6171453c4a5 100644
+--- a/gdb/testsuite/gdb.dwarf2/fission-reread.S
++++ b/gdb/testsuite/gdb.dwarf2/fission-reread.S
+@@ -460,4 +460,8 @@ SYMBOL(main):
+ .Ldebug_addr0:
+ 	.4byte	.LFB0	/* DW_AT_low_pc */
+ 	.4byte	SYMBOL(baz)	/* DW_AT_location */
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/frame-inlined-in-outer-frame.S b/gdb/testsuite/gdb.dwarf2/frame-inlined-in-outer-frame.S
+index 7e5971c50c9..a41b2851394 100644
+--- a/gdb/testsuite/gdb.dwarf2/frame-inlined-in-outer-frame.S
++++ b/gdb/testsuite/gdb.dwarf2/frame-inlined-in-outer-frame.S
+@@ -164,4 +164,8 @@ __start_high_pc:
+ 
+ .global __cu_high_pc
+ __cu_high_pc:
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/mac-fileno.S b/gdb/testsuite/gdb.dwarf2/mac-fileno.S
+index 77730401515..71401bc81c7 100644
+--- a/gdb/testsuite/gdb.dwarf2/mac-fileno.S
++++ b/gdb/testsuite/gdb.dwarf2/mac-fileno.S
+@@ -209,4 +209,8 @@ func_cu1:
+ 	.uleb128 0x0	/* Included from line number 0 */
+ 	.uleb128 0x0	/* Filename we just started (bug: number too small) */
+         .byte   0x0     /* end of CU's macro information */
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/pr11465.S b/gdb/testsuite/gdb.dwarf2/pr11465.S
+index 5308abebee0..b974f0e9c63 100644
+--- a/gdb/testsuite/gdb.dwarf2/pr11465.S
++++ b/gdb/testsuite/gdb.dwarf2/pr11465.S
+@@ -360,4 +360,8 @@ die149:	.uleb128 0x16		/* DW_TAG_variable */
+ .LASF4:
+ 	.string	"GNU C++ 4.4.2"
+ 	.ident	"GCC: (GNU) 4.4.2"
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.dwarf2/pr13961.S b/gdb/testsuite/gdb.dwarf2/pr13961.S
+index fc9d7afa838..4c1162591c3 100644
+--- a/gdb/testsuite/gdb.dwarf2/pr13961.S
++++ b/gdb/testsuite/gdb.dwarf2/pr13961.S
+@@ -378,4 +378,8 @@ SYMBOL(main):
+ .LASF3:
+ 	.string	"main"
+ 
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.mi/dw2-ref-missing-frame.S b/gdb/testsuite/gdb.mi/dw2-ref-missing-frame.S
+index 684b9d93541..e37b04a4219 100644
+--- a/gdb/testsuite/gdb.mi/dw2-ref-missing-frame.S
++++ b/gdb/testsuite/gdb.mi/dw2-ref-missing-frame.S
+@@ -163,4 +163,8 @@
+ 
+ 	.byte		0x0			/* Terminator */
+ 	.byte		0x0			/* Terminator */
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+diff --git a/gdb/testsuite/gdb.tui/tui-layout-asm-short-prog.S b/gdb/testsuite/gdb.tui/tui-layout-asm-short-prog.S
+index d577804e4bb..461e322628a 100644
+--- a/gdb/testsuite/gdb.tui/tui-layout-asm-short-prog.S
++++ b/gdb/testsuite/gdb.tui/tui-layout-asm-short-prog.S
+@@ -20,4 +20,8 @@ _start:
+ 	.rept 5
+ 	nop
+ 	.endr
++#ifdef __arm__
++	.section	.note.GNU-stack,"",%progbits
++#else
+ 	.section	.note.GNU-stack,"",@progbits
++#endif
+-- 
+2.35.3
+

@@ -119,8 +119,8 @@ report_todo ()
 	return
     fi
     
-    if [ "$c" = "SLE-11" ] && [ "$arch" = "x86_64" ] && [ "$status" = "unresolvable" ]; then
-	# This needs fixing, but is a known problem.
+    if [ "$c" = "SLE-11" ]; then
+	# No longer supported, gdb requires more recent version of MPFR.
 	return
     fi
 

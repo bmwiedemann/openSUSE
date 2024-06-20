@@ -1,0 +1,262 @@
+From 3efde6721b362fe0acad348443e4b961d7485717 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 14 Mar 2024 11:25:10 +0100
+Subject: [PATCH 09/48] [gdb/tdep] Fix gdb.base/watchpoint-unaligned.exp on
+ aarch64
+
+On aarch64-linux, with test-case gdb.base/watchpoint-unaligned.exp I run into:
+...
+(gdb) watch data.u.size8twice[1]^M
+Hardware watchpoint 241: data.u.size8twice[1]^M
+(gdb) PASS: gdb.base/watchpoint-unaligned.exp: watch data.u.size8twice[1]
+continue^M
+Continuing.^M
+FAIL: gdb.base/watchpoint-unaligned.exp: continue (timeout)
+FAIL: gdb.base/watchpoint-unaligned.exp: size8twice write
+...
+
+This happens as follows.
+
+We start the exec and set an 8-byte hardware watchpoint on
+data.u.size8twice[1] at address 0x440048:
+...
+(gdb) p sizeof (data.u.size8twice[1])
+$1 = 8
+(gdb) p &data.u.size8twice[1]
+$2 = (uint64_t *) 0x440048 <data+16>
+...
+
+We continue execution, and a 16-byte write at address 0x440040 triggers the
+hardware watchpoint:
+...
+  4101c8:       a9000801        stp     x1, x2, [x0]
+...
+
+When checking whether a watchpoint has triggered in
+aarch64_stopped_data_address, we check against address 0x440040 (passed in
+parameter addr_trap).  This behaviour is documented:
+...
+	  /* ADDR_TRAP reports the first address of the memory range
+	     accessed by the CPU, regardless of what was the memory
+	     range watched.  ...  */
+...
+and consequently the matching logic compares against an addr_watch_aligned:
+...
+	  && addr_trap >= addr_watch_aligned
+	  && addr_trap < addr_watch + len)
+...
+
+However, the comparison fails:
+...
+(gdb) p /x addr_watch_aligned
+$3 = 0x440048
+(gdb) p addr_trap >= addr_watch_aligned
+$4 = false
+...
+
+Consequently, aarch64_stopped_data_address returns false, and
+stopped_by_watchpoint returns false, and watchpoints_triggered returns 0,
+which make infrun think it's looking at a delayed hardware
+breakpoint/watchpoint trap:
+...
+  [infrun] handle_signal_stop: stop_pc=0x4101c8
+  [infrun] handle_signal_stop: delayed hardware breakpoint/watchpoint trap, ignoring
+...
+Infrun then ignores the trap and continues, but runs into the same situation
+again and again, causing a hang which then causes the test timeout.
+
+Fix this by allowing a match 8 bytes below addr_watch_aligned.  This
+introduces the possibility for false positives, so we only do this for regular
+"value changed" watchpoints.
+
+An earlier version of this patch worked by aligning addr_watch_aligned to 16
+instead of 8:
+...
+-  const CORE_ADDR addr_watch_aligned = align_down (state->dr_addr_wp[i], 8);
++  const CORE_ADDR addr_watch_aligned = align_down (state->dr_addr_wp[i], 16);
+...
+but while that fixed the test-case, it didn't fix the problem completely, so
+extend the test-case to check more scenarios.
+
+Tested on aarch64-linux.
+
+Tested-By: Luis Machado <luis.machado@arm.com>
+Approved-By: Luis Machado <luis.machado@arm.com>
+
+PR tdep/29423
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=29423
+---
+ gdb/aarch64-nat.c                             | 17 +++-
+ gdb/testsuite/gdb.base/watchpoint-unaligned.c | 11 +--
+ .../gdb.base/watchpoint-unaligned.exp         | 78 ++++++++++++-------
+ 3 files changed, 68 insertions(+), 38 deletions(-)
+
+diff --git a/gdb/aarch64-nat.c b/gdb/aarch64-nat.c
+index 89d1ba6acc6..a173e4e18d5 100644
+--- a/gdb/aarch64-nat.c
++++ b/gdb/aarch64-nat.c
+@@ -269,7 +269,7 @@ aarch64_stopped_data_address (const struct aarch64_debug_reg_state *state,
+ 	  = aarch64_watchpoint_length (state->dr_ctrl_wp[i]);
+ 	const CORE_ADDR addr_watch = state->dr_addr_wp[i] + offset;
+ 	const CORE_ADDR addr_watch_aligned
+-	  = align_down (state->dr_addr_wp[i], 8);
++	  = align_down (state->dr_addr_wp[i], AARCH64_HWP_MAX_LEN_PER_REG);
+ 	const CORE_ADDR addr_orig = state->dr_addr_orig_wp[i];
+ 
+ 	/* ADDR_TRAP reports the first address of the memory range
+@@ -283,8 +283,19 @@ aarch64_stopped_data_address (const struct aarch64_debug_reg_state *state,
+ 				 |---- range watched ----|
+ 		 |----------- range accessed ------------|
+ 
+-	   In this case, ADDR_TRAP will be 4.  */
+-	if (!(addr_trap >= addr_watch_aligned
++	   In this case, ADDR_TRAP will be 4.
++
++	   The access size also can be larger than that of the watchpoint
++	   itself.  For instance, the access size of an stp instruction is 16.
++	   So, if we use stp to store to address p, and set a watchpoint on
++	   address p + 8, the reported ADDR_TRAP can be p + 8 (observed on
++	   RK3399 SOC). But it also can be p (observed on M1 SOC).  Checking
++	   for this situation introduces the possibility of false positives,
++	   so we only do this for hw_write watchpoints.  */
++	const CORE_ADDR max_access_size = type == hw_write ? 16 : 8;
++	const CORE_ADDR addr_watch_base = addr_watch_aligned -
++	  (max_access_size - AARCH64_HWP_MAX_LEN_PER_REG);
++	if (!(addr_trap >= addr_watch_base
+ 	      && addr_trap < addr_watch + len))
+ 	  {
+ 	    /* Not a match.  */
+diff --git a/gdb/testsuite/gdb.base/watchpoint-unaligned.c b/gdb/testsuite/gdb.base/watchpoint-unaligned.c
+index b60025a64f4..d854c376be9 100644
+--- a/gdb/testsuite/gdb.base/watchpoint-unaligned.c
++++ b/gdb/testsuite/gdb.base/watchpoint-unaligned.c
+@@ -29,7 +29,7 @@ static volatile struct
+       uint32_t size4[2];
+       uint16_t size2[4];
+       uint8_t size1[8];
+-      uint64_t size8twice[2];
++      uint64_t size8twice[3];
+     }
+   u;
+ } data;
+@@ -44,13 +44,14 @@ write_size8twice (void)
+   static const uint64_t second = 2;
+ 
+ #ifdef __aarch64__
++  volatile void *p = &data.u.size8twice[offset];
+   asm volatile ("stp %1, %2, [%0]"
+ 		: /* output */
+-		: "r" (data.u.size8twice), "r" (first), "r" (second) /* input */
++		: "r" (p), "r" (first), "r" (second) /* input */
+ 		: "memory" /* clobber */);
+ #else
+-  data.u.size8twice[0] = first;
+-  data.u.size8twice[1] = second;
++  data.u.size8twice[offset] = first;
++  data.u.size8twice[offset + 1] = second;
+ #endif
+ }
+ 
+@@ -59,7 +60,7 @@ main (void)
+ {
+   volatile uint64_t local;
+ 
+-  assert (sizeof (data) == 8 + 2 * 8);
++  assert (sizeof (data) == 8 + 3 * 8);
+ 
+   write_size8twice ();
+ 
+diff --git a/gdb/testsuite/gdb.base/watchpoint-unaligned.exp b/gdb/testsuite/gdb.base/watchpoint-unaligned.exp
+index d31a9cdc2c8..c58704d033d 100644
+--- a/gdb/testsuite/gdb.base/watchpoint-unaligned.exp
++++ b/gdb/testsuite/gdb.base/watchpoint-unaligned.exp
+@@ -151,38 +151,56 @@ foreach wpcount {4 7} {
+     gdb_assert $got_hit $test
+ }
+ 
+-if ![runto_main] {
+-    return -1
+-}
+-gdb_breakpoint [gdb_get_line_number "final_return"] "Breakpoint $decimal at $hex" "final_return"
+-set test {watch data.u.size8twice[1]}
+-set wpnum 0
+-gdb_test_multiple $test $test {
+-    -re "Hardware watchpoint (\[0-9\]+): .*\r\n$gdb_prompt $" {
+-	set wpnum $expect_out(1,string)
+-	pass $gdb_test_name
+-    }
+-    -re "Watchpoint (\[0-9\]+): .*\r\n$gdb_prompt $" {
+-	if {[istarget "arm*-*-*"]} {
+-	    untested $gdb_test_name
+-	} else {
+-	    fail $gdb_test_name
+-	}
+-    }
+-}
+-if {$wpnum} {
+-    set test "continue"
+-    set got_hit 0
+-    gdb_test_multiple $test $test {
+-	-re "\r\nCould not insert hardware watchpoint .*\r\n$gdb_prompt $" {
++# We've got an array with 3 8-byte elements.  Do a store of 16 bytes,
++# to:
++# - elements 0 and 1 (offset == 0), and
++# - elements 1 and 2 (offset == 1).
++# For each case, check setting a watchpoint at:
++# - the first written element (index == 0), and
++# - the second element (index == 1).
++foreach_with_prefix offset { 0 1 } {
++    foreach_with_prefix index { 0 1 } {
++
++	clean_restart $binfile
++
++	if ![runto_main] {
++	    return -1
+ 	}
+-	-re "Hardware watchpoint $wpnum:.*New value = .*\r\n$gdb_prompt $" {
+-	    set got_hit 1
+-	    send_gdb "continue\n"
+-	    exp_continue
++
++	gdb_test_no_output "set var offset = $offset"
++	gdb_breakpoint [gdb_get_line_number "final_return"] \
++	    "Breakpoint $decimal at $hex" "final_return"
++	set watch_index [expr $offset + $index]
++	set test "watch data.u.size8twice\[$watch_index\]"
++	set wpnum 0
++	gdb_test_multiple $test $test {
++	    -re "Hardware watchpoint (\[0-9\]+): .*\r\n$gdb_prompt $" {
++		set wpnum $expect_out(1,string)
++		pass $gdb_test_name
++	    }
++	    -re "Watchpoint (\[0-9\]+): .*\r\n$gdb_prompt $" {
++		if {[istarget "arm*-*-*"]} {
++		    untested $gdb_test_name
++		} else {
++		    fail $gdb_test_name
++		}
++	    }
+ 	}
+-	-re " final_return .*\r\n$gdb_prompt $" {
++	if {$wpnum} {
++	    set test "continue"
++	    set got_hit 0
++	    gdb_test_multiple $test $test {
++		-re "\r\nCould not insert hardware watchpoint .*\r\n$gdb_prompt $" {
++		}
++		-re "Hardware watchpoint $wpnum:.*New value = .*\r\n$gdb_prompt $" {
++		    set got_hit 1
++		    send_gdb "continue\n"
++		    exp_continue
++		}
++		-re " final_return .*\r\n$gdb_prompt $" {
++		}
++	    }
++	    gdb_assert $got_hit "size8twice write"
+ 	}
+     }
+-    gdb_assert $got_hit "size8twice write"
+ }
+-- 
+2.35.3
+

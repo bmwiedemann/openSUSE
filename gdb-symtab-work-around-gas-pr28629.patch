@@ -1,7 +1,7 @@
-From b1136560e772dd4c74f1fbb41f6ba840b92fb9d6 Mon Sep 17 00:00:00 2001
+From 1b878333913343630472f89b4bc42f51b1619308 Mon Sep 17 00:00:00 2001
 From: Tom de Vries <tdevries@suse.de>
 Date: Wed, 1 Nov 2023 00:33:12 +0100
-Subject: [PATCH 2/2] [gdb/symtab] Work around gas PR28629
+Subject: [PATCH 1/2] [gdb/symtab] Work around gas PR28629
 
 When running test-case gdb.tui/tui-layout-asm-short-prog.exp on AlmaLinux 9.2
 ppc64le, I run into:
@@ -76,12 +76,12 @@ Approved-By: Tom Tromey <tom@tromey.com>
  gdb/dwarf2/cu.c                               |  1 +
  gdb/dwarf2/cu.h                               |  1 +
  gdb/dwarf2/read.c                             | 37 +++++++-
- .../gdb.dwarf2/dw2-gas-workaround.exp         | 94 +++++++++++++++++++
- 4 files changed, 132 insertions(+), 1 deletion(-)
+ .../gdb.dwarf2/dw2-gas-workaround.exp         | 92 +++++++++++++++++++
+ 4 files changed, 130 insertions(+), 1 deletion(-)
  create mode 100644 gdb/testsuite/gdb.dwarf2/dw2-gas-workaround.exp
 
 diff --git a/gdb/dwarf2/cu.c b/gdb/dwarf2/cu.c
-index 42fd4f4441b..6b5d956649f 100644
+index a908ec908cd..f9b05dfc709 100644
 --- a/gdb/dwarf2/cu.c
 +++ b/gdb/dwarf2/cu.c
 @@ -40,6 +40,7 @@ dwarf2_cu::dwarf2_cu (dwarf2_per_cu_data *per_cu,
@@ -93,7 +93,7 @@ index 42fd4f4441b..6b5d956649f 100644
      processing_has_namespace_info (false),
      load_all_dies (false)
 diff --git a/gdb/dwarf2/cu.h b/gdb/dwarf2/cu.h
-index 710aeb5b237..9b1e8775ff4 100644
+index 6c611710503..ef8db480e3f 100644
 --- a/gdb/dwarf2/cu.h
 +++ b/gdb/dwarf2/cu.h
 @@ -265,6 +265,7 @@ struct dwarf2_cu
@@ -105,19 +105,19 @@ index 710aeb5b237..9b1e8775ff4 100644
  
    /* When true, the file that we're processing is known to have
 diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
-index 472684a5817..2339cceb829 100644
+index fc4667b782f..50fa302b43a 100644
 --- a/gdb/dwarf2/read.c
 +++ b/gdb/dwarf2/read.c
-@@ -146,6 +146,8 @@ static int dwarf2_loclist_index;
- static int dwarf2_locexpr_block_index;
+@@ -147,6 +147,8 @@ static int dwarf2_locexpr_block_index;
  static int dwarf2_loclist_block_index;
+ static int ada_block_index;
  
 +static bool producer_is_gas_lt_2_38 (struct dwarf2_cu *cu);
 +
  /* Size of .debug_loclists section header for 32-bit DWARF format.  */
  #define LOCLIST_HEADER_SIZE32 12
  
-@@ -9663,6 +9665,27 @@ read_file_scope (struct die_info *die, struct dwarf2_cu *cu)
+@@ -7665,6 +7667,27 @@ read_file_scope (struct die_info *die, struct dwarf2_cu *cu)
  
    file_and_directory &fnd = find_file_and_directory (die, cu);
  
@@ -145,7 +145,7 @@ index 472684a5817..2339cceb829 100644
    cu->start_compunit_symtab (fnd.get_name (), fnd.intern_comp_dir (objfile),
  			     lowpc);
  
-@@ -13377,7 +13400,10 @@ check_producer (struct dwarf2_cu *cu)
+@@ -11427,7 +11450,10 @@ check_producer (struct dwarf2_cu *cu)
    else if (producer_is_clang (cu->producer, &major, &minor))
      cu->producer_is_clang = true;
    else if (producer_is_gas (cu->producer, &major, &minor))
@@ -157,7 +157,7 @@ index 472684a5817..2339cceb829 100644
    else
      {
        /* For other non-GCC compilers, expect their behavior is DWARF version
-@@ -13413,6 +13439,15 @@ producer_is_codewarrior (struct dwarf2_cu *cu)
+@@ -11463,6 +11489,15 @@ producer_is_codewarrior (struct dwarf2_cu *cu)
    return cu->producer_is_codewarrior;
  }
  
@@ -175,10 +175,10 @@ index 472684a5817..2339cceb829 100644
  {
 diff --git a/gdb/testsuite/gdb.dwarf2/dw2-gas-workaround.exp b/gdb/testsuite/gdb.dwarf2/dw2-gas-workaround.exp
 new file mode 100644
-index 00000000000..416778f51b7
+index 00000000000..ca2b10f23b3
 --- /dev/null
 +++ b/gdb/testsuite/gdb.dwarf2/dw2-gas-workaround.exp
-@@ -0,0 +1,94 @@
+@@ -0,0 +1,92 @@
 +# Copyright 2023 Free Software Foundation, Inc.
 +
 +# This program is free software; you can redistribute it and/or modify
@@ -199,9 +199,7 @@ index 00000000000..416778f51b7
 +load_lib dwarf.exp
 +
 +# This test can only be run on targets which support DWARF-2 and use gas.
-+if { ![dwarf2_support] } {
-+    return -1
-+}
++require dwarf2_support
 +
 +standard_testfile dw2-lines.c -dw2.S
 +
@@ -273,6 +271,8 @@ index 00000000000..416778f51b7
 +	pass $gdb_test_name
 +    }
 +}
+
+base-commit: d9951c3c9ea2e542d071710e9706ed505046fe36
 -- 
 2.35.3
 

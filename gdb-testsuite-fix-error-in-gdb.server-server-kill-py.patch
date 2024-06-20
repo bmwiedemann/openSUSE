@@ -1,0 +1,54 @@
+From b33811a85ff53af77cdad995ad8cb50431c8c362 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 30 May 2024 12:56:35 +0200
+Subject: [PATCH] [gdb/testsuite] Fix error in
+ gdb.server/server-kill-python.exp
+
+With test-case gdb.server/server-kill-python.exp, I sometimes run into:
+...
+builtin_spawn gdb -nw -nx -q -iex set height 0 -iex set width 0 \
+  -data-directory data-directory^M
+kill^M
+(gdb) kill^M
+file /home/abuild/rpmbuild/BUILD/gdb-14.2/build-x86_64-suse-linux/gdb/testsuite.unix.-m64.-fno-PIE.-no-pie/outputs/gdb.server/server-kill-python/server-kill-python^M
+The program is not being run.^M
+(gdb) ERROR: Couldn't load server-kill-python into GDB.
+...
+
+The problem is that the spawn produces a prompt, but it's not explicitly
+consumed.
+
+This is a regression since commit 0f077fcae0f ("[gdb/testsuite] Simplify
+gdb.server/server-kill-python.exp").
+
+Fix this by consuming the initial prompt.
+
+PR testsuite/31819
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31819
+Fixes: 0f077fcae0f ("[gdb/testsuite] Simplify gdb.server/server-kill-python.exp"
+---
+ gdb/testsuite/gdb.server/server-kill-python.exp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/gdb/testsuite/gdb.server/server-kill-python.exp b/gdb/testsuite/gdb.server/server-kill-python.exp
+index 778880984ec..c0768558eeb 100644
+--- a/gdb/testsuite/gdb.server/server-kill-python.exp
++++ b/gdb/testsuite/gdb.server/server-kill-python.exp
+@@ -63,6 +63,12 @@ if {[gdb_spawn_with_cmdline_opts \
+     return
+ }
+ 
++gdb_test_multiple "" "initial prompt" {
++    -re "^$gdb_prompt $" {
++	pass $gdb_test_name
++    }
++}
++
+ gdb_load $binfile
+ gdb_target_cmd $gdbserver_protocol $gdbserver_gdbport
+ 
+
+base-commit: 3faa0f850b27f64f08ad4ec5987f711be8862851
+-- 
+2.35.3
+

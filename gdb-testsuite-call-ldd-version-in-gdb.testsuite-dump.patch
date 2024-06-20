@@ -1,0 +1,39 @@
+From dedb6d4ce0478d053b7e786d73f298c8e72f1f99 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 18 Jan 2024 11:14:19 +0100
+Subject: [PATCH 44/48] [gdb/testsuite] Call ldd --version in
+ gdb.testsuite/dump-system-info.exp
+
+Once in a while I'm looking at the gdb.log of an entire testsuite run, and I'm
+trying to establish what glibc version is used.  Sometimes this is possible,
+sometimes not.
+
+Make this easy by calling ldd --version in test-case
+gdb.testsuite/dump-system-info.exp, which for instance on openSUSE Leap 15.4
+gives:
+...
+$ ldd --version
+ldd (GNU libc) 2.31
+  ...
+$
+...
+
+Tested on x86_64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+---
+ gdb/testsuite/gdb.testsuite/dump-system-info.exp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/gdb/testsuite/gdb.testsuite/dump-system-info.exp b/gdb/testsuite/gdb.testsuite/dump-system-info.exp
+index 1a28b29b1c7..e3eb9eee73a 100644
+--- a/gdb/testsuite/gdb.testsuite/dump-system-info.exp
++++ b/gdb/testsuite/gdb.testsuite/dump-system-info.exp
+@@ -36,3 +36,4 @@ proc dump_info {cmd {what ""}} {
+ dump_info "cat /proc/cpuinfo" "Cpuinfo"
+ dump_info "uname -a"
+ dump_info "lsb_release -a"
++dump_info "ldd --version"
+-- 
+2.35.3
+

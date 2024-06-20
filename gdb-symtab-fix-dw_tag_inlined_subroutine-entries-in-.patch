@@ -1,7 +1,7 @@
-From 19185006cfe0901da907da4f09fbc197aba976a2 Mon Sep 17 00:00:00 2001
+From c79ecacd3f75cfb0ec1a3afc49ca3f30b1759009 Mon Sep 17 00:00:00 2001
 From: Tom de Vries <tdevries@suse.de>
 Date: Fri, 11 Aug 2023 01:36:50 +0200
-Subject: [PATCH 11/11] [gdb/symtab] Fix DW_TAG_inlined_subroutine entries in
+Subject: [PATCH 13/13] [gdb/symtab] Fix DW_TAG_inlined_subroutine entries in
  the cooked index
 
 We get incorrect qualified names in the cooked index for
@@ -19,10 +19,10 @@ Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=30728
  1 file changed, 32 insertions(+), 35 deletions(-)
 
 diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
-index e2d4fe8cde6..418acaabc60 100644
+index 93708ef11b9..a4f982962ae 100644
 --- a/gdb/dwarf2/read.c
 +++ b/gdb/dwarf2/read.c
-@@ -18369,52 +18369,49 @@ cooked_indexer::scan_attributes (dwarf2_per_cu_data *scanning_per_cu,
+@@ -16464,52 +16464,49 @@ cooked_indexer::scan_attributes (dwarf2_per_cu_data *scanning_per_cu,
  	  const gdb_byte *new_info_ptr = (new_reader->buffer
  					  + to_underlying (origin_offset));
  

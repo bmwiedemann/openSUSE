@@ -1,0 +1,66 @@
+From 163358e7c426183521d34c96e6959f615862ff1f Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 20 Mar 2024 19:29:18 +0100
+Subject: [PATCH 38/48] [gdb/testsuite] Handle core without build-id in
+ gdb.base/corefile-buildid.exp
+
+On aarch64-linux (debian 12), when running test-case gdb.base/corefile-buildid.exp, I get:
+...
+expecting exec file "debugdir-exec/.build-id/ec/f10ec5d39648774f8c35d3cf757c8db52f5163"
+info files^M
+Local core dump file:^M
+        `build-exec/corefile-buildid.core', file type elf64-littleaarch64.^M
+        0x0000aaaac1d70000 - 0x0000aaaac1d71000 is load1^M
+	...
+        0x0000ffffffa8b000 - 0x0000ffffffaac000 is load16^M
+(gdb) FAIL: gdb.base/corefile-buildid.exp: exec: info files
+...
+
+The problem is that the test-case expect the build-id to be available in the
+core file, while it isn't.
+
+Fix this by detecting that the build-id isn't available in the core file using eu-readelf, as in
+gdb.base/coredump-filter-build-id.exp.
+
+Tested on aarch64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+---
+ gdb/testsuite/gdb.base/corefile-buildid.exp | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.base/corefile-buildid.exp b/gdb/testsuite/gdb.base/corefile-buildid.exp
+index 3c2702e0cd3..630e812bd6b 100644
+--- a/gdb/testsuite/gdb.base/corefile-buildid.exp
++++ b/gdb/testsuite/gdb.base/corefile-buildid.exp
+@@ -217,7 +217,7 @@ proc locate_exec_from_core_build_id {corefile buildid suffix \
+ # of shared and/or stripped/.debug executables.
+ 
+ proc do_corefile_buildid_tests {args} {
+-    global binfile testfile srcfile execdir sharedir
++    global binfile testfile srcfile execdir sharedir hex
+ 
+     # Parse options.
+     parse_args [list {sepdebug} {shared}]
+@@ -266,6 +266,18 @@ proc do_corefile_buildid_tests {args} {
+ 	}
+ 	verbose -log "corefile is $corefile"
+ 
++	if { [catch "exec [gdb_find_eu-unstrip] -n --core $corefile" output] == 0 } {
++	    set line [lindex [split $output "\n"] 0]
++	    set binfile_re (?:[string_to_regexp $program_to_run]|\\\[(?:exe|pie)\\\])
++	    if { ![regexp "^${hex}\\+${hex} \[a-f0-9\]+@${hex}.*$binfile_re$" $line] } {
++		unsupported "build id for exec"
++		return
++	    }
++	} else {
++	    unsupported "eu-unstrip execution"
++	    return
++	}
++
+ 	# Grab the build-id from the binary, removing ".debug" from the end.
+ 	set buildid [build_id_debug_filename_get $program_to_run]
+ 	if {$buildid == ""} {
+-- 
+2.35.3
+

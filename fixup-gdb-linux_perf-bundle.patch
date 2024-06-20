@@ -1,10 +1,19 @@
+From af4a87e2b3c2ac5acae1e6f4405fc59e1218de74 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 18 Apr 2024 14:26:58 +0200
+Subject: [PATCH] fixup-gdb-linux_perf-bundle
+
+---
+ gdb/gdb.c | 8 --------
+ 1 file changed, 8 deletions(-)
+
 diff --git a/gdb/gdb.c b/gdb/gdb.c
-index 82e9e6da210..b5e28445630 100644
+index 41a9b70c222..6e3ff0755ab 100644
 --- a/gdb/gdb.c
 +++ b/gdb/gdb.c
-@@ -20,19 +20,11 @@
- #include "main.h"
+@@ -21,10 +21,6 @@
  #include "interps.h"
+ #include "run-on-main-thread.h"
  
 -#ifdef PERF_ATTR_SIZE_VER5_BUNDLE
 -extern "C" void __libipt_init(void);
@@ -13,6 +22,8 @@ index 82e9e6da210..b5e28445630 100644
  int
  main (int argc, char **argv)
  {
+@@ -36,10 +32,6 @@ main (int argc, char **argv)
+ 
    struct captured_main_args args;
  
 -#ifdef PERF_ATTR_SIZE_VER5_BUNDLE
@@ -22,3 +33,8 @@ index 82e9e6da210..b5e28445630 100644
    memset (&args, 0, sizeof args);
    args.argc = argc;
    args.argv = argv;
+
+base-commit: 254988c36fe592e89af5d92e1d35a6eb4b09cbb0
+-- 
+2.35.3
+

@@ -1,0 +1,80 @@
+From 7ee7b011e0c846a77cb4d1dde3a3c625412f1733 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 25 Jan 2024 16:25:07 +0100
+Subject: [PATCH 11/48] [gdb/testsuite] Fix gdb.base/eh_return.exp
+
+On Fedora rawhide aarch64, I run into:
+...
+(gdb) PASS: gdb.base/eh_return.exp: set breakpoint on address
+run ^M
+Starting program: eh_return ^M
+[Thread debugging using libthread_db enabled]^M
+Using host libthread_db library "/lib64/libthread_db.so.1".^M
+[Inferior 1 (process 1113051) exited normally]^M
+(gdb) FAIL: gdb.base/eh_return.exp: hit breakpoint (the program exited)
+...
+
+This happens as follows: the test-case sets a breakpoint on the last
+instruction of function eh2:
+...
+(gdb) break *0x00000000004103ec^M
+...
+and expects to hit the breakpoint, but instead the "br x6" is taken:
+...
+   0x00000000004103e0 <+176>:   cbz     x4, 0x4103ec <eh2+188>^M
+   0x00000000004103e4 <+180>:   add     sp, sp, x5^M
+   0x00000000004103e8 <+184>:   br      x6^M
+   0x00000000004103ec <+188>:   ret^M
+...
+
+In contrast, with fedora f39 we have:
+...
+   0x00000000004103bc <+156>:   ldp     x2, x3, [sp, #48]^M
+   0x00000000004103c0 <+160>:   ldp     x29, x30, [sp, #16]^M
+   0x00000000004103c4 <+164>:   add     sp, sp, #0x50^M
+   0x00000000004103c8 <+168>:   add     sp, sp, x4^M
+   0x00000000004103cc <+172>:   ret^M
+
+...
+and the breakpoint is reached.
+
+Fix this by detecting that the breakpoint is not hit, and declaring the test
+unsupported.
+
+Tested on aarch64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+PR testsuite/31291
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31291
+---
+ gdb/testsuite/gdb.base/eh_return.exp | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.base/eh_return.exp b/gdb/testsuite/gdb.base/eh_return.exp
+index bced409547b..7d566b1ddc2 100644
+--- a/gdb/testsuite/gdb.base/eh_return.exp
++++ b/gdb/testsuite/gdb.base/eh_return.exp
+@@ -79,4 +79,18 @@ gdb_assert [gdb_breakpoint "*$address" no-message] "set breakpoint on address"
+ # breakpoint, so instead, run to the breakpoint.
+ gdb_run_cmd
+ 
+-gdb_test "" "Breakpoint .*" "hit breakpoint"
++set test "hit breakpoint"
++gdb_expect {
++    -re "Breakpoint .*\r\n$gdb_prompt $" {
++	pass $test
++    }
++    -re "$inferior_exited_re normally.*\r\n$gdb_prompt $" {
++	unsupported $test
++    }
++    -re "\r\n$gdb_prompt $" {
++	fail $test
++    }
++    default {
++	fail $test
++    }
++}
+-- 
+2.35.3
+

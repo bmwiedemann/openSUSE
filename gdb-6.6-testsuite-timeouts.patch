@@ -9,7 +9,7 @@ Subject: gdb-6.6-testsuite-timeouts.patch
 diff --git a/gdb/testsuite/gdb.base/annota1.exp b/gdb/testsuite/gdb.base/annota1.exp
 --- a/gdb/testsuite/gdb.base/annota1.exp
 +++ b/gdb/testsuite/gdb.base/annota1.exp
-@@ -39,6 +39,8 @@ if  { [gdb_compile "${srcdir}/${subdir}/${srcfile}" "${binfile}" executable {deb
+@@ -37,6 +37,8 @@ if  { [gdb_compile "${srcdir}/${subdir}/${srcfile}" "${binfile}" executable {deb
  
  clean_restart ${binfile}
  
@@ -21,7 +21,7 @@ diff --git a/gdb/testsuite/gdb.base/annota1.exp b/gdb/testsuite/gdb.base/annota1
 diff --git a/gdb/testsuite/gdb.base/annota3.exp b/gdb/testsuite/gdb.base/annota3.exp
 --- a/gdb/testsuite/gdb.base/annota3.exp
 +++ b/gdb/testsuite/gdb.base/annota3.exp
-@@ -38,6 +38,8 @@ if  { [gdb_compile "${srcdir}/${subdir}/${srcfile}" "${binfile}" executable {deb
+@@ -36,6 +36,8 @@ if  { [gdb_compile "${srcdir}/${subdir}/${srcfile}" "${binfile}" executable {deb
  
  clean_restart ${binfile}
  

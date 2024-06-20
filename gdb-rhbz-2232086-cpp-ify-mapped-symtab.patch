@@ -206,7 +206,7 @@ diff --git a/gdb/dwarf2/index-write.c b/gdb/dwarf2/index-write.c
  
  	  /* But it should still be a new element in the hash table.  */
  	  gdb_assert (slot->name == nullptr);
-@@ -388,7 +437,7 @@ write_hash_table (mapped_symtab *symtab, data_buf &output, data_buf &cpool)
+@@ -387,7 +436,7 @@ write_hash_table (mapped_symtab *symtab, data_buf &output, data_buf &cpool)
  
      /* We add all the index vectors to the constant pool first, to
         ensure alignment is ok.  */
@@ -215,7 +215,7 @@ diff --git a/gdb/dwarf2/index-write.c b/gdb/dwarf2/index-write.c
        {
  	if (entry.name == NULL)
  	  continue;
-@@ -417,7 +466,7 @@ write_hash_table (mapped_symtab *symtab, data_buf &output, data_buf &cpool)
+@@ -416,7 +465,7 @@ write_hash_table (mapped_symtab *symtab, data_buf &output, data_buf &cpool)
  
    /* Now write out the hash table.  */
    std::unordered_map<c_str_view, offset_type, c_str_view_hasher> str_table;
@@ -224,7 +224,7 @@ diff --git a/gdb/dwarf2/index-write.c b/gdb/dwarf2/index-write.c
      {
        offset_type str_off, vec_off;
  
-@@ -1149,7 +1198,7 @@ write_cooked_index (cooked_index_vector *table,
+@@ -1151,7 +1200,7 @@ write_cooked_index (cooked_index *table,
        const auto it = cu_index_htab.find (entry->per_cu);
        gdb_assert (it != cu_index_htab.cend ());
  
@@ -233,16 +233,16 @@ diff --git a/gdb/dwarf2/index-write.c b/gdb/dwarf2/index-write.c
  
        if (entry->per_cu->lang () == language_ada)
  	{
-@@ -1169,7 +1218,7 @@ write_cooked_index (cooked_index_vector *table,
- 		 gdb, it has to use the encoded name, with any
- 		 suffixes stripped.  */
- 	      std::string encoded = ada_encode (name, false);
--	      name = obstack_strdup (&symtab->m_string_obstack,
-+	      name = obstack_strdup (symtab->obstack (),
- 				     encoded.c_str ());
- 	    }
+@@ -1159,7 +1208,7 @@ write_cooked_index (cooked_index *table,
+ 	     gdb, it has to use the encoded name, with any
+ 	     suffixes stripped.  */
+ 	  std::string encoded = ada_encode (name, false);
+-	  name = obstack_strdup (&symtab->m_string_obstack,
++	  name = obstack_strdup (symtab->obstack (),
+ 				 encoded.c_str ());
  	}
-@@ -1202,8 +1251,8 @@ write_cooked_index (cooked_index_vector *table,
+       else if (entry->per_cu->lang () == language_cplus
+@@ -1191,8 +1240,8 @@ write_cooked_index (cooked_index *table,
        else
  	kind = GDB_INDEX_SYMBOL_KIND_TYPE;
  
@@ -253,7 +253,7 @@ diff --git a/gdb/dwarf2/index-write.c b/gdb/dwarf2/index-write.c
      }
  }
  
-@@ -1281,8 +1330,6 @@ write_gdbindex (dwarf2_per_objfile *per_objfile,
+@@ -1267,8 +1316,6 @@ write_gdbindex (dwarf2_per_bfd *per_bfd, cooked_index *table,
    symtab.minimize ();
  
    data_buf symtab_vec, constant_pool;

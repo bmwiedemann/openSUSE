@@ -30,6 +30,7 @@ have_sle11=false
 have_sle12=false
 have_factory=false
 have_aarch64=false
+have_arm=false
 have_powerpc64le=false
 have_s390=false
 have_s390x=false
@@ -49,6 +50,9 @@ if [ "$n" = "-local" ]; then
 		;;
 	    -aarch64)
 		have_aarch64=true
+		;;
+	    -arm)
+		have_arm=true
 		;;
 	    -powerpc64le|-ppc64le)
 		have_powerpc64le=true
@@ -123,7 +127,7 @@ report_sum ()
     echo FAILs:
     grep ^FAIL: "$sum" \
 	| grep -E -v "$kfail_re"
-    echo ERROR COUNT:
+    echo -n "ERROR COUNT: "
     grep -c ^ERROR: "$sum"
 }
 
@@ -164,6 +168,8 @@ kfail=(
     "FAIL: gdb.threads/gcore-stale-thread.exp: exited thread is current due to non-stop"
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=28617
+    "FAIL: gdb.base/info-os.exp: get process list \(timeout\)"
+    "FAIL: gdb.base/info-os.exp: get process list"
     "FAIL: gdb.base/info-os.exp: get process groups \(timeout\)"
     "FAIL: gdb.base/info-os.exp: get threads \(timeout\)"
     "FAIL: gdb.base/info-os.exp: get file descriptors \(timeout\)"
@@ -180,10 +186,6 @@ kfail=(
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=26363
     "FAIL: gdb.xml/tdesc-reload.exp: .*internal error"
-
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=26761
-    # Should be fixed in gdb-14.
-    "FAIL: gdb.base/gdb-sigterm.exp: .*internal error"
 
     # If a test-case fails to compile, it's not a GDB FAIL, ignore.
     "FAIL: gdb.ada/.*\.exp: compilation .*\.adb"
@@ -265,16 +267,6 @@ kfail=(
     "FAIL: gdb.base/info-os.exp: get shared-memory regions"
     "FAIL: gdb.base/info-os.exp: get threads"
 
-    # Fails related to PKRU register.  To be investigated.  Might be fixed in
-    # gdb 14, but related patches look non-trivial to backport.
-    "FAIL: gdb.arch/i386-pkru.exp: pkru register"
-    "FAIL: gdb.arch/i386-pkru.exp: read pkru register"
-    "FAIL: gdb.arch/i386-pkru.exp: read value after setting value"
-    "FAIL: gdb.arch/i386-pkru.exp: variable after reading pkru"
-    "FAIL: gdb.base/gcore.exp: corefile restored all registers"
-    "FAIL: gdb.reverse/insn-reverse.exp: rdrand: compare registers on insn"
-    "FAIL: gdb.reverse/insn-reverse.exp: rdseed: compare registers on insn"
-
     # https://sourceware.org/bugzilla/show_bug.cgi?id=28478
     "FAIL: gdb.gdb/selftest.exp: backtrace through signal handler"
 
@@ -297,12 +289,52 @@ kfail=(
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29040
     "FAIL: gdb.threads/next-fork-other-thread.exp:"
 
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=31810
+    "FAIL: gdb.threads/next-fork-exec-other-thread.exp:"
+
     # https://sourceware.org/bugzilla/show_bug.cgi?id=30521
     "FAIL: gdb.base/printcmds.exp: print {unsigned char\[\]}{0xffffffff}"
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=30528
     # Fixed in 15.  Backportable to 14.
     "FAIL: gdb.dwarf2/per-bfd-sharing.exp: couldn't remove files in temporary cache dir"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=30480
+    "FAIL: gdb.ada/info_auto_lang.exp: language_choice=auto: frame=0, frame_lang=c: info functions proc_in_"
+    "FAIL: gdb.ada/info_auto_lang.exp: language_choice=auto: frame=1, frame_lang=ada: info functions proc_in_"
+    "FAIL: gdb.ada/info_auto_lang.exp: language_choice=ada: frame=0, frame_lang=c: info functions proc_in_"
+    "FAIL: gdb.ada/info_auto_lang.exp: language_choice=ada: frame=1, frame_lang=ada: info functions proc_in_"
+    "FAIL: gdb.ada/info_auto_lang.exp: language_choice=c: frame=0, frame_lang=c: info functions proc_in_"
+    "FAIL: gdb.ada/info_auto_lang.exp: language_choice=c: frame=1, frame_lang=ada: info functions proc_in_"
+    "FAIL: gdb.ada/info_exc.exp: info exceptions task"
+    "FAIL: gdb.ada/info_exc.exp: info exceptions const.aint"
+    "FAIL: gdb.ada/mi_exc_info.exp: -info-ada-exceptions task \(unexpected output\)"
+    "FAIL: gdb.ada/mi_exc_info.exp: -info-ada-exceptions const.aint \(unexpected output\)"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=31440
+    "FAIL: gdb.python/py-progspace-events.exp: inferior 1 \(timeout\)"
+    "FAIL: gdb.python/py-progspace-events.exp: step"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=31809
+    "FAIL: gdb.threads/attach-slow-waitpid.exp: attach to target \(timeout\)"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=31806
+    "FAIL: gdb.debuginfod/fetch_src_and_symbols.exp: local_url: file corefile"
+    "FAIL: gdb.debuginfod/crc_mismatch.exp: local_debuginfod: debuginfod running, info downloaded, no CRC mismatch"
+
+    # Fixed by commit 17f6581c36a ("gdb/testsuite: another attempt to fix
+    # gdb.threads/thread-specific-bp.exp").
+    "FAIL: gdb.threads/thread-specific-bp.exp: non_stop=on: continue to end \(timeout\)"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=31811
+    "FAIL: gdb.threads/threads-after-exec.exp:"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=29253
+    "FAIL: gdb.server/stop-reply-no-thread.exp: to_disable=threads: continue to main \(timeout\)"
+    "FAIL: gdb.server/stop-reply-no-thread.exp: to_disable=threads: continue until exit \(timeout\)"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=31831
+    "FAIL: gdb.dap/log-message.exp: logging output \(checking body category\)"
 
 ) # kfail
 
@@ -443,10 +475,6 @@ kfail_factory=(
     "FAIL: gdb.base/gdb11531.exp: watchpoint variable triggers at next"
     "FAIL: gdb.base/gdb11531.exp: watchpoint variable triggers at continue"
 
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=29253
-    "FAIL: gdb.server/stop-reply-no-thread.exp: to_disable=threads: continue to main \(timeout\)"
-    "FAIL: gdb.server/stop-reply-no-thread.exp: to_disable=threads: continue until exit \(timeout\)"
-
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29706
     "FAIL: gdb.base/eof-exit.exp: with non-dump terminal: with bracketed-paste-mode on: close GDB with eof \(missed the prompt\)"
 
@@ -458,6 +486,9 @@ kfail_factory=(
     "FAIL: gdb.base/rtld-step.exp: next over baz in foo"
     "FAIL: gdb.base/rtld-step.exp: step out of foo back into bar"
     "FAIL: gdb.base/rtld-step.exp: continue until exit"
+    "FAIL: gdb.base/rtld-step.exp: next over foo 0"
+    "FAIL: gdb.base/rtld-step.exp: step into bar"
+    "FAIL: gdb.base/rtld-step.exp: step into foo 1"
 
     # Sets breakpoints in gdb build with lto.  This is known to be slow, and
     # likely to cause timeouts.
@@ -483,6 +514,9 @@ kfail_factory=(
     "FAIL: gdb.reverse/solib-reverse.exp: run until end part two"
     "FAIL: gdb.reverse/solib-reverse.exp: reverse-next over solib function one"
     "FAIL: gdb.reverse/solib-reverse.exp: reverse-next over solib function two"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=31564
+    "FAIL: gdb.base/rtld-step.exp: runto: run to main"
 
 ) # kfail_factory
 
@@ -514,6 +548,10 @@ kfail_aarch64=(
     "FAIL: gdb.ada/mi.*.exp:"
     "FAIL: gdb.base/annota.*.exp:"
     "FAIL: gdb.dwarf2/dw2-opt-structptr.exp: mi"
+    "FAIL: gdb.trace/mi-.*.exp:"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=31826
+    "FAIL: gdb.arch/aarch64-unwind-pc.exp:"
 
 ) # kfail_aarch64
 
@@ -592,9 +630,24 @@ kfail_powerpc64le=(
     "FAIL: gdb.base/run-control-while-bg-execution.exp: action1=.*: action2=run: run"
     "FAIL: gdb.base/run-control-while-bg-execution.exp: action1=.*: action2=start: start"
 
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=31823
+    "FAIL: gdb.base/nodebug.exp: p/c \(int\) array_index\(\"abcdef\",2\)"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=31825
+    "FAIL: gdb.base/break-interp.exp: ldprelink=NO: ldsepdebug=NO: binprelink=NO: binsepdebug=NO: binpie=YES: INNER: reach-\(_dl_debug_state|dl_main\)-2: reach"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=31827
+    "FAIL: gdb.base/gnu_vector.exp: call add_structvecs"
+
 )
 
 kfail_powerpc64le_sle12=(
+
+    "FAIL: gdb.guile/scm-breakpoint.exp:.*"
+    # Cluster of fails related to hw watchpoint support.
+    "FAIL: gdb.guile/scm-breakpoint.exp: test_bkpt_eval_funcs: test watchpoint write \(the program exited\)"
+    "FAIL: gdb.guile/scm-breakpoint.exp: test_bkpt_internal: test invisible watchpoint write \(the program exited\)"
+    "FAIL: gdb.guile/scm-breakpoint.exp: test_watchpoints: test watchpoint write \(the program exited\)"
 
 )
 
@@ -676,11 +729,14 @@ kfail_i586=(
 
 )
 
-kfail_armv7hl=(
+kfail_arm=(
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=30537
     "FAIL: gdb.fortran/intrinsics.exp: p cmplx \(4,4,16\) \(GDB internal error\)"
     "FAIL: gdb.fortran/intrinsics.exp: ptype cmplx \(4,4,16\) \(GDB internal error\)"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=31061
+    "FAIL: gdb.base/gdb-sigterm.exp: .*internal error"
 
 )
 
@@ -695,7 +751,8 @@ case $n in
 	kfail+=("${kfail_sle11[@]}")
 	kfail+=("${kfail_s390[@]}")
 	kfail+=("${kfail_powerpc64le[@]}")
-	kfail+=("${kfail_armv7hl[@]}")
+	kfail+=("${kfail_arm[@]}")
+	kfail+=("${kfail_aarch64[@]}")
 	kfail_re=$(join "|" "${kfail[@]}")
 	grep "^FAIL:.*internal error" binaries-testsuite*/gdb-testresults/*.sum \
 	     | grep -E -v "$kfail_re"
@@ -747,19 +804,21 @@ case $n in
 	    "infrun.c:[0-9]*: internal-error: finish_step_over: Assertion \`ecs->event_thread->control.trap_expected' failed."
 	    # https://sourceware.org/bugzilla/show_bug.cgi?id=26363
 	    ".i586.*i386-linux-nat.c:[0-9]*: internal-error: Got request for bad register number [0-9]*."
-	    # https://sourceware.org/bugzilla/show_bug.cgi?id=26761
-	    "thread.c:[0-9]*: internal-error: inferior_thread: Assertion \`current_thread_ \!= nullptr' failed."
+
 	    # https://sourceware.org/bugzilla/show_bug.cgi?id=19675
+	    # PR is fixed in gdb-15.
 	    "linux-nat.c:[0-9]*: internal-error: wait returned unexpected status"
+	    "linux-nat.c:[0-9]*: internal-error: wait returned unexpected PID"
+
 	    # https://sourceware.org/bugzilla/show_bug.cgi?id=28553
 	    "infrun.c:[0-9]*: internal-error: thread .* needs a step-over, but not in step-over queue"
-	    # https://sourceware.org/bugzilla/show_bug.cgi?id=19675
-	    "linux-nat.c:[0-9]*: internal-error: wait returned unexpected"
+
 	    # https://sourceware.org/bugzilla/show_bug.cgi?id=28604
 	    "x86-linux-dregs.c:[0-9]*: internal-error: void x86_linux_update_debug_registers\(lwp_info\*\): Assertion \`lwp_is_stopped \(lwp\)' failed."
 
 	    # https://sourceware.org/bugzilla/show_bug.cgi?id=28667
 	    "record-full.c:[0-9]*: internal-error: ptid_t record_full_wait_1\(target_ops\*, ptid_t, target_waitstatus\*, target_wait_flags\): Assertion \`\(options & TARGET_WNOHANG\) != 0' failed."
+
 	    # https://sourceware.org/bugzilla/show_bug.cgi?id=26873
 	    "infrun.c:[0-9]*: internal-error: resume_1: Assertion \`!\(thread_has_single_step_breakpoints_set \(tp\) && step\)' failed."
 
@@ -777,6 +836,9 @@ case $n in
 
 	    # Test-case gdb.base/gcore-excessive-memory.exp.
 	    "utils.c:[0-9]*: internal-error: virtual memory exhausted: can't allocate [0-9]* bytes."
+
+	    # https://sourceware.org/bugzilla/show_bug.cgi?id=31061
+	    "intrusive_list.h:[0-9]*: internal-error: erase_element: Assertion \`elem_node->prev != INTRUSIVE_LIST_UNLINKED_VALUE' failed\."
 	)
 
 	kfail_re=$(join "|" "${kfail[@]}")
@@ -786,98 +848,147 @@ case $n in
 	;;
 
     4)
-	(
-	    # Known clean config: Leap 15.3 x86_64
-	    config=openSUSE_Leap_15.3.x86_64/gdb-testresults
-	    sums=("$config/gdb-x86_64-suse-linux-m64.-fno-PIE.-no-pie.sum"
-		  "$config/gdb-x86_64-suse-linux-m64.sum"
-		  "$config/gdb-x86_64-suse-linux-m32.-fno-PIE.-no-pie.sum"
-		  "$config/gdb-x86_64-suse-linux-m32.sum")
+	for id in SLE-12 \
+		      SLE-15 \
+		      ALP \
+		      openSUSE_Leap_15.3 \
+		      openSUSE_Leap_15.4 \
+		      openSUSE_Leap_15.5 \
+		      openSUSE_Factory; \
+	    do
+		for arch in x86_64 \
+				i586 \
+				aarch64 \
+				ppc64le \
+				s390x; \
+		    do
 
-	    #
-	    
-	    for sum in "${sums[@]}"; do
-		sum=binaries-testsuite.$sum
-		report_sum "$sum"
-	    done
-	)
+			config=$id.$arch
+			case $config in
+			    SLE-15.i586|SLE-12.i586|ALP.i586)
+				# No such config.
+				continue
+				;;
+			    ALP.ppc64le|openSUSE_Factory.ppc64le|*.s390x)
+				# Not cleaned up yet.
+				continue
+				;;
+			esac
 
-	(
-	    # Known clean config: Leap 15.3 i586
-	    config=openSUSE_Leap_15.3.i586/gdb-testresults
-	    sums=("$config/gdb-i586-suse-linux-m32.-fno-PIE.-no-pie.sum"
-		  "$config/gdb-i586-suse-linux-m32.sum")
+			id2=$id
+			case $id in
+			    openSUSE_Factory)
+				case $arch in
+				    s390x)
+					id2=openSUSE_Factory_zSystems
+					;;
+				    ppc64le)
+					id2=openSUSE_Factory_PPC
+					;;
+				    i586)
+					id2=openSUSE_Factory_LegacyX86
+					;;
+				    armv7l|aarch64)
+					id2=openSUSE_Factory_ARM
+					;;
+				esac
+			esac
+			config=$id2.$arch
 
-	    kfail+=("${kfail_i586[@]}")
-	    
-	    for sum in "${sums[@]}"; do
-		sum=binaries-testsuite.$sum
-		report_sum "$sum"
-	    done
-	)
+			config="$config/gdb-testresults"
 
-	(
-	    # Known clean config: Leap 15.4 x86_64
-	    config=openSUSE_Leap_15.4.x86_64/gdb-testresults
-	    sums=("$config/gdb-x86_64-suse-linux-m64.-fno-PIE.-no-pie.sum"
-		  "$config/gdb-x86_64-suse-linux-m64.sum"
-		  "$config/gdb-x86_64-suse-linux-m32.-fno-PIE.-no-pie.sum"
-		  "$config/gdb-x86_64-suse-linux-m32.sum")
+			sums=()
+			case $arch in
+			    x86_64)
+				case $id in
+				    SLE-12|ALP)
+					sums=("$config/gdb-$arch-suse-linux-m64.-fPIE.-pie.sum"
+					      "$config/gdb-$arch-suse-linux-m64.sum"
+					      "$config/gdb-$arch-suse-linux-m32.-fPIE.-pie.sum"
+					      "$config/gdb-$arch-suse-linux-m32.sum")
+				    ;;
+				    *)
+					sums=("$config/gdb-$arch-suse-linux-m64.-fno-PIE.-no-pie.sum"
+					      "$config/gdb-$arch-suse-linux-m64.sum"
+					      "$config/gdb-$arch-suse-linux-m32.-fno-PIE.-no-pie.sum"
+					      "$config/gdb-$arch-suse-linux-m32.sum")
+					;;
+				esac
+				;;
+			    i586)
+				sums=("$config/gdb-$arch-suse-linux-m32.-fno-PIE.-no-pie.sum"
+				      "$config/gdb-$arch-suse-linux-m32.sum")
+				;;
+			    aarch64)
+				case $id in
+				    SLE-12|ALP)
+					sums=("$config/gdb-$arch-suse-linux.-fPIE.-pie.sum"
+					      "$config/gdb-$arch-suse-linux.sum")
+					;;
+				    *)
+					sums=("$config/gdb-$arch-suse-linux.-fno-PIE.-no-pie.sum"
+					      "$config/gdb-$arch-suse-linux.sum")
+					;;
+				esac
+				;;
+			    ppc64le|s390x)
+				case $id in
+				    SLE-12|ALP)
+					sums=("$config/gdb-$arch-suse-linux-m64.-fPIE.-pie.sum"
+					      "$config/gdb-$arch-suse-linux-m64.sum")
+					;;
+				    *)
+					sums=("$config/gdb-$arch-suse-linux-m64.-fno-PIE.-no-pie.sum"
+					      "$config/gdb-$arch-suse-linux-m64.sum")
+					;;
+				esac
+				;;
+			    *)
+				echo "Don't know how to handle: $arch"
+				exit 1
+				;;
+			esac
 
-	    #
+			(
+			    case $arch in
+				i586)
+				    kfail+=("${kfail_i586[@]}")
+				    ;;
+				aarch64)
+				    kfail+=("${kfail_aarch64[@]}")
+				    ;;
+				ppc64le)
+				    kfail+=("${kfail_powerpc64le[@]}")
+				    ;;
+				*)
+				    ;;
+			    esac
 
-	    for sum in "${sums[@]}"; do
-		sum=binaries-testsuite.$sum
-		report_sum "$sum"
-	    done
-	)
+			    case $id in
+				SLE-12)
+				    kfail+=("${kfail_sle12[@]}")
+				    ;;
+				ALP|openSUSE_Factory)
+				    kfail+=("${kfail_factory[@]}")
+				    ;;
+				*)
+				    ;;
+			    esac
 
-	(
-	    # Known clean config: Leap 15.4 i586
-	    config=openSUSE_Leap_15.4.i586/gdb-testresults
-	    sums=("$config/gdb-i586-suse-linux-m32.-fno-PIE.-no-pie.sum"
-		  "$config/gdb-i586-suse-linux-m32.sum")
+			    case $id.$arch in
+				SLE-12.ppc64le)
+				    kfail+=("${kfail_powerpc64le_sle12[@]}")
+				    ;;
+			    esac
+			    
+			    for sum in "${sums[@]}"; do
+				sum=binaries-testsuite.$sum
+				report_sum "$sum"
+			    done
+			)
+		done
+	done
 
-	    kfail+=("${kfail_i586[@]}")
-	    
-	    for sum in "${sums[@]}"; do
-		sum=binaries-testsuite.$sum
-		report_sum "$sum"
-	    done
-	)
-
-	(
-	    # Known clean config: SLE 15 x86_64.
-	    config=SLE-15.x86_64/gdb-testresults
-	    sums=("$config/gdb-x86_64-suse-linux-m64.-fno-PIE.-no-pie.sum"
-		  "$config/gdb-x86_64-suse-linux-m64.sum"
-		  "$config/gdb-x86_64-suse-linux-m32.-fno-PIE.-no-pie.sum"
-		  "$config/gdb-x86_64-suse-linux-m32.sum")
-
-	    #
-
-	    for sum in "${sums[@]}"; do
-		sum=binaries-testsuite.$sum
-		report_sum "$sum"
-	    done
-	)
-
-	(
-	    # Known clean config: SLE 12 x86_64.
-	    config=SLE-12.x86_64/gdb-testresults
-	    sums=("$config/gdb-x86_64-suse-linux-m64.-fPIE.-pie.sum"
-		  "$config/gdb-x86_64-suse-linux-m64.sum"
-		  "$config/gdb-x86_64-suse-linux-m32.-fPIE.-pie.sum"
-		  "$config/gdb-x86_64-suse-linux-m32.sum")
-
-	    kfail+=("${kfail_sle12[@]}")
-
-	    for sum in "${sums[@]}"; do
-		sum=binaries-testsuite.$sum
-		report_sum "$sum"
-	    done
-	)
-	
 	(
 	    # Known cleanish config: Factory x86_64.
 	    config=openSUSE_Factory.x86_64/gdb-testresults
@@ -895,7 +1006,7 @@ case $n in
 	)
 
 	(
-	    # Known clean config: Factory i586
+	    # Known clean config: Factory i586.
 	    config=openSUSE_Factory_LegacyX86.i586/gdb-testresults
 	    sums=("$config/gdb-i586-suse-linux-m32.-fno-PIE.-no-pie.sum"
 		   "$config/gdb-i586-suse-linux-m32.sum")
@@ -908,35 +1019,6 @@ case $n in
 		report_sum "$sum"
 	    done
 	)	
-
-	(
-	    # Known clean config: SLE 15 aarch64.
-	    config=SLE-15.aarch64/gdb-testresults
-	    sums=("$config/gdb-aarch64-suse-linux.-fno-PIE.-no-pie.sum"
-		   "$config/gdb-aarch64-suse-linux.sum")
-
-	    kfail+=("${kfail_aarch64[@]}")
-
-	    for sum in "${sums[@]}"; do
-		sum=binaries-testsuite.$sum
-		report_sum "$sum"
-	    done
-	)
-
-	(
-	    # Known clean config: SLE 15 / openSUSE 15.4 powerpc64le.
-	    for config in SLE-15.ppc64le/gdb-testresults openSUSE_Leap_15.4.ppc64le/gdb-testresults; do
-		sums=("$config/gdb-ppc64le-suse-linux-m64.-fno-PIE.-no-pie.sum"
-		      "$config/gdb-ppc64le-suse-linux-m64.sum")
-	    done
-	    
-	    kfail+=("${kfail_powerpc64le[@]}")
-
-	    for sum in "${sums[@]}"; do
-		sum=binaries-testsuite.$sum
-		report_sum "$sum"
-	    done
-	)
 
 	;;
 
@@ -982,10 +1064,13 @@ case $n in
 	if $have_aarch64; then
 	    kfail+=("${kfail_aarch64[@]}")
 	fi
+	if $have_arm; then
+	    kfail+=("${kfail_arm[@]}")
+	fi
 	if $have_powerpc64le; then
 	    kfail+=("${kfail_powerpc64le[@]}")
 	fi
-	if $have_powerpc64le && $have_sl12; then
+	if $have_powerpc64le && $have_sle12; then
 	    kfail+=("${kfail_powerpc64le_sle12[@]}")
 	fi
 	if $have_s390; then

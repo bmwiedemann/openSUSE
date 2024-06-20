@@ -1,0 +1,84 @@
+From d9a17115fbeb8d4c1780677bb57edf0fe8448038 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 2 Apr 2024 16:14:39 +0200
+Subject: [PATCH 30/48] [gdb/testsuite] Fix gdb.ada/verylong.exp on 32-bit
+ target
+
+In an aarch32-linux chroot on an aarch64-linux system, I run into:
+...
+(gdb) print x^M
+$1 = 9223372036854775807^M
+(gdb) FAIL: gdb.ada/verylong.exp: print x
+...
+
+A passing version on aarch64-linux looks like:
+...
+(gdb) print x^M
+$1 = 170141183460469231731687303715884105727^M
+(gdb) PASS: gdb.ada/verylong.exp: print x
+...
+
+The difference is caused by the size of the type Long_Long_Long_Integer, which
+is:
+- a 128-bit signed on 64-bit targets, and
+- a 64-bit signed on 32-bit target.
+
+Fix this by detecting the size of the Long_Long_Long_Integer type, and
+handling it.
+
+Tested on aarch64-linux and aarch32-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+PR testsuite/31574
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31574
+
+[1] https://gcc.gnu.org/onlinedocs/gnat_rm/Implementation-Defined-Characteristics.html
+---
+ gdb/testsuite/gdb.ada/verylong.exp | 28 +++++++++++++++++++++-------
+ 1 file changed, 21 insertions(+), 7 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.ada/verylong.exp b/gdb/testsuite/gdb.ada/verylong.exp
+index d1fa968015b..4b83e0bd467 100644
+--- a/gdb/testsuite/gdb.ada/verylong.exp
++++ b/gdb/testsuite/gdb.ada/verylong.exp
+@@ -29,15 +29,29 @@ clean_restart ${testfile}
+ set bp_location [gdb_get_line_number "START" ${testdir}/prog.adb]
+ runto "prog.adb:$bp_location"
+ 
+-gdb_test "print x" " = 170141183460469231731687303715884105727"
+-gdb_test "print x / 2" " = 85070591730234615865843651857942052863"
+-gdb_test "print (x / 4) * 2" " = 85070591730234615865843651857942052862"
++set lll_int_size 0
++gdb_test_multiple "ptype Long_Long_Long_Integer" "" {
++    -re -wrap "type = <8-byte integer>" {
++	set lll_int_size 8
++	set max 9223372036854775807
++    }
++    -re -wrap "type = <16-byte integer>" {
++	set lll_int_size 16
++	set max 170141183460469231731687303715884105727
++    }
++}
++
++require {expr $lll_int_size == 8 || $lll_int_size == 16}
++
++gdb_test "print x" " = $max"
++gdb_test "print x / 2" " = [expr $max / 2]"
++gdb_test "print (x / 4) * 2" " = [expr ($max / 4) * 2]"
+ gdb_test "print x - x" " = 0"
+-gdb_test "print x - 99 + 1" " = 170141183460469231731687303715884105629"
+-gdb_test "print -x" " = -170141183460469231731687303715884105727"
+-gdb_test "print +x" " = 170141183460469231731687303715884105727"
++gdb_test "print x - 99 + 1" " = [expr $max - 99 + 1]"
++gdb_test "print -x" " = -$max"
++gdb_test "print +x" " = $max"
+ 
+ gdb_test "print 170141183460469231731687303715884105727" \
+     " = 170141183460469231731687303715884105727"
+-gdb_test "print x = 170141183460469231731687303715884105727" \
++gdb_test "print x = $max" \
+     " = true"
+-- 
+2.35.3
+

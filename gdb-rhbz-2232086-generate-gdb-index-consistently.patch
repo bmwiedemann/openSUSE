@@ -138,7 +138,7 @@ diff --git a/gdb/dwarf2/index-write.c b/gdb/dwarf2/index-write.c
  /* See class definition.  */
  
  void
-@@ -1325,6 +1391,9 @@ write_gdbindex (dwarf2_per_objfile *per_objfile,
+@@ -1311,6 +1377,9 @@ write_gdbindex (dwarf2_per_bfd *per_bfd, cooked_index *table,
    for (auto map : table->get_addrmaps ())
      write_address_map (map, addr_vec, cu_index_htab);
  
@@ -206,8 +206,8 @@ diff --git a/gdb/testsuite/gdb.gdb/index-file.exp b/gdb/testsuite/gdb.gdb/index-
 diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
 --- a/gdb/testsuite/lib/gdb.exp
 +++ b/gdb/testsuite/lib/gdb.exp
-@@ -9274,6 +9274,21 @@ proc gdb_step_until { regexp {test_name ""} {max_steps 10} } {
-     }
+@@ -10033,6 +10033,21 @@ proc is_target_non_stop { {testname ""} } {
+     return $is_non_stop
  }
  
 +# Return the number of worker threads that GDB is currently using.

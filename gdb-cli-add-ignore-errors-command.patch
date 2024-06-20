@@ -1,3 +1,8 @@
+From 0bb6f49bb9ad577667075550ca2ad4cb49931078 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 18 Apr 2024 14:27:04 +0200
+Subject: [PATCH 2/2] gdb-cli-add-ignore-errors-command
+
 [gdb/cli] Add ignore-errors command
 
 While trying to reproduce a failing test-case from the testsuite on the
@@ -60,28 +65,29 @@ gdb/testsuite/ChangeLog:
 
 	* gdb.base/ignore-errors.exp: New test.
 	* gdb.base/ignore-errors.gdb: New command file.
-
 ---
- gdb/cli/cli-cmds.c                       | 35 ++++++++++++++++++++++++++++++++
- gdb/doc/gdb.texinfo                      |  8 +++++++-
- gdb/testsuite/gdb.base/ignore-errors.exp | 24 ++++++++++++++++++++++
+ gdb/cli/cli-cmds.c                       | 35 ++++++++++++++++++++++++
+ gdb/doc/gdb.texinfo                      |  8 +++++-
+ gdb/testsuite/gdb.base/ignore-errors.exp | 24 ++++++++++++++++
  gdb/testsuite/gdb.base/ignore-errors.gdb |  2 ++
  4 files changed, 68 insertions(+), 1 deletion(-)
+ create mode 100644 gdb/testsuite/gdb.base/ignore-errors.exp
+ create mode 100644 gdb/testsuite/gdb.base/ignore-errors.gdb
 
 diff --git a/gdb/cli/cli-cmds.c b/gdb/cli/cli-cmds.c
-index 31d398cb13b..4eff591b3df 100644
+index cfe7b71b0b7..0ae5530c558 100644
 --- a/gdb/cli/cli-cmds.c
 +++ b/gdb/cli/cli-cmds.c
-@@ -39,6 +39,7 @@
- #include "gdbsupport/filestuff.h"
+@@ -40,6 +40,7 @@
  #include "location.h"
  #include "block.h"
+ #include "valprint.h"
 +#include "event-top.h"
  
  #include "ui-out.h"
  #include "interps.h"
-@@ -2399,6 +2400,34 @@ gdb_maint_setting_str_internal_fn (struct gdbarch *gdbarch,
-   return str_value_from_setting (*show_cmd->var, gdbarch);
+@@ -2544,6 +2545,34 @@ shell_internal_fn (struct gdbarch *gdbarch,
+     return value::allocate_optimized_out (int_type);
  }
  
 +/* Completer for "ignore-errors".  */
@@ -115,7 +121,7 @@ index 31d398cb13b..4eff591b3df 100644
  void _initialize_cli_cmds ();
  void
  _initialize_cli_cmds ()
-@@ -2786,4 +2815,10 @@ when GDB is started."), GDBINIT).release ();
+@@ -2942,4 +2971,10 @@ when GDB is started."), GDBINIT).release ();
    c = add_cmd ("source", class_support, source_command,
  	       source_help_text, &cmdlist);
    set_cmd_completer (c, filename_completer);
@@ -127,10 +133,10 @@ index 31d398cb13b..4eff591b3df 100644
 +  set_cmd_completer (c, ignore_errors_command_completer);
  }
 diff --git a/gdb/doc/gdb.texinfo b/gdb/doc/gdb.texinfo
-index 1cf3550885e..68e11585942 100644
+index 1abf91c4470..c277c16297c 100644
 --- a/gdb/doc/gdb.texinfo
 +++ b/gdb/doc/gdb.texinfo
-@@ -27680,7 +27680,8 @@ The lines in a command file are generally executed sequentially,
+@@ -29250,7 +29250,8 @@ The lines in a command file are generally executed sequentially,
  unless the order of execution is changed by one of the
  @emph{flow-control commands} described below.  The commands are not
  printed as they are executed.  An error in any command terminates
@@ -140,7 +146,7 @@ index 1cf3550885e..68e11585942 100644
  
  @value{GDBN} first searches for @var{filename} in the current directory.
  If the file is not found there, and @var{filename} does not specify a
-@@ -27775,6 +27776,11 @@ the controlling expression.
+@@ -29345,6 +29346,11 @@ the controlling expression.
  @item end
  Terminate the block of commands that are the body of @code{if},
  @code{else}, or @code{while} flow-control commands.
@@ -190,3 +196,6 @@ index 00000000000..5962ff49b11
 @@ -0,0 +1,2 @@
 +ignore-errors run
 +echo here\n
+-- 
+2.35.3
+

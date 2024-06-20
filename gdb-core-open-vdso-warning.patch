@@ -19,7 +19,7 @@ Date:   Wed Sep 25 11:52:50 2013 +0000
 diff --git a/gdb/testsuite/gdb.base/solib-symbol.exp b/gdb/testsuite/gdb.base/solib-symbol.exp
 --- a/gdb/testsuite/gdb.base/solib-symbol.exp
 +++ b/gdb/testsuite/gdb.base/solib-symbol.exp
-@@ -29,6 +29,7 @@ set testfile "solib-symbol-main"
+@@ -27,6 +27,7 @@ set testfile "solib-symbol-main"
  set srcfile ${srcdir}/${subdir}/${testfile}.c
  set binfile [standard_output_file ${testfile}]
  set bin_flags [list debug shlib=${binfile_lib}]
@@ -27,16 +27,14 @@ diff --git a/gdb/testsuite/gdb.base/solib-symbol.exp b/gdb/testsuite/gdb.base/so
  
  if { [gdb_compile_shlib ${srcfile_lib} ${binfile_lib} $lib_flags] != ""
       || [gdb_compile ${srcfile} ${binfile} executable $bin_flags] != "" } {
-@@ -66,8 +67,26 @@ gdb_test "br foo2" \
+@@ -61,4 +62,28 @@ gdb_test "br foo2" \
  	 "Breakpoint.*: foo2. .2 locations..*" \
  	 "foo2 in mdlib"
  
--gdb_exit
 +# Test GDB warns for shared libraris which have not been found.
- 
--return 0
++
 +gdb_test "info sharedlibrary" "/${libname}.*"
- 
++
 +clean_restart ${executable}
 +gdb_breakpoint "main"
 +gdb_run_cmd
@@ -49,10 +47,12 @@ diff --git a/gdb/testsuite/gdb.base/solib-symbol.exp b/gdb/testsuite/gdb.base/so
 +	pass $test
 +    }
 +}
- 
++
 +clean_restart ${executable}
 +gdb_test_no_output "set solib-absolute-prefix /doESnotEXIST"
 +gdb_breakpoint "main"
 +gdb_run_cmd
 +gdb_test "" "warning: Could not load shared library symbols for \[0-9\]+ libraries,.*\r\nBreakpoint \[0-9\]+, main .*" \
 +	 "warning for missing libraries"
++
+ gdb_exit

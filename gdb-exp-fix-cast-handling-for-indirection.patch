@@ -1,0 +1,150 @@
+From b96d3adafdb636898913710ec40ee86647665ae8 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Fri, 3 May 2024 09:37:19 +0200
+Subject: [PATCH 24/48] [gdb/exp] Fix cast handling for indirection
+
+Consider a test-case compiled without debug info, containing:
+...
+char a = 'a';
+
+char *
+a_loc (void)
+{
+  return &a;
+}
+...
+
+We get:
+...
+(gdb) p (char)*a_loc ()
+Cannot access memory at address 0x10
+...
+
+There's a bug in unop_ind_base_operation::evaluate that evaluates
+"(char)*a_loc ()" the same as:
+...
+(gdb) p (char)*(char)a_loc ()
+Cannot access memory at address 0x10
+...
+
+Fix this by instead doing:
+...
+(gdb) p (char)*a_loc ()
+'a_loc' has unknown return type; cast the call to its declared return type
+...
+
+Tested on x86_64-linux.
+
+PR exp/31693
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31693
+---
+ gdb/expop.h                                 |  5 +--
+ gdb/testsuite/gdb.base/cast-indirection.c   | 31 ++++++++++++++++
+ gdb/testsuite/gdb.base/cast-indirection.exp | 41 +++++++++++++++++++++
+ 3 files changed, 74 insertions(+), 3 deletions(-)
+ create mode 100644 gdb/testsuite/gdb.base/cast-indirection.c
+ create mode 100644 gdb/testsuite/gdb.base/cast-indirection.exp
+
+diff --git a/gdb/expop.h b/gdb/expop.h
+index 25769d5b810..25d50fe00d0 100644
+--- a/gdb/expop.h
++++ b/gdb/expop.h
+@@ -1513,9 +1513,8 @@ class unop_ind_base_operation
+ 		   struct expression *exp,
+ 		   enum noside noside) override
+   {
+-    if (expect_type != nullptr && expect_type->code () == TYPE_CODE_PTR)
+-      expect_type = check_typedef (expect_type)->target_type ();
+-    value *val = std::get<0> (m_storage)->evaluate (expect_type, exp, noside);
++    value *val
++      = std::get<0> (m_storage)->evaluate (nullptr, exp, noside);
+     return eval_op_ind (expect_type, exp, noside, val);
+   }
+ 
+diff --git a/gdb/testsuite/gdb.base/cast-indirection.c b/gdb/testsuite/gdb.base/cast-indirection.c
+new file mode 100644
+index 00000000000..d59c66ead35
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/cast-indirection.c
+@@ -0,0 +1,31 @@
++/* This testcase is part of GDB, the GNU debugger.
++
++   Copyright 2024 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++char a = 'a';
++
++char *
++a_loc (void)
++{
++  return &a;
++}
++
++int
++main (void)
++{
++  int res = *a_loc () == 'a';
++  return !res;
++}
+diff --git a/gdb/testsuite/gdb.base/cast-indirection.exp b/gdb/testsuite/gdb.base/cast-indirection.exp
+new file mode 100644
+index 00000000000..f1fe4302d27
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/cast-indirection.exp
+@@ -0,0 +1,41 @@
++# Copyright (C) 2024 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++# Check that "p (char)*a_loc ()" is handled as "p (char)*(char *)a_loc ()".
++
++standard_testfile
++
++if { [prepare_for_testing "failed to prepare" $testfile $srcfile \
++	  {nodebug}] == -1} {
++    return -1
++}
++
++if ![runto_main] {
++    return -1
++}
++
++gdb_test "p a_loc ()" \
++    "'a_loc' has unknown return type; cast the call to its declared return type"
++
++gdb_test "p *a_loc ()" \
++    "'a_loc' has unknown return type; cast the call to its declared return type"
++
++gdb_test "p *(char *)a_loc ()" " = 97 'a'"
++
++gdb_test "p (char)*(char *)a_loc ()" " = 97 'a'"
++
++# Regression test for PR31693.
++gdb_test "p (char)*a_loc ()" \
++    "'a_loc' has unknown return type; cast the call to its declared return type"
+-- 
+2.35.3
+

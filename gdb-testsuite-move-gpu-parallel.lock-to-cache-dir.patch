@@ -1,0 +1,42 @@
+From 40ffee49122d3856292d2374c25f619805f76f1f Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sat, 4 May 2024 10:41:09 +0200
+Subject: [PATCH 20/48] [gdb/testsuite] Move gpu-parallel.lock to cache dir
+
+The lock directory returned by lock_dir is currently $objdir.
+
+It seems possible to leave a stale lock file that blocks progress in a
+following run.
+
+Fix this by using a directory that is guaranteed to be initially empty when
+using GDB_PARALLEL, like temp or cache.
+
+In gdb/testsuite/README I found:
+...
+cache in particular is used to share data across invocations of runtest
+...
+which seems appropriate, so let's use cache for this.
+
+Tested on aarch64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+---
+ gdb/testsuite/lib/gdb-utils.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/lib/gdb-utils.exp b/gdb/testsuite/lib/gdb-utils.exp
+index 63f6b8c3698..cfaa7905997 100644
+--- a/gdb/testsuite/lib/gdb-utils.exp
++++ b/gdb/testsuite/lib/gdb-utils.exp
+@@ -180,7 +180,7 @@ proc lock_file_release {info} {
+ # Return directory where we keep lock files.
+ 
+ proc lock_dir {} {
+-    return $objdir
++    return [make_gdb_parallel_path cache]
+ }
+ 
+ # Run body under lock LOCK_FILE.
+-- 
+2.35.3
+

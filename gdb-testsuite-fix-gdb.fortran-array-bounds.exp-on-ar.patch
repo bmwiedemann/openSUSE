@@ -1,0 +1,95 @@
+From a6f598be3d0477c5c59bd490573a5d457949658e Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Fri, 7 Jun 2024 08:12:34 +0200
+Subject: [PATCH] [gdb/testsuite] Fix gdb.fortran/array-bounds.exp on arm
+
+When running test-case gdb.fortran/array-bounds.exp on arm-linux, we run into:
+...
+(gdb) print &foo^M
+$1 = (PTR TO -> ( real(kind=4) (0:1) )) 0xfffef008^M
+(gdb) FAIL: gdb.fortran/array-bounds.exp: print &foo
+print &bar^M
+$2 = (PTR TO -> ( real(kind=4) (-1:0) )) 0xfffef010^M
+(gdb) FAIL: gdb.fortran/array-bounds.exp: print &bar
+...
+
+This is due to gcc PR debug/54934.
+
+The test-case contains a kfail for this, which is only activated for
+x86_64/i386.
+
+Fix this by enabling the kfail for all ilp32 targets.
+
+Also:
+- change the kfail into an xfail, because gdb is not at fault here, and
+- limit the xfail to the gfortran compiler.
+
+Tested on arm-linux.
+
+(cherry picked from commit f9478936896ada7786e8d68622f6e6ff78b97b0d)
+---
+ gdb/testsuite/gdb.fortran/array-bounds.exp | 45 +++++++++++++++-------
+ 1 file changed, 31 insertions(+), 14 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.fortran/array-bounds.exp b/gdb/testsuite/gdb.fortran/array-bounds.exp
+index e3f2603a118..a9d6011aed4 100644
+--- a/gdb/testsuite/gdb.fortran/array-bounds.exp
++++ b/gdb/testsuite/gdb.fortran/array-bounds.exp
+@@ -31,21 +31,38 @@ if {![fortran_runto_main]} {
+     return
+ }
+ 
+-# Convenience proc to setup for KFAIL
+-proc kfail_if {exp bugid triplet} {
+-    if {$exp} {
+-	setup_kfail $bugid $triplet
++# GCC outputs incorrect range debug info for -m32, gcc PR debug/54934.
++set expect_xfail \
++    [expr \
++	 [test_compiler_info {gfortran-*} f90] \
++	 && [is_ilp32_target]]
++
++set re_ok [string_to_regexp (4294967296:4294967297)]
++set re_xfail [string_to_regexp (0:1)]
++gdb_test_multiple "print &foo" "" {
++    -re -wrap $re_ok.* {
++	pass $gdb_test_name
++    }
++    -re -wrap $re_xfail.* {
++	if { $expect_xfail } {
++	    xfail $gdb_test_name
++	} else {
++	    fail $gdb_test_name
++	}
+     }
+ }
+ 
+-# GCC outputs incorrect range debug info for -m32.
+-set expect_fail false
+-if {[is_ilp32_target] && ([istarget "i\[34567\]86-*-linux*"]
+-			  || [istarget "x86_64-*-linux*"])} {
+-    set expect_fail true
++set re_ok [string_to_regexp (-4294967297:-4294967296)]
++set re_xfail [string_to_regexp (-1:0)]
++gdb_test_multiple "print &bar" "" {
++    -re -wrap $re_ok.* {
++	pass $gdb_test_name
++    }
++    -re -wrap $re_xfail.* {
++	if { $expect_xfail } {
++	    xfail $gdb_test_name
++	} else {
++	    fail $gdb_test_name
++	}
++    }
+ }
+-
+-kfail_if $expect_fail "gcc/54934" "*-*-*"
+-gdb_test "print &foo" {.*\(4294967296:4294967297\).*}
+-kfail_if $expect_fail "gcc/54934" "*-*-*"
+-gdb_test "print &bar" {.*\(-4294967297:-4294967296\).*}
+
+base-commit: 4c7dab250c3581e691c2da87395e80244074d8bf
+-- 
+2.35.3
+

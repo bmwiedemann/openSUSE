@@ -1,0 +1,55 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Kevin Buettner <kevinb@redhat.com>
+Date: Mon, 29 Jan 2024 14:51:22 -0700
+Subject: gdb-rhbz2261580-intrusive_list-assertion-fix.patch
+
+;; Backport upstream workaround for GCC 14 problem which cause assertion
+;; failures in GDB.
+
+[gdb/build] Workaround gcc PR113599
+
+Since gcc commit d3f48f68227 ("c++: non-dependent .* operand folding
+[PR112427]"), with gdb we run into PR gcc/113599 [1], a wrong-code bug, as
+reported in PR build/31281.
+
+Work around this by flipping inherit order:
+...
+-class thread_info : public refcounted_object,
+-		    public intrusive_list_node<thread_info>
++class thread_info : public intrusive_list_node<thread_info>,
++		    public refcounted_object
+...
+
+An argument could be made that this isn't necessary, because this occurred in
+an unreleased gcc version.
+
+However, I think it could be useful when bisecting gcc for other problems in
+building gdb.  Having this workaround means the bisect won't reintroduce the
+problem.  Furthermore, the workaround is harmless.
+
+Tested on Fedora rawhide x86_64.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31281
+
+[1] https://gcc.gnu.org/bugzilla/show_bug.cgi?id=113599
+
+diff --git a/gdb/gdbthread.h b/gdb/gdbthread.h
+--- a/gdb/gdbthread.h
++++ b/gdb/gdbthread.h
+@@ -242,10 +242,11 @@ using private_thread_info_up = std::unique_ptr<private_thread_info>;
+    strong reference, and is thus not accounted for in the thread's
+    refcount.
+ 
+-   The intrusive_list_node base links threads in a per-inferior list.  */
++   The intrusive_list_node base links threads in a per-inferior list.
++   We place it first in the inherit order to work around PR gcc/113599.  */
+ 
+-class thread_info : public refcounted_object,
+-		    public intrusive_list_node<thread_info>
++class thread_info : public intrusive_list_node<thread_info>,
++		    public refcounted_object
+ {
+ public:
+   explicit thread_info (inferior *inf, ptid_t ptid);

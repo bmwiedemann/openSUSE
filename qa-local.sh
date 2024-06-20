@@ -16,12 +16,12 @@ openSUSE_Factory
 openSUSE_Factory_LegacyX86
 SLE-15
 SLE-12
-SLE-11
+ALP
 "
 
 archs="x86_64 i586"
 
-version=13.2
+version=14.2
 
 usage ()
 {
@@ -84,7 +84,7 @@ have_combo ()
 
     if [ "$arch" = "i586" ]; then
 	case " $c " in
-            " openSUSE_Factory ")
+            " openSUSE_Factory "| " ALP ")
 		# Doesn't have i586.
 		return 1
 		;;
@@ -228,7 +228,7 @@ case "$n" in
 		fi
 		echo "CONFIG: $c $arch"
 		case $c in
-		    openSUSE_Factory|openSUSE_Factory_LegacyX86)
+		    openSUSE_Factory|openSUSE_Factory_LegacyX86|ALP)
 			bash qa.sh -local -$arch -factory $pkgs/gdb-testresults.$c.$arch
 			;;
 		    SLE-12)

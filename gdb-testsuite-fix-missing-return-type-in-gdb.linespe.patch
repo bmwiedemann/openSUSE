@@ -1,0 +1,40 @@
+From 3e4d764ebb264f0c9153c6fd3727f67d4454ae9b Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Fri, 29 Mar 2024 07:47:30 +0100
+Subject: [PATCH 32/48] [gdb/testsuite] Fix missing return type in
+ gdb.linespec/break-asm-file.c
+
+On fedora rawhide, when running test-case gdb.linespec/break-asm-file.exp, I
+get:
+...
+gdb compile failed, break-asm-file.c:21:8: error: \
+  return type defaults to 'int' [-Wimplicit-int]
+   21 | static func()
+      |        ^~~~
+...
+
+Fix this by adding the missing return type.
+
+Tested on aarch64-linux.
+
+Approved-By: John Baldwin <jhb@FreeBSD.org>
+---
+ gdb/testsuite/gdb.linespec/break-asm-file.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.linespec/break-asm-file.c b/gdb/testsuite/gdb.linespec/break-asm-file.c
+index 41f0904fc84..e7bdc26b1ec 100644
+--- a/gdb/testsuite/gdb.linespec/break-asm-file.c
++++ b/gdb/testsuite/gdb.linespec/break-asm-file.c
+@@ -18,7 +18,7 @@
+ void func3();
+ void func2();
+ 
+-static func()
++static void func()
+ {
+ }
+ 
+-- 
+2.35.3
+

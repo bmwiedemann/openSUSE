@@ -1,0 +1,77 @@
+From 51a5415b3313470cb62fda7ad6762fc1c41c8cbd Mon Sep 17 00:00:00 2001
+From: Simon Marchi <simon.marchi@efficios.com>
+Date: Tue, 7 Nov 2023 11:11:18 -0500
+Subject: [PATCH] gdb/arm: remove thumb bit in arm_adjust_breakpoint_address
+
+When compiling gdb with -fsanitize=address on ARM, I get a crash in test
+gdb.arch/arm-disp-step.exp, reproduced easily with:
+
+    $ ./gdb -nx -q --data-directory=data-directory testsuite/outputs/gdb.arch/arm-disp-step/arm-disp-step -ex "break *test_call_end"
+    Reading symbols from testsuite/outputs/gdb.arch/arm-disp-step/arm-disp-step...
+    =================================================================
+    ==23295==ERROR: AddressSanitizer: heap-buffer-overflow on address 0xb4a14fd1 at pc 0x01a48871 bp 0xbeab8490 sp 0xbeab8494
+
+Since it doesn't require running the program, it can be reproduced locally on a
+dev machine other than ARM, after acquiring the test binary.
+
+The length of the allocate buffer `buf` is 1, and we try to extract an
+integer of size 2 from it.  The length of 1 comes from the subtraction
+`bpaddr - boundary`.  Normally, on ARM, all instructions are aligned on
+a multiple of 2, so it's weird for this subtraction to result in 1.  In
+this case, boundary comes from the result of find_pc_partial_function
+returning 0x549:
+
+    (gdb) p/x bpaddr
+    $2 = 0x54a
+    (gdb) p/x boundary
+    $3 = 0x549
+    (gdb) p/x bpaddr - boundary
+    $4 = 0x1
+
+0x549 is the address of the test_call_subr label, 0x548, with the thumb
+bit enabled.  Before doing some math with the address, I think we need
+to strip the thumb bit, like is done elsewhere (for instance for bpaddr
+earlier in the same function).
+
+I wonder if find_pc_partial_function should do that itself, in order to
+return an address that is suitable for arithmetic.  In any case, that
+would be a change with a broad impact, so for now just fix the issue
+locally.
+
+After the patch:
+
+    $ ./gdb -nx -q --data-directory=data-directory testsuite/outputs/gdb.arch/arm-disp-step/arm-disp-step -ex "break *test_call_end"
+    Reading symbols from testsuite/outputs/gdb.arch/arm-disp-step/arm-disp-step...
+    Breakpoint 1 at 0x54a: file /home/smarchi/src/binutils-gdb/gdb/testsuite/gdb.arch/arm-disp-step.S, line 103.
+
+Change-Id: I74fc458dbea0d2c1e1f5eadd90755188df089288
+Approved-By: Luis Machado <luis.machado@arm.com>
+---
+ gdb/arm-tdep.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/gdb/arm-tdep.c b/gdb/arm-tdep.c
+index 21dad198dc7..e61342f3ccb 100644
+--- a/gdb/arm-tdep.c
++++ b/gdb/arm-tdep.c
+@@ -5340,9 +5340,12 @@ arm_adjust_breakpoint_address (struct gdbarch *gdbarch, CORE_ADDR bpaddr)
+ 
+   bpaddr = gdbarch_addr_bits_remove (gdbarch, bpaddr);
+ 
+-  if (find_pc_partial_function (bpaddr, NULL, &func_start, NULL)
+-      && func_start > boundary)
+-    boundary = func_start;
++  if (find_pc_partial_function (bpaddr, NULL, &func_start, NULL))
++    {
++      func_start = gdbarch_addr_bits_remove (gdbarch, func_start);
++      if (func_start > boundary)
++	boundary = func_start;
++    }
+ 
+   /* Search for a candidate IT instruction.  We have to do some fancy
+      footwork to distinguish a real IT instruction from the second
+
+base-commit: eafca1ce3d589c731927e5481199db715bcbeff3
+-- 
+2.35.3
+

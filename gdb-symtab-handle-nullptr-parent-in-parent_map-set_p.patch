@@ -1,7 +1,7 @@
-From 933f8ee225d4ccd3db9b81312dba76ae5a50b4ea Mon Sep 17 00:00:00 2001
+From bc970668f83cf142c4955d1cbeaa24e8bcc4b238 Mon Sep 17 00:00:00 2001
 From: Tom de Vries <tdevries@suse.de>
 Date: Fri, 25 Aug 2023 09:30:54 +0200
-Subject: [PATCH 03/11] [gdb/symtab] Handle nullptr parent in
+Subject: [PATCH 03/13] [gdb/symtab] Handle nullptr parent in
  parent_map::set_parent
 
 Set_parent uses m_die_range_map.set_empty, which doesn't allow
@@ -18,10 +18,10 @@ Tested on x86_64-linux.
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/gdb/dwarf2/cooked-index.h b/gdb/dwarf2/cooked-index.h
-index 1c967bdbf86..f4abc7a974e 100644
+index 979541fbf60..79fbfe88c03 100644
 --- a/gdb/dwarf2/cooked-index.h
 +++ b/gdb/dwarf2/cooked-index.h
-@@ -257,7 +257,9 @@ class parent_map
+@@ -263,7 +263,9 @@ class parent_map
    void set_parent (CORE_ADDR start, CORE_ADDR end,
  		   const cooked_index_entry *parent_entry)
    {

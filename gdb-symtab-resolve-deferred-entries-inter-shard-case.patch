@@ -1,7 +1,7 @@
-From 7464f06e1a7ccf4c5908e563e4cf684744919dac Mon Sep 17 00:00:00 2001
+From e2d7097cf236c9ea6959785754d067833fc302af Mon Sep 17 00:00:00 2001
 From: Tom de Vries <tdevries@suse.de>
 Date: Tue, 22 Aug 2023 14:24:42 +0200
-Subject: [PATCH 05/11] [gdb/symtab] Resolve deferred entries, inter-shard case
+Subject: [PATCH 05/13] [gdb/symtab] Resolve deferred entries, inter-shard case
 
 Generically solve the case of inter-CU dependencies, including inter-shard
 dependencies:
@@ -29,10 +29,10 @@ Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=30846
  3 files changed, 254 insertions(+), 56 deletions(-)
 
 diff --git a/gdb/dwarf2/cooked-index.c b/gdb/dwarf2/cooked-index.c
-index 2b7f9054fe5..4a0ccc78c5d 100644
+index 58ea541a5c9..3231d25db5a 100644
 --- a/gdb/dwarf2/cooked-index.c
 +++ b/gdb/dwarf2/cooked-index.c
-@@ -200,6 +200,12 @@ cooked_index_entry::write_scope (struct obstack *storage,
+@@ -228,6 +228,12 @@ cooked_index_entry::write_scope (struct obstack *storage,
  
  /* See cooked-index.h.  */
  
@@ -43,25 +43,25 @@ index 2b7f9054fe5..4a0ccc78c5d 100644
 +/* See cooked-index.h.  */
 +
  const cooked_index_entry *
- cooked_index::add (sect_offset die_offset, enum dwarf_tag tag,
- 		   cooked_index_flag flags, const char *name,
-@@ -402,6 +408,8 @@ cooked_index::find (const std::string &name, bool completing)
- cooked_index_vector::cooked_index_vector (vec_type &&vec)
+ cooked_index_shard::add (sect_offset die_offset, enum dwarf_tag tag,
+ 			 cooked_index_flag flags, const char *name,
+@@ -446,6 +452,8 @@ cooked_index_shard::wait (bool allow_quit) const
+ cooked_index::cooked_index (vec_type &&vec)
    : m_vector (std::move (vec))
  {
 +  handle_deferred_entries ();
 +
    for (auto &idx : m_vector)
      idx->finalize ();
- }
-@@ -467,6 +475,75 @@ cooked_index_vector::get_main () const
-   return result;
+ 
+@@ -649,6 +657,75 @@ cooked_index::maybe_write_index (dwarf2_per_bfd *per_bfd,
+   global_index_cache.store (per_bfd, ctx);
  }
  
 +/* See cooked-index.h.  */
 +
 +const cooked_index_entry *
-+cooked_index::resolve_deferred_entry
++cooked_index_shard::resolve_deferred_entry
 +  (const deferred_entry &de, const cooked_index_entry *parent_entry)
 +{
 +  reset_parent_deferred (parent_map::form_addr (de.die_offset, de.per_cu_2->is_dwz,
@@ -73,8 +73,8 @@ index 2b7f9054fe5..4a0ccc78c5d 100644
 +/* See cooked-index.h.  */
 +
 +const cooked_index_entry *
-+cooked_index_vector::find_parent_deferred_entry
-+  (const cooked_index::deferred_entry &entry) const
++cooked_index::find_parent_deferred_entry
++  (const cooked_index_shard::deferred_entry &entry) const
 +{
 +  const cooked_index_entry *parent_entry = nullptr;
 +  for (auto &parent_map_shard : m_vector)
@@ -93,7 +93,7 @@ index 2b7f9054fe5..4a0ccc78c5d 100644
 +/* See cooked-index.h.  */
 +
 +void
-+cooked_index_vector::handle_deferred_entries ()
++cooked_index::handle_deferred_entries ()
 +{
 +  bool changed;
 +  bool deferred;
@@ -127,11 +127,11 @@ index 2b7f9054fe5..4a0ccc78c5d 100644
 +    }
 +}
 +
- void _initialize_cooked_index ();
- void
- _initialize_cooked_index ()
+ /* Wait for all the index cache entries to be written before gdb
+    exits.  */
+ static void
 diff --git a/gdb/dwarf2/cooked-index.h b/gdb/dwarf2/cooked-index.h
-index f4abc7a974e..a06d99532ed 100644
+index 79fbfe88c03..66424c37f7c 100644
 --- a/gdb/dwarf2/cooked-index.h
 +++ b/gdb/dwarf2/cooked-index.h
 @@ -34,6 +34,7 @@
@@ -141,8 +141,8 @@ index f4abc7a974e..a06d99532ed 100644
 +#include <unordered_set>
  
  struct dwarf2_per_cu_data;
- 
-@@ -236,19 +237,29 @@ struct cooked_index_entry : public allocate_on_obstack
+ struct dwarf2_per_bfd;
+@@ -242,19 +243,29 @@ struct cooked_index_entry : public allocate_on_obstack
  class parent_map
  {
  public:
@@ -173,7 +173,7 @@ index f4abc7a974e..a06d99532ed 100644
      const void *obj = m_parent_map.find (lookup);
      return static_cast<const cooked_index_entry *> (obj);
    }
-@@ -259,12 +270,28 @@ class parent_map
+@@ -265,12 +276,28 @@ class parent_map
    {
      /* Calling set_empty with nullptr is currently not allowed.  */
      if (parent_entry != nullptr)
@@ -202,26 +202,24 @@ index f4abc7a974e..a06d99532ed 100644
 +  std::unordered_set<CORE_ADDR> m_deferred;
  };
  
- class cooked_index_vector;
-@@ -279,9 +306,14 @@ class cooked_index_vector;
- class cooked_index
+ class cooked_index;
+@@ -285,7 +312,12 @@ class cooked_index;
+ class cooked_index_shard
  {
  public:
--  cooked_index () = default;
-   DISABLE_COPY_AND_ASSIGN (cooked_index);
- 
-+  cooked_index ()
+-  cooked_index_shard () = default;
++  cooked_index_shard ()
 +  {
 +    m_die_range_map.reset (new parent_map);
 +    m_deferred_entries.reset (new std::vector<deferred_entry>);
 +  }
 +
+   DISABLE_COPY_AND_ASSIGN (cooked_index_shard);
+ 
    /* Create a new cooked_index_entry and register it with this object.
-      Entries are owned by this object.  The new item is returned.  */
-   const cooked_index_entry *add (sect_offset die_offset, enum dwarf_tag tag,
-@@ -325,6 +357,52 @@ class cooked_index
+@@ -329,6 +361,52 @@ class cooked_index_shard
       for completion, will be returned.  */
-   range find (const std::string &name, bool completing);
+   range find (const std::string &name, bool completing) const;
  
 +  /* Find the parent of DIE LOOKUP.  */
 +  const cooked_index_entry *
@@ -272,7 +270,7 @@ index f4abc7a974e..a06d99532ed 100644
  private:
  
    /* Return the entry that is believed to represent the program's
-@@ -382,6 +460,20 @@ class cooked_index
+@@ -386,6 +464,20 @@ class cooked_index_shard
       that the 'get' method is never called on this future, only
       'wait'.  */
    gdb::future<void> m_future;
@@ -293,25 +291,25 @@ index f4abc7a974e..a06d99532ed 100644
  };
  
  /* The main index of DIEs.  The parallel DIE indexers create
-@@ -459,6 +551,13 @@ class cooked_index_vector : public dwarf_scanner_base
+@@ -469,6 +561,13 @@ class cooked_index : public dwarf_scanner_base
  
  private:
  
 +  /* Find the parent corresponding to deferred entry ENTRY.  */
 +  const cooked_index_entry *find_parent_deferred_entry
-+    (const cooked_index::deferred_entry &entry) const;
++    (const cooked_index_shard::deferred_entry &entry) const;
 +
 +  /* Create cooked_index_entries for the deferred entries.  */
 +  void handle_deferred_entries ();
 +
-   /* The vector of cooked_index objects.  This is stored because the
-      entries are stored on the obstacks in those objects.  */
-   vec_type m_vector;
+   /* Maybe write the index to the index cache.  */
+   void maybe_write_index (dwarf2_per_bfd *per_bfd,
+ 			  const index_cache_store_context &);
 diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
-index ff5be8e7dc5..41fa8affcd0 100644
+index afdf9e870a8..5b7c0969ed7 100644
 --- a/gdb/dwarf2/read.c
 +++ b/gdb/dwarf2/read.c
-@@ -6672,6 +6672,31 @@ class cooked_index_storage
+@@ -4672,6 +4672,31 @@ class cooked_index_storage
      return &m_addrmap;
    }
  
@@ -335,7 +333,7 @@ index ff5be8e7dc5..41fa8affcd0 100644
 +  }
 +
 +  /* Defer creating a cooked_index_entry corresponding to deferred_entry DE.  */
-+  void defer_entry (cooked_index::deferred_entry de)
++  void defer_entry (cooked_index_shard::deferred_entry de)
 +  {
 +    m_index->defer_entry (de);
 +  }
@@ -343,7 +341,7 @@ index ff5be8e7dc5..41fa8affcd0 100644
  private:
  
    /* Hash function for a cutu_reader.  */
-@@ -6794,59 +6819,26 @@ class cooked_indexer
+@@ -4794,59 +4819,26 @@ class cooked_indexer
    /* Find the parent of DIE LOOKUP.  */
    const cooked_index_entry *find_parent (CORE_ADDR lookup) const
    {
@@ -399,7 +397,7 @@ index ff5be8e7dc5..41fa8affcd0 100644
 -  /* Create cooked_index_entries for the deferred entries.  */
 -  void handle_deferred_entries ()
 +  /* Defer creating a cooked_index_entry corresponding to deferred_entry DE.  */
-+  void defer_entry (const cooked_index::deferred_entry &de)
++  void defer_entry (const cooked_index_shard::deferred_entry &de)
    {
 -    for (const auto &entry : m_deferred_entries)
 -      {
@@ -411,7 +409,7 @@ index ff5be8e7dc5..41fa8affcd0 100644
    }
  };
  
-@@ -18346,13 +18338,36 @@ cooked_indexer::scan_attributes (dwarf2_per_cu_data *scanning_per_cu,
+@@ -16441,13 +16433,36 @@ cooked_indexer::scan_attributes (dwarf2_per_cu_data *scanning_per_cu,
  
  	  if (*parent_entry == nullptr)
  	    {
@@ -453,7 +451,7 @@ index ff5be8e7dc5..41fa8affcd0 100644
  	    }
  
  	  unsigned int bytes_read;
-@@ -18475,10 +18490,12 @@ cooked_indexer::recurse (cutu_reader *reader,
+@@ -16567,10 +16582,12 @@ cooked_indexer::recurse (cutu_reader *reader,
  	 limit the range to the children of parent_entry.  */
        CORE_ADDR start
  	= parent_map::form_addr (parent_entry->die_offset + 1,
@@ -468,7 +466,7 @@ index ff5be8e7dc5..41fa8affcd0 100644
        set_parent (start, end, parent_entry);
      }
  
-@@ -18545,9 +18562,16 @@ cooked_indexer::index_dies (cutu_reader *reader,
+@@ -16637,9 +16654,16 @@ cooked_indexer::index_dies (cutu_reader *reader,
        if (name != nullptr)
  	{
  	  if (defer != 0)
@@ -488,7 +486,7 @@ index ff5be8e7dc5..41fa8affcd0 100644
  	  else
  	    this_entry = m_index_storage->add (this_die, abbrev->tag, flags,
  					       name, this_parent_entry,
-@@ -18649,8 +18673,6 @@ cooked_indexer::make_index (cutu_reader *reader)
+@@ -16741,8 +16765,6 @@ cooked_indexer::make_index (cutu_reader *reader)
    if (!reader->comp_unit_die->has_children)
      return;
    index_dies (reader, reader->info_ptr, nullptr, false);

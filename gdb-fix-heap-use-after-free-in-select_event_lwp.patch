@@ -1,0 +1,144 @@
+From 350172ea215c7074601e8424ff636563612f91e8 Mon Sep 17 00:00:00 2001
+From: Pedro Alves <pedro@palves.net>
+Date: Wed, 21 Feb 2024 16:23:55 +0000
+Subject: [PATCH 14/48] [gdb] Fix heap-use-after-free in select_event_lwp
+
+PR gdb/31259 reveals one scenario where we run into a
+heap-use-after-free reported by thread sanitizer, while running
+gdb.base/vfork-follow-parent.exp.
+
+The heap-use-after-free happens during the following scenario:
+
+ - linux_nat_wait_1 is about to return an event for T2.  It stops all
+   other threads, and while doing so, stop_wait_callback -> wait_lwp
+   sees T1 exit, and decides to leave the exit event pending.  It
+   should have set the lp->stopped flag too, but does not -- this is
+   the bug.
+
+ - The event for T2 is reported, is processed by infrun, and we're
+   back at linux_nat_wait_1.
+
+ - linux_nat_wait_1 selects LWP T1 with the pending exit status to
+   report.
+
+ - it sets variable lp to point to the corresponding lwp_info.
+
+ - it calls stop_callback and stop_wait_callback for all threads
+   (because !target_is_non_stop_p ()).
+
+ - it calls select_event_lwp to maybe pick another thread than T1, to
+   prevent starvation.
+
+The problem is the following:
+
+ - while calling stop_wait_callback for all threads, it also does this
+   for T1.  While doing so, the corresponding lwp_info is deleted
+   (callstack stop_wait_callback -> wait_lwp -> exit_lwp ->
+   delete_lwp), leaving variable lp as a dangling pointer.
+
+ - variable lp is passed to select_event_lwp, which derefences it,
+   which causes the heap-use-after-free.
+
+Note that the comment here mentions "all other LWP's":
+...
+      /* Now stop all other LWP's ...  */
+      iterate_over_lwps (minus_one_ptid, stop_callback);
+      /* ... and wait until all of them have reported back that
+        they're no longer running.  */
+      iterate_over_lwps (minus_one_ptid, stop_wait_callback);
+...
+
+The reason the comments say "all other LWP's", and doesn't bother
+filtering out LP is that lp->stopped should be true at this point, and
+the callbacks (both stop_callback and stop_wait_callback) check that
+flag, and do nothing if set.  I.e., they skip already-stopped threads,
+so they should skip LP.
+
+In this particular scenario, though, we missed setting the stopped
+flag right in the first step described above, so LP was iterated over
+incorrectly.
+
+The fix is to make wait_lwp set the lp->stopped flag when it decides
+to leave the exit event pending.  However, going a bit further,
+gdbserver has a mark_lwp_dead function to centralize setting up
+various lwp flags such that the rest of the code doesn't mishandle
+them, and it seems like a good idea to do a similar thing in gdb as
+well.  That is what this patch does.
+
+PR gdb/31259
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31259
+Co-Authored-By: Tom de Vries <tdevries@suse.de>
+Change-Id: I4a6169976f89bf714c478cbb2b7d4c32365e62a9
+---
+ gdb/linux-nat.c | 34 +++++++++++++++++++++++++---------
+ 1 file changed, 25 insertions(+), 9 deletions(-)
+
+diff --git a/gdb/linux-nat.c b/gdb/linux-nat.c
+index 7e36ced6292..ed445c5e5bb 100644
+--- a/gdb/linux-nat.c
++++ b/gdb/linux-nat.c
+@@ -2029,6 +2029,27 @@ wait_for_signal ()
+     }
+ }
+ 
++/* Mark LWP dead, with STATUS as exit status pending to report
++   later.  */
++
++static void
++mark_lwp_dead (lwp_info *lp, int status)
++{
++  /* Store the exit status lp->waitstatus, because lp->status would be
++     ambiguous (W_EXITCODE(0,0) == 0).  */
++  lp->waitstatus = host_status_to_waitstatus (status);
++
++  /* If we're processing LP's status, there should be no other event
++     already recorded as pending.  */
++  gdb_assert (lp->status == 0);
++
++  /* Dead LWPs aren't expected to report a pending sigstop.  */
++  lp->signalled = 0;
++
++  /* Prevent trying to stop it.  */
++  lp->stopped = 1;
++}
++
+ /* Wait for LP to stop.  Returns the wait status, or 0 if the LWP has
+    exited.  */
+ 
+@@ -2114,9 +2135,8 @@ wait_lwp (struct lwp_info *lp)
+ 
+ 	      /* If this is the leader exiting, it means the whole
+ 		 process is gone.  Store the status to report to the
+-		 core.  Store it in lp->waitstatus, because lp->status
+-		 would be ambiguous (W_EXITCODE(0,0) == 0).  */
+-	      lp->waitstatus = host_status_to_waitstatus (status);
++		 core.  */
++	      mark_lwp_dead (lp, status);
+ 	      return 0;
+ 	    }
+ 
+@@ -2908,12 +2928,7 @@ linux_nat_filter_event (int lwpid, int status)
+       linux_nat_debug_printf ("LWP %ld exited (resumed=%d)",
+ 			      lp->ptid.lwp (), lp->resumed);
+ 
+-      /* Dead LWP's aren't expected to reported a pending sigstop.  */
+-      lp->signalled = 0;
+-
+-      /* Store the pending event in the waitstatus, because
+-	 W_EXITCODE(0,0) == 0.  */
+-      lp->waitstatus = host_status_to_waitstatus (status);
++      mark_lwp_dead (lp, status);
+       return;
+     }
+ 
+@@ -3248,6 +3263,7 @@ linux_nat_wait_1 (ptid_t ptid, struct target_waitstatus *ourstatus,
+     }
+ 
+   gdb_assert (lp);
++  gdb_assert (lp->stopped);
+ 
+   status = lp->status;
+   lp->status = 0;
+-- 
+2.35.3
+

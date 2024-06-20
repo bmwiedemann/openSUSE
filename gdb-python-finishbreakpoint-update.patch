@@ -1,3 +1,8 @@
+From adfcabe4cc43766996a61bdf08ce1e9db7f18dcc Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 18 Apr 2024 14:27:04 +0200
+Subject: [PATCH] gdb-python-finishbreakpoint-update
+
 [gdb/python] FinishBreakPoint update
 
 I.
@@ -324,19 +329,18 @@ Tested on x86_64-linux with native and target board unix/-m32, by rebuilding
 and running the test-cases:
 - gdb.python/py-finish-breakpoint.exp
 - gdb.python/py-finish-breakpoint2.exp
-
 ---
- gdb/breakpoint.c                                   | 10 ++++++++++
- gdb/doc/python.texi                                |  6 ++++--
- gdb/python/py-finishbreakpoint.c                   | 21 +++++++++++++++++++++
- gdb/testsuite/gdb.python/py-finish-breakpoint2.exp | 16 +++++++++++++---
- 4 files changed, 48 insertions(+), 5 deletions(-)
+ gdb/breakpoint.c                              | 10 ++++++++++
+ gdb/doc/python.texi                           |  6 ++++--
+ gdb/python/py-finishbreakpoint.c              | 20 +++++++++++++++++++
+ .../gdb.python/py-finish-breakpoint2.exp      |  1 +
+ 4 files changed, 35 insertions(+), 2 deletions(-)
 
 diff --git a/gdb/breakpoint.c b/gdb/breakpoint.c
-index dbbea6b8bff..64a9a3d394f 100644
+index db7d2e6a8e5..01f187ca4fe 100644
 --- a/gdb/breakpoint.c
 +++ b/gdb/breakpoint.c
-@@ -15452,6 +15452,10 @@ initialize_breakpoint_ops (void)
+@@ -14683,6 +14683,10 @@ breakpoint_free_objfile (struct objfile *objfile)
  
  static struct cmd_list_element *enablebreaklist = NULL;
  
@@ -347,7 +351,7 @@ index dbbea6b8bff..64a9a3d394f 100644
  /* See breakpoint.h.  */
  
  cmd_list_element *commands_cmd_element = nullptr;
-@@ -16065,6 +16069,12 @@ This is useful for formatted output in user-defined commands."));
+@@ -15243,8 +15247,14 @@ This is useful for formatted output in user-defined commands."));
  
    gdb::observers::about_to_proceed.attach (breakpoint_about_to_proceed,
  					   "breakpoint");
@@ -359,12 +363,14 @@ index dbbea6b8bff..64a9a3d394f 100644
    gdb::observers::thread_exit.attach (remove_threaded_breakpoints,
  				      "breakpoint");
 +#endif
+   gdb::observers::inferior_removed.attach (remove_inferior_breakpoints,
+ 					   "breakpoint");
  }
 diff --git a/gdb/doc/python.texi b/gdb/doc/python.texi
-index f4865b3d6a6..17a67800ba2 100644
+index 99670cca025..ba414b4e2c3 100644
 --- a/gdb/doc/python.texi
 +++ b/gdb/doc/python.texi
-@@ -5698,7 +5698,7 @@ attribute is @code{None}.  This attribute is writable.
+@@ -6648,7 +6648,7 @@ is not writable.
  @tindex gdb.FinishBreakpoint
  
  A finish breakpoint is a temporary breakpoint set at the return address of
@@ -373,7 +379,7 @@ index f4865b3d6a6..17a67800ba2 100644
  extends @code{gdb.Breakpoint}.  The underlying breakpoint will be disabled 
  and deleted when the execution will run out of the breakpoint scope (i.e.@: 
  @code{Breakpoint.stop} or @code{FinishBreakpoint.out_of_scope} triggered).
-@@ -5717,7 +5717,9 @@ details about this argument.
+@@ -6667,7 +6667,9 @@ details about this argument.
  In some circumstances (e.g.@: @code{longjmp}, C@t{++} exceptions, @value{GDBN} 
  @code{return} command, @dots{}), a function may not properly terminate, and
  thus never hit the finish breakpoint.  When @value{GDBN} notices such a
@@ -385,25 +391,25 @@ index f4865b3d6a6..17a67800ba2 100644
  You may want to sub-class @code{gdb.FinishBreakpoint} and override this
  method:
 diff --git a/gdb/python/py-finishbreakpoint.c b/gdb/python/py-finishbreakpoint.c
-index 1d8373d807e..a881103fdad 100644
+index 42a7e0706d2..fa7ec43fbb4 100644
 --- a/gdb/python/py-finishbreakpoint.c
 +++ b/gdb/python/py-finishbreakpoint.c
-@@ -398,6 +398,24 @@ bpfinishpy_handle_exit (struct inferior *inf)
-     bpfinishpy_detect_out_scope_cb (bp, nullptr);
+@@ -433,6 +433,24 @@ bpfinishpy_handle_exit (struct inferior *inf)
+     bpfinishpy_detect_out_scope_cb (&bp, nullptr, true);
  }
  
 +/* Attached to `thread_exit' notifications, triggers all the necessary out of
 +   scope notifications.  */
 +
 +static void
-+bpfinishpy_handle_thread_exit (struct thread_info *tp, int ignore)
++bpfinishpy_handle_thread_exit (struct thread_info *tp, gdb::optional<ULONGEST>, bool)
 +{
 +  gdbpy_enter enter_py (target_gdbarch (), current_language);
 +
-+  for (breakpoint *bp : all_breakpoints_safe ())
++  for (breakpoint &bp : all_breakpoints_safe ())
 +    {
-+      if (tp->global_num == bp->thread)
-+	bpfinishpy_detect_out_scope_cb (bp, nullptr);
++      if (tp->global_num == bp.thread)
++	bpfinishpy_detect_out_scope_cb (&bp, nullptr, true);
 +    }
 +}
 +
@@ -412,42 +418,30 @@ index 1d8373d807e..a881103fdad 100644
 +
  /* Initialize the Python finish breakpoint code.  */
  
- int
-@@ -414,6 +432,9 @@ gdbpy_initialize_finishbreakpoints (void)
+ static int CPYCHECKER_NEGATIVE_RESULT_SETS_EXCEPTION
+@@ -452,6 +470,8 @@ gdbpy_initialize_finishbreakpoints (void)
  				      "py-finishbreakpoint");
    gdb::observers::inferior_exit.attach (bpfinishpy_handle_exit,
  					"py-finishbreakpoint");
 +  gdb::observers::thread_exit.attach
-+    (bpfinishpy_handle_thread_exit,
-+     bpfinishpy_handle_thread_exit_observer_token, "py-finishbreakpoint");
++    (bpfinishpy_handle_thread_exit, "py-finishbreakpoint");
  
    return 0;
  }
 diff --git a/gdb/testsuite/gdb.python/py-finish-breakpoint2.exp b/gdb/testsuite/gdb.python/py-finish-breakpoint2.exp
-index 58e086ad3b4..46c39d0d108 100644
+index 66587b8b9a0..31479a05e6f 100644
 --- a/gdb/testsuite/gdb.python/py-finish-breakpoint2.exp
 +++ b/gdb/testsuite/gdb.python/py-finish-breakpoint2.exp
-@@ -50,10 +50,20 @@ gdb_test "continue" "Breakpoint .*throw_exception_1.*" "run to exception 1"
- gdb_test "python print (len(gdb.breakpoints()))" "3" "check BP count"
- gdb_test "python ExceptionFinishBreakpoint(gdb.newest_frame())" \
-     "init ExceptionFinishBreakpoint" "set FinishBP after the exception"
--gdb_test "continue" ".*stopped at ExceptionFinishBreakpoint.*" "check FinishBreakpoint in catch()"
--gdb_test "python print (len(gdb.breakpoints()))" "3" "check finish BP removal"
- 
--gdb_test "continue" ".*Breakpoint.* throw_exception_1.*" "continue to second exception"
-+gdb_test_multiple "continue" "continue after setting FinishBreakpoint" {
-+    -re -wrap ".*stopped at ExceptionFinishBreakpoint.*" {
-+	pass "$gdb_test_name (scenario 1, triggered)"
-+	gdb_test "python print (len(gdb.breakpoints()))" "3" \
-+	    "check finish BP removal"
-+	gdb_test "continue" ".*Breakpoint.* throw_exception_1.*" \
-+	    "continue to second exception"
-+    }
-+    -re -wrap ".*Breakpoint.* throw_exception_1.*" {
-+	pass "$gdb_test_name (scenario 2, not triggered)"
-+    }
-+}
+@@ -87,6 +87,7 @@ if { $need_continue } {
+     gdb_test "continue" ".*Breakpoint.* throw_exception_1.*" \
+ 	"continue to second exception"
+ }
 +
  gdb_test "python ExceptionFinishBreakpoint(gdb.newest_frame())" \
      "init ExceptionFinishBreakpoint" "set FinishBP after the exception again"
- gdb_test "continue" ".*exception did not finish.*" "FinishBreakpoint with exception thrown not caught"
+ 
+
+base-commit: 6de9111c512de99fd8cb3ea89f9890b1d72f6ef0
+-- 
+2.35.3
+

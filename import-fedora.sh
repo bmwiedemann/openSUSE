@@ -10,10 +10,6 @@ skip_patches=(
     gdb-6.8-bz466901-backtrace-full-prelinked.patch
     gdb-container-rh-pkg.patch
 
-    # Broken.
-    # Over-specific test-case in a shell script.
-    gdb-6.5-BEA-testsuite.patch
-
     # Fragile test-case, requires glibc to fail in a certain way.
     gdb-rhbz1156192-recursive-dlopen-test.patch
 

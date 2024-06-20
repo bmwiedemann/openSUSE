@@ -1,0 +1,65 @@
+From afab95df8ff5b3bc57e3cacca813df987ce84af2 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 17 Apr 2024 11:45:02 +0200
+Subject: [PATCH 27/48] [gdb/testsuite] Simplify
+ gdb.server/server-kill-python.exp
+
+In test-case gdb.server/server-kill-python.exp we have:
+...
+if {[gdb_spawn_with_cmdline_opts \
+         "-quiet -iex \"set height 0\" -iex \"set width 0\" -ex \"source $host_file1\""] != 0} {
+    fail "spawn"
+    return
+}
+...
+
+I reproduced the problem by reverting the fix at the commit adding both the
+fix and the test-case, and the reproduced the same problem using:
+...
+(gdb) source $host_file1
+...
+so there doesn't seem to be a specific need to source the python file using
+"-ex".
+
+Simplify the test-case by sourcing the python file using send_gdb.
+
+This also allow us to simplify the python script.
+
+Tested on x86_64-linux.
+---
+ gdb/testsuite/gdb.server/server-kill-python.exp | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.server/server-kill-python.exp b/gdb/testsuite/gdb.server/server-kill-python.exp
+index ae85791c770..dcb6eddd6eb 100644
+--- a/gdb/testsuite/gdb.server/server-kill-python.exp
++++ b/gdb/testsuite/gdb.server/server-kill-python.exp
+@@ -48,8 +48,6 @@ puts $fd \
+ "import gdb
+ 
+ def do_gdb_stuff ():
+-    gdb.execute ('file $host_binfile')
+-    gdb.execute ('target $gdbserver_protocol $gdbserver_gdbport')
+     gdb.execute ('break $srcfile:$break_linenr')
+     gdb.execute ('continue')
+     gdb.execute ('p server_pid')
+@@ -63,11 +61,15 @@ set host_file1 [gdb_remote_download host $file1]
+ # Now start GDB, sourcing the python command file we generated above.
+ # Set the height and width so we don't end up at a paging prompt.
+ if {[gdb_spawn_with_cmdline_opts \
+-	 "-quiet -iex \"set height 0\" -iex \"set width 0\" -ex \"source $host_file1\""] != 0} {
++	 "-quiet -iex \"set height 0\" -iex \"set width 0\""] != 0} {
+     fail "spawn"
+     return
+ }
+ 
++gdb_load $binfile
++gdb_target_cmd $gdbserver_protocol $gdbserver_gdbport
++send_gdb "source $host_file1\n"
++
+ # Get the gdbserver PID.
+ set gdbserver_pid 0
+ 
+-- 
+2.35.3
+

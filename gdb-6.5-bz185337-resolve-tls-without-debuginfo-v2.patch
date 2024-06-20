@@ -44,7 +44,7 @@ glibc-debuginfo-2.7-2.x86_64: /usr/lib/debug/lib64/libc.so.6.debug:
 diff --git a/gdb/printcmd.c b/gdb/printcmd.c
 --- a/gdb/printcmd.c
 +++ b/gdb/printcmd.c
-@@ -1300,6 +1300,10 @@ process_print_command_args (const char *args, value_print_options *print_opts,
+@@ -1308,6 +1308,11 @@ process_print_command_args (const char *args, value_print_options *print_opts,
  
    if (exp != nullptr && *exp)
      {
@@ -52,9 +52,10 @@ diff --git a/gdb/printcmd.c b/gdb/printcmd.c
 +	 function descriptors.  */
 +      if (target_has_execution () && strcmp (exp, "errno") == 0)
 +	exp = "*(*(int *(*)(void)) __errno_location) ()";
-       /* VOIDPRINT is true to indicate that we do want to print a void
- 	 value, so invert it for parse_expression.  */
-       expression_up expr = parse_expression (exp, nullptr, !voidprint);
++
+       /* This setting allows large arrays to be printed by limiting the
+ 	 number of elements that are loaded into GDB's memory; we only
+ 	 need to load as many array elements as we plan to print.  */
 diff --git a/gdb/testsuite/gdb.dwarf2/dw2-errno.c b/gdb/testsuite/gdb.dwarf2/dw2-errno.c
 new file mode 100644
 --- /dev/null

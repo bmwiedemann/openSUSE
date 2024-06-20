@@ -1,7 +1,7 @@
-From 6ac3acf29782a059258fdfe21bd55f1716fc46ed Mon Sep 17 00:00:00 2001
+From b2f260d117dc11b8e90d4e9bf7f4b2cbd63d1d49 Mon Sep 17 00:00:00 2001
 From: Tom de Vries <tdevries@suse.de>
 Date: Tue, 22 Aug 2023 13:17:47 +0200
-Subject: [PATCH 02/11] [gdb/symtab] Factor out m_die_range_map usage
+Subject: [PATCH 02/13] [gdb/symtab] Factor out m_die_range_map usage
 
 Factor out usage of cooked_indexer::m_die_range_map into new class parent_map
 with member functions find_parent and set_parent, and static member function
@@ -9,15 +9,15 @@ form_addr.
 
 Tested on x86_64-linux.
 ---
- gdb/dwarf2/cooked-index.h | 32 ++++++++++++++++++++++++++
- gdb/dwarf2/read.c         | 48 +++++++++++++++++++++------------------
- 2 files changed, 58 insertions(+), 22 deletions(-)
+ gdb/dwarf2/cooked-index.h | 32 +++++++++++++++++++++++++++
+ gdb/dwarf2/read.c         | 46 ++++++++++++++++++++-------------------
+ 2 files changed, 56 insertions(+), 22 deletions(-)
 
 diff --git a/gdb/dwarf2/cooked-index.h b/gdb/dwarf2/cooked-index.h
-index 2ef1f4b27e9..1c967bdbf86 100644
+index 5aacb321c91..979541fbf60 100644
 --- a/gdb/dwarf2/cooked-index.h
 +++ b/gdb/dwarf2/cooked-index.h
-@@ -233,6 +233,38 @@ struct cooked_index_entry : public allocate_on_obstack
+@@ -239,6 +239,38 @@ struct cooked_index_entry : public allocate_on_obstack
  		    bool for_name) const;
  };
  
@@ -53,14 +53,14 @@ index 2ef1f4b27e9..1c967bdbf86 100644
 +  addrmap_mutable m_parent_map;
 +};
 +
- class cooked_index_vector;
+ class cooked_index;
  
  /* An index of interesting DIEs.  This is "cooked", in contrast to a
 diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
-index 00471d20d41..1092cb1dca9 100644
+index 466d3e59878..d48f3010063 100644
 --- a/gdb/dwarf2/read.c
 +++ b/gdb/dwarf2/read.c
-@@ -6722,16 +6722,6 @@ class cooked_indexer
+@@ -4722,16 +4722,6 @@ class cooked_indexer
  
  private:
  
@@ -77,7 +77,7 @@ index 00471d20d41..1092cb1dca9 100644
    /* A helper function to scan the PC bounds of READER and record them
       in the storage's addrmap.  */
    void check_bounds (cutu_reader *reader);
-@@ -6799,7 +6789,20 @@ class cooked_indexer
+@@ -4799,7 +4789,20 @@ class cooked_indexer
    /* An addrmap that maps from section offsets (see the form_addr
       method) to newly-created entries.  See m_deferred_entries to
       understand this.  */
@@ -99,7 +99,7 @@ index 00471d20d41..1092cb1dca9 100644
  
    /* A single deferred entry.  */
    struct deferred_entry
-@@ -18317,15 +18320,13 @@ cooked_indexer::scan_attributes (dwarf2_per_cu_data *scanning_per_cu,
+@@ -16412,15 +16415,13 @@ cooked_indexer::scan_attributes (dwarf2_per_cu_data *scanning_per_cu,
  
  	  if (*parent_entry == nullptr)
  	    {
@@ -118,15 +118,13 @@ index 00471d20d41..1092cb1dca9 100644
  	    }
  
  	  unsigned int bytes_read;
-@@ -18444,11 +18445,15 @@ cooked_indexer::recurse (cutu_reader *reader,
- 
-   if (parent_entry != nullptr)
+@@ -16538,11 +16539,13 @@ cooked_indexer::recurse (cutu_reader *reader,
      {
--      CORE_ADDR start = form_addr (parent_entry->die_offset,
+       /* Both start and end are inclusive, so use both "+ 1" and "- 1" to
+ 	 limit the range to the children of parent_entry.  */
+-      CORE_ADDR start = form_addr (parent_entry->die_offset + 1,
 -				   reader->cu->per_cu->is_dwz);
 -      CORE_ADDR end = form_addr (sect_offset (info_ptr - 1 - reader->buffer),
-+      /* Both start and end are inclusive, so use both "+ 1" and "- 1" to
-+	 limit the range to the children of parent_entry.  */
 +      CORE_ADDR start
 +	= parent_map::form_addr (parent_entry->die_offset + 1,
 +				 reader->cu->per_cu->is_dwz);
@@ -138,7 +136,7 @@ index 00471d20d41..1092cb1dca9 100644
      }
  
    return info_ptr;
-@@ -18621,8 +18626,7 @@ cooked_indexer::make_index (cutu_reader *reader)
+@@ -16715,8 +16718,7 @@ cooked_indexer::make_index (cutu_reader *reader)
  
    for (const auto &entry : m_deferred_entries)
      {

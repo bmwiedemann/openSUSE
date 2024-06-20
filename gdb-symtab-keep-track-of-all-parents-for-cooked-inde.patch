@@ -1,7 +1,7 @@
-From be9718e911aff34896dcf1c3dfa41bfe34e5a9f4 Mon Sep 17 00:00:00 2001
+From 0e706742f37ee90629350780263b573f326f1a5f Mon Sep 17 00:00:00 2001
 From: Tom de Vries <tdevries@suse.de>
 Date: Thu, 7 Dec 2023 10:38:05 +0100
-Subject: [PATCH 10/11] [gdb/symtab] Keep track of all parents for cooked index
+Subject: [PATCH 12/13] [gdb/symtab] Keep track of all parents for cooked index
 
 Keep track of all parents for cooked index.
 
@@ -11,10 +11,10 @@ Tested on x86_64-linux.
  1 file changed, 9 insertions(+), 3 deletions(-)
 
 diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
-index 39f6e480e19..e2d4fe8cde6 100644
+index de7b655d26c..93708ef11b9 100644
 --- a/gdb/dwarf2/read.c
 +++ b/gdb/dwarf2/read.c
-@@ -18626,9 +18626,15 @@ cooked_indexer::index_dies (cutu_reader *reader,
+@@ -16718,9 +16718,15 @@ cooked_indexer::index_dies (cutu_reader *reader,
  		});
  	    }
  	  else

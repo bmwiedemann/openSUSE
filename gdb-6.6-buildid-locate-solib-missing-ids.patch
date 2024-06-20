@@ -14,7 +14,7 @@ https://bugzilla.redhat.com/show_bug.cgi?id=1339862
 diff --git a/gdb/solib-svr4.c b/gdb/solib-svr4.c
 --- a/gdb/solib-svr4.c
 +++ b/gdb/solib-svr4.c
-@@ -1321,14 +1321,28 @@ svr4_read_so_list (svr4_info *info, CORE_ADDR lm, CORE_ADDR prev_lm,
+@@ -1320,14 +1320,28 @@ svr4_read_so_list (svr4_info *info, CORE_ADDR lm, CORE_ADDR prev_lm,
  	}
  
        {
@@ -45,7 +45,7 @@ diff --git a/gdb/solib-svr4.c b/gdb/solib-svr4.c
  	if (build_id != NULL)
  	  {
  	    char *name, *build_id_filename;
-@@ -1343,23 +1357,7 @@ svr4_read_so_list (svr4_info *info, CORE_ADDR lm, CORE_ADDR prev_lm,
+@@ -1342,23 +1356,7 @@ svr4_read_so_list (svr4_info *info, CORE_ADDR lm, CORE_ADDR prev_lm,
  		xfree (name);
  	      }
  	    else
