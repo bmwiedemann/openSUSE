@@ -1116,4 +1116,13 @@ I would be grateful.
     <comment>KDE release gear 24.05.1 (forwarded request 1180225 from krop)</comment>
     <requestid>1180488</requestid>
   </revision>
+  <revision rev="132" vrev="2">
+    <srcmd5>65e76dc865fcb511e7e11f184fe84db9</srcmd5>
+    <version>24.05.1</version>
+    <time>1718894938</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream fix (kde#488689):
+  * 0001-Fix-timeline-duration-not-correctly-updated-resultin.patch</comment>
+    <requestid>1181923</requestid>
+  </revision>
 </revisionlist>

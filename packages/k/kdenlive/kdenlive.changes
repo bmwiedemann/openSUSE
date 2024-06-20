@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 20 12:33:50 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream fix (kde#488689):
+  * 0001-Fix-timeline-duration-not-correctly-updated-resultin.patch
+
+-------------------------------------------------------------------
 Wed Jun 12 07:32:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.1
