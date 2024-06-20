@@ -34,8 +34,6 @@ License:        Apache-2.0
 Group:          Productivity/Networking/Web/Servers
 URL:            https://github.com/GrahamDumpleton/mod_wsgi
 Source:         https://github.com/GrahamDumpleton/mod_wsgi/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
-BuildRequires:  apache-rex
-%apache_rex_deps
 BuildRequires:  python3-devel
 %if 0%{?suse_version} >= 1500 || 0%{?fedora} || 0%{?rhel}
 BuildRequires:  python3-setuptools
@@ -77,9 +75,6 @@ make install DESTDIR=%{buildroot} LIBEXECDIR=%{apache_libexecdir}
 %if 0%{?suse_version} >= 1500 || 0%{?fedora} || 0%{?rhel}
 %py3_install
 %endif
-
-%check
-%apache_rex_check -m ./src/server/.libs mod_wsgi-basic
 
 %if 0%{?suse_version}
 %postun
