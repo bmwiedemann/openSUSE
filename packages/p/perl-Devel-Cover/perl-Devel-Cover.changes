@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jun 19 17:55:32 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Remove manual dependency on perl-B-Debug. The dependency was
+  already removed upstream in 1.39
+
+-------------------------------------------------------------------
+Tue Jun 11 03:07:50 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.44
+   see /usr/share/doc/packages/perl-Devel-Cover/Changes
+
+  1.44 - 10 June 2024
+   - Test against 5.40
+   - Test with DBM::Deep on CI
+
+  1.43 - 8 June 2024
+   - Bump coancover version requirements to 5.38
+   - Format cpancover and Cover::Collection
+   - Format main documentation
+   - Tidy dc script
+   - Remove dzil's .build from distribution (Graham Knop) (GH-337)
+
+-------------------------------------------------------------------
 Sat Apr 27 03:07:19 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.42

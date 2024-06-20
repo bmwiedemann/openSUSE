@@ -8,8 +8,6 @@
 #  foo.patch: -p1
 #  bar.patch:
 preamble: |-
-  BuildRequires:  perl-B-Debug
-  Requires:       perl-B-Debug
 # BuildRequires:  gcc-c++
 #post_prep: |-
 # hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`

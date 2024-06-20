@@ -18,10 +18,10 @@
 
 %define cpan_name Devel-Cover
 Name:           perl-Devel-Cover
-Version:        1.420.0
+Version:        1.440.0
 Release:        0
-# 1.42 -> normalize -> 1.420.0
-%define cpan_version 1.42
+# 1.44 -> normalize -> 1.440.0
+%define cpan_version 1.44
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Code coverage metrics for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -99,10 +99,6 @@ Recommends:     perl(Template) >= 2.00
 Recommends:     perl(Test::Differences)
 Recommends:     perl(namespace::clean)
 %{perl_requires}
-# MANUAL BEGIN
-BuildRequires:  perl-B-Debug
-Requires:       perl-B-Debug
-# MANUAL END
 
 %description
 This module provides code coverage metrics for Perl. Code coverage metrics
