@@ -39,3 +39,9 @@ sys_vars.tcp_nodelay                             : since 11.1.2 - all
 
 perfschema.show_aggregate                        : since 11.2.3 - all
 main.mdev375                                     : since 11.2.3 - all
+
+main.func_json_notembedded                       : since 11.2.3 - s390x
+mariabackup.encrypted_page_corruption            : since 11.2.3 - s390x
+
+main.ssl_autoverify                              : since 11.4.2 - all
+binlog.max_binlog_total_size                     : since 11.4.2 - all

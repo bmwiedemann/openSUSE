@@ -9,11 +9,11 @@ Index: CMakeLists.txt
 ===================================================================
 --- CMakeLists.txt.orig
 +++ CMakeLists.txt
-@@ -242,7 +242,6 @@ IF(SECURITY_HARDENED AND NOT WITH_ASAN A
+@@ -263,7 +263,6 @@ IF(SECURITY_HARDENED AND NOT WITH_ASAN A
    MY_CHECK_AND_SET_COMPILER_FLAG("-pie -fPIC")
    MY_CHECK_AND_SET_LINKER_FLAG("-Wl,-z,relro,-z,now")
    MY_CHECK_AND_SET_COMPILER_FLAG("-fstack-protector --param=ssp-buffer-size=4")
 -  MY_CHECK_AND_SET_COMPILER_FLAG("-D_FORTIFY_SOURCE=2" RELEASE RELWITHDEBINFO)
  ENDIF()
  
- INCLUDE(wsrep)
+ OPTION(WITH_DBUG_TRACE "Enable DBUG_ENTER()/DBUG_RETURN()/DBUG_PRINT()" ON)

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jun 18 20:39:59 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Remove errmsg-utf8.txt from mariadb-errormessages.
+  * The file was only used for generating .sys files and isn't needed
+    in the package.
+
+-------------------------------------------------------------------
+Thu May 30 12:48:55 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 11.4.2:
+    https://mariadb.com/kb/en/changes-improvements-in-mariadb-11-4/
+    https://mariadb.com/kb/en/changes-improvements-in-mariadb-11-3/
+    https://mariadb.com/kb/en/mariadb-11-4-2-release-notes/
+    https://mariadb.com/kb/en/mariadb-11-4-2-changelog/
+    https://mariadb.com/kb/en/mariadb-11-4-1-release-notes/
+    https://mariadb.com/kb/en/mariadb-11-4-1-changelog/
+    https://mariadb.com/kb/en/mariadb-11-4-0-release-notes/
+    https://mariadb.com/kb/en/mariadb-11-4-0-changelog/
+- Refresh mariadb-10.2.4-fortify-and-O.patch
+- Update list of skipped tests
+
+-------------------------------------------------------------------
 Fri Feb 23 11:14:44 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.

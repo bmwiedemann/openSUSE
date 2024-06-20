@@ -52,7 +52,7 @@
 # Build with cracklib plugin when cracklib-dict-full >= 2.9.0 is available
 %define with_cracklib_plugin 0
 Name:           mariadb
-Version:        11.2.3
+Version:        11.4.2
 Release:        0
 Summary:        Server part of MariaDB
 License:        SUSE-GPL-2.0-with-FLOSS-exception
@@ -629,7 +629,6 @@ for f in usr/share/%{name}/*; do
         echo "%%dir /$f" >> %{_builddir}/errormessages.files
     fi
 done
-echo %{_datadir}/%{name}/errmsg-utf8.txt >> %{_builddir}/errormessages.files
 popd >/dev/null
 mv %{_builddir}/errormessages.files mariadb-errormessages.files
 
