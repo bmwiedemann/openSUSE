@@ -21,7 +21,7 @@
 Name:           mkosi
 Version:        23.1
 Release:        0
-Summary:        Build Legacy-Free OS Images
+Summary:        Build bespoke OS Images
 License:        LGPL-2.1-or-later
 Group:          System/Management
 URL:            https://github.com/systemd/mkosi
@@ -37,7 +37,6 @@ Requires:       bubblewrap
 Requires:       python3 >= 3.9
 Requires:       zypper
 Recommends:     btrfsprogs
-Recommends:     dnf >= 4.8.0
 Recommends:     dosfstools
 Recommends:     dpkg
 Recommends:     edk2-ovmf
@@ -50,13 +49,17 @@ BuildArch:      noarch
 ExclusiveArch:  x86_64 aarch64
 
 %description
-A fancy wrapper around dnf --installroot, debootstrap, pacstrap and zypper that
-may generate disk images with a number of bells and whistles.
+A fancy wrapper around "dnf --installroot", "apt", "pacman", and "zypper" that
+generates disk images with a number of bells and whistles.
 
-Generated images are "legacy-free". This means only GPT disk labels
-(and no MBR disk labels) are supported, and only systemd based images
-may be generated. Moreover, for bootable images only EFI systems are
-supported (not plain MBR/BIOS).
+Generated images are tailored to the purpose: GPT partitions,
+systemd-boot or grub2, images for containers, VMs, initrd, and extensions.
+
+mkosi can boot an image via QEMU or systemd-nspawn, or simply start a shell in
+chroot, burn the image to a device, connect to a running VM via ssh, extract
+logs and coredumps, and also serve an image over HTTP.
+
+See https://mkosi.systemd.io/ for documentation.
 
 %prep
 %autosetup -p1

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 13 09:23:17 UTC 2024 - Antonio Feijoo <antonio.feijoo@suse.com>
+
+- Update package summary and description.
+  * BIOS support was removed in v14, but restored in v16.
+
+- Remove dnf dependency.
+  * With openSUSE, zypper is a sufficient requirement for mkosi to work.
+
+-------------------------------------------------------------------
 Wed Jun 12 20:26:36 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
 
 - Removed obsolete patch  opensuse-dont-install-distribution-release-by-default.patch
