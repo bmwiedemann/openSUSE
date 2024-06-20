@@ -16,7 +16,7 @@
 #
 
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-cinemagoer
 Version:        2023.5.1
 Release:        0

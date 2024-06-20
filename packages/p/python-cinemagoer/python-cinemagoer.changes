@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 19 10:32:30 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu May 16 14:46:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro: allows us to eliminiate usage of deprecated
