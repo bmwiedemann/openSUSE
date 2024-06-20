@@ -18,7 +18,7 @@
 
 
 Name:           hyprwayland-scanner
-Version:        0.3.9
+Version:        0.3.10
 Release:        0
 Summary:        Hyprland implementation of wayland-scanner
 License:        BSD-3-Clause

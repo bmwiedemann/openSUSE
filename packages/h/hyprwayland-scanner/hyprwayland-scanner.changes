@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 14 10:37:37 UTC 2024 - Dawid Adam <nyslay@gmail.com>
+
+- Update to 0.3.10:
+  * core: set resource to nullptr in onDestroyCalled
+  * source: ignore send... requests when resource is null
+
+-------------------------------------------------------------------
 Thu Jun  6 10:11:02 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Change parts of _service to run at buildtime instead to properly
