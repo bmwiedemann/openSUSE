@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 19 19:24:31 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 1.22.1:
+  * updated camera color matrices for OM Systems OM-1mkII and OM-5
+  * reset adjusters with double click
+  * exifpanel: improved tooltips for tags
+  * lensexif: avoid division by 0 when computing Olympus ca coeffs
+
+-------------------------------------------------------------------
 Wed May 29 12:12:27 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add dependency to CTL on Tumbleweed.
