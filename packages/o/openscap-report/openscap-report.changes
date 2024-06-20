@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 20 05:09:23 UTC 2024 - ming li <mli@suse.com>
+
+- update to 0.2.6:
+  * Rearrange fields in Rule detail and OVAL definition detail
+  * Distinguish Between Configuration OVAL And Applicability Checks
+  * Present references in a table
+
+-------------------------------------------------------------------
 Thu Sep 21 20:31:24 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.2.5:

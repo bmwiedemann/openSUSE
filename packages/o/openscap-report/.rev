@@ -23,4 +23,12 @@
     <comment>openscap-report 0.2.5 (forwarded request 1112904 from AndreasStieger)</comment>
     <requestid>1112948</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b3ac670ba893406ad470a0ac4657c630</srcmd5>
+    <version>0.2.6</version>
+    <time>1718894906</time>
+    <user>anag+factory</user>
+    <comment>Update to version 0.2.6 (forwarded request 1181851 from simonlm)</comment>
+    <requestid>1181877</requestid>
+  </revision>
 </revisionlist>
