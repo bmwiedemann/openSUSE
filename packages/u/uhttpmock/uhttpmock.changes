@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 19 09:22:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.11.0:
+  + Dump hosts during record.
+  + Add HTTP/2 support.
+  + Add Location field support.
+  + Fix memory leak in uhm_message_finalize.
+
+-------------------------------------------------------------------
 Tue Mar  5 08:23:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.10.0:

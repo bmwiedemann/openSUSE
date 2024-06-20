@@ -107,4 +107,16 @@
     <comment>GNOME 46 (forwarded request 1159277 from dimstar)</comment>
     <requestid>1159537</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>381cf039bdc0745b804206ebfdac06fd</srcmd5>
+    <version>0.11.0</version>
+    <time>1718894803</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.11.0:
+  + Dump hosts during record.
+  + Add HTTP/2 support.
+  + Add Location field support.
+  + Fix memory leak in uhm_message_finalize. (forwarded request 1181709 from dimstar)</comment>
+    <requestid>1181715</requestid>
+  </revision>
 </revisionlist>

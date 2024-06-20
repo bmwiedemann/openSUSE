@@ -18,13 +18,13 @@
 
 
 Name:           uhttpmock
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        HTTP web service mocking library
 License:        LGPL-2.1-or-later
 Group:          Development/Tools/Other
 URL:            https://gitlab.freedesktop.org/pwithnall/uhttpmock
-Source0:        %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
