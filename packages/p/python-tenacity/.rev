@@ -230,4 +230,16 @@
 - use PEP517 build</comment>
     <requestid>1179634</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bc2661f03039a26a16196bac256fc6e0</srcmd5>
+    <version>8.4.1</version>
+    <time>1718894857</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.4.1:
+  * Include `tenacity.asyncio` subpackage in release dist
+- update to 8.4.0:
+  * Add async strategies
+  * Support Trio out-of-the-box</comment>
+    <requestid>1181787</requestid>
+  </revision>
 </revisionlist>
