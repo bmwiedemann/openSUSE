@@ -1,7 +1,7 @@
 #
-# spec file for package petsc
+# spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,9 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname petsc
-%define vers 3.18.5
-%define _vers 3_18_5
-%define so_ver 3_18
+%define vers 3.21.2
+%define _vers 3_21_2
+%define so_ver 3_21
 %define openblas_vers 0.3.6
 
 ExcludeArch:    s390 s390x
@@ -266,12 +266,14 @@ Group:          Development/Libraries/C and C++
 Version:        %vers
 Release:        0
 
-Source:         ftp://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-%{version}.tar.gz
-Patch0:         petsc-3.3-p2-no-rpath.patch
+Source:         https://web.cels.anl.gov/projects/petsc/download/release-snapshots/petsc-%{version}.tar.gz
+Patch0:         Remove-rpath-test.patch
 Patch1:         petsc-3.7-fix-pastix-detection.patch
+Patch2:         Allow-lib64-as-library-directory-for-scalapack.patch
 URL:            https://www.mcs.anl.gov/petsc/
 BuildRequires:  fdupes
 BuildRequires:  hwloc-devel
+BuildRequires:  libyaml-devel
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 
@@ -447,6 +449,7 @@ python%{python_ver} ./config/configure.py \
   --with-python-exec=python%{python_ver} \
   --with-shared-libraries \
   --with-batch=0 \
+  --with-yaml=1 \
 %if %{without hpc}
   --with-suitesparse=1 \
   --with-suitesparse-lib=[%{_libdir}/libklu.so,%{_libdir}/libumfpack.so,%{_libdir}/libcholmod.so,%{_libdir}/libcolamd.so,%{_libdir}/libccolamd.so,%{_libdir}/libcamd.so,%{_libdir}/libamd.so,%{_libdir}/libspqr.so,%{_libdir}/libsuitesparseconfig.so] \
@@ -482,6 +485,7 @@ python%{python_ver} ./config/configure.py \
  %endif
 %else
   --with-blas-lapack-lib=$OPENBLAS_LIB/libopenblas.so \
+  --with-scalapack=1 \
   --with-scalapack-dir=$SCALAPACK_DIR \
   --with-hdf5=1 \
   --with-hdf5-lib=$HDF5_LIB/libhdf5.so \
@@ -663,6 +667,19 @@ mkdir -p %{buildroot}%{p_libdir}/pkgconfig
 ln -s %{p_libdir}/petsc/%{version}/%{petsc_arch}/lib/pkgconfig/petsc.pc \
       %{buildroot}%{p_libdir}/pkgconfig/
 %endif
+for d in /usr/lib64/petsc/3.21.2/linux-gnu-c-opt/share/petsc/matlab \
+ /usr/lib64/petsc/3.21.2/linux-gnu-c-opt/lib/petsc/bin \
+ /usr/lib64/petsc/3.21.2/linux-gnu-c-opt/share/petsc/bin
+do
+   for i in `find %{buildroot}/$d -type f  -a -perm /a=x`
+   do
+     head -1 $i | grep -q "^#!" || chmod -x $i
+   done
+   for i in `find %{buildroot}/$d -type f -a -name "*.py" -a -not -perm /a=x`
+   do
+     head -1 $i | grep -q "^#!" && chmod a+x $i
+   done
+done
 
 %fdupes %{buildroot}%{p_include}
 %fdupes %{buildroot}%{p_libdir}

@@ -1,0 +1,25 @@
+From: Egbert Eich <eich@suse.com>
+Date: Tue Jun 18 18:26:00 2024 +0200
+Subject: Allow lib64 as library directory for scalapack
+Patch-mainline: never
+Git-commit: a310a348ad61f5b0ae4c693279143c0ebc4a95ac
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ config/BuildSystem/config/packages/scalapack.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+diff --git a/config/BuildSystem/config/packages/scalapack.py b/config/BuildSystem/config/packages/scalapack.py
+index a4bf7ec..f009ca4 100644
+--- a/config/BuildSystem/config/packages/scalapack.py
++++ b/config/BuildSystem/config/packages/scalapack.py
+@@ -19,7 +19,7 @@ class Configure(config.package.CMakePackage):
+     self.downloadonWindows= 1
+     self.makerulename     = 'scalapack'
+     self.minCmakeVersion  = (3,9,0)
+-    self.libDirs          = ['lib',os.path.join('lib','intel64')]
++    self.libDirs          = ['lib','lib64',os.path.join('lib','intel64')]
+     self.requirekandr     = 1
+     return
+ 

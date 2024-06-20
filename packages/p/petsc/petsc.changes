@@ -1,4 +1,772 @@
 -------------------------------------------------------------------
+Tue Jun 18 05:25:24 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Update to version 3.21:
+  - General:
+    * Add single precision support for using HYPRE and MFEM
+    * Require Fortran 2003 compiler with `GET_COMMAND_ARGUMENT()` support
+      for building PETSc with Fortran bindings
+  - Sys:
+    * Add `PetscBench` an object class for managing benchmarks in PETSc
+    * Deprecate `PetscVoidFunction`, `PetscVoidStarFunction`, and
+      `PetscErrorCodeFunction` typedefs in favor of `PetscVoidFn` and
+      `PetscErrorCodeFn`.
+    * Add `PetscOptionsBoundedReal()` and `PetscOptionsRangeReal()`.
+    * Rename Petsc stream types to `PETSC_STREAM_DEFAULT`,
+      `PETSC_STREAM_NONBLOCKING`, `PETSC_STREAM_DEFAULT`_WITH_BARRIER` and
+      `PETSC_STREAM_NONBLOCKING_WITH_BARRIER`. The root device context uses
+      `PETSC_STREAM_DEFAULT` by default.
+  - PetscViewer:
+    * Change `PetscViewerRestoreSubViewer()` to no longer need a call to
+      `PetscViewerFlush()` after it.
+    * Introduce `PetscOptionsRestoreViewer()` that must be called after
+      `PetscOptionsGetViewer()` and `PetscOptionsGetViewers()` to ensure
+      thread safety.
+    * Add `PetscViewerASCIIWORLDSetFileUnit()`.
+  - VecScatter / PetscSF:
+     * Add MPI-4.0 persistent neighborhood collectives support. Use
+       `-sf_neighbor_persistent` along with `-sf_type` neighbor to enable it.
+     * Add `PetscSFCreateStridedSF()` to communicate strided blocks of data/
+  - Vec:
+    * Add `VecGhostGetGhostIS()` to get the ghost indices of a ghosted vector.
+    * Add `-vec_mdot_use_gemv` to let `VecMDot()`, `VecMTDot()` use BLAS2
+      `gemv()` instead of custom unrolled kernel. Default is on.
+    * Add `-vec_maxpy_use_gemv` to let `VecMAXPY()` use BLAS2 `gemv()`
+      instead of custom unrolled kernel. Default is off.
+    * `VecReplaceArray()` on the first Vec obtained from `VecDuplicateVecs()`
+      with either of the two above *_use_gemv options won’t work anymore.
+      If needed, turn them off or use VecDuplicateVec() instead `VecScale()`
+      is now a logically collective operation.
+    * Add `VecISShift()` to shift a part of the vector.
+    * `VecISSet()` does no longer accept NULL as index set.
+    * `VecLoad()` automatically determines whether the file was written
+      using 32-bit or 64-bit indices, and files can read with PETSc built
+      either way.
+  - PetscSection:
+    * Add `PetscSectionGetBlockStarts()` and `PetscSectionSetBlockStarts()`.
+    * Add argument to `PetscSectionCreateGlobalSection()` that can ignore
+      the local section permutation.
+    * Add `PetscSectionCreateComponentSubsection()`.
+  - PetscPartitioner:
+    * Add edge weights to `PetscPartitionerPartition()`
+  - Mat:
+    * Reset `MATLMVM` history vectors if size is changed.
+    * Add specific support for `MatMultHermitianTranspose()` and
+      `MatMultHermitianTransposeAdd()` in `MATSHELL`, `MATDENSE`,
+      `MATNEST`, and `MATSCALAPACK`
+    * Add function `MatProductGetAlgorithm()` `MATTRANSPOSEVIRTUAL`,
+      `MATHERMITIANTRANSPOSEVIRTUAL`, `MATNORMAL`, `MATNORMALHERMITIAN`
+      and `MATCOMPOSITE` now derive from `MATSHELL`. This implies a new
+      behavior for those Mat, as calling `MatAssemblyBegin()`/
+      `MatAssemblyEnd()` destroys scalings and shifts for `MATSHELL`, but
+      it was not previously the case for other `MatType`.
+    * Add function `MatGetRowSumAbs()` to compute vector of L1 norms of
+      rows ([`B`]`AIJ` only).
+    * Add partial support for `MatBackwardSolve()`/`MatForwardSolve()` with
+      `MATSOLVERMKL_PARDISO` and `MATSOLVERMKL_CPARDISO`.
+    * Deprecate `MATIS` options `-matis_xxx`. Use `-mat_is_xxx`.
+    * Add support for repeated entries in the local part of the local to
+      global map for `MATIS` via the routines `MatISSetAllowRepeated()`
+      and `MatISGetAllowRepeated()`.
+    * Add support to dump and load a matrix of `MATIS` type.
+    * Add dense representations of symmetric Broyden matrices
+      `MATLMVMDBFGS`, `MATLMVMDDFP`, and `MATLMVMDQN`.
+    * Add `MATSELLHIP` and the corresponding HIP kernels for matrix-vector
+      multiplication.
+  - MatCoarsen:
+    * Add `MatCoarsenSetMaximumIterations()` with corresponding option
+      `-mat_coarsen_max_it <4>`. The number of iteration of the coarsening
+      method. Used for the HEM coarsener.
+    * Add `MatCoarsenSetThreshold()` with corresponding option
+      `-mat_coarsen_threshold <-1>`. Threshold for filtering graph for HEM.
+      Like GAMG < 0 means no filtering.
+    * Change API for several PetscCD methods used internally in `PCGAMG` and
+      `MatCoarsen` (eg, change `PetscCDSetChuckSize()` to
+      `PetscCDSetChunckSize()`), remove Mat argument from
+      `PetscCDGetASMBlocks()`.
+  - PC:
+    * Add `PCGAMGSetLowMemoryFilter()` with corresponding option
+      `-pc_gamg_low_memory_threshold_filter`. Use the system `MatFilter`
+      graph/matrix filter, without a temporary copy of the graph, otherwise
+      use method that can be faster.
+    * Add `PCGAMGASMSetHEM()` with corresponding option
+      `-pc_gamg_asm_hem_aggs N`. Use ASM smoother constructed from N
+      applications of heavy edge matching.
+    * `PCMAT` use `MatSolve()` if implemented by the matrix type.
+    * Add `PCLMVMSetUpdateVec()` for the automatic update of the LMVM
+      preconditioner inside a SNES solve.
+    * Add `PCGAMGSetInjectionIndex()` with corresponding option
+      `-pc_gamg_injection_index i,j,k...`. Inject provided indices of fine
+      grid operator as first coarse grid restriction (sort of p-multigrid
+      for C1 elements).
+    * Add `PC_JACOBI_ROWL1` to `PCJacobiType` to use (scaled) l1 row norms
+      for diagonal approximation with scaling of off-diagonal elements.
+    * Add `PCJacobiSetRowl1Scale()` and `-pc_jacobi_rowl1_scale` scale to
+      access new scale member of PC_Jacobi class, for new row l1 Jacobi.
+    * Add `-mg_fine_...` prefix alias for fine grid options to override
+      `-mg_levels_...` options, like `-mg_coarse_...`.
+    * The generated sub-matrices in `PCFIELDSPLIT`, `PCASM`, and `PCBJACOBI`
+      now retain any null space or near null space attached to them even
+      if the non-zero structure of the outer matrix changes.
+    * Add support for multiple subdomain per MPI process in `PCBDDC`.
+    * Add `PCJacobiGetDiagonal()` to access the Jacobi inverted matrix
+      diagonal and its square root variant.
+  - SNES:
+    * Add support for Quasi-Newton models in `SNESNEWTONTR` via
+      `SNESNewtonTRSetQNType`.
+    * Add support for trust region norm customization in `SNESNEWTONTR` via
+      `SNESNewtonTRSetNormType`.
+    * Remove default of `KSPPREONLY` and `PCLU` for `SNESNASM` subdomain
+      solves: for `SNESASPIN` use `-npc_sub_ksp_type preonly -npc_sub_pc_type
+      lu`.
+    * Add function typedefs `SNESInitialGuessFn`, `SNESFunctionFn`,
+      `SNESObjectiveFn`, `SNESJacobianFn`, and `SNESNGSFn`.
+    * Deprecate `DMDASNESFunction`, `DMDASNESJacobian`, `DMDASNESObjective`,
+      `DMDASNESFunctionVec`, `DMDASNESJacobianVec`, and `DMDASNESObjectiveVec`
+      in favor of `DMDASNESFunctionFn`, `DMDASNESJacobianFn`,
+      `DMDASNESObjectiveFn`, `DMDASNESFunctionVecFn`, `DMDASNESJacobianVecFn`,
+      and `DMDASNESObjectiveVecFn`.
+  - SNESLineSearch:
+    * Deprecate `SNESLineSearchShellSetUserFunc()` and
+      `SNESLineSearchShellGetUserFunc()` in favor of
+      `SNESLineSearchShellSetApply()` and `SNESLineSearchShellGetApply()`.
+  - TS:
+    * Add support for custom predictor callbacks in the second-order
+      generalized-alpha method using `TSAlpha2SetPredictor()`.
+    * Allow adaptivity to change time step size in first step of
+      second-order generalized-alpha method.
+    * Add `TSSetPostEventStep()` to control the first step after event.
+    * Rename `TSSetPostEventIntervalStep()` to `TSSetPostEventSecondStep()`,
+      controlling the second step after event.
+    * Rename option `-ts_event_post_eventinterval_step` to
+      `-ts_event_post_event_second_step`.
+    * Change the (event) indicator functions type from `PetscScalar[]` to
+      `PetscReal[]` in the user `indicator()` callback set by
+      `TSSetEventHandler()`.
+    * Add `TSGetStepRollBack()` to access the internal rollback flag.
+    * Add boolean flag to TSSetResize() to control when to resize.
+  - TAO:
+    * Deprecate `TaoCancelMonitors()` (resp. `-tao_cancelmonitors`) in
+      favor of `TaoMonitorCancel()` (resp. `-tao_monitor_cancel`).
+    * Deprecate `-tao_view_gradient`, `-tao_view_ls_residual`,
+      `-tao_view_solution`, and `-tao_view_stepdirection` in favor of
+      `-tao_monitor_gradient`, `-tao_monitor_ls_residual`,
+      `-tao_monitor_solution`, and `-tao_monitor_step`.
+    * Deprecate `-tao_draw_solution`, `-tao_draw_gradient`, and
+      `-tao_draw_step` in favor of `-tao_monitor_solution_draw`,
+      `-tao_monitor_gradient_draw`, and `-tao_monitor_step_draw`.
+    * Deprecate `TaoSetMonitor()` in favor of `TaoMonitorSet()`.
+    * Deprecate all of the provided Tao monitor routine names in favor of
+      the standard PETSc naming conventions.
+  - DM/DA:
+    * Add MPI reduction inside `SNESComputeObjective_DMDA()`. No need to
+      call reduction in local callback.
+    * Deprecate `PetscSimplePointFunc` in favor of `PetscSimplePointFn`.
+    * Move `DMPlexReorderDefaultFlag` to `DMReorderDefaultFlag`.
+    * Add `DMCreateSectionPermutation()`, `DMReorderSectionGetType()`,
+      and `DMReorderSectionSetType()`.
+    * Add `DMReorderSectionGetDefault()` and `DMReorderSectionSetDefault()`
+      to allow point permutations when sections are built automatically.
+    * Change interface to `DMCreateSectionSubDM()` to add component
+       specification.
+    * Add DMDAGetBoundaryType().
+  - DMSwarm:
+    * Add continuous DM argument to `DMSwarmProjectFields()`.
+    * Add `DMSwarmGetFieldInfo()`.
+    * Add `DMSwarmVectorGetField()`.
+  - DMPlex:
+    * Drop support for MED, i.e. remove `DMPlexCreateMedFromFile()` and
+      `--with-med`.
+    * Change protototype of `DMPlexSetSNESLocalFEM()`. Now it accepts a
+      single context and a Boolean indicating to use the objective function
+      callback.
+    * Replace `DMProjectCoordinates()` with `DMSetCoordinateDisc()`.
+    * Add argument to `DMPlexCreateCoordinateSpace()`.
+    * Add `DMPlexCoordMap` and some default maps.
+    * Add Boolean argument to `DMPlexPartitionLabelCreateSF()` to sort ranks.
+    * Add `DMClearAuxiliaryVec()` to clear the auxiliary data.
+    * Add `ignoreLabelHalo`, `sanitizeSubmesh`, and `ownershipTransferSF`
+      arguments to `DMPlexFilter()`.
+    * Change `DMPlexSetIsoperiodicFaceSF()`, `DMPlexGetIsoperiodicFaceSF()`,
+      and `DMPlexSetIsoperiodicFaceTransform()` to accept multiple values
+      for different periodic pairings.
+  - FE/FV:
+    * Add Jacobian type argument to `PetscFEIntegrateBdJacobian()`.
+    * Add `PetscFVClone()`.
+    * Add `PetscFVCreateDualSpace()`.
+  - DMStag:
+    * Add support for `DMLocalToLocalBegin()` and `DMLocalToLocalEnd()`.
+    * Add `DMStagSetRefinementFactor()` and `DMStagGetRefinementFactor()`
+      to set and get the refinement ratio.
+    * Add support for arbitrary refinement ratio and degree of freedom in
+      interpolation and restriction.
+  - DT:
+    * Add `PetscDSUpdateBoundaryLabels()`.
+
+- Update to version 3.20:
+  - General:
+    * Add `PetscOptionsBegin()`, `PetscOptionsEnd()`, `PetscOptionsInt()`,
+      `PetscOptionsBool()`, `PetscOptionsIntArray()`, `PetscOptionsReal()`,
+      `PetscOptionsRealArray()`, and `PetscOptionsScalar()` for Fortran.
+    * Add `PetscAssertPointer()` as a replacement for `PetscValidPointer()`,
+      `PetscValidCharPointer()`, `PetscValidIntPointer()`,
+      `PetscValidInt64Pointer()`, `PetscValidCountPointer()`,
+      `PetscValidBoolPointer()`, `PetscvalidScalarPointer()`, and
+      `PetscValidRealPointer()`.
+    *  Convert standard header-guards in PETSc header-files to `#pragma`
+       once. Users relying on specific preprocessor definitions to determine
+       whether particular PETSc headers (e.g. `petscdm.h` used to be guarded
+       by PETSCDM_H) have been included will find that this no longer works.
+       While header-guards are technically “public” (insofar that they appear
+       in public header-files), their name and value are considered
+       implementation details.
+  - Sys:
+    * Add `PetscDeviceContextGetStreamHandle()` to return a handle to the
+      stream the current device context is using.
+    * Add utility functions `PetscGetCurrentCUDAStream()` and
+      `PetscGetCurrentHIPStream()` to return the GPU stream the current
+      device context is using.
+    * Add `PetscStrcmpAny()` to compare against multiple non-empty strings.
+    * Change arguments 4 and 5 of `PetscViewerBinaryReadAll()` and
+      `PetscViewerBinaryWriteAll()` to `PetscInt64`.
+    * Add `PetscIsCloseAtTolScalar()`.
+    * Remove `PetscTellMyCell()` and related runtime option.
+    * Remove `PetscTextBelt()` and related runtime option.
+    * Remove deprecated `-malloc [no]` startup option.
+    * Remove deprecated `-malloc_info` startup option.
+    * Remove deprecated `-log_summary` option.
+    * Remove `PetscURLShorten()`, it has not worked since 2019.
+      Move `PetscIntStackCreate()`, `PetscIntStackDestroy()`,
+      `PetscIntStackPush()`, `PetscIntStackPop()`, and `PetscIntStackEmpty()`
+      declarations to public API in `petsclog.h`.
+    * Add `-on_error_malloc_dump` option.
+  - Event Logging:
+    * Add `PetscLogState` interface for describing profiling events and
+      stages.
+    * Add `PetscLogHandler` interface that interprets the profiling events
+      of a `PetscLogState`.
+    * Add `PETSCLOGHANDLERDEFAULT` implementation of `PetscLogHandler`.
+    * Add `PETSCLOGHANDLERNESTED` implementation of `PetscLogHandler`.
+    * Add `PETSCLOGHANDLERTRACE` implementation of `PetscLogHandler`.
+    * Add `PetscLogHandlerCreateTrace()`.
+    * Add `PETSCLOGHANDLERMPE` implementation of `PetscLogHandler`.
+    * Add `PETSCLOGHANDLERPERFSTUBS` implementation of `PetscLogHandler`.
+    * Add `PETSCLOGHANDLERLEGACY` implementation of `PetscLogHandler`.
+    * Add `PetscLogHandlerCreateLegacy()`.
+    * Add `PetscLogPerfstubsBegin()` for log handling with PerfStubs/TAU.
+    * Add `PetscLogLegacyCallbacksBegin()` to transition old log handler
+      callbacks to the PetscLogHandler-based approach.
+    * Add `PetscLogHandlerStart()` to connect a `PetscLogHandler` to
+      PETSc’s global logging events.
+    * Add `PetscLogStageGetName()`.
+    * Add `PetscLogEventGetName()`.
+    * Add `PetscLogEventsPause()` and `PetscLogEventsResume()` to isolate
+      a logging event from unrelated in-process events.
+    * Add `PetscLogClassGetClassId()`.
+    * Add `PetscLogClassIdGetName()`.
+    * Deprecate `PetscLogClassPerfInfoClear()` ,
+      `PetscLogClassPerfLogCreate()`, and `PetscLogClassPerfLogDestroy()`.
+    * Deprecate `PetscClassPerfLogEnsureSize()`, `PetscClassRegInfoDestroy()`,
+      `PetscClassRegLogCreate()`, `PetscClassRegLogDestroy()`,
+      `PetscClassRegLogGetClass()`, and `PetscClassRegLogRegister()`.
+    * Deprecate `PetscEventPerfInfoClear()` and `PetscEventPerfInfoCopy()`.
+    * Deprecate `PetscEventPerfLogActivate()`,
+      `PetscEventPerfLogActivateClass()`, `PetscEventPerfLogCreate()`,
+      `PetscEventPerfLogDeactivate()`, `PetscEventPerfLogDeactivateClass()`,
+      `PetscEventPerfLogDeactivatePop()`, `PetscEventPerfLogDeactivatePush()`,
+      `PetscEventPerfLogDestroy()`, `PetscEventPerfLogEnsureSize()`,
+      `PetscEventPerfLogGetVisible()`, and `PetscEventPerfLogSetVisible()`.
+    * Deprecate `PetscEventRegLogCreate()`, `PetscEventRegLogDestroy()`,
+      `PetscEventRegLogGetEvent()`, and `PetscEventRegLogRegister()`.
+    * Deprecate `PetscStageLogCreate()`, `PetscStageLogDestroy()`,
+      `PetscStageLogGetActive()`, `PetscStageLogGetClassPerfLog()`,
+      `PetscStageLogGetClassRegLog()`, `PetscStageLogGetEventRegLog()`,
+      `PetscStageLogGetStage()`, `PetscStageLogGetVisible()`,
+      `PetscStageLogPop()`, `PetscStageLogPush()`, `PetscStageLogRegister()`,
+      `PetscStageLogSetActive()`, `PetscStageLogSetVisible()`,
+      `PetscStageLogGetCurrent()`, and `PetscStageLogGetEventPerfLog()`.
+    * Deprecate `PetscLogGetStageLog()`.
+    * Deprecate `PetscLogPushCurrentEvent_Internal()`.
+    * Deprecate `PetscLogPopCurrentEvent_Internal()`.
+    * Deprecate `PetscLogAllBegin()`.
+    * Deprecate `PetscLogSet()`.
+    * Add `PetscLogHandlerGetEventPerfInfo()`.
+    * Add `PetscLogHandlerSetLogActions()`.
+    * Add `PetscLogHandlerSetLogObjects()`.
+    * Add `PetscLogHandlerLogObjectState()`.
+    * Add `PetscLogHandlerGetNumObjects()`.
+    * Add `PetscLogHandlerEventDeactivatePush()`.
+    * Add `PetscLogHandlerEventDeactivatePop()`.
+    * Add `PetscLogHandlerEventsPause()`.
+    * Add `PetscLogHandlerEventsResume()`.
+    * Add `PetscLogHandlerDump()`.
+    * Add `PetscLogHandlerStageSetVisible()`.
+    * Add `PetscLogHandlerStageGetVisible()`.
+    * Add `PetscLogHandlerGetStagePerfInfo()`.
+    * Add `PetscLogStageGetPerfInfo()`.
+    * Add `PETSCLOGHANDLERNVTX` implementation of `PetscLogHandler`.
+  - PetscViewer:
+    * Add `PetscViewerASCIIOpenWithFileUnit()` and
+      `PetscViewerASCIISetFileUnit()`.
+  - Vec:
+    * Add `VecErrorWeightedNorms()` to unify weighted local truncation
+      error norms used in TS.
+    * Add CUDA/HIP implementations for `VecAbs()`, `VecSqrt()`, `VecExp()`,
+      `VecLog()`, `VecPointwiseMax()`, `VecPointwiseMaxAbs()`, and
+      `VecPointwiseMin()`.
+    * Add `VecMAXPBY()`.
+    * Deprecate `VecChop()` in favor of `VecFilter()`.
+    * Add `VecCreateFromOptions()`.
+  - Mat:
+    * Add `MatCreateDenseFromVecType()`.
+    * Add support for calling `MatDuplicate()` on a matrix preallocated
+      via `MatSetPreallocationCOO()`, and then `MatSetValuesCOO()` on the
+      new matrix.
+    * Remove MATSOLVERSPARSEELEMENTAL since it is no longer functional
+    * Add `MATSELLCUDA`. It supports fast `MatMult()`, `MatMultTranspose()`,
+      and `MatMultAdd()` on GPUs.
+    * Add support for `MAT_FACTOR_LU` and `MAT_FACTOR_CHOLESKY` with
+      `MATSOLVERMUMPS` for `MATNEST`.
+    * `MatGetFactor()` can now return NULL for some combinations of
+       matrices and solvers types. This is to support those combinations
+       that can only be inspected at runtime (i.e. MatNest with AIJ blocks
+       vs MatNest with SHELL blocks).
+    * Remove `MatSetValuesDevice()`, `MatCUSPARSEGetDeviceMatWrite()`,
+      `MatKokkosGetDeviceMatWrite`.
+    * Add `MatDenseCUDASetPreallocation()` and `MatDenseHIPSetPreallocation()`.
+    * Add support for `KOKKOS` in `MATH2OPUS`.
+    * Add `-pc_precision` single option for use with `MATSOLVERSUPERLU_DIST`.
+    * Add `MATDIAGONAL` which can be created with `MatCreateDiagonal()`.
+    * Add `MatDiagonalGetDiagonal()`, `MatDiagonalRestoreDiagonal()`,
+      `MatDiagonalGetInverseDiagonal()`, and
+      `MatDiagonalRestoreInverseDiagonal()`.
+    * Add support for `MatLoad()` and `MatView()` to load and store
+      `MATMPIAIJ` matrices that have more than `PETSC_INT_MAX` nonzeros,
+      so long as each rank has fewer than `PETSC_INT_MAX`.
+    * Add `MatLRCSetMats()` and register creation routine for `MatLRC`.
+    * Add CUDA/HIP implementation for `MatGetDiagonal()`.
+    * Add a Boolean parameter to `MatEliminateZeros()` to force the removal
+      of zero diagonal coefficients.
+    * Expose `MatComputeVariableBlockEnvelope()` in public headers.
+    * Add `MatEliminateZeros()` implementations for `MatBAIJ` and `MatSBAIJ`.
+    * Deprecate `MatChop()` in favor of `MatFilter()`, with two additional
+      Boolean parameters to compress the underlying storage and keep or
+      discard near-zero diagonal coefficients.
+    * Add `MatCreateFromOptions()`.
+    * Add `MatSTRUMPACKGetReordering()`, `MatSTRUMPACKSetGeometricNxyz()`,
+      `MatSTRUMPACKSetGeometricComponents()`,
+      `MatSTRUMPACKSetGeometricWidth()`, `MatSTRUMPACKGetColPerm()`,
+      `MatSTRUMPACKSetGPU()`, `MatSTRUMPACKGetGPU()`,
+      `MatSTRUMPACKSetCompression()`, `MatSTRUMPACKGetCompression()`,
+      `MatSTRUMPACKSetCompRelTol()`, `MatSTRUMPACKGetCompRelTol()`,
+      `MatSTRUMPACKSetCompAbsTol()`, `MatSTRUMPACKGetCompAbsTol()`,
+      `MatSTRUMPACKSetCompMinSepSize()`, `MatSTRUMPACKGetCompMinSepSize()`,
+      `MatSTRUMPACKSetCompLeafSize()`, `MatSTRUMPACKGetCompLeafSize()`,
+      `MatSTRUMPACKSetCompLossyPrecision()`,
+      `MatSTRUMPACKGetCompLossyPrecision()`,
+      `MatSTRUMPACKSetCompButterflyLevels()`,
+      `MatSTRUMPACKGetCompButterflyLevels()`.
+    * Add `MAT_STRUMPACK_GEOMETRIC`, `MAT_STRUMPACK_AMD`, `MAT_STRUMPACK_MMD`,
+      `MAT_STRUMPACK_AND`, `MAT_STRUMPACK_MLF`, `MAT_STRUMPACK_SPECTRAL`
+      to `MatSTRUMPACKReordering`.
+    * Add `MatSTRUMPACKCompressionType`.
+    * Remove `MatSTRUMPACKSetHSSLeafSize()`, `MatSTRUMPACKSetHSSMaxRank()`,
+      `MatSTRUMPACKSetHSSMinSize()`, `MatSTRUMPACKSetHSSMinSepSize()`,
+      `MatSTRUMPACKSetHSSAbsTol()`, `MatSTRUMPACKSetHSSRelCompTol()`,
+      `MatSTRUMPACKSetHSSRelTol()`.
+  - PC:
+    * Add `PCMatGetApplyOperation()` and `PCMatSetApplyOperation()`.
+    * Add `PCReduceFailedReason()`.
+    * Add `PCSetKSPNestLevel()` and `PCSetKSPNestLevel()`.
+    * Refactor PCMPI to be a private system used automatically when
+      `-mpi_linear_solver_server` is used. The KSP and PC objects that
+      solve the system now inherit any prefix provided initially with
+      `KSPSetPrefix()` and do not require the previously required
+      `mpi_` prefix.
+    * Add option `-fieldsplit_1_pc_hpddm_schur_precondition` to use
+      `PCHPDDM` on the Schur complements from `PCFIELDSPLIT`.
+    * Add `PCGAMGSetAggressiveSquareGraph()` to use square graph method
+      for aggressive coarsening that was the previous default coarsening
+      approach before release 3.19.
+    * Add `PCGAMGSetAggressiveMISk()` to set the number of levels (k) of
+      aggressive MIS-k coarseing (2 is very common).
+    * Add `PCGAMGSetMinDegreeOrderingMISk()` to use a minimum degree
+      ordering for the (greedy) MIS-k algorithm.
+    * Change `PCGAMGSetUseParallelCoarseGridSolve()` to
+      `PCGAMGSetParallelCoarseGridSolve()`.
+    * Add `PCGAMGSetRecomputeEstEig()` to set flag to have Chebyshev
+      recompute its eigen estimates (default set to true).
+  - KSP:
+    * Add `KSPSetMinimumIterations()` and `KSPGetMinimumIterations()`.
+    * Add `KSPSetNestLevel()` and `KSPGetNestLevel()`.
+    * Support `KSPSetInitialGuessNonzero()` with `KSPPREONLY` and
+      `PCDISTRIBUTE` when it is called on both the outer and inner KSP.
+  - SNES:
+    * Add a convenient, developer-level SNESConverged() function that
+      runs the convergence test and updates the internal converged reason.
+    * Swap the order of monitor and convergence test. Now monitors are
+      always called after a convergence test.
+    * Deprecate option -snes_ms_norms in favor of -snes_norm_schedule always.
+  - TS:
+    * Remove `TSErrorWeightedNormInfinity()`, `TSErrorWeightedNorm2()`,
+      `TSErrorWeightedENormInfinity()`, `TSErrorWeightedENorm2()` since
+      the same functionality can be obtained with `VecErrorWeightedNorms()`.
+    * Add support for time-dependent solvers with varying solution size
+      using `TSSetResize()`.
+    * Add support for Diagonally Implicit Runge-Kutta methods with the new
+      `TSDIRK` type.
+  - TAO:
+    * Add `TaoADMMGetRegularizerCoefficient()`.
+    * Add `TAOBNCG`, `TaoBNCGGetType()` and `TaoBNCGSetType()`.
+  - DM/DA:
+    * Add support for `DMDAGetElements()` for Fortran.
+    * Add support for clearing named vectors with
+      `DMClearNamedGlobalVectors()` and `DMClearNamedLocalVectors()`.
+    * Add `DMPrintCellIndices()` for debugging.
+    * Add `DMUseTensorOrder()`.
+    * Add `DMCeedCreate()`, `DMCeedComputeGeometry()`, and `DMCeedDestroy()`.
+  - DMSwarm:
+    * Add scatter mode to `DMSwarmProjectFields()` and no longer create
+      vectors.
+    * Promote `DMSwarmDataFieldGetEntries()`,
+      `DMSwarmDataFieldRestoreEntries()`,
+      `DMSwarmDataBucketGetDMSwarmDataFieldByName()`,
+      `DMSwarmDataBucketGetDMSwarmDataFieldIdByName()`, and
+      `DMSwarmDataBucketQueryDMSwarmDataFieldByName()` to public interface.
+  - DMPlex:
+    * Add `DMPlexTransformExtrudeGetPeriodic()` and
+      `DMPlexTransformExtrudeSetPeriodic()`.
+    * Replace `DMPlexGetGhostCellStratum()` with `DMPlexGetCellTypeStratum()`.
+    * Add `DMPlexSetUseMatClosurePermutation()` and
+      `DMPlexGetUseMatClosurePermutation()`.
+    * Add `DMPlexGetUseCeed()`, `DMPlexSetUseCeed()`, and
+      `DMPlexSNESComputeResidualCEED()`.
+    * Add `DMPlexSNESComputeResidualDS()`.
+  - FE/FV:
+    * Add `PLEXFE_QFUNCTION` macro to create CEED QFunctions from Plex
+      pointwise functions.
+  - DMNetwork:
+    * Add `DMNetworkViewSetShowRanks()`, `DMNetworkViewSetViewRanks()`,
+      `DMNetworkViewSetShowGlobal()`, `DMNetworkViewSetShowVertices()`,
+      `DMNetworkViewSetShowNumbering()`.
+    * Add `-dmnetwork_view_all_ranks`, `-dmnetwork_view_rank_range`,
+      `-dmnetwork_view_no_vertices`, `-dmnetwork_view_no_numbering`,
+      for viewing DMNetworks with the Matplotlib viewer.
+    * Add `-dmnetwork_view_zoomin_vertices`
+      `-dmnetwork_view_zoomin_vertices_padding` for viewing `DMNetworks`
+      with the Matplotlib viewer.
+  - DT:
+    * Add `PETSCFEVECTOR` for making a finite element that is a vector
+      of copies of another finite element.
+    * Add `PetscFECreateVector()`.
+    * Add `PETSCDUALSPACESUM` for a finite element dual basis that is
+      the sum of other dual bases.
+    * Add `PetscDualSpaceCreateSum()`.
+    * Add `PetscDualSpaceSumSetNumSubspaces()`.
+    * Add `PetscDualSpaceSumGetNumSubspaces()`.
+    * Add `PetscDualSpaceSumSetSubspace()`.
+    * Add `PetscDualSpaceSumGetSubspace()`.
+    * Add `PetscDualSpaceSumSetConcatenate()`.
+    * Add `PetscDualSpaceSumGetConcatenate()`.
+    * Add `PetscDualSpaceSumSetInterleave()`.
+    * Add `PetscDualSpaceSumGetInterleave()`.
+    * Add `PetscSpaceSumSetInterleave()`.
+    * Add `PetscSpaceSumGetInterleave()`.
+    * Add `PetscDualSpaceGetInteriorSection()`.
+  - Fortran:
+    * Add `PetscCheck()` and `PetscCheckA()` for Fortran.
+    * Change `PETSC_HAVE_FORTRAN` to `PETSC_USE_FORTRAN_BINDINGS` to
+      indicate if PETSc is built with Fortran bindings.
+
+- Update to version 3.19:
+  - General:
+    * Add `PetscOptionsBegin()`, `PetscOptionsEnd()`, `PetscOptionsInt()`,
+      `PetscOptionsBool()`, `PetscOptionsIntArray()`, `PetscOptionsReal()`,
+      `PetscOptionsRealArray()`, and `PetscOptionsScalar()` for Fortran.
+    * Add `PetscAssertPointer()` as a replacement for `PetscValidPointer()`,
+      `PetscValidCharPointer()`, `PetscValidIntPointer()`,
+      `PetscValidInt64Pointer()`, `PetscValidCountPointer()`,
+      `PetscValidBoolPointer()`, `PetscvalidScalarPointer()` and
+      `PetscValidRealPointer()`.
+    * Convert standard header-guards in PETSc header-files to
+      `#pragma once`. Users relying on specific preprocessor definitions to
+      determine whether particular PETSc headers (e.g. `petscdm.h` used
+      to be guarded by `PETSCDM_H`) have been included will find that this
+      no longer works. While header-guards are technically "public"
+      (insofar that they appear in public header-files), their name and
+      value are considered implementation details.
+  - Sys:
+    * Add `PetscDeviceContextGetStreamHandle()` to return a handle to
+      the stream the current device context is using.
+    * Add utility functions `PetscGetCurrentCUDAStream()` and
+      `PetscGetCurrentHIPStream()` to return the GPU stream the current
+      device context is using.
+    * Add `PetscStrcmpAny()` to compare against multiple non-empty strings.
+    * Change arguments 4 and 5 of `PetscViewerBinaryReadAll()` and
+      `PetscViewerBinaryWriteAll()` to `PetscInt64`.
+    * Add `PetscIsCloseAtTolScalar()`.
+    * Remove `PetscTellMyCell()` and related runtime option.
+    * Remove `PetscTextBelt()` and related runtime option.
+    * Remove deprecated `-malloc [no]` startup option.
+    * Remove deprecated `-malloc_info` startup option.
+    * Remove deprecated `-log_summary` option.
+    * Remove `PetscURLShorten()`, it has not worked since 2019.
+    * Move `PetscIntStackCreate()`, `PetscIntStackDestroy()`,
+      `PetscIntStackPush()`, `PetscIntStackPop()`, and `PetscIntStackEmpty()`
+      declarations to public API in `petsclog.h`.
+    * Add `-on_error_malloc_dump` option.
+  - Event Logging:
+    * Add `PetscLogState` interface for describing profiling events and stages
+    * Add `PetscLogHandler` interface that interprets the profiling events
+      of a `PetscLogState`
+    * Add `PETSCLOGHANDLERDEFAULT` implementation of `PetscLogHandler`
+    * Add `PETSCLOGHANDLERNESTED` implementation of `PetscLogHandler`
+    * Add `PETSCLOGHANDLERTRACE` implementation of `PetscLogHandler`
+    * Add `PetscLogHandlerCreateTrace()`
+    * Add `PETSCLOGHANDLERMPE` implementation of `PetscLogHandler`
+    * Add `PETSCLOGHANDLERPERFSTUBS` implementation of `PetscLogHandler`
+    * Add `PETSCLOGHANDLERLEGACY` implementation of `PetscLogHandler`
+    * Add `PetscLogHandlerCreateLegacy()`
+    * Add `PetscLogPerfstubsBegin()` for log handling with PerfStubs/TAU
+    * Add `PetscLogLegacyCallbacksBegin()` to transition old log handler
+      callbacks to the `PetscLogHandler`-based approach
+    * Add `PetscLogHandlerStart()` to connect a `PetscLogHandler` to
+      PETSc's global logging events.
+    * Add `PetscLogStageGetName()`.
+    * Add `PetscLogEventGetName()`.
+    * Add `PetscLogEventsPause()` and `PetscLogEventsResume()` to isolate
+      a logging event from unrelated in-process events.
+    * Add `PetscLogClassGetClassId()`.
+    * Add `PetscLogClassIdGetName()`.
+    * Deprecate `PetscLogClassPerfInfoClear()`,
+    `PetscLogClassPerfLogCreate()`, and `PetscLogClassPerfLogDestroy()`.
+    * Deprecate `PetscClassPerfLogEnsureSize()`, `PetscClassRegInfoDestroy()`,
+      `PetscClassRegLogCreate()`, `PetscClassRegLogDestroy()`,
+      `PetscClassRegLogGetClass()`, and `PetscClassRegLogRegister()`.
+    * Deprecate `PetscEventPerfInfoClear()` and `PetscEventPerfInfoCopy()`.
+    * Deprecate `PetscEventPerfLogActivate()`,
+      `PetscEventPerfLogActivateClass()`, `PetscEventPerfLogCreate()`,
+      `PetscEventPerfLogDeactivate()`, `PetscEventPerfLogDeactivateClass()`,
+      `PetscEventPerfLogDeactivatePop()`, `PetscEventPerfLogDeactivatePush()`,
+      `PetscEventPerfLogDestroy()`, `PetscEventPerfLogEnsureSize()`,
+      `PetscEventPerfLogGetVisible()`, and `PetscEventPerfLogSetVisible()`.
+    * Deprecate `PetscEventRegLogCreate()`, `PetscEventRegLogDestroy()`,
+      `PetscEventRegLogGetEvent()`, and `PetscEventRegLogRegister()`.
+    * Deprecate `PetscStageLogCreate()`, `PetscStageLogDestroy()`,
+      `PetscStageLogGetActive()`, `PetscStageLogGetClassPerfLog()`,
+      `PetscStageLogGetClassRegLog()`, `PetscStageLogGetEventRegLog()`,
+      `PetscStageLogGetStage()`, `PetscStageLogGetVisible()`,
+      `PetscStageLogPop()`, `PetscStageLogPush()`, `PetscStageLogRegister()`,
+      `PetscStageLogSetActive()`, `PetscStageLogSetVisible()`,
+      `PetscStageLogGetCurrent()`, and `PetscStageLogGetEventPerfLog()`.
+    * Deprecate `PetscLogGetStageLog()`.
+    * Deprecate `PetscLogPushCurrentEvent_Internal()`.
+    * Deprecate `PetscLogPopCurrentEvent_Internal()`.
+    * Deprecate `PetscLogAllBegin()`.
+    * Deprecate `PetscLogSet()`.
+    * Add `PetscLogHandlerGetEventPerfInfo()`.
+    * Add `PetscLogHandlerSetLogActions()`.
+    * Add `PetscLogHandlerSetLogObjects()`.
+    * Add `PetscLogHandlerLogObjectState()`.
+    * Add `PetscLogHandlerGetNumObjects()`.
+    * Add `PetscLogHandlerEventDeactivatePush()`.
+    * Add `PetscLogHandlerEventDeactivatePop()`.
+    * Add `PetscLogHandlerEventsPause()`.
+    * Add `PetscLogHandlerEventsResume()`.
+    * Add `PetscLogHandlerDump()`.
+    * Add `PetscLogHandlerStageSetVisible()`.
+    * Add `PetscLogHandlerStageGetVisible()`.
+    * Add `PetscLogHandlerGetStagePerfInfo()`.
+    * Add `PetscLogStageGetPerfInfo()`.
+    * Add `PETSCLOGHANDLERNVTX` implementation of `PetscLogHandler`.
+  - PetscViewer:
+    * Add `PetscViewerASCIIOpenWithFileUnit()` and
+      `PetscViewerASCIISetFileUnit()`.
+  - Vec:
+    * Add `VecErrorWeightedNorms()` to unify weighted local truncation
+      error norms used in `TS`.
+    * Add CUDA/HIP implementations for `VecAbs()`, `VecSqrt()`,
+      `VecExp()`, `VecLog()`, `VecPointwiseMax()`, `VecPointwiseMaxAbs()`
+      and `VecPointwiseMin()`.
+    * Add `VecMAXPBY()`.
+    * Deprecate `VecChop()` in favor of `VecFilter()`.
+    * Add `VecCreateFromOptions()`.
+  - PetscSection:
+    * Add `PetscSectionResetClosurePermutation()`.
+  - Mat:
+    * Add `MatCreateDenseFromVecType()`.
+    * Add support for calling `MatDuplicate()` on a matrix preallocated
+      via `MatSetPreallocationCOO()`, and then `MatSetValuesCOO()` on
+      the new matrix.
+    * Remove `MATSOLVERSPARSEELEMENTAL` since it is no longer functional.
+    * Add `MATSELLCUDA`. It supports fast `MatMult()`, `MatMultTranspose()`,
+      and `MatMultAdd()` on GPUs.
+    * Add support for `MAT_FACTOR_LU` and `MAT_FACTOR_CHOLESKY` with
+      `MATSOLVERMUMPS` for `MATNEST`.
+    * `MatGetFactor()` can now return `NULL` for some combinations of
+      matrices and solvers types. This is to support those combinations
+      that can only be inspected at runtime (i.e. MatNest with AIJ blocks
+      vs MatNest with SHELL blocks).
+    * Remove `MatSetValuesDevice()`, `MatCUSPARSEGetDeviceMatWrite()`,
+      `MatKokkosGetDeviceMatWrite`
+    * Add `MatDenseCUDASetPreallocation()` and `MatDenseHIPSetPreallocation()`.
+    * Add support for KOKKOS in `MATH2OPUS`.
+    * Add `-pc_precision single` option for use with `MATSOLVERSUPERLU_DIST`.
+    * Add `MATDIAGONAL` which can be created with `MatCreateDiagonal()`.
+    * Add `MatDiagonalGetDiagonal()`, `MatDiagonalRestoreDiagonal()`,
+      `MatDiagonalGetInverseDiagonal()`, and
+      `MatDiagonalRestoreInverseDiagonal()`.
+    * Add support for `MatLoad()` and `MatView()` to load and store
+      `MATMPIAIJ` matrices that have more than `PETSC_INT_MAX` nonzeros,
+      so long as each rank has fewer than `PETSC_INT_MAX`.
+    * Add `MatLRCSetMats()` and register creation routine for `MatLRC`.
+    * Add CUDA/HIP implementation for `MatGetDiagonal()`.
+    * Add a Boolean parameter to `MatEliminateZeros()` to force the
+      removal of zero diagonal coefficients.
+    * Expose `MatComputeVariableBlockEnvelope()` in public headers.
+    * Add `MatEliminateZeros()` implementations for `MatBAIJ` and
+      `MatSBAIJ`.
+    * Deprecate `MatChop()` in favor of `MatFilter()`, with two additional
+      Boolean parameters to compress the underlying storage and keep or
+      discard near-zero diagonal coefficients.
+    * Add `MatCreateFromOptions()`.
+    * Add `MatSTRUMPACKGetReordering()`, `MatSTRUMPACKSetGeometricNxyz()`,
+      `MatSTRUMPACKSetGeometricComponents()`,
+      `MatSTRUMPACKSetGeometricWidth()`, `MatSTRUMPACKGetColPerm()`,
+      `MatSTRUMPACKSetGPU()`, `MatSTRUMPACKGetGPU()`,
+      `MatSTRUMPACKSetCompression()`, `MatSTRUMPACKGetCompression()`,
+      `MatSTRUMPACKSetCompRelTol()`, `MatSTRUMPACKGetCompRelTol()`,
+      `MatSTRUMPACKSetCompAbsTol()`, `MatSTRUMPACKGetCompAbsTol()`,
+      `MatSTRUMPACKSetCompMinSepSize()`, `MatSTRUMPACKGetCompMinSepSize()`,
+      `MatSTRUMPACKSetCompLeafSize()`, `MatSTRUMPACKGetCompLeafSize()`,
+      `MatSTRUMPACKSetCompLossyPrecision()`,
+      `MatSTRUMPACKGetCompLossyPrecision()`,
+      `MatSTRUMPACKSetCompButterflyLevels()`,
+      `MatSTRUMPACKGetCompButterflyLevels()`.
+    * Add `MAT_STRUMPACK_GEOMETRIC`, `MAT_STRUMPACK_AMD`, `MAT_STRUMPACK_MMD`,
+      `MAT_STRUMPACK_AND`, `MAT_STRUMPACK_MLF`, `MAT_STRUMPACK_SPECTRAL`
+      to `MatSTRUMPACKReordering`.
+    * Add `MatSTRUMPACKCompressionType`.
+    * Remove `MatSTRUMPACKSetHSSLeafSize()`, `MatSTRUMPACKSetHSSMaxRank()`,
+      `MatSTRUMPACKSetHSSMinSize()`, `MatSTRUMPACKSetHSSMinSepSize()`,
+      `MatSTRUMPACKSetHSSAbsTol()`, `MatSTRUMPACKSetHSSRelCompTol()`,
+      `MatSTRUMPACKSetHSSRelTol()`.
+  - PC:
+    * Add `PCMatGetApplyOperation()` and `PCMatSetApplyOperation()`.
+    * Add `PCReduceFailedReason()`.
+    * Add `PCSetKSPNestLevel()` and `PCSetKSPNestLevel()`.
+    * Refactor `PCMPI` to be a private system used automatically when
+      `-mpi_linear_solver_server` is used. The `KSP` and `PC` objects
+      that solve the system now inherit any prefix provided initially
+      with `KSPSetPrefix()` and do not require the previously required
+      `mpi_` prefix.
+    * Add option `-fieldsplit_1_pc_hpddm_schur_precondition` to use
+      `PCHPDDM` on the Schur complements from `PCFIELDSPLIT`.
+    * Add `PCGAMGSetAggressiveSquareGraph()` to use square graph
+      method for aggressive coarsening that was the previous default
+      coarsening approach before release 3.19.
+    * Add `PCGAMGSetAggressiveMISk()` to set the number of levels (k)
+      of aggressive MIS-k coarseing (2 is very common).
+    * Add `PCGAMGSetMinDegreeOrderingMISk()` to use a minimum degree
+      ordering for the (greedy) MIS-k algorithm.
+    * Change `PCGAMGSetUseParallelCoarseGridSolve()` to
+      `PCGAMGSetParallelCoarseGridSolve()`.
+    * Add `PCGAMGSetRecomputeEstEig()` to set flag to have Chebyshev
+      recompute its eigen estimates (default set to true).
+  - KSP:
+    * Add `KSPSetMinimumIterations()` and `KSPGetMinimumIterations()`.
+    * Add `KSPSetNestLevel()` and `KSPGetNestLevel()`.
+    * Support `KSPSetInitialGuessNonzero()` with `KSPPREONLY` and
+      `PCDISTRIBUTE` when it is called on both the outer and inner `KSP`.
+  - SNES:
+    * Add a convenient, developer-level `SNESConverged()` function
+      that runs the convergence test and updates the internal
+      converged reason.
+    * Swap the order of monitor and convergence test. Now monitors
+      are always called after a convergence test.
+    * Deprecate option `-snes_ms_norms` in favor of
+      `-snes_norm_schedule always`.
+  - SNESLineSearch:
+  - TS:
+    * Remove `TSErrorWeightedNormInfinity()`, `TSErrorWeightedNorm2()`,
+      `TSErrorWeightedENormInfinity()`, `TSErrorWeightedENorm2()`
+      since the same functionality can be obtained with
+      `VecErrorWeightedNorms()`.
+    * Add support for time-dependent solvers with varying solution
+      size using `TSSetResize()`.
+    * Add support for Diagonally Implicit Runge-Kutta methods with
+      the new `TSDIRK` type.
+  - TAO:
+    * Add `TaoADMMGetRegularizerCoefficient()`.
+    * Add `TAOBNCG`, `TaoBNCGGetType()` and `TaoBNCGSetType()`.
+  - DM/DA:
+    * Add support for `DMDAGetElements()` for Fortran.
+    * Add support for clearing named vectors with
+      `DMClearNamedGlobalVectors()` and `DMClearNamedLocalVectors()`.
+    * Add `DMPrintCellIndices()` for debugging.
+    * Add `DMUseTensorOrder()`.
+    * Add `DMCeedCreate()`, `DMCeedComputeGeometry()`, and `DMCeedDestroy()`.
+  - DMSwarm:
+    * Add scatter mode to `DMSwarmProjectFields()` and no longer
+      create vectors.
+    * Promote `DMSwarmDataFieldGetEntries()`,
+      `DMSwarmDataFieldRestoreEntries()`,
+      `DMSwarmDataBucketGetDMSwarmDataFieldByName()`,
+      `DMSwarmDataBucketGetDMSwarmDataFieldIdByName()`, and
+      `DMSwarmDataBucketQueryDMSwarmDataFieldByName()` to public interface.
+  - DMPlex:
+    * Add `DMPlexTransformExtrudeGetPeriodic()` and
+      `DMPlexTransformExtrudeSetPeriodic()`.
+    * Replace `DMPlexGetGhostCellStratum()` with `DMPlexGetCellTypeStratum()`.
+    * Add `DMPlexSetUseMatClosurePermutation()` and
+      `DMPlexGetUseMatClosurePermutation()`.
+    * Add `DMPlexGetUseCeed()`, `DMPlexSetUseCeed()`, and
+      `DMPlexSNESComputeResidualCEED()`.
+    * Add `DMPlexSNESComputeResidualDS()`.
+  - FE/FV:
+    * Add `PLEXFE_QFUNCTION` macro to create CEED QFunctions from
+      Plex pointwise functions.
+  - DMNetwork:
+    * Add `DMNetworkViewSetShowRanks()`, `DMNetworkViewSetViewRanks()`,
+      `DMNetworkViewSetShowGlobal()`, `DMNetworkViewSetShowVertices()`,
+      `DMNetworkViewSetShowNumbering()`.
+    * Add `-dmnetwork_view_all_ranks` `-dmnetwork_view_rank_range`
+      `-dmnetwork_view_no_vertices` `-dmnetwork_view_no_numbering`
+      for viewing DMNetworks with the Matplotlib viewer.
+    * Add `-dmnetwork_view_zoomin_vertices`
+      `-dmnetwork_view_zoomin_vertices_padding` for viewing DMNetworks
+      with the Matplotlib viewer.
+  - DT:
+    * Add `PETSCFEVECTOR` for making a finite element that is a vector
+      of copies of another finite element.
+    * Add `PetscFECreateVector()`.
+    * Add `PETSCDUALSPACESUM` for a finite element dual basis that
+      is the sum of other dual bases.
+    * Add `PetscDualSpaceCreateSum()`.
+    * Add `PetscDualSpaceSumSetNumSubspaces()`.
+    * Add `PetscDualSpaceSumGetNumSubspaces()`.
+    * Add `PetscDualSpaceSumSetSubspace()`.
+    * Add `PetscDualSpaceSumGetSubspace()`.
+    * Add `PetscDualSpaceSumSetConcatenate()`.
+    * Add `PetscDualSpaceSumGetConcatenate()`.
+    * Add `PetscDualSpaceSumSetInterleave()`.
+    * Add `PetscDualSpaceSumGetInterleave()`.
+    * Add `PetscSpaceSumSetInterleave()`.
+    * Add `PetscSpaceSumGetInterleave()`.
+    * Add `PetscDualSpaceGetInteriorSection()`.
+  - Fortran:
+    * Add `PetscCheck()` and `PetscCheckA()` for Fortran.
+    * Change `PETSC_HAVE_FORTRAN` to `PETSC_USE_FORTRAN_BINDINGS`
+      to indicate if PETSc is built with Fortran bindings.
+- Use packaged libYAML instead of building the clone incorporated
+  in the PETSc source code. This allows to address security issues
+  through updates to that package (CVE-2024-35328, boo#1226364).
+- Refresh & Rename:
+  petsc-3.3-p2-no-rpath.patch -> Remove-rpath-test.patch
+- Add:
+  Allow-lib64-as-library-directory-for-scalapack.patch
+
+-------------------------------------------------------------------
 Sun Dec  3 12:24:27 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Make a symlink to the real pkgconfig dir (for example, in an
@@ -21,7 +789,7 @@ Mon Oct 23 12:01:23 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 Wed Mar 22 02:39:29 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 3.18.5.
-  * Too many changes to list, for details see 
+  * Too many changes to list, for details see
     https://petsc.org/release/docs/changes/
 - Fix broken usage of MAKEFLAGS, causing build failures with
   gmake >= 4.4.1.
@@ -29,7 +797,7 @@ Wed Mar 22 02:39:29 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 -------------------------------------------------------------------
 Wed Feb 15 05:13:56 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
-- Remove incorrect library symlink with major version only. 
+- Remove incorrect library symlink with major version only.
 
 -------------------------------------------------------------------
 Mon Feb  6 07:16:48 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
