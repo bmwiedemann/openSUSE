@@ -1193,4 +1193,13 @@ By now, it's required for sle-15, so synchronized the updated specfile and chang
     <comment></comment>
     <requestid>1172462</requestid>
   </revision>
+  <revision rev="90" vrev="9">
+    <srcmd5>07115e815b0fa6ec846a1e224cfeb5e5</srcmd5>
+    <version>23.13.9</version>
+    <time>1718894796</time>
+    <user>anag+factory</user>
+    <comment>- Update accountsservice-sysconfig.patch: work with SELinux policy
+  (bsc#1222978). (forwarded request 1181626 from xiaoguang_wang)</comment>
+    <requestid>1181711</requestid>
+  </revision>
 </revisionlist>
