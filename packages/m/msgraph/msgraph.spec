@@ -17,7 +17,7 @@
 
 
 Name:           msgraph
-Version:        0.2.2
+Version:        0.2.3
 Release:        0
 Summary:        Library for accessing online serive APIs using MS Graph protocol
 License:        LGPL-3.0-or-later
@@ -32,7 +32,7 @@ BuildRequires:  pkgconfig(goa-1.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libsoup-3.0)
-BuildRequires:  pkgconfig(libuhttpmock-1.0) > 0.9.0
+BuildRequires:  pkgconfig(libuhttpmock-1.0) >= 0.11.0
 BuildRequires:  pkgconfig(libxml-2.0)
 
 %description

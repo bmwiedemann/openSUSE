@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 19 09:17:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.2.3:
+  + Fix memory leaks.
+  + Fix logger level warning.
+
+-------------------------------------------------------------------
 Wed May 22 06:16:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.2.2:

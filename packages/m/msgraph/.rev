@@ -25,4 +25,14 @@
   without network connectivity, this test cannot pass for us. (forwarded request 1175689 from dimstar)</comment>
     <requestid>1175690</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e7263041306c5313ddade5cb87c8426f</srcmd5>
+    <version>0.2.3</version>
+    <time>1718894801</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.2.3:
+  + Fix memory leaks.
+  + Fix logger level warning. (forwarded request 1181708 from dimstar)</comment>
+    <requestid>1181713</requestid>
+  </revision>
 </revisionlist>
