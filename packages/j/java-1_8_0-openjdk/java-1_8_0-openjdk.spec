@@ -128,11 +128,11 @@
 %if 0%{?__isa_bits}
 %global bits %{__isa_bits}
 %endif
-%if 0%{?suse_version} > 1500 && !0%{?sle_version}
-%global with_shenandoah 1
-%else
+#if 0%{?suse_version} > 1500 && !0%{?sle_version}
+#global with_shenandoah 1
+#else
 %global with_shenandoah 0
-%endif
+#endif
 %global NSS_LIBDIR %(pkg-config --variable=libdir nss)
 %bcond_without bootstrap
 %bcond_with zero
@@ -502,7 +502,7 @@ sh autogen.sh
 %ifarch %{arm}
         --with-hotspot-src-zip=%{SOURCE2} \
 %else
-%if %{without zero} && %{with shenandoah}
+%if %{without zero} && %{with_shenandoah}
         --with-hotspot-src-zip=%{SOURCE3} \
         --with-hotspot-build=shenandoah \
 %endif

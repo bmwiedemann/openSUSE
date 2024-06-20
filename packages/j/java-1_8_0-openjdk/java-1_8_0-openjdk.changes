@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 14 13:31:41 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Fix condition enabling shenandoah GC only for Factory. It was by
+  mistake enabled for SLE too (bsc#1226274)
+- Disable shenandoah for all distributions, since the shenandoah
+  hotspot tarball is rather out of sync.
+
+-------------------------------------------------------------------
 Mon May  6 17:41:21 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
@@ -92,7 +100,6 @@ Sat Apr 20 20:17:41 UTC 2024 - Fridrich Strba <fstrba@suse.com>
     + JDK-8325150: (tz) Update Timezone Data to 2024a
   * Bug fixes
     + Support make 4.4
-
 
 -------------------------------------------------------------------
 Thu Mar  7 12:58:44 UTC 2024 - Fridrich Strba <fstrba@suse.com>

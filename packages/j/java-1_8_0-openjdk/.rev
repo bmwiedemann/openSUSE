@@ -810,4 +810,12 @@
     <comment>fix build with gcc 14</comment>
     <requestid>1172245</requestid>
   </revision>
+  <revision rev="102" vrev="3">
+    <srcmd5>8aa9c943f17eea48d75b752e2a66f9c4</srcmd5>
+    <version>1.8.0.412</version>
+    <time>1718894865</time>
+    <user>anag+factory</user>
+    <comment>bsc#1226274</comment>
+    <requestid>1181793</requestid>
+  </revision>
 </revisionlist>
