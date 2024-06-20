@@ -17,7 +17,7 @@ After=remote-fs.target
 
 [Service]
 Type=forking
-ExecStartPre=/usr/lib/dkimproxy/dkimproxy_env.sh
+ExecStartPre=_LIBEXECDIR/dkimproxy/dkimproxy_env.sh
 EnvironmentFile=-/run/dkimproxy/sysconfig
 PIDFile=/run/dkimproxy/dkimproxy_in.pid
 ExecStart=/usr/share/dkimproxy/bin/dkimproxy.in --hostname=${FQHN} --conf_file=${DKIMPROXY_IN_CFG} --user=${DKIMPROXY_USER} --group=${DKIMPROXY_GROUP} --daemonize --pidfile=/run/dkimproxy/dkimproxy_in.pid

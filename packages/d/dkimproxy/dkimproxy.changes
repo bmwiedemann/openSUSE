@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 13 10:34:44 UTC 2024 - Peter Varkoly <varkoly@suse.com>
+
+- Fix ExecStartPre path. This changes depending on %_libexecdir macro. 
+  Problem was mentioned in (bsc#1217173)
+
+-------------------------------------------------------------------
 Mon Feb 26 08:00:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

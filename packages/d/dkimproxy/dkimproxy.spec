@@ -76,6 +76,7 @@ chmod 644 $( find %{buildroot}/%{dkimproxy_prefix} -name "*.pm" )
     mkdir -p %{buildroot}%{_libexecdir}/%{name}
     install -m 0644 %{S:2} %{buildroot}%{_fillupdir}/sysconfig.%{name}
     install -m 0644 %{S:3} %{buildroot}%{_unitdir}/
+    sed -i s#_LIBEXECDIR#%{_libexecdir}# %{buildroot}%{_unitdir}/%{name}-in.service
     install -m 0644 %{S:4} %{buildroot}%{_unitdir}/
     install -m 0755 %{S:5} %{buildroot}%{_libexecdir}/%{name}
     mkdir -p %{buildroot}%{_tmpfilesdir}
