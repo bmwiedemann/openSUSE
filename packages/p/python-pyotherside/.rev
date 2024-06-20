@@ -61,4 +61,16 @@
 - cleanup spec file</comment>
     <requestid>1137428</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>768fd36032004455229aa4988c62d953</srcmd5>
+    <version>1.6.1</version>
+    <time>1718894948</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.6.1:
+  * Dropped support for Python &lt; 3.8 (PR#131)
+  * Added support for Python 3.12 (PR#131)
+  * Support for Qt 6.5 and newer (backwards-incompatible
+    ``Q_RETURN_ARG()`` change) (fixes #128)</comment>
+    <requestid>1181936</requestid>
+  </revision>
 </revisionlist>

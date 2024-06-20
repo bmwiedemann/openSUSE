@@ -19,7 +19,7 @@
 %define srcname pyotherside
 %bcond_without test
 Name:           python-pyotherside
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        Asynchronous Python 3 Bindings for Qt 5
 License:        ISC

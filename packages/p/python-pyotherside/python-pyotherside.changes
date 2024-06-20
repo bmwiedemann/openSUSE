@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 20 13:03:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.1:
+  * Dropped support for Python < 3.8 (PR#131)
+  * Added support for Python 3.12 (PR#131)
+  * Support for Qt 6.5 and newer (backwards-incompatible
+    ``Q_RETURN_ARG()`` change) (fixes #128)
+
+-------------------------------------------------------------------
 Sun Jan  7 19:46:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.0:
