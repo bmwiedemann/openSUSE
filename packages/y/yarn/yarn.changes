@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 19 20:53:46 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 1.22.22:
+  * Fix a hoisting issue when transitive dependencies themselves
+    listed aliases as dependencies
+  * Fix a punycode warning
+
+-------------------------------------------------------------------
 Sat Dec  2 04:06:33 UTC 2023 - Gagah Pangeran <gagahpangeran29@gmail.com>
 
 - update to 1.22.21:

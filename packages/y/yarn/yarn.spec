@@ -1,7 +1,7 @@
 #
 # spec file for package yarn
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yarn
-Version:        1.22.21
+Version:        1.22.22
 Release:        0
 Summary:        📦🐈 Fast, reliable, and secure dependency management
 License:        BSD-2-Clause
