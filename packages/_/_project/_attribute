@@ -4,7 +4,7 @@
   <attribute namespace="OBS" name="ApprovedRequestSource"/>
   <attribute namespace="OSRT" name="IgnoredIssues">
     <value>last_seen:
-  boo#0: '20240617'
+  boo#0: '20240618'
   boo#1172073: '20240205'
   boo#1207390: '20240618'
   boo#1207940: '20240618'
@@ -599,10 +599,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
-published: '20240617'
-publishing: '20240617'
-testing: '20240618'
+    <value>failed: '20240619'
+published: '20240618'
+publishing: '20240618'
+testing: '20240619'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
