@@ -587,4 +587,16 @@
   * Ask for shell and terminal in bug report template</comment>
     <requestid>1180852</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>826562378efcc0dca4a8f60d50b1ea78</srcmd5>
+    <version>0.18.19+0</version>
+    <time>1718894908</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.18.9:
+  Bug Fixes:
+  * Ship release binaries
+  Build:
+  * Bump git2 from 0.18.3 to 0.19.0</comment>
+    <requestid>1181884</requestid>
+  </revision>
 </revisionlist>
