@@ -1,0 +1,103 @@
+From f055a591d0ad779eab39ad0b13bd240653c9f137 Mon Sep 17 00:00:00 2001
+From: Marcus Meissner <meissner@suse.de>
+Date: Wed, 19 Jun 2024 09:59:41 +0200
+Subject: [PATCH 1/2] added openSUSE Tumbleweed version detection
+
+(Tumbleweed has no version as it is rolling)
+
+https://github.com/aquasecurity/trivy-db/issues/410
+---
+ pkg/vulnsrc/suse-cvrf/suse-cvrf.go      | 18 +++++++++++++++---
+ pkg/vulnsrc/suse-cvrf/suse-cvrf_test.go |  4 ++++
+ 2 files changed, 19 insertions(+), 3 deletions(-)
+
+diff --git a/pkg/vulnsrc/suse-cvrf/suse-cvrf.go b/pkg/vulnsrc/suse-cvrf/suse-cvrf.go
+index be3d4eff..297b29eb 100644
+--- a/pkg/vulnsrc/suse-cvrf/suse-cvrf.go
++++ b/pkg/vulnsrc/suse-cvrf/suse-cvrf.go
+@@ -24,8 +24,10 @@ type Distribution int
+ const (
+ 	SUSEEnterpriseLinux Distribution = iota
+ 	OpenSUSE
++	OpenSUSETumbleweed
+ 
+-	platformOpenSUSEFormat  = "openSUSE Leap %s"
++	platformOpenSUSETumbleweedFormat  = "openSUSE Tumbleweed"
++	platformOpenSUSELeapFormat  = "openSUSE Leap %s"
+ 	platformSUSELinuxFormat = "SUSE Linux Enterprise %s"
+ )
+ 
+@@ -55,6 +57,9 @@ func (vs VulnSrc) Name() types.SourceID {
+ 	if vs.dist == OpenSUSE {
+ 		return "opensuse-cvrf"
+ 	}
++	if vs.dist == OpenSUSETumbleweed {
++		return "opensuse-tumbleweed-cvrf"
++	}
+ 	return source.ID
+ }
+ 
+@@ -66,6 +71,7 @@ func (vs VulnSrc) Update(dir string) error {
+ 	case SUSEEnterpriseLinux:
+ 		rootDir = filepath.Join(rootDir, "suse")
+ 	case OpenSUSE:
++	case OpenSUSETumbleweed:
+ 		rootDir = filepath.Join(rootDir, "opensuse")
+ 	default:
+ 		return xerrors.New("unknown distribution")
+@@ -185,6 +191,10 @@ func getOSVersion(platformName string) string {
+ 		// SUSE Linux Enterprise Module for SUSE Manager Server 4.0
+ 		return ""
+ 	}
++	if strings.HasPrefix(platformName, "openSUSE Tumbleweed") {
++		// Tumbleweed has no version, it is a rolling release
++		return platformOpenSUSETumbleweedFormat
++	}
+ 	if strings.HasPrefix(platformName, "openSUSE Leap") {
+ 		// openSUSE Leap 15.0
+ 		ss := strings.Split(platformName, " ")
+@@ -196,7 +206,7 @@ func getOSVersion(platformName string) string {
+ 			log.Printf("invalid version: %s, err: %s", platformName, err)
+ 			return ""
+ 		}
+-		return fmt.Sprintf(platformOpenSUSEFormat, ss[2])
++		return fmt.Sprintf(platformOpenSUSELeapFormat, ss[2])
+ 	}
+ 	if strings.Contains(platformName, "SUSE Linux Enterprise") {
+ 		// e.g. SUSE Linux Enterprise Storage 7, SUSE Linux Enterprise Micro 5.1
+@@ -276,7 +286,9 @@ func (vs VulnSrc) Get(version string, pkgName string) ([]types.Advisory, error)
+ 	case SUSEEnterpriseLinux:
+ 		bucket = fmt.Sprintf(platformSUSELinuxFormat, version)
+ 	case OpenSUSE:
+-		bucket = fmt.Sprintf(platformOpenSUSEFormat, version)
++		bucket = fmt.Sprintf(platformOpenSUSELeapFormat, version)
++	case OpenSUSETumbleweed:
++		bucket = platformOpenSUSETumbleweedFormat
+ 	default:
+ 		return nil, xerrors.New("unknown distribution")
+ 	}
+
+From a6bad64919d94263c6e075f2f3676b6cdbfe811d Mon Sep 17 00:00:00 2001
+From: Marcus Meissner <meissner@suse.de>
+Date: Wed, 19 Jun 2024 16:07:49 +0200
+Subject: [PATCH 2/2] Update pkg/vulnsrc/suse-cvrf/suse-cvrf.go
+
+Co-authored-by: Teppei Fukuda <knqyf263@gmail.com>
+---
+ pkg/vulnsrc/suse-cvrf/suse-cvrf.go | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/pkg/vulnsrc/suse-cvrf/suse-cvrf.go b/pkg/vulnsrc/suse-cvrf/suse-cvrf.go
+index 297b29eb..f616990e 100644
+--- a/pkg/vulnsrc/suse-cvrf/suse-cvrf.go
++++ b/pkg/vulnsrc/suse-cvrf/suse-cvrf.go
+@@ -70,8 +70,7 @@ func (vs VulnSrc) Update(dir string) error {
+ 	switch vs.dist {
+ 	case SUSEEnterpriseLinux:
+ 		rootDir = filepath.Join(rootDir, "suse")
+-	case OpenSUSE:
+-	case OpenSUSETumbleweed:
++	case OpenSUSE, OpenSUSETumbleweed:
+ 		rootDir = filepath.Join(rootDir, "opensuse")
+ 	default:
+ 		return xerrors.New("unknown distribution")

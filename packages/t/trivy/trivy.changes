@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 19 15:58:20 UTC 2024 - dmueller@suse.com
+
+- Update to version 0.52.2:
+  * release: v0.52.2 [release/v0.52] (#6896)
+  * ci: use `ubuntu-latest-m` runner [backport: release/v0.52] (#6933)
+  * chore(deps): bump github.com/Azure/azure-sdk-for-go/sdk/azidentity from 1.5.2 to 1.6.0 [backport: release/v0.52] (#6919)
+  * test: bump docker API to 1.45  [backport: release/v0.52] (#6922)
+  * ci: bump `github.com/goreleaser/goreleaser` to `v2.0.0` [backport: release/v0.52] (#6893)
+  * fix(debian): take installed files from the origin layer [backport: release/v0.52] (#6892)
+- add add-opensuse-tumbleweed-db.patch,
+  add-opensuse-tumbleweed-support.patch: patches for tumbleweed
+  support
+
+-------------------------------------------------------------------
 Wed Jun 12 14:19:45 UTC 2024 - dmueller@suse.com
 
 - Update to version 0.52.1:

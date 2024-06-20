@@ -17,7 +17,7 @@
 
 
 Name:           trivy
-Version:        0.52.1
+Version:        0.52.2
 Release:        0
 Summary:        A Simple and Comprehensive Vulnerability Scanner for Containers
 License:        Apache-2.0
@@ -25,6 +25,9 @@ Group:          System/Management
 URL:            https://github.com/aquasecurity/trivy
 Source:         %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+# From https://github.com/aquasecurity/trivy-db/pull/411.patch
+Patch1:         add-opensuse-tumbleweed-db.patch
+Patch2:         https://github.com/aquasecurity/trivy/pull/6965.patch#/add-opensuse-tumbleweed-support.patch
 BuildRequires:  golang(API) = 1.22
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
@@ -43,7 +46,11 @@ scan. All you need to do for scanning is to specify a target such as an image
 name of the container.
 
 %prep
-%autosetup -p1 -a1
+%setup -a1
+pushd vendor/github.com/aquasecurity/trivy-db
+%patch -P 1 -p1
+popd
+%patch -P 2 -p1
 
 %build
 export CGO_ENABLED=1
