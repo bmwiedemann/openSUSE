@@ -35,4 +35,18 @@
     <comment></comment>
     <requestid>1085853</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b85aa787dfd5a6b5163fa6e774a5898b</srcmd5>
+    <version>1.3.0</version>
+    <time>1718894941</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.0:
+  * Fix type annotation problem by setting correct pyspnego min
+    version
+  * Throw an exception in case of access denied
+  * Favour pure NTLM provider and fix SPN
+  * Add type annotation and black/isort checks
+  * Update CI and version and ignore black diff</comment>
+    <requestid>1181924</requestid>
+  </revision>
 </revisionlist>

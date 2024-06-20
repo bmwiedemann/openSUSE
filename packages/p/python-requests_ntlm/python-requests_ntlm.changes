@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 20 12:39:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.0:
+  * Fix type annotation problem by setting correct pyspnego min
+    version
+  * Throw an exception in case of access denied
+  * Favour pure NTLM provider and fix SPN
+  * Add type annotation and black/isort checks
+  * Update CI and version and ignore black diff
+
+-------------------------------------------------------------------
 Tue May  9 13:42:26 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons
