@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Jun 20 06:58:34 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240620.4dcac184:
+  * Dev: ui_configure: Remove _keywords interface and unused code
+  * Dev: crash_test.utils: Reuse color constants from crmsh.constants
+  * Dev: Remove unused code about hb_delnode
+
+-------------------------------------------------------------------
+Thu Jun 20 05:27:27 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240620.4a694b72:
+  * Dev: ra: Guess stonith class type when using fence agents
+
+-------------------------------------------------------------------
+Mon Jun 17 09:25:53 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240617.5ab3a5de:
+  * Revert "Dev: codecov: ignore crm report module"
+  * Dev: coverage: inject coverage with sitecustomize.py in feature tests
+
+-------------------------------------------------------------------
+Mon Jun 17 06:20:44 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240617.30a5a20d:
+  * Dev: doc: Adjust doc for deprecated multi-rule within a location constraint
+  * Fix: upgradeutil: refine error handling (bsc#1226147, bsc#1223371)
+  * Dev: doc: Remove 'moon' from doc
+
+-------------------------------------------------------------------
+Fri Jun 14 06:28:00 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240614.6ce8e96f:
+  * Dev: behave: Add corosync_ui.feature to collect test cases for crm corosync ui
+  * Dev: ui_corosync: Improve corosync.show and corosync.edit subcommands
+
+-------------------------------------------------------------------
+Wed Jun 12 10:06:52 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240612.f016a26d:
+  * Dev: doc: Drop help info of 'configure ms' command
+  * Dev: doc: Move 'id-ref' usage into help primitive section
+  * Dev: Hide 'configure ms' command from UI (jsc#PED-8550)
+
+-------------------------------------------------------------------
 Wed Jun 12 06:08:45 UTC 2024 - XLiang@suse.com
 
 - Update to version 5.0.0+20240612.49d57d50:
