@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>26b40ffb0f9ea6020b6caa809b78fd93</srcmd5>
+    <version>3.0.3</version>
+    <time>1718894829</time>
+    <user>anag+factory</user>
+    <comment>corosync3 update, qnetd and qdevice are now in a separate code stream.</comment>
+    <requestid>1180327</requestid>
+  </revision>
+</revisionlist>

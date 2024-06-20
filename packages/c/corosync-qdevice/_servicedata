@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/corosync/corosync-qdevice.git</param>
+              <param name="changesrevision">4331c7d5650a8bf44c16512419f1954d0ef96df5</param></service></servicedata>

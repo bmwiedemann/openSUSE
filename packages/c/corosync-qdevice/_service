@@ -1,0 +1,19 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/corosync/corosync-qdevice.git</param>
+    <param name="scm">git</param>
+    <param name="filename">corosync-qdevice</param>
+    <param name="versionformat">3.0.3+%cd.%h</param>
+    <param name="revision">4331c7d</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+
+  <service name="recompress" mode="disabled">
+    <param name="file">*corosync-qdevice*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+
+  <service name="set_version" mode="disabled">
+    <param name="basename">corosync-qdevice</param>
+  </service>
+</services>

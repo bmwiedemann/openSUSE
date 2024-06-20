@@ -1,0 +1,90 @@
+-------------------------------------------------------------------
+Wed Apr 05 14:33:43 UTC 2023 - XLiang@suse.com
+
+- Update to version 3.0.3+20230322.4331c7d:
+  * qdevice: Destroy non blocking client on failure
+  * configure: Modernize configure.ac a bit
+  * unix-socket: Check minimal length of socket path
+
+-------------------------------------------------------------------
+Mon May 24 06:50:00 UTC 2021 - XLiang@suse.com
+
+- Update to version 3.0.1+20210409.e1d5914:
+  * man: replace votequorum_poll for actually used fn
+  * qnetd: sort by node_id when add new client
+  * timer-list: Use correct english term children
+  * tests: Fix test-timer-list NULL check
+  * tests: Enhance test-timer-list
+
+-------------------------------------------------------------------
+Thu Jan 07 05:16:57 UTC 2021 - XLiang@suse.com
+
+- Update to version 3.0.1+20201123.df3c672:
+  * qnetd: Don't alloc host_addr
+  * qnetd: Move client schedule disconnect handling
+  * qnetd-algo-ffsplit: Simplify KAP Tie-breaker logic
+  * qnetd: Improve dead peer detection
+  * qnet-config: Add space to string concat
+  * timer-list: Add functions for get and set interval
+  * timer-list: Rename delete and reschedule ops
+  * utils: Add utils_strtod
+  * qdevice: Handle configurations without ring0_addr
+  * qdevice: Configuration without nodelist is invalid
+  * qdevice-cmap: Load clear node high bit only once
+  * qdevice-cmap: Fix clear high node bit typo
+  * qdevice-net-ipc-cmd: Fix compiler warning
+  * devel: add corosync-qdevice.pc file for pcs to use
+  * tests: Fix assert problems
+  * timer-list: Improve efficiency of delete operation
+  * test-timer-list: Ignore poll errors
+  * tlv: Check dynar_cat result
+  * test-process-list: Fix few bugs
+  * msg: Check cat result on adding msg type and size
+  * timer-list: Implement heap based timer-list
+  * pr-poll-loop: Add queue header include
+  * qdevice-ipc: Fix dereference bug
+  * qnet: Add support for keep active partition vote
+  * qnetd: Fix NULL dereference of client
+  * qdevice-net-heuristics: Fix log message
+  * qdevice: Fix set option and set option reply
+  * LICENSE: Update copyright date
+  * qnetd: Add support for keep active partition vote
+  * README: Fix typos
+  * timer-list: Add test
+  * timer-list: Return error on adding NULL callback
+  * qnetd: Fix dpd timer
+  * qdevice-votequorum: Fix typo in log message
+  * qdevice: Port qdevice to use pr-poll-loop
+  * qdevice-net: Log adds newline automatically
+  * qnetd: Return error code based on ipc closed
+  * pr-poll-loop: Fix set_events_cb return code
+  * qdevice: Fix connect heuristics result callback
+  * pr-poll-loop: Add pre poll callbacks
+  * pr-poll-loop: Pass PRPollDesc for prfd events
+  * pr-poll-loop: Add support for PR_POLL_EXCEPT
+  * qnetd: Move pr_poll_loop_exec call to function
+  * qnetd: Log pr_poll_loop_add,del errors properly
+  * qnetd: Remove unneeded pprio include
+  * qnetd: Remove write callback on listening sockets
+  * qdevice: Initial port to use pr-poll-loop
+  * pr-poll-loop: Return error code if PR_Poll fails
+  * heuristics: Remove qdevice instance pointer
+  * tests: Enhance pr-poll-loop test
+  * tests: Add pr-poll-loop test
+  * pr-poll-loop: Do not add FD when events is empty
+  * qdevice: Fix connect heuristics result callback
+  * qdevice: Add space before bracket
+  * qdevice: Use EXIT_SUCCESS and EXIT_FAILURE codes
+  * qnetd: Do not call ffsplit_do on shutdown
+  * qnetd: Migrate main loop to pr-poll-loop
+  * pr-poll-loop: Add main poll loop based on PR_Poll
+
+-------------------------------------------------------------------
+Wed Aug 12 01:38:13 UTC 2020 - XinLiang <XLiang@suse.com>
+
+- Corosync-qdevice with rolling up version with upstream latest commit
+
+-------------------------------------------------------------------
+Tue Jul 23 02:48:40 UTC 2019 - Yuan Ren <yren@suse.com>
+
+- Corosync-qdevice with rolling up version with upstream latest commit

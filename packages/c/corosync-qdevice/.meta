@@ -1,0 +1,5 @@
+<package name="corosync-qdevice" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:ha-clustering:Factory" package="corosync-qdevice"/>
+</package>
