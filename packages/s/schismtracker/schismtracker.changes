@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Jun 15 12:56:29 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240614
+  * Add STX module importing
+  * Add an audio device and driver selection widget in the
+    Shift-F5 menu
+- Delete schism-alsa.diff (obsolete), add compile.diff.
+
+-------------------------------------------------------------------
+Sun Jun  9 11:04:48 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240609
+  * Fix saving 16-bit and/or stereo FLAC samples
+  * Attempt to convert song messages from Modplug/OpenMPT IT
+    files.
+  * Expand the file and directory listings in the Load/Save
+    Module screens to actually make use of wasted space. It
+    didn't even look like IT did anyway.
+  * File listings should now support paths with Unicode out of
+    the box and will fall back to interpreting the raw characters
+    if that fails.
+  * Reimplement key repeat configuration
+  * Allow copying and pasting palette settings to the clipboard
+    and actually save them when applied
+  * Fix saving the module's Schism version
+    * Fix issues with the implementation that would have caused
+      it to break after the Epochalypse
+- Delete 0001-build-fix-gcc-warning-for-handle_text_input-function.patch
+  (merged)
+
+-------------------------------------------------------------------
 Wed May 29 17:55:33 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20240529

@@ -1,0 +1,31 @@
+From eed0cd370d7f60b84d85ce7ba64a9fd688eb2665 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Thu, 20 Jun 2024 12:09:24 +0200
+Subject: [PATCH] build: workaround pedantic requirements
+References: https://github.com/schismtracker/schismtracker/pull/472
+
+Yeah yeah, schism_exit isn't supposed to return, but short of adding a non-portable
+__attribute__((noreturn)), let's just add a return to make the compiler happy.
+
+schism/audio_playback.c: In function "_audio_init_head":
+schism/audio_playback.c:1510:1: error: control reaches end of
+non-void function [-Werror=return-type]
+ 1510 | }
+---
+ schism/audio_playback.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/schism/audio_playback.c b/schism/audio_playback.c
+index 2c671826..58fd0f28 100644
+--- a/schism/audio_playback.c
++++ b/schism/audio_playback.c
+@@ -1507,6 +1507,7 @@ fail:
+ 	const char* err = SDL_GetError();
+ 	if (err) fprintf(stderr, "%s\n", err);
+ 	schism_exit(1);
++	return 0;
+ }
+ 
+ // Set up audio_buffer, reset the sample count, and kick off the mixer
+-- 
+2.45.2
