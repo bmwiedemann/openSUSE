@@ -111,4 +111,15 @@
     <comment>- Switch to pytest, like upstream has.</comment>
     <requestid>1143158</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>62bd1c5ad249153812c0d8b0b61c081f</srcmd5>
+    <version>1.20.2</version>
+    <time>1718894943</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.20.2:
+  * allow hyphen in field name. closes #86
+
+- Switch to pytest, like upstream has.</comment>
+    <requestid>1181925</requestid>
+  </revision>
 </revisionlist>
