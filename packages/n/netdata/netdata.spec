@@ -22,7 +22,7 @@
 %define __builder ninja
 
 Name:           netdata
-Version:        1.45.6
+Version:        1.46.0
 Release:        0
 Summary:        A system for distributed real-time performance and health monitoring
 # netdata is GPL-3.0+, other licenses refer to included third-party software (see REDISTRIBUTED.md)
@@ -43,7 +43,7 @@ BuildRequires:  judy-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  snappy-devel
-BuildRequires:  golang(API) >= 1.21
+BuildRequires:  golang(API) >= 1.22
 BuildRequires:  pkgconfig(grpc)
 BuildRequires:  pkgconfig(json)
 BuildRequires:  pkgconfig(libcap)
@@ -398,9 +398,10 @@ install -m 755 -d %{buildroot}%{_localstatedir}/cache/%{name}
 install -m 755 -d %{buildroot}%{_localstatedir}/log/%{name}
 install -m 755 -d %{buildroot}%{_localstatedir}/lib/%{name}/registry
 
-rm %{buildroot}%{_sysconfdir}/%{name}/netdata-updater.conf
+rm %{buildroot}%{_prefix}/lib/%{name}/conf.d/netdata-updater.conf
 rm -r %{buildroot}%{_prefix}/lib/%{name}/system
 rm %{buildroot}%{_libexecdir}/%{name}/install-service.sh
+rm %{buildroot}%{_libexecdir}/%{name}/netdata-updater.sh
 
 # This is a suid binary that is supposed to allow Netdata to run
 # some privileged commands. Not packaged due to security concerns.
@@ -456,6 +457,7 @@ getent passwd %{netdata_user} >/dev/null || \
 %{_prefix}/lib/%{name}/conf.d/health_alarm_notify.conf
 %{_prefix}/lib/%{name}/conf.d/health_email_recipients.conf
 %{_prefix}/lib/%{name}/conf.d/ioping.conf
+%{_prefix}/lib/%{name}/conf.d/netdata.conf
 %{_prefix}/lib/%{name}/conf.d/stream.conf
 %{_prefix}/lib/%{name}/conf.d/schema.d/*.json
 

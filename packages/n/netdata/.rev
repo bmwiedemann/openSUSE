@@ -4519,4 +4519,14 @@ Other Notable Changes
     gh#netdata/netdata#17763 (go.d.plugin)</comment>
     <requestid>1179410</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>e4ee9e809fc599f86bb198b94950c9c1</srcmd5>
+    <version>1.46.0</version>
+    <time>1718894882</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.46.0
+  See https://github.com/netdata/netdata/releases/tag/v1.46.0
+  * This bumps the Go version requirement to 1.22.0</comment>
+    <requestid>1181802</requestid>
+  </revision>
 </revisionlist>

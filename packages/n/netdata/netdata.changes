@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 19 19:10:22 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.46.0
+  See https://github.com/netdata/netdata/releases/tag/v1.46.0
+  * This bumps the Go version requirement to 1.22.0
+
+-------------------------------------------------------------------
 Sat Jun  8 01:06:25 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.45.6
