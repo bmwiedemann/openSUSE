@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 19 13:14:23 UTC 2024 - wolfgang.frisch@suse.com
+
+- Update to version 2.5.0+git20240619.f4bc3a6:
+  * dbus-services: systemd: keep the old whitelisting temporarily (bsc#1225317)
+  * dbus-services: whitelist kdeplasma6-addons kameleonhelper (bsc#1226306)
+  * dbus-services: adjust backintime whitelisting to etc->usr move (bsc#1226446)
+
+-------------------------------------------------------------------
+Thu Jun 13 16:22:35 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 2.5.0+git20240613.c7bc651:
+  * whitelistings: systemd v256 (bsc#1225317)
+
+-------------------------------------------------------------------
 Tue Jun 11 15:05:20 UTC 2024 - filippo.bonazzi@suse.com
 
 - Update to version 2.5.0+git20240611.11134e8:
