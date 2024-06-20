@@ -85,6 +85,9 @@ Tue Jan 28 03:15:43 UTC 2020 -  <timueller+perl@suse.de>
   0.81 Mon 27 Jan 2020 11:05:46 PM CET
    - Breaking Change: Set $YAML::XS::LoadBlessed default to false to make it
      more secure
+  0.69: [bsc#1173703]
+   - Security fix: Add $LoadBlessed option to turn on/off loading objects:
+     Default is set to true. Note that, the behavior is unchanged.
 
 -------------------------------------------------------------------
 Thu Aug 29 10:34:07 CEST 2019 - Tina Mueller <tina.mueller@suse.com>
