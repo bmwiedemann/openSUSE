@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun 19 15:45:49 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to version 3.0.3
+  * Updated libraries
+
+- Update to version 3.0.2
+  * Bug fixes:
+    [logs] Bump OTel dependencies (#10763 by DrFaust92)
+    [logs] Append to log file if it exists (#10756 by lbenguigui)
+    [metrics] Fix service name label_replace in Grafana (#10758 by xdavidwu)
+    [middleware] Forward the correct status code when compression is disabled within the Brotli handler (#10780 by rtribotte)
+    [middleware] Support Accept-Encoding header weights with Compress middleware (#10777 by ldez)
+
+
+-------------------------------------------------------------------
 Wed May 29 08:20:42 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Fix in traefik.yml configuration file
