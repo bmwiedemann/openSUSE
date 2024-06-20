@@ -288,4 +288,12 @@
   + Bump wait time for nbdkit to start from 1s to 5s</comment>
     <requestid>1119747</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>bfb64b84d850e920b1b6a219a6173b46</srcmd5>
+    <version>2.1.3</version>
+    <time>1718894887</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1181831</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package s3backer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 
 Name:           s3backer
-Version:        2.1.1
+Version:        2.1.3
 Release:        0
 Summary:        FUSE and NBD single file backing store via Amazon S3
 License:        GPL-2.0-or-later
