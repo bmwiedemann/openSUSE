@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package apache2-mod_authn_otp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Archie L. Cobbs <archie@dellroad.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,11 +26,9 @@ License:        Apache-2.0
 Group:          Productivity/Networking/Web/Servers
 URL:            https://github.com/archiecobbs/mod-authn-otp
 Source:         https://s3.amazonaws.com/archie-public/mod-authn-otp/%{mod_name}-%{version}.tar.gz
-BuildRequires:  apache-rex
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
 BuildRequires:  pkgconfig(openssl)
-%apache_rex_deps
 Requires:       %{apache_mmn}
 Requires:       %{apache_suse_maintenance_mmn}
 Provides:       otptool = %{version}
@@ -74,9 +72,6 @@ for the Google Authenticator app.
 %install
 install -d %{buildroot}%{apache_libexecdir}
 %make_install
-
-%check
-%apache_rex_check -m .libs/ -b . mod_authn_otp-basic
 
 %files
 %license LICENSE

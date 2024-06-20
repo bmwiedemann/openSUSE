@@ -103,4 +103,12 @@
   + Update spec file description to include genotpurl(1) (forwarded request 975208 from archie172)</comment>
     <requestid>975327</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>eec4a8715dac189a6e456e472a9148db</srcmd5>
+    <version>1.1.10</version>
+    <time>1718894917</time>
+    <user>anag+factory</user>
+    <comment>- drop unmaintained apache-rex usage</comment>
+    <requestid>1181891</requestid>
+  </revision>
 </revisionlist>
