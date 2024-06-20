@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun 20 01:13:52 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1718823516.0611ef7a:
+  * Fix `openqa-cli` getting stuck on retrying
+  * Fix highlighting of parent/child jobs after Bootstrap 5 migration
+  * Dependency cron 2024-06-19
+  * Fix enabling auto cloning in bootstrap script
+  * Bump espree from 10.0.1 to 10.1.0
+  * Improve dependency-related code
+  * Ensure dependencies of partially re-scheduled product are correct
+  * Fix typo in users documentation
+  * Improve documentation about scheduling parameters
+  * Fix limiting partial re-scheduling to the relevant test suite
+  * Remove unused variable for mandatory parameters
+
+-------------------------------------------------------------------
 Mon Jun 17 17:13:58 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1718631194.f6bb926b:
