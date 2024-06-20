@@ -7,4 +7,14 @@
     <comment></comment>
     <requestid>1044343</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>89da1dedb729d229afbbe4ea7840ad05</srcmd5>
+    <version>0.46.0</version>
+    <time>1718894901</time>
+    <user>anag+factory</user>
+    <comment>- update description from Holden Fried &lt;holdenrf2021@gmail.com&gt;
+
+- Initial package (0.46.0)</comment>
+    <requestid>1181870</requestid>
+  </revision>
 </revisionlist>

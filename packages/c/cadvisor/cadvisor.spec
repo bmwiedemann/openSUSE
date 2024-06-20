@@ -1,7 +1,7 @@
 #
 # spec file for package cadvisor
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,24 +29,29 @@ Source:         %{name}-%{version}.tar.zst
 Source1:        vendor-cmd.tar.zst
 Source2:        cadvisor.service
 Source3:        sysconfig.cadvisor
-BuildRequires:  golang(API) = 1.19
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  zstd
+BuildRequires:  golang(API) = 1.19
 Requires:       ca-certificates
 Requires:       git-core
 Requires:       rpm
 Requires(post): %fillup_prereq
 
 %description
-Trivy (`tri` pronounced like trigger, `vy` pronounced like envy) is a simple and
-comprehensive vulnerability scanner for containers and other artifacts. A
-software vulnerability is a glitch, flaw, or weakness present in the software or
-in an Operating System. Trivy detects vulnerabilities of OS packages (Alpine,
-RHEL, CentOS, etc.) and application dependencies (Bundler, Composer, npm, yarn,
-etc.). Trivy is easy to use. Just install the binary and you're ready to
-scan. All you need to do for scanning is to specify a target such as an image
-name of the container.
+cAdvisor (Container Advisor) provides container users an understanding of the
+resource usage and performance characteristics of their running containers. It
+is a running daemon that collects, aggregates, processes, and exports
+information about running containers. Specifically, for each container it keeps
+resource isolation parameters, historical resource usage, histograms of
+complete historical resource usage and network statistics. This data is
+exported by container and machine-wide.
+
+cAdvisor has native support for Docker containers and should support just about
+any other container type out of the box. We strive for support across the board
+so feel free to open an issue if that is not the case.  cAdvisor's container
+abstraction is based on lmctfy's so containers are inherently nested
+hierarchically.
 
 %prep
 %setup -qa1
@@ -66,7 +71,6 @@ mv %{buildroot}%{_bindir}/{cmd,cadvisor}
 #
 install -D -m 644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.service
 install -D -m 644 %{SOURCE3} %{buildroot}%{_fillupdir}/sysconfig.%{name}
-
 
 %pre
 %service_add_pre cadvisor.service
