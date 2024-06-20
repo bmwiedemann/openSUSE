@@ -23,8 +23,7 @@ Summary:        Fast, multi-platform web server with automatic HTTPS
 License:        Apache-2.0
 Group:          Productivity/Networking/Web/Proxy
 URL:            https://caddyserver.com/
-# bug https://github.com/golang/go/issues/29228
-Source0:        https://github.com/caddyserver/%{name}/releases/download/v%{version}/%{name}_%{version}_buildable-artifact.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        https://github.com/caddyserver/dist/raw/v%{version}/config/Caddyfile
 Source3:        caddy.service
@@ -32,7 +31,7 @@ Source4:        https://github.com/caddyserver/dist/raw/v%{version}/welcome/inde
 Source5:        caddy.sysusers
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
-BuildRequires:  golang(API) >= 1.22
+BuildRequires:  golang(API) >= 1.21
 %{?systemd_requires}
 %{sysusers_requires}
 
@@ -69,14 +68,15 @@ BuildArch:      noarch
 Fish shell completion script for %{name}, generated during the build.
 
 %prep
-%autosetup -a 1 -c
+%autosetup -a 1
 
 %build
 # Build the binary.
 %ifnarch ppc64
 export GOFLAGS="-buildmode=pie"
 %endif
-go build -v -x
+# overrides caddy reported version (see caddy.go for explanations why this is needed).
+go build -ldflags '-X github.com/caddyserver/caddy/v2.CustomVersion=v%{version}' ./cmd/%{name}
 
 %check
 # Execute binary and check version

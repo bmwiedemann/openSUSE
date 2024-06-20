@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 19 13:40:22 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Revert buildable-artifact change, fetch tarball with tar_scm
+- Downgrade golang(API) version to match go.mod
+- Override Caddy version during build time as suggested in caddy.go
+
+-------------------------------------------------------------------
 Fri Jun 14 10:21:50 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Add OBS manual service download_files
