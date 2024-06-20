@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jun 20 09:51:18 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 1550+20240620.095c860:
+  * profiles: add powerdevil conservation mode actions (bsc#1226424)
+
+-------------------------------------------------------------------
+Wed Jun 19 11:23:04 UTC 2024 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20240619.190ee11:
+  * profiles: whitelist drkonqi6 (bsc#1220190)
+
+-------------------------------------------------------------------
+Thu Jun 13 16:23:33 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 1550+20240613.b3a8db7:
+  * whitelist new systemd methods (bsc#1225317)
+
+-------------------------------------------------------------------
 Wed May 22 13:36:44 UTC 2024 - wolfgang.frisch@suse.com
 
 - Update to version 1550+20240522.4ba9229:
