@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 13 13:34:23 UTC 2024 - pgajdos@suse.com
+
+- added patches [bsc#1226217]
+  https://github.com/apache/httpd/pull/444/commits/c2fffd29b0f58bdc9caaaff4fec68e17a676f182
+  + apache2-issue-444.patch
+
+-------------------------------------------------------------------
 Thu Apr  4 18:40:00 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 2.4.59:
