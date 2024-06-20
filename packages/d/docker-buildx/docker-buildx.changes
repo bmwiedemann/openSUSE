@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun 19 10:33:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.1:
+  * build: update lint fallback image to dockerfile 1.8.1
+  * vendor: update buildkit v0.14.1
+  * Add comment to document the purpose behind the non-standard
+    handling of the error
+  * update the lint subrequest call to error when a build error was
+    encountered during linting
+  * Dockerfile: update docker engine to 26.1.4
+  * remove use of deprecated containerd/containerd/errdefs
+
+-------------------------------------------------------------------
 Tue Jun 11 20:02:07 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.15.0:
