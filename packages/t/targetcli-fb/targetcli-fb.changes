@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 19 15:34:16 UTC 2024 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
+
+- Update to version 2.1.58:
+  * version 2.1.58
+  * Fix mapping the new LUN to the node ACL
+
+
+-------------------------------------------------------------------
 Tue Jan  9 11:36:21 UTC 2024 - David Disseldorp <ddiss@suse.com>
 
 - Drop downstream-only LIO target_core_rbd support (bsc#1218634)
