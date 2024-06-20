@@ -18,7 +18,7 @@
 
 
 Name:           keybase-client
-Version:        6.2.8
+Version:        6.3.1
 Release:        0
 Summary:        Keybase command line client
 License:        BSD-3-Clause
@@ -32,9 +32,8 @@ Source4:        README.git.SUSE
 Source5:        README.tool.SUSE
 Patch1:         ensure-mount-dir-exists.patch
 Patch2:         ensure-service-stop-unmounts-filesystem.patch
-Patch3:         update-image-tiff.patch
 BuildRequires:  fdupes
-BuildRequires:  go1.19
+BuildRequires:  go1.21
 BuildRequires:  golang-packaging
 BuildRequires:  gzip
 BuildRequires:  pkgconfig

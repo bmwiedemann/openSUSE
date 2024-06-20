@@ -269,4 +269,18 @@
 - Refreshed update-image-tiff.patch as it no longer applied cleanly.</comment>
     <requestid>1158017</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>196841b4c64129ea890b62e8676e891a</srcmd5>
+    <version>6.3.1</version>
+    <time>1718894885</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 6.3.1
+  * Archive your chats/files/repos for easy backups.
+  * Wrap text in spoiler to hide spoilers.
+- Drop update-image-tiff.patch as upststream now uses a vendored
+  version of the Image library that includes the fix.
+- Update the used Go version to 1.21 which is the first version to
+  support the slices modules which is now used by Keybase.</comment>
+    <requestid>1181798</requestid>
+  </revision>
 </revisionlist>

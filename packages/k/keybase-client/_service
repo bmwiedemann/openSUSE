@@ -4,7 +4,7 @@
     <param name="url">https://github.com/keybase/client.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">v6.2.8</param>
+    <param name="revision">v6.3.1</param>
     <param name="filename">client</param>
     <param name="changesgenerate">disable</param>
   </service>
