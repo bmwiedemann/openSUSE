@@ -25,4 +25,17 @@
   * adds support for AV1 video encoding/decoding via --video=av1 (forwarded request 1158923 from dirkmueller)</comment>
     <requestid>1158988</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>862a804bdeeb8f0cb66d573ead733310</srcmd5>
+    <version>0.9.1</version>
+    <time>1718894932</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.9.1:
+  * Filtering out the linux-drm-syncobj-v1 protocol, which uses a
+    file descriptor type for Waypipe currently does not support.
+  * Not aborting/producing a core dump on receipt of a second
+    SIGINT (Ctrl+C) signal: this was too easy to trigger
+    accidentally. SIGQUIT (Ctrl+\) already exists for this purpose (forwarded request 1180284 from smolsheep)</comment>
+    <requestid>1181907</requestid>
+  </revision>
 </revisionlist>

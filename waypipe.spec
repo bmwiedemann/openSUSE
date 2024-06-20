@@ -17,7 +17,7 @@
 
 
 Name:           waypipe
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        Proxy for Wayland clients
 License:        MIT

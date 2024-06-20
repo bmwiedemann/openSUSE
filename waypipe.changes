@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 13 04:25:05 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.9.1:
+  * Filtering out the linux-drm-syncobj-v1 protocol, which uses a
+    file descriptor type for Waypipe currently does not support.
+  * Not aborting/producing a core dump on receipt of a second
+    SIGINT (Ctrl+C) signal: this was too easy to trigger
+    accidentally. SIGQUIT (Ctrl+\) already exists for this purpose
+
+-------------------------------------------------------------------
 Mon Mar 18 08:52:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.0:
