@@ -17,7 +17,7 @@
 
 
 Name:           zpaqfranz
-Version:        59.2
+Version:        59.8
 Release:        0
 Summary:        A journaling, incremental, deduplicating archiver
 License:        MIT AND SUSE-Public-Domain
@@ -27,7 +27,9 @@ Source0:        https://github.com/fcorbelli/zpaqfranz/archive/refs/tags/%{versi
 BuildRequires:  gcc-c++
 
 %description
-Swiss army knife for backup and disaster recovery, like 7z or RAR on steroids,with deduplicated "snapshots" (versions). Conceptually similar to Mac time machine, but much more efficiently.
+Swiss army knife for backup and disaster recovery, like 7z or RAR on
+steroids,with deduplicated "snapshots" (versions). Conceptually similar to Mac
+time machine, but much more efficiently.
 
 %prep
 %autosetup
@@ -44,8 +46,7 @@ g++ %{optflags} \
   zpaqfranz.cpp -o zpaqfranz -pthread -lstdc++ -lm
 
 %install
-install -Dpm 0755 zpaqfranz \
-  %{buildroot}%{_bindir}/%{name}
+install -Dpm 0755 zpaqfranz %{buildroot}%{_bindir}/%{name}
 
 %files
 %doc README.md

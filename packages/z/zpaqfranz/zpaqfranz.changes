@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Jun 19 20:53:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 59.8:
+  * _The l (list) command use a new format; filesize is now ...
+    autosized; estimated ratio is written, better infos with -all
+    switch, do not show attrs by default
+  * Do not add() if the X folder does not exists
+  * -nocolors on redirect
+- update to 59.7:
+  * Less used RAM enumerating files
+  * zfssize command
+  * switch -pause in add
+  * updated info on vss
+  * AMD 3950X benchmark added
+  * New hash command
+  * Command s with -home switch
+  * Command hash with -orderby
+  * add -ignore switch
+  * substituted /sec with /s
+  * minor fixes in -noeta
+  * fixes in update (on *nix)
+- update to 59.4:
+  * crop command
+  * c command -checksum switch
+- update to 59.3:
+  * New update command
+    ### Warning. Downloading executable programs from the
+    Internet is potentially dangerous. Always choose a reliable
+    source (such as github or sourceforce), or directly my site
+    https://www.francocorbelli.it/zpaqfranz/win64/
+
+-------------------------------------------------------------------
 Sun Mar 17 09:45:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 59.2:
