@@ -259,4 +259,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1171168</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>0c296841587a1dd070855d73f7e3117b</srcmd5>
+    <version>0.9.2+g203</version>
+    <time>1718894878</time>
+    <user>anag+factory</user>
+    <comment>- Update to snapshot 0.9.2+git203 (43b262bd)</comment>
+    <requestid>1181792</requestid>
+  </revision>
 </revisionlist>

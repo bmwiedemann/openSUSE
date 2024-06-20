@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jun 19 10:05:25 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 0.9.2+git203 (43b262bd)
+  * another potential multiplication overflows
+  * build: upgrade to C++17 when ICU is used
+  * Fix a test failure in testNewFromString and
+    pathTest::testGenerate
+
+-------------------------------------------------------------------
+Tue May 21 14:25:12 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 0.9.2+git196 (d296c2d)
+  * vmime: prevent loss of a space when a multi-word mailbox name
+    contains an umlaut
+
+-------------------------------------------------------------------
 Wed Apr 24 17:39:08 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 0.9.2+git191 (d03ad5f0)

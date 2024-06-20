@@ -17,8 +17,8 @@
 
 
 Name:           libvmime
-%define lname	libvmime-suse6
-Version:        0.9.2+g191
+%define lname	libvmime-suse8
+Version:        0.9.2+g203
 Release:        0
 Summary:        Library for working with RFC 5322, MIME messages and IMAP/POP/SMTP
 License:        GPL-3.0-or-later
@@ -128,12 +128,11 @@ cp -a doc/book/book.pdf "$b/%_docdir/%name/"
 %cmake_install
 find "$b" -type f -name "*.la" -delete
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING
-%_libdir/libvmime-suse.so.6*
+%_libdir/libvmime-suse.so.*
 
 %files devel
 %_includedir/vmime
