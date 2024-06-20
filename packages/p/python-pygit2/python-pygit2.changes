@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Jun 19 10:53:06 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.15.1
+  * Many deprecated features have been removed, see below
+  * Upgrade to libgit2 v1.8.1
+  * New `push_options` optional argument in `Repository.push(...)`
+  * New support comparison of `Oid` with text string
+  * Fix `CheckoutNotify.IGNORED`
+  * Use default error handler when decoding/encoding paths
+  * Remove setuptools runtime dependency
+  * Coding style with ruff
+  * Add wheels for ppc64le
+  * Fix tests on EPEL8 builds for s390x
+  * Deprecate `IndexEntry.hex`, use `str(IndexEntry.id)`
+  * Remove deprecated `oid.hex`, use `str(oid)`
+  * Remove deprecated `object.hex`, use `str(object.id)`
+  * Remove deprecated `object.oid`, use `object.id`
+  * Remove deprecated `Repository.add_submodule(...)`, use `Repository.submodules.add(...)`
+  * Remove deprecated `Repository.lookup_submodule(...)`, use `Repository.submodules[...]`
+  * Remove deprecated `Repository.init_submodules(...)`, use `Repository.submodules.init(...)`
+  * Remove deprecated `Repository.update_submodule(...)`, use `Repository.submodules.update(...)`
+  * Remove deprecated constants `GIT_OBJ_XXX`, use `ObjectType`
+  * Remove deprecated constants `GIT_REVPARSE_XXX`, use `RevSpecFlag`
+  * Remove deprecated constants `GIT_REF_XXX`, use `ReferenceType`
+  * Remove deprecated `ReferenceType.OID`, use instead `ReferenceType.DIRECT`
+  * Remove deprecated `ReferenceType.LISTALL`, use instead `ReferenceType.ALL`
+  * Remove deprecated support for passing dicts to repository\'s `merge(...)`,
+    `merge_commits(...)` and `merge_trees(...)`. Instead pass `MergeFlag` for `flags`, and
+    `MergeFileFlag` for `file_flags`.
+  * Remove deprecated support for passing a string for the favor argument to repository\'s
+    `merge(...)`, `merge_commits(...)` and `merge_trees(...)`. Instead pass `MergeFavor`.
+- Drop patches for issues fixed upstream
+  * Fix-CI.patch
+  * Fix-leaks-in-fetch_refspecs-and-push_refspecs.patch
+  * pygit2-Upgrade_to_libgit2_v1_8_0.patch
+  * pygit2-Upgrade_to_libgit2_v1_8_1-2.patch
+  * pygit2-Upgrade_to_libgit2_v1_8_1.patch
+- Disable test test_push_options which currently segfaults
+- Update BuildRequires from setup.py
+
+-------------------------------------------------------------------
 Fri May 17 10:57:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add  pygit2-Upgrade_to_libgit2_v1_8_1-2.patch

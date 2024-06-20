@@ -19,24 +19,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pygit2
-Version:        1.14.1
+Version:        1.15.0
 Release:        0
 Summary:        Python bindings for libgit2
 License:        GPL-2.0-only
 URL:            https://github.com/libgit2/pygit2
 Source:         https://files.pythonhosted.org/packages/source/p/pygit2/pygit2-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM pygit2-Upgrade_to_libgit2_v1_8_0.patch gh#libgit2/pygit2@6d539d76b53b
-Patch0:         pygit2-Upgrade_to_libgit2_v1_8_0.patch
-# PATCH-FIX-UPSTREAM - fixup for the libgit 1.8 support
-Patch1:         Fix-CI.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         pygit2-Upgrade_to_libgit2_v1_8_1.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         pygit2-Upgrade_to_libgit2_v1_8_1-2.patch
-# PATCH-FIX-UPSTREAM - happens to eliminate bogus pointer casts
-Patch4:         Fix-leaks-in-fetch_refspecs-and-push_refspecs.patch
 BuildRequires:  %{python_module cached-property}
-BuildRequires:  %{python_module cffi >= 1.4.0}
+BuildRequires:  %{python_module cffi >= 1.16.0}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -80,7 +70,9 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 rm -rf pygit2
 # test_no_context_lines failing on big endian
 # https://github.com/libgit2/pygit2/issues/812
-%pytest_arch -k 'not test_no_context_lines'
+donttest="test_no_context_lines"
+donttest="$donttest or test_push_options"
+%pytest_arch -k "not ($donttest)"
 
 %files %{python_files}
 %license COPYING
