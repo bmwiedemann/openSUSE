@@ -25,4 +25,13 @@
 - package license</comment>
     <requestid>1166147</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d3927e6e3bff8fe937813d5d10f13bf8</srcmd5>
+    <version>1.2.1</version>
+    <time>1718978611</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.1:
+  * require pytest 8.2</comment>
+    <requestid>1181040</requestid>
+  </revision>
 </revisionlist>

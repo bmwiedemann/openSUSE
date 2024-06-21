@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 15 15:38:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.1:
+  * require pytest 8.2
+
+-------------------------------------------------------------------
 Mon Apr  8 10:37:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons

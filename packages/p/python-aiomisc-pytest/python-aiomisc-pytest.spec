@@ -18,17 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aiomisc-pytest
-Version:        1.1.2
+Version:        1.2.1
 Release:        0
 Summary:        pytest integration for aiomisc
 License:        MIT
 URL:            https://libraries.io/pypi/aiomisc-pytest
 Source:         https://files.pythonhosted.org/packages/source/a/aiomisc_pytest/aiomisc_pytest-%{version}.tar.gz
 BuildRequires:  %{python_module aiomisc >= 17}
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
-BuildRequires:  %{python_module pytest >= 7.2.1}
+BuildRequires:  %{python_module pytest >= 8.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
