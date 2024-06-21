@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  7 03:12:25 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Skip some tests that have been broken by pytest 8.2.
+
+-------------------------------------------------------------------
 Sat Mar 16 09:48:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 14.0:

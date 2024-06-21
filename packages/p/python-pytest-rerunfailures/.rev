@@ -152,4 +152,13 @@
   * Add support for pytest 8.0, 8.1.</comment>
     <requestid>1158431</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>9c21aa26a3548d0ea122b50a3c3d5ac9</srcmd5>
+    <version>14.0</version>
+    <time>1718978561</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject macros.
+- Skip some tests that have been broken by pytest 8.2.</comment>
+    <requestid>1172300</requestid>
+  </revision>
 </revisionlist>

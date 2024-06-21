@@ -25,11 +25,13 @@ License:        MPL-2.0
 URL:            https://github.com/pytest-dev/pytest-rerunfailures
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-rerunfailures/pytest-rerunfailures-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 40.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-packaging >= 17.1
 Requires:       python-pytest >= 7.2
-Requires:       python-setuptools >= 40.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 7.2}
@@ -45,20 +47,26 @@ tests to eliminate intermittent failures.
 %setup -q -n pytest-rerunfailures-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# https://github.com/pytest-dev/pytest-rerunfailures/issues/267
+donttest="test_run_session_teardown_once_after_reruns "
+donttest+="or test_exception_matches_rerun_except_query "
+donttest+="or test_exception_not_match_rerun_except_query "
+donttest+="or test_exception_matches_only_rerun_query "
+donttest+="or test_exception_match_only_rerun_in_dual_query"
+%pytest -k "not (${donttest})"
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE
-%{python_sitelib}/pytest_rerunfailures.py*
-%pycache_only %{python_sitelib}/__pycache__/pytest_rerunfailures*
-%{python_sitelib}/pytest_rerunfailures-%{version}*-info
+%{python_sitelib}/pytest_rerunfailures.py
+%pycache_only %{python_sitelib}/__pycache__/pytest_rerunfailures*pyc
+%{python_sitelib}/pytest_rerunfailures-%{version}.dist-info
 
 %changelog
