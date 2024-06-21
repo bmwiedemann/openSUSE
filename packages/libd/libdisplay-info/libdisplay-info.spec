@@ -1,7 +1,7 @@
 #
 # spec file for package libdisplay-info
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           libdisplay-info
-%define lname libdisplay-info1
-Version:        0.1.1
+%define lname libdisplay-info2
+Version:        0.2.0
 Release:        0
 Summary:        EDID and DisplayID library
 License:        MIT
@@ -26,6 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/emersion/libdisplay-info
 Source:         https://gitlab.freedesktop.org/emersion/libdisplay-info/-/releases/%version/downloads/libdisplay-info-%version.tar.xz
 Source2:        https://gitlab.freedesktop.org/emersion/libdisplay-info/-/releases/%version/downloads/libdisplay-info-%version.tar.xz.sig
+Source3:        %name.keyring
 BuildRequires:  cmake
 BuildRequires:  meson
 BuildRequires:  pkgconfig(hwdata)
@@ -67,8 +68,7 @@ This package contains headers for the library.
 %install
 %meson_install
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %_libdir/lib*.so.[0-9]*

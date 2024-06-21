@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 20 18:05:25 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.2
+  * edid: ignore unsupported/malformed DisplayID extension blocks
+  * edid: ignore malformed CTA extension blocks
+  * displayid: add support for type III timings
+  * cta: add support for Room Configuration data blocks,
+   Speaker Location data blocks, Video Format Preference
+
+-------------------------------------------------------------------
 Wed Feb 15 09:21:08 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.1.1
