@@ -416,4 +416,24 @@ Thus there's no need for the parsing or extra dependency. (forwarded request 580
     spec clarifications and bug fixes. (forwarded request 1077251 from llyyr)</comment>
     <requestid>1077436</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>eef721c6f7d93346ea50cce63a700ef8</srcmd5>
+    <version>1.23.0</version>
+    <time>1718978571</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.23.0
+  * A mechanism to set the size of the internal connection buffer used by
+    libwayland
+  * An enum-header mode for wayland-scanner to generate headers with only enums
+  * wayland-scanner now generates validator functions for enums on the server
+    side
+  * Protocols can now indicate with a &quot;deprecated-since&quot; XML attribute that a
+    request, event or enum entry is deprecated
+  * An API to set a name for a queue to aid debugging
+  * wl_client_get_user_data() and wl_client_set_user_data() to more easily attach
+    custom data to a client
+  * OpenBSD support
+  * A wl_shm.release request for proper cleanup of this global (forwarded request 1181984 from jtorres)</comment>
+    <requestid>1181996</requestid>
+  </revision>
 </revisionlist>

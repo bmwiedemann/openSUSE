@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jun 20 15:11:57 UTC 2024 - Joan Torres <joan.torres@suse.com>
+
+- Update to release 1.23.0
+  * A mechanism to set the size of the internal connection buffer used by
+    libwayland
+  * An enum-header mode for wayland-scanner to generate headers with only enums
+  * wayland-scanner now generates validator functions for enums on the server
+    side
+  * Protocols can now indicate with a "deprecated-since" XML attribute that a
+    request, event or enum entry is deprecated
+  * An API to set a name for a queue to aid debugging
+  * wl_client_get_user_data() and wl_client_set_user_data() to more easily attach
+    custom data to a client
+  * OpenBSD support
+  * A wl_shm.release request for proper cleanup of this global
+
+-------------------------------------------------------------------
 Tue Apr  4 16:57:42 UTC 2023 - llyyr <llyyr.public@gmail.com>
 
 - Update to release 1.22.0
