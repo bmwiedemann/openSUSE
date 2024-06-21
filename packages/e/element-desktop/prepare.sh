@@ -6,6 +6,7 @@ set -ex
 
 
 version=$1
+last_packaged_version=$(cat "element-desktop.spec" | grep "^Version:" | awk '{print $NF}')
 sed -i -e "s/^\(Version: *\)[^ ]*$/\1${version}/" element-desktop.spec
 
 oldwd="$(pwd)"
@@ -34,7 +35,6 @@ cd element-desktop-${version}
 #These patches change results of things we want to execute below
 patch -p1 --verbose < "${oldwd}/hak-remove-devdependencies.patch"
 
-last_packaged_version=$(<"${oldwd}/element-desktop.spec" grep "^Version:" | awk '{print $NF}')
 changes=$(grep "^Changes in \[$last_packaged_version\]" -B10000 CHANGELOG.md |  head -n -2 | sed -e '/^==*$/d' -e 's/Changes in \[\([^\[]*\)\].*/Version \1/' -e 's/^\([^-].*\)$/  \1/' -e 's/\[.*\](\(.*\))/\1/g' -e 's/^ *Version /Version /g')
 
 # This will vendor the packages but not execute any build scripts (but see caveat about caching above)

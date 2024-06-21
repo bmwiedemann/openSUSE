@@ -17,7 +17,7 @@
 
 
 Name:           element-desktop
-Version:        1.11.68
+Version:        1.11.69
 Release:        0
 Summary:        A glossy Matrix collaboration client - desktop
 License:        Apache-2.0
@@ -31,6 +31,7 @@ Patch0:         hak-remove-devdependencies.patch
 Patch1:         7za-path.patch
 Patch2:         cc-link-lib-no-static.patch
 Patch3:         remove-fuses.patch
+Patch4:         disable-spellchecker.patch
 BuildRequires:  element-web = %{version}
 BuildRequires:  app-builder
 BuildRequires:  cargo

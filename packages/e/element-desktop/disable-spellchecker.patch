@@ -1,0 +1,15 @@
+The spellchecker is not configurable - neither selecting one or more languages
+or disabling it by the user. So let's drop it completely.
+
+diff -ru a/src/electron-main.ts b/src/electron-main.ts
+--- element-desktop-1.11.69/src/electron-main.ts	2024-06-18 14:28:10.000000000 +0200
++++ element-desktop-1.11.69/src/electron-main.ts	2024-06-21 13:06:59.581538335 +0200
+@@ -485,7 +485,7 @@
+ 
+     // Handle spellchecker
+     // For some reason spellCheckerEnabled isn't persisted, so we have to use the store here
+-    global.mainWindow.webContents.session.setSpellCheckerEnabled(global.store.get("spellCheckerEnabled", true));
++    global.mainWindow.webContents.session.setSpellCheckerEnabled(false);
+ 
+     // Create trayIcon icon
+     if (global.store.get("minimizeToTray", true)) tray.create(global.trayConfig);

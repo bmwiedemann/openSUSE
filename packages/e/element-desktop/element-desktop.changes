@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Jun 21 11:09:44 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Disable dysfunctional spellchecker
+  * disable-spellchecker.patch
+
+-------------------------------------------------------------------
+Tue Jun 18 19:09:48 UTC 2024 - Dominik Heidler <dheidler@suse.com>
+
+- Version 1.11.69
+  ## ✨ Features
+  
+  * Change avatar setting component to use a menu (https://github.com/matrix-org/matrix-react-sdk/pull/12585). Contributed by @dbkr.
+  * New user profile UI in User Settings (https://github.com/matrix-org/matrix-react-sdk/pull/12548). Contributed by @dbkr.
+  * MSC4108 support OIDC QR code login (https://github.com/matrix-org/matrix-react-sdk/pull/12370). Contributed by @t3chguy.
+  
+  ## 🐛 Bug Fixes
+  
+  * Fix image upload preview size (https://github.com/matrix-org/matrix-react-sdk/pull/12612). Contributed by @RiotRobot.
+  * Fix screen sharing in recent Chrome (https://github.com/matrix-org/matrix-js-sdk/pull/4243).
+  * Fix roving tab index crash `compareDocumentPosition` (https://github.com/matrix-org/matrix-react-sdk/pull/12594). Contributed by @t3chguy.
+  * Keep dialog glass border on narrow screens (https://github.com/matrix-org/matrix-react-sdk/pull/12591). Contributed by @dbkr.
+  * Add missing a11y label to dismiss onboarding button in room list (https://github.com/matrix-org/matrix-react-sdk/pull/12587). Contributed by @t3chguy.
+  * Add hover / active state on avatar setting upload button (https://github.com/matrix-org/matrix-react-sdk/pull/12590). Contributed by @dbkr.
+  * Fix EditInPlace button styles (https://github.com/matrix-org/matrix-react-sdk/pull/12589). Contributed by @dbkr.
+  * Fix incorrect assumptions about required fields in /search response (https://github.com/matrix-org/matrix-react-sdk/pull/12575). Contributed by @t3chguy.
+  * Fix display of no avatar in avatar setting controls (https://github.com/matrix-org/matrix-react-sdk/pull/12558). Contributed by @dbkr.
+  * Element-R: pass pickleKey in as raw key for indexeddb encryption (https://github.com/matrix-org/matrix-react-sdk/pull/12543). Contributed by @richvdh.
+  
+
+-------------------------------------------------------------------
 Tue Jun  4 19:13:24 UTC 2024 - Dominik Heidler <dheidler@suse.com>
 
 - Version 1.11.68
