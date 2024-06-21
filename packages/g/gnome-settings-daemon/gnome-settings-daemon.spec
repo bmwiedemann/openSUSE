@@ -46,7 +46,7 @@ Patch1:         gnome-settings-daemon-switch-Japanese-default-input-to-mozc.patc
 Patch2:         gnome-settings-daemon-bgo793253.patch
 # PATCH-FIX-UPSTREAM gnome-settings-daemon-stop-service-when-no-network.patch [merged] joan.torres@suse.com -- Stop assigned services only when no network connection
 Patch3:         gnome-settings-daemon-stop-service-when-no-network.patch
-# PATCH-FIX-UPSTREAM 0001-usb-protection-Treat-hubs-and-HID-devices-like-any-o.patch glgo#GNOME/gnome-settings-daemon#780, bsc#1226423 sckang@suse.com -- usb-protection: Treat hubs and HID devices like any other USB gadget
+# PATCH-FIX-UPSTREAM 0001-usb-protection-Treat-hubs-and-HID-devices-like-any-o.patch glgo#GNOME/gnome-settings-daemon#780, bsc#1226423, CVE-2024-38394 sckang@suse.com -- usb-protection: Treat hubs and HID devices like any other USB gadget
 Patch4:         0001-usb-protection-Treat-hubs-and-HID-devices-like-any-o.patch
 
 ## SLE/LEAP-only patches start at 1000

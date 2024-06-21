@@ -1554,4 +1554,12 @@ work. (forwarded request 640069 from iznogood)</comment>
   gadget(glgo#GNOME/gnome-settings-daemon#780, bsc#1226423). (forwarded request 1181634 from JonathanKang)</comment>
     <requestid>1181712</requestid>
   </revision>
+  <revision rev="195" vrev="5">
+    <srcmd5>a2ccd0a08e5c7d83bc34f1fa54efe310</srcmd5>
+    <version>46.0</version>
+    <time>1718978579</time>
+    <user>anag+factory</user>
+    <comment>add CVE reference for the previous submit (forwarded request 1181842 from JonathanKang)</comment>
+    <requestid>1181999</requestid>
+  </revision>
 </revisionlist>
