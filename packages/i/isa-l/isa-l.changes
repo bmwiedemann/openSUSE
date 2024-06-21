@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  6 11:41:47 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Add -ffat-lto-objects
+
+-------------------------------------------------------------------
 Tue Feb 27 08:47:43 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Let -devel subpackage use the SRPM base name.

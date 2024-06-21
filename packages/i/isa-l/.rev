@@ -7,4 +7,12 @@
     <comment>Upstream ISA-L v2.31 to OpenSUSE Factory.</comment>
     <requestid>1177907</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0e33705c4d49b2d3831a48235e4ad697</srcmd5>
+    <version>2.31.0</version>
+    <time>1718978674</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1181973</requestid>
+  </revision>
 </revisionlist>

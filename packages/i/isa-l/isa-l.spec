@@ -19,14 +19,14 @@
 Name:           isa-l
 Version:        2.31.0
 Release:        0
-Summary:	Intel Intelligent Storage Acceleration Library
+Summary:        Intel Intelligent Storage Acceleration Library
 Group:          Development/Libraries/C and C++
 License:        BSD-3-Clause
 URL:            https://github.com/intel/isa-l
 Source:         https://github.com/intel/isa-l/archive/refs/tags/v%{version}.tar.gz
-BuildRequires:  gcc
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  gcc
 BuildRequires:  libtool
 BuildRequires:  nasm >= 2.13
 
@@ -35,7 +35,7 @@ Optimized low-level functions targeting storage applications.
 
 %package -n igzip
 Summary:        gzip backed by the ISA-L deflate library
-Group:	        Productivity/Archiving/Compression
+Group:          Productivity/Archiving/Compression
 
 %description -n igzip
 igzip compresses and decompresses files similar to gzip using the
@@ -46,7 +46,7 @@ Output .gz files are compatible with gzip and RFC 1952.
 %package devel
 Summary:        Development files for the Intel Intelligent Storage Acceleration Library
 Group:          Development/Libraries/C and C++
-Requires:	libisal2 = %{version}
+Requires:       libisal2 = %{version}
 
 %description devel
 ISA-L is a collection of optimized low-level functions targeting
@@ -80,6 +80,7 @@ in libisal2.
 %autosetup
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 ./autogen.sh
 %configure
 %make_build
