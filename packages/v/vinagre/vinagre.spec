@@ -1,7 +1,7 @@
 #
 # spec file for package vinagre
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -77,6 +77,10 @@ gnome-keyring.
 %lang_package
 
 %prep
+
+# Work-around for boo#1225951, at least until vala is fixed.
+%global optflags %{optflags} -fpermissive
+
 %autosetup -p1
 
 %build

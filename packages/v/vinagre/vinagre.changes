@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 19 17:07:30 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Add -fpermissive to compiler options to work around GCC 14 not allowing
+  some violations of the C99 standard. [boo#1225951]
+
+-------------------------------------------------------------------
 Tue Dec 19 10:53:05 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Disable RDP support for the time being: vinagre has been archived

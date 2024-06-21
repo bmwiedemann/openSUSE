@@ -809,4 +809,16 @@
   connections, please switch to GNOME Connections. (forwarded request 1134009 from dimstar)</comment>
     <requestid>1134011</requestid>
   </revision>
+  <revision rev="107" vrev="17">
+    <srcmd5>f2b31cf6f9e887acdaf2bca551e2201f</srcmd5>
+    <version>3.22.0</version>
+    <time>1718978585</time>
+    <user>anag+factory</user>
+    <comment>- Add -fpermissive to compiler options to work around GCC 14 not allowing
+  some violations of the C99 standard. [boo#1225951]
+
+  After vala is fixed, we can have a look at fixing this properly (I
+  plan to keep the bug opened for now). (forwarded request 1181980 from jamborm)</comment>
+    <requestid>1182000</requestid>
+  </revision>
 </revisionlist>
