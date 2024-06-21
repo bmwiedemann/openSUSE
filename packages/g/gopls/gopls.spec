@@ -17,7 +17,7 @@
 
 
 Name:           gopls
-Version:        0.15.3
+Version:        0.16.0
 Release:        0
 Summary:        Go LSP protocol language server
 License:        Apache-2.0 AND MIT AND BSD-3-Clause

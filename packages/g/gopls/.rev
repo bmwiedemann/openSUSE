@@ -142,4 +142,12 @@
   * gopls: fix test failures due to quoting of names in go/types errors (forwarded request 1167899 from jfkw)</comment>
     <requestid>1167900</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>57a25e59f0e2e8fff034f389c87bbc08</srcmd5>
+    <version>0.16.0</version>
+    <time>1718978688</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.16.0: (forwarded request 1182021 from jfkw)</comment>
+    <requestid>1182022</requestid>
+  </revision>
 </revisionlist>

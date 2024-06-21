@@ -1,4 +1,201 @@
 -------------------------------------------------------------------
+Thu Jun 20 18:38:18 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.16.0:
+  * gopls: update go.mod for v0.16.0-pre.3
+  * gopls/internal/settings: move CodeLensSource from protocol
+  * gopls: update go.mod for v0.16.0-pre.2
+  * gopls/internal/golang: Hover: use internal pkg doc viewer
+  * gopls/internal/golang: improve ergonomics of "Browse documentation"
+  * gopls/internal/settings: simplify SetOptions
+  * gopls/internal/lsp/source: ignore lambdas in call hierarchy
+  * gopls/internal/golang: s/View/Browse/ for browser-based features
+  * gopls: expand on documentation about version support changes
+  * gopls/internal/test/integration/misc: skip ASM assertions on risc64
+  * gopls/doc/release: update gopls release notes for language support
+  * gopls/doc/emacs.md: use more precise before-save terminology
+  * gopls: update go.mod for v0.16.0-pre.1
+  * all: update codereview.cfg for gopls-release-branch.0.16
+  * gopls: update x/telemetry dependency
+  * gopls: update x/telemetry dependency
+  * gopls: fix StmtToInsertVarBefore for switch stmts
+  * gopls/internal/protocol/command/gen: omit unnecessary MarshalArgs calls
+  * gopls/internal/golang: s/Show/View/ for web-based reports
+  * gopls/internal/server: return a non-nil slice for empty token result
+  * gopls/internal/golang: factor the 3 web reports
+  * gopls/internal/golang: Web, an abstraction of server.web
+  * gopls/internal/server: simplify FreeSymbols plumbing
+  * gopls/internal/cache: stop module cache refresh on view shutdown
+  * gopls/internal/test/integration/misc: fix build
+  * gopls/internal/golang: add "Show assembly of f" code action
+  * gopls/internal/test/integration: style tweaks to CodeAction
+  * gopls/internal/protocol/command: use gopls.foo form everywhere
+  * gopls/internal/cmd: cleanup progress handling
+  * gopls/internal/test: add test case for parameter rename match import
+  * gopls/internal/server: fix regression in organize imports code action
+  * gopls/internal/cache: fix module resolver cache refreshing
+  * gopls/rename: Fix spurious package name conflicts.
+  * gopls: warn about Go 1.19 and Go 1.20
+  * gopls/internal/filecache: suppress gc in tests
+  * gopls/internal/cache: suppress "internal" import check on Bazel
+  * gopls/internal/cache: check viewMap before altering views
+  * gopls/internal/test/marker: simplify seedCache file
+  * gopls/internal/cache: use a better view in viewOfLocked
+  * gopls: make tests tolerant of new go/types error format
+  * gopls/internal/test/marker: seed the cache before running tests
+  * Revert "gopls/internal/settings: enable semantic tokens by default"
+  * gopls/internal/golang: OutgoingCalls: fix crash on unsafe.Slice
+  * gopls/internal/cache: improve missing import error message
+  * gopls/internal/golang: skip TestFreeRefs on js
+  * gopls/internal/server: support InsertReplaceEdit completion
+  * gopls/internal/golang: unexport more declarations
+  * gopls/internal/server: avoid VS Code lightbulb
+  * gopls: initial support for godebug directive in go.mod and go.work
+  * gopls/doc: split codelenses out of settings
+  * gopls/internal/analysis/simplifyrange: suppress on range-over-func
+  * gopls/internal/protocol: customize InsertReplaceEdit JSON unmarshal
+  * gopls/internal/golang: unexport several functions
+  * gopls/internal/test/integration: fix race in TestGCDetails_Toggle
+  * gopls/doc: tidy up analyzer documentation
+  * gopls/internal/golang: fix bug in freeRefs algorithm
+  * gopls/internal/golang: "Show free symbols" code action
+  * gopls/internal/golang: remove test debugging aix-ppc64 issue
+  * gopls/internal/protocol: separate CodeLens from Command; document
+  * gopls: remove dead code
+  * gopls: upgrade x/telemetry to pick up CL 586195
+  * gopls/internal/test/marker: fix analyzers.txt test that requires cgo
+  * gopls/internal/protocol: rename DocumentChange{s,}
+  * gopls: support four kinds of DocumentChanges
+  * gopls/internal/cache: use 1 not 0 for missing line/col info
+  * gopls/internal/cache: support overlays
+  * gopls/doc/generate: add link anchors to each setting
+  * gopls: further minor generator simplifications
+  * gopls: upload from telemetry.Start, rather than upload.Run
+  * gopls: upgrade x/telemetry to latest
+  * gopls/internal/settings: annotate TestVetSuite with NeedsTool("go")
+  * gopls/internal/golang: fix another crash in RenderPackageDoc
+  * gopls/internal/golang: RenderPackageDoc: fix param truncation crash
+  * gopls/doc/release: add release notes for struct tag hover info
+  * gopls/internal/golang: show struct tag when hovering over fields
+  * gopls/internal/server: discard non-file scheme workspace folder URIs
+  * gopls/internal/cache: fix bug.Report converting Diagnostic positions
+  * gopls/internal/test/integration/misc: disable another staticcheck test
+  * gopls/internal/settings: add framepointer,sigchanyzer analyzers
+  * gopls/internal/test/integration/misc: disable staticcheck test
+  * gopls/internal/test: avoid std assumptions in range-over-func test
+  * gopls: rationalize code generation
+  * gopls/internal/protocol: rationalize edit helpers
+  * gopls/internal/golang: simplify "rewrite" code actions
+  * gopls/internal/cache: simplify Snapshot Go commands
+  * gopls/internal/analysis: disable ssa/ir analyzers on range-over-func
+  * gopls/internal/protocol: add links to LSP spec
+  * gopls/internal/golang: fix nil panic in InlayHint
+  * gopls/internal/golang/completion: fix the isEmptyInterface predicate
+  * gopls/internal/cache: use language versions when validating Go version
+  * gopls: normalize logging attributes
+  * gopls/internal/golang: fix resolution of in-package implementations
+  * gopls/internal/cache: add more assertions for golang/go#60890
+  * gopls/internal/golang: check the comment range before emiting semantic tokens
+  * Revert "gopls/internal/test/integration/misc: reenable staticcheck test"
+  * gopls/internal/test/integration/misc: reenable staticcheck test
+  * gopls: fix a couple places where temporary files are not removed
+  * gopls/internal/settings: deprecate "allowImplicitNetworkAccess"
+  * gopls/internal/settings: remove support for "allowModfileModifications"
+  * gopls/internal/settings: enable semantic tokens by default
+  * gopls/internal/settings: remove experiments
+  * gopls/internal/golang: allow "query" CodeActions on generated files
+  * gopls/internal/golang: RenderPkgDoc: elide parameters 4+ in index
+  * gopls/internal/settings: update stale documentation for "symbolScope"
+  * gopls: eliminate the hooks package
+  * gopls/internal/server: don't reset views if configuration did not change
+  * gopls/internal/cmd: check: print RelatedInformation
+  * gopls/doc: relnote for hover & definition over doc links
+  * gopls/internal/test/marker: fix {hover/def}/comment tests
+  * gopls/internal/cache: fail loudly on command-line-arguments modules
+  * gopls/internal/golang: support hover and definition operations over doc links
+  * gopls/internal/server: avoid duplicate diagnoses and loads
+  * gopls/internal/cache: don't log packages when selectively reloading
+  * gopls: reduce noisy error messages
+  * gopls/internal/test: skip integration tests on linux-ppc64-power9osu
+  * gopls/internal/cache: add debug assertions to refine golang/go#66732
+  * gopls/internal/cache: avoid panic when the primary diagnostic is broken
+  * gopls/internal/telemetry/cmd/stacks: improve summary
+  * gopls/internal/golang: RenderPkgDoc: fix anchors for promoted methods
+  * gopls/internal/server: report HTTP panics via telemetry
+  * gopls/internal/cache: analysis: repair start/end and refine bug report
+  * gopls/internal/golang: RenderPkgDoc: add <title> element
+  * gopls/internal/golang: RenderPkgDoc: navigational <select>
+  * gopls/internal/test/marker/testdata: skip hover size tests on 32-bit arm
+  * gopls/internal/golang: Hover: show wasted % of struct space
+  * gopls/internal/test/integration/misc: fix flaky test
+  * gopls/internal/analysis/fillreturns: skip test if gotypesalias=1
+  * gopls/internal/cache: fix crash in snapshot.Analyze with patch versions
+  * gopls/internal/server: filter diagnostics to "best" views
+  * gopls/internal/test/integration: add a WriteGoSum run option
+  * gopls/internal/golang: RenderPackageDoc: fix doc links
+  * gopls/internal/test: temporarily disable staticcheck with gotypesalias=1
+  * gopls/internal/golang: RenderPackageDoc: emit anchors for var/const
+  * gopls/internal/server: "view package doc" of package under test
+  * gopls/internal/golang: view pkg doc: display when "disconnected"
+  * gopls/doc/release/v0.16.0.md: augment notes for "view pkg doc"
+  * gopls/internal/settings: enable "unusedwrite" analyzer
+  * gopls/internal/golang: hover: show size/offset info
+  * gopls/internal/golang: work around bug in go/doc
+  * gopls/internal/test: option to suppress LSP logs on failure
+  * gopls: add explicit Unalias operations
+  * gopls: update x/vuln to 1.0.4
+  * gopls/internal/server: redo completion counters
+  * gopls: use slices package for reverse slice
+  * gopls/internal/golang: don't suggest removeparam when there are errors
+  * gopls/internal/golang: support removing unused parameters from methods
+  * gopls/internal/golang: fix build breakage due to semantic conflict
+  * gopls/internal/server: add "View package documentation" code action
+  * gopls/internal/test/marker: remove runtime.GOROOT from format.txt case
+  * gopls/internal/cache: rename methods on Package
+  * gopls: fix test failures due to quoting of names in go/types errors
+  * gopls: repair premature commit of 562248
+  * gopls: Measure the efficacy of completions
+  * gopls/internal/server: update telemetry prompt link
+  * gopls/internal/golang: fix crash in package references
+  * gopls/internal/server: fix crash in SignatureHelp
+  * gopls/internal/analysis/stdversion: suppress before go1.21
+  * gopls/internal/analysis/stdversion: set RunDespiteErrors
+  * gopls/internal/golang/completion: honor std symbol versions (imported)
+  * gopls/internal/server: set -mod=readonly when checking for upgrades
+  * gopls/internal/cache: avoid go/types panic on version "go1.2.3"
+  * gopls/internal/cache: fix spurious diagnostics in multi-root workspaces
+  * gopls/internal/cache: add assertions for telemetry crash
+  * gopls/internal/golang/completion: honor std symbol versions (unimported)
+  * gopls/internal/server/semantic: highlight the doc links in comments
+  * gopls/internal/analysis/stdversion: report refs to too-new std symbols
+  * gopls/internal/cache: prune broken edges to command-line-arguments pkgs
+  * gopls/protocol: update LSP to latest version
+  * gopls/internal/cache: add debug assertions for bug report
+  * gopls/doc: address additional comments on workspace.md
+  * gopls/internal/analysis: add fill switch cases code action
+  * gopls/internal/test: add test for NPE in control flow highlighting
+  * gopls: add non nil if check around function result highlight
+  * gopls: implement code action to split/group lines
+  * gopls: upgrade dependencies following the v0.15.0 release
+  * gopls/doc: update workspace documentation for zero-config gopls
+  * gopls: rationalize "deref" helpers
+  * gopls/internal/test/marker: add a test for initialization cycle errors
+  * gopls/internal/cache: don't create Views for vendored modules
+  * gopls/internal/cache: fix two bugs related to workspace packages
+  * gopls/internal/golang: highlight typeswitch break correctly
+  * gopls/internal/settings: default "includeReplaceInWorkspace" to false
+  * gopls/internal/test/integration/fake: set LSP client name
+  * gopls/internal/golang: enable bug.Report in semantic tokens
+  * gopls/internal/golang: add semantic tokens for control labels
+  * gopls/internal/golang: SemanticTokens: edits for clarity
+  * gopls/internal/cache: remove parsego.* aliases
+  * gopls/release: remove obsolete validateHardCodedVersion
+  * gopls/internal/server: fix a (mostly) benign race in diagnostics
+  * gopls/internal/server: disambiguate diagnostics by OS,ARCH
+  * gopls/internal/test/integration: ignore telemetry prompt in assertion
+  * gopls/internal/golang: remove a use of panic for flow control
+
+-------------------------------------------------------------------
 Mon Apr 15 22:21:28 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.15.3:
