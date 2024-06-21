@@ -1,7 +1,7 @@
 #
 # spec file for package setserial
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,15 +20,16 @@ Name:           setserial
 Version:        2.17
 Release:        0
 Summary:        A utility for configuring serial ports
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Hardware/Other
-Url:            http://setserial.sourceforge.net
+URL:            http://setserial.sourceforge.net
 Source0:        ftp://tsx-11.mit.edu/pub/linux/sources/sbin/setserial-%{version}.tar.bz2
 Patch0:         %{name}-%{version}-autoconf.diff
 Patch1:         %{name}-%{version}-error.diff
 Patch2:         %{name}-%{version}-prototypes.diff
 Patch3:         %{name}-%{version}-nohayes.diff
 Patch4:         %{name}-%{version}-binaryInUsr.patch
+Patch5:         %{name}-%{version}-C99.diff
 BuildRequires:  groff
 Requires:       /sbin/isserial
 Provides:       util:/sbin/setserial
@@ -46,6 +47,7 @@ port and IRQ that a particular serial device is using.
 %patch -P 2
 %patch -P 3 -p1
 %patch -P 4
+%patch -P 5
 
 chmod -x rc.serial
 
