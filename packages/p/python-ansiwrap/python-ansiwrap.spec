@@ -37,7 +37,6 @@ BuildRequires:  unzip
 BuildRequires:  %{python_module ansicolors >= 1.1.8}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-Requires:       python-textwrap3
 BuildArch:      noarch
 
 %python_subpackages

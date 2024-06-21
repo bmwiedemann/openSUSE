@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 21 03:22:22 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Also remove now unneeded Requires on textwrap3. 
+
+-------------------------------------------------------------------
 Wed Jun 19 06:44:55 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch drop-textwrap3.patch:

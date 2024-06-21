@@ -34,4 +34,12 @@
   * Use textwrap, textwrap3 is a backport for Python &lt; 3.6.</comment>
     <requestid>1181677</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>c79d4319fe763e85316676cfc0f566aa</srcmd5>
+    <version>0.8.4</version>
+    <time>1718978690</time>
+    <user>anag+factory</user>
+    <comment>- Also remove now unneeded Requires on textwrap3.</comment>
+    <requestid>1182026</requestid>
+  </revision>
 </revisionlist>
