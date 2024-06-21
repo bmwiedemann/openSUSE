@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cairocffi
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        Python cairo bindings based on cffi
 License:        BSD-3-Clause
