@@ -1,7 +1,7 @@
 #
 # spec file for package python-gtk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,9 @@ Source:         http://ftp.gnome.org/pub/GNOME/sources/pygtk/2.24/pygtk-%{versio
 Patch0:         pygtk-2.22.0-capsule.patch
 # PATCH-FIX-UPSTREAM pygtk-Drop-the-PangoFont-find_shaper-virtual-method.patch dimstar@opensuse.org -- Drop the PangoFont find_shaper virtual method
 Patch1:         https://raw.githubusercontent.com/flathub/org.glimpse_editor.Glimpse/master/patches/pygtk-Drop-the-PangoFont-find_shaper-virtual-method.patch
+# Patch to fix C99 violations [boo#1225916]
+# originally from https://bugzilla.redhat.com/show_bug.cgi?id=2190017
+Patch2:         pygtk2-c99.patch
 BuildRequires:  fdupes
 # Only for directory ownership:
 BuildRequires:  gtk-doc

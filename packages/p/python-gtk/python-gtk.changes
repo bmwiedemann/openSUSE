@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 19 14:26:15 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Add pygtk2-c99.patch to fix C99 violations that prevent building of
+  the package with GCC 14 [boo#1225916].
+
+-------------------------------------------------------------------
 Mon Nov 27 14:34:35 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of
