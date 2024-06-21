@@ -1909,7 +1909,7 @@
     <package name="libdevmapper1_03" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libdhash1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libdialog15" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libdisplay-info1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libdisplay-info2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdjvulibre21" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdmapsharing-4_0-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdmtx0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2784,7 +2784,7 @@
     <package name="libstorage-ng-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libstorage-ng-ruby" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libstorage-ng1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libsubid4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libsubid5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsuitesparseconfig7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsunpinyin3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsvn_auth_gnome_keyring-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->

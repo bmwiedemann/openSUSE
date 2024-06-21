@@ -748,7 +748,6 @@ unsorted:
   - apache-portlet-1_0-api 
   - apache-portlet-1_0-api-javadoc 
   - apache-resource-bundles 
-  - apache-rex 
   - apache-rpm-macros 
   - apache-rpm-macros-control 
   - apache-sshd 
@@ -14819,14 +14818,14 @@ unsorted:
   - libopenvas_wmiclient-devel 
   - libopenvas_wmiclient1 
   - libopenvdb10_1 
-  - libopenvino2410 
-  - libopenvino_c2410 
-  - libopenvino_ir_frontend2410 
-  - libopenvino_onnx_frontend2410 
-  - libopenvino_paddle_frontend2410 
-  - libopenvino_pytorch_frontend2410 
-  - libopenvino_tensorflow_frontend2410 
-  - libopenvino_tensorflow_lite_frontend2410 
+  - libopenvino2420 
+  - libopenvino_c2420 
+  - libopenvino_ir_frontend2420 
+  - libopenvino_onnx_frontend2420 
+  - libopenvino_paddle_frontend2420 
+  - libopenvino_pytorch_frontend2420 
+  - libopenvino_tensorflow_frontend2420 
+  - libopenvino_tensorflow_lite_frontend2420 
   - libopenvswitch-3_1-0 
   - liboping-devel 
   - liboping0 
@@ -24572,6 +24571,7 @@ unsorted:
   - python310-bugzilla 
   - python310-bugzillatools 
   - python310-build 
+  - python310-bump-pydantic 
   - python310-buttplug 
   - python310-bytecode 
   - python310-cPyparsing 
@@ -25268,7 +25268,6 @@ unsorted:
   - python310-helpdev 
   - python310-hepunits 
   - python310-hetzner 
-  - python310-hetznercloud 
   - python310-hexdump 
   - python310-hid-parser 
   - python310-hijri-converter 
@@ -27017,7 +27016,6 @@ unsorted:
   - python310-textfsm 
   - python310-textile 
   - python310-texttable 
-  - python310-textwrap3 
   - python310-thLib 
   - python310-thespian 
   - python310-threadpoolctl 
@@ -28154,6 +28152,7 @@ unsorted:
   - python311-bugzilla 
   - python311-bugzillatools 
   - python311-build 
+  - python311-bump-pydantic 
   - python311-buttplug 
   - python311-bytecode 
   - python311-cPyparsing 
@@ -28824,7 +28823,6 @@ unsorted:
   - python311-helpdev 
   - python311-hepunits 
   - python311-hetzner 
-  - python311-hetznercloud 
   - python311-hexdump 
   - python311-hid-parser 
   - python311-hijri-converter 
@@ -30503,7 +30501,6 @@ unsorted:
   - python311-textfsm 
   - python311-textile 
   - python311-texttable 
-  - python311-textwrap3 
   - python311-thLib 
   - python311-thespian 
   - python311-threadpoolctl 
@@ -31656,6 +31653,7 @@ unsorted:
   - python312-bugzilla 
   - python312-bugzillatools 
   - python312-build 
+  - python312-bump-pydantic 
   - python312-buttplug 
   - python312-bytecode 
   - python312-cPyparsing 
@@ -32351,7 +32349,6 @@ unsorted:
   - python312-helpdev 
   - python312-hepunits 
   - python312-hetzner 
-  - python312-hetznercloud 
   - python312-hexdump 
   - python312-hid-parser 
   - python312-hijri-converter 
@@ -34091,7 +34088,6 @@ unsorted:
   - python312-textfsm 
   - python312-textile 
   - python312-texttable 
-  - python312-textwrap3 
   - python312-thLib 
   - python312-thespian 
   - python312-threadpoolctl 
