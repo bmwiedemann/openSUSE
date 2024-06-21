@@ -1,0 +1,30 @@
+From c3783466746d5e2dfdbc7376897f94eb4505f896 Mon Sep 17 00:00:00 2001
+From: Stefan Gerlach <stefan.gerlach@uni-konstanz.de>
+Date: Sat, 1 Jun 2024 14:34:45 +0200
+Subject: [PATCH] fix warning
+
+---
+ src/backend/datasources/filters/MatioFilter.cpp | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/backend/datasources/filters/MatioFilter.cpp b/src/backend/datasources/filters/MatioFilter.cpp
+index e87e391218..bae441f5cf 100644
+--- a/src/backend/datasources/filters/MatioFilter.cpp
++++ b/src/backend/datasources/filters/MatioFilter.cpp
+@@ -1162,10 +1162,11 @@ MatioFilterPrivate::readCurrentVar(const QString& fileName, AbstractDataSource*
+ 						break;
+ 					}
+ 
+-					if (fields[i]->rank == 2)
++					if (fields[i]->rank == 2) {
+ 						DEBUG(Q_FUNC_INFO << "  rank = 2 (" << fields[i]->dims[0] << " x " << fields[i]->dims[1] << ")")
+-					else
++					} else {
+ 						DEBUG(Q_FUNC_INFO << "  rank = " << fields[i]->rank)
++					}
+ 
+ 					if (fields[i]->data_type == MAT_T_UINT16 || fields[i]->data_type == MAT_T_INT16) {
+ 						auto* data = (mat_uint16_t*)fields[i]->data;
+-- 
+GitLab
+

@@ -1,0 +1,34 @@
+From d6142308ffa492d9f7cea00fad3b4cd1babfd00c Mon Sep 17 00:00:00 2001
+From: Stefan Gerlach <stefan.gerlach@uni-konstanz.de>
+Date: Sat, 27 Apr 2024 01:08:37 +0200
+Subject: [PATCH] matio: Fix compilation for latest version 1.5.27
+
+---
+ src/backend/datasources/filters/MatioFilter.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/backend/datasources/filters/MatioFilter.cpp b/src/backend/datasources/filters/MatioFilter.cpp
+index 7f7d502cfd..e87e391218 100644
+--- a/src/backend/datasources/filters/MatioFilter.cpp
++++ b/src/backend/datasources/filters/MatioFilter.cpp
+@@ -328,7 +328,7 @@ QString MatioFilter::fileInfoString(const QString& fileName) {
+ 	info += QLatin1String("<br>");
+ 
+ 	size_t n;
+-	char** dir = Mat_GetDir(matfp, &n);
++	auto* dir = Mat_GetDir(matfp, &n);
+ 	info += i18n("Number of variables: ") + QString::number(n);
+ 	info += QStringLiteral("<br>");
+ 	if (dir && n < 10) { // only show variable info when there are not too many
+@@ -536,7 +536,7 @@ void MatioFilterPrivate::parse(const QString& fileName) {
+ 	}
+ 
+ 	// get names of all vars
+-	char** dir = Mat_GetDir(matfp, &varCount);
++	auto* dir = Mat_GetDir(matfp, &varCount);
+ 	DEBUG(Q_FUNC_INFO << ", found " << varCount << " vars")
+ 
+ 	varsInfo.clear();
+-- 
+GitLab
+

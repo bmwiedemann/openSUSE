@@ -1,7 +1,7 @@
 #
 # spec file for package labplot-kf5
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,10 @@ URL:            https://labplot.kde.org/
 Source:         https://download.kde.org/stable/labplot/labplot-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM
 Patch0:         Fix-finding-liborigin-header-in-project-import-test.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-matio-Fix-compilation-for-latest-version-1.5.27.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0002-fix-warning.patch
 BuildRequires:  bison
 BuildRequires:  cantor-devel
 BuildRequires:  extra-cmake-modules

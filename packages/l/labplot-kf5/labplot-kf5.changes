@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 20 17:06:51 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patches from upstream to fix a FTBFS:
+  * 0001-matio-Fix-compilation-for-latest-version-1.5.27.patch
+  * 0002-fix-warning.patch
+
+-------------------------------------------------------------------
 Fri Sep  1 13:12:49 UTC 2023 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add Fix-finding-liborigin-header-in-project-import-test.patch to
