@@ -1,7 +1,7 @@
 #
 # spec file for package ctre
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 %define gcc_ver 11
 %endif
 Name:           ctre
-Version:        3.8.1
+Version:        3.9.0
 Release:        0
 Summary:        Compile time regular expressions library
 License:        Apache-2.0
-URL:            https://github.com/hanickadot/compile-time-regular-expressions/
-Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%version.tar.gz
+URL:            https://compile-time.re
+Source:         https://github.com/hanickadot/compile-time-regular-expressions/archive/refs/tags/v%{version}.tar.gz#/%{name}-%version.tar.gz
 # https://github.com/hanickadot/compile-time-regular-expressions/issues/253
 Patch1:         unsigned-char.patch
 BuildRequires:  cmake
@@ -51,6 +51,7 @@ developing applications against ctre.
 %build
 %cmake \
   -DCMAKE_CXX_COMPILER=g++%{?gcc_ver:-%{gcc_ver}} \
+  -DCTRE_MODULE:BOOL=OFF \
 	-DCTRE_BUILD_TESTS:BOOL=ON
 %cmake_build
 

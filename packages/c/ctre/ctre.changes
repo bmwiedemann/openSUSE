@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jun 18 17:11:01 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.9.0:
+  * you can now use CTRE as C++ module! with -DCTRE_MODULE=ON
+    (experimental).
+  * `ctre::range` is deprecated and replaced with
+    `ctre::search_all`
+  * simple `ctre::capture_group` concept
+  * capture groups / result type now has
+    `.to_optional_number(...)` member function which returns
+    `std::nullopt` if group is not matching
+  * Fixed: Cannot parse Unicode ranges after question mark as in "
+    ?[\p{L}]+"
+    [gh#hanickadot/compile-time-regular-expressions#305]
+- Pass -DCTRE_MODULE=OFF to cmake to disable CTRE module
+  explicitly (requires cmake >= 3.30).
+
+-------------------------------------------------------------------
 Wed Nov 22 09:46:53 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - unsigned-char.patch: Fix bogus tests that depend on signed char
