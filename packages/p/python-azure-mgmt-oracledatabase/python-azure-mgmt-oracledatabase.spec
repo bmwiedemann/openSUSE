@@ -15,11 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define realversion 1.0.0b1
+
+%define realversion 1.0.0b2
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-oracledatabase
-Version:        1.0.0~b1
+Version:        1.0.0~b2
 Release:        0
 Summary:        Microsoft Azure Oracledatabase Management Client Library for Python
 License:        MIT
