@@ -18,31 +18,25 @@
 
 %{?sle15_python_module_pythons}
 %bcond_without test
-%define typed_ast_version 1.5.8.7
-%define types_psutil_version 5.9.5.16
-%define types_setuptools_version 68.1.0.0
+%define types_psutil_version 5.9.5.17
+%define types_setuptools_version 68.2.0.0
 Name:           python-mypy
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
 URL:            https://www.mypy-lang.org/
 Source0:        https://files.pythonhosted.org/packages/source/m/mypy/mypy-%{version}.tar.gz
 # License Source1: Apache-2.0. Only for the test suite, not packaged here.
-Source1:        https://files.pythonhosted.org/packages/source/t/types-typed-ast/types-typed-ast-%{typed_ast_version}.tar.gz
+Source1:        https://files.pythonhosted.org/packages/source/t/types-psutil/types-psutil-%{types_psutil_version}.tar.gz
 # License Source2: Apache-2.0. Only for the test suite, not packaged here.
-Source2:        https://files.pythonhosted.org/packages/source/t/types-psutil/types-psutil-%{types_psutil_version}.tar.gz
-# License Source3: Apache-2.0. Only for the test suite, not packaged here.
-Source3:        https://files.pythonhosted.org/packages/source/t/types-setuptools/types-setuptools-%{types_setuptools_version}.tar.gz
+Source2:        https://files.pythonhosted.org/packages/source/t/types-setuptools/types-setuptools-%{types_setuptools_version}.tar.gz
 Source99:       python-mypy-rpmlintrc
-# PATCH-FIX-UPSTREAM gh#python/mypy#16949
-Patch0:         workaround-parenthesized-context-managers.patch
 BuildRequires:  %{python_module exceptiongroup}
 BuildRequires:  %{python_module mypy_extensions >= 1.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tomli >= 1.1.0}
-BuildRequires:  %{python_module typed-ast >= 1.4.0 if %python-base < 3.8}
 BuildRequires:  %{python_module typing_extensions >= 4.1.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module wheel}
@@ -51,7 +45,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-mypy_extensions >= 0.4.3
 Requires:       python-typing_extensions >= 3.10
 Requires:       (python-tomli >= 1.1.0 if python-base < 3.11)
-Requires:       (python-typed-ast >= 1.4.0 if python-base < 3.8)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
@@ -67,11 +60,9 @@ BuildRequires:  %{python_module filelock >= 3.3}
 BuildRequires:  %{python_module importlib-metadata >= 4.6.1}
 BuildRequires:  %{python_module lxml >= 4}
 BuildRequires:  %{python_module psutil >= 4}
-BuildRequires:  %{python_module pytest >= 6.2}
+BuildRequires:  %{python_module pytest >= 8.1}
 BuildRequires:  %{python_module pytest-forked >= 1.3}
 BuildRequires:  %{python_module pytest-xdist >= 1.34}
-BuildRequires:  %{python_module six}
-BuildRequires:  %{python_module typed-ast >= 1.4.0}
 BuildRequires:  %{python_module virtualenv >= 20.6}
 BuildRequires:  gcc-c++
 %endif
@@ -93,14 +84,13 @@ Mypy's type system features type inference, gradual typing, generics
 and union types.
 
 %prep
-%setup -q -a 1 -a 2 -a 3 -n mypy-%{version}
+%setup -q -a 1 -a 2 -n mypy-%{version}
 %autopatch -p1
 
 sed -i '/env python3/d' ./mypy/stubgenc.py
 sed -i '/env python3/d' ./mypy/stubgen.py
 
 mkdir mystubs
-mv types-typed-ast-%{typed_ast_version}/typed_ast-stubs* mystubs/
 mv types-setuptools-%{types_setuptools_version}/setuptools-stubs* mystubs/
 mv types-psutil-%{types_psutil_version}/psutil-stubs* mystubs/
 

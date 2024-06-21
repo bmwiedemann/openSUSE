@@ -137,4 +137,32 @@ reveal_type(Context[MyBot]().bot)
 - Drop -x argument to pytest.</comment>
     <requestid>1164520</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e50008944280d666889ac5af1d4df2de</srcmd5>
+    <version>1.10.0</version>
+    <time>1718978563</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.10.0:
+  * Support TypeIs (PEP 742)
+  * Support TypeVar Defaults (PEP 696)
+  * Support TypeAliasType (PEP 695)
+  * Detect Additional Unsafe Uses of super()
+  * Fix incorrect inferred type when accessing descriptor on union type
+  * Fix crash when expanding invalid Unpack in a Callable alias
+  * Fix false positive when string formatting with string enum
+  * Narrow individual items when matching a tuple to a sequence pattern
+  * Fix false positive from type variable within TypeGuard or TypeIs
+  * Improve yield from inference for unions of generators
+  * Fix emulating hash method logic in attrs classes
+  * Add reverted typeshed commit that uses ParamSpec for functools.wraps
+  * Fix type narrowing for types.EllipsisType
+  * Fix single item enum match type exhaustion
+  * Improve type inference with empty collections
+  * Fix override checking for decorated property
+  * Fix narrowing on match with function subject
+- Drop including types-ast, no longer required.
+- Drop patch workaround-parenthesized-context-managers.patch, now
+  included upstream.</comment>
+    <requestid>1181211</requestid>
+  </revision>
 </revisionlist>
