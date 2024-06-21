@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-sybil%{psuffix}
-Version:        6.1.0
+Version:        6.1.1
 Release:        0
 Summary:        Automated testing of examples in documentation
 License:        MIT
