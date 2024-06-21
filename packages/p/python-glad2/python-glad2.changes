@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jun 19 07:07:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.6:
+  * Fix eglplatform in header only build not correctly replacing
+    the khrplatform include
+  * Fix compile warning when GLAD_GLES2_USE_SYSTEM_EGL=1
+  * Fix: Use include instead of find_package for CMake config
+  * c: don't warn on undefined GLAD_GLES2_USE_SYSTEM_EGL
+- update to 2.0.5:
+  * Fix missing Vulkan video headers
+  * Use FindPython instead of FindPythonInterp
+  * Add --version option to command-line interface
+  * Remove one duplicated check for glGetString(GL_VERSION)
+  * Fix extensions loading and parsing
+  * Provide CMake package
+
+-------------------------------------------------------------------
 Wed Sep 20 13:53:18 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

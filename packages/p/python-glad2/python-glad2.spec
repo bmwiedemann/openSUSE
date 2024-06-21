@@ -1,7 +1,7 @@
 #
 # spec file for package python-glad2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-glad2
-Version:        2.0.1
+Version:        2.0.6
 Release:        0
 Summary:        Multi-Language GL/GLES/EGL/GLX/WGL Loader-Generator
 License:        MIT
 URL:            https://github.com/Dav1dde/glad
 Source:         https://files.pythonhosted.org/packages/source/g/glad2/glad2-%{version}.tar.gz
 Source1:        python-glad2-rpmlintrc
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2}
 # /SECTION
