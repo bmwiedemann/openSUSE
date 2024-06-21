@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Wed Jun 19 21:36:01 UTC 2024 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Update to 2024.2.0
+- More Gen AI coverage and framework integrations to minimize code
+  changes
+  * Llama 3 optimizations for CPUs, built-in GPUs, and discrete 
+    GPUs for improved performance and efficient memory usage.
+  * Support for Phi-3-mini, a family of AI models that leverages 
+    the power of small language models for faster, more accurate 
+    and cost-effective text processing.
+  * Python Custom Operation is now enabled in OpenVINO making it
+    easier for Python developers to code their custom operations
+    instead of using C++ custom operations (also supported). 
+    Python Custom Operation empowers users to implement their own
+    specialized operations into any model.
+  * Notebooks expansion to ensure better coverage for new models.
+    Noteworthy notebooks added: DynamiCrafter, YOLOv10, Chatbot
+    notebook with Phi-3, and QWEN2.
+- Broader Large Language Model (LLM) support and more model
+  compression techniques.
+  * GPTQ method for 4-bit weight compression added to NNCF for
+    more efficient inference and improved performance of 
+    compressed LLMs.
+  * Significant LLM performance improvements and reduced latency
+    for both built-in GPUs and discrete GPUs.
+  * Significant improvement in 2nd token latency and memory 
+    footprint of FP16 weight LLMs on AVX2 (13th Gen Intel® Core™
+    processors) and AVX512 (3rd Gen Intel® Xeon® Scalable 
+    Processors) based CPU platforms, particularly for small 
+    batch sizes.
+- More portability and performance to run AI at the edge, in the
+  cloud, or locally.
+  * Model Serving Enhancements:
+  * Preview: OpenVINO Model Server (OVMS) now supports 
+    OpenAI-compatible API along with Continuous Batching and 
+    PagedAttention, enabling significantly higher throughput 
+    for parallel inferencing, especially on Intel® Xeon® 
+    processors, when serving LLMs to many concurrent users.
+  * OpenVINO backend for Triton Server now supports built-in 
+    GPUs and discrete GPUs, in addition to dynamic 
+    shapes support.
+  * Integration of TorchServe through torch.compile OpenVINO
+    backend for easy model deployment, provisioning to 
+    multiple instances, model versioning, and maintenance.
+  * Preview: addition of the Generate API, a simplified API 
+    for text generation using large language models with only
+    a few lines of code. The API is available through the newly
+    launched OpenVINO GenAI package.
+  * Support for Intel Atom® Processor X Series. For more details,
+    see System Requirements.
+  * Preview: Support for Intel® Xeon® 6 processor.
+- Support Change and Deprecation Notices
+  * Using deprecated features and components is not advised. 
+    They are available to enable a smooth transition to new 
+    solutions and will be discontinued in the future. 
+    To keep using discontinued features, you will have to revert
+    to the last LTS OpenVINO version supporting them. For more 
+    details, refer to the OpenVINO Legacy Features and 
+    Components page.
+  * Discontinued in 2024.0:
+    + Runtime components:
+      - Intel® Gaussian & Neural Accelerator (Intel® GNA).
+        Consider using the Neural Processing Unit (NPU) for 
+        low-powered systems like Intel® Core™ Ultra or 14th
+        generation and beyond.
+      - OpenVINO C++/C/Python 1.0 APIs (see 2023.3 API 
+        transition guide for reference).
+      - All ONNX Frontend legacy API (known as ONNX_IMPORTER_API)
+      - 'PerfomanceMode.UNDEFINED' property as part of the 
+        OpenVINO Python API
+    + Tools:
+      - Deployment Manager. See installation and deployment 
+        guides for current distribution options.
+      - Accuracy Checker.
+      - Post-Training Optimization Tool (POT). Neural Network 
+        Compression Framework (NNCF) should be used instead.
+      - A Git patch for NNCF integration with 
+        huggingface/transformers. The recommended approach 
+        is to use huggingface/optimum-intel for applying NNCF
+        optimization on top of models from Hugging Face.
+      - Support for Apache MXNet, Caffe, and Kaldi model formats.
+        Conversion to ONNX may be used as a solution.
+  * Deprecated and to be removed in the future:
+    + The OpenVINO™ Development Tools package (pip install
+      openvino-dev) will be removed from installation options
+      and distribution channels beginning with OpenVINO 2025.0.
+    + Model Optimizer will be discontinued with OpenVINO 2025.0. 
+      Consider using the new conversion methods instead. For
+      more details, see the model conversion transition guide.
+    + OpenVINO property Affinity API will be discontinued with
+      OpenVINO 2025.0. It will be replaced with CPU binding
+      configurations (ov::hint::enable_cpu_pinning).
+    + OpenVINO Model Server components:
+    + “auto shape” and “auto batch size” (reshaping a model in 
+      runtime) will be removed in the future. OpenVINO’s dynamic
+      shape models are recommended instead.
+    + A number of notebooks have been deprecated. For an 
+      up-to-date listing of available notebooks, refer to the 
+      OpenVINO™ Notebook index (openvinotoolkit.github.io).
+
+-------------------------------------------------------------------
 Thu May  9 22:56:53 UTC 2024 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Fix sample source path in build script:

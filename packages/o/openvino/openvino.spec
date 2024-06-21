@@ -21,12 +21,12 @@
 # Compilation takes ~1 hr on OBS for a single python, don't try all supported flavours
 %define pythons python3
 %define __builder ninja
-%define so_ver 2410
+%define so_ver 2420
 %define shlib lib%{name}%{so_ver}
 %define shlib_c lib%{name}_c%{so_ver}
 %define prj_name OpenVINO
 Name:           openvino
-Version:        2024.1.0
+Version:        2024.2.0
 Release:        0
 Summary:        A toolkit for optimizing and deploying AI inference
 # Let's be safe and put all third party licenses here, no matter that we use specific thirdparty libs or not
@@ -83,9 +83,10 @@ OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
 
 
 
+
+
 ## Main shared libs and devel pkg ##
 #
-
 %package -n %{shlib}
 Summary:        Shared library for OpenVINO toolkit
 
@@ -96,8 +97,9 @@ This package provides the shared library for OpenVINO.
 
 
 
-#
 
+
+#
 %package -n %{shlib_c}
 Summary:        Shared C library for OpenVINO toolkit
 
@@ -106,8 +108,9 @@ This package provides the C library for OpenVINO.
 
 
 
-#
 
+
+#
 %package  -n %{name}-devel
 Summary:        Headers and sources for OpenVINO toolkit
 Requires:       %{shlib_c} = %{version}
@@ -140,9 +143,10 @@ OpenVINO.
 
 
 
+
+
 ## Plugins ##
 #
-
 %package -n %{name}-arm-cpu-plugin
 Summary:        Intel CPU plugin for OpenVINO toolkit
 
@@ -153,8 +157,9 @@ This package provides the ARM CPU plugin for OpenVINO on %{arm64} archs.
 
 
 
-#
 
+
+#
 %package -n %{name}-auto-plugin
 Summary:        Auto / Multi software plugin for OpenVINO toolkit
 
@@ -165,8 +170,9 @@ This package provides the Auto / Multi software plugin for OpenVINO.
 
 
 
-#
 
+
+#
 %package -n %{name}-auto-batch-plugin
 Summary:        Automatic batch software plugin for OpenVINO toolkit
 
@@ -177,8 +183,9 @@ This package provides the automatic batch software plugin for OpenVINO.
 
 
 
-#
 
+
+#
 %package -n %{name}-hetero-plugin
 Summary:        Hetero frontend for Intel OpenVINO toolkit
 
@@ -189,8 +196,9 @@ This package provides the hetero frontend for OpenVINO.
 
 
 
-#
 
+
+#
 %package -n %{name}-intel-cpu-plugin
 Summary:        Intel CPU plugin for OpenVINO toolkit
 
@@ -201,8 +209,9 @@ This package provides the intel CPU plugin for OpenVINO for %{x86_64} archs.
 
 
 
-#
 
+
+#
 %package -n %{name}-intel-npu-plugin
 Summary:        Intel NPU plugin for OpenVINO toolkit
 
@@ -213,9 +222,10 @@ This package provides the intel NPU plugin for OpenVINO for %{x86_64} archs.
 
 
 
+
+
 ## Frontend shared libs ##
 #
-
 %package -n lib%{name}_ir_frontend%{so_ver}
 Summary:        Paddle frontend for Intel OpenVINO toolkit
 
@@ -226,8 +236,9 @@ This package provides the ir frontend for OpenVINO.
 
 
 
-#
 
+
+#
 %package -n lib%{name}_onnx_frontend%{so_ver}
 Summary:        Onnx frontend for OpenVINO toolkit
 
@@ -238,8 +249,9 @@ This package provides the onnx frontend for OpenVINO.
 
 
 
-#
 
+
+#
 %package -n lib%{name}_paddle_frontend%{so_ver}
 Summary:        Paddle frontend for Intel OpenVINO toolkit
 
@@ -250,8 +262,9 @@ This package provides the paddle frontend for OpenVINO.
 
 
 
-#
 
+
+#
 %package -n lib%{name}_pytorch_frontend%{so_ver}
 Summary:        PyTorch frontend for OpenVINO toolkit
 
@@ -262,8 +275,9 @@ This package provides the pytorch frontend for OpenVINO.
 
 
 
-#
 
+
+#
 %package -n lib%{name}_tensorflow_frontend%{so_ver}
 Summary:        TensorFlow frontend for OpenVINO toolkit
 
@@ -274,8 +288,9 @@ This package provides the tensorflow frontend for OpenVINO.
 
 
 
-#
 
+
+#
 %package -n lib%{name}_tensorflow_lite_frontend%{so_ver}
 Summary:        TensorFlow Lite frontend for OpenVINO toolkit
 
@@ -286,9 +301,10 @@ This package provides the tensorflow-lite frontend for OpenVINO.
 
 
 
+
+
 ## Python module ##
 #
-
 %package -n python-openvino
 Summary:        Python module for openVINO toolkit
 Requires:       python-numpy < 2
@@ -302,9 +318,10 @@ This package provides a Python module for interfacing with openVINO toolkit.
 
 
 
+
+
 ## Samples/examples ##
 #
-
 %package -n %{name}-sample
 Summary:        Samples for use with OpenVINO toolkit
 BuildArch:      noarch
@@ -316,7 +333,9 @@ This package provides some samples for use with openVINO.
 
 
 
+
 #
+
 %prep
 %autosetup -p1
 

@@ -2,8 +2,8 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/openvinotoolkit/openvino.git</param>
     <param name="scm">git</param>
-    <param name="revision">2024.1.0</param>
-    <param name="version">2024.1.0</param>
+    <param name="revision">2024.2.0</param>
+    <param name="version">2024.2.0</param>
     <param name="submodules">enable</param>
     <param name="filename">openvino</param>
     <param name="exclude">.git</param>
