@@ -114,6 +114,7 @@ echo "DWARVES_$ver{ global: *; };" >"$sv"
 
 %install
 %cmake_install
+%python3_fix_shebang
 
 %ldconfig_scriptlets -n libdwarves1
 

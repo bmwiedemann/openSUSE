@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 20 10:56:17 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Wed Jun 12 09:09:41 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.27

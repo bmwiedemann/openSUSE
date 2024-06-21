@@ -338,4 +338,13 @@
     <comment>- Update to release 1.27</comment>
     <requestid>1180220</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>cdb8610e764367e0f97c73930d575b2c</srcmd5>
+    <version>1.27</version>
+    <time>1718978541</time>
+    <user>anag+factory</user>
+    <comment>- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476] (forwarded request 1181904 from pgajdos)</comment>
+    <requestid>1181908</requestid>
+  </revision>
 </revisionlist>
