@@ -820,4 +820,12 @@
     <comment>- version update to 8.3.6 [bsc#1222857] [bsc#1222858]</comment>
     <requestid>1180000</requestid>
   </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>a83f54d3d4ec9deed3864eab8e0a36fe</srcmd5>
+    <version>8.3.8</version>
+    <time>1718978538</time>
+    <user>anag+factory</user>
+    <comment>- drop unmaintained apache-rex usage</comment>
+    <requestid>1181895</requestid>
+  </revision>
 </revisionlist>

@@ -160,11 +160,9 @@ BuildRequires:  pkgconfig(libsodium) >= 1.0.8
 BuildRequires:  pkgconfig(libargon2)
 %endif
 %if "%{flavor}" == "test"
-BuildRequires:  apache-rex
 BuildRequires:  mod_php_any = %{version}
 BuildRequires:  php-cli = %{version}
 BuildRequires:  php-fpm = %{version}
-%apache_rex_deps
 %endif
 
 %if "%{flavor}" == ""
@@ -1207,9 +1205,6 @@ for f in $(find .. -name "*.diff" -type f -print); do
 done
 set -x
 unset NO_INTERACTION REPORT_EXIT_STATUS
-# Apache HTTPD runnable examples test
-%apache_rex_check -m libs mod_php-basic
-%apache_rex_check -m libs -b sapi/fpm mod_proxy_fcgi-php-fpm mod_proxy_fcgi-php-fpm-auth-RewriteRule mod_proxy_fcgi-php-fpm-CGIPassAuth
 exit 0
 %endif
 
