@@ -1,4 +1,4 @@
-From 42fd5bfb92893cd6e90e7ea0b88e33f4636d2ebf Mon Sep 17 00:00:00 2001
+From ca06055c3eaeb716109f8126cd3e3e1976ed3e1c Mon Sep 17 00:00:00 2001
 From: Fabian Vogt <fabian@ritter-vogt.de>
 Date: Sun, 9 Jun 2024 21:42:10 +0200
 Subject: [PATCH] Revert "Support for fractional scaling"
@@ -15,7 +15,7 @@ This reverts commit 3dd28b0640d2c613654f992ad3453a0b92beebe1.
  7 files changed, 115 insertions(+), 120 deletions(-)
 
 diff --git a/src/declarativeimports/framesvgitem.cpp b/src/declarativeimports/framesvgitem.cpp
-index 56c2b3a8..678bdcbe 100644
+index 56c2b3a..678bdcb 100644
 --- a/src/declarativeimports/framesvgitem.cpp
 +++ b/src/declarativeimports/framesvgitem.cpp
 @@ -122,7 +122,7 @@ public:
@@ -49,7 +49,7 @@ index 56c2b3a8..678bdcbe 100644
          m_frameSvg->setDevicePixelRatio(newDevicePixelRatio);
          m_textureChanged = true;
 diff --git a/src/declarativeimports/svgitem.cpp b/src/declarativeimports/svgitem.cpp
-index bec45330..aa1f2a26 100644
+index bec4533..aa1f2a2 100644
 --- a/src/declarativeimports/svgitem.cpp
 +++ b/src/declarativeimports/svgitem.cpp
 @@ -16,6 +16,8 @@
@@ -74,7 +74,7 @@ index bec45330..aa1f2a26 100644
          m_svg->setDevicePixelRatio(newDevicePixelRatio);
          m_textureChanged = true;
 diff --git a/src/ksvg/framesvg.cpp b/src/ksvg/framesvg.cpp
-index c1d22b1a..ecb5f5b8 100644
+index 3b094ab..f2c8663 100644
 --- a/src/ksvg/framesvg.cpp
 +++ b/src/ksvg/framesvg.cpp
 @@ -15,7 +15,7 @@
@@ -105,7 +105,7 @@ index c1d22b1a..ecb5f5b8 100644
      }
  
      return maskFrame->cachedBackground;
-@@ -536,8 +539,8 @@ void FrameSvgPrivate::generateBackground(const QSharedPointer<FrameData> &frame)
+@@ -542,8 +545,8 @@ void FrameSvgPrivate::generateBackground(const QSharedPointer<FrameData> &frame)
      }
  
      // Overlays
@@ -116,7 +116,7 @@ index c1d22b1a..ecb5f5b8 100644
      if (overlayAvailable && !overlayCached) {
          overlaySize = q->elementSize(frame->prefix % QLatin1String("overlay")).toSize();
  
-@@ -563,13 +566,13 @@ void FrameSvgPrivate::generateBackground(const QSharedPointer<FrameData> &frame)
+@@ -569,13 +572,13 @@ void FrameSvgPrivate::generateBackground(const QSharedPointer<FrameData> &frame)
          // Tiling?
          if (q->hasElement(frame->prefix % QLatin1String("hint-overlay-tile-horizontal"))
              || q->hasElement(frame->prefix % QLatin1String("hint-overlay-tile-vertical"))) {
@@ -133,7 +133,7 @@ index c1d22b1a..ecb5f5b8 100644
          }
  
          overlayPainter.end();
-@@ -582,14 +585,14 @@ void FrameSvgPrivate::generateBackground(const QSharedPointer<FrameData> &frame)
+@@ -588,14 +591,14 @@ void FrameSvgPrivate::generateBackground(const QSharedPointer<FrameData> &frame)
      if (!overlay.isNull()) {
          QPainter p(&frame->cachedBackground);
          p.setCompositionMode(QPainter::CompositionMode_SourceOver);
@@ -150,7 +150,7 @@ index c1d22b1a..ecb5f5b8 100644
  
      if (!size.isValid()) {
  #ifndef NDEBUG
-@@ -602,14 +605,13 @@ void FrameSvgPrivate::generateFrameBackground(const QSharedPointer<FrameData> &f
+@@ -608,14 +611,13 @@ void FrameSvgPrivate::generateFrameBackground(const QSharedPointer<FrameData> &f
          return;
      }
  
@@ -167,7 +167,7 @@ index c1d22b1a..ecb5f5b8 100644
      paintCenter(p, frame, contentRect, size);
  
      paintCorner(p, frame, FrameSvg::LeftBorder | FrameSvg::TopBorder, contentRect);
-@@ -618,26 +620,25 @@ void FrameSvgPrivate::generateFrameBackground(const QSharedPointer<FrameData> &f
+@@ -624,26 +626,25 @@ void FrameSvgPrivate::generateFrameBackground(const QSharedPointer<FrameData> &f
      paintCorner(p, frame, FrameSvg::RightBorder | FrameSvg::BottomBorder, contentRect);
  
      // Sides
@@ -207,7 +207,7 @@ index c1d22b1a..ecb5f5b8 100644
      if (frame->enabledBorders & FrameSvg::LeftBorder && q->hasElement(frame->prefix % QLatin1String("left"))) {
          contentRect.translate(frame->leftWidth * q->devicePixelRatio(), 0);
      }
-@@ -659,7 +660,7 @@ void FrameSvgPrivate::updateFrameData(uint lastModified, UpdateType updateType)
+@@ -665,7 +666,7 @@ void FrameSvgPrivate::updateFrameData(uint lastModified, UpdateType updateType)
  
          const QString oldPath = fd->imagePath;
          const FrameSvg::EnabledBorders oldBorders = fd->enabledBorders;
@@ -216,7 +216,7 @@ index c1d22b1a..ecb5f5b8 100644
  
          fd->enabledBorders = enabledBorders;
          fd->frameSize = pendingFrameSize;
-@@ -716,28 +717,27 @@ void FrameSvgPrivate::updateFrameData(uint lastModified, UpdateType updateType)
+@@ -722,28 +723,27 @@ void FrameSvgPrivate::updateFrameData(uint lastModified, UpdateType updateType)
      }
  }
  
@@ -251,7 +251,7 @@ index c1d22b1a..ecb5f5b8 100644
              } else {
                  q->paint(&p, FrameSvgHelpers::sectionRect(FrameSvg::NoBorder, contentRect, fullSize * q->devicePixelRatio()), centerElementId);
              }
-@@ -746,7 +746,7 @@ void FrameSvgPrivate::paintCenter(QPainter &p, const QSharedPointer<FrameData> &
+@@ -752,7 +752,7 @@ void FrameSvgPrivate::paintCenter(QPainter &p, const QSharedPointer<FrameData> &
  
      if (frame->composeOverBorder) {
          p.setCompositionMode(QPainter::CompositionMode_DestinationIn);
@@ -260,7 +260,7 @@ index c1d22b1a..ecb5f5b8 100644
          p.setCompositionMode(QPainter::CompositionMode_SourceOver);
      }
  }
-@@ -754,51 +754,35 @@ void FrameSvgPrivate::paintCenter(QPainter &p, const QSharedPointer<FrameData> &
+@@ -760,51 +760,35 @@ void FrameSvgPrivate::paintCenter(QPainter &p, const QSharedPointer<FrameData> &
  void FrameSvgPrivate::paintBorder(QPainter &p,
                                    const QSharedPointer<FrameData> &frame,
                                    const FrameSvg::EnabledBorders borders,
@@ -319,7 +319,7 @@ index c1d22b1a..ecb5f5b8 100644
      }
  }
  
-@@ -846,7 +830,7 @@ void FrameSvgPrivate::updateSizes(FrameData *frame) const
+@@ -852,7 +836,7 @@ void FrameSvgPrivate::updateSizes(FrameData *frame) const
      // qCDebug(LOG_KSVG) << "!!!!!!!!!!!!!!!!!!!!!! updating sizes" << prefix;
      Q_ASSERT(frame);
  
@@ -329,7 +329,7 @@ index c1d22b1a..ecb5f5b8 100644
      if (!frame->cachedBackground.isNull()) {
          frame->cachedBackground = QPixmap();
 diff --git a/src/ksvg/private/framesvg_helpers.h b/src/ksvg/private/framesvg_helpers.h
-index 95cd6ba8..691aa3c1 100644
+index 95cd6ba..691aa3c 100644
 --- a/src/ksvg/private/framesvg_helpers.h
 +++ b/src/ksvg/private/framesvg_helpers.h
 @@ -45,7 +45,7 @@ QString borderToElementId(FrameSvg::EnabledBorders borders)
@@ -379,7 +379,7 @@ index 95cd6ba8..691aa3c1 100644
  
  }
 diff --git a/src/ksvg/private/framesvg_p.h b/src/ksvg/private/framesvg_p.h
-index 463b2ee4..2b9e881d 100644
+index 463b2ee..2b9e881 100644
 --- a/src/ksvg/private/framesvg_p.h
 +++ b/src/ksvg/private/framesvg_p.h
 @@ -78,39 +78,38 @@ public:
@@ -486,7 +486,7 @@ index 463b2ee4..2b9e881d 100644
      static QHash<ImageSetPrivate *, QHash<uint, QWeakPointer<FrameData>>> s_sharedFrames;
  
 diff --git a/src/ksvg/private/svg_p.h b/src/ksvg/private/svg_p.h
-index 818a4777..bb80c753 100644
+index 818a477..bb80c75 100644
 --- a/src/ksvg/private/svg_p.h
 +++ b/src/ksvg/private/svg_p.h
 @@ -138,8 +138,8 @@ public:
@@ -510,7 +510,7 @@ index 818a4777..bb80c753 100644
  };
  }
 diff --git a/src/ksvg/svg.cpp b/src/ksvg/svg.cpp
-index 1bdafd6b..01ce0581 100644
+index 1bdafd6..01ce058 100644
 --- a/src/ksvg/svg.cpp
 +++ b/src/ksvg/svg.cpp
 @@ -272,7 +272,7 @@ void SvgRectsCache::dropImageFromCache(const QString &path)
@@ -603,5 +603,5 @@ index 1bdafd6b..01ce0581 100644
      painter->drawPixmap(x, y, pix, 0, 0, pix.size().width(), pix.size().height());
  }
 -- 
-2.45.1
+2.45.2
 

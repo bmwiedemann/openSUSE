@@ -35,6 +35,8 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Restore-proper-devicepixelratio-when-extracting-from.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Revert-Support-for-fractional-scaling.patch
 BuildRequires:  doxygen

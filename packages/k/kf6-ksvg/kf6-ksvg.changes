@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 19 20:38:02 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream fix (kde#488295):
+  * 0001-Restore-proper-devicepixelratio-when-extracting-from.patch
+- Rebase 0001-Revert-Support-for-fractional-scaling.patch
+
+-------------------------------------------------------------------
 Sun Jun  9 20:14:24 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to work around themes having incorrect fractional sizes
