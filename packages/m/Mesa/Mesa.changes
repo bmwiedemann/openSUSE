@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 19 17:31:26 UTC 2024 - Mikhail Paulyshka <me@mixaill.net>
+
+- Disable LTO on %ix86/x86_64 due to rendering bugs on Radeon
+  graphics (boo#1226462)
+
+-------------------------------------------------------------------
 Tue Jun 18 06:18:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire python3-pycparser when building drivers on ARM:

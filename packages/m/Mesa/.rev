@@ -5745,4 +5745,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment></comment>
     <requestid>1181422</requestid>
   </revision>
+  <revision rev="509" vrev="381">
+    <srcmd5>a9b047ae62525919e50c8c01c872a7b5</srcmd5>
+    <version>unknown</version>
+    <time>1718978530</time>
+    <user>anag+factory</user>
+    <comment>- Disable LTO on %ix86/x86_64 due to rendering bugs on Radeon
+  graphics (boo#1226462)</comment>
+    <requestid>1181825</requestid>
+  </revision>
 </revisionlist>

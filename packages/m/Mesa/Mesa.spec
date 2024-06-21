@@ -1,5 +1,5 @@
 #
-# spec file for package Mesa
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -25,7 +25,7 @@
 %global psuffix %{nil}
 %endif
 
-%ifarch armv6l armv6hl
+%ifarch %{ix86} x86_64 armv6l armv6hl
 %define _lto_cflags %{nil}
 %endif
 
