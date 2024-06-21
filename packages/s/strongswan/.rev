@@ -912,4 +912,16 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment>- Update to release 5.9.14</comment>
     <requestid>1160698</requestid>
   </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>c0d058b849bd280578e4791bd5b8e819</srcmd5>
+    <version>5.9.14</version>
+    <time>1718978576</time>
+    <user>anag+factory</user>
+    <comment>- Update description of ipsec package: no longer mention
+  /etc/init.d, which is not there for a long time anymore.
+- Drop legacy rc* -&gt; sbin/service symlink. This was compatibilty
+  boilerplate to transparently move between SySV and systemd
+  [jsc#PED-264]. (forwarded request 1181914 from dimstar)</comment>
+    <requestid>1181997</requestid>
+  </revision>
 </revisionlist>

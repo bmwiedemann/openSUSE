@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 20 12:10:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update description of ipsec package: no longer mention
+  /etc/init.d, which is not there for a long time anymore.
+- Drop legacy rc* -> sbin/service symlink. This was compatibilty
+  boilerplate to transparently move between SySV and systemd
+  [jsc#PED-264].
+
+-------------------------------------------------------------------
 Tue Mar 19 13:58:13 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.9.14

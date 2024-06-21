@@ -169,7 +169,7 @@ Conflicts:      openswan
 %description ipsec
 StrongSwan is an IPsec-based VPN solution for Linux.
 
-This package provides the /etc/init.d/ipsec service script and allows
+This package provides the systemd service definition and allows
 to maintain both IKEv1 and IKEv2 using the /etc/ipsec.conf and the
 /etc/ipsec.secrets files.
 
@@ -327,9 +327,6 @@ autoreconf --force --install
 %install
 install -d -m755              %{buildroot}/%{_sbindir}/
 install -d -m755              %{buildroot}/%{_sysconfdir}/ipsec.d/
-ln -sf %{_sbindir}/service    %{buildroot}/%{_sbindir}/rcstrongswan
-ln -sf %{_sbindir}/service    %{buildroot}/%{_sbindir}/rcstrongswan-starter
-ln -sf %{_sbindir}/service    %{buildroot}/%{_sbindir}/rcipsec
 #
 # Ensure, plugin -> library dependencies can be resolved
 # (e.g. libtls) to avoid plugin segment checksum errors.
@@ -471,10 +468,7 @@ fi
 %dir %attr(700,root,root) %{_sysconfdir}/ipsec.d/private
 %{_unitdir}/strongswan-starter.service
 %{_unitdir}/strongswan.service
-%{_sbindir}/rcstrongswan
-%{_sbindir}/rcstrongswan-starter
 %{_sbindir}/charon-systemd
-%{_sbindir}/rcipsec
 %{_bindir}/pki
 %{_bindir}/pt-tls-client
 %{_bindir}/tpm_extendpcr
