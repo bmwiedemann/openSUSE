@@ -17,7 +17,7 @@
 
 
 Name:           python-requests-cache
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Persistent cache for requests library
 License:        BSD-2-Clause

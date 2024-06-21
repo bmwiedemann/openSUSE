@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 20 12:49:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.1:
+  * Fix normalize_headers not accepting header values in bytes
+  * Fix inconsistency due to rounding in
+    CachedResponse.expires_unix property
+  * Fix form boundary used for cached multipart requests to fully
+    comply with RFC 2046
+  * Fix loading cached JSON content with decode_content=True when
+    the root element is an empty list or object
+  * Fix usage example with responses library to be compatible
+    with requests 2.32
+
+-------------------------------------------------------------------
 Wed Mar 13 10:16:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.0:

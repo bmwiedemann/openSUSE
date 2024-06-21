@@ -102,4 +102,21 @@
     compatibility with urllib3</comment>
     <requestid>1157517</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>65414a98441390cf43f5854cdc85b368</srcmd5>
+    <version>1.2.1</version>
+    <time>1718978671</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.1:
+  * Fix normalize_headers not accepting header values in bytes
+  * Fix inconsistency due to rounding in
+    CachedResponse.expires_unix property
+  * Fix form boundary used for cached multipart requests to fully
+    comply with RFC 2046
+  * Fix loading cached JSON content with decode_content=True when
+    the root element is an empty list or object
+  * Fix usage example with responses library to be compatible
+    with requests 2.32</comment>
+    <requestid>1181930</requestid>
+  </revision>
 </revisionlist>
