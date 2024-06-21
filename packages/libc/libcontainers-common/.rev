@@ -603,4 +603,16 @@
     <comment>Introduce new subpackage that ships registries.conf that uses registry.suse.com as the only unqualified registry while pulling images on SL Micro and SP6. (jsc#SMO-376, jsc#PED-8289)</comment>
     <requestid>1171527</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>a9ced827eba64503b620c38d568fc8bf</srcmd5>
+    <version>20240618</version>
+    <time>1718978557</time>
+    <user>anag+factory</user>
+    <comment>- Move the following distro configs files to /usr/share/containers/:
+    * /etc/containers/mounts.json
+    * /etc/containers/storage.conf
+    * /etc/containers/seccomp.json
+- New release 20240618 (forwarded request 1181872 from danishprakash)</comment>
+    <requestid>1181967</requestid>
+  </revision>
 </revisionlist>

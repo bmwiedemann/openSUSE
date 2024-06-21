@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 18 06:53:50 UTC 2024 - Danish Prakash <danish.prakash@suse.com>
+
+- Move the following distro configs files to /usr/share/containers/:
+    * /etc/containers/mounts.json
+    * /etc/containers/storage.conf
+    * /etc/containers/seccomp.json
+- New release 20240618
+- bump bundled c/common to 0.59.1
+- bump bundled c/image to 5.31.0
+- bump bundled c/storage to 1.54.0
+
+-------------------------------------------------------------------
 Wed Apr 24 14:56:17 UTC 2024 - Danish Prakash <danish.prakash@suse.com>
 
 - Introduce new subpackage that ships registries.conf that uses

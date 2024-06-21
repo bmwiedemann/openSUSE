@@ -3,7 +3,7 @@
     <param name="url">https://github.com/containers/storage.git</param>
     <param name="scm">git</param>
     <param name="filename">storage</param>
-    <param name="revision">v1.53.0</param>
+    <param name="revision">v1.54.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
@@ -11,7 +11,7 @@
     <param name="url">https://github.com/containers/image.git</param>
     <param name="scm">git</param>
     <param name="filename">image</param>
-    <param name="revision">v5.30.0</param>
+    <param name="revision">v5.31.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
@@ -19,7 +19,7 @@
     <param name="url">https://github.com/containers/common.git</param>
     <param name="scm">git</param>
     <param name="filename">common</param>
-    <param name="revision">v0.58.0</param>
+    <param name="revision">v0.59.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>

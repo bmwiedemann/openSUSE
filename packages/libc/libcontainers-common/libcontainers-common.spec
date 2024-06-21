@@ -17,17 +17,17 @@
 
 
 # commonver - version from containers/common
-%define commonver 0.58.0
+%define commonver 0.59.1
 # storagever - version from containers/storage
-%define storagever 1.53.0
+%define storagever 1.54.0
 # imagever - version from containers/image
-%define imagever 5.30.0
+%define imagever 5.31.0
 # skopeover - version from containers/skopeo
-%define skopeover 1.15.0
+%define skopeover 1.14.4
 # https://github.com/containers/shortnames
 %define shortnamesver 2023.02.20
 Name:           libcontainers-common
-Version:        20240408
+Version:        20240618
 Release:        0
 Summary:        Configuration files common to github.com/containers
 License:        Apache-2.0
@@ -182,14 +182,12 @@ install -d -m 0755 %{buildroot}/%{_datadir}/containers/systemd
 
 install -D -m 0644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/containers/policy.json.default
 install -D -m 0644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/containers/policy.json.openSUSE
-install -D -m 0644 %{SOURCE4} %{buildroot}/%{_sysconfdir}/containers/storage.conf
 install -D -m 0644 %{SOURCE5} %{buildroot}/%{_datadir}/containers/mounts.conf
-install -D -m 0644 %{SOURCE5} %{buildroot}/%{_sysconfdir}/containers/mounts.conf
+install -D -m 0644 %{SOURCE4} %{buildroot}/%{_datadir}/containers/storage.conf
 install -D -m 0644 %{SOURCE11} %{buildroot}/%{_sysconfdir}/containers/registries.conf.d/000-shortnames.conf
 install -D -m 0644 %{SOURCE7} %{buildroot}/%{_sysconfdir}/containers/registries.d/default.yaml
 install -D -m 0644 %_builddir/containers.conf %{buildroot}/%{_datadir}/containers/containers.conf
 install -D -m 0644 common-%{commonver}/pkg/seccomp/seccomp.json %{buildroot}/%{_datadir}/containers/seccomp.json
-install -D -m 0644 common-%{commonver}/pkg/seccomp/seccomp.json %{buildroot}/%{_sysconfdir}/containers/seccomp.json
 
 install -d %{buildroot}/%{_mandir}/man1
 install -d %{buildroot}/%{_mandir}/man5
@@ -209,7 +207,7 @@ install -D -m 0644 registries.conf.suse %{buildroot}/%{_sysconfdir}/containers/r
 
 %post
 # Comment out ostree_repo if it's blank [boo#1189893]
-sed -i 's/ostree_repo = ""/\#ostree_repo = ""/g' %{_sysconfdir}/containers/storage.conf
+if [ -f %{_sysconfdir}/containers/storage.conf ]; then sed -i 's/ostree_repo = ""/\#ostree_repo = ""/g' %{_sysconfdir}/containers/storage.conf; fi
 
 %files
 %dir %{_sysconfdir}/containers
@@ -223,11 +221,10 @@ sed -i 's/ostree_repo = ""/\#ostree_repo = ""/g' %{_sysconfdir}/containers/stora
 %dir %{_datadir}/containers/oci/hooks.d
 %dir %{_datadir}/containers/systemd
 
-%config(noreplace) %{_sysconfdir}/containers/storage.conf
-%config(noreplace) %{_sysconfdir}/containers/seccomp.json
 %config(noreplace) %{_sysconfdir}/containers/registries.d/default.yaml
 %config(noreplace) %{_sysconfdir}/containers/registries.conf.d/000-shortnames.conf
 %{_datadir}/containers/seccomp.json
+%{_datadir}/containers/storage.conf
 %{_datadir}/containers/containers.conf
 
 %{_mandir}/man1/*.1%{?ext_man}
@@ -235,7 +232,6 @@ sed -i 's/ostree_repo = ""/\#ostree_repo = ""/g' %{_sysconfdir}/containers/stora
 %license LICENSE
 
 %files -n libcontainers-sles-mounts
-%config(noreplace) %{_sysconfdir}/containers/mounts.conf
 %{_datadir}/containers/mounts.conf
 
 %files -n libcontainers-openSUSE-policy
