@@ -16,4 +16,12 @@
   in Factory</comment>
     <requestid>1173955</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>505ff5cbdaae0f5770d3edcfab048334</srcmd5>
+    <version>1.0</version>
+    <time>1718978677</time>
+    <user>anag+factory</user>
+    <comment>- Adjust for new obs-build changelog location</comment>
+    <requestid>1181982</requestid>
+  </revision>
 </revisionlist>

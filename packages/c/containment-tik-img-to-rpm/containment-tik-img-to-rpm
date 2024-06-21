@@ -39,8 +39,8 @@ for f in ${img_dir}/*.raw.xz; do
 	-e "s@__OS_NAME__@${os_name}@g" \
 	< ${spec_in} \
 	> ${build_dir}/image.spec
-
-	cp /.build-srcdir/*.changes ${build_dir}/image.changes
+	
+	cp /.build-changelog ${build_dir}/image.changes
 	${build_dir}/changelog2spec --target rpm --file ${build_dir}/image.changes >> ${build_dir}/image.spec
 
 	# Local builds have the file already in place, that's not true on IBS

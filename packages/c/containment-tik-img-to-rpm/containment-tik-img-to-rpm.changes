@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 20 15:13:08 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Adjust for new obs-build changelog location 
+
+-------------------------------------------------------------------
 Tue May 14 09:49:57 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Handle changelog properly, to work with reproducible builds
