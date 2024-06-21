@@ -137,7 +137,7 @@ Index: etc/login.defs
  
  #
  # Only works if ENCRYPT_METHOD is set to SHA256 or SHA512.
-@@ -322,7 +316,7 @@ USERGROUPS_ENAB yes
+@@ -299,7 +293,7 @@ USERGROUPS_ENAB yes
  # This option is overridden with the -M or -m flags on the useradd(8)
  # command-line.
  #

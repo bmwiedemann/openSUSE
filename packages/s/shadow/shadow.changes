@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 19 06:51:45 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.16.0:
+  * The shadow implementations of id(1) and groups(1) are deprecated
+    in favor of the GNU coreutils and binutils versions.
+    They will be removed in 4.17.0.
+  * The rlogind implementation has been removed.
+  * The libsubid major version has been bumped, since it now requires
+    specification of the module's free() implementation.
+- Update shadow-login_defs-suse.patch
+- Add shadow-4.16.0-econf.patch:
+  Replace deprecated econf_readDirs with econf_readConfig
+
+-------------------------------------------------------------------
 Sun Mar 24 09:06:48 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.15.1:

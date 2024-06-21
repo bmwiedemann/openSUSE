@@ -22,7 +22,7 @@
   %define no_config 1
 %endif
 Name:           shadow
-Version:        4.15.1
+Version:        4.16.0
 Release:        0
 Summary:        Utilities to Manage User and Group Accounts
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -48,6 +48,7 @@ Patch3:         shadow-login_defs-comments.patch
 Patch4:         shadow-login_defs-suse.patch
 # PATCH-FIX-SUSE disable_new_audit_function.patch adam.majer@suse.de -- Disable newer libaudit functionality for older distributions.
 Patch5:         disable_new_audit_function.patch
+Patch6:         shadow-4.16.0-econf.patch
 BuildRequires:  audit-devel > 2.3
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -91,20 +92,20 @@ BuildArch:      noarch
 This package contains the default login.defs configuration file
 as used by util-linux, pam and shadow.
 
-%package -n libsubid4
+%package -n libsubid5
 Summary:        A library to manage subordinate uid and gid ranges
 Group:          System/Base
 
-%description -n libsubid4
+%description -n libsubid5
 Utility library that provides a way to manage subid ranges.
 
 %package -n libsubid-devel
-Summary:        Development files for libsubid4
+Summary:        Development files for libsubid5
 Group:          System/Base
-Requires:       libsubid4 = %{version}
+Requires:       libsubid5 = %{version}
 
 %description -n libsubid-devel
-Development files for libsubid4.
+Development files for libsubid5.
 
 %prep
 %setup -q -a 1
@@ -116,8 +117,9 @@ Development files for libsubid4.
 %if 0%{?suse_version} < 1330
 %patch -P 5 -p1
 %endif
+%patch -P 6 -p1
 
-iconv -f ISO88591 -t utf-8  doc/HOWTO > doc/HOWTO.utf8
+iconv -c -f ISO88591 -t utf-8 doc/HOWTO > doc/HOWTO.utf8
 mv -v doc/HOWTO.utf8 doc/HOWTO
 
 %build
@@ -276,8 +278,8 @@ done
 # - Migration to /usr/etc (after SLE15 and Leap 15)
 test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpmsave %{_sysconfdir}/login.defs ||:
 
-%post -n libsubid4 -p /sbin/ldconfig
-%postun -n libsubid4 -p /sbin/ldconfig
+%post -n libsubid5 -p /sbin/ldconfig
+%postun -n libsubid5 -p /sbin/ldconfig
 
 %files -f shadow.lang
 %license COPYING
@@ -377,7 +379,7 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %endif
 %{_mandir}/man5/login.defs.5%{?ext_man}
 
-%files -n libsubid4
+%files -n libsubid5
 %{_libdir}/libsubid.so.*
 
 %files -n libsubid-devel

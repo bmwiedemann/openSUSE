@@ -1060,4 +1060,21 @@
 - Drop shadow-4.15.0-fix-definition.patch</comment>
     <requestid>1161093</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>18d146e1b5da81907bc6f59845060eb7</srcmd5>
+    <version>4.16.0</version>
+    <time>1718978598</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.16.0:
+  * The shadow implementations of id(1) and groups(1) are deprecated
+    in favor of the GNU coreutils and binutils versions.
+    They will be removed in 4.17.0.
+  * The rlogind implementation has been removed.
+  * The libsubid major version has been bumped, since it now requires
+    specification of the module's free() implementation.
+- Update shadow-login_defs-suse.patch
+- Add shadow-4.16.0-econf.patch:
+  Replace deprecated econf_readDirs with econf_readConfig</comment>
+    <requestid>1181876</requestid>
+  </revision>
 </revisionlist>
