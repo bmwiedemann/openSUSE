@@ -94,6 +94,7 @@ Sat May 22 03:07:40 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.15.0
    see /usr/share/doc/packages/perl-DBD-Pg/Changes
+   - Includes fix for testsuite [bsc#1197797]
 
   Version 3.15.0 (released May 21, 2021)
    - Adjust tests for the fact that reltuples can be -1 in Postgres
