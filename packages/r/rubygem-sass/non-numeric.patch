@@ -1,0 +1,19 @@
+diff --git a/lib/sass/script/value/number.rb b/lib/sass/script/value/number.rb
+index 9c21393..a066c5d 100644
+--- a/lib/sass/script/value/number.rb
++++ b/lib/sass/script/value/number.rb
+@@ -406,7 +406,13 @@ module Sass::Script::Value
+     # Checks whether two numbers are within an epsilon of each other.
+     # @return [Boolean]
+     def self.basically_equal?(num1, num2)
+-      (num1 - num2).abs < epsilon
++      if num1.is_a?(Numeric) && num2.is_a?(Numeric)
++        return (num1 - num2).abs < epsilon
++      end
++      if num1.is_a?(Numeric) || num2.is_a?(Numeric)
++        return false
++      end
++      return num1 == num2
+     end
+ 
+     # @private

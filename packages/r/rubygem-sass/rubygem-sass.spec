@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-sass
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,9 +33,12 @@ BuildRequires:  %{ruby >= 2.0.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
-Url:            https://sass-lang.com/
+URL:            https://sass-lang.com/
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
+# MANUAL
+Patch0:         non-numeric.patch
+# /MANUAL
 Summary:        A powerful but elegant CSS compiler that makes CSS fun again
 License:        MIT
 Group:          Development/Languages/Ruby
@@ -50,6 +53,10 @@ It's translated to well-formatted, standard CSS using the
 command line tool or a web-framework plugin.
 
 %prep
+%gem_unpack
+%patch -P 0 -p1
+find -type f -print0 | xargs -0 touch -r %{S:0}
+%gem_build
 
 %build
 

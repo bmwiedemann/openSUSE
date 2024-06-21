@@ -19,8 +19,8 @@
 #   BuildRequires: foobar
 #   Requires: foobar
 # ## used by gem2rpm
-# :patches:
-#   foo.patch: -p1
+:patches:
+  non-numeric.patch: -p1
 #   bar.patch: 
 # ## used by gem2rpm
 :sources:
