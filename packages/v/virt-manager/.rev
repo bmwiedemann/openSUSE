@@ -2022,4 +2022,12 @@
     <comment>Fix for bsc#1226173 - virt-manager: Browse local does not work anymore</comment>
     <requestid>1180071</requestid>
   </revision>
+  <revision rev="256" vrev="22">
+    <srcmd5>f5b6da0660045aa1b6c4df632d84b164</srcmd5>
+    <version>4.1.0</version>
+    <time>1718978563</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1182047</requestid>
+  </revision>
 </revisionlist>

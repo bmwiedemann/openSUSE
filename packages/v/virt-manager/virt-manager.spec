@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package virt-manager
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -321,6 +321,13 @@ donttest="$donttest or testCLI0375virt_xml_add_disk_create_storage_start"
 donttest="$donttest or testCheckXMLBuilderProps"
 # "These command line arguments or aliases are not checked in the test suite"
 donttest="$donttest or testCheckCLISuboptions"
+# These tests fail with Pytest 8.x
+donttest="$donttest or testCLI0142virt_install_location_manual_kernel"
+donttest="$donttest or testCLI0397virt_clone_auto_unmanaged"
+donttest="$donttest or testCLI0401virt_clone or testCLI0402virt_clone"
+donttest="$donttest or testCLI0416virt_clone or testCLI0417virt_clone"
+donttest="$donttest or testCLI0419virt_clone or testCLI0420virt_clone"
+donttest="$donttest or testCLI0428virt_clone"
 #
 pytest -v -rfEs -k "not ($donttest)"
 %endif
