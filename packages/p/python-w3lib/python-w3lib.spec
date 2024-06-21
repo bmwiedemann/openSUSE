@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-w3lib
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        Library of Web-Related Functions
 License:        BSD-3-Clause
