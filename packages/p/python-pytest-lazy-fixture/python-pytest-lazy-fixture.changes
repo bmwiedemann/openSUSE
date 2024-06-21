@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May  6 05:59:39 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- Add numpy to BuildRequires, needed for the testsuite.
+- No more greedy globs in %files.
+- Add patch support-pytest-8.patch:
+  * Support pytest >= 8 changes.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:31:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

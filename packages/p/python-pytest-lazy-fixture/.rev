@@ -45,4 +45,16 @@
     <comment></comment>
     <requestid>1082434</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>8c8d097537d1de36ec2759ad90b4b90c</srcmd5>
+    <version>0.6.3</version>
+    <time>1718978560</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup and pyproject macros.
+- Add numpy to BuildRequires, needed for the testsuite.
+- No more greedy globs in %files.
+- Add patch support-pytest-8.patch:
+  * Support pytest &gt;= 8 changes.</comment>
+    <requestid>1172298</requestid>
+  </revision>
 </revisionlist>
