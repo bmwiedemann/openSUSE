@@ -107,4 +107,12 @@
     <comment></comment>
     <requestid>1179344</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>045de69120f5e0a365e291e0bdcbf8ed</srcmd5>
+    <version>8.13.1</version>
+    <time>1718978565</time>
+    <user>anag+factory</user>
+    <comment>- Skip some failing tests with pytest 8.x.</comment>
+    <requestid>1182049</requestid>
+  </revision>
 </revisionlist>

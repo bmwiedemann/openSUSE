@@ -75,6 +75,10 @@ donttest="$donttest or test_assert_fingerprint_in_cert_chain"
 donttest="$donttest or (test_ssl_assert_fingerprint and httpx)"
 # gh#elastic/elastic-transport-python#96
 donttest="$donttest or test_url_to_node_config[https://[::1]:0/-https://[::1]:0-]"
+# pytest 8.x failures
+donttest="$donttest or test_sniff_before_requests"
+donttest="$donttest or test_sniff_on_node_failure"
+donttest="$donttest or test_sniffed_nodes_added_to_pool"
 %pytest -k "not ($donttest)"
 
 %files %{python_files}
