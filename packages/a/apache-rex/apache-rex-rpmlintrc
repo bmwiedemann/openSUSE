@@ -1,4 +1,0 @@
-addFilter("apache-rex.noarch: W: files-duplicate")
-addFilter("apache-rex.noarch: W: zero-length")
-addFilter("apache-rex.noarch: E: zero-length")
-addFilter("apache-rex.noarch: W: wrong-file-end-of-line-encoding")
