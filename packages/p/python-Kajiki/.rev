@@ -127,4 +127,14 @@
   * Improved end-to-end testing.</comment>
     <requestid>1070115</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>3f4ef934f46e9ef35296ab0979b25c7d</srcmd5>
+    <version>0.9.2</version>
+    <time>1718978693</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.
+- Actually drop {Build,}Requires on nine.</comment>
+    <requestid>1182028</requestid>
+  </revision>
 </revisionlist>

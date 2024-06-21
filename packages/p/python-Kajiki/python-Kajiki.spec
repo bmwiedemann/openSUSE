@@ -1,7 +1,7 @@
 #
 # spec file for package python-Kajiki
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,25 @@
 #
 
 
-%{?!python_module:%define python_module() ython3-%{**}}
 Name:           python-Kajiki
 Version:        0.9.2
 Release:        0
 Summary:        Compiler for Genshi syntax outputting Python bytecode
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/nandoflorestan/kajiki
 Source:         https://github.com/jackrosenthal/kajiki/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}-gh.tar.gz
 BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module linetable}
-BuildRequires:  %{python_module nine}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Requires:       python-linetable
-Requires:       python-nine
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -48,10 +47,10 @@ other textual content for output generation on the web.)
 %setup -q -n kajiki-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/kajiki
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -71,6 +70,7 @@ other textual content for output generation on the web.)
 %python_alternative %{_bindir}/kajiki
 %license LICENSE.rst
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/kajiki
+%{python_sitelib}/kajiki-%{version}.dist-info
 
 %changelog
