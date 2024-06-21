@@ -50,4 +50,17 @@
   * CI improvements</comment>
     <requestid>1085834</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>216226cfa72f04f42421c7fb53f3ab04</srcmd5>
+    <version>0.6.3</version>
+    <time>1718978607</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.6.3:
+  * Forgot to bump minimum required pytest version in pytest-sphinx 0.6.2 #64
+  * Adapt to incompatible `import_path` API change in pytest 8.1.1. Pytest
+    8.1.1 is required by pytest-sphinx now.
+  * Require pytest &gt;= 8.0 #59
+  * Drop support for python 3.7 #59</comment>
+    <requestid>1172301</requestid>
+  </revision>
 </revisionlist>
