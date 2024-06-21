@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 19 15:41:54 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Add tftp-c99.patch to avoid calling undeclaed function and thus make
+  the package buildable with GCC 14 [boo#1225935]
+
+-------------------------------------------------------------------
 Wed Dec  7 16:28:52 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - source url -> https

@@ -39,6 +39,9 @@ Patch6:         tftp-multi-addresses.patch
 Patch7:         tftp-hpa-0.48-macros-crash.patch
 Patch8:         tftp-hpa-0.48-macros-v6mapped.patch
 Patch43:        tftp-config_h.patch
+# Fix for boo#1225935, originally from
+# https://bugzilla.redhat.com/show_bug.cgi?id=2148911
+Patch44:        tftp-c99.patch
 BuildRequires:  autoconf
 BuildRequires:  binutils-devel
 BuildRequires:  pkgconfig
