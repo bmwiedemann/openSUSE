@@ -179,4 +179,41 @@
   * fix issue #4: specific HookCallError exception for when a hook call</comment>
     <requestid>1124102</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7c6893cad2d60ba9fab136dbe2cd3b06</srcmd5>
+    <version>1.5.0</version>
+    <time>1718978559</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.5.0:
+  * Features
+    + Add support for deprecating specific hook parameters, or more
+      generally, for issuing a warning whenever a hook implementation
+      requests certain parameters.
+    + A warning ~pluggy.PluggyTeardownRaisedWarning is now issued when an
+      old-style hookwrapper raises an exception during teardown.
+    + Add PluginManager.unblock &lt;pluggy.PluginManager.unblock&gt; method to
+      unblock a plugin by plugin name.
+  * Bug Fixes
+    + PluginManager.get_plugins() no longer returns None for blocked plugins.
+    + Fix ~pluggy.HookCaller.call_extra() extra methods getting ordered
+      before everything else in some circumstances. Regressed in pluggy 1.1.0.
+    + Fix plugins registering other plugins in a hook when the other plugins
+      implement the same hook itself. Regressed in pluggy 1.1.0.
+- Switch to pyproject macros.
+
+- Revert to 1.3.0
+  * Pytest 7 is not compatible with pluggy 1.4 but many packages
+    are not compatible with pytest 8 yet
+
+- update to 1.4.0:
+  * A warning :class:`~pluggy.PluggyTeardownRaisedWarning`
+    is now issued when an old-style hookwrapper raises an
+    exception during teardown. See the warning documentation for
+    more details.
+  * Add :func:`PluginManager.unblock
+    &lt;pluggy.PluginManager.unblock&gt;` method to unblock a plugin by
+    plugin name.
+  * Fix :func:`~pluggy.HookCaller.call_extra()` extra</comment>
+    <requestid>1172296</requestid>
+  </revision>
 </revisionlist>
