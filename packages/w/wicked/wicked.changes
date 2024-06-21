@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 11 11:22:19 UTC 2024 - Marius Tomaschewski <mt@suse.com>
+
+- arp: increase arp-send retry value to avoid address configuration
+  failure due to ENOBUF reported by kernel while duplicate address
+  detection with underlying bonding in 802.3ad mode reporting link
+  "up & running" too early (bsc#1218668, gh#openSUSE/wicked#1020,
+  gh#openSUSE/wicked#1022).
+  [+ 0002-increase-arp-retry-attempts-on-sending-bsc1218668.patch]
+
+-------------------------------------------------------------------
 Wed May 15 15:00:02 UTC 2024 - Marius Tomaschewski <mt@suse.com>
 
 - client: fix ifreload to pull UP ports/links again when the config

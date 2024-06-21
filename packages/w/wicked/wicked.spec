@@ -27,6 +27,7 @@ URL:            https://github.com/openSUSE/wicked
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        wicked-rpmlintrc
 Patch1:         0001-ifreload-pull-UP-again-on-master-lower-changes-bsc1224100.patch
+Patch2:         0002-increase-arp-retry-attempts-on-sending-bsc1218668.patch
 #
 # Upstream First - openSUSE Build Service Policy:
 #

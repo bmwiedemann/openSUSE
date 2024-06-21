@@ -1,0 +1,162 @@
+From be8f79764694d54230d28fd483eb9a129830629f Mon Sep 17 00:00:00 2001
+From: Clemens Famulla-Conrad <cfamullaconrad@suse.de>
+Date: Wed, 5 Jun 2024 10:55:37 +0200
+Subject: [PATCH 1/4] appconfig: increase arp (verify|notify) retry value
+ (bsc#1218668)
+Upstream: yes
+References: bsc#1218668,gh#openSUSE/wicked#1022
+
+
+When the kernel report ENOBUFS while sending the arp package, we
+do not want to treat this as a fatal error. But we also don't want
+to accept ENOBUFS forever. The previous retry value of 3 wasn't
+sufficient and was triggered on bond interfaces with 802.3ad mode
+to often.
+With a default of 10 we give the driver a minimum amount of 6s
+to accept packages.
+---
+ src/appconfig.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/appconfig.c b/src/appconfig.c
+index 82afb403..b67ccc76 100644
+--- a/src/appconfig.c
++++ b/src/appconfig.c
+@@ -67,11 +67,11 @@ static unsigned int	ni_config_addrconf_update_auto6(void);
+ static void		ni_config_addrconf_arp_default(ni_config_arp_t *);
+
+ #define NI_ADDRCONF_ARP_VERIFY_COUNT		3					/* PROBE_NUM */
+-#define NI_ADDRCONF_ARP_VERIFY_RETRIES		3
++#define NI_ADDRCONF_ARP_VERIFY_RETRIES		10
+ #define NI_ADDRCONF_ARP_VERIFY_MIN		(2000 / NI_ADDRCONF_ARP_VERIFY_COUNT)	/* PROBE_MIN */
+ #define NI_ADDRCONF_ARP_VERIFY_MAX		(3000 / NI_ADDRCONF_ARP_VERIFY_COUNT)	/* PROBE_MAX */
+ #define NI_ADDRCONF_ARP_NOTIFY_COUNT		1					/* ANNOUNCE_NUM */
+-#define NI_ADDRCONF_ARP_NOTIFY_RETRIES		0
++#define NI_ADDRCONF_ARP_NOTIFY_RETRIES		10
+ #define NI_ADDRCONF_ARP_NOTIFY_INTERVAL		300					/* ANNOUNCE_INTERVAL */
+ #define NI_ADDRCONF_ARP_INTERVAL_MIN		100
+ #define NI_ADDRCONF_ARP_MAX_DURATION		15000
+--
+2.35.3
+
+
+From c6a4dca68b581295b29e9610cb76ca089a7e4ba7 Mon Sep 17 00:00:00 2001
+From: Clemens Famulla-Conrad <cfamullaconrad@suse.de>
+Date: Wed, 5 Jun 2024 11:05:03 +0200
+Subject: [PATCH 2/4] arputil: increase the retry attempts on sending
+
+On bond with mode 802.3ad, we realized ENOBUFS occur and a
+retry value of 3 is to small (see bsc#1218668).
+---
+ client/arputil.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/client/arputil.c b/client/arputil.c
+index ab35782c..12833a89 100644
+--- a/client/arputil.c
++++ b/client/arputil.c
+@@ -46,7 +46,7 @@
+
+ struct arp_ops;
+
+-#define NI_ARPUTIL_MAX_SEND_ERR  3
++#define NI_ARPUTIL_MAX_SEND_ERR  10
+
+ #define ARP_VERIFY_COUNT	3
+ #define	ARP_VERIFY_INTERVAL_MIN	1000
+--
+2.35.3
+
+
+From 87d8f8d24135a04bf9fc80bb4e2260a09a7dec72 Mon Sep 17 00:00:00 2001
+From: Clemens Famulla-Conrad <cfamullaconrad@suse.de>
+Date: Tue, 18 Jun 2024 14:35:43 +0200
+Subject: [PATCH 3/4] arp: increase retries to 16 for >10s grace time
+
+Tests with 10 retries shown, that we where just one attempt
+before an error. Thus we give more extra time.
+---
+ client/arputil.c | 2 +-
+ src/appconfig.c  | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/client/arputil.c b/client/arputil.c
+index 12833a89..c6e23f74 100644
+--- a/client/arputil.c
++++ b/client/arputil.c
+@@ -46,7 +46,7 @@
+
+ struct arp_ops;
+
+-#define NI_ARPUTIL_MAX_SEND_ERR  10
++#define NI_ARPUTIL_MAX_SEND_ERR  16
+
+ #define ARP_VERIFY_COUNT	3
+ #define	ARP_VERIFY_INTERVAL_MIN	1000
+diff --git a/src/appconfig.c b/src/appconfig.c
+index b67ccc76..cc4b08f5 100644
+--- a/src/appconfig.c
++++ b/src/appconfig.c
+@@ -67,11 +67,11 @@ static unsigned int	ni_config_addrconf_update_auto6(void);
+ static void		ni_config_addrconf_arp_default(ni_config_arp_t *);
+
+ #define NI_ADDRCONF_ARP_VERIFY_COUNT		3					/* PROBE_NUM */
+-#define NI_ADDRCONF_ARP_VERIFY_RETRIES		10
++#define NI_ADDRCONF_ARP_VERIFY_RETRIES		16
+ #define NI_ADDRCONF_ARP_VERIFY_MIN		(2000 / NI_ADDRCONF_ARP_VERIFY_COUNT)	/* PROBE_MIN */
+ #define NI_ADDRCONF_ARP_VERIFY_MAX		(3000 / NI_ADDRCONF_ARP_VERIFY_COUNT)	/* PROBE_MAX */
+ #define NI_ADDRCONF_ARP_NOTIFY_COUNT		1					/* ANNOUNCE_NUM */
+-#define NI_ADDRCONF_ARP_NOTIFY_RETRIES		10
++#define NI_ADDRCONF_ARP_NOTIFY_RETRIES		16
+ #define NI_ADDRCONF_ARP_NOTIFY_INTERVAL		300					/* ANNOUNCE_INTERVAL */
+ #define NI_ADDRCONF_ARP_INTERVAL_MIN		100
+ #define NI_ADDRCONF_ARP_MAX_DURATION		15000
+--
+2.35.3
+
+
+From e7b0ff10cdc782b7688d42d087983e8e4ef7440e Mon Sep 17 00:00:00 2001
+From: Clemens Famulla-Conrad <cfamullaconrad@suse.de>
+Date: Tue, 18 Jun 2024 14:37:21 +0200
+Subject: [PATCH 4/4] capture: log individual send errors from kernel as debug
+
+The caller may or may not report them or the result as error later.
+---
+ src/capture.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/capture.c b/src/capture.c
+index 0b7f6d71..b18c140c 100644
+--- a/src/capture.c
++++ b/src/capture.c
+@@ -818,7 +818,7 @@ ni_capture_send_buf(const ni_capture_t *capture, const ni_buffer_t *buf)
+ 	rv = sendto(capture->sock->__fd, ni_buffer_head(buf), ni_buffer_count(buf), 0,
+ 			&capture->addr.sa, sizeof(capture->addr));
+ 	if (rv < 0)
+-		ni_error("%s: unable to send %s%spacket: %m", capture->ifname,
++		ni_debug_socket("%s: unable to send %s%spacket: %m", capture->ifname,
+ 				capture->desc ?: "", capture->desc ? " " : "");
+
+ 	return rv;
+@@ -828,8 +828,10 @@ ssize_t
+ ni_capture_send(ni_capture_t *capture, const ni_buffer_t *buf, const ni_timeout_param_t *tmo)
+ {
+ 	ssize_t rv;
++	int err;
+
+ 	rv = ni_capture_send_buf(capture, buf);
++	err = errno;
+ 	if (tmo) {
+ 		capture->retrans.buffer = buf;
+ 		capture->retrans.timeout = *tmo;
+@@ -837,6 +839,7 @@ ni_capture_send(ni_capture_t *capture, const ni_buffer_t *buf, const ni_timeout_
+ 	} else {
+ 		ni_capture_disarm_retransmit(capture);
+ 	}
++	errno = err;
+ 	return rv;
+ }
+
+--
+2.35.3
+

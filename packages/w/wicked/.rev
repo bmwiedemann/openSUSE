@@ -1890,4 +1890,17 @@
   [+ 0001-ifreload-pull-UP-again-on-master-lower-changes-bsc1224100.patch]</comment>
     <requestid>1174279</requestid>
   </revision>
+  <revision rev="103" vrev="3">
+    <srcmd5>f1d7b7af2eb50e2b28afcbc910a3567c</srcmd5>
+    <version>0.6.75</version>
+    <time>1718978554</time>
+    <user>anag+factory</user>
+    <comment>- arp: increase arp-send retry value to avoid address configuration
+  failure due to ENOBUF reported by kernel while duplicate address
+  detection with underlying bonding in 802.3ad mode reporting link
+  &quot;up &amp; running&quot; too early (bsc#1218668, gh#openSUSE/wicked#1020,
+  gh#openSUSE/wicked#1022).
+  [+ 0002-increase-arp-retry-attempts-on-sending-bsc1218668.patch]</comment>
+    <requestid>1181943</requestid>
+  </revision>
 </revisionlist>
