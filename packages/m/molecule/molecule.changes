@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jun  7 20:17:09 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.6.0:
+  Bugfixes
+  * Respect ANSIBLE_COLLECTIONS_PATH (#4192) @cidrblock
+  * Avoid requests 2.32.0 during testing (#4185) @ssbarnea
+  * Update configuration.md for role name check (#4155)
+    @AlexanderStohr
+  * Added more dynamic arguments to podman container creation
+    playbook (#4169) @felipe4334
+  * Always apply ssh_connection_options (#4174) @wokis
+  * Link to the parallel.md, not docker-rootless.md for parallel
+    example (#4168) @evgeni
+  * Fix test method name. (#4165) @expeehaa
+
+-------------------------------------------------------------------
 Wed Apr 10 16:45:20 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 24.2.1:
