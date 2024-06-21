@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 20 13:21:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11.1:
+  * Updated typing stubs, adding additionaly checks to 'tox -e
+    mypy' to verify that they don't drift in the future.
+
+-------------------------------------------------------------------
 Mon Jun  3 10:48:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.11.0:

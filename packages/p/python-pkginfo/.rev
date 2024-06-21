@@ -90,4 +90,14 @@
     INFO' file within an 'sdist' archive.  LP #2064652.</comment>
     <requestid>1178286</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ab5b58b79f8ecf1c7ad50e92de3bca0c</srcmd5>
+    <version>1.11.1</version>
+    <time>1718978558</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.11.1:
+  * Updated typing stubs, adding additionaly checks to 'tox -e
+    mypy' to verify that they don't drift in the future.</comment>
+    <requestid>1181971</requestid>
+  </revision>
 </revisionlist>
