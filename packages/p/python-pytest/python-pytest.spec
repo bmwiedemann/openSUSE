@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-pytest
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -33,16 +33,20 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest%{psuffix}
-Version:        7.4.4
+Version:        8.2.2
 Release:        0
 Summary:        Simple powerful testing with Python
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest
 Source:         https://files.pythonhosted.org/packages/source/p/pytest/pytest-%{version}.tar.gz
+# FIX-PATCH-UPSTREAM gh#pytest-dev/pytest#12438
+Patch0:         allow-re-run-regression.patch
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm >= 6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tomli >= 1 if %python-base < 3.11}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-attrs >= 19.2.0
@@ -52,14 +56,14 @@ Requires:       python-tomli >= 1
 %endif
 Requires:       python-iniconfig
 Requires:       python-packaging
-Requires:       python-pluggy >= 0.12
+Requires:       python-pluggy >= 1.5
 Requires:       python-setuptools
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 Obsoletes:      python-pytest-doc
 BuildArch:      noarch
@@ -95,11 +99,11 @@ sed -i '/^\[metadata\]/ a version = %{version}' setup.cfg
 sed -i '/pytest.mark.xfail(reason="#10042")/d' testing/test_debugging.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if ! %{with test}
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pytest
 %python_clone -a %{buildroot}%{_bindir}/py.test
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -107,11 +111,9 @@ sed -i '/pytest.mark.xfail(reason="#10042")/d' testing/test_debugging.py
 
 %check
 %if %{with test}
-# Disable broken tests with latest setuptools, gh#pytest-dev/pytest#10815
-donttest="test_cmdline_python_namespace_package or test_syspath_prepend_with_namespace_packages"
 # Don't run pexpect tests to avoid timeout error in OBS when running
 # in quemu
-%pytest -n auto -m "not uses_pexpect" -k "not ($donttest)"
+%pytest -n auto -m "not uses_pexpect"
 %endif
 
 %if ! %{with test}
@@ -150,7 +152,7 @@ alternatives=$(update-alternatives --quiet --list py.test 2> /dev/null) && (
 %{python_sitelib}/_pytest
 %{python_sitelib}/py.py
 %{python_sitelib}/pytest
-%{python_sitelib}/pytest-%{version}*-info
+%{python_sitelib}/pytest-%{version}.dist-info
 %endif
 
 %changelog

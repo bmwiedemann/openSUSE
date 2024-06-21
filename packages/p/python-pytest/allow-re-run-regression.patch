@@ -1,0 +1,103 @@
+From 31791676501f8a8f9eb0d316a6d841a4c0d6738d Mon Sep 17 00:00:00 2001
+From: Ran Benita <ran@unusedvar.com>
+Date: Sat, 8 Jun 2024 02:11:20 +0300
+Subject: [PATCH 1/2] [8.2.x] unittest: fix assertion errors on unittest reruns
+
+---
+ changelog/12424.bugfix.rst                            |  1 +
+ src/_pytest/unittest.py                               |  2 +-
+ .../pytest_rerunfailures_integration.py               | 11 +++++++++++
+ tox.ini                                               |  2 +-
+ 4 files changed, 14 insertions(+), 2 deletions(-)
+ create mode 100644 changelog/12424.bugfix.rst
+ create mode 100644 testing/plugins_integration/pytest_rerunfailures_integration.py
+
+diff --git a/changelog/12424.bugfix.rst b/changelog/12424.bugfix.rst
+new file mode 100644
+index 00000000000..7ad1126858b
+--- /dev/null
++++ b/changelog/12424.bugfix.rst
+@@ -0,0 +1 @@
++Fix crash with `assert testcase is not None` assertion failure when re-running unittest tests using plugins like pytest-rerunfailures. Regressed in 8.2.2.
+diff --git a/src/_pytest/unittest.py b/src/_pytest/unittest.py
+index baca58bd9b2..2f3fd5b014c 100644
+--- a/src/_pytest/unittest.py
++++ b/src/_pytest/unittest.py
+@@ -216,7 +216,7 @@ def teardown(self) -> None:
+             self._explicit_tearDown()
+             self._explicit_tearDown = None
+         self._obj = None
+-        self._instance = None
++        del self._instance
+         super().teardown()
+ 
+     def startTest(self, testcase: "unittest.TestCase") -> None:
+diff --git a/testing/plugins_integration/pytest_rerunfailures_integration.py b/testing/plugins_integration/pytest_rerunfailures_integration.py
+new file mode 100644
+index 00000000000..9a13a3279a9
+--- /dev/null
++++ b/testing/plugins_integration/pytest_rerunfailures_integration.py
+@@ -0,0 +1,11 @@
++import unittest
++
++
++class MyTestCase(unittest.TestCase):
++    first_time = True
++
++    def test_fail_the_first_time(self) -> None:
++        """Regression test for issue #12424."""
++        if self.first_time:
++            type(self).first_time = False
++            self.fail()
+diff --git a/tox.ini b/tox.ini
+index 30d3e68defc..e42c2265525 100644
+--- a/tox.ini
++++ b/tox.ini
+@@ -143,7 +143,7 @@ commands =
+     pytest --cov=. simple_integration.py
+     pytest --ds=django_settings simple_integration.py
+     pytest --html=simple.html simple_integration.py
+-    pytest --reruns 5 simple_integration.py
++    pytest --reruns 5 simple_integration.py pytest_rerunfailures_integration.py
+     pytest pytest_anyio_integration.py
+     pytest pytest_asyncio_integration.py
+     pytest pytest_mock_integration.py
+
+From 63136f2c483388bf268bafbd06eb7246ed5e9097 Mon Sep 17 00:00:00 2001
+From: Bruno Oliveira <bruno@soliv.dev>
+Date: Fri, 7 Jun 2024 22:17:58 -0300
+Subject: [PATCH 2/2] Update testing/plugins_integration/requirements.txt from
+ main
+
+This is required to make the 'plugins' tox env to pass on the 8.2.x branch.
+---
+ testing/plugins_integration/requirements.txt | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
+
+diff --git a/testing/plugins_integration/requirements.txt b/testing/plugins_integration/requirements.txt
+index 9e152f1191b..f44a02915f2 100644
+--- a/testing/plugins_integration/requirements.txt
++++ b/testing/plugins_integration/requirements.txt
+@@ -1,9 +1,7 @@
+-anyio[curio,trio]==4.3.0
+-django==5.0.4
+-pytest-asyncio==0.23.6
+-# Temporarily not installed until pytest-bdd is fixed:
+-# https://github.com/pytest-dev/pytest/pull/11785
+-# pytest-bdd==7.0.1
++anyio[curio,trio]==4.4.0
++django==5.0.6
++pytest-asyncio==0.23.7
++pytest-bdd==7.1.2
+ pytest-cov==5.0.0
+ pytest-django==4.8.0
+ pytest-flakes==4.0.5
+@@ -11,7 +9,7 @@ pytest-html==4.1.1
+ pytest-mock==3.14.0
+ pytest-rerunfailures==14.0
+ pytest-sugar==1.0.0
+-pytest-trio==0.7.0
++pytest-trio==0.8.0
+ pytest-twisted==1.14.1
+ twisted==24.3.0
+ pytest-xvfb==3.0.0

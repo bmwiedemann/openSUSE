@@ -1315,4 +1315,41 @@
 Add python version constraints to Requires &amp; BuildRequires</comment>
     <requestid>1147604</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>3924efc5171492420f8c2a7f80efd2e8</srcmd5>
+    <version>8.2.2</version>
+    <time>1718978562</time>
+    <user>anag+factory</user>
+    <comment>- Add patch allow-re-run-regression.patch:
+  * Fix regression in 8.2.2 that did not allow test case reruns.
+
+- Update to 8.2.2
+  * Support for Python 3.13 (beta1 at the time of writing).
+  * Fix `PermissionError` crashes arising from directories which are not 
+    selected on the command-line.
+  * Keyboard interrupts and system exits are now properly handled during 
+    the test collection.
+  * Fixed handling of 'Function not implemented' error under squashfuse_ll, 
+    which is a different way to say that the mountpoint is read-only.
+  * Fix a regression in pytest 8.2.0 where the permissions of 
+    automatically-created .pytest_cache directories became rwx------ 
+    instead of the expected rwxr-xr-x.
+  * Fix possible catastrophic performance slowdown on a certain 
+    parametrization pattern involving many higher-scoped parameters.
+  * Fix a regression in pytest 8.2.0 where unittest class instances were 
+    not released promptly on test teardown but only on session teardown.
+  * Fix possible “Directory not empty” crashes arising from concurent cache 
+    dir (.pytest_cache) creation. Regressed in pytest 8.2.0.
+
+- Update to 8.2.0:
+  * A deprecation warning is now raised when implementations of one of the
+    following hooks request a deprecated py.path.local parameter.
+  * Added support for reading command line arguments from a file using the
+    prefix character @.
+  * Fixed a regression in pytest 8.0.0 where test classes containing
+    setup_method and tests using @staticmethod or @classmethod would crash
+    with AttributeError.
+  * pluggy&gt;=1.5.0 is now required.</comment>
+    <requestid>1179873</requestid>
+  </revision>
 </revisionlist>

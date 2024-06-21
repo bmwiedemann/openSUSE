@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Tue Jun 11 03:03:23 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch allow-re-run-regression.patch:
+  * Fix regression in 8.2.2 that did not allow test case reruns.
+
+-------------------------------------------------------------------
+Thu Jun  6 11:48:38 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 8.2.2
+  * Support for Python 3.13 (beta1 at the time of writing).
+  * Fix `PermissionError` crashes arising from directories which are not 
+    selected on the command-line.
+  * Keyboard interrupts and system exits are now properly handled during 
+    the test collection.
+  * Fixed handling of 'Function not implemented' error under squashfuse_ll, 
+    which is a different way to say that the mountpoint is read-only.
+  * Fix a regression in pytest 8.2.0 where the permissions of 
+    automatically-created .pytest_cache directories became rwx------ 
+    instead of the expected rwxr-xr-x.
+  * Fix possible catastrophic performance slowdown on a certain 
+    parametrization pattern involving many higher-scoped parameters.
+  * Fix a regression in pytest 8.2.0 where unittest class instances were 
+    not released promptly on test teardown but only on session teardown.
+  * Fix possible “Directory not empty” crashes arising from concurent cache 
+    dir (.pytest_cache) creation. Regressed in pytest 8.2.0.
+
+-------------------------------------------------------------------
+Mon May  6 05:24:11 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 8.2.0:
+  * A deprecation warning is now raised when implementations of one of the
+    following hooks request a deprecated py.path.local parameter.
+  * Added support for reading command line arguments from a file using the
+    prefix character @.
+  * Fixed a regression in pytest 8.0.0 where test classes containing
+    setup_method and tests using @staticmethod or @classmethod would crash
+    with AttributeError.
+  * pluggy>=1.5.0 is now required.
+  * Added PYTEST_VERSION environment variable which is defined at the start
+    of the pytest session and undefined afterwards.
+  * Improved namespace packages detection when consider_namespace_packages
+    is enabled.
+  * pytest.importorskip will now issue a warning if the module could be
+    found, but raised ImportError.
+  * Fixed error in pytest.approx when used with numpy arrays and comparing
+    with other types.
+  * Added the new consider_namespace_packages configuration option,
+    defaulting to False.
+  * Added the new verbosity_test_cases configuration option for fine-grained
+    control of test execution verbosity.
+  * --import-mode=importlib <import-mode-importlib> now tries to import
+    modules using the standard import mechanism.
+  * Added support for sys.last_exc for post-mortem debugging on Python>=3.12.
+  * Fixed a regression in pytest 8.0.0 that would cause test collection to
+    fail due to permission errors when using --pyargs.
+  * Fix the stacklevel used when warning about marks used on fixtures.
+  * Fix an edge case where ExceptionInfo._stringify_exception could crash.
+  * Fix an IndexError crash raising from getstatementrange_ast.
+  * PytestRemovedIn8Warning deprecation warnings are now errors by default.
+  * Dropped support for Python 3.7.
+  * Files and directories are now collected in alphabetical order jointly.
+  * Sanitized the handling of the default parameter when defining
+    configuration options.
+  * Avoid microsecond exceeds 1_000_000 when using log-date-format with
+    %f specifier.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Mon Feb 19 09:15:31 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - Add python version constraints to Requires & BuildRequires
