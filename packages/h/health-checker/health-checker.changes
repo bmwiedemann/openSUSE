@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 20 12:01:36 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove rchealth-checker symlink [jsc#PED-264] 
+
+-------------------------------------------------------------------
 Thu Jan 11 16:11:56 UTC 2024 - kukuk@suse.com
 
 - Update to version 1.10+git20240111.cb84209:

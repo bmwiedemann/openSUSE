@@ -203,4 +203,12 @@
   * Fix a typo in README.md</comment>
     <requestid>1138157</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>dc0cb12d5b02f990a34399114a01fa4a</srcmd5>
+    <version>1.10+git20240111.cb84209</version>
+    <time>1718978546</time>
+    <user>anag+factory</user>
+    <comment>- Remove rchealth-checker symlink [jsc#PED-264]</comment>
+    <requestid>1181912</requestid>
+  </revision>
 </revisionlist>

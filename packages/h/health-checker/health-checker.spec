@@ -94,7 +94,6 @@ make %{?_smp_mflags}
 
 %install
 %make_install
-ln -sf service %{buildroot}%{_sbindir}/rchealth-checker
 %fdupes %{buildroot}%{_mandir}
 
 %pre
@@ -123,7 +122,6 @@ ln -sf service %{buildroot}%{_sbindir}/rchealth-checker
 %{_libexecdir}/health-checker/logind.sh
 %{_libexecdir}/health-checker/tmp.sh
 %{_sbindir}/health-checker
-%{_sbindir}/rchealth-checker
 %{_mandir}/man8/health-checker.8%{?ext_man}
 %{_mandir}/man8/health-checker.service.8%{?ext_man}
 %dir %{_sysconfdir}/grub.d
