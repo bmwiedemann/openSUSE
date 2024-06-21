@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jun 20 07:59:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- expand __python3 with python3 to work outside suse rpm packaging
+
+-------------------------------------------------------------------
+Tue Jun 18 15:31:41 UTC 2024 - dmueller@suse.com
+
+- Update to version 0.6.5:
+  * Update spec file to the one used in the packaging
+  * Move revision detection into _revision_detect
+
+-------------------------------------------------------------------
+Fri Jun 14 18:33:15 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix shebang of the script to use the explicit version of Python
+  (bsc#1212476).
+
+-------------------------------------------------------------------
 Tue May 14 16:03:17 UTC 2024 - dmueller@suse.com
 
 - Update to version 0.6.4:

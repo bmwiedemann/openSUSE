@@ -24,7 +24,7 @@
 %define service set_version
 
 Name:           obs-service-%{service}
-Version:        0.6.4
+Version:        0.6.5
 Release:        0
 Summary:        An OBS source service: Update spec file version
 License:        GPL-2.0-or-later
@@ -40,9 +40,7 @@ BuildRequires:  python3-flake8
 BuildRequires:  python3-packaging
 %endif
 
-%if 0%{?suse_version} > 1315
-Requires:       python3-base
-%else
+%if !0%{?suse_version}
 Requires:       python3
 %endif
 %if 0%{?suse_version}
@@ -68,6 +66,9 @@ make test PYTHON=python3
 mkdir -p %{buildroot}%{_prefix}/lib/obs/service
 install -m 0755 set_version %{buildroot}%{_prefix}/lib/obs/service
 install -m 0644 set_version.service %{buildroot}%{_prefix}/lib/obs/service
+# Doing %%python3_fix_shebang_path old fashioned way for the backward compatibility
+sed -i "1s@#\\!.*python\S*@#\\!$(realpath /usr/bin/python3)@" \
+    %{buildroot}%{_prefix}/lib/obs/service/set_version
 
 %files
 %defattr(-,root,root)

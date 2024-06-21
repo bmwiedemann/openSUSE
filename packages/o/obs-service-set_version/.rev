@@ -411,4 +411,19 @@
   * Add testing python 3.10 - 3.12</comment>
     <requestid>1174046</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>9d9e8e3c7b679f9b5b4b89f57d9c7103</srcmd5>
+    <version>0.6.5</version>
+    <time>1718978535</time>
+    <user>anag+factory</user>
+    <comment>- expand __python3 with python3 to work outside suse rpm packaging
+
+- Update to version 0.6.5:
+  * Update spec file to the one used in the packaging
+  * Move revision detection into _revision_detect
+
+- Fix shebang of the script to use the explicit version of Python
+  (bsc#1212476).</comment>
+    <requestid>1181880</requestid>
+  </revision>
 </revisionlist>
