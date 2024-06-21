@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Thu Jun 20 12:26:09 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.1
+  * The Tudoor fix ate legitimate Truncated exceptions, preventing
+    the resolver from failing over to TCP and causing the query to
+    timeout.
+- Update to version 2.6.0
+  * As mentioned in the “TuDoor” paper and the associated
+    CVE-2023-29483, the dnspython stub resolver is vulnerable to a
+    potential DoS if a bad-in-some-way response from the right
+    address and port forged by an attacker arrives before a
+    legitimate one on the UDP port dnspython is using for that
+    query.
+    This release addresses the issue by adopting the recommended
+    mitigation, which is ignoring the bad packets and continuing to
+    listen for a legitimate response until the timeout for the
+    query has expired.
+  * Added support for the NSID EDNS option.
+  * Dnspython now looks for version metadata for optional packages
+    and will not use them if they are too old. This prevents
+    possible exceptions when a feature like DoH is not desired in
+    dnspython, but an old httpx is installed along with
+    dnspython for some other purpose.
+  * The DoHNameserver class now allows GET to be used instead of
+    the default POST, and also passes source and source_port
+    correctly to the underlying query methods.
+- Update to version 2.5.0
+  * Dnspython now uses hatchling for builds.
+  * Cython is no longer supported due to various typing issues.
+  * Dnspython now explicitly canonicalizes IPv4 and IPv6 addresses.
+    Previously it was possible for non-canonical IPv6 forms to be
+    stored in a AAAA address, which would work correctly but
+    possibly cause problmes if the address were used as a key in a
+    dictionary.
+  * The number of messages in a section can be retrieved with
+    section_count().
+  * Truncation preferences for messages can be specified.
+  * The length of a message can be automatically prepended when
+    rendering.
+  * dns.message.create_response() automatically adds padding when
+    required by RFC 8467.
+  * The TLS verify parameter is now supported by dns.query.tls(),
+    and the DoH and DoT Nameserver subclasses.
+  * The MutableMapping used to store content in a zone may now be
+    specified by a factory when subclassing. Factories may also be
+    provided for writable verisons and immutable versions.
+  * dns.name.Name now has predecessor() and successor() methods
+    implementing RFC 4471.
+  * QUIC has had a number of bug fixes and also now supports
+    session tickets for faster session resumption.
+  * The NSEC3 class now has a next_name() method for retrieving the
+    next name as a dns.name.Name.
+
+-------------------------------------------------------------------
 Thu Oct  5 17:10:40 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Don't use curio.
