@@ -17,7 +17,7 @@
 
 
 Name:           MicroOS-release
-Version:        20240620
+Version:        20240621
 Release:        0
 Summary:        openSUSE MicroOS 
 License:        GPL-2.0-or-later
@@ -179,9 +179,9 @@ ExclusiveArch:  %ix86 x86_64 ppc64le s390x aarch64 %arm
 %include %{SOURCE100}
 Provides:       %name-%version
 Provides:       product() = MicroOS
-Provides:       product(MicroOS) = 20240620-0
+Provides:       product(MicroOS) = 20240621-0
 Provides:       product-label() = openSUSE%20MicroOS
-Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Amicroos%3A20240620
+Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Amicroos%3A20240621
 Provides:       product-url(releasenotes) = http%3A%2F%2Fdoc.opensuse.org%2Frelease%2Dnotes%2Fx86_64%2FopenSUSE%2FTumbleweed%2Frelease%2Dnotes%2DopenSUSE.rpm
 Provides:       product-endoflife()
 Requires:       product_flavor(MicroOS)
@@ -197,7 +197,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(dvd)
-Provides:       product_flavor(MicroOS) = 20240620-0
+Provides:       product_flavor(MicroOS) = 20240621-0
 Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description dvd
@@ -213,7 +213,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance)
-Provides:       product_flavor(MicroOS) = 20240620-0
+Provides:       product_flavor(MicroOS) = 20240621-0
 Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description appliance
@@ -250,7 +250,7 @@ cat > %{buildroot}%{_prefix}/lib/os-release <<EOF
 NAME="openSUSE MicroOS"
 # VERSION="%{version}%{?betaversion: %{betaversion}}"
 ID="opensuse-microos"
-ID_LIKE="suse opensuse opensuse-tumbleweed"
+ID_LIKE="suse opensuse opensuse-tumbleweed microos sl-micro"
 VERSION_ID="$VERSION_ID"
 PRETTY_NAME="openSUSE MicroOS"
 ANSI_COLOR="0;32"
@@ -278,11 +278,11 @@ cat >%{buildroot}%{_sysconfdir}/products.d/MicroOS.prod << EOF
 <product schemeversion="0">
   <vendor>openSUSE</vendor>
   <name>MicroOS</name>
-  <version>20240620</version>
+  <version>20240621</version>
   <release>0</release>
   <endoflife></endoflife>
   <arch>%{_target_cpu}</arch>
-  <cpeid>cpe:/o:opensuse:microos:20240620</cpeid>
+  <cpeid>cpe:/o:opensuse:microos:20240621</cpeid>
   <productline>MicroOS</productline>
   <register>
     <pool>
