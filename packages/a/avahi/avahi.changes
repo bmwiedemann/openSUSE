@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 20 16:01:22 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Add avahi-filter-bogus-services.patch: no longer supply bogus
+  services to callbacks (bsc#1226586).
+
+-------------------------------------------------------------------
 Thu Apr  4 13:44:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Tag hardening patches as PATCH-FEATURE-OPENSUSE

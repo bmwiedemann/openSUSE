@@ -113,6 +113,8 @@ Patch33:        avahi-CVE-2023-38472.patch
 Patch34:        avahi-CVE-2023-38469.patch
 # PATCH-FIX-UPSTREAM avahi-CVE-2023-38471.patch bsc#1216594 xwang@suse.com -- Extract host name using avahi_unescape_label
 Patch35:        avahi-CVE-2023-38471.patch
+# PATCH-FIX-UPSTREAM avahi-filter-bogus-services.patch bsc#1226586 mgorse@suse.com -- no longer supply bogus services to callbacks.
+Patch36:        avahi-filter-bogus-services.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel
@@ -421,8 +423,8 @@ Obsoletes:      avahi-glib2-utils-gtk < %{version}
 Avahi is an implementation of the DNS Service Discovery and Multicast
 DNS specifications for Zeroconf Computing.
 
-# This is the avahi-discover command, only provided for the primary python3 flavor
 
+# This is the avahi-discover command, only provided for the primary python3 flavor
 %package -n python3-avahi-gtk
 Summary:        A set of Avahi utilities written in Python Using python-gtk
 Group:          Development/Languages/Python

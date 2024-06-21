@@ -1317,4 +1317,13 @@ Pushing GNOME 45.rc packages</comment>
     <comment>- Tag hardening patches as PATCH-FEATURE-OPENSUSE (forwarded request 1164608 from dimstar)</comment>
     <requestid>1164965</requestid>
   </revision>
+  <revision rev="169" vrev="35">
+    <srcmd5>8c2470aca096f3f88f474414c9bd1fec</srcmd5>
+    <version>0.8</version>
+    <time>1718978578</time>
+    <user>anag+factory</user>
+    <comment>- Add avahi-filter-bogus-services.patch: no longer supply bogus
+  services to callbacks (bsc#1226586). (forwarded request 1181994 from mgorse)</comment>
+    <requestid>1181998</requestid>
+  </revision>
 </revisionlist>
