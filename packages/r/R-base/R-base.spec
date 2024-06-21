@@ -23,7 +23,7 @@
 %define release 1
 
 Name:           R-base
-Version:        4.4.0
+Version:        4.4.1
 Release:        %release
 %define Rversion %{version}
 Source0:        R-%{version}.tar.xz
@@ -1455,7 +1455,7 @@ This packages provides R-foreign, one of the recommended packages.
 
 %package -n R-KernSmooth
 Summary:        Package provides recommended R-KernSmooth
-Version:        2.23.22
+Version:        2.23.24
 Release:        %release
 Requires:       R-base
 
@@ -1518,7 +1518,7 @@ This packages provides R-lattice, one of the recommended packages.
 
 %package -n R-MASS
 Summary:        Package provides recommended R-MASS
-Version:        7.3.60
+Version:        7.3.60.2
 Release:        %release
 Requires:       R-base
 
@@ -1778,7 +1778,7 @@ This packages provides R-spatial, one of the recommended packages.
 
 %package -n R-survival
 Summary:        Package provides recommended R-survival
-Version:        3.5.8
+Version:        3.6.4
 Release:        %release
 Requires:       R-base
 
