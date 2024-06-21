@@ -329,4 +329,13 @@
     on versions of Python that support it (:issue:`725`)</comment>
     <requestid>1158406</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>db69a114e50754a32f9a8ca29b48d812</srcmd5>
+    <version>24.1</version>
+    <time>1718978527</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.1:
+  * No unreleased changes.</comment>
+    <requestid>1181927</requestid>
+  </revision>
 </revisionlist>

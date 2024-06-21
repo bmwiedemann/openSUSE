@@ -53,7 +53,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{pprefix}-packaging%{?psuffix}
-Version:        24.0
+Version:        24.1
 Release:        0
 Summary:        Core utilities for Python packages
 License:        Apache-2.0 AND BSD-2-Clause
