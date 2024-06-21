@@ -418,4 +418,14 @@
 - drop use-asyncio-markers.patch (upstream)</comment>
     <requestid>1179687</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>a0398baf70c50191a2db7fd390b0c14a</srcmd5>
+    <version>0.25.3</version>
+    <time>1718978551</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.25.3:
+  * Fixed `recorder` not saving and loading response headers with
+    yaml files. See #715</comment>
+    <requestid>1181926</requestid>
+  </revision>
 </revisionlist>

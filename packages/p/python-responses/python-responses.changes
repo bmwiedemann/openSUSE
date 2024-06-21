@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 20 12:40:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.25.3:
+  * Fixed `recorder` not saving and loading response headers with
+    yaml files. See #715
+
+-------------------------------------------------------------------
 Mon Jun 10 11:11:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.25.2:
