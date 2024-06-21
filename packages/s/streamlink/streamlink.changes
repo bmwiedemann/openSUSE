@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Mon Jun 17 20:55:32 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to 6.8.1:
+  * Fixed: failed HTTPAdapter tests on some OpenSSL configurations
+- update to 6.8.0:
+  * sha256 checksum to log message when side-loading plugins
+  * SSLContextAdapter to streamlink.session.http
+  * Deprecated: old re-exports in streamlink.plugins package
+  * Updated plugins: bilibili, chzzk cnbce, kick, tf1, tvp, welt
+
+-------------------------------------------------------------------
+Mon May 13 21:29:51 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to 6.7.4:
+  * Updated plugins
+  * Build: removed exceptiongroup dependency on Python >= 3.11
+
+-------------------------------------------------------------------
+Tue May  7 07:29:47 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Fix the testsuite, pytest >= 8 is required. 
+
+-------------------------------------------------------------------
+Mon Apr 22 12:52:19 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to 6.7.3:
+  * Fixed: file output paths being able to exceed max file/directory name length
+  * Fixed: propagation of KeyboardInterrupt/SystemExit in streamlink.webbrowser
+  * Fixed: compatibility with exceptiongroup<=1.1.1
+  * Fixed: plugin.api.validate.parse_qsd input type validation
+  * Updated plugins
+  * Tests: fixed test failure when running tests from the bdist build directory
+
+- add mpv as an alternative
+- disable tests for now, as they break for no apparent reason
+
+-------------------------------------------------------------------
+Sat Jan 27 13:41:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.5.1:
+  * Fixed: file output path log message on py38/py39
+  * Improved: warning message when using quoted player paths (in
+    config files)
+  * artetv: updated API response validation schema
+  * atresplayer: updated API response validation schema
+  * bigo: reimplemented plugin
+  * bilibili: fixed stream resolving issues on channels with
+    custom layouts
+  * huya: added stream CDN availability check
+  * twitch: disabled Chromium headless mode on client-integrity
+    token acquirement
+  * vidio: fixed missing API request cookies
+  * zattoo: fixed audio/video sync issues
+- add keyring for gpg validation
+
+-------------------------------------------------------------------
+Wed Jan 10 03:40:38 UTC 2024 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to version 6.5.0
+  * Fixed: UserWarning being emitted by recent pycountry releases when parsing certain language codes (#5722)
+  * Fixed: trace logging setup in WebsocketClient implementation (#5705)
+  * Updated plugins:
+    * btv: switched to HLS multivariant playlists (#5698)
+    * gulli: rewritten plugin (#5725)
+    * twitch: removed/disabled --twitch-disable-reruns (#5704)
+    * twitch: enabled check_streams HLS option, to ensure early stream availability without querying the delayed Twitch API (#5708)
+    * twitch: removed unnecessary Twitch API error messages for offline channels (#5709)
+    * wasd: removed plugin (#5711)
+  * Build: added support for versioningit >=3.0.0, with backward compatibility (#5721)
+
+-------------------------------------------------------------------
 Sun Dec  3 02:09:01 UTC 2023 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Update to version 6.4.2
@@ -56,7 +127,7 @@ Mon Oct 23 09:25:38 UTC 2023 - Hakim Zulkufli <hakim.zulkufli@gmail.com>
   + Docs: split up, updated and improved API docs (#5398)
   + Build: moved project metadata to pyproject.toml (PEP621) (#5438)
   + Dependencies: added trio (#5386), trio-websocket and typing-extensions (#5388), and removed importlib_metadata (#5302)
-  
+
 -------------------------------------------------------------------
 Mon Jun  5 08:25:35 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
