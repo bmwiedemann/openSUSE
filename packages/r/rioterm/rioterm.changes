@@ -1,4 +1,563 @@
 -------------------------------------------------------------------
+Thu Jun 20 13:45:52 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Remove checksums update for config.guess and config.sub for aarch64
+  and ppc64le
+
+-------------------------------------------------------------------
+Thu Jun 20 13:07:41 UTC 2024 - androw95220@gmail.com
+
+- Update to version 0.1.1:
+  * undo width
+  * update wgpu
+  * update versions
+  * add note on README.md
+  * remove ununsed logic
+  * disable sixel terminal backend support for now
+  * disable bidi for now, will reintroduce later via flag
+  * refactor batch
+  * get rid of bind pipeline
+  * don't alarm if the font family is same as default
+  * Improvements on font loader (avoid set weight or style in the lookup if isn't defined) and Fallbacks fonts doesn't trigger alerts anymore
+  * docs: fix user facing typos (#532)
+  * update CHANGELOG
+  * remove banner
+  * update winit to rio_winit_fork
+  * current as SugarTree and next in heap
+  * use Box for current and next
+  * re add display.display.as_ptr()
+  * mark 0.1.0
+  * Update CHANGELOG.md for now
+  * update configuration refs
+  * update CHANGELOG.md
+  * sugarloaf/frontend with lifecycles
+  * work in progress
+  * drop static lifecyle
+  * fix test after background_color become Option
+  * remove Box for Tree, reduce limit for supported vertex buffer on rich_text
+  * correct display on wayland
+  * update pipelines
+  * work in progress
+  * update changelog
+  * update the rest of the code
+  * rollback wgpu to 0.18 for now due to a memory leaked introduced in static lifecycle in context.rs, eventually will be fixed later
+  * flake.lock: Update (#529)
+  * add demo-rio.png to 0.1.0 folder
+  * update README.md
+  * fix cargo fmt
+  * disable foreground opacity for now
+  * fix property naming
+  * [window.opacity] and drop foreground-opacity property
+  * use new rio winit fork
+  * fix label to release
+  * disable fallbacks for linux
+  * update script to test underline styles (ref #370)
+  * fix label of version
+  * clean whenever advanced compositor is equal
+  * reenable nightly builds
+  * load font from configuration
+  * compute font update
+  * support change font
+  * allow to change font
+  * load emoji font on demand
+  * update winit ref
+  * flake.lock: Update (#521)
+  * remove embolden for macos and fix scale changes updates
+  * nix: add hash value for a dependency (#516)
+  * set_hash_shadow on macos if is transparent
+  * fix wrong span data association
+  * remove color, bg_color, cursor, underline from runData and use straight from span
+  * format sequencer.rs
+  * remove redraw on key up
+  * lock versions on crates
+  * Event::Opened only for macos
+  * update CHANGELOG.md
+  * always use tabbing for native
+  * open url with tabbing and update version
+  * lock crate versions
+  * application:openUrl for winit
+  * only run set_subtitle for macos
+  * update wix to 4.0.5
+  * support open here on windows
+  * allow set_subtitle for anything
+  * implement subtitle
+  * update welcome screen
+  * update fork
+  * update margin and correct use_wa for close tab
+  * flake.lock: Update (#515)
+  * use_wa cfg on tests
+  * clean modifiers on new tab/window (fix lint)
+  * clean modifiers on new tab/window
+  * use if let Some instead of single match
+  * format on update texture
+  * remove lru
+  * resize as event
+  * mouse motion
+  * disable nightly builds for now
+  * reuse payload.app instead of lock to retrieve
+  * use try_iter instead of try_recv
+  * introduce is_dirty and use while for try_recv()
+  * remove CFRunLoopTimerIsValid
+  * remove render on keydown
+  * always rerun
+  * modifier removed from route level
+  * break after push diff::hash
+  * Fixed transparency on backgrounds for Welcome/Dialog
+  * update docs install version to 0.0.38
+  * correction on state.dynamic_background
+  * replicate changes of dynamic background made in ef00c52b5ad611e48484ca5667be9b6fc16d48b7 on main
+  * update CHANGELOG
+  * update swash and decrease default font_size to 14
+  * fix multiple bound locations
+  * propagate macports docs to 0.0.x
+  * to_owned to clone_into(&mut <>)
+  * docs: add MacPorts install info (#508)
+  * upgrade rust to 1.78 and remove dead_code
+  * flake.lock: Update (#506)
+  * rewrite scheduler and stop use create_proxy all time
+  * reuse same bitflags version
+  * prettier files
+  * update nodejs to 20
+  * update docs and rustfmt
+  * Fix README.md installation links (#505)
+  * split hash functions
+  * fix first render
+  * use try_recv instead
+  * use NSView instead of MTKView for Rio
+  * update wa
+  * logs and appstate
+  * events wip
+  * work in progress
+  * flake.lock: Update (#504)
+  * add From<&Sugar> for FragmentStyle (#502)
+  * flake.lock: Update (#500)
+  * docs updates on links (2)
+  * docs updates on links
+  * docs updates
+  * rename 0.1.x to 1.0.0
+  * update docs version to v0.0.37
+  * update changelog
+  * update Makefile
+  * fix nix builds (#498)
+  * update cache size for lines
+  * update wgpu to 0.20.0
+  * remove EventLoopBuilder
+  * correct router
+  * remove startup notify for initial window, ref https://github.com/rust-windowing/winit/issues/3633
+  * correct to ActiveEventLoop
+  * update use for linux
+  * update winit on benches and examples
+  * fmt code and update CHANGELOG
+  * update winit to 0.30.0
+  * Add VI toggle for CTRL + SHIFT + SPACE on win (#496)
+  * flake.lock: Update (#497)
+  * cache by sugarline hash
+  * implement hash for sugar and sugar_line
+  * update (#495)
+  * only change font based on att in render step
+  * correct docs (close #494)
+  * update rust to 1.77.2, update dependencies and use write_all on awakener for unix
+  * flake.lock: Update (#490)
+  * looking ahead post
+  * update docusaurus
+  * bump dependencies
+  * remove open url from displaay data
+  * Fix cursor repetition on render data with temporary fix
+  * lint corrections
+  * stop receive handler by frontend
+  * add focues to payload
+  * try borrow mut
+  * remove fair mutex around handler
+  * remove lock for app ptr
+  * passing handler but breaking tabs due to borrow
+  * update swash to 0.1.15
+  * refactor wa to use same event handler for router/routes and different windows
+  * wip process
+  * migrate event loop to macos observer
+  * BottomTab as default
+  * flake.lock: Update (#487)
+  * Fix `LD_LIBRARY_PATH` in Nix flake dev shell (#486)
+  * flake.lock: Update (#485)
+  * add font ligatures to home
+  * correct cache
+  * load clusters on demand
+  * end quick test for gtag
+  * Rgba8Snorm macos
+  * update lint
+  * set macos default as Rgb10a2Unorm and update docusaurus
+  * flake.lock: Update (#484)
+  * correct windows self usage
+  * disable webassembly (since it also has to go through wa migration yet
+  * some cleanup
+  * use same line height as before when breaking lines
+  * refactor dimension
+  * correct first item style
+  * bold, italic, bold_italic
+  * update screen
+  * use font_library
+  * correct linux build and update  benchs/examples
+  * update CHANGELOG
+  * introduce font fallbacks and  use same font on any rio instance
+  * remove font id
+  * correct lint
+  * Fix load_system_fonts on Windows when the system drive is not C: (retired from fontdb)
+  * Treat fonts with non-zero italic angle as italic (retired from fontdb
+  * stop load emoji on wasm
+  * use SharedData instead of Vec
+  * remove FONT_EMOJI from wasm
+  * disable setNeedsDisplay on macos
+  * update CHANGELOG.md and README.md
+  * remove SugarCompositorLevel
+  * correction on Default derive
+  * remove renderer_level and notoemoji font
+  * wrap up cache
+  * cache working partially (line_number as key isn't best option here)
+  * replace cache
+  * apply spacing only once
+  * move line updater to a next pr
+  * breaking render to develop cache
+  * if the line is new then reset
+  * save styles in the line
+  * load colors
+  * set scale and clear
+  * now it renders (yey?)
+  * remove nav
+  * remove span data
+  * remove state and dir_depth
+  * wip remove spans
+  * span as span data
+  * process from cache
+  * process line updates
+  * update CHANGELOG
+  * flake.lock: Update (#474)
+  * correct line_height and reduce initial instances
+  * update changelog and wix for windows
+  * update changelog
+  * fix lint
+  * update lockfile
+  * update copypasta and retrieve pid on windows
+  * differentiate Diff per Char or Line
+  * update winit to 0.29.15
+  * flake.lock: Update (#471)
+  * Workaround new text renderer (#467)
+  * fix: build on Darwin (#470)
+  * update wgpu and winit
+  * flake.lock: Update (#468)
+  * update CHANGELOG
+  * add 0.0.x branch as well
+  * add workflow_dispatch for nix-build
+  * flake.lock: Update (#463)
+  * revert additional change on grid
+  * revert additional change
+  * correct new tab testing code
+  * update rio with windows fix for alt+control
+  * update wayland dependencies with cargo update
+  * few corrections
+  * update draft post
+  * add a post about 0.1.0
+  * update Makefile
+  * implement map instead of filter_map
+  * support open urls on macos
+  * rollback json configuration alternative support
+  * work in progress open urls
+  * update hide_cursor_when_typing to false
+  * reset update on level selection
+  * support to json config
+  * configuration as json add fallbacks for unwrap
+  * add json as configuration fallback
+  * update cascadia code to ttf
+  * use front
+  * update get(0) to first()
+  * update CHANGELOG regarding new rust version
+  * use 1.75.0 instead
+  * rewrite get(0) to first()
+  * update CHANGELOG and rust version
+  * drop equal check on wayland
+  * add reset_next
+  * update current
+  * update current
+  * check self.next and self.current
+  * cover ColumnsLengthIsDifferent and LineLengthIsDifferent
+  * enable debug for dev modes on makefile
+  * remove println
+  * reset navigation
+  * debuggin
+  * test with winit 0.29.9
+  * use width and height instead of u32
+  * use Elementary
+  * update lint for linx
+  * borrow bg image to set
+  * corrections linux pt 4
+  * corrections linux pt 3
+  * corrections linux pt 2
+  * corrections linux
+  * remove init fn
+  * few corrections for linux
+  * test advanced on linux
+  * remove acc
+  * remove printlns for now
+  * rename to fetch_dimensions
+  * correct UnderlineOffset and keep updating mask_texture if necessary
+  * clean primary always
+  * wip breadcrumb fix
+  * remove kind
+  * update printl! to log::info and correct wasm load
+  * cleanup arc references
+  * use slice instead of vec
+  * stop cloning fonts on shaping
+  * removal of font mod
+  * read font from library
+  * update swash
+  * load font
+  * work in progress to load font from rio
+  * .update_tree_with_new_line use line index
+  * self.content_builder.build_ref
+  * remove constants
+  * use vec to spare memory usage
+  * update default level to 1
+  * readd wasm and remove self.sugarloaf.calculate_bounds
+  * disable wasm test for now
+  * fix lint checks and introduce new api for line
+  * update lint
+  * remove view
+  * layer_brush with rpass
+  * reuse render pass
+  * reuse render pass
+  * use queue instead of encoder to reduce buffer usage
+  * move glyph to text component
+  * refactor lines
+  * force computation on declaration
+  * enable tabs (tab+control isn't working yet)
+  * compute updates fn()
+  * compute changes outside of compute_dimensions
+  * remove legacy
+  * corrections for elementary render
+  * only advanced renderer is working
+  * cleanup on stack fn
+  * updat examples
+  * remove custom_decoration
+  * work in progress to remove custom_decoration
+  * use sugarline on level 1
+  * renderer level per config
+  * lot's of refactors and remove clone from suugar layout (closes #439)
+  * wip process changes
+  * state tree to compute changes
+  * calculate_diff and SugarChanges
+  * calculate_diff and SugarChanges
+  * calculate line differences
+  * introduce sugarline
+  * update examples
+  * refactor sugarloaf and introduce primitives
+  * check dimension and content updates
+  * with diff check
+  * clippy updates
+  * refactoring some code
+  * update decoration on basic renderer
+  * remove self.current_row inc
+  * disable advanced rendering for now
+  * license mention on top of changed files
+  * introduce pending updates
+  * set sugarheight and sugarwidth
+  * move prepare to outside of render
+  * cursors initial version
+  * background support
+  * use add_char instead
+  * remove color
+  * redo font size change
+  * update default font size
+  * remove color from rtext mod
+  * use current_transform
+  * strikethrough initial support
+  * update to use .unwrap_or_default
+  * start to work on Strikethrough
+  * use span color
+  * support to SpanStyle::Color
+  * work in progress color
+  * update stack_rich_text function
+  * redo removal of calculate_bounds()
+  * stack_text and stack_rich_text
+  * keep legacy renderer
+  * ensure texture view are not empty'
+  * remove gl shaders
+  * test fragment shader
+  * port sugarloaf into rioterm
+  * 0.1.0 to new renderer
+  * rendering without emojis
+  * with rebind per self.bind_layout_group
+  * rendering with indexed drawing
+  * use queue to render
+  * wip
+  * load textures
+  * prepare to render
+  * finish_composition
+  * work in progress render
+  * link base_fs_shader
+  * load richtext brush
+  * add color, image_cache and text.rs
+  * start rich_text mod
+  * flake.lock: Update (#455)
+  * flake.lock: Update (#451)
+  * flake.lock: Update (#446)
+  * update macos-11 to macos-14 and use arm to run tests (since latest isn't pointing to sonoma yet
+  * refactor: disable cursor blink on selection (ref #437) (#441)
+  * Report focus change https://terminalguide.namepad.de/mode/p1004/
+  * flake.lock: Update (#435)
+  * change logic to reset cursor based on ALT_SCREEN instead of aAPP_CURSOR
+  * reenable nightly for deb
+  * docs: remove dead config options (#432)
+  * docs: creating your own themes (#431)
+  * docs: add keybind mode section (#430)
+  * flake.lock: Update (#424)
+  * fix: set screen cols & rows on new tab (#427)
+  * #[allow(unused)] on schedule render since isn't being used on macos
+  * updatw wgpu to 0.19.1
+  * render only with seelection updates
+  * use orthographic_projection; from core
+  * use ctx.size instead of dimensions params
+  * docs: fix typos in the library documentation (#423)
+  * flake: add `apps` entry and fix runtime error (#412)
+  * flake.lock: Update (#413)
+  * move render pass creation outside of the loop
+  * update test workflow to remove rioterm-beta reference
+  * correct state imports
+  * window_id build for each test step
+  * navigation as pub mod
+  * add navigation and state to non-macos
+  * move RoutePath outside of router mod
+  * add confirmquit for non macos
+  * move layout to correct position
+  * remove unusable vars
+  * move context to main
+  * few corrections for non-macos
+  * rioterm-beta has been merged into rioterm
+  * use display as_mut()
+  * fix desired_maximum_frame_latency
+  * raw_window_window 06 for examples and benches
+  * update wgpu wip
+  * update winit
+  * update CHANGELOG.md
+  * small changes on  WIP: add basic touch support #226 PR
+  * add basic touch support
+  * add '-p rioterm' to docs reference (closes #416)
+  * update graphic library on rioterm as well
+  * preferred into instead of as
+  * use as instead to convert
+  * fix nix build (#411)
+  * flake: refactor and update flake.lock (#406)
+  * docs: mention that Ctrl + Shift + Tab moves to previous tab (#410)
+  * load columns/lines from size (ref: #409)
+  * use text_builder scale
+  * remove comment
+  * remove fount_bound ref
+  * re add cfg to macos only
+  * change font order
+  * re-add line-break
+  * fmt code after scale changes
+  * scale PxScale for all repeated text
+  * remove self.is_text_monospaced logic
+  * work in progress scale
+  * correct mouse_point when line_height isn't 1.0
+  * update docusaurus
+  * update lint
+  * vertical text alignment is bottom instead of center and initial support to line-height
+  * correct versions between rioterm and rioterm-beta
+  * remove redundant RUST_BACKTRACE=full
+  * beta should test only beta
+  * use exclude on clippy
+  * update ttf-parser and memmap2
+  * exclude rioterm-beta
+  * update sugarloaf lint
+  * update sugarloaf lint
+  * update sugarloaf lint
+  * remove make lint on test beta
+  * use make lint
+  * move beta test to only macos
+  * use target_os = 'macos'
+  * update lint
+  * corrections to rioterm crate
+  * delete rio-backend-legacy
+  * correct lint wip
+  * workflow for test-beta
+  * Adding `flake.nix` (#363)
+  * set layer for wa
+  * beta building
+  * rioterm building correctly
+  * rename folders
+  * build dev from 0.0.x
+  * migrate 0.0.x to main branch
+  * have legacy together
+  * move back
+  * moving 0.0.x back to main
+  * update wa superloop
+  * use observer instead of affect loop by waking with (CFRunLoopGetMain)
+  * add runloop
+  * correct update_dimensions
+  * last_callback
+  * introduce app loop
+  * use ns_event
+  * update changelog.md
+  * use same function for window creation
+  * add sync mod
+  * use FnvHashMap and move watcher to sync mod
+  * use Fowler–Noll–Vo hash function (implementation that is more efficient for smaller hash keys)
+  * refactor event()
+  * remove ForceRefresh
+  * add watch_app and bump to 0.1.0
+  * refactor wa macos
+  * errors and routes
+  * use log::info
+  * theme detector
+  * remove id from process fn
+  * render flow
+  * implement KeyAssignment copy
+  * drop native requests
+  * use app_connection
+  * rename rio to wa
+  * dock menu
+  * remove power on
+  * update render lifecycle macos
+  * remove process
+  * window close
+  * register for drag and drop operations
+  * update CHANGELOG
+  * nightly should use 0.0.x for all builds
+  * docs: note use-current-path requires use-fork to be false (#397)
+  * update README.md
+  * nightly uses 0.0.x branch
+  * update about build-from-source
+  * add info about 0.0.x branch
+  * comment borderless
+  * ime state
+  * work in progress IME
+  * wip IME support
+  * refactor app/windows
+  * enable click on hyperlinks
+  * set background image
+  * native tab and new window
+  * wip application_should_terminate
+  * use view as window delegate
+  * use Bgra8Unorm on MacOS
+  * sync with main
+  * open file
+  * corrections on init id
+  * wip new window
+  * wip new window/native-tab
+  * next as a counter
+  * id as u16
+  * wip id window
+  * VIEW_CLASS_NAME
+  * correction
+  * wip event loop
+  * wip event handler
+  * Sixel Support and WA migration
+
+-------------------------------------------------------------------
+Fri Jun  7 12:12:58 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Remove checksums for config.guess and config.sub for aarch64
+  and ppc64le since they are updated
+
+-------------------------------------------------------------------
 Tue Feb 27 20:16:40 UTC 2024 - androw95220@gmail.com
 
 - Update to version 0.0.35:

@@ -1,22 +1,22 @@
 <services>
-  <service mode="disabled" name="obs_scm">
+  <service mode="manual" name="obs_scm">
     <param name="url">https://github.com/raphamorim/rio.git</param>
-    <param name="versionformat">v0.0.35</param>
+    <param name="versionformat">v0.1.1</param>
     <param name="scm">git</param>
-    <param name="revision">v0.0.35</param>
+    <param name="revision">v0.1.1</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">androw95220@gmail.com</param>
   </service>
-  <service mode="disabled" name="tar" />
-  <service mode="disabled" name="recompress">
+  <service mode="manual" name="tar" />
+  <service mode="manual" name="recompress">
     <param name="file">*.tar</param>
     <param name="compression">zst</param>
   </service>
-  <service mode="disabled" name="set_version"/>
-  <service name="cargo_vendor" mode="disabled">
+  <service mode="manual" name="set_version"/>
+  <service name="cargo_vendor" mode="manual">
      <param name="srcdir">rio</param>
      <param name="compression">zst</param>
      <param name="update">true</param>
