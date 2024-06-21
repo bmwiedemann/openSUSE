@@ -2041,4 +2041,13 @@ those sources for i586 on its own.</comment>
     <comment>No longer filter gettext-tools-mini and gettext-runtime-mini from the repo: the packages now properly require 'this-is-only-for-build-envs'</comment>
     <requestid>1174809</requestid>
   </revision>
+  <revision rev="287" vrev="285">
+    <srcmd5>409cfddbf2dc6d87d2c0b0bfff10bec4</srcmd5>
+    <version>unknown</version>
+    <time>1718978566</time>
+    <user>anag+factory</user>
+    <comment>Add additional ID_LIKE identifier to be shared with SLE Micro
+to ease detection of our immutable OS</comment>
+    <requestid>1181985</requestid>
+  </revision>
 </revisionlist>

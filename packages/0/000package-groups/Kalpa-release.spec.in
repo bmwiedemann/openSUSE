@@ -204,7 +204,7 @@ cat > %{buildroot}%{_prefix}/lib/os-release <<EOF
 NAME="openSUSE Kalpa"
 # VERSION="%{version}%{?betaversion: %{betaversion}}"
 ID="opensuse-kalpa"
-ID_LIKE="suse opensuse opensuse-tumbleweed opensuse-microos"
+ID_LIKE="suse opensuse opensuse-tumbleweed opensuse-microos microos"
 VERSION_ID="$VERSION_ID"
 PRETTY_NAME="openSUSE Kalpa"
 ANSI_COLOR="0;32"

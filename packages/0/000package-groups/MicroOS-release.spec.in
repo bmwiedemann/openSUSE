@@ -209,7 +209,7 @@ cat > %{buildroot}%{_prefix}/lib/os-release <<EOF
 NAME="openSUSE MicroOS"
 # VERSION="%{version}%{?betaversion: %{betaversion}}"
 ID="opensuse-microos"
-ID_LIKE="suse opensuse opensuse-tumbleweed"
+ID_LIKE="suse opensuse opensuse-tumbleweed microos sl-micro"
 VERSION_ID="$VERSION_ID"
 PRETTY_NAME="openSUSE MicroOS"
 ANSI_COLOR="0;32"

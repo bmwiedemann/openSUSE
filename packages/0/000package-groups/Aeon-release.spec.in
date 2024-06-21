@@ -204,7 +204,7 @@ cat > %{buildroot}%{_prefix}/lib/os-release <<EOF
 NAME="openSUSE Aeon"
 # VERSION="%{version}%{?betaversion: %{betaversion}}"
 ID="opensuse-aeon"
-ID_LIKE="suse opensuse opensuse-tumbleweed opensuse-microos"
+ID_LIKE="suse opensuse opensuse-tumbleweed opensuse-microos microos"
 VERSION_ID="$VERSION_ID"
 PRETTY_NAME="openSUSE Aeon"
 ANSI_COLOR="0;32"
