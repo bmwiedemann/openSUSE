@@ -17,7 +17,7 @@
 
 
 Name:           pam-config
-Version:        2.11+git.20240527
+Version:        2.11+git.20240620
 Release:        0
 Summary:        Utility to modify common PAM configuration files
 License:        GPL-2.0-only
