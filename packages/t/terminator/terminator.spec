@@ -1,7 +1,7 @@
 #
 # spec file for package terminator
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,18 @@
 #
 
 
+%define _mtime 1717035565
+%define _commit 730c1fb
+
 %global __requires_exclude typelib\\(Gnome\\)
 Name:           terminator
-Version:        2.1.3
+Version:        2.1.4
 Release:        0
 Summary:        Store and run multiple GNOME terminals in one window
 License:        GPL-2.0-only
 Group:          System/X11/Terminals
 URL:            https://github.com/gnome-terminator/terminator
-Source:         https://github.com/gnome-terminator/terminator/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.%{_mtime}.%{_commit}.tar.gz
 Patch0:         terminator-desktop.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -53,7 +56,7 @@ Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-psutil
 Requires(post): hicolor-icon-theme
-Requires(postun):hicolor-icon-theme
+Requires(postun): hicolor-icon-theme
 BuildArch:      noarch
 
 %description
@@ -66,7 +69,7 @@ arrangements of terminals for different tasks.
 %lang_package
 
 %prep
-%autosetup -p0
+%autosetup -p0 -n %{name}-%{version}.%{_mtime}.%{_commit}
 # https://github.com/gnome-terminator/terminator/issues/554
 sed -i 's:pytest-runner::' setup.py
 # remove pointless shebangs

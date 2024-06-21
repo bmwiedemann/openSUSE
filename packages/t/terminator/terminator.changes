@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Fri May 31 14:12:40 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 2.1.4:
+  + Full Changelog:
+    https://github.com/gnome-terminator/terminator/compare/v2.1.3...v2.1.4
+  + Fix context menu keybinding reading.
+  + Remove hack to ensure that focus is set.
+  + Do not remove focus from the last_active_window
+  + fix drag and drop
+  + Capitalize the first letter for "Read only"
+  + Fix typo in man page
+  + Rewrite terminator.1 man page in AsciiDoc format
+  + Remove settings 'hide_tabbar' and 'disable_real_transparency'
+  + fix: typo in french translation
+  + Remove more unused settings and update the docs accordingly
+  + Rewrite terminator_config.5 man page in AsciiDoc format
+  + Add detachable tabs feature to preferences
+  + Alter get_text_range call based on VTE version
+  + Revert "modify terminator separater size setting in gui to
+    start from 1"
+  + Updates for po/terminator.pot in hr
+  + add new tab after current tab option
+  + [bug 808]
+    Plugins-dont-receive-keboard-signals-on-newly-opened-windows
+  + 805 keyboard shortcut support for plugins code decoupling
+  + Fix Insert Term Name Plugin error
+  + 681 Plugin submission mouseless keyboard url open decoupled
+    code
+  + Document syntax error
+  + Updates for file po/terminator.pot in zh_CN on branch master
+  + Add command line option --toggle-visibility
+  + Enable sixel support in VTE if it's available.
+  + fix: Minor fixes in terminatorlib/configjson.py
+  + feat: Add CLI command to reload configuration
+  + Fix for issue #676: title field not seem to be working with
+    JSON profile
+  + chore: bump ations/checkout (v2 -> v4)
+  + remove deprecated pytest-runner
+  + fix: Remove unused imports in several modules
+  + [bug 802] - Ability to undo or restore changes to the
+    preferences
+  + Fix: Add CLI command to reload configuration
+  + Ask before closing, even if there is only one terminal
+  + Ask before close gui
+  + 706 favorites bookmarks plugin
+  + window.py: Fix window group toggle keybind
+  + [bug 760] working directory feature is broken
+  + add missing @with_proxy
+  + [bug 835]
+    835-crash-after-unzooming-a-single-terminal-inside-a-tab
+  + 846 mouseless keyboard url open fails to extract text and
+    clear search between commands
+  + Updates for file po/terminator.pot in ru
+  + feat: plugin - Save current user layout of all sessions
+  + [bug 843]
+    843-Plugin-SaveLastSessionLayout-not-saving-layout-when-use…
+  + [bug 852] -
+    852-terminator_py_get_focussed_terminal_always_returns_none
+  + fix traceback in layout_done
+  + fix syntax warnings
+  + Properly parse file:/// URIs
+  + Install manpages to share/man on FreeBSD
+- Switch to generating tarball directly from git to harden package
+  against supply chain attacks
+
+-------------------------------------------------------------------
 Mon Mar 13 03:47:53 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 2.1.3:

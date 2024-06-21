@@ -1,0 +1,15 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="versionprefix">2.1.4</param>
+    <param name="url">https://github.com/gnome-terminator/terminator.git</param>
+    <param name="revision">730c1fb2cde620bce9a085a5adf4ffbabfc98334</param>
+    <param name="scm">git</param>
+    <param name="submodules">enable</param>
+    <param name="changesgenerate">disable</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>
