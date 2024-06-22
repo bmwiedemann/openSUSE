@@ -1,0 +1,6 @@
+<package name="krdp6" project="openSUSE:Factory">
+  <title>RDP Server for Plasma</title>
+  <description>RDP Server with settings Module for Plasma.</description>
+  <devel project="KDE:Frameworks" package="krdp6"/>
+  <url>https://invent.kde.org/plasma/krdp</url>
+</package>

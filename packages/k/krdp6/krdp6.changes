@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Thu Jun 13 10:58:29 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.0
+- Changes since 6.0.90:
+  * server: Don't start until after the portal and session is started
+  * server: Properly cleanup SessionWrapper objects (kde#488367,kde#488364)
+  * server: Create a single temporary portal session on server startup
+  * update version for new release
+  * kcmkrdpserver: Use QDBusMessage instead of QDBusInterface (kde#487543)
+  * fix typo in server/Messages.sh
+  * Install translations
+- Drop patches, now upstream:
+  * 0001-Install-translations.patch
+
+-------------------------------------------------------------------
+Sun May 26 19:33:20 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Initial commit
