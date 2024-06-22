@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jun 13 10:58:32 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.0
+- Changes since 6.0.90:
+  * update version for new release
+
+-------------------------------------------------------------------
+Sat May 25 11:18:20 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.90
+- Changes since 6.0.5:
+  * update version for new release
+  * Fix collapse behavior of CPU usage per core (kde#482719)
+  * disks: Filter out root devices from "all" sensors (kde#477983)
+  * cpu: Store physical ID with core ID when looking up coretemp sensors (kde#474766)
+  * cpu: Also consider "temp1" and "temp2" for AMD temperature sensors (kde#452763)
+  * lmsensors: Remove `\x00` from sensor object names (kde#480841)
+  * add a version for dependencies so it does not break CI https://invent.kde.org/plasma/bluedevil/-/merge_requests/156
+
+-------------------------------------------------------------------
 Wed May 22 07:43:06 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.5:
