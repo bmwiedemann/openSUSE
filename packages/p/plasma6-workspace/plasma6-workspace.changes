@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jun 17 20:56:13 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update tarball, got respun
+
+-------------------------------------------------------------------
+Thu Jun 13 18:14:12 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- sddm.conf: Use breeze-openSUSE as theme
+
+-------------------------------------------------------------------
+Thu Jun 13 10:58:53 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.0
+- Too many changes to list here
+- Drop patches, now upstream:
+  * 0001-Authenticate-local-clients.patch
+  * 0002-Remove-iceauth-dependency.patch
+  * 0001-Fix-writing-ICEAuthority-file.patch
+  * 0001-Revert-startkde-Close-systemd-session-when-startplas.patch
+  * 0002-startkde-Close-systemd-session-when-startplasma-exit.patch
+
+-------------------------------------------------------------------
 Mon Jun 10 12:38:47 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix a regression introduced by the preceding change
@@ -6,11 +30,32 @@ Mon Jun 10 12:38:47 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
   * 0001-Fix-writing-ICEAuthority-file.patch
 
 -------------------------------------------------------------------
+Sat Jun  8 11:09:20 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Let plasma6-session require libqt5-qtwayland if necessary
+
+-------------------------------------------------------------------
+Fri Jun  7 19:14:12 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patches to avoid that upgrades to Plasma 6.1 kill existing
+  sessions (kde#488032):
+  * 0001-Revert-startkde-Close-systemd-session-when-startplas.patch
+  * 0002-startkde-Close-systemd-session-when-startplasma-exit.patch
+
+-------------------------------------------------------------------
 Fri May 31 18:56:41 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patches to fix ksmserver authentication (CVE-2024-36041, boo#1225774):
   * 0001-Authenticate-local-clients.patch
   * 0002-Remove-iceauth-dependency.patch
+
+-------------------------------------------------------------------
+Sat May 25 11:19:45 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.90
+- Too many changes to list here
 
 -------------------------------------------------------------------
 Wed May 22 07:43:19 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>

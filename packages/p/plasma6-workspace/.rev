@@ -63,4 +63,12 @@
     <comment></comment>
     <requestid>1179716</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9064673079c3617b3b2e7a7e7a35ae7a</srcmd5>
+    <version>6.1.0</version>
+    <time>1719055363</time>
+    <user>anag+factory</user>
+    <comment>- Update tarball, got respun (forwarded request 1181370 from Vogtinator)</comment>
+    <requestid>1181371</requestid>
+  </revision>
 </revisionlist>

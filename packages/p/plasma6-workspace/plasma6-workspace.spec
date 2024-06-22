@@ -21,7 +21,7 @@
 
 %global __requires_exclude qt6qmlimport\\((org\\.kde\\.plasma\\.private|org\\.kde\\.plasma\\.workspace|org\\.kde\\.notificationmanager|org\\.kde\\.plasma\\.lookandfeel|org\\.kde\\.plasma\\.wallpapers|org\\.kde\\.taskmanager|org\\.kde\\.holidayeventshelperplugin|org\\.kde\\.kscreenlocker).*
 
-%define kf6_version 6.0.0
+%define kf6_version 6.2.0
 %define qt6_version 6.6.0
 %define rname plasma-workspace
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -30,22 +30,19 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-workspace
-Version:        6.0.5
+Version:        6.1.0
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        sddm.conf
 Source4:        waitforkded.conf
 # PATCH-FIX-UPSTREAM
-Patch1:         0001-Authenticate-local-clients.patch
-Patch2:         0002-Remove-iceauth-dependency.patch
-Patch3:         0001-Fix-writing-ICEAuthority-file.patch
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
 Patch501:       0001-Use-qdbus6.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch
@@ -117,6 +114,7 @@ BuildRequires:  cmake(PlasmaActivitiesStats) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(PlasmaQuick) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(PlasmaWaylandProtocols) >= 1.6
 BuildRequires:  cmake(PolkitQt6-1)
+BuildRequires:  cmake(QCoro6)
 BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
@@ -292,10 +290,15 @@ Requires:       systemsettings6 >= %{_plasma6_bugfix}
 # For KF5 kwayland (!)
 Requires:       (kwayland-integration6 if kwayland)
 Requires:       qt6-wayland
+Requires:       (libqt5-qtwayland if libQt5Gui5)
 # For screen sharing and window thumbnails in plasmashell
 Requires:       pipewire
 Requires:       xdg-user-dirs
 Requires:       xorg-x11-server-wayland
+Provides:       kdebase4-session = %{version}
+Obsoletes:      kdebase4-session < %{version}
+Provides:       plasma5-session = %{version}
+Obsoletes:      plasma5-session < %{version}
 Provides:       plasma5-session-wayland = %{version}
 Obsoletes:      plasma5-session-wayland < %{version}
 # People may want the X11 session
@@ -314,10 +317,6 @@ Requires:       xf86-input-libinput
 Requires:       xorg-x11-server
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Provides:       kdebase4-session = %{version}
-Obsoletes:      kdebase4-session < %{version}
-Provides:       plasma5-session = %{version}
-Obsoletes:      plasma5-session < %{version}
 
 %description -n plasma6-session-x11
 This package contains the startup scripts and programs necessary to
@@ -325,7 +324,7 @@ start a KDE Plasma 6 session on X11.
 
 %package -n sddm-qt6-branding-openSUSE
 Summary:        Plasma 6 branding for SDDM
-Requires:       %{name} = %{version}
+Requires:       plasma6-sddm-theme-openSUSE
 Requires:       sddm-greeter-qt6
 Supplements:    (%{name} and sddm)
 
@@ -420,7 +419,7 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_applicationsdir}/kcm_fonts.desktop
 %{_kf6_applicationsdir}/kcm_icons.desktop
 %{_kf6_applicationsdir}/kcm_lookandfeel.desktop
-%{_kf6_applicationsdir}/kcm_nightcolor.desktop
+%{_kf6_applicationsdir}/kcm_nightlight.desktop
 %{_kf6_applicationsdir}/kcm_notifications.desktop
 %{_kf6_applicationsdir}/kcm_regionandlang.desktop
 %{_kf6_applicationsdir}/kcm_soundtheme.desktop
@@ -428,7 +427,9 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_applicationsdir}/kcm_users.desktop
 %{_kf6_applicationsdir}/kcm_wallpaper.desktop
 %{_kf6_applicationsdir}/org.kde.kcolorschemeeditor.desktop
+%{_kf6_applicationsdir}/org.kde.kfontinst.desktop
 %{_kf6_applicationsdir}/org.kde.kfontview.desktop
+%{_kf6_applicationsdir}/org.kde.plasma-fallback-session-save.desktop
 %{_kf6_applicationsdir}/org.kde.plasmashell.desktop
 %{_kf6_applicationsdir}/org.kde.plasmawindowed.desktop
 %{_kf6_appstreamdir}/*.xml
@@ -457,6 +458,7 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_bindir}/startplasma-wayland
 %{_kf6_bindir}/xembedsniproxy
 %{_kf6_configdir}/autostart/gmenudbusmenuproxy.desktop
+%{_kf6_configdir}/autostart/org.kde.plasma-fallback-session-restore.desktop
 %{_kf6_configdir}/autostart/org.kde.plasmashell.desktop
 %{_kf6_configdir}/autostart/xembedsniproxy.desktop
 %{_kf6_configkcfgdir}/colorssettings.kcfg
@@ -513,7 +515,6 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_plugindir}/plasmacalendarplugins/
 %{_kf6_qmldir}/org/kde/breeze/
 %{_kf6_qmldir}/org/kde/colorcorrect/
-%{_kf6_qmldir}/org/kde/holidayeventshelperplugin/
 %{_kf6_qmldir}/org/kde/notificationmanager/
 %{_kf6_qmldir}/org/kde/plasma/
 %{_kf6_qmldir}/org/kde/taskmanager/
@@ -537,11 +538,10 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_sharedir}/konqsidebartng/
 %{_kf6_sharedir}/krunner/dbusplugins/plasma-runner-baloosearch.desktop
 %{_kf6_sharedir}/kstyle/
+%dir %{_kf6_sharedir}/plasma/weather
+%{_kf6_sharedir}/plasma/weather/noaa_station_list.xml
 %{_kf6_sharedir}/plasma5support/
 %{_kf6_sharedir}/polkit-1/actions/org.kde.fontinst.policy
-%dir %{_kf6_sharedir}/sddm
-%dir %{_kf6_sharedir}/sddm/themes
-%{_kf6_sharedir}/sddm/themes/breeze/
 %{_kf6_sharedir}/solid/
 %{_libexecdir}/baloorunner
 %{_kf6_libexecdir}/kauth/fontinst
@@ -551,6 +551,8 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_libexecdir}/ksmserver-logout-greeter
 %{_libexecdir}/plasma-changeicons
 %{_libexecdir}/plasma-dbus-run-session-if-needed
+%{_libexecdir}/plasma-fallback-session-restore
+%{_libexecdir}/plasma-fallback-session-save
 %{_libexecdir}/plasma-sourceenv.sh
 %{_userunitdir}/plasma-baloorunner.service
 %{_userunitdir}/plasma-core.target
@@ -573,6 +575,7 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %license LICENSES/*
 %{_kf6_libdir}/libcolorcorrect.so.*
 %{_kf6_libdir}/libkmpris.so.*
+%{_kf6_libdir}/libbatterycontrol.so.*
 %{_kf6_libdir}/libkrdb.so
 %{_kf6_libdir}/libkworkspace6.so.*
 %{_kf6_libdir}/libnotificationmanager.so.*
@@ -595,6 +598,7 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_libdir}/cmake/LibKWorkspace/
 %{_kf6_libdir}/cmake/LibNotificationManager/
 %{_kf6_libdir}/cmake/LibTaskManager/
+%{_kf6_libdir}/libbatterycontrol.so
 %{_kf6_libdir}/libcolorcorrect.so
 %{_kf6_libdir}/libkmpris.so
 %{_kf6_libdir}/libkworkspace6.so
