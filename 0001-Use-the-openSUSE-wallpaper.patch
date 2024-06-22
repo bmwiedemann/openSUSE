@@ -1,45 +1,34 @@
-From 415dd3c73947089cd567754b3237017b7b4e5725 Mon Sep 17 00:00:00 2001
-From: Fabian Vogt <fabian@ritter-vogt.de>
-Date: Fri, 20 Jan 2023 10:27:14 +0100
+From fb7b5af1ef98643e84d40e58174d48ba22723253 Mon Sep 17 00:00:00 2001
+From: Luca Beltrame <lbeltrame@kde.org>
+Date: Fri, 12 Apr 2024 07:51:45 +0200
 Subject: [PATCH] Use the openSUSE wallpaper
 
 This is unfortunately hardcoded. Use our default to more likely match what
 the user sees.
 ---
- src/contents/ui/pages/Network.qml | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ src/qml/mock/MockDesktop.qml | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/src/contents/ui/pages/Network.qml b/src/contents/ui/pages/Network.qml
-index ed2c445..02cf3c9 100644
---- a/src/contents/ui/pages/Network.qml
-+++ b/src/contents/ui/pages/Network.qml
-@@ -74,10 +74,10 @@ GenericPage {
-             Image {
-                 anchors.fill: parent
-                 fillMode: Image.PreserveAspectCrop
--                source: "file:" + Controller.installPrefix() + "/share/wallpapers/Next/contents/images/1024x768.png"
-+                source: "file:" + Controller.installPrefix() + "/share/wallpapers/openSUSEdefault/contents/images/1280x1024.jpg"
-                 // anchor the image to the bottom-right corner of the "screen"
--                sourceClipRect: Qt.rect(1024-parent.width,
--                                        768-parent.height,
-+                sourceClipRect: Qt.rect(1280-parent.width,
-+                                        1024-parent.height,
-                                         parent.width,
-                                         parent.height)
-             }
-@@ -86,9 +86,9 @@ GenericPage {
-             Image {
-                 anchors.fill: panelContainer
-                 fillMode: Image.PreserveAspectCrop
--                source: "file:" + Controller.installPrefix() + "/share/wallpapers/Next/contents/images/1024x768.png"
--                sourceClipRect: Qt.rect(1024-panelContainer.width,
--                                        768-panelContainer.height,
-+                source: "file:" + Controller.installPrefix() + "/share/wallpapers/openSUSEdefault/contents/images/1280x1024.jpg"
-+                sourceClipRect: Qt.rect(1280-panelContainer.width,
-+                                        1024-panelContainer.height,
-                                         panelContainer.width,
-                                         panelContainer.height)
+diff --git a/src/qml/mock/MockDesktop.qml b/src/qml/mock/MockDesktop.qml
+index d9c906c..19c7b26 100644
+--- a/src/qml/mock/MockDesktop.qml
++++ b/src/qml/mock/MockDesktop.qml
+@@ -14,12 +14,12 @@ Item {
  
+     property int backgroundAlignment: Qt.AlignRight | Qt.AlignBottom
+ 
+-    readonly property string wallpaper: "file:" + Controller.installPrefix() + "/share/wallpapers/Next/contents/images/1280x800.png"
++    readonly property string wallpaper: "file:" + Controller.installPrefix() + "/share/wallpapers/openSUSEdefault/contents/images/1280x1024.png"
+     readonly property int desktopWidth: 1280
+-    readonly property int desktopHeight: 800
++    readonly property int desktopHeight: 1024
+ 
+     /*
+-     * 1280x800 is chosen to look good at normal window sizes: The aspect closely
++     * 1280x1024 is chosen to look good at normal window sizes: The aspect closely
+      * matches that of the mock as shown in the application and is not too large.
+      *
+      * The background be positioned according to the alignment, and expand to fit
 -- 
-2.41.0
+2.44.0
 
