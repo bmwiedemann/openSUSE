@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rspec-rails
-Version:        6.1.1
+Version:        6.1.3
 Release:        0
 %define mod_name rspec-rails
 %define mod_full_name %{mod_name}-%{version}
