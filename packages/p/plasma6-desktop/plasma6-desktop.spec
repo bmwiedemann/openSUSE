@@ -21,7 +21,7 @@
 %global __requires_exclude qt6qmlimport\\((org\\.kde\\.plasma\\.shell\\.panel|org\\.kde\\.plasma\\.private).*
 # %%global __requires_exclude qt6qmlimport\\((org\\.kde\\.private\\.kcms|org\\.kde\\.plasma\\.kcm|org\\.kde\\.desktopsession\\.private|org\\.kde\\.plasma\\.tablet|org\\.kde\\.plasma\\.touchscreen\\.kcm).*
 
-%define kf6_version 6.0.0
+%define kf6_version 6.2.0
 %define qt6_version 6.6.0
 
 %define rname plasma-desktop
@@ -31,14 +31,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-desktop
-Version:        6.0.5
+Version:        6.1.0
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-only
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -133,6 +133,7 @@ BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xkbfile)
+BuildRequires:  pkgconfig(xkbregistry)
 %ifnarch s390x
 BuildRequires:  pkgconfig(xorg-evdev)
 BuildRequires:  pkgconfig(xorg-libinput)
@@ -148,7 +149,7 @@ Requires:       qt6-sql-sqlite >= %{qt6_version}
 # Various KCMs use it
 Requires:       kinfocenter6
 Requires:       kf6-kirigami-imports >= %{kf6_version}
-Requires:       kirigami-addons6 >= 0.10.0
+Requires:       kirigami-addons6 >= 1.0.0
 Requires:       kmenuedit6
 # Needed for sensors
 Requires:       libksysguard6-imports  >= %{_plasma6_bugfix}
@@ -350,6 +351,9 @@ rm -rv %{buildroot}%{_kf6_sharedir}/dbus-1/interfaces/
 %{_kf6_sharedir}/kcmkeys/
 %{_kf6_sharedir}/kcmsolidactions/
 %{_kf6_sharedir}/polkit-1/actions/org.kde.kcontrol.kcmclock.policy
+%dir %{_kf6_sharedir}/sddm
+%dir %{_kf6_sharedir}/sddm/themes
+%{_kf6_sharedir}/sddm/themes/breeze/
 %{_kf6_sharedir}/solid/
 %{_kf6_libexecdir}/kauth/kcmdatetimehelper
 %{_kf6_iconsdir}/hicolor/*/devices/input-touchpad.*
