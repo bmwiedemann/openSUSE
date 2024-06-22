@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 20 15:44:47 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 24.07:
+  * The bug was fixed: 7-Zip could crash for some incorrect ZSTD archives.
+
+-------------------------------------------------------------------
 Thu Jun  6 20:49:59 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 24.06:
