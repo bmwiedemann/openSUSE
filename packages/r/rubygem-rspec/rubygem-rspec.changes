@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Apr 23 05:57:23 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 3.13.0
+
+3.13.0 / 2024-02-04
+
+Enhancements:
+
+* Support the `--backtrace` flag when using the JSON formatter. (Matt Larraz, #2980)
+* Ignore commented out lines in CLI config files (e.g. `.rspec`). (Junichi Ito, #2984)
+* Add `pending_failure_output` config option to allow skipping backtraces or
+  muting pending specs output. (Phil Pirozhkov, #2957)
+* Process `--dry-run` before configuration flags that read files so that introspecting
+  it returns the correct value. (Xenor Chang, #3008)
+* Allow specifying custom ordering strategies via `--order`. (Jon Rowe, #3025)
+* Use the improved `syntax_suggest` output for `SyntaxError` when available.
+  (Richard Schneeman, #3015, #3026)
+* Add config option (`RSpec::Core::Configuration#full_cause_backtrace`) to print the
+  entire backtrace of an exception cause. (David Taylor, #3046)
+
+### 3.12.3 / 2024-02-04
+
+Bug fixes:
+
+* Use `__send__` in output wrapper to avoid issues with IO objects that implement `send`
+  like `Socket`. (Richard Platel, #3045)
+
+### 3.12.2 / 2023-04-18
+
+Bug fixes:
+
+* Remove link to outdated documentation in generated output. (Jon Rowe, #3035)
+
+### 3.12.1 / 2023-02-03
+
+Bug fixes:
+
+* Prevent multiple calls to `extra_failure_lines` from adding additional whitespace
+  around them when the lines already contain whitespace. (Jon Rowe, #3006)
+
+-------------------------------------------------------------------
 Fri Oct 28 05:05:03 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 3.12.0

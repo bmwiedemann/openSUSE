@@ -124,4 +124,12 @@
 </comment>
     <requestid>1032154</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a55d32b063357ca1c445ab4eaca5dd79</srcmd5>
+    <version>3.13.0</version>
+    <time>1719055368</time>
+    <user>anag+factory</user>
+    <comment>New upstream release 3.13.0</comment>
+    <requestid>1169800</requestid>
+  </revision>
 </revisionlist>
