@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Jun 13 10:58:43 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.0
+- Changes since 6.0.90:
+  * update version for new release
+  * appstream versions
+  * update version for new release
+  * Check backend for null before deleting (kde#485101)
+
+-------------------------------------------------------------------
+Sat May 25 11:19:16 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.90
+- Changes since 6.0.5:
+  * update version for new release
+  * merge versions
+  * appstream update
+  * Port to Kirigami version of ContextualHelpButton
+  * kcm: simplfy "Firewall is disabled" explanatory text
+  * appstream: add url pointing to kde.org/plasma-desktop
+  * Clean appstream versions, fixes appstreamtest
+  * kcm: move backend info onto the page
+  * kcm: move switch into the header too
+  * kcm: hide disabled actions instead of disabling them
+  * kcm: give the placeholder message appropriate icons
+  * kcm: use a switch to enable and disable it
+  * Move footer actions to header
+  * Remove usage of extraFooterTopPadding
+  * Remove extraFooterTopPadding usage
+
+-------------------------------------------------------------------
 Wed May 22 07:43:13 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.5:
