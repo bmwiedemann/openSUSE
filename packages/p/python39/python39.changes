@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 21 09:44:24 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2024-0397-memrace_ssl.SSLContext_cert_store.patch
+  fixing bsc#1226447 (CVE-2024-0397) by removing memory race
+  condition in ssl.SSLContext certificate store methods.
+
+-------------------------------------------------------------------
 Sun Mar 24 00:43:14 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add old-libexpat.patch making the test suite work with

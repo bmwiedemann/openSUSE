@@ -1084,4 +1084,14 @@
 </comment>
     <requestid>1161042</requestid>
   </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>0814c62f38794acbe6e3c3dc39be798f</srcmd5>
+    <version>3.9.19</version>
+    <time>1719055404</time>
+    <user>anag+factory</user>
+    <comment>- Add CVE-2024-0397-memrace_ssl.SSLContext_cert_store.patch
+  fixing bsc#1226447 (CVE-2024-0397) by removing memory race
+  condition in ssl.SSLContext certificate store methods.</comment>
+    <requestid>1182485</requestid>
+  </revision>
 </revisionlist>
