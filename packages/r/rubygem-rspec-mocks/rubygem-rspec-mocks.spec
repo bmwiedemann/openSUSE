@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rspec-mocks
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rspec-mocks
-Version:        3.12.6
+Version:        3.13.1
 Release:        0
 %define mod_name rspec-mocks
 %define mod_full_name %{mod_name}-%{version}
