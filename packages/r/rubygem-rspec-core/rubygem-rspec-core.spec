@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rspec-core
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,11 @@
 #
 
 Name:           rubygem-rspec-core
-Version:        3.12.2
+Version:        3.13.0
 Release:        0
 %define mod_name rspec-core
 %define mod_full_name %{mod_name}-%{version}
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 1.8.7}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
@@ -38,6 +39,7 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        RSpec runner and formatters
 License:        MIT
+Group:          Development/Languages/Ruby
 PreReq:         update-alternatives
 
 %description

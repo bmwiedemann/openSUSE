@@ -299,4 +299,13 @@
     <comment></comment>
     <requestid>1126299</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>6dfe553f10ed443bb3f261de789e4a2b</srcmd5>
+    <version>3.13.0</version>
+    <time>1719055367</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.13.3
+  See bundled Changelog.md (forwarded request 1169089 from gladiac)</comment>
+    <requestid>1169132</requestid>
+  </revision>
 </revisionlist>
