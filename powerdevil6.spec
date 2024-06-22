@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.2.0
 %define qt6_version 6.6.0
 
 %define rname powerdevil
 %bcond_without released
 Name:           powerdevil6
-Version:        6.0.5
+Version:        6.1.0
 Release:        0
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -31,11 +31,13 @@ Release:        0
 Summary:        KDE Power Management module
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-BREAK-OPENSUSE waiting for review (boo#1226424)
+Patch1:         0001-Revert-Added-setting-for-battery-conservation-mode-L.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 # Needed by FindLibcap.cmake
 BuildRequires:  libcap-progs
@@ -136,8 +138,6 @@ rm -rv %{buildroot}%{_kf6_libdir}/libpowerdevil{core,configcommonprivate}.so
 %{_kf6_plugindir}/powerdevil/action/powerdevil_powerprofileaction.so
 %{_kf6_plugindir}/powerdevil/action/powerdevil_runscriptaction.so
 %{_kf6_plugindir}/powerdevil/action/powerdevil_suspendsessionaction.so
-%dir %{_kf6_plugindir}/kf6/powerdevil/
-%{_kf6_plugindir}/kf6/powerdevil/powerdevilupowerbackend.so
 %{_kf6_sharedir}/dbus-1/services/org.kde.powerdevil.powerProfileOsdService.service
 %{_kf6_sharedir}/dbus-1/system-services/org.kde.powerdevil.backlighthelper.service
 %{_kf6_sharedir}/dbus-1/system-services/org.kde.powerdevil.chargethresholdhelper.service
