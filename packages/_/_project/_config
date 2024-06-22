@@ -627,6 +627,9 @@ Prefer: -registries-conf-suse
 # have choice for cmake(cmocka): libcmocka-cmake libcmocka-cmake-32bit
 Prefer: -libcmocka-cmake-32bit 
 
+#have choice for libcurl.so.4()(64bit) needed by cargo1.79: libcurl-mini4 libcurl4
+Prefer: -libcurl-mini4 
+
 #---
 
 Preinstall: aaa_base filesystem attr bash bash-sh coreutils diffutils
