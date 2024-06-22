@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Jun 20 07:57:01 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.50:
+  * New set of process spawn functions. [T6249]
+  * Fixed return type for gpgrt_b64dec_proc and gpgrt_b64dec_finish
+    to gpg_err_code_t.  This enum return type is in almost all cases
+    compatible to the formerly used gpg_error_t (i.e. unsigned int).
+  * Interface changes relative to the 1.49 release:
+      gpgrt_process_t                     CHANGED (never used).
+      gpgrt_spawn_actions_t               NEW type.
+      gpgrt_process_requests              NEW enum.
+      gpgrt_process_spawn                 NEW.
+      gpgrt_process_terminate             NEW.
+      gpgrt_process_get_streams           NEW.
+      gpgrt_process_ctl                   NEW.
+      gpgrt_process_wait                  NEW.
+      gpgrt_process_release               NEW.
+      gpgrt_spawn_actions_new             NEW.
+      gpgrt_spawn_actions_release         NEW.
+      gpgrt_spawn_actions_set_redirect    NEW.
+      gpgrt_spawn_actions_set_environ     NEW (posix only).
+      gpgrt_spawn_actions_set_inherit_fds NEW (posix only).
+      gpgrt_spawn_actions_set_atfork      NEW (posix only).
+      gpgrt_spawn_actions_set_envvars     NEW (w32 only).
+      gpgrt_spawn_actions_set_inherit_handles NEW (w32 only).
+      GPGRT_PROCESS_DETACHED              NEW.
+      GPGRT_PROCESS_NO_CONSOLE            NEW.
+      GPGRT_PROCESS_NO_EUID_CHECK         NEW.
+      GPGRT_PROCESS_STDIN_PIPE            NEW.
+      GPGRT_PROCESS_STDOUT_PIPE           NEW.
+      GPGRT_PROCESS_STDERR_PIPE           NEW.
+      GPGRT_PROCESS_STDINOUT_SOCKETPAIR   NEW.
+      GPGRT_PROCESS_STDIN_KEEP            NEW.
+      GPGRT_PROCESS_STDOUT_KEEP           NEW.
+      GPGRT_PROCESS_STDERR_KEEP           NEW.
+      GPGRT_PROCESS_STDFDS_SETTING        NEW.
+      GPGRT_SPAWN_INHERIT_FILE            REMOVED (never used).
+      GPGRT_SPAWN_NONBLOCK                REMOVED (never used).
+      GPGRT_SPAWN_RUN_ASFW                REMOVED (never used).
+      GPGRT_SPAWN_DETACHED                REMOVED (never used).
+      GPGRT_SPAWN_KEEP_STDIN              REMOVED (never used).
+      GPGRT_SPAWN_KEEP_STDOUT             REMOVED (never used).
+      GPGRT_SPAWN_KEEP_STDERR             REMOVED (never used).
+  * Release-info: https://dev.gnupg.org/T7102
+
+-------------------------------------------------------------------
 Mon Apr 29 06:32:24 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.49:

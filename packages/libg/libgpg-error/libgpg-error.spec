@@ -17,7 +17,7 @@
 
 
 Name:           libgpg-error
-Version:        1.49
+Version:        1.50
 Release:        0
 Summary:        Library That Defines Common Error Values for All GnuPG Components
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
