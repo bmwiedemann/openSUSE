@@ -7,20 +7,20 @@ Subject: [PATCH] Warning for FlatHub
  .../backends/FlatpakBackend/FlatpakSourcesBackend.cpp      | 14 +++++++++++++-
  1 file changed, 13 insertions(+), 1 deletion(-)
 
-Index: discover-5.17.80git.20230205T022020~5f7a4d0/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp
+Index: discover-%{_plasma6_version}git.20240314T013804~34410c0/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp
 ===================================================================
---- discover-5.17.80git.20230205T022020~5f7a4d0.orig/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp	2023-02-05 03:20:20.000000000 +0100
-+++ discover-5.17.80git.20230205T022020~5f7a4d0/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp	2023-02-05 09:36:13.879836533 +0100
-@@ -12,6 +12,8 @@
- #include <KLocalizedString>
- #include <KSharedConfig>
- #include <QDebug>
+--- discover-%{_plasma6_version}git.20240314T013804~34410c0.orig/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp
++++ discover-%{_plasma6_version}git.20240314T013804~34410c0/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp
+@@ -18,6 +18,8 @@
+ 
+ #include <QStandardPaths>
+ #include <QTemporaryFile>
 +#include <QAbstractButton>
 +#include <QMessageBox>
- #include <QNetworkAccessManager>
- #include <QNetworkReply>
-
-@@ -96,7 +98,17 @@
+ #include <glib.h>
+ #include <resources/DiscoverAction.h>
+ #include <resources/StoredResultsStream.h>
+@@ -99,7 +101,17 @@ FlatpakSourcesBackend::FlatpakSourcesBac
      m_flathubAction->setObjectName(QStringLiteral("flathub"));
      m_flathubAction->setToolTip(i18n("Makes it possible to easily install the applications listed in https://flathub.org"));
      connect(m_flathubAction, &DiscoverAction::triggered, this, [this]() {
@@ -37,5 +37,5 @@ Index: discover-5.17.80git.20230205T022020~5f7a4d0/libdiscover/backends/FlatpakB
 +        warnBox->setAttribute(Qt::WA_DeleteOnClose);
 +        warnBox->show();
      });
-
+ 
      m_noSourcesItem->setEnabled(false);

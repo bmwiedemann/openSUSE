@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jun 13 10:58:22 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.0
+- Changes since 6.0.90:
+  * update version for new release
+  * appstream versions
+  * update version for new release
+  * flatpak: Fix test
+  * FwupdBackend: Use the new symbol name with fwupd 2.0.x
+  * flatpak: Allow building with flatpaks older than 1.15
+- Drop patches, now upstream:
+  * 0001-flatpak-Allow-building-with-flatpaks-older-than-1.15.patch
+
+-------------------------------------------------------------------
+Wed May 29 06:19:26 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix build on older distros:
+  * 0001-flatpak-Allow-building-with-flatpaks-older-than-1.15.patch
+
+-------------------------------------------------------------------
+Sat May 25 11:17:48 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.90
+- Too many changes to list here
+- Refresh 0001-Warning-for-FlatHub.patch
+
+-------------------------------------------------------------------
 Wed May 22 07:42:59 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.5:
