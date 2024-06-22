@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jun 20 15:22:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add multibuild for minimal libcurl flavored build (useful for
+  container environments)
+
+-------------------------------------------------------------------
+Thu Jun 20 14:58:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- split zsh and fish completion into subpackages to have
+  proper supplements
+
+-------------------------------------------------------------------
+Mon Jun 17 21:29:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- remove mozilla-nss code (unsupported since 8.3.0)
+
+-------------------------------------------------------------------
 Fri May 24 11:05:25 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix make install for curl-config.1
@@ -420,7 +437,7 @@ Wed Jul 19 06:22:14 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
     - curl: add --trace-ids
     - CURLOPT_MAIL_RCPT_ALLOWFAILS: replace CURLOPT_MAIL_RCPT_ALLLOWFAILS
     - haproxy: add --haproxy-clientip flag to set client IPs
-    - lib: add CURLINFO_CONN_ID and CURLINFO_XFER_ID 
+    - lib: add CURLINFO_CONN_ID and CURLINFO_XFER_ID
   * Bugfixes:
     - cf-socket: don't bypass fclosesocket callback if cancelled before connect
     - cf-socket: skip getpeername()/getsockname for TFTP
@@ -449,7 +466,7 @@ Wed Jul 19 06:22:14 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
     - urlapi: scheme must start with alpha
     - vtls: avoid memory leak if sha256 call fails
     - websocket-cb: example doing WebSocket download using callback
-    - ws: make the curl_ws_meta() return pointer a const 
+    - ws: make the curl_ws_meta() return pointer a const
 
 -------------------------------------------------------------------
 Tue May 30 09:08:35 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
@@ -505,7 +522,7 @@ Wed May 17 08:13:32 UTC 2023 - David Anes <david.anes@suse.com>
     - curl: add --proxy-http2
     - CURLPROXY_HTTPS2: for HTTPS proxy that may speak HTTP/2
     - hostip: refuse to resolve the .onion TLD
-    - tool_writeout: add URL component variables  
+    - tool_writeout: add URL component variables
   * Bugfixes:
     - See full changelog here: https://curl.se/changes.html#8_1_0
 
@@ -528,7 +545,7 @@ Mon Mar 20 07:19:32 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
     - HSTS double-free [bsc#1209213, CVE-2023-27537]
     - SSH connection too eager reuse still [bsc#1209214, CVE-2023-27538]
   * Changes:
-    - build: remove support for curl_off_t < 8 bytes 
+    - build: remove support for curl_off_t < 8 bytes
   * Bugfixes:
     - aws_sigv4: fall back to UNSIGNED-PAYLOAD for sign_as_s3
     - BINDINGS: add Fortran binding
@@ -640,7 +657,7 @@ Wed Feb 15 08:39:24 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 -------------------------------------------------------------------
 Wed Dec 21 08:19:23 UTC 2022 - David Anes <david.anes@suse.com>
 
-- Update to 7.87.0: 
+- Update to 7.87.0:
   * Security fixes:
     - CVE-2022-43551, bsc#1206308: another HSTS bypass via IDN
     - CVE-2022-43552, bsc#1206309: HTTP Proxy deny use-after-free
@@ -649,7 +666,7 @@ Wed Dec 21 08:19:23 UTC 2022 - David Anes <david.anes@suse.com>
     - CURLOPT_QUICK_EXIT: don't wait for DNS thread on exit
     - lib: add CURL_WRITEFUNC_ERROR to signal write callback error
     - openssl: reduce CA certificate bundle reparsing by caching
-    - version: add a feature names array to curl_version_info_data 
+    - version: add a feature names array to curl_version_info_data
   * Bugfixes
     - altsvc: fix rejection of negative port numbers
     - aws_sigv4: consult x-%s-content-sha256 for payload hash
@@ -805,7 +822,7 @@ Wed Dec 21 08:19:23 UTC 2022 - David Anes <david.anes@suse.com>
     - winidn: drop WANT_IDN_PROTOTYPES
     - ws: if no connection is around, return error
     - ws: return CURLE_NOT_BUILT_IN when websockets not built in
-    - x509asn1: avoid freeing unallocated pointers 
+    - x509asn1: avoid freeing unallocated pointers
 
 -------------------------------------------------------------------
 Wed Nov 16 03:09:27 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
@@ -972,7 +989,7 @@ Wed Aug 31 07:34:20 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 -------------------------------------------------------------------
 Sun Jul 24 19:37:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- add tests-for-32bit.patch to fix testsuite on 32bit platforms 
+- add tests-for-32bit.patch to fix testsuite on 32bit platforms
 
 -------------------------------------------------------------------
 Mon Jun 27 14:36:10 UTC 2022 - David Anes <david.anes@suse.com>
@@ -991,7 +1008,7 @@ Mon Jun 27 14:36:10 UTC 2022 - David Anes <david.anes@suse.com>
     - lib: make curl_global_init() threadsafe when possible
     - libssh2: add CURLOPT_SSH_HOSTKEYFUNCTION
     - opts: deprecate RANDOM_FILE and EGDSOCKET
-    - socks: support unix sockets for socks proxy 
+    - socks: support unix sockets for socks proxy
   * Bugfixes:
     - aws-sigv4: fix potentional NULL pointer arithmetic
     - bindlocal: don't use a random port if port number would wrap
@@ -1115,14 +1132,14 @@ Mon Jun 27 14:36:10 UTC 2022 - David Anes <david.anes@suse.com>
     - wolfssh.h: removed
     - wolfssl: correct the failf() message when a handle can't be made
     - wolfSSL: explicitly use compatibility layer
-    - x509asn1: mark msnprintf return as unchecked 
+    - x509asn1: mark msnprintf return as unchecked
 
 -------------------------------------------------------------------
 Wed May 11 07:11:50 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Update to 7.83.1:
   * Security fixes:
-    - (bsc#1199225, CVE-2022-30115) HSTS bypass via trailing dot 
+    - (bsc#1199225, CVE-2022-30115) HSTS bypass via trailing dot
     - (bsc#1199224, CVE-2022-27782) TLS and SSH connection too eager reuse
     - (bsc#1199223, CVE-2022-27781) CERTINFO never-ending busy-loop
     - (bsc#1199222, CVE-2022-27780) percent-encoded path separator in URL host
@@ -1169,7 +1186,7 @@ Wed May 11 07:11:50 UTC 2022 - David Anes <david.anes@suse.com>
     - url: check SSH config match on connection reuse
     - urlapi: address (harmless) UndefinedBehavior sanitizer warning
     - urlapi: reject percent-decoding host name into separator bytes
-    - x509asn1: make do_pubkey handle EC public keys 
+    - x509asn1: make do_pubkey handle EC public keys
 
 -------------------------------------------------------------------
 Fri Apr 22 11:39:46 UTC 2022 - David Anes <david.anes@suse.com>
@@ -1177,7 +1194,7 @@ Fri Apr 22 11:39:46 UTC 2022 - David Anes <david.anes@suse.com>
 - Patches rework:
   * Refreshed all patches as -p1.
   * Use autopatch macro.
-  * Renamed: 
+  * Renamed:
     - dont-mess-with-rpmoptflags.diff -> dont-mess-with-rpmoptflags.patch
   * Removed (already upstream):
     - curl-fix-verifyhost.patch
@@ -1194,7 +1211,7 @@ Fri Apr 22 11:39:46 UTC 2022 - David Anes <david.anes@suse.com>
     - curl: add --no-clobber
     - curl: add --remove-on-error
     - header api: add curl_easy_header and curl_easy_nextheader
-    - msh3: add support for QUIC and HTTP/3 using msh3 
+    - msh3: add support for QUIC and HTTP/3 using msh3
   * Bugfixes:
     - appveyor: add Cygwin build
     - appveyor: only add MSYS2 to PATH where required
@@ -1320,7 +1337,7 @@ Fri Apr 22 11:39:46 UTC 2022 - David Anes <david.anes@suse.com>
     - vtls: use a generic "ALPN, server accepted" message
     - winbuild/README.md: fixup dead link
     - winbuild: Add a Visual Studio example to the README
-    - wolfssl: fix compiler error without IPv6 
+    - wolfssl: fix compiler error without IPv6
 
 -------------------------------------------------------------------
 Fri Mar 11 16:36:50 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
@@ -1546,7 +1563,7 @@ Wed Sep 22 11:17:15 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
     - http: fix the broken >3 digit response code detection
     - strerror: use sys_errlist instead of strerror on Windows
     - test1184: disable: https://github.com/curl/curl/issues/7725
-    - tests/sshserver.pl: make it work with openssh-8.7p1 
+    - tests/sshserver.pl: make it work with openssh-8.7p1
 
 -------------------------------------------------------------------
 Wed Sep 15 15:08:18 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
@@ -1670,7 +1687,7 @@ Wed May 26 07:47:00 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
     - curl: ignore options asking for SSLv2 or SSLv3
     - hsts: enable by default
     - SSL: support in-memory CA certs for some backends
-    - vtls: refuse setting any SSL version 
+    - vtls: refuse setting any SSL version
   * Bugfixes:
     - configure: provide --with-openssl, deprecate --with-ssl
     - cookie: CURLOPT_COOKIEFILE set to NULL switches off cookies
@@ -1768,7 +1785,7 @@ Thu Feb  4 11:20:22 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
     - dns: extend CURLOPT_RESOLVE syntax for adding non-permanent entries
     - gopher: implement secure gopher protocol
     - http: add Hyper as new optional HTTP backend
-    - http: introduce AWS HTTP v4 Signature support 
+    - http: introduce AWS HTTP v4 Signature support
   * Bugfixes:
     - cmake: Add an option to disable libidn2
     - cmake: enable gophers correctly in curl-config
@@ -1796,12 +1813,12 @@ Thu Feb  4 11:20:22 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 -------------------------------------------------------------------
 Fri Dec 18 20:04:33 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
-- Enable zstd and brotli support 
+- Enable zstd and brotli support
 
 -------------------------------------------------------------------
 Mon Dec 14 15:25:07 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 
-- Update to 7.74.0 
+- Update to 7.74.0
   * Changes:
     hsts: add experimental support for Strict-Transport-Security
   * Bugfixes:
@@ -1863,7 +1880,7 @@ Wed Oct 14 21:29:48 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
     - mqtt: enable by default
     - sftp: add new quote commands 'atime' and 'mtime'
     - ssh: add the option CURLKHSTAT_FINE_REPLACE
-    - tls: add CURLOPT_SSL_EC_CURVES and --curves 
+    - tls: add CURLOPT_SSL_EC_CURVES and --curves
   * Bugfixes:
     - base64: also build for smtp, pop3 and imap
     - cleanups: avoid curl_ on local variables
@@ -1991,7 +2008,7 @@ Wed Jul  1 12:59:25 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com
     - terminology: call them null-terminated strings
     - tool_cb_hdr: Fix etag warning output and return code
     - url: allow user + password to contain "control codes" for HTTP(S)
-    - vtls: compare cert blob when finding a connection to reuse 
+    - vtls: compare cert blob when finding a connection to reuse
 
 -------------------------------------------------------------------
 Wed Jun 24 07:13:22 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
@@ -2001,7 +2018,7 @@ Wed Jun 24 07:13:22 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com
     - CURLOPT_SSL_OPTIONS: optional use of Windows' CA store (with openssl)
     - setopt: add CURLOPT_PROXY_ISSUERCERT(_BLOB) for coherency
     - setopt: support certificate options in memory with struct curl_blob
-    - tool: Add option --retry-all-errors to retry on any error 
+    - tool: Add option --retry-all-errors to retry on any error
   * Bugfixes:
     - *_sspi: fix bad uses of CURLE_NOT_BUILT_IN
     - altsvc: bump to h3-29
@@ -2094,7 +2111,7 @@ Wed Jun 24 07:13:22 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com
     - vtls: Extract and simplify key log file handling from OpenSSL
     - wolfssl: add SSLKEYLOGFILE support
     - wording: avoid blacklist/whitelist stereotypes
-    - write-out.d: added "response_code" 
+    - write-out.d: added "response_code"
 
 -------------------------------------------------------------------
 Fri Jun 12 09:07:50 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -2110,10 +2127,10 @@ Wed Apr 29 07:45:48 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
     - curl: add --ssl-revoke-best-effort to allow a "best effort" revocation check
     - mqtt: add new experimental protocol
     - schannel: add "best effort" revocation check option: CURLSSLOPT_REVOKE_BEST_EFFORT
-    - writeout: support to generate JSON output with '%{json}' 
+    - writeout: support to generate JSON output with '%{json}'
   * Bugfixes:
     - gnutls: Don't skip really long certificate fields
-    - gnutls: ensure TLS 1.3 when SRP isn't requested 
+    - gnutls: ensure TLS 1.3 when SRP isn't requested
     - lib: never define CURL_CA_BUNDLE with a getenv
     - libcurl-multi.3: added missing full stop
     - libssh: avoid options override by configuration files
@@ -2151,7 +2168,7 @@ Thu Mar 12 22:07:26 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com
     - tests: make sleeping portable by avoiding select
     - unit1612: fix the inclusion and compilation of the HMAC unit test
     - urldata: remove the 'stream_was_rewound' connectdata struct member
-    - version: make curl_version* thread-safe without using global context 
+    - version: make curl_version* thread-safe without using global context
 
 -------------------------------------------------------------------
 Mon Mar  9 12:54:08 UTC 2020 - Andreas Schwab <schwab@suse.de>
@@ -2165,7 +2182,7 @@ Wed Mar  4 08:56:45 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com
   * Changes:
     - polarssl: removed
     - smtp: add CURLOPT_MAIL_RCPT_ALLLOWFAILS and --mail-rcpt-allowfails
-    - wolfSSH: new SSH backend 
+    - wolfSSH: new SSH backend
   * Bugfixes:
     - altsvc: improved header parser
     - altsvc: keep a copy of the file name to survive handle reset
@@ -2422,7 +2439,7 @@ Wed Jan  8 09:54:50 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com
     - travis: export the CC/CXX variables when set
     - vtls: make BearSSL possible to set with CURL_SSL_BACKEND
     - winbuild: Define CARES_STATICLIB when WITH_CARES=static
-    - winbuild: Document CURL_STATICLIB requirement for static libcurl 
+    - winbuild: Document CURL_STATICLIB requirement for static libcurl
 - Remove curl-expire-clear.patch
 
 -------------------------------------------------------------------
@@ -2444,7 +2461,7 @@ Wed Nov  6 09:36:43 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com
   * Changes:
     - curl: added --no-progress-meter
     - setopt: CURLMOPT_MAX_CONCURRENT_STREAMS is new
-    - urlapi: CURLU_NO_AUTHORITY allows empty authority/host part 
+    - urlapi: CURLU_NO_AUTHORITY allows empty authority/host part
   * Bugfixes:
     - BINDINGS: five new bindings addded
     - CURLOPT_TIMEOUT.3: Clarify transfer timeout time includes queue time
@@ -2564,7 +2581,7 @@ Wed Sep 11 08:17:06 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com
     - curl: --sasl-authzid added to support CURLOPT_SASL_AUTHZID from the tool
     - curl: support parallel transfers with -Z
     - curl_multi_poll: a sister to curl_multi_wait() that waits more
-    - sasl: Implement SASL authorisation identity via CURLOPT_SASL_AUTHZID 
+    - sasl: Implement SASL authorisation identity via CURLOPT_SASL_AUTHZID
   * Bugfixes:
     - CVE-2019-5481: FTP-KRB double-free
     - CVE-2019-5482: TFTP small blocksize heap buffer overflow
@@ -2638,13 +2655,13 @@ Wed Sep 11 08:17:06 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com
     - url: make use of new HTTP version if alt-svc has one
     - urlapi: verify the IPv6 numerical address
     - urldata: avoid 'generic', use dedicated pointers
-    - vauth: Use CURLE_AUTH_ERROR for auth function errors 
+    - vauth: Use CURLE_AUTH_ERROR for auth function errors
 
 -------------------------------------------------------------------
 Fri Jul 19 13:51:15 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Update to 7.65.3
-  * progress: make the progress meter appear again 
+  * progress: make the progress meter appear again
 
 -------------------------------------------------------------------
 Wed Jul 17 09:07:25 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
@@ -2749,7 +2766,7 @@ Wed May 22 11:41:49 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com
   * Changes:
     - CURLOPT_DNS_USE_GLOBAL_CACHE: removed
     - CURLOPT_MAXAGE_CONN: set the maximum allowed age for conn reuse
-    - pipelining: removed 
+    - pipelining: removed
   * Bugfixes:
     - CVE-2019-5435: Integer overflows in curl_url_set
     - CVE-2019-5436: tftp: use the current blksize for recvfrom()
@@ -2841,7 +2858,7 @@ Wed May 22 11:41:49 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com
     - vauth: Fix incorrect function description for Curl_auth_user_contains_domain
     - vtls: fix potential ssl_buffer stack overflow
     - wildcard: disable from build when FTP isn't present
-    - xattr: skip unittest on unsupported platforms 
+    - xattr: skip unittest on unsupported platforms
 
 -------------------------------------------------------------------
 Tue Apr  9 12:11:46 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
@@ -2967,7 +2984,7 @@ Tue Apr  9 11:41:07 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com
     - x509asn1: "Dereference of null pointer"
     - x509asn1: cleanup and unify code layout
     - zsh.pl: escape ':' character
-    - zsh.pl: update regex to better match curl -h output 
+    - zsh.pl: update regex to better match curl -h output
 - Dropped patches fixed upstream:
   * 0001-connection_check-set-data-to-the-transfer-doing-the-.patch
   * 0002-connection_check-restore-original-conn-data-after-th.patch
@@ -3004,7 +3021,7 @@ Wed Feb  6 09:16:58 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com
     - hostip: support wildcard hosts
     - http: Implement trailing headers for chunked transfers
     - http: added options for allowing HTTP/0.9 responses
-    - timeval: Use high resolution timestamps on Windows 
+    - timeval: Use high resolution timestamps on Windows
   * Bugfixes:
     - CVE-2018-16890: NTLM type-2 out-of-bounds buffer read
     - CVE-2019-3822: NTLMv2 type-3 header stack buffer overflow
@@ -3081,7 +3098,7 @@ Wed Feb  6 09:16:58 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com
     - urldata: rename easy_conn to just conn
     - winbuild: conditionally use /DZLIB_WINAPI
     - wolfssl: fix memory-leak in threaded use
-    - spnego_sspi: add support for channel binding 
+    - spnego_sspi: add support for channel binding
 
 -------------------------------------------------------------------
 Mon Jan 28 18:47:00 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
@@ -3152,7 +3169,7 @@ Thu Dec 27 04:44:48 UTC 2018 - sean@suspend.net
   * nss: Fix compatibility with nss versions 3.14 to 3.15
   * nss: fix fallthrough comment to fix picky compiler warning
   * nss: remove version selecting dead code
-  * nss: set default max-tls to 1.3/1.2 
+  * nss: set default max-tls to 1.3/1.2
   * openssl: Remove SSLEAY leftovers
   * openssl: do not log excess "TLS app data" lines for TLS 1.3
   * openssl: do not use file BIOs if not requested
@@ -3199,7 +3216,7 @@ Wed Oct 31 09:23:37 UTC 2018 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com
   * configure: add option to disable automatic OpenSSL config loading
   * upkeep: add a connection upkeep API: curl_easy_upkeep()
   * URL-API: added five new functions
-  * vtls: MesaLink is a new TLS backend 
+  * vtls: MesaLink is a new TLS backend
  Bugfixes:
   * CVE-2018-16839: SASL password overflow via integer overflow [bsc#1112758]
   * CVE-2018-16840: use-after-free in handle close [bsc#1113029]
@@ -3411,7 +3428,7 @@ Wed Sep  5 07:12:59 UTC 2018 - Karol Babioch <kbabioch@suse.com>
    * urldata: remove unused pipe_broke struct field
    * vtls: reinstantiate engine on duplicated handles
    * windows: implement send buffer tuning
-   * wolfSSL/CyaSSL: Fix memory leak in Curl_cyassl_random 
+   * wolfSSL/CyaSSL: Fix memory leak in Curl_cyassl_random
 - Remove patch included upstream:
   * curl-switch-off-all-styles.patch
 
@@ -3429,30 +3446,30 @@ Tue Jul 17 13:56:05 UTC 2018 - pgajdos@suse.com
   Changes:
    * getinfo: add microsecond precise timers for seven intervals
    * curl: show headers in bold, switch off with --no-styled-output
-   * httpauth: add support for Bearer tokens 
+   * httpauth: add support for Bearer tokens
    * Add CURLOPT_TLS13_CIPHERS and CURLOPT_PROXY_TLS13_CIPHERS
    * curl: --tls13-ciphers and --proxy-tls13-ciphers
    * Add CURLOPT_DISALLOW_USERNAME_IN_URL
-   * curl: --disallow-username-in-url 
+   * curl: --disallow-username-in-url
   Bugfixes:
-   * CVE-2018-0500: smtp: fix SMTP send buffer overflow 
+   * CVE-2018-0500: smtp: fix SMTP send buffer overflow
    * schannel: disable client cert option if APIs not available
    * schannel: disable manual verify if APIs not available
    * tests/libtest/Makefile: Do not unconditionally add gcc-specific flags
-   * openssl: acknowledge --tls-max for default version too 
+   * openssl: acknowledge --tls-max for default version too
    * stub_gssapi: fix 'unused parameter' warnings
    * examples/progressfunc: make it build on both new and old libcurls
    * docs: mention it is HA Proxy protocol "version 1"
-   * curl_fnmatch: only allow two asterisks for matching  
-   * docs: clarify CURLOPT_HTTPGET 
+   * curl_fnmatch: only allow two asterisks for matching
+   * docs: clarify CURLOPT_HTTPGET
    * configure: replace a AC_TRY_RUN with CURL_RUN_IFELSE
    * configure: do compile-time SIZEOF checks instead of run-time
-   * checksrc: make sure sizeof() is used *with* parentheses 
+   * checksrc: make sure sizeof() is used *with* parentheses
    * CURLOPT_ACCEPT_ENCODING.3: add brotli and clarify a bit
-   * schannel: make CAinfo parsing resilient to CR/LF 
+   * schannel: make CAinfo parsing resilient to CR/LF
    * tftp: make sure error is zero terminated before printfing it
    * http resume: skip body if http code 416 (range error) is ignored
-   * configure: add basic test of --with-ssl prefix 
+   * configure: add basic test of --with-ssl prefix
    * cmake: set -d postfix for debug builds
    * multi: provide a socket to wait for in Curl_protocol_getsock
    * content_encoding: handle zlib versions too old for Z_BLOCK
@@ -3460,15 +3477,15 @@ Tue Jul 17 13:56:05 UTC 2018 - pgajdos@suse.com
    * winbuild: In MakefileBuild.vc fix typo DISTDIR->DIRDIST
    * schannel: add failf calls for client certificate failures
    * cmake: Fix the test for fsetxattr and strerror_r
-   * curl.1: Fix cmdline-opts reference errors 
+   * curl.1: Fix cmdline-opts reference errors
    * cmdline-opts/gen.pl: warn if mutexes: or see-also: list non-existing options
-   * cmake: check for getpwuid_r 
+   * cmake: check for getpwuid_r
    * configure: fix ssh2 linking when built with a static mbedtls
    * psl: use latest psl and refresh it periodically
-   * fnmatch: insist on escaped bracket to match 
-   * KNOWN_BUGS: restore text regarding #2101 
-   * INSTALL: LDFLAGS=-Wl,-R/usr/local/ssl/lib 
-   * configure: override AR_FLAGS to silence warning 
+   * fnmatch: insist on escaped bracket to match
+   * KNOWN_BUGS: restore text regarding #2101
+   * INSTALL: LDFLAGS=-Wl,-R/usr/local/ssl/lib
+   * configure: override AR_FLAGS to silence warning
    * os400: implement mime api EBCDIC wrappers
    * curl.rc: embed manifest for correct Windows version detection
    * strictness: correct {infof, failf} format specifiers
@@ -3545,7 +3562,7 @@ Wed May 16 08:41:48 UTC 2018 - pmonrealgonzalez@suse.com
   Changes:
    * Add CURLOPT_HAPROXYPROTOCOL, support for the HAProxy PROXY protocol
    * Add --haproxy-protocol for the command line tool
-   * Add CURLOPT_DNS_SHUFFLE_ADDRESSES, shuffle returned IP addresses 
+   * Add CURLOPT_DNS_SHUFFLE_ADDRESSES, shuffle returned IP addresses
   Bugfixes:
    * FTP: shutdown response buffer overflow CVE-2018-1000300
    * RTSP: bad headers buffer over-read CVE-2018-1000301
@@ -3656,7 +3673,7 @@ Wed May 16 08:41:48 UTC 2018 - pmonrealgonzalez@suse.com
    * cookies: accept parameter names as cookie name
    * http2: getsock fix for uploads
    * all over: fixed format specifiers
-   * http2: use the correct function pointer typedef 
+   * http2: use the correct function pointer typedef
 
 -------------------------------------------------------------------
 Wed Mar 14 14:23:22 UTC 2018 - pmonrealgonzalez@suse.com
@@ -3677,8 +3694,8 @@ Wed Mar 14 13:08:33 UTC 2018 - pmonrealgonzalez@suse.com
    * CURLOPT_RESOLVE: Add support for multiple IP addresses per entry
    * Add option CURLOPT_HAPPY_EYEBALLS_TIMEOUT_MS
    * Add new tool option --happy-eyeballs-timeout-ms
-   * Add CURLOPT_RESOLVER_START_FUNCTION and CURLOPT_RESOLVER_START_DATA 
-  Bugfixes: 
+   * Add CURLOPT_RESOLVER_START_FUNCTION and CURLOPT_RESOLVER_START_DATA
+  Bugfixes:
    * openldap: check ldap_get_attribute_ber() results for NULL before using
    * FTP: reject path components with control codes
    * readwrite: make sure excess reads don't go beyond buffer end
@@ -3748,7 +3765,7 @@ Wed Mar 14 13:08:33 UTC 2018 - pmonrealgonzalez@suse.com
    * curl tool: accept --compressed also if Brotli is enabled and zlib is not
    * WolfSSL: adding TLSv1.3
    * checksrc.pl: add -i and -m options
-   * CURLOPT_COOKIEFILE.3: "-" as file name means stdin 
+   * CURLOPT_COOKIEFILE.3: "-" as file name means stdin
 
 - Refreshed patch libcurl-ocloexec.patch
 
@@ -4007,7 +4024,7 @@ Thu Oct  5 16:15:04 UTC 2017 - pmonrealgonzalez@suse.com
   * libcurl: enable compression for SCP/SFTP with CURLOPT_SSH_COMPRESSION
   * vtls: added dynamic changing SSL backend with curl_global_sslset()
   * new MIME API, curl_mime_init() and friends
-  * openssl: initial SSLKEYLOGFILE implementation 
+  * openssl: initial SSLKEYLOGFILE implementation
  Security fixes:
   * CVE-2017-1000254 FTP PWD response parser out of bounds read
  Bugfixes:
@@ -4085,7 +4102,7 @@ Thu Oct  5 16:15:04 UTC 2017 - pmonrealgonzalez@suse.com
   * connect: fix race condition with happy eyeballs timeout
   * cookie: fix memory leak if path was set twice in header
   * vtls: compare and clone ssl configs properly
-  * proxy: read the "no_proxy" variable only if necessary 
+  * proxy: read the "no_proxy" variable only if necessary
 
 - Refreshed patches:
   * libcurl-ocloexec.patch
@@ -4133,7 +4150,7 @@ Wed Aug  9 09:34:25 UTC 2017 - pmonrealgonzalez@suse.com
   * libcurl: added CURLOPT_SOCKS5_AUTH
  Bugfixes:
   * Security Fixes:
-    - glob: do not parse after a strtoul() overflow range 
+    - glob: do not parse after a strtoul() overflow range
       (CVE-2017-1000101, bsc#1051643)
     - tftp: reject file name lengths that don't fit
       (CVE-2017-1000100, bsc#1051644)
@@ -4273,12 +4290,12 @@ Wed Jun 14 11:19:16 UTC 2017 - idonmez@suse.com
   * ssh: fix memory leak in disconnect due to timeout
   * redirect: store the "would redirect to" URL when max redirs is reached
   * file: make speedcheck use current time for checks
-  * urlglob: fix division by zero 
+  * urlglob: fix division by zero
 
 -------------------------------------------------------------------
 Tue Jun 13 13:08:21 UTC 2017 - lnussel@suse.de
 
-- Create curl-mini for bootstrapping (boo#1042919) 
+- Create curl-mini for bootstrapping (boo#1042919)
 
 -------------------------------------------------------------------
 Wed Apr 19 08:17:17 UTC 2017 - idonmez@suse.com
@@ -4450,7 +4467,7 @@ Sun Feb  5 22:33:33 UTC 2017 - astieger@suse.com
 - build with libidn2 for IDNA2008 support
   FATE#321897 CVE-2016-8625 bsc#1005649
   add curl-7.52.1-idn-fixes.patch to fix test, among other things
-- re-enable tests that are no longer failing, 
+- re-enable tests that are no longer failing,
   remove curl-disable_failing_tests.patch
 
 -------------------------------------------------------------------
@@ -4471,7 +4488,7 @@ Wed Dec 21 07:10:10 UTC 2016 - idonmez@suse.com
   * curl: Add --retry-connrefused
   * proxy: Support HTTPS proxy and SOCKS+HTTP(s)
   * add CURLINFO_SCHEME, CURLINFO_PROTOCOL, and %{scheme}
-  * curl: add --fail-early 
+  * curl: add --fail-early
   Bugfixes:
   * CVE-2016-9586: printf floating point buffer overflow
   * curl -w: added more decimal digits to timing counters
@@ -4512,7 +4529,7 @@ Wed Nov  2 07:15:44 UTC 2016 - idonmez@suse.com
   Changes:
   * nss: additional cipher suites are now accepted by
     CURLOPT_SSL_CIPHER_LIST
-  * New option: CURLOPT_KEEP_SENDING_ON_ERROR 
+  * New option: CURLOPT_KEEP_SENDING_ON_ERROR
   Bugfixes:
   * CVE-2016-8615: cookie injection for other servers
   * CVE-2016-8616: case insensitive password comparison
@@ -4666,7 +4683,7 @@ Fri Aug  5 12:41:43 UTC 2016 - pjanouch@suse.de
   * curl.h: make public types void * again
   * win32: fix a potential memory leak in Curl_load_library
   * travis: fix OSX build by re-installing libtool
-  * mbedtls: Fix debug function name 
+  * mbedtls: Fix debug function name
 - removed 0001-tests-distribute-the-http2-server.pl-script-too.patch
 
 -------------------------------------------------------------------
@@ -4731,7 +4748,7 @@ Tue Jun 14 11:47:27 UTC 2016 - astieger@suse.com
   * curl: added --connect-to
   * libcurl: added CURLOPT_TCP_FASTOPEN
   * curl: added --tcp-fastopen
-  * curl: remove support for --ftpport, -http-request and --socks 
+  * curl: remove support for --ftpport, -http-request and --socks
   * a number of bug and build fixes
 - update upstream signing key and download URLs
 - 0001-Fix-invalid-Network-is-unreachable-errors.patch is upstream
@@ -4831,7 +4848,7 @@ Sat Oct 10 06:58:35 UTC 2015 - mpluskal@suse.com
   * getinfo: added CURLINFO_ACTIVESOCKET
   * turned CURLINFO_* option docs as stand-alone man pages
   * curl: point out unnecessary uses of -X in verbose mode
-- Drop curl-disable_failing_tests.patch as it is now part of 
+- Drop curl-disable_failing_tests.patch as it is now part of
   upstream
 
 -------------------------------------------------------------------
@@ -4879,14 +4896,14 @@ Fri Jun 19 13:07:44 UTC 2015 - mpluskal@suse.com
   * Mew curl option: --service-name
   * New curl option: --data-raw
   * Added CURLOPT_PIPEWAIT
-  * Added support for multiplexing transfers using HTTP/2, enable 
-    this with the new CURLPIPE_MULTIPLEX bit for 
+  * Added support for multiplexing transfers using HTTP/2, enable
+    this with the new CURLPIPE_MULTIPLEX bit for
     CURLMOPT_PIPELINING
   * HTTP/2: requires nghttp2 1.0.0 or later
   * scripts: add zsh.pl for generating zsh completion
   * curl.h: add CURL_HTTP_VERSION_2
   * CVE-2015-3236: lingering HTTP credentials in connection re-use
-  * CVE-2015-3237: SMB send off unrelated memory contents 
+  * CVE-2015-3237: SMB send off unrelated memory contents
 - Disable HTTP/2 as it would create build cycle
 
 -------------------------------------------------------------------
@@ -4935,7 +4952,7 @@ Thu Feb 26 09:37:22 UTC 2015 - sor.alexei@meowr.ru
     winbuild: Added option to build with c-ares
     Added --cert-status
     Added CURLOPT_SSL_VERIFYSTATUS
-    sasl: implement EXTERNAL authentication mechanism 
+    sasl: implement EXTERNAL authentication mechanism
 
 -------------------------------------------------------------------
 Sat Feb 14 18:29:37 UTC 2015 - mpluskal@suse.com
@@ -4991,7 +5008,7 @@ Fri Nov 14 15:29:07 UTC 2014 - vcizek@suse.com
 -------------------------------------------------------------------
 Thu Oct 23 15:13:30 UTC 2014 - crrodriguez@opensuse.org
 
-- Ensure the curl command line tool always require 
+- Ensure the curl command line tool always require
   the same libcurl it was used for build, even expert users
   got confused.
 
@@ -5072,7 +5089,7 @@ Wed Apr  9 11:40:19 UTC 2014 - vcizek@suse.com
     tool: add --no-alpn and --no-npn
     added CURLOPT_SSL_ENABLE_NPN and CURLOPT_SSL_ENABLE_ALPN
     http2: build with current nghttp2 version
-    openssl: info message with SSL version used 
+    openssl: info message with SSL version used
   * dropped curl-test172_cookie_expiration.patch (upstream)
   * added patches to make it build:
     - curl-mkhelp.patch
@@ -5132,14 +5149,14 @@ Fri Nov 29 15:30:23 UTC 2013 - vcizek@suse.com
 -------------------------------------------------------------------
 Mon Aug 12 05:29:34 UTC 2013 - crrodriguez@opensuse.org
 
-- curl 7.32.0 
-* curl: allow timeouts to accept decimal values 
-* CURLOPT_XFERINFOFUNCTION: introducing a new progress callback 
+- curl 7.32.0
+* curl: allow timeouts to accept decimal values
+* CURLOPT_XFERINFOFUNCTION: introducing a new progress callback
 * SIGPIPE: ignored while inside the library
 * OpenSSL: check for read errors
-* configure: automake 1.14 compatibility tweak 
-* curl_multi_wait: set revents for extra fds 
-* global dns cache: didn't work (regression) 
+* configure: automake 1.14 compatibility tweak
+* curl_multi_wait: set revents for extra fds
+* global dns cache: didn't work (regression)
 * mk-ca-bundle.1: don't install on make install
 
 
@@ -5233,7 +5250,7 @@ Tue Nov 20 23:43:24 UTC 2012 - crrodriguez@opensuse.org
 * OpenSSL: Disable SSL/TLS compression - avoid the "CRIME" attack
 * TFTP: handle resend
 * memory leak: CURLOPT_RESOLVE with multi interface
-* SSL: Several SSL-backend related fixes 
+* SSL: Several SSL-backend related fixes
 
 -------------------------------------------------------------------
 Sun Nov  4 19:57:33 UTC 2012 - gber@opensuse.org
@@ -5271,7 +5288,7 @@ Sat May 12 23:24:56 UTC 2012 - jengelh@inai.de
 -------------------------------------------------------------------
 Wed Feb  8 00:45:18 UTC 2012 - crrodriguez@opensuse.org
 
-- Problem with the c-ares backend, workaround for [bnc#745534] 
+- Problem with the c-ares backend, workaround for [bnc#745534]
 
 -------------------------------------------------------------------
 Thu Feb  2 18:47:10 UTC 2012 - crrodriguez@opensuse.org
@@ -5283,7 +5300,7 @@ Thu Feb  2 18:47:10 UTC 2012 - crrodriguez@opensuse.org
 Wed Jan 18 13:49:56 CET 2012 - dmueller@suse.de
 
 - use the rpmoptflags unconditionally, don't do own compiler flag
-  magic. Fixes debuginfo package built 
+  magic. Fixes debuginfo package built
 
 -------------------------------------------------------------------
 Wed Dec 28 10:30:28 UTC 2011 - mmarek@suse.cz
@@ -5293,7 +5310,7 @@ Wed Dec 28 10:30:28 UTC 2011 - mmarek@suse.cz
 -------------------------------------------------------------------
 Wed Nov 30 22:39:35 UTC 2011 - crrodriguez@opensuse.org
 
-- Use O_CLOEXEC in library code. 
+- Use O_CLOEXEC in library code.
 
 -------------------------------------------------------------------
 Tue Nov 29 11:51:38 UTC 2011 - jengelh@medozas.de
@@ -5303,7 +5320,7 @@ Tue Nov 29 11:51:38 UTC 2011 - jengelh@medozas.de
 -------------------------------------------------------------------
 Tue Nov 29 08:20:23 UTC 2011 - idoenmez@suse.de
 
-- Use original source tarball 
+- Use original source tarball
 
 -------------------------------------------------------------------
 Mon Nov 28 12:00:00 UTC 2011 - opensuse@dstoecker.de
@@ -5348,7 +5365,7 @@ Fri Sep 16 17:22:44 UTC 2011 - jengelh@medozas.de
 -------------------------------------------------------------------
 Mon Aug 15 05:05:01 UTC 2011 - crrodriguez@opensuse.org
 
-- Use SSL_MODE_RELEASE_BUFFERS if available, accepted 
+- Use SSL_MODE_RELEASE_BUFFERS if available, accepted
   in upstream as commit 3d919440c80333c496fb
 
 -------------------------------------------------------------------
@@ -5369,13 +5386,13 @@ Mon Jul 11 11:40:17 CEST 2011 - pth@suse.de
 -------------------------------------------------------------------
 Fri May 20 16:25:34 UTC 2011 - crrodriguez@opensuse.org
 
-- remove unintented LDFLAGS from the spec file 
+- remove unintented LDFLAGS from the spec file
 
 -------------------------------------------------------------------
 Fri May 20 15:37:54 UTC 2011 - crrodriguez@opensuse.org
 
 - Update to 7.21.6
-* curl-config: fix --version 
+* curl-config: fix --version
 * use HTTPS properly after CONNECT
 * SFTP: close file before post quote operations
 
@@ -5439,7 +5456,7 @@ Fri Oct 22 16:37:03 UTC 2010 - cristian.rodriguez@opensuse.org
 	* TFTP: Work around tftpd-hpa upload bug
 	* libcurl.m4: several fixes
 	* HTTP: remove special case for 416
-    * globbing: fix crash on unballanced open brace 
+    * globbing: fix crash on unballanced open brace
 
 -------------------------------------------------------------------
 Wed Jun  2 14:12:54 UTC 2010 - lnussel@suse.de
@@ -5449,7 +5466,7 @@ Wed Jun  2 14:12:54 UTC 2010 - lnussel@suse.de
 -------------------------------------------------------------------
 Mon May 10 01:12:22 UTC 2010 - crrodriguez@opensuse.org
 
-- disable c-ares support while bnc598574 is fixed. 
+- disable c-ares support while bnc598574 is fixed.
 
 -------------------------------------------------------------------
 Sat Apr 24 10:58:50 UTC 2010 - coolo@novell.com
@@ -5465,17 +5482,17 @@ Fri Apr 23 00:53:19 UTC 2010 - crrodriguez@opensuse.org
   * threaded resolver double free when closing curl handle
   * url_multi_remove_handle() caused use after free
   * SSL possible double free when reusing curl handle
-  * alarm()-based DNS timeout bug 
+  * alarm()-based DNS timeout bug
 
 -------------------------------------------------------------------
 Wed Mar 24 18:39:57 UTC 2010 - crrodriguez@opensuse.org
 
-- enable libssh2 support unconditionally. 
+- enable libssh2 support unconditionally.
 
 -------------------------------------------------------------------
 Wed Mar 10 13:46:45 UTC 2010 - crrodriguez@opensuse.org
 
-- enable libcares support unconditionally. 
+- enable libcares support unconditionally.
 
 -------------------------------------------------------------------
 Sat Feb 13 21:39:56 CET 2010 - dimstar@opensuse.org
@@ -5847,7 +5864,7 @@ Fri Jun  1 11:57:28 CEST 2007 - dmueller@suse.de
 -------------------------------------------------------------------
 Wed May 23 16:22:39 CEST 2007 - bk@suse.de
 
-- updated to 7.16.2 (lots of fixes, fixes a segfault in git-http) 
+- updated to 7.16.2 (lots of fixes, fixes a segfault in git-http)
 
 -------------------------------------------------------------------
 Fri May  4 14:55:41 CEST 2007 - mmarek@suse.cz
@@ -5975,7 +5992,7 @@ Wed Jun 14 17:36:10 CEST 2006 - mmarek@suse.cz
 Sun May 28 16:16:33 CEST 2006 - cthiel@suse.de
 
 - update to version 7.15.3, changes & fixes for this version:
-  * added docs for --ftp-method and CURLOPT_FTP_FILEMETHOD 
+  * added docs for --ftp-method and CURLOPT_FTP_FILEMETHOD
   * TFTP Packet Buffer Overflow Vulnerability (CVE-2006-1061)
   * properly detecting problems with sending the FTP command USER
   * wrong error message shown when certificate verification failed
@@ -5984,7 +6001,7 @@ Sun May 28 16:16:33 CEST 2006 - cthiel@suse.de
   * "SSL: couldn't set callback" is now treated as a less serious problem
   * Interix build fix
   * fixed curl "hang" when out of file handles at start
-  * prevent FTP uploads to URLs with trailing slash 
+  * prevent FTP uploads to URLs with trailing slash
 
 - changes & fixes in 7.15.2
   * Support for SOCKS4 proxies (added --socks4)
@@ -6035,7 +6052,7 @@ Tue Mar 14 12:35:53 CET 2006 - mmarek@suse.cz
 -------------------------------------------------------------------
 Wed Feb 15 02:53:15 CET 2006 - ro@suse.de
 
-- added libidn-devel to requires of devel package 
+- added libidn-devel to requires of devel package
 
 -------------------------------------------------------------------
 Mon Feb 13 16:32:40 CET 2006 - mmarek@suse.cz
@@ -6087,7 +6104,7 @@ Mon Oct 10 14:20:12 CEST 2005 - mmarek@suse.cz
 Mon Jun 20 16:38:34 CEST 2005 - anicka@suse.cz
 
 - update to 7.14.0
-- remove obsolete patch curl-ntlm.patch 
+- remove obsolete patch curl-ntlm.patch
 
 -------------------------------------------------------------------
 Tue Apr 12 16:37:59 CEST 2005 - tcrhak@suse.cz
@@ -6187,7 +6204,7 @@ Fri Jan 18 17:45:31 CET 2002 - tcrhak@suse.cz
 -------------------------------------------------------------------
 Fri Oct 19 08:38:40 CEST 2001 - ro@suse.de
 
-- do not pack shared library into both, main and devel package 
+- do not pack shared library into both, main and devel package
 
 -------------------------------------------------------------------
 Mon Oct  8 11:35:52 CEST 2001 - tcrhak@suse.cz
@@ -6197,27 +6214,27 @@ Mon Oct  8 11:35:52 CEST 2001 - tcrhak@suse.cz
 -------------------------------------------------------------------
 Fri Sep 21 11:46:09 CEST 2001 - adostal@suse.cz
 
-- fix manual in man.patch 
+- fix manual in man.patch
 
 -------------------------------------------------------------------
 Tue Aug 21 16:10:10 CEST 2001 - adostal@suse.cz
 
-- update to version 7.8.1 
+- update to version 7.8.1
 
 -------------------------------------------------------------------
 Wed Jul 18 10:21:13 CEST 2001 - adostal@suse.cz
 
-- files devel fixed 
+- files devel fixed
 
 -------------------------------------------------------------------
 Mon Jul  2 17:51:34 CEST 2001 - adostal@suse.cz
 
-- update to version 7.8  
+- update to version 7.8
 
 -------------------------------------------------------------------
 Wed Jun 13 17:33:41 CEST 2001 - ro@suse.de
 
-- fixed to compile with new autoconf 
+- fixed to compile with new autoconf
 
 -------------------------------------------------------------------
 Mon Apr  9 14:39:03 CEST 2001 - cihlar@suse.cz
