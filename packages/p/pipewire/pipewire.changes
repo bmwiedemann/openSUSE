@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 10 10:12:03 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Make sure the pipewire-libjack package doesn't completely
+  replace the original jack libraries unless the pipewire-jack
+  package which installs the ld.so.conf.d file is installed too
+  (boo#1222253).
+
+-------------------------------------------------------------------
 Sat May 25 13:28:01 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.0.7:

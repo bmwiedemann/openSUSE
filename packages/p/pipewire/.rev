@@ -1062,4 +1062,15 @@ Build tested.
     <comment></comment>
     <requestid>1177046</requestid>
   </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>c39883aa25cf42ea37e17921e64a74ba</srcmd5>
+    <version>1.0.7</version>
+    <time>1719055380</time>
+    <user>anag+factory</user>
+    <comment>- Make sure the pipewire-libjack package doesn't completely
+  replace the original jack libraries unless the pipewire-jack
+  package which installs the ld.so.conf.d file is installed too
+  (boo#1222253).</comment>
+    <requestid>1182459</requestid>
+  </revision>
 </revisionlist>

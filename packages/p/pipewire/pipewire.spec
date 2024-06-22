@@ -195,6 +195,12 @@ Summary:        PipeWire libjack replacement libraries
 Group:          Development/Libraries/C and C++
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+# Since the pipewire-libjack package is sometimes completely replacing the
+# original jack libraries for some users we better make sure either they
+# are also installed or we completely replace them with the pipewire
+# libraries
+Requires:       ((libjack0 and libjacknet0 and libjackserver0) or pipewire-jack)
+Recommends:     (pipewire-jack if wireplumber-audio else libjack0)
 
 %description libjack-%{apiver_str}
 PipeWire is a server and user space API to deal with multimedia pipelines.
