@@ -26,14 +26,14 @@
 %bcond_without released
 # Note: despite being in the plasma namespace upstream, the build system follows the frameworks conventions
 Name:           plasma5support6
-Version:        6.0.5
+Version:        6.1.0
 Release:        0
 Summary:        KF6 Porting aid
 License:        LGPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  doxygen
@@ -42,9 +42,12 @@ BuildRequires:  cmake(KF6Config) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6I18n) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6KIO) >= %{_kf6_bugfix_version}
+BuildRequires:  cmake(KF6Notifications) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6Package) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6Service) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{_kf6_bugfix_version}
+BuildRequires:  cmake(KSysGuard) >= 6
+BuildRequires:  cmake(Plasma)
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
@@ -96,6 +99,10 @@ Development Files for the plasma5support framework.
 %dir %{_kf6_qmldir}/org/kde/plasma
 %{_kf6_qmldir}/org/kde/plasma/plasma5support/
 %{_kf6_sharedir}/plasma5support/
+%dir %{_kf6_plugindir}/plasma5support
+%dir %{_kf6_plugindir}/plasma5support/dataengine
+%{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_devicenotifications.so
+%{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_keystate.so
 
 %files -n libPlasma5Support6
 %license LICENSES/*
