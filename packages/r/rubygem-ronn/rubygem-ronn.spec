@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-ronn
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -29,16 +29,16 @@ Release:        0
 %define mod_name ronn
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  ruby-macros >= 5
-BuildRequires:  %{ruby}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
+BuildRequires:  %{ruby}
+BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
-Url:            http://rtomayko.github.com/ronn
+URL:            http://rtomayko.github.com/ronn
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 # MANUAL
-Patch0:  ronn-date.patch
+Patch0:         ronn-date.patch
 # /MANUAL
 Summary:        Builds manuals
 License:        MIT
@@ -51,7 +51,7 @@ for terminal display, and also to HTML for the web.
 
 %prep
 %gem_unpack
-%patch0 -p1
+%patch -P 0 -p1
 find -type f -print0 | xargs -0 touch -r %{S:0}
 %gem_build
 

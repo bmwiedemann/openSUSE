@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 10 07:57:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N syntax instead of deprectaed %patchN.
+
+-------------------------------------------------------------------
 Mon Dec  9 10:26:45 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add ronn-date.patch to have reprodubible build time (boo#1047218)
