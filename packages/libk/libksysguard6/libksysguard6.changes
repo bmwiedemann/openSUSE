@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Jun 13 10:58:36 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.0
+- Changes since 6.0.90:
+  * faces/pie: Ensure text doesn't overflow the face (kde#453797)
+  * update version for new release
+  * processcore: Properly check if process exists before dereferencing (kde#445700)
+  * faces/textonly: Change compact rep to be smaller and non interactive
+  * faces/hbars: Tweak compact rep sizing to be more consitent and useful
+  * faces/grid: Reduce margins in compact mode
+  * faces/bar: Tweak compact sizing to ensure sensible consistent min size
+  * faces: Port most compact representations to CompactSensorFace
+  * faces/bars: Remove spacing on top and bottom of compact rep
+  * faces/pie: Remove maximumHeight restriction from Pie chart in full rep (kde#486993)
+  * faces: Introduce CompactSensorFace as base class for face compact rep
+  * systemstats: Warn when overwriting a property in SensorObject
+  * systemstats: Warn when trying to add an existing object to SensorContainer (kde#485025)
+
+-------------------------------------------------------------------
+Sat May 25 11:18:49 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Wed May 22 07:43:08 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.5:
