@@ -19,15 +19,15 @@
 %bcond_without released
 %define rname kwayland-integration
 Name:           kwayland-integration6
-Version:        6.0.5
+Version:        6.1.0
 Release:        0
 Summary:        Plugin to integrate KF5 KWayland into Plasma 6
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
