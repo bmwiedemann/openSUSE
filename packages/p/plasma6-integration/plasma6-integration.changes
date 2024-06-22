@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Jun 13 10:58:44 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.0
+- Changes since 6.0.90:
+  * update version for new release
+  * kdeplatformtheme: disable modern open-with UI (again)
+
+-------------------------------------------------------------------
+Sat May 25 11:19:18 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.90
+- Changes since 6.0.5:
+  * update version for new release
+  * Fix khintssettings_unittest for Plasma 6
+  * Fix broken Qt6 QML tests
+  * Move ki18n_install call to qt6 subdirectory
+  * Revert "Implement Font dialogs" (kde#478155)
+  * Don't truncate filter name containing parenthesis (kde#483350)
+  * KIOOpenWith: Store parent widget in QPointer (kde#481488)
+  * Fix KDEPlatformFileDialogHelper::selectedNameFilter (kde#481287)
+  * qxdgdesktopportalfiledialog: Avoid QtDBus module includes
+  * qt6: Bring back basic render loop on nvidia wayland when Qt < 6.6.3
+
+-------------------------------------------------------------------
 Wed May 22 07:43:13 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.5:
