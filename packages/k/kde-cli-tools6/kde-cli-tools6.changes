@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jun 13 10:58:25 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.0
+- Changes since 6.0.90:
+  * update version for new release
+
+-------------------------------------------------------------------
+Sat May 25 11:17:58 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.90
+- Changes since 6.0.5:
+  * update version for new release
+  * kde-open: show error message when the specified file doesn't exist
+  * Also check file existing if the url is a file one (kde#483017)
+  * Don't build tests unless requested by BUILD_TESTING
+  * kstart: Use existing WITH_X11 option to make Qt::GuiPrivate optional
+  * kdeinhibit: Adapt to renamed night light d-bus interface
+  * keditfiletype: fix crash when adding apps to "empty" views (kde#481229)
+  * kinfo: run with relevant platforms when possible (kde#476012)
+  * keditfiletype: Support parent window on Wayland
+
+-------------------------------------------------------------------
 Wed May 22 07:43:01 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.5:

@@ -16,20 +16,20 @@
 #
 
 
-%global kf6_version 6.0.0
+%global kf6_version 6.2.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 %define rname kde-cli-tools
 Name:           kde-cli-tools6
-Version:        6.0.5
+Version:        6.1.0
 Release:        0
 Summary:        Additional CLI tools for KDE applications
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -48,7 +48,6 @@ BuildRequires:  cmake(KF6Su) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
-BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
