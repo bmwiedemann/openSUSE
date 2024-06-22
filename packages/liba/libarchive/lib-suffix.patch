@@ -1,8 +1,8 @@
-Index: libarchive-3.7.0/libarchive/CMakeLists.txt
+Index: b/libarchive/CMakeLists.txt
 ===================================================================
---- libarchive-3.7.0.orig/libarchive/CMakeLists.txt
-+++ libarchive-3.7.0/libarchive/CMakeLists.txt
-@@ -265,13 +265,13 @@ IF(ENABLE_INSTALL)
+--- a/libarchive/CMakeLists.txt
++++ b/libarchive/CMakeLists.txt
+@@ -266,13 +266,13 @@ IF(ENABLE_INSTALL)
    IF(BUILD_SHARED_LIBS)
      INSTALL(TARGETS archive
              RUNTIME DESTINATION bin
@@ -20,10 +20,19 @@ Index: libarchive-3.7.0/libarchive/CMakeLists.txt
    INSTALL_MAN(${libarchive_MANS})
    INSTALL(FILES ${include_HEADERS} DESTINATION include)
  ENDIF()
-Index: libarchive-3.7.0/build/cmake/CreatePkgConfigFile.cmake
+Index: b/build/cmake/CreatePkgConfigFile.cmake
 ===================================================================
---- libarchive-3.7.0.orig/build/cmake/CreatePkgConfigFile.cmake
-+++ libarchive-3.7.0/build/cmake/CreatePkgConfigFile.cmake
+--- a/build/cmake/CreatePkgConfigFile.cmake
++++ b/build/cmake/CreatePkgConfigFile.cmake
+@@ -4,7 +4,7 @@
+ # Set the required variables (we use the same input file as autotools)
+ SET(prefix ${CMAKE_INSTALL_PREFIX})
+ SET(exec_prefix \${prefix})
+-SET(libdir \${exec_prefix}/lib)
++SET(libdir \${exec_prefix}/lib${LIB_SUFFIX})
+ SET(includedir \${prefix}/include)
+ # Now, this is not particularly pretty, nor is it terribly accurate...
+ # Loop over all our additional libs
 @@ -29,5 +29,5 @@ CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DI
  # And install it, of course ;).
  IF(ENABLE_INSTALL)

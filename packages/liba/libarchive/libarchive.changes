@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 20 14:56:58 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update lib-suffix.patch
+  * Add LIB_SUFFIX to libdir path in the pkg-config file
+
+-------------------------------------------------------------------
 Wed May 22 08:32:02 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Fix bsdunzip test failing due to a locale issue
