@@ -18,7 +18,7 @@
 
 %global __requires_exclude qt6qmlimport\\(org\\.kde\\.systemsettings.*
 
-%define kf6_version 6.0.0
+%define kf6_version 6.2.0
 %define qt6_version 6.6.0
 
 %define rname systemsettings
@@ -28,16 +28,18 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           systemsettings6
-Version:        6.0.5
+Version:        6.1.0
 Release:        0
 Summary:        KDE's control center
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-runner-Don-t-match-if-just-one-query-word-matches.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF6Auth) >= %{kf6_version}
@@ -90,8 +92,6 @@ applications by KDE.
 
 %suse_update_desktop_file  kdesystemsettings X-SuSE-core
 
-%ldconfig_scriptlets
-
 %files
 %license LICENSES/*
 %doc %lang(en) %{_kf6_htmldir}/en/systemsettings/
@@ -103,7 +103,6 @@ applications by KDE.
 %{_kf6_appstreamdir}/org.kde.systemsettings.metainfo.xml
 %{_kf6_bindir}/systemsettings
 %{_kf6_debugdir}/systemsettings.categories
-%{_kf6_libdir}/libsystemsettingsview.so.3
 %dir %{_kf6_plugindir}/kf6/krunner
 %{_kf6_plugindir}/kf6/krunner/krunner_systemsettings.so
 %{_kf6_sharedir}/kglobalaccel/systemsettings.desktop

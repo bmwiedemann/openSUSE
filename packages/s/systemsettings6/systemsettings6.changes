@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jun 21 18:46:45 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to avoid krunner result pollution (kde#488676):
+  * 0001-runner-Don-t-match-if-just-one-query-word-matches.patch
+
+-------------------------------------------------------------------
+Thu Jun 13 10:59:02 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.0
+- Changes since 6.0.90:
+  * update version for new release
+  * appstream versions
+  * update version for new release
+  * join keywords lists using ZERO WIDTH SPACE instead of empty string (kde#487855)
+
+-------------------------------------------------------------------
+Sat May 25 11:20:17 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Wed May 22 07:43:23 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.5:
