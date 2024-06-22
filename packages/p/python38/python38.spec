@@ -186,6 +186,9 @@ Patch42:        CVE-2023-27043-email-parsing-errors.patch
 # PATCH-FIX-UPSTREAM old-libexpat.patch gh#python/cpython#117187 mcepl@suse.com
 # Make the test suite work with libexpat < 2.6.0
 Patch43:        old-libexpat.patch
+# PATCH-FIX-UPSTREAM CVE-2024-0397-memrace_ssl.SSLContext_cert_store.patch bsc#1226447 mcepl@suse.com
+# removes memory race condition in ssl.SSLContext certificate store methods
+Patch44:        CVE-2024-0397-memrace_ssl.SSLContext_cert_store.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -459,6 +462,7 @@ other applications.
 %patch -P 41 -p1
 %patch -P 42 -p1
 %patch -P 43 -p1
+%patch -P 44 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
