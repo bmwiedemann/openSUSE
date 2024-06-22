@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jun 13 10:58:20 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.0
+- Changes since 6.0.90:
+  * update version for new release
+  * breezedecoration.cpp: remove hack that is not needed
+  * Fractional scaling hack: Expand border on bottom and right, set decoration name to "breeze"
+  * Allow building with QtDBus again
+
+-------------------------------------------------------------------
+Sat May 25 11:17:45 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Wed May 22 07:42:58 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.5:
