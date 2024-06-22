@@ -116,6 +116,7 @@ make %{?_smp_mflags} V=1 \
 %if "%{flavor}" == ""
 %make_install \
   XSL_STYLESHEET="%{_xsl_stylesheet}"
+%python3_fix_shebang
 %endif
 
 %if "%{flavor}" == "checkbashisms"

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 20 11:42:46 UTC 2024 - pgajdos@suse.com
+
+-  remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Fri May 24 12:16:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix minor issues:
