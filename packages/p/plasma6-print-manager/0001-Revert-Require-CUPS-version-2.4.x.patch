@@ -1,0 +1,26 @@
+From bc964a7e9f2fed1c63e5d56d4a9050afbfb556ce Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sat, 25 May 2024 21:07:15 +0200
+Subject: [PATCH] Revert "Require CUPS version 2.4.x"
+
+This reverts commit 5e090189c55f1180d4d2dc3be346ec081b0e14bc.
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e210ad22..63901858 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -64,7 +64,7 @@ set_package_properties(PackageKitQt6
+     PURPOSE "Needed to automatically install the system-config-printer package."
+ )
+ 
+-find_package(Cups "2.4" REQUIRED)
++find_package(Cups "1.5" REQUIRED)
+ 
+ find_package(CupsSmb)
+ set_package_properties(CupsSmb PROPERTIES
+-- 
+2.44.0
+
