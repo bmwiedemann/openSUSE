@@ -16,21 +16,21 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.2.0
 %define qt6_version 6.6.0
 
 %define rname qqc2-breeze-style
 
 %bcond_without released
 Name:           qqc2-breeze-style6
-Version:        6.0.5
+Version:        6.1.0
 Release:        0
 Summary:        Breeze Style for Qt Quick
 License:        LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
@@ -50,8 +50,6 @@ BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickTemplates2) >= %{qt6_version}
-# Only needed when doing a static build
-# BuildRequires:  cmake(Qt6X11Extras)
 BuildRequires:  pkgconfig(x11)
 Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       qt6-declarative-imports >= %{qt6_version}
@@ -87,8 +85,8 @@ Usually not needed as it is only a runtime dependency.
 %license LICENSES/*
 %dir %{_kf6_plugindir}/kf6/kirigami/
 %dir %{_kf6_plugindir}/kf6/kirigami/platform
-%{_kf6_plugindir}/kf6/kirigami/platform/org.kde.breeze.so
 %{_kf6_qmldir}/org/kde/breeze/
+%{_kf6_plugindir}/kf6/kirigami/platform/org.kde.breeze.so
 
 %files devel
 %{_kf6_cmakedir}/QQC2BreezeStyle/
