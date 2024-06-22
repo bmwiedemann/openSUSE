@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Jun 13 10:58:28 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.0
+- Changes since 6.0.90:
+  * update version for new release
+
+-------------------------------------------------------------------
+Sat May 25 11:18:06 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.90
+- Changes since 6.0.5:
+  * update version for new release
+  * Add key code sanity check in GlobalShortcutsRegistry::processKey
+  * Postpone processing KSycoca to the next event loop cycle
+  * Update service-based shortcuts when service database changes (kde#479730,kde#483918)
+  * Fix KHotkeys migration (kde#484063)
+  * sequencehelpers_p: rename mangleKey to normalizeSequence
+  * add tests
+  * plugins/xcb: correctly handle modifier-only shortcuts
+  * add API for listening to mouse events
+  * Enhance modifier-only shortcuts (kde#464805,kde#470256)
+  * globalshortcutregistry: refactor
+  * globalshortcutsregistry: treat super as meta (kde#481173)
+  * Also consider actions when querying for applications with shortcuts (kde#483214)
+  * Include all deprecated functions by default (kde#482712)
+  * plugins/xcb/kglobalaccel_x11: use new KKeyServer API (kde#478936)
+  * globalshortcutsregistry: treat SysReq as Alt+Print (kde#386253)
+  * Migrate command shortcuts from khotkeys
+  * Drop outdated comment
+  * Remove unused function arg
+  * Only write non-default shortcuts during migration
+  * Apply X-KDE-GlobalShortcutType also in loadFromService
+  * Add migration helper to migrate dynamic shortcuts to desktop file based shortcuts
+  * Fix old KF5-based desktop entries lingering in kglobalshortcutsrc
+
+-------------------------------------------------------------------
 Wed May 22 07:43:03 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.5:
