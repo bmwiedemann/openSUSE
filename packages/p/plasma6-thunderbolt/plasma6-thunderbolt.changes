@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jun 13 10:58:49 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.0
+- No code changes since 6.0.90
+
+-------------------------------------------------------------------
+Sat May 25 11:19:38 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.90
+- Changes since 6.0.5:
+  * We use QT_MIN_VERSION
+  * kcm/bolt: use PlaceholderMessage
+
+-------------------------------------------------------------------
 Wed May 22 07:43:17 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.5:
