@@ -8,11 +8,11 @@ This installs rather generic files so it's not necessary to query Qt here.
  CMakeLists.txt | 12 +++++-------
  1 file changed, 5 insertions(+), 7 deletions(-)
 
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 643270e..e94130b 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -12,7 +12,7 @@ find_package (ECM ${KF6_MIN_VERSION} REQUIRED NO_MODULE)
+Index: kwallet-pam-%{_plasma6_version}git.20240421T181146~fa8c240/CMakeLists.txt
+===================================================================
+--- kwallet-pam-%{_plasma6_version}git.20240421T181146~fa8c240.orig/CMakeLists.txt
++++ kwallet-pam-%{_plasma6_version}git.20240421T181146~fa8c240/CMakeLists.txt
+@@ -12,7 +12,7 @@ find_package (ECM ${KF6_MIN_VERSION} REQ
  set (CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules" )
  
  include(CheckFunctionExists)
@@ -20,10 +20,10 @@ index 643270e..e94130b 100644
 +include(GNUInstallDirs)
  include(KDEClangFormat)
  include(ECMConfiguredInstall)
+ include(KDEGitCommitHooks)
+@@ -93,13 +93,11 @@ kde_clang_format(${ALL_CLANG_FORMAT_SOUR
  
-@@ -90,13 +90,11 @@ target_link_libraries (${library_name}
- file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
- kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
+ kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
  
 -install(TARGETS ${library_name} DESTINATION ${KDE_INSTALL_LIBDIR}/security)
 +install(TARGETS ${library_name} DESTINATION ${CMAKE_INSTALL_LIBDIR}/security)
@@ -39,6 +39,3 @@ index 643270e..e94130b 100644
  ecm_install_configured_files(INPUT plasma-kwallet-pam.service.in @ONLY DESTINATION
 -        ${KDE_INSTALL_SYSTEMDUSERUNITDIR})
 +        ${CMAKE_INSTALL_PREFIX}/lib/systemd/user/)
--- 
-2.43.0
-
