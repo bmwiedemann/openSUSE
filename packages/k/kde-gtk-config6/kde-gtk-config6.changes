@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jun 13 10:58:26 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.0
+- Changes since 6.0.90:
+  * update version for new release
+
+-------------------------------------------------------------------
+Sat May 25 11:18:00 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.90
+- Changes since 6.0.5:
+  * update version for new release
+  * gsettings: use more efficient overload to get string from variant
+  * gsettings: port away from deprecated QVariant::type
+  * Only put return type in conditional directives
+  * gtkconfig.upd: Set Version=6 (kde#482763)
+  * Fix build by unifying names in two #if branches
+  * kded: merge config sync requests when applying all settings
+
+-------------------------------------------------------------------
 Wed May 22 07:43:02 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.5:
