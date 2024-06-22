@@ -20,7 +20,7 @@
 # MeeGo.QOfono is optional and not packaged yet
 %global __requires_exclude qmlimport\\((org\\.kde\\.phone\\.homescreen|org\\.kde\\.plasma\\.phone\\.taskpanel|org\\.kde\\.private\\.mobile\\.homescreen\\.folio|MeeGo\\.QOfono|).*
 
-%define kf6_version 6.0.0
+%define kf6_version 6.2.0
 %define qt6_version 6.6.0
 
 %define rname plasma-mobile
@@ -30,8 +30,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-mobile
-Version:        6.0.5
-%global _plasma6_bugfix 6.0.3
+Version:        6.1.0
 Release:        0
 # Full Plasma 6 version (e.g. 5.9.3)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -40,9 +39,9 @@ Release:        0
 Summary:        Plasma shell for mobile devices
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
@@ -198,6 +197,7 @@ Plasma shell for mobile devices.
 %{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksettings.docked/
 %dir %{_kf6_plasmadir}/shells
 %{_kf6_plasmadir}/shells/org.kde.plasma.mobileshell/
+%{_kf6_plugindir}/kf6/kded/kded_plasma_mobile_autodetect_apn.so
 %{_kf6_plugindir}/kf6/kded/kded_plasma_mobile_start.so
 %dir %{_kf6_plugindir}/kwin
 %dir %{_kf6_plugindir}/kwin/effects
@@ -232,6 +232,8 @@ Plasma shell for mobile devices.
 %{_kf6_sharedir}/kwin/effects/mobiletaskswitcher/
 %dir %{_kf6_sharedir}/kwin/scripts
 %{_kf6_sharedir}/kwin/scripts/convergentwindows/
+%dir %{_kf6_sharedir}/plasma-mobile-apn-info
+%{_kf6_sharedir}/plasma-mobile-apn-info/apns-full-conf.xml
 %dir %{_kf6_sharedir}/wayland-sessions
 %{_kf6_sharedir}/wayland-sessions/plasma-mobile.desktop
 
