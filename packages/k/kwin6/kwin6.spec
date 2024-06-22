@@ -19,7 +19,7 @@
 # Internal QML imports
 %global __requires_exclude qt6qmlimport\\(org\\.kde\\.KWin\\.Effect\\.WindowView.*
 
-%global kf6_version 6.0.0
+%global kf6_version 6.2.0
 %define qt6_version 6.6.0
 
 %define rname   kwin
@@ -29,14 +29,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kwin6
-Version:        6.0.5
+Version:        6.1.0
 Release:        0
 Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
@@ -92,13 +92,14 @@ BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libdisplay-info)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.112
+BuildRequires:  pkgconfig(libeis-1.0)
 BuildRequires:  pkgconfig(libinput) >= 1.19
 BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.29
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libxcvt)
 BuildRequires:  pkgconfig(wayland-cursor) >= 1.22
 BuildRequires:  pkgconfig(wayland-egl)
-BuildRequires:  pkgconfig(wayland-protocols)
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.34
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xcb) >= 1.10
@@ -256,7 +257,7 @@ This package provides development files.
 %{_kf6_libdir}/kconf_update_bin/kwin-6.0-delete-desktop-switching-shortcuts
 %{_kf6_libdir}/kconf_update_bin/kwin-6.0-remove-breeze-tabbox-default
 %{_kf6_libdir}/kconf_update_bin/kwin-6.0-reset-active-mouse-screen
-%{_kf6_libdir}/libkcmkwincommon.so.6
+%{_kf6_libdir}/kconf_update_bin/kwin-6.1-remove-gridview-expose-shortcuts
 %{_kf6_libdir}/libkcmkwincommon.so.*
 %{_kf6_notificationsdir}/kwin.notifyrc
 %dir %{_kf6_plugindir}/kwin
@@ -267,6 +268,7 @@ This package provides development files.
 %{_kf6_plugindir}/kwin/effects/configs/kwin_colorblindnesscorrection_config.so
 %{_kf6_plugindir}/kwin/effects/configs/kwin_diminactive_config.so
 %{_kf6_plugindir}/kwin/effects/configs/kwin_glide_config.so
+%{_kf6_plugindir}/kwin/effects/configs/kwin_hidecursor_config.so
 %{_kf6_plugindir}/kwin/effects/configs/kwin_invert_config.so
 %{_kf6_plugindir}/kwin/effects/configs/kwin_magiclamp_config.so
 %{_kf6_plugindir}/kwin/effects/configs/kwin_magnifier_config.so
@@ -285,8 +287,9 @@ This package provides development files.
 %{_kf6_plugindir}/kwin/plugins/StickyKeysPlugin.so
 %{_kf6_plugindir}/kwin/plugins/BounceKeysPlugin.so
 %{_kf6_plugindir}/kwin/plugins/buttonsrebind.so
+%{_kf6_plugindir}/kwin/plugins/eis.so
 %{_kf6_plugindir}/kwin/plugins/krunnerintegration.so
-%{_kf6_plugindir}/kwin/plugins/nightcolor.so
+%{_kf6_plugindir}/kwin/plugins/nightlight.so
 %{_kf6_plugindir}/kwin/plugins/screencast.so
 %dir %{_kf6_plugindir}/org.kde.kdecoration2.kcm
 %{_kf6_plugindir}/org.kde.kdecoration2.kcm/kcm_auroraedecoration.so
