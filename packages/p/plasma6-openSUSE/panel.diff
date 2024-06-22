@@ -9,12 +9,14 @@
  // No need to set panel.location as ShellCorona::addPanel will automatically pick one available edge
  
  // For an Icons-Only Task Manager on the bottom, *3 is too much, *2 is too little
-@@ -22,6 +24,8 @@
+@@ -21,7 +21,9 @@
+     }
  }
  
- var kickoff = panel.addWidget("org.kde.plasma.kickoff")
+-panel.addWidget("org.kde.plasma.kickoff")
++var kickoff = panel.addWidget("org.kde.plasma.kickoff")
 +kickoff.currentConfigGroup = ["General"]
 +kickoff.writeConfig("icon", "start-here-branding")
- kickoff.currentConfigGroup = ["Shortcuts"]
- kickoff.writeConfig("global", "Alt+F1")
- 
+ //panel.addWidget("org.kde.plasma.showActivityManager")
+ panel.addWidget("org.kde.plasma.pager")
+ panel.addWidget("org.kde.plasma.icontasks")

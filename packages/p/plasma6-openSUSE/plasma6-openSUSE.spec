@@ -20,7 +20,7 @@
 
 # Plasma 6 pulls in Qt 5 as well, tell qml-autoreqprov what to use
 %global __qml_requires_opts --qtver 6
-%global plasma_version 6.0.5
+%global plasma_version 6.1.0
 Name:           plasma6-openSUSE
 Version:        84.87~git20240313T170730~9c664b7
 Release:        0
@@ -82,7 +82,6 @@ This package contains the Plasma 6 Look-and-feel package for openSUSE.
 %package -n plasma6-sddm-theme-openSUSE
 Summary:        SDDM theme for openSUSE
 Group:          System/GUI/KDE
-Requires:       sddm-qt6-branding-openSUSE
 Requires:       wallpaper-branding-openSUSE = %{wallpaper_branding_version}
 Provides:       sddm-theme-openSUSE = %{version}
 Obsoletes:      sddm-theme-openSUSE < %{version}

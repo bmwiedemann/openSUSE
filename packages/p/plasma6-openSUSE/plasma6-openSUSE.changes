@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 13 10:58:46 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.0
+- Don't have plasma6-sddm-theme-openSUSE require
+  sddm-qt6-branding-openSUSE
+
+-------------------------------------------------------------------
+Sat May 25 11:19:26 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.90
+- Rebase panel.diff
+
+-------------------------------------------------------------------
 Wed May 22 07:43:15 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.5

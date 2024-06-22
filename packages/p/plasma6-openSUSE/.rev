@@ -47,4 +47,17 @@
     <comment>Plasma 6.0.5(.1) (forwarded request 1176041 from Vogtinator)</comment>
     <requestid>1176126</requestid>
   </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>b9bb2e7ac56eab57c06f240e37a17e0c</srcmd5>
+    <version>84.87~git20240313T170730~9c664b7</version>
+    <time>1719055363</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.1.0
+- Don't have plasma6-sddm-theme-openSUSE require
+  sddm-qt6-branding-openSUSE
+
+- Update to 6.0.90
+- Rebase panel.diff</comment>
+    <requestid>1181353</requestid>
+  </revision>
 </revisionlist>
