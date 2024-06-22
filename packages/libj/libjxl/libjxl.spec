@@ -33,6 +33,7 @@ URL:            https://jpegxl.info/
 Source:         https://github.com/libjxl/libjxl/archive/refs/tags/v%version.tar.gz
 Source1:        baselibs.conf
 Source2:        skcms.tar
+Patch1:         system-jpeg.diff
 BuildRequires:  asciidoc
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
@@ -112,7 +113,7 @@ This package provides a thumbnailer to render for JPEG XL file thumbnails,
 for example, on file-browsers.
 
 %prep
-%setup -n libjxl-%version -a2
+%autosetup -n libjxl-%version -a2 -p1
 mv skcms third_party/
 
 %build
@@ -122,7 +123,7 @@ mv skcms third_party/
 	-DJPEGXL_ENABLE_PLUGINS=ON -DJPEGXL_ENABLE_SKCMS=ON \
 %endif
 	-DJPEGXL_ENABLE_SJPEG=OFF -DJPEGXL_ENABLE_DOXYGEN=OFF \
-	-DJPEGXL_ENABLE_JPEGLI=OFF
+	-DJPEGXL_ENABLE_JPEGLI=ON
 %cmake_build
 
 %install
@@ -148,6 +149,7 @@ rm -Rf "$b/%_libdir"/libjxl* "$b/%_bindir" "$b/%_includedir" "$b/%_libdir/pkgcon
 %_libdir/libjxl*.so.*
 
 %files tools
+%_bindir/?jpegli
 %_bindir/*xl*
 %_mandir/man*/*xl*
 

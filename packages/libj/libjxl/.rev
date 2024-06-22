@@ -140,4 +140,13 @@ Leap 15.5
     <comment>- Update to release 0.10.2</comment>
     <requestid>1158276</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>2cb1f83d124efbb68d2f97e00b6ec1c2</srcmd5>
+    <version>0.10.2</version>
+    <time>1719055369</time>
+    <user>anag+factory</user>
+    <comment>- Enable cjpegli, djpegli tools
+- Add system-jpeg.diff</comment>
+    <requestid>1182024</requestid>
+  </revision>
 </revisionlist>

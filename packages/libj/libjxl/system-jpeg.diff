@@ -1,0 +1,29 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2024-06-20 23:00:14.684111062 +0200
+
+There are many legit reasons to depend on bundled software, but this ain't one of them!
+
+---
+ lib/jpegli.cmake |    9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
+
+Index: libjxl-0.10.2/lib/jpegli.cmake
+===================================================================
+--- libjxl-0.10.2.orig/lib/jpegli.cmake
++++ libjxl-0.10.2/lib/jpegli.cmake
+@@ -23,12 +23,9 @@ elseif(JPEGLI_LIBJPEG_LIBRARY_SOVERSION
+   set(JPEG_LIB_VERSION 80)
+ endif()
+ 
+-configure_file(
+-  ../third_party/libjpeg-turbo/jconfig.h.in include/jpegli/jconfig.h)
+-configure_file(
+-  ../third_party/libjpeg-turbo/jpeglib.h include/jpegli/jpeglib.h COPYONLY)
+-configure_file(
+-  ../third_party/libjpeg-turbo/jmorecfg.h include/jpegli/jmorecfg.h COPYONLY)
++configure_file(/usr/include/jconfig.h include/jpegli/jconfig.h)
++configure_file(/usr/include/jpeglib.h include/jpegli/jpeglib.h COPYONLY)
++configure_file(/usr/include/jmorecfg.h include/jpegli/jmorecfg.h COPYONLY)
+ 
+ add_library(jpegli-static STATIC EXCLUDE_FROM_ALL "${JPEGXL_INTERNAL_JPEGLI_SOURCES}")
+ target_compile_options(jpegli-static PRIVATE "${JPEGXL_INTERNAL_FLAGS}")
