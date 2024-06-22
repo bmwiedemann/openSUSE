@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jun 13 10:58:37 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.0
+- Changes since 6.0.90:
+  * update version for new release
+  * Applet: run full Applet::save when a config value changes (kde#481113)
+  * Revert "Applet: Drop mostly dead code to save config"
+  * update version for new release
+  * private/ButtonContent: Make buttons' icon colors settable externally (kde#483375)
+  * Always limit tooltip size to screen size (kde#487742)
+  * Add temporary faux api to allow popups to constrain popup placement
+
+-------------------------------------------------------------------
+Sat May 25 11:18:51 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Wed May 22 07:43:08 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.5:
