@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Jun 13 10:58:29 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.0
+- Changes since 6.0.90:
+  * update version for new release
+  * appstream versions
+  * update version for new release
+
+-------------------------------------------------------------------
+Sat May 25 11:18:10 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.90
+- Changes since 6.0.5:
+  * update version for new release
+  * remove dup version
+  * update version for new release
+  * Remove confirmation dialog when cutting or deleting items with children (kde#483079)
+  * update version for new release
+  * revert premature appstream update
+  * update version for new release
+  * Clean appstream versions, fixes appstreamtest
+  * Add URL to the appstream metadata
+  * update version for new release
+  * Make sure that icon is setting
+
+-------------------------------------------------------------------
 Wed May 22 07:43:04 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.5:
