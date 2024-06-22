@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jun 13 10:58:43 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.0
+- Changes since 6.0.90:
+  * update version for new release
+  * appstream versions
+  * update version for new release
+
+-------------------------------------------------------------------
+Sat May 25 11:19:15 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.90
+- Changes since 6.0.5:
+  * update version for new release
+  * merge versions
+  * Add homepage to appstream
+  * appstream update
+  * Fix finding KCM (kde#480462)
+
+-------------------------------------------------------------------
 Wed May 22 07:43:12 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.5:
