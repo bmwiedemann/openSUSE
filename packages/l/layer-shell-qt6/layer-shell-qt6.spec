@@ -17,7 +17,7 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.2.0
 %define qt6_version 6.6.0
 
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -27,14 +27,14 @@
 %define rname layer-shell-qt
 %bcond_without released
 Name:           layer-shell-qt6
-Version:        6.0.5
+Version:        6.1.0
 Release:        0
 Summary:        wlr-layer-shell integration for Qt
 License:        LGPL-3.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -99,9 +99,7 @@ This allows integration of Qt applications with wlr-layer-shell.
 %{_kf6_libdir}/libLayerShellQtInterface.so.*
 
 %files imports
-%dir %{_kf6_qmldir}/org/
-%dir %{_kf6_qmldir}/org/kde/
-%{_kf6_qmldir}/org/kde/layershell
+%{_kf6_qmldir}/org/kde/layershell/
 
 %files -n layer-shell-qt6-devel
 %{_includedir}/LayerShellQt/

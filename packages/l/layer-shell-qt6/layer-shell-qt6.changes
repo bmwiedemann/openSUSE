@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jun 13 10:58:35 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.0
+- Changes since 6.0.90:
+  * update version for new release
+
+-------------------------------------------------------------------
+Sat May 25 11:18:47 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.90
+- Changes since 6.0.5:
+  * update version for new release
+  * declarative: Add a QML extension object for accessing the margins property
+  * Enforce passing tests on all platforms
+  * Add clang-format commit hook
+  * Run clang-format
+  * Drop now defunct code to sync resizes
+  * Use QWaylandWindow::windowContentGeometry() to set the initial preferred size
+  * Update the desired size when the anchors change (kde#484990)
+  * Guard against calling set_size while applying a configure event more explicitly
+  * Port to asynchronous roundtrip
+  * Synchronise client driven resizing
+  * Align layershell-qt with the rest of KDE frameworks at a licence level
+  * Fix build with Qt 6.7
+  * Add a new setExclusiveEdge call in the protocol
+
+-------------------------------------------------------------------
 Wed May 22 07:43:07 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.5:
