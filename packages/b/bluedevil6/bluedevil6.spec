@@ -20,7 +20,7 @@
 # Internal QML import
 %global __requires_exclude qt6qmlimport\\(org\\.kde\\.plasma\\.private\\.bluetooth.*
 
-%define kf6_version 6.0.0
+%define kf6_version 6.2.0
 %define qt6_version 6.6.0
 
 %define rname bluedevil
@@ -31,15 +31,14 @@
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 Name:           bluedevil6
-Version:        6.0.5.1
-%global _plasma6_bugfix 6.0.5
+Version:        6.1.0
 Release:        0
 Summary:        Bluetooth Manager for KDE Plasma
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/6.0.5/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/6.0.5/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}

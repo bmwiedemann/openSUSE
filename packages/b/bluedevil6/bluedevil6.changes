@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jun 13 10:58:19 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.0
+- Changes since 6.0.90:
+  * update version for new release
+
+-------------------------------------------------------------------
+Sat May 25 11:22:55 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.90
+- Changes since 6.0.5.1:
+  * update version for new release
+  * kded: Fix `launchState` setting not working (kde#469119)
+  * Rename "Joypad" to "Game controller"
+  * Add missing KService dependency
+  * applet: Set a duration for the ExpandableListItem's transitions
+  * fix pairing bug
+  * applet: Indicate connnection failure in the applet (kde#449517)
+  * find_package(KF6Kirigami2) is deprecated, use find_package(KF6Kirigami)
+  * [wizard] Disable quitlock (kde#481585)
+  * kcm/bluetooth: Use non symbolic icons for placeholders and add explanations
+  * add a version for dependencies so it does not break CI https://invent.kde.org/plasma/bluedevil/-/merge_requests/156
+  * add a separate version for dependencies so it does not break CI on bumping version
+  * Remove extraFooterTopPadding usage
+  * kcm_bluetooth: show device type and battery in list subtitle
+  * kcm_bluetooth: show battery percentace on device page
+
+-------------------------------------------------------------------
 Wed May 22 09:01:29 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.0.5.1:
