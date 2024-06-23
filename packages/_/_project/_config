@@ -1040,7 +1040,7 @@ Prefer: nodejs-default nodejs-devel-default npm-default
 Prefer: -libhs5-vectorscan5
 
 # have choice for libpulse.so.0 needed by wine-32bit: apulse-32bit libpulse0-32bit - prefering the 'original'
-Prefer: libpulse0-32bit libsane1-32bit -pipewire-pulseaudio
+Prefer: libpulse0-32bit libsane1-32bit pipewire-pulseaudio
 
 # Have choice for vtk-java/vtk-tcl/python3-vtk needed by vtk-devel
 Prefer: vtk-java
