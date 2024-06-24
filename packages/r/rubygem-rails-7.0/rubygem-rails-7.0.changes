@@ -1,4 +1,248 @@
 -------------------------------------------------------------------
+Fri Jun 21 10:29:00 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- 7.0.8.4:
+
+## Active Support
+
+*   No changes.
+
+
+
+## Active Model
+
+*   No changes.
+
+
+
+## Active Record
+
+*   No changes.
+
+
+
+## Action View
+
+*   No changes.
+
+
+
+## Action Pack
+
+*   Include the HTTP Permissions-Policy on non-HTML Content-Types
+    [CVE-2024-28103]
+
+
+
+## Active Job
+
+*   No changes.
+
+
+
+## Action Mailer
+
+*   No changes.
+
+
+
+## Action Cable
+
+*   No changes.
+
+
+
+## Active Storage
+
+*   No changes.
+
+
+
+## Action Mailbox
+
+*   No changes.
+
+
+
+## Action Text
+
+*   No changes.
+
+
+
+## Railties
+
+*   No changes.
+
+
+
+
+
+7.0.8.2:
+
+
+## Active Support
+
+*   No changes.
+
+
+
+## Active Model
+
+*   No changes.
+
+
+
+## Active Record
+
+*   No changes.
+
+
+
+## Action View
+
+*   No changes.
+
+
+
+## Action Pack
+
+*   No changes.
+
+
+
+## Active Job
+
+*   No changes.
+
+
+
+## Action Mailer
+
+*   No changes.
+
+
+
+## Action Cable
+
+*   No changes.
+
+
+
+## Active Storage
+
+*   No changes.
+
+
+
+## Action Mailbox
+
+*   No changes.
+
+
+
+## Action Text
+
+*   Upgrade Trix to 1.3.2 to fix [CVE-2024-34341](https://github.com/basecamp/trix/security/advisories/GHSA-qjqp-xr96-cj99).
+
+    *Rafael Mendonça França*
+
+
+
+## Railties
+
+*   No changes.
+
+
+
+
+
+7.0.8.1:
+
+
+## Active Support
+
+*   No changes.
+
+
+
+## Active Model
+
+*   No changes.
+
+
+
+## Active Record
+
+*   No changes.
+
+
+
+## Action View
+
+*   No changes.
+
+
+
+## Action Pack
+
+*   Fix possible XSS vulnerability with the `translate` method in controllers
+
+    CVE-2024-26143
+
+
+## Active Job
+
+*   No changes.
+
+
+
+## Action Mailer
+
+*   No changes.
+
+
+
+## Action Cable
+
+*   No changes.
+
+
+
+## Active Storage
+
+*   Disables the session in `ActiveStorage::Blobs::ProxyController`
+    and `ActiveStorage::Representations::ProxyController`
+    in order to allow caching by default in some CDNs as CloudFlare
+
+    Fixes #44136
+
+    *Bruno Prieto*
+
+
+## Action Mailbox
+
+*   No changes.
+
+
+
+## Action Text
+
+*   No changes.
+
+
+
+## Railties
+
+*   No changes.
+
+
+
+
+
+
+
+-------------------------------------------------------------------
 Tue Nov 14 15:27:29 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - 7.0.8:
