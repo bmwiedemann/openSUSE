@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jun 21 10:36:29 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- 4.3.0:
+
+This release introduces a new lexer: IEC 61131-3 Structured Text. We also add a number of improvements across Brainfuck, Crystal, Eiffel, HCL, JavaScript, Markdown, Mathematica, Objective-C, Ruby, TCL, TOML and TypeScript Lexer. Thank you for all the wonderful contributors for this release! 🚀 ❤️ 
+
+**Full Changelog**: https://github.com/rouge-ruby/rouge/compare/v4.2.1...v4.3.0
+
+4.2.1:
+
+This small release includes some bug fixes across CPP, NASM, NGINX and TOML lexer. We have also fixed a number of Ruby warnings and made some small development improvements. 
+
+Thank you to all of the amazing contributors for your help and continuous support!
+
+**Full Changelog**: https://github.com/rouge-ruby/rouge/compare/v4.2.0...v4.2.1
+
+
+
+-------------------------------------------------------------------
 Tue Nov 14 15:32:42 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - 4.2.0:
