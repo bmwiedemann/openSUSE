@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-spring
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-spring
-Version:        4.1.3
+Version:        4.2.1
 Release:        0
 %define mod_name spring
 %define mod_full_name %{mod_name}-%{version}
