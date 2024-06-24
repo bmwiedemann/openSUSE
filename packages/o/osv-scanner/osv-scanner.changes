@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Jun 21 20:09:23 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.1:
+  * Make 1.8.1 release (#1056)
+  * feat: bump goreleaser to v2 (#1054)
+  * Update goreleaser.yml (#1052)
+
+-------------------------------------------------------------------
+Fri Jun 21 20:07:23 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.0:
+  * v1.8.0 Changelog (#1050)
+  * Add documentation for the configuration. (#1051)
+  * Update documentation for transitive dependency scanning (#1040)
+  * Invoke `MavenResolverExtrator` when scanning pom.xml (#1028)
+  * fix(deps): update osv-scanner minor (#1044)
+  * chore(deps): update workflows (#1043)
+  * chore(deps): update golang docker tag to v1.22.4 (#896)
+  * chore(deps): lock file maintenance (#1033)
+  * chore(deps): update goreleaser/goreleaser-action action to v6
+    (#1032)
+  * Add `experimental-download-offline-databases` flag (#1039)
+  * Update snapshots and exit codes (#1041)
+  * Upgrade deps.dev dependencies (#1035)
+  * Remove busybox from alpine SBOM (#1037)
+  * Add go binary scanning (#1011)
+  * Update Go patch version (#1030)
+  * Merge parent projects for Maven pom.xml (#1019)
+  * Update base docker image for golang 1.21.11 (#1029)
+  * implement filtering by packages through the config (#944)
+  * Dependency imports should always be fetched from upstream
+    (#1027)
+  * Upgrade go version (#1024)
+  * Fix broken TUI styling (#1023)
+  * Update test snapshots (#1022)
+  * chore(deps): lock file maintenance (#1018)
+  * fix(deps): update osv-scanner minor (#1017)
+  * chore(deps): update workflows (#1016)
+  * ci: don't try to upload code coverage on macOS (#1020)
+  * Fix some Maven manifest & resolver issues (#1008)
+  * Transitive dependency support for Maven pom.xml (#1002)
+  * Select a version that actually exists (#1012)
+  * Maven standard dependencies should take precedence over managed
+    dependencies (#1000)
+  * Do not record Maven `compile` scope in dependency groups (#1003)
+
+-------------------------------------------------------------------
 Thu May 30 09:34:18 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.7.4:

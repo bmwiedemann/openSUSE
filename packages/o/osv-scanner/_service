@@ -3,8 +3,8 @@
     <param name="url">https://github.com/google/osv-scanner</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v1.7.4</param>
-    <param name="match-tag">v1.7.4</param>
+    <param name="revision">v1.8.1</param>
+    <param name="match-tag">v1.8.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
