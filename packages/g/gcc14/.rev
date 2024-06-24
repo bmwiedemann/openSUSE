@@ -78,4 +78,13 @@
     <comment>- Update to GCC 14.1 release.</comment>
     <requestid>1172664</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>84cdef79f9cff12d8124643bccb51739</srcmd5>
+    <version>14.1.1+git10335</version>
+    <time>1719254963</time>
+    <user>anag+factory</user>
+    <comment>- Update to gcc-14 branch head, 272e8c90af527fc1d0055ad0f, git10335
+  * picks first batch of post-release fixes</comment>
+    <requestid>1182478</requestid>
+  </revision>
 </revisionlist>
