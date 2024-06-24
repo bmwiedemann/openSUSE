@@ -1786,4 +1786,12 @@ As usual, a lot of patches don't make it to this list since they're more interna
     * bookmark: fix remote bookmark deletion when the push is raced (forwarded request 1180231 from develop7)</comment>
     <requestid>1180232</requestid>
   </revision>
+  <revision rev="201" vrev="2">
+    <srcmd5>741ef67ce66f6c23ea933b4fbf98d8c1</srcmd5>
+    <version>6.7.4</version>
+    <time>1719255025</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1182870</requestid>
+  </revision>
 </revisionlist>

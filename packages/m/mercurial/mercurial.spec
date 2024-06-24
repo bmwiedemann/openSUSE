@@ -19,6 +19,30 @@
 %if 0%{?suse_version} && 0%{?suse_version} <= 1110
 %{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 %endif
+
+%if 0%{?suse_version} > 1600
+# Tumbleweed
+%define pythons                        python3
+%define mercurial_python               python3
+%define mercurial_python_executable    python3
+%define mercurial_python_fix_shebang() %python3_fix_shebang
+%else
+%if 0%{?sle_version} >= 150600
+%{?sle15_python_module_pythons}
+# Leap 15.6
+%if %pythons == "python311"
+%define mercurial_python               python311
+%define mercurial_python_executable    python3.11
+%define mercurial_python_fix_shebang() %python311_fix_shebang
+%endif
+%else
+%define pythons                        python3
+%define mercurial_python               python3
+%define mercurial_python_executable    python3
+%define mercurial_python_fix_shebang() %python3_fix_shebang
+%endif
+%endif
+
 Name:           mercurial
 Version:        6.7.4
 Release:        0
@@ -34,17 +58,17 @@ Patch0:         mercurial-hgk-path-fix.diff
 Patch1:         mercurial-docutils-compat.diff
 # PATCH-FIX-OPENSUSE mercurial-locale-path-fix.patch saschpe@suse.de -- locales are found in /usr/share/locale
 Patch2:         mercurial-locale-path-fix.patch
+BuildRequires:  %{mercurial_python}
+BuildRequires:  %{mercurial_python}-devel
+BuildRequires:  %{mercurial_python}-xml
 BuildRequires:  fdupes
-BuildRequires:  python3
-BuildRequires:  python3-devel
-BuildRequires:  python3-xml
-Requires:       python3-curses
-Requires:       python3-xml
+Requires:       %{mercurial_python}-curses
+Requires:       %{mercurial_python}-xml
 Provides:       hg = %{version}
 %if 0%{?suse_version} < 1210
 BuildRequires:  docutils
 %else
-BuildRequires:  python3-docutils
+BuildRequires:  %{mercurial_python}-docutils
 %endif
 %if 0%{?sles_version}
 Requires:       openssl-certs
@@ -53,11 +77,11 @@ Requires:       ca-certificates
 %endif
 %if 0%{?with_tests}
 Source90:       tests.blacklist
+BuildRequires:  %{mercurial_python}-Pygments
 BuildRequires:  bzr
 BuildRequires:  git
 BuildRequires:  gpg
 BuildRequires:  ncurses-devel
-BuildRequires:  python3-Pygments
 BuildRequires:  subversion-python
 BuildRequires:  unzip
 #BuildRequires:  python-pyflakes
@@ -93,17 +117,17 @@ sed -i -e '1s@env @@' contrib/hgk
 chmod 644 hgweb.cgi
 
 %build
-%make_build all PYTHON=python3
+%make_build all PYTHON=%{mercurial_python_executable}
 %make_build -C contrib/chg all
 
 %install
-make install PREFIX="%{_prefix}" DESTDIR=%{buildroot} PYTHON=python3
+make install PREFIX="%{_prefix}" DESTDIR=%{buildroot} PYTHON=%{mercurial_python_executable}
 make -C contrib/chg install PREFIX="%{_prefix}" DESTDIR=%{buildroot}
-%python3_fix_shebang
+%mercurial_python_fix_shebang
 
 # Move locales to proper location
 mkdir -p %{buildroot}%{_datadir}/locale
-mv %{buildroot}%{python3_sitearch}/mercurial/locale/* %{buildroot}%{_datadir}/locale
+mv %{buildroot}%{python_sitearch}/mercurial/locale/* %{buildroot}%{_datadir}/locale
 %find_lang hg
 
 # Install stuff in contrib
@@ -121,7 +145,7 @@ cp -a tests/. %{buildroot}%{_datadir}/mercurial/tests
 
 %if 0%{?with_tests}
 %check
-%make_build tests TESTFLAGS="-v --blacklist=%{SOURCE90}" PYTHON=python3
+%make_build tests TESTFLAGS="-v --blacklist=%{SOURCE90}" PYTHON=%{mercurial_python_executable}
 %endif
 
 %files lang -f hg.lang
@@ -146,6 +170,6 @@ cp -a tests/. %{buildroot}%{_datadir}/mercurial/tests
 %{_mandir}/man5/hgignore.5%{?ext_man}
 %{_mandir}/man5/hgrc.5%{?ext_man}
 %{_mandir}/man8/hg-ssh.8%{?ext_man}
-%{python3_sitearch}/*
+%{python_sitearch}/*
 
 %changelog
