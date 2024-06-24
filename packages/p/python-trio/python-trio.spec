@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-trio%{psuffix}
-Version:        0.25.0
+Version:        0.25.1
 Release:        0
 Summary:        Python async/await-native I/O library
 License:        Apache-2.0 OR MIT
@@ -102,7 +102,7 @@ donttest+=" or run_black or run_ruff or lint_failure or test_process"
 %doc README.rst
 %license LICENSE LICENSE.APACHE2 LICENSE.MIT
 %{python_sitelib}/trio
-%{python_sitelib}/trio-%{version}*-info
+%{python_sitelib}/trio-%{version}.dist-info
 %endif
 
 %changelog

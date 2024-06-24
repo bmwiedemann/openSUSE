@@ -1,15 +1,22 @@
 -------------------------------------------------------------------
+Mon Jun 17 08:23:15 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.25.1:
+  * Fix crash when importing trio in embedded Python on Windows,
+    and other installs that remove docstrings.
+
+-------------------------------------------------------------------
 Fri Mar 22 09:37:15 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.25.0
   * New helper classes: RaisesGroup and Matcher.
-  * MultiError has been fully removed, and all relevant trio 
+  * MultiError has been fully removed, and all relevant trio
     functions now raise ExceptionGroups instead.
-  * The strict_exception_groups parameter now defaults to True 
+  * The strict_exception_groups parameter now defaults to True
     in trio.run and trio.lowlevel.start_guest_run.
-  * Add trio.testing.wait_all_threads_completed, which blocks 
+  * Add trio.testing.wait_all_threads_completed, which blocks
     until no threads are running tasks.
-  * Path is now a subclass of pathlib.PurePath, allowing it to 
+  * Path is now a subclass of pathlib.PurePath, allowing it to
     interoperate with other standard pathlib types.
 
 -------------------------------------------------------------------
