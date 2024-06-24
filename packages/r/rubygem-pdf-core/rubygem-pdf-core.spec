@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-pdf-core
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,23 +24,22 @@
 #
 
 Name:           rubygem-pdf-core
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 %define mod_name pdf-core
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.5}
+BuildRequires:  %{ruby >= 2.7}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-URL:            http://prawnpdf.org
+URL:            http://prawnpdf.org/
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
-Summary:        PDF::Core is used by Prawn to render PDF documents
+Summary:        Low level PDF generator
 License:        GPL-2.0-only OR GPL-3.0-only
-Group:          Development/Languages/Ruby
 
 %description
-PDF::Core is used by Prawn to render PDF documents.
+PDF::Core is used by Prawn to render PDF documents. It provides low-level
+format support.
 
 %prep
 
