@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Sun Jan 15 07:06:31 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.4.4:
+  * Fixes cmake for newst macOS and remove deprecated directive.
+- Enable tests as part of %check.
+- Add vdt-shared-lib-versioning.patch to enable shared lib
+  versioning and allow package to follow shlib guidelines.
+
+-------------------------------------------------------------------
+Wed Sep 29 07:17:12 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.

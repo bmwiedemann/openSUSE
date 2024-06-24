@@ -1,0 +1,9 @@
+<package name="vdt" project="openSUSE:Factory">
+  <title>A collection of fast and inline implementations of mathematical functions</title>
+  <description>VDT is a collection of fast and inline implementations of mathematical
+functions that can be used in autovectorised loops.
+
+</description>
+  <devel project="science" package="vdt"/>
+  <url>https://github.com/dpiparo/vdt</url>
+</package>

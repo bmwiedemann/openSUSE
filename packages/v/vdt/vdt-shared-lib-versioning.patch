@@ -1,0 +1,30 @@
+Index: vdt-0.4.4/CMakeLists.txt
+===================================================================
+--- vdt-0.4.4.orig/CMakeLists.txt
++++ vdt-0.4.4/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ # VDT Math Library
+ cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
+-project (Vdt)
++project (Vdt VERSION 0.4.4)
+ 
+ #-------------------------------------------------------------------------------
+ # Include the defaults
+Index: vdt-0.4.4/lib/CMakeLists.txt
+===================================================================
+--- vdt-0.4.4.orig/lib/CMakeLists.txt
++++ vdt-0.4.4/lib/CMakeLists.txt
+@@ -18,9 +18,12 @@ endif()
+ # The library
+ ADD_LIBRARY(vdt ${SRC_DIR}/vdtMath_signatures.cc ${INC_DIR}/vdtMath.h )
+ 
++set_target_properties(vdt PROPERTIES VERSION ${PROJECT_VERSION})
++set_target_properties(vdt PROPERTIES SOVERSION 0)
++
+ # Installation of the lib
+ INSTALL(TARGETS vdt  
+-        DESTINATION lib)
++        DESTINATION ${CMAKE_INSTALL_LIBDIR})
+         
+ 
+ # Build Vc wrapper (without c++11)
