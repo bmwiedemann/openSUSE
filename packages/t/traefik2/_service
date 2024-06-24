@@ -1,0 +1,8 @@
+<services>
+  <service name="download_files" mode="manual">
+  </service>
+  <service name="go_modules" mode="manual">
+    <param name="archive">traefik*.src.tar.gz</param>
+    <param name="basename">./</param>
+  </service>
+</services>

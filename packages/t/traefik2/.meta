@@ -1,0 +1,6 @@
+<package name="traefik2" project="openSUSE:Factory">
+  <title>Traefik 2.11</title>
+  <description>Traefik (pronounced traffic) is a modern HTTP reverse proxy and load balancer that makes deploying microservices easy. Traefik integrates with your existing infrastructure components (Docker, Swarm mode, Kubernetes, Marathon, Consul, Etcd, Rancher, Amazon ECS, ...) and configures itself automatically and dynamically. Pointing Traefik at your orchestrator should be the only configuration step you need.</description>
+  <devel project="devel:kubic" package="traefik2"/>
+  <url>https://traefik.io/</url>
+</package>

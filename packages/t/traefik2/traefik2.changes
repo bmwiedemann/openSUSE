@@ -1,0 +1,432 @@
+-------------------------------------------------------------------
+Wed Jun 19 15:50:59 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to version 2.11.5
+  * Updated libraries
+
+-------------------------------------------------------------------
+Wed Jun 19 15:42:15 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to version 2.11.4
+  * Bug fixes:
+    [acme] Update go-acme/lego to v4.17.3 (#10768 by ldez)
+
+-------------------------------------------------------------------
+Thu May 23 15:10:27 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to version 2.11.3
+  * CVEs:
+    * CVE-2024-24788 (bsc#1224018): A malformed DNS message in response to a
+      query can cause the Lookup functions to get stuck in an infinite loop.
+  * Bug fixes:
+    [server] Remove deadlines for non-TLS connections
+            (gh#traefik/traefik#10615 by rtribotte)
+    [webui] Display of Content Security Policy values getting out of screen
+            (gh#traefik/traefik#10710 by brandonfl)
+    [webui] Fix provider icon size
+
+  * Additional fixes: bnc#1224308 and bnc#1224384
+
+- Packaging:
+  * Use Traefik's src.tar.gz files containing a pre-built frontend to simplify the packaging process
+  * Fixes bsc#1224308 and bsc#1224384
+
+- Removed allow-node-21.patch and prepare-sources.sh script
+
+-------------------------------------------------------------------
+Mon May  6 12:38:39 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Renamed package traefik to traefik2
+
+-------------------------------------------------------------------
+Fri May  3 15:14:17 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Added allow-node-21.patch to allow building with nodejs21, too
+- Removed traefik-fix-int-overflow-with-go-generate-10452.patch
+
+- Update to version 2.11.2
+  * Important
+    * Read the migration guide at https://doc.traefik.io/traefik/migration/v2/#v2112
+
+  * CVEs:
+    * GHSA-7f4j-64p6-5h5v (related to CVE-2023-45288)
+    * CVE-2024-28869 (bsc#1222825)
+
+  * Bug fixes:
+    * [server] Revert LingeringTimeout and change default value for ReadTimeout
+    * [server] Set default ReadTimeout value to 60s
+
+- Update to version 2.11.1:
+  * Bug fixes:
+    * [acme,tls] Enforce handling of ACME-TLS/1 challenges
+    * [acme] Update go-acme/lego to v4.16.1
+    * [acme] Close created file in ACME local store CheckFile func
+    * [docker,http3] Update to quic-go v0.42.0 and docker/cli v24.0.9
+    * [docker,marathon,rancher,ecs,tls,nomad] Allow to configure TLSStore default generated certificate with labels
+    * [ecs] Adjust ECS network interface detection logi
+    * [logs,tls] Fix log when default TLSStore and TLSOptions are defined multiple times
+    * [middleware] Allow empty replacement with ReplacePathRegex middleware
+    * [plugins] Update Yaegi to v0.16.1
+    * [provider,rules] Don't allow routers higher than internal ones
+    * [rules] Reserve priority range for internal router
+    * [server,tcp] Introduce Lingering Timeout
+    * [tcp] Enforce failure for TCP HostSNI with hostname
+    * [tracing] Bump Elastic APM to v2.4.8
+    * [webui] Fix dashboard exposition through a router
+    * [webui] Display IPAllowlist middleware configuration in dashboard
+    * [webui] Make text more readable in dark mode
+    * [webui] Migrate to Quasar 2.x and Vue.js 3.x
+    * [webui] Add a horizontal scroll for the mobile view
+
+-------------------------------------------------------------------
+Wed Mar  6 11:13:51 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Remove node_modules.sums left over by obs-service-node_modules 
+
+-------------------------------------------------------------------
+Tue Mar  5 10:54:13 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- configuration changes:
+  * Enhanced default configuration file, including configs for http3 support.
+  * Docker configuration has been disabled per default, file provider has been enabled.
+    The directory for the file provider has been set to /etc/traefik/conf.d
+  * Prepared directories for logging in /var/log/traefik
+  * Enhanced default configuration file, including configs for http3 support. Settings
+    are disabled per default.
+
+- packaging general:
+  * Use standard source-download feature, modified _service file and removed _servicedata
+  * packagers can invoke `prepare-sources.sh` to doenload sources and prepare go-packages
+    as well as node_modules for the built process.
+
+- frontend packaging:
+  * The frontend will now be packaged on OBS to have reproduceable builds.
+
+- Go packaging: 
+  * Added upstream patch traefik-fix-int-overflow-with-go-generate-10452.patch to
+    allow packaging on 32bit architectures gh#traefik/traefik#10451
+  * Enabled CGO because there is no cross compilation needed in OSB (we build
+    packages for every distribution/architecture seperately). PIE can not be used
+    with CGO enabled for most architectures and is reported as failure sinc go 1.22.
+    See https://github.com/golang/go/issues/64875
+  * Don't use pie-buildmode for ppc64 and s390x architectures
+
+- Update to version 2.11.0:
+  * Enhancements:
+    * [middleware] Deprecate IPWhiteList middleware in favor of IPAllowList
+    * [redis] Add Redis Sentinel support
+    * [server] Add KeepAliveMaxTime and KeepAliveMaxRequests features to entrypoints
+    * [sticky-session] Hash WRR sticky cookies
+  * Bug fixes:
+    * [acme] Update go-acme/lego to v4.15.0
+    * [authentication] Fix NTLM and Kerberos
+    * [file] Fix file watcher
+    * [file] Update github.com/fsnotify/fsnotify to v1.7.0
+    * [http3] Update quic-go to v0.40.1
+    * [middleware,tcp] Add missing TCP IPAllowList middleware constructor
+    * [nomad] Update the Nomad API dependency to v1.7.2
+    * [server] Fix ReadHeaderTimeout for PROXY protocol
+    * [webui] Fixes the Header Button
+    * [webui] Fix URL encode resource's id before calling API endpoints
+
+-------------------------------------------------------------------
+Wed Feb 21 14:21:09 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Fixed packaging of UI
+
+-------------------------------------------------------------------
+Fri Dec 08 12:51:12 UTC 2023 - alexandre.vicenzi@suse.com
+
+- Update to version 2.10.7:
+  * CVEs:
+    * CVE-2023-45283 (boo#1216943)
+    * CVE-2023-45284 (boo#1216944)
+    * CVE-2023-47124 (boo#1217806)
+    * CVE-2023-47633 (boo#1217807)
+    * CVE-2023-47106 (boo#1217804)
+    * GHSA-7v4p-328v-8v5g, CVE-2023-39325 (boo#1216109)
+  * Bug fixes:
+      * [accesslogs] Fix preflight response status in access logs
+      * [accesslogs] Move origin fields capture to service level
+      * [acme] Do not check for wildcard domains for non DNS challenge
+      * [acme] Remove backoff for http challenge (CVE-2023-47124)
+      * [acme] Update go-acme/lego to v4.14.0
+      * [consul,consulcatalog] Update github.com/hashicorp/consul/api
+      * [http3] Update quic-go to v0.39.1
+      * [k8s/crd] Fix multiple subsets endpoint
+      * [k8s/ingress,k8s/crd,k8s,hub] Clean code related to Hub
+      * [k8s/ingress,k8s] fix: avoid panic on resource backends
+      * [kv] Ignore ErrKeyNotFound error for the KV provider
+      * [logs] Fixed datadog logs json format issue
+      * [metrics] Enable Prometheus provider cleanup when only the router's metrics level is activated
+      * [middleware,authentication] Adjust forward auth to avoid connection leak
+      * [middleware,server] Improve CNAME flattening to avoid unnecessary error logging
+      * [middleware,tracing,plugins] fix: traceability of the middleware plugins
+      * [middleware] Allow X-Forwarded-For delete operation
+      * [middleware] Encode query semicolons
+      * [middleware] Fix stripPrefix middleware is not applied to retried attempts
+      * [middleware] Missing trailer with custom errors middleware
+      * [middleware] Support informational headers in middlewares redefining the response writer
+      * [plugins] Improve error messages related to plugins
+      * [provider] Refuse recursive requests (CVE-2023-47633)
+      * [server] Deny request with fragment in URL path (CVE-2023-47106)
+      * [server] Update x/net and grpc/grpc-go
+      * [tracing] Remove deprecated code usage for datadog tracer
+      * [tracing] Update DataDog tracing dependency to v1.50.1
+      * [webui] Add missing accessControlAllowOriginListRegex to middleware view
+      * Fix false positive in url anonymization
+    * Misc:
+      * [webui] Updates the Hub tooltip content using a web component and adds an option to disable Hub button
+- Update Go version (CVE-2023-45283, CVE-2023-45284, CVE-2023-39325)
+
+-------------------------------------------------------------------
+Mon Jun 12 17:26:46 UTC 2023 - alexandre.vicenzi@suse.com
+
+- Update to version 2.10.1:
+  * CVEs
+    * CVE-2022-41724 (bsc#1208271)
+    * CVE-2023-24534 (bsc#1210127)
+    * CVE-2023-29013 (bsc#1210505)
+  * Enhancements
+    * [docker] Expose ContainerName in Docker provider
+    * [hub] Remove hub configuration out of experimental
+    * [k8s/crd] Introduce traefik.io API Group CRDs
+    * [k8s/ingress,k8s/crd,k8s] Native Kubernetes service load-balancing
+    * [middleware,metrics] Add prometheus metric requests_total with headers
+    * [nomad] Support multiple namespaces in the Nomad Provider
+    * [tracing] Add support to send DataDog traces via Unix Socket
+    * [webui] Display period setting of the RateLimit middleware in the webui
+    * [webui] Modify the Hub Button
+  * Bug fixes
+    * [docker] Expose ContainerName in Docker provider
+    * [docker] Only warn about missing docker network when network_mode is not host or container
+    * [ecs] Prevent panicking when a container has no network interfaces
+    * [file] Make file provider more resilient wrt first configuration
+    * [hub] hub: get out of experimental.
+    * [k8s/crd] Introduce traefik.io API Group CRDs
+    * [k8s/ingress,k8s/crd,k8s] Native Kubernetes service load-balancing
+    * [logs] Differentiate UDP stream and TCP connection in logs
+    * [metrics] Include user-defined default cert for traefik_tls_certs_not_after metric
+    * [middleware,metrics] Add prometheus metric requests_total with headers
+    * [middleware] Prevent from no rate limiting when average is zero
+    * [middleware] Prevents superfluous WriteHeader call in the error middleware
+    * [middleware] Sanitize X-Forwarded-Proto header in RedirectScheme middleware
+    * [nomad] Fix default configuration settings for Nomad Provider
+    * [nomad] Fix Nomad client TLS defaults
+    * [nomad] Support multiple namespaces in the Nomad Provider
+    * [plugins] Improve DeepCopy of PluginConf
+    * [server] Remove User-Agent header removal from ReverseProxy director func
+    * [tls,tcp] Adds the support for IPv6 in the TCP HostSNI matcher
+    * [tracing] Add support to send DataDog traces via Unix Socket
+    * [server] Update golang.org/x/net to v0.7.0 (CVE-2022-41724)
+- Update Go version (CVE-2023-24534, CVE-2023-29013)
+
+-------------------------------------------------------------------
+Tue Jan 17 09:48:46 UTC 2023 - alexandre.vicenzi@suse.com
+
+- Update to version 2.9.6:
+  * CVEs
+    * CVE-2022-23469
+    * CVE-2022-46153
+    * CVE-2022-41717
+  * Bug fixes
+    * [acme] Update go-acme/lego to v4.9.1
+    * [k8s/crd] Support of allowEmptyServices in TraefikService
+    * [logs] Remove logs of the request
+    * [plugins] Increase the timeout on plugin download
+    * [server] Update golang.org/x/net (CVE-2022-41717, bsc#1207208)
+    * [tls] Handle broken TLS conf better
+    * [tracing] Update DataDog tracing dependency to v1.43.1
+    * [webui] Add missing serialNumber passTLSClientCert option to middleware panel
+
+-------------------------------------------------------------------
+Mon Nov 28 12:10:58 UTC 2022 - alexandre.vicenzi@suse.com
+
+- Update to version 2.9.5:
+  * Enhancements
+    * [acme,tls] ACME Default Certificate
+    * [consul,etcd,zk,kv,redis] Update valkeyrie to v1.0.0
+    * [consulcatalog,nomad] Support Nomad canary deployment
+    * [consulcatalog] Move consulcatalog provider to only use health apis
+    * [docker] Add support for reaching containers using host networking on Podman
+    * [docker] Use IPv6 address
+    * [docker] Add allowEmptyServices for Docker provider
+    * [ecs] Add support for ECS Anywhere
+    * [healthcheck] Add a method option to the service Health Check
+    * [http3] Upgrade quic-go to v0.28.0
+    * [http] Start polling HTTP provider at the beginning
+    * [k8s/crd,plugins] Load plugin configuration field value from Kubernetes Secret
+    * [logs,tcp] Quiet down TCP RST packet error on read operation
+    * [metrics] Add traffic size metrics
+    * [middleware,pilot] Remove Pilot support
+    * [rules,tcp] Support ALPN for TCP + TLS routers
+    * [tcp,service,udp] Make the loadbalancers servers order random
+    * [tls] Change default TLS options for more security
+    * [tracing] Add Datadog GlobalTags support
+  * Bug fixes
+    * [logs,middleware] Create a new capture instance for each incoming request
+    * [acme] Update go-acme/lego to v4.9.0
+    * [kv,redis] Fix Redis configuration type
+    * [logs,middleware,metrics] Handle capture on redefined http.responseWriters
+    * [middleware,k8s] Remove raw cert escape in PassTLSClientCert middleware
+    * [plugins] Update Yaegi to v0.14.3
+    * Remove side effect on default transport tests
+    * [acme] Fix ACME panic
+    * [server] Update golang.org/x/net to latest version
+    * [consulcatalog] Fix UDP loadbalancer tags not being used with Consul Catalog
+    * [docker,rancher,ecs,provider] Simplify AddServer algorithm
+    * [plugins] Allow empty plugin configuration
+    * [rules] Fix query parameter matching with equal
+    * [server] Optimize websocket headers handling
+    * [plugins] Update Yaegi to v0.14.2
+    * [server] Fix IPv6 addr with square brackets
+    * [webui,api] Display default TLS options in the dashboard
+
+
+-------------------------------------------------------------------
+Wed Sep 07 10:11:41 UTC 2022 - alexandre.vicenzi@suse.com
+
+- Update to version 2.8.4:
+  * Enhancements
+    * [consul,consulcatalog] Support multiple namespaces for Consul and ConsulCatalog providers
+    * [logs] Add destination address to debug log
+    * [middleware,provider,tls] Deprecate caOptional option in client TLS configuration
+    * [middleware] Support URL replacement in errors middleware
+    * [middleware] Allow config of additional CircuitBreaker params
+    * [provider] Implement Traefik provider for Nomad orchestrator
+    * [server] Allow HTTP/2 max concurrent stream configuration
+    * [tls,k8s/crd] Support certificates configuration in TLSStore CRD
+    * [webui,pilot,hub] Add Traefik Hub button and deprecate Pilot
+    * [webui,plugins] Reach the catalog of plugins from the Traefik dashboard
+  * Bug fixes
+    * [docker,docker/swarm] Fix Docker provider mem leak on operation retries
+    * [middleware] Fix retry middleware on panic
+    * [plugins] Allow Traefik starting even if plugin service is unavailable
+    * [marathon] Add missing context in backoff for Marathon
+    * [k8s/ingress,k8s] Place namespace before name in router key for Ingress
+    * [logs,middleware,tracing] Remove request dump from IPWhitelist debug log and tracing message
+    * [metrics] Control allocation and copy of labelNamesValues type
+    * [metrics] Fix service up gauge for Prometheus metrics
+    * [yaml] Add missing inline tag for YAML serialization
+    * [middleware,metrics] Improve performances when Prometheus metrics are enabled
+    * [middleware] Support forwarded websocket protocol in RedirectScheme
+    * [nomad] Use configured token in the Nomad client
+    * [metrics] Ensure Datadog client is cleanly stopped
+    * [healthcheck,service] Do not make multiple requests to the same URL for balancer healthcheck
+    * [healthcheck,service] Add log when missing path in health check
+    * [k8s/gatewayapi] Allow multiple listeners on same port in Gateway API provider
+    * [middleware] RedirectScheme redirects based on X-Forwarded-Proto header
+    * [rules] Fix HostRegexp and Query muxers
+    * [logs] Fix invalid placeholder in log message
+
+-------------------------------------------------------------------
+Tue Jun 07 08:27:42 UTC 2022 - alexandre.vicenzi@suse.com
+
+- Update to version 2.7.0:
+  * Enhancements
+    * [consulcatalog] Watch for Consul events to rebuild the dynamic configuration
+    * [healthcheck] Add Failover service
+    * [http3] Configure advertised port using h3 server option
+    * [hub] Add Traefik Hub Integration
+    * [k8s/crd,k8s] Allow empty services in Kubernetes CRD
+    * [metrics] Support InfluxDB v2 metrics backend
+    * [plugins] Remove Pilot token setup constraint to use plugins
+    * [provider] Refactor configuration reload/throttling
+    * [rules,tcp] Add HostSNIRegexp rule matcher for TCP
+    * [tcp] Add muxer for TCP Routers
+    * [webui,pilot] Add Traefik Hub access and remove Pilot access
+    * [webui] Add a link to service on router detail view
+  * Bug fixes
+    * [hub] Skip Provide when TLS is nil
+    * [tcp] Fix TCP-TLS/HTTPS routing precedence
+    * [webui,hub] Use dedicated entrypoint for the tunnels
+    * [logs,k8s/crd] Fix log statement for ExternalName misconfig
+    * [tcp,service] Fix initial tcp lookup when address is not available
+    * [tls] Fix panic when getting certificates with non-existing store
+    * [acme] Fix RenewInterval computation in ACME provider
+    * [ecs,logs] Remove duplicate error logs
+    * [ecs] Filter out ECS anywhere instance IDs
+    * [middleware] Re-add missing writeheader call in flush
+    * [middleware] Fix bug for when custom page is large enough
+    * [middleware] Fix regexp handling in redirect middleware
+    * [plugins] Fix slice parsing for plugins
+    * [tls] Return TLS unrecognized_name error when no certificate is available
+    * [acme] Add domain to HTTP challenge errors
+    * [metrics] Fix metrics bucket key high cardinality
+    * [middleware,tls] Use CNAME for SNI check on host header
+    * [middleware,tracing] Rename Datadog span tags
+    * [tls] Apply the same approach as the rules system on the TLS configuration choice
+
+-------------------------------------------------------------------
+Fri Feb 04 13:37:58 UTC 2022 - alexandre.vicenzi@suse.com
+
+- Update to version 2.6.0:
+  * Updated Kubernetes Gateway API provider
+  * Consul Enterprise support
+  * Consul Connect support
+  * Inflight request middleware for TCP routers
+  * HTTP/3 support (experimental)
+  * Added support for loading plugins directly from the filesystem (Local Plugins)
+  * Added ability to create Provider Plugins
+  * Added TCP Middleware
+  * Kubernetes 1.22 API changes
+   * Dropped support for Ingress API versions extensions/v1beta1
+   * Updated Traefik Proxy CRDs to use API apiextensions.k8s.io/v1
+
+-------------------------------------------------------------------
+Wed Jul 28 15:46:39 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 2.4.12:
+  * Get Kubernetes server version early
+  * Don't remove ingress config on API call failure
+  * Ratelimiter: use correct ttlSeconds value, and always call Set
+  * Check if defaultcertificate is defined in store
+  * Disable ExternalName Services by default on Kubernetes providers
+  * Fix: malformed Kubernetes resource names and references in tests
+  * Disable Cross-Namespace by default for IngressRoute provider
+  * Accesslog: support multiple values for a given header
+  * Ignore http 1.0 request host missing errors
+  * Headers Middleware: support http.CloseNotifier interface
+  * Detect certificates content modifications
+  * Update go-acme/lego to v4.4.0
+  * Fix: ACME preferred chain.
+  * Remove error when HTTProutes is empty
+  * Fix incorrect behaviour with multi-port endpoint subsets
+  * Kubernetes ingress provider to search via all endpoints
+  * Fix plugin unzip call on windows
+  * Update Yaegi to v0.9.17
+  * Bump paerser to v0.1.4
+  * Create buffered signals channel
+  * Fix: use defaultEntryPoints when no entryPoint is defined in a TCPRouter
+  * Use a dynamic buffer to handle client Hello SNI detection
+  * Error span on 5xx only
+
+-------------------------------------------------------------------
+Wed May 19 09:06:54 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Allow to override build date with SOURCE_DATE_EPOCH
+  in order to make builds reproducible (boo#1047218)
+
+-------------------------------------------------------------------
+Thu Apr 29 10:07:36 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 2.4.8:
+  * Prepare release v2.4.8
+  * Raise errors for non-ASCII domain names in a router's rules
+  * Adding an option to (de)activate Pilot integration into the Traefik dashboard
+  * Doc: improve basic auth middleware httpasswd example
+  * Add missing `traefik.` prefix across sample config
+  * Fix travis docker image pulling for docs
+  * updating docs to remove a no longer needed note
+  * Update to gateway-api v0.2.0
+  * server: updating go-proxyproto with security bugfix from upstream
+  * Update go-acme/lego to v4.3.1
+
+-------------------------------------------------------------------
+Thu Jan 10 14:50:22 UTC 2019 - pgeorgiadis@suse.com
+
+- Initial package release to version 1.7.7:
+ * Check for watched namespace before getting kubernetes objects
+ * Allow empty path with App-root annotation
+ * kubernetes: sort and uniq TLS secrets
+ * Skip TLS section with no secret in Kubernetes ingress
