@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 21 09:55:19 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## [2.1.0](https://github.com/webhippie/gettext_i18n_rails_js/releases/tag/v2.1.0) - 2024-05-23
+
+*   Autoload parsers only on first usage to reduce memory consumtion (@jrafanie)
+
+
+-------------------------------------------------------------------
 Tue Nov 14 15:01:41 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - New upstream release 2.0.0, see bundled CHANGELOG.md
