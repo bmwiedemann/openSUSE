@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-jbuilder
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-jbuilder
-Version:        2.11.5
+Version:        2.12.0
 Release:        0
 %define mod_name jbuilder
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.2.2}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
@@ -37,7 +36,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Create JSON structures via a Builder-style DSL
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 Create JSON structures via a Builder-style DSL.
