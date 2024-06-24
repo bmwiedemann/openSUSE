@@ -7,4 +7,15 @@
     <comment></comment>
     <requestid>1172437</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e7da342385260a13cfb15640dfea8438</srcmd5>
+    <version>0.8.1</version>
+    <time>1719255145</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.8.1:
+  * gsettings options to disable graphics offload in runtime, in case it crashes
+  * Media Viewer gestures requiring an extra click sometimes to work
+  * Media Viewer images not being marked as loaded (forwarded request 1182856 from rrahl0)</comment>
+    <requestid>1182857</requestid>
+  </revision>
 </revisionlist>

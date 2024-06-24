@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Sun Jun 23 12:06:58 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to version 0.8.1:
+  * gsettings options to disable graphics offload in runtime, in case it crashes
+  * Media Viewer gestures requiring an extra click sometimes to work
+  * Media Viewer images not being marked as loaded
+
+-------------------------------------------------------------------
+Sat Jun 22 11:34:02 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to version 0.8.0:
+  * Admin Dashboard
+  * Advanced Search Dialog
+  * Ability to dim non-trivial notifications like favorites and boosts
+  * Notification clearing
+  * Notification filtering
+  * Notification requests
+  * In-app proxy settings
+  * Optional Clapper support
+  * Replaced the Media Viewer headerbar with a floating button on fullscreen
+  * Reactive relationship updates
+  * 'Replying to older post' reminder switch in settings
+  * Preview card redesign into a vertical layout
+  * Use different icons per view for their empty state status
+  * New account window settings
+  * Crossed out boost icon when disabled
+  * Custom aria labels that contain a summary of the containers
+  * Set default poll expiration date to 1 day if available
+  * Link opening optimizations
+  * Open web+ap links in-app
+  * Notify about new sign ups and new reports for admins
+  * Notify about severed relationships
+  * Post translations when possible
+  * Mini profiles on avatar click
+  * Profile notes
+  * Blocked-by relationship status
+  * Network monitoring and graceful recover
+  * Profile fields redesign
+  * Media Viewer videos will remember the last volume set between restarts
+  * GraphicsOffload for Media Viewer videos
+  * Profile fields custom emojis
+  * In-reply indicator
+  * Account Switcher rows using markup
+  * Bundle icons that are either missing or have lost their meaning in Breeze/Yaru
+  * Snap CI for x86-64 and GNOME 46 sdk
+  * Multiple bulk-relationship requests due to multiple content-changed triggers
+  * Duplicate posts in 'Home' due to race conditions
+  * High-contrast theme borders on profile fields
+  * Libsoup not respecting cache and instead re-downloading emojis when it shouldn't
+  * Refactored the Custom Emoji Picker to use custom widgets
+  * Completion provider capturing
+  * Removed all optional chaining instances
+  * Scale revealer measuring
+  * Focus grabbing of links in labels
+  * Segfault when closing the composer quickly due to a dispose hack
+  * Min width due to strict headerbar centering policy
+  * Segfault when inspecting labels with widgets due to infinite loop of a property
+  * Singular and plural versions of some counters
+  * Accessibility of icons
+  * Better aria labels for dates
+  * Missing tooltips
+  * Accessibility of containers
+  * Accessibility of custom widgets
+  * Lower height request so it fits with OSK
+  * Stricter resolvable link detection rules
+  * Stricter hashtag url matching when clicking a link
+  * Many random segfaults when going back caused by a disposing hack
+  * Hiding inline quotes when there's no actual quote and the class wasn't sanitized
+  * Composer highlighting hashtags accepting invalid characters
+  * Composer highlighting being too loose on whole word matching
+  * Horizontal swiping on the Media Viewer
+  * Crash when opening the composer while the instance doesn't have custom emojis due to optional chaining
+  * Some strings not being marked for translations
+  * Other bug and memory leak fixes
+
+
+-------------------------------------------------------------------
 Sun Apr 21 02:24:03 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - initial packaging
