@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 22 14:37:43 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- update to 2.14.2
+  * Justifications for warnings using comments in the code
+  * Fix alignas handling
+
+-------------------------------------------------------------------
 Mon May 27 07:17:31 UTC 2024 - Christoph G <foss@grueninger.de>
 
 - update to 2.14.1
