@@ -7,4 +7,12 @@
     <comment>New package. Used in OBS tests</comment>
     <requestid>1127911</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0ccea154777a4b53a7c287b8d74d8857</srcmd5>
+    <version>3.23.1</version>
+    <time>1719255353</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1182847</requestid>
+  </revision>
 </revisionlist>
