@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jun 21 09:37:00 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- 3.18.1:
+
+## 📚 Documentation
+
+- Fix typos (#2151) @kianmeng
+- Add capistrano-nomad to third party plugins list (#2145) @axsuul
+
+## 🏠 Housekeeping
+
+- Fix RuboCop in CI (#2148) @mattbrictson
+- Add Ruby 3.3 to CI (#2147) @mattbrictson
+
+**Full Changelog:** https://github.com/capistrano/capistrano/compare/v3.18.0...v3.18.1
+
+
+
+
+-------------------------------------------------------------------
 Thu Nov  2 15:41:14 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - 3.18.0:
