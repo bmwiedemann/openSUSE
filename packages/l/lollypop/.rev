@@ -1868,4 +1868,13 @@
   * Fix playlist encoding.</comment>
     <requestid>1167677</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>d8ebbcf876d79da2ffc265680ad53d04</srcmd5>
+    <version>1.4.40</version>
+    <time>1719255185</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.4.40: Fix an issue on mobile devices.
+</comment>
+    <requestid>1182633</requestid>
+  </revision>
 </revisionlist>
