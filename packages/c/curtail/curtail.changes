@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 18 16:45:04 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.10.0:
+  * Add a "Recursive Compression" setting.
+  * Update OxiPNG to v9.1.1
+  * Change safe mode directly from warning banner button.
+  * Fix opening files with "Open With...".
+  * Fix DnD with nested folders (recursive).
+  * Fix translations not applied to the help overlay window.
+  * Updates translations.
+- Run tests as part of %check.
+
+-------------------------------------------------------------------
 Fri Apr 12 14:11:58 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.9.1:

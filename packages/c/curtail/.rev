@@ -63,4 +63,14 @@
     <comment></comment>
     <requestid>1168404</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c00a96db5b77ad8e4272a2a64aef3ba7</srcmd5>
+    <version>1.10.0</version>
+    <time>1719255245</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.10.0.
+- Run tests as part of %check.
+</comment>
+    <requestid>1182706</requestid>
+  </revision>
 </revisionlist>

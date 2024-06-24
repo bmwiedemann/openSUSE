@@ -17,7 +17,7 @@
 
 
 Name:           curtail
-Version:        1.9.1
+Version:        1.10.0
 Release:        0
 Summary:        A simple and useful image compressor
 License:        GPL-3.0-or-later
@@ -61,6 +61,7 @@ modes with an option to whether keep or not metadata of images.
 %find_lang %{name} %{?no_lang_C}
 
 %check
+%meson_test
 
 %files
 %license COPYING
