@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jun 21 09:17:23 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- 1.5.2:
+
+This is a gem housekeeping release. No user-facing changes.
+
+## 🏠 Housekeeping
+
+- Migrate from CircleCI to GitHub Actions (#155, #156) @mattbrictson
+
+**Full Changelog:** https://github.com/mattbrictson/airbrussh/compare/v1.5.1...v1.5.2
+
+
+
+
+-------------------------------------------------------------------
 Mon Jan 29 13:30:32 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - 1.5.1:
