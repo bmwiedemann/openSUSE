@@ -138,4 +138,16 @@ Removed upstreamed patches:
 - Drop python2 leftovers.</comment>
     <requestid>1108365</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ffb77cc987d6ea168fddd65e402e216f</srcmd5>
+    <version>0.14.0</version>
+    <time>1719255419</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.14.0:
+  * now loads the default configuration if none is provided
+  * added support for hyphens in `lexical_illusions`
+  * additional spelling checks `ally_ly`, `ance_ence`, `ely_ly`
+    and `ve_of`</comment>
+    <requestid>1183037</requestid>
+  </revision>
 </revisionlist>

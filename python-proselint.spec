@@ -1,7 +1,7 @@
 #
 # spec file for package python-proselint
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define modname proselint
 Name:           python-proselint
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        A linter for prose
 License:        BSD-3-Clause
@@ -33,7 +33,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-click
 Requires:       python-dbm
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click}
