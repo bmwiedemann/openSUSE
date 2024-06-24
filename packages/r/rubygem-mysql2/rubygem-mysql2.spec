@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-mysql2
-Version:        0.5.5
+Version:        0.5.6
 Release:        0
 %define mod_name mysql2
 %define mod_full_name %{mod_name}-%{version}

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 21 10:16:54 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- 0.5.6:
+
+## What's changed
+
+* Support utf8mb3 charset naming for MySQL 8 and MariaDB 10.6. (#1323) @jeremy
+* Support for libmysqlclient 8.3 (#1346, #1352, #1353) @xjunior @flavorjones
+
+
+
+-------------------------------------------------------------------
 Tue May 21 10:25:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Replace %patchN with %patch -P N: %patchN is deprecated.
