@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 17 08:45:09 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.3.2:
+  * The pseudo-reflection of the sky used by Stellarium now
+    doesn't have the solar aureole, which looked strange
+    (the actual aureole in the sky is retained);
+  * Added support for GLM 1.0.0, which requires a macro
+    to be defined to use experimental features.
+
+-------------------------------------------------------------------
 Fri Oct  6 07:23:30 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Use better macro for selecting a newer GCC on Leap.
