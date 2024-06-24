@@ -16,6 +16,8 @@
 #
 
 
+%bcond_without  apparmor
+
 Name:           plocate
 Version:        1.1.22
 Release:        0
@@ -27,16 +29,19 @@ Source:         https://plocate.sesse.net/download/%{name}-%{version}.tar.gz
 Source1:        updatedb.conf
 Source2:        %{name}-updatedb.service
 Source3:        sysconfig.locate
-# apparmor profile
+%if %{with apparmor}
 Source5:        usr.bin.plocate
 Source6:        usr.sbin.updatedb
+%endif
 Patch0:         disable-visibility.patch
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(liburing)
 BuildRequires:  pkgconfig(libzstd)
+%if %{with apparmor}
 Requires:       apparmor-abstractions
+%endif
 Requires:       group(nobody)
 Requires:       user(nobody)
 Requires(post): %fillup_prereq
@@ -74,9 +79,12 @@ ln -sr %{buildroot}%{_bindir}/%{name} %{buildroot}%{_bindir}/locate
 ln -sr %{buildroot}%{_mandir}/man1/%{name}.1%{?ext_man} %{buildroot}%{_mandir}/man1/locate.1%{?ext_man}
 ln -s  %{_sbindir}/updatedb %{buildroot}%{_bindir}/updatedb
 ln -s  %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-updatedb
-# apparmor:
+%if %{with apparmor}
 install -Dm644 %{SOURCE5} %{buildroot}%{_sysconfdir}/apparmor.d/usr.bin.plocate
 install -Dm644 %{SOURCE6} %{buildroot}%{_sysconfdir}/apparmor.d/usr.sbin.updatedb
+%endif
+
+%check
 
 %pre
 %service_add_pre %{name}-updatedb.service %{name}-updatedb.timer
@@ -112,8 +120,10 @@ install -Dm644 %{SOURCE6} %{buildroot}%{_sysconfdir}/apparmor.d/usr.sbin.updated
 %{_sharedstatedir}/%{name}/CACHEDIR.TAG
 %ghost %{_sharedstatedir}/%{name}/%{name}.db
 %config(noreplace) %{_sysconfdir}/updatedb.conf
+%if %{with apparmor}
 %dir %{_sysconfdir}/apparmor.d/
 %config %{_sysconfdir}/apparmor.d/usr.bin.plocate
 %config %{_sysconfdir}/apparmor.d/usr.sbin.updatedb
+%endif
 
 %changelog

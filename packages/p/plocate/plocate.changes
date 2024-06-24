@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 12 15:04:47 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
+
+- changes taken from mlocate updates:
+  * change umask inside su invocation (boo#1209409)
+  * add comment why umask in service file is not effective (bsc#1218896)
+  * add bcond for building without AppArmor support (for ALP code base)
+
+-------------------------------------------------------------------
 Sat Jan 13 00:02:39 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
 
 - remove fallback for _fillupdir in spec file, should be supported everywhere now
