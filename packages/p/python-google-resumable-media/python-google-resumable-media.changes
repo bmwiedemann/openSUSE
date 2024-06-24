@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 24 11:55:02 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.7.1
+  * Add a check for partial response data (#435)
+
+-------------------------------------------------------------------
 Tue Mar  5 20:31:04 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Obsolete Python 3.6 build for SLE 15 SP4 and openSUSE Leap 15.4 and later
