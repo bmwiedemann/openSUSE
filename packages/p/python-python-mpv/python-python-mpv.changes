@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 24 15:32:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.7:
+  * Fix race condition in property observer code leading to
+    futures.InvalidStateError
+  * bump min python to 3.9
+
+-------------------------------------------------------------------
 Wed May 22 17:35:36 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to version 1.0.6
@@ -40,11 +48,11 @@ Sun Feb 26 14:44:26 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 - Update to version v1.0.2
   * Update license header with dual-license information
   * Update package metadata
-  * Migrate away from setup.py and use PEP 612-style 
-    pyproject.toml 
-  * Update setup.cfg for new syntax 
+  * Migrate away from setup.py and use PEP 612-style
+    pyproject.toml
+  * Update setup.cfg for new syntax
   * Fix typo in repr format string
-  * tests: Add strategic sleeps to reduce likelihood of race 
+  * tests: Add strategic sleeps to reduce likelihood of race
     condition during test teardown
   * Fix package upgrade
   * Cleanup pipeline
@@ -66,7 +74,7 @@ Sun Feb 26 14:44:26 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
   * Add requirements file
   * Remove unused imports
   * Fix show_text level default parameter
-  * Fix observe_property() docstring 
+  * Fix observe_property() docstring
   * Fix external subtitles example
   * Fix typo in function name
   * Update branch name references
@@ -176,7 +184,7 @@ Sun Jul 12 12:05:20 UTC 2020 - aloisio@gmx.com
   * README: Add detail on subtitle handling
   * Fix handling of dashed options in loadfile.
   * update README with inserting subtitles
-  * Add release script 
+  * Add release script
 
 -------------------------------------------------------------------
 Sun Apr  5 11:47:16 UTC 2020 - aloisio@gmx.com
@@ -184,7 +192,7 @@ Sun Apr  5 11:47:16 UTC 2020 - aloisio@gmx.com
 - Update to version v0.4.6
   * Make tests run headless using xvfbwrapper
   * Add some high-level API information to README
-  * README: Add info on GUI modes 
+  * README: Add info on GUI modes
   * README: add render context gtk example
   * Initial libmpv/render.h mapping
   * Add GTK/OpenGL example (#100)
@@ -201,7 +209,7 @@ Wed Dec  4 08:40:49 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 - Update to version 0.4.4.
   * Allow mpv-1.dll to be placed in python script directory (#96)
   * tests: Silence libmpv during unittests
-  * Fix Python 3.5 compatibility 
+  * Fix Python 3.5 compatibility
 
 -------------------------------------------------------------------
 Mon Dec  2 08:22:36 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
@@ -214,7 +222,7 @@ Tue Nov 26 12:42:09 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.4.0
   * key bindings: Introduce key char parameter
-  * README - vo "opengl" doesn't exist anymore 
+  * README - vo "opengl" doesn't exist anymore
 
 -------------------------------------------------------------------
 Sun Nov 10 16:05:24 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
@@ -224,7 +232,7 @@ Sun Nov 10 16:05:24 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
   * Use stride//4 rather than the returned image w
   * README: Add cosven's QT/OpenGL example
   * fix: getProcAddr function should return a function or 0
-  * Readme: Add PyGtk embedding example 
+  * Readme: Add PyGtk embedding example
 
 - Spec cleanup
 

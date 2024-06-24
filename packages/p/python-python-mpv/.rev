@@ -240,4 +240,26 @@
   * Add play_context convenience function</comment>
     <requestid>1175913</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>bbe39dff28a081f9bfc5118965fb2a89</srcmd5>
+    <version>1.0.7</version>
+    <time>1719255416</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.7:
+  * Fix race condition in property observer code leading to
+    futures.InvalidStateError
+  * bump min python to 3.9
+
+  * Migrate away from setup.py and use PEP 612-style
+    pyproject.toml
+  * Update setup.cfg for new syntax
+  * tests: Add strategic sleeps to reduce likelihood of race
+  * Fix observe_property() docstring
+  * Add release script
+  * README: Add info on GUI modes
+  * Fix Python 3.5 compatibility
+  * README - vo &quot;opengl&quot; doesn't exist anymore
+  * Readme: Add PyGtk embedding example</comment>
+    <requestid>1183035</requestid>
+  </revision>
 </revisionlist>
