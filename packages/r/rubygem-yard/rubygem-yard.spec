@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-yard
-Version:        0.9.34
+Version:        0.9.36
 Release:        0
 %define mod_name yard
 %define mod_full_name %{mod_name}-%{version}

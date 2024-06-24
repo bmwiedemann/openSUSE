@@ -319,4 +319,12 @@
     <comment>- Use %patch -P N instead of deprecated %patchN syntax. (forwarded request 1174796 from dimstar)</comment>
     <requestid>1174842</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>890d72f6b17197121a020c26bea416b3</srcmd5>
+    <version>0.9.36</version>
+    <time>1719255355</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1182849</requestid>
+  </revision>
 </revisionlist>
