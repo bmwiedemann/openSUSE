@@ -1,7 +1,28 @@
 -------------------------------------------------------------------
+Sat Jun 15 15:47:14 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 1.35.0
+  *  Add :only argument to import to allow for easier control over imported bindings.
+  *  Add extra optional env argument to eval and eval-string.
+  *  Allow naming function literals with a keyword. This allows better stacktraces for macros without
+  *  accidentally adding new bindings.
+  *  Add bundle/ module for managing packages within Janet. This should replace the jpm packaging
+  *  format eventually and is much simpler and amenable to more complicated builds.
+  *  Add macros ev/with-lock, ev/with-rlock, and ev/with-wlock for using mutexes and rwlocks.
+  *  Add with-env
+  *  Add *module-make-env*dynamic binding
+  *  Add buffer/format-at
+  *  Add long form command line options for readable CLI usage
+  *  Fix bug with net/accept-loop that would sometimes miss connections.
+  *  Build janet with Cosmopolitan Libc
+  *  Add ffi/defbind-alias 
+  *  Add LoongArch64 suppor
+  *  Fix buffer push uint max 
+
+-------------------------------------------------------------------
 Tue May 21 00:52:47 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
-- Update to verseion 1.34.0:
+- Update to version 1.34.0:
   * Add a new (split) PEG special
   * Add buffer/push-* sized int and float
   * Documentation improvements
