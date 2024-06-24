@@ -1,4 +1,19 @@
 <services>
-  <service name="download_files" mode="disabled">
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/ansible/ansible-builder</param>
+    <param name="scm">git</param>
+    <param name="revision">3.1.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="changesgenerate">disable</param>
+    <param name="package-meta">yes</param>
+  </service>
+  <service name="set_version" mode="manual">
+  </service>
+  <service name="tar" mode="buildtime">
+    <param name="package-meta">yes</param>
+  </service>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
   </service>
 </services>

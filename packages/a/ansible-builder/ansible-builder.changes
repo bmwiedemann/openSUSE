@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jun 21 19:17:51 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- switch to using a git checkout instead of the PyPI tarball
+  without checksum
+- update to 3.1.0:
+  * New Features
+    - Support for tags from the configuration file by @Akasurde in
+      #555
+    - Support multiple -v for verbosity by @Shrews in #564
+    - Allow the .yaml file extension on the default EE file by
+      @Shrews in #631
+    - Account for PEP668 in pip invocations by @Shrews in #627
+    - Expose a way to exclude dependencies by @Shrews in #664
+    - Support extra build command args by @Shrews in #677
+  * Other Improvements
+    - Various improvements to documentation.
+    - Warn if USER directive is found in additional_build_steps by
+      @Akasurde in #528
+    - Warn about version less than 3 by @Akasurde in #574
+    - Warn user about using default base image in v3 by @Akasurde
+      in #591
+    - Fix container policy for version 3 by @Shrews in #652
+    - Guarantee collection base path exists by @Shrews in #683
+
+-------------------------------------------------------------------
 Sat Feb 24 13:08:34 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 3.0.1:
