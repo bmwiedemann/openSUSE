@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 17 06:41:56 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.14.0:
+  * Switch to using pyproject.toml
+  * Automatic dependency resolution
+  * Checkpatch and other pre-submit checks
+  * Document new features
+  * Miscellaneous enhancements
+
+-------------------------------------------------------------------
 Fri Feb 16 04:40:09 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 0.13.0:

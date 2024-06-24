@@ -24,7 +24,7 @@
 %global pprefix python311
 %endif
 Name:           b4
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        Helper scripts for kernel.org patches
 License:        GPL-2.0-or-later
@@ -33,16 +33,16 @@ URL:            https://git.kernel.org/pub/scm/utils/b4/b4.git
 Source0:        https://github.com/mricon/b4/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module dkimpy >= 1.0.5}
-BuildRequires:  %{python_module dnspython >= 2.0.0}
-BuildRequires:  %{python_module patatt >= 0.5}
+BuildRequires:  %{python_module patatt >= 0.6}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.24.0}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  git-filter-repo >= 2.30
 BuildRequires:  python-rpm-macros
 Requires:       %{pprefix}-dkimpy
-Requires:       %{pprefix}-dnspython
 Requires:       %{pprefix}-patatt
 Requires:       %{pprefix}-requests
 Requires:       git-core
@@ -65,21 +65,22 @@ precursor to Lore and Data in the Star Trek universe.
 rm -rf patatt
 
 # ditch shebang from .py files, they are non-executables anyway
-sed -i.old '1{/#!.*/d}' b4/*.py
+sed -i.old '1{/#!.*/d}' src/b4/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-%python_expand %{$python_fix_shebang}
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand rm -rf %{buildroot}%{$python_sitelib}/{tests,b4/man}/
+install -m644 -Dt %{buildroot}%{_mandir}/man5/ src/b4/man/b4.5
 
 %check
-%python_exec setup.py check
-export PYTHONPATH="./"
+%pytest --ignore=build
+export PYTHONPATH="./build/lib"
 THEIRS=`%{buildroot}/%{_bindir}/b4 --version`
-OURS=`sed -n "s/__VERSION__ = '\(.*\)'/\1/p" b4/__init__.py`
+OURS=`sed -n "s/__VERSION__ = '\(.*\)'/\1/p" src/b4/__init__.py`
 test "$THEIRS" = "$OURS"
 %{buildroot}/%{_bindir}/b4 --help | grep -q 'mbox,am,shazam,pr'
 %{buildroot}/%{_bindir}/b4 mbox abc |& grep -q 'Grabbing thread from lore.kernel.org/all/abc/t.mbox.gz'
