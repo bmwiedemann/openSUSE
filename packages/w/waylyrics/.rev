@@ -367,4 +367,37 @@ The upstream has developed for a long time and waylyrics has been stable, althou
   * fix(log): i18n bind result will not be logged</comment>
     <requestid>1178663</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e4592ba1a93257a5a77834f5b0794df0</srcmd5>
+    <version>0.3.12</version>
+    <time>1719255135</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.3.12:
+  * chore: release v0.3.12
+  * fix: extract lyric lines should compare start_time
+  * fix: `extract-translated-lyric` flag is ignored
+  * docs: fix typo
+  * chore(log): add log for textdomain to use
+
+- Update to version 0.3.11:
+  * chore: release v0.3.11
+  * docs(install): user-fiendly version (#240)
+  * feat: extract translated lyric from local LRC - this only affects behaviour on loading local lyric via player hint - close #241
+  * feat: try load local translated lyric with ISO-639-1 code ,close #165
+  * build(deps): bump toml_edit from 0.22.12 to 0.22.13
+  * build(deps): bump async-channel from 2.2.1 to 2.3.1
+  * build(deps): bump anyhow from 1.0.82 to 1.0.86
+  * build(deps): bump mimalloc from 0.1.41 to 0.1.42
+  * build(deps): bump the serde group with 2 updates
+  * Update INSTALLATION.md
+  * Update INSTALLATION.en.md
+  * Update INSTALLATION.md
+  * Update INSTALLATION.en.md
+  * Update INSTALLATION.md
+  * Update INSTALLATION.en.md
+  * Update INSTALLATION.md
+  * Update INSTALLATION.en.md
+  * 修复了一些安装文档的小问题</comment>
+    <requestid>1182564</requestid>
+  </revision>
 </revisionlist>
