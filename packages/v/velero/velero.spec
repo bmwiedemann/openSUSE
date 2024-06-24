@@ -17,7 +17,7 @@
 
 
 Name:           velero
-Version:        1.13.2
+Version:        1.14.0
 Release:        0
 Summary:        Backup program with deduplication and encryption
 License:        Apache-2.0
@@ -26,7 +26,7 @@ URL:            https://velero.io
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.21
+BuildRequires:  golang(API) = 1.22
 
 %description
 velero is a backup program. It supports verification, encryption,
