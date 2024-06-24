@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Sat Jun 22 12:43:21 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.76:
+  * Meshery UI
+    - [UI]: Add a new Catalog page and it's menu item @dottharun
+      (#11050)
+    - fix(ui): InfoModal bug in designs-page DataTable @dottharun
+      (#11177)
+    - Fix hover over avatar @EleisonC (#11165)
+    - migrated cypress tests to playwright @DevRish (#11095)
+  * Maintenance
+    - chore(deps): Bump
+      github.com/Azure/azure-sdk-for-go/sdk/azidentity from 1.4.0
+      to 1.6.0 @dependabot (#11153)
+    - [CI] Update Staging Playground Workflow @cpepper96 (#11213)
+    - fix directory address w/signoff @Jougan-0 (#11215)
+    - workflow update for proper logs w/signoff @Jougan-0 (#11214)
+  * Documentation
+    - Bug: Fixed the logic to not show the components when it is
+      empty @ayushrakesh (#11221)
+
+-------------------------------------------------------------------
+Sat Jun 22 10:08:39 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.75:
+  * General
+    - [chore] migrate /bin/bash shebangs to /usr/bin/env bash
+      @aabidsofi19 (#11209)
+    - [Relationships]: Nginx ingress relationships @innocentrda
+      (#11121)
+    - remove Logrus with meshkit logger w/signoff @Jougan-0
+      (#11176)
+  * Meshery CLI
+    - workflow update to mail error log w/signoff @Jougan-0
+      (#11156)
+    - Aijeyomah/feature/list exp relationship @Jougan-0 (#11101)
+    - refactor(components): Promote component command @lekaf974
+      (#11135)
+  * Meshery UI
+    - Registry log dynamic @Jougan-0 (#11065)
+    - [Chore] Add permission check for reset database
+      @dragon-slayer875 (#11193)
+  * Maintenance
+    - workflow update to mail error log w/signoff @Jougan-0
+      (#11156)
+    - Update build-and-release-edge.yml @MUzairS15 (#11199)
+    - Bump golang.org/x/oauth2 from 0.16.0 to 0.20.0 @dependabot
+      (#10879)
+  * Documentation
+    - [chore] migrate /bin/bash shebangs to /usr/bin/env bash
+      @aabidsofi19 (#11210)
+    - Update ui.md - enhanced /docs/pages/extensibility/ui.md
+      @ayushrakesh (#11200)
+    - [Docs] Partial: Instructions for Creating a New Component
+      with UI Schema @leecalcote (#11201)
+    - Updated mesheryctl command for applying WASM Filter
+      @Aviral0702 (#11197)
+    - [Docs] Refinement of the description of relationships and
+      models @leecalcote (#11195)
+    - refactor(components): Promote component command @lekaf974
+      (#11135)
+
+-------------------------------------------------------------------
 Sat Jun 15 16:24:46 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.74:
