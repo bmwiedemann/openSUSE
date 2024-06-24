@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-binding_of_caller
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-binding_of_caller
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 %define mod_name binding_of_caller
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.0.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
@@ -38,7 +37,6 @@ Source1:        rubygem-binding_of_caller-rpmlintrc
 Source2:        gem2rpm.yml
 Summary:        Retrieve the binding of a method's caller, or further up the stack
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 Provides the Binding#of_caller method.
@@ -55,7 +53,7 @@ production apps.
 
 %install
 %gem_install \
-  --doc-files="HISTORY LICENSE README.md" \
+  --doc-files="LICENSE README.md" \
   -f
 
 %gem_packages
