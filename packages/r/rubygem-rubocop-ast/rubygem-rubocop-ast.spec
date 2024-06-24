@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rubocop-ast
-Version:        1.31.2
+Version:        1.31.3
 Release:        0
 %define mod_name rubocop-ast
 %define mod_full_name %{mod_name}-%{version}
@@ -32,7 +32,7 @@ Release:        0
 BuildRequires:  fdupes
 # /MANUAL
 BuildRequires:  ruby-macros >= 5
-BuildRequires:  %{ruby >= 2.6.0}
+BuildRequires:  %{ruby >= 2.7.0}
 BuildRequires:  %{rubygem gem2rpm}
 URL:            https://github.com/rubocop/rubocop-ast
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
