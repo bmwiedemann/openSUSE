@@ -16,6 +16,26 @@
 #
 
 
+%if 0%{?suse_version} > 1600
+# Tumbleweed
+%define pythons                     python3
+%define mercurial_python            python3
+%define mercurial_python_executable python3
+%else
+%if 0%{?sle_version} >= 150600
+%{?sle15_python_module_pythons}
+# Leap 15.6
+%if %pythons == "python311"
+%define mercurial_python            python311
+%define mercurial_python_executable python3.11
+%endif
+%else
+%define pythons                     python3
+%define mercurial_python            python3
+%define mercurial_python_executable python3
+%endif
+%endif
+
 Name:           mercurial-extension-hg-evolve
 Version:        11.1.2
 Release:        0
@@ -25,14 +45,17 @@ Group:          Development/Tools/Version Control
 URL:            https://www.mercurial-scm.org/doc/evolution/
 Source0:        https://files.pythonhosted.org/packages/source/h/hg-evolve/hg-evolve-%{version}.tar.gz
 Source90:       tests.blacklist
+BuildRequires:  %{mercurial_python}
+# python311-flake8 is not available on Leap 15.6.
+%if 0%{?suse_version} > 1600 || 0%{?sle_version} < 150600
+BuildRequires:  %{mercurial_python}-flake8
+%endif
+BuildRequires:  %{mercurial_python}-pyflakes
+BuildRequires:  %{mercurial_python}-setuptools
 BuildRequires:  fdupes
 BuildRequires:  mercurial
 BuildRequires:  mercurial-tests
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3
-BuildRequires:  python3-flake8
-BuildRequires:  python3-pyflakes
-BuildRequires:  python3-setuptools
 BuildRequires:  unzip
 Requires:       mercurial
 BuildArch:      noarch
@@ -44,24 +67,24 @@ Flexible evolution of Mercurial history.
 %setup -q -n hg-evolve-%{version}
 
 %build
-%python3_build
+%python_build
 
 %install
-%python3_install
+%python_install
 
 # Delete hgext3rd/__init__.py and its cached version because it is already delivered by mercurial.
-rm %{buildroot}%{python3_sitelib}/hgext3rd/__init__.py
-rm %{buildroot}%{python3_sitelib}/hgext3rd/__pycache__/__init__*.pyc
+rm %{buildroot}%{python_sitelib}/hgext3rd/__init__.py
+rm %{buildroot}%{python_sitelib}/hgext3rd/__pycache__/__init__*.pyc
 
-%fdupes %{buildroot}%{python3_sitelib}
+%fdupes %{buildroot}%{python_sitelib}
 
 %check
 cd tests
-python3 %{_datadir}/mercurial/tests/run-tests.py --with-hg=%{_bindir}/hg --blacklist=%{SOURCE90}
+%{mercurial_python_executable} %{_datadir}/mercurial/tests/run-tests.py --with-hg=%{_bindir}/hg --blacklist=%{SOURCE90}
 
 %files
 %doc CHANGELOG README.rst
 %license COPYING
-%{python3_sitelib}/*
+%{python_sitelib}/*
 
 %changelog
