@@ -17,15 +17,13 @@
 
 
 Name:           gource
-Version:        0.54
+Version:        0.55
 Release:        0
 Summary:        Software version control visualization tool
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Visualization/Graph
 URL:            https://gource.io/
 Source:         https://github.com/acaudwell/Gource/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-build-with-Boost-1.85.0.patch
 BuildRequires:  gcc-c++
 BuildRequires:  glew-devel
 BuildRequires:  glm-devel >= 0.9.3

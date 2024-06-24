@@ -178,4 +178,13 @@
 </comment>
     <requestid>1176862</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d02e0c853f17433f9bd9d61bce3e3ce4</srcmd5>
+    <version>0.55</version>
+    <time>1719255184</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.55: Fixed build with Boost 1.85.0. 
+- Remove 0001-Fix-build-with-Boost-1.85.0.patch: Fixed upstream.</comment>
+    <requestid>1182634</requestid>
+  </revision>
 </revisionlist>

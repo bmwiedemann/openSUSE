@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 22 14:25:33 UTC 2024 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 0.55: Fixed build with Boost 1.85.0. 
+- Remove 0001-Fix-build-with-Boost-1.85.0.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Thu May 23 16:23:59 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change to fix build failures with recent boost:
