@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-builder
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,21 +24,19 @@
 #
 
 Name:           rubygem-builder
-Version:        3.2.4
+Version:        3.3.0
 Release:        0
 %define mod_name builder
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-Url:            http://onestepback.org
+URL:            https://github.com/rails/builder
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Builders for MarkUp
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 Builder provides a number of builder objects that make creating structured
