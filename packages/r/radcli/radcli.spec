@@ -1,8 +1,8 @@
 #
 # spec file for package radcli
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2019-2023, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2019-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 #
 
 
-%define sover 5
+%define sover 6
 Name:           radcli
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
 Summary:        A RADIUS client library
 License:        BSD-2-Clause AND MIT

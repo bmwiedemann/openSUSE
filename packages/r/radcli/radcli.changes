@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun 15 12:11:58 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.0
+  * Bump the maximal length of the password to 128, as required by
+    RFC 2865.
+  * Bump the maximal length of the shared secret to 256. It should
+    match or exceed the maximal length supported by most RADIUS
+    servers.
+  * New helper macros to set vendor and attribute
+    * RADCLI_VENDOR_ATTR_SET
+    * RADCLI_VENDOR_MASK
+
+-------------------------------------------------------------------
 Sun Jan 29 19:55:35 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.3.1
