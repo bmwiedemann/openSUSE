@@ -1,7 +1,7 @@
-diff --git a/utils/isohybrid.c b/utils/isohybrid.c
-index 09f4520..954b5ed 100644
---- a/utils/isohybrid.c
-+++ b/utils/isohybrid.c
+Index: syslinux-4.04/utils/isohybrid.c
+===================================================================
+--- syslinux-4.04.orig/utils/isohybrid.c
++++ syslinux-4.04/utils/isohybrid.c
 @@ -653,12 +653,10 @@ initialise_mbr(uint8_t *mbr)
            continue;
          }

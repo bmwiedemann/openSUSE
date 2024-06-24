@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Feb 26 13:28:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro: allows us to eliminate usage of deprecated
+  %patchN syntax.
+- Normalize all patches to apply as -p1
+  + Rebased remove-note-gnu-section.patch
+  + Rebased sysmacros.patch
+- Rename all *.diff files to *.patch, aligning one a common suffix:
+  + syslinux-4.04-align.diff -> syslinux-4.04-align.patch
+  + syslinux-4.04-cache_fix.diff -> syslinux-4.04-cache_fix.patch
+  + syslinux-4.04-cwd.diff -> syslinux-4.04-cwd.patch
+  + syslinux-4.04-gcc10.diff -> syslinux-4.04-gcc10.patch
+  + syslinux-4.04-gcc47.diff -> syslinux-4.04-gcc47.patch
+  + syslinux-4.04-geometry.diff -> syslinux-4.04-geometry.patch
+  + syslinux-4.04-iso9660.diff -> syslinux-4.04-iso9660.patch
+  + syslinux-4.04-isohybrid_efi.diff -> syslinux-4.04-isohybrid_efi.patch
+  + syslinux-4.04-isohybrid_efi_optional.diff -> syslinux-4.04-isohybrid_efi_optional.patch
+  + syslinux-4.04-isohybrid_mbr.diff -> syslinux-4.04-isohybrid_mbr.patch
+  + syslinux-4.04-libext2fs.diff -> syslinux-4.04-libext2fs.patch
+  + syslinux-4.04-localboot.diff -> syslinux-4.04-localboot.patch
+  + syslinux-4.04-lzo.diff -> syslinux-4.04-lzo.patch
+  + syslinux-4.04-mboot_bootif.diff -> syslinux-4.04-mboot_bootif.patch
+  + syslinux-4.04-md5pass.diff -> syslinux-4.04-md5pass.patch
+  + syslinux-4.04-miniacc.diff -> syslinux-4.04-miniacc.patch
+  + syslinux-4.04-mtime.diff -> syslinux-4.04-mtime.patch
+  + syslinux-4.04-noinitrd.diff -> syslinux-4.04-noinitrd.patch
+  + syslinux-4.04-nostrip.diff -> syslinux-4.04-nostrip.patch
+  + syslinux-4.04-pie.diff -> syslinux-4.04-pie.patch
+  + syslinux-4.04-python3.diff -> syslinux-4.04-python3.patch
+  + syslinux-4.04-timeout.diff -> syslinux-4.04-timeout.patch
+
+-------------------------------------------------------------------
 Fri May 26 08:42:21 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - Build the system installable binaries with RPM_OPT_FLAGS, to allow

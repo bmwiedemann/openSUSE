@@ -1,7 +1,7 @@
-diff --git a/core/ui.inc b/core/ui.inc
-index 0a4bb56..97945c9 100644
---- a/core/ui.inc
-+++ b/core/ui.inc
+Index: syslinux-4.04/core/ui.inc
+===================================================================
+--- syslinux-4.04.orig/core/ui.inc
++++ syslinux-4.04/core/ui.inc
 @@ -529,30 +529,36 @@ kernel_corrupt: mov si,err_notkernel
  ; which can be adjusted by the caller based on the corresponding
  ; master variables; on return they're updated.

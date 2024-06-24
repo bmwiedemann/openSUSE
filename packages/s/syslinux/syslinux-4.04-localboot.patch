@@ -1,7 +1,7 @@
-diff --git a/core/localboot.inc b/core/localboot.inc
-index 1fe3102..30f34fc 100644
---- a/core/localboot.inc
-+++ b/core/localboot.inc
+Index: syslinux-4.04/core/localboot.inc
+===================================================================
+--- syslinux-4.04.orig/core/localboot.inc
++++ syslinux-4.04/core/localboot.inc
 @@ -33,6 +33,15 @@ local_boot:
  		cmp ax,-1
  		je .int18

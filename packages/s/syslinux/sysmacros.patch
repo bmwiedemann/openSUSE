@@ -16,11 +16,11 @@ Signed-off-by: Gene Cumm <gene.cumm@gmail.com>
  extlinux/main.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/extlinux/main.c b/extlinux/main.c
-index a7ebd49a94..ebff7eae0e 100644
---- a/extlinux/main.c
-+++ b/extlinux/main.c
-@@ -38,6 +38,7 @@
+Index: syslinux-4.04/extlinux/main.c
+===================================================================
+--- syslinux-4.04.orig/extlinux/main.c
++++ syslinux-4.04/extlinux/main.c
+@@ -37,6 +37,7 @@ typedef uint64_t u64;
  #include <sysexits.h>
  #include <sys/ioctl.h>
  #include <sys/stat.h>
@@ -28,6 +28,3 @@ index a7ebd49a94..ebff7eae0e 100644
  #include <sys/types.h>
  #include <sys/mount.h>
  #include <sys/vfs.h>
--- 
-2.19.0
-

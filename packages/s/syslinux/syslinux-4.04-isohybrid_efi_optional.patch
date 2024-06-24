@@ -1,7 +1,7 @@
-diff --git a/utils/isohybrid.c b/utils/isohybrid.c
-index 7638bc0..09f4520 100644
---- a/utils/isohybrid.c
-+++ b/utils/isohybrid.c
+Index: syslinux-4.04/utils/isohybrid.c
+===================================================================
+--- syslinux-4.04.orig/utils/isohybrid.c
++++ syslinux-4.04/utils/isohybrid.c
 @@ -1028,7 +1028,9 @@ main(int argc, char *argv[])
  		errx(1, "%s: invalid efi catalogue", argv[0]);
  	    }

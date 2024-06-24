@@ -1,5 +1,7 @@
---- com32/MCONFIG	2011-04-18 23:24:17.000000000 +0200
-+++ com32/MCONFIG	2020-03-18 17:05:57.507347671 +0100
+Index: syslinux-4.04/com32/MCONFIG
+===================================================================
+--- syslinux-4.04.orig/com32/MCONFIG
++++ syslinux-4.04/com32/MCONFIG
 @@ -18,6 +18,7 @@
  include $(topdir)/MCONFIG
  
@@ -8,8 +10,10 @@
  GCCOPT += $(call gcc_ok,-m32,)
  GCCOPT += $(call gcc_ok,-fno-stack-protector,)
  GCCOPT += $(call gcc_ok,-fwrapv,)
---- com32/lib/MCONFIG	2011-04-18 23:24:17.000000000 +0200
-+++ com32/lib/MCONFIG	2020-03-18 17:07:39.960337684 +0100
+Index: syslinux-4.04/com32/lib/MCONFIG
+===================================================================
+--- syslinux-4.04.orig/com32/lib/MCONFIG
++++ syslinux-4.04/com32/lib/MCONFIG
 @@ -3,6 +3,7 @@
  include $(topdir)/MCONFIG
  
@@ -18,8 +22,10 @@
  GCCOPT += $(call gcc_ok,-m32,)
  GCCOPT += $(call gcc_ok,-fno-stack-protector,)
  GCCOPT += $(call gcc_ok,-fwrapv,)
---- dos/errno.h	2011-04-18 23:24:17.000000000 +0200
-+++ dos/errno.h	2020-03-18 17:12:17.359044057 +0100
+Index: syslinux-4.04/dos/errno.h
+===================================================================
+--- syslinux-4.04.orig/dos/errno.h
++++ syslinux-4.04/dos/errno.h
 @@ -36,7 +36,7 @@
  #define	EDOM		33	/* Math argument out of domain of func */
  #define	ERANGE		34	/* Math result not representable */
@@ -29,9 +35,11 @@
  void perror(const char *);
  
  #endif /* ERRNO_H */
---- gpxe/src/core/exec.c	2011-04-18 23:24:17.000000000 +0200
-+++ gpxe/src/core/exec.c	2020-03-18 16:56:52.257888015 +0100
-@@ -38,8 +38,8 @@
+Index: syslinux-4.04/gpxe/src/core/exec.c
+===================================================================
+--- syslinux-4.04.orig/gpxe/src/core/exec.c
++++ syslinux-4.04/gpxe/src/core/exec.c
+@@ -38,8 +38,8 @@ FILE_LICENCE ( GPL2_OR_LATER );
   */
  
  /* Avoid dragging in getopt.o unless a command really uses it */
@@ -42,8 +50,10 @@
  
  /**
   * Execute command
---- gpxe/src/include/compiler.h	2011-04-18 23:24:17.000000000 +0200
-+++ gpxe/src/include/compiler.h	2020-03-18 16:48:56.193236495 +0100
+Index: syslinux-4.04/gpxe/src/include/compiler.h
+===================================================================
+--- syslinux-4.04.orig/gpxe/src/include/compiler.h
++++ syslinux-4.04/gpxe/src/include/compiler.h
 @@ -64,7 +64,7 @@
  	.comm	_sym, 0
  #else /* ASSEMBLY */
@@ -53,8 +63,10 @@
  #endif /* ASSEMBLY */
  
  /** Require a symbol within this object file
---- dos/string.h	2020-03-18 17:25:50.019155261 +0100
-+++ dos/string.h	2020-03-19 15:10:36.310787373 +0100
+Index: syslinux-4.04/dos/string.h
+===================================================================
+--- syslinux-4.04.orig/dos/string.h
++++ syslinux-4.04/dos/string.h
 @@ -5,12 +5,13 @@
  #ifndef _STRING_H
  #define _STRING_H
@@ -70,7 +82,7 @@
  
  /* This only returns true or false */
  static inline int memcmp(const void *__m1, const void *__m2, unsigned int __n)
-@@ -21,6 +22,15 @@
+@@ -21,6 +22,15 @@ static inline int memcmp(const void *__m
      return rv;
  }
  

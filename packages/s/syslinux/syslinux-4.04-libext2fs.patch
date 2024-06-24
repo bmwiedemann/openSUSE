@@ -1,5 +1,7 @@
---- libinstaller/linuxioctl.h
-+++ libinstaller/linuxioctl.h
+Index: syslinux-4.04/libinstaller/linuxioctl.h
+===================================================================
+--- syslinux-4.04.orig/libinstaller/linuxioctl.h
++++ syslinux-4.04/libinstaller/linuxioctl.h
 @@ -19,7 +19,7 @@
  
  #undef SECTOR_SIZE		/* Defined in msdos_fs.h for no good reason */

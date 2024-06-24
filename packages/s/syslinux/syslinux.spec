@@ -1,7 +1,7 @@
 #
 # spec file for package syslinux
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,34 +38,33 @@ Source:         https://www.kernel.org/pub/linux/utils/boot/syslinux/%{name}-%{v
 Source1:        isolinux-config
 Source2:        README.gfxboot
 Source3:        baselibs.conf
-Patch0:         %{name}-%{version}-iso9660.diff
-Patch1:         %{name}-%{version}-cwd.diff
-Patch2:         %{name}-%{version}-noinitrd.diff
-Patch3:         %{name}-%{version}-mboot_bootif.diff
-Patch5:         %{name}-%{version}-md5pass.diff
-Patch6:         %{name}-%{version}-libext2fs.diff
-Patch7:         %{name}-%{version}-gcc47.diff
-Patch8:         %{name}-%{version}-isohybrid_efi.diff
-Patch9:         %{name}-%{version}-isohybrid_efi_optional.diff
-Patch10:        %{name}-%{version}-isohybrid_mbr.diff
-Patch11:        %{name}-%{version}-localboot.diff
-Patch12:        %{name}-%{version}-geometry.diff
-Patch13:        %{name}-%{version}-nostrip.diff
-Patch14:        %{name}-%{version}-timeout.diff
-Patch15:        %{name}-%{version}-cache_fix.diff
-Patch16:        %{name}-%{version}-mtime.diff
-Patch17:        %{name}-%{version}-miniacc.diff
-Patch18:        %{name}-%{version}-align.diff
+Patch0:         %{name}-%{version}-iso9660.patch
+Patch1:         %{name}-%{version}-cwd.patch
+Patch2:         %{name}-%{version}-noinitrd.patch
+Patch3:         %{name}-%{version}-mboot_bootif.patch
+Patch5:         %{name}-%{version}-md5pass.patch
+Patch6:         %{name}-%{version}-libext2fs.patch
+Patch7:         %{name}-%{version}-gcc47.patch
+Patch8:         %{name}-%{version}-isohybrid_efi.patch
+Patch9:         %{name}-%{version}-isohybrid_efi_optional.patch
+Patch10:        %{name}-%{version}-isohybrid_mbr.patch
+Patch11:        %{name}-%{version}-localboot.patch
+Patch12:        %{name}-%{version}-geometry.patch
+Patch13:        %{name}-%{version}-nostrip.patch
+Patch14:        %{name}-%{version}-timeout.patch
+Patch15:        %{name}-%{version}-cache_fix.patch
+Patch16:        %{name}-%{version}-mtime.patch
+Patch17:        %{name}-%{version}-miniacc.patch
+Patch18:        %{name}-%{version}-align.patch
 # PATCH-FIX-UPSTREAM -- make package build reproducible
 Patch19:        syslinux-4.04-reproducible.patch
-Patch20:        %{name}-%{version}-python3.diff
+Patch20:        %{name}-%{version}-python3.patch
 Patch21:        sysmacros.patch
 Patch22:        remove-note-gnu-section.patch
-Patch23:        %{name}-%{version}-lzo.diff
-Patch24:        %{name}-%{version}-gcc10.diff
+Patch23:        %{name}-%{version}-lzo.patch
+Patch24:        %{name}-%{version}-gcc10.patch
 Patch25:        syslinux-4.04-reproducible-isohybrid.patch
-Patch26:        %{name}-%{version}-pie.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch26:        %{name}-%{version}-pie.patch
 
 %description
 SYSLINUX is a boot loader for the Linux operating system which operates
@@ -80,33 +79,7 @@ Authors:
     H. Peter Anvin <hpa@zytor.com>
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch5 -p1
-%patch6 -p0
-%patch7 -p0
-%patch8 -p0
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p0
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17
-%patch18
-%patch19 -p1
-%patch20 -p0
-%patch21 -p1
-%patch22 -p1
-%patch23 -p0
-%patch24 -p0
-%patch25 -p1
-%patch26 -p1
+%autosetup -p1
 
 %build
 cp %{SOURCE2} .

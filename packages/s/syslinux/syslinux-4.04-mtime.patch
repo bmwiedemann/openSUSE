@@ -1,7 +1,7 @@
-diff --git a/core/Makefile b/core/Makefile
-index 33ad7e9..49ba474 100644
---- a/core/Makefile
-+++ b/core/Makefile
+Index: syslinux-4.04/core/Makefile
+===================================================================
+--- syslinux-4.04.orig/core/Makefile
++++ syslinux-4.04/core/Makefile
 @@ -63,7 +63,7 @@ PREPCORE = ../lzo/prepcore
  # official release.  Otherwise, substitute a hex string that is pretty much
  # guaranteed to be unique to be unique from build to build.
@@ -11,10 +11,10 @@ index 33ad7e9..49ba474 100644
  endif
  ifndef DATE
  DATE    := $(shell sh ../gen-id.sh $(VERSION) $(HEXDATE))
-diff --git a/libinstaller/bin2c.pl b/libinstaller/bin2c.pl
-index 07c11dd..2864488 100755
---- a/libinstaller/bin2c.pl
-+++ b/libinstaller/bin2c.pl
+Index: syslinux-4.04/libinstaller/bin2c.pl
+===================================================================
+--- syslinux-4.04.orig/libinstaller/bin2c.pl
++++ syslinux-4.04/libinstaller/bin2c.pl
 @@ -71,8 +71,4 @@ if ($align != 0) {
  
  printf "\n};\n\nconst unsigned int %s_len = %u;\n", $table_name, $total_len;
@@ -24,10 +24,10 @@ index 07c11dd..2864488 100755
 -printf "\nconst int %s_mtime = %d;\n", $table_name, $st[9];
 -
  exit 0;
-diff --git a/libinstaller/syslinux.h b/libinstaller/syslinux.h
-index 710d30e..963cafe 100644
---- a/libinstaller/syslinux.h
-+++ b/libinstaller/syslinux.h
+Index: syslinux-4.04/libinstaller/syslinux.h
+===================================================================
+--- syslinux-4.04.orig/libinstaller/syslinux.h
++++ syslinux-4.04/libinstaller/syslinux.h
 @@ -20,11 +20,9 @@
  /* The standard boot sector and ldlinux image */
  extern unsigned char syslinux_bootsect[];
@@ -48,12 +48,10 @@ index 710d30e..963cafe 100644
  
  /* Sector size assumptions... */
  #define SECTOR_SHIFT	9
-diff --git a/now.pl b/now.pl
-old mode 100644
-new mode 100755
-index a3b5a79..60c4fe0
---- a/now.pl
-+++ b/now.pl
+Index: syslinux-4.04/now.pl
+===================================================================
+--- syslinux-4.04.orig/now.pl
++++ syslinux-4.04/now.pl
 @@ -1,21 +1,22 @@
 -#!/usr/bin/perl
 -#

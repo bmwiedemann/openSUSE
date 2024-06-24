@@ -1,6 +1,8 @@
---- com32/lib/sys/entry.S
-+++ com32/lib/sys/entry.S
-@@ -92,8 +92,8 @@
+Index: syslinux-4.04/com32/lib/sys/entry.S
+===================================================================
+--- syslinux-4.04.orig/com32/lib/sys/entry.S
++++ syslinux-4.04/com32/lib/sys/entry.S
+@@ -92,8 +92,8 @@ _start:
  		pushl %eax				# Save argc
  
  		/* Look for library initialization functions */
@@ -11,9 +13,11 @@
  6:
  		cmpl %edi,%esi
  		jae 7f
---- com32/lib/sys/exit.S
-+++ com32/lib/sys/exit.S
-@@ -17,9 +17,9 @@
+Index: syslinux-4.04/com32/lib/sys/exit.S
+===================================================================
+--- syslinux-4.04.orig/com32/lib/sys/exit.S
++++ syslinux-4.04/com32/lib/sys/exit.S
+@@ -17,9 +17,9 @@ _exit:
  #endif
  
  	/* Run any destructors */

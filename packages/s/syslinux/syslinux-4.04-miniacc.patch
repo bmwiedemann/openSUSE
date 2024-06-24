@@ -1,7 +1,7 @@
-Index: lzo/src/miniacc.h
+Index: syslinux-4.04/lzo/src/miniacc.h
 ===================================================================
---- lzo/src/miniacc.h.orig	2016-02-11 14:37:17.029802775 +0100
-+++ lzo/src/miniacc.h	2016-02-11 14:38:38.086742103 +0100
+--- syslinux-4.04.orig/lzo/src/miniacc.h
++++ syslinux-4.04/lzo/src/miniacc.h
 @@ -4412,12 +4412,12 @@ ACCLIB_EXTERN(int, acc_spawnve) (int mod
  #if defined(__MSDOS__) && defined(__TURBOC__) && (__TURBOC__ < 0x0150)
  #elif 1 && (ACC_CC_SUNPROC) && !defined(ACCCHK_CFG_PEDANTIC)

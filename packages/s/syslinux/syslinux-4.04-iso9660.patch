@@ -1,8 +1,8 @@
-diff --git a/core/fs/iso9660/iso9660.c b/core/fs/iso9660/iso9660.c
-index 3cd3ac4..9bbc299 100644
---- a/core/fs/iso9660/iso9660.c
-+++ b/core/fs/iso9660/iso9660.c
-@@ -228,14 +228,25 @@ static int iso_readdir(struct file *file, struct dirent *dirent)
+Index: syslinux-4.04/core/fs/iso9660/iso9660.c
+===================================================================
+--- syslinux-4.04.orig/core/fs/iso9660/iso9660.c
++++ syslinux-4.04/core/fs/iso9660/iso9660.c
+@@ -228,14 +228,25 @@ static int iso_readdir(struct file *file
  /* Load the config file, return 1 if failed, or 0 */
  static int iso_load_config(void)
  {

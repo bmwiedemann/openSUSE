@@ -12,11 +12,11 @@ Signed-off-by: Gene Cumm <gene.cumm@gmail.com>
 ---
 (limited to 'extlinux/main.c')
 
-diff --git a/extlinux/main.c b/extlinux/main.c
-index e5212a9..6aa6202 100755
---- a/extlinux/main.c
-+++ b/extlinux/main.c
-@@ -112,7 +112,7 @@ static int sysfs_get_offset(int devfd, unsigned long *start)
+Index: syslinux-4.04/extlinux/main.c
+===================================================================
+--- syslinux-4.04.orig/extlinux/main.c
++++ syslinux-4.04/extlinux/main.c
+@@ -112,7 +112,7 @@ static int sysfs_get_offset(int devfd, u
  
      if ((size_t)snprintf(sysfs_name, sizeof sysfs_name,
  			 "/sys/dev/block/%u:%u/start",
@@ -25,7 +25,7 @@ index e5212a9..6aa6202 100755
  	>= sizeof sysfs_name)
  	return -1;
  
-@@ -153,7 +153,7 @@ int get_geometry(int devfd, uint64_t totalbytes, struct hd_geometry *geo)
+@@ -153,7 +153,7 @@ int get_geometry(int devfd, uint64_t tot
  
      memset(geo, 0, sizeof *geo);
  
@@ -34,5 +34,3 @@ index e5212a9..6aa6202 100755
  	goto ok;
      } else if (!ioctl(devfd, FDGETPRM, &fd_str)) {
  	geo->heads = fd_str.head;
---
-cgit v0.9.2

@@ -1,8 +1,8 @@
-diff --git a/com32/gfxboot/gfxboot.c b/com32/gfxboot/gfxboot.c
-index 3749920..9a39e79 100644
---- a/com32/gfxboot/gfxboot.c
-+++ b/com32/gfxboot/gfxboot.c
-@@ -922,11 +922,15 @@ void boot_entry(menu_t *menu_ptr, char *arg)
+Index: syslinux-4.04/com32/gfxboot/gfxboot.c
+===================================================================
+--- syslinux-4.04.orig/com32/gfxboot/gfxboot.c
++++ syslinux-4.04/com32/gfxboot/gfxboot.c
+@@ -935,11 +935,15 @@ void boot_entry(menu_t *menu_ptr, char *
      *skip_nonspaces(s) = 0;
      initrd_arg = s;
    }

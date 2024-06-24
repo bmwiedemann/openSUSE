@@ -1,6 +1,8 @@
---- mbr/altmbr.S
-+++ mbr/altmbr.S
-@@ -204,7 +204,7 @@
+Index: syslinux-4.04/mbr/altmbr.S
+===================================================================
+--- syslinux-4.04.orig/mbr/altmbr.S
++++ syslinux-4.04/mbr/altmbr.S
+@@ -204,7 +204,7 @@ scan_partition_table:
  5:
  	decb	(partition)
  	jz	boot
@@ -9,9 +11,11 @@
  	loopw	5b
  
  	popw	%cx			/* %cx <- 4    */
---- mbr/isohdpfx.S
-+++ mbr/isohdpfx.S
-@@ -66,6 +66,37 @@
+Index: syslinux-4.04/mbr/isohdpfx.S
+===================================================================
+--- syslinux-4.04.orig/mbr/isohdpfx.S
++++ syslinux-4.04/mbr/isohdpfx.S
+@@ -66,6 +66,37 @@ bootsec:
  	.globl	_start
  _start:
  	.byte	0x33, 0xed	/* xorw	%bp, %bp */
@@ -49,9 +53,11 @@
  	cli
  	movw	%bp, %ss
  	movw	$stack, %sp
---- mbr/mbr.S
-+++ mbr/mbr.S
-@@ -265,6 +265,19 @@
+Index: syslinux-4.04/mbr/mbr.S
+===================================================================
+--- syslinux-4.04.orig/mbr/mbr.S
++++ syslinux-4.04/mbr/mbr.S
+@@ -265,6 +265,19 @@ boot:
  	movl	%eax, 8(%si)	/* Adjust in-memory partition table entry */
  	call	read_sector
  	jc	disk_error
@@ -71,9 +77,11 @@
  	cmpw	$0xaa55, (bootsec+510)
  	jne	missing_os		/* Not a valid boot sector */
  	movw	$driveno, %sp	/* driveno == bootsec-6 */
---- utils/Makefile
-+++ utils/Makefile
-@@ -47,7 +47,7 @@
+Index: syslinux-4.04/utils/Makefile
+===================================================================
+--- syslinux-4.04.orig/utils/Makefile
++++ syslinux-4.04/utils/Makefile
+@@ -47,7 +47,7 @@ isohdpfx.c: $(ISOHDPFX) isohdpfxarray.pl
  	$(PERL) isohdpfxarray.pl $(ISOHDPFX) > $@
  
  isohybrid: isohybrid.o isohdpfx.o
@@ -82,8 +90,10 @@
  
  gethostip: gethostip.o
  	$(CC) $(LDFLAGS) -o $@ $^
---- utils/isohybrid.c
-+++ utils/isohybrid.c
+Index: syslinux-4.04/utils/isohybrid.c
+===================================================================
+--- syslinux-4.04.orig/utils/isohybrid.c
++++ syslinux-4.04/utils/isohybrid.c
 @@ -36,21 +36,29 @@
  #include <unistd.h>
  #include <sys/stat.h>
@@ -117,7 +127,7 @@
  uint16_t type = 0x17;           /* partition type: 0 <= type <= 255 */
  uint32_t id = 0;                /* MBR: 0 <= id <= 0xFFFFFFFF(4294967296) */
  
-@@ -59,12 +67,153 @@
+@@ -59,12 +67,153 @@ uint8_t partok = 0;             /* 0 <=
  
  uint16_t ve[16];
  uint32_t catoffset = 0;
@@ -272,7 +282,7 @@
  
  
  void
-@@ -86,9 +235,13 @@
+@@ -86,9 +235,13 @@ printh(void)
      printf(FMT, "   -h <X>", "Number of default geometry heads");
      printf(FMT, "   -s <X>", "Number of default geometry sectors");
      printf(FMT, "   -e --entry", "Specify partition entry number (1-4)");
@@ -287,7 +297,7 @@
  
      printf("\n");
      printf(FMT, "   --forcehd0", "Assume we are loaded as disk ID 0");
-@@ -108,6 +261,7 @@
+@@ -108,6 +261,7 @@ printh(void)
  int
  check_option(int argc, char *argv[])
  {
@@ -295,7 +305,7 @@
      int n = 0, ind = 0;
  
      const char optstr[] = ":h:s:e:o:t:i:fcp?vV";
-@@ -117,10 +271,14 @@
+@@ -117,10 +271,14 @@ check_option(int argc, char *argv[])
          { "offset", required_argument, NULL, 'o' },
          { "type", required_argument, NULL, 't' },
          { "id", required_argument, NULL, 'i' },
@@ -310,7 +320,7 @@
  
          { "help", no_argument, NULL, '?' },
          { "verbose", no_argument, NULL, 'v' },
-@@ -135,32 +293,38 @@
+@@ -135,32 +293,38 @@ check_option(int argc, char *argv[])
          switch (n)
          {
          case 'h':
@@ -356,7 +366,7 @@
                  errx(1, "invalid id: `%s'", optarg);
              break;
  
-@@ -176,10 +340,26 @@
+@@ -176,10 +340,26 @@ check_option(int argc, char *argv[])
              partok = 1;
              break;
  
@@ -383,7 +393,7 @@
          case 'V':
              printf("%s version %s\n", prog, VERSION);
              exit(0);
-@@ -200,6 +380,33 @@
+@@ -200,6 +380,33 @@ check_option(int argc, char *argv[])
      return optind;
  }
  
@@ -417,7 +427,7 @@
  
  uint16_t
  lendian_short(const uint16_t s)
-@@ -229,6 +436,22 @@
+@@ -229,6 +436,22 @@ lendian_int(const uint32_t s)
      return r;
  }
  
@@ -440,7 +450,7 @@
  
  int
  check_banner(const uint8_t *buf)
-@@ -252,7 +475,7 @@
+@@ -252,7 +475,7 @@ check_banner(const uint8_t *buf)
  int
  check_catalogue(const uint8_t *buf)
  {
@@ -449,7 +459,7 @@
  
      for (i = 0, cs = 0; i < 16; i++)
      {
-@@ -307,6 +530,43 @@
+@@ -307,6 +530,43 @@ read_catalogue(const uint8_t *buf)
  }
  
  
@@ -493,7 +503,7 @@
  void
  display_catalogue(void)
  {
-@@ -321,18 +581,33 @@
+@@ -321,18 +581,33 @@ display_catalogue(void)
  }
  
  
@@ -531,7 +541,7 @@
      mbr += MBRSIZE;                                 /* offset 432 */
  
      tmp = lendian_int(de_lba * 4);
-@@ -351,42 +626,92 @@
+@@ -351,42 +626,92 @@ initialise_mbr(uint8_t *mbr)
      mbr[1] = '\0';
      mbr += 2;                                       /* offset 446 */
  
@@ -648,7 +658,7 @@
      mbr[0] = 0x55;
      mbr[1] = 0xAA;
      mbr += 2;
-@@ -394,7 +719,6 @@
+@@ -394,7 +719,6 @@ initialise_mbr(uint8_t *mbr)
      return mbr - rbm;
  }
  
@@ -656,7 +666,7 @@
  void
  display_mbr(const uint8_t *mbr, size_t len)
  {
-@@ -424,14 +748,190 @@
+@@ -424,14 +748,190 @@ display_mbr(const uint8_t *mbr, size_t l
  }
  
  
@@ -849,7 +859,7 @@
  
      prog = strcpy(alloca(strlen(argv[0]) + 1), argv[0]);
      i = check_option(argc, argv);
-@@ -443,10 +943,32 @@
+@@ -443,10 +943,32 @@ main(int argc, char *argv[])
          usage();
          return 1;
      }
@@ -883,7 +893,7 @@
      if (fseek(fp, 17 * 2048, SEEK_SET))
          err(1, "%s: seek error - 1", argv[0]);
  
-@@ -478,6 +1000,53 @@
+@@ -478,6 +1000,53 @@ main(int argc, char *argv[])
      if (mode & VERBOSE)
          display_catalogue();
  
@@ -937,7 +947,7 @@
      if (fseek(fp, (de_lba * 2048 + 0x40), SEEK_SET))
          err(1, "%s: seek error - 3", argv[0]);
  
-@@ -491,24 +1060,55 @@
+@@ -491,24 +1060,55 @@ main(int argc, char *argv[])
                   "signature. Note that isolinux-debug.bin does not support " \
                   "hybrid booting", argv[0]);
  
@@ -996,7 +1006,7 @@
      if (!id)
      {
          if (fseek(fp, 440, SEEK_SET))
-@@ -530,6 +1130,16 @@
+@@ -530,6 +1130,16 @@ main(int argc, char *argv[])
  
      buf = bufz;
      memset(buf, 0, BUFSIZE);
@@ -1013,7 +1023,7 @@
      i = initialise_mbr(buf);
  
      if (mode & VERBOSE)
-@@ -541,15 +1151,74 @@
+@@ -541,15 +1151,74 @@ main(int argc, char *argv[])
      if (fwrite(buf, sizeof(char), i, fp) != (size_t)i)
          err(1, "%s: write error - 1", argv[0]);
  
@@ -1089,8 +1099,10 @@
      free(buf);
      fclose(fp);
  
---- utils/isohybrid.h
-+++ utils/isohybrid.h
+Index: syslinux-4.04/utils/isohybrid.h
+===================================================================
+--- syslinux-4.04.orig/utils/isohybrid.h
++++ syslinux-4.04/utils/isohybrid.h
 @@ -20,7 +20,7 @@
   *
   */

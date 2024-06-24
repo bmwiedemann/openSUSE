@@ -1,8 +1,8 @@
-diff --git a/mbr/Makefile b/mbr/Makefile
-index be2bded7..59e06915 100644
---- a/mbr/Makefile
-+++ b/mbr/Makefile
-@@ -36,7 +36,7 @@
+Index: syslinux-4.04/mbr/Makefile
+===================================================================
+--- syslinux-4.04.orig/mbr/Makefile
++++ syslinux-4.04/mbr/Makefile
+@@ -36,7 +36,7 @@ all:	mbr.bin   altmbr.bin   gptmbr.bin
  	$(LD) $(LDFLAGS) -T mbr.ld -e _start -o $@ $<
  
  %.bin: %.elf checksize.pl

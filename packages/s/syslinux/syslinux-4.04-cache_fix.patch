@@ -17,11 +17,11 @@ Date:   Thu Jul 19 07:29:55 2012 -0700
     Reported-by: Jan Safrata <jsafrata@centrum.cz>
     Signed-off-by: H. Peter Anvin <hpa@zytor.com>
 
-diff --git a/core/fs/cache.c b/core/fs/cache.c
-index 0d7891b..3b21fc2 100644
---- a/core/fs/cache.c
-+++ b/core/fs/cache.c
-@@ -37,10 +37,10 @@ void cache_init(struct device *dev, int block_size_shift)
+Index: syslinux-4.04/core/fs/cache.c
+===================================================================
+--- syslinux-4.04.orig/core/fs/cache.c
++++ syslinux-4.04/core/fs/cache.c
+@@ -37,10 +37,10 @@ void cache_init(struct device *dev, int
  
      dev->cache_head = head = (struct cache *)
  	(data + (dev->cache_entries << block_size_shift));

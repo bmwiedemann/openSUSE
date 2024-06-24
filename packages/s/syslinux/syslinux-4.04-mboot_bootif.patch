@@ -1,8 +1,8 @@
-diff --git a/com32/mboot/mboot.c b/com32/mboot/mboot.c
-index 35450e0..a124a21 100644
---- a/com32/mboot/mboot.c
-+++ b/com32/mboot/mboot.c
-@@ -97,9 +97,14 @@ static int get_modules(char **argv, struct module_data **mdp)
+Index: syslinux-4.04/com32/mboot/mboot.c
+===================================================================
+--- syslinux-4.04.orig/com32/mboot/mboot.c
++++ syslinux-4.04/com32/mboot/mboot.c
+@@ -97,9 +97,14 @@ static int get_modules(char **argv, stru
      int arglen;
      const char module_separator[] = "---";
  
@@ -17,7 +17,7 @@ index 35450e0..a124a21 100644
      }
  
      *mdp = mp = malloc(module_count * sizeof(struct module_data));
-@@ -133,11 +138,19 @@ static int get_modules(char **argv, struct module_data **mdp)
+@@ -133,11 +138,19 @@ static int get_modules(char **argv, stru
  	    mp->cmdline = strdup("");
  	} else {
  	    char *p;

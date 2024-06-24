@@ -1,0 +1,13 @@
+Index: syslinux-4.04/core/syslinux.ld
+===================================================================
+--- syslinux-4.04.orig/core/syslinux.ld
++++ syslinux-4.04/core/syslinux.ld
+@@ -263,7 +263,7 @@ SECTIONS
+ 		__text_end = .;
+ 	}
+ 
+-	. = ALIGN(16);
++	. = ALIGN(32);
+ 
+ 	__rodata_vma = .;
+ 	__rodata_lma = __rodata_vma + __text_lma - __text_vma;

@@ -1,6 +1,8 @@
---- utils/Makefile
-+++ utils/Makefile
-@@ -18,7 +18,7 @@
+Index: syslinux-4.04/utils/Makefile
+===================================================================
+--- syslinux-4.04.orig/utils/Makefile
++++ syslinux-4.04/utils/Makefile
+@@ -18,7 +18,7 @@ topdir = ..
  include $(topdir)/MCONFIG
  
  CFLAGS   = $(GCCWARN) -Os -fomit-frame-pointer -D_FILE_OFFSET_BITS=64

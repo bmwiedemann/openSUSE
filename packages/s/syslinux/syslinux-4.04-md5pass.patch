@@ -1,5 +1,7 @@
---- a/utils/md5pass
-+++ b/utils/md5pass
+Index: syslinux-4.04/utils/md5pass
+===================================================================
+--- syslinux-4.04.orig/utils/md5pass
++++ syslinux-4.04/utils/md5pass
 @@ -1,7 +1,6 @@
  #!/usr/bin/perl
  

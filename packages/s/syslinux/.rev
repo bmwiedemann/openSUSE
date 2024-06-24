@@ -535,4 +535,12 @@ helps ipxe iso reproducibility. (forwarded request 868912 from bmwiedemann)</com
   utilization of stack-protector and FORTIFY_SOURCE. (bsc#1211640) (forwarded request 1089159 from msmeissn)</comment>
     <requestid>1126911</requestid>
   </revision>
+  <revision rev="71" vrev="50">
+    <srcmd5>2dc2593d20da7c4c9112cabdc7a71155</srcmd5>
+    <version>4.04</version>
+    <time>1719255015</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1182473</requestid>
+  </revision>
 </revisionlist>

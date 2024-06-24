@@ -1,0 +1,13 @@
+Index: syslinux-4.04/lzo/Makefile
+===================================================================
+--- syslinux-4.04.orig/lzo/Makefile
++++ syslinux-4.04/lzo/Makefile
+@@ -19,6 +19,8 @@ LIBOBJS = $(sort $(patsubst %.c,%.o,$(wi
+ LIB     = lzo.a
+ BINS    = prepcore
+ 
++OPTFLAGS += -fno-strict-aliasing
++
+ all : $(BINS)
+ 
+ $(LIB) : $(LIBOBJS)
