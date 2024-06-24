@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 21 09:43:32 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- New upstream release 2.15.12, see bundled NEWS.md
+
+-------------------------------------------------------------------
 Sat Feb  5 12:47:55 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not pin to Ruby 2.7 on Tumbleweed: ruby 2.7 no longer exists,

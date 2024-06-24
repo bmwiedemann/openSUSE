@@ -203,4 +203,12 @@
   and Ruby 3 support has been added in versoin 2.15.11.</comment>
     <requestid>951857</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>fbfff7decff8e35efaeb2b9c86f6cbfc</srcmd5>
+    <version>2.15.12</version>
+    <time>1719255295</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1182772</requestid>
+  </revision>
 </revisionlist>
