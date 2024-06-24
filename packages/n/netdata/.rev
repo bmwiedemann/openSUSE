@@ -4529,4 +4529,26 @@ Other Notable Changes
   * This bumps the Go version requirement to 1.22.0</comment>
     <requestid>1181802</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>7fc3df9784a6e44be1f9fd39d500bf30</srcmd5>
+    <version>1.46.1</version>
+    <time>1719255132</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.46.1
+  * Fixed Rspamd collector to handle responses without FuzzyHashes
+    (go.d/rspamd)
+    gh#netdata/netdata#17974
+  * Added validation for dyncfg job names to prevent invalid
+    characters (go.d.plugin)
+    gh#netdata/netdata#17971
+  * Fixed cgroups version detection on non-systemd nodes with
+    cgroups v1 (cgroups.plugin)
+    gh#netdata/netdata#17969
+  * Improved check to ensure that job names in configuration files
+    do not contain colons (go.d.plugin)
+    gh#netdata/netdata#17967
+  * Fixed space percentage calculation in dbengine retention chart
+    gh#netdata/netdata#17963</comment>
+    <requestid>1182543</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jun 22 05:04:56 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.46.1
+  * Fixed Rspamd collector to handle responses without FuzzyHashes
+    (go.d/rspamd)
+    gh#netdata/netdata#17974
+  * Added validation for dyncfg job names to prevent invalid
+    characters (go.d.plugin)
+    gh#netdata/netdata#17971
+  * Fixed cgroups version detection on non-systemd nodes with
+    cgroups v1 (cgroups.plugin)
+    gh#netdata/netdata#17969
+  * Improved check to ensure that job names in configuration files
+    do not contain colons (go.d.plugin)
+    gh#netdata/netdata#17967
+  * Fixed space percentage calculation in dbengine retention chart
+    gh#netdata/netdata#17963
+
+-------------------------------------------------------------------
 Wed Jun 19 19:10:22 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.46.0

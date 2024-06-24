@@ -22,7 +22,7 @@
 %define __builder ninja
 
 Name:           netdata
-Version:        1.46.0
+Version:        1.46.1
 Release:        0
 Summary:        A system for distributed real-time performance and health monitoring
 # netdata is GPL-3.0+, other licenses refer to included third-party software (see REDISTRIBUTED.md)
