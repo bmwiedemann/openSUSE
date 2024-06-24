@@ -1,7 +1,7 @@
 #
 # spec file for package pmemkv-python
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,16 +47,14 @@ Python bindings for pmemkv. Currently functionally equal to pmemkv in version 1.
 %prep
 %setup -q
 %if %{defined sle_version}
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 
 %build
 %py3_build
 
-
 %install
 %py3_install
-
 
 %files
 %{python3_sitearch}/pmemkv-*

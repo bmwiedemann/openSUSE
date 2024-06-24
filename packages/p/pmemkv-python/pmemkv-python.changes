@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 17 09:20:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN syntax.
+
+-------------------------------------------------------------------
 Mon Feb 22 10:11:04 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable build on aarch64
