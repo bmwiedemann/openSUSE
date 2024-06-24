@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1175825</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1943bfeded5cfee4d9adb2c29c9d8639</srcmd5>
+    <version>0.4.5</version>
+    <time>1719255418</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.5:
+  * Change kill switch connection IPv4 config from manual to
+    auto.</comment>
+    <requestid>1183036</requestid>
+  </revision>
 </revisionlist>
