@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jun 21 10:19:11 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- 2.7.1:
+
+## What's Changed
+* Update changes.md by @ioquatix in https://github.com/socketry/nio4r/pull/311
+* fix jruby warnings by @ahorek in https://github.com/socketry/nio4r/pull/313
+* Convert license to array of identifiers by @voxik in https://github.com/socketry/nio4r/pull/312
+
+
+**Full Changelog**: https://github.com/socketry/nio4r/compare/v2.7.0...v2.7.1
+
+
+
+-------------------------------------------------------------------
 Mon Jan 29 14:16:46 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - ## 2.6.2

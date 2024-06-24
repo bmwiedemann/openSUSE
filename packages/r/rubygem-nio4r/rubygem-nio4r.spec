@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-nio4r
-Version:        2.7.0
+Version:        2.7.3
 Release:        0
 %define mod_name nio4r
 %define mod_full_name %{mod_name}-%{version}
@@ -42,11 +42,10 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-nio4r-rpmlintrc
 Source2:        gem2rpm.yml
 Summary:        New IO for Ruby
-License:        (BSD-2-Clause OR GPL-2.0-or-later) AND MIT
+License:        BSD-2-Clause AND MIT
 
 %description
-Cross-platform asynchronous I/O primitives for scalable network clients and
-servers. Inspired by the Java NIO API, but simplified for ease-of-use.
+New IO for Ruby.
 
 %prep
 
