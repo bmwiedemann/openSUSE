@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 21 18:08:13 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Remove disable-spellchecker.patch as spellchecker is meanwhile
+  configurable via Settings -> General
+
+-------------------------------------------------------------------
 Fri Jun 21 11:09:44 UTC 2024 - Dominik Heidler <dheidler@suse.de>
 
 - Disable dysfunctional spellchecker

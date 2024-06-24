@@ -786,4 +786,13 @@ Version 1.11.66
   * Element-R: pass pickleKey in as raw key for indexeddb encryption (https://github.com/matrix-org/matrix-react-sdk/pull/12543). Contributed by @richvdh.</comment>
     <requestid>1182469</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>e5d39c60058dca9673ce19400296365a</srcmd5>
+    <version>1.11.69</version>
+    <time>1719255103</time>
+    <user>anag+factory</user>
+    <comment>- Remove disable-spellchecker.patch as spellchecker is meanwhile
+  configurable via Settings -&gt; General</comment>
+    <requestid>1182986</requestid>
+  </revision>
 </revisionlist>
