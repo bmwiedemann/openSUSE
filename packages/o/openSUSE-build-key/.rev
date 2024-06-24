@@ -397,4 +397,13 @@ However, it would be good to have these out before we do switch. (forwarded requ
 - obsoleted a incorrectly used DSA1024 key (used in Slowroll). (forwarded request 1166671 from msmeissn)</comment>
     <requestid>1166854</requestid>
   </revision>
+  <revision rev="45" vrev="54">
+    <srcmd5>b7fb5118078d7e5678a2657980c91eff</srcmd5>
+    <version>1.0</version>
+    <time>1719255022</time>
+    <user>anag+factory</user>
+    <comment>- Ensure that SLM 6.0 key is installed on Leap Micro and Leap 16
+- install SLFO / SLM 6.0 key and SLES 15 SP6+ key by default</comment>
+    <requestid>1182852</requestid>
+  </revision>
 </revisionlist>

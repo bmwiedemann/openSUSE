@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 21 16:13:28 UTC 2024 - Lubos Kocman <Lubos.Kocman@suse.com>
+
+- Ensure that SLM 6.0 key is installed on Leap Micro and Leap 16
+- install SLFO / SLM 6.0 key and SLES 15 SP6+ key by default
+
+-------------------------------------------------------------------
 Wed Apr 10 12:59:49 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - SLM 6.0 key (ALP / SLF1) RSA 4096 bit key

@@ -113,6 +113,8 @@ cp %{SOURCE5} .
 %ifarch ppc ppc64 ppc64le
 cp %{SOURCE6} .
 %endif
+cp %{SOURCE16} .
+cp %{SOURCE17} .
 
 %install
 mkdir -p %{buildroot}%{keydir}
@@ -129,6 +131,8 @@ for i in %{SOURCE10} %{SOURCE2} \
 %ifarch ppc ppc64 ppc64le
 %{SOURCE6} \
 %endif
+%{SOURCE16} \
+%{SOURCE17} \
 ; do
     case "$i" in
 	*/gpg-pubkey-*.asc)
