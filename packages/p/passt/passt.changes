@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jun 17 07:57:52 UTC 2024 - dcermak@suse.com
+
+- Update to version 20240607.8a83b53:
+  * selinux: Allow access to user_devpts
+  * tcp, flow: Fix some error paths which didn't clean up flows properly
+  * util: Use 'long' to represent millisecond durations
+  * lineread: Use ssize_t for line lengths
+  * conf: Safer parsing of MAC addresses
+  * util: Use unsigned indices for bits in bitmaps
+  * clang-tidy: Enable the bugprone-macro-parentheses check
+  * Remove pointless macro parameters in CALL_PROTO_HANDLER
+  * udp: Make rport calculation more local
+  * tcp: Make pointer const in tcp_revert_seq
+  * log: Remove log_to_stdout option
+  * conf: Don't print usage via the logging subsystem
+  * conf: Remove unhelpful usage() wrapper
+  * tcp: move seq_to_tap update to when frame is queued
+
+-------------------------------------------------------------------
 Fri May 24 06:52:32 UTC 2024 - dcermak@suse.com
 
 - Update to version 20240523.765eb0b:

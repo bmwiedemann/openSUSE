@@ -44,7 +44,7 @@
 %endif
 
 Name:           passt
-Version:        20240523.765eb0b
+Version:        20240607.8a83b53
 Release:        0
 Summary:        User-mode networking daemons for virtual machines and namespaces
 License:        GPL-2.0-or-later AND BSD-3-Clause
