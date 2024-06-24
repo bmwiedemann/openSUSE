@@ -47,4 +47,12 @@
     <comment>New upstream release 0.8.0</comment>
     <requestid>1004130</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0ea4288055b1535489c95ff478f005d7</srcmd5>
+    <version>0.8.3</version>
+    <time>1719255343</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1182835</requestid>
+  </revision>
 </revisionlist>
