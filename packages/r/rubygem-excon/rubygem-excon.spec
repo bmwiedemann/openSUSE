@@ -24,13 +24,13 @@
 #
 
 Name:           rubygem-excon
-Version:        0.109.0
+Version:        0.110.0
 Release:        0
 %define mod_name excon
 %define mod_full_name %{mod_name}-%{version}
+BuildRequires:  %{ruby >= 2.7.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
-BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/excon/excon
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
