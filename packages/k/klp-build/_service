@@ -1,0 +1,15 @@
+<services>
+	<service name="tar_scm" mode="manual">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/SUSE/klp-build</param>
+		<param name="revision">445505a9ccd3f36c744bfadc03d5faadbcedaecc</param>
+		<param name="versionformat">0~%cd.%h</param>
+		<param name="changesgenerate">enable</param>
+        <param name="changesauthor">mvetter@suse.com</param>
+	</service>
+	<service name="recompress" mode="manual">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="manual"/>
+</services>

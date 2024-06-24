@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Mon Jun 24 10:13:45 UTC 2024 - mvetter@suse.com
+
+- Update to version 0~20240622.445505a:
+  * config: Add architecture of the duplicated symbol warning
+  * config.py: Show kernle version when a duplicate symbol was found
+
+-------------------------------------------------------------------
+Mon Jun 24 10:07:21 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Install run-kgr-test.sh to bindir
+- Run fdupes
+
+-------------------------------------------------------------------
+Thu Jun 20 20:40:30 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Initial package of klp-build git 9aa77a for openSUSE
