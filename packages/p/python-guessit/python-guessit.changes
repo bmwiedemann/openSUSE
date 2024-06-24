@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 23 14:36:07 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Raise version requirement for python-rebulk (fixes boo#1226826)
+
+-------------------------------------------------------------------
 Fri Feb 16 20:18:52 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Disable tests for Leap 15.6

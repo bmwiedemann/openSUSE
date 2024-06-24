@@ -36,14 +36,14 @@ BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-mock >= 3.3.1}
 %endif
 BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module rebulk >= 3.1.0}
+BuildRequires:  %{python_module rebulk >= 3.2.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-babelfish >= 0.6.0
 Requires:       python-importlib-resources
 Requires:       python-python-dateutil
-Requires:       python-rebulk >= 3.1.0
+Requires:       python-rebulk >= 3.2.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch

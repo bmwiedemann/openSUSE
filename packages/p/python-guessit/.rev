@@ -285,4 +285,13 @@
     <comment></comment>
     <requestid>1147193</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>b3704a15532a832eaa0f54a908122e1a</srcmd5>
+    <version>3.8.0</version>
+    <time>1719255364</time>
+    <user>anag+factory</user>
+    <comment>- Raise version requirement for python-rebulk (fixes boo#1226826)
+</comment>
+    <requestid>1182909</requestid>
+  </revision>
 </revisionlist>
