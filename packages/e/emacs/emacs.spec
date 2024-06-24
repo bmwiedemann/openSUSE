@@ -154,7 +154,7 @@ BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xwayland)
 BuildRequires:  pkgconfig(xxf86vm)
 URL:            http://www.gnu.org/software/emacs/
-Version:        29.3
+Version:        29.4
 Release:        0
 Summary:        GNU Emacs Base Package
 License:        GPL-3.0-or-later

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 24 09:34:03 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update to GNU Emacs version 29.4
+  * Emacs 29.4 is an emergency bugfix release intended to fix the
+    security vulnerability described below.
+  ** Arbitrary shell commands are no longer run when turning oncw
+     Org mode. This is for security reasons, to avoid running
+     malicious commands.
+
+-------------------------------------------------------------------
 Thu Apr 11 06:13:45 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Modify patch emacs-25.1-custom-fonts.patch
