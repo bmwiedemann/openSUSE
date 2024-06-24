@@ -242,4 +242,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1178867</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>abdd769fa1c82846778e1a016553f747</srcmd5>
+    <version>5.17.0</version>
+    <time>1719255371</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.17.0:
+  * Add label commands from zref and zref-clever to the list of default label commands
+  * Add texlab.experimental.labelDefinitionPrefixes and texlab.experimental.labelReferencePrefixes options
+</comment>
+    <requestid>1182938</requestid>
+  </revision>
 </revisionlist>

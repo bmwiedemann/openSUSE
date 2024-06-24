@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 24 00:09:28 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 5.17.0:
+  * Add label commands from zref and zref-clever to the list of default label commands
+  * Add texlab.experimental.labelDefinitionPrefixes and texlab.experimental.labelReferencePrefixes options
+
+-------------------------------------------------------------------
 Wed May 29 15:52:22 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 5.16.1. Changes since then:
