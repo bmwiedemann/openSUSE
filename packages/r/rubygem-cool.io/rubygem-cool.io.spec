@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-cool.io
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,14 +24,14 @@
 #
 
 Name:           rubygem-cool.io
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 %define mod_name cool.io
 %define mod_full_name %{mod_name}-%{version}
 BuildRequires:  %{rubydevel}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-URL:            http://coolio.github.com
+URL:            https://github.com/socketry/cool.io
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Source2:        rubygem-cool.io-rpmlintrc
