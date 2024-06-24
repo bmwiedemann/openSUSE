@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-json
-Version:        2.7.1
+Version:        2.7.2
 Release:        0
 %define mod_name json
 %define mod_full_name %{mod_name}-%{version}
