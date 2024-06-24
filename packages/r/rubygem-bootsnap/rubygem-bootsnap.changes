@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Jun 21 09:33:29 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- # 1.18.3
+
+* Fix the cache corruption issue in the revalidation feature. See #474.
+  The cache revalidation feature remains opt-in for now, until it is more battle tested.
+
+# 1.18.2
+
+* Disable stale cache entries revalidation by default as it seems to cause cache corruption issues. See #471 and #474.
+  Will be re-enabled in a future version once the root cause is identified.
+* Fix a potential compilation issue on some systems. See #470.
+
+# 1.18.1
+
+* Handle `EPERM` errors when opening files with `O_NOATIME`.
+
+# 1.18.0
+
+* `Bootsnap.instrumentation` now receive `:hit` events.
+* Add `Bootsnap.log_stats!` to print hit rate statistics on process exit. Can also be enabled with `BOOTSNAP_STATS=1`.
+* Revalidate stale cache entries by digesting the source content.
+  This should significantly improve performance in environments where `mtime` isn't preserved (e.g. CI systems doing a git clone, etc).
+  See #468.
+* Open source files and cache entries with `O_NOATIME` when available to reduce disk accesses. See #469.
+* `bootsnap precompile --gemfile` now look for `.rb` files in the whole gem and not just the `lib/` directory. See #466.
+
+
+-------------------------------------------------------------------
 Mon Jan 29 13:47:58 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - New upstream release 1.17.1, see bundled CHANGELOG.md
