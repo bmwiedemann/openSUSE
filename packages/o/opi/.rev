@@ -628,4 +628,13 @@
   * Add config option to reverse option order</comment>
     <requestid>1180023</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>61a66a96966b9b467cd156f2319e8524</srcmd5>
+    <version>5.2.1</version>
+    <time>1719255398</time>
+    <user>anag+factory</user>
+    <comment>- Version 5.2.1
+  * Update freeoffice.py</comment>
+    <requestid>1182982</requestid>
+  </revision>
 </revisionlist>
