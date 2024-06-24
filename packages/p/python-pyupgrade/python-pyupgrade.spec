@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyupgrade
-Version:        3.15.2
+Version:        3.16.0
 Release:        0
 Summary:        A tool to automatically upgrade syntax for newer versions
 License:        MIT

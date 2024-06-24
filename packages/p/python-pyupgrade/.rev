@@ -522,4 +522,14 @@
   * only replace to shlex.join if joined with a space</comment>
     <requestid>1161394</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>1428312001dc4f78553d66a4de60453b</srcmd5>
+    <version>3.16.0</version>
+    <time>1719255420</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.16.0:
+  * rewrite pep 646 Unpack to splat in *args
+  * CI updates</comment>
+    <requestid>1183038</requestid>
+  </revision>
 </revisionlist>

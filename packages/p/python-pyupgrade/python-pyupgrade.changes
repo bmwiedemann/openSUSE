@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 24 15:44:15 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.16.0:
+  * rewrite pep 646 Unpack to splat in *args
+  * CI updates
+
+-------------------------------------------------------------------
 Mon Mar 25 13:04:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.15.2:
