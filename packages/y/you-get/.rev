@@ -454,4 +454,14 @@
 </comment>
     <requestid>1175698</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>bcd49399edeb7162462bc06a00e08317</srcmd5>
+    <version>0.4.1710</version>
+    <time>1719255386</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.4.1710
+  * YouTube: Fix 403 error and throttling
+</comment>
+    <requestid>1182973</requestid>
+  </revision>
 </revisionlist>
