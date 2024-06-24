@@ -993,4 +993,41 @@
  * Server</comment>
     <requestid>1178989</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>28e3f2e778f01202e41c45ca94198f3c</srcmd5>
+    <version>0.4.10</version>
+    <time>1719255051</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.10
+ * Parser
+   * Implement re-lexing logic for better error recovery 
+ * Rule changes
+   * [flake8-copyright] Update CPY001 to check the first 4096 bytes instead of 1024 
+   * [pycodestyle] Update E999 to show all syntax errors instead of just the first one 
+ * Server
+  * Add tracing setup guide to Helix documentation 
+  * Add tracing setup guide to Neovim documentation 
+  * Defer notebook cell deletion to avoid an error message 
+ * Security
+  * Guard against malicious ecosystem comment artifacts
+
+- update to 0.4.9:
+  * Preview features
+    + [pylint] Implement consider-dict-items (C0206) (#11688)
+    +  [refurb] Implement repeated-global (FURB154) (#11187)
+  * Rule changes
+    + [pycodestyle] Adapt fix for E203 to work identical to ruff
+      format (#10999)
+  * Formatter
+    + Fix formatter instability for lines only consisting of
+      zero-width characters (#11748)
+  * Server
+    + Add supported commands in server capabilities (#11850)
+    + Use real file path when available in ruff server (#11800)
+    + Improve error message when a command is run on an unavailable
+      document (#11823)
+    + Introduce the ruff.printDebugInformation command (#11831)
+    + Tracing system now respects log level and trace level, with</comment>
+    <requestid>1182988</requestid>
+  </revision>
 </revisionlist>

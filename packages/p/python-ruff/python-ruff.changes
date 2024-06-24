@@ -1,185 +1,231 @@
 -------------------------------------------------------------------
+Mon Jun 24 09:27:54 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.4.10
+ * Parser
+   * Implement re-lexing logic for better error recovery 
+ * Rule changes
+   * [flake8-copyright] Update CPY001 to check the first 4096 bytes instead of 1024 
+   * [pycodestyle] Update E999 to show all syntax errors instead of just the first one 
+ * Server
+  * Add tracing setup guide to Helix documentation 
+  * Add tracing setup guide to Neovim documentation 
+  * Defer notebook cell deletion to avoid an error message 
+ * Security
+  * Guard against malicious ecosystem comment artifacts
+
+-------------------------------------------------------------------
+Mon Jun 17 09:33:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.9:
+  * Preview features
+    + [pylint] Implement consider-dict-items (C0206) (#11688)
+    +  [refurb] Implement repeated-global (FURB154) (#11187)
+  * Rule changes
+    + [pycodestyle] Adapt fix for E203 to work identical to ruff
+      format (#10999)
+  * Formatter
+    + Fix formatter instability for lines only consisting of
+      zero-width characters (#11748)
+  * Server
+    + Add supported commands in server capabilities (#11850)
+    + Use real file path when available in ruff server (#11800)
+    + Improve error message when a command is run on an unavailable
+      document (#11823)
+    + Introduce the ruff.printDebugInformation command (#11831)
+    + Tracing system now respects log level and trace level, with
+      options to log to a file (#11747)
+    + Handle non-printable characters in diff view (#11687)
+  * Bug fixes
+    + [refurb] Avoid suggesting starmap when arguments are used
+      outside call (FURB140)
+    + [flake8-bugbear] Avoid panic in B909 when checking large
+      loop blocks (#11772)
+    + [refurb] Fix misbehavior of operator.itemgetter when getter
+      param is a tuple (FURB118) (#11774)
+
+-------------------------------------------------------------------
 Thu Jun  6 09:28:05 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update ruff: 
+- update ruff:
 * 0.4.8
  * Performance
     * Linter performance has been improved by around 10% on some microbenchmarks
-    *  by refactoring the lexer and parser to maintain synchronicity between them 
+    *  by refactoring the lexer and parser to maintain synchronicity between them
  * Preview features
-    * [flake8-bugbear] Implement return-in-generator (B901) 
-    * [flake8-pyi] Implement PYI063 
-    * [pygrep_hooks] Check blanket ignores via file-level pragmas (PGH004) 
+    * [flake8-bugbear] Implement return-in-generator (B901)
+    * [flake8-pyi] Implement PYI063
+    * [pygrep_hooks] Check blanket ignores via file-level pragmas (PGH004)
  * Rule changes
-    * [pyupgrade] Update UP035 for Python 3.13 and the latest version of typing_extensions 
-    * [numpy] Update NPY001 rule for NumPy 2.0 
+    * [pyupgrade] Update UP035 for Python 3.13 and the latest version of typing_extensions
+    * [numpy] Update NPY001 rule for NumPy 2.0
  * Server
-    * Formatting a document with syntax problems no longer spams a visible error popup 
+    * Formatting a document with syntax problems no longer spams a visible error popup
  * CLI
-    * Add RDJson support for --output-format flag 
+    * Add RDJson support for --output-format flag
  * Bug fixes
-    * [pyupgrade] Write empty string in lieu of panic when fixing UP032 
-    * [flake8-simplify] Simplify double negatives in SIM103 
-    * Ensure the expression generator adds a newline before type statements 
-    * Respect per-file ignores for blanket and redirected noqa rules 
+    * [pyupgrade] Write empty string in lieu of panic when fixing UP032
+    * [flake8-simplify] Simplify double negatives in SIM103
+    * Ensure the expression generator adds a newline before type statements
+    * Respect per-file ignores for blanket and redirected noqa rules
 * 0.4.7
  * Preview features
-    * [flake8-pyi] Implement PYI064 
-    * [flake8-pyi] Implement PYI066 
-    * [flake8-pyi] Implement PYI057 
-    * [pyflakes] Enable F822 in __init__.py files by default 
+    * [flake8-pyi] Implement PYI064
+    * [flake8-pyi] Implement PYI066
+    * [flake8-pyi] Implement PYI057
+    * [pyflakes] Enable F822 in __init__.py files by default
  * Formatter
-    * Fix incorrect placement of trailing stub function comments 
+    * Fix incorrect placement of trailing stub function comments
  * Server
-    * Respect file exclusions in ruff server 
-    * Add support for documents not exist on disk 
-    * Add Vim and Kate setup guide for ruff server 
+    * Respect file exclusions in ruff server
+    * Add support for documents not exist on disk
+    * Add Vim and Kate setup guide for ruff server
  * Bug fixes
-    * Avoid removing newlines between docstring headers and rST blocks 
-    * Infer indentation with imports when logical indent is absent 
-    * Use char index rather than position for indent slice 
-    * [flake8-comprehension] Strip parentheses around generators in C400 
-    * Mark repeated-isinstance-calls as unsafe on Python 3.10 and later 
+    * Avoid removing newlines between docstring headers and rST blocks
+    * Infer indentation with imports when logical indent is absent
+    * Use char index rather than position for indent slice
+    * [flake8-comprehension] Strip parentheses around generators in C400
+    * Mark repeated-isinstance-calls as unsafe on Python 3.10 and later
 * 0.4.6
  * Breaking changes
-    * Use project-relative paths when calculating GitLab fingerprints 
+    * Use project-relative paths when calculating GitLab fingerprints
  * Preview features
-    * [flake8-async] Sleep with >24 hour interval should usually sleep forever (ASYNC116) 
+    * [flake8-async] Sleep with >24 hour interval should usually sleep forever (ASYNC116)
  * Rule changes
-    * [numpy] Add missing functions to NumPy 2.0 migration rule 
-    * [mccabe] Consider irrefutable pattern similar to if .. else for C901 
-    * Consider match-case statements for C901, PLR0912, and PLR0915 
-    * Remove empty strings when converting to f-string (UP032) 
-    * [flake8-bandit] request-without-timeout should warn for requests.request 
-    * [flake8-self] Ignore sunder accesses in flake8-self rules 
-    * [pyupgrade] Lint for TypeAliasType usages (UP040) 
+    * [numpy] Add missing functions to NumPy 2.0 migration rule
+    * [mccabe] Consider irrefutable pattern similar to if .. else for C901
+    * Consider match-case statements for C901, PLR0912, and PLR0915
+    * Remove empty strings when converting to f-string (UP032)
+    * [flake8-bandit] request-without-timeout should warn for requests.request
+    * [flake8-self] Ignore sunder accesses in flake8-self rules
+    * [pyupgrade] Lint for TypeAliasType usages (UP040)
  * Server
-    * Respect excludes in ruff server configuration discovery 
-    * Use default settings if initialization options is empty or not provided 
-    * ruff server correctly treats .pyi files as stub files 
-    * ruff server searches for configuration in parent directories 
-    * ruff server: An empty code action filter no longer returns notebook source actions 
+    * Respect excludes in ruff server configuration discovery
+    * Use default settings if initialization options is empty or not provided
+    * ruff server correctly treats .pyi files as stub files
+    * ruff server searches for configuration in parent directories
+    * ruff server: An empty code action filter no longer returns notebook source actions
  * Bug fixes
-    * [flake8-logging-format] Fix autofix title in logging-warn (G010) 
-    * [refurb] Avoid recommending operator.itemgetter with dependence on lambda arguments 
-    * [flake8-simplify] Avoid recommending context manager in __enter__ implementations 
-    * Create intermediary directories for --output-file 
-    * Propagate reads on global variables 
-    * Treat all singledispatch arguments as runtime-required 
+    * [flake8-logging-format] Fix autofix title in logging-warn (G010)
+    * [refurb] Avoid recommending operator.itemgetter with dependence on lambda arguments
+    * [flake8-simplify] Avoid recommending context manager in __enter__ implementations
+    * Create intermediary directories for --output-file
+    * Propagate reads on global variables
+    * Treat all singledispatch arguments as runtime-required
 * 0.4.5
     * Ruff's language server is now in Beta
  * Rule changes
-    * [flake8-future-annotations] Reword future-rewritable-type-annotation (FA100) message 
-    * [pycodestyle] Consider soft keywords for E27 rules 
-    * [pyflakes] Recommend adding unused import bindings to __all__ 
-    * [pyflakes] Update documentation and deprecate ignore_init_module_imports 
-    * [pyupgrade] Mark quotes as unnecessary for non-evaluated annotations 
+    * [flake8-future-annotations] Reword future-rewritable-type-annotation (FA100) message
+    * [pycodestyle] Consider soft keywords for E27 rules
+    * [pyflakes] Recommend adding unused import bindings to __all__
+    * [pyflakes] Update documentation and deprecate ignore_init_module_imports
+    * [pyupgrade] Mark quotes as unnecessary for non-evaluated annotations
  * Formatter
-    * Avoid multiline quotes warning with quote-style = preserve 
+    * Avoid multiline quotes warning with quote-style = preserve
  * Server
-    * Support Jupyter Notebook files 
-    * Support noqa comment code actions 
-    * Fix automatic configuration reloading 
-    * Fix several issues with configuration in Neovim and Helix 
+    * Support Jupyter Notebook files
+    * Support noqa comment code actions
+    * Fix automatic configuration reloading
+    * Fix several issues with configuration in Neovim and Helix
  * CLI
-    * Add --output-format as a CLI option for ruff config 
+    * Add --output-format as a CLI option for ruff config
  * Bug fixes
-    * Avoid PLE0237 for property with setter 
-    * Avoid TCH005 for if stmt with elif/else block 
-    * Avoid flagging __future__ annotations as required for non-evaluated type annotations 
-    * Check for ruff executable in 'bin' directory as installed by 'pip install --target'. 
-    * Sort edits prior to deduplicating in quotation fix 
-    * Treat escaped newline as valid sequence 
-    * [flake8-pie] Preserve parentheses in unnecessary-dict-kwargs 
-    * [pylint] Ignore __slots__ with dynamic values 
-    * [pylint] Remove try body from branch counting 
-    * [refurb] Respect operator precedence in FURB110 
+    * Avoid PLE0237 for property with setter
+    * Avoid TCH005 for if stmt with elif/else block
+    * Avoid flagging __future__ annotations as required for non-evaluated type annotations
+    * Check for ruff executable in 'bin' directory as installed by 'pip install --target'.
+    * Sort edits prior to deduplicating in quotation fix
+    * Treat escaped newline as valid sequence
+    * [flake8-pie] Preserve parentheses in unnecessary-dict-kwargs
+    * [pylint] Ignore __slots__ with dynamic values
+    * [pylint] Remove try body from branch counting
+    * [refurb] Respect operator precedence in FURB110
  * Documentation
-    * Add --preview to the README 
-    * Add Python 3.13 to list of allowed Python versions 
-    * Simplify Neovim setup documentation 
-    * Update CONTRIBUTING.md to reflect the new parser 
-    * Update server documentation with new migration guide 
-    * [pycodestyle] Clarify motivation for E713 and E714 
-    * [pyflakes] Update docs to describe WAI behavior (F541) 
-    * [pylint] Clearly indicate what is counted as a branch 
+    * Add --preview to the README
+    * Add Python 3.13 to list of allowed Python versions
+    * Simplify Neovim setup documentation
+    * Update CONTRIBUTING.md to reflect the new parser
+    * Update server documentation with new migration guide
+    * [pycodestyle] Clarify motivation for E713 and E714
+    * [pyflakes] Update docs to describe WAI behavior (F541)
+    * [pylint] Clearly indicate what is counted as a branch
 
 -------------------------------------------------------------------
 Mon May 13 11:08:03 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.4.4
  * Preview features
-   * [pycodestyle] Ignore end-of-line comments when determining blank line rules 
-   * [pylint] Detect pathlib.Path.open calls in unspecified-encoding (PLW1514) 
-   * [flake8-pyi] Implement PYI059 (generic-not-last-base-class) 
-   * [flake8-pyi] Implement PYI062 (duplicate-literal-member) 
+   * [pycodestyle] Ignore end-of-line comments when determining blank line rules
+   * [pylint] Detect pathlib.Path.open calls in unspecified-encoding (PLW1514)
+   * [flake8-pyi] Implement PYI059 (generic-not-last-base-class)
+   * [flake8-pyi] Implement PYI062 (duplicate-literal-member)
  * Rule changes
-   * [flake8-boolean-trap] Allow passing booleans as positional-only arguments in code such as set(True) 
-   * [flake8-bugbear] Ignore enum classes in cached-instance-method (B019) 
+   * [flake8-boolean-trap] Allow passing booleans as positional-only arguments in code such as set(True)
+   * [flake8-bugbear] Ignore enum classes in cached-instance-method (B019)
  * Server
-   * Expand tildes when resolving Ruff server configuration file 
-   * Fix ruff server hanging after Neovim closes 
-   * Editor settings are used by default if no file-based configuration exists 
+   * Expand tildes when resolving Ruff server configuration file
+   * Fix ruff server hanging after Neovim closes
+   * Editor settings are used by default if no file-based configuration exists
  * Bug fixes
-   * [pylint] Consider with statements for too-many-branches (PLR0912) 
-   * [flake8-blind-except, tryceratops] Respect logged and re-raised expressions in nested statements (BLE001, TRY201) 
-   * Recognise assignments such as __all__ = builtins.list(["foo", "bar"]) as valid __all__ definitions  
+   * [pylint] Consider with statements for too-many-branches (PLR0912)
+   * [flake8-blind-except, tryceratops] Respect logged and re-raised expressions in nested statements (BLE001, TRY201)
+   * Recognise assignments such as __all__ = builtins.list(["foo", "bar"]) as valid __all__ definitions
 
 -------------------------------------------------------------------
 Mon May  6 12:06:13 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.4.3 
+- update to 0.4.3
  * Enhancements
-   * Add support for PEP 696 syntax 
+   * Add support for PEP 696 syntax
  * Preview features
-   * [refurb] Use function range for reimplemented-operator diagnostics 
-   * [refurb] Ignore methods in reimplemented-operator (FURB118) 
-   * [refurb] Implement fstring-number-format (FURB116) 
-   * [ruff] Implement redirected-noqa (RUF101) 
-   * [pyflakes] Distinguish between first-party and third-party imports for fix suggestions 
+   * [refurb] Use function range for reimplemented-operator diagnostics
+   * [refurb] Ignore methods in reimplemented-operator (FURB118)
+   * [refurb] Implement fstring-number-format (FURB116)
+   * [ruff] Implement redirected-noqa (RUF101)
+   * [pyflakes] Distinguish between first-party and third-party imports for fix suggestions
  * Rule changes
-   * [flake8-bugbear] Ignore non-abstract class attributes when enforcing B024 
-   * [flake8-logging] Include inline instantiations when detecting loggers 
-   * [pylint] Also emit PLR0206 for properties with variadic parameters 
-   * [ruff] Detect duplicate codes as part of unused-noqa (RUF100) 
-   * [flake8-pyi] Allow for overloaded __exit__ and __aexit__ definitions (PYI036) 
-   * [pyupgrade] Catch usages of "%s" % var and provide an unsafe fix (UP031) 
-   * [refurb] Implement new rule that suggests min/max over sorted() (FURB192) 
+   * [flake8-bugbear] Ignore non-abstract class attributes when enforcing B024
+   * [flake8-logging] Include inline instantiations when detecting loggers
+   * [pylint] Also emit PLR0206 for properties with variadic parameters
+   * [ruff] Detect duplicate codes as part of unused-noqa (RUF100)
+   * [flake8-pyi] Allow for overloaded __exit__ and __aexit__ definitions (PYI036)
+   * [pyupgrade] Catch usages of "%s" % var and provide an unsafe fix (UP031)
+   * [refurb] Implement new rule that suggests min/max over sorted() (FURB192)
  * Formatter
-   * Avoid multiline expression if format specifier is present 
+   * Avoid multiline expression if format specifier is present
  * LSP
-   * Write ruff server setup guide for Helix 
-   * ruff server no longer hangs after shutdown 
-   * ruff server reads from a configuration TOML file in the user configuration directory if no local configuration exists 
-   * ruff server respects per-file-ignores configuration 
-   * ruff server: Support a custom TOML configuration file 
-   * ruff server: Support setting to prioritize project configuration over editor configuration 
-   * Fix an issue with missing diagnostics for Neovim and Helix 
-   * Implement hover documentation for noqa codes 
-   * Introduce common Ruff configuration options with new server settings 
+   * Write ruff server setup guide for Helix
+   * ruff server no longer hangs after shutdown
+   * ruff server reads from a configuration TOML file in the user configuration directory if no local configuration exists
+   * ruff server respects per-file-ignores configuration
+   * ruff server: Support a custom TOML configuration file
+   * ruff server: Support setting to prioritize project configuration over editor configuration
+   * Fix an issue with missing diagnostics for Neovim and Helix
+   * Implement hover documentation for noqa codes
+   * Introduce common Ruff configuration options with new server settings
  * Bug fixes
-   * Avoid debug assertion around NFKC renames 
-   * [pyflakes] Prioritize redefined-while-unused over unused-import 
-   * [ruff] Respect async expressions in comprehension bodies 
-   * [pygrep_hooks] Fix blanket-noqa panic when last line has noqa with no newline (PGH004) 
-   * [perflint] Ignore list-copy recommendations for async for loops 
-   * [pyflakes] Improve invalid-print-syntax documentation 
-   * Use macos-12 for building release wheels to enable macOS 11 compatibility 
-   * [flake8-blind-expect] Allow raise from in BLE001 
-   * [flake8-pyi] Allow simple assignments to None in enum class scopes (PYI026) 
-   * [flake8-simplify] Avoid raising SIM911 for non-zip attribute calls 
-   * [refurb] Avoid operator.itemgetter suggestion for single-item tuple 
-   * [ruff] Respect per-file-ignores for RUF100 with no other diagnostics 
-   * [ruff] Fix async comprehension false positive (RUF029) 
+   * Avoid debug assertion around NFKC renames
+   * [pyflakes] Prioritize redefined-while-unused over unused-import
+   * [ruff] Respect async expressions in comprehension bodies
+   * [pygrep_hooks] Fix blanket-noqa panic when last line has noqa with no newline (PGH004)
+   * [perflint] Ignore list-copy recommendations for async for loops
+   * [pyflakes] Improve invalid-print-syntax documentation
+   * Use macos-12 for building release wheels to enable macOS 11 compatibility
+   * [flake8-blind-expect] Allow raise from in BLE001
+   * [flake8-pyi] Allow simple assignments to None in enum class scopes (PYI026)
+   * [flake8-simplify] Avoid raising SIM911 for non-zip attribute calls
+   * [refurb] Avoid operator.itemgetter suggestion for single-item tuple
+   * [ruff] Respect per-file-ignores for RUF100 with no other diagnostics
+   * [ruff] Fix async comprehension false positive (RUF029)
  * Performance
-   * Avoid allocations for isort module names 
-   * Build a separate ARM wheel for macOS 
-   * Use matchit to resolve per-file settings 
+   * Avoid allocations for isort module names
+   * Build a separate ARM wheel for macOS
+   * Use matchit to resolve per-file settings
  * Documentation
-   * [flake8-bugbear] Document explicitly disabling strict zip (B905) 
-   * [flake8-type-checking] Mention lint.typing-modules in TCH001, TCH002, and TCH003 
-   * [isort] Improve documentation around custom isort sections 
-   * [pylint] Fix documentation oversight for invalid-X-returns 
+   * [flake8-bugbear] Document explicitly disabling strict zip (B905)
+   * [flake8-type-checking] Mention lint.typing-modules in TCH001, TCH002, and TCH003
+   * [isort] Improve documentation around custom isort sections
+   * [pylint] Fix documentation oversight for invalid-X-returns
 
 -------------------------------------------------------------------
 Tue Apr 23 08:02:10 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -195,240 +241,240 @@ Tue Apr 23 08:02:10 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
    * Automatically reloads your project configuration when you change it
    * To setup ruff server with your editor, refer to the README.md.
  * Preview features
-   * [pylint] Implement invalid-hash-returned (PLE0309) 
-   * [pylint] Implement invalid-index-returned (PLE0305) 
-   * [pycodestyle] Do not trigger E3 rules on defs following a function/method with a dummy body 
-   * [pylint] Implement invalid-bytes-returned (E0308) 
-   * [pylint] Implement invalid-length-returned (E0303) 
-   * [pylint] Implement self-cls-assignment (W0642) 
-   * [pylint] Omit stubs from invalid-bool and invalid-str-return-type 
-   * [ruff] New rule unused-async (RUF029) to detect unneeded async keywords on functions 
+   * [pylint] Implement invalid-hash-returned (PLE0309)
+   * [pylint] Implement invalid-index-returned (PLE0305)
+   * [pycodestyle] Do not trigger E3 rules on defs following a function/method with a dummy body
+   * [pylint] Implement invalid-bytes-returned (E0308)
+   * [pylint] Implement invalid-length-returned (E0303)
+   * [pylint] Implement self-cls-assignment (W0642)
+   * [pylint] Omit stubs from invalid-bool and invalid-str-return-type
+   * [ruff] New rule unused-async (RUF029) to detect unneeded async keywords on functions
  * Rule changes
-   * [flake8-bandit] Allow urllib.request.urlopen calls with static Request argument (S310) 
-   * [flake8-bugbear] Treat raise NotImplemented-only bodies as stub functions (B006) 
-   * [flake8-slots] Respect same-file Enum subclasses (SLOT000) 
-   * [pylint] Support inverted comparisons (PLR1730) 
+   * [flake8-bandit] Allow urllib.request.urlopen calls with static Request argument (S310)
+   * [flake8-bugbear] Treat raise NotImplemented-only bodies as stub functions (B006)
+   * [flake8-slots] Respect same-file Enum subclasses (SLOT000)
+   * [pylint] Support inverted comparisons (PLR1730)
  * Linter
-   * Improve handling of builtin symbols in linter rules 
-   * Improve display of rules in --show-settings 
-   * Improve inference capabilities of the BuiltinTypeChecker 
-   * Resolve classes and functions relative to script name 
-   * Improve performance of RuleTable::any_enabled 
+   * Improve handling of builtin symbols in linter rules
+   * Improve display of rules in --show-settings
+   * Improve inference capabilities of the BuiltinTypeChecker
+   * Resolve classes and functions relative to script name
+   * Improve performance of RuleTable::any_enabled
  * Server
   * This section is devoted to updates for our new language server, written in Rust.
-   * Enable ruff-specific source actions 
-   * Refreshes diagnostics for open files when file configuration is changed 
-   * Important errors are now shown as popups 
-   * Introduce settings for directly configuring the linter and formatter 
-   * Resolve configuration for each document individually 
-   * Write a setup guide for Neovim 
+   * Enable ruff-specific source actions
+   * Refreshes diagnostics for open files when file configuration is changed
+   * Important errors are now shown as popups
+   * Introduce settings for directly configuring the linter and formatter
+   * Resolve configuration for each document individually
+   * Write a setup guide for Neovim
  * Configuration
-   * Add RUFF_OUTPUT_FILE environment variable support 
+   * Add RUFF_OUTPUT_FILE environment variable support
  * Bug fixes
-   * [pylint] Allow NoReturn-like functions for __str__, __len__, etc. (PLE0307) 
-   * Parser: Use empty range when there's "gap" in token source 
-   * [ruff] Ignore stub functions in unused-async (RUF029) 
-   * Parser: Expect indented case block instead of match stmt 
-   * Avoid non-augmented-assignment for reversed, non-commutative operators (PLR6104) 
-   * Limit commutative non-augmented-assignments to primitive data types (PLR6104) 
-   * Respect per-file-ignores for RUF100 on blanket # noqa 
-   * Consider if expression for parenthesized with items parsing 
-   * Consider binary expr for parenthesized with items parsing 
-   * Reset FOR_TARGET context for all kinds of parentheses 
+   * [pylint] Allow NoReturn-like functions for __str__, __len__, etc. (PLE0307)
+   * Parser: Use empty range when there's "gap" in token source
+   * [ruff] Ignore stub functions in unused-async (RUF029)
+   * Parser: Expect indented case block instead of match stmt
+   * Avoid non-augmented-assignment for reversed, non-commutative operators (PLR6104)
+   * Limit commutative non-augmented-assignments to primitive data types (PLR6104)
+   * Respect per-file-ignores for RUF100 on blanket # noqa
+   * Consider if expression for parenthesized with items parsing
+   * Consider binary expr for parenthesized with items parsing
+   * Reset FOR_TARGET context for all kinds of parentheses
 
 -------------------------------------------------------------------
 Fri Apr 12 08:55:20 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.3.7
  * Preview features
-   * [flake8-bugbear] Implement loop-iterator-mutation (B909) 
-   * [pylint] Implement rule to prefer augmented assignment (PLR6104) 
-   * [pylint] Implement bad-staticmethod-argument (PLW0211) 
-   * [pylint] Implement if-stmt-min-max (PLR1730, PLR1731) 
-   * [pyupgrade] Replace str,Enum multiple inheritance with StrEnum UP042 
-   * [refurb] Implement if-expr-instead-of-or-operator (FURB110) 
-   * [refurb] Implement int-on-sliced-str (FURB166) 
-   * [refurb] Implement write-whole-file (FURB103) 
-   * [refurb] Support itemgetter in reimplemented-operator (FURB118) 
-   * [flake8_comprehensions] Add sum/min/max to unnecessary comprehension check (C419) 
+   * [flake8-bugbear] Implement loop-iterator-mutation (B909)
+   * [pylint] Implement rule to prefer augmented assignment (PLR6104)
+   * [pylint] Implement bad-staticmethod-argument (PLW0211)
+   * [pylint] Implement if-stmt-min-max (PLR1730, PLR1731)
+   * [pyupgrade] Replace str,Enum multiple inheritance with StrEnum UP042
+   * [refurb] Implement if-expr-instead-of-or-operator (FURB110)
+   * [refurb] Implement int-on-sliced-str (FURB166)
+   * [refurb] Implement write-whole-file (FURB103)
+   * [refurb] Support itemgetter in reimplemented-operator (FURB118)
+   * [flake8_comprehensions] Add sum/min/max to unnecessary comprehension check (C419)
  * Rule changes
-   * [pydocstyle] Require capitalizing docstrings where the first sentence is a single word (D403) 
-   * [pycodestyle] Ignore annotated lambdas in class scopes (E731) 
-   * [flake8-pyi] Various improvements to PYI034 
-   * [flake8-slots] Flag subclasses of call-based typing.NamedTuples as well as subclasses of collections.namedtuple() (SLOT002) 
-   * [pyflakes] Allow forward references in class bases in stub files (F821) 
-   * [pygrep-hooks] Improve blanket-noqa error message (PGH004) 
+   * [pydocstyle] Require capitalizing docstrings where the first sentence is a single word (D403)
+   * [pycodestyle] Ignore annotated lambdas in class scopes (E731)
+   * [flake8-pyi] Various improvements to PYI034
+   * [flake8-slots] Flag subclasses of call-based typing.NamedTuples as well as subclasses of collections.namedtuple() (SLOT002)
+   * [pyflakes] Allow forward references in class bases in stub files (F821)
+   * [pygrep-hooks] Improve blanket-noqa error message (PGH004)
  * CLI
-   * Support FORCE_COLOR env var 
+   * Support FORCE_COLOR env var
  * Configuration
-   * Support negated patterns in [extend-]per-file-ignores 
+   * Support negated patterns in [extend-]per-file-ignores
  * Bug fixes
-   * Avoid TOCTOU errors in cache initialization 
-   * [pylint] Recode nan-comparison rule to W0177 
-   * [pylint] Reverse min-max logic in if-stmt-min-max 
-   * [flake8-import-conventions] Accept non-aliased (but correct) import in unconventional-import-alias (ICN001) 
-   * [flake8-quotes] Add semantic model flag when inside f-string replacement field 
-   * [pep8-naming] Recursively resolve TypeDicts for N815 violations 
-   * [flake8-quotes] Respect Q00* ignores in flake8-quotes rules 
-   * [flake8-simplify] Show negated condition in needless-bool diagnostics (SIM103) 
-   * [ruff] Use within-scope shadowed bindings in asyncio-dangling-task (RUF006) 
-   * [flake8-pytest-style] Fix single-tuple conversion in pytest-parametrize-values-wrong-type (PT007) 
-   * [flake8-return] Ignore assignments to annotated variables in unnecessary-assign (RET504) 
-   * [refurb] Do not allow any keyword arguments for read-whole-file in rb mode (FURB101) 
-   * [pylint] Don't recommend decorating staticmethods with @singledispatch (PLE1519, PLE1520) 
-   * [pydocstyle] Use section name range for all section-related docstring diagnostics 
-   * Respect # noqa directives on __all__ openers 
+   * Avoid TOCTOU errors in cache initialization
+   * [pylint] Recode nan-comparison rule to W0177
+   * [pylint] Reverse min-max logic in if-stmt-min-max
+   * [flake8-import-conventions] Accept non-aliased (but correct) import in unconventional-import-alias (ICN001)
+   * [flake8-quotes] Add semantic model flag when inside f-string replacement field
+   * [pep8-naming] Recursively resolve TypeDicts for N815 violations
+   * [flake8-quotes] Respect Q00* ignores in flake8-quotes rules
+   * [flake8-simplify] Show negated condition in needless-bool diagnostics (SIM103)
+   * [ruff] Use within-scope shadowed bindings in asyncio-dangling-task (RUF006)
+   * [flake8-pytest-style] Fix single-tuple conversion in pytest-parametrize-values-wrong-type (PT007)
+   * [flake8-return] Ignore assignments to annotated variables in unnecessary-assign (RET504)
+   * [refurb] Do not allow any keyword arguments for read-whole-file in rb mode (FURB101)
+   * [pylint] Don't recommend decorating staticmethods with @singledispatch (PLE1519, PLE1520)
+   * [pydocstyle] Use section name range for all section-related docstring diagnostics
+   * Respect # noqa directives on __all__ openers
 
 -------------------------------------------------------------------
 Tue Apr  9 21:33:19 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.3.5
  * Preview features
-   * [pylint] Implement modified-iterating-set (E4703) 
-   * [refurb] Implement for-loop-set-mutations (FURB142) 
-   * [refurb] Implement unnecessary-from-float (FURB164) 
-   * [refurb] Implement verbose-decimal-constructor (FURB157) 
+   * [pylint] Implement modified-iterating-set (E4703)
+   * [refurb] Implement for-loop-set-mutations (FURB142)
+   * [refurb] Implement unnecessary-from-float (FURB164)
+   * [refurb] Implement verbose-decimal-constructor (FURB157)
  * Rule changes
-   * [flake8-comprehensions] Handled special case for C401 which also matches C416 
-   * [flake8-pyi] Mark unaliased-collections-abc-set-import fix as "safe" for more cases in stub files (PYI025) 
-   * [numpy] Add row_stack to NumPy 2.0 migration rule 
-   * [pycodestyle] Allow cell magics before an import (E402) 
-   * [pycodestyle] Avoid blank line rules for the first logical line in cell 
+   * [flake8-comprehensions] Handled special case for C401 which also matches C416
+   * [flake8-pyi] Mark unaliased-collections-abc-set-import fix as "safe" for more cases in stub files (PYI025)
+   * [numpy] Add row_stack to NumPy 2.0 migration rule
+   * [pycodestyle] Allow cell magics before an import (E402)
+   * [pycodestyle] Avoid blank line rules for the first logical line in cell
  * Configuration
-   * Respected nested namespace packages 
-   * [flake8-boolean-trap] Add setting for user defined allowed boolean trap 
+   * Respected nested namespace packages
+   * [flake8-boolean-trap] Add setting for user defined allowed boolean trap
  * Bug fixes
-   * Correctly handle references in __all__ definitions when renaming symbols in autofixes 
-   * Track ranges of names inside __all__ definitions 
-   * [flake8-bugbear] Avoid false positive for usage after continue (B031) 
-   * [flake8-copyright] Accept commas in default copyright pattern 
-   * [flake8-datetimez] Allow f-strings with %z for DTZ007 
-   * [flake8-pytest-style] Fix PT014 autofix for last item in list 
-   * [flake8-quotes] Ignore Q000, Q001 when string is inside forward ref 
-   * [isort] Always place non-relative imports after relative imports 
-   * [isort] Respect Unicode characters in import sorting 
-   * [pyflakes] Fix F821 false negatives when from __future__ import annotations is active (attempt 2) 
-   * [pyflakes] Make unnecessary-lambda an always-unsafe fix 
-   * [pylint] Fixed false-positive on the rule PLW1641 (eq-without-hash) 
-   * [ruff] Fix panic in unused # noqa removal with multi-byte space (RUF100) 
+   * Correctly handle references in __all__ definitions when renaming symbols in autofixes
+   * Track ranges of names inside __all__ definitions
+   * [flake8-bugbear] Avoid false positive for usage after continue (B031)
+   * [flake8-copyright] Accept commas in default copyright pattern
+   * [flake8-datetimez] Allow f-strings with %z for DTZ007
+   * [flake8-pytest-style] Fix PT014 autofix for last item in list
+   * [flake8-quotes] Ignore Q000, Q001 when string is inside forward ref
+   * [isort] Always place non-relative imports after relative imports
+   * [isort] Respect Unicode characters in import sorting
+   * [pyflakes] Fix F821 false negatives when from __future__ import annotations is active (attempt 2)
+   * [pyflakes] Make unnecessary-lambda an always-unsafe fix
+   * [pylint] Fixed false-positive on the rule PLW1641 (eq-without-hash)
+   * [ruff] Fix panic in unused # noqa removal with multi-byte space (RUF100)
  * Documentation
-   * Add PR title format to CONTRIBUTING.md 
-   * Fix list markup to include blank lines required 
-   * Put flake8-logging next to the other flake8 plugins in registry 
-   * [flake8-bandit] Update warning message for rule S305 to address insecure block cipher mode use 
-   * [flake8-bugbear] Document use of anonymous assignment in useless-expression 
-   * [flake8-datetimez] Clarify error messages and docs for DTZ rules 
-   * [pycodestyle] Use same before vs. after numbers for space-around-operator 
-   * [ruff] Change quadratic-list-summation docs to use iadd consistently 
+   * Add PR title format to CONTRIBUTING.md
+   * Fix list markup to include blank lines required
+   * Put flake8-logging next to the other flake8 plugins in registry
+   * [flake8-bandit] Update warning message for rule S305 to address insecure block cipher mode use
+   * [flake8-bugbear] Document use of anonymous assignment in useless-expression
+   * [flake8-datetimez] Clarify error messages and docs for DTZ rules
+   * [pycodestyle] Use same before vs. after numbers for space-around-operator
+   * [ruff] Change quadratic-list-summation docs to use iadd consistently
 
 -------------------------------------------------------------------
 Fri Mar 22 10:15:55 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update ruff to 0.3.4
  * Preview features
-   * [flake8-simplify] Detect implicit else cases in needless-bool (SIM103) 
-   * [pylint] Implement nan-comparison (PLW0117) 
-   * [pylint] Implement nonlocal-and-global (E115) 
-   * [pylint] Implement singledispatchmethod-function (PLE5120) 
-   * [refurb] Implement list-reverse-copy (FURB187) 
+   * [flake8-simplify] Detect implicit else cases in needless-bool (SIM103)
+   * [pylint] Implement nan-comparison (PLW0117)
+   * [pylint] Implement nonlocal-and-global (E115)
+   * [pylint] Implement singledispatchmethod-function (PLE5120)
+   * [refurb] Implement list-reverse-copy (FURB187)
  * Rule changes
-   * [flake8-pytest-style] Add automatic fix for pytest-parametrize-values-wrong-type (PT007) 
-   * [pycodestyle] Allow SPDX license headers to exceed the line length (E501) 
+   * [flake8-pytest-style] Add automatic fix for pytest-parametrize-values-wrong-type (PT007)
+   * [pycodestyle] Allow SPDX license headers to exceed the line length (E501)
  * Formatter
-   * Fix unstable formatting for trailing subscript end-of-line comment 
+   * Fix unstable formatting for trailing subscript end-of-line comment
  * Bug fixes
-   * Avoid code comment detection in PEP 723 script tags 
-   * Avoid incorrect tuple transformation in single-element case (C409) 
-   * Bug fix: Prevent fully defined links name from being reformatted 
-   * Consider raw source code for W605 
-   * Docs: Link inline settings when not part of options section 
-   * Don't treat annotations as redefinitions in .pyi files 
-   * Fix E231 bug: Inconsistent catch compared to pycodestyle, such as when dict nested in list 
-   * Fix pylint upstream categories not showing in docs 
-   * Add missing Options references to blank line docs 
-   * 'Revert "F821: Fix false negatives in .py files when from __future__ import annotations is active "' 
-   * Apply NFKC normalization to unicode identifiers in the lexer 
-   * Avoid failures due to non-deterministic binding ordering 
-   * [flake8-bugbear] Allow tuples of exceptions (B030) 
-   * [flake8-quotes] Avoid syntax errors due to invalid quotes (Q000, Q002) 
+   * Avoid code comment detection in PEP 723 script tags
+   * Avoid incorrect tuple transformation in single-element case (C409)
+   * Bug fix: Prevent fully defined links name from being reformatted
+   * Consider raw source code for W605
+   * Docs: Link inline settings when not part of options section
+   * Don't treat annotations as redefinitions in .pyi files
+   * Fix E231 bug: Inconsistent catch compared to pycodestyle, such as when dict nested in list
+   * Fix pylint upstream categories not showing in docs
+   * Add missing Options references to blank line docs
+   * 'Revert "F821: Fix false negatives in .py files when from __future__ import annotations is active "'
+   * Apply NFKC normalization to unicode identifiers in the lexer
+   * Avoid failures due to non-deterministic binding ordering
+   * [flake8-bugbear] Allow tuples of exceptions (B030)
+   * [flake8-quotes] Avoid syntax errors due to invalid quotes (Q000, Q002)
 
 -------------------------------------------------------------------
 Mon Mar 18 13:45:45 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.3.3
  * Preview features
-   * [flake8-bandit]: Implement S610 rule 
-   * [pycodestyle] Implement blank-line-at-end-of-file (W391) 
-   * [pycodestyle] Implement redundant-backslash (E502) 
-   * [pylint] - implement redeclared-assigned-name (W0128) 
+   * [flake8-bandit]: Implement S610 rule
+   * [pycodestyle] Implement blank-line-at-end-of-file (W391)
+   * [pycodestyle] Implement redundant-backslash (E502)
+   * [pylint] - implement redeclared-assigned-name (W0128)
  * Rule changes
-   * [flake8_comprehensions] Handled special case for C400 which also matches C416 
-   * [flake8-bandit] Implement upstream updates for S311, S324 and S605 
-   * [pyflakes] Remove F401 fix for __init__ imports by default and allow opt-in to unsafe fix 
-   * [pylint] Implement invalid-bool-return-type (E304) 
-   * [pylint] Include builtin warnings in useless-exception-statement (PLW0133) 
+   * [flake8_comprehensions] Handled special case for C400 which also matches C416
+   * [flake8-bandit] Implement upstream updates for S311, S324 and S605
+   * [pyflakes] Remove F401 fix for __init__ imports by default and allow opt-in to unsafe fix
+   * [pylint] Implement invalid-bool-return-type (E304)
+   * [pylint] Include builtin warnings in useless-exception-statement (PLW0133)
  * CLI
-   * Add message on success to ruff check 
+   * Add message on success to ruff check
  * Bug fixes
-   * [PIE970] Allow trailing ellipsis in typing.TYPE_CHECKING 
-   * Avoid TRIO115 if the argument is a variable 
-   * [F811] Avoid removing shadowed imports that point to different symbols 
-   * Fix F821 and F822 false positives in .pyi files 
-   * Fix F821 false negatives in .py files when from __future__ import annotations is active 
-   * Fix case where Indexer fails to identify continuation preceded by newline #10351 
-   * Sort hash maps in Settings display 
-   * Track conditional deletions in the semantic model 
-   * [C413] Wrap expressions in parentheses when negating 
-   * [pycodestyle] Do not ignore lines before the first logical line in blank lines rules. 
-   * [pycodestyle] Do not trigger E225 and E275 when the next token is a ')' 
-   * [pylint] Avoid false-positive slot non-assignment for __dict__ (PLE0237) 
-   * Gate f-string struct size test for Rustc < 1.76 
+   * [PIE970] Allow trailing ellipsis in typing.TYPE_CHECKING
+   * Avoid TRIO115 if the argument is a variable
+   * [F811] Avoid removing shadowed imports that point to different symbols
+   * Fix F821 and F822 false positives in .pyi files
+   * Fix F821 false negatives in .py files when from __future__ import annotations is active
+   * Fix case where Indexer fails to identify continuation preceded by newline #10351
+   * Sort hash maps in Settings display
+   * Track conditional deletions in the semantic model
+   * [C413] Wrap expressions in parentheses when negating
+   * [pycodestyle] Do not ignore lines before the first logical line in blank lines rules.
+   * [pycodestyle] Do not trigger E225 and E275 when the next token is a ')'
+   * [pylint] Avoid false-positive slot non-assignment for __dict__ (PLE0237)
+   * Gate f-string struct size test for Rustc < 1.76
  * Documentation
-   * Use ruff.toml format in README 
-   * [RUF008] Make it clearer that a mutable default in a dataclass is only valid if it is typed as a ClassVar 
-   * [pylint] Extend docs and test in invalid-str-return-type (E307) 
-   * Remove . from check and format commands 
+   * Use ruff.toml format in README
+   * [RUF008] Make it clearer that a mutable default in a dataclass is only valid if it is typed as a ClassVar
+   * [pylint] Extend docs and test in invalid-str-return-type (E307)
+   * Remove . from check and format commands
 
 -------------------------------------------------------------------
 Mon Mar 11 08:52:49 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.3.2
  * Preview features
-   * Improve single-with item formatting for Python 3.8 or older 
+   * Improve single-with item formatting for Python 3.8 or older
  * Rule changes
-   * [pyupgrade] Allow fixes for f-string rule regardless of line length (UP032) 
-   * [pycodestyle] Include actual conditions in E712 diagnostics 
+   * [pyupgrade] Allow fixes for f-string rule regardless of line length (UP032)
+   * [pycodestyle] Include actual conditions in E712 diagnostics
  * Bug fixes
-   * Fix trailing kwargs end of line comment after slash 
-   * Fix unstable with items formatting 
-   * Avoid repeating function calls in f-string conversions 
-   * Fix E203 false positive for slices in format strings 
-   * Fix incorrect Parameter range for *args and **kwargs 
-   * Treat typing.Annotated subscripts as type definitions 
+   * Fix trailing kwargs end of line comment after slash
+   * Fix unstable with items formatting
+   * Avoid repeating function calls in f-string conversions
+   * Fix E203 false positive for slices in format strings
+   * Fix incorrect Parameter range for *args and **kwargs
+   * Treat typing.Annotated subscripts as type definitions
  * 0.3.1
  * Preview features
-   * [pycodestyle] Fix E301 not triggering on decorated methods. 
-   * [pycodestyle] Respect isort settings in blank line rules (E3*) 
-   * [pycodestyle] Make blank lines in typing stub files optional (E3*) 
-   * [pylint] Implement singledispatch-method (E1519) 
-   * [pylint] Implement useless-exception-statement (W0133) 
+   * [pycodestyle] Fix E301 not triggering on decorated methods.
+   * [pycodestyle] Respect isort settings in blank line rules (E3*)
+   * [pycodestyle] Make blank lines in typing stub files optional (E3*)
+   * [pylint] Implement singledispatch-method (E1519)
+   * [pylint] Implement useless-exception-statement (W0133)
  * Rule changes
-   * [flake8-debugger] Check for use of debugpy and ptvsd debug modules  
-   * [pyupgrade] Generate diagnostic for all valid f-string conversions regardless of line length (UP032) 
-   * [pep8_naming] Add fixes for N804 and N805 
+   * [flake8-debugger] Check for use of debugpy and ptvsd debug modules
+   * [pyupgrade] Generate diagnostic for all valid f-string conversions regardless of line length (UP032)
+   * [pep8_naming] Add fixes for N804 and N805
  * CLI
-   * Colorize the output of ruff format --diff 
-   * Make --config and --isolated global flags 
-   * Correctly expand tildes and environment variables in paths passed to --config 
+   * Colorize the output of ruff format --diff
+   * Make --config and --isolated global flags
+   * Correctly expand tildes and environment variables in paths passed to --config
  * Configuration
-   * Accept a PEP 440 version specifier for required-version 
-   * Implement isort's default-section setting 
+   * Accept a PEP 440 version specifier for required-version
+   * Implement isort's default-section setting
  * Bug fixes
-   * Remove trailing space from CapWords message 
-   * Respect external codes in file-level exemptions 
-   * [flake8-raise] Avoid false-positives for parens-on-raise with future.exception() (RSE102) 
-   * [pylint] Add fix for unary expressions in PLC2801 
-   * [ruff] Fix RUF028 not allowing # fmt: skip on match cases 
+   * Remove trailing space from CapWords message
+   * Respect external codes in file-level exemptions
+   * [flake8-raise] Avoid false-positives for parens-on-raise with future.exception() (RSE102)
+   * [pylint] Add fix for unary expressions in PLC2801
+   * [ruff] Fix RUF028 not allowing # fmt: skip on match cases
 
 -------------------------------------------------------------------
 Fri Mar  8 16:57:10 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
@@ -440,51 +486,51 @@ Wed Mar  6 14:20:44 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.3.0
  * Preview features
-   * [flake8-bandit] Remove suspicious-lxml-import (S410) 
-   * [pycodestyle] Allow os.environ modifications between imports (E402) 
-   * [pycodestyle] Don't warn about a single whitespace character before a comma in a tuple (E203) 
+   * [flake8-bandit] Remove suspicious-lxml-import (S410)
+   * [pycodestyle] Allow os.environ modifications between imports (E402)
+   * [pycodestyle] Don't warn about a single whitespace character before a comma in a tuple (E203)
  * Rule changes
-   * [eradicate] Detect commented out case statements (ERA001) 
-   * [eradicate] Detect single-line code for try:, except:, etc. (ERA001) 
-   * [flake8-boolean-trap] Allow boolean positionals in __post_init__ 
-   * [flake8-copyright] Allow © in copyright notices 
-   * [isort]: Use one blank line after imports in typing stub files 
-   * [pylint] New Rule dict-iter-missing-items (PLE1141) 
-   * [pylint] Ignore sys.version and sys.platform (PLR1714) 
-   * [pyupgrade] Detect literals with unary operators (UP018) 
-   * [ruff] Expand rule for list(iterable).pop(0) idiom (RUF015) 
+   * [eradicate] Detect commented out case statements (ERA001)
+   * [eradicate] Detect single-line code for try:, except:, etc. (ERA001)
+   * [flake8-boolean-trap] Allow boolean positionals in __post_init__
+   * [flake8-copyright] Allow © in copyright notices
+   * [isort]: Use one blank line after imports in typing stub files
+   * [pylint] New Rule dict-iter-missing-items (PLE1141)
+   * [pylint] Ignore sys.version and sys.platform (PLR1714)
+   * [pyupgrade] Detect literals with unary operators (UP018)
+   * [ruff] Expand rule for list(iterable).pop(0) idiom (RUF015)
  * Formatter
   * This release introduces the Ruff 2024.2 style, stabilizing the following changes:
-   * Prefer splitting the assignment's value over the target or type annotation 
-   * Remove blank lines before class docstrings 
-   * Wrap multiple context managers in with parentheses when targeting Python 3.9 or newer 
-   * Add a blank line after nested classes with a dummy body (...) in typing stub files 
+   * Prefer splitting the assignment's value over the target or type annotation
+   * Remove blank lines before class docstrings
+   * Wrap multiple context managers in with parentheses when targeting Python 3.9 or newer
+   * Add a blank line after nested classes with a dummy body (...) in typing stub files
    * Reduce vertical spacing for classes and functions with a dummy (...) body
-   * Add a blank line after the module docstring 
-   * Parenthesize long type hints in assignments 
-   * Preserve indent for single multiline-string call-expressions 
-   * Normalize hex escape and unicode escape sequences 
-   * Format module docstrings 
+   * Add a blank line after the module docstring
+   * Parenthesize long type hints in assignments
+   * Preserve indent for single multiline-string call-expressions
+   * Normalize hex escape and unicode escape sequences
+   * Format module docstrings
  * CLI
-   * Explicitly disallow extend as part of a --config flag 
-   * Remove build from the default exclusion list 
+   * Explicitly disallow extend as part of a --config flag
+   * Remove build from the default exclusion list
    * Deprecate ruff <path>, ruff --explain, ruff --clean, and ruff --generate-shell-completion
-      in favor of ruff check <path>, ruff rule, ruff clean, and ruff generate-shell-completion 
-   * Remove the deprecated CLI option --format from ruff rule and ruff linter 
+      in favor of ruff check <path>, ruff rule, ruff clean, and ruff generate-shell-completion
+   * Remove the deprecated CLI option --format from ruff rule and ruff linter
  * Bug fixes
-   * [flake8-bugbear] Avoid adding default initializers to stubs (B006) 
-   * [flake8-type-checking] Respect runtime-required decorators for function signatures 
-   * [pycodestyle] Mark fixes overlapping with a multiline string as unsafe (W293) 
-   * [pydocstyle] Trim whitespace when removing blank lines after section (D413) 
-   * [pylint] Delete entire statement, including semicolons (PLR0203) 
-   * [ruff] Avoid f-string false positives in gettext calls (RUF027) 
-   * Fix ruff crashing on PowerPC systems because of too small page size 
+   * [flake8-bugbear] Avoid adding default initializers to stubs (B006)
+   * [flake8-type-checking] Respect runtime-required decorators for function signatures
+   * [pycodestyle] Mark fixes overlapping with a multiline string as unsafe (W293)
+   * [pydocstyle] Trim whitespace when removing blank lines after section (D413)
+   * [pylint] Delete entire statement, including semicolons (PLR0203)
+   * [ruff] Avoid f-string false positives in gettext calls (RUF027)
+   * Fix ruff crashing on PowerPC systems because of too small page size
  * Performance
-   * Add cold attribute to less likely printer queue branches in the formatter 
-   * Skip unnecessary string normalization in the formatter 
+   * Add cold attribute to less likely printer queue branches in the formatter
+   * Skip unnecessary string normalization in the formatter
  * Documentation
-   * Remove "Beta" Label from formatter documentation 
-   * line-length option: fix link to pycodestyle.max-line-length 
+   * Remove "Beta" Label from formatter documentation
+   * line-length option: fix link to pycodestyle.max-line-length
 
 -------------------------------------------------------------------
 Tue Mar  5 14:12:37 UTC 2024 - Andreas Schwab <schwab@suse.de>
@@ -501,45 +547,45 @@ Wed Feb 21 16:49:44 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
       through an expanded --config argument (e.g., --config "lint.isort.combine-as-imports=false").
    * Significant performance improvements in Ruff's lexer, parser, and lint rules.
  * Preview features
-   * Implement minimal f-string formatting 
-   * [pycodestyle] Add blank line(s) rules (E301, E302, E303, E304, E305, E306) 
-   * [refurb] Implement readlines_in_for (FURB129) 
+   * Implement minimal f-string formatting
+   * [pycodestyle] Add blank line(s) rules (E301, E302, E303, E304, E305, E306)
+   * [refurb] Implement readlines_in_for (FURB129)
  * Rule changes
-   * [ruff] Ensure closing parentheses for multiline sequences are always on their own line (RUF022, RUF023) 
-   * [numpy] Add missing deprecation violations (NPY002) 
-   * [flake8-bandit] Detect mark_safe usages in decorators 
-   * [ruff] Expand asyncio-dangling-task (RUF006) to include new_event_loop 
-   * [flake8-pyi] Ignore 'unused' private type dicts in class scopes 
+   * [ruff] Ensure closing parentheses for multiline sequences are always on their own line (RUF022, RUF023)
+   * [numpy] Add missing deprecation violations (NPY002)
+   * [flake8-bandit] Detect mark_safe usages in decorators
+   * [ruff] Expand asyncio-dangling-task (RUF006) to include new_event_loop
+   * [flake8-pyi] Ignore 'unused' private type dicts in class scopes
  * Formatter
-   * Docstring formatting: Preserve tab indentation when using indent-style=tabs 
-   * Disable top-level docstring formatting for notebooks 
-   * Stabilize quote-style's preserve mode 
+   * Docstring formatting: Preserve tab indentation when using indent-style=tabs
+   * Disable top-level docstring formatting for notebooks
+   * Stabilize quote-style's preserve mode
  * CLI
-   * Allow arbitrary configuration options to be overridden via the CLI 
+   * Allow arbitrary configuration options to be overridden via the CLI
  * Bug fixes
-   * Make show-settings filters directory-agnostic 
-   * Respect duplicates when rewriting type aliases 
-   * Respect tuple assignments in typing analyzer 
-   * Use atomic write when persisting cache 
-   * Use non-parenthesized range for DebugText 
-   * [flake8-simplify] Avoid false positive with async for loops (SIM113) 
-   * [flake8-trio] Respect async with in timeout-without-await 
-   * [perflint] Catch a wider range of mutations in PERF101 
-   * [pycodestyle] Fix E30X panics on blank lines with trailing white spaces 
-   * [pydocstyle] Allow using parameters as a subsection header (D405) 
-   * [pydocstyle] Fix blank-line docstring rules for module-level docstrings 
-   * [pylint] Accept 0.0 and 1.0 as common magic values (PLR2004) 
-   * [pylint] Avoid suggesting set rewrites for non-hashable types 
-   * [ruff] Avoid false negatives with string literals inside of method calls (RUF027) 
-   * [ruff] Fix panic on with f-string detection (RUF027) 
-   * [ruff] Ignore builtins when detecting missing f-strings 
+   * Make show-settings filters directory-agnostic
+   * Respect duplicates when rewriting type aliases
+   * Respect tuple assignments in typing analyzer
+   * Use atomic write when persisting cache
+   * Use non-parenthesized range for DebugText
+   * [flake8-simplify] Avoid false positive with async for loops (SIM113)
+   * [flake8-trio] Respect async with in timeout-without-await
+   * [perflint] Catch a wider range of mutations in PERF101
+   * [pycodestyle] Fix E30X panics on blank lines with trailing white spaces
+   * [pydocstyle] Allow using parameters as a subsection header (D405)
+   * [pydocstyle] Fix blank-line docstring rules for module-level docstrings
+   * [pylint] Accept 0.0 and 1.0 as common magic values (PLR2004)
+   * [pylint] Avoid suggesting set rewrites for non-hashable types
+   * [ruff] Avoid false negatives with string literals inside of method calls (RUF027)
+   * [ruff] Fix panic on with f-string detection (RUF027)
+   * [ruff] Ignore builtins when detecting missing f-strings
  * Performance
-   * Use memchr for string lexing 
-   * Use memchr for tab-indentation detection 
-   * Reduce Result<Tok, LexicalError> size by using Box<str> instead of String 
-   * Reduce size of Expr from 80 to 64 bytes 
-   * Improve trailing comma rule performance 
-   * Remove unnecessary string cloning from the parser 
+   * Use memchr for string lexing
+   * Use memchr for tab-indentation detection
+   * Reduce Result<Tok, LexicalError> size by using Box<str> instead of String
+   * Reduce size of Expr from 80 to 64 bytes
+   * Improve trailing comma rule performance
+   * Remove unnecessary string cloning from the parser
 
 -------------------------------------------------------------------
 Wed Feb  7 10:16:16 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -548,35 +594,35 @@ Wed Feb  7 10:16:16 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  * This release includes support for range formatting
    (i.e., the ability to format specific lines within a source file).
  * Preview features
-   * [refurb] Implement missing-f-string-syntax (RUF027) 
-   * Format module-level docstrings 
+   * [refurb] Implement missing-f-string-syntax (RUF027)
+   * Format module-level docstrings
  * Formatter
-   * Add --range option to ruff format 
-   * Don't trim last empty line in docstrings 
+   * Add --range option to ruff format
+   * Don't trim last empty line in docstrings
  * Bug fixes
-   * Skip empty lines when determining base indentation 
-   * Drop __get__ and __set__ from unnecessary-dunder-call 
-   * Respect generic Protocol in ellipsis removal 
+   * Skip empty lines when determining base indentation
+   * Drop __get__ and __set__ from unnecessary-dunder-call
+   * Respect generic Protocol in ellipsis removal
    * Revert "Use publicly available Apple Silicon runners"
  * Performance
-   * Skip LibCST parsing for standard dedent adjustments 
-   * Remove CST-based fixer for C408 
-   * Add our own ignored-names abstractions 
-   * Remove CST-based fixers for C400, C401, C410, and C418 
-   * Use AhoCorasick to speed up quote match 
-   * Remove CST-based fixers for C405 and C409 
-   * Add fast-path for comment detection 
-   * Invert order of checks in zero-sleep-call 
-   * Short-circuit typing matches based on imports 
-   * Run dunder method rule on methods directly 
-   * Track top-level module imports in the semantic model 
-   * Slight speed-up for lowercase and uppercase identifier checks 
-   * Remove LibCST-based fixer for C403 
+   * Skip LibCST parsing for standard dedent adjustments
+   * Remove CST-based fixer for C408
+   * Add our own ignored-names abstractions
+   * Remove CST-based fixers for C400, C401, C410, and C418
+   * Use AhoCorasick to speed up quote match
+   * Remove CST-based fixers for C405 and C409
+   * Add fast-path for comment detection
+   * Invert order of checks in zero-sleep-call
+   * Short-circuit typing matches based on imports
+   * Run dunder method rule on methods directly
+   * Track top-level module imports in the semantic model
+   * Slight speed-up for lowercase and uppercase identifier checks
+   * Remove LibCST-based fixer for C403
  * Documentation
-   * Update max-pos-args example to max-positional-args 
-   * Fixed example code in weak_cryptographic_key.rs 
-   * Fix references to deprecated ANN rules in changelog 
-   * Fix default for max-positional-args 
+   * Update max-pos-args example to max-positional-args
+   * Fixed example code in weak_cryptographic_key.rs
+   * Fix references to deprecated ANN rules in changelog
+   * Fix default for max-positional-args
 
 -------------------------------------------------------------------
 Mon Feb  5 09:40:59 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -700,112 +746,112 @@ Mon Feb  5 09:40:59 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
    * unnecessary-placeholder (PIE790) applies to unnecessary ellipses (...)
    * if-else-block-instead-of-dict-get (SIM401) applies to if-else expressions
  * Preview features
-   * [refurb] Implement metaclass_abcmeta (FURB180) 
-   * Implement blank_line_after_nested_stub_class preview style 
+   * [refurb] Implement metaclass_abcmeta (FURB180)
+   * Implement blank_line_after_nested_stub_class preview style
    * The preview rule and-or-ternary (PLR1706) was removed
  * Bug fixes
-   * [flake8-async] Take pathlib.Path into account when analyzing async functions 
-   * [flake8-return] - fix indentation syntax error (RET505) 
-   * Detect multi-statement lines in else removal 
-   * RUF022, RUF023: never add two trailing commas to the end of a sequence 
-   * RUF023: Don't sort __match_args__, only __slots__ 
-   * [flake8-simplify] - Fix syntax error in autofix (SIM114) 
-   * [pylint] Show verbatim constant in magic-value-comparison (PLR2004) 
-   * Removing trailing whitespace inside multiline strings is unsafe 
-   * Support IfExp with dual string arms in invalid-envvar-default 
-   * [pylint] Add __mro_entries__ to known dunder methods (PLW3201) 
+   * [flake8-async] Take pathlib.Path into account when analyzing async functions
+   * [flake8-return] - fix indentation syntax error (RET505)
+   * Detect multi-statement lines in else removal
+   * RUF022, RUF023: never add two trailing commas to the end of a sequence
+   * RUF023: Don't sort __match_args__, only __slots__
+   * [flake8-simplify] - Fix syntax error in autofix (SIM114)
+   * [pylint] Show verbatim constant in magic-value-comparison (PLR2004)
+   * Removing trailing whitespace inside multiline strings is unsafe
+   * Support IfExp with dual string arms in invalid-envvar-default
+   * [pylint] Add __mro_entries__ to known dunder methods (PLW3201)
  * Documentation
-   * Removed rules are now retained in the documentation 
-   * Deprecated rules are now indicated in the documentation 
+   * Removed rules are now retained in the documentation
+   * Deprecated rules are now indicated in the documentation
 
 -------------------------------------------------------------------
 Thu Feb  1 18:05:47 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.1.15
  * Preview features
-   * Error when NURSERY selector is used with --preview 
-   * Preserve indentation around multiline strings in formatter 
-   * [flake8-return] Add fixes for all rules (RET505, RET506, RET507, RET508) 
-   * [flake8-simplify] Add fix for if-with-same-arms (SIM114) 
-   * [pycodestyle] Add fix for multiple-imports-on-one-line (E401) 
-   * [pylint] Add fix for collapsible-else-if (PLR5501) 
-   * [pylint] Add fix for useless-else-on-loop (PLW0120) 
-   * [pylint] Implement assigning-non-slot (E0237) 
-   * [pylint] Implement potential-index-error (PLE0643) 
-   * [pylint] Implement too-many-nested-blocks (PLR1702) 
-   * [ruff] Add rule to sort __slots__ and __match_args__ 
-   * [ruff] Detect unnecessary dict comprehensions for iterables (RUF025) 
-   * [ruff] Guard against use of default_factory as a keyword argument (RUF026) 
-   * [ruff] Implement mutable-fromkeys-value (RUF024) 
+   * Error when NURSERY selector is used with --preview
+   * Preserve indentation around multiline strings in formatter
+   * [flake8-return] Add fixes for all rules (RET505, RET506, RET507, RET508)
+   * [flake8-simplify] Add fix for if-with-same-arms (SIM114)
+   * [pycodestyle] Add fix for multiple-imports-on-one-line (E401)
+   * [pylint] Add fix for collapsible-else-if (PLR5501)
+   * [pylint] Add fix for useless-else-on-loop (PLW0120)
+   * [pylint] Implement assigning-non-slot (E0237)
+   * [pylint] Implement potential-index-error (PLE0643)
+   * [pylint] Implement too-many-nested-blocks (PLR1702)
+   * [ruff] Add rule to sort __slots__ and __match_args__
+   * [ruff] Detect unnecessary dict comprehensions for iterables (RUF025)
+   * [ruff] Guard against use of default_factory as a keyword argument (RUF026)
+   * [ruff] Implement mutable-fromkeys-value (RUF024)
  * CLI
-   * Enable auto-wrapping of --help output 
+   * Enable auto-wrapping of --help output
  * Bug fixes
-   * Avoid rendering display-only rules as fixable 
-   * Detect automagic-like assignments in notebooks 
-   * Generate custom JSON schema for dynamic setting 
-   * [flake8-no-pep420] Include global --config when determining namespace packages 
-   * [flake8-pie] Omit bound tuples passed to .startswith or .endswith 
-   * [flake8-return] Avoid panic when fixing inlined else blocks 
-   * [flake8-return] Consider exception suppression in unnecessary assignment 
-   * [flake8-return] Take NoReturn annotation into account when analyzing implicit returns 
-   * [flake8-simplify] Support inverted returns in needless-bool (SIM103) 
-   * [flake8-type-checking] Add Pydantic's BaseConfig to default-copy list 
-   * [flake8-type-checking] Avoid marking InitVar as a typing-only annotation 
-   * [pycodestyle] Allow dtype comparisons in type-comparison 
-   * [pydocstyle] Re-implement last-line-after-section (D413) 
+   * Avoid rendering display-only rules as fixable
+   * Detect automagic-like assignments in notebooks
+   * Generate custom JSON schema for dynamic setting
+   * [flake8-no-pep420] Include global --config when determining namespace packages
+   * [flake8-pie] Omit bound tuples passed to .startswith or .endswith
+   * [flake8-return] Avoid panic when fixing inlined else blocks
+   * [flake8-return] Consider exception suppression in unnecessary assignment
+   * [flake8-return] Take NoReturn annotation into account when analyzing implicit returns
+   * [flake8-simplify] Support inverted returns in needless-bool (SIM103)
+   * [flake8-type-checking] Add Pydantic's BaseConfig to default-copy list
+   * [flake8-type-checking] Avoid marking InitVar as a typing-only annotation
+   * [pycodestyle] Allow dtype comparisons in type-comparison
+   * [pydocstyle] Re-implement last-line-after-section (D413)
  * Documentation
-   * [flake8-pytest-style] Add fix safety documentation for duplicate-parameterize-test-cases 
-   * [pylint] Document literal-membership fix safety conditions 
-   * [isort] Fix reference to isort rule code 
+   * [flake8-pytest-style] Add fix safety documentation for duplicate-parameterize-test-cases
+   * [pylint] Document literal-membership fix safety conditions
+   * [isort] Fix reference to isort rule code
 
 -------------------------------------------------------------------
 Sun Jan 21 15:21:29 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.1.14
  * Preview features
-   * [flake8-bugbear] Add fix for duplicate-value (B033) 
-   * [flake8-simplify] Implement enumerate-for-loop (SIM113) 
-   * [pygrep_hooks] Add fix for deprecated-log-warn (PGH002) 
-   * [pylint] Implement import-private-name (C2701) 
-   * [refurb] Implement regex-flag-alias with fix (FURB167) 
-   * [ruff] Add rule and fix to sort contents of __all__ (RUF022) 
-   * [tryceratops] Add fix for error-instead-of-exception (TRY400) 
+   * [flake8-bugbear] Add fix for duplicate-value (B033)
+   * [flake8-simplify] Implement enumerate-for-loop (SIM113)
+   * [pygrep_hooks] Add fix for deprecated-log-warn (PGH002)
+   * [pylint] Implement import-private-name (C2701)
+   * [refurb] Implement regex-flag-alias with fix (FURB167)
+   * [ruff] Add rule and fix to sort contents of __all__ (RUF022)
+   * [tryceratops] Add fix for error-instead-of-exception (TRY400)
  * Rule changes
-   * [flake8-pyi] Fix PYI047 false negatives on PEP-695 type aliases 
-   * [flake8-pyi] Fix PYI049 false negatives on call-based TypedDicts 
-   * [pylint] Exclude self and cls when counting method arguments (PLR0917) 
+   * [flake8-pyi] Fix PYI047 false negatives on PEP-695 type aliases
+   * [flake8-pyi] Fix PYI049 false negatives on call-based TypedDicts
+   * [pylint] Exclude self and cls when counting method arguments (PLR0917)
  * CLI
-   * --show-settings displays active settings in a far more readable format 
-   * Add --extension support to the formatter 
+   * --show-settings displays active settings in a far more readable format
+   * Add --extension support to the formatter
    * Configuration
-   * Ignore preview status for fixable and unfixable selectors 
-   * [pycodestyle] Use the configured tab size when expanding indents 
+   * Ignore preview status for fixable and unfixable selectors
+   * [pycodestyle] Use the configured tab size when expanding indents
  * Bug fixes
-   * Recursively visit deferred AST nodes 
-   * Visit deferred lambdas before type definitions 
-   * [flake8-simplify] Avoid some more enumerate-for-loop false positives (SIM113) 
-   * [pandas-vet] Limit inplace diagnostics to methods that accept inplace 
-   * [pylint] Add the __prepare__ method to the list of recognized dunder method 
-   * [pylint] Ignore unnecessary dunder calls within dunder definitions 
-   * [refurb] Avoid bailing when reimplemented-operator is called on function (FURB118) 
-   * [ruff] Avoid treating named expressions as static keys (RUF011) 
+   * Recursively visit deferred AST nodes
+   * Visit deferred lambdas before type definitions
+   * [flake8-simplify] Avoid some more enumerate-for-loop false positives (SIM113)
+   * [pandas-vet] Limit inplace diagnostics to methods that accept inplace
+   * [pylint] Add the __prepare__ method to the list of recognized dunder method
+   * [pylint] Ignore unnecessary dunder calls within dunder definitions
+   * [refurb] Avoid bailing when reimplemented-operator is called on function (FURB118)
+   * [ruff] Avoid treating named expressions as static keys (RUF011)
  * Documentation
-   * Add instructions on using noqa with isort rules 
-   * Documentation update for URL giving 'page not found' 
-   * Fix admonition in dark mode 
-   * Update contributing docs to use cargo bench -p ruff_benchmark 
-   * Update emacs integration section to include emacs-ruff-format 
-   * [flake8-blind-except] Document exceptions to blind-except rule 
+   * Add instructions on using noqa with isort rules
+   * Documentation update for URL giving 'page not found'
+   * Fix admonition in dark mode
+   * Update contributing docs to use cargo bench -p ruff_benchmark
+   * Update emacs integration section to include emacs-ruff-format
+   * [flake8-blind-except] Document exceptions to blind-except rule
 
 -------------------------------------------------------------------
 Mon Jan 15 13:27:02 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.1.13
  * Bug fixes
-   * Include base pyproject when initializing cache settings 
-   * [flake8-simplify] Account for possibly-empty f-string values in truthiness logic 
-   * [pylint] Add the missing period in unnecessary-dunder-call 
-   * [pylint] Fix __aenter__ message in unnecessary-dunder-call 
+   * Include base pyproject when initializing cache settings
+   * [flake8-simplify] Account for possibly-empty f-string values in truthiness logic
+   * [pylint] Add the missing period in unnecessary-dunder-call
+   * [pylint] Fix __aenter__ message in unnecessary-dunder-call
 
 -------------------------------------------------------------------
 Fri Jan 12 11:48:38 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -856,52 +902,52 @@ Fri Jan 12 11:48:38 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 Mon Jan  8 09:39:09 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.1.11
-   * [pylint] Implement super-without-brackets (W0245) 
-   * Check path string properly in python -m ruff invocations 
+   * [pylint] Implement super-without-brackets (W0245)
+   * Check path string properly in python -m ruff invocations
  * Documentation
-   * Tweak relative-imports message 
-   * Add fix safety note for yield-in-for-loop 
+   * Tweak relative-imports message
+   * Add fix safety note for yield-in-for-loop
  * 0.1.10
  * Preview features
-   * Improve dummy_implementations preview style formatting 
-   * Normalise Hex and unicode escape sequences in strings 
-   * Parenthesize long type annotations in annotated assignments 
-   * Parenthesize multi-context managers in with statements 
-   * [flake8-pyi] Implement generator-return-from-iter-method (PYI058) 
-   * [pylint] Implement empty-comment (PLR2044) 
-   * [refurb] Implement bit-count (FURB161) 
-   * [ruff] Add never-union rule to detect redundant typing.NoReturn and typing.Never 
+   * Improve dummy_implementations preview style formatting
+   * Normalise Hex and unicode escape sequences in strings
+   * Parenthesize long type annotations in annotated assignments
+   * Parenthesize multi-context managers in with statements
+   * [flake8-pyi] Implement generator-return-from-iter-method (PYI058)
+   * [pylint] Implement empty-comment (PLR2044)
+   * [refurb] Implement bit-count (FURB161)
+   * [ruff] Add never-union rule to detect redundant typing.NoReturn and typing.Never
  * CLI
-   * Add paths to TOML parse errors 
-   * Add row and column numbers to formatter parse errors 
-   * Improve responsiveness when invoked via Python 
-   * Short rule messages should not end with a period 
+   * Add paths to TOML parse errors
+   * Add row and column numbers to formatter parse errors
+   * Improve responsiveness when invoked via Python
+   * Short rule messages should not end with a period
  * Configuration
-   * Respect runtime-required decorators on functions 
+   * Respect runtime-required decorators on functions
  * Bug fixes
-   * Avoid asyncio-dangling-task for nonlocal and global bindings 
-   * Escape trailing placeholders in rule documentation 
-   * Fix continuation detection following multi-line strings 
-   * Fix scoping for generators in named expressions in classes 
-   * Port from obsolete wsl crate to is-wsl 
-   * Remove special pre-visit for module docstrings 
-   * Respect __str__ definitions from super classes 
-   * Respect unused-noqa via per-file-ignores 
-   * Respect attribute chains when resolving builtin call paths 
-   * Treat all typing_extensions members as typing aliases 
-   * Use Display for formatter parse errors 
-   * Wrap subscripted dicts in parens for f-string conversion 
-   * [flake8-annotations] Avoid adding return types to stub methods 
-   * [flake8-annotations] Respect mixed return and raise cases in return-type analysis 
-   * [flake8-bandit] Don't report violations when SafeLoader is imported from yaml.loader (S506) 
-   * [pylint] Avoid panic when comment is preceded by Unicode 
-   * [pylint] Change PLR0917 error message to match other PLR09XX messages 
-   * [refurb] Avoid false positives for math-constant (FURB152) 
+   * Avoid asyncio-dangling-task for nonlocal and global bindings
+   * Escape trailing placeholders in rule documentation
+   * Fix continuation detection following multi-line strings
+   * Fix scoping for generators in named expressions in classes
+   * Port from obsolete wsl crate to is-wsl
+   * Remove special pre-visit for module docstrings
+   * Respect __str__ definitions from super classes
+   * Respect unused-noqa via per-file-ignores
+   * Respect attribute chains when resolving builtin call paths
+   * Treat all typing_extensions members as typing aliases
+   * Use Display for formatter parse errors
+   * Wrap subscripted dicts in parens for f-string conversion
+   * [flake8-annotations] Avoid adding return types to stub methods
+   * [flake8-annotations] Respect mixed return and raise cases in return-type analysis
+   * [flake8-bandit] Don't report violations when SafeLoader is imported from yaml.loader (S506)
+   * [pylint] Avoid panic when comment is preceded by Unicode
+   * [pylint] Change PLR0917 error message to match other PLR09XX messages
+   * [refurb] Avoid false positives for math-constant (FURB152)
  * Documentation
-   * Expand target name for better rule documentation 
-   * Fix typos found by codespell 
-   * [perflint] Document PERF102 fix un-safety 
-   * [pyupgrade] Document UP007 fix un-safety  
+   * Expand target name for better rule documentation
+   * Fix typos found by codespell
+   * [perflint] Document PERF102 fix un-safety
+   * [pyupgrade] Document UP007 fix un-safety
 
 -------------------------------------------------------------------
 Thu Dec 21 23:27:31 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -1331,7 +1377,7 @@ Wed Oct 25 11:04:42 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
    * Rework the documentation to incorporate the Ruff formatter
    * Fix Options JSON schema description
    * Fix typo (pytext -> pytest)
-   * Improve magic-value-comparison example in docs 
+   * Improve magic-value-comparison example in docs
 
 -------------------------------------------------------------------
 Fri Oct 20 10:09:22 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -1470,4 +1516,4 @@ Tue Oct 17 10:38:21 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Fri Oct 13 16:22:47 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- initial package 
+- initial package
