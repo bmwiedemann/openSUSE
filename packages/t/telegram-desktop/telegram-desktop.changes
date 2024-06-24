@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jun 15 08:05:37 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 5.1.7
+  * Fix recently searched hashtags in chats search.
+  * Fix formatting shortcuts on macOS.
+  * Fix non-Telegram-Stars-invoice bot buttons with star emoji.
+
+- Updated to version 5.1.6
+  * Fix search in archived chats in single-column layout.
+  * Improve chat previews for topics, Saved Messages and groups.
+  * Fix formatting shortcuts on Linux.
+  * Fix options for Telegram Stars buying in case of large amounts.
+
+-------------------------------------------------------------------
 Fri Jun  7 14:30:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Clean up spec file:
