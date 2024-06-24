@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-fluentd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,11 @@
 #
 
 Name:           rubygem-fluentd
-Version:        1.16.3
+Version:        1.17.0
 Release:        0
 %define mod_name fluentd
 %define mod_full_name %{mod_name}-%{version}
-BuildRequires:  %{ruby >= 2.4}
+BuildRequires:  %{ruby >= 2.7}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
