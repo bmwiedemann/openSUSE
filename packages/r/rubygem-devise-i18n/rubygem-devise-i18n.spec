@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-devise-i18n
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-devise-i18n
-Version:        1.12.0
+Version:        1.12.1
 Release:        0
 %define mod_name devise-i18n
 %define mod_full_name %{mod_name}-%{version}
+BuildRequires:  %{ruby >= 2.7.0}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/tigrish/devise-i18n
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
