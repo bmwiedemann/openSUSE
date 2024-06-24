@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 22 16:17:31 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to 0.3.3:
+  * client/item: Force tuple usage when serializing
+  * client: Use async UnixStream
+
+-------------------------------------------------------------------
 Fri May 17 02:17:48 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - update to 0.3.2:

@@ -3,9 +3,5 @@
   <service name="download_files" mode="manual" />
   <service name="cargo_vendor" mode="manual">
     <param name="src">*.tar.gz</param>
-    <param name="cargotoml">Cargo.toml</param>
-    <param name="cargotoml">cli/Cargo.toml</param>
-    <param name="cargotoml">client/Cargo.toml</param>
-    <param name="cargotoml">portal/Cargo.toml</param>
   </service>
 </services>

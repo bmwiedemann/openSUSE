@@ -17,7 +17,7 @@
 
 
 Name:           oo7
-Version:        0.3.2
+Version:        0.3.3
 Release:        0
 Summary:        James Bond went on a new mission as a Secret Service provider
 License:        MIT
