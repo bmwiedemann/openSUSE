@@ -153,4 +153,12 @@ Dependency update required for rubocop update:
     <comment>Updated rubocop to version 1.60.2 and dependent parser to 3.3.0.5 (forwarded request 1141716 from NickLion)</comment>
     <requestid>1142180</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>de26881a9bc00bf5dc29924e6c32ff43</srcmd5>
+    <version>3.3.3.0</version>
+    <time>1719255325</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1182819</requestid>
+  </revision>
 </revisionlist>
