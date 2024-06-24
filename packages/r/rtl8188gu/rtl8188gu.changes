@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Sat Jun  8 11:36:30 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Initial package for version 0.0.0+git20230112.c2b79fc
+- Add fix-build-on-kernel-6_4.patch, support kernel 6.4+
+- Add fix-build-on-kernel-6_5.patch, support kernel 6.5+
+- Add fix-build-on-kernel-6_8.patch, Support Kernel 6.8+

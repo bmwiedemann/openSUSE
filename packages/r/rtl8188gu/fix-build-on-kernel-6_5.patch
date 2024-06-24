@@ -1,0 +1,20 @@
+diff -Nur rtl8188gu/os_dep/linux/ioctl_cfg80211.c rtl8188gu-new/os_dep/linux/ioctl_cfg80211.c
+--- rtl8188gu/os_dep/linux/ioctl_cfg80211.c	2023-01-12 00:45:31.000000000 +0800
++++ rtl8188gu-new/os_dep/linux/ioctl_cfg80211.c	2024-06-08 18:51:24.102013322 +0800
+@@ -4461,9 +4461,16 @@
+ 	return ret;
+ }
+ 
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 5, 0))
++static int cfg80211_rtw_change_beacon(struct wiphy *wiphy, struct net_device *ndev,
++		struct cfg80211_ap_update *params)
++{
++		struct cfg80211_beacon_data *info = &params->beacon;
++#else
+ static int cfg80211_rtw_change_beacon(struct wiphy *wiphy, struct net_device *ndev,
+ 		struct cfg80211_beacon_data *info)
+ {
++#endif
+ 	int ret = 0;
+ 	_adapter *adapter = (_adapter *)rtw_netdev_priv(ndev);
+ 

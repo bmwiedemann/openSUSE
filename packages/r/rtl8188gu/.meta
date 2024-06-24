@@ -1,0 +1,6 @@
+<package name="rtl8188gu" project="openSUSE:Factory">
+  <title>Driver for Linux RTL8188GU</title>
+  <description>Driver for Linux RTL8188GU (RTL8710B) (VID:PID = 0x0BDA:0xB711)</description>
+  <devel project="hardware" package="rtl8188gu"/>
+  <url>https://github.com/McMCCRU/rtl8188gu</url>
+</package>
