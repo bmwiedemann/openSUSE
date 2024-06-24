@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun 24 08:12:23 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.27
+  * Add a loading screen that gets displayed during
+    initialization and buffering.
+  * Reduce the time it takes for the main window to get
+    displayed after launching.
+  * Opening and closing the preferences dialog will no longer
+    trigger an mpv reset unless options that require it are
+    changed.
+  * Update the look for controls and header bar in floating mode.
+  * Update some of the deprecated GTK API usage.
+  * Add support for multi-file user scripts.
+
+-------------------------------------------------------------------
 Sat Sep 16 16:29:06 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.26
