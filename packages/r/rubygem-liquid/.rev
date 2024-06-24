@@ -122,4 +122,12 @@
     <comment>- limit to ruby 2.7 and 3.1 on leap (forwarded request 1005810 from darix)</comment>
     <requestid>1005990</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>23525d2f863adc829f28149a5d3a2a10</srcmd5>
+    <version>5.5.0</version>
+    <time>1719255315</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1182801</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-liquid
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-liquid
-Version:        5.4.0
+Version:        5.5.0
 Release:        0
 %define mod_name liquid
 %define mod_full_name %{mod_name}-%{version}
@@ -34,16 +34,14 @@ Release:        0
 %define rb_build_ruby_abis      ruby:3.1.0   ruby:2.7.0
 %endif
 # /MANUAL
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.7.0}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  ruby-macros >= 5
 URL:            http://www.liquidmarkup.org
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A secure, non-evaling end user template engine with aesthetic markup
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 A secure, non-evaling end user template engine with aesthetic markup.
@@ -54,7 +52,7 @@ A secure, non-evaling end user template engine with aesthetic markup.
 
 %install
 %gem_install \
-  --no-document \
+  --no-rdoc --no-ri \
   --doc-files="History.md LICENSE README.md" \
   -f
 
