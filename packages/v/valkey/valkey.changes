@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 22 08:42:19 UTC 2024 - Neal Gompa <ngompa@opensuse.org>
+
+- Enable automatic replacement of redis with valkey
+
+-------------------------------------------------------------------
 Thu Jun  6 18:26:19 UTC 2024 - Neal Gompa <ngompa@opensuse.org>
 
 - Initial package based on the redis package and Fedora valkey package

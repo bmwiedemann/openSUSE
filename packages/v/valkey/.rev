@@ -7,4 +7,12 @@
     <comment>Initial packaging for openSUSE</comment>
     <requestid>1179160</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3e47d90ba092bb6052218b3ac4338dea</srcmd5>
+    <version>7.2.5</version>
+    <time>1719255139</time>
+    <user>anag+factory</user>
+    <comment>- Enable automatic replacement of redis with valkey</comment>
+    <requestid>1182568</requestid>
+  </revision>
 </revisionlist>

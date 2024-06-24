@@ -83,7 +83,8 @@ Header file required for building loadable Valkey modules.
 Summary:        Conversion script and compatibility symlinks for Redis
 Requires:       valkey = %{version}-%{release}
 Conflicts:      redis
-#Obsoletes:      redis <= 7.2.5
+Obsoletes:      redis <= 7.2.5
+Provides:       redis = %{version}-%{release}
 BuildArch:      noarch
 
 %description    compat-redis
