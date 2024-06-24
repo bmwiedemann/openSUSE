@@ -24,11 +24,11 @@
 #
 
 Name:           rubygem-parallel
-Version:        1.24.0
+Version:        1.25.1
 Release:        0
 %define mod_name parallel
 %define mod_full_name %{mod_name}-%{version}
-BuildRequires:  %{ruby >= 2.5}
+BuildRequires:  %{ruby >= 2.7}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/grosser/parallel
