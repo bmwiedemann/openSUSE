@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 24 15:31:19 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.1.5:
+  * PersistentDict: allow setting sync
+  * PersistentDict: smarter WOPD store
+  * PersistentDict: concurrency improvements
+
+-------------------------------------------------------------------
 Thu Jun  6 20:03:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.1.4:

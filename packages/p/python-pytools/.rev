@@ -250,4 +250,15 @@
   * PersistentDict: Use sqlite as backend storage v2</comment>
     <requestid>1179086</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ba629c32dcdc8080818360c0dca0eb7d</srcmd5>
+    <version>2024.1.5</version>
+    <time>1719255415</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.1.5:
+  * PersistentDict: allow setting sync
+  * PersistentDict: smarter WOPD store
+  * PersistentDict: concurrency improvements</comment>
+    <requestid>1183034</requestid>
+  </revision>
 </revisionlist>
