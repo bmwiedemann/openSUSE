@@ -170,4 +170,12 @@
     SOCIALACCOUNT_LOGIN_ON_GET = False setting.</comment>
     <requestid>1140111</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>413a39908b673d7d6aa3d2147a1b9ef8</srcmd5>
+    <version>0.63.3</version>
+    <time>1719255410</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1183015</requestid>
+  </revision>
 </revisionlist>

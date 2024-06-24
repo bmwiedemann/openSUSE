@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 23 08:14:08 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.63.3
+  * See https://github.com/pennersr/django-allauth/blob/0.63.3/ChangeLog.rst
+    or the packaged ChangeLog.rst file.
+- Updated missing-template-in-test.patch
+
+-------------------------------------------------------------------
 Sat Jan 20 13:06:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.60.1:

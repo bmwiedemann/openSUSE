@@ -30,16 +30,18 @@
 %global pytest_min_version 7.4
 %global pytest_django_min_version 4.5.2
 
+%global pkgname django_allauth
+
 %{?sle15_python_module_pythons}
 Name:           python-django-allauth
-Version:        0.60.1
+Version:        0.63.3
 Release:        0
 Summary:        Django authentication, registration, account management
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pennersr/django-allauth
-Source:         https://files.pythonhosted.org/packages/source/d/django-allauth/django-allauth-%{version}.tar.gz
-Patch:          missing-template-in-test.patch
+Source:         https://files.pythonhosted.org/packages/source/d/django-allauth/%{pkgname}-%{version}.tar.gz
+Patch0:         missing-template-in-test.patch
 BuildRequires:  %{python_module Django >= %{django_min_version}}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python3-openid >= %{python3_openid_min_version}}
@@ -70,7 +72,7 @@ Integrated set of Django applications addressing authentication, registration,
 account management as well as 3rd party (social) account authentication.
 
 %prep
-%autosetup -p1 -n django-allauth-%{version}
+%autosetup -p1 -n %{pkgname}-%{version}
 
 # 2 tests failing with KeyError: 'location' (not in response headers)
 sed -i 's/test_login/_test_login/' allauth/socialaccount/providers/openid/tests.py
@@ -84,7 +86,8 @@ sed -i 's/test_login/_test_login/' allauth/socialaccount/providers/openid/tests.
 
 %check
 export PYTHONPATH="$(pwd)"
-%python_expand django-admin-%{$python_bin_suffix} test --settings=test_settings
+export PYTEST_ADDOPTS="--ds=tests.regular.settings"
+%pytest allauth
 
 %files %{python_files}
 %doc AUTHORS ChangeLog.rst README.rst
