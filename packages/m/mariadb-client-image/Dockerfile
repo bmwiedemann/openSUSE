@@ -14,8 +14,8 @@
 # You can contact the BCI team via https://github.com/SUSE/bci/discussions
 
 
-#!BuildTag: opensuse/mariadb-client:11.2
-#!BuildTag: opensuse/mariadb-client:11.2-%RELEASE%
+#!BuildTag: opensuse/mariadb-client:11.4
+#!BuildTag: opensuse/mariadb-client:11.4-%RELEASE%
 #!BuildTag: opensuse/mariadb-client:latest
 
 FROM opensuse/tumbleweed:latest
@@ -26,12 +26,12 @@ MAINTAINER openSUSE (https://www.opensuse.org/)
 # labelprefix=org.opensuse.application.mariadb-client
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed MariaDB Client"
 LABEL org.opencontainers.image.description="MariaDB Client container based on the openSUSE Tumbleweed Base Container Image."
-LABEL org.opencontainers.image.version="11.2"
+LABEL org.opencontainers.image.version="11.4"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/mariadb-client:11.2-%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/mariadb-client:11.4-%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime"
 LABEL org.opensuse.release-stage="released"
@@ -41,4 +41,4 @@ LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/
 RUN set -euo pipefail; zypper -n in --no-recommends mariadb-client; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
 CMD ["mariadb"]
 # sanity check that the version from the tag is equal to the version of mariadb-client that we expect
-RUN set -euo pipefail; [ "$(rpm -q --qf '%{version}' mariadb-client | cut -d '.' -f -2)" = "11.2" ]
+RUN set -euo pipefail; [ "$(rpm -q --qf '%{version}' mariadb-client | cut -d '.' -f -2)" = "11.4" ]
