@@ -1,9 +1,9 @@
 <services>
   <service name="tar_scm" mode="disabled">
    <param name="changesgenerate">disable</param>
-   <param name="version">6.7.1</param>
+   <param name="version">6.7.2</param>
    <param name="url">git://code.qt.io/qt/qtmqtt.git</param>
-   <param name="revision">v6.7.1</param>
+   <param name="revision">v6.7.2</param>
    <param name="scm">git</param>
    <param name="filename">qtmqtt-everywhere-src</param>
   </service>
