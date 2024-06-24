@@ -17,7 +17,7 @@
 
 
 Name:           tio
-Version:        3.3
+Version:        3.4
 Release:        0
 Summary:        Simple TTY terminal I/O application
 License:        GPL-2.0-or-later

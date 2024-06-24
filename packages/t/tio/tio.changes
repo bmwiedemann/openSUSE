@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Jun 15 17:42:52 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.4
+  * Update configuration output.
+  * Clean up script run interaction text.
+  * Fix unbounded writes.
+  * Add history and editing feature to line input mode.
+  * Use up and down arrow keys to navigate history.
+  * Use left and right arrow keys to move cursor back and forth.
+  * We try mimic the behaviour of GNU readline which we can not
+    use because.
+  * Reuse socket address.
+  * Fix line input mode.
+  * Fix so that ABCD are no longer ignored.
+  * Make sure ICRNL, IGNCR, INLCR take effect.
+  * Include correct header for poll().
+  * Add group write permission to xymodem received file.
+  * Fix missing open() flags in xymodem_receive().
+  * Show current mappings in the configuration printout.
+  * Use "ctrl-t m" to change mappings interactively.
+  * Prompt for Lua script or shell command in interactive session.
+  * Added support to receive XMODEM-CRC files from the connected
+    serial port.
+
+-------------------------------------------------------------------
 Thu May 16 19:29:37 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.3
