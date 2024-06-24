@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 23 08:43:04 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix applying the patch on Leap (SLE)
+
+-------------------------------------------------------------------
 Wed Jun 12 12:06:29 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Cherry-pick upstream patch to fix build with GCC 14
