@@ -156,4 +156,20 @@
     <comment></comment>
     <requestid>1181347</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fa12646c7f0d08059b90e291055a41a0</srcmd5>
+    <version>1.49.0</version>
+    <time>1719255401</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.49.0:
+  * [Servers] Fixed the page to complete Cloudflare challenges
+  * [Servers] Argos Comics (pt_BR): Update
+  * [Servers] MangaHub (EN): Update
+  * [Servers] PhenixScans (FR): Update
+  * [Servers] TCB Scans (EN): Update
+  * [Servers] Ragna Scan (ES): Disabled
+  * [Servers] Tecno Scan (ES): Disabled
+  * [L10n] Updated Turkish translation (forwarded request 1182934 from rrahl0)</comment>
+    <requestid>1183004</requestid>
+  </revision>
 </revisionlist>

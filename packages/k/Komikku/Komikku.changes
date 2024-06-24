@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jun 23 23:05:09 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to 1.49.0:
+  * [Servers] Fixed the page to complete Cloudflare challenges
+  * [Servers] Argos Comics (pt_BR): Update
+  * [Servers] MangaHub (EN): Update
+  * [Servers] PhenixScans (FR): Update
+  * [Servers] TCB Scans (EN): Update
+  * [Servers] Ragna Scan (ES): Disabled
+  * [Servers] Tecno Scan (ES): Disabled
+  * [L10n] Updated Turkish translation
+
+-------------------------------------------------------------------
 Sun Jun 16 13:15:00 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - update to 1.48.1:
