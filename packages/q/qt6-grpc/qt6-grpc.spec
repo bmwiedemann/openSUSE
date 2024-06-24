@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.7.1
+%define real_version 6.7.2
 %define short_version 6.7
 %define short_name qtgrpc
 %define tar_name qtgrpc-everywhere-src
@@ -27,8 +27,16 @@
 %define pkg_suffix -docs
 %endif
 #
+# protobuf and absl packages in Leap 15.5 are incompatible, qtgrpcgen and
+# protobuf types libraries can't be built (https://bugzilla.suse.com/show_bug.cgi?id=1222343)
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150500
+%define with_usable_protobuf 1
+%else
+%define with_usable_protobuf 0
+%endif
+
 Name:           qt6-grpc%{?pkg_suffix}
-Version:        6.7.1
+Version:        6.7.2
 Release:        0
 Summary:        gRPC and Protobuf generator and bindings for Qt framework
 License:        GPL-3.0-or-later
@@ -109,7 +117,9 @@ Requires:       cmake(Qt6Protobuf) = %{real_version}
 This package provides private headers of libQt6Protobuf that do not have any
 ABI or API guarantees.
 
+%if %{with_usable_protobuf}
 %{qt6_examples_package}
+%endif
 
 %endif
 
@@ -146,7 +156,9 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtGrpcTestsConfig.cmake
 %{_qt6_cmakedir}/Qt6Grpc/
 %{_qt6_cmakedir}/Qt6GrpcQuick/
+%if %{with_usable_protobuf}
 %{_qt6_cmakedir}/Qt6GrpcTools/
+%endif
 %{_qt6_descriptionsdir}/Grpc.json
 %{_qt6_descriptionsdir}/GrpcQuick.json
 %{_qt6_includedir}/QtGrpc/
@@ -155,7 +167,9 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_libdir}/libQt6Grpc.so
 %{_qt6_libdir}/libQt6GrpcQuick.prl
 %{_qt6_libdir}/libQt6GrpcQuick.so
+%if %{with_usable_protobuf}
 %{_qt6_libexecdir}/qtgrpcgen
+%endif
 %{_qt6_metatypesdir}/qt6grpc_*_metatypes.json
 %{_qt6_metatypesdir}/qt6grpcquick_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_grpc.pri
@@ -174,28 +188,37 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %files -n libQt6Protobuf6
 %license LICENSES/*
 %{_qt6_libdir}/libQt6Protobuf.so.*
+%if %{with_usable_protobuf}
 %{_qt6_libdir}/libQt6ProtobufQtCoreTypes.so.*
 %{_qt6_libdir}/libQt6ProtobufQtGuiTypes.so.*
 %{_qt6_libdir}/libQt6ProtobufWellKnownTypes.so.*
+%endif
 
 %files -n qt6-protobuf-devel
 %{_qt6_cmakedir}/Qt6/FindWrapProtobuf.cmake
 %{_qt6_cmakedir}/Qt6/FindWrapProtoc.cmake
 %{_qt6_cmakedir}/Qt6Protobuf/
+%if %{with_usable_protobuf}
 %{_qt6_cmakedir}/Qt6ProtobufQtCoreTypes/
 %{_qt6_cmakedir}/Qt6ProtobufQtGuiTypes/
 %{_qt6_cmakedir}/Qt6ProtobufWellKnownTypes/
 %{_qt6_cmakedir}/Qt6ProtobufTools/
+%endif
 %{_qt6_descriptionsdir}/Protobuf.json
+%if %{with_usable_protobuf}
 %{_qt6_descriptionsdir}/ProtobufQtCoreTypes.json
 %{_qt6_descriptionsdir}/ProtobufQtGuiTypes.json
 %{_qt6_descriptionsdir}/ProtobufWellKnownTypes.json
+%endif
 %{_qt6_includedir}/QtProtobuf/
+%if %{with_usable_protobuf}
 %{_qt6_includedir}/QtProtobufQtCoreTypes/
 %{_qt6_includedir}/QtProtobufQtGuiTypes/
 %{_qt6_includedir}/QtProtobufWellKnownTypes/
+%endif
 %{_qt6_libdir}/libQt6Protobuf.prl
 %{_qt6_libdir}/libQt6Protobuf.so
+%if %{with_usable_protobuf}
 %{_qt6_libdir}/libQt6ProtobufQtCoreTypes.prl
 %{_qt6_libdir}/libQt6ProtobufQtCoreTypes.so
 %{_qt6_libdir}/libQt6ProtobufQtGuiTypes.prl
@@ -203,26 +226,35 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_libdir}/libQt6ProtobufWellKnownTypes.prl
 %{_qt6_libdir}/libQt6ProtobufWellKnownTypes.so
 %{_qt6_libexecdir}/qtprotobufgen
+%endif
 %{_qt6_metatypesdir}/qt6protobuf_*_metatypes.json
+%if %{with_usable_protobuf}
 %{_qt6_metatypesdir}/qt6protobufqtcoretypes_*_metatypes.json
 %{_qt6_metatypesdir}/qt6protobufqtguitypes_*_metatypes.json
 %{_qt6_metatypesdir}/qt6protobufwellknowntypes_*_metatypes.json
+%endif
 %{_qt6_mkspecsdir}/modules/qt_lib_protobuf.pri
+%if %{with_usable_protobuf}
 %{_qt6_mkspecsdir}/modules/qt_lib_protobufqtcoretypes.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_protobufqtguitypes.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_protobufwellknowntypes.pri
+%endif
 %{_qt6_pkgconfigdir}/Qt6Protobuf.pc
+%if %{with_usable_protobuf}
 %{_qt6_pkgconfigdir}/Qt6ProtobufQtCoreTypes.pc
 %{_qt6_pkgconfigdir}/Qt6ProtobufQtGuiTypes.pc
 %{_qt6_pkgconfigdir}/Qt6ProtobufWellKnownTypes.pc
+%endif
 %exclude %{_qt6_includedir}/QtProtobuf/%{real_version}
 
 %files -n qt6-protobuf-private-devel
 %{_qt6_includedir}/QtProtobuf/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_protobuf_private.pri
+%if %{with_usable_protobuf}
 %{_qt6_mkspecsdir}/modules/qt_lib_protobufqtcoretypes_private.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_protobufqtguitypes_private.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_protobufwellknowntypes_private.pri
+%endif
 
 %endif
 
