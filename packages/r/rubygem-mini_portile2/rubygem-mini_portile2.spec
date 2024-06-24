@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-mini_portile2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-mini_portile2
-Version:        2.8.5
+Version:        2.8.7
 Release:        0
 %define mod_name mini_portile2
 %define mod_full_name %{mod_name}-%{version}
