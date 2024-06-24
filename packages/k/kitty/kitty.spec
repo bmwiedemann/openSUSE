@@ -19,7 +19,7 @@
 # sphinx_copybutton not in Factory
 %bcond_with docs
 Name:           kitty
-Version:        0.35.1
+Version:        0.35.2
 Release:        0
 Summary:        A GPU-based terminal emulator
 License:        GPL-3.0-only
@@ -154,7 +154,12 @@ python3.9 -B \
 %endif
 %endif
 %endif
-setup.py --verbose linux-package --prefix %{buildroot}%{_prefix} --libdir-name %{_lib}
+setup.py \
+  --verbose \
+  linux-package \
+  --prefix %{buildroot}%{_prefix} \
+  --libdir-name %{_lib} \
+  --extra-include-dirs %{_prefix}/include/libxkbcommon
 
 %fdupes %{buildroot}%{_libdir}/%{name}
 

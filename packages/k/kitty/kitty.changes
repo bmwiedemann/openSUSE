@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jun 22 06:59:49 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.35.2:
+  * A new option, window_logo_scale to specify how window logos are scaled
+    with respect to the size of the window containing the logo (#7534)
+  * A new option, cursor_shape_unfocused to specify the shape of the text
+    cursor in unfocused OS windows (#7544)
+  * Remote control: Fix empty password not working (#7538)
+  * Wayland: Fix regression in 0.34.0 causing flickering on window resize
+    on NVIDIA drivers (#7493)
+  * Wayland labwc: Fix kitty timing out waiting for compositor to quit
+    messing around with scales on labwc (#7540)
+  * Fix scrollback_indicator_opacity not actually controlling the
+    opacity (#7557)
+  * URL detection: Fix IPv6 hostnames breaking URL detection (#7565)
+
+-------------------------------------------------------------------
 Fri May 31 14:35:50 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.35.1:
