@@ -19,7 +19,7 @@
 %define somajor 0
 %define libdirname tree_sitter
 Name:           tree-sitter
-Version:        0.22.2
+Version:        0.22.6
 Release:        0
 Summary:        An incremental parsing system for programming tools
 License:        GPL-2.0-only AND MIT
@@ -73,6 +73,9 @@ developing applications that use %{name}.
 %prep
 %autosetup -p1 -a1
 
+#remove gitignore file from docs
+rm %{_builddir}/%{name}-%{version}/docs/.gitignore
+
 cp %{SOURCE21} .
 cp %{SOURCE22} .
 cp %{SOURCE23} .
@@ -103,9 +106,11 @@ install -Dm644 %{SOURCE25} %{buildroot}%{_fileattrsdir}/$(basename %{SOURCE25})
 install -Dm755 %{SOURCE26} %{buildroot}%{_rpmconfigdir}/$(basename %{SOURCE26})
 
 %post -n lib%{name}%{somajor} -p /sbin/ldconfig
+
 %postun -n lib%{name}%{somajor} -p /sbin/ldconfig
 
 %files
+%license LICENSE
 %doc README.md CONTRIBUTING.md
 %{_bindir}/tree-sitter
 %{_rpmconfigdir}/tree-sitter-target.py

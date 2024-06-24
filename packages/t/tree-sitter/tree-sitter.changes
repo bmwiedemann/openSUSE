@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Fri Jun 21 20:32:46 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to version 0.22.6:
+  * Improve handling of serialization buffer overflows
+  * Reverse iteration through node parents
+  * cli: Support NO_COLOR
+  * cli: Add test listing and allow users to parse a specific test number
+  * grammar: Add "inherits" field if available
+  * Correctly load field data from wasm languages
+  * Improve error message when the tree-sitter field is malformed
+  * Don't error out on package.json lookup errors if --no-bindings is passed
+  * cli: Keep default cc flags in build
+  * cli: Properly account for multi-grammar repos when using docker to build a wasm parser
+  * generate: Don't check arbitrarily named dirs
+  * generate: Take AsRef<Path> for the path parameter to avoid clones
+  * highlight: Correct signature of ts_highlighter_add_language
+  * lib: Do not return field names for extras
+  * lib: Advance the lookahead end byte by 4 when there's an invalid code point
+  * rust: Update README example
+  * rust: Use unix + wasi cfg instead of not windows for fd
+  * wasm: Correct childrenFromFieldXXX method signatures
+  * xtask: Always bump every crate in tandem
+  * zig: Make usable as a zig dependency
+  * Documentation: Mention build command variables
+- update to version 0.22.5:
+  * Avoid generating unused character set constants
+  * rust: Compilation on wasm32-wasi
+- update to version 0.22.4:
+  * Fix sorting of transitions within a lex state
+  * Include 2-character ranges in array-based state transitions
+- update to version 0.22.3:
+  * Add strncat to wasm stdlib
+  * Generate simpler code for matching large character sets
+  * When loading languages via WASM, gracefully handle memory errors and leaks in external scanners
+  * bindings: Add utf-8 flag to python & node
+  * bindings: Generate parser.c if missing
+  * bindings: Remove required platforms for swift
+  * cli: Fix mismatched parenthesis when accounting for &&
+  * lib: Do not consider childless nodes for ts_node_parent
+  * lib: Properly account for aliased root nodes and root nodes with
+    children in ts_subtree_string
+  * lib: Account for the root node of a tree cursor being an alias
+  * lib: Use correct format specifier in log message
+  * parser: Fix variadic macro
+  * render: Proper function prototypes
+  * Add a semicolon after SKIP macros
+  * Add back build-wasm temporarily
+  * Add lifetime to matches function
+  * Default output directory for build --wasm should use current_dir
+  * Fix sorting of wasm stdlib symbols
+  * Insert "tree-sitter" section in current directory's package.json if it exists
+  * Tie the lifetime of the cursor to the query in QueryCursor::captures()
+  * Wrong flag check in build.rs
+  * cli: Reduced the compile time of generated parsers by generating C code with fewer conditionals
+  * parser: Make REDUCE macro non-variadic
+  * js: Misc fixes & tidying
+  * rust: Misc fixes & tidying
+
+-------------------------------------------------------------------
 Mon Mar 25 21:58:38 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Add workaround to packaging macros for RPM being to old on current Leap
