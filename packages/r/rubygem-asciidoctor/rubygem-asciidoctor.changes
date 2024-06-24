@@ -1,4 +1,156 @@
 -------------------------------------------------------------------
+Fri Jun 21 09:18:33 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- 2.0.23:
+
+This is a patch release in the 2.0.x release line to fix bugs and deal with compliance issues.
+
+The primary bug fix in this release is to not duplicate the block attribute line above a detached block that breaks a dlist, which fixes the duplicate role warning on that detached block.
+The main compliance improvement is to encode spaces in mailto links using %20, in accordance with RFC 3986, instead of +.
+
+This release introduces several fixes and improvements related to parsing a table that has jagged rows.
+If the colspan of the last cell in a row, including the last row, exceeds the specified number of columns, only that row is dropped.
+On the other hand, if the last row is missing cells, an error message is logged to notify the author.
+
+If a URL is used as the target of an xref shorthand, the processor now treats the URL as a fragment identifier instead of crashing.
+
+Finally, repeating spaces in verbatim content in the manpage output are preserved.
+
+## Distribution
+
+- [RubyGem (asciidoctor)](https://rubygems.org/gems/asciidoctor)
+
+Asciidoctor is also packaged for [Fedora](https://apps.fedoraproject.org/packages/rubygem-asciidoctor), [Debian](https://packages.debian.org/sid/asciidoctor), [Ubuntu](https://packages.ubuntu.com/search?keywords=asciidoctor), [Alpine Linux](https://pkgs.alpinelinux.org/packages?name=asciidoctor), [OpenSUSE](https://software.opensuse.org/package/rubygem-asciidoctor), and [Homebrew](https://formulae.brew.sh/formula/asciidoctor). You can use the system's package manager to install the package named **asciidoctor**.
+
+## Changelog
+
+### Compliance
+
+* Encode spaces in mailto links as %20, in accordance with RFC 3986, instead of + (#4576)
+
+### Improvements
+
+* Log error when an incomplete row is detected at the end of a table (#4573)
+
+### Bug Fixes
+
+* Don't leave behind empty line inside skipped preprocessor conditional (#4580)
+* Don't duplicate block attribute line above detached block that breaks a dlist; fixes duplicate role on detached block (#4565)
+* Don't crash when parsing xref shorthand if target starts with URL protocol and text is offset by space (#4570)
+* Only drop current row if colspan of last cell exceeds specified number of columns (#4587)
+* Drop last row if colspan of last cell in table exceeds specified number of columns (#4587)
+* Preserve repeating spaces in verbatim content in manpage output (#3583)
+
+## Release meta
+
+Released on: 2024-05-17
+Released by: @mojavelinux
+Release beer: Marmot Passage by Two 22 Brew
+
+Logs: [resolved issues](https://github.com/asciidoctor/asciidoctor/issues?q=is%3Aissue+label%3Av2.0.23+is%3Aclosed) | [source diff](https://github.com/asciidoctor/asciidoctor/compare/v2.0.22...v2.0.23) | [gem diff](https://my.diffend.io/gems/asciidoctor/v2.0.22/v2.0.23)
+
+## Credits
+
+A very special thanks to all the **awesome** [supporters of the Asciidoctor OpenCollective campaign](https://opencollective.com/asciidoctor), who provide critical funding for the ongoing development of this project.
+
+2.0.22:
+
+This is a patch release in the 2.0.x release line to further compatibility with Ruby 3.3.
+
+The most critical fix in this release is to remove use of the base64 library since it will no longer being provided as part of the Ruby language starting with Ruby 3.4. When using Ruby 3.3, users would see a warning if this library is used, which happens when the data-uri attribute is set. The functionality has been replaced with a lower-level method on the String object (String#pack), which the base64 library delegates to anyway.
+
+This release also sets the cloaked-context attribute on a source block that is defined using either a styled paragraph or a literal or fenced code structural container. This matches the functionality used for custom block extensions (when the source context does not match the final parsed context).
+
+## Distribution
+
+- [RubyGem (asciidoctor)](https://rubygems.org/gems/asciidoctor)
+
+Asciidoctor is also packaged for [Fedora](https://apps.fedoraproject.org/packages/rubygem-asciidoctor), [Debian](https://packages.debian.org/sid/asciidoctor), [Ubuntu](https://packages.ubuntu.com/search?keywords=asciidoctor), [Alpine Linux](https://pkgs.alpinelinux.org/packages?name=asciidoctor), [OpenSUSE](https://software.opensuse.org/package/rubygem-asciidoctor), and [Homebrew](https://formulae.brew.sh/formula/asciidoctor). You can use the system's package manager to install the package named **asciidoctor**.
+
+## Changelog
+
+### Improvements
+
+* Set `cloaked-context` attribute on source block when context is not `:listing` (#4556)
+
+### Compliance
+
+* Remove use of base64 library to prevent warning in Ruby >= 3.3 (#4561)
+
+## Release meta
+
+Released on: 2024-03-08
+Released by: @mojavelinux
+Release beer: Turbo Laser by Resolute Brewing Company
+
+Logs: [resolved issues](https://github.com/asciidoctor/asciidoctor/issues?q=is%3Aissue+label%3Av2.0.22+is%3Aclosed) | [source diff](https://github.com/asciidoctor/asciidoctor/compare/v2.0.21...v2.0.22) | [gem diff](https://my.diffend.io/gems/asciidoctor/v2.0.21/v2.0.22)
+
+## Credits
+
+A very special thanks to all the **awesome** [supporters of the Asciidoctor OpenCollective campaign](https://opencollective.com/asciidoctor), who provide critical funding for the ongoing development of this project.
+
+2.0.21:
+
+This is a patch release in the 2.0.x release line, primarily to address compatibility with Ruby 3.3. While development of Asciidoctor 2.1 is beginning to pick up again, we extracted several other important improvements and bug fixes from main to include in this patch release.
+
+The most critical fix in this release is to make Asciidoctor's logger compatible with the logger API in Ruby 3.3. The code is now tested against Ruby 3.3 on each change. Nearly as important, this release also turns off Ruby's system-dependent newline conversion when writing files so that Asciidoctor's output is consistent between *nix and Windows.
+
+Numerous changes were made to correct AsciiDoc parsing. A nested dlist attached using a list continuation no longer consumes a detached paragraph. And an attached block is correctly attached to a nested dlist when that dlist is offset from its parent by an empty line. The secondary and tertiary terms on the `indexterm` macro are preserved when the primary term is quoted and contains an equals sign. And a bare URL enclosed in angle brackets acts as unconstrained syntax that stops at the first occurrence of a closing angle bracket. When includes are not enabled, any spaces in the include target are preserved when generating the fallback link.
+
+Several changes were made to the DocBook output to address compliance. The abstract is moved inside the `<info>` tag (applies to both the abstract in the preamble as well an an abstract for a book part). The `scaledwidth` and `scale` attributes are now supported on an inline macro, like with a block image macro. 
+
+A few changes to the manpage output were made. Cells in the head row are styled as bold. Paragraph breaks in a normal table cell are preserved.
+
+Finally, a few refinements to the default stylesheet were applied. The extra border below the doctitle when the sidebar toc is collapsed into main content area was removed. And a text decoration was added to the active footnote number link in the footnotes list.
+
+## Distribution
+
+- [RubyGem (asciidoctor)](https://rubygems.org/gems/asciidoctor)
+
+Asciidoctor is also packaged for [Fedora](https://apps.fedoraproject.org/packages/rubygem-asciidoctor), [Debian](https://packages.debian.org/sid/asciidoctor), [Ubuntu](https://packages.ubuntu.com/search?keywords=asciidoctor), [Alpine Linux](https://pkgs.alpinelinux.org/packages?name=asciidoctor), [OpenSUSE](https://software.opensuse.org/package/rubygem-asciidoctor), and [Homebrew](https://formulae.brew.sh/formula/asciidoctor). You can use the system's package manager to install the package named **asciidoctor**.
+
+## Changelog
+
+### Compliance
+
+* Turn off system-dependent newline conversion when writing files; don't convert line feeds to system-dependent newline (#4550)
+* Support logger in Ruby 3.3 by instantiating super class (#4493) (*@mtasaka*)
+* Add support for `scaledwidth` and `scale` attributes on inline image macro in DocBook output (#4552)
+* Update latest Ruby to 3.3 in CI workflows
+
+### Improvements
+
+* Change title to doctitle in warning message about use of abstract to make subject more clear
+* Modify default stylesheet to add text decoration to active footnote number link in footnotes list (#4530) (@Larhzu)
+
+### Bug Fixes
+
+* Nested dlist attached using list continuation should not consume detached paragraph (#3535)
+* Don't break nested dlist with attached block if offset from parent list by empty line (#3693)
+* Preserve paragraph breaks in normal table cell in manpage output (#4481)
+* Style cells in head row as bold in manpage output (#4490)
+* Escape spaces in include target (using inline passthrough) when generating link from include directive (#4461)
+* Move abstract inside info tag in DocBook output (#3602)
+* Honor secondary and tertiary terms on `indexterm` macro when primary term is quoted and contains an equals sign (#3652)
+* Remove extra border below doctitle when sidebar toc is collapsed into main content area (#4523)
+* Treat bare URL enclosed in angle brackets as unconstrained syntax; only match until closing angled bracket (#4468)
+* Allow URL enclosed in angled brackets syntax to be escaped using backslash (#4468)
+
+## Release meta
+
+Released on: 2024-02-20
+Released by: @mojavelinux
+Release beer: Lunch by Maine Beer Company
+
+Logs: [resolved issues](https://github.com/asciidoctor/asciidoctor/issues?q=is%3Aissue+label%3Av2.0.21+is%3Aclosed) | [source diff](https://github.com/asciidoctor/asciidoctor/compare/v2.0.20...v2.0.21) | [gem diff](https://my.diffend.io/gems/asciidoctor/v2.0.20/v2.0.21)
+
+## Credits
+
+A very special thanks to all the **awesome** [supporters of the Asciidoctor OpenCollective campaign](https://opencollective.com/asciidoctor), who provide critical funding for the ongoing development of this project.
+
+
+
+-------------------------------------------------------------------
 Wed Jun 21 10:53:45 UTC 2023 - Osama Alrifai <osamaalrifai18@gmail.com>
 
 - update to 2.0.20
