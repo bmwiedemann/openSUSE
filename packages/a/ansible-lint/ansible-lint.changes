@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 21 19:03:45 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.6.1:
+  * Bugfixes
+    - Fix working directory when used as an github action (#4213)
+      @bkaraoren
+    - Fix relative imports in args rule (#4216) @corubba
+    - Fix cmd args with no-free-form transformer (#4215) @Qalthos
+    - Accept changlog.yml as a valid changelog (#4218) @cavcrosby
+    - Avoid using warn for command/shell actions (#4207) @ssbarnea
+    - Update Contributing docs and add tox as test
+      optional-dependency (#4209) @hdub-tech
+
+-------------------------------------------------------------------
 Tue Jun  4 19:22:21 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 24.6.0:
