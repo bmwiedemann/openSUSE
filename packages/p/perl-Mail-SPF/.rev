@@ -181,4 +181,31 @@ On Wednesday 19 September 2012, Julian Mehnle wrote:
     <comment></comment>
     <requestid>1160808</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>bd648a60f17146dd23c2e7a2ebbfac31</srcmd5>
+    <version>3.202.406.170</version>
+    <time>1719255040</time>
+    <user>anag+factory</user>
+    <comment>- updated to 3.202.406.170 (3.20240617)
+   see /usr/share/doc/packages/perl-Mail-SPF/Changes
+  3.20240617 2024-06-17 Australia/Melbourne
+    - Update INSTALL file for Dist::Zilla changes
+      Thanks to Giovanni &lt;g.bechis@snb.it&gt;
+    - Fix memory leak in Mail::SPF::Server when cacheing a Mail::SPF::MacroString
+      Thanks to Giovanni &lt;g.bechis@snb.it&gt; and Felipe Gasper
+    - When mfrom is empty, create a synthetic mfrom (postmaster@helo) and check
+      that identity using the mfrom scope as specified in RFC7208
+      Thanks to Giovanni &lt;g.bechis@snb.it&gt;
+    - Fix missing declare in Mail::SPF::Server
+      Thanks to Giovanni &lt;g.bechis@snb.it&gt;
+    - require Mail::SPF::Mech when needed
+      Thanks to Giovanni &lt;g.bechis@snb.it&gt;
+    - correctly handle empty labels
+      Thanks to Giovanni &lt;g.bechis@snb.it&gt;
+    - use &quot;try&quot; instead of &quot;eval&quot;
+      Thanks to Giovanni &lt;g.bechis@snb.it&gt;
+    - error out if the lookup fails
+      Thanks to Giovanni &lt;g.bechis@snb.it&gt; (forwarded request 1182900 from tinita)</comment>
+    <requestid>1182965</requestid>
+  </revision>
 </revisionlist>

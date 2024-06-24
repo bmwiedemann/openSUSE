@@ -18,10 +18,10 @@
 
 %define cpan_name Mail-SPF
 Name:           perl-Mail-SPF
-Version:        3.202.402.60
+Version:        3.202.406.170
 Release:        0
-# 3.20240206 -> normalize -> 3.202.402.60
-%define cpan_version 3.20240206
+# 3.20240617 -> normalize -> 3.202.406.170
+%define cpan_version 3.20240617
 License:        BSD-3-Clause
 Summary:        An object-oriented implementation of Sender Policy Framework
 URL:            https://metacpan.org/release/%{cpan_name}

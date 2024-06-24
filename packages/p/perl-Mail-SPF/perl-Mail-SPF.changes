@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Jun 23 16:30:15 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 3.202.406.170 (3.20240617)
+   see /usr/share/doc/packages/perl-Mail-SPF/Changes
+
+  3.20240617 2024-06-17 Australia/Melbourne
+    - Update INSTALL file for Dist::Zilla changes
+      Thanks to Giovanni <g.bechis@snb.it>
+    - Fix memory leak in Mail::SPF::Server when cacheing a Mail::SPF::MacroString
+      Thanks to Giovanni <g.bechis@snb.it> and Felipe Gasper
+    - When mfrom is empty, create a synthetic mfrom (postmaster@helo) and check
+      that identity using the mfrom scope as specified in RFC7208
+      Thanks to Giovanni <g.bechis@snb.it>
+    - Fix missing declare in Mail::SPF::Server
+      Thanks to Giovanni <g.bechis@snb.it>
+    - require Mail::SPF::Mech when needed
+      Thanks to Giovanni <g.bechis@snb.it>
+    - correctly handle empty labels
+      Thanks to Giovanni <g.bechis@snb.it>
+    - use "try" instead of "eval"
+      Thanks to Giovanni <g.bechis@snb.it>
+    - error out if the lookup fails
+      Thanks to Giovanni <g.bechis@snb.it>
+
+-------------------------------------------------------------------
 Fri Mar 22 19:30:20 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Remove fix_pod.patch, fixed upstream
