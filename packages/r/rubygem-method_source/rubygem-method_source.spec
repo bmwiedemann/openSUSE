@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-method_source
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-method_source
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 %define mod_name method_source
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
@@ -37,7 +36,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        retrieve the sourcecode for a method
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 retrieve the sourcecode for a method.
