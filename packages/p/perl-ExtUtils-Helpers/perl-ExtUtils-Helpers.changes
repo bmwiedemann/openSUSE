@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 23 16:18:43 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 0.27.0 (0.027)
+   see /usr/share/doc/packages/perl-ExtUtils-Helpers/Changes
+
+  0.027     2024-06-18 20:34:46+02:00 Europe/BrusselsA
+            - Revert "Make split_like_shell always unixy"
+
+-------------------------------------------------------------------
 Sat Sep 10 05:25:15 UTC 2016 - coolo@suse.com
 
 - updated to 0.026

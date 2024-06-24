@@ -56,4 +56,15 @@
     <comment>1</comment>
     <requestid>427104</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b782eb5e2243f5a4668463335cf32398</srcmd5>
+    <version>0.27.0</version>
+    <time>1719255042</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.27.0 (0.027)
+   see /usr/share/doc/packages/perl-ExtUtils-Helpers/Changes
+  0.027     2024-06-18 20:34:46+02:00 Europe/BrusselsA
+            - Revert &quot;Make split_like_shell always unixy&quot; (forwarded request 1182887 from tinita)</comment>
+    <requestid>1182966</requestid>
+  </revision>
 </revisionlist>
