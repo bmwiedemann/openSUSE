@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-launchy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-launchy
-Version:        2.5.2
+Version:        3.0.1
 Release:        0
 %define mod_name launchy
 %define mod_full_name %{mod_name}-%{version}
@@ -54,7 +54,7 @@ applications from within ruby programs.
 %install
 %gem_install \
   --symlink-binaries \
-  --doc-files="HISTORY.md LICENSE README.md" \
+  --doc-files="HISTORY.md LICENSE.txt README.md" \
   -f
 
 %gem_packages
