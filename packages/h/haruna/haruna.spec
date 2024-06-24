@@ -60,7 +60,7 @@ Requires:       kf6-breeze-icons
 Requires:       yt-dlp
 
 %description
-%{name} is a video player built with Qt/QML on top of libmpv.
+Haruna is a video player built with Qt/QML on top of libmpv.
 
 %lang_package
 
@@ -68,13 +68,12 @@ Requires:       yt-dlp
 %autosetup -p1
 
 %build
-export CXX=g++
-test -x "$(type -p g++-13)" && export CXX=g++-13
-%cmake
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%cmake_install
+%kf6_install
 
 %find_lang %{name}
 
@@ -82,17 +81,17 @@ test -x "$(type -p g++-13)" && export CXX=g++-13
 rm -r %{buildroot}%{_datadir}/doc
 
 # remove oddly-sized icons
-rm -r %{buildroot}%{_datadir}/icons/hicolor/44x44 \
-       %{buildroot}%{_datadir}/icons/hicolor/150x150 \
-       %{buildroot}%{_datadir}/icons/hicolor/310x310
+rm -r %{buildroot}%{_kf6_iconsdir}/hicolor/44x44 \
+      %{buildroot}%{_kf6_iconsdir}/hicolor/150x150 \
+      %{buildroot}%{_kf6_iconsdir}/hicolor/310x310
 
 %files
 %license LICENSES/CC-BY-4.0.txt LICENSES/GPL-3.0-or-later.txt
 %doc README.md
-%{_bindir}/%{name}
-%{_datadir}/applications/org.kde.haruna.desktop
-%{_datadir}/icons/hicolor/*/apps/haruna.*g
-%{_datadir}/metainfo/org.kde.haruna.metainfo.xml
+%{_kf6_bindir}/%{name}
+%{_kf6_applicationsdir}/org.kde.haruna.desktop
+%{_kf6_iconsdir}/hicolor/*/apps/haruna.*g
+%{_kf6_appstreamdir}/org.kde.haruna.metainfo.xml
 
 %files lang -f %{name}.lang
 
