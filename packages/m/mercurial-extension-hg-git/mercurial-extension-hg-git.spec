@@ -22,7 +22,20 @@
 %bcond_with test
 %endif
 
-%define pythons python3
+%if 0%{?suse_version} > 1600
+# Tumbleweed
+%define pythons                     python3
+%define mercurial_python            python3
+%define mercurial_python_executable python3
+%else
+%{?sle15_python_module_pythons}
+# Leap 15.6
+%if %pythons == "python311"
+%define mercurial_python            python311
+%define mercurial_python_executable python3.11
+%endif
+%endif
+
 Name:           mercurial-extension-hg-git
 Version:        1.1.1
 Release:        0
@@ -32,27 +45,30 @@ Group:          Development/Tools/Version Control
 URL:            http://foss.heptapod.net/mercurial/hg-git
 Source0:        https://files.pythonhosted.org/packages/source/h/hg-git/hg-git-%{version}.tar.gz
 Source90:       tests.blacklist
+BuildRequires:  %{mercurial_python}
+BuildRequires:  %{mercurial_python}-dulwich >= 0.19.3
+# python311-gpg is not available on Leap 15.6.
+%if 0%{?suse_version} > 1600
+BuildRequires:  %{mercurial_python}-gpg
+%endif
+BuildRequires:  %{mercurial_python}-pip
+BuildRequires:  %{mercurial_python}-setuptools
+BuildRequires:  %{mercurial_python}-setuptools_scm
+BuildRequires:  %{mercurial_python}-wheel
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  mercurial
 BuildRequires:  openssh-clients
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3
-BuildRequires:  python3-dulwich >= 0.19.3
-BuildRequires:  python3-gpg
-BuildRequires:  python3-pip
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-setuptools_scm
-BuildRequires:  python3-wheel
 # On Leap, setuptools_scm does not explicitly require toml, but needs it to provide the correct version in dist-info.
 %if 0%{?suse_version} < 1550
-BuildRequires:  python3-toml
+BuildRequires:  %{mercurial_python}-toml
 %endif
 BuildRequires:  unzip
+Requires:       %{mercurial_python}-dulwich >= 0.19.3
 Requires:       mercurial
-Requires:       python3-dulwich >= 0.19.3
-Provides:       python3-hg-git = %{version}-%{release}
-Obsoletes:      python3-hg-git < %{version}-%{release}
+Provides:       %{mercurial_python}-hg-git = %{version}-%{release}
+Obsoletes:      %{mercurial_python}-hg-git < %{version}-%{release}
 BuildArch:      noarch
 
 %description
@@ -68,16 +84,16 @@ The Hg-Git plugin can convert commits/changesets losslessly from one system to a
 
 %install
 %pyproject_install
-%fdupes %{buildroot}%{python3_sitelib}
+%fdupes %{buildroot}%{python_sitelib}
 
 %check
 %if %{with test}
-make tests HGPYTHON=python3 TESTFLAGS="--blacklist=%{SOURCE90}"
+make tests HGPYTHON=%{mercurial_python_executable} TESTFLAGS="--blacklist=%{SOURCE90}"
 %endif
 
 %files
 %doc README.rst
 %license COPYING
-%{python3_sitelib}/*
+%{python_sitelib}/*
 
 %changelog
