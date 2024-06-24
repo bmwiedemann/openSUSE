@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-mini_magick
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,11 @@
 #
 
 Name:           rubygem-mini_magick
-Version:        4.12.0
+Version:        4.13.1
 Release:        0
 %define mod_name mini_magick
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.0}
+BuildRequires:  %{ruby >= 2.3}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/minimagick/minimagick
@@ -37,7 +36,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Manipulate images with minimal use of memory via ImageMagick /
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 Manipulate images with minimal use of memory via ImageMagick / GraphicsMagick.
@@ -48,7 +46,7 @@ Manipulate images with minimal use of memory via ImageMagick / GraphicsMagick.
 
 %install
 %gem_install \
-  --doc-files="MIT-LICENSE" \
+  --doc-files="MIT-LICENSE README.md" \
   -f
 
 %gem_packages
