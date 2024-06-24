@@ -76,7 +76,7 @@ Name:           openSUSE-repos
 %else
 Name:           openSUSE-repos-%{theme}
 %endif
-Version:        20240618.8c4e429
+Version:        20240621.6fd1ef2
 Release:        0
 Summary:        openSUSE package repositories
 License:        MIT
@@ -349,6 +349,7 @@ done
 
 # We hereby declare that running this will not influence existing transaction
 ZYPP_READONLY_HACK=1 zypper addservice %{_datadir}/zypp/local/service/openSUSE openSUSE
+ZYPP_READONLY_HACK=1 zypper refresh-services
 
 %if 0%{?with_nvidia}
 %post NVIDIA
@@ -366,6 +367,7 @@ done
 
 # We hereby declare that running this will not influence existing transaction
 ZYPP_READONLY_HACK=1 zypper addservice %{_datadir}/zypp/local/service/NVIDIA NVIDIA
+ZYPP_READONLY_HACK=1 zypper refresh-services
 %endif
 
 %postun

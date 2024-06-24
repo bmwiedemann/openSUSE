@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 24 06:42:52 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Ensure that refresh-services / refs is called after addservice
+
+-------------------------------------------------------------------
+Mon Jun 24 06:41:35 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240621.6fd1ef2:
+  * Update README.md
+  * use osc service mr for update
+  * Disable source and debug repos by default for Tumbleweed ports
+  * Use cdn.opensuse.org for Tumbleweed ports
+
+-------------------------------------------------------------------
 Thu Jun 20 13:34:27 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Ensure package gets removed on migration to commmercial products
