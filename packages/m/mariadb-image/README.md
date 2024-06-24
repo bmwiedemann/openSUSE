@@ -10,13 +10,13 @@ By default, the image launches MariaDB with the same configuration that comes wi
 The only environment variable required to start the container is the MariaDB root password.
 
 ```ShellSession
-$ podman run -it --rm -p 3306:3306 -e MARIADB_ROOT_PASSWORD=my-password registry.opensuse.org/opensuse/mariadb:11.2
+$ podman run -it --rm -p 3306:3306 -e MARIADB_ROOT_PASSWORD=my-password registry.opensuse.org/opensuse/mariadb:11.4
 ```
 
 or:
 
 ```ShellSession
-$ podman run -it --rm -p 3306:3306 -e MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=1 registry.opensuse.org/opensuse/mariadb:11.2
+$ podman run -it --rm -p 3306:3306 -e MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=1 registry.opensuse.org/opensuse/mariadb:11.4
 ```
 
 ### Volumes
@@ -31,7 +31,7 @@ When using the MariaDB image, we recommend one of the following options:
 To mount a host directory as a volume for your data run the following command:
 
 ```ShellSession
-$ podman run -it --rm -v /my/own/datadir:/var/lib/mysql:Z -p 3306:3306 -e MARIADB_ROOT_PASSWORD=my-password registry.opensuse.org/opensuse/mariadb:11.2
+$ podman run -it --rm -v /my/own/datadir:/var/lib/mysql:Z -p 3306:3306 -e MARIADB_ROOT_PASSWORD=my-password registry.opensuse.org/opensuse/mariadb:11.4
 ```
 
 The `-v /my/own/datadir:/var/lib/mysql:Z` part of the command mounts the `/my/own/datadir` directory from the underlying host system as `/var/lib/mysql` inside the container, where MariaDB will by default write its data files.

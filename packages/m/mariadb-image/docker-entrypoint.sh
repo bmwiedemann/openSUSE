@@ -122,6 +122,7 @@ docker_temp_server_start() {
 	"$@" --skip-networking --default-time-zone=SYSTEM --socket="${SOCKET}" --wsrep_on=OFF \
 		--expire-logs-days=0 \
 		--loose-innodb_buffer_pool_load_at_startup=0 \
+		--skip-ssl --ssl-cert='' --ssl-key='' --ssl-ca='' \
 		&
 	declare -g MARIADB_PID
 	MARIADB_PID=$!
@@ -135,6 +136,7 @@ docker_temp_server_start() {
 	local i
 	for i in {30..0}; do
 		if docker_process_sql "${extraArgs[@]}" --database=mysql \
+			--skip-ssl --skip-ssl-verify-server-cert \
 			<<<'SELECT 1' &> /dev/null; then
 			break
 		fi
