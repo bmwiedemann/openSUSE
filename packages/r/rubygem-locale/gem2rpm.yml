@@ -7,7 +7,7 @@
 #
 #   it can be multiline
 # ## used by gem2rpm
-# :license: MIT or Ruby
+:license: Ruby AND LGPL-3.0-or-later
 # ## used by gem2rpm and gem_packages
 # :version_suffix: -x_y
 # ## used by gem2rpm and gem_packages
