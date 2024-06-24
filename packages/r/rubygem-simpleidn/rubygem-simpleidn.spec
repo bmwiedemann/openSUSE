@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-simpleidn
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-simpleidn
-Version:        0.2.1
+Version:        0.2.3
 Release:        0
 %define mod_name simpleidn
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.2}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
@@ -37,7 +36,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Punycode ACE to unicode UTF-8 (and vice-versa) string conversion
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 This gem allows easy conversion from punycode ACE strings to unicode UTF-8
