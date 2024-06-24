@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-bindata
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,11 @@
 #
 
 Name:           rubygem-bindata
-Version:        2.4.15
+Version:        2.5.0
 Release:        0
 %define mod_name bindata
 %define mod_full_name %{mod_name}-%{version}
-BuildRequires:  %{ruby >= 2.4.0}
+BuildRequires:  %{ruby >= 2.5.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
