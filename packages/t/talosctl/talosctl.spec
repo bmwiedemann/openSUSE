@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           talosctl
-Version:        1.7.4
+Version:        1.7.5
 Release:        0
 Summary:        CLI to interact with Talos Linux
 License:        MPL-2.0
