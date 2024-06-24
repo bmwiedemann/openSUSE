@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-turbo-rails
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-turbo-rails
-Version:        1.5.0
+Version:        2.0.5
 Release:        0
 %define mod_name turbo-rails
 %define mod_full_name %{mod_name}-%{version}
