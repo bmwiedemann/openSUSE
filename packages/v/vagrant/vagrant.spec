@@ -85,7 +85,7 @@ Patch15:        childprocess-5.0.patch
 #===============================================================================
 
 BuildRequires:  %{rubygem bundler}
-BuildRequires:  %{ruby} < 3.4
+BuildRequires:  %{ruby} >= 3.0, %{ruby} < 3.4
 #  s.add_dependency "bcrypt_pbkdf", "~> 1.1"
 BuildRequires:  %{rubygem bcrypt_pbkdf:1 >= 1.1 }
 #  s.add_dependency "childprocess", "~> 5.0.0"
@@ -158,7 +158,7 @@ BuildRequires:  %{rubygem webrick:1.8 }
 # Prevent have choice for rubygem(ruby:2.6.0:mime-types) >= 2
 BuildRequires:  %{rubygem mime-types:3 }
 # Prevent have choice for rubygem(ruby:2.6.0:builder) >= 2.1.2
-BuildRequires:  %{rubygem builder:3.2 }
+BuildRequires:  %{rubygem builder:3.3 }
 # Prevent have choice for rubygem(ruby:2.6.0:ffi:1) >= 1
 BuildRequires:  %{rubygem ffi >= 1.9 }
 # Prevent have choice for rubygem(ruby:2.5.0:addressable) >= 2.3.6
