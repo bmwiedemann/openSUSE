@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.7.1
+%define real_version 6.7.2
 %define short_version 6.7
 %define tar_name qt5compat-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-qt5compat%{?pkg_suffix}
-Version:        6.7.1
+Version:        6.7.2
 Release:        0
 Summary:        Unsupported Qt 5 APIs for Qt 6
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
