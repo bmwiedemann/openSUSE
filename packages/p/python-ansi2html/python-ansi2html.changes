@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jun 23 07:43:43 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.9.2:
+  * github.com/psf/black.git: 24.1.1 → 24.4.2
+    <https://github.com/psf/black.git/compare/24.1.1...24.4.2>
+  * github.com/pre-commit/pre-commit-hooks.git: v4.5.0 → v4.6.0
+    <https://github.com/pre-commit/pre-commit-hooks.git/compare/v4.5.0...v4.6.0>
+  * github.com/pycqa/pylint: v3.0.3 → v3.2.2
+    <https://github.com/pycqa/pylint/compare/v3.0.3...v3.2.2>
+  * github.com/pre-commit/mirrors-mypy: v1.8.0 → v1.10.0
+    <https://github.com/pre-commit/mirrors-mypy/compare/v1.8.0...v1.10.0>
+
+-------------------------------------------------------------------
 Wed Dec 13 08:54:07 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 1.9.1 (skipping non-existent release 1.9.0):

@@ -1,7 +1,7 @@
 #
 # spec file for package python-ansi2html
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ansi2html
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 Summary:        Python module to convert text with ANSI color codes to HTML or LaTeX
 License:        LGPL-3.0-or-later
@@ -32,7 +32,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
