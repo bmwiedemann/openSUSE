@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Jun 22 16:14:51 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 5.5.2
+  * Inferred Type Predicates
+  * Control Flow Narrowing for Constant Indexed Accesses
+  * The JSDoc @import Tag
+  * Regular Expression Syntax Checking
+  * Support for New ECMAScript Set Methods
+  * Isolated Declarations
+  * The ${configDir} Template Variable for Configuration Files
+  * Consulting package.json Dependencies for Declaration File Generation
+  * Editor and Watch-Mode Reliability Improvements
+  * Performance and Size Optimizations
+  * Easier API Consumption from ECMAScript Modules
+  * The transpileDeclaration API
+  * Notable Behavioral Changes
+    + Disabling Features Deprecated in TypeScript 5.0
+    + lib.d.ts Changes
+    + Stricter Parsing for Decorators
+    + undefined is No Longer a Definable Type Name
+    + Simplified Reference Directive Declaration Emit
+
+For the full changelog see https://devblogs.microsoft.com/typescript/announcing-typescript-5-5/
+
+-------------------------------------------------------------------
 Sun Apr 21 14:07:03 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 5.4.5
