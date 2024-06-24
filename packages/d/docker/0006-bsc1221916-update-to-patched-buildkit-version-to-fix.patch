@@ -1,0 +1,890 @@
+From df2f4064006a11c299171a10a13d4d1f54a1e37f Mon Sep 17 00:00:00 2001
+From: Aleksa Sarai <cyphar@cyphar.com>
+Date: Tue, 7 May 2024 01:51:25 +1000
+Subject: [PATCH 6/7] bsc1221916: update to patched buildkit version to fix
+ symlink resolution
+
+SUSE-Bugs: https://bugzilla.suse.com/show_bug.cgi?id=1221916
+Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
+---
+ vendor.mod                                    |   2 +
+ vendor.sum                                    |   4 +-
+ .../buildkit/cache/contenthash/checksum.go    | 393 ++++++++++--------
+ .../moby/buildkit/cache/contenthash/path.go   | 161 +++----
+ vendor/modules.txt                            |   3 +-
+ 5 files changed, 314 insertions(+), 249 deletions(-)
+
+diff --git a/vendor.mod b/vendor.mod
+index d69d2aa9f87f..5c42a653b91b 100644
+--- a/vendor.mod
++++ b/vendor.mod
+@@ -114,6 +114,8 @@ require (
+ 	tags.cncf.io/container-device-interface v0.7.2
+ )
+ 
++replace github.com/moby/buildkit => github.com/cyphar/buildkit v0.0.0-20240624075140-0db2d2345b94
++
+ require (
+ 	cloud.google.com/go v0.110.8 // indirect
+ 	cloud.google.com/go/compute v1.23.1 // indirect
+diff --git a/vendor.sum b/vendor.sum
+index 7a5bd6b4077b..f2aba7f8d3eb 100644
+--- a/vendor.sum
++++ b/vendor.sum
+@@ -199,6 +199,8 @@ github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ3
+ github.com/creack/pty v1.1.11/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
+ github.com/creack/pty v1.1.18 h1:n56/Zwd5o6whRC5PMGretI4IdRLlmBXYNjScPaBgsbY=
+ github.com/creack/pty v1.1.18/go.mod h1:MOBLtS5ELjhRRrroQr9kyvTxUAFNvYEK993ew/Vr4O4=
++github.com/cyphar/buildkit v0.0.0-20240624075140-0db2d2345b94 h1:xBwPT+ap0LDYsQJh1VKm9NNEKF5A7e/P3TRjnbTqZUE=
++github.com/cyphar/buildkit v0.0.0-20240624075140-0db2d2345b94/go.mod h1:2cyVOv9NoHM7arphK9ZfHIWKn9YVZRFd1wXB8kKmEzY=
+ github.com/cyphar/filepath-securejoin v0.2.4 h1:Ugdm7cg7i6ZK6x3xDF1oEu1nfkyfH53EtKeQYTC3kyg=
+ github.com/cyphar/filepath-securejoin v0.2.4/go.mod h1:aPGpWjXOXUn2NCNjFvBE6aRxGGx79pTxQpKOJNYHHl4=
+ github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+@@ -480,8 +482,6 @@ github.com/mitchellh/mapstructure v1.1.2/go.mod h1:FVVH3fgwuzCH5S8UJGiWEs2h04kUh
+ github.com/mitchellh/reflectwalk v1.0.2 h1:G2LzWKi524PWgd3mLHV8Y5k7s6XUvT0Gef6zxSIeXaQ=
+ github.com/mitchellh/reflectwalk v1.0.2/go.mod h1:mSTlrgnPZtwu0c4WaC2kGObEpuNDbx0jmZXqmk4esnw=
+ github.com/mndrix/tap-go v0.0.0-20171203230836-629fa407e90b/go.mod h1:pzzDgJWZ34fGzaAZGFW22KVZDfyrYW+QABMrWnJBnSs=
+-github.com/moby/buildkit v0.13.2 h1:nXNszM4qD9E7QtG7bFWPnDI1teUQFQglBzon/IU3SzI=
+-github.com/moby/buildkit v0.13.2/go.mod h1:2cyVOv9NoHM7arphK9ZfHIWKn9YVZRFd1wXB8kKmEzY=
+ github.com/moby/docker-image-spec v1.3.1 h1:jMKff3w6PgbfSa69GfNg+zN/XLhfXJGnEx3Nl2EsFP0=
+ github.com/moby/docker-image-spec v1.3.1/go.mod h1:eKmb5VW8vQEh/BAr2yvVNvuiJuY6UIocYsFu/DxxRpo=
+ github.com/moby/ipvs v1.1.0 h1:ONN4pGaZQgAx+1Scz5RvWV4Q7Gb+mvfRh3NsPS+1XQQ=
+diff --git a/vendor/github.com/moby/buildkit/cache/contenthash/checksum.go b/vendor/github.com/moby/buildkit/cache/contenthash/checksum.go
+index e0f58d57b3db..ec649f69b5e0 100644
+--- a/vendor/github.com/moby/buildkit/cache/contenthash/checksum.go
++++ b/vendor/github.com/moby/buildkit/cache/contenthash/checksum.go
+@@ -10,6 +10,7 @@ import (
+ 	"path/filepath"
+ 	"strings"
+ 	"sync"
++	"sync/atomic"
+ 
+ 	iradix "github.com/hashicorp/go-immutable-radix"
+ 	"github.com/hashicorp/golang-lru/simplelru"
+@@ -290,7 +291,7 @@ func keyPath(p string) string {
+ // HandleChange notifies the source about a modification operation
+ func (cc *cacheContext) HandleChange(kind fsutil.ChangeKind, p string, fi os.FileInfo, err error) (retErr error) {
+ 	p = keyPath(p)
+-	k := convertPathToKey([]byte(p))
++	k := convertPathToKey(p)
+ 
+ 	deleteDir := func(cr *CacheRecord) {
+ 		if cr.Type == CacheRecordTypeDir {
+@@ -369,7 +370,7 @@ func (cc *cacheContext) HandleChange(kind fsutil.ChangeKind, p string, fi os.Fil
+ 	// note that the source may be called later because data writing is async
+ 	if fi.Mode()&os.ModeSymlink == 0 && stat.Linkname != "" {
+ 		ln := path.Join("/", filepath.ToSlash(stat.Linkname))
+-		v, ok := cc.txn.Get(convertPathToKey([]byte(ln)))
++		v, ok := cc.txn.Get(convertPathToKey(ln))
+ 		if ok {
+ 			cp := *v.(*CacheRecord)
+ 			cr = &cp
+@@ -407,7 +408,7 @@ func (cc *cacheContext) Checksum(ctx context.Context, mountable cache.Mountable,
+ 	defer m.clean()
+ 
+ 	if !opts.Wildcard && len(opts.IncludePatterns) == 0 && len(opts.ExcludePatterns) == 0 {
+-		return cc.checksumFollow(ctx, m, p, opts.FollowLinks)
++		return cc.lazyChecksum(ctx, m, p, opts.FollowLinks)
+ 	}
+ 
+ 	includedPaths, err := cc.includedPaths(ctx, m, p, opts)
+@@ -418,7 +419,7 @@ func (cc *cacheContext) Checksum(ctx context.Context, mountable cache.Mountable,
+ 	if opts.FollowLinks {
+ 		for i, w := range includedPaths {
+ 			if w.record.Type == CacheRecordTypeSymlink {
+-				dgst, err := cc.checksumFollow(ctx, m, w.path, opts.FollowLinks)
++				dgst, err := cc.lazyChecksum(ctx, m, w.path, opts.FollowLinks)
+ 				if err != nil {
+ 					return "", err
+ 				}
+@@ -445,30 +446,6 @@ func (cc *cacheContext) Checksum(ctx context.Context, mountable cache.Mountable,
+ 	return digester.Digest(), nil
+ }
+ 
+-func (cc *cacheContext) checksumFollow(ctx context.Context, m *mount, p string, follow bool) (digest.Digest, error) {
+-	const maxSymlinkLimit = 255
+-	i := 0
+-	for {
+-		if i > maxSymlinkLimit {
+-			return "", errors.Errorf("too many symlinks: %s", p)
+-		}
+-		cr, err := cc.checksumNoFollow(ctx, m, p)
+-		if err != nil {
+-			return "", err
+-		}
+-		if cr.Type == CacheRecordTypeSymlink && follow {
+-			link := cr.Linkname
+-			if !path.IsAbs(cr.Linkname) {
+-				link = path.Join(path.Dir(p), link)
+-			}
+-			i++
+-			p = link
+-		} else {
+-			return cr.Digest, nil
+-		}
+-	}
+-}
+-
+ func (cc *cacheContext) includedPaths(ctx context.Context, m *mount, p string, opts ChecksumOpts) ([]*includedPath, error) {
+ 	cc.mu.Lock()
+ 	defer cc.mu.Unlock()
+@@ -478,12 +455,12 @@ func (cc *cacheContext) includedPaths(ctx context.Context, m *mount, p string, o
+ 	}
+ 
+ 	root := cc.tree.Root()
+-	scan, err := cc.needsScan(root, "")
++	scan, err := cc.needsScan(root, "", false)
+ 	if err != nil {
+ 		return nil, err
+ 	}
+ 	if scan {
+-		if err := cc.scanPath(ctx, m, ""); err != nil {
++		if err := cc.scanPath(ctx, m, "", false); err != nil {
+ 			return nil, err
+ 		}
+ 	}
+@@ -536,13 +513,13 @@ func (cc *cacheContext) includedPaths(ctx context.Context, m *mount, p string, o
+ 		}
+ 	} else {
+ 		origPrefix = p
+-		k = convertPathToKey([]byte(origPrefix))
++		k = convertPathToKey(origPrefix)
+ 
+ 		// We need to resolve symlinks here, in case the base path
+ 		// involves a symlink. That will match fsutil behavior of
+ 		// calling functions such as stat and walk.
+ 		var cr *CacheRecord
+-		k, cr, err = getFollowLinks(root, k, true)
++		k, cr, err = getFollowLinks(root, k, false)
+ 		if err != nil {
+ 			return nil, err
+ 		}
+@@ -554,7 +531,7 @@ func (cc *cacheContext) includedPaths(ctx context.Context, m *mount, p string, o
+ 			iter.SeekLowerBound(append(append([]byte{}, k...), 0))
+ 		}
+ 
+-		resolvedPrefix = string(convertKeyToPath(k))
++		resolvedPrefix = convertKeyToPath(k)
+ 	} else {
+ 		k, _, keyOk = iter.Next()
+ 	}
+@@ -565,7 +542,7 @@ func (cc *cacheContext) includedPaths(ctx context.Context, m *mount, p string, o
+ 	)
+ 
+ 	for keyOk {
+-		fn := string(convertKeyToPath(k))
++		fn := convertKeyToPath(k)
+ 
+ 		// Convert the path prefix from what we found in the prefix
+ 		// tree to what the argument specified.
+@@ -751,36 +728,12 @@ func wildcardPrefix(root *iradix.Node, p string) (string, []byte, bool, error) {
+ 		return "", nil, false, nil
+ 	}
+ 
+-	linksWalked := 0
+-	k, cr, err := getFollowLinksWalk(root, convertPathToKey([]byte(d1)), true, &linksWalked)
++	// Only resolve the final symlink component if there are components in the
++	// wildcard segment.
++	k, cr, err := getFollowLinks(root, convertPathToKey(d1), d2 != "")
+ 	if err != nil {
+ 		return "", k, false, err
+ 	}
+-
+-	if d2 != "" && cr != nil && cr.Type == CacheRecordTypeSymlink {
+-		// getFollowLinks only handles symlinks in path
+-		// components before the last component, so
+-		// handle last component in d1 specially.
+-		resolved := string(convertKeyToPath(k))
+-		for {
+-			v, ok := root.Get(k)
+-
+-			if !ok {
+-				return d1, k, false, nil
+-			}
+-			if v.(*CacheRecord).Type != CacheRecordTypeSymlink {
+-				break
+-			}
+-
+-			linksWalked++
+-			if linksWalked > 255 {
+-				return "", k, false, errors.Errorf("too many links")
+-			}
+-
+-			resolved := cleanLink(resolved, v.(*CacheRecord).Linkname)
+-			k = convertPathToKey([]byte(resolved))
+-		}
+-	}
+ 	return d1, k, cr != nil, nil
+ }
+ 
+@@ -816,19 +769,22 @@ func containsWildcards(name string) bool {
+ 	return false
+ }
+ 
+-func (cc *cacheContext) checksumNoFollow(ctx context.Context, m *mount, p string) (*CacheRecord, error) {
++func (cc *cacheContext) lazyChecksum(ctx context.Context, m *mount, p string, followTrailing bool) (digest.Digest, error) {
+ 	p = keyPath(p)
++	k := convertPathToKey(p)
+ 
++	// Try to look up the path directly without doing a scan.
+ 	cc.mu.RLock()
+ 	if cc.txn == nil {
+ 		root := cc.tree.Root()
+ 		cc.mu.RUnlock()
+-		v, ok := root.Get(convertPathToKey([]byte(p)))
+-		if ok {
+-			cr := v.(*CacheRecord)
+-			if cr.Digest != "" {
+-				return cr, nil
+-			}
++
++		_, cr, err := getFollowLinks(root, k, followTrailing)
++		if err != nil {
++			return "", err
++		}
++		if cr != nil && cr.Digest != "" {
++			return cr.Digest, nil
+ 		}
+ 	} else {
+ 		cc.mu.RUnlock()
+@@ -848,7 +804,11 @@ func (cc *cacheContext) checksumNoFollow(ctx context.Context, m *mount, p string
+ 		}
+ 	}()
+ 
+-	return cc.lazyChecksum(ctx, m, p)
++	cr, err := cc.scanChecksum(ctx, m, p, followTrailing)
++	if err != nil {
++		return "", err
++	}
++	return cr.Digest, nil
+ }
+ 
+ func (cc *cacheContext) commitActiveTransaction() {
+@@ -856,7 +816,7 @@ func (cc *cacheContext) commitActiveTransaction() {
+ 		addParentToMap(d, cc.dirtyMap)
+ 	}
+ 	for d := range cc.dirtyMap {
+-		k := convertPathToKey([]byte(d))
++		k := convertPathToKey(d)
+ 		if _, ok := cc.txn.Get(k); ok {
+ 			cc.txn.Insert(k, &CacheRecord{Type: CacheRecordTypeDir})
+ 		}
+@@ -867,21 +827,21 @@ func (cc *cacheContext) commitActiveTransaction() {
+ 	cc.txn = nil
+ }
+ 
+-func (cc *cacheContext) lazyChecksum(ctx context.Context, m *mount, p string) (*CacheRecord, error) {
++func (cc *cacheContext) scanChecksum(ctx context.Context, m *mount, p string, followTrailing bool) (*CacheRecord, error) {
+ 	root := cc.tree.Root()
+-	scan, err := cc.needsScan(root, p)
++	scan, err := cc.needsScan(root, p, followTrailing)
+ 	if err != nil {
+ 		return nil, err
+ 	}
+ 	if scan {
+-		if err := cc.scanPath(ctx, m, p); err != nil {
++		if err := cc.scanPath(ctx, m, p, followTrailing); err != nil {
+ 			return nil, err
+ 		}
+ 	}
+-	k := convertPathToKey([]byte(p))
++	k := convertPathToKey(p)
+ 	txn := cc.tree.Txn()
+ 	root = txn.Root()
+-	cr, updated, err := cc.checksum(ctx, root, txn, m, k, true)
++	cr, updated, err := cc.checksum(ctx, root, txn, m, k, followTrailing)
+ 	if err != nil {
+ 		return nil, err
+ 	}
+@@ -890,9 +850,9 @@ func (cc *cacheContext) lazyChecksum(ctx context.Context, m *mount, p string) (*
+ 	return cr, err
+ }
+ 
+-func (cc *cacheContext) checksum(ctx context.Context, root *iradix.Node, txn *iradix.Txn, m *mount, k []byte, follow bool) (*CacheRecord, bool, error) {
++func (cc *cacheContext) checksum(ctx context.Context, root *iradix.Node, txn *iradix.Txn, m *mount, k []byte, followTrailing bool) (*CacheRecord, bool, error) {
+ 	origk := k
+-	k, cr, err := getFollowLinks(root, k, follow)
++	k, cr, err := getFollowLinks(root, k, followTrailing)
+ 	if err != nil {
+ 		return nil, false, err
+ 	}
+@@ -918,7 +878,9 @@ func (cc *cacheContext) checksum(ctx context.Context, root *iradix.Node, txn *ir
+ 			}
+ 			h.Write(bytes.TrimPrefix(subk, k))
+ 
+-			subcr, _, err := cc.checksum(ctx, root, txn, m, subk, true)
++			// We do not follow trailing links when checksumming a directory's
++			// contents.
++			subcr, _, err := cc.checksum(ctx, root, txn, m, subk, false)
+ 			if err != nil {
+ 				return nil, false, err
+ 			}
+@@ -935,7 +897,7 @@ func (cc *cacheContext) checksum(ctx context.Context, root *iradix.Node, txn *ir
+ 		dgst = digest.NewDigest(digest.SHA256, h)
+ 
+ 	default:
+-		p := string(convertKeyToPath(bytes.TrimSuffix(k, []byte{0})))
++		p := convertKeyToPath(bytes.TrimSuffix(k, []byte{0}))
+ 
+ 		target, err := m.mount(ctx)
+ 		if err != nil {
+@@ -967,42 +929,82 @@ func (cc *cacheContext) checksum(ctx context.Context, root *iradix.Node, txn *ir
+ 	return cr2, true, nil
+ }
+ 
+-// needsScan returns false if path is in the tree or a parent path is in tree
+-// and subpath is missing
+-func (cc *cacheContext) needsScan(root *iradix.Node, p string) (bool, error) {
+-	var linksWalked int
+-	return cc.needsScanFollow(root, p, &linksWalked)
++// pathSet is a set of path prefixes that can be used to see if a given path is
++// lexically a child of any path in the set. All paths provided to this set
++// MUST be absolute and use / as the separator.
++type pathSet struct {
++	// prefixes contains paths of the form "/a/b/", so that we correctly detect
++	// /a/b as being a parent of /a/b/c but not /a/bc.
++	prefixes []string
+ }
+ 
+-func (cc *cacheContext) needsScanFollow(root *iradix.Node, p string, linksWalked *int) (bool, error) {
+-	if p == "/" {
+-		p = ""
+-	}
+-	v, ok := root.Get(convertPathToKey([]byte(p)))
+-	if !ok {
+-		if p == "" {
+-			return true, nil
++// add a path to the set. This is a no-op if includes(path) == true.
++func (s *pathSet) add(p string) {
++	// Ensure the path is absolute and clean.
++	p = path.Join("/", p)
++	if !s.includes(p) {
++		if p != "/" {
++			p += "/"
+ 		}
+-		return cc.needsScanFollow(root, path.Clean(path.Dir(p)), linksWalked)
++		s.prefixes = append(s.prefixes, p)
++	}
++}
++
++// includes returns true iff there is a path in the pathSet which is a lexical
++// parent of the given path. The provided path MUST be an absolute path and
++// MUST NOT contain any ".." components, as they will be path.Clean'd.
++func (s pathSet) includes(p string) bool {
++	// Ensure the path is absolute and clean.
++	p = path.Join("/", p)
++	if p != "/" {
++		p += "/"
+ 	}
+-	cr := v.(*CacheRecord)
+-	if cr.Type == CacheRecordTypeSymlink {
+-		if *linksWalked > 255 {
+-			return false, errTooManyLinks
++	for _, prefix := range s.prefixes {
++		if strings.HasPrefix(p, prefix) {
++			return true
+ 		}
+-		*linksWalked++
+-		link := path.Clean(cr.Linkname)
+-		if !path.IsAbs(cr.Linkname) {
+-			link = path.Join("/", path.Dir(p), link)
++	}
++	return false
++}
++
++// needsScan returns false if path is in the tree or a parent path is in tree
++// and subpath is missing.
++func (cc *cacheContext) needsScan(root *iradix.Node, path string, followTrailing bool) (bool, error) {
++	var (
++		goodPaths       pathSet
++		hasParentInTree bool
++	)
++	k := convertPathToKey(path)
++	_, cr, err := getFollowLinksCallback(root, k, followTrailing, func(subpath string, cr *CacheRecord) error {
++		// If we found a path that exists in the cache, add it to the set of
++		// known-scanned paths. Otherwise, verify whether the not-found subpath
++		// is inside a known-scanned path (we might have hit a "..", taking us
++		// out of the scanned paths, or we might hit a non-existent path inside
++		// a scanned path). getFollowLinksCallback iterates left-to-right, so
++		// we will always hit ancestors first.
++		if cr != nil {
++			hasParentInTree = cr.Type != CacheRecordTypeSymlink
++			goodPaths.add(subpath)
++		} else {
++			hasParentInTree = goodPaths.includes(subpath)
+ 		}
+-		return cc.needsScanFollow(root, link, linksWalked)
++		return nil
++	})
++	if err != nil {
++		return false, err
+ 	}
+-	return false, nil
++	return cr == nil && !hasParentInTree, nil
+ }
+ 
+-func (cc *cacheContext) scanPath(ctx context.Context, m *mount, p string) (retErr error) {
++// Only used by TestNeedScanChecksumRegression to make sure scanPath is not
++// called for paths we have already scanned.
++var (
++	scanCounterEnable bool
++	scanCounter       atomic.Uint64
++)
++
++func (cc *cacheContext) scanPath(ctx context.Context, m *mount, p string, followTrailing bool) (retErr error) {
+ 	p = path.Join("/", p)
+-	d, _ := path.Split(p)
+ 
+ 	mp, err := m.mount(ctx)
+ 	if err != nil {
+@@ -1012,33 +1014,42 @@ func (cc *cacheContext) scanPath(ctx context.Context, m *mount, p string) (retEr
+ 	n := cc.tree.Root()
+ 	txn := cc.tree.Txn()
+ 
+-	parentPath, err := rootPath(mp, filepath.FromSlash(d), func(p, link string) error {
++	resolvedPath, err := rootPath(mp, filepath.FromSlash(p), followTrailing, func(p, link string) error {
+ 		cr := &CacheRecord{
+ 			Type:     CacheRecordTypeSymlink,
+ 			Linkname: filepath.ToSlash(link),
+ 		}
+-		k := []byte(path.Join("/", filepath.ToSlash(p)))
+-		k = convertPathToKey(k)
+-		txn.Insert(k, cr)
++		p = path.Join("/", filepath.ToSlash(p))
++		txn.Insert(convertPathToKey(p), cr)
+ 		return nil
+ 	})
+ 	if err != nil {
+ 		return err
+ 	}
+ 
+-	err = filepath.Walk(parentPath, func(itemPath string, fi os.FileInfo, err error) error {
++	// Scan the parent directory of the path we resolved, unless we're at the
++	// root (in which case we scan the root).
++	scanPath := filepath.Dir(resolvedPath)
++	if !strings.HasPrefix(filepath.ToSlash(scanPath)+"/", filepath.ToSlash(mp)+"/") {
++		scanPath = resolvedPath
++	}
++
++	err = filepath.Walk(scanPath, func(itemPath string, fi os.FileInfo, err error) error {
++		if scanCounterEnable {
++			scanCounter.Add(1)
++		}
+ 		if err != nil {
++			// If the root doesn't exist, ignore the error.
++			if itemPath == scanPath && errors.Is(err, os.ErrNotExist) {
++				return nil
++			}
+ 			return errors.Wrapf(err, "failed to walk %s", itemPath)
+ 		}
+ 		rel, err := filepath.Rel(mp, itemPath)
+ 		if err != nil {
+ 			return err
+ 		}
+-		k := []byte(path.Join("/", filepath.ToSlash(rel)))
+-		if string(k) == "/" {
+-			k = []byte{}
+-		}
+-		k = convertPathToKey(k)
++		k := convertPathToKey(keyPath(rel))
+ 		if _, ok := n.Get(k); !ok {
+ 			cr := &CacheRecord{
+ 				Type: CacheRecordTypeFile,
+@@ -1071,55 +1082,118 @@ func (cc *cacheContext) scanPath(ctx context.Context, m *mount, p string) (retEr
+ 	return nil
+ }
+ 
+-func getFollowLinks(root *iradix.Node, k []byte, follow bool) ([]byte, *CacheRecord, error) {
+-	var linksWalked int
+-	return getFollowLinksWalk(root, k, follow, &linksWalked)
++// followLinksCallback is called after we try to resolve each element. If the
++// path was not found, cr is nil.
++type followLinksCallback func(path string, cr *CacheRecord) error
++
++// getFollowLinks is shorthand for getFollowLinksCallback(..., nil).
++func getFollowLinks(root *iradix.Node, k []byte, followTrailing bool) ([]byte, *CacheRecord, error) {
++	return getFollowLinksCallback(root, k, followTrailing, nil)
+ }
+ 
+-func getFollowLinksWalk(root *iradix.Node, k []byte, follow bool, linksWalked *int) ([]byte, *CacheRecord, error) {
++// getFollowLinksCallback looks up the requested key, fully resolving any
++// symlink components encountered. The implementation is heavily based on
++// <https://github.com/cyphar/filepath-securejoin>.
++//
++// followTrailing indicates whether the *final component* of the path should be
++// resolved (effectively O_PATH|O_NOFOLLOW). Note that (in contrast to some
++// Linux APIs), followTrailing is obeyed even if the key has a trailing slash
++// (though paths like "foo/link/." will cause the link to be resolved).
++//
++// cb is a callback that is called for each path component encountered during
++// path resolution (after the path component is looked up in the cache). This
++// means for a path like /a/b/c, the callback will be called for at least
++//
++//	{/, /a, /a/b, /a/b/c}
++//
++// Note that if any of the components are symlinks, the paths will depend on
++// the symlink contents and there will be more callbacks. If the requested key
++// has a trailing slash, the callback will also be called for the final
++// trailing-slash lookup (/a/b/c/ in the above example). Note that
++// getFollowLinksCallback will try to look up the original key directly first
++// and the callback is not called for this first lookup.
++func getFollowLinksCallback(root *iradix.Node, k []byte, followTrailing bool, cb followLinksCallback) ([]byte, *CacheRecord, error) {
+ 	v, ok := root.Get(k)
+-	if ok {
++	if ok && (!followTrailing || v.(*CacheRecord).Type != CacheRecordTypeSymlink) {
+ 		return k, v.(*CacheRecord), nil
+ 	}
+-	if !follow || len(k) == 0 {
++	if len(k) == 0 {
+ 		return k, nil, nil
+ 	}
+ 
+-	dir, file := splitKey(k)
++	var (
++		currentPath   = "/"
++		remainingPath = convertKeyToPath(k)
++		linksWalked   int
++		cr            *CacheRecord
++	)
++	// Trailing slashes are significant for the cache, but path.Clean strips
++	// them. We only care about the slash for the final lookup.
++	remainingPath, hadTrailingSlash := strings.CutSuffix(remainingPath, "/")
++	for remainingPath != "" {
++		// Get next component.
++		var part string
++		if i := strings.IndexRune(remainingPath, '/'); i == -1 {
++			part, remainingPath = remainingPath, ""
++		} else {
++			part, remainingPath = remainingPath[:i], remainingPath[i+1:]
++		}
+ 
+-	k, parent, err := getFollowLinksWalk(root, dir, follow, linksWalked)
+-	if err != nil {
+-		return nil, nil, err
+-	}
+-	if parent != nil {
+-		if parent.Type == CacheRecordTypeSymlink {
+-			*linksWalked++
+-			if *linksWalked > 255 {
+-				return nil, nil, errors.Errorf("too many links")
++		// Apply the component to the path. Since it is a single component, and
++		// our current path contains no symlinks, we can just apply it
++		// leixically.
++		nextPath := keyPath(path.Join("/", currentPath, part))
++		// In contrast to rootPath, we don't skip lookups for no-op components
++		// or / because we need to call the callback for every path component
++		// we hit (including /) and we need to make sure that the CacheRecord
++		// we return is correct after every iteration.
++
++		cr = nil
++		v, ok := root.Get(convertPathToKey(nextPath))
++		if ok {
++			cr = v.(*CacheRecord)
++		}
++		if cb != nil {
++			if err := cb(nextPath, cr); err != nil {
++				return nil, nil, err
+ 			}
++		}
++		if !ok || cr.Type != CacheRecordTypeSymlink {
++			currentPath = nextPath
++			continue
++		}
++		if !followTrailing && remainingPath == "" {
++			currentPath = nextPath
++			break
++		}
+ 
+-			link := cleanLink(string(convertKeyToPath(dir)), parent.Linkname)
+-			return getFollowLinksWalk(root, append(convertPathToKey([]byte(link)), file...), follow, linksWalked)
++		linksWalked++
++		if linksWalked > maxSymlinkLimit {
++			return nil, nil, errTooManyLinks
+ 		}
+-	}
+-	k = append(k, file...)
+-	v, ok = root.Get(k)
+-	if ok {
+-		return k, v.(*CacheRecord), nil
+-	}
+-	return k, nil, nil
+-}
+ 
+-func cleanLink(dir, linkname string) string {
+-	dirPath := path.Clean(dir)
+-	if dirPath == "." || dirPath == "/" {
+-		dirPath = ""
++		remainingPath = cr.Linkname + "/" + remainingPath
++		if path.IsAbs(cr.Linkname) {
++			currentPath = "/"
++		}
+ 	}
+-	link := path.Clean(linkname)
+-	if !path.IsAbs(link) {
+-		return path.Join("/", path.Join(path.Dir(dirPath), link))
++	// We've already looked up the final component. However, if there was a
++	// trailing slash in the original path, we need to do the lookup again with
++	// the slash applied.
++	if hadTrailingSlash {
++		cr = nil
++		currentPath += "/"
++		v, ok := root.Get(convertPathToKey(currentPath))
++		if ok {
++			cr = v.(*CacheRecord)
++		}
++		if cb != nil {
++			if err := cb(currentPath, cr); err != nil {
++				return nil, nil, err
++			}
++		}
+ 	}
+-	return link
++	return convertPathToKey(currentPath), cr, nil
+ }
+ 
+ func prepareDigest(fp, p string, fi os.FileInfo) (digest.Digest, error) {
+@@ -1176,25 +1250,10 @@ func poolsCopy(dst io.Writer, src io.Reader) (written int64, err error) {
+ 	return
+ }
+ 
+-func convertPathToKey(p []byte) []byte {
++func convertPathToKey(p string) []byte {
+ 	return bytes.Replace([]byte(p), []byte("/"), []byte{0}, -1)
+ }
+ 
+-func convertKeyToPath(p []byte) []byte {
+-	return bytes.Replace([]byte(p), []byte{0}, []byte("/"), -1)
+-}
+-
+-func splitKey(k []byte) ([]byte, []byte) {
+-	foundBytes := false
+-	i := len(k) - 1
+-	for {
+-		if i <= 0 || foundBytes && k[i] == 0 {
+-			break
+-		}
+-		if k[i] != 0 {
+-			foundBytes = true
+-		}
+-		i--
+-	}
+-	return append([]byte{}, k[:i]...), k[i:]
++func convertKeyToPath(p []byte) string {
++	return string(bytes.Replace(p, []byte{0}, []byte("/"), -1))
+ }
+diff --git a/vendor/github.com/moby/buildkit/cache/contenthash/path.go b/vendor/github.com/moby/buildkit/cache/contenthash/path.go
+index 42b7fd8349c7..ae950f713241 100644
+--- a/vendor/github.com/moby/buildkit/cache/contenthash/path.go
++++ b/vendor/github.com/moby/buildkit/cache/contenthash/path.go
+@@ -1,108 +1,111 @@
++// This code mostly comes from <https://github.com/cyphar/filepath-securejoin>.
++
++// Copyright (C) 2014-2015 Docker Inc & Go Authors. All rights reserved.
++// Copyright (C) 2017-2024 SUSE LLC. All rights reserved.
++// Use of this source code is governed by a BSD-style
++// license that can be found in the LICENSE file.
++
+ package contenthash
+ 
+ import (
+ 	"os"
+ 	"path/filepath"
++	"strings"
+ 
+ 	"github.com/pkg/errors"
+ )
+ 
+-var (
+-	errTooManyLinks = errors.New("too many links")
+-)
++var errTooManyLinks = errors.New("too many links")
++
++const maxSymlinkLimit = 255
+ 
+ type onSymlinkFunc func(string, string) error
+ 
+-// rootPath joins a path with a root, evaluating and bounding any
+-// symlink to the root directory.
+-// This is containerd/continuity/fs RootPath implementation with a callback on
+-// resolving the symlink.
+-func rootPath(root, path string, cb onSymlinkFunc) (string, error) {
+-	if path == "" {
++// rootPath joins a path with a root, evaluating and bounding any symlink to
++// the root directory. This is a slightly modified version of SecureJoin from
++// github.com/cyphar/filepath-securejoin, with a callback which we call after
++// each symlink resolution.
++func rootPath(root, unsafePath string, followTrailing bool, cb onSymlinkFunc) (string, error) {
++	if unsafePath == "" {
+ 		return root, nil
+ 	}
+-	var linksWalked int // to protect against cycles
+-	for {
+-		i := linksWalked
+-		newpath, err := walkLinks(root, path, &linksWalked, cb)
+-		if err != nil {
+-			return "", err
+-		}
+-		path = newpath
+-		if i == linksWalked {
+-			newpath = filepath.Join("/", newpath)
+-			if path == newpath {
+-				return filepath.Join(root, newpath), nil
+-			}
+-			path = newpath
+-		}
+-	}
+-}
+ 
+-func walkLink(root, path string, linksWalked *int, cb onSymlinkFunc) (newpath string, islink bool, err error) {
+-	if *linksWalked > 255 {
+-		return "", false, errTooManyLinks
+-	}
++	unsafePath = filepath.FromSlash(unsafePath)
++	var (
++		currentPath string
++		linksWalked int
++	)
++	for unsafePath != "" {
++		// Windows-specific: remove any drive letters from the path.
++		if v := filepath.VolumeName(unsafePath); v != "" {
++			unsafePath = unsafePath[len(v):]
++		}
+ 
+-	path = filepath.Join("/", path)
+-	if path == "/" {
+-		return path, false, nil
+-	}
+-	realPath := filepath.Join(root, path)
++		// Remove any unnecessary trailing slashes.
++		unsafePath = strings.TrimSuffix(unsafePath, string(filepath.Separator))
+ 
+-	fi, err := os.Lstat(realPath)
+-	if err != nil {
+-		// If path does not yet exist, treat as non-symlink
+-		if errors.Is(err, os.ErrNotExist) {
+-			return path, false, nil
++		// Get the next path component.
++		var part string
++		if i := strings.IndexRune(unsafePath, filepath.Separator); i == -1 {
++			part, unsafePath = unsafePath, ""
++		} else {
++			part, unsafePath = unsafePath[:i], unsafePath[i+1:]
+ 		}
+-		return "", false, err
+-	}
+-	if fi.Mode()&os.ModeSymlink == 0 {
+-		return path, false, nil
+-	}
+-	newpath, err = os.Readlink(realPath)
+-	if err != nil {
+-		return "", false, err
+-	}
+-	if cb != nil {
+-		if err := cb(path, newpath); err != nil {
+-			return "", false, err
+-		}
+-	}
+-	*linksWalked++
+-	return newpath, true, nil
+-}
+ 
+-func walkLinks(root, path string, linksWalked *int, cb onSymlinkFunc) (string, error) {
+-	switch dir, file := filepath.Split(path); {
+-	case dir == "":
+-		newpath, _, err := walkLink(root, file, linksWalked, cb)
+-		return newpath, err
+-	case file == "":
+-		if os.IsPathSeparator(dir[len(dir)-1]) {
+-			if dir == "/" {
+-				return dir, nil
+-			}
+-			return walkLinks(root, dir[:len(dir)-1], linksWalked, cb)
++		// Apply the component lexically to the path we are building. path does
++		// not contain any symlinks, and we are lexically dealing with a single
++		// component, so it's okay to do filepath.Clean here.
++		nextPath := filepath.Join(string(filepath.Separator), currentPath, part)
++		if nextPath == string(filepath.Separator) {
++			// If we end up back at the root, we don't need to re-evaluate /.
++			currentPath = ""
++			continue
+ 		}
+-		newpath, _, err := walkLink(root, dir, linksWalked, cb)
+-		return newpath, err
+-	default:
+-		newdir, err := walkLinks(root, dir, linksWalked, cb)
+-		if err != nil {
++		fullPath := root + string(filepath.Separator) + nextPath
++
++		// Figure out whether the path is a symlink.
++		fi, err := os.Lstat(fullPath)
++		if err != nil && !errors.Is(err, os.ErrNotExist) {
+ 			return "", err
+ 		}
+-		newpath, islink, err := walkLink(root, filepath.Join(newdir, file), linksWalked, cb)
++		// Treat non-existent path components the same as non-symlinks (we
++		// can't do any better here).
++		if errors.Is(err, os.ErrNotExist) || fi.Mode()&os.ModeSymlink == 0 {
++			currentPath = nextPath
++			continue
++		}
++		// Don't resolve the final component with !followTrailing.
++		if !followTrailing && unsafePath == "" {
++			currentPath = nextPath
++			break
++		}
++
++		// It's a symlink, so get its contents and expand it by prepending it
++		// to the yet-unparsed path.
++		linksWalked++
++		if linksWalked > maxSymlinkLimit {
++			return "", errTooManyLinks
++		}
++
++		dest, err := os.Readlink(fullPath)
+ 		if err != nil {
+ 			return "", err
+ 		}
+-		if !islink {
+-			return newpath, nil
++		if cb != nil {
++			if err := cb(nextPath, dest); err != nil {
++				return "", err
++			}
+ 		}
+-		if filepath.IsAbs(newpath) {
+-			return newpath, nil
++
++		unsafePath = dest + string(filepath.Separator) + unsafePath
++		// Absolute symlinks reset any work we've already done.
++		if filepath.IsAbs(dest) {
++			currentPath = ""
+ 		}
+-		return filepath.Join(newdir, newpath), nil
+ 	}
++
++	// There should be no lexical components left in path here, but just for
++	// safety do a filepath.Clean before the join.
++	finalPath := filepath.Join(string(filepath.Separator), currentPath)
++	return filepath.Join(root, finalPath), nil
+ }
+diff --git a/vendor/modules.txt b/vendor/modules.txt
+index 7f3e6497785d..247f49f3518e 100644
+--- a/vendor/modules.txt
++++ b/vendor/modules.txt
+@@ -711,7 +711,7 @@ github.com/mitchellh/hashstructure/v2
+ # github.com/mitchellh/reflectwalk v1.0.2
+ ## explicit
+ github.com/mitchellh/reflectwalk
+-# github.com/moby/buildkit v0.13.2
++# github.com/moby/buildkit v0.13.2 => github.com/cyphar/buildkit v0.0.0-20240624075140-0db2d2345b94
+ ## explicit; go 1.21
+ github.com/moby/buildkit/api/services/control
+ github.com/moby/buildkit/api/types
+@@ -1610,3 +1610,4 @@ tags.cncf.io/container-device-interface/pkg/parser
+ # tags.cncf.io/container-device-interface/specs-go v0.7.0
+ ## explicit; go 1.19
+ tags.cncf.io/container-device-interface/specs-go
++# github.com/moby/buildkit => github.com/cyphar/buildkit v0.0.0-20240624075140-0db2d2345b94
+-- 
+2.45.2
+

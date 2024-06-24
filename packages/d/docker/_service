@@ -3,16 +3,16 @@
     <param name="url">https://github.com/moby/moby.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">26.1.0_ce_%h</param>
-    <param name="revision">v26.1.0</param>
+    <param name="versionformat">26.1.4_ce_%h</param>
+    <param name="revision">v26.1.4</param>
     <param name="filename">docker</param>
   </service>
   <service name="tar_scm" mode="manual">
     <param name="url">https://github.com/docker/cli.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">26.1.0_ce</param>
-    <param name="revision">v26.1.0</param>
+    <param name="versionformat">26.1.4_ce</param>
+    <param name="revision">v26.1.4</param>
     <param name="filename">docker-cli</param>
   </service>
   <service name="recompress" mode="manual">

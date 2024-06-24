@@ -1,7 +1,7 @@
-From a924a0f12b7cb1655e0bdf3f40ae294982045749 Mon Sep 17 00:00:00 2001
+From 5df43b3c82b7c69dc09dd775098771f20ac2435c Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Fri, 29 Jun 2018 17:59:30 +1000
-Subject: [PATCH 4/5] bsc1073877: apparmor: clobber docker-default profile on
+Subject: [PATCH 4/7] bsc1073877: apparmor: clobber docker-default profile on
  start
 
 In the process of making docker-default reloading far less expensive,
@@ -85,5 +85,5 @@ index e7ca77d8cbfc..13b39538fb00 100644
  	}
  
 -- 
-2.44.0
+2.45.2
 

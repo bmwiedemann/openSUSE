@@ -1,0 +1,53 @@
+From 7159c13ee349a2e2edb5ed8b6793794bae9025fd Mon Sep 17 00:00:00 2001
+From: Aleksa Sarai <cyphar@cyphar.com>
+Date: Wed, 19 Jun 2024 16:30:49 +1000
+Subject: [PATCH 7/7] bsc1214855: volume: use AtomicWriteFile to save volume
+ options
+
+If the system (or Docker) crashes while saivng the volume options, on
+restart the daemon will error out when trying to read the options file
+because it doesn't contain valid JSON.
+
+In such a crash scenario, the new volume will be treated as though it
+has the default options configuration. This is not ideal, but volumes
+created on very old Docker versions (pre-1.11[1], circa 2016) do not
+have opts.json and so doing some kind of cleanup when loading the volume
+store (even if we take care to only delete empty volumes) could delete
+existing volumes carried over from very old Docker versions that users
+would not expect to disappear.
+
+Ultimately, if a user creates a volume and the system crashes, a volume
+that has the wrong config is better than Docker not being able to start.
+
+[1]: commit b05b2370757d ("Support mount opts for `local` volume driver")
+
+SUSE-Bugs: https://bugzilla.suse.com/show_bug.cgi?id=1214855
+Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
+---
+ volume/local/local.go | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/volume/local/local.go b/volume/local/local.go
+index 6e96aeea4189..4412f34a3da9 100644
+--- a/volume/local/local.go
++++ b/volume/local/local.go
+@@ -17,6 +17,7 @@ import (
+ 	"github.com/docker/docker/daemon/names"
+ 	"github.com/docker/docker/errdefs"
+ 	"github.com/docker/docker/pkg/idtools"
++	"github.com/docker/docker/pkg/ioutils"
+ 	"github.com/docker/docker/quota"
+ 	"github.com/docker/docker/volume"
+ 	"github.com/pkg/errors"
+@@ -388,7 +389,7 @@ func (v *localVolume) saveOpts() error {
+ 	if err != nil {
+ 		return err
+ 	}
+-	err = os.WriteFile(filepath.Join(v.rootPath, "opts.json"), b, 0o600)
++	err = ioutils.AtomicWriteFile(filepath.Join(v.rootPath, "opts.json"), b, 0o600)
+ 	if err != nil {
+ 		return errdefs.System(errors.Wrap(err, "error while persisting volume options"))
+ 	}
+-- 
+2.45.2
+

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jun 24 08:15:24 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Rebase patches:
+ * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+ * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+ * 0003-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+ * 0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+ * 0005-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+- Fix BuildKit's symlink resolution logic to correctly handle non-lexical
+  symlinks. Backport of <https://github.com/moby/buildkit/pull/4896> and
+  <https://github.com/moby/buildkit/pull/5060>. bsc#1221916
+ + 0006-bsc1221916-update-to-patched-buildkit-version-to-fix.patch
+- Write volume options atomically so sudden system crashes won't result in
+  future Docker starts failing due to empty files. Backport of
+  <https://github.com/moby/moby/pull/48034>. bsc#1214855
+ + 0007-bsc1214855-volume-use-AtomicWriteFile-to-save-volume.patch
+
+-------------------------------------------------------------------
+Thu Jun  6 04:17:23 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 26.1.4-ce. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/26.1/#2614>
+- Rebase patches:
+  * cli-0001-docs-include-required-tools-in-source-tree.patch
+
+-------------------------------------------------------------------
 Wed Apr 24 13:43:30 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 26.1.0-ce. See upstream changelog online at

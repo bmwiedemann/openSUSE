@@ -32,9 +32,9 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define real_version 26.1.0
-%define git_version c8af8ebe4a89
-%define git_commit_epoch 1713797114
+%define real_version 26.1.4
+%define git_version de5c9cf0b96e
+%define git_commit_epoch 1717583601
 
 Name:           docker
 Version:        %{real_version}_ce
@@ -71,6 +71,11 @@ Patch200:       0003-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
 Patch201:       0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
 # UPSTREAM: Revert of upstream patches to make apparmor work on SLE 12.
 Patch202:       0005-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+# UPSTREAM: Backport of <https://github.com/moby/buildkit/pull/4896> and
+#           <https://github.com/moby/buildkit/pull/5060>.
+Patch203:       0006-bsc1221916-update-to-patched-buildkit-version-to-fix.patch
+# UPSTREAM: Backport of <https://github.com/moby/moby/pull/48034>.
+Patch204:       0007-bsc1214855-volume-use-AtomicWriteFile-to-save-volume.patch
 # UPSTREAM: Backport of <https://github.com/docker/cli/pull/4228>.
 Patch900:       cli-0001-docs-include-required-tools-in-source-tree.patch
 BuildRequires:  audit
@@ -227,6 +232,10 @@ cp %{SOURCE130} .
 %patch -P201 -p1
 # Solves apparmor issues on SLE-12, but okay for newer SLE versions too.
 %patch -P202 -p1
+# bsc#1221916
+%patch -P203 -p1
+# bsc#1214855
+%patch -P204 -p1
 
 %build
 %sysusers_generate_pre %{SOURCE160} %{name} %{name}.conf

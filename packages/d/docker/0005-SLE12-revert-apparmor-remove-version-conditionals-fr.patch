@@ -1,7 +1,7 @@
-From 7e422ce82b924b4d9e06c5f3277e6b235323122d Mon Sep 17 00:00:00 2001
+From deb42984d58de574bc2ca5857905ff68b57235c0 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Wed, 11 Oct 2023 21:19:12 +1100
-Subject: [PATCH 5/5] SLE12: revert "apparmor: remove version-conditionals from
+Subject: [PATCH 5/7] SLE12: revert "apparmor: remove version-conditionals from
  template"
 
 This reverts the following commits:
@@ -292,17 +292,18 @@ index 277c853ebe1f..d1aad80cbfd2 100644
  }
  
 diff --git a/profiles/apparmor/template.go b/profiles/apparmor/template.go
-index cf8c34ce8af9..4ebd647e14e4 100644
+index 8dbc1b610288..2062aab1ac99 100644
 --- a/profiles/apparmor/template.go
 +++ b/profiles/apparmor/template.go
-@@ -23,12 +23,14 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
+@@ -23,6 +23,7 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
    capability,
    file,
    umount,
 +{{if ge .Version 208096}}
    # Host (privileged) processes may send signals to container processes.
    signal (receive) peer=unconfined,
-   # dockerd may send signals to container processes (for "docker kill").
+   # runc may send signals to container processes (for "docker stop").
+@@ -33,6 +34,7 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
    signal (receive) peer={{.DaemonProfile}},
    # Container processes may send signals amongst themselves.
    signal (send,receive) peer={{.Name}},
@@ -310,7 +311,7 @@ index cf8c34ce8af9..4ebd647e14e4 100644
  
    deny @{PROC}/* w,   # deny write for all files directly in /proc (not in a subdir)
    # deny write to files not in /proc/<number>/** or /proc/sys/**
-@@ -49,7 +51,9 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
+@@ -53,7 +55,9 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
    deny /sys/devices/virtual/powercap/** rwklx,
    deny /sys/kernel/security/** rwklx,
  
@@ -321,5 +322,5 @@ index cf8c34ce8af9..4ebd647e14e4 100644
  }
  `
 -- 
-2.44.0
+2.45.2
 
