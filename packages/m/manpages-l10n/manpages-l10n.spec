@@ -18,7 +18,7 @@
 
 
 Name:           manpages-l10n
-Version:        4.22.0
+Version:        4.23.1
 Release:        0
 Summary:        Translation of man pages
 License:        GPL-3.0-or-later

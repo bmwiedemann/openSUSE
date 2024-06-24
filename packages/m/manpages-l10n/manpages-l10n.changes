@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jun 23 20:06:33 UTC 2024 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 4.23.1:
+  * Fixed (workaround) an issue which broke many localized man pages.
+  * Updated and added translations.
+
+-------------------------------------------------------------------
+Sat Jun 22 14:19:26 UTC 2024 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 4.23:
+  * Updated and added many translations.
+  * More active languages now.
+  * Fixed version number in previous CHANGES entry.
+  * Start handling \c in groff better.
+
+-------------------------------------------------------------------
 Sun Mar 24 14:37:48 UTC 2024 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 4.22: Updated and added many translations.
