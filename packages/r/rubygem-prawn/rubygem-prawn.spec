@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-prawn
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,20 +24,18 @@
 #
 
 Name:           rubygem-prawn
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 %define mod_name prawn
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.5}
+BuildRequires:  %{ruby >= 2.7}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-URL:            http://prawnpdf.org
+URL:            http://prawnpdf.org/
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A fast and nimble PDF generator for Ruby
-License:        Ruby AND GPL-2.0-only AND GPL-3.0-only
-Group:          Development/Languages/Ruby
+License:        GPL-2.0-only AND Ruby AND GPL-3.0-only
 
 %description
 Prawn is a fast, tiny, and nimble PDF generator for Ruby.
