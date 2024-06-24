@@ -2,8 +2,10 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/eneshecan/whatsapp-for-linux.git</param>
-		<param name="revision">2717ff67871696ca2c9c3b2c7f47678139411d12</param>
-		<param name="versionformat">1.6.5~%cd.%h</param>
+		<param name="revision">v1.6.5</param>
+		<param name="match-tag">v*</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="versionrewrite-pattern">v(.*)</param>
 	</service>
 	<service name="recompress" mode="disabled">
 		<param name="file">*.tar</param>
