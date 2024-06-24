@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 24 12:01:02 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.63.1
+  * Increase upper limit for protobuf 5.X versions (#212)
+
+-------------------------------------------------------------------
 Sun Apr  7 09:12:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.63.0:

@@ -20,7 +20,7 @@
 %define pkgname %{lua:pname,_ = string.gsub(rpm.expand('%modname'), '-' , '_');print(pname)}
 %{?sle15_python_module_pythons}
 Name:           python-googleapis-common-protos
-Version:        1.63.0
+Version:        1.63.1
 Release:        0
 Summary:        Common protobufs used in Google APIs
 License:        Apache-2.0
