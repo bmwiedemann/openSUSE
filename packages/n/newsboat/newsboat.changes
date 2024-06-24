@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jun 22 12:36:54 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 2.36:
+  Changed:
+  * Improved readability of `--help`: better alignment, replace
+    unreadable ad hoc filenames with `<file>`
+  * Updated translations: Brazilian Portuguese, Chinese, Dutch,
+    German, Italian, Polish, Russian and Ukrainian, Swedish,
+    Turkish
+  * Updated vendored library Catch2 to 3.5.4, expected-lite to
+    0.8.0
+  Fixed:
+  * Updated default color configuration in the docs
+  * Parts of contrib/ not being installed
+
+-------------------------------------------------------------------
 Sun Mar 24 22:51:38 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update newsbeuter-makefile.patch
