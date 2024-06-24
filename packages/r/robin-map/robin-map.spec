@@ -17,7 +17,7 @@
 
 
 Name:           robin-map
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        C++ implementation of a fast hash map and hash set using robin hood hashing
 License:        MIT
