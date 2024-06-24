@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-sprockets-rails
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-sprockets-rails
-Version:        3.4.2
+Version:        3.5.1
 Release:        0
 %define mod_name sprockets-rails
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.5}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
@@ -37,7 +36,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Sprockets Rails integration
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 Sprockets Rails integration.
