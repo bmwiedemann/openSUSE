@@ -292,4 +292,18 @@ To the multimedia:apps mantainer: the v0.23 brings and updated dependency on phy
     setuptools.</comment>
     <requestid>1164231</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>32c3e828657b68b280f76f0144c3f484</srcmd5>
+    <version>1.15</version>
+    <time>1719255029</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.15:
+  * Don't merge font tags with different values
+    (gh#otsaloma/gaupol#224).
+  * Drop dependency on chardet.
+  * Add dependency on charset-normalizer.
+  * Raise Python dependency to &gt;= 3.5. 
+</comment>
+    <requestid>1182929</requestid>
+  </revision>
 </revisionlist>

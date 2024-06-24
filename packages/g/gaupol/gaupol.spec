@@ -20,7 +20,7 @@
 %bcond_without test
 %define skip_python2 1
 Name:           gaupol
-Version:        1.14.1
+Version:        1.15
 Release:        0
 Summary:        GTK Subtitle editor
 License:        GPL-3.0-or-later
@@ -39,10 +39,10 @@ Requires:       python3
 Requires:       python3-aeidon
 Requires:       python3-gobject >= 3.12
 Recommends:     iso-codes >= 3.67
-Recommends:     python3-chardet
+Recommends:     python3-charset-normalizer
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module chardet}
+BuildRequires:  %{python_module charset-normalizer}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  myspell-en_US
 BuildRequires:  typelib(Gspell) >= 1

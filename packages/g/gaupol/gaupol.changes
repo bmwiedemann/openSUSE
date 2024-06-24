@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 23 20:14:42 UTC 2024 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 1.15:
+  * Don't merge font tags with different values
+    (gh#otsaloma/gaupol#224).
+  * Drop dependency on chardet.
+  * Add dependency on charset-normalizer.
+  * Raise Python dependency to >= 3.5. 
+
+-------------------------------------------------------------------
 Tue Apr  2 19:42:42 UTC 2024 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 1.14.1:
