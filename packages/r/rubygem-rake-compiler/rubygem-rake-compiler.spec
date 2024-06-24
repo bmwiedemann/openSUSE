@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rake-compiler
-Version:        1.2.6
+Version:        1.2.7
 Release:        0
 %define mod_name rake-compiler
 %define mod_full_name %{mod_name}-%{version}
