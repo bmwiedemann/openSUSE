@@ -310,4 +310,15 @@
 - Update Requires from setup.py (forwarded request 1175474 from glaubitz)</comment>
     <requestid>1175533</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e656a3412c82b312ae201a3560ba48ab</srcmd5>
+    <version>9.5.1</version>
+    <time>1719255101</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 9.5.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1182472 from glaubitz)</comment>
+    <requestid>1182502</requestid>
+  </revision>
 </revisionlist>
