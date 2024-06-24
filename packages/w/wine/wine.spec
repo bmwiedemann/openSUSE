@@ -20,7 +20,7 @@
 %global flavor @BUILD_FLAVOR@%nil
 %define staging 0
 
-%ifarch x86_64
+%ifarch x86_64 aarch64
 %define wow64_build 0
 %endif
 %ifarch %ix86
@@ -41,8 +41,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 9.10
-Version:        9.10
+%define realver 9.11
+Version:        9.11
 Release:        0
 
 %if "%{flavor}" != ""
@@ -197,7 +197,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 9.10
+%define staging_version 9.11
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel

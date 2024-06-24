@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun 15 14:49:37 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 9.11 release
+  - C++ exception handling on ARM platforms.
+  - More DPI Awareness support improvements.
+  - Various bug fixes.
+- update staging to 9.11 release
+
+-------------------------------------------------------------------
 Mon Jun  3 12:20:38 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - various adjustments to make wow64 / wow64-staging flavors correctly

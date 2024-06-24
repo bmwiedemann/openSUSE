@@ -5190,4 +5190,12 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - 0001-mf-tests-help-older-compilers-by-using-defines.patch: make build on 15.x</comment>
     <requestid>1178345</requestid>
   </revision>
+  <revision rev="441" vrev="1">
+    <srcmd5>20708335aadae0148744cc31ec55ff00</srcmd5>
+    <version>9.11</version>
+    <time>1719255189</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1182653</requestid>
+  </revision>
 </revisionlist>
