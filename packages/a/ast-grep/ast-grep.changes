@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jun 24 07:24:44 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.24.0:
+  * feat: add debug ast and cst #1218
+  * feat: add strictness in PyO3 #1246
+  * feat: add strictness flag in cli #1243
+  * test: add test for different strictness #1241
+  * feat: add strictness to YAML #1239
+  * Breaking change: fix: update API for fix 4971ac2
+  * Breaking change: fix: change deletedLength to endPos in napi c0e9a65
+  * feat: add colorized output 22f279c
+
+-------------------------------------------------------------------
+Mon Jun 24 07:24:25 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.23.1:
+  * fix: all should not pollute env #1225
+  * Breaking change: feat: use new pattern struct f219b43
+  * refactor: move match_node impl out 27c918a
+  * refactor: factor out match_ellipsis logic 407d2a8
+
+-------------------------------------------------------------------
 Tue Jun 11 10:13:44 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.23.0:
