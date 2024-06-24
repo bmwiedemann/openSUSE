@@ -1,0 +1,8 @@
+<package name="drkonqi6" project="openSUSE:Factory">
+  <title>Helper for debugging and reporting crashes</title>
+  <description>The KDE Crash Handler gives the user feedback if a program has crashed.
+
+</description>
+  <devel project="KDE:Frameworks" package="drkonqi6"/>
+  <url>https://www.kde.org/</url>
+</package>

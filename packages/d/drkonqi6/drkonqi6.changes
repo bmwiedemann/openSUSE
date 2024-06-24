@@ -1,0 +1,156 @@
+-------------------------------------------------------------------
+Sat Jun 15 19:24:40 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Do not pull in python3-sentry-sdk until its packaging is fixed
+
+-------------------------------------------------------------------
+Thu Jun 13 10:58:23 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.0
+- Changes since 6.0.90:
+  * update version for new release
+  * polkit: correctly call fcntl (kde#487727)
+  * polkit: don't ignore fcntl errors
+
+-------------------------------------------------------------------
+Sat May 25 11:17:54 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.90
+- Changes since 6.0.5:
+  * update version for new release
+  * postman: don't run too often
+  * postman: disambiguate path unit
+  * backtracegenerator: refactor process resetting
+  * backtracegenerator: don't crash when the debugger crashes (kde#485669)
+  * coredump/polkit: route core directly into the file descriptor
+  * coredump/polkit: turn assert into early return
+  * coredump/polkit: save the core into a file rather than a directory
+  * coredump/polkit: refine the action message
+  * coredump/polkit: rename the excavator action
+  * coredump/polkit: implement copy_file_range fallback for renameat
+  * coredump/polkit: assert directory is 0700
+  * coredump/polkit: return early when excavation failed
+  * coredump/polkit: put tmpDir on the stack
+  * coredump/polkit: don't allow anything that looks like paths as input
+  * dumpexcavator: fix dbus timeout handling
+  * be more strict in rejecting useless traces
+  * coredump-processor: replace sleep hack with in-process sleep (kde#484864)
+  * backtracegenerator: add a setting to automatically fetch symbols from debuginfod
+  * sentry: add more tags
+  * gdb: limit amount of frames in backtrace to 128
+  * Port to Kirigami version of ContextualHelpButton
+  * reportinterface: default log entries to priority 'info'
+  * Set systemd start timeout for drkonqi-coredump-pickup.service
+  * Avoid unneeded QtQml module include
+  * sentrypostbox: change user feedback name to DrKonqi
+  * backtraceparser: uniquify missing libs list (kde#478929)
+  * dumpexcavator: include unistd for close declaration (kde#479652)
+
+-------------------------------------------------------------------
+Wed May 22 07:43:00 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.5
+- Changes since 6.0.4:
+  * update version for new release
+  * postman: don't run too often
+  * backtracegenerator: refactor process resetting
+  * backtracegenerator: don't crash when the debugger crashes (kde#485669)
+  * coredump/polkit: return early when excavation failed
+  * coredump/polkit: put tmpDir on the stack
+  * coredump/polkit: don't allow anything that looks like paths as input
+  * dumpexcavator: fix dbus timeout handling
+  * be more strict in rejecting useless traces
+
+-------------------------------------------------------------------
+Wed Apr 17 08:12:13 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.4
+- Changes since 6.0.3:
+  * coredump-processor: replace sleep hack with in-process sleep (kde#484864)
+  * update version for new release
+
+-------------------------------------------------------------------
+Tue Mar 26 18:05:22 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.3
+- Changes since 6.0.2:
+  * update version for new release
+  * sentry: add more tags
+  * gdb: limit amount of frames in backtrace to 128
+  * reportinterface: default log entries to priority 'info'
+
+-------------------------------------------------------------------
+Wed Mar 13 09:09:29 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.2
+- Changes since 6.0.1:
+  * update version for new release
+
+-------------------------------------------------------------------
+Wed Mar  6 08:40:26 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.1
+- Changes since 6.0.0:
+  * update version for new release
+
+-------------------------------------------------------------------
+Mon Mar  4 18:52:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add Provides/Obsoletes to replace Plasma 5
+
+-------------------------------------------------------------------
+Wed Feb 21 18:36:11 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0:
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.93.0:
+  * Set systemd start timeout for drkonqi-coredump-pickup.service
+  * update version for new release
+
+-------------------------------------------------------------------
+Wed Jan 31 17:36:50 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.93.0 (6.0 RC 2):
+  * New bugfix release
+  * See https://kde.org/announcements/megarelease/6/rc2/ for details
+- Changes since 5.92.0:
+  * dumpexcavator: include unistd for close declaration (kde#479652)
+
+-------------------------------------------------------------------
+Mon Jan 15 21:08:34 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.92.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Sun Dec  3 08:06:43 UTC 2023 - Luca Beltrame <lbeltrame@kde.org>
+
+- Dropped patch, as pygdbmi is no longer hard-required upstream:
+  * Don-t-hard-require-pygdbmi.patch
+
+-------------------------------------------------------------------
+Fri Dec  1 22:10:48 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to avoid requiring pygdbmi:
+  * Don-t-hard-require-pygdbmi.patch
+
+-------------------------------------------------------------------
+Fri Jul 14 12:41:07 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init drkonqi6
