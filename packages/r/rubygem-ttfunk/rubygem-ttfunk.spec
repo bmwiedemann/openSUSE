@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-ttfunk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,20 +24,18 @@
 #
 
 Name:           rubygem-ttfunk
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 %define mod_name ttfunk
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.5}
+BuildRequires:  %{ruby >= 2.7}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-URL:            https://prawnpdf.org
+URL:            http://prawnpdf.org/
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        TrueType Font Metrics Parser
-License:        Ruby OR GPL-2.0-only OR GPL-3.0-only
-Group:          Development/Languages/Ruby
+License:        GPL-2.0-only OR Ruby OR GPL-3.0-only
 
 %description
 Font Metrics Parser for the Prawn PDF generator.

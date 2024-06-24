@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Fri Jun 21 10:53:20 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- ### Fixed
+
+* Corrupted CFF index data
+
+  there was a subtle bug in cff index implementation that resulted in
+  a data corruption. in certain circumstances some items didn't get
+  properly encoded. this happened when items were not previously accessed.
+
+  this resulted, for instance, in missing glyphs. but only sometimes
+  because indexes might've still contain data that shouldn't've been
+  there. in combination with incorrect encoding (see further) this
+  resulted in some glyphs still being rendered, sometimes even correctly.
+
+  along with the fix a rather large api change landed. this resulted in
+  quite a big diff.
+
+  Alexander Mankuta
+
+* Incorrect CFF encoding in subsets
+
+  TTFunk used to reuse encoding from the original font. This mapping was
+  incorrect for subset fonts which used not just a subset of glyphs but
+  also a different encoding.
+
+  A separate issue was that some fonts have empty CFF encoding. This
+  incorrect mapping resulted in encoding that mapped all codes to glyph 0.
+
+  This had impact on Prawn in particular. PDF spec explicitly says that
+  CFF encoding is not to be used in OpenType fonts. `cmap` table should
+  directly index charstrings in the CFF table. Despite this PDF renderers
+  still use CFF encoding to retrieve glyphs. So TTFunk has to discard the
+  original CFF encoding and supply its own.
+
+  Alexander Mankuta
+
+* `maxp` table
+
+  The table is now correctly parsed and encoded for both TrueType and CFF-based
+  OpenType fonts.
+
+  Cameron Dutro, Alexander Mankuta
+
+* Files are closed sooner
+
+  Files were garbage collected but could stay open for longer than necessary.
+
+  Jon Burgess
+
+* Long date time in the `head` table
+
+  The `created` and `modified` fields we parsed and encoded with incorrect
+  endiannes. Additionally helper methods were added to convert these fields to
+  and from Ruby `Time`.
+
+   Jens Kutilek, Peter Goldstein
+
+* Removed execution permissions on non-executable files
+
+  Keenan Brock
+
+### Changes
+
+* Minimum Ruby is 2.7
+
+  Alexander Mankuta
+
+* Performance improvement in subsets construction
+
+  Thomas Leitner
+
+* CI improvememnts
+
+  Peter Goldstein
+
+
+-------------------------------------------------------------------
 Wed Jan 20 13:30:15 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.7.0
