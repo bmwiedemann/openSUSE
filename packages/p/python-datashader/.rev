@@ -296,4 +296,20 @@
     <comment></comment>
     <requestid>1155041</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>fa77b48cf6b9a4e0938c53b268f7157d</srcmd5>
+    <version>0.16.2</version>
+    <time>1719255377</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.16.2:
+  * Remove artifact from Polygon rendering (#1341)
+  * Python 3.12 support (#1317)
+  * Basic dask_expr support (#1317)
+  * Numpy 2.0 support (#1306)
+  * Remove redundant py2 helper code (#1316)
+- Remove upper bound on pytest.
+- Add patch datashader-pr1314-fix-pandas2.2-tests.patch:
+  * Included upstream.</comment>
+    <requestid>1182955</requestid>
+  </revision>
 </revisionlist>
