@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jun 22 10:07:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240620T145054Z:
+  * make 'mc admin service restart' more descriptive of what it
+    does (#4965)
+  * list versions including DEL marker when figuring out Stat()
+    (#4951)
+  * enable batch expiry option in trace (#4964)
+  * fix: support 'mc put --if-not-exists' (#4963)
+  * Adding support for Hex keys (#4962)
+
+-------------------------------------------------------------------
 Fri Jun 14 18:12:51 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240612T143403Z:
