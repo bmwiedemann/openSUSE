@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Jun 23 00:24:07 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Specfile cleanup
+  * copy rust crate sources into subprojects folder
+  * remove supplements. nvk is still new
+- Specfile changes for Rust crates. Also added this to README-suse-maintenance.md
+  * Since Rust crates are not installed or discouraged to be installed
+    as system dependencies because of the maintenance burden of being the
+    next crates.io, we will have to download the following crates as vendored
+    dependencies. Hence, do not be scared if the dependencies are done like
+    this To check new crates or update the versions, just go to the subprojects
+    folder and run `grep -r crates .` then set versions appropriately.
+
+-------------------------------------------------------------------
+Fri Jun 21 08:41:10 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update baselibs.conf
+- Build requires rust-cbindgen >= 0.25. However, this means
+  we cannot build libvulkan_nouveau on Leap.
+- Enable libvulkan_nouveau including the following depencencies
+  * add rust crate paste-1.0.14.tar.gz
+  * add rust crate proc-macro2-1.0.70.tar.gz
+  * add rust crate quote-1.0.33.tar.gz
+  * add rust crate syn-2.0.39.tar.gz
+  * add rust crate unicode-ident-1.0.12.tar.gz
+
+-------------------------------------------------------------------
+Thu Jun 20 13:39:48 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to bugfix release 24.1.2
+  --> https://docs.mesa3d.org/relnotes/24.1.2
+
+-------------------------------------------------------------------
 Wed Jun 19 17:31:26 UTC 2024 - Mikhail Paulyshka <me@mixaill.net>
 
 - Disable LTO on %ix86/x86_64 due to rendering bugs on Radeon

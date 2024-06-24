@@ -5754,4 +5754,33 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   graphics (boo#1226462)</comment>
     <requestid>1181825</requestid>
   </revision>
+  <revision rev="510" vrev="382">
+    <srcmd5>a1e5c81d5b0a07fa260d9ba377d919e5</srcmd5>
+    <version>unknown</version>
+    <time>1719255023</time>
+    <user>anag+factory</user>
+    <comment>- Specfile cleanup
+  * copy rust crate sources into subprojects folder
+  * remove supplements. nvk is still new
+- Specfile changes for Rust crates. Also added this to README-suse-maintenance.md
+  * Since Rust crates are not installed or discouraged to be installed
+    as system dependencies because of the maintenance burden of being the
+    next crates.io, we will have to download the following crates as vendored
+    dependencies. Hence, do not be scared if the dependencies are done like
+    this To check new crates or update the versions, just go to the subprojects
+    folder and run `grep -r crates .` then set versions appropriately.
+- Update baselibs.conf
+- Build requires rust-cbindgen &gt;= 0.25. However, this means
+  we cannot build libvulkan_nouveau on Leap.
+- Enable libvulkan_nouveau including the following depencencies
+  * add rust crate paste-1.0.14.tar.gz
+  * add rust crate proc-macro2-1.0.70.tar.gz
+  * add rust crate quote-1.0.33.tar.gz
+  * add rust crate syn-2.0.39.tar.gz
+  * add rust crate unicode-ident-1.0.12.tar.gz
+- Update to bugfix release 24.1.2
+  --&gt; https://docs.mesa3d.org/relnotes/24.1.2
+</comment>
+    <requestid>1182863</requestid>
+  </revision>
 </revisionlist>

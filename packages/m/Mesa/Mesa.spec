@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package Mesa
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -42,7 +42,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 24.1.1
+%define _version 24.1.2
 %define with_opencl 0
 %define with_rusticl 0
 %define with_vulkan 0
@@ -76,11 +76,19 @@
   %define with_opencl 1
   %ifarch %{ix86} x86_64
     %define with_vulkan 1
+    %if 0%{?suse_version} > 1600
+    %define vulkan_drivers swrast,amd,intel,intel_hasvk,nouveau
+    %else
     %define vulkan_drivers swrast,amd,intel,intel_hasvk
+    %endif
   %endif
   %ifarch %{arm} aarch64
     %define with_vulkan 1
+    %if 0%{?suse_version} > 1600
+    %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk,nouveau
+    %else
     %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk
+    %endif
   %endif
   %ifarch riscv64
     %define with_vulkan 1
@@ -88,7 +96,7 @@
   %endif
 %endif
 
-%ifarch aarch64 %{arm} ppc64 ppc64le riscv64 s390x %{ix86} x86_64
+%ifarch aarch64 %{arm} ppc64 ppc64le riscv64 s390x %{ix86} x86_64 ix86
   %define with_llvm 1
 %endif
 
@@ -129,21 +137,42 @@
   %define with_vulkan 0
 %endif
 
+# NVK aka Vulkan Nouveau dependencies
+%global _unicode_ident_crate_ver 1.0.12
+%global _syn_crate_ver 2.0.39
+%global _quote_crate_ver 1.0.33
+%global _proc_macro2_ver 1.0.70
+%global _paste_crate_ver 1.0.14
+
 Name:           Mesa%{psuffix}
-Version:        24.1.1
+Version:        24.1.2
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
 Group:          System/Libraries
 URL:            https://www.mesa3d.org
 #Git-Clone:     git://anongit.freedesktop.org/mesa/mesa
-Source:         https://archive.mesa3d.org/%{_name_archive}-%{_version}.tar.xz
+Source0:        https://archive.mesa3d.org/%{_name_archive}-%{_version}.tar.xz
 Source1:        https://archive.mesa3d.org/%{_name_archive}-%{_version}.tar.xz.sig
-Source2:        baselibs.conf
-Source3:        README.updates
-Source4:        manual-pages.tar.bz2
-Source6:        Mesa-rpmlintrc
-Source7:        Mesa.keyring
+# NVK aka Vulkan Nouveau dependencies
+# Explainer:
+# Since Rust crates are not installed or discouraged to be installed as system
+# dependencies because of the maintenance burden of being the next crates.io,
+# we will have to download the following crates as vendored dependencies.
+# Hence, do not be scared if the dependencies are done like this
+# To check new crates or update the versions, just go to the subprojects folder and
+# run `grep -r crates .` then set versions appropriately.
+Source2:        http://crates.io/api/v1/crates/unicode-ident/%{_unicode_ident_crate_ver}/download#/unicode-ident-%{_unicode_ident_crate_ver}.tar.gz
+Source3:        http://crates.io/api/v1/crates/syn/%{_syn_crate_ver}/download#/syn-%{_syn_crate_ver}.tar.gz
+Source4:        http://crates.io/api/v1/crates/quote/%{_quote_crate_ver}/download#/quote-%{_quote_crate_ver}.tar.gz
+Source5:        http://crates.io/api/v1/crates/proc-macro2/%{_proc_macro2_ver}/download#/proc-macro2-%{_proc_macro2_ver}.tar.gz
+Source6:        http://crates.io/api/v1/crates/paste/%{_paste_crate_ver}/download#/paste-%{_paste_crate_ver}.tar.gz
+Source7:        baselibs.conf
+Source8:        README.updates
+Source9:        manual-pages.tar.bz2
+Source10:       Mesa-rpmlintrc
+Source11:       Mesa.keyring
+Source12:       README-suse-maintenance.md
 Patch2:         n_add-Mesa-headers-again.patch
 Patch11:        u_0001-intel-genxml-Drop-from-__future__-import-annotations.patch
 Patch12:        u_0002-intel-genxml-Add-a-untyped-OrderedDict-fallback-for-.patch
@@ -269,6 +298,12 @@ BuildRequires:  clang18-devel
 BuildRequires:  libclc
 BuildRequires:  pkgconfig(LLVMSPIRVLib)
 BuildRequires:  pkgconfig(SPIRV-Tools)
+# For NVK or libvulkan_nouveau.so
+# Rust Cbindgen >=0.25 is required
+# but it's only available on tumbleweed
+%if 0%{?suse_version} > 1600
+BuildRequires:  rust-cbindgen >= 0.25
+%endif
 %if 0%{with_rusticl}
 BuildRequires:  rust
 BuildRequires:  rust-bindgen
@@ -690,6 +725,17 @@ Obsoletes:      Mesa-libVulkan-devel < 22.0.0
 %description -n libvulkan_intel
 This package contains the Vulkan parts for Mesa.
 
+# Only available on Tumbleweed because of rust-cbindgen >= 1.25 requirement
+%if 0%{?suse_version} > 1600
+%package -n libvulkan_nouveau
+Summary:        Mesa vulkan driver for NVK (Nouveau Vulkan)
+Group:          System/Libraries
+Requires:       Mesa-vulkan-device-select = %{version}
+
+%description -n libvulkan_nouveau
+This package contains the Vulkan parts for Mesa.
+%endif
+
 %package -n libvulkan_radeon
 Summary:        Mesa vulkan driver for AMD GPU
 Group:          System/Libraries
@@ -764,9 +810,17 @@ This package provides the development environment for compiling
 programs against the XA state tracker.
 
 %prep
-%setup -q -n %{_name_archive}-%{_version} -b4
+%setup -q -n %{_name_archive}-%{_version} -b9
 # remove some docs
 rm -rf docs/README.{VMS,WIN32,OS2}
+
+# Rust crates to subprojects
+mkdir -p subprojects/packagecache
+cp %{SOURCE2} subprojects/packagecache/
+cp %{SOURCE3} subprojects/packagecache/
+cp %{SOURCE4} subprojects/packagecache/
+cp %{SOURCE5} subprojects/packagecache/
+cp %{SOURCE6} subprojects/packagecache/
 
 %patch -P 2 -p1
 # fixes build against python 3.6
@@ -902,6 +956,7 @@ egl_platforms=x11,wayland
 %meson_build
 
 %install
+export MESON_PACKAGE_CACHE_DIR="%{_sourcedir}"
 %meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
@@ -1232,6 +1287,17 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %{_libdir}/libvulkan_intel.so
 %{_datadir}/vulkan/icd.d/intel_hasvk_icd.*.json
 %{_libdir}/libvulkan_intel_hasvk.so
+%endif
+
+%ifarch %{ix86} x86_64 aarch64 %{arm}
+# Only available on Tumbleweed because of rust-cbindgen >= 1.25 requirement
+%if 0%{?suse_version} > 1600
+%files -n libvulkan_nouveau
+%{_libdir}/libvulkan_nouveau.so
+%{_datadir}/vulkan/icd.d/nouveau_icd.*.json
+%dir %{_datadir}/vulkan
+%dir %{_datadir}/vulkan/icd.d
+%endif
 %endif
 
 %files -n libvulkan_radeon
