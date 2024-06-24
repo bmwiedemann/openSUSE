@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Jun 21 09:58:17 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- ### 1.15.0 (2024-06-11)
+
+#### Features
+
+* Support for google-protobuf 4.x ([#315](https://github.com/googleapis/common-protos-ruby/issues/315))
+
+### 1.14.0 (2024-03-16)
+
+#### Features
+
+* Added LOCATION_POLICY_VIOLATED as an error reason
+* Added rest_reference_documentation_uri to the Publishing config
+* Added the google.api.api_version service option
+#### Documentation
+
+* Minor documentation updates
+
+### 1.13.0 (2024-02-23)
+
+#### Features
+
+* Update minimum Ruby version to 2.7 ([#246](https://github.com/googleapis/common-protos-ruby/issues/246))
+
+### 1.12.0 (2024-02-13)
+
+#### Features
+
+* set packed to false on field_behavior extension ([#239](https://github.com/googleapis/common-protos-ruby/issues/239))
+
+
+-------------------------------------------------------------------
 Mon Jan 29 14:04:34 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - ### 1.11.0 (2023-12-04)

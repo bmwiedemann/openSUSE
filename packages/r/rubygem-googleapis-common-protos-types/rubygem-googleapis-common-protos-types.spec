@@ -24,11 +24,11 @@
 #
 
 Name:           rubygem-googleapis-common-protos-types
-Version:        1.11.0
+Version:        1.15.0
 Release:        0
 %define mod_name googleapis-common-protos-types
 %define mod_full_name %{mod_name}-%{version}
-BuildRequires:  %{ruby >= 2.6}
+BuildRequires:  %{ruby >= 2.7}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/googleapis/common-protos-ruby
