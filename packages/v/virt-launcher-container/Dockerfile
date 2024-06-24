@@ -37,6 +37,7 @@ RUN zypper -n install \
               libvirt-daemon-driver-qemu \
               netcat \
               nftables \
+              procps \
               psmisc \
               qemu-hw-usb-host \
               qemu-hw-usb-redirect \
