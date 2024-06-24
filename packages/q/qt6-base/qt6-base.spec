@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.7.1
+%define real_version 6.7.2
 %define short_version 6.7
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
@@ -33,7 +33,7 @@
 %bcond_without system_md4c
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.7.1
+Version:        6.7.2
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 # Legal: qtpaths is BSD-3-Clause
