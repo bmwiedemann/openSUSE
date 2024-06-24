@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 21 21:30:55 UTC 2024 - Martin Wilck <martin.wilck@suse.com>
+
+- Update to hplip 3.24.4
+- Added support for new printers:  
+  * HP OfficeJet 8120 All-in-One series
+  * HP OfficeJet Pro 8120 All-in-One series
+  * HP OfficeJet 8130 All-in-One series
+  * HP OfficeJet Pro 8130 All-in-One series
+  * HP OfficeJet Pro 9720 Series
+  * HP OfficeJet Pro 9730 Series
+ 
+-------------------------------------------------------------------
 Thu Feb 22 07:51:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
