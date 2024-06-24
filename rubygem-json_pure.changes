@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jun 21 10:06:22 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- 2.7.2:
+
+## What's Changed
+* Use rb_sym2str instead of SYM2ID by @jhawthorn in https://github.com/flori/json/pull/561
+* Fix memory leak when exception is raised during JSON generation by @peterzhu2118 in https://github.com/flori/json/pull/574
+* Remove references to "19" methods in JRuby by @headius in https://github.com/flori/json/pull/576
+* Make OpenStruct support as optional by @hsbt in https://github.com/flori/json/pull/565
+* Autoload JSON::GenericObject to avoid require ostruct warning in Ruby 3.4 by @tompng in https://github.com/flori/json/pull/577
+* Warn to install ostruct if json couldn't load it by @hsbt in https://github.com/flori/json/pull/578
+
+## New Contributors
+* @mperham made their first contribution in https://github.com/flori/json/pull/571
+* @peterzhu2118 made their first contribution in https://github.com/flori/json/pull/574
+
+**Full Changelog**: https://github.com/flori/json/compare/v2.7.1...v2.7.2
+
+
+
+-------------------------------------------------------------------
 Mon Jan 29 14:10:24 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - 2.7.1:
