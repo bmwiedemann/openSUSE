@@ -1,0 +1,12 @@
+<package name="bk" project="openSUSE:Factory">
+  <title>Terminal ePub reader</title>
+  <description>bk is a terminal EPUB reader, written in Rust with many features:
+ * Cross platform - Linux, macOS and Windows support
+ * Single binary, instant startup
+ * EPUB 2/3 support
+ * Vim bindings
+ * Incremental search
+ * Bookmarks</description>
+  <devel project="Documentation:Tools" package="bk"/>
+  <url>https://github.com/aeosynth/bk</url>
+</package>
