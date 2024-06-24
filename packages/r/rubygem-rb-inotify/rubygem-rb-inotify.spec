@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rb-inotify
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,20 +24,18 @@
 #
 
 Name:           rubygem-rb-inotify
-Version:        0.10.1
+Version:        0.11.1
 Release:        0
 %define mod_name rb-inotify
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.2}
+BuildRequires:  %{ruby >= 2.5}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/guard/rb-inotify
+URL:            https://github.com/guard/rb-inotify
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A Ruby wrapper for Linux inotify, using FFI
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 A Ruby wrapper for Linux inotify, using FFI.
