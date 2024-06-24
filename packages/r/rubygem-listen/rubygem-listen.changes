@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 21 10:09:42 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- 3.9.0:
+
+- Issue #572: make kernel warn configurable -- see README (#579) @ColinDKelley @AlexB52
+- drop ruby 2.6 and add ruby 3.3 to the test matrix (#578) @ColinDKelley
+- Fix github workflows link in README (#577) @hotoolong
+
+
+
+
+-------------------------------------------------------------------
 Sat Nov  4 00:31:55 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - cleanup ruby version limiting
