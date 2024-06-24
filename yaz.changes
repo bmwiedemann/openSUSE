@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 19 20:58:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.34.1:
+  * Build: fix implicit atoi/stdlib includes (libxml >2.12) #104
+  * Build: fix libxml2 2.13 reorganizing headers #102
+  * Build: fix always true pointer checks #108
+  * Build: update m4 to fix cross-builds
+
+-------------------------------------------------------------------
 Sat Jan 21 17:29:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.34.0:
@@ -25,7 +34,7 @@ Mon Aug  8 15:37:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * backtrace: allow gdb to operate on this process.
   * backtrace: hard exit if backtrace hangs.
   * yaz-marcdump: limit, offset options. Limit(-L), offset(-O) allows records
-    in range to be processed. 
+    in range to be processed.
 
 -------------------------------------------------------------------
 Mon Jan 31 13:31:44 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -81,7 +90,7 @@ Sat Mar 14 11:25:11 UTC 2020 - lars@linux-schulserver.de
 - Update to 5.29.0:
   + Several fixes for danmarc(2) charset encoding and decoding.
     YAZ-923 YAZ-924
-  + Fix yaz-marcdump silently creates MARC-records with an 
+  + Fix yaz-marcdump silently creates MARC-records with an
     invalid director YAZ-926
   + Add pkg-config templates for YAZ ICU and YAZ server YAZ-925
   5.28.0 2019/11/28
@@ -182,9 +191,9 @@ Mon Jul  3 15:56:11 UTC 2017 - lars@linux-schulserver.de
   + Extend yaz daemon facility to assist int log rotation YAZ-818 YAZ-819
   + Moved YAZ and many other software components to GitHub
 - yaz-record-conv now installed and packaged
-- Adjust and rename code cleanup patches (yaz-4.1.7-codecleanup.diff 
+- Adjust and rename code cleanup patches (yaz-4.1.7-codecleanup.diff
   and yaz-4.1.7-client.diff)
-- removed yaz-4.2.47-implicit_definitions.patch: somehow fixed 
+- removed yaz-4.2.47-implicit_definitions.patch: somehow fixed
   upstream (no compiler warnings any more)
 
 -------------------------------------------------------------------
@@ -252,15 +261,15 @@ Thu Jun  6 06:26:41 UTC 2013 - ke@suse.de
 Mon Jan 28 10:40:47 UTC 2013 - lars@linux-schulserver.de
 
 - update to 4.2.49:
-  + ICU has a new conversion element 'join', which joins tokens 
+  + ICU has a new conversion element 'join', which joins tokens
     into one with a custom character given by the rule attribute.
   + New GFS search member: present_number. This is a hint to the
     search handler how many records are going to be fetched immediately
-    following search. There's no guarantee that it's going to be 
-    the case, since it depends on hit count (for Z39.50 piggyback) 
+    following search. There's no guarantee that it's going to be
+    the case, since it depends on hit count (for Z39.50 piggyback)
     and whether errors turn up.
   + Make a few functions static (private). The functions getbyte_stream,
-    ungetbyte_stream and yaz_gets are now private. They were never 
+    ungetbyte_stream and yaz_gets are now private. They were never
     declared in a header file.
   + ZOOM: special options to control APDU logging.
     Using ZOOM_connection_option_set(c, "saveAPDU", "1") will enable
@@ -326,16 +335,16 @@ Sat Sep 10 21:52:41 UTC 2011 - lars@linux-schulserver.de
   + CQL/CCL/PQF conversion fixes. CCL support for Z39.58 trunc
   + cql2ccl: term code for all/any sequences as well
   + cql2ccl: fix handling of \\
-  + for more Information, see 
-    /usr/share/doc/packages/yaz/ChangeLog 
-- rename libyaz to libyaz4 to follow shared library packaging 
+  + for more Information, see
+    /usr/share/doc/packages/yaz/ChangeLog
+- rename libyaz to libyaz4 to follow shared library packaging
   standard - and move problematic files to the yaz main package
 
 -------------------------------------------------------------------
 Tue Aug  2 15:25:11 UTC 2011 - idonmez@novell.com
 
 - Cleanup the spec file
-- Add BuildRequires on pkg-config because the package installs a 
+- Add BuildRequires on pkg-config because the package installs a
   pkgconfig file.
 - Enable strict-aliasing again since the code seems to be fixed.
 
@@ -378,7 +387,7 @@ Thu Mar  5 16:40:31 CET 2009 - ke@suse.de
 -------------------------------------------------------------------
 Tue Jan 13 16:33:54 CET 2009 - crrodriguez@suse.de
 
-- remove 5MB of useless static libraries 
+- remove 5MB of useless static libraries
 
 -------------------------------------------------------------------
 Thu Jul  3 12:39:34 CEST 2008 - ke@suse.de
@@ -470,7 +479,7 @@ Thu May 10 14:21:02 CEST 2007 - ke@suse.de
 -------------------------------------------------------------------
 Thu Jan 25 16:40:15 CET 2007 - lrupp@suse.de
 
-- updated to 2.1.48 
+- updated to 2.1.48
 - enabled with-xslt (add: libxml2-devel to BuildRequires)
 - build parallel
 - add libxml2 to requires for libyaz
@@ -855,7 +864,7 @@ Wed Mar 26 15:16:36 CET 2003 - ke@suse.de
     include/yaz/marcdisp.h.
   - YAZ Iconv utility now supports MARC8 decoding (marc8.c). Converts
     to UTF-8, UCS-32, wchar_t or Latin-1.
-  - * Prototypes for yaz_iconv_-functions moved to separate header 
+  - * Prototypes for yaz_iconv_-functions moved to separate header
     include/yaz/yaz-iconv.h.
   - Make a few private functions 'static' in unix.c. This prevents
     duplicate unix_close in PHP with YAZ and imap. PHP Bug 20977.

@@ -1,7 +1,7 @@
 #
 # spec file for package yaz
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         libname libyaz5
 Name:           yaz
-Version:        5.34.0
+Version:        5.34.1
 Release:        0
 Summary:        Z39.50 protocol server and client
 License:        BSD-3-Clause
