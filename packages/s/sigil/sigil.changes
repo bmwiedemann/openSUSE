@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 23 08:56:37 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.2.1
+  - update base.ts for late Preferences translation change missed in the last release
+  - update Translations from Transifex
+  - fix incorrect std button icon under Fusion for Sigil Preferences Open Preference Folder
+  - set default button in the fix doctype/headers dialog on epub load to Yes to match earlier behaviour
+
+-------------------------------------------------------------------
 Sat Jun 15 08:49:22 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.2.0
