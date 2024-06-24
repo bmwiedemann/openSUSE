@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jun 17 15:56:20 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to version 1.5.1:
+  * Support DeviceID on Auxiliary Bus
+  * Dev/exclude subnets from traffic shaping
+  * Use temporary name for netdevice when moving in/out of NS
+
+- Update to version 1.5.0:
+
+  New Features:
+
+  *  Support DeviceID on Auxiliary Bus by @adrianchiris in #1003
+  *  Dev/exclude subnets from traffic shaping by @oOraph in #921
+
+  Fixes:
+
+  * Fix release script in github action by @s1061123 in #1037.
+  * Use temporary name for netdevice when moving in/out of NS by @adrianchiris in #1002
+
+-------------------------------------------------------------------
 Wed Mar 06 12:28:38 UTC 2024 - dcermak@suse.com
 
 - Update to version 1.4.0:

@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="filename">cni-plugins</param>
     <param name="exclude">.git</param>
-    <param name="revision">v1.4.0</param>
+    <param name="revision">v1.5.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>

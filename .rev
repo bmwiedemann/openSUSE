@@ -161,4 +161,12 @@
     <comment>New upstream release 1.4.0 (forwarded request 1155550 from dancermak)</comment>
     <requestid>1158902</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>71973813db9116bc3149fb40c448117f</srcmd5>
+    <version>1.5.1</version>
+    <time>1719255098</time>
+    <user>anag+factory</user>
+    <comment>Update to version 1.5.1</comment>
+    <requestid>1182498</requestid>
+  </revision>
 </revisionlist>

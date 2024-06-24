@@ -19,7 +19,7 @@
 %define         cni_bin_dir  %{_libexecdir}/cni
 %define         cni_doc_dir  %{_docdir}/cni-plugins
 Name:           cni-plugins
-Version:        1.4.0
+Version:        1.5.1
 Release:        0
 Summary:        Container Network Interface plugins
 License:        Apache-2.0
