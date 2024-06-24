@@ -519,4 +519,16 @@
       * Doc fixup (RT#151546) (forwarded request 1173734 from tinita)</comment>
     <requestid>1174131</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>c7fb6232efd1141eed1302898e0b073c</srcmd5>
+    <version>1.550.0</version>
+    <time>1719255038</time>
+    <user>anag+factory</user>
+    <comment>- updated to 1.550.0 (1.55)
+   see /usr/share/doc/packages/perl-Text-CSV_XS/ChangeLog
+  1.55	- 2024-06-18, H.Merijn Brand
+      * More fixes for strict under bind_columns (issue 54)
+      * Strict won't hide previous error (issue 56) (forwarded request 1182917 from tinita)</comment>
+    <requestid>1182964</requestid>
+  </revision>
 </revisionlist>

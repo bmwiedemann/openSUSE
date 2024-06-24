@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 23 16:49:35 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 1.550.0 (1.55)
+   see /usr/share/doc/packages/perl-Text-CSV_XS/ChangeLog
+
+  1.55	- 2024-06-18, H.Merijn Brand
+      * More fixes for strict under bind_columns (issue 54)
+      * Strict won't hide previous error (issue 56)
+
+-------------------------------------------------------------------
 Fri Apr 19 03:08:23 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.54
