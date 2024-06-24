@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 19 08:37:04 UTC 2024 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2023-52425-libexpat-2.6.0-backport.patch to fix tests with
+  patched libexpat below 2.6.0 that doesn't update the version number,
+  just in SLE.
+- Remove old-libexpat.patch, of course.
+
+-------------------------------------------------------------------
 Sun Mar 24 00:43:14 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add old-libexpat.patch making the test suite work with
@@ -38,7 +46,7 @@ Thu Mar 21 07:38:15 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
   - gh-114572: ssl.SSLContext.cert_store_stats() and
     ssl.SSLContext.get_ca_certs() now correctly lock access to
     the certificate store, when the ssl.SSLContext is shared
-    across multiple threads
+    across multiple threads (bsc#1226447, CVE-2024-0397)
 - Remove upstreamed patches:
   - CVE-2023-6597-TempDir-cleaning-symlink.patch
   - libexpat260.patch

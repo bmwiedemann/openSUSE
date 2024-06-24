@@ -192,9 +192,9 @@ Patch20:        CVE-2023-27043-email-parsing-errors.patch
 # * gh#python/cpython#104221
 # * gh#python/cpython#107246
 Patch21:        fix-sphinx-72.patch
-# PATCH-FIX-UPSTREAM old-libexpat.patch gh#python/cpython#117187 mcepl@suse.com
+# PATCH-FIX-UPSTREAM CVE-2023-52425-libexpat-2.6.0-backport.patch gh#python/cpython#117187 mcepl@suse.com
 # Make the test suite work with libexpat < 2.6.0
-Patch22:        old-libexpat.patch
+Patch22:        CVE-2023-52425-libexpat-2.6.0-backport.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes

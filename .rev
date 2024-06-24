@@ -790,4 +790,17 @@
 </comment>
     <requestid>1161074</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>ea0c9a8c9ef92393fe1fbcf676ec6187</srcmd5>
+    <version>3.10.14</version>
+    <time>1719255016</time>
+    <user>anag+factory</user>
+    <comment>- Add CVE-2023-52425-libexpat-2.6.0-backport.patch to fix tests with
+  patched libexpat below 2.6.0 that doesn't update the version number,
+  just in SLE.
+- Remove old-libexpat.patch, of course.
+
+    across multiple threads (bsc#1226447, CVE-2024-0397)</comment>
+    <requestid>1182484</requestid>
+  </revision>
 </revisionlist>
