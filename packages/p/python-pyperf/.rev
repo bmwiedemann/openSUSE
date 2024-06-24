@@ -83,4 +83,16 @@
   * Fix mem_max_rss measurement on macOS.</comment>
     <requestid>1158428</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d68ff1a5091786907ea0fba34db3933a</srcmd5>
+    <version>2.7.0</version>
+    <time>1719255414</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.7.0:
+  * Fix logic in MSR availability test.
+  * Disable tuning TurboBoost setting on non-Intel device.
+  * Include CONFIG_ARGS in Metadata.
+  * Support environment variables PYTHON_GIL / PYTHON_CPU_COUNT.</comment>
+    <requestid>1183033</requestid>
+  </revision>
 </revisionlist>

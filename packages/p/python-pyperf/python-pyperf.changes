@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 24 15:29:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.0:
+  * Fix logic in MSR availability test.
+  * Disable tuning TurboBoost setting on non-Intel device.
+  * Include CONFIG_ARGS in Metadata.
+  * Support environment variables PYTHON_GIL / PYTHON_CPU_COUNT.
+
+-------------------------------------------------------------------
 Sat Mar 16 09:47:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.3:
