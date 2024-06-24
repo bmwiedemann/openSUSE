@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jun 21 09:16:01 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## Rails 7.0.8.4 (June 04, 2024) ##
+
+*   No changes.
+
+## Rails 7.0.8.3 (May 17, 2024) ##
+
+*   No changes.
+
+## Rails 7.0.8.2 (May 16, 2024) ##
+
+*   No changes.
+
+## Rails 7.0.8.1 (February 21, 2024) ##
+
+*   Disables the session in `ActiveStorage::Blobs::ProxyController`
+    and `ActiveStorage::Representations::ProxyController`
+    in order to allow caching by default in some CDNs as CloudFlare
+
+    Fixes #44136
+
+    *Bruno Prieto*
+
+
+-------------------------------------------------------------------
 Thu Nov  2 15:34:24 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - ## Rails 7.0.8 (September 09, 2023) ##
