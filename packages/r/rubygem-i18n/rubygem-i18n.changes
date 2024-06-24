@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Fri Jun 21 10:03:33 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- 1.14.5:
+
+## What's Changed
+* Explicitly bundle racc gem for Ruby 3.3+ by @amatsuda in https://github.com/ruby-i18n/i18n/pull/690
+* Optimize I18n::Locale::Fallbacks#[] for recursive locale mappings by @uiur in https://github.com/ruby-i18n/i18n/pull/692
+* Add I18n.interpolation_keys by @tom-lord in https://github.com/ruby-i18n/i18n/pull/682
+* Fix syntax in documentation for I18n::Backend::Base.interpolate by @tom-lord in https://github.com/ruby-i18n/i18n/pull/691
+* Fix that escaped interpolations with reserved keywords raised ReservedInterpolationKey by @Bilka2 in https://github.com/ruby-i18n/i18n/pull/688
+
+## New Contributors
+* @uiur made their first contribution in https://github.com/ruby-i18n/i18n/pull/692
+* @tom-lord made their first contribution in https://github.com/ruby-i18n/i18n/pull/682
+* @Bilka2 made their first contribution in https://github.com/ruby-i18n/i18n/pull/688
+
+**Full Changelog**: https://github.com/ruby-i18n/i18n/compare/v1.14.4...v1.14.5
+
+1.14.4:
+
+## What's Changed
+
+Note: the `racc` dependency will be coming back in Version 2.
+
+* undo strict racc dependency on this branch by @radar in https://github.com/ruby-i18n/i18n/pull/687
+
+**Full Changelog**: https://github.com/ruby-i18n/i18n/compare/v1.14.3...v1.14.4
+
+1.14.3:
+
+## What's Changed
+
+* Pass options to along to exists? super calls by @radar in https://github.com/ruby-i18n/i18n/pull/671
+* Improve TOKENIZER by 23% by @kbrock in https://github.com/ruby-i18n/i18n/pull/668
+* Regex part deux - INTERPOLATION_SYNTAX by @kbrock in https://github.com/ruby-i18n/i18n/pull/669
+* Raise when translated entry contains interpolations for reserved keywords and no substitutions provided by @fatkodima in https://github.com/ruby-i18n/i18n/pull/678
+* Implement `Fallbacks#inspect` and `Fallbacks#empty?` by @fatkodima in https://github.com/ruby-i18n/i18n/pull/683
+
+## Upkeep
+
+* Update `mocha` gem by @fatkodima in https://github.com/ruby-i18n/i18n/pull/677
+* Update workflows by @yykamei in https://github.com/ruby-i18n/i18n/pull/684
+
+## New Contributors
+
+* @kbrock made their first contribution in https://github.com/ruby-i18n/i18n/pull/668
+
+**Full Changelog**: https://github.com/ruby-i18n/i18n/compare/v1.14.1...v1.14.3
+
+
+
+-------------------------------------------------------------------
 Sat Nov  4 00:38:57 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - disable docs
