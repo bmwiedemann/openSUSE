@@ -3903,4 +3903,18 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1176179</requestid>
   </revision>
+  <revision rev="298" vrev="1">
+    <srcmd5>8e6a73d6e18d7dbd1ef2899fbea7b43c</srcmd5>
+    <version>7.1.1.34</version>
+    <time>1719255035</time>
+    <user>anag+factory</user>
+    <comment>- version update to 7.1.1.34
+  * Bump azure/trusted-signing-action from 0.3.18 to 0.3.19 in #7348
+  * Fix a typo in convert deprecation warning in #7383
+  * Bump azure/trusted-signing-action from 0.3.19 to 0.3.20 in #7388
+  * Updated FontConfig query to include font index, fixing (#7374) in #7409
+- removed patch (upstreamed)
+  - ImageMagick-update-image-signature.patch (forwarded request 1182933 from adkorte)</comment>
+    <requestid>1182962</requestid>
+  </revision>
 </revisionlist>
