@@ -7,4 +7,38 @@
     <comment>Initial package</comment>
     <requestid>1167865</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>db11dd8a8a69183bb2b00832b3381130</srcmd5>
+    <version>1.5.0</version>
+    <time>1719255360</time>
+    <user>anag+factory</user>
+    <comment>- Add meson test to validate files
+- Update to version 1.5.0
+  + Bug fixes
+    - If the Processes view was the last opened view and the
+      “Show search fields on launch” setting was enabled, the
+      search bar was not automatically focused
+    - Graphs in the sidebar were reset when a drive or network
+      interface was added or removed
+    - App icons were not shown for user-wide installed Flatpaks
+    - The calculated amount of logical CPUs was wrong for systems
+      with multiple CPU sockets
+  + New features
+    - Resources can now monitor connected batteries
+    - CPU usage normalization can now be toggled off
+    - Total read and write stats for drives
+  + Improvements
+    - Graph colors have been revamped to avoid low contrast
+      situations and improve consistency within views
+    - Some keyboard shortcuts were changed to avoid clashes with
+      standard shortcuts
+    - More stability when performance statistics could not be
+      determined
+    - Some entries in the settings dialog now have subtitles
+    - If a drive has no model name, its block device name will now
+      be shown in the titlebar
+    - Small accessibility improvements
+</comment>
+    <requestid>1182862</requestid>
+  </revision>
 </revisionlist>
