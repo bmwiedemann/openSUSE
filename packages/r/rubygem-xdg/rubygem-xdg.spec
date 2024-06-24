@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-xdg
-Version:        8.0.0
+Version:        8.4.1
 Release:        0
 %define mod_name xdg
 %define mod_full_name %{mod_name}-%{version}
@@ -33,10 +33,10 @@ Release:        0
 %define rb_build_ruby_abis    ruby:3.3.0
 # /MANUAL
 BuildRequires:  ruby-macros >= 5
-BuildRequires:  %{ruby => 3.3}
 BuildRequires:  %{ruby < 4}
+BuildRequires:  %{ruby => 3.3}
 BuildRequires:  %{rubygem gem2rpm}
-Url:            https://alchemists.io/projects/xdg
+URL:            https://alchemists.io/projects/xdg
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A XDG Base Directory Specification implementation
