@@ -375,4 +375,17 @@
     <comment></comment>
     <requestid>1065538</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>6f23487e385008b7e5f1e78d99c2062d</srcmd5>
+    <version>2.003000</version>
+    <time>1719255036</time>
+    <user>anag+factory</user>
+    <comment>- updated to 2.003000
+   see /usr/share/doc/packages/perl-XML-LibXSLT/Changes
+  2.003000    2024-06-11
+      - lib/XML/LibXSLT/Quick.pm .
+          - Add an 'implicit' type to $dest
+          - Correct a type spelling ('file' instead of 'path') (forwarded request 1182922 from tinita)</comment>
+    <requestid>1182963</requestid>
+  </revision>
 </revisionlist>

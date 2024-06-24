@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XML-LibXSLT
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name XML-LibXSLT
 Name:           perl-XML-LibXSLT
-Version:        2.002001
+Version:        2.003000
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Interface to GNOME libxslt library
@@ -27,9 +27,9 @@ Source0:        https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/%{cpan_name}-%
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(File::Path) >= 2.060000
+BuildRequires:  perl(File::Path) >= 2.06
 BuildRequires:  perl(XML::LibXML) >= 1.70
-Requires:       perl(File::Path) >= 2.060000
+Requires:       perl(File::Path) >= 2.06
 Requires:       perl(XML::LibXML) >= 1.70
 %{perl_requires}
 # MANUAL BEGIN

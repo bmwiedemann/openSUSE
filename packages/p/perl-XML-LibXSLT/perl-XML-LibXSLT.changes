@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 23 17:09:31 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 2.003000
+   see /usr/share/doc/packages/perl-XML-LibXSLT/Changes
+
+  2.003000    2024-06-11
+      - lib/XML/LibXSLT/Quick.pm .
+          - Add an 'implicit' type to $dest
+          - Correct a type spelling ('file' instead of 'path')
+
+-------------------------------------------------------------------
 Sat Feb 11 03:08:17 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.002001
