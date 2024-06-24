@@ -7,4 +7,12 @@
     <comment>Submission of ffi-compiler to Factory (required for rubygem-llhttp-ffi)</comment>
     <requestid>914248</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9526b6f199d61b43316a9dbe1402b5c1</srcmd5>
+    <version>1.3.2</version>
+    <time>1719255302</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1182780</requestid>
+  </revision>
 </revisionlist>
