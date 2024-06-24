@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Sun Jun 23 18:33:41 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 9.1.0512:
+  * Mode message for spell completion doesn't match allowed keys
+  * CursorMovedC triggered wrongly with setcmdpos()
+  * update runtime files
+  * CI: test_gettext fails on MacOS14 + MSVC Win
+  * not possible to translate Vim script messages
+  * termdebug plugin can be further improved
+  * add gomod filetype plugin
+  * hard to detect cursor movement in the command line
+  * Optionally highlight parameterised types
+  * filetype: .envrc & .prettierignore not recognized
+  * filetype: Faust files are not recognized
+  * inner-tag textobject confused about ">" in attributes
+  * cannot use fuzzy keyword completion
+  * Remove the group exclusion list from @javaTop
+  * wrong return type for execute() function
+  * MS-Windows: too much legacy code
+  * too complicated mapping restore in termdebug
+  * simplify mapping
+  * cannot switch buffer in a popup
+  * MS-Windows: doesn't handle symlinks properly
+  * getcmdcompltype() interferes with cmdline completion
+  * termdebug can be further improved
+  * update htmldjango detection
+  * Improve Turkish documentation
+  * include a simple csv filetype and syntax plugin
+  * include the the simple nohlsearch package
+  * matched text is highlighted case-sensitively
+  * Matched text isn't highlighted in cmdline pum
+  * Fix typos in several documents
+  * clarify when text properties are cleared
+  * improve the vim-shebang example
+  * revert unintended formatting changes for termdebug
+  * Add a config variable for commonly used compiler options
+  * Wrong matched text highlighted in pum with 'rightleft'
+  * bump length of character references in syntax script
+  * properly check mapping variables using null_dict
+  * fix KdlIndent and kdlComment in indent script
+  * Test for patch 9.1.0489 doesn't fail without the fix
+  * Fold multi-line comments with the syntax kind of &fdm
+  * using wrong type for PlaceSign()
+  * filetype: Vim-script files not detected by shebang line
+  * revert unintended change to zip#Write()
+  * add another tag for vim-shebang feature
+  * Cmdline pum doesn't work properly with 'rightleft'
+  * minor style problems with patch 9.1.0487
+  * default completion may break with fuzzy
+  * Wrong padding for pum "kind" with 'rightleft'
+  * Update base-syntax, match shebang lines
+  * MS-Windows: handle files with spaces properly
+  * Restore HTML syntax file tests
+  * completed item not update on fuzzy completion
+  * filetype: Snakemake files are not recognized
+  * make TermDebugSendCommand() a global function again
+  * close all buffers in the same way
+  * Matched text shouldn't be highlighted in "kind" and "menu"
+  * fix wrong helptag for :defer
+  * Update base-syntax, match :sleep arg
+  * include Georgian keymap
+  * Sorting of completeopt+=fuzzy is not stable
+  * correctly test for windows in NetrwGlob()
+  * glob() on windows fails with [] in directory name
+  * rewrite mkdir() doc and simplify {flags} meaning
+  * glob() not sufficiently tested
+  * update return type for job_info()
+  * termdebug plugin needs more love
+  * correct return types for job_start() and job_status()
+  * Update base-syntax, match :catch and :throw args
+  * Include element values in non-marker annotations
+  * Vim9: term_getjob() throws an exception on error
+  * fuzzy string matching executed when not needed
+  * fuzzy_match_str_with_pos() does unnecessary list operations
+  * restore description of "$" in col() and virtcol()
+  * deduplicate getpos(), line(), col(), virtcol()
+  * Update g:vimsyn_comment_strings dump file tests
+  * Use string interpolation instead of string concat
+  * potential deref of NULL pointer in fuzzy_match_str_with_pos
+  * block_editing errors out when using <enter>
+  * Update base-syntax, configurable comment string highlighting
+  * fix typos in syntax.txt
+  * Cannot see matched text in popup menu
+  * Update base-syntax, match multiline continued comments
+  * clarify documentation for "v" position at line()
+  * cmod_split modifier is always reset in term_start()
+  * remove line-continuation characters
+  * use shiftwidth() instead of &tabstop in indent script
+  * Remove orphaned screen dump files
+  * include syntax, indent and ftplugin files
+  * CI: Test_ColonEight() fails on github runners
+  * add missing Enabled field in syntax script
+  * basic svelte ftplugin file
+  * term_start() does not clear vertical modifier
+  * fix mousemodel restoration by comparing against null_string
+  * Added definitions of Vim scripts and plugins
+  * Exclude lambda expressions from _when_ _switch-case_ label clauses
+  * Fix saved_mousemodel check
+  * Inconsistencies between functions for option flags
+  * Crash when using autocmd_get() after removing event inside autocmd
+  * Fix small style issues
+  * add return type info for Vim function descriptions
+  * Update Italian Vim manpage
+  * disable the q mapping
+  * Change 'cms' for C++ to '// %s'
+  * fix type mismatch error
+  * Fix wrong email address
+  * convert termdebug plugin to Vim9 script
+
+-------------------------------------------------------------------
 Thu Jun  6 00:55:27 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to 9.1.0470:
