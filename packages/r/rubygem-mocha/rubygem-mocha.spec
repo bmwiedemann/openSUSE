@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-mocha
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,11 @@
 #
 
 Name:           rubygem-mocha
-Version:        2.1.0
+Version:        2.4.0
 Release:        0
 %define mod_name mocha
 %define mod_full_name %{mod_name}-%{version}
-BuildRequires:  %{ruby >= 2.0}
+BuildRequires:  %{ruby >= 2.1}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://mocha.jamesmead.org
