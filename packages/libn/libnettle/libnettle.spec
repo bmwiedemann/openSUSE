@@ -1,7 +1,7 @@
 #
 # spec file for package libnettle
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soname 8
 %define hogweed_soname 6
 Name:           libnettle
-Version:        3.9.1
+Version:        3.10
 Release:        0
 Summary:        Cryptographic Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
