@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-certbot-dns-linode
-Version:        2.9.0
+Version:        2.11.0
 Release:        0
 Summary:        Linode DNS Authenticator plugin for Certbot
 License:        Apache-2.0
 URL:            https://github.com/certbot/certbot
-Source:         https://files.pythonhosted.org/packages/source/c/certbot-dns-linode/certbot-dns-linode-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/c/certbot-dns-linode/certbot_dns_linode-%{version}.tar.gz
 BuildRequires:  %{python_module acme >= %{version}}
 BuildRequires:  %{python_module certbot >= %{version}}
 BuildRequires:  %{python_module dns-lexicon >= 3.14.1}
@@ -46,7 +46,7 @@ dns-01 challenge by creating, and subsequently removing, TXT
 records using Linode's DNS API.
 
 %prep
-%setup -q -n certbot-dns-linode-%{version}
+%setup -q -n certbot_dns_linode-%{version}
 
 %build
 %pyproject_wheel
