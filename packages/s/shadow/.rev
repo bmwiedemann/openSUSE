@@ -1077,4 +1077,13 @@
   Replace deprecated econf_readDirs with econf_readConfig</comment>
     <requestid>1181876</requestid>
   </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>19be52f344e38ccadc7ff350f255ae47</srcmd5>
+    <version>4.16.0</version>
+    <time>1719349586</time>
+    <user>anag+factory</user>
+    <comment>- bsc#1226850: Drop incorrect econf patch (until time to fix it)
+  Drop shadow-4.16.0-econf.patch</comment>
+    <requestid>1183021</requestid>
+  </revision>
 </revisionlist>

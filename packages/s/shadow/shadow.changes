@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 24 13:02:56 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1226850: Drop incorrect econf patch (until time to fix it)
+  Drop shadow-4.16.0-econf.patch
+
+-------------------------------------------------------------------
 Wed Jun 19 06:51:45 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.16.0:

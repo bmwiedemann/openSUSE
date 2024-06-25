@@ -48,7 +48,6 @@ Patch3:         shadow-login_defs-comments.patch
 Patch4:         shadow-login_defs-suse.patch
 # PATCH-FIX-SUSE disable_new_audit_function.patch adam.majer@suse.de -- Disable newer libaudit functionality for older distributions.
 Patch5:         disable_new_audit_function.patch
-Patch6:         shadow-4.16.0-econf.patch
 BuildRequires:  audit-devel > 2.3
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -117,7 +116,6 @@ Development files for libsubid5.
 %if 0%{?suse_version} < 1330
 %patch -P 5 -p1
 %endif
-%patch -P 6 -p1
 
 iconv -c -f ISO88591 -t utf-8 doc/HOWTO > doc/HOWTO.utf8
 mv -v doc/HOWTO.utf8 doc/HOWTO
