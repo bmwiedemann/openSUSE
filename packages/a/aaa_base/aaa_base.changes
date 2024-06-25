@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jun 21 07:42:46 UTC 2024 - kukuk@suse.com
+
+- Update to version 84.87+git20240620.57ee9e1:
+  * Remove legacy-actions support [jsc#PED-264]
+
+-------------------------------------------------------------------
+Mon Jun 17 16:05:14 UTC 2024 - ro@suse.com
+
+- Update to version 84.87+git20240617.f5ff27f:
+  * add /usr/bin/nu to etc/shells for nushell
+
+-------------------------------------------------------------------
+Fri Jun 14 12:18:04 UTC 2024 - ro@suse.com
+
+- Update to version 84.87+git20240614.332933e:
+  * Do not save/restore cursor for foot at status line
+  * Add tmux and others to DIR_COLORS (Issue #116)
+  * Remove kernel.pid_max limit (bsc#1219038)
+  * Add subpackge to enable ptrace
+
+-------------------------------------------------------------------
 Fri May 24 11:48:00 UTC 2024 - kukuk@suse.com
 
 - Update to version 84.87+git20240523.10a5692:

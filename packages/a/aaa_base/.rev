@@ -4158,4 +4158,22 @@
   * Add tmpfiles.d/soft-reboot-cleanup.conf (forwarded request 1176719 from kukuk)</comment>
     <requestid>1176720</requestid>
   </revision>
+  <revision rev="501" vrev="1">
+    <srcmd5>83ee85c93075f72f42e61423d70bde32</srcmd5>
+    <version>84.87+git20240620.57ee9e1</version>
+    <time>1719349626</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 84.87+git20240620.57ee9e1:
+  * Remove legacy-actions support [jsc#PED-264]
+
+- Update to version 84.87+git20240617.f5ff27f:
+  * add /usr/bin/nu to etc/shells for nushell
+
+- Update to version 84.87+git20240614.332933e:
+  * Do not save/restore cursor for foot at status line
+  * Add tmux and others to DIR_COLORS (Issue #116)
+  * Remove kernel.pid_max limit (bsc#1219038)
+  * Add subpackge to enable ptrace</comment>
+    <requestid>1182048</requestid>
+  </revision>
 </revisionlist>

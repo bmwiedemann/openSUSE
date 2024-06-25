@@ -33,7 +33,7 @@ BuildRequires:  git-core
 %endif
 
 Name:           aaa_base
-Version:        84.87+git20240523.10a5692%{git_version}
+Version:        84.87+git20240620.57ee9e1%{git_version}
 Release:        0
 Summary:        openSUSE Base Package
 License:        GPL-2.0-or-later
@@ -103,6 +103,18 @@ This package includes some special settings needed on Windows Subsystem
 for Linux. It should only be installed on WSL and not on regular Linux
 systems.
 
+%package yama-enable-ptrace
+Summary:        sysctl setting to allow ptrace with the YAMA LSM enabled
+Group:          System/Fhs
+Requires:       %{name} = %{version}
+
+%description yama-enable-ptrace
+When the YAMA LSM is enabled, ptrace is restriced by default. On
+developer systems this has an impact on e.g. strace and gdb. So
+this package contains a setting that allows ptrace again.
+
+See https://docs.kernel.org/admin-guide/LSM/Yama.html
+
 %prep
 %setup -q
 
@@ -120,8 +132,6 @@ mkdir -p %{buildroot}/etc/init.d
 for i in boot.local after.local ; do
   install -m 755 /dev/null %{buildroot}/etc/init.d/$i
 done
-#
-install -d -m 755 %buildroot%{_libexecdir}/initscripts/legacy-actions
 # keep as ghost for migration
 touch %buildroot/etc/inittab
 
@@ -210,9 +220,8 @@ mkdir -p %{buildroot}%{_fillupdir}
 /usr/share/man/man1/smart_agetty.1*
 /usr/share/man/man5/defaultdomain.5*
 /usr/share/man/man8/service.8*
-/usr/lib/sysctl.d/*.conf
-%dir %{_libexecdir}/initscripts
-%dir %{_libexecdir}/initscripts/legacy-actions
+/usr/lib/sysctl.d/50-default.conf
+/usr/lib/sysctl.d/51-network.conf
 %{_fillupdir}/sysconfig.language
 %{_fillupdir}/sysconfig.proxy
 %{_fillupdir}/sysconfig.windowmanager
@@ -237,5 +246,8 @@ mkdir -p %{buildroot}%{_fillupdir}
 %files wsl
 /usr/etc/profile.d/wsl.csh
 /usr/etc/profile.d/wsl.sh
+
+%files yama-enable-ptrace
+/usr/lib/sysctl.d/52-yama.conf
 
 %changelog
