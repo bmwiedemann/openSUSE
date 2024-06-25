@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 23 13:24:03 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.4.5:
+  * Small CMake improvements (gh#VcDevel/Vc#360).
+  * Replace uses exec_program with execute_process
+    (gh#VcDevel/Vc#364).
+
+-------------------------------------------------------------------
 Mon Oct 23 20:12:57 UTC 2023 - Christoph G <foss@grueninger.de>
 
 - Update to version 1.4.4
