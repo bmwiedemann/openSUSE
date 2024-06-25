@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 20 14:32:08 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- Not part of SLE, use sle15allpythons instead of sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Sun Jul  2 12:15:20 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.1.0
