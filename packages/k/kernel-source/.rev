@@ -6650,4 +6650,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.9.5 &amp; algif removal (to fix openssl) &amp; ata fix &amp; more kernel-obs-build modules for containers</comment>
     <requestid>1181416</requestid>
   </revision>
+  <revision rev="737" vrev="1">
+    <srcmd5>b2e0fffd0c3596ea276e0c262e6691f5</srcmd5>
+    <version>6.9.6</version>
+    <time>1719349625</time>
+    <user>anag+factory</user>
+    <comment>6.9.6 &amp; important iwlwifi fix</comment>
+    <requestid>1182944</requestid>
+  </revision>
 </revisionlist>
