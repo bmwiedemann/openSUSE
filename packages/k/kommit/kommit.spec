@@ -17,9 +17,12 @@
 #
 
 
+%define kf6_version 6.0.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           kommit
-Version:        1.0.2
+Version:        1.6.0
 Release:        0
 Summary:        Graphical Git Client
 License:        GPL-3.0-only
@@ -29,14 +32,26 @@ Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.x
 Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        kommit.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  cmake
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5TextEditor)
-BuildRequires:  cmake(Qt5Test)
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  pkgconfig
+BuildRequires:  cmake(DolphinVcs)
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6SyntaxHighlighting) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextEditor) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Charts) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  pkgconfig(libgit2) >= 1.0
 
 %description
 Graphical Git Client
@@ -47,39 +62,41 @@ Graphical Git Client
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
+%find_lang %{name} --with-man --all-name --with-html
 
 %ldconfig_scriptlets
 
 %files
 %doc README.md
-%doc %lang(en) %{_kf5_htmldir}/en/*/
+# Docs looks broken in upstream release
+# %%doc %%lang(en) %%{_kf6_htmldir}/en/
 %license LICENSE
-%{_kf5_bindir}/kommit
-%{_kf5_bindir}/kommitdiff
-%{_kf5_bindir}/kommitmerge
-%{_kf5_libdir}/lib%{name}.so.*
-%{_kf5_libdir}/lib%{name}diff.so.*
-%{_kf5_libdir}/lib%{name}gui.so.*
-%dir %{_kf5_plugindir}/kf5/kfileitemaction
-%dir %{_kf5_plugindir}/kf5/overlayicon
-%{_kf5_plugindir}/kf5/kfileitemaction/kommititemaction.so
-%{_kf5_plugindir}/kf5/overlayicon/kommitoverlayplugin.so
-%{_kf5_iconsdir}/hicolor/*/apps/%{name}.*
-%{_kf5_iconsdir}/hicolor/scalable/actions/*.svg
-%{_kf5_applicationsdir}/org.kde.%{name}.desktop
-%{_kf5_applicationsdir}/org.kde.%{name}.diff.desktop
-%{_kf5_applicationsdir}/org.kde.%{name}.merge.desktop
-%{_kf5_appstreamdir}/org.kde.%{name}.appdata.xml
-%{_kf5_debugdir}/%{name}.categories
+%{_kf6_applicationsdir}/org.kde.kommit.desktop
+%{_kf6_applicationsdir}/org.kde.kommit.diff.desktop
+%{_kf6_applicationsdir}/org.kde.kommit.merge.desktop
+%{_kf6_appstreamdir}/org.kde.kommit.appdata.xml
+%{_kf6_bindir}/kommit
+%{_kf6_bindir}/kommitdiff
+%{_kf6_bindir}/kommitmerge
+%{_kf6_debugdir}/kommit.categories
+%{_kf6_iconsdir}/hicolor/*/apps/kommit.*
+%{_kf6_iconsdir}/hicolor/scalable/actions/*.svg
+%{_kf6_libdir}/libkommit.so.*
+%{_kf6_libdir}/libkommitdiff.so.*
+%{_kf6_libdir}/libkommitgui.so.*
+%{_kf6_libdir}/libkommitwidgets.so.*
+%dir %{_kf6_plugindir}/dolphin
+%dir %{_kf6_plugindir}/dolphin/vcs
+%{_kf6_plugindir}/dolphin/vcs/kommitdolphinplugin.so
 
 %files lang -f %{name}.lang
+# %%exclude %%{_kf6_htmldir}/en/
 
 %changelog

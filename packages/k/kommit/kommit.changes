@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun 25 10:25:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.6.0
+  * build without kdbusaddons on windows
+  * Add flatpak support
+  * Fix show date (using QLocale for it)
+  * Fix mem leak
+  * Reactivate open file in external apps in qt6
+  * Add zoom support in Report Chart Widget
+  * Replace a QTableWidget by QTreeWidget in report page
+  * Fix crash when we didn't open git repository
+  * Fix load style/icon on windows (KF >= 6.3)
+  * Implement a gravatar cache
+  * Fix i18n
+
+-------------------------------------------------------------------
 Fri May 12 12:36:05 UTC 2023 - Matteo De Carlo <matteo.dek@gmail.com>
 
 - first release 
