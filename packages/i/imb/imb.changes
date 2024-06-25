@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 25 12:39:58 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Do not build hpc flavours on 32b systems.
+
+-------------------------------------------------------------------
 Wed Jan 17 09:07:03 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - Update to version 2021.7

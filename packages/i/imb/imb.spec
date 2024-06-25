@@ -352,6 +352,7 @@ ExclusiveArch:  do_not_build
 %{hpc_init -c %compiler_family %{?c_f_ver:-v %{c_f_ver}} -m {%mpi_flavor} %{?mpi_vers:-V %{mpi_vers}} %{?ext:-e %{ext}}}
 %define package_name %{hpc_package_name %_ver}
 %define p_bindir %hpc_bindir
+ExcludeArch:    i586 %arm s390
 %endif
 
 Name:           %{package_name}
