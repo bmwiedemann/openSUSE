@@ -16,6 +16,7 @@
 #!ExclusiveArch: aarch64 x86_64 ppc64le s390x
 #!BuildTag: opensuse/bci/openjdk-devel:22
 #!BuildTag: opensuse/bci/openjdk-devel:22-%RELEASE%
+#!BuildTag: opensuse/bci/openjdk-devel:latest
 
 FROM opensuse/bci/openjdk:22
 
