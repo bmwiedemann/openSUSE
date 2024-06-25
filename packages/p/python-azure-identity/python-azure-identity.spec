@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-identity
-Version:        1.16.1
+Version:        1.17.1
 Release:        0
 Summary:        Azure Identity client library for Python
 License:        MIT
@@ -34,6 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-cryptography >= 2.5
+Requires:       python-typing_extensions >= 4.0.0
 Requires:       (python-azure-core >= 1.23.0 with python-azure-core < 2.0.0)
 Requires:       (python-msal >= 1.24.0 with python-msal < 2.0.0)
 Requires:       (python-msal-extensions >= 0.3.0 with python-msal-extensions < 2.0.0)
