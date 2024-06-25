@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 20 14:21:26 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang and %python3_fix_shebang_path macros
+  [bsc#1212476]
+
+-------------------------------------------------------------------
 Tue Mar 12 08:50:25 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
 
 - add kni-fix-build-with-Linux-6.8.patch to fix build against

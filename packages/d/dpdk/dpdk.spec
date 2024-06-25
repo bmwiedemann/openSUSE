@@ -259,8 +259,9 @@ ln -s %{_bindir}/dpdk-devbind.py %{buildroot}%{_sbindir}/dpdk_nic_bind
 %endif
 
 # Fix interpreter
-find %{buildroot} -name "*.py" -exec sed -i 's|python$|python3|' \{\} +
-find %{buildroot} -name "*.py" -exec sed -i 's|env python|python|' \{\} +
+%python3_fix_shebang
+%python3_fix_shebang_path %{buildroot}%{_datadir}/%{name}/examples/ipsec-secgw/test/*
+%python3_fix_shebang_path %{buildroot}%{_datadir}/%{name}/examples/pipeline/examples/*
 
 # Remove duplicates
 %fdupes %{buildroot}/%docdir
