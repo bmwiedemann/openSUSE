@@ -87,6 +87,7 @@ OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
 
 ## Main shared libs and devel pkg ##
 #
+
 %package -n %{shlib}
 Summary:        Shared library for OpenVINO toolkit
 
@@ -100,6 +101,7 @@ This package provides the shared library for OpenVINO.
 
 
 #
+
 %package -n %{shlib_c}
 Summary:        Shared C library for OpenVINO toolkit
 
@@ -111,6 +113,7 @@ This package provides the C library for OpenVINO.
 
 
 #
+
 %package  -n %{name}-devel
 Summary:        Headers and sources for OpenVINO toolkit
 Requires:       %{shlib_c} = %{version}
@@ -134,6 +137,9 @@ Recommends:     %{name}-auto-batch-plugin = %{version}
 Recommends:     %{name}-auto-plugin = %{version}
 Recommends:     %{name}-hetero-plugin = %{version}
 Recommends:     %{name}-intel-cpu-plugin = %{version}
+%ifarch riscv64
+Recommends:     %{name}-riscv-cpu-plugin = %{version}
+%endif
 
 %description -n %{name}-devel
 OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
@@ -147,6 +153,7 @@ OpenVINO.
 
 ## Plugins ##
 #
+
 %package -n %{name}-arm-cpu-plugin
 Summary:        Intel CPU plugin for OpenVINO toolkit
 
@@ -155,6 +162,19 @@ OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
 
 This package provides the ARM CPU plugin for OpenVINO on %{arm64} archs.
 
+
+
+
+
+
+#
+%package -n %{name}-riscv-cpu-plugin
+Summary:        RISC-V CPU plugin for OpenVINO toolkit
+
+%description -n %{name}-riscv-cpu-plugin
+OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
+
+This package provides the RISC-V CPU plugin for OpenVINO on riscv64 archs.
 
 
 
@@ -173,6 +193,7 @@ This package provides the Auto / Multi software plugin for OpenVINO.
 
 
 #
+
 %package -n %{name}-auto-batch-plugin
 Summary:        Automatic batch software plugin for OpenVINO toolkit
 
@@ -186,6 +207,7 @@ This package provides the automatic batch software plugin for OpenVINO.
 
 
 #
+
 %package -n %{name}-hetero-plugin
 Summary:        Hetero frontend for Intel OpenVINO toolkit
 
@@ -199,6 +221,7 @@ This package provides the hetero frontend for OpenVINO.
 
 
 #
+
 %package -n %{name}-intel-cpu-plugin
 Summary:        Intel CPU plugin for OpenVINO toolkit
 
@@ -212,6 +235,7 @@ This package provides the intel CPU plugin for OpenVINO for %{x86_64} archs.
 
 
 #
+
 %package -n %{name}-intel-npu-plugin
 Summary:        Intel NPU plugin for OpenVINO toolkit
 
@@ -226,6 +250,7 @@ This package provides the intel NPU plugin for OpenVINO for %{x86_64} archs.
 
 ## Frontend shared libs ##
 #
+
 %package -n lib%{name}_ir_frontend%{so_ver}
 Summary:        Paddle frontend for Intel OpenVINO toolkit
 
@@ -239,6 +264,7 @@ This package provides the ir frontend for OpenVINO.
 
 
 #
+
 %package -n lib%{name}_onnx_frontend%{so_ver}
 Summary:        Onnx frontend for OpenVINO toolkit
 
@@ -252,6 +278,7 @@ This package provides the onnx frontend for OpenVINO.
 
 
 #
+
 %package -n lib%{name}_paddle_frontend%{so_ver}
 Summary:        Paddle frontend for Intel OpenVINO toolkit
 
@@ -265,6 +292,7 @@ This package provides the paddle frontend for OpenVINO.
 
 
 #
+
 %package -n lib%{name}_pytorch_frontend%{so_ver}
 Summary:        PyTorch frontend for OpenVINO toolkit
 
@@ -278,6 +306,7 @@ This package provides the pytorch frontend for OpenVINO.
 
 
 #
+
 %package -n lib%{name}_tensorflow_frontend%{so_ver}
 Summary:        TensorFlow frontend for OpenVINO toolkit
 
@@ -291,6 +320,7 @@ This package provides the tensorflow frontend for OpenVINO.
 
 
 #
+
 %package -n lib%{name}_tensorflow_lite_frontend%{so_ver}
 Summary:        TensorFlow Lite frontend for OpenVINO toolkit
 
@@ -305,6 +335,7 @@ This package provides the tensorflow-lite frontend for OpenVINO.
 
 ## Python module ##
 #
+
 %package -n python-openvino
 Summary:        Python module for openVINO toolkit
 Requires:       python-numpy < 2
@@ -322,6 +353,7 @@ This package provides a Python module for interfacing with openVINO toolkit.
 
 ## Samples/examples ##
 #
+
 %package -n %{name}-sample
 Summary:        Samples for use with OpenVINO toolkit
 BuildArch:      noarch
@@ -334,8 +366,8 @@ This package provides some samples for use with openVINO.
 
 
 
-#
 
+#
 %prep
 %autosetup -p1
 
@@ -445,6 +477,12 @@ rm -fr %{buildroot}%{_datadir}/licenses/*
 %files -n %{name}-arm-cpu-plugin
 %dir %{_libdir}/%{prj_name}
 %{_libdir}/%{prj_name}/libopenvino_arm_cpu_plugin.so
+%endif
+
+%ifarch riscv64
+%files -n %{name}-riscv-cpu-plugin
+%dir %{_libdir}/%{prj_name}
+%{_libdir}/%{prj_name}/libopenvino_riscv_cpu_plugin.so
 %endif
 
 %files -n %{name}-hetero-plugin
