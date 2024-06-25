@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 25 13:21:10 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Disable 32b builds of hpc flavours.
+
+-------------------------------------------------------------------
 Thu Feb 22 14:09:26 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.

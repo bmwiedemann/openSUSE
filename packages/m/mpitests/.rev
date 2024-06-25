@@ -139,4 +139,12 @@
     <comment>- Use %patch -P N instead of deprecated %patchN. (forwarded request 1149540 from pgajdos)</comment>
     <requestid>1151446</requestid>
   </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>eee32b52aaa05eead0eafadf9126eeee</srcmd5>
+    <version>3.2</version>
+    <time>1719349776</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1183209</requestid>
+  </revision>
 </revisionlist>
