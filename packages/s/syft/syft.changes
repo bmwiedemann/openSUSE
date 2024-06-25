@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jun 25 04:58:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.0:
+  * chore(deps): update CPE dictionary index (#2986)
+  * chore(deps): bump github.com/go-test/deep from 1.1.0 to 1.1.1
+    (#2988)
+  * fix: handle errors reading go licenses (#2985)
+  * docs: update cyclone-dx documentation (#2983)
+  * feat: update syft to generate cyclone-dx 1.6 by default (#2978)
+  * chore(deps): bump github.com/charmbracelet/bubbletea (#2982)
+  * chore(deps): bump peter-evans/create-pull-request from 6.0.5 to
+    6.1.0 (#2975)
+  * fix: detection of arangodb 3.12 (#2979)
+  * chore: enable dependabot to keep boostrap action updated
+    (#2976)
+  * chore(deps): bump github.com/github/go-spdx/v2 from 2.2.0 to
+    2.3.1 (#2973)
+  * chore(deps): bump github.com/google/go-containerregistry
+    (#2971)
+  * chore(deps): bump github.com/spf13/cobra from 1.8.0 to 1.8.1
+    (#2972)
+
+-------------------------------------------------------------------
 Sat Jun 15 16:14:00 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.7.0:
