@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 17 19:22:02 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Add QT6 support to Tumbleweed/SLFO.
+  Remaining builds still enable either QT5 (Leap or SLE 15-SP4 and
+  newer) or GTK3 (all of them).
+
+-------------------------------------------------------------------
 Thu Jun  6 15:20:45 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 24.2.4.2 (24.2.4 final)

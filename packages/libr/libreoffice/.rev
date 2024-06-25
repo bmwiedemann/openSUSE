@@ -3535,4 +3535,12 @@ Petr</comment>
     <comment>fix changes</comment>
     <requestid>1179249</requestid>
   </revision>
+  <revision rev="293" vrev="3">
+    <srcmd5>df8180b69bb23aacaa9be0edce694a73</srcmd5>
+    <version>24.2.4.2</version>
+    <time>1719349605</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1183080</requestid>
+  </revision>
 </revisionlist>
