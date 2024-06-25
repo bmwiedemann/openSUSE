@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 25 12:23:28 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- update to version 2.11.0
+  * sync with the main certbot package
+
+-------------------------------------------------------------------
 Sun Mar 24 23:29:36 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

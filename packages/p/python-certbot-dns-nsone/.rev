@@ -356,4 +356,12 @@
 - Split the module from the main certbot package</comment>
     <requestid>1161208</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>cba65971fc34dec30c1271af8f2c834c</srcmd5>
+    <version>2.11.0</version>
+    <time>1719349748</time>
+    <user>anag+factory</user>
+    <comment>certbot version bump</comment>
+    <requestid>1183176</requestid>
+  </revision>
 </revisionlist>
