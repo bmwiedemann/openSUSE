@@ -17,7 +17,7 @@
 
 
 Name:           novnc
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        VNC client using HTML5 (Web Sockets, Canvas) with encryption support
 License:        LGPL-3.0-only AND MPL-2.0
@@ -25,7 +25,7 @@ Group:          System/Daemons
 URL:            https://github.com/novnc/noVNC
 Source0:        noVNC-%{version}.tar.gz
 Patch1:         novnc-0.3-manpage.patch
-Patch2:         novnc-1.4.0-fix-interpreter.patch
+Patch2:         novnc-1.5.0-fix-interpreter.patch
 Requires:       python3-websockify >= 0.9.0
 Requires:       which
 BuildArch:      noarch

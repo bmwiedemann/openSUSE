@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun 22 20:08:46 UTC 2024 - Manu Maier <mmanu84@outlook.de>
+
+- Update to 1.5.0
+    Library:
+      * Added support for the Tight gradient encoding, improving compatibility with servers like QEMU
+      * Added basic support for keeping lock keys in sync with the server
+ - Renamed to patch novnc-1.4.0-fix-interpreter.patch to novnc-1.5.0-fix-interpreter.patch
+
+-------------------------------------------------------------------
 Thu Jan 26 15:52:16 UTC 2023 - Manu Maier <mmanu84@outlook.de>
 
 - Update to 1.4.0
