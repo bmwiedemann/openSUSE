@@ -313,4 +313,12 @@
     <comment>- Use %patch -P N instead of deprecated %patchN. (forwarded request 1149354 from pgajdos)</comment>
     <requestid>1151453</requestid>
   </revision>
+  <revision rev="38" vrev="8">
+    <srcmd5>dc6f6469efb4016e59a1d4e637fcff91</srcmd5>
+    <version>2.3.7</version>
+    <time>1719349772</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1183207</requestid>
+  </revision>
 </revisionlist>

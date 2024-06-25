@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 25 13:22:53 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Disable 32b builds of hpc flavours.
+- Remove obsolete dependency to sysfsutils
+
+-------------------------------------------------------------------
 Thu Feb 22 11:49:03 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.

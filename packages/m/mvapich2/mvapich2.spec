@@ -1,5 +1,5 @@
 #
-# spec file for package mvapich2
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -186,6 +186,7 @@ ExclusiveArch:  do_not_build
 %global hpc_mvapich2_pack_version %{hpc_mvapich2_dep_version}
 %{bcond_without pmix}
 %{bcond_without hwloc}
+ExcludeArch:    i586 %arm s390
 %endif
 
 # Disable hpc builds for SLE12
@@ -239,7 +240,6 @@ BuildRequires:  libnuma-devel
 %endif
 BuildRequires:  libtool
 BuildRequires:  libtool
-BuildRequires:  sysfsutils
 %if %{without hpc}
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
