@@ -16,8 +16,8 @@
 
 #!BuildTag: opensuse/bci/rust:oldstable
 #!BuildTag: opensuse/bci/rust:oldstable-2.%RELEASE%
-#!BuildTag: opensuse/bci/rust:1.77
-#!BuildTag: opensuse/bci/rust:1.77-2.%RELEASE%
+#!BuildTag: opensuse/bci/rust:1.78
+#!BuildTag: opensuse/bci/rust:1.78-2.%RELEASE%
 
 FROM opensuse/tumbleweed:latest
 
@@ -25,21 +25,21 @@ MAINTAINER openSUSE (https://www.opensuse.org/)
 
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.bci.rust
-LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Rust 1.77"
-LABEL org.opencontainers.image.description="Rust 1.77 container based on the openSUSE Tumbleweed Base Container Image."
-LABEL org.opencontainers.image.version="1.77"
+LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Rust 1.78"
+LABEL org.opencontainers.image.description="Rust 1.78 container based on the openSUSE Tumbleweed Base Container Image."
+LABEL org.opencontainers.image.version="1.78"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/rust:1.77-2.%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/rust:1.78-2.%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime"
 LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/rust-oldstable-image/README.md"
 
-RUN set -euo pipefail; zypper -n in --no-recommends rust1.77 cargo1.77; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
+RUN set -euo pipefail; zypper -n in --no-recommends rust1.78 cargo1.78; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
 ENV RUST_VERSION="%%RUST_VERSION%%"
 ENV CARGO_VERSION="%%CARGO_VERSION%%"
 ENV CC="/usr/local/bin/gcc"

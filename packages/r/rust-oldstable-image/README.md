@@ -1,4 +1,4 @@
-# Rust 1.77 Container Image
+# Rust 1.78 Container Image
 
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
@@ -11,8 +11,8 @@
 To compile and deploy an application, copy the sources, fetch dependencies, and build the binary:
 
 ```Dockerfile
-# Build the application using the Rust 1.77 container image
-FROM registry.opensuse.org/opensuse/bci/rust:1.77 as build
+# Build the application using the Rust 1.78 container image
+FROM registry.opensuse.org/opensuse/bci/rust:1.78 as build
 
 WORKDIR /app
 
@@ -40,7 +40,7 @@ There are situations, where you don't want to run an application inside a contai
 To compile the application, without running it inside a container instance, use the following command:
 
 ```ShellSession
-$ podman run --rm -v "$PWD":/app:Z -w /app registry.opensuse.org/opensuse/bci/rust:1.77 cargo build --release
+$ podman run --rm -v "$PWD":/app:Z -w /app registry.opensuse.org/opensuse/bci/rust:1.78 cargo build --release
 ```
 
 **Note:** The Rust image is intended to be used as a build environment. For runtime, use smaller images such as `bci-base`, `bci-micro`, or `bci-minimal`.
