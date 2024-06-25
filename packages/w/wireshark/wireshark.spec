@@ -216,7 +216,7 @@ install -d -m 0755 %{buildroot}%{_mandir}/man1/
 # desktop file
 cp resources/freedesktop/%{org_name}.desktop %{buildroot}%{_datadir}/applications/%{org_name}-su.desktop
 sed -i -e 's|Name=Wireshark|Name=Wireshark - Super User Mode|g' %{buildroot}%{_datadir}/applications/%{org_name}-su.desktop
-sed -i -e 's|Exec=wireshark %{f}|Exec=xdg-su -c wireshark %{f}|g' %{buildroot}%{_datadir}/applications/%{org_name}-su.desktop
+sed -i -e 's|^Exec=wireshark|Exec=xdg-su -c wireshark|g' %{buildroot}%{_datadir}/applications/%{org_name}-su.desktop
 
 %suse_update_desktop_file %{org_name}
 %suse_update_desktop_file %{org_name}-su
