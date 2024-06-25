@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Jun 25 04:58:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.38.0:
+  * chore: Update version.go for v0.38.0
+  * govc: add vsan.info -file-service-enabled flag
+  * vcsim: add vSAN FileServiceConfig support
+  * chore: make doc
+  * govc: add host.tpm.info and host.tpm.report commands
+  * vcsim: add HostCertificateManager
+  * govc: add host.cert.info -show flag
+  * fix: xml marshal byte array fields as vCenter does
+  * govc: add storage.policy.create zonal option
+  * api: EnsureDisksHaveControllers helper
+  * api: OptionValueList helper
+  * govc: add '-storage' flag to namespace.create and
+    namespace.update commands
+  * api: add storage_specs field to Namespace related structures
+  * govc: add vm.create '-profile' and '-place' flags
+  * api: add pbm.DatastoreMap for finding compatible Datastores
+  * govc: Add feature to pass fullname and org for windows vm
+    customization
+  * fix: govc vm.disk.change should only modify CapacityInBytes
+  * build(deps): bump goreleaser/goreleaser-action from 5 to 6
+  * vcsim: add library item storage API support
+  * nfc: Record the SSL thumbprint for the host the (device) URL
+    refers to
+  * vcsim: add PropertyCollector index support
+  * vcsim: fix: ignore unknown refs in Datacenter.PowerOnMultiVM
+  * api: HardwareVersion.IsSupported vs IsValid
+  * feat: vSphere Zones API bindings
+  * api: Add library item storage APIs
+  * build(deps): bump nokogiri from 1.16.2 to 1.16.5 in /gen
+  * api: Update ConfigInfoToConfigSpec
+  * api: Update generated types
+  * vcsim: Add PbmCheckCompatibility method in pbm simulator
+  * api: add checksum validation in Content Library update session
+    file API
+  * vcsim: add HostVirtualNicManager
+  * chore: govc: use generated enum lists
+  * api: Generate enum consts with Values funcs
+  * vcsim: fix ReconfigVM validation when changing disk size
+  * api: add SSLCertificate to TransferEndpoint in content library
+    API
+  * build(deps): bump chuhlomin/render-template from 1.9 to 1.10
+  * bugfix: Exclude ServerGUID from MOR comparison in WaitEx
+
+-------------------------------------------------------------------
 Wed Jun 05 10:51:24 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.37.3:
