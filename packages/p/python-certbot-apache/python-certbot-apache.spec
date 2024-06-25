@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-certbot-apache
-Version:        2.9.0
+Version:        2.11.0
 Release:        0
 Summary:        Apache plugin for Certbot
 License:        Apache-2.0
 URL:            https://github.com/letsencrypt/letsencrypt
-Source:         https://files.pythonhosted.org/packages/source/c/certbot-apache/certbot-apache-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/c/certbot-apache/certbot_apache-%{version}.tar.gz
 BuildRequires:  %{python_module augeas}
 BuildRequires:  %{python_module certbot >= %{version}}
 BuildRequires:  %{python_module pytest}
@@ -41,7 +41,7 @@ BuildArch:      noarch
 The Apache plugin for Certbot.
 
 %prep
-%setup -q -n certbot-apache-%{version}
+%setup -q -n certbot_apache-%{version}
 
 %build
 %python_build

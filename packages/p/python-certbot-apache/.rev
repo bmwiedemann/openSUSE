@@ -360,4 +360,12 @@
   * The grammar used by Augeas parser in Apache plugin was updated</comment>
     <requestid>1145438</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>682bd814e7c1311c878db341baa572fd</srcmd5>
+    <version>2.11.0</version>
+    <time>1719349738</time>
+    <user>anag+factory</user>
+    <comment>certbot version bump</comment>
+    <requestid>1183168</requestid>
+  </revision>
 </revisionlist>
