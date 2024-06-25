@@ -3023,6 +3023,7 @@ BuildFlags: onlybuild:rubygem-rdiscount
 BuildFlags: onlybuild:rubygem-ronn
 BuildFlags: onlybuild:rust
 BuildFlags: onlybuild:rust-bindgen
+BuildFlags: onlybuild:rust-cbindgen
 BuildFlags: onlybuild:rust1.74
 BuildFlags: onlybuild:rust1.75
 BuildFlags: onlybuild:rust1.76
