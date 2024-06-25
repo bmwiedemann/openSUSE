@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Sun Jun 23 11:33:26 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- revert back to the older version 2.5.1 as that's what neovim supports
+  and works with
+
+-------------------------------------------------------------------
+Thu Jun 20 19:32:31 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- initial packaging

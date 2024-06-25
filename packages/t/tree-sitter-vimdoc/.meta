@@ -1,0 +1,5 @@
+<package name="tree-sitter-vimdoc" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="editors" package="tree-sitter-vimdoc"/>
+</package>
