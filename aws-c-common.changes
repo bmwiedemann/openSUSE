@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun 25 15:15:42 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.23
+  * cbor support by @TingDaoK in (#1131)
+- from version 0.9.22
+  * clang-format 18 by @graebm in (#1113)
+  * Use CBMC version 5.95.1 by @tautschnig in (#1124)
+  * latest_submodules.py uses AWS-LC-FIPS releases in
+    aws-crt-java by @graebm in (#1125)
+  * Use CBMC 6.0.0 by @graebm in (#1128)
+  * Fix default thread options for windows to not pin to
+    any cpu_id by @waahm7 in (#1126)
+
+-------------------------------------------------------------------
 Tue Jun 11 07:27:41 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.21
