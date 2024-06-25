@@ -122,4 +122,12 @@ AFAICT these packages aren't needed for generating the docs and the official doc
     <comment>- Generate &quot;keadhcp&quot; user with sysusers mechanism</comment>
     <requestid>1143824</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0c5a1171fc03132d03fa7a2e2845fd93</srcmd5>
+    <version>2.6.0</version>
+    <time>1719349762</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1183193</requestid>
+  </revision>
 </revisionlist>

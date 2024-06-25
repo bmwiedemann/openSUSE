@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jun 18 09:37:04 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.6.0
+  * New features:
+  * Hub-and-spoke model in High Availability (HA)
+  * Ping Check hook, RADIUS hook, Performance Monitoring hook
+  * Database connection retry on startup
+  * Classless static route option
+  * Discovery of Network-designated Resolvers (DNR) options
+  * Stash Agent options: ISC DHCP provided a
+    `stash-agent-options` mechanism that, when enabled, caused
+    the server to remember options inserted by a relay agent
+    during the initial exchange with a client.
+  * Removals/Changes:
+  * Removed autogeneration of subnet-ids
+  * `output_options` was renamed to `output-options`
+
+-------------------------------------------------------------------
 Sat Feb  3 12:40:17 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Generate "keadhcp" user with sysusers mechanism

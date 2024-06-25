@@ -16,36 +16,36 @@
 #
 
 
-%define asiodns_sover 35
-%define asiolink_sover 56
-%define cc_sover 54
-%define cfgclient_sover 51
-%define cryptolink_sover 38
-%define d2srv_sover 30
-%define database_sover 48
-%define dhcppp_sover 74
-%define dhcp_ddns_sover 41
-%define dhcpsrv_sover 90
-%define dnspp_sover 42
-%define eval_sover 52
-%define exceptions_sover 23
-%define hooks_sover 78
-%define http_sover 56
-%define log_sover 48
-%define mysql_sover 53
-%define pgsql_sover 53
-%define process_sover 57
-%define stats_sover 29
-%define tcp_sover 5
+%define asiodns_sover 48
+%define asiolink_sover 71
+%define cc_sover 68
+%define cfgclient_sover 65
+%define cryptolink_sover 50
+%define d2srv_sover 46
+%define database_sover 61
+%define dhcppp_sover 89
+%define dhcp_ddns_sover 56
+%define dhcpsrv_sover 108
+%define dnspp_sover 56
+%define eval_sover 69
+%define exceptions_sover 33
+%define hooks_sover 97
+%define http_sover 71
+%define log_sover 61
+%define mysql_sover 69
+%define pgsql_sover 69
+%define process_sover 72
+%define stats_sover 41
+%define tcp_sover 18
 %define util_io_sover 0
-%define util_sover 68
+%define util_sover 84
 %if 0%{?suse_version} >= 1500
 %bcond_without regen_files
 %else
 %bcond_with    regen_files
 %endif
 Name:           kea
-Version:        2.4.1
+Version:        2.6.0
 Release:        0
 Summary:        Dynamic Host Configuration Protocol daemon
 License:        MPL-2.0
@@ -397,7 +397,6 @@ perl -i -pe 's{%_localstatedir/log/kea-}{%_localstatedir/log/kea/}' \
 	"$b/%_sysconfdir/kea"/*.conf
 
 mkdir -p "$b%_localstatedir/log/kea"
-ln -s "%_sbindir/service" "%buildroot/%_sbindir/rc%name"
 
 # Remove unnecessary files
 find "%buildroot/%_libdir" -name "*.so.*" -type l -delete
@@ -416,58 +415,34 @@ systemd-tmpfiles --create kea.conf || :
 %postun
 %service_del_postun kea.service
 
-%post   -n libkea-asiodns%asiodns_sover -p /sbin/ldconfig
-%postun -n libkea-asiodns%asiodns_sover -p /sbin/ldconfig
-%post   -n libkea-asiolink%asiolink_sover -p /sbin/ldconfig
-%postun -n libkea-asiolink%asiolink_sover -p /sbin/ldconfig
-%post   -n libkea-cc%cc_sover -p /sbin/ldconfig
-%postun -n libkea-cc%cc_sover -p /sbin/ldconfig
-%post   -n libkea-cfgclient%cfgclient_sover -p /sbin/ldconfig
-%postun -n libkea-cfgclient%cfgclient_sover -p /sbin/ldconfig
-%post   -n libkea-cryptolink%cryptolink_sover -p /sbin/ldconfig
-%postun -n libkea-cryptolink%cryptolink_sover -p /sbin/ldconfig
-%post   -n libkea-d2srv%d2srv_sover -p /sbin/ldconfig
-%postun -n libkea-d2srv%d2srv_sover -p /sbin/ldconfig
-%post   -n libkea-database%database_sover -p /sbin/ldconfig
-%postun -n libkea-database%database_sover -p /sbin/ldconfig
-%post   -n libkea-dhcp++%dhcppp_sover -p /sbin/ldconfig
-%postun -n libkea-dhcp++%dhcppp_sover -p /sbin/ldconfig
-%post   -n libkea-dhcp_ddns%dhcp_ddns_sover -p /sbin/ldconfig
-%postun -n libkea-dhcp_ddns%dhcp_ddns_sover -p /sbin/ldconfig
-%post   -n libkea-dhcpsrv%dhcpsrv_sover -p /sbin/ldconfig
-%postun -n libkea-dhcpsrv%dhcpsrv_sover -p /sbin/ldconfig
-%post   -n libkea-dns++%dnspp_sover -p /sbin/ldconfig
-%postun -n libkea-dns++%dnspp_sover -p /sbin/ldconfig
-%post   -n libkea-eval%eval_sover -p /sbin/ldconfig
-%postun -n libkea-eval%eval_sover -p /sbin/ldconfig
-%post   -n libkea-exceptions%exceptions_sover -p /sbin/ldconfig
-%postun -n libkea-exceptions%exceptions_sover -p /sbin/ldconfig
-%post   -n libkea-hooks%hooks_sover -p /sbin/ldconfig
-%postun -n libkea-hooks%hooks_sover -p /sbin/ldconfig
-%post   -n libkea-http%http_sover -p /sbin/ldconfig
-%postun -n libkea-http%http_sover -p /sbin/ldconfig
-%post   -n libkea-log%log_sover -p /sbin/ldconfig
-%postun -n libkea-log%log_sover -p /sbin/ldconfig
-%post   -n libkea-mysql%mysql_sover -p /sbin/ldconfig
-%postun -n libkea-mysql%mysql_sover -p /sbin/ldconfig
-%post   -n libkea-pgsql%pgsql_sover -p /sbin/ldconfig
-%postun -n libkea-pgsql%pgsql_sover -p /sbin/ldconfig
-%post   -n libkea-process%process_sover -p /sbin/ldconfig
-%postun -n libkea-process%process_sover -p /sbin/ldconfig
-%post   -n libkea-stats%stats_sover -p /sbin/ldconfig
-%postun -n libkea-stats%stats_sover -p /sbin/ldconfig
-%post   -n libkea-tcp%tcp_sover -p /sbin/ldconfig
-%postun -n libkea-tcp%tcp_sover -p /sbin/ldconfig
-%post   -n libkea-util-io%util_io_sover -p /sbin/ldconfig
-%postun -n libkea-util-io%util_io_sover -p /sbin/ldconfig
-%post   -n libkea-util%util_sover -p /sbin/ldconfig
-%postun -n libkea-util%util_sover -p /sbin/ldconfig
+%ldconfig_scriptlets -n libkea-asiodns%asiodns_sover
+%ldconfig_scriptlets -n libkea-asiolink%asiolink_sover
+%ldconfig_scriptlets -n libkea-cc%cc_sover
+%ldconfig_scriptlets -n libkea-cfgclient%cfgclient_sover
+%ldconfig_scriptlets -n libkea-cryptolink%cryptolink_sover
+%ldconfig_scriptlets -n libkea-d2srv%d2srv_sover
+%ldconfig_scriptlets -n libkea-database%database_sover
+%ldconfig_scriptlets -n libkea-dhcp++%dhcppp_sover
+%ldconfig_scriptlets -n libkea-dhcp_ddns%dhcp_ddns_sover
+%ldconfig_scriptlets -n libkea-dhcpsrv%dhcpsrv_sover
+%ldconfig_scriptlets -n libkea-dns++%dnspp_sover
+%ldconfig_scriptlets -n libkea-eval%eval_sover
+%ldconfig_scriptlets -n libkea-exceptions%exceptions_sover
+%ldconfig_scriptlets -n libkea-hooks%hooks_sover
+%ldconfig_scriptlets -n libkea-http%http_sover
+%ldconfig_scriptlets -n libkea-log%log_sover
+%ldconfig_scriptlets -n libkea-mysql%mysql_sover
+%ldconfig_scriptlets -n libkea-pgsql%pgsql_sover
+%ldconfig_scriptlets -n libkea-process%process_sover
+%ldconfig_scriptlets -n libkea-stats%stats_sover
+%ldconfig_scriptlets -n libkea-tcp%tcp_sover
+%ldconfig_scriptlets -n libkea-util-io%util_io_sover
+%ldconfig_scriptlets -n libkea-util%util_sover
 
 %files
 %dir %_sysconfdir/kea
 %config(noreplace) %_sysconfdir/kea/*.conf
 %_mandir/man8/*.8%{?ext_man}
-%_sbindir/rckea
 %_sbindir/kea*
 %_sbindir/perfdhcp
 %_datadir/kea/
