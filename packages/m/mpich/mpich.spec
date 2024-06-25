@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -242,6 +242,7 @@ ExclusiveArch:  do_not_build
 %global hpc_mpich_dep_version %(VER=%{?m_f_ver}; echo -n ${VER})
 %global hpc_mpich_dir mpich
 %global hpc_mpich_pack_version %{hpc_mpich_dep_version}
+ExcludeArch:    i586 %arm s390
 %endif
 
 Name:           %{package_name}%{?testsuite:-testsuite}
@@ -275,7 +276,6 @@ BuildRequires:  libtool
 BuildRequires:  libtool
 BuildRequires:  mpi-selector
 BuildRequires:  python3-devel
-BuildRequires:  sysfsutils
 
 %if "%{build_flavor}" == "ofi"
 BuildRequires:  libfabric-devel
