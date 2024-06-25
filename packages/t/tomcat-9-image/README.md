@@ -18,7 +18,7 @@ For security reasons, the image runs as the **tomcat** user. This means that
 additional packages cannot be installed via `zypper`, unless the user becomes
 `root`.
 
-To deploy an application, copy the `.war` file file into
+To deploy an application, copy the `.war` file into
 `$CATALINA_BASE/webapps` (either during a container build or by bind-mounting
 the directory), and launch the container using the following command:
 ```ShellSession
