@@ -1,5 +1,5 @@
 <package name="python-djangorestframework-simplejwt" project="openSUSE:Factory">
   <title></title>
   <description>A minimal JSON Web Token authentication plugin for Django REST Framework</description>
-  <devel project="devel:languages:python" package="python-djangorestframework-simplejwt"/>
+  <devel project="devel:languages:python:django" package="python-djangorestframework-simplejwt"/>
 </package>

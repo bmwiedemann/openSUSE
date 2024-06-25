@@ -1,7 +1,7 @@
 #
 # spec file for package python-djangorestframework-simplejwt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-djangorestframework-simplejwt
-Version:        4.6.0
+Version:        5.3.1
 Release:        0
 Summary:        JSON Web Token authentication for Django REST Framework
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/davesque/django-rest-framework-simplejwt
-Source:         https://github.com/davesque/django-rest-framework-simplejwt/archive/v%{version}.tar.gz#/djangorestframework_simplejwt-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/jazzband/django-rest-framework-simplejwt/commit/ae1ea58daacb76a1d72e202198734053022a6efe Support jwt 2
-Patch0:         jwt2.patch
+Source:         https://files.pythonhosted.org/packages/source/d/djangorestframework-simplejwt/djangorestframework_simplejwt-%{version}.tar.gz
+BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module PyJWT}
 BuildRequires:  %{python_module djangorestframework}
+BuildRequires:  %{python_module freezegun}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module python-jose}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyJWT
@@ -46,16 +45,15 @@ BuildArch:      noarch
 A minimal JSON Web Token authentication plugin for the Django REST Framework.
 
 %prep
-%setup -q -n django-rest-framework-simplejwt-%{version}
-%autopatch -p1
+%autosetup -p1 -n djangorestframework_simplejwt-%{version}
 
 %build
 export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -65,6 +63,7 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %license LICENSE.txt licenses/*
 %doc README.rst CHANGELOG.md
-%{python_sitelib}/*
+%{python_sitelib}/rest_framework_simplejwt
+%{python_sitelib}/djangorestframework_simplejwt-%{version}.dist-info
 
 %changelog

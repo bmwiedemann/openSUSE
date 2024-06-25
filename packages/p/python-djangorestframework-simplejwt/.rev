@@ -44,4 +44,28 @@
     <comment></comment>
     <requestid>1162954</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e164271d3732cd47cbf962b3be6b0c94</srcmd5>
+    <version>5.3.1</version>
+    <time>1719349662</time>
+    <user>anag+factory</user>
+    <comment>- Switch back to PyPi tarball.
+- Inject setuptools_scm so we install the correct version number.
+- Switch to autosetup macro.
+- No more greedy globs in %files.
+
+- Update to 5.3.1
+  * Breaking: Set BLACKLIST_AFTER_ROTATION by default to False
+  * Remove EOL Python, Django and DRF version support
+  * Remove verify from jwt.decode to follow PyJWT v2.2.0
+  * Add blacklist view to log out users
+  * Add JWKS support
+  * Add back support for PyJWT 1.7.1
+  * Allow customizing token JSON encoding
+  * Revoke access token if user password is changed
+  * Declare support for type checking
+  * Many more changes, see CHANGELOG.md
+- Drop patch jwt2.patch, included upstream.</comment>
+    <requestid>1183075</requestid>
+  </revision>
 </revisionlist>

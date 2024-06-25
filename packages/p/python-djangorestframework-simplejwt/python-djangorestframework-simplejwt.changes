@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jun 24 04:49:38 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch back to PyPi tarball.
+- Inject setuptools_scm so we install the correct version number.
+- Switch to autosetup macro.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
+Tue Jun 18 14:02:32 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.3.1
+  * Breaking: Set BLACKLIST_AFTER_ROTATION by default to False
+  * Remove EOL Python, Django and DRF version support
+  * Remove verify from jwt.decode to follow PyJWT v2.2.0
+  * Add blacklist view to log out users
+  * Add JWKS support
+  * Add back support for PyJWT 1.7.1
+  * Allow customizing token JSON encoding
+  * Revoke access token if user password is changed
+  * Declare support for type checking
+  * Many more changes, see CHANGELOG.md
+- Drop patch jwt2.patch, included upstream.
+
+-------------------------------------------------------------------
 Wed Mar 27 05:20:10 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Add %{?sle15_python_module_pythons}
