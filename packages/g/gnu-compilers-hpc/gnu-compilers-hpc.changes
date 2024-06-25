@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 25 12:35:03 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Do not build 32b versions of the gnu-hpc flavour.
+
+-------------------------------------------------------------------
 Mon Sep  4 11:39:42 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Create correct links for cc and c++ and make sure failure of last

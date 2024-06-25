@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,8 +64,13 @@ ExclusiveArch:  do_not_build
 %endif
 
 # For Factory only build the default
-%if 0%{?suse_version} > 1600 && "%flavor" != "gnu-hpc"
+%if 0%{?suse_version} > 1600
+# Only build gnu-hpc flavour but not on 32b systems
+%if "%flavor" != "gnu-hpc"
 ExclusiveArch:  do-not-build
+%else
+ExcludeArch:    i586 %arm s390
+%endif
 %endif
 
 # Keep in sync with macros.hpc-gnu
