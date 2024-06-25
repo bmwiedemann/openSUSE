@@ -1,0 +1,33 @@
+# Commit 5540b94e8191059eb9cbbe98ac316232a42208f6
+# Date 2024-06-13 16:53:34 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86/EPT: correct special page checking in epte_get_entry_emt()
+
+mfn_valid() granularity is (currently) 256Mb. Therefore the start of a
+1Gb page passing the test doesn't necessarily mean all parts of such a
+range would also pass. Yet using the result of mfn_to_page() on an MFN
+which doesn't pass mfn_valid() checking is liable to result in a crash
+(the invocation of mfn_to_page() alone is presumably "just" UB in such a
+case).
+
+Fixes: ca24b2ffdbd9 ("x86/hvm: set 'ipat' in EPT for special pages")
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Reviewed-by: Roger Pau Monné <roger.pau@citrix.com>
+
+--- a/xen/arch/x86/mm/p2m-ept.c
++++ b/xen/arch/x86/mm/p2m-ept.c
+@@ -518,8 +518,12 @@ int epte_get_entry_emt(struct domain *d,
+     }
+ 
+     for ( special_pgs = i = 0; i < (1ul << order); i++ )
+-        if ( is_special_page(mfn_to_page(mfn_add(mfn, i))) )
++    {
++        mfn_t cur = mfn_add(mfn, i);
++
++        if ( mfn_valid(cur) && is_special_page(mfn_to_page(cur)) )
+             special_pgs++;
++    }
+ 
+     if ( special_pgs )
+     {

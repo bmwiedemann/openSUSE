@@ -1,0 +1,34 @@
+# Commit 4fdd8d75566fdad06667a79ec0ce6f43cc466c54
+# Date 2024-06-13 16:55:22 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86/EPT: drop questionable mfn_valid() from epte_get_entry_emt()
+
+mfn_valid() is RAM-focused; it will often return false for MMIO. Yet
+access to actual MMIO space should not generally be restricted to UC
+only; especially video frame buffer accesses are unduly affected by such
+a restriction.
+
+Since, as of 777c71d31325 ("x86/EPT: avoid marking non-present entries
+for re-configuring"), the function won't be called with INVALID_MFN or,
+worse, truncated forms thereof anymore, we call fully drop that check.
+
+Fixes: 81fd0d3ca4b2 ("x86/hvm: simplify 'mmio_direct' check in epte_get_entry_emt()")
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Reviewed-by: Roger Pau Monné <roger.pau@citrix.com>
+
+--- a/xen/arch/x86/mm/p2m-ept.c
++++ b/xen/arch/x86/mm/p2m-ept.c
+@@ -500,12 +500,6 @@ int epte_get_entry_emt(struct domain *d,
+         return -1;
+     }
+ 
+-    if ( !mfn_valid(mfn) )
+-    {
+-        *ipat = true;
+-        return X86_MT_UC;
+-    }
+-
+     /*
+      * Conditional must be kept in sync with the code in
+      * {iomem,ioports}_{permit,deny}_access().

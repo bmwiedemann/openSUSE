@@ -1,0 +1,34 @@
+
+References: bsc#1214718
+
+# Commit e63209d3ba2fd1b2f232babd14c9c679ffa7b09a
+# Date 2024-06-10 10:33:22 +0200
+# Author Roger Pau Monné <roger.pau@citrix.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86/irq: remove offline CPUs from old CPU mask when adjusting move_cleanup_count
+
+When adjusting move_cleanup_count to account for CPUs that are offline also
+adjust old_cpu_mask, otherwise further calls to fixup_irqs() could subtract
+those again and create an imbalance in move_cleanup_count.
+
+Fixes: 472e0b74c5c4 ('x86/IRQ: deal with move cleanup count state in fixup_irqs()')
+Signed-off-by: Roger Pau Monné <roger.pau@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/irq.c
++++ b/xen/arch/x86/irq.c
+@@ -2576,6 +2576,14 @@ void fixup_irqs(const cpumask_t *mask, b
+             desc->arch.move_cleanup_count -= cpumask_weight(affinity);
+             if ( !desc->arch.move_cleanup_count )
+                 release_old_vec(desc);
++            else
++                /*
++                 * Adjust old_cpu_mask to account for the offline CPUs,
++                 * otherwise further calls to fixup_irqs() could subtract those
++                 * again and possibly underflow the counter.
++                 */
++                cpumask_andnot(desc->arch.old_cpu_mask, desc->arch.old_cpu_mask,
++                               affinity);
+         }
+ 
+         if ( !desc->action || cpumask_subset(desc->affinity, mask) )

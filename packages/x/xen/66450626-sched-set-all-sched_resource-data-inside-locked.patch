@@ -1,0 +1,74 @@
+# Commit d104a07524ffc92ae7a70dfe192c291de2a563cc
+# Date 2024-05-15 19:59:52 +0100
+# Author Juergen Gross <jgross@suse.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+xen/sched: set all sched_resource data inside locked region for new cpu
+
+When adding a cpu to a scheduler, set all data items of struct
+sched_resource inside the locked region, as otherwise a race might
+happen (e.g. when trying to access the cpupool of the cpu):
+
+  (XEN) ----[ Xen-4.19.0-1-d  x86_64  debug=y  Tainted:     H  ]----
+  (XEN) CPU:    45
+  (XEN) RIP:    e008:[<ffff82d040244cbf>] common/sched/credit.c#csched_load_balance+0x41/0x877
+  (XEN) RFLAGS: 0000000000010092   CONTEXT: hypervisor
+  (XEN) rax: ffff82d040981618   rbx: ffff82d040981618   rcx: 0000000000000000
+  (XEN) rdx: 0000003ff68cd000   rsi: 000000000000002d   rdi: ffff83103723d450
+  (XEN) rbp: ffff83207caa7d48   rsp: ffff83207caa7b98   r8:  0000000000000000
+  (XEN) r9:  ffff831037253cf0   r10: ffff83103767c3f0   r11: 0000000000000009
+  (XEN) r12: ffff831037237990   r13: ffff831037237990   r14: ffff831037253720
+  (XEN) r15: 0000000000000000   cr0: 000000008005003b   cr4: 0000000000f526e0
+  (XEN) cr3: 000000005bc2f000   cr2: 0000000000000010
+  (XEN) fsb: 0000000000000000   gsb: 0000000000000000   gss: 0000000000000000
+  (XEN) ds: 0000   es: 0000   fs: 0000   gs: 0000   ss: 0000   cs: e008
+  (XEN) Xen code around <ffff82d040244cbf> (common/sched/credit.c#csched_load_balance+0x41/0x877):
+  (XEN)  48 8b 0c 10 48 8b 49 08 <48> 8b 79 10 48 89 bd b8 fe ff ff 49 8b 4e 28 48
+  <snip>
+  (XEN) Xen call trace:
+  (XEN)    [<ffff82d040244cbf>] R common/sched/credit.c#csched_load_balance+0x41/0x877
+  (XEN)    [<ffff82d040245a18>] F common/sched/credit.c#csched_schedule+0x36a/0x69f
+  (XEN)    [<ffff82d040252644>] F common/sched/core.c#do_schedule+0xe8/0x433
+  (XEN)    [<ffff82d0402572dd>] F common/sched/core.c#schedule+0x2e5/0x2f9
+  (XEN)    [<ffff82d040232f35>] F common/softirq.c#__do_softirq+0x94/0xbe
+  (XEN)    [<ffff82d040232fc8>] F do_softirq+0x13/0x15
+  (XEN)    [<ffff82d0403075ef>] F arch/x86/domain.c#idle_loop+0x92/0xe6
+  (XEN)
+  (XEN) Pagetable walk from 0000000000000010:
+  (XEN)  L4[0x000] = 000000103ff61063 ffffffffffffffff
+  (XEN)  L3[0x000] = 000000103ff60063 ffffffffffffffff
+  (XEN)  L2[0x000] = 0000001033dff063 ffffffffffffffff
+  (XEN)  L1[0x000] = 0000000000000000 ffffffffffffffff
+  (XEN)
+  (XEN) ****************************************
+  (XEN) Panic on CPU 45:
+  (XEN) FATAL PAGE FAULT
+  (XEN) [error_code=0000]
+  (XEN) Faulting linear address: 0000000000000010
+  (XEN) ****************************************
+
+Reported-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Fixes: a8c6c623192e ("sched: clarify use cases of schedule_cpu_switch()")
+Signed-off-by: Juergen Gross <jgross@suse.com>
+Acked-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Tested-by: Andrew Cooper <andrew.cooper3@citrix.com>
+
+--- a/xen/common/sched/core.c
++++ b/xen/common/sched/core.c
+@@ -3179,6 +3179,8 @@ int schedule_cpu_add(unsigned int cpu, s
+ 
+     sr->scheduler = new_ops;
+     sr->sched_priv = ppriv;
++    sr->granularity = cpupool_get_granularity(c);
++    sr->cpupool = c;
+ 
+     /*
+      * Reroute the lock to the per pCPU lock as /last/ thing. In fact,
+@@ -3191,8 +3193,6 @@ int schedule_cpu_add(unsigned int cpu, s
+     /* _Not_ pcpu_schedule_unlock(): schedule_lock has changed! */
+     spin_unlock_irqrestore(old_lock, flags);
+ 
+-    sr->granularity = cpupool_get_granularity(c);
+-    sr->cpupool = c;
+     /* The  cpu is added to a pool, trigger it to go pick up some work */
+     cpu_raise_softirq(cpu, SCHEDULE_SOFTIRQ);
+ 

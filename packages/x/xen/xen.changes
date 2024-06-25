@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jun 24 16:20:00 CEST 2024 - jbeulich@suse.com
+
+- bsc#1214718 - The system hangs intermittently when Power Control
+  Mode is set to Minimum Power on SLES15SP5 Xen
+  6666ba52-x86-irq-remove-offline-CPUs-from-old-CPU-mask-when.patch
+  666994ab-x86-SMP-no-shorthand-IPI-in-hotplug.patch
+  666994f0-x86-IRQ-limit-interrupt-movement-in-fixup_irqs.patch
+  66718849-x86-IRQ-old_cpu_mask-in-fixup_irqs.patch
+  6671885e-x86-IRQ-handle-moving-in-_assign_irq_vector.patch
+  6673ffdc-x86-IRQ-forward-pending-to-new-dest-in-fixup_irqs.patch
+- Upstream bug fixes (bsc#1027519)
+  66450626-sched-set-all-sched_resource-data-inside-locked.patch
+  66450627-x86-respect-mapcache_domain_init-failing.patch
+  6646031f-x86-ucode-further-identify-already-up-to-date.patch
+  666b07ee-x86-EPT-special-page-in-epte_get_entry_emt.patch
+  666b0819-x86-EPT-avoid-marking-np-ents-for-reconfig.patch
+  666b085a-x86-EPT-drop-questionable-mfn_valid-from-.patch
+  667187cc-x86-Intel-unlock-CPUID-earlier.patch
+  6672c846-x86-xstate-initialisation-of-XSS-cache.patch
+  6672c847-x86-CPUID-XSAVE-dynamic-leaves.patch
+
+-------------------------------------------------------------------
 Tue Jun  4 18:09:00 MDT 2024 - carnold@suse.com
 
 - bsc#1225953 - Package xen does not build with gcc14 because of

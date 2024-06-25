@@ -1,0 +1,87 @@
+# Commit fa4d026737a47cd1d66ffb797a29150b4453aa9f
+# Date 2024-06-18 15:12:44 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86/Intel: unlock CPUID earlier for the BSP
+
+Intel CPUs have a MSR bit to limit CPUID enumeration to leaf two. If
+this bit is set by the BIOS then CPUID evaluation does not work when
+data from any leaf greater than two is needed; early_cpu_init() in
+particular wants to collect leaf 7 data.
+
+Cure this by unlocking CPUID right before evaluating anything which
+depends on the maximum CPUID leaf being greater than two.
+
+Inspired by (and description cloned from) Linux commit 0c2f6d04619e
+("x86/topology/intel: Unlock CPUID before evaluating anything").
+
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Reviewed-by: Roger Pau Monné <roger.pau@citrix.com>
+
+--- a/xen/arch/x86/cpu/common.c
++++ b/xen/arch/x86/cpu/common.c
+@@ -336,7 +336,8 @@ void __init early_cpu_init(bool verbose)
+ 
+ 	c->x86_vendor = x86_cpuid_lookup_vendor(ebx, ecx, edx);
+ 	switch (c->x86_vendor) {
+-	case X86_VENDOR_INTEL:	  actual_cpu = intel_cpu_dev;    break;
++	case X86_VENDOR_INTEL:	  intel_unlock_cpuid_leaves(c);
++				  actual_cpu = intel_cpu_dev;    break;
+ 	case X86_VENDOR_AMD:	  actual_cpu = amd_cpu_dev;      break;
+ 	case X86_VENDOR_CENTAUR:  actual_cpu = centaur_cpu_dev;  break;
+ 	case X86_VENDOR_SHANGHAI: actual_cpu = shanghai_cpu_dev; break;
+--- a/xen/arch/x86/cpu/cpu.h
++++ b/xen/arch/x86/cpu/cpu.h
+@@ -24,3 +24,5 @@ void amd_init_lfence(struct cpuinfo_x86
+ void amd_init_ssbd(const struct cpuinfo_x86 *c);
+ void amd_init_spectral_chicken(void);
+ void detect_zen2_null_seg_behaviour(void);
++
++void intel_unlock_cpuid_leaves(struct cpuinfo_x86 *c);
+--- a/xen/arch/x86/cpu/intel.c
++++ b/xen/arch/x86/cpu/intel.c
+@@ -303,10 +303,24 @@ static void __init noinline intel_init_l
+ 		ctxt_switch_masking = intel_ctxt_switch_masking;
+ }
+ 
+-static void cf_check early_init_intel(struct cpuinfo_x86 *c)
++/* Unmask CPUID levels if masked. */
++void intel_unlock_cpuid_leaves(struct cpuinfo_x86 *c)
+ {
+-	u64 misc_enable, disable;
++	uint64_t misc_enable, disable;
++
++	rdmsrl(MSR_IA32_MISC_ENABLE, misc_enable);
++
++	disable = misc_enable & MSR_IA32_MISC_ENABLE_LIMIT_CPUID;
++	if (disable) {
++		wrmsrl(MSR_IA32_MISC_ENABLE, misc_enable & ~disable);
++		bootsym(trampoline_misc_enable_off) |= disable;
++		c->cpuid_level = cpuid_eax(0);
++		printk(KERN_INFO "revised cpuid level: %u\n", c->cpuid_level);
++	}
++}
+ 
++static void cf_check early_init_intel(struct cpuinfo_x86 *c)
++{
+ 	/* Netburst reports 64 bytes clflush size, but does IO in 128 bytes */
+ 	if (c->x86 == 15 && c->x86_cache_alignment == 64)
+ 		c->x86_cache_alignment = 128;
+@@ -315,16 +329,7 @@ static void cf_check early_init_intel(st
+             bootsym(trampoline_misc_enable_off) & MSR_IA32_MISC_ENABLE_XD_DISABLE)
+ 		printk(KERN_INFO "re-enabled NX (Execute Disable) protection\n");
+ 
+-	/* Unmask CPUID levels and NX if masked: */
+-	rdmsrl(MSR_IA32_MISC_ENABLE, misc_enable);
+-
+-	disable = misc_enable & MSR_IA32_MISC_ENABLE_LIMIT_CPUID;
+-	if (disable) {
+-		wrmsrl(MSR_IA32_MISC_ENABLE, misc_enable & ~disable);
+-		bootsym(trampoline_misc_enable_off) |= disable;
+-		printk(KERN_INFO "revised cpuid level: %d\n",
+-		       cpuid_eax(0));
+-	}
++	intel_unlock_cpuid_leaves(c);
+ 
+ 	/* CPUID workaround for Intel 0F33/0F34 CPU */
+ 	if (boot_cpu_data.x86 == 0xF && boot_cpu_data.x86_model == 3 &&

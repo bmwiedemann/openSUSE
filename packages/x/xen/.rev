@@ -2942,4 +2942,12 @@
     <comment>Fix for bsc#1225953 - Package xen does not build with gcc14</comment>
     <requestid>1178775</requestid>
   </revision>
+  <revision rev="346" vrev="1">
+    <srcmd5>dd7ae84a181fa94b189ee81a0f4449de</srcmd5>
+    <version>4.18.2_06</version>
+    <time>1719349603</time>
+    <user>anag+factory</user>
+    <comment>Fix for bsc#1214718 - The system hangs intermittently ... and other upstream fixes</comment>
+    <requestid>1183065</requestid>
+  </revision>
 </revisionlist>

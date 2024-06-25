@@ -1,0 +1,79 @@
+
+References: bsc#1214718
+
+# Commit 171c52fba5d94e050d704770480dcb983490d0ad
+# Date 2024-06-12 14:29:31 +0200
+# Author Roger Pau Monné <roger.pau@citrix.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86/smp: do not use shorthand IPI destinations in CPU hot{,un}plug contexts
+
+Due to the current rwlock logic, if the CPU calling get_cpu_maps() does
+so from a cpu_hotplug_{begin,done}() region the function will still
+return success, because a CPU taking the rwlock in read mode after
+having taken it in write mode is allowed.  Such corner case makes using
+get_cpu_maps() alone not enough to prevent using the shorthand in CPU
+hotplug regions.
+
+Introduce a new helper to detect whether the current caller is between a
+cpu_hotplug_{begin,done}() region and use it in send_IPI_mask() to restrict
+shorthand usage.
+
+Fixes: 5500d265a2a8 ('x86/smp: use APIC ALLBUT destination shorthand when possible')
+Signed-off-by: Roger Pau Monné <roger.pau@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/smp.c
++++ b/xen/arch/x86/smp.c
+@@ -88,7 +88,7 @@ void send_IPI_mask(const cpumask_t *mask
+      * the system have been accounted for.
+      */
+     if ( system_state > SYS_STATE_smp_boot &&
+-         !unaccounted_cpus && !disabled_cpus &&
++         !unaccounted_cpus && !disabled_cpus && !cpu_in_hotplug_context() &&
+          /* NB: get_cpu_maps lock requires enabled interrupts. */
+          local_irq_is_enabled() && (cpus_locked = get_cpu_maps()) &&
+          (park_offline_cpus ||
+--- a/xen/common/cpu.c
++++ b/xen/common/cpu.c
+@@ -68,6 +68,11 @@ void cpu_hotplug_done(void)
+     write_unlock(&cpu_add_remove_lock);
+ }
+ 
++bool cpu_in_hotplug_context(void)
++{
++    return rw_is_write_locked_by_me(&cpu_add_remove_lock);
++}
++
+ static NOTIFIER_HEAD(cpu_chain);
+ 
+ void __init register_cpu_notifier(struct notifier_block *nb)
+--- a/xen/include/xen/cpu.h
++++ b/xen/include/xen/cpu.h
+@@ -13,6 +13,16 @@ void put_cpu_maps(void);
+ void cpu_hotplug_begin(void);
+ void cpu_hotplug_done(void);
+ 
++/*
++ * Returns true when the caller CPU is between a cpu_hotplug_{begin,done}()
++ * region.
++ *
++ * This is required to safely identify hotplug contexts, as get_cpu_maps()
++ * would otherwise succeed because a caller holding the lock in write mode is
++ * allowed to acquire the same lock in read mode.
++ */
++bool cpu_in_hotplug_context(void);
++
+ /* Receive notification of CPU hotplug events. */
+ void register_cpu_notifier(struct notifier_block *nb);
+ 
+--- a/xen/include/xen/rwlock.h
++++ b/xen/include/xen/rwlock.h
+@@ -309,6 +309,8 @@ static always_inline void write_lock_irq
+ 
+ #define rw_is_locked(l)               _rw_is_locked(l)
+ #define rw_is_write_locked(l)         _rw_is_write_locked(l)
++#define rw_is_write_locked_by_me(l) \
++    lock_evaluate_nospec(_is_write_locked_by_me(atomic_read(&(l)->cnts)))
+ 
+ 
+ typedef struct percpu_rwlock percpu_rwlock_t;

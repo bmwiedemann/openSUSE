@@ -119,7 +119,7 @@ BuildRequires:  pesign-obs-integration
 %endif
 Provides:       installhint(reboot-needed)
 
-Version:        4.18.2_05
+Version:        4.18.2_06
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -164,6 +164,21 @@ Patch7:         663a383c-libxs-open-xenbus-fds-as-O_CLOEXEC.patch
 Patch8:         663a4f3e-x86-cpu-policy-migration-IceLake-to-CascadeLake.patch
 Patch9:         663d05b5-x86-ucode-distinguish-up-to-date.patch
 Patch10:        663eaa27-libxl-XenStore-error-handling-in-device-creation.patch
+Patch11:        66450626-sched-set-all-sched_resource-data-inside-locked.patch
+Patch12:        66450627-x86-respect-mapcache_domain_init-failing.patch
+Patch13:        6646031f-x86-ucode-further-identify-already-up-to-date.patch
+Patch14:        6666ba52-x86-irq-remove-offline-CPUs-from-old-CPU-mask-when.patch
+Patch15:        666994ab-x86-SMP-no-shorthand-IPI-in-hotplug.patch
+Patch16:        666994f0-x86-IRQ-limit-interrupt-movement-in-fixup_irqs.patch
+Patch17:        666b07ee-x86-EPT-special-page-in-epte_get_entry_emt.patch
+Patch18:        666b0819-x86-EPT-avoid-marking-np-ents-for-reconfig.patch
+Patch19:        666b085a-x86-EPT-drop-questionable-mfn_valid-from-.patch
+Patch20:        667187cc-x86-Intel-unlock-CPUID-earlier.patch
+Patch21:        66718849-x86-IRQ-old_cpu_mask-in-fixup_irqs.patch
+Patch22:        6671885e-x86-IRQ-handle-moving-in-_assign_irq_vector.patch
+Patch23:        6672c846-x86-xstate-initialisation-of-XSS-cache.patch
+Patch24:        6672c847-x86-CPUID-XSAVE-dynamic-leaves.patch
+Patch25:        6673ffdc-x86-IRQ-forward-pending-to-new-dest-in-fixup_irqs.patch
 # EMBARGOED security fixes
 # libxc
 Patch301:       libxc-bitmap-long.patch

@@ -1,0 +1,63 @@
+# Commit 71cacfb035f4a78ee10970dc38a3baa04d387451
+# Date 2024-06-19 13:00:06 +0100
+# Author Andrew Cooper <andrew.cooper3@citrix.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+x86/cpuid: Fix handling of XSAVE dynamic leaves
+
+[ This is a minimal backport of commit 71cacfb035f4 ("x86/cpuid: Fix handling
+  of XSAVE dynamic leaves") to fix the bugs without depending on the large
+  rework of XSTATE handling in Xen 4.19 ]
+
+First, if XSAVE is available in hardware but not visible to the guest, the
+dynamic leaves shouldn't be filled in.
+
+Second, the comment concerning XSS state is wrong.  VT-x doesn't manage
+host/guest state automatically, but there is provision for "host only" bits to
+be set, so the implications are still accurate.
+
+In Xen 4.18, no XSS states are supported, so it's safe to keep deferring to
+real hardware.
+
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/cpuid.c
++++ b/xen/arch/x86/cpuid.c
+@@ -330,24 +330,20 @@ void guest_cpuid(const struct vcpu *v, u
+     case XSTATE_CPUID:
+         switch ( subleaf )
+         {
+-        case 1:
+-            if ( p->xstate.xsavec || p->xstate.xsaves )
+-            {
+-                /*
+-                 * TODO: Figure out what to do for XSS state.  VT-x manages
+-                 * host vs guest MSR_XSS automatically, so as soon as we start
+-                 * supporting any XSS states, the wrong XSS will be in
+-                 * context.
+-                 */
+-                BUILD_BUG_ON(XSTATE_XSAVES_ONLY != 0);
+-
+-                /*
+-                 * Read CPUID[0xD,0/1].EBX from hardware.  They vary with
+-                 * enabled XSTATE, and appropraite XCR0|XSS are in context.
+-                 */
++            /*
++             * Read CPUID[0xd,0/1].EBX from hardware.  They vary with enabled
++             * XSTATE, and the appropriate XCR0 is in context.
++             */
+         case 0:
+-                res->b = cpuid_count_ebx(leaf, subleaf);
+-            }
++            if ( p->basic.xsave )
++                res->b = cpuid_count_ebx(0xd, 0);
++            break;
++
++        case 1:
++            /* This only works because Xen doesn't support XSS states yet. */
++            BUILD_BUG_ON(XSTATE_XSAVES_ONLY != 0);
++            if ( p->xstate.xsavec )
++                res->b = cpuid_count_ebx(0xd, 1);
+             break;
+         }
+         break;

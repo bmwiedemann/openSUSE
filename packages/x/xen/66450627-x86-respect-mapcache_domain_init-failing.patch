@@ -1,0 +1,26 @@
+# Commit 7270fdc7a0028d4b7b26fd1b36c6b9e97abcf3da
+# Date 2024-05-15 19:59:52 +0100
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+x86: respect mapcache_domain_init() failing
+
+The function itself properly handles and hands onwards failure from
+create_perdomain_mapping(). Therefore its caller should respect possible
+failure, too.
+
+Fixes: 4b28bf6ae90b ("x86: re-introduce map_domain_page() et al")
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Acked-by: Roger Pau Monné <roger.pau@citrix.com>
+
+--- a/xen/arch/x86/domain.c
++++ b/xen/arch/x86/domain.c
+@@ -850,7 +850,8 @@ int arch_domain_create(struct domain *d,
+     }
+     else if ( is_pv_domain(d) )
+     {
+-        mapcache_domain_init(d);
++        if ( (rc = mapcache_domain_init(d)) != 0 )
++            goto fail;
+ 
+         if ( (rc = pv_domain_initialise(d)) != 0 )
+             goto fail;

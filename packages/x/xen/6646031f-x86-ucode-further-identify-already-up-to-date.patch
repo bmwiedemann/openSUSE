@@ -1,0 +1,73 @@
+# Commit 977d98e67c2e929c62aa1f495fc4c6341c45abb5
+# Date 2024-05-16 13:59:11 +0100
+# Author Andrew Cooper <andrew.cooper3@citrix.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+x86/ucode: Further fixes to identify "ucode already up to date"
+
+When the revision in hardware is newer than anything Xen has to hand,
+'microcode_cache' isn't set up.  Then, `xen-ucode` initiates the update
+because it doesn't know whether the revisions across the system are symmetric
+or not.  This involves the patch getting all the way into the
+apply_microcode() hooks before being found to be too old.
+
+This is all a giant mess and needs an overhaul, but in the short term simply
+adjust the apply_microcode() to return -EEXIST.
+
+Also, unconditionally print the preexisting microcode revision on boot.  It's
+relevant information which is otherwise unavailable if Xen doesn't find new
+microcode to use.
+
+Fixes: 648db37a155a ("x86/ucode: Distinguish "ucode already up to date"")
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+Acked-by: Roger Pau Monné <roger.pau@citrix.com>
+
+--- a/xen/arch/x86/cpu/microcode/amd.c
++++ b/xen/arch/x86/cpu/microcode/amd.c
+@@ -222,12 +222,15 @@ static int cf_check apply_microcode(cons
+     uint32_t rev, old_rev = sig->rev;
+     enum microcode_match_result result = microcode_fits(patch);
+ 
++    if ( result == MIS_UCODE )
++        return -EINVAL;
++
+     /*
+      * Allow application of the same revision to pick up SMT-specific changes
+      * even if the revision of the other SMT thread is already up-to-date.
+      */
+-    if ( result != NEW_UCODE && result != SAME_UCODE )
+-        return -EINVAL;
++    if ( result == OLD_UCODE )
++        return -EEXIST;
+ 
+     if ( check_final_patch_levels(sig) )
+     {
+--- a/xen/arch/x86/cpu/microcode/core.c
++++ b/xen/arch/x86/cpu/microcode/core.c
+@@ -887,6 +887,8 @@ int __init early_microcode_init(unsigned
+ 
+     ucode_ops.collect_cpu_info();
+ 
++    printk(XENLOG_INFO "BSP microcode revision: 0x%08x\n", this_cpu(cpu_sig).rev);
++
+     /*
+      * Some hypervisors deliberately report a microcode revision of -1 to
+      * mean that they will not accept microcode updates.
+--- a/xen/arch/x86/cpu/microcode/intel.c
++++ b/xen/arch/x86/cpu/microcode/intel.c
+@@ -294,10 +294,13 @@ static int cf_check apply_microcode(cons
+ 
+     result = microcode_update_match(patch);
+ 
+-    if ( result != NEW_UCODE &&
+-         !(opt_ucode_allow_same && result == SAME_UCODE) )
++    if ( result == MIS_UCODE )
+         return -EINVAL;
+ 
++    if ( result == OLD_UCODE ||
++         (result == SAME_UCODE && !opt_ucode_allow_same) )
++        return -EEXIST;
++
+     wbinvd();
+ 
+     wrmsrl(MSR_IA32_UCODE_WRITE, (unsigned long)patch->data);

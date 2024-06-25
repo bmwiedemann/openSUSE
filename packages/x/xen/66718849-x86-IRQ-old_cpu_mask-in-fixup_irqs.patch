@@ -1,0 +1,74 @@
+
+References: bsc#1214718
+
+# Commit 817d1cd627be668c358d038f0fadbf7d24d417d3
+# Date 2024-06-18 15:14:49 +0200
+# Author Roger Pau Monné <roger.pau@citrix.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86/irq: deal with old_cpu_mask for interrupts in movement in fixup_irqs()
+
+Given the current logic it's possible for ->arch.old_cpu_mask to get out of
+sync: if a CPU set in old_cpu_mask is offlined and then onlined
+again without old_cpu_mask having been updated the data in the mask will no
+longer be accurate, as when brought back online the CPU will no longer have
+old_vector configured to handle the old interrupt source.
+
+If there's an interrupt movement in progress, and the to be offlined CPU (which
+is the call context) is in the old_cpu_mask, clear it and update the mask, so
+it doesn't contain stale data.
+
+Note that when the system is going down fixup_irqs() will be called by
+smp_send_stop() from CPU 0 with a mask with only CPU 0 on it, effectively
+asking to move all interrupts to the current caller (CPU 0) which is the only
+CPU to remain online.  In that case we don't care to migrate interrupts that
+are in the process of being moved, as it's likely we won't be able to move all
+interrupts to CPU 0 due to vector shortage anyway.
+
+Signed-off-by: Roger Pau Monné <roger.pau@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/irq.c
++++ b/xen/arch/x86/irq.c
+@@ -2539,7 +2539,7 @@ void fixup_irqs(const cpumask_t *mask, b
+     for ( irq = 0; irq < nr_irqs; irq++ )
+     {
+         bool break_affinity = false, set_affinity = true;
+-        unsigned int vector;
++        unsigned int vector, cpu = smp_processor_id();
+         cpumask_t *affinity = this_cpu(scratch_cpumask);
+ 
+         if ( irq == 2 )
+@@ -2582,6 +2582,33 @@ void fixup_irqs(const cpumask_t *mask, b
+                                affinity);
+         }
+ 
++        if ( desc->arch.move_in_progress &&
++             /*
++              * Only attempt to adjust the mask if the current CPU is going
++              * offline, otherwise the whole system is going down and leaving
++              * stale data in the masks is fine.
++              */
++             !cpu_online(cpu) &&
++             cpumask_test_cpu(cpu, desc->arch.old_cpu_mask) )
++        {
++            /*
++             * This CPU is going offline, remove it from ->arch.old_cpu_mask
++             * and possibly release the old vector if the old mask becomes
++             * empty.
++             *
++             * Note cleaning ->arch.old_cpu_mask is required if the CPU is
++             * brought offline and then online again, as when re-onlined the
++             * per-cpu vector table will no longer have ->arch.old_vector
++             * setup, and hence ->arch.old_cpu_mask would be stale.
++             */
++            cpumask_clear_cpu(cpu, desc->arch.old_cpu_mask);
++            if ( cpumask_empty(desc->arch.old_cpu_mask) )
++            {
++                desc->arch.move_in_progress = 0;
++                release_old_vec(desc);
++            }
++        }
++
+         /*
+          * Avoid shuffling the interrupt around as long as current target CPUs
+          * are a subset of the input mask.  What fixup_irqs() cares about is
