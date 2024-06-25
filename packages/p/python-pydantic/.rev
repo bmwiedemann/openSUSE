@@ -412,4 +412,14 @@
   * Fix: uuid - allow `str` subclass as input</comment>
     <requestid>1179027</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>22e4550da38b7660da947d41e34e1938</srcmd5>
+    <version>2.7.4</version>
+    <time>1719349601</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.7.4:
+  * Bump `pydantic.v1` to `v1.10.16` reference
+  * Specify `recursive_guard` as kwarg in `FutureRef._evaluate`</comment>
+    <requestid>1183039</requestid>
+  </revision>
 </revisionlist>
