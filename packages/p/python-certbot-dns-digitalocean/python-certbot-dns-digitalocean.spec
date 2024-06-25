@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-certbot-dns-digitalocean
-Version:        2.9.0
+Version:        2.11.0
 Release:        0
 Summary:        DigitalOcean Authenticator plugin for Certbot
 License:        Apache-2.0
 URL:            https://github.com/certbot/certbot
-Source:         https://files.pythonhosted.org/packages/source/c/certbot-dns-digitalocean/certbot-dns-digitalocean-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/c/certbot-dns-digitalocean/certbot_dns_digitalocean-%{version}.tar.gz
 BuildRequires:  %{python_module certbot >= %{version}}
 BuildRequires:  %{python_module digitalocean >= 1.11}
 BuildRequires:  %{python_module pytest}
@@ -40,7 +40,7 @@ BuildArch:      noarch
 Digitalocean DNS Authenticator plugin for Certbot.
 
 %prep
-%setup -q -n certbot-dns-digitalocean-%{version}
+%setup -q -n certbot_dns_digitalocean-%{version}
 
 %build
 %python_build

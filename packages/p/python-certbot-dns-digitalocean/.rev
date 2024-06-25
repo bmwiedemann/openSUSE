@@ -336,4 +336,12 @@
   * The DigitalOcean plugin now creates TXT records for the DNS-01</comment>
     <requestid>1145442</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>6dc97cef6ce23deeb6007ba63323301b</srcmd5>
+    <version>2.11.0</version>
+    <time>1719349741</time>
+    <user>anag+factory</user>
+    <comment>certbot version bump</comment>
+    <requestid>1183170</requestid>
+  </revision>
 </revisionlist>
