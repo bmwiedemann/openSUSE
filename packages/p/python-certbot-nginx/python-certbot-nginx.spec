@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-certbot-nginx
-Version:        2.9.0
+Version:        2.11.0
 Release:        0
 Summary:        Nginx plugin for Certbot
 License:        Apache-2.0
 URL:            https://github.com/letsencrypt/letsencrypt
-Source:         https://files.pythonhosted.org/packages/source/c/certbot-nginx/certbot-nginx-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/c/certbot-nginx/certbot_nginx-%{version}.tar.gz
 BuildRequires:  %{python_module certbot >= %{version}}
 BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pyparsing >= 2.2.1}
@@ -44,7 +44,7 @@ BuildArch:      noarch
 The Nginx plugin for Certbot.
 
 %prep
-%setup -q -n certbot-nginx-%{version}
+%setup -q -n certbot_nginx-%{version}
 
 %build
 %python_build
