@@ -1,0 +1,5 @@
+<package name="clang-extract" project="openSUSE:Factory">
+  <title>clang-extract</title>
+  <description>A tool to extract code content from source files using the clang and LLVM infrastructure.</description>
+  <devel project="devel:tools" package="clang-extract"/>
+</package>
