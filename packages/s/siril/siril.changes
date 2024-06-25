@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jun 25 07:44:57 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.2.3:
+  * Fixed compression error (files were not compressed anymore) (#1328)
+  * Fixed internet connection in macOS version (packaging issue)
+  * Removed background extraction samples after using it in script (#1265)
+  * Fixed catalog parser problem with negative declination (less than 1°) (#1270)
+  * Fixed weighting by number of stars during stacking if number of stars is the same accross the sequence (#1273)
+  * Improved mouse pan and zoom control to enable one-handed operation (!638, fixes #1271)
+  * Added an option to the LINK command in order to sort output by date (#1115)
+  * Fixed pixel size set by astrometry using binning_update preference (#1254)
+  * Fixed crash when querying stats on a CFA image with a selection smaller than a 2x2 square (#1286)
+  * Fixed crash when saving compressed and croped images (#1287)
+  * Disabled supernumerary use of openmp in demosaicing, which could lead to a crash (#1288)
+  * Fixed ser orientation error (#1258, #1261)
+  * Fixed crash during rejection stacking when using shift-registered sequence (#1294)
+  * Fixed mouse scrollwheel scrolling too fast (#1151)
+  * Fixed drag & drop in image display on macOS (#1310)
+  * Fixed bug in rgradient (Larson Sekanina) filter (#1313)
+  * Fixed bug in generalized hyperbolic stretches (#1314)
+  * Fixed path parsing error with savetif (#1318)
+  * Added handling of empty command pipe reads (closes #1277) 
+
+-------------------------------------------------------------------
 Fri Jan 26 12:55:49 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.2.1:

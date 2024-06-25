@@ -17,7 +17,7 @@
 
 
 Name:           siril
-Version:        1.2.1
+Version:        1.2.3
 Release:        0
 Summary:        An astronomical image processing software for Linux. (IRIS clone)
 License:        BSL-1.0 AND GPL-3.0-or-later
