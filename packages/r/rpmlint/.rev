@@ -4872,4 +4872,16 @@ oddjob-gpupdate isn't blocked)</comment>
     <comment></comment>
     <requestid>1181751</requestid>
   </revision>
+  <revision rev="480" vrev="1">
+    <srcmd5>0b023a12c6bd018b980a836bfc1890b2</srcmd5>
+    <version>2.5.0+git20240624.609e1aa</version>
+    <time>1719349591</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.5.0+git20240624.609e1aa:
+  * sysctl-whitelist: move 50-coredump.conf to systemd main package (bsc#1226865)
+  * sysctl-whitelist: aaa_base: new sub-package to disable YAMA (bsc#1226460)
+  * sysctl-whitelist: aaa_base: adjust 50-default.conf digest (bsc#1226464)
+</comment>
+    <requestid>1183027</requestid>
+  </revision>
 </revisionlist>

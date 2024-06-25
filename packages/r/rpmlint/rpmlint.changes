@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 24 14:18:13 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 2.5.0+git20240624.609e1aa:
+  * sysctl-whitelist: move 50-coredump.conf to systemd main package (bsc#1226865)
+  * sysctl-whitelist: aaa_base: new sub-package to disable YAMA (bsc#1226460)
+  * sysctl-whitelist: aaa_base: adjust 50-default.conf digest (bsc#1226464)
+
+-------------------------------------------------------------------
 Wed Jun 19 13:14:23 UTC 2024 - wolfgang.frisch@suse.com
 
 - Update to version 2.5.0+git20240619.f4bc3a6:
