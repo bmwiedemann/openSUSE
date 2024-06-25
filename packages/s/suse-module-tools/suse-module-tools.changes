@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 24 14:10:46 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.45:
+  * udevrules: activate CPUs on hotplug for s390, too (bsc#1224400)
+
+-------------------------------------------------------------------
 Wed May 22 18:32:42 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.44:

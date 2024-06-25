@@ -783,4 +783,13 @@ source service setup which messed up my spec file.
     (bsc#1223278)</comment>
     <requestid>1175930</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>22908e4297c0ba730739a33c88fa67f9</srcmd5>
+    <version>16.0.45</version>
+    <time>1719349601</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 16.0.45:
+  * udevrules: activate CPUs on hotplug for s390, too (bsc#1224400) (forwarded request 1183024 from mwilck)</comment>
+    <requestid>1183025</requestid>
+  </revision>
 </revisionlist>

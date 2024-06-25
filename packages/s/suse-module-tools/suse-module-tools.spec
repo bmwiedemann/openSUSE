@@ -37,7 +37,7 @@
 %global modprobe_conf_rpmsave %(echo "%{modprobe_conf_files}" | sed 's,\\([^ ]*\\),%{_sysconfdir}/modprobe.d/\\1.conf.rpmsave,g')
 
 Name:           suse-module-tools
-Version:        16.0.44
+Version:        16.0.45
 Release:        0
 Summary:        Configuration for module loading and SUSE-specific utilities for KMPs
 License:        GPL-2.0-or-later
