@@ -1,0 +1,1638 @@
+From 606ec8e018811d2e93d86037dcc688fb77c61ff7 Mon Sep 17 00:00:00 2001
+From: Robby Stephenson <robby@periapsis.org>
+Date: Sun, 11 Feb 2024 13:05:32 -0500
+Subject: [PATCH] Remove Allocine data source
+
+API has been discontinued
+---
+ doc/configuration.docbook             |   8 -
+ src/fetch/CMakeLists.txt              |   1 -
+ src/fetch/allocinefetcher.cpp         | 516 --------------------------
+ src/fetch/allocinefetcher.h           | 134 -------
+ src/fetch/fetch.h                     |   2 +-
+ src/fetch/fetcherinitializer.cpp      |   2 -
+ src/fetch/fetchmanager.cpp            |   2 -
+ src/fetch/scripts/CMakeLists.txt      |   2 -
+ src/fetch/scripts/fr.allocine.py      | 475 ------------------------
+ src/fetch/scripts/fr.allocine.py.spec |  39 --
+ src/tests/CMakeLists.txt              |  14 -
+ src/tests/allocinefetchertest.cpp     | 220 -----------
+ src/tests/allocinefetchertest.h       |  54 ---
+ 13 files changed, 1 insertion(+), 1468 deletions(-)
+ delete mode 100644 src/fetch/allocinefetcher.cpp
+ delete mode 100644 src/fetch/allocinefetcher.h
+ delete mode 100755 src/fetch/scripts/fr.allocine.py
+ delete mode 100644 src/fetch/scripts/fr.allocine.py.spec
+ delete mode 100644 src/tests/allocinefetchertest.cpp
+ delete mode 100644 src/tests/allocinefetchertest.h
+
+diff --git a/doc/configuration.docbook b/doc/configuration.docbook
+index f1d6dbb..a577f30 100644
+--- a/doc/configuration.docbook
++++ b/doc/configuration.docbook
+@@ -166,7 +166,6 @@ while the full list is <ulink url="https://tellico-project.org/data-sources">ava
+ <listitem><simpara><link linkend="opds">OPDS catalogs</link>,</simpara></listitem>
+ <!-- movies -->
+ <listitem><simpara>the <link linkend="imdb">Internet Movie Database</link>,</simpara></listitem>
+-<listitem><simpara><link linkend="allocine">AlloCiné</link>,</simpara></listitem>
+ <listitem><simpara><link linkend="tmdb">TheMovieDB.org</link>,</simpara></listitem>
+ <listitem><simpara>the <link linkend="omdb">Open Movie Database</link>,</simpara></listitem>
+ <listitem><simpara><link linkend="filmaffinity">FilmAffinity</link>,</simpara></listitem>
+@@ -363,13 +362,6 @@ The <ulink url="http://www.imdb.com">Internet Movie Database</ulink> provides in
+ </para>
+ </sect3>
+ 
+-<sect3 id="allocine">
+-<title>AlloCiné</title>
+-<para>
+-<ulink url="http://allocine.fr">AlloCiné</ulink> is an online movie information service, based in France.
+-</para>
+-</sect3>
+-
+ <sect3 id="filmaffinity">
+ <title>FilmAffinity</title>
+ <para>
+diff --git a/src/fetch/CMakeLists.txt b/src/fetch/CMakeLists.txt
+index 0b54c93..d93542f 100644
+--- a/src/fetch/CMakeLists.txt
++++ b/src/fetch/CMakeLists.txt
+@@ -4,7 +4,6 @@ ADD_SUBDIRECTORY( scripts )
+ 
+ SET(fetch_STAT_SRCS
+    adsfetcher.cpp
+-   allocinefetcher.cpp
+    amazonfetcher.cpp
+    amazonrequest.cpp
+    animenfofetcher.cpp
+diff --git a/src/fetch/allocinefetcher.cpp b/src/fetch/allocinefetcher.cpp
+deleted file mode 100644
+index bc05285..0000000
+--- a/src/fetch/allocinefetcher.cpp
++++ /dev/null
+@@ -1,516 +0,0 @@
+-/***************************************************************************
+-    Copyright (C) 2012-2022 Robby Stephenson <robby@periapsis.org>
+- ***************************************************************************/
+-
+-/***************************************************************************
+- *                                                                         *
+- *   This program is free software; you can redistribute it and/or         *
+- *   modify it under the terms of the GNU General Public License as        *
+- *   published by the Free Software Foundation; either version 2 of        *
+- *   the License or (at your option) version 3 or any later version        *
+- *   accepted by the membership of KDE e.V. (or its successor approved     *
+- *   by the membership of KDE e.V.), which shall act as a proxy            *
+- *   defined in Section 14 of version 3 of the license.                    *
+- *                                                                         *
+- *   This program is distributed in the hope that it will be useful,       *
+- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+- *   GNU General Public License for more details.                          *
+- *                                                                         *
+- *   You should have received a copy of the GNU General Public License     *
+- *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
+- *                                                                         *
+- ***************************************************************************/
+-
+-#include <config.h> // for TELLICO_VERSION
+-
+-#include "allocinefetcher.h"
+-#include "../collections/videocollection.h"
+-#include "../images/imagefactory.h"
+-#include "../entry.h"
+-#include "../utils/guiproxy.h"
+-#include "../utils/string_utils.h"
+-#include "../core/filehandler.h"
+-#include "../tellico_debug.h"
+-
+-#include <KIO/Job>
+-#include <KIO/JobUiDelegate>
+-#include <KLocalizedString>
+-#include <KJobWidgets/KJobWidgets>
+-#include <KConfigGroup>
+-
+-#include <QSpinBox>
+-#include <QUrl>
+-#include <QLabel>
+-#include <QFile>
+-#include <QTextStream>
+-#include <QGridLayout>
+-#include <QTextCodec>
+-#include <QCryptographicHash>
+-#include <QJsonDocument>
+-#include <QJsonObject>
+-#include <QUrlQuery>
+-
+-namespace {
+-  static const char* ALLOCINE_API_KEY = "100ED1DA33EB";
+-  static const char* ALLOCINE_API_URL = "http://api.allocine.fr/rest/v3/";
+-  static const char* ALLOCINE_PARTNER_KEY = "1a1ed8c1bed24d60ae3472eed1da33eb";
+-}
+-
+-using namespace Tellico;
+-using Tellico::Fetch::AbstractAllocineFetcher;
+-using Tellico::Fetch::AllocineFetcher;
+-
+-AbstractAllocineFetcher::AbstractAllocineFetcher(QObject* parent_, const QString& baseUrl_)
+-    : Fetcher(parent_)
+-    , m_started(false)
+-    , m_apiKey(QLatin1String(ALLOCINE_API_KEY))
+-    , m_baseUrl(baseUrl_)
+-    , m_numCast(10) {
+-  Q_ASSERT(!m_baseUrl.isEmpty());
+-}
+-
+-AbstractAllocineFetcher::~AbstractAllocineFetcher() {
+-}
+-
+-bool AbstractAllocineFetcher::canSearch(Fetch::FetchKey k) const {
+-  return k == Keyword;
+-}
+-
+-bool AbstractAllocineFetcher::canFetch(int type) const {
+-  return type == Data::Collection::Video;
+-}
+-
+-void AbstractAllocineFetcher::readConfigHook(const KConfigGroup& config_) {
+-  QString k = config_.readEntry("API Key", ALLOCINE_API_KEY);
+-  if(!k.isEmpty()) {
+-    m_apiKey = k;
+-  }
+-  m_numCast = config_.readEntry("Max Cast", 10);
+-}
+-
+-void AbstractAllocineFetcher::search() {
+-  m_started = true;
+-
+-  const QString method(QStringLiteral("search"));
+-
+-  QUrl u(m_baseUrl);
+-  u = u.adjusted(QUrl::StripTrailingSlash);
+-  u.setPath(u.path() + QLatin1Char('/') + method);
+-
+-  // the order of the parameters appears to matter
+-  QList<QPair<QString, QString> > params;
+-  params.append(qMakePair(QStringLiteral("partner"), m_apiKey));
+-
+-  // I can't figure out how to encode accent marks, but they don't
+-  // seem to be necessary
+-  QString q = removeAccents(request().value());
+-  // should I just remove all non alphabetical characters?
+-  // see https://bugs.kde.org/show_bug.cgi?id=337432
+-  q.remove(QRegularExpression(QStringLiteral("[,:!?;\\(\\)]")));
+-  q.replace(QLatin1Char('\''), QLatin1Char('+'));
+-  q.replace(QLatin1Char(' '), QLatin1Char('+'));
+-
+-  switch(request().key()) {
+-    case Keyword:
+-      params.append(qMakePair(QStringLiteral("q"), q));
+-      break;
+-
+-    default:
+-      myWarning() << source() << "- key not recognized:" << request().key();
+-      stop();
+-      return;
+-  }
+-
+-  params.append(qMakePair(QStringLiteral("format"), QStringLiteral("json")));
+-  params.append(qMakePair(QStringLiteral("filter"), QStringLiteral("movie")));
+-
+-  const QString sed = QDateTime::currentDateTimeUtc().toString(QStringLiteral("yyyyMMdd"));
+-  params.append(qMakePair(QStringLiteral("sed"), sed));
+-
+-  const QByteArray sig = calculateSignature(method, params);
+-
+-  QUrlQuery query;
+-  query.setQueryItems(params);
+-  query.addQueryItem(QStringLiteral("sig"), QLatin1String(sig));
+-  u.setQuery(query);
+-//  myDebug() << u;
+-
+-  m_job = KIO::storedGet(u, KIO::NoReload, KIO::HideProgressInfo);
+-  configureJob(m_job);
+-  KJobWidgets::setWindow(m_job, GUI::Proxy::widget());
+-  connect(m_job.data(), &KJob::result, this, &AbstractAllocineFetcher::slotComplete);
+-}
+-
+-void AbstractAllocineFetcher::stop() {
+-  if(!m_started) {
+-    return;
+-  }
+-  if(m_job) {
+-    m_job->kill();
+-  }
+-  m_started = false;
+-  emit signalDone(this);
+-}
+-
+-Tellico::Data::EntryPtr AbstractAllocineFetcher::fetchEntryHook(uint uid_) {
+-  Data::EntryPtr entry = m_entries.value(uid_);
+-  if(!entry) {
+-    myWarning() << "no entry in dict";
+-    return Data::EntryPtr();
+-  }
+-
+-  QString code = entry->field(QStringLiteral("allocine-code"));
+-  if(code.isEmpty()) {
+-    // could mean we already updated the entry
+-    myDebug() << "no allocine release found";
+-    return entry;
+-  }
+-  const QString method(QStringLiteral("movie"));
+-
+-  QUrl u(m_baseUrl);
+-  u = u.adjusted(QUrl::StripTrailingSlash);
+-  u.setPath(u.path() + QLatin1Char('/') + method);
+-
+-  // the order of the parameters appears to matter
+-  QList<QPair<QString, QString> > params;
+-  params.append(qMakePair(QStringLiteral("partner"), m_apiKey));
+-  params.append(qMakePair(QStringLiteral("code"), code));
+-  params.append(qMakePair(QStringLiteral("profile"), QStringLiteral("large")));
+-  params.append(qMakePair(QStringLiteral("filter"), QStringLiteral("movie")));
+-  params.append(qMakePair(QStringLiteral("format"), QStringLiteral("json")));
+-
+-  const QString sed = QDateTime::currentDateTimeUtc().toString(QStringLiteral("yyyyMMdd"));
+-  params.append(qMakePair(QStringLiteral("sed"), sed));
+-
+-  const QByteArray sig = calculateSignature(method, params);
+-
+-  QUrlQuery query;
+-  query.setQueryItems(params);
+-  query.addQueryItem(QStringLiteral("sig"), QLatin1String(sig));
+-  u.setQuery(query);
+-//  myDebug() << "url: " << u;
+-//  QByteArray data = FileHandler::readDataFile(u, true);
+-  KIO::StoredTransferJob* dataJob = KIO::storedGet(u, KIO::NoReload, KIO::HideProgressInfo);
+-  configureJob(dataJob);
+-  if(!dataJob->exec()) {
+-    myDebug() << "Failed to load" << u;
+-    return entry;
+-  }
+-  const QByteArray data = dataJob->data();
+-
+-#if 0
+-  myWarning() << "Remove debug2 from allocinefetcher.cpp";
+-  QFile f(QString::fromLatin1("/tmp/test2.json"));
+-  if(f.open(QIODevice::WriteOnly)) {
+-    QTextStream t(&f);
+-    t.setCodec("UTF-8");
+-    t << data;
+-  }
+-  f.close();
+-#endif
+-
+-  QJsonParseError error;
+-  QJsonDocument doc = QJsonDocument::fromJson(data, &error);
+-  QVariantMap result = doc.object().toVariantMap().value(QStringLiteral("movie")).toMap();
+-  if(error.error != QJsonParseError::NoError) {
+-    myDebug() << "Bad JSON results";
+-#if 0
+-    myWarning() << "Remove debug3 from allocinefetcher.cpp";
+-    QFile f2(QString::fromLatin1("/tmp/test3.json"));
+-    if(f2.open(QIODevice::WriteOnly)) {
+-      QTextStream t(&f2);
+-      t.setCodec("UTF-8");
+-      t << data;
+-    }
+-    f2.close();
+-#endif
+-    return entry;
+-  }
+-  populateEntry(entry, result);
+-
+-  // image might still be a URL
+-  const QString image_id = entry->field(QStringLiteral("cover"));
+-  if(image_id.contains(QLatin1Char('/'))) {
+-    const QString id = ImageFactory::addImage(QUrl::fromUserInput(image_id), true /* quiet */);
+-    if(id.isEmpty()) {
+-      message(i18n("The cover image could not be loaded."), MessageHandler::Warning);
+-    }
+-    // empty image ID is ok
+-    entry->setField(QStringLiteral("cover"), id);
+-  }
+-
+-  // don't want to include id
+-  entry->collection()->removeField(QStringLiteral("allocine-code"));
+-  QStringList castRows = FieldFormat::splitTable(entry->field(QStringLiteral("cast")));
+-  while(castRows.count() > m_numCast) {
+-    castRows.removeLast();
+-  }
+-  entry->setField(QStringLiteral("cast"), castRows.join(FieldFormat::rowDelimiterString()));
+-  return entry;
+-}
+-
+-void AbstractAllocineFetcher::slotComplete(KJob*) {
+-  if(m_job->error()) {
+-    myDebug() << "Error:" << m_job->errorString();
+-    m_job->uiDelegate()->showErrorMessage();
+-    stop();
+-    return;
+-  }
+-
+-  QByteArray data = m_job->data();
+-  if(data.isEmpty()) {
+-    myDebug() << "no data";
+-    stop();
+-    return;
+-  }
+-  // see bug 319662. If fetcher is cancelled, job is killed
+-  // if the pointer is retained, it gets double-deleted
+-  m_job = nullptr;
+-
+-#if 0
+-  myWarning() << "Remove debug from allocinefetcher.cpp";
+-  QFile f(QString::fromLatin1("/tmp/test.json"));
+-  if(f.open(QIODevice::WriteOnly)) {
+-    QTextStream t(&f);
+-    t.setCodec("UTF-8");
+-    t << data;
+-  }
+-  f.close();
+-#endif
+-
+-  QJsonDocument doc = QJsonDocument::fromJson(data);
+-  QVariantMap result = doc.object().toVariantMap().value(QStringLiteral("feed")).toMap();
+-//  myDebug() << "total:" << result.value(QLatin1String("totalResults"));
+-
+-  QVariantList resultList = result.value(QStringLiteral("movie")).toList();
+-  if(resultList.isEmpty()) {
+-    myDebug() << "no results";
+-    stop();
+-    return;
+-  }
+-
+-  foreach(const QVariant& result, resultList) {
+-  //  myDebug() << "found result:" << result;
+-
+-    //create a new collection for every result since we end up removing the allocine code field
+-    // when fetchEntryHook is called. See bug 338389
+-    Data::EntryPtr entry(new Data::Entry(createCollection()));
+-    populateEntry(entry, result.toMap());
+-
+-    FetchResult* r = new FetchResult(this, entry);
+-    m_entries.insert(r->uid, entry);
+-    emit signalResultFound(r);
+-  }
+-
+-  m_hasMoreResults = false;
+-  stop();
+-}
+-
+-Tellico::Data::CollPtr AbstractAllocineFetcher::createCollection() const {
+-  Data::CollPtr coll(new Data::VideoCollection(true));
+-  // always add the allocine release code for fetchEntryHook
+-  Data::FieldPtr field(new Data::Field(QStringLiteral("allocine-code"), QStringLiteral("Allocine Code"), Data::Field::Number));
+-  field->setCategory(i18n("General"));
+-  coll->addField(field);
+-
+-  // add new fields
+-  if(optionalFields().contains(QStringLiteral("allocine"))) {
+-    Data::FieldPtr field(new Data::Field(QStringLiteral("allocine"), i18n("Allocine Link"), Data::Field::URL));
+-    field->setCategory(i18n("General"));
+-    coll->addField(field);
+-  }
+-  if(optionalFields().contains(QStringLiteral("origtitle"))) {
+-    Data::FieldPtr f(new Data::Field(QStringLiteral("origtitle"), i18n("Original Title")));
+-    f->setFormatType(FieldFormat::FormatTitle);
+-    coll->addField(f);
+-  }
+-
+-  return coll;
+-}
+-
+-void AbstractAllocineFetcher::populateEntry(Data::EntryPtr entry, const QVariantMap& resultMap) {
+-  if(entry->collection()->hasField(QStringLiteral("allocine-code"))) {
+-    entry->setField(QStringLiteral("allocine-code"), mapValue(resultMap, "code"));
+-  }
+-
+-  entry->setField(QStringLiteral("title"), mapValue(resultMap, "title"));
+-  if(optionalFields().contains(QStringLiteral("origtitle"))) {
+-    entry->setField(QStringLiteral("origtitle"), mapValue(resultMap, "originalTitle"));
+-  }
+-  if(entry->title().isEmpty()) {
+-    entry->setField(QStringLiteral("title"), mapValue(resultMap,  "originalTitle"));
+-  }
+-  entry->setField(QStringLiteral("year"), mapValue(resultMap, "productionYear"));
+-  entry->setField(QStringLiteral("plot"), mapValue(resultMap, "synopsis"));
+-
+-  const int runTime = mapValue(resultMap, "runtime").toInt();
+-  entry->setField(QStringLiteral("running-time"), QString::number(runTime/60));
+-
+-  const QVariantList castList = resultMap.value(QStringLiteral("castMember")).toList();
+-  QStringList actors, directors, producers, composers;
+-  foreach(const QVariant& castVariant, castList) {
+-    const QVariantMap castMap = castVariant.toMap();
+-    const int code = mapValue(castMap, "activity", "code").toInt();
+-    switch(code) {
+-      case 8001:
+-        actors << (mapValue(castMap, "person", "name") + FieldFormat::columnDelimiterString() + mapValue(castMap, "role"));
+-        break;
+-      case 8002:
+-        directors << mapValue(castMap, "person", "name");
+-        break;
+-      case 8029:
+-        producers << mapValue(castMap, "person", "name");
+-        break;
+-      case 8003:
+-        composers << mapValue(castMap, "person", "name");
+-        break;
+-    }
+-  }
+-  entry->setField(QStringLiteral("cast"), actors.join(FieldFormat::rowDelimiterString()));
+-  entry->setField(QStringLiteral("director"), directors.join(FieldFormat::delimiterString()));
+-  entry->setField(QStringLiteral("producer"), producers.join(FieldFormat::delimiterString()));
+-  entry->setField(QStringLiteral("composer"), composers.join(FieldFormat::delimiterString()));
+-
+-  const QVariantMap releaseMap = resultMap.value(QStringLiteral("release")).toMap();
+-  entry->setField(QStringLiteral("studio"), mapValue(releaseMap, "distributor", "name"));
+-
+-  QStringList genres;
+-  foreach(const QVariant& variant, resultMap.value(QLatin1String("genre")).toList()) {
+-    genres << i18n(mapValue(variant.toMap(), "$").toUtf8().constData());
+-  }
+-  entry->setField(QStringLiteral("genre"), genres.join(FieldFormat::delimiterString()));
+-
+-  QStringList nats;
+-  foreach(const QVariant& variant, resultMap.value(QLatin1String("nationality")).toList()) {
+-    nats << mapValue(variant.toMap(), "$");
+-  }
+-  entry->setField(QStringLiteral("nationality"), nats.join(FieldFormat::delimiterString()));
+-
+-  QStringList langs;
+-  foreach(const QVariant& variant, resultMap.value(QLatin1String("language")).toList()) {
+-    langs << mapValue(variant.toMap(), "$");
+-  }
+-  entry->setField(QStringLiteral("language"), langs.join(FieldFormat::delimiterString()));
+-
+-  const QVariantMap colorMap = resultMap.value(QLatin1String("color")).toMap();
+-  if(colorMap.value(QStringLiteral("code")) == QLatin1String("12001")) {
+-    entry->setField(QStringLiteral("color"), i18n("Color"));
+-  }
+-
+-  entry->setField(QStringLiteral("cover"), mapValue(resultMap, "poster", "href"));
+-
+-  if(optionalFields().contains(QStringLiteral("allocine"))) {
+-    entry->setField(QStringLiteral("allocine"), mapValue(resultMap, "link", "href"));
+-  }
+-}
+-
+-Tellico::Fetch::FetchRequest AbstractAllocineFetcher::updateRequest(Data::EntryPtr entry_) {
+-  QString title = entry_->field(QStringLiteral("title"));
+-  if(!title.isEmpty()) {
+-    return FetchRequest(Keyword, title);
+-  }
+-  return FetchRequest();
+-}
+-
+-void AbstractAllocineFetcher::configureJob(KIO::StoredTransferJob* job_) {
+-  // 10/8/17: UserAgent appears necessary to receive data
+-  job_->addMetaData(QLatin1String("SendUserAgent"), QLatin1String("true"));
+-  job_->addMetaData(QStringLiteral("UserAgent"), QStringLiteral("Tellico/%1")
+-                                                                .arg(QStringLiteral(TELLICO_VERSION)));
+-  job_->addMetaData(QLatin1String("Languages"), QLatin1String("fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3"));
+-}
+-
+-AbstractAllocineFetcher::ConfigWidget::ConfigWidget(QWidget* parent_, const AbstractAllocineFetcher* fetcher_)
+-    : Fetch::ConfigWidget(parent_) {
+-  QGridLayout* l = new QGridLayout(optionsWidget());
+-  l->setSpacing(4);
+-  l->setColumnStretch(1, 10);
+-
+-  int row = -1;
+-
+-  QLabel* label = new QLabel(i18n("&Maximum cast: "), optionsWidget());
+-  l->addWidget(label, ++row, 0);
+-  m_numCast = new QSpinBox(optionsWidget());
+-  m_numCast->setMaximum(99);
+-  m_numCast->setMinimum(0);
+-  m_numCast->setValue(10);
+-#if (QT_VERSION < QT_VERSION_CHECK(5, 14, 0))
+-  void (QSpinBox::* textChanged)(const QString&) = &QSpinBox::valueChanged;
+-#else
+-  void (QSpinBox::* textChanged)(const QString&) = &QSpinBox::textChanged;
+-#endif
+-  connect(m_numCast, textChanged, this, &ConfigWidget::slotSetModified);
+-  l->addWidget(m_numCast, row, 1);
+-  QString w = i18n("The list of cast members may include many people. Set the maximum number returned from the search.");
+-  label->setWhatsThis(w);
+-  m_numCast->setWhatsThis(w);
+-  label->setBuddy(m_numCast);
+-
+-  l->setRowStretch(++row, 10);
+-
+-  m_numCast->setValue(fetcher_ ? fetcher_->m_numCast : 10);
+-}
+-
+-void AbstractAllocineFetcher::ConfigWidget::saveConfigHook(KConfigGroup& config_) {
+-  config_.writeEntry("Max Cast", m_numCast->value());
+-}
+-
+-QByteArray AbstractAllocineFetcher::calculateSignature(const QString& method, const QList<QPair<QString, QString> >& params_) {
+-  typedef QPair<QString, QString> StringPair;
+-  QByteArray queryString;
+-  foreach(const StringPair& pair, params_) {
+-    queryString.append(pair.first.toUtf8().toPercentEncoding("+"));
+-    queryString.append('=');
+-    queryString.append(pair.second.toUtf8().toPercentEncoding("+"));
+-    queryString.append('&');
+-  }
+-  // remove final '&'
+-  queryString.chop(1);
+-
+-  const QByteArray toSign = method.toUtf8() + queryString + ALLOCINE_PARTNER_KEY;
+-  const QByteArray hash = QCryptographicHash::hash(toSign, QCryptographicHash::Sha1);
+-  return hash.toBase64();
+-}
+-
+-/**********************************************************************************************/
+-
+-AllocineFetcher::AllocineFetcher(QObject* parent_)
+-    : AbstractAllocineFetcher(parent_, QLatin1String(ALLOCINE_API_URL)) {
+-}
+-
+-AllocineFetcher::~AllocineFetcher() {
+-}
+-
+-QString AllocineFetcher::source() const {
+-  return m_name.isEmpty() ? defaultName() : m_name;
+-}
+-
+-Tellico::Fetch::ConfigWidget* AllocineFetcher::configWidget(QWidget* parent_) const {
+-  return new AllocineFetcher::ConfigWidget(parent_, this);
+-}
+-
+-QString AllocineFetcher::defaultName() {
+-  return QStringLiteral("AlloCiné.fr");
+-}
+-
+-QString AllocineFetcher::defaultIcon() {
+-  return favIcon("http://www.allocine.fr");
+-}
+-
+-Tellico::StringHash AllocineFetcher::allOptionalFields() {
+-  StringHash hash;
+-  hash[QStringLiteral("origtitle")] = i18n("Original Title");
+-  hash[QStringLiteral("allocine")]  = i18n("Allocine Link");
+-  return hash;
+-}
+-
+-AllocineFetcher::ConfigWidget::ConfigWidget(QWidget* parent_, const AbstractAllocineFetcher* fetcher_)
+-    : AbstractAllocineFetcher::ConfigWidget(parent_, fetcher_) {
+-  // now add additional fields widget
+-  addFieldsWidget(AllocineFetcher::allOptionalFields(), fetcher_ ? fetcher_->optionalFields() : QStringList());
+-}
+-
+-QString AllocineFetcher::ConfigWidget::preferredName() const {
+-  return AllocineFetcher::defaultName();
+-}
+diff --git a/src/fetch/allocinefetcher.h b/src/fetch/allocinefetcher.h
+deleted file mode 100644
+index 946c053..0000000
+--- a/src/fetch/allocinefetcher.h
++++ /dev/null
+@@ -1,134 +0,0 @@
+-/***************************************************************************
+-    Copyright (C) 2012 Robby Stephenson <robby@periapsis.org>
+- ***************************************************************************/
+-
+-/***************************************************************************
+- *                                                                         *
+- *   This program is free software; you can redistribute it and/or         *
+- *   modify it under the terms of the GNU General Public License as        *
+- *   published by the Free Software Foundation; either version 2 of        *
+- *   the License or (at your option) version 3 or any later version        *
+- *   accepted by the membership of KDE e.V. (or its successor approved     *
+- *   by the membership of KDE e.V.), which shall act as a proxy            *
+- *   defined in Section 14 of version 3 of the license.                    *
+- *                                                                         *
+- *   This program is distributed in the hope that it will be useful,       *
+- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+- *   GNU General Public License for more details.                          *
+- *                                                                         *
+- *   You should have received a copy of the GNU General Public License     *
+- *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
+- *                                                                         *
+- ***************************************************************************/
+-
+-#ifndef TELLICO_ALLOCINEFETCHER_H
+-#define TELLICO_ALLOCINEFETCHER_H
+-
+-#include "xmlfetcher.h"
+-#include "configwidget.h"
+-#include "../datavectors.h"
+-
+-#include <QPointer>
+-
+-class QSpinBox;
+-
+-class KJob;
+-namespace KIO {
+-  class StoredTransferJob;
+-}
+-
+-namespace Tellico {
+-
+-  namespace Fetch {
+-
+-/**
+- * An abstract fetcher for the Allocine family of web sites
+- *
+- * @author Robby Stephenson
+- */
+-class AbstractAllocineFetcher : public Fetcher {
+-Q_OBJECT
+-
+-public:
+-  /**
+-   */
+-  AbstractAllocineFetcher(QObject* parent, const QString& baseUrl);
+-  /**
+-   */
+-  virtual ~AbstractAllocineFetcher();
+-
+-  virtual bool isSearching() const Q_DECL_OVERRIDE { return m_started; }
+-  virtual bool canSearch(FetchKey k) const Q_DECL_OVERRIDE;
+-  virtual void stop() Q_DECL_OVERRIDE;
+-  virtual Data::EntryPtr fetchEntryHook(uint uid) Q_DECL_OVERRIDE;
+-  virtual bool canFetch(int type) const Q_DECL_OVERRIDE;
+-  virtual void readConfigHook(const KConfigGroup& config) Q_DECL_OVERRIDE;
+-
+-  class ConfigWidget : public Fetch::ConfigWidget {
+-  public:
+-    explicit ConfigWidget(QWidget* parent_, const AbstractAllocineFetcher* fetcher = nullptr);
+-    virtual void saveConfigHook(KConfigGroup&) Q_DECL_OVERRIDE;
+-    virtual QString preferredName() const Q_DECL_OVERRIDE = 0;
+-  private:
+-    QSpinBox* m_numCast;
+-  };
+-  friend class ConfigWidget;
+-
+-private Q_SLOTS:
+-  void slotComplete(KJob* job);
+-
+-private:
+-  static QByteArray calculateSignature(const QString& method, const QList<QPair<QString, QString> >& params);
+-
+-  virtual void search() Q_DECL_OVERRIDE;
+-  virtual FetchRequest updateRequest(Data::EntryPtr entry) Q_DECL_OVERRIDE;
+-  Data::CollPtr createCollection() const;
+-  void populateEntry(Data::EntryPtr entry, const QVariantMap& resultMap);
+-  void configureJob(KIO::StoredTransferJob* job);
+-
+-  QHash<uint, Data::EntryPtr> m_entries;
+-  QPointer<KIO::StoredTransferJob> m_job;
+-
+-  bool m_started;
+-  QString m_apiKey;
+-  QString m_baseUrl;
+-  int m_numCast;
+-};
+-
+-/**
+- * A fetcher for allocine.fr
+- *
+- * @author Robby Stephenson
+- */
+-class AllocineFetcher : public AbstractAllocineFetcher {
+-Q_OBJECT
+-
+-public:
+-  /**
+-   */
+-  AllocineFetcher(QObject* parent);
+-  ~AllocineFetcher();
+-
+-  virtual QString source() const Q_DECL_OVERRIDE;
+-  virtual Type type() const Q_DECL_OVERRIDE { return Allocine; }
+-
+-  /**
+-   * Returns a widget for modifying the fetcher's config.
+-   */
+-  virtual Fetch::ConfigWidget* configWidget(QWidget* parent) const Q_DECL_OVERRIDE;
+-
+-  class ConfigWidget : public AbstractAllocineFetcher::ConfigWidget {
+-  public:
+-    explicit ConfigWidget(QWidget* parent_, const AbstractAllocineFetcher* fetcher = nullptr);
+-    virtual QString preferredName() const Q_DECL_OVERRIDE;
+-  };
+-
+-  static QString defaultName();
+-  static QString defaultIcon();
+-  static StringHash allOptionalFields();
+-};
+-
+-  } // end namespace
+-} // end namespace
+-#endif
+diff --git a/src/fetch/fetch.h b/src/fetch/fetch.h
+index 116c8be..df772ea 100644
+--- a/src/fetch/fetch.h
++++ b/src/fetch/fetch.h
+@@ -83,7 +83,7 @@ enum Type {
+   GoogleBook,
+   MAS, // Removed
+   Springer,
+-  Allocine,
++  Allocine, // Removed
+   ScreenRush, // Removed
+   FilmStarts, // Removed
+   SensaCine, // Removed
+diff --git a/src/fetch/fetcherinitializer.cpp b/src/fetch/fetcherinitializer.cpp
+index 7e23b5d..b1fa249 100644
+--- a/src/fetch/fetcherinitializer.cpp
++++ b/src/fetch/fetcherinitializer.cpp
+@@ -55,7 +55,6 @@
+ #include "moviemeterfetcher.h"
+ #include "googlebookfetcher.h"
+ #include "springerfetcher.h"
+-#include "allocinefetcher.h"
+ #include "thegamesdbfetcher.h"
+ #include "dblpfetcher.h"
+ #include "mrlookupfetcher.h"
+@@ -111,7 +110,6 @@ Tellico::Fetch::FetcherInitializer::FetcherInitializer() {
+   RegisterFetcher<Fetch::GoogleBookFetcher> registerGoogleBook(GoogleBook);
+   RegisterFetcher<Fetch::HathiTrustFetcher> registerHathiTrust(HathiTrust);
+   RegisterFetcher<Fetch::VNDBFetcher> registerVNDB(VNDB);
+-  RegisterFetcher<Fetch::AllocineFetcher> registerAllocine(Allocine);
+   RegisterFetcher<Fetch::MovieMeterFetcher> registerMovieMeter(MovieMeter);
+   RegisterFetcher<Fetch::DVDFrFetcher> registerDVDFr(DVDFr);
+   RegisterFetcher<Fetch::DoubanFetcher> registerDouban(Douban);
+diff --git a/src/fetch/fetchmanager.cpp b/src/fetch/fetchmanager.cpp
+index 33b7b34..088f6ee 100644
+--- a/src/fetch/fetchmanager.cpp
++++ b/src/fetch/fetchmanager.cpp
+@@ -27,7 +27,6 @@
+ #include "fetchmanager.h"
+ #include "configwidget.h"
+ #include "messagehandler.h"
+-#include "../entry.h"
+ #include "../collection.h"
+ #include "../utils/string_utils.h"
+ #include "../utils/tellico_utils.h"
+@@ -355,7 +354,6 @@ Tellico::Fetch::FetcherVec Manager::defaultFetchers() {
+   }
+   if(langs.contains(QStringLiteral("fr"))) {
+     FETCHER_ADD(DVDFr);
+-    FETCHER_ADD(Allocine);
+   }
+   if(langs.contains(QStringLiteral("ru"))) {
+     FETCHER_ADD(KinoPoisk);
+diff --git a/src/fetch/scripts/CMakeLists.txt b/src/fetch/scripts/CMakeLists.txt
+index 4d337c3..78f6bbd 100644
+--- a/src/fetch/scripts/CMakeLists.txt
++++ b/src/fetch/scripts/CMakeLists.txt
+@@ -3,12 +3,10 @@
+ 
+ SET(SCRIPT_FILES
+     dark_horse_comics.py
+-    fr.allocine.py
+     )
+ 
+ SET(SPEC_FILES
+     dark_horse_comics.py.spec
+-    fr.allocine.py.spec
+     )
+ 
+ INSTALL(PROGRAMS ${SCRIPT_FILES} DESTINATION ${TELLICO_DATA_INSTALL_DIR}/data-sources )
+diff --git a/src/fetch/scripts/fr.allocine.py b/src/fetch/scripts/fr.allocine.py
+deleted file mode 100755
+index a250443..0000000
+--- a/src/fetch/scripts/fr.allocine.py
++++ /dev/null
+@@ -1,475 +0,0 @@
+-#!/usr/bin/env python
+-# -*- coding: iso-8859-1 -*-
+-# kate: replace-tabs off;
+-# ***************************************************************************
+-#    copyright            : (C) 2006-2010 by Mathias Monnerville
+-#    email                : tellico@monnerville.com
+-# ***************************************************************************
+-#
+-# ***************************************************************************
+-# *                                                                         *
+-# *   This program is free software; you can redistribute it and/or modify  *
+-# *   it under the terms of version 2 of the GNU General Public License as  *
+-# *   published by the Free Software Foundation;                            *
+-# *                                                                         *
+-# ***************************************************************************
+-#
+-# Version 0.7.3: 2010-12-07 (Reported by Romain Henriet)
+-# * Fixed some regexp issues
+-# * Better handling of image parsing/fetching errors
+-#
+-# Version 0.7.2.1: 2010-07-27 (Reported by Romain Henriet)
+-# * Updated title match to allow searching without diacritical marks
+-#
+-# Version 0.7.2: 2010-05-27 (Reported by Romain Henriet)
+-# * Fixed bug preventing searches with accent marks
+-# * Added post-processing cleanup action to replace raw HTML entities with
+-#   their ISO Latin-1 replacement text
+-#
+-# Version 0.7.1: 2010-04-26 (Thanks to Romain Henriet <romain-devel@laposte.net>)
+-# * Fixed greedy regexp for genre.  Fixed nationality output. Add studio.
+-#
+-# Version 0.7: 2009-11-12
+-# * Allocine has a brand new website. All regexps were broken.
+-#
+-# Version 0.6: 2009-03-04 (Thanks to R. Fischer and Henry-Nicolas Tourneur)
+-# * Fixed parsing issues (various RegExp issues due to allocine's HTML changes)
+-#
+-# Version 0.5: 2009-01-21 (Changes contributed by R. Fischer <fischer.tellico@free.fr>)
+-# * Added complete distribution of actors and roles, Genres, Nationalities, producers, composer and scenarist
+-# * Fixed the plot field that returned a wrong answer when no plot is available
+-# * Fixed a bug related to parameters encoding
+-#
+-# Version 0.4:
+-# * Fixed parsing errors: some fields in allocine's HTML pages have changed recently. Multiple actors and genres
+-# could not be retrieved. Fixed bad http request error due to some changes in HTML code.
+-#
+-# Version 0.3:
+-# * Fixed parsing: some fields in allocine's HTML pages have changed. Movie's image could not be fetched anymore. Fixed.
+-#
+-# Version 0.2:
+-# * Fixed parsing: allocine's HTML pages have changed. Movie's image could not be fetched anymore.
+-#
+-# Version 0.1:
+-# * Initial release.
+-
+-import sys, os, re, hashlib, random, types
+-import urllib, time, base64
+-import xml.dom.minidom
+-import locale
+-try:
+-	import htmlentitydefs as htmlents
+-except ImportError:
+-	try:
+-		from html.entities import entitydefs as htmlents
+-	except ImportError:
+-		print('Python 2.5+ required')
+-		raise
+-
+-try:
+-	# For Python 3.0 and later
+-	from urllib.request import urlopen
+-except ImportError:
+-	# Fall back to Python 2's urllib2
+-	from urllib2 import urlopen
+-
+-XML_HEADER = """<?xml version="1.0" encoding="UTF-8"?>"""
+-DOCTYPE = """<!DOCTYPE tellico PUBLIC "-//Robby Stephenson/DTD Tellico V9.0//EN" "http://periapsis.org/tellico/dtd/v9/tellico.dtd">"""
+-
+-VERSION = "0.7.3"
+-
+-def genMD5():
+-	float = random.random()
+-	return hashlib.md5(str(float)).hexdigest()
+-
+-class BasicTellicoDOM:
+-	def __init__(self):
+-		self.__doc = xml.dom.minidom.Document()
+-		self.__root = self.__doc.createElement('tellico')
+-		self.__root.setAttribute('xmlns', 'http://periapsis.org/tellico/')
+-		self.__root.setAttribute('syntaxVersion', '9')
+-
+-		self.__collection = self.__doc.createElement('collection')
+-		self.__collection.setAttribute('title', 'My Movies')
+-		self.__collection.setAttribute('type', '3')
+-
+-		self.__fields = self.__doc.createElement('fields')
+-		# Add all default (standard) fields
+-		self.__dfltField = self.__doc.createElement('field')
+-		self.__dfltField.setAttribute('name', '_default')
+-
+-		# Add a custom 'Collection' field
+-		self.__customField = self.__doc.createElement('field')
+-		self.__customField.setAttribute('name', 'titre-original')
+-		self.__customField.setAttribute('title', 'Original Title')
+-		self.__customField.setAttribute('flags', '0')
+-		self.__customField.setAttribute('category', unicode('G�n�ral', 'latin-1').encode('utf-8'))
+-		self.__customField.setAttribute('format', '1')
+-		self.__customField.setAttribute('type', '1')
+-		self.__customField.setAttribute('i18n', 'yes')
+-
+-		self.__fields.appendChild(self.__dfltField)
+-		self.__fields.appendChild(self.__customField)
+-		self.__collection.appendChild(self.__fields)
+-
+-		self.__images = self.__doc.createElement('images')
+-
+-		self.__root.appendChild(self.__collection)
+-		self.__doc.appendChild(self.__root)
+-
+-		# Current movie id
+-		self.__currentId = 0
+-
+-
+-	def addEntry(self, movieData):
+-		"""
+-		Add a movie entry
+-		"""
+-		d = movieData
+-		entryNode = self.__doc.createElement('entry')
+-		entryNode.setAttribute('id', str(self.__currentId))
+-
+-		titleNode = self.__doc.createElement('title')
+-		titleNode.appendChild(self.__doc.createTextNode(d['title']))
+-
+-		otitleNode = self.__doc.createElement('titre-original')
+-		otitleNode.appendChild(self.__doc.createTextNode(d['otitle']))
+-
+-		yearNode = self.__doc.createElement('year')
+-		yearNode.appendChild(self.__doc.createTextNode(d['year']))
+-
+-		genresNode = self.__doc.createElement('genres')
+-		for g in d['genres']:
+-			genreNode = self.__doc.createElement('genre')
+-			genreNode.appendChild(self.__doc.createTextNode(g))
+-			genresNode.appendChild(genreNode)
+-
+-		studsNode = self.__doc.createElement('studios')
+-		for g in d['studio']:
+-			studNode = self.__doc.createElement('studio')
+-			studNode.appendChild(self.__doc.createTextNode(g))
+-			studsNode.appendChild(studNode)
+-
+-		natsNode = self.__doc.createElement('nationalitys')
+-		for g in d['nat']:
+-			natNode = self.__doc.createElement('nationality')
+-			natNode.appendChild(self.__doc.createTextNode(g))
+-			natsNode.appendChild(natNode)
+-
+-		castsNode = self.__doc.createElement('casts')
+-		i = 0
+-		while i < len(d['actors']):
+-			g = d['actors'][i]
+-			h = d['actors'][i+1]
+-			castNode = self.__doc.createElement('cast')
+-			col1Node = self.__doc.createElement('column')
+-			col2Node = self.__doc.createElement('column')
+-			col1Node.appendChild(self.__doc.createTextNode(g))
+-			col2Node.appendChild(self.__doc.createTextNode(h))
+-			castNode.appendChild(col1Node)
+-			castNode.appendChild(col2Node)
+-			castsNode.appendChild(castNode)
+-			i = i + 2
+-
+-		dirsNode = self.__doc.createElement('directors')
+-		for g in d['dirs']:
+-			dirNode = self.__doc.createElement('director')
+-			dirNode.appendChild(self.__doc.createTextNode(g))
+-			dirsNode.appendChild(dirNode)
+-
+-		prodsNode = self.__doc.createElement('producers')
+-		for g in d['prods']:
+-			prodNode = self.__doc.createElement('producer')
+-			prodNode.appendChild(self.__doc.createTextNode(g))
+-			prodsNode.appendChild(prodNode)
+-
+-		scensNode = self.__doc.createElement('writers')
+-		for g in d['scens']:
+-			scenNode = self.__doc.createElement('writer')
+-			scenNode.appendChild(self.__doc.createTextNode(g))
+-			scensNode.appendChild(scenNode)
+-
+-		compsNode = self.__doc.createElement('composers')
+-		for g in d['comps']:
+-			compNode = self.__doc.createElement('composer')
+-			compNode.appendChild(self.__doc.createTextNode(g))
+-			compsNode.appendChild(compNode)
+-
+-		timeNode = self.__doc.createElement('running-time')
+-		timeNode.appendChild(self.__doc.createTextNode(d['time']))
+-
+-		allocineNode = self.__doc.createElement(unicode('allocin�-link', 'latin-1').encode('utf-8'))
+-		allocineNode.appendChild(self.__doc.createTextNode(d['allocine']))
+-
+-		plotNode = self.__doc.createElement('plot')
+-		plotNode.appendChild(self.__doc.createTextNode(d['plot']))
+-
+-		if d['image']:
+-			imageNode = self.__doc.createElement('image')
+-			imageNode.setAttribute('format', 'JPEG')
+-			imageNode.setAttribute('id', d['image'][0])
+-			imageNode.setAttribute('width', '120')
+-			imageNode.setAttribute('height', '160')
+-			imageNode.appendChild(self.__doc.createTextNode(d['image'][1]))
+-
+-			coverNode = self.__doc.createElement('cover')
+-			coverNode.appendChild(self.__doc.createTextNode(d['image'][0]))
+-
+-		for name in (	'titleNode', 'otitleNode', 'yearNode', 'genresNode', 'studsNode', 'natsNode',
+-						'castsNode', 'dirsNode', 'timeNode', 'allocineNode', 'plotNode',
+-						'prodsNode', 'compsNode', 'scensNode' ):
+-			entryNode.appendChild(eval(name))
+-
+-		if d['image']:
+-			entryNode.appendChild(coverNode)
+-			self.__images.appendChild(imageNode)
+-
+-		self.__collection.appendChild(entryNode)
+-		self.__currentId += 1
+-
+-	def printXML(self):
+-		"""
+-		Outputs XML content to stdout
+-		"""
+-		self.__collection.appendChild(self.__images)
+-		print(XML_HEADER);
+-		print(DOCTYPE)
+-		print(self.__root.toxml())
+-
+-
+-class AlloCineParser:
+-	def __init__(self):
+-		self.__baseURL 	= 'http://www.allocine.fr'
+-		self.__basePath = '/film/fichefilm_gen_cfilm'
+-		self.__castPath = '/film/casting_gen_cfilm'
+-		self.__searchURL= 'http://www.allocine.fr/recherche/?q=%s'
+-		self.__movieURL = self.__baseURL + self.__basePath
+-		self.__castURL = self.__baseURL + self.__castPath
+-
+-		# Define some regexps
+-		self.__regExps = {
+-			'title' 	: '<div id="title.*?<span.*?>(?P<title>.+?)</span>',
+-			'dirs'		: """alis.*?par.*?<a.*?><span.*?>(?P<step1>.+?)</span></a>""",
+-			'nat'		: 'Nationalit.*?</span>(?P<nat>.+?)</td',
+-			'genres' 	: '<span class="lighten">.*?Genre.*?</span>(?P<step1>.+?)</td',
+-			'studio' 	: 'Distributeur</div>(?P<step1>.+?)</td',
+-			'time' 		: 'Dur.*?e *?:*?.*?(?P<hours>[0-9])h *(?P<mins>[0-9]*).*?Ann',
+-			'year' 		: 'Ann.*?e de production.*?<span.*?>(?P<year>[0-9]{4})</span>',
+-			'otitle' 	: 'Titre original *?:*?.*?<td>(?P<otitle>.+?)</td>',
+-			'plot'		: '<p itemprop="description">(?P<plot>.*?)</p>',
+-			'image'		: '<div class="poster">.*?<img src=\'(?P<image>http://.+?)\'.?',
+-		}
+-
+-		self.__castRegExps = {
+-#			'roleactor'		: '<li.*?itemprop="actors".*?>.*?<span itemprop="name">(.*?)</span>.*?<p>.*?R.*?le : (?P<role>.*?)</p>.*?</li>',
+-			'roleactor'		: '<li.*?\/personne\/.*?">(.*?)</span>.*?<p.*?R.*?le : (?P<role>.*?)</p>.*?</li',
+-			'prods'			  : '<td>[\r\n\t]*Producteur[\r\n\t]*</td>.*?<span.*?>(.*?)</span>',
+-			'scens'			  : '<td>[\r\n\t]*Sc.*?nariste[\r\n\t]*</td>.*?<span.*?>(.*?)</span>',
+-			'comps'			  : '<td>[\r\n\t]*Compositeur[\r\n\t]*</td>.*?<span.*?>(.*?)</span>',
+-		}
+-
+-		self.__domTree = BasicTellicoDOM()
+-
+-	def run(self, title):
+-		"""
+-		Runs the allocine.fr parser: fetch movie related links, then fills and prints the DOM tree
+-		to stdout (in tellico format) so that tellico can use it.
+-		"""
+-		# the script needs the search string to be encoded in utf-8
+-		try:
+-			# first try system encoding
+-			title = unicode(title, sys.stdin.encoding or sys.getdefaultencoding())
+-		except UnicodeDecodeError:
+-			# on failure, fallback to 'latin-1'
+-			title = unicode(title, 'latin-1')
+-
+-		# now encode for urllib
+-		title = title.encode('utf-8')
+-		self.__getMovie(title)
+-		# Print results to stdout
+-		self.__domTree.printXML()
+-
+-	def __getHTMLContent(self, url):
+-		"""
+-		Fetch HTML data from url
+-		"""
+-
+-		u = urlopen(url)
+-		self.__data = u.read()
+-		u.close()
+-
+-	def __fetchMovieLinks(self, title):
+-		"""
+-		Retrieve all links related to movie
+-		@param title Movie title
+-		"""
+-		tmp = re.findall("""<td.*?class=['"]totalwidth['"]>.*?<a *href=['"]%s=(?P<page>.*?\.html?)['"] *?>(?P<title>.*?)</a>""" % self.__basePath, self.__data, re.S | re.I)
+-		matchList = []
+-		for match in tmp:
+-			name = re.sub(r'([\r\n]+|<b>|</b>)', '', match[1])
+-			name = re.sub(r'<.*?>', '', name)
+-			name = re.sub(r'^ *', '', name)
+-			#if re.search(title, name, re.I):
+-			if len(name) > 0:
+-				matchList.append((match[0], name))
+-
+-		if not matchList: return None
+-		return matchList
+-
+-	def __fetchMovieInfo(self, url, url2):
+-		"""
+-		Looks for movie information
+-		"""
+-		self.__getHTMLContent(url)
+-		matches = data = {}
+-
+-		for name, regexp in self.__regExps.iteritems():
+-			matches[name] = re.search(regexp, self.__data, re.S | re.I)
+-
+-			if matches[name]:
+-				if name == 'title':
+-					data[name] = matches[name].group('title').strip()
+-				elif name == 'dirs':
+-					dirsList = re.sub('</?a.*?>', '', matches[name].group('step1')).split(',')
+-					data[name] = []
+-					for d in dirsList:
+-						data[name].append(d.strip())
+-
+-				elif name == 'nat':
+-					natList = re.findall(r'<span class=".*?">(.*?)</span>', matches[name].group('nat'), re.DOTALL)
+-					data[name] = []
+-					for d in natList:
+-						data[name].append(d.strip().capitalize())
+-
+-				elif name == 'genres':
+-					genresList = re.findall(r'<span itemprop="genre">(.*?)</span>', matches[name].group('step1'), re.DOTALL)
+-					data[name] = []
+-					for d in genresList:
+-						data[name].append(d.strip().capitalize())
+-
+-				elif name == 'studio':
+-					studiosList = re.findall(r'<span itemprop="productionCompany">(.*?)</span>', matches[name].group('step1'))
+-					data[name] = []
+-					for d in studiosList:
+-						data[name].append(d.strip())
+-
+-				elif name == 'time':
+-					h, m = matches[name].group('hours'), matches[name].group('mins')
+-					if len(m) == 0:
+-						m = 0
+-					totmin = int(h)*60+int(m)
+-					data[name] = str(totmin)
+-
+-				elif name == 'year':
+-					data[name] = matches[name].group('year').strip()
+-
+-				elif name == 'otitle':
+-					otitle = re.sub(r'([\r\n]+|<em>|</em>)', '', matches[name].group('otitle'))
+-					data[name] = otitle.strip()
+-
+-				elif name == 'plot':
+-					data[name] = matches[name].group('plot').strip()
+-				# Cleans up any HTML entities
+-				data[name] = self.__cleanUp(data[name])
+-
+-			else:
+-				matches[name] = ''
+-
+-		# Image check
+-		try:
+-			imgtmp = re.findall(self.__regExps['image'], self.__data, re.S | re.I)
+-			matches['image'] = imgtmp[0]
+-
+-			# Save image to a temporary folder
+-			md5 = genMD5()
+-			imObj = urlopen(matches['image'].strip())
+-			img = imObj.read()
+-			imObj.close()
+-			imgPath = "/tmp/%s.jpeg" % md5
+-			f = open(imgPath, 'w')
+-			f.write(img)
+-			f.close()
+-
+-			# Base64 encoding
+-			data['image'] = (md5 + '.jpeg', base64.encodestring(img))
+-
+-			# Delete temporary image
+-			os.remove(imgPath)
+-		except:
+-			data['image'] = None
+-
+-		# Now looks for casting information
+-		self.__getHTMLContent(url2)
+-		page = self.__data.split('\n')
+-
+-		d = zone = 0
+-		data['actors'] = []
+-		data['prods'] = []
+-		data['scens'] = []
+-		data['comps'] = []
+-
+-		# Actors
+-		subset = re.search(r'Acteurs et actrices.*$', self.__data, re.S | re.I)
+-		if not subset: return data
+-		subset = subset.group(0)
+-                #print subset
+-		roleactor = re.findall(self.__castRegExps['roleactor'], subset, re.S | re.I)
+-		for ra in roleactor:
+-                        #print ra
+-			data['actors'].append(re.sub(r'([\r\n\t]+)', '', ra[0]))
+-			data['actors'].append(re.sub(r'([\r\n\t]+)', '', ra[1]))
+-
+-		# Producers, Scenarists, Composers
+-		for kind in ('prods', 'scens', 'comps'):
+-			data[kind] = [re.sub(r'([\r\n\t]+)', '', k).strip() for k in re.findall(self.__castRegExps[kind], subset, re.S | re.I)]
+-
+-		return data
+-
+-	def __cleanUp(self, data):
+-		"""
+-		Cleans up the string(s), replacing raw HTML entities with their
+-		ISO Latin-1 replacement text.
+-		@param data string or list of strings
+-		"""
+-		if type(data) == types.ListType:
+-			for s in data:
+-				for k, v in htmlents.entitydefs.iteritems():
+-					s = s.replace("&%s;" % k, v)
+-		elif type(data) == types.StringType or type(data) == types.UnicodeType:
+-			for k, v in htmlents.entitydefs.iteritems():
+-				data = data.replace("&%s;" % k, v)
+-		return data
+-
+-	def __getMovie(self, title):
+-		if not len(title): return
+-
+-		self.__title = title
+-		self.__getHTMLContent(self.__searchURL % urllib.quote(self.__title))
+-
+-		# Get all links
+-		links = self.__fetchMovieLinks(title)
+-
+-		# Now retrieve info
+-		if links:
+-			for entry in links:
+-				data = self.__fetchMovieInfo( url = "%s=%s" % (self.__movieURL, entry[0]), url2 = "%s=%s" % (self.__castURL, entry[0]) )
+-				# Add allocine link (custom field)
+-				data['allocine'] = "%s=%s" % (self.__movieURL, entry[0])
+-				self.__domTree.addEntry(data)
+-		else:
+-			return None
+-
+-
+-def showUsage():
+-	print("Usage: %s movietitle" % sys.argv[0])
+-	sys.exit(1)
+-
+-def main():
+-	if len(sys.argv) < 2:
+-		showUsage()
+-
+-	parser = AlloCineParser()
+-	parser.run(sys.argv[1])
+-
+-if __name__ == '__main__':
+-	main()
+diff --git a/src/fetch/scripts/fr.allocine.py.spec b/src/fetch/scripts/fr.allocine.py.spec
+deleted file mode 100644
+index 2ed8bf0..0000000
+--- a/src/fetch/scripts/fr.allocine.py.spec
++++ /dev/null
+@@ -1,39 +0,0 @@
+-Name=Allocine.fr
+-Name[ca]=Allocine.fr
+-Name[ca@valencia]=Allocine.fr
+-Name[cs]=Allocine.fr
+-Name[da]=Allocine.fr
+-Name[de]=Allocine.fr
+-Name[el]=Allocine.fr
+-Name[en_GB]=Allocine.fr
+-Name[eo]=Allocine.fr
+-Name[es]=Allocine.fr
+-Name[et]=Allocine.fr
+-Name[eu]=Allocine.fr
+-Name[fi]=Allocine.fr
+-Name[fr]=Allocine.fr
+-Name[gl]=Allocine.fr
+-Name[hi]=Allocine.fr
+-Name[hu]=Allocine.fr
+-Name[ia]=Allocine.fr
+-Name[it]=Allocine.fr
+-Name[ka]=Allocine.fr
+-Name[ko]=알로시네(프랑스)
+-Name[nl]=Allocine.fr
+-Name[nn]=Allocine.fr
+-Name[pl]=Allocine.fr
+-Name[pt]=Allocine.fr
+-Name[pt_BR]=Allocine.fr
+-Name[ru]=Allocine.fr
+-Name[sk]=Allocine.fr
+-Name[sl]=Allocine.fr
+-Name[sv]=Allocine.fr
+-Name[tr]=Allocine.fr
+-Name[uk]=Allocine.fr
+-Name[x-test]=xxAllocine.frxx
+-Type=data-source
+-ArgumentKeys=1
+-Arguments=%1
+-CollectionType=3
+-FormatType=0
+-UpdateArgs=%{title}
+diff --git a/src/tests/CMakeLists.txt b/src/tests/CMakeLists.txt
+index aac0270..9bc2a90 100644
+--- a/src/tests/CMakeLists.txt
++++ b/src/tests/CMakeLists.txt
+@@ -514,20 +514,6 @@ ecm_add_test(adsfetchertest.cpp
+     LINK_LIBRARIES fetcherstest ${TELLICO_TEST_LIBS}
+ )
+ 
+-ecm_add_test(allocinefetchertest.cpp
+-             ../fetch/allocinefetcher.cpp
+-             ../fetch/execexternalfetcher.cpp
+-             ../translators/bibteximporter.cpp
+-             ../translators/risimporter.cpp
+-             ../gui/collectiontypecombo.cpp
+-    TEST_NAME allocinefetchertest
+-    LINK_LIBRARIES fetcherstest
+-                   translatorstest
+-                   newstuff
+-                   ${TELLICO_BTPARSE_LIBS}
+-                   ${TELLICO_TEST_LIBS}
+-)
+-
+ ecm_add_test(amazonfetchertest.cpp
+              ../fetch/amazonfetcher.cpp
+              ../fetch/amazonrequest.cpp
+diff --git a/src/tests/allocinefetchertest.cpp b/src/tests/allocinefetchertest.cpp
+deleted file mode 100644
+index 4dede49..0000000
+--- a/src/tests/allocinefetchertest.cpp
++++ /dev/null
+@@ -1,220 +0,0 @@
+-/***************************************************************************
+-    Copyright (C) 2010-2012 Robby Stephenson <robby@periapsis.org>
+- ***************************************************************************/
+-
+-/***************************************************************************
+- *                                                                         *
+- *   This program is free software; you can redistribute it and/or         *
+- *   modify it under the terms of the GNU General Public License as        *
+- *   published by the Free Software Foundation; either version 2 of        *
+- *   the License or (at your option) version 3 or any later version        *
+- *   accepted by the membership of KDE e.V. (or its successor approved     *
+- *   by the membership of KDE e.V.), which shall act as a proxy            *
+- *   defined in Section 14 of version 3 of the license.                    *
+- *                                                                         *
+- *   This program is distributed in the hope that it will be useful,       *
+- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+- *   GNU General Public License for more details.                          *
+- *                                                                         *
+- *   You should have received a copy of the GNU General Public License     *
+- *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
+- *                                                                         *
+- ***************************************************************************/
+-
+-#undef QT_NO_CAST_FROM_ASCII
+-
+-#include "allocinefetchertest.h"
+-
+-#include "../fetch/execexternalfetcher.h"
+-#include "../fetch/allocinefetcher.h"
+-#include "../collections/videocollection.h"
+-#include "../collectionfactory.h"
+-#include "../entry.h"
+-#include "../images/imagefactory.h"
+-
+-#include <KSharedConfig>
+-
+-#include <QTest>
+-
+-QTEST_GUILESS_MAIN( AllocineFetcherTest )
+-
+-AllocineFetcherTest::AllocineFetcherTest() : AbstractFetcherTest() {
+-}
+-
+-void AllocineFetcherTest::initTestCase() {
+-  Tellico::RegisterCollection<Tellico::Data::VideoCollection> registerVideo(Tellico::Data::Collection::Video, "video");
+-  Tellico::ImageFactory::init();
+-
+-  m_config = KSharedConfig::openConfig(QString(), KConfig::SimpleConfig)->group(QStringLiteral("allocine"));
+-  m_config.writeEntry("Max Cast", QStringLiteral("5"));
+-  m_config.writeEntry("Custom Fields", QStringLiteral("origtitle,allocine"));
+-}
+-
+-void AllocineFetcherTest::cleanupTestCase() {
+-  Tellico::ImageFactory::clean(true);
+-}
+-
+-void AllocineFetcherTest::testTitle() {
+-  // Allocine script is currently failing
+-  return;
+-  Tellico::Fetch::FetchRequest request(Tellico::Data::Collection::Video, Tellico::Fetch::Title,
+-                                       QStringLiteral("Superman Returns"));
+-  Tellico::Fetch::Fetcher::Ptr fetcher(new Tellico::Fetch::ExecExternalFetcher(this));
+-
+-  KConfig config(QFINDTESTDATA("../fetch/scripts/fr.allocine.py.spec"), KConfig::SimpleConfig);
+-  KConfigGroup cg = config.group(QStringLiteral("<default>"));
+-  cg.writeEntry("ExecPath", QFINDTESTDATA("../fetch/scripts/fr.allocine.py"));
+-  fetcher->readConfig(cg);
+-  // don't sync() and save the new path
+-  cg.deleteEntry("ExecPath");
+-
+-  Tellico::Data::EntryList results = DO_FETCH1(fetcher, request, 1);
+-
+-  QCOMPARE(results.size(), 1);
+-
+-  Tellico::Data::EntryPtr entry = results.at(0);
+-  QCOMPARE(entry->field(QStringLiteral("title")), QStringLiteral("Superman Returns"));
+-  QCOMPARE(entry->field(QStringLiteral("director")), QStringLiteral("Bryan Singer"));
+-  QCOMPARE(entry->field(QStringLiteral("producer")), QStringLiteral("Jon Peters; Gilbert Adler; Bryan Singer; Lorne Orleans"));
+-  QCOMPARE(entry->field(QStringLiteral("studio")), QStringLiteral("Warner Bros. France"));
+-  QCOMPARE(entry->field(QStringLiteral("year")), QStringLiteral("2006"));
+-  QCOMPARE(entry->field(QStringLiteral("genre")), QStringLiteral("Fantastique; Action"));
+-  QCOMPARE(entry->field(QStringLiteral("nationality")), QString::fromUtf8("Américain; Australien"));
+-  QCOMPARE(entry->field(QStringLiteral("running-time")), QStringLiteral("154"));
+-  QStringList castList = Tellico::FieldFormat::splitTable(entry->field(QStringLiteral("cast")));
+-  QVERIFY(!castList.isEmpty());
+-  QCOMPARE(castList.at(0), QStringLiteral("Brandon Routh::Clark Kent / Superman"));
+-  QCOMPARE(castList.size(), 8);
+-  QVERIFY(!entry->field(QStringLiteral("plot")).isEmpty());
+-  QVERIFY(!entry->field(QStringLiteral("cover")).isEmpty());
+-  QVERIFY(!entry->field(QStringLiteral("cover")).contains(QLatin1Char('/')));
+-}
+-
+-void AllocineFetcherTest::testTitleAccented() {
+-  // Allocine script is currently failing
+-  return;
+-  Tellico::Fetch::FetchRequest request(Tellico::Data::Collection::Video, Tellico::Fetch::Title,
+-                                       QStringLiteral("Opération Tonnerre"));
+-  Tellico::Fetch::Fetcher::Ptr fetcher(new Tellico::Fetch::ExecExternalFetcher(this));
+-
+-  KConfig config(QFINDTESTDATA("../fetch/scripts/fr.allocine.py.spec"), KConfig::SimpleConfig);
+-  KConfigGroup cg = config.group(QStringLiteral("<default>"));
+-  cg.writeEntry("ExecPath", QFINDTESTDATA("../fetch/scripts/fr.allocine.py"));
+-  fetcher->readConfig(cg);
+-  // don't sync() and save the new path
+-  cg.deleteEntry("ExecPath");
+-
+-  Tellico::Data::EntryList results = DO_FETCH1(fetcher, request, 1);
+-
+-  QCOMPARE(results.size(), 1);
+-
+-  Tellico::Data::EntryPtr entry = results.at(0);
+-  QCOMPARE(entry->field(QStringLiteral("title")), QString::fromUtf8("Opération Tonnerre"));
+-  QCOMPARE(entry->field(QStringLiteral("titre-original")), QStringLiteral("Thunderball"));
+-  QCOMPARE(entry->field(QStringLiteral("studio")), QString());
+-}
+-
+-void AllocineFetcherTest::testTitleAccentRemoved() {
+-  // Allocine script is currently failing
+-  return;
+-  Tellico::Fetch::FetchRequest request(Tellico::Data::Collection::Video, Tellico::Fetch::Title,
+-                                       QStringLiteral("Operation Tonnerre"));
+-  Tellico::Fetch::Fetcher::Ptr fetcher(new Tellico::Fetch::ExecExternalFetcher(this));
+-
+-  KConfig config(QFINDTESTDATA("../fetch/scripts/fr.allocine.py.spec"), KConfig::SimpleConfig);
+-  KConfigGroup cg = config.group(QStringLiteral("<default>"));
+-  cg.writeEntry("ExecPath", QFINDTESTDATA("../fetch/scripts/fr.allocine.py"));
+-  fetcher->readConfig(cg);
+-  // don't sync() and save the new path
+-  cg.deleteEntry("ExecPath");
+-
+-  Tellico::Data::EntryList results = DO_FETCH1(fetcher, request, 1);
+-
+-  QCOMPARE(results.size(), 1);
+-
+-  Tellico::Data::EntryPtr entry = results.at(0);
+-  QCOMPARE(entry->field(QStringLiteral("title")), QString::fromUtf8("Opération Tonnerre"));
+-}
+-
+-void AllocineFetcherTest::testPlotQuote() {
+-  // Allocine script is currently failing
+-  return;
+-  Tellico::Fetch::FetchRequest request(Tellico::Data::Collection::Video, Tellico::Fetch::Title,
+-                                       QStringLiteral("Goldfinger"));
+-  Tellico::Fetch::Fetcher::Ptr fetcher(new Tellico::Fetch::ExecExternalFetcher(this));
+-
+-  KConfig config(QFINDTESTDATA("../fetch/scripts/fr.allocine.py.spec"), KConfig::SimpleConfig);
+-  KConfigGroup cg = config.group(QStringLiteral("<default>"));
+-  cg.writeEntry("ExecPath", QFINDTESTDATA("../fetch/scripts/fr.allocine.py"));
+-  fetcher->readConfig(cg);
+-  // don't sync() and save the new path
+-  cg.deleteEntry("ExecPath");
+-
+-  Tellico::Data::EntryList results = DO_FETCH1(fetcher, request, 1);
+-
+-  QCOMPARE(results.size(), 1);
+-
+-  Tellico::Data::EntryPtr entry = results.at(0);
+-  QCOMPARE(entry->field(QStringLiteral("title")), QStringLiteral("Goldfinger"));
+-  QVERIFY(!entry->field(QStringLiteral("plot")).contains(QStringLiteral("&quot;")));
+-}
+-
+-void AllocineFetcherTest::testTitleAPI() {
+-  Tellico::Fetch::FetchRequest request(Tellico::Data::Collection::Video, Tellico::Fetch::Keyword,
+-                                       QStringLiteral("Superman Returns"));
+-  Tellico::Fetch::Fetcher::Ptr fetcher(new Tellico::Fetch::AllocineFetcher(this));
+-  fetcher->readConfig(m_config);
+-  Tellico::Data::EntryList results = DO_FETCH1(fetcher, request, 1);
+-
+-  QCOMPARE(results.size(), 1);
+-
+-  Tellico::Data::EntryPtr entry = results.at(0);
+-  QCOMPARE(entry->field(QStringLiteral("title")), QStringLiteral("Superman Returns"));
+-  QCOMPARE(entry->field(QStringLiteral("director")), QStringLiteral("Bryan Singer"));
+-  QCOMPARE(entry->field(QStringLiteral("producer")), QStringLiteral("Jon Peters; Gilbert Adler; Bryan Singer; Lorne Orleans"));
+-  QCOMPARE(entry->field(QStringLiteral("studio")), QStringLiteral("Warner Bros. France"));
+-  QCOMPARE(entry->field(QStringLiteral("year")), QStringLiteral("2006"));
+-  QCOMPARE(entry->field(QStringLiteral("genre")), QStringLiteral("Fantastique; Action"));
+-  QCOMPARE(entry->field(QStringLiteral("nationality")), QStringLiteral("U.S.A.; Australie"));
+-  QCOMPARE(entry->field(QStringLiteral("running-time")), QStringLiteral("154"));
+-  QStringList castList = Tellico::FieldFormat::splitTable(entry->field(QStringLiteral("cast")));
+-  QVERIFY(!castList.isEmpty());
+-  QCOMPARE(castList.at(0), QStringLiteral("Brandon Routh::Clark Kent / Superman"));
+-  QCOMPARE(castList.size(), 5);
+-  QVERIFY(!entry->field(QStringLiteral("plot")).isEmpty());
+-  QVERIFY(!entry->field(QStringLiteral("cover")).isEmpty());
+-  QVERIFY(!entry->field(QStringLiteral("cover")).contains(QLatin1Char('/')));
+-}
+-
+-void AllocineFetcherTest::testTitleAPIAccented() {
+-  Tellico::Fetch::FetchRequest request(Tellico::Data::Collection::Video, Tellico::Fetch::Keyword,
+-                                       QStringLiteral("Opération Tonnerre"));
+-  Tellico::Fetch::Fetcher::Ptr fetcher(new Tellico::Fetch::AllocineFetcher(this));
+-  fetcher->readConfig(m_config);
+-  Tellico::Data::EntryList results = DO_FETCH1(fetcher, request, 1);
+-
+-  QCOMPARE(results.size(), 1);
+-
+-  Tellico::Data::EntryPtr entry = results.at(0);
+-  QCOMPARE(entry->field(QStringLiteral("title")), QString::fromUtf8("Opération Tonnerre"));
+-  QCOMPARE(entry->field(QStringLiteral("origtitle")), QStringLiteral("Thunderball"));
+-  QCOMPARE(entry->field(QStringLiteral("studio")), QStringLiteral("United International Pictures (UIP)"));
+-  QCOMPARE(entry->field(QStringLiteral("director")), QStringLiteral("Terence Young"));
+-  QCOMPARE(entry->field(QStringLiteral("color")), QStringLiteral("Color"));
+-  QVERIFY(!entry->field(QStringLiteral("allocine")).isEmpty());
+-}
+-
+-// mentioned in https://bugs.kde.org/show_bug.cgi?id=337432
+-void AllocineFetcherTest::testGhostDog() {
+-  Tellico::Fetch::FetchRequest request(Tellico::Data::Collection::Video, Tellico::Fetch::Keyword,
+-                                       QStringLiteral("Ghost Dog: la voie du samourai"));
+-  Tellico::Fetch::Fetcher::Ptr fetcher(new Tellico::Fetch::AllocineFetcher(this));
+-  fetcher->readConfig(m_config);
+-  Tellico::Data::EntryList results = DO_FETCH1(fetcher, request, 1);
+-
+-  QCOMPARE(results.size(), 1);
+-
+-  Tellico::Data::EntryPtr entry = results.at(0);
+-  QCOMPARE(entry->field(QStringLiteral("title")), QStringLiteral("Ghost Dog: la voie du samourai"));
+-}
+diff --git a/src/tests/allocinefetchertest.h b/src/tests/allocinefetchertest.h
+deleted file mode 100644
+index 9219c94..0000000
+--- a/src/tests/allocinefetchertest.h
++++ /dev/null
+@@ -1,54 +0,0 @@
+-/***************************************************************************
+-    Copyright (C) 2010-2012 Robby Stephenson <robby@periapsis.org>
+- ***************************************************************************/
+-
+-/***************************************************************************
+- *                                                                         *
+- *   This program is free software; you can redistribute it and/or         *
+- *   modify it under the terms of the GNU General Public License as        *
+- *   published by the Free Software Foundation; either version 2 of        *
+- *   the License or (at your option) version 3 or any later version        *
+- *   accepted by the membership of KDE e.V. (or its successor approved     *
+- *   by the membership of KDE e.V.), which shall act as a proxy            *
+- *   defined in Section 14 of version 3 of the license.                    *
+- *                                                                         *
+- *   This program is distributed in the hope that it will be useful,       *
+- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+- *   GNU General Public License for more details.                          *
+- *                                                                         *
+- *   You should have received a copy of the GNU General Public License     *
+- *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
+- *                                                                         *
+- ***************************************************************************/
+-
+-#ifndef ALLOCINEFETCHERTEST_H
+-#define ALLOCINEFETCHERTEST_H
+-
+-#include "abstractfetchertest.h"
+-
+-#include <KConfigGroup>
+-
+-class AllocineFetcherTest : public AbstractFetcherTest {
+-Q_OBJECT
+-public:
+-  AllocineFetcherTest();
+-
+-private Q_SLOTS:
+-  void initTestCase();
+-  void cleanupTestCase();
+-
+-  void testTitle();
+-  void testTitleAccented();
+-  void testTitleAccentRemoved();
+-  void testPlotQuote();
+-
+-  void testTitleAPI();
+-  void testTitleAPIAccented();
+-  void testGhostDog();
+-
+-private:
+-  KConfigGroup m_config;
+-};
+-
+-#endif
+-- 
+2.45.2
+

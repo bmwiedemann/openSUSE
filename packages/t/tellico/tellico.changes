@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 25 07:05:58 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.5.5
+  * Fixed the XSLT file loading to work correctly with
+    libxml2 >= 2.13 (kde#488707)
+  * Fixed bug for showing entries with large content (kde#487079)
+  * Improved the SRU fetcher to allow user-defined search indices
+    (kde#488931)
+- Add upstream change:
+  * 0001-Remove-Allocine-data-source.patch
+
+-------------------------------------------------------------------
 Sun Mar 24 07:56:16 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.5.4

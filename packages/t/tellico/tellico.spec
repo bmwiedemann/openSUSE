@@ -17,12 +17,14 @@
 
 
 Name:           tellico
-Version:        3.5.4
+Version:        3.5.5
 Release:        0
 Summary:        A Collection Manager
 License:        GPL-2.0-or-later
 URL:            https://tellico-project.org/
 Source0:        https://tellico-project.org/files/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Remove-Allocine-data-source.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  libcsv-devel
@@ -69,7 +71,7 @@ BuildRequires:  pkgconfig(yaz)
 # Needed to install/uninstall knewstuff downloads
 Requires:       /usr/bin/dbus-send
 # QWebEngine is not available on ppc
-%ifarch %{ix86} x86_64 %{arm} aarch64
+%ifarch %{ix86} x86_64 %{x86_64} %{arm} aarch64
 BuildRequires:  cmake(Qt5WebEngineWidgets)
 %else
 BuildRequires:  cmake(KF5KHtml)
@@ -84,6 +86,10 @@ stamps, trading cards, comic books, and wines.
 
 %prep
 %autosetup -p1
+
+# E: env-script-interpreter
+sed -i 's#env perl$#perl#' src/config/*-update.pl
+sed -i 's#env python$#python3#' src/fetch/scripts/*.py
 
 %build
 %cmake_kf5 "-DENABLE_WEBCAM=true" -d build
