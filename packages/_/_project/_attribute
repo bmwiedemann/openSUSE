@@ -10,7 +10,7 @@
   boo#1207940: '20240622'
   boo#1209053: '20240129'
   boo#1209728: '20240115'
-  boo#1216660: '20240622'
+  boo#1216660: '20240624'
   boo#1217029: '20240606'
   boo#1217683: '20240309'
   boo#1218131: '20240318'
@@ -72,14 +72,14 @@
   boo#1225811: '20240622'
   boo#1225943: '20240606'
   boo#1226106: '20240610'
-  boo#1226838: '20240622'
+  boo#1226838: '20240624'
   bsc#1223381: '20240514'
   bsc#1223447: '20240426'
   bsc#1224023: '20240524'
-  bsc#1225890: '20240622'
-  bsc#1225891: '20240622'
-  bsc#1225892: '20240622'
-  bsc#1225893: '20240622'
+  bsc#1225890: '20240624'
+  bsc#1225891: '20240624'
+  bsc#1225892: '20240624'
+  bsc#1225893: '20240624'
   gh#OSInside/kiwi#2529: '20240416'
   gh#os-autoinst/openQA#5687: '20240613'
   gh#os-autoinst/os-autoinst-distri-opensuse#18471: '20240116'
@@ -92,7 +92,7 @@
   poo#132191: '20240116'
   poo#133691: '20240111'
   poo#134078: '20240128'
-  poo#137423: '20240622'
+  poo#137423: '20240624'
   poo#138743: '20240622'
   poo#152320: '20240226'
   poo#152551: '20240116'
@@ -137,10 +137,10 @@
   poo#161045: '20240614'
   poo#161372: '20240622'
   poo#161378: '20240622'
-  poo#161738: '20240622'
+  poo#161738: '20240624'
   poo#162170: '20240622'
   poo#162194: '20240622'
-  poo#162368: '20240622'
+  poo#162368: '20240624'
   poo#162776: '20240622'
   poo#63397: '20240524'
 </value>
@@ -406,10 +406,10 @@ products:
     - x86_64
   - keylime-control-plane-image:
     - x86_64
-#  - mariadb-client-image:
-#    - x86_64
-#  - mariadb-image:
-#    - x86_64
+  - mariadb-client-image:
+    - x86_64
+  - mariadb-image:
+    - x86_64
   - microos-docserv-image:
     - x86_64
   - nginx-image:
@@ -601,10 +601,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20240624'
 published: '20240622'
 publishing: '20240622'
-testing: '20240622'
+testing: '20240624'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
