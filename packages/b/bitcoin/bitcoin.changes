@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jun 24 09:37:55 UTC 2024 - andrea.manzini@suse.com
+
+- Update to version 27.1:
+  * doc: update manual pages for 27.1
+  * build: bump version to v27.1 final
+  * depends: Update Boost download link
+  * build: Fix building `fuzz` binary on on SunOS / illumos
+  * qt: 27.1rc1 translations update
+  * depends: Fetch miniupnpc sources from an alternative website
+  * test: add GetAddedNodeInfo() CJDNS regression unit test
+  * p2p, bugfix: detect addnode cjdns peers in GetAddedNodeInfo()
+  * crypto: disable asan for sha256_sse4 with clang and -O0
+  * rpc: move UniValue in blockToJSON
+  * gui: don't permit port in proxy IP option
+  * gui: fix create unsigned transaction fee bump
+  * depends: Fix build of Qt for 32-bit platforms
+  * Fix #29767, set m_synced = true after Commit()
+  * sign: don't assume we are parsing a sane Miniscript
+  * rpc: Reword SighashFromStr error message
+  * build: Fix false positive `CHECK_ATOMIC` test for clang-15
+  * test: Fix failing univalue float test
+  * doc: archive 27.0 release notes
+  * [rpc, bugfix] Enforce maximum value for setmocktime
+  * Change Luke Dashjr seed to dashjr-list-of-p2p-nodes.us
+
+-------------------------------------------------------------------
 Mon Apr 29 13:08:34 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 27.0:

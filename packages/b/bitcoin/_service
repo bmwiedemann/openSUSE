@@ -6,7 +6,7 @@
     <param name="changesgenerate">enable</param>
     <param name="exclude">.*</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">refs/tags/v27.0</param>
+    <param name="revision">refs/tags/v27.1</param>
   </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
