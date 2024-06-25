@@ -25,8 +25,14 @@ License:        (0BSD OR Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-
 Group:          Productivity/Text/Editors
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+%if 0%{?suse_version} > 1600
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
+%else
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
+BuildRequires:  libstdc++6-devel-gcc13
+%endif
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
@@ -59,6 +65,10 @@ Wgpu Graphics API for rendering.
 # We disable default feature as they include auto-update.
 # For reference:
 # https://github.com/lapce/lapce/blob/0ded46c988d72b563bd78b29cc11107d4e2248bc/lapce-ui/Cargo.toml#L48
+%if 0%{?suse_version} <= 1600
+export CC=gcc-13
+export CXX=g++-13
+%endif
 %{cargo_build} --no-default-features -p lapce-app --features all-languages
 
 %install
