@@ -354,4 +354,12 @@
 - Add %{?sle15_python_module_pythons}</comment>
     <requestid>1161207</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>885246f84a76d7501ba74df311bbc9ad</srcmd5>
+    <version>2.11.0</version>
+    <time>1719349747</time>
+    <user>anag+factory</user>
+    <comment>certbot version bump</comment>
+    <requestid>1183175</requestid>
+  </revision>
 </revisionlist>
