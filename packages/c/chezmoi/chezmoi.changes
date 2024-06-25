@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 24 17:01:13 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.49.1:
+  - Fixes
+    * fix: Accept line-endings template directive as well as line-ending
+
+-------------------------------------------------------------------
 Tue Jun 11 10:36:14 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.49.0:

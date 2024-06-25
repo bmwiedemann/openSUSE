@@ -467,4 +467,15 @@
     <comment></comment>
     <requestid>1179981</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>4117516978f35c9ef216dee001e6cb04</srcmd5>
+    <version>2.49.1</version>
+    <time>1719349637</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.49.1:
+  - Fixes
+    * fix: Accept line-endings template directive as well as line-ending
+</comment>
+    <requestid>1183046</requestid>
+  </revision>
 </revisionlist>
