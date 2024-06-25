@@ -347,4 +347,12 @@
   * Test fix for Route53 plugin to prevent boto3 making outgoing</comment>
     <requestid>1145440</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>270b69f7ba9198e94c3c28389106503a</srcmd5>
+    <version>2.11.0</version>
+    <time>1719349750</time>
+    <user>anag+factory</user>
+    <comment>certbot version bump</comment>
+    <requestid>1183178</requestid>
+  </revision>
 </revisionlist>
