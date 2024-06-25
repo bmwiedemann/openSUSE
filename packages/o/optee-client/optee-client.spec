@@ -16,12 +16,12 @@
 #
 
 
-%define libname libteec1
+%define libname libteec2
 %define libname2 libckteec0
 %define libname3 libseteec0
 %define libname4 libteeacl0
 Name:           optee-client
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        A Trusted Execution Environment client
 License:        BSD-2-Clause
@@ -55,7 +55,7 @@ application executing in OP-TEE.For a general overview of OP-TEE, the
 Open Platform Trusted Execution Environment, see the Notice.md file.
 
 %package -n %{libname3}
-Summary:        Library implementing the Secure Element control 
+Summary:        Library implementing the Secure Element control
 Group:          System/Libraries
 
 %description -n %{libname3}
@@ -75,7 +75,6 @@ non-secure keys. It also provides an interface to rotate these default
 keys and derive board unique new ones before enabling the SCP03
 session.
 
-
 %package -n %{libname4}
 Summary:        ACL helper library
 Group:          System/Libraries
@@ -86,13 +85,12 @@ generate the hashed UUID of the user or group. These can then be
 configured to PKCS11 tokens provided by libckteec for Access Control
 List (ACL) based access.
 
-
 %package devel
 Summary:        Files for Developing with libtee
 Group:          Development/Libraries/C and C++
-Requires:       %{libname4} = %{version}
-Requires:       %{libname3} = %{version}
 Requires:       %{libname2} = %{version}
+Requires:       %{libname3} = %{version}
+Requires:       %{libname4} = %{version}
 Requires:       %{libname} = %{version}
 
 %description devel
@@ -117,6 +115,12 @@ make %{?_smp_mflags} V=1
 %post -n %{libname2} -p /sbin/ldconfig
 %postun -n %{libname2} -p /sbin/ldconfig
 
+%post -n %{libname3} -p /sbin/ldconfig
+%postun -n %{libname3} -p /sbin/ldconfig
+
+%post -n %{libname4} -p /sbin/ldconfig
+%postun -n %{libname4} -p /sbin/ldconfig
+
 %files
 %license LICENSE
 %doc README.md
@@ -128,7 +132,8 @@ make %{?_smp_mflags} V=1
 %{_libdir}/libckteec.so
 %{_libdir}/libseteec.so
 %{_libdir}/libteeacl.so
-%{_libdir}/pkgconfig/libteec.pc
+%{_libdir}/pkgconfig/teec.pc
+%{_libdir}/pkgconfig/teeacl.pc
 
 %files -n %{libname}
 %{_libdir}/libteec.so.*

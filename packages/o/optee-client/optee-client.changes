@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 25 06:18:37 UTC 2024 - ming li <mli@suse.com>
+
+- Update to 4.2.0:
+  * drop benchmark framework support
+  * convert .mk files to .bp
+  * one shot encryption/decryption may have no input data
+  * fix potential crash when TA isn't found
+  * rename libteec.pc as teec.pc
+  * remove duplicate flags in teec.pc
+  * add pkgconfig file: teeacl.pc
+  * Move OP-TEE defined fields into an imp struct
+
+-------------------------------------------------------------------
 Mon Feb 26 14:39:59 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 4.1.0
