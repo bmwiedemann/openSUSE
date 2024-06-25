@@ -20,7 +20,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           glab
-Version:        1.42.0
+Version:        1.43.0
 Release:        0
 Summary:        A GitLab command line tool
 License:        MIT

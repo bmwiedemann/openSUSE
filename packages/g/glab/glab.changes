@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 24 18:53:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.43.0:
+  * chore: Merge security fork
+  * chore(deps): update dependency danger-review to v1.4.0
+  * docs: add details to stack command
+  * chore: remove alias for `ask` and `git` as part of `duo`
+  * chore: switch to heredoc v2
+  * perf: always skip check-update after completion command
+  * fix: Require CLI configuration file to have 0600 permissions
+  * fix(auth status): move warning to end of auth status
+  * chore(deps): update module github.com/spf13/cobra to v1.8.1
+
+-------------------------------------------------------------------
 Mon Jun 17 18:48:36 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.42.0:
