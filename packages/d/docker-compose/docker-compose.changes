@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 24 18:55:23 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.28.1:
+  * Remove `console.Terminal` check and use `IsTerminal` from
+    `streams.Out`
+
+-------------------------------------------------------------------
 Fri Jun 21 19:49:32 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.28.0:

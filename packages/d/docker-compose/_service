@@ -3,7 +3,7 @@
     <param name="url">https://github.com/docker/compose</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v2.28.0</param>
+    <param name="revision">v2.28.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
@@ -17,6 +17,6 @@
     <param name="compression">gz</param>
   </service>
   <service name="go_modules" mode="manual">
-    <param name="archive">compose-2.28.0.obscpio</param>
+    <param name="archive">compose-2.28.1.obscpio</param>
   </service>
 </services>
