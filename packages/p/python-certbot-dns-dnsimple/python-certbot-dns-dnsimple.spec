@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-certbot-dns-dnsimple
-Version:        2.9.0
+Version:        2.11.0
 Release:        0
 Summary:        DNSimple Authenticator plugin for Certbot
 License:        Apache-2.0
 URL:            https://github.com/certbot/certbot
-Source:         https://files.pythonhosted.org/packages/source/c/certbot-dns-dnsimple/certbot-dns-dnsimple-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/c/certbot-dns-dnsimple/certbot_dns_dnsimple-%{version}.tar.gz
 BuildRequires:  %{python_module certbot >= %{version}}
 BuildRequires:  %{python_module dns-lexicon >= 3.14.1}
 BuildRequires:  %{python_module pip}
@@ -43,7 +43,7 @@ BuildArch:      noarch
 DNSimple DNS Authenticator plugin for Certbot.
 
 %prep
-%setup -q -n certbot-dns-dnsimple-%{version}
+%setup -q -n certbot_dns_dnsimple-%{version}
 
 %build
 %pyproject_wheel

@@ -356,4 +356,12 @@
   * sync with the main certbot package</comment>
     <requestid>1161204</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>8c6232844bd4fe463c2e7f815d7e3e3c</srcmd5>
+    <version>2.11.0</version>
+    <time>1719349742</time>
+    <user>anag+factory</user>
+    <comment>certbot version bump</comment>
+    <requestid>1183171</requestid>
+  </revision>
 </revisionlist>
