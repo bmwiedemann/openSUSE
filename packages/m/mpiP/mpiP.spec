@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -180,6 +180,7 @@ License:        BSD-3-Clause
 Group:          Development/Tools/Debuggers
 Version:        3.5
 Release:        0
+ExcludeArch:    i586 %arm s390
 URL:            https://github.com/LLNL/mpiP
 Source0:        https://github.com/LLNL/mpiP/releases/download/%{version}/mpip-%{version}.tgz#/%{pname}-%{version}.tgz
 Patch1:         mpip.unwinder.patch

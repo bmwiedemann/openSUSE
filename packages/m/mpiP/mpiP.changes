@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 25 13:17:50 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Do not build on 32b platforms
+
+-------------------------------------------------------------------
 Fri Oct 20 10:25:56 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Drop support for openmpi[123] (jsc#PED-7111)
