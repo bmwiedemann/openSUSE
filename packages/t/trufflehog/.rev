@@ -1116,4 +1116,41 @@
   * Add elasticsearch to tui (#2915) (forwarded request 1180111 from ph03nix)</comment>
     <requestid>1180206</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>45f19424ed8f4ce97b88d48a3a017de8</srcmd5>
+    <version>3.78.2</version>
+    <time>1719349733</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.78.2:
+  * ci(detector-tests): test detectors if integration fails (#2994)
+  * Pin STARRY-S/zip #2999
+  * Adding Larksuite Detectors + Tests (#3008)
+  * fix(git): set GIT_DIR based on ScanOptions.Bare (#3004)
+  * Return targeted scan errors (#2995)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.54.6 (#2996)
+  * fix(deps): update module github.com/googleapis/gax-go/v2 to v2.12.5 (#2993)
+  * ci(detector-tests): disambiguate step names (#2989)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.54.5 (#2992)
+  * clone more refs (#2988)
+  * fix(deps): update module google.golang.org/api to v0.185.0 (#2987)
+  * [feat] - Add Option to Retain False Positives During Detection (#2967)
+  * fix(deps): update module github.com/getsentry/sentry-go to v0.28.1 (#2986)
+  * fix(deps): update module github.com/elastic/go-elasticsearch/v8 to v8.14.0 (#2981)
+  * fix(deps): update module github.com/bradleyfalzon/ghinstallation/v2 to v2.11.0 (#2980)
+  * fix(deps): update module cloud.google.com/go/storage to v1.42.0 (#2977)
+  * fix(deps): update module go.mongodb.org/mongo-driver to v1.15.1 (#2975)
+  * fix(deps): update module github.com/google/go-containerregistry to v0.19.2 (#2973)
+  * fix(deps): update golang.org/x/exp digest to 7f521ea (#2972)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.54.2 (#2962)
+  * patch dependency (#2971)
+  * [fix] - implement MaxSecretSizeProvider for `auth0managementapitoken` detector (#2953)
+  * Fix integration tests (#2970)
+  * feat(detectors): log falsepositive reason (#2969)
+  * fix(handlers): workaround for max archive depth (#2965)
+  * add metrics to the pipeline (#2968)
+  * adding eraser ai detector (#2961)
+  * Modularize scanning engine (#2887)
+  * test: fix compile errors (#2964) (forwarded request 1183101 from ph03nix)</comment>
+    <requestid>1183180</requestid>
+  </revision>
 </revisionlist>
