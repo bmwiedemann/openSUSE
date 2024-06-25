@@ -105,4 +105,12 @@ the _link needed to be removed as the .spec file got out of sync</comment>
     <comment>Version 2.0.3</comment>
     <requestid>1166437</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e7ab26c2396afd90e42dc4741d2b4d61</srcmd5>
+    <version>2.2.0</version>
+    <time>1719349675</time>
+    <user>anag+factory</user>
+    <comment>mygnuhealth 2.2</comment>
+    <requestid>1183108</requestid>
+  </revision>
 </revisionlist>

@@ -2,7 +2,7 @@
 # spec file for package mygnuhealth
 #
 # Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2020-2023 Dr. Axel Braun
+# Copyright (c) 2020-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,15 +34,15 @@
 %endif
 
 Name:           mygnuhealth
-Version:        %{majorver}.0.3
+Version:        %{majorver}.2.0
 Release:        0
 Summary:        The personal health record for the GNU Health system
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Management
 URL:            http://health.gnu.org/
-Source:         https://files.pythonhosted.org/packages/source/m/%{name}/%{name}-%{version}.tar.gz  
-## https://ftp.gnu.org/gnu/health/mygnuhealth/%{name}-%{version}.tar.gz
-## Source1:        https://ftp.gnu.org/gnu/health/mygnuhealth/%{name}-%{version}.tar.gz.sig
+## Source:         https://files.pythonhosted.org/packages/source/m/%{name}/%{name}-%{version}.tar.gz  
+Source:         https://ftp.gnu.org/gnu/health/mygnuhealth/%{name}-%{version}.tar.gz
+Source1:        https://ftp.gnu.org/gnu/health/mygnuhealth/%{name}-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=health&download=1#/%{name}.keyring
 Patch0:         remove-obsolete-deps.patch
 # SECTION build
@@ -56,11 +56,13 @@ BuildRequires:  python-rpm-macros
 # SECTION test requirements
 # there are no tests, but at least check that all the runtime requirements are available on build time
 BuildRequires:  %{python_module bcrypt}
+BuildRequires:  %{python_module dateutil}
 BuildRequires:  %{python_module Kivy}
 BuildRequires:  %{python_module pygal}
 BuildRequires:  %{python_module tinydb}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module CairoSVG}
+Requires:       %{mypython}-dateutil
 Requires:       %{mypython}-bcrypt
 Requires:       %{mypython}-Kivy
 Requires:       %{mypython}-pygal

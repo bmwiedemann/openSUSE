@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Jun 21 13:53:50 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- version 2.2.0
+  * Support for Kivy 2.3.0
+  * Localization. MyGNUHealth now has support for different languages.
+    English, Spanish and Chinese are available to use, and French,
+    German, Italian are ready to be translated. There will be a
+    translation component for MyGNUHealth at Codeberg's Weblate
+    instance. 
+  * Bluetooth functionality: Starting with MyGH series 2.2 we provide
+    bluetooth integration for open compatible devices and health
+    trackers. We include the link with the Pinetime Smartwatch
+    (experimental) and the possibility to link to any open hardware
+    device (glucometer, scales, blood pressure monitors,  .. ). We need
+    to get a list of available medical devices that respect our privacy
+    and freedom, so let us know of any! 
+  * Charts now allow to select date ranges with calendar widgets The
+    Book of Life have a revised format for the pages. The charts have
+    been improved in the format and include x axis labels.
+
+-------------------------------------------------------------------
+Fri Jun 14 09:50:43 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- version 2.2b1
+  * beta version for testing only!
+
+-------------------------------------------------------------------
 Sun Apr  7 11:12:02 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - version 2.0.3
