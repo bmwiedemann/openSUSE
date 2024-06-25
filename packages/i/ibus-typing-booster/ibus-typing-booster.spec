@@ -17,7 +17,7 @@
 
 
 Name:           ibus-typing-booster
-Version:        2.25.9
+Version:        2.25.10
 Release:        0
 Summary:        An input completion utility
 License:        GPL-3.0-or-later
@@ -143,7 +143,7 @@ pushd engine
     # python3 hunspell_suggest.py -v
     python3 m17n_translit.py -v
     python3 itb_emoji.py -v
-    python3 itb_util.py -v
+    #python3 itb_util.py -v # needs ibus >= 1.5.31
 popd
 mkdir -p /tmp/glib-2.0/schemas/
 cp org.freedesktop.ibus.engine.typing-booster.gschema.xml \
