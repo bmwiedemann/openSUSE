@@ -1,0 +1,24 @@
+--- tboot-1.10.2/tboot/common/loader.c.orig	2023-05-31 01:49:45.935321582 -0500
++++ tboot-1.10.2/tboot/common/loader.c	2023-05-31 01:57:27.914405762 -0500
+@@ -1099,11 +1099,17 @@ move_modules(loader_ctx *lctx)
+ 
+     if ( below_tboot(lowest) )
+         from = lowest;
+-    else
+-        if ( below_tboot((unsigned long)lctx->addr) )
++
++    /*
++     * if MBI is below tboot & the lowest module, make sure it gets
++     * copied, too!
++     */
++    if ( below_tboot((unsigned long)lctx->addr) && 
++	 (unsigned long)lctx->addr < lowest )
+             from = (unsigned long)lctx->addr;
+-        else
+-            return;
++
++    if (from == 0)
++	    return;
+ 
+     unsigned long highest = get_highest_mod_end(lctx);
+     unsigned long to = PAGE_UP(highest);

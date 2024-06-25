@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 25 07:34:57 UTC 2024 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- add tboot-bsc#1207833-copy-mbi.patch: correctly move MBI from a lower
+  address above tboot (bsc#1207833). This fixes a broken boot situation in
+  some configurations stopping with log line "TBOOT: loader context was moved
+  from 0x<address> to 0x<address>".
+
+  this patch syncs the Factory package with the SLE package. For some reason I
+  forgot to add the patch to Factory first. Also upstream did not react to the
+  patch, that I posted to their mailing list, so it's not contained in the
+  upstream tarball.
+
+-------------------------------------------------------------------
 Mon Jun 17 13:09:34 UTC 2024 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - add tboot.rpmlintrc: suppress warning about missing %check section. There's

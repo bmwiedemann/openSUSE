@@ -686,4 +686,19 @@
     Fix the RAM memory allocation algorithm for the initrd.</comment>
     <requestid>1181402</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>a4e3bfd8b2ed49501d19ec81a38e3361</srcmd5>
+    <version>20210614_1.11.4</version>
+    <time>1719349718</time>
+    <user>anag+factory</user>
+    <comment>- add tboot-bsc#1207833-copy-mbi.patch: correctly move MBI from a lower
+  address above tboot (bsc#1207833). This fixes a broken boot situation in
+  some configurations stopping with log line &quot;TBOOT: loader context was moved
+  from 0x&lt;address&gt; to 0x&lt;address&gt;&quot;.
+  this patch syncs the Factory package with the SLE package. For some reason I
+  forgot to add the patch to Factory first. Also upstream did not react to the
+  patch, that I posted to their mailing list, so it's not contained in the
+  upstream tarball.</comment>
+    <requestid>1183112</requestid>
+  </revision>
 </revisionlist>
