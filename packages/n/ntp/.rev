@@ -1339,4 +1339,12 @@ Properly categorise licenses and sync with Fedora declaration (forwarded request
     <comment></comment>
     <requestid>1171234</requestid>
   </revision>
+  <revision rev="140" vrev="4">
+    <srcmd5>613dba7cc362c9583f6438d7ba00fc28</srcmd5>
+    <version>4.2.8p17</version>
+    <time>1719349778</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1183214</requestid>
+  </revision>
 </revisionlist>

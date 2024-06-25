@@ -194,8 +194,6 @@ chmod 644 html/pic/neoclock4x.gif
 install -d %{buildroot}%{_localstatedir}/lib/ntp/{drift,etc,var/{lib,run/ntp},dev}
 install -d %{buildroot}%{_localstatedir}/run
 ln -s ../.. %{buildroot}%{_localstatedir}/lib/ntp%{_localstatedir}/lib/ntp
-ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcntpd
-ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcntp-wait
 install -m 644 -D %{SOURCE1} %{buildroot}%{_sysconfdir}/logrotate.d/ntp
 install -m 600 -D %{SOURCE2} %{buildroot}%{_sysconfdir}/ntp.conf
 install -m 600 -D %{SOURCE2} %{buildroot}%{_localstatedir}/lib/ntp%{_sysconfdir}/ntp.conf.iburst
@@ -206,15 +204,6 @@ install -m 0644 -D %{SOURCE3} %{buildroot}/%{_unitdir}/ntpd.service
 install -m 0644 -D %{SOURCE9} %{buildroot}/%{_unitdir}/ntp-wait.service
 install -d %{buildroot}%{_prefix}/sbin
 install -m 755 -D %{SOURCE8} %{buildroot}%{_sbindir}/start-ntpd
-install -d %{buildroot}/%{_libexecdir}/initscripts/legacy-actions/ntpd
-for f in ntptimeset addserver; do
-	F=%{buildroot}%{_libexecdir}/initscripts/legacy-actions/ntpd/$f
-	cat >$F <<-EOF
-		#!/bin/bash
-		exec /usr/sbin/start-ntpd $f "\$@"
-	EOF
-	chmod 755 $F
-done
 #
 # fillup sysconfig.ntp
 #
@@ -397,9 +386,7 @@ fi
 %config %{_sysconfdir}/NetworkManager/dispatcher.d/ntp
 %{_sbindir}/*
 %{_datadir}/ntp
-%if 0%{?suse_version} > 1310
-%{_libexecdir}/initscripts/legacy-actions/ntpd
-%else
+%if 0%{?suse_version} <= 1310
 /usr/lib/initscripts
 %endif
 %{_localstatedir}/lib/ntp/*

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 24 13:38:02 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Drop initscripts-legacy support [jsc#PED264]
+- Drop rc<service> symlinks [jsc#PED-264], [jsc#PED-266]
+
+-------------------------------------------------------------------
 Wed Apr 24 08:09:08 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - Get-rid-of-EVP_MD_CTX_FLAG_NON_FIPS_ALLOW.patch:
