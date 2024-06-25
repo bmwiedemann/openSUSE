@@ -2123,4 +2123,37 @@
     * https://github.com/astropy/astropy/pull/16450.patch</comment>
     <requestid>1177165</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>06f5ae2b5b86d802f8d415f6e8aab17c</srcmd5>
+    <version>6.1.1</version>
+    <time>1719349674</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.1.1:
+  * Let fitsdiff compare files with lower case HIERARCH keywords
+  * Fix writing a ``HDUList`` to file when numpy 2 is installed and at least
+    some of the data is represented as dask arrays.
+  * Fix display of diff reports with numpy 2.
+  * Ensure that also zero-length tables preserve whether integer data are
+    signed or unsigned.
+  * Fix YAML table serialization compatibility with numpy 2.
+  * Fix bugs in io.votable related to numpy 2's representation of scalars.
+  * Ensure that return types from ``sigma_clip`` ``cenfunc`` and ``stdfunc``
+    are np.float64 for scalar values.
+  * Ensure structured ``MaskedColumn`` are serialized correctly, including
+    the mask.
+  * Fix problems converting Pandas Series to ``Table`` with numpy &gt;=2.0.
+  * Ensure Time in ymdhms format can also be serialized to files as part of a
+    table if it is masked.
+  * Ensure Masked versions of ``np.recarray`` will show the correct class
+    name of ``MaskedRecarray`` in their ``repr``, and that they will be
+    serialized correctly if part of a table.
+  * Fix bugs with how masked structured arrays were represented with numpy 2.
+  * ``MaskedQuantity`` now works properly with ``np.block``.
+  * Fix a bug where ``WCSAxes`` could be missing negative signs on axis
+    labels when using matplotlib's ``usetex`` mode.
+  * Fix compilation with gcc 14, avoid implicit pointer conversions.
+- Drop patch 16450.patch, included upstream.
+- Remove upper bound on pytest, no longer required.</comment>
+    <requestid>1183096</requestid>
+  </revision>
 </revisionlist>

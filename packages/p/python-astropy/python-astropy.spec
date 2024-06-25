@@ -49,7 +49,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-astropy%{psuffix}
-Version:        6.1.0
+Version:        6.1.1
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
@@ -59,8 +59,6 @@ Source:         https://files.pythonhosted.org/packages/source/a/astropy/astropy
 # Mark wcs headers as false positives for devel-file-in-non-devel-package
 # These are used by the python files so they must be available.
 Source100:      python-astropy-rpmlintrc
-# PATCH-FIX-UPSTREAM - BUG: fix compilation with gcc 14, avoid implicit pointer conversions
-Patch:          https://github.com/astropy/astropy/pull/16450.patch
 # https://docs.astropy.org/en/v6.1/install.html#requirements
 BuildRequires:  %{python_module Cython >= 3 with %python-Cython < 3.1}
 BuildRequires:  %{python_module devel >= 3.9}
@@ -117,6 +115,7 @@ BuildRequires:  %{python_module Bottleneck}
 BuildRequires:  %{python_module asdf-astropy >= 0.3}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module bleach}
+BuildRequires:  %{python_module dask-array}
 BuildRequires:  %{python_module fsspec >= 2023.4.0}
 BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module html5lib}
@@ -138,12 +137,12 @@ BuildRequires:  libxml2-tools
 BuildRequires:  %{python_module astropy = %{version}}
 BuildRequires:  %{python_module ipython >= 4.2 if %python-base >= 3.10}
 BuildRequires:  %{python_module objgraph}
-BuildRequires:  %{python_module pytest >= 7 with %python-pytest < 8}
 BuildRequires:  %{python_module pytest-astropy >= 0.10}
 BuildRequires:  %{python_module pytest-astropy-header >= 0.2.1}
 BuildRequires:  %{python_module pytest-doctestplus >= 0.12}
 BuildRequires:  %{python_module pytest-mpl}
 BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sgp4 >= 2.3}
 BuildRequires:  %{python_module skyfield >= 1.20 if %python-base < 3.11}
 BuildRequires:  %{python_module threadpoolctl}
