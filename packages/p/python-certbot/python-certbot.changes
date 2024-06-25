@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 25 12:15:06 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- update to 2.11.0
+  * Fixed a bug in Certbot where a CSR's SANs did not always follow 
+    the order of the domain names that the user requested interactively. 
+    In some cases, the resulting cert's common name might seem picked 
+    up randomly from the SANs when it should be the first item the user 
+    had in mind.
+
+-------------------------------------------------------------------
 Thu May  9 13:49:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.10.0:
