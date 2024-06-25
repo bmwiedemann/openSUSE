@@ -15,10 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 %{?sle15_python_module_pythons}
 # python-nbval needed for test isn't available python39
 %define         skip_python39 1
+
 
 # Tumbleweed does not have a python36-numpy anymore: NEP 29 dropped Python 3.6 for NumPy 1.20
 Name:           python-onnx
@@ -134,6 +134,8 @@ done
 %{?python_compileall}
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
+#Disable tests for s390x based on IBM support without working tests boo#1215337
+%ifnarch s390x
 %check
 export LD_LIBRARY_PATH="%{buildroot}%{_libdir}"
 # copy tests into clean subdir and test the installed lib in sitearch
@@ -154,6 +156,7 @@ donttest="   test_bvlc_alexnet_cpu \
 # do not run in parallel yet - https://github.com/onnx/onnx/issues/3946#issuecomment-1015634235
 %pytest_arch -n 1 -k "not ($donttest)" -ra
 popd
+%endif
 
 %post
 %python_install_alternative backend-test-tools

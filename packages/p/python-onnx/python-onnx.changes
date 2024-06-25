@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 22 09:33:24 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Disable tests for s390x based on IBM support without working tests (boo#1215337)
+
+-------------------------------------------------------------------
 Wed Mar 27 08:37:07 UTC 2024 - Christian Goll <cgoll@suse.com>
 
 - update to 1.16.0 
