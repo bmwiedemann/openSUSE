@@ -772,4 +772,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1174587</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>5c9beb9b92463a866006eb30d7c46c6d</srcmd5>
+    <version>2.11.0</version>
+    <time>1719349736</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.11.0
+  * sync with the main certbot package</comment>
+    <requestid>1183166</requestid>
+  </revision>
 </revisionlist>
