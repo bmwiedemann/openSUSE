@@ -18,7 +18,7 @@
 
 %global somajor 1
 %global sominor 35
-%global revision 0
+%global revision 2
 %global libname libjanet%{somajor}_%{sominor}
 
 Name:           janet

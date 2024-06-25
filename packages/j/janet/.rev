@@ -102,4 +102,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1182638</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>aafb53f64c75a6a2ccec31f31f552c3f</srcmd5>
+    <version>1.35.2</version>
+    <time>1719349727</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.35.2
+  * Fix some documentation typos.
+  * Allow using :only in import without quoting.</comment>
+    <requestid>1183130</requestid>
+  </revision>
 </revisionlist>
