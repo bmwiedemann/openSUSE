@@ -9,6 +9,8 @@
 %if %{with sd_boot}
 %dir %{_unitdir}/initrd.target.wants
 %endif
+# Main config files have been replaced in favor of drop-ins.
+%ghost %{_sysconfdir}/systemd/oomd.conf
 %{_bindir}/oomctl
 %{_bindir}/systemd-vmspawn
 %if %{with sd_boot}

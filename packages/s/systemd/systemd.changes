@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jun 24 14:36:21 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Don't automatically clean unmodified config files up (bsc#1226415)
+
+  Relying on the presence of .rpmsave for detecting unmodified main config files
+  couldn't work as it created a time window in which some of the systemd
+  services were restarted with no config file. That had the bad side effect to
+  restart them with the upstream defaults, ignoring any user's customization.
+
+-------------------------------------------------------------------
+Tue Jun 18 13:20:26 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- testsuite: move a misplaced %endif
+
+-------------------------------------------------------------------
+Tue Jun 18 10:19:19 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Merge systemd-coredump back into the main package (bsc#1091684)
+
+-------------------------------------------------------------------
+Tue Jun 18 10:12:01 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- testsuite: only require the devel packages when pulling the dlopen'd
+  dependencies (the libraries are dependencies of the devel packages).
+
+-------------------------------------------------------------------
 Thu Jun  6 13:18:29 UTC 2024 - Franck Bui <fbui@suse.com>
 
 - Add 5003-Revert-run-pass-the-pty-slave-fd-to-transient-servic.patch

@@ -40,6 +40,11 @@
 %ghost %attr(644, root, root) %{_prefix}/lib/udev/compat-symlink-generation
 %ghost %config(noreplace) %{_sysconfdir}/vconsole.conf
 %ghost %{_localstatedir}/lib/systemd/backlight
+# Main config files have been replaced in favor of drop-ins.
+%ghost %{_sysconfdir}/systemd/pstore.conf
+%ghost %{_sysconfdir}/systemd/sleep.conf
+%ghost %{_sysconfdir}/systemd/timesyncd.conf
+%ghost %{_sysconfdir}/udev/iocost.conf
 %{_bindir}/bootctl
 %if %{without bootstrap}
 %{_bindir}/kernel-install

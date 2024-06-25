@@ -7243,4 +7243,23 @@ handle manual pages that consist only of a .so directive such as
 - Rename PAM config file 'systemd-user' into 'pam.systemd-user'.</comment>
     <requestid>1179036</requestid>
   </revision>
+  <revision rev="426" vrev="3">
+    <srcmd5>fa33a7369467e5804bfc64baeba71916</srcmd5>
+    <version>255.7</version>
+    <time>1719349592</time>
+    <user>anag+factory</user>
+    <comment>- Don't automatically clean unmodified config files up (bsc#1226415)
+  Relying on the presence of .rpmsave for detecting unmodified main config files
+  couldn't work as it created a time window in which some of the systemd
+  services were restarted with no config file. That had the bad side effect to
+  restart them with the upstream defaults, ignoring any user's customization.
+
+- testsuite: move a misplaced %endif
+
+- Merge systemd-coredump back into the main package (bsc#1091684)
+
+- testsuite: only require the devel packages when pulling the dlopen'd
+  dependencies (the libraries are dependencies of the devel packages).</comment>
+    <requestid>1183029</requestid>
+  </revision>
 </revisionlist>

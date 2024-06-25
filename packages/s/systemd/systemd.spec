@@ -56,7 +56,6 @@
 %else
 %global mini %nil
 %bcond_without  apparmor
-%bcond_without  coredump
 %bcond_without  homed
 %bcond_without  importd
 %bcond_without  journal_remote
@@ -80,20 +79,6 @@
 # The following features are kept to ease migrations toward SLE. Their default
 # value is independent of the build flavor.
 %bcond_without  filetriggers
-
-# We stopped shipping main config files in /etc but we have to restore any
-# config files that might have been backed up by rpm during the migration of the
-# main config files from /etc to /usr. This needs to be done in %%posttrans
-# because the .rpmsave files are created when the *old* package version is
-# removed. This is not needed by ALP and will be dropped from Factory near the
-# end of 2024.
-%define restore_rpmsave() \
-if [ -e %{_sysconfdir}/%{1}.rpmsave ] && [ ! -e %{_sysconfdir}/%{1} ]; then \
-        echo >&2 "Restoring %{_sysconfdir}/%1. Please consider moving your customizations in a drop-in instead." \
-        echo >&2 "For more details, visit https://en.opensuse.org/Systemd#Configuration." \
-        mv -v %{_sysconfdir}/%{1}.rpmsave %{_sysconfdir}/%{1} || : \
-fi \
-%{nil}
 
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
@@ -185,6 +170,8 @@ Obsoletes:      nss-systemd < %{version}-%{release}
 Provides:       nss-systemd = %{version}-%{release}
 Obsoletes:      nss-myhostname < %{version}-%{release}
 Provides:       nss-myhostname = %{version}-%{release}
+Provides:       systemd-coredump = %{version}-%{release}
+Obsoletes:      systemd-coredump < %{version}-%{release}
 Provides:       systemd-logger = %{version}-%{release}
 Obsoletes:      systemd-logger < %{version}-%{release}
 Provides:       systemd-sysvinit = %{version}-%{release}
@@ -216,7 +203,6 @@ Source204:      files.devel
 Source205:      files.sysvcompat
 Source206:      files.uefi-boot
 Source207:      files.experimental
-Source208:      files.coredump
 Source209:      files.homed
 Source210:      files.lang
 Source211:      files.journal-remote
@@ -422,20 +408,6 @@ Requires:       this-is-only-for-build-envs
 This package contains the dynamic library libudev, which provides
 access to udev device information
 
-%if %{with coredump}
-%package coredump
-Summary:        Systemd tools for coredump management
-License:        LGPL-2.1-or-later
-Requires:       %{name} = %{version}-%{release}
-%systemd_requires
-Provides:       systemd:%{_bindir}/coredumpctl
-
-%description coredump
-Systemd tools to store and manage coredumps.
-
-Visit https://systemd.io/COREDUMP for more details.
-%endif
-
 %if %{with sd_boot}
 %package boot
 Summary:        A simple UEFI boot manager
@@ -545,6 +517,7 @@ BuildRequires:  pkgconfig(libqrencode)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(pwquality)
 # These Recommends because some symbols of these libs are dlopen()ed by homed
+Recommends:     libcryptsetup12
 Recommends:     libfido2
 Recommends:     libpwquality1
 Recommends:     libqrencode4
@@ -619,11 +592,32 @@ Recommends:     tpm2.0-tools
 %if %{with resolved}
 # Optional dep for knot needed by TEST-75-RESOLVED
 Recommends:     knot
+%endif
 %if %{with selinux}
 # Optional deps needed by TEST-06-SELINUX (otherwise skipped)
 Recommends:     selinux-policy-devel
 Recommends:     selinux-policy-targeted
 %endif
+Requires:       %{name} = %{version}-%{release}
+Requires:       attr
+Requires:       binutils
+Requires:       busybox-static
+Requires:       cryptsetup
+Requires:       dhcp-client
+Requires:       dosfstools
+Requires:       iproute2
+Requires:       jq
+Requires:       libcap-progs
+Requires:       lz4
+Requires:       make
+Requires:       mtools
+Requires:       netcat
+Requires:       python3-pexpect
+Requires:       qemu
+Requires:       quota
+Requires:       socat
+Requires:       squashfs
+Requires:       systemd-container
 # System users/groups that some tests rely on.
 Requires:       group(bin)
 Requires:       group(daemon)
@@ -636,48 +630,17 @@ Requires:       user(nobody)
 # The following deps on libs are for test-dlopen-so whereas the pkgconfig ones
 # are used by test-funtions to find the libs on the host and install them in the
 # image, see install_missing_libraries() for details.
-Requires:       libidn2
+Requires:       pkgconfig(libfido2)
 Requires:       pkgconfig(libidn2)
-%endif
 %if %{with experimental}
-Requires:       libpwquality1
-Requires:       libqrencode4
 Requires:       pkgconfig(libqrencode)
 Requires:       pkgconfig(pwquality)
 %endif
-Requires:       %{name} = %{version}-%{release}
-Requires:       attr
-Requires:       binutils
-Requires:       busybox-static
-Requires:       cryptsetup
-Requires:       dhcp-client
-Requires:       dosfstools
-Requires:       iproute2
-Requires:       jq
-Requires:       libcap-progs
-Requires:       libfido2
-Requires:       libtss2-esys0
-Requires:       libtss2-mu0
-Requires:       libtss2-rc0
-Requires:       lz4
-Requires:       make
-Requires:       mtools
-Requires:       netcat
-Requires:       python3-pexpect
-Requires:       qemu
-Requires:       quota
-Requires:       socat
-Requires:       squashfs
-Requires:       systemd-container
-Requires:       pkgconfig(libfido2)
 Requires:       pkgconfig(tss2-esys)
 Requires:       pkgconfig(tss2-mu)
 Requires:       pkgconfig(tss2-rc)
 %if %{with sd_boot}
 Requires:       systemd-boot
-%endif
-%if %{with coredump}
-Requires:       systemd-coredump
 %endif
 %if %{with experimental}
 Requires:       systemd-experimental
@@ -848,7 +811,7 @@ for the C APIs.
         -Dzstd=%{disabled_with bootstrap} \
         \
         -Dapparmor=%{enabled_with apparmor} \
-        -Dcoredump=%{when coredump} \
+        -Dcoredump=%{when_not bootstrap} \
         -Dhomed=%{enabled_with homed} \
         -Dimportd=%{enabled_with importd} \
         -Dmachined=%{when machined} \
@@ -1154,12 +1117,6 @@ journalctl --update-catalog || :
 %systemd_postun_with_restart systemd-timedated.service
 %systemd_postun_with_restart systemd-userdbd.service
 
-%posttrans
-%restore_rpmsave systemd/journald.conf
-%restore_rpmsave systemd/logind.conf
-%restore_rpmsave systemd/system.conf
-%restore_rpmsave systemd/user.conf
-
 %pre -n udev%{?mini}
 # Units listed below can be enabled at installation accoding to their preset
 # setting.
@@ -1214,10 +1171,6 @@ fi
 
 %posttrans -n udev%{?mini}
 %regenerate_initrd_posttrans
-%restore_rpmsave systemd/pstore.conf
-%restore_rpmsave systemd/sleep.conf
-%restore_rpmsave systemd/timesyncd.conf
-%restore_rpmsave udev/iocost.conf
 
 %ldconfig_scriptlets -n libsystemd0%{?mini}
 %ldconfig_scriptlets -n libudev%{?mini}1
@@ -1244,16 +1197,6 @@ fi
 %{_systemd_util_dir}/rpm/fixlet-container-post.sh $1 || :
 %endif
 
-%if %{with coredump}
-%post coredump
-%if %{without filetriggers}
-%sysusers_create systemd-coredump.conf
-
-%posttrans coredump
-%restore_rpmsave systemd/coredump.conf
-%endif
-%endif
-
 %if %{with journal_remote}
 %pre journal-remote
 %systemd_pre systemd-journal-gatewayd.service
@@ -1278,10 +1221,6 @@ fi
 %systemd_postun_with_restart systemd-journal-gatewayd.service
 %systemd_postun_with_restart systemd-journal-remote.service
 %systemd_postun_with_restart systemd-journal-upload.service
-
-%posttrans journal-remote
-%restore_rpmsave systemd/journal-remote.conf
-%restore_rpmsave systemd/journal-upload.conf
 %endif
 
 %if %{with networkd} || %{with resolved}
@@ -1330,10 +1269,6 @@ fi
 %ldconfig
 %systemd_postun systemd-resolved.service
 %endif
-
-%posttrans network
-%restore_rpmsave systemd/networkd.conf
-%restore_rpmsave systemd/resolved.conf
 %endif
 
 %if %{with homed}
@@ -1392,9 +1327,6 @@ fi
 %postun experimental
 %systemd_postun systemd-homed.service
 %systemd_postun systemd-oomd.service systemd-oomd.socket
-
-%posttrans experimental
-%restore_rpmsave systemd/oomd.conf
 %endif
 
 # File trigger definitions
@@ -1439,11 +1371,6 @@ fi
 %license LICENSE.LGPL2.1
 %{_libdir}/libudev.so.1
 %{_libdir}/libudev.so.1.7.*
-
-%if %{with coredump}
-%files coredump
-%include %{SOURCE208}
-%endif
 
 %if %{without bootstrap}
 %files lang -f systemd.lang

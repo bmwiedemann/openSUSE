@@ -25,12 +25,14 @@
 %dir %{_libdir}/systemd
 %dir %{_localstatedir}/lib/systemd
 %dir %{_localstatedir}/lib/systemd/catalog
+%dir %{_localstatedir}/lib/systemd/coredump
 %dir %{_localstatedir}/lib/systemd/rpm
 %dir %{_modprobedir}
 %dir %{_sysconfdir}/X11/xorg.conf.d
 %dir %{_sysconfdir}/binfmt.d
 %dir %{_sysconfdir}/sysctl.d
 %dir %{_sysconfdir}/systemd
+%dir %{_sysconfdir}/systemd/coredump.conf.d
 %dir %{_sysconfdir}/systemd/journald.conf.d
 %dir %{_sysconfdir}/systemd/logind.conf.d
 %dir %{_sysconfdir}/systemd/system
@@ -89,9 +91,17 @@
 %ghost %config(noreplace) %{_sysconfdir}/machine-info
 %ghost %dir %attr(2755, root, systemd-journal) %{_localstatedir}/log/journal
 %ghost %{_localstatedir}/lib/systemd/catalog/database
+# Main config files have been replaced in favor of drop-ins.
+%ghost %{_sysconfdir}/systemd/journald.conf
+%ghost %{_sysconfdir}/systemd/logind.conf
+%ghost %{_sysconfdir}/systemd/system.conf
+%ghost %{_sysconfdir}/systemd/user.conf
 %license LICENSE.GPL2
 %license LICENSE.LGPL2.1
 %{_bindir}/busctl
+%if %{without bootstrap}
+%{_bindir}/coredumpctl
+%endif
 %{_bindir}/hostnamectl
 %{_bindir}/journalctl
 %{_bindir}/localectl
@@ -128,6 +138,7 @@
 %if %{without bootstrap}
 %{_bindir}/userdbctl
 %{_datadir}/bash-completion/completions/busctl
+%{_datadir}/bash-completion/completions/coredumpctl
 %{_datadir}/bash-completion/completions/hostnamectl
 %{_datadir}/bash-completion/completions/journalctl
 %{_datadir}/bash-completion/completions/localectl
@@ -192,6 +203,7 @@
 %{_datadir}/systemd/language-fallback-map
 %if %{without bootstrap}
 %{_datadir}/zsh/site-functions/_busctl
+%{_datadir}/zsh/site-functions/_coredumpctl
 %{_datadir}/zsh/site-functions/_hostnamectl
 %{_datadir}/zsh/site-functions/_journalctl
 %{_datadir}/zsh/site-functions/_localectl
@@ -216,6 +228,7 @@
 %{_libdir}/systemd/libsystemd-shared-%{systemd_major}.so
 %if %{without bootstrap}
 %{_mandir}/man1/busctl.1.gz
+%{_mandir}/man1/coredumpctl.1.gz
 %{_mandir}/man1/hostnamectl.1.gz
 %{_mandir}/man1/init.1.gz
 %{_mandir}/man1/journalctl.1.gz
@@ -251,6 +264,8 @@
 %{_mandir}/man1/timedatectl.1.gz
 %{_mandir}/man1/userdbctl.1.gz
 %{_mandir}/man5/binfmt.d.5.gz
+%{_mandir}/man5/coredump.conf.5.gz
+%{_mandir}/man5/coredump.conf.d.5.gz
 %{_mandir}/man5/dnssec-trust-anchors.d.5.gz
 %{_mandir}/man5/environment.d.5.gz
 %{_mandir}/man5/extension-release.5.gz
@@ -340,6 +355,9 @@
 %{_mandir}/man8/systemd-boot-check-no-failures.service.8.gz
 %{_mandir}/man8/systemd-confext.8.gz
 %{_mandir}/man8/systemd-confext.service.8.gz
+%{_mandir}/man8/systemd-coredump.8.gz
+%{_mandir}/man8/systemd-coredump.socket.8.gz
+%{_mandir}/man8/systemd-coredump@.service.8.gz
 %{_mandir}/man8/systemd-debug-generator.8.gz
 %{_mandir}/man8/systemd-environment-d-generator.8.gz
 %{_mandir}/man8/systemd-getty-generator.8.gz
@@ -405,8 +423,14 @@
 %{_sbindir}/reboot
 %{_sbindir}/shutdown
 %{_sysconfdir}/xdg/systemd/user
+%if %{without bootstrap}
+%{_sysctldir}/50-coredump.conf
+%endif
 %{_sysctldir}/99-sysctl.conf
 %{_systemd_user_env_generator_dir}/30-systemd-environment-d-generator
+%if %{without bootstrap}
+%{_systemd_util_dir}/coredump.conf
+%endif
 %{_systemd_util_dir}/journald.conf
 %{_systemd_util_dir}/logind.conf
 %{_systemd_util_dir}/rpm/fixlet-systemd-post.sh
@@ -416,6 +440,9 @@
 %{_systemd_util_dir}/systemd-binfmt
 %{_systemd_util_dir}/systemd-boot-check-no-failures
 %{_systemd_util_dir}/systemd-cgroups-agent
+%if %{without bootstrap}
+%{_systemd_util_dir}/systemd-coredump
+%endif
 %{_systemd_util_dir}/systemd-executor
 %{_systemd_util_dir}/systemd-hostnamed
 %{_systemd_util_dir}/systemd-journald
@@ -469,6 +496,9 @@
 %{_systemdgeneratordir}/systemd-run-generator
 %{_systemdgeneratordir}/systemd-system-update-generator
 %{_systemdusergeneratordir}/systemd-xdg-autostart-generator
+%if %{without bootstrap}
+%{_sysusersdir}/systemd-coredump.conf
+%endif
 %{_sysusersdir}/systemd-journal.conf
 %{_tmpfilesdir}/credstore.conf
 %{_tmpfilesdir}/journal-nocow.conf
@@ -558,6 +588,9 @@
 %{_unitdir}/slices.target
 %{_unitdir}/smartcard.target
 %{_unitdir}/sockets.target
+%if %{without bootstrap}
+%{_unitdir}/sockets.target.wants/systemd-coredump.socket
+%endif
 %{_unitdir}/sockets.target.wants/systemd-journald-dev-log.socket
 %{_unitdir}/sockets.target.wants/systemd-journald.socket
 %{_unitdir}/sockets.target.wants/systemd-sysext.socket
@@ -601,6 +634,10 @@
 %{_unitdir}/systemd-binfmt.service
 %{_unitdir}/systemd-boot-check-no-failures.service
 %{_unitdir}/systemd-confext.service
+%if %{without bootstrap}
+%{_unitdir}/systemd-coredump.socket
+%{_unitdir}/systemd-coredump@.service
+%endif
 %{_unitdir}/systemd-exit.service
 %{_unitdir}/systemd-halt.service
 %{_unitdir}/systemd-hostnamed.service
