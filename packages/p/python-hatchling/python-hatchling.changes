@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jun 22 18:36:39 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.25.0:
+  * Changed:
+    + The macos-max-compat option for the wheel target is now
+      disabled by default and will be removed in a future release
+  * Added:
+    + Artifacts for the wheel and sdist targets now have their
+      permission bits normalized
+  * Fixed:
+    + Ignore manylinux/musllinux tags for the wheel target artifact
+      name when enabling the infer_tag build data
+    + The wheel target build data infer_tag when enabled now
+      respects the MACOSX_DEPLOYMENT_TARGET environment variable
+
+-------------------------------------------------------------------
 Sun May 12 11:35:32 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.24.2:
