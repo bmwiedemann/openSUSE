@@ -1,5 +1,5 @@
 <package name="python-django-pglocks" project="openSUSE:Factory">
   <title>Context managers for advisory locks for PostgreSQL.</title>
   <description>django-pglocks provides a useful context manager to manage PostgreSQL advisory locks. It requires Django (tested with 1.5), PostgreSQL, and (probably) psycopg2.</description>
-  <devel project="devel:languages:python" package="python-django-pglocks"/>
+  <devel project="devel:languages:python:django" package="python-django-pglocks"/>
 </package>

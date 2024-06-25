@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-pglocks
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,24 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-django-pglocks
 Version:        1.0.4
 Release:        0
 Summary:        PostgreSQL Advisory Locks for Django
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/Xof/django-pglocks
 Source:         https://files.pythonhosted.org/packages/source/d/django-pglocks/django-pglocks-%{version}.tar.gz
 BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psycopg2}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django
 Requires:       python-psycopg2
+Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -62,10 +62,10 @@ the transaction.
 %setup -q -n django-pglocks-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # Here could be unittests, but we don't want to spool up a PostgreSQL server
@@ -74,6 +74,7 @@ the transaction.
 %files %{python_files}
 %doc CHANGES.txt
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/django_pglocks
+%{python_sitelib}/django_pglocks-%{version}.dist-info
 
 %changelog

@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>1163242</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>49e3d28c676071ac2810982e85737746</srcmd5>
+    <version>1.0.4</version>
+    <time>1719349673</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject macros.
+- Add missing Requires on python-six.
+- No more greedy globs in %files.</comment>
+    <requestid>1183097</requestid>
+  </revision>
 </revisionlist>
