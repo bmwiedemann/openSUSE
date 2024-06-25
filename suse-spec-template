@@ -19,13 +19,11 @@
 Name:           specRPM_CREATION_NAME
 Version:        
 Release:        0
-Summary:
+Summary:        
 # FIXME: Select a correct license from https://github.com/openSUSE/spec-cleaner#spdx-licenses
 License:        
-# FIXME: use correct group, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
-Group:          
 URL:            
-Source:         
+Source0:        
 BuildRequires:  
 
 %description
@@ -44,7 +42,7 @@ BuildRequires:
 %postun
 
 %files
-%license COPYING
-%doc ChangeLog README
+%license LICENSE
+%doc README.md ChangeLog
 
 %changelog

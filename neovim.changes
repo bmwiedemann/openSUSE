@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 21 23:49:59 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- add new make and runtime dependencies (Closes #1225887)
+- enable LTO
+- fix spec template creation (fill in macros)
+- switch to more common defaults in the spec template
+- turn off the usage of the bundled luajit
+
+-------------------------------------------------------------------
 Mon Jun  3 20:47:10 UTC 2024 - Alexandru Gabriel Bradatan <alex.bradatan85@yahoo.it>
 
 - Add lua51-lpeg as dependency

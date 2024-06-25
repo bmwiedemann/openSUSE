@@ -36,6 +36,7 @@ URL:            https://neovim.io/
 Source0:        https://github.com/neovim/neovim/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        sysinit.vim
 Source3:        suse-spec-template
+Source4:        spec.vim
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -46,10 +47,26 @@ BuildRequires:  git-core
 BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libtool
+BuildRequires:  lua-macros
+BuildRequires:  lua51-bit32
+BuildRequires:  lua51-compat-5.3
+BuildRequires:  lua51-lpeg
+BuildRequires:  lua51-luarocks
+BuildRequires:  lua51-luv
+BuildRequires:  lua51-mpack
 BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
+BuildRequires:  tree-sitter
+BuildRequires:  tree-sitter-c
+BuildRequires:  tree-sitter-lua
+BuildRequires:  tree-sitter-markdown
+BuildRequires:  tree-sitter-python
+BuildRequires:  tree-sitter-query
+BuildRequires:  tree-sitter-vim
+BuildRequires:  tree-sitter-vimdoc
 BuildRequires:  unzip
+BuildRequires:  pkgconfig(libluv)
 BuildRequires:  pkgconfig(libutf8proc)
 BuildRequires:  pkgconfig(libuv) >= 1.42.0
 BuildRequires:  pkgconfig(msgpack-c)
@@ -57,32 +74,35 @@ BuildRequires:  pkgconfig(termkey)
 BuildRequires:  pkgconfig(tree-sitter) >= 0.20.9
 BuildRequires:  pkgconfig(unibilium) >= 2.0.0
 BuildRequires:  pkgconfig(vterm) >= 0.3.3
-Requires:       gperf
-Requires:       libvterm0 >= 0.3
-Requires:       xdg-utils
-
-Recommends:     wl-clipboard
-Recommends:     xsel
-
-BuildRequires:  libluv-devel
-BuildRequires:  lua-macros
-BuildRequires:  lua51-LPeg
-BuildRequires:  lua51-bit32
-BuildRequires:  lua51-luarocks
-BuildRequires:  lua51-luv
-BuildRequires:  lua51-mpack
 %if %{with luajit}
-BuildRequires:  luajit-devel
+BuildRequires:  pkgconfig(luajit)
 %else
 BuildRequires:  lua51-BitOp
 BuildRequires:  lua51-devel
 %endif
+Requires:       gperf
+Requires:       libvterm0 >= 0.3
 Requires:       lua51-bit32
+Requires:       lua51-compat-5.3
 Requires:       lua51-lpeg
+Requires:       lua51-luarocks
 Requires:       lua51-luv
+Requires:       lua51-mpack
+Requires:       tree-sitter
+Requires:       tree-sitter-c
+Requires:       tree-sitter-lua
+Requires:       tree-sitter-markdown
+Requires:       tree-sitter-python
+Requires:       tree-sitter-query
+Requires:       tree-sitter-vim
+Requires:       tree-sitter-vimdoc
+Requires:       xdg-utils
 Recommends:     python3-neovim
-
+Recommends:     wl-clipboard
+Recommends:     xsel
+Suggests:       ripgrep
 Provides:       nvim
+%lang_package
 
 %description
 Neovim is a refactor - and sometimes redactor - in the tradition of
@@ -93,10 +113,6 @@ strives to be a superset of Vim, notwithstanding some intentionally
 removed misfeatures; excepting those few and carefully-considered
 excisions, Neovim is Vim. It is built for users who want the good
 parts of Vim, without compromise, and more.
-
-%lang_package
-
-%define vimplugin_dir %{_datadir}/vim/site
 
 %prep
 %autosetup -p1
@@ -111,29 +127,24 @@ sed -i "s/__DATE__/\"$BUILD_DATE\"/" $(grep -rl '__DATE__')
 # set vars to make build reproducible in spite of config/CMakeLists.txt
 HOSTNAME=OBS
 USERNAME=OBS
-mkdir -p build
-pushd build
 export CFLAGS="%{optflags} -fcommon"
 export CXXFLAGS="%{optflags} -fcommon"
-%{__cmake} .. -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+%cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo \
        -DPREFER_LUA=%{?with_luajit:OFF}%{!?with_luajit:ON} \
        -DLUA_PRG=%{_bindir}/%{?with_luajit:luajit}%{!?with_luajit:lua} \
 %if %{with luajit}
        -DLUAJIT_INCLUDE_DIR:PATH=%(pkg-config --cflags-only-I luajit|cut -c 3-) \
 %endif
-       -DUSE_BUNDLED=OFF -DLUAJIT_USE_BUNDLED=ON  \
+       -DUSE_BUNDLED=OFF -DLUAJIT_USE_BUNDLED=OFF  \
        -DCMAKE_SKIP_RPATH=ON -DCMAKE_VERBOSE_MAKEFILE=ON \
-       -DCMAKE_COLOR_MAKEFILE=OFF \
+       -DCMAKE_COLOR_MAKEFILE=OFF -DLTO_ENABLE=ON \
        -DCMAKE_C_FLAGS_RELWITHDEBINFO="$opts" \
        -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
        -DLIBLUV_INCLUDE_DIR:PATH=%{lua_incdir}
 
 %make_build
 
-popd
-
 %install
-%{?!cmake_install:%define cmake_install DESTDIR=%{buildroot} make install -C build}
 %cmake_install
 
 # system-wide configuration file
@@ -142,6 +153,7 @@ ln -sf  %{_sysconfdir}/nvim/sysinit.vim %{buildroot}%{_datadir}/nvim/sysinit.vim
 
 # install SUSE specific spec template
 install -p -m 644 %{SOURCE3} %{buildroot}%{_datadir}/nvim/template.spec
+install -p -m 644 %{SOURCE4} %{buildroot}%{_datadir}/nvim/runtime/plugin/spec.vim
 
 desktop-file-install --dir=%{buildroot}%{_datadir}/applications \
     runtime/nvim.desktop
@@ -158,6 +170,13 @@ mkdir -p %{buildroot}%{vimplugin_dir}/{after,after/syntax,autoload,colors,doc,ft
 %fdupes %{buildroot}%{_datadir}/
 %find_lang nvim
 
+# let's make tree-sitter grammars visible to neovim
+install -d %{buildroot}%{_datadir}/nvim/runtime/parser
+for i in c lua markdown python query vim vimdoc; do
+   ln -s %{_libdir}/libtree-sitter-$i.so %{buildroot}%{_datadir}/nvim/runtime/parser/$i.so;
+done
+ln -s %{_libdir}/libtree-sitter-markdown-inline.so %{buildroot}%{_datadir}/nvim/runtime/parser/markdown_inline.so
+
 # We have to have rpath
 # https://en.opensuse.org/openSUSE:Packaging_checks
 export NO_BRP_CHECK_RPATH=true
@@ -167,7 +186,7 @@ export NO_BRP_CHECK_RPATH=true
 %docdir %{_mandir}
 %license LICENSE.txt
 %{_bindir}/nvim
-%{_mandir}/man1/nvim.1%{?ext_man}
+%{_mandir}/man?/nvim.1%{?ext_man}
 %dir %{_datadir}/nvim
 %{_datadir}/nvim/sysinit.vim
 %{_datadir}/nvim/template.spec
