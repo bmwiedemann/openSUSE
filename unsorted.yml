@@ -2178,6 +2178,7 @@ unsorted:
   - clang 
   - clang-devel 
   - clang-doc 
+  - clang-extract 
   - clang13 
   - clang13-devel 
   - clang13-doc 
@@ -13907,29 +13908,29 @@ unsorted:
   - libkdstatemachineeditor_view1 
   - libkdumpfile-devel 
   - libkdumpfile10 
-  - libkea-asiodns35 
-  - libkea-asiolink56 
-  - libkea-cc54 
-  - libkea-cfgclient51 
-  - libkea-cryptolink38 
-  - libkea-d2srv30 
-  - libkea-database48 
-  - libkea-dhcp++74 
-  - libkea-dhcp_ddns41 
-  - libkea-dhcpsrv90 
-  - libkea-dns++42 
-  - libkea-eval52 
-  - libkea-exceptions23 
-  - libkea-hooks78 
-  - libkea-http56 
-  - libkea-log48 
-  - libkea-mysql53 
-  - libkea-pgsql53 
-  - libkea-process57 
-  - libkea-stats29 
-  - libkea-tcp5 
+  - libkea-asiodns48 
+  - libkea-asiolink71 
+  - libkea-cc68 
+  - libkea-cfgclient65 
+  - libkea-cryptolink50 
+  - libkea-d2srv46 
+  - libkea-database61 
+  - libkea-dhcp++89 
+  - libkea-dhcp_ddns56 
+  - libkea-dhcpsrv108 
+  - libkea-dns++56 
+  - libkea-eval69 
+  - libkea-exceptions33 
+  - libkea-hooks97 
+  - libkea-http71 
+  - libkea-log61 
+  - libkea-mysql69 
+  - libkea-pgsql69 
+  - libkea-process72 
+  - libkea-stats41 
+  - libkea-tcp18 
   - libkea-util-io0 
-  - libkea-util68 
+  - libkea-util84 
   - libkea1_5 
   - libkeccak-devel 
   - libkeccak1 
@@ -16229,7 +16230,7 @@ unsorted:
   - libteamdctl0 
   - libtecla_r1 
   - libteeacl0 
-  - libteec1 
+  - libteec2 
   - libtelepathy-farstream3 
   - libtemplate_glib-1_0-0 
   - libteredo5 
@@ -46635,14 +46636,21 @@ unsorted:
   - tree-sitter-javascript 
   - tree-sitter-javascript-devel 
   - tree-sitter-json 
+  - tree-sitter-lua 
+  - tree-sitter-markdown 
+  - tree-sitter-markdown-devel 
   - tree-sitter-python 
   - tree-sitter-qmldir 
   - tree-sitter-qmljs 
+  - tree-sitter-query 
   - tree-sitter-regex 
   - tree-sitter-ruby 
   - tree-sitter-rust 
   - tree-sitter-typescript 
   - tree-sitter-typescript-devel 
+  - tree-sitter-vim 
+  - tree-sitter-vimdoc 
+  - tree-sitter-vimdoc-devel 
   - tree-sitter-xml 
   - treefetch 
   - treelayout 
