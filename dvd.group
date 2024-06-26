@@ -317,8 +317,8 @@
     <package name="ddcutil-i2c-udev-rules" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ddskk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="debianutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="debuginfod-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="debuginfod-profile" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="debuginfod-client" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="debuginfod-profile" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="dejavu-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="deltarpm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="desktop-data-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1907,7 +1907,7 @@
     <package name="libdca0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdconf1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libddcutil5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libdebuginfod1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libdebuginfod1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libdecor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdecor-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdeflate0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -4005,7 +4005,6 @@
     <package name="systemd-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="systemd-boot" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="systemd-container" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
-    <package name="systemd-coredump" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="systemd-default-settings" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="systemd-default-settings-branding-SLE" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="systemd-default-settings-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
