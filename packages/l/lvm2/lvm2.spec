@@ -99,8 +99,9 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev)
 Requires:       device-mapper >= %{device_mapper_version}
 Requires:       modutils
-#see bsc#1225783
+# see bsc#1225783 for following 2 lines
 Requires:       (udev >= 255.7 if udev)
+Requires:       (multipath-tools >= 0.9.9 if multipath-tools)
 Requires(post): coreutils
 Requires(postun):coreutils
 Provides:       lvm = %{version}
@@ -113,8 +114,8 @@ BuildRequires:  suse-module-tools
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libsepol)
 %else
-BuildRequires:  pkgconfig(corosync)
 BuildRequires:  pkgconfig(blkid)
+BuildRequires:  pkgconfig(corosync)
 %if %{with lockd}
 BuildRequires:  libdlm-devel >= %{dlm_version}
 %if 0%{_supportsanlock} == 1
