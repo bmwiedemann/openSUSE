@@ -144,7 +144,6 @@ Patch14:        binutils-build-as-needed.diff
 Patch15:        binutils-znow.patch
 Patch22:        binutils-bfd_h.patch
 Patch34:        aarch64-common-pagesize.patch
-Patch36:        binutils-pr22868.diff
 Patch37:        binutils-revert-plt32-in-branches.diff
 Patch38:        binutils-fix-invalid-op-errata.diff
 Patch39:        binutils-revert-nm-symversion.diff
@@ -267,7 +266,6 @@ cp ld/ldgram.y ld/ldgram.y.orig
 %patch -P 15
 %patch -P 22
 %patch -P 34 -p1
-%patch -P 36 -p1
 %if %{suse_version} < 1550
 %patch -P 37 -p1
 %endif
@@ -503,7 +501,8 @@ cd build-dir
 %if 0%{?cross:1}
 make -k check CFLAGS="-O2 -g" CXXFLAGS="-O2 -g" CFLAGS_FOR_TARGET="-O2 -g" CXXFLAGS_FOR_TARGET="-O2 -g" || %{make_check_handling}
 %else
-make -k check CFLAGS="-g $RPM_OPT_FLAGS" CXXFLAGS="-g $RPM_OPT_FLAGS" CFLAGS_FOR_TARGET="-g $RPM_OPT_FLAGS" CXXFLAGS_FOR_TARGET="-g $RPM_OPT_FLAGS" || %{make_check_handling}
+# _FORTIFY_SOURCE does not work with -O0
+make -k check CFLAGS="-g $RPM_OPT_FLAGS -U_FORTIFY_SOURCE" CXXFLAGS="-g $RPM_OPT_FLAGS -U_FORTIFY_SOURCE" CFLAGS_FOR_TARGET="-g $RPM_OPT_FLAGS -U_FORTIFY_SOURCE" CXXFLAGS_FOR_TARGET="-g $RPM_OPT_FLAGS -U_FORTIFY_SOURCE" || %{make_check_handling}
 %endif
 
 %install

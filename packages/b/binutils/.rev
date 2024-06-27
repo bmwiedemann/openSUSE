@@ -2268,4 +2268,13 @@ there were some variations in .gcda files
 that rarely could lead to variations in optimized finaly binaries (forwarded request 1171128 from bmwiedemann)</comment>
     <requestid>1171312</requestid>
   </revision>
+  <revision rev="171" vrev="4">
+    <srcmd5>8972e46073eeb2e8338846b2a89adb90</srcmd5>
+    <version>2.42</version>
+    <time>1719496659</time>
+    <user>anag+factory</user>
+    <comment>- binutils-pr22868.diff: Remove obsolete patch
+- Undefine _FORTIFY_SOURCE when running checks (forwarded request 1180350 from Andreas_Schwab)</comment>
+    <requestid>1183197</requestid>
+  </revision>
 </revisionlist>

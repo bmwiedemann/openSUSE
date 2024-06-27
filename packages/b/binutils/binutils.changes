@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 13 08:35:38 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- binutils-pr22868.diff: Remove obsolete patch
+- Undefine _FORTIFY_SOURCE when running checks
+
+-------------------------------------------------------------------
 Wed May  1 09:52:29 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Allow to disable profiling
