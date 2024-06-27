@@ -47,4 +47,16 @@
     <comment></comment>
     <requestid>1108030</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>641369bb709da6405dfb523de6e29049</srcmd5>
+    <version>1.39.0</version>
+    <time>1719497082</time>
+    <user>anag+factory</user>
+    <comment>Update to 1.39
+
+
+
+(🤖: Submission of broot via https://src.opensuse.org/pool/broot/pulls/1 by MSirringhaus)</comment>
+    <requestid>1183536</requestid>
+  </revision>
 </revisionlist>

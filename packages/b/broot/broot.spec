@@ -17,7 +17,7 @@
 
 
 Name:           broot
-Version:        1.22.1
+Version:        1.39.0
 Release:        0
 Summary:        A better way to navigate directories
 License:        GPL-2.0-only AND MIT AND MPL-2.0
@@ -25,7 +25,6 @@ URL:            https://dystroy.org/broot/
 Source0:        https://github.com/Canop/broot/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        %{name}.changes
-Source3:        cargo_config
 BuildRequires:  cargo-packaging
 
 %description
@@ -34,8 +33,6 @@ Tree-like commandline directory navigator written in Rust.
 
 %prep
 %setup -qa 1
-mkdir .cargo
-cp %{SOURCE3} .cargo/config
 
 %build
 %cargo_build

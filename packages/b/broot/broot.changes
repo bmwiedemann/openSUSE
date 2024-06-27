@@ -1,4 +1,127 @@
 -------------------------------------------------------------------
+Thu Jun 27 07:14:22 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to v1.39.0
+  * `:open_trash` shows the content of the trash. Other new internals & verbs: `:delete_trashed_file`, `:restore_trashed_file`, `:purge_trash`
+  * it's now possible to remove a default keybinding by defining a verb with no execution
+  * fix build on Android - thanks @dead10ck
+
+- Update to v1.38.0
+  * `-{flags}` verb lets you change the state the same way you do it at start, eg `:-sd` to show sizes and dates
+  * calling `:focus` on the tree root now goes up the tree (experimental)
+
+- Update to v1.37.0
+  * optionally display lines surrounding a matching line in preview, with `lines_before_match_in_preview` and  `lines_after_match_in_preview`
+  * filtered preview: jump between matches with `:next_match` (default: `tab`) and `:previous_match` (default `shift-tab`)
+  * display setuid, setgid and sticky bits in permission
+
+- Update to v1.36.1
+  * fix ANSI code leaking to the input on start on Mac
+
+- Update to v1.36.0
+  * releases at github should be more `cargo binstall` friendly
+  * improved `--help`
+  * new `:stage_all_directories` internal
+  * `:print_tree` is one line shorter, so as to let the original shell command visible without scroll
+  * fix and document the "kitty-csi-check" optional feature which can be enabled at compilation
+
+- Update to v1.35.0
+  * Nerdfont icon theme
+
+- Update to v1.34.0
+  * new `--verb-output` launch argument, dedicated to the new `:clear_output` and `:write_output` internals
+  * verb sequences (based on `cmd`) can take arguments from the verb invocation
+  * don't fail launch in case of bad verb configuration, more helpful error message in such case
+  * faster kitty image rendering by default
+  * `{file-git-relative}` verb argument
+  * modify nushell function import: `use` instead of `source`
+  * fix some resizing and flickering problems on Windows (appeared with 1.33.0)
+  * write `installed` flag file on `--install`
+
+- Update to v1.33.1
+  * fix the release's version
+
+- Update to v1.33.0
+  * on terminals supporting the kitty keyboard protocol, you can now define and use key combinations like `space-n`, `ctrl-alt-a-b`, `shift-space-c`, `ctrl-enter`, etc.
+  * new syntax for special paths
+
+- Update to v1.32.0
+  * with "modal" enabled, `initial_mode` setting lets you choose whether to start in `input` mode or `command` mode (default)
+
+- Update to v1.31.0
+  * keep broot's work dir synchronized with the root of the current panel. Can be disabled in conf with `update_work_dir: false`
+  * fix `:trash` internal not working on staged files
+
+- Update to v1.30.2
+  * don't canonicalize paths on windows on new panels
+
+- Update to v1.30.1
+  * nushell script: replace the deprecated `def-env` with `def --env`
+
+- Update to v1.30.0
+  * `:trash` internal - I'd like feedback on this one
+  * solve symlinks on `:panel_right` to display the dest path and the dest filesystem
+  * `:panel_right` on a directory now removes the filter
+  * more '~' expansion in verb arguments
+
+- Update to v1.29.0
+  * `terminal_title` option in configuration
+  * `:toggle_tree` internal and `--tree` and `--no-tree` launch flags (experimental, feedback welcome)
+  * `{git-name}` verb argument
+
+- Update to v1.28.1
+  * fix a regression in handling of rooted gitignore patterns
+
+- Update to v1.28.0
+  * left and right keys bound to verbs can be used when the input isn't empty, if they would have no effect to the input
+  * default_flags now accept long parameters, including --cmd
+  * gitignore: fix relative patterns with several tokens
+
+- Update to v1.27.0
+  * the `apply_to` verb filter accepts new values: `text_file` and `binary_file`. Broot users editing files in their terminal (vi, emacs, etc.) should configure broot to open their text editor on `enter`: see https://dystroy.org/broot/tricks/#change-standard-file-opening
+  * small breaking change: `:stage_all_files` now stages also symlinks
+  * new `{git-root}` verb argument
+  * fix a freeze on windows when launching a search with `-c`
+  * fix automatic preview pattern not escaping spaces and colons
+
+- Update to v1.26.1
+  * improved status line
+
+- Update to v1.26.0
+  * when given a path to a file at launch, broot now selects it in the tree and opens it in preview
+  * allow rebinding of the 'tab' and 'esc' keys with the `:next_match` and `:escape` internals
+  * fix fuzzy patterns not case insensitive on some characters
+
+- Update to v1.25.2
+  * optional BROOT_CONFIG_DIR env var - the site now shows all env variables: https://dystroy.org/broot/launch/#environment-variables
+  * `--only-folders` now longer allows symlinks to non directories
+
+- Update to v1.25.1
+  * fix shift-char in input extending the selection
+
+- Update to v1.25.0
+  * allow unescaped '::' in pattern position, experimental (might be removed)
+  * allow hexa color notation in skins (eg `#fb0` or `#FFD700`)
+
+- Update to v1.24.2
+  * fix a case of br script installation failing on Windows/Powershell
+
+- Update to v1.24.1
+  * slightly better `--help`
+
+- Update to v1.24.0
+  * installer for the powershell br script on windows
+  * new `--help`, more compact
+  * allow extra spaces before the verb
+  * updated man page, now distributed in releases as /man/broot.1
+
+- Update to v1.23.0
+  * prettier, faster SVG rendering
+  * reorganize default conf files, with a "skins" subfolder
+
+- Remove cargo_config, which is now part of the vendor-tarball
+
+-------------------------------------------------------------------
 Tue Aug 29 16:02:03 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Adjust package license based on the legaldb scan 
