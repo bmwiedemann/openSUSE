@@ -16,22 +16,18 @@
 #
 
 
-%global _default_patch_fuzz 2
-
 Name:           mingw32-binutils
-Version:        2.39
+Version:        2.42
 Release:        0
 Summary:        GNU Binutils
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries
 URL:            http://www.gnu.org/software/binutils/
 Source:         http://ftp.gnu.org/gnu/binutils/binutils-%{version}.tar.xz
+Source1:        http://ftp.gnu.org/gnu/binutils/binutils-%{version}.tar.xz.sig
+Source2:        mingw32-binutils.keyring
 Source99:       mingw32-binutils-rpmlintrc
-Patch0:         0001-PR29362-some-binutils-memory-leaks.patch
-Patch1:         0001-Fix-bug-not-showing-correct-path-with-objdump-WL-wit.patch
-Patch2:         0001-dllwrap-windres-and-dlltools-use-mktemp-which-should.patch
-Patch3:         reproducible.patch
-Patch4:         binutils-2.39-option-high-entry-va.patch
+Patch0:         binutils-2.42-option-high-entry-va.patch
 #!BuildIgnore: post-build-checks
 BuildRequires:  bison
 BuildRequires:  flex
@@ -77,6 +73,13 @@ cd build
 
 rm -f %{buildroot}%{_mingw32_infodir}/dir
 
+# mingw32-binutils.noarch: E: zero-length .../lib/ldscripts/stamp
+for i in %{buildroot}%{_mingw32_prefix}/%{_mingw32_target}/lib/ldscripts/stamp; do
+  if test -f $i; then
+    rm $i
+  fi
+done
+
 %files
 %{_mingw32_bindir}/*.exe
 %{_mingw32_prefix}/%{_mingw32_target}/bin/*.exe
@@ -91,8 +94,9 @@ rm -f %{buildroot}%{_mingw32_infodir}/dir
 %{_mingw32_libdir}/libbfd.a
 %{_mingw32_libdir}/libctf.a
 %{_mingw32_libdir}/libctf-nobfd.a
-%{_mingw32_libdir}/libopcodes.a
 # required by libbfd.a
 %{_mingw32_libdir}/libiberty.a
+%{_mingw32_libdir}/libopcodes.a
+%{_mingw32_libdir}/libsframe.a
 
 %changelog

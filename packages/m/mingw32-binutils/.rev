@@ -71,4 +71,53 @@
     <comment></comment>
     <requestid>1178230</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>42d5947f4c91649f79d0338f35178a0c</srcmd5>
+    <version>2.42</version>
+    <time>1719497032</time>
+    <user>anag+factory</user>
+    <comment>- Fixes:
+  * mingw32-binutils.spec: W: patch-fuzz-is-changed
+  * &quot;mingw32-binutils.keyring&quot; is not mentioned in spec files as
+    source or patch
+  * mingw32-binutils.noarch: E: zero-length 
+    /usr/i686-w64-mingw32/sys-root/mingw/lib/ldscripts/stamp
+  * mingw32-binutils.src: E: unused-rpmlintrc-filter 
+    &quot;arch-independent-package-contains-binary-or-object&quot;
+- Fix &quot;binutils-2.42.tar.xz.sig&quot; is not mentioned in spec files as
+  source or patch.
+- Update to version 2.42
+- Add mingw32-binutils.keyring
+- Removed patches that were included in the official version
+   * 0001-dllwrap-windres-and-dlltools-use-mktemp-which-should.patch
+   * 0001-Fix-bug-not-showing-correct-path-with-objdump-WL-wit.patch
+   * 0001-PR29362-some-binutils-memory-leaks.patch
+   * reproducible.patch
+- Add patch 
+   * binutils-2.42-option-high-entry-va.patch
+- Removed patch
+   * binutils-2.39-option-high-entry-va.patch
+- Fixes:
+  * mingw32-binutils.spec: W: patch-fuzz-is-changed
+  * &quot;mingw32-binutils.keyring&quot; is not mentioned in spec files as
+    source or patch
+  * mingw32-binutils.noarch: E: zero-length 
+    /usr/i686-w64-mingw32/lib/ldscripts/stamp
+  * mingw32-binutils.src: E: unused-rpmlintrc-filter 
+    &quot;arch-independent-package-contains-binary-or-object&quot;
+- Fix &quot;binutils-2.42.tar.xz.sig&quot; is not mentioned in spec files as
+  source or patch.
+- Update to version 2.42
+- Removed patches that were included in the official version
+   * 0001-dllwrap-windres-and-dlltools-use-mktemp-which-should.patch
+   * 0001-Fix-bug-not-showing-correct-path-with-objdump-WL-wit.patch
+   * 0001-PR29362-some-binutils-memory-leaks.patch
+   * reproducible.patch
+- Add patch 
+   * binutils-2.42-option-high-entry-va.patch
+- Removed patch
+   * binutils-2.39-option-high-entry-va.patch
+</comment>
+    <requestid>1183496</requestid>
+  </revision>
 </revisionlist>
