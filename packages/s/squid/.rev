@@ -1253,4 +1253,18 @@ and CVE references,
   denial of service (bsc#1225417, CVE-2024-33427)</comment>
     <requestid>1177317</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>6edca89e7db3b255f606a7485fc96638</srcmd5>
+    <version>6.10</version>
+    <time>1719497089</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.10
+  - ESI: Disable by default (#1728)
+  - Bug 5378: type mismatch in libTrie (#1830) (bsc#1227086, CVE-2024-37894)
+  - testCacheManager: use cppunit exception tests (#1811)
+  - testRandomUuid: use cppunit exception tests (#1814)
+  - Docs: REQUIRED in ident_regex, proxy_auth_regex, ext_user_regex (#1818)
+  - Fix build with clang v18 [-Wvla-cxx-extension] (#1813) (#1817)</comment>
+    <requestid>1183540</requestid>
+  </revision>
 </revisionlist>

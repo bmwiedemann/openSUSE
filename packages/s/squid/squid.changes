@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 27 07:00:50 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- update to 6.10
+  - ESI: Disable by default (#1728)
+  - Bug 5378: type mismatch in libTrie (#1830) (bsc#1227086, CVE-2024-37894)
+  - testCacheManager: use cppunit exception tests (#1811)
+  - testRandomUuid: use cppunit exception tests (#1814)
+  - Docs: REQUIRED in ident_regex, proxy_auth_regex, ext_user_regex (#1818)
+  - Fix build with clang v18 [-Wvla-cxx-extension] (#1813) (#1817)
+
+-------------------------------------------------------------------
 Tue May 28 08:39:49 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - update to 6.9

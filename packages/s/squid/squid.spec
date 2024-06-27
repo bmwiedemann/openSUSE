@@ -24,17 +24,14 @@
 %define         squidhelperdir %{_sbindir}
 %endif
 Name:           squid
-Version:        6.9
+Version:        6.10
 Release:        0
 Summary:        Caching and forwarding HTTP web proxy
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Proxy
 URL:            http://www.squid-cache.org
-### commented because of mirror issues...
-#Source0:        http://www.squid-cache.org/Versions/v6/squid-%{version}.tar.xz
-#Source1:        http://www.squid-cache.org/Versions/v6/squid-%{version}.tar.xz.asc
-Source0:        squid-%{version}.tar.xz
-Source1:        squid-%{version}.tar.xz.asc
+Source0:        http://www.squid-cache.org/Versions/v6/squid-%{version}.tar.xz
+Source1:        http://www.squid-cache.org/Versions/v6/squid-%{version}.tar.xz.asc
 Source5:        pam.squid
 Source6:        unsquid.pl
 Source7:        %{name}.logrotate
