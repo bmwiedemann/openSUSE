@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun 26 08:18:40 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to 5.0.3
+  - Fix HAN MPI_Scatter intra-node data count and type 
+  - Add missing write memory barrier in btl/smcuda 
+  - Fix MPI_Alltoallv and MPI_Ialltoallv data count and type check
+  - Enhance cuda-aware build by detecting default --with-cuda-lib value
+  - Enhance ofi NIC selection logic
+  - Fix an illegal memory access bug in mtl/ofi
+  - Multiple bugfixes in rocm accelerator 
+  - Fix a double free bug in oshmem
+  - Add missing oshmem headers
+  - Fix uninitialized lock in btl/usnic
+  - Fix uninitialized mutex in file_open
+  - Fix compiler warnings about unused cid_base variable
+  - Enhance autogen submodule checks
+  - Various document updates
+
+-------------------------------------------------------------------
 Mon Mar 25 07:40:50 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to v5.0.2

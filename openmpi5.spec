@@ -42,7 +42,7 @@
 # % define build_static_devel 1
 
 %define pname openmpi
-%define _vers 5_0_2
+%define _vers 5_0_3
 %define m_f_ver 5
 %bcond_with ringdisabled
 
@@ -113,7 +113,7 @@ ExclusiveArch:  do_not_build
 %global hpc_openmpi_pack_version %{hpc_openmpi_dep_version}
 %endif
 
-%define git_ver .0.6db5e83b737a
+%define git_ver .0.9cc951b192bf
 
 #############################################################################
 #
@@ -122,7 +122,7 @@ ExclusiveArch:  do_not_build
 #############################################################################
 
 Name:           %{package_name}%{?testsuite:-testsuite}
-Version:        5.0.2
+Version:        5.0.3
 Release:        0
 Summary:        An implementation of MPI/SHMEM (Version %{m_f_ver})
 License:        BSD-3-Clause
@@ -634,7 +634,7 @@ fi
 
 %files
 %defattr(-, root, root)
-%doc docs/news/news-v5.0.x.rst README.md
+%doc docs/release-notes/changelog/v5.0.x.rst README.md
 %license LICENSE
 %dir %{mpi_prefix}
 %dir %{mpi_bindir}
@@ -657,6 +657,7 @@ fi
 %{mpi_bindir}/oshrun
 %{mpi_bindir}/mpirun
 %{mpi_bindir}/ompi_info
+%{mpi_bindir}/palloc
 %{mpi_bindir}/pattrs
 %{mpi_bindir}/pctrl
 %{mpi_bindir}/pevent
