@@ -1,8 +1,8 @@
-Index: openshot-qt-3.0.0/src/settings/_default.settings
+Index: openshot-qt-3.2.0/src/settings/_default.settings
 ===================================================================
---- openshot-qt-3.0.0.orig/src/settings/_default.settings
-+++ openshot-qt-3.0.0/src/settings/_default.settings
-@@ -385,7 +385,7 @@
+--- openshot-qt-3.2.0.orig/src/settings/_default.settings
++++ openshot-qt-3.2.0/src/settings/_default.settings
+@@ -379,7 +379,7 @@
      "restart": true
    },
    {

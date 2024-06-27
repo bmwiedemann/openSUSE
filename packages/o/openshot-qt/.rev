@@ -76,4 +76,41 @@
     <comment></comment>
     <requestid>1151878</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ad2b016a4cca67e94b1fc44372f6fdc5</srcmd5>
+    <version>3.2.0</version>
+    <time>1719496991</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.2.0:
+  * Large Theme &amp; User Experience refactor (Added new Retro &amp; Cosmic Dusk theme)
+  * Improved Timeline Snapping and behaviors
+  * New Remove Gap feature (to remove unwanted gaps between clips)
+  * Improved Split Clip and Preview dialog functionality
+  * New Playhead and Marker icons (for all themes)
+  * Support for Blender 4.1, and improved Blender animations
+  * Use friendly name on timeline (i.e. when split clip or updating file names)
+  * Improved Undo / Redo functionality (better transaction support, more stable)
+  * Improved high DPI display support
+  * Improved Tracker / Object Detection effects (more features, more stable)
+  * Improved Parent property (for use with Tracker / Object Detection effects)
+  * Improved Property Editor functionality
+  * Improved font handling in Title editor (for AppImage)
+  * Added new Not Found thumbnail image for missing or corrupt files
+  * Updated scale x and y limits in property dialog (to prevent crashes due to large numbers)
+  * Updated Help Menu Icons with new Discord option
+  * Fixed top Sentry.io &amp; Codacy issues
+  * Fixed many keyboard bindings which did not work
+  * Improvements to AppImage for better compatibility with modern distros
+  * Added Windows Manifest to improve High DPI support on Windows
+  * Moved Save Current Frame to file menu (no more button)
+  * Adding Shear X and Shear Y to Copy menu and Copy All Keyframes menu
+  * Fixed Mac OS notarization errors (build server)
+  * Updated Translations &amp; Supporters
+  * Huge update to User Guide documentation (aimed at improving knowledge for RAG LLM support bot... and humans)
+  * Experimental support for Java bindings added
+  * Adding Effect Sequencing (Before or After keyframes are applied)
+  * Compatibility with FFMPEG 7.0 improved
+  * Improved FFmpegReader audio processing performance</comment>
+    <requestid>1183485</requestid>
+  </revision>
 </revisionlist>

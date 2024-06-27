@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Jun 25 12:15:48 UTC 2024 - info@paolostivanin.com
+
+- Update to version 3.2.0:
+  * Large Theme & User Experience refactor (Added new Retro & Cosmic Dusk theme)
+  * Improved Timeline Snapping and behaviors
+  * New Remove Gap feature (to remove unwanted gaps between clips)
+  * Improved Split Clip and Preview dialog functionality
+  * New Playhead and Marker icons (for all themes)
+  * Support for Blender 4.1, and improved Blender animations
+  * Use friendly name on timeline (i.e. when split clip or updating file names)
+  * Improved Undo / Redo functionality (better transaction support, more stable)
+  * Improved high DPI display support
+  * Improved Tracker / Object Detection effects (more features, more stable)
+  * Improved Parent property (for use with Tracker / Object Detection effects)
+  * Improved Property Editor functionality
+  * Improved font handling in Title editor (for AppImage)
+  * Added new Not Found thumbnail image for missing or corrupt files
+  * Updated scale x and y limits in property dialog (to prevent crashes due to large numbers)
+  * Updated Help Menu Icons with new Discord option
+  * Fixed top Sentry.io & Codacy issues
+  * Fixed many keyboard bindings which did not work
+  * Improvements to AppImage for better compatibility with modern distros
+  * Added Windows Manifest to improve High DPI support on Windows
+  * Moved Save Current Frame to file menu (no more button)
+  * Adding Shear X and Shear Y to Copy menu and Copy All Keyframes menu
+  * Fixed Mac OS notarization errors (build server)
+  * Updated Translations & Supporters
+  * Huge update to User Guide documentation (aimed at improving knowledge for RAG LLM support bot... and humans)
+  * Experimental support for Java bindings added
+  * Adding Effect Sequencing (Before or After keyframes are applied)
+  * Compatibility with FFMPEG 7.0 improved
+  * Improved FFmpegReader audio processing performance
+  * Auto-resize capability added to Crop effect
+  * Removed queuing and spooling in FFmpegWriter to reduce complexity
+  * Fixed race condition in clip parenting
+  * Lots of misc bug fixes
+
+-------------------------------------------------------------------
 Mon Feb 26 12:48:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
