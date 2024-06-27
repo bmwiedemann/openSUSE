@@ -17,14 +17,16 @@
 
 
 Name:           sopwith
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        SDL port of the %{name} game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Arcade
 URL:            https://github.com/fragglet/sdl-sopwith
 Source0:        https://github.com/fragglet/sdl-sopwith/releases/download/sdl-sopwith-%{version}/sdl-sopwith-%{version}.tar.gz
-Source1:        %{name}.png
+Source1:        https://github.com/fragglet/sdl-sopwith/releases/download/sdl-sopwith-%{version}/sdl-sopwith-%{version}.tar.gz.asc
+Source2:        %{name}.keyring
+Source3:        %{name}.png
 BuildRequires:  SDL2-devel
 BuildRequires:  SDL2_gfx-devel
 BuildRequires:  desktop-file-utils
@@ -62,12 +64,16 @@ desktop-file-install --delete-original \
   %{name}.desktop
 
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/72x72/apps/
-cp %{SOURCE1} %{buildroot}%{_datadir}/icons/hicolor/72x72/apps/
+cp %{SOURCE3} %{buildroot}%{_datadir}/icons/hicolor/72x72/apps/
+mkdir -p %{buildroot}%{_datadir}/%{name}/maps
+cp -r maps %{buildroot}%{_datadir}/%{name}
 
 %files
 %license COPYING.md
 %doc FAQ.md NEWS.md README.md TODO doc/origdoc.txt
 %{_bindir}/%{name}
+%{_datadir}/%{name}/
+%{_datadir}/%{name}/*
 %{_mandir}/man5/sopwith.cfg.5%{?ext_man}
 %{_mandir}/man6/%{name}*
 %{_datadir}/applications/*%{name}.desktop
