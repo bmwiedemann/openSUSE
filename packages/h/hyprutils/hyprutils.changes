@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jun 26 12:12:54 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.1.5:
+  + A small update with a few patches.
+  + Fixes:
+    - Math: fixed macro collisions with hyprland
+  + Other:
+    - Added some constants to handle floating point presicion
+      comparisons
+    - Minor Box improvements
+
+- Changes from version 0.1.4:
+  + This is an update that adds a few new stuff under Math
+  + Additions:
+    - Math: added Vector2D, Region and Box
+
+- Changes from version 0.1.3:
+  + A small update to fix String::isNumber sometimes being wrong.
+  + Fixes:
+    - String: fix isNumber accepting - as a number
+
+-------------------------------------------------------------------
 Thu Jun 13 16:58:17 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Initial packaging of hyprutils 0.1.2

@@ -16,10 +16,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define sover 0
 
 Name:           hyprutils
-Version:        0.1.2
+Version:        0.1.5
 Release:        0
 Summary:        Utilities used across the Hypr* ecosystem
 License:        BSD-3-Clause
@@ -27,6 +28,7 @@ URL:            https://github.com/hyprwm/hyprutils
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++ >= 9
+BuildRequires:  pkgconfig(pixman-1)
 
 %package -n lib%{name}%{sover}
 Summary:        Library for the hyprland cursor format
