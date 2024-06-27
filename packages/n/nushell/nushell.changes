@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jun 26 03:02:25 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.95.0:
+  * External command parsing improvements.
+  * Plugin version reporting.
+  * New `$nu.data-dir` and `$nu.cache-dir` constants.
+  * Breaking changes:
+    - `path type`.
+    - `to toml`.
+    - `help commands`
+    - `str contains --not`.
+    - `sys`.
+    - `run-external`.
+  * Deprecations:
+    - `for --numbered`.
+  * Other changes:
+    - String command parse-time evaluation.
+    - Range slice changes.
+    - `from toml`.
+    - `sys users`.
+    - `into filesize`.
+    - `explore`.
+  * For a full list of changes with detailed descriptions, see:
+    - https://www.nushell.sh/blog/2024-06-25-nushell_0_95_0.html
+
+-------------------------------------------------------------------
 Fri Jun 14 15:44:10 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Removed post scriptlets that add and remove shells in /etc/shells. 

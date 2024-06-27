@@ -6,7 +6,7 @@
     <param name="scm">git</param>
     <param name="version">git-master</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">0.94.2</param>
+    <param name="revision">0.95.0</param>
     <param name="changesgenerate">disable</param>
     <param name="changesauthor">dead_mozay@opensuse.org</param>
   </service>
