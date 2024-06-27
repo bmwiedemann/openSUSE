@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 24 17:51:06 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 2.3.9:
+  * Increase version number
+  * Update rootcerts.pem
+  * cmake: Remove old way to find gcrypt
+  * Fix build with libgcrypt-1.11
+  * CI: Build all plugins
+  * gitignore: add VS Code dir
+  * Replace deprecated qAsConst() with std::as_const()
+  * cmake: Enable C++17
+  * Fix use of deprecated QString::count()
+
+-------------------------------------------------------------------
 Fri Jan 19 08:41:49 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 2.3.8+git1:

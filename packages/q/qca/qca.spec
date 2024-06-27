@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package qca
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -36,10 +36,10 @@ ExclusiveArch:  do_not_build
 %endif
 #
 %define _soversion 2
-%define realversion 2.3.8
+%define realversion 2.3.9
 %bcond_without pkcs11
 Name:           qca%{pkgname_suffix}
-Version:        2.3.8+git1
+Version:        2.3.9
 Release:        0
 Summary:        Qt Cryptographic Architecture 2
 License:        LGPL-2.1-or-later
