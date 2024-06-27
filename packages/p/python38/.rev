@@ -869,4 +869,14 @@ Core and Builtins
   condition in ssl.SSLContext certificate store methods.</comment>
     <requestid>1182492</requestid>
   </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>ac38c564b1842377af2d4e0a2a2c8ad5</srcmd5>
+    <version>3.8.19</version>
+    <time>1719497044</time>
+    <user>anag+factory</user>
+    <comment>- Add CVE-2024-4032-private-IP-addrs.patch to fix bsc#1226448
+  (CVE-2024-4032) rearranging definition of private v global IP
+  addresses.</comment>
+    <requestid>1183507</requestid>
+  </revision>
 </revisionlist>
