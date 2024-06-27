@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 26 07:08:14 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.27.15:
+  * Bump images, dependencies and versions to go 1.21.11 and distroless iptables
+  * Don't fill in NodeToStatusMap with UnschedulableAndUnresolvable
+  * Revert "scheduler: preallocation for NodeToStatusMap"
+  * add an integration test when nodeAffinity specifies a non-existent node.
+  * base on allNodes when calculating nextStartNodeIndex
+  * backport verify-govulncheck.sh
+  * Cherry pick #124618 to 1.27
+  * Fix NFS related issues on GCP/Ubuntu
+  * Updated & added visibility to apiserver x509 test certificates expiring this year
+
+-------------------------------------------------------------------
 Fri May 17 05:02:25 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.27.14:

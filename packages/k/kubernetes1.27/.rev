@@ -104,4 +104,12 @@
     <comment>May, 2024 patch release update: Kubernetes v1.27.14</comment>
     <requestid>1174725</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>da95367ffa677c6935e288acf3cee259</srcmd5>
+    <version>1.27.15</version>
+    <time>1719496871</time>
+    <user>anag+factory</user>
+    <comment>Monthly Patch Release – June, 2024: Update to version 1.27.15</comment>
+    <requestid>1183313</requestid>
+  </revision>
 </revisionlist>
