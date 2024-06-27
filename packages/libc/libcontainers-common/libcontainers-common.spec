@@ -38,8 +38,7 @@ Source1:        storage-%{storagever}.tar.xz
 Source2:        LICENSE
 # https://raw.githubusercontent.com/containers/skopeo/main/default-policy.json
 Source3:        https://raw.githubusercontent.com/containers/skopeo/v%{skopeover}/default-policy.json#./policy.json
-# https://github.com/containers/storage/blob/main/storage.conf + custom changes
-Source4:        storage.conf
+Source4:        https://raw.githubusercontent.com/containers/storage/v%{storagever}/storage.conf
 # heavily modified version of https://github.com/containers/common/blob/main/pkg/subscriptions/mounts.conf
 Source5:        mounts.conf
 # https://raw.githubusercontent.com/containers/image/main/registries.conf with our own registries inserted
@@ -52,6 +51,8 @@ Source10:       %{name}.rpmlintrc
 Source11:       https://raw.githubusercontent.com/containers/shortnames/v%{shortnamesver}/shortnames.conf
 Source12:       openSUSE-policy.json
 Patch100:       0001-containers.conf-SUSE-clear-cni-config-dir-for-ALP.patch
+# Downstream patch to add the commented out storage driver priority list
+Patch101:       storage-conf-prio-list.patch
 BuildRequires:  go-go-md2man
 Requires(post): %{_bindir}/sed
 # add SLE-specific mounts for only SLES systems
@@ -126,6 +127,8 @@ cp %{SOURCE9} .
 %patch -P100 -p3
 sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %_builddir/containers.conf
 %endif
+cp %{SOURCE4} .
+%patch -P101
 
 %setup -q -Tcq -b0 -b1 -b8
 # copy the LICENSE file in the build root
@@ -183,7 +186,7 @@ install -d -m 0755 %{buildroot}/%{_datadir}/containers/systemd
 install -D -m 0644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/containers/policy.json.default
 install -D -m 0644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/containers/policy.json.openSUSE
 install -D -m 0644 %{SOURCE5} %{buildroot}/%{_datadir}/containers/mounts.conf
-install -D -m 0644 %{SOURCE4} %{buildroot}/%{_datadir}/containers/storage.conf
+install -D -m 0644 storage.conf %{buildroot}/%{_datadir}/containers/storage.conf
 install -D -m 0644 %{SOURCE11} %{buildroot}/%{_sysconfdir}/containers/registries.conf.d/000-shortnames.conf
 install -D -m 0644 %{SOURCE7} %{buildroot}/%{_sysconfdir}/containers/registries.d/default.yaml
 install -D -m 0644 %_builddir/containers.conf %{buildroot}/%{_datadir}/containers/containers.conf
@@ -205,9 +208,19 @@ install -D -m 0644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/containers/policy.json
 install -D -m 0644 %{SOURCE6} %{buildroot}/%{_sysconfdir}/containers/registries.conf.default
 install -D -m 0644 registries.conf.suse %{buildroot}/%{_sysconfdir}/containers/registries.conf.suse
 
+%pre
+for i in %{_sysconfdir}/containers/{mounts.conf,seccomp.json,storage.conf} ; do
+  test -f ${i}.rpmsave && mv -v ${i}.rpmsave ${i}.rpmsave.old ||:
+done
+
 %post
 # Comment out ostree_repo if it's blank [boo#1189893]
 if [ -f %{_sysconfdir}/containers/storage.conf ]; then sed -i 's/ostree_repo = ""/\#ostree_repo = ""/g' %{_sysconfdir}/containers/storage.conf; fi
+
+%posttrans
+for i in %{_sysconfdir}/containers/{mounts.conf,seccomp.json,storage.conf} ; do
+  test -f ${i}.rpmsave && mv -v ${i}.rpmsave ${i} ||:
+done
 
 %files
 %dir %{_sysconfdir}/containers

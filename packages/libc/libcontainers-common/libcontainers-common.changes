@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jun 24 13:32:55 UTC 2024 - Danish Prakash <danish.prakash@suse.com>
+
+- While migrating config files from /etc/containers/ to /usr/share/containers/,
+  preserve config files *if* modified by the user (fixes bsc#1226825).
+
+-------------------------------------------------------------------
+Mon Jun 24 07:46:23 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- update storage.conf & containers.conf to latest versions from upstream
+
+  The only functional changes are in storage.conf:
+  * change storage.options.pull_options.enable_partial_images from false to true
+  * change storage.options.overlay.mount_options from `mountopt =
+    "nodev,metacopy=on"` to `mountopt = "nodev"`
+
+- add download_files service to fetch the latest config on `osc service mr`
+- add storage-conf-prio-list.patch that modifies the upstream storage.conf to
+  add our storage driver priority list
+
+-------------------------------------------------------------------
 Tue Jun 18 06:53:50 UTC 2024 - Danish Prakash <danish.prakash@suse.com>
 
 - Move the following distro configs files to /usr/share/containers/:

@@ -1,0 +1,15 @@
+Index: storage.conf
+===================================================================
+--- storage.conf	(revision 47301679d738dc753ca159ab9b151da5)
++++ storage.conf	(working copy)
+@@ -19,6 +19,10 @@
+ # Temporary storage location
+ runroot = "/run/containers/storage"
+ 
++# Priority list for the storage drivers that will be tested one
++# after the other to pick the storage driver if it is not defined.
++# driver_priority = ["btrfs", "overlay"]
++
+ # Primary Read/Write location of container storage
+ # When changing the graphroot location on an SELINUX system, you must
+ # ensure  the labeling matches the default locations labels with the

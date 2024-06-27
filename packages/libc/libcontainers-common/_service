@@ -1,4 +1,5 @@
 <services>
+  <service name="download_files" mode="manual"/>
   <service name="tar_scm" mode="manual">
     <param name="url">https://github.com/containers/storage.git</param>
     <param name="scm">git</param>
