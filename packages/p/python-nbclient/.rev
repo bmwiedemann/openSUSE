@@ -315,4 +315,12 @@
     (@wpk-nist-gov)</comment>
     <requestid>1163579</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>fd7ea3dab5aff3482a8ed2068d9aaf04</srcmd5>
+    <version>0.10.0</version>
+    <time>1719496840</time>
+    <user>anag+factory</user>
+    <comment>- Remove upper bound on pytest.</comment>
+    <requestid>1183266</requestid>
+  </revision>
 </revisionlist>

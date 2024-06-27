@@ -62,7 +62,7 @@ BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module nbclient = %{version}}
 BuildRequires:  %{python_module nbconvert >= 7}
-BuildRequires:  %{python_module pytest >= 7 with %python-pytest < 8}
+BuildRequires:  %{python_module pytest >= 7}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module testpath}
 BuildRequires:  %{python_module xmltodict}

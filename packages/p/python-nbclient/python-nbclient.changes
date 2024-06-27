@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 26 01:36:57 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove upper bound on pytest. 
+
+-------------------------------------------------------------------
 Fri Mar 29 18:45:22 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.10.0
