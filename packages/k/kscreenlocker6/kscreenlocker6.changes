@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 25 17:13:16 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.1
+- Changes since 6.1.0:
+  * greeter: Fix Shader Wallpaper plugin and possibly others
+  * ksldapp: add a signal for when the greeter is (re)started
+  * greeter: don't start authenticating during the grace lock time (kde#476567)
+  * update version for new release
+
+-------------------------------------------------------------------
 Thu Jun 13 10:58:31 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.0:
