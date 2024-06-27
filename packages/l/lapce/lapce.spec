@@ -28,6 +28,8 @@ Source1:        vendor.tar.zst
 %if 0%{?suse_version} > 1600
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
+BuildRequires:  clang
+BuildRequires:  mold
 %else
 BuildRequires:  gcc13
 BuildRequires:  gcc13-c++
@@ -68,8 +70,14 @@ Wgpu Graphics API for rendering.
 %if 0%{?suse_version} <= 1600
 export CC=gcc-13
 export CXX=g++-13
-%endif
 %{cargo_build} --no-default-features -p lapce-app --features all-languages
+%else
+unset LIBSSH2_SYS_USE_PKG_CONFIG
+export RUSTFLAGS="-C linker=clang -C link-arg=-fuse-ld=/usr/bin/mold -C debuginfo=2 -C incremental=false -C strip=none"
+export CARGO_AUDITABLE=auditable
+export CARGO_FEATURE_VENDORED=1
+cargo build --no-default-features -p lapce-app --features all-languages --offline --release
+%endif
 
 %install
 install -Dm 0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildroot}%{_bindir}/%{name}
