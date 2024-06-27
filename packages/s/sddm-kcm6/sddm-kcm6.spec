@@ -23,14 +23,14 @@
 
 %bcond_without released
 Name:           sddm-kcm6
-Version:        6.1.0
+Version:        6.1.1
 Release:        0
 Summary:        A sddm control module for KDE
 License:        GPL-2.0-only
 URL:            https://projects.kde.org/projects/kdereview/sddm-kcm/repository
-Source:         %{rname}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
