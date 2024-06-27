@@ -1251,4 +1251,36 @@
   * Add a HTTP cache for remote resources. (forwarded request 1178765 from jfkw)</comment>
     <requestid>1178772</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>ab64488dc2238006d47ce76e076c14ad</srcmd5>
+    <version>0.128.0</version>
+    <time>1719496837</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.128.0:
+  * deps: Upgrade github.com/yuin/goldmark v1.7.2 =&gt; v1.7.4
+  * Add css.TailwindCSS
+  * Clean up the css related template funcs package structure
+  * Delete unused release hook script
+  * modules: Remove newly introduced &quot;mount source&quot; does not exist warning
+  * deps: Upgrade github.com/yuin/goldmark-emoji v1.0.2 =&gt; v1.0.3
+  * tpl/debug: Fix reset of debug timers when running the server
+  * Implement defer
+  * Fix Erroridf/Warnidf mixed case issue
+  * Update README.md
+  * common/hexec: Fall back to the binary in PATH if npx fails
+  * deploy: Add stripIndexHtml target option
+  * Speed up GetTerms
+  * markup/goldmark: Add the Hugo Goldmark Extras &quot;delete&quot; extension
+  * Fix live reload when both CSS and HTML changes
+  * resources: Update Dart Sass error message
+  * config: Fix typo
+  * resources/page: Deprecate PageSize in favor of PagerSize
+  * Rename DefaultPageSize =&gt; PagerSize
+  * deps: Upgrade github.com/alecthomas/chroma v2.13.0 =&gt; v2.14.0
+  * resources/page: Let GroupByParam return nil instead of error
+  * Add option to not generate aliases for first page of pagination pages
+  * js: Support more recent targets with js.Build / esbuild
+  * deps: Upgrade github.com/evanw/esbuild v0.20.2 =&gt; v0.21.4 (forwarded request 1183240 from jfkw)</comment>
+    <requestid>1183259</requestid>
+  </revision>
 </revisionlist>
