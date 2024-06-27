@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 26 17:14:19 UTC 2024 - maiku.fabian@gmail.com
+
+- Update to 2.25.11
+- Yet another fix to make it possible again to use keys with Unicode keysyms
+  in keybindings and make it work with all known versions of ibus
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/497)
+
+-------------------------------------------------------------------
 Tue Jun 25 10:16:17 UTC 2024 - maiku.fabian@gmail.com
 
 - Update to 2.25.10
