@@ -1,7 +1,7 @@
 #
 # spec file for package python-axolotl-curve25519
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/tgalal/python-axolotl-curve25519
 Source:         https://files.pythonhosted.org/packages/source/p/%{name}/%{name}-%{_version}.tar.gz
 Source1:        https://raw.githubusercontent.com/tgalal/python-axolotl-curve25519/master/LICENSE
+# PATCH-FIX-UPSTREAM - Correct types in PyModuleDef / fix compilation with clang
+Patch:          https://github.com/tgalal/python-axolotl-curve25519/pull/26.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -39,6 +41,7 @@ signatures.
 
 %prep
 %setup -q -n %{name}-%{_version}
+%patch -P0 -p1
 cp -a %{SOURCE1} .
 
 %build
