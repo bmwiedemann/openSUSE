@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package obs-service-go_modules
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,7 @@ URL:            https://github.com/openSUSE/obs-service-%{service}
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  go-md2man
 Requires:       python3-libarchive-c
-Requires:       golang(API) >= 1.21
+Requires:       golang(API) >= 1.22
 BuildArch:      noarch
 %if %{with needs_external_argparse}
 BuildRequires:  %{use_python}-argparse

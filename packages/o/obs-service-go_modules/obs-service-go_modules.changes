@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 27 04:03:11 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update go toolchain to Requires: golang(API) >= 1.22
+  * Recent go toolchain versions enforce use of the minimum
+    toolchain version specified in go.mod
+  * Minimum toolchain requirements are in effect for go commands as
+    well as unit compilation
+  * Users running a version older than specified may see error:
+    go: go.mod requires go >= 1.22 (running go 1.21.10; GOTOOLCHAIN=local)
+  * This package and others which call go toolchain commands will
+    need timely updates to the latest version
+  * Reported by Sheng Huang (psheng)
+  * Closes https://github.com/openSUSE/obs-service-go_modules/issues/49
+
+-------------------------------------------------------------------
 Thu Oct 26 05:05:35 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.6.4:

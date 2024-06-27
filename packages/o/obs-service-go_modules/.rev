@@ -134,4 +134,22 @@
     your _service to use 'manual' and then 'manualrun/mr' instead. (forwarded request 1120423 from jfkw)</comment>
     <requestid>1120424</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>8a70a4fcc26ad8c89c7bdfbfa7af8597</srcmd5>
+    <version>0.6.4</version>
+    <time>1719497060</time>
+    <user>anag+factory</user>
+    <comment>- Update go toolchain to Requires: golang(API) &gt;= 1.22
+  * Recent go toolchain versions enforce use of the minimum
+    toolchain version specified in go.mod
+  * Minimum toolchain requirements are in effect for go commands as
+    well as unit compilation
+  * Users running a version older than specified may see error:
+    go: go.mod requires go &gt;= 1.22 (running go 1.21.10; GOTOOLCHAIN=local)
+  * This package and others which call go toolchain commands will
+    need timely updates to the latest version
+  * Reported by Sheng Huang (psheng)
+  * Closes https://github.com/openSUSE/obs-service-go_modules/issues/49 (forwarded request 1183515 from jfkw)</comment>
+    <requestid>1183516</requestid>
+  </revision>
 </revisionlist>
