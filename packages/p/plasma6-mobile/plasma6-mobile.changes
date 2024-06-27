@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jun 25 17:14:19 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.1
+- Changes since 6.1.0:
+  * update version for new release
+  * volumeosd: Fix missing import
+  * statusbar: Fix volume indicator not being visible
+  * homescreens/folio: Fix favourites delegate dragging
+  * homescreens/folio: Port away from singletons to support multi-display
+  * Fix: code error.
+  * update version for new release
+  * Fix:  Changing the power settings does not take effect in time.
+  * Add setInitialized(true) after set ipv6 settings
+  * Force to set ipv6 method to auto
+
+-------------------------------------------------------------------
 Thu Jun 13 10:58:45 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.0:
