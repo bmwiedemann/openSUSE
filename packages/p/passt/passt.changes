@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Jun 25 07:56:25 UTC 2024 - dcermak@suse.com
+
+- Update to version 20240624.1ee2eca:
+  * udp: Reduce scope of rport in udp_invert_portmap()
+  * Revert "udp: Make rport calculation more local"
+  * log: Don't report syslog failures to stderr after initialisation
+  * conf, passt: Don't call __openlog() if a log file is used
+  * treewide: Replace strerror() calls
+  * treewide: Replace perror() calls with calls to logging functions
+  * log: Add _perror() logging function variants
+  * log, passt: Always print to stderr before initialisation is complete
+  * conf, log: Instead of abusing log levels, add log_conf_parsed flag
+  * conf, passt: Make --stderr do nothing, and deprecate it
+  * conf, passt: Don't try to log to stderr after we close it
+  * conf: Accept duplicate and conflicting options, the last one wins
+  * netlink: Strip nexthop identifiers when duplicating routes
+  * passt.1, qrap.1: align license description with SPDX identifier
+  * netlink: Ignore EHOSTUNREACH failures when duplicating routes
+  * netlink: With no default route, pick the first interface with a route
+  * tcp: Don't rely on bind() to fail to decide that connection target is valid
+  * siphash: Remove stale prototypes
+  * udp: Move management of udp[46]_localname into udp_splice_send()
+  * udp: Rework how we divide queued datagrams between sending methods
+  * udp: Fold checking of splice flag into udp_mmh_splice_port()
+  * util: Split construction of bind socket address from the rest of sock_l4()
+  * tap: use in->buf_size rather than sizeof(pkt_buf)
+  * iov: remove iov_copy()
+  * vhost-user: compare mode MODE_PASTA and not MODE_PASST
+  * udp: rename udp_sock_handler() to udp_buf_sock_handler()
+  * udp: refactor UDP header update functions
+  * tap: refactor packets handling functions
+  * tcp: move buffers management functions to their own file
+  * tcp: extract buffer management from tcp_send_flag()
+  * cppcheck: Suppress constParameterCallback errors
+
+-------------------------------------------------------------------
 Mon Jun 17 07:57:52 UTC 2024 - dcermak@suse.com
 
 - Update to version 20240607.8a83b53:
