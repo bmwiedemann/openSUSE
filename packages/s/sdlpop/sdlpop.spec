@@ -23,7 +23,8 @@ Summary:        An open-source port of Prince of Persia
 License:        GPL-3.0-only
 Group:          Amusements/Games/Other
 URL:            https://www.popot.org/get_the_games.php?game=SDLPoP
-Source:         https://github.com/NagyD/SDLPoP/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/NagyD/SDLPoP/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        sdlpop.wrapper
 Patch0:         sdlpop-fix-sdl2-includes.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -53,26 +54,24 @@ cd src
 
 %install
 install -d %{buildroot}/%{_bindir}
-install -Dm0755 prince %{buildroot}/%{_libexecdir}/%{name}/%{name}
+install -Dm0755 prince %{buildroot}/%{_bindir}
 install -Dm0644 data/icon.png %{buildroot}/%{_datadir}/icons/hicolor/32x32/apps/%{name}.png
-install -d %{buildroot}/%{_libexecdir}/%{name}
-install SDLPoP.ini %{buildroot}/%{_libexecdir}/%{name}
-mv data/ %{buildroot}/%{_libexecdir}/%{name}
+install -d %{buildroot}/%{_datadir}/%{name}
+install SDLPoP.ini %{buildroot}/%{_datadir}/%{name}
+mv data/ %{buildroot}/%{_datadir}/%{name}
 %suse_update_desktop_file -c %{name} %{name} "Platformer" %{name} %{name} Game ActionGame
-
-%fdupes %{buildroot}/%{_libexecdir}/%{name}
+%fdupes %{buildroot}/%{_datadir}
 
 # Install Wrapper
-cat > %{buildroot}%{_bindir}/%{name} << EOF
-#!/bin/sh
-exec "%{_libexecdir}/%{name}/\${0##*/}" \$@
-EOF
+install -Dm0755 %{SOURCE1} %{buildroot}%{_bindir}/%{name}
+ln -s %{_bindir}/prince %{buildroot}%{_datadir}/%{name}
 
 %files
 %doc README.md doc/tiles.md doc/mod.ini doc/ChangeLog.txt
 %license COPYING
 %attr(0755,root,root) %{_bindir}/sdlpop
-%{_libexecdir}/%{name}
+%{_bindir}/prince
+%{_datadir}/%{name}
 %{_datadir}/icons/hicolor/32x32/apps/sdlpop.png
 %{_datadir}/applications/sdlpop.desktop
 

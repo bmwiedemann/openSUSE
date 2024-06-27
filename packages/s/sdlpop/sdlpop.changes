@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 26 13:03:09 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- moved binary to /usr/bin and asset data to /usr/share/sdlpop 
+  (https://bugzilla.suse.com/show_bug.cgi?id=1226830)
+
+-------------------------------------------------------------------
 Sun Apr  7 16:58:16 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
 
 - sdlpop doesn's support big endian CPUs, stop building for s390x
