@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Set-Tiny
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Set-Tiny
-Version:        0.04
-Release:        0
 %define cpan_name Set-Tiny
+Name:           perl-Set-Tiny
+Version:        0.50.0
+Release:        0
+# 0.05 -> normalize -> 0.50.0
+%define cpan_version 0.05
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Simple sets of strings
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Set-Tiny/
-Source0:        http://www.cpan.org/authors/id/T/TR/TRENDELS/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/A/AR/ARFREITAS/%{cpan_name}-%{cpan_version}.tar.gz
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-Provides:       perl(Set::Tiny) = %{verison}
-
+Provides:       perl(Set::Tiny) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -42,14 +42,14 @@ For a more complete implementation of mathematical set theory, see
 Set::Scalar. For sets of arbitrary objects, see Set::Object.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -57,7 +57,7 @@ Set::Scalar. For sets of arbitrary objects, see Set::Object.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes examples README
+%doc Changes examples README README.md
+%license LICENSE
 
 %changelog

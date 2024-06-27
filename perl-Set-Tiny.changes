@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jun 23 16:47:50 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 0.50.0 (0.05)
+   see /usr/share/doc/packages/perl-Set-Tiny/Changes
+
+  0.05    2024-06-17
+          Migration from Makefile.PL to Dist::Zilla.
+          Enabled warnings pragma.
+          Replaced test files with Dist::Zilla extensions.
+          Minor refactorings to more "modern" Perl.
+          Forcing minimum Perl version.
+
+-------------------------------------------------------------------
 Sun May 10 10:38:26 UTC 2020 - Frank Schreiner <FSchreiner@suse.com>
 
 - initial version of package (version 0.04) 
