@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jun 26 11:08:08 UTC 2024 - alarrosa@suse.com
+
+- Update to version 0.5.3+git11.4868b3c:
+  * get-filter-from-target: Don't bypass the hook if the session item is a regular filter
+  * filter-utils: Allow smart filters to have as target filters that are not smart
+  * tests: skip some tests when audiotestsrc is unavailable
+  * scripts/device: avoid crashing if the device.name is not set
+  * tests/examples: add example on how to set node "params" under Props
+  * autoswitch-bluetooth-profile: Always destroy the restore timeout source before switching
+  * node/software-dsp: ensure that filter chains are properly unloaded
+  * scripts: Fix autoswitch BT profile when using filters
+  * bluez: Don't create loopback source if autoswitch setting is disabled
+  * conf: further improve how top-level objects are handled
+  * conf: skip empty configuration files to avoid crashing
+
+-------------------------------------------------------------------
 Tue Jun  4 22:08:54 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.5.3:
