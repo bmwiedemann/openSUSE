@@ -1,8 +1,9 @@
-From 93066eb9ec30ec23ca0eba8eebf4148533f5bd90 Mon Sep 17 00:00:00 2001
+From fa941131af6c15686a9d0a49d36c5d5461325bb3 Mon Sep 17 00:00:00 2001
 From: Fabian Vogt <fabian@ritter-vogt.de>
-Date: Mon, 17 Jun 2024 11:49:22 +0200
+Date: Wed, 26 Jun 2024 12:00:04 +0200
 Subject: [PATCH] Revert "Added setting for battery conservation mode (Lenovo)"
 
+This reverts commit 7da820f5ba64766b15c1451ad0fbed3b714ed307.
 This reverts commit 53f688de8eff37a52efed55b52d9e51f5217a185.
 ---
  daemon/chargethreshold_helper_actions.actions | 120 -------------
@@ -18,11 +19,11 @@ This reverts commit 53f688de8eff37a52efed55b52d9e51f5217a185.
  kcmodule/profiles/ui/GlobalConfig.qml         |  16 +-
  11 files changed, 43 insertions(+), 376 deletions(-)
 
-Index: powerdevil-6.1.0/daemon/chargethreshold_helper_actions.actions
-===================================================================
---- powerdevil-6.1.0.orig/daemon/chargethreshold_helper_actions.actions
-+++ powerdevil-6.1.0/daemon/chargethreshold_helper_actions.actions
-@@ -231,111 +231,3 @@ Description[zh_CN]=请进行身份验证
+diff --git a/daemon/chargethreshold_helper_actions.actions b/daemon/chargethreshold_helper_actions.actions
+index ce1fb3f3..ff5299e8 100644
+--- a/daemon/chargethreshold_helper_actions.actions
++++ b/daemon/chargethreshold_helper_actions.actions
+@@ -235,123 +235,3 @@ Description[zh_CN]=请进行身份验证以设置电池充电限制。
  Description[zh_TW]=認證以設定電池充電限制。
  Policy=auth_admin
  Persistence=session
@@ -33,6 +34,7 @@ Index: powerdevil-6.1.0/daemon/chargethreshold_helper_actions.actions
 -Name[bg]=Проверка на режима за пестене на батерията
 -Name[ca]=Comprova el mode de conservació de la bateria
 -Name[ca@valencia]=Comprova el mode de conservació de la bateria
+-Name[cs]=Zkontrolovat režim šetření baterie
 -Name[en_GB]=Check battery conservation mode
 -Name[eo]=Kontroli baterikonservan reĝimon
 -Name[es]=Comprobar el modo de conservación de la batería
@@ -48,6 +50,8 @@ Index: powerdevil-6.1.0/daemon/chargethreshold_helper_actions.actions
 -Name[pl]=Odczytaj tryb zarządzania baterią
 -Name[sk]=Skontrolovať režim ochrany batérie
 -Name[sl]=Preverite način varčevanja z baterijo
+-Name[sv]=Kontrollera batteriets konserveringsläge
+-Name[ta]=மின்கல சேமிப்பு பயன்முறையின் நிலைகாண்
 -Name[tr]=Pil Tasarrufu Kipini Denetle
 -Name[uk]=Перевірка режиму консервації акумулятора
 -Name[x-test]=xxCheck battery conservation modexx
@@ -58,6 +62,7 @@ Index: powerdevil-6.1.0/daemon/chargethreshold_helper_actions.actions
 -Description[bg]=Удостоверете автентичността си, за да проверите текущото състояние на режима за пестене на батерията.
 -Description[ca]=Autenticació per a comprovar l'estat actual del mode de conservació de la bateria.
 -Description[ca@valencia]=Autenticació per a comprovar l'estat actual del mode de conservació de la bateria.
+-Description[cs]=Ověřte totožnost abyste zjistili stav režimu šetření baterie.
 -Description[en_GB]=Authenticate to check the current state of battery conservation mode.
 -Description[eo]=Aŭtentiĝu por kontroli la aktualan staton de bateriokonserva reĝimo.
 -Description[es]=Debe autenticarse para comprobar el estado actual del modo de conservación de la batería.
@@ -73,6 +78,8 @@ Index: powerdevil-6.1.0/daemon/chargethreshold_helper_actions.actions
 -Description[pl]=Uwierzytelnij, aby odczytaj tryb zarządzania baterią.
 -Description[sk]=Overenie totožnosti na zobrazenie aktuálneho režimu ochrany batérie.
 -Description[sl]=Avtenticirajte se, da preverite trenutno stanje načina varčevanja baterije.
+-Description[sv]=Ange behörighet för att se nuvarande tillstånd hos batteriets konserveringsläge.
+-Description[ta]=மின்கல சேமிப்பு பயன்முறையின் தற்போதைய நிலையைக் காண சான்றளிக்கவும்.
 -Description[tr]=Pil tasarrufu kipinin geçerli durumunu denetlemek için kimliğinizi doğrulayın.
 -Description[uk]=Пройдіть розпізнавання для перевірки поточного стану режиму консервації акумулятора.
 -Description[x-test]=xxAuthenticate to check the current state of battery conservation mode.xx
@@ -87,6 +94,7 @@ Index: powerdevil-6.1.0/daemon/chargethreshold_helper_actions.actions
 -Name[bg]=Задаване на режим за пестене на батерията
 -Name[ca]=Estableix el mode de conservació de la bateria
 -Name[ca@valencia]=Establix el mode de conservació de la bateria
+-Name[cs]=Nastavte režim šetření baterie
 -Name[en_GB]=Set battery conservation mode
 -Name[eo]=Agordi baterikonservan reĝimon
 -Name[es]=Definir el modo de conservación de la batería
@@ -102,6 +110,8 @@ Index: powerdevil-6.1.0/daemon/chargethreshold_helper_actions.actions
 -Name[pl]=Ustaw tryb zarządzania baterią
 -Name[sk]=Nastaviť režim ochrany batérie
 -Name[sl]=Nastavi način varčevanja baterije
+-Name[sv]=Ställ in batteriets konserveringsläge
+-Name[ta]=மின்கல சேமிப்பு பயன்முறையை அமை
 -Name[tr]=Pil Tasarrufu Kipini Ayarla
 -Name[uk]=Встановлення режиму консервації акумулятора
 -Name[x-test]=xxSet battery conservation modexx
@@ -112,6 +122,7 @@ Index: powerdevil-6.1.0/daemon/chargethreshold_helper_actions.actions
 -Description[bg]=Удостоверете автентичността си, за да зададете режима за пестене на батерията.
 -Description[ca]=Autenticació per a establir el mode de conservació de la bateria.
 -Description[ca@valencia]=Autenticació per a establir el mode de conservació de la bateria.
+-Description[cs]=Ověřte totožnost pro nastavení režimu šetření baterie.
 -Description[en_GB]=Authenticate to set the battery conservation mode.
 -Description[eo]=Aŭtentiĝu por meti la bateriokonservan reĝimon.
 -Description[es]=Debe autenticarse para definir el modo de conservación de la batería.
@@ -127,6 +138,8 @@ Index: powerdevil-6.1.0/daemon/chargethreshold_helper_actions.actions
 -Description[pl]=Uwierzytelnij, aby ustawić tryb zarządzania baterią.
 -Description[sk]=Overenie totožnosti na nastavenie režimu ochrany batérie.
 -Description[sl]=Avtenticirajte se, da bi nastavili način varčevanje baterije.
+-Description[sv]=Ange behörighet för att ställa in batteriets konserveringsläge.
+-Description[ta]=மின்கல சேமிப்பு பயன்முறையை அமைக்க சான்றளிக்கவும்.
 -Description[tr]=Pil tasarrufu kipini ayarlamak için kimliğinizi doğrulayın.
 -Description[uk]=Пройдіть розпізнавання для встановлення режиму консервації акумулятора.
 -Description[x-test]=xxAuthenticate to set the battery conservation mode.xx
@@ -134,10 +147,10 @@ Index: powerdevil-6.1.0/daemon/chargethreshold_helper_actions.actions
 -Description[zh_TW]=認證以設定電池保護模式。
 -Policy=auth_admin
 -Persistence=session
-Index: powerdevil-6.1.0/daemon/chargethresholdhelper.cpp
-===================================================================
---- powerdevil-6.1.0.orig/daemon/chargethresholdhelper.cpp
-+++ powerdevil-6.1.0/daemon/chargethresholdhelper.cpp
+diff --git a/daemon/chargethresholdhelper.cpp b/daemon/chargethresholdhelper.cpp
+index fb801d92..6c4e0afe 100644
+--- a/daemon/chargethresholdhelper.cpp
++++ b/daemon/chargethresholdhelper.cpp
 @@ -1,6 +1,5 @@
  /*
   * SPDX-FileCopyrightText: 2020 Kai Uwe Broulik <kde@broulik.de>
@@ -153,13 +166,10 @@ Index: powerdevil-6.1.0/daemon/chargethresholdhelper.cpp
  
  static const QString s_chargeStartThreshold = QStringLiteral("charge_control_start_threshold");
  static const QString s_chargeEndThreshold = QStringLiteral("charge_control_end_threshold");
-@@ -174,56 +172,6 @@ ActionReply ChargeThresholdHelper::setth
-         return reply;
-     }
+@@ -177,56 +175,6 @@ ActionReply ChargeThresholdHelper::setthreshold(const QVariantMap &args)
+     return ActionReply();
+ }
  
--    return ActionReply();
--}
--
 -// This handles Lenovo's "battery conservation mode" that limits the threshold to a fixed value
 -// This value differs from model to model (most 55-60%, others ~80%) and is unknown (last checked in Kernel 6.3)
 -ActionReply ChargeThresholdHelper::getconservationmode(const QVariantMap &args)
@@ -207,13 +217,16 @@ Index: powerdevil-6.1.0/daemon/chargethresholdhelper.cpp
 -        return reply;
 -    }
 -
-     return ActionReply();
- }
+-    return ActionReply();
+-}
+-
+ KAUTH_HELPER_MAIN("org.kde.powerdevil.chargethresholdhelper", ChargeThresholdHelper)
  
-Index: powerdevil-6.1.0/daemon/chargethresholdhelper.h
-===================================================================
---- powerdevil-6.1.0.orig/daemon/chargethresholdhelper.h
-+++ powerdevil-6.1.0/daemon/chargethresholdhelper.h
+ #include "moc_chargethresholdhelper.cpp"
+diff --git a/daemon/chargethresholdhelper.h b/daemon/chargethresholdhelper.h
+index b0f93722..fd5a8221 100644
+--- a/daemon/chargethresholdhelper.h
++++ b/daemon/chargethresholdhelper.h
 @@ -1,6 +1,5 @@
  /*
   * SPDX-FileCopyrightText: 2020 Kai Uwe Broulik <kde@broulik.de>
@@ -229,10 +242,10 @@ Index: powerdevil-6.1.0/daemon/chargethresholdhelper.h
 -    ActionReply getconservationmode(const QVariantMap &args);
 -    ActionReply setconservationmode(const QVariantMap &args);
  };
-Index: powerdevil-6.1.0/daemon/dbus/org.kde.Solid.PowerManagement.xml
-===================================================================
---- powerdevil-6.1.0.orig/daemon/dbus/org.kde.Solid.PowerManagement.xml
-+++ powerdevil-6.1.0/daemon/dbus/org.kde.Solid.PowerManagement.xml
+diff --git a/daemon/dbus/org.kde.Solid.PowerManagement.xml b/daemon/dbus/org.kde.Solid.PowerManagement.xml
+index 18240feb..5cb5a0ac 100644
+--- a/daemon/dbus/org.kde.Solid.PowerManagement.xml
++++ b/daemon/dbus/org.kde.Solid.PowerManagement.xml
 @@ -31,9 +31,6 @@
      <method name="hasDualGpu">
        <arg type="b" direction="out" />
@@ -253,10 +266,10 @@ Index: powerdevil-6.1.0/daemon/dbus/org.kde.Solid.PowerManagement.xml
      <signal name="chargeStartThresholdChanged">
        <arg type="i" direction="out" />
      </signal>
-Index: powerdevil-6.1.0/daemon/powerdevilcore.cpp
-===================================================================
---- powerdevil-6.1.0.orig/daemon/powerdevilcore.cpp
-+++ powerdevil-6.1.0/daemon/powerdevilcore.cpp
+diff --git a/daemon/powerdevilcore.cpp b/daemon/powerdevilcore.cpp
+index 77d3b98b..10d9c8af 100644
+--- a/daemon/powerdevilcore.cpp
++++ b/daemon/powerdevilcore.cpp
 @@ -70,7 +70,6 @@ Core::Core(QObject *parent)
      discreteGpuJob->start();
  
@@ -315,10 +328,10 @@ Index: powerdevil-6.1.0/daemon/powerdevilcore.cpp
  int Core::chargeStartThreshold() const
  {
      return m_chargeStartThreshold;
-Index: powerdevil-6.1.0/daemon/powerdevilcore.h
-===================================================================
---- powerdevil-6.1.0.orig/daemon/powerdevilcore.h
-+++ powerdevil-6.1.0/daemon/powerdevilcore.h
+diff --git a/daemon/powerdevilcore.h b/daemon/powerdevilcore.h
+index 1e3fd1d7..4cf6c1fd 100644
+--- a/daemon/powerdevilcore.h
++++ b/daemon/powerdevilcore.h
 @@ -105,7 +105,6 @@ public Q_SLOTS:
      bool isLidPresent() const;
      bool isActionSupported(const QString &actionName);
@@ -351,10 +364,10 @@ Index: powerdevil-6.1.0/daemon/powerdevilcore.h
      int m_chargeStartThreshold = 0;
      int m_chargeStopThreshold = 100;
  
-Index: powerdevil-6.1.0/kcmodule/profiles/ExternalServiceSettings.cpp
-===================================================================
---- powerdevil-6.1.0.orig/kcmodule/profiles/ExternalServiceSettings.cpp
-+++ powerdevil-6.1.0/kcmodule/profiles/ExternalServiceSettings.cpp
+diff --git a/kcmodule/profiles/ExternalServiceSettings.cpp b/kcmodule/profiles/ExternalServiceSettings.cpp
+index 70f2953b..7e704cc2 100644
+--- a/kcmodule/profiles/ExternalServiceSettings.cpp
++++ b/kcmodule/profiles/ExternalServiceSettings.cpp
 @@ -1,7 +1,6 @@
  /*
   *  SPDX-FileCopyrightText: 2008-2010 Dario Freddi <drf@kde.org>
@@ -453,7 +466,7 @@ Index: powerdevil-6.1.0/kcmodule/profiles/ExternalServiceSettings.cpp
 -
 -        const auto data = job->data();
 -        setSavedBatteryConservationMode(data.value(QStringLiteral("batteryConservationModeEnabled")).toBool());
--        setBatteryConservationMode(m_batteryConservationMode);
+-        setBatteryConservationMode(m_savedBatteryConservationMode);
 -        m_isBatteryConservationModeSupported = true;
 -    });
 +    } else {
@@ -553,7 +566,7 @@ Index: powerdevil-6.1.0/kcmodule/profiles/ExternalServiceSettings.cpp
  }
  
  bool ExternalServiceSettings::isChargeStartThresholdSupported() const
-@@ -198,21 +137,6 @@ void ExternalServiceSettings::setSavedCh
+@@ -198,21 +137,6 @@ void ExternalServiceSettings::setSavedChargeStopThreshold(int threshold)
      }
  }
  
@@ -575,10 +588,10 @@ Index: powerdevil-6.1.0/kcmodule/profiles/ExternalServiceSettings.cpp
  int ExternalServiceSettings::chargeStartThreshold() const
  {
      return m_chargeStartThreshold;
-Index: powerdevil-6.1.0/kcmodule/profiles/ExternalServiceSettings.h
-===================================================================
---- powerdevil-6.1.0.orig/kcmodule/profiles/ExternalServiceSettings.h
-+++ powerdevil-6.1.0/kcmodule/profiles/ExternalServiceSettings.h
+diff --git a/kcmodule/profiles/ExternalServiceSettings.h b/kcmodule/profiles/ExternalServiceSettings.h
+index c9205273..01f3525f 100644
+--- a/kcmodule/profiles/ExternalServiceSettings.h
++++ b/kcmodule/profiles/ExternalServiceSettings.h
 @@ -1,6 +1,5 @@
  /*
   *  SPDX-FileCopyrightText: 2023 Jakob Petsovits <jpetso@petsovits.com>
@@ -594,7 +607,7 @@ Index: powerdevil-6.1.0/kcmodule/profiles/ExternalServiceSettings.h
  
  class QWindow;
  
-@@ -21,28 +19,23 @@ class ExternalServiceSettings : public Q
+@@ -21,28 +19,23 @@ class ExternalServiceSettings : public QObject
  
      Q_PROPERTY(int chargeStartThreshold READ chargeStartThreshold WRITE setChargeStartThreshold NOTIFY chargeStartThresholdChanged)
      Q_PROPERTY(int chargeStopThreshold READ chargeStopThreshold WRITE setChargeStopThreshold NOTIFY chargeStopThresholdChanged)
@@ -660,11 +673,11 @@ Index: powerdevil-6.1.0/kcmodule/profiles/ExternalServiceSettings.h
      bool m_chargeStopThresholdMightNeedReconnect;
  };
  
-Index: powerdevil-6.1.0/kcmodule/profiles/PowerKCM.cpp
-===================================================================
---- powerdevil-6.1.0.orig/kcmodule/profiles/PowerKCM.cpp
-+++ powerdevil-6.1.0/kcmodule/profiles/PowerKCM.cpp
-@@ -151,7 +151,6 @@ PowerKCM::PowerKCM(QObject *parent, cons
+diff --git a/kcmodule/profiles/PowerKCM.cpp b/kcmodule/profiles/PowerKCM.cpp
+index bd999ff8..85184994 100644
+--- a/kcmodule/profiles/PowerKCM.cpp
++++ b/kcmodule/profiles/PowerKCM.cpp
+@@ -151,7 +151,6 @@ PowerKCM::PowerKCM(QObject *parent, const KPluginMetaData &metaData)
              this,
              &PowerKCM::isChargeStartThresholdSupportedChanged);
      connect(m_externalServiceSettings, &ExternalServiceSettings::isChargeStopThresholdSupportedChanged, this, &PowerKCM::isChargeStopThresholdSupportedChanged);
@@ -672,7 +685,7 @@ Index: powerdevil-6.1.0/kcmodule/profiles/PowerKCM.cpp
      connect(m_externalServiceSettings,
              &ExternalServiceSettings::chargeStopThresholdMightNeedReconnectChanged,
              this,
-@@ -291,11 +290,6 @@ void PowerKCM::setSupportsBatteryProfile
+@@ -291,11 +290,6 @@ void PowerKCM::setSupportsBatteryProfiles(bool supportsBatteryProfiles)
      Q_EMIT supportsBatteryProfilesChanged();
  }
  
@@ -684,11 +697,11 @@ Index: powerdevil-6.1.0/kcmodule/profiles/PowerKCM.cpp
  bool PowerKCM::isChargeStartThresholdSupported() const
  {
      return m_externalServiceSettings->isChargeStartThresholdSupported();
-Index: powerdevil-6.1.0/kcmodule/profiles/PowerKCM.h
-===================================================================
---- powerdevil-6.1.0.orig/kcmodule/profiles/PowerKCM.h
-+++ powerdevil-6.1.0/kcmodule/profiles/PowerKCM.h
-@@ -65,7 +65,6 @@ class PowerKCM : public KQuickManagedCon
+diff --git a/kcmodule/profiles/PowerKCM.h b/kcmodule/profiles/PowerKCM.h
+index 36814ad0..efcfcb18 100644
+--- a/kcmodule/profiles/PowerKCM.h
++++ b/kcmodule/profiles/PowerKCM.h
+@@ -65,7 +65,6 @@ class PowerKCM : public KQuickManagedConfigModule
      Q_PROPERTY(bool isLidPresent READ isLidPresent NOTIFY isLidPresentChanged)
      Q_PROPERTY(bool isPowerButtonPresent READ isPowerButtonPresent NOTIFY isPowerButtonPresentChanged)
  
@@ -712,10 +725,10 @@ Index: powerdevil-6.1.0/kcmodule/profiles/PowerKCM.h
      void isChargeStartThresholdSupportedChanged();
      void isChargeStopThresholdSupportedChanged();
      void chargeStopThresholdMightNeedReconnectChanged();
-Index: powerdevil-6.1.0/kcmodule/profiles/ui/GlobalConfig.qml
-===================================================================
---- powerdevil-6.1.0.orig/kcmodule/profiles/ui/GlobalConfig.qml
-+++ powerdevil-6.1.0/kcmodule/profiles/ui/GlobalConfig.qml
+diff --git a/kcmodule/profiles/ui/GlobalConfig.qml b/kcmodule/profiles/ui/GlobalConfig.qml
+index 454f6326..511824ac 100644
+--- a/kcmodule/profiles/ui/GlobalConfig.qml
++++ b/kcmodule/profiles/ui/GlobalConfig.qml
 @@ -221,18 +221,7 @@ Kirigami.ScrollablePage {
              id: chargeLimitHeader
              Kirigami.FormData.label: i18nc("@title:group", "Charge Limit")
@@ -746,3 +759,6 @@ Index: powerdevil-6.1.0/kcmodule/profiles/ui/GlobalConfig.qml
              implicitWidth: Kirigami.Units.gridUnit * 16
              text: i18nc("@info", "Regularly charging the battery close to 100%, or fully discharging it, may accelerate deterioration of battery health. By limiting the maximum battery charge, you can help extend the battery lifespan.")
          }
+-- 
+2.45.2
+

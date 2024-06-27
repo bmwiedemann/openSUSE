@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun 25 17:15:54 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.1
+- Changes since 6.1.0:
+  * update version for new release
+  * Fix initial UI state of Battery protection setting (kde#488954)
+  * daemon: Limit KAuth backlighthelper calls to only one at a time (kde#481003)
+  * skip ddcutil initialization when POWERDEVIL_NO_DDCUTIL is set
+  * update version for new release
+- Rebase 0001-Revert-Added-setting-for-battery-conservation-mode-L.patch
+
+-------------------------------------------------------------------
 Mon Jun 17 09:43:38 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to revert feature until new polkit rules got whitelisted:
