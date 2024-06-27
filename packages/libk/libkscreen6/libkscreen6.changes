@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 25 17:13:37 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.1
+- Changes since 6.1.0:
+  * cmake: increase minimum plasma wayland protocols version to 1.13
+  * update version for new release
+
+-------------------------------------------------------------------
 Thu Jun 13 10:58:35 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.0:
