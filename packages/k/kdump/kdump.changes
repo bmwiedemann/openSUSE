@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 19 13:59:44 UTC 2024 - Jiri Bohac <jbohac@suse.com>
+
+- upgrade to version 2.0.7
+  * set KDUMP_CPUs to 0 (all CPUs) by default
+  * fadump: use fadump=nocma when user data not filtered out (bsc#1224214)
+
+-------------------------------------------------------------------
 Fri May 17 12:27:09 UTC 2024 - Jiri Bohac <jbohac@suse.com>
 
 - upgrade to version 2.0.5

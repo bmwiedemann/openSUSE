@@ -1323,4 +1323,12 @@ URL-decode the target URL. (forwarded request 234827 from ptesarik)</comment>
   * update calibrate values</comment>
     <requestid>1174881</requestid>
   </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>55ad4bded06399b8f94f4fe26ac8c56e</srcmd5>
+    <version>2.0.7</version>
+    <time>1719496696</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1183444</requestid>
+  </revision>
 </revisionlist>
