@@ -18,7 +18,7 @@
 
 
 Name:           vkquake
-Version:        1.30.1
+Version:        1.31.0
 Release:        0
 Summary:        Quake 1 port using Vulkan instead of OpenGL for rendering
 License:        GPL-2.0-or-later
@@ -28,13 +28,16 @@ Source:         https://github.com/Novum/vkQuake/archive/refs/tags/%{version}.ta
 Source99:       %{name}.changes
 Source100:      appdata.xml
 Source101:      %{name}.desktop
-# PATCH-FIX-UPSTREAM https://github.com/Novum/vkQuake/issues/688
-Patch1:         fix_maybe-uninitialized_error.patch
+BuildRequires:  cmake
 BuildRequires:  glslang-devel
+BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  spirv-tools
+# from quakedef.h "Vulkan is too old" preprocessor check
 BuildRequires:  vulkan-devel >= 1.2.162
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(libmikmod)
+BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(sdl2)
@@ -51,7 +54,7 @@ vkQuake is a Quake 1 port using Vulkan instead of OpenGL for rendering. It is ba
 Game data must be placed in ~/.vkquake/id1 .
 
 %prep
-%autosetup -n vkQuake-%{version} -p1
+%autosetup -n vkQuake-%{version}
 
 # Drop pre-compiled Windows stuff
 rm Windows -fr
@@ -63,22 +66,11 @@ TIME="\"$(date -d "${modified}" "+%%R")\""
 sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" Quake/host.c
 
 %build
-%make_build -C Quake \
-%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
-    CC='/usr/bin/gcc-11' \
-%endif    
-    STRIP=": do not strip:" \
-    DO_USERDIRS=1 \
-    USE_SDL2=1 \
-    USE_CODEC_FLAC=1 \
-    USE_CODEC_OPUS=1 \
-    USE_CODEC_MIKMOD=1 \
-    USE_CODEC_UMX=1 \
-    USE_CODEC_MP3=0
-strip Quake/vkquake
+%meson -Ddo_userdirs=enabled
+%meson_build
 
 %install
-install -Dm755 Quake/vkquake %{buildroot}%{_bindir}/%{name}
+install -Dm755 %{_vpath_builddir}/vkquake %{buildroot}%{_bindir}/%{name}
 install -D -p -m 644 Misc/vkQuake_512.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
 install -D -p -m 644 %{SOURCE100} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 install -D -p -m 644 %{SOURCE101} %{buildroot}%{_datadir}/applications/%{name}.desktop
