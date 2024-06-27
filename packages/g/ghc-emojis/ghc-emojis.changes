@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun 18 00:54:11 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update emojis to version 0.1.4.1.
+  # 0.1.4.1
+
+    * Use foldl' instead of foldr to avoid stack overflows.
+
+-------------------------------------------------------------------
+Mon Jun 17 19:17:20 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update emojis to version 0.1.4.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/emojis-0.1.4/src/changelog.md
+
+-------------------------------------------------------------------
 Tue Jul 25 00:20:47 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update emojis to version 0.1.3.
