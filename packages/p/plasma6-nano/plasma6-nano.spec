@@ -25,7 +25,7 @@
 
 %bcond_without released
 Name:           plasma6-nano
-Version:        6.1.0
+Version:        6.1.1
 Release:        0
 # Full Plasma 6 version (e.g. 5.9.3)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -34,9 +34,9 @@ Release:        0
 Summary:        Minimal Plasma shell for embedded devices
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         %{rname}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
