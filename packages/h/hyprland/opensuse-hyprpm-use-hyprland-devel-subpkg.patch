@@ -1,5 +1,5 @@
-From 1f2015ee57b0b8f45db60078f76012a0ac0a8e59 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Florian=20=22sp1rit=22=E2=80=8B?= <sp1rit@disroot.org>
+From 7c6a4e5b37a2e42a3f79fda15bb6116856928c93 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Florian=20sp1rit=E2=80=8B?= <sp1rit@disroot.org>
 Date: Fri, 14 Jun 2024 23:43:46 +0200
 Subject: [PATCH] openSUSE: Use hyprland-devel instead of downloading from
  upstream
@@ -17,11 +17,11 @@ It also adds a new check to ensure that the subpackage is instealled.
 Signed-off-by: Florian "sp1rit"​ <sp1rit@disroot.org>
 ---
  hyprpm/src/core/DataState.cpp     |   2 +-
- hyprpm/src/core/PluginManager.cpp | 133 +++++-------------------------
- 2 files changed, 20 insertions(+), 115 deletions(-)
+ hyprpm/src/core/PluginManager.cpp | 137 +++++-------------------------
+ 2 files changed, 22 insertions(+), 117 deletions(-)
 
 diff --git a/hyprpm/src/core/DataState.cpp b/hyprpm/src/core/DataState.cpp
-index 61ad336..aaceebe 100644
+index 61ad336..99dbadd 100644
 --- a/hyprpm/src/core/DataState.cpp
 +++ b/hyprpm/src/core/DataState.cpp
 @@ -21,7 +21,7 @@ std::string DataState::getDataStatePath() {
@@ -34,7 +34,7 @@ index 61ad336..aaceebe 100644
  
  void DataState::ensureStateStoreExists() {
 diff --git a/hyprpm/src/core/PluginManager.cpp b/hyprpm/src/core/PluginManager.cpp
-index f9e9664..a948edb 100644
+index 848b9ca..253c024 100644
 --- a/hyprpm/src/core/PluginManager.cpp
 +++ b/hyprpm/src/core/PluginManager.cpp
 @@ -14,6 +14,7 @@
@@ -45,15 +45,15 @@ index f9e9664..a948edb 100644
  #include <pwd.h>
  #include <unistd.h>
  
-@@ -396,136 +397,27 @@ bool CPluginManager::updateHeaders(bool force) {
+@@ -397,136 +398,27 @@ bool CPluginManager::updateHeaders(bool force) {
      const auto HLVER = getHyprlandVersion();
  
      if (!hasDeps()) {
 -        std::cerr << "\n" << Colors::RED << "✖" << Colors::RESET << " Could not update. Dependencies not satisfied. Hyprpm requires: cmake, meson, cpio\n";
 +        std::cerr << "\n" << Colors::RED << "✖" << Colors::RESET << " Could not update. Dependencies not satisfied. Hyprpm requires: hyprland-devel, cmake, meson, cpio\n";
          return false;
-     }
- 
+-    }
+-
 -    if (!std::filesystem::exists("/tmp/hyprpm")) {
 -        std::filesystem::create_directory("/tmp/hyprpm");
 -        std::filesystem::permissions("/tmp/hyprpm", std::filesystem::perms::all, std::filesystem::perm_options::replace);
@@ -63,7 +63,8 @@ index f9e9664..a948edb 100644
 -        std::cout << "\n" << std::string{Colors::GREEN} + "✔" + Colors::RESET + " Headers up to date.\n";
 -        return true;
 -    }
--
++    } 
+ 
      CProgressBar progress;
 -    progress.m_iMaxSteps        = 5;
 +    progress.m_iMaxSteps        = 1;
@@ -81,7 +82,7 @@ index f9e9664..a948edb 100644
 -
 -    progress.printMessageAbove(std::string{Colors::YELLOW} + "!" + Colors::RESET + " Cloning https://github.com/hyprwm/hyprland, this might take a moment.");
 -
--    const bool bShallow = HLVER.branch == "main" || HLVER.branch == "";
+-    const bool bShallow = (HLVER.branch == "main" || HLVER.branch == "") && !m_bNoShallow;
 -
 -    // let us give a bit of leg-room for shallowing
 -    // due to timezones, etc.
@@ -122,7 +123,8 @@ index f9e9664..a948edb 100644
 -    progress.printMessageAbove(std::string{Colors::GREEN} + "✔" + Colors::RESET + " checked out to running ver");
 -    progress.m_iSteps           = 3;
 -    progress.m_szCurrentMessage = "Building Hyprland";
--    progress.print();
++    progress.m_szCurrentMessage = "Checking headers";
+     progress.print();
 -
 -    progress.printMessageAbove(std::string{Colors::YELLOW} + "!" + Colors::RESET + " configuring Hyprland");
 -
@@ -155,9 +157,8 @@ index f9e9664..a948edb 100644
 -    progress.printMessageAbove(std::string{Colors::GREEN} + "✔" + Colors::RESET + " configured Hyprland");
 -    progress.m_iSteps           = 4;
 -    progress.m_szCurrentMessage = "Installing sources";
-+    progress.m_szCurrentMessage = "Checking headers";
-     progress.print();
- 
+-    progress.print();
+-
 -    std::string cmd =
 -        std::format("sed -i -e \"s#PREFIX = /usr/local#PREFIX = {}#\" {}/Makefile && cd {} && make installheaders", DataState::getHeadersPath(), WORKINGDIR, WORKINGDIR);
 -    if (m_bVerbose)
@@ -171,6 +172,7 @@ index f9e9664..a948edb 100644
 -    // remove build files
 -    std::filesystem::remove_all(WORKINGDIR);
 -
++ 
      auto HEADERSVALID = headersValid();
      if (HEADERSVALID == HEADERS_OK) {
          progress.printMessageAbove(std::string{Colors::GREEN} + "✔" + Colors::RESET + " installed headers");
@@ -187,7 +189,7 @@ index f9e9664..a948edb 100644
          progress.m_szCurrentMessage = "Failed";
          progress.print();
  
-@@ -876,6 +768,19 @@ std::string CPluginManager::headerError(const eHeadersErrors err) {
+@@ -877,6 +769,19 @@ std::string CPluginManager::headerError(const eHeadersErrors err) {
  }
  
  bool CPluginManager::hasDeps() {
@@ -208,5 +210,5 @@ index f9e9664..a948edb 100644
      for (auto& d : deps) {
          if (!execAndGet("which " + d + " 2>&1").contains("/"))
 -- 
-2.45.1
+2.45.2
 
