@@ -33,14 +33,14 @@
 %endif
 %define rname breeze
 Name:           breeze6
-Version:        6.1.0
+Version:        6.1.1
 Release:        0
 Summary:        Plasma Desktop artwork, styles and assets
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         %{rname}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
@@ -134,6 +134,7 @@ This package provides Breeze KWin decoration.
 
 # NOTE: The CMake files were split from breeze*-style and don't require anything on purpose.
 # Otherwise, BuildRequires: cmake(Breeze) would pull some Qt5 and KF5 packages.
+
 %package devel
 Summary:        Information about breeze setup
 Conflicts:      breeze5-style < 6.0.0
