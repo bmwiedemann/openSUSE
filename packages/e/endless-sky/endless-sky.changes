@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jun 22 20:12:55 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.10.8
+  * Fixed various crashes, including ones that could occur when
+    sorting ships or when using the flagship outline or new cloaked
+    settings.
+  * The flagship will no longer move through wormholes ahead of
+    escorts when using fleet jumping.
+  * Reduced the difficulty of the battle in "Wanderers: Mind 6".
+  * Added a gamerule for controlling the disabled fighter projectile
+    collision behavior introduced in v0.10.7.
+  * Illegal mission passengers can now be detected by planetary
+    security. Previously, missions with only illegal passengers
+    could never result in a fine.
+
+-------------------------------------------------------------------
 Fri Mar 29 18:26:57 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.10.6

@@ -18,7 +18,7 @@
 
 %define lname   io.github.endless_sky.endless_sky
 Name:           endless-sky
-Version:        0.10.6
+Version:        0.10.8
 Release:        0
 Summary:        Space exploration, trading, and combat game
 License:        CC-BY-3.0 AND CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND GPL-3.0-only
