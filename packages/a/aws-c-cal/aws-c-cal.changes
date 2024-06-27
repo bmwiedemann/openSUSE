@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 26 11:51:44 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.0
+  * clang-format 18 by @graebm in (#187)
+  * Implement runtime check on libcrypto linkage
+    by @WillChilds-Klein in (#186)
+  * Pin AWS-LC until it's fixed for manylinux1
+    by @graebm in (#188)
+  * Make AES GCM more consistent cross platform
+    by @DmitriyMusatkin in (#189)
+
+-------------------------------------------------------------------
 Fri May 31 10:40:39 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.6.15
