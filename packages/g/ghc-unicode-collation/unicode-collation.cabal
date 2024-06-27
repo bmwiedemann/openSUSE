@@ -1,0 +1,153 @@
+cabal-version:       2.2
+name:                unicode-collation
+version:             0.1.3.6
+x-revision: 1
+synopsis:            Haskell implementation of the Unicode Collation Algorithm
+description:         This library provides a pure Haskell implementation of
+                     the Unicode Collation Algorithm described at
+                     <http://www.unicode.org/reports/tr10/>.  It is not
+                     as fully-featured or as performant as @text-icu@, but
+                     it avoids a dependency on a large C library.
+                     Locale-specific tailorings are also provided.
+
+homepage:            https://github.com/jgm/unicode-collation
+bug-reports:         https://github.com/jgm/unicode-collation/issues
+license:             BSD-2-Clause
+license-file:        LICENSE
+author:              John MacFarlane
+maintainer:          John MacFarlane <jgm@berkeley.edu>
+copyright:           2021 John MacFarlane
+category:            Text
+build-type:          Simple
+extra-doc-files:     README.md
+                     CHANGELOG.md
+extra-source-files:  stack.yaml
+                     data/allkeys.txt
+                     data/UnicodeData.txt
+                     data/tailorings/*.txt
+                     data/cjk/*.txt
+                     test/uca-collation-test/*.txt
+tested-with:         GHC == 8.4.4
+                     GHC == 8.6.5
+                     GHC == 8.8.3
+                     GHC == 8.10.7
+                     GHC == 9.0.1
+                     GHC == 9.2.2
+                     GHC == 9.4.2
+                     GHC == 9.6.3
+                     GHC == 9.8.1
+
+source-repository head
+  type:                git
+  location:            https://github.com/jgm/unicode-collation.git
+
+flag doctests
+  Description:         Run doctests as part of test suite.
+                       Use with: @--write-ghc-environment-files=always@.
+  Default:             False
+
+flag executable
+  Description:         Build the unicode-collate executable.
+  Default:             False
+
+common common-options
+  build-depends:       base >= 4.11 && < 4.21
+
+  ghc-options:         -Wall
+                       -Wcompat
+                       -Widentities
+                       -Wincomplete-uni-patterns
+                       -Wincomplete-record-updates
+                       +RTS -A8m -RTS
+  if impl(ghc >= 8.0)
+    ghc-options:       -Wredundant-constraints
+  if impl(ghc >= 8.2)
+    ghc-options:       -fhide-source-paths
+  if impl(ghc >= 8.4)
+    ghc-options:       -Wpartial-fields
+
+  default-language:    Haskell2010
+  other-extensions:    CPP, TemplateHaskell
+
+library
+  import:              common-options
+  hs-source-dirs:      src
+  exposed-modules:     Text.Collate
+                       Text.Collate.Lang
+                       Text.Collate.Normalize
+  other-modules:       Text.Collate.Trie
+                       Text.Collate.Collation
+                       Text.Collate.Collator
+                       Text.Collate.CanonicalCombiningClass
+                       Text.Collate.TH
+                       Text.Collate.Tailorings
+                       Text.Collate.UnicodeData
+  build-depends:       bytestring
+                     , template-haskell
+                     , th-lift-instances
+                     , containers
+                     , binary
+                     , text >= 1.2 && < 2.2
+                     , parsec
+
+  other-extensions:    TemplateHaskell
+
+
+executable unicode-collate
+  import:              common-options
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  build-depends:       unicode-collation
+                     , containers
+                     , text
+  ghc-options:         -threaded
+                       -rtsopts
+                       -with-rtsopts=-N
+  if flag(executable)
+     buildable:        True
+  else
+     buildable:        False
+
+test-suite unit
+  import:              common-options
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             unit.hs
+  build-depends:       unicode-collation
+                     , bytestring
+                     , tasty
+                     , tasty-quickcheck
+                     , tasty-hunit
+                     , unicode-transforms >= 0.3.7.1
+                     , text
+  ghc-options:         -threaded
+                       -rtsopts
+                       -with-rtsopts=-N
+
+test-suite doctests
+  import:              common-options
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             doctests.hs
+  build-depends:       doctest >= 0.8
+                     , th-lift-instances
+  ghc-options:         -threaded
+                       -rtsopts
+                       -with-rtsopts=-N
+  if flag(doctests)
+     buildable:        True
+  else
+     buildable:        False
+
+benchmark benchmark
+  import:              common-options
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      benchmark
+  main-is:             Main.hs
+  build-depends:       tasty-bench
+                     , unicode-collation
+                     , text
+                     , text-icu >= 0.8
+                     , quickcheck-instances
+                     , QuickCheck
+  ghc-options:         -rtsopts -with-rtsopts=-A8m
