@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 26 19:05:01 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Rebase p0001-Only-export-necessary-symbols.-Fixes-105.patch
+  against version 1.8.
+- Update to version 1.8:
+  * Fix wrong-type-argument (Fix #175)
+  * README: Fix grammatical mistake
+  * Ignore message-separator
+  * Add jinx-save-languages
+  * jinx--word-valid-p: Do not error on invalid characters (Fix #93, #164)
+
+-------------------------------------------------------------------
 Sat Apr 13 00:28:28 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Rebase 0001-Only-export-necessary-symbols.-Fixes-105.patch against

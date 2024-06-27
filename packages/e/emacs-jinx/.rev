@@ -57,4 +57,19 @@
 </comment>
     <requestid>1167502</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>35ee83dd04e3c184dd8e767b857db5db</srcmd5>
+    <version>1.8</version>
+    <time>1719496988</time>
+    <user>anag+factory</user>
+    <comment>- Rebase p0001-Only-export-necessary-symbols.-Fixes-105.patch
+  against version 1.8.
+- Update to version 1.8:
+  * Fix wrong-type-argument (Fix #175)
+  * README: Fix grammatical mistake
+  * Ignore message-separator
+  * Add jinx-save-languages
+  * jinx--word-valid-p: Do not error on invalid characters (Fix #93, #164)</comment>
+    <requestid>1183481</requestid>
+  </revision>
 </revisionlist>

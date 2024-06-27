@@ -20,7 +20,7 @@
 %global _name    jinx
 
 Name:           emacs-%{_name}
-Version:        1.6
+Version:        1.8
 Release:        0
 Summary:        Enchanted Spell Checker for Emacs
 License:        GPL-3.0-or-later
