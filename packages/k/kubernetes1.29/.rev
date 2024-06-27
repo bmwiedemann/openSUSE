@@ -41,4 +41,12 @@ https://github.com/kubernetes/kubernetes/releases/tag/v1.29.1</comment>
     <comment>May, 2024 patch release update: Kubernetes v1.29.5</comment>
     <requestid>1174723</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>af2af618db310e1dc983d7e5e1ff50b2</srcmd5>
+    <version>1.29.6</version>
+    <time>1719496867</time>
+    <user>anag+factory</user>
+    <comment>Monthly Patch Release – June, 2024: Update to version 1.29.6</comment>
+    <requestid>1183309</requestid>
+  </revision>
 </revisionlist>
