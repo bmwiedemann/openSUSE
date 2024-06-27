@@ -1,7 +1,7 @@
 #
 # spec file for package qtractor
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           qtractor
-Version:        0.9.35
+Version:        1.0.0
 Release:        0
 Summary:        An Audio/MIDI multi-track sequencer
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
 URL:            https://qtractor.org/
 Source0:        https://download.sourceforge.net/qtractor/qtractor-%{version}.tar.gz
+Source1:        https://download.sf.net/qtractor/qtractor-manual-and-howtos.pdf
 BuildRequires:  alsa-devel
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
@@ -52,10 +53,11 @@ BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(shared-mime-info)
 BuildRequires:  pkgconfig(suil-0)
 BuildRequires:  pkgconfig(xcb)
+Recommends:     %{name}-doc-pdf
 
 %description
 Qtractor is an Audio/MIDI multi-track sequencer application
-written in C++ around the Qt toolkit.
+written in C++ around the Qt6 toolkit.
 
 The initial target platform will be Linux, where the Jack Audio
 Connection Kit (JACK) for audio, and the Advanced Linux Sound
@@ -63,8 +65,17 @@ Architecture (ALSA) for MIDI, are the main infrastructures to
 evolve as a fairly-featured Linux Desktop Audio Workstation GUI,
 specially dedicated to the personal home-studio.
 
+%package doc-pdf
+Summary:        Documentation for Qtractor
+BuildArch:      noarch
+
+%description doc-pdf
+This package contains qtractor-manual-and-howtos.pdf
+For your reading
+
 %prep
 %setup -q
+cp -v %{S:1} qtractor-manual-and-howtos.pdf
 
 %build
 %cmake_qt6
@@ -72,8 +83,8 @@ specially dedicated to the personal home-studio.
 
 %install
 %{qt6_install}
-
 mv %{buildroot}%{_libdir}/qtractor/qtractor_plugin_scan %{buildroot}%{_bindir}
+mv %{buildroot}%{_datadir}/qtractor/palette/"Wonton Soup.conf" %{buildroot}%{_datadir}/qtractor/palette/Wonton_Soup.conf
 
 %files
 %doc ChangeLog README
@@ -81,6 +92,9 @@ mv %{buildroot}%{_libdir}/qtractor/qtractor_plugin_scan %{buildroot}%{_bindir}
 %dir %{_datadir}/metainfo/
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/translations
+%dir %{_datadir}/qtractor/audio
+%dir %{_datadir}/qtractor/instruments
+%dir %{_datadir}/qtractor/palette
 %{_bindir}/%{name}
 %{_bindir}/qtractor_plugin_scan
 %{_datadir}/applications/org.rncbc.qtractor.desktop
@@ -91,5 +105,13 @@ mv %{buildroot}%{_libdir}/qtractor/qtractor_plugin_scan %{buildroot}%{_bindir}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_mandir}/fr/man1/%{name}.1%{?ext_man}
 %{_datadir}/%{name}/translations/*
+%{_datadir}/qtractor/audio/metro_bar.wav
+%{_datadir}/qtractor/audio/metro_beat.wav
+%{_datadir}/qtractor/instruments/Standard1.ins
+%{_datadir}/qtractor/palette/KXStudio.conf
+%{_datadir}/qtractor/palette/Wonton_Soup.conf
+
+%files doc-pdf
+%doc qtractor-manual-and-howtos.pdf
 
 %changelog

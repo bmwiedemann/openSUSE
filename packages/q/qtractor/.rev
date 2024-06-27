@@ -526,4 +526,12 @@ Fixes build against latest qt5 with qtractor-QAction.patch.</comment>
     in a single shot, in the following priority order: quantize,</comment>
     <requestid>1120972</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>d4f2a3ae7e93727bc385226b4b2a944c</srcmd5>
+    <version>1.0.0</version>
+    <time>1719496801</time>
+    <user>anag+factory</user>
+    <comment>Recommend doc package</comment>
+    <requestid>1183285</requestid>
+  </revision>
 </revisionlist>

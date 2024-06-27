@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 25 16:18:09 UTC 2024 - Dave Plater <davejplater@gmail.com>
+
+- Happy first birthday qtractor version 1.0.0
+- 1.0.0  2024-06-21  An Unthinkable Release.
+- Making up the unthinkable (aka. v1.0.0)
+- General plugin scan/cache optimization.
+- Improved legibility to all clip title labels (color contrast).
+- Save/load the correct order and labeling of audio/MIDI send/
+  /return pseudo-plugin inserts.
+- Fixed a display and port-name filtering issue that was present
+  ever since on the Connections widget.
+
+-------------------------------------------------------------------
 Sun Oct 29 09:17:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.35:
