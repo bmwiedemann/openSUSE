@@ -84,7 +84,7 @@ BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(udev)
 %if 0%{?suse_version} >= 1310
 Requires(post): coreutils
-Requires(postun):coreutils
+Requires(postun): coreutils
 %endif
 Supplements:    filesystem(btrfs)
 Recommends:     btrfsmaintenance
@@ -192,12 +192,11 @@ with Btrfs using libbtrfsutil.
 %package bash-completion
 Summary:        Bash completion for btrfsprogs
 Group:          System/Shells
-Requires:       %{name}
+# older versions had bash completion files builtin and will create a file conflict
+Requires:       %{name} = %{version}
 Requires:       bash-completion
-# versions below 6.2.1 had bash completion files builtin and will create a file conflict
-Conflicts:      %{name} <= 6.2.1
 %if 0%{?suse_version} >= 1500
-Supplements:    (%{name} and bash-completion)
+Supplements:    (%{name} = %{version} and bash-completion)
 %else
 Supplements:    packageand(%{name}:bash-completion)
 %endif
