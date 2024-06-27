@@ -60,4 +60,12 @@
 - Rebase panel.diff</comment>
     <requestid>1181353</requestid>
   </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>5080713b0b63ec520ddc58a01af32f61</srcmd5>
+    <version>84.87~git20240313T170730~9c664b7</version>
+    <time>1719496762</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.1.1 (forwarded request 1183337 from Vogtinator)</comment>
+    <requestid>1183394</requestid>
+  </revision>
 </revisionlist>
