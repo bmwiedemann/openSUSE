@@ -2,6 +2,6 @@
   <service name="download_url" mode="localonly">
     <param name="host">github.com</param>
     <param name="protocol">https</param>
-    <param name="path">/NagiosEnterprises/nagioscore/releases/download/nagios-4.5.2/nagios-4.5.2.tar.gz</param>
+    <param name="path">/NagiosEnterprises/nagioscore/releases/download/nagios-4.5.3/nagios-4.5.3.tar.gz</param>
   </service>
 </services>
