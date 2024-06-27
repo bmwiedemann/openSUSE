@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jun 20 10:31:41 UTC 2024 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Fixes:
+  * mingw64-binutils.spec: W: patch-fuzz-is-changed
+  * "mingw64-binutils.keyring" is not mentioned in spec files as
+    source or patch
+  * mingw64-binutils.noarch: E: zero-length 
+    /usr/x86_64-w64-mingw32/lib/ldscripts/stamp
+  * mingw64-binutils.src: E: unused-rpmlintrc-filter 
+    "arch-independent-package-contains-binary-or-object"
+
+-------------------------------------------------------------------
+Sat Jun 15 10:09:01 UTC 2024 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Fix "binutils-2.42.tar.xz.sig" is not mentioned in spec files as
+  source or patch.
+
+-------------------------------------------------------------------
+Mon Jun  3 06:55:27 UTC 2024 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 2.42
+- Removed patches that were included in the official version
+   * 0001-dllwrap-windres-and-dlltools-use-mktemp-which-should.patch
+   * 0001-Fix-bug-not-showing-correct-path-with-objdump-WL-wit.patch
+   * 0001-PR29362-some-binutils-memory-leaks.patch
+   * reproducible.patch
+- Add patch 
+   * binutils-2.42-option-high-entry-va.patch
+- Removed patch
+   * binutils-2.39-option-high-entry-va.patch
+  
+-------------------------------------------------------------------
 Fri May 31 15:05:37 UTC 2024 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Add patch to enable HEASLR with PE builds which is a leftover from

@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-binutils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,18 @@
 #
 
 
-%global _default_patch_fuzz 2
-
 Name:           mingw64-binutils
-Version:        2.39
+Version:        2.42
 Release:        0
 Summary:        GNU Binutils
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries
 URL:            http://www.gnu.org/software/binutils/
 Source:         http://ftp.gnu.org/gnu/binutils/binutils-%{version}.tar.xz
+Source1:        http://ftp.gnu.org/gnu/binutils/binutils-%{version}.tar.xz.sig
+Source2:        mingw64-binutils.keyring
 Source99:       mingw64-binutils-rpmlintrc
-Patch0:         0001-PR29362-some-binutils-memory-leaks.patch
-Patch1:         0001-Fix-bug-not-showing-correct-path-with-objdump-WL-wit.patch
-Patch2:         0001-dllwrap-windres-and-dlltools-use-mktemp-which-should.patch
-Patch3:         reproducible.patch
-Patch4:         binutils-2.39-option-high-entry-va.patch
+Patch0:         binutils-2.42-option-high-entry-va.patch
 #!BuildIgnore: post-build-checks
 BuildRequires:  bison
 BuildRequires:  flex
@@ -77,6 +73,13 @@ cd build
 
 rm -f %{buildroot}%{_mingw64_infodir}/dir
 
+# mingw64-binutils.noarch: E: zero-length .../lib/ldscripts/stamp
+for i in %{buildroot}%{_mingw64_prefix}/%{_mingw64_target}/lib/ldscripts/stamp; do
+  if test -f $i; then
+    rm $i
+  fi
+done
+
 %files
 %{_mingw64_bindir}/*.exe
 %{_mingw64_prefix}/%{_mingw64_target}/bin/*.exe
@@ -91,8 +94,9 @@ rm -f %{buildroot}%{_mingw64_infodir}/dir
 %{_mingw64_libdir}/libbfd.a
 %{_mingw64_libdir}/libctf.a
 %{_mingw64_libdir}/libctf-nobfd.a
-%{_mingw64_libdir}/libopcodes.a
 # required by libbfd.a
 %{_mingw64_libdir}/libiberty.a
+%{_mingw64_libdir}/libopcodes.a
+%{_mingw64_libdir}/libsframe.a
 
 %changelog

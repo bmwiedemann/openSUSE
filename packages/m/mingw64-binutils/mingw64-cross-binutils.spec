@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-cross-binutils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,16 @@
 #
 
 
-%global _default_patch_fuzz 2
-
 Name:           mingw64-cross-binutils
-Version:        2.39
+Version:        2.42
 Release:        0
 Summary:        GNU Binutils
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries
 URL:            http://www.gnu.org/software/binutils/
 Source:         http://ftp.gnu.org/gnu/binutils/binutils-%{version}.tar.xz
-Patch0:         0001-PR29362-some-binutils-memory-leaks.patch
-Patch1:         0001-Fix-bug-not-showing-correct-path-with-objdump-WL-wit.patch
-Patch2:         0001-dllwrap-windres-and-dlltools-use-mktemp-which-should.patch
-Patch3:         reproducible.patch
-Patch4:         binutils-2.39-option-high-entry-va.patch
+Source1:        http://ftp.gnu.org/gnu/binutils/binutils-%{version}.tar.xz.sig
+Patch0:         binutils-2.42-option-high-entry-va.patch
 #!BuildIgnore:  post-build-checks
 #!BuildIgnore:  mingw64-cross-binutils-utils
 #!BuildIgnore:  mingw64-cross-pkgconf-utils
@@ -83,6 +78,13 @@ rm -rf %{buildroot}%{_infodir}
 for i in ar as dlltool ld ld.bfd nm objcopy objdump ranlib readelf strip; do
   rm -f %{buildroot}%{_bindir}/%{_mingw64_target}-$i;
   ln -s %{_prefix}/%{_mingw64_target}/bin/$i %{buildroot}%{_bindir}/%{_mingw64_target}-$i;
+done
+
+# mingw64-cross-binutils.x86_64: E: zero-length .../lib/ldscripts/stamp
+for i in %{buildroot}%{_prefix}/%{_mingw64_target}/lib/ldscripts/stamp; do
+  if test -f $i; then
+    rm $i
+  fi
 done
 
 %files
