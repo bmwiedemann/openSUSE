@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 26 11:47:43 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.27.1
+  * cbor binding by @TingDaoK in (#627)
+  * Fix ASan report about alloc/dealloc mismatch
+    when compiled with C++23 by @waahm7 in (#633)
+- from version 0.27.0
+  * clang-format 18 by @graebm in (#628)
+  * Update aes interface by @DmitriyMusatkin in (#631)
+
+-------------------------------------------------------------------
 Thu Jun 13 12:03:06 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.26.12.
