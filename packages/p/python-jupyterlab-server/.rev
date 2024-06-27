@@ -139,4 +139,12 @@
 </comment>
     <requestid>1171750</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>0e337e99afd7d6520ab8aef14d1dcc4e</srcmd5>
+    <version>2.27.1</version>
+    <time>1719496842</time>
+    <user>anag+factory</user>
+    <comment>- Remove upper bound on pytest.</comment>
+    <requestid>1183267</requestid>
+  </revision>
 </revisionlist>

@@ -85,12 +85,12 @@ limited scope.
 Summary:        The jupyterlab_server[test] requirements
 Requires:       python-Werkzeug
 Requires:       python-ipykernel
+Requires:       python-pytest >= 7
 Requires:       python-pytest-console-scripts
 Requires:       python-pytest-jupyter-server >= 0.6.2
 Requires:       python-pytest-timeout
 Requires:       python-requests-mock
 Requires:       (python-openapi-spec-validator >= 0.6 with python-openapi-spec-validator < 0.8)
-Requires:       (python-pytest >= 7 with python-pytest < 8)
 #Requires:       python-sphinxcontrib-spelling
 Requires:       python-strict-rfc3339
 Requires:       python-jupyterlab-server = %{version}
