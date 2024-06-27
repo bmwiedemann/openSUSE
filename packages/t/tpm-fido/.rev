@@ -7,4 +7,13 @@
     <comment>New package tpm-fido is FIDO token implementation for Linux that protects the token keys by using your system's TPM. Upstream fix included to build on 32-bit systems including i586.</comment>
     <requestid>1095220</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0a9ebfabee181d25c235a198e5cd5bf2</srcmd5>
+    <version>20230621.5f8828b</version>
+    <time>1719496956</time>
+    <user>anag+factory</user>
+    <comment>- Require system-user-tss for tss group
+- Ensure uhid module is loaded on boot so udev will set permissions (forwarded request 1183436 from dheidler)</comment>
+    <requestid>1183441</requestid>
+  </revision>
 </revisionlist>

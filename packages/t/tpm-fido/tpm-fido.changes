@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 26 12:12:52 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Require system-user-tss for tss group
+- Ensure uhid module is loaded on boot so udev will set permissions
+
+-------------------------------------------------------------------
 Fri Jun 23 14:15:56 UTC 2023 - dheidler@suse.de
 
 - Update to version 20230621.5f8828b:

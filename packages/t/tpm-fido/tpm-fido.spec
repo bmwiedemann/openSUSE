@@ -1,7 +1,7 @@
 #
 # spec file for package tpm-fido
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,7 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# Prepare sources and vendor bundle with: osc service mr
 
 Name:           tpm-fido
 Version:        20230621.5f8828b
@@ -27,9 +26,12 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zstd
 Source2:        tpm-fido.rules
 Source3:        tpm-fido.service
-BuildRequires:  golang(API) >= 1.16
+Source4:        uhid.conf
+BuildRequires:  udev
 BuildRequires:  zstd
+BuildRequires:  golang(API) >= 1.16
 Requires:       pinentry-gui
+Requires:       system-user-tss
 Provides:       tpm2-fido
 
 %description
@@ -47,6 +49,7 @@ go build \
 install -D -m0755 %{name} %{buildroot}%{_bindir}/%{name}
 install -D -m0644 $RPM_SOURCE_DIR/tpm-fido.rules %{buildroot}%{_prefix}/lib/udev/rules.d/91-tpm-fido.rules
 install -D -m0644 $RPM_SOURCE_DIR/tpm-fido.service %{buildroot}%{_prefix}/lib/systemd/user/tpm-fido.service
+install -D -m0644 $RPM_SOURCE_DIR/uhid.conf %{buildroot}/%{_prefix}/lib/modules-load.d/uhid.conf
 
 %files
 %license LICENSE
@@ -54,6 +57,7 @@ install -D -m0644 $RPM_SOURCE_DIR/tpm-fido.service %{buildroot}%{_prefix}/lib/sy
 %{_bindir}/%{name}
 %{_prefix}/lib/udev/rules.d/91-tpm-fido.rules
 %{_prefix}/lib/systemd/user/tpm-fido.service
+%{_prefix}/lib/modules-load.d/uhid.conf
 
 %post
 printf "To use tpm-fido, add your user to the tss group and run:\n"
