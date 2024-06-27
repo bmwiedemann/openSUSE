@@ -1,0 +1,73 @@
+commit e6abade4e8d423f9082dc7f6b2ef9a07c43c15b4
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Wed Jun 26 11:44:02 2024 +0200
+
+    remove dependency to obsolete boot::filesystem::path::basename()
+    
+    Signed-off-by: Nicolas Morey <nmorey@suse.com>
+
+diff --git libs/core/command_line_handling_local/src/parse_command_line_local.cpp libs/core/command_line_handling_local/src/parse_command_line_local.cpp
+index 9ca8aa6b23f6..16d6da756933 100644
+--- libs/core/command_line_handling_local/src/parse_command_line_local.cpp
++++ libs/core/command_line_handling_local/src/parse_command_line_local.cpp
+@@ -261,7 +261,7 @@ namespace hpx::local::detail {
+ 
+         filesystem::path dir(filesystem::initial_path());
+         filesystem::path const app(appname);
+-        appname = filesystem::basename(app.filename());
++        appname = app.stem().string();
+ 
+         // walk up the hierarchy, trying to find a file <appname>.cfg
+         while (!dir.empty())
+diff --git libs/core/plugin/include/hpx/plugin/detail/dll_dlopen.hpp libs/core/plugin/include/hpx/plugin/detail/dll_dlopen.hpp
+index e8bc2e45e0f5..e2620f6f2f57 100644
+--- libs/core/plugin/include/hpx/plugin/detail/dll_dlopen.hpp
++++ libs/core/plugin/include/hpx/plugin/detail/dll_dlopen.hpp
+@@ -136,7 +136,7 @@ namespace hpx::util::plugin {
+             namespace fs = filesystem;
+ 
+             fs::path const dll_path(dll_name);
+-            map_name = fs::basename(dll_path);
++            map_name = dll_path.stem().string();
+         }
+ 
+         void load_library(error_code& ec = throws)
+diff --git libs/core/plugin/include/hpx/plugin/detail/dll_windows.hpp libs/core/plugin/include/hpx/plugin/detail/dll_windows.hpp
+index a01bc60ac997..a7178860d9e7 100644
+--- libs/core/plugin/include/hpx/plugin/detail/dll_windows.hpp
++++ libs/core/plugin/include/hpx/plugin/detail/dll_windows.hpp
+@@ -60,7 +60,7 @@ namespace hpx::util::plugin {
+             namespace fs = filesystem;
+ 
+             fs::path const dll_path(dll_name);
+-            map_name = fs::basename(dll_path);
++            map_name = dll_path.stem().string();
+         }
+ 
+         void load_library(error_code& ec = throws)
+diff --git libs/core/runtime_configuration/src/init_ini_data.cpp libs/core/runtime_configuration/src/init_ini_data.cpp
+index 644f0dc2ddd5..78e0cc679c06 100644
+--- libs/core/runtime_configuration/src/init_ini_data.cpp
++++ libs/core/runtime_configuration/src/init_ini_data.cpp
+@@ -433,7 +433,7 @@ namespace hpx::util {
+                     continue;
+ 
+                 // instance name and module name are the same
+-                std::string name(fs::basename(curr));    //-V821
++                std::string name(curr.stem().string());    //-V821
+ 
+ #if !defined(HPX_WINDOWS)
+                 if (0 == name.find("lib"))
+diff --git libs/full/command_line_handling/src/parse_command_line.cpp libs/full/command_line_handling/src/parse_command_line.cpp
+index 2729ffa6db87..422d500ee5bf 100644
+--- libs/full/command_line_handling/src/parse_command_line.cpp
++++ libs/full/command_line_handling/src/parse_command_line.cpp
+@@ -160,7 +160,7 @@ namespace hpx::util {
+ 
+             filesystem::path dir(filesystem::initial_path());
+             filesystem::path const app(appname);
+-            appname = filesystem::basename(app.filename());
++            appname = app.stem().string();
+ 
+             // walk up the hierarchy, trying to find a file <appname>.cfg
+             while (!dir.empty())

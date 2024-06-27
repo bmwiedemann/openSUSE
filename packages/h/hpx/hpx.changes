@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun 25 14:29:37 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Udpate to 1.10.0
+  - See https://hpx-docs.stellar-group.org/tags/v1.10.0/html/releases/whats_new_1_10_0.html
+  for what's new.
+- Drop Add-missing-header-for-std-intmax_t.patch as it was fixed upstream.
+- Disable i586 build as asio-devel is not available.
+- Disable broken arm 32b build
+- Add explicit dependency to boost >= 1.71
+- Add patches to fix compilation on Leap 15.5 and 15.6
+  - remove-dependency-to-obsolete-boot-filesystem-path-basename.patch
+  - scope-fix-issue-with-GCC-9.patch
+  - remove-maybe_unused.patch
+
+-------------------------------------------------------------------
 Thu Feb 22 07:59:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

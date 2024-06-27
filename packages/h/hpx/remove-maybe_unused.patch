@@ -1,0 +1,23 @@
+commit fa5d633ee56cce1e09d9e423b380cfe6f811526c
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Wed Jun 26 15:27:48 2024 +0200
+
+    remove maybe_unused
+    
+    For some reason GCC < 9 does not like this one
+    
+    Signed-off-by: Nicolas Morey <nmorey@suse.com>
+
+diff --git libs/core/executors/include/hpx/executors/service_executors.hpp libs/core/executors/include/hpx/executors/service_executors.hpp
+index 297b49d9bec3..f7697164b4f2 100644
+--- libs/core/executors/include/hpx/executors/service_executors.hpp
++++ libs/core/executors/include/hpx/executors/service_executors.hpp
+@@ -47,7 +47,7 @@ namespace hpx::parallel::execution::detail {
+             hpx::execution::experimental::static_chunk_size;
+ 
+         explicit service_executor(
+-            [[maybe_unused]] hpx::util::io_service_pool* pool) noexcept
++            hpx::util::io_service_pool* pool) noexcept
+ #if defined(HPX_COMPUTE_HOST_CODE)
+           : pool_(pool)
+ #endif

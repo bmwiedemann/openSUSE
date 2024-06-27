@@ -1,7 +1,7 @@
 #
 # spec file for package hpx
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,33 +18,36 @@
 
 
 Name:           hpx
-Version:        1.8.1
+Version:        1.10.0
 Release:        0
 Summary:        General Purpose C++ Runtime System
 License:        BSL-1.0
 Group:          Productivity/Networking/Other
 URL:            https://stellar.cct.lsu.edu/tag/hpx/
-Source0:        https://github.com/STEllAR-GROUP/hpx/archive/%{version}.tar.gz#/%{name}_%{version}.tar.gz
-Patch1:         Add-missing-header-for-std-intmax_t.patch
+Source0:        https://github.com/STEllAR-GROUP/hpx/archive/refs/tags/v%{version}.tar.gz#/%{name}_%{version}.tar.gz
+Patch1:         remove-dependency-to-obsolete-boot-filesystem-path-basename.patch
+Patch2:         scope-fix-issue-with-GCC-9.patch
+Patch3:         remove-maybe_unused.patch
 BuildRequires:  asio-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gperftools-devel
 BuildRequires:  hwloc-devel
-BuildRequires:  libboost_atomic-devel
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_iostreams-devel
-BuildRequires:  libboost_program_options-devel
-BuildRequires:  libboost_regex-devel
-BuildRequires:  libboost_system-devel
+BuildRequires:  libboost_atomic-devel >= 1.71
+BuildRequires:  libboost_filesystem-devel >= 1.71
+BuildRequires:  libboost_iostreams-devel >= 1.71
+BuildRequires:  libboost_program_options-devel >= 1.71
+BuildRequires:  libboost_regex-devel >= 1.71
+BuildRequires:  libboost_system-devel >= 1.71
 %ifarch aarch64 %{arm}
-BuildRequires:  libboost_chrono-devel
-BuildRequires:  libboost_context-devel
-BuildRequires:  libboost_thread-devel
+BuildRequires:  libboost_chrono-devel >= 1.71
+BuildRequires:  libboost_context-devel >= 1.71
+BuildRequires:  libboost_thread-devel >= 1.71
 %endif
 BuildRequires:  openmpi-macros-devel
 Requires:       libhpx1 = %{version}-%{release}
+ExcludeArch:    i586 %arm
 
 %description
 HPX is a general purpose C++ runtime system for parallel and distributed applications of any scale.

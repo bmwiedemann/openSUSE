@@ -1,0 +1,27 @@
+commit 8a4e5a63607cc29d62dd53ce824a41746ed09595
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Wed Jun 26 12:05:45 2024 +0200
+
+    scope: fix issue with GCC < 9
+    
+    https://github.com/martinmoene/scope-lite/issues/12
+    
+    Signed-off-by: Nicolas Morey <nmorey@suse.com>
+
+diff --git libs/core/functional/include/hpx/functional/experimental/scope_success.hpp libs/core/functional/include/hpx/functional/experimental/scope_success.hpp
+index 7e3e742f5d48..b018156baaf0 100644
+--- libs/core/functional/include/hpx/functional/experimental/scope_success.hpp
++++ libs/core/functional/include/hpx/functional/experimental/scope_success.hpp
+@@ -54,8 +54,10 @@ namespace hpx::experimental {
+             scope_success& operator=(scope_success const&) = delete;
+             scope_success& operator=(scope_success&& rhs) = delete;
+ 
+-            HPX_CONSTEXPR_DESTRUCTOR ~scope_success() noexcept(
+-                noexcept(this->f()))
++            HPX_CONSTEXPR_DESTRUCTOR ~scope_success()
++#if __GNUC__ >= 9
++		noexcept(noexcept(this->f()))
++#endif
+             {
+                 if (active >= std::uncaught_exceptions())
+                 {
