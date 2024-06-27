@@ -387,4 +387,14 @@
   * refactor: factor out match_ellipsis logic 407d2a8</comment>
     <requestid>1182969</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a4cd1321e0df30f675a0a05a44a37cd1</srcmd5>
+    <version>0.24.1+0</version>
+    <time>1719497068</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.24.1:
+  * fix: skip missing node in pattern #1256
+  * doc: add cli help text for debug format 1754382</comment>
+    <requestid>1183519</requestid>
+  </revision>
 </revisionlist>

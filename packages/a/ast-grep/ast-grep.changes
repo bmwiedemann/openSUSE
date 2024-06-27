@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 27 05:46:01 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.24.1:
+  * fix: skip missing node in pattern #1256
+  * doc: add cli help text for debug format 1754382
+
+-------------------------------------------------------------------
 Mon Jun 24 07:24:44 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.24.0:
