@@ -1,7 +1,7 @@
 #
 # spec file for package vdt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,7 @@ against vdt.
 %cmake \
   -DDIAG:BOOL=ON \
   -DAVX:BOOL=OFF \
-%ifarch aarch64 %{arm} %{ix86}
+%ifnarch x86_64
   -DSSE:BOOL=OFF \
 %else
   -DSSE:BOOL=ON \
