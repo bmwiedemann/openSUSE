@@ -1,5 +1,0 @@
-<package name="libqt5-qtpbfimageformat" project="openSUSE:Factory">
-  <title>Qt PBF Image Plugin</title>
-  <description>Qt image plugin for displaying Mapbox vector tiles.</description>
-  <devel project="graphics" package="libqt5-qtpbfimageformat"/>
-</package>
