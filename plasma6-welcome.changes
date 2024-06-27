@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 25 17:14:36 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.1
+- Changes since 6.1.0:
+  * update version for new release
+  * remove dup appstream versions
+  * update version for new release
+  * Use snap:// URLs rather than appstream:// ones on snap only distros
+  * Use non-standard UBUNTU_VARIANT key to detect snap only distro
+
+-------------------------------------------------------------------
 Thu Jun 13 10:58:51 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.0:
