@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 24 09:01:48 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.12.0:
+  + Adapt to the new way of handling the 2FA secret by the daemon,
+    needed by it to fix a bug with certain clients.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Mar 28 07:55:28 UTC 2024 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add missing supplements(bsc#1220391):

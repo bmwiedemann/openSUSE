@@ -754,4 +754,15 @@
   + NMA subpackage: Main package and gnome-control-center (forwarded request 1163467 from JonathanKang)</comment>
     <requestid>1163502</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>92e34cad2b1b65a777d8c16bc8b3c9bb</srcmd5>
+    <version>1.12.0</version>
+    <time>1719496693</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.12.0:
+  + Adapt to the new way of handling the 2FA secret by the daemon,
+    needed by it to fix a bug with certain clients.
+  + Updated translations. (forwarded request 1183345 from dimstar)</comment>
+    <requestid>1183422</requestid>
+  </revision>
 </revisionlist>

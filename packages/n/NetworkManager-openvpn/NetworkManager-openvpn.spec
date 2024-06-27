@@ -17,13 +17,13 @@
 
 
 Name:           NetworkManager-openvpn
-Version:        1.10.2
+Version:        1.12.0
 Release:        0
 Summary:        NetworkManager VPN support for OpenVPN
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/System
 URL:            https://www.gnome.org/projects/NetworkManager
-Source0:        https://download.gnome.org/sources/NetworkManager-openvpn/1.10/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/NetworkManager-openvpn/1.12/%{name}-%{version}.tar.xz
 Source1:        system-user-nm-openvpn.conf
 # PATCH-FIX-OPENSUSE fix-for-missing-whirlpool-hmac-authentication.patch boo#1132946
 Patch0:         fix-for-missing-whirlpool-hmac-authentication.patch
@@ -34,11 +34,11 @@ BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.0
-BuildRequires:  pkgconfig(libnm) >= 1.2.0
-BuildRequires:  pkgconfig(libnma) >= 1.2.0
+BuildRequires:  pkgconfig(libnm) >= 1.46.2
+BuildRequires:  pkgconfig(libnma) >= 1.8.0
 BuildRequires:  pkgconfig(libnma-gtk4) >= 1.8.33
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
-Requires:       NetworkManager >= 1.2.0
+Requires:       NetworkManager >= 1.46.2
 Requires:       openvpn
 Supplements:    (NetworkManager and openvpn)
 %sysusers_requires
