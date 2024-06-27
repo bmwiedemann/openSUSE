@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 25 09:48:01 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.5.1
+  * Fix package distribution
+  version 0.5.0:
+  * Drop support for older Python versions
+  * Add support to Python 3.12, replacing the deprecated
+    function pkg_resources.resource_stream with
+    importlib.resources.files
+
+-------------------------------------------------------------------
 Sat Mar 14 09:00:11 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
