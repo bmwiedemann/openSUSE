@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jun 25 17:14:09 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.1
+- Changes since 6.1.0:
+  * update version for new release
+  * remove dup appstream versions
+  * Do not hide panel edit mode dialog when Widget Explorer is closed
+  * Widget Explorer: ask for focus after drag and drop (kde#488571)
+  * applets/taskmanager: Properly size Task icons (kde#488733)
+  * Read "padding" instead of "margin" of dialog (kde#488901)
+  * [kcms/keyboard] tastenbrett: more correct handling of xkb_keysym_*
+  * applets/taskmanager: Fix grid layout for forced multiple rows/columns (kde#488702)
+  * Panel: fix adaptive opacity not reacting to maximized windows (kde#488736)
+  * Use the proper translation domain
+  * sddm-theme: Make the thing translatable
+  * applets/kickoff: support styled text in label again
+  * update version for new release
+  * FolderView Positioner: fix dragging files across screens. (kde#481254,kde#466337)
+
+-------------------------------------------------------------------
 Thu Jun 13 10:58:42 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.0:
