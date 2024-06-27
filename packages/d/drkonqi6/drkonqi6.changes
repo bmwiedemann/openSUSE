@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 25 17:12:50 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.1
+- Changes since 6.1.0:
+  * update version for new release
+  * sentry: correctly use dbus interface name (kde#488555)
+
+-------------------------------------------------------------------
 Sat Jun 15 19:24:40 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Do not pull in python3-sentry-sdk until its packaging is fixed

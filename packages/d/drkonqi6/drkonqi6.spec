@@ -1,7 +1,7 @@
 #
 # spec file for package drkonqi6
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,14 +27,14 @@ Name:           drkonqi6
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        6.1.0
+Version:        6.1.1
 Release:        0
 Summary:        Helper for debugging and reporting crashes
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         %{rname}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -68,9 +68,9 @@ Requires:       konsole
 # QML runtime dependencies (not detected automatically because the QML code is embedded as Qt Resource)
 # if kirigami2 is not installed, it falls back to the old QWidgets-based UI though and doesn't need them...
 Requires:       (kf6-kdeclarative-imports if kf6-kirigami-imports)
+Requires:       python3-psutil
 Requires:       (kf6-kitemmodels-imports if kf6-kirigami-imports)
 Requires:       (kf6-syntax-highlighting-imports if kf6-kirigami-imports)
-Requires:       python3-psutil
 # The gdb script for crash info extraction can use this for reporting error
 # of the error extraction itself. The openSUSE package has all integrations
 # listed as hard requirements though, which pulls in 260MiB of pure bloat.
@@ -175,7 +175,6 @@ install -p -D -m755 src/doc/examples/installdbgsymbols_suse.sh \
 %dir %{_userunitdir}/timers.target.wants
 %{_userunitdir}/timers.target.wants/drkonqi-coredump-cleanup.timer
 %{_userunitdir}/timers.target.wants/drkonqi-sentry-postman.timer
-
 
 %files lang -f drkonqi.lang
 
