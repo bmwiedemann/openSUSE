@@ -23,7 +23,7 @@
 
 %define rname kirigami-addons
 Name:           kirigami-addons6
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Add-ons for the Kirigami framework
 License:        LGPL-3.0-only

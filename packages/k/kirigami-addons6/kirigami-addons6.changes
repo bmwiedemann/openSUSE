@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jun 26 21:15:07 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.3.0
+  https://carlschwan.eu/2024/06/26/kirigami-addons-1.3.0/ for list
+  of new features
+  * Ensure all translated strings are loaded from the correct
+    translation domain
+  * The license dialog in the AboutPage is now opened in the
+    correct window
+  * Fix the focus in the FormComboBoxDelegate
+  * Fix the capitalization in the AboutPage
+  * Increase the padding in FormCardDialog to match the other
+    FormCard components
+
+
+-------------------------------------------------------------------
 Tue May 21 08:05:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.2.1
