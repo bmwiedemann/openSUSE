@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Jun 16 06:44:56 UTC 2024 - andreas.stieger@gmx.de
+
+- Update to version 3.0.2+git0.a45a8e623:
+  * [RELEASE] Released version 3.0.2
+  * DOC: management: rename show stats domain cli "dns" to "resolvers"
+  * DOC/MINOR: management: add -dZ option
+  * DOC/MINOR: management: add missed -dR and -dv options
+  * BUG/MINOR: quic: fix padding of INITIAL packets
+  * BUG/MAJOR: mux-h1: Prevent any UAF on H1 connection after draining a request
+  * CLEANUP: log/proxy: fix comment in proxy_free_common()
+  * BUG/MEDIUM: proxy: fix UAF with {tcp,http}checks logformat expressions
+  * MINOR: proxy: add proxy_free_common() helper function
+  * BUG/MINOR: promex: Skip resolvers metrics when there is no resolver section
+  * DOC: config: add missing context hint for new server and proxy keywords
+  * DOC: config: add missing section hint for "guid" proxy keyword
+  * DOC: config: move "hash-key" from proxy to server options
+  * BUG/MEDIUM: log: fix lf_expr_postcheck() behavior with default section
+  * BUG/MINOR: proxy: fix header_unique_id leak on deinit()
+  * BUG/MINOR: proxy: fix source interface and usesrc leaks on deinit()
+  * BUG/MINOR: proxy: fix dyncookie_key leak on deinit()
+  * BUG/MINOR: proxy: fix check_{command,path} leak on deinit()
+  * BUG/MINOR: proxy: fix email-alert leak on deinit()
+  * BUG/MINOR: proxy: fix log_tag leak on deinit()
+  * BUG/MINOR: proxy: fix server_id_hdr_name leak on deinit()
+  * MINOR: log: fix "http-send-name-header" ignore warning message
+
+-------------------------------------------------------------------
 Mon Jun 10 14:52:46 UTC 2024 - mrueckert@suse.de
 
 - Update to version 3.0.1+git0.471a1b2f1:

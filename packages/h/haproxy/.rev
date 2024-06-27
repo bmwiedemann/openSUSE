@@ -1532,4 +1532,12 @@
   * BUG/MINOR: cfgparse: remove the correct option on httpcheck send-state warning</comment>
     <requestid>1179720</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>98336e6d7331e1abd0468df3cb1ffd21</srcmd5>
+    <version>3.0.2+git0.a45a8e623</version>
+    <time>1719497028</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1183498</requestid>
+  </revision>
 </revisionlist>
