@@ -1,7 +1,7 @@
 #
 # spec file for package libmaa
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define soname 4
 Name:           libmaa
-Version:        1.4.7
+Version:        1.5.1
 Release:        0
 Summary:        Library providing many low-level data structures
 License:        MIT
-URL:            http://www.dict.org
+URL:            https://github.com/cheusov/libmaa
 Source0:        https://downloads.sourceforge.net/dict/%{name}-%{version}.tar.gz
 BuildRequires:  mk-configure
 BuildRequires:  pkgconfig(zlib)

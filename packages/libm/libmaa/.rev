@@ -48,4 +48,24 @@
     <comment></comment>
     <requestid>793781</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0b1644d1f7680fb11d407ab9c6b71b0b</srcmd5>
+    <version>1.5.1</version>
+    <time>1719497019</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.5.1
+  * Improve tests/pr test
+  * Add new function pr_open2 with argument &quot;callback&quot; ran from
+    child process immediately after fork(2) and before execvp(3).
+  * COPTS defaults to -O2 -g
+  * Add support for target &quot;help&quot;, bump MKC_REQD to 0.34.0
+  * maa/log.c: fix compilation failure due to -Werror on
+    NetBSD-10.99.10 with gcc-10.5.0
+  * Move WARNS=4 to Makefile.common
+  * SUBPRJ_DFLT = maa test
+  * MAXHOSTNAMELEN can be already defined, limit to 64 characters
+    to avoid possible truncation.
+</comment>
+    <requestid>1183488</requestid>
+  </revision>
 </revisionlist>

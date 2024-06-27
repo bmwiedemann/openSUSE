@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jun 16 18:33:32 UTC 2024 - Aleksey Cheusov <vle@gmx.net>
+
+- Update to version 1.5.1
+  * Improve tests/pr test
+  * Add new function pr_open2 with argument "callback" ran from
+    child process immediately after fork(2) and before execvp(3).
+  * COPTS defaults to -O2 -g
+  * Add support for target "help", bump MKC_REQD to 0.34.0
+  * maa/log.c: fix compilation failure due to -Werror on
+    NetBSD-10.99.10 with gcc-10.5.0
+  * Move WARNS=4 to Makefile.common
+  * SUBPRJ_DFLT = maa test
+  * MAXHOSTNAMELEN can be already defined, limit to 64 characters
+    to avoid possible truncation.
+
+-------------------------------------------------------------------
 Mon Apr 13 08:56:32 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.4.7
