@@ -65,4 +65,12 @@ Followed by update to latest patch release version - 1.28.2</comment>
     <comment>May, 2024 patch release update: Kubernetes v1.28.10</comment>
     <requestid>1174724</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>249a19faf2137d3bdf35c3a86a1a106a</srcmd5>
+    <version>1.28.11</version>
+    <time>1719496869</time>
+    <user>anag+factory</user>
+    <comment>Monthly Patch Release – June, 2024: Update to version 1.28.11</comment>
+    <requestid>1183311</requestid>
+  </revision>
 </revisionlist>
