@@ -1,0 +1,7 @@
+<package name="python-mutf8" project="openSUSE:Factory">
+  <title>Python/C encoders/decoders for MUTF-8/CESU-8</title>
+  <description>Pure-python and optional C encoders/decoders for MUTF-8/CESU-8.
+</description>
+  <devel project="devel:languages:python" package="python-mutf8"/>
+  <url>https://github.com/TkTech/mutf8</url>
+</package>
