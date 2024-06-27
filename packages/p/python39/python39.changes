@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 26 22:22:17 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2024-4032-private-IP-addrs.patch to fix bsc#1226448
+  (CVE-2024-4032) rearranging definition of private v global IP
+  addresses.
+
+-------------------------------------------------------------------
 Fri Jun 21 09:44:24 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add CVE-2024-0397-memrace_ssl.SSLContext_cert_store.patch

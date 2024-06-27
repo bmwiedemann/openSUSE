@@ -184,6 +184,9 @@ Patch43:        old-libexpat.patch
 # PATCH-FIX-UPSTREAM CVE-2024-0397-memrace_ssl.SSLContext_cert_store.patch bsc#1226447 mcepl@suse.com
 # removes memory race condition in ssl.SSLContext certificate store methods
 Patch44:        CVE-2024-0397-memrace_ssl.SSLContext_cert_store.patch
+# PATCH-FIX-UPSTREAM CVE-2024-4032-private-IP-addrs.patch bsc#1226448 mcepl@suse.com
+# rearrange definition of private v global IP addresses
+Patch45:        CVE-2024-4032-private-IP-addrs.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -450,6 +453,7 @@ other applications.
 %patch -P 42 -p1
 %patch -P 43 -p1
 %patch -P 44 -p1
+%patch -P 45 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

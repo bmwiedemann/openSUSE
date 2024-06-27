@@ -1094,4 +1094,14 @@
   condition in ssl.SSLContext certificate store methods.</comment>
     <requestid>1182485</requestid>
   </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>184e2430706f056e94ab1553ad0dc236</srcmd5>
+    <version>3.9.19</version>
+    <time>1719497040</time>
+    <user>anag+factory</user>
+    <comment>- Add CVE-2024-4032-private-IP-addrs.patch to fix bsc#1226448
+  (CVE-2024-4032) rearranging definition of private v global IP
+  addresses.</comment>
+    <requestid>1183504</requestid>
+  </revision>
 </revisionlist>
