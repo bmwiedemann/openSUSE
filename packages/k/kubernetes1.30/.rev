@@ -17,4 +17,12 @@ https://github.com/kubernetes/kubernetes/releases/tag/v1.30.0</comment>
     <comment>May, 2024 patch release update: Kubernetes v1.30.1</comment>
     <requestid>1174722</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>99c4f296deba8d76cbd5d7d70419390e</srcmd5>
+    <version>1.30.2</version>
+    <time>1719496865</time>
+    <user>anag+factory</user>
+    <comment>Monthly Patch Release – June, 2024: Update to version 1.30.2</comment>
+    <requestid>1183306</requestid>
+  </revision>
 </revisionlist>

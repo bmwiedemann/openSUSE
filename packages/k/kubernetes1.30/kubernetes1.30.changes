@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jun 26 05:52:44 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.30.2:
+  * Bump images, dependencies and versions to go 1.22.4 and distroless iptables/setcap/debian-base
+  * update driver installer
+  * Don't fill in NodeToStatusMap with UnschedulableAndUnresolvable
+  * Revert "scheduler: preallocation for NodeToStatusMap"
+  * kubeadm: use the actual configured kubelet healthz address:port
+  * kubectl create cronjobs: Manually set OwnerReferences
+  * add an integration test when nodeAffinity specifies a non-existent node.
+  * base on allNodes when calculating nextStartNodeIndex
+  * Fix printPod panic with spurious container statuses
+  * Adding the feature gates to fix cost for VAP and webhook matchConditions.
+  * cherry pick #124618 to 1.30
+  * fix requests tracker concurrency
+  * fix conflict race in statefulset rest update
+  * fix stateful set pod recreation and event spam
+  * fix pods tracking and internal error checking in statefulset tests
+  * Updated & added visibility to apiserver x509 test certificates expiring this year
+
+-------------------------------------------------------------------
 Fri May 17 04:34:22 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.30.1:
