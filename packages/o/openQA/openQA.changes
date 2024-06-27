@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 27 01:13:58 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1719403951.26949373:
+  * apparmor: Allow 'sleep' as needed in os-autoinst scripts
+  * Bump @floating-ui/dom from 1.6.5 to 1.6.6
+  * Document automatic Git checkouts
+
+-------------------------------------------------------------------
 Sat Jun 22 09:13:53 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1718962077.0a0dae67:
