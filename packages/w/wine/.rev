@@ -5198,4 +5198,19 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1182653</requestid>
   </revision>
+  <revision rev="442" vrev="2">
+    <srcmd5>9d942f4a0c6d0de1932ecdae503dd121</srcmd5>
+    <version>9.11</version>
+    <time>1719496932</time>
+    <user>anag+factory</user>
+    <comment>- 0001-winewayland-Avoid-crashing-when-the-dummy-window-sur.patch:
+  fixed wayland
+
+- Updated to 9.11 release
+  - C++ exception handling on ARM platforms.
+  - More DPI Awareness support improvements.
+  - Various bug fixes.
+- update staging to 9.11 release</comment>
+    <requestid>1183416</requestid>
+  </revision>
 </revisionlist>

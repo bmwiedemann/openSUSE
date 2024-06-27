@@ -177,6 +177,8 @@ Source8:        wine-rpmlintrc
 # SUSE specific patches
 # - currently none, but add them here
 Patch0:         0001-mf-tests-help-older-compilers-by-using-defines.patch
+# 1e701a6b3798ecfd688ad1ff405dbb62b3d214c6 fixing wayland
+Patch1:         0001-winewayland-Avoid-crashing-when-the-dummy-window-sur.patch
 Recommends:     wine-gecko >= 2.47.4
 Conflicts:      wine-gecko < 2.47.4
 Recommends:     wine-mono >= 9.0.0
