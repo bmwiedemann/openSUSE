@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 16 18:00:35 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add pybind11_abseil.patch, ported from google-or-tools. Change
+  target type from plain library to python extension. 
+- Drop find-and-link-python-libs.patch -- python extension should
+  not link to the python libraries explcitly
+- Replace install-headers.patch with
+  0001-Install-headers-and-CMake-development-files.patch -- for
+  downstream users, also the CMake files are required
+
+-------------------------------------------------------------------
 Fri Apr 26 18:20:46 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Initial package.

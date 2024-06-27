@@ -1,0 +1,115 @@
+From af9c8815bee462779f7ff2dc91ec14b686eeb6d8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Wed, 12 Jun 2024 12:29:40 +0200
+Subject: [PATCH] Install headers and CMake development files
+
+---
+ pybind11_abseil/CMakeLists.txt        | 45 +++++++++++++++++++++------
+ pybind11_abseil/cmake/Config.cmake.in | 12 +++++++
+ 2 files changed, 47 insertions(+), 10 deletions(-)
+ create mode 100644 pybind11_abseil/cmake/Config.cmake.in
+
+diff --git a/pybind11_abseil/CMakeLists.txt b/pybind11_abseil/CMakeLists.txt
+index ce7fd72..ed8aaa8 100644
+--- a/pybind11_abseil/CMakeLists.txt
++++ b/pybind11_abseil/CMakeLists.txt
+@@ -56,7 +56,7 @@ target_include_directories(ok_status_singleton
+                            INTERFACE $<BUILD_INTERFACE:${TOP_LEVEL_DIR}>)
+ 
+ target_link_libraries(ok_status_singleton
+-                      PUBLIC ok_status_singleton_pyinit_google3)
++                      PRIVATE ok_status_singleton_pyinit_google3)
+ 
+ # no_throw_status ==============================================================
+ 
+@@ -156,6 +156,7 @@ target_link_libraries(status_pyinit_google3 PUBLIC register_status_bindings)
+ # status ====================================================================
+ 
+ pybind11_add_module(status_py_extension_stub MODULE status_py_extension_stub.cc)
++add_library(pybind11_abseil::status ALIAS status_py_extension_stub)
+ 
+ set_target_properties(status_py_extension_stub PROPERTIES LIBRARY_OUTPUT_NAME "status")
+ # note: macOS is APPLE and also UNIX !
+@@ -171,7 +172,9 @@ target_include_directories(status_py_extension_stub INTERFACE $<BUILD_INTERFACE:
+ 
+ set_target_properties(status_py_extension_stub PROPERTIES PREFIX "")
+ 
+-target_link_libraries(status_py_extension_stub PUBLIC status_pyinit_google3 absl::status)
++target_link_libraries(status_py_extension_stub
++  PRIVATE status_pyinit_google3
++  PUBLIC absl::status)
+ 
+ # import_status_module =========================================================
+ 
+@@ -199,20 +202,42 @@ if(BUILD_TESTING)
+ endif()
+ 
+ if(CMAKE_INSTALL_PYDIR)
+-  # Copying to two target directories for simplicity. It is currently unknown
+-  # how to determine here which copy is actually being used.
++  include(CMakePackageConfigHelpers)
++  configure_package_config_file(${CMAKE_CURRENT_SOURCE_DIR}/cmake/Config.cmake.in
++    "${CMAKE_CURRENT_BINARY_DIR}/pybind11_abseilConfig.cmake"
++    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/pybind11_abseil
++    NO_CHECK_REQUIRED_COMPONENTS_MACRO
++  )
++  install(FILES
++    "${CMAKE_CURRENT_BINARY_DIR}/pybind11_abseilConfig.cmake"
++    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/pybind11_abseil
++  )
++
+   install(
+     TARGETS status_py_extension_stub ok_status_singleton
+-    EXPORT pybind11_abseilTargets
+     LIBRARY DESTINATION ${CMAKE_INSTALL_PYDIR}/pybind11_abseil
+     ARCHIVE DESTINATION ${CMAKE_INSTALL_PYDIR}/pybind11_abseil
+     RUNTIME DESTINATION ${CMAKE_INSTALL_PYDIR}/pybind11_abseil)
+ 
+   install(
+-    TARGETS status_py_extension_stub ok_status_singleton
+-    EXPORT pybind11_abseil_cppTargets
+-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+-    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+-    RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR})
++    TARGETS absl_casters status_casters no_throw_status status_caster statusor_caster import_status_module
++            check_status_module_imported ok_status_singleton_lib raw_ptr_from_capsule
++            status_from_py_exc status_not_ok_exception void_ptr_from_capsule
++            py_base_utilities status_from_core_py_exc
++    EXPORT pybind11_abseilTargets
++    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/pybind11_abseil
++  )
+ 
++  install(
++    EXPORT pybind11_abseilTargets
++    NAMESPACE pybind11_abseil::
++    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/pybind11_abseil
++  )
++
++  install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
++          DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/
++          FILES_MATCHING PATTERN "*.h"
++          PATTERN tests EXCLUDE
++          PATTERN requirements EXCLUDE
++  )
+ endif()
+diff --git a/pybind11_abseil/cmake/Config.cmake.in b/pybind11_abseil/cmake/Config.cmake.in
+new file mode 100644
+index 0000000..4594f2f
+--- /dev/null
++++ b/pybind11_abseil/cmake/Config.cmake.in
+@@ -0,0 +1,12 @@
++@PACKAGE_INIT@
++
++set(_pybind11_abseil_supported_components absl_casters status_casters no_throw_status)
++
++foreach(_comp ${pybind11_abseil_FIND_COMPONENTS})
++  if (NOT _comp IN_LIST _pybind11_abseil_supported_components)
++    set(pybind11_abseil_FOUND False)
++    set(pybind11_abseil_NOT_FOUND_MESSAGE "Unsupported component: ${_comp}")
++  endif()
++endforeach()
++
++include("${CMAKE_CURRENT_LIST_DIR}/pybind11_abseilTargets.cmake")
+-- 
+2.45.0
+

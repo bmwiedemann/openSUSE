@@ -16,6 +16,8 @@
 #
 
 
+%global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
+%{?sle15_python_module_pythons}
 %define __builder ninja
 %define python_subpackage_only 1
 Name:           pybind11-abseil
@@ -25,19 +27,19 @@ Summary:        Pybind11 bindings for the Abseil C++ Common Libraries
 License:        BSD-3-Clause
 URL:            https://github.com/pybind/pybind11_abseil
 Source:         %{url}/releases/download/v%{version}/pybind11_abseil-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE -- Based on patch from google-or-tools, rebased on pybind11-abseil 2002402.0
+Patch0:         pybind11_abseil.patch
 # PATCH-FIX-UPSTREAM use-system-packages-if-possible.patch badshah400@gmail.com -- Allow the use of system absl-cpp and pybind11 if available
-Patch0:         use-system-packages-if-possible.patch
-# PATCH-FIX-UPSTREAM find-and-link-python-libs.patch badshah400@gmail.com -- Link against python libraries to avoid undefined references
-Patch1:         find-and-link-python-libs.patch
-# PATCH-FIX-UPSTREAM install-headers.patch badshah400@gmail.com -- Install header files to appropriate system includedirs
-Patch2:         install-headers.patch
+Patch1:         use-system-packages-if-possible.patch
+# PATCH-FIX-OPENSUSE
+Patch2:         0001-Install-headers-and-CMake-development-files.patch
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.24
 BuildRequires:  ninja
 BuildRequires:  python-rpm-macros
 BuildRequires:  cmake(absl)
-BuildRequires:  cmake(pybind11)
+BuildRequires:  cmake(pybind11) >= 2.11.0
 # Section Tests need
 BuildRequires:  %{python_module abseil}
 BuildRequires:  %{python_module numpy}
@@ -49,7 +51,6 @@ BuildRequires:  %{python_module numpy}
 
 %package -n %{name}-devel
 Summary:        Development files for pybind11_abseil
-Requires:       python-devel
 Requires:       cmake(absl)
 Requires:       cmake(pybind11)
 
@@ -78,7 +79,7 @@ applications against pybind11_abseil.
 %cmake \
   -DCMAKE_INSTALL_PYDIR=%{$python_sitearch} \
   -DPython_EXECUTABLE=%{_bindir}/python%{$python_version} \
-	%{nil}
+  %{nil}
 %cmake_build
 popd
 }
@@ -99,8 +100,9 @@ popd
 %files -n %{name}-devel
 %license LICENSE
 %doc README.md
-%{_libdir}/*.so
 %{_includedir}/pybind11_abseil/
+%{_libdir}/cmake/pybind11_abseil/
+%{_libdir}/lib*.a
 
 %files %{python_files pybind11_abseil}
 %license LICENSE

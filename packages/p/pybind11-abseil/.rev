@@ -7,4 +7,22 @@
     <comment>needed by https://build.opensuse.org/request/show/1169757</comment>
     <requestid>1170994</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cda7ba37fbbb99bfdcd6e01af4b528cc</srcmd5>
+    <version>202402.0</version>
+    <time>1719497014</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1181187 from StefanBruens
+
+This fixes a number of problems in the current package, e.g. python extension modules installed in %{_libdir} (status.so), missing CMake files, etc. This now allows building for google-or-tools.
+  
+  - Add pybind11_abseil.patch, ported from google-or-tools. Change
+    target type from plain library to python extension. 
+  - Drop find-and-link-python-libs.patch -- python extension should
+    not link to the python libraries explcitly
+  - Replace install-headers.patch with
+    0001-Install-headers-and-CMake-development-files.patch -- for
+    downstream users, also the CMake files are required</comment>
+    <requestid>1183487</requestid>
+  </revision>
 </revisionlist>
