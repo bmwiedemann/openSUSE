@@ -16,8 +16,13 @@
 #
 
 
+%ifarch s390x
+%bcond_with test
+%else
+%bcond_without test
+%endif
 Name:           qrtool
-Version:        0.10.6
+Version:        0.10.11
 Release:        0
 Summary:        An utility for encoding or decoding QR code
 License:        MIT AND CC-BY-4.0 AND Apache-2.0
@@ -41,7 +46,10 @@ qrtool is a command-line utility for encoding or decoding QR code.
 install -Dm755 target/release/%{name} -t %{buildroot}%{_bindir}
 install -Dm644 target/release/build/qrtool*/out/*.? -t %{buildroot}%{_mandir}/man1
 
+%if %{with test}
 %check
+%{cargo_test}
+%endif
 
 %files
 %license LICENSE*

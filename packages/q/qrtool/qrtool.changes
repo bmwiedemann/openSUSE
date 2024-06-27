@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 27 08:43:11 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.10.11
+  * Update examples in man pages
+  * Allow input image formats other than PNG to be disabled
+  * Change to remove unnecessary files from the book
+- Enable cargo test except on s390x (failed on decode_from_open_exr
+  and decode_from_qoi)
+
+-------------------------------------------------------------------
 Mon Dec 25 04:41:44 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Initial package
