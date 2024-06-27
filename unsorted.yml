@@ -333,6 +333,7 @@ unsorted:
   - SwayNotificationCenter-bash-completion 
   - SwayNotificationCenter-fish-completion 
   - SwayNotificationCenter-zsh-completion 
+  - TeXmacs 
   - ThePEG-devel 
   - TreeMaker 
   - UEFITool 
@@ -11366,7 +11367,6 @@ unsorted:
   - libSoundTouch1-32bit 
   - libSoundTouchDll1 
   - libStatTimer2 
-  - libSvtAv1Dec0 
   - libTMCG-devel 
   - libTMCG18 
   - libThePEG30 
@@ -14782,7 +14782,7 @@ unsorted:
   - libopenmpi4-gnu-hpc 
   - libopenmpi5-gnu-hpc 
   - libopenmpi_4_1_6-gnu-hpc 
-  - libopenmpi_5_0_2-gnu-hpc 
+  - libopenmpi_5_0_3-gnu-hpc 
   - libopenmpt-devel 
   - libopenmpt-modplug-devel 
   - libopenmpt0-32bit 
@@ -14794,7 +14794,7 @@ unsorted:
   - libopenshot-audio-devel 
   - libopenshot-audio9 
   - libopenshot-devel 
-  - libopenshot25 
+  - libopenshot26 
   - libopenslide-devel 
   - libopenslide0 
   - libopensm9 
@@ -15387,7 +15387,6 @@ unsorted:
   - libqt5-qtnetworkauth-examples 
   - libqt5-qtnetworkauth-private-headers-devel 
   - libqt5-qtpaths 
-  - libqt5-qtpbfimageformat 
   - libqt5-qtpdf-devel 
   - libqt5-qtpdf-examples 
   - libqt5-qtpdf-imports 
@@ -17109,7 +17108,7 @@ unsorted:
   - libzbc-devel 
   - libzbc-gui 
   - libzbc-tools 
-  - libzbc5 
+  - libzbc6 
   - libzck-devel 
   - libzdb-devel 
   - libzdb13 
@@ -20107,6 +20106,7 @@ unsorted:
   - openSUSE-release-usb-gnome 
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
+  - openSUSE-repos-Leap 
   - openSUSE-repos-MicroOS 
   - openSUSE-repos-MicroOS-NVIDIA 
   - openSUSE-repos-Slowroll 
@@ -20236,12 +20236,12 @@ unsorted:
   - openmpi_4_1_6-gnu-hpc-docs 
   - openmpi_4_1_6-gnu-hpc-macros-devel 
   - openmpi_4_1_6-gnu-hpc-testsuite 
-  - openmpi_5_0_2-gnu-hpc 
-  - openmpi_5_0_2-gnu-hpc-devel 
-  - openmpi_5_0_2-gnu-hpc-devel-static 
-  - openmpi_5_0_2-gnu-hpc-docs 
-  - openmpi_5_0_2-gnu-hpc-macros-devel 
-  - openmpi_5_0_2-gnu-hpc-testsuite 
+  - openmpi_5_0_3-gnu-hpc 
+  - openmpi_5_0_3-gnu-hpc-devel 
+  - openmpi_5_0_3-gnu-hpc-devel-static 
+  - openmpi_5_0_3-gnu-hpc-docs 
+  - openmpi_5_0_3-gnu-hpc-macros-devel 
+  - openmpi_5_0_3-gnu-hpc-testsuite 
   - openmpt123 
   - openmw 
   - opennlp 
@@ -25782,6 +25782,7 @@ unsorted:
   - python310-musicbrainzngs 
   - python310-mutagen 
   - python310-mutatorMath 
+  - python310-mutf8 
   - python310-mutmut 
   - python310-mutt-ics 
   - python310-mwclient 
@@ -29312,6 +29313,7 @@ unsorted:
   - python311-musicbrainzngs 
   - python311-mutagen 
   - python311-mutatorMath 
+  - python311-mutf8 
   - python311-mutmut 
   - python311-mutt-ics 
   - python311-mwclient 
@@ -32859,6 +32861,7 @@ unsorted:
   - python312-musicbrainzngs 
   - python312-mutagen 
   - python312-mutatorMath 
+  - python312-mutf8 
   - python312-mutt-ics 
   - python312-mwclient 
   - python312-mycli 
@@ -34829,6 +34832,7 @@ unsorted:
   - qt6-qt5compat-docs-html 
   - qt6-qt5compat-docs-qch 
   - qt6-qt5compat-private-devel 
+  - qt6-qtpbfimageformat 
   - qt6-quick-devel 
   - qt6-quick-private-devel 
   - qt6-quick3d 
@@ -35050,6 +35054,7 @@ unsorted:
   - qtodotxt 
   - qtox 
   - qtractor 
+  - qtractor-doc-pdf 
   - qtxdg-tools 
   - quakespasm 
   - quantum-espresso 
