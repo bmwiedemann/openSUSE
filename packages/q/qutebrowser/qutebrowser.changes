@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 26 01:25:34 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 3.2.1:
+  Fixed
+  * When the selected Qt wrapper is unavailable, qutebrowser now
+    again shows a GUI error message instead of only an exception in
+    the terminal.
+
+-------------------------------------------------------------------
 Tue Jun  4 00:31:01 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to version 3.2.0:
