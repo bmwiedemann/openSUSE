@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 26 11:10:14 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 2.4.122
+  * fix FTBS on FreeBSD (or non-Linux in general)
+  * freedreno: fix FTBS on non-Linux platforms (unused header)
+  * etnaviv: fix FTBS on undefined linux/* headers on non-Linux platforms.
+  * ci: upgrade debian container to bookworm
+  * ci: upgrade FreeBSD VM to 14.1
+  * Remove libm in libdrm dependencies
+  * Sync headers with drm-next
+
+-------------------------------------------------------------------
 Mon Jun  3 00:46:48 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 2.4.121

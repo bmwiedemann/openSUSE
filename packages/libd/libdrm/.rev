@@ -1825,4 +1825,19 @@ Man pages are disabled for this build, upstream disabled them for this release. 
   * xf86drm: ignore symlinks in process_device()</comment>
     <requestid>1178202</requestid>
   </revision>
+  <revision rev="177" vrev="1">
+    <srcmd5>edba5bbc9edb4205342839dc4d50164f</srcmd5>
+    <version>2.4.122</version>
+    <time>1719496677</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.4.122
+  * fix FTBS on FreeBSD (or non-Linux in general)
+  * freedreno: fix FTBS on non-Linux platforms (unused header)
+  * etnaviv: fix FTBS on undefined linux/* headers on non-Linux platforms.
+  * ci: upgrade debian container to bookworm
+  * ci: upgrade FreeBSD VM to 14.1
+  * Remove libm in libdrm dependencies
+  * Sync headers with drm-next</comment>
+    <requestid>1183417</requestid>
+  </revision>
 </revisionlist>
