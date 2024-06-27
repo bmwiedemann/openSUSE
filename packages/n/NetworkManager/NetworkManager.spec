@@ -64,7 +64,7 @@
 %endif
 
 Name:           NetworkManager
-Version:        1.44.4
+Version:        1.48.2
 Release:        0
 Summary:        Standard Linux network configuration tool suite
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -90,15 +90,13 @@ Patch5:         NetworkManager-1.10.6-netconfig.patch
 Patch6:         0001-Coerce-connectivity-LIMITED-to-NONE-when-device-is-d.patch
 # PATCH-FIX-OPENSUSE nm-add-CAP_SYS_ADMIN-permission.patch bsc#1129587 sckang@suse.com -- Add CAP_SYS_ADMIN which netconfig needs to call setdomainname
 Patch7:         nm-add-CAP_SYS_ADMIN-permission.patch
-# PATCH-FIX-OPENSUSE fix runstatedir from /var/run to /run gmbr3@opensuse.org
-Patch8:         nm-runstatedir.patch
 # PATCH-FIX-SLE python3.6-in-sle.patch yfjiang@suse.com -- SLE still takes python 3.6 as primary runtime system, the patch makes meson find python 3.6
-Patch9:         python3.6-in-sle.patch
+Patch8:         python3.6-in-sle.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  dnsmasq
 BuildRequires:  fdupes
-BuildRequires:  meson
+BuildRequires:  meson >= 0.51.0
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  ppp-devel
@@ -109,7 +107,7 @@ BuildRequires:  wireless-tools
 BuildRequires:  perl(YAML)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1) >= 0.94
-BuildRequires:  pkgconfig(glib-2.0) >= 2.32
+BuildRequires:  pkgconfig(glib-2.0) >= 2.42
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(jansson) >= 2.7
@@ -301,9 +299,8 @@ This tool is still experimental.
 %patch -P 5 -p1
 %patch -P 6 -p1
 %patch -P 7 -p1
-%patch -P 8 -p1
 %if 0%{?sle_version} && 0%{?sle_version} < 160000
-%patch -P 9 -p1
+%patch -P 8 -p1
 %endif
 
 # Fix server.conf's location, to end up in %%{_defaultdocdir}/%%{name},
