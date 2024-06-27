@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Libssh-Session
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,22 @@
 
 %define cpan_name Libssh-Session
 Name:           perl-Libssh-Session
-Version:        0.8
+Version:        1.100.0
 Release:        0
+# 1.1 -> normalize -> 1.100.0
+%define cpan_version 1.1
 #Upstream:  This library is licensed under the Apache License 2.0. Details of this license can be found within the 'LICENSE' text file
 License:        Apache-2.0
-Summary:        Support for the SSH protocol via libssh
+Summary:        Perl interface for libssh
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        Libssh-Session-0.8.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/Q/QG/QGARNIER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Libssh::Session) = %{version}
+Provides:       perl(Libssh::Sftp) = %{version}
+%undefine       __perllib_provides
+Recommends:     perl(ExtUtils::PkgConfig)
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  libssh-devel
@@ -40,7 +46,9 @@ library. It doesn't support all the library. It's working in progress.
 Right now, you can authenticate and execute commands on a SSH server.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
