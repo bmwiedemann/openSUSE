@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 10 11:18:11 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6
+  * Dropped support for draft standards 4.x.
+  * Compliance to the final ZBC/ZAC standards is improved and now
+    includes support for such ZAC-2/ZBC-2 features as support for
+    DH-SMR (XMR) devices and support for zone counts > 1 in zone
+    operations.
+
+-------------------------------------------------------------------
 Thu May 16 06:04:20 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.14

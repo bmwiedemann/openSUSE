@@ -17,8 +17,8 @@
 
 
 Name:           libzbc
-%define lname   libzbc5
-Version:        5.14.0
+%define lname   libzbc6
+Version:        6.0.0
 Release:        0
 Summary:        Library for manipulating ZBC and ZAC disks
 License:        BSD-2-Clause AND LGPL-3.0-or-later
@@ -27,6 +27,7 @@ URL:            https://github.com/westerndigitalcorporation/libzbc
 
 Source:         https://github.com/westerndigitalcorporation/libzbc/archive/v%version.tar.gz
 BuildRequires:  autoconf-archive
+BuildRequires:  fdupes
 BuildRequires:  libtool >= 2
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(gtk+-3.0)
@@ -88,6 +89,8 @@ autoreconf -fi
 %install
 %make_install
 find "%buildroot/%_libdir" -type f -name "*.la" -delete
+rm -Rf "%buildroot/%_datadir/polkit-1"
+%fdupes %buildroot/%_prefix
 
 %check
 %make_build check
@@ -101,9 +104,11 @@ find "%buildroot/%_libdir" -type f -name "*.la" -delete
 
 %files gui
 %_bindir/gz*
+%_datadir/applications/
+%_datadir/pixmaps/*
 
 %files -n %lname
-%_libdir/libzbc.so.5*
+%_libdir/libzbc.so.*
 %license COPYING.BSD
 
 %files devel

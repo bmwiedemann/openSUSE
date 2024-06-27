@@ -175,4 +175,12 @@
     <comment>- Update to release 5.14</comment>
     <requestid>1174366</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8a7111da4173891679f5f054f10cbdd8</srcmd5>
+    <version>6.0.0</version>
+    <time>1719497103</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1183572</requestid>
+  </revision>
 </revisionlist>
