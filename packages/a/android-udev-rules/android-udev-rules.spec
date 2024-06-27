@@ -17,13 +17,13 @@
 
 
 Name:           android-udev-rules
-Version:        20240221
+Version:        20240625
 Release:        0
 Summary:        Udev rules for Android Debug Bridge
 License:        GPL-3.0-or-later
 Group:          Hardware/Mobile
 URL:            https://github.com/M0Rf30/android-udev-rules
-Source0:        https://github.com/M0Rf30/android-udev-rules/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  udev
@@ -37,8 +37,8 @@ BuildArch:      noarch
 This package provides udev rules to facilitate the use of devices
 with Android Debug Bridge (a command-line tool for communicating with
 a device to e.g. install or debug apps).
-The rules set adb* group ownership on /dev files and create symlinks such as
-/dev/android*.
+The rules set adb* group ownership on /dev files and create symlinks
+such as /dev/android*.
 
 %prep
 %autosetup -p1

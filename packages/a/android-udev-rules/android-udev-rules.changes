@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jun 26 03:35:40 UTC 2024 - munix9@googlemail.com
+
+- Update to version 20240625
+  Features
+  * Add fastboot Google Pixel 7
+  * Add SHIFT5me
+  * Add Quectel vendor and Quectel EC25 (#318)
+  * Add Pico 4 VR Headset and vendor (#319)
+  * Add UVC for Pixel devices (close #321) (#322)
+  * Add Oculus Go and Oculus Quest (#324)
+  * Add Nintendo Switch
+
+  Miscellaneous Tasks
+  * Update link to google source (#317)
+
+-------------------------------------------------------------------
 Fri Mar  1 08:13:27 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update descriptions to point out ADB
