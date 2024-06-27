@@ -2,13 +2,37 @@
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
 ## Description
-This image is similar to Minimal but without the RPM package manager.
-The primary use case for the image is deploying static binaries produced
-externally or during multi-stage builds. As there is no straightforward
-way to install additional dependencies inside the container image,
-we recommend deploying a project using the Minimal image only
-when the final build artifact bundles all dependencies and has no
-external runtime requirements (like Python or Ruby).
+
+The `bci-micro` image includes the RPM database, but not the RPM package
+manager. This means that the image is smaller than `bci-minimal`. The primary
+use case for the image is deploying static binaries produced externally or
+during multi-stage builds.
+
+
+## Usage
+
+As there is no straightforward way to install additional
+dependencies inside the container image, we recommend deploying a project
+using the `bci-micro` image only when the final build artifact bundles all
+dependencies and needs no further installation of packages.
+
+Example using a Go application:
+
+```Dockerfile
+FROM registry.suse.com/bci/golang:stable as build
+
+WORKDIR /app
+
+RUN go install github.com/go-training/helloworld@latest
+
+# Create an image to bundle the app
+FROM registry.suse.com/bci/bci-micro:latest
+
+COPY --from=build /go/bin/helloworld /usr/local/bin/helloworld
+
+CMD ["/usr/local/bin/helloworld"]
+```
+
 
 ## Licensing
 
