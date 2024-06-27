@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 26 05:08:53 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240624T194033Z:
+  * fix: make sure to set the right sse-kms key (#4967)
+
+-------------------------------------------------------------------
 Sat Jun 22 10:07:34 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240620T145054Z:
