@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 20 05:47:14 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.077:
+  * UI fix db sync timezone (#487)
+  * tmpfiles: Let working and run directories be always created (#488)
+  * Switch CI to 15.6 (#489)
+  * Fix doubleslash in mirrors report (#490)
+
+-------------------------------------------------------------------
 Tue May 21 14:18:43 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.076:
