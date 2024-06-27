@@ -1,0 +1,15 @@
+diff --git pbfplugin.pro pbfplugin.pro
+index 1fccace..7d47d02 100644
+--- pbfplugin.pro
++++ pbfplugin.pro
+@@ -40,8 +40,8 @@ RESOURCES += pbfplugin.qrc
+ DEFINES += QT_NO_DEPRECATED_WARNINGS
+ 
+ unix:!macx:!android {
+-    LIBS += -lprotobuf-lite \
+-        -lz
++    CONFIG += link_pkgconfig
++    PKGCONFIG += protobuf-lite zlib
+ 
+     target.path += $$[QT_INSTALL_PLUGINS]/imageformats
+     INSTALLS += target
