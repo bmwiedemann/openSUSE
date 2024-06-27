@@ -1,0 +1,25 @@
+From 69251948eeee350d21f3603225aaba6167e842ee Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Tue, 18 Jun 2024 15:16:06 +0200
+Subject: [PATCH] vulkan: fix compilation
+
+---
+ spa/plugins/vulkan/vulkan-compute-filter.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/spa/plugins/vulkan/vulkan-compute-filter.c b/spa/plugins/vulkan/vulkan-compute-filter.c
+index c970d8b181..397003620d 100644
+--- a/spa/plugins/vulkan/vulkan-compute-filter.c
++++ b/spa/plugins/vulkan/vulkan-compute-filter.c
+@@ -663,7 +663,7 @@ static int impl_node_process(void *object)
+ 	SPA_FLAG_SET(b->flags, BUFFER_FLAG_OUT);
+ 	this->state.streams[outport->stream_id].pending_buffer_id = b->id;
+ 
+-	this->state.constants.time += 0.025;
++	this->state.constants.time += 0.025f;
+ 	this->state.constants.frame++;
+ 
+ 	spa_log_debug(this->log, "filter into %d", b->id);
+-- 
+GitLab
+

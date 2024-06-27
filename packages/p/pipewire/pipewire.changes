@@ -1,4 +1,217 @@
 -------------------------------------------------------------------
+Wed Jun 26 09:54:23 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.1.83:
+  * This is the third and hopefully the last 1.2 release candidate
+    that is API and ABI compatible with previous 1.0.x releases.
+  * Highlights
+    - Rework how peers are linked and the counters are updated.
+      Resume the peers when a node is unlinked and not yet
+      processed. This should cause less occasional dropouts in the
+      graph when reconnecting things.
+    - Improve xruns in module-ffado.
+    - Many GStreamer element updates.
+    - More fixes and improvements.
+  * PipeWire
+    - Rework how peers are linked and the counters are updated.
+      Resume the peers when a node is unlinked and not yet
+      processed. This should cause less dropouts in the graph when
+      reconnecting. (#4026)
+    - Improve debug of xruns.
+    - Evaluate node.rules and device.rules before loading the
+      plugin so that extra properties can be passed to the plugin
+      init function.
+  * Modules
+    - Improve timing reporting in module-ffado some more.
+    - Prealloc less memory in the profiler by default.
+    - Improve xrun handling in module-ffado.
+  * Tools
+    - Fix a crash in pw-link when a link fails.
+    - Fix pw-dump update for metadata. (#4053)
+  * SPA
+    - Improve handling of controls. (#4028)
+    - Fix the string size in v4l2 to hold the device and vendor id.
+    - Support meta_videotransform on buffers in v4l2. This can be
+      used to signal that the buffer was rotated for example.
+    - Add HDMI/AC3 profile to ALSA when supported.
+    - Make it possible to disable the webrtc dependency
+  * GStreamer
+    - Improve caps handling in the elements.
+    - Set buffer duration when we can.
+    - Post an element error when all the elements buffers are
+      removed. (#1980)
+    - Improve DMA_DRM caps selection.
+    - Some refactoring work.
+    - Improve state handling in the elements.
+  * JACK
+    - Improve how links are activated.
+    - Fix some races when freeing memory.
+  * Bluetooth
+    - Support multiple BIS in the broadcast source.
+- Add patch recommended by upstream to fix compilation for vulkan:
+  * 0001-vulkan-fix-compilation.patch
+
+- Update to version 1.1.82:
+  * This is the second 1.2 release candidate that is API and ABI
+    compatible with previous 1.0.x releases.
+  * Highlights
+    - Fix problem when moving nodes that could cause nodes to be
+      scheduled wrongly and cause errors. (#4017)
+    - Add snapcast-discover module to stream to snapcast servers.
+    - Work around wrong kernel provided MTU for USB controllers.
+    - Fix some spelling mistakes all over the codebase.
+    - More small fixes and improvements.
+  * PipeWire
+    - Remove the private cleanup.h header and use the public SPA
+      version.
+    - Fix problem when moving nodes that could cause nodes to be
+      scheduled wrongly and cause errors. (#4017)
+  * Modules
+    - Handle IPv6 in module-protocol-simple and support port
+      allocation.
+    - Add snapcast-discover module to stream to snapcast servers.
+  * Bluetooth
+    - Work around wrong kernel provided MTU for USB controllers.
+
+- Update to version 1.1.81:
+  * This is the first 1.2 release candidate that is API and ABI
+    compatible with previous 1.0.x releases.
+  * Highlights
+    - Support for asynchronous processing has been implemented.
+      Nodes can choose (or be forced) to be scheduled
+      asynchronously. The graph will not wait for the output of the
+      node to continue processing but it will use the output of the
+      previous cycle (or silence) instead. This adds one cycle of
+      latency but it can avoid having some nodes blocking the
+      processing graph. Non realtime streams and filters now also
+      use this asynchronous processing instead of their own
+      slightly broken version.
+    - The concept of node.sync-group was added. This groups nodes
+      with overlapping sync-group together when one of them sets
+      the node.sync = true. This is now used to make sure all nodes
+      are scheduled together when JACK transport is started so that
+      they all see the same time.
+    - Config parsing errors are reported earlier and much better
+      with line and column numbers where the parsing started to
+      fail.
+    - Add support for mandatory metadata when negotiation buffer
+      parameters. This can be used to only negotiate extra buffer
+      planes when certain metadata is negotiated. One use case is
+      the explicit sync support that requires 2 extra fds for the
+      timelines.
+    - Support was added for making and using multiple data-loops in
+      the server and clients. Support for CPU affinity and
+      priorities was added to the data-loops as well.
+    - The log topic debug levels can now be changed at runtime with
+      metadata.
+    - The log levels in the pulse server can be dynamically changed
+      with a /core message.
+    - The UCM conflicting devices patches were merged.
+  * PipeWire
+    - snap support has been added.
+    - Implement async processing. (#3509)
+    - Support for explicit sync was added.
+    - Config parsing errors are reported earlier and much better.
+    - A -P option was added to provide extra properties to the
+      context. This can be used to enable some features that use
+      rules.
+    - properties.rules was added to enhance properties based on
+      some rules. This deprecates the vm.overrides.
+    - Support was added for security-context. This makes it
+      possible for a flatpak to request a socket with specific
+      properties from pipewire to mount in the flatpak. The session
+      manager can then assign permissions based on the connection
+      properties.
+    - Support for fixed arrays in pw_array was improved.
+    - Pipewire server and clients can now use multiple threads to
+      process the nodes in parallel.
+    - device.rules and node.rules were added to update device and
+      node properties based on rules.
+    - device.param and node.param can now be used to configure
+      params when devices and nodes are created.
+    - Memory will now try to use MFD_NOEXEC_SEAL.
+    - The driver id of a node is now placed in the properties.
+    - A potential race was fixed when adding and removing ports to
+      the scheduling lists.
+  * Modules
+    - Priorities for the FFADO threads can be configured now.
+    - The loopback module now has support for up and downmixing.
+    - Extra properties can now be configured per native-connection
+      socket.
+    - The pulse-tunnel can now automatically reconnect when the
+      connection is broken.
+    - The RTP module now supports the PTP management protocol.
+    - The RTP sender can now use a timer to send out multiple
+      packets per quantum.
+    - A new module was added for loading Parametric EQ.
+    - The simple-protocol module now has per stream configurable
+      properties and can also be used to interface with a snapcast
+      server.
+    - Support for local services was added to raop, rtp and pulse
+      avahi discoverers. Support for IPv6 on local services was
+      added to RAOP.
+  * SPA
+    - Support for reporting JSON parsing errors has been added.
+    - Some extra checks are added when iterating POD structures.
+    - Port and profiles can now be hidden from ALSA nodes with
+      api.acp.hidden-ports and api.acp.hidden-profiles properties.
+    - The UCM conflicting devices patches were merged.
+    - Profiles and Routes can now also be set by name.
+    - Hires timestamps are now used when possible in IRQ based
+      scheduling to get more accurate wakup times.
+    - udev can now be an optional dependency.
+    - audioadapter now has an option to automatically configure
+      its ports.
+    - Camera rotation was added to the libcamera node.
+    - invoke on loops can now be done from multiple threads at the
+      same time.
+    - Make sure we use CLOCK_MONOTONIC everywhere in the io_clock.
+    - Vulkan bit and convert filters were added.
+    - ALSA will now always read the HW ringbuffer pointer when
+      followers are not on the same card.
+    - Support for larger MIDI sysex messages was improved.
+      Configuration of the client input and output pool was added.
+      (#4005)
+  * Bluetooth
+    - Support Google OPUS codec.
+    - Support the LC3-SWB codec.
+    - Support the AAC-ELD codec.
+    - Broadcast source configuration support was added.
+  * pulseaudio-server
+    - The GSettings schemas are now optionally installed.
+    - Extensions were moved to the modules.
+    - The log level of the pulse server can dynamically be changed
+      with a core object message.
+    - snap access control was added to pulse-server.
+    - The old pacmd describe-module functionality is now
+      implemented with a core message
+      pipewire-pulse:describe-module.
+    - An option was added to disable module loading and unloading.
+  * JACK
+    - OSC messages can now also be placed in JACK MIDI and the
+      translation layer will detect and tag the right PipeWire
+      control message types.
+    - A jack.other-connect-mode was added to limit the connections
+      that an app can do to ports it doesn't own.
+    - The way the transport is started and how the nodes are
+      grouped together in the transport was improved using the new
+      sync groups. (#3850)
+    - Fix large MIDI messages handling. (#4005)
+  * ALSA
+    - Fix format renegotiation. (#3858)
+    - Handle period events better. (#3676)
+    - Improve handling of the eventfd wakeups.
+  * GStreamer
+    - The GStreamer elements can now negotiate and use DMABUF.
+  * Tools
+    - The T flag is used in pw-top when the transport is running.
+    - A new pw-container tool was added to start a new security
+      context and run an application in it.
+    - pw-dot handles properties with quotes better. Nodes are
+      grouped with the node.link-group.
+    - pw-link has a --wait option to wait for all links to be created.
+
+-------------------------------------------------------------------
 Mon Jun 10 10:12:03 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Make sure the pipewire-libjack package doesn't completely

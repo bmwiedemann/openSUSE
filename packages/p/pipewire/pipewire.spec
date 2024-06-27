@@ -62,7 +62,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        1.0.7
+Version:        1.1.83
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -72,6 +72,8 @@ Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
+# PATCH-FIX-UPSTREAM 0001-vulkan-fix-compilation.patch
+Patch1:         0001-vulkan-fix-compilation.patch
 
 BuildRequires:  docutils
 %if 0%{suse_version} > 1500
@@ -121,6 +123,7 @@ BuildRequires:  pkgconfig(lc3)
 %if %{with libcamera}
 BuildRequires:  libcamera-devel >= 0.2.0
 %endif
+BuildRequires:  pkgconfig(libapparmor)
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libdrm)
@@ -423,6 +426,7 @@ JACK libraries.
 sed -ie "s/version : '0.3.72'/version : '%{version}'/" %{P:0}
 %patch -P 0 -p1
 %endif
+%patch -P 1 -p1
 
 %build
 %if 0%{?suse_version} <= 1500
@@ -465,6 +469,7 @@ export CXX=g++-11
 %endif
     -Dbluez5-codec-lc3=enabled \
     -Dbluez5-codec-lc3plus=disabled \
+    -Dgsettings-pulse-schema=disabled \
 %if %{with libcamera}
     -Dlibcamera=enabled \
 %else
@@ -482,6 +487,7 @@ export CXX=g++-11
 %endif
     -Dsession-managers="[]" \
     -Dsdl2=disabled \
+    -Dsnap=disabled \
 %if %{with_webrtc_audio_processing}
     -Decho-cancel-webrtc=enabled \
 %else
@@ -497,8 +503,6 @@ cp %{buildroot}%{_datadir}/alsa/alsa.conf.d/50-pipewire.conf \
         %{buildroot}%{_sysconfdir}/alsa/conf.d/50-pipewire.conf
 cp %{buildroot}%{_datadir}/alsa/alsa.conf.d/99-pipewire-default.conf \
         %{buildroot}%{_sysconfdir}/alsa/conf.d/99-pipewire-default.conf
-mkdir -p %{buildroot}%{_udevrulesdir}
-mv -fv %{buildroot}/lib/udev/rules.d/90-pipewire-alsa.rules %{buildroot}%{_udevrulesdir}
 
 %if 0%{?suse_version} > 1500
 mkdir -p %{buildroot}%{_pam_secdistconfdir}/limits.d/
@@ -753,6 +757,7 @@ fi
 %{_bindir}/pw-cat
 %{_bindir}/pw-cli
 %{_bindir}/pw-config
+%{_bindir}/pw-container
 %{_bindir}/pw-dot
 %{_bindir}/pw-dsdplay
 %{_bindir}/pw-dump
@@ -773,6 +778,7 @@ fi
 %{_mandir}/man1/pw-cat.1%{?ext_man}
 %{_mandir}/man1/pw-cli.1%{?ext_man}
 %{_mandir}/man1/pw-config.1%{?ext_man}
+%{_mandir}/man1/pw-container.1%{?ext_man}
 %{_mandir}/man1/pw-dot.1%{?ext_man}
 %{_mandir}/man1/pw-dump.1%{?ext_man}
 %{_mandir}/man1/pw-link.1%{?ext_man}
