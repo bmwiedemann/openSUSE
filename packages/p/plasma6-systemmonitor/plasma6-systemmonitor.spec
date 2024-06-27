@@ -27,14 +27,14 @@
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 Name:           plasma6-systemmonitor
-Version:        6.1.0
+Version:        6.1.1
 Release:        0
 Summary:        An application for monitoring system resources
 License:        GPL-3.0-only
 URL:            https://www.kde.org
-Source0:        %{rname}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
