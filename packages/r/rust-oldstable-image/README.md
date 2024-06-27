@@ -21,7 +21,7 @@ COPY . ./
 RUN cargo build --release
 
 # Bundle the application into a BCI micro (or other BCI image)
-FROM registry.suse.com/bci/bci-micro
+FROM registry.suse.com/bci/bci-micro:latest
 
 COPY --from=build /app/target/release/hello /usr/local/bin/hello
 
