@@ -930,4 +930,16 @@
     <comment></comment>
     <requestid>1174721</requestid>
   </revision>
+  <revision rev="103" vrev="43">
+    <srcmd5>0383bb1e9208084333ebd861aee0f439</srcmd5>
+    <version>unknown</version>
+    <time>1719496873</time>
+    <user>anag+factory</user>
+    <comment>Monthly Patch Release – July, 2024: Bump meta package versions
+* kubernetes (version) - 1.30.2
+* kubernetes (versionminus1) - 1.29.6
+* kubernetes (versionminus2) - 1.28.11
+* kubernetes (versionminus3) - 1.27.15</comment>
+    <requestid>1183317</requestid>
+  </revision>
 </revisionlist>
