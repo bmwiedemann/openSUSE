@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 25 14:25:02 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240625.f75b6e5:
+  * initial leap 16 repoindex
+  * Update README.md
+- Handle Leap 16 similar to LEAPM 5 vs 6
+
+-------------------------------------------------------------------
 Mon Jun 24 06:42:52 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Ensure that refresh-services / refs is called after addservice

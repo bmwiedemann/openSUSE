@@ -41,11 +41,6 @@ ExclusiveArch:  do_not_build
 %define theme MicroOS
 %define branding microos
 %endif
-# ALP -> Leap 16 does not use sle_version, ALP also uses is_opensuse 1
-%if "%flavor" == "openSUSE-repos-Leap16"
-%define theme Leap16
-%define branding leap16
-%endif
 %endif
 
 # LeapMicro 6.0 does not have sle_version any more
@@ -67,6 +62,15 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 
+# Leap 16
+%if 0%{?is_opensuse} && 0%{?suse_version} >= 1600
+%if "%flavor" == "openSUSE-repos-Leap"
+%define theme Leap
+%define branding leap
+%define with_nvidia 0
+%endif
+%endif
+
 %if "%{?theme}" == ""
 ExclusiveArch:  do_not_build
 %endif
@@ -76,7 +80,7 @@ Name:           openSUSE-repos
 %else
 Name:           openSUSE-repos-%{theme}
 %endif
-Version:        20240621.6fd1ef2
+Version:        20240625.f75b6e5
 Release:        0
 Summary:        openSUSE package repositories
 License:        MIT
@@ -105,10 +109,6 @@ Obsoletes:      openSUSE-repos-LeapMicro
 Obsoletes:      openSUSE-repos-Leap
 Obsoletes:      openSUSE-repos-LeapMicro
 %endif
-%if "%{?theme}" == "Leap16"
-Obsoletes:      openSUSE-repos-Leap
-Obsoletes:      openSUSE-repos-LeapMicro
-%endif
 
 %description
 Definitions for openSUSE repository management via zypp-services
@@ -133,10 +133,6 @@ Obsoletes:      openSUSE-repos-Leap-NVIDIA
 Obsoletes:      openSUSE-repos-LeapMicro-NVIDIA
 %endif
 %if "%{?theme}" == "MicroOS"
-Obsoletes:      openSUSE-repos-Leap-NVIDIA
-Obsoletes:      openSUSE-repos-LeapMicro-NVIDIA
-%endif
-%if "%{?theme}" == "Leap16"
 Obsoletes:      openSUSE-repos-Leap-NVIDIA
 Obsoletes:      openSUSE-repos-LeapMicro-NVIDIA
 %endif
@@ -183,14 +179,6 @@ Definitions for NVIDIA repository management via zypp-services
 
 %if "%{theme}" == "Leap"
 %ifarch %{ix86} x86_64 aarch64 ppc64le s390x
-%{_datadir}/zypp/local/service/openSUSE/repo/opensuse-%{branding}-repoindex.xml
-%else
-%{_datadir}/zypp/local/service/openSUSE/repo/opensuse-%{branding}-ports-repoindex.xml
-%endif
-%endif
-
-%if "%{theme}" == "Leap16"
-%ifarch %{ix86} x86_64 aarch64
 %{_datadir}/zypp/local/service/openSUSE/repo/opensuse-%{branding}-repoindex.xml
 %else
 %{_datadir}/zypp/local/service/openSUSE/repo/opensuse-%{branding}-ports-repoindex.xml
@@ -253,10 +241,15 @@ install opensuse-%{branding}5-repoindex.xml -pm 0644 %{buildroot}%{_datadir}/zyp
 %endif
 
 %if "%{theme}" == "Leap"
+# Leap 16
+%if 0%{?is_opensuse} && 0%{?suse_version} == 1600
+install opensuse-%{branding}16-repoindex.xml -pm 0644 %{buildroot}%{_datadir}/zypp/local/service/openSUSE/repo/opensuse-%{branding}-repoindex.xml
+%else
 %ifarch %{ix86} x86_64 aarch64 ppc64le s390x
 install opensuse-%{branding}-repoindex.xml -pm 0644 %{buildroot}%{_datadir}/zypp/local/service/openSUSE/repo
 %else
 install opensuse-%{branding}-ports-repoindex.xml -pm 0644 %{buildroot}%{_datadir}/zypp/local/service/openSUSE/repo
+%endif
 %endif
 %endif
 
