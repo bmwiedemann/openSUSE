@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun 25 17:13:42 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.1
+- Changes since 6.1.0:
+  * update version for new release
+  * plasma/pluginloader: Repair loading plasmoid plugins on add from explorer (kde#488592)
+  * Don't delete containment if appletDelete is on one of children
+  * Don't double delete PlasmoidItems
+  * update version for new release
+  * Init at componentComplete
+
+-------------------------------------------------------------------
 Thu Jun 13 10:58:37 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.0:
