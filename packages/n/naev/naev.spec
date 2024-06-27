@@ -17,7 +17,7 @@
 
 
 Name:           naev
-Version:        0.11.4
+Version:        0.11.5
 Release:        0
 Summary:        2D action RPG space game
 License:        GPL-3.0-only

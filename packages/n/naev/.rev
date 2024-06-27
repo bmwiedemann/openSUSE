@@ -287,4 +287,12 @@
   * Translation updates (forwarded request 1175244 from Kieltux)</comment>
     <requestid>1175246</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>49c78d31051947606c093e40a7d91640</srcmd5>
+    <version>0.11.5</version>
+    <time>1719496821</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1183244</requestid>
+  </revision>
 </revisionlist>
