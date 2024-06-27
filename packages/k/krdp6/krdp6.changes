@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun 25 17:13:12 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.1
+- Changes since 6.1.0:
+  * update version for new release
+  * Ensure WinPR version matches FreeRDP version
+  * SessionController: add missing include for flatpak build
+  * kcmkrdpserver: if properties change when server settings are open, check server running (kde#488360)
+  * SessionController: instead of using default quit action, implement our own (kde#488359,kde#488362)
+  * PortalSession: If portal is closed, raise error
+  * SessionController: remove SNI status; keep it always passive (kde#488365)
+
+-------------------------------------------------------------------
 Thu Jun 13 10:58:29 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.0:
