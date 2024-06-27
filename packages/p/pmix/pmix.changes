@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 26 15:27:28 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Disable build for 32b architectures
+
+-------------------------------------------------------------------
 Sun Feb 18 10:12:27 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 3.2.5:

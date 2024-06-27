@@ -39,6 +39,7 @@ BuildRequires:  libtool
 BuildRequires:  munge-devel
 BuildRequires:  zlib-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+ExcludeArch:    i586 %arm s390
 
 %description
 The Process Management Interface (PMI) has been used for quite some time as a
