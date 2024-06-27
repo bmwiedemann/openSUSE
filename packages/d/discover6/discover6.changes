@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun 25 17:12:48 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.1
+- Changes since 6.1.0:
+  * update version for new release
+  * remove dup appstream versions
+  * ApplicationsListPage: move busyIndicator inside container, center it (kde#488267)
+  * packagekit: Add support for new action info enum values (kde#488219)
+  * update version for new release
+  * KCM: move system updates "apply immediately" radio button into system updates layout
+
+-------------------------------------------------------------------
 Thu Jun 13 10:58:22 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.0:
