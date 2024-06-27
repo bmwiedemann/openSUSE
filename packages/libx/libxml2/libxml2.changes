@@ -8,7 +8,7 @@ Wed Jun 12 11:35:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 Tue May 14 08:45:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.12.7:
-  + Fix buffer overread with `xmllint --htmlout` (CVE-2024-34459).
+  + Fix buffer overread with `xmllint --htmlout` (CVE-2024-34459, bsc#1224282).
   + xmllint: Fix --pedantic option.
   + save: Handle invalid parent pointers in xhtmlNodeDumpOutput.
 
