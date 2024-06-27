@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 25 20:46:15 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.1.1
+  * Removed the SVT-AV1 Decoder portion of the project.
+  * Improved documentation.
+
+-------------------------------------------------------------------
 Mon May 20 10:20:18 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.1
