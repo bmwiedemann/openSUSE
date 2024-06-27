@@ -7,4 +7,27 @@
     <comment>I would like this package to be available in Tumbleweed.</comment>
     <requestid>1174997</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>184c5ac8d9386dc439a87d2eaa8c92bf</srcmd5>
+    <version>0.36.2</version>
+    <time>1719496883</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.36.2
+  * src/ufw-init-functions: set default policy after loading rules. Thanks to
+    Mauricio Faria de Oliveira. (LP: #1946804)
+  * doc/ufw.8:
+    - document 'insert' and 'prepend' can't be used to update comments
+      (LP: #1927737)
+  * src/backend_iptables.py: remove unreachable code (LP: #1927734)
+  * src/util.py:
+    - properly parse /proc/pid/stat for WSL (LP: #2015645)
+    - mitigate odd length string with unhexlify (Closes: 1034568)
+    - support vrrp protocol (LP: #1996636)
+  * add locales/po/ro.po. Thanks Remus-Gabriel Chelu (Closes: 1034119)
+  * add '-h' and show help with no args (LP: #1965462)
+  * src/backend.py: add get_rules_ipv4() and get_rules_ipv6() (LP: #1951018)
+  * tests/check-requirements: update for python 3.10+
+  * tests/root: normalize 'ACCEPT {all,tcp}' and 'ACCEPT N' for newer systems</comment>
+    <requestid>1183330</requestid>
+  </revision>
 </revisionlist>

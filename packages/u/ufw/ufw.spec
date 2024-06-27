@@ -1,7 +1,7 @@
 #
 # spec file for package ufw
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define major_ver 0.36
 Name:           ufw
-Version:        %{major_ver}.1
+Version:        %{major_ver}.2
 Release:        0
 Summary:        Uncomplicated Firewall
 License:        GPL-3.0-only
