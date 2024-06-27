@@ -1,0 +1,601 @@
+-------------------------------------------------------------------
+Wed Jun 12 19:56:44 UTC 2024 - RN  <R_Nik_C@proton.me>
+
+- Update to 2.1.4
+  * Headless option for running TeXmacs as a window-less script (2.1.4).
+  * Improved subtables (2.1.4).
+  * Progress towards side tools, experimental (2.1.4).
+  * Progress towards markup driven graphical user interface, experimental (2.1.4).
+  * Support for basic gestures (2.1.3).
+  * Improved quality of hand-drawn graphics (2.1.3).
+  * Repulsive margin facility for simpler arrows between graphical text (2.1.3).
+  * Stylable interface colors (2.1.3).
+  * Stylable colors for syntax highlighting for Mathemagix and Scheme (2.1.3).
+  * Various bug fixes (2.1.3).
+  * Experimental interface for OS-supported speech recognition engines (2.1.3).
+
+-------------------------------------------------------------------
+Mon Dec 25 16:23:13 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Cleanup and modernise spec file
+- Honor optflags 
+
+-------------------------------------------------------------------
+Thu Dec 21 07:12:32 UTC 2023 - RN <R_Nik_C@proton.me>
+- updated to 2.1.2
+  o changelog: http://www.texmacs.org/tmweb/about/changes.en.html
+  o Creation of various interface themes for TeXmacs, such as dark and bright (2.1.1).
+  o Improved high resolution support under Linux and Windows (2.1.1).
+  o Progress on (not yet default) Qt5 version of TeXmacs (2.1.1).
+  o Updated font database for recent pre-installed Linux/Mac/Window fonts (2.1.1).
+  o Minor bug fixes (2.1).
+  o Various minor bug fixes (1.99.21).
+  o Updated plug-in for Giac (1.99.21).
+  o Better support for the most common LaTeX style files (1.99.20).
+  o Many corrections for the LaTeX export when using common LaTeX styles (1.99.20).
+  o Various bug fixes (1.99.20).
+  o Added Slovak language support with the help of Peter Rapčan (1.99.20).
+  o Many bug fixes (1.99.19).
+  o Improved Octave plugin with tab completion and multi-line input (1.99.19).
+  o Enhanced structured search & replace: added preferences and wildcards (1.99.19).
+  o Minor bug fixes (1.99.18).
+  o Minor progress on the remote editing tools (1.99.18).
+  o Continued bug fixes (1.99.17).
+  o Improved remote editing tools (1.99.17).
+  o New style package “comment” for various kinds of comments (1.99.17).
+  o Lightweight facility for managing user-defined keyboard shortcuts (1.99.17).
+  o Improved customizability of item lists and enumerations (1.99.17).
+  o Further improvements for preview and help balloons (1.99.16).
+  o Possibility to find labels from their numeric value (1.99.16).
+  o Incorporation of a smart-ref package for smart references (1.99.16).
+  o Fix spell checking under Windows (1.99.16).
+  o Add ⌃& keyboard shortcut to toggle between equations and equation arrays (1.99.16).
+  o Rudimentary support for Wacom-style pen tablets, Qt5 only (1.99.16).
+  o Continued bug fixes (1.99.16).
+  o Improved help balloons and preview facility for references and citations (1.99.15).
+  o Improved navigation and search tools for labels, references, and citations (1.99.15).
+  o Indicate the current cursor position by shaking the mouse (1.99.15).
+  o Various bug fixes (1.99.15).
+  o Release of “The Jolly Writer”—Your Guide to GNU TeXmacs (1.99.14).
+  o Many bug fixes (1.99.14).
+  o Improved Html export with better CSS stylability (1.99.14).
+  o Improved support for Qt5 (1.99.14).
+  o Improved Octave plugin (1.99.14).
+  o Continued bug fixes (1.99.13).
+  o Switch to Python 3 for plug-ins programmed in Python (1.99.13).
+  o A Parser Framework for programming languages (1.99.13).
+  o Improved Graphviz plugin with documentation in Chinese and syntax highlight (1.99.13).
+  o Improved Maxima plugin with documentation in Chinese and bug fixes (1.99.13).
+  o Improved Octave plugin on Windows for Octave 5.x (1.99.13).
+  o Many bug fixes (1.99.12).
+  o Make it easier to cite work on TeXmacs (1.99.12).
+  o Improved Html import/export filters and support for MathJax (1.99.12).
+  o Faster native (Qt-based) image export of formulas to Html (1.99.12).
+  o Improved large bracket sizes and script positioning (1.99.12).
+  o Various artwork related improvements (1.99.12).
+  o Interface for SymPy (1.99.12).
+  o Re-implement Asymptote, DraTex, Gnuplot, Graphviz, Xypic using Python for full platform support (1.99.12).
+  o Documentation on how to write plugins using Python (1.99.12).
+  o Updates of the dictionaries for French and Dutch (1.99.12).
+  o (run-all-tests) aggregates and runs all the tests in Scheme (1.99.12).
+  o Support for Java language (1.99.12).
+  o Several bug fixes (1.99.11).
+  o Repositories for Debian and Ubuntu (1.99.11).
+  o Many bug fixes (1.99.10).
+  o Redesigned web site (1.99.10).
+  o Extended Css stylability when exporting to Html (1.99.10).
+  o New TeXmacs videos on web site (1.99.10).
+  o Drag and drop for images (1.99.10).
+  o Unification of beamer and poster styles, work in progress (1.99.10).
+  o Automatic retrieval of artwork from texmacs.org (1.99.10).
+  o New background patterns and pictures (1.99.10).
+  o Experimental pattern effects (1.99.10).
+  o Experimental Sparkle support under MacOS (1.99.10).
+  o Experimental and partial support for Git as a versioning tool (1.99.10).
+  o Experimantal Graph plug-in for graphs drawn by various external tools (1.99.10).
+  o User interface for new features in educational styles (1.99.10).
+  o Many bug fixes (1.99.9).
+  o Similar spell checking widgets as for search and replace (1.99.9).
+  o Improved educational styles (1.99.9).
+  o Multiple choice lists (1.99.9).
+  o A unified Graph plugin for Graphviz, Asymptote (1.99.9).
+  o Import improvements from the FriCAS project (1.99.9).
+  o Fixes and documentation for the Sage plugin (1.99.9).
+  o Several bug fixes (1.99.8).
+  o Support of binary packages for various GNU/Linux distributions, constructed using Suse OpenBuild services (1.99.8).
+  o Several new algorithms for micro typography: roots, mathematical accents, etc. (1.99.7).
+  o New style for posters (1.99.7).
+  o Support for new ACM styles (1.99.7).
+  o Various bug fixes (1.99.7).
+  
+- removed feature-maxima-inline-plots_18125aa.patch because it's no longer needed
+- License changed to GPL-3.0-or-later
+
+-------------------------------------------------------------------
+Tue Jan 30 09:08:41 UTC 2018 - edera@gmx.fr
+- updated to 1.99.6
+  o changelog: http://www.texmacs.org/tmweb/about/changes.en.html
+- use normalized license notation: GPL-2.0+ instead of GPLv2+
+- added feature-maxima-inline-plots_18125aa.patch
+  inline plots for maxima
+  (adapted from http://lists.gnu.org/archive/html/texmacs-dev/2017-09/msg00002.html)
+- removed TeXmacs-fix_function_returns.patch
+- removed TeXmacs-fix_arg_enable.patch
+- removed TeXmacs-fix_impose_guile1.patch
+
+-------------------------------------------------------------------
+Sat Feb 22 18:38:56 UTC 2014 - huntj@gmx.us
+
+- updated to 1.0.7.21 
+  o Complete reorganization of document styles and package (1.0.7.21).
+  o Major improvements for upcoming native Pdf renderer (1.0.7.21).
+  o New focus preferences menu (1.0.7.21).
+  o New widgets for editing macros (1.0.7.21).
+  o Improved CJK typesetting and support for Fandol fonts (1.0.7.21).
+  o Stretchable space between letters (1.0.7.21).
+  o Implementation of protrusion for the standard ecrm font (1.0.7.21).
+  o Improved ornaments and typesetting adjustments (1.0.7.21).
+  o Improved presentation mode (1.0.7.20).
+  o Various improvements for LaTeX import and export (1.0.7.20).
+  o Rewritten Scilab plug-in (1.0.7.20).
+  o Better portability of various plug-ins (1.0.7.20).
+  o Various graphical font effects; experimental, not yet in interface (1.0.7.20).
+  o Profound reorganization of the font system with experimental option for testing (1.0.7.19).
+  o LaTeX import and export of metadata for various standard styles (1.0.7.19).
+  o Running plug-ins over remote SSH connections; experimental (1.0.7.19).
+  o Started implementation of remote TeXmacs file system (1.0.7.19).
+  o Improved portability of plug-in detection (1.0.7.19).
+  o Implementation of arbitrary zoom factors and “fit to paragraph width” (1.0.7.18).
+  o New widget for user preferences (1.0.7.18).
+  o More implicit user preferences (1.0.7.18).
+  o Add developer tools, still experimental (1.0.7.18).
+  o Start implementation of basic infrastructure for support of system fonts (1.0.7.18).
+  o Started reorganization of titles and other meta-data for documents (1.0.7.18).
+  o Automated generation of documentation about the Scheme files (1.0.7.17).
+  o Various improvements for LaTeX conversion and character encodings (1.0.7.17).
+
+- need to force guile1 explicitly => TeXmacs-fix_impose_guile1.patch
+- updated TeXmacs-fix_arg_enable.patch
+- updated TeXmacs-fix_function_returns.patch
+- removed TeXmacs-fix_tm_r.patch (seems fixed upstream)
+- removed TeXmacs-makefile.patch (unnecessary now)
+- removed TeXmacs-library_order.patch (unnecessary now)
+
+-------------------------------------------------------------------
+Sat Feb 16 22:54:19 UTC 2013 - huntj@gmx.us
+
+- fix build for 12.1 
+
+-------------------------------------------------------------------
+Mon Jan  7 04:35:51 UTC 2013 - mrdocs@opensuse.org
+
+- fix build for < 12.2
+
+-------------------------------------------------------------------
+Thu Jan  3 15:50:57 CET 2013 - huntj@gmx.us
+
+- updated to 1.0.7.16
+- removed conflicting ghostscript-mini dependency
+- need guile1
+
+
+-------------------------------------------------------------------
+Tue Nov 15 18:50:36 UTC 2011 - Sascha.Manns@open-slx.de
+
+- updated to 1.0.7.14
+- This release comes with a completely redesigned set of icons (Qt version only). 
+The robustness of the graphics mode has also been increased, and better support 
+for extensible arrows has been added 
+
+-------------------------------------------------------------------
+Wed Sep 21 13:13:03 UTC 2011 - Sascha.Manns@open-slx.de
+
+- updated TeXmacs-fix_arg_enable.patch 
+
+-------------------------------------------------------------------
+Wed Sep 21 12:21:49 UTC 2011 - Sascha.Manns@open-slx.de
+
+- fixed bnc#710623 better Licenses
+- updated to 1.0.7.10 
+  o This release fixes image support under Qt and a few other bugs. A 
+    plug-in for the Fricas fork of the Axiom computer algebra system 
+    has also been added. 
+
+-------------------------------------------------------------------
+Wed Aug 31 15:45:44 UTC 2011 - Sascha.Manns@open-slx.de
+
+- binary-or-shlib-calls-gethostbyname issue reported to upstream
+  savannah#34182 (https://savannah.gnu.org/bugs/index.php?34182) 
+
+-------------------------------------------------------------------
+Wed Aug 31 15:42:09 UTC 2011 - Sascha.Manns@open-slx.de
+
+- incorrect-fsf-address issue reported to upstream savannah#34181
+  (https://savannah.gnu.org/bugs/index.php?34181) 
+
+-------------------------------------------------------------------
+Wed Aug 31 14:35:25 UTC 2011 - Sascha.Manns@open-slx.de
+
+- updated to version 1.0.7.11
+- The new version comes with a facility for producing bug reports on
+  crashes. It also features experimental support for screen graphics
+  with alpha transparency (Qt version only).  
+
+-------------------------------------------------------------------
+Mon Mar  7 17:45:41 UTC 2011 - saigkill@opensuse.org
+
+- updated to version 1.0.7.10
+- This version comes with support for semantic editing and typesetting
+  of mathematical formulas. Support was added for laptop presentations
+  using a remote controller. Other improvements were made in the LaTeX
+  importer and some of the textual environments 
+
+-------------------------------------------------------------------
+Sat Dec 25 20:45:09 UTC 2010 - saigkill@opensuse.org
+
+- prettyfied the spec file 
+
+-------------------------------------------------------------------
+Sat Dec 18 20:21:13 UTC 2010 - saigkill@opensuse.org
+
+- updated to version 1.0.7.9
+- Changes: This release mainly contains a large series of bugfixes for the Qt version and the support for semantic editing. 
+
+-------------------------------------------------------------------
+Fri Nov 26 19:09:18 UTC 2010 - saigkill@opensuse.org
+
+- removed TeXmacs-fix_function_returns.patch
+- rewritten as TeXmacs-fix_function_returns_new.patch
+  Some things are fixed in upstream
+- updated to 1.0.7.8
+
+-------------------------------------------------------------------
+Fri Oct 29 16:08:08 CEST 2010 - pth@suse.de
+
+- Fix non-void functions returning no value.
+- Add all that's needed for ghostscript support.
+- Repackage as lzma.
+- Fix AC_ARG_* calls to use AS_HELP_STRING and remove needless use of
+  changequote.
+- Fix build of shell plugin by putting -lutil at the end of the
+  command line.
+- Include config.h and then check if autoconf found util.h before
+  including it in tm_r.c,
+- open(2) with O_CREAT needs mode.
+- Use qt and qt pipes (configurable in .spec);
+
+-------------------------------------------------------------------
+Wed Oct 27 19:26:41 UTC 2010 - saigkill@opensuse.org
+
+- updated to 1.0.7.7
+ 
+
+-------------------------------------------------------------------
+Sat Jul 24 07:49:19 UTC 2010 - saigkill@opensuse.org
+
+- updated to 1.0.7.5
+
+- Changes: This release comes with experimental native bibliography
+           support, experimental native PDF export support, and a
+           structured difference tool.
+
+           Several bugs were corrected in the... upcoming Qt version,
+           and new beta versions of the binary MacOS and Windows
+           installers are available.
+
+-------------------------------------------------------------------
+Thu Mar 25 20:30:49 UTC 2010 - saigkill@opensuse.org
+
+- updated to 1.0.7.4
+- deleted return-in-nonvoid Patch 1 & 2 because it is fixed in Upstream 
+
+-------------------------------------------------------------------
+Tue Aug 18 11:35:29 CEST 2009 - pgajdos@suse.cz
+
+- fixed build
+
+-------------------------------------------------------------------
+Mon Apr 20 13:09:22 CEST 2009 - pgajdos@suse.cz
+
+- updated to 1.7.0.2
+  * removed upstreamed and unneded patches:
+    - build-friend-copy.patch
+    - cflags.patch
+    - mime.patch
+    - noreturn.patch
+    - null.patch
+    - random.patch
+  * new patch:
+    - return-in-nonvoid.patch 
+
+-------------------------------------------------------------------
+Tue Jan 27 16:01:32 CET 2009 - pgajdos@suse.cz
+
+- fixed build with new gcc
+
+-------------------------------------------------------------------
+Mon Jan 12 15:02:36 CET 2009 - pgajdos@suse.cz
+
+- updated to 1.7.0.1
+
+-------------------------------------------------------------------
+Mon Aug 18 14:34:21 CEST 2008 - pgajdos@suse.cz
+
+- updated to 1.6.0.15:
+  + Improved Scheme mode.
+  + Improved appearance of Wikipedia mathematical pages.
+  + Added plug-in for drawing Feynman diagrams. 
+
+-------------------------------------------------------------------
+Wed May  7 16:26:52 CEST 2008 - pgajdos@suse.cz
+
+- repaired no-return-in-nonvoid-function
+  (noreturn.patch)
+
+-------------------------------------------------------------------
+Tue Mar 25 18:27:53 CET 2008 - pgajdos@suse.cz
+
+- updated to 1.6.0.14:
+  * TrueColor support.
+  * Started native Aqua port for TeXmacs.
+  * Fix compatibility issues for C++ and Guile. 
+- created TeXmacs-examples subpackage
+
+-------------------------------------------------------------------
+Tue Dec 11 14:41:11 CET 2007 - pgajdos@suse.cz
+
+- upgraded to version 1.6.0.12
+  *  Complete abstraction of the graphical 
+     user interface should make porting easier.
+  * Improved signal handling for pipe communications. 
+  * Syntax highlighting for Scheme programs.
+  * Added plug-in for Sage computer algebra system.
+  * Continued reorganizations for the graphics mode.
+  * Corrections of a few bugs.
+  * Increased user-friendliness of graphics mode.
+  * Necessary updates for Maxima 5.10.0.
+  * Background patterns for document, ornaments and table cells. 
+- bugs covered by anim-clip-cond.patch, 64bit.patch 
+  and new-gcc.patch were fixed upstream, so these patches were
+  removed
+
+-------------------------------------------------------------------
+Tue Oct 16 12:03:52 CEST 2007 - pgajdos@suse.cz
+
+- fixed new gcc warning
+  * new-gcc.patch 
+
+-------------------------------------------------------------------
+Mon Apr 23 12:25:07 CEST 2007 - ro@suse.de
+
+- require texlive instead of tetex 
+
+-------------------------------------------------------------------
+Wed Feb 28 18:28:20 CET 2007 - mvaner@suse.cz
+
+- Upgrading to 1.0.6.9
+  - Problem with Guile seems to disappear (#232997)
+  - Removing forgotten 'exit 1' from last time
+
+-------------------------------------------------------------------
+Wed Feb 28 16:23:18 CET 2007 - mvaner@suse.cz
+
+- Fixing part of 228035 - crash on 64bit computer
+  - 64bit.patch
+  - The package is still unuseable, but for other reason now
+   (Guile version)
+
+-------------------------------------------------------------------
+Tue Feb 20 16:11:38 CET 2007 - mvaner@suse.cz
+
+- Fixing odd comparison (bug #233326)
+  - anim-clip-cond.path
+
+-------------------------------------------------------------------
+Thu Jan 25 13:51:48 CET 2007 - sbrabec@suse.cz
+
+- Removed references to /opt/gnome.
+
+-------------------------------------------------------------------
+Tue Jan 23 01:43:36 CET 2007 - ro@suse.de
+
+- drop requires for gnome-filesystem 
+
+-------------------------------------------------------------------
+Sun Oct 15 19:57:14 CEST 2006 - ro@suse.de
+
+- update to 1.0.6.6 to fix build
+  - bugfix release 
+
+-------------------------------------------------------------------
+Thu Oct 12 20:26:41 CEST 2006 - ro@suse.de
+
+- added gmp-devel to BuildRequires 
+
+-------------------------------------------------------------------
+Wed May 24 23:21:48 CEST 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:33:59 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 17 18:45:14 CET 2006 - sbrabec@suse.cz
+
+- Do not require shared-mime-info.
+
+-------------------------------------------------------------------
+Tue Jan 17 17:52:56 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 1.0.6.
+
+-------------------------------------------------------------------
+Sun Nov 13 10:52:16 CET 2005 - schwab@suse.de
+
+- Fix use of friend injection.
+- Fix warnings.
+
+-------------------------------------------------------------------
+Fri Oct 28 02:51:30 CEST 2005 - ro@suse.de
+
+- change GZIP to MGZIP in makefile (gzip uses $GZIP as options) 
+
+-------------------------------------------------------------------
+Thu Sep  8 16:11:12 CEST 2005 - ro@suse.de
+
+- added prereq for postinstall script 
+
+-------------------------------------------------------------------
+Wed Sep  7 13:25:29 CEST 2005 - sbrabec@suse.cz
+
+- Fixed desktop icon and MIME bindings (#105832).
+
+-------------------------------------------------------------------
+Thu Jul 14 18:06:11 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 1.0.5.
+
+-------------------------------------------------------------------
+Mon May 23 14:51:30 CEST 2005 - yxu@suse.de
+
+- fixed for GCC4 
+
+-------------------------------------------------------------------
+Thu Apr 28 14:40:56 CEST 2005 - yxu@suse.de
+
+- fixed building on Itanium 
+- fixed serious compiler warings
+
+-------------------------------------------------------------------
+Tue Apr 26 18:31:41 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 1.0.4.7.
+- Fixed invalid casts.
+
+-------------------------------------------------------------------
+Thu Jan 06 13:52:01 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 1.0.4.5.
+
+-------------------------------------------------------------------
+Mon Oct 04 13:15:09 CEST 2004 - sbrabec@suse.cz
+
+- Fixed architecture detection for AMD64 (#45525).
+
+-------------------------------------------------------------------
+Thu Sep 02 10:13:04 CEST 2004 - sbrabec@suse.cz
+
+- Install properly mime info.
+
+-------------------------------------------------------------------
+Wed Sep 01 12:34:56 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 1.0.4.2.
+
+-------------------------------------------------------------------
+Wed Aug 18 14:40:54 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 1.0.4.1.
+
+-------------------------------------------------------------------
+Wed Mar 03 13:23:24 CET 2004 - sbrabec@suse.cz
+
+- Updated to version 1.0.3.3.
+
+-------------------------------------------------------------------
+Thu Feb 05 15:44:10 CET 2004 - sbrabec@suse.cz
+
+- Updated to version 1.0.3.2.
+
+-------------------------------------------------------------------
+Tue Jan 20 13:46:15 CET 2004 - ltinkl@suse.cz
+
+- update to latest stable version (1.0.3)
+
+-------------------------------------------------------------------
+Sat Jan 10 11:02:45 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Mon Aug 11 12:02:12 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 1.0.1.21.
+
+-------------------------------------------------------------------
+Mon Jun 16 14:25:36 CEST 2003 - coolo@suse.de
+
+- package directories
+
+-------------------------------------------------------------------
+Fri Dec 20 15:59:04 CET 2002 - sbrabec@suse.cz
+
+- Updated to version 1.0.1.
+
+-------------------------------------------------------------------
+Thu Dec 05 12:33:38 CET 2002 - sbrabec@suse.cz
+
+- Updated to version 1.0.0.24.
+
+-------------------------------------------------------------------
+Tue Dec 03 14:02:49 CET 2002 - sbrabec@suse.cz
+
+- Updated to version 1.0.0.23.
+
+-------------------------------------------------------------------
+Fri Sep 06 11:21:52 CEST 2002 - mcihar@suse.cz
+
+- keyboard is now working (patch from upstream 1.0.0.13)
+
+-------------------------------------------------------------------
+Fri Aug  9 10:40:49 CEST 2002 - mcihar@suse.de
+
+- updated to 1.0.0.12:
+    * Complete change of the keyboard behaviour.
+    * Automatic detection and configuration of modifier keys.
+    * Automatic translation of menus in the documentation.
+    * Guile/Scheme scripts inside documents.
+    * Wildcard system for keyboard shortcuts.
+    * Keyboard shortcuts in the menus are determined automatically.
+    * Further reorganization of the menus.
+    * Support for grey menu items, checkmarks and ... in menus.
+    * Automatic determination of keyboard shortcuts in menus.
+    * Widgets are now attached to the current display at creation
+      time.
+    * Improved reduce and axiom interfaces.
+    * Replaced the gencc preprocessor by the more standard template
+      system of C++.
+- removed undeeded patches
+
+-------------------------------------------------------------------
+Thu Jul 18 15:11:47 CEST 2002 - mcihar@suse.cz
+
+- again applied forgotten patch for ia64
+
+-------------------------------------------------------------------
+Tue Jul 16 14:38:13 CEST 2002 - mcihar@suse.cz
+
+- updated to 1.0.0.9:
+    * Headers and footers through menus.
+    * Support for user preferences.
+    * Improved math support, support for Giac computer algebra system.
+    * Added a presentation mode.
+    * Visual environment information when editing.
+    * New styles.
+    * Implementation of overline and underline macros.
+    * Some small improvements in LaTeX to TeXmacs converter.
+    * Enhanced online help, now contains also examples.
+
+-------------------------------------------------------------------
+Wed Jun  5 17:59:46 CEST 2002 - mcihar@suse.cz
+
+- fixed build on ia64
+
+-------------------------------------------------------------------
+Mon May 20 12:10:08 CEST 2002 - mcihar@suse.cz
+
+- created new package (version 1.0.0.3)
+
