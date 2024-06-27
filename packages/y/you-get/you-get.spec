@@ -30,6 +30,7 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  zsh
 Requires:       ffmpeg
+Requires:       python3-dukpy
 BuildArch:      noarch
 
 %description

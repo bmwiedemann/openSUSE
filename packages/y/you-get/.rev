@@ -464,4 +464,13 @@
 </comment>
     <requestid>1182973</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>60695372987ab55a5be3777ec8ccdd73</srcmd5>
+    <version>0.4.1710</version>
+    <time>1719496856</time>
+    <user>anag+factory</user>
+    <comment>- Add missing runtime requirement
+</comment>
+    <requestid>1183272</requestid>
+  </revision>
 </revisionlist>
