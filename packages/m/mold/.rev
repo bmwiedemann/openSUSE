@@ -840,4 +840,26 @@
     resolved. (c7c8583)</comment>
     <requestid>1179562</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>7a595251040a338c414807015923ae34</srcmd5>
+    <version>2.32.1</version>
+    <time>1719497074</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.32.0
+  * Previously, shared libraries specified with --as-needed were not considered as
+    &quot;needed&quot; if they were referenced only by weak undefined symbols. Such weak
+    symbols were converted to absolute symbols at address zero at link-time.
+    Although this behavior was not technically wrong, it caused a significant issue
+    in a rare occasion (#1286). Now, weak undefined symbols retain --as-needed
+    shared libraries. (06b5926)
+  * [RISC-V] RISC-V object files contain ISA strings in the .riscv.attributes
+    section. Previously, we had reported valid ISA strings containing digits as
+    errors. The issue has now been resolved. (841a186)
+  * [RISC-V] We no longer write dynamic relocation addends to relocated places
+    because it caused static position-independent executables to crash on process
+    startup in some environments. In other words, --no-apply-dynamic-relocs is
+    enabled by default.
+  * LTO now works on MinGW. (50bf031)</comment>
+    <requestid>1183534</requestid>
+  </revision>
 </revisionlist>
