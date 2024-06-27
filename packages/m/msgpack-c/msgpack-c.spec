@@ -17,7 +17,7 @@
 
 
 Name:           msgpack-c
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        Object serialization library for cross-language communication
 License:        BSL-1.0

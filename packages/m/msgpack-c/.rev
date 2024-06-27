@@ -23,4 +23,17 @@
     <comment></comment>
     <requestid>1164318</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>86303d9dbec4010ab1ea5c3c39b4911f</srcmd5>
+    <version>6.0.2</version>
+    <time>1719496875</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.0.2:
+  * Fix header file installation to respect
+    CMAKE_INSTALL_INCLUDEDIR (#1125)
+  * Support absolute path for CMAKE_INSTALL_*DIR (#1121)
+  * Removed invalid ctest option. (#1120)
+  * Support relative path for CMAKE_INSTALL_*DIR (#1119) (forwarded request 1182970 from jubalh)</comment>
+    <requestid>1183304</requestid>
+  </revision>
 </revisionlist>
