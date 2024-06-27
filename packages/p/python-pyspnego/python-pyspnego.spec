@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyspnego
-Version:        0.10.2
+Version:        0.11.0
 Release:        0
 Summary:        Python SPNEGO authentication library
 License:        MIT

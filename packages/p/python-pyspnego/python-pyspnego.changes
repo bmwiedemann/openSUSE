@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 20 07:36:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.0:
+  * Support input password string encoded with the
+    `surrogatepass` error option
+  * This allows the caller to provide a password for a gMSA or
+    machine account that could contain invalid surrogate pairs
+    for both NTLM and Kerberos auth.
+  * Stop using deprecated `datetime.dateime.utcnow()` for CredSSP
+    acceptor context
+
+-------------------------------------------------------------------
 Sat Jun  8 22:35:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.10.2:

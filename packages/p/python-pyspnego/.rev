@@ -193,4 +193,12 @@
     of `NegotiateProxy` before any contexts have been set up</comment>
     <requestid>1179527</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0f3bb4688073dd68de373fd2d0c5952e</srcmd5>
+    <version>0.11.0</version>
+    <time>1719497091</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1183547</requestid>
+  </revision>
 </revisionlist>
