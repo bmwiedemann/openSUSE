@@ -135,4 +135,14 @@
   * Protect child_clip_id from accessing NULL parentClip property</comment>
     <requestid>1096948</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6a9c8d059a3210f49dea24a6e6a2c494</srcmd5>
+    <version>0.3.3</version>
+    <time>1719497003</time>
+    <user>anag+factory</user>
+    <comment>- swtich from protobuf-devel to protobuf21-devel. It is not ported
+  to protobuf 25 yet.
+- this allows us to reenable opencv-devel (forwarded request 1183563 from darix)</comment>
+    <requestid>1183565</requestid>
+  </revision>
 </revisionlist>

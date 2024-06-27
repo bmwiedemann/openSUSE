@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jun 27 10:26:17 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- swtich from protobuf-devel to protobuf21-devel. It is not ported
+  to protobuf 25 yet.
+- this allows us to reenable opencv-devel
+
+-------------------------------------------------------------------
+Wed Jun 26 19:13:46 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- Update to version 0.3.3:
+  * Experimental support for Java bindings added
+  * Adding Effect Sequencing (Before or After keyframes are applied)
+  * Compatibility with FFMPEG 7.0 improved
+  * Refactored ObjectDetection & Tracker effect (better performance and new features)
+  * Removing ChildClipId property (replaced with Parent ID property)
+  * Fixed many read-only properties for clips and effects
+  * New Display All Boxes property in Object Detector
+  * Fixed aspect ratio of tracked objects
+  * Improved FFmpegReader audio processing performance
+  * Fixed test file collisions with high concurrency builds
+  * Refactored base JSON properties into EffectBase
+  * Auto-resize capability added to Crop effect
+  * Removed queuing and spooling in FFmpegWriter to reduce complexity
+  * Fixed race condition in clip parenting
+  * lots of misc bug fixes
+
+-------------------------------------------------------------------
 Wed Jul 05 10:57:05 UTC 2023 - adrian@suse.de
 
 - Update to version 0.3.2:

@@ -1,7 +1,7 @@
 #
 # spec file for package libopenshot
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,23 @@
 #
 
 
-%define sover 25
+%define sover 26
 
 Name:           libopenshot
-Version:        0.3.2
+Version:        0.3.3
 Release:        0
 Summary:        The core library for the OpenShot video editor
 License:        LGPL-3.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://openshot.org/
 Source0:        libopenshot-%{version}.tar.xz
+BuildRequires:  babl-devel
 BuildRequires:  cmake
 BuildRequires:  cppzmq-devel
 BuildRequires:  gcc-c++
+BuildRequires:  opencv-devel
 BuildRequires:  pkgconfig
+BuildRequires:  protobuf21-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  ruby-devel
 BuildRequires:  swig
