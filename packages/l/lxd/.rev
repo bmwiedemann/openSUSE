@@ -543,4 +543,12 @@ seemed okay with the last submission. *fingers crossed*</comment>
 - Update to 5.15. Full upstream changelogs are at</comment>
     <requestid>1127791</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>e50def27e71aee0dd5efc82003137ade</srcmd5>
+    <version>5.21.1</version>
+    <time>1719496935</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1183431</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package lxd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,10 +34,10 @@
 %endif
 
 Name:           lxd
-Version:        5.19
+Version:        5.21.1
 Release:        0
 Summary:        Container hypervisor based on LXC
-License:        Apache-2.0
+License:        AGPL-3.0-only AND Apache-2.0
 Group:          System/Management
 URL:            https://ubuntu.com/lxd
 Source:         https://github.com/canonical/lxd/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
@@ -53,7 +53,7 @@ Source101:      %{name}-config.yml
 Source200:      %{name}.sysctl
 Source201:      %{name}.dnsmasq
 BuildRequires:  fdupes
-BuildRequires:  go >= 1.18
+BuildRequires:  go >= 1.22
 BuildRequires:  golang-packaging
 BuildRequires:  libacl-devel
 BuildRequires:  libcap-devel

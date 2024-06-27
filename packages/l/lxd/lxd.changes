@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Jun 11 11:27:33 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Change license to AGPL-3.0-only AND Apache-2.0:
+  + All Canonical contributions have been relicensed and are now
+    under AGPLv3. Community contributions remain under Apache 2.0.
+
+- update to 5.21.1. Full changelog at:
+  https://discourse.ubuntu.com/t/lxd-5-21-1-lts-has-been-released/43823
+  https://discourse.ubuntu.com/t/lxd-5-21-0-lts-has-been-released/42476
+  https://discourse.ubuntu.com/t/lxd-5-20-has-been-released/40865
+
+  Bugfixes and improvements 5.21.1:
+  + Restricted metrics client certificate security regression fix
+  + New image server remote for non-Ubuntu images
+  + List all storage volumes API and CLI support
+
+  Highlights 5.21.0:
+  + Change of version numbering scheme
+  + Fine grained authorization for OIDC users
+  + Optimized block volume refresh for Ceph RBD
+  + Device config override when importing instance backups
+
+  Highlights 5.20.0:
+  + LXD change to AGPLv3
+  + Create metadata and data OSD pools as part of creating a cephfs
+    storage pool
+  + Debug mode for EDK2 UEFI firmware
+  + Authorization restructure
+  + Shiftfs support has been removed
+  
+-------------------------------------------------------------------
 Mon Nov 20 21:51:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add attr as dependency for setfattr (bsc#1190416)
