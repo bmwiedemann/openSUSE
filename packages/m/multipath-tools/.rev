@@ -1957,4 +1957,14 @@ by an upstream reviewed commit. (forwarded request 1109432 from mwilck)</comment
   (bsc#1222458) (forwarded request 1167002 from mwilck)</comment>
     <requestid>1167003</requestid>
   </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>1f82b76c69d42521e966b6e51456b47e</srcmd5>
+    <version>0.9.9+90+suse.f1d2f20</version>
+    <time>1719496675</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.9.8+88+suse.d504d83:
+  * Revert &quot;libmultipath: fix max_sectors_kb on adding path&quot;
+  (bsc#1222458) (forwarded request 1183349 from mwilck)</comment>
+    <requestid>1183412</requestid>
+  </revision>
 </revisionlist>

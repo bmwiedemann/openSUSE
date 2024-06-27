@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jun 25 13:19:58 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.9.9+90+suse.f1d2f20:
+  * Fix unit tests on Tumbleweed/armv7l
+
+- Update to 0.9.9 upstream (see NEWS.md for details)
+  * Update udev rules to be compliant with device-mapper udev
+  rules update in LVM2 >= 2.03.24.
+  * Limit real-time scheduling priority to 10 by default. This
+  can now be configured in multipathd.service using "LimitRTPRIO="
+  * Set max_sectors_kb only on map creation, or when a new path
+  is added, to avoid IO errors
+  * The configuration option "flush_on_last_del" now takes the
+  values "always" (="yes"), "unused" (="no"), and "never". "yes"
+  and "no" are still supported
+  * Add wildcard %k for max_sectors_kb for CLI commands like
+  "multipath show {paths,maps} format"
+  * Accept WWID value in CLI commands that take a map name, like
+  "resize map $map"
+  * Removed support for CLI wildcards for pathgroups, which were
+  not function anyway.
+  * Fix map failure count for no_path_retry > 0
+
+-------------------------------------------------------------------
 Thu Apr 11 15:22:02 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 0.9.8+88+suse.d504d83:
