@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Thu Jun 27 10:09:48 UTC 2024 - Boris Manojlovic <boris@steki.net>
+
+- update to 6.0.31
+- New Features and Improvements
+  + ZBXNEXT-9140 Added support for custom compartments in Oracle Cloud by HTTP templates Templates
+  + ZBXNEXT-9034 Added Jira Data Center by JMX template Templates
+  + ZBXNEXT-8682 Introduced a length limit of 512KB for item test values that server returns to Zabbix frontend Frontend Server
+  + ZBXNEXT-8248 Added database filter macros to MySQL templates Templates
+  + ZBXNEXT-6698 Removed absolute threshold and timeleft from OS template triggers of filesystem space Templates
+  + ZBXNEXT-7930 Added user macro support for username and password fields in email media type Server
+  + ZBXCTR-22 Refactored JavaScript filter functions for Kubernetes templates Templates
+  + ZBXNEXT-9098 Added AWS ELB Network Load Balancer by HTTP template Templates
+  + ZBXNEXT-6864 Replaced {HOST.CONN} with user macros in templates Templates
+  + ZBXNEXT-9117 Updated max supported MariaDB version to 11.3 Proxy Server
+  + ZBXNEXT-9026 Added Go compiler version to Zabbix agent 2 version output Agent
+  + ZBXNEXT-8786 Changed 'odbc.discovery' keys to 'odbc.get' in MySQL by ODBC and Oracle by ODBC templates Templates
+  + ZBXNEXT-8536 Added cbdhsvc service to macros in Windows agent templates Templates
+  + ZBXNEXT-8861 Made changes and added more metrics to the FortiGate by SNMP template Templates
+  + ZBXNEXT-8240 Added a new set of templates for integration with Oracle Cloud Infrastructure Templates
+
+- Bug Fixes
+  + ZBX-24483 Improved memory usage in Zabbix server/proxy trappers and in proxy
+    pollers when sending large configuration Proxy Server
+  + ZBX-23073 Fixed URL widget resizing and dragging Frontend
+  + ZBX-24574 Fixed HA node flipping between standby and active states Server
+  + ZBX-24119 Fixed possible blocking of alert manager when it periodically pings database Server
+  + ZBX-7998 Added VMware service username, password and URL check for empty values Proxy Server
+  + ZBX-24402 Reduced main process connections to database during startup Proxy Server
+  + ZBX-24369 Fixed filter behavior in monitoring pages after deleting filter parameters Frontend
+  + ZBX-24484 Fixed Geomap widget console error when dragging map in widget edit mode Frontend
+  + ZBX-23337 Improved supported version documentation for Oracle Database plugin and both templates Documentation
+  + ZBX-24180 Fixed inability to import existing host or template when its dependent item prototype,
+    which is used in trigger prototypes or graph prototypes, would have a different master item API
+  + ZBX-20871 Fixed inability to use LLD macro functions in Prometheus pattern and labels used in item prototype preprocessing API
+  + ZBX-24527 Fixed unnecessary loading text being displayed in hintbox preloader Frontend
+  + ZBX-24362 Fixed wrong Zabbix agent 2 loadable plugin process handling catching all child process exits Agent
+  + ZBX-24470 Fixed scale of VMware vmware.vm.memory.size.compressed key Proxy Server
+  + ZBX-24415 Added triggers for datastores in VMware templates Templates
+  + ZBX-18094 Fixed multiple pie graph issues related to calculation of item angles Frontend
+  + ZBX-20766 Fixed confusing port binding error message Agent Proxy Server
+  + ZBX-24481 Fixed inability to unset value map from existing item or item prototype by passing
+    a version without valuemap parameter into configuration.import API
+  + ZBX-24531 Fixed compile time data not being set for agent2 Agent
+  + ZBX-24453 Implemented socket file cleanup when shutting down, added blocking of signals during important stages of startup Proxy Server
+  + ZBX-24152 Fixed host form submission with Enter button if the form is opened in a popup and focus is in a flexible text area field Frontend
+  + ZBX-23788 Added SNMP OID ifAlias in Network interfaces discovery Templates
+  + ZBX-24482 Fixed the presence of the http_proxy field in the initial data Installation
+  + ZBX-24210 Improved Zabbix agent 2 loadable plugin capacity code style Agent
+  + ZBX-23951 Fixed issue of incorrect template matching when no UUID exists in export file API
+  + ZBX-23953 Fixed CIDR network mask of VMware HV network interface Proxy Server
+  + ZBX-24195 Fixed host IPMI username and password field max length Frontend
+  + ZBX-24451 Added tags and changed a item in Proxmox template Templates
+  + ZBX-23386 Fixed hintbox sizing to fit screen Frontend
+  + ZBX-24024 Fixed OIDs for external sensors in APC UPC by SNMP templates Templates
+  + ZBX-21751 Fixed node's loadavg item in Proxmox template Templates
+  + ZBX-24315 Fixed linking template to host when some LLD macro paths already exist Server
+  + ZBX-24172 Fixed Zabbix server issue with scheduled intervals on Feb 29th of leap year Server
+  + ZBX-23407 Improved performance of retrieving last history values when primary keys are available API
+  + ZBX-24246 Updated descriptions for family of MySQL and Oracle templates,
+    changed macro in the trigger 'Tablespace utilization is too high' for family of Oracle templates Templates
+  + ZBX-23988 Renamed Agent2 Go module
+  + ZBX-24222 Fixed incorrect item OIDs in the FortiGate by SNMP template Templates
+  + ZBX-24393 Updated README in Redis by Zabbix agent 2 template Templates
+  + ZBX-24298 Allowed any JNDI service providers back in JMX monitoring Java gateway
+  + ZBX-19990 Separated LLD filter macros in Apache Tomcat by JMX template Templates
+  + ZBX-24364 Added preprocessing steps for LLD rules in RabbitMQ templates Templates
+  + ZBX-24368 Improved PostgreSQL autovacuum's count query Templates
+  + ZBX-24282 Fixed Zabbix proxy to report error for not supported items Proxy Server
+  + ZBX-19507 Fixed vmware.eventlog item to recover after event keys are reset Server
+  + ZBX-24241 Fixed Zabbix server issue with random order of host groups for a host during real-time export Server
+  + ZBX-24275 Fixed item prototype JSONPath preprocessing, added missing volume health metric and triggers in HPE MSA templates Templates
+  + ZBX-24316 Fixed username macro in GridGain by JMX template Templates
+  + ZBX-23719 Updated plugin-support to add duplicate flag handling Agent
+  + ZBX-22429 Fixed typo in Zabbix proxy automake file Installation
+  + ZBX-24264 Fixed value cache being filled with values of newly added items with triggers Server
+  + ZBX-24088 Fixed problem filtering in maps with nested maps Frontend
+  + ZBX-24206 Fixed line breaks in JavaScript in Cloudflare template Templates
+  + ZBX-24236 Fixed nested transaction error in LLD when connection is terminated Server
+  + ZBX-24134 Added sensor discovery in VMware Hypervisor template Templates
+  + ZBX-23918 Fixed item pattern select popup to display all available items Frontend
+  + ZBX-24190 Fixed items being updated incorrectly when configuring graph Frontend
+  + ZBX-24289 Fixed issue with interface assignment for items copied from host to host Frontend
+  + ZBX-23032 Added triggers for cluster status in VMware templates Templates
+  + ZBX-23948 Added support for TabularData data when parsing an MBean attribute Java gateway
+  + ZBX-23742 Fixed tag filtering logic for tags with one name and different types of operators API
+  + ZBX-24271 Added delay in JavaScript execution for Azure Cost Management by HTTP template Templates
+  + ZBX-24208 Fixed Oracle, MySQL plugin connection cache blocking Agent
+  + ZBX-24202 Fixed JavaScript in AWS S3 bucket by HTTP template Templates
+  + ZBX-23478 Fixed issue when missing locale error would not be displayed for user under certain conditions Frontend
+  + ZBX-24166 Fixed Zabbix not being able to restart due to RTC and sockets not being closed before stopping Agent Proxy Server
+  + ZBX-23853 Fixed duplicate agent check timestamps when time shifts back due to system clock synchronization Agent 
+
+-------------------------------------------------------------------
 Wed May 29 12:57:35 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Update license to match legaldb report 
