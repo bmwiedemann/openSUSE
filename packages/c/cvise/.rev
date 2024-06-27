@@ -1165,4 +1165,28 @@
   * CI: Set default to LLVM 18</comment>
     <requestid>1169838</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>045decb8d7a81afb9aeb46f30a2ba1d5</srcmd5>
+    <version>2.10.0+git.20240603.16a34b2</version>
+    <time>1719497086</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.10.0+git.20240603.16a34b2:
+  * Fix fallout from ClassTemplateSpecializationDecl::getTypeAsWritten
+  * Remove uses of ClassTemplateSpecializationDecl::getTypeAsWritten (#143)
+  * Fix deprecated decl (#141)
+  * Move to ubuntu:rolling again
+  * Add VSCode settings file
+  * Add Dockerfile for LLVM tip builds
+
+- Update to version 2.10.0+git.20240506.fd50de2:
+  * Manipulate with tempfiles after they are closed (#139)
+  * Fix --print-diff after pathlib has been used
+  * Apply Ruff format
+  * Reduce logging output verbosity
+  * Fix Ruff linter issues
+  * Stick to Ubuntu 23.10
+  * Ensure that clang delta is also compiled with C++17 on Windows
+  * Also instruct to install chardet on Windows</comment>
+    <requestid>1183541</requestid>
+  </revision>
 </revisionlist>
