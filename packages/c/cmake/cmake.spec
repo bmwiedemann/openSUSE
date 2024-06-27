@@ -52,7 +52,7 @@
 %define pyver 3
 %endif
 Name:           cmake%{?psuffix}
-Version:        3.29.4
+Version:        3.29.6
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause
@@ -106,8 +106,8 @@ BuildRequires:  pkgconfig(libarchive) >= 3.3.3
 BuildRequires:  pkgconfig(libcurl)
 %endif
 %if %{with gui}
-BuildRequires:  python%{pyver}-base
 BuildRequires:  python%{pyver}-Sphinx
+BuildRequires:  python%{pyver}-base
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Widgets)
 %endif

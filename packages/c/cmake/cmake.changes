@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jun 19 07:56:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.29.6:
+  * The :cpack_gen:`CPack WIX Generator`'s
+    :variable:`CPACK_WIX_INSTALL_SCOPE` variable, new in 3.29, now
+    defaults to ``NONE``.  This restores
+    compatibility with behavior of 3.28 and below: without a custom WiX
+    template, it produces installers that only create start menu
+    and uninstall entries for the current user, even though they
+    install for all users.
+  * In 3.29.0 through 3.29.4, ``CPACK_WIX_INSTALL_SCOPE`` defaulted
+    to ``perMachine``.  This created MSI installers that create
+    start menu and uninstall entries for all users by default.
+    While this behavior is better on its own, these installers do
+    not cleanly replace existing installations created with MSI
+    installers produced by 3.28 and below.  3.29.5 reverts the
+    default for compatibility.  Projects may transition to
+    ``perMachine`` on their own schedule by setting
+    ``CPACK_WIX_INSTALL_SCOPE``.
+
+-------------------------------------------------------------------
 Tue Jun  4 12:47:02 UTC 2024 - Christoph G <foss@grueninger.de>
 
 - update to 3.29.4
@@ -53,7 +74,7 @@ Thu Mar 21 19:24:26 UTC 2024 - Christoph G <foss@grueninger.de>
 Sun Feb 25 09:30:03 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.28.3:
-  * Fixes for Freetype with ZLIB, execute_process, Autogen, Matlab, 
+  * Fixes for Freetype with ZLIB, execute_process, Autogen, Matlab,
     and various bugs
 
 -------------------------------------------------------------------
