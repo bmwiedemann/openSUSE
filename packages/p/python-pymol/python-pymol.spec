@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymol
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,18 @@
 #
 
 
+%bcond_with test
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %define oldpython python
 %define modname pymol-open-source
 Name:           python-pymol
-Version:        2.5.0
+Version:        3.0.0
 Release:        0
 Summary:        A Molecular Viewer
 License:        Python-2.0
 Group:          Productivity/Scientific/Chemistry
-URL:            https://pymol.org/2/
+URL:            https://pymol.org/
 Source0:        https://github.com/schrodinger/%{modname}/archive/v%{version}/%{modname}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE no-build-date.patch dhall@wustl.edu -- patch eliminates build date
 Patch0:         no-build-date.patch
@@ -34,7 +35,6 @@ Patch0:         no-build-date.patch
 Patch1:         no-o3.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module qt5-devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -48,6 +48,16 @@ BuildRequires:  libxml2-devel
 BuildRequires:  mmtf-cpp-devel
 BuildRequires:  netcdf-devel
 BuildRequires:  python-rpm-macros
+%if %{with test}
+BuildRequires:  Catch2-2-devel
+BuildRequires:  %{python_module Pillow}
+## tests need recent biopython not available in Leap
+%if 0%{?sle_version} >= 150500 && 0%{?is_opensuse}
+%else
+BuildRequires:  %{python_module biopython}
+%endif
+BuildRequires:  %{python_module pytest}
+%endif
 Requires:       python-numpy
 Requires:       python-qt5
 Requires:       python-pmw
@@ -76,22 +86,37 @@ ChemDraw, CCP4 maps, XPLOR maps and Gaussian cube maps.
 %prep
 %setup -q -n %{modname}-%{version}
 %autopatch -p1
+
 %build
 export CXXFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%python_build %{?with_test:--testing}
 
 %install
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/pymol
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
+%check
+%if %{with test}
+## TestExporting.testglTF requires a special executable from Schrodinger
+sed -e '/def testglTF(self):/,+7d' -i testing/tests/api/exporting.py
+%if 0%{?sle_version} >= 150500 && 0%{?is_opensuse}
+## TestSeqalign needs recent biopython not available in Leap
+rm testing/tests/api/seqalign.py
+## fails on Leap, but freemol is unused anyway
+rm testing/tests/system/freemol_.py
+## default pytest / python on leap are too old...
+sed -e '/--import-mode=importlib/d' -i testing/pytest.ini
+%endif
+## pymol -ckqy testing/testing.py --run all
+PYTHONPATH=%{buildroot}%{python_sitearch} python%{python_version} -m pymol -ckqy testing/testing.py --offline --run all
+%endif
+
 %post
 %python_install_alternative pymol
 
 %postun
 %python_uninstall_alternative pymol
-
-%check
 
 %files %{python_files}
 %doc README ChangeLog
