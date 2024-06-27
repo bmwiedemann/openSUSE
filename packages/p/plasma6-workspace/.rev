@@ -71,4 +71,12 @@
     <comment>- Update tarball, got respun (forwarded request 1181370 from Vogtinator)</comment>
     <requestid>1181371</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b2e6465a4f07db3d1b887a8502caa6f9</srcmd5>
+    <version>6.1.1</version>
+    <time>1719496768</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.1.1 (forwarded request 1183337 from Vogtinator)</comment>
+    <requestid>1183402</requestid>
+  </revision>
 </revisionlist>
