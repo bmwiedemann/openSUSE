@@ -1,7 +1,7 @@
 #
 # spec file for package cppreference-doc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cppreference-doc
-Version:        20230810
+Version:        20240610
 Release:        0
 Summary:        Cppreference documentation for offline reading
 License:        CC-BY-SA-3.0
