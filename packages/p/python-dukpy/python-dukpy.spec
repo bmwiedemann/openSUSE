@@ -17,19 +17,21 @@
 
 
 Name:           python-dukpy
-Version:        0.3.1
+Version:        0.4.0
 Release:        0
 Summary:        JavaScript interpreter for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/amol-/dukpy
-Source:         https://github.com/amol-/dukpy/archive/%{version}.tar.gz
+Source:         https://github.com/amol-/dukpy/archive/%{version}.tar.gz#/dukpy-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module mutf8}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module webassets}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-mutf8
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-webassets
