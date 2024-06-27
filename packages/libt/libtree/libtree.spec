@@ -38,7 +38,7 @@ are found or why they cannot be located.
 %make_install PREFIX=%{_prefix}
 
 %check
-%ifnarch %ix86
+%ifarch x86_64
 %make_build check
 %endif
 

@@ -7,4 +7,13 @@
     <comment>Ldd as a tree</comment>
     <requestid>1179878</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2ff16682ad9234a7a211116a6d69d9d0</srcmd5>
+    <version>3.1.1</version>
+    <time>1719496857</time>
+    <user>anag+factory</user>
+    <comment>- fix %check
+</comment>
+    <requestid>1183282</requestid>
+  </revision>
 </revisionlist>
