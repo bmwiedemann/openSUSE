@@ -599,4 +599,19 @@
   * Bump git2 from 0.18.3 to 0.19.0</comment>
     <requestid>1181884</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>ca74d5eb612b8a663426d5089514331f</srcmd5>
+    <version>0.18.20+0</version>
+    <time>1719497063</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.18.20:
+  * Add --no-|show-symlinks flags for filtering output
+
+- Update to 0.18.19:
+- Update to 0.18.18:
+- Update to 0.18.17:
+- Update to 0.18.16:
+- Update to 0.18.15:</comment>
+    <requestid>1183518</requestid>
+  </revision>
 </revisionlist>

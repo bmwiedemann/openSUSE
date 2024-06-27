@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 27 05:40:10 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.20:
+  * Add --no-|show-symlinks flags for filtering output
+
+-------------------------------------------------------------------
 Thu Jun 20 07:13:11 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
-- Update to 0.18.9:
+- Update to 0.18.19:
   Bug Fixes:
   * Ship release binaries
   Build:
@@ -10,7 +16,7 @@ Thu Jun 20 07:13:11 UTC 2024 - Michael Vetter <mvetter@suse.com>
 -------------------------------------------------------------------
 Fri Jun 14 08:39:47 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
-- Update to 0.18.8:
+- Update to 0.18.18:
   * Extend deny check in audit workflow to all
   * Add deny.toml and workflow file to audit workflow paths
   * Run on all features by default
@@ -19,7 +25,7 @@ Fri Jun 14 08:39:47 UTC 2024 - Michael Vetter <mvetter@suse.com>
 -------------------------------------------------------------------
 Thu Jun  6 06:08:40 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
-- Update to 0.18.7:
+- Update to 0.18.17:
   * Add icon for Nushell extension
   * Bump trycmd from 0.15.1 to 0.15.2
   * Bump libc from 0.2.154 to 0.2.155
@@ -29,7 +35,7 @@ Thu Jun  6 06:08:40 UTC 2024 - Michael Vetter <mvetter@suse.com>
 -------------------------------------------------------------------
 Fri May 17 06:32:31 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
-- Update to 0.18.6:
+- Update to 0.18.16:
   * Change windows-only imports to be windows-only
   * Replace decay with color-scale
   * Update INSTALL.md
@@ -39,7 +45,7 @@ Fri May 17 06:32:31 UTC 2024 - Michael Vetter <mvetter@suse.com>
 -------------------------------------------------------------------
 Mon May 13 06:20:40 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
-- Update to 0.18.5:
+- Update to 0.18.15:
   * Correct command for latest tag in deb-package.sh
   * Add how to find man pages in terminal and online. Partly fixes #967
   * Correct heading levels in markdown
