@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun 18 17:37:27 UTC 2024 - Ákos Szőts <szotsaki@gmail.com>
+
+- Update to 3.2.2
+  * Enhancement: add support for auth.type=denyall (will be default for security reasons in upcoming releases)
+  * Enhancement: display warning in case only default config is active
+  * Enhancement: display warning in case no user authentication is active
+  * Enhancement: add option to skip broken item to avoid triggering exception (default: enabled)
+  * Enhancement: add support for predefined collections for new users
+  * Enhancement: add options to enable several parts in debug log like backtrace, request_header, request_content, response_content (default: disabled)
+  * Enhancement: rights/from_file: display resulting permission of a match in debug log
+  * Enhancement: add Apache config file example (see contrib directory)
+  * Fix: "verify-collection" skips non-collection directories, logging improved
+
+-------------------------------------------------------------------
 Fri Jun  7 07:20:17 UTC 2024 - Ákos Szőts <szotsaki@gmail.com>
 
 - Filtered out false positive rpmlint error message
