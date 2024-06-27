@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 15 19:22:19 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Only require install requirements. The extra requirements are
+  mostly for integrations and not meant to be dependencies.
+
+-------------------------------------------------------------------
 Wed Mar 13 18:57:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - disable build for python39 as ipdb is no longer available

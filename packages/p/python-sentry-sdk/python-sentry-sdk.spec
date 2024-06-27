@@ -89,28 +89,30 @@ BuildRequires:  %{python_module tox >= 3.7.0}
 #BuildRequires:  %%{python_module clickhouse-driver >= 0.2.0}
 #BuildRequires:  %%{python_module fastapi >= 0.79.0}
 # /SECTION
-Requires:       python-Django >= 1.8
-Requires:       python-Flask >= 0.11
-Requires:       python-MarkupSafe
-Requires:       python-SQLAlchemy >= 1.2
-Requires:       python-aiohttp >= 3.5
-Requires:       python-asttokens
-Requires:       python-asyncpg >= 0.23
-Requires:       python-blinker >= 1.1
-Requires:       python-bottle >= 0.12.13
-Requires:       python-celery >= 3
+# Install requirements
 Requires:       python-certifi
-Requires:       python-executing
-Requires:       python-falcon >= 1.4
-Requires:       python-grpcio >= 1.21.1
-Requires:       python-httpx >= 0.16.0
-Requires:       python-jsonschema
-Requires:       python-loguru >= 0.5
-Requires:       python-pymongo >= 3.1
-Requires:       python-rq >= 0.6
-Requires:       python-starlette >= 0.19.1
-Requires:       python-tornado >= 5
 Requires:       python-urllib3 >= 1.26.11
+# Extra requirements
+Suggests:       python-Django >= 1.8
+Suggests:       python-Flask >= 0.11
+Suggests:       python-MarkupSafe
+Suggests:       python-SQLAlchemy >= 1.2
+Suggests:       python-aiohttp >= 3.5
+Suggests:       python-asttokens
+Suggests:       python-asyncpg >= 0.23
+Suggests:       python-blinker >= 1.1
+Suggests:       python-bottle >= 0.12.13
+Suggests:       python-celery >= 3
+Suggests:       python-executing
+Suggests:       python-falcon >= 1.4
+Suggests:       python-grpcio >= 1.21.1
+Suggests:       python-httpx >= 0.16.0
+Suggests:       python-jsonschema
+Suggests:       python-loguru >= 0.5
+Suggests:       python-pymongo >= 3.1
+Suggests:       python-rq >= 0.6
+Suggests:       python-starlette >= 0.19.1
+Suggests:       python-tornado >= 5
 # SECTION extra requirements - which rise up buildtime error or missing in openSUSE
 #Requires:       python-sanic >= 0.8
 #Requires:       python-apache-beam >= 2.12

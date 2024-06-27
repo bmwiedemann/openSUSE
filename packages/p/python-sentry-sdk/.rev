@@ -284,4 +284,17 @@
     <comment></comment>
     <requestid>1157751</requestid>
   </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>f633c31e3e0e980e526dbf7d5e100f4b</srcmd5>
+    <version>1.40.4</version>
+    <time>1719497024</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1181071 from Vogtinator
+
+Reduce dependencies from 260MiB to 14MiB.
+
+  - Only require install requirements. The extra requirements are
+    mostly for integrations and not meant to be dependencies.</comment>
+    <requestid>1183486</requestid>
+  </revision>
 </revisionlist>
