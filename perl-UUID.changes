@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun 23 16:50:11 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 0.360.0 (0.36)
+   see /usr/share/doc/packages/perl-UUID/Changes
+
+  0.36 Sat Jun 22 21:24:39 EDT 2024
+    - Fix distro tests run from read-only location.
+      - Thanks Petr Pisar. [rt.cpan.org #153854]
+
+  0.35 Wed May 29 14:40:34 EDT 2024
+    - Reworked persist file handling for speed.
+    - Reworked seeding for front-loading prefork processes.
+      - Thanks again to Christopher Rasch-Olsen Raa.
+
+-------------------------------------------------------------------
 Tue Apr 30 03:09:40 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.34

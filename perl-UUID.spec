@@ -18,10 +18,10 @@
 
 %define cpan_name UUID
 Name:           perl-UUID
-Version:        0.340.0
+Version:        0.360.0
 Release:        0
-# 0.34 -> normalize -> 0.340.0
-%define cpan_version 0.34
+# 0.36 -> normalize -> 0.360.0
+%define cpan_version 0.36
 License:        Artistic-2.0
 Summary:        Universally Unique Identifier library for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
