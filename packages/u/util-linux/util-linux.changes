@@ -142,7 +142,7 @@ Thu Dec  7 13:22:16 UTC 2023 - Goldwyn Rodrigues <rgoldwyn@suse.com>
 -------------------------------------------------------------------
 Thu Dec  7 13:02:30 UTC 2023 - Goldwyn Rodrigues <rgoldwyn@suse.com>
 
-- Update to release 2.29.3
+- Update to release 2.39.3
   * libblkid: add support for bcachefs sub-device labels
   * libblkid: detect large bcachefs superblocks
   * libblkid: validate that NTFS sector_size is a power of two

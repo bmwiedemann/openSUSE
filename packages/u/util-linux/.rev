@@ -2614,4 +2614,12 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
   util-linux-losetup-Add-support-for-setting-logical-blocksize.patch</comment>
     <requestid>1179952</requestid>
   </revision>
+  <revision rev="287" vrev="4">
+    <srcmd5>1175663169cdb4856d6cc40cf6c24be0</srcmd5>
+    <version>2.40.1</version>
+    <time>1719582431</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1183837</requestid>
+  </revision>
 </revisionlist>
