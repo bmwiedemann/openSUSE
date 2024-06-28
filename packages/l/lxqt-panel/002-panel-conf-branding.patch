@@ -1,0 +1,15 @@
+--- lxqt-panel-2.0.1/panel/resources/panel.conf	2024-05-08 19:37:39.000000000 +0300
++++ lxqt-panel-2.0.1.new/panel/resources/panel.conf	2024-05-21 20:28:13.029086928 +0300
+@@ -8,6 +8,12 @@
+ [fancymenu]
+ type=fancymenu
+ alignment=Left
++buttonsAtTop=false
++categoriesAtRight=false
++icon=/usr/share/lxqt/graphics/opensuse-green.svg
++ownIcon=true
++showText=true
++text=" openSUSE"
+ filterClear=true
+ autoSel=true
+ autoSelDelay=150

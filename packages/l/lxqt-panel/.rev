@@ -1236,4 +1236,16 @@
 </comment>
     <requestid>1174632</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>25053b19090efcd9402dc468c4f646be</srcmd5>
+    <version>2.0.1</version>
+    <time>1719582424</time>
+    <user>anag+factory</user>
+    <comment>- Настройка Fancy Application Menu
+- Added:
+  * 002-panel-conf-branding.patch
+
+- Fix plugin loader (#2052) #2053</comment>
+    <requestid>1183641</requestid>
+  </revision>
 </revisionlist>

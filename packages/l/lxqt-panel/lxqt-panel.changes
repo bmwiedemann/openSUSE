@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 21 18:09:05 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Настройка Fancy Application Menu
+- Added:
+  * 002-panel-conf-branding.patch
+
+-------------------------------------------------------------------
 Sat May 11 10:46:45 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
 
 - Update to 2.0.1:
@@ -8,7 +15,7 @@ Sat May 11 10:46:45 UTC 2024 - Андрей Алыпов <and.november@opensuse.
   * Added Wayland support for positioning the panel by using layer shell.
   * Removed spaces from saved settings of Custom Command plugin.
   * Added the SVG format to the panel background picker dialog.
-- Fix plugin loader (#2052) #2053 
+- Fix plugin loader (#2052) #2053
   * 001-fix-plugin-loader.patch added
 
 -------------------------------------------------------------------

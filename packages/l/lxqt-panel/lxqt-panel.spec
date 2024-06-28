@@ -27,6 +27,7 @@ Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Patch1:         001-fix-plugin-loader.patch
+Patch2:         002-panel-conf-branding.patch
 BuildRequires:  cmake >= 3.27.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
