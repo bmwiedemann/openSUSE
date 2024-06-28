@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jun 23 16:46:26 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 2.47.0 (2.047)
+   see /usr/share/doc/packages/perl-PDF-API2/Changes
+
+  2.047     2024-05-18
+      - Fixed implementation of GH-77.
+      - Added $pdf->standard_fonts() and $pdf->is_standard_font($name) (initial
+        patch by Johan Vromans).
+  2.046     2024-05-14
+      - [GH-74] Fixed documentation error saying that stroke_color and fill_color
+        can be chained.
+      - Crash instead of freezing if a PDF trailer's Prev keys result in a loop or
+        if multiple trailers use the same object ID and generation number.
+      - [GH-70] Fix off-by-one error when adding a page at the beginning of a PDF.
+      - [GH-77] Significantly improve performance when adding many pages to a PDF.
+
+-------------------------------------------------------------------
 Fri Mar  8 22:55:31 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides
