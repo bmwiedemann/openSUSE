@@ -51,4 +51,13 @@
     pattern.</comment>
     <requestid>1178911</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0801531a650447436d81d0119f6f5b81</srcmd5>
+    <version>1.21.2</version>
+    <time>1719582453</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.21.2:
+  * Fixed: Some timestamps could fail to parse on Python 3.5 and 3.6. (forwarded request 1183715 from rrahl0)</comment>
+    <requestid>1183716</requestid>
+  </revision>
 </revisionlist>

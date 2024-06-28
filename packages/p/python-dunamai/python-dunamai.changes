@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 28 01:52:24 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- update to 1.21.2:
+  * Fixed: Some timestamps could fail to parse on Python 3.5 and 3.6.
+
+
+-------------------------------------------------------------------
 Thu Jun  6 07:27:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.21.1:
