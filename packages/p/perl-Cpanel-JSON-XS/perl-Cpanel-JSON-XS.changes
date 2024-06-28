@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 23 16:13:17 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 4.380.0 (4.38)
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  4.38 2024-05-27 (rurban)
+          - Encode real core booleans as boolean notation (PR #224 leonerd)
+          - Minor test fixes by leonerd
+          - Fix docs typo (PR #225 karenetheridge)
+
+-------------------------------------------------------------------
 Wed Jul  5 03:06:14 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.37

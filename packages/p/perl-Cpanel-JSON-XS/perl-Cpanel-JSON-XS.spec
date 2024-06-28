@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Cpanel-JSON-XS
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,20 @@
 
 %define cpan_name Cpanel-JSON-XS
 Name:           perl-Cpanel-JSON-XS
-Version:        4.37
+Version:        4.380.0
 Release:        0
+# 4.38 -> normalize -> 4.380.0
+%define cpan_version 4.38
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        CPanel fork of JSON::XS, fast and correct serializing
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RU/RURBAN/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RU/RURBAN/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Time::Piece)
+Provides:       perl(Cpanel::JSON::XS) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -47,7 +51,7 @@ See MAPPING, below, on how Cpanel::JSON::XS maps perl values to JSON values
 and vice versa.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
