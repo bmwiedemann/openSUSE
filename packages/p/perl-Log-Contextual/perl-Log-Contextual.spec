@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Log-Contextual
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,31 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Log-Contextual
-Version:        0.008001
-Release:        0
 %define cpan_name Log-Contextual
+Name:           perl-Log-Contextual
+Version:        0.009001
+Release:        0
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Simple logging interface with a contextual log
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Log-Contextual/
-Source0:        https://cpan.metacpan.org/authors/id/F/FR/FREW/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/H/HA/HAARG/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Data::Dumper::Concise)
-BuildRequires:  perl(Exporter::Declare) >= 0.111
-BuildRequires:  perl(Moo) >= 1.003
+BuildRequires:  perl(Moo) >= 1.003000
 BuildRequires:  perl(Test::Fatal)
+BuildRequires:  perl(Test::More) >= 0.88
+BuildRequires:  perl(Test::Needs)
 Requires:       perl(Data::Dumper::Concise)
-Requires:       perl(Exporter::Declare) >= 0.111
-Requires:       perl(Moo) >= 1.003
+Requires:       perl(Moo) >= 1.003000
 %{perl_requires}
 
 %description
@@ -47,8 +45,8 @@ Major benefits:
 The default logging functions take blocks, so if a log level is disabled,
 the block will not run:
 
- # the following won't run if debug is off
- log_debug { "the new count in the database is " . $rs->count };
+  # the following won't run if debug is off
+  log_debug { "the new count in the database is " . $rs->count };
 
 Similarly, the 'D' prefixed methods only 'Dumper' the input if the level is
 enabled.
@@ -58,7 +56,7 @@ enabled.
 The logging functions return their arguments, so you can stick them in the
 middle of expressions:
 
- for (log_debug { "downloading:\n" . join qq(\n), @_ } @urls) { ... }
+  for (log_debug { "downloading:\n" . join qq(\n), @_ } @urls) { ... }
 
 * * Generic
 
@@ -87,14 +85,14 @@ serious but not overly complicated, try Log::Dispatchouli (see SYNOPSIS for
 example.)
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -102,7 +100,6 @@ example.)
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes CONTRIBUTING README
 %license LICENSE
 

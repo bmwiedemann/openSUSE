@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jun 23 16:28:20 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 0.009001
+   see /usr/share/doc/packages/perl-Log-Contextual/Changes
+
+  0.009001  2024-05-29
+    - fix log4perl test when run with unexpected path or directory seperator
+    - add basic docs showing what each role represents
+    - rename some internal methods to be prefixed with underscores
+    - test cleanups
+    - code formatting cleanups
+
+  0.009000  2024-05-15
+    - drop dependency on Exporter::Declare
+    - add the importing package as an argument when calling subclass methods
+      rather than expecting them to use caller
+    - various packaging tweaks and improvements
+    - Documentation fixes and formatting improvements
+
+-------------------------------------------------------------------
 Sat Jan 20 06:47:51 UTC 2018 - coolo@suse.com
 
 - updated to 0.008001
