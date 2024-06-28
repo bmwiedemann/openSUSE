@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 25 21:57:40 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2024-4032-private-IP-addrs.patch to fix bsc#1226448
+  (CVE-2024-4032) rearranging definition of private v global IP
+  addresses.
+
+-------------------------------------------------------------------
 Wed May  1 08:39:08 UTC 2024 - Matej Cepl <mcepl@suse.com>
 
 - Update CVE-2023-52425-libexpat-2.6.0-backport.patch
@@ -43,7 +50,7 @@ Mon Apr  8 05:44:04 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
     - gh-114572: ssl.SSLContext.cert_store_stats() and
       ssl.SSLContext.get_ca_certs() now correctly lock access to the
       certificate store, when the ssl.SSLContext is shared across
-      multiple threads.
+      multiple threads (bsc#1226447, CVE-2024-0397).
   * Core and Builtins
     - gh-116296: Fix possible refleak in object.__reduce__() internal
       error handling.

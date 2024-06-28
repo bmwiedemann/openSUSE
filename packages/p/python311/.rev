@@ -1295,4 +1295,16 @@ C API
   - support-expat-CVE-2022-25236-patched.patch</comment>
     <requestid>1171202</requestid>
   </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>b68907ab10e56f6877f56f8fb27fbae4</srcmd5>
+    <version>3.11.9</version>
+    <time>1719582407</time>
+    <user>anag+factory</user>
+    <comment>- Add CVE-2024-4032-private-IP-addrs.patch to fix bsc#1226448
+  (CVE-2024-4032) rearranging definition of private v global IP
+  addresses.
+
+      multiple threads (bsc#1226447, CVE-2024-0397).</comment>
+    <requestid>1183510</requestid>
+  </revision>
 </revisionlist>

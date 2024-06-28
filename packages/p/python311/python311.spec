@@ -171,6 +171,9 @@ Patch15:        bsc1221260-test_asyncio-ResourceWarning.patch
 # by SUSE
 Patch16:        CVE-2023-52425-libexpat-2.6.0-backport.patch
 Patch17:        CVE-2023-52425-remove-reparse_deferral-tests.patch
+# PATCH-FIX-UPSTREAM CVE-2024-4032-private-IP-addrs.patch bsc#1226448 mcepl@suse.com
+# rearrange definition of private v global IP addresses
+Patch18:        CVE-2024-4032-private-IP-addrs.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -432,6 +435,7 @@ other applications.
 %patch -p1 -P 15
 %patch -p1 -P 16
 %patch -p1 -P 17
+%patch -p1 -P 18
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
