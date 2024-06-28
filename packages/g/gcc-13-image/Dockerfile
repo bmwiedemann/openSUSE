@@ -39,6 +39,6 @@ LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/gcc-13-image/README.md"
 
-RUN set -euo pipefail; zypper -n in --no-recommends gcc13 gcc13-c++ make gawk gcc gcc-c++; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
+RUN set -euo pipefail; zypper -n in --no-recommends gcc13 gcc13-c++ make gcc gcc-c++ curl findutils gawk git-core procps util-linux; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
 ENV GCC_VERSION="%%gcc_version%%"
 
