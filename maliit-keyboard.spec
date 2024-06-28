@@ -1,7 +1,7 @@
 #
 # spec file for package maliit-keyboard
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,25 +22,26 @@ Version:        2.3.1
 Release:        0
 License:        BSD-3-Clause AND LGPL-3.0-only AND CC-BY-3.0
 Summary:        Maliit virtual keyboard
-Url:            https://github.com/maliit/keyboard
+URL:            https://github.com/maliit/keyboard
 Source0:        keyboard-%{version}.tar.xz
-BuildRequires:  gcc-c++
 BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
+BuildRequires:  libpresage-devel
+BuildRequires:  presage
+BuildRequires:  sqlite3
+BuildRequires:  cmake(MaliitPlugins)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Multimedia)
 BuildRequires:  cmake(Qt5QuickControls2)
-BuildRequires:  cmake(MaliitPlugins)
 BuildRequires:  pkgconfig(anthy)
 BuildRequires:  pkgconfig(chewing)
 BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(libpinyin)
-BuildRequires:  libpresage-devel
-BuildRequires:  sqlite3
-BuildRequires:  presage
+Requires:       libqt5-qtwayland
 Recommends:     %{name}-layouts
-Recommends:     %{name}-themes
 Recommends:     %{name}-styles-ubuntu
+Recommends:     %{name}-themes
 Suggests:       dejavu-fonts
 Obsoletes:      maliit-keyboard2 < %{version}
 Provides:       maliit-keyboard2 = %{version}
@@ -58,6 +59,7 @@ is an open source framework (LGPL 2) with open source plugins (BSD).
 %package        layouts
 Summary:        Maliit Keyboard Layout Files
 Requires:       %{name} = %{version}
+
 %description    layouts
 Provides layouts that are not english QWERTY
 for Maliit Virtual Keyboard.
@@ -75,6 +77,9 @@ for Maliit Virtual Keyboard.
 %cmake_install
 %{__rm} -rf %{buildroot}%{_datadir}/doc/%{name}
 %fdupes %{buildroot}%{_prefix}
+
+%check
+%ctest
 
 %find_lang %{name} --with-qt
 

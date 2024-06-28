@@ -7,4 +7,13 @@
     <comment>New package, provides OSK for Plasma Desktop</comment>
     <requestid>1158821</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e7d2353d8b66aa1118721badfa9d2d88</srcmd5>
+    <version>2.3.1</version>
+    <time>1719582422</time>
+    <user>anag+factory</user>
+    <comment>- Added %check section
+- Added explicit Requires: on libqt5-qtwayland (boo#1222993)</comment>
+    <requestid>1183643</requestid>
+  </revision>
 </revisionlist>

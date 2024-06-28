@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 27 16:41:48 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Added %check section
+- Added explicit Requires: on libqt5-qtwayland (boo#1222993)
+
+-------------------------------------------------------------------
 Sun Mar 17 20:51:08 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Split -layouts and -lang subpackages to better conform with
