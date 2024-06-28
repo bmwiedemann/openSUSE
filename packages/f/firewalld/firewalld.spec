@@ -202,6 +202,8 @@ mv %{buildroot}%{_sysconfdir}/logrotate.d/firewalld %{buildroot}%{_distconfdir}/
 
 %find_lang %{name} --all-name
 
+%python3_fix_shebang
+
 %pre
 %service_add_pre firewalld.service
 # Avoid restoring outdated stuff in posttrans
