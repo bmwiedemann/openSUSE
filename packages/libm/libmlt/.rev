@@ -841,4 +841,12 @@ Only build sdl2 module.
     <comment></comment>
     <requestid>1130548</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>a688aa62fc6158643f049d274383229a</srcmd5>
+    <version>7.24.0</version>
+    <time>1719582417</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1183587</requestid>
+  </revision>
 </revisionlist>
