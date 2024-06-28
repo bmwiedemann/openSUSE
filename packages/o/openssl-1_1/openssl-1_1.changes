@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 18 15:52:49 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Fixed C99 violations in patches bsc1185319-FIPS-KAT-for-ECDSA.patch
+  (need to for explicity typecast) and
+  openssl-1_1-fips-list-only-approved-digest-and-pubkey-algorithms.patch
+  (missing include) to allow the package to build with GCC 14.
+  [boo#1225907]
+
+-------------------------------------------------------------------
 Mon May  6 12:11:02 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Security fix: [bsc#1222548, CVE-2024-2511]

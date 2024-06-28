@@ -327,7 +327,7 @@ index 9895aa8..77a1c77 100644
 - err:
 +    /* extract r and s */
 +    tsig = sig;
-+    dsa_sig = d2i_ECDSA_SIG(NULL, &tsig, siglen);
++    dsa_sig = d2i_ECDSA_SIG(NULL, (const unsigned char **) &tsig, siglen);
 +    if (dsa_sig == NULL)
 +      goto err;
 +    
