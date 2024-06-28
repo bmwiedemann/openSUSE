@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Jun 23 16:48:27 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 3.102.0 (3.102)
+   see /usr/share/doc/packages/perl-Template-Toolkit/Changes
+
+  # Version 3.102
+  #------------------------------------------------------------------------
+
+  Improvements:
+  * #307 Don't calculate args unless and until they are needed
+  * #307 Don't go through the importing of the hash if there is none.
+  * #307 No need to check for definedness before calling ref
+  * #305 Docs: Added info about accessing values with complex keys from hash
+  * #316 Split ttree bin code into a re-usable module
+
+  Bug Fixes:
+  * #309 remove extraneous import arguments when loading Template
+  * #310 remove more extraneous import arguments from tests.
+  * #318 Correct path splitting on Win32
+
+  #-----------------------------------------------------------------------
+
+-------------------------------------------------------------------
 Wed Aug 17 03:09:33 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.101
