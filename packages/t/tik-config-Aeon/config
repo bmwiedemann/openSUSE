@@ -6,6 +6,10 @@ TIK_CUSTOM_DIR="/etc/tik"
 # Default: "/usr/lib/tik/img"
 TIK_IMG_DIR="/usr/lib/tik/img"
 
+# To show USB devices in the install device selection dialog, uncomment this variable
+# USB devices are filtered out by default
+#TIK_ALLOW_USB_INSTALL_DEVICES=1
+
 # For unattended installations the disk device to deploy the image must be defined
 # Default: Undefined
 #TIK_INSTALL_DEVICE=""

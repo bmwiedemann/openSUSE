@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 28 08:43:40 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Introduce new config 'TIK_ALLOW_USB_INSTALL_DEVICES=1'
+  Disabled by default 
+
+-------------------------------------------------------------------
 Thu May  2 13:26:15 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Create and own module directories 

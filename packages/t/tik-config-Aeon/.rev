@@ -7,4 +7,13 @@
     <comment>New installer used by Aeon</comment>
     <requestid>1172742</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>41d7ce4ca96317e14a40ed5c65be6237</srcmd5>
+    <version>20240502</version>
+    <time>1719582467</time>
+    <user>anag+factory</user>
+    <comment>- Introduce new config 'TIK_ALLOW_USB_INSTALL_DEVICES=1'
+  Disabled by default</comment>
+    <requestid>1183812</requestid>
+  </revision>
 </revisionlist>

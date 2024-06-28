@@ -20,7 +20,7 @@ Name:           tik-config-Aeon
 Version:        20240502
 Release:        0
 Summary:        Aeon configuration for tik
-License:        MIT 
+License:        MIT
 URL:            https://github.com/sysrich/tik
 Source:         config
 Source1:        LICENSE
@@ -54,4 +54,3 @@ install -d %{buildroot}%{_sysconfdir}/tik/modules/post
 %config(noreplace) %{_sysconfdir}/tik/config
 
 %changelog
-
