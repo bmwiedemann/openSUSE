@@ -435,4 +435,16 @@ feat: use _service files to automate fetching sources</comment>
     <comment></comment>
     <requestid>1139998</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>97cc549bffc618cdcad9252a2d55d30d</srcmd5>
+    <version>1.17.6</version>
+    <time>1719582452</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.17.6
+ * Drop Python2 support (using pyupgrade --py3-plus *.py)
+ * Make it possible to use keys with Unicode keysyms in keybindings
+ * Use frames_per_buffer=chunk_size option in self._paudio.open()
+ * Translation update from Weblate (cs 36.6%, ja 45.3%, zh_CN 92.0%)</comment>
+    <requestid>1183713</requestid>
+  </revision>
 </revisionlist>

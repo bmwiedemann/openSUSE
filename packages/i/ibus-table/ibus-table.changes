@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 28 02:08:10 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 1.17.6
+ * Drop Python2 support (using pyupgrade --py3-plus *.py)
+ * Make it possible to use keys with Unicode keysyms in keybindings
+ * Use frames_per_buffer=chunk_size option in self._paudio.open()
+ * Translation update from Weblate (cs 36.6%, ja 45.3%, zh_CN 92.0%)
+
+-------------------------------------------------------------------
 Fri Jan 19 15:26:24 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fixes for %_ibus_libexecdir moving to %_libexecdir (bsc#1174075)

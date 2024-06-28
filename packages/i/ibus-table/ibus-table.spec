@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-table
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ibus-table
-Version:        1.17.4
+Version:        1.17.6
 Release:        0
 Summary:        The Table engine for IBus platform
 License:        LGPL-2.1-or-later
