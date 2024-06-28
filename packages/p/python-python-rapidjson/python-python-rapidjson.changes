@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 20 12:41:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.17:
+  * Use current master version of rapidjson
+
+-------------------------------------------------------------------
 Sat Mar 16 09:29:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.16 (bsc#1220489, CVE-2024-27454):

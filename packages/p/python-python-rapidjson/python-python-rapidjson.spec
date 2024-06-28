@@ -20,7 +20,7 @@
 %define rjversion 1.1.0+git20211015.4d6cb081
 %{?sle15_python_module_pythons}
 Name:           python-python-rapidjson
-Version:        1.16
+Version:        1.17
 Release:        0
 Summary:        Python wrapper around rapidjson
 License:        MIT

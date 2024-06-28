@@ -116,4 +116,12 @@
 - Switch to autosetup and pyproject macros.</comment>
     <requestid>1158410</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>58d17ad03c8651fd6a4a5375dbb95aa2</srcmd5>
+    <version>1.17</version>
+    <time>1719582410</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1183577</requestid>
+  </revision>
 </revisionlist>
