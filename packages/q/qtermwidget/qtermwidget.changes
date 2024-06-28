@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 27 20:20:33 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 2.0.1:
+  * Fixed visual artifacts due to a mistake about conversion to
+    std::wstring in Qt6 Port.
+
+-------------------------------------------------------------------
 Sat May 18 03:36:58 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
 
 - Update to 2.0.0:
