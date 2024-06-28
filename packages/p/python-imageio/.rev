@@ -179,4 +179,13 @@
     directly</comment>
     <requestid>1172591</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ffcac2269846df805826de7942e7c2b2</srcmd5>
+    <version>2.34.2</version>
+    <time>1719582464</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.34.2:
+  * Add support for numpy 2.0</comment>
+    <requestid>1183800</requestid>
+  </revision>
 </revisionlist>
