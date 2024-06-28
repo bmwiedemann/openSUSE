@@ -40,7 +40,7 @@ LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/gcc-14-image/README.md"
 
-RUN set -euo pipefail; zypper -n in --no-recommends gcc14 gcc14-c++ make gawk; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
+RUN set -euo pipefail; zypper -n in --no-recommends gcc14 gcc14-c++ make curl findutils gawk git-core procps util-linux; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
 ENV GCC_VERSION="%%gcc_version%%"
 
 # symlink all versioned gcc & g++ binaries to unversioned
