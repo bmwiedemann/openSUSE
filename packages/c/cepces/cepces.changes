@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 13 10:37:44 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- remove dependency on /usr/bin/python3 (bsc#1212476)
+
+-------------------------------------------------------------------
 Mon Mar 18 19:06:40 UTC 2024 - dmulder@suse.com
 
 - Update to version 0.3.9:

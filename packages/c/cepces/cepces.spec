@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package cepces
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -129,7 +129,7 @@ install -p -m 755 bin/%{app_name}-submit \
 %{__rm} -rfv %{buildroot}/usr/local/etc
 %{__rm} -rfv %{buildroot}/usr/local/libexec/certmonger
 
-sed -i 's/\/usr\/bin\/env python3/\/usr\/bin\/python3/g' %{buildroot}%{_libexecdir}/certmonger/%{app_name}-submit
+sed -i 's/\/usr\/bin\/env python3/\/usr\/bin\/python%python3_bin_suffix/g' %{buildroot}%{_libexecdir}/certmonger/%{app_name}-submit
 
 %fdupes %{buildroot}/%{python3_sitelib}/%{app_name}
 
