@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 21 03:22:35 UTC 2024 - Manuel Jacob <me@manueljacob.de>
+
+- add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Feb 29 23:36:16 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to autosetup and pyproject macros.

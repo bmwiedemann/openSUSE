@@ -224,4 +224,12 @@
 - Drop now unneeded Buildrequires on python3-devel</comment>
     <requestid>1153651</requestid>
   </revision>
+  <revision rev="30" vrev="8">
+    <srcmd5>ca94570dd08b25903e24413e1cdfed5c</srcmd5>
+    <version>0.5</version>
+    <time>1719582394</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1183121</requestid>
+  </revision>
 </revisionlist>

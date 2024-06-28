@@ -17,6 +17,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-iniparse
 Version:        0.5
 Release:        0
