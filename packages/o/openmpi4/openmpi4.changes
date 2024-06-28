@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 25 13:24:03 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Disable 32b builds of hpc flavours
+
+-------------------------------------------------------------------
 Mon Feb 26 12:47:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
