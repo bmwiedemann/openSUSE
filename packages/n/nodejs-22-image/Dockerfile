@@ -39,6 +39,6 @@ LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/nodejs-22-image/README.md"
 
-RUN set -euo pipefail; zypper -n in --no-recommends nodejs22 npm22 git-core findutils update-alternatives; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
+RUN set -euo pipefail; zypper -n in --no-recommends nodejs22 npm22 update-alternatives curl findutils gawk git-core procps util-linux; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
 ENV NODE_VERSION="22"
 
