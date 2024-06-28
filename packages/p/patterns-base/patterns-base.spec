@@ -163,6 +163,8 @@ Recommends:     procps
 Suggests:       kernel-default
 # we have two providers for 'pkgconfig(jack)' - prefer the real one to the one from pipewire
 Suggests:       libjack-devel
+# We have two providers for libcurl.so.4: libcurl4 and libcurl-mini4. Prefer the fully featured one
+Suggests:       libcurl4
 # We have two providers for libz.so.1: libz1 and libz1-ng-compat1. Favor the legacy one for now
 Suggests:       libz1
 # There are multiple providers for /usr/bin/openssl and openssl(cli); defaulting to openssl

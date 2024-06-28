@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 25 11:30:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- suggest the full libcurl4 package for zypper installation
+
+-------------------------------------------------------------------
 Mon Jun  3 18:40:33 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update rpmlintrc W: no-binary to E: no-binary
