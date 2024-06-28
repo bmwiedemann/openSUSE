@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 19 22:43:46 UTC 2024 - Martin Hansen <mh306602@gmail.com>
+
+- Added Requires: ocean-sound-theme6
+  * Add ocean sound theme
+- Added Requires: ddcutil-i2c-udev-rules
+  * For powerdevil's ability to adjust monitor brightness
+
+-------------------------------------------------------------------
 Tue Apr  2 16:07:59 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Updated patterns for Plasma6

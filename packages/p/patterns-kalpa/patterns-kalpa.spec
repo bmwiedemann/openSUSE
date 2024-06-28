@@ -235,6 +235,8 @@ Requires:       upower
 Requires:       usbutils
 Requires:       wget
 Requires:       xdg-utils
+# For i2c dev handling and permissions
+Requires:       ddcutil-i2c-udev-rules
 # Support ntfs drives
 Requires:       ntfs-3g
 Requires:       ntfsprogs
@@ -340,7 +342,8 @@ Requires:       (gtk4-metatheme-breeze if gtk4)
 Requires:       (gtk2-metatheme-breeze if gtk2)
 Requires:       (gtk3-metatheme-breeze if gtk3)
 
-# Default Plasma/Oxygen sounds for applications
+# Default Plasma sounds for applications
+Requires:       ocean-sound-theme6
 Requires:       oxygen5-sounds
 
 # Plasma system monitor
