@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 26 10:14:35 UTC 2024 - Joachim Gleissner <jgleissner@suse.com>
+
+- Apply python3 interpreter patch in non SLE build environments
+  (bcs#1227067)
+- Simplify %suse_version conditionals
+
+-------------------------------------------------------------------
 Wed Jun  5 18:58:43 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Use the -Z option for mv and cp in the posttrans to properly handle

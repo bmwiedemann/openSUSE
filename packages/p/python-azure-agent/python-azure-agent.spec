@@ -36,7 +36,7 @@ BuildRequires:  dos2unix
 BuildRequires:  distribution-release
 BuildRequires:  openssl
 BuildRequires:  python-rpm-macros
-%if 0%{?suse_version} && 0%{?suse_version} > 1315
+%if 0%{?suse_version} > 1315
 BuildRequires:  python3-distro
 BuildRequires:  python3-setuptools
 %else
@@ -53,10 +53,10 @@ Requires:       openssl
 Requires:       pwdutils
 Requires:       systemd
 Requires:       sysvinit-tools
-%if 0%{?suse_version} && 0%{?suse_version} <= 1500
+%if 0%{?suse_version} <= 1500
 Requires:       wicked
 %endif
-%if 0%{?suse_version} && 0%{?suse_version} > 1315
+%if 0%{?suse_version} > 1315
 Requires:       python3-distro
 Requires:       python3-pyasn1
 Requires:       python3-xml
@@ -143,7 +143,7 @@ setup
 %prep
 %setup -qn WALinuxAgent-%{version}
 %patch -P 1
-%if 0%{?suse_version} && 0%{?suse_version} > 1315 && 0%{?sle_version}
+%if 0%{?suse_version} > 1315
 %patch -P 6
 %endif
 %patch -P 7
@@ -152,14 +152,14 @@ setup
 %patch -P 10
 
 %build
-%if 0%{?suse_version} && 0%{?suse_version} > 1315
+%if 0%{?suse_version} > 1315
 python3 setup.py build
 %else
 python setup.py build
 %endif
 
 %install
-%if 0%{?suse_version} && 0%{?suse_version} > 1315
+%if 0%{?suse_version} > 1315
 python3 setup.py install --prefix=%{_prefix} --lnx-distro='suse' --root=%{buildroot}
 %else
 python setup.py install --prefix=%{_prefix} --lnx-distro='suse' --root=%{buildroot}
@@ -224,7 +224,7 @@ mv %{buildroot}/%{_sysconfdir}/logrotate.d/waagent.logrotate %{buildroot}/%{_sys
 %endif
 
 # install tests
-%if 0%{?suse_version} && 0%{?suse_version} > 1315
+%if 0%{?suse_version} > 1315
 cp -r tests %{buildroot}/%{python3_sitelib}/azurelinuxagent
 %else
 cp -r tests %{buildroot}/%{python_sitelib}/azurelinuxagent
@@ -313,7 +313,7 @@ ln -s %{_sysconfdir}/waagent.conf.micro %{_sysconfdir}/waagent.conf
 /usr/lib/udev/rules.d/66-azure-storage.rules
 /usr/lib/udev/rules.d/99-azure-product-uuid.rules
 %endif
-%if 0%{?suse_version} && 0%{?suse_version} > 1315
+%if 0%{?suse_version} > 1315
 %dir %{python3_sitelib}/azurelinuxagent
 %{python3_sitelib}
 %exclude %{python3_sitelib}/azurelinuxagent/tests
@@ -325,7 +325,7 @@ ln -s %{_sysconfdir}/waagent.conf.micro %{_sysconfdir}/waagent.conf
 
 %files test
 %defattr(0644,root,root,0755)
-%if 0%{?suse_version} && 0%{?suse_version} > 1315
+%if 0%{?suse_version} > 1315
 %{python3_sitelib}/azurelinuxagent/tests
 %else
 %{python_sitelib}/azurelinuxagent/tests
