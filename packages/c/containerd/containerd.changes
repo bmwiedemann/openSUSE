@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 24 10:12:35 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- Revert noarch for devel subpackage for SLE 15
+
+  Switching to noarch causes issues on SLES maintenance updates, reverting it
+  fixes our image builds
+
+-------------------------------------------------------------------
 Wed May 22 19:31:04 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
 - Update to containerd v1.7.17. Upstream release notes:
@@ -67,7 +75,11 @@ Mon Dec  4 08:44:40 UTC 2023 - Aleksa Sarai <asarai@suse.com>
 Fri Oct 27 21:13:23 UTC 2023 - Aleksa Sarai <asarai@suse.com>
 
 - Update to containerd v1.7.8. Upstream release notes:
-  <https://github.com/containerd/containerd/releases/tag/v1.7.8> bsc#1200528
+  <https://github.com/containerd/containerd/releases/tag/v1.7.8>
+
+  Includes fixes for:
+   - CVE-2022-1996 bsc#1200528
+
 - Rebase patches:
   * 0001-BUILD-SLE12-revert-btrfs-depend-on-kernel-UAPI-inste.patch
 

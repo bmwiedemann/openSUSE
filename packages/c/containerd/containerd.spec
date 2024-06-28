@@ -89,7 +89,10 @@ separately from Docker.
 Summary:        Source code for containerd
 Group:          Development/Libraries/Go
 Requires:       %{name} = %{version}
+# cannot switch to noarch on SLE as that breaks maintenance updates
+%if 0%{?suse_version} > 1500
 BuildArch:      noarch
+%endif
 
 %description devel
 This package contains the source code needed for building packages that
