@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 20 12:43:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.24.0:
+  * Add `always_print_fields_with_no_presence` fields to
+    `to_json` and `to_dict`
+  * Add compatibility with protobuf==5.x
+  * AttributeError module 'google._upb._message' has no attribute
+    'MessageMapContainer'
+  * Deprecate field `including_default_value_fields` in `to_json`
+    and `to_dict`
+
+-------------------------------------------------------------------
 Mon Feb 26 19:29:22 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Include in SLE 15 SP4 and later (jsc#PED-6697)
