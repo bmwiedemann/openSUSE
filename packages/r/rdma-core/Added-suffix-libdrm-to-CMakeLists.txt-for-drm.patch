@@ -1,0 +1,30 @@
+commit 11a51f8b05dc6c8f8ffc379080074919905b2fea
+Author: Hector Martinez-Seara <hseara@gmail.com>
+Date:   Tue Jun 25 09:17:39 2024 +0200
+
+    Added suffix libdrm to CMakeLists.txt for drm
+    
+    [ Upstream commit e85647f7df194aa2e3b534a959decf4037fc2835 ]
+    
+    Cannonical libdrm package installation results in headers installed at
+    `\usr\include\libdrm`. The current CMakeLists.txt installation script
+    search the headers only in `drm` suffix which is where headers are found
+    in readhat base distros. I propose to add also the cannonical path
+    `libdrm` also used in distros like archlinux.
+    
+    Signed-off-by: Hector Martinez-Seara <hseara@gmail.com>
+    Signed-off-by: Nicolas Morey <nmorey@suse.com>
+
+diff --git CMakeLists.txt CMakeLists.txt
+index 1bec68d007d4..ebd6b4b16284 100644
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -559,7 +559,7 @@ RDMA_DoFixup("${SYSTEMD_FOUND}" "systemd/sd-daemon.h")
+ # drm headers
+ 
+ # Check if the headers have been installed by kernel-headers
+-find_path(DRM_INCLUDE_DIRS "drm.h" PATH_SUFFIXES "drm")
++find_path(DRM_INCLUDE_DIRS "drm.h" PATH_SUFFIXES "drm" "libdrm")
+ 
+ # Alternatively the headers could have been installed by libdrm
+ if (NOT DRM_INCLUDE_DIRS)

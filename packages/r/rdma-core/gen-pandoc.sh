@@ -12,16 +12,20 @@ print('%s' % (getattr(spec, \"build\"),))
 
 CMAKE_CMD=$(echo "$BUILD_CMDS" |  sed -e :a -e '/\\$/N; s/\\\n//; ta' | grep /bin/cmake | sed -e 's/-GNinja//' -e 's/$OLDPWD\/./../')
 
+TMPDIR=$(mktemp -d)
+CURDIR=$(pwd)
 
+cd $TMPDIR
 rm -Rf $OUTDIR
-tar xf $TARBALL
+tar xf $CURDIR/$TARBALL
 cd $OUTDIR
 for patch in $PATCHES; do
-	patch -p0 < ../$patch || exit 1
+	patch -p0 < $CURDIR/$patch || exit 1
 done
 mkdir build
 cd build
 eval $CMAKE_CMD || exit 1
 make docs -j4 || exit 1
-tar czf ../../prebuilt-pandoc.tgz pandoc-prebuilt
-cd ../..
+tar czf $CURDIR/prebuilt-pandoc.tgz pandoc-prebuilt
+cd $CURDIR/
+rm -Rf $TMPDIR

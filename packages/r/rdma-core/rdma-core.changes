@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 25 12:53:30 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to rdma-core v52.0
+  - No release notes available
+- Add upstream patch Added-suffix-libdrm-to-CMakeLists.txt-for-drm.patch
+  to fix libdrm detection.
+
+-------------------------------------------------------------------
 Wed Feb 14 13:13:23 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Add kernel-boot-do-not-load-module-unsupported-on-s390.patch

@@ -656,4 +656,12 @@
   to prevent autoload of module not supported on s390. (bsc#1219805)</comment>
     <requestid>1146586</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>79868af4824f00578a7d7887c0c9d112</srcmd5>
+    <version>52.0</version>
+    <time>1719582398</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1183206</requestid>
+  </revision>
 </revisionlist>
