@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 27 15:45:09 UTC 2024 - Chen Huang <chhuang@suse.com>
+
+- Release 0.10.0
+  * Added capability to create requests (#165)
+  * Install the theme for the docs (#163)
+
+-------------------------------------------------------------------
 Wed May 22 09:08:50 UTC 2024 - Gabriel Niebler <gniebler@suse.com>
 
 - Release 0.9.1
