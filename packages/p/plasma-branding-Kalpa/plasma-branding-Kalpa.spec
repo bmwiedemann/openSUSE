@@ -28,6 +28,8 @@ Source1:        flathub.flatpakrepo
 Source2:        kalpa-firstboot.desktop
 Source3:        kalpa-firstboot
 Source4:        50-desktop.conf
+Source5:        ark-addtoservicemenu.desktop
+Source6:        ark-servicemenu.desktop
 Source7:        distrobox-upgrade-all.service
 Source8:        distrobox-upgrade-all.timer
 Source9:        49-kalpa.rules
@@ -69,6 +71,8 @@ cp -a %{SOURCE2} kalpa-firstboot.desktop
 cp -a %{SOURCE3} kalpa-firstboot
 %endif
 cp -a %{SOURCE4} 50-desktop.conf
+cp -a %{SOURCE5} ark-addtoservicemenu.desktop
+cp -a %{SOURCE6} ark-servicemenu.desktop
 cp -a %{SOURCE7} distrobox-upgrade-all.service
 cp -a %{SOURCE8} distrobox-upgrade-all.timer
 cp -a %{SOURCE9} 49-kalpa.rules
@@ -92,6 +96,9 @@ install -m0755 kalpa-firstboot-aarch64 %{buildroot}%{_bindir}/kalpa-firstboot-aa
 %endif
 install -d %{buildroot}%{_prefix}%{_sysconfdir}/transactional-update.conf.d
 install -m644 50-desktop.conf %{buildroot}%{_prefix}%{_sysconfdir}/transactional-update.conf.d/50-desktop.conf
+install -d %{buildroot}%{_sysconfdir}/skel/.local/share/kio/servicemenus
+install -m0644 ark-addtoservicemenu.desktop %{buildroot}%{_sysconfdir}/skel/.local/share/kio/servicemenus/ark-addtoservicemenu.desktop
+install -m0644 ark-servicemenu.desktop %{buildroot}%{_sysconfdir}/skel/.local/share/kio/servicemenus/ark-servicemenu.desktop
 install -d %{buildroot}%{_userunitdir}
 install -m0644 distrobox-upgrade-all.service %{buildroot}%{_userunitdir}/distrobox-upgrade-all.service
 install -m0644 distrobox-upgrade-all.timer %{buildroot}%{_userunitdir}/distrobox-upgrade-all.timer
@@ -118,6 +125,11 @@ install -m0444 49-kalpa.rules %{buildroot}%{_datadir}/polkit-1/rules.d/49-kalpa.
 %{_datadir}/kalpa/flathub.flatpakrepo
 %dir %{_sysconfdir}/skel/.config
 %dir %{_sysconfdir}/skel/.config/autostart
+%dir %{_sysconfdir}/skel/.local
+%dir %{_sysconfdir}/skel/.local/share
+%dir %{_sysconfdir}/skel/.local/share/kio
+%dir %{_sysconfdir}/skel/.local/share/kio/servicemenus
+%config %{_sysconfdir}/skel/.local/share/kio/servicemenus/*.desktop
 %ifnarch aarch64
 %config(noreplace) %{_sysconfdir}/skel/.config/autostart/kalpa-firstboot.desktop
 %{_bindir}/kalpa-firstboot

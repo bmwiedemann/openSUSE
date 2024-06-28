@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 25 10:41:22 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Added for contextual menus in dolphin with ark flatpak
+  (from plasma-branding-MicroOS) (boo#1224070):
+  * ark-addtoservicemenu.desktop
+  * ark-servicemenu.desktop
+
+-------------------------------------------------------------------
 Thu May 30 22:22:26 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Added Conflicts: plasma-branding-MicroOS

@@ -51,4 +51,12 @@
 - Removed Obsolets from spec file to avoid collision with plasma-branding-MicroOS</comment>
     <requestid>1177820</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>c70fa714e685d4a42c985f3786680406</srcmd5>
+    <version>20240401</version>
+    <time>1719582419</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1183640</requestid>
+  </revision>
 </revisionlist>
