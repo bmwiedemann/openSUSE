@@ -7,4 +7,16 @@
     <comment></comment>
     <requestid>1182996</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a34b91a6d814efbc2b84a0efc96064c1</srcmd5>
+    <version>0~20240627.48ed241</version>
+    <time>1719582456</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0~20240627.48ed241:
+  * ksrc.py: Add --tags to git fetch
+  * Adding support to SLE15-SP6
+  * config.py: Dump kernel version and arch when a module is not supported
+  * templ.py: Fix Kbuild file generation</comment>
+    <requestid>1183719</requestid>
+  </revision>
 </revisionlist>

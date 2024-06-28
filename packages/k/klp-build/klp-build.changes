@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 28 05:18:20 UTC 2024 - mvetter@suse.com
+
+- Update to version 0~20240627.48ed241:
+  * ksrc.py: Add --tags to git fetch
+  * Adding support to SLE15-SP6
+  * config.py: Dump kernel version and arch when a module is not supported
+  * templ.py: Fix Kbuild file generation
+
+-------------------------------------------------------------------
 Mon Jun 24 10:13:45 UTC 2024 - mvetter@suse.com
 
 - Update to version 0~20240622.445505a:
