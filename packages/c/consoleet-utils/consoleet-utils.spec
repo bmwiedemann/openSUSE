@@ -17,7 +17,7 @@
 
 
 Name:           consoleet-utils
-Version:        1.5
+Version:        1.6
 Release:        0
 Summary:        Utilities for manipulating terminal fonts and colors
 License:        GPL-3.0-or-later AND MIT
@@ -31,6 +31,7 @@ BuildRequires:  c++_compiler
 BuildRequires:  pkg-config >= 0.21
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(babl-0.1)
+BuildRequires:  pkgconfig(eigen3)
 BuildRequires:  pkgconfig(libHX) >= 4.15
 Conflicts:      hxtools < 20200310
 Obsoletes:      vfontas < 20221121
