@@ -2,10 +2,10 @@ Author: Adam Majer <amajer@suse.de>
 Date: Dec 20 09:18:49 UTC 2017
 Summary: Fix CI unit tests framework for OBS building
 
-Index: node-v22.2.0/test/parallel/test-node-output-v8-warning.mjs
+Index: node-v22.3.0/test/parallel/test-node-output-v8-warning.mjs
 ===================================================================
---- node-v22.2.0.orig/test/parallel/test-node-output-v8-warning.mjs
-+++ node-v22.2.0/test/parallel/test-node-output-v8-warning.mjs
+--- node-v22.3.0.orig/test/parallel/test-node-output-v8-warning.mjs
++++ node-v22.3.0/test/parallel/test-node-output-v8-warning.mjs
 @@ -15,7 +15,7 @@ describe('v8 output', { concurrency: !pr
      .replaceAll('*test*', '*')
      .replaceAll(/.*?\*fixtures\*v8\*/g, '(node:*) V8: *') // Replace entire path before fixtures/v8
@@ -15,10 +15,10 @@ Index: node-v22.2.0/test/parallel/test-node-output-v8-warning.mjs
    }
    const common = snapshot
      .transform(snapshot.replaceWindowsLineEndings, snapshot.replaceWindowsPaths, replaceNodeVersion);
-Index: node-v22.2.0/test/parallel/test-module-loading-globalpaths.js
+Index: node-v22.3.0/test/parallel/test-module-loading-globalpaths.js
 ===================================================================
---- node-v22.2.0.orig/test/parallel/test-module-loading-globalpaths.js
-+++ node-v22.2.0/test/parallel/test-module-loading-globalpaths.js
+--- node-v22.3.0.orig/test/parallel/test-module-loading-globalpaths.js
++++ node-v22.3.0/test/parallel/test-module-loading-globalpaths.js
 @@ -11,6 +11,9 @@ const { addLibraryPath } = require('../c
  
  addLibraryPath(process.env);
@@ -29,10 +29,10 @@ Index: node-v22.2.0/test/parallel/test-module-loading-globalpaths.js
  if (process.argv[2] === 'child') {
    console.log(require(pkgName).string);
  } else {
-Index: node-v22.2.0/test/parallel/test-tls-passphrase.js
+Index: node-v22.3.0/test/parallel/test-tls-passphrase.js
 ===================================================================
---- node-v22.2.0.orig/test/parallel/test-tls-passphrase.js
-+++ node-v22.2.0/test/parallel/test-tls-passphrase.js
+--- node-v22.3.0.orig/test/parallel/test-tls-passphrase.js
++++ node-v22.3.0/test/parallel/test-tls-passphrase.js
 @@ -223,7 +223,7 @@ server.listen(0, common.mustCall(functio
    }, onSecureConnect());
  })).unref();
@@ -42,10 +42,10 @@ Index: node-v22.2.0/test/parallel/test-tls-passphrase.js
  
  // Missing passphrase
  assert.throws(function() {
-Index: node-v22.2.0/test/parallel/test-repl-envvars.js
+Index: node-v22.3.0/test/parallel/test-repl-envvars.js
 ===================================================================
---- node-v22.2.0.orig/test/parallel/test-repl-envvars.js
-+++ node-v22.2.0/test/parallel/test-repl-envvars.js
+--- node-v22.3.0.orig/test/parallel/test-repl-envvars.js
++++ node-v22.3.0/test/parallel/test-repl-envvars.js
 @@ -2,7 +2,9 @@
  
  // Flags: --expose-internals
@@ -57,11 +57,11 @@ Index: node-v22.2.0/test/parallel/test-repl-envvars.js
  const stream = require('stream');
  const { describe, test } = require('node:test');
  const REPL = require('internal/repl');
-Index: node-v22.2.0/Makefile
+Index: node-v22.3.0/Makefile
 ===================================================================
---- node-v22.2.0.orig/Makefile
-+++ node-v22.2.0/Makefile
-@@ -392,7 +392,6 @@ ADDONS_HEADERS_PREREQS := tools/install.
+--- node-v22.3.0.orig/Makefile
++++ node-v22.3.0/Makefile
+@@ -393,7 +393,6 @@ ADDONS_HEADERS_PREREQS := tools/install.
  	$(wildcard deps/uv/include/*/*.h) \
  	$(wildcard deps/v8/include/*.h) \
  	$(wildcard deps/v8/include/*/*.h) \
@@ -69,7 +69,7 @@ Index: node-v22.2.0/Makefile
  	src/node.h src/node_api.h src/js_native_api.h src/js_native_api_types.h \
  	src/node_api_types.h src/node_buffer.h src/node_object_wrap.h \
  	src/node_version.h
-@@ -563,7 +562,8 @@ test-ci-js: | clear-stalled
+@@ -565,7 +564,8 @@ test-ci-js: | clear-stalled
  .PHONY: test-ci
  # Related CI jobs: most CI tests, excluding node-test-commit-arm-fanned
  test-ci: LOGLEVEL := info
@@ -79,7 +79,7 @@ Index: node-v22.2.0/Makefile
  	out/Release/cctest --gtest_output=xml:out/junit/cctest.xml
  	$(PYTHON) tools/test.py $(PARALLEL_ARGS) -p tap --logfile test.tap \
  		--mode=$(BUILDTYPE_LOWER) --flaky-tests=$(FLAKY_TESTS) \
-@@ -745,7 +745,8 @@ apidocs_json = $(addprefix out/,$(apidoc
+@@ -747,7 +747,8 @@ apidocs_json = $(addprefix out/,$(apidoc
  apiassets = $(subst api_assets,api/assets,$(addprefix out/,$(wildcard doc/api_assets/*)))
  
  tools/doc/node_modules: tools/doc/package.json
@@ -89,10 +89,10 @@ Index: node-v22.2.0/Makefile
  		echo "Skipping tools/doc/node_modules (no crypto)"; \
  	else \
  		cd tools/doc && $(call available-node,$(run-npm-ci)) \
-Index: node-v22.2.0/tools/test.py
+Index: node-v22.3.0/tools/test.py
 ===================================================================
---- node-v22.2.0.orig/tools/test.py
-+++ node-v22.2.0/tools/test.py
+--- node-v22.3.0.orig/tools/test.py
++++ node-v22.3.0/tools/test.py
 @@ -1386,7 +1386,7 @@ def BuildOptions():
    result.add_option("-s", "--suite", help="A test suite",
        default=[], action="append")
@@ -102,10 +102,10 @@ Index: node-v22.2.0/tools/test.py
    result.add_option("--arch", help='The architecture to run tests for',
        default='none')
    result.add_option("--snapshot", help="Run the tests with snapshot turned on",
-Index: node-v22.2.0/test/parallel/test-crypto-dh.js
+Index: node-v22.3.0/test/parallel/test-crypto-dh.js
 ===================================================================
---- node-v22.2.0.orig/test/parallel/test-crypto-dh.js
-+++ node-v22.2.0/test/parallel/test-crypto-dh.js
+--- node-v22.3.0.orig/test/parallel/test-crypto-dh.js
++++ node-v22.3.0/test/parallel/test-crypto-dh.js
 @@ -92,7 +92,7 @@ const crypto = require('crypto');
        dh3.computeSecret('');
      }, { message: common.hasOpenSSL3 && !hasOpenSSL3WithNewErrorMessage ?
@@ -115,16 +115,3 @@ Index: node-v22.2.0/test/parallel/test-crypto-dh.js
    }
  }
  
-Index: node-v22.2.0/test/parallel/test-buffer-failed-alloc-typed-arrays.js
-===================================================================
---- node-v22.2.0.orig/test/parallel/test-buffer-failed-alloc-typed-arrays.js
-+++ node-v22.2.0/test/parallel/test-buffer-failed-alloc-typed-arrays.js
-@@ -12,7 +12,7 @@ const SlowBuffer = require('buffer').Slo
- // whether or not to zero-fill was not being reset, causing TypedArrays to
- // allocate incorrectly.
- const zeroArray = new Uint32Array(10).fill(0);
--const sizes = [1e10, 0, 0.1, -1, 'a', undefined, null, NaN];
-+const sizes = [1e20, 0, 0.1, -1, 'a', undefined, null, NaN];
- const allocators = [
-   Buffer,
-   SlowBuffer,

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jun 14 10:58:52 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Update to 22.3.0:
+  * buffer: add .bytes() method to Blob
+  * doc: add context.assert docs
+  * doc: improve explanation about built-in modules
+  * fs: mark recursive cp methods as stable
+  * net: add new net.server.listen tracing channel
+  * module: print amount of load time of a cjs module
+  * process: add process.getBuiltinModule(id)
+  * cli: add NODE_RUN_PACKAGE_JSON_PATH env
+  * cli: add NODE_RUN_SCRIPT_NAME env to node --run
+  * lib: add EventSource Client
+  * lib: replace MessageEvent with undici's
+  * src: traverse parent folders while running --run
+  * src,permission: --allow-wasi & prevent WASI exec
+  * test_runner: support module mocking
+  * test_runner: add snapshot testing
+  * test_runner: add context.fullName
+
+- fix_ci_tests.patch: partially upstreamed and refreshed
+
+-------------------------------------------------------------------
 Wed May 22 10:49:02 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - Update to 22.2.0:
