@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jun 23 16:14:39 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 2.40.0 (2.04)
+   see /usr/share/doc/packages/perl-Devel-CheckOS/CHANGELOG
+
+  2.04    2024-05-22
+  - Add detection for a load of Linux distributions
+  2.03    2024-05-19
+  - Temporarily skip os-release tests because they don't work on Redhat. The fix is
+    already in branch more-os-release. Only the Linux::Ubuntu module uses
+    /etc/os-release right now, and that passes in CI.
+  2.02    2024-05-15
+  - Read /etc/os-release to detect Ubuntu instead of shelling out to `lsb_release`
+      there will be further updates in the future to do the same on other Linux distros
+  2.01    2024-05-02
+  - Fix typos in docoumentation
+  2.00    2024-05-01
+  - list_* no longer have special behaviour when called in scalar context. This has
+    been deprecated since version 1.90;
+  - Add Devel::AssertOS::MacOSX::v14 (Sonoma)
+
+-------------------------------------------------------------------
 Sun Feb  5 03:08:09 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.96
