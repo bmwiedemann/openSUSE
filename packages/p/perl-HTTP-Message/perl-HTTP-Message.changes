@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 23 16:20:47 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 6.460.0 (6.46)
+   see /usr/share/doc/packages/perl-HTTP-Message/Changes
+
+  6.46      2024-05-27 18:58:16Z
+      - Update several status codes to RFC 9110 (GH#197) (Wesley Schwengle)
+
+-------------------------------------------------------------------
 Fri Mar  8 22:33:18 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

@@ -18,9 +18,10 @@
 
 %define cpan_name HTTP-Message
 Name:           perl-HTTP-Message
-Version:        6.450.0
+Version:        6.460.0
 Release:        0
-%define cpan_version 6.45
+# 6.46 -> normalize -> 6.460.0
+%define cpan_version 6.46
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        HTTP style message (base class)
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -63,16 +64,16 @@ Requires:       perl(IO::Uncompress::RawInflate)
 Requires:       perl(LWP::MediaTypes) >= 6
 Requires:       perl(URI) >= 1.10
 Requires:       perl(parent)
-Provides:       perl(HTTP::Config) = 6.450.0
-Provides:       perl(HTTP::Headers) = 6.450.0
-Provides:       perl(HTTP::Headers::Auth) = 6.450.0
-Provides:       perl(HTTP::Headers::ETag) = 6.450.0
-Provides:       perl(HTTP::Headers::Util) = 6.450.0
-Provides:       perl(HTTP::Message) = 6.450.0
-Provides:       perl(HTTP::Request) = 6.450.0
-Provides:       perl(HTTP::Request::Common) = 6.450.0
-Provides:       perl(HTTP::Response) = 6.450.0
-Provides:       perl(HTTP::Status) = 6.450.0
+Provides:       perl(HTTP::Config) = %{version}
+Provides:       perl(HTTP::Headers) = %{version}
+Provides:       perl(HTTP::Headers::Auth) = %{version}
+Provides:       perl(HTTP::Headers::ETag) = %{version}
+Provides:       perl(HTTP::Headers::Util) = %{version}
+Provides:       perl(HTTP::Message) = %{version}
+Provides:       perl(HTTP::Request) = %{version}
+Provides:       perl(HTTP::Request::Common) = %{version}
+Provides:       perl(HTTP::Response) = %{version}
+Provides:       perl(HTTP::Status) = %{version}
 %undefine       __perllib_provides
 Recommends:     perl(IO::Compress::Brotli) >= 0.4.1
 Recommends:     perl(IO::Uncompress::Brotli) >= 0.4.1
