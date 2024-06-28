@@ -107,6 +107,9 @@ Patch17:        sddm-xauth.diff
 # utils MountRule: add support for quoted paths and empty source (master merged upstream 2024-06-11, 4.0 branch submitted upstream 2024-06-11 https://gitlab.com/apparmor/apparmor/-/merge_requests/1259)
 Patch18:        logprof-mount-empty-source.diff
 
+#  samba-dcerpcd: allow to execute rpcd_witness (submitted upstream 2024-06-08 https://gitlab.com/apparmor/apparmor/-/merge_requests/1256, packaged patch adjusted to match the packaged samba-rpcd profile)
+Patch19:        sampa-rpcd-witness.diff
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
@@ -383,6 +386,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch -P 16 -p1
 %patch -P 17 -p1
 %patch -P 18 -p1
+%patch -P 19 -p1
 
 %build
 export SUSE_ASNEEDED=0

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 25 19:40:41 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
+
+- add sampa-rpcd-witness.diff: allow samba-dcerpcd to execute
+  rpcd_witness (boo#1225811)
+
+-------------------------------------------------------------------
 Tue Jun 11 12:05:38 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
 
 - add logprof-mount-empty-source.diff: add support for mount rules

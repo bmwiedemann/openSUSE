@@ -1,0 +1,48 @@
+From https://gitlab.com/apparmor/apparmor/-/merge_requests/1256
+(adjusted to currently packaged samba-rpcd profile)
+
+
+From 94ccd111deac35d7deadb07e66d25e045633e221 Mon Sep 17 00:00:00 2001
+From: Christian Boltz <apparmor@cboltz.de>
+Date: Sat, 8 Jun 2024 22:46:53 +0200
+Subject: [PATCH] samba-dcerpcd: allow to execute rpcd_witness
+
+... and extend the samba-rpcd profile to also include rpcd_witness.
+
+Patch by Noel Power <nopower@suse.com>
+
+Fixes: https://bugzilla.opensuse.org/show_bug.cgi?id=1225811
+---
+ profiles/apparmor.d/samba-dcerpcd | 2 +-
+ profiles/apparmor.d/samba-rpcd    | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+Index: apparmor-v4.0.1/profiles/apparmor.d/samba-dcerpcd
+===================================================================
+--- apparmor-v4.0.1.orig/profiles/apparmor.d/samba-dcerpcd	2024-04-12 05:59:30.000000000 +0200
++++ apparmor-v4.0.1/profiles/apparmor.d/samba-dcerpcd	2024-06-25 21:49:49.017901846 +0200
+@@ -21,7 +21,7 @@ profile samba-dcerpcd /usr/lib*/samba/{,
+   /usr/lib*/samba/{,samba/}samba-dcerpcd mr,
+ 
+   /usr/lib*/samba/ r,
+-  /usr/lib*/samba/{,samba/}rpcd_{mdssvc,epmapper,rpcecho,fsrvp,lsad,winreg} Px -> samba-rpcd,
++  /usr/lib*/samba/{,samba/}rpcd_{mdssvc,epmapper,rpcecho,fsrvp,lsad,winreg,witness} Px -> samba-rpcd,
+   /usr/lib*/samba/{,samba/}rpcd_classic Px -> samba-rpcd-classic,
+   /usr/lib*/samba/{,samba/}rpcd_spoolss Px -> samba-rpcd-spoolss,
+ 
+Index: apparmor-v4.0.1/profiles/apparmor.d/samba-rpcd
+===================================================================
+--- apparmor-v4.0.1.orig/profiles/apparmor.d/samba-rpcd	2024-04-12 05:59:30.000000000 +0200
++++ apparmor-v4.0.1/profiles/apparmor.d/samba-rpcd	2024-06-25 21:49:49.017901846 +0200
+@@ -13,9 +13,9 @@ abi <abi/4.0>,
+ 
+ include <tunables/global>
+ 
+-profile samba-rpcd /usr/lib*/samba/{,samba/}rpcd_{mdssvc,epmapper,rpcecho,fsrvp,lsad,winreg} {
++profile samba-rpcd /usr/lib*/samba/{,samba/}rpcd_{mdssvc,epmapper,rpcecho,fsrvp,lsad,winreg,witness} {
+   include <abstractions/samba-rpcd>
+-  /usr/lib*/samba/{,samba/}rpcd_{mdssvc,epmapper,rpcecho,fsrvp,lsad,winreg} mr,
++  /usr/lib*/samba/{,samba/}rpcd_{mdssvc,epmapper,rpcecho,fsrvp,lsad,winreg,witness} mr,
+ 
+   @{run}/samba/ncalrpc/np/winreg wr,
+ 

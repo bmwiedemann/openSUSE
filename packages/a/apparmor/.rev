@@ -2843,4 +2843,13 @@ This SR adds two more fixes. Especially teardown-unconfined.diff makes this SR a
   with quoted paths and empty source (boo#1226031) (forwarded request 1180047 from cboltz)</comment>
     <requestid>1180048</requestid>
   </revision>
+  <revision rev="213" vrev="8">
+    <srcmd5>7cb51befea1972228a85fa03ceda5e66</srcmd5>
+    <version>4.0.1</version>
+    <time>1719582405</time>
+    <user>anag+factory</user>
+    <comment>- add sampa-rpcd-witness.diff: allow samba-dcerpcd to execute
+  rpcd_witness (boo#1225811) (forwarded request 1183249 from cboltz)</comment>
+    <requestid>1183251</requestid>
+  </revision>
 </revisionlist>
