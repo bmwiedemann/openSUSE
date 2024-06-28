@@ -1,7 +1,7 @@
 #
 # spec file for package perl-PAR-Dist
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,20 @@
 
 %define cpan_name PAR-Dist
 Name:           perl-PAR-Dist
-Version:        0.52
+Version:        0.530.0
 Release:        0
+# 0.53 -> normalize -> 0.530.0
+%define cpan_version 0.53
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Create and manipulate PAR distributions
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(PAR::Dist) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -47,7 +51,7 @@ release of 'PAR-Dist' on CPAN, built for perl 5.8.0 running on
 'i386-freebsd'.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

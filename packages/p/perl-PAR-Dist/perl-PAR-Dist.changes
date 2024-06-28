@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 23 16:46:01 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 0.530.0 (0.53)
+   see /usr/share/doc/packages/perl-PAR-Dist/Changes
+
+  0.53  2024-06-18
+
+  - fix #2: PAR::Dist::blib_to_par quotes the version number of the dist when making the PAR file
+
+  - quote value of "version" in generated META.yml (if there is no (MY)META.yml)
+
+-------------------------------------------------------------------
 Mon May  8 03:06:29 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.52
