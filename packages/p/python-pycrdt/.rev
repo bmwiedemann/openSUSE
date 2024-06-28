@@ -28,4 +28,12 @@
     #72</comment>
     <requestid>1163596</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a3a373c6ca5ad2efe115f1d6eb12f726</srcmd5>
+    <version>0.8.17</version>
+    <time>1719582450</time>
+    <user>anag+factory</user>
+    <comment>- Remove upper bound on pytest.</comment>
+    <requestid>1183712</requestid>
+  </revision>
 </revisionlist>

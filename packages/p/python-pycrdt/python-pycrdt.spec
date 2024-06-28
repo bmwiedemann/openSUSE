@@ -30,7 +30,7 @@ BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module pytest >= 7.4.2 with %python-pytest < 8}
+BuildRequires:  %{python_module pytest >= 7.4.2}
 #BuildRequires: %%{python_module pydantic >= 2.5.2 with %%python-pydantic < 3}
 BuildRequires:  %{python_module y-py >= 0.7.0~a1}
 BuildRequires:  %{python_module objsize}
