@@ -18,9 +18,10 @@
 
 %define cpan_name Math-BigInt
 Name:           perl-Math-BigInt
-Version:        2.3.2
+Version:        2.3.3
 Release:        0
-%define cpan_version 2.003002
+# 2.003003 -> normalize -> 2.3.3
+%define cpan_version 2.003003
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Arbitrary size integer math package
 URL:            https://metacpan.org/release/%{cpan_name}

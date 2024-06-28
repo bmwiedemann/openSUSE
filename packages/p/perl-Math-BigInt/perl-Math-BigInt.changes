@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 23 16:30:36 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 2.3.3 (2.003003)
+   see /usr/share/doc/packages/perl-Math-BigInt/CHANGES
+
+  2.003003 2024-05-27
+
+  * Fix CPAN RT #153736 regarding bnok() with large input values.
+
+-------------------------------------------------------------------
 Fri Mar  8 22:42:25 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides
