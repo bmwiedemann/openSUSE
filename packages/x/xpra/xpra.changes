@@ -1,4 +1,233 @@
 -------------------------------------------------------------------
+Thu Jun 20 19:17:35 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.1+git20240620.b8d2c4b5:
+  * openssh details belong in the openssh paragraph
+  * cosmetic
+  * remove "no test suite" from man page
+  * remove Python 2 compat code
+  * cosmetic and type hints
+  * speed up save-to-file feature with Pillow > 10
+  * can avoid copying memoryview with Pillow 10
+  * cosmetic and type hints
+  * Revert "webp does not use 'studio' range unless we compress with Pillow"
+  * webp does not use 'studio' range unless we compress with Pillow
+  * simplify
+  * add 'Buffer' type hint
+  * prettier connect retry output
+  * #3837 don't use Pillow for webp
+  * we can handle all YUV formats here
+  * faster?
+  * strict interface for authentication 'get_challenge' function
+  * add type hints
+  * fix RPM builds on non-Fedora systems
+  * minor linter warnings and type hints
+  * only import OpenGL[_accelerate] from check_PyOpenGL_support context
+  * use a more generic approach for access the 'last-error'
+  * fix subprocess file descriptors going MIA on MS Windows
+  * type hints and linter warnings
+  * match new interface: use typedict
+  * remove unused argument
+  * lose reference before calling terminate(), which could error?
+  * remove rendundant wording
+  * show xdg bug warning just once
+  * also ignore kwargs in dummy method
+  * don't spam the logs
+  * doh: the client method name is different
+  * MS Windows triggers 'control_refresh' via workspace detection
+  * more type hints
+  * type hints
+  * silence some annoying gtk deprecation warnings
+  * remove debug logging
+  * restore compatibility with Python < 3.12
+  * get_packet_cb cannot be unset now
+  * forgot to update base client with new get_packet callback signature
+  * remove debug logging
+  * narrower exception types
+  * Pillow 10 supports memoryview
+  * cosmetic
+  * stronger type hints
+  * #4257 missing import
+  * Use nvidia-smi to check for GPU in a container environment
+  * derp
+  * #4205 hook the Gtk scale factor
+  * simplify: remove unused glTexParameteri
+  * stronger type hints
+  * no need to set the viewport if we're not clearing the offsets
+  * report actual rectangle count
+  * only log the screen info once
+  * don't log message about missing 'numpy_formathandler' at info level
+  * don't try 'ssh-upgrades' or 'sd-listen' with client sockets
+  * type hints
+  * #4252 use whitelist for vfb env
+  * tell users that we have a tool for that
+  * missed from 60b13d7ac1e08165034d34a6ad8b2c9de78f9aef
+  * pycharm doesn't like relative './' links
+  * #4256 these pages had gone MIA
+  * log the encoding with congestion event
+  * wait for the write queue to be empty before closing
+  * default instructions should prevent setuptools from messing up
+  * #3483 split gtk opengl backend so we can delay 'OpenGL' import
+  * #3483 ensure we import 'OpenGL' module when expected
+  * #3582 only include interface info with XPRA_FULL_INFO > 1
+  * lower 'numpy' to a suggestion, because xpra doesn't use numpy with pyopengl
+  * numpy build error on Fedora 40
+  * downgrade to a warning
+  * openh264 decoder throws a RuntimeError here
+  * cosmetic, remove debug logging
+  * update the tests for 98eb9ae2b45113ecb7832909d0978b048c26b141 and de5af5f4992d38780585e389e139357c4b6eade1
+  * also set and increase the frame no for skipped frames
+  * remove mostly unused net start / end callbacks
+  * remove unused fail callback, not supported by quic
+  * fixes 'intra-refresh is not compatible with open-gop'
+  * zero is the new (and old) one
+  * make the first frame number 1
+  * log frame number
+  * the x264 encoder sends the first frame using number 0
+  * derp: forgot to update these callers
+  * forgot to update test with new interface
+  * derp: forgot to update callers via ui_paint_rgb
+  * move rgb functions to cairo backend where they are used
+  * #3837 simplify: add functions to paint ImageWrapper
+  * cosmetic and type hints
+  * #3837 simplify: 'full-range' is now a boolean
+  * also test decompress_to_yuv
+  * fix self test: don't expect alpha in 'BGRX'
+  * some distros don't need the workaround
+  * the image size matches the decoder context size
+  * stop the commit hooks from messing up markdown formatting
+  * Revert "broken links and cosmetic formatting"
+  * Revert "cosmetic: pycharm doesn't like './foo' links"
+  * #3837 vpx decoder is always full range?
+  * #3837 simplify decompress_to_yuv|rgb interface, webp is studio range
+  * no harm in handling BGRX here
+  * #3837 select the shader based on the image's color range
+  * using a typedict with cythonize-more triggers errors
+  * client_options is a plain dict, for now
+  * clearer interface for gl_expose_rect
+  * unused var
+  * an exception should trigger the 'unchanged position' handler
+  * simplify
+  * cosmetic linter warnings
+  * try harder to detect opengl properties
+  * the numpy format handler doesn't build
+  * use proper exit codes with 'opengl-probe' and 'opengl-test'
+  * show Python interpreter version
+  * cosmetic: pycharm doesn't like './foo' links
+  * preserve coverage wrapper when executing test scripts
+  * better type hints
+  * broken links and cosmetic formatting
+  * oops: missed from c704f1962b4b66e2e9a5995d42abd391d1f6a9ac
+  * better workarounds for Ubuntu
+  * simplify
+  * the Cython distro package is new enough, for once
+  * make github happy
+  * Ubuntu 24.04 dropped python-all-dev
+  * always send a 'ConfigureNotify'
+  * move to ubuntu 24.04 test runner
+  * we don't support yaml packet encoder any more
+  * #3376 aioquic and pylsqpack cannot be zipped
+  * missing import for type hint
+  * use more correct datatypes for default arguments
+  * use stronger typedict for encoder options
+  * add type hints
+  * lower tolerance
+  * #3837 normalized webp quality values were too aggressive
+  * #4251 move HTTP_UNSUPORTED to net.common
+  * compare all the pixels
+  * #4111 we can't use memoryview type hint with Cython
+  * more tests needed updating to use typedict
+  * oops: also update pillow test to use typedict
+  * show what was tested
+  * also test avif and webp YUV decoding
+  * #3837 test full roundtrip for jpeg
+  * oops: tests must use typedict as arg
+  * don't use temporary files
+  * add rountrip rgb test with picture encoders
+  * simplify
+  * require a typedict in (de)compress interface
+  * add type hints
+  * derp: color label was wrong
+  * add required attributes for generating the tray menu
+  * make it possible to run toolbox examples more easily
+  * avoid warnings with X11 display source not initialized
+  * some csc modules may not be available
+  * fixup a6338c17747868b49aed27ebd52dafc35aba6947: must ignore this keyword for stdlib call
+  * fix rendering of some gtk test apps
+  * add colorspace range attribute: full vs studio
+  * #4250 terminate vfb on any fatal startup errors
+  * cosmetic + type hints
+  * add keyword to disable remote-logging for specific log messages
+  * raise driver version requirements
+  * oops: this part hasn't been added to ImageWrapper yet
+  * include more detailed error messages
+  * #3837 add plane range dump utility function
+  * first frame should be number 1
+  * video encoders are expected to set the frame no
+  * add PySocks
+  * pynvml 12.555.43
+  * more helpful default invocation
+  * plane buffers should not be modified, use a tuple
+  * full self tests both decoding functions
+  * make it clearer that 'full_range' adds the '_FULL' suffix
+  * oops: paint_nvdec was not updated to use new 'gl_paint_planar' function
+  * no need for decimals with modern hardware
+  * use stronger type: boolean
+  * use stronger types
+  * only reparent to the parking window if needed
+  * #4247 bump minimum level
+  * failing to show or hide a window should not propagate
+  * add type hints
+  * this function must return a string
+  * don't clear damage when the window is not managed
+  * unused variable
+  * move sub-packages to build documentation
+  * #4243 map 'Visual Studio Code' to text content-type
+  * #4243 generic patterns should run last
+  * remove EOLed distros
+  * #4245 add 'install-repo' and 'install-beta-repo' subcommands
+  * #4244 refer to 'dev-env' in the documentation
+  * match switch name exactly
+  * #4244 add 'dev-env' subcommand
+  * simplify and move zlib-devel where it is needed
+  * newer releases don't have 'python-all-dev'
+  * need a Sequence to support indices
+  * let 'set_x11_property' handle scalars automagically
+  * ignore Cythong generated files
+  * another pam error needs decoding
+  * do use the legacy password-file option if that's all we have
+  * better debug logging
+  * threaded init callbacks failure for client connections
+  * stricter type hints
+  * always log full details when init thread callbacks hit issues
+  * skip more deprecated APIs
+  * #4231 blacklist 'llvmpipe' software renderer
+  * fix type hint
+  * Sequence supports indices
+  * do reaper cleanup as late as possible
+  * simplify
+  * add type hints
+  * allow printing with more socket authentication modules
+  * type hints find bugs
+  * alias info is not particularly useful
+  * derp: missing line continuation
+  * don't log 'Disconnecting' message for closed sockets
+  * log failing authenticator if we know it
+  * expose closed socket attribute
+  * decode pam authentication failure message as a string
+  * use strings for all key names
+  * avoid deprecated APIs
+  * type hints
+  * #4017 need another symlink to locate the 'Resources' dir..
+  * add more transitive dependencies
+  * remove speex library and constants
+  * add some changelog entries
+  * add security warning about out of date downstream packages
+  * #4222 can't close() a native file chooser..
+  * #4208 preserve previous behaviour: group all when not matching
+  * #4208 make window grouping customizable via env var
+
+-------------------------------------------------------------------
 Thu May 23 15:00:36 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 6.1+git20240523.91f77fa9:
