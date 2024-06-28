@@ -26,6 +26,8 @@ License:        GPL-3.0-or-later
 URL:            https://pagure.io/certmonger/
 Source0:        https://pagure.io/certmonger/archive/%{version}/certmonger-%{version}.tar.gz
 Patch0001:      0001-Update-tests-to-be-compatible-with-OpenSSL-3.2.patch
+Patch0002:      certmonger-c99-01.patch
+Patch0003:      certmonger-c99-02.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -67,8 +69,8 @@ BuildRequires:  xmlrpc-c-devel
 
 Requires:       dbus-1
 Requires(post): dbus-1
-Requires(preun):dbus-1
-Requires(preun):sed
+Requires(preun): dbus-1
+Requires(preun): sed
 
 BuildRequires:  systemd-rpm-macros
 %{?systemd_requires}

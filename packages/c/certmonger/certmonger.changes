@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 31 19:08:09 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Add certmonger-c99-01.patch and certmonger-c99-02.patch in order to
+  make the package buildable with GCC 14.  Patches originally by
+  Florian Weimer and from
+  https://pagure.io/certmonger/pull-request/265  [boo#1221683]
+
+-------------------------------------------------------------------
 Mon Mar 18 13:52:53 UTC 2024 - David Mulder <dmulder@suse.com>
 
 - HMAC build requires changes (these requires are missing in SLE).

@@ -1,0 +1,26 @@
+From a144529ce829ae6bed8607743c065c529ee5bf87 Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Dec 22 2023 09:54:38 +0000
+Subject: Fix type error in cm_tdbusm_get_vn
+
+
+This fixes an out-of-bounds stack write on 32-bit architectures
+because dbus_message_iter_get_basic tries to write 64-bit integer
+into a 32-bit pointer variable.
+
+---
+
+diff --git a/src/tdbusm.c b/src/tdbusm.c
+index 5e33411..8f2383d 100644
+--- a/src/tdbusm.c
++++ b/src/tdbusm.c
+@@ -223,7 +223,7 @@ cm_tdbusm_get_vn(DBusMessage *msg, void *parent, long *n)
+ {
+ 	DBusError err;
+ 	DBusMessageIter iter, sub_iter;
+-	int64_t *i64;
++	int64_t i64;
+ 
+ 	dbus_error_init(&err);
+ 
+

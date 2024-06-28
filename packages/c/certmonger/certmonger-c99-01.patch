@@ -1,0 +1,25 @@
+From b7fc1ae316db0d1c8f86e68d3fcb9b79f8d028d4 Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Dec 22 2023 09:55:21 +0000
+Subject: Adjust parameter type for util_EVP_PKEY_id
+
+
+The function pointer needs to match the prototype for i2d_PublicKey
+and i2d_PrivateKey, otherwise a compilation error may result.
+
+---
+
+diff --git a/src/util-o.c b/src/util-o.c
+index c05872c..7feecb9 100644
+--- a/src/util-o.c
++++ b/src/util-o.c
+@@ -551,7 +551,7 @@ util_NETSCAPE_SPKI_set_sig_alg(NETSCAPE_SPKI *spki, const X509_ALGOR *sig_alg)
+ 
+ static EVP_PKEY *
+ util_EVP_PKEY_dup(EVP_PKEY *pkey,
+-		  int (*i2d)(EVP_PKEY *, unsigned char **),
++		  int (*i2d)(const EVP_PKEY *, unsigned char **),
+ 		  EVP_PKEY *(*d2i)(int, EVP_PKEY **, const unsigned char **, long))
+ {
+ 	EVP_PKEY *k;
+
