@@ -20,7 +20,7 @@
 %define libname libfreecell-solver
 %bcond_with tests
 Name:           freecell-solver
-Version:        6.8.0
+Version:        6.10.0
 Release:        0
 Summary:        A Freecell Solver
 License:        MIT
@@ -77,6 +77,12 @@ Development package for the libfreecell-solver library
 
 %prep
 %autosetup -p1
+
+# https://github.com/shlomif/fc-solve/issues/99
+rm -r .tidyall.d
+
+# Unneeded 3rdparty module
+rm -r rinutils
 
 %build
 %cmake -DBUILD_STATIC_LIBRARY:BOOL=FALSE \

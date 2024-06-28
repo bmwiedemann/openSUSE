@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 28 07:25:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.10.0
+  * Add experimental functions in FC_SOLVE_INSTANCE_PARAMS_QUERYING
+  * Fewer compile-time / lint-time warnings
+  * Convert some regular expressions from \d to [0-9]
+
+-------------------------------------------------------------------
 Mon Feb 26 09:00:33 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Set CMAKE_INSTALL_DOCDIR to work around incompatible changes
