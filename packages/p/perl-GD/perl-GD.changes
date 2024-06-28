@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jun 23 16:19:33 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 2.830.0 (2.83)
+   see /usr/share/doc/packages/perl-GD/ChangeLog
+
+  2.83    * Fix missing PNG regression (RT #153923) on old
+            systems without the .pc, but gdlib-config. The check was too strict.
+            Requires now File::Which.
+  2.82    * Improve HEIF/AVIF autodetection (RT #153305) by Yuriy Yevtukhov.
+  	* Fix strawberryperl default libgd path (shawnlaffan PR #54)
+  	* Fix AVIF and Webp autodetection in tests (shawnlaffan PR #54)
+
+-------------------------------------------------------------------
 Sat May  4 03:06:59 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.81

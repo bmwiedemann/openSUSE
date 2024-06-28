@@ -18,10 +18,10 @@
 
 %define cpan_name GD
 Name:           perl-GD
-Version:        2.810.0
+Version:        2.830.0
 Release:        0
-# 2.81 -> normalize -> 2.810.0
-%define cpan_version 2.81
+# 2.83 -> normalize -> 2.830.0
+%define cpan_version 2.83
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl interface to the libgd graphics library
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -32,6 +32,7 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::Constant) >= 0.22
 BuildRequires:  perl(ExtUtils::PkgConfig)
+BuildRequires:  perl(File::Which)
 BuildRequires:  perl(Test::Fork) >= 0.02
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::NoWarnings) >= 1.00
