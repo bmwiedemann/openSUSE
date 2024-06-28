@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun 28 08:44:29 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.7.0:
+  * CHANGE: deleting a row, editing a row and showing the qr code
+    is now done via right click on the target row (#359).
+  * FIX: multiple fixes to QR handling (#364).
+  * FIX: exporting to FreeOTP+ format (#367).
+  * FIX: updated otpclient and otpclient-cli man pages (thanks @fvcr).
+  * FIX: code more readable thanks to macros.
+
+-------------------------------------------------------------------
 Thu Mar 14 09:39:55 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.6.0:

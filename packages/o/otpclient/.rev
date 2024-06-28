@@ -435,4 +435,19 @@
 </comment>
     <requestid>1157916</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>d50f95198e3d0a1a7e2cc5f2256cb80a</srcmd5>
+    <version>3.7.0</version>
+    <time>1719582487</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.7.0:
+  * CHANGE: deleting a row, editing a row and showing the qr code
+    is now done via right click on the target row (#359).
+  * FIX: multiple fixes to QR handling (#364).
+  * FIX: exporting to FreeOTP+ format (#367).
+  * FIX: updated otpclient and otpclient-cli man pages (thanks @fvcr).
+  * FIX: code more readable thanks to macros.
+</comment>
+    <requestid>1183834</requestid>
+  </revision>
 </revisionlist>
