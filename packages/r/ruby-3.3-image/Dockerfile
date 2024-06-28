@@ -40,7 +40,7 @@ LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/ruby-3.3-image/README.md"
 
-RUN set -euo pipefail; zypper -n in --no-recommends ruby3.3 ruby3.3-rubygem-bundler ruby3.3-devel util-linux curl git-core gcc-c++ sqlite3-devel make gawk timezone; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
+RUN set -euo pipefail; zypper -n in --no-recommends ruby3.3 ruby3.3-rubygem-bundler ruby3.3-devel util-linux gcc-c++ sqlite3-devel make timezone curl findutils gawk git-core procps util-linux; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
 ENV LANG="C.UTF-8"
 ENV RUBY_VERSION="%%rb_ver%%"
 ENV RUBY_MAJOR="%%rb_maj%%"
