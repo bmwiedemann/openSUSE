@@ -1,7 +1,7 @@
 #
 # spec file for package valkey
 #
-# Copyright (c) SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) Jonathan Wright
 # Copyright (c) Neal Gompa
 #
@@ -93,7 +93,6 @@ easy conversion from Redis to Valkey.
 
 %prep
 %autosetup -p1
-
 
 # Module API version safety check
 api=`sed -n -e 's/#define VALKEYMODULE_APIVER_[0-9][0-9]* //p' src/valkeymodule.h`
@@ -211,6 +210,5 @@ echo "See %{_docdir}/%{name}/README.SUSE to continue"
 %files compat-redis
 %{_libexecdir}/migrate_redis_to_valkey.bash
 %{_bindir}/redis-*
-
 
 %changelog

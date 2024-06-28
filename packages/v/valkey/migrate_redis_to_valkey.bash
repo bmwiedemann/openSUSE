@@ -2,8 +2,8 @@
 
 # Identify whether any config files exist
 configfiles=($(find /etc/redis -maxdepth 1 -name "*.conf"))
-redisunits=(basename $(find /etc/systemd/system -maxdepth 1 -name "redis@*.service"))
-sentinelunits=(basename $(find /etc/systemd/system -maxdepth 1 -name "redis-sentinel@*.service"))
+redisunits=($(find /etc/systemd/system -maxdepth 1 -name "redis@*.service" -execdir basename {} \;))
+sentinelunits=($(find /etc/systemd/system -maxdepth 1 -name "redis-sentinel@*.service" -execdir basename {} \;))
 
 if [ ${#configfiles[@]} -gt 0 ]; then
   for configfile in ${configfiles[@]}

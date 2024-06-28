@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 26 06:25:23 UTC 2024 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Repair Redis instance detection (boo#1226986)
+
+-------------------------------------------------------------------
 Sat Jun 22 08:42:19 UTC 2024 - Neal Gompa <ngompa@opensuse.org>
 
 - Enable automatic replacement of redis with valkey

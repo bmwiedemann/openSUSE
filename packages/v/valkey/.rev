@@ -15,4 +15,12 @@
     <comment>- Enable automatic replacement of redis with valkey</comment>
     <requestid>1182568</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>fb0c0b94419b1825464a48473e31dbe5</srcmd5>
+    <version>7.2.5</version>
+    <time>1719582462</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1183786</requestid>
+  </revision>
 </revisionlist>
