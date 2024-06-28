@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 20 13:46:40 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Build for aarch64 also to provide unofficial VM images 
+
+-------------------------------------------------------------------
 Tue Jun 11 11:01:47 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Support bluetooth filetransfer (boo#1225682)

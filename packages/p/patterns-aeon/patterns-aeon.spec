@@ -26,7 +26,7 @@ License:        MIT
 Group:          Metapackages
 URL:            http://en.opensuse.org/Patterns
 Source0:        %name.rpmlintrc
-ExclusiveArch:  x86_64
+ExclusiveArch:  x86_64 aarch64
 
 %description
 This is an internal package that is used to create the patterns as part
