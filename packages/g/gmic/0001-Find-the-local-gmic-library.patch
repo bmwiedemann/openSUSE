@@ -1,4 +1,4 @@
-From 117f2d84d1baf454f8eeef05c0779f7011be8102 Mon Sep 17 00:00:00 2001
+From 7c185a08bd2f37c1831542651db3b048ba231ae6 Mon Sep 17 00:00:00 2001
 From: Christophe Marin <christophe@krop.fr>
 Date: Mon, 17 Apr 2023 16:07:00 +0200
 Subject: [PATCH] Find the local gmic library
@@ -11,10 +11,10 @@ To keep using CMake in gmic-qt, we need to find the locally built gmic library.
  1 file changed, 9 insertions(+), 6 deletions(-)
 
 diff --git a/gmic-qt/CMakeLists.txt b/gmic-qt/CMakeLists.txt
-index 9aa0568..7763df7 100644
+index 0641f4c..17d1535 100644
 --- a/gmic-qt/CMakeLists.txt
 +++ b/gmic-qt/CMakeLists.txt
-@@ -142,7 +142,13 @@ endif()
+@@ -149,7 +149,13 @@ endif()
  # Gmic
  #
  if (ENABLE_SYSTEM_GMIC)
@@ -29,7 +29,7 @@ index 9aa0568..7763df7 100644
  endif (ENABLE_SYSTEM_GMIC)
  
  #
-@@ -577,10 +583,10 @@ if(ENABLE_DYNAMIC_LINKING)
+@@ -610,10 +616,10 @@ if(ENABLE_DYNAMIC_LINKING)
        ${gmic_qt_LIBRARIES}
        libgmicstatic
      )
@@ -42,7 +42,7 @@ index 9aa0568..7763df7 100644
      )
    elseif(GMIC_LIB_PATH)
      set(gmic_qt_LIBRARIES
-@@ -612,9 +618,6 @@ if(ENABLE_DYNAMIC_LINKING)
+@@ -645,9 +651,6 @@ if(ENABLE_DYNAMIC_LINKING)
          ${CURL_LIBRARIES}
          ${EXTRA_LIBRARIES})
      endif()
@@ -53,5 +53,5 @@ index 9aa0568..7763df7 100644
  else(ENABLE_DYNAMIC_LINKING)
    set(gmic_qt_SRCS
 -- 
-2.40.0
+2.45.2
 

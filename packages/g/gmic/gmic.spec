@@ -40,7 +40,7 @@
 %define gmic_datadir %{_datadir}/gmic
 
 Name:           gmic
-Version:        3.3.5
+Version:        3.4.0
 Release:        0
 Summary:        GREYC's Magick for Image Computing (denoise and others)
 # gmic-qt is GPL-3.0-or-later, zart is CECILL-2.0, libgmic and cli program are

@@ -1,7 +1,7 @@
 <constraints>
  <hardware>
   <memory>
-   <size unit="G">9</size>
+   <size unit="G">4</size>
   </memory>
  </hardware>
   <overwrite>
@@ -10,7 +10,7 @@
     </conditions>
     <hardware>
      <memory>
-      <size unit="G">7</size>
+      <size unit="G">5</size>
      </memory>
     </hardware>
   </overwrite>

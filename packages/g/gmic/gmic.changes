@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 28 07:42:52 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.4.0
+  https://discuss.pixls.us/t/release-of-gmic-3-4/39353
+  * New filters added: color wheel, blur (motion), underwoods,
+    spline spirograph, distort (RBF), color mixer
+- Update build constraints
+
+-------------------------------------------------------------------
 Thu Apr 11 12:00:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.3.5. No changelog.
