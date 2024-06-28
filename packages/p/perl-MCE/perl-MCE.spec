@@ -18,9 +18,10 @@
 
 %define cpan_name MCE
 Name:           perl-MCE
-Version:        1.889.0
+Version:        1.897.0
 Release:        0
-%define cpan_version 1.889
+# 1.897 -> normalize -> 1.897.0
+%define cpan_version 1.897
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Many-Core Engine for Perl providing parallel processing capabilities
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -30,39 +31,39 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::More) >= 0.88
-Provides:       perl(MCE) = 1.889.0
-Provides:       perl(MCE::Candy) = 1.889.0
-Provides:       perl(MCE::Channel) = 1.889.0
-Provides:       perl(MCE::Channel::Mutex) = 1.889.0
-Provides:       perl(MCE::Channel::MutexFast) = 1.889.0
-Provides:       perl(MCE::Channel::Simple) = 1.889.0
-Provides:       perl(MCE::Channel::SimpleFast) = 1.889.0
-Provides:       perl(MCE::Channel::Threads) = 1.889.0
-Provides:       perl(MCE::Channel::ThreadsFast) = 1.889.0
-Provides:       perl(MCE::Child) = 1.889.0
-Provides:       perl(MCE::Core::Input::Generator) = 1.889.0
-Provides:       perl(MCE::Core::Input::Handle) = 1.889.0
-Provides:       perl(MCE::Core::Input::Iterator) = 1.889.0
-Provides:       perl(MCE::Core::Input::Request) = 1.889.0
-Provides:       perl(MCE::Core::Input::Sequence) = 1.889.0
-Provides:       perl(MCE::Core::Manager) = 1.889.0
-Provides:       perl(MCE::Core::Validation) = 1.889.0
-Provides:       perl(MCE::Core::Worker) = 1.889.0
-Provides:       perl(MCE::Flow) = 1.889.0
-Provides:       perl(MCE::Grep) = 1.889.0
-Provides:       perl(MCE::Loop) = 1.889.0
-Provides:       perl(MCE::Map) = 1.889.0
-Provides:       perl(MCE::Mutex) = 1.889.0
-Provides:       perl(MCE::Mutex::Channel) = 1.889.0
-Provides:       perl(MCE::Mutex::Channel2) = 1.889.0
-Provides:       perl(MCE::Mutex::Flock) = 1.889.0
-Provides:       perl(MCE::Queue) = 1.889.0
-Provides:       perl(MCE::Relay) = 1.889.0
-Provides:       perl(MCE::Signal) = 1.889.0
-Provides:       perl(MCE::Step) = 1.889.0
-Provides:       perl(MCE::Stream) = 1.889.0
-Provides:       perl(MCE::Subs) = 1.889.0
-Provides:       perl(MCE::Util) = 1.889.0
+Provides:       perl(MCE) = %{version}
+Provides:       perl(MCE::Candy) = %{version}
+Provides:       perl(MCE::Channel) = %{version}
+Provides:       perl(MCE::Channel::Mutex) = %{version}
+Provides:       perl(MCE::Channel::MutexFast) = %{version}
+Provides:       perl(MCE::Channel::Simple) = %{version}
+Provides:       perl(MCE::Channel::SimpleFast) = %{version}
+Provides:       perl(MCE::Channel::Threads) = %{version}
+Provides:       perl(MCE::Channel::ThreadsFast) = %{version}
+Provides:       perl(MCE::Child) = %{version}
+Provides:       perl(MCE::Core::Input::Generator) = %{version}
+Provides:       perl(MCE::Core::Input::Handle) = %{version}
+Provides:       perl(MCE::Core::Input::Iterator) = %{version}
+Provides:       perl(MCE::Core::Input::Request) = %{version}
+Provides:       perl(MCE::Core::Input::Sequence) = %{version}
+Provides:       perl(MCE::Core::Manager) = %{version}
+Provides:       perl(MCE::Core::Validation) = %{version}
+Provides:       perl(MCE::Core::Worker) = %{version}
+Provides:       perl(MCE::Flow) = %{version}
+Provides:       perl(MCE::Grep) = %{version}
+Provides:       perl(MCE::Loop) = %{version}
+Provides:       perl(MCE::Map) = %{version}
+Provides:       perl(MCE::Mutex) = %{version}
+Provides:       perl(MCE::Mutex::Channel) = %{version}
+Provides:       perl(MCE::Mutex::Channel2) = %{version}
+Provides:       perl(MCE::Mutex::Flock) = %{version}
+Provides:       perl(MCE::Queue) = %{version}
+Provides:       perl(MCE::Relay) = %{version}
+Provides:       perl(MCE::Signal) = %{version}
+Provides:       perl(MCE::Step) = %{version}
+Provides:       perl(MCE::Stream) = %{version}
+Provides:       perl(MCE::Subs) = %{version}
+Provides:       perl(MCE::Util) = %{version}
 %undefine       __perllib_provides
 Recommends:     perl(Sereal::Decoder) >= 3.015
 Recommends:     perl(Sereal::Encoder) >= 3.015
