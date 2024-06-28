@@ -17,7 +17,7 @@
 
 
 Name:           qterminal
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        A Qt-based terminal emulator
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -30,6 +30,7 @@ BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  utempter-devel
+BuildRequires:  cmake(LayerShellQt) >= 6.0.0
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6Gui)
@@ -37,7 +38,7 @@ BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Test)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(lxqt2-build-tools)
-BuildRequires:  cmake(qtermwidget6)
+BuildRequires:  cmake(qtermwidget6) >= %{version}
 Recommends:     %{name}-lang = %{version}-%{release}
 
 %description

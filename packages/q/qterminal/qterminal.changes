@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 27 20:26:33 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 2.0.1:
+  * This point release is made mainly because visual artifacts are
+    fixed in qtermwidget
+  * Single instance for drop-down mode
+  * Used layer shell for the drop-down mode under Wayland
+  * Prevented a crash on entering 'exit' when bookmark dock is
+    shown.
+  * Fixed the window height in drop-down mode
+  * Set `QTERMWIDGET_MINIMUM_VERSION`, which was missing after Qt6
+    Port
+
+-------------------------------------------------------------------
 Sat May 18 03:16:01 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
 
 - Update to 2.0.0:
