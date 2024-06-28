@@ -18,7 +18,7 @@
 
 %bcond_without  intree_libs
 Name:           gamescope
-Version:        3.14.18
+Version:        3.14.22
 Release:        0
 Summary:        Micro-compositor optimized for running video games on Wayland
 License:        BSD-2-Clause
@@ -127,6 +127,7 @@ sed -i "s|#include <libei-1.0/libeis.h>|#include <libeis.h>|g" src/InputEmulatio
 %doc README.md
 %{_bindir}/%{name}
 %{_bindir}/%{name}stream
+%{_bindir}/%{name}ctl
 %{_libdir}/libVkLayer_FROG_gamescope_wsi_%{_arch}.so
 %dir %{_datadir}/vulkan/implicit_layer.d/
 %{_datadir}/vulkan/implicit_layer.d/VkLayer_FROG_gamescope_wsi.%{_arch}.json

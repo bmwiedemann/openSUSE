@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 27 14:52:01 UTC 2024 - antonio.teixeira@suse.com
+
+- Update to version 3.14.22:
+  * steamcompmgr: Rewrite + split buffer memoizer
+  * wlserver: Don't pass incorrect wl_resource for gamescope_swapchain on legacy gamescope_xwayland interface
+  * submodules: Update openvr version requirement
+  * drm: Add workaround for NV12 scanout on SteamOS 3.6
+  * rendervulkan: Fix NV12 colorspace producing washed out colours
+  * mangoapp: Add extra elements
+  * steamcompmgr: Fix inverted logic in drawing cursor
+  * wlserver: Rough basic impl of wlr_layer_shell
+  * build: Add missing GamescopeVersion.h requirement
+  * openvr: Add cv_vr_use_window_icons
+
+-------------------------------------------------------------------
 Wed Jun 05 18:57:26 UTC 2024 - opensuse@dstoecker.de
 
 - Update to version 3.14.18:
