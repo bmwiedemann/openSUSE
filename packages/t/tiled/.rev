@@ -862,4 +862,41 @@
   * Qt 6: Increased the image allocation limit from 1 GB to 4 GB (#3616)</comment>
     <requestid>1102413</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>cf17ec5dd71f01ac593b9fd85de375ed</srcmd5>
+    <version>1.11.0</version>
+    <time>1719582458</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.11.0:
+  * Added --project command-line parameter for use when exporting (#3797)
+  * Added group layer names in &quot;Move Object to Layer&quot; menu (#3454)
+  * Added lock icon to open tabs for which the file is read-only
+  * Added Shift modifier to cut when capturing a tile stamp (by kdx2a, #3961)
+  * Made adding &quot;Copy&quot; when duplicating optional and disabled by default (#3917)
+  * Changed default shortcut for &quot;Save As&quot; to Ctrl+Shift+S and removed shortcut from &quot;Save All&quot; (#3933)
+  * Layer names are now trimmed when edited in the UI, to avoid accidental whitespace
+  * Scripting: Added API for working with worlds (#3539)
+  * Scripting: Added Object.setProperty overload for setting nested values
+  * Scripting: Added Tile.image for accessing a tile's image data
+  * Scripting: Added Image.copy overload that takes a rectangle
+  * Scripting: Added Tileset.imageFileName and ImageLayer.imageFileName
+  * Scripting: Added FilePath.localFile and FileEdit.fileName (string alternatives to Qt.QUrl properties)
+  * Scripting: Added tiled.color to create color values
+  * Scripting: Made Tileset.margin and Tileset.tileSpacing writable
+  * Scripting: Restored compatibility for MapObject.polygon (#3845)
+  * Scripting: Fixed issues with editing properties after setting class values from script
+  * Scripting: Fixed setting/getting object reference values when nested as a class member
+  * TMX format: Embedded images are now also supported on tilesets and image layers
+  * JSON format: Fixed tile order when loading a tileset using the old format
+  * Godot 4 plugin: Added support for exporting objects (by Rick Yorgason, #3615)
+  * Godot 4 plugin: Use Godot 4.2 tile transformation flags (by Rick Yorgason, #3895)
+  * Godot 4 plugin: Fixed positioning of tile collision shapes (by Ryan Petrie, #3862)
+  * GameMaker 2 plugin: Fixed positioning of objects on isometric maps
+  * Python plugin: Added support for implementing tileset formats (with Pablo Duboue, #3857)
+  * Python plugin: Raised minimum Python version to 3.8
+  * Python plugin: Now built against Python 3.12 for Windows 10+
+  * tmxrasterizer: Added --hide-object and --show-object arguments (by Lars Luz, #3819)
+  * tmxrasterizer: Added --frames and --frame-duration arguments to export animated maps as multiple images (#3868)</comment>
+    <requestid>1183721</requestid>
+  </revision>
 </revisionlist>

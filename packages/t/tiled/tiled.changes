@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri Jun 28 05:29:20 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.11.0:
+  * Added --project command-line parameter for use when exporting (#3797)
+  * Added group layer names in "Move Object to Layer" menu (#3454)
+  * Added lock icon to open tabs for which the file is read-only
+  * Added Shift modifier to cut when capturing a tile stamp (by kdx2a, #3961)
+  * Made adding "Copy" when duplicating optional and disabled by default (#3917)
+  * Changed default shortcut for "Save As" to Ctrl+Shift+S and removed shortcut from "Save All" (#3933)
+  * Layer names are now trimmed when edited in the UI, to avoid accidental whitespace
+  * Scripting: Added API for working with worlds (#3539)
+  * Scripting: Added Object.setProperty overload for setting nested values
+  * Scripting: Added Tile.image for accessing a tile's image data
+  * Scripting: Added Image.copy overload that takes a rectangle
+  * Scripting: Added Tileset.imageFileName and ImageLayer.imageFileName
+  * Scripting: Added FilePath.localFile and FileEdit.fileName (string alternatives to Qt.QUrl properties)
+  * Scripting: Added tiled.color to create color values
+  * Scripting: Made Tileset.margin and Tileset.tileSpacing writable
+  * Scripting: Restored compatibility for MapObject.polygon (#3845)
+  * Scripting: Fixed issues with editing properties after setting class values from script
+  * Scripting: Fixed setting/getting object reference values when nested as a class member
+  * TMX format: Embedded images are now also supported on tilesets and image layers
+  * JSON format: Fixed tile order when loading a tileset using the old format
+  * Godot 4 plugin: Added support for exporting objects (by Rick Yorgason, #3615)
+  * Godot 4 plugin: Use Godot 4.2 tile transformation flags (by Rick Yorgason, #3895)
+  * Godot 4 plugin: Fixed positioning of tile collision shapes (by Ryan Petrie, #3862)
+  * GameMaker 2 plugin: Fixed positioning of objects on isometric maps
+  * Python plugin: Added support for implementing tileset formats (with Pablo Duboue, #3857)
+  * Python plugin: Raised minimum Python version to 3.8
+  * Python plugin: Now built against Python 3.12 for Windows 10+
+  * tmxrasterizer: Added --hide-object and --show-object arguments (by Lars Luz, #3819)
+  * tmxrasterizer: Added --frames and --frame-duration arguments to export animated maps as multiple images (#3868)
+  * tmxrasterizer: Fixed --hide/show-layer to work on group layers (#3899)
+  * tmxviewer: Added support for viewing JSON maps (#3866)
+  * tmxrasterizer/viewer: Fixed loading of XML object templates (with Christian Schaadt, #3977)
+  * AutoMapping: Ignore empty outputs per-rule (#3523)
+  * Automapping: Added per-input-layer properties for ignoring flip flags (#3803)
+  * AutoMapping: Always apply output sets with empty index
+  * AutoMapping: Fixed adding of new tilesets used by applied changes
+  * Windows: Fixed the support for WebP images (updated to Qt 6.6.1, #3661)
+  * Fixed issues related to map and tileset reloading
+  * Fixed possible crash after assigning to tiled.activeAsset
+  * Fixed the option to resolve properties on export to also resolve class members (#3411, #3315)
+  * Fixed terrain tool behavior and terrain overlays after changing terrain set type (#3204, #3260)
+  * Fixed mouse handling issue when zooming while painting (#3863)
+  * Fixed possible crash after a scripted tool disappears while active
+  * Fixed updating of used tilesets after resizing map (#3884)
+  * Fixed alignment of shortcuts in action search
+  * Fixed object assignment buttons in tile collision editor (#3399)
+  * AppImage: Fixed ability to open paths with spaces from the CLI (#3914)
+  * AppImage: Updated to Sentry 0.7.6
+
+-------------------------------------------------------------------
 Fri Aug  4 16:09:12 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.10.2:

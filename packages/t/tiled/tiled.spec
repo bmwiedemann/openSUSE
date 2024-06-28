@@ -1,7 +1,7 @@
 #
 # spec file for package tiled
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tiled
-Version:        1.10.2
+Version:        1.11.0
 Release:        0
 Summary:        A tilemap editor
 License:        GPL-2.0-or-later
