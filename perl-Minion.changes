@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 23 16:31:15 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 10.300.0 (10.30)
+   see /usr/share/doc/packages/perl-Minion/Changes
+
+  10.30 2024-06-05
+    - Improved stats performance in Minion::Backend::Pg by an order of magnitude. (rshingleton)
+
+-------------------------------------------------------------------
 Fri Mar 22 16:16:37 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 10.29

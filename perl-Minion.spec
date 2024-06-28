@@ -18,10 +18,10 @@
 
 %define cpan_name Minion
 Name:           perl-Minion
-Version:        10.290.0
+Version:        10.300.0
 Release:        0
-# 10.29 -> normalize -> 10.290.0
-%define cpan_version 10.29
+# 10.30 -> normalize -> 10.300.0
+%define cpan_version 10.30
 License:        Artistic-2.0
 Summary:        Job queue
 URL:            https://metacpan.org/release/%{cpan_name}
