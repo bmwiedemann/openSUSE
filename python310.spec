@@ -195,6 +195,9 @@ Patch21:        fix-sphinx-72.patch
 # PATCH-FIX-UPSTREAM CVE-2023-52425-libexpat-2.6.0-backport.patch gh#python/cpython#117187 mcepl@suse.com
 # Make the test suite work with libexpat < 2.6.0
 Patch22:        CVE-2023-52425-libexpat-2.6.0-backport.patch
+# PATCH-FIX-UPSTREAM CVE-2024-4032-private-IP-addrs.patch bsc#1226448 mcepl@suse.com
+# rearrange definition of private v global IP addresses
+Patch23:        CVE-2024-4032-private-IP-addrs.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -473,6 +476,7 @@ other applications.
 %patch -p1 -P 20
 %patch -p1 -P 21
 %patch -p1 -P 22
+%patch -p1 -P 23
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

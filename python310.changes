@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 25 21:57:40 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2024-4032-private-IP-addrs.patch to fix bsc#1226448
+  (CVE-2024-4032) rearranging definition of private v global IP
+  addresses.
+
+-------------------------------------------------------------------
 Fri Apr 19 08:37:04 UTC 2024 - Matej Cepl <mcepl@suse.com>
 
 - Add CVE-2023-52425-libexpat-2.6.0-backport.patch to fix tests with

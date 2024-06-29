@@ -803,4 +803,15 @@
     across multiple threads (bsc#1226447, CVE-2024-0397)</comment>
     <requestid>1182484</requestid>
   </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>f99f36e347608f669bd6c7101929ad32</srcmd5>
+    <version>3.10.14</version>
+    <time>1719667002</time>
+    <user>anag+factory</user>
+    <comment>- Add CVE-2024-4032-private-IP-addrs.patch to fix bsc#1226448
+  (CVE-2024-4032) rearranging definition of private v global IP
+  addresses.
+</comment>
+    <requestid>1183503</requestid>
+  </revision>
 </revisionlist>
