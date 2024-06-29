@@ -1,0 +1,53 @@
+From 79ca6e3a329dbfc3bc68df37b8f3ea7156e41aae Mon Sep 17 00:00:00 2001
+From: Daniel Stone <daniels@collabora.com>
+Date: Fri, 21 Jun 2024 11:24:31 +0100
+Subject: [PATCH] dri: Fix BGR format exclusion
+
+The check we had for BGR vs. RGB formats was testing completely the
+wrong thing. Fix it so we can restore the previous set of configs we
+expose to the frontend, which also fixes surfaceless platform on s390x.
+
+Signed-off-by: Daniel Stone <daniels@collabora.com>
+Fixes: ad0edea53a73 ("st/dri: Check format properties from format helpers")
+Closes: mesa/mesa#11360
+---
+ src/gallium/frontends/dri/dri_screen.c | 20 ++++++++++++--------
+ 1 file changed, 12 insertions(+), 8 deletions(-)
+
+diff --git a/src/gallium/frontends/dri/dri_screen.c b/src/gallium/frontends/dri/dri_screen.c
+index 6bc61dbd641..debff54c090 100644
+--- a/src/gallium/frontends/dri/dri_screen.c
++++ b/src/gallium/frontends/dri/dri_screen.c
+@@ -386,17 +386,21 @@ dri_fill_in_modes(struct dri_screen *screen)
+       uint8_t msaa_modes[MSAA_VISUAL_MAX_SAMPLES];
+ 
+       /* Expose only BGRA ordering if the loader doesn't support RGBA ordering. */
+-      if (!allow_rgba_ordering &&
+-          util_format_get_component_shift(pipe_formats[f],
+-                                          UTIL_FORMAT_COLORSPACE_RGB, 0)
++      if (!allow_rgba_ordering) {
++          unsigned sh_ax = util_format_get_component_shift(pipe_formats[f], UTIL_FORMAT_COLORSPACE_RGB, 3);
++          unsigned sh_b = util_format_get_component_shift(pipe_formats[f], UTIL_FORMAT_COLORSPACE_RGB, 2);
+ #if UTIL_ARCH_BIG_ENDIAN
+-         >
++          unsigned sz_b = util_format_get_component_bits(pipe_formats[f], UTIL_FORMAT_COLORSPACE_RGB, 2);
++
++          if (sz_b + sh_b == sh_ax)
++             continue;
+ #else
+-         <
++          unsigned sz_ax = util_format_get_component_bits(pipe_formats[f], UTIL_FORMAT_COLORSPACE_RGB, 3);
++
++          if (sz_ax + sh_ax == sh_b)
++             continue;
+ #endif
+-          util_format_get_component_shift(pipe_formats[f],
+-                                          UTIL_FORMAT_COLORSPACE_RGB, 2))
+-         continue;
++       }
+ 
+       if (!allow_rgb10 &&
+           util_format_get_component_bits(pipe_formats[f],
+-- 
+2.35.3
+

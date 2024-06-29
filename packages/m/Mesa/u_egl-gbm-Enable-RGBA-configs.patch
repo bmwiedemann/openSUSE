@@ -1,0 +1,29 @@
+From b3904d23ccc76b76d352a160164f293cf65305e0 Mon Sep 17 00:00:00 2001
+From: Daniel Stone <daniels@collabora.com>
+Date: Fri, 21 Jun 2024 14:19:06 +0100
+Subject: [PATCH] egl/gbm: Enable RGBA configs
+
+Doing this is harmless since we operate on an allowlist of pipe_configs
+anyway.
+
+Signed-off-by: Daniel Stone <daniels@collabora.com>
+---
+ src/gbm/backends/dri/gbm_dri.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/gbm/backends/dri/gbm_dri.c b/src/gbm/backends/dri/gbm_dri.c
+index 0526f4f8dc1..6cc2d5d8197 100644
+--- a/src/gbm/backends/dri/gbm_dri.c
++++ b/src/gbm/backends/dri/gbm_dri.c
+@@ -108,6 +108,8 @@ dri_get_capability(void *loaderPrivate, enum dri_loader_cap cap)
+    switch (cap) {
+    case DRI_LOADER_CAP_FP16:
+       return 1;
++   case DRI_LOADER_CAP_RGBA_ORDERING:
++      return 1;
+    default:
+       return 0;
+    }
+-- 
+2.35.3
+

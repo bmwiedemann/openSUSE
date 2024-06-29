@@ -5783,4 +5783,28 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 </comment>
     <requestid>1182863</requestid>
   </revision>
+  <revision rev="511" vrev="383">
+    <srcmd5>066c943f89be4288d6b2b2b98dc28298</srcmd5>
+    <version>unknown</version>
+    <time>1719666999</time>
+    <user>anag+factory</user>
+    <comment>- boo1226725-test-fix1.patch
+  * another try to fix coloring on s390x and other platforms
+- re-enabled patchtes only applied on s390x with previous change
+  on all platforms again
+
+- apply patches below to get GL on s390x working again only on
+  s390x, because they break colors during YaST installation
+  also on x86_64 platform (QT/GTK using GL backend?) (boo#1226725)
+
+- u_egl-gbm-Enable-RGBA-configs.patch,
+  u_egl-surfaceless-Enable-RGBA-configs.patch
+  * these are needed now after applying previous patch 
+    u_dri-Fix-BGR-format-exclusion.patch also on other platforms
+    than s390x? (boo#1226725)
+
+- u_dri-Fix-BGR-format-exclusion.patch
+  * fixes glxinfo/eglxinfo on s390x (boo#1226725, comment#6)</comment>
+    <requestid>1183856</requestid>
+  </revision>
 </revisionlist>

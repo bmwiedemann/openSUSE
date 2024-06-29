@@ -1,0 +1,29 @@
+From 1eb67fcae01d9f4fbe584e718d71cdfa745ce75f Mon Sep 17 00:00:00 2001
+From: Daniel Stone <daniels@collabora.com>
+Date: Fri, 21 Jun 2024 14:19:06 +0100
+Subject: [PATCH] egl/surfaceless: Enable RGBA configs
+
+Doing this is harmless since we operate on an allowlist of pipe_configs
+anyway.
+
+Signed-off-by: Daniel Stone <daniels@collabora.com>
+---
+ src/egl/drivers/dri2/platform_surfaceless.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/egl/drivers/dri2/platform_surfaceless.c b/src/egl/drivers/dri2/platform_surfaceless.c
+index 0668ec9285f..4b69874d3f6 100644
+--- a/src/egl/drivers/dri2/platform_surfaceless.c
++++ b/src/egl/drivers/dri2/platform_surfaceless.c
+@@ -190,6 +190,8 @@ surfaceless_get_capability(void *loaderPrivate, enum dri_loader_cap cap)
+    switch (cap) {
+    case DRI_LOADER_CAP_FP16:
+       return 1;
++   case DRI_LOADER_CAP_RGBA_ORDERING:
++      return 1;
+    default:
+       return 0;
+    }
+-- 
+2.35.3
+
