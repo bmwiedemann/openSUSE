@@ -62,7 +62,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        1.1.83
+Version:        1.2.0
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -72,8 +72,6 @@ Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
-# PATCH-FIX-UPSTREAM 0001-vulkan-fix-compilation.patch
-Patch1:         0001-vulkan-fix-compilation.patch
 
 BuildRequires:  docutils
 %if 0%{suse_version} > 1500
@@ -426,7 +424,6 @@ JACK libraries.
 sed -ie "s/version : '0.3.72'/version : '%{version}'/" %{P:0}
 %patch -P 0 -p1
 %endif
-%patch -P 1 -p1
 
 %build
 %if 0%{?suse_version} <= 1500
