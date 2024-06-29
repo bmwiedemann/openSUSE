@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jun 23 16:08:56 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 2.830.0 (2.83)
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.83      2024-06-05 15:06:15 -0600
+    - Production release identical to 2.82_01
+
+  2.82_01   2024-05-25 01:49:23 -0600
+    - CPU detection with archname arm64- prefix (gh#411, gh#412)
+
+  2.81_01   2023-06-24 09:54:28 -0600
+    - Added support for xz compression with
+      Alien::Build::Plugin::Extract::ArchiveTar (gh#404)
+    - Extract negotiator (Alien::Build::Plugin::Extract::Negotiate)
+      now prefers the Extract::ArchiveTar plugin for tar.xz files.
+      On Windows Extract::ArchiveTar is now always used for tar.xz
+      files because the BSD tar that comes with Windows can hang
+      on tar.xz if xz is in the PATH (gh#403, gh#404)
+
+-------------------------------------------------------------------
 Sat May 13 03:06:12 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.80
