@@ -309,4 +309,16 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1151423 from dimstar)</comment>
     <requestid>1151438</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>e89083bf99556be28f863bde4b3ac47e</srcmd5>
+    <version>1.17.0</version>
+    <time>1719666973</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.17.0
+  - See NEWS for the complete CHANGELOG
+- Refresh openucx-s390x-support.patch against the latest sources
+- Add upstream fix UCS-TIME-Add-math.h-to-provide-INFINITY.patch
+  to fix compilation on ppc64</comment>
+    <requestid>1183479</requestid>
+  </revision>
 </revisionlist>

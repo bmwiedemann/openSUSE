@@ -1,7 +1,7 @@
 #
 # spec file for package openucx
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define version_suf %{nil}
 
 Name:           openucx
-Version:        1.15.0
+Version:        1.17.0
 Release:        0
 Summary:        Communication layer for Message Passing (MPI)
 License:        BSD-3-Clause
@@ -32,6 +32,7 @@ URL:            http://openucx.org/
 Source:         https://github.com/openucx/ucx/releases/download/v%version%{?version_suf}/ucx-%version.tar.gz
 Patch1:         openucx-s390x-support.patch
 Patch2:         ucm-fix-UCX_MEM_MALLOC_RELOC.patch
+Patch3:         UCS-TIME-Add-math.h-to-provide-INFINITY.patch
 BuildRequires:  autoconf >= 2.63
 BuildRequires:  automake >= 1.10
 BuildRequires:  binutils-devel
@@ -136,10 +137,7 @@ hardware.
 
 %prep
 %setup -qn ucx-%version
-%ifarch s390x
-%patch -P 1
-%endif
-%patch -P 2
+%autopatch -p0
 
 %build
 autoreconf -fi
@@ -192,6 +190,8 @@ mv %buildroot/%_bindir/io_demo  %buildroot/%_libexecdir/%{name}/
 %_libdir/pkgconfig/ucx.pc
 %dir %_libdir/cmake/
 %_libdir/cmake/ucx/
+%dir %{_sysconfdir}/ucx/
+%config %{_sysconfdir}/ucx/ucx.conf
 %license LICENSE
 %doc NEWS
 

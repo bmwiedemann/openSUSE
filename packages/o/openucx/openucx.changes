@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 26 15:43:05 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to 1.17.0
+  - See NEWS for the complete CHANGELOG
+- Refresh openucx-s390x-support.patch against the latest sources
+- Add upstream fix UCS-TIME-Add-math.h-to-provide-INFINITY.patch
+  to fix compilation on ppc64
+
+-------------------------------------------------------------------
 Mon Feb 26 12:49:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

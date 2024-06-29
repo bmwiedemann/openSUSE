@@ -1,6 +1,6 @@
-commit 328a69d07b618e0aa83fe2351e8d7ca4fc1b2f00
+commit 28ffffe90896cbd655466b870b74d8304736a316
 Author: Nicolas Morey <nmorey@suse.com>
-Date:   Mon Feb 13 17:04:14 2023 +0100
+Date:   Wed Jun 26 17:36:58 2024 +0200
 
     openucx s390x support
     
@@ -32,42 +32,26 @@ index e5e66266d695..ef7e4ede93ce 100644
  
  AS_IF([test "x$bistro_hooks_happy" = "xyes"],
        [AC_DEFINE([UCM_BISTRO_HOOKS], [1], [Enable BISTRO hooks])],
-diff --git src/tools/info/sys_info.c src/tools/info/sys_info.c
-index e5aff871d491..2b7c54319f53 100644
---- src/tools/info/sys_info.c
-+++ src/tools/info/sys_info.c
-@@ -47,7 +47,8 @@ static const char* cpu_vendor_names[] = {
-     [UCS_CPU_VENDOR_GENERIC_ARM]      = "Generic ARM",
-     [UCS_CPU_VENDOR_GENERIC_PPC]      = "Generic PPC",
-     [UCS_CPU_VENDOR_FUJITSU_ARM]      = "Fujitsu ARM",
--    [UCS_CPU_VENDOR_ZHAOXIN]          = "Zhaoxin"
-+    [UCS_CPU_VENDOR_ZHAOXIN]          = "Zhaoxin",
-+    [UCS_CPU_VENDOR_GENERIC_IBM]      = "Generic IBM"
- };
- 
- static double measure_memcpy_bandwidth(size_t size)
 diff --git src/ucm/Makefile.am src/ucm/Makefile.am
-index 48b82bf89cbe..582f83d1ea82 100644
+index fa7a722f2d31..e6df414a4ecb 100644
 --- src/ucm/Makefile.am
 +++ src/ucm/Makefile.am
-@@ -31,7 +31,8 @@ noinst_HEADERS = \
- 	bistro/bistro.h \
- 	bistro/bistro_x86_64.h \
+@@ -34,6 +34,7 @@ noinst_HEADERS = \
  	bistro/bistro_aarch64.h \
--	bistro/bistro_ppc64.h
-+	bistro/bistro_ppc64.h \
+ 	bistro/bistro_ppc64.h \
+ 	bistro/bistro_rv64.h
 +	bistro/bistro_s390x.h
  
  libucm_la_SOURCES = \
  	event/event.c \
 diff --git src/ucm/bistro/bistro.h src/ucm/bistro/bistro.h
-index b622e3c14fbb..4acd9e9cdb83 100644
+index 8d0b90751676..a0b9d3f064c3 100644
 --- src/ucm/bistro/bistro.h
 +++ src/ucm/bistro/bistro.h
-@@ -20,6 +20,8 @@ typedef struct ucm_bistro_restore_point ucm_bistro_restore_point_t;
- #  include "bistro_aarch64.h"
- #elif defined(__x86_64__)
+@@ -23,6 +23,8 @@ typedef struct ucm_bistro_restore_point ucm_bistro_restore_point_t;
  #  include "bistro_x86_64.h"
+ #elif defined(__riscv)
+ #  include "bistro_rv64.h"
 +#elif defined(__s390x__)
 +#  include "bistro_s390x.h"
  #else
@@ -75,10 +59,10 @@ index b622e3c14fbb..4acd9e9cdb83 100644
  #endif
 diff --git src/ucm/bistro/bistro_s390x.h src/ucm/bistro/bistro_s390x.h
 new file mode 100644
-index 000000000000..c0f427f4984a
+index 000000000000..2beb5de54fab
 --- /dev/null
 +++ src/ucm/bistro/bistro_s390x.h
-@@ -0,0 +1,18 @@
+@@ -0,0 +1,27 @@
 +#ifndef UCM_BISTRO_BISTRO_S390X_H_
 +#define UCM_BISTRO_BISTRO_S390X_H_
 +
@@ -90,55 +74,65 @@ index 000000000000..c0f427f4984a
 +#define UCM_BISTRO_PROLOGUE
 +#define UCM_BISTRO_EPILOGUE
 +
++typedef struct ucm_bistro_patch {
++} UCS_S_PACKED ucm_bistro_patch_t;
++typedef struct {
++} UCS_S_PACKED ucm_bistro_lock_t;
++
 +static inline ucs_status_t ucm_bistro_patch(void *func_ptr, void *hook, const char *symbol,
-+											void **orig_func_p,
-+											ucm_bistro_restore_point_t **rp){
++					    void **orig_func_p,
++					    ucm_bistro_restore_point_t **rp){
 +	return UCS_ERR_UNSUPPORTED;
++}
++
++static inline void ucm_bistro_patch_lock(void * UCS_V_UNUSED dst)
++{
 +}
 +
 +#endif
 diff --git src/ucs/Makefile.am src/ucs/Makefile.am
-index c7696d56f25d..c63b32bad844 100644
+index 4a05f47b6369..c1cd2fb2cb57 100644
 --- src/ucs/Makefile.am
 +++ src/ucs/Makefile.am
-@@ -22,6 +22,7 @@ libucs_la_LIBADD   = $(LIBM) $(top_builddir)/src/ucm/libucm.la $(BFD_LIBS)
- nobase_dist_libucs_la_HEADERS = \
+@@ -24,6 +24,7 @@ nobase_dist_libucs_la_HEADERS = \
  	arch/aarch64/bitops.h \
  	arch/ppc64/bitops.h \
+ 	arch/rv64/bitops.h \
 +	arch/s390x/bitops.h \
  	arch/x86_64/bitops.h \
  	arch/bitops.h \
  	algorithm/crc.h \
-@@ -82,12 +83,14 @@ nobase_dist_libucs_la_HEADERS = \
- 	arch/aarch64/global_opts.h \
+@@ -87,6 +88,7 @@ nobase_dist_libucs_la_HEADERS = \
  	arch/generic/atomic.h \
  	arch/ppc64/global_opts.h \
+ 	arch/rv64/global_opts.h \
 +	arch/s390x/global_opts.h \
  	arch/global_opts.h
  
  noinst_HEADERS = \
- 	arch/aarch64/cpu.h \
+@@ -94,6 +96,7 @@ noinst_HEADERS = \
  	arch/generic/cpu.h \
  	arch/ppc64/cpu.h \
+ 	arch/rv64/cpu.h \
 +	arch/s390x/cpu.h \
  	arch/x86_64/cpu.h \
  	arch/cpu.h \
  	config/ucm_opts.h \
-@@ -138,6 +141,7 @@ libucs_la_SOURCES = \
+@@ -149,6 +152,7 @@ libucs_la_SOURCES = \
  	algorithm/string_distance.c \
  	arch/aarch64/cpu.c \
  	arch/aarch64/global_opts.c \
 +	arch/s390x/global_opts.c \
  	arch/ppc64/timebase.c \
  	arch/ppc64/global_opts.c \
- 	arch/x86_64/cpu.c \
+ 	arch/rv64/cpu.c \
 diff --git src/ucs/arch/atomic.h src/ucs/arch/atomic.h
-index 52be711c1d0a..8f1d62a28dc9 100644
+index 849647902fab..a328c37e2020 100644
 --- src/ucs/arch/atomic.h
 +++ src/ucs/arch/atomic.h
-@@ -15,6 +15,8 @@
+@@ -18,6 +18,8 @@
  #  include "generic/atomic.h"
- #elif defined(__aarch64__)
+ #elif defined(__riscv)
  #  include "generic/atomic.h"
 +#elif defined(__s390x__)
 +#  include "generic/atomic.h"
@@ -146,23 +140,23 @@ index 52be711c1d0a..8f1d62a28dc9 100644
  #  error "Unsupported architecture"
  #endif
 diff --git src/ucs/arch/bitops.h src/ucs/arch/bitops.h
-index e89a37d0b673..dd2b9d5b6bcb 100644
+index 3e0e530f1336..f887e03ebac0 100644
 --- src/ucs/arch/bitops.h
 +++ src/ucs/arch/bitops.h
-@@ -20,6 +20,8 @@ BEGIN_C_DECLS
- #  include "ppc64/bitops.h"
- #elif defined(__aarch64__)
+@@ -23,6 +23,8 @@ BEGIN_C_DECLS
  #  include "aarch64/bitops.h"
+ #elif defined(__riscv)
+ #  include "rv64/bitops.h"
 +#elif defined(__s390x__)
 +#  include "s390x/bitops.h"
  #else
  #  error "Unsupported architecture"
  #endif
 diff --git src/ucs/arch/cpu.c src/ucs/arch/cpu.c
-index ece8f7fb82dd..b35b10ad090a 100644
+index 307fb61bfc4a..4356fff36f8b 100644
 --- src/ucs/arch/cpu.c
 +++ src/ucs/arch/cpu.c
-@@ -63,6 +63,10 @@ const ucs_cpu_builtin_memcpy_t ucs_cpu_builtin_memcpy[UCS_CPU_VENDOR_LAST] = {
+@@ -64,6 +64,10 @@ const ucs_cpu_builtin_memcpy_t ucs_cpu_builtin_memcpy[UCS_CPU_VENDOR_LAST] = {
          .min = UCS_MEMUNITS_INF,
          .max = UCS_MEMUNITS_INF
      },
@@ -173,43 +167,67 @@ index ece8f7fb82dd..b35b10ad090a 100644
      [UCS_CPU_VENDOR_FUJITSU_ARM] = {
          .min = UCS_MEMUNITS_INF,
          .max = UCS_MEMUNITS_INF
-@@ -78,6 +82,7 @@ const size_t ucs_cpu_est_bcopy_bw[UCS_CPU_VENDOR_LAST] = {
-     [UCS_CPU_VENDOR_INTEL]       = UCS_CPU_EST_BCOPY_BW_DEFAULT,
-     [UCS_CPU_VENDOR_AMD]         = UCS_CPU_EST_BCOPY_BW_AMD,
-     [UCS_CPU_VENDOR_GENERIC_ARM] = UCS_CPU_EST_BCOPY_BW_DEFAULT,
+@@ -89,6 +93,7 @@ const size_t ucs_cpu_est_bcopy_bw[UCS_CPU_VENDOR_LAST] = {
+     [UCS_CPU_VENDOR_GENERIC_ARM]   = UCS_CPU_EST_BCOPY_BW_DEFAULT,
+     [UCS_CPU_VENDOR_GENERIC_PPC]   = UCS_CPU_EST_BCOPY_BW_DEFAULT,
+     [UCS_CPU_VENDOR_GENERIC_RV64G] = UCS_CPU_EST_BCOPY_BW_DEFAULT,
 +    [UCS_CPU_VENDOR_GENERIC_IBM] = UCS_CPU_EST_BCOPY_BW_DEFAULT,
-     [UCS_CPU_VENDOR_GENERIC_PPC] = UCS_CPU_EST_BCOPY_BW_DEFAULT,
-     [UCS_CPU_VENDOR_FUJITSU_ARM] = UCS_CPU_EST_BCOPY_BW_FUJITSU_ARM,
-     [UCS_CPU_VENDOR_ZHAOXIN]     = UCS_CPU_EST_BCOPY_BW_DEFAULT
+     [UCS_CPU_VENDOR_FUJITSU_ARM]   = UCS_CPU_EST_BCOPY_BW_FUJITSU_ARM,
+     [UCS_CPU_VENDOR_ZHAOXIN]       = UCS_CPU_EST_BCOPY_BW_DEFAULT,
+     [UCS_CPU_VENDOR_NVIDIA]        = UCS_CPU_EST_BCOPY_BW_DEFAULT
+@@ -183,6 +188,7 @@ const char *ucs_cpu_vendor_name()
+         [UCS_CPU_VENDOR_GENERIC_ARM]   = "Generic ARM",
+         [UCS_CPU_VENDOR_GENERIC_PPC]   = "Generic PPC",
+         [UCS_CPU_VENDOR_GENERIC_RV64G] = "Generic RV64G",
++	[UCS_CPU_VENDOR_GENERIC_IBM]   = "Generic IBM",
+         [UCS_CPU_VENDOR_FUJITSU_ARM]   = "Fujitsu ARM",
+         [UCS_CPU_VENDOR_ZHAOXIN]       = "Zhaoxin",
+         [UCS_CPU_VENDOR_NVIDIA]        = "Nvidia"
+@@ -212,6 +218,7 @@ const char *ucs_cpu_model_name()
+         [UCS_CPU_MODEL_ZHAOXIN_WUDAOKOU]   = "Wudaokou",
+         [UCS_CPU_MODEL_ZHAOXIN_LUJIAZUI]   = "Lujiazui",
+         [UCS_CPU_MODEL_RV64G]              = "RV64G",
++        [UCS_CPU_MODEL_S390X]              = "S390x",
+         [UCS_CPU_MODEL_NVIDIA_GRACE]       = "Grace"
+     };
+ 
 diff --git src/ucs/arch/cpu.h src/ucs/arch/cpu.h
-index eb557d385670..cfd297e24558 100644
+index ca25e714d141..e97405c30d52 100644
 --- src/ucs/arch/cpu.h
 +++ src/ucs/arch/cpu.h
-@@ -64,6 +64,7 @@ typedef enum ucs_cpu_vendor {
+@@ -39,6 +39,7 @@ typedef enum ucs_cpu_model {
+     UCS_CPU_MODEL_ZHAOXIN_WUDAOKOU,
+     UCS_CPU_MODEL_ZHAOXIN_LUJIAZUI,
+     UCS_CPU_MODEL_RV64G,
++    UCS_CPU_MODEL_S390X,
+     UCS_CPU_MODEL_NVIDIA_GRACE,
+     UCS_CPU_MODEL_LAST
+ } ucs_cpu_model_t;
+@@ -68,6 +69,7 @@ typedef enum ucs_cpu_vendor {
      UCS_CPU_VENDOR_AMD,
      UCS_CPU_VENDOR_GENERIC_ARM,
      UCS_CPU_VENDOR_GENERIC_PPC,
 +    UCS_CPU_VENDOR_GENERIC_IBM,
      UCS_CPU_VENDOR_FUJITSU_ARM,
      UCS_CPU_VENDOR_ZHAOXIN,
-     UCS_CPU_VENDOR_LAST
-@@ -99,6 +100,8 @@ typedef struct ucs_cpu_builtin_memcpy {
- #  include "ppc64/cpu.h"
- #elif defined(__aarch64__)
+     UCS_CPU_VENDOR_GENERIC_RV64G,
+@@ -107,6 +109,8 @@ typedef struct ucs_cpu_builtin_memcpy {
  #  include "aarch64/cpu.h"
+ #elif defined(__riscv)
+ #  include "rv64/cpu.h"
 +#elif defined(__s390x__)
 +#  include "s390x/cpu.h"
  #else
  #  error "Unsupported architecture"
  #endif
 diff --git src/ucs/arch/global_opts.h src/ucs/arch/global_opts.h
-index 75d086177a7f..96c670cb60d3 100644
+index 550d22b8b751..d8e4a7cca694 100644
 --- src/ucs/arch/global_opts.h
 +++ src/ucs/arch/global_opts.h
-@@ -15,6 +15,8 @@
- #  include "ppc64/global_opts.h"
- #elif defined(__aarch64__)
+@@ -18,6 +18,8 @@
  #  include "aarch64/global_opts.h"
+ #elif defined(__riscv)
+ #  include "rv64/global_opts.h"
 +#elif defined(__s390x__)
 +#  include "s390x/global_opts.h"
  #else
@@ -260,7 +278,7 @@ index 000000000000..ce48ff1ff451
 +#endif
 diff --git src/ucs/arch/s390x/cpu.h src/ucs/arch/s390x/cpu.h
 new file mode 100644
-index 000000000000..4f0a87006118
+index 000000000000..033f58f7c047
 --- /dev/null
 +++ src/ucs/arch/s390x/cpu.h
 @@ -0,0 +1,84 @@
@@ -308,7 +326,7 @@ index 000000000000..4f0a87006118
 +
 +static inline ucs_cpu_model_t ucs_arch_get_cpu_model()
 +{
-+    return UCS_CPU_MODEL_UNKNOWN;
++    return UCS_CPU_MODEL_S390X;
 +}
 +
 +static inline ucs_cpu_vendor_t ucs_arch_get_cpu_vendor()
@@ -410,7 +428,7 @@ index 000000000000..225e4e5e896a
 +#endif
 +
 diff --git src/ucs/sys/sys.c src/ucs/sys/sys.c
-index 58e67835c4d0..308f03606d5b 100644
+index 42ff75f64af5..b22418e3f4b0 100644
 --- src/ucs/sys/sys.c
 +++ src/ucs/sys/sys.c
 @@ -1258,8 +1258,19 @@ void *ucs_sys_realloc(void *old_ptr, size_t old_length, size_t new_length)
