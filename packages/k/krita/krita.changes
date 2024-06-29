@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Jun 28 13:40:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.2.3
+  https://krita.org/en/posts/2024/krita-5-2-3-released/
+  * Various fixes to tool canvas input shortcut behaviour
+  * Various fixes to how we use MLT for synchronising audio to
+    animation
+  * Python SIP type stub generation, this will help autocompletion
+    in external python editors that support using these stubs
+  * Crash fix with adding animation keyframe column on locked
+    layer (kde#486893)
+  * Fix update of "read-only" state of the document when loading
+    and saving (kde#487544)
+  * Ask to use PSD data in TIFF only if any was found (kde#488024)
+  * Reworked default FFmpeg profiles (kde#455006, kde#450790,
+    kde#429326, kde#485515, kde#485514)
+  * Fix issue in KisMergeLabeledLayersCommand when masks where
+    involved (kde#486419)
+  * Update batch exporter Python plugin to fix trim option
+    issue (kde#488343)
+  * Welcome Page: Fix "DEV BUILD" button going to a 404
+  * WEBP & JPEG-XL: preemptive check for animation (kde#476761)
+  * Fix copy-pasting selection of File Layer (kde#459849)
+  * Fix color sampler in wrap around mode (kde#478190)
+  * Replace old QML touch docker with QWidget-based touch docker
+    to avoid problems on Android (kde#476690)
+  * Add support for XSIMD13 (kde#488116)
+  * Redraw layers docker thumbnails if the canvas checkers color
+    was changed
+  * Fix animation playback freezes when pausing past the end of
+    audio (kde#487371, kde#478185)
+- Drop patches, merged upstream:
+  * 0001-Fix-build-with-libjxl-0.9.0.patch
+  * 0002-KisFileIconCreator-add-workaround-for-JPEG-XL-too.patch
+  * 0003-JPEG-XL-Disable-export-bug-workaround-for-libjxl-0.9.patch
+
+-------------------------------------------------------------------
+Fri Mar  1 21:47:15 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Build with newer python on Leap 15
+
+-------------------------------------------------------------------
 Fri Jan 26 15:34:05 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add 0004-Fix-build-with-sip6.8.patch to support sip 6.8

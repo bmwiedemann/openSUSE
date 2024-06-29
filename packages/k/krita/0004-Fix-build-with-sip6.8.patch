@@ -9,7 +9,7 @@ Fixes build with SIP 6.8
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/cmake/modules/pyproject.toml.in b/cmake/modules/pyproject.toml.in
-index 090b2d4b0cb..085ddf41799 100644
+index 44ca263..462063b 100644
 --- a/cmake/modules/pyproject.toml.in
 +++ b/cmake/modules/pyproject.toml.in
 @@ -9,7 +9,7 @@ name = "@module_name_toml@"
@@ -20,7 +20,4 @@ index 090b2d4b0cb..085ddf41799 100644
 +abi-version = "12.8"
  
  [tool.sip.bindings.@module_name_toml@]
- tags = @module_tags@
--- 
-GitLab
-
+ pep484-pyi = true

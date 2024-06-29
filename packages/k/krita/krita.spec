@@ -18,21 +18,18 @@
 
 %bcond_without released
 # Build fails on x86 and powerpc with xsimd (kde#462122)
-%ifnarch %ix86 ppc64 ppc64le
-%if 0%{?suse_version} > 1500 || (0%{?is_opensuse} && 0%{?sle_version} > 150400)
+%ifnarch %{ix86} ppc64 ppc64le
 %bcond_without xsimd
 %endif
-%endif
 # Default python version is too old in Leap 15
+%{?sle15_python_module_pythons}
 %if 0%{?suse_version} > 1500
-%bcond_without python
-%endif
-# SR#1043861 for 15.5
-%if 0%{?suse_version} > 1500 || (0%{?is_opensuse} && 0%{?sle_version} > 150400)
-%bcond_without libjxl
+%define pyver python3
+%else
+%define pyver python311
 %endif
 Name:           krita
-Version:        5.2.2
+Version:        5.2.3
 Release:        0
 Summary:        Digital Painting Application
 License:        BSD-2-Clause AND GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND CC0-1.0 AND LGPL-2.0-only
@@ -43,10 +40,10 @@ Source1:        https://download.kde.org/stable/krita/%{version}/krita-%{version
 Source2:        krita.keyring
 %endif
 # PATCH-FIX-UPSTREAM
-Patch1:         0001-Fix-build-with-libjxl-0.9.0.patch
-Patch2:         0002-KisFileIconCreator-add-workaround-for-JPEG-XL-too.patch
-Patch3:         0003-JPEG-XL-Disable-export-bug-workaround-for-libjxl-0.9.patch
-Patch4:         0004-Fix-build-with-sip6.8.patch
+Patch0:         0004-Fix-build-with-sip6.8.patch
+BuildRequires:  %{pyver}-devel
+BuildRequires:  %{pyver}-qt5-devel
+BuildRequires:  %{pyver}-sip-devel
 BuildRequires:  OpenEXR-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fftw3-devel
@@ -71,11 +68,6 @@ BuildRequires:  libtiff-devel
 BuildRequires:  openjpeg2-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
-%if %{with python}
-BuildRequires:  python3-devel
-BuildRequires:  python3-qt5-devel
-BuildRequires:  python3-sip-devel
-%endif
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
 BuildRequires:  cmake(Immer)
@@ -85,6 +77,7 @@ BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5ItemModels)
 BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5KDcraw)
 BuildRequires:  cmake(KF5WidgetsAddons)
@@ -114,25 +107,21 @@ BuildRequires:  cmake(sdl2)
 BuildRequires:  cmake(xsimd)
 %endif
 BuildRequires:  pkgconfig(OpenColorIO)
-%if %{with libjxl}
-BuildRequires:  pkgconfig(libjxl)
-%endif
 BuildRequires:  pkgconfig(fontconfig) >= 2.13.1
-BuildRequires:  pkgconfig(freetype2) >= 2.10.0
+BuildRequires:  pkgconfig(freetype2) >= 2.11.0
 BuildRequires:  pkgconfig(fribidi) >= 1.0.6
 BuildRequires:  pkgconfig(harfbuzz) >= 4.0
+BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(libmypaint)
 BuildRequires:  pkgconfig(libunibreak)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(xcb-atom)
 BuildRequires:  pkgconfig(xcb-xinput)
 BuildRequires:  pkgconfig(xi) >= 1.4.99.1
-%if %{with python}
-Recommends:     python3-qt5
-%endif
+Recommends:     %{pyver}-qt5
+Recommends:     krita-plugin-gmic
 Obsoletes:      calligra-krita < %{version}
 Provides:       calligra-krita = %{version}
-Recommends:     krita-plugin-gmic
 
 %description
 Krita is a painting program. It supports concept art, texture and
@@ -140,7 +129,7 @@ matte painters, as well as illustrations and comics.
 
 %package devel
 Summary:        Krita Build Environment
-Requires:       %{name} = %{version}
+Requires:       krita = %{version}
 Requires:       cmake(Qt5Core)
 
 %description devel
@@ -165,10 +154,8 @@ Development headers and libraries for Krita.
 
 chmod -x %{buildroot}%{_kf5_applicationsdir}/*.desktop
 
-%if %{with python}
 # remove shebang to avoid rpmlint warning, that file is not supposed to be run directly anyway
 sed -i "/#!\/usr\/bin\/env/d" %{buildroot}%{_kf5_libdir}/krita-python-libs/krita/sceditor/highlighter.py
-%endif
 
 %ldconfig_scriptlets
 
@@ -183,10 +170,7 @@ sed -i "/#!\/usr\/bin\/env/d" %{buildroot}%{_kf5_libdir}/krita-python-libs/krita
 %{_kf5_appstreamdir}/
 %{_kf5_libdir}/libkrita*.so.*
 %{_kf5_libdir}/kritaplugins/
-%if %{with python}
 %{_kf5_libdir}/krita-python-libs/
-%endif
-%{_kf5_qmldir}
 %{_kf5_sharedir}/kritaplugins/
 %{_kf5_sharedir}/color/
 %{_kf5_sharedir}/color-schemes/
