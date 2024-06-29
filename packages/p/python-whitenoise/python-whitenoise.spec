@@ -1,7 +1,7 @@
 #
 # spec file for package python-whitenoise
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-whitenoise
-Version:        6.6.0
+Version:        6.7.0
 Release:        0
 Summary:        Static file serving for WSGI applications
 License:        MIT

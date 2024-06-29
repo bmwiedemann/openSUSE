@@ -124,4 +124,13 @@
   * Add a manifest_strict setting to prevent Django throwing errors</comment>
     <requestid>1135358</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b3c315e89f249803db38a07a163a2ceb</srcmd5>
+    <version>6.7.0</version>
+    <time>1719667033</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.7.0:
+  * Support Django 5.1.</comment>
+    <requestid>1183921</requestid>
+  </revision>
 </revisionlist>
