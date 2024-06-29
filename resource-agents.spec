@@ -85,11 +85,11 @@ Group:          Productivity/Clustering/HA
 Requires:       %{name}
 Requires:       ipvsadm
 Requires:       logrotate
-Requires:       perl-IO-Socket-IP
-Requires:       perl-MailTools
-Requires:       perl-Net-SSLeay
-Requires:       perl-Socket6
-Requires:       perl-libwww-perl
+Requires:       perl(IO::Socket::IP)
+Requires:       perl(MailTools)
+Requires:       perl(Net::SSLeay)
+Requires:       perl(Socket6)
+Requires:       perl(LWP)
 Obsoletes:      heartbeat-ldirectord
 Provides:       heartbeat-ldirectord
 %{?systemd_requires}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 12 08:33:22 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- remove package name based perl requires
+
+-------------------------------------------------------------------
 Fri Jun 07 05:18:24 UTC 2024 - varkoly@suse.com
 
 - Update to version 4.14.0+git15.c784b83c:
@@ -2999,5 +3004,3 @@ Wed Jul 29 12:00:00 UTC 2009 - abeekhof@suse.de
 - Initial import of the resource-agents project after being split off
   from Heartbeat (this package replaces heartbeat-resources).
 - Upstream version cs: 3aa338887920
-
-

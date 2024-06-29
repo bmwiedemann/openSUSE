@@ -1771,4 +1771,12 @@
     0001-LVM-Default-partial_activation-to-true-in-SLE-HAE.patch</comment>
     <requestid>1179621</requestid>
   </revision>
+  <revision rev="131" vrev="2">
+    <srcmd5>047b572783739b9b386359edc9359526</srcmd5>
+    <version>4.14.0+git15.c784b83c</version>
+    <time>1719666996</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1183835</requestid>
+  </revision>
 </revisionlist>
