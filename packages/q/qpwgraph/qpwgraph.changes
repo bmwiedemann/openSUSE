@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jun 29 05:34:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.4:
+  * Force a default PipeWire node name if given empty.
+  * Fixed a potential use-after-free issue on canvas nodes
+    refresh and recycle.
+  * Cancel button option added to close to system-tray icon
+    message.
+  * Introducing thumbview context-menu.
+
+-------------------------------------------------------------------
 Sat May 25 13:28:01 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.7.2:

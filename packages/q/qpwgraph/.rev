@@ -194,4 +194,18 @@
     <comment>- Update to version 0.7.2.</comment>
     <requestid>1176885</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>905282a870c6b20ac0e6a435dfb84287</srcmd5>
+    <version>0.7.4</version>
+    <time>1719667106</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.4:
+  * Force a default PipeWire node name if given empty.
+  * Fixed a potential use-after-free issue on canvas nodes
+    refresh and recycle.
+  * Cancel button option added to close to system-tray icon
+    message.
+  * Introducing thumbview context-menu.</comment>
+    <requestid>1183918</requestid>
+  </revision>
 </revisionlist>
