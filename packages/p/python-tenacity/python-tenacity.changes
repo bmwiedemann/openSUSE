@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 29 05:33:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.4.2:
+  * fix: Avoid overwriting local contexts with retry decorator
+
+-------------------------------------------------------------------
 Wed Jun 19 16:52:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.4.1:

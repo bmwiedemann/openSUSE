@@ -242,4 +242,13 @@
   * Support Trio out-of-the-box</comment>
     <requestid>1181787</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>32f2d4b70530e8ada3f3b8c8924697f5</srcmd5>
+    <version>8.4.2</version>
+    <time>1719667031</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.4.2:
+  * fix: Avoid overwriting local contexts with retry decorator</comment>
+    <requestid>1183916</requestid>
+  </revision>
 </revisionlist>
