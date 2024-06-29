@@ -603,4 +603,12 @@ Bugfixes:
     * Fix invalid call to `realpath(3)` (Platform, Linux)</comment>
     <requestid>1181769</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>346d53cc4b402be39244f437e65bbeb8</srcmd5>
+    <version>2.17.1</version>
+    <time>1719667110</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1183911</requestid>
+  </revision>
 </revisionlist>
