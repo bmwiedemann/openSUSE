@@ -11656,7 +11656,7 @@ unsorted:
   - libaria2-0 
   - libarm_compute37 
   - libarm_compute_graph37 
-  - libarmadillo12 
+  - libarmadillo14 
   - libarmnn33 
   - libarmnn33-opencl 
   - libarmnnBasePipeServer33 
@@ -25655,6 +25655,7 @@ unsorted:
   - python310-lupa 
   - python310-lxml 
   - python310-lxml-devel 
+  - python310-lxml_html_clean 
   - python310-ly 
   - python310-lz4 
   - python310-macholib 
@@ -29189,6 +29190,7 @@ unsorted:
   - python311-lsprotocol 
   - python311-lupa 
   - python311-lxml-devel 
+  - python311-lxml_html_clean 
   - python311-ly 
   - python311-lz4 
   - python311-macholib 
@@ -32734,6 +32736,7 @@ unsorted:
   - python312-lupa 
   - python312-lxml 
   - python312-lxml-devel 
+  - python312-lxml_html_clean 
   - python312-ly 
   - python312-lz4 
   - python312-macholib 
@@ -35918,6 +35921,7 @@ unsorted:
   - rust1.76 
   - rust1.77 
   - rust1.78 
+  - rust1.78-src 
   - rust1.79 
   - rustdesk-server 
   - rustdesk-server-hbbr 
