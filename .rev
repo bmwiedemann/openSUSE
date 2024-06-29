@@ -82,4 +82,14 @@
   * pass max width to latex adjustbox</comment>
     <requestid>1157653</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4ee2056ec65ff8c4a7049eab623c1805</srcmd5>
+    <version>0.30</version>
+    <time>1719667035</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.30:
+  * improved pytest 8.1.1 compatibilitiy
+  * use SVG format for generating images</comment>
+    <requestid>1183922</requestid>
+  </revision>
 </revisionlist>

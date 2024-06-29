@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-plantuml
-Version:        0.29
+Version:        0.30
 Release:        0
 Summary:        Sphinx API for Web Apps
 License:        BSD-2-Clause

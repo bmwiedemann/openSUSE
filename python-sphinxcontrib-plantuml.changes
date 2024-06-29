@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 29 05:43:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.30:
+  * improved pytest 8.1.1 compatibilitiy
+  * use SVG format for generating images
+
+-------------------------------------------------------------------
 Wed Mar 13 15:27:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.29:
