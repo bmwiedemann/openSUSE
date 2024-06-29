@@ -1,8 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun 29 05:41:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.1:
+  * improved compatibility with NumPy 2.0 and CPython 3.12
+
+-------------------------------------------------------------------
 Wed May 31 20:29:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12:
-  * https://github.com/sympy/sympy/wiki/release-notes-for-1.12 
+  * https://github.com/sympy/sympy/wiki/release-notes-for-1.12
 
 -------------------------------------------------------------------
 Sat Sep 17 15:29:28 UTC 2022 - Arun Persaud <arun@gmx.de>
@@ -91,76 +97,76 @@ Mon Jan 25 21:45:22 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.7.1:
   core
-  * There was a regression in 1.7 that meant that __slots__ 
-    would not work correctly for Basic instances and they 
-    would end up having __dict__. This also made it possible 
-    to set arbitrary attributes on Basic instances such as 
-    symbols which breaks immutability. This was fixed in 
-    1.7.1 to ensure that Basic instances do not have 
-    __dict__ and it is not possible to set attributes on 
+  * There was a regression in 1.7 that meant that __slots__
+    would not work correctly for Basic instances and they
+    would end up having __dict__. This also made it possible
+    to set arbitrary attributes on Basic instances such as
+    symbols which breaks immutability. This was fixed in
+    1.7.1 to ensure that Basic instances do not have
+    __dict__ and it is not possible to set attributes on
     them. (#20590 by @oscarbenjamin) s
   series
-  * Fixed lazy iteration of series with expr.series(x, 
-     n=None) which was broken in the 1.7 release. (#20589 by 
-     @oscarbenjamin and @sachin-4099) 
+  * Fixed lazy iteration of series with expr.series(x,
+     n=None) which was broken in the 1.7 release. (#20589 by
+     @oscarbenjamin and @sachin-4099)
   stats
-  * Updated documentation for sympy.stats.sample for seed 
+  * Updated documentation for sympy.stats.sample for seed
     argument. (#20555 by @czgdp1807)
-  * sympy.stats.sample now has an optional seed argument. 
+  * sympy.stats.sample now has an optional seed argument.
     (#20528 by @czgdp1807)
-  * Random failures with sympy.stats.sample have now been 
+  * Random failures with sympy.stats.sample have now been
     fixed. (#20527 by @czgdp180
 - Changelog for 1.7.0:
   Backwards compatibility breaks and deprecations
   -----------------------------------------------
   core
-  * Modules and names that were accidentally importable from 
-    sympy are no longer importable. In sympy 1.6 importing and 
-    using these names would give a deprecation warning. In 
-    sympy 1.7 these names are removed. As an example from 
-    sympy import add would need to be from sympy.core import 
-    add or import sympy.core.add as add. (#19554 by 
+  * Modules and names that were accidentally importable from
+    sympy are no longer importable. In sympy 1.6 importing and
+    using these names would give a deprecation warning. In
+    sympy 1.7 these names are removed. As an example from
+    sympy import add would need to be from sympy.core import
+    add or import sympy.core.add as add. (#19554 by
     @oscarbenjamin)
-  * DEPRECATION: Using non-Expr args in Add, Mul or Pow is 
+  * DEPRECATION: Using non-Expr args in Add, Mul or Pow is
     now deprecated (#19445 by @oscarbenjamin)
   diffgeom
-  * Manifold.patches attribute is deprecated. (#19368 by 
+  * Manifold.patches attribute is deprecated. (#19368 by
     @JSS95 and @mcpl-sympy)
-  * Patch.coord_systems attribute is deprecated. (#19368 by 
+  * Patch.coord_systems attribute is deprecated. (#19368 by
     @JSS95 and @mcpl-sympy)
-  * Class signature names of CoordSystem is deprecated.  
-    CoordinateSymbol class and CoordSystem.symbols attribute are 
+  * Class signature names of CoordSystem is deprecated.
+    CoordinateSymbol class and CoordSystem.symbols attribute are
     introduced instead. (#19368 by @JSS95 and @mcpl-sympy)
-  * CoordSystem.transforms, CoordSystem.connect_to, and 
-    CoordSystem.coord_tuple_transform_to are deprecated. Class 
-    signature relations, CoordSystem.transformation and 
-    CoordSystem.transform are introduced instead. (#19368 by 
+  * CoordSystem.transforms, CoordSystem.connect_to, and
+    CoordSystem.coord_tuple_transform_to are deprecated. Class
+    signature relations, CoordSystem.transformation and
+    CoordSystem.transform are introduced instead. (#19368 by
     @JSS95 and @mcpl-sympy)
   printing
-  * sympy.printing.pretty.pretty_symbology.xstr has been 
+  * sympy.printing.pretty.pretty_symbology.xstr has been
     deprecated (#20081 by @eric-wieser)
-  * The unicode argument to sympy.printing.stringpict.prettyForm 
+  * The unicode argument to sympy.printing.stringpict.prettyForm
     has been deprecated (#20081 by @eric-wieser)
-  * The deprecation of calling preview with viewer="StringIO" is 
-    now expired instead of forgotten (a regression in 1.6.0) 
+  * The deprecation of calling preview with viewer="StringIO" is
+    now expired instead of forgotten (a regression in 1.6.0)
     (#19905 by @eric-wieser)
-  * The modules sympy.printing.ccode, sympy.printing.fcode, and 
-    sympy.printing.cxxcode have been renamed to sympy.printing.c, 
-    sympy.printing.fortran, and sympy.printing.cxx, respectively. 
-    This was done to avoid conflicts that occur when a module name 
-    is the same as a function name. The modules are still 
-    importable under their old names but doing so is deprecated 
+  * The modules sympy.printing.ccode, sympy.printing.fcode, and
+    sympy.printing.cxxcode have been renamed to sympy.printing.c,
+    sympy.printing.fortran, and sympy.printing.cxx, respectively.
+    This was done to avoid conflicts that occur when a module name
+    is the same as a function name. The modules are still
+    importable under their old names but doing so is deprecated
     and a warning will be given (#19908 by @asmeurer)
-  * from sympy.printing.codeprinter import Assignment no longer 
-    works. You should use from sympy.codegen import Assignment, 
-    which is where Assignment has lived since SymPy 1.1. (#19908 
+  * from sympy.printing.codeprinter import Assignment no longer
+    works. You should use from sympy.codegen import Assignment,
+    which is where Assignment has lived since SymPy 1.1. (#19908
     by @asmeurer)
-  * Calling preview with viewer="file" no longer looks for a file 
+  * Calling preview with viewer="file" no longer looks for a file
     executable (a regression in 1.6.0) (#19905 by @eric-wieser)
   solvers
-  * solve_linear_system is now a thin wrapper for linsolve. It is 
-    recommended to use linsolve in new code. solve_linear_system 
-    maybe deprecated or removed in future. (#18814 by 
+  * solve_linear_system is now a thin wrapper for linsolve. It is
+    recommended to use linsolve in new code. solve_linear_system
+    maybe deprecated or removed in future. (#18814 by
     @oscarbenjamin)
   utilities
   * find_executable is deprecated in favor of the builtin shutil.
@@ -168,574 +174,574 @@ Mon Jan 25 21:45:22 UTC 2021 - Ben Greiner <code@bnavigator.de>
   Changes
   -------
   algebras
-  * Added DocString for integrate function of quaternion class. 
+  * Added DocString for integrate function of quaternion class.
     (#19410 by @mohitshah3111999)
   codegen
-  * Added support for generating calls to scipy.special.cosm1. 
+  * Added support for generating calls to scipy.special.cosm1.
     (#20011 by @bjodah)
-  * sympy.codegen and sympy.combinatorics are no longer imported 
-    as part of from sympy import *. The codegen and combinatorics 
-    modules do not have any names that are included in the 
-    top-level namespace, so their being imported with the 
-    top-level SymPy was a mistake. This improves the import time 
+  * sympy.codegen and sympy.combinatorics are no longer imported
+    as part of from sympy import *. The codegen and combinatorics
+    modules do not have any names that are included in the
+    top-level namespace, so their being imported with the
+    top-level SymPy was a mistake. This improves the import time
     of from sympy import *. (#19908 by @asmeurer)
   * Added support for generating calls to numpy.logaddexp & numpy.
     logaddexp2. (#19880 by @bjodah)
-  * Fix bugs to the parser of matrix expressions in order to build 
+  * Fix bugs to the parser of matrix expressions in order to build
     CodegenArray objects correctly. (#19197 by @Upabjojr)
   combinatorics
-  * Fixed a bug in PermutationGroup.minimal_blocks caused by 
-    modifying a list while iterating over its indices. (#19954 by 
+  * Fixed a bug in PermutationGroup.minimal_blocks caused by
+    modifying a list while iterating over its indices. (#19954 by
     @ilya-pchelintsev)
   concrete
   * Implemented Raabe's Test (#18656 by @sachin-4099)
   core
-  * Fixed a few broken cases of expr.is_integer (#20450 by @coproc 
+  * Fixed a few broken cases of expr.is_integer (#20450 by @coproc
     and @tbennun)
-  * Modules and names that were accidentally importable from sympy 
-    are no longer importable. In sympy 1.6 importing and using 
-    these names would give a deprecation warning. In sympy 1.7 
-    these names are removed. As an example from sympy import add 
+  * Modules and names that were accidentally importable from sympy
+    are no longer importable. In sympy 1.6 importing and using
+    these names would give a deprecation warning. In sympy 1.7
+    these names are removed. As an example from sympy import add
     would need to be from sympy.core import add or import sympy.
     core.add as add. (#19554 by @oscarbenjamin)
   * Zero raised to power Negative Infinity gives ComplexInfinity
     (zoo) instead of zero (#20212 by @sidhu1012)
-  * Extensible add, mul and power functions are introduced to 
-    allow sympy objects to define what classes should be used for 
-    them in place of Add, Mul and Pow (e.g. matrices use MatAdd). 
-    This is an experimental approach aimed at enabling the     
-    behaviour of core routines (expand, collect, etc) to be 
-    customised by user-defined types (e.g. MatAdd rather than 
-    Add). This mechanism is still experimental, is not fully 
-    implemented across the core and might be changed or removed in 
+  * Extensible add, mul and power functions are introduced to
+    allow sympy objects to define what classes should be used for
+    them in place of Add, Mul and Pow (e.g. matrices use MatAdd).
+    This is an experimental approach aimed at enabling the
+    behaviour of core routines (expand, collect, etc) to be
+    customised by user-defined types (e.g. MatAdd rather than
+    Add). This mechanism is still experimental, is not fully
+    implemented across the core and might be changed or removed in
     a future release of sympy. (#19463 by @JSS95 and @mcpl-sympy)
-  * divmod on sympy.Float with 0 numerator now results in (0, 0). 
+  * divmod on sympy.Float with 0 numerator now results in (0, 0).
     (#20109 by @eriknw)
-  * Dict operations no longer automatically converts strings into 
+  * Dict operations no longer automatically converts strings into
     SymPy types. (#19911 by @asmeurer)
-  * Dict operations no longer raise SympifyError. (#19911 by 
+  * Dict operations no longer raise SympifyError. (#19911 by
     @asmeurer)
-  * Fixes _eval_nseries() function of power.py (#19508 by 
+  * Fixes _eval_nseries() function of power.py (#19508 by
     @sachin-4099)
   * Remove optional dependency on fastcache (#19492 by @pbrady)
-  * DEPRECATION: Using non-Expr args in Add, Mul or Pow is now 
+  * DEPRECATION: Using non-Expr args in Add, Mul or Pow is now
     deprecated (#19445 by @oscarbenjamin)
-  * When creating an Add or Mul with evaluate=False identities (0 
+  * When creating an Add or Mul with evaluate=False identities (0
     or 1) are no longer removed. (#19450 by @oscarbenjamin)
-  * Fixes _eval_nseries() function of mul.py (#19369 by 
+  * Fixes _eval_nseries() function of mul.py (#19369 by
     @sachin-4099)
   * Sum is now included in count_ops results (#19261 by @smichr)
-  * match has been optimized to improve term-matching in Add 
+  * match has been optimized to improve term-matching in Add
     (#19261 by @smichr)
-  * match will automatically ignore bound symbols when matching 
+  * match will automatically ignore bound symbols when matching
     (#19261 by @smichr)
-  * match results will no longer contain extraneous symbols (only 
+  * match results will no longer contain extraneous symbols (only
     those requested) (#19261 by @smichr)
-  * as_dummy should give a canonical result for expressions having 
+  * as_dummy should give a canonical result for expressions having
     bound symbols (#19261 by @smichr)
-  * Lambdas written in terms of different symbols will no longer 
-    compare equal; this was an abuse of the Python == operator 
+  * Lambdas written in terms of different symbols will no longer
+    compare equal; this was an abuse of the Python == operator
     (#19261 by @smichr)
   * expr: A new method is_meromorphic is added. (#19306 by @jksuom)
   diffgeom
-  * Manifold.patches attribute is deprecated. (#19368 by @JSS95 
+  * Manifold.patches attribute is deprecated. (#19368 by @JSS95
     and @mcpl-sympy)
-  * Patch.coord_systems attribute is deprecated. (#19368 by @JSS95 
+  * Patch.coord_systems attribute is deprecated. (#19368 by @JSS95
     and @mcpl-sympy)
-  * Class signature names of CoordSystem is deprecated. 
-    CoordinateSymbol class and CoordSystem.symbols attribute are 
+  * Class signature names of CoordSystem is deprecated.
+    CoordinateSymbol class and CoordSystem.symbols attribute are
     introduced instead. (#19368 by @JSS95 and @mcpl-sympy)
-  * CoordSystem.transforms, CoordSystem.connect_to, and 
-    CoordSystem.coord_tuple_transform_to are deprecated. Class 
-    signature relations, CoordSystem.transformation and 
-    CoordSystem.transform are introduced instead. (#19368 by 
+  * CoordSystem.transforms, CoordSystem.connect_to, and
+    CoordSystem.coord_tuple_transform_to are deprecated. Class
+    signature relations, CoordSystem.transformation and
+    CoordSystem.transform are introduced instead. (#19368 by
     @JSS95 and @mcpl-sympy)
-  * CoordSystem.jacobian_determinant method is introduced. (#19368 
+  * CoordSystem.jacobian_determinant method is introduced. (#19368
     by @JSS95 and @mcpl-sympy)
   functions
-  * lambdify added a warning when args is a set. (#19792 by 
+  * lambdify added a warning when args is a set. (#19792 by
     @foice, @RobertoFranceschini, and @sylee957)
   * Fixes _eval_nseries method of log (#20002 by @sachin-4099)
-  * Adds _eval_is_meromorphic method and _eval_aseries to class 
+  * Adds _eval_is_meromorphic method and _eval_aseries to class
     lowergamma (#19990 by @sachin-4099)
-  * Adds _eval_is_meromorphic method and 
-    _eval_rewrite_as_tractable method to class uppergamma (#19990 
+  * Adds _eval_is_meromorphic method and
+    _eval_rewrite_as_tractable method to class uppergamma (#19990
     by @sachin-4099)
   * Rectifies eval method of class besselk (#19990 by @sachin-4099)
-  * Adds _eval_is_meromorphic to bessel function. (#19963 by 
+  * Adds _eval_is_meromorphic to bessel function. (#19963 by
     @sachin-4099)
-  * Adds _eval_nseries function to sin and cos. (#19916 by 
+  * Adds _eval_nseries function to sin and cos. (#19916 by
     @sachin-4099)
-  * reduced symbolic multiples of pi in trigonometric functions 
+  * reduced symbolic multiples of pi in trigonometric functions
     (#19741 by @sachin-4099)
-  * fixed errors in assumptions when rewriting RisingFactorial / 
+  * fixed errors in assumptions when rewriting RisingFactorial /
     FallingFactorial as gamma or factorial (#18696 by @sachin-4099)
-  * Adds _singularities to LambertW function (#19716 by 
+  * Adds _singularities to LambertW function (#19716 by
     @sachin-4099)
-  * Rectifies _eval_rewrite_as_tractable method of class erf 
+  * Rectifies _eval_rewrite_as_tractable method of class erf
     (#19697 by @sachin-4099)
-  * Improved condition checking in piecewise_simplify() (#19596 by 
+  * Improved condition checking in piecewise_simplify() (#19596 by
     @dhruvmendiratta6 and @smichr)
-  * Implemented _eval_rewrite_as_Abs() for sign (#19487 by 
+  * Implemented _eval_rewrite_as_Abs() for sign (#19487 by
     @dhruvmendiratta6)
-  * Adds cdir parameter to handle series expansions on branch cuts 
+  * Adds cdir parameter to handle series expansions on branch cuts
     (#19555 by @sachin-4099)
-  * Adds _eval_rewrite_as_factorial() and _eval_rewrite_as_gamma() 
+  * Adds _eval_rewrite_as_factorial() and _eval_rewrite_as_gamma()
     functionalities for subfactorial (#19515 by @sachin-4099)
-  * Fixed cot.as_real_imag (sign error in imaginary part) (#19468 
+  * Fixed cot.as_real_imag (sign error in imaginary part) (#19468
     by @DaveWitteMorris and @gschintgen)
-  * Corrects the _eval_as_leading_term() method of tan and sec 
+  * Corrects the _eval_as_leading_term() method of tan and sec
     functions (#19461 by @sachin-4099)
-  * bsplines are more robust in terms of handling symbolic knots 
+  * bsplines are more robust in terms of handling symbolic knots
     (#19272 by @smichr)
   geometry
-  * Ellipses with eccentricity >=1 and for eccentricity < 0 will 
+  * Ellipses with eccentricity >=1 and for eccentricity < 0 will
     be handled as trivial cases (#20045 by @agrawalshubham01)
   integrals
-  * upgrades to manualintegrate to support inverse trig functions! 
+  * upgrades to manualintegrate to support inverse trig functions!
     (#19993 by @iammosespaulr)
   interactive
-  * The _repr_latex_, _repr_svg_, and _repr_png_ methods of 
-    subclasses of sympy objects are no longer discarded when 
+  * The _repr_latex_, _repr_svg_, and _repr_png_ methods of
+    subclasses of sympy objects are no longer discarded when
     init_printing() is called. (#19944 by @eric-wieser)
   logic
-  * Binary boolean operators on Boolean objects no longer coerce 
+  * Binary boolean operators on Boolean objects no longer coerce
     strings (#20093 by @eric-wieser)
   matrices
-  * Adding an array and a matrix now consistently gives TypeError. 
+  * Adding an array and a matrix now consistently gives TypeError.
     (#20159 by @sidhu1012)
-  * changed subs function to check if input is zip (#19159 by 
+  * changed subs function to check if input is zip (#19159 by
     @czgdp1807 and @gfolbe318)
-  * added tests in test_commonmatrix.py (#19159 by @czgdp1807 and 
+  * added tests in test_commonmatrix.py (#19159 by @czgdp1807 and
     @gfolbe318)
-  * The ordering of parameters in a parametrised solution from 
-    gauss_jordan_solve was fixed. Previously incorrect results 
-    were returned for some underdetermined systems. (#19885 by 
+  * The ordering of parameters in a parametrised solution from
+    gauss_jordan_solve was fixed. Previously incorrect results
+    were returned for some underdetermined systems. (#19885 by
     @1124816)
   * Prevents infinite recursion with rmul (#19860 by @mloubout)
-  * Added class MatrixSet to represent the set of matrices (#19826 
+  * Added class MatrixSet to represent the set of matrices (#19826
     by @Smit-create)
-  * Disabled default matrix intermediate product simplification 
-    and changed it to enable via context manager. (#19588 by 
+  * Disabled default matrix intermediate product simplification
+    and changed it to enable via context manager. (#19588 by
     @oscarbenjamin and @Pristine-Cat)
-  * Use more efficient Cholesky factorization method to check if 
+  * Use more efficient Cholesky factorization method to check if
     matrices are positive semidefinite. (#19573 by @galbwe)
-  * row_del and col_del will raise IndexError rather than 
-    ValueError when the index is out of bounds. (#19571 by 
+  * row_del and col_del will raise IndexError rather than
+    ValueError when the index is out of bounds. (#19571 by
     @sylee957)
-  * Fixed a bug in the implementation of Sylvester's criterion for 
-    determining if a matrix is positive semidefinite. (#19556 by 
+  * Fixed a bug in the implementation of Sylvester's criterion for
+    determining if a matrix is positive semidefinite. (#19556 by
     @galbwe)
   * Explicit non-matrix are treated as scalar (#19533 by @mloubout)
-  * QRdecomposition will return matrices with zero rows and 
-    columns for zero rank matrices. e.g. Matrix([[0, 0, 0], [0, 0, 
-    0], [0, 0, 0]]) will be decomposed with Matrix(3, 0, []) and 
+  * QRdecomposition will return matrices with zero rows and
+    columns for zero rank matrices. e.g. Matrix([[0, 0, 0], [0, 0,
+    0], [0, 0, 0]]) will be decomposed with Matrix(3, 0, []) and
     Matrix(0, 3, []) (#19319 by @sylee957)
-  * Added Matrix.companion for creating dense companion matrix. 
+  * Added Matrix.companion for creating dense companion matrix.
     (#19339 by @sylee957)
-  * Added CompanionMatrix for creating a symbolic companion 
+  * Added CompanionMatrix for creating a symbolic companion
     matrix. (#19339 by @sylee957)
-  * Matrix([]).eigenvals(multiple=True) will give an empty list 
+  * Matrix([]).eigenvals(multiple=True) will give an empty list
     instead of an empty dict. (#19355 by @sylee957)
-  * Determinant is now considered commutative. (#19354 by 
+  * Determinant is now considered commutative. (#19354 by
     @eric-wieser)
   ntheory
-  * Integrated Lenstra's Elliptic Curve factorization into 
+  * Integrated Lenstra's Elliptic Curve factorization into
     factorint (#19937 by @abh2k)
   * Added quadratic sieve (#19657 by @abh2k)
-  * Implemented Lenstra's Elliptic curve factorization and 
+  * Implemented Lenstra's Elliptic curve factorization and
     Elliptic curve primality test (#19436 by @abhinav28071999)
   parsing
-  * Added support for while loop in C Parser (#20188 by 
+  * Added support for while loop in C Parser (#20188 by
     @smitgajjar)
   * Upgraded Relational Operator support (#19982 by @iammosespaulr)
   * Bra-Ket Notation support (#19982 by @iammosespaulr)
   * Improved Grammar (#19982 by @iammosespaulr)
-  * added Latex support for "not equal" and expanded support for 
+  * added Latex support for "not equal" and expanded support for
     less than, greater than symbols (#19970 by @bhpayne)
-  * parse_latex supports \left and \right parenthesis notation. 
+  * parse_latex supports \left and \right parenthesis notation.
     (#19466 by @sylee957)
-  * parse_latex can parse expressions with amsmath spacing (#19475 
+  * parse_latex can parse expressions with amsmath spacing (#19475
     by @sylee957)
   * Added parsing of \exp in parse_latex. (#19395 by @sylee957)
   * Add more parsing rules and test examples. (#19177 by @wuyudi)
-  * Added support for more data types in C parser: signed char, 
-    unsigned char, short, short int, signed short, signed short 
-    int, unsigned short, unsigned short int, unsigned int, long, 
-    long int, signed long, signed long int, unsigned long, 
-    unsigned long int, double, long double. Also, modified the 
-    data type for int and float to intc and float32 respectively, 
+  * Added support for more data types in C parser: signed char,
+    unsigned char, short, short int, signed short, signed short
+    int, unsigned short, unsigned short int, unsigned int, long,
+    long int, signed long, signed long int, unsigned long,
+    unsigned long int, double, long double. Also, modified the
+    data type for int and float to intc and float32 respectively,
     replacing integer and real (#19230 by @smitgajjar)
-  * Added support for shorthand operators in C parser: +=, -=, *=, 
+  * Added support for shorthand operators in C parser: +=, -=, *=,
     /= and %= (#19230 by @smitgajjar)
-  * Removed the assumption of value of a variable, if it is not 
+  * Removed the assumption of value of a variable, if it is not
     initialized while variable declaration(e.g.; in case of int a;
-    , the value of a was assumed to be Integer(0), in case of 
-    float b;, the value of b was assumed to be Float(0.0) and in 
-    case of bool c;, the value of c was assumed to be S.false). 
-    Also, removed the assumption of default value of formal 
-    parameters while parameter declaration in function definition 
-    or function prototype (e.g.; in case of function definition 
-    void func(int a, float b) { //some code }, default value of 
-    formal parametersa and b were assumed to be Integer(0) and 
+    , the value of a was assumed to be Integer(0), in case of
+    float b;, the value of b was assumed to be Float(0.0) and in
+    case of bool c;, the value of c was assumed to be S.false).
+    Also, removed the assumption of default value of formal
+    parameters while parameter declaration in function definition
+    or function prototype (e.g.; in case of function definition
+    void func(int a, float b) { //some code }, default value of
+    formal parametersa and b were assumed to be Integer(0) and
     Float(0.0) respectively) (#19230 by @smitgajjar)
   physics.control
-  * Added dc_gain, poles, zeros, and is_stable in TransferFunction 
+  * Added dc_gain, poles, zeros, and is_stable in TransferFunction
     class. (#19896 by @namannimmo10)
-  * Adding a new control systems toolbox as physics.control. 
+  * Adding a new control systems toolbox as physics.control.
     (#18436 by @benepla and @namannimmo10)
-  * Add TransferFunction, Series, Parallel, and Feedback class for 
-    physics.control submodule (#19390 by @benepla and 
+  * Add TransferFunction, Series, Parallel, and Feedback class for
+    physics.control submodule (#19390 by @benepla and
     @namannimmo10)
   physics.quantum
-  * Simplification of Dagger() * IdentityOperator() (#19783 by 
+  * Simplification of Dagger() * IdentityOperator() (#19783 by
     @dhruvmendiratta6)
-  * When printing, Commutator, Anticommutator, InnerProduct, 
-    TensorProduct, and OuterProduct now respect keyword-arguments 
+  * When printing, Commutator, Anticommutator, InnerProduct,
+    TensorProduct, and OuterProduct now respect keyword-arguments
     to sstr. (#19424 by @eric-wieser)
   physics.units
-  * Fixed some dimensional analysis bugs with the addition and 
+  * Fixed some dimensional analysis bugs with the addition and
     multiplication operators. (#19705 by @mgreminger)
   physics.vector
-  * Added user warnings for all possible paths are found in 
+  * Added user warnings for all possible paths are found in
     particle.py. (#20131 by @sidhu1012)
-  * Added user warning for cyclic paths in particle.py. (#20131 by 
+  * Added user warning for cyclic paths in particle.py. (#20131 by
     @sidhu1012)
-  * Point.vel() now attempts to calculate the velocity using the 
-    relative position from other points if it has not been already 
-    set by the user. This behavior mimics the existing behavior in 
-    ReferenceFrame.ang_vel_in(). (#20049 by @moorepants and 
+  * Point.vel() now attempts to calculate the velocity using the
+    relative position from other points if it has not been already
+    set by the user. This behavior mimics the existing behavior in
+    ReferenceFrame.ang_vel_in(). (#20049 by @moorepants and
     @sidhu1012)
-  * VectorLatexPrinter now respects the symbol_names setting when 
+  * VectorLatexPrinter now respects the symbol_names setting when
     printing dynamicsymbols (#19684 by @eric-wieser)
-  * VectorLatexPrinter now know about the same trig functions as 
+  * VectorLatexPrinter now know about the same trig functions as
     the regular printer (#19684 by @eric-wieser)
-  * When printing, Vector and Dyadic now respect keyword-arguments 
-    to sstr and latex. As a result, these no longer use vector 
-    printing customizations unless init_vprinting has been called. 
+  * When printing, Vector and Dyadic now respect keyword-arguments
+    to sstr and latex. As a result, these no longer use vector
+    printing customizations unless init_vprinting has been called.
     (#19640 by @eric-wieser)
   plotting
-  * capability to subclass Basebackend and specify it to the 
-    plotting functions, thus creating plots with other plotting 
+  * capability to subclass Basebackend and specify it to the
+    plotting functions, thus creating plots with other plotting
     libraries (#20463 by @oscarbenjamin)
-    * Fixed plot3d_parametric_line plotting curves out of the box. 
+    * Fixed plot3d_parametric_line plotting curves out of the box.
     (#19252 by @sylee957)
   polys
-  * Polys with complex floating point coefficients will now use 
+  * Polys with complex floating point coefficients will now use
     the CC domain rather than EX. (#20194 by @oscarbenjamin)
-  * Fixed a bug in minimal_polynomial when using Groebner bases 
+  * Fixed a bug in minimal_polynomial when using Groebner bases
     (compose=False) (#19799 by @coproc)
   * Fixed GeneratorsError for creating some elements of
     FractionField when its ground domain is FractionField or PolynomialRing. (#19713 by @sylee957)
-  * Fixed Poly initialized with PolyElement mutating the generator 
+  * Fixed Poly initialized with PolyElement mutating the generator
     of the coefficient in the form of polynomial. (e.g. Poly(ZZ[x]
-    (x+1), y, domain=ZZ[x]) becomes Poly(y+1, y, domain=ZZ[x])) 
+    (x+1), y, domain=ZZ[x]) becomes Poly(y+1, y, domain=ZZ[x]))
     (#19659 by @sylee957)
-  * Fixed Poly initialized with FracElement raising SympifyError. 
-    (e.g. dom = ZZ.frac_field(x); Poly(dom(x+2), y, domain=dom)) 
+  * Fixed Poly initialized with FracElement raising SympifyError.
+    (e.g. dom = ZZ.frac_field(x); Poly(dom(x+2), y, domain=dom))
     (#19659 by @sylee957)
-  * Add division to finite extensions. (#19593 by @gschintgen and 
+  * Add division to finite extensions. (#19593 by @gschintgen and
     @jksuom)
-  * Fixed GCD to always return a non-negative constant. (#19569 by 
+  * Fixed GCD to always return a non-negative constant. (#19569 by
     @KaustubhDamania)
-  * added new domains for Gaussian integers and rationals (#15396 
+  * added new domains for Gaussian integers and rationals (#15396
     by @jksuom and @smichr)
-  * Add the Gaussian domains ZZ_I and QQ_I to Poly. Make Poly use 
-    the Gaussian domains automatically when I is present in the 
-    input. Add factorisation over the Gaussian integers (ZZ_I). 
-    The polys keyword argument gaussian=True now results in the 
-    domain QQ_I rather than the extension field QQ<I>. (#15396 by 
+  * Add the Gaussian domains ZZ_I and QQ_I to Poly. Make Poly use
+    the Gaussian domains automatically when I is present in the
+    input. Add factorisation over the Gaussian integers (ZZ_I).
+    The polys keyword argument gaussian=True now results in the
+    domain QQ_I rather than the extension field QQ<I>. (#15396 by
     @oscarbenjamin)
-  * improvement of dup_zz_mignotte_bound(f, K) by Knuth-Cohen 
+  * improvement of dup_zz_mignotte_bound(f, K) by Knuth-Cohen
     bound (#19254 by @lagamura)
   printing
-  * Support frac with pycode printers (for lambdify) (#20115 by 
+  * Support frac with pycode printers (for lambdify) (#20115 by
     @ehren)
-  * Round-trip printing of floats (double-precision) to content 
+  * Round-trip printing of floats (double-precision) to content
     MathML. (#19958 by @lcontento)
-  * latex now once again requires settings to be passed as keyword 
-    and not positional arguments, and respects printer settings 
-    changed with set_global_settings; restoring the behavior from 
+  * latex now once again requires settings to be passed as keyword
+    and not positional arguments, and respects printer settings
+    changed with set_global_settings; restoring the behavior from
     sympy 1.2 and earlier. (#20067 by @eric-wieser)
-  * sympy.printing.pretty.pretty_symbology.xstr has been 
+  * sympy.printing.pretty.pretty_symbology.xstr has been
     deprecated (#20081 by @eric-wieser)
-  * The unicode argument to sympy.printing.stringpict.prettyForm 
+  * The unicode argument to sympy.printing.stringpict.prettyForm
     has been deprecated (#20081 by @eric-wieser)
-  * The unicode attribute of sympy.printing.stringpict.prettyForm 
+  * The unicode attribute of sympy.printing.stringpict.prettyForm
     has been deprecated (#20081 by @eric-wieser)
-  * The mpmath code printer now correctly prints the loggamma 
+  * The mpmath code printer now correctly prints the loggamma
     function. (#19913 by @abhaydhiman)
-  * Use literal suffix for 1.0 in C89CodePrinter's printing of pow 
+  * Use literal suffix for 1.0 in C89CodePrinter's printing of pow
     when the exponent is -1 (#19956 by @bjodah and @mmohrhard)
-  * The modules sympy.printing.ccode, sympy.printing.fcode, and 
-    sympy.printing.cxxcode have been renamed to sympy.printing.c, 
-    sympy.printing.fortran, and sympy.printing.cxx, respectively. 
-    This was done to avoid conflicts that occur when a module name 
-    is the same as a function name. The modules are still 
-    importable under their old names but doing so is deprecated 
+  * The modules sympy.printing.ccode, sympy.printing.fcode, and
+    sympy.printing.cxxcode have been renamed to sympy.printing.c,
+    sympy.printing.fortran, and sympy.printing.cxx, respectively.
+    This was done to avoid conflicts that occur when a module name
+    is the same as a function name. The modules are still
+    importable under their old names but doing so is deprecated
     and a warning will be given (#19908 by @asmeurer)
-  * from sympy.printing.codeprinter import Assignment no longer 
-    works. You should use from sympy.codegen import Assignment,  
-    which is where Assignment has lived since SymPy 1.1. (#19908 
+  * from sympy.printing.codeprinter import Assignment no longer
+    works. You should use from sympy.codegen import Assignment,
+    which is where Assignment has lived since SymPy 1.1. (#19908
     by @asmeurer)
-  * Calling preview with viewer="file" no longer looks for a file 
+  * Calling preview with viewer="file" no longer looks for a file
     executable (a regression in 1.6.0) (#19905 by @eric-wieser)
-  * The deprecation of calling preview with viewer="StringIO" is 
-    now expired instead of forgotten (a regression in 1.6.0) 
+  * The deprecation of calling preview with viewer="StringIO" is
+    now expired instead of forgotten (a regression in 1.6.0)
     (#19905 by @eric-wieser)
-  * When printing, NDimArray now respects keyword-arguments to 
+  * When printing, NDimArray now respects keyword-arguments to
     sstr (#19903 by @eric-wieser)
-  * preview no longer fails with ValueError if the preamble 
+  * preview no longer fails with ValueError if the preamble
     contains a % character. (#19858 by @eric-wieser)
-  * Types which are not recognized by the LaTeX printer no longer 
+  * Types which are not recognized by the LaTeX printer no longer
     have their __str__ interpreted as LaTeX, and have their str(...
-    ) printed as pre-formatted text as if they were printed 
-    normally. This includes the builtin str type: latex("hello") 
+    ) printed as pre-formatted text as if they were printed
+    normally. This includes the builtin str type: latex("hello")
     now results in the latex \mathtt{\text{hello}}.
-  * If a custom type intends to be interpreted as latex, it should 
-    define the _latex hook as described in the docs:    
+  * If a custom type intends to be interpreted as latex, it should
+    define the _latex hook as described in the docs:
     def _latex(self, printer):
         return str(self)  # indicate that the result of __str__ is LaTeX-compatible
   * To print a string containing LaTeX math using MathJax, use
     import IPython
     IPython.display.Math(string)
     (#19611 by @eric-wieser)
-  * The latex printer now shows builtin floats using ...x10^... 
+  * The latex printer now shows builtin floats using ...x10^...
     notation instead of ...e... notation. (#19611 by @eric-wieser)
-  * preview now throws OSError instead of SystemError if viewers 
+  * preview now throws OSError instead of SystemError if viewers
     cannot be found. (#19818 by @eric-wieser)
-  * Fixed the SciPy printer for sparse matrices (#19633 by 
+  * Fixed the SciPy printer for sparse matrices (#19633 by
     @benjaminwolba and @sylee957)
-  * preview(..., output='pdf') now uses dvipdfmx instead of dvipdf 
-    if available. As a result, it now works with a MiKTeX 
+  * preview(..., output='pdf') now uses dvipdfmx instead of dvipdf
+    if available. As a result, it now works with a MiKTeX
     installation on windows. (#19635 by @eric-wieser)
-  * LatexPrinter._print is no longer called on strings which have 
+  * LatexPrinter._print is no longer called on strings which have
     already been converted to Latex. (#19614 by @eric-wieser)
-  * A new sympy.printing.defaults.Printable base class was added, 
-    which is a mixin providing _repr_latex_ in terms of 
-    LatexPrinter().doprint(). Any user type which subclasses this 
+  * A new sympy.printing.defaults.Printable base class was added,
+    which is a mixin providing _repr_latex_ in terms of
+    LatexPrinter().doprint(). Any user type which subclasses this
     will opt into init_printing. (#19425 by @eric-wieser)
-  * Printing unevaluated Muls with multiple Number factors will   
-    show all factors strictly in order. Identities will also be 
+  * Printing unevaluated Muls with multiple Number factors will
+    show all factors strictly in order. Identities will also be
     shown explicitly. (#19450 by @oscarbenjamin)
-  * user types that implement _latex are now printed as LaTeX when 
-    embedded within builtin collections like list or dict. (#19389 
+  * user types that implement _latex are now printed as LaTeX when
+    embedded within builtin collections like list or dict. (#19389
     by @eric-wieser)
-  * fixed a bug where srepr function would not print dictionary 
+  * fixed a bug where srepr function would not print dictionary
     and set properly (#19346 by @rational-kunal)
-  * tuples of one element now include the usual trailing comma 
+  * tuples of one element now include the usual trailing comma
     (#19348 by @eric-wieser)
-  * mat_symbol_style='bold' no longer applies to subscripts of 
+  * mat_symbol_style='bold' no longer applies to subscripts of
     matrix symbols (#19301 by @eric-wieser)
   series
-  * Adds e.is_Pow heuristic to limits.py to improve the limit 
+  * Adds e.is_Pow heuristic to limits.py to improve the limit
     evaluations of Pow objects (#19680 by @sachin-4099)
-  * Changes in mrv() function of gruntz.py and cancel() function 
-    of polytools.py resolves RecursionError and Timeout in limit 
+  * Changes in mrv() function of gruntz.py and cancel() function
+    of polytools.py resolves RecursionError and Timeout in limit
     evaluations (#19646 by @sachin-4099)
-  * modified order.py to better work with Add objects. (#19546 by 
+  * modified order.py to better work with Add objects. (#19546 by
     @maurogaravello)
-  * Adds a functionality to the doit() method of limits.py which 
-    uses is_meromorphic() for limit evaluations (#19432 by 
+  * Adds a functionality to the doit() method of limits.py which
+    uses is_meromorphic() for limit evaluations (#19432 by
     @sachin-4099)
-  * Fixed wrong computations of fourier_series for even or odd 
-    functions with limits that are specified non-central. (#19382 
+  * Fixed wrong computations of fourier_series for even or odd
+    functions with limits that are specified non-central. (#19382
     by @sylee957)
-  * Replaces xreplace() with subs() in rewrite() function of 
-    gruntz.py resolving incorrect limit evaluations (#19297 by 
+  * Replaces xreplace() with subs() in rewrite() function of
+    gruntz.py resolving incorrect limit evaluations (#19297 by
     @sachin-4099)
-  * Adds a condition to limitinf() function of gruntz.py resolving 
+  * Adds a condition to limitinf() function of gruntz.py resolving
     incorrect limit evaluations (#19292 by @sachin-4099)
   sets
-  * Earlier expr and sets were treated equal which gave incorrect 
-    output for some set functions(mainly : - in, is_subset), made 
+  * Earlier expr and sets were treated equal which gave incorrect
+    output for some set functions(mainly : - in, is_subset), made
     sets and expr not to be equal (#20208 by @sidhu1012)
-  * nested multi-symbol first arg for ConditionSet now handled 
+  * nested multi-symbol first arg for ConditionSet now handled
     with subs/as_dummy (#19512 by @smichr)
-  * the bound symbols cannot be replaced with subs (#19512 by 
+  * the bound symbols cannot be replaced with subs (#19512 by
     @smichr)
-  * the error checking for mismatched signatures for sym and the 
+  * the error checking for mismatched signatures for sym and the
     base set has been improved (#19512 by @smichr)
-  * ConditionSet still tries to unify symbols and denest a base 
-    set that is given as a ConditionSet but will no longer 
-    introduce new symbols (and will leave the base set a a 
+  * ConditionSet still tries to unify symbols and denest a base
+    set that is given as a ConditionSet but will no longer
+    introduce new symbols (and will leave the base set a a
     ConditionSet) when this cannot be done (#19512 by @smichr)
-  * Fixed ConditionSet.dummy_eq() and ConditionSet.as_dummy(). 
+  * Fixed ConditionSet.dummy_eq() and ConditionSet.as_dummy().
     (#19502 by @gschintgen)
-  * Fixed ConditionSet.subs() in the case where the substitution 
+  * Fixed ConditionSet.subs() in the case where the substitution
     targets a free symbol. (#19495 by @gschintgen)
   * Fixed _infimum_key sorting key. (#19437 by @gschintgen)
-  * ImageSets with Lambdas having different symbols will no longer 
-    compare equal and should be compared like a.dummy_eq(b) #19261 
+  * ImageSets with Lambdas having different symbols will no longer
+    compare equal and should be compared like a.dummy_eq(b) #19261
     by @smichr)
   simplify
-  * Fixed sqrtdenest giving wrong results for some forms of sqrt(a 
+  * Fixed sqrtdenest giving wrong results for some forms of sqrt(a
     + b*sqrt(r)) (#19932 by @sylee957)
-  * Fixes a bug in collect when collection keys are not 
+  * Fixes a bug in collect when collection keys are not
     independent. (#19720 by @mloubout)
-  * Improved simplification for sign() (#19596 by 
+  * Improved simplification for sign() (#19596 by
     @dhruvmendiratta6 and @smichr)
-  * Improved trigsimp for hyperbolic functions nested in non-trig 
+  * Improved trigsimp for hyperbolic functions nested in non-trig
     functions. (#19548 by @gschintgen)
-  * Fixes a bug in collect when collected symbols appear in the 
+  * Fixes a bug in collect when collected symbols appear in the
     facorized expression. (#19431 by @mloubout)
   solvers
-  * Added simplification strategies for simplifying the solutions 
+  * Added simplification strategies for simplifying the solutions
     of systems of ODEs (#19998 by @mijo2 and @oscarbenjamin)
-  * Fix bug in nonlinsolve leading to key-error (#19189 by 
+  * Fix bug in nonlinsolve leading to key-error (#19189 by
     @nsfinkelstein and @oscarbenjamin)
-  * improved functionality for solveset in case of inequalities 
+  * improved functionality for solveset in case of inequalities
     (#19978 by @maurogaravello)
-  * Handling of inequalities involving Piecewise is improved in 
+  * Handling of inequalities involving Piecewise is improved in
     solveset. (#19986 by @maurogaravello)
-  * Solving higher-order system of ODEs by reducing/transforming 
-    it into the first-order system of ODEs by numerous methods. 
+  * Solving higher-order system of ODEs by reducing/transforming
+    it into the first-order system of ODEs by numerous methods.
     (#19838 by @mijo2)
-  * Added component division technique to divide the system of 
-    ODEs into logical sub-systems and solving each of these 
+  * Added component division technique to divide the system of
+    ODEs into logical sub-systems and solving each of these
     separately. (#19762 by @mijo2)
-  * Extending checkodesol and constants_renumber to handle system 
+  * Extending checkodesol and constants_renumber to handle system
     of ODEs (#19733 by @mijo2)
-  * Added dsolve_system that can solve a system of ODEs (#19695 by 
+  * Added dsolve_system that can solve a system of ODEs (#19695 by
     @mijo2)
-  * API for the _linear_neq_order1_type1-4 was changed to make it 
+  * API for the _linear_neq_order1_type1-4 was changed to make it
     easier for anyone to access the solver (#19653 by @mijo2)
-  * Solving linear systems particularly involving polynomial 
+  * Solving linear systems particularly involving polynomial
     coefficients is much faster (#18844 by @oscarbenjamin)
-  * Added the new n equations linear first-order non-constant 
-    coefficient non-homogeneous solver where the coefficient 
-    matrix of the system of ODEs is commutative with its 
+  * Added the new n equations linear first-order non-constant
+    coefficient non-homogeneous solver where the coefficient
+    matrix of the system of ODEs is commutative with its
     antiderivative. (#19594 by @mijo2)
-  * solveset will always use a symbol that has only either the 
-    real or complex attribute and no other attribute; when a 
-    ConditionSet is returned, the original symbol for which the 
-    solution is being sought will be used if it does not cause 
+  * solveset will always use a symbol that has only either the
+    real or complex attribute and no other attribute; when a
+    ConditionSet is returned, the original symbol for which the
+    solution is being sought will be used if it does not cause
     evaluation of the result. (#19512 by @smichr)
-  * In dsolve there is no a general solver that can solve systems 
-    of constant coefficient non-homogeneous first order ODEs of 
+  * In dsolve there is no a general solver that can solve systems
+    of constant coefficient non-homogeneous first order ODEs of
     any size in terms of integrals. (#19341 by @mijo2)
-  * Fixed exception handling in solveset's secondary trigonometric 
+  * Fixed exception handling in solveset's secondary trigonometric
     solver. (#19566 by @gschintgen)
-  * equations with an additive generator are now solved more 
+  * equations with an additive generator are now solved more
     quickly (#19524 by @smichr)
-  * Improved solveset capabilities for solving trigonometric 
-    equations, notably rational and symbolic coefficients are now 
+  * Improved solveset capabilities for solving trigonometric
+    equations, notably rational and symbolic coefficients are now
     supported. (#19507 by @gschintgen)
-  * solve_linear_system is now a thin wrapper for linsolve. It is 
-    recommended to use linsolve in new code. solve_linear_system 
-    maybe deprecated or removed in future. (#18814 by 
+  * solve_linear_system is now a thin wrapper for linsolve. It is
+    recommended to use linsolve in new code. solve_linear_system
+    maybe deprecated or removed in future. (#18814 by
     @oscarbenjamin)
-  * Addition of a solver that handles a subclass of linear first 
-    order non-constant coefficient homogeneous systems of ODEs 
+  * Addition of a solver that handles a subclass of linear first
+    order non-constant coefficient homogeneous systems of ODEs
     with any number of equations. (#19185 by @mijo2)
   stats
-  * The state space of ContinuousMarkovChain is now by default a 
-    Range object instead of S.Reals. (#20150 by @czgdp1807 and 
+  * The state space of ContinuousMarkovChain is now by default a
+    Range object instead of S.Reals. (#20150 by @czgdp1807 and
     @naveensaigit)
-  * The generator matrix of ContinuousMarkovChain is now by 
-    default a MatrixSymbol object instead of None. (#20150 by 
+  * The generator matrix of ContinuousMarkovChain is now by
+    default a MatrixSymbol object instead of None. (#20150 by
     @czgdp1807 and @naveensaigit)
-  * RandomMatrixSymbol.doit will be invariant upon call. (#20136 
-    by @sylee957) 
-  * The state space of DiscreteMarkovChain is now by default a 
+  * RandomMatrixSymbol.doit will be invariant upon call. (#20136
+    by @sylee957)
+  * The state space of DiscreteMarkovChain is now by default a
     Range object instead of S.Reals. (#20042 by @Maelstrom6)
-  * The transition probability matrix of DiscreteMarkovChain is 
-    now by default a MatrixSymbol object instead of None. (#20042 
+  * The transition probability matrix of DiscreteMarkovChain is
+    now by default a MatrixSymbol object instead of None. (#20042
     by @Maelstrom6)
-  * Fixed xreplace infinitely expanding random matrix ensemble 
+  * Fixed xreplace infinitely expanding random matrix ensemble
     classes. (#20018 by @sylee957)
-  * All the ensemble classes (RandomMatrixEnsemble, 
-    GaussianEnsemble, GaussianOrthogonalEnsemble, ...) now becomes 
-    stub function constructors. If you want to use them as 
-    classes, you should import them as RandomMatrixEnsembleModel, 
+  * All the ensemble classes (RandomMatrixEnsemble,
+    GaussianEnsemble, GaussianOrthogonalEnsemble, ...) now becomes
+    stub function constructors. If you want to use them as
+    classes, you should import them as RandomMatrixEnsembleModel,
     GaussianEnsembleModel, ... (#20018 by @sylee957)
-  * Added sampling of Joint RVs from external libraries (#19848 by 
+  * Added sampling of Joint RVs from external libraries (#19848 by
     @Smit-create)
-  * Added sampling for Matrix Distributions (#19857 by 
+  * Added sampling for Matrix Distributions (#19857 by
     @Smit-create)
-  * Allowing CompoundDistribution to handle more than one random 
+  * Allowing CompoundDistribution to handle more than one random
     variables (#19808 by @Smit-create)
-  * Added Wishart and MatrixNormal Distributions (#19795 by 
+  * Added Wishart and MatrixNormal Distributions (#19795 by
     @Smit-create)
-  * Change in return type of P and E with evaluate=False. With    
-    evaluate=False, P and E are made to return Probability and 
+  * Change in return type of P and E with evaluate=False. With
+    evaluate=False, P and E are made to return Probability and
     Expectation object respectively. (#19819 by @Smit-create)
   * Added MatrixGamma Distribution (#19734 by @Smit-create)
-  * Added symbolic classes of Moment and CentralMoment (#19724 by 
+  * Added symbolic classes of Moment and CentralMoment (#19724 by
     @Smit-create)
-  * Added support for Compound Distributions (#19648 by 
+  * Added support for Compound Distributions (#19648 by
     @Smit-create)
   * Added doit in class Probability (#19696 by @Smit-create)
-  * Added MutlivariateNormal and MutlivariateLaplace function 
+  * Added MutlivariateNormal and MutlivariateLaplace function
     (#19631 by @Smit-create)
-  * Added Poisson, Wiener and Gamma Processes (#19387 by 
+  * Added Poisson, Wiener and Gamma Processes (#19387 by
     @Smit-create)
-  * Added Expectation Matrix, Variance Matrix and CrossCovariance 
+  * Added Expectation Matrix, Variance Matrix and CrossCovariance
     Matrix (#19529 by @Smit-create)
-  * Added sample_stochastic for sampling from stochastic 
+  * Added sample_stochastic for sampling from stochastic
     processes. (#19500 by @Smit-create)
-  * FIxes free_symbols method of RandomIndexedSymbol (#19459 by 
+  * FIxes free_symbols method of RandomIndexedSymbol (#19459 by
     @Smit-create)
-  * Added Sampling from external libraries for all the random 
+  * Added Sampling from external libraries for all the random
     variables of sympy (#19342 by @Smit-create)
-  * Added doit method in Expectation and made E to call 
+  * Added doit method in Expectation and made E to call
     Expectation (#19290 by @Smit-create)
-  * Added is_random in sympy.stats.rv to check if expression 
+  * Added is_random in sympy.stats.rv to check if expression
     contains random variables (#19304 by @Smit-create)
-  * expand added in sympy.stats.symbolic_rv API. (#19295 by 
+  * expand added in sympy.stats.symbolic_rv API. (#19295 by
     @Smit-create)
-  * Added Lomax and Bounded pareto distribution (#19273 by 
+  * Added Lomax and Bounded pareto distribution (#19273 by
     @Smit-create)
-  * Added sampling methods for continuous variables (#18754 by 
+  * Added sampling methods for continuous variables (#18754 by
     @Smit-create)
   * Added library option in sample (#18754 by @Smit-create)
-  * sample returns an iterator object since version 1.7 (#18754 by 
+  * sample returns an iterator object since version 1.7 (#18754 by
     @Smit-create)
   tensor
-  * Adding ArrayDerivative class as subclass of Derivative. This 
-    new handles derivatives involving non-scalar expressions. 
+  * Adding ArrayDerivative class as subclass of Derivative. This
+    new handles derivatives involving non-scalar expressions.
     (#20072 by @Upabjojr)
   utilities
-  * sympy.utilities.iterables.partitions() no longer reuses the 
+  * sympy.utilities.iterables.partitions() no longer reuses the
     same dictionary for each yielded output. (#20154 by @asmeurer)
-  * Add support for Integral with lambdify (using scipy or mpmath) 
+  * Add support for Integral with lambdify (using scipy or mpmath)
     (#20134 by @ehren)
-  * Lambdifying an expression with loggamma using mpmath no longer 
+  * Lambdifying an expression with loggamma using mpmath no longer
     raises ImportError. (#19913 by @abhaydhiman)
   * find_executable is deprecated in favor of the builtin shutil.
     which. (#19634 by @eric-wieser)
   vector
-  * integral of parametric region depends on the order of limits 
+  * integral of parametric region depends on the order of limits
     at the time of initialization. (#20044 by @friyaz)
-  * vector_integrate can integrate over ImplicitRegion objects. 
+  * vector_integrate can integrate over ImplicitRegion objects.
     (#19883 by @friyaz)
-  * Added a function to find a rational point on conic (#19807 by 
+  * Added a function to find a rational point on conic (#19807 by
     @friyaz and @Upabjojr)
-  * Added support to create implictly defined regions. (#19681 by 
+  * Added support to create implictly defined regions. (#19681 by
     @friyaz)
-  * Added support to integrate scalar/vector fields over objects 
+  * Added support to integrate scalar/vector fields over objects
     of geometry module. (#19650 by @friyaz)
-  * added class to represent integral of scalar/vector field over 
+  * added class to represent integral of scalar/vector field over
     a parametric surface. (#19539 by @friyaz)
   * Modified API of ParametricIntegral class (#19580 by @friyaz)
-  * Added class to represent a parametric region in space. (#19472 
+  * Added class to represent a parametric region in space. (#19472
     by @friyaz)
   other
-  * The LaTeX docs now need to built with xelatex rather than 
+  * The LaTeX docs now need to built with xelatex rather than
     pdflatex. (#20309 by @oscarbenjamin)
-  * Support for Python 3.5 has been dropped. SymPy now requires 
+  * Support for Python 3.5 has been dropped. SymPy now requires
     Python 3.6 or newer. (#20145 by @oscarbenjamin)
-  * more function raise TypeError when passed invalid 
-    keyword-arguments, rather than ignoring them silently (#20086 
+  * more function raise TypeError when passed invalid
+    keyword-arguments, rather than ignoring them silently (#20086
     by @eric-wieser)
-  * assert sympy.testing.pytest.raises(Exception, func) no longer 
-    always asserts when pytest is not present (#20012 by 
+  * assert sympy.testing.pytest.raises(Exception, func) no longer
+    always asserts when pytest is not present (#20012 by
     @eric-wieser)
-  * Make SymPy do less at import time so that import sympy is 
+  * Make SymPy do less at import time so that import sympy is
     faster. (#19910 by @asmeurer)
-  * Improve code quality by cleaning the doctests up (#19406 by 
+  * Improve code quality by cleaning the doctests up (#19406 by
     @InCogNiTo124 and @oscarbenjamin)
-  * intersphinx links to :mod:`sympy` no longer point to the 
+  * intersphinx links to :mod:`sympy` no longer point to the
    documentation for Immutable Matrices (#19430 by @eric-wieser)
 
 -------------------------------------------------------------------
@@ -1386,12 +1392,12 @@ Tue Jan 15 17:30:55 UTC 2013 - p.drouand@gmail.com
 - Update to 0.7.2 version:
   * pep8 correction: don't include space around * and **
   * radsimp watches for pure radical in denominator
-  * pep8 E702: one statement per line 
+  * pep8 E702: one statement per line
   * add class name to hash value
   * give more explicit error messages
   * fix quality and ode constant numbering bug
-  * mprovements to euler equation solver 
-  * Sparse hash now includes shape 
+  * mprovements to euler equation solver
+  * Sparse hash now includes shape
   * add hash to SparseMatrix
   * raise notimplemented on MatrixExpr.conjugate
   * removed cruft print statement
@@ -1413,7 +1419,7 @@ Thu May  3 14:58:12 UTC 2012 - cfarrell@suse.com
 -------------------------------------------------------------------
 Sat Feb 25 21:50:14 UTC 2012 - scorot@free.fr
 
-- fix build for SLE-11 
+- fix build for SLE-11
 
 -------------------------------------------------------------------
 Sun Nov 20 17:59:44 UTC 2011 - werner.ho@gmx.de

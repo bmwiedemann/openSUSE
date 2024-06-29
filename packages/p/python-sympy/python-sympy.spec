@@ -1,7 +1,7 @@
 #
 # spec file for package python-sympy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # Tests run 7h53m47s in OBS ... so we are switching them off right now
 %bcond_with  test
 Name:           python-sympy
-Version:        1.12
+Version:        1.12.1
 Release:        0
 Summary:        Computer algebra system (CAS) in Python
 License:        BSD-3-Clause
@@ -28,14 +28,14 @@ Group:          Development/Libraries/Python
 URL:            https://www.sympy.org/
 Source0:        https://files.pythonhosted.org/packages/source/s/sympy/sympy-%{version}.tar.gz
 Source99:       python-sympy-rpmlintrc
-BuildRequires:  %{python_module mpmath >= 0.19}
+BuildRequires:  %{python_module mpmath >= 1.1.0 with %python-mpmath < 1.4.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-mpmath >= 0.19
+Requires:       python-mpmath >= 1.1.0
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-ipython
 Recommends:     python-numpy
 Recommends:     python-symengine

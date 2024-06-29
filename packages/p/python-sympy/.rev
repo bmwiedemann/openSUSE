@@ -278,4 +278,41 @@ Note: resubmit with fixed license</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1091342</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>9f42197558090fe4d4bc807d29e6adab</srcmd5>
+    <version>1.12.1</version>
+    <time>1719667042</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.12.1:
+  * improved compatibility with NumPy 2.0 and CPython 3.12
+
+  * https://github.com/sympy/sympy/wiki/release-notes-for-1.12
+  * There was a regression in 1.7 that meant that __slots__
+    would not work correctly for Basic instances and they
+    would end up having __dict__. This also made it possible
+    to set arbitrary attributes on Basic instances such as
+    symbols which breaks immutability. This was fixed in
+    1.7.1 to ensure that Basic instances do not have
+    __dict__ and it is not possible to set attributes on
+  * Fixed lazy iteration of series with expr.series(x,
+     n=None) which was broken in the 1.7 release. (#20589 by
+     @oscarbenjamin and @sachin-4099)
+  * Updated documentation for sympy.stats.sample for seed
+  * sympy.stats.sample now has an optional seed argument.
+  * Random failures with sympy.stats.sample have now been
+  * Modules and names that were accidentally importable from
+    sympy are no longer importable. In sympy 1.6 importing and
+    using these names would give a deprecation warning. In
+    sympy 1.7 these names are removed. As an example from
+    sympy import add would need to be from sympy.core import
+    add or import sympy.core.add as add. (#19554 by
+  * DEPRECATION: Using non-Expr args in Add, Mul or Pow is
+  * Manifold.patches attribute is deprecated. (#19368 by
+  * Patch.coord_systems attribute is deprecated. (#19368 by
+  * Class signature names of CoordSystem is deprecated.
+    CoordinateSymbol class and CoordSystem.symbols attribute are
+  * CoordSystem.transforms, CoordSystem.connect_to, and
+    CoordSystem.coord_tuple_transform_to are deprecated. Class</comment>
+    <requestid>1183920</requestid>
+  </revision>
 </revisionlist>
