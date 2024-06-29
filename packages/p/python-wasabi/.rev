@@ -25,4 +25,14 @@
     <comment>- require setuptools</comment>
     <requestid>1136279</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fa7fca360b080b3d75948ad8d9c003e2</srcmd5>
+    <version>1.1.3</version>
+    <time>1719667030</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.3:
+  * Add support for Python 3.12 on the CI
+  * Allow `typing-extensions&lt;5.0.0` for Python &lt; 3.8</comment>
+    <requestid>1183914</requestid>
+  </revision>
 </revisionlist>
