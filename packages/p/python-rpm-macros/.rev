@@ -664,4 +664,13 @@ prerequisite for new python submission</comment>
 </comment>
     <requestid>1181469</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>75457e838ce730155110432c553ec08e</srcmd5>
+    <version>20240618.c146b29</version>
+    <time>1719666970</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240618.c146b29:
+  * Add %FLAVOR_pytest and %FLAVOR_pyunittest variants</comment>
+    <requestid>1183805</requestid>
+  </revision>
 </revisionlist>
