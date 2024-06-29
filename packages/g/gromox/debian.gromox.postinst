@@ -44,7 +44,7 @@ if test -x /usr/bin/systemctl; then
 		gromox-pop3.service gromox-timer.service gromox-zcore.service \
 		grommunio-chat.service \
 		php7.4-fpm.service php8.0-fpm.service php8.1-fpm.service \
-		php8.2-fpm.service \
+		php8.2-fpm.service php8.3-fpm.service \
 		saslauthd.service 2>/dev/null || :
 fi
 }

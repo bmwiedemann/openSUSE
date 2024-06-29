@@ -1,7 +1,7 @@
 Format: 1.0
 Source: gromox
 Architecture: any
-Version: 2.29
+Version: 2.30
 DEBTRANSFORM-RELEASE: 1
 Maintainer: Gromox <null@gromox.com>
 Homepage: https://gromox.com
@@ -21,7 +21,7 @@ Build-Depends:
  libcurl4-openssl-dev,
  libesedb-dev,
  libfmt-dev (>= 8),
- libhx-dev (>= 4.12),
+ libhx-dev (>= 4.19),
  libjsoncpp-dev (>= 1.4.0),
  libkrb5-dev,
  libldap2-dev,
