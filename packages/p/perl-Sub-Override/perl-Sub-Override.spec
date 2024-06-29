@@ -18,13 +18,14 @@
 
 %define cpan_name Sub-Override
 Name:           perl-Sub-Override
-Version:        0.100.0
+Version:        0.120.0
 Release:        0
-%define cpan_version 0.10
+# 0.12 -> normalize -> 0.120.0
+%define cpan_version 0.12
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl extension for easily overriding subroutines
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/O/OV/OVID/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/M/MV/MVSJES/%{cpan_name}-%{cpan_version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros

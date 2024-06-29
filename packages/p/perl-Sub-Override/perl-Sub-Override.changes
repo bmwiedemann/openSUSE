@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jun 23 16:48:07 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 0.120.0 (0.12)
+   see /usr/share/doc/packages/perl-Sub-Override/Changes
+
+  0.12  Mon Jun 17 2024
+      - Add 'inject' method which can inject a new subroutine into a namespace.
+      - Add 'inherit' method which can inherit a subroutine from a parent object.
+      - Bug fix for wrap not restoring during destruction.
+      - Internal cleanup.
+
+  0.11  Tue May 14 2024
+      - Update the 'wrap' routine so it handles prototypes transparently.
+      - Update the 'wrap' routine to prevent creation of an extra stack frame.
+      - Minor doc updates.
+
+-------------------------------------------------------------------
 Fri Mar  8 23:04:42 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides
