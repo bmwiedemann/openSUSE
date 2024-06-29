@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sat Jun 22 18:28:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.73:
+  + Try to not fail when writing UTF po files with old Perl
+    versions.
+  + Improve various error messages to help users debugging encoding
+    issues.
+- Changes from version 0.72:
+  + TransTractor:
+    - Remove one source of supirious error reports when writing
+      files.
+  + Asciidoc:
+    - Support a cleanspaces option to remove extra spaces in
+      wrapped lines.
+  + Man/Groff:
+    - Handle ~ as non-breaking space.
+    - Properly handle \c escape sequence in .TP parameters.
+  + Markdown:
+    - Treat tables as verbatim paragraphs.
+  + All scripts:
+    - Add an option -w/--width to rewrap text on an arbitrary
+      column.
+  + po4a main script only:
+    - Fix the behavior of --translate-only.
+  + Documentation:
+    - Fix typos.
+    - Kill outdated documentation on Pod parameters.
+- Changes from version 0.71:
+  + po4a main script:
+    - Fix the parsing of nested simple and double quotes mixed with
+      escaped spaces.
+    - Properly parse config files iteratively redefining the same
+      alias to enrich it.
+    - Don't eat up quotes around parameters containing spaces, as
+      they are needed later on when passing parameters to msgmerge
+      and friends.
+  + Gemtext:
+    - New module.
+  + Documentation:
+    - Fix many typos introduced in previous release.
+  + General:
+    - Better error messages on encoding errors. It remains fragile,
+      but at least we try to display an error message.
+- Changes from version 0.70:
+  + Major cleanup:
+    - Greatly simplify the code by using PerlIO instead of messing
+      up with encodings manually. This is a very intrusive change,
+      and even if all tests of our comprehensive suite pass, expect
+      issues with this on some corner cases, such as projects not
+      using UTF-8 but a mixture of encodings.
+
+
+-------------------------------------------------------------------
 Mon Jan 16 07:06:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to v0.69:

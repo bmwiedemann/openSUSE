@@ -1,7 +1,7 @@
 #
 # spec file for package po4a
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           po4a
-Version:        0.69
+Version:        0.73
 Release:        0
 Summary:        Framework to translate documentation and other materials
 License:        GPL-2.0-only
@@ -153,7 +153,6 @@ rm -rf t/fmt-tex.t t/fmt/tex
 %dir %{_mandir}/ru
 %dir %{_mandir}/sr_Cyrl
 %dir %{_mandir}/uk
-%dir %{_mandir}/zh_CHS
 %dir %{_mandir}/zh_Hant
 
 %changelog
