@@ -8,4 +8,18 @@
 </comment>
     <requestid>1178257</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c158c7132c90ecbf1bbbf6c8b35d956e</srcmd5>
+    <version>2.2.0</version>
+    <time>1719667037</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.2.0:
+  * All exceptions in `webauthn.helpers.exceptions` now subclass
+    the new `webauthn.helpers.exceptions.WebAuthnException` base
+    exception
+  * Support has been added for the new `&quot;smart-card&quot;` transport
+
+- Initial release of python-webauthn 2.1.0</comment>
+    <requestid>1183950</requestid>
+  </revision>
 </revisionlist>

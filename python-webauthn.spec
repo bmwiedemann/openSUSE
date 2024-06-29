@@ -18,16 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-webauthn
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Pythonic WebAuthn
 License:        BSD-3-Clause
 URL:            https://github.com/duo-labs/py_webauthn
 Source:         https://files.pythonhosted.org/packages/source/w/webauthn/webauthn-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module asn1crypto >= 1.4.0}
 BuildRequires:  %{python_module cbor2 >= 5.4.6}

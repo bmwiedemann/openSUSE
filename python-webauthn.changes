@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun 29 07:01:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.0:
+  * All exceptions in `webauthn.helpers.exceptions` now subclass
+    the new `webauthn.helpers.exceptions.WebAuthnException` base
+    exception
+  * Support has been added for the new `"smart-card"` transport
+
+-------------------------------------------------------------------
 Fri May 31 12:02:21 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
-- Initial release of python-webauthn 2.1.0 
+- Initial release of python-webauthn 2.1.0
