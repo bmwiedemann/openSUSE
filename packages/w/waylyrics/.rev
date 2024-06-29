@@ -400,4 +400,17 @@ The upstream has developed for a long time and waylyrics has been stable, althou
   * 修复了一些安装文档的小问题</comment>
     <requestid>1182564</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7d48bec3fc04c239e31b3dd765893f7f</srcmd5>
+    <version>0.3.13</version>
+    <time>1719667116</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.3.13:
+  * chore: release v0.3.13
+  * fix: missing import statement
+  * fix: do not remove original lyric on extracting translated ones
+  * docs(readme): add `ncmpcpp` via mpd-mpris
+  * chore: bump dependencies</comment>
+    <requestid>1183967</requestid>
+  </revision>
 </revisionlist>

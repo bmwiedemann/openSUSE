@@ -3,7 +3,7 @@
         <param name="url">https://github.com/waylyrics/waylyrics.git</param>
         <param name="versionformat">@PARENT_TAG@</param>
         <param name="scm">git</param>
-        <param name="revision">v0.3.12</param>
+        <param name="revision">v0.3.13</param>
         <param name="match-tag">*</param>
         <!--<param name="parent-tag">4c93d60a3c95ef2a8a3acc88a9ca11bbd70d2c5a</param>-->
         <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>

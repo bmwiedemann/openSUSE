@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun 29 07:16:14 UTC 2024 - xtexchooser@duck.com
+
+- Update to version 0.3.13:
+  * chore: release v0.3.13
+  * fix: missing import statement
+  * fix: do not remove original lyric on extracting translated ones
+  * docs(readme): add `ncmpcpp` via mpd-mpris
+  * chore: bump dependencies
+
+-------------------------------------------------------------------
 Sat Jun 22 04:30:16 UTC 2024 - xtexchooser@duck.com
 
 - Update to version 0.3.12:
