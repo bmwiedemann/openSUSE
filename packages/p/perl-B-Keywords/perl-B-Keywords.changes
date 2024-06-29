@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 23 16:09:33 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 1.270.0 (1.27)
+   see /usr/share/doc/packages/perl-B-Keywords/Changes
+
+  1.27 2024-05-27 12:13 rurban
+    - Add bareword __CLASS__ since 5.39.2
+
+-------------------------------------------------------------------
 Tue Jun 20 03:06:02 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.26
