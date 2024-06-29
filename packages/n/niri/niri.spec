@@ -18,7 +18,7 @@
 
 %bcond_without test
 Name:           niri
-Version:        0.1.6
+Version:        0.1.7
 Release:        0
 Summary:        Scrollable-tiling Wayland compositor
 License:        GPL-3.0-or-later
@@ -54,7 +54,6 @@ Recommends:     swaylock
 Recommends:     swaybg
 Recommends:     mako
 Recommends:     xwayland-run
-ExcludeArch:    i586
 
 %description
 A scrollable-tiling Wayland compositor.

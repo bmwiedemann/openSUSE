@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Sat Jun 29 07:23:35 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.1.7
+  * The big update this time is fractional scale support. You can
+    set output scale to fractional values like 1.5 and automatic
+    scale factor guessing will now return fractional scale factors.
+  * niri layout now completely operates in floating-point. While
+    fractional scaling benefits the most from this, fractional
+    layout is also useful for integer scales.
+  * You can now select an individual window to screencast through
+    xdg-desktop-portal-gnome. You can resize windows, open pop-ups,
+    use block-out rules, and it will all work correctly.
+  * implemented the xdg-activation-v1 protocol which allows apps to
+    pass focus to other apps.
+  * added the vertical drag gesture to switch workspaces, just like
+    on a touchpad you can swipe both horizontally and vertically.
+  * Added four actions focus-window-{up,down}-or-column-{left,right}
+    which allow traversing all windows on a workspace in order.
+  * Added actions focus-column-right-or-first, focus-column-left-or-
+    last which allow the focus to loop around.
+  * Added actions focus-column-or-monitor-left and focus-column-or-
+    monitor-right that switch the monitor upon reaching the end of
+    the workspace.
+  * Added niri msg focused-output which returns information about
+    the currently focused output.
+  * Added off flag to disable input devices.
+  * Added left-handed flag to touchpad, mouse, tablet input config.
+  * Added scroll-method property to touchpad, mouse, trackpoint
+    input config.
+  * Added disabled-on-external-mouse flag to touchpad input config.
+  * Niri now additionally reads the config file path from
+    $NIRI_CONFIG, to help with nix wrappers. The --config flag
+    still takes precedence.
+  * Changed absolute pointer input to work over a union rectangle
+    across all outputs, rather than picking a single output.
+  * Changed tablet input without a specific map-to-output to map to
+    a union rectangle across all outputs. This makes Open Tablet
+    Driver work.
+  * Changed foreign-toplevel (i.e. Waybar) window activation to
+    animate the workspace switch.
+  * Fixed focus-window-or-workspace-{up,down} missing the workspace
+    switch animation.
+  * Fixed empty named workspaces disappearing upon output removal.
+  * Fixed a crash when an (already unfullscreened) window that in a
+    column with other windows requests to be unfullscreened.
+  * Fixed key repeat not working when the keyboard config section is
+    missing.
+  * Fixed some crashes when no outputs are connected. On some devices
+    outputs reconnect themselves upon resuming from sleep, which was
+    triggering these issues.
+  * Fixed rounded corners rendering blurry on very high scale factors.
+  * Fixed the automatic draw border with background check to also
+    include the KDE decoration protocol value. This makes it work for
+    some older clients like GTK 3 (thanks @kchibisov).
+  * Fixed ISO_Level3_Shift modifier not showing up in the Important
+    Hotkeys list.
+  * Niri now increases the fd limit to the maximum, fixing some
+    fd-heavy clients (e.g. running RustRover in Xwayland).
+  * Updated Smithay, which fixes running on the NVIDIA 555 driver
+    (explicit sync is still not implemented for now).
+- Enable arch i586 again
+
+-------------------------------------------------------------------
 Sat May 18 18:27:17 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.1.6
