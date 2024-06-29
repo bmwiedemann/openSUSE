@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 29 05:18:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.18.2:
+  * Add Zstd codec to old V3 code path.
+  * Fix a regression when getting or setting a single value from
+    arrays with size-1 chunks.
+
+-------------------------------------------------------------------
 Wed May  8 10:59:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.18.0:
