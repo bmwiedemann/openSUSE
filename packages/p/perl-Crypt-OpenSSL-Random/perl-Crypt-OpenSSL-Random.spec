@@ -18,10 +18,10 @@
 
 %define cpan_name Crypt-OpenSSL-Random
 Name:           perl-Crypt-OpenSSL-Random
-Version:        0.160.0
+Version:        0.170.0
 Release:        0
-# 0.16 -> normalize -> 0.160.0
-%define cpan_version 0.16
+# 0.17 -> normalize -> 0.170.0
+%define cpan_version 0.17
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        OpenSSL/LibreSSL pseudo-random number generator access
 URL:            https://metacpan.org/release/%{cpan_name}
