@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jun 23 16:10:07 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 4.660.0 (4.66)
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.66 2024-06-04
+      [ FIX ]
+      - Restore trailing slashes in the ->url call (GH #267)
+  4.65 2024-06-04
+      [ TESTING ]
+      - "fix" t/url.t for older Perls (GH #266)
+
+-------------------------------------------------------------------
 Fri Mar 22 16:06:11 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.64
