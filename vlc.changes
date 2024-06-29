@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 27 13:54:03 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Restrict required version for libav* to avoid pulling in ffmpeg-6
+  packages.
+
+-------------------------------------------------------------------
 Fri Jun 14 13:14:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Build dca support only on Leap 15.6 and newer when not using 3rd

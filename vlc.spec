@@ -119,6 +119,9 @@ BuildRequires:  pkgconfig(libplacebo) < 6.292.0
 BuildRequires:  speex-devel >= 1.0.5
 BuildRequires:  update-desktop-files
 BuildRequires:  vcdimager-devel
+BuildRequires:  (pkgconfig(libavcodec) >= 57.37.100 with pkgconfig(libavcodec) < 60)
+BuildRequires:  (pkgconfig(libavformat) >= 53.21.0 with pkgconfig(libavformat) < 60)
+BuildRequires:  (pkgconfig(libavutil) >= 52.4.0 with pkgconfig(libavutil) < 58)
 BuildRequires:  pkgconfig(Qt5Core) >= 5.5.0
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Svg)
@@ -132,9 +135,6 @@ BuildRequires:  pkgconfig(fdk-aac)
 BuildRequires:  pkgconfig(gnutls) >= 3.2.0
 BuildRequires:  pkgconfig(libarchive) >= 3.1.0
 BuildRequires:  pkgconfig(libass) >= 0.9.8
-BuildRequires:  pkgconfig(libavcodec) >= 57.37.100
-BuildRequires:  pkgconfig(libavformat) >= 53.21.0
-BuildRequires:  pkgconfig(libavutil) >= 52.4.0
 BuildRequires:  pkgconfig(libbluray) >= 0.6.2
 %if %dca
 BuildRequires:  pkgconfig(libdca) >= 0.0.5
