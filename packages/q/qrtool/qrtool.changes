@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun 29 05:48:35 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.10.13
+  * Add options to optimize output PNG image
+  * Change the encode command to return an error if --type is
+    terminal and the --foreground and/or --background options
+    specify values other than the default
+    
+-------------------------------------------------------------------
 Thu Jun 27 08:43:11 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.10.11
