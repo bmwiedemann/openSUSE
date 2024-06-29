@@ -68,4 +68,13 @@
   * Dropped support for Python 3.5, 3.6, and 3.7.</comment>
     <requestid>1135348</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9fb62595d9bcdeabc855745d3b3f5314</srcmd5>
+    <version>2.4.1</version>
+    <time>1719667039</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.4.1:
+  * Added type annotations</comment>
+    <requestid>1183923</requestid>
+  </revision>
 </revisionlist>

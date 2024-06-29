@@ -1,7 +1,7 @@
 #
 # spec file for package python-siphashc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2017 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-siphashc
-Version:        2.3
+Version:        2.4.1
 Release:        0
 Summary:        Python C module to calculate SipHashes
 License:        ISC
