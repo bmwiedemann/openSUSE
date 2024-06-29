@@ -1,7 +1,7 @@
 #
 # spec file for package python-robotframework
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-robotframework
-Version:        6.1.1
+Version:        7.0.1
 Release:        0
 Summary:        Generic test automation framework for acceptance testing and ATDD
 License:        Apache-2.0
@@ -30,14 +30,15 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
 %description
-Robot Framework is a generic open source automation framework for acceptance testing, acceptance
-test driven development (ATDD), and robotic process automation (RPA). It has simple plain text
-syntax and it can be extended easily with libraries implemented using Python or Java.
+Robot Framework is a generic open source automation framework for acceptance
+testing, acceptance test driven development (ATDD), and robotic process
+automation (RPA). It has simple plain text syntax and it can be extended easily
+with libraries implemented using Python or Java.
 
 %prep
 %setup -q -n robotframework-%{version}

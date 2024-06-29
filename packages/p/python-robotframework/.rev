@@ -62,4 +62,14 @@
     * Using keywords accepting embedded arguments when library is imported multiple times using the WITH</comment>
     <requestid>1133553</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f8813b8a083694db58b36656427871a8</srcmd5>
+    <version>7.0.1</version>
+    <time>1719667036</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.0.1:
+  * https://github.com/robotframework/robotframework/blob/master/doc/releasenotes/rf-7.0.1.rst
+  * https://github.com/robotframework/robotframework/blob/master/doc/releasenotes/rf-7.0.rst</comment>
+    <requestid>1183948</requestid>
+  </revision>
 </revisionlist>
