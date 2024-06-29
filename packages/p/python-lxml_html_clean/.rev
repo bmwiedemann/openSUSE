@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b29d7d174c3466a02982fd2054677a0d</srcmd5>
+    <version>0.1.1</version>
+    <time>1719667008</time>
+    <user>anag+factory</user>
+    <comment>New package.
+Need since python-lxml &gt;= 5.2.0 among others for calibre.</comment>
+    <requestid>1183861</requestid>
+  </revision>
+</revisionlist>

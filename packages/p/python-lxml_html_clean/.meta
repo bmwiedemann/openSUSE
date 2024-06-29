@@ -1,0 +1,6 @@
+<package name="python-lxml_html_clean" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-lxml_html_clean"/>
+  <url>https://github.com/fedora-python/lxml_html_clean/</url>
+</package>
