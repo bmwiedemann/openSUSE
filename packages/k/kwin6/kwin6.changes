@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun 27 11:42:31 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.1.2:
+  * New bugfix release
+- Changes since 6.1.1:
+  * 3rdparty: Reformat xcursor.{h,c}
+  * utils: Load Xcursor themes using QFile (kde#489241)
+  * 3rdparty: Drop xcursor write hook
+  * plugins/hidecursor: Set minimum to allow disabling hiding cursor on inactivity
+  * WindowHeapDelegate: Label text background (kde#483016)
+  * plugins/backgroundcontrast,blur: correct support checks
+  * opengl/glframebuffer: handle missing support for blits on Wayland (kde#484193)
+  * opengl: glBufferStorage is not supported on GL ES by default
+  * core/renderloop: assume high render times if the last frame has been a while ago
+
+-------------------------------------------------------------------
 Tue Jun 25 17:13:30 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.1:
