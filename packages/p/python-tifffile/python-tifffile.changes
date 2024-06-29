@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Jun 29 05:46:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.6.18:
+  * Ensure TiffPage.nodata is castable to dtype (breaking, #260).
+  * Derive TiffPages, TiffPageSeries, FileSequence, StoredShape
+    from Sequence.
+  * Truncate circular IFD chain, do not raise TiffFileError
+    (breaking).
+  * Deprecate access to TiffPages.pages and FileSequence.files.
+  * Enable DeprecationWarning for enums in TIFF namespace.
+  * Remove some deprecated code (breaking).
+  * Add iccprofile property to TiffPage and parameter to
+    TiffWriter.write.
+  * Do not detect VSI as SIS format.
+  * Limit length of logged exception messages.
+  * Fix docstring examples not correctly rendered on GitHub
+    (#254, #255).
+  * Support reading JPEGXL compression in DNG 1.7.
+  * Read invalid TIFF created by IDEAS software.
+  * Fix reading incompletely written LSM.
+  * Fix reading Philips DP with extra rows of tiles (#253,
+    breaking).
+  * Fix compatibility issue with numpy 2 (#252).
+  * Fix write_fsspec when last row of tiles is missing in Philips
+    slide (#249).
+  * Add option not to quote file names in write_fsspec.
+  * Allow compress bilevel images with deflate, LZMA, and Zstd.
+
+-------------------------------------------------------------------
 Sun Mar  3 11:18:34 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2024.2.12

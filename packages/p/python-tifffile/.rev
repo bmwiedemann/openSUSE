@@ -188,4 +188,36 @@ This should fix ERROR: download_files is configured to fail when the upstream fi
     <comment></comment>
     <requestid>1155044</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>42b1ddb603b3be099e32e75d6dd0ff03</srcmd5>
+    <version>2024.6.18</version>
+    <time>1719667045</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.6.18:
+  * Ensure TiffPage.nodata is castable to dtype (breaking, #260).
+  * Derive TiffPages, TiffPageSeries, FileSequence, StoredShape
+    from Sequence.
+  * Truncate circular IFD chain, do not raise TiffFileError
+    (breaking).
+  * Deprecate access to TiffPages.pages and FileSequence.files.
+  * Enable DeprecationWarning for enums in TIFF namespace.
+  * Remove some deprecated code (breaking).
+  * Add iccprofile property to TiffPage and parameter to
+    TiffWriter.write.
+  * Do not detect VSI as SIS format.
+  * Limit length of logged exception messages.
+  * Fix docstring examples not correctly rendered on GitHub
+    (#254, #255).
+  * Support reading JPEGXL compression in DNG 1.7.
+  * Read invalid TIFF created by IDEAS software.
+  * Fix reading incompletely written LSM.
+  * Fix reading Philips DP with extra rows of tiles (#253,
+    breaking).
+  * Fix compatibility issue with numpy 2 (#252).
+  * Fix write_fsspec when last row of tiles is missing in Philips
+    slide (#249).
+  * Add option not to quote file names in write_fsspec.
+  * Allow compress bilevel images with deflate, LZMA, and Zstd.</comment>
+    <requestid>1183924</requestid>
+  </revision>
 </revisionlist>
