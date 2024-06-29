@@ -260,4 +260,12 @@
     <comment></comment>
     <requestid>1168519</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>89609f64bbb68510bf68f7e988a5e153</srcmd5>
+    <version>1.2.2</version>
+    <time>1719667121</time>
+    <user>anag+factory</user>
+    <comment>New upstream release 1.2.2 (forwarded request 1183113 from dancermak)</comment>
+    <requestid>1183982</requestid>
+  </revision>
 </revisionlist>

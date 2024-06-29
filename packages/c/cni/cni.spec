@@ -22,7 +22,7 @@
 %define         cni_bin_dir  %{_libexecdir}/cni
 %define         cni_doc_dir  %{_docdir}/cni
 Name:           cni
-Version:        1.2.0
+Version:        1.2.2
 Release:        0
 Summary:        Container Network Interface - networking for Linux containers
 License:        Apache-2.0

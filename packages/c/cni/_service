@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/containernetworking/cni.git</param>
     <param name="scm">git</param>
-    <param name="revision">v1.2.0</param>
+    <param name="revision">v1.2.2</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <!-- filter out spec-vN.M.O tags -->

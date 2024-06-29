@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jun 25 07:39:41 UTC 2024 - dcermak@suse.com
+
+- Update to version 1.2.2:
+  * libcni: remove use of Masterminds/semver
+
+-------------------------------------------------------------------
+Thu Jun 20 12:53:53 UTC 2024 - dcermak@suse.com
+
+- Update to version 1.2.1:
+  * SPEC: add warning about preserving shared resources for GC
+  * Fix faulty json.Marshal behavior for embeds types.NetConf
+  * libcni: implement disableGC
+  * Spec: add disableGC flag
+  * GetCachedAttachments should ignore missing directories
+  * libcni: always delete the cache on conflist for CNI DEL
+  * supplement ns building files for darwin os
+
+-------------------------------------------------------------------
 Tue Apr 16 13:27:50 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - Remove 0001-fix-upstream-CVE-2021-38561.patch, patch has been merged into
