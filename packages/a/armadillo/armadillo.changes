@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jun 29 06:16:36 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 14.0.0:
+  * C++14 is now the minimum recommended C++ standard.
+  * Faster handling of compound expressions by as_scalar(),
+    accu(), dot().
+  * Faster interactions between sparse and dense matrices.
+  * Expanded stddev() to handle sparse matrices.
+  * Expanded relational operators to handle expressions between
+    sparse matrices and scalars.
+  * Added .as_dense() to obtain dense vector/matrix representation
+    of any sparse matrix expression.
+  * Updated physical constants to NIST 2022 CODATA values.
+
+-------------------------------------------------------------------
 Tue May 14 06:24:04 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 12.8.3:

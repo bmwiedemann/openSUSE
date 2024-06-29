@@ -1533,4 +1533,16 @@
     <comment></comment>
     <requestid>1174146</requestid>
   </revision>
+  <revision rev="189" vrev="1">
+    <srcmd5>ad66417b519b2729ce33a41a325699d7</srcmd5>
+    <version>14.0.0</version>
+    <time>1719667026</time>
+    <user>anag+factory</user>
+    <comment>Update to version 14.0.0
+
+
+
+(🤖: Submission of armadillo via https://src.opensuse.org/pool/armadillo/pulls/1 by badshah400)</comment>
+    <requestid>1183947</requestid>
+  </revision>
 </revisionlist>
