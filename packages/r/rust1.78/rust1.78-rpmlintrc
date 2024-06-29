@@ -28,3 +28,8 @@ addFilter("readelf-failed /usr/lib/rustlib/wasm32-wasi/lib/self-contained/libc.a
 
 # We know, it's okay.
 addFilter("obsolete-not-provided .*")
+
+# We need to provide the rust sources, they aren't a devel package.
+addFilter("devel-file-in-non-devel-package .*")
+# Some of the sources have test scripts, ignore.
+addFilter("env-script-interpreter .*")

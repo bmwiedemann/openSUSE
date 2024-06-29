@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun 28 06:38:06 UTC 2024 - William Brown <william.brown@suse.com>
+
+- Fix incorrect test conditional
+
+-------------------------------------------------------------------
+Thu Jun 27 06:51:05 UTC 2024 - William Brown <william.brown@suse.com>
+
+- Add src, rustfmt and clippy for the Linux Kernel CI tooling.
+
+-------------------------------------------------------------------
 Fri May 17 22:53:49 UTC 2024 - William Brown <william.brown@suse.com>
 
 - Update incorrect tumbleweed version check.
