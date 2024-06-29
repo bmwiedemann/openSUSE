@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Jun 28 09:11:04 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 7.13.0
+  * New Features
+    - When merging books add an option to store discarded or
+      replaced covers as an alternate cover in the data folder of
+      the target book
+    - Generate CSV catalog: Add a button to sort the fields by the
+      order in which they appear in the book list
+  * Bug Fixes
+    - MTP driver: Preserve cover aspect ratio for thumbnail
+      generation
+    - Fix identifiers not always being merged correctly when
+      merging books
+    - DOCX Input: Fix extra left padding when converting lists
+    - Amazon metadata download: Get title and comments for
+      audiobook pages
+    - Amazon metadata: When filtering search engine results by
+      title ignore words of the title that are purely punctuation
+    - When matching books on a device to book in the library assume
+      a match if the title and any one author match, 
+      dont require all authors to match
+    - Update Google Images cover download plugin for website changes
+    - When adding new books if the timestamp is specified as
+      undefined use the current timestamp
+    - Content server: Fix systemd pre-activated socket not working
+    - Content server: Fix no KFX download link in OPDS acquisition
+      feeds
+
+-------------------------------------------------------------------
+Sun Jun 23 09:55:12 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Fix build error for Tumbleweed.
+  Since version 5.2.0 of python-lxml the new package
+  python-lxml_html_clean is needed.
+
+-------------------------------------------------------------------
 Fri May 31 06:21:09 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 7.12.0

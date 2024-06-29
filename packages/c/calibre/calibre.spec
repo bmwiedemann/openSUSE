@@ -20,7 +20,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           calibre
-Version:        7.12.0
+Version:        7.13.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -174,6 +174,7 @@ BuildRequires:  python311-pyqt-builder >= 1.14.0
 BuildRequires:  python311-pyzstd >= 0.15.6
 BuildRequires:  python311-qt6-devel >= %{my_qtversion}
 BuildRequires:  python311-regex >= 2021.11.10
+BuildRequires:  (python311-lxml_html_clean if python311-lxml >= 5.2.0)
 # Upstream use: BuildRequires:  python311-setuptools >= 68.2.2
 BuildRequires:  python311-setuptools >= 67.8.0
 BuildRequires:  python311-qtwebengine-qt6 >= %{my_qtversion}
@@ -251,6 +252,7 @@ Requires:       python311-six >= 1.16.0
 Requires:       python311-soupsieve >= 2.5
 Requires:       python311-texttable >= 1.6.4
 Requires:       python311-xxhash >= 3.3.0
+Requires:       (python311-lxml_html_clean if python311-lxml >= 5.2.0)
 #Requires:       python311-unrardll >= 0.1.5
 Requires:       python311-py7zr >= 0.20.6
 %if 0%{?suse_version} > 1500
