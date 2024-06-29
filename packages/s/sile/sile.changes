@@ -1,7 +1,28 @@
 -------------------------------------------------------------------
+Fri Jun 28 17:30:05 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 0.15.4:
+  * New Features
+   - build: Add a developer target to test build dist without automake
+   - languages: Add Brazilian Portuguese specific hyphenation point
+   - packages: Biblatex data inheritance and field mapping
+   - packages: Support `@string` syntax in bibTeX bibliography
+   - packages: Support `@xdata` entry type and xdata field in bibTeX bibliography
+   - packages: Support crossref field in bibTeX bibliography
+   - tooling: Add developer target to build Rust API docs
+  * Bug Fixes
+   - build: Avoid building sile binaries if not using them
+   * build: Avoid the perceived need for an extra automake cycle in dist tarball
+   * build: Do not distribute main man page, requires Rust tooling
+   * build: Don't distribute distfiles list with configure option specific output
+   * languages: Always set Fluent locale when setting `document.language`
+   * packages: Correct handling of ampersands and tildes in bibtex
+   * packages: Ignore `@preamble`  in bibTeX bibliography
+
+-------------------------------------------------------------------
 Tue Jun 18 17:16:10 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
-- Add export LUA_INCLUDE="$(pkg-config --cflags-only-I luajit)"
+- Add export LUA_INCLUDE="-I/usr/include/luajit-5_1-2.1"
   so that we are finally building with LuaJIT headers.
   * I don't know why the configure file does not detect them by default
     are they placed in a non-standard location?

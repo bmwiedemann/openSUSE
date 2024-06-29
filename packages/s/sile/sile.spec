@@ -18,7 +18,7 @@
 
 %bcond_without  tests
 Name:           sile
-Version:        0.15.3
+Version:        0.15.4
 Release:        0
 Summary:        Simon’s Improved Layout Engine
 License:        MIT
@@ -30,8 +30,8 @@ Source3:        LICENSE
 
 # Lua modules
 BuildRequires:  luajit
-BuildRequires:  luajit-devel
 BuildRequires:  lua51-bit32
+BuildRequires:  luajit-devel
 Requires:       lua51-bit32
 BuildRequires:  lua51-cassowary
 Requires:       lua51-cassowary
@@ -176,7 +176,7 @@ unset LIBSSH2_SYS_USE_PKG_CONFIG
 export RUSTFLAGS=" -Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2 -C incremental=false -C strip=none"
 export CARGO_AUDITABLE=auditable
 export CARGO_FEATURE_VENDORED=1
-export LUA_INCLUDE="$(pkg-config --cflags-only-I luajit)"
+export LUA_INCLUDE="-I/usr/include/luajit-5_1-2.1"
 export CFLAGS="%optflags $(pkg-config --cflags-only-I luajit)"
 export CXXFLAGS="%optflags $(pkg-config --cflags-only-I luajit)"
 %configure \

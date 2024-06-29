@@ -3,7 +3,7 @@
   <service mode="manual" name="download_url">
      <param name="protocol">https</param>
      <param name="host">github.com</param>
-     <param name="path">/sile-typesetter/sile/releases/download/v0.15.3/sile-0.15.3.tar.zst</param>
+     <param name="path">/sile-typesetter/sile/releases/download/v0.15.4/sile-0.15.4.tar.zst</param>
   </service>
   <service name="cargo_vendor" mode="manual">
      <param name="src">sile*.tar.zst</param>
