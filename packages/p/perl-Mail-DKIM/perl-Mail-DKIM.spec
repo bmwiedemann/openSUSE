@@ -18,7 +18,7 @@
 
 %define cpan_name Mail-DKIM
 Name:           perl-Mail-DKIM
-Version:        1.20240124
+Version:        1.20240619
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Signs/verifies Internet mail with DKIM/DomainKey signatures
@@ -38,6 +38,7 @@ BuildRequires:  perl(Net::DNS)
 BuildRequires:  perl(Net::DNS::Resolver)
 BuildRequires:  perl(Net::DNS::Resolver::Mock)
 BuildRequires:  perl(Test::RequiresInternet)
+BuildRequires:  perl(YAML)
 BuildRequires:  perl(YAML::XS)
 Requires:       perl(Crypt::OpenSSL::RSA)
 Requires:       perl(Crypt::PK::Ed25519)

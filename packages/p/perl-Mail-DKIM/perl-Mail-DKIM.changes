@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 23 16:29:40 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 1.20240619
+   see /usr/share/doc/packages/perl-Mail-DKIM/Changes
+
+  1.20240619 2024-06-19 Australia/Melbourne
+    * Remove version check for Net::DNS, this fixes issues when using a
+      development version of Net::DNS
+
+-------------------------------------------------------------------
 Thu Jan 25 03:07:52 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.20240124
