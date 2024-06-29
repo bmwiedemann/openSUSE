@@ -132,4 +132,13 @@
 - use PEP517 build</comment>
     <requestid>1171455</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>bd0d2fdc6e79ab0b2d4b27a7e99e44f1</srcmd5>
+    <version>4.0</version>
+    <time>1719667032</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0:
+  * Drop support for Python 3.7.</comment>
+    <requestid>1183917</requestid>
+  </revision>
 </revisionlist>
