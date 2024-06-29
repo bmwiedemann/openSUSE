@@ -6658,4 +6658,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.9.6 &amp; important iwlwifi fix</comment>
     <requestid>1182944</requestid>
   </revision>
+  <revision rev="738" vrev="1">
+    <srcmd5>55f81c1f8030fd08108eca9e13232606</srcmd5>
+    <version>6.9.7</version>
+    <time>1719666998</time>
+    <user>anag+factory</user>
+    <comment>6.9.7</comment>
+    <requestid>1183793</requestid>
+  </revision>
 </revisionlist>
