@@ -75,4 +75,13 @@
   * Fix writing generator of ROIs (#9).</comment>
     <requestid>1160437</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3251f2b78055a3f2c56feff6a983246e</srcmd5>
+    <version>2024.5.24</version>
+    <time>1719667047</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.5.24:
+  * Fix GitHub not correctly rendering docstring examples.</comment>
+    <requestid>1183925</requestid>
+  </revision>
 </revisionlist>
