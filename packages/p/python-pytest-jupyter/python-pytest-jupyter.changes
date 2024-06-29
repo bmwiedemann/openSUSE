@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 20 07:46:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.1:
+  * Fix passing of kwargs to websocket_connect
+  * Set all min deps
+- update to 0.10.0:
+  * jp_ws_fetch: passthrough kwargs to websocket_connect
+
+-------------------------------------------------------------------
 Fri Mar 29 19:05:45 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.9.1

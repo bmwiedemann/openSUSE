@@ -30,7 +30,7 @@
 %bcond_with ringdisabled
 %define skip_python39 1
 Name:           python-pytest-jupyter%{psuffix}
-Version:        0.9.1
+Version:        0.10.1
 Release:        0
 Summary:        A pytest plugin for testing Jupyter libraries and extensions
 License:        BSD-3-Clause AND MIT
@@ -42,7 +42,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-jupyter_core >= 5.7
-Requires:       python-pytest
+Requires:       python-pytest >= 7.0
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module pytest-jupyter = %{version}}
