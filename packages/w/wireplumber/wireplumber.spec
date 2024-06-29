@@ -22,7 +22,7 @@
 %define sover 0
 %define libwireplumber libwireplumber-%{apiver_str}-%{sover}
 Name:           wireplumber
-Version:        0.5.3+git11.4868b3c
+Version:        0.5.4+git2.96dc045
 Release:        0
 Summary:        Session / policy manager implementation for PipeWire
 License:        MIT
@@ -236,22 +236,18 @@ fi
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-reserve-device.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-settings.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-si-audio-adapter.so
-%{_libdir}/wireplumber-%{apiver}/libwireplumber-module-si-audio-virtual.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-si-node.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-si-standard-link.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-standard-event-source.so
 
 %{_userunitdir}/wireplumber.service
 %{_userunitdir}/wireplumber@.service
-%{_datadir}/wireplumber
 %dir %{_datadir}/doc/wireplumber
 %dir %{_datadir}/doc/wireplumber/examples
 %{_datadir}/doc/wireplumber/examples/wireplumber.conf.d
-%{_datadir}/wireplumber/wireplumber.conf
-%dir %{_datadir}/wireplumber/wireplumber.conf.d
+%{_datadir}/wireplumber
 %exclude %{_datadir}/wireplumber/wireplumber.conf.d/00-device-monitors.conf
 %exclude %{_datadir}/wireplumber/wireplumber.conf.d/01-require-audio-in-main-profile.conf
-%{_datadir}/wireplumber/wireplumber.conf.d/alsa-vm.conf
 
 %files lang -f %{name}.lang
 

@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="url">https://gitlab.freedesktop.org/pipewire/wireplumber.git</param>
 <!--
-    <param name="revision">0.5.3</param>
+    <param name="revision">0.5.4</param>
     <param name="versionformat">@PARENT_TAG@</param>
 -->
     <param name="revision">master</param>
