@@ -295,4 +295,14 @@ Should fix problem with non-downloadable source file.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1181279</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>02d7c1e55518967c4731e0f182b2d523</srcmd5>
+    <version>2.6.14</version>
+    <time>1719667028</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.6.14:
+  * GridFlow fixes for empty container
+  * Fix ScrollBar mouse_event handling with ListBox</comment>
+    <requestid>1183913</requestid>
+  </revision>
 </revisionlist>
