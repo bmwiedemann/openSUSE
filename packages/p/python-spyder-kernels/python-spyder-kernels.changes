@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 29 06:04:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.2:
+  * PR 489 - PR: Fix detecting Matplotlib backend for its 3.9.0
+    version
+
+-------------------------------------------------------------------
 Tue Mar  5 18:55:24 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip python39 altogether: no ipykernel anymore
@@ -168,7 +175,7 @@ Fri Jan 21 19:34:25 UTC 2022 - Ben Greiner <code@bnavigator.de>
     by @ccordoba12 (343)
   * Update Quansight logo in Readme, by @ccordoba12
   * Fix some namespace issues, by @impact27 (345)
-  * Fix misplaced section in changelog, by @ccordoba12 
+  * Fix misplaced section in changelog, by @ccordoba12
 
 -------------------------------------------------------------------
 Mon Jan 10 23:00:19 UTC 2022 - Ben Greiner <code@bnavigator.de>
@@ -225,7 +232,7 @@ Mon Jun 14 14:48:16 UTC 2021 - Ben Greiner <code@bnavigator.de>
 Fri May 21 14:16:35 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2.0.3
-  * PR 291 - PR: Pass adding breakpoint on ValueError, 
+  * PR 291 - PR: Pass adding breakpoint on ValueError,
 
 -------------------------------------------------------------------
 Sun May  2 21:22:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
@@ -281,19 +288,19 @@ Sat Dec 19 22:43:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
   * PR 270 - PR: Treat 'pkgs' path as a library, by @dalthviz (269)
   * PR 267 - PR: Remove handlers that require direct code
     execution, by @ccordoba12
-  * PR 266 - PR: Add exception for quit and exit in SpyderPdb, 
+  * PR 266 - PR: Add exception for quit and exit in SpyderPdb,
     by @impact27
   * PR 265 - PR: Add space after dot in a message, by @impact27
   * PR 264 - PR: Add explicit requirement on IPython and require
     version 7.6.0+, by @ccordoba12 (256)
   * PR 263 - PR: Add extra validation to is_module_installed, by
     @ccordoba12
-  * PR 262 - PR: Avoid infinite hang when quitting external 
+  * PR 262 - PR: Avoid infinite hang when quitting external
     kernels, by @impact27
   * PR 261 - PR: Fix get_cwd permission errors, by @steff456
   * PR 260 - PR: Fix Github actions, by @ccordoba12
 - Remove unused mock dependency
- 
+
 -------------------------------------------------------------------
 Thu Nov 12 22:04:31 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
@@ -302,26 +309,26 @@ Thu Nov 12 22:04:31 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
   * Use '!' to prefix Pdb commands.
   * Show length of all iterables.
   Issues Closed
-  * Issue 247 - Remove from warning that future versions of 
-    Spyder will give an error when using non-Python syntax 
+  * Issue 247 - Remove from warning that future versions of
+    Spyder will give an error when using non-Python syntax
     (PR 243 by @impact27)
   * Issue 245 - Display size of string in variable editor
   Pull Requests Merged
   * PR 255 - PR: Fix warning for '!' Pdb option, by @impact27
 
-  * PR 253 - PR: Extend sys.path with paths that come from 
+  * PR 253 - PR: Extend sys.path with paths that come from
     Spyder, by @ccordoba12
-  * PR 252 - PR: Use frame locals when evaluating code in 
+  * PR 252 - PR: Use frame locals when evaluating code in
     Pdb, by @impact27
-  * PR 251 - PR: Catch errors when trying to get the len of 
+  * PR 251 - PR: Catch errors when trying to get the len of
     an object, by @impact27
-  * PR 250 - PR: Show size of objects correctly, if they 
+  * PR 250 - PR: Show size of objects correctly, if they
     implement len(), by @skjerns
-  * PR 246 - PR: Allow sorting with custom sorting key, by 
+  * PR 246 - PR: Allow sorting with custom sorting key, by
     @skjerns
-  * PR 244 - PR: Set multiprocessing ORIGINAL_DIR at startup, 
+  * PR 244 - PR: Set multiprocessing ORIGINAL_DIR at startup,
     by @impact27 (13632)
-  * PR 243 - PR: Allow leading indents in cells, by 
+  * PR 243 - PR: Allow leading indents in cells, by
     @impact27 (247)
   * PR 242 - PR: Display error if required, by @impact27
   * PR 240 - PR: Hide runcell and runfile frames using a new
@@ -389,7 +396,7 @@ Thu May  7 18:28:54 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 -------------------------------------------------------------------
 Mon Apr 20 08:39:29 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
-- remove unused python2 requirements 
+- remove unused python2 requirements
 
 -------------------------------------------------------------------
 Sun Mar 22 13:49:29 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
@@ -716,7 +723,7 @@ Sun Apr  7 12:03:58 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - [PR 53](https://github.com/spyder-ide/spyder-kernels/pull/53) - PR: Remove current working directory from sys.path before starting the console kernel ([8007](https://github.com/spyder-ide/spyder/issues/8007))
   - [PR 37](https://github.com/spyder-ide/spyder-kernels/pull/37) - PR: Initial tests for the console kernel ([23](https://github.com/spyder-ide/spyder-kernels/issues/23))
   - [PR 36](https://github.com/spyder-ide/spyder-kernels/pull/36) - PR: Make tests to really fail in CircleCI
-  - [PR 21](https://github.com/spyder-ide/spyder-kernels/pull/21) - PR: Add AUTHORS.txt in MANIFEST.in to include in package 
+  - [PR 21](https://github.com/spyder-ide/spyder-kernels/pull/21) - PR: Add AUTHORS.txt in MANIFEST.in to include in package
 
 -------------------------------------------------------------------
 Tue Sep 11 17:30:31 UTC 2018 - Sebastian Wagner <sebix+novell.com@sebix.at>

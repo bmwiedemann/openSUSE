@@ -631,4 +631,30 @@
 </comment>
     <requestid>1155335</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>f933c61283ac69838b5059c97ec396f2</srcmd5>
+    <version>2.5.2</version>
+    <time>1719667048</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.5.2:
+  * PR 489 - PR: Fix detecting Matplotlib backend for its 3.9.0
+    version
+
+  * Fix misplaced section in changelog, by @ccordoba12
+  * PR 291 - PR: Pass adding breakpoint on ValueError,
+  * PR 266 - PR: Add exception for quit and exit in SpyderPdb,
+  * PR 262 - PR: Avoid infinite hang when quitting external
+  * Issue 247 - Remove from warning that future versions of
+    Spyder will give an error when using non-Python syntax
+  * PR 253 - PR: Extend sys.path with paths that come from
+  * PR 252 - PR: Use frame locals when evaluating code in
+  * PR 251 - PR: Catch errors when trying to get the len of
+  * PR 250 - PR: Show size of objects correctly, if they
+  * PR 246 - PR: Allow sorting with custom sorting key, by
+  * PR 244 - PR: Set multiprocessing ORIGINAL_DIR at startup,
+  * PR 243 - PR: Allow leading indents in cells, by
+- remove unused python2 requirements
+  - [PR 21](https://github.com/spyder-ide/spyder-kernels/pull/21) - PR: Add AUTHORS.txt in MANIFEST.in to include in package</comment>
+    <requestid>1183942</requestid>
+  </revision>
 </revisionlist>

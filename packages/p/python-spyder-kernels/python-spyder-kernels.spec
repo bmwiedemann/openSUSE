@@ -21,7 +21,7 @@
 # no ipykernel anymore
 %define skip_python39 1
 Name:           python-spyder-kernels
-Version:        2.5.1
+Version:        2.5.2
 Release:        0
 Summary:        Jupyter kernels for Spyder's console
 License:        MIT
