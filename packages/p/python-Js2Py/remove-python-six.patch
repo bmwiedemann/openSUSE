@@ -1,0 +1,1110 @@
+Index: Js2Py-0.74/js2py/base.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/base.py
++++ Js2Py-0.74/js2py/base.py
+@@ -14,19 +14,14 @@ except:
+     NUMPY_AVAILABLE = False
+ 
+ # python 3 support
+-import six
+-if six.PY3:
+-    basestring = str
+-    long = int
+-    xrange = range
+-    unicode = str
++basestring = str
++long = int
++xrange = range
++unicode = str
+ 
+ 
+ def str_repr(s):
+-    if six.PY2:
+-        return repr(s.encode('utf-8'))
+-    else:
+-        return repr(s)
++    return repr(s)
+ 
+ 
+ def MakeError(name, message):
+@@ -180,7 +175,7 @@ def Js(val, Clamped=False):
+ 
+     elif isinstance(val, dict):  # convert to object
+         temp = PyJsObject({}, ObjectPrototype)
+-        for k, v in six.iteritems(val):
++        for k, v in iter(val.items()):
+             temp.put(Js(k), Js(v))
+         return temp
+     elif isinstance(val, (list, tuple)):  #Convert to array
+@@ -1006,9 +1001,8 @@ class PyJs(object):
+         return self.to_python()
+ 
+ 
+-if six.PY3:
+-    PyJs.__hash__ = PyJs._fuck_python3
+-    PyJs.__truediv__ = PyJs.__div__
++PyJs.__hash__ = PyJs._fuck_python3
++PyJs.__truediv__ = PyJs.__div__
+ #Define some more classes representing operators:
+ 
+ 
+@@ -1079,7 +1073,7 @@ class Scope(PyJs):
+         if closure is None:
+             # global, top level scope
+             self.own = {}
+-            for k, v in six.iteritems(scope):
++            for k, v in iter(scope.items()):
+                 # set all the global items
+                 self.define_own_property(
+                     k, {
+@@ -1359,7 +1353,7 @@ class PyJsObject(PyJs):
+         self.prototype = prototype
+         self.extensible = extensible
+         self.own = {}
+-        for prop, desc in six.iteritems(prop_descs):
++        for prop, desc in iter(prop_descs.items()):
+             self.define_own_property(prop, desc)
+ 
+     def __repr__(self):
+@@ -1369,6 +1363,10 @@ class PyJsObject(PyJs):
+ ObjectPrototype = PyJsObject()
+ 
+ 
++import operator
++get_function_code = operator.attrgetter("__code__")
++
++
+ #Function
+ class PyJsFunction(PyJs):
+     Class = 'Function'
+@@ -1377,7 +1375,7 @@ class PyJsFunction(PyJs):
+         cand = fix_js_args(func)
+         has_scope = cand is func
+         func = cand
+-        self.argcount = six.get_function_code(func).co_argcount - 2 - has_scope
++        self.argcount = get_function_code(func).co_argcount - 2 - has_scope
+         self.code = func
+         self.source = source if source else '{ [python code] }'
+         self.func_name = func.__name__ if not func.__name__.startswith(
+@@ -1723,7 +1721,7 @@ class PyJsArray(PyJs):
+             new_len = desc['value'].to_uint32()
+             if new_len != desc['value'].to_number().value:
+                 raise MakeError('RangeError', 'Invalid range!')
+-            new_desc = dict((k, v) for k, v in six.iteritems(desc))
++            new_desc = dict((k, v) for k, v in iter(desc.items()))
+             new_desc['value'] = Js(new_len)
+             if new_len >= old_len:
+                 return PyJs.define_own_property(self, prop, new_desc)
+@@ -1818,7 +1816,7 @@ class PyJsArrayBuffer(PyJs):
+             new_len = desc['value'].to_uint32()
+             if new_len != desc['value'].to_number().value:
+                 raise MakeError('RangeError', 'Invalid range!')
+-            new_desc = dict((k, v) for k, v in six.iteritems(desc))
++            new_desc = dict((k, v) for k, v in iter(desc.items()))
+             new_desc['value'] = Js(new_len)
+             if new_len >= old_len:
+                 return PyJs.define_own_property(self, prop, new_desc)
+@@ -1914,7 +1912,7 @@ class PyJsInt8Array(PyJs):
+             new_len = desc['value'].to_uint32()
+             if new_len != desc['value'].to_number().value:
+                 raise MakeError('RangeError', 'Invalid range!')
+-            new_desc = dict((k, v) for k, v in six.iteritems(desc))
++            new_desc = dict((k, v) for k, v in iter(desc.items()))
+             new_desc['value'] = Js(new_len)
+             if new_len >= old_len:
+                 return PyJs.define_own_property(self, prop, new_desc)
+@@ -2010,7 +2008,7 @@ class PyJsUint8Array(PyJs):
+             new_len = desc['value'].to_uint32()
+             if new_len != desc['value'].to_number().value:
+                 raise MakeError('RangeError', 'Invalid range!')
+-            new_desc = dict((k, v) for k, v in six.iteritems(desc))
++            new_desc = dict((k, v) for k, v in iter(desc.items()))
+             new_desc['value'] = Js(new_len)
+             if new_len >= old_len:
+                 return PyJs.define_own_property(self, prop, new_desc)
+@@ -2106,7 +2104,7 @@ class PyJsUint8ClampedArray(PyJs):
+             new_len = desc['value'].to_uint32()
+             if new_len != desc['value'].to_number().value:
+                 raise MakeError('RangeError', 'Invalid range!')
+-            new_desc = dict((k, v) for k, v in six.iteritems(desc))
++            new_desc = dict((k, v) for k, v in iter(desc.items()))
+             new_desc['value'] = Js(new_len)
+             if new_len >= old_len:
+                 return PyJs.define_own_property(self, prop, new_desc)
+@@ -2202,7 +2200,7 @@ class PyJsInt16Array(PyJs):
+             new_len = desc['value'].to_uint32()
+             if new_len != desc['value'].to_number().value:
+                 raise MakeError('RangeError', 'Invalid range!')
+-            new_desc = dict((k, v) for k, v in six.iteritems(desc))
++            new_desc = dict((k, v) for k, v in iter(desc.items()))
+             new_desc['value'] = Js(new_len)
+             if new_len >= old_len:
+                 return PyJs.define_own_property(self, prop, new_desc)
+@@ -2298,7 +2296,7 @@ class PyJsUint16Array(PyJs):
+             new_len = desc['value'].to_uint32()
+             if new_len != desc['value'].to_number().value:
+                 raise MakeError('RangeError', 'Invalid range!')
+-            new_desc = dict((k, v) for k, v in six.iteritems(desc))
++            new_desc = dict((k, v) for k, v in iter(desc.items()))
+             new_desc['value'] = Js(new_len)
+             if new_len >= old_len:
+                 return PyJs.define_own_property(self, prop, new_desc)
+@@ -2394,7 +2392,7 @@ class PyJsInt32Array(PyJs):
+             new_len = desc['value'].to_uint32()
+             if new_len != desc['value'].to_number().value:
+                 raise MakeError('RangeError', 'Invalid range!')
+-            new_desc = dict((k, v) for k, v in six.iteritems(desc))
++            new_desc = dict((k, v) for k, v in iter(desc.items()))
+             new_desc['value'] = Js(new_len)
+             if new_len >= old_len:
+                 return PyJs.define_own_property(self, prop, new_desc)
+@@ -2490,7 +2488,7 @@ class PyJsUint32Array(PyJs):
+             new_len = desc['value'].to_uint32()
+             if new_len != desc['value'].to_number().value:
+                 raise MakeError('RangeError', 'Invalid range!')
+-            new_desc = dict((k, v) for k, v in six.iteritems(desc))
++            new_desc = dict((k, v) for k, v in iter(desc.items()))
+             new_desc['value'] = Js(new_len)
+             if new_len >= old_len:
+                 return PyJs.define_own_property(self, prop, new_desc)
+@@ -2586,7 +2584,7 @@ class PyJsFloat32Array(PyJs):
+             new_len = desc['value'].to_uint32()
+             if new_len != desc['value'].to_number().value:
+                 raise MakeError('RangeError', 'Invalid range!')
+-            new_desc = dict((k, v) for k, v in six.iteritems(desc))
++            new_desc = dict((k, v) for k, v in iter(desc.items()))
+             new_desc['value'] = Js(new_len)
+             if new_len >= old_len:
+                 return PyJs.define_own_property(self, prop, new_desc)
+@@ -2682,7 +2680,7 @@ class PyJsFloat64Array(PyJs):
+             new_len = desc['value'].to_uint32()
+             if new_len != desc['value'].to_number().value:
+                 raise MakeError('RangeError', 'Invalid range!')
+-            new_desc = dict((k, v) for k, v in six.iteritems(desc))
++            new_desc = dict((k, v) for k, v in iter(desc.items()))
+             new_desc['value'] = Js(new_len)
+             if new_len >= old_len:
+                 return PyJs.define_own_property(self, prop, new_desc)
+@@ -3014,18 +3012,11 @@ for e in ERROR_NAMES:
+ def fill_prototype(prototype, Class, attrs, constructor=False):
+     for i in dir(Class):
+         e = getattr(Class, i)
+-        if six.PY2:
+-            if hasattr(e, '__func__'):
+-                temp = PyJsFunction(e.__func__, FunctionPrototype)
+-                attrs = dict((k, v) for k, v in attrs.iteritems())
+-                attrs['value'] = temp
+-                prototype.define_own_property(i, attrs)
+-        else:
+-            if hasattr(e, '__call__') and not i.startswith('__'):
+-                temp = PyJsFunction(e, FunctionPrototype)
+-                attrs = dict((k, v) for k, v in attrs.items())
+-                attrs['value'] = temp
+-                prototype.define_own_property(i, attrs)
++        if hasattr(e, '__call__') and not i.startswith('__'):
++            temp = PyJsFunction(e, FunctionPrototype)
++            attrs = dict((k, v) for k, v in attrs.items())
++            attrs['value'] = temp
++            prototype.define_own_property(i, attrs)
+         if constructor:
+             attrs['value'] = constructor
+             prototype.define_own_property('constructor', attrs)
+Index: Js2Py-0.74/js2py/constructors/jsobject.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/constructors/jsobject.py
++++ Js2Py-0.74/js2py/constructors/jsobject.py
+@@ -1,5 +1,4 @@
+ from ..base import *
+-import six
+ 
+ #todo Double check everything is OK
+ 
+@@ -57,10 +56,7 @@ class ObjectMethods:
+                             'Object prototype may only be an Object or null')
+         temp = PyJsObject(prototype=(None if obj.is_null() else obj))
+         if len(arguments) > 1 and not arguments[1].is_undefined():
+-            if six.PY2:
+-                ObjectMethods.defineProperties.__func__(temp, arguments[1])
+-            else:
+-                ObjectMethods.defineProperties(temp, arguments[1])
++            ObjectMethods.defineProperties(temp, arguments[1])
+         return temp
+ 
+     def defineProperty(obj, prop, attrs):
+@@ -143,7 +139,7 @@ class ObjectMethods:
+     def keys(obj):
+         if not obj.is_object():
+             raise MakeError('TypeError', 'Object.keys called on non-object')
+-        return [e for e, d in six.iteritems(obj.own) if d.get('enumerable')]
++        return [e for e, d in iter(obj.own.items()) if d.get('enumerable')]
+ 
+ 
+ # add methods attached to Object constructor
+Index: Js2Py-0.74/js2py/constructors/jsstring.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/constructors/jsstring.py
++++ Js2Py-0.74/js2py/constructors/jsstring.py
+@@ -1,8 +1,6 @@
+ from ..base import *
+ # python 3 support
+-import six
+-if six.PY3:
+-    unichr = chr
++unichr = chr
+ 
+ 
+ @Js
+Index: Js2Py-0.74/js2py/evaljs.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/evaljs.py
++++ Js2Py-0.74/js2py/evaljs.py
+@@ -4,7 +4,6 @@ from .es6 import js6_to_js5
+ import sys
+ import time
+ import json
+-import six
+ import os
+ import hashlib
+ import codecs
+@@ -168,7 +167,7 @@ class EvalJs(object):
+             except:
+                 raise TypeError(
+                     'context has to be either a dict or have __dict__ attr')
+-        for k, v in six.iteritems(context):
++        for k, v in iter(context.items()):
+             setattr(self._var, k, v)
+ 
+     def execute(self, js=None, use_compilation_plan=False):
+@@ -257,10 +256,7 @@ class EvalJs(object):
+     def console(self):
+         """starts to interact (starts interactive console) Something like code.InteractiveConsole"""
+         while True:
+-            if six.PY2:
+-                code = raw_input('>>> ')
+-            else:
+-                code = input('>>>')
++            code = input('>>>')
+             try:
+                 print(self.eval(code))
+             except KeyboardInterrupt:
+Index: Js2Py-0.74/js2py/host/jsfunctions.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/host/jsfunctions.py
++++ Js2Py-0.74/js2py/host/jsfunctions.py
+@@ -1,5 +1,5 @@
+ from ..base import *
+-from six.moves.urllib.parse import quote, unquote
++from urllib.parse import quote, unquote
+ 
+ RADIX_CHARS = {
+     '1': 1,
+Index: Js2Py-0.74/js2py/internals/base.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/internals/base.py
++++ Js2Py-0.74/js2py/internals/base.py
+@@ -9,11 +9,7 @@ from .conversions import *
+ 
+ from pyjsparser import PyJsParser
+ 
+-import six
+-if six.PY2:
+-    from itertools import izip
+-else:
+-    izip = zip
++izip = zip
+ 
+ 
+ 
+@@ -366,7 +362,7 @@ class PyJsObject(PyJs):
+             i += 1
+ 
+     def _set_props(self, prop_descs):
+-        for prop, desc in six.iteritems(prop_descs):
++        for prop, desc in iter(prop_descs.items()):
+             self.define_own_property(prop, desc)
+ 
+ 
+@@ -435,7 +431,7 @@ class PyJsArray(PyJs):
+             new_len = to_uint32(desc['value'])
+             if new_len != to_number(desc['value']):
+                 raise MakeError('RangeError', 'Invalid range!')
+-            new_desc = dict((k, v) for k, v in six.iteritems(desc))
++            new_desc = dict((k, v) for k, v in iter(desc.items()))
+             new_desc['value'] = float(new_len)
+             if new_len >= old_len:
+                 return PyJs.define_own_property(self, prop, new_desc, False)
+@@ -671,7 +667,7 @@ class Scope(PyJs):
+         if parent is None:
+             # global, top level scope
+             self.own = {}
+-            for k, v in six.iteritems(scope):
++            for k, v in iter(scope.items()):
+                 # set all the global items
+                 self.define_own_property(
+                     k, {
+Index: Js2Py-0.74/js2py/internals/constructors/jsobject.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/internals/constructors/jsobject.py
++++ Js2Py-0.74/js2py/internals/constructors/jsobject.py
+@@ -2,7 +2,6 @@ from __future__ import unicode_literals
+ from ..conversions import *
+ from ..func_utils import *
+ from ..base import is_data_descriptor
+-import six
+ 
+ 
+ def Object(this, args):
+@@ -57,12 +56,8 @@ class ObjectMethods:
+         temp = args.space.NewObject()
+         temp.prototype = None if is_null(obj) else obj
+         if len(args) > 1 and not is_undefined(args[1]):
+-            if six.PY2:
+-                args.tup = (args[1], )
+-                ObjectMethods.defineProperties.__func__(temp, args)
+-            else:
+-                args.tup = (args[1], )
+-                ObjectMethods.defineProperties(temp, args)
++            args.tup = (args[1], )
++            ObjectMethods.defineProperties(temp, args)
+         return temp
+ 
+     def defineProperty(this, args):
+@@ -160,7 +155,7 @@ class ObjectMethods:
+         if not is_object(obj):
+             raise MakeError('TypeError', 'Object.keys called on non-object')
+         return args.space.ConstructArray([
+-            unicode(e) for e, d in six.iteritems(obj.own)
++            unicode(e) for e, d in iter(obj.own.items())
+             if d.get('enumerable')
+         ])
+ 
+Index: Js2Py-0.74/js2py/internals/constructors/jsstring.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/internals/constructors/jsstring.py
++++ Js2Py-0.74/js2py/internals/constructors/jsstring.py
+@@ -1,11 +1,10 @@
+ from ..conversions import *
+ from ..func_utils import *
+-from six import unichr
+ 
+ def fromCharCode(this, args):
+     res = u''
+     for e in args:
+-        res += unichr(to_uint16(e))
++        res += chr(to_uint16(e))
+     return res
+ 
+ 
+Index: Js2Py-0.74/js2py/internals/fill_space.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/internals/fill_space.py
++++ Js2Py-0.74/js2py/internals/fill_space.py
+@@ -3,7 +3,6 @@ from __future__ import unicode_literals
+ from .base import Scope
+ from .func_utils import *
+ from .conversions import *
+-import six
+ from .prototypes.jsboolean import BooleanPrototype
+ from .prototypes.jserror import ErrorPrototype
+ from .prototypes.jsfunction import FunctionPrototype
+@@ -22,16 +21,10 @@ from .constructors import jsnumber, jsst
+ def fill_proto(proto, proto_class, space):
+     for i in dir(proto_class):
+         e = getattr(proto_class, i)
+-        if six.PY2:
+-            if hasattr(e, '__func__'):
+-                meth = e.__func__
+-            else:
+-                continue
++        if hasattr(e, '__call__') and not i.startswith('__'):
++            meth = e
+         else:
+-            if hasattr(e, '__call__') and not i.startswith('__'):
+-                meth = e
+-            else:
+-                continue
++            continue
+         meth_name = meth.__name__.strip('_')  # RexExp._exec -> RegExp.exec
+         js_meth = space.NewFunction(meth, space.ctx, (), meth_name, False, ())
+         set_non_enumerable(proto, meth_name, js_meth)
+Index: Js2Py-0.74/js2py/internals/func_utils.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/internals/func_utils.py
++++ Js2Py-0.74/js2py/internals/func_utils.py
+@@ -1,12 +1,10 @@
+ from .simplex import *
+ from .conversions import *
+ 
+-import six
+-if six.PY3:
+-    basestring = str
+-    long = int
+-    xrange = range
+-    unicode = str
++basestring = str
++long = int
++xrange = range
++unicode = str
+ 
+ 
+ def get_arg(arguments, n):
+Index: Js2Py-0.74/js2py/internals/prototypes/jsarray.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/internals/prototypes/jsarray.py
++++ Js2Py-0.74/js2py/internals/prototypes/jsarray.py
+@@ -3,11 +3,8 @@ from ..conversions import *
+ from ..func_utils import *
+ from ..operations import strict_equality_op
+ 
+-import six
+-
+-if six.PY3:
+-    xrange = range
+-    import functools
++xrange = range
++import functools
+ 
+ ARR_STACK = set({})
+ 
+@@ -170,11 +167,8 @@ class ArrayPrototype:
+         if not is_callable(cmpfn):
+             cmpfn = None
+         cmp = lambda a, b: sort_compare(a, b, cmpfn)
+-        if six.PY3:
+-            key = functools.cmp_to_key(cmp)
+-            arr.sort(key=key)
+-        else:
+-            arr.sort(cmp=cmp)
++        key = functools.cmp_to_key(cmp)
++        arr.sort(key=key)
+         for i in xrange(arr_len):
+             if arr[i] is None:
+                 this.delete(unicode(i))
+Index: Js2Py-0.74/js2py/internals/prototypes/jsfunction.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/internals/prototypes/jsfunction.py
++++ Js2Py-0.74/js2py/internals/prototypes/jsfunction.py
+@@ -4,12 +4,10 @@ from ..conversions import *
+ from ..func_utils import *
+ 
+ # python 3 support
+-import six
+-if six.PY3:
+-    basestring = str
+-    long = int
+-    xrange = range
+-    unicode = str
++basestring = str
++long = int
++xrange = range
++unicode = str
+ 
+ # todo fix apply and bind
+ 
+Index: Js2Py-0.74/js2py/internals/prototypes/jsjson.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/internals/prototypes/jsjson.py
++++ Js2Py-0.74/js2py/internals/prototypes/jsjson.py
+@@ -6,12 +6,10 @@ import json
+ 
+ indent = ''
+ # python 3 support
+-import six
+-if six.PY3:
+-    basestring = str
+-    long = int
+-    xrange = range
+-    unicode = str
++basestring = str
++long = int
++xrange = range
++unicode = str
+ 
+ 
+ def parse(this, args):
+Index: Js2Py-0.74/js2py/internals/prototypes/jsnumber.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/internals/prototypes/jsnumber.py
++++ Js2Py-0.74/js2py/internals/prototypes/jsnumber.py
+@@ -2,12 +2,10 @@ from __future__ import unicode_literals
+ from ..conversions import *
+ from ..func_utils import *
+ 
+-import six
+-if six.PY3:
+-    basestring = str
+-    long = int
+-    xrange = range
+-    unicode = str
++basestring = str
++long = int
++xrange = range
++unicode = str
+ 
+ RADIX_SYMBOLS = {
+     0: '0',
+Index: Js2Py-0.74/js2py/internals/simplex.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/internals/simplex.py
++++ Js2Py-0.74/js2py/internals/simplex.py
+@@ -1,10 +1,8 @@
+ from __future__ import unicode_literals
+-import six
+-if six.PY3:
+-    basestring = str
+-    long = int
+-    xrange = range
+-    unicode = str
++basestring = str
++long = int
++xrange = range
++unicode = str
+ 
+ #Undefined
+ class PyJsUndefined(object):
+@@ -28,7 +26,7 @@ NaN = float('nan')
+ 
+ UNDEFINED_TYPE = PyJsUndefined
+ NULL_TYPE = PyJsNull
+-STRING_TYPE = unicode if six.PY2 else str
++STRING_TYPE = str
+ NUMBER_TYPE = float
+ BOOLEAN_TYPE = bool
+ 
+Index: Js2Py-0.74/js2py/internals/trans_utils.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/internals/trans_utils.py
++++ Js2Py-0.74/js2py/internals/trans_utils.py
+@@ -1,9 +1,7 @@
+-import six
+-if six.PY3:
+-    basestring = str
+-    long = int
+-    xrange = range
+-    unicode = str
++basestring = str
++long = int
++xrange = range
++unicode = str
+ 
+ def to_key(literal_or_identifier):
+     ''' returns string representation of this object'''
+Index: Js2Py-0.74/js2py/node_import.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/node_import.py
++++ Js2Py-0.74/js2py/node_import.py
+@@ -3,7 +3,6 @@ __all__ = ['require']
+ import subprocess, os, codecs, glob
+ from .evaljs import translate_js, DEFAULT_HEADER
+ from .translators.friendly_nodes import is_valid_py_name
+-import six
+ import tempfile
+ import hashlib
+ import random
+@@ -87,7 +86,7 @@ def _get_and_translate_npm_module(module
+         addToGlobals(%s, module_temp_love_python);
+         """ % (repr(module_name), repr(module_name))
+         with open(os.path.join(DIRNAME, in_file_name), 'wb') as f:
+-            f.write(code.encode('utf-8') if six.PY3 else code)
++            f.write(code.encode('utf-8'))
+ 
+         pkg_name = module_name.partition('/')[0]
+         if maybe_version_str:
+@@ -126,7 +125,7 @@ def _get_and_translate_npm_module(module
+             os.makedirs(dirname)
+         with open(os.path.join(PY_NODE_MODULES_PATH, module_filename),
+                   'wb') as f:
+-            f.write(py_code.encode('utf-8') if six.PY3 else py_code)
++            f.write(py_code.encode('utf-8'))
+     else:
+         with codecs.open(
+                 os.path.join(PY_NODE_MODULES_PATH, module_filename), "r",
+Index: Js2Py-0.74/js2py/prototypes/jsarray.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/prototypes/jsarray.py
++++ Js2Py-0.74/js2py/prototypes/jsarray.py
+@@ -1,8 +1,5 @@
+-import six
+-
+-if six.PY3:
+-    xrange = range
+-    import functools
++xrange = range
++import functools
+ 
+ 
+ def to_arr(this):
+@@ -164,20 +161,17 @@ class ArrayPrototype:
+             return this.to_object()  # do nothing
+         arr = []
+         for i in xrange(len(this)):
+-            arr.append(this.get(six.text_type(i)))
++            arr.append(this.get(str(i)))
+ 
+         if not arr:
+             return this
+         if not cmpfn.is_callable():
+             cmpfn = None
+         cmp = lambda a, b: sort_compare(a, b, cmpfn)
+-        if six.PY3:
+-            key = functools.cmp_to_key(cmp)
+-            arr.sort(key=key)
+-        else:
+-            arr.sort(cmp=cmp)
++        key = functools.cmp_to_key(cmp)
++        arr.sort(key=key)
+         for i in xrange(len(arr)):
+-            this.put(six.text_type(i), arr[i])
++            this.put(str(i), arr[i])
+ 
+         return this
+ 
+Index: Js2Py-0.74/js2py/prototypes/jsarraybuffer.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/prototypes/jsarraybuffer.py
++++ Js2Py-0.74/js2py/prototypes/jsarraybuffer.py
+@@ -1,10 +1,7 @@
+ # this is based on jsarray.py
+ 
+-import six
+-
+-if six.PY3:
+-    xrange = range
+-    import functools
++xrange = range
++import functools
+ 
+ 
+ def to_arr(this):
+Index: Js2Py-0.74/js2py/prototypes/jsfunction.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/prototypes/jsfunction.py
++++ Js2Py-0.74/js2py/prototypes/jsfunction.py
+@@ -1,10 +1,8 @@
+ # python 3 support
+-import six
+-if six.PY3:
+-    basestring = str
+-    long = int
+-    xrange = range
+-    unicode = str
++basestring = str
++long = int
++xrange = range
++unicode = str
+ 
+ 
+ class FunctionPrototype:
+Index: Js2Py-0.74/js2py/prototypes/jsjson.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/prototypes/jsjson.py
++++ Js2Py-0.74/js2py/prototypes/jsjson.py
+@@ -2,12 +2,10 @@ import json
+ from ..base import Js
+ indent = ''
+ # python 3 support
+-import six
+-if six.PY3:
+-    basestring = str
+-    long = int
+-    xrange = range
+-    unicode = str
++basestring = str
++long = int
++xrange = range
++unicode = str
+ 
+ 
+ def parse(text):
+@@ -176,7 +174,7 @@ def Quote(string):
+ 
+ def to_js(this, d):
+     if isinstance(d, dict):
+-        return this.Js(dict((k, this.Js(v)) for k, v in six.iteritems(d)))
++        return this.Js(dict((k, this.Js(v)) for k, v in iter(d.items())))
+     return this.Js(d)
+ 
+ 
+Index: Js2Py-0.74/js2py/prototypes/jsnumber.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/prototypes/jsnumber.py
++++ Js2Py-0.74/js2py/prototypes/jsnumber.py
+@@ -1,9 +1,7 @@
+-import six
+-if six.PY3:
+-    basestring = str
+-    long = int
+-    xrange = range
+-    unicode = str
++basestring = str
++long = int
++xrange = range
++unicode = str
+ 
+ RADIX_SYMBOLS = {
+     0: '0',
+Index: Js2Py-0.74/js2py/prototypes/jstypedarray.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/prototypes/jstypedarray.py
++++ Js2Py-0.74/js2py/prototypes/jstypedarray.py
+@@ -1,14 +1,12 @@
+ # this is based on jsarray.py
+ 
+-import six
+ try:
+     import numpy
+ except:
+     pass
+ 
+-if six.PY3:
+-    xrange = range
+-    import functools
++xrange = range
++import functools
+ 
+ 
+ def to_arr(this):
+@@ -109,20 +107,17 @@ class TypedArrayPrototype:
+             return this.to_object()  # do nothing
+         arr = []
+         for i in xrange(len(this)):
+-            arr.append(this.get(six.text_type(i)))
++            arr.append(this.get(str(i)))
+ 
+         if not arr:
+             return this
+         if not cmpfn.is_callable():
+             cmpfn = None
+         cmp = lambda a, b: sort_compare(a, b, cmpfn)
+-        if six.PY3:
+-            key = functools.cmp_to_key(cmp)
+-            arr.sort(key=key)
+-        else:
+-            arr.sort(cmp=cmp)
++        key = functools.cmp_to_key(cmp)
++        arr.sort(key=key)
+         for i in xrange(len(arr)):
+-            this.put(six.text_type(i), arr[i])
++            this.put(str(i), arr[i])
+ 
+         return this
+ 
+Index: Js2Py-0.74/js2py/translators/friendly_nodes.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/translators/friendly_nodes.py
++++ Js2Py-0.74/js2py/translators/friendly_nodes.py
+@@ -1,12 +1,10 @@
+ import binascii
+ 
+ from pyjsparser import PyJsParser
+-import six
+-if six.PY3:
+-    basestring = str
+-    long = int
+-    xrange = range
+-    unicode = str
++basestring = str
++long = int
++xrange = range
++unicode = str
+ 
+ REGEXP_CONVERTER = PyJsParser()
+ 
+Index: Js2Py-0.74/js2py/translators/translating_nodes.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/translators/translating_nodes.py
++++ Js2Py-0.74/js2py/translators/translating_nodes.py
+@@ -2,12 +2,10 @@ from __future__ import unicode_literals
+ from pyjsparser.pyjsparserdata import *
+ from .friendly_nodes import *
+ import random
+-import six
+ 
+-if six.PY3:
+-    from functools import reduce
+-    xrange = range
+-    unicode = str
++from functools import reduce
++xrange = range
++unicode = str
+ # number of characters above which expression will be split to multiple lines in order to avoid python parser stack overflow
+ # still experimental so I suggest to set it to 400 in order to avoid common errors
+ # set it to smaller value only if you have problems with parser stack overflow
+@@ -90,7 +88,7 @@ class ContextStack:
+     def get_code(self):
+         code = 'var.registers([%s])\n' % ', '.join(
+             repr(e) for e in self.to_register)
+-        for name, func_code in six.iteritems(self.to_define):
++        for name, func_code in iter(self.to_define.items()):
+             code += func_code
+         return code
+ 
+@@ -342,9 +340,6 @@ def AssignmentExpression(type, operator,
+         raise SyntaxError('Invalid left hand side in assignment!')
+ 
+ 
+-six
+-
+-
+ @limited
+ def SequenceExpression(type, expressions):
+     return reduce(js_comma, (trans(e) for e in expressions))
+@@ -642,7 +637,7 @@ def FunctionDeclaration(type, id, params
+     arg_map = dict(zip(vars, used_vars))
+     arg_map.update({'this': 'this', 'arguments': 'arguments'})
+     arg_conv = 'var = Scope({%s}, var)\n' % ', '.join(
+-        repr(k) + ':' + v for k, v in six.iteritems(arg_map))
++        repr(k) + ':' + v for k, v in iter(arg_map.items()))
+     # and finally set the name of the function to its real name:
+     footer = '%s.func_name = %s\n' % (PyName, repr(JsName))
+     footer += 'var.put(%s, %s)\n' % (repr(JsName), PyName)
+@@ -697,7 +692,7 @@ def FunctionExpression(type, id, params,
+         if id['name'] not in arg_map:
+             arg_map[id['name']] = PyName
+     arg_conv = 'var = Scope({%s}, var)\n' % ', '.join(
+-        repr(k) + ':' + v for k, v in six.iteritems(arg_map))
++        repr(k) + ':' + v for k, v in iter(arg_map.items()))
+     # and finally set the name of the function to its real name:
+     footer = '%s._set_name(%s)\n' % (PyName, repr(JsName))
+     whole_code = header + indent(arg_conv + code) + footer
+Index: Js2Py-0.74/js2py/utils/injector.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/utils/injector.py
++++ Js2Py-0.74/js2py/utils/injector.py
+@@ -3,13 +3,12 @@ __all__ = ['fix_js_args']
+ import types
+ from collections import namedtuple
+ import opcode
+-import six
++import operator
+ import sys
+ import dis
+ 
+-if six.PY3:
+-    xrange = range
+-    chr = lambda x: x
++xrange = range
++chr = lambda x: x
+ 
+ # Opcode constants used for comparison and replacecment
+ LOAD_FAST = opcode.opmap['LOAD_FAST']
+@@ -17,20 +16,30 @@ LOAD_GLOBAL = opcode.opmap['LOAD_GLOBAL'
+ STORE_FAST = opcode.opmap['STORE_FAST']
+ 
+ 
++_func_closure = "__closure__"
++_func_code = "__code__"
++_func_defaults = "__defaults__"
++_func_globals = "__globals__"
++get_function_closure = operator.attrgetter(_func_closure)
++get_function_code = operator.attrgetter(_func_code)
++get_function_defaults = operator.attrgetter(_func_defaults)
++get_function_globals = operator.attrgetter(_func_globals)
++
++
+ def fix_js_args(func):
+     '''Use this function when unsure whether func takes this and arguments as its last 2 args.
+        It will append 2 args if it does not.'''
+-    fcode = six.get_function_code(func)
++    fcode = get_function_code(func)
+     fargs = fcode.co_varnames[fcode.co_argcount - 2:fcode.co_argcount]
+     if fargs == ('this', 'arguments') or fargs == ('arguments', 'var'):
+         return func
+-    code = append_arguments(six.get_function_code(func), ('this', 'arguments'))
++    code = append_arguments(get_function_code(func), ('this', 'arguments'))
+ 
+     result = types.FunctionType(
+         code,
+-        six.get_function_globals(func),
++        get_function_globals(func),
+         func.__name__,
+-        closure=six.get_function_closure(func))
++        closure=get_function_closure(func))
+     return result
+ 
+ 
+@@ -124,22 +133,13 @@ def append_arguments(code_obj, new_local
+             if inst.argval not in code_obj.co_varnames[:code_obj.co_argcount]:  # we do not need to remap existing arguments, they are not shifted by new ones.
+                 arg = inst.arg + len(new_locals)
+         modified.extend(write_instruction(op, arg))
+-    if six.PY2:
+-        code = ''.join(modified)
+-        args = (co_argcount + new_locals_len,
+-                code_obj.co_nlocals + new_locals_len, code_obj.co_stacksize,
+-                code_obj.co_flags, code, code_obj.co_consts, names, varnames,
+-                code_obj.co_filename, code_obj.co_name,
+-                code_obj.co_firstlineno, code_obj.co_lnotab,
+-                code_obj.co_freevars, code_obj.co_cellvars)
+-    else:
+-        code = bytes(modified)
+-        args = (co_argcount + new_locals_len, 0,
+-                code_obj.co_nlocals + new_locals_len, code_obj.co_stacksize,
+-                code_obj.co_flags, code, code_obj.co_consts, names, varnames,
+-                code_obj.co_filename, code_obj.co_name,
+-                code_obj.co_firstlineno, code_obj.co_lnotab,
+-                code_obj.co_freevars, code_obj.co_cellvars)
++    code = bytes(modified)
++    args = (co_argcount + new_locals_len, 0,
++            code_obj.co_nlocals + new_locals_len, code_obj.co_stacksize,
++            code_obj.co_flags, code, code_obj.co_consts, names, varnames,
++            code_obj.co_filename, code_obj.co_name,
++            code_obj.co_firstlineno, code_obj.co_lnotab,
++            code_obj.co_freevars, code_obj.co_cellvars)
+     # Done modifying codestring - make the code object
+     if hasattr(code_obj, "replace"):
+         # Python 3.8+
+@@ -166,8 +166,6 @@ def instructions(code_obj, show_cache=Tr
+         # otherwise we have to manually parse
+         code = code_obj.co_code
+         NewInstruction = namedtuple('Instruction', ('opcode', 'arg'))
+-        if six.PY2:
+-            code = map(ord, code)
+         i, L = 0, len(code)
+         extended_arg = 0
+         while i < L:
+@@ -232,10 +230,7 @@ def check(code_obj):
+     for inst in insts:
+         pos_to_inst[len(bytelist)] = inst
+         bytelist.extend(write_instruction(inst.opcode, inst.arg))
+-    if six.PY2:
+-        new_bytecode = ''.join(bytelist)
+-    else:
+-        new_bytecode = bytes(bytelist)
++    new_bytecode = bytes(bytelist)
+     if new_bytecode != old_bytecode:
+         print(new_bytecode)
+         print(old_bytecode)
+@@ -255,13 +250,13 @@ def check(code_obj):
+ 
+ 
+ def signature(func):
+-    code_obj = six.get_function_code(func)
++    code_obj = get_function_code(func)
+     return (code_obj.co_nlocals, code_obj.co_argcount, code_obj.co_nlocals, code_obj.co_stacksize,
+     code_obj.co_flags, code_obj.co_names, code_obj.co_varnames,
+     code_obj.co_filename,
+     code_obj.co_freevars, code_obj.co_cellvars)
+ 
+-check(six.get_function_code(check))
++check(get_function_code(check))
+ 
+ 
+ 
+@@ -269,8 +264,8 @@ def compare_func(fake_func, gt_func):
+     print(signature(fake_func))
+     print(signature(gt_func))
+     assert signature(fake_func) == signature(gt_func)
+-    fake_ins = list(instructions(six.get_function_code(fake_func), show_cache=False))
+-    real_ins = list(instructions(six.get_function_code(gt_func), show_cache=False))
++    fake_ins = list(instructions(get_function_code(fake_func), show_cache=False))
++    real_ins = list(instructions(get_function_code(gt_func), show_cache=False))
+     offset = 0
+     pos = 0
+     for e in fake_ins:
+@@ -305,20 +300,17 @@ if __name__ == '__main__':
+             return this.to_object()  # do nothing
+         arr = []
+         for i in xrange(len(this)):
+-            arr.append(this.get(six.text_type(i)))
++            arr.append(this.get(str(i)))
+ 
+         if not arr:
+             return this
+         if not cmpfn.is_callable():
+             cmpfn = None
+         cmp = lambda a, b: sort_compare(a, b, cmpfn)
+-        if six.PY3:
+-            key = functools.cmp_to_key(cmp)
+-            arr.sort(key=key)
+-        else:
+-            arr.sort(cmp=cmp)
++        key = functools.cmp_to_key(cmp)
++        arr.sort(key=key)
+         for i in xrange(len(arr)):
+-            this.put(six.text_type(i), arr[i])
++            this.put(str(i), arr[i])
+ 
+         return this
+ 
+@@ -328,20 +320,17 @@ if __name__ == '__main__':
+             return this.to_object()  # do nothing
+         arr = []
+         for i in xrange(len(this)):
+-            arr.append(this.get(six.text_type(i)))
++            arr.append(this.get(str(i)))
+ 
+         if not arr:
+             return this
+         if not cmpfn.is_callable():
+             cmpfn = None
+         cmp = lambda a, b: sort_compare(a, b, cmpfn)
+-        if six.PY3:
+-            key = functools.cmp_to_key(cmp)
+-            arr.sort(key=key)
+-        else:
+-            arr.sort(cmp=cmp)
++        key = functools.cmp_to_key(cmp)
++        arr.sort(key=key)
+         for i in xrange(len(arr)):
+-            this.put(six.text_type(i), arr[i])
++            this.put(str(i), arr[i])
+ 
+         return this
+ 
+Index: Js2Py-0.74/setup.py
+===================================================================
+--- Js2Py-0.74.orig/setup.py
++++ Js2Py-0.74/setup.py
+@@ -33,7 +33,7 @@ setup(
+               'js2py.constructors', 'js2py.host', 'js2py.es6', 'js2py.internals',
+               'js2py.internals.prototypes', 'js2py.internals.constructors', 'js2py.py_node_modules'],
+     url='https://github.com/PiotrDabkowski/Js2Py',
+-    install_requires = ['tzlocal>=1.2', 'six>=1.10', 'pyjsparser>=2.5.1'],
++    install_requires = ['tzlocal>=1.2', 'pyjsparser>=2.5.1'],
+     license='MIT',
+     author='Piotr Dabkowski',
+     author_email='piodrus@gmail.com',
+Index: Js2Py-0.74/tests/node_eval.py
+===================================================================
+--- Js2Py-0.74.orig/tests/node_eval.py
++++ Js2Py-0.74/tests/node_eval.py
+@@ -1,6 +1,5 @@
+ import subprocess
+ from tempfile import  NamedTemporaryFile
+-import six
+ import re
+ import os
+ 
+@@ -22,10 +21,10 @@ def node_eval_js(code):
+     }
+     """ % (repr(code), repr(ERR_MARKER))
+     f = NamedTemporaryFile(delete=False, suffix='.js')
+-    f.write(interceptor_code.encode('utf-8') if six.PY3 else interceptor_code)
++    f.write(interceptor_code.encode('utf-8'))
+     f.close()
+     p = subprocess.Popen(['node', f.name], stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+-    out, err = map(lambda x: x.decode('utf-8') if six.PY3 else x, p.communicate())
++    out, err = map(lambda x: x.decode('utf-8'))
+     os.unlink(f.name)
+     if not p.returncode:
+         return out
+@@ -38,4 +37,4 @@ def node_eval_js(code):
+ 
+ 
+ if __name__ == '__main__':
+-    print(node_eval_js('x = 5;x'))
+\ No newline at end of file
++    print(node_eval_js('x = 5;x'))
+Index: Js2Py-0.74/tests/run.py
+===================================================================
+--- Js2Py-0.74.orig/tests/run.py
++++ Js2Py-0.74/tests/run.py
+@@ -3,7 +3,7 @@ import js2py
+ from js2py.base import PyJsException, PyExceptionToJs
+ from js2py.internals import seval
+ from js2py.internals.simplex import JsException
+-import os, sys, re, traceback, threading, ctypes, time, six
++import os, sys, re, traceback, threading, ctypes, time
+ from distutils.version import LooseVersion
+ from node_eval import NodeJsError, node_eval_js
+ import codecs

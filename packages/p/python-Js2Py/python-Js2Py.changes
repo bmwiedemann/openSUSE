@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul  1 08:39:07 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add CVE-2024-28397.patch upstream patch.
+  (bsc#1226660, gh#PiotrDabkowski/Js2Py#323)
+
+-------------------------------------------------------------------
+Mon Jul  1 08:19:03 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Run tests
+- Add patches:
+  * remove-python-six.patch, to remove python-six dependency
+  * python312.patch, to make it compatible with python312
+
+-------------------------------------------------------------------
 Fri Apr 21 12:20:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

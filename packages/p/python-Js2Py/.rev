@@ -73,4 +73,18 @@
     <comment></comment>
     <requestid>1082036</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>b0e5d3664d2af38e2a5836d5d70e7b1f</srcmd5>
+    <version>0.74</version>
+    <time>1719825739</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2024-28397.patch upstream patch.
+  (bsc#1226660, gh#PiotrDabkowski/Js2Py#323)
+- Run tests
+- Add patches:
+  * remove-python-six.patch, to remove python-six dependency
+  * python312.patch, to make it compatible with python312
+</comment>
+    <requestid>1184231</requestid>
+  </revision>
 </revisionlist>

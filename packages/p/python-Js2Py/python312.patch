@@ -1,0 +1,57 @@
+From fd7df4a91fb08060914c7b1d9e94583d18f3371b Mon Sep 17 00:00:00 2001
+From: Felix Yan <felixonmars@archlinux.org>
+Date: Wed, 17 Apr 2024 16:47:47 +0300
+Subject: [PATCH] Fix bytecode for Python 3.12
+
+`LOAD_ATTR` has been changed in Python 3.12 and it seems reusing the
+`LOAD_GLOBAL` logic makes the simple tests passing.
+
+I am not sure if this is correct since I'm pretty new to the code, but
+maybe it's still helpful.
+---
+ js2py/translators/translating_nodes.py | 2 +-
+ js2py/utils/injector.py                | 4 +++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+Index: Js2Py-0.74/js2py/translators/translating_nodes.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/translators/translating_nodes.py
++++ Js2Py-0.74/js2py/translators/translating_nodes.py
+@@ -538,7 +538,7 @@ def TryStatement(type, block, handler, h
+     if handler:
+         identifier = handler['param']['name']
+         holder = 'PyJsHolder_%s_%d' % (to_hex(identifier),
+-                                       random.randrange(1e8))
++                                       random.randrange(six.integer_types[-1](1e8)))
+         identifier = repr(identifier)
+         result += 'except PyJsException as PyJsTempException:\n'
+         # fill in except ( catch ) block and remember to recover holder variable to its previous state
+Index: Js2Py-0.74/js2py/utils/injector.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/utils/injector.py
++++ Js2Py-0.74/js2py/utils/injector.py
+@@ -13,6 +13,7 @@ chr = lambda x: x
+ # Opcode constants used for comparison and replacecment
+ LOAD_FAST = opcode.opmap['LOAD_FAST']
+ LOAD_GLOBAL = opcode.opmap['LOAD_GLOBAL']
++LOAD_ATTR = opcode.opmap['LOAD_ATTR']
+ STORE_FAST = opcode.opmap['STORE_FAST']
+ 
+ 
+@@ -88,6 +89,7 @@ def append_arguments(code_obj, new_local
+         (co_names.index(name), varnames.index(name)) for name in new_locals)
+ 
+     is_new_bytecode = sys.version_info >= (3, 11)
++    is_new_load_attr = sys.version_info >= (3, 12)
+     # Now we modify the actual bytecode
+     modified = []
+     drop_future_cache = False
+@@ -106,7 +108,7 @@ def append_arguments(code_obj, new_local
+         # it's one of the globals that we are replacing. Either way,
+         # update its arg using the appropriate dict.
+         drop_future_cache = False
+-        if inst.opcode == LOAD_GLOBAL:
++        if inst.opcode == LOAD_GLOBAL or (is_new_load_attr and inst.opcode == LOAD_ATTR):
+             idx = inst.arg
+             if is_new_bytecode:
+                 idx = idx // 2
