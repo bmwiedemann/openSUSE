@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Jun 30 08:28:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.06:
+  * txt2rgd.py: Fix MSB/LSB bug.  [d501a6f3]
+  * Fix instrument selection for Ctrl+T (add track), file import
+    and merge.
+  * Disallow deletion of devices that are in use by tracks.
+  * Use track names for segment names on MusicXML import.
+  * Fix misplaced TimeWidget title in "Native (Light)" theme.
+  * Fix an .rg parsing error related to softsynths.
+  * Fix unobtainable segment presets and other preset issues.
+  * Fix audio time stretching erasing all audio data in release
+    build.
+  * Fix submaster port count changing when changing the number of
+    audio input ports.
+  * Fix window focus problem when creating MIDI Devices.
+  * Fix track instrument reset when editing banks.
+  * Fix buffer overflow in notation editor.
+  * Fix examples pointing to various audio paths causing unwanted
+    directories to be created.
+  * Fix slow refresh of note names in matrix.
+  * Fix notation not selecting current segment notes on launch.
+  * Fix UnusedAudioSelectionDialog column widths.
+
+-------------------------------------------------------------------
 Thu Dec 28 21:40:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.12:

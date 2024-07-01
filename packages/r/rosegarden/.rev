@@ -440,4 +440,32 @@ Only recommend jack to allow pipewire jack to be installed.
     <comment></comment>
     <requestid>1136262</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>3d5b86780e07a1ff11de0120d9b5df57</srcmd5>
+    <version>24.06</version>
+    <time>1719825668</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 24.06:
+  * txt2rgd.py: Fix MSB/LSB bug.  [d501a6f3]
+  * Fix instrument selection for Ctrl+T (add track), file import
+    and merge.
+  * Disallow deletion of devices that are in use by tracks.
+  * Use track names for segment names on MusicXML import.
+  * Fix misplaced TimeWidget title in &quot;Native (Light)&quot; theme.
+  * Fix an .rg parsing error related to softsynths.
+  * Fix unobtainable segment presets and other preset issues.
+  * Fix audio time stretching erasing all audio data in release
+    build.
+  * Fix submaster port count changing when changing the number of
+    audio input ports.
+  * Fix window focus problem when creating MIDI Devices.
+  * Fix track instrument reset when editing banks.
+  * Fix buffer overflow in notation editor.
+  * Fix examples pointing to various audio paths causing unwanted
+    directories to be created.
+  * Fix slow refresh of note names in matrix.
+  * Fix notation not selecting current segment notes on launch.
+  * Fix UnusedAudioSelectionDialog column widths.</comment>
+    <requestid>1184082</requestid>
+  </revision>
 </revisionlist>
