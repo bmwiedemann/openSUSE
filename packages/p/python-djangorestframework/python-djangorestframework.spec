@@ -26,11 +26,11 @@
 %bcond_with test
 %endif
 Name:           python-djangorestframework%{psuffix}
-Version:        3.15.1
+Version:        3.15.2
 Release:        0
 Summary:        A REST Framework for Django
 License:        BSD-2-Clause
-URL:            http://django-rest-framework.org/
+URL:            https://www.django-rest-framework.org/
 Source:         https://github.com/encode/django-rest-framework/archive/%{version}.tar.gz#/djangorestframework-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

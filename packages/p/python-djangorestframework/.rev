@@ -335,4 +335,16 @@
     <comment></comment>
     <requestid>1167552</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>59610ffc0a26ee2d08cb47cc678a304a</srcmd5>
+    <version>3.15.2</version>
+    <time>1719825603</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.15.2:
+  * Fix potential XSS vulnerability in browsable API. #9435
+  * Revert &quot;Ensure CursorPagination respects nulls in the ordering
+    field&quot;. #9381
+  * Use warnings rather than logging a warning for DecimalField.</comment>
+    <requestid>1184013</requestid>
+  </revision>
 </revisionlist>
