@@ -1,7 +1,7 @@
 #
 # spec file for package rng-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{!?_udevrulesdir: %global _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d }
 Name:           rng-tools
-Version:        6.16
+Version:        6.17
 Release:        0
 Summary:        Support daemon for hardware random device
 License:        GPL-3.0-or-later

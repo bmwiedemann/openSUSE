@@ -487,4 +487,37 @@
   * Misc covscan issue fixes</comment>
     <requestid>1079756</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>b04a9e9af3a177eb5fd6ca1e7918b605</srcmd5>
+    <version>6.17</version>
+    <time>1719825641</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.17:
+  * mix data fed to the kernel byte-wise from multiple sources
+  * added option to attempt more persistent use of slow entropy
+    sources
+  * fix some missing m4 quotes
+  * improved debug output to show FIPS failures more clearly
+  * added a named pipe entropy source
+  * adjusted linux poolsize
+  * fixed some pkcs11 error messages
+  * fixed ignorefail and random_step options
+
+  * improve jitter cpu monopolization on small/single cpu systems
+- disable nistbeacon support
+  * Improved console output readability
+  * Add forced reseeding of kernel entropy pool
+- Enable Power64 architecture. Starting with Power7+ we have in
+  CPU random number generator
+- systemd: Do not start in containers, in that case
+  an integer. just use the sane builtin default
+- udev does not like rules without a new line
+- there is no trousers-devel requirement anymore
+- Support systemd.
+  (bnc#624198)
+  init script
+- do not enable by default
+- use debian/ubuntu rng-tools_mt which is under active development</comment>
+    <requestid>1184075</requestid>
+  </revision>
 </revisionlist>

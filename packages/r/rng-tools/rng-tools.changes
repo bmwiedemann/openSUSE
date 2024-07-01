@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jun 30 07:56:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.17:
+  * mix data fed to the kernel byte-wise from multiple sources
+  * added option to attempt more persistent use of slow entropy
+    sources
+  * fix some missing m4 quotes
+  * improved debug output to show FIPS failures more clearly
+  * added a named pipe entropy source
+  * adjusted linux poolsize
+  * fixed some pkcs11 error messages
+  * fixed ignorefail and random_step options
+
+-------------------------------------------------------------------
 Sun Apr 16 09:27:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.16:
@@ -26,7 +40,7 @@ Sun Mar 27 19:45:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * fix a deadlock in jitter shutdown sequence
   * minor warning fixups (unused variables)
   * improve cpu detection code
-  * improve jitter cpu monopolization on small/single cpu systems 
+  * improve jitter cpu monopolization on small/single cpu systems
 
 -------------------------------------------------------------------
 Mon Nov 15 16:03:41 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
@@ -37,7 +51,7 @@ Mon Nov 15 16:03:41 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 -------------------------------------------------------------------
 Wed Oct  6 13:40:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- disable nistbeacon support 
+- disable nistbeacon support
 
 -------------------------------------------------------------------
 Thu Aug 12 12:25:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -56,7 +70,7 @@ Thu Aug 12 12:25:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Support rndr instruction on arm
   * Support jitter software timer on coarse time systems
   * Merged all openssl use into a single helper library
-  * Improved console output readability 
+  * Improved console output readability
 
 -------------------------------------------------------------------
 Thu Mar 18 13:04:28 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
@@ -90,8 +104,8 @@ Sat Jan 23 00:29:32 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Misc cleanups
   * Addd aes mangling to nist source
   * Improve nist performance with opportunistic use of CLOCK_MONOTONIC_COARSE
-  * Add forced reseeding of kernel entropy pool 
-  
+  * Add forced reseeding of kernel entropy pool
+
 -------------------------------------------------------------------
 Sat Sep 12 13:06:07 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
@@ -170,8 +184,8 @@ Mon Oct 19 08:07:13 UTC 2015 - dmueller@suse.com
 -------------------------------------------------------------------
 Sat Oct 17 23:19:36 UTC 2015 - dvaleev@suse.com
 
-- Enable Power64 architecture. Starting with Power7+ we have in 
-  CPU random number generator 
+- Enable Power64 architecture. Starting with Power7+ we have in
+  CPU random number generator
 
 -------------------------------------------------------------------
 Fri Sep 19 00:28:16 CEST 2014 - ro@suse.de
@@ -208,7 +222,7 @@ Fri Aug 22 16:49:41 UTC 2014 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Tue Jun 24 18:05:29 UTC 2014 - crrodriguez@opensuse.org
 
-- systemd: Do not start in containers, in that case 
+- systemd: Do not start in containers, in that case
   entropy comes from the "host"
 - systemd: Conflict with haveged, only one entropy daemon
   must be running.
@@ -224,17 +238,17 @@ Wed Apr 30 03:15:22 UTC 2014 - crrodriguez@opensuse.org
 
 - in some parallel universe --fill-watermark took a percentage
   value, not in this incarnation at least, where it takes
-  an integer. just use the sane builtin default 
+  an integer. just use the sane builtin default
 
 -------------------------------------------------------------------
 Fri Dec 27 20:16:37 UTC 2013 - crrodriguez@opensuse.org
 
-- udev does not like rules without a new line 
+- udev does not like rules without a new line
 
 -------------------------------------------------------------------
 Sun Nov 24 04:23:56 UTC 2013 - crrodriguez@opensuse.org
 
-- there is no trousers-devel requirement anymore 
+- there is no trousers-devel requirement anymore
 - define _udevrulesdir only if not already defined
 - run %udev_rules_update, if defined.
 
@@ -244,7 +258,7 @@ Wed Oct 23 14:45:37 UTC 2013 - p.drouand@gmail.com
 - Drop old sysvinit stuff; none of distribution targets use it anymore
 - Remove redundant %clean section
 - Remove useless automake BuildRequires, CFLAGS export and autoreconf call
-  
+
 -------------------------------------------------------------------
 Mon Sep  2 02:07:59 UTC 2013 - crrodriguez@opensuse.org
 
@@ -305,7 +319,7 @@ Sat Dec 31 05:34:54 UTC 2011 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Fri Dec 16 02:21:55 UTC 2011 - crrodriguez@opensuse.org
 
-- Support systemd. 
+- Support systemd.
 
 -------------------------------------------------------------------
 Thu Dec  1 15:58:15 UTC 2011 - coolo@suse.com
@@ -335,23 +349,23 @@ Mon Nov 22 01:22:00 CET 2010 - ro@suse.de
 Wed Nov 10 15:38:50 CET 2010 - ro@suse.de
 
 - do not report init script as failed if no hardware found
-  (bnc#624198) 
+  (bnc#624198)
 
 -------------------------------------------------------------------
 Wed May 19 16:35:08 CEST 2010 - ro@suse.de
 
 - move rngd back to /sbin and drop remotefs dependency from
-  init script 
+  init script
 
 -------------------------------------------------------------------
 Mon May 17 15:14:42 CEST 2010 - ro@suse.de
 
-- do not enable by default 
+- do not enable by default
 
 -------------------------------------------------------------------
 Thu May 13 02:39:02 UTC 2010 - cristian.rodriguez@opensuse.org
 
-- use debian/ubuntu rng-tools_mt which is under active development 
+- use debian/ubuntu rng-tools_mt which is under active development
 
 -------------------------------------------------------------------
 Sun Apr 25 16:23:18 UTC 2010 - crrodriguez@opensuse.org
