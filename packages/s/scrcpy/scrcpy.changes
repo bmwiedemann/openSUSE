@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jun 29 16:35:04 UTC 2024 - munix9@googlemail.com
+
+- Update to version 2.5:
+  * Add scrcpy window without video playback (#4727, #4793, #4868)
+  * Add a shortcut to pause/unpause display (#1632, #4748)
+  * Forward mouse hover events (#2743, #3070, #5039)
+  * Add option to configure mouse bindings (#5022)
+  * Forward all clicks by default for UHID/AOA (#5022)
+  * Simplify shortcut modifiers (#4741)
+  * Fix rotation shortcut for Android 14 (#4740, #4841)
+  * Fix YUV conversion for full color range (#4756)
+  * Fix camera sizes listing on some devices (#4852)
+  * Fix thread leak on Windows (#4973)
+  * Upgrade FFmpeg to 7.0.1 in Windows releases
+  * Upgrade SDL to 2.30.4 in Windows releases
+  * Upgrade platform-tools (adb) to 35.0.0 in Windows releases
+  * Various technical fixes
+
+-------------------------------------------------------------------
 Sun Mar  3 09:22:57 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4

@@ -17,14 +17,14 @@
 
 
 Name:           scrcpy
-Version:        2.4
+Version:        2.5
 Release:        0
 Summary:        Display and control your Android device
 License:        Apache-2.0
 Group:          Hardware/Mobile
 URL:            https://github.com/Genymobile/scrcpy
-Source0:        https://github.com/Genymobile/scrcpy/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        https://github.com/Genymobile/scrcpy/releases/download/v%{version}/scrcpy-server-v%{version}
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        %{url}/releases/download/v%{version}/scrcpy-server-v%{version}
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.48
 BuildRequires:  pkgconfig
