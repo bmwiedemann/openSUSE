@@ -209,7 +209,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        29.4.2
+Version:        29.4.3
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
@@ -219,7 +219,7 @@ URL:            https://github.com/electron/electron
 Source0:        %{mod_name}-%{tag_version}.tar.zst
 Source1:        create_tarball.sh
 Source10:       electron-launcher.sh
-Source11:       electron.desktop
+Source11:       Electron.desktop
 
 
 # Reverse upstream changes to be able to build against ffmpeg-4
@@ -898,7 +898,7 @@ unset MALLOC_PERTURB_
 
 %if %{with lto}
 %ifarch aarch64
-export LDFLAGS="$LDFLAGS -flto=auto --param ggc-min-expand=20 --param ggc-min-heapsize=32768 --param lto-max-streaming-parallelism=1 -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
+export LDFLAGS="$LDFLAGS -flto=4 --param ggc-min-expand=20 --param ggc-min-heapsize=32768 --param lto-max-streaming-parallelism=1 -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
 %else
 # x64 is fine with the the default settings (the machines have 30GB+ ram)
 export LDFLAGS="$LDFLAGS -flto=auto"
@@ -1459,7 +1459,7 @@ ln -srv third_party -t out/Release
 %files
 %license electron/LICENSE out/Release/LICENSES.chromium.html
 %{_bindir}/electron
-%{_datadir}/applications/electron.desktop
+%{_datadir}/applications/Electron.desktop
 %{_datadir}/icons/hicolor/16x16/apps/electron.png
 %{_datadir}/icons/hicolor/32x32/apps/electron.png
 %{_datadir}/icons/hicolor/48x48/apps/electron.png

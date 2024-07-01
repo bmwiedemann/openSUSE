@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jun 28 16:56:51 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 29.4.3
+  * Fixed an issue where navigator.usb.getDevices() could crash in some circumstances.
+  * Fixed an issue where bad flags passed via --js-flags could cause a crash.
+  * Fixed an issue where control could fail to return properly after saving a dialog using showOpenDialogSync on Linux.
+  * Fixed an issue where some calls to WebUSB methods could crash.
+  * Fixed potentially incorrect exit code in UtilityProcess.
+  * Fixed support for multiple folder/file selection in //shell_dialogs portal implementation.
+  * Security fixes for CVE-2024-5499 CVE-2024-5493 CVE-2024-5496 (bsc#1225690)
+  * Security fixes for CVE-2024-5158 CVE-2024-5157 CVE-2024-5159 (bsc#1224818)
+  * Security fixes for CVE-2024-6100 CVE-2024-6101 (bsc#1226504)
+- Correct .desktop file name to match the CHROME_DESKTOP environment variable.
+
+-------------------------------------------------------------------
 Wed Jun 12 14:54:32 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Do not build //components/sync to reduce linker load and binary size (remove-sync.patch)

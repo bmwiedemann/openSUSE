@@ -6,3 +6,4 @@ Exec=electron %u
 Categories=Development;GTK;
 NoDisplay=true
 StartupNotify=true
+StartupWMClass=electron
