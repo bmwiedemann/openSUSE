@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 29 12:59:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.0:
+  * Add the experimental --attestations flag.
+
+-------------------------------------------------------------------
 Wed Apr 10 08:39:37 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Add BuildRequires on python-jaraco.packaging that was pulled

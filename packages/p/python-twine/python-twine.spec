@@ -16,10 +16,9 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-twine
-Version:        5.0.0
+Version:        5.1.0
 Release:        0
 Summary:        Collection of utilities for interacting with PyPI
 License:        Apache-2.0
