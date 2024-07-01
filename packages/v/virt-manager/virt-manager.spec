@@ -290,6 +290,8 @@ mkdir -p %{buildroot}/usr/lib/supportconfig/plugins
 install -m 755 %SOURCE3 %{buildroot}/usr/lib/supportconfig/plugins/virt_manager
 chmod -x %{buildroot}%{_datadir}/virt-manager/virtManager/virtmanager.py
 
+%python3_fix_shebang
+
 %find_lang %{name}
 %endif
 

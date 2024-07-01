@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 20 13:40:47 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- remove dependency on /usr/bin/python3 using 
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Wed Jun 19 02:24:29 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip some tests that fail under Pytest 8.x. 
