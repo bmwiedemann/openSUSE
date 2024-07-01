@@ -328,4 +328,14 @@
 - Update BuildRequires and Requires from setup.py (forwarded request 1174591 from glaubitz)</comment>
     <requestid>1174606</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>1065b26397ae7ed7cc7f3f85aad1abe5</srcmd5>
+    <version>2.19.1</version>
+    <time>1719825620</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.19.1:
+  * Add support for protobuf 5.x
+  * Ignore unknown fields in rest streaming.</comment>
+    <requestid>1184029</requestid>
+  </revision>
 </revisionlist>

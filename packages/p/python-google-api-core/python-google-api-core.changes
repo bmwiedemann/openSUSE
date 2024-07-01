@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 29 19:31:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.19.1:
+  * Add support for protobuf 5.x
+  * Ignore unknown fields in rest streaming.
+
+-------------------------------------------------------------------
 Thu May 16 14:03:49 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.19.0

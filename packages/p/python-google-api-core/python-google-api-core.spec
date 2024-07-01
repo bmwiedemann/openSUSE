@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-google-api-core
-Version:        2.19.0
+Version:        2.19.1
 Release:        0
 Summary:        Google API client core library
 License:        Apache-2.0
