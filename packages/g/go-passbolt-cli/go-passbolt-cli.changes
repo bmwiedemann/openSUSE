@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Sat Jun 15 17:51:52 UTC 2024 - Sai Karthik Karra <kskarthik@disroot.org>
+
+Release v0.3.1
+   - Add Version flag
+   - Don't Crash on Some TOTP Usage
+   - Export TOTP
+   - Export Skip Resource on Error
+
+Changelog:
+    b11702d Merge pull request #48 from passbolt/fix-version
+    1e09efc fix Man and Completion CI
+    6cb52e2 go mod tidy
+    b48f327 Use goreleaser version if available, otherwise buildinfo
+    b269e85 Merge pull request #47 from passbolt/update-ci
+    13da79a update Deprecated field
+    effdbdb fix auto snapshot
+    3cbabb9 Add dist Artifact Uploading
+    eeaa987 Add Run Version Step
+    c5e1dcb Update CI Action Versions
+    774fc8b Merge pull request #44 from passbolt/version-flag
+    4a870ea Set Version info in rootcmd
+    4975d53 add versioninfo, update deps
+    b3e608e Merge pull request #43 from passbolt/basic-totp-support
+    e0469a1 Use old TOTP flags if the new ones are unset
+    1229ad7 Implement Custom TOTP URL Generation
+    869f33c remove otp library
+    6f4d6e9 Add More Algorithms
+    7da6aec Fix Incorrect Secret Parsing, Typos
+    c595eca export: skip resource on error
+    a535a83 Add TOTP Export Support
+    fafdd22 update deps
+    54d4243 update ci go version
+    52bdc35 Update Readme about new Flags
+    c2506ed Add New Flags, Mark old ones as deprecated
+    2e1a46f update deps
+    444fa17 Fix Doc Link

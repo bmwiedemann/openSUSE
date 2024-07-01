@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/passbolt/go-passbolt-cli</param>
+              <param name="changesrevision">b11702da24d4e62551b22ec82d1c7003b5849ce4</param></service><service name="tar_scm">
+                <param name="url">https://github.com/passbolt/go-passbolt-cli.git</param>
+              <param name="changesrevision">b11702da24d4e62551b22ec82d1c7003b5849ce4</param></service></servicedata>

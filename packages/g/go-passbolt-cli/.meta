@@ -1,0 +1,5 @@
+<package name="go-passbolt-cli" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="security:privacy" package="go-passbolt-cli"/>
+</package>
