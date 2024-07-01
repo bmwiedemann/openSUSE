@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-wurlitzer
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        Python package to capture C-level output in context managers
 License:        MIT
