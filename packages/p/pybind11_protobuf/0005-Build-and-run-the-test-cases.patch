@@ -1,0 +1,166 @@
+From 8eafa4af7527f4e5a03c57e26b2bff3689adb900 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sat, 15 Jun 2024 01:42:41 +0200
+Subject: [PATCH 5/6] Build and run the test cases
+
+Building and running tests was never implemented for CMake, create
+the same test cases as for the Bazel build.
+
+Use the standard "BUILD_TESTING" option (implicitly added by CTest).
+---
+ CMakeLists.txt                         | 13 +++-
+ pybind11_protobuf/tests/CMakeLists.txt | 93 ++++++++++++++++++++++++++
+ 2 files changed, 104 insertions(+), 2 deletions(-)
+ create mode 100644 pybind11_protobuf/tests/CMakeLists.txt
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8d0fda9..4514f34 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -16,12 +16,15 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+ # ============================================================================
+ # Options
+ 
+-option(BUILD_TESTS "Build tests." OFF)
+ option(ENABLE_PYPROTO_API "Enable usage of proto_api." OFF)
+ option(USE_SYSTEM_ABSEIL "Force usage of system provided abseil-cpp" OFF)
+ option(USE_SYSTEM_PROTOBUF "Force usage of system provided Protobuf" OFF)
+ option(USE_SYSTEM_PYBIND "Force usage of system provided pybind11" OFF)
+ 
++# ============================================================================
++# Testing
++include(CTest)
++
+ # ============================================================================
+ # Find Python
+ 
+@@ -57,13 +60,15 @@ FetchContent_Declare(
+   GIT_TAG 20230125.3
+   FIND_PACKAGE_ARGS ${_absl_package_args} NAMES absl)
+ 
++# cmake-format: off
+ FetchContent_Declare(
+   Protobuf
+   GIT_REPOSITORY "https://github.com/protocolbuffers/protobuf.git"
+   GIT_TAG v23.3
+-  GIT_SUBMODULES "" #
++  GIT_SUBMODULES ""
+   FIND_PACKAGE_ARGS ${_protobuf_package_args} NAMES protobuf)
+ set(protobuf_BUILD_TESTS OFF CACHE INTERNAL "")
++# cmake-format: on
+ 
+ FetchContent_Declare(
+   pybind11
+@@ -168,6 +173,10 @@ target_include_directories(
+   PRIVATE ${PROJECT_SOURCE_DIR} ${protobuf_INCLUDE_DIRS} ${protobuf_SOURCE_DIR}
+           ${pybind11_INCLUDE_DIRS})
+ 
++if(BUILD_TESTING)
++  add_subdirectory(pybind11_protobuf/tests)
++endif()
++
+ # bazel equivs. checklist
+ #
+ # bazel: pybind_library: enum_type_caster - enum_type_caster.h
+diff --git a/pybind11_protobuf/tests/CMakeLists.txt b/pybind11_protobuf/tests/CMakeLists.txt
+new file mode 100644
+index 0000000..28bddf9
+--- /dev/null
++++ b/pybind11_protobuf/tests/CMakeLists.txt
+@@ -0,0 +1,93 @@
++#
++# Evaluate if Protobuf uses the system package, otherwise explicitly include the
++# required macro
++#
++FetchContent_GetProperties(Protobuf SOURCE_DIR Protobuf_SOURCE_DIR)
++if(Protobuf_SOURCE_DIR)
++  # Use macros from content made available by FetchContent
++  include(${Protobuf_SOURCE_DIR}/cmake/protobuf-generate.cmake)
++endif()
++
++# cmake-format: off
++function(generate_cc_proto protoname)
++  # Generate C++ files (.pb.h, .pb.cc)
++  #
++  add_library(${protoname}_cc_proto OBJECT)
++  target_include_directories(${protoname}_cc_proto
++    PRIVATE $<TARGET_PROPERTY:protobuf::libprotobuf,INCLUDE_DIRECTORIES>
++            $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}>)
++  protobuf_generate(
++    TARGET ${protoname}_cc_proto
++    PROTOS ${CMAKE_SOURCE_DIR}/pybind11_protobuf/tests/${protoname}.proto
++    IMPORT_DIRS ${CMAKE_SOURCE_DIR}
++    PROTOC_OUT_DIR ${CMAKE_BINARY_DIR})
++endfunction()
++
++function(generate_py_proto protoname)
++  # Generate Python files (_pb2.py)
++  #
++  add_custom_target(${protoname}_py_pb2 ALL)
++  protobuf_generate(
++    TARGET ${protoname}_py_pb2
++    LANGUAGE PYTHON
++    PROTOS ${CMAKE_SOURCE_DIR}/pybind11_protobuf/tests/${protoname}.proto
++    IMPORT_DIRS ${CMAKE_SOURCE_DIR}
++    PROTOC_OUT_DIR ${CMAKE_BINARY_DIR})
++endfunction()
++# cmake-format: on
++
++generate_cc_proto("test")
++generate_cc_proto("extension")
++generate_cc_proto("extension_nest_repeated")
++generate_cc_proto("extension_in_other_file_in_deps")
++generate_cc_proto("extension_in_other_file")
++
++generate_py_proto("test")
++generate_py_proto("extension")
++generate_py_proto("extension_nest_repeated")
++generate_py_proto("extension_in_other_file_in_deps")
++generate_py_proto("extension_in_other_file")
++
++function(generate_extension modulename deps)
++  pybind11_add_module(${modulename}_module ${modulename}_module.cc)
++  add_dependencies(${modulename}_module ${deps})
++  target_include_directories(${modulename}_module #
++                             PRIVATE ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR})
++  target_link_libraries(${modulename}_module #
++                        PRIVATE protobuf::libprotobuf ${deps})
++endfunction()
++
++generate_extension(proto_enum "test_cc_proto")
++generate_extension(dynamic_message "pybind11_native_proto_caster")
++generate_extension(
++  extension #
++  "extension_in_other_file_in_deps_cc_proto;extension_nest_repeated_cc_proto;test_cc_proto;extension_cc_proto;pybind11_native_proto_caster"
++)
++generate_extension(message "test_cc_proto;pybind11_native_proto_caster")
++generate_extension(pass_by "test_cc_proto;pybind11_native_proto_caster")
++generate_extension(very_large_proto "pybind11_native_proto_caster")
++generate_extension(wrapped_proto "test_cc_proto;pybind11_wrapped_proto_caster")
++generate_extension(thread "test_cc_proto;pybind11_native_proto_caster")
++generate_extension(regression_wrappers "pybind11_native_proto_caster")
++
++function(add_py_test testname)
++  add_test(NAME ${testname}_test
++           COMMAND ${Python_EXECUTABLE}
++                   ${CMAKE_CURRENT_SOURCE_DIR}/${testname}_test.py)
++  set_property(TEST ${testname}_test #
++               PROPERTY ENVIRONMENT "PYTHONPATH=${CMAKE_BINARY_DIR}")
++endfunction()
++
++file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/compare.py
++     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
++
++add_py_test(proto_enum)
++add_py_test(dynamic_message)
++add_py_test(extension)
++# FIXME What is the difference to the "extension_test"?
++# add_py_test(extension_disallow_unknown_fields)
++add_py_test(message)
++add_py_test(pass_by)
++add_py_test(wrapped_proto_module)
++add_py_test(thread_module)
++add_py_test(regression_wrappers)
+-- 
+2.45.0
+

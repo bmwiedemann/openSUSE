@@ -1,0 +1,85 @@
+From 23ca2be2902aa073aba0dfa80cb22030cf416732 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sat, 15 Jun 2024 02:54:35 +0200
+Subject: [PATCH 2/6] Add ENABLE_PYPROTO_API option to CMake build, clean up
+ compilation
+
+The PYBIND11_PROTOBUF_ENABLE_PYPROTO_API define was never set in
+CMake builds, add a corresponding option.
+
+As the check_unknown_fields code is only called dependent on the
+define remove it from the build if not used.
+---
+ CMakeLists.txt | 34 ++++++++++++++++++++++++----------
+ 1 file changed, 24 insertions(+), 10 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 46388d1..b1a20f0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,6 +17,7 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+ # Options
+ 
+ option(BUILD_TESTS "Build tests." OFF)
++option(ENABLE_PYPROTO_API "Enable usage of proto_api." OFF)
+ 
+ # ============================================================================
+ # Find Python
+@@ -68,10 +69,18 @@ add_library(
+   # bazel: pybind_library: proto_cast_util
+   pybind11_protobuf/proto_cast_util.cc
+   pybind11_protobuf/proto_cast_util.h
+-  pybind11_protobuf/proto_caster_impl.h
++  pybind11_protobuf/proto_caster_impl.h)
++
++target_sources(
+   # bazel: cc_library::check_unknown_fields
+-  pybind11_protobuf/check_unknown_fields.cc
+-  pybind11_protobuf/check_unknown_fields.h)
++  pybind11_native_proto_caster #
++  PRIVATE pybind11_protobuf/check_unknown_fields.cc
++          pybind11_protobuf/check_unknown_fields.h)
++
++if(ENABLE_PYPROTO_API)
++  target_compile_definitions(pybind11_native_proto_caster
++                             PRIVATE PYBIND11_PROTOBUF_ENABLE_PYPROTO_API)
++endif()
+ 
+ target_link_libraries(
+   pybind11_native_proto_caster
+@@ -98,10 +107,18 @@ add_library(
+   # bazel: pybind_library: proto_cast_util
+   pybind11_protobuf/proto_cast_util.cc
+   pybind11_protobuf/proto_cast_util.h
+-  pybind11_protobuf/proto_caster_impl.h
+-  # bazel: cc_library: check_unknown_fields
+-  pybind11_protobuf/check_unknown_fields.cc
+-  pybind11_protobuf/check_unknown_fields.h)
++  pybind11_protobuf/proto_caster_impl.h)
++
++target_sources(
++  # bazel: cc_library::check_unknown_fields
++  pybind11_wrapped_proto_caster
++  PRIVATE pybind11_protobuf/check_unknown_fields.cc
++          pybind11_protobuf/check_unknown_fields.h)
++
++if(ENABLE_PYPROTO_API)
++  target_compile_definitions(pybind11_wrapped_proto_caster
++                             PRIVATE PYBIND11_PROTOBUF_ENABLE_PYPROTO_API)
++endif()
+ 
+ target_link_libraries(
+   pybind11_wrapped_proto_caster
+@@ -119,9 +136,6 @@ target_include_directories(
+   PRIVATE ${PROJECT_SOURCE_DIR} ${protobuf_INCLUDE_DIRS} ${protobuf_SOURCE_DIR}
+           ${pybind11_INCLUDE_DIRS})
+ 
+-# TODO set defines PYBIND11_PROTOBUF_ENABLE_PYPROTO_API see: bazel:
+-# pybind_library: proto_cast_util
+-
+ # bazel equivs. checklist
+ #
+ # bazel: pybind_library: enum_type_caster - enum_type_caster.h
+-- 
+2.45.0
+

@@ -1,0 +1,109 @@
+From c49dc5b32b9cb953b4d8c59a0a57b874bcabab67 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Thu, 16 May 2024 01:04:58 +0200
+Subject: [PATCH 6/6] Add install target for CMake builds
+
+---
+ CMakeLists.txt        | 53 +++++++++++++++++++++++++++++++++++++++++++
+ cmake/Config.cmake.in | 11 +++++++++
+ 2 files changed, 64 insertions(+)
+ create mode 100644 cmake/Config.cmake.in
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4514f34..100bbf8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -81,6 +81,19 @@ list(APPEND CMAKE_MESSAGE_INDENT "  ")
+ FetchContent_MakeAvailable(absl Protobuf pybind11)
+ list(POP_BACK CMAKE_MESSAGE_INDENT)
+ 
++# ============================================================================
++# pybind11_protobuf CMake Config module
++include(CMakePackageConfigHelpers)
++configure_package_config_file(${CMAKE_CURRENT_SOURCE_DIR}/cmake/Config.cmake.in
++  "${CMAKE_CURRENT_BINARY_DIR}/pybind11_protobuf-config.cmake"
++  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/pybind11_protobuf
++  NO_CHECK_REQUIRED_COMPONENTS_MACRO
++)
++install(FILES
++  "${CMAKE_CURRENT_BINARY_DIR}/pybind11_protobuf-config.cmake"
++  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/pybind11_protobuf
++)
++
+ # ============================================================================
+ # pybind11_proto_utils pybind11 extension module
+ pybind11_add_module(
+@@ -114,6 +127,28 @@ target_sources(
+   PRIVATE pybind11_protobuf/check_unknown_fields.cc
+           pybind11_protobuf/check_unknown_fields.h)
+ 
++add_library(pybind11_protobuf::native ALIAS pybind11_native_proto_caster)
++
++install(TARGETS pybind11_native_proto_caster
++  EXPORT pybind11_protobuf_native_targets
++  DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  INCLUDES
++    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/pybind11_protobuf
++)
++install(FILES
++  pybind11_protobuf/native_proto_caster.h
++  pybind11_protobuf/check_unknown_fields.h
++  pybind11_protobuf/enum_type_caster.h
++  pybind11_protobuf/proto_caster_impl.h
++  pybind11_protobuf/proto_cast_util.h
++  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/pybind11_protobuf
++)
++install(EXPORT pybind11_protobuf_native_targets
++  FILE pybind11_protobuf_native-targets.cmake
++  NAMESPACE pybind11_protobuf::
++  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/pybind11_protobuf
++)
++
+ if(ENABLE_PYPROTO_API)
+   target_compile_definitions(pybind11_native_proto_caster
+                              PRIVATE PYBIND11_PROTOBUF_ENABLE_PYPROTO_API)
+@@ -152,6 +187,24 @@ target_sources(
+   PRIVATE pybind11_protobuf/check_unknown_fields.cc
+           pybind11_protobuf/check_unknown_fields.h)
+ 
++add_library(pybind11_protobuf::wrapped ALIAS pybind11_wrapped_proto_caster)
++
++install(TARGETS pybind11_wrapped_proto_caster
++  EXPORT pybind11_protobuf_wrapped_targets
++  DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  INCLUDES
++    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/pybind11_protobuf
++)
++install(FILES
++  pybind11_protobuf/wrapped_proto_caster.h
++  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/pybind11_protobuf
++)
++install(EXPORT pybind11_protobuf_wrapped_targets
++  FILE pybind11_protobuf_wrapped-targets.cmake
++  NAMESPACE pybind11_protobuf::
++  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/pybind11_protobuf
++)
++
+ if(ENABLE_PYPROTO_API)
+   target_compile_definitions(pybind11_wrapped_proto_caster
+                              PRIVATE PYBIND11_PROTOBUF_ENABLE_PYPROTO_API)
+diff --git a/cmake/Config.cmake.in b/cmake/Config.cmake.in
+new file mode 100644
+index 0000000..c59048c
+--- /dev/null
++++ b/cmake/Config.cmake.in
+@@ -0,0 +1,11 @@
++@PACKAGE_INIT@
++
++set(_pybind11_protobuf_supported_components native wrapped)
++
++foreach(_comp ${pybind11_protobuf_FIND_COMPONENTS})
++  if (NOT _comp IN_LIST _pybind11_protobuf_supported_components)
++    set(pybind11_protobuf_FOUND False)
++    set(pybind11_protobuf_NOT_FOUND_MESSAGE "Unsupported component: ${_comp}")
++  endif()
++  include("${CMAKE_CURRENT_LIST_DIR}/pybind11_protobuf_${_comp}-targets.cmake")
++endforeach()
+-- 
+2.45.0
+

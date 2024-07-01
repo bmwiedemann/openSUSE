@@ -1,0 +1,52 @@
+From 7b967806003ce4e82a48a38ac5a22ec4b37835eb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Fri, 14 Jun 2024 23:46:20 +0200
+Subject: [PATCH 3/6] Make the pybind11_*_proto_caster libraries STATIC
+
+As pybind11 does not guarantee stable ABI for its types (e.g.
+pybind11::handle), these types have "hidden" visibility at least on
+Linux.
+
+This visibility is propagated to any method which has any of the pybind11
+types in its parameters, which is the case for many of the public methods
+in proto_cast_util.{h,cc}. Trying to link to e.g. a SHARED
+pybind11_native_proto_caster library will create linker errors to to
+undefined symbols for any non-trivial case.
+
+The other approach would be to move everything which uses a pybind11
+type to the headers, and only leave pybind11 agnostic methods in the
+shared library. While this is trivially possible for e.g.
+PyBytesAsStringView, for the majority of the methods (e.g. anything
+depending on the GlobalState object) a significant refactoring would
+be required.
+
+See #160.
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b1a20f0..02a773e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -61,7 +61,7 @@ target_include_directories(
+ # ============================================================================
+ # pybind11_native_proto_caster shared library
+ add_library(
+-  pybind11_native_proto_caster SHARED
++  pybind11_native_proto_caster STATIC
+   # bazel: pybind_library: native_proto_caster
+   pybind11_protobuf/native_proto_caster.h
+   # bazel: pybind_library: enum_type_caster
+@@ -101,7 +101,7 @@ target_include_directories(
+ # ============================================================================
+ # pybind11_wrapped_proto_caster shared library
+ add_library(
+-  pybind11_wrapped_proto_caster SHARED
++  pybind11_wrapped_proto_caster STATIC
+   # bazel: pybind_library: wrapped_proto_caster
+   pybind11_protobuf/wrapped_proto_caster.h
+   # bazel: pybind_library: proto_cast_util
+-- 
+2.45.0
+
