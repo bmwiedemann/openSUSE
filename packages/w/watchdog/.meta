@@ -1,0 +1,5 @@
+<package name="watchdog" project="openSUSE:Factory">
+  <title>watchdog</title>
+  <description>Software watchdog for Linux</description>
+  <devel project="Base:System" package="watchdog"/>
+</package>

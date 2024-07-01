@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Thu Jun  6 08:35:58 UTC 2024 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Remove obsolete watchdog-initscript.diff patch 
+
+-------------------------------------------------------------------
+Sat May 18 19:24:20 UTC 2024 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Use autosetup
+- Remove conditional blocks for deprecated versions
+
+-------------------------------------------------------------------
+Fri Jun 24 09:51:53 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- update URL to https
+
+-------------------------------------------------------------------
+Fri Jun 26 19:14:58 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 5.16
+  - Upstream does not provide a changelog
+
+-------------------------------------------------------------------
+Thu May 24 13:37:18 CEST 2018 - ro@suse.de
+
+- readd BuildRoot for sle11 build 
+
+-------------------------------------------------------------------
+Thu May 24 13:25:10 CEST 2018 - ro@suse.de
+
+- add systemd support: copy unit files from fedora package 
+
+-------------------------------------------------------------------
+Wed May 23 01:10:33 CEST 2018 - ro@suse.de
+
+- add patch watchdog-initscript.diff 
+
+-------------------------------------------------------------------
+Wed May 23 01:07:05 CEST 2018 - ro@suse.de
+
+- add initscript 
+
+-------------------------------------------------------------------
+Wed May 23 00:53:46 CEST 2018 - ro@suse.de
+
+- disable nfs, would need libtirpc, not used now
+
+-------------------------------------------------------------------
+Mon Nov 21 00:33:06 CEST 2016 - furlongm@gmail.com
+
+- Initial OBS release (version 5.15)
+ 
+

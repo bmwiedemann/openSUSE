@@ -1,0 +1,40 @@
+--- watchdog-5.15/configure.ac	2016-02-26 23:05:00.000000000 +1100
++++ watchdog-new/configure.ac	2016-11-26 13:42:20.236621454 +1100
+@@ -105,7 +105,7 @@
+   CONFIG_FILENAME="$withval"
+   AC_MSG_RESULT($withval)
+ ],[
+-  CONFIG_FILENAME="/etc/watchdog.conf"
++  CONFIG_FILENAME="$sysconfdir/watchdog.conf"
+   AC_DEFINE_UNQUOTED(CONFIG_FILENAME, "$CONFIG_FILENAME", "name of config file")
+   AC_MSG_RESULT($CONFIG_FILENAME)
+ ])
+@@ -119,7 +119,7 @@
+   TESTBIN_PATH="$withval"
+   AC_MSG_RESULT($withval)
+ ],[
+-  TESTBIN_PATH="/etc/watchdog.d"
++  TESTBIN_PATH="$sysconfdir/watchdog.d"
+   AC_DEFINE_UNQUOTED(TESTBIN_PATH, "$TESTBIN_PATH", "path to test binaries")
+   AC_MSG_RESULT($TESTBIN_PATH)
+ ])
+--- watchdog-5.15/configure	2016-02-26 23:05:14.000000000 +1100
++++ watchdog-new/configure	2016-11-26 13:57:12.585234585 +1100
+@@ -5368,7 +5368,7 @@
+ 
+ else
+ 
+-  CONFIG_FILENAME="/etc/watchdog.conf"
++  CONFIG_FILENAME="$sysconfdir/watchdog.conf"
+ 
+ cat >>confdefs.h <<_ACEOF
+ #define CONFIG_FILENAME "$CONFIG_FILENAME"
+@@ -5398,7 +5398,7 @@
+ 
+ else
+ 
+-  TESTBIN_PATH="/etc/watchdog.d"
++  TESTBIN_PATH="$sysconfdir/watchdog.d"
+ 
+ cat >>confdefs.h <<_ACEOF
+ #define TESTBIN_PATH "$TESTBIN_PATH"
