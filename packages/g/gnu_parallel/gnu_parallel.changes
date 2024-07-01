@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 30 21:37:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 20240622:
+  * Bug fixes and man page updates.
+  * --onall now supports sshpass - user:pass@host.
+  * --memfree kills do not count as --retries.
+
+-------------------------------------------------------------------
 Sun Apr 28 19:07:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 20240422:

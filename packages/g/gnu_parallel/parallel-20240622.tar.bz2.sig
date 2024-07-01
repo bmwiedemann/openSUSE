@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# To check the signature run:
+#   echo | gpg
+#   gpg --auto-key-locate keyserver --keyserver-options auto-key-retrieve parallel-20240622.tar.bz2.sig
+
+echo | gpg 2>/dev/null
+gpg --auto-key-locate keyserver --keyserver-options auto-key-retrieve $0
+exit $?
+
+-----BEGIN PGP SIGNATURE-----
+
+iQUHBAABCgAdFiEEzaAaQgjE90UGEH570atFFoiIiIgFAmZ5qLcACgkQ0atFFoiI
+iIh5Uyagr0JWPjKIuqtcmoTiGXOCSYKhx+dt2uvYoJApPElYklpkeRkTwgVuKBI+
+Dm2YksDzhQK6Jgy/SssNjV3FNloAk2EW6NA3FPnC++fpcdocGzRzqtW32aYxvrnn
+dDw0D5Ge+Y7aS2qBp53TK9jrKwCBN+l70MPfZxjyHi9nwb3pfJoi7Crq8XGm9UsL
+UoW33IslehXkmHENrs0glIuNGLARURQ4OqL+HHKtLaxMETceZi4AcUwLFsgP0X0R
+uwB8cqI8U3obDJtm2EkrG/9jzeqpVMRdyPwxNLWvY4Lud7JT7mvrYOSXrqydYz1D
+klEKuXi3NIkLQlCi1htph82sMY8SGUcu+UZHODKUSwubcAY/JsgqWJ+7VaUa/bLq
+RJ6DIKqwJjs+gE03IAZM3LUkdUOfPok8FrAQtAr6xjTHcajlEkE0JzCC9/o/s8E2
+bVp2tdDH6vweOEr1uTU496jYu91FWZ7CY2VNGLqgrrwQZPnVwN41xg0/t8Upu9vn
+wEfsakOYhgDgE6h0llh2f/qoDhAqW4RrVjLld78SSCsEaFnDu8GnBYm2d/Wq87iQ
+/hKiiHy7DZ8cgesmb0szpcCPUFJm1uJYCJpV+awxzHwwF25eQ6onLOU0OpvbSgMp
+jeQsYuuAmslPlYwHTHhVJx4OV474yueA7nWvM5ux39rlmK/B2rQcLJ/iOcwb8fum
+ZbIadHnCc3RZapa4QEydM0lbSJl5YIii4FXMQ7trFJY7Q8imV4XPZ5ufa/T2OVlF
+rK4AIB4awhz4EOpqUee6VQgeaJ/dlRYzqtMAh2SYUW1aEFyiKJMNaC1MZKnEjCFA
+SlTqLitfwQDeZhbdthOmP54twtIxwupNYRTLPfyFD4JGFCc9c+RjuwQtVjj50fEB
+UicFlBEU3gMUzWIPACpUVaXFFc/mjZYnqY9O4Hjg1lF5crxy8O8pF+5SiAFqDlBh
+PrbALCe7dlJPYzDW0gibAEyYT7WrHFln9rC40u0cGgYNZXr/P8eMprHmYyMmSDVg
+szXegoRdvQfMjd0AEa5rwYT1z21x+tJ1umUiyYSpnnRoYctfRrXxnsmRic/hcxaQ
+R7ARdre4MurkNd0l4Sj+purtxbxeWaNSuivRDn8UlELkuSY0bsjWhZbT/rMGUU2Y
+pD6ck7/bSp+fFO4wQrwu/L8wzrGHQmIsJHsPeIUwKcQu1aEIbsbavdV4dScHvN/b
+f6XuzFnAsN7DOOtQMmBIG/l5bHq2dln3poZ01WV5UKgC7Itxcgs+H550i6ZLiZ3U
+7+/BrlpZ8Bb13Gm3+vSrT/AJsjNO2fHxmUt/qCLdIU2lkBpX6NsrJjJk1Xn1dMyG
+UCGezB1derz2nt41RJde6ZIVU0crjpnCoK4EOHXh41TS0PFHpnvbVNf36ByDS8Br
+z51o3qduFkaXMerxJSlOew9xJIPnqL0pz4d7594RwNthc43+QonxR3fjQ7qhXK66
+W31shszmif1s+7nmNuVyARVsSCv0MAQi/sYsXzw2HUOQG6Lb+cvlGZk0wjUNv+Va
+PGNZ9r10z0u+SNeikBLM+T54m11oVEIrDPRRnuHL6Y/moVotRJSYGcdo3Uq+Zbn2
+mYeUZYNH0ytyEsXyvvV4H5AJHNMi7Hg1uupOUQRe7SWbIkmnI9XoIeJ3
+=t2r1
+-----END PGP SIGNATURE-----

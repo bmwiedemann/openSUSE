@@ -17,7 +17,7 @@
 
 
 Name:           gnu_parallel
-Version:        20240422
+Version:        20240622
 Release:        0
 Summary:        Shell tool for executing jobs in parallel
 License:        GPL-3.0-or-later
