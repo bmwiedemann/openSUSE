@@ -17,12 +17,12 @@
 
 
 Name:           smplayer
-Version:        23.12.0
+Version:        24.5.0
 Release:        0
 Summary:        Complete frontend for MPV
 License:        GPL-2.0-or-later
 URL:            https://smplayer.info/
-Source:         https://downloads.sf.net/%{name}/%{name}-%{version}.tar.bz2
+Source:         https://github.com/smplayer-dev/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE smplayer-makeflags.patch
 Patch0:         %{name}-makeflags.patch
 # PATCH-FEATURE-OPENSUSE smplayer-defaults.patch sor.alexei@meowr.ru -- Use PulseAudio, system Qt5 theme, and "Papirus" icon theme by default.

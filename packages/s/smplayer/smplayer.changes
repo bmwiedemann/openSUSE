@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 28 12:44:00 UTC 2024 - hlavki <miso@hlavki.eu>
+
+- Update to 24.5.0:
+ * Bug fixes
+ * The Windows portable version now saves the configuration files in
+   the folder "config".
+
+-------------------------------------------------------------------
 Wed Dec 27 10:17:36 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 23.12.0:

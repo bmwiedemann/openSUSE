@@ -391,4 +391,12 @@
     <comment></comment>
     <requestid>1135395</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>5fecc55c7f69a9aa12e7f3c954d95acd</srcmd5>
+    <version>24.5.0</version>
+    <time>1719825726</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 24.5.0.</comment>
+    <requestid>1184174</requestid>
+  </revision>
 </revisionlist>
