@@ -17,7 +17,7 @@
 
 
 Name:           python-enzyme
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 Summary:        Python video metadata parser
 License:        Apache-2.0

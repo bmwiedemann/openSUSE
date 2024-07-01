@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>1183220</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5f78fd13a9afb4dc6c1774a5e8b27d39</srcmd5>
+    <version>0.5.2</version>
+    <time>1719825587</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.2:
+  * Include test `.yml` file in distribution</comment>
+    <requestid>1184008</requestid>
+  </revision>
 </revisionlist>
