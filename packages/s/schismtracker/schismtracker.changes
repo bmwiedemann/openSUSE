@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 30 15:48:11 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20240630
+  * Add DSM format loader (thanks @RepellantMold)
+  * Fix a crash upon loading some IT modules made in Modplug and
+    its derivatives
+- Delete schism-deptrack.diff (merged)
+
+-------------------------------------------------------------------
 Sat Jun 15 12:56:29 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20240614

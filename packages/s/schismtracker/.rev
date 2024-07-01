@@ -301,4 +301,12 @@
     <comment>- Update to release 20240614</comment>
     <requestid>1181903</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>6849fa066cfb7254f09867f23203f0d1</srcmd5>
+    <version>20240630</version>
+    <time>1719825682</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20240630</comment>
+    <requestid>1184113</requestid>
+  </revision>
 </revisionlist>
