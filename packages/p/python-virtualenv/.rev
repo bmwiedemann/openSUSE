@@ -812,4 +812,13 @@ ers toes by using a lock while creating the base images. By :user:`gaborbernat`.
   * Fix bad return code from activate.sh if hashing is disabled</comment>
     <requestid>1179659</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>ddd009def331cdf82b2db856fa5dbfe2</srcmd5>
+    <version>20.26.3</version>
+    <time>1719825558</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20.26.3:
+  * Bump embeded wheels</comment>
+    <requestid>1183986</requestid>
+  </revision>
 </revisionlist>
