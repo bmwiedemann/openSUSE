@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jun 29 20:55:07 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 24.1.5
+  * Fixed stuck issue for VP9 decoding
+  * Fixed MPEG2 and JPEG decoding crash issue
+  * Refined AV1 encoding reference frame structure for low delay
+    frames to improve encoding quality
+  * Enabled AV1 encoding additional forward reference for P/GPB
+    frames on TU1
+  * Fixed reset API returns buffer not enough in AV1 CQP mode
+  * Added IDR flag to VP9 intra frames to support bitstream packing
+- Use full url for source tarball.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Sat Feb  3 12:18:23 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - updated hardware Supplements
