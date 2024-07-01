@@ -182,4 +182,28 @@
   * Andes custom PMU support (forwarded request 1135365 from Andreas_Schwab)</comment>
     <requestid>1135366</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e51a8e3c380f7d521efc5a720ceec8cf</srcmd5>
+    <version>1.5</version>
+    <time>1719825676</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to opensbi 1.5
+  * SBI debug triggers (DBTR) extension (Experimental)
+  * Support to specify coldboot harts in DT
+  * Relocatable FW_JUMP_ADDR and FW_JUMP_FDT_ADDR
+  * Smcsrind and Smcdeleg extensions support
+  * SBIUnit testing framework
+  * Initial domain context management support
+  * Platform specific load/store emulation callbacks
+  * New trap context
+  * Improved sbi_trap_error() to dump state in a nested trap
+  * SBI supervisor software events (SSE) extension (Experimental)
+  * Simplified wait_for_coldboot() implementation
+  * Early wakeup of non-coldboot HART in the coldboot path
+  * Sophgo CV18XX/SG200X series support
+  * APLIC delegation DT property fix
+  * Svade and Svadu extensions support
+  * SBI firmware features (FWFT) extension (Experimental) (forwarded request 1184093 from Andreas_Schwab)</comment>
+    <requestid>1184094</requestid>
+  </revision>
 </revisionlist>
