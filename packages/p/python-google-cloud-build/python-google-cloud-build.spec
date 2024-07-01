@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-build
-Version:        3.22.0
+Version:        3.24.0
 Release:        0
 Summary:        Google Cloud Build API client library
 License:        Apache-2.0

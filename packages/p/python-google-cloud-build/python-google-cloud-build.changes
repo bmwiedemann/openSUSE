@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 29 16:36:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.24.0:
+  * Add Bitbucket Data Center Config and Bitbucket Cloud config for
+    Cloud Build Repositories
+  * Exclude google-auth 2.24.0 and 2.25.0
+
+-------------------------------------------------------------------
 Tue Jan  9 10:29:13 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Initial version 3.22.0 (jsc#PED-6697)
