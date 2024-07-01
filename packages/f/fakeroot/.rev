@@ -140,4 +140,13 @@
   * function</comment>
     <requestid>1179341</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>84e77ef152d8cfe625c0e55151b418db</srcmd5>
+    <version>1.35.1</version>
+    <time>1719825630</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.35.1
+  * big endian fixes</comment>
+    <requestid>1184045</requestid>
+  </revision>
 </revisionlist>
