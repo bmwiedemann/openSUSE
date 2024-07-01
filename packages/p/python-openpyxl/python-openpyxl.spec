@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-openpyxl
-Version:        3.1.3
+Version:        3.1.5
 Release:        0
 Summary:        A Python library to read/write Excel 2010 xlsx/xlsm files
 License:        MIT AND Python-2.0

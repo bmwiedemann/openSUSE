@@ -266,4 +266,19 @@ https://build.opensuse.org/request/show/308798</comment>
     serialisation issues</comment>
     <requestid>1179040</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0cb6c5d91091a8292895e8258313fe3b</srcmd5>
+    <version>3.1.5</version>
+    <time>1719825697</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.5:
+  * #2187 Test fails due to change in Numpy API
+  * #2198 Excel is very fussy about the version number
+  * #2200 Poor perfomance when reading workbooks with lots of named
+    styles
+  * #2189 Assigning named styles doesn't work
+  * #2190 Problems caused when saving workbooks created by
+    LibreOffice</comment>
+    <requestid>1184132</requestid>
+  </revision>
 </revisionlist>
