@@ -53,4 +53,20 @@
 - Drop patch ignore-hashlib-case.patch, no longer required.</comment>
     <requestid>1153727</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8aa5f0bb1ec8d00a38beace806f14c2f</srcmd5>
+    <version>2.0.2</version>
+    <time>1719825693</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.2:
+  This version is again a complete rewrite based
+  on v0.4.4 since the approach with dataclass proved
+  to be hard to convert to json while maintaining
+  the public API which was used by pipenv.
+
+- Update to 0.4.4
+    ``python_version`` and ``python_full_version``.
+  * Show the error details in ValidationError.</comment>
+    <requestid>1184131</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           python-plette
-Version:        1.0.0
+Version:        2.0.2
 Release:        0
 Summary:        Structured Pipfile and Pipfile.lock models
 License:        ISC
