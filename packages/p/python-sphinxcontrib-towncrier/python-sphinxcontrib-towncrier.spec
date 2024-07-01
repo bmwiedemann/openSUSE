@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-sphinxcontrib-towncrier
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-towncrier%{psuffix}
-Version:        0.3.2a0
+Version:        0.4.0a0
 Release:        0
 Summary:        An RST directive for injecting a Towncrier-generated changelog draft
 License:        BSD-3-Clause

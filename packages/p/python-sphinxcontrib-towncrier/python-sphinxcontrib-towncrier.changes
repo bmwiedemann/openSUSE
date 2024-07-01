@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul  1 07:52:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.0a0:
+  * no upstream changelog available, see
+  https://github.com/sphinx-contrib/sphinxcontrib-towncrier/compare/v0.3.2a0...v0.4.0a0
+  for details
+
+-------------------------------------------------------------------
 Fri May  5 11:03:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.2a0:
@@ -10,4 +18,4 @@ Fri May  5 11:03:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Fri Jul 29 14:52:25 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
 
-- Initial release 0.2.1a0 
+- Initial release 0.2.1a0
