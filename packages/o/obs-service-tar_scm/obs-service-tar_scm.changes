@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 14 18:33:15 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix shebang of the script to use the explicit version of Python
+  (bsc#1212476).
+
+-------------------------------------------------------------------
 Wed Feb 21 10:47:59 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - Update to version 0.10.43:

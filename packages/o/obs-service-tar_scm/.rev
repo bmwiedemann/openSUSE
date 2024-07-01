@@ -1483,4 +1483,12 @@ Mon Feb  13 15:52:19 GMT 2012 - aspiers@suse.com
   * Allow to use &quot;tar&quot; service also standalone.</comment>
     <requestid>1148655</requestid>
   </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>32b740411625738912dbc425a9e9e420</srcmd5>
+    <version>0.10.43</version>
+    <time>1719825563</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1184039</requestid>
+  </revision>
 </revisionlist>
