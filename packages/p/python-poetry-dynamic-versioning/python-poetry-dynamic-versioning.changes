@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 30 20:01:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.0:
+  * The plugin now supports Poetry's upcoming PEP-621
+    functionality.
+
+-------------------------------------------------------------------
 Tue May  7 20:56:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.3.0:
