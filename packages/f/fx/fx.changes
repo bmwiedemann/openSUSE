@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jun 30 17:18:05 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 35.0.0
+  * Fixed a bug with very long arguments.
+  * Fixed a bug with closing profiles properly.
+  * Fixed bash autocomplete for files without newline at the end.
+  * Fixed a bug with --raw flag reading files without newline at
+    the end.
+  * Updated dependencies.
+- Update to version 34.0.0
+  * Now fx has a built-in JS engine! So, JSON processing will work
+    everywhere!
+  * Added list function to print array as list of strings.
+  * Fixed yanking of wrapped object keys.
+
+-------------------------------------------------------------------
 Sun Mar 24 10:30:55 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 33.0.0
