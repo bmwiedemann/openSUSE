@@ -5,7 +5,7 @@
  
  #ifndef LPM_VERSION
 -  #define LPM_VERSION "unknown"
-+  #define LPM_VERSION "1.2.9+git20240603.5343f48"
++  #define LPM_VERSION "1.2.9+git20240622.1cf4f05"
  #endif
  #ifndef LPM_DEFAULT_REPOSITORY
    #define LPM_DEFAULT_REPOSITORY "https://github.com/lite-xl/lite-xl-plugin-manager.git:latest"

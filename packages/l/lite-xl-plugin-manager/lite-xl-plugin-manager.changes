@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jun 22 19:04:09 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.2.9+git20240622.1cf4f05:
+  * Fixing an error with libzip on newer gcc versions.
+  * windows:fix argument escaping for cmd.exe (#117)
+
+-------------------------------------------------------------------
+Tue Jun 11 15:59:27 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.2.9+git20240609.d737011:
+  * ci: parallelize most build processes (#115)
+  * Added in specific check for install to guard against "*".
+  * Fix for Guldo's new issue.
+  * Added in fallback to fetch everything if we can't find a specific object.
+  * Relaxed detection of datadir and core plugins to probably fix #112.
+
+-------------------------------------------------------------------
 Tue Jun 04 15:24:55 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 1.2.9+git20240603.5343f48:
