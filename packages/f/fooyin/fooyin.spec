@@ -17,7 +17,7 @@
 
 
 Name:           fooyin
-Version:        0.4.5
+Version:        0.5.1
 Release:        0
 Summary:        A customisable music player built with Qt
 License:        GPL-3.0-only
@@ -35,6 +35,7 @@ BuildRequires:  cmake(Qt6OpenGLWidgets)
 BuildRequires:  cmake(Qt6Svg)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavformat)
