@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 26 07:19:48 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to version 2.52.1
+  * Fix issue with files larger on the replica than on the primary.
+
+-------------------------------------------------------------------
 Fri May 31 13:27:30 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to version 2.52

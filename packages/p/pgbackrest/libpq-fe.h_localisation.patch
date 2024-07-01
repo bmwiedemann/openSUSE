@@ -1,7 +1,7 @@
-Index: pgbackrest-release-2.52/src/postgres/client.c
+Index: pgbackrest-release-2.52.1/src/postgres/client.c
 ===================================================================
---- pgbackrest-release-2.52.orig/src/postgres/client.c
-+++ pgbackrest-release-2.52/src/postgres/client.c
+--- pgbackrest-release-2.52.1.orig/src/postgres/client.c
++++ pgbackrest-release-2.52.1/src/postgres/client.c
 @@ -3,7 +3,7 @@ Postgres Client
  ***********************************************************************************************************************************/
  #include "build.auto.h"
@@ -11,10 +11,10 @@ Index: pgbackrest-release-2.52/src/postgres/client.c
  
  #include "common/debug.h"
  #include "common/log.h"
-Index: pgbackrest-release-2.52/src/configure
+Index: pgbackrest-release-2.52.1/src/configure
 ===================================================================
---- pgbackrest-release-2.52.orig/src/configure
-+++ pgbackrest-release-2.52/src/configure
+--- pgbackrest-release-2.52.1.orig/src/configure
++++ pgbackrest-release-2.52.1/src/configure
 @@ -3655,12 +3655,12 @@ else $as_nop
    as_fn_error $? "library 'pq' is required" "$LINENO" 5
  fi
