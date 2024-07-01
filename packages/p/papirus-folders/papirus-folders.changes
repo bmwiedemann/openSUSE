@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 23 11:20:58 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.13.1:
+  * Fixed a potential issue with the color auto-detect feature
+
+-------------------------------------------------------------------
 Wed Feb 15 13:00:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12.1:
