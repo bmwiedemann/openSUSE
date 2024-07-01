@@ -123,4 +123,15 @@
     automated testsing using both tox and Github actions</comment>
     <requestid>1137440</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>508a3960c307b117efc635e488ab8fb7</srcmd5>
+    <version>2.10.0</version>
+    <time>1719825701</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.10.0:
+  * Properly propagating exceptions for NFS read-only lock issues
+    and added support for being able to choose between lockf and
+    flock</comment>
+    <requestid>1184135</requestid>
+  </revision>
 </revisionlist>

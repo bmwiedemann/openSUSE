@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 30 20:07:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10.0:
+  * Properly propagating exceptions for NFS read-only lock issues
+    and added support for being able to choose between lockf and
+    flock
+
+-------------------------------------------------------------------
 Sun Jan  7 20:28:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.2:
