@@ -614,4 +614,13 @@
 - Update to 0.18.15:</comment>
     <requestid>1183518</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>3075398d41bebf6e1a60935298efd0c4</srcmd5>
+    <version>0.18.21+0</version>
+    <time>1719825729</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.21:
+  * Fix missing line breaks in _eza</comment>
+    <requestid>1184194</requestid>
+  </revision>
 </revisionlist>
