@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-authheaders
-Version:        0.16.2
+Version:        0.16.3
 Release:        0
 Summary:        A library wrapping email authentication header verification and generation
 License:        MIT

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 30 21:41:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.16.3:
+  * Update expected test results to also be compatible with
+    dkimpy >= 1.1.7
+  * Update PSL from upstream
+
+-------------------------------------------------------------------
 Tue Jan 30 12:04:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.16.2:

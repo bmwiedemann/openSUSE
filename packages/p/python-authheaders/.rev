@@ -131,4 +131,15 @@
   * Delete more setup.py cruft for non-supported Pythons</comment>
     <requestid>1142765</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>006ae764e741cd38e79026134683435b</srcmd5>
+    <version>0.16.3</version>
+    <time>1719825717</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.16.3:
+  * Update expected test results to also be compatible with
+    dkimpy &gt;= 1.1.7
+  * Update PSL from upstream</comment>
+    <requestid>1184160</requestid>
+  </revision>
 </revisionlist>
