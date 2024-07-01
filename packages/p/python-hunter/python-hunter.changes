@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 30 19:18:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.7.0:
+  * Drop support for Python 3.7.
+  * Upgrade linters and refactor various string formatting and
+    other cleanups.
+  * Upgrade Cython to latest release (3.0.10).
+  * Linux wheels should be back now.
+  * Switched docs theme to furo.
+
+-------------------------------------------------------------------
 Thu Dec  7 22:44:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.6.1:

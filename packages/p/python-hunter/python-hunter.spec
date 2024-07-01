@@ -1,7 +1,7 @@
 #
 # spec file for package python-hunter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-hunter
-Version:        3.6.1
+Version:        3.7.0
 Release:        0
 Summary:        Pytest plugin for coverage reporting
 License:        BSD-2-Clause
@@ -28,7 +28,7 @@ BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
