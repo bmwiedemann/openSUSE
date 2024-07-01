@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jul  1 06:22:17 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.4:
+  * Update appdata
+  * Allow self-signed .onion file transfer certs (#1149)
+  * Self-ping with server-given roomnick (#1594)
+  * Join Channel dialog: Fix displaying of bookmark details
+  * Always export symbols to fix startup on BSDs
+  * AppData/DOAP: Use sentence case for summary.
+  * AppData: Add brand color
+  * Annotating with array_null_terminated doesn't imply a missing array_length
+  * Fix message stanza with body changing MUC subject (#1569)
+  * Fix poor contrast of highlight in search results with dark theme (#1557)
+  * Fix crash on removing conference not in roster (#1516)
+  * Fix http upload for servers without file size limit (#1512)
+  * Start conversation if closed when receiving an audio or video call (#1485)
+  * Fix crash due to gpg binding issue
+  * Fix implicit-function-declaration compiler warnings
+  * Fix subscription notification clearing
+  * fix: Add x node to MUC PM stanza (#1462)
+  * Fix showing the kick option to owners
+- Drop upstreamed dino-0.4.3-vala.patch
+
+-------------------------------------------------------------------
 Tue Jun 18 07:26:48 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Fix build with valac >= 0.56.17 (gh/dino/dino#1576):
