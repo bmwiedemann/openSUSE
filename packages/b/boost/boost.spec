@@ -244,6 +244,8 @@ Patch20:        python_library_name.patch
 Patch21:        boost-remove-cmakedir.patch
 Patch22:        boost-process.patch
 Patch23:        boost-charconv-quadmath.patch
+# PATCH-FIX-UPSTREAM boost-1.85.0-python-numpy-2.patch -- gh#boostorg/python/pull/432
+Patch24:        boost-1.85.0-python-numpy-2.patch   
 %{?suse_build_hwcaps_libs}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -1271,6 +1273,7 @@ find -type f ! \( -name \*.sh -o -name \*.py -o -name \*.pl \) -exec chmod -x {}
 %patch -P 21 -p1
 %patch -P 22 -p2
 %patch -P 23 -p1
+%patch -P 24 -p1
 
 %build
 find . -type f -exec chmod u+w {} +
