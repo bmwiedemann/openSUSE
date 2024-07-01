@@ -16,4 +16,40 @@
   * Use correct method for zoneinfo instances.</comment>
     <requestid>1146299</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3df2b567d6d45f2fed59f95006d92b1a</srcmd5>
+    <version>2.6.0</version>
+    <time>1719825614</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.0:
+  * Avoid crash when can not get human readable description
+  * Update codeql-analysis.yml (#653).
+  * Fix CI: Change assert self.app.timezone.zone to assert
+    self.app.timezone.key (#664).
+  * Drop Django 4.0 from CI to avoid security issues (#662).
+  * Fix Issue #388: Celery Beat scheduled tasks may be executed
+    repeatedly (#660).
+  * Update README.rst (#670).
+  * Update runtime.txt to include Django 5.0 (#681).
+  * Replace case.patching fixture with mockeypatch + MagicMock
+  * Update README.rst - Crontab effect description (#689).
+  * Update supported Python &amp; Django version in setup.py (#672).
+  * Add Python 3.12 to test matrix and add classifier (#690).
+  * Django v5.0: django.utils.timezone.utc alias --&gt;
+    datetime.timezone.utc (#703).
+  * Upgrade GitHub Actions and PyPy 3.10 and Django 5.0 (#699).
+  * Testing Django v5.0 on pypy-3.10-v7.3.14 passes (#705).
+  * Prepare for release v2.6.0 to support Py3.12 and Dj5.0
+  * GitHub Actions: Do not hardcode an out-of-date version of
+    PyPy (#715).
+  * Use the same order in the admin as in the cron schedule
+    expression (#716).
+  * Upgrade pip and GitHub Actions dependencies with dependabot
+  * Update pytest requirement from &lt;8.0,&gt;=6.2.5 to &gt;=6.2.5,&lt;9.0
+  * Remove requirements/test-djangoXY.txt (#728).
+  * Remove code for unsupported django.VERSION &lt; (3, 2) (#729).
+  * Added sphinxcontrib-django to extensions (#736).
+- drop support-zoneinfo.patch (upstream)</comment>
+    <requestid>1184021</requestid>
+  </revision>
 </revisionlist>

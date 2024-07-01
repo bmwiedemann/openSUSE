@@ -17,14 +17,12 @@
 
 
 Name:           python-django-celery-beat
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        Database-backed Periodic Tasks
 License:        BSD-3-Clause
 URL:            https://github.com/celery/django-celery-beat
 Source:         https://files.pythonhosted.org/packages/source/d/django-celery-beat/django-celery-beat-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#celery/django-celery-beat#664
-Patch0:         support-zoneinfo.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
