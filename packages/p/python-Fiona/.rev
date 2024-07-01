@@ -25,4 +25,12 @@ Notable dependencies of geopandas includes several commonly used OpenStreetMap l
     <comment></comment>
     <requestid>1067801</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>50f88d1a76f41441495df604d6194b83</srcmd5>
+    <version>1.9.6</version>
+    <time>1719825677</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1184097</requestid>
+  </revision>
 </revisionlist>

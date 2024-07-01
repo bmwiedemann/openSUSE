@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed Jun 19 19:49:34 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.9.6
+  * Ensure that geometry types in a schema are translated to a linear type,
+    as geometry instances are (#1313).
+  * Fix broken stable API documentation on Read The Docs (#).
+  * Remove install requirement of setuptools, a regression introduced in 1.9.5.
+- from 1.9.5
+  * Expand keys in schema mismatch exception, resolving #1278.
+  * Preserve the null properties and geometry of a Feature when serializing (#1276).
+  * The distribution name is now officially "fiona", not "Fiona". The import name
+    remains "fiona".
+  * Builds now require Cython >= 3.0.2 (#1276).
+  * PyPI wheels include GDAL 3.6.4, PROJ 9.0.1, and GEOS 3.11.2.
+  * PyPI wheels include curl 8.4.0, addressing CVE-2023-38545 and CVE-38546.
+  * PyPI wheels are now available for Python 3.12.
+- from 1.9.4.post1
+  * Extraneous files were unintentionally packaged in the 1.9.4 wheels. This
+    post1 release excludes them so that wheel contents are as in version 1.9.3.
+- from 1.9.4
+  * The performance of Feature.from_dict() has been improved (#1267).
+  * Several sources of meaningless log messages from fiona._geometry about NULL
+    geometries are avoided (#1264).
+  * The Parquet driver has been added to the list of supported drivers and will
+    be available if your system's GDAL library links libarrow. Note that fiona
+    wheels on PyPI do not include libarrow as it is rather large.
+  * Ensure that fiona._vendor modules are found and included.
+  * Bytes type feature properties are now hex encoded when serializing to GeoJSON (#1263).
+  * Docstrings for listdir and listlayers have been clarified and harmonized.
+  * Nose style test cases have been converted to unittest.TestCase (#1256).
+  * The munch package used by fio-filter and fio-calc is now vendored and patched
+    to remove usage of the deprecated pkg_resources module (#1255).
+- from 1.9.3
+  * Rasterio CRS objects are compatible with the Collection constructor and are
+    now accepted (#1248).
+  * Enable append mode for fio-load (#1237).
+  * Reading a GeoJSON with an empty array property can result in a segmentation
+    fault since version 1.9.0. This has been fixed (#1228).
+- from 1.9.2
+  * Get command entry points using importlib.metadata (#1220).
+  * Instead of warning, transform_geom() raises an exception when some points
+    can't be reprojected unless the caller opts in to partial reprojection. This
+    restores the behavior of version 1.8.22.
+  * Add support for open options to all CLI commands that call fiona.open (#1215).
+  * Fix a memory leak that can occur when iterating over a dataset using strides (#1205).
+  * ZipMemoryFile now supports zipped GDB data (#1203).
+- Switch package to modern Python Stack on SLE-15
+  + Use Python 3.11 on SLE-15 by default
+  + Drop support for older Python versions
+- Update name for dist directory in %files section
+- Cherry-pick upstream patch to fix build with GCC 14
+  * https://github.com/Toblerity/Fiona/pull/1314.patch
+
+-------------------------------------------------------------------
 Sun Feb 26 06:56:55 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 1.9.1:

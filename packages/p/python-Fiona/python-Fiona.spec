@@ -1,7 +1,7 @@
 #
 # spec file for package python-Fiona
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,17 @@
 #
 
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-Fiona
-Version:        1.9.1
+Version:        1.9.6
 Release:        0
 Summary:        Module for reading and writing spatial data files
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/Toblerity/Fiona
-Source:         https://files.pythonhosted.org/packages/source/F/Fiona/Fiona-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/f/fiona/fiona-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM - Fix leak in set_proj_search_path
+Patch:          https://github.com/Toblerity/Fiona/pull/1314.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
@@ -58,9 +60,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module six >= 1.7}
 # /SECTION
-%ifpython3
 Recommends:     fiona-fio
-%endif
 %python_subpackages
 
 %description
@@ -78,7 +78,7 @@ Command-line interface for reading and writing spatial data
 using OGR's Fiona package.
 
 %prep
-%autosetup -p1 -n Fiona-%{version}
+%autosetup -p1 -n fiona-%{version}
 
 %build
 %pyproject_wheel
@@ -106,7 +106,7 @@ mv fiona_temp fiona
 %doc CHANGES.txt CREDITS.txt README.rst
 %license LICENSE.txt
 %{python_sitearch}/fiona
-%{python_sitearch}/Fiona-%{version}*-info
+%{python_sitearch}/fiona-%{version}*-info
 
 %files -n fiona-fio
 %license LICENSE.txt

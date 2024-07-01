@@ -1,0 +1,33 @@
+From b6d6d9d7f11ba9ff6e3778832c4306ac0a8fab06 Mon Sep 17 00:00:00 2001
+From: Elliott Sales de Andrade <quantum.analyst@gmail.com>
+Date: Sat, 2 Dec 2023 04:49:36 -0500
+Subject: [PATCH] Fix leak in set_proj_search_path
+
+The `CSLAddString` function takes a `char *`, not a `const char *`,
+which may turn into an error on new GCC. It also allocates a new array
+when given `NULL`, which is _copied_ by `OSRSetPROJSearchPaths`, so it
+is leaked.
+---
+ fiona/_env.pyx | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/fiona/_env.pyx b/fiona/_env.pyx
+index f33f44e9f..af0603cc6 100644
+--- a/fiona/_env.pyx
++++ b/fiona/_env.pyx
+@@ -64,12 +64,13 @@ except ImportError:
+ cdef bint is_64bit = sys.maxsize > 2 ** 32
+ 
+ cdef void set_proj_search_path(object path):
+-    cdef const char **paths = NULL
++    cdef char **paths = NULL
+     cdef const char *path_c = NULL
+     path_b = path.encode("utf-8")
+     path_c = path_b
+     paths = CSLAddString(paths, path_c)
+-    OSRSetPROJSearchPaths(paths)
++    OSRSetPROJSearchPaths(<const char *const *>paths)
++    CSLDestroy(paths)
+ 
+ 
+ cdef _safe_osr_release(OGRSpatialReferenceH srs):
