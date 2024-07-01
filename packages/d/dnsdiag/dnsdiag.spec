@@ -1,8 +1,8 @@
 #
 # spec file for package dnsdiag
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2017-2023, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2017-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %bcond_without test
 Name:           dnsdiag
-Version:        2.1.0
+Version:        2.5.0
 Release:        0
 Summary:        DNS request auditing toolset
 License:        BSD-3-Clause
@@ -33,13 +33,15 @@ Source3:        dnstraceroute.1
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
+Requires:       python3-cryptography >= 42.0.7
 Requires:       python3-cymruwhois >= 1.6
-Requires:       python3-dnspython >= 2.3.0
-Requires:       python3-setuptools
+Requires:       python3-dnspython >= 2.6.1
+Requires:       python3-h2 >= 4.1.0
+Requires:       python3-httpx >= 0.27.0
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  python3-cymruwhois >= 1.6
-BuildRequires:  python3-dnspython >= 2.3.0
+BuildRequires:  python3-dnspython >= 2.6.1
 %endif
 
 %description
@@ -64,6 +66,7 @@ of a resolver.
 
 %prep
 %setup -q -n dnsdiag-%{version}
+sed -e '/^#!\//, 1d' -i util/*.py
 
 %build
 %python3_build

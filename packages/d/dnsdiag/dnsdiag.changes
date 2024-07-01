@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jun 20 12:16:30 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.0
+  * Add RFC5001 NSID support (-n or --nsid).
+  * Display RFC8914 Extended DNS Errors when available (-E or --ede)
+  * Add ability to override default RR class (-C or --class).
+  * Display response TTL if applicable (-L or --ttl).
+  * Display first answer in RRSET, when available (-a or --answer).
+  * Add -x to display extra/expert information, implying Flags, EDE
+    and TTL.
+  * Display EDNS flags alongside other response flags, when available
+  * Always display RCODE with responses.
+  * Add more resolvers to the default list.
+  * Lots of bug fixes and UX improvements.
+  * Change default behavior of --edns to disabled by default.
+  * Always display flags in brackets.
+
+-------------------------------------------------------------------
 Sat Feb  4 15:41:21 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.1.0
