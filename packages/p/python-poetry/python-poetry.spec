@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry%{psuffix}
-Version:        1.8.2
+Version:        1.8.3
 Release:        0
 Summary:        Python dependency management and packaging
 License:        MIT
@@ -58,7 +58,7 @@ Requires:       python-installer >= 0.7.0
 Requires:       python-keyring >= 24.0
 Requires:       python-packaging >= 23.1
 Requires:       python-pexpect >= 4.7.0
-Requires:       python-pkginfo >= 1.9.4
+Requires:       python-pkginfo >= 1.10.0
 Requires:       python-pyproject-hooks >= 1.0.0
 Requires:       python-requests >= 2.26
 Requires:       python-shellingham >= 1.5

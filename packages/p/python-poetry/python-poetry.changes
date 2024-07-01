@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun Jun 30 21:49:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.3:
+  * Add support for untagged CPython builds with versions ending
+    with a `+` (#9207).
+  * Require `pkginfo>=1.10` to ensure support for packages with
+    metadata version 2.3 (#9130).
+  * Improve locking on FIPS systems (#9152).
+  * Fix an issue where unrecognized package metadata versions
+    silently resulted in empty dependencies (#9203,
+  * #9226).
+  * Fix an issue where trailing slashes in git URLs where not
+    handled correctly (#9205).
+  * Fix an issue where `poetry self` commands printed a warning
+    that the current project cannot be installed (#9302).
+  * Fix an issue where `poetry install` sporadically failed with
+    a `KeyError` due to a race condition (#9335).
+  * Fix incorrect information about `poetry shell` (#9060).
+  * Add a git subdirectory example to `poetry add` (#9080).
+  * Mention interactive credential configuration (#9074).
+  * Add notes for optional advanced installation steps (#9098).
+  * Add reference to configuration credentials in documentation
+    of poetry `publish` (#9110).
+  * Improve documentation for configuring credentials via
+    environment variables (#9121).
+  * Remove misleading wording around virtual environments
+    (#9213).
+  * Remove outdated advice regarding seeding keyring backends
+    (#9213).
+  * Add a `pyproject.toml` example for a dependency with multiple
+    extras (#9138).
+  * Clarify help of `poetry add` (#9230).
+  * Add a note how to configure credentials for TestPyPI for
+    `poetry publish` (#9255).
+  * Fix information about the `--readme` option in `poetry new`
+    (#9260).
+  * Clarify what is special about the Python constraint in
+    `dependencies` (#9256).
+  * Update how to uninstall plugins via `pipx` (#9320).
+
+-------------------------------------------------------------------
 Tue Mar 19 16:10:12 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.8.2

@@ -520,4 +520,41 @@
   * Improve performance of dependency resolution by using shallow</comment>
     <requestid>1159626</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>170fcb13ff8721c4718d646bb27a08cc</srcmd5>
+    <version>1.8.3</version>
+    <time>1719825719</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.3:
+  * Add support for untagged CPython builds with versions ending
+    with a `+` (#9207).
+  * Require `pkginfo&gt;=1.10` to ensure support for packages with
+    metadata version 2.3 (#9130).
+  * Improve locking on FIPS systems (#9152).
+  * Fix an issue where unrecognized package metadata versions
+    silently resulted in empty dependencies (#9203,
+  * #9226).
+  * Fix an issue where trailing slashes in git URLs where not
+    handled correctly (#9205).
+  * Fix an issue where `poetry self` commands printed a warning
+    that the current project cannot be installed (#9302).
+  * Fix an issue where `poetry install` sporadically failed with
+    a `KeyError` due to a race condition (#9335).
+  * Fix incorrect information about `poetry shell` (#9060).
+  * Add a git subdirectory example to `poetry add` (#9080).
+  * Mention interactive credential configuration (#9074).
+  * Add notes for optional advanced installation steps (#9098).
+  * Add reference to configuration credentials in documentation
+    of poetry `publish` (#9110).
+  * Improve documentation for configuring credentials via
+    environment variables (#9121).
+  * Remove misleading wording around virtual environments
+    (#9213).
+  * Remove outdated advice regarding seeding keyring backends
+    (#9213).
+  * Add a `pyproject.toml` example for a dependency with multiple
+    extras (#9138).
+  * Clarify help of `poetry add` (#9230).</comment>
+    <requestid>1184164</requestid>
+  </revision>
 </revisionlist>
