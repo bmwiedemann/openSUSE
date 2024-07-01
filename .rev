@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>1155913</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3ef54ef80c4c251a4e5ed86056ff45b2</srcmd5>
+    <version>0.3.0</version>
+    <time>1719825586</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.0:
+  * New module dep_logic.tags for compatibility check with wheel
+    tags
+  * Use the same marker environment for current platform</comment>
+    <requestid>1184006</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 29 16:04:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.0:
+  * New module dep_logic.tags for compatibility check with wheel
+    tags
+  * Use the same marker environment for current platform
+
+-------------------------------------------------------------------
 Thu Mar  7 06:53:41 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
 
 - Use sle15_python_module_pythons
