@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun 29 16:42:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 26.0.0:
+  * Fix upper limit of nb_elements.
+  * Remove duplicate entry in currency provider.
+  * Change `pydecimal` type hint for `min_value`, `max_value` to
+    allow `int`s.
+  * Add support for Nigerian Yoruba names and surnames (`yo_NG`).
+
+-------------------------------------------------------------------
 Tue Jun 11 08:06:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 25.8.0:

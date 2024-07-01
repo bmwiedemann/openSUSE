@@ -715,4 +715,17 @@
   * Fix data in geo for `pl_PL`.</comment>
     <requestid>1179942</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>de70bed128fb783632a8a0f272494bb7</srcmd5>
+    <version>26.0.0</version>
+    <time>1719825561</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 26.0.0:
+  * Fix upper limit of nb_elements.
+  * Remove duplicate entry in currency provider.
+  * Change `pydecimal` type hint for `min_value`, `max_value` to
+    allow `int`s.
+  * Add support for Nigerian Yoruba names and surnames (`yo_NG`).</comment>
+    <requestid>1184016</requestid>
+  </revision>
 </revisionlist>
