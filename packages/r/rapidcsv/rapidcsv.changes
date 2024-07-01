@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 22 16:47:30 UTC 2024 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Update to version 8.83:
+  * fixes #161 - writing CSV with autoquote enabled should quote strings
+    containing linebreak
+
+-------------------------------------------------------------------
 Sat Mar 23 07:47:04 UTC 2024 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Update to version 8.82:
