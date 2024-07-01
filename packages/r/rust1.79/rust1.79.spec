@@ -423,6 +423,16 @@ Provides:       rust+cargo = %{version}
 %description -n cargo%{version_suffix}
 Cargo downloads dependencies of Rust projects and compiles it.
 
+%package src
+Summary:        The Rust Standard Library Source
+License:        Apache-2.0 OR MIT
+Group:          Development/Languages/Rust
+Requires:       rust-std = %{version}
+BuildArch:      noarch
+
+%description src
+Rust Stanard Library Sources are required for building some types of projects
+
 %prep
 # Previously the stage0 compiler was skipped in test builds, but there are now
 # tests in rust's source tree that require it.
@@ -579,7 +589,7 @@ PATH_TO_LLVM_PROFILER=`echo %{_libdir}/clang/??/lib/linux/libclang_rt.profile-*.
   %{debug_info} \
   --enable-vendor \
   --enable-extended \
-  --tools="cargo,rustdoc" \
+  --tools="cargo,clippy,rustdoc,rustfmt,src" \
   --release-channel="stable" \
   --set rust.deny-warnings=false \
   %{!?with_bundled_llvm: --set target.%{rust_triple}.profiler=${PATH_TO_LLVM_PROFILER}} \
@@ -716,6 +726,10 @@ python3 ./x.py test --target=%{rust_triple} \
 %{_bindir}/rust-gdb
 %{_bindir}/rust-gdbgui
 %{_bindir}/rust-lldb
+%{_bindir}/cargo-clippy
+%{_bindir}/cargo-fmt
+%{_bindir}/clippy-driver
+%{_bindir}/rustfmt
 %{_mandir}/man1/rustc.1%{?ext_man}
 %{_mandir}/man1/rustdoc.1%{?ext_man}
 %{_prefix}/lib/lib*.so
@@ -763,6 +777,10 @@ python3 ./x.py test --target=%{rust_triple} \
 %{_mandir}/man1/cargo*.1%{?ext_man}
 %dir %{_datadir}/cargo
 %dir %{_datadir}/cargo/registry
+
+%files src
+%{rustlibdir}/src
+
 # End not with test
 %endif
 
