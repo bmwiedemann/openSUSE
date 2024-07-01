@@ -17,7 +17,7 @@
 
 
 Name:           python-flake8-comprehensions
-Version:        3.14.0
+Version:        3.15.0
 Release:        0
 Summary:        A flake8 plugin to help you write better list/set/dict comprehensions
 License:        ISC

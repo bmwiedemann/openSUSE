@@ -142,4 +142,16 @@
     gh#adamchainz/flake8-comprehensions#559</comment>
     <requestid>1153128</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f0847e80cef0d965f63650fe6518bdd1</srcmd5>
+    <version>3.15.0</version>
+    <time>1719825734</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.15.0:
+  * Add rule C420 to check for dict comprehensions with constant
+    values, encouraging replacement with dict.fromkeys().
+
+- drop unmaintained and unused pytest-flake8dir</comment>
+    <requestid>1184214</requestid>
+  </revision>
 </revisionlist>
