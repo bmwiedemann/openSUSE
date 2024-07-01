@@ -388,4 +388,25 @@
     (:ref:`instructions &lt;verifydownload&gt;`). (:issue:`512`)</comment>
     <requestid>1178935</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>45baa798d994f4407c6573a4c23d7521</srcmd5>
+    <version>3.46.0.1</version>
+    <time>1719825717</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.46.0.1:
+  * :func:`apsw.ext.query_info` provides the count and names of
+    bindings parameters.  (:issue:`528`)
+  * Address how errors are handled in VFS xRandomness routine,
+    that is only called once by SQLite to seed its random number
+    generator. (:issue:`526`)
+  * Added :meth:`Connection.vfsname` and updated corresponding
+    shell command to get the diagnostic names of the vfs stack
+    for the connection.  (:issue:`525`)
+  * Do not cache :meth:`Connection.pragma` statements to avoid
+    encryption keys, or pragmas that run during prepare from
+    being retained. (:issue:`522`)
+  * :meth:`Connection.pragma` adds keyword schema argument to run
+    pragma against attached databases.  (:issue:`524`)</comment>
+    <requestid>1184155</requestid>
+  </revision>
 </revisionlist>
