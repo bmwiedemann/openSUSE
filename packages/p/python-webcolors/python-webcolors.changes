@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Sun Jun 30 09:14:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.6.0:
+  * Supported Python versions are now 3.8, 3.9, 3.10, and 3.11.
+  * Running the unit tests no longer uses a third-party test
+    runner; the standard-library unittest module's runner is used
+    instead.
+  * Documentation of the HTML5 color algorithms has been updated
+    to emphasize which HTML5 spec is used (the WHATWG spec, which
+    is now the only canonical and maintained HTML5 spec) and
+    comments in the implementations have been updated to include
+    the latest prose description of the HTML5 algorithms from the
+    spec. These updates do not change the behavior of the HTML5
+    algorithms, and are only for clarity of documentation and
+    explanation.
+  * Adopted CalVer versioning.
+  * The raw mappings of color names/values are no longer publicly
+    exposed; use the appropriate normalizing conversion functions
+    instead of accessing the mappings directly.
+
+-------------------------------------------------------------------
+Sun Jun 30 09:14:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.6.0:
+  * to use a CalVer version number was 24.6.0.
+  * The API stability/deprecation policy for this library is as
+    follows:
+  * The supported stable public API of this library is the set of
+    symbols which are exported by its __all__ declaration and
+    which are documented in this documentation. For classes
+    exported there, the supported stable public API is the set of
+    methods and attributes of those classes whose names do not
+    begin with one or more underscore (_) characters and which
+    are documented in this documentation.
+  * When a public API is to be removed, or undergo a backwards-
+    incompatible change, it will emit a deprecation warning which
+    serves as notice of the intended removal or change, and which
+    will give a date -- which will always be at least in the next
+    calendar year after the first release which emits the
+    deprecation warning -- past which the removal or change may
+    occur without further warning.
+  * Security fixes, and fixes for high-severity bugs (such as
+    those which might cause unrecoverable crash or data loss),
+    are not required to emit deprecation warnings, and may -- if
+    needed -- impose backwards-incompatible change in any
+    release. If this occurs, this changelog document will contain
+    a note explaining why the usual deprecation process could not
+    be followed for that case.
+  * This policy is in effect as of the adoption of CalVer
+    versioning, with version 24.6.0 of this library.
+  * Released June 2024
+  * Supported Python versions are now 3.8, 3.9, 3.10, and 3.11.
+  * Running the unit tests no longer uses a third-party test
+    runner; the standard-library unittest module's runner is used
+    instead.
+  * Documentation of the HTML5 color algorithms has been updated
+    to emphasize which HTML5 spec is used (the WHATWG spec, which
+    is now the only canonical and maintained HTML5 spec) and
+    comments in the implementations have been updated to include
+    the latest prose description of the HTML5 algorithms from the
+    spec. These updates do not change the behavior of the HTML5
+    algorithms, and are only for clarity of documentation and
+    explanation.
+  * Adopted CalVer versioning.
+  * The raw mappings of color names/values are no longer publicly
+    exposed; use the appropriate normalizing conversion functions
+    instead of accessing the mappings directly.
+
+-------------------------------------------------------------------
 Wed May  3 09:20:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.13:
@@ -19,7 +88,7 @@ Fri Apr 21 12:38:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Sat Oct  1 14:03:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12:
-  * CI only fixes, no bug fixes or new features 
+  * CI only fixes, no bug fixes or new features
 
 -------------------------------------------------------------------
 Mon Feb  8 10:56:26 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
@@ -49,7 +118,7 @@ Fri Jun 14 11:29:48 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
     the hexadecimal value #808080, the integer triplet rgb(128, 128, 128), or
     the percentage triplet rgb(50%, 50%, 50%), webcolors now always returns
     u'gray', never u'grey'.
-  * Added a set of constants to use when referring to specifications that 
+  * Added a set of constants to use when referring to specifications that
     define color names <spec-constants>.
 
 -------------------------------------------------------------------
@@ -57,7 +126,7 @@ Fri Mar 29 10:13:53 UTC 2019 - pgajdos@suse.com
 
 - version update to 1.8.1
   * Introduce namedtuples to represent tuple data types.
-  * Get the definition-parsing test working on Python 3. 
+  * Get the definition-parsing test working on Python 3.
   * Documentation updates.
 
 -------------------------------------------------------------------

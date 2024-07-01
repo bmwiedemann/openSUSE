@@ -92,4 +92,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1110959</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9d99ccd230afb89d19fa8c6c4e1085f2</srcmd5>
+    <version>24.6.0</version>
+    <time>1719825569</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 24.6.0:
+  * Supported Python versions are now 3.8, 3.9, 3.10, and 3.11.
+  * Running the unit tests no longer uses a third-party test
+    runner; the standard-library unittest module's runner is used
+    instead.
+  * Documentation of the HTML5 color algorithms has been updated
+    to emphasize which HTML5 spec is used (the WHATWG spec, which
+    is now the only canonical and maintained HTML5 spec) and
+    comments in the implementations have been updated to include
+    the latest prose description of the HTML5 algorithms from the
+    spec. These updates do not change the behavior of the HTML5
+    algorithms, and are only for clarity of documentation and
+    explanation.
+  * Adopted CalVer versioning.
+  * The raw mappings of color names/values are no longer publicly
+    exposed; use the appropriate normalizing conversion functions
+    instead of accessing the mappings directly.
+
+- update to 24.6.0:
+  * to use a CalVer version number was 24.6.0.
+  * The API stability/deprecation policy for this library is as
+    follows:
+  * The supported stable public API of this library is the set of
+    symbols which are exported by its __all__ declaration and
+    which are documented in this documentation. For classes
+    exported there, the supported stable public API is the set of
+    methods and attributes of those classes whose names do not
+    begin with one or more underscore (_) characters and which
+    are documented in this documentation.
+  * When a public API is to be removed, or undergo a backwards-</comment>
+    <requestid>1184088</requestid>
+  </revision>
 </revisionlist>

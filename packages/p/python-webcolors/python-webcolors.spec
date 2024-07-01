@@ -1,7 +1,7 @@
 #
 # spec file for package python-webcolors
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-webcolors
-Version:        1.13
+Version:        24.6.0
 Release:        0
 Summary:        Support for color names and value formats defined by the HTML
 License:        BSD-3-Clause
@@ -72,6 +70,7 @@ Full documentation is `available online <http://webcolors.readthedocs.org/>`_.
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/webcolors
+%{python_sitelib}/webcolors-%{version}.dist-info
 
 %changelog
