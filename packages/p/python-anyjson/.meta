@@ -1,9 +1,0 @@
-<package name="python-anyjson" project="openSUSE:Factory">
-  <title>Wraps the best available JSON implementation available in a common interface</title>
-  <description>Anyjson loads whichever is the fastest JSON module installed and provides
-a uniform API regardless of which JSON implementation is used.
-
-Originally part of carrot (http://github.com/ask/carrot/)</description>
-  <devel project="devel:languages:python" package="python-anyjson"/>
-  <url>http://bitbucket.org/runeh/anyjson</url>
-</package>
