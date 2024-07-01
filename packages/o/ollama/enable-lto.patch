@@ -1,30 +1,28 @@
-diff -rub ollama/llm/generate/gen_linux.sh ollama-patched/llm/generate/gen_linux.sh
---- ollama/llm/generate/gen_linux.sh	2024-04-23 04:40:58.246062467 +0200
-+++ ollama-patched/llm/generate/gen_linux.sh	2024-04-23 04:37:36.432294889 +0200
-@@ -51,7 +51,7 @@
-         export CUDACXX=$(command -v nvcc)
+diff --git a/llm/generate/gen_linux.sh b/llm/generate/gen_linux.sh
+index 28ce1f2..4193a43 100755
+--- a/llm/generate/gen_linux.sh
++++ b/llm/generate/gen_linux.sh
+@@ -52,6 +52,7 @@ if [ -z "${CUDACXX}" ]; then
      fi
  fi
--COMMON_CMAKE_DEFS="-DCMAKE_POSITION_INDEPENDENT_CODE=on -DLLAMA_NATIVE=off -DLLAMA_AVX=on -DLLAMA_AVX2=off -DLLAMA_AVX512=off -DLLAMA_FMA=off -DLLAMA_F16C=off"
-+COMMON_CMAKE_DEFS="-DCMAKE_POSITION_INDEPENDENT_CODE=on -DLLAMA_LTO=on -DCMAKE_BUILD_TYPE=Release -DLLAMA_NATIVE=off -DLLAMA_AVX=on -DLLAMA_AVX2=off -DLLAMA_AVX512=off -DLLAMA_FMA=off -DLLAMA_F16C=off"
+ COMMON_CMAKE_DEFS="-DCMAKE_POSITION_INDEPENDENT_CODE=on -DLLAMA_NATIVE=off -DLLAMA_AVX=on -DLLAMA_AVX2=off -DLLAMA_AVX512=off -DLLAMA_FMA=off -DLLAMA_F16C=off -DLLAMA_OPENMP=off"
++COMMON_CMAKE_DEFS="${COMMON_CMAKE_DEFS} -DLLAMA_LTO=on -DCMAKE_BUILD_TYPE=Release"
  source $(dirname $0)/gen_common.sh
  init_vars
  git_module_setup
-@@ -77,7 +77,7 @@
-     if [ -n "${OLLAMA_CUSTOM_CPU_DEFS}" ]; then
+@@ -78,6 +79,7 @@ if [ -z "${OLLAMA_SKIP_CPU_GENERATE}" ]; then
          init_vars
          echo "OLLAMA_CUSTOM_CPU_DEFS=\"${OLLAMA_CUSTOM_CPU_DEFS}\""
--        CMAKE_DEFS="${OLLAMA_CUSTOM_CPU_DEFS} -DCMAKE_POSITION_INDEPENDENT_CODE=on ${CMAKE_DEFS}"
-+        CMAKE_DEFS="${OLLAMA_CUSTOM_CPU_DEFS} -DCMAKE_POSITION_INDEPENDENT_CODE=on -DLLAMA_LTO=on -DCMAKE_BUILD_TYPE=Release ${CMAKE_DEFS}"
+         CMAKE_DEFS="${OLLAMA_CUSTOM_CPU_DEFS} -DCMAKE_POSITION_INDEPENDENT_CODE=on ${CMAKE_DEFS}"
++        CMAKE_DEFS="${CMAKE_DEFS} -DLLAMA_LTO=on"
          BUILD_DIR="../build/linux/${ARCH}/cpu"
          echo "Building custom CPU"
          build
-@@ -93,7 +93,7 @@
-         # -DLLAMA_AVX512_VBMI -- 2018 Intel Cannon Lake
+@@ -94,6 +96,7 @@ if [ -z "${OLLAMA_SKIP_CPU_GENERATE}" ]; then
          # -DLLAMA_AVX512_VNNI -- 2021 Intel Alder Lake
-
--        COMMON_CPU_DEFS="-DCMAKE_POSITION_INDEPENDENT_CODE=on -DLLAMA_NATIVE=off"
-+        COMMON_CPU_DEFS="-DCMAKE_POSITION_INDEPENDENT_CODE=on -DLLAMA_LTO=on -DCMAKE_BUILD_TYPE=Release -DLLAMA_NATIVE=off"
+ 
+         COMMON_CPU_DEFS="-DCMAKE_POSITION_INDEPENDENT_CODE=on -DLLAMA_NATIVE=off -DLLAMA_OPENMP=off"
++        COMMON_CPU_DEFS="-DLLAMA_LTO=on -DCMAKE_BUILD_TYPE=Release"
          if [ -z "${OLLAMA_CPU_TARGET}" -o "${OLLAMA_CPU_TARGET}" = "cpu" ]; then
              #
              # CPU first for the default library, set up as lowest common denominator for maximum compatibility (including Rosetta)

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jun 22 10:08:00 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.1.45:
+  * New models: DeepSeek-Coder-V2: A 16B & 236B open-source
+    Mixture-of-Experts code language model that achieves
+    performance comparable to GPT4-Turbo in code-specific tasks.
+  * ollama show <model> will now show model information such as
+    context window size
+  * Model loading on Windows with CUDA GPUs is now faster
+  * Setting seed in the /v1/chat/completions OpenAI compatibility
+    endpoint no longer changes temperature
+  * Enhanced GPU discovery and multi-gpu support with concurrency
+  * Introduced a workaround for AMD Vega RX 56 SDMA support on
+    Linux
+  * Fix memory prediction for deepseek-v2 and deepseek-coder-v2
+    models
+  * api/show endpoint returns extensive model metadata
+  * GPU configuration variables are now reported in ollama serve
+  * Update Linux ROCm to v6.1.1
+
+-------------------------------------------------------------------
 Tue Jun 18 12:12:41 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Added documentation files to .spec 
