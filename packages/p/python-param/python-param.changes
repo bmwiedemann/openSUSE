@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jun 30 19:30:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * Ensure rx._callback resolves accessors
+  * Ensure refs can be updated by watcher of the same parameter
+  * Recursively resolve references on args and kwargs passed to a
+    reactive operation (#944)
+  * Only override the name of a Parameterized instance on Parameter
+    instantiation when instantiate=True (#938)
+  * Various minor documentation improvements
+  * Fix test_reactive_logic_unary_ops on Python 3.12
+
+-------------------------------------------------------------------
 Tue May  7 12:54:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.0:
