@@ -7376,6 +7376,7 @@ unsorted:
   - go-for-it-lang 
   - go-md2man 
   - go-mod-upgrade 
+  - go-passbolt-cli 
   - go-race 
   - go-sendxmpp 
   - go1.13 
@@ -16647,7 +16648,6 @@ unsorted:
   - libvpd-devel 
   - libvpl 
   - libvpl-devel 
-  - libvpl-samples 
   - libvpx-devel 
   - libvpx9-32bit 
   - libvsapm-devel 
@@ -23236,6 +23236,8 @@ unsorted:
   - pwgen 
   - py3c-devel 
   - pybind11-abseil-devel 
+  - pybind11_protobuf 
+  - pybind11_protobuf-devel 
   - pybugz-common 
   - pydf 
   - pyenv 
@@ -24063,7 +24065,6 @@ unsorted:
   - python310-anyascii 
   - python310-anyio 
   - python310-anyio3 
-  - python310-anyjson 
   - python310-anymarkup-core 
   - python310-anywidget 
   - python310-apache-libcloud 
@@ -27652,7 +27653,6 @@ unsorted:
   - python311-antlr4-python3-runtime 
   - python311-anyascii 
   - python311-anyio3 
-  - python311-anyjson 
   - python311-anymarkup-core 
   - python311-anywidget 
   - python311-apache-libcloud 
@@ -31148,7 +31148,6 @@ unsorted:
   - python312-anyascii 
   - python312-anyio 
   - python312-anyio3 
-  - python312-anyjson 
   - python312-anymarkup-core 
   - python312-anywidget 
   - python312-apache-libcloud 
@@ -35923,6 +35922,7 @@ unsorted:
   - rust1.78 
   - rust1.78-src 
   - rust1.79 
+  - rust1.79-src 
   - rustdesk-server 
   - rustdesk-server-hbbr 
   - rustdesk-server-hbbs 
@@ -47625,6 +47625,7 @@ unsorted:
   - wasm-pack 
   - wasmedge 
   - wasmedge-devel 
+  - watchdog 
   - watchexec 
   - watson 
   - watson-bash-completion 
