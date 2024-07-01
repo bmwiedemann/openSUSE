@@ -127,4 +127,35 @@
     <comment></comment>
     <requestid>1164174</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8e213c07a220c73fb84cd98f31bb85d2</srcmd5>
+    <version>1.6.0</version>
+    <time>1719825709</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.0:
+  * Add `install-all` command to install packages according to
+    spec metadata file.
+  * Introduce `pipx pin` and `pipx unpin` commands, which can be
+    used to pin or unpin the version
+  * of an installed package, so it will not be upgraded by `pipx
+    upgrade` or `pipx upgrade-all`.
+  * Add a new option `--pinned` to `pipx list` command for
+    listing pinned packages only.
+  * Add `pipx interpreter upgrade` command to upgrade local
+    standalone python in micro/patch level
+  * Add `--requirement` option to `inject` command to read list
+    of packages from a text file.
+  * Add `pipx upgrade-shared` command, to create/upgrade shared
+    libraries as a standalone command.
+  * Allow `upgrade` command to accept multiple packages as
+    arguments.
+  * Support Python version for `--python` arg when py launcher is
+    not available
+  * Make `install-all` gather errors in batch
+
+- Update to 1.5.0
+  * fix: nicer tracebacks in run mode on scripts
+  https://github.com/pypa/pipx/releases/tag/1.4.2</comment>
+    <requestid>1184143</requestid>
+  </revision>
 </revisionlist>

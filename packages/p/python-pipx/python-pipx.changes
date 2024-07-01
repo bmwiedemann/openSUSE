@@ -1,7 +1,31 @@
 -------------------------------------------------------------------
+Sun Jun 30 20:48:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.0:
+  * Add `install-all` command to install packages according to
+    spec metadata file.
+  * Introduce `pipx pin` and `pipx unpin` commands, which can be
+    used to pin or unpin the version
+  * of an installed package, so it will not be upgraded by `pipx
+    upgrade` or `pipx upgrade-all`.
+  * Add a new option `--pinned` to `pipx list` command for
+    listing pinned packages only.
+  * Add `pipx interpreter upgrade` command to upgrade local
+    standalone python in micro/patch level
+  * Add `--requirement` option to `inject` command to read list
+    of packages from a text file.
+  * Add `pipx upgrade-shared` command, to create/upgrade shared
+    libraries as a standalone command.
+  * Allow `upgrade` command to accept multiple packages as
+    arguments.
+  * Support Python version for `--python` arg when py launcher is
+    not available
+  * Make `install-all` gather errors in batch
+
+-------------------------------------------------------------------
 Tue Apr  2 15:43:40 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
-- Update to 1.5.0 
+- Update to 1.5.0
   * Add --global option to pipx commands. - This will run the
     action in a global scope and affect environment for all system
     users.
@@ -25,7 +49,7 @@ Wed Jan 31 14:43:05 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
   * Add macos shebang workaround description
   * Introduce towncrier
   * Potential fix for pylauncher with python version
-  * fix: nicer tracebacks in run mode on scripts 
+  * fix: nicer tracebacks in run mode on scripts
 
 -------------------------------------------------------------------
 Mon Jan 15 14:32:28 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
@@ -38,7 +62,7 @@ Mon Jan 15 14:32:28 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
   * Verify if script name provided is a file before running it
   * Fix python path resolution on linux
 
-  https://github.com/pypa/pipx/releases/tag/1.4.2 
+  https://github.com/pypa/pipx/releases/tag/1.4.2
 
 -------------------------------------------------------------------
 Tue Jan  2 16:49:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
