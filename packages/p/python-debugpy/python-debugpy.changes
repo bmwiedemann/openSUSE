@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun 29 19:34:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.2:
+  * Fixed an issue where ApiScan couldn't scan some of our
+    binaries correctly. This involved changing some linker flags
+    and re-compiling/re-linking some of the pydevd executables
+    and dlls.
+
+-------------------------------------------------------------------
 Thu Mar 28 12:55:24 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Fix build error in Leap.
