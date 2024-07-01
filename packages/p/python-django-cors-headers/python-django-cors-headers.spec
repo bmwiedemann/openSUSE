@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-cors-headers
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-django-cors-headers
-Version:        3.13.0
+Version:        4.4.0
 Release:        0
 Summary:        A Django App that adds CORS headers to responses
 License:        MIT
 URL:            https://github.com/adamchainz/django-cors-headers
 Source:         https://github.com/adamchainz/django-cors-headers/archive/refs/tags/%{version}.tar.gz#/django-cors-headers-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-django}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django
@@ -43,10 +43,10 @@ responses.
 %setup -q -n django-cors-headers-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

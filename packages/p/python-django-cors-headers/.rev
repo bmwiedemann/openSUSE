@@ -115,4 +115,28 @@
     <comment></comment>
     <requestid>1160035</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>30e72fe3e6ba7f930474a5111a70cc54</srcmd5>
+    <version>4.4.0</version>
+    <time>1719825614</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.4.0:
+  * Support Django 5.1.
+  * Fixed ASGI compatibility on Python 3.12. Thanks to Adrian
+    Capitanu for the report in Issue #908 and Rooyal in PR #911.
+  * Avoid adding the access-control-allow-credentials header to
+    unallowed responses.
+  * Drop Python 3.7 support.
+  * Support Python 3.12.
+  * Add CORS_ALLOW_PRIVATE_NETWORK setting, which enables support
+    for the Local Network Access draft specification. Thanks to
+    Issac Kelly in PR #745 and jjurgens0 in PR #833.
+  * Switch from urlparse() to urlsplit() for URL parsing,
+    reducing the middleware runtime up to 5%. This changes the
+    type passed to origin_found_in_white_lists(), so if you have
+    subclassed the middleware to override this method, you should
+    check it is compatible (it most likely is). Thanks to Thibaut
+    Decombe in PR #793.</comment>
+    <requestid>1184019</requestid>
+  </revision>
 </revisionlist>
