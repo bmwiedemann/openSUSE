@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 30 21:48:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.5:
+  * python-build: Add ancient versions; 2.4, 2.4.1, 2.4.3, 2.4.4
+    and 2.4.5
+  * python-build: Add alpha releases; 3.4.0a2, 3.4.0a3, 3.4.0a4
+  * python-build: Update default pip version (1.4 -> 1.4.1)
+  * python-build: Update default setuptools version (0.9.7 ->
+    1.1.6)
+
+-------------------------------------------------------------------
 Sun Jun  9 14:55:27 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.2
 
 - Update to 2.4.2
@@ -289,7 +300,7 @@ Full Changelog: https://github.com/pyenv/pyenv/compare/v2.3.13...v2.3.14
 -------------------------------------------------------------------
 Fri Feb 24 15:42:58 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.13
 
-- Update to 2.3.13  
+- Update to 2.3.13
   - Fix pyenv-latest to ignore virtualenvs by @native-api in #2608
   - Show symlink contents in non-bare `pyenv versions' by @native-api in #2609
   - Ignore virtualenvs in `pyenv latest' in a clean way by @native-api in #2610
@@ -627,7 +638,7 @@ Mon May  3 14:15:46 UTC 2021 - Malte Ohmstede <malte.ohmstede@gmail.com>
   * pypy3.7-7.3.4 (#1873)
   * Create miniforge3-4.10 (#1868)
   * Add CPython 3.9.4 (#1865)
-  
+
 - Update to 1.2.26
   * Add CPython 3.9.4 (#1865)
 
@@ -876,7 +887,7 @@ Tue Feb  6 17:08:18 UTC 2018 - michele.bologna@suse.com
 -------------------------------------------------------------------
 Sun Sep 24 15:45:27 UTC 2017 - thomas.schraitle@suse.com
 
-Update to 1.1.4 
+Update to 1.1.4
 
 * pyenv: Workaround for scripts in $PATH which needs to be
   source'd (#100, #688, #953)
