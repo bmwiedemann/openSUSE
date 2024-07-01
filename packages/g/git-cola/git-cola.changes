@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jun 29 20:28:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.8.0:
+  * The Rebase editor is now aware of the drop, break, label,
+    merge and reset commands that were added in recent versions
+    of Git.
+  * Desktop notifications can now be enabled when pushing remotes
+    by enabling the "Notify on Push" option in the preferences.
+  * Faster and easier commit hash copying in DAG. Left-clicking
+    on the Commit ID will now copy it directly into the clipboard
+    without any further action.
+  * "Grab File from Parent Commit" actions have been added to the
+    DAG.
+  * The Unstage Selected action was added to the context menu for
+    unmerged files.
+  * git cola rebase now provides  a --rebase-merges option and
+    passes the same option to git rebase when Git v1.18.0 or
+    newer is detected.
+  * Pre-commits hooks were updated.
+
+-------------------------------------------------------------------
 Sun May  5 15:25:25 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.7.1:
@@ -6,7 +27,7 @@ Sun May  5 15:25:25 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
     branch
   * The Fetch, Push and Pull dialogs now remember the selected
     remotes, and now display the git commands that will be run.
-  * The Pull dialog now selects the remote branch automatically. 
+  * The Pull dialog now selects the remote branch automatically.
   * The cola.refreshonfocus and cola.inotify configuration settings
     are now accessible from the git cola config settings dialog
 

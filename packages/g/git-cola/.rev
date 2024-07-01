@@ -866,4 +866,30 @@ https://github.com/git-cola/git-cola/issues/991
     <comment></comment>
     <requestid>1171997</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>250d4e8fd28fd17b1a634119eb113208</srcmd5>
+    <version>4.8.0</version>
+    <time>1719825626</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.8.0:
+  * The Rebase editor is now aware of the drop, break, label,
+    merge and reset commands that were added in recent versions
+    of Git.
+  * Desktop notifications can now be enabled when pushing remotes
+    by enabling the &quot;Notify on Push&quot; option in the preferences.
+  * Faster and easier commit hash copying in DAG. Left-clicking
+    on the Commit ID will now copy it directly into the clipboard
+    without any further action.
+  * &quot;Grab File from Parent Commit&quot; actions have been added to the
+    DAG.
+  * The Unstage Selected action was added to the context menu for
+    unmerged files.
+  * git cola rebase now provides  a --rebase-merges option and
+    passes the same option to git rebase when Git v1.18.0 or
+    newer is detected.
+  * Pre-commits hooks were updated.
+
+  * The Pull dialog now selects the remote branch automatically.</comment>
+    <requestid>1184041</requestid>
+  </revision>
 </revisionlist>
