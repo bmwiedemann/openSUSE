@@ -1,7 +1,7 @@
 #
 # spec file for package python-testrepository
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-testrepository
-Version:        0.0.20
+Version:        0.0.21
 Release:        0
 Summary:        A repository of test results
 License:        Apache-2.0 OR BSD-3-Clause
@@ -27,7 +27,7 @@ URL:            https://github.com/testing-cabal/testrepository
 Source:         https://files.pythonhosted.org/packages/source/t/testrepository/testrepository-%{version}.tar.gz
 BuildRequires:  %{python_module extras}
 BuildRequires:  %{python_module fixtures}
-BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module python-mimeparse}
 BuildRequires:  %{python_module python-subunit}
 BuildRequires:  %{python_module pytz}
@@ -40,11 +40,11 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-dbm
 Requires:       python-extras
 Requires:       python-fixtures
-Requires:       python-python-subunit >= 0.0.10
+Requires:       python-python-subunit >= 0.0.11
 Requires:       python-testscenarios
 Requires:       python-testtools >= 0.9.30
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if "%python_flavor" != "python2"
 Requires:       python-dbm
@@ -91,7 +91,7 @@ subunit or be converted into a subunit stream can be accepted).
 
 %files %{python_files}
 %license COPYING Apache-2.0 BSD
-%doc NEWS README.txt
+%doc NEWS README.rst
 %python_alternative %{_bindir}/testr
 %{python_sitelib}/*
 

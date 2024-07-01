@@ -206,4 +206,25 @@
     <comment></comment>
     <requestid>1085108</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>487bc02a60f27f3f9b0b00f1911b62b2</srcmd5>
+    <version>0.0.21</version>
+    <time>1719825737</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.0.21:
+  * testrepository now uses ``hatch`` rather than ``pbr``.
+  * setup.py testr now supports different coverage names.
+  * Isolate the testrepository test suite from the chunking (or
+    otherwise) behaviour of testtools' exception handlers.
+  * Unexpected errors reading streams from a file repository now
+    propogate the correct exception.
+  * testrepository now requires at least version 0.0.11 of the
+    subunit Python module.
+
+- fix requires
+- tighten runtime requires
+- add buildrequires to satisfy test suite run
+- Add BuildRequires: python-extras</comment>
+    <requestid>1184223</requestid>
+  </revision>
 </revisionlist>
