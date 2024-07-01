@@ -505,4 +505,27 @@
 </comment>
     <requestid>1156169</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>195c8ef42b34e2ac3f4f5d996c8e62d5</srcmd5>
+    <version>8.19.2</version>
+    <time>1719825683</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.19.2.
+  * Fixed a regression from Coq 8.18 in the presence of a defined
+    field in a primitive `Record`.
+  * Fixed an issue where the printer was sometimes failing to use a
+    prefix or infix custom notation whose right-hand side refers to
+    a different custom entry.
+  * Fixed `abstract` failure in the presence of admitted goals in
+    the surrounding proof.
+  * Fixed issues when using Ltac2 in VsCoq due to incorrect state
+    handling of Ltac2 notations.
+  * Fixed `Include` on a module containing a record declared with
+    `Primitive Projections`.
+  * Fixed an issue in `Fixpoint` with no arguments.
+  * Position error/warning tooltips correctly when multibyte UTF-8
+    characters are present.
+</comment>
+    <requestid>1184115</requestid>
+  </revision>
 </revisionlist>
