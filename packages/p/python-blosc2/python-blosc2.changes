@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 29 19:32:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.0:
+  * Updated to latest C-Blosc2 2.15.0.
+  * Deprecated `LazyExpr.evaluate()`.
+  * Fixed `_check_rc` function.
+
+-------------------------------------------------------------------
 Fri Apr 26 16:35:25 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.6.2
