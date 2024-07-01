@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonschema-path
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jsonschema-path
-Version:        0.3.2
+Version:        0.3.3
 Release:        0
 Summary:        JSONSchema Spec with object-oriented paths
 License:        Apache-2.0

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 30 20:35:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.3:
+  * Relax dependency constraint to support referencing 0.35 #138
+
+-------------------------------------------------------------------
 Sun Dec 17 02:14:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.2:
