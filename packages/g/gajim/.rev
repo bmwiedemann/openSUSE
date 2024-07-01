@@ -548,4 +548,35 @@
     <comment>- Update to version 1.9.0.</comment>
     <requestid>1179828</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>8fd3d8a701704711d2ae9d3ad7698a30</srcmd5>
+    <version>1.9.1</version>
+    <time>1719825655</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.1:
+  * Menu: Add main menu button (#11811)
+  * ChatFunctionPage: Show MUC address when displaying error
+  * SecurityLabels: Allow correction of labels
+  * Use different icon for context menu on contact list page
+  * Unify wording for 'Toggle Menu Bar'
+  * ConversationView: Use better method for scrolling to row
+  * Raise nbxmpp version
+  * Reactions: Show timestamp in correct timezone (#11875)
+  * Search: Don’t search messages of disabled accounts (#11876)
+  * DebugConsole: Fix filtering stanzas when combining accounts
+    and types
+  * VoiceMessageRecorderButton: Honor visibility setting on
+    startup (#11872)
+  * SecurityLabels: Fix merging messages with same security label
+  * ChatActionProcessor: Make handling selected action more
+    robust (#11871)
+  * Settings: Store account jid in dedicated setting (#11864)
+  * Migration: Don’t fail on invalid JIDs (#11862)
+  * HistorySync: Make full sync option work again
+
+- tighten requirements (bsc#1176101)
+- If python-gstreamer-0_10 is installed the error message
+  * much faster contact list</comment>
+    <requestid>1184195</requestid>
+  </revision>
 </revisionlist>

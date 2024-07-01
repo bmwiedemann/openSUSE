@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Jun 30 07:11:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.1:
+  * Menu: Add main menu button (#11811)
+  * ChatFunctionPage: Show MUC address when displaying error
+  * SecurityLabels: Allow correction of labels
+  * Use different icon for context menu on contact list page
+  * Unify wording for 'Toggle Menu Bar'
+  * ConversationView: Use better method for scrolling to row
+  * Raise nbxmpp version
+  * Reactions: Show timestamp in correct timezone (#11875)
+  * Search: Don’t search messages of disabled accounts (#11876)
+  * DebugConsole: Fix filtering stanzas when combining accounts
+    and types
+  * VoiceMessageRecorderButton: Honor visibility setting on
+    startup (#11872)
+  * SecurityLabels: Fix merging messages with same security label
+  * ChatActionProcessor: Make handling selected action more
+    robust (#11871)
+  * Settings: Store account jid in dedicated setting (#11864)
+  * Migration: Don’t fail on invalid JIDs (#11862)
+  * HistorySync: Make full sync option work again
+
+-------------------------------------------------------------------
 Mon Jun 10 18:29:10 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.9.0:
@@ -1020,7 +1044,7 @@ Mon Sep  7 07:57:51 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 -------------------------------------------------------------------
 Thu Sep  3 07:54:28 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
-- tighten requirements (bsc#1176101) 
+- tighten requirements (bsc#1176101)
 
 -------------------------------------------------------------------
 Wed Aug 26 19:53:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
@@ -1101,7 +1125,7 @@ Tue Jan 22 12:28:58 UTC 2019 - liedke@rz.uni-mannheim.de
   * #9537 DiscoveryWindow: Fix bookmarking a group chat
   * DBus: Correctly raise NewMessage signal
   * Clicking on tray notifications does not open the chat
- 
+
 -------------------------------------------------------------------
 Wed Jan  2 13:11:56 UTC 2019 - liedke@rz.uni-mannheim.de
 
@@ -1192,7 +1216,7 @@ Mon May 14 17:28:28 UTC 2018 - frede@b1-systems.de
   * since Leap 42.3 and SLES 12 have only 3.4.6 they will not work
 - Fixed dependency in spec file on python3-nbxmpp 0.6.5:
   * changed the also the required not only build-required
-  
+
 -------------------------------------------------------------------
 Sat May 12 11:06:44 UTC 2018 - tbro@opensuse.org
 
@@ -1356,7 +1380,7 @@ Tue May 24 10:28:37 UTC 2016 - mvetter@suse.com
 
 - Add gajim-remote-dont-show.patch:
   gajim-remote is cli only. Dont list it in menus.
-- If python-gstreamer-0_10 is installed the error message 
+- If python-gstreamer-0_10 is installed the error message
   'ImportError: could not import gst' is not shown.
   See: https://trac.gajim.org/ticket/7836
 
@@ -1577,7 +1601,7 @@ Sun May 16 00:00:00 CEST 2010 - pascal.bleser@opensuse.org
   * security improvements: End-to-End encryption, SSL certificate verification
   * ability to minimize groupchats in roster
   * block/Unblock contacts directly from roster
-  * much faster contact list 
+  * much faster contact list
 
 -------------------------------------------------------------------
 Sun May 16 00:00:00 CEST 2010 - pascal.bleser@opensuse.org
