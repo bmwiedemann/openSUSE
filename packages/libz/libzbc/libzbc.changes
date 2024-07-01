@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul  1 08:34:45 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.1
+  * add functionality to process multiple consequtive zones with
+    zbc_write_zone tool
+
+-------------------------------------------------------------------
 Mon Jun 10 11:18:11 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6

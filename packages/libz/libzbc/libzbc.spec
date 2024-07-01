@@ -18,7 +18,7 @@
 
 Name:           libzbc
 %define lname   libzbc6
-Version:        6.0.0
+Version:        6.1.0
 Release:        0
 Summary:        Library for manipulating ZBC and ZAC disks
 License:        BSD-2-Clause AND LGPL-3.0-or-later
