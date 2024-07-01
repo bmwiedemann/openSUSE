@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-kbdleds-plugin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xfce4-kbdleds-plugin
-Version:        0.2.5
+Version:        0.3.0
 Release:        0
 Summary:        Keyboard LEDs plugin for the Xfce panel
 License:        GPL-2.0-only
@@ -57,4 +57,3 @@ rm %{buildroot}%{_libdir}/xfce4/panel/plugins/*.la
 %files lang -f %{name}.lang
 
 %changelog
-

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
-Sat Apr  2 13:46:40 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+Sun Jun 30 09:57:14 UTC 2024 - tux93@opensuse.org
+
+- Update to version 0.3.0
+  * Ability to show/hide leds
+  * Add missing x11 linker flags
+
+-------------------------------------------------------------------
+Sat Apr  2 13:46:40 UTC 2022 - tux93@opensuse.org
 
 - Initial Package
