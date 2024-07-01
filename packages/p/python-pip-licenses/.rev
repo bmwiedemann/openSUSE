@@ -257,4 +257,15 @@
     <comment></comment>
     <requestid>1159080</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>93c0c0c374d006d0c560ac6d1d7787fb</srcmd5>
+    <version>4.4.0</version>
+    <time>1719825694</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.4.0:
+  * Implement new option `--partial-match`
+- drop 0001-Fix-test_different_python-under-pyhon-3.12.patch
+  (upstream)</comment>
+    <requestid>1184133</requestid>
+  </revision>
 </revisionlist>

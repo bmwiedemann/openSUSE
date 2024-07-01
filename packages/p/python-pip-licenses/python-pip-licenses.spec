@@ -16,16 +16,14 @@
 #
 
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pip-licenses
-Version:        4.3.4
+Version:        4.4.0
 Release:        0
 Summary:        Python packages license list
 License:        MIT
 URL:            https://github.com/raimon49/pip-licenses
 Source:         https://files.pythonhosted.org/packages/source/p/pip-licenses/pip-licenses-%{version}.tar.gz
-# FIX-UPSTREAM  https://github.com/raimon49/pip-licenses/pull/184
-Patch1:         0001-Fix-test_different_python-under-pyhon-3.12.patch
 BuildRequires:  %{python_module importlib_metadata}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

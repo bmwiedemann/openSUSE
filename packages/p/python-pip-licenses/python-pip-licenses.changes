@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 30 20:00:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.0:
+  * Implement new option `--partial-match`
+- drop 0001-Fix-test_different_python-under-pyhon-3.12.patch
+  (upstream)
+
+-------------------------------------------------------------------
 Sat Mar 16 21:15:36 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Add 0001-Fix-test_different_python-under-pyhon-3.12.patch
