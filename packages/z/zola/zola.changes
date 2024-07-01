@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Jun 29 10:38:37 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Make sure rust version is higher than 1.77
+
+-------------------------------------------------------------------
+Sat Jun 29 10:33:33 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 0.19.1:
+  * Fix `config.generate_feeds` being still serialized as `config.generate_feed`. Both are available for now
+  * Fix `zola serve` not reacting to changes on some OSes
+  * Updates the pulldown-cmark dependency to v0.11.0. This improves footnote handling, and may also introduce some minor behavior changes such as reducing the amount of unnecessary HTML-escaping of text content.
+  * Add bottom footnotes with backreference option
+  * Fix link check report inconsistency
+  * Fix resizing for images with EXIF orientation
+  * Add MIME type to get_image_metadata
+  * Fix hot loading for config.toml in some cases
+  * Add `render = false` capability to pages
+  * Handle string dates in YAML front-matter
+  * Add support for fuse.js search format
+  * Added support for generating multiple kinds of feeds at once
+  * Changed config options named `generate_feed` to `generate_feeds` (both in config.toml and in section front-matter)
+  * Changed config option `feed_filename: String` to `feed_filenames: Vec<String>`
+  * The config file no longer allows arbitrary fields outside the `[extra]` section
+
+-------------------------------------------------------------------
 Tue Dec 19 00:19:31 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Remove 0001-fix-life-in-zola-serve.patch. Part of 0.18.0 release now.

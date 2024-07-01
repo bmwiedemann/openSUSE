@@ -198,4 +198,29 @@
 </comment>
     <requestid>1133926</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>71f69344d952f05d06714606c3054826</srcmd5>
+    <version>0.19.1</version>
+    <time>1719825658</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure rust version is higher than 1.77
+- Update to version 0.19.1:
+  * Fix `config.generate_feeds` being still serialized as `config.generate_feed`. Both are available for now
+  * Fix `zola serve` not reacting to changes on some OSes
+  * Updates the pulldown-cmark dependency to v0.11.0. This improves footnote handling, and may also introduce some minor behavior changes such as reducing the amount of unnecessary HTML-escaping of text content.
+  * Add bottom footnotes with backreference option
+  * Fix link check report inconsistency
+  * Fix resizing for images with EXIF orientation
+  * Add MIME type to get_image_metadata
+  * Fix hot loading for config.toml in some cases
+  * Add `render = false` capability to pages
+  * Handle string dates in YAML front-matter
+  * Add support for fuse.js search format
+  * Added support for generating multiple kinds of feeds at once
+  * Changed config options named `generate_feed` to `generate_feeds` (both in config.toml and in section front-matter)
+  * Changed config option `feed_filename: String` to `feed_filenames: Vec&lt;String&gt;`
+  * The config file no longer allows arbitrary fields outside the `[extra]` section
+</comment>
+    <requestid>1184072</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package zola
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           zola
-Version:        0.18.0
+Version:        0.19.1
 Release:        0
 Summary:        Fast static site generator
 License:        MIT
@@ -26,6 +26,7 @@ Source0:        https://github.com/getzola/zola/archive/refs/tags/v%{version}.ta
 Source1:        vendor.tar.zst
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
+BuildRequires:  cargo > 1.77
 BuildRequires:  cargo-packaging
 BuildRequires:  libgcc_s1
 BuildRequires:  pkg-config
