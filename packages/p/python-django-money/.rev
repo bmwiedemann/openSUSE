@@ -101,4 +101,20 @@
   * New setting CURRENCY_DECIMAL_PLACES_DISPLAY configures decimal</comment>
     <requestid>1135252</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e45139ce03ed62cfdf4df97d03caafce</srcmd5>
+    <version>3.5.2</version>
+    <time>1719825602</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.5.2:
+  * django-rest-framework: Fix regression from 3.5
+  * If you generated MoneyField migrations in the previous series
+    3.4.x, you may have to manually edit subsequent migrations.
+  * Revert 3.4 patch, meaning that auto-generated CurrencyField
+    is once again part of migrations
+  * django-rest-framework: MinMoneyValidator and
+    MaxMoneyValidator fixed, may require default_currency defined
+  * Django 5.0 support</comment>
+    <requestid>1184011</requestid>
+  </revision>
 </revisionlist>

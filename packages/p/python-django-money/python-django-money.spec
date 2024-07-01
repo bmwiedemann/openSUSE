@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-money
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-django-money
-Version:        3.4.1
+Version:        3.5.2
 Release:        0
 Summary:        Django support for using money and currency fields
 License:        BSD-3-Clause
