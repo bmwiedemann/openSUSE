@@ -149,4 +149,12 @@ Leap 15.5
 - Add system-jpeg.diff</comment>
     <requestid>1182024</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5879b1783e18614e7401e94b558d9e79</srcmd5>
+    <version>0.10.3</version>
+    <time>1719825557</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.10.3</comment>
+    <requestid>1183951</requestid>
+  </revision>
 </revisionlist>

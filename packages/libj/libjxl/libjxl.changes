@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 29 03:56:34 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.10.3
+  * fix bug in huffman-rle-gradient (e1) specialized decode path
+
+-------------------------------------------------------------------
 Thu Jun 20 21:01:12 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable cjpegli, djpegli tools
