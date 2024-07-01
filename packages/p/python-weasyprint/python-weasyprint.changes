@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jun 30 08:16:19 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 62.3:
+  * #2174: Fix extra width distribution for auto table layout
+  * #2175: Don’t compress PDF metadata for PDF/A-1
+  * Set default PDF variant values in options before
+    generating PDF
+  * Avoid PDF artifacts when drawing 0-width borders
+  * Don’t duplicate column when container is split on
+    multiple pages
+  * Don’t set default Fontconfig values for unset
+    properties
+  * Fix layout when all footnotes are removed from the
+    footnote area
+  * Make items overflowing grid wrap to the next
+    row/column
+  * Don’t append useless tracks when grid elements are
+    positioned
+
+-------------------------------------------------------------------
 Mon Jun 10 09:58:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 62.2:

@@ -265,4 +265,27 @@
     percentage-based heights</comment>
     <requestid>1179673</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b73b94d11ee3f6ec533415690134d912</srcmd5>
+    <version>62.3</version>
+    <time>1719825662</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 62.3:
+  * #2174: Fix extra width distribution for auto table layout
+  * #2175: Don’t compress PDF metadata for PDF/A-1
+  * Set default PDF variant values in options before
+    generating PDF
+  * Avoid PDF artifacts when drawing 0-width borders
+  * Don’t duplicate column when container is split on
+    multiple pages
+  * Don’t set default Fontconfig values for unset
+    properties
+  * Fix layout when all footnotes are removed from the
+    footnote area
+  * Make items overflowing grid wrap to the next
+    row/column
+  * Don’t append useless tracks when grid elements are
+    positioned</comment>
+    <requestid>1184080</requestid>
+  </revision>
 </revisionlist>

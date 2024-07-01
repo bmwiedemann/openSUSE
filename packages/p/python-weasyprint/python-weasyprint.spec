@@ -29,7 +29,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-weasyprint
-Version:        62.2
+Version:        62.3
 Release:        0
 Summary:        Python module to convert web documents to PDF
 License:        BSD-3-Clause
