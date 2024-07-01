@@ -19,7 +19,7 @@
 %{!?license: %global license %doc}
 %{!?make_build: %global make_build make %{?_smp_mflags}}
 Name:           axel
-Version:        2.17.13
+Version:        2.17.14
 Release:        0
 Summary:        Lightweight Download Accelerator
 License:        GPL-2.0-or-later

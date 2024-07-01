@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 30 03:26:06 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 2.17.14
+  * Remove inclusion of <stdatomic.h>
+  * configure: Fix handling of --with-ssl=yes
+  * conn: Fix potential buffer overrun
+  * http: Fix filename parsing from Content-Disposition
+  * configure: Force C89-compliant return type of signal handlers
+  * configure: Update to autoconf 2.72
+
+-------------------------------------------------------------------
 Mon Mar 18 08:19:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.17.13:
