@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-voluptuous
-Version:        0.14.2
+Version:        0.15.1
 Release:        0
 Summary:        A Python data validation library
 License:        BSD-3-Clause

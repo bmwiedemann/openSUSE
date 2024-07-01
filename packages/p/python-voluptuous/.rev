@@ -137,4 +137,15 @@
     code</comment>
     <requestid>1157891</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>62bd6d6f92fecf721093fa2f2df2653c</srcmd5>
+    <version>0.15.1</version>
+    <time>1719825624</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.15.1:
+  * #512: Add Any type to defaults
+  * #513: Only calculate hash once for Marker objects
+  * #514: Remove python 3.8 support</comment>
+    <requestid>1184038</requestid>
+  </revision>
 </revisionlist>

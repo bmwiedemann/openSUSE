@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 29 07:00:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15.1:
+  * #512: Add Any type to defaults
+  * #513: Only calculate hash once for Marker objects
+  * #514: Remove python 3.8 support
+
+-------------------------------------------------------------------
 Thu Mar 14 08:55:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.14.2:
