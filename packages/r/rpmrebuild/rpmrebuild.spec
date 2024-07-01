@@ -1,7 +1,7 @@
 #
 # spec file for package rpmrebuild
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rpmrebuild
-Version:        2.17
+Version:        2.18
 Release:        0
 Summary:        A tool to build a rpm file from the rpm database
 License:        GPL-2.0-or-later
@@ -35,10 +35,10 @@ Requires:       sed
 BuildArch:      noarch
 
 %description
-rpmrebuild allows to build an rpm file from an installed rpm, or from
-another rpm file, with or without changes (batch or interactive). It
-can be extended by a plugin system. A typical use is to easy repackage
-a software after some configuration's change.
+rpmrebuild allows to build an rpm file from an installed rpm, or from another
+rpm file, with or without changes (batch or interactive). It can be extended by
+a plugin system. A typical use is to easy repackage a software after some
+configuration's change.
 
 %prep
 %setup -q -c

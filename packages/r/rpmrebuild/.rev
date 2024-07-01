@@ -235,4 +235,13 @@
   * rename internal variable with RPMREBUILD_ prefix</comment>
     <requestid>1061751</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>309dc2473736a15221f71c05ba1d725a</srcmd5>
+    <version>2.18</version>
+    <time>1719825666</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.18:
+  * bugs fix (thanks xujing)</comment>
+    <requestid>1184079</requestid>
+  </revision>
 </revisionlist>
