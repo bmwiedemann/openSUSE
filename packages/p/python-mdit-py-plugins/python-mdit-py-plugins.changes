@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 30 20:34:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.1:
+  * Add option for footnotes references to always be matched
+
+-------------------------------------------------------------------
 Thu Nov 23 07:28:09 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to version 0.4.0:
@@ -49,7 +55,7 @@ Fri Jun  9 12:58:04 UTC 2023 - ecsos <ecsos@opensuse.org>
 -------------------------------------------------------------------
 Mon Sep  5 08:02:15 UTC 2022 - Elisei Roca <eroca@mailbox.org>
 
-- Cleanup requires, comments and files section 
+- Cleanup requires, comments and files section
 
 -------------------------------------------------------------------
 Tue Apr 26 16:22:09 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>

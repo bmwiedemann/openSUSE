@@ -1,7 +1,7 @@
 #
 # spec file for package python-mdit-py-plugins
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mdit-py-plugins
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Collection of plugins for markdown-it-py
 License:        MIT
