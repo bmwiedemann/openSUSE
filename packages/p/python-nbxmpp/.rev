@@ -461,4 +461,13 @@ Let somebody more skillfull review it. (forwarded request 195612 from DarkSS)</c
     <comment></comment>
     <requestid>1179910</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>aec8c57dcbb286ea1664167485858caa</srcmd5>
+    <version>5.0.1</version>
+    <time>1719825654</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.1:
+  * SecurityLabels: Add restrict attribute</comment>
+    <requestid>1184069</requestid>
+  </revision>
 </revisionlist>

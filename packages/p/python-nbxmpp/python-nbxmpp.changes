@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 30 07:15:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.1:
+  * SecurityLabels: Add restrict attribute
+
+-------------------------------------------------------------------
 Mon Jun 10 13:30:34 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 5.0.0:
@@ -292,7 +298,7 @@ Mon May 17 15:40:52 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
     * Client: Remove GSSAPI from default mechanisms
     * Presence: Fix is_nickname_changed check
     * UserAvatar: Add default argument
-  
+
 -------------------------------------------------------------------
 Thu Sep  3 07:44:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 

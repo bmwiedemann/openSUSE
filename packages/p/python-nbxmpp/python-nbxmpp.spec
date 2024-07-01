@@ -16,20 +16,20 @@
 #
 
 
-# Requires at least python 3.10
-%define skip_python38 1
-%define skip_python39 1
 %{?sle15_python_module_pythons}
 %define _name   nbxmpp
 Name:           python-nbxmpp
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        XMPP library by Gajim team
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://dev.gajim.org/gajim/python-nbxmpp
 Source:         %{url}/-/archive/%{version}/python-nbxmpp-%{version}.tar.bz2
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 65.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-generators >= 20220912
 BuildRequires:  python-rpm-macros >= 20220912
@@ -73,7 +73,7 @@ non-blocking sockets.
 %files %{python_files}
 %license COPYING
 %doc ChangeLog README.md
-%{python_sitelib}/%{_name}/
-%{python_sitelib}/%{_name}-*
+%{python_sitelib}/%{_name}
+%{python_sitelib}/%{_name}-%{version}.dist-info
 
 %changelog
