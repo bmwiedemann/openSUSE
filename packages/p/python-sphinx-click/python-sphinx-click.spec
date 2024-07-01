@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-click
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sphinx-click
-Version:        5.1.0
+Version:        6.0.0
 Release:        0
 Summary:        Sphinx extension that automatically documents click applications
 License:        MIT
 URL:            https://github.com/stephenfin/sphinx-click
-Source:         https://files.pythonhosted.org/packages/source/s/sphinx_click/sphinx-click-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/s/sphinx_click/sphinx_click-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -40,16 +39,17 @@ BuildRequires:  python-rpm-generators
 A Sphinx plugin that allows to automatically extract documentation from click-based applications and include it in documentation.
 
 %prep
-%setup -q -n sphinx-click-%{version}
+%autosetup -p1 -n sphinx_click-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%{python_sitelib}/sphinx_click*
+%{python_sitelib}/sphinx_click
+%{python_sitelib}/sphinx_click-%{version}.dist-info
 
 %changelog

@@ -66,4 +66,32 @@
   * setup: Add Sphinx classifier</comment>
     <requestid>1128046</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4a53d0e3a804f8fc162925e10c7fe35b</srcmd5>
+    <version>6.0.0</version>
+    <time>1719825736</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.0.0:
+  * FIX Format string defaults correctly
+  * Remove errant prints
+  * Drop support for click 7.x, Sphinx &lt; 5.x
+  * readthedocs: Use dirhtml builder
+  * docs: Add discrete mocking section
+  * actions: Integrate tox-gh-actions
+  * Distinguish between click and asyncclick
+  * tests: Set maxDiff
+  * Skip test with click 7.x
+  * FIX If the \`help\` of an argument is \`None\`, don't fail
+  * Add defusedxml to tox deps
+  * Add defusedxml as test requirement
+  * typing: Remove unused ignore
+  * Add readthedocs config file
+  * Fix show\_default with context\_settings
+  * tests: Add tests for 'commands' option
+  * Add support, testing for Python 3.12
+  * Add release note for typer arg help text feature
+  * Interpret help for arguments
+  * typing: Update for latest types-docutils</comment>
+    <requestid>1184221</requestid>
+  </revision>
 </revisionlist>
