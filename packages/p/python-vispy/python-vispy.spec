@@ -19,7 +19,7 @@
 %define demodatacommit 5a3db84
 %define test_data_tag test-data-10
 Name:           python-vispy
-Version:        0.14.2
+Version:        0.14.3
 Release:        0
 Summary:        Interactive visualization in Python
 License:        BSD-3-Clause

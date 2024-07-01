@@ -158,4 +158,15 @@
   - Clean requirements and obsolete jupyter package description</comment>
     <requestid>1159611</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7d60f5f92c3a89815dccce2b0048cb29</srcmd5>
+    <version>0.14.3</version>
+    <time>1719825685</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.14.3:
+  * Clip step size based on maximum detail on an 8K monitor
+  * Fix integral computation in attenuated mip
+  * Reset VertexAttribDivisor even if None</comment>
+    <requestid>1184121</requestid>
+  </revision>
 </revisionlist>
