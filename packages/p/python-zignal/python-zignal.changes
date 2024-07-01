@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jun 30 09:17:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.0:
+  * add bitrate calculation
+  * Add decimation method to Audio class, for downsampling.
+  * Add iterate method to Audio class, for chunk based processing
+  * Add CIC filter, Cascaded Integrator-Comb
+  * Use a Makefile to make it easy to run linting and test
+  * Use flake8 and isort for style enforcement
+  * replace setup.py with pyproject.toml
+  * Remove third party dependency samplerate.
+  * Update plotting.
+  * Remove nose as unit test runner
+  * Cleanup default logging config to make it less noisy
+  * Minor bugfixes to the tests to make them run again.
+  * Do not use np.int, it's deprecated.
+  * bugfix in uint test, division as int instead of float
+- drop numpy-1.24.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Feb  8 09:12:08 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add numpy-1.24.patch to make it work with numpy >= 1.24
@@ -7,7 +27,7 @@ Wed Feb  8 09:12:08 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 -------------------------------------------------------------------
 Fri Feb 12 14:16:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- skip python 3.6 build 
+- skip python 3.6 build
 
 -------------------------------------------------------------------
 Fri Jul  3 07:51:37 UTC 2020 - pgajdos@suse.com

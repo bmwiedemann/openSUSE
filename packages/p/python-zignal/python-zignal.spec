@@ -1,7 +1,7 @@
 #
 # spec file for package python-zignal
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,17 @@
 #
 
 
-%define         skip_python2 1
-%define         skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-zignal
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        Audio signal processing library
 License:        MIT
 URL:            https://github.com/ronnyandersson/zignal
 Source:         https://github.com/ronnyandersson/zignal/archive/%{version}.tar.gz#/zignal-%{version}.tar.gz
-# PACH-FIX-OPENSUSE numpy-1.24.patch gh#ronnyandersson/zignal#11
-Patch0:         numpy-1.24.patch
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-matplotlib
@@ -35,7 +34,7 @@ Requires:       python-numpy
 Requires:       python-samplerate
 Requires:       python-scipy
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-PyAudio
 BuildArch:      noarch
 # SECTION test requirements
@@ -54,10 +53,10 @@ This is a python audio signal processing library.
 %autosetup -p1 -n zignal-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/zignal-listsndcards
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -78,6 +77,6 @@ sed -i '/import nose/d' zignal/tests/*.py
 %doc README.md
 %python_alternative %{_bindir}/zignal-listsndcards
 %{python_sitelib}/zignal
-%{python_sitelib}/zignal-%{version}*-info
+%{python_sitelib}/zignal-%{version}.dist-info
 
 %changelog

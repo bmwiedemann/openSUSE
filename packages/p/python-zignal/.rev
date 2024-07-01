@@ -52,4 +52,29 @@
 </comment>
     <requestid>1063752</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2be376930930757502c65ace384746b8</srcmd5>
+    <version>0.7.0</version>
+    <time>1719825669</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.0:
+  * add bitrate calculation
+  * Add decimation method to Audio class, for downsampling.
+  * Add iterate method to Audio class, for chunk based processing
+  * Add CIC filter, Cascaded Integrator-Comb
+  * Use a Makefile to make it easy to run linting and test
+  * Use flake8 and isort for style enforcement
+  * replace setup.py with pyproject.toml
+  * Remove third party dependency samplerate.
+  * Update plotting.
+  * Remove nose as unit test runner
+  * Cleanup default logging config to make it less noisy
+  * Minor bugfixes to the tests to make them run again.
+  * Do not use np.int, it's deprecated.
+  * bugfix in uint test, division as int instead of float
+- drop numpy-1.24.patch (upstream)
+
+- skip python 3.6 build</comment>
+    <requestid>1184089</requestid>
+  </revision>
 </revisionlist>
