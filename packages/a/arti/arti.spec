@@ -38,7 +38,7 @@ An implementation of Tor, in Rust
 %autosetup -p1 -a1
 
 %build
-%limit_build -m 4100
+%limit_build -m 4400
 %{cargo_build}
 
 %install

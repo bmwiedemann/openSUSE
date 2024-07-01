@@ -68,4 +68,12 @@ It doesn't build on 15.5 because of rust being too old
 </comment>
     <requestid>1179110</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>9930fe2f619ca8e5e5ff028951a655d6</srcmd5>
+    <version>1.2.4~0</version>
+    <time>1719825608</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1184017</requestid>
+  </revision>
 </revisionlist>
