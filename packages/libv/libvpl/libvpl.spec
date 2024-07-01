@@ -20,19 +20,16 @@
   %define _distconfdir %{_prefix}%{_sysconfdir}
 %endif
 
-%bcond_without tools
-
 %global sover 2
 Name:           libvpl
 %define lname   libvpl%{sover}
-Version:        2.10.1
+Version:        2.11.0
 Release:        0
 Summary:        oneAPI Video Processing Library (oneVPL) dispatcher, tools, and examples
 License:        MIT
 Group:          Development/Languages/C and C++
 URL:            https://github.com/oneapi-src/oneVPL
 Source0:        https://github.com/oneapi-src/oneVPL/archive/refs/tags/v%{version}.tar.gz#/libvpl-%{version}.tar.gz
-Patch0:         u_buildfix-i586.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -67,28 +64,18 @@ Requires:       %lname = %version
 This package contains the development headers and pkgconfig files for
 the oneAPI Video Processing Library (oneVPL) dispatcher
 
-%package samples
-Summary:        Examples for the oneAPI Video Processing Library (oneVPL) dispatcher
-Group:          Development/Languages/C and C++
-
-%description samples
-This package contains example applications for the oneAPI Video Processing Library (oneVPL) dispatcher.
-
 %prep
 %autosetup -p1 -n libvpl-%{version}
 
 %build
 %cmake \
-  -DBUILD_TOOLS:BOOL=%{?with_tools:ON}%{!?with_tools:OFF} \
   %{nil}
 %cmake_build
 
 %install
 %cmake_install
 
-%post -n %lname -p /sbin/ldconfig
-
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files
 %doc README.md third-party-programs.txt
@@ -102,11 +89,6 @@ This package contains example applications for the oneAPI Video Processing Libra
 %{_distconfdir}/vpl/vars.sh
 %{_libdir}/libvpl.so.%{sover}
 %{_libdir}/libvpl.so.%{sover}.*
-
-%if %{with tools}
-%files samples
-%{_bindir}/*
-%endif
 
 %files devel
 %doc
