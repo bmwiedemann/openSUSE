@@ -144,4 +144,41 @@
     render</comment>
     <requestid>1140736</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3f8aeb0bc60b533555091b5fcaf9f804</srcmd5>
+    <version>2.23.0</version>
+    <time>1719825691</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.23.0:
+  * Use non-deprecated pytest-console-scripts API
+  * Print resolved interpreter when using env detection
+- update to 2.22.0:
+  * Add pypy to CI
+  * Warn about and ignore invalid package metadata in the
+    environment
+- update to 2.21.0:
+  * Implement --python auto for virtual environment detection
+- update to 2.20.0:
+  * Remove publish job from the check workflow
+  * Mimic pip when handling --user-only in a virtual environment
+- update to 2.19.1:
+  * Point &quot;Changelog&quot; project URL at Releases page
+- update to 2.19.0:
+  * Use dropdown instead of checkbox in bug report template
+  * Have duplicate metadata and invalid req strings honor --warn
+    option
+- update to 2.18.1:
+  * Modify tests to ensure $PYTHONPATH is given to the custom
+    interpreter
+  * Fix test_console failure finding pipdeptree in other
+    environments
+- update to 2.18.0:
+  * Handle invalid requirement strings when using
+    importlib.metadata
+  * refactor the non_host part for not injecting to custom env
+- update to 2.17.0:
+  * Use GitHub issue forms
+  * replace pkg_resources with importlib.metadata and packaging</comment>
+    <requestid>1184126</requestid>
+  </revision>
 </revisionlist>

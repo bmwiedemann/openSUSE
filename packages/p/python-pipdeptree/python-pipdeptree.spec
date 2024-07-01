@@ -17,7 +17,7 @@
 
 
 Name:           python-pipdeptree
-Version:        2.13.2
+Version:        2.23.0
 Release:        0
 Summary:        Command line utility to show dependency tree of packages
 License:        MIT
@@ -39,7 +39,7 @@ BuildRequires:  %{python_module virtualenv}
 BuildRequires:  graphviz-gnome
 # /SECTION
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -67,7 +67,7 @@ export SETUPTOOLS_SCM_PRETEND_VERSION="%{version}"
 %{python_uninstall_alternative pipdeptree}
 
 %files %{python_files}
-%doc CHANGES.md README.md
+%doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/pipdeptree
 %{python_sitelib}/pipdeptree
