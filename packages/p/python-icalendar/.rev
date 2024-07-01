@@ -403,4 +403,20 @@
     coverage blocker</comment>
     <requestid>1160833</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>b5160302434fef2197f594b3cc4f0ae8</srcmd5>
+    <version>5.0.13</version>
+    <time>1719825703</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.13:
+  * Guide to delete the build folder before running tests
+  * Make documentation build with Python 3.12
+  * Update windows to olson conversion for Greenland Standard
+    Time
+  * Extend examples in Usage with alarm and recurrence
+  * Document how to serve the built documentation to view with
+    the browser
+  * Improve test coverage</comment>
+    <requestid>1184136</requestid>
+  </revision>
 </revisionlist>

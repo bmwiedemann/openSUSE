@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jun 30 20:33:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.13:
+  * Guide to delete the build folder before running tests
+  * Make documentation build with Python 3.12
+  * Update windows to olson conversion for Greenland Standard
+    Time
+  * Extend examples in Usage with alarm and recurrence
+  * Document how to serve the built documentation to view with
+    the browser
+  * Improve test coverage
+
+-------------------------------------------------------------------
 Fri Mar 22 20:43:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.12:
