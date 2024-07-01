@@ -178,4 +178,18 @@ Implement single-spec version</comment>
     <comment></comment>
     <requestid>1170768</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>66d396eef9e0b2a1618b974933a575a0</srcmd5>
+    <version>1.11.2</version>
+    <time>1719825607</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.11.2:
+  * Add support for NumPy 2.0. Thanks to Michał Górny.
+  * Internal C-Blosc sources updated to 1.21.6.
+  * Add assembly source in MANIFEST.in. Thanks to Ben Hekster.
+  * Deprecated support for Python 3.8 and added support for
+    Python 3.12.
+  * Some fixes in the building process.</comment>
+    <requestid>1184012</requestid>
+  </revision>
 </revisionlist>

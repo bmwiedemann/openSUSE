@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-blosc
-Version:        1.11.1
+Version:        1.11.2
 Release:        0
 Summary:        Blosc data compressor for Python
 License:        MIT
