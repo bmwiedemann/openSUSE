@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 30 21:09:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.6:
+  * option -n: ignore leading spaces and tabs
+  * Add more tests
+  * Fix: Before running commands reset signal handlers for
+    ALRM, PIPE and CHLD to SIG_DFL. Also, unblock these signals.
+    This fixes some misterius problems with commands running alarm(2).
+  * libmaa>=1.5.1 is required for build
+
+-------------------------------------------------------------------
 Tue Sep 14 11:45:58 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Initialize /var/tmp/mkcmake-home/.mkcmake during prep phase:
@@ -17,7 +28,7 @@ Wed Sep 16 21:44:18 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue May 12 10:15:39 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
-- Update to 1.1.2 (no changelog) 
+- Update to 1.1.2 (no changelog)
 
 -------------------------------------------------------------------
 Tue Mar 19 18:04:35 UTC 2019 - Jan Engelhardt <jengelh@inai.de>

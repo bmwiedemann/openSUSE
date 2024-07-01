@@ -1,7 +1,7 @@
 #
 # spec file for package paexec
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           paexec
-Version:        1.1.4
+Version:        1.1.6
 Release:        0
 Summary:        Utility for task distribution over networks or CPUs
 License:        MIT
@@ -25,7 +25,7 @@ Group:          Productivity/Clustering/Computing
 URL:            https://paexec.sourceforge.net/
 Source0:        https://sourceforge.net/projects/paexec/files/paexec/paexec-%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-BuildRequires:  libmaa-devel
+BuildRequires:  libmaa-devel >= 1.5.1
 BuildRequires:  mk-configure >= 0.27.0
 BuildRequires:  mk-configure-rpm-macros
 BuildRequires:  runawk
