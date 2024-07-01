@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-build
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-build%{psuffix}
-Version:        1.0.3
+Version:        1.2.1
 Release:        0
 Summary:        Simple PEP517 package builder
 License:        MIT
@@ -51,7 +51,7 @@ Requires:       (python-importlib-metadata >= 0.22 if python-base < 3.8)
 Requires:       (python-tomli >= 1.1.0 if python-base < 3.11)
 Recommends:     python-virtualenv >= 20.0.35
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module build = %{version}}

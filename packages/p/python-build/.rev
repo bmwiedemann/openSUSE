@@ -120,4 +120,35 @@
   have polluted the current working directory, avoiding test failures.</comment>
     <requestid>1112478</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>02fd3f0ab2f648ea7e8613e041557afd</srcmd5>
+    <version>1.2.1</version>
+    <time>1719825559</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.1:
+  * Avoid error when terminal width is undetectable on Python &lt;
+    3.11
+  * Add --installer option, supporting pip and uv. Added uv
+    extra.
+  * Improve console output and provide -v for dependency
+    installation
+  * Avoid compiling unused bytecode when using pip
+  * Dropped support for Python 3.7
+  * Fixed invoking outer pip from user site packages
+  * Corrected the minimum pip version required to use an outer
+    pip
+  * Use external pip if available instead of installing, speeds
+    up environment setup with virtualenv slightly and venv
+    significantly.
+  * Stopped injecting wheel as a build dependency automatically,
+    in the case of missing pyproject.toml -- by :user:`webknjaz`.
+  * Use importlib_metadata on Python &lt;3.10.2 for bugfixes not
+    present in those CPython standard libraries (not required
+    when bootstrapping) -- by :user:`GianlucaFicarelli`.
+
+- Update to v0.9.0
+- Drop remove-unused-import.patch
+- Add remove-unused-import.patch to work with importlib_metadata</comment>
+    <requestid>1183987</requestid>
+  </revision>
 </revisionlist>

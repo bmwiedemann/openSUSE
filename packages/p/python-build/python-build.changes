@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Jun 29 12:49:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.1:
+  * Avoid error when terminal width is undetectable on Python <
+    3.11
+  * Add --installer option, supporting pip and uv. Added uv
+    extra.
+  * Improve console output and provide -v for dependency
+    installation
+  * Avoid compiling unused bytecode when using pip
+  * Dropped support for Python 3.7
+  * Fixed invoking outer pip from user site packages
+  * Corrected the minimum pip version required to use an outer
+    pip
+  * Use external pip if available instead of installing, speeds
+    up environment setup with virtualenv slightly and venv
+    significantly.
+  * Stopped injecting wheel as a build dependency automatically,
+    in the case of missing pyproject.toml -- by :user:`webknjaz`.
+  * Use importlib_metadata on Python <3.10.2 for bugfixes not
+    present in those CPython standard libraries (not required
+    when bootstrapping) -- by :user:`GianlucaFicarelli`.
+
+-------------------------------------------------------------------
 Wed Sep 20 07:50:56 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.0.3:
@@ -84,7 +108,7 @@ Sun Jan  1 18:26:09 UTC 2023 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Mon Nov  7 20:52:13 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to v0.9.0 
+- Update to v0.9.0
   * Hide a Python 3.11.0 unavoidable warning with venv (PR #527)
   * Fix infinite recursion error in check_dependency with circular dependencies (PR #512, Fixes #511)
   * Only import colorama on Windows (PR #494, Fixes #493)
@@ -117,12 +141,12 @@ Sat Oct 16 12:24:15 UTC 2021 - Ben Greiner <code@bnavigator.de>
   https://pypa-build.readthedocs.io/en/stable/changelog.html
   * Dropped support for Python 2 and 3.5
 - Avoid possible bootstrap build depcycles with _multibuild
-- Drop remove-unused-import.patch 
+- Drop remove-unused-import.patch
 
 -------------------------------------------------------------------
 Thu Dec 17 14:52:54 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
-- Add remove-unused-import.patch to work with importlib_metadata 
+- Add remove-unused-import.patch to work with importlib_metadata
 
 -------------------------------------------------------------------
 Fri Nov 13 11:14:24 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
