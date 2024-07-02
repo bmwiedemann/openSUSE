@@ -21,7 +21,7 @@
 # keep in sync with setup.py
 %global django_min_version 3.2
 %global django_max_version 4.3
-%global django_mailman3_min_version 1.3.10
+%global django_mailman3_min_version 1.3.13
 %global django_gravatar2_min_version 1.0.6
 %global djangorestframework_min_version 3.0.0
 %global robot_detection_min_version 0.3
@@ -66,7 +66,7 @@
 %define plainpython python
 
 Name:           python-HyperKitty
-Version:        1.3.9
+Version:        1.3.10
 Release:        0
 Summary:        A web interface to access GNU Mailman v3 archives
 License:        GPL-3.0-only
