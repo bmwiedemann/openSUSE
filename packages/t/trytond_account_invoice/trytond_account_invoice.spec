@@ -29,7 +29,7 @@
 
 %define majorver 6.0
 Name:           trytond_account_invoice
-Version:        %{majorver}.17
+Version:        %{majorver}.18
 Release:        0
 Summary:        The "account_invoice" module for the Tryton ERP system
 License:        GPL-3.0-only
