@@ -39,6 +39,7 @@ Patch4:         0003-stats-report-zero-percents-instead-of-NaN.patch
 Patch5:         0004-add-aarch64-and-ppc64le-support-to-audit.h.patch
 Patch6:         latrace-PRINT-format.patch
 Patch7:         ppc-fedora.patch
+Patch8:         audit-riscv.patch
 BuildRequires:  asciidoc
 BuildRequires:  autoconf
 BuildRequires:  bison

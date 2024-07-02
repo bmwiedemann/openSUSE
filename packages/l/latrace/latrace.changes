@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  1 10:53:12 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- audit-riscv.patch: Add support for RISC-V to audit.h
+
+-------------------------------------------------------------------
 Fri Mar  1 08:59:13 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Go all the way to %autosetup.

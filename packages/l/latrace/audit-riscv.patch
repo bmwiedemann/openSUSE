@@ -1,0 +1,18 @@
+Index: latrace-0.5.11/src/audit.h
+===================================================================
+--- latrace-0.5.11.orig/src/audit.h
++++ latrace-0.5.11/src/audit.h
+@@ -113,6 +113,13 @@
+ # define La_regs La_sparc64_regs
+ # define La_retval La_sparc64_retval
+ # define int_retval lrv_reg[0]
++#elif defined __riscv
++# define pltenter la_riscv_gnu_pltenter
++# define pltexit la_riscv_gnu_pltexit
++# define La_regs La_riscv_regs
++# define sp_reg lr_sp
++# define La_retval La_riscv_retval
++# define int_retval lrv_a0
+ #endif
+ 
+ #endif // !AUDIT_H

@@ -88,4 +88,12 @@
 - Use %patch -P N instead of deprecated %patchN.</comment>
     <requestid>1153789</requestid>
   </revision>
+  <revision rev="12" vrev="15">
+    <srcmd5>cf52def14e45170f516a181c7a541f20</srcmd5>
+    <version>0.5.11</version>
+    <time>1719937032</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1184311</requestid>
+  </revision>
 </revisionlist>
