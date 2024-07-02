@@ -21,7 +21,7 @@
 %define typelibver 2_8
 
 Name:           rygel
-Version:        0.42.6
+Version:        0.43.0
 Release:        0
 Summary:        UPnP/DLNA home media server for GNOME
 License:        LGPL-2.0-or-later
@@ -55,7 +55,7 @@ BuildRequires:  pkgconfig(gupnp-dlna-2.0) >= 0.9.4
 BuildRequires:  pkgconfig(gupnp-dlna-2.0) >= 0.9.4
 BuildRequires:  pkgconfig(gupnp-dlna-gst-2.0) >= 0.9.4
 BuildRequires:  pkgconfig(libmediaart-2.0) >= 1.9.0
-BuildRequires:  pkgconfig(libsoup-3.0)
+BuildRequires:  pkgconfig(libsoup-3.0) >= 3.2
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7
 BuildRequires:  pkgconfig(sqlite3) >= 3.5
 BuildRequires:  pkgconfig(systemd)
@@ -226,7 +226,7 @@ the local machine.
 	-Dtests=false \
 	-Dgstreamer=enabled \
 	-Dgtk=enabled \
-	-Dplugins=external,gst-launch,lms,media-export,mpris,playbin,ruih,tracker3 \
+	-Dplugins=external,gst-launch,media-export,mpris,playbin,ruih,tracker3 \
 	%{nil}
 %meson_build
 
@@ -276,9 +276,6 @@ the local machine.
 # GStreamer pipelines in the config
 %{_libdir}/rygel-%{apiver}/plugins/librygel-gst-launch.so
 %{_libdir}/rygel-%{apiver}/plugins/gst-launch.plugin
-# LightweightMediaScanner
-%{_libdir}/rygel-%{apiver}/plugins/librygel-lms.so
-%{_libdir}/rygel-%{apiver}/plugins/lms.plugin
 # folders and files in the config
 %{_libdir}/rygel-%{apiver}/plugins/librygel-media-export.so
 %{_libdir}/rygel-%{apiver}/plugins/media-export.plugin

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 30 19:20:22 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.43.0:
+  + Tracker: Plugin removed, please use Tracker3
+  + LMS: Plugin removed
+  + Updated translations.
+- Stop passing lms to meson option call, no longer needed nor used
+  since the plugin is removed.
+
+-------------------------------------------------------------------
 Tue May  7 10:15:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.42.6:

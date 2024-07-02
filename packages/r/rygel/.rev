@@ -792,4 +792,12 @@ New stable rel</comment>
   + Updated translations. (forwarded request 1172407 from dimstar)</comment>
     <requestid>1172409</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>2621cb7034beb05ef66f4eaeba1b8112</srcmd5>
+    <version>0.43.0</version>
+    <time>1719937001</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1184130 from iznogood)</comment>
+    <requestid>1184260</requestid>
+  </revision>
 </revisionlist>
