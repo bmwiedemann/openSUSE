@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jul  1 09:56:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.32.7:
+  + Avoid an abort if WEBP files are corrupted somewhere after the
+    initial header.
+  + Fix border colors in the thumbnail view.
+  + Fix transparent image background setting actually doing
+    something.
+  + Deprecate the --datadir option outside of --profile --create.
+  + Change the error message to something more sensible if a file
+    cannot be read on import.
+  + Move Tumblr authentication to the full OAUTH1 flow with an
+    external browser.
+  + Fix an issue with translation of month format strings.
+  + Fix an abort if XdpPortal is not available, show error message
+    instead.
+  + Add Swedish translation of an image in help.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Feb 15 07:13:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.32.6:
