@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jun 30 19:19:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.3.0:
+  * Increase performance of `padded`
+  * Update table of contents
+  * Add exactly size of n doc to padded
+  * Speed up `ichunked`
+  * Optimize `chunked_even` itertool
+  * Optimize windowed itertool
+  * Issue 820: add powerset_of_sets
+  * Fix a typo found by codespell
+  * Add typing for countable.items_seen attribute.
+  * Add join_mappings
+  * Add doublestarmap (closes #679)
+  * Add dft and idft
+  * Changes for version 10.3.0
+  * Add unique()
+
+-------------------------------------------------------------------
 Tue Jan 16 15:34:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.2.0:

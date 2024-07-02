@@ -439,4 +439,26 @@
   * `time_limited` was improved for Windows (thanks to haukex)</comment>
     <requestid>1139209</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>410888210604376371cc930d9daf18fb</srcmd5>
+    <version>10.3.0</version>
+    <time>1719936876</time>
+    <user>anag+factory</user>
+    <comment>- update to 10.3.0:
+  * Increase performance of `padded`
+  * Update table of contents
+  * Add exactly size of n doc to padded
+  * Speed up `ichunked`
+  * Optimize `chunked_even` itertool
+  * Optimize windowed itertool
+  * Issue 820: add powerset_of_sets
+  * Fix a typo found by codespell
+  * Add typing for countable.items_seen attribute.
+  * Add join_mappings
+  * Add doublestarmap (closes #679)
+  * Add dft and idft
+  * Changes for version 10.3.0
+  * Add unique()</comment>
+    <requestid>1184124</requestid>
+  </revision>
 </revisionlist>
