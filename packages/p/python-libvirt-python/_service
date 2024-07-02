@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="manual">
     <param name="filename">libvirt-python</param>
-    <param name="revision">v10.4.0</param>
+    <param name="revision">v10.5.0</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://gitlab.com/libvirt/libvirt-python.git</param>
