@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul  2 15:13:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.22.0.2:
+  * Fix regression with `as_dataclass`.
+- update to 0.22:
+  * `Recordclass 0.22` started support of `python 3.13`.
+  * Add a base class `datastruct` for subclasses that should
+    behave more like simple datastructures.
+  * Fix bug with `__match_args__` (#6).
+
+-------------------------------------------------------------------
 Fri Dec 29 09:35:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.21.1:

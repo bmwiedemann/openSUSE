@@ -1,7 +1,7 @@
 #
 # spec file for package python-recordclass
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-recordclass
-Version:        0.21.1
+Version:        0.22.0.2
 Release:        0
 Summary:        Library implementing a mutable variant of namedtuple
 License:        MIT

@@ -40,4 +40,18 @@
   Make to compile, to build and to test successfully for python 3.11.</comment>
     <requestid>1135612</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1ee1ebecebc25f2d45bb57df33a5a688</srcmd5>
+    <version>0.22.0.2</version>
+    <time>1719937185</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.22.0.2:
+  * Fix regression with `as_dataclass`.
+- update to 0.22:
+  * `Recordclass 0.22` started support of `python 3.13`.
+  * Add a base class `datastruct` for subclasses that should
+    behave more like simple datastructures.
+  * Fix bug with `__match_args__` (#6).</comment>
+    <requestid>1184899</requestid>
+  </revision>
 </revisionlist>
