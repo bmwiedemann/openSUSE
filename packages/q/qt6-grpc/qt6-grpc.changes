@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 24 09:32:19 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Drop the with_usable_protobuf condition now that bug 1222343
+  is fixed
+
+-------------------------------------------------------------------
 Wed Jun 19 07:25:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.7.2:

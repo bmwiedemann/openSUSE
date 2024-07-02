@@ -100,4 +100,12 @@
     <comment>Qt 6.7.1 + pyside 6.7.1 (forwarded request 1181766 from krop)</comment>
     <requestid>1182591</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>1dd4e58cebcedbdcdcf5c8d59f2abdb9</srcmd5>
+    <version>6.7.2</version>
+    <time>1719937020</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1184274</requestid>
+  </revision>
 </revisionlist>
