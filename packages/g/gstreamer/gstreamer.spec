@@ -19,7 +19,7 @@
 %define gst_branch 1.0
 
 Name:           gstreamer
-Version:        1.24.0
+Version:        1.24.5
 Release:        0
 Summary:        Streaming-Media Framework Runtime
 License:        LGPL-2.1-or-later
@@ -34,11 +34,6 @@ Source99:       baselibs.conf
 Patch1:         gstreamer-rpm-prov.patch
 # PATCH-FIX-OPENSUSE gstreamer-pie.patch mgorse@suse.com -- create position-independent executables.
 Patch2:         gstreamer-pie.patch
-# PATCH-FIX-UPSTREAM 0001-Canonicalize-the-library-path-returned-by-dladdr.patch alarrosa@suse.com -- (boo#1221150) https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/6322
-Patch3:         0001-Canonicalize-the-library-path-returned-by-dladdr.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         0001-ptp-Dont-install-test-executable.patch
-
 
 BuildRequires:  bison >= 2.4
 BuildRequires:  check-devel
