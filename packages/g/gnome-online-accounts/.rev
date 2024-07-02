@@ -753,4 +753,15 @@
   + Updated translations. (forwarded request 1177033 from dimstar)</comment>
     <requestid>1177057</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>449192220c64109a92c047c21069c3ec</srcmd5>
+    <version>3.50.3</version>
+    <time>1719936963</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.50.3:
+  + WebDAV: minor fixes for accounts with app passwords
+  + Fix libsoup error handling
+  + Updated translations. (forwarded request 1184100 from iznogood)</comment>
+    <requestid>1184257</requestid>
+  </revision>
 </revisionlist>
