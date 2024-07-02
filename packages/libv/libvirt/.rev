@@ -4620,4 +4620,15 @@ bsc#1216656</comment>
     https://libvirt.org/news.html#v10-4-0-2024-06-03</comment>
     <requestid>1178390</requestid>
   </revision>
+  <revision rev="400" vrev="1">
+    <srcmd5>a6b0aa00a5ee4eb652d754bab496001f</srcmd5>
+    <version>10.5.0</version>
+    <time>1719936901</time>
+    <user>anag+factory</user>
+    <comment>- Update to libvirt 10.5.0
+  - Introduce SEV-SNP support
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v10-5-0-2024-07-01</comment>
+    <requestid>1184753</requestid>
+  </revision>
 </revisionlist>

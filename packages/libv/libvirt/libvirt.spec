@@ -145,7 +145,7 @@
 
 Name:           libvirt
 URL:            https://libvirt.org/
-Version:        10.4.0
+Version:        10.5.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -764,10 +764,7 @@ capabilities of VirtualBox
 %package client
 Summary:        Client side utilities of the libvirt library
 Requires:       %{name}-libs = %{version}-%{release}
-# Needed by virt-pki-validate script.
-Requires:       cyrus-sasl
 Requires:       bash-completion >= 2.0
-Requires:       gnutls
 
 # Ensure smooth upgrades
 Obsoletes:      libvirt-bash-completion < 7.3.0
@@ -1021,6 +1018,8 @@ Allows SSH into domains via VSOCK without need for network.
 %meson \
            --libexecdir=%{_libexecdir} \
            -Drunstatedir=%{_rundir} \
+           -Dunitdir=%{_unitdir} \
+           -Dsysusersdir=%{_sysusersdir} \
            %{?arg_qemu} \
            %{?arg_openvz} \
            %{?arg_lxc} \
@@ -1199,7 +1198,8 @@ mv %{buildroot}/%{_datadir}/systemtap/tapset/libvirt_qemu_probes.stp \
 %endif
 
 %check
-VIR_TEST_DEBUG=1 %meson_test -t 5 --no-suite syntax-check
+export VIR_TEST_DEBUG=1
+%meson_test -t 5 --no-suite syntax-check
 
 # For daemons with only UNIX sockets
 %define libvirt_daemon_systemd_pre() %service_add_pre %1.socket %1-ro.socket %1-admin.socket %1.service

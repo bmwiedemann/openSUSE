@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul  1 19:28:17 UTC 2024 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 10.5.0
+  - Introduce SEV-SNP support
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v10-5-0-2024-07-01
+
+-------------------------------------------------------------------
 Mon Jun  3 18:03:34 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 10.4.0
