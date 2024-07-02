@@ -3,7 +3,7 @@
     <param name="url">https://github.com/influxdata/telegraf</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v1.30.2</param>
+    <param name="revision">v1.31.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
