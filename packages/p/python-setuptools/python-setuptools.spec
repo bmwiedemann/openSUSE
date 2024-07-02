@@ -31,7 +31,7 @@
 %define mypython python
 %{?sle15_python_module_pythons}
 Name:           python-setuptools%{psuffix}
-Version:        70.0.0
+Version:        70.1.1
 Release:        0
 Summary:        Download, build, install, upgrade, and uninstall Python packages
 License:        Apache-2.0 AND MIT AND BSD-2-Clause AND Python-2.0
@@ -55,6 +55,7 @@ BuildRequires:  %{python_module ini2toml-lite >= 0.9}
 BuildRequires:  %{python_module jaraco.develop >= 7.21}
 BuildRequires:  %{python_module jaraco.envs >= 2.2}
 BuildRequires:  %{python_module jaraco.path >= 3.2.0}
+BuildRequires:  %{python_module jaraco.test}
 BuildRequires:  %{python_module pip >= 19.1}
 BuildRequires:  %{python_module pip-run >= 8.8}
 BuildRequires:  %{python_module pytest >= 6}

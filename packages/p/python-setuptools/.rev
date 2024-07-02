@@ -1230,4 +1230,29 @@
       pkg_resources.ResourceManager.cleanup_resources.</comment>
     <requestid>1177203</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>d726ed81a835b4feb3d154a3543232ac</srcmd5>
+    <version>70.1.1</version>
+    <time>1719936870</time>
+    <user>anag+factory</user>
+    <comment>- update to 70.1.1:
+  * Improve error message when pkg_resources.ZipProvider tries to
+    extract resources with a missing Egg
+    Added variables and parameter type annotations to
+    pkg_resources to be nearly on par with typeshed.*
+  * Improve error message when pkg_resources.ZipProvider tries to
+    extract resources with a missing Egg
+  * Added variables and parameter type annotations to
+    pkg_resources to be nearly on par with typeshed.*
+  * Migrated Setuptools' own config to pyproject.toml
+  * Prevent a TypeError: 'NoneType' object is not callable when
+    shutil_rmtree is called without an onexc parameter on
+    Python&lt;=3.11
+  * Replace use of mktemp with can_symlink from the stdlib test
+    suite.
+  * Improvement for attr: directives in configuration to handle
+    more edge cases related to complex package_dir.
+  * Fix accidental implicit string concatenation.</comment>
+    <requestid>1183943</requestid>
+  </revision>
 </revisionlist>

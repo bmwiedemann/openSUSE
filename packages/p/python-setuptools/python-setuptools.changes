@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Jun 29 05:45:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 70.1.1:
+  * Improve error message when pkg_resources.ZipProvider tries to
+    extract resources with a missing Egg
+    Added variables and parameter type annotations to
+    pkg_resources to be nearly on par with typeshed.*
+  * Improve error message when pkg_resources.ZipProvider tries to
+    extract resources with a missing Egg
+  * Added variables and parameter type annotations to
+    pkg_resources to be nearly on par with typeshed.*
+  * Migrated Setuptools' own config to pyproject.toml
+  * Prevent a TypeError: 'NoneType' object is not callable when
+    shutil_rmtree is called without an onexc parameter on
+    Python<=3.11
+  * Replace use of mktemp with can_symlink from the stdlib test
+    suite.
+  * Improvement for attr: directives in configuration to handle
+    more edge cases related to complex package_dir.
+  * Fix accidental implicit string concatenation.
+
+-------------------------------------------------------------------
 Tue May 28 05:20:31 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 70.0.0:
