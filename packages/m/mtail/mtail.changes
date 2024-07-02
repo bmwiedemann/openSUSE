@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 22 13:27:20 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Adjust system call filter for Leap 15.6
+
+-------------------------------------------------------------------
 Mon Feb 26 05:13:02 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
 
 - Clean up service unit file

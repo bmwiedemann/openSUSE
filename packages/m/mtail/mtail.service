@@ -40,7 +40,7 @@ RestrictNamespaces=yes
 RestrictRealtime=yes
 RestrictSUIDSGID=yes
 SystemCallArchitectures=native
-SystemCallFilter=@basic-io @file-system @io-event @ipc @network-io @signal clone kill madvise setrlimit tgkill uname
+SystemCallFilter=@basic-io @file-system @io-event @ipc @network-io @signal clone clone3 kill madvise setrlimit tgkill uname
 
 [Install]
 WantedBy=multi-user.target
