@@ -1,4 +1,167 @@
 -------------------------------------------------------------------
+Tue Jun 25 11:09:34 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240625.9e0d0ae:
+  * Also consider spdx.json an iso for the purpose of openQA
+
+-------------------------------------------------------------------
+Mon Jun 24 10:54:21 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240624.c6ba819:
+  * Leap 16 pkligsten use correct project
+  * Leap 16 use pkglistgen with product-composer
+
+-------------------------------------------------------------------
+Thu Jun 20 19:41:26 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240620.31704ab:
+  * Trigger publish at 0:50 and 12:50 every day
+  * Automatic publishing of repos for LEAPM 6.0
+
+-------------------------------------------------------------------
+Tue Jun 18 09:39:57 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240618.3244aa8:
+  * leap-micro55_appliances empty flavor list
+  * leap156 commented version of flavors without net images
+  * update publish_leap-micro60_appliances.config
+
+-------------------------------------------------------------------
+Tue Jun 18 08:32:19 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240618.f155c32:
+  * Use tabs for indentation
+  * add back openSUSE- prefix for LeapMicro 6.0 DVD media
+  * update dvd filename for the leapmicro6.0 and new productcompose
+  * use new 000productcompose only
+  * Add pkglistgen for LeapMicro 6.0 000productcompose (maint workflow)
+
+-------------------------------------------------------------------
+Mon Jun 17 17:04:48 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240617.0b60495:
+  * Switch CI to Leap 15.6
+
+-------------------------------------------------------------------
+Mon Jun 17 15:52:09 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240617.9b466e6:
+  * slfo-stagings: add a timeout for Build.product, and do not run if repo is missing
+  * verify-repo-built-successful: properly handle missing repositories
+  * verify-repo-built-successful: mark project and repository args required
+
+-------------------------------------------------------------------
+Mon Jun 17 10:26:40 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240617.0928376:
+  * cleanup_rings: whitelist 'devscripts'
+
+-------------------------------------------------------------------
+Mon Jun 17 07:38:42 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240617.abf142e:
+  * verify-build-and-generatelists: Adjust to use --engine and --git-url for SLFO based products.
+
+-------------------------------------------------------------------
+Mon Jun 17 07:29:44 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240617.864dffa:
+  * check_source: fix crash AttributeError: 'CheckSource' object has no attribute 'review_message'
+
+-------------------------------------------------------------------
+Thu Jun 13 10:34:48 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240613.9d63fee:
+  * docker_publisher.py: Set 15.6 as latest
+
+-------------------------------------------------------------------
+Wed Jun 12 08:47:02 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240612.1679c72:
+  * Remove codecoverage reporting
+
+-------------------------------------------------------------------
+Tue Jun 11 14:04:47 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240611.4d0b152:
+  * Restore SLFO pipelines
+
+-------------------------------------------------------------------
+Tue Jun 11 13:40:53 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240611.dc9d44d:
+  * gocd: slfo-stagings: wait for product to be built before enabling images
+  * pkglistgen: cli: Explicitly enable product-composer instead of detecting directories.
+
+-------------------------------------------------------------------
+Tue Jun 11 10:50:51 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240611.7999809:
+  * announcer: inject hostname in case fqdn cannot be found
+
+-------------------------------------------------------------------
+Mon Jun 10 12:41:48 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240610.fe74cce:
+  * gocd: sl-micro: Decouple publishing to :PUBLISH project, from publishing to :ToTest.
+
+-------------------------------------------------------------------
+Wed Jun 05 08:05:15 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240605.63b8547:
+  * Adjust the staging configuration of ALP to maintenance needs
+
+-------------------------------------------------------------------
+Tue Jun 04 14:37:47 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240604.2a36623:
+  * Add SLES16.0 release pipelines
+
+-------------------------------------------------------------------
+Mon Jun 03 13:28:42 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240603.cba9d9b:
+  * ttm: Print all failing packages before exiting
+  * ttm: Use _result of the whole project instead of separately for each pkg
+
+-------------------------------------------------------------------
+Thu May 30 08:24:20 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240530.408936d:
+  * gocd: Allow SLFO to have pkglists generated.
+
+-------------------------------------------------------------------
+Thu May 30 07:43:55 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240530.787cdb9:
+  * gocd: slfo: RelPkgs are not generated anymore.
+
+-------------------------------------------------------------------
+Thu May 30 07:04:11 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240530.db1c4dc:
+  * gocd: # must be followed by a parameter pattern or escaped by another #.
+  * fix slfo stagings pipelines
+
+-------------------------------------------------------------------
+Wed May 29 15:22:44 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240529.3f58f3e:
+  * pkglistgen: Support working on git branches
+
+-------------------------------------------------------------------
+Wed May 29 12:25:51 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240529.34947e2:
+  * Leap 15: disable skippkg-finder for 15.6
+
+-------------------------------------------------------------------
+Mon May 27 12:57:26 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240527.d25c6ef:
+  * gocd: micro: Wait also for kiwi images to finish building.
+
+-------------------------------------------------------------------
 Mon May 20 08:33:29 UTC 2024 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20240520.c5122b8:
