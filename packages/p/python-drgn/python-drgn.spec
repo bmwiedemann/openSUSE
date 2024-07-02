@@ -21,7 +21,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 
 Name:           python-drgn
-Version:        0.0.26
+Version:        0.0.27
 Release:        0
 Summary:        Scriptable debugger library
 License:        LGPL-2.1-or-later
@@ -32,6 +32,7 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  check-devel
 BuildRequires:  fdupes
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul  2 03:32:44 UTC 2024 - Petr Tesařík <petr@tesarici.cz>
+
+- Update to drgn-0.0.27:
+  * Linux 6.9 and 6.10 support
+  * New helpers for interpreting memory
+  * New scripts in contrib
+
+-------------------------------------------------------------------
 Tue Mar 12 18:14:42 UTC 2024 - Petr Tesařík <petr@tesarici.cz>
 
 - Update to drgn-0.0.26:
