@@ -1,7 +1,7 @@
 #
 # spec file for package libgexiv2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define pythons python3
 
 Name:           libgexiv2
-Version:        0.14.2
+Version:        0.14.3
 Release:        0
 Summary:        A GObject-based Exiv2 wrapper
 License:        GPL-2.0-or-later
@@ -102,7 +102,7 @@ This package provides the Python 3 bindings for the libgexiv2 library.
 
 %files -n libgexiv2-2
 %license COPYING
-%doc AUTHORS NEWS README THANKS
+%doc AUTHORS NEWS README.md THANKS
 %{_libdir}/libgexiv2.so.*
 
 %files -n typelib-1_0-GExiv2-0_10

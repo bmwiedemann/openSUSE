@@ -405,4 +405,17 @@
     <comment> (forwarded request 1117062 from iznogood)</comment>
     <requestid>1117453</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>d3e8b7225b615b9292a013a52ccf50e8</srcmd5>
+    <version>0.14.3</version>
+    <time>1719936969</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.14.3:
+  + Prevent std::exception escaping from exiv2
+  + Declare gexiv2_metadata_open_stream and _save_stream as
+    deprecated
+  + Documentation updates
+  + Bugs fixed: https://gitlab.gnome.org/GNOME/gexiv2/issues/81 (forwarded request 1183903 from iznogood)</comment>
+    <requestid>1184263</requestid>
+  </revision>
 </revisionlist>

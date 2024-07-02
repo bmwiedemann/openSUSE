@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun 28 22:30:43 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.14.3:
+  + Prevent std::exception escaping from exiv2
+  + Declare gexiv2_metadata_open_stream and _save_stream as
+    deprecated
+  + Documentation updates
+  + Bugs fixed: https://gitlab.gnome.org/GNOME/gexiv2/issues/81
+
+-------------------------------------------------------------------
 Wed Oct 11 19:18:15 UTC 2023 - Bjørn <bjorn.lie@gmail.com>
 
 - Package sub-package python3-gexiv2 as noarch.
