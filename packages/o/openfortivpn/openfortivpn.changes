@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 20 03:48:56 UTC 2024 - ming li <mli@suse.com>
+
+- Update to version 1.22.1
+  * do not advertise we talk compressed HTTP - we don't
+
+-------------------------------------------------------------------
 Thu Apr 18 17:18:21 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.22.0
