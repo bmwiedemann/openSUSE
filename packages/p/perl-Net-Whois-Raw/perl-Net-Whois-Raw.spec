@@ -18,7 +18,7 @@
 
 %define cpan_name Net-Whois-Raw
 Name:           perl-Net-Whois-Raw
-Version:        2.99039
+Version:        2.99040
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Get Whois information of domains and IP addresses
