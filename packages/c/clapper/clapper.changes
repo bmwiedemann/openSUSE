@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jul  1 18:07:56 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.6.1:
+  + Updated metainfo summary and colors
+  + Complemented metainfo categories
+  + Fixed wrong MARKER_NO_END value in Clapper API GIR
+  + Fixed GtkWindowControls style when used within ClapperGtkVideo
+    as OSD
+  + Fixed crashes after GL context is destroyed
+  + Fixed missing signals disconnections after dispose of
+    ClapperGtkVideo
+  + Fixed playback of media with missing plugins for metadata
+  + Few small documentation fixes
+  + Fixed problems building clapper-gtk documentation on a clean
+    system
+  + Fixed info window not closing when pressing "Esc" key
+  + Fixed opened file content type detection (used for determining
+    subtitle files)
+  + Few fixes and additional checks for meson build script
+  + Ensured private types before template init in ClapperGtk API
+  + Enabled audio pitch correction for non-normal speed in
+    ClapperGtkVideo (use "scaletempo" audio filter by default)
+  + Fixed invisible status message in ClapperGtkVideo when used in
+    light theme apps
+  + Made transitions time in ClapperGtkBillboard widget a tad
+    faster
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Apr 23 12:56:34 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to version 0.6.0:

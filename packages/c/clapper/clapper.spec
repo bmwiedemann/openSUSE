@@ -18,7 +18,7 @@
 
 %global uuid com.github.rafostar.Clapper
 %global libver 0.0
-%global libsuffix 0.6.0
+%global libsuffix 0.6.1
 %global sover 0
 %global gstlib Clapper
 
@@ -31,7 +31,7 @@
 %bcond_without server
 
 Name:           clapper
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        A GNOME media player built using GJS with GTK4
 Group:          Productivity/Multimedia/Video/Players
