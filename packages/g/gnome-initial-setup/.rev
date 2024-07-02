@@ -260,4 +260,21 @@ Resub it :-)</comment>
   + Updated translations. (forwarded request 1176714 from dimstar)</comment>
     <requestid>1176728</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>7ef144252491f64c7a221551474fbc1c</srcmd5>
+    <version>46.3</version>
+    <time>1719936945</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.3:
+  + The summary page now uses an embedded themed icon for the
+    checkmark, which ensures that the icon is loaded at the proper
+    scaling level on hidpi displays.
+  + If you customize the generated username for the new account,
+    changing the account name no longer clobbers the customized
+    username.
+  + The keyboard page no longer crashes if it is destroyed and
+    recreated while still waiting for the set of IBus engines.
+  + Updated translations. (forwarded request 1183896 from iznogood)</comment>
+    <requestid>1184245</requestid>
+  </revision>
 </revisionlist>

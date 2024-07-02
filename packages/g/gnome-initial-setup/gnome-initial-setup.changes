@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 28 21:10:52 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 46.3:
+  + The summary page now uses an embedded themed icon for the
+    checkmark, which ensures that the icon is loaded at the proper
+    scaling level on hidpi displays.
+  + If you customize the generated username for the new account,
+    changing the account name no longer clobbers the customized
+    username.
+  + The keyboard page no longer crashes if it is destroyed and
+    recreated while still waiting for the set of IBus engines.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri May 24 10:52:00 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.2:
