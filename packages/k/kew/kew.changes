@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul  2 11:23:54 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2.5.1
+  * Fixed bug where desktop notifications could lead to a short
+    stall of the app at startup if notify-send wasn't installed.
+  * Search: Removed duplicate search result name variable. This
+    means search results will now have a very low memory footprint.
+  * Symlinked directories should work better now. Works best if 
+    the symlink and the destination directory has the same name.
+
+-------------------------------------------------------------------
 Mon Jun 17 04:46:18 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2.5.0
