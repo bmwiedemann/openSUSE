@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.10.0.0
+Version:        0.10.0.1
 Release:        0
 Summary:        An MPD client library
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Patch1:         https://github.com/vimus/libmpd-haskell/pull/138.patch#/fix-build-with-ghc-9.8.x.patch
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-attoparsec-devel
 BuildRequires:  ghc-attoparsec-prof
@@ -93,7 +92,7 @@ Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
 This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
-%autosetup -n %{pkg_name}-%{version} -p1
+%autosetup -n %{pkg_name}-%{version}
 
 %build
 %ghc_lib_build

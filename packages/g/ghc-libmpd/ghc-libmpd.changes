@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun 21 17:22:19 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update libmpd to version 0.10.0.1.
+  * v0.10.0.1
+      - Fix build issues caused by removed symbols in dependencies
+      - Adjust `text` bounds
+
+- Drop obsolete fix-build-with-ghc-9.8.x.patch.
+
+-------------------------------------------------------------------
 Fri Mar  1 20:39:50 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Apply fix-build-with-ghc-9.8.x.patch to support ghc-9.8.x.
@@ -45,9 +55,9 @@ Mon Jan  4 11:06:54 UTC 2021 - psimons@suse.com
 
 -------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
- 
+
 - disable %{ix86} build
- 
+
 -------------------------------------------------------------------
 Tue Oct  6 08:56:03 UTC 2020 - psimons@suse.com
 
@@ -68,4 +78,3 @@ Tue Aug 18 10:45:19 UTC 2020 - Peter Simons <psimons@suse.com>
 Tue Jun  9 10:27:03 UTC 2020 - psimons@suse.com
 
 - Add libmpd at version 0.9.1.0.
-
