@@ -216,4 +216,12 @@
     behaviour.</comment>
     <requestid>1180146</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>cacb5fd68449ce864398796803f17af5</srcmd5>
+    <version>1.5.1</version>
+    <time>1719936879</time>
+    <user>anag+factory</user>
+    <comment>- add py313-support.patch to fix build with python 3.13</comment>
+    <requestid>1184152</requestid>
+  </revision>
 </revisionlist>

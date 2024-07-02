@@ -24,10 +24,14 @@ Summary:        Mock time date for Python
 License:        Apache-2.0
 URL:            https://github.com/spulec/freezegun
 Source:         https://files.pythonhosted.org/packages/source/f/freezegun/freezegun-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM: https://github.com/spulec/freezegun/commit/1777174bb97c0b514033a09b820078b0d117f4a8
+Patch1:         py313-support.patch
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil > 2.7}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -41,14 +45,13 @@ FreezeGun is a library that allows your python tests to travel through
 time by mocking the datetime module.
 
 %prep
-%setup -q -n freezegun-%{version}
-%autopatch -p1
+%autosetup -p1 -n freezegun-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +61,6 @@ time by mocking the datetime module.
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/freezegun
-%{python_sitelib}/freezegun-%{version}*-info
+%{python_sitelib}/freezegun-%{version}.dist-info
 
 %changelog
