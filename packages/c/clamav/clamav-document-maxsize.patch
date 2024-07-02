@@ -1,7 +1,5 @@
-Index: clamav-0.103.2/docs/man/clamscan.1.in
-===================================================================
---- clamav-0.103.2.orig/docs/man/clamscan.1.in
-+++ clamav-0.103.2/docs/man/clamscan.1.in
+--- docs/man/clamscan.1.in.orig
++++ docs/man/clamscan.1.in
 @@ -8,6 +8,18 @@ clamscan [options] [file/directory/\-]
  .SH "DESCRIPTION"
  .LP
@@ -21,10 +19,8 @@ Index: clamav-0.103.2/docs/man/clamscan.1.in
  .SH "OPTIONS"
  .LP
  Most of the options are simple switches which enable or disable some features. Options marked with [=yes/no(*)] can be optionally followed by =yes/=no; if they get called without the boolean argument the scanner will assume 'yes'. The asterisk marks the default internal setting for a given option.
-Index: clamav-0.103.2/docs/man/clamdscan.1.in
-===================================================================
---- clamav-0.103.2.orig/docs/man/clamdscan.1.in
-+++ clamav-0.103.2/docs/man/clamdscan.1.in
+--- docs/man/clamdscan.1.in.orig
++++ docs/man/clamdscan.1.in
 @@ -8,6 +8,17 @@ clamdscan [options] [file/directory]
  .SH "DESCRIPTION"
  .LP

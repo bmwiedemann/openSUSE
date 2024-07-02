@@ -1,0 +1,165 @@
+--- clamdscan/client.c.orig
++++ clamdscan/client.c
+@@ -239,14 +239,14 @@ int16_t ping_clamd(const struct optstruc
+         if (i + 1 < attempts) {
+             if (optget(opts, "wait")->enabled) {
+                 if (interval == 1)
+-                    logg(LOGG_DEBUG, "Could not connect, will try again in %lu second\n", interval);
++                    logg(LOGG_DEBUG, "Could not connect, will try again in %" PRIu64 " second\n", interval);
+                 else
+-                    logg(LOGG_DEBUG, "Could not connect, will try again in %lu seconds\n", interval);
++                    logg(LOGG_DEBUG, "Could not connect, will try again in %" PRIu64 " seconds\n", interval);
+             } else {
+                 if (interval == 1)
+-                    logg(LOGG_INFO, "Could not connect, will PING again in %lu second\n", interval);
++                    logg(LOGG_INFO, "Could not connect, will PING again in %" PRIu64 " second\n", interval);
+                 else
+-                    logg(LOGG_INFO, "Could not connect, will PING again in %lu seconds\n", interval);
++                    logg(LOGG_INFO, "Could not connect, will PING again in %" PRIu64 " seconds\n", interval);
+             }
+             sleep(interval);
+         }
+--- clamonacc/client/client.c.orig
++++ clamonacc/client/client.c
+@@ -254,14 +254,14 @@ int16_t onas_ping_clamd(struct onas_cont
+         if (i + 1 < attempts) {
+             if (optget((*ctx)->opts, "wait")->enabled) {
+                 if (interval == 1)
+-                    logg(LOGG_DEBUG, "Will try again in %lu second\n", interval);
++                    logg(LOGG_DEBUG, "Will try again in %" PRIu64 " second\n", interval);
+                 else
+-                    logg(LOGG_DEBUG, "Will try again in %lu seconds\n", interval);
++                    logg(LOGG_DEBUG, "Will try again in %" PRIu64 " seconds\n", interval);
+             } else {
+                 if (interval == 1)
+-                    logg(LOGG_INFO, "PINGing again in %lu second\n", interval);
++                    logg(LOGG_INFO, "PINGing again in %" PRIu64 " second\n", interval);
+                 else
+-                    logg(LOGG_INFO, "PINGing again in %lu seconds\n", interval);
++                    logg(LOGG_INFO, "PINGing again in %" PRIu64 " seconds\n", interval);
+             }
+             sleep(interval);
+         }
+--- clamonacc/fanotif/fanotif.c.orig
++++ clamonacc/fanotif/fanotif.c
+@@ -141,7 +141,7 @@ cl_error_t onas_setup_fanotif(struct ona
+     /* Load other options. */
+     (*ctx)->sizelimit = optget((*ctx)->clamdopts, "OnAccessMaxFileSize")->numarg;
+     if ((*ctx)->sizelimit) {
+-        logg(LOGG_DEBUG, "ClamFanotif: max file size limited to %lu bytes\n", (*ctx)->sizelimit);
++        logg(LOGG_DEBUG, "ClamFanotif: max file size limited to %" PRIu64 " bytes\n", (*ctx)->sizelimit);
+     } else {
+         logg(LOGG_DEBUG, "ClamFanotif: file size limit disabled\n");
+     }
+--- libclamav/mew.c.orig
++++ libclamav/mew.c
+@@ -787,7 +787,7 @@ int unmew11(char *src, uint32_t off, uin
+     }
+     if (((size_t)(src + off) < (size_t)(src)) ||
+         ((size_t)(src + off) < (size_t)(off))) {
+-        cli_dbgmsg("MEW: Buffer pointer (%08zx) + offset (%08zx) exceeds max size of pointer (%08lx)\n",
++        cli_dbgmsg("MEW: Buffer pointer (%08zx) + offset (%08zx) exceeds max size of pointer (%08zx)\n",
+                    (size_t)src, (size_t)off, SIZE_MAX);
+         return -1;
+     }
+--- libclamav/pe.c.orig
++++ libclamav/pe.c
+@@ -5185,12 +5185,12 @@ cl_error_t cli_peheader(fmap_t *map, str
+ 
+                 /* If a section is truncated, adjust its size value */
+                 if (!CLI_ISCONTAINED_0_TO(fsize, section->raw, section->rsz)) {
+-                    cli_dbgmsg("cli_peheader: PE Section %zu raw+rsz extends past the end of the file by %lu bytes\n", section_pe_idx, (section->raw + section->rsz) - fsize);
++                    cli_dbgmsg("cli_peheader: PE Section %zu raw+rsz extends past the end of the file by %zu bytes\n", section_pe_idx, (section->raw + section->rsz) - fsize);
+                     section->rsz = fsize - section->raw;
+                 }
+ 
+                 if (!CLI_ISCONTAINED_0_TO(fsize, section->uraw, section->ursz)) {
+-                    cli_dbgmsg("cli_peheader: PE Section %zu uraw+ursz extends past the end of the file by %lu bytes\n", section_pe_idx, (section->uraw + section->ursz) - fsize);
++                    cli_dbgmsg("cli_peheader: PE Section %zu uraw+ursz extends past the end of the file by %zu bytes\n", section_pe_idx, (section->uraw + section->ursz) - fsize);
+                     section->ursz = fsize - section->uraw;
+                 }
+             }
+--- libfreshclam/libfreshclam_internal.c.orig
++++ libfreshclam/libfreshclam_internal.c
+@@ -226,7 +226,7 @@ fc_error_t load_freshclam_dat(void)
+             if (-1 == lseek(handle, strlen(MIRRORS_DAT_MAGIC), SEEK_SET)) {
+                 char error_message[260];
+                 cli_strerror(errno, error_message, 260);
+-                logg(LOGG_ERROR, "Can't seek to %lu, error: %s\n", strlen(MIRRORS_DAT_MAGIC), error_message);
++                logg(LOGG_ERROR, "Can't seek to %zu, error: %s\n", strlen(MIRRORS_DAT_MAGIC), error_message);
+                 goto done;
+             }
+ 
+--- unit_tests/check_clamav.c.orig
++++ unit_tests/check_clamav.c
+@@ -1939,7 +1939,7 @@ void diff_file_mem(int fd, const char *r
+ 
+     ck_assert_msg(!!buf, "unable to malloc buffer: %zu", len);
+     p = read(fd, buf, len);
+-    ck_assert_msg(p == len, "file is smaller: %lu, expected: %lu", p, len);
++    ck_assert_msg(p == len, "file is smaller: %zu, expected: %zu", p, len);
+     p = 0;
+     while (len > 0) {
+         c1 = ref[p];
+@@ -1950,10 +1950,10 @@ void diff_file_mem(int fd, const char *r
+         len--;
+     }
+     if (len > 0)
+-        ck_assert_msg(c1 == c2, "file contents mismatch at byte: %lu, was: %c, expected: %c", p, c2, c1);
++        ck_assert_msg(c1 == c2, "file contents mismatch at byte: %zu, was: %c, expected: %c", p, c2, c1);
+     free(buf);
+     p = lseek(fd, 0, SEEK_END);
+-    ck_assert_msg(p == reflen, "trailing garbage, file size: %ld, expected: %ld", p, reflen);
++    ck_assert_msg(p == reflen, "trailing garbage, file size: %zd, expected: %zd", p, reflen);
+     close(fd);
+ }
+ 
+@@ -1969,7 +1969,7 @@ void diff_files(int fd, int ref_fd)
+ 
+     ck_assert_msg(lseek(ref_fd, 0, SEEK_SET) == 0, "lseek failed");
+     nread = read(ref_fd, ref, siz);
+-    ck_assert_msg(nread == siz, "short read, expected: %ld, was: %ld", siz, nread);
++    ck_assert_msg(nread == siz, "short read, expected: %ld, was: %zd", siz, nread);
+     close(ref_fd);
+     diff_file_mem(fd, ref, siz);
+     free(ref);
+--- unit_tests/check_clamd.c.orig
++++ unit_tests/check_clamd.c
+@@ -363,7 +363,7 @@ START_TEST(test_stats)
+ 
+     recvdata = (char *)recvfull(sockd, &len);
+ 
+-    ck_assert_msg(len > strlen(STATS_REPLY), "Reply has wrong size: %lu, minimum %lu, reply: %s\n",
++    ck_assert_msg(len > strlen(STATS_REPLY), "Reply has wrong size: %zu, minimum %zu, reply: %s\n",
+                   len, strlen(STATS_REPLY), recvdata);
+ 
+     if (len > strlen(STATS_REPLY))
+@@ -416,7 +416,7 @@ START_TEST(test_instream)
+     recvdata = (char *)recvfull(sockd, &len);
+ 
+     expect_len = strlen(EXPECT_INSTREAM);
+-    ck_assert_msg(len == expect_len, "Reply has wrong size: %lu, expected %lu, reply: %s\n",
++    ck_assert_msg(len == expect_len, "Reply has wrong size: %zu, expected %zu, reply: %s\n",
+                   len, expect_len, recvdata);
+ 
+     rc = memcmp(recvdata, EXPECT_INSTREAM, expect_len);
+@@ -494,7 +494,7 @@ static void tst_fildes(const char *cmd,
+     ck_assert_msg(sscanf(recvdata, "fd[%u]", &rc) == 1, "Reply doesn't contain fd: %s\n", recvdata);
+ 
+     len -= p - recvdata;
+-    ck_assert_msg(len == expect_len, "Reply has wrong size: %lu, expected %lu, reply: %s, expected: %s\n",
++    ck_assert_msg(len == expect_len, "Reply has wrong size: %zu, expected %zu, reply: %s, expected: %s\n",
+                   len, expect_len, p, expect);
+ 
+     rc = memcmp(p, expect, expect_len);
+--- libclamav/others_common.c.orig
++++ libclamav/others_common.c
+@@ -312,7 +312,7 @@ char *cli_strdup(const char *s)
+     }
+ 
+     alloc = strdup(s);
+-
++    
+     if (!alloc) {
+         perror("strdup_problem");
+         cli_errmsg("cli_strdup(): Can't allocate memory (%u bytes).\n", (unsigned int)strlen(s));

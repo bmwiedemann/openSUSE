@@ -1,7 +1,7 @@
 #
 # spec file for package clamav
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,23 @@
 #
 
 
-%bcond_with	clammspack
+%bcond_without	clammspack
 %bcond_with	valgrind
+
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
+%bcond_without sysuser_vscan
+%endif
+%if 0%{?suse_version} <= 1500
+%define vgcc 13
+%if 0%{?sle_version} < 150400
+%define vrust 1.69
+%define vcmake 3
+%endif
+%endif
+%global confdir %_prefix%_sysconfdir
+
 Name:           clamav
-Version:        0.103.11
+Version:        1.3.1
 Release:        0
 Summary:        Antivirus Toolkit
 License:        GPL-2.0-only
@@ -35,27 +48,40 @@ Source9:        service.clamav-milter
 Source10:       timer.freshclam
 # w3m https://www.clamav.net/downloads | sed -n '/-BEGIN /,/-END /p'
 Source11:       clamav.keyring
+Source12:       service.clamonacc
 Source65:       system-user-vscan.conf
 Patch1:         clamav-conf.patch
 Patch5:         clamav-obsolete-config.patch
-Patch6:         clamav-disable-yara.patch
 Patch12:        clamav-fips.patch
 Patch14:        clamav-document-maxsize.patch
+Patch15:        clamav-format.patch
+ExcludeArch:    %{arml}
 
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  gcc-c++
+BuildRequires:  cargo%{?vrust}
+BuildRequires:  cmake%{?vcmake}
+BuildRequires:  gcc%{?vgcc}
+BuildRequires:  gcc%{?vgcc}-c++
 BuildRequires:  libbz2-devel
-BuildRequires:  libcurl-devel >= 7.45
 BuildRequires:  libjson-c-devel
 BuildRequires:  libopenssl-devel >= 1.0.2
-BuildRequires:  libtool
 BuildRequires:  libxml2-devel
+BuildRequires:  make
+BuildRequires:  rust%{?vrust}
+#BuildRequires:  rust+cargo >= 1.61.0
+#BuildRequires:  rust+rustc >= 1.61.0
 BuildRequires:  sendmail-devel
+BuildRequires:  systemd
+BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(check)
+BuildRequires:  pkgconfig(libcurl) >= 7.45
 BuildRequires:  pkgconfig(libpcre2-8) >= 10.30
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(zlib)
+BuildRequires:  python(abi) >= 3.6
+%if 0%{?suse_version} >= 1500
+BuildRequires:  python3-pytest
+%endif
 #
 # Workaround to keep "make check" from using an existing libclamav
 # instead of the just built one. This should rather be fixed
@@ -72,7 +98,7 @@ BuildRequires:  pkgconfig(libmspack)
 %if %{with valgrind}
 BuildRequires:  valgrind
 %endif
-%if 0%{?suse_version} > 1500
+%if %{with sysuser_vscan}
 Requires(pre):  group(vscan)
 Requires(pre):  user(vscan)
 %else
@@ -114,19 +140,19 @@ than one clamd(8) server and seamlessly hot-swap to even the load
 between different machines and to keep scanning for viruses even
 when a server goes down.
 
-%package -n libclamav9
+%package -n libclamav12
 Summary:        ClamAV antivirus engine runtime
 Group:          System/Libraries
 
-%description -n libclamav9
+%description -n libclamav12
 ClamAV is an antivirus engine designed for detecting trojans,
 viruses, malware and other malicious threats.
 
-%package -n libfreshclam2
+%package -n libfreshclam3
 Summary:        ClamAV updater library
 Group:          System/Libraries
 
-%description -n libfreshclam2
+%description -n libfreshclam3
 ClamAV is an antivirus engine designed for detecting trojans,
 viruses, malware and other malicious threats.
 
@@ -141,8 +167,8 @@ viruses, malware and other malicious threats.
 %package devel
 Summary:        Development files for libclamav, an antivirus engine
 Group:          Development/Libraries/C and C++
-Requires:       libclamav9 = %{version}
-Requires:       libfreshclam2 = %{version}
+Requires:       libclamav12 = %{version}
+Requires:       libfreshclam3 = %{version}
 
 %description devel
 ClamAV is an antivirus engine designed for detecting trojans,
@@ -155,102 +181,93 @@ that want to make use of libclamav.
 %setup -q
 %patch -P 1
 %patch -P 5
-%patch -P 6
 %patch -P 12
-%patch -P 14 -p1
+%patch -P 14
+%patch -P 15
 chmod -x docs/html/images/flamegraph.svg
 
 %build
-%if 0%{?suse_version} <= 1500
+%if %{without sysuser_vscan}
 # Create vscan user
 %sysusers_generate_pre %{SOURCE65} vscan
 %endif
-CFLAGS="-fstack-protector"
-CXXFLAGS="-fstack-protector"
-export CFLAGS="%optflags $CFLAGS -fPIE -fno-strict-aliasing"
-export CXXFLAGS="%optflags $CXXFLAGS -fPIE -fno-strict-aliasing"
-export LDFLAGS="-pie"
-%if "%{_lib}" == "lib64"
-# tomsfastmath needs this for correct operation on 64-bit platforms
-CFLAGS="$CFLAGS -DFP_64BIT"
+%cmake \
+%if "%{?vgcc}" != ""
+    -DCMAKE_C_COMPILER=gcc-%{vgcc} \
+    -DCMAKE_CXX_COMPILER=g++-%{vgcc} \
 %endif
-%configure \
-	--disable-clamav \
-	--disable-static \
-	--with-dbdir=%{_localstatedir}/lib/clamav \
-	--with-user=vscan \
-	--with-group=vscan \
-	--enable-milter \
-	--enable-check \
-	--enable-clamdtop \
-	--disable-yara \
+    -DCMAKE_BUILD_TYPE=DEBUG \
+    -DCLAMAV_USER=vscan \
+    -DCLAMAV_GROUP=vscan \
+    -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%name \
+    -DAPP_CONFIG_DIRECTORY:PATH=%_sysconfdir \
+    -DDATABASE_DIRECTORY:PATH=%_localstatedir/lib/clamav \
+    -DENABLE_CLAMONACC=ON \
+    -DENABLE_MILTER=ON \
+    -DSYSTEMD_UNIT_DIR=%{_unitdir} \
 %if %{without clammspack}
-	--with-system-libmspack
+    -DENABLE_EXTERNAL_MSPACK=ON
 %endif
-
-%make_build
 
 %install
-%make_install
+
+%cmake_install
 install -d -m755 %{buildroot}%{_localstatedir}/lib/clamav
 install -d -m755 %{buildroot}%{_tmpfilesdir}
 install -m644 %SOURCE6 %{buildroot}%{_tmpfilesdir}/clamav.conf
 %if 0%{?suse_version} <= 1500
 mkdir -p %{buildroot}%{_localstatedir}/spool/amavis
 %endif
-mkdir -p -m 0755 %{buildroot}/run/clamav
+mkdir -p -m 0755 %{buildroot}{%_sysconfdir,/run/clamav}
 find %{buildroot} -type f -name "*.la" -delete -print
 
-# libclammspack is not meant to be linked against by anything but
-# libclamav
-rm -f %{buildroot}%{_libdir}/pkgconfig/libclammspack.pc
-rm -f %{buildroot}%{_libdir}/libclammspack.so
-
-# fix the new config file names
-mv %{buildroot}%{_sysconfdir}/clamd.conf{.sample,}
-mv %{buildroot}%{_sysconfdir}/clamav-milter.conf{.sample,}
-mv %{buildroot}%{_sysconfdir}/freshclam.conf{.sample,}
+for f in %{buildroot}%{_sysconfdir}/*.conf.sample;
+do
+    mv $f ${f%.sample}
+done
 
 # Systemd...
-install -d -m 0755 %{buildroot}%{_unitdir}
 rm -f %{buildroot}%{_unitdir}/clamav-*
 install -m 0644 %SOURCE7 %{buildroot}%{_unitdir}/clamd.service
 install -m 0644 %SOURCE8 %{buildroot}%{_unitdir}/freshclam.service
 install -m 0644 %SOURCE9 %{buildroot}%{_unitdir}/clamav-milter.service
 install -m 0644 %SOURCE10 %{buildroot}%{_unitdir}/freshclam.timer
-# this is broken if system does not have systemd so don't
-# use it at all on systems without mandatory systemd
-for srvname in clamd freshclam clamav-milter; do
-	(export PATH=%_prefix/sbin:/sbin:$PATH ;ln -sf $(which service) %{buildroot}/%{_sbindir}/rc${srvname})
+install -m 0644 %SOURCE12 %{buildroot}%{_unitdir}/clamonacc.service
+for srvname in clamd freshclam clamav-milter clamonacc; do
+	(export PATH=%_prefix/sbin:/sbin:$PATH ;ln -sf service %{buildroot}/%{_sbindir}/rc${srvname})
 done
 
 %check
 # regression tests
-%if !0%{?qemu_user_space_build:1}
-make check VG=1
+%if !0%{?qemu_user_space_build:1} && ( 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150500 )
+# Run ctest with a single job to avoid failures
+# due to race conditions, e.g. on s390x.
+%define _smp_mflags -j1
+%ctest
+%undefine _smp_mflags
 %endif
 
-%if 0%{?suse_version} > 1500
+%if %{with sysuser_vscan}
 %pre
 %else
 
 %pre -f vscan.pre
 %endif
-%service_add_pre clamd.service
+%service_add_pre clamd.service clamonacc.service
 
 %post
 %tmpfiles_create %{_tmpfilesdir}/clamav.conf
-%service_add_post clamd.service
+%service_add_post clamd.service clamonacc.service
 
 %preun
 if [ $1 -eq 0 ]; then
 	# package will be uninstalled
 	rm -f %{_localstatedir}/lib/clamav/*
 fi
-%service_del_preun clamd.service
+%service_del_preun clamd.service clamonacc.service
 
 %postun
-%service_del_postun clamd.service
+%service_del_postun clamd.service clamonacc.service
 
 %pre milter
 %service_add_pre clamav-milter.service
@@ -265,16 +282,16 @@ fi
 %service_del_postun clamav-milter.service
 
 %if 0%{?suse_version} > 1500
-%ldconfig_scriptlets -n libclamav9
-%ldconfig_scriptlets -n libfreshclam2
+%ldconfig_scriptlets -n libclamav12
+%ldconfig_scriptlets -n libfreshclam3
 %if %{with clammspack}
 %ldconfig_scriptlets -n libclammspack0
 %endif
 %else
-%post   -n libclamav9 -p /sbin/ldconfig
-%postun -n libclamav9 -p /sbin/ldconfig
-%post   -n libfreshclam2 -p /sbin/ldconfig
-%postun -n libfreshclam2 -p /sbin/ldconfig
+%post   -n libclamav12 -p /sbin/ldconfig
+%postun -n libclamav12 -p /sbin/ldconfig
+%post   -n libfreshclam3 -p /sbin/ldconfig
+%postun -n libfreshclam3 -p /sbin/ldconfig
 %if %{with clammspack}
 %post   -n libclammspack0 -p /sbin/ldconfig
 %postun -n libclammspack0 -p /sbin/ldconfig
@@ -298,6 +315,7 @@ fi
 %{_sbindir}/clamonacc
 %{_sbindir}/rcclamd
 %{_sbindir}/rcfreshclam
+%{_sbindir}/rcclamonacc
 %{_mandir}/man1/clambc.1%{?ext_man}
 %{_mandir}/man1/clamconf.1%{?ext_man}
 %{_mandir}/man1/clamdscan.1%{?ext_man}
@@ -314,6 +332,7 @@ fi
 %{_unitdir}/clamd.service
 %{_unitdir}/freshclam.service
 %{_unitdir}/freshclam.timer
+%{_unitdir}/clamonacc.service
 %defattr(-,vscan,vscan)
 %dir %{_localstatedir}/lib/clamav
 %if 0%{?suse_version} <= 1500
@@ -322,7 +341,7 @@ fi
 %ghost %attr(755,vscan,vscan) /run/clamav
 
 %files docs-html
-%doc docs/html/*
+%doc %_docdir/%name
 
 %files milter
 %config(noreplace) %{_sysconfdir}/clamav-milter.conf
@@ -332,11 +351,11 @@ fi
 %{_mandir}/man5/clamav-milter.conf.5%{?ext_man}
 %{_mandir}/man8/clamav-milter.8%{?ext_man}
 
-%files -n libclamav9
-%{_libdir}/libclam*.so.9*
+%files -n libclamav12
+%{_libdir}/libclam*.so.12*
 
-%files -n libfreshclam2
-%{_libdir}/libfreshclam.so.2*
+%files -n libfreshclam3
+%{_libdir}/libfreshclam.so.3*
 
 %if %{with clammspack}
 %files -n libclammspack0
@@ -348,5 +367,6 @@ fi
 %{_libdir}/pkgconfig/*
 %{_libdir}/libclam*.so
 %{_libdir}/libfreshclam*.so
+%{_libdir}/libclamav_rust.a
 
 %changelog

@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Mon Apr 22 15:30:18 UTC 2024 - Reinhard Max <max@suse.com>
+
+- New Version: 1.3.1:
+  * CVE-2024-20380: Fixed a possible crash in the HTML file parser
+    that could cause a denial-of-service (DoS) condition.
+  * Updated select Rust dependencies to the latest versions.
+  * Fixed a bug causing some text to be truncated when converting
+    from UTF-16.
+  * Fixed assorted complaints identified by Coverity static
+    analysis.
+  * Fixed a bug causing CVDs downloaded by the DatabaseCustomURL
+    Freshclam config option to be pruned and then re-downloaded
+    with every update.
+  * Added the new 'valhalla' database name to the list of optional
+    databases in preparation for future work.
+
+-------------------------------------------------------------------
+Fri Mar 15 13:52:57 UTC 2024 - Reinhard Max <max@suse.com>
+
+- New version: 1.3.0:
+  * Added support for extracting and scanning attachments found in
+    Microsoft OneNote section files. OneNote parsing will be
+    enabled by default, but may be optionally disabled.
+  * Added file type recognition for compiled Python (`.pyc`) files.
+  * Improved support for decrypting PDFs with empty passwords.
+  * Fixed a warning when scanning some HTML files.
+  * ClamOnAcc: Fixed an infinite loop when a watched directory
+    does not exist.
+  * ClamOnAcc: Fixed an infinite loop when a file has been deleted
+    before a scan.
+- New version: 1.2.0:
+  * Added support for extracting Universal Disk Format (UDF)
+    partitions.
+  * Added an option to customize the size of ClamAV's clean file
+    cache.
+  * Raised the MaxScanSize limit so the total amount of data
+    scanned when scanning a file or archive may exceed 4 gigabytes.
+  * Added ability for Freshclam to use a client certificate PEM
+    file and a private key PEM file for authentication to a private
+    mirror.
+  * Fix an issue extracting files from ISO9660 partitions where the
+    files are listed in the plain ISO tree and there also exists an
+    empty Joliet tree.
+  * PID and socket are now located under /run/clamav/clamd.pid and
+    /run/clamav/clamd.sock .
+  * bsc#1211594: Fixed an issue where ClamAV does not abort the
+    signature load process after partially loading an invalid
+    signature.
+- New version 1.1.0:
+  * https://blog.clamav.net/2023/05/clamav-110-released.html
+  * Added the ability to extract images embedded in HTML CSS
+    <style> blocks.
+  * Updated to Sigtool so that the --vba option will extract VBA
+    code from Microsoft Office documents the same way that
+    libclamav extracts VBA.
+  * Added a new option --fail-if-cvd-older-than=days to clamscan
+    and clamd, and FailIfCvdOlderThan to clamd.conf
+  * Added a new function cl_cvdgetage() to the libclamav API.
+  * Added a new function cl_engine_set_clcb_vba() to the
+    libclamav API.
+  * obsoletes clamav-ec32.patch.
+- boo#1180296: Integrate clamonacc as a service.
+- New version 1.0.1 LTS (including changes in 0.104 and 0.105):
+  * As of ClamAV 0.104, CMake is required to build ClamAV.
+  * As of ClamAV 0.105, Rust is now required to compile ClamAV.
+  * Increased the default limits for file and scan size:
+    * MaxScanSize: 100M to 400M
+    * MaxFileSize: 25M to 100M
+    * StreamMaxLength: 25M to 100M
+    * PCREMaxFileSize: 25M to 100M
+    * MaxEmbeddedPE: 10M to 40M
+    * MaxHTMLNormalize: 10M to 40M
+    * MaxScriptNormalize: 5M to 20M
+    * MaxHTMLNoTags: 2M to 8M
+  * Added image fuzzy hash subsignatures for logical signatures.
+  * Support for decrypting read-only OLE2-based XLS files that are
+    encrypted with the default password.
+  * Overhauled the implementation of the all-match feature.
+  * Added a new callback to the public API for inspecting file
+    content during a scan at each layer of archive extraction.
+  * Added a new function to the public API for unpacking CVD
+    signature archives.
+  * The option to build with an external TomsFastMath library has
+    been removed. ClamAV requires non-default build options for
+    TomsFastMath to support bigger floating point numbers.
+  * For a full list of changes see the release announcements:
+    * https://blog.clamav.net/2022/11/clamav-100-lts-released.html
+    * https://blog.clamav.net/2022/05/clamav-01050-01043-01036-released.html
+    * https://blog.clamav.net/2021/09/clamav-01040-released.html
+- Build clamd with systemd support.
+- Fix format strings on 32bit platforms (clamav-format.patch).
+- Add missing endianness conversions (clamav-ec32.patch).
+- Don't build on armv7l for now due to some test failures.
+- Drop clamav-disable-yara.patch as yara cannot be disabled anymore
+
+-------------------------------------------------------------------
 Mon Feb 26 10:47:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

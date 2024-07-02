@@ -1,0 +1,13 @@
+[Unit]
+Description=ClamAV On-Access Scanner
+Documentation=man:clamonacc(8) man:clamd.conf(5) https://docs.clamav.net/
+Requires=clamd.service
+After=clamd.service syslog.target network.target
+
+[Service]
+Type=forking
+User=root
+ExecStart=/usr/sbin/clamonacc --ping 30:10 --wait
+
+[Install]
+WantedBy=multi-user.target

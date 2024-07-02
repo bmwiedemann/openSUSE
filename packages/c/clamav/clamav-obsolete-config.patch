@@ -1,6 +1,6 @@
---- shared/optparser.c.orig
-+++ shared/optparser.c
-@@ -517,6 +517,13 @@ const struct clam_option __clam_options[
+--- common/optparser.c.orig
++++ common/optparser.c
+@@ -598,6 +598,13 @@ const struct clam_option __clam_options[
      {"MailFollowURLs", "mail-follow-urls", 0, CLOPT_TYPE_BOOL, MATCH_BOOL, -1, NULL, 0, OPT_CLAMD | OPT_CLAMSCAN | OPT_DEPRECATED, "", ""},
      {"AllowSupplementaryGroups", NULL, 0, CLOPT_TYPE_BOOL, MATCH_BOOL, 0, NULL, 0, OPT_CLAMD | OPT_FRESHCLAM | OPT_MILTER | OPT_DEPRECATED, "Initialize a supplementary group access (the process must be started by root).", "no"},
      {"ScanOnAccess", NULL, 0, CLOPT_TYPE_BOOL, MATCH_BOOL, -1, NULL, 0, OPT_CLAMD | OPT_DEPRECATED, "", ""},
