@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul  1 19:12:08 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.5.13.0
+  - fix: Various PSD files fail to load correctly #4302 (by Jesse
+    Yurkovich)
+  - fix: Improve error messages when a font is not found #4284
+  - int: In platform.h, define OIIO_DEVICE macro #4290
+  - ci: Typo in build_libtiff.bash #4280
+  - docs: Update INSTALL.md for windows #4279 (by Mel Massadian)
+  - docs: Fixes to formatting and sphinx warnings #4301
+
+-------------------------------------------------------------------
 Sun Jun  2 11:02:09 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 2.5.12.0
