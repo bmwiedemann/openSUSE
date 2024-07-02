@@ -2589,4 +2589,28 @@ New stable rel</comment>
   + Updated translations. (forwarded request 1176667 from dimstar)</comment>
     <requestid>1176674</requestid>
   </revision>
+  <revision rev="279" vrev="1">
+    <srcmd5>9d842d36bc791cc08e3bd1c89cd39d75</srcmd5>
+    <version>3.52.3</version>
+    <time>1719936957</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.52.3:
+  + Bug Fixes:
+    - Speed up startup - lots of local folders
+    - Composer:
+      . Wrap search by default
+      . Text out of &lt;div&gt; can break Undo
+      . Crash when opening spellcheck dialog
+    - Forwarded e-mails don't have a filename extension
+    - Composer: Crash when opening spellcheck dialog
+    - Unable to drag'n'drop attachments between attachment bars
+    - Crash under gtk_clutter_init_internal()
+  + Miscellaneous:
+    - Misc: Replace XPM images with SVG images
+    - EAttachment: Check file_info contains display-name before
+      accessing it
+    - CI: Workaround broken git clone for libcanberra
+  + Updated translations. (forwarded request 1183901 from iznogood)</comment>
+    <requestid>1184253</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 %define _version %(echo %{version} | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+')
 
 Name:           evolution
-Version:        3.52.2
+Version:        3.52.3
 Release:        0
 # FIXME: check if note on license is still valid (comment before license)
 Summary:        The Integrated GNOME Mail, Calendar, and Address Book Suite
