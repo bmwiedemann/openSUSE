@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 30 20:36:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- drop scandir dependency (only for < 3.5)
+
+-------------------------------------------------------------------
 Tue Sep 19 06:10:10 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to autosetup and pyproject macros
@@ -38,7 +43,7 @@ Sat Mar 26 21:28:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
   - Fixed `MemoryFS.move` and `MemoryFS.movedir` not updating the name of moved
     resources, causing `MemoryFS.scandir` to use the old name.
   - Make `WrapFS.move` and `WrapFS.movedir` use the delegate FS methods instead
-    of `fs.move` functions, which was causing optimized implementation of 
+    of `fs.move` functions, which was causing optimized implementation of
    `movedir` to be always skipped.
 
 -------------------------------------------------------------------
@@ -171,7 +176,7 @@ Fixes:
 * Restored deprecated setfile method with deprecation warning
   to change to writefile
 * Fixed exception when a tarfile contains a path called '.'
-* Made TarFS directory loading lazy 
+* Made TarFS directory loading lazy
 
 
 -------------------------------------------------------------------

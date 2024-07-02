@@ -167,4 +167,15 @@
 - Clean up some old Python 3 version requirements</comment>
     <requestid>1112131</requestid>
   </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>9380609e1fdd9eb9a31cff045507a45c</srcmd5>
+    <version>2.4.16</version>
+    <time>1719936876</time>
+    <user>anag+factory</user>
+    <comment>- drop scandir dependency (only for &lt; 3.5)
+
+    of `fs.move` functions, which was causing optimized implementation of
+* Made TarFS directory loading lazy</comment>
+    <requestid>1184140</requestid>
+  </revision>
 </revisionlist>

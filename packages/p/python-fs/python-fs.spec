@@ -1,7 +1,7 @@
 #
 # spec file for package python-fs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2016 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -35,7 +35,6 @@ BuildRequires:  %{python_module pyftpdlib}
 BuildRequires:  %{python_module pysendfile}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module scandir >= 1.5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.10.0}
 BuildRequires:  %{python_module wheel}
