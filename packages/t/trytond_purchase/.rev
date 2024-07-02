@@ -281,4 +281,12 @@
     <comment>security update Tryton issue #13142</comment>
     <requestid>1172369</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>17631daf9b571a3aa2b4335d915587bf</srcmd5>
+    <version>6.0.16</version>
+    <time>1719937154</time>
+    <user>anag+factory</user>
+    <comment>bugfix version</comment>
+    <requestid>1184802</requestid>
+  </revision>
 </revisionlist>
