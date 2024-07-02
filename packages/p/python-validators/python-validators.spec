@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-validators
-Version:        0.28.3
+Version:        0.29.0
 Release:        0
 Summary:        Python Data Validation
 License:        MIT
@@ -52,7 +52,8 @@ dos2unix README.md
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# missing eth-hash dependency so those tests must be skipped
+%pytest -k 'not test_returns_true_on_valid_eth_address and not test_returns_failed_validation_on_invalid_eth_address'
 
 %files %{python_files}
 %doc README.md

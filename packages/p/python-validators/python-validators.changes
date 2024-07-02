@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul  1 16:57:22 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.29.0
+Breaking:
+  * move btc_address to crypto_addresses
+    gh#kvesteri/validators#383
+
+Features:
+  * add validator for eth addresses
+    (depends on eth-hash, which is not packaged yet)
+    gh#kvesteri/validators#383
+
+-------------------------------------------------------------------
 Sat May 25 11:48:27 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.28.3
