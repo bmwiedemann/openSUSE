@@ -83,7 +83,7 @@
 %endif
 
 Name:           gstreamer-plugins-bad
-Version:        1.24.0
+Version:        1.24.5
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -96,8 +96,6 @@ Source99:       baselibs.conf
 Patch0:         fix-build-with-srt-1.3.4.patch
 # PATCH-FIX-OPENSUSE spandsp3.patch jengelh@inai.de -- Fix build against spandsp 3.x. Patch is not upstreamable in this form
 Patch2:         spandsp3.patch
-# PATCH-FIX-UPSTREAM 0001-Move-PROP_RATE_CONTROL-to-the-end-of-the-array.patch boo#1221150 alarrosa@suse.com -- Fix crash https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/6319
-Patch3:         0001-Move-PROP_RATE_CONTROL-to-the-end-of-the-array.patch
 
 %if %{with fdk_aac}
 BuildRequires:  pkgconfig(fdk-aac) >= 0.1.4
@@ -215,7 +213,7 @@ BuildRequires:  pkgconfig(zvbi-0.2)
 BuildRequires:  pkgconfig(zxing) >= 1.4.0
 %endif
 Requires(post): glib2-tools
-Requires(postun):glib2-tools
+Requires(postun): glib2-tools
 # FIXME! - this leads to unresolvables currently
 #%%define gstreamer_plugins_bad_req %%(xzgrep --text "^GST.*_REQ" %%{S:0} | sort -u | sed 's/GST_REQ=/gstreamer >= /;s/GSTPB_REQ=/gstreamer-plugins-base >= /' | tr '\\n' ' ')
 #Requires:       %%gstreamer_plugins_bad_req
@@ -822,7 +820,6 @@ sed -ie "/subdir('decklink')/d" sys/meson.build
 %if %{pkg_vcmp spandsp-devel >= 3}
 %patch -P 2 -p1
 %endif
-%patch -P 3 -p1
 
 %build
 %global optflags %{optflags} -fcommon
