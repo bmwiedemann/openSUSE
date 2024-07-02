@@ -328,4 +328,12 @@
 - drop python-distlib-2048-bit-key.patch (obsolete)</comment>
     <requestid>1133992</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>c9c5aac11c941ffb75594a7f2b5b5977</srcmd5>
+    <version>0.3.8</version>
+    <time>1719936882</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1184219</requestid>
+  </revision>
 </revisionlist>

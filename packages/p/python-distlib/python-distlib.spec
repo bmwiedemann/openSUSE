@@ -1,7 +1,7 @@
 #
 # spec file for package python-distlib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,10 @@ Summary:        Distribution utilities
 License:        Python-2.0
 URL:            https://github.com/pypa/distlib
 Source:         https://files.pythonhosted.org/packages/source/d/distlib/distlib-%{version}.tar.gz
+Patch1:         https://github.com/pypa/distlib/commit/1c08845b05d022692252ed45cb07e9cb9647caac.patch#/py313-interpreter-repr.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -36,8 +38,7 @@ BuildArch:      noarch
 Python distribution utilities.
 
 %prep
-%setup -q -n distlib-%{version}
-%autopatch -p1
+%autosetup -p1 -n distlib-%{version}
 
 # This test module requires internet access and are unnecessary
 sed -i '/from test_locators import LocatorTestCase/d' tests/distlib_tests.py
