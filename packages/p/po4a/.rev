@@ -282,4 +282,15 @@ pull the gettext files.
     <comment></comment>
     <requestid>1183661</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>74567476c51cd3dee572bbdfad942d18</srcmd5>
+    <version>0.73</version>
+    <time>1719936868</time>
+    <user>anag+factory</user>
+    <comment>- Add a workaround to fix building against perl-5.40.0 which added
+  a warning for accidental usage of UNIVERSAL::import()
+  * new patch: po4a.diff
+</comment>
+    <requestid>1184865</requestid>
+  </revision>
 </revisionlist>

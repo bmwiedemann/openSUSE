@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  2 13:51:42 CEST 2024 - mls@suse.de
+
+- Add a workaround to fix building against perl-5.40.0 which added
+  a warning for accidental usage of UNIVERSAL::import()
+  * new patch: po4a.diff
+
+-------------------------------------------------------------------
 Sat Jun 22 18:28:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.73:
