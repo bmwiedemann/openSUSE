@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jun 28 22:12:42 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.52.3:
+  + Bug Fixes:
+    - Camel:
+      . Attachments not recognized when filtering POP3 message
+      . Search folder's message UID is not persistent
+    - CalDAV: Correct check for "is Google server"
+  + Miscellaneous:
+    - OAuth2 Prompter: Fix two memory leaks
+    - EOAuth2ServiceYahoo: Update redirect URI
+    - CI: Workaround broken git clone for libcanberra
+    - Fix few issues reported by Coverity Scan
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri May 24 07:04:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.52.2:

@@ -2345,4 +2345,23 @@ New stable rel</comment>
   + Updated translations. (forwarded request 1176666 from dimstar)</comment>
     <requestid>1176673</requestid>
   </revision>
+  <revision rev="256" vrev="1">
+    <srcmd5>f879d572dd19eeae305ff06df54ef7ea</srcmd5>
+    <version>3.52.3</version>
+    <time>1719936953</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.52.3:
+  + Bug Fixes:
+    - Camel:
+      . Attachments not recognized when filtering POP3 message
+      . Search folder's message UID is not persistent
+    - CalDAV: Correct check for &quot;is Google server&quot;
+  + Miscellaneous:
+    - OAuth2 Prompter: Fix two memory leaks
+    - EOAuth2ServiceYahoo: Update redirect URI
+    - CI: Workaround broken git clone for libcanberra
+    - Fix few issues reported by Coverity Scan
+  + Updated translations. (forwarded request 1183900 from iznogood)</comment>
+    <requestid>1184251</requestid>
+  </revision>
 </revisionlist>
