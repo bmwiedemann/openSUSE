@@ -49,7 +49,7 @@
 %bcond_with enable_preview_single_rpmtrans_as_default_for_zypper
 
 Name:           libzypp
-Version:        17.34.1
+Version:        17.35.1
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/libzypp
@@ -120,6 +120,7 @@ BuildRequires:  libsolv-devel >= 0.7.24
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150600
 BuildRequires:  libsolv-tools-base >= 0.7.29
 %requires_eq    libsolv-tools-base
+Requires:	( findutils if libsolv-tools-base <= 0.7.31 )
 %else
 BuildRequires:  libsolv-tools
 %requires_eq    libsolv-tools
@@ -127,7 +128,6 @@ BuildRequires:  libsolv-tools
 
 BuildRequires:  glib2-devel
 BuildRequires:  libsigc++2-devel
-BuildRequires:  protobuf-devel
 BuildRequires:  readline-devel >= 5.1
 
 # required for testsuite
