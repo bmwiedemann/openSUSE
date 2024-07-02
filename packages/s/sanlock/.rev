@@ -307,4 +307,13 @@ corruption of the VM's disk image.  See FATE#306399.</comment>
   - sanlock: skip delay when same host acquires delta lease</comment>
     <requestid>1178397</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>de6ecfc10273bc97aa75764a9e255e1e</srcmd5>
+    <version>3.9.3</version>
+    <time>1719936899</time>
+    <user>anag+factory</user>
+    <comment>- suse-systemd.patch: Remove redundant 'ExecStart' from wdmd.service
+  boo#1227208</comment>
+    <requestid>1184377</requestid>
+  </revision>
 </revisionlist>

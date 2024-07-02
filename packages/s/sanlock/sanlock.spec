@@ -1,5 +1,5 @@
 #
-# spec file for package sanlock
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #

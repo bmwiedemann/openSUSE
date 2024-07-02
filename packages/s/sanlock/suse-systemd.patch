@@ -19,10 +19,11 @@ Index: sanlock-3.9.3/init.d/wdmd.service
 ===================================================================
 --- sanlock-3.9.3.orig/init.d/wdmd.service
 +++ sanlock-3.9.3/init.d/wdmd.service
-@@ -6,7 +6,10 @@ After=syslog.target
+@@ -5,8 +5,10 @@ After=syslog.target
+ [Service]
  Type=forking
  ExecStartPre=/lib/systemd/systemd-wdmd watchdog-check
- ExecStart=/usr/sbin/wdmd
+-ExecStart=/usr/sbin/wdmd
 -SendSIGKILL=no
 +EnvironmentFile=-/etc/sysconfig/wdmd
 +ExecStart=/usr/sbin/wdmd $WDMDOPTS
