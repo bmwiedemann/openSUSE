@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  2 11:45:07 UTC 2024 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.27.9
+  * Enhancements:
+    #9552: gui: Use localised time in duration
+
+-------------------------------------------------------------------
 Tue Jun  4 17:08:00 UTC 2024 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.27.8
