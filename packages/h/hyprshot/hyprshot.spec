@@ -1,7 +1,8 @@
 #
 # spec file for package hyprshot
 #
-# Copyright (c) 2023 Malcolm J Lewis <malcolmlewis@opensuse.org>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2023-2024 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +18,10 @@
 
 
 Name:           hyprshot
-Version:        1.2.2
+Version:        1.3.0+2
 Release:        0
 Summary:        Hyprland screenshot utility
-License:        GPL-3.0
+License:        GPL-3.0-only
 URL:            https://github.com/Gustash/Hyprshot
 Source0:        %{name}-%{version}.tar.xz
 Source99:       hyprshot-rpmlintrc
