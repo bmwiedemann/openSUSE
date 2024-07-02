@@ -1,4 +1,4 @@
-Last reviewed: 2024-05-01
+Last reviewed: 2024-07-01
 1. Download the latest release tarball from here: https://github.com/notofonts/notofonts.github.io/releases
 2. Rename the current specfile to old.spec then edit the versions in generate-specfile.sh and google-noto-fonts.spec.in
 3. Run generate-specfile.sh to get the new specfile
