@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 27 14:21:35 UTC 2024 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Update to version 1.1.11
+    - Fixed build issue with libapr on some systems (issue #48)
+    - Added otplock(1) utility (issue #38)
+
+-------------------------------------------------------------------
 Thu Jun 20 09:03:42 UTC 2024 - pgajdos@suse.com
 
 - drop unmaintained apache-rex usage

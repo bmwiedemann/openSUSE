@@ -1,5 +1,5 @@
 #
-# spec file for package apache2-mod_authn_otp
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Archie L. Cobbs <archie@dellroad.org>
@@ -19,7 +19,7 @@
 
 %define mod_name           mod_authn_otp
 Name:           apache2-%{mod_name}
-Version:        1.1.10
+Version:        1.1.11
 Release:        0
 Summary:        Apache module for one-time password authentication
 License:        Apache-2.0
@@ -31,6 +31,8 @@ BuildRequires:  apache2-devel
 BuildRequires:  pkgconfig(openssl)
 Requires:       %{apache_mmn}
 Requires:       %{apache_suse_maintenance_mmn}
+Provides:       genotpurl = %{version}
+Provides:       otplock = %{version}
 Provides:       otptool = %{version}
 
 %description
@@ -56,10 +58,11 @@ that require more security than simple username/password authentication
 yet also don't require users to install special VPN software, and is
 compatible with software tokens that run on cell phones.
 
-Also included are two command line utilities, otptool and genotpurl.
-otptool is a one-time password command line utility. It can be used
-on a simple call-out basis to integrate two-factor authentication
-into any existing authentication solution. genotpurl generates URLs
+Also included are three command line utilities, otptool, otplock, and
+genotpurl. otptool is a one-time password command line utility. It can
+be used on a simple call-out basis to integrate two-factor authentication
+into any existing authentication solution. otplock allows you to safely
+modify the users file while Apache is running. genotpurl generates URLs
 for the Google Authenticator app.
 
 %prep
@@ -78,8 +81,10 @@ install -d %{buildroot}%{apache_libexecdir}
 %doc CHANGES README users.sample
 %{apache_libexecdir}/%{mod_name}.so
 %{_bindir}/otptool
+%{_bindir}/otplock
 %{_bindir}/genotpurl
 %{_mandir}/man1/otptool.1.gz
+%{_mandir}/man1/otplock.1.gz
 %{_mandir}/man1/genotpurl.1.gz
 
 %changelog

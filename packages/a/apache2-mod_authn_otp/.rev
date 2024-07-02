@@ -111,4 +111,14 @@
     <comment>- drop unmaintained apache-rex usage</comment>
     <requestid>1181891</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>188c3a11dc38dc6712cd38f2d16de7fa</srcmd5>
+    <version>1.1.11</version>
+    <time>1719937160</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.1.11
+    - Fixed build issue with libapr on some systems (issue #48)
+    - Added otplock(1) utility (issue #38) (forwarded request 1183589 from archie172)</comment>
+    <requestid>1184837</requestid>
+  </revision>
 </revisionlist>
