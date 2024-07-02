@@ -1,5 +1,0 @@
-<package name="go1.18-devel-container" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="devel:kubic:containers" package="go1.18-devel-container"/>
-</package>
