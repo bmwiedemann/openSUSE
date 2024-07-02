@@ -235,4 +235,13 @@
     <comment></comment>
     <requestid>955419</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>62e84c7d38eba1701d26dc9a3a345e19</srcmd5>
+    <version>1.8.1</version>
+    <time>1719937015</time>
+    <user>anag+factory</user>
+    <comment>Update to version 1.8.1 
+Update build dependence libsoup2.4 to libsoup3 because of the requirement of source code (forwarded request 1183511 from jgwang)</comment>
+    <requestid>1184262</requestid>
+  </revision>
 </revisionlist>

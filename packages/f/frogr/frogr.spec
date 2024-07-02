@@ -1,7 +1,7 @@
 #
 # spec file for package frogr
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           frogr
-Version:        1.7
+Version:        1.8.1
 Release:        0
 Summary:        Tool to Manage Flickr Accounts
 License:        GPL-3.0-only
@@ -34,7 +34,7 @@ BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.16
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2
 BuildRequires:  pkgconfig(libexif) >= 0.6.14
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.34
+BuildRequires:  pkgconfig(libsoup-3.0) >= 3.2.2
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.8
 
 %description
