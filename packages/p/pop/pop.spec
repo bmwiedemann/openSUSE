@@ -1,6 +1,7 @@
 #
 # spec file for package pop
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) specCURRENT_YEAR SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,8 +26,8 @@ Group:          Productivity/Networking/Email/Utilities
 URL:            https://github.com/charmbracelet/pop
 Source:         %{name}-%{version}.tar.xz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.18
 BuildRequires:  zstd
+BuildRequires:  golang(API) >= 1.21
 
 %description
 A program to send emails from a terminal.
@@ -40,7 +41,6 @@ configured.
 export GOWORK=off
 
 go build \
-   -mod=vendor \
    -buildmode=pie \
    -ldflags "-s -w"
 

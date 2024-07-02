@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 25 11:08:36 UTC 2024 - Sai Karthik Karra <kskarthik@disroot.org>
+
+- Bump release version to 1
+- spec: Remove buildmode=vendor as it is the default behaviour since go >= 1.14
+- spec: Bump BuildRequires as per project's go.mod
+
+-------------------------------------------------------------------
 Sat Jun  1 20:38:22 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase for descriptions.
