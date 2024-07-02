@@ -53,7 +53,7 @@ Requires:       openssl
 Requires:       pwdutils
 Requires:       systemd
 Requires:       sysvinit-tools
-%if 0%{?suse_version} <= 1500
+%if 0%{?suse_version} && 0%{?suse_version} <= 1500
 Requires:       wicked
 %endif
 %if 0%{?suse_version} > 1315

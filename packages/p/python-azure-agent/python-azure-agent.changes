@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  1 09:53:19 UTC 2024 - Joachim Gleissner <jgleissner@suse.com>
+
+- Do not require wicked in non-SUSE build environments.
+
+-------------------------------------------------------------------
 Wed Jun 26 10:14:35 UTC 2024 - Joachim Gleissner <jgleissner@suse.com>
 
 - Apply python3 interpreter patch in non SLE build environments
