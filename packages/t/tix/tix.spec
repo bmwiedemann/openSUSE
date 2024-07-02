@@ -1,7 +1,7 @@
 #
 # spec file for package tix
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -30,7 +30,11 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/Tcl
 Source:         Tix%version-src.tar.bz2
 Patch0:         %name.patch
+Patch1:         %name-c89.patch
+Patch2:         %name-implicit-int.patch
+Patch3:         %name-includes.patch
 %requires_ge    tk tcl
+
 %description
 The Tix library has, by far, the greatest collection of widgets for
 programming with Tcl/Tk. Highlights include: hierarchical list box,
@@ -39,8 +43,6 @@ Motif style file select box, MS Windows style file select box, paned
 window, note book, spin control widget and many more. With these new
 widgets, your applications will look great and interact with your users
 in intuitive ways.
-
-
 
 %prep
 %autosetup -p0 -n Tix%version

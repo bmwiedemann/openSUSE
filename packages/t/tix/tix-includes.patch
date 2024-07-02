@@ -1,0 +1,20 @@
+--- generic/tixGrUtl.c.orig
++++ generic/tixGrUtl.c
+@@ -17,6 +17,7 @@
+ #include <tixInt.h>
+ #include <tixDef.h>
+ #include <tixGrid.h>
++#include <ctype.h>
+ 
+ #ifndef UCHAR
+ #define UCHAR(c) ((unsigned char) (c))
+--- generic/tixImgXpm.c.orig
++++ generic/tixImgXpm.c
+@@ -16,6 +16,7 @@
+ #include <tixPort.h>
+ #include <tixInt.h>
+ #include <tixImgXpm.h>
++#include <ctype.h>
+ 
+ /*
+  * Prototypes for procedures used only locally in this file:

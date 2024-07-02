@@ -130,4 +130,15 @@
     <comment></comment>
     <requestid>1154067</requestid>
   </revision>
+  <revision rev="20" vrev="74">
+    <srcmd5>1c5bb4b8a83de546fa89c726b4d44783</srcmd5>
+    <version>8.4.3</version>
+    <time>1719936894</time>
+    <user>anag+factory</user>
+    <comment>- boo#1225944: Add patches to build with gcc14:
+  * tix-c89.patch
+  * tix-implicit-int.patch
+  * tix-includes.patch</comment>
+    <requestid>1184347</requestid>
+  </revision>
 </revisionlist>

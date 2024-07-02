@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul  1 16:51:07 UTC 2024 - Reinhard Max <max@suse.com>
+
+- boo#1225944: Add patches to build with gcc14:
+  * tix-c89.patch
+  * tix-implicit-int.patch
+  * tix-includes.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 15:01:21 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
