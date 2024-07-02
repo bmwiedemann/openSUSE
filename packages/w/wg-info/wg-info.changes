@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 02 12:31:17 UTC 2024 - dheidler@suse.de
+
+- Update to version 20240702.9b5c479:
+  * Fix regex escaping
+
+-------------------------------------------------------------------
 Fri Jun 23 13:47:40 UTC 2023 - Dominik Heidler <dheidler@suse.de>
 
 - Initial Packaging

@@ -1,7 +1,7 @@
 #
 # spec file for package wg-info
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           wg-info
-Version:        20230623.60ceb5c
+Version:        20240702.9b5c479
 Release:        0
 Summary:        Enhanced version of 'wg show' showing peer names and online status
-License:        AGPL-3.0-or-later    
+License:        AGPL-3.0-or-later
 URL:            https://github.com/asdil12/wg-info
 Source:         %{name}-%{version}.tar.gz
 BuildArch:      noarch
@@ -50,4 +50,3 @@ install -D -m 0755 ./wg-info %{buildroot}%{_bindir}/wg-info
 %{_bindir}/wg-info
 
 %changelog
-
