@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jun 24 17:21:42 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 0.8.2+git20240621.c903416:
+  *  arm/neon riscv64: additional RVV implementations - part 2. (#1189)
+  * arm/neon riscv64: additional RVV implementations - part1 (#1188)
+  * Use _Float16 in C++ on aarch64 with GCC 13+
+  * Don't use _Float16 on non-SSE2 x86
+  * Don't use _Float16 on s390x
+  * x86: Apply half tabular method in _mm_crc32 family
+  * arm: improve performance in vqadd and vmvn in risc-v
+  * neon: avoid warnings when "__ARM_NEON_FP" is not defined.
+  *  Add @zengdage as a contributor
+  *  Add @howjmay as a contributor
+  *  Add @Torinde as a contributor
+  *  Add @eric900115 as a contributor
+  *  Add @AymenQ as a contributor
+  * add git mail map
+  * start next development cycle: v0.8.3
+
+-------------------------------------------------------------------
 Tue Apr 30 16:46:02 UTC 2024 - scott.bradnick@suse.com
 
 - Setting "BuildArch: noarch" causes build to fail, commented out

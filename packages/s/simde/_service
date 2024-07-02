@@ -3,11 +3,11 @@
     <param name="scm">git</param>
     <param name="url">https://github.com/simd-everywhere/simde</param>
     <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
+    <!--
     <param name="versionrewrite-pattern">v0.8.2-rc1</param>
     <param name="versionrewrite-replacement">0.8.2</param>
-    <!--
-    <param name="versionrewrite-pattern">v(.*)</param>
     -->
+    <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service mode="manual" name="set_version">

@@ -17,7 +17,7 @@
 
 
 Name:           simde
-Version:        0.8.2+git20240430.71fd833
+Version:        0.8.2+git20240621.c903416
 Release:        0
 Summary:        Fallback implementation for SIMD intrinsics
 License:        MIT
