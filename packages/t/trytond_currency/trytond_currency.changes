@@ -1,26 +1,15 @@
 -------------------------------------------------------------------
-Sat Jan 13 15:41:08 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+Tue Jul  2 09:11:01 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
-- Switch to wheel and %{?sle15_python_module_pythons}- 
-
--------------------------------------------------------------------
-Sat Nov 18 09:51:28 UTC 2023 - Axel Braun <axel.braun@gmx.de>
-
-- Version 6.0.5 - Bugfix Release
+- Version 6.0.6 - Bugfix Release
 
 -------------------------------------------------------------------
-Sat Nov  4 10:12:55 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+Mon Apr 29 17:48:27 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
-- Version 6.0.5 - Bugfix Release
-
--------------------------------------------------------------------
-Thu Oct 19 11:38:53 UTC 2023 - Daniel Garcia Moreno <daniel.garcia@suse.com>
-
-- Remove %python3_install prefix and root options, that's included in
-  the macro by default.
+- sources not signed anymore
 
 -------------------------------------------------------------------
-Thu Jun 22 10:05:39 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+Sat Feb  3 19:06:52 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - Version 6.0.5 - Bugfix Release
 

@@ -182,4 +182,12 @@
     <comment>python 311 (forwarded request 1140805 from DocB)</comment>
     <requestid>1140824</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>fd4d9ab6c46a510f077c42f42f7d546d</srcmd5>
+    <version>6.0.6</version>
+    <time>1719937159</time>
+    <user>anag+factory</user>
+    <comment>bugix version</comment>
+    <requestid>1184807</requestid>
+  </revision>
 </revisionlist>
