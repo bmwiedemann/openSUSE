@@ -1512,4 +1512,28 @@ New stable rel</comment>
   + Updated translations. (forwarded request 1176726 from dimstar)</comment>
     <requestid>1176729</requestid>
   </revision>
+  <revision rev="194" vrev="1">
+    <srcmd5>d123a5f4493a9b379bd3a7c0b710f3e9</srcmd5>
+    <version>1.54.2</version>
+    <time>1719936947</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.54.2:
+  + ftp:
+    - Change cwd to root before renaming to prevent failures
+    - Use timegm instead of mktime to not shift dates by timezone
+    - Preserve mtime when copying to local
+  + udisks2: Ignore autofs mounts to prevent duplicated entries
+  + build:
+    - Add deprecated_apis option to control installation of headers
+    - Disable burn backend by default
+  + dav: Disable query_info_on_read method to fix mtime
+    preservation
+  + network: Disable usage of smbbrowse backend by default
+  + smbbrowse: Don't enforce NT1 to fix mounting in certain cases
+  + onedrive: Fix various memory leaks
+  + Updated translations.
+- Pass burn=true to meson, we still want to build the burn backend,
+  at least for now. (forwarded request 1183898 from iznogood)</comment>
+    <requestid>1184247</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %bcond_without  cdda
 %bcond_without  onedrive
 Name:           gvfs
-Version:        1.54.1
+Version:        1.54.2
 Release:        0
 Summary:        Virtual File System functionality for GLib
 License:        GPL-3.0-only AND LGPL-2.0-or-later
@@ -189,6 +189,7 @@ gvfs plugins.
         -Dudisks2=true \
         %{!?with_cdda: -Dcdda=false} \
         -Dman=true \
+        -Dburn=true \
         -Dsystemduserunitdir=%{_userunitdir} \
         -Donedrive=%[%{with onedrive} ? "true" : "false" ] \
 	%{nil}
