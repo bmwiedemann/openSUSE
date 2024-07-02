@@ -1,7 +1,7 @@
 cabal-version:  1.12
 name:           network-bsd
 version:        2.8.1.0
-x-revision:     5
+x-revision:     6
 license:        BSD3
 license-file:   LICENSE
 maintainer:     Kazu Yamamoto, Herbert Valerio Riedel
@@ -86,7 +86,7 @@ library
                -- changes that aren't reflected in `network-bsd`'s
                -- API version.
                , network (>= 3.0.0.0 && < 3.0.2)
-                      || (>= 3.1.0.0 && < 3.2)
+                      || (>= 3.1.0.0 && < 3.3)
   build-tools: hsc2hs >= 0.67 && < 0.69
   ghc-options: -Wall
 
