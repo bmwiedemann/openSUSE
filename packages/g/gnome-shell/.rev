@@ -2320,4 +2320,24 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   + Updated translations. (forwarded request 1177041 from dimstar)</comment>
     <requestid>1177063</requestid>
   </revision>
+  <revision rev="256" vrev="1">
+    <srcmd5>f673184d1a216750b1a1ac8b69455d0e</srcmd5>
+    <version>46.3.1</version>
+    <time>1719936967</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.3.1:
+  + Fix including gvc source in tarball
+- Changes from version 46.3:
+  + Fix rendering artifacts of some rounded borders
+  + Fix overview animation glitch when windows overlap workspaces
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Add gvc (libgnome-volume-control) submodule to _service file and
+  inject subproject into the source directory. This is not tracked
+  as git submodules, so the regular 'git submodule' service
+  parameter is ineffective here.
+
+  + Misc. bug fixes and cleanups (bsc#1215485 CVE-2023-43090). (forwarded request 1184215 from dimstar)</comment>
+    <requestid>1184261</requestid>
+  </revision>
 </revisionlist>

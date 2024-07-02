@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun 30 09:45:26 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 46.3.1:
+  + Fix including gvc source in tarball
+- Changes from version 46.3:
+  + Fix rendering artifacts of some rounded borders
+  + Fix overview animation glitch when windows overlap workspaces
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Add gvc (libgnome-volume-control) submodule to _service file and
+  inject subproject into the source directory. This is not tracked
+  as git submodules, so the regular 'git submodule' service
+  parameter is ineffective here.
+
+-------------------------------------------------------------------
 Mon May 27 07:11:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.2:
@@ -249,7 +264,7 @@ Sat Sep 16 22:16:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
   + Fix regression in workspace state tracking
   + Update extensions immediately on startup after major upgrades
   + Reverse slider direction in RTL locales
-  + Misc. bug fixes and cleanups (CVE-2023-43090).
+  + Misc. bug fixes and cleanups (bsc#1215485 CVE-2023-43090).
   + Updated translations.
 - Change compression of tarball in service and spec to zst from xz.
 

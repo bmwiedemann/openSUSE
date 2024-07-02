@@ -21,7 +21,7 @@
 %define mutter_req 46.0
 
 Name:           gnome-shell
-Version:        46.2
+Version:        46.3.1
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
@@ -29,11 +29,11 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeShell
 # Source url disabled as we are using a git checkout via source service
-#Source0:        https://download.gnome.org/sources/gnome-shell/41/%%{name}-%%{version}.tar.xz
 Source0:        %{name}-%{version}.tar.zst
+Source1:        libgnome-volume-control-0.gitmodule.tar.zst
 
 # SOURCE-FEATURE-OPENSUSE noise-texture boo#1176418 qkzhu@suse.com -- Add noise-texture as the default greeter background, used by patch4.
-Source1:        noise-texture.png
+Source100:      noise-texture.png
 
 # PATCH-FIX-UPSTREAM gnome-shell-private-connection.patch bnc#751211 bgo#646187 dimstar@opensuse.org -- create private connections if the user is not authorized
 Patch1:         gnome-shell-private-connection.patch
@@ -186,6 +186,10 @@ This package contains an optional extensions app for managing GNOME Shell extens
 
 %prep
 %autosetup -N
+pushd subprojects
+tar xf %{SOURCE1}
+mv libgnome-volume-control-0.gitmodule gvc
+popd
 %patch -P 1 -p1
 %patch -P 7 -p1
 %patch -P 8 -p1
@@ -207,7 +211,7 @@ This package contains an optional extensions app for managing GNOME Shell extens
 %patch -P 1013 -p1
 %endif
 
-cp %{SOURCE1} data/theme/
+cp %{SOURCE100} data/theme/
 
 %build
 %meson \
