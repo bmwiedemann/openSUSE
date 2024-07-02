@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul  1 10:32:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.2:
+  + Web: Eliminate chattiness from page-load events from embedded
+    ads.
+  + Web: Fix bug causing Orca to not present certain ARIA dialog
+    titles.
+  + Map xfce4-notifyd to notification-daemon script so that
+    notifications are presented.
+  + Table Navigator: Ensure we set the caret in Writer tables.
+  + LibreOffice: Fix presentation of editable combobox value
+    changes.
+  + General: Fix bug that could cause Orca to not present the new
+    caret location.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Apr  4 08:13:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.1:
