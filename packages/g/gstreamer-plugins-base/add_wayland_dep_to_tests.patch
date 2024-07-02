@@ -1,8 +1,8 @@
-Index: gst-plugins-base-1.22.0/tests/check/meson.build
+Index: gst-plugins-base-1.24.5/tests/check/meson.build
 ===================================================================
---- gst-plugins-base-1.22.0.orig/tests/check/meson.build
-+++ gst-plugins-base-1.22.0/tests/check/meson.build
-@@ -135,7 +135,7 @@ if build_gstgl
+--- gst-plugins-base-1.24.5.orig/tests/check/meson.build
++++ gst-plugins-base-1.24.5/tests/check/meson.build
+@@ -138,7 +138,7 @@ if build_gstgl
    test_defines += ['-DTEST_GST_GL_ABI_CHECK']
  endif
  

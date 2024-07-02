@@ -1,10 +1,10 @@
 https://gitlab.freedesktop.org/gstreamer/gst-plugins-base/-/merge_requests/221
 
-Index: gst-plugins-base-1.22.0/gst-libs/gst/video/video-anc.c
+Index: gst-plugins-base-1.24.5/gst-libs/gst/video/video-anc.c
 ===================================================================
---- gst-plugins-base-1.22.0.orig/gst-libs/gst/video/video-anc.c
-+++ gst-plugins-base-1.22.0/gst-libs/gst/video/video-anc.c
-@@ -1017,6 +1017,8 @@ gst_buffer_add_video_caption_meta (GstBu
+--- gst-plugins-base-1.24.5.orig/gst-libs/gst/video/video-anc.c
++++ gst-plugins-base-1.24.5/gst-libs/gst/video/video-anc.c
+@@ -1022,6 +1022,8 @@ gst_buffer_add_video_caption_meta (GstBu
    switch (caption_type) {
      case GST_VIDEO_CAPTION_TYPE_CEA608_RAW:
      case GST_VIDEO_CAPTION_TYPE_CEA608_S334_1A:
@@ -13,7 +13,7 @@ Index: gst-plugins-base-1.22.0/gst-libs/gst/video/video-anc.c
      case GST_VIDEO_CAPTION_TYPE_CEA708_RAW:
      case GST_VIDEO_CAPTION_TYPE_CEA708_CDP:
        break;
-@@ -1066,6 +1068,10 @@ gst_video_caption_type_from_caps (const
+@@ -1071,6 +1073,10 @@ gst_video_caption_type_from_caps (const
        return GST_VIDEO_CAPTION_TYPE_CEA608_RAW;
      } else if (g_strcmp0 (format, "s334-1a") == 0) {
        return GST_VIDEO_CAPTION_TYPE_CEA608_S334_1A;
@@ -24,7 +24,7 @@ Index: gst-plugins-base-1.22.0/gst-libs/gst/video/video-anc.c
      }
    } else if (gst_structure_has_name (s, "closedcaption/x-cea-708")) {
      if (g_strcmp0 (format, "cc_data") == 0) {
-@@ -1103,6 +1109,14 @@ gst_video_caption_type_to_caps (GstVideo
+@@ -1108,6 +1114,14 @@ gst_video_caption_type_to_caps (GstVideo
        caption_caps = gst_caps_new_simple ("closedcaption/x-cea-608",
            "format", G_TYPE_STRING, "s334-1a", NULL);
        break;
@@ -39,11 +39,11 @@ Index: gst-plugins-base-1.22.0/gst-libs/gst/video/video-anc.c
      case GST_VIDEO_CAPTION_TYPE_CEA708_RAW:
        caption_caps = gst_caps_new_simple ("closedcaption/x-cea-708",
            "format", G_TYPE_STRING, "cc_data", NULL);
-Index: gst-plugins-base-1.22.0/gst-libs/gst/video/video-anc.h
+Index: gst-plugins-base-1.24.5/gst-libs/gst/video/video-anc.h
 ===================================================================
---- gst-plugins-base-1.22.0.orig/gst-libs/gst/video/video-anc.h
-+++ gst-plugins-base-1.22.0/gst-libs/gst/video/video-anc.h
-@@ -345,7 +345,53 @@ GstVideoBarMeta *gst_buffer_add_video_ba
+--- gst-plugins-base-1.24.5.orig/gst-libs/gst/video/video-anc.h
++++ gst-plugins-base-1.24.5/gst-libs/gst/video/video-anc.h
+@@ -490,7 +490,53 @@ GstVideoBarMeta *gst_buffer_add_video_ba
   *      offset relative to the base-line of the original image format (line 9
   *      for 525-line field 1, line 272 for 525-line field 2, line 5 for
   *      625-line field 1 and line 318 for 625-line field 2).
@@ -98,7 +98,7 @@ Index: gst-plugins-base-1.22.0/gst-libs/gst/video/video-anc.h
   *      can also contain 608-in-708 and the first byte of each triplet has to
   *      be inspected for detecting the type.
   * @GST_VIDEO_CAPTION_TYPE_CEA708_CDP: CEA-708 (and optionally CEA-608) in
-@@ -361,7 +407,9 @@ typedef enum {
+@@ -506,7 +552,9 @@ typedef enum {
    GST_VIDEO_CAPTION_TYPE_CEA608_RAW		= 1,
    GST_VIDEO_CAPTION_TYPE_CEA608_S334_1A		= 2,
    GST_VIDEO_CAPTION_TYPE_CEA708_RAW		= 3,
