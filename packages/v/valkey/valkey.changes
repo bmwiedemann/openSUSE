@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 29 17:32:13 UTC 2024 - Neal Gompa <ngompa@opensuse.org>
+
+- Add legacy symlinks for "redis" executables in sbin to fix
+  running valkey in other package test suites using absolute paths
+
+-------------------------------------------------------------------
 Wed Jun 26 06:25:23 UTC 2024 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Repair Redis instance detection (boo#1226986)

@@ -149,6 +149,12 @@ mkdir -p %{buildroot}%{_libdir}/%{name}/modules
 mkdir -p %{buildroot}%{_libexecdir}
 install -pm0755 %{SOURCE11} %{buildroot}%{_libexecdir}/
 
+# Install legacy compatibility paths in sbin
+mkdir -p %{buildroot}%{_sbindir}
+for redisbin in %{buildroot}%{_bindir}/redis-*; do
+ln -sr $redisbin %{buildroot}%{_sbindir}/$(basename $redisbin)
+done
+
 %check
 cat <<EOF
 ---------------------------------------------------
@@ -210,5 +216,6 @@ echo "See %{_docdir}/%{name}/README.SUSE to continue"
 %files compat-redis
 %{_libexecdir}/migrate_redis_to_valkey.bash
 %{_bindir}/redis-*
+%{_sbindir}/redis-*
 
 %changelog

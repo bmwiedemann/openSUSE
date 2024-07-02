@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>1183786</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>10d40df850a38f579260544f5f6ce779</srcmd5>
+    <version>7.2.5</version>
+    <time>1719936936</time>
+    <user>anag+factory</user>
+    <comment>- Add legacy symlinks for &quot;redis&quot; executables in sbin to fix
+  running valkey in other package test suites using absolute paths</comment>
+    <requestid>1184023</requestid>
+  </revision>
 </revisionlist>
