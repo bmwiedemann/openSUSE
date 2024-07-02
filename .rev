@@ -133,4 +133,12 @@
   * Fix a documentation typo</comment>
     <requestid>1077781</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>aa56894d120c710f0e6f4b7b92d406ef</srcmd5>
+    <version>1.5.1</version>
+    <time>1719937055</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.5.1 (no changes for openSUSE)</comment>
+    <requestid>1184348</requestid>
+  </revision>
 </revisionlist>
