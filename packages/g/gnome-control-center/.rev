@@ -2174,4 +2174,21 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1178490</requestid>
   </revision>
+  <revision rev="250" vrev="1">
+    <srcmd5>6fe2b1c9ff0f220bc89d0977ba79d9f1</srcmd5>
+    <version>46.3</version>
+    <time>1719936942</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.3:
+  + CI fixes
+  + Mouse: Make Mouse test click indicator not respond for middle
+    clicks
+  + Network: Reference icon-name proper for wifi panel
+  + Tests: Don't require Xvfb or setxkbmap for tests
+  + Sharing: Make Orca read the &quot;Add Folder&quot; row in Media Sharing
+    settings
+  + Update translations.
+- Refresh patches with quilt. (forwarded request 1183892 from iznogood)</comment>
+    <requestid>1184242</requestid>
+  </revision>
 </revisionlist>

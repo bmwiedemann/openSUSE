@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 28 20:33:21 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 46.3:
+  + CI fixes
+  + Mouse: Make Mouse test click indicator not respond for middle
+    clicks
+  + Network: Reference icon-name proper for wifi panel
+  + Tests: Don't require Xvfb or setxkbmap for tests
+  + Sharing: Make Orca read the "Add Folder" row in Media Sharing
+    settings
+  + Update translations.
+- Refresh patches with quilt.
+
+-------------------------------------------------------------------
 Tue Jun  4 09:31:03 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Update gnome-control-center-disable-error-message-for-NM.patch:

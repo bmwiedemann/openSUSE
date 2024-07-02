@@ -1,7 +1,8 @@
-diff -uraBN temp/gnome-control-center-45.1/panels/network/cc-network-panel.c gnome-control-center-45.1/panels/network/cc-network-panel.c
---- temp/gnome-control-center-45.1/panels/network/cc-network-panel.c	2023-10-27 14:56:16.289319792 +0800
-+++ gnome-control-center-45.1/panels/network/cc-network-panel.c	2023-10-27 15:42:47.030395835 +0800
-@@ -653,10 +653,24 @@
+Index: gnome-control-center-46.3/panels/network/cc-network-panel.c
+===================================================================
+--- gnome-control-center-46.3.orig/panels/network/cc-network-panel.c
++++ gnome-control-center-46.3/panels/network/cc-network-panel.c
+@@ -667,10 +667,24 @@ static void
  panel_check_network_manager_version (CcNetworkPanel *self)
  {
          const gchar *version;
@@ -27,7 +28,7 @@ diff -uraBN temp/gnome-control-center-45.1/panels/network/cc-network-panel.c gno
                  GtkWidget *status_page;
  
                  status_page = adw_status_page_new ();
-@@ -667,10 +681,23 @@
+@@ -681,10 +695,23 @@ panel_check_network_manager_version (CcN
                  adw_status_page_set_description (ADW_STATUS_PAGE (status_page),
                                                   _("An error has occurred and network cannot be used."
                                                     "\n Error details: NetworkManager not running."));
@@ -51,10 +52,11 @@ diff -uraBN temp/gnome-control-center-45.1/panels/network/cc-network-panel.c gno
  }
  
  static void
-diff -uraBN temp/gnome-control-center-45.1/panels/network/cc-wifi-panel.c gnome-control-center-45.1/panels/network/cc-wifi-panel.c
---- temp/gnome-control-center-45.1/panels/network/cc-wifi-panel.c	2023-10-27 14:56:16.292653165 +0800
-+++ gnome-control-center-45.1/panels/network/cc-wifi-panel.c	2023-10-27 15:05:30.805703042 +0800
-@@ -298,21 +298,41 @@
+Index: gnome-control-center-46.3/panels/network/cc-wifi-panel.c
+===================================================================
+--- gnome-control-center-46.3.orig/panels/network/cc-wifi-panel.c
++++ gnome-control-center-46.3/panels/network/cc-wifi-panel.c
+@@ -298,21 +298,41 @@ static void
  check_main_stack_page (CcWifiPanel *self)
  {
    const gchar *nm_version;
@@ -97,9 +99,10 @@ diff -uraBN temp/gnome-control-center-45.1/panels/network/cc-wifi-panel.c gnome-
  }
  
  static void
-diff -uraBN temp/gnome-control-center-45.1/panels/network/cc-wifi-panel.ui gnome-control-center-45.1/panels/network/cc-wifi-panel.ui
---- temp/gnome-control-center-45.1/panels/network/cc-wifi-panel.ui	2023-10-27 14:56:16.292653165 +0800
-+++ gnome-control-center-45.1/panels/network/cc-wifi-panel.ui	2023-10-27 14:49:00.914031545 +0800
+Index: gnome-control-center-46.3/panels/network/cc-wifi-panel.ui
+===================================================================
+--- gnome-control-center-46.3.orig/panels/network/cc-wifi-panel.ui
++++ gnome-control-center-46.3/panels/network/cc-wifi-panel.ui
 @@ -197,6 +197,51 @@
                          </property>
                        </object>
@@ -152,10 +155,12 @@ diff -uraBN temp/gnome-control-center-45.1/panels/network/cc-wifi-panel.ui gnome
                    </object>
                  </child>
                </object>
-diff -uraBN temp/gnome-control-center-45.1/tests/meson.build gnome-control-center-45.1/tests/meson.build
---- temp/gnome-control-center-45.1/tests/meson.build	2023-10-27 14:56:16.545989479 +0800
-+++ gnome-control-center-45.1/tests/meson.build	2023-10-27 14:49:56.034724339 +0800
-@@ -1,8 +1,11 @@
+Index: gnome-control-center-46.3/tests/meson.build
+===================================================================
+--- gnome-control-center-46.3.orig/tests/meson.build
++++ gnome-control-center-46.3/tests/meson.build
+@@ -3,9 +3,12 @@ Xvfb = find_program('Xvfb', required: fa
+ 
  subdir('common')
  #subdir('datetime')
 +# Disable tests for network panel, boo#1128195

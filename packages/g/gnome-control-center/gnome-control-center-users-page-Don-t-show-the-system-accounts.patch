@@ -10,11 +10,11 @@ Fixes https://gitlab.gnome.org/GNOME/gnome-control-center/-/issues/3066
  panels/system/users/cc-users-page.c | 4 ++++
  1 file changed, 4 insertions(+)
 
-diff --git a/panels/system/users/cc-users-page.c b/panels/system/users/cc-users-page.c
-index 56dd0e007..0d487558a 100644
---- a/panels/system/users/cc-users-page.c
-+++ b/panels/system/users/cc-users-page.c
-@@ -168,6 +168,10 @@ on_user_added (CcUsersPage *self,
+Index: gnome-control-center-46.3/panels/system/users/cc-users-page.c
+===================================================================
+--- gnome-control-center-46.3.orig/panels/system/users/cc-users-page.c
++++ gnome-control-center-46.3/panels/system/users/cc-users-page.c
+@@ -172,6 +172,10 @@ on_user_added (CcUsersPage *self,
    CcUserPage *page;
    g_list_store_insert_sorted (self->model, user, sort_users, self);
  
@@ -25,6 +25,3 @@ index 56dd0e007..0d487558a 100644
    page = CC_USER_PAGE (adw_navigation_view_get_visible_page (self->navigation));
    if (page != self->current_user_page)
      return;
--- 
-2.45.1
-
