@@ -1,7 +1,7 @@
 #
 # spec file for package gap-laguna
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-laguna
-Version:        3.9.6
+Version:        3.9.7
 Release:        0
 Summary:        GAP: Lie AlGebras and UNits of group Algebras
 License:        GPL-2.0-or-later
