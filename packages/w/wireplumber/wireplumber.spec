@@ -22,7 +22,7 @@
 %define sover 0
 %define libwireplumber libwireplumber-%{apiver_str}-%{sover}
 Name:           wireplumber
-Version:        0.5.4+git2.96dc045
+Version:        0.5.5
 Release:        0
 Summary:        Session / policy manager implementation for PipeWire
 License:        MIT
@@ -150,6 +150,7 @@ Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       zsh
 Supplements:    (wireplumber and zsh)
+BuildArch:      noarch
 
 %description zsh-completion
 Optional dependency offering zsh completion for various wpctl parameters.

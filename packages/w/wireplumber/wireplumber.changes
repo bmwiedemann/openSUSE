@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul  2 08:14:44 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.5.5:
+  * Highlights:
+    - Hotfix release to address crashes in the Bluetooth HSP/HFP
+      autoswitch functionality that were side-effects of some
+      changes that were part of the role-based linking policy
+      (#682)
+  * Improvements:
+    - wpctl will now properly show a '*' in front of sink filters
+      when they are selected as the default sink (!660) 
+
+-------------------------------------------------------------------
 Fri Jun 28 06:01:56 UTC 2024 - alarrosa@suse.com
 
 - Update to version 0.5.4+git2.96dc045:
