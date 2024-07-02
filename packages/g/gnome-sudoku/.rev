@@ -430,4 +430,14 @@
   + Fix print button not displaying. (forwarded request 1179613 from dimstar)</comment>
     <requestid>1179669</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>a7f6c4188f74dd3abccedc6925b3ca90</srcmd5>
+    <version>46.3</version>
+    <time>1719936992</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.3:
+  + Fix GTK allocation warnings.
+  + Remove option show-possible-values from --help. (forwarded request 1183894 from iznogood)</comment>
+    <requestid>1184244</requestid>
+  </revision>
 </revisionlist>

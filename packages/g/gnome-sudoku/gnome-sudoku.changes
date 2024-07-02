@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 28 21:00:42 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 46.3:
+  + Fix GTK allocation warnings.
+  + Remove option show-possible-values from --help.
+
+-------------------------------------------------------------------
 Mon Jun 10 06:49:48 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.2:
