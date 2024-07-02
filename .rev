@@ -789,4 +789,12 @@
     <comment>security update Tryton issue #13142</comment>
     <requestid>1172363</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>14bdff680f5d659951d8eb2ab7ca712c</srcmd5>
+    <version>6.0.48</version>
+    <time>1719937157</time>
+    <user>anag+factory</user>
+    <comment>bugfix version</comment>
+    <requestid>1184805</requestid>
+  </revision>
 </revisionlist>
