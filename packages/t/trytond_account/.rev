@@ -430,4 +430,12 @@
     <comment>bugfix and security update</comment>
     <requestid>1175213</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>436d62ed4871988b253df678ee9762ec</srcmd5>
+    <version>6.0.26</version>
+    <time>1719937156</time>
+    <user>anag+factory</user>
+    <comment>bugfix version</comment>
+    <requestid>1184804</requestid>
+  </revision>
 </revisionlist>
