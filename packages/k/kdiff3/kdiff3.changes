@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul  1 09:25:11 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.11.2
+  * Fixed encoding handling for non-UTF encodings
+  * Fixed encoding detection for lower case 'HTML' and 'XML' tags
+
+-------------------------------------------------------------------
 Tue May 21 07:39:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.11.1.
