@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 25 04:12:39 UTC 2024 - Dennis Tseng <dennis.tseng@suse.com>
+
+- Update asc files of shim-15.8 after being signed back from 
+  Microsoft, including:
+  signature-opensuse.x86_64.asc,
+  signature-opensuse.aarch64.asc,
+  signature-sles.x86_64.asc,
+  signature-sles.aarch64.asc.
+
+- Enable aarch64 signature comparison which was disabled temporarily
+  before. Now, we got a real one. So it is enabled again.  
+
+-------------------------------------------------------------------
 Tue Apr  2 03:09:15 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Introduce %shim_use_fde_tpm_helper macro so that the project

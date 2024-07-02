@@ -192,7 +192,8 @@ for suffix in "${suffixes[@]}"; do
 	# AArch64 signature
 	# Disable AArch64 signature attachment temporarily
 	# until we get a real one.
-	#signature=%{SOURCE12}
+        # Now, we got a real one. So enable it again.
+	signature=%{SOURCE12}
 %endif
     elif test "$suffix" = "sles"; then
 	cert=%{SOURCE4}
