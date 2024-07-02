@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  1 07:25:08 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve improper __DATE__ replacement [boo#1226829]
+
+-------------------------------------------------------------------
 Fri May 17 22:04:47 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Delete gzdoom-waddir.patch (substitute by logic in build recipe),

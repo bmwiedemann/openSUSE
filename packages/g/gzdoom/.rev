@@ -287,4 +287,12 @@ and that one is GPL3.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1176784</requestid>
   </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>def298abd4bf0cf70a009bd41b3b75a8</srcmd5>
+    <version>4.12.2</version>
+    <time>1719937003</time>
+    <user>anag+factory</user>
+    <comment>- Resolve improper __DATE__ replacement [boo#1226829]</comment>
+    <requestid>1184209</requestid>
+  </revision>
 </revisionlist>

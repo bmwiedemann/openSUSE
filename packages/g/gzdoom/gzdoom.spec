@@ -84,7 +84,7 @@ SSE2 is a hard requirement even on 32-bit x86.
 # osc/rpm always has the version identifier (only has an effect when snapshots are used via _service files)
 perl -i -pe "s{<unknown version>}{%version}g" tools/updaterevision/UpdateRevision.cmake
 # https://en.opensuse.org/openSUSE:Reproducible_Builds
-perl -i -pe "s{__DATE__}{$SOURCE_DATE_EPOCH}g" src/common/platform/posix/sdl/i_main.cpp
+perl -i -pe 's{__DATE__}{"'"$SOURCE_DATE_EPOCH"'"}g' src/common/platform/posix/sdl/i_main.cpp
 
 %build
 # Disable LTO, which does not like seeing handcrafted assembler
