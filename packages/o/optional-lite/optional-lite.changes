@@ -1,0 +1,82 @@
+-------------------------------------------------------------------
+Tue Jun 25 23:55:42 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 3.6.0:
+  Additions
+  * Add non-standard value_or_eval()
+  * Add [[nodiscard]] to relational operators
+  * Add GitHub Actions CI and badge for it
+  Changes
+  * Update actions/checkout in GitHub Actions to v4
+  * Add/update example/CMakeLists.txt
+  * Remove gcc 8 and clang 8, 9, 10 from GitHub CI matrix
+  * Add common CMake generated files to gitignore
+  * Remove Travis CI configuration and badge
+  * Remove msvc
+  * Add msvc
+  * Do not cancel all jobs in a workflow if one fails
+  * Use toplevel unit_name
+  * Update CMakeLists.txt for examples
+  * Change value used with *_CPP20_OR_GREATER to 202002L
+  * Prevent undefined _HAS_EXCEPTIONS warning with Clang
+  * Use ternary operator and C++11 constexpr
+  * Use optional_constexpr14 with value_or_eval()
+  * Accommodate VS2013/MSVC12.0/1800 and earlier
+  * Update Readme guided by markdownlint
+  * In Readme, update test specification, add folding
+  * In Readme, correct URLs for reference [10] Generic:
+    Discriminated Unions
+  * In Readme, add Daniela Engert's Boost20.optional to section
+    Other implementations of optional
+  Fixes
+  * Fix to use forwarding reference
+  * Fix some typos
+  * Fix construction, emplace from const types
+  * Fix cmake config file to use @package_nspace@
+- Updates from 3.5.0:
+  Additions
+  * Add script tc-cl.bat
+  * Add macro optional_static_assert() and compile-time checks
+  * Add PlatformIO library manifest file library.json
+  * Add export() to CMakeLists.txt enabling importing targets. See
+    nonstd-lite-project issues 50
+  Changes
+  * Enhance in-place construction
+  * Change to use #if defined(_MSC_VER) to avoid -Wundef warning
+  * Change usage of =default with test structures to VS2015 for
+  * Handle lest test framework as system include to prevent
+    warnings
+  Fixes
+  * Fix value_or() from changing stored value
+- Updates from 3.4.0:
+  * This release of optional lite fixes direct initialization of an
+    optional with C++11 and later
+- Updates from 3.3.0:
+  Additions
+Add tweak header support
+  Changes
+  * Add .editorconfig
+  * Add TortoiseGit integration with GitHub issues
+  * Add build folder and IDE folders/files to .gitignore
+  * Change vcpkg install to use CMake
+  * Change badge 'on conan' to refer to conan-center
+  * Improve section on Conan in Readme
+  * Remove no longer used struct enabler
+  * Special-case usage of ref qualifiers for GNUC 4.8
+  * Update list of known good compilers
+  * Add settings options to conanfile
+  * Add Visual Studio 2019 to the Appveyor build matrix, nonstd
+    lite project
+  * Add badge 'on godbolt', nonstd-lite-project
+  * Improve MSVC version table, nonstd-lite-project
+  Fixes
+  * Handle presence of various C++11 type traits
+  * Change requires() to use a default template argument
+  * Fix optional_HAVE_INITIALIZER_LIST is undefined
+  * Fix compilation with exceptions disabled
+  * Fix compilation of examples by adding CMakeLists.txt
+
+-------------------------------------------------------------------
+Thu May  7 16:50:39 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package

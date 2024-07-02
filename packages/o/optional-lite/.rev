@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b008c5503aa2ef54e2030c73494a025a</srcmd5>
+    <version>3.6.0</version>
+    <time>1719937050</time>
+    <user>anag+factory</user>
+    <comment>I'm working on removing vendored libraries from newsboat and this is required. I want to maintain this in Factory.</comment>
+    <requestid>1184334</requestid>
+  </revision>
+</revisionlist>
