@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun 22 10:14:50 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update tasty-hunit to version 0.10.2.
+  Version 0.10.2
+  --------------
+
+  * Teach `testCaseSteps` to log progress
+    ([#387](https://github.com/UnkindPartition/tasty/pull/387)).
+
+-------------------------------------------------------------------
 Sun Sep 10 00:12:48 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update tasty-hunit to version 0.10.1.
