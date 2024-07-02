@@ -19,4 +19,16 @@
   * templ.py: Fix Kbuild file generation</comment>
     <requestid>1183719</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>99afa941ce4280b93149ce9d1def25a4</srcmd5>
+    <version>0~20240701.f72b4a1</version>
+    <time>1719937084</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0~20240701.f72b4a1:
+  * config: Show kernel version when configuration entries diverge
+  * Add man page for klp-build
+  * ksrc: Remove MIME-Version string from upstream commit subject
+- Install man page</comment>
+    <requestid>1184788</requestid>
+  </revision>
 </revisionlist>

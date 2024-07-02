@@ -18,7 +18,7 @@
 
 %{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
 Name:           klp-build
-Version:        0~20240627.48ed241
+Version:        0~20240701.f72b4a1
 Release:        0
 Summary:        The kernel livepatching creation tool
 License:        GPL-2.0-only
@@ -51,6 +51,8 @@ rm -rf %{buildroot}/%{python_sitelib}/scripts/
 # Lets install the script to bindir so we can call it
 # {python_sitelib}/scripts is not specific enough
 cp scripts/run-kgr-test.sh %{buildroot}%{_bindir}/
+mkdir -p %{buildroot}%{_mandir}/man1
+cp klp-build.1 %{buildroot}%{_mandir}/man1/
 %fdupes  %{buildroot}
 
 %files
@@ -60,5 +62,6 @@ cp scripts/run-kgr-test.sh %{buildroot}%{_bindir}/
 %{python_sitelib}/klpbuild
 %{python_sitelib}/klp_build-0.0.1-py3.11.egg-info/
 %{_bindir}/run-kgr-test.sh
+%{_mandir}/man1/klp-build.1%{?ext_man}
 
 %changelog

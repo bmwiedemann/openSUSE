@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 02 07:46:00 UTC 2024 - mvetter@suse.com
+
+- Update to version 0~20240701.f72b4a1:
+  * config: Show kernel version when configuration entries diverge
+  * Add man page for klp-build
+  * ksrc: Remove MIME-Version string from upstream commit subject
+- Install man page
+
+-------------------------------------------------------------------
 Fri Jun 28 05:18:20 UTC 2024 - mvetter@suse.com
 
 - Update to version 0~20240627.48ed241:
