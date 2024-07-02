@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 01 17:23:25 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1719838742.4815a51:
+  * baseclass: Explicitly log retry interval for SSH console
+  * Refactor: generate python bindings from template
+  * Add lockapi.py
+  * Add mmapi.py
+  * Wrap README text consistently at 80 characters
+  * Fix typo in README
+  * backend/qemu.pm: Fix typo: It's riscv64, not risv64
+  * ustreamer: restrict to aarch64 and x86_64
+
+-------------------------------------------------------------------
 Tue Jun 25 14:09:06 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1719324538.dc98b76:
