@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 27 11:43:32 UTC 2024 - chris@computersalat.de
+
+- fix for bnc#1227092
+  * Add WorkingDirectory= to unit file
+- Add further Variables to unit file
+  +ProtectSystem=full
+  +ProtectControlGroups=true
+  +ReadWritePaths=-$BOINC_BOINC_DIR
+- rebase patches
+  * boinc-docbook2x.patch
+  * build-client-scripts.patch
+  * libboinc-shared.patch
+  * xlocale.patch
+
+-------------------------------------------------------------------
 Sun May 26 21:39:07 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.0.2

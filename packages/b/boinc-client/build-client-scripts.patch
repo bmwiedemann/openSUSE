@@ -1,5 +1,7 @@
---- a/client/scripts/Makefile.am
-+++ b/client/scripts/Makefile.am
+Index: client/scripts/Makefile.am
+===================================================================
+--- client/scripts/Makefile.am.orig
++++ client/scripts/Makefile.am
 @@ -1,5 +1,7 @@
  ## -*- mode: makefile; tab-width: 4 -*-
  

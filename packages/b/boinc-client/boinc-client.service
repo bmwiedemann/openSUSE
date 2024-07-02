@@ -9,6 +9,10 @@ EnvironmentFile=-/etc/sysconfig/boinc-client
 Nice=10
 User=boinc
 ProtectHome=true
+ProtectSystem=full
+ProtectControlGroups=true
+ReadWritePaths=-$BOINC_BOINC_DIR
+WorkingDirectory=$BOINC_BOINC_DIR
 CPUSchedulingPolicy=batch
 Slice=background.slice
 ### boinc logs (with --redirectio) to stdoutdae.txt and stderrdae.txt

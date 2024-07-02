@@ -138,7 +138,7 @@ This package contains development files for libboinc.
 
 %prep
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-%autosetup -p1 -n %{name}_release-%{minor_version}-%{version} -D
+%autosetup -p0 -n %{name}_release-%{minor_version}-%{version} -D
 
 %build
 # Fix default path for boincscr

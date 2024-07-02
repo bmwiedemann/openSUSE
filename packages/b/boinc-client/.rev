@@ -507,4 +507,12 @@ replace plaintext widget with mini-html widget (forwarded request 522296 from je
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1178194</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>d32e8eb5ebd0bd5843a774d766d39349</srcmd5>
+    <version>8.0.2</version>
+    <time>1719937066</time>
+    <user>anag+factory</user>
+    <comment>fix for bnc#1227092 (forwarded request 1184356 from computersalat)</comment>
+    <requestid>1184357</requestid>
+  </revision>
 </revisionlist>
