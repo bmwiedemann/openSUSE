@@ -1,7 +1,7 @@
 #
 # spec file for package osinfo-db-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        LGPL-2.1+ and GPL-2.0+
 Group:          System/Management
 Url:            https://releases.pagure.org/libosinfo/
 Source:         https://releases.pagure.org/libosinfo/%{name}-%{version}.tar.xz
+Patch1:         001-Make-xmlError-structs-constant.patch
 BuildRequires:  gettext-devel
 BuildRequires:  glib2-devel
 BuildRequires:  json-glib-devel
@@ -40,7 +41,7 @@ This package provides tools for managing the osinfo database of
 information about operating systems for use with virtualization
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson

@@ -111,4 +111,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1131675</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>4320f5b40fd6819318ba1ed773c3844f</srcmd5>
+    <version>1.11.0</version>
+    <time>1719936898</time>
+    <user>anag+factory</user>
+    <comment>Fix for bsc#1225908 - Package osinfo-db-tools does not build with gcc14</comment>
+    <requestid>1184376</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul  1 13:35:02 MDT 2024 - carnold@suse.com
+
+- bsc#1225908 - Package osinfo-db-tools does not build with gcc14
+  because of new errors
+  001-Make-xmlError-structs-constant.patch
+
+-------------------------------------------------------------------
 Mon Nov 13 13:56:39 MST 2023 - carnold@suse.com
 
 - Update to version 1.11.0 (jsc#PED-6305)
