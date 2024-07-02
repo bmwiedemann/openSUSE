@@ -1,7 +1,8 @@
-From 6b9bbebbdc3a8b35f898a269227f36a36590359e Mon Sep 17 00:00:00 2001
+From 2a94e19b00434fe4d7ab858a6cdcff6364f6e408 Mon Sep 17 00:00:00 2001
 From: Alynx Zhou <alynx.zhou@gmail.com>
 Date: Wed, 15 May 2024 00:07:41 +0800
-Subject: [PATCH] wayland/text-input-v1: Implement basic text-input-v1 support
+Subject: [PATCH 2/2] wayland/text-input-v1: Implement basic text-input-v1
+ support
 
 This commit makes input methods work in text-input-v1 only clients
 (mostly Chromium/Electron based apps with Ozone Wayland), which is
@@ -24,10 +25,10 @@ Closes <https://gitlab.gnome.org/GNOME/mutter/-/issues/3200>.
  create mode 100644 src/wayland/meta-wayland-text-input-v1.c
  create mode 100644 src/wayland/meta-wayland-text-input-v1.h
 
-diff --git a/clutter/clutter/clutter-enums.h b/clutter/clutter/clutter-enums.h
-index 45956bf57..8198e7351 100644
---- a/clutter/clutter/clutter-enums.h
-+++ b/clutter/clutter/clutter-enums.h
+Index: mutter-46.3/clutter/clutter/clutter-enums.h
+===================================================================
+--- mutter-46.3.orig/clutter/clutter/clutter-enums.h
++++ mutter-46.3/clutter/clutter/clutter-enums.h
 @@ -1183,6 +1183,9 @@ typedef enum
    CLUTTER_INPUT_CONTENT_HINT_SENSITIVE_DATA      = 1 << 7,
    CLUTTER_INPUT_CONTENT_HINT_LATIN               = 1 << 8,
@@ -38,11 +39,11 @@ index 45956bf57..8198e7351 100644
  } ClutterInputContentHintFlags;
  
  typedef enum
-diff --git a/src/core/events.c b/src/core/events.c
-index 4261bfb98..35b94e187 100644
---- a/src/core/events.c
-+++ b/src/core/events.c
-@@ -238,6 +238,7 @@ meta_display_handle_event (MetaDisplay        *display,
+Index: mutter-46.3/src/core/events.c
+===================================================================
+--- mutter-46.3.orig/src/core/events.c
++++ mutter-46.3/src/core/events.c
+@@ -238,6 +238,7 @@ meta_display_handle_event (MetaDisplay
  #ifdef HAVE_WAYLAND
    MetaWaylandCompositor *wayland_compositor;
    MetaWaylandTextInput *wayland_text_input = NULL;
@@ -50,7 +51,7 @@ index 4261bfb98..35b94e187 100644
  #endif
  
  #ifdef HAVE_WAYLAND
-@@ -246,6 +247,8 @@ meta_display_handle_event (MetaDisplay        *display,
+@@ -246,6 +247,8 @@ meta_display_handle_event (MetaDisplay
      {
        wayland_text_input =
          meta_wayland_compositor_get_text_input (wayland_compositor);
@@ -59,15 +60,14 @@ index 4261bfb98..35b94e187 100644
      }
  #endif
  
-@@ -287,10 +290,12 @@ meta_display_handle_event (MetaDisplay        *display,
+@@ -287,9 +290,11 @@ meta_display_handle_event (MetaDisplay
      }
  
  #ifdef HAVE_WAYLAND
 -  if (wayland_text_input &&
--      !has_grab &&
-+  if (!has_grab &&
-       !meta_compositor_get_current_window_drag (compositor) &&
+-      !meta_compositor_get_current_window_drag (compositor) &&
 -      meta_wayland_text_input_update (wayland_text_input, event))
++  if (!meta_compositor_get_current_window_drag (compositor) &&
 +      ((wayland_text_input &&
 +        meta_wayland_text_input_update (wayland_text_input, event)) ||
 +       (wayland_text_input_v1 &&
@@ -75,11 +75,11 @@ index 4261bfb98..35b94e187 100644
      return CLUTTER_EVENT_STOP;
  
    if (wayland_compositor)
-diff --git a/src/meson.build b/src/meson.build
-index 3060b2880..12a249c54 100644
---- a/src/meson.build
-+++ b/src/meson.build
-@@ -687,6 +687,8 @@ if have_wayland
+Index: mutter-46.3/src/meson.build
+===================================================================
+--- mutter-46.3.orig/src/meson.build
++++ mutter-46.3/src/meson.build
+@@ -688,6 +688,8 @@ if have_wayland
      'wayland/meta-wayland-tablet-tool.h',
      'wayland/meta-wayland-text-input.c',
      'wayland/meta-wayland-text-input.h',
@@ -88,7 +88,7 @@ index 3060b2880..12a249c54 100644
      'wayland/meta-wayland-touch.c',
      'wayland/meta-wayland-touch.h',
      'wayland/meta-wayland-transaction.c',
-@@ -1075,6 +1077,7 @@ if have_wayland
+@@ -1084,6 +1086,7 @@ if have_wayland
      ['single-pixel-buffer', 'staging', 'v1', ],
      ['tablet', 'unstable', 'v2', ],
      ['text-input', 'unstable', 'v3', ],
@@ -96,19 +96,19 @@ index 3060b2880..12a249c54 100644
      ['viewporter', 'stable', ],
      ['xdg-activation', 'staging', 'v1', ],
      ['xdg-foreign', 'unstable', 'v1', ],
-diff --git a/src/wayland/meta-wayland-seat.c b/src/wayland/meta-wayland-seat.c
-index f8d58a612..fca0b346d 100644
---- a/src/wayland/meta-wayland-seat.c
-+++ b/src/wayland/meta-wayland-seat.c
-@@ -228,6 +228,7 @@ default_focus (MetaWaylandEventHandler *handler,
-       meta_wayland_data_device_primary_sync_focus (&seat->primary_data_device);
+Index: mutter-46.3/src/wayland/meta-wayland-seat.c
+===================================================================
+--- mutter-46.3.orig/src/wayland/meta-wayland-seat.c
++++ mutter-46.3/src/wayland/meta-wayland-seat.c
+@@ -229,6 +229,7 @@ default_focus (MetaWaylandEventHandler *
+                                                   surface);
        meta_wayland_tablet_seat_set_pad_focus (seat->tablet_seat, surface);
        meta_wayland_text_input_set_focus (seat->text_input, surface);
 +      /* text-input-v1 will set focused surface on activate. */
      }
  
    if (caps & CLUTTER_INPUT_CAPABILITY_TABLET_TOOL)
-@@ -289,6 +290,8 @@ meta_wayland_seat_new (MetaWaylandCompositor *compositor,
+@@ -290,6 +291,8 @@ meta_wayland_seat_new (MetaWaylandCompos
                                NULL);
  
    seat->text_input = meta_wayland_text_input_new (seat);
@@ -117,7 +117,7 @@ index f8d58a612..fca0b346d 100644
  
    meta_wayland_data_device_init (&seat->data_device, seat);
    meta_wayland_data_device_primary_init (&seat->primary_data_device, seat);
-@@ -337,6 +340,7 @@ meta_wayland_seat_free (MetaWaylandSeat *seat)
+@@ -338,6 +341,7 @@ meta_wayland_seat_free (MetaWaylandSeat
    g_object_unref (seat->touch);
  
    meta_wayland_text_input_destroy (seat->text_input);
@@ -125,7 +125,7 @@ index f8d58a612..fca0b346d 100644
  
    g_free (seat);
  }
-@@ -477,7 +481,10 @@ meta_wayland_seat_handle_event_internal (MetaWaylandSeat    *seat,
+@@ -478,7 +482,10 @@ meta_wayland_seat_handle_event_internal
    if (event_type == CLUTTER_BUTTON_PRESS ||
        event_type == CLUTTER_TOUCH_BEGIN)
      {
@@ -137,7 +137,7 @@ index f8d58a612..fca0b346d 100644
      }
  
    switch (event_type)
-@@ -509,7 +516,8 @@ meta_wayland_seat_handle_event_internal (MetaWaylandSeat    *seat,
+@@ -510,7 +517,8 @@ meta_wayland_seat_handle_event_internal
      case CLUTTER_IM_COMMIT:
      case CLUTTER_IM_DELETE:
      case CLUTTER_IM_PREEDIT:
@@ -147,10 +147,10 @@ index f8d58a612..fca0b346d 100644
          return TRUE;
  
        break;
-diff --git a/src/wayland/meta-wayland-seat.h b/src/wayland/meta-wayland-seat.h
-index 169a92e4e..10633b029 100644
---- a/src/wayland/meta-wayland-seat.h
-+++ b/src/wayland/meta-wayland-seat.h
+Index: mutter-46.3/src/wayland/meta-wayland-seat.h
+===================================================================
+--- mutter-46.3.orig/src/wayland/meta-wayland-seat.h
++++ mutter-46.3/src/wayland/meta-wayland-seat.h
 @@ -30,6 +30,7 @@
  #include "wayland/meta-wayland-pointer.h"
  #include "wayland/meta-wayland-tablet-tool.h"
@@ -167,11 +167,10 @@ index 169a92e4e..10633b029 100644
  
    MetaWaylandInput *input_handler;
    MetaWaylandEventHandler *default_handler;
-diff --git a/src/wayland/meta-wayland-text-input-v1.c b/src/wayland/meta-wayland-text-input-v1.c
-new file mode 100644
-index 000000000..1826a4ff4
+Index: mutter-46.3/src/wayland/meta-wayland-text-input-v1.c
+===================================================================
 --- /dev/null
-+++ b/src/wayland/meta-wayland-text-input-v1.c
++++ mutter-46.3/src/wayland/meta-wayland-text-input-v1.c
 @@ -0,0 +1,859 @@
 +/*
 + * Copyright (C) 2024 SUSE LLC
@@ -1032,11 +1031,10 @@ index 000000000..1826a4ff4
 +
 +  return retval;
 +}
-diff --git a/src/wayland/meta-wayland-text-input-v1.h b/src/wayland/meta-wayland-text-input-v1.h
-new file mode 100644
-index 000000000..79b1c0a54
+Index: mutter-46.3/src/wayland/meta-wayland-text-input-v1.h
+===================================================================
 --- /dev/null
-+++ b/src/wayland/meta-wayland-text-input-v1.h
++++ mutter-46.3/src/wayland/meta-wayland-text-input-v1.h
 @@ -0,0 +1,38 @@
 +/*
 + * Copyright (C) 2024 SUSE LLC
@@ -1076,10 +1074,10 @@ index 000000000..79b1c0a54
 +
 +gboolean meta_wayland_text_input_v1_handle_event (MetaWaylandTextInputV1 *text_input,
 +                                                  const ClutterEvent     *event);
-diff --git a/src/wayland/meta-wayland-versions.h b/src/wayland/meta-wayland-versions.h
-index 900f30d78..a77b81461 100644
---- a/src/wayland/meta-wayland-versions.h
-+++ b/src/wayland/meta-wayland-versions.h
+Index: mutter-46.3/src/wayland/meta-wayland-versions.h
+===================================================================
+--- mutter-46.3.orig/src/wayland/meta-wayland-versions.h
++++ mutter-46.3/src/wayland/meta-wayland-versions.h
 @@ -49,6 +49,7 @@
  #define META_ZXDG_OUTPUT_V1_VERSION         3
  #define META_ZWP_XWAYLAND_KEYBOARD_GRAB_V1_VERSION 1
@@ -1088,11 +1086,11 @@ index 900f30d78..a77b81461 100644
  #define META_WP_VIEWPORTER_VERSION          1
  #define META_ZWP_PRIMARY_SELECTION_V1_VERSION 1
  #define META_WP_PRESENTATION_VERSION        1
-diff --git a/src/wayland/meta-wayland.c b/src/wayland/meta-wayland.c
-index 501b69a91..0114823c1 100644
---- a/src/wayland/meta-wayland.c
-+++ b/src/wayland/meta-wayland.c
-@@ -865,6 +865,7 @@ meta_wayland_compositor_new (MetaContext *context)
+Index: mutter-46.3/src/wayland/meta-wayland.c
+===================================================================
+--- mutter-46.3.orig/src/wayland/meta-wayland.c
++++ mutter-46.3/src/wayland/meta-wayland.c
+@@ -865,6 +865,7 @@ meta_wayland_compositor_new (MetaContext
    meta_wayland_keyboard_shortcuts_inhibit_init (compositor);
    meta_wayland_surface_inhibit_shortcuts_dialog_init ();
    meta_wayland_text_input_init (compositor);
@@ -1100,7 +1098,7 @@ index 501b69a91..0114823c1 100644
    meta_wayland_init_presentation_time (compositor);
    meta_wayland_activation_init (compositor);
    meta_wayland_transaction_init (compositor);
-@@ -1124,6 +1125,12 @@ meta_wayland_compositor_get_text_input (MetaWaylandCompositor *compositor)
+@@ -1124,6 +1125,12 @@ meta_wayland_compositor_get_text_input (
    return compositor->seat->text_input;
  }
  
@@ -1113,10 +1111,10 @@ index 501b69a91..0114823c1 100644
  static void
  meta_wayland_compositor_update_focus (MetaWaylandCompositor *compositor,
                                        MetaWindow            *window)
-diff --git a/src/wayland/meta-wayland.h b/src/wayland/meta-wayland.h
-index 0a0476eba..c23e82cdc 100644
---- a/src/wayland/meta-wayland.h
-+++ b/src/wayland/meta-wayland.h
+Index: mutter-46.3/src/wayland/meta-wayland.h
+===================================================================
+--- mutter-46.3.orig/src/wayland/meta-wayland.h
++++ mutter-46.3/src/wayland/meta-wayland.h
 @@ -26,6 +26,7 @@
  #include "meta/types.h"
  #include "meta/meta-wayland-compositor.h"
@@ -1125,7 +1123,7 @@ index 0a0476eba..c23e82cdc 100644
  #include "wayland/meta-wayland-types.h"
  
  META_EXPORT_TEST
-@@ -88,6 +89,7 @@ void                    meta_wayland_compositor_schedule_surface_association (Me
+@@ -88,6 +89,7 @@ void                    meta_wayland_com
                                                                                MetaWindow            *window);
  
  MetaWaylandTextInput *  meta_wayland_compositor_get_text_input (MetaWaylandCompositor *compositor);
@@ -1133,6 +1131,3 @@ index 0a0476eba..c23e82cdc 100644
  
  #ifdef HAVE_XWAYLAND
  void                    meta_wayland_compositor_notify_surface_id (MetaWaylandCompositor *compositor,
--- 
-2.45.0
-

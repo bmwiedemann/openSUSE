@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jun 30 08:50:32 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 46.3:
+  + Fix performance issues with second virtual monitor
+  + Fix missing unmap animation of some windows
+  + Fix placement/resizing regression
+  + Fix possible out of sync primary selections and clipboard
+  + Fix ibus support in popups
+  + Fix hardware accelerated rendering when headless
+  + Add back support for legacy X11 cursor themes
+  + Fix preedit offsets
+  + Use character offsets to specify surrounding text
+  + Don't force titlebar on screen on all interactive resizes
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Rebase patches with quilt.
+
+-------------------------------------------------------------------
 Mon May 27 07:13:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.2:

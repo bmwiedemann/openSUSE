@@ -9,11 +9,11 @@ This reverts commit 703bbe0e99dbb688352e0bff396e5cbf2c6af45b.
  clutter/clutter/clutter-actor.c | 67 ++++++++++-----------------------
  1 file changed, 20 insertions(+), 47 deletions(-)
 
-diff --git a/clutter/clutter/clutter-actor.c b/clutter/clutter/clutter-actor.c
-index dd0d5ceb6..70dea5ca2 100644
---- a/clutter/clutter/clutter-actor.c
-+++ b/clutter/clutter/clutter-actor.c
-@@ -612,7 +612,7 @@ struct _ClutterActorPrivate
+Index: mutter-46.3/clutter/clutter/clutter-actor.c
+===================================================================
+--- mutter-46.3.orig/clutter/clutter/clutter-actor.c
++++ mutter-46.3/clutter/clutter/clutter-actor.c
+@@ -566,7 +566,7 @@ struct _ClutterActorPrivate
    /* the cached transformation matrix; see apply_transform() */
    graphene_matrix_t transform;
  
@@ -22,7 +22,7 @@ index dd0d5ceb6..70dea5ca2 100644
  
    float resource_scale;
  
-@@ -776,7 +776,7 @@ struct _ClutterActorPrivate
+@@ -730,7 +730,7 @@ struct _ClutterActorPrivate
    guint clear_stage_views_needs_stage_views_changed : 1;
    guint needs_redraw : 1;
    guint needs_finish_layout : 1;
@@ -31,7 +31,7 @@ index dd0d5ceb6..70dea5ca2 100644
  };
  
  enum
-@@ -2425,7 +2425,7 @@ absolute_geometry_changed (ClutterActor *actor)
+@@ -2309,7 +2309,7 @@ absolute_geometry_changed (ClutterActor
  {
    actor->priv->needs_update_stage_views = TRUE;
    actor->priv->needs_visible_paint_volume_update = TRUE;
@@ -40,7 +40,7 @@ index dd0d5ceb6..70dea5ca2 100644
  
    actor->priv->needs_finish_layout = TRUE;
    /* needs_finish_layout is already TRUE on the whole parent tree thanks
-@@ -3047,9 +3047,8 @@ _clutter_actor_apply_relative_transformation_matrix (ClutterActor      *self,
+@@ -2931,9 +2931,8 @@ _clutter_actor_apply_relative_transforma
                                                       graphene_matrix_t *matrix)
  {
    ClutterActorPrivate *priv = self->priv;
@@ -52,7 +52,7 @@ index dd0d5ceb6..70dea5ca2 100644
  
    /* Note we terminate before ever calling stage->apply_transform()
     * since that would conceptually be relative to the underlying
-@@ -3058,63 +3057,37 @@ _clutter_actor_apply_relative_transformation_matrix (ClutterActor      *self,
+@@ -2942,63 +2941,37 @@ _clutter_actor_apply_relative_transforma
    if (self == ancestor)
      return;
  
@@ -130,7 +130,7 @@ index dd0d5ceb6..70dea5ca2 100644
        return;
      }
  
-@@ -7469,7 +7442,7 @@ clutter_actor_init (ClutterActor *self)
+@@ -7362,7 +7335,7 @@ clutter_actor_init (ClutterActor *self)
    priv->enable_model_view_transform = TRUE;
  
    priv->transform_valid = FALSE;
@@ -139,6 +139,3 @@ index dd0d5ceb6..70dea5ca2 100644
  
    /* the default is to stretch the content, to match the
     * current behaviour of basically all actors. also, it's
--- 
-2.44.0
-

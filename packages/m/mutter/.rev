@@ -2050,4 +2050,26 @@ New stable rel</comment>
   + Updated transltions. (forwarded request 1177042 from dimstar)</comment>
     <requestid>1177064</requestid>
   </revision>
+  <revision rev="230" vrev="1">
+    <srcmd5>1414a12b36b19b072e8553a4d55fbebe</srcmd5>
+    <version>46.3</version>
+    <time>1719936965</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.3:
+  + Fix performance issues with second virtual monitor
+  + Fix missing unmap animation of some windows
+  + Fix placement/resizing regression
+  + Fix possible out of sync primary selections and clipboard
+  + Fix ibus support in popups
+  + Fix hardware accelerated rendering when headless
+  + Add back support for legacy X11 cursor themes
+  + Fix preedit offsets
+  + Use character offsets to specify surrounding text
+  + Don't force titlebar on screen on all interactive resizes
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Rebase patches with quilt. (forwarded request 1184101 from iznogood)</comment>
+    <requestid>1184258</requestid>
+  </revision>
 </revisionlist>

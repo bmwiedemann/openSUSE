@@ -13,11 +13,11 @@ by special-casing shaped Java windows.
  src/x11/window-x11.c                   | 9 +++++++++
  3 files changed, 19 insertions(+)
 
-diff --git a/src/compositor/meta-window-actor-x11.c b/src/compositor/meta-window-actor-x11.c
-index 19827af331..7d5e46ac75 100644
---- a/src/compositor/meta-window-actor-x11.c
-+++ b/src/compositor/meta-window-actor-x11.c
-@@ -424,6 +424,14 @@ has_shadow (MetaWindowActorX11 *actor_x11)
+Index: mutter-46.3/src/compositor/meta-window-actor-x11.c
+===================================================================
+--- mutter-46.3.orig/src/compositor/meta-window-actor-x11.c
++++ mutter-46.3/src/compositor/meta-window-actor-x11.c
+@@ -424,6 +424,14 @@ has_shadow (MetaWindowActorX11 *actor_x1
     */
    if (window->has_custom_frame_extents)
      return FALSE;
@@ -32,11 +32,11 @@ index 19827af331..7d5e46ac75 100644
  
    /*
     * Generate shadows for all other windows.
-diff --git a/src/x11/window-x11-private.h b/src/x11/window-x11-private.h
-index c947744ee5..cb862f0d72 100644
---- a/src/x11/window-x11-private.h
-+++ b/src/x11/window-x11-private.h
-@@ -125,6 +125,8 @@ gboolean meta_window_x11_has_pointer (MetaWindow *window);
+Index: mutter-46.3/src/x11/window-x11-private.h
+===================================================================
+--- mutter-46.3.orig/src/x11/window-x11-private.h
++++ mutter-46.3/src/x11/window-x11-private.h
+@@ -125,6 +125,8 @@ gboolean meta_window_x11_has_pointer (Me
  gboolean meta_window_x11_same_application (MetaWindow *window,
                                             MetaWindow *other_window);
  
@@ -45,11 +45,11 @@ index c947744ee5..cb862f0d72 100644
  void meta_window_x11_shutdown_group (MetaWindow *window);
  
  META_EXPORT
-diff --git a/src/x11/window-x11.c b/src/x11/window-x11.c
-index 745c45db18..83cdd2e420 100644
---- a/src/x11/window-x11.c
-+++ b/src/x11/window-x11.c
-@@ -2585,6 +2585,15 @@ meta_window_x11_update_shape_region (MetaWindow *window)
+Index: mutter-46.3/src/x11/window-x11.c
+===================================================================
+--- mutter-46.3.orig/src/x11/window-x11.c
++++ mutter-46.3/src/x11/window-x11.c
+@@ -2582,6 +2582,15 @@ meta_window_x11_update_shape_region (Met
    meta_window_set_shape_region (window, region);
  }
  
@@ -65,7 +65,3 @@ index 745c45db18..83cdd2e420 100644
  /* Generally meta_window_x11_same_application() is a better idea
   * of "sameness", since it handles the case where multiple apps
   * want to look like the same app or the same app wants to look
--- 
-2.43.2
-
-
