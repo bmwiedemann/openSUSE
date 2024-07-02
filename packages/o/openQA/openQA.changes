@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 01 12:52:33 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1719769755.f382481d:
+  * Bump @floating-ui/core from 1.6.2 to 1.6.3
+  * Dependency cron 2024-06-29
+  * Be more explicit about the booleans in build_results
+  * Bump @eslint-community/regexpp from 4.10.1 to 4.11.0
+  * Bump ace-builds from 1.35.0 to 1.35.1
+
+-------------------------------------------------------------------
 Thu Jun 27 01:13:58 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1719403951.26949373:
