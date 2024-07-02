@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jul  1 06:30:36 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 5.2.0
+  * Pay for content with Telegram Stars.
+  * Enable local passcode unlock by Windows Hello and Touch ID.
+  * Allow opening forums, topics and archive in a separate window.
+
+- Updated to version 5.1.8
+  * Support nice blockquotes and code blocks edition when composing
+    messages.
+  * Support collapsing blockquotes and specifying syntax highlight
+    language.
+  * Support nice spoiler animation in the message composing input
+    field.
+
+- Update tg_owt to git commit c9cc4390ab951f2cbc103ff783a11f398b27660b
+
+-------------------------------------------------------------------
 Sat Jun 15 08:05:37 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Updated to version 5.1.7

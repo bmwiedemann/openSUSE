@@ -1,8 +1,8 @@
 #! /bin/bash
 
 # tg_owt origin
-# get it from https://github.com/telegramdesktop/tdesktop/blob/dev/Telegram/build/docker/centos_env/Dockerfile around line 823
-tg_owt_origin="afd9d5d31798d3eacf9ed6c30601e91d0f1e4d60"
+# get it from https://github.com/telegramdesktop/tdesktop/blob/dev/Telegram/build/docker/centos_env/Dockerfile around line 761
+tg_owt_origin="c9cc4390ab951f2cbc103ff783a11f398b27660b"
 
 rm -rf tg_owt \
   && mkdir tg_owt \
