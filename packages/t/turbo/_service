@@ -1,0 +1,11 @@
+<services>
+	<service name="tar_scm" mode="manual">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/magiblot/turbo</param>
+	</service>
+	<service name="recompress" mode="manual">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="manual"/>
+</services>

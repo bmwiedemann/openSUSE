@@ -1,0 +1,17 @@
+<package name="turbo" project="openSUSE:Factory">
+  <title>Turbo text editor</title>
+  <description>Turbo is an experimental text editor for the terminal,
+based on the Scintilla code editing component by Neil
+Hodgson and the Turbo Vision application framework.
+
+It was created to demonstrate new features in Turbo
+Vision. In particular, it has served as testing ground
+for Turbo Vision's Unicode capabilities.
+
+As a text editor, Turbo aims at being intuitive and easy
+to use. Usability and productivity are its two other
+major objectives, although it has not got that far yet.
+And only for being a Turbo Vision application, it
+offers a vintage look and feel.</description>
+  <devel project="editors" package="turbo"/>
+</package>

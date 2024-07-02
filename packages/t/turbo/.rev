@@ -1,0 +1,24 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>818d6d83975a0fcb83ed8703889bb25e</srcmd5>
+    <version>1715766145.697580e</version>
+    <time>1719936975</time>
+    <user>anag+factory</user>
+    <comment>Hi there,
+
+I am submitting turbo for inclusion into openSUSE Factory. Turbo is an experimental text editor for the terminal, based on the Scintilla code editing component by Neil Hodgson and the Turbo Vision application framework.
+
+It was created to demonstrate new features in Turbo Vision. In particular, it has served as testing ground for Turbo Vision's Unicode capabilities.
+
+As a text editor, Turbo aims at being intuitive and easy to use in its TUI (text user interface). Usability and productivity are its two other major objectives, although it has not got that far yet. And only for being a Turbo Vision application, it offers a vintage look and feel.
+
+The spec file generates two packages:
+* turbo - the main package of the turbo text editor
+* turbo-devel - development files for the turbo editor
+
+This is the program which tvision (tvision-devel-static) was submitted for earlier, as a prerequisite.
+
+This request includes a patch to use the correct directories for all necessary files during installation.</comment>
+    <requestid>1184346</requestid>
+  </revision>
+</revisionlist>
