@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 24 06:07:51 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update skylighting-core to version 0.14.2.
+  ## 0.14.2
+
+    * Add `loadValidSyntaxesFromDir` (Kevin Quick) [API change].
+      The `loadSyntaxesFromDir` function is an all-or-nothing function:
+      a single invalid file results in a error and *no* loaded syntaxes.
+      This adds the `loadValidSyntaxesFromDir`, which is resilient
+      against individual syntax file load failures.  It returns a map
+      of the failure messages, and the SyntaxMap that is created from
+      all the successful parsing.
+
+-------------------------------------------------------------------
 Sat May 11 06:18:22 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update skylighting-core to version 0.14.1.2.
