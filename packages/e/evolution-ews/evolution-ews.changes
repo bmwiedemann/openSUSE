@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jun 28 22:23:37 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.52.3:
+  + Bug Fixes:
+    - m365: A removed task in the web app is not removed in Evolution
+    - Mails sent only to the first recipient in the list
+  + Miscellaneous:
+    - m365 Camel:
+      . Auto-save store summary on folder count changes
+      . Send messages as MIME data
+      . Fix a memory leak in m365_folder_merge_server_user_flags()
+    - CI: Workaround broken git clone for libcanberra
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri May 24 07:07:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.52.2:

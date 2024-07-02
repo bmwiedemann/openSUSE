@@ -1250,4 +1250,22 @@
   + Updated translations. (forwarded request 1176668 from dimstar)</comment>
     <requestid>1176675</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>3a92acc8e0126c8a497022584d985cec</srcmd5>
+    <version>3.52.3</version>
+    <time>1719936962</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.52.3:
+  + Bug Fixes:
+    - m365: A removed task in the web app is not removed in Evolution
+    - Mails sent only to the first recipient in the list
+  + Miscellaneous:
+    - m365 Camel:
+      . Auto-save store summary on folder count changes
+      . Send messages as MIME data
+      . Fix a memory leak in m365_folder_merge_server_user_flags()
+    - CI: Workaround broken git clone for libcanberra
+  + Updated translations. (forwarded request 1183902 from iznogood)</comment>
+    <requestid>1184254</requestid>
+  </revision>
 </revisionlist>
