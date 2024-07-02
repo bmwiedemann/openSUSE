@@ -128,6 +128,8 @@ Patch106:       openssh-7.6p1-cleanup-selinux.patch
 # PATCH-FIX-OPENSUSE bsc#1211301 Add crypto-policies support
 Patch107:       openssh-9.6p1-crypto-policies.patch
 Patch108:       openssh-9.6p1-crypto-policies-man.patch
+# PATCH-FIX-SUSE bsc#1226642 fix CVE-2024-6387
+Patch109:       fix-CVE-2024-6387.patch
 %if 0%{with allow_root_password_login_by_default}
 Patch1000:      openssh-7.7p1-allow_root_password_login.patch
 %endif
