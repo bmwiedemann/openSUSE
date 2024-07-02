@@ -1,5 +1,7 @@
 # MariaDB Server container image
 
+![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
+
 ## Description
 MariaDB is an open-source, multi-threaded, relational database management system. It's a backward-compatible branch of the MySQL Community Server that provides a drop-in replacement for MySQL.
 
