@@ -1733,4 +1733,15 @@ New stable rel</comment>
   + Updated translations. (forwarded request 1178269 from dimstar)</comment>
     <requestid>1178277</requestid>
   </revision>
+  <revision rev="208" vrev="1">
+    <srcmd5>b36a11a029c0cebde8d7a145deaaf09d</srcmd5>
+    <version>46.2</version>
+    <time>1719936996</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.2:
+  + Improve robustness of password manager.
+  + Fix crash when main resource response isn't ready yet.
+  + Updated translations. (forwarded request 1184009 from iznogood)</comment>
+    <requestid>1184256</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 29 16:07:07 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 46.2:
+  + Improve robustness of password manager.
+  + Fix crash when main resource response isn't ready yet.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Jun  3 09:51:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.1:
