@@ -190,4 +190,12 @@
     <comment></comment>
     <requestid>1153878</requestid>
   </revision>
+  <revision rev="27" vrev="27">
+    <srcmd5>3f5abdde5731788b7035f94d465bdc12</srcmd5>
+    <version>0.4.8</version>
+    <time>1719936904</time>
+    <user>anag+factory</user>
+    <comment>fix build with gcc 14</comment>
+    <requestid>1184763</requestid>
+  </revision>
 </revisionlist>

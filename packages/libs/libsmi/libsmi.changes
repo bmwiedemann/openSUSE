@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul  2 03:28:00 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * libsmi-c99.patch
+    + fix build with gcc14 (boo#1225858)
+    + Do not define _ISOC99_SOURCE in parser-sming.y, since
+      the timegm declaration in <time.h> is wrapped by
+      __GLIBC_USE(ISOC2X)
+
+
+-------------------------------------------------------------------
 Fri Mar  1 09:47:49 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.

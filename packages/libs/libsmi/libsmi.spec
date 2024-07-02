@@ -1,7 +1,7 @@
 #
 # spec file for package libsmi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%global make make
 Name:           libsmi
 Version:        0.4.8
 Release:        0
@@ -30,6 +31,7 @@ Patch2:         libsmi-CVE-2010-2891.patch
 Patch3:         libsmi-flex.patch
 Patch4:         libsmi-bison-3.0.patch
 Patch5:         libsmi-exports.patch
+Patch6:         libsmi-c99.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  libtool
@@ -84,6 +86,7 @@ libsmi.
 %endif
 %patch -P 4 -p1
 %patch -P 5 -p1
+%patch -P 6 -p1
 
 %build
 autoreconf --force --install
@@ -92,7 +95,7 @@ autoreconf --force --install
 	       --enable-sming \
 	       --with-mibdir=%{_datadir}/mibs
 # Parallel build disabled
-%make_build #%{?_smp_mflags}
+%make #%{?_smp_mflags}
 
 %install
 %make_install

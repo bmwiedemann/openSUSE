@@ -1,0 +1,11 @@
+--- a/lib/parser-sming.y
++++ b/lib/parser-sming.y
+@@ -17,7 +17,7 @@
+     
+ #ifdef BACKEND_SMING
+ 
+-#define _ISOC99_SOURCE
++
+ #include <stdio.h>
+ #include <errno.h>
+ #include <stdlib.h>
