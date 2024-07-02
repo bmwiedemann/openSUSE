@@ -234,4 +234,14 @@ need to be staged with libVNCServer sr#862644 (forwarded request 862647 from fcr
 - Use sysusers to create gnome-remote-desktop user and home dir. (forwarded request 1176664 from dimstar)</comment>
     <requestid>1176672</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ca703574da4c4510256b584d448ee307</srcmd5>
+    <version>46.3</version>
+    <time>1719936999</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.3:
+  + Avoid crash when getting invalid PipeWire buffers
+  + Updated translations. (forwarded request 1184116 from iznogood)</comment>
+    <requestid>1184259</requestid>
+  </revision>
 </revisionlist>

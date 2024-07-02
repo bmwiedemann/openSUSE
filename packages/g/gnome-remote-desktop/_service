@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://gitlab.gnome.org/GNOME/gnome-remote-desktop.git</param>
     <param name="scm">git</param>
-    <param name="revision">46.2</param>
+    <param name="revision">46.3</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">disable</param>
   </service>
