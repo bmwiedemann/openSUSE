@@ -1,8 +1,9 @@
 <services>
+  <service name="download_files" mode="manual"/>
   <service name="cargo_vendor" mode="manual">
-    <param name="srctar">pydantic_core-2.18.4.tar.gz</param>
+    <param name="srctar">pydantic_core-2.20.0.tar.gz</param>
     <param name="compression">xz</param>
-    <param name="update">true</param>
+    <param name="update">false</param>
   </service>
   <service name="cargo_audit" mode="manual"></service>
 </services>

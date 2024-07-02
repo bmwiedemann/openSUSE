@@ -72,4 +72,23 @@
   * Bump `uraimo/run-on-arch-action` from 2.7.1 to 2.7.2</comment>
     <requestid>1179035</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>32418c6b6bb0f98a5f1d302a25276eb3</srcmd5>
+    <version>2.20.0</version>
+    <time>1719936887</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.20.0:
+  * Tidy up `tagged_union_schema`
+  * Improvements in `Union` matching logic during validation
+  * Fix `Union` validation logic when `extra='allow'`
+  * Add list `fail_fast` config option
+  * Update to PyO3 0.22, add Python 3.13 support
+- update to 2.19.0:
+  * Lower MSRV to 1.75
+  * Bump `libc` from 0.2.147 to 0.2.155
+  * Make `ValidatorFunctionWrapHandler` positional only
+  * Reuse `re.Pattern` object in regex patterns
+  * Add ser_json_inf_nan='strings' mode to produce valid JSON</comment>
+    <requestid>1184352</requestid>
+  </revision>
 </revisionlist>

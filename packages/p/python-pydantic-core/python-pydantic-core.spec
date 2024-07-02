@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pydantic-core%{psuffix}
-Version:        2.18.4
+Version:        2.20.0
 Release:        0
 Summary:        Core functionality for pydantic validation and serialization
 License:        MIT
@@ -54,7 +54,8 @@ Requires:       python-typing-extensions >= 4.6.0
 %python_subpackages
 
 %description
-This package provides the core functionality for [pydantic](https://docs.pydantic.dev) validation and serialization.
+This package provides the core functionality for
+[pydantic](https://docs.pydantic.dev) validation and serialization.
 
 Pydantic-core is currently around 17x faster than pydantic V1.
 

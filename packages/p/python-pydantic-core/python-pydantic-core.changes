@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jul  1 17:05:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.20.0:
+  * Tidy up `tagged_union_schema`
+  * Improvements in `Union` matching logic during validation
+  * Fix `Union` validation logic when `extra='allow'`
+  * Add list `fail_fast` config option
+  * Update to PyO3 0.22, add Python 3.13 support
+- update to 2.19.0:
+  * Lower MSRV to 1.75
+  * Bump `libc` from 0.2.147 to 0.2.155
+  * Make `ValidatorFunctionWrapHandler` positional only
+  * Reuse `re.Pattern` object in regex patterns
+  * Add ser_json_inf_nan='strings' mode to produce valid JSON
+
+-------------------------------------------------------------------
 Thu Jun  6 14:46:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.18.4:
