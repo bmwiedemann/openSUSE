@@ -58,10 +58,10 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-beniget >= 0.4.0
-Requires:       python-gast >= 0.5.0
 Requires:       python-numpy
 Requires:       python-ply >= 3.4
 Requires:       python-setuptools
+Requires:       (python-gast >= 0.5.0 with python-gast < 0.6.0)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 # SECTION This is a package that compiles code, the runtime requires devel packages

@@ -182,4 +182,12 @@ now with fixed empty debuginfo extraction</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1180776</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>2e8b8bf890618ea0b805cbbeb2f9e61f</srcmd5>
+    <version>0.16.1</version>
+    <time>1719936878</time>
+    <user>anag+factory</user>
+    <comment>- limit to gast &lt; 0.6.0</comment>
+    <requestid>1184144</requestid>
+  </revision>
 </revisionlist>
