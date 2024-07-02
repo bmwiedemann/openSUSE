@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat May 25 15:46:13 UTC 2024 - antoine.belvire@opensuse.org
+
+- Update to version 4.12:
+  * Updated astyle lib to version 3.4.16.
+  * Removed `using namespace std;` in header files
+    (gl#saalen/highlight!147).
+  * Added `-webkit-user-select` to HTML line number style
+    (gl#saalen/highlight#214).
+  * Added plug-in outhtml-focus.lua.
+  * Updated lsp.conf to include metals and clojure-lsp
+    configurations.
+  * Fixed Yaml URL recognition.
+  * Fixed Rust raw literal recognition (gl#saalen/highlight#187).
+  * Fixed Factor comment recognition (gl#saalen/highlight#239). 
+
+-------------------------------------------------------------------
 Mon Mar 18 19:06:22 UTC 2024 - antoine.belvire@opensuse.org
 
 - Update to version 4.11:

@@ -814,4 +814,23 @@
   * Fix backslash symbol in man page.</comment>
     <requestid>1159927</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>7be51f6e7fa50d0f66005551bdaec5fa</srcmd5>
+    <version>4.12</version>
+    <time>1719936896</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.12:
+  * Updated astyle lib to version 3.4.16.
+  * Removed `using namespace std;` in header files
+    (gl#saalen/highlight!147).
+  * Added `-webkit-user-select` to HTML line number style
+    (gl#saalen/highlight#214).
+  * Added plug-in outhtml-focus.lua.
+  * Updated lsp.conf to include metals and clojure-lsp
+    configurations.
+  * Fixed Yaml URL recognition.
+  * Fixed Rust raw literal recognition (gl#saalen/highlight#187).
+  * Fixed Factor comment recognition (gl#saalen/highlight#239).</comment>
+    <requestid>1184363</requestid>
+  </revision>
 </revisionlist>
