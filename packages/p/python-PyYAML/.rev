@@ -297,4 +297,13 @@
 - Drop patch setuptools.patch, we can now cope.</comment>
     <requestid>1150539</requestid>
   </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>0b7ca5b9bfd42f1a5b23beba9dfbea8c</srcmd5>
+    <version>6.0.1</version>
+    <time>1719936883</time>
+    <user>anag+factory</user>
+    <comment>- add build-with-cython3.patch from 6.0.2rc1 to build with
+  cython3 (needed for python 3.13+)</comment>
+    <requestid>1184287</requestid>
+  </revision>
 </revisionlist>

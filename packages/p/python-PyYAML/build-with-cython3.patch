@@ -1,0 +1,17 @@
+Index: PyYAML-6.0.1/setup.py
+===================================================================
+--- PyYAML-6.0.1.orig/setup.py
++++ PyYAML-6.0.1/setup.py
+@@ -82,7 +82,11 @@ if 'sdist' in sys.argv or os.environ.get
+     with_cython = True
+ try:
+     from Cython.Distutils.extension import Extension as _Extension
+-    from Cython.Distutils import build_ext as _build_ext
++    try:
++         # try old_build_ext from Cython > 3 first, until we can dump it entirely
++         from Cython.Distutils.old_build_ext import old_build_ext as _build_ext
++    except ImportError:
++        from Cython.Distutils import build_ext as _build_ext
+     with_cython = True
+ except ImportError:
+     if with_cython:

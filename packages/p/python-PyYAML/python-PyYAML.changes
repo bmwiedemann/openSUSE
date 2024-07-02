@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  1 10:52:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add build-with-cython3.patch from 6.0.2rc1 to build with
+  cython3 (needed for python 3.13+)
+
+-------------------------------------------------------------------
 Mon Feb 26 03:18:33 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject and autosetup macros.

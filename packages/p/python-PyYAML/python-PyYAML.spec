@@ -24,7 +24,8 @@ Summary:        YAML parser and emitter for Python
 License:        MIT
 URL:            https://github.com/yaml/pyyaml
 Source:         https://files.pythonhosted.org/packages/source/P/PyYAML/PyYAML-%{version}.tar.gz
-BuildRequires:  %{python_module Cython with %python-Cython < 3}
+Patch1:         build-with-cython3.patch
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -51,6 +52,7 @@ configuration files to object serialization and persistance.
 
 %build
 export CFLAGS="%{optflags}"
+export PYYAML_FORCE_CYTHON=1
 %pyproject_wheel
 # Fix example permissions.
 find examples/ -type f | xargs chmod a-x
