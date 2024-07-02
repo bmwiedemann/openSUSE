@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Jun 28 10:55:14 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.24.5:
+  + Highlighted bugfixes:
+    - webrtcsink: Support for AV1 via nvav1enc, av1enc or rav1enc
+      encoders
+    - AV1 RTP payloader/depayloader fixes to work correctly with
+      Chrome and Pion WebRTC
+    - av1parse, av1dec error handling/robustness improvements
+    - av1enc: Handle force-keyunit events properly for WebRTC
+    - decodebin3: selection and collection handling improvements
+    - hlsdemux2: Various fixes for discontinuities, variant
+      switching, playlist updates
+    - qml6glsink: fix RGB format support
+    - rtspsrc: more control URL handling fixes
+    - v4l2src: Interpret V4L2 report of sync loss as video signal
+      loss
+    - d3d12 encoder, memory and videosink fixes
+    - vtdec: more robust error handling, fix regression
+    - ndi: support for NDI SDK v6
+    - Various bug fixes, memory leak fixes, and other stability and
+      reliability improvements
+- Please see https://gstreamer.freedesktop.org/releases/1.24/ for
+  changes between 1.24.0 and this version and even more in-depth
+  info.
+
+-------------------------------------------------------------------
 Tue Mar  5 06:22:34 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.24.0:
