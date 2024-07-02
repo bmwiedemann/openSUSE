@@ -1,7 +1,7 @@
 cabal-version:   >= 1.10
 name:            zlib
 version:         0.6.3.0
-x-revision:      4
+x-revision:      5
 
 copyright:       (c) 2006-2016 Duncan Coutts
 license:         BSD3
@@ -98,7 +98,7 @@ library
   if impl(ghc >= 7.6)
     other-extensions: CApiFFI
 
-  build-depends:   base >= 4 && < 4.20,
+  build-depends:   base >= 4 && < 4.21,
                    bytestring >= 0.9 && < 0.13
   if impl(ghc >= 7.0 && < 8.0.3)
     build-depends: ghc-prim
@@ -136,5 +136,5 @@ test-suite tests
   build-depends:   base, bytestring, zlib,
                    QuickCheck       == 2.*,
                    tasty            >= 0.8 && < 1.6,
-                   tasty-quickcheck >= 0.8 && < 0.11
+                   tasty-quickcheck >= 0.8 && < 0.12
   ghc-options:     -Wall

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 23 13:09:06 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update zlib to version 0.6.3.0 revision 5.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Oct 24 08:59:49 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update zlib to version 0.6.3.0 revision 4.
