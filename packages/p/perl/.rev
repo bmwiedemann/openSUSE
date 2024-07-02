@@ -1138,4 +1138,12 @@ I hope I got it right now. It export both 5.34.0 and 5.34.1 COMPAT. That should 
   * new patch: perl-locale-backport.diff</comment>
     <requestid>1167043</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>67b6b3ecabd6674dad2fd03e99be5eac</srcmd5>
+    <version>5.40.0</version>
+    <time>1719936865</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1181729</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Jun 17 12:36:15 CEST 2024 - mls@suse.de
+
+- move UNIVERSAL.pm into perl-base
+
+-------------------------------------------------------------------
+Tue Jun 11 16:05:14 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 5.40.0
+  * New __CLASS__ Keyword
+  * :reader attribute for field variables
+  * Permit a space in -M command-line option
+  * Restrictions to use VERSION declarations
+  * New builtin::inf and builtin::nan functions (experimental)
+  * New ^^ logical xor operator
+  * try/catch feature is no longer experimental
+  * for iterating over multiple values at a time is no longer experimental
+  * builtin module is no longer experimental
+  * The :5.40 feature bundle adds try
+  * use v5.40; imports builtin functions
+  * CVE-2023-47038 - Write past buffer end via illegal user-defined Unicode property
+  * CVE-2023-47039 - Perl for Windows binary hijacking vulnerability
+  * reset EXPR now calls set-magic on scalars
+  * Calling the import method of an unknown package produces a warning
+  * return no longer allows an indirect object
+  * Class barewords no longer resolved as file handles in method calls
+    under no feature "bareword_filehandles"
+  * Using goto to jump from an outer scope into an inner scope is
+    deprecated and will be removed completely in Perl 5.42. [GH #21601]
+  * The negation OPs have been modified to support the generic TARGMY
+    optimization. [GH #21442]
+- Refresh perl-5.38.0.diff
+- Drop perl-5.18.2-overflow.diff (no longer applicable)
+- Drop perl-locale-backport.diff (proper fix in new version)
+- Drop old manual package name based perl provides
+
+-------------------------------------------------------------------
 Fri Apr 12 13:06:56 CEST 2024 - mls@suse.de
 
 - Revert commit 7af2d2037375d58e700f9e1b217efb2c4db66133 as suggested

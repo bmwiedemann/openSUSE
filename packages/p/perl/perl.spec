@@ -23,11 +23,11 @@
 %define name_suffix %{nil}
 %endif
 
-%define pversion 5.38.2
+%define pversion 5.40.0
 # set to nil when equal to pversion
-%global versionlist 5.38.0
+%global versionlist %{nil}
 Name:           perl%{?name_suffix}
-Version:        5.38.2
+Version:        5.40.0
 Release:        0
 Summary:        The Perl interpreter
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -47,14 +47,12 @@ Patch6:         perl-saverecontext.diff
 Patch7:         perl-5.22.0_wrong_rpm_provides.diff
 Patch8:         skip_time_hires.patch
 Patch9:         perl-incfix.diff
-Patch11:        perl-5.18.2-overflow.diff
 # PATCH-FIX-OPENSUSE prevent changing package when rebuilding
 Patch12:        perl-reproducible.patch
 # PATCH-FIX-OPENSUSE skip flaky tests powerpc as bypass https://bugzilla.suse.com/show_bug.cgi?id=1063176
 Patch13:        perl_skip_flaky_tests_powerpc.patch
 # PATCH-FIX-UPSTREAM unmerged https://www.nntp.perl.org/group/perl.perl5.porters/2018/12/msg253240.html
 Patch18:        perl-reproducible2.patch
-Patch19:        perl-locale-backport.diff
 BuildRequires:  db-devel
 BuildRequires:  gdbm-devel
 BuildRequires:  libbz2-devel
@@ -65,65 +63,10 @@ BuildRequires:  xz
 BuildRequires:  zlib-devel
 Requires:       perl-base = %{version}
 Suggests:       perl-doc = %{version}
-Provides:       perl-500
-Provides:       perl-Archive-Tar = 2.40
 Provides:       perl(:MODULE_COMPAT_%{pversion})
 %if "%{versionlist}" != ""
 Provides:       perl(:MODULE_COMPAT_%{versionlist})
 %endif
-Obsoletes:      perl-Archive-Tar <= 2.40
-Provides:       perl-autodie = 2.36
-Obsoletes:      perl-autodie <= 2.36
-Provides:       perl-Compress-Raw-Zlib = 2.204
-Obsoletes:      perl-Compress-Raw-Zlib <= 2.204
-Provides:       perl-Compress-Zlib = 2.204
-Obsoletes:      perl-Compress-Zlib <= 2.204
-Provides:       perl-CPAN-Meta = 2.150010
-Obsoletes:      perl-CPAN-Meta <= 2.150010
-Provides:       perl-CPAN-Meta-YAML = 0.018
-Obsoletes:      perl-CPAN-Meta-YAML <= 0.018
-Provides:       perl-ExtUtils-CBuilder = 0.280238
-Obsoletes:      perl-ExtUtils-CBuilder <= 0.280238
-Provides:       perl-ExtUtils-ParseXS = 3.51
-Obsoletes:      perl-ExtUtils-ParseXS <= 3.51
-Provides:       perl-Filter-Simple = 0.96
-Obsoletes:      perl-Filter-Simple <= 0.96
-Provides:       perl-I18N-LangTags = 0.45
-Obsoletes:      perl-I18N-LangTags <= 0.45
-Provides:       perl-IO-Compress-Base = 2.204
-Obsoletes:      perl-IO-Compress-Base <= 2.204
-Provides:       perl-IO-Compress-Zlib = 2.204
-Obsoletes:      perl-IO-Compress-Zlib <= 2.204
-Provides:       perl-IO-Socket-IP = 0.41
-Obsoletes:      perl-IO-Socket-IP <= 0.41
-Provides:       perl-IO-Zlib = 1.14
-Obsoletes:      perl-IO-Zlib <= 1.14
-Provides:       perl-libnet = 3.15
-Obsoletes:      perl-libnet <= 3.15
-Provides:       perl-Locale-Maketext-Simple = 0.21
-Obsoletes:      perl-Locale-Maketext-Simple <= 0.21
-Provides:       perl-MIME-Base64 = 3.16
-Obsoletes:      perl-MIME-Base64 <= 3.16
-Provides:       perl-Parse-CPAN-Meta = 2.150010
-Obsoletes:      perl-Parse-CPAN-Meta <= 2.150010
-Provides:       perl-PathTools = 3.88
-Obsoletes:      perl-PathTools <= 3.88
-Provides:       perl-Pod-Escapes = 1.07
-Obsoletes:      perl-Pod-Escapes <= 1.07
-Provides:       perl-Pod-Simple = 3.43
-Obsoletes:      perl-Pod-Simple <= 3.43
-Provides:       perl-Storable = 3.32
-Obsoletes:      perl-Storable <= 3.32
-Provides:       perl-Test-Harness = 3.44
-Obsoletes:      perl-Test-Harness <= 3.44
-Provides:       perl-Test-Simple = 1.302194
-Obsoletes:      perl-Test-Simple <= 1.302194
-Provides:       perl-Text-Balanced = 2.06
-Obsoletes:      perl-Text-Balanced <= 2.06
-Provides:       perl-Time-HiRes = 1.9775
-Obsoletes:      perl-Time-HiRes <= 1.9775
-Provides:       perl-version = 0.9929
-Obsoletes:      perl-version <= 0.9929
 %if "%{version}" != "%{pversion}"
 Provides:       perl = %{pversion}-%{release}
 %endif
@@ -188,10 +131,8 @@ cp -p %{SOURCE3} .
 %patch -P 13
 %endif
 %patch -P 9 -p1
-%patch -P 11
 %patch -P 12 -p1
 %patch -P 18
-%patch -P 19
 
 %build
 %define _lto_cflags %{nil}
@@ -295,10 +236,10 @@ cat << EOF > perl-base-filelist
 /usr/lib/perl5/%{pversion}/FileHandle.pm
 /usr/lib/perl5/%{pversion}/SelectSaver.pm
 /usr/lib/perl5/%{pversion}/Symbol.pm
+/usr/lib/perl5/%{pversion}/UNIVERSAL.pm
 /usr/lib/perl5/%{pversion}/base.pm
 /usr/lib/perl5/%{pversion}/builtin.pm
 /usr/lib/perl5/%{pversion}/bytes.pm
-/usr/lib/perl5/%{pversion}/bytes_heavy.pl
 /usr/lib/perl5/%{pversion}/constant.pm
 /usr/lib/perl5/%{pversion}/fields.pm
 /usr/lib/perl5/%{pversion}/feature.pm
