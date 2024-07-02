@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Jul  1 16:29:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.0:
+  * Update citation version automatically with new releases
+  * Bump pyright to `v1.1.367` and add type checking tests for
+    pipeline API
+  * Update `pydantic.v1` stub to `v1.10.17`
+  * General package updates to prep for `v2.8.0b1`
+  * Bump `pydantic-core` to `v2.20.0`
+  * Add support for Python 3.13
+  * Update `pdm` version used for `pdm.lock` to v2.16.1
+  * Update to `ruff` `v0.4.8`
+  * Experimental: support `defer_build` for `TypeAdapter`
+  * Implement `deprecated` field in json schema
+  * Experimental: Add pipeline API
+  * Add support for programmatic title generation
+  * Implement `fail_fast` feature
+  * Add `ser_json_inf_nan='strings'` mode to produce valid JSON
+  * Replace `__spec__.parent` with `__package__`
+  * Fix Outputted Model JSON Schema for `Sequence` type
+  * Fix typing of `_frame_depth`
+  * Make `ImportString` json schema compatible
+  * Hide private attributes (`PrivateAttr`) from `__init__`
+    signature in type checkers
+  * Make detection of `TypeVar` defaults robust to the CPython
+    `PEP-696` implementation
+  * Fix usage of `PlainSerializer` with builtin types
+  * Add more robust custom validation examples
+  * Fix ignored `strict` specification for
+    `StringConstraint(strict=False)`
+  * Use `Self` where possible
+  * Do not alter `RootModel.model_construct` signature in the
+    `mypy` plugin
+  * Fixed type hint of `validation_context`
+  * Support context being passed to TypeAdapter's
+    `dump_json`/`dump_python`
+  * Updates type signature for `Field()` constructor
+  * Improve builtin alias generators
+  * Fix typing of `TypeAdapter`
+  * Add fallback default value for private fields in
+    `__setstate__` of BaseModel
+  * Support `PEP 746`
+  * Allow validator and serializer functions to have default
+    values
+  * Fix bug with mypy plugin's handling of covariant `TypeVar`
+    fields
+  * Fix multiple annotation / constraint application logic
+  * Respect `regex` flags in validation and json schema
+  * Fix type hint on `IpvAnyAddress`
+  * Allow a field specifier on `__pydantic_extra__`
+  * Use normalized case for file path comparison
+  * Modify constraint application logic to allow field
+    constraints on `Optional[Decimal]`
+  * `validate_call` type params fix
+  * Check all warnings returned by pytest.warns()
+  * Reuse `re.Pattern` object in regex patterns to allow for
+    regex flags
+- drop support-pytest-8.patch (upstream)
+
+-------------------------------------------------------------------
+Sun Jun 30 20:44:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- drop optional email-validator dependency
+
+-------------------------------------------------------------------
 Mon Jun 24 15:45:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7.4:

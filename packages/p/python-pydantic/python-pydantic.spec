@@ -27,14 +27,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pydantic%{psuffix}
-Version:        2.7.4
+Version:        2.8.0
 Release:        0
 Summary:        Data validation and settings management using python type hinting
 License:        MIT
 URL:            https://github.com/pydantic/pydantic
 Source:         https://github.com/pydantic/pydantic/archive/v%{version}.tar.gz#/pydantic-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#pydantic/pydantic#9527
-Patch0:         support-pytest-8.patch
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module packaging}
@@ -47,20 +45,20 @@ BuildRequires:  %{python_module Faker}
 BuildRequires:  %{python_module cloudpickle}
 BuildRequires:  %{python_module dirty-equals}
 BuildRequires:  %{python_module email-validator >= 2.0}
-BuildRequires:  %{python_module pydantic == %{version}}
+BuildRequires:  %{python_module pydantic = %{version}}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-examples}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dotenv >= 0.10.4}
+BuildRequires:  %{python_module rich}
 %endif
 Requires:       python-annotated-types >= 0.4.0
 %if 0%{?python_version_nodots} < 310
 Requires:       python-eval-type-backport
 %endif
-Requires:       python-pydantic-core == 2.18.4
-Requires:       python-typing_extensions >= 4.6.1
-Suggests:       python-email-validator >= 2.0
+Requires:       python-pydantic-core = 2.20.0
+Requires:       python-typing-extensions >= 4.6.1
 BuildArch:      noarch
 %python_subpackages
 

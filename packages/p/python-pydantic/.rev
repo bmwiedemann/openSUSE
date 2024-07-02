@@ -422,4 +422,41 @@
   * Specify `recursive_guard` as kwarg in `FutureRef._evaluate`</comment>
     <requestid>1183039</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>559ad758e9f0af8078405e62e65d092b</srcmd5>
+    <version>2.8.0</version>
+    <time>1719936890</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.8.0:
+  * Update citation version automatically with new releases
+  * Bump pyright to `v1.1.367` and add type checking tests for
+    pipeline API
+  * Update `pydantic.v1` stub to `v1.10.17`
+  * General package updates to prep for `v2.8.0b1`
+  * Bump `pydantic-core` to `v2.20.0`
+  * Add support for Python 3.13
+  * Update `pdm` version used for `pdm.lock` to v2.16.1
+  * Update to `ruff` `v0.4.8`
+  * Experimental: support `defer_build` for `TypeAdapter`
+  * Implement `deprecated` field in json schema
+  * Experimental: Add pipeline API
+  * Add support for programmatic title generation
+  * Implement `fail_fast` feature
+  * Add `ser_json_inf_nan='strings'` mode to produce valid JSON
+  * Replace `__spec__.parent` with `__package__`
+  * Fix Outputted Model JSON Schema for `Sequence` type
+  * Fix typing of `_frame_depth`
+  * Make `ImportString` json schema compatible
+  * Hide private attributes (`PrivateAttr`) from `__init__`
+    signature in type checkers
+  * Make detection of `TypeVar` defaults robust to the CPython
+    `PEP-696` implementation
+  * Fix usage of `PlainSerializer` with builtin types
+  * Add more robust custom validation examples
+  * Fix ignored `strict` specification for
+    `StringConstraint(strict=False)`
+  * Use `Self` where possible
+  * Do not alter `RootModel.model_construct` signature in the</comment>
+    <requestid>1184776</requestid>
+  </revision>
 </revisionlist>
