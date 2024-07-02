@@ -287,4 +287,32 @@
     - Document :close-page return value. (forwarded request 1176754 from dimstar)</comment>
     <requestid>1176755</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>2f5896109d302752ffd52e9ce3a13bd6</srcmd5>
+    <version>1.5.2</version>
+    <time>1719936940</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.5.2:
+  + AdwAlertDialog:
+    - Fix unmatched va_start()
+    - Fix setting default widget when removing a response
+  + AdwBreakpointCondition: Fix leaks when parsing
+  + AdwBreakpointBin: Fix a leak
+  + AdwDialog:
+    - Fix toggling presentation mode
+    - Fix close button ignoring :can-close
+    - Fix ::close-attempt not emitting in some cases
+    - Fix swipe area for bottom sheets
+    - Leak fixes
+  + AdwHeaderBar:
+    - Fix initial focus for the back button
+    - Fix split view links in docs
+  + AdwMessageDialog: Fix unmatched va_start()
+  + AdwSpinRow: Fix ::input handling
+  + AdwTabButton: Fix needs-attention badge on RTL
+  + AdwTabView: Accessibility fixes
+  + AdwViewStack: Accessibility fixes
+  + Updated translations. (forwarded request 1183891 from iznogood)</comment>
+    <requestid>1184237</requestid>
+  </revision>
 </revisionlist>
