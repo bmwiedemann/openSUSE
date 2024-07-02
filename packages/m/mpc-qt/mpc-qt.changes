@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jul  2 04:58:47 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 24.06
+  Features and/or improvements:
+  * Prettify the icon
+  * Update some Russian phrases
+  * Implement dragging window from the video area
+  * Fixed crash on restart when player is closed while minimized
+  * Fixed crash when right-clicking playlist window under
+    specific circumstances
+  * Suppress "errors" from stderr
+  * Don't go on top when paused
+  * Update list available spdif codecs
+  * Restrict web server to localhost by default
+  * Add media keys on Windows
+  * Implement audio/sub track preference
+
+-------------------------------------------------------------------
 Sun Dec 31 09:44:01 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 23.12

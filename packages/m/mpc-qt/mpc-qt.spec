@@ -1,7 +1,7 @@
 #
 # spec file for package mpc-qt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mpc-qt
-Version:        23.12
+Version:        24.06
 Release:        0
 Summary:        Media Player Classic Qute Theater
 License:        GPL-2.0-only
