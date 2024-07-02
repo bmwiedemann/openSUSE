@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul  2 11:56:43 UTC 2024 - Daniel Mach <daniel.mach@suse.com>
+
+- 1.8.2
+  - Library:
+    - Change 'repairwc' command to fix missing .osc/_osclib_version
+    - Make error message in check_store_version() more generic to work for both projects and packages
+    - Fix check_store_version in project store
+
+-------------------------------------------------------------------
 Mon Jul  1 08:14:17 UTC 2024 - Daniel Mach <daniel.mach@suse.com>
 
 - 1.8.1

@@ -1,6 +1,6 @@
 pkgname=osc
-pkgver=1.8.1
-pkgrel=88bf8a6a77d4f6e711b9b16732e40f83
+pkgver=1.8.2
+pkgrel=63005f5c57b69f5389cabb6ca5a033ed
 pkgdesc="Command-line client for the Open Build Service"
 arch=('x86_64')
 url="https://www.github.com/openSUSE/osc"
