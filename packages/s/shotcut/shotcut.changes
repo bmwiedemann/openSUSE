@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Jun 28 05:31:50 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 24.06.26:
+  * Added SVT-AV1 encoder (faster non-hardware AV1 encoder).
+  * Added support for AVIF (AV1) images.
+  * Added a Drop Shadow video filter that uses the input alpha channel.
+    This means that it will not work as expected when used after a text
+    filter on a video clip; rather, you must use a text clip on an upper track.
+  * Added a Vibrance video filter. This is similar to Saturation, but
+    Vibrance is sensitive to the current saturation instead of adjusting
+    all values equally as in saturation. This is especially helpful to
+    prevent affecting skin tones.
+  * Added the Mid-Side Matrix audio filter for processing these kinds of
+    microphones into proper stereo sound.
+  * Added Keyframes > Scrub While Dragging.
+  * Added Playlist > menu > Columns.
+  * Added support for DJI LRF (MP4) files as a proxy.
+  * Improved handling for some variable frame rate videos. Now,
+    Properties tries to show the file’s target frame rate and extends
+    the variable detection logic to include strange average frame rate
+    values (what previous versions showed in Properties).
+  * Changed Playlist Tiles view mode to show Date instead of In/Start.
+  * Fixed using graphics (text, image, etc.) on upper video track with GPU Effects.
+  * Fixed an off-by-one frame bug in the duration for Glaxnimate animations.
+  * Fixed Undo does not work for time filters.
+  * Fixed spamming (Undo) History when using the timeline fade controls.
+  * Fixed preview color with GPU Effecs is inaccurate.
+  * Fixed Timeline > Select None does not clear the Filters panel or VUI.
+  * Fixed single click does not reset a multi-selection.
+  * Fixed Export > Codec > Quality hint not updated after changing Rate control.
+  * Fixed Properties > Proxy > Make does not regenerate if already exists.
+  * Fixed changing Properties (except Speed) affects clips on other
+    tracks with Ripple All Tracks turned on.
+  * Fixed drag from Source and drop to Source changes Playlist.
+  * Fixed Automatically Add Tracks changes the current video track, which
+    can cause unexpected behavior with Properties > Speed change, for example.
+  * Fixed files generated automatically in the project folder (.stab, .rawr, etc.)
+    are incorrectly generated in the app data’s autosave folder in the app
+    session immediately after Shotcut recovers an auto-saved project.
+  * Fixed changing Properties can delete a timeline clip.
+  * Fixed selected filter changes unexpectedly by changing tabs or clicking filter categories.
+  * Fixed Properties > Audio > Track > All.
+  * Fixed the project folder when running an autosave-recovered session.
+  * Fixed Settings > Timeline > Auto Add Tracks creates too many tracks when drop multiple clips to Timeline.
+  * Fixed new Settings > Time Format not used in several places.
+  * Fixed View > Application Log > Previous not working after the first time.
+  * Fixed Properties > menu > View Bitrate hiding the first second.
+
+-------------------------------------------------------------------
 Mon Apr 29 06:43:23 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 24.04.28:
