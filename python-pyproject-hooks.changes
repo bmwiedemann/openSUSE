@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jun 30 18:58:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- skip test that fails with setuptools 70.1
+  (gh#pypa/pyproject-hooks#203)
+
+-------------------------------------------------------------------
+Sat Jun 29 12:29:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * Add type annotations to the public API.
+  * More careful handling of the backend-path key from
+    pyproject.toml. Previous versions would load the backend and
+    then check that it was loaded from the specified path; the new
+    version only loads it from the specified path. The
+    BackendInvalid exception is now a synonym for
+    :exc:`BackendUnavailable`, and code should move to using the
+    latter name.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:31:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

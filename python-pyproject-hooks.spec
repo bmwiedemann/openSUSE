@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyproject-hooks
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,23 +15,22 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define fname pyproject_hooks
+
 %{?sle15_python_module_pythons}
 Name:           python-pyproject-hooks
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Wrappers to call pyproject.toml-based build backend hooks
 License:        MIT
 URL:            https://github.com/pypa/pyproject-hooks
-Source:         https://files.pythonhosted.org/packages/source/p/pyproject_hooks/%{fname}-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module pip}
+Source:         https://github.com/pypa/pyproject-hooks/archive/refs/tags/v%{version}.tar.gz#/pyproject_hooks-%{version}-gh.tar.gz
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testpath}
-BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 %if 0%{?python_version_nodots} < 311
 Requires:       python-tomli >= 1.1.0
 %endif
@@ -48,7 +47,7 @@ This is an underlying piece for `pip`, `build` and other "build frontends" use t
 Note: The ``pep517`` project has been replaced by this project (low level) and the ``build`` project (high level).
 
 %prep
-%setup -q -n %{fname}-%{version}
+%setup -q -n pyproject-hooks-%{version}
 
 %build
 %pyproject_wheel
@@ -58,7 +57,8 @@ Note: The ``pep517`` project has been replaced by this project (low level) and t
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# https://github.com/pypa/pyproject-hooks/issues/203
+%pytest -k "not test_setup"
 
 %files %{python_files}
 %{python_sitelib}/pyproject_hooks

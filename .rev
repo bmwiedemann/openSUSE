@@ -15,4 +15,23 @@
     <comment></comment>
     <requestid>1081625</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>44fbae847e6b4ca12a91391fb54a2a85</srcmd5>
+    <version>1.1.0</version>
+    <time>1719936874</time>
+    <user>anag+factory</user>
+    <comment>- skip test that fails with setuptools 70.1
+  (gh#pypa/pyproject-hooks#203)
+
+- update to 1.1.0:
+  * Add type annotations to the public API.
+  * More careful handling of the backend-path key from
+    pyproject.toml. Previous versions would load the backend and
+    then check that it was loaded from the specified path; the new
+    version only loads it from the specified path. The
+    BackendInvalid exception is now a synonym for
+    :exc:`BackendUnavailable`, and code should move to using the
+    latter name.</comment>
+    <requestid>1184122</requestid>
+  </revision>
 </revisionlist>
