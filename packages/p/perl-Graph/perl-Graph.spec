@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Graph
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Graph
 Name:           perl-Graph
-Version:        0.9727
+Version:        0.9729
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Graph data structures and algorithms
