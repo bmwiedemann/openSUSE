@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 30 21:26:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add py313-compat.patch
+  py313-use-format-unraisable.patch
+  py313-use-hashpointer.patch: add upstream patches for py3.13
+  support
+
+-------------------------------------------------------------------
 Thu Feb 29 09:46:12 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - drop unnecessary buildrequire python-py
@@ -46,7 +54,7 @@ Thu Apr 13 22:40:28 UTC 2023 - Matej Cepl <mcepl@suse.com>
 Fri Jan  6 08:59:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add 8a3c2c816d789639b49d3ae867213393ed7abdff.patch to resolve
-  testsuite failures with Python 3.11 
+  testsuite failures with Python 3.11
 
 -------------------------------------------------------------------
 Mon Dec  5 12:22:40 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
@@ -78,7 +86,7 @@ Sat Nov  6 17:37:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
 Fri Jul 16 19:47:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.14.6:
-  * Revert "grovel: detect :float and :double in the :auto type"  
+  * Revert "grovel: detect :float and :double in the :auto type"
 
 -------------------------------------------------------------------
 Fri Feb 12 20:15:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -90,19 +98,19 @@ Fri Feb 12 20:15:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
 Sat Dec 19 10:46:36 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.14.4:
-  * no upstream changelog provided 
+  * no upstream changelog provided
 
 -------------------------------------------------------------------
 Mon Sep 28 11:23:13 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.14.3:
-  * no upstream changelog provided 
+  * no upstream changelog provided
 
 -------------------------------------------------------------------
 Thu Aug 20 12:13:23 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 1.14.2
- * CPython 3 on Windows: we again try to compile with Py_LIMITED_API by default 
+ * CPython 3 on Windows: we again try to compile with Py_LIMITED_API by default
 
 -------------------------------------------------------------------
 Mon Aug 10 08:10:36 UTC 2020 - Dirk Mueller <dmueller@suse.com>
@@ -274,7 +282,7 @@ Fri Nov  3 15:56:32 UTC 2017 - arun@gmx.de
 -------------------------------------------------------------------
 Wed Oct  4 11:36:56 UTC 2017 - sean.marlow@suse.com
 
-- Update pytest in spec to add c directory tests in addition to 
+- Update pytest in spec to add c directory tests in addition to
   testing directory.
 - Omit test_init_once_multithread tests as they rely on multiple
   threads finishing in a given time. Returns sporadic pass/fail
@@ -335,7 +343,7 @@ Thu Sep 28 15:00:46 UTC 2017 - sean.marlow@suse.com
     I just noticed, but pycparser always supported the preprocessor
     directive # 42 "foo.h" to mean “from the next line, we’re in
     file foo.h starting from line 42”, which it puts in the error
-    messages. 
+    messages.
 
 -------------------------------------------------------------------
 Thu Jun 29 16:03:46 UTC 2017 - tbechtold@suse.com

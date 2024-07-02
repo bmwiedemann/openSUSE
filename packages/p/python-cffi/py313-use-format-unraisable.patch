@@ -1,0 +1,30 @@
+From 49127c6929bfc7186fbfd3819dd5e058ad888de4 Mon Sep 17 00:00:00 2001
+From: Victor Stinner <vstinner@python.org>
+Date: Thu, 16 Nov 2023 17:26:12 +0100
+Subject: [PATCH] Use PyErr_FormatUnraisable() on Python 3.13 (#34)
+
+Use the new public PyErr_FormatUnraisable() on Python 3.13.
+
+The private _PyErr_WriteUnraisableMsg() function was removed in
+Python 3.13:
+https://github.com/python/cpython/pull/111643
+---
+ src/c/_cffi_backend.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/c/_cffi_backend.c b/src/c/_cffi_backend.c
+index 76ed8f09..5e284e00 100644
+--- a/src/c/_cffi_backend.c
++++ b/src/c/_cffi_backend.c
+@@ -6118,7 +6118,11 @@ static void _my_PyErr_WriteUnraisable(PyObject *t, PyObject *v, PyObject *tb,
+ 
+     PyErr_Restore(t, v, tb);
+     if (s != NULL) {
++#if PY_VERSION_HEX >= 0x030D0000
++        PyErr_FormatUnraisable("Exception ignored %S", s);
++#else
+         _PyErr_WriteUnraisableMsg(PyText_AS_UTF8(s), NULL);
++#endif
+         Py_DECREF(s);
+     }
+     else

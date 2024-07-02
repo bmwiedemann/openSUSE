@@ -1,0 +1,32 @@
+From c27335f0f8e1e4436082236e92ddabe1b8324d22 Mon Sep 17 00:00:00 2001
+From: Matt Davis <6775756+nitzmahone@users.noreply.github.com>
+Date: Wed, 7 Feb 2024 09:12:08 -0800
+Subject: [PATCH] use public Py_HashPointer API on 3.13+ (#52)
+
+* use public Py_HashPointer API on 3.13+
+
+* Wrong direction in the conditional
+
+---------
+
+Co-authored-by: Armin Rigo <armin.rigo@gmail.com>
+---
+ src/c/_cffi_backend.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/c/_cffi_backend.c b/src/c/_cffi_backend.c
+index cb82e16d..14fe9106 100644
+--- a/src/c/_cffi_backend.c
++++ b/src/c/_cffi_backend.c
+@@ -2466,7 +2466,11 @@ static Py_hash_t cdata_hash(PyObject *v)
+         }
+         Py_DECREF(vv);
+     }
++#if PY_VERSION_HEX < 0x030D0000
+     return _Py_HashPointer(((CDataObject *)v)->c_data);
++#else
++    return Py_HashPointer(((CDataObject *)v)->c_data);
++#endif
+ }
+ 
+ static Py_ssize_t
