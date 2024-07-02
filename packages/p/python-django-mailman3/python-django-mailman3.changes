@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jul  2 08:51:37 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Re-download pytest.ini and fix multiflavor packaging
+
+-------------------------------------------------------------------
+Sun Jun 23 13:13:56 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.3.14
+  * See https://gitlab.com/mailman/django-mailman3/-/blob/v1.3.14/README.rst
+    or the packaged README.rst.
+
+-------------------------------------------------------------------
+Sun Jun 23 08:05:58 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.3.13
+  * See https://gitlab.com/mailman/django-mailman3/-/blob/v1.3.13/README.rst
+    or the packaged README.rst.
+
+-------------------------------------------------------------------
+Tue Apr 23 09:13:39 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.3.12
+  * See https://gitlab.com/mailman/django-mailman3/-/blob/v1.3.12/README.rst
+    or README.rst packaged in this file.
+- Added pytest.ini
+
+-------------------------------------------------------------------
 Thu Feb 29 21:07:54 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Build PEP517 wheel
