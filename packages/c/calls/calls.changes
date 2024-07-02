@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 29 12:28:42 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 46.3:
+  + Fix crash when Modem has no location services.
+  + Fix crash when SIP handles have never gotten set up.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 15 10:33:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:

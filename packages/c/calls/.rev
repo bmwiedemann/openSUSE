@@ -86,4 +86,15 @@ Pushing GNOME 45.rc packages</comment>
     <comment>GNOME 46 (forwarded request 1158199 from dimstar)</comment>
     <requestid>1159461</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>10ee00f4d30b074a7998e1b8bf8b212a</srcmd5>
+    <version>46.3</version>
+    <time>1719936995</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.3:
+  + Fix crash when Modem has no location services.
+  + Fix crash when SIP handles have never gotten set up.
+  + Updated translations. (forwarded request 1183985 from iznogood)</comment>
+    <requestid>1184255</requestid>
+  </revision>
 </revisionlist>
