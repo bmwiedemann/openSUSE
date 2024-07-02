@@ -19,6 +19,7 @@
 %{?sle15_python_module_pythons}
 %define srcname gast
 Name:           python-gast
+# only update when python-pythran is compatible
 Version:        0.5.4
 Release:        0
 Summary:        Python AST that abstracts the underlying Python version

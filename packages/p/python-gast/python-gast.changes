@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 30 20:51:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add comment on interdependency with pythran
+
+-------------------------------------------------------------------
 Wed Jan  3 10:02:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - require setuptools

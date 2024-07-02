@@ -91,4 +91,12 @@
   * Support match statement from python 3.10</comment>
     <requestid>1136450</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>8168b2628e32e71da9fcac911b3dd6c1</srcmd5>
+    <version>0.5.4</version>
+    <time>1719936878</time>
+    <user>anag+factory</user>
+    <comment>- add comment on interdependency with pythran</comment>
+    <requestid>1184145</requestid>
+  </revision>
 </revisionlist>
