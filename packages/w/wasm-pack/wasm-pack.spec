@@ -1,7 +1,7 @@
 #
 # spec file for package wasm-pack
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wasm-pack
-Version:        0.12.1~0
+Version:        0.13.0~0
 Release:        0
 Summary:        Your favorite Rust → Wasm workflow tool!
 License:        (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT
@@ -25,8 +25,9 @@ Group:          Development/Languages/Rust
 URL:            https://github.com/rustwasm/wasm-pack
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 BuildRequires:  cargo-packaging
+BuildRequires:  clang
+BuildRequires:  cmake
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description
@@ -37,13 +38,15 @@ alongside any javascript packages in workflows that you already use, such as web
 
 %prep
 %autosetup -a1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
+export CC=/usr/bin/clang
+export CXX=/usr/bin/clang++
 %{cargo_build}
 
 %install
+export CC=/usr/bin/clang
+export CXX=/usr/bin/clang++
 %{cargo_install}
 
 %files

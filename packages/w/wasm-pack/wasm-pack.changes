@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Jul 02 01:42:06 UTC 2024 - william.brown@suse.com
+
+- Update to version 0.13.0~0:
+  * 0.13.0
+  * test: Bump version for wasm-bindgen
+  * fix: optimize out-dir display
+  * feat(webdriver): support geckodriver for `linux-aarch64`
+  * chore(deps): bump tar from 6.1.11 to 6.2.1 in /npm
+  * ci: undo cachebust
+  * fix assumption in prior commit
+  * fix prior commit
+  * add linux aarch64 to targets; bump binaryen vers.
+  * ci: cachebust
+  * ci: install firefox on macos-latest
+  * ci: use macos-13 github actions runner
+  * test: accept new finish message
+  * fix: update chromedriver download URL
+  * Fix local navigation taking one step too far
+  * chore(deps): bump rustls from 0.21.9 to 0.21.11
+  * chore(deps): bump follow-redirects from 1.14.9 to 1.15.6 in /npm
+  * pkg-dir option for pack and publish commands
+  * Fix typo in README.md
+  * Remove unused `greet` argument.
+  * Add `--target web` to quick start build command
+  * Add mingw support to npm package
+  * chore: document deno in build target
+  * chore: Bump binary-install
+  * chore: Update Cargo.lock
+  * Update build.md
+  * Rewrite wasm_target to use target-libdir
+  * chore(deps): bump rustix from 0.37.20 to 0.37.25
+  * Update readme
+  * Fix passing relative paths to cargo
+  * Select correct target for chromedriver
+  * Use new endpoints for chromedriver
+  * chore(deps): bump rustls-webpki from 0.100.1 to 0.100.2
+  * Add option to skip optimization with wasm-opt
+  * Fix error and warnings in install script
+  * test: update new test to expect main instead of module
+  * refactor: rename type_ to ty in ESModulesPackage
+  * test: update tests to conform to this change
+  * fix: declare ES module in package.json
+
+-------------------------------------------------------------------
 Wed Jun 28 02:49:50 UTC 2023 - william.brown@suse.com
 
 - Update to version 0.12.1~0:
