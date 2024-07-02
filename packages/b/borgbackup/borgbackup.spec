@@ -41,7 +41,7 @@
 %bcond_with     borg_sysblake2
 %endif
 Name:           borgbackup
-Version:        1.2.7
+Version:        1.2.8
 Release:        0
 Summary:        Deduplicating backup program with compression and authenticated encryption
 License:        BSD-3-Clause
@@ -85,11 +85,11 @@ BuildRequires:  libzstd-devel >= 1.3.0
 # msgpack is not included with borg version >= 1.2.0 anymore
 # The metadata is very specific about the version, the command will fail if msgpack is out of range -- boo#1198267
 # See https://github.com/borgbackup/borg/blob/1.2.1/setup.py#L68 and update this for every version bump!
-BuildRequires:  (python3-msgpack >= 0.5.6 with python3-msgpack <= 1.0.7)
+BuildRequires:  (python3-msgpack >= 0.5.6 with python3-msgpack <= 1.0.8)
 BuildConflicts: python3-msgpack = 1.0.1
 Conflicts:      python3-msgpack = 1.0.1
 Requires:       python3-packaging
-Requires:       (python3-msgpack >= 0.5.6 with python3-msgpack <= 1.0.7)
+Requires:       (python3-msgpack >= 0.5.6 with python3-msgpack <= 1.0.8)
 %if 0%{?suse_version} > 1500
 # upstream recommends a "Requires" if pyfuse3 is available
 Requires:       python3-pyfuse3 >= 3.1.1
