@@ -1171,4 +1171,15 @@ New stable release</comment>
   + Updated translations. (forwarded request 1176669 from dimstar)</comment>
     <requestid>1176676</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>a84f0b4f61c22371ca34a347fe8f4c04</srcmd5>
+    <version>46.3</version>
+    <time>1719936950</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.3:
+  + Show &quot;Install All&quot; button only for codecs
+  + Prefer vendor name from os release in app origin
+  + Updated translations. (forwarded request 1183899 from iznogood)</comment>
+    <requestid>1184249</requestid>
+  </revision>
 </revisionlist>
