@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  2 06:10:51 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch transfig-gcc14.patch
+  * Fix the last missing declaration of put_msg() (boo#1225947 
+
+-------------------------------------------------------------------
 Mon Feb 26 15:47:27 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN

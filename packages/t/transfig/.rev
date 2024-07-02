@@ -608,4 +608,13 @@
     <comment>- Use %patch -P N instead of deprecated %patchN (forwarded request 1151818 from pgajdos)</comment>
     <requestid>1152019</requestid>
   </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>b009b46544a2a0545b5d30134db418af</srcmd5>
+    <version>3.2.9</version>
+    <time>1719936929</time>
+    <user>anag+factory</user>
+    <comment>- Add patch transfig-gcc14.patch
+  * Fix the last missing declaration of put_msg() (boo#1225947</comment>
+    <requestid>1184778</requestid>
+  </revision>
 </revisionlist>

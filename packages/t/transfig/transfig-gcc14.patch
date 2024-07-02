@@ -1,0 +1,12 @@
+Declare put_msg() (boo#1225947)
+
+--- fig2dev/dev/genpstex.c
++++ fig2dev/dev/genpstex.c	2024-07-02 06:04:04.359357084 +0000
+@@ -53,6 +53,7 @@
+ #include "object.h"
+ #include "texfonts.h"
+ #include "setfigfont.h"
++#include "messages.h"
+ 
+ extern double rad2deg;
+ 

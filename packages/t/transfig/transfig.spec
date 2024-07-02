@@ -1,7 +1,7 @@
 #
 # spec file for package transfig
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Patch0:         transfig-3.2.9.dif
 Patch4:         transfig-fix-afl.patch
 Patch43:        fig2dev-3.2.6-fig2mpdf.patch
 Patch44:        fig2dev-3.2.6-fig2mpdf-doc.patch
+Patch45:        transfig-gcc14.patch
 Patch47:        0001-Use-native-fig2dev-pdf-output-instead-of-epstopdf.patch
 BuildRequires:  fdupes
 BuildRequires:  libjpeg-devel
@@ -71,6 +72,7 @@ find -type f -exec chmod a-x,go-w '{}' \;
 %patch -P 4 -p1 -b .afl
 %patch -P 43 -p1 -b .mpdf
 %patch -P 44 -p1 -b .mpdfdoc
+%patch -P 45 -p0 -b .gcc14
 %patch -P 47 -p1 -b .epstopdf
 # remove obsolete libc fallback implementations
 rm fig2dev/lib/*.c
