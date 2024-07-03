@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1707217719e3b78388ad42cb9c362fab</srcmd5>
+    <version>20200503</version>
+    <time>1597220864</time>
+    <user>dimstar_suse</user>
+    <comment>Screenshot applet for Budgie</comment>
+    <requestid>825326</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3007e445fbca31246ab51c5c825a45a4</srcmd5>
+    <version>20200503</version>
+    <time>1647458487</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid ISO C warnings by setting -Wno-pedantic
+</comment>
+    <requestid>962146</requestid>
+  </revision>
+</revisionlist>

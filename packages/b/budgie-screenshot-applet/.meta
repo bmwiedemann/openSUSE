@@ -1,0 +1,5 @@
+<package name="budgie-screenshot-applet" project="openSUSE:Factory">
+  <title>Budgie Screenshot Widget</title>
+  <description>Take a screenshot of your desktop, a window or region; save to disk and upload.</description>
+  <devel project="X11:Solus" package="budgie-screenshot-applet"/>
+</package>
