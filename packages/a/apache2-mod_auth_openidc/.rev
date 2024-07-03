@@ -1,0 +1,359 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0bcc24a353c7b773b9518b114ec07ca7</srcmd5>
+    <version>2.3.8</version>
+    <time>1543223903</time>
+    <user>dimstar_suse</user>
+    <comment>It can be probably needed because of fate#323817 and fate#324447</comment>
+    <requestid>645516</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9f6bd2047df07475efc29df5901ddb41</srcmd5>
+    <version>2.3.8</version>
+    <time>1543953348</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653617</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>70c17dd47dca8cfce217b4ade2082d1d</srcmd5>
+    <version>2.3.8</version>
+    <time>1549018085</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>670308</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b4b190296664f2122d1a9854f31ffa33</srcmd5>
+    <version>2.3.10.2</version>
+    <time>1550668512</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>677627</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0db12987e0da9b77c9f52da9d196d7b4</srcmd5>
+    <version>2.3.11</version>
+    <time>1553084395</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.11
+  Features
+  * dynamically pass query params to the authorization request
+   + using OIDCAuthRequestParams foo=# and/or OIDCPathAuthRequestParams foo=#
+  * add session expiry info to session info hook response
+    + session inactivity key is timeout now (was exp)
+    + session expiry key is exp
+  Other
+  * allow compilation without memcache support on older platforms
+    not providing apr_memcache.h (forwarded request 684786 from mnhauke)</comment>
+    <requestid>686338</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e8dfe55d78891cc2f6dae5bcf2253f39</srcmd5>
+    <version>2.4.0</version>
+    <time>1566665107</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.4.0 (forwarded request 725421 from stroeder)</comment>
+    <requestid>725544</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e7b00395be218f50a00d9e6f8a258b72</srcmd5>
+    <version>2.4.0.3</version>
+    <time>1572443348</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0.3
+Security
+  * improve validation of the post-logout URL parameter on logout;
+    thanks AIMOTO Norihito; closes #449
+    [bsc#1153666], [CVE-2019-14857]
+Bugfixes
+  * changed storing POST params from localStorage to sessionStorage
+    due to some issue of losing data in localStorage in Firefox
+    (private mode); fixes #447 #441 (forwarded request 744137 from kstreitova)</comment>
+    <requestid>744159</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9a78f80808b9934975ae4c5f8a07ad8a</srcmd5>
+    <version>2.4.1</version>
+    <time>1583227061</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>780843</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cda24846cde829cbb09fc2436f2ddd11</srcmd5>
+    <version>2.4.2.1</version>
+    <time>1585176446</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.2.1
+  Changes since 2.4.1:
+  * oops: fix json_deep_copy of claims
+  * fix memory leak in OAuth 2.0 JWT validation
+  * fix configured private/public key cleanup on process exit
+  * allow for expressions in Require statements, see #469
+  * always refresh keys from jwks_uri when there is no kid in the
+    JWT header
+  * destroy shared memory segments only in parent process; see #458
+  * fix memory leaks introduced by #457
+  * if content was already returned via html/http send then don't
+    return 500 but send 200 to avoid extraneous internal error
+    document text to be sent on some Apache 2.4.x versions
+  * if OIDCPublicKeyFiles contains a certificate, the corresponding
+    x5c, x5t and x5t#256 parameters will be added to the generated
+    jwkset available at &quot;&amp;lt;redirect_uri&amp;gt;?jwks=rsa&quot;
+  - fix: also add SameSite=None to by-value session cookies
+  - try to fix graceful restart crash; see #458 (forwarded request 788227 from mnhauke)</comment>
+    <requestid>788232</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>31766b0e8929a8532e06107e838667cf</srcmd5>
+    <version>2.4.3</version>
+    <time>1597220906</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.3
+  * Bugfixes
+    - prevent open redirect on refresh token requests
+    - add new OIDCRedirectURLsAllowed primitive to handle post logout
+      and refresh-return-to validation
+      addresses #453; closes #466
+    - when stripping cookies, add a space between cookies in the resulting header (required by RFC 6265)
+    - fix compilation against Apache 2.0
+  * Features
+    - add OIDCStateInputHeaders that allows configuring the header values 
+      used to calculate the fingerprint of the state during authentication
+    - added OIDCValidateIssuer primitive to allow for disabling of issuer 
+      matching, helps to support multi-tenant applications i.e. Microsoft AAD</comment>
+    <requestid>825751</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4dd94b10084aec49005adab65399f4ed</srcmd5>
+    <version>2.4.4</version>
+    <time>1599088552</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.4
+  * Security
+    - prevent XSS and open redirect on OIDC session management OP iframe,
+      introducing generic OIDCRedirectURLsAllowed primitive; thanks Andrew Brady
+    - add OIDCStateCookiePrefix primitive for the state cookie prefix to anonymise the state cookie name
+  * Bugfixes
+    - fix double Set-Cookie behaviour when using OIDCSessionType client-cookie,
+      calling the session info hook and writing out a session update (twice); thanks @deisser
+    - reverse order of creating HTML response and writing the (client-type)
+      session cookie in the session info hook so the session data is actually saved; thanks @deisser
+    - delete state cookie when it cannot be decoded/decrypted
+    - avoid an Apache authorisation error and HTTP 500 when logout is triggered by a different RP
+  * Features
+    - add conditional expression to OIDCUnAuthAction to override auto-detection of
+      non-browser requests; see #479; thanks @raro42 and @marcstern
+  * Other
+    - fixes for various compiler warnings/issues (older and newer versions of GCC)
+    - add grant_types to dynamic client registration request [OIDC conformance test suite]
+    - don't send access_token in user info request when method is set to POST
+      [OIDC conformance test suite]
+    - add recommended cache headers on backchannel logout response
+      https://openid.net/specs/openid-connect-backchannel-1_0.html#rfc.section.2.8 [OIDC conformance test suite]
+    - allow Content-Type check on backchannel logout to have postfixes (utf-8 etc.) [OIDC conformance test suite] (forwarded request 831329 from stroeder)</comment>
+    <requestid>831365</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0d522598e7996f62989f6fc8f3b43b61</srcmd5>
+    <version>2.4.4.1</version>
+    <time>1599771168</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.4.1
+  * Bugfixes
+    - add SameSite=None attribute on cookie clearance / logout and make sure it works in OP iframes
+  * Packaging
+    - the libcjose &amp;gt;= 0.5.1 binaries that this module depends on are available from the &quot;Assets&quot; section in release 2.4.0 (forwarded request 833319 from stroeder)</comment>
+    <requestid>833400</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cc0250435bd910f1419bd839e3974cb5</srcmd5>
+    <version>2.4.5</version>
+    <time>1606428826</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850781</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>937b6f63be89ae43337b3dd9c857f828</srcmd5>
+    <version>2.4.6</version>
+    <time>1617131098</time>
+    <user>RBrownSUSE</user>
+    <comment>- re-download tarball
+
+- Update to version 2.4.6
+  * Bugfixes
+    - don't set SameSite=None on cookies when on plain http
+    - fix semaphore cleanup on graceful restarts; see #522
+    - fix inconsistent public/private keys loading order; closes #515
+    - return HTTP 400 Bad Request instead of 500 Internal Server Error when state cookie matching fails
+    - optimize Redis AUTH execution once per connection
+    - avoid segmentation fault when hitting an endpoint configured with
+      AuthType openid-connect in an OAuth 2.0 only setup; see #529
+    - make sure the module compiles with Apache 2.2 for passphrase exec:
+  * Features
+    - add Redis database selection option with OIDCRedisCacheDatabase; closes #423
+    - add base64url option to OIDCPassClaimsAs primitive; closes #417
+    - add environment variable to control libcURL CURLOPT_SSL_OPTIONS behaviors e.g.:
+    - SetEnvIfExpr true CURLOPT_SSL_OPTIONS=CURLSSLOPT_NO_REVOKE
+    - removed support for https://tools.ietf.org/html/draft-bradley-oauth-jwt-encoded-state
+  * Security
+    - avoid displaying the client_secret in debug logs
+  * Dependencies
+    - libcjose &gt;= 0.5.1</comment>
+    <requestid>873294</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>39ea8567d418f0771050614d0fe27347</srcmd5>
+    <version>2.4.7</version>
+    <time>1617722994</time>
+    <user>RBrownSUSE</user>
+    <comment>Update to version 2.4.7 (forwarded request 883107 from stroeder)</comment>
+    <requestid>883176</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>c8b3c49520dfd9792fc8f1b1014193d0</srcmd5>
+    <version>2.4.7</version>
+    <time>1618223852</time>
+    <user>dimstar_suse</user>
+    <comment>- test package
+
+- fix installation path on Factory (boo#1184572)
+- switch to bootstrapped tarball
+- package the license, docs and sample config</comment>
+    <requestid>884568</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>33988c69fd6ba05a668f3801845f7fea</srcmd5>
+    <version>2.4.8.1</version>
+    <time>1620653925</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891851</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4520bb6605a3249472480d24637d1bc8</srcmd5>
+    <version>2.4.8.2</version>
+    <time>1621439354</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894145</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>64774f7f340aae3cc585f46081bc68cb</srcmd5>
+    <version>2.4.9</version>
+    <time>1627076480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907973</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d4396d588c5b1e68124e3828e4f9be4b</srcmd5>
+    <version>2.4.9.1</version>
+    <time>1629269749</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 2.4.9.1
+  fix retried Redis commands after a reconnect; see #642 (forwarded request 912043 from stroeder)</comment>
+    <requestid>912383</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ab3977598da449e4f3cb4286ae6e32da</srcmd5>
+    <version>2.4.9.2</version>
+    <time>1629795294</time>
+    <user>dimstar_suse</user>
+    <comment>- use declared tarball
+
+- update to 2.4.9.2
+  * Bugfixes
+    - fix graceful restart (regression); see #458
+  * Features
+    - preserve session cookie in the event of a cache backend failure
+    - update the id_token in the session cache if one is provided while
+      refreshing the access token</comment>
+    <requestid>913945</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ff076a58b1f994828c8dca528d699b58</srcmd5>
+    <version>2.4.9.3</version>
+    <time>1630324518</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 914952 from dspinella)</comment>
+    <requestid>914953</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>20c5671326acf42e52412733d7d9023b</srcmd5>
+    <version>2.4.9.4</version>
+    <time>1630936687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917070</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>36579554c8f8de7d6d9ada14d76d41ca</srcmd5>
+    <version>2.4.11.2</version>
+    <time>1659034751</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>991565</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>76d945c60e07b2afb5948785cf8c5e9f</srcmd5>
+    <version>2.4.11.3</version>
+    <time>1661346656</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998851</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>85a1d7d64f71ead491d0e1616adba0c5</srcmd5>
+    <version>2.4.12</version>
+    <time>1666102008</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1029694</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e942288105512fe4a25b52557d8c6527</srcmd5>
+    <version>2.4.12.1</version>
+    <time>1668782662</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036637</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>fe9f68cd73c66b26424a3b7c45192845</srcmd5>
+    <version>2.4.12.2</version>
+    <time>1671889892</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1044612</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>faa22297046ea535d7d594de59be3369</srcmd5>
+    <version>2.4.14.4</version>
+    <time>1701378274</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130032</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>bc2a6b8009655c5b22752165dac5d25f</srcmd5>
+    <version>2.4.15.3</version>
+    <time>1708459987</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.4.15.3:
+  * for the complete list of changes, please have a look at ChangeLog
+- Fix CVE-2024-24814, DoS when `OIDCSessionType client-cookie` is set
+  and a crafted Cookie header is supplied, bsc#1219911 (forwarded request 1147162 from dspinella)</comment>
+    <requestid>1147523</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>069d268b08a52418bad47fa5e7334365</srcmd5>
+    <version>2.4.15.6</version>
+    <time>1712764212</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1166662</requestid>
+  </revision>
+</revisionlist>
