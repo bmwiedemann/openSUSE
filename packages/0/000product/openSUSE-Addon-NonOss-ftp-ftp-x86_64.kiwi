@@ -1,0 +1,218 @@
+<image name="OBS__openSUSE-Addon-NonOss___20240702" schemaversion="4.1">
+  <description type="system">
+    <author>The SUSE Team</author>
+    <contact>build@opensuse.org</contact>
+    <specification>openSUSE NonOSS Addon</specification>
+  </description>
+  <preferences>
+    <type image="product"/>
+    <version>1.0.0</version>
+    <packagemanager>zypper</packagemanager>
+  </preferences>
+  <instsource>
+    <architectures>
+      <arch id="i386" name="dummy" fallback="noarch"/>
+      <arch id="i486" name="dummy" fallback="i386"/>
+      <arch id="i586" name="dummy" fallback="i486"/>
+      <arch id="i686" name="dummy" fallback="i586"/>
+      <arch id="noarch" name="dummy"/>
+      <arch id="x86_64" name="dummy" fallback="i686"/>
+      <requiredarch ref="x86_64"/>
+    </architectures>
+    <productoptions>
+      <productvar name="DISTNAME">openSUSE-Addon-NonOss</productvar>
+      <productvar name="FLAVOR">ftp</productvar>
+      <productvar name="MAKE_LISTINGS">true</productvar>
+      <productvar name="MEDIUM_NAME">openSUSE-Addon-NonOss-FTP-x86_64</productvar>
+      <productvar name="MULTIPLE_MEDIA">true</productvar>
+      <productvar name="PRODUCT_DIR">/</productvar>
+      <productvar name="PRODUCT_NAME">$DISTNAME-$FLAVOR</productvar>
+      <productvar name="PRODUCT_RELEASE">0</productvar>
+      <productvar name="PRODUCT_SUMMARY">non oss addon</productvar>
+      <productvar name="PRODUCT_THEME">openSUSE</productvar>
+      <productvar name="PRODUCT_VERSION">$VERSION</productvar>
+      <productvar name="REPO_ONLY">true</productvar>
+      <productvar name="SEPARATE_MEDIA">true</productvar>
+      <productvar name="SHA1OPT">-x -2</productvar>
+      <productvar name="VENDOR">openSUSE</productvar>
+      <productvar name="VERSION">20240702</productvar>
+      <productinfo name="CONTENTSTYLE">11</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-addon-nonoss:20240702,openSUSE NonOSS Addon</productinfo>
+      <productinfo name="LINGUAS">af ar be_BY bg br ca cy el et ga gl gu_IN he hi_IN hr ka km ko lt mk nn pa_IN rw sk sl sr_CS ss st tg th tr uk ve vi xh zu </productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-Addon-NonOss/20240702/x86_64</productinfo>
+      <productinfo name="VENDOR">openSUSE</productinfo>
+      <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
+      <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
+      <productoption name="REPO_LOCATION"></productoption>
+      <productoption name="SOURCEMEDIUM">2</productoption>
+    </productoptions>
+    <instrepo name="repository_1" priority="1" local="true">
+      <source path="obs://openSUSE:Factory:NonFree/standard"/>
+    </instrepo>
+    <metadata>
+      <repopackage name="skelcd-openSUSE-non-OSS" medium="0" removearch="src,nosrc" onlyarch="x86_64"/>
+    </metadata>
+    <repopackages>
+      <repopackage name="*"/>
+      <repopackage name="ant-scala-bootstrap" onlyarch="skipit"/>
+      <repopackage name="antlr-bootstrap" onlyarch="skipit"/>
+      <repopackage name="antlr-bootstrap" onlyarch="skipit"/>
+      <repopackage name="antlr3-bootstrap-tool" onlyarch="skipit"/>
+      <repopackage name="bonnie-ctcs2-glue" onlyarch="skipit"/>
+      <repopackage name="bootdisk" onlyarch="skipit"/>
+      <repopackage name="bootpmac" onlyarch="skipit"/>
+      <repopackage name="bootsplash-branding-SLED" onlyarch="skipit"/>
+      <repopackage name="bootsplash-branding-SLES" onlyarch="skipit"/>
+      <repopackage name="clicfs-profile-gnome" onlyarch="skipit"/>
+      <repopackage name="clicfs-profile-kde" onlyarch="skipit"/>
+      <repopackage name="compiz-branding-SLE" onlyarch="skipit"/>
+      <repopackage name="cpq_etk" onlyarch="skipit"/>
+      <repopackage name="dbench-ctcs2-glue" onlyarch="skipit"/>
+      <repopackage name="desktop-data-SLED" onlyarch="skipit"/>
+      <repopackage name="desktop-data-SLED-extra-gnome" onlyarch="skipit"/>
+      <repopackage name="desktop-data-SLES-extra-gnome" onlyarch="skipit"/>
+      <repopackage name="dummy-release" onlyarch="skipit"/>
+      <repopackage name="eclipse-bootstrap-debuginfo" onlyarch="skipit"/>
+      <repopackage name="eclipse-bootstrap-debugsource" onlyarch="skipit"/>
+      <repopackage name="eclipse-contributor-tools-bootstrap" onlyarch="skipit"/>
+      <repopackage name="eclipse-equinox-osgi-bootstrap" onlyarch="skipit"/>
+      <repopackage name="eclipse-jdt-bootstrap" onlyarch="skipit"/>
+      <repopackage name="eclipse-p2-discovery-bootstrap" onlyarch="skipit"/>
+      <repopackage name="eclipse-pde-bootstrap" onlyarch="skipit"/>
+      <repopackage name="eclipse-platform-bootstrap" onlyarch="skipit"/>
+      <repopackage name="eclipse-platform-bootstrap-debuginfo" onlyarch="skipit"/>
+      <repopackage name="eclipse-swt-bootstrap" onlyarch="skipit"/>
+      <repopackage name="eclipse-swt-bootstrap-debuginfo" onlyarch="skipit"/>
+      <repopackage name="eclipse-tests-bootstrap" onlyarch="skipit"/>
+      <repopackage name="enchant-zemberek" onlyarch="skipit"/>
+      <repopackage name="epiphany-branding-SLED" onlyarch="skipit"/>
+      <repopackage name="gconf2-branding-SLED" onlyarch="skipit"/>
+      <repopackage name="gconf2-branding-SLES" onlyarch="skipit"/>
+      <repopackage name="gfxboot-branding-SLED" onlyarch="skipit"/>
+      <repopackage name="gfxboot-branding-SLES" onlyarch="skipit"/>
+      <repopackage name="ghc-bootstrap" onlyarch="skipit"/>
+      <repopackage name="ghostscript-mini" onlyarch="skipit"/>
+      <repopackage name="ghostscript-mini-devel" onlyarch="skipit"/>
+      <repopackage name="gimp-branding-SLED" onlyarch="skipit"/>
+      <repopackage name="glib2-branding-SLED" onlyarch="skipit"/>
+      <repopackage name="glib2-branding-SLES" onlyarch="skipit"/>
+      <repopackage name="gnome-menus-branding-SLED" onlyarch="skipit"/>
+      <repopackage name="gnome-panel-branding-SLED" onlyarch="skipit"/>
+      <repopackage name="gpars-bootstrap" onlyarch="skipit"/>
+      <repopackage name="gradle-bootstrap" onlyarch="skipit"/>
+      <repopackage name="groovy-bootstrap" onlyarch="skipit"/>
+      <repopackage name="gtk2-branding-SLED" onlyarch="skipit"/>
+      <repopackage name="gtk2-theme-SLED" onlyarch="skipit"/>
+      <repopackage name="gtk3-branding-SLED" onlyarch="skipit"/>
+      <repopackage name="i386-rescue" onlyarch="skipit"/>
+      <repopackage name="installation-images" onlyarch="skipit"/>
+      <repopackage name="installation-images-debuginfodeps-Kubic" onlyarch="skipit"/>
+      <repopackage name="installation-images-extras" onlyarch="skipit"/>
+      <repopackage name="installation-images-openSUSE" onlyarch="skipit"/>
+      <repopackage name="installation-images-openSUSE-debuginfo" onlyarch="skipit"/>
+      <repopackage name="instlux" onlyarch="skipit"/>
+      <repopackage name="instlux-local" onlyarch="skipit"/>
+      <repopackage name="instlux-net" onlyarch="skipit"/>
+      <repopackage name="java-1_7_0-bootstrap" onlyarch="skipit"/>
+      <repopackage name="java-1_7_0-bootstrap-devel" onlyarch="skipit"/>
+      <repopackage name="java-1_7_0-bootstrap-headless" onlyarch="skipit"/>
+      <repopackage name="java-1_7_0-openjdk-bootstrap" onlyarch="skipit"/>
+      <repopackage name="java-1_7_0-openjdk-bootstrap-devel" onlyarch="skipit"/>
+      <repopackage name="java-1_7_0-openjdk-bootstrap-headless" onlyarch="skipit"/>
+      <repopackage name="java-cup-bootstrap" onlyarch="skipit"/>
+      <repopackage name="java-cup-bootstrap" onlyarch="skipit"/>
+      <repopackage name="javacc-bootstrap" onlyarch="skipit"/>
+      <repopackage name="jaxen-bootstrap" onlyarch="skipit"/>
+      <repopackage name="jflex-bootstrap" onlyarch="skipit"/>
+      <repopackage name="jgit-bootstrap" onlyarch="skipit"/>
+      <repopackage name="kiwi-image-livecd-gnome" onlyarch="skipit"/>
+      <repopackage name="kiwi-image-livecd-gnome-original" onlyarch="skipit"/>
+      <repopackage name="kiwi-image-livecd-gnome-promo" onlyarch="skipit"/>
+      <repopackage name="kiwi-image-livecd-gnome-promo-part" onlyarch="skipit"/>
+      <repopackage name="kiwi-image-livecd-gnome-unpackaged" onlyarch="skipit"/>
+      <repopackage name="kiwi-image-livecd-gnome.i586" onlyarch="skipit"/>
+      <repopackage name="kiwi-image-livecd-gnome.x86_64" onlyarch="skipit"/>
+      <repopackage name="kiwi-image-livecd-kde" onlyarch="skipit"/>
+      <repopackage name="kiwi-image-livecd-kde-original" onlyarch="skipit"/>
+      <repopackage name="kiwi-image-livecd-kde-promo-part" onlyarch="skipit"/>
+      <repopackage name="kiwi-image-livecd-kde-unpackaged" onlyarch="skipit"/>
+      <repopackage name="kiwi-image-livecd-kde.i586" onlyarch="skipit"/>
+      <repopackage name="kiwi-image-livecd-kde.x86_64" onlyarch="skipit"/>
+      <repopackage name="kiwi-image-livecd-x11" onlyarch="skipit"/>
+      <repopackage name="kiwi-image-livecd-x11-promo-part" onlyarch="skipit"/>
+      <repopackage name="kiwi-image-livecd-xfce" onlyarch="skipit"/>
+      <repopackage name="kiwi-profiled-livecd-gnome" onlyarch="skipit"/>
+      <repopackage name="kiwi-profiled-livecd-gnome-iso" onlyarch="skipit"/>
+      <repopackage name="kiwi-profiled-livecd-gnome-promo" onlyarch="skipit"/>
+      <repopackage name="kiwi-profiled-livecd-kde" onlyarch="skipit"/>
+      <repopackage name="kiwi-profiled-livecd-kde-iso" onlyarch="skipit"/>
+      <repopackage name="kiwi-profiled-livecd-x11" onlyarch="skipit"/>
+      <repopackage name="kiwi-profiled-livecd-x11-iso" onlyarch="skipit"/>
+      <repopackage name="kiwi-promo-dvd-parts" onlyarch="skipit"/>
+      <repopackage name="libmicro-ctcs-glue" onlyarch="skipit"/>
+      <repopackage name="maven-compiler-plugin-bootstrap" onlyarch="skipit"/>
+      <repopackage name="maven-failsafe-plugin-bootstrap" onlyarch="skipit"/>
+      <repopackage name="maven-jar-plugin-bootstrap" onlyarch="skipit"/>
+      <repopackage name="maven-javadoc-plugin-bootstrap" onlyarch="skipit"/>
+      <repopackage name="maven-plugin-plugin-bootstrap" onlyarch="skipit"/>
+      <repopackage name="maven-resources-plugin-bootstrap" onlyarch="skipit"/>
+      <repopackage name="maven-surefire-plugin-bootstrap" onlyarch="skipit"/>
+      <repopackage name="maven-surefire-report-plugin-bootstrap" onlyarch="skipit"/>
+      <repopackage name="MozillaFirefox-branding-SLED" onlyarch="skipit"/>
+      <repopackage name="OpenOffice_org-branding-SLED" onlyarch="skipit"/>
+      <repopackage name="openSUSE-Addon-Lang-release" onlyarch="skipit"/>
+      <repopackage name="openSUSE-Addon-Lang-release-cd" onlyarch="skipit"/>
+      <repopackage name="openSUSE-Addon-NonOss-release" onlyarch="skipit"/>
+      <repopackage name="openSUSE-Addon-NonOss-release-addon-nonoss" onlyarch="skipit"/>
+      <repopackage name="openSUSE-Addon-NonOss-release-biarch" onlyarch="skipit"/>
+      <repopackage name="openSUSE-Addon-NonOss-release-ftp" onlyarch="skipit"/>
+      <repopackage name="openSUSE-Addon-NonOss-release-ppc" onlyarch="skipit"/>
+      <repopackage name="openSUSE-driverupdate" onlyarch="skipit"/>
+      <repopackage name="openSUSE-images" onlyarch="skipit"/>
+      <repopackage name="openSUSE-OSP-release" onlyarch="skipit"/>
+      <repopackage name="openSUSE-OSP-release-dvd-promo" onlyarch="skipit"/>
+      <repopackage name="openSUSE-release-mini" onlyarch="skipit"/>
+      <repopackage name="package-lists-openSUSE-GNOME-cd" onlyarch="skipit"/>
+      <repopackage name="package-lists-openSUSE-images" onlyarch="skipit"/>
+      <repopackage name="package-lists-openSUSE-KDE-cd" onlyarch="skipit"/>
+      <repopackage name="package-lists-openSUSE-X11-cd" onlyarch="skipit"/>
+      <repopackage name="policycoreutils-gui" onlyarch="skipit"/>
+      <repopackage name="promo-dvd-parts" onlyarch="skipit"/>
+      <repopackage name="sbt-bootstrap" onlyarch="skipit"/>
+      <repopackage name="scala-bootstrap" onlyarch="skipit"/>
+      <repopackage name="scala-bootstrap-apidoc" onlyarch="skipit"/>
+      <repopackage name="scala-bootstrap-swing" onlyarch="skipit"/>
+      <repopackage name="skelcd-openSUSE-non-OSS" onlyarch="skipit"/>
+      <repopackage name="sle-sdk-release" onlyarch="skipit"/>
+      <repopackage name="sle-sdk-release-sp" onlyarch="skipit"/>
+      <repopackage name="sled-release-sp" onlyarch="skipit"/>
+      <repopackage name="sles-release-sp" onlyarch="skipit"/>
+      <repopackage name="splashy-branding-SLED" onlyarch="skipit"/>
+      <repopackage name="stringtemplate4-bootstrap" onlyarch="skipit"/>
+      <repopackage name="sysbench-ctcs-glue" onlyarch="skipit"/>
+      <repopackage name="tycho-bootstrap" onlyarch="skipit"/>
+      <repopackage name="xml-commons-apis-bootstrap" onlyarch="skipit"/>
+      <repopackage name="xml-commons-resolver-bootstrap" onlyarch="skipit"/>
+      <repopackage name="xml-commons-which-bootstrap" onlyarch="skipit"/>
+      <repopackage name="yast2-all-packages" onlyarch="skipit"/>
+      <repopackage name="yast2-branding-SLED" onlyarch="skipit"/>
+      <repopackage name="yast2-branding-SLES" onlyarch="skipit"/>
+      <repopackage name="yast2-registration" onlyarch="skipit"/>
+      <repopackage name="yast2-registration-branding-SLE" onlyarch="skipit"/>
+      <repopackage name="yast2-slide-show" onlyarch="skipit"/>
+      <repopackage name="yast2-slide-show-SLED" onlyarch="skipit"/>
+      <repopackage name="yast2-slide-show-SLES" onlyarch="skipit"/>
+      <repopackage name="yast2-slide-show-SuSELinux" onlyarch="skipit"/>
+      <repopackage name="yast2-theme-SLE" onlyarch="skipit"/>
+      <repopackage name="yast2-trans-am" onlyarch="skipit"/>
+      <repopackage name="yast2-trans-be" onlyarch="skipit"/>
+      <repopackage name="yast2-trans-ms" onlyarch="skipit"/>
+      <repopackage name="yast2-trans-my" onlyarch="skipit"/>
+      <repopackage name="yast2-trans-tk" onlyarch="skipit"/>
+      <repopackage name="yast2-wagon-control-SLE" onlyarch="skipit"/>
+      <repopackage name="openSUSE-Addon-NonOss-release" addarch="x86_64"/>
+    </repopackages>
+  </instsource>
+</image>
+
+<!-- OBS-BcntSyncTag: openSUSE-Addon-NonOss -->

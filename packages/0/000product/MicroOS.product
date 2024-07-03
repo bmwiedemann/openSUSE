@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<productdefinition xmlns:xi="http://www.w3.org/2001/XInclude">
+  <products>
+    <product>
+      <vendor>openSUSE</vendor>
+      <name>MicroOS</name>
+      <releasepkgname>MicroOS-release</releasepkgname>
+      <endoflife/>
+      <version>20240702</version>
+      <!-- release is no longer optional -->
+      <release>0</release>
+      <productline>MicroOS</productline>
+
+      <summary>openSUSE MicroOS</summary>
+      <shortsummary>openSUSE MicroOS</shortsummary>
+      <description>openSUSE MicroOS combines the benefits of a rolling OS with a read-only root filesystem with transactional updates. It is a modern Linux Operating System, designed for single-service installations, such as container hosts. It is optimized for large, clustered deployments.
+        It inherits the benefits of openSUSE Tumbleweed while redefining the operating system into a small, efficient and reliable distribution.
+      </description>
+
+      <linguas>
+        <language>en_US</language>
+      </linguas>
+
+      <urls>
+        <url name="releasenotes">http://doc.opensuse.org/release-notes/x86_64/openSUSE/Tumbleweed/release-notes-openSUSE.rpm</url>
+      </urls>
+
+      <buildconfig>
+        <!-- This section is needed to generate the installation media -->
+        <producttheme>MicroOS</producttheme>
+        <create_flavors>true</create_flavors>
+      </buildconfig>
+
+      <installconfig>
+        <!-- All flags needed during installation -->
+        <defaultlang>en_US</defaultlang>
+        <datadir>suse</datadir>
+        <descriptiondir>suse/setup/descr</descriptiondir>
+        <distribution>openSUSE</distribution>
+        <default_obs_repository_name>openSUSE_Tumbleweed</default_obs_repository_name>
+      </installconfig>
+
+      <!-- All Flags needed in the running system -->
+      <runtimeconfig/>
+    </product>
+  </products>
+
+  <!-- Default conditionals, repositories and archsets get imported -->
+  <xi:include href="defaults-conditionals.include"/>
+  <xi:include href="defaults-archsets.include"/>
+  <xi:include href="defaults-repositories.include"/>
+
+  <mediasets>
+    <media
+      type="dvd5"
+      flavor="dvd"
+      name="openSUSE-MicroOS-DVD"
+      sourcemedia="0"
+      firmware="uefi"
+      mediastyle="tumbleweed"
+      run_hybridiso="true"
+      run_media_check="true"
+      use_undecided="false"
+      create_pattern="false"
+      use_required="true"
+      use_recommended="true"
+      use_suggested="false">
+      <archsets>
+        <archset ref="x86_64"/>
+      </archsets>
+      <metadata>
+        <package name="skelcd-installer-MicroOS"/>
+        <!--package name="skelcd-control-MicroOS"/-->
+        <package name="skelcd-openSUSE"/>
+      </metadata>
+      <use group="opensuse_microos" create_pattern="false"/>
+      <use group="opensuse_microos.x86_64" create_pattern="false"/>
+    </media>
+
+    <!-- BEWARE: do not touch the naming here without adapting ftp upload scripts ! -->
+    <media type="image"
+         flavor="appliance"
+         mediastyle="tumbleweed"
+         name="openSUSE-MicroOS-appliance" >
+    <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
+  </mediasets>
+
+
+  <xi:include href="opensuse_microos.group"/>
+
+</productdefinition>
+
+

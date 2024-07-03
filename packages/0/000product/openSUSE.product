@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<productdefinition xmlns:xi="http://www.w3.org/2001/XInclude">
+  <products>
+    <product>
+      <vendor>openSUSE</vendor>
+      <name>openSUSE</name>
+      <version>20240702</version>
+      <release>0</release>
+
+      <productline>openSUSE</productline>
+
+      <!-- Ensure we have valid distrotarget - used by "zypper tos" - boo#977052 -->
+      <register>
+        <target>openSUSE-Tumbleweed-x86_64</target>
+        <updates>
+          <distrotarget arch="x86_64">openSUSE-Tumbleweed-x86_64</distrotarget>
+          <distrotarget arch="s390x">openSUSE-Tumbleweed-s390x</distrotarget>
+          <distrotarget arch="ppc64le">openSUSE-Tumbleweed-ppc64le</distrotarget>
+          <distrotarget arch="aarch64">openSUSE-Tumbleweed-aarch64</distrotarget>
+        </updates>
+      </register>
+
+      <updaterepokey>000000000</updaterepokey>
+      <summary>openSUSE Tumbleweed</summary>
+      <!-- one line only -->
+      <shortsummary>openSUSE</shortsummary>
+
+      <description>openSUSE Tumbleweed is the rolling distribution by the openSUSE.org project.
+      </description>
+
+      <!-- Available languages for collecting packages and during installation and runtime -->
+      <linguas>
+        <language>cs</language>
+        <language>da</language>
+        <language>de</language>
+        <language>el</language>
+        <language>en</language>
+        <language>en_GB</language>
+        <language>en_US</language>
+        <language>es</language>
+        <language>fr</language>
+        <language>hu</language>
+        <language>it</language>
+        <language>ja</language>
+        <language>pl</language>
+        <language>pt</language>
+        <language>pt_BR</language>
+        <language>ru</language>
+        <language>zh</language>
+        <language>zh_CN</language>
+        <language>zh_TW</language>
+      </linguas>
+
+      <urls>
+        <url name="releasenotes">http://doc.opensuse.org/release-notes/x86_64/openSUSE/Tumbleweed/release-notes-openSUSE.rpm</url>
+        <!-- <url name="smolt">http://smolt.opensuse.org/register.pl</url> <url name="register">http://register.novell.com/</url> -->
+        <url name="repository">http://download.opensuse.org/tumbleweed/repo/oss/</url>
+        <!-- url name="update">http://download.opensuse.org/update/factory/</url> -->
+      </urls>
+
+      <buildconfig>
+        <!-- This section is needed to generate the installation media -->
+        <producttheme>openSUSE</producttheme>
+        <create_flavors>true</create_flavors>
+      </buildconfig>
+
+      <installconfig>
+        <!-- All flags needed during installation -->
+        <defaultlang>en_US</defaultlang>
+        <!-- needed for current content file -->
+        <releasepackage name="openSUSE-release" flag="EQ" version="%{version}"/>
+        <distribution>openSUSE</distribution>
+        <default_obs_repository_name>openSUSE_Tumbleweed</default_obs_repository_name>
+      </installconfig>
+
+      <runtimeconfig>
+        <!-- All Flags needed in the running system -->
+      </runtimeconfig>
+
+    </product>
+  </products>
+
+  <xi:include href="defaults-conditionals.include"/>
+  <xi:include href="defaults-repositories.include"/>
+  <xi:include href="defaults-archsets.include"/>
+
+  <mediasets>
+    <!-- BEWARE: do not touch the naming here without adapting ftp upload scripts ! -->
+    <media type="ftp" flavor="ftp" sourcemedia="3" debugmedia="2" mediastyle="tumbleweed"
+           create_pattern="false" repo_only="true" run_make_listings="true" download_mirror_policy="true"
+           use_required="true" use_recommended="true" use_suggested="false" use_undecided="true">
+
+      <archsets>
+        <!-- for this we generate a product file -->
+        <archset ref="x86_64"/>
+        <!-- so we get 1 product file on this medium -->
+      </archsets>
+      <!-- we put all packages (even suggested) on the media for the two groups below -->
+      <metadata>
+        <!-- if you like to add a metapackage to the real media, add it in a normal group.xml file -->
+        <package name="skelcd-installer-openSUSE"/>
+        <package name="instlux"/>
+        <!--package name="skelcd-control-openSUSE"/-->
+        <package name="skelcd-openSUSE"/>
+        <!-- package name="yast2-slide-show" / -->
+      </metadata>
+      <use group="NON_FTP_PACKAGES" create_pattern="false"/>
+      <use group="i586_additional" create_pattern="false" />
+      <use group="i686_packages" create_pattern="false" />
+      <use group="i686_kernels_ftp" create_pattern="false" />
+      <use group="kernel_pae_special" create_pattern="false" />
+    </media>
+
+    <!-- BEWARE: do not touch the naming here without adapting ftp upload scripts ! -->
+    <media type="cd" flavor="mini" name="openSUSE-Tumbleweed-NET" run_hybridiso="true"
+           mediastyle="tumbleweed" sourcemedia="0" firmware="uefi"
+           use_required="true" use_recommended="true" use_suggested="false">
+      <archsets>
+        <archset ref="x86_64"/>
+      </archsets>
+      <metadata>
+        <package name="skelcd-installer-net-openSUSE"/>
+        <package name="skelcd-openSUSE"/>
+      </metadata>
+    </media>
+
+    <media type="dvd5" flavor="dvd" name="openSUSE-Tumbleweed-DVD" run_hybridiso="true"
+           mediastyle="tumbleweed" sourcemedia="0" firmware="uefi"
+           run_media_check="true" use_required="true" use_recommended="true" use_suggested="false">
+
+      <use group="dvd" create_pattern="false"/>
+      <!--use group="dvd.i586" create_pattern="false"/-->
+      <use group="dvd.x86_64" create_pattern="false"/>
+      <use group="i586_additional" create_pattern="false"/>
+      <use group="kernel_pae_special" create_pattern="false"/>
+
+      <archsets>
+        <archset ref="x86_64"/>
+      </archsets>
+
+      <metadata>
+        <!-- if you like to add a metapackage to the real media, add it in a normal group.xml file -->
+        <package name="skelcd-installer-openSUSE"/>
+        <!--package name="skelcd-control-openSUSE"/-->
+        <package name="skelcd-openSUSE"/>
+        <!--package name="yast2-slide-show" /-->
+      </metadata>
+    </media>
+
+    <media type="cd" flavor="livecd-kde" mediastyle="tumbleweed" name="openSUSE-Tumbleweed-livecd-kde">
+      <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
+    <media type="cd" flavor="livecd-x11" mediastyle="tumbleweed" name="openSUSE-Tumbleweed-livecd-x11">
+      <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
+    <media type="cd" flavor="livecd-gnome" mediastyle="tumbleweed" name="openSUSE-Tumbleweed-livecd-gnome">
+      <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
+    <media type="cd" flavor="livecd-xfce" mediastyle="tumbleweed" name="openSUSE-Tumbleweed-livecd-xfce">
+      <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
+    <media type="cd" flavor="usb-kde" mediastyle="tumbleweed" name="openSUSE-Tumbleweed-usb-kde">
+      <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
+    <media type="cd" flavor="usb-gnome" mediastyle="tumbleweed" name="openSUSE-Tumbleweed-usb-gnome">
+      <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
+    <media type="cd" flavor="usb-x11" mediastyle="tumbleweed" name="openSUSE-Tumbleweed-usb-x11">
+      <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
+    <media type="image"
+           flavor="appliance"
+           mediastyle="tumbleweed"
+           name="openSUSE-Tumbleweed-appliance" >
+           <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
+    <media type="image"
+           flavor="appliance-docker" 
+           mediastyle="tumbleweed"
+           name="openSUSE-Tumbleweed-appliance-docker" >
+       <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
+    <media type="image"
+           flavor="appliance-kvm" 
+           mediastyle="tumbleweed"
+           name="openSUSE-Tumbleweed-appliance-kvm" >
+       <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
+    <media type="image"
+           flavor="appliance-vmware" 
+           mediastyle="tumbleweed"
+           name="openSUSE-Tumbleweed-appliance-vmware" >
+       <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
+    <media type="image"
+           flavor="appliance-openstack" 
+           mediastyle="tumbleweed"
+           name="openSUSE-Tumbleweed-appliance-openstack" >
+       <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
+    <media type="image"
+           flavor="appliance-hyperv" 
+           mediastyle="tumbleweed"
+           name="openSUSE-Tumbleweed-appliance-hyperv" >
+       <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
+    <media type="image"
+           flavor="appliance-vagrant" 
+           mediastyle="tumbleweed"
+           name="openSUSE-Tumbleweed-appliance-vagrant" >
+       <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
+    <media type="image"
+           flavor="appliance-wsl" 
+           mediastyle="tumbleweed"
+           name="openSUSE-Tumbleweed-appliance-wsl" >
+       <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
+    <media type="image"
+           flavor="appliance-custom" 
+           mediastyle="tumbleweed"
+           name="openSUSE-Tumbleweed-appliance-custom" >
+       <!-- Create no product media, but a flavor release subpackage -->
+    </media>
+
+  </mediasets>
+
+  <xi:include href="NON_FTP_PACKAGES.group"/>
+  <xi:include href="dvd.group"/>
+
+  <group name="i586_additional">
+    <conditional name="i586_special"/>
+    <packagelist relationship="requires">
+      <package name="glibc-devel"/>
+      <package name="glibc"/>
+    </packagelist>
+  </group>
+
+  <group name="i686_packages">
+    <conditional name="i686_replacement"/>
+    <packagelist relationship="requires">
+      <package name="bitwarden"/>
+      <package name="MozillaFirefox"/>
+      <package name="MozillaFirefox-devel"/>
+      <package name="MozillaFirefox-translations-common"/>
+      <package name="MozillaFirefox-translations-other"/>
+      <package name="MozillaThunderbird"/>
+      <package name="MozillaThunderbird-translations-common"/>
+      <package name="MozillaThunderbird-translations-other"/>
+      <package name="libmozjs-78-0"/>
+      <package name="libmozjs-102-0"/>
+      <package name="libmozjs-115-0"/>
+      <package name="mozjs78"/>
+      <package name="mozjs102"/>
+      <package name="mozjs115"/>
+      <package name="mozjs78-devel"/>
+      <package name="mozjs102-devel"/>
+      <package name="mozjs115-devel"/>
+      <package name="nodejs-electron"/>
+      <package name="nodejs-electron-devel"/>
+    </packagelist>
+  </group>
+
+  <group name="i686_kernels_ftp">
+    <conditional name="i686_special"/>
+    <packagelist relationship="requires">
+      <package name="kernel-debug-devel"/>
+      <package name="kernel-debug"/>
+      <!--
+        <package name="kernel-ec2-base"/>
+        <package name="kernel-ec2-devel"/>
+        <package name="kernel-ec2"/>
+      -->
+      <package name="kernel-vanilla-devel"/>
+      <package name="kernel-vanilla"/>
+      <!--
+        <package name="kernel-xen-base"/>
+        <package name="kernel-xen-devel"/>
+        <package name="kernel-xen"/>
+      -->
+    </packagelist>
+  </group>
+
+  <group name="kernel_pae_special">
+    <conditional name="only_i686"/>
+    <packagelist relationship="requires">
+      <package name="kernel-pae-devel"/>
+      <package name="kernel-pae"/>
+    </packagelist>
+  </group>
+
+</productdefinition>
