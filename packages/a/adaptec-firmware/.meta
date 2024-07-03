@@ -1,0 +1,6 @@
+<package name="adaptec-firmware" project="openSUSE:Factory">
+  <title>Firmware files for Adaptec SAS Cards (AIC94xx Series)</title>
+  <description>Firmware files for the Adaptec AIC94xx (Razor) Series of SAS HBA
+Adapters.</description>
+  <devel project="hardware" package="adaptec-firmware"/>
+</package>
