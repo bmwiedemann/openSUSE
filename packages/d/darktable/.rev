@@ -1570,4 +1570,15 @@ Togan
     <comment></comment>
     <requestid>1156901</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>7b5e10e6163aac6940354fe8316cf5b6</srcmd5>
+    <version>4.8.0</version>
+    <time>1720031443</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.8.0:
+  https://github.com/darktable-org/darktable/releases/tag/release-4.8.0
+- Removed darktable-old-glib.patch
+</comment>
+    <requestid>1185077</requestid>
+  </revision>
 </revisionlist>

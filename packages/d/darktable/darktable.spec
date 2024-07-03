@@ -119,7 +119,7 @@
 %endif
 
 Name:           darktable
-Version:        4.6.1
+Version:        4.8.0
 Release:        0
 %global pkg_name darktable
 %global pkg_version %{version}
@@ -133,8 +133,7 @@ Source97:       darktable.dsc
 Source98:       debian.tar.xz
 Source99:       README.openSUSE
 #
-Patch0:         darktable-old-glib.patch
-Patch1:         darktable-rawspeed-build-type-override.patch
+Patch0:         darktable-rawspeed-build-type-override.patch
 #
 ExclusiveArch:  x86_64 aarch64 ppc64le
 # build time tools
