@@ -47,6 +47,8 @@ Source9:        PACKAGING_README.md
 Patch1:         0001-Do-not-force-the-pure-Go-name-resolver.patch
 # Lifted from Debian's prometheus package
 Patch2:         0002-Default-settings.patch
+# https://github.com/prometheus/prometheus/pull/14345 (CVE-2024-6104)
+Patch3:         0003-Bump-go-retryablehttp.patch
 BuildRequires:  fdupes
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} < 150300
 BuildRequires:  firewall-macros

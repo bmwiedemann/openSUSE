@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 28 15:31:44 UTC 2024 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Bump go-retryablehttp to version 0.7.7
+  (CVE-2024-6104, bsc#1227038)
+- Add 0003-Bump-go-retryablehttp.patch
+
+-------------------------------------------------------------------
 Wed Jun 19 10:54:30 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.53.0:
