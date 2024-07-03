@@ -1,0 +1,142 @@
+<revisionlist>
+  <revision rev="1" vrev="842">
+    <srcmd5>39a40da4b5e0e13a9aa563f78948cbb8</srcmd5>
+    <version>2.2</version>
+    <time>1168901536</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="873">
+    <srcmd5>3b496fb15825ce2f6cc7ef039e6c331a</srcmd5>
+    <version>2.2</version>
+    <time>1180897321</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="984">
+    <srcmd5>3b496fb15825ce2f6cc7ef039e6c331a</srcmd5>
+    <version>2.2</version>
+    <time>1180897321</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="985">
+    <srcmd5>5c364da1e4a90e471f7ea0c6c7cdb861</srcmd5>
+    <version>2.2</version>
+    <time>1245337263</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="987">
+    <srcmd5>5c364da1e4a90e471f7ea0c6c7cdb861</srcmd5>
+    <version>2.2</version>
+    <time>1245337263</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="988">
+    <srcmd5>7cb6f3fe73a3be771ebeb257054683b7</srcmd5>
+    <version>2.2</version>
+    <time>1268923019</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="990">
+    <srcmd5>7cb6f3fe73a3be771ebeb257054683b7</srcmd5>
+    <version>2.2</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="991">
+    <srcmd5>7cb6f3fe73a3be771ebeb257054683b7</srcmd5>
+    <version>2.2</version>
+    <time>1278678565</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="994">
+    <srcmd5>7cb6f3fe73a3be771ebeb257054683b7</srcmd5>
+    <version>2.2</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="995">
+    <srcmd5>fc2eb1526b331259273cc999fe6addcd</srcmd5>
+    <version>2.2</version>
+    <time>1316440374</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build (forwarded request 82894 from jengelh)</comment>
+    <requestid>83350</requestid>
+  </revision>
+  <revision rev="11" vrev="997">
+    <srcmd5>fc2eb1526b331259273cc999fe6addcd</srcmd5>
+    <version>2.2</version>
+    <time>1319181787</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="998">
+    <srcmd5>168378caac50deb42ff75f94485bda8f</srcmd5>
+    <version>2.2</version>
+    <time>1331124083</time>
+    <user>coolo</user>
+    <comment>- buildrequire xorg-x11 for directory ownership (forwarded request 106098 from coolo)</comment>
+    <requestid>106297</requestid>
+  </revision>
+  <revision rev="13" vrev="1000">
+    <srcmd5>168378caac50deb42ff75f94485bda8f</srcmd5>
+    <version>2.2</version>
+    <time>1340183201</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1002">
+    <srcmd5>168378caac50deb42ff75f94485bda8f</srcmd5>
+    <version>2.2</version>
+    <time>1359108699</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1004">
+    <srcmd5>168378caac50deb42ff75f94485bda8f</srcmd5>
+    <version>2.2</version>
+    <time>1379662033</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1006">
+    <srcmd5>168378caac50deb42ff75f94485bda8f</srcmd5>
+    <version>2.2</version>
+    <time>1409300561</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1007">
+    <srcmd5>1d96cc237c49a11f523c55589d4740a3</srcmd5>
+    <version>2.2</version>
+    <time>1519218708</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578395</requestid>
+  </revision>
+  <revision rev="18" vrev="1008">
+    <srcmd5>4bb3d6f019cc239bb2729de4ea21bb44</srcmd5>
+    <version>2.2</version>
+    <time>1551276393</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679466</requestid>
+  </revision>
+  <revision rev="19" vrev="1009">
+    <srcmd5>1a60c23d1d75ebecb127193a61016685</srcmd5>
+    <version>2.2</version>
+    <time>1699562144</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1124384</requestid>
+  </revision>
+  <revision rev="20" vrev="1010">
+    <srcmd5>157fb2f84282d8737f6687930617ec7d</srcmd5>
+    <version>2.2</version>
+    <time>1708632006</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1149169 from dimstar)</comment>
+    <requestid>1149205</requestid>
+  </revision>
+</revisionlist>

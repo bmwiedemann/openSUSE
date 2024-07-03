@@ -1,0 +1,99 @@
+-------------------------------------------------------------------
+Thu Feb 22 10:13:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
+Mon Nov  6 15:53:48 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+-  Fix build with RPM 4.19: unnumbered patches are no longer
+   supported.
+
+-------------------------------------------------------------------
+Tue Feb 19 12:46:57 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Correct documentation as there is no X11R6 anymore for a long time 
+
+-------------------------------------------------------------------
+Tue Feb 20 15:05:51 UTC 2018 - crrodriguez@opensuse.org
+
+- Remove xorg-x11-devel from BuildRequires 
+
+-------------------------------------------------------------------
+Mon Feb 20 16:33:15 UTC 2012 - coolo@suse.com
+
+- buildrequire xorg-x11 for directory ownership
+
+-------------------------------------------------------------------
+Sat Sep 17 19:31:18 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Fri Jun  1 17:03:30 CEST 2007 - dmueller@suse.de
+
+- fix buildrequires
+
+-------------------------------------------------------------------
+Thu Nov 30 12:21:57 CET 2006 - werner@suse.de
+
+- Remove broken error handler declaration type
+
+-------------------------------------------------------------------
+Wed Aug  2 16:03:52 CEST 2006 - werner@suse.de
+
+- Make it build with X11R7
+- Make german app-defaults file depending on LANG variable
+- Use Xaw3d to get see 3d menue
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:37 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Apr 27 13:54:06 CEST 2004 - werner@suse.de
+
+- Avoid compiler warnings
+- Use mkstemp(3) instead of tempnam(3)
+
+-------------------------------------------------------------------
+Sat Jan 10 22:35:31 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Jun 13 08:26:43 CEST 2003 - kukuk@suse.de
+
+- fix filelist
+
+-------------------------------------------------------------------
+Thu Jun 12 13:40:13 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Wed Sep 18 01:40:03 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Wed Sep 20 18:19:50 CEST 2000 - werner@suse.de
+
+- Workaround to avoid `XtMakeGeometryRequest - parent not composite'
+  messages instead of working program. Done by simply adding the
+  old version of _XtMakeGeometryRequest of Xfree86[tm]-3.3.6.
+
+-------------------------------------------------------------------
+Fri Jul 14 18:11:00 CEST 2000 - werner@suse.de
+
+- fix bug in annotation handling with update to bibview 2.2
+- Use getcwd instead of getwd
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
