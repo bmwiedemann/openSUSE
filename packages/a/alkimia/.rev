@@ -1,0 +1,120 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>42610aa1864d6f54b4c679b1b2066336</srcmd5>
+    <version>7.0</version>
+    <time>1517424826</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename package libalkimia to alkimia, following the upstream name
+- update to version 7.0:
+  * Fix AlkValue::operator=(QString) w/ valueRef()
+  * Ported to Qt5, supports both Qt4 and Qt5 now
+- thanks to users 'tittiatcoke' and 'wolfi323' for creating the
+  initial unstable package out of the git repository
+- enable package builds for both Qt4 and Qt5
+- remove Fix-AlkValue-operator-QString-w-valueRef.patch (applied
+  upstream)
+</comment>
+    <requestid>571326</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c48b5f6938975dbfa41af3f019d31c58</srcmd5>
+    <version>7.0.1</version>
+    <time>1521716669</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589191</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aa0c6fa7656877a22ad8485996b1cd09</srcmd5>
+    <version>7.0.2</version>
+    <time>1523875765</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 7.0.2:
+  * fix compiling kmymoney 4.8
+</comment>
+    <requestid>596503</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b6876ace6a48af3e53321717e9adf249</srcmd5>
+    <version>7.0.2</version>
+    <time>1550151210</time>
+    <user>dimstar_suse</user>
+    <comment>- Run spec-cleaner.
+- Install the license file.
+</comment>
+    <requestid>674495</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>0ee8abe60766edeeefadd67434806d29</srcmd5>
+    <version>7.0.2</version>
+    <time>1553611448</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the KDE4/Qt4 package. (forwarded request 688137 from cgiboudeaux)</comment>
+    <requestid>688139</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2b42bda94271bc78333fe33c3bb76850</srcmd5>
+    <version>8.0.3</version>
+    <time>1579101245</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>763103</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>34aee2f39cdaeabc7f5dcc3a179e34da</srcmd5>
+    <version>8.0.4</version>
+    <time>1612781248</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch:
+  * 0001-Use-new-KNS-install-location.patch
+
+- Update to version 8.0.4
+  * Add initial QWebEngine support for KF5 builds
+  * Add debug info for running perl script in
+    AlkFinanceQuoteProcess::launch()
+  * Add file menu with entry 'quit'
+  * Add switch language entry to help menu
+  * Add option ENABLE_FINANCEQUOTE and set to false by default on Windows
+  * Bug and crash fixes
+  * Fix fatal error caused by calling i18n in another thread initiated
+  * Fix WebEngine/WebKit/Widgets backend choice
+  * Fix 'alkimia fails to find mpirxx.h
+  * Remove unused toolbar</comment>
+    <requestid>870063</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1021a8d29a56334494ae122f1cd70f82</srcmd5>
+    <version>8.1.0</version>
+    <time>1619653124</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.1.0
+  * Do not override the global translation domain of the application
+  * Add support for skipping date extraction when a quote service
+    does not provide a valid date
+  * Fix bug not been able to rename local quote source
+  * Many other bugfixes
+- Update dependencies to build with KF5
+- Drop upstream merged 0001-Use-new-KNS-install-location.patch
+- Add patch from upstream:
+  * 0001-Add-missing-QUrl-include-with-DBUILD_WITH_WEBENGINE.patch</comment>
+    <requestid>889064</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1a6993d70f35499809d990f6db777e53</srcmd5>
+    <version>8.1.1</version>
+    <time>1656927177</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.1.1. No changelog.
+- Drop patch, fixed upstream:
+  * 0001-Add-missing-QUrl-include-with-DBUILD_WITH_WEBENGINE.patch</comment>
+    <requestid>986551</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9667a67c52a1772fd111809e2c8ed4f6</srcmd5>
+    <version>8.1.2</version>
+    <time>1698170959</time>
+    <user>anag+factory</user>
+    <comment>Update to 8.1.2</comment>
+    <requestid>1119945</requestid>
+  </revision>
+</revisionlist>
