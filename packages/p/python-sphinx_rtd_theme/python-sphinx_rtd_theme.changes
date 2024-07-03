@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  2 20:49:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- skip test_basic as it no longer works with sphinx 7.3
+
+-------------------------------------------------------------------
 Fri Dec 29 10:06:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.0:

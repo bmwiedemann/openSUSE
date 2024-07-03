@@ -190,4 +190,12 @@
 - update to 0.5.1</comment>
     <requestid>1135629</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>7b9834ffba799cff4544a6ff94e607ea</srcmd5>
+    <version>2.0.0</version>
+    <time>1720031388</time>
+    <user>anag+factory</user>
+    <comment>- skip test_basic as it no longer works with sphinx 7.3</comment>
+    <requestid>1184946</requestid>
+  </revision>
 </revisionlist>

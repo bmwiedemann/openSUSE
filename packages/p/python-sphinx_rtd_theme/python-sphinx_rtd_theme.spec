@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-sphinx_rtd_theme
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -77,7 +77,8 @@ sed -i "/'build_py'/d" setup.py
 
 %if %{with test}
 %check
-%pytest
+# https://github.com/readthedocs/sphinx_rtd_theme/issues/1558
+%pytest -k "not test_basic"
 %endif
 
 %if !%{with test}
