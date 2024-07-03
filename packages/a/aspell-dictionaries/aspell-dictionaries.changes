@@ -1,0 +1,406 @@
+-------------------------------------------------------------------
+Wed Feb 28 11:17:19 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Delete old specfile constructs.
+
+-------------------------------------------------------------------
+Tue Feb 20 11:09:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Mon Oct 12 12:30:18 UTC 2020 - pgajdos@suse.com
+
+- do not require aspell binary, dictionaries can be used even
+  by the aspell library [bsc#1177523]
+
+-------------------------------------------------------------------
+Mon Sep 21 06:43:39 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- update:
+  - de -> 20161207-7-0
+  - pt_BR -> 20131030-12-0
+- Fix boo#1076219.
+
+-------------------------------------------------------------------
+Thu Dec 19 19:28:02 UTC 2019 - pgajdos@suse.com
+
+- removing Novell residues
+- update:
+  . da    1.6.36
+  . pt_PT 20190329
+- deleted patches
+  - aspell-dictionaries-Novellwords_extra_dict.patch (abandoned)
+- deleted sources
+  - Nwordlist.tgz (abandoned)
+
+-------------------------------------------------------------------
+Wed May 30 10:51:52 UTC 2018 - ecsos@opensuse.org
+
+- add german dictionary
+  - rebase patch *Novellwords_extra_dict.patch
+
+-------------------------------------------------------------------
+Sun Jan 31 02:08:18 UTC 2016 - rpm@fthiessen.de
+
+- Fixed build on openSUSE Factory:
+  * Added aspell-dictionaries-rpmlintrc to get rid of
+    incorrect-fsf-address warnings.
+  * Added fdupes to fix warnings about waste of space
+  *Fixed file name of norwegian and islandic alias (latin1 to utf8)
+
+-------------------------------------------------------------------
+Tue May 12 09:08:34 UTC 2015 - pgajdos@suse.com
+
+- updated pl dictionary, version 20150428
+
+-------------------------------------------------------------------
+Mon Jan  6 13:26:54 UTC 2014 - pgajdos@suse.com
+
+- improved package summaries and descriptions by frank.h.ellenberger 
+  at gmail
+
+-------------------------------------------------------------------
+Thu Jan  2 12:51:19 UTC 2014 - pgajdos@suse.com
+
+- updated pl dictionary, version 20140102 [bnc#857026]
+
+-------------------------------------------------------------------
+Fri Apr 19 10:02:16 UTC 2013 - cfarrell@suse.com
+
+- license update: SUSE-Permissive-Modify-By-Patch
+  this license was added to the spreadsheet available (linked) from
+  license.opensuse.org
+
+-------------------------------------------------------------------
+Tue Nov 27 09:00:27 UTC 2012 - pgajdos@suse.com
+
+- updated pt_PT dictionary, version 20121123
+
+-------------------------------------------------------------------
+Tue Nov 20 10:46:48 UTC 2012 - pgajdos@suse.com
+
+- updated Polish dictionary, version 1.11-2
+- updated Spanish dictionary, version 20121120
+- new Huastec dictionary, version 0.03-1
+
+-------------------------------------------------------------------
+Mon Jun  4 08:39:38 UTC 2012 - coolo@suse.com
+
+- fix encoding of -nds description
+
+-------------------------------------------------------------------
+Wed Mar 28 08:29:27 UTC 2012 - pgajdos@suse.com
+
+- fixed aspell-pt_BR summary and description [bnc#754392]
+
+-------------------------------------------------------------------
+Tue Feb  7 08:00:45 UTC 2012 - pgajdos@suse.com
+
+- fixed licenses [bnc#745038]
+
+-------------------------------------------------------------------
+Thu Feb  2 19:25:05 UTC 2012 - asterios.dramis@gmail.com
+
+- Changed version of aspell-el to 0.50.3+0.08 to fix package upgrades. Removed
+  the Obsoletes: entry which doesn't work.
+
+-------------------------------------------------------------------
+Wed Jan 25 20:20:23 UTC 2012 - asterios.dramis@gmail.com
+
+- Updated aspell-el to version 0.08.
+- Spec file updates:
+  * Changes based on spec-cleaner run.
+  * Unified summaries and descriptions for all subpackages.
+  * The version numbering for aspell-el was changed so an Obsoletes: entry was
+    added for the old version.
+  * Added a Conflict between aspell-hi and aspell-mr subpackages since they
+    both provide u-deva.cmap and u-deva.cset files.
+  * Fixed the following rpmlint warnings for some subpackages:
+    - wrong-file-end-of-line-encoding
+    - zero-length
+    - install-file-in-docs
+
+-------------------------------------------------------------------
+Tue May 24 08:43:54 UTC 2011 - pgajdos@novell.com
+
+- added Kannada dictionary, version 0.01-1
+
+-------------------------------------------------------------------
+Thu May 19 11:13:02 CEST 2011 - meissner@suse.de
+
+- disabled aspell-no, as it is obsoleted by aspell-nb
+
+-------------------------------------------------------------------
+Mon Nov 22 10:22:56 CET 2010 - pgajdos@suse.cz
+
+- updated aspell-pl to 20101122
+
+-------------------------------------------------------------------
+Mon Oct 11 08:52:21 UTC 2010 - pgajdos@novell.com
+
+- fixed locale provides for aspell-et [bnc#645093]
+
+-------------------------------------------------------------------
+Mon Sep 13 10:01:52 CEST 2010 - pgajdos@suse.cz
+
+- fixed url in aspell-pl [bnc#638655]
+- updated dictionary: pl 20100913
+
+-------------------------------------------------------------------
+Mon Aug 30 14:36:34 CEST 2010 - pgajdos@suse.cz
+
+- updated dictionaries:
+  * ga to version 4.5
+  * hsb to version 0.02
+
+-------------------------------------------------------------------
+Thu Mar 18 11:10:34 CET 2010 - pgajdos@suse.cz
+
+- removed aspell-de dictionary, it is provided by igerman98 
+  subpackage aspell-de [bnc#547549]
+- new dictionary:
+  * ast -- Asturian, version 0.01
+- updated dictionary:
+  * ro to version 3.3-2
+
+-------------------------------------------------------------------
+Tue Dec  8 19:30:10 CET 2009 - pgajdos@suse.cz
+
+- new dictionaries: 
+   * ky -- Kirghiz, version 0.01
+   * grc -- Ancient Greek, version 0.02
+- updated dictionaries:
+   * ca to version 2.1.5
+   * gl to version 0.5a
+- synchronize our versions with upstream versions:
+   * sk 2.00 -> 2.01
+   * te 0.0.1.2 -> 0.01.2
+   * ta 20040324 -> 20040424
+   * nds 0.0.1 -> 0.01
+   * fy 0.11 -> 0.12
+- cannot be done for
+   * sw 1.0 -> 0.50
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:06 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Mon Jul 20 17:08:47 CEST 2009 - pgajdos@suse.cz
+
+- pt_BR updated to 20090702
+
+-------------------------------------------------------------------
+Tue Jun 16 18:57:30 CEST 2009 - pgajdos@suse.cz
+
+- sk dictionary updated to 2.01
+
+-------------------------------------------------------------------
+Thu Mar  5 15:41:15 CET 2009 - ro@suse.de
+
+- ignore return code from subshells to fix build 
+
+-------------------------------------------------------------------
+Thu Feb 19 17:22:51 CET 2009 - pgajdos@suse.cz
+
+- fixed upstream url for aspell-nl [bnc#473708]
+
+-------------------------------------------------------------------
+Tue Jan 20 13:51:02 CET 2009 - pgajdos@suse.cz
+
+- don't use fdupes
+
+-------------------------------------------------------------------
+Thu Jan 15 11:39:15 CET 2009 - pgajdos@suse.cz
+
+- updated Dansk dictionary to 1.6.20
+- some specfile cleanups
+- updated Malagasy dictionary
+
+-------------------------------------------------------------------
+Fri Sep 12 11:47:12 CEST 2008 - pgajdos@suse.cz
+
+- updated dansk dictionary to 1.6.17
+
+-------------------------------------------------------------------
+Fri Aug  8 19:03:51 CEST 2008 - lmichnovic@suse.cz
+
+- added Galician-portuguese dictionary: agal [bnc#411577]
+- updated dictionaries: ga, mn, pt_BR
+- updated da dictionary to new branch
+ * supports space and ' in words
+- fixed 'dansk' to 'da' code (*dansk.patch)
+
+-------------------------------------------------------------------
+Mon Apr 14 15:14:04 CEST 2008 - lmichnovic@suse.cz
+
+- updated: eo, es, lt, pt_BR, ro
+- new: ml, tk
+
+-------------------------------------------------------------------
+Mon Feb  4 18:07:57 CET 2008 - lmichnovic@suse.cz
+
+- updated dictioneries: bg, fy, ga, gu, hi, sk
+
+-------------------------------------------------------------------
+Wed Oct 31 13:44:35 CET 2007 - lmichnovic@suse.cz
+
+- updated nds dictionary from CVS [#337416]
+
+-------------------------------------------------------------------
+Mon Sep  3 18:05:26 CEST 2007 - lmichnovic@suse.cz
+
+- updated Nwordlist (words: Firefox,Thunderbird, NLD, ...) [#371]
+
+-------------------------------------------------------------------
+Tue Aug 14 14:51:25 CEST 2007 - lmichnovic@suse.cz
+
+- created new dutch aspell dictionary aspell-nl-1.00-7 based on 
+  word list from project opentaal.org [#299748, #292426, #230785]
+
+-------------------------------------------------------------------
+Fri Jul 27 14:26:34 CEST 2007 - lmichnovic@suse.cz
+
+- updated pt_PT and PT_BR dictionaries
+- added "Bugzilla" to Novell words
+
+-------------------------------------------------------------------
+Fri Jun  8 11:38:36 CEST 2007 - lmichnovic@suse.cz
+
+- updated uk tarball from upstream [#278632]
+
+-------------------------------------------------------------------
+Tue Jun  5 15:43:20 CEST 2007 - lmichnovic@suse.cz
+
+- update uk dictionary [#278632]
+- update hy dictionary
+- new fy (Frisian) dictionary
+- pt splitted to pt_PT and pt_BR
+
+-------------------------------------------------------------------
+Mon Jun  4 16:34:43 CEST 2007 - lmichnovic@suse.cz
+
+- creating extra dicts with Novell words during building [#371]
+- excluding conflicting files in aspell-nds package
+- added Provides: "aspell-se" for aspell-sv
+- deleted unnecessary Obsoletes: aspell-sr
+
+-------------------------------------------------------------------
+Mon May 14 17:45:07 CEST 2007 - lmichnovic@suse.cz
+
+- added extra dictionaries with Novell words [#371] 
+  for languages: cs da de es fi fr hu it nb nl pl pt_BR ru sk sv
+  (*Novellwords_extra_dict.patch)
+
+-------------------------------------------------------------------
+Tue Jan 30 18:47:21 CET 2007 - lmichnovic@suse.cz
+
+- update dictionaries fa, fo, ku, pl
+- new dictionaries gu, hy, nds, te
+- dictionaries cs, nl merged into this package
+
+-------------------------------------------------------------------
+Mon Oct 23 12:47:56 CEST 2006 - lmichnovic@suse.cz
+
+- added Serbian dictionary (sr)
+- updated dictionaries da, de, fa, fo, ga, gd, he, lt, ru, uk, uz
+- fixed version of aspell in Requires
+
+-------------------------------------------------------------------
+Sun Oct 22 20:21:31 CEST 2006 - lmichnovic@suse.cz
+
+- added arabic (ar) dictionary 
+
+-------------------------------------------------------------------
+Thu Aug 10 15:32:21 CEST 2006 - kkaempf@suse.de
+
+- remove 'aspell-sv' provides without version.
+
+-------------------------------------------------------------------
+Mon Mar 20 20:46:19 CET 2006 - aj@suse.de
+
+- Fix spec file.
+
+-------------------------------------------------------------------
+Mon Mar 20 13:38:15 CET 2006 - pnemec@suse.cz
+
+- removed aspell_dictionary from Provides 
+
+-------------------------------------------------------------------
+Fri Mar  3 15:39:12 CET 2006 - ro@suse.de
+
+- corrected the new lang provides format
+
+-------------------------------------------------------------------
+Fri Mar  3 15:07:20 CET 2006 - pnemec@suse.cz
+
+- converted to the new lang provides format
+
+-------------------------------------------------------------------
+Tue Feb  7 13:05:03 CET 2006 - pnemec@suse.cz
+
+- fixed virtual package name
+
+-------------------------------------------------------------------
+Fri Jan 27 16:04:39 CET 2006 - pnemec@suse.cz
+
+- providing aspell_dictionary as virtual package [#144972] 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:26 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Oct  4 23:00:40 CEST 2005 - pnemec@suse.cz
+
+- fixend wrong coding in *-de package (#65106)
+
+-------------------------------------------------------------------
+Thu Sep 29 14:36:47 CEST 2005 - pnemec@suse.cz
+
+- added new dicts from standard aspell dirstribution
+
+-------------------------------------------------------------------
+Fri Dec  3 01:44:43 CET 2004 - ro@suse.de
+
+- added some magic for the filelist 
+
+-------------------------------------------------------------------
+Mon May 17 16:31:59 CEST 2004 - ltinkl@suse.cz
+
+- updated existing dictionaries to their latest versions
+- resolved conflict with Norwegian languages
+
+-------------------------------------------------------------------
+Mon Mar 22 00:42:29 CET 2004 - ro@suse.de
+
+- removed backup files
+
+-------------------------------------------------------------------
+Tue Mar 16 16:38:21 CET 2004 - ltinkl@suse.cz
+
+- added Bulgarian dict (#31615)
+- updated some existing dicts to the current version (bugfixes only),
+  no other new ones created
+
+-------------------------------------------------------------------
+Sat Jan 10 14:16:08 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Thu Jul 24 23:32:42 CEST 2003 - ltinkl@suse.cz
+
+- updated existing dictionaries
+- added new dicts from standard aspell distribution (converted from ispell)
+
+-------------------------------------------------------------------
+Fri Nov 01 19:30:38 CET 2002 - pmladek@suse.cz
+
+- package created, version 0.50.2
+- it is source package for de, de, el, es, fo, fr, pt, sk, cv
+  aspell dictionaries
+
