@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Mon Feb 26 10:48:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Mon Aug 15 19:50:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- light modernization of the spec file
+- avoid bashism in post scripts (bsc#1195391) 
+
+-------------------------------------------------------------------
+Mon Jul 24 23:02:16 UTC 2017 - jengelh@inai.de
+
+- Remove vision statement and development methods from description.
+
+-------------------------------------------------------------------
+Fri Jul 21 14:00:08 CEST 2017 - sbrabec@suse.com
+
+- Add nssdb installation scripts.
+- Run spec-cleaner.
+- Drop coolkey-1.1.0-evoandooo.patch: The patch does nothing now.
+  Evolution and LibreOffice changed over time. They moved its
+  directories and they don't use secmod.db any more.
+
+-------------------------------------------------------------------
+Mon Jul 17 20:55:48 CEST 2017 - sbrabec@suse.com
+
+- Integrate latest Centos 7 patches [bsc#1049213]
+  (coolkey-fix-token-removal-failure.patch,
+  coolkey-piv-ecc-el7.patch, coolkey-1.1.0-noapplet.patch,
+  coolkey-1.1.0-fix-spurious-event.patch,
+  coolkey-1.1.0-p15.patch, coolkey-1.1.0-p15-coverity.patch,
+  coolkey-1.1.0-more-keys.patch,
+  coolkey-1.1.0-fail-on-bad-mechanisms.patch,
+  coolkey-1.1.0-max-cpu-bug.patch,
+  coolkey-1.1.0-rhel7-alt-cac.patch).
+  * PK15 support.
+  * Fix CAC card support.
+  * Fix card removal issues.
+- Use original tarball
+  (coolkey-1.1.0.tar.bz2 -> coolkey-1.1.0.tar.gz).
+- Drop patch coolkey-null.patch. It is now part of
+  coolkey-piv-ecc-el7.patch.
+
+-------------------------------------------------------------------
+Tue Nov 22 16:01:46 CET 2016 - sbrabec@suse.com
+
+- Create baselibs.conf.
+- Add PKCS11 module to p11-kit-32bit (bsc#996047#c39).
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:51 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Sat Sep 17 23:52:06 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Mon Jan 10 19:19:02 CET 2011 - sbrabec@suse.cz
+
+- Merged latest Fedora patches (bnc#661643).
+
+-------------------------------------------------------------------
+Tue Apr 14 18:37:02 CEST 2009 - sbrabec@suse.cz
+
+- Fixed wrong C++ delete (bnc#443369, Redhat#485032).
+
+-------------------------------------------------------------------
+Mon Oct 29 17:50:46 CET 2007 - sbrabec@suse.cz
+
+- Fixed gcc 4.3 build errors.
+
+-------------------------------------------------------------------
+Mon Sep 10 13:28:16 CEST 2007 - sbrabec@suse.cz
+
+- Fixed file and directory permission flaw (#304180,
+  CVE-2007-4129).
+
+-------------------------------------------------------------------
+Thu Sep  6 21:03:20 CEST 2007 - jberkman@novell.com
+
+- install pk11install
+- teach pk11install about evolution and openoffice
+
+-------------------------------------------------------------------
+Fri Aug  3 12:31:03 CEST 2007 - sbrabec@suse.cz
+
+- New SuSE package, version 1.1.0.
+
