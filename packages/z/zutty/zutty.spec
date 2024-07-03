@@ -17,16 +17,16 @@
 
 
 Name:           zutty
-Version:        0.15
+Version:        0.16
 Release:        0
 Summary:        Terminal program with GLES renderer and low latency
 License:        GPL-3.0-or-later
 Group:          System/X11/Terminals
 URL:            https://tomscii.sig7.se/zutty/
-#Git-Clone:     https://github.com/tomscii/zutty
-#Git-Clone:     https://github.com/tomscii/zutty.wiki
-Source:         zutty-0.15.tar.gz
-Source1:        zutty-0.15.tar.gz.asc
+#Git-Clone:     https://git.hq.sig7.se/zutty.git
+# from https://git.hq.sig7.se/zutty.git/snapshot/0.16.tar.gz
+Source:         zutty-0.16.tar.gz
+Source1:        zutty-0.16.tar.gz.asc
 Source3:        FAQ.md
 # Note: Tumbleweed contains waf, but Leap does not (yet), so we use python3 and add waf to the sources.
 BuildRequires:  Mesa-libEGL-devel
@@ -45,12 +45,13 @@ It uses FreeType, but does not support fontconfig, thus won't find
 fonts by their usual names. (See FAQ for details.)
 
 %prep
-%autosetup -n %{name}-%{version}
+%autosetup -n %{name}-%{version}-a578956
 cp -a "%{_sourcedir}/FAQ.md" .
 
 %build
 CXXFLAGS="%{?optflags}" LDFLAGS="%{?build_ldflags}" ./waf configure --prefix="%{_prefix}" --no-werror
 ./waf
+strip build/src/zutty
 
 %install
 ./waf install --destdir=%{buildroot}
@@ -61,3 +62,4 @@ CXXFLAGS="%{?optflags}" LDFLAGS="%{?build_ldflags}" ./waf configure --prefix="%{
 %license LICENSE
 
 %changelog
+

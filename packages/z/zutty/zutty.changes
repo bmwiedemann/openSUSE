@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jun 24 23:22:06 UTC 2024 - Bart Verhagen <bart@verhagenconsultancy.be> - 0.16
+
+- Update to 0.16:
+  * Update documentation
+  * Add resource options bellIsAudible & bellIsUrgent)
+  * Use FreeType underline metrics when rendering a scaled font
+  * Some light GLSL refactoring
+  * Place shader code into separate source files
+  * GPU performance optimization: use RGBA8 format instead of RGBA32F
+  * Cut measured latency by zeroing the EGL swap interval
+  * Significantly improve/correct rasterization of scaled fonts
+  * Add XTQMODKEYS (partial, only for supporting modifyOtherKeys)
+  * Implement DECSCUSR (w/o blinking): block, bar & underline cursors)
+  * Repository migration
+  * Add NetBSD-specific font search path
+  * Fix regression in last commit
+  * Preserve RGB color across SGR attribute settings
+  * Remove deprecated key from desktop entry file
+  * Fix clearing glyph area before rendering overlay font glyph
+
+-------------------------------------------------------------------
 Mon Jan 29 13:47:31 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 0.15:
