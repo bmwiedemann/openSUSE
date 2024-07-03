@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jul 02 11:34:22 UTC 2024 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.628.g20b345b4:
+  * feat(crypt): force the inclusion of crypttab entries with x-initrd.attach (bsc#1226529)
+  * fix(mdraid): try to assemble the missing raid device (bsc#1226412)
+  * feat(ifcfg): minimize s390-specific network configuration aspects
+  * refactor(ifcfg): delete code duplication using iface_get_subchannels()
+  * fix(znet): append to udev rules so each rd.znet_ifname is effective
+  * feat(qeth_rules): remove qeth handling consolidated in 95znet
+  * docs(dracut.cmdline): generalize description of rd.znet
+  * feat(znet): use zdev for consolidated device configuration
+  * feat(dasd): minimize dasd handling consolidated in s390-tools
+  * feat(dasd_mod): minimize dasd handling consolidated in s390-tools
+  * feat(dasd_rules): remove dasd handling consolidated in s390-tools
+  * feat(zfcp): minimize zfcp handling consolidated in s390-tools
+  * feat(zfcp_rules): remove zfcp handling consolidated in s390-tools
+  * refactor(cms): remove now unnecessary inclusion of full s390utils-base
+  * refactor(cms): use consolidated network config with zdev from s390-tools
+  * refactor(cms): use consolidated dasd config with zdev from s390-tools
+  * refactor(cms): use consolidated zfcp config with zdev from s390-tools
+  * refactor(cms): use zdev to simplify handling CMSDASD=... boot option
+  * fix(dracut-install): continue parsing if ldd prints "cannot be preloaded" (bsc#1208690)
+
+-------------------------------------------------------------------
 Mon May 27 12:09:20 UTC 2024 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.598.gfe80dac7:

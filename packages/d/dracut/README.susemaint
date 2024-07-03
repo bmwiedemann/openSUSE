@@ -6,11 +6,13 @@ Maintaining dracut
 Patches are added as merge requests on GitHub against the respective maintenance
 branch. Currently, these active maintenance branches are:
 
-- SUSE/044          -> SLE 12 SP5
-- SUSE/049          -> SLE 15 SP2, SLE 15 SP3
-- SUSE/055          -> SLE 15 SP4
-- SLE-15-SP5_Update -> SLE 15 SP5 (based on SUSE/055 plus some specific patches)
-- SUSE/059          -> Tumbleweed
+- SUSE/044              -> SLE 12 SP5
+- SUSE/049              -> SLE 15 SP2, SLE 15 SP3
+- SUSE/055              -> SLE 15 SP4
+- SLE-15-SP5_Update     -> SLE 15 SP5 (based on SUSE/055 plus some specific patches)
+- SLE-15-SP6_Update     -> SLE 15 SP6
+- SL-Micro-6.0_Update   -> SL Micro 6.0
+- SUSE/059              -> Tumbleweed
 
 Rules:
 
@@ -353,4 +355,22 @@ were already merged
 a45048b8 fix(dracut): move hooks directory from /usr/lib to /var/lib
 424717af fix: /etc/modprobe.d --> /run/modprobe.d (partially reverted)
 4cc962aa fix(systemd-ask-password): no graphical output in aarch64
+6c55657e refactor(cms): use zdev to simplify handling CMSDASD=... boot option
+53a5d10b refactor(cms): use consolidated zfcp config with zdev from s390-tools
+168c0c66 refactor(cms): use consolidated dasd config with zdev from s390-tools
+0b6d6952 refactor(cms): use consolidated network config with zdev from s390-tools
+166e8a22 refactor(cms): remove now unnecessary inclusion of full s390utils-base
+b5a35f9d feat(zfcp_rules): remove zfcp handling consolidated in s390-tools
+7745a81a feat(zfcp): minimize zfcp handling consolidated in s390-tools
+72c945ca feat(dasd_rules): remove dasd handling consolidated in s390-tools
+2397c479 feat(dasd_mod): minimize dasd handling consolidated in s390-tools
+36e1f884 feat(dasd): minimize dasd handling consolidated in s390-tools
+658a21ac feat(znet): use zdev for consolidated device configuration
+8707a69b docs(dracut.cmdline): generalize description of rd.znet
+198a86c2 feat(qeth_rules): remove qeth handling consolidated in 95znet
+22f51730 fix(znet): append to udev rules so each rd.znet_ifname is effective
+2d8fa8be refactor(ifcfg): delete code duplication using iface_get_subchannels()
+457e66e6 feat(ifcfg): minimize s390-specific network configuration aspects
+3fd43858 fix(mdraid): try to assemble the missing raid device
+61ab3386 feat(crypt): force the inclusion of crypttab entries with x-initrd.attach
 
