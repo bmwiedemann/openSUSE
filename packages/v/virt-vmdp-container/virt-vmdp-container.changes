@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Jul  2 16:22:25 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 2.5.4.3: https://github.com/SUSE/vmdp/releases/tag/v2.5.4.3
+  * Media layout changes:
+    . Renamed the win10-server and win10-2204 driver directories on the
+      distribution media to win10-server16-19 and win10-11-server22 to better
+      identify which versions of Windows that are supported by the drivers in
+      that directory.
+    . Added v2v_scripts directory: Contains scripts to help with the virt-v2v
+      process.
+    . Added virt-v2v-vmdp.sh: Copies VMDP files to the host for use with
+      virt-v2v.
+  * qemu-ga:
+    . Update to latest code.
+  * virtiofs_svc:
+    . Update to latest code.
+  * pvctrl.exe:
+    . Add the ability to remove registry parameters for drivers.
+  * virtio ring:
+    . Remove viorngci.dll from vmdp. It is no longer needed.
+  * setup.exe:
+    . virt-v2v enhancements: Test if doing first boot and add retry setup script.
+    . Handle the removal of viorngci.dll from vmdp.
+    . For Windows Server 1909, install the drivers for win10-server-16-19.
+    . Updated to install drivers from the new media directory layout:
+      win10-server16-19 and win10-11-server22
+    . When installing on Xen and it's a new install, always prompt for a reboot.
+  * uninstall.exe:
+    . Handle the removal of viorngci.dll from vmdp.
+  * pvvxsvc.exe:
+    . virt-v2v enhancements: Test if doing first boot and if vmdp setup
+      previously failed. Re-extract vmdp*exe and run vmdp setup.
+  * pvvxbn.sys:
+    . Bug 1209311. For Xen ballooning switch the default to use
+      xenstore first to determine the total number of memory pages instead of
+      using the OS. If it can't get the memory pages from Xen, fall back to
+      using the OS. pvctrl.exe can be used to switch the default order for
+      getting the memory pages.
+    . Issue a HYPERVISOR_Shutdown(SHUTDOWN_poweroff) when shutting
+      down by clicking on the shutdown button.
+  * virtio_fs.sys
+    . Fixed memory leak.
+
+-------------------------------------------------------------------
 Wed May 22 08:12:59 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Add LABEL with source URL
