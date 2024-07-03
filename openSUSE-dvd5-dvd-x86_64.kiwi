@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20240701" schemaversion="4.1">
+<image name="OBS__openSUSE___20240702" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20240701</productvar>
+      <productvar name="VERSION">20240702</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20240701,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20240702,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20240701/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20240702/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -102,9 +102,6 @@
       <repopackage name="alsa-utils"/>
       <repopackage name="alts"/>
       <repopackage name="amarok"/>
-      <repopackage name="amavisd-milter"/>
-      <repopackage name="amavisd-new"/>
-      <repopackage name="amavisd-new-docs"/>
       <repopackage name="analitza"/>
       <repopackage name="analitza-lang"/>
       <repopackage name="apache-commons-logging"/>
@@ -132,9 +129,7 @@
       <repopackage name="arabic-kacst-fonts"/>
       <repopackage name="arabic-kacstone-fonts"/>
       <repopackage name="arabic-naqsh-fonts"/>
-      <repopackage name="arc"/>
       <repopackage name="argyllcms"/>
-      <repopackage name="arj"/>
       <repopackage name="ark"/>
       <repopackage name="ark-lang"/>
       <repopackage name="arphic-ukai-fonts"/>
@@ -1218,7 +1213,6 @@
       <repopackage name="lensfun-data"/>
       <repopackage name="less"/>
       <repopackage name="lftp"/>
-      <repopackage name="lhasa"/>
       <repopackage name="lib2geom1_3_0"/>
       <repopackage name="lib389"/>
       <repopackage name="liba52-0"/>
@@ -1390,7 +1384,8 @@
       <repopackage name="libcholmod5"/>
       <repopackage name="libchromaprint1"/>
       <repopackage name="libcjson1"/>
-      <repopackage name="libclamav9"/>
+      <repopackage name="libclamav12"/>
+      <repopackage name="libclammspack0"/>
       <repopackage name="libclang-cpp18"/>
       <repopackage name="libclang13"/>
       <repopackage name="libclastfm0"/>
@@ -1564,7 +1559,7 @@
       <repopackage name="libfreeipmi17"/>
       <repopackage name="libfreerdp3-3"/>
       <repopackage name="libfreetype6"/>
-      <repopackage name="libfreshclam2"/>
+      <repopackage name="libfreshclam3"/>
       <repopackage name="libfribidi0"/>
       <repopackage name="libfstrm0"/>
       <repopackage name="libftdi1-2"/>
@@ -2209,7 +2204,6 @@
       <repopackage name="libldm-1_0-0"/>
       <repopackage name="libldns3"/>
       <repopackage name="liblensfun1"/>
-      <repopackage name="liblhasa0"/>
       <repopackage name="liblightdm-gobject-1-0"/>
       <repopackage name="liblilv-0-0"/>
       <repopackage name="liblirc_client0"/>
@@ -2264,7 +2258,6 @@
       <repopackage name="libmediacheck6"/>
       <repopackage name="libmetalink3"/>
       <repopackage name="libmicrodns1"/>
-      <repopackage name="libmilter1_0"/>
       <repopackage name="libminiupnpc17"/>
       <repopackage name="libminizip1"/>
       <repopackage name="libminizip1-x86-64-v3"/>
@@ -3216,7 +3209,6 @@
       <repopackage name="nbdkit-server"/>
       <repopackage name="nbdkit-ssh-plugin"/>
       <repopackage name="nbdkit-vddk-plugin"/>
-      <repopackage name="ncompress"/>
       <repopackage name="ncurses-utils"/>
       <repopackage name="net-snmp"/>
       <repopackage name="net-tools"/>
@@ -3423,7 +3415,6 @@
       <repopackage name="perl-CGI"/>
       <repopackage name="perl-Clone"/>
       <repopackage name="perl-common-sense"/>
-      <repopackage name="perl-Convert-ASN1"/>
       <repopackage name="perl-Convert-BinHex"/>
       <repopackage name="perl-Cpanel-JSON-XS"/>
       <repopackage name="perl-Crypt-OpenSSL-Bignum"/>
@@ -3452,13 +3443,11 @@
       <repopackage name="perl-IO-HTML"/>
       <repopackage name="perl-IO-Socket-SSL"/>
       <repopackage name="perl-IO-String"/>
-      <repopackage name="perl-IO-stringy"/>
       <repopackage name="perl-IO-Tty"/>
       <repopackage name="perl-IP-Country"/>
       <repopackage name="perl-IPC-Run3"/>
       <repopackage name="perl-JSON"/>
       <repopackage name="perl-JSON-XS"/>
-      <repopackage name="perl-ldap"/>
       <repopackage name="perl-libwww-perl"/>
       <repopackage name="perl-LWP-MediaTypes"/>
       <repopackage name="perl-LWP-Protocol-https"/>
@@ -3488,7 +3477,6 @@
       <repopackage name="perl-TimeDate"/>
       <repopackage name="perl-Try-Tiny"/>
       <repopackage name="perl-Types-Serialiser"/>
-      <repopackage name="perl-Unix-Syslog"/>
       <repopackage name="perl-URI"/>
       <repopackage name="perl-WWW-RobotRules"/>
       <repopackage name="perl-X11-Protocol"/>
@@ -4107,7 +4095,6 @@
       <repopackage name="time"/>
       <repopackage name="timezone"/>
       <repopackage name="tmux"/>
-      <repopackage name="tnef"/>
       <repopackage name="tnftp"/>
       <repopackage name="totem"/>
       <repopackage name="totem-lang"/>
@@ -4125,23 +4112,6 @@
       <repopackage name="transactional-update"/>
       <repopackage name="transactional-update-zypp-config"/>
       <repopackage name="translate-shell"/>
-      <repopackage name="translation-update"/>
-      <repopackage name="translation-update-cs"/>
-      <repopackage name="translation-update-da"/>
-      <repopackage name="translation-update-de"/>
-      <repopackage name="translation-update-el"/>
-      <repopackage name="translation-update-en_GB"/>
-      <repopackage name="translation-update-es"/>
-      <repopackage name="translation-update-fr"/>
-      <repopackage name="translation-update-hu"/>
-      <repopackage name="translation-update-it"/>
-      <repopackage name="translation-update-ja"/>
-      <repopackage name="translation-update-pl"/>
-      <repopackage name="translation-update-pt"/>
-      <repopackage name="translation-update-pt_BR"/>
-      <repopackage name="translation-update-ru"/>
-      <repopackage name="translation-update-zh_CN"/>
-      <repopackage name="translation-update-zh_TW"/>
       <repopackage name="transmission-common"/>
       <repopackage name="transmission-gtk"/>
       <repopackage name="transmission-gtk-lang"/>
@@ -4252,7 +4222,6 @@
       <repopackage name="unbound"/>
       <repopackage name="unbound-anchor"/>
       <repopackage name="unison"/>
-      <repopackage name="unrar_wrapper"/>
       <repopackage name="unzip"/>
       <repopackage name="unzip-doc"/>
       <repopackage name="update-alternatives"/>
@@ -4654,7 +4623,6 @@
       <repopackage name="zeromq-tools"/>
       <repopackage name="zip"/>
       <repopackage name="zisofs-tools"/>
-      <repopackage name="zoo"/>
       <repopackage name="zsh"/>
       <repopackage name="zstd"/>
       <repopackage name="zypper"/>
