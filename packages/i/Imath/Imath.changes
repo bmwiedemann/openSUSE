@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jul  1 18:33:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.11:
+  * Fix a problem where downstream projects using Imath would build
+    python bindings even if they weren't requested.
+  * Fix for missing `std::bit_cast`
+  * Fix missing/necessary use of IMATH_HOSTDEVICE
+  * IMATH_INSTALL_PKG_CONFIG is now on by default, even on Windows
+  * Fix calling default constructor by uniform init in TypeTraits
+  * Fix redundant PYIMATH_EXPORTS causing compile issues on
+    Windows Clang
+  * Update to SO versioning policy:
+  * succ()/pred() now use std::nextafter().
+  * Expand epsilon bounds for m44x pyImath test.
+  * Rename "docs" to "website".
+  * Add missing copyright/license identifiers.
+
+-------------------------------------------------------------------
 Tue Jun 27 15:06:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.9:
@@ -50,7 +68,7 @@ Tue Jun 21 20:25:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Fix python imath export
   * Cuda safety fixes
   * Sort Imath source files
-  * Fix formatting in release notes 
+  * Fix formatting in release notes
 
 -------------------------------------------------------------------
 Mon Dec 13 11:36:42 UTC 2021 - pgajdos@suse.com
@@ -105,7 +123,7 @@ Tue Aug 10 08:46:34 UTC 2021 - pgajdos@suse.com
 -------------------------------------------------------------------
 Fri Apr  9 11:19:34 UTC 2021 - pgajdos@suse.com
 
-- initial version 3.0.1, splitted from openexr 
+- initial version 3.0.1, splitted from openexr
 - added patches
   fix https://github.com/AcademySoftwareFoundation/openexr/issues/595
   + Imath-pkgconfig-fix-libdir.patch (splitted from openexr's

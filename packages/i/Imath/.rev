@@ -82,4 +82,28 @@
     <comment></comment>
     <requestid>1096355</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5f8e48538091089d6a9d22e443f6d46c</srcmd5>
+    <version>3.1.11</version>
+    <time>1720031348</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1.11:
+  * Fix a problem where downstream projects using Imath would build
+    python bindings even if they weren't requested.
+  * Fix for missing `std::bit_cast`
+  * Fix missing/necessary use of IMATH_HOSTDEVICE
+  * IMATH_INSTALL_PKG_CONFIG is now on by default, even on Windows
+  * Fix calling default constructor by uniform init in TypeTraits
+  * Fix redundant PYIMATH_EXPORTS causing compile issues on
+    Windows Clang
+  * Update to SO versioning policy:
+  * succ()/pred() now use std::nextafter().
+  * Expand epsilon bounds for m44x pyImath test.
+  * Rename &quot;docs&quot; to &quot;website&quot;.
+  * Add missing copyright/license identifiers.
+
+  * Fix formatting in release notes
+- initial version 3.0.1, splitted from openexr (forwarded request 1184362 from dirkmueller)</comment>
+    <requestid>1184838</requestid>
+  </revision>
 </revisionlist>
