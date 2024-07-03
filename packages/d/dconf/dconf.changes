@@ -1,0 +1,904 @@
+-------------------------------------------------------------------
+Wed Dec 21 13:09:12 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop baselibs.conf: there is no known consumer of the -32bit
+  package.
+
+-------------------------------------------------------------------
+Tue Sep 13 06:33:51 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
+
+- Bring back 0001-gvdb-Restore-permissions-on-changed-files.patch
+  since the useful fix was never merged to upstream (bsc#971074
+  bgo#758066 bsc#1203344).
+
+-------------------------------------------------------------------
+Thu Mar 18 14:20:52 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.40.0:
+  + common: Add missing G_BEGIN/END_DECLS to allow use of headers
+    from C++ code.
+
+-------------------------------------------------------------------
+Tue Feb  9 12:40:42 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.39.1:
+  + Build:
+    - Improve libdconf visible symbols.
+    - Minor fixes to bash completion script.
+  + Engine: do not emit optimistic change notifications unless the
+    local value is different.
+  + service: add a systemd unit for D-Bus activation.
+
+-------------------------------------------------------------------
+Mon Sep 14 12:39:47 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 0.38.0:
+  + build: Install bash-completion relative to datadir.
+  + client: add `dconf compile` to shell autocomplete.
+
+-------------------------------------------------------------------
+Tue Mar 10 19:46:25 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 0.36.0:
+ + No changes, stable version update only.
+
+-------------------------------------------------------------------
+Wed Feb 12 17:42:32 CET 2020 - dimstar@opensuse.org
+
+- Update to version 0.35.1:
+  + Writer service: avoid writing to disk and emitting changed
+    signals when write requests do not result in changes to the
+    database.
+  + build: Drop redundant `install` key from `configure_file()`.
+  + build: Update abicheck.sh script to work with GCC 9.
+  + build: Update use of link_whole for meson-0.52.
+- Drop 0001-gvdb-Restore-permissions-on-changed-files.patch and
+  dconf-fix-meson.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Jan 14 21:41:11 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add dconf-fix-meson.patch: Update use of link_whole for
+  meson-0.52 and newer.
+
+-------------------------------------------------------------------
+Thu Sep 12 14:28:34 CST 2019 - qkzhu@suse.com
+
+- Update to version 0.34.0:
+  + Increment version number following 0.34 release.
+
+-------------------------------------------------------------------
+Fri Aug 30 14:52:11 CDT 2019 - mgorse@suse.com
+
+- Update to version 0.33.2:
+  + Drop references to GDBusConnection objects when D-Bus
+    connections are closed.
+- Changes from version 0.33.1:
+  + Factor out a common method to route completion of D-Bus
+    methods through.
+  + build: Use weak bindings in gvdb to fix linking with LLD.
+
+-------------------------------------------------------------------
+Mon Mar 11 18:19:20 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + No changes since 0.31.92.
+
+-------------------------------------------------------------------
+Thu Mar  7 18:00:27 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.31.92:
+  + bin: Add an option to ignore changes to locked keys during
+    load.
+  + tests:
+    - Use more concise key and value.
+    - shm: fix pwrite wrapper with -D_FILE_OFFSET_BITS=64.
+    - Replace usage of dlsym with separate modules containing
+      functions that need to be mocked out.
+    - Avoid using real system bus during tests.
+
+-------------------------------------------------------------------
+Wed Feb 13 23:54:32 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.31.2:
+  + Bin:
+    - Rewrite dconf utility in C. Updates are no longer conditional
+      on the mtime of the database directory and files. Help
+      information is shown on erroneous usage, but not otherwise.
+    - Add a new database directory argument for the update command.
+  + Build: Make dconf client vapi file installation optional, and
+    thus the Vala dependency optional (still built by default). 
+
+-------------------------------------------------------------------
+Tue Jan  8 13:22:01 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 0.31.1:
+  + Engine: Fix memory leak when subscribing to a path.
+  + CI: Always store test artifacts so we always get code coverage
+    results.
+  + Sort output of list and dump commands.
+  + Tests: Add integration tests for dconf and dconf-service
+    running within a separate D-Bus session and
+    clean XDG_RUNTIME_DIR and XDG_CONFIG_HOME.
+  + Engine: Coalesce pending writes into a single changeset.
+  + Consistently validate the number of arguments. Add optional
+    directory argument for update command.
+  + Tests: Add further integration tests.
+  + Check mtimes of files when updating databases.
+  + Indicate update failure with non-zero exit code. Consistently
+    handle invalid configuration in update.
+  + Replace Bugzilla by Gitlab URL in DOAP file.
+  + Tests: Add test for key paths locked in system databases.
+
+-------------------------------------------------------------------
+Tue Oct 23 10:16:40 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.30.1:
+  + Engine: Fix memory leak when subscribing to a path.
+
+-------------------------------------------------------------------
+Fri Sep  7 20:11:22 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.30.0:
+  + No changes, stable bump only.
+
+-------------------------------------------------------------------
+Tue Aug 28 19:48:33 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.29.2:
+  + Service: When corrupt GVDB files are found, they are now
+    transparently backed up and replaced with an empty database.
+  + Replace all hard-coded /etc path with sysconfdir. This is
+    useful for JHBuild environments and systems that don't want to
+    use /etc/dconf.
+  + Engine: Change overflow thresholds in subscription counts from
+    GMAXUINT32 to GMAXUINT.
+  + Change meson flag used to build Gtk-Doc from enable-gtk-doc to
+    gtk_doc.
+  + Declare libdconf_service as a dependency to fix the build in
+    massively parallelised environments.
+- Change options passed to meson following upstreams changes, now
+  passing bash_completion=true, man=true and gtk_doc=true.
+
+-------------------------------------------------------------------
+Thu Aug 16 19:01:42 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.29.1:
+  + Engine: track in progress watch handles to avoid spurious
+    changed signals for the root path. Subscription requests are no
+    longer sent if the engine is already subscribed to the given
+    path. In the case that some value changes while a subscription
+    request is in progress, a changed signal is only sent for the
+    path being subscribed to instead of the root path.
+  + Engine: fix deadlock which occured when using the engine from
+    libsoup within flatpak by extending the existing workaround for
+    Glib issue. GSocket and various other GObject types are now
+    also initialised in the main thread.
+  + Add transfer annotations to the GTK-Doc strings for functions
+    in the dconf_changeset_* and dconf_client_* namespaces.
+  + Update GVDB subtree from GVDB master, containing mostly
+    documentation improvements.
+  + dconf-update.vala: correct error message grammar.
+  + Various meson related improvements.
+  + Add GitLab CI.
+  + Service: Port from the deprecated g_type_class_add_private() to
+    G_ADD_PRIVATE().
+- Add pkgconfig(dbus-1) and pkgconfig(bash-completion)
+  BuildRequires: New dependencies.
+- Drop dbus-1 BuildRequires, full devel package is now needed.
+
+-------------------------------------------------------------------
+Tue Mar 13 23:16:56 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 0.28.0:
+  + No visible changes.
+- Drop:
+  + intltool BuildRequires: there are no translations to be
+    handled.
+  + update-desktop-files BuildRequires: there is no desktop file to
+    be handled.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:06:37 UTC 2018 - jengelh@inai.de
+
+- Update summaries.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:24:35 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Oct 18 15:36:44 UTC 2017 - badshah400@gmail.com
+
+- Update to version 0.27.1:
+  + Port to meson build system.
+- Add meson BuildRequires and switch autotools macros configure,
+  make and makeinstall to meson, meson_build and meson_install
+  following upstream switch to Meson build system.
+- Drop the BUILD_FROM_VCS checks, and build gtk-doc
+  unconditionally: this is needed since the port to meson.
+- Pass enable-man=true option to meson: man files are no longer
+  built unless this is explicitly specified.
+- Drop the find command for finding and deleting libtool archives:
+  these are no longer built since the port to meson build system.
+
+-------------------------------------------------------------------
+Tue Oct  3 20:33:13 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 0.26.1:
+  + Work around a deadlock in GObject type initialization
+    (bgo#674885).
+
+-------------------------------------------------------------------
+Thu Mar  2 14:36:50 UTC 2017 - fezhang@suse.com
+
+- Update 0001-gvdb-Restore-permissions-on-changed-files.patch:
+  'dconf update' should set permissions to 0644 on restored missing
+  db files, despite of the umask setting (bsc#1025721, bsc#971074,
+  bgo#758066).
+
+-------------------------------------------------------------------
+Fri Aug 19 18:10:24 UTC 2016 - fezhang@suse.com
+
+- Add 0001-gvdb-Restore-permissions-on-changed-files.patch:
+  'dconf update' writes new contents into temporary file and
+  renames it to the original one, resulting permission
+  inconsistencies if umask has been changed before that. The patch
+  restores the changed permissions (bsc#971074, bgo#758066).
+
+-------------------------------------------------------------------
+Wed Apr 13 09:51:11 UTC 2016 - fezhang@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+- Drop dconf-use-g_settings_get_default_value.patch (bnc#873225):
+  patch applied to dconf-editor.
+
+-------------------------------------------------------------------
+Wed Mar 23 14:30:49 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 0.26.0:
+  + No changes.
+
+-------------------------------------------------------------------
+Wed Dec 23 13:56:49 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.25.1:
+  + The libdbus-1 backend has been removed. Dconf now always uses
+    GDBus.
+  + Support has been added for system administration frameworks to
+    set up the dconf profile via a file placed in the
+    XDG_RUNTIME_DIR or in /run/dconf/. In the case of the file in
+    /run/dconf/, it is not possible to modify the proile, even via
+    the DCONF_PROFILE environment variable, which makes it slightly
+    more difficult to evade lockdown.
+  + Directory resets are now implemented properly in DConfChangeset
+    which means that reading a subkey through a changeset that
+    contains a reset for a parent directory of that key will return
+    TRUE with a NULL value.
+  + A new API dconf_client_read_full() has been added which allows
+    reading the user value, the default value, or querying what the
+    effective value would be if a changeset were to be applied.
+  + A new API has been added for listing the locks that are in
+    effect: dconf_client_list_locks().
+  + DConfClient has a new "writability-changed" signal.
+  + Support for reading default values and listing locks have been
+    added to the dconf commandline tool.
+  + Support for g_autoptr() has been added for DConfClient and
+    DConfChangeset.
+  + The handling of reading of default values via GSettings has
+    been made more efficient. More major changes to the GSettings
+    backend are expected in the near future.
+- Drop pkgconfig(dbus-1) BuildRequires: this backend has been
+  dropped.
+- Drop libdconf-dbus-1-0 subpackage and obsolete it by libdconf1
+  package to ensure proper upgrade mechanism.
+- Drop libdconf-dbus-devel subpackage and obsolete it by the
+  main devel package.
+
+-------------------------------------------------------------------
+Mon Mar 23 17:11:47 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.24.0:
+  + Stable release, no changes since 0.23.2.
+
+-------------------------------------------------------------------
+Tue Mar 17 08:31:30 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.23.2:
+  + Remove dconf-editor manpage (accidentally missed during the
+    split).
+  + Fix whitespace issues in 'dconf --help'.
+
+-------------------------------------------------------------------
+Tue Mar  3 00:34:09 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.23.1:
+  + dconf-editor is now in a separate package.
+  + portability improvements.
+- Drop dconf-editor subpackages and references to it: it's now
+  maintained in its own package (version 3.15.91).
+- Drop pkgconfig(gtk+-3.0) and pkgconfig(libxml-2.0) BuildRequires:
+  dconf-editor dependencies.
+- Drop dconf-use-g_settings_get_default_value.patch: patch applied
+  to dconf-editor.
+- Drop lang-package: it provided languages for dconf-editor
+  (despite the gettext domain being 'dconf').
+
+-------------------------------------------------------------------
+Mon Feb  2 13:53:58 UTC 2015 - dimstar@opensuse.org
+
+- Move ca.desrt.dconf-editor.appdata.xml to dconf-editor
+  subpackage: the appdata.xml file is supposed to be in the same
+  package as the .desktop file (boo#915692).
+
+-------------------------------------------------------------------
+Sun Oct  5 10:20:55 UTC 2014 - zaitor@opensuse.org
+
+- Move .desktopfile from X-GNOME-SystemSettings to
+  X-GNOME-PersonalSettings, since the only values one can change is
+  for active user. Having it under System gives the impression that
+  changes are systemwide.
+
+-------------------------------------------------------------------
+Sat Sep 20 08:25:01 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.22.0:
+  + Fix handling of floating point keys in editor.
+  + Update appdata for renamed desktop file.
+  + Minor doap changes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug  5 20:04:07 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.21.0:
+  + Editor desktop file renamed to ca.desrt.dconf-editor to take
+    advantage of D-Bus activation.
+  + Prevent the service from being released more than once if we
+    receive multiple signals.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug  5 20:04:06 UTC 2014 - dimstar@opensuse.org
+
+- Update dconf-use-g_settings_get_default_value.patch from
+  bgo#668234#c5: Silence "Unknown child tag in <key>, <default>".
+
+-------------------------------------------------------------------
+Fri Jun 13 09:55:39 UTC 2014 - fezhang@suse.com
+
+- Add category X-GNOME-SystemSettings to dconf-editor.desktop so
+  that gnome-control-center can recongnize and show it
+  (bnc#866235).
+
+-------------------------------------------------------------------
+Tue Jun  3 18:19:03 UTC 2014 - mgorse@suse.com
+
+- Add dconf-use-g_settings_get_default_value.patch: Display
+  correct default value when a custom database is in use
+  (bnc#873225)
+
+-------------------------------------------------------------------
+Fri May 23 21:44:32 UTC 2014 - mgorse@suse.com
+
+- Add dconf-use-g_settings_get_default_value.patch: Display correct
+  default value when a custom database is in use (bnc#873225).
+
+-------------------------------------------------------------------
+Mon Mar 24 19:49:28 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 18 10:19:23 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.19.92:
+  + Depend on automake 1.11.2.
+  + Stop using ACLOCAL_FLAGS.
+  + Depend on released version of Vala (0.18.0).
+
+-------------------------------------------------------------------
+Mon Mar  3 21:43:11 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.19.91:
+  + Fix an unlikely failure in the fuzz testing of gvdb.
+  + Fix a thread safety issue with file-db.
+
+-------------------------------------------------------------------
+Wed Feb 19 19:07:56 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.19.90:
+  + dconf compile: always write little endian.
+  + file-db: don't install match rules on no bus (fixes gdbus
+    assertion).
+  + update dconf(1) manpage for 'dconf compile'.
+  + Fix 'make clean' on FreeBSD.
+  + editor: provide appdata.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 13 22:29:21 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.19.3:
+  + Quite a lot of test coverage improvements.
+  + Add a proper DCONF_ERROR error domain.
+  + Suppress GLib deprecation warnings during build.
+  + Engine:
+    - Issue warnings about missing files only once per source.
+    - Grok the WritabilityNotify signal from D-Bus.
+    - Assorted fixes for issues found during testing.
+  + gsettings: handle writability changes correctly.
+  + Portability: only link to -ldl if it is required.
+  + Add support for 'file-db' to profiles: this is an absolute path
+    to a immutable dconf database file.
+  + Add support for finding profiles in XDG_DATA_DIRS if they are
+    not in /etc.
+  + Add 'dconf compile' command for building dconf databases from
+    keyfiles in arbitrary locations (like from the build system of
+    a project that may want to install a file-db).
+  + Editor: add a section separator to the app menu for
+    consistency.
+
+-------------------------------------------------------------------
+Tue Nov 19 19:34:24 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.19.2:
+  + Add support for the new GSettingsBackend.read_user_value() API.
+  + Bump GLib version depend accordingly (2.39.1).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 24 07:45:29 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 16 18:47:23 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.17.1:
+  + Documentation updates, including better coverage of profiles.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 12 14:42:33 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.17.0:
+  + Fix some compile warnings.
+  + Use gresource.
+  + Cancel searches on escape.
+  + Bugs fixed: bgo#703073.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 25 22:07:53 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.16.0:
+  + Set G_LOG_DOMAIN so that 'dconf' shows in GLib log messages.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 13 08:48:06 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.15.3:
+  + Fix problem related to empty changesets (caused by empty 'dconf
+    load', for example).
+  + New icons: hicolor icons have been updated and a HighContrast
+    set added.
+  + Loosen some assertions on the order of messages being returned
+    from the service. D-Bus violates this order in the case that
+    the service crashes and that's no reason to take the client
+    with it as well.
+  + Improve autogen.sh non-bash compatibility.
+  + Add some backends to the dconf-service: The first backend is a
+    null backend that allows for a temporary database tied to the
+    lifetime of the session.
+  + Also add a new 'keyfile' backend for the service. This is
+    primarily intended to be used with NFS (where use of mmap is
+    not safe).
+  + Add a mkdir() in the case of an empty home directory where
+    ~/.config/dconf does not already exist.
+  + Fix crashes in the service caused by failures to write
+    (including failures caused by the above issue being overlooked)
+  + Work around an issue with a testcase hanging and failing due to
+    a GLib change to the order in which testcases are run.
+  + Running autoreconf on tarballs should now work.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Nov 24 22:46:56 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.15.2:
+  + Update to the new GVDB API (GBytes based) and refactor a bit
+  + Add a new type of "database mode" DConfChangeset and use it
+  + The service has been substantially rewritten
+    - using gdbus-codegen
+    - cache the file contents instead of read/modify/write each
+      time
+    - new DConfWriter abstraction allows considering support for
+      backends
+    - uses only POSIX IO (read and write syscalls) for database
+      access
+    - workaround mmap() bug on OpenBSD
+  + Editor:
+    - Fix search order of schema dirs
+    - Translate summary and description
+  + Updated translations.
+- Add pkgconfig(glib-2.0) BuildRequires so it can be versioned.
+
+-------------------------------------------------------------------
+Wed Nov 14 09:28:36 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.15.0:
+  + Add --disable-man
+  + Fix reading default values in GSettings backend
+  + Editor:
+    - Support schema overrides
+    - Search improvements (search directories, values,
+      descriptions)
+    - Correctly get text from schema descriptions
+    - Only write window state settings on exit and support
+      fullscreen state
+  + dconf_rebuilder_get_parent: don't leak parent_name
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 13 13:48:38 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.14.1:
+  + Fix a rather substantial memory leak in dconf-service.
+  + Fix xinclude issues in docs for srcdir != builddir.
+  + Using the g_settings_delay()/g_settings_reset()/
+    g_settings_get() trick to read default values is working again
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 26 21:27:37 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 0.14.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 21 07:27:22 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.13.90:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug  7 16:29:44 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.13.5:
+  + the service no longer attempts to migrate the primary dconf
+    database from its (years) old path ~/.config/dconf to the new
+    ~/.config/dconf/user
+  + fixes for profile file parsing problems
+  + fix obscure race in GDBus handling code that could result in
+    out-of-order message delivery
+  + editor:
+    - clean up some messages and mark strings for translations
+    - enable internationalization
+  + add manpages for dconf(7), dconf(1), dconf-service and
+    dconf-editor
+  + Updated translations.
+- Add docbook-xsl-stylesheets, intltool and xsltproc BuildRequires:
+  new dependencies.
+- Split out a -lang package.
+
+-------------------------------------------------------------------
+Fri Aug  3 08:53:22 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.13.4:
+  + extensively refactored
+  + API of libdconf has changed; soname bumped to libdconf.so.1
+  + installed header layout has changed
+  + there are changes to the API used between the client and the
+    service.
+  + there is a now a fairly decent test suite but it requires a
+    full D-Bus environment to run in, so it may make sense to avoid
+    'make check' on builders for the time being.
+
+-------------------------------------------------------------------
+Fri Aug  3 07:10:30 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.13.0:
+  + editor: use GtkApplication and GMenu
+  + editor: support searching for keys
+  + dconf cli: call setlocale() on startup
+
+-------------------------------------------------------------------
+Fri Aug  3 06:37:48 UTC 2012 - dimstar@opensuse.org
+
+- Change the Requires dconf = %{version} to dconf >= %{version}.
+  Whereas '=' might be correct, it will cause issues on later
+  updates, when libdconf1 is coming to the distribution.
+
+-------------------------------------------------------------------
+Tue May  1 17:06:26 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.12.1:
+  + dconf CLI: call setlocale() on startup (for proper handling of
+    values containing non-ascii characters).
+
+-------------------------------------------------------------------
+Mon Mar 26 15:24:49 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.12.0:
+  + No changes.
+
+-------------------------------------------------------------------
+Mon Mar 19 20:04:24 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 0.11.7:
+  + engine: Don't leak the lock table if a system database changes
+    while a program is running.
+  + dbus-1: Call g_slist_remove_link instead of g_slist_remove.
+  + editor: Set 'wrap' property on default value label.
+  + dconf update:
+    - Code cleanup, better error handling.
+    - Read keyfiles in a defined order (later files take
+      precedence)
+    - Don't issue warnings if a key is defined in multiple files.
+
+-------------------------------------------------------------------
+Thu Mar  8 17:02:29 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.11.6:
+  + new DCONF_BLAME mode for debugging spurious dconf writes at
+    login
+  + stop hardcoding the assumption that there will be exactly one
+    user database followed by zero or more system databases
+  + allow DCONF_PROFILE to specify a profile file by absolute path
+  + dbus-1: fix multiple-key change notifications
+  + autogen.sh can now be called from out of tree
+
+-------------------------------------------------------------------
+Tue Feb  7 08:28:10 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.11.5:
+  + Do not install non-standard icon sizes
+  + Fix a bug with getting default values when no profile is in use
+  + Some general code cleanups on the client side
+  + Improve Makefile compatibility: avoid using 'echo -e'
+- Drop hack that removed installed icons with non-standard size:
+  fixed upstream.
+
+-------------------------------------------------------------------
+Wed Feb  1 09:26:26 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.11.3:
+  + Require vala 0.15.1
+  + Add icon for dconf-editor
+- Call %icon_theme_cache_post(un) in %post/%postun of dconf-editor,
+  now that there is an icon.
+- Drop hack in %install about the Icon key in dconf-editor.desktop:
+  there's an icon now.
+- Remove installed icons that are using a non-standard size, to
+  avoid owning unneeded directories.
+
+-------------------------------------------------------------------
+Tue Nov 22 09:02:47 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.11.2:
+  + Many bugfixes and improvements to the editor, most notably
+    porting to GtkGrid to avoid the GtkTable layout bug that was
+    causing size to be incorrectly allocated.
+  + Fix a crasher due to invalid string index of -1.
+
+-------------------------------------------------------------------
+Fri Oct 28 07:59:11 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.11.0:
+  + Don't install a system service
+  + "dconf update" no longer fails if the locks/ subdir is missing
+  + Port to the new GLib synchronisation APIs
+  + Drop some dead code and no-longer-needed workarounds
+  + Build fixes
+
+-------------------------------------------------------------------
+Wed Sep 28 19:07:22 UTC 2011 - zaitor@opensuse.org
+
+- Changed BuildRequires from vala-devel to vala, as vala-devel
+  is an old deprecated name.
+
+-------------------------------------------------------------------
+Mon Sep 26 22:14:07 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.10.0:
+  + No change, just a version bump.
+
+-------------------------------------------------------------------
+Tue Sep 20 07:07:10 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.9.1:
+  + Give a g_warning() on failure to communicate with service
+  + Remove unworking 'set lock' call from dconf API and commandline
+    tool
+  + Add code to exit gracefully on receipt of SIGINT, SIGHUP,
+    SIGTERM
+  + Remove "service function" logic; always use the XDG runtime
+    directory
+
+-------------------------------------------------------------------
+Wed Jul 27 12:24:44 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.9.0:
+  + Support loading/storing of maybe types in dconf
+  + Remove NFS detection hackery and rely on XDG runtime dir
+  + Add proper support for change notification to DConfClient
+  + Commandline tool improvements:
+    - reset: reset keys or entire subpaths
+    - dump: dump entire subpaths to keyfile format
+    - load: load them back again (maybe at a different path)
+    - watch: actually works now
+  + Editor improvements:
+    - keys now change in editor when changed from outside
+    - support for flags
+    - show dconf-editor in applications list
+  + Work around incompatible Vala bindings changes with an #if
+  + Don't install the bash completion script as executable
+  + Fix a warning caused by reusing a GError variable
+  + Other small fixes
+- Remove SUSE_ASNEEDED=0: this is not needed anymore.
+- Add SystemSetup category to dconf-editor.desktop to make the brp
+  checks happy.
+- Comment out Icon line with sed in dconf-editor.desktop, until we
+  get an icon in the tarball. Else, the build fails in brp checks.
+
+-------------------------------------------------------------------
+Tue May 17 16:53:08 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.7.5:
+  + Fix crashing if the database did not already exist
+  + Many fixes and improvements to the dconf-editor
+- changes from version 0.7.4:
+  + bgo#648949: multithreading issue fixed (which actually affects
+    all GSettings-using programs since dconf is used from a helper
+    thread in that case)
+  + dconf commandline tool is vastly more friendly now
+  + No more aborting on unrecognised arguments
+  + Proper help
+  + Bash completion support
+  + Support for sysadmin lockdown
+  + The editor now properly reads installed enum xml files
+- Use %glib2_gsettings_schemas_* macros for editor subpackage as
+  there is a schema now.
+
+-------------------------------------------------------------------
+Mon Apr  4 13:24:57 UTC 2011 - dimstar@opensuse.org
+
+- BuildRequire vala-devel instead of vala-unstable-devel (vala
+  reached 0.12 stable release).
+
+-------------------------------------------------------------------
+Tue Mar 22 16:58:05 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.7.3:
+  + Bug fixes to dconf-editor
+
+-------------------------------------------------------------------
+Sun Feb 13 13:56:19 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+
+-------------------------------------------------------------------
+Mon Feb  7 14:50:49 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.7.2:
+  + Remove some unused variables (bgo#640566)
+  + Add a mutex to fix multi-threading issue (bgo#640611)
+  + Don't crash if we have no D-Bus
+  + Clean up symbol exports
+  + Fix a crash in the service when using 'reset'
+  + Drop old linker options that were for libtool
+
+-------------------------------------------------------------------
+Tue Jan 18 09:42:06 UTC 2011 - fcrozat@novell.com
+
+- Update to version 0.7.1:
+  + Fix linking with strict linkers
+- Changes from version 0.7:
+  + New library to use dconf with libdbus-1
+  + Quite a lot of improvements and bug-fixes in dconf-editor
+  + Some bug fixes in the GSettings backend (crashers caused by
+    use of custom dconf profiles)
+  + Increased Vala dependency to 0.11.4 (required for dconf-editor
+    fixes)
+- Create new subpackage libdconf-dbus-1-0 and libdconf-dbus-devel
+- Add pkgconfig(dbus-1) and update-desktop-files BuildRequires.
+- Drop dconf-fix-dbus-introspection-enumeration.patch: fixed
+  upstream.
+- Drop 0001-Bug-639523-crash-when-DCONF_PROFILE-is-set.patch:
+  fixed upstream.
+
+-------------------------------------------------------------------
+Mon Jan 17 12:14:56 UTC 2011 - fcrozat@novell.com
+
+- Add 0001-Bug-639523-crash-when-DCONF_PROFILE-is-set.patch:
+  fix crash in gnome-settings-daemon under gdm, bgo#639523
+- Improve source service support
+- Own alternative database path
+
+-------------------------------------------------------------------
+Mon Jan 10 14:16:46 UTC 2011 - fcrozat@novell.com
+
+- Add support for source service checkout, with %BUILD_FROM_VCS:
+ + Add gtk-doc BuildRequires.
+ + Add call to ./autogen.sh.
+ + Do not apply dconf-fix-dbus-introspection-enumeration.patch
+   which is already in git.
+ + Enforce gtk-doc html generation by passing --enable-gtk-doc to
+   configure.
+- Remove --disable-static from configure: it's not needed for dconf
+  which has an unusual setup.
+
+-------------------------------------------------------------------
+Fri Jan  7 17:47:04 CET 2011 - vuntz@opensuse.org
+
+- Update to version 0.6:
+  + Rewrite a lot of the GSettings backend to reduce GDBus abuse.
+    We use our own worker thread now instead of trying to hijack
+    GDBus's.
+  + Disable gobject-introspection support for now.
+  + Drop support for GTK2 in dconf-editor.
+  + Add a new torture-test case.
+  + Increase dbus timeout to 2 minutes (in case the service is
+    heavily loaded).
+  + Fix several memory leaks and other bugs.
+- Change pkgconfig(gtk+-2.0) BuildRequires to pkgconfig(gtk+-3.0).
+- Change vala-devel BuildRequires to vala-unstable-devel, following
+  an upstream commit after the release that recommends the use of
+  vala 0.11.
+- Add dconf-fix-dbus-introspection-enumeration.patch to fix dbus
+  introspection enumeration; taken from git.
+- Add Url tag.
+
+-------------------------------------------------------------------
+Wed Dec 15 12:18:00 CET 2010 - vuntz@opensuse.org
+
+- Add explicit dbus-1 Requires since dconf does depend on dbus to
+  work, and dbus-1 BuildRequires for directory ownership.
+
+-------------------------------------------------------------------
+Mon Oct 11 21:31:18 CEST 2010 - vuntz@opensuse.org
+
+- Create baselibs.conf: we want the gsettings dconf backend to be
+  bi-arch.
+
+-------------------------------------------------------------------
+Thu Sep 16 09:42:02 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.5.1:
+  + Adjust to GDBus API changes
+  + Send correct object path in Notify on WriteMany
+  + Use printf() and exit() instead of g_error() to avoid too many
+    crash reports for now
+  + Require gobject-introspection 0.9.5
+  + Require vala 0.9.5
+  + Make dconf-editor optional
+  + Drop libgee requirement for dconf-editor
+  + Tweak shared library installation to make ldconfig happy
+  + Bump .gir version to dconf-1.0
+  + Fix introspection build with recent gobject-introspection
+  + Minor bug fixes
+- Remove pkgconfig(gee-1.0) BuildRequires.
+
+-------------------------------------------------------------------
+Fri Sep 10 14:35:51 CEST 2010 - vuntz@opensuse.org
+
+- Fix typo in %_smp_mflags to really have parallel build.
+
+-------------------------------------------------------------------
+Fri Aug  6 23:46:25 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.5.
+- Rework the package for inclusion in Factory.
+
+-------------------------------------------------------------------
+Fri Aug  6 14:41:30 UTC 2010 - dimstar@opensuse.org
+
+- Initial dconf package.
+
