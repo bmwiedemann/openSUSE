@@ -780,4 +780,41 @@ mtime and ctime values are now stored in the manifest files only when sloppy_fil
 </comment>
     <requestid>1152216</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>8ef4ff126637dec2961ab61fdaa51259</srcmd5>
+    <version>4.10.1</version>
+    <time>1720031337</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.10.1:
+  * Fixed prefix command lookup from `PATH`.
+  * Fixed detection and usage of system blake3.
+  * Find CppHttplib named libhttplib.so as well.
+  * Removed Xcode assembly workaround for zstd.
+  * Added bundled subset of Fmt again for convenience.
+  * Removed no longer needed workaround when building downloaded
+    Zstd
+
+- Update to version 4.10:
+  * chore: Update authors
+  * chore: Update NEWS
+  * ci: Disable Ubuntu 24.04 builds temporarily
+  * build: Fix zstd build for older CMake versions
+  * chore: Juggle some include headers
+  * build: Fix MSVC /Zc:preprocessor warning (#1461)
+  * chore: Remove unused headers (#1460)
+  * refactor: Use tl::expected for process_args return value
+  * chore: Fix some Cppcheck warnings
+  * chore: Remove obsolete os_path helper in test_storage_local_util
+  * chore: Improve cast and avoid repeating types (#1459)
+  * feat: Add argument handling for Emscripten's --em-config (#1458)
+  * feat: Add support for -fdump-ipa-clones (#1449)
+  * fix: Force run_second_cpp=true when generating profiling information
+  * fix: Hash &quot;apparent real path&quot; of object file when using -fprofile-arcs
+  * test: Improve verbose printing of test names
+  * refactor: Add more Hash::hash overloads
+  * docs: Improve documentation of gcno_cwd sloppiness
+  * fix: Handle -fdiagnostics-color for Clang again
+  * chore: Clean up comment and debug log string</comment>
+    <requestid>1184213</requestid>
+  </revision>
 </revisionlist>

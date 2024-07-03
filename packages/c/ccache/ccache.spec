@@ -23,7 +23,7 @@
 %bcond_with hiredis
 %endif
 Name:           ccache
-Version:        4.9.1
+Version:        4.10.1
 Release:        0
 Summary:        A Fast C/C++ Compiler Cache
 License:        GPL-3.0-or-later
@@ -32,6 +32,8 @@ Source0:        https://github.com/ccache/ccache/releases/download/v%{version}/c
 Source1:        https://github.com/ccache/ccache/releases/download/v%{version}/ccache-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 BuildRequires:  cmake
+BuildRequires:  doctest-devel
+BuildRequires:  fmt-devel
 %if %{?suse_version} > 1600
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -40,7 +42,9 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc11
 BuildRequires:  gcc11-c++
 %endif
+BuildRequires:  libzstd-devel
 BuildRequires:  pkgconfig
+BuildRequires:  xxhash-devel
 BuildRequires:  pkgconfig(libzstd) >= 1.1.2
 BuildRequires:  rubygem(asciidoctor)
 Provides:       distcc:%{_bindir}/ccache
@@ -64,6 +68,7 @@ Objective-C++.
 export CC=gcc-11 CXX=g++-11
 %endif
 %cmake \
+  -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
 %if !%{with hiredis}
   -DREDIS_STORAGE_BACKEND=OFF \
 %endif
