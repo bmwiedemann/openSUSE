@@ -1,0 +1,83 @@
+From d3a7542e7eb45c22066ecb1be62480dde41fd544 Mon Sep 17 00:00:00 2001
+From: Joerg Schmidbauer <jschmidb@de.ibm.com>
+Date: Wed, 24 Apr 2024 10:44:26 +0200
+Subject: [PATCH] Bugfix: correct rc handling with s390_pcc function
+
+Signed-off-by: Joerg Schmidbauer <jschmidb@de.ibm.com>
+---
+ src/include/s390_aes.h    |  2 +-
+ src/include/s390_cmac.h   |  2 +-
+ src/include/s390_crypto.h | 23 +++++++++++++----------
+ 3 files changed, 15 insertions(+), 12 deletions(-)
+
+diff --git a/src/include/s390_aes.h b/src/include/s390_aes.h
+index 6252dde0..a6ff27bd 100644
+--- a/src/include/s390_aes.h
++++ b/src/include/s390_aes.h
+@@ -674,7 +674,7 @@ static inline int s390_aes_xts_parm(unsigned long function_code,
+ 
+ 	memset(&parm_block.keys, 0, key_size);
+ 
+-	if (rc >= 0) {
++	if (rc == 0) {
+ 		memcpy(xts_parm, parm_block.xts_parameter,
+ 		       sizeof(ica_aes_vector_t));
+ 		return 0;
+diff --git a/src/include/s390_cmac.h b/src/include/s390_cmac.h
+index 76b9cca5..f19c069d 100644
+--- a/src/include/s390_cmac.h
++++ b/src/include/s390_cmac.h
+@@ -161,7 +161,7 @@ static inline int s390_cmac_hw(unsigned long fc,
+ 		/* calculate final block (last/full) */
+ 		rc = s390_pcc(fc, pb_lookup.base);
+ 		memset(pb_lookup.keys, 0, key_size);
+-		if (rc < 0)
++		if (rc != 0)
+ 			return EIO;
+ 
+ 		_stats_increment(fc, ALGO_HW, ENCRYPT);
+diff --git a/src/include/s390_crypto.h b/src/include/s390_crypto.h
+index f34241fd..f11eacb2 100644
+--- a/src/include/s390_crypto.h
++++ b/src/include/s390_crypto.h
+@@ -244,27 +244,30 @@ void s390_crypto_switches_init(void);
+ 
+ /**
+  * s390_pcc:
+- * @func: the function code passed to KM; see s390_pcc_functions
++ * @func: the function code passed to PCC; see s390_pcc_functions
+  * @param: address of parameter block; see POP for details on each func
+  *
+  * Executes the PCC operation of the CPU.
+  *
+- * Returns -1 for failure, 0 for the query func, number of processed
+- * bytes for encryption/decryption funcs
++ * Returns condition code of the PCC instruction
+  */
+ static inline int s390_pcc(unsigned long func, void *param)
+ {
+ 	register unsigned long r0 asm("0") = (unsigned long)func;
+ 	register unsigned long r1 asm("1") = (unsigned long)param;
++	char cc;
+ 
+-	asm volatile (
+-		"0:	.long	%[opc] << 16\n"
+-		"	brc	1,0b\n"
+-		:
+-		: [fc] "d" (r0), [param] "a" (r1), [opc] "i" (0xb92c)
+-		: "cc", "memory");
++	asm volatile(
++		"0:     .insn   rre,%[opc] << 16,0,0\n" /* PCC opcode */
++		"       brc     1,0b\n" /* handle partial completion */
++		"       ipm     %[cc]\n"
++		"       srl     %[cc],28\n"
++		: [cc] "=d" (cc)
++		: [func] "d" (r0), [param] "a" (r1), [opc] "i" (0xb92c)
++		: "cc", "memory"
++	);
+ 
+-	return 0;
++	return cc;
+ }
+ 
+ /**

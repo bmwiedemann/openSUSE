@@ -1,0 +1,366 @@
+From 900557435b85f2fa6446bf9d62e80d58eff4bfbe Mon Sep 17 00:00:00 2001
+From: Joerg Schmidbauer <jschmidb@de.ibm.com>
+Date: Wed, 19 Jun 2024 12:34:26 +0200
+Subject: [PATCH] Use __asm__  instead of asm
+
+The asm keyword is a GNU extension. When writing code that can be compiled with
+-ansi and the various -std options, use __asm__ instead of asm.
+
+Signed-off-by: Joerg Schmidbauer <jschmidb@de.ibm.com>
+---
+ src/include/s390_crypto.h | 194 +++++++++++++++++++-------------------
+ 1 file changed, 97 insertions(+), 97 deletions(-)
+
+diff --git a/src/include/s390_crypto.h b/src/include/s390_crypto.h
+index f11eacb..6ef4728 100644
+--- a/src/include/s390_crypto.h
++++ b/src/include/s390_crypto.h
+@@ -253,11 +253,11 @@ void s390_crypto_switches_init(void);
+  */
+ static inline int s390_pcc(unsigned long func, void *param)
+ {
+-	register unsigned long r0 asm("0") = (unsigned long)func;
+-	register unsigned long r1 asm("1") = (unsigned long)param;
++	register unsigned long r0 __asm__("0") = (unsigned long)func;
++	register unsigned long r1 __asm__("1") = (unsigned long)param;
+ 	char cc;
+ 
+-	asm volatile(
++	__asm__ volatile(
+ 		"0:     .insn   rre,%[opc] << 16,0,0\n" /* PCC opcode */
+ 		"       brc     1,0b\n" /* handle partial completion */
+ 		"       ipm     %[cc]\n"
+@@ -285,12 +285,12 @@ static inline int s390_pcc(unsigned long func, void *param)
+ static inline int s390_kmac(unsigned long func, void *param,
+ 		    const unsigned char *src, long src_len)
+ {
+-	register long __func asm("0") = func;
+-	register void *__param asm("1") = param;
+-	register const unsigned char *__src asm("2") = src;
+-	register long __src_len asm("3") = src_len;
++	register long __func __asm__("0") = func;
++	register void *__param __asm__("1") = param;
++	register const unsigned char *__src __asm__("2") = src;
++	register long __src_len __asm__("3") = src_len;
+ 
+-	asm volatile (
++	__asm__ volatile (
+ 		"0:     .insn   rre, 0xb91e0000,%0,%0 \n"
+ 		"       brc     1, 0b \n"
+ 		: "+a"(__src), "+d"(__src_len)
+@@ -318,15 +318,15 @@ static inline int s390_kma(unsigned long func, void *param, unsigned char *dest,
+ 		      const unsigned char *src, long src_len,
+ 		      const unsigned char *aad, long aad_len)
+ {
+-	register long __func asm("0") = func;
+-	register void *__param asm("1") = param;
+-	register const unsigned char *__src asm("2") = src;
+-	register long __src_len asm("3") = src_len;
+-	register unsigned char *__dest asm("4") = dest;
+-	register const unsigned char *__aad asm("6") = aad;
+-	register long __aad_len asm("7") = aad_len;
+-
+-	asm volatile(
++	register long __func __asm__("0") = func;
++	register void *__param __asm__("1") = param;
++	register const unsigned char *__src __asm__("2") = src;
++	register long __src_len __asm__("3") = src_len;
++	register unsigned char *__dest __asm__("4") = dest;
++	register const unsigned char *__aad __asm__("6") = aad;
++	register long __aad_len __asm__("7") = aad_len;
++
++	__asm__ volatile(
+ 		"0:	.insn	rrf,0xb9290000,%2,%0,%3,0 \n"
+ 		"1:	brc	1,0b \n" /* handle partial completion */
+ 		: "+a" (__src), "+d" (__src_len), "+a" (__dest), "+a" (__aad), "+d" (__aad_len)
+@@ -353,14 +353,14 @@ static inline int s390_kmctr(unsigned long func, void *param, unsigned char *des
+ 		      const unsigned char *src, long src_len,
+ 		      unsigned char *counter)
+ {
+-	register long __func asm("0") = func;
+-	register void *__param asm("1") = param;
+-	register const unsigned char *__src asm("2") = src;
+-	register long __src_len asm("3") = src_len;
+-	register unsigned char *__dest asm("4") = dest;
+-	register unsigned char *__ctr asm("6") = counter;
+-
+-	asm volatile(
++	register long __func __asm__("0") = func;
++	register void *__param __asm__("1") = param;
++	register const unsigned char *__src __asm__("2") = src;
++	register long __src_len __asm__("3") = src_len;
++	register unsigned char *__dest __asm__("4") = dest;
++	register unsigned char *__ctr __asm__("6") = counter;
++
++	__asm__ volatile(
+ 		"0:	.insn	rrf,0xb92d0000,%2,%0,%3,0 \n"
+ 		"1:	brc	1,0b \n"
+ 		: "+a" (__src), "+d" (__src_len), "+a" (__dest), "+a" (__ctr)
+@@ -386,13 +386,13 @@ static inline int s390_kmctr(unsigned long func, void *param, unsigned char *des
+ static inline int s390_kmf(unsigned long func, void *param, unsigned char *dest,
+ 		   const unsigned char *src, long src_len, unsigned int *lcfb)
+ {
+-	register long __func asm("0") = ((*lcfb & 0x000000ff) << 24) | func;
+-	register void *__param asm("1") = param;
+-	register const unsigned char *__src asm("2") = src;
+-	register long __src_len asm("3") = src_len;
+-	register unsigned char *__dest asm("4") = dest;
++	register long __func __asm__("0") = ((*lcfb & 0x000000ff) << 24) | func;
++	register void *__param __asm__("1") = param;
++	register const unsigned char *__src __asm__("2") = src;
++	register long __src_len __asm__("3") = src_len;
++	register unsigned char *__dest __asm__("4") = dest;
+ 
+-	asm volatile (
++	__asm__ volatile (
+ 		"0:	.insn	rre,0xb92a0000,%2,%0 \n"
+ 		"	brc	1,0b \n"
+ 		: "+a"(__src), "+d"(__src_len), "+a"(__dest)
+@@ -418,13 +418,13 @@ static inline int s390_kmf(unsigned long func, void *param, unsigned char *dest,
+ static inline int s390_kmo(unsigned long func, void *param, unsigned char *dest,
+ 		    const unsigned char *src, long src_len)
+ {
+-	register long __func asm("0") = func;
+-	register void *__param asm("1") = param;
+-	register const unsigned char *__src asm("2") = src;
+-	register long __src_len asm("3") = src_len;
+-	register unsigned char *__dest asm("4") = dest;
++	register long __func __asm__("0") = func;
++	register void *__param __asm__("1") = param;
++	register const unsigned char *__src __asm__("2") = src;
++	register long __src_len __asm__("3") = src_len;
++	register unsigned char *__dest __asm__("4") = dest;
+ 
+-	asm volatile (
++	__asm__ volatile (
+ 		"0:	.insn	rre, 0xb92b0000,%2,%0 \n"
+ 		"	brc	1, 0b \n"
+ 		: "+a"(__src), "+d"(__src_len), "+a"(__dest)
+@@ -450,13 +450,13 @@ static inline int s390_kmo(unsigned long func, void *param, unsigned char *dest,
+ static inline int s390_km(unsigned long func, void *param, unsigned char *dest,
+ 		   const unsigned char *src, long src_len)
+ {
+-	register long __func asm("0") = func;
+-	register void *__param asm("1") = param;
+-	register const unsigned char *__src asm("2") = src;
+-	register long __src_len asm("3") = src_len;
+-	register unsigned char *__dest asm("4") = dest;
++	register long __func __asm__("0") = func;
++	register void *__param __asm__("1") = param;
++	register const unsigned char *__src __asm__("2") = src;
++	register long __src_len __asm__("3") = src_len;
++	register unsigned char *__dest __asm__("4") = dest;
+ 
+-	asm volatile (
++	__asm__ volatile (
+ 		"0:	.insn	rre,0xb92e0000,%2,%0 \n"	/* KM opcode */
+ 		"	brc	1,0b \n"	/* handle partial completion */
+ 		: "+a"(__src), "+d"(__src_len), "+a"(__dest)
+@@ -482,13 +482,13 @@ static inline int s390_km(unsigned long func, void *param, unsigned char *dest,
+ static inline int s390_kmc(unsigned long func, void *param, unsigned char *dest,
+ 		    const unsigned char *src, long src_len)
+ {
+-	register long __func asm("0") = func;
+-	register void *__param asm("1") = param;
+-	register const unsigned char *__src asm("2") = src;
+-	register long __src_len asm("3") = src_len;
+-	register unsigned char *__dest asm("4") = dest;
++	register long __func __asm__("0") = func;
++	register void *__param __asm__("1") = param;
++	register const unsigned char *__src __asm__("2") = src;
++	register long __src_len __asm__("3") = src_len;
++	register unsigned char *__dest __asm__("4") = dest;
+ 
+-	asm volatile (
++	__asm__ volatile (
+ 		"0:	.insn	rre, 0xb92f0000,%2,%0 \n"	/* KMC opcode */
+ 		"	brc	1, 0b \n"	/* handle partial completion */
+ 		: "+a"(__src), "+d"(__src_len), "+a"(__dest)
+@@ -515,15 +515,15 @@ static inline int s390_kimd_shake(unsigned long func, void *param,
+ 		unsigned char *dest, long dest_len,
+ 	     const unsigned char *src, long src_len)
+ {
+-	register long  __func asm("0") = func;
+-	register void *__param asm("1") = param;
+-	register unsigned char *__dest asm("2") = dest;
+-	register long  __dest_len asm("3") = dest_len;
+-	register const unsigned char *__src asm("4") = src;
+-	register long  __src_len asm("5") = src_len;
++	register long  __func __asm__("0") = func;
++	register void *__param __asm__("1") = param;
++	register unsigned char *__dest __asm__("2") = dest;
++	register long  __dest_len __asm__("3") = dest_len;
++	register const unsigned char *__src __asm__("4") = src;
++	register long  __src_len __asm__("5") = src_len;
+ 	int ret = -1;
+ 
+-	asm volatile(
++	__asm__ volatile(
+ 		"0:      .insn   rre,0xb93e0000,%1,%5\n\t" /* KIMD opcode */
+ 		"        brc     1,0b\n\t" /* handle partial completion */
+ 		"        la      %0,0\n\t"
+@@ -538,12 +538,12 @@ static inline int s390_kimd_shake(unsigned long func, void *param,
+ static inline int s390_kimd(unsigned long func, void *param,
+ 		     const unsigned char *src, long src_len)
+ {
+-	register long __func asm("0") = func;
+-	register void *__param asm("1") = param;
+-	register const unsigned char *__src asm("2") = src;
+-	register long __src_len asm("3") = src_len;
++	register long __func __asm__("0") = func;
++	register void *__param __asm__("1") = param;
++	register const unsigned char *__src __asm__("2") = src;
++	register long __src_len __asm__("3") = src_len;
+ 
+-	asm volatile (
++	__asm__ volatile (
+ 		"0:	.insn	rre,0xb93e0000,%0,%0 \n"	/* KIMD opcode */
+ 		"	brc	1,0b \n"	/* handle partial completion */
+ 		: "+a"(__src), "+d"(__src_len)
+@@ -569,15 +569,15 @@ static inline int s390_klmd_shake(unsigned long func, void *param,
+ 		unsigned char *dest, long dest_len,
+ 		const unsigned char *src, long src_len)
+ {
+-	register long  __func asm("0") = func;
+-	register void *__param asm("1") = param;
+-	register unsigned char *__dest asm("2") = dest;
+-	register long  __dest_len asm("3") = dest_len;
+-	register const unsigned char *__src asm("4") = src;
+-	register long  __src_len asm("5") = src_len;
++	register long  __func __asm__("0") = func;
++	register void *__param __asm__("1") = param;
++	register unsigned char *__dest __asm__("2") = dest;
++	register long  __dest_len __asm__("3") = dest_len;
++	register const unsigned char *__src __asm__("4") = src;
++	register long  __src_len __asm__("5") = src_len;
+ 	int ret = -1;
+ 
+-	asm volatile(
++	__asm__ volatile(
+ 		"0:      .insn   rre,0xb93f0000,%1,%5\n\t" /* KLMD opcode */
+ 		"        brc     1,0b\n\t" /* handle partial completion */
+ 		"        la      %0,0\n\t"
+@@ -592,12 +592,12 @@ static inline int s390_klmd_shake(unsigned long func, void *param,
+ static inline int s390_klmd(unsigned long func, void *param,
+ 		const unsigned char *src, long src_len)
+ {
+-	register long __func asm("0") = func;
+-	register void *__param asm("1") = param;
+-	register const unsigned char *__src asm("2") = src;
+-	register long __src_len asm("3") = src_len;
++	register long __func __asm__("0") = func;
++	register void *__param __asm__("1") = param;
++	register const unsigned char *__src __asm__("2") = src;
++	register long __src_len __asm__("3") = src_len;
+ 
+-	asm volatile (
++	__asm__ volatile (
+ 		"0:	.insn	rre,0xb93f0000,%0,%0 \n" /* KLMD opcode */
+ 		"	brc	1,0b \n"	/* handle partial completion */
+ 		: "+a"(__src), "+d"(__src_len)
+@@ -624,13 +624,13 @@ static inline int s390_klmd(unsigned long func, void *param,
+ static inline int s390_kdsa(unsigned long func, void *param,
+ 		            const unsigned char *src, unsigned long srclen)
+ {
+-	register unsigned long r0 asm("0") = (unsigned long)func;
+-	register unsigned long r1 asm("1") = (unsigned long)param;
+-	register unsigned long r2 asm("2") = (unsigned long)src;
+-	register unsigned long r3 asm("3") = (unsigned long)srclen;
++	register unsigned long r0 __asm__("0") = (unsigned long)func;
++	register unsigned long r1 __asm__("1") = (unsigned long)param;
++	register unsigned long r2 __asm__("2") = (unsigned long)src;
++	register unsigned long r3 __asm__("3") = (unsigned long)srclen;
+ 	unsigned long rc = 1;
+ 
+-	asm volatile(
++	__asm__ volatile(
+ 		"0:	.insn	rre,%[__opc] << 16,0,%[__src]\n"
+ 		"	brc	1,0b\n" /* handle partial completion */
+ 		"	brc	7,1f\n"
+@@ -668,15 +668,15 @@ static inline int s390_ppno(long func,
+ 			    const unsigned char *src,
+ 			    long src_len)
+ {
+-	register long  __func asm("0") = func;
+-	register void *__param asm("1") = param;
+-	register unsigned char *__dest asm("2") = dest;
+-	register long  __dest_len asm("3") = dest_len;
+-	register const unsigned char *__src asm("4") = src;
+-	register long  __src_len asm("5") = src_len;
++	register long  __func __asm__("0") = func;
++	register void *__param __asm__("1") = param;
++	register unsigned char *__dest __asm__("2") = dest;
++	register long  __dest_len __asm__("3") = dest_len;
++	register const unsigned char *__src __asm__("4") = src;
++	register long  __src_len __asm__("5") = src_len;
+ 	int ret = -1;
+ 
+-	asm volatile(
++	__asm__ volatile(
+ 		"0:      .insn   rre,0xb93c0000,%1,%5\n\t" /* PPNO opcode */
+ 		"        brc     1,0b\n\t" /* handle partial completion */
+ 		"        la      %0,0\n\t"
+@@ -701,13 +701,13 @@ static inline int s390_ppno(long func,
+ static inline void cpacf_trng(unsigned char *ucbuf, unsigned long ucbuf_len,
+                               unsigned char *cbuf, unsigned long cbuf_len)
+ {
+-        register unsigned long r0 asm("0") = (unsigned long) S390_CRYPTO_TRNG;
+-        register unsigned long r2 asm("2") = (unsigned long) ucbuf;
+-        register unsigned long r3 asm("3") = (unsigned long) ucbuf_len;
+-        register unsigned long r4 asm("4") = (unsigned long) cbuf;
+-        register unsigned long r5 asm("5") = (unsigned long) cbuf_len;
++        register unsigned long r0 __asm__("0") = (unsigned long) S390_CRYPTO_TRNG;
++        register unsigned long r2 __asm__("2") = (unsigned long) ucbuf;
++        register unsigned long r3 __asm__("3") = (unsigned long) ucbuf_len;
++        register unsigned long r4 __asm__("4") = (unsigned long) cbuf;
++        register unsigned long r5 __asm__("5") = (unsigned long) cbuf_len;
+ 
+-        asm volatile (
++        __asm__ volatile (
+                 "0:     .insn   rre,0xb93c0000,%[ucbuf],%[cbuf]\n"
+                 "       brc     1,0b\n"   /* handle partial completion */
+                 : [ucbuf] "+a" (r2), [ucbuflen] "+d" (r3),
+@@ -719,21 +719,21 @@ static inline void cpacf_trng(unsigned char *ucbuf, unsigned long ucbuf_len,
+ 
+ static inline void s390_stckf_hw(void *buf)
+ {
+-	asm volatile(".insn     s,0xb27c0000,%0"
++	__asm__ volatile(".insn     s,0xb27c0000,%0"
+ 		     : "=Q" (*((unsigned long long *)buf)) : : "cc");
+ }
+ 
+ static inline void s390_stcke_hw(void *buf)
+ {
+-	asm volatile(".insn     s,0xb2780000,%0"
++	__asm__ volatile(".insn     s,0xb2780000,%0"
+ 		     : "=Q" (*((unsigned long long *)buf)) : : "cc");
+ }
+ 
+ static inline int __stfle(unsigned long long *list, int doublewords)
+ {
+-	register unsigned long __nr asm("0") = doublewords - 1;
++	register unsigned long __nr __asm__("0") = doublewords - 1;
+ 
+-	asm volatile(".insn s,0xb2b00000,0(%1)" /* stfle */
++	__asm__ volatile(".insn s,0xb2b00000,0(%1)" /* stfle */
+ 		     : "+d" (__nr) : "a" (list) : "memory", "cc");
+ 
+ 	return __nr + 1;
+@@ -741,7 +741,7 @@ static inline int __stfle(unsigned long long *list, int doublewords)
+ 
+ static inline void s390_flip_endian_32(void *dest, const void *src)
+ {
+-	asm volatile(
++	__asm__ volatile(
+ 		"	lrvg	%%r0,0(0,%[__src])\n"
+ 		"	lrvg	%%r1,8(0,%[__src])\n"
+ 		"	lrvg	%%r4,16(0,%[__src])\n"
+@@ -757,7 +757,7 @@ static inline void s390_flip_endian_32(void *dest, const void *src)
+ 
+ static inline void s390_flip_endian_64(void *dest, const void *src)
+ {
+-	asm volatile(
++	__asm__ volatile(
+ 		"	lrvg	%%r0,0(0,%[__src])\n"
+ 		"	lrvg	%%r1,8(0,%[__src])\n"
+ 		"	lrvg	%%r4,16(0,%[__src])\n"

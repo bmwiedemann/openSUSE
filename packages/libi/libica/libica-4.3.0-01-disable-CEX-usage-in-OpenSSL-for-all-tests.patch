@@ -1,0 +1,40 @@
+From 49d619ea05743a3df6b9bf8160aaa0b4306118db Mon Sep 17 00:00:00 2001
+From: Holger Dengler <dengler@linux.ibm.com>
+Date: Tue, 16 Apr 2024 14:18:23 +0200
+Subject: [PATCH] test: disable CEX usage in OpenSSL for all tests
+
+OpenSSL supports CEX exploitation since version v3.2.x. Libica and its
+testcases use OpenSSL as helper and fallback, so disable the CEX
+acceleration for all tests.
+
+If the environment variable is already set, use it as is without
+modifying it. In this case, it is up to the user to choose the right
+settings.
+
+Fixes: Issue #126
+Link: https://github.com/opencryptoki/libica/issues/126
+Signed-off-by: Holger Dengler <dengler@linux.ibm.com>
+---
+ test/Makefile.am | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/test/Makefile.am b/test/Makefile.am
+index 76d4f15..e56b256 100644
+--- a/test/Makefile.am
++++ b/test/Makefile.am
+@@ -61,10 +61,14 @@ TESTS += \
+ ${top_builddir}/src/internal_tests/ec_internal_test
+ endif
+ 
++# disable OpenSSL CEX usage for all tests
++OPENSSL_s390xcap ?= nocex
++
+ TEST_EXTENSIONS = .sh .pl
+ TESTS_ENVIRONMENT = export LD_LIBRARY_PATH=${builddir}/../src/.libs/:$$LD_LIBRARY_PATH \
+ 			   PATH=${builddir}/../src/:$$PATH \
+-			   LIBICA_TESTDATA=${srcdir}/testdata/;
++			   LIBICA_TESTDATA=${srcdir}/testdata/ \
++			   OPENSSL_s390xcap=${OPENSSL_s390xcap};
+ AM_CFLAGS = @FLAGS@ -DNO_SW_FALLBACKS -I${srcdir}/../include/ -I${srcdir}/../src/include/
+ LDADD = @LIBS@ ${top_builddir}/src/.libs/libica.so -lcrypto -lpthread
+ 

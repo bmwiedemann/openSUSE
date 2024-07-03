@@ -34,8 +34,14 @@ Source2:        sysconfig.z90crypt
 Source3:        z90crypt
 Source4:        z90crypt.service
 Source5:        %{name}-rpmlintrc
+###
 Patch01:        libica-FIPS-make-it-possible-to-specify-fipshmac-binary.patch
 Patch99:        libica-sles15sp5-FIPS-hmac-key.patch
+###
+Patch110:       libica-4.3.0-01-disable-CEX-usage-in-OpenSSL-for-all-tests.patch
+Patch111:       libica-4.3.0-02-correct-rc-handling-with-s390_pcc-function.patch
+Patch112:       libica-4.3.0-03-Use-__asm__-instead-of-asm.patch
+###
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -144,8 +150,8 @@ cp -a %{SOURCE1} .
 rm -vf %{buildroot}%{_libdir}/libica*.la
 rm -f %{buildroot}%{_datadir}/doc/libica/*
 rmdir %{buildroot}%{_datadir}/doc/libica
-rm %{buildroot}/%{_sysconfdir}/libica/openssl3-fips.cnf
-rmdir %{buildroot}/%{_sysconfdir}/libica
+# rm %{buildroot}/%{_sysconfdir}/libica/openssl3-fips.cnf
+# rmdir %{buildroot}/%{_sysconfdir}/libica
 
 %check
 %make_build check FIPSHMAC=fipshmac
@@ -175,6 +181,10 @@ rmdir %{buildroot}/%{_sysconfdir}/libica
 %{_libdir}/libica-cex.so.%{major}
 %{_libdir}/.libica-cex.so.%{version}.hmac
 %{_libdir}/.libica-cex.so.%{major}.hmac
+### Enable FIPS
+%dir %{_sysconfdir}/libica
+%{_sysconfdir}/libica/openssl3-fips.cnf
+###
 
 %files tools
 %license LICENSE

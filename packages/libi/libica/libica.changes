@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul  3 10:51:28 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied patches
+  * libica-4.3.0-01-disable-CEX-usage-in-OpenSSL-for-all-tests.patch
+  * libica-4.3.0-02-correct-rc-handling-with-s390_pcc-function.patch
+  * libica-4.3.0-03-Use-__asm__-instead-of-asm.patch
+- Amended the .spec file to enable FIPS
+
+-------------------------------------------------------------------
 Mon Jan 29 07:52:34 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade libica to version 2.3.0 (jsc#PED-5446)
