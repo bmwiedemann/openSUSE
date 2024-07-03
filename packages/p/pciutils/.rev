@@ -597,4 +597,41 @@
     <comment></comment>
     <requestid>1180054</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>9d53b9ef56c67485dd362979bd80b649</srcmd5>
+    <version>3.13.0</version>
+    <time>1720031332</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.13.0:
+  * lspci decodes CXL 1.1 device link status information.
+  * Further development of the pcilmr (the link margining
+    utility)
+  * Dump parsing supports 6-digit domain numbers.
+  * Bug fixes in PCIe link state reporting.
+  * Decode more fields in PCIe AER capability.
+  * Fixed build on Linux systems with musl libc.
+  * Updated pci.ids.
+
+  * As usual, updated pci.ids to the current snapshot of the database.
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+  * More capabilities: Transaction Processing Hints, Latency
+  * When we format a name and it does not fit in the buffer, we
+    truncate it instead of returning &quot;buffer too small&quot; instead.
+    This works on all platforms with sane (i.e., C99-compatible)
+- update to 3.1.7
+- fix last patch
+- add fclose to dump_init (bnc#529469)
+- update to 3.1.3
+   properly. It also stops on any item in unknown format,
+- update to 3.1.2
+- update to 3.0.1
+ * Worked around compatibility problems with various default
+   settings of wget
+ * Fixed bug in filters which caused them to refuse
+ * Fixed several build problems: builds without PCI_USE_DNS
+   on Linux and with PCI_USE_DNS on Solaris and *BSD. Static
+- update to 3.0.0
+ * The makefile system has been reworked. All configuration</comment>
+    <requestid>1184159</requestid>
+  </revision>
 </revisionlist>

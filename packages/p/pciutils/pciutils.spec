@@ -1,7 +1,7 @@
 #
 # spec file for package pciutils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define sover   3
 %define lname   libpci%{sover}
 Name:           pciutils
-Version:        3.12.0
+Version:        3.13.0
 Release:        0
 Summary:        PCI utilities for the Linux Kernel
 License:        GPL-2.0-or-later

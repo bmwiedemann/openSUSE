@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jun 30 21:38:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.13.0:
+  * lspci decodes CXL 1.1 device link status information.
+  * Further development of the pcilmr (the link margining
+    utility)
+  * Dump parsing supports 6-digit domain numbers.
+  * Bug fixes in PCIe link state reporting.
+  * Decode more fields in PCIe AER capability.
+  * Fixed build on Linux systems with musl libc.
+  * Updated pci.ids.
+
+-------------------------------------------------------------------
 Sun Jun  9 14:56:50 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.12.0:
@@ -175,7 +188,7 @@ Sun Sep 16 17:35:15 UTC 2018 - Avindra Goolcharan <avindra@opensuse.org>
   * Fixed a couple of bugs in computation of bus topology. It was
     previously used only for the tree display, but we re-use it
     for computing the paths.
-  * As usual, updated pci.ids to the current snapshot of the database. 
+  * As usual, updated pci.ids to the current snapshot of the database.
 - changes for version 3.6.0
   * BARs reported by the OS, but not set on the device itself are
     reliably marked with "[virtual]".
@@ -368,7 +381,7 @@ Tue Jul 30 16:58:00 UTC 2013 - sweet_f_a@gmx.de
 -------------------------------------------------------------------
 Mon Apr 15 12:09:40 UTC 2013 - idonmez@suse.com
 
-- Add Source URL, see https://en.opensuse.org/SourceUrls 
+- Add Source URL, see https://en.opensuse.org/SourceUrls
 
 -------------------------------------------------------------------
 Mon Dec 31 14:44:58 UTC 2012 - crrodriguez@opensuse.org
@@ -393,13 +406,13 @@ Sun Jan 29 02:18:30 UTC 2012 - tabraham@novell.com
   * Updated pci.ids to the 2012-01-14 snapshot of the database
 
 - Update to 3.1.8
-  * More capabilities: Transaction Processing Hints, Latency 
+  * More capabilities: Transaction Processing Hints, Latency
     Tolerance Reporting. Thanks to Jesse Barnes.
   * Added BeOS and Haiku ports. Contributed by Francois Revol.
   * pciutils.pc now uses Libs.private properly.
-  * When we format a name and it does not fit in the buffer, we 
-    truncate it instead of returning "buffer too small" instead. 
-    This works on all platforms with sane (i.e., C99-compatible) 
+  * When we format a name and it does not fit in the buffer, we
+    truncate it instead of returning "buffer too small" instead.
+    This works on all platforms with sane (i.e., C99-compatible)
     snprintf().
   * various minor bug fixes
 
@@ -428,7 +441,7 @@ Sat Apr 24 11:38:24 UTC 2010 - coolo@novell.com
 -------------------------------------------------------------------
 Thu Feb 25 17:27:15 CET 2010 - anicka@suse.cz
 
-- update to 3.1.7 
+- update to 3.1.7
  * Minor improvements and bug fixes in decoding of the Virtual Channel
    capability.
  * Released as 3.1.6.
@@ -480,19 +493,19 @@ Tue Nov  3 19:09:37 UTC 2009 - coolo@novell.com
 Fri Aug 14 17:30:05 CEST 2009 - anicka@suse.cz
 
 - add COPYING file to fix (bnc#518238)
-- fix last patch 
+- fix last patch
 
 -------------------------------------------------------------------
 Mon Aug 10 16:04:26 CEST 2009 - anicka@suse.cz
 
-- add fclose to dump_init (bnc#529469) 
+- add fclose to dump_init (bnc#529469)
 
 -------------------------------------------------------------------
 Mon Aug  3 14:33:26 CEST 2009 - anicka@suse.cz
 
-- update to 3.1.3 
+- update to 3.1.3
  * The VPD parser now reports unknown and vendor-defined items
-   properly. It also stops on any item in unknown format, 
+   properly. It also stops on any item in unknown format,
    avoiding long output on bogus VPD data.
  * The MSI-X table size now matches the spec.
  * The Power Management capability now includes the soft reset bit.
@@ -509,11 +522,11 @@ Mon Aug  3 14:33:26 CEST 2009 - anicka@suse.cz
  * The tree output mode (`lspci -t') shows domain numbers only
    at the root, which makes the output more compact.
  * Updated documentation on the bus mapping mode (`lspci -M').
- 
+
 -------------------------------------------------------------------
 Thu Feb  5 15:10:19 CET 2009 - anicka@suse.cz
 
-- update to 3.1.2 
+- update to 3.1.2
  * Fixed another silly bug in the command-line parser of setpci.
  * The configure script now sets LC_ALL to avoid being fooled by
    locale-dependent behavior of `tr'.
@@ -562,18 +575,18 @@ Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
 -------------------------------------------------------------------
 Thu Sep 11 22:45:55 CEST 2008 - anicka@suse.cz
 
-- update to 3.0.1 
+- update to 3.0.1
  * Added a Cygwin port.
- * Worked around compatibility problems with various default 
-   settings of wget 
+ * Worked around compatibility problems with various default
+   settings of wget
  * Fixed printing of MSI capabilities.
  * Added decoding of several PCI-X capabilities: device/link/slot 2,
    Advanced Error Reporting, Access Control Services, Alternative
    Routing-ID, Single Root I/O Virtualization.
- * Fixed bug in filters which caused them to refuse 
+ * Fixed bug in filters which caused them to refuse
    vendor/device ID 0xffff.
- * Fixed several build problems: builds without PCI_USE_DNS 
-   on Linux and with PCI_USE_DNS on Solaris and *BSD. Static 
+ * Fixed several build problems: builds without PCI_USE_DNS
+   on Linux and with PCI_USE_DNS on Solaris and *BSD. Static
    library mode also compiles again on old versions of GCC.
 
 -------------------------------------------------------------------
@@ -593,34 +606,34 @@ Fri Apr 11 00:07:33 CEST 2008 - mrueckert@suse.de
 -------------------------------------------------------------------
 Thu Apr 10 21:36:17 CEST 2008 - anicka@suse.cz
 
-- update to 3.0.0 
- * The makefile system has been reworked. All configuration 
+- update to 3.0.0
+ * The makefile system has been reworked. All configuration
    settings are now passed to the configure script in environment
    variables, allowing for easy tweaking in the top-level Makefile.
    All control knobs are now described in the README.
- * The libpci can be built as a shared library with properly 
-   restricted symbol exports. Use `make SHARED=yes' to enable that 
-   or `make SHARED=local' for a local testing build (with hardwired 
+ * The libpci can be built as a shared library with properly
+   restricted symbol exports. Use `make SHARED=yes' to enable that
+   or `make SHARED=local' for a local testing build (with hardwired
    paths to the library, so that it does not need installation).
  * Support for resolving of PCI ID's using DNS together with a local
-   cache of resolved entries has been added. See the `-q' and `-Q' 
+   cache of resolved entries has been added. See the `-q' and `-Q'
    options of lspci.
  * The library now has a generic system of settable parameters, which
-   also include settings of the DNS resolver and cache. An `-O' 
-   option has been added to lspci and setpci to allow setting 
+   also include settings of the DNS resolver and cache. An `-O'
+   option has been added to lspci and setpci to allow setting
    of these options.
  * Configuration of the access methods are now specified by the new
    parameter system, replacing the pci_access->method_params array.
  * Access methods now also have sensible names and help texts and it
    is possible to look up method ID by a name.
- * An `-A' switch has been added to both lspci and setpci, allowing 
-   to select an arbitrary access method. The `-P' switch (configure 
-   proc backend) has been removed as it is no longer needed 
+ * An `-A' switch has been added to both lspci and setpci, allowing
+   to select an arbitrary access method. The `-P' switch (configure
+   proc backend) has been removed as it is no longer needed
    and I do not know any its user.
  * Several source files have been split for better maintainability
    (most notably the resolving of ID's).
- * Man pages and help texts have been updated. A new man page 
-   `pcilib(7)' has been added and description of library options 
+ * Man pages and help texts have been updated. A new man page
+   `pcilib(7)' has been added and description of library options
    has been moved there.
  * When an unknown device ID is encountered, we print `Device <id>'
    instead of `Unknown device <id>'. It uses less space and it also
@@ -642,7 +655,7 @@ Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
 -------------------------------------------------------------------
 Wed Apr  9 15:32:10 CEST 2008 - anicka@suse.cz
 
-- update to 2.2.10 
+- update to 2.2.10
  * lspci.c, setpci.c: Cleaned up the list of options.
  * lib/names.c: Fix displaying of errors reported by zlib.
    Previously, the buffer containing the error message had
@@ -652,19 +665,19 @@ Wed Apr  9 15:32:10 CEST 2008 - anicka@suse.cz
  * update-pciids.man: Mention the -q switch.
  * lib/dump.c: Squashed compiler warnings about code with
    no effect (there really were surplus *'s).
-	
+
 -------------------------------------------------------------------
 Tue Nov  6 22:33:43 CET 2007 - anicka@suse.cz
 
-- update to 2.2.9 
+- update to 2.2.9
   * lspci.c: Added a new switch `-k' which requests printing
     of information on kernel drivers attached to each device
     and on kernel modules reporting the ability to handle the
-    device.	
+    device.
   * Makefile, lib/Makefile: Moved -lz from LDFLAGS to LDLIBS.
     Also added an explicit pattern rule for linking to make sure
     that LDLIBS is used on all platforms.
-  * pci.ids: Revised class codes to match Conventional PCI 3.0 
+  * pci.ids: Revised class codes to match Conventional PCI 3.0
     specs.
   * lspci.c: Decode the Debug port capability (per EHCI 0.96 spec).
   * lspci.c: Big code cleanup: re-arranged functions in the code,
@@ -676,14 +689,14 @@ Tue Nov  6 22:33:43 CET 2007 - anicka@suse.cz
 -------------------------------------------------------------------
 Wed Oct 24 15:19:12 CEST 2007 - anicka@suse.cz
 
-- drop the patch backporting upstream bug in 
+- drop the patch backporting upstream bug in
   a machine readable output [#330533]
-- fix typo in show_ext_caps in lspci 
+- fix typo in show_ext_caps in lspci
 
 -------------------------------------------------------------------
 Fri Oct  5 14:42:24 CEST 2007 - anicka@suse.cz
 
-- update to 2.2.7 
+- update to 2.2.7
   * lspci.c (show_caps, show_ext_caps): Detect and report loops in
     capability lists.
   * lspci.c, lib/header.h: Finished decoding of the PCI Express
@@ -691,12 +704,12 @@ Fri Oct  5 14:42:24 CEST 2007 - anicka@suse.cz
     but at least the list of them has been updated to reflect the
     current PCI Express 2.0 spec.
   * lspci.c, lib/header.h: Decode new bits of traditional registers
-    as defined by PCIE / PCI-X. This includes discard timers in 
-    the bridge control register and INTx enable/status in device 
+    as defined by PCIE / PCI-X. This includes discard timers in
+    the bridge control register and INTx enable/status in device
     control/status registers.
-  * Makefile, lib/Makefile: `ar' and `ranlib' can be overriden to 
+  * Makefile, lib/Makefile: `ar' and `ranlib' can be overriden to
     allow cross-compilation.
-  * lspci.c (show_ht): Added decoding of Hypertransport MSI 
+  * lspci.c (show_ht): Added decoding of Hypertransport MSI
     mapping capability
   * tests/cap-MSI-mapping: Added a test case.
 
@@ -714,24 +727,24 @@ Fri May  4 20:41:39 CEST 2007 - anicka@suse.cz
 
 - update to 2.2.5
   * pci.ids: Updated to the current snapshot of the database.
-  * lspci.c (show_express): Added PCI/PCI-X to PCI-Express 
+  * lspci.c (show_express): Added PCI/PCI-X to PCI-Express
     Bridge type.
   * pci.ids: Updated to the current snapshot of the database.
-  * Replaced bzero() by memset() everywhere, it's better to lose 
-    a tiny bit of readability than maintain hacks to make it work 
+  * Replaced bzero() by memset() everywhere, it's better to lose
+    a tiny bit of readability than maintain hacks to make it work
     on various systems.
-  * lib/configure: tr on Solaris is a bit weird and it requires 
-    `[A-Z]' instead of `A-Z'. Fortunately, the extra brackets 
+  * lib/configure: tr on Solaris is a bit weird and it requires
+    `[A-Z]' instead of `A-Z'. Fortunately, the extra brackets
     don't hurt otherwise.
-  * lib/types.h, lib/configure: Solaris should use <stdint.h> 
+  * lib/types.h, lib/configure: Solaris should use <stdint.h>
     to get precise integer types.
   * lspci.c: alloca() needs <alloca.h>.
-  * lib/dump.c: Fixed a couple of bugs in the dump backend which 
-    caused devices with domains or with extended config space 
-    to be read incorrectly. Also, dumps with partial lines are 
+  * lib/dump.c: Fixed a couple of bugs in the dump backend which
+    caused devices with domains or with extended config space
+    to be read incorrectly. Also, dumps with partial lines are
     allowed now.
-  * lspci.c (scan_device): If an error occurs when reading the 
-    standard config header of a device, report it and ignore the 
+  * lspci.c (scan_device): If an error occurs when reading the
+    standard config header of a device, report it and ignore the
     device and return with exit code 2 at the end.
 - remove noabort.diff (implemented by upstream)
 
@@ -744,13 +757,13 @@ Thu Mar 29 12:34:27 CEST 2007 - rguenther@suse.de
 -------------------------------------------------------------------
 Mon Jan 29 13:39:09 CET 2007 - anicka@suse.cz
 
-- change dependency from python to perl in update-pciids [#221276] 
+- change dependency from python to perl in update-pciids [#221276]
 
 -------------------------------------------------------------------
 Sat Jan 20 01:36:12 CET 2007 - garloff@suse.de
 
 - Change update-pciids to download to pci.ids.d/pci.ids.dist
-  and call merge-pciids if possible. [FATE 301145, bug 221276] 
+  and call merge-pciids if possible. [FATE 301145, bug 221276]
 
 -------------------------------------------------------------------
 Fri Oct 13 21:57:37 CEST 2006 - aj@suse.de
@@ -905,7 +918,7 @@ Mon Jan 06 17:45:42 CET 2003 - tcrhak@suse.cz
 -------------------------------------------------------------------
 Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
 
-- removed bogus self-provides 
+- removed bogus self-provides
 
 -------------------------------------------------------------------
 Fri Sep  6 09:16:58 CEST 2002 - olh@suse.de
@@ -1000,7 +1013,7 @@ Wed Aug 29 19:52:28 CEST 2001 - grimmer@suse.de
 -------------------------------------------------------------------
 Mon May 21 23:46:12 CEST 2001 - poeml@suse.de
 
-- add -devel subpackage 
+- add -devel subpackage
 
 -------------------------------------------------------------------
 Thu May 10 17:55:50 CEST 2001 - garloff@suse.de
@@ -1035,7 +1048,7 @@ Mon Sep 18 10:39:42 CEST 2000 - schwab@suse.de
 -------------------------------------------------------------------
 Fri Aug 18 01:48:51 CEST 2000 - ro@suse.de
 
-- cleanup srcdir 
+- cleanup srcdir
 
 -------------------------------------------------------------------
 Mon Jun 12 00:43:53 CEST 2000 - olh@suse.de
@@ -1056,17 +1069,17 @@ Thu Jan 20 15:27:26 CET 2000 - aj@suse.de
 -------------------------------------------------------------------
 Tue Jan  4 02:11:22 CET 2000 - ro@suse.de
 
-- update to 2.1.2 
+- update to 2.1.2
 
 -------------------------------------------------------------------
 Tue Oct 26 01:10:58 CEST 1999 - ro@suse.de
 
-- fixed to compile on axp 
+- fixed to compile on axp
 
 -------------------------------------------------------------------
 Sat Oct 23 16:24:29 CEST 1999 - ro@suse.de
 
-- update to 2.1pre8 / using Buildroot 
+- update to 2.1pre8 / using Buildroot
 
 -------------------------------------------------------------------
 Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
