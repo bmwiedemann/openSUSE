@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>61f3ced11310baa80d697064a993b1e5</srcmd5>
+    <version>1.4</version>
+    <time>1544726889</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain clatd in Factory</comment>
+    <requestid>655876</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>146450e3fbf0f3fcdd487d767cac212f</srcmd5>
+    <version>1.5</version>
+    <time>1558516557</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5
+  * Fixes compatibility with recent Linux kernels in get_plat_dev().
+- Drop patches (included in upstream release):
+  * 0001-nm-dispatcher-only-act-on-iface-up-down-events.patch
+  * 0002-Update-siit-dc-eam-I-D-references-to-RFC-numbers.patch</comment>
+    <requestid>704392</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>07298ab21fcabde53c483a8c0fc476ce</srcmd5>
+    <version>1.6</version>
+    <time>1678125407</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069662</requestid>
+  </revision>
+</revisionlist>
