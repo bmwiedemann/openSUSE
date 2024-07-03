@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon Jun 17 12:55:41 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to 1.8.2
+  *  New APIs:
+     - tep_record_is_event() - A helper function that basically converts
+   		int type= tep_data_type(event->tep, record);
+   		if (event->id == type) {
+   			/* do something */
+   		}
+   	into:
+   		if (tep_record_is_event(record, event)) {
+   			/* do something */
+   		}
+     - tep_get_sub_buffer_commit_offset() - Add a function to return the
+    	offset of where the "commit" is located on the subbuffer
+   	so that the application can do its own direct reading of it.
+     - kbuffer_read_buffer() - Add the functionality to the kbuffer to
+   	act like the read syscall of the ring buffer. That is, it
+   	will load the passed in buffer with the events where the
+   	kbuffer left off, and that passed in buffer can be loaded
+   	into another kbuffer via kbuffer_load_subbuffer().
+     - kbuffer_dup() - Create a new kbuffer with the same fields of an
+   	existing kbuffer. This will allow traversing a subbuffer
+   	without modifying the contents of another kbuffer that
+   	points to the subbuffer.
+     - kbuffer_subbuffer() - Return the subbuffer that was loaded into
+   	a kbuffer via kbuffer_load_subbuffer().
+     - kbuffer_refresh() - In the case of the subbuffer that was loaded
+   	into a kbuffer via kbuffer_load_subbuffer() that is still
+   	active, this function will refresh the meta data to continue
+   	reading events if more were written to it.
+     - Added tep_get_sub_buffer_data_size() helper function
+    * Updates:
+     - Add option to disable building documents for some environments
+       that do not have everything needed to build the documents to
+       not fail the build with meson.
+     - Bump meson version required to build to 0.58.0 as plugins use
+       str.replace that was introduced in that version.
+     - Have the sched_switch plugin parse the format field to figure out
+       what the correct mapping of the "prev_state" field is to produce
+       the proper string output.
+    * Fixes:
+     - Update the default sched_switch "prev_state" string array to match
+       what's been in the kernel for a while now.
+     - Fix tep_kbuffer() to fill in the long_size, otherwise it would default
+       to 32 bit longs and cause a lot of confusion to application developers
+     - Fix tep_kbuffer man page info
+     - Fix some meson dependency issues
+     - Fix kbuffer_read_buffer() timestamp being off in some cases
+     - Fix curr size in kbuffer_refresh()
+
+-------------------------------------------------------------------
 Thu Jun 15 18:30:52 UTC 2023 - Tony Jones <tonyj@suse.com>
 
 - Update to version 1.7.3

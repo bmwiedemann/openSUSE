@@ -1,7 +1,7 @@
 #
 # spec file for package libtraceevent
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define sodname %{dname}%{sonum}
 
 Name:           libtraceevent
-Version:        1.7.3
+Version:        1.8.2
 Release:        0
 Summary:        Linux kernel trace event library
 License:        GPL-2.0-only AND LGPL-2.1-only
