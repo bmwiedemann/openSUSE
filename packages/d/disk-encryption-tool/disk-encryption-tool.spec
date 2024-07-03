@@ -28,7 +28,7 @@ BuildRequires:  git-core
 %endif
 
 Name:           disk-encryption-tool
-Version:        1+git20240328.c4935cc%{git_version}
+Version:        1+git20240702.24fe41e%{git_version}
 Release:        0
 Summary:        Tool to reencrypt kiwi raw images
 License:        MIT
@@ -39,6 +39,7 @@ Requires:       keyutils
 Requires:       pcr-oracle
 # something needs to require it. Can be us.
 Requires:       tpm2.0-tools
+Requires:       qrencode
 ExclusiveArch:  aarch64 ppc64le riscv64 x86_64
 
 %description

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 02 07:29:01 UTC 2024 - aplanas@suse.com
+
+- Update to version 1+git20240702.24fe41e:
+  * Minor fix in spec file
+  * Requires qrencode
+  * Makes luks2_devices global
+  * Add PCR 8 if GRUB2 is detected
+  * If keyctl id fails, exit early
+  * Exit early if no luks2 devices present
+
+-------------------------------------------------------------------
 Thu Mar 28 15:22:41 UTC 2024 - lnussel@suse.com
 
 - Update to version 1+git20240328.c4935cc:
