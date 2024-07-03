@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 02 10:03:44 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20240702:
+  * Allow manage dosfs_t files to snapperd (bsc#1224120)
+  * Add auth_rw_wtmpdb_login_records to domains using auth_manage_login_records
+  * Add auth_rw_wtmpdb_login_records to modules
+  * Allow xdm_t to read-write to wtmpdb (bsc#1225984)
+  * Introduce types for wtmpdb and rw interface
+  * Introduce wtmp_file_type attribute
+  * Revert "Add policy for wtmpdb (bsc#1210717)"
+
+-------------------------------------------------------------------
 Mon Jun 17 14:36:01 UTC 2024 - cathy.hu@suse.com
 
 - Update to version 20240617:

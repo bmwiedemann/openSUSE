@@ -650,4 +650,20 @@ https://build.opensuse.org/request/show/1178504 </comment>
     <comment></comment>
     <requestid>1181332</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>ca663dc57c5a5ed07638d67e0f496f0b</srcmd5>
+    <version>20240702</version>
+    <time>1720031350</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240702:
+  * Allow manage dosfs_t files to snapperd (bsc#1224120)
+  * Add auth_rw_wtmpdb_login_records to domains using auth_manage_login_records
+  * Add auth_rw_wtmpdb_login_records to modules
+  * Allow xdm_t to read-write to wtmpdb (bsc#1225984)
+  * Introduce types for wtmpdb and rw interface
+  * Introduce wtmp_file_type attribute
+  * Revert &quot;Add policy for wtmpdb (bsc#1210717)&quot;
+</comment>
+    <requestid>1184840</requestid>
+  </revision>
 </revisionlist>
