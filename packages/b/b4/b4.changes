@@ -1,0 +1,516 @@
+-------------------------------------------------------------------
+Mon Jun 17 06:41:56 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.14.0:
+  * Switch to using pyproject.toml
+  * Automatic dependency resolution
+  * Checkpatch and other pre-submit checks
+  * Document new features
+  * Miscellaneous enhancements
+
+-------------------------------------------------------------------
+Fri Feb 16 04:40:09 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.13.0:
+  * `b4 am` now has a `--single-message` flag that lets you process a
+    single message and ignore any other parts of a thread; this is
+    useful when there is a patch series sent as attachments to a single
+    message
+  * `--apply-cover-trailers` is now the default behaviour
+  * when patchwork integration is configured, `b4 am` will attempt to
+    retrieve the CI status of patches
+  * `b4 prep --show-info` can do a lot more now, including showing
+    information about branches that aren't currently checked out
+  * `b4 prep` gained a --cleanup option to properly archive and remove
+    old b4*prep-managed branches
+  * `b4 send` has a `--preview-to` option that lets you send a
+    pre*review of your series to your colleagues, mentors, or bosses
+  * various fixes and improvements to `b4 send` functionality
+  * b4 can now take config options on commandline, allowing to override
+    global configs via scripted invocations
+  * improvements to `b4 diff` that should make it work more reliably for
+    series without exact object matches
+
+-------------------------------------------------------------------
+Tue Nov  7 11:05:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- remove python_module from requires, this might lead to unwanted
+  side effects. use pprefix macro instead to manage sle15
+
+-------------------------------------------------------------------
+Tue Oct 31 08:14:02 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- add %{python_module ...} also to requires, otherwise bad
+  requires are generated
+
+-------------------------------------------------------------------
+Tue Oct 24 07:57:32 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.12.4:
+  * ez: ignore invalid unicode returned by get_maintainer
+  * Only pass -f to sendmail if envelopesender is set
+  * trailers: do not quote names when special chars are present
+
+-------------------------------------------------------------------
+Thu Oct  5 12:02:44 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove dependency on /usr/bin/python3 using %python3_fix_shebang
+  macro, bsc#1212476
+
+-------------------------------------------------------------------
+Thu Jul 27 06:41:39 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- add python3-base >= 3.9 to BuildRequires for 15.5 and older
+- add %{?sle15_python_module_pythons}
+- switch back to python_module macro to have all this working
+
+-------------------------------------------------------------------
+Mon Jun 26 05:20:06 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.12.3:
+  * ez: store sent prefixes with the tag message
+  * Properly quote the address before adding into From
+  * shazam: switch to top of git tree before running git-am
+  * trailers: normalize address after parsing
+  * Fix wrong CTR header after 8bit cover content is mixed in
+  * ez: make it easier to send single-patch series
+  * ez: make message-ids use today's date
+  * ez: only include base-branch when using non-default strategy
+  * Fix to properly handle under-scissors patches with a unixfrom line
+  * Clean headers before adding them to the pre-scissors email
+  * b4: Fix envelopeSender handling
+  * am, shazam: allow cherry-picking an out-of-series patch
+  * mbox.py::make_am: simplify check for early return
+  * ez: Fix 'trailers -F' used on a single commit
+  * b4.sh: keep existing PYTHONPATH if set
+  * b4: Allow prep new branch while on a b4 managed branch
+  * docs: fix smtpServerPort option
+  * trailers: add 'Closes' as recognized link trailer
+  * trailers: accept recognized link trailers
+  * Consider '@' safe in msgid URLs
+  * ez: better fix for "no follow-up trailers" condition
+  * Add subscribe/unsubscribe to badtrailers
+  * ez: do not trust local commands to properly reflect
+  * ez-trailers: don't crash when there are no follow-ups received
+
+-------------------------------------------------------------------
+Thu Jun 22 10:56:42 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not use python_module macro, but rather specify python3-FOO
+  directly: this package is not a python module, but rather an
+  application written in python.
+
+-------------------------------------------------------------------
+Sat Mar 11 08:51:30 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.12.2:
+  * prep: add ability to use markdown in the cover content (requires
+    escaping the leading "#" as ">#" that is stripped on cover letter
+    rendering)
+  * send: don't require vN to --resend (will resend the latest version)
+  * test: don't require running from git
+  * plus several bugfixes mostly dealing with corner-case conditions
+
+-------------------------------------------------------------------
+Fri Mar  3 21:26:19 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.12.1:
+  * Use typing compatible with Python 3.8
+
+-------------------------------------------------------------------
+Tue Jan 24 06:21:58 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.12.0
+  * worked around Python's email bugs
+  * other bugfixes
+
+-------------------------------------------------------------------
+Fri Jan  6 07:22:24 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.11.2:
+  * Always run log with --no-abbrev-commit
+  * Handle series with more than 999 patches
+  * ez: dedupe cover letter CCs taken from individual patches
+  * ez: avoid header wrapping when writing to file
+  * ez: don't crash on non-existent tag in show_info
+
+-------------------------------------------------------------------
+Mon Jan  2 10:12:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.1:
+  * ez: use default web endpoint when in the kernel repo
+  * ez: give better error message when patatt signing fails
+  * ez: don't crash when there's no [sendemail] section
+
+-------------------------------------------------------------------
+Tue Dec 20 05:07:55 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to version 0.11.0:
+  * b4 prep --compare-to N: shows a range-diff
+  * b4 ty: can be configured to always send mail
+  * b4 send will no longer send the entire series to the addresses found
+    in individual commit Cc: trailers
+  * you can now set extra [PATCH] prefixes permanently
+  * b4 has internal changes to ensure that we generate 7-bit-clean
+    headers for all outgoing mail
+  * b4 send --reflect: prepares the patches but only sends them to
+    yourself
+  * b4 prep --show-info: shows information about your prep-managed
+    branch
+
+-------------------------------------------------------------------
+Tue Oct  4 07:32:01 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- add git-filter-repo to BuildRequires and update Requires
+
+-------------------------------------------------------------------
+Tue Sep 27 04:55:59 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to version 0.10.1:
+  * Fixes the crash with "b4 ty" when using a local binary to send mail
+  * The "send" and "prep" commands now properly include diffstats into
+    generated patches
+  * Does not force single-patch series to have a cover letter.
+  * Does not force "v1" to be added to the prefixes
+
+-------------------------------------------------------------------
+Mon Sep 19 05:31:24 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to version 0.10.0:
+  * Developer-oriented features (prep, send, trailers commands)
+  * Patchwork integration
+  * The "trailer-order" setting now only reorders the trailers
+  * Web submission endpoint support for "b4 send"
+  * Adds a "trailers-ignore-from" configuration option
+  * Bugfixes and improved tests.
+- switch from _service to standard releases (they are often enough)
+
+-------------------------------------------------------------------
+Fri Aug 26 05:36:32 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Don't change the correct manual page path into an invalid one
+
+-------------------------------------------------------------------
+Thu Jun 23 11:39:42 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix _service: Do not add +0 to version when we are directly on a
+  tagged revision (so: 0.9.0 instead of 0.9.0+0).
+
+-------------------------------------------------------------------
+Sun Jun 19 07:51:21 UTC 2022 - jslaby@suse.cz
+
+- Update to version 0.9.0+0:
+  * Add ability to exit before git-merge is invoked
+  * Implement "b4 shazam -M" that execs git-merge
+  * Add a note about proxying requests
+  * Allow breaking threads using --no-parent
+  * Improve identity matching for DKIM
+  * Lowercase identities for comparison
+  * am: Fix broken guessbranch handling
+  * Remove unnecessary lookup when /all/ is used in midmask
+  * Add support for mailmap and excluding mail in b4-ty
+  * Allow whitespace at the start of non-wrapped trailers
+  * Reimplement unicode control character logic
+  * mbox: initial support to check for unicode control chars
+  * ty: fix problems with smtplib and 8BITMIME
+  * ty: fix bugs introduced when switching -s to -t
+  * ty: document flag changes
+  * shazam: change default behaviour to be "apply-here"
+  * Initial implementation of native mail sending
+  * Fix shazam for multiple git worktrees
+  * validate: Use patatt's configured keyring as fallback
+  * Add keyring key for keescook
+  * shazam: document template usage in manpage
+  * shazam: implement custom merge message templates
+  * shazam: implement better merging strings
+  * shazam: allow configuring "git am" flags
+  * am/shazam: Restore thank-you recording
+  * Simplify sparse worktree preparation
+  * Add "b4 shazam" that is like b4 am + git am
+
+-------------------------------------------------------------------
+Mon Mar 21 10:21:21 UTC 2022 - jslaby@suse.cz
+
+- Update to version 0.8.0+2:
+  * Allow whitespace at the start of non-wrapped trailers
+  * validate: Use patatt's configured keyring as fallback
+
+-------------------------------------------------------------------
+Thu Sep 02 05:57:57 UTC 2021 - jslaby@suse.cz
+
+- Update to version 0.8.0+0:
+  * Normalize linebreaks when reconstituting body
+  * Document listid-preference config parameter
+  * Missed backfill call cleanup
+  * Remove kludges that were needed before /all/
+  * Filter duplicate results when querying new series
+  * Move dedupe code into central location
+  * Reimplement deduping based on list-id preference
+  * When deduping, prefer DKIM-validating messages
+  * Handle decoding incorrectly encoded headers
+  * Parse just headers when extracting message ID from stdin mbox
+  * Avoid decoding errors when extracting message ID from stdin
+  * Don't consider signature contents for trailers
+  * Sanitize msgid before using it as savename
+  * Fix wrong statement on patches without indexes
+  * Allow '.git' to be a file for worktrees
+  * Tweak --guess-base output
+  * Additional --guess-base refinements
+  * Reimplement --guess-base
+  * Don't append .git unnecessarily
+  * Test to make sure mbox files contain unixfrom
+  * and more...
+
+-------------------------------------------------------------------
+Mon Aug 16 05:16:15 UTC 2021 - jslaby@suse.cz
+
+- Update to version 0.7.3+0:
+  * Handle decoding incorrectly encoded headers
+  * Avoid decoding errors when extracting message ID from stdin
+  * Don't consider signature contents for trailers
+  * Sanitize msgid before using it as savename
+
+-------------------------------------------------------------------
+Wed Jul 21 07:02:39 UTC 2021 - jslaby@suse.cz
+
+- Update to version 0.7.2+3:
+  * Allow '.git' to be a file for worktrees
+  * Don't append .git unnecessarily
+
+-------------------------------------------------------------------
+Thu Jun 10 04:19:44 UTC 2021 - jslaby@suse.cz
+
+- Update to version 0.7.2+0:
+  * Fix sloppy trailer handling
+  * Fix crasher on unsigned FETCH_HEAD
+  * Fix partial reroll TUI visuals for v1->v2
+
+-------------------------------------------------------------------
+Thu Jun 03 04:03:19 UTC 2021 - jslaby@suse.cz
+
+- Update to version 0.7.1+0:
+  * Fix cache aging cleanup of threads
+  * Limit 'From mboxrd@z' replacement to start of message
+
+-------------------------------------------------------------------
+Thu May 27 06:30:41 UTC 2021 - jslaby@suse.cz
+
+- Update to version 0.7.0+0:
+  * Add new b4 pr flags
+  * Check uids on the key when using default keyring
+  * Update attestation section in the README
+  * Don't depend on List-Archive lore header
+  * Handle situations where -f only has an email
+  * Fix pr -l where we introduced var collision
+  * Bump patatt to 0.4.2
+  * Avoid type error when local mbox lacks specified message ID
+  * Tweak lore.kernel.org match
+  * Return early if no messages retrieved
+  * Strip any List-* headers matching lore
+  * Move --show-keys into its own kr subcommand
+  * Handle partial reroll of series without cover
+  * Don't crash on absent cover letter
+  * Warn when we find an "Obsoleted-by" trailer
+  * Reimplement single-msgid cherrypicking
+  * Initial support for Obsoleted-by: trailer
+  * Cherrypick from the correct series revision
+  * Write maildir atomically
+  * Minor visual tweak in output
+  * Fix a crash on incomplete/missing threads
+  * Tweak output filenames
+  * Document save-maildirs and -M options
+  * Don't use mboxo for anything
+  * Allow passing entire mbox via stdin
+  * Perform mboxo unescaping before DKIM check
+  * Implement partial reroll
+  * Don't try to read stdin multiple times
+  * Restore check for attestation-check-dkim
+  * Improve subject parsing for bracketed prefixes
+  * Ensure trailers are tracked with source messages
+  * Fix DKIM check on headers that don't lowercase h
+  * Properly fail with BADSIG on bad signature
+  * Force datetime to UTC if it's native
+  * Fix crash when PGP key not in default keyring
+  * Clean up after ourselves
+  * Rudimentary support for showing patatt key info
+  * Fix for DKIM signatures without t= field
+  * Reimplement attestation-staleness-days
+  * Python 3.6 compatibility fixes
+  * Remove sendemail-validte hook
+  * Reimplement attestation code one more time
+  * Loosen compatible release identifiers for install_requires
+  * Save to/cc headers as-is for tracking
+  * Add -f to "b4 mbox" to filter dupes
+  * Check if -o is a maildir
+  * Recognize merged PRs when attempting auto-base
+  * Raise RuntimeError instead of exiting
+  * Convert mboxrd to mboxo
+  * Allow passing extra opts to git-format-patch
+  * Fix crasher when we don't use -g with b4 pr
+  * Rework b4 pr exploder for transparency log needs
+  * DKIM: remove extra public-inbox headers
+  * Only check allow-list of trailers in follow-ups
+  * Add BugLink to non-person trailers
+
+-------------------------------------------------------------------
+Tue Mar 30 04:28:36 UTC 2021 - jslaby@suse.cz
+
+- Update to version 0.6.2+5:
+  * Loosen compatible release identifiers for install_requires
+- remove 0001-lift-requests-version-requirements.patch
+
+-------------------------------------------------------------------
+Sat Feb  6 07:10:19 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- fix for newer dnspython
+  * add 0001-lift-requests-version-requirements.patch
+  * remove 0001-lift-requests-version-requirement.patch
+
+-------------------------------------------------------------------
+Fri Jan 22 06:09:14 UTC 2021 - jslaby@suse.cz
+
+- Update to version 0.6.2+4:
+  * Save to/cc headers as-is for tracking
+  * Add -f to "b4 mbox" to filter dupes
+  * Check if -o is a maildir
+- Skip python 3.6 to fix build
+
+-------------------------------------------------------------------
+Mon Dec 21 10:26:12 UTC 2020 - jslaby@suse.cz
+
+- Update to version 0.6.2:
+  * Prepare 0.6.2 release
+  * Convert mboxrd to mboxo
+  * DKIM: remove extra public-inbox headers
+  * Only check allow-list of trailers in follow-ups
+  * Add BugLink to non-person trailers
+  * Create stable-0.6.y and increment version
+
+-------------------------------------------------------------------
+Fri Dec 18 09:05:49 UTC 2020 - Jiri Slaby <jslaby@suse.cz>
+
+- add 0001-lift-requests-version-requirement.patch
+
+-------------------------------------------------------------------
+Tue Dec 08 06:52:43 UTC 2020 - jslaby@suse.cz
+
+- Update to version 0.6.1:
+  * Add dkimpy and dnspython to install_requires
+  * Don't crash if dkimpy is not installed
+  * Try all DKIM headers if failed on the first
+  * Silence some pycharm warnings
+  * Fix logic when adding trailers without DKIM sigs
+  * Limit slug length by 100 characters
+  * Fix ReST in README.rst
+  * Move the g= hash back into the XPH header
+  * Fix logic on git-patch-id hash generation
+  * Don't give up on attestation if there's no index
+  * Deal with dupe follow-up trailers sent to cover
+  * Fix crash when dnspython is not available
+  * Fix b4 ty auto-matching
+  * Fix headers generated by "b4 ty"
+  * man: Drop apostrophe from midmask value
+  * Properly clean up temporary threadfile
+  * and much more...
+
+-------------------------------------------------------------------
+Wed Dec 02 12:10:32 UTC 2020 - jslaby@suse.cz
+
+- Update to version 0.5.4+0:
+  * Release 0.5.4 with the fix for b4 ty bug
+  * Fix b4 ty auto-matching
+  * Fix headers generated by "b4 ty"
+  * man: Drop apostrophe from midmask value
+  * Increment version to 0.5.4-dev
+
+-------------------------------------------------------------------
+Fri Nov 27 11:02:21 UTC 2020 - jslaby@suse.cz
+
+- Update to version 0.5.3+0:
+  * Increment version to 0.5.3 in prep for release
+  * Unbreak thanks-tracking
+  * Fix crash on incomplete series thanks tracking
+  * Improve ty with cherrypicked subsets
+  * Unquote msgid if we're getting a full https URL
+
+-------------------------------------------------------------------
+Mon Nov 23 10:21:55 UTC 2020 - jslaby@suse.cz
+
+- Update to version 0.5.2+9:
+  * Fix crasher when attempting a 3-way prep
+  * Fix handling of series with the [PATCHvX] defect
+  * Fix header encoding introduced by earlier fix
+  * Fix some cherry-picking corner cases
+  * Don't crash when no valid patches are found
+  * Use bytes when dumping to stdout
+  * Set charset in order to generate MIME headers
+
+-------------------------------------------------------------------
+Thu Aug 20 05:30:13 UTC 2020 - jslaby@suse.com
+
+- Update to version 0.5.2+2:
+  * Require that a trailer is at least 2 chars long
+  * Cover letters may not have a diffstat
+- add requests to Requires
+
+-------------------------------------------------------------------
+Tue Jul 28 11:07:40 UTC 2020 - jslaby@suse.com
+
+- Update to version 0.5.2:
+  * Prepare for 0.5.2 release
+  * Fix handling of single-paragraph commit message bodies
+  * Fix basement detection for empty commit message bodies
+  * Support mbox -m to be a maildir
+  * man: Update commit url mask to contain 12 chars of ID
+  * Fix attestation error messages
+  * Deal with [PATCHvX] subjects
+  * Fix crash when -c used with incomplete series
+  * man: Drop the apostrophe from the linkmask configuration
+  * Fix crash with unbalanced [] in subject
+  * Fix regression with oddball charsets
+  * Up the version to 0.5.2-dev
+  * Prepare for 0.5.1 release
+  * Fix mbox naming inconsistencies
+  * Output less confusing trailer mismatch messages
+  * Fix bug with threading when cover ref is missing
+  * Fix body part parsing when '---' is not used
+  * Use proper charset when reading back mailinfo
+  * Don't output git am suggestion for -o -
+  * Add --no-cover and -o - to output to stdout
+  * Use unicode escape sequences
+  * Up the version to 0.5.1-dev
+- switch to obs_scm
+- switch to 0.5 stable branch
+
+-------------------------------------------------------------------
+Tue Jun 16 06:23:16 UTC 2020 - jslaby@suse.com
+
+- Update to version 0.5.0+git20200612.g5c4ec14b:
+  * Fix crash with unbalanced [] in subject
+  * Fix regression with oddball charsets
+  * Fix mbox naming inconsistencies
+  * Output less confusing trailer mismatch messages
+  * Fix bug with threading when cover ref is missing
+  * Fix body part parsing when '---' is not used
+  * Use proper charset when reading back mailinfo
+
+-------------------------------------------------------------------
+Mon Jun 08 10:57:26 UTC 2020 - jslaby@suse.com
+
+- Update to version 0.5.0+git20200528.g204416b80fbb:
+  * Don't output git am suggestion for -o -
+  * Add --no-cover and -o - to output to stdout
+
+-------------------------------------------------------------------
+Tue May 26 13:05:22 UTC 2020 - jslaby@suse.com
+
+- Update to version 0.5.0+git20200526.ga926bac9e6c2:
+  * Use unicode escape sequences
+  * Up the version to 0.6.0-dev
+  * Prepare for 0.5.0
+  * Backfill series before diffing them
+
+-------------------------------------------------------------------
+Tue May 26 09:56:21 UTC 2020 - Jiri Slaby <jslaby@suse.com>
+
+- initial package (0.4.0+git20200525.g59be08453137)
