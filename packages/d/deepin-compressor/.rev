@@ -1,0 +1,102 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>569899d512023f8f91fd04da200130a3</srcmd5>
+    <version>5.10.0.15</version>
+    <time>1622664646</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891653</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fcae88fd998243df0666f9bd119063b4</srcmd5>
+    <version>5.10.5</version>
+    <time>1629269725</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update version to 5.10.5
+  * Update manunal documents
+  * Fix bugs
+  * Add some test modules
+  * Update translation (forwarded request 910673 from hillwood)</comment>
+    <requestid>910887</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4e082d767b47b9bcaf15cb28ee59911f</srcmd5>
+    <version>5.11.7</version>
+    <time>1643666202</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.11.7
+  * Update manual documents
+  * Fix bugs</comment>
+    <requestid>950154</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>941808458aecb17cbfe0f1706799b007</srcmd5>
+    <version>5.11.8</version>
+    <time>1646586948</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>959722</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>63163b25f5023908a2cf01568f42945c</srcmd5>
+    <version>5.12.2</version>
+    <time>1648063098</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on ARM. 
+
+- Update version to 5.12.2
+  * Support long long filename
+  * Support choosing 1, 2, 4, 8 CPU cores.
+  * The minimum window size is 620*300
+  * Update documents
+  * Fix bugs</comment>
+    <requestid>964157</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>53b47b6ea21502d699c2576ce6533a94</srcmd5>
+    <version>5.12.5</version>
+    <time>1650657220</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971774</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1040e3d98b6f73bbaf20c018b9419369</srcmd5>
+    <version>5.12.8</version>
+    <time>1662063019</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.12.8
+  * Fix bugs
+  * Support rename by right click
+- Drop 001-fix-libdir.patch, fixed by upstream
+
+- Update version to 5.12.6
+  * Change qDebug to qInfo</comment>
+    <requestid>1000251</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f5f70601d59830345af9d71cdf14a73f</srcmd5>
+    <version>5.12.12</version>
+    <time>1670514751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041324</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>56a4624a7371d716cd5b8412bd9f9ac0</srcmd5>
+    <version>5.12.13</version>
+    <time>1673973369</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058986</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>38d2bf3d8a34a912fb58cb98ca7bfa9a</srcmd5>
+    <version>5.12.13</version>
+    <time>1703801015</time>
+    <user>anag+factory</user>
+    <comment>- Add fix-Zip-Path-Traversal.patch
+  * Fix Zip Path Traversal (boo#1218428 and CVE-2023-50255) (forwarded request 1135475 from hillwood)</comment>
+    <requestid>1135476</requestid>
+  </revision>
+</revisionlist>

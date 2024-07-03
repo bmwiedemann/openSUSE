@@ -1,0 +1,12 @@
+diff -Nur deepin-compressor-5.12.8/CMakeLists.txt deepin-compressor-5.12.8-new/CMakeLists.txt
+--- deepin-compressor-5.12.8/CMakeLists.txt	2022-08-04 15:50:23.000000000 +0800
++++ deepin-compressor-5.12.8-new/CMakeLists.txt	2022-08-25 22:32:28.313058753 +0800
+@@ -109,7 +109,7 @@
+ endif(USE_TEST)
+ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/config.h.in ${HFILES_OUTPUT_PATH}/config.h @ONLY)
+ 
+-
++install(TARGETS compressor-ChardetDetector DESTINATION ${COMPRESSOR_PLUGIN_PATH})
+ install(TARGETS cli7zplugin DESTINATION ${COMPRESSOR_PLUGIN_PATH})
+ install(TARGETS clirarplugin DESTINATION ${COMPRESSOR_PLUGIN_PATH})
+ install(TARGETS libzipplugin DESTINATION ${COMPRESSOR_PLUGIN_PATH})
