@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 02 18:15:14 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.16.1:
+  * gopls: update go.mod for v0.16.1-pre.1
+  * gopls/internal/server: add counters to inform v0.17.0
+  * gopls/internal/golang: strip @v1.2.3 suffix from pkgdoc URLs
+  * internal/typeparams: fix crash in interface hover with empty type set
+  * gopls/internal/golang/completion: fix package clause completion suffix
+
+-------------------------------------------------------------------
 Thu Jun 20 18:38:18 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.16.0:
