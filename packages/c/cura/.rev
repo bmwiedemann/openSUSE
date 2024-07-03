@@ -1,0 +1,157 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1c1a85beedcf2f1f7c08e09c5f12421f</srcmd5>
+    <version>3.4.1</version>
+    <time>1533732819</time>
+    <user>dimstar_suse</user>
+    <comment>for cura, adi:50</comment>
+    <requestid>627887</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c4a79042435dbd98616ee91657a39ff1</srcmd5>
+    <version>3.4.1</version>
+    <time>1533887340</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628100</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8b5d3d953e26d046907ef044c1b2ff4d</srcmd5>
+    <version>3.5.1</version>
+    <time>1540447965</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.5.1
+  https://ultimaker.com/en/products/ultimaker-cura-software/release-notes
+
+- add recommends to python3-Savitar for 3mf plugin</comment>
+    <requestid>642565</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>451577bb979bc03a73a526cde8cb7914</srcmd5>
+    <version>3.6.0</version>
+    <time>1542666664</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.6.0
+  https://ultimaker.com/en/products/ultimaker-cura-software/release-notes</comment>
+    <requestid>649606</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>df5e1b1dddd10c88256e31ca94d54fc4</srcmd5>
+    <version>4.1.0</version>
+    <time>1562843611</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.1.0
+  * https://ultimaker.com/en/products/ultimaker-cura-software/release-notes
+  * Requires Qt 5.10 or later. So no builds for openSUSE Leap atm.
+  * added disable-code-style-check.patch  fix-crash-on-start.patch  fix-runtime.patch
+- enable tests
+  * but skip code stylce checks disable-code-style-check.patch
+
+- Spec cleanup:
+  * Update URL to use https
+  * Remove %defattr</comment>
+    <requestid>712878</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ca6f6106467b3961c19607b3c2e11435</srcmd5>
+    <version>4.3.0</version>
+    <time>1570800058</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>737379</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>283d5dff9d9e014472501a9e9ca06a74</srcmd5>
+    <version>4.4.1</version>
+    <time>1578069389</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.4.1
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/v4.4.1
+
+- update to version 4.4.0
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/v4.4.0</comment>
+    <requestid>760441</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f394e2c4fe9e7a7c982cdd7bf2a8a1df</srcmd5>
+    <version>4.4.1</version>
+    <time>1582394884</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>778101</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>41a2eaae0d7da1556fe1bf999223e7e8</srcmd5>
+    <version>4.6.1</version>
+    <time>1591559743</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812282</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3b5dceeb4fe137184ea6df70c34118f9</srcmd5>
+    <version>4.7.1</version>
+    <time>1600702807</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835460</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c2a8a36d50122621b5a66f63f36c3fe1</srcmd5>
+    <version>4.8.0</version>
+    <time>1605124050</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847701</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>b6f0ae2c6783c3c3dd8a59cd73c22da9</srcmd5>
+    <version>4.8.0</version>
+    <time>1606142875</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849980</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>be5c557cbb019d887d94b430e6c309f7</srcmd5>
+    <version>4.8.0</version>
+    <time>1607349717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853556</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>d31fa77d8121cd7555d8d89dbd0832cb</srcmd5>
+    <version>4.8.0</version>
+    <time>1612182500</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868218</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>148832b5932be4c3171303c4fbab6441</srcmd5>
+    <version>4.9.0</version>
+    <time>1619729171</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889143</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>82d5796e93f108fda0fb53c7bfea02d2</srcmd5>
+    <version>4.13.1</version>
+    <time>1644435584</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>952913</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>91b107da42b1429f7e0c2ba2001bd0ff</srcmd5>
+    <version>4.13.1</version>
+    <time>1657114902</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986745</requestid>
+  </revision>
+</revisionlist>
