@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 03 15:14:51 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.59.6:
+  * build(deps): bump github.com/hashicorp/go-retryablehttp (#3226)
+  * build(deps): bump github.com/hashicorp/go-getter from 1.7.4 to
+    1.7.5 (#3227)
+  * Add script to check GH release assets (#3223)
+
+-------------------------------------------------------------------
 Fri Jun 21 19:02:21 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.59.5:
