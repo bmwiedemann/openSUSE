@@ -1,0 +1,103 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>85945296f169d6929e725237a3eb2d39</srcmd5>
+    <version>4.4.902</version>
+    <time>1337163863</time>
+    <user>coolo</user>
+    <comment>command-line WAD archive utility</comment>
+    <requestid>120835</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>85945296f169d6929e725237a3eb2d39</srcmd5>
+    <version>4.4.902</version>
+    <time>1340183277</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>85945296f169d6929e725237a3eb2d39</srcmd5>
+    <version>4.4.902</version>
+    <time>1359108808</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>85945296f169d6929e725237a3eb2d39</srcmd5>
+    <version>4.4.902</version>
+    <time>1379662221</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>85945296f169d6929e725237a3eb2d39</srcmd5>
+    <version>4.4.902</version>
+    <time>1409300757</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>77f9ae930d1d43e023a510a100221a44</srcmd5>
+    <version>4.4.902</version>
+    <time>1499510117</time>
+    <user>dimstar_suse</user>
+    <comment>- Add deutex-nolimit.diff: raise limit for WAD directory reading</comment>
+    <requestid>508842</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e3df61db16959a65ab108b81f68bba3c</srcmd5>
+    <version>5.1.1</version>
+    <time>1516359141</time>
+    <user>dimstar_suse</user>
+    <comment>@jengelh all of your patches are upstream now :)
+
+
+One minor difference with your &quot;nolimit&quot; fix, the upstream has chosen to emit a warning instead of an error:
+
+https://github.com/Doom-Utils/deutex/commit/f8b1336bbcb7bc387d3e856cc7c9f75697cd0f0b#diff-737f0ad7650b480ebdf2807f16ae18ca
+
+
+- update to 5.1.1
+  * Fixed: texture name array: the maximum possible string size is
+    now supported.
+  * Fixed: some warnings and errors with old versions of pkg-config
+    and gcc 
+  * Fixed: Aliasing errors (caused crashes on some architectures,
+    such as sparc64)
+  * Can now build WADs with an arbitrary number of lumps. A warning
+    is emitted when more than 4046 are included (vanilla Doom limit).
+- remove 0001-increase-array-size-for-char-tname-variable-51.patch
+  * upstreamed in 7024dd74a33780ef2dbdf614f4e52526cc3ab457
+- remove 0001-Fix-strict-aliasing-violations.patch
+  * upstreamed in 85d821dd3c145be1a998ca2a704930caaad73030
+- remove deutex-proto.diff
+  * upstreamed in 07bd0a5083fc15db20bee9056511bd3e10dd1362
+- remove deutex-nolimit.diff
+  * fixed in f8b1336bbcb7bc387d3e856cc7c9f75697cd0f0b
+- remove deprecated BuildRoot option (forwarded request 562640 from avindra)</comment>
+    <requestid>562642</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5b3d32d1746bc6b2dc46da7a0c31d391</srcmd5>
+    <version>5.1.2</version>
+    <time>1537187265</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635965</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>734ac045d60a0d05fb5b22c534cb65c2</srcmd5>
+    <version>5.2.1</version>
+    <time>1566665213</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 5.2.1</comment>
+    <requestid>725662</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ec9aad8533a30d30f62fd5e23f5b8107</srcmd5>
+    <version>5.2.2</version>
+    <time>1619729207</time>
+    <user>dimstar_suse</user>
+    <comment>Update to new upstream release 5.2.2 (forwarded request 889299 from susnux)</comment>
+    <requestid>889325</requestid>
+  </revision>
+</revisionlist>
