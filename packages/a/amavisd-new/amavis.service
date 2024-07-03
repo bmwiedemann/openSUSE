@@ -1,0 +1,51 @@
+# This file is part of package amavisd-new.
+#
+# Copyright (c) 2011 SuSE LINUX Products GmbH, Germany.
+# Author: Werner Fink
+# Please send feedback to http://www.suse.de/feedback
+#
+# Description:
+#
+#  Used to start the amavisd
+#       Amavisd-new is a high-performance interface between mailer (MTA) and
+#       content checkers: virus scanners or SpamAssassin. It talks to the MTA
+#       via (E)SMTP, LMTP, or by using helper programs.
+#
+
+[Unit]
+Description=Amavisd-new Virus Scanner interface
+Wants=nss-lookup.target network.target remote-fs.target time-sync.target
+After=nss-lookup.target network.target remote-fs.target time-sync.target
+Wants=named.service clamd.service network-online.target
+After=named.service clamd.service
+Before=mail-transfer-agent.target
+
+[Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+Type=notify
+NotifyAccess=main
+KillMode=mixed
+TimeoutStartSec=1min
+TimeoutStopSec=3min
+WorkingDirectory=/var/spool/amavis/tmp
+SyslogFacility=mail
+SyslogIdentifier=amavis
+ProtectSystem=full
+ProtectHome=yes
+NoNewPrivileges=yes
+ExecStartPre=-/bin/echo 'Starting virus-scanner (amavisd-new):'
+EnvironmentFile=-/etc/sysconfig/amavis
+ExecStart=/usr/sbin/amavisd -P '' foreground
+ExecReload=/usr/sbin/amavisd -P '' reload
+ExecStop=/usr/sbin/amavisd -P '' stop
+
+[Install]
+WantedBy=multi-user.target

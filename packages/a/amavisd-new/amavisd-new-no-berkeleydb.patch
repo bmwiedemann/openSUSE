@@ -1,0 +1,22 @@
+--- amavis-v2.13.0/conf/amavisd.conf.orig	2023-03-27 12:19:42.201670731 +0200
++++ amavis-v2.13.0/conf/amavisd.conf	2023-03-27 12:20:24.698000142 +0200
+@@ -44,7 +44,7 @@
+ $syslog_facility = 'mail';   # Syslog facility as a string
+            # e.g.: mail, daemon, user, local0, ... local7
+ 
+-$enable_db = 1;              # enable use of BerkeleyDB/libdb (SNMP and nanny)
++# $enable_db = 1;              # enable use of BerkeleyDB/libdb (SNMP and nanny)
+ # $enable_zmq = 1;           # enable use of ZeroMQ (SNMP and nanny)
+ $nanny_details_level = 2;    # nanny verbosity: 1: traditional, 2: detailed
+ $enable_dkim_verification = 1;  # enable DKIM signatures verification
+--- amavis-v2.13.0/conf/amavisd-docker.conf.orig	2023-03-27 12:19:53.465758049 +0200
++++ amavis-v2.13.0/conf/amavisd-docker.conf	2023-03-27 12:20:30.186042684 +0200
+@@ -41,7 +41,7 @@
+ $syslog_facility = 'mail';   # Syslog facility as a string
+            # e.g.: mail, daemon, user, local0, ... local7
+ 
+-$enable_db = 1;              # enable use of BerkeleyDB/libdb (SNMP and nanny)
++# $enable_db = 1;              # enable use of BerkeleyDB/libdb (SNMP and nanny)
+ # $enable_zmq = 1;           # enable use of ZeroMQ (SNMP and nanny)
+ $nanny_details_level = 2;    # nanny verbosity: 1: traditional, 2: detailed
+ $enable_dkim_verification = 1;  # enable DKIM signatures verification

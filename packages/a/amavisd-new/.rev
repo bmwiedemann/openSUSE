@@ -1,0 +1,684 @@
+<revisionlist>
+  <revision rev="1" vrev="13">
+    <srcmd5>07a7b33b6d44ec70f34d0e52a58d3110</srcmd5>
+    <version>2.4.3</version>
+    <time>1168901466</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6f8d49bc9c68dced69d08de01c1ead15</srcmd5>
+    <version>2.4.5</version>
+    <time>1173401011</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b4a72f6c6b64e2569ac79ece3d69d6f0</srcmd5>
+    <version>2.5.1</version>
+    <time>1182416974</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>80799872b24aef8cb81f3fd097679d21</srcmd5>
+    <version>2.6.0</version>
+    <time>1214412688</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ac4d2a2085e226514ab5633f6a01baec</srcmd5>
+    <version>2.6.0</version>
+    <time>1214589861</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3d278c6cbce41f73c7620a48c902222e</srcmd5>
+    <version>2.6.1</version>
+    <time>1215525427</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="20">
+    <srcmd5>9c06d6918e1c0b10cedf5c4a987308ed</srcmd5>
+    <version>2.6.1</version>
+    <time>1218671002</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="31">
+    <srcmd5>8d00e99fd557f5ca17f5c03d89783a40</srcmd5>
+    <version>2.6.1</version>
+    <time>1220270856</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="41">
+    <srcmd5>7a876f376799d7ee893976e9de5eb2a8</srcmd5>
+    <version>2.6.1</version>
+    <time>1225733239</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b82b2b713a5a903f997c75117f458eeb</srcmd5>
+    <version>2.6.2</version>
+    <time>1231422555</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>b1a5338e59abe3dd370997a4a4e76f4e</srcmd5>
+    <version>2.6.2</version>
+    <time>1232557790</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>771eca4a35b7fadaa175ff310ea9cc1d</srcmd5>
+    <version>2.6.4</version>
+    <time>1263308538</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/amavisd-new based on submit request 29308 from user coolo
+</comment>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>19015f6c579fcae32bf7132458515f9c</srcmd5>
+    <version>2.6.4</version>
+    <time>1268922873</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>e77fa07e293a12fe1605fd4692906445</srcmd5>
+    <version>2.6.4</version>
+    <time>1273590714</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/amavisd-new based on submit request 39724 from user varkoly
+</comment>
+    <requestid>39724</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>2650665adf62ef9d343945e2a0864d2d</srcmd5>
+    <version>2.6.4</version>
+    <time>1277720919</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/amavisd-new based on submit request 42000 from user varkoly
+</comment>
+    <requestid>42000</requestid>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>2650665adf62ef9d343945e2a0864d2d</srcmd5>
+    <version>2.6.4</version>
+    <time>1278667336</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>2650665adf62ef9d343945e2a0864d2d</srcmd5>
+    <version>2.6.4</version>
+    <time>1278678563</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="10">
+    <srcmd5>2650665adf62ef9d343945e2a0864d2d</srcmd5>
+    <version>2.6.4</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="11">
+    <srcmd5>54b64cee8fa403753437bcd3cc9cbe6c</srcmd5>
+    <version>2.6.4</version>
+    <time>1298243834</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 62194 from user computersalat
+</comment>
+    <requestid>62194</requestid>
+  </revision>
+  <revision rev="20" vrev="12">
+    <srcmd5>cd7904fd3d5f2b205574552ba9eafa17</srcmd5>
+    <version>2.6.4</version>
+    <time>1298243840</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 62194
+</comment>
+  </revision>
+  <revision rev="21" vrev="13">
+    <srcmd5>3269fe6bf466beac52bb7d0b0b4cf26c</srcmd5>
+    <version>2.6.4</version>
+    <time>1298329207</time>
+    <user>darix</user>
+    <comment>Accepted submit request 62373 from user varkoly
+</comment>
+    <requestid>62373</requestid>
+  </revision>
+  <revision rev="22" vrev="14">
+    <srcmd5>8e5e367a13c90bd4a30d9e3ca2d48d78</srcmd5>
+    <version>2.6.4</version>
+    <time>1298329218</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 62373
+</comment>
+  </revision>
+  <revision rev="23" vrev="12">
+    <srcmd5>dc37f448f33ed226b2c85cf335368971</srcmd5>
+    <version>2.6.6</version>
+    <time>1306240477</time>
+    <user>saschpe</user>
+    <comment>- update to 2.6.6
+ - amavisd-release was not sending a 'mail_file' attribute when a quarantined
+  message was a non-compressed file in a single-level directory quarantine
+- quarantining to SQL was sporadically failing, reporting some unrelated
+  random error (like 'not available' or 'OpenSSL error: header too long');
+- avoid a warning &quot;_WARN: Use of uninitialized value in string eq at ...
+  line 275.&quot; when an SQL-based white/black-listing is used;
+- wrap the sql clause  SET NAMES 'utf8'  so that only a warning at
+  a log level 2 is issued if an SQL server does not understand the
+  command (SQLite, old versions of MySQL) instead of aborting;
+ 
+- when a back-end MTA rejected a message, amavisd would send a non-delivery
+  status notification, but also propagate the reject status back, which is
+  wrong, only one or the other response would be appropriate. A fix also
+  allows choosing either a D_REJECT, D_BOUNCE or D_DISCARD response for
+  such a case, configurable through %final_destiny_by_ccat at a CC_MTA
+  entry, defaulting to D_REJECT;</comment>
+    <requestid>71125</requestid>
+  </revision>
+  <revision rev="24" vrev="13">
+    <srcmd5>a54b15486d476f24a12f132f4dc39df7</srcmd5>
+    <version>2.6.6</version>
+    <time>1306240488</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71125
+</comment>
+  </revision>
+  <revision rev="25" vrev="14">
+    <srcmd5>ebf93dc7da21d9c45801ef0dcad8e233</srcmd5>
+    <version>2.6.6</version>
+    <time>1310552026</time>
+    <user>saschpe</user>
+    <comment>- Enable clamav as integrated scanner
+- Enable Avira Antivir personal</comment>
+    <requestid>76130</requestid>
+  </revision>
+  <revision rev="26" vrev="15">
+    <srcmd5>ef8fe7f4ca88ed7d4ed6fbb9f54fd7b9</srcmd5>
+    <version>2.6.6</version>
+    <time>1310552037</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76130
+</comment>
+  </revision>
+  <revision rev="27" vrev="16">
+    <srcmd5>1487368427851e44e865e3997c348564</srcmd5>
+    <version>2.6.6</version>
+    <time>1314949277</time>
+    <user>saschpe</user>
+    <comment>- bnc#710289 - amavisd-new: fails rpmlint check non-ghost-in-var-run</comment>
+    <requestid>80507</requestid>
+  </revision>
+  <revision rev="28" vrev="17">
+    <srcmd5>24377566be79e0ff70d92cee1bfc76dd</srcmd5>
+    <version>2.6.6</version>
+    <time>1314949287</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80507
+</comment>
+  </revision>
+  <revision rev="29" vrev="16">
+    <srcmd5>428b2a15d172669118e25763ac45646e</srcmd5>
+    <version>2.7.0</version>
+    <time>1316001371</time>
+    <user>saschpe</user>
+    <comment>- update to 2.7.0 With a synergy of four solutions, using amavisd-new
+  in a pre-queue filtering setup became a sensible / better behaved solution:
+  - old helper programs amavis.c and amavis-milter.c are no longer distributed
+    with the package, along with the whole helper-progs subdirectory.
+    As a milter client please use the more modern 'amavisd-milter' package by
+    Petr Rehor, available at http://sourceforge.net/projects/amavisd-milter/
+  - the &quot;smtpd_proxy_options=speed_adjust&quot; Postfix option, available since
+    Postfix 2.7.0 (20091101), improves decoupling between SMTP clients
+    and a content filter in a proxy setup, reducing the number of content
+    filtering processes needed for the same mail load. With this option
+    turned on, a Postfix SMTP server receives the entire message before
+    connecting to a before-queue content filter;
+  
+  - a master_deadline option and its API equivalent, available in SpamAssassin
+    since version 3.3.0, allows for time limiting on lengthy rules checking,
+    while still providing results when a time limit is exceeded; this makes
+    it more suitable for time-sensitive setups like a pre-queue filtering setup;
+  
+  - reworked sub-task time limiting in amavisd, along with its counterpart
+    solution in SpamAssassin, makes it better suited to a real-time nature
+    of pre-queue filtering setups, where one has no control over how long
+    SMTP clients are willing to wait at the data-end stage;
+  
+  - a re-purposed command line option 'reload' now does a warm restart,
+    keeping sockets available to an MTA client at all times, thus reducing
+    a chance that an MTA would even notice a content filter's warm restart.</comment>
+    <requestid>82113</requestid>
+  </revision>
+  <revision rev="30" vrev="17">
+    <srcmd5>e18a14df0aa857e7aa9e350e63e46f3c</srcmd5>
+    <version>2.7.0</version>
+    <time>1316001380</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 82113
+</comment>
+  </revision>
+  <revision rev="31" vrev="18">
+    <srcmd5>5256cc5a694dafd159718e2a352f7482</srcmd5>
+    <version>2.7.0</version>
+    <time>1316680793</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 82724 from jengelh)</comment>
+    <requestid>84280</requestid>
+  </revision>
+  <revision rev="32" vrev="19">
+    <srcmd5>b32be3a5641ddbe2381948e8286b4e82</srcmd5>
+    <version>2.7.0</version>
+    <time>1318346146</time>
+    <user>lrupp</user>
+    <comment>- bnc#718025 - amavisd-new 2.7.0 fails to start</comment>
+    <requestid>87403</requestid>
+  </revision>
+  <revision rev="33" vrev="21">
+    <srcmd5>b32be3a5641ddbe2381948e8286b4e82</srcmd5>
+    <version>2.7.0</version>
+    <time>1319181769</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="34" vrev="22">
+    <srcmd5>c9a31c514964430b7f798efd6e6ddbc0</srcmd5>
+    <version>2.7.0</version>
+    <time>1319716029</time>
+    <user>coolo</user>
+    <comment>hopefully correct Provides/Obsoletes (forwarded request 89352 from wrosenauer)</comment>
+    <requestid>89497</requestid>
+  </revision>
+  <revision rev="35" vrev="23">
+    <srcmd5>aae93031c692ae15ceddb4c01b2ac18e</srcmd5>
+    <version>2.7.0</version>
+    <time>1320230531</time>
+    <user>coolo</user>
+    <comment>- Fix amavisd-milter binary name</comment>
+    <requestid>89920</requestid>
+  </revision>
+  <revision rev="36" vrev="24">
+    <srcmd5>c76731fd9906a13697e497ef05463ee7</srcmd5>
+    <version>2.7.0</version>
+    <time>1320486821</time>
+    <user>coolo</user>
+    <comment>- Add systemd scripts</comment>
+    <requestid>90086</requestid>
+  </revision>
+  <revision rev="37" vrev="25">
+    <srcmd5>fba58ae41667685a7b69b83897609001</srcmd5>
+    <version>2.7.0</version>
+    <time>1323190701</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="38" vrev="26">
+    <srcmd5>fbdfc9ccc518e8c6279be428db2cc74f</srcmd5>
+    <version>2.7.0</version>
+    <time>1325767660</time>
+    <user>coolo</user>
+    <comment>- bnc#706257 - amavis failed to start during boot, however it is active</comment>
+    <requestid>98762</requestid>
+  </revision>
+  <revision rev="39" vrev="27">
+    <srcmd5>72e447377e910becb36e99889199a4ea</srcmd5>
+    <version>2.7.0</version>
+    <time>1336579695</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>116930</requestid>
+  </revision>
+  <revision rev="40" vrev="29">
+    <srcmd5>72e447377e910becb36e99889199a4ea</srcmd5>
+    <version>2.7.0</version>
+    <time>1340183170</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="41" vrev="30">
+    <srcmd5>4b6226b724b4713792ed8dc7dd6de679</srcmd5>
+    <version>2.7.0</version>
+    <time>1340716408</time>
+    <user>coolo</user>
+    <comment>- fix the systemd service file</comment>
+    <requestid>126072</requestid>
+  </revision>
+  <revision rev="42" vrev="31">
+    <srcmd5>cd8ca7bffb96b97a08f4afcd4170ef49</srcmd5>
+    <version>2.7.0</version>
+    <time>1346397194</time>
+    <user>coolo</user>
+    <comment>- unarj was dropped from Factory, remove dependency to it (forwarded request 131741 from dirkmueller)</comment>
+    <requestid>131815</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>980b5cb032ac8fc8ad2970370c687076</srcmd5>
+    <version>2.7.2</version>
+    <time>1356702922</time>
+    <user>namtrac</user>
+    <comment> (forwarded request 146552 from wrosenauer)</comment>
+    <requestid>146553</requestid>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>980b5cb032ac8fc8ad2970370c687076</srcmd5>
+    <version>2.7.2</version>
+    <time>1359108649</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>be58955887d8b7a383bd638422f18017</srcmd5>
+    <version>2.8.0</version>
+    <time>1360303593</time>
+    <user>coolo</user>
+    <comment>factory only obviously</comment>
+    <requestid>151592</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>719f2758690b3bc3048ac79f90ed57ff</srcmd5>
+    <version>2.8.0</version>
+    <time>1361824807</time>
+    <user>coolo</user>
+    <comment>Install service file accordingly (/usr/lib/systemd for 12.3 and up or /lib/systemd for older versions) (forwarded request 156285 from mlin7442)</comment>
+    <requestid>156308</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>5ada84b77f40befb3a02f4969c7146c8</srcmd5>
+    <version>2.8.0</version>
+    <time>1367490776</time>
+    <user>coolo</user>
+    <comment>- use %defattr correctly to make /var/spool/amavis not worldreadable. (forwarded request 174230 from msmeissn)</comment>
+    <requestid>174239</requestid>
+  </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>995b0f334972a6655ba08879986b1a95</srcmd5>
+    <version>2.8.0</version>
+    <time>1370431624</time>
+    <user>coolo</user>
+    <comment>- Fix multiple bugs in systemd unit, syslog.target should 
+  not be used and Wants must be used instead of requires in most
+  cases. (forwarded request 176966 from elvigia)</comment>
+    <requestid>176982</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>63b110781884d6bdeff73cd1406cf971</srcmd5>
+    <version>2.8.1</version>
+    <time>1379316811</time>
+    <user>coolo</user>
+    <comment> (forwarded request 199069 from wrosenauer)</comment>
+    <requestid>199070</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>63b110781884d6bdeff73cd1406cf971</srcmd5>
+    <version>2.8.1</version>
+    <time>1379661962</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="51" vrev="4">
+    <srcmd5>0bb679f5d8bb0df9aaf5900f35a32dfc</srcmd5>
+    <version>2.8.1</version>
+    <time>1380121077</time>
+    <user>coolo</user>
+    <comment>- bnc#831556 - naming mismatch for amavis and systemd</comment>
+    <requestid>200522</requestid>
+  </revision>
+  <revision rev="52" vrev="5">
+    <srcmd5>50c8c0861ad01672e4d0aab952d6b382</srcmd5>
+    <version>2.8.1</version>
+    <time>1380894982</time>
+    <user>scarabeus_factory</user>
+    <comment>- fix clamd socket location (bnc#809580)
+
+Please forward to Factory and 13.1
+
++=================================================================== (forwarded request 202075 from cboltz)</comment>
+    <requestid>202140</requestid>
+  </revision>
+  <revision rev="53" vrev="6">
+    <srcmd5>bc55ee552d89b0c3c74bbb6a6832e853</srcmd5>
+    <version>2.8.1</version>
+    <time>1382526662</time>
+    <user>scarabeus_factory</user>
+    <comment>- bnc#844575 - amavis received a change where /var/run was replaced
+   with /run still /var/run is present</comment>
+    <requestid>204344</requestid>
+  </revision>
+  <revision rev="54" vrev="7">
+    <srcmd5>00ad488733c6300f587adee81b6aab2d</srcmd5>
+    <version>2.8.1</version>
+    <time>1384517532</time>
+    <user>coolo</user>
+    <comment>- Add real systemd support; add required macros in %post/postun sections
+  and drop sysvinit support on openSUSE &gt;= 12.3
+
+- bnc#831556 - naming mismatch for amavis and systemd (forwarded request 206648 from wrosenauer)</comment>
+    <requestid>206649</requestid>
+  </revision>
+  <revision rev="55" vrev="8">
+    <srcmd5>d698dc849770d37595cc59224a82ec6e</srcmd5>
+    <version>2.8.1</version>
+    <time>1389207951</time>
+    <user>coolo</user>
+    <comment> (forwarded request 212628 from wrosenauer)</comment>
+    <requestid>212629</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>367e26409a67172cc4a081460c57868d</srcmd5>
+    <version>2.9.1</version>
+    <time>1406645321</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242824</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>b1545af4ad85e7a65f97901e6b60a5ee</srcmd5>
+    <version>2.9.1</version>
+    <time>1408353838</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244932</requestid>
+  </revision>
+  <revision rev="58" vrev="4">
+    <srcmd5>b1545af4ad85e7a65f97901e6b60a5ee</srcmd5>
+    <version>2.9.1</version>
+    <time>1409300484</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="59" vrev="5">
+    <srcmd5>0f49c627b269209c9cd011951a1f2b0b</srcmd5>
+    <version>2.9.1</version>
+    <time>1415664643</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260442</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>1fd3e1ab2f853f420c946de77d5c2165</srcmd5>
+    <version>2.10.1</version>
+    <time>1418840152</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265520</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>cad9e46160f4801d939dbb32494cb098</srcmd5>
+    <version>2.10.1</version>
+    <time>1439482243</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>322127</requestid>
+  </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>3d09dc7c7ea87f1550c136ba6b054ac1</srcmd5>
+    <version>2.10.1</version>
+    <time>1453508211</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>355311</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>4998928f0e924e9bf04b02ef3ef2d64d</srcmd5>
+    <version>2.11.0</version>
+    <time>1464594997</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398354</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>4183b62fd0955968a97ac5a210eee8a0</srcmd5>
+    <version>2.11.0</version>
+    <time>1487980427</time>
+    <user>dimstar_suse</user>
+    <comment>DKIM signing was not working at all</comment>
+    <requestid>459966</requestid>
+  </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>f7ff9c938fd53c8032647b10c8d74112</srcmd5>
+    <version>2.11.0</version>
+    <time>1511595785</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545101</requestid>
+  </revision>
+  <revision rev="66" vrev="4">
+    <srcmd5>8675d4b470a7bb74c4e4c303dc49f5f5</srcmd5>
+    <version>2.11.0</version>
+    <time>1516634394</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>567978</requestid>
+  </revision>
+  <revision rev="67" vrev="5">
+    <srcmd5>7bbc140f730b8ab81e2bff8405d6b4fa</srcmd5>
+    <version>2.11.0</version>
+    <time>1521405885</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1072122 amavisd-new should use unar instead of unrar
+
+- bsc#1071932 - YaST2 Mail Server Configuration - throws Error for
+  starting service amavis. 
+  amavisd-new should require spamassassine</comment>
+    <requestid>587816</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>140f80fe490e92f7b8777411a631119a</srcmd5>
+    <version>2.11.1</version>
+    <time>1540319833</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>643554</requestid>
+  </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>c28979cb55b07dc8161bcac015600437</srcmd5>
+    <version>2.11.1</version>
+    <time>1554115199</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690199</requestid>
+  </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>923a550efa9fb092c65689fea74e9fac</srcmd5>
+    <version>2.11.1</version>
+    <time>1580724940</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769384</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>3a5aee515b9bc61cb82566e6056b2e7b</srcmd5>
+    <version>2.12.0</version>
+    <time>1604609749</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846217</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>16a3e177be61e9e489dd13cc7209b985</srcmd5>
+    <version>2.12.1</version>
+    <time>1609619468</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859752</requestid>
+  </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>c8d769102485c1add6818bf6102a997d</srcmd5>
+    <version>2.12.1</version>
+    <time>1614948429</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876592</requestid>
+  </revision>
+  <revision rev="74" vrev="3">
+    <srcmd5>360df90d81a45e4d79318e9241814f57</srcmd5>
+    <version>2.12.1</version>
+    <time>1627587114</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908988</requestid>
+  </revision>
+  <revision rev="75" vrev="4">
+    <srcmd5>84885dc3f57b60ca81292e4d174c7c10</srcmd5>
+    <version>2.12.1</version>
+    <time>1641321495</time>
+    <user>dimstar_suse</user>
+    <comment>- amavisd-new should require packets perl-IO-stringy and perl-Net-LibIDN
+  (bsc#1193291) 
+</comment>
+    <requestid>943788</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>8fda5a0e10a1074433166b2f70b084c4</srcmd5>
+    <version>2.12.2</version>
+    <time>1649450746</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967699</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>d17e8e0e97b4c8444d0d196edfd2531b</srcmd5>
+    <version>2.12.2</version>
+    <time>1651669884</time>
+    <user>dimstar_suse</user>
+    <comment>- Starting amavis.service gives Unit var-run.mount not found.
+  var-run.mount is not needed
+  (bsc#1198783)</comment>
+    <requestid>974902</requestid>
+  </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>ad848037a2f376e8970aa62852540bc6</srcmd5>
+    <version>2.12.2</version>
+    <time>1653690492</time>
+    <user>dimstar_suse</user>
+    <comment>- amavis fails to start (bsc#1199755)
+  Add missed requirement 
+
+- Remove server:mail/amavisd-new/amavis.service since it results Assignment outside of section warning</comment>
+    <requestid>979415</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>de16f12a2dcd9433c7b377779b3bfbcc</srcmd5>
+    <version>2.13.0</version>
+    <time>1680636418</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077191</requestid>
+  </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>ea3fa4cb1ee822d9dfe8c736230b6a73</srcmd5>
+    <version>2.13.0</version>
+    <time>1681296712</time>
+    <user>dimstar_suse</user>
+    <comment>- apply replacement for default install directories correctly
+  (boo#1210267)</comment>
+    <requestid>1078520</requestid>
+  </revision>
+  <revision rev="81" vrev="3">
+    <srcmd5>6758e06b58ae106d9fb41a3d423e4120</srcmd5>
+    <version>2.13.0</version>
+    <time>1691845623</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1103584</requestid>
+  </revision>
+</revisionlist>
