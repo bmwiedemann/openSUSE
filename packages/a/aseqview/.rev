@@ -1,0 +1,185 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>8880bb7a943a2f46acac4e195fba5fa0</srcmd5>
+    <version>0.2.3a</version>
+    <time>1168901499</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0b32a3babed348292eb40d11240970c4</srcmd5>
+    <version>0.2.4</version>
+    <time>1174951414</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d59f43367ae02ce3cc04e34a00d48e58</srcmd5>
+    <version>0.2.5</version>
+    <time>1175184995</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4708535c0ce0125711e83beea0826ef5</srcmd5>
+    <version>0.2.6</version>
+    <time>1175626489</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dcab91c0494c5516471a82df4690ee6f</srcmd5>
+    <version>0.2.7</version>
+    <time>1176762579</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>2af3cbc16d2545564847afbf761bf8f7</srcmd5>
+    <version>0.2.7</version>
+    <time>1177541848</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="166">
+    <srcmd5>2af3cbc16d2545564847afbf761bf8f7</srcmd5>
+    <version>0.2.7</version>
+    <time>1177541848</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="167">
+    <srcmd5>7fc41a4925d23945849cb17d5db4d9b0</srcmd5>
+    <version>0.2.7</version>
+    <time>1245258844</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="169">
+    <srcmd5>7fc41a4925d23945849cb17d5db4d9b0</srcmd5>
+    <version>0.2.7</version>
+    <time>1245258844</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="170">
+    <srcmd5>f437ce664efed31f01d9896b70a89a26</srcmd5>
+    <version>0.2.7</version>
+    <time>1267801098</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/aseqview based on submit request 34165 from user coolo
+</comment>
+    <requestid>34165</requestid>
+  </revision>
+  <revision rev="11" vrev="171">
+    <srcmd5>7231030f7a20ca058d055c648efb6a3d</srcmd5>
+    <version>0.2.7</version>
+    <time>1268922931</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="173">
+    <srcmd5>7231030f7a20ca058d055c648efb6a3d</srcmd5>
+    <version>0.2.7</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="174">
+    <srcmd5>7231030f7a20ca058d055c648efb6a3d</srcmd5>
+    <version>0.2.7</version>
+    <time>1278678564</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="177">
+    <srcmd5>7231030f7a20ca058d055c648efb6a3d</srcmd5>
+    <version>0.2.7</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="178">
+    <srcmd5>474e460a166080a3bebc7c22b0dd6dd5</srcmd5>
+    <version>0.2.7</version>
+    <time>1316616712</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build (forwarded request 82840 from jengelh)</comment>
+    <requestid>83969</requestid>
+  </revision>
+  <revision rev="16" vrev="180">
+    <srcmd5>474e460a166080a3bebc7c22b0dd6dd5</srcmd5>
+    <version>0.2.7</version>
+    <time>1319181776</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="181">
+    <srcmd5>4b1152b31d780a2242246c77fa976958</srcmd5>
+    <version>0.2.7</version>
+    <time>1324307346</time>
+    <user>coolo</user>
+    <comment>- fix license to GPL-2.0 only (bnc#735017)
+
+- add automake as buildrequire to avoid implicit dependency</comment>
+    <requestid>96431</requestid>
+  </revision>
+  <revision rev="18" vrev="183">
+    <srcmd5>4b1152b31d780a2242246c77fa976958</srcmd5>
+    <version>0.2.7</version>
+    <time>1340183182</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="185">
+    <srcmd5>4b1152b31d780a2242246c77fa976958</srcmd5>
+    <version>0.2.7</version>
+    <time>1359108668</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="187">
+    <srcmd5>4b1152b31d780a2242246c77fa976958</srcmd5>
+    <version>0.2.7</version>
+    <time>1379661991</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="189">
+    <srcmd5>4b1152b31d780a2242246c77fa976958</srcmd5>
+    <version>0.2.7</version>
+    <time>1409300517</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>09a625e0e21bf86b605fc9b71ffc895a</srcmd5>
+    <version>0.2.8</version>
+    <time>1453416306</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>355226</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>885cc557b98407652b7699bbd909be43</srcmd5>
+    <version>0.2.8</version>
+    <time>1573044779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739694</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>efe573a5b8fb40e5b95ca57bd0db0cfa</srcmd5>
+    <version>0.2.8</version>
+    <time>1619107477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887556</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>4764bafa5d0886d0144b184cae74cb50</srcmd5>
+    <version>0.2.8</version>
+    <time>1623618370</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>899785</requestid>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>7202eb9c83244b5a8bf3c19c714fb316</srcmd5>
+    <version>0.2.8</version>
+    <time>1708534542</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147810</requestid>
+  </revision>
+</revisionlist>

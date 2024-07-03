@@ -1,0 +1,179 @@
+-------------------------------------------------------------------
+Tue Feb 20 10:50:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Sun Jun 13 10:39:56 CEST 2021 - tiwai@suse.de
+
+- Fix segfault at piano widget creation with the recent gtk2
+  (boo#1187239):
+  aseqview-piano-segfault-fix.patch
+
+-------------------------------------------------------------------
+Thu Apr 22 08:42:22 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fixed and modernized SPEC file
+  * Replace broken URL with latest upstream
+
+-------------------------------------------------------------------
+Thu Oct 17 13:39:27 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
+Tue Jan 19 17:38:06 CET 2016 - tiwai@suse.de
+
+- update to version 0.2.8;
+  * Added ports to control tuning events
+  * Ports are disabled per default, explicitly capable via -T option
+  * Fix mix-up of g_free and free
+  * Fix visualization of tuning information after reset.
+    Default to C-tuning (dumper off) and Am-tuning (dumper on).
+  * Fix playback of multiple songs keeping connection of tuning
+    ports
+
+-------------------------------------------------------------------
+Tue Dec 13 12:03:25 CET 2011 - tiwai@suse.de
+
+- fix license to GPL-2.0 only (bnc#735017)
+
+-------------------------------------------------------------------
+Fri Dec  2 07:30:06 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Sep 17 12:23:40 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Fri Mar  5 08:59:29 UTC 2010 - puzel@novell.com
+
+- add aseqview-quote-macros.patch - fix build
+- minor spec cleanup
+
+-------------------------------------------------------------------
+Wed Apr 25 14:55:35 CEST 2007 - tiwai@suse.de
+
+- fix desktop file to use GenericName
+
+-------------------------------------------------------------------
+Mon Apr 16 17:52:12 CEST 2007 - tiwai@suse.de
+
+- updated to version 0.2.7:
+  * Add GM2 display
+  * Allow multiple -d and -s options (also comma separated
+    addresses)
+  * Fix mute status control with multiple ports
+
+-------------------------------------------------------------------
+Tue Apr  3 15:12:35 CEST 2007 - tiwai@suse.de
+
+- updated to version 0.2.6:
+  * Fix segfault with thread mode (silly typo)
+  * Add mute-control feature by TAMUKI Shoichi
+
+-------------------------------------------------------------------
+Thu Mar 29 16:49:16 CEST 2007 - tiwai@suse.de
+
+- fix races in thread mode
+
+-------------------------------------------------------------------
+Mon Mar 26 16:31:19 CEST 2007 - tiwai@suse.de
+
+- updated to version 0.2.4:
+  * Added MIDI Tunig Standard (MTS) feature
+
+-------------------------------------------------------------------
+Thu Feb 23 16:40:39 CET 2006 - tiwai@suse.de
+
+- added GTK to Categories
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:24 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Oct 11 12:08:42 CEST 2005 - tiwai@suse.de
+
+- updated to version 0.2.3a.
+
+-------------------------------------------------------------------
+Fri Oct 29 08:58:31 CEST 2004 - ro@suse.de
+
+- remove gtk from neededforbuild
+
+-------------------------------------------------------------------
+Thu Feb 26 18:43:34 CET 2004 - tiwai@suse.de
+
+- updated to version 0.2.2.
+  built with gtk2.
+
+-------------------------------------------------------------------
+Sat Jan 10 20:11:37 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Thu Nov 20 18:02:28 CET 2003 - tiwai@suse.de
+
+- updated to version 0.2.1.
+
+-------------------------------------------------------------------
+Mon Sep 15 16:18:16 CEST 2003 - tiwai@suse.de
+
+- fixed categories.
+- added desktop icon.
+
+-------------------------------------------------------------------
+Thu Aug 21 16:11:57 CEST 2003 - tiwai@suse.de
+
+- updated to version 0.2.0.
+- fixed desktop file categories.
+
+-------------------------------------------------------------------
+Tue Aug  5 19:00:12 CEST 2003 - tiwai@suse.de
+
+- added desktop file.
+- call suse_update_desktop_file macro.
+
+-------------------------------------------------------------------
+Mon Nov 25 14:58:35 CET 2002 - tiwai@suse.de
+
+- fixed neededforbuild: xf86 -> x-devel-packages.
+- clean up spec file.
+
+-------------------------------------------------------------------
+Fri Jul 13 12:54:56 CEST 2001 - tiwai@suse.de
+
+- updated to ver.0.1.4.
+- use _prefix and co.
+- fixed file lists.
+
+-------------------------------------------------------------------
+Fri Nov 17 16:55:39 CET 2000 - tiwai@suse.de
+
+- Use RPM_OPT_FLAGS to configure.
+
+-------------------------------------------------------------------
+Thu Nov  2 17:14:17 CET 2000 - tiwai@suse.de
+
+- Fixed 0.1.2f archive.
+
+-------------------------------------------------------------------
+Thu Nov  2 13:37:54 CET 2000 - tiwai@suse.de
+
+- Updated to version 0.1.2f.
+- Fixed spec file for long package-name support.
+- Use bzip2 for archive.
+
+-------------------------------------------------------------------
+Fri Jun  9 14:49:16 CEST 2000 - tiwai@suse.de
+
+- new package - ALSA sequencer event viewer
+  version: 0.1.2e
+

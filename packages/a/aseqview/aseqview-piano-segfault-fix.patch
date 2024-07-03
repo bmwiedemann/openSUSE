@@ -1,0 +1,31 @@
+---
+ piano.c |    4 ++--
+ piano.h |    2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+--- a/piano.c
++++ b/piano.c
+@@ -69,10 +69,10 @@ static GdkColor c60clr = { red : 18000,
+ 
+ static GtkWidgetClass *parent_class = NULL;
+ 
+-guint
++GType
+ piano_get_type (void)
+ {
+-  static guint piano_type = 0;
++  static GType piano_type = 0;
+ 
+   if (!piano_type)
+     {
+--- a/piano.h
++++ b/piano.h
+@@ -71,7 +71,7 @@ struct _PianoClass
+ };
+ 
+ GtkWidget *piano_new (gboolean * selkeys);
+-guint piano_get_type (void);
++GType piano_get_type (void);
+ void piano_note_on (Piano * piano, guint8 keynum);
+ void piano_note_off (Piano * piano, guint8 keynum);
+ 
