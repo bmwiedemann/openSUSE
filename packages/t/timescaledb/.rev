@@ -249,4 +249,13 @@
   https://github.com/timescale/timescaledb/releases/tag/2.15.2</comment>
     <requestid>1179333</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f6eb52ad45c3753e4359d5fb38bb74c5</srcmd5>
+    <version>2.15.3</version>
+    <time>1720031433</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.15.3
+  https://github.com/timescale/timescaledb/releases/tag/2.15.3</comment>
+    <requestid>1184904</requestid>
+  </revision>
 </revisionlist>
