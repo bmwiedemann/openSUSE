@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d50d6900e8280f753efe24343bd04985</srcmd5>
+    <version>0.15</version>
+    <time>1478952028</time>
+    <user>dimstar_suse</user>
+    <comment>Fixing licence name and suspicious '--libexec' from configure command.</comment>
+    <requestid>434200</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2e75b286ad23f35dbc29897f2a314c6f</srcmd5>
+    <version>0.15</version>
+    <time>1487681412</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>458850</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a3e2591329ae4c19d091ebc9183c1a8e</srcmd5>
+    <version>0.16</version>
+    <time>1500275425</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>510023</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0f674986fe5ef29846d9ceda179cd191</srcmd5>
+    <version>0.18</version>
+    <time>1567010208</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726610</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>aa3d3be7d39afa8b58f3599fa1ce0e8b</srcmd5>
+    <version>0.18</version>
+    <time>1573044883</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739949</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>9ba6ba1dad7b82f4912ee46876e63359</srcmd5>
+    <version>0.18</version>
+    <time>1606913953</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>852567</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>2c57ec6b27047f00cd011e420d78d1af</srcmd5>
+    <version>0.18</version>
+    <time>1607017384</time>
+    <user>dimstar_suse</user>
+    <comment>- Add llvm11-fix.patch in order to fix build with LLVM11.</comment>
+    <requestid>852858</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>00f149b353d239f1248ec0ac6b760582</srcmd5>
+    <version>0.18</version>
+    <time>1653313919</time>
+    <user>dimstar_suse</user>
+    <comment>- Depend on LLVM13, cannot be built with LLVM14.</comment>
+    <requestid>978635</requestid>
+  </revision>
+</revisionlist>
