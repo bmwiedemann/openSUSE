@@ -128,4 +128,18 @@ https://build.opensuse.org/request/show/606019</comment>
 </comment>
     <requestid>1086698</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>645ca113d188537c4fcc7946c07f7f6d</srcmd5>
+    <version>2.1.1</version>
+    <time>1720031387</time>
+    <user>anag+factory</user>
+    <comment>- switch to PEP517 build
+- skip one failing test
+
+  * Use stdlib mock, not external mock.
+- refresh migrate-to-pytest.patch: remove pytest-relaxed
+  * Migrate to pytest, lightly rebased from upstream.
+- Restore semanticversioning.patch to allow semantic_version &gt;= 2.7</comment>
+    <requestid>1184944</requestid>
+  </revision>
 </revisionlist>

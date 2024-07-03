@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-releases
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,9 @@ Source:         https://files.pythonhosted.org/packages/source/r/releases/releas
 Patch0:         semanticversioning.patch
 # PATCH-FIX-OPENSUSE remove-icecream.patch to remove icecream dependency
 Patch1:         remove-icecream.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx >= 4
@@ -72,17 +74,18 @@ Specifically:
 %autosetup -p1 -n releases-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
 %if %{with test}
 %check
-%pytest tests
+# https://github.com/bitprophet/releases/issues/103
+%pytest tests -k "not unused_kwargs_become_releases_config_options"
 %endif
 
 %if !%{with test}
@@ -90,7 +93,7 @@ Specifically:
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/releases
-%{python_sitelib}/releases-%{version}*-info
+%{python_sitelib}/releases-%{version}.dist-info
 %endif
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  2 20:37:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- switch to PEP517 build
+- skip one failing test
+
+-------------------------------------------------------------------
 Fri May 12 08:15:25 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Delete migrate-to-pytest.patch
@@ -54,24 +60,24 @@ Thu Apr 13 22:44:27 UTC 2023 - Matej Cepl <mcepl@suse.com>
 Tue Apr 12 02:32:28 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-mock.patch:
-  * Use stdlib mock, not external mock. 
+  * Use stdlib mock, not external mock.
 - Drop mock BuildRequires.
 
 -------------------------------------------------------------------
 Tue Dec 14 00:08:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
-- refresh migrate-to-pytest.patch: remove pytest-relaxed 
+- refresh migrate-to-pytest.patch: remove pytest-relaxed
 
 -------------------------------------------------------------------
 Mon Sep 13 06:17:58 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch migrate-to-pytest.patch:
-  * Migrate to pytest, lightly rebased from upstream. 
+  * Migrate to pytest, lightly rebased from upstream.
 
 -------------------------------------------------------------------
 Mon May 25 21:27:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
-- Restore semanticversioning.patch to allow semantic_version >= 2.7 
+- Restore semanticversioning.patch to allow semantic_version >= 2.7
   gh#bitprophet/releases#84
   gh#bitprophet/releases#86
 - remove color printout in tests
