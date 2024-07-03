@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 03 15:40:27 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.28.1:
+  * fix: smart build stuck on untracked files (#4361) (#4363)
+
+-------------------------------------------------------------------
 Fri Jun 07 19:29:12 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.28.0:
