@@ -1,0 +1,5 @@
+<package name="amazon-ecs-init" project="openSUSE:Factory">
+  <title>Amazon Container Service Initialization</title>
+  <description>The Amazon Container Service initialization will start the ECS agent. The ECS agent runs in a container and is needed to support integration between the aws-cli ecs command line tool and an instance running in AWS EC2.</description>
+  <devel project="Cloud:Tools" package="amazon-ecs-init"/>
+</package>

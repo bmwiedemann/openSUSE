@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>316c9724bf4942979dbdbc58ea13d285</srcmd5>
+    <version>1.17.3</version>
+    <time>1527583212</time>
+    <user>dimstar_suse</user>
+    <comment>- Missing from Factory for unknown reasons, included in SLE 12 and SLE 15</comment>
+    <requestid>611413</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a23f1a6eb6867568aaa90f83be8d8745</srcmd5>
+    <version>1.18.0</version>
+    <time>1533214626</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>625037</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>02c80007a27d63f34606dc029b24c0ee</srcmd5>
+    <version>1.18.0</version>
+    <time>1538672535</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639878</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>39bee13ef4cce2481ca0c9a8a804d1e2</srcmd5>
+    <version>1.18.0</version>
+    <time>1559375313</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>705920</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>7bf0b1aa90dd1de623521eabb3c7b42b</srcmd5>
+    <version>1.18.0</version>
+    <time>1581087373</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770799</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>da7ebbf3e8eccea7172b1821fe48308f</srcmd5>
+    <version>1.50.1</version>
+    <time>1614373148</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>874723</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a451b3e1b047a04333c798fe1d074c28</srcmd5>
+    <version>1.50.1</version>
+    <time>1615061926</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>877256</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>1b0e263b2051d66c147f219532154f20</srcmd5>
+    <version>1.50.1</version>
+    <time>1616598807</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>880577</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>430fca7807743994f8bfdfd145f20ae3</srcmd5>
+    <version>1.52.1</version>
+    <time>1622664741</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>896910</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>31f696ca89c7c4722c77d39d3795c4db</srcmd5>
+    <version>1.53.0</version>
+    <time>1624462719</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.53.0-1
+  * Cache Agent version 1.53.0
+- from version 1.52.2-2
+  * Cache Agent version 1.52.2
+  * ecs-anywhere-install: fix incorrect download url when running in cn region
+- from version 1.52.2-1
+  * Cache Agent version 1.52.2
+  * ecs-anywhere-install: remove dependency on gpg key server
+  * ecs-anywhere-install: allow sandboxed apt installations (forwarded request 901560 from glaubitz)</comment>
+    <requestid>901562</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>4e4fe96434d9d5e8205dbd495fd05a6a</srcmd5>
+    <version>1.53.0</version>
+    <time>1708534560</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147929</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>87c2a6cfcf3146e2d59ee51416f917a4</srcmd5>
+    <version>1.53.0</version>
+    <time>1712520649</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1165707</requestid>
+  </revision>
+</revisionlist>
