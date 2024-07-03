@@ -3963,4 +3963,41 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1176488</requestid>
   </revision>
+  <revision rev="274" vrev="1">
+    <srcmd5>59f83259366676a8e213b16fe2a5f323</srcmd5>
+    <version>9.0.1</version>
+    <time>1720031197</time>
+    <user>anag+factory</user>
+    <comment> - Update to latest stable release (9.0.1).
+   Full list of backports here:
+    https://lore.kernel.org/qemu-devel/1718081053.366429.1238758.nullmailer@tls.msk.ru/
+    
+   A selection of them is reported here too:
+    Update version for 9.0.1 release
+    target/loongarch: fix a wrong print in cpu dump
+    ui/sdl2: Allow host to power down screen
+    virtio-gpu: fix v2 migration
+    target/i386: fix SSE and SSE2 feature check
+    target/i386: fix xsave.flat from kvm-unit-tests
+    disas/riscv: Decode all of the pmpcfg and pmpaddr CSRs
+    riscv, gdbstub.c: fix reg_width in ricsv_gen_dynamic_vector_feature()
+    target/riscv/kvm.c: Fix the hart bit setting of AIA
+    target/riscv: rvzicbo: Fixup CBO extension register calculation
+    target/riscv: do not set mtval2 for non guest-page faults
+    target/riscv: prioritize pmp errors in raise_mmu_exception()
+    target/riscv: rvv: Remove redudant SEW checking for vector fp narrow/widen instructions
+    target/riscv: rvv: Check single width operator for vfncvt.rod.f.f.w
+    target/riscv: rvv: Check single width operator for vector fp widen instructions
+    target/riscv: rvv: Fix Zvfhmin checking for vfwcvt.f.f.v and vfncvt.f.f.w instructions
+    target/riscv/cpu.c: fix Zvkb extension config
+    target/riscv: Fix the element agnostic function problem
+    target/riscv/kvm: tolerate KVM disable ext errors
+    target/riscv/kvm: Fix exposure of Zkr
+    hw/intc/riscv_aplic: APLICs should add child earlier than realize
+    iotests: test NBD+TLS+iothread
+    qio: Inherit follow_coroutine_ctx across TLS
+    ...
+</comment>
+    <requestid>1184275</requestid>
+  </revision>
 </revisionlist>
