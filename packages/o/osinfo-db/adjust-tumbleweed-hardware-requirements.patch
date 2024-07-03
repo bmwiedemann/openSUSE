@@ -1,0 +1,23 @@
+--- osinfo-db-20240510/os/opensuse.org/opensuse-tumbleweed.xml.orig	2024-07-01 13:06:42.336848537 -0600
++++ osinfo-db-20240510/os/opensuse.org/opensuse-tumbleweed.xml	2024-07-01 13:06:58.400848920 -0600
+@@ -134,14 +134,15 @@
+       <!-- http://en.opensuse.org/Hardware_requirements -->
+       <minimum>
+         <cpu>1600000000</cpu>
+-        <n-cpus>1</n-cpus>
+-        <ram>1073741824</ram>
+-        <storage>4294967296</storage>
++        <n-cpus>2</n-cpus>
++        <ram>2147483648</ram>
++        <storage>42949672960</storage>
+       </minimum>
+       <recommended>
+         <cpu>2400000000</cpu>
+-        <ram>2147483648</ram>
+-        <storage>21474836480</storage>
++        <n-cpus>4</n-cpus>
++        <ram>4294967296</ram>
++        <storage>64424509440</storage>
+       </recommended>
+     </resources>
+     <installer>

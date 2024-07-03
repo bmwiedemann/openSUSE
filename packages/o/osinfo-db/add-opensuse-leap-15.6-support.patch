@@ -1,8 +1,8 @@
-Index: osinfo-db-20220727/os/opensuse.org/opensuse-15.6.xml
+Index: osinfo-db-20240510/os/opensuse.org/opensuse-15.6.xml
 ===================================================================
 --- /dev/null
-+++ osinfo-db-20220727/os/opensuse.org/opensuse-15.6.xml
-@@ -0,0 +1,246 @@
++++ osinfo-db-20240510/os/opensuse.org/opensuse-15.6.xml
+@@ -0,0 +1,247 @@
 +<?xml version="1.0"?>
 +<libosinfo version="0.0.1">
 +  <!-- Licensed under the GNU General Public License version 2 or later.
@@ -239,12 +239,13 @@ Index: osinfo-db-20220727/os/opensuse.org/opensuse-15.6.xml
 +        <cpu>1600000000</cpu>
 +        <n-cpus>1</n-cpus>
 +        <ram>1073741824</ram>
-+        <storage>3221225472</storage>
++        <storage>10737418240</storage>
 +      </minimum>
 +      <recommended>
 +        <cpu>2400000000</cpu>
-+        <ram>2147483648</ram>
-+        <storage>17179869184</storage>
++        <n-cpus>4</n-cpus>
++        <ram>4294967296</ram>
++        <storage>42949672960</storage>
 +      </recommended>
 +    </resources>
 +  </os>

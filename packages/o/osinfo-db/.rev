@@ -584,4 +584,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1176531</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>245df28c5d8e5235416988ae1cc7d04a</srcmd5>
+    <version>20240701</version>
+    <time>1720031374</time>
+    <user>anag+factory</user>
+    <comment>Remove database entry for SUSE Linux Micro 6.0 and add back database entry for SUSE Linux Enterprise Micro 6.0 - bsc#1227116. Update the database version and a few recommended hardware requirements.</comment>
+    <requestid>1184947</requestid>
+  </revision>
 </revisionlist>

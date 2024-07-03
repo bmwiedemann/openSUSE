@@ -1,6 +1,8 @@
+Index: osinfo-db-20240510/os/suse.com/sle-15.6.xml
+===================================================================
 --- /dev/null
-+++ b/os/suse.com/sle-15.6.xml
-@@ -0,0 +1,104 @@
++++ osinfo-db-20240510/os/suse.com/sle-15.6.xml
+@@ -0,0 +1,105 @@
 +<?xml version="1.0"?>
 +<libosinfo version="0.0.1">
 +  <!-- Licensed under the GNU General Public License version 2 or later.
@@ -94,13 +96,14 @@
 +    <resources arch="all">
 +      <minimum>
 +        <cpu>500000000</cpu>
-+        <ram>536870912</ram>
-+        <storage>1074151424</storage>
++        <ram>1073741824</ram>
++        <storage>2147483648</storage>
 +      </minimum>
 +      <recommended>
 +        <cpu>2400000000</cpu>
-+        <ram>1073741824</ram>
-+        <storage>17179869184</storage>
++        <n-cpus>2</n-cpus>
++        <ram>4294967296</ram>
++        <storage>34359738368</storage>
 +      </recommended>
 +    </resources>
 +  </os>

@@ -1,17 +1,17 @@
 --- /dev/null	2023-08-07 05:04:54.296175996 -0600
-+++ osinfo-db-20230719/os/suse.com/slm-6.0.xml	2023-08-07 10:58:08.228681018 -0600
++++ osinfo-db-20230719/os/suse.com/slem-6.0.xml	2023-08-07 10:58:08.228681018 -0600
 @@ -0,0 +1,75 @@
 +<?xml version="1.0"?>
 +<libosinfo version="0.0.1">
 +  <!-- Licensed under the GNU General Public License version 2 or later.
 +     See http://www.gnu.org/licenses/ for a copy of the license text -->
-+  <os id="http://suse.com/slm/6.0">
-+    <short-id>slm6.0</short-id>
-+    <name>SUSE Linux Micro 6.0</name>
-+    <name xml:lang="ka">SUSE Linux Micro 6.0</name>
++  <os id="http://suse.com/slem/6.0">
++    <short-id>slem6.0</short-id>
++    <name>SUSE Linux Enterprise Micro 6.0</name>
++    <name xml:lang="ka">SUSE Linux Enterprise Micro 6.0</name>
 +    <name xml:lang="ko">&#xC218;&#xC138; &#xB9AC;&#xB205;&#xC2A4; &#xAE30;&#xC5C5;&#xC6A9; &#xB9C8;&#xC774;&#xD06C;&#xB85C; 6.0</name>
-+    <name xml:lang="pl">SUSE Linux Micro 6.0</name>
-+    <name xml:lang="it">SUSE Linux Micro 6.0</name>
++    <name xml:lang="pl">SUSE Linux Enterprise Micro 6.0</name>
++    <name xml:lang="it">SUSE Linux Enterprise Micro 6.0</name>
 +    <version>6.0</version>
 +    <vendor>SUSE</vendor>
 +    <vendor xml:lang="ka">SUSE</vendor>
@@ -27,13 +27,13 @@
 +    <vendor xml:lang="de">SUSE</vendor>
 +    <vendor xml:lang="ca">SUSE</vendor>
 +    <family>linux</family>
-+    <distro>slm</distro>
++    <distro>slem</distro>
 +    <derives-from id="http://suse.com/slem/5.5"/>
 +    <release-status>prerelease</release-status>
 +    <media arch="x86_64">
 +      <iso>
 +        <system-id>LINUX</system-id>
-+        <volume-id>SL-Micro-6.0-Packages-x86_64.*</volume-id>
++        <volume-id>SLE-Micro-6.0-DVD-x86_64.*</volume-id>
 +      </iso>
 +      <kernel>boot/x86_64/loader/linux</kernel>
 +      <initrd>boot/x86_64/loader/initrd</initrd>
@@ -41,7 +41,7 @@
 +    <media arch="aarch64">
 +      <iso>
 +        <system-id>LINUX</system-id>
-+        <volume-id>SL-Micro-6.0-Packages-aarch64.*</volume-id>
++        <volume-id>SLE-Micro-6.0-DVD-aarch64.*</volume-id>
 +      </iso>
 +      <kernel>boot/aarch64/linux</kernel>
 +      <initrd>boot/aarch64/initrd</initrd>
@@ -49,7 +49,7 @@
 +    <media arch="ppc64le">
 +      <iso>
 +        <system-id>LINUX</system-id>
-+        <volume-id>SL-Micro-6.0-Packages-ppc64le.*</volume-id>
++        <volume-id>SLE-Micro-6.0-DVD-ppc64le.*</volume-id>
 +      </iso>
 +      <kernel>boot/ppc64le/linux</kernel>
 +      <initrd>boot/ppc64le/initrd</initrd>
@@ -57,7 +57,7 @@
 +    <media arch="s390x">
 +      <iso>
 +        <system-id>LINUX</system-id>
-+        <volume-id>SL-Micro-6.0-Packages-s390x.*</volume-id>
++        <volume-id>SLE-Micro-6.0-DVD-s390x.*</volume-id>
 +      </iso>
 +      <kernel>boot/s390x/linux</kernel>
 +      <initrd>boot/s390x/initrd</initrd>
