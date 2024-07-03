@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 30 14:19:27 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- Add patch to fix bsc#1227052 / CVE-2024-6104:
+  * 0001-Backport-fix-for-CVE-2024-6104.patch
+- Add missing BuildRequires man
+
+-------------------------------------------------------------------
 Wed Jun 05 05:24:29 UTC 2024 - danish.prakash@suse.com
 
 - Update to version 5.1.1:

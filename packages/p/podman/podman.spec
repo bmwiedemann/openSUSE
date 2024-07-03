@@ -30,6 +30,8 @@ Group:          System/Management
 URL:            https://%{project}
 Source0:        %{name}-%{version}.tar.gz
 Source1:        podman.conf
+Patch0:         0001-Backport-fix-for-CVE-2024-6104.patch
+BuildRequires:  man
 BuildRequires:  bash-completion
 BuildRequires:  device-mapper-devel
 BuildRequires:  fdupes
