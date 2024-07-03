@@ -1,0 +1,1014 @@
+-------------------------------------------------------------------
+Tue Jun 25 15:15:42 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.23
+  * cbor support by @TingDaoK in (#1131)
+- from version 0.9.22
+  * clang-format 18 by @graebm in (#1113)
+  * Use CBMC version 5.95.1 by @tautschnig in (#1124)
+  * latest_submodules.py uses AWS-LC-FIPS releases in
+    aws-crt-java by @graebm in (#1125)
+  * Use CBMC 6.0.0 by @graebm in (#1128)
+  * Fix default thread options for windows to not pin to
+    any cpu_id by @waahm7 in (#1126)
+
+-------------------------------------------------------------------
+Tue Jun 11 07:27:41 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.21
+  * Fix memtracer bad assumptions on the size of stack trace
+    by @DmitriyMusatkin in (#1122)
+  * Disable optimization was not working by @TingDaoK in (#1123)
+
+-------------------------------------------------------------------
+Wed Jun  5 09:45:21 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.20
+  * Task scheduler: log at TRACE, instead of DEBUG by @graebm in (#1115)
+  * Update CJson to v1.7.18 by @waahm7 in (#1116)
+  * Avoid overflowing pointers passed to memcpy by @qinheping in (#874)
+  * Fix test skipping by @graebm in (#1118)
+  * Fix CMake Windows ARM typo by @graebm in (#1119)
+  * Fix weird decimal formatting in tests by @graebm in (#1121)
+
+-------------------------------------------------------------------
+Mon May 13 08:31:15 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.19
+  * Fix aws_host_utils_is_ipv6 function by @waahm7 in (#1114)
+- from version 0.9.18
+  * memtrace: Fix underflow when stack_depth < FRAMES_TO_SKIP
+    by @zhaofengli in (#873)
+  * chore: Make CBMC stubs with zero parameters proper
+    declarations by @tautschnig in (#1107)
+  * Satisfy some signed vs unsigned comparison
+    warnings by @KaibaLopez in (#809)
+  * Remove promise class by @waahm7 in (#1110)
+  * Fix host parsing for IPv6 URI by @waahm7 in (#1112)
+
+-------------------------------------------------------------------
+Wed May  8 12:23:34 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.17
+  * Fix invalid cpu_id for RHEL_5 by @waahm7 in (#1106)
+- from version 0.9.16
+  * Switch test harness to print errors in decimal by @DmitriyMusatkin in (#1100)
+  * Add list membership API and uint64 hash utilities by @bretambrose in (#1103)
+  * Clarity updates for uint64_t hash helper by @bretambrose in (#1104)
+  * Move is ipv4/ipv6 functions from Aws-c-sdkutils to Aws-c-common by @waahm7 in (#1105)
+
+-------------------------------------------------------------------
+Thu Apr  4 15:35:28 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.15
+  * Claim range for aws-crt-kotlin by @aajtodd in (#1095)
+  * Remove unused external headers by @TingDaoK in (#1097)
+  * Best Effort Thread Pinning to CPU_ID by @waahm7 in (#1096)
+  * Add support for WIN ARM64 by @alfred2g in (#1092)
+  * Better vectorization and crc64. Cleaned up cmake and
+    added better runtime cpu detection by @JonathanHenson in (#1083)
+  * Avoid overallocating for strings by @DmitriyMusatkin in (#1099)
+
+-------------------------------------------------------------------
+Mon Mar 18 08:27:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.14:
+  * Accept all RFC3339-compliant timestamps
+
+-------------------------------------------------------------------
+Mon Feb 19 14:54:52 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.13
+  * cJSON update to 1.7.17 by @graebm in (#1081)
+  * Add more generic AVX feature detection as well as flags for if
+    avx512 intrinsics are available. by @JonathanHenson in (#1041)
+  * chore: Relax stale issue timings by @kellertk in (#1085)
+  * Use _Exit() on test failure, to avoid LeakSanitizer spam by @graebm in (#1088)
+  * Fix a bunch of places we forget to aws_raise_error() by @graebm in (#1089)
+  * Consistently use lowercase for Windows libraries
+    and header files by @giordano in (#1058)
+
+-------------------------------------------------------------------
+Wed Jan  3 13:09:21 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.12
+  * Change `port` from uint16_t to uint32_t to support VSOCK by @graebm in (#1079)
+- from version 0.9.11
+  * Add a query string helper from byte cursor directly by @TingDaoK in (#1080)
+
+-------------------------------------------------------------------
+Tue Nov 21 09:04:41 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.10
+  * Fixed directory creation to ignore umask, and allow cross process
+    lock to fall back to read only if it can't open the file in rw mode
+    by @JonathanHenson in (#1078)
+- from version 0.9.9
+  * Fix WSL Crash by @waahm7 in (#1076)
+- from version 0.9.8
+  * Adds high resolution clock timestamps to android logging in
+    order to investigate scheduling/clock misbehavior
+    by @bretambrose in (#1075)
+- from version 0.9.7
+  * Cross process lock fix for musl by @JonathanHenson in (#1073)
+- from version 0.9.6
+  * Add additional priority queue related APIs by @bretambrose in (#1067)
+  * Switch default allocator to basic system one by @DmitriyMusatkin in (#1066)
+- from version 0.9.5
+  * Report actual bytes leaked/Fix realloc tracing by @DmitriyMusatkin in (#1053)
+  * Support reading "special files" that lie about their size by @graebm in (#1064)
+  * Add an environment loader API and implementation for some DMI related fields
+    by @JonathanHenson in (#1063)
+  * Update third party licenses file by @yasminetalby in (#1062)
+  * Basic process mem usage functions by @DmitriyMusatkin in (#1065)
+  * Fix loading of libnuma.so by @waahm7 in (#1068)
+  * Comment fix by @alfred2g in (#1069)
+
+-------------------------------------------------------------------
+Wed Oct  4 13:35:40 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.4
+  * Authorize requests to GitHub API in Run CBMC proofs workflow by @adpaco-aws in (#1057)
+  * Reflexive vs symmetric in hash_table.h doc by @jmklix in (#1056)
+  * Add error codes for file read/write/open failures by @graebm in (#1061)
+
+-------------------------------------------------------------------
+Wed Sep  6 06:46:42 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.3
+  * Fix CMake option for choosing MSVC runtime library by @graebm in (#1054)
+- from version 0.9.2
+  * Added workflow for handling answerable discussions by @yasminetalby in (#1051)
+  * Change SKIP code value to reduce the chance of clashing by @sfod in (#1055)
+
+-------------------------------------------------------------------
+Wed Aug 30 07:51:35 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.1
+  * Pickup latest release from cJSON by @TingDaoK in (#1047)
+  * Fix stale issue bot permissions by @jmklix in (#1049)
+  * Intel Vtune tracing integration by @waahm7 in (#1050)
+
+-------------------------------------------------------------------
+Tue Jul 25 08:26:19 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.0
+  * Use W4 for all MSVC by @TingDaoK in (#1035)
+  * New API to wrap an initialized array with an array list by @bretambrose in (#1040)
+  * AVX512 feature detection by @pbadari in (#1037)
+  * Simplify error handling in XML API - BREAKING CHANGE by @graebm in (#1043)
+
+-------------------------------------------------------------------
+Mon Jun  5 10:47:19 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.23
+  * Disable MSVC warning triggered by aws_future macros by @graebm in (#1033)
+  * Update AwsTestHarness.cmake typo by @eherozhao in (#1034)
+
+-------------------------------------------------------------------
+Wed May 31 13:12:01 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.22
+  * Let cursor equals assert print string on failure by @DmitriyMusatkin in (#1030)
+  * Remove dangling symlink in CMBC proofs by @jamesbornholt in (#1031)
+- from version 0.8.21
+  * Update time to ancient by @jmklix in (#1029)
+  * Merge header checker with cpp header checker by @waahm7 in (#1028)
+
+-------------------------------------------------------------------
+Tue May 16 08:33:00 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.20
+  * Pin CBMC version to 5.81.0 by @karkhaz in (#1022)
+  * Fix race condition in promise.c by @evanmiller in (#1023)
+  * Remove unimplemented prototype from ring_buffer.h by @evanmiller in (#1024)
+  * Move CBMC back to latest by @tautschnig in (#1026)
+  * Fix warnings in public headers by @graebm in (#998)
+
+-------------------------------------------------------------------
+Mon May  8 08:54:29 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.19
+  * Tolerate uninitialized list in array_list_clear by @waahm7 in (#1021)
+- from version 0.8.18
+  * Improved sanitizer support by @DmitriyMusatkin in (#1016)
+  * Reduce spam when configuring multiple projects at once by @graebm in (#1018)
+  * Update builder version to fix aws-lc build on manylinux1 by @TingDaoK in (#1017)
+  * Tolerate unintialized list in aws_array_list_length by @waahm7 in (#1019)
+
+-------------------------------------------------------------------
+Tue Apr 18 11:16:32 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.17
+  * Add a way to skip a test by @xiazhvera in (#1012)
+  * Add github templates and bots by @jmklix in (#1015)
+- from version 0.8.16
+  * Add function for writing N bytes of randomness by @graebm in (#1005)
+  * Remove debugging printf by @graebm in (#1009)
+  * Adds aws_normalize_directory_separator by @waahm7 in (#1010)
+  * Fix cv signal outside of lock by @jeking3 in (#1008)
+
+-------------------------------------------------------------------
+Tue Mar 28 08:44:42 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.15
+  * Replace old ARM images with raspbian-bullseye image by @knightjoel in (#990)
+  * CI job for OpenBSD by @knightjoel in (#991)
+  * Improved output from test harness by @graebm in (#995)
+  * Remove unused system: aws_bus by @graebm in (#996)
+  * Buffer ub by @DmitriyMusatkin in (#999)
+  * Add CBMC proof for `aws_byte_buf_append_and_update` by @feliperodri in (#1000)
+  * Fix comment in uri.h by @jamesbornholt in (#986)
+  * CMake feature detection with gcc 7.3.1 misses backtrace by @jeking3 in (#1002)
+
+-------------------------------------------------------------------
+Thu Mar  9 11:07:32 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.14
+  * Fix C++ compiler warning by @graebm in (#989)
+- from version 0.8.13
+  * Add scripts/latest_submodules.py by @graebm in (#988)
+
+-------------------------------------------------------------------
+Wed Mar  1 10:21:04 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.12
+  * New guideline: callbacks are always async, or always sync by @graebm in (#945)
+  * Change '#if _MSC_VER' to '#ifdef _MSC_VER' by @jmklix in (#987)
+
+-------------------------------------------------------------------
+Tue Feb 14 10:51:49 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.11
+  * Remove old docker images by @DmitriyMusatkin in (#982)
+
+-------------------------------------------------------------------
+Mon Feb  6 12:50:37 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.10
+  * Fix race condition in cJSON_Parse.* calls by @waahm7 in (#972)
+  * Add getter for thread name by @DmitriyMusatkin in (#969)
+  * Fix: build and tests on OpenBSD by @knightjoel in (#976)
+  * Added extern_c_begin and extern_c_end to JSON by @TwistedTwigleg in (#977)
+  * Fix: NETBSD -> NetBSD by @knightjoel in (#979)
+  * Added Utf8 validation callback to allow extra validation by @xiazhvera in (#980)
+  * Rename aws_utf8_validator -> aws_utf8_decoder by @xiazhvera in (#981)
+  * Use BMI2 cpuid instead for `_mulx_u32` by @TingDaoK in (#974)
+  * Assert that each error-info-list starts with correct value by @graebm in (#978)
+
+-------------------------------------------------------------------
+Mon Jan 16 11:52:49 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.9
+  * Always pull out value of errno right after sys call by @bretambrose in (#971)
+- from version 0.8.8
+  * aws_fopen_safe() raises aws-error on failure by @graebm in (#970)
+- from version 0.8.7
+  * Delete empty .gitmodules file by @graebm in (#962)
+  * Common lint by @DmitriyMusatkin in (#963)
+  * aws_get_home_directory() calls getpwuid_r() if $HOME isn't set by @graebm in (#966)
+  * Add libc detection function to common's cmake resources by @bretambrose in (#960)
+
+-------------------------------------------------------------------
+Wed Jan  4 13:02:11 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.6
+  * Update CI to fix downstream build by @waahm7 in (#944)
+  * Sba metrics test fix by @bretambrose in (#933)
+  * aws_secure_zero() checks NULL before calling memset() by @graebm in (#952)
+  * Add codecov action by @TingDaoK in (#955)
+  * CBMC proofs: Add and fix declarations by @tautschnig in (#956)
+  * Fix Appverifier always running the first test by @TwistedTwigleg in (#958)
+  * UTF-8 validator by @graebm in (#959)
+
+-------------------------------------------------------------------
+Tue Nov  8 14:00:49 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.5
+  * sprintf() -> snprintf() by @graebm in (#946)
+  * Set thread names, for debugging by @graebm in (#937)
+
+-------------------------------------------------------------------
+Tue Nov  1 12:29:37 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.4
+  * Make aws_json_value_destroy noop on null values
+    by @DmitriyMusatkin in (#942)
+  * Clarify aws_byte_cursor_next_split comments and
+    add tests by @DmitriyMusatkin in (#943)
+
+-------------------------------------------------------------------
+Fri Oct 14 07:59:17 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.3
+  * Uri migration by @DmitriyMusatkin in (#936)
+  * Json compare by @DmitriyMusatkin in (#938)
+  * Fix parsing of ipv6 literals in uris by @DmitriyMusatkin in (#939)
+  * Json duplicate by @DmitriyMusatkin in (#940)
+  * Parse uri path as is by @DmitriyMusatkin in (#941)
+
+-------------------------------------------------------------------
+Wed Oct  5 11:49:10 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.2
+  * Json iterators by @DmitriyMusatkin in (#926)
+  * Safely handle a particular use case for linked hash
+    tables where key equality is not reference equality
+    by @bretambrose in (#928)
+  * Json iterate signature by @DmitriyMusatkin in (#929)
+  * Add AppVerifier by @TwistedTwigleg in (#930)
+  * Block logging updates by @bretambrose in (#931)
+  * Verify backtrace is defined too, not just header
+    presence by @bretambrose in (#935)
+
+-------------------------------------------------------------------
+Tue Aug 30 07:46:54 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.1
+  * Fall back for load target by @TingDaoK in (#924)
+  * Hide symbols from libcrypto.a by @graebm in (#925)
+
+-------------------------------------------------------------------
+Wed Aug 24 06:59:27 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.0
+  * Fix FreeBSD build by @gearnode in (#921)
+  * Format not by @bretambrose in (#922)
+  * Make libnuma linux only by @TingDaoK in (#923)
+
+-------------------------------------------------------------------
+Mon Jul 25 12:00:51 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.5
+  * Adjust logging function to fix segfault if filename and
+    file are not set by @TwistedTwigleg in (#911)
+  * Fix MSVC warning by @graebm in (#912)
+  * Make sure file paths are not empty strings to avoid segfault
+    on Windows by @TwistedTwigleg in (#915)
+  * Reset the logger before memory trace by @TingDaoK in (#917)
+  * Update CBMC starter kit by @angelonakos in (#919)
+  * Hide json module init and cleanup by @TingDaoK in (#920)
+
+-------------------------------------------------------------------
+Wed May 18 14:04:33 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.4
+  * Fix compiler warning by @TingDaoK in (#910)
+- from version 0.7.3
+  * Fix iOS build error due to `-moutline-atomics` by @graebm in (#909)
+- from version 0.7.2
+  * Add check for if_link.h by @TwistedTwigleg in (#907)
+  * Remove DeviceDefender custom metric reporting functions
+    by @TwistedTwigleg in (#901)
+- from version 0.7.1
+  * aws_byte_cursor_starts_with(input, prefix) by @graebm in (#905)
+
+-------------------------------------------------------------------
+Thu Apr 28 13:22:46 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.0
+  * Fix "unused variable" compiler warning by @graebm in (#899)
+  * Add cJSON module by @TwistedTwigleg in (#889)
+  * Fix it so CI runs on branches with '/' in name by @graebm in (#900)
+  * Added metric reporting functions by @TwistedTwigleg in (#898)
+- from version 0.6.20
+  * Append pthread to platform libs if cmake supplied
+    Threads is not good enough.
+
+-------------------------------------------------------------------
+Tue Jan  4 14:24:24 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.19
+  * Added subcommand dispatch for cli argument parser
+  * Improved cli parsing to handle positional arguments better so
+    they can be handled as encountered, added state reset api
+  * Release lock on no-alloc fwrite error path
+  * Add aws_byte_cursor_parse_uint64
+  * Add AWS_ERROR_PLATFORM_NOT_SUPPORTED error
+
+-------------------------------------------------------------------
+Thu Dec  9 09:52:04 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.18
+  * Support Windows Server 2008 Pre-release
+    + Support for Windows Server 2008
+    + CBMC updates
+- from version 0.6.17
+  * Added support for tvOS and watchOS platform detection Pre-release
+    + Added support for detecting watchOS and tvOS (#863)
+- from version 0.6.16
+  * More Avx2 fixes Pre-release
+    + Improve avx2 detection
+    + Disable cpu-specific code when using mingw due to an alignment
+      bug that has yet to be fixed in gcc (for windows).
+- from version 0.6.15
+  * Non-AVX2 compile fixes Pre-release
+    + Fixed encoding_avx2.c being compiled when AVX is not detected (#854)
+- from version 0.6.14
+  * Windows string test fixes Pre-release
+    + Windows string fixes. (#853)
+- from version 0.6.13
+  * ARMv6 fixes Latest
+    + Only attempt to use sys/auxv.h if it exists (#852)
+- from version 0.6.12
+  * New version with IO utilities Pre-release
+    + Removed ARN parser from common, it's in sdkutils now (#851)
+      - Removed ARN parser from common, it's in sdkutils now
+      - Removed tests for ARN parser
+
+-------------------------------------------------------------------
+Sat Oct 16 12:39:20 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Use cmake()/pkgconfig() as buildrequires. Update descriptions.
+- Replace lib%-devel subpackage by just %-devel.
+
+-------------------------------------------------------------------
+Mon Oct 11 07:49:22 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.11
+  + Add build flag: USE_CPU_EXTENSIONS
+    * -DUSE_CPU_EXTENSIONS=OFF disables CPU-specific function implementations
+    * We have customers encountering mysterious crashes in some of these
+      functions. Give them the ability to disable them while we attempt to
+      diagnose the issue.
+    * New build flag controls whether to use optimized functions that make
+      use of CPU extensions (ex: AVX, SSE).
+- from version 0.6.10
+  + byte_buffer_reserve work with initial capacity zero
+    * edit byte_buffer_reserve to work with buffers of initial capacity 0
+- from version 0.6.9
+  + Added metrics to SBA allocator
+    * Added metrics to SBA and tests for metrics (#833)
+
+-------------------------------------------------------------------
+Fri Aug  6 09:17:06 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.8
+  * Upgrade CBMC proof tools: starter kit and Litani 1.10.0 (#826)
+    + Upgrade proof tool submodules
+      This commit advances Litani to release 1.10.0, and the starter kit to
+      the tip-of-tree. This brings the following improvements:
+      - Profiling
+          - Litani measures the memory usage of the CBMC safety checking and
+            coverage checking jobs
+          - The dashboard includes box-and-whisker diagrams for memory use per
+            proof
+          - The dashboard includes a graph of how many parallel jobs are
+            running over the whole run, making it easy to choose a CI machine
+            with enough parallelism
+          - It is now possible to designate particular proofs as "EXPENSIVE";
+            Litani runs expensive proofs serially, ensuring that they do not
+            over-consume resources like RAM.
+      - UI improvements
+          - Each pipeline page includes a table of contents
+          - Each pipeline page includes a dependency graph of the pipeline
+          - Each job on the pipeline page has a hyperlink to that job
+          - The terminal output is now less noisy
+    + Change cbmc-batch.yaml to cbmc-proof.txt
+      This makes the proof layout consistent with the starter kit, which will
+      allow us to use a generic run script in a future commit. Putting this
+      in commit by itself because the diff is huge and not worth reading (just
+      moving some files and changing two lines in the runscript).
+    + Symlink run-cbmc-proofs.py to starter kit
+      The run script is now a symbolic link into the starter kit submodule,
+      meaning that it will be updated whenever the starter kit is. This is
+      done iso that AWS C Common doesn't carry custom modifications to the run script
+      unless necessary; previous commits have made the AWS C Common proofs consistent
+      with the generic starter kit conventions.
+
+-------------------------------------------------------------------
+Fri Jul 16 10:12:29 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.7
+  * Datetime updates part 2
+    + Support for millisecond-precise time query in aws_date_time_as_epoch_secs
+- from version 0.6.6
+  * Datetime updates
+    + Datetime now supports millisecond precision
+
+-------------------------------------------------------------------
+Wed Jul  7 10:51:08 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.5
+  * Managed thread handle cleanup
+    + Fixes an issue where managed thread handles could be leaked on Windows
+    + Fixes some incorrect logging format strings.
+
+-------------------------------------------------------------------
+Mon Jun 28 12:16:30 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.4
+  * Added aws_split_debug_info to cmake for Unix platforms
+    + Added a function to split debug info out of shared libs and executables (#819)
+- from version 0.6.3
+  * Shrink size of all AWS libraries when using AwsCFlags
+    * Only apply -fno-omit-frame-pointer when debug info is present (#818)
+
+-------------------------------------------------------------------
+Thu Jun 10 10:58:42 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.2
+  * Bugfix for CMake build
+    + Proper import of CMake module (#812)
+- from version 0.6.1
+  + Fix checking for Large File Support on Android
+    * BUGFIX: Fix cmake feature checks for Large File Support (LFS) on Android
+- from version 0.6.0
+  + aws_off_t is always 64 bits
+    * CHANGE: aws_off_t is always 64 bits. Previously, it might be interpreted
+      as 32 or 64 bits, depending on a project's compiler flags, which was leading
+      to bugs.
+    * CHANGE: Pass -DAWS_WARNINGS_ARE_ERRORS=ON if you want warnings to fail the
+      build. Previously, warnings would always fail the build, now it is opt-in.
+    * NEW: aws_promise
+
+-------------------------------------------------------------------
+Fri May 14 11:36:49 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.5.11
+  + GCC compile fix
+    * Marking aws-c-common/source/posix/system_info.c as
+      a non-parameters function (#797)
+- from version 0.5.10
+  + Diagnostics fixes/improvements (#796)
+    * Disable AddressSanitizer on hashlittle2, it overreads,
+      but not in a dangerous way
+    * Added log level to aws_backtrace_log, and fixed stacktrace
+      decoding test to be permissive on weird platforms
+    * Fixed aws_backtrace_log versions for execinfo/no execinfo
+- from version 0.5.8
+  + Intrudocing aws_fopen
+    * Mainly to support fopen with a non-ascii file path from Windows.
+      The aws_fopen can support non-ascii file path across platform
+
+-------------------------------------------------------------------
+Mon Apr 26 09:02:07 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.5.7
+  + High resolution clock fix for Windows, take 2
+    * Reverts and reimplements previous release's attempt at
+      a high-resolution clock fix on Windows
+- from version 0.5.6
+  + High priority clock overflow fix for Windows
+    * Fix an issue where the high resolution clock would saturate to a
+      maximum value after 21 days, breaking event loop task processing.
+- from version 0.5.5
+  + Support non-desktop Windows
+    * Prevent log-subject ordering errors (#789)
+- from version 0.5.4
+  + Dynamic log level control
+    * Adds support for dynamic log level control in the standard logger
+- from version 0.5.3
+  + Fix for thread affinity functionality and other bug fixes
+    * BUG FIX: MinGW/Windows related preprocessor fixes
+    * BUG FIX: No longer appending exact location of CoreFoundation in CMake
+    * BUG FIX: Fixing thread affinity symbol check in CMake
+    * BUG FIX: Preventing undefined behavior in allocators
+
+-------------------------------------------------------------------
+Tue Mar 16 10:59:36 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.5.2
+  + Musl support and thread join changes
+    * Correct/improve Musl support with respect to thread affinity control
+    * Update managed thread join to return success/failure, allowing downstream
+      callers (CRTs) to branch shutdown logic between strict and permissive
+- from version 0.5.1
+  + Fix shared lib builds
+    * `aws_thread_set_managed_join_timeout_ns()` and `aws_thread_join_all_managed()`
+      are declared in `thread.h` and implemented in `thread_shared.c`. But since
+      `thread_shared.c` did not include `thread.h`, it was not seen as the
+      implementation by the linker.
+- from version 0.5.0
+  + New managed thread API
+    * Transition to a new thread API for threads that cannot be explicitly joined by
+      user code. These threads get lazily joined as their thread functions exit.
+- from version 0.4.68
+  + Introduce AWS_ERROR_NO_SPACE
+    * Mapping ENOSPC to AWS_ERROR_NO_SPACE for out of space error
+
+-------------------------------------------------------------------
+Mon Feb 15 10:55:05 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.4.67
+  + NUMA set_mempolicy fix
+    * Modifies how NUMA symbols are looked up so that symbols that
+      are weak on certain platforms don't end up getting stomped
+- from version 0.4.66
+  + Infinite Loop Fix
+    * Fixes an infinite loop in the thread scheduler
+- from version 0.4.65
+  + MSVC warnings fixes
+    * Disabled non-standard extension warning that is
+      actually a lie on MSVC
+- from 0.4.64
+  + Windows TryLock fix
+    * Fixes an issue with aws_mutex_try_lock on Windows
+
+-------------------------------------------------------------------
+Wed Dec 16 10:54:25 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.4.63
+  + Fix FreeBSD
+    * Fix thread.c for FreeBSD (#741)
+- from version 0.4.62
+  + Remove unnecessary API
+    * Removes an unnecessary API hopefully before anyone uses it externally
+- from version 0.4.61
+  + Use runtime symbol resolution instead of addr2line for memtrace by default
+    * Do not use addr2line by default, backtrace_symbols will do the job (#739)
+    * Fixed memtrace/stack decoding test so it works more robustly
+- from version 0.4.60
+  + Fixed MSVC 2015 non-constant aggregate initializer warning for all downstreams
+    * Disabled MSVC 2015's non-constant aggregate initializer warning (#738)
+
+-------------------------------------------------------------------
+Thu Oct  8 09:59:20 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.4.59
+  + Re-adding SOVERSION to CMakeLists.txt (#702)
+    * Re-adding SOVERSION to CMakeLists.txt to fix SONAME.
+- from version 0.4.58
+  + Print CMake version when configuring. (#701)
+    * Useful for diagnosing issues on various machines.
+- from version 0.4.57
+  + Fixed aarch64 detection/support
+    * Imported PR from #695 to fix aarch64 builds (#696)
+- from version 0.4.56
+  + Testing build fixes
+    * Fixes a build failure with logging tests on Windows
+- from version 0.4.55
+  + Ref counting framework
+    * Adds a simple ref-counting API intended for long-lived types used by the CRTs
+    * Adds a test-oriented wait API for all threads created
+      by internal CRT types (event_loop_group, host_resolver)
+- from version 0.4.54
+  + Fixed iOS platform check on OSX
+    * Fixed iOS check (#682)
+- from version 0.4.53
+  + OS detection macros to support iOS in downstream libraries
+    * Added AWS_OS_* macros to detect OS (#681)
+    * Added platform.h to common.h
+    * Fixed narrowing warning for backtrace APIs
+- Bump library_soversion to 1
+
+-------------------------------------------------------------------
+Tue Aug 25 10:20:16 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.4.52
+  + More string helpers
+    * aws_byte_buf_init_cache_and_update_cursors(): #676
+
+-------------------------------------------------------------------
+Fri Aug 14 09:40:17 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.4.51
+  + aws_byte_cursor_read_hex_u8() and other string helpers (#657)
+    * `aws_byte_cursor_read_hex_u8()`: Reads 2 hex characters from
+       ASCII/UTF-8 text to produce an 8-bit number.
+    * `aws_lookup_table_hex_to_num_get()`:  Returns lookup table to
+       go from ASCII/UTF-8 hex character to a number (0-15).
+    * `aws_string_new_from_cursor()` and `aws_string_new_from_buf()`: obviously
+    * `aws_byte_cursor_next_split()`: fixed to handle source
+       with 0 len and NULL ptr
+- from version 0.4.50
+  + Fixes for RHEL5_64, additional byte_buf APIs
+    * Don't include avx2 and stuff on old compilers (#655)
+
+-------------------------------------------------------------------
+Thu Jul 16 11:39:08 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.4.49
+  + Added AWS_SUPPORT_WIN7, Win7 is no longer supported by default (#669)
+    * Added AWS_SUPPORT_WIN7, Win7 is no longer supported by default
+    * Added AWS_SUPPORT_WIN7 macro for feature detection
+
+-------------------------------------------------------------------
+Tue Jun 30 08:31:33 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.4.48
+  + Bytebuf updates
+    * Added some new aws_byte_buf APIs - functions for securely (zero all
+      released memory) appending both cursors and single bytes.
+    * Removed aws_bigint; it is no longer needed.
+
+-------------------------------------------------------------------
+Tue Jun 16 08:58:04 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.4.57
+  + Biging constant time updates
+    * Reworks certain bigint constructors and operators to constant time
+- from version 0.4.46
+  + Added support for BOM/text encoding detection
+    * Added BOM detection/encoding detection via aws_text_encoding_detect (#647)
+    * Added aws_text_is_utf8 and tests, as well as ascii resource test
+- from version 0.4.45
+  + Added support for MSVC static CRT linkage
+  + Doc update for STATIC_CRT (#644)
+- from version 0.4.44
+  + AWS versions of isspace(), isalpha(), etc.
+    * aws versions of isspace() isalpha() etc (#642)
+    * Versions of isspace() isalpha() etc for use with ASCII/UTF-8.
+    * C's built-in functions are affected by user's locale.
+- from version 0.4.43
+  + Added newline to a test file that was breaking builds.
+    * Added newline to process_test.c (#641)
+
+-------------------------------------------------------------------
+Sun May 31 08:19:43 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.4.42
+  + Updated Process API to expose max fds for the system.
+    * IO handle ulimit stuff. (#637)
+    * API for reading max fds and updating the soft limit.
+- from version 0.4.41
+  + SBA fix for windows, warning fixes for ctz math fallbacks
+    * Windows compilation fixes (#631)
+    * Use _WIN32 consistently, no WIN32
+    * Use signed compare in fallback ctz implementations
+    * Added cross compile CI
+    * Don't build consumers for cross compile, they're not
+      all guaranteed to work
+    * Use builder version v0.6.4
+- from version 0.4.40
+  + Small Block Allocator support
+    * Add utility to append null terminator to aws_byte_buf.
+    * Co-authored-by: Andrew Tang <tangliang551@gmail.com>
+- from version 0.4.39
+  + Minor fix for logcat log formatting
+    * Removed erroneous bracket in log output via logcat (#624)
+- from version 0.4.38
+  + Android logcat logger
+    * Additional PR Feedback from #621 (#623)
+    * clang-format
+- from version 0.4.37
+  + Add aws_hash_combine
+
+-------------------------------------------------------------------
+Tue Mar 31 11:36:40 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.4.36
+  + Fixed cmake error during cross compile (#614)
+- from version 0.4.35
+  + Basic bigint implementation
+
+-------------------------------------------------------------------
+Sat Mar  7 16:19:11 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.4.34
+  + Set policy to allow BUILD_TESTING to be used as a variable (#606)
+- from version 0.4.33
+  + Bigint part 1 - init/cleanup/comparisons
+- from version 0.4.32
+  + Allow cross-compiled tests via ALLOW_CROSS_COMPILED_TESTS (#602)
+
+-------------------------------------------------------------------
+Mon Feb 24 09:25:31 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.4.31
+  + Will now work on ARM platforms that do not have execinfo.h (e.g. alpine)
+- from version 0.4.30
+  + Stride, not stride bits (#590)
+
+-------------------------------------------------------------------
+Fri Jan 31 22:42:43 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.4.29
+  + Add libdl as needed (#583)
+- from version 0.4.28
+  + Address TSAN issues, improve mutex apis
+    * Add clang tsan github action (#578)
+
+-------------------------------------------------------------------
+Mon Jan 20 14:17:40 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.4.27
+  + Rework alignment tests to only require 32 byte support when avx2 is enabled
+- from version 0.4.26
+  + aws_thread_id_t
+    * Move include ctest up, this should reneable tests. (#571)
+- from version 0.4.25
+  + Make build friendly to in-source builds
+    * Support in source builds of aws-c-* libs. (#566)
+- from version 0.4.24
+  + Portable Header Check (#558)
+   * Rewrite header tester to be portable
+   * Install CheckHeaders.cmake
+- from version 0.4.23
+  + Adds no-allocation logger implementation
+
+-------------------------------------------------------------------
+Fri Nov 22 14:16:13 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.4.22
+  + aws_byte_buf_append_and_update
+    * Add append and update function to common (#554)
+- from version 0.4.21
+  + Made windows stack trace much more resilient (#552)
+    * SymSetOptions, try to be more resilient
+    * Write symbol name and addr if file/line cannot be found
+    * Simplified and cleaned up symbol printing, ensure
+      that we get the most info possible
+    * fflush at the end of aws_backtrace_print()
+    * fflush and free, clang-format
+- from version 0.4.20
+  + Fix for ancient linux
+    * Fix for old linux (#545)
+
+-------------------------------------------------------------------
+Wed Nov 13 13:09:43 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.4.19
+  + Stack dump improvements
+    * Added newlines to stacktrace headers (#541)
+- from version 0.4.18
+  + Stack dump improvements
+    * Always print both raw and resolved stack trace,
+      helps in release builds
+
+-------------------------------------------------------------------
+Thu Nov  7 00:35:53 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.4.17
+  + Memory tracing updates
+    * Fixed probing for stack trace availability (#537)
+- from version 0.4.16
+  + Memory Tracing
+    * Ported alloc tracer from Java CRT, added unit tests
+    * Generalized backtrace/backtrace_symbols for multiple platforms
+    * Added tests to ensure midstream usage works
+    * Stack trace decoding test now uses virtual logger
+    * Fixed AWS_VARIABLE_LENGTH_ARRAY on windows,
+      causing stack corruption
+    * Converted all tests to use the mem tracer
+    * Removed allocator from test harness structure,
+      enabled logging by default
+- from version 0.4.15
+  + aws_string_c_str() helper fn
+    * aws_string_c_str() (#534)
+
+-------------------------------------------------------------------
+Mon Oct 28 15:24:40 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.4.14
+  + Fix alignment on Windows
+    * Remove AWS_ALIGN, as it doesn't work reliably, add AWS_ALIGNED_TYPEDEF
+- from version 0.4.13
+  + Imported ring buffer allocator from node CRT
+    * Imported ring buffer allocator from node, fixed bugs, added unit test
+    * Implemented realloc as an assert to prevent use
+- from version v0.4.12
+  + Static libs and security fixes
+    * Fixed visibility on static libs
+    * Added secure string length functions
+    * Fixed buffer overflow vulnerability in stack trace printing
+
+-------------------------------------------------------------------
+Thu Oct  3 11:58:04 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.4.11
+  + Fix stupid bad boolean logic in macro.
+    * Fix stupid bad boolean logic in macro
+    * simplified gcc macro for assume
+- from version 0.4.10
+  + Fixed support for gcc 4.1.2.
+- from version 0.4.9
+  + fixed mixed static/shared builds.
+    * Reorder thread shutdown so that only truly necessary
+      memory is still allocated at shutdown callback town
+- from version 0.4.8
+  + Made AWS_ENABLE_LTO an option
+    * AWS_ENABLE_LTO=ON|OFF now controls LTO globally
+    * Made AWS_ENABLE_LTO an option
+- from version 0.4.7
+  + Added support for thread exit callbacks
+    * Added support for thread exit callbacks
+    * Added user data support to aws_thread_call_once
+- from version 0.4.6
+  + LTO support
+    * Added IPO/LTO support to cmake
+    * Removed the requirement that release builds produce good backtrace output
+    * Check for IPO policy in older versions of CMake
+    * Add policy existence check to c flags
+- Re-enable link-time optimization (LTO) in spec file
+
+-------------------------------------------------------------------
+Mon Sep  2 13:44:18 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.4.5
+  + Move allocator functions to their own file
+    * Move the allocator related functions to allocator.c
+    * Add overrides for the allocator functions
+    * PR Comments
+- from version 0.4.4
+  + Relaxed constraints on gcc+x86/x64 to gcc 4.1.2
+    * Relaxed constraints on gcc+x86/x64 to gcc 4.1.2,
+      added ARM and Itanium detection for gcc 4.4
+- from version 0.4.3
+  + Use CMake Threads module instead of manual pthreads linking
+    * Depend on pthreads via Threads rather than manually
+- from version 0.4.2
+  + Fix error info
+    * Fixed issue where the wrong info was returned for some error codes.
+- from version 0.4.1
+  + Logging refactor
+    * Add yaml file for aws_byte_buf_cat proof (#448)
+    * Proof harness for aws_byte_buf_cat with a fixed number of arguments
+- from version 0.4.0
+  + Task logging
+    * Adds string tags to tasks and task logging for easier identification
+- from version 0.3.15
+  + Fix nasty overflow bug in high-res clock on 32-bit systems.
+  + Fixed typo that broke osx build. (#425)
+- Disable link-time optimization (LTO) as it currently breaks the testsuite
+  + https://github.com/awslabs/aws-c-common/issues/456
+
+-------------------------------------------------------------------
+Tue Jun 18 09:39:29 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.14
+  + Linux stack trace fixes
+    * Parse (<function>+<addr>) backtrace format on POSIX systems (#422)
+- from version 0.3.13
+  + Compile warning fixes
+    * Re-enabled unknown pragma warnings, wrapped CPROVER pragmas (#420)
+- from version 0.3.12
+  + Miscellaneous cleanup
+    * Fixes to clang-tidy failures in dependent libs
+    * Fixed test harness asserts to prove to clang-tidy that
+      compared values are non-null, initialized out params
+    * Fixed mis-used asserts and multi-eval of assert values
+    * Preserve existing behavior
+- from version 0.3.11
+  + C++ build fixes
+    * Alter header code so it can compile in c++ as well
+    * Allow constant expressions in AWS_ASSERT
+- from version 0.3.10
+  + Fix shared-lib builds
+- from version 0.3.9
+  + Added backtraces to asserts
+    * assert() -> AWS_ASSERT()
+    * Removed assert.h includes
+    * rewrote resolve buffer reading to appease gcc
+- from version 0.3.8
+  + Memory-safety proofs for aws_byte_buf
+  + Adds invariants and proof harnesses for the following functions:
+    * aws_byte_buf_append
+    * aws_byte_buf_append_dynamic
+    * aws_byte_buf_append_with_lookup
+    * aws_byte_buf_clean_up
+    * aws_byte_buf_from_array
+    * aws_byte_buf_from_empty_array
+    * aws_byte_buf_init
+    * aws_byte_buf_init_copy_from_cursor
+    * aws_byte_buf_reserve
+    * aws_byte_buf_secure_zero
+
+-------------------------------------------------------------------
+Wed May  8 12:51:10 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.7
+  + Build fixes
+    * cmake now respects BUILD_TESTING
+    * Fixed compiler warnings
+
+-------------------------------------------------------------------
+Mon Apr 22 21:11:11 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.6
+  + Faster CBMC stubs for memset and memcpy (#300)
+    * new memset and memcpy functions that are often
+      faster for CBMC to analyze
+    * PR comments addressed
+
+-------------------------------------------------------------------
+Wed Apr 10 11:48:21 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.5
+  + Byte buf utility functions - append that grows,
+    append with internal tolower, reserve (#297)
+  + Byte buf append function that grows when capacity limit hit
+  + Byte buf reserve
+  + Byte buf append with lookup table translation
+- from version 0.3.4
+  + getopt_long() implementation
+  + Android compile fixes
+  + Atomics fixes for gcc < 4.6
+  + Security bug fixes from AWS
+- from version 0.3.3
+  + FreeBSD compile fixes
+- from version 0.3.2
+  + Fix downstream build script. (#246)
+  + Fix codebuild scripts to not need relative
+    paths and use out of source builds.
+- from version 0.3.1
+  + Added CI job for x64 old linux. (#240)
+  + Added CI job for x64 old linux.
+  + Added 32bit builds, updated a comment.
+- Move cmake files to correct installation path
+
+-------------------------------------------------------------------
+Fri Jan 25 12:47:20 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 0.3.0
