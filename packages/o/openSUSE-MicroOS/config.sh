@@ -183,8 +183,6 @@ fi
 
 if [ -e /etc/default/grub ]; then
 	sed -i "s#^GRUB_CMDLINE_LINUX_DEFAULT=.*\$#GRUB_CMDLINE_LINUX_DEFAULT=\"${cmdline[*]}\"#" /etc/default/grub
-else
-	echo "${cmdline[*]}" > /etc/kernel/cmdline
 fi
 
 #======================================
@@ -255,14 +253,20 @@ EOF
         chown -R vagrant /home/vagrant
 fi
 
+#======================================
+# Configure FDE/BLS specifics
+#--------------------------------------
+# [[ "$kiwi_profiles" == *"kvm-and-xen-"* ]]
 if rpm -q sdbootutil; then
-	for d in /usr/lib/modules/*; do
-		test -d "$d" || continue
-		depmod -a "${d##*/}"
-	done
-	ENTRY_TOKEN=$(. /usr/lib/os-release; echo $ID)
-	mkdir -p /etc/kernel
-	echo "$ENTRY_TOKEN" > /etc/kernel/entry-token
-	# FIXME: kiwi needs /boot/efi to exist before syncing the disk image
-	mkdir -p /boot/efi
+ 	for d in /usr/lib/modules/*; do
+ 		test -d "$d" || continue
+ 		depmod -a "${d##*/}"
+ 	done
+ 	ENTRY_TOKEN=$(. /usr/lib/os-release; echo $ID)
+ 	mkdir -p /etc/kernel
+ 	echo "$ENTRY_TOKEN" > /etc/kernel/entry-token
+ 	# FIXME: kiwi needs /boot/efi to exist before syncing the disk image
+ 	mkdir -p /boot/efi
+
+        echo "${cmdline[*]}" > /etc/kernel/cmdline
 fi

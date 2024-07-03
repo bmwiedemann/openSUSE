@@ -584,7 +584,7 @@
                 <volume name="boot/grub2/x86_64-efi" mountpoint="boot/grub2/x86_64-efi"/>
                 <volume name="boot/writable"/>
                 <volume name="usr/local"/>
-		<volume name="var" copy_on_write="false"/>
+                <volume name="var" copy_on_write="false"/>
             </systemdisk>
             <vagrantconfig provider="libvirt" virtualsize="24"/>
             <size unit="G">24</size>
@@ -693,6 +693,8 @@
         <package name="patterns-base-bootloader"/>
     </packages>
     <packages type="image" profiles="kvm-and-xen-sdboot">
+        <!-- Needed for initial configuration, except on OpenStack-Cloud, where cloud-init is used -->
+        <package name="ignition-dracut"/>
         <package name="combustion &gt;= 1.2"/> <!-- New firstboot mechanism -->
         <package name="jeos-firstboot"/>
         <package name="growpart-generator"/>

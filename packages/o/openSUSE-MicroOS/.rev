@@ -704,4 +704,14 @@
     <comment></comment>
     <requestid>1180822</requestid>
   </revision>
+  <revision rev="76" vrev="76">
+    <srcmd5>30a58de91fd236b525e3cd2b69e4257f</srcmd5>
+    <version>16.0.0</version>
+    <time>1720031347</time>
+    <user>anag+factory</user>
+    <comment>- Refactor config.sh and disk.sh
+
+- Add ignition to fde images</comment>
+    <requestid>1184820</requestid>
+  </revision>
 </revisionlist>
