@@ -164,4 +164,14 @@
     process uses a timedelta.</comment>
     <requestid>1169322</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>baba48dfcf7f820a552ccdef0b7812dc</srcmd5>
+    <version>2.14.2</version>
+    <time>1720031384</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.14.2:
+  * Fix SystemError on Python 3.13 and Windows when starting time
+    travelling.</comment>
+    <requestid>1184081</requestid>
+  </revision>
 </revisionlist>
