@@ -1,0 +1,193 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b9dc093b66251a24b65c87091c01b32e</srcmd5>
+    <version>1.0.0+0</version>
+    <time>1649093174</time>
+    <user>dimstar_suse</user>
+    <comment>New</comment>
+    <requestid>963074</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e33027be2fd1297c9ee76e968a4956fe</srcmd5>
+    <version>1.0.0+0</version>
+    <time>1649949957</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970131</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4c28fed185a51020bb67d3587cababf2</srcmd5>
+    <version>1.0.2+0</version>
+    <time>1653768902</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.2+0:
+  * Add missing systemd-service file for vnc sharing
+  * v1.0.2 version bump
+  * Rework VNC screensharing to work with GNOME 42 version of
+    GNOME Remote Desktop
+  * Rework fractional scaling to disable the lock-screen
+    GNOME/Budgie screensaver goes into a flash loop when
+    fractional scaling options are used.
+  * Move some items out to fix some fallback.
+  * Enable setting a dark distributor logo for Fedora.
+  * build: Bump required gsettings-desktop-schemas version
+  * small typo
+  * Ensure buddies gresource includes sound test icons
+  * Correct build issues with documentation meson option/disable
+    wayland building as a default
+  * Bump microrelease
+  * Reorganize directories to match budgie-desktop
+  * Port: Add individual app icons
+  * Fix lintian reported typo
+  * network: Fix OWE settings
+</comment>
+    <requestid>979499</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>569523b61bc63eca089b709ecb3eea6a</srcmd5>
+    <version>1.1.0+0</version>
+    <time>1660051639</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0+0:
+  * Update GLib dependency to 2.70
+  * power: Remove support for power-profiles-daemon &lt; 0.9.0
+  * build: Add script to detect files in XDG_DATA_DIRS
+  * sharing: Turn off VNC gsettings key when turning off VNC (CVE-2022-1736, lp#1971415)
+  * sharing: Turn off RDP gsettings key when turning off RDP (lp#1971415)
+  * applications: Switch to g_spawn_check_wait_status()
+  * applications: Properly protect against NULL app_id
+  * wacom: Explicitly discard input from touchscreens
+  * wacom: Allow NULL monitors in calibration
+  * wwan: Make sure secrets are set when querying connection APN password
+  * display: Always show refresh rate
+  * network: Fix saving passwords for non-wifi connections
+  * build: Bump required gsettings-desktop-schemas version
+  * ua: Use the new high contrast key
+  * datetime: Remove tzname_daylight
+  * keyboard-shortcut-editor: fix leak of accel string
+  * keyboard-item: fix leak on unused CcKeyCombo
+  * keyboard-manager: fix leak of section list store
+  * common: Fix leak of GUdevDevice
+  * network: fix critical when opening VPN details page
+  * wacom: Add scenario tester
+  * wacom: Add a fake stylus when mocking a tablet
+  * wacom: Split off notebook switching for detected stylus
+  * wacom: Print errors for libwacom_new_from_*() calls
+  * info-overview: Allow changing &quot;Device Name&quot; by pressing &quot;Enter&quot;
+  * small typo
+  * Ensure buddies gresource includes sound test icons
+  * Remove Python from dependencies
+  * Fix typo in feature template
+  * Edit typo in bug_report template
+</comment>
+    <requestid>993797</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fbfbaf4d56920a2f2ab5d84c4e852c4f</srcmd5>
+    <version>1.1.1+0</version>
+    <time>1665185023</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 1.1.1+0:
+  * Update background preview to look more like Budgie
+  * Ensure VNC/RDP remote control settings is honored
+  * Handle keybindings extraction
+  * More comprehensive C string extraction
+  * panels: wwan: Add WWAN 5G connection support
+</comment>
+    <requestid>1008843</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e28e73ae0b38da758d1f8c7ebf011f2b</srcmd5>
+    <version>1.2.0+0</version>
+    <time>1676036047</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1064035</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b9891920c5b51ef13e61eabe3cc73e18</srcmd5>
+    <version>1.3.0+0</version>
+    <time>1693482352</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.3.0+0:
+  * shell: fix visibility check for rows and avoid empty searches
+  * shell: avoid activating panel from an empty search
+  * Set last-panel only for noncrashing panels
+  * network: Increase maximum MTU value from 10000 to 65536
+  * display: Removed the loop from the snapping function
+  * display: Try snapping all the displays after a config change
+  * sound: Prevent duplicate sound device entries
+  * common: hostname-entry: Update hostname only after apply is
+    clicked
+  * usage: Fix confirmation dialog when clearing history
+  * thunderbold: Don't cast CcBoltPanel when cancelled
+  * user-accounts: close CcAvatarChooser before showing
+    GtkFileChooser
+  * user-accounts: disallow commas in real name
+  * printers: Use CUPS dest API for printing test page
+    instead CUPS IPP API
+  * keyboard: country matches should not be shown under a
+    language name.
+  * display: Add 32:9 to known aspect ratios
+  * sound: Add a &quot;None&quot; option to the alert chooser
+  * sound: Update sounds directory mtime when changing alert
+  * sound: Don't flip the balance and fade sliders in RTL
+  * Rework cc-usage-panel.c to display dialog on history
+    clearance
+  * Update POT for the latest translatables
+  * Add support for switching the file manager
+</comment>
+    <requestid>1108119</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c91bee0241eb0636fbd14d5f7459e700</srcmd5>
+    <version>1.3.0+0</version>
+    <time>1707070035</time>
+    <user>anag+factory</user>
+    <comment>- GNOME Bluetooth v1 will stick around until we can remove it
+  from here - hopefully very soon
+</comment>
+    <requestid>1143385</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>2ad478f1f8d318d290c4cba7811e18e3</srcmd5>
+    <version>1.3.0+0</version>
+    <time>1708116108</time>
+    <user>anag+factory</user>
+    <comment>Leap 15.6 sync</comment>
+    <requestid>1146926</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>38a21d0352e6eeb642dddece2198e047</srcmd5>
+    <version>1.3.0+0</version>
+    <time>1708460051</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147632</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>302c5461b8ce150c51acc5ad4d18aa1a</srcmd5>
+    <version>1.4.0+2</version>
+    <time>1713204862</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.4.0+2:
+  * fix: FTBFS with incompatible-pointer-types
+  * Bump version
+  * Latest translations
+  * Add code and compilation option to support socket
+    SSH based connections
+  * Disable gnome-online-accounts due to latest upstream GOA
+  * support both sshd socket and services for remote login
+  * Hide remote desktop sharing support
+  * Latest translations
+  * Update to gvc version to resolve occasional pipewire crashes
+    when mute/unmute of microphone volume
+  * subprojects: Update gvc
+  * Replace deprecated license format
+  * Add the ability to toggle disabling touchpad whilst typing
+  * Update appdata fields
+  * Update wacom tester to actually launch budgie-control-center
+</comment>
+    <requestid>1167019</requestid>
+  </revision>
+</revisionlist>

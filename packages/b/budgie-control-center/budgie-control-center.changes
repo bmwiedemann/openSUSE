@@ -1,0 +1,172 @@
+-------------------------------------------------------------------
+Wed Apr 10 15:27:02 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 1.4.0+2:
+  * fix: FTBFS with incompatible-pointer-types
+  * Bump version
+  * Latest translations
+  * Add code and compilation option to support socket
+    SSH based connections
+  * Disable gnome-online-accounts due to latest upstream GOA
+  * support both sshd socket and services for remote login
+  * Hide remote desktop sharing support
+  * Latest translations
+  * Update to gvc version to resolve occasional pipewire crashes
+    when mute/unmute of microphone volume
+  * subprojects: Update gvc
+  * Replace deprecated license format
+  * Add the ability to toggle disabling touchpad whilst typing
+  * Update appdata fields
+  * Update wacom tester to actually launch budgie-control-center
+
+-------------------------------------------------------------------
+Mon Feb 19 10:22:55 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Add LGPL-3.0-or-later based on legaldb review
+  cc-tls-certificate.c/.h are under LGPL-3.0+
+
+-------------------------------------------------------------------
+Thu Feb  1 13:53:40 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- GNOME Bluetooth v1 will stick around until we can remove it
+  from here - hopefully very soon
+
+-------------------------------------------------------------------
+Fri Nov 17 10:24:05 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Dependencies changed for 15.6 (boo#1217233):
+  * BR pkgconfig(krb5)
+
+-------------------------------------------------------------------
+Tue Aug 29 19:29:01 UTC 2023 - gmbr3@opensuse.org
+
+- Update to version 1.3.0+0:
+  * shell: fix visibility check for rows and avoid empty searches
+  * shell: avoid activating panel from an empty search
+  * Set last-panel only for noncrashing panels
+  * network: Increase maximum MTU value from 10000 to 65536
+  * display: Removed the loop from the snapping function
+  * display: Try snapping all the displays after a config change
+  * sound: Prevent duplicate sound device entries
+  * common: hostname-entry: Update hostname only after apply is
+    clicked
+  * usage: Fix confirmation dialog when clearing history
+  * thunderbold: Don't cast CcBoltPanel when cancelled
+  * user-accounts: close CcAvatarChooser before showing
+    GtkFileChooser
+  * user-accounts: disallow commas in real name
+  * printers: Use CUPS dest API for printing test page
+    instead CUPS IPP API
+  * keyboard: country matches should not be shown under a
+    language name.
+  * display: Add 32:9 to known aspect ratios
+  * sound: Add a "None" option to the alert chooser
+  * sound: Update sounds directory mtime when changing alert
+  * sound: Don't flip the balance and fade sliders in RTL
+  * Rework cc-usage-panel.c to display dialog on history
+    clearance
+  * Update POT for the latest translatables
+  * Add support for switching the file manager
+
+-------------------------------------------------------------------
+Sun Feb 05 15:28:32 UTC 2023 - gmbr3@opensuse.org
+
+- Update to version 1.2.0+0:
+  * thunderbolt: Ensure client and devices exist when setting
+    visibility
+  * thunderbolt: Hide panel if there's no thunderbolt hardware
+  * info-overview: Remove "Mesa" prefix for Intel Iris driver
+  * wwan: wait for apn_list to exist to add SIM providers
+  * wwan: Set apn access method before adding to list
+  * wwan: Update apn list only if device is available
+  * wwan: Track apn list updates
+  * Better english for the duplicate fingerprint
+  * user-account: Return duplicate notification when the finger is
+    exist
+  * info-overview: Add "Kernel Version" row
+  * info: Make get_hardware_model use a hostnamed property getter
+  * net-device-ethernet: Don't check device iface name
+  * net-device-ethernet: Prevent double free
+  * network: Fixed Network profiles shown on wrong device
+  * network: Fix an assertion failure
+  * cc-printers-panel: don't show two Add Printer buttons at once
+
+-------------------------------------------------------------------
+Thu Oct 06 13:05:25 UTC 2022 - gmbr3@opensuse.org
+
+- Update to version 1.1.1+0:
+  * Update background preview to look more like Budgie
+  * Ensure VNC/RDP remote control settings is honored
+  * Handle keybindings extraction
+  * More comprehensive C string extraction
+  * panels: wwan: Add WWAN 5G connection support
+
+-------------------------------------------------------------------
+Mon Aug 08 13:44:54 UTC 2022 - gmbr3@opensuse.org
+
+- Update to version 1.1.0+0:
+  * Update GLib dependency to 2.70
+  * power: Remove support for power-profiles-daemon < 0.9.0
+  * build: Add script to detect files in XDG_DATA_DIRS
+  * sharing: Turn off VNC gsettings key when turning off VNC (CVE-2022-1736, lp#1971415)
+  * sharing: Turn off RDP gsettings key when turning off RDP (lp#1971415)
+  * applications: Switch to g_spawn_check_wait_status()
+  * applications: Properly protect against NULL app_id
+  * wacom: Explicitly discard input from touchscreens
+  * wacom: Allow NULL monitors in calibration
+  * wwan: Make sure secrets are set when querying connection APN password
+  * display: Always show refresh rate
+  * network: Fix saving passwords for non-wifi connections
+  * build: Bump required gsettings-desktop-schemas version
+  * ua: Use the new high contrast key
+  * datetime: Remove tzname_daylight
+  * keyboard-shortcut-editor: fix leak of accel string
+  * keyboard-item: fix leak on unused CcKeyCombo
+  * keyboard-manager: fix leak of section list store
+  * common: Fix leak of GUdevDevice
+  * network: fix critical when opening VPN details page
+  * wacom: Add scenario tester
+  * wacom: Add a fake stylus when mocking a tablet
+  * wacom: Split off notebook switching for detected stylus
+  * wacom: Print errors for libwacom_new_from_*() calls
+  * info-overview: Allow changing "Device Name" by pressing "Enter"
+  * small typo
+  * Ensure buddies gresource includes sound test icons
+  * Remove Python from dependencies
+  * Fix typo in feature template
+  * Edit typo in bug_report template
+
+-------------------------------------------------------------------
+Fri May 27 13:41:13 UTC 2022 - gmbr3@opensuse.org
+
+- Update to version 1.0.2+0:
+  * Add missing systemd-service file for vnc sharing
+  * v1.0.2 version bump
+  * Rework VNC screensharing to work with GNOME 42 version of
+    GNOME Remote Desktop
+  * Rework fractional scaling to disable the lock-screen
+    GNOME/Budgie screensaver goes into a flash loop when
+    fractional scaling options are used.
+  * Move some items out to fix some fallback.
+  * Enable setting a dark distributor logo for Fedora.
+  * build: Bump required gsettings-desktop-schemas version
+  * small typo
+  * Ensure buddies gresource includes sound test icons
+  * Correct build issues with documentation meson option/disable
+    wayland building as a default
+  * Bump microrelease
+  * Reorganize directories to match budgie-desktop
+  * Port: Add individual app icons
+  * Fix lintian reported typo
+  * network: Fix OWE settings
+
+-------------------------------------------------------------------
+Thu Apr 14 11:18:45 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Split out bash completion into subpackage
+
+-------------------------------------------------------------------
+Tue Mar 08 17:34:40 UTC 2022 - gmbr3@opensuse.org
+
+- Initial version 1.0.0+0
+- Polkit security review (boo#1195023)
