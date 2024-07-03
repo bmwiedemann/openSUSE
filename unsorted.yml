@@ -565,9 +565,6 @@ unsorted:
   - amanda 
   - amarok-doc 
   - amarok-lang 
-  - amavisd-milter 
-  - amavisd-new 
-  - amavisd-new-docs 
   - amazon-ecs-init 
   - amazon-ssm-agent 
   - amber-cli 
@@ -832,7 +829,6 @@ unsorted:
   - aranym 
   - aravis 
   - aravis-viewer 
-  - arc 
   - arc-icon-theme 
   - arcanist 
   - arch-install-scripts 
@@ -856,7 +852,6 @@ unsorted:
   - aria2-lang 
   - arianna 
   - arianna-lang 
-  - arj 
   - arkade 
   - arm-ml-examples-data 
   - arm-trusted-firmware 
@@ -10802,7 +10797,6 @@ unsorted:
   - lfortran-devel 
   - lfortran-devel-static 
   - lha 
-  - lhasa 
   - lhasa-devel 
   - lib2geom-devel 
   - lib3270-5_4 
@@ -14083,7 +14077,6 @@ unsorted:
   - libleveldb1-x86-64-v3 
   - liblevmar2 
   - liblfortran0 
-  - liblhasa0 
   - libliftoff-devel 
   - libliftoff0 
   - liblightdm-qt5-3-0 
@@ -14349,7 +14342,6 @@ unsorted:
   - libmikmod-devel 
   - libmikmod3 
   - libmilter-doc 
-  - libmilter1_0 
   - libmimalloc2 
   - libmimetic-devel 
   - libmimetic0 
@@ -19300,7 +19292,6 @@ unsorted:
   - ncmpcpp 
   - nco 
   - nco-doc 
-  - ncompress 
   - ncspot 
   - ncurses-devel 
   - ncurses-devel-32bit 
@@ -21132,7 +21123,6 @@ unsorted:
   - perl-Const-Fast 
   - perl-Context-Preserve 
   - perl-Contextual-Return 
-  - perl-Convert-ASN1 
   - perl-Convert-BER 
   - perl-Convert-TNEF 
   - perl-Convert-UUlib 
@@ -21485,7 +21475,6 @@ unsorted:
   - perl-IO-Stty 
   - perl-IO-Tee 
   - perl-IO-TieCombine 
-  - perl-IO-stringy 
   - perl-IPC-Run 
   - perl-IPC-ShareLite 
   - perl-IPC-System-Simple 
@@ -22212,7 +22201,6 @@ unsorted:
   - perl-Unicode-Normalize 
   - perl-Unicode-String 
   - perl-Unicode-Stringprep 
-  - perl-Unix-Syslog 
   - perl-User-Identity 
   - perl-Variable-Magic 
   - perl-Verilog-Perl 
@@ -22293,7 +22281,6 @@ unsorted:
   - perl-genders 
   - perl-homedir 
   - perl-indirect 
-  - perl-ldap 
   - perl-lib-relative 
   - perl-libconfigfile 
   - perl-libdnf5 
@@ -46516,7 +46503,6 @@ unsorted:
   - tmxtools 
   - tn5250 
   - tn5250-devel 
-  - tnef 
   - tntdb-doc 
   - tntdb-mysql 
   - tntdb-postgresql 
@@ -47156,7 +47142,6 @@ unsorted:
   - unoconv 
   - unpack-install-jammer 
   - unpaper 
-  - unrar_wrapper 
   - unshield 
   - unshield-devel 
   - unzip-rcc 
@@ -48532,7 +48517,6 @@ unsorted:
   - zola-fish-completion 
   - zola-zsh-completion 
   - zonefs-tools 
-  - zoo 
   - zopfli 
   - zoxide 
   - zp 

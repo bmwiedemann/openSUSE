@@ -100,6 +100,9 @@
     <package name="alsa-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="alts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="amarok" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
+    <package name="amavisd-milter" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="amavisd-new" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="amavisd-new-docs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="analitza" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="analitza-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="apache-commons-logging" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -127,7 +130,9 @@
     <package name="arabic-kacst-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="arabic-kacstone-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="arabic-naqsh-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="arc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="argyllcms" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="arj" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="ark" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ark-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="arphic-ukai-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1209,6 +1214,7 @@
     <package name="lensfun-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="less" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="lftp" supportstatus="unsupported"/> <!-- reason: dvd:kdump -->
+    <package name="lhasa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="lib2geom1_3_0" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="lib389" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="libAnalitza9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
@@ -2355,6 +2361,7 @@
     <package name="libldm-1_0-0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libldns3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="liblensfun1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="liblhasa0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="liblightdm-gobject-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
     <package name="liblilv-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblirc_client0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2406,6 +2413,7 @@
     <package name="libmediacheck6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libmetalink3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libmicrodns1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libmilter1_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libminiupnpc17" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libminizip1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libminizip1-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -3190,6 +3198,7 @@
     <package name="nbdkit-server" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="nbdkit-ssh-plugin" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="nbdkit-vddk-plugin" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ncompress" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="ncurses-utils" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="net-snmp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="net-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -3358,11 +3367,12 @@
     <package name="pentaho-reporting-flow-engine" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="perl" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="perl-Archive-Zip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-Authen-SASL" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="perl-Authen-SASL" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-BSD-Resource" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Bootloader" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="perl-CGI" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="perl-Clone" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="perl-Convert-ASN1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Convert-BinHex" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Cpanel-JSON-XS" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Crypt-OpenSSL-Bignum" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -3391,6 +3401,7 @@
     <package name="perl-IO-Socket-SSL" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-IO-String" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-IO-Tty" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="perl-IO-stringy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-IP-Country" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-IPC-Run3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="perl-JSON" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -3423,6 +3434,7 @@
     <package name="perl-Try-Tiny" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Types-Serialiser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-URI" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="perl-Unix-Syslog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-WWW-RobotRules" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-X11-Protocol" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-X500-DN" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3437,6 +3449,7 @@
     <package name="perl-base" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="perl-common-sense" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-gettext" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="perl-ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-libwww-perl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-razor-agents" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="permctl" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -4045,6 +4058,7 @@
     <package name="time" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="timezone" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="tmux" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="tnef" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="tnftp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="totem" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="totem-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4172,6 +4186,7 @@
     <package name="unbound" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="unbound-anchor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="unison" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="unrar_wrapper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="unzip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="unzip-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="update-alternatives" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -4571,6 +4586,7 @@
     <package name="zeromq-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="zip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="zisofs-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="zoo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="zsh" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="zstd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="zypper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

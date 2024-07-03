@@ -102,6 +102,9 @@
       <repopackage name="alsa-utils"/>
       <repopackage name="alts"/>
       <repopackage name="amarok"/>
+      <repopackage name="amavisd-milter"/>
+      <repopackage name="amavisd-new"/>
+      <repopackage name="amavisd-new-docs"/>
       <repopackage name="analitza"/>
       <repopackage name="analitza-lang"/>
       <repopackage name="apache-commons-logging"/>
@@ -129,7 +132,9 @@
       <repopackage name="arabic-kacst-fonts"/>
       <repopackage name="arabic-kacstone-fonts"/>
       <repopackage name="arabic-naqsh-fonts"/>
+      <repopackage name="arc"/>
       <repopackage name="argyllcms"/>
+      <repopackage name="arj"/>
       <repopackage name="ark"/>
       <repopackage name="ark-lang"/>
       <repopackage name="arphic-ukai-fonts"/>
@@ -1213,6 +1218,7 @@
       <repopackage name="lensfun-data"/>
       <repopackage name="less"/>
       <repopackage name="lftp"/>
+      <repopackage name="lhasa"/>
       <repopackage name="lib2geom1_3_0"/>
       <repopackage name="lib389"/>
       <repopackage name="liba52-0"/>
@@ -2204,6 +2210,7 @@
       <repopackage name="libldm-1_0-0"/>
       <repopackage name="libldns3"/>
       <repopackage name="liblensfun1"/>
+      <repopackage name="liblhasa0"/>
       <repopackage name="liblightdm-gobject-1-0"/>
       <repopackage name="liblilv-0-0"/>
       <repopackage name="liblirc_client0"/>
@@ -2258,6 +2265,7 @@
       <repopackage name="libmediacheck6"/>
       <repopackage name="libmetalink3"/>
       <repopackage name="libmicrodns1"/>
+      <repopackage name="libmilter1_0"/>
       <repopackage name="libminiupnpc17"/>
       <repopackage name="libminizip1"/>
       <repopackage name="libminizip1-x86-64-v3"/>
@@ -3209,6 +3217,7 @@
       <repopackage name="nbdkit-server"/>
       <repopackage name="nbdkit-ssh-plugin"/>
       <repopackage name="nbdkit-vddk-plugin"/>
+      <repopackage name="ncompress"/>
       <repopackage name="ncurses-utils"/>
       <repopackage name="net-snmp"/>
       <repopackage name="net-tools"/>
@@ -3415,6 +3424,7 @@
       <repopackage name="perl-CGI"/>
       <repopackage name="perl-Clone"/>
       <repopackage name="perl-common-sense"/>
+      <repopackage name="perl-Convert-ASN1"/>
       <repopackage name="perl-Convert-BinHex"/>
       <repopackage name="perl-Cpanel-JSON-XS"/>
       <repopackage name="perl-Crypt-OpenSSL-Bignum"/>
@@ -3443,11 +3453,13 @@
       <repopackage name="perl-IO-HTML"/>
       <repopackage name="perl-IO-Socket-SSL"/>
       <repopackage name="perl-IO-String"/>
+      <repopackage name="perl-IO-stringy"/>
       <repopackage name="perl-IO-Tty"/>
       <repopackage name="perl-IP-Country"/>
       <repopackage name="perl-IPC-Run3"/>
       <repopackage name="perl-JSON"/>
       <repopackage name="perl-JSON-XS"/>
+      <repopackage name="perl-ldap"/>
       <repopackage name="perl-libwww-perl"/>
       <repopackage name="perl-LWP-MediaTypes"/>
       <repopackage name="perl-LWP-Protocol-https"/>
@@ -3477,6 +3489,7 @@
       <repopackage name="perl-TimeDate"/>
       <repopackage name="perl-Try-Tiny"/>
       <repopackage name="perl-Types-Serialiser"/>
+      <repopackage name="perl-Unix-Syslog"/>
       <repopackage name="perl-URI"/>
       <repopackage name="perl-WWW-RobotRules"/>
       <repopackage name="perl-X11-Protocol"/>
@@ -4095,6 +4108,7 @@
       <repopackage name="time"/>
       <repopackage name="timezone"/>
       <repopackage name="tmux"/>
+      <repopackage name="tnef"/>
       <repopackage name="tnftp"/>
       <repopackage name="totem"/>
       <repopackage name="totem-lang"/>
@@ -4222,6 +4236,7 @@
       <repopackage name="unbound"/>
       <repopackage name="unbound-anchor"/>
       <repopackage name="unison"/>
+      <repopackage name="unrar_wrapper"/>
       <repopackage name="unzip"/>
       <repopackage name="unzip-doc"/>
       <repopackage name="update-alternatives"/>
@@ -4623,6 +4638,7 @@
       <repopackage name="zeromq-tools"/>
       <repopackage name="zip"/>
       <repopackage name="zisofs-tools"/>
+      <repopackage name="zoo"/>
       <repopackage name="zsh"/>
       <repopackage name="zstd"/>
       <repopackage name="zypper"/>
