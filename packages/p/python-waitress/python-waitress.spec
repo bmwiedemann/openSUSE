@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-waitress
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-waitress%{psuffix}
-Version:        2.1.2
+Version:        3.0.0
 Release:        0
 Summary:        Waitress WSGI server
 License:        ZPL-2.1
@@ -42,7 +42,9 @@ Source:         https://files.pythonhosted.org/packages/source/w/waitress/waitre
 # https://docs.python.org/3/objects.inv -> python3.inv
 Source1:        python3.inv
 Source2:        fetch-intersphinx-inventories.sh
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 BuildArch:      noarch
@@ -53,7 +55,7 @@ BuildRequires:  alts
 Requires:       alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 %else
 # Documentation requirements
@@ -87,10 +89,10 @@ http://docs.pylonsproject.org/projects/waitress/en/latest/ .
 sed -i '/addopts/d' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/waitress-serve
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -113,7 +115,7 @@ sed -i '/addopts/d' setup.cfg
 %doc COPYRIGHT.txt README.rst
 %python_alternative %{_bindir}/waitress-serve
 %{python_sitelib}/waitress
-%{python_sitelib}/waitress-%{version}*-info
+%{python_sitelib}/waitress-%{version}.dist-info
 
 %else
 

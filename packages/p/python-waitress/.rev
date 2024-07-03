@@ -312,4 +312,31 @@ Drop sphinx doctrees for reproducible builds</comment>
     <comment></comment>
     <requestid>1130937</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>a6a4c29677683a177fdfbaea98cbb1f2</srcmd5>
+    <version>3.0.0</version>
+    <time>1720031328</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.0:
+  * Fixed testing of vendored asyncore code to not rely on
+    particular naming for errno's.
+  * HTTP Request methods and versions are now validated to meet
+    the HTTP standards thereby dropping invalid requests on the floor.
+  * No longer close the connection when sending a HEAD request
+    response.
+  * Always attempt to send the Connection: close response header
+    when we are going to close the connection to let the remote
+    know in more instances.
+  * Document that trusted_proxy may be set to a wildcard value to
+    trust all proxies.
+  * clear_untrusted_proxy_headers is set to True by default.
+
+    https://github.com/Pylons/waitress/security/advisories/GHSA-4f7p-27jc-3c36
+  * Waitress did not properly validate that the HTTP headers it received
+    were properly formed, thereby potentially allowing a front-end server
+    to treat a request different from Waitress. This could lead to HTTP
+  * Waitress won’t accidentally throw away part of the path if it
+- Initial package (0.8.3)</comment>
+    <requestid>1184077</requestid>
+  </revision>
 </revisionlist>
