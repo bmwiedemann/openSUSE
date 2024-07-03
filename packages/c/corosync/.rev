@@ -1,0 +1,1174 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d155b39639f2b518e5b65542e71dddc3</srcmd5>
+    <version>1.2.1</version>
+    <time>1277827839</time>
+    <user>autobuild</user>
+    <comment>Copy from network:ha-clustering:Factory/corosync based on submit request 42251 from user tserong
+</comment>
+    <requestid>42251</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d155b39639f2b518e5b65542e71dddc3</srcmd5>
+    <version>1.2.1</version>
+    <time>1278667400</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d155b39639f2b518e5b65542e71dddc3</srcmd5>
+    <version>1.2.1</version>
+    <time>1278678635</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ddfd8a2549a3d5fac89d35028f186f4f</srcmd5>
+    <version>1.2.7</version>
+    <time>1291302616</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54310 from user colyli
+</comment>
+    <requestid>54310</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8e3914f289fc2d549bf387b5bd2b8cc4</srcmd5>
+    <version>1.2.7</version>
+    <time>1291302624</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54310
+</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>376b1539815c4cad54020cd61923dca7</srcmd5>
+    <version>1.3.0</version>
+    <time>1297384270</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60401 from user tserong
+</comment>
+    <requestid>60401</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f18df0fcaf3793e9268a048cb6774597</srcmd5>
+    <version>1.3.0</version>
+    <time>1297384275</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60401
+</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>f18df0fcaf3793e9268a048cb6774597</srcmd5>
+    <version>1.3.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9586f0f84237bb5fcef3f1c1a431a8dc</srcmd5>
+    <version>1.4.1</version>
+    <time>1316617120</time>
+    <user>saschpe</user>
+    <comment>Update to version 1.4.1</comment>
+    <requestid>84016</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>9586f0f84237bb5fcef3f1c1a431a8dc</srcmd5>
+    <version>1.4.1</version>
+    <time>1319181823</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>b748206bfdd4092c20ba3c8ed4d38a77</srcmd5>
+    <version>1.4.1</version>
+    <time>1323191054</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>df75a82a487ab4527ca3248172c2fe1d</srcmd5>
+    <version>1.4.1</version>
+    <time>1329391151</time>
+    <user>coolo</user>
+    <comment>Send CPG_REASON_PROCDOWN when really needed (bnc#740343)</comment>
+    <requestid>104853</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d002b468979249b1bac70b236b638beb</srcmd5>
+    <version>1.4.3</version>
+    <time>1339781933</time>
+    <user>coolo</user>
+    <comment>Update to 1.4.3 stable release (fixes a bunch of bugs)</comment>
+    <requestid>125084</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>d002b468979249b1bac70b236b638beb</srcmd5>
+    <version>1.4.3</version>
+    <time>1340183249</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>d002b468979249b1bac70b236b638beb</srcmd5>
+    <version>1.4.3</version>
+    <time>1359108768</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>567926357d7510418ef2195257a2caef</srcmd5>
+    <version>1.4.3</version>
+    <time>1366975508</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 160430 from m_meister)</comment>
+    <requestid>173474</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c55e5d4e75b4b02c6fb842d16c18a5d9</srcmd5>
+    <version>1.4.5</version>
+    <time>1369640619</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>176003</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>c55e5d4e75b4b02c6fb842d16c18a5d9</srcmd5>
+    <version>1.4.5</version>
+    <time>1379662147</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d16fff9558f054b34e213f038c67730f</srcmd5>
+    <version>2.3.1</version>
+    <time>1380121657</time>
+    <user>coolo</user>
+    <comment>update to version 2.3.1</comment>
+    <requestid>199353</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>c5bdd9017ce1241a140cbb6114e9774d</srcmd5>
+    <version>2.3.1</version>
+    <time>1386222672</time>
+    <user>coolo</user>
+    <comment>A new update for Factory, to also make sure openais is removed on
+update.
+
+- Obsolete openais so that updates work automatically and uninstall the
+  openais package.</comment>
+    <requestid>209302</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ed15f125724226dff342cbf17f32f030</srcmd5>
+    <version>2.3.2</version>
+    <time>1389107729</time>
+    <user>coolo</user>
+    <comment>update to upstream latest version 2.3.2 (forwarded request 212451 from lisaseraph)</comment>
+    <requestid>212596</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5c4f5db1a5c3466e2471e6bb64cc7879</srcmd5>
+    <version>2.3.3</version>
+    <time>1391090064</time>
+    <user>coolo</user>
+    <comment>update corosync to 2.3.3 (forwarded request 214541 from zhonglidong)</comment>
+    <requestid>214997</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>6fde4a564b81d4f721ca4b45d9e431c4</srcmd5>
+    <version>2.3.3</version>
+    <time>1395156083</time>
+    <user>coolo</user>
+    <comment>fix bug#866057 and bug#867767 (forwarded request 226332 from zhonglidong)</comment>
+    <requestid>226333</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>0348333a6dba345f7089184654e63ee9</srcmd5>
+    <version>2.3.3</version>
+    <time>1397540123</time>
+    <user>coolo</user>
+    <comment>fix bnc#872651 and bnc#872122</comment>
+    <requestid>229943</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>973efc630f3749229e0d0018e84d8d75</srcmd5>
+    <version>2.3.3</version>
+    <time>1404996894</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239416</requestid>
+  </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>973efc630f3749229e0d0018e84d8d75</srcmd5>
+    <version>2.3.3</version>
+    <time>1409300676</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f047c16dbaec52d5cef2ec45ec52517a</srcmd5>
+    <version>2.3.4</version>
+    <time>1410361317</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248185</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>0032778055a1305a4b5605f663a1b3ea</srcmd5>
+    <version>2.3.4</version>
+    <time>1416824151</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>262713</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>597dd866894d349484125ae2eba39164</srcmd5>
+    <version>2.3.5</version>
+    <time>1438076507</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319045</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>c5a9f9a86d84678599b9a3c1d499006e</srcmd5>
+    <version>2.3.5</version>
+    <time>1440135586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>323888</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>f7c1f3041395eb1bdb1a8af5609f2fae</srcmd5>
+    <version>2.3.5</version>
+    <time>1468999007</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>408419</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>b4875788e2603d5f4a2dcadc1fa6b510</srcmd5>
+    <version>2.4.1</version>
+    <time>1478174337</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438486</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>d50c47d63bdb7b60c72bd54edc26cf15</srcmd5>
+    <version>2.4.2</version>
+    <time>1481272302</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>444071</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>6494e236aecf40927314d32749a96013</srcmd5>
+    <version>2.4.2</version>
+    <time>1488548303</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>461232</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>a84b3ba853024e714380b3d46debdcb8</srcmd5>
+    <version>2.4.2</version>
+    <time>1490025853</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479176</requestid>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>58342e3ad2da589187e7fa7e5f033dbf</srcmd5>
+    <version>2.4.2</version>
+    <time>1492515999</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>487285</requestid>
+  </revision>
+  <revision rev="37" vrev="5">
+    <srcmd5>67179770dadc3f3c5a74dad12386a27b</srcmd5>
+    <version>2.4.2</version>
+    <time>1495133083</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495135</requestid>
+  </revision>
+  <revision rev="38" vrev="6">
+    <srcmd5>eb8bd365bced547d74a0e6d905d5f42e</srcmd5>
+    <version>2.4.2</version>
+    <time>1497687597</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501564</requestid>
+  </revision>
+  <revision rev="39" vrev="7">
+    <srcmd5>d6a6ecbba350588f2505d5a20c6411da</srcmd5>
+    <version>2.4.2</version>
+    <time>1499754213</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509083</requestid>
+  </revision>
+  <revision rev="40" vrev="8">
+    <srcmd5>2fb3d7759c2c441abdd11e9545889a8f</srcmd5>
+    <version>2.4.2</version>
+    <time>1500669326</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509615</requestid>
+  </revision>
+  <revision rev="41" vrev="9">
+    <srcmd5>94634c1aa8370975337203d0ed14f0e8</srcmd5>
+    <version>2.4.2</version>
+    <time>1503592005</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>517168</requestid>
+  </revision>
+  <revision rev="42" vrev="10">
+    <srcmd5>9deab005bb97995261cd1ce8af8b2dfc</srcmd5>
+    <version>2.4.2</version>
+    <time>1504520916</time>
+    <user>dimstar_suse</user>
+    <comment>- corosync.service should be marked as a static service(bsc#1055585)
+    Added: 0012-mark-corosync-as-a-static-service.patch
+- Fix RPM groups.
+- L3: corosync: assert(sender_node != NULL) fails after tearing down a network interface(bsc#1032634)
+    Added: 0010-fix-ifdown-udp.patch 
+- Fix rpmlint warnings
+    Added: 0011-fix-tmpfiles-create.patch
+- some errors in spec file(bsc#1047862)
+   Modified:corosync.spec
+   1) as in openSUSE:factory, there are %define, but bcond_with coudld be toggled by osc command , change %define to %bcond_with and %bcond_without
+   2) change service_del_postun to service_del_preun, since service_del_postun is not a right macro
+   3) remove macro tpmfiles_create define from corosync.spec.
+ 
+- make corosync.spec uniform (bsc#1051385)
+Modified: corosync.spec
+    1. there are some lines are commented in corosync.spec, will define new macro to make these lines uncommented
+    2. in former, xmlconf, rdma and snmp were disabled, these features are wrongly enabled, will disable them
+-  some upstream fixes for corosync(bsc#1048259) 
+Added:
+    bsc#1047860-add-version.patch
+    0007-Make-corosync-work-when-FIPS-mode-is-enabled.patch
+    0008-main.c-add-option-to-set-priority.patch
+    0009-totem-Propagate-totem-initialization-failure.patch
+Removed:
+    bnc#867767-add-version.patch
+    0007-improve-corosync-keygen.patch(since this patch is not for corosync v2.x)
+Modified:
+    corosync.spec, add judgement whether /etc/sysconfig/corosycn* exist before remove these files
+- some errors in spec file(bsc#1047862)
+Modified:
+    corosync.spec
+- improvement for corosync-keygen(bsc#1047861)
+Added:
+    0007-improve-corosync-keygen.patch
+- 1047860corosync report wrong version number(bsc#1047860)
+Modified:
+    bnc#867767-add-version.patch
+-  some Fixes from upstream(bsc#1043045)
+Added: 
+    0004-main-Display-reason-why-cluster-cannot-be-formed.patch
+    0005-votequorum-Report-errors-from-votequorum_exec_send_r.patch
+    0006-coroapi-Use-size_t-for-private_data_size.patch
+[patch-lost-in-sle] Missing issues in openSUSE:Factory/corosync(bsc#1041587)
+   add change log for upgrading corosync to v2.3.6 and make this change log contain all records in SLE12 SP3
+   make the format consistent
+- totemrrp: Fix situation when all rings are faulty(bsc#1039215)
+Added: 
+    0003-totemrrp-Fix-situation-when-all-rings-are-faulty.patch
+- calling mlockall before corosync_tty_detach is noop when corosync is executed as a daemon(bsc#1038147)
+Added: 
+    0002-Main-call-mlock-after-fork.patch
+- [upgrade] Changing the pre-upgrade role for node failed(bsc#1030437)
+Added:
+    0001-totemconfig.c-Fixed-Evicted-from-CPG-membership.patch
+Removed: 
+    0001-totemip.c-Fixed-Evicted-from-CPG-membership.patch
+- L3-Question: corosync logging priority takes no effect(bsc#1023959)
+Added:
+    0001-Logsys-Change-logsys-syslog_priority-priority.patch
+    0001-logconfig.c-make-logging.syslog_priority-and-logging.patch
+-  Corosync 2.4.1 still produces libvotequorum.so.7.0.0, just like Corosync 2.3.6.(bsc#1013842)
+Added: 
+   disable-build-html-docs.patch
+   
+upgrade to corosync-2.4.2:
+     Man: Fix corosync-qdevice-net-certutil link
+     man: mention qdevice incompatibilites in votequorum.5
+     Qnetd LMS: Fix two partition use case
+     cfg: Prevents use of uninitialized buffer
+- upgrade to corosync-2.4.1(bsc#1004967)
+Added: 
+    corosync-start-stop-level.patch
+Deleted: 
+    Config-Flag-config-uidgid-entries.patch
+    cfg-Prevents-use-of-uninitialized-buffer.patch
+    cts-Make-it-run-with-pacemaker-1.13.patch
+    get_cluster_mcast_addr-error-is-not-fatal.patch
+    totemsrp-Addition-of-the-log.patch
+modified: bnc#867767-add-version.patch, change version to 2.4.1
+corosync-2.4.1:
+    Low: totemsrp: Addition of the log.
+    cts: Make it run with pacemaker-1.13+
+    Config: Flag config uidgid entries
+    Spec: Qdevice require same version of corosync
+corosync-2.4.0:
+    qdevice and qnet
+    config: get_cluster_mcast_addr error is not fatal
+    some typo fixes
+upgrade corosync-v2.3.5 to corosync-v2.3.6, and backport patches from v2.4.2(FATE#322113, bsc#1020550)
+Added:
+    Config-Flag-config-uidgid-entries.patch
+    cfg-Prevents-use-of-uninitialized-buffer.patch
+    cts-Make-it-run-with-pacemaker-1.13.patch
+    get_cluster_mcast_addr-error-is-not-fatal.patch
+    totemsrp-Addition-of-the-log.patch
+Removed:
+    corosync-cts-api-error.patch
+v2.3.6
+- logconfig: Fix logging reload disabling logfiles
+- wd: Warn if values are out of range
+- parser: WD Read type correctly from corosync.conf
+- Add some more RO keys
+- Reapply config defaults corosync.conf reload
+- schedwrk: Cleanup and make it work on PPC BE
+- cmapctl: Handle corosync errors in print_key func
+- Adds doxygen stubs to include directory
+- Add clang-format configuration file
+- wd: make watchdog device configurable
+- logging: Use our own version of basename
+- logsys: fix TOTEM logging when corosync built out of tree
+- parser: Make config file parser more hierarchy
+- totemconfig: Explicitly pass IP version
+- cpg: Handle ipc error in cpg_zcb_alloc/free
+- cpg: Memory not unmapped in cpg_zcb_free
+- totempg: Fix memory leak
+- Fix spelling errors
+- Add section in manual title for cpg_zcb_free 3
+- Add section in manual title for cpg_zcb_alloc 3
+- Update corosync.spec source link
+- Update gitignore files
+- Remove all links to old ML
+- totemsrp: Fix clang warning (tautological compare)
+- configure.ac: Make location of .pc overrideable
+- Remove a few unused variables and functions
+- configure.ac: We don't need no C++ compiler
+- configure.ac: Remove deprecated AC_PROG_LIBTOOL
+- configure.ac: make foreign apply to all Makefiles
+- Remove unused, obsolete check 
+- Fix detection of qb_log_thread_priority_set
+- cpghum: Fix type of recv_crc
+- Check for fdatasync
+- Fix detection of warning flags for clang
+- quorum: Display node id as unsigned int.
+- cts: InitClusterManager is now BootCluster
+- totemudp: Move udp bind() so that multicast works with IPv6
+- cfgtool: Display nodeid as unsigned int
+- votequorum: Don't send multiple callbacks when nodes join
+- man: Add synopsis for cpg_zcb_alloc and free
+- man html index: Update index
+- votequorum: Make sure cs_error_t is defined
+- Doxygen fix for cmap_iter_next()
+- configure: Correct help entry for logdir
+- totmesrp: Fix typo in log message
+- configure: typo in include
+- man page: Correct option letter for DBus
+- wd: fix setting of watchdog timeouts
+- CFG: Prevent CFG orignating messages during SYNC
+- Default token timeout was 5000 ms in SLE 11 SP4, but is 1000 ms in SLE 12(bsc#1001164)
+  Added: bsc#1001164-corosync.conf-example.patch
+- Fix: [s390]Upgrade from SP1-GM + HA to SP2-RC2 +: Failed to start Corosync Cluster engine(bsc#996230)
+- modify corosync.spec to remove &quot;chkconfig --add&quot;
+- remove corosync-devel and require lines from baselibs.conf
+-  corosync process still exists when stop pacemaker service(bnc#988683) 
+- remove git files from tarball(bnc#941910)
+- modify corosync.spec to delete logrotate.d
+update from v2.3.3 to v2.3.5 (bnc#939328)
+v2.3.5
+- Log: Add logrotate configuration file
+- totemsrp: Improve logging of left/down nodes
+- totemconfig: Check for duplicate nodeids
+- Really add cpghum
+- cpg: Add support for messages larger than 1Mb
+- Handle adding and removing UDPU members atomically
+- add patches:
+  * corosync-cts-api-error.patch
+  * bnc#867767-add-version.patch
+- mv the place of corosync.conf.example*(fate#318190)
+- Replace systemd BuildRequires with pkgconfig(systemd): we do not
+  require the full installation / dep chain of systemd.
+- fix bashisms in mem_leak_test.sh script
+- add patches:
+  * corosync-2.3.4-fix-bashisms.patch
+- fix bashism in preun script
+- Update to corosync 2.3.4
+- Drop the obsoleted patches
+  - corosync-cts-api-error.patch
+  - bnc#867767-add-version.patch
+  - bnc#881142-fix-shm-leak.patch
+- quorumtool: Sort output by nodeid
+- YKD: Fix loading of YKD quorum module
+- corosync-quorumtool: add sort options
+- cleanup after test-driver
+- be consistent in using CPPFLAGS vs CFLAGS
+- totemsrp: Fix typo with cont gather
+- cpg: Refactor mh_req_exec_cpg_procleave
+- cpg: Make sure nodid is always logged as hex num
+- cpg: Make sure left nodes are really removed
+- mon: Make mon compilable with libstatgrab ver 0.9
+- mon: Fix comparsion typo
+- mon: Pass correct pointer to inst
+- mon: Make monitoring work
+- config: Handle totem_set_volatile_defaults errors
+- config: Allow dynamic change of token_coefficient
+- Log: Make reload of logging work
+- Really clear totemconfig nodes on reload
+- Add token_coefficient option
+- init: Make init script configurable
+- totemiba: Fix incorrect failed log message
+- logsys: Log error if blackbox cannot be created
+- logsys: Log warning if flightrecorder init fails
+- Introduce get_run_dir function
+- Move ringid store and load from totem library
+- coroparse: More strict numbers parsing
+- Doc: Enhance INSTALL file a bit
+- Make config.reload_in_progress key read only
+- Fix compiler warning introduced by previous patch
+- totemconfig: Free ifaddrs list
+- totemconfig: Make sure join timeout is less than consensus
+- totemconfig: Key change process dependencies
+- totemconfig: Log errors on key change and reload
+- totemconfig: totem_config_get_ip_version
+- totemconfig: refactor nodelist_to_interface func
+- corosync-keygen: Replace printf/exit call with err
+- votequorum: Add cmap key to reset wait_for_all
+- votequorum: Return current ring id in callback
+- votequorum: Add ring id to poll call
+- votequorum: Do not process events during reload
+- votequorum: Block sync until qdevice poll
+- votequorum: Make qdev timeout in sync configurable
+- votequorum: Properly initialize atb and atb_string
+- ipc: Process votequorum messages during sync
+- testvotequorum2: Opt for polling with old ringid
+- TODO: Remove TODO file
+- Makefile: Do not install TODO file
+- totem: Inform RRP about membership changes
+- totemnet: Add totemnet_member_set_active
+- totemrrp: Implement *_membership_changed
+- totemudpu: Implement member_set_active
+- totemudpu: Send msgs to all members occasionally
+- Cancel token holding while in retransmition
+- upstart: Make job conf file configurable
+- systemd: Config example for corosync wd service
+- Install doc: Correct a typo
+- init: change return value when starting corosync
+- Free object allocated at quorum_register_callback
+- corosync-cmapctl: Allow -p option to delete keys
+- Implement config file testing mode
+- Slightly rework corosync-keygen.
+- totemiba: Add multicast recovery
+- Indent: Remove space in negation of expression
+- Indent: Remove newline before else branch start
+- fix memory leak produced by 'corosync -v'
+- Handle SIGSEGV and SIGABRT signals
+- comment out line: to_logfile:no (bnc#882449) 
+  work on patch bnc#882449-corosync-conf-example.patch
+- Fixed shared memory leak.
+  + bnc#881142-fix-shm-leak.patch
+- Update corosync.conf.example and corosync.conf.example.udpu(bnc#882449) 
+  - remove corosync-conf-example.patch
+  + add bnc#882449-corosync-conf-example.patch
+- Fix `systemctl stop pacemaker` leaves corosync running
+  + bnc#872651-stop-cluster.patch 
+- Ensure that libopenais3 is removed on update of corosync(bnc#872122)
+- Modify spec file:add symlink rccorosync to /usr/sbin/service (bnc#866057) 
+- Fix corosync -v show UNKNOW (bnc#867767) 
+  + bnc#867767-add-version.patch
+- Update to corosync 2.3.3
+- Properly check result of symlink
+- Fix cppchecks warning
+- Close devnull file handler
+- votequorum: Add missing man pages
+- totem: Drop invalid join msg in operational state
+- systemd unit: Make sure network is really up
+- votequorum: Improve/add documentation for quorum device API
+- votequorum: Add persistent expected_votes tracking.
+- Upstream version cs: 45dd9861ff78362068d214cf520006a1b26376cd 
+- Add patch to fix cts api wrong issue 
+  + corosync-cts-api-error.patch
+- Add patch to change default settings of conf.example
+  + corosync-conf-example.patch 
+- Update to corosync 2.3.2 
+- cfgtool: return error on reload failure
+- man pages: Note that votequorum's allow_downscale is unsupported
+- logsys: Make logging of totem work again
+- totemsrp: Show English message when memb_state_gather_enter is called
+- totemiba: Check if configured MTU is allowed by HW
+- totemiba: Fix parameters position for poll_add
+- totemiba: Del channel fd from poll before destroy
+- totemiba: Properly allocate RDMA buffers
+- Upstream version cs: 7014f10123a634cf026491edc9a09d6044106116
+- Obsolete openais so that updates work automatically and uninstall the
+  openais package.
+- Upstream version cs: c6688c6e11a35d13293f9b610faca5c7beb7e5cb 
+- Reload: document config.reload_in_progress in man page
+- Reload: Add atomic reload to log config
+- Reload: Add atomic reload to totemconfig
+- Reload: Add reload code to cfg
+- Reload: Make coroparse use a designated icmap hash table
+- icmap: Add func to test equality of two key values
+- [PATCH] Replace freopen with open/dup2 when daemonizing
+- Add log message to exit signal handler
+- icmap: Add map copy function
+- icmap: Add function to return item data pointer
+- icmap: Fix value len checking for strings
+- icmap: Add function to return global icmap
+- icmap: Allow multiple icmap instances
+- Fix scheduler pause-detection timeout 
+- Update corosync-2.3.1.tar.gz for cts file missing 
+- Fix corosync start failed issue
+  + corosync-init-lockfile-path-error.patch
+- Update to corosync 2.3.1 stable release
+- Remove patches for all merged in the upstream or obsoleted 
+  - corosync-confexample-timestamp.patch
+  - corosync-cpg-procdown.patch
+  - corosync-revert-cs2429.patch
+  - corosync.conf.example.patch
+  - corosync_reduce_RR_priority.patch
+  - fix-nodeid-conflicting.patch
+- Update to corosync 1.4.5 stable release (bnc#799031)
+- coroipc: Handle pfd.revents as bit-field
+- Check socket_recv error code in ipc_dispatch_get
+- On places with POLLERR check also POLLNVAL
+- coroipc: Don't spin when waiting on semaphore
+- log: Handle race in printf_to_logs and format_set
+- objdb: Don't read uninitialized memory in inc/dec
+- Add waiting_trans_ack also to fragmentation layer
+- Handle segfault in backlog_get
+- Fix problem with sync operations under very rare circumstances
+- manpages: Add confdb_key_get man page
+- manpages: Add links for referenced confdb calls
+- manpages: Fix typo in evs* manpages
+- If failed_to_recv is set, consensus can be empty
+- Ignore sync barrier msgs if sync doesn't started
+- Make service_build contain correct number of msgs
+- Handle sync and service unload correctly
+- Don't call sync_* funcs for unloaded services
+- Return back &quot;Totem is unable to form...&quot; message
+- Move &quot;Totem is unable to form...&quot; message to main
+- Use unix socket for local multicast loop
+- cpg: Enhance downlist selection algorithm
+- cpg: Process join list after downlists
+- cpg: Never choose downlist with localnode
+- Fix cpg_membership_get()
+- Don't access invalid mem in totemconfig
+- Move some totem and cpg messages to trace level
+- flatiron: Free outq items list on conn exit
+- Fix nodeid conflicting issue (bnc#806634)
+  + Added fix-nodeid-conflicting.patch
+- change the default priority to RR(1) same as pacemaker(bnc#804707)
+  + Added corosync_reduce_RR_priority.patch
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+- Update to corosync 1.4.3 stable release.
+- Add calls to missing object_find_destroy() to fix mem leaks
+- Free mem allocated by getaddrinfo
+- corosync.conf.example: change bindnetaddr, mcastaddr, add comments
+- Store error str if can't open logfile
+- Wait for corosync-notifyd exit in init script
+- iba: Use configured node id
+- Unlink shm buffers if init fails
+- Fix memory leaks when nss fails
+- Madvise NOSYNC flag only if available
+- Include net/if_var.h header only when needed
+- Include stdint.h because funcs uses int16_t
+- Use install instead of cp
+- Don't unlock mutex in different threads
+- Revert &quot;Use install instead of cp&quot;
+- Add support for per OS CP flags 
+- Remove cloned lines in main of main.c 
+- Fixed bug when corosync receive JoinMSG in OPERATIONAL state
+- Correct nodeid of token when we retransmit it
+- Correct nodeid in memb_state_commit_token_send function 
+- Send CPG_REASON_PROCDOWN when really needed (bnc#740343)
+- Changes since corosync 1.4.1 stable release:
+* Resolve a deadlock between the timer and serialize locks.
+* totemconfig: change minimum RRP threshold
+* Ignore memb_join messages during flush operations
+* rrp: Higher threshold in passive mode for mcast (bnc#712037)
+* rrp: Handle endless loop if all ifaces are faulty (bnc#712037)
+* A CPG client can sometimes lockup if the local node is in the downlist
+* Handle errors from totem_mcast
+* coroipcc: use malloc for path in service_connect
+* Version cs: 23112099e1c2b620e6976ca099d2b9afc80721aa
+- corosync 1.4.1 stable release:
+* main: let poll really stop before totempg_finalize
+* totemsrp: fix buffer overflows for large clusters (&gt; 100 nodes)
+* rrp: Handle rollower in passive rrp properly
+* rrp: handle rollover in active rrp properly
+* totemconfig: Change default FAIL_TO_RECV_CONST
+* Fix problem where corosync will segfault if there are gaps in recovery
+  queue
+* cpgtool/cfgtool: print list of IP with space between items
+* RRP: redundant ring automatic recovery (fate#310284)
+* fix typos in cpg_mcast_joined.3 and cpg_zcb_mcast_joined.3
+* Remove spinlocks
+* confdb: Resolve dispatch deadlock
+* RRP: Fix ring initialization issue for UDPU mode
+* crypto: rng_make_prng prevent buf overflow
+* cpg: do_proc_join change list_slice to list_add
+* totemudp: memset of proper size
+* coroipcs: init buf in coroipcs_handler_dispatch
+* iazc: Reduce number of mem alloc and memcpy
+* coroipcc: Fix unhandled BSD EOF in coroipcc_dispatch_get()
+* cpg: fix sync master selection when one node paused
+* totemsrp: Enhance mcast failure detection
+* coroipcs: Deny connect to service without initfn
+* Add ipc_refcnt to message_handler_req_{exec, lib}_cfg_ringreenable()
+- corosync 1.3.1 release:
+* corosync crashing when a network becomes disrupted and then restored
+  (bnc#685241)
+* Align IPC on 8 byte boundaries for performance and avoid bus errors.
+* Provide better checking of the message type.
+* totemsrp: free messages originated in recovery rather then rely on
+  messages_free
+* Resolve abort during simulatenous stopping of at least 4 nodes.
+* Don't assert when ring id file is less then 8 bytes (possibly after
+  local fs problems).
+* Handle delayed multicast packets that occur with switches.
+* CPG: make sure coroipcc_service_disconnect() is always called.
+* Fix abort when token is lost in RECOVERY state (bnc#677779)
+- Remove redundant tags/sections from specfile
+- Add baselibs configuration
+- Update to corosync 1.3.0
+- Set the max buffer size for sockets to reduce message dropping
+- diags: add a mechanism to trigger the writing the flight data
+- Add the UDPU transport (UDP transport for corosync)
+- Remove delay in library on corosync shutdown
+- Check for a properly configured multicast address.
+- cpg: fix sync'ing the downlist.
+- POLL: gracefully handle running out of file descriptors.
+- Return CS_ERR_NO_RESOURCES when the server is low on available file
+  descriptors.
+- Remove checking of subparameters in service.d files.
+- Only allow corosync to run one copy via a lock file.
+- When used with the openais ckpt service, don't disconnect an ipc
+  connection during configuration change that takes longer then 2
+  seconds.
+- Remove the token cancel retransmit timeout on receipt of a multicast
+  message.
+- Update to corosync 1.2.7
+  - Remove consensus check for two node cluster cases which can have smaller
+    consensus values.  Document in man page the behavior of consensus.
+- Fix problem where flow control could lock up ipc under very heavy load in
+  very rare circumstances (upstream cs 3003)
+- SYNC: always call sync_aborted() in sync_confchg_fn() (upstream cs 3000)
+- SYNCV2: reset the my_memb_determine_ring_id in sync_v2_memb_list_abort()
+  (upstream cs 2999)
+- Fix logging_daemon config parser code (rhbz#615203) (upstream cs 2998)
+- Remove reset of token timeout on retransmitted token reception.  Fixes
+  membership problems with certain timing parametrs (upstream cs 2989)
+- Speed up IPC connection process (upstream cs 2987)
+- Fix fail list fault that occurs in very rare circumstances (upstream cs 2985)
+- Update to corosync 1.2.6
+  - 80% packet loss networks were resulting in problems with totem.
+  - Fixed ~40 scanning errors found with coverity.
+  - cpg_membership_get now functional.
+  - errors logged prior to the start of the daemon were not flushed.
+  - Fixes defects in logsys which are crashing pacemaker installations.
+  - Adds man pages for all binaries
+  - Fixes several defects found in high packet loss field environments.
+  - Send proper notification code of CPG_REASON_LEAVE in cpg service.
+  - Fix segfault when pacemaker forks new processes
+  - Unlock global serializer lock during shutdown to prevent spinning on 
+    single cpu systems or high cpu use on mulitple cpu systems
+  - Stop totem statistics updater timer during shutdown to prevent a 
+    segfault during shutdown.
+  - Fix problem where glibc's fork() implementation may cause segfaults in 
+    Pacemaker's use of the fork() system call.
+  - Fix problem where a full /dev/shm would result in client segfault - 
+    instead an error is returned in this situation.
+  - Fix problem where flight recorder leaks files in shared memory 
+    filesystem.  Also clean up the error handling of the shared memory 
+    allocation code of the flight recorder.
+  - Fix problem where a failure in glibc's pathconf API would result in 
+    segfault.
+  - Add corosync and corosync-blackbox man pages.
+- prevent corosync-cfgtool from hanging (bnc#616183)
+- Set sensible defaults for Pacemaker in corosync.conf.example (bnc#610663)
+- Clarify bindnetaddr option in corosync.conf.5 manpage (upstream cs 2856)
+- Handle POLLNVAL in coroipcc
+- Save the ring id and restore it properly when the recovery operation fails
+- increase maximum entries in the retransmit queue when recovery takes place.
+- fix one-off error in memove
+- discard and report unknown messages
+- fix valgrind reported problems (upstream cs 2787)
+  - Memset for res_setup variable in coroipcs:req_setup_send
+  - Two memset in logsys for buffers
+  - Problem in corosync_totem_stats_updater where
+	avg_token_holdtime has size of avg_backlog_calc
+  - corosync_totem_stats_init where avg_backlog_calc is 32 bits (not 64)
+  - objdb problem if new_valie_len != object-&gt;value_len. In
+	such case newly allocated memory is not initialized and in some
+	situations, value_len is not updated.
+- select a new sync member if the node with the lowest nodeid has
+  left (upstream cs 2785)
+- fix a crash in YKD
+- clear the ring id on sync abort (bnc#590666)
+- fix unloading of evs
+- change sign of all exit codes (normal error exit is now 1)
+- objdb: fix key change notifications (don't notify if the key
+  wasn't changed; notify on key inc/dec)
+- fix possible lockup when a dispatch handler function is NULL
+- upstream version cs 2756
+- fix lockup that occurs sometimes before exiting
+- fix problem where retransmissions don't occur resulting in failure
+  to receive condition
+- add a reload callback to libconfdb
+- support for lib_cpg_finalize
+- cpg join with undelivered leave message (fixes problems with nodes
+  joining cpg twice in quick succession)
+- fix error handling to avoid segfaults/leaks on error
+  in coroipcc_service_connect
+- upstream release 1.2.1
+- retain nodeid compatibility with openais (revert patch from cs 2429)
+- minor enhancement to corosync.conf man page (bnc#580180)
+- upstream version cs 2667
+- allow empty (default) consensus timeout
+- fix freeze of IPC library connection on sem_wait
+- fix malloc deadlock in signal handler (rhbz#547511)
+- fix coroipcs message corruption that occurs when a message fills the
+  remainder of the dispatch buffer with a full message
+- totemsrp: fix transitional configuration changes with long token timeouts
+- remove a double list_del() when a tracking CFG client shuts down without
+  calling cfg_track_stop (it caused corosync to crash)
+- use nodeid instead of localhost ip for the case when binding to a loalhost
+  interface
+- fix corosync shutdown process
+- add augeas lense for corosync.conf
+- patch to set unset value in token hold cancel structure as to not crash
+  wireshark
+- convert unsafe function to thread-safe reentrant equivalents 
+- SP1 beta5 (no code changes)
+- turn timestamp off in corosync.conf.example (there was a problem
+  reported in connection with not thread-safe glibc functions used
+  in concert with this option, which hasn't yet been resolved)
+- add cs2646 patch from upstream, fixes cs2642
+- add patch to accept on/off for the various log directives (bnc#573451)
+- %pre script moved to openais
+- remove init script
+- add %pre script to copy openais.conf and authkey to /etc/corosync
+- add patch 2642 (parser fix)
+- fix some obsoletes/requires
+- Update to corosync 1.2.0.
+- init script changes:
+  + replace killall with checkproc, otherwise corosync can't stop
+  + test if sbd/lrmadmin exist, because corosync has no dependency
+    on cluster-glue
+- update to the corosync upstream release 1.2.0
+- add suse init script
+- don't create rccorosync, because users should be using
+  rcopenais to start a cluster
+- rename corosynclib to libcorosync4 (similar for the devel package)
+  (http://en.opensuse.org/Shared_Library_Packaging_Policy)
+- Autotools generated version from the released upstream version 1.2.0
+- some specfile changes (initddir -&gt; initrddir, header)
+</comment>
+    <requestid>519300</requestid>
+  </revision>
+  <revision rev="43" vrev="11">
+    <srcmd5>4aeeccd51bd1d471575a52dd1ab0a276</srcmd5>
+    <version>2.4.2</version>
+    <time>1506340139</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528214</requestid>
+  </revision>
+  <revision rev="44" vrev="12">
+    <srcmd5>c7bf05605dc3bf97138e2c5b8118cbaf</srcmd5>
+    <version>2.4.2</version>
+    <time>1506955917</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>529075</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>eb28b5c9fe4fcf5dc4c6bda7d267a285</srcmd5>
+    <version>2.4.3</version>
+    <time>1508946274</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536230</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>7e26d94eea68704cc22f7d0609ac43f7</srcmd5>
+    <version>2.4.3</version>
+    <time>1510321381</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540403</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>ad6599422553059ad41e805a78afd364</srcmd5>
+    <version>2.4.3</version>
+    <time>1511193739</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542519</requestid>
+  </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>fe2c6b811a421d197189e75ad4a1d0d9</srcmd5>
+    <version>2.4.3</version>
+    <time>1511426045</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544014</requestid>
+  </revision>
+  <revision rev="49" vrev="5">
+    <srcmd5>bdeb0190e8985f80e13653c9e7565b28</srcmd5>
+    <version>2.4.3</version>
+    <time>1512041967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545009</requestid>
+  </revision>
+  <revision rev="50" vrev="6">
+    <srcmd5>66d10a7c8b70cbdb6daaf0690bd1eea0</srcmd5>
+    <version>2.4.3</version>
+    <time>1512734098</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548541</requestid>
+  </revision>
+  <revision rev="51" vrev="7">
+    <srcmd5>d56afa01dc332ee6f5a5debace22829c</srcmd5>
+    <version>2.4.3</version>
+    <time>1514983117</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561247</requestid>
+  </revision>
+  <revision rev="52" vrev="8">
+    <srcmd5>af049de7028d3a614b7a370d81baca90</srcmd5>
+    <version>2.4.3</version>
+    <time>1516091609</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563236</requestid>
+  </revision>
+  <revision rev="53" vrev="9">
+    <srcmd5>7e0a5487646aed378a1811946f4b31b7</srcmd5>
+    <version>2.4.3</version>
+    <time>1517668864</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571271</requestid>
+  </revision>
+  <revision rev="54" vrev="10">
+    <srcmd5>11a356c34f50d57c2bb2bdec4a227aec</srcmd5>
+    <version>2.4.3</version>
+    <time>1520415034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582537</requestid>
+  </revision>
+  <revision rev="55" vrev="11">
+    <srcmd5>be2b967807e2bb4a274d69e24cd20742</srcmd5>
+    <version>2.4.3</version>
+    <time>1520852861</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584184</requestid>
+  </revision>
+  <revision rev="56" vrev="12">
+    <srcmd5>06a665206db10964bc6209df2724c858</srcmd5>
+    <version>2.4.3</version>
+    <time>1523956399</time>
+    <user>dimstar_suse</user>
+    <comment>-  (CVE-2018-1084) VUL-0: CVE-2018-1084: corosync: Integer overflow in totemcrypto(bsc#1089346)
+    Added: 0018-bsc#1089346-corosync-Integer-overflow-in-totemcrypto.patch
+    
+- UNKNOWN version in corosync pkg-config(bsc#1088619)
+    Added: 0017-bsc#1088619-add-version.patch
+</comment>
+    <requestid>596062</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>0790700b88b7c5d18cb276393b9864f3</srcmd5>
+    <version>2.4.4</version>
+    <time>1524400479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598465</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>549d0cbe40ab2d4d51a5b04a20c07a60</srcmd5>
+    <version>2.4.4</version>
+    <time>1525121475</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>601110</requestid>
+  </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>f6a5d375b2037861be363c10cb89956d</srcmd5>
+    <version>2.4.4</version>
+    <time>1525425944</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602894</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>600d2496c65822dc720395075dc9b074</srcmd5>
+    <version>2.4.5</version>
+    <time>1565876539</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721955</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>0c610e5727b8733bbfc5b89d5c9f3532</srcmd5>
+    <version>2.4.5</version>
+    <time>1566664893</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724897</requestid>
+  </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>693affa6735f91159d558a31a22ed5a4</srcmd5>
+    <version>2.4.5</version>
+    <time>1571751397</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>736413</requestid>
+  </revision>
+  <revision rev="63" vrev="4">
+    <srcmd5>036f5d045276fc6fe8f9b15ec3c9477c</srcmd5>
+    <version>2.4.5</version>
+    <time>1572277455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742115</requestid>
+  </revision>
+  <revision rev="64" vrev="5">
+    <srcmd5>a6950a2e883f057b37f9495de6fffa69</srcmd5>
+    <version>2.4.5</version>
+    <time>1573647222</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747294</requestid>
+  </revision>
+  <revision rev="65" vrev="6">
+    <srcmd5>4ef76254efee7938f9042251bd12f5dc</srcmd5>
+    <version>2.4.5</version>
+    <time>1574104048</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749107</requestid>
+  </revision>
+  <revision rev="66" vrev="7">
+    <srcmd5>78ccf60997507fb74b3d8fb171efc489</srcmd5>
+    <version>2.4.5</version>
+    <time>1584176044</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783591</requestid>
+  </revision>
+  <revision rev="67" vrev="8">
+    <srcmd5>53d7a83283a6c99fdb49a738df4bc55e</srcmd5>
+    <version>2.4.5</version>
+    <time>1585176148</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786911</requestid>
+  </revision>
+  <revision rev="68" vrev="9">
+    <srcmd5>b479cea17f9561c000ec7dc35f119e64</srcmd5>
+    <version>2.4.5</version>
+    <time>1587838563</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796299</requestid>
+  </revision>
+  <revision rev="69" vrev="10">
+    <srcmd5>314931d06d9662eed70bc4bec549cbd7</srcmd5>
+    <version>2.4.5</version>
+    <time>1599088295</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830047</requestid>
+  </revision>
+  <revision rev="70" vrev="11">
+    <srcmd5>a2cdf8790fb0fc7f184d59c44251ab61</srcmd5>
+    <version>2.4.5</version>
+    <time>1604306277</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844530</requestid>
+  </revision>
+  <revision rev="71" vrev="12">
+    <srcmd5>4ee2abfcb2e3893ee7ce870bcd2bbd0e</srcmd5>
+    <version>2.4.5</version>
+    <time>1617279363</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>881467</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>e7c254c57d3e3b75aca1ea8cf02645d4</srcmd5>
+    <version>2.4.5+git69.6236728a</version>
+    <time>1623521122</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>898541</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>2b991ccaa9b24b3bc8bc87a80e53c07e</srcmd5>
+    <version>2.4.5+git70.64010f57</version>
+    <time>1630697161</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>915027</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>399befffd80da8e26ee9e8e46520983e</srcmd5>
+    <version>2.4.5+git.5d625cef</version>
+    <time>1650060840</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969853</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>8018d5b781587188db4c4feab88dce0a</srcmd5>
+    <version>2.4.6</version>
+    <time>1670514624</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041150</requestid>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>6e5f4c6c51b745f4906a0d0e3d6c9a8b</srcmd5>
+    <version>2.4.6</version>
+    <time>1706305566</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1141666</requestid>
+  </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>b05e2c98c911c64c725873eeeb8cf11f</srcmd5>
+    <version>2.4.6</version>
+    <time>1710364593</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1156937</requestid>
+  </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>f1db00bcc473bdd2f9c50ede1edbedbe</srcmd5>
+    <version>3.1.8</version>
+    <time>1718807782</time>
+    <user>anag+factory</user>
+    <comment>Fixed build against new dependencies libknet-devel and libnozzle-devel</comment>
+    <requestid>1181313</requestid>
+  </revision>
+</revisionlist>

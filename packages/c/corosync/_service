@@ -1,0 +1,19 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/corosync/corosync.git</param>
+    <param name="scm">git</param>
+    <param name="filename">corosync</param>
+    <param name="versionformat">3.1.8+%cd.%h</param>
+    <param name="revision">40e08b21</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+
+  <service name="recompress" mode="disabled">
+    <param name="file">corosync*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+
+  <service name="set_version" mode="disabled">
+    <param name="basename">corosync</param>
+  </service>
+</services>
