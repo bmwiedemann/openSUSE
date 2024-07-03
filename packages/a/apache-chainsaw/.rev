@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cdc5a753447667f90b4420632fda3818</srcmd5>
+    <version>2.1.0</version>
+    <time>1642936539</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>948068</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>85c6ed92d84ab3de405aadc74391ebf7</srcmd5>
+    <version>2.1.0</version>
+    <time>1645639610</time>
+    <user>dimstar_suse</user>
+    <comment>Build against reload4j</comment>
+    <requestid>957039</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e930b6a31d7f3a9fff0bc47010aa5e3f</srcmd5>
+    <version>2.1.0</version>
+    <time>1647889998</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with maven-antrun-plugin &gt;= 3.0.0</comment>
+    <requestid>963736</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e424b26f7c5ac56e0311e77c39e94995</srcmd5>
+    <version>2.1.0</version>
+    <time>1698333312</time>
+    <user>anag+factory</user>
+    <comment>Fix build with jdk 21</comment>
+    <requestid>1120543</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>b8a336eb579bafc9c910ee7698480c55</srcmd5>
+    <version>2.1.0</version>
+    <time>1708460119</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147955</requestid>
+  </revision>
+</revisionlist>
