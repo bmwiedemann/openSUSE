@@ -1,0 +1,473 @@
+-------------------------------------------------------------------
+Mon Feb 26 11:00:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
+Tue Oct  3 06:35:51 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.2.6:
+  * Test to check our string escape word triggers on its own #2879
+  * feat(dictionary): add additiional additional entry #2882
+  * Add currebtly Misspelling #2881
+  * Add more typos for "approximate" #2884
+  * Add new typos for "load" #2885
+  * Add typos for "accommodate" #2886
+  * Add spelling correction for 'prodive' #2889
+  * Add annhilate Mispelling #2891
+  * Add alternative spelling corrections for "merget" #2890
+  * Add various typos #2887
+  * Add suffixes to existing typos #2895
+  * Add twine As Dev Dependency #2901
+  * frustrum->frustum #2899
+  * Add several spelling corrections #2900
+  * Add suffixes to existing typos, part 2 #2902
+  * Add iamges->images and cannel variants #2893
+  * Add all corrections in #2857 #2898
+  * Add suffixes to typos that start with "a" #2905
+  * Add suffixes to typos from "b" to "ch" #2906
+  * Add suffixes to typos from "cop" to "cy" #2911
+  * Add spelling corrections for upperace and lowerace. #2909
+  * Add suffixes to typos from "ci" to "con" #2907
+  * Add variations of 'check' #2904
+  * Add suffixes to typos that start with "de" #2913
+  * Add suffixes to typos from "di" to "dy" #2914
+  * Add suffixes to typos that start with "e" #2915
+  * Add some spelling corrections #2918
+  * Add suffixes to typos that start with "f" #2916
+  * Add typos for "general", "generate", "generic" #2919
+  * Move dateset to code #2917
+  * Add correction for "distict" #2910
+  * Add several spelling corrections #2908
+  * Add new suggestions for existing typos #2921
+  * Add suffixes to typos that start with "g" or "h" #2922
+  * Dev Container #2903
+  * Add postifx->postfix to code dictionary #2927
+  * Add openes->opens, openness, to dictionary #2930
+  * Add suffixes to typos from "ib" to "im" #2924
+  * Add indepentend->independent #2892
+  * Add several spelling corrections #2926
+  * feat: Add collogue->colleague to dictionary #2923
+  * Typos from OpenSSL 3.0 #2883
+  * Add suffixes to typos from "ip" to "k" #2931
+  * Add suffixes to typos that start with "in" #2925
+  * Add typos discovered in django/deps repository #2932
+  * Add some archaic terms for Muslim to dictionary #2610
+  * Add words from misspell's dictionary (A-1) #2748
+  * Add suffixes to typos that start with "l" #2936
+  * Add typo fix: reacord->record #2941
+  * Add suffixes to typos that start with "m" #2937
+  * Add suffixes to typos that start with "n" #2939
+  * Add suffixes to typos that start with "o" #2940
+  * Improve existing suggestions #2943
+  * Add vulnerabily->vulnerably, vulnerability, spelling correction. #2946
+  * Add suffixes to typos from "pa" to "pl" #2944
+  * Add suffixes to typos from "po" to "pu" #2945
+  * Allow words missing from aspell dictionaries #2933
+  * Add journalling->journaling to GB->EN dict #2371
+  * Use large aspell dictionaries #2947
+  * Add suffixes to typos from "q" to "red" #2948
+  * Add suffixes to typos from "ref" to "rep" #2949
+  * Add suffixes to typos from "req" to "ry" #2950
+  * Add suffixes to typos from "sa" to "se" #2951
+  * Add suffixes to typos from "sh" to "sp" #2952
+  * Add suffixes to typos from "sr" to "st" #2953
+  * Remove a branch from main() to pass Ruff CI check. #2962
+  * Add suffixes to typos from "su" to "sz" #2954
+  * Dictionary fixes #2935
+  * Add Pre-Commit as a dev dependency #2959
+  * Drop support for Python 3.7 #2964
+  * Fix pre-commit issues #2967
+  * Add suffixes to typos that start with "t" #2965
+  * Add suffixes to typos that start with "u" #2966
+  * Add suffixes to typos that start with "v" #2970
+  * Add suffixes to typos from "w" to "z" #2971
+  * Add some new misspellings #2972
+  * Add spelling corrections for defaoult and variants. #2975
+  * Fix the name of the extra word lists we load #2976
+  * Add suffixes to typos from "aa" to "acc" #2974
+  * Add suffixes to typos from "ace" to "ad" #2987
+  * Add suffixes to typos from "af" to "al" #2988
+  * Dictionary fixes #2980
+  * Add suffixes to typos from "am" to "an" #2989
+  * Use pre-commit to sort the dictionaries #2973
+  * Simpler dictionary parsing #2986
+  * [pre-commit.ci] pre-commit autoupdate #2993
+  * Add suffixes to typos that start with "ap" #2991
+  * Half dozen new cases in dictionary.txt #2994
+  * Add suffixes to typos that start with "ar" #2992
+  * Add suffixes to typos that start with "as" #2997
+  * Add suffixes to typos from "at" to "ay" #2998
+  * Add suffixes to typos from "ba" to "be" #2999
+  * Add preperint typo #2978
+  * Add some typos found in a large documentation repo #3001
+  * Add suffixes to typos from "bi" to "bu" #3002
+  * Add suffixes to typos that start with "ca" #3003
+  * Add some misspellings and refinements #3004
+  * Add typo variations of background(s) #3006
+  * Add more typos for "check" and similar #3005
+  * ...ter → ...tor #2990
+  * Add suffixes to typos from "ce" to "ci" #3008
+  * Remove the grave accent (`) from the default word regex #2983
+  * Add typo variations for 'enble'->'enable' to main dictionary #3010
+  * [pre-commit.ci] pre-commit autoupdate #3011
+  * Add suffixes to typos from "cl" to "col" #3009
+  * Generate alternative typos with a translation table #2985
+  * Remove redundant linting CI workflows handled #2969
+  * Fix ruff lint error #3015
+  * Add suffixes to typos that start with "com" #3012
+  * Add spelling correction for information and variant. #3018
+  * Replace local and CI workflow #3020
+  * Add fram->frame and friend #3016
+  * Add typo variations of 'dispatch' #3007
+  * Add more typos for "configure" and similar #3013
+  * Add suffixes to typos from "cona" to "conr" #3023
+  * Add suffixes to typos from "cons" to "conv" #3025
+  * Add more typos for "correspond" and similar #3026
+  * Adding articifial to artificial to dictionary.txt #3024
+  * Move the valid word implementor in rare dictionary #3030
+  * Typos from tcpdump and libpcap #3031
+  * [pre-commit.ci] pre-commit autoupdate #3033
+  * Add suffixes to typos from "coo" to "coy" #3029
+  * Add suffixes to typos from "cp" to "cy" #3032
+  * Add suffixes to typos from "dc" to "den" #3034
+  * Add suffixes to typos from "dep" to "der" #3036
+  * [pre-commit.ci] fix new ruff issue #3042
+  * Add suffixes to typos from "des" to "dev" #3039
+  * Add suffixes to typos that start with "di" #3040
+  * Add suffixes to typos from "do" to "dy" #3043
+  * Add suffixes to typos from "ea" to "en" #3048
+  * Add suffixes to typos from "ep" to "exe" #3049
+  * Add suffixes to typos from "exi" to "exu" #3050
+  * [pre-commit.ci] pre-commit autoupdate #3045
+  * Update dictionary.txt #3035
+  * [pre-commit.ci] pre-commit autoupdate #3051
+  * Add suffixes to typos that start with "f" #3052
+  * Add suffixes to typos from "g" to "h" #3053
+  * Additions to dictionary.txt #3054
+  * Modify structure of dict read from TOML to match dict read from INI #3046
+  * Add suffixes to typos from "id" to "inh" #3055
+  * Add more typos for "initialize" and similar #3056
+  * Add suffixes to typos from "ini" to "it" #3059
+  * Add suffixes to typos from "j" to "l" #3060
+  * Add refinement to 'draing' typo #3062
+  * Add suffixes to typos from "ma" to "me" #3063
+  * Add suffixes to typos from "mi" to "mu" #3064
+  * Add more variations of "except" and "exempt" #3057
+  * [pre-commit.ci] pre-commit autoupdate #3065
+  * Bump actions/checkout from 3 to 4 #3066
+  * Add spelling correction for "exis". #3067
+  * Add followiing->following #3070
+  * Add suffixes to typos that start with "n" #3068
+  * Add suffixes to typos that start with "o" #3069
+  * [pre-commit.ci] pre-commit autoupdate #3074
+  * Add suffixes to typos that start with "pa" #3071
+  * Add suffixes to typos from "pe" to "po" #3073
+  * Get rid of typos with apostrophe replaced #3022
+  * Add suffixes to typos from "pr" to "pu" #3075
+  * Add handlong->handling #3076
+  * Bump codecov/codecov-action from 3 to 4 #3078
+  * Add suffixes to typos from "q" to "rec" #3077
+  * Revert b397a6e / #3078 #3080
+  * Add various typos #3079
+  * Add suffixes to typos from "red" to "rep" #3081
+  * Add suffixes to typos from "req" to "ru" #3083
+  * Dictionary additions #3082
+  * [pre-commit.ci] pre-commit autoupdate #3085
+  * Add suffixes to typos from "sa" to "se" #3084
+  * Add correction for havne't->haven't #3089
+  * Add suffixes to typos from "sh" to "so" #3086
+  * Add suffixes to typos from "sp" to "st" #3087
+  * Add suffixes to typos from "su" to "sy" #3090
+  * Add suffixes to typos from "ta" to "th" #3092
+  * [pre-commit.ci] pre-commit autoupdate #3097
+  * Add suffixes to typos from "ti" to "ty" #3094
+  * Add suffixes to typos that start with "u" #3095
+  * Add suffixes to typos from "v" to "z" #3096
+  * many new typos from different repositories #3021
+  * fixing setuptool_scm dependency because the latest version is broken #3100
+  * More typos #3101
+  * Use f-strings wherever possible #3102
+
+-------------------------------------------------------------------
+Fri Jun 23 10:26:24 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.2.5:
+  * Add fixing consciousely typo #2777
+  * atalog typo (saw twice in a project) #2782
+  * created fstrings #2784
+  * Replace bandit, isort, pylint, pyupgrade, and flake8 plus plugins with ruff #2779
+  * Add Microsoft Mispelling Kiewit in #2789
+  * Use Latest Version In README Pre-Commit Example Kiewit in #2788
+  * ruff: Use format specifiers instead of percent format #2787
+  * New typos #2793
+  * Ruff: Ignore new rule PLC1901 #2797
+  * Add various typo fixes #2795
+  * Another suggestion #2798
+  * Fix AssertionError when opening with chardet thumann in #2785
+  * Fix typo (and variants) from xxHash #2761
+  * Add huld->hold Spelling Mistake Kiewit in #2792
+  * Fix CI issues #2796
+  * CI: fix new ruff error B028 #2802
+  * Skip subdirectories of hidden directories #2541
+  * Add tweek(s)->tweak(s) correction gb in #2804
+  * Add supoort->support #2806
+  * Add Suggestion For readded Mispelling Kiewit in #2805
+  * Add displaing->displaying #2808
+  * Another suggestion for stati #2810
+  * Add dimaond -> diamond #2813
+  * Add vai->via, vie #2815
+  * Remove invalid correction - Kwanza = currency of Angola #2803
+  * sinoid and friends #2807
+  * Add excludle->exclude #2814
+  * Add gadjet->gadget and friend #2818
+  * Add togueter->together #2821
+  * Add "mutabl->mutable" #2822
+  * Add containin->containing #2824
+  * Add mandess->madness #2825
+  * some fixes #2820
+  * Fix new ruff errors reported DimitriPapadopoulos in #2834
+  * Add fusipn->fusion #2836
+  * Add 'subcription->subscription' #2832
+  * Add 'promtp->prompt' #2833
+  * Add 'endpdoint' as a misspelling of 'endpoint' #2830
+  * Add more misspellings of 'identities' #2829
+  * Friends of existing typos #2837
+  * Fix 66ec667 #2838
+  * equivallent and friends #2827
+  * Add delpoys->deploys #2842
+  * Added variations on 'difference' #2841
+  * Add 'canoncical->canonical' #2831
+  * Add additional typos #2835
+  * Add spelling corrections for inject and variants. gb in #2846
+  * Add 'credentail->credential' #2844
+  * Add 'requestor->requester' #2845
+  * Update README.rst #2466
+  * Add exrension(s)->extension(s) #2847
+  * Add facttory->factory and facttories-> factories van-zuijlen in #2848
+  * Add several spelling corrections #2849
+  * Add comtaining->containing #2855
+  * topoplogical and friends #2854
+  * Add placehoulder->placeholder #2856
+  * More typos from GlobalProtect-openconnect #2850
+  * Add spelling correction for siver->silver/sliver/diver #2858
+  * Add assertino->assertion #2859
+  * add notority->notoriety #2861
+  * Misspellings from eLabFTW #2863
+  * Add invirant{,s}->invariant{,s} #2870
+  * Add alloccat*->allocat* #2869
+  * Add "multiply"/"multiplies" variations to instances of "multiple" #2872
+  * Add strin->string and optiona->optional #2817
+  * Add wellplate -> well plate #2873
+  * Add afile Misspelling #2876
+  * Ignore 'misspellings' due to string escapes #2875
+  * Add pre-poulate Misspellings #2878
+- Update patch_version.patch
+
+-------------------------------------------------------------------
+Mon May 22 09:53:07 UTC 2023 - Jiri Srain <jsrain@suse.com>
+
+- removed autogenerated _version.py
+
+-------------------------------------------------------------------
+Wed Mar 22 10:13:19 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- remove manpage as the build of the page no longer works
+  it requires an executable file, which no longer is present
+- add patch_version.patch to add the version to the lib
+ - remove help2man-run-needs-utf8-locale.patch
+- update to version 2.2.4:
+ - BUG: Fix bug with toml triage (#2774)
+- update to version 2.2.3:
+ - Misspelling of sufficient, sufficiently by @vikivivi in #2531
+ - insuffient->insufficient by @tkoyama010 in #2527
+ - add anayltic(s|al|ally) -> analytic(s|al|ally) by @robin-wayve in #2507
+ - Ignore flake8 rule W503 by @DimitriPapadopoulos in #2069
+ - Dead code found by vulture by @DimitriPapadopoulos in #2101
+ - Move falsy and accreting to more appropriate files by @janosh in #2511
+ - Add subtrate->substrate by @janosh in #2525
+ - Add "subtask" by @int-y1 in #2537
+ - Apply pyupgrade to project by @jdufresne in #2364
+ - {speherical,sperhical}->spherical by @janosh in #2540
+ - interepolation->interpolation by @tkoyama010 in #2512
+ - Ignore .mypy_cache folder by @kianmeng in #2361
+ - Fix uncaught exception on unreadable files by @DimitriPapadopoulos in #2196
+ - Add constrainst to dictionary by @jonathanberthias in #2546
+ - Add relative hidden directory and basic subdir tests by @peternewman in #2542
+ - Add trignometric->trigonometric by @janosh in #2549
+ - Add virtualied->virtualized, virtualised and friends by @peternewman in #2553
+ - Add several spelling corrections by @luzpaz in #2521
+ - Slightly simplify some boolean expressions by @jdufresne in #2556
+ - MAINT: Add CODEOWNERS by @larsoner in #2535
+ - positivie->positive by @janosh in #2558
+ - DOC/ENH: Clarify usage or configuration files and log about it by @sappelhoff in #2552
+ - Document required setuptools version by @DimitriPapadopoulos in #2560
+ - Redundant wheel dependency in pyproject.toml by @DimitriPapadopoulos in #2562
+ - Remove parameterizes->parametrizes by @int-y1 in #2563
+ - Replace codecs.open with open by @jdufresne in #2378
+ - Update subprocess usage to use modern subprocess.run() by @jdufresne in #2565
+ - Fix produce typo by @DimitriPapadopoulos in #2561
+ - Add a few corrections by @int-y1 in #2566
+ - Migrate pytest config into pyproject.toml by @cclauss in #2554
+ - Handle bad globs passed to if --skip/-S by @DimitriPapadopoulos in #2159
+ - Isn't the mailing list obsolete? by @DimitriPapadopoulos in #2090
+ - More CODEOWNERS by @peternewman in #2569
+ - Remove unused attribute Misspelling.fixword by @jdufresne in #2557
+ - Read config file without interpolation by @DimitriPapadopoulos in #2545
+ - Add andriod->android and friends by @peternewman in #2570
+ - Add total type GB to US by @peternewman in #2577
+ - Catch all cases of missing pytest by @DimitriPapadopoulos in #2568
+ - Fix typo in README pin → pip by @DimitriPapadopoulos in #2579
+ - Keep GitHub Actions up to date with Dependabot by @DimitriPapadopoulos in #2578
+ - decelaration could be deceleration by @DimitriPapadopoulos in #2576
+ - Add isort to project by @jdufresne in #2564
+ - Fix Deepsource issues by @DimitriPapadopoulos in #2085
+ - Replace list()/dict() with literals by @jdufresne in #2380
+ - Use major version @v1 of isort GitHub Action by @DimitriPapadopoulos in #2581
+ - Add a spelling correction by @fxlb in #2572
+ - Remove obsolete Python 2 workaround by @jdufresne in #2586
+ - Add misspelling of Kafka by @vikivivi in #2589
+ - Add testing and document support for Python 3.11 by @jdufresne in #2585
+ - Add type annotations to the project and use mypy by @jdufresne in #2588
+ - Add a few spelling corrections by @int-y1 in #2550
+ - Add several spelling corrections by @luzpaz in #2582
+ - quation->equation by @janosh in #2591
+ - Document support for Python versions in pyproject.toml by @jdufresne in #2379
+ - Use black to format Python files by @jdufresne in #2587
+ - Move "upto" to code dictionary by @skangas in #2603
+ - Move sudo-like command name "doas" to code dictionary by @skangas in #2600
+ - enthapl(ies|y)->enthalp(ies|y) by @janosh in #2590
+ - Add componoent(s)->component(s) by @cfi-gb in #2594
+ - Move "spawnve" to code dictionary by @skangas in #2614
+ - Move "MSDOS" to code dictionary by @skangas in #2615
+ - Added informal words by @Paradact in #2575
+ - Improve format of CC BY-SA 3.0 license link by @skangas in #2619
+ - {assymthotic, assymtotic}->asymptotic by @janosh in #2597
+ - Simplify some file reading in tests by opening in text mode by @jdufresne in #2624
+ - Remove setup.py by @jdufresne in #2626
+ - Normalize code block indicators in README by @waldyrious in #2621
+ - PEP 517 by @DimitriPapadopoulos in #2595
+ - Add spelling correction for 'alhpa' by @adrien-berchet in #2627
+ - Move Windows CI from AppVeyor to GitHub Actions by @jdufresne in #2628
+ - Add "token" as alternative for "toke" by @skangas in #2630
+ - Add spelling corrections for version. by @cfi-gb in #2629
+ - feat: Add cataalogue->catalogue to dictionary by @matthewfeickert in #2631
+ - Add several spelling corrections found in personal projects by @jdufresne in #2623
+ - Add several words for en-GB to en-US by @skangas in #2598
+ - Add fixes from misspell-fixer's safe.1.dict by @skangas in #2611
+ - Prefer "converter" to "convertor" by @skangas in #2613
+ - Add pre-commit configuration by @mdeweerd in #2459
+ - pre-commit: check toml, rst, yml and .in files by @mdeweerd in #2636
+ - centriod->centroid by @janosh in #2637
+ - Add operatin->operation, operating, correction. by @cfi-gb in #2640
+ - README: Document how to use pre-commit by @WilliamJamieson in #2639
+ - README: document simplest usage pattern by @waldyrious in #2638
+ - Prefer HTTPS to HTTP in URLs by @skangas in #2641
+ - Flush stdout when asking word fix by @adrien-berchet in #2642
+ - Correct "3rt" to "3rd" by @skangas in #2634
+- update to version 2.2.2:
+ - MAINT: Bump to dev by @larsoner in #2463
+ - Capitalize LessTif by @dforsi in #2471
+ - Add several spelling corrections by @ydah in #2467
+ - aexs->axes by @tkoyama010 in #2475
+ - MAINT: Add tests as submodule by @larsoner in #2477
+ - diffues->diffuse, defuse, by @tkoyama010 in #2476
+ - conviencece->convenience by @tkoyama010 in #2474
+ - htose->those, these, by @tkoyama010 in #2480
+ - Add several spelling corrections by @adrien-berchet in #2461
+ - move ro to code dictionary by @robin-wayve in #2468
+ - Add ascconciated->associated by @peternewman in #2482
+ - Fix various spelling corrections by @luzpaz in #2456
+ - Add several spelling corrections by @luzpaz in #2481
+ - Add sorkflow->workflow by @peternewman in #2485
+ - Add spelling corrections for install and variants. by @cfi-gb in #2486
+ - Capitalize all suggested fixes by @DimitriPapadopoulos in #2223
+ - Add several spelling corrections and refinements by @luzpaz in #2484
+ - Add knowladge->knowledge by @danielhoherd in #2493
+ - Add several spelling corrections by @ydah in #2492
+ - Change "circularly" to "circulary". by @vinc17fr in #2422
+ - Use grep -E instead of egrep by @a1346054 in #2496
+ - move warmup to code dictionary by @robin-wayve in #2495
+ - downoload->download and friends by @DimitriPapadopoulos in #2494
+ - Add some alternative line endings and whitespace checks by @peternewman in #2490
+ - occulusion->occlusion by @tkoyama010 in #2502
+ - Add another suggestion for relected by @vinc17fr in #2501
+ - add dependendenc(y|ies)->dependenc(y|ies) by @robin-wayve in #2499
+ - Add application(s) spelling corrections. by @cfi-gb in #2503
+ - Add spelling correction for place by @adrien-berchet in #2500
+ - Add spelling correction by @adrien-berchet in #2498
+ - 'analyses' is the plural of 'analysis' by @quyykk in #2401
+ - Add spelling corrections for dictionar(y|ies) by @cfi-gb in #2509
+ - Add spelling correction for export by @adrien-berchet in #2506
+ - Fix #2055: Add support for PEP 518 by @Freed-Wu in #2290
+ - Add regresison->regression by @janosh in #2518
+ - DOC: Better docs by @larsoner in #2515
+ - Fix build_exclude_hashes fails: UnicodeDecodeError: 'charmap' codec can't decode byte 0x81 in position 2244: character maps to by @JoergAtGithub in #2520
+ - Add alternative for 'bu' by @flyingdutchman23 in #2514
+ - Add alternative for 'tooo' by @flyingdutchman23 in #2513
+ - Fix uncaught exception on empty files by @DimitriPapadopoulos in #2195
+ - Add combintaion(s)->combination(s) by @janosh in #2524
+ - MAINT: Use pyproject and setuptools_scm by @larsoner in #2523
+
+-------------------------------------------------------------------
+Thu Aug 18 14:31:36 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.2.1:
+  See https://github.com/codespell-project/codespell/compare/v2.2.0...v2.2.1
+
+-------------------------------------------------------------------
+Thu Aug 18 07:26:22 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.2.0:
+  See https://github.com/codespell-project/codespell/compare/v2.1.0...v2.2.0
+
+-------------------------------------------------------------------
+Thu Jun 10 19:25:24 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 2.1.0:
+  * No upstream changelog
+
+-------------------------------------------------------------------
+Sun Nov 29 11:10:07 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 2.0.0:
+  * No upstream changelog
+
+-------------------------------------------------------------------
+Fri May 22 14:08:05 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.17.1:
+  * Upstream does not provide a changelog
+- Update patch:
+  * help2man-run-needs-utf8-locale.patch
+
+-------------------------------------------------------------------
+Fri Sep 13 06:17:16 UTC 2019 - mvetter@suse.com
+
+- Update to 1.16.0:
+  * Add several more spelling corrections
+  * Fix typos
+
+-------------------------------------------------------------------
+Thu Jan 31 08:30:45 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.14.0:
+  * No upstream changelog
+- Fix build under python 3.7
+
+-------------------------------------------------------------------
+Sat Jul 14 11:08:09 UTC 2018 - jengelh@inai.de
+
+- Use noun phrasing.
+
+-------------------------------------------------------------------
+Wed Jul  4 11:00:28 UTC 2018 - psimons@suse.com
+
+- update to 1.13.0 release
+
+-------------------------------------------------------------------
+Thu Feb  4 19:38:46 UTC 2016 - sweet_f_a@gmx.de
+
+- initial package 1.8.git31.gd4ba
+
