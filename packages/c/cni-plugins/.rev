@@ -1,0 +1,172 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>be6b6675e50b88122d980ae680f5a8cc</srcmd5>
+    <version>0.6.0</version>
+    <time>1517516904</time>
+    <user>dimstar_suse</user>
+    <comment>- Install docs in the cni-plugins dir
+- Initial version from CNI plugins v0.6.0
+</comment>
+    <requestid>570483</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>69c2464c317f7d43bfd5ec5ef28642f8</srcmd5>
+    <version>0.6.0</version>
+    <time>1528195970</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614010</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3d61ab43b66775c7b72778cf036000b5</srcmd5>
+    <version>0.6.0</version>
+    <time>1530866674</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620952</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a4782834e01aee4e4009e56ed6eeb814</srcmd5>
+    <version>0.6.0</version>
+    <time>1544726961</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657629</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c1e8ae0c444cf6f6f9a716dfeced8c98</srcmd5>
+    <version>0.7.4</version>
+    <time>1549140200</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>668671</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f21db75087c6003d22357a6bfae67373</srcmd5>
+    <version>0.8.1</version>
+    <time>1559902650</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708149</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>eb138473365a91f9a72338765dd8199e</srcmd5>
+    <version>0.8.2</version>
+    <time>1566240433</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724040</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bb3fb2524cbd924445c3371ef01b6427</srcmd5>
+    <version>0.8.3</version>
+    <time>1573853559</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747660</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c9fe08edd8820f2856952723ee47959a</srcmd5>
+    <version>0.8.4</version>
+    <time>1578867466</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>762245</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>f905776afa576075c6a45672d3c54fd1</srcmd5>
+    <version>0.8.4</version>
+    <time>1582299597</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>777932</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>694977adc543bd0076b0a2456bf74008</srcmd5>
+    <version>0.8.6</version>
+    <time>1592759044</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815577</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>87854934c661cfdab05f29fb648bc2a3</srcmd5>
+    <version>0.8.6</version>
+    <time>1592840697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816316</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1e6af517eafee720df0ce460ec5909e3</srcmd5>
+    <version>0.8.7</version>
+    <time>1599666570</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832782</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5286cd5de9687b05a907fafd89d3d7e5</srcmd5>
+    <version>0.9.0</version>
+    <time>1610381489</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>861695</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8c97d36a11209ea0539eeaf22119491f</srcmd5>
+    <version>0.9.1</version>
+    <time>1619729065</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888696</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6f24eb57ff5a9ebe5ca43b39eb0f4064</srcmd5>
+    <version>1.1.1</version>
+    <time>1648916389</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965848</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>cd9114b91c52b5fba5266a8d3ad768a0</srcmd5>
+    <version>1.1.1</version>
+    <time>1668609772</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036139</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>bbaf9fc2d57a3cfbf29a5e48fa08cf48</srcmd5>
+    <version>1.3.0</version>
+    <time>1694630595</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110456</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>e719c4bd60899168e7734348ac2a2b1e</srcmd5>
+    <version>1.3.0</version>
+    <time>1697061226</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116456</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a2d8617de7eb69f897d9957270b3593d</srcmd5>
+    <version>1.4.0</version>
+    <time>1710776794</time>
+    <user>anag+factory</user>
+    <comment>New upstream release 1.4.0 (forwarded request 1155550 from dancermak)</comment>
+    <requestid>1158902</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>71973813db9116bc3149fb40c448117f</srcmd5>
+    <version>1.5.1</version>
+    <time>1719255098</time>
+    <user>anag+factory</user>
+    <comment>Update to version 1.5.1</comment>
+    <requestid>1182498</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,19 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/containernetworking/plugins.git</param>
+    <param name="scm">git</param>
+    <param name="filename">cni-plugins</param>
+    <param name="exclude">.git</param>
+    <param name="revision">v1.5.1</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">cni-plugins-*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="manual">
+    <param name="basename">cni-plugins</param>
+  </service>
+</services>

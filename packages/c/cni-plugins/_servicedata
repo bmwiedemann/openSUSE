@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/containernetworking/plugins.git</param>
+              <param name="changesrevision">c29dc79f96cd50452a247a4591443d2aac033429</param></service></servicedata>
