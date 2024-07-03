@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul  2 20:14:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.0:
+  * fix (again) nested list comprehension (Issues #127 and #126).
+  * add more testing of multiple list comprehensions.
+  * more complete support for Numpy 2, and removal of many Numpy
+    symbols that have been long deprecated.
+  * remove AST nodes deprecated in Python 3.8.
+  * clean up build files and outdated tests.
+  * fixes to codecov configuration.
+  * update docs.
+
+-------------------------------------------------------------------
 Wed Jun 12 09:58:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.33:

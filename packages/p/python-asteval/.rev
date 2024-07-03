@@ -160,4 +160,20 @@
   * update rendered doc to include PDF and zipped HTML</comment>
     <requestid>1180154</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a4de1ab4a1b6fb1c741f248e216f443c</srcmd5>
+    <version>1.0.0</version>
+    <time>1720031441</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0:
+  * fix (again) nested list comprehension (Issues #127 and #126).
+  * add more testing of multiple list comprehensions.
+  * more complete support for Numpy 2, and removal of many Numpy
+    symbols that have been long deprecated.
+  * remove AST nodes deprecated in Python 3.8.
+  * clean up build files and outdated tests.
+  * fixes to codecov configuration.
+  * update docs.</comment>
+    <requestid>1184940</requestid>
+  </revision>
 </revisionlist>
