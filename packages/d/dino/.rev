@@ -1,0 +1,149 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>849e28937a7b9680868a994f18041380</srcmd5>
+    <version>0.2.2</version>
+    <time>1632522923</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921094</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b646f26935bf0659d1a98835cc14f2ec</srcmd5>
+    <version>0.3.0</version>
+    <time>1644778265</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3:
+  See https://dino.im/blog/2022/02/dino-0.3-release/</comment>
+    <requestid>954076</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>93ef9e92628baebe1b222fd598e04db9</srcmd5>
+    <version>0.3.0</version>
+    <time>1665504217</time>
+    <user>RBrownFactory</user>
+    <comment>- Fix build by using ninja instead of make for building
+  See https://github.com/dino/dino/issues/1281</comment>
+    <requestid>1009801</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>fd18721396264395a8de9caf4ddf0070</srcmd5>
+    <version>0.3.0</version>
+    <time>1666978305</time>
+    <user>dimstar_suse</user>
+    <comment>- boo#1204259: Add dino-0.3.0-libsoup.patch</comment>
+    <requestid>1031926</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>068681c4fb2b333b8b43318a4603e7a4</srcmd5>
+    <version>0.3.1</version>
+    <time>1667579865</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.1:
+  * Maintenance release for libsoup3 support and bug fixes
+- Remove dino-0.3.0-libsoup.patch</comment>
+    <requestid>1033469</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c6cc5cb468761ab71d0f0e256e11d51b</srcmd5>
+    <version>0.4.0</version>
+    <time>1675873223</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  See https://dino.im/blog/2023/02/dino-0.4-release/</comment>
+    <requestid>1063735</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a9e5ebcc846cfc5a83940dfa0f375061</srcmd5>
+    <version>0.4.1</version>
+    <time>1677878911</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.1 bugfix release:
+  * Consider stream readable when EOS is reached
+  * Fix critical warnings after DTLS-SRTP calls without OMEMO verification
+  * Fix typing notifications in groupchats
+  * Fix some memory leaks
+  * Stop regenerating message menu buttons
+  * Clear chat input after /command 
+  * Remove spell check setting</comment>
+    <requestid>1069116</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1f92359b3a05d36aeba623f94dd5a766</srcmd5>
+    <version>0.4.2</version>
+    <time>1679667696</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.2:
+  * Maintenance release with fix for CVE-2023-28686 and bug fixes.
+    See https://dino.im/security/cve-2023-28686</comment>
+    <requestid>1074095</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0bc59564dc671c1acfd6805947b39ab4</srcmd5>
+    <version>0.4.3</version>
+    <time>1689000006</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.3:
+  * Fix video for cameras with rotated image
+  * Fix call window controlls hiding 
+  * Fix call window styling 
+  * Fix empty alias being handled different than none 
+  * Fix crash on NS_URI call when own server has no MAM;
+    drop broken mam: 1 &quot;support&quot; #1405
+  * Focus ChatInput textbox after selecting emoji 
+  * Fix character counting for fallbacks #1420
+  * Fix chat input status having a fixed width requirement #1439
+  * Fix chat input for IME #1419
+  * Fix reactions being made to the wrong message #1426
+  * data: Set X-Purism-FormFactor in .desktop file 
+  * Ignore non-DTLS data before handshake is complete 
+  * Do not send DTLS datagrams to RTP even after handshake 
+  * Fix certificate start time
+  * Fix potential crash in video calls</comment>
+    <requestid>1097860</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>3ddce25e2b7a77f8d178a1d4c78339e6</srcmd5>
+    <version>0.4.3</version>
+    <time>1711117318</time>
+    <user>anag+factory</user>
+    <comment>- Add dino-0.4.3-emoji.patch:
+  Add more emoji translations gh/dino/dino#1207</comment>
+    <requestid>1160567</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>40823666598f51fc017b0c51f813b257</srcmd5>
+    <version>0.4.3</version>
+    <time>1718743896</time>
+    <user>anag+factory</user>
+    <comment>- Fix build with valac &gt;= 0.56.17 (gh/dino/dino#1576):
+  Add dino-0.4.3-vala.patch</comment>
+    <requestid>1181405</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c00db895e7465948ce68585aa5516f4b</srcmd5>
+    <version>0.4.4</version>
+    <time>1719825731</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.4:
+  * Update appdata
+  * Allow self-signed .onion file transfer certs (#1149)
+  * Self-ping with server-given roomnick (#1594)
+  * Join Channel dialog: Fix displaying of bookmark details
+  * Always export symbols to fix startup on BSDs
+  * AppData/DOAP: Use sentence case for summary.
+  * AppData: Add brand color
+  * Annotating with array_null_terminated doesn't imply a missing array_length
+  * Fix message stanza with body changing MUC subject (#1569)
+  * Fix poor contrast of highlight in search results with dark theme (#1557)
+  * Fix crash on removing conference not in roster (#1516)
+  * Fix http upload for servers without file size limit (#1512)
+  * Start conversation if closed when receiving an audio or video call (#1485)
+  * Fix crash due to gpg binding issue
+  * Fix implicit-function-declaration compiler warnings
+  * Fix subscription notification clearing
+  * fix: Add x node to MUC PM stanza (#1462)
+  * Fix showing the kick option to owners
+- Drop upstreamed dino-0.4.3-vala.patch</comment>
+    <requestid>1184196</requestid>
+  </revision>
+</revisionlist>
