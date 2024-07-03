@@ -1,7 +1,7 @@
 #
 # spec file for package python-xmlschema
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-xmlschema
-Version:        2.3.0
+Version:        3.3.1
 Release:        0
 Summary:        An XML Schema validator and decoder
 License:        MIT
@@ -29,12 +29,13 @@ BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-elementpath >= 3.0.0
 Requires:       python-lxml
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -53,11 +54,11 @@ rm tests/test_memory.py
 
 %build
 export LANG="en_US.UTF8"
-%python_build
+%pyproject_wheel
 
 %install
 export LANG="en_US.UTF8"
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 # Prepare for update-alternatives usage
 for p in json2xml validate xml2json; do
@@ -81,7 +82,8 @@ export LANG="en_US.UTF8"
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/xmlschema
+%{python_sitelib}/xmlschema-%{version}.dist-info
 %python_alternative %{_bindir}/xmlschema-json2xml
 %python_alternative %{_bindir}/xmlschema-validate
 %python_alternative %{_bindir}/xmlschema-xml2json

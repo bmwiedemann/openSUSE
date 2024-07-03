@@ -300,4 +300,41 @@
   * Add *schema* argument to `Wsdl11Document`</comment>
     <requestid>1088468</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9c662c3a7d008de7ff1c4e75b85de434</srcmd5>
+    <version>3.3.1</version>
+    <time>1720031369</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.3.1:
+  * Update validation errors with logging stacktrace in debug mode
+  * Improve locations parsing and URL encoding
+  * Rewrite the validation of openContent using
+    InterleavedModelVisitor and SuffixedModelVisitor
+  * Fix validation of XSD 1.1 'all' nested models
+  * Improve ModelVisitor and particle occurs checking
+  * Fix interleave mode with XSD 1.1 open content (issue #397)
+  * Fix for export/download of XSD sources with commented-out
+    imports/include (issue #387)
+  * Add *download_schemas()* to package API (#387)
+  * Fix issue with facets on list types (#396)
+  * Add GData converter (issue #388/PR #391)
+  * Fix typing protocols usage
+  * Extend XSD annotations parsing (issue #366)
+  * Use XPath subtree as fragment for xs:assert (issue #386)
+  * Fix in XMLSchemaProxy definition and usage for providing
+    a base-uri to schema nodes (issue #379)
+  * Module xpath.py splitted to a subpackage for including all the
+    custom XPath 1.0/2.0 parsers and related classes to XPath
+  * Add support for Python 3.13 (pre-releases)
+  * Hotfix release for broken requirement
+  * Set python-requires metadata to &gt;=3.8 (pull request #382)
+  * Upgrade GitHub Actions (pull request #381)
+  * XML declaration processing option *xmlns_processing* for
+    converters
+  * Decode/validate from XML document with dynamic schema load
+  * XMLResource enhancement for a better XML resources processing
+  * Improve lazy resources iteration removing preceding elements
+    (*thin_mode* option)</comment>
+    <requestid>1184891</requestid>
+  </revision>
 </revisionlist>

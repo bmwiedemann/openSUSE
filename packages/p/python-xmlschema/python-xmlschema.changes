@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Jul  2 13:50:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.1:
+  * Update validation errors with logging stacktrace in debug mode
+  * Improve locations parsing and URL encoding
+  * Rewrite the validation of openContent using
+    InterleavedModelVisitor and SuffixedModelVisitor
+  * Fix validation of XSD 1.1 'all' nested models
+  * Improve ModelVisitor and particle occurs checking
+  * Fix interleave mode with XSD 1.1 open content (issue #397)
+  * Fix for export/download of XSD sources with commented-out
+    imports/include (issue #387)
+  * Add *download_schemas()* to package API (#387)
+  * Fix issue with facets on list types (#396)
+  * Add GData converter (issue #388/PR #391)
+  * Fix typing protocols usage
+  * Extend XSD annotations parsing (issue #366)
+  * Use XPath subtree as fragment for xs:assert (issue #386)
+  * Fix in XMLSchemaProxy definition and usage for providing
+    a base-uri to schema nodes (issue #379)
+  * Module xpath.py splitted to a subpackage for including all the
+    custom XPath 1.0/2.0 parsers and related classes to XPath
+  * Add support for Python 3.13 (pre-releases)
+  * Hotfix release for broken requirement
+  * Set python-requires metadata to >=3.8 (pull request #382)
+  * Upgrade GitHub Actions (pull request #381)
+  * XML declaration processing option *xmlns_processing* for
+    converters
+  * Decode/validate from XML document with dynamic schema load
+  * XMLResource enhancement for a better XML resources processing
+  * Improve lazy resources iteration removing preceding elements
+    (*thin_mode* option)
+  * Drop support for Python 3.7
+  * Fix slowness of key selectors introduced by v2.5.0 (issue #378)
+  * Remove redundant wheel dep from pyproject.toml and unnecessary
+    build deps from tox.ini (PR #368)
+  * Fix identity keys tracking with additional full XPath checks on
+    XML data
+  * Rewrite schema exports using relative paths
+  * Improve schema export using XSD source encoding
+  * Add XML signature and encryption to local fallback schemas
+  * Meta-schema elements and groups ignore xsi:type attributes
+  * Use the meta-schemas only for validating XSD sources otherwise
+    create dummy schemas
+
+-------------------------------------------------------------------
 Mon May 22 21:24:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.0:
@@ -107,7 +153,7 @@ Mon Jan  3 12:40:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Mon Nov 29 20:24:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.2:
-  * Fix type annotation of XMLSchema source argument  
+  * Fix type annotation of XMLSchema source argument
   * Near compliance with strict type annotations
   * Removed ModelGroup class, merged with XsdGroup
   * Some optimizations and fixes from static analysis
@@ -205,7 +251,7 @@ Mon Nov  9 15:32:59 UTC 2020 - Matej Cepl <mcepl@suse.com>
   - Refactoring of XMLResource to support ElementTree-like XPath
     API on both full and lazy modes
 - Remove skip_network_tests.patch
-- Add patches 
+- Add patches
   - factory_tests.patch rename tests_factory to tests so it is
     not recognized by pytest
   - remove_shebang.patch just cleaning superfluous shebang
