@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul  2 14:52:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.6.2
+  * https://www.scribus.net/scribus-1-6-2-released/
+- Drop patch, merged upstream:
+  * 0001-Fix-build-failure-with-poppler-24.03.0.patch
+  * 0001-Fix-incorrect-value-used-in-initial-build-fix-agains.patch
+
+-------------------------------------------------------------------
 Fri Mar  8 09:33:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add patches to fix build with poppler 24.03:

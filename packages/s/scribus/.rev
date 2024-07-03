@@ -702,4 +702,12 @@
     <comment>Fix build with poppler 24.03</comment>
     <requestid>1156308</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>a7aa3f10df23d674245181aa887ef3ea</srcmd5>
+    <version>1.6.2</version>
+    <time>1720031390</time>
+    <user>anag+factory</user>
+    <comment>Update to 1.6.2</comment>
+    <requestid>1184895</requestid>
+  </revision>
 </revisionlist>
