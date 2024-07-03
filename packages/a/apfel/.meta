@@ -1,0 +1,8 @@
+<package name="apfel" project="openSUSE:Factory">
+  <title>APFEL: A PDF Evolution Library</title>
+  <description>APFEL is able to perform DGLAP evolution up to NNLO in QCD and to LO in QED, both with pole and MSbar masses. The coupled DGLAP QCD+QED evolution equations are solved in x-space by means of higher order interpolations and Runge-Kutta techniques, and allows to explore different options for the treatment of subleading terms.
+
+APFEL provides the user with a graphical interface which performs PDF, luminosity and DIS observables plots in real time, granting an easy access to all the APFEL's functionalities.</description>
+  <devel project="science" package="apfel"/>
+  <url>http://apfel.hepforge.org/</url>
+</package>

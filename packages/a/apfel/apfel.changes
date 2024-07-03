@@ -1,0 +1,255 @@
+-------------------------------------------------------------------
+Fri Feb 23 09:14:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove README in one possible location where cmake
+  would potentially install it to.
+
+-------------------------------------------------------------------
+Thu Dec 28 13:37:17 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.1:
+  * CMakeLists.txt: define APFEL_VERSION, like in config.h.in
+    (gh#scarazza/apfel#53).
+- Drop apfel-fix-project-version.patch: incorporated upstream.
+- Rebase apfel-dont-set-default-reltype.patch for update.
+
+-------------------------------------------------------------------
+Wed Nov 22 08:12:23 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.0:
+  * F2C_CCE and F2C_CCP (gh#scarazza/apfel#41).
+  * Make the --disable-pywrap option work (gh#scarazza/apfel#43).
+  * Some changes to cmake build system to simplify the flags
+    treatment and the python installation (gh#scarazza/apfel#42).
+  * Actually functioning cmake (gh#scarazza/apfel#44).
+  * cmake fixes and CI with cmake (gh#scarazza/apfel#46).
+  * Update README (gh#scarazza/apfel#47).
+  * Remove Circle CI (gh#scarazza/apfel#48).
+  * Drop CircleCI badge (gh#scarazza/apfel#51).
+  * Remove autotool builds (gh#scarazza/apfel#49).
+  * Update README removing autotools instructions
+    (gh#scarazza/apfel#52).
+- Add apfel-fix-project-version.patch -- Use the correct version
+  in defining project in CMakeLists.txt
+- Add apfel-dont-set-default-reltype.patch -- Don't assume
+  'RELEASE' as the release type, this should be set at the cmake
+  command line.
+- Build static lib and install it as part of a -devel-static
+  package; upstream cmake does not allow disabling static libs and
+  it ends up everywhere in the cmake files, so cannot just ignore
+  it either.
+- Use cmake for build in keeping with upstream; BuildRequires:
+  cmake >= 3.15.
+- Add BuildRequires: swig needed to generate python wrappings.
+
+-------------------------------------------------------------------
+Thu Jan 20 00:19:05 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.0.6:
+  * Merging vbertone fork.
+- Drop apfel-allow-disabling-pywrap.patch: With py3 supported,
+  this is no longer required.
+- Enable python bindings: apfel now python3 compliant.
+- Enable multiple python flavours; Requires(post) and
+  Requires(postun) for update-alternatives.
+
+-------------------------------------------------------------------
+Tue Jun  8 22:56:27 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.0.5:
+  + No release notes.
+- Rename source tarball to %{name}-%{version} format.
+
+-------------------------------------------------------------------
+Tue Apr 28 09:50:35 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add apfel-allow-disabling-pywrap.patch to support building
+  without building the python extensions and binaries; build
+  python bindings and python-based binaries only for distributions
+  supporting python2 since apfel does not support python3.
+- Add libtool BuildRequires and run autoreconf since patch touches
+  build files.
+
+-------------------------------------------------------------------
+Tue Jun 25 09:36:25 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.0.4:
+  + New release for use with the latest version of HELL (no more
+    changes documented by upstream).
+
+-------------------------------------------------------------------
+Sun Jan 13 16:42:39 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Sat Jan 12 15:15:56 UTC 2019 - badshah400@gmail.com
+
+- Install pre-generated PDF manual as part of a new -doc package.
+- Move ListFunctions binary into -devel package: apfel-config,
+  already being installed as part of the devel package, is partly
+  broken without this.
+- Change `env` based script interpreter in apfel-config to
+  directly call /bin/bash instead.
+- Use %%license macro to install the license file.
+- Run spec-cleaner for minor specfile cleanups
+
+-------------------------------------------------------------------
+Sat Jul 14 16:58:46 UTC 2018 - badshah400@gmail.com
+
+- Update to version 3.0.3:
+  + Undocumented bug fixes.
+
+-------------------------------------------------------------------
+Mon Mar 26 19:15:46 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Drop Qt4 BuildRequires, ApfelGUI has been deprecated in version 2.7
+  and removed subsequently
+- Build on all archs
+
+-------------------------------------------------------------------
+Sat Oct 28 15:23:17 UTC 2017 - badshah400@gmail.com
+
+- Update to version 3.0.2:
+  + Update list-func function.
+
+-------------------------------------------------------------------
+Tue Jul 11 22:48:56 UTC 2017 - badshah400@gmail.com
+
+- Update to version 3.0.1:
+  * Fixing bug in the upwards VFNS evolution of alpha.
+
+-------------------------------------------------------------------
+Wed Apr  5 17:30:37 UTC 2017 - badshah400@gmail.com
+
+- Update to version 3.0.0:
+  * Implementation of the full NLO QCD+QED correction in the DGLAP
+    evolution and in the DIS structure functions.
+  * Interfacing APFEL to HELL (v.1.1) for the computation of the
+    ZM small-x resummed structure functions.
+  * Optimisation of the caching for PDFs and structure functions.
+  * Completed external evolution operator when QED corrections are
+    enabled.
+  * Update of the documentation.
+  * Clean up of the code.
+  * Minor bug fixes and adjustments.
+
+-------------------------------------------------------------------
+Wed Apr  5 16:08:07 UTC 2017 - badshah400@gmail.com
+
+- Add BuildRequires: libboost_headers-devel or boost-devel as
+  appropriate to the openSUSE versions to fix builds.
+
+-------------------------------------------------------------------
+Fri Jan 27 14:13:52 UTC 2017 - bg@suse.com
+
+- enable build on s390x
+
+-------------------------------------------------------------------
+Mon Aug  8 19:29:45 UTC 2016 - badshah400@gmail.com
+
+- Update to version 2.7.2:
+  + Full intrinsic charm contributions up to O(as) in both NC and
+    CC sectors.
+  + Possibility to set the heavy quark thresholds different from
+    the heavy quark masses in both the pole and the MSbar schemes.
+  + New and more accurate parametrization of the O(as^2) NC
+    massive coefficient functions over a wider range in Q^2.
+  + Implementation of the cached PDF evolution.
+  + Fix of minor bugs and minor improvements.
+  + Update of the documentation.
+- Upstream now also installs README in /usr/share/apfel; delete
+  from both non-standard locations and use %doc to package it
+  instead.
+
+-------------------------------------------------------------------
+Mon Feb 15 10:22:47 UTC 2016 - jengelh@inai.de
+
+- Expand PDF acronym in summaries
+- Drop author list from description, openSUSE does not do this
+  since many many months.
+
+-------------------------------------------------------------------
+Tue Feb  2 12:59:43 UTC 2016 - badshah400@gmail.com
+
+- Update to version 2.7.0:
+  + Implementation of the polarized evolution up to NNLO.
+  + Implementation of the LO contribution to intrinsic charm in
+    FONLL.
+  + Possibility to perform dynamical factorization/renormalization
+    scale variations.
+  + New functions to feed higher order EW corrections.
+  + Reduction of the memory footprint.
+  + Speed up of the initialization phase.
+  + Minor improvements and bug fixings.
+- Changes from version 2.6.0:
+  + Implementation of the factorization and renormalization scale
+    variation for the DIS structure functions.
+  + Implementation of a faster solution for the QCD+QED unified
+    solution of the DGLAP equation.
+  + Improving the production of the LHAPDF grids.
+  + Improving the accuracy of the truncated solution of the DGLAP
+    equation (from 3- to 5-point derivative).
+  + Colorful banner.
+  + Minor improvements.
+- Apfelgui is deprecated, drop all supporting files:
+  +  apfelgui.changes.
+  +  pre_checkin.sh.
+  +  apfelgui.spec.
+  +  apfelgui.spec.in.
+  +  README.
+
+-------------------------------------------------------------------
+Thu Jul  9 10:20:17 UTC 2015 - badshah400@gmail.com
+
+- Update to version 2.5.2:
+  + Implementation of truncated PDF evolution.
+  + libAPFELevol: a light version of APFEL with just evolution.
+  + general code improvements.
+  + Fixed bugs:
+    - Fixed bug in the computation of the SIA cross-sections.
+    - Fixed xmax and xmin tolerance.
+- Changes from previous versions 2.3.4 through 2.4.0:
+  + See https://github.com/scarrazza/apfel/releases.
+
+-------------------------------------------------------------------
+Fri Mar 20 22:07:36 UTC 2015 - badshah400@gmail.com
+
+- Update to version 2.3.3:
+  + Functions for the production of FK tables.
+  + Updated format of the output LHAPDF grids.
+  + Implementation of semi-inclusive e^+e^- annihilation structure
+    functions,
+  + Added flag to the apfel-config script to list the APFEL
+    functions.
+- Changes from previous versions:
+  + Long list of changes since previous packaged version, see NEWS
+    file.
+- Packaging changes: Use LHAPDF 6.x (instead of 5.x) for building,
+  since apfel is now LHAPDFv6 compatible.
+- Since version 2.3.0, building on 32-bit architectures is
+  unsupported by upstream.
+
+-------------------------------------------------------------------
+Thu May  1 02:15:58 UTC 2014 - badshah400@gmail.com
+
+- apfelgui: Requires(post) and Requires(postun) should be on
+  desktop-file-utils (for %desktop_database_post(un) scriptlets)
+  rather than on update-desktop-files.
+
+-------------------------------------------------------------------
+Tue Apr 29 23:47:26 UTC 2014 - badshah400@gmail.com
+
+- apfel-devel should have a "Requires:" on lhapdf-devel <= 5.9.1. 
+
+-------------------------------------------------------------------
+Sat Apr 19 23:21:37 UTC 2014 - badshah400@gmail.com
+
+- Build and install hicolor icons (introduces a BuildRequires on
+  hicolor-icon-theme) and desktop menu entry.
+
+-------------------------------------------------------------------
+Sun Apr 13 21:16:25 UTC 2014 - badshah400@gmail.com
+
+- Initial package (version 2.0.1).
+ 

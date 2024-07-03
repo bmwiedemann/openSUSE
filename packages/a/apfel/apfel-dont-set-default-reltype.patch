@@ -1,0 +1,20 @@
+Index: apfel-3.1.1/CMakeLists.txt
+===================================================================
+--- apfel-3.1.1.orig/CMakeLists.txt
++++ apfel-3.1.1/CMakeLists.txt
+@@ -14,7 +14,6 @@ SET(APFEL_VERSION_MAJOR  3)
+ SET(APFEL_VERSION_MINOR  1)
+ SET(APFEL_VERSION_PATCH  1)
+ add_compile_definitions(APFEL_VERSION=${apfel_VERSION})
+-set(CMAKE_VERBOSE_MAKEFILE OFF)
+ include("GNUInstallDirs")
+ 
+ option(APFEL_ENABLE_PYTHON      "Enables building of python bindings" ON)
+@@ -22,7 +21,6 @@ option(APFEL_ENABLE_TESTS       "Enables
+ option(APFEL_ENABLE_LHAPDF      "Enables LHAPDF" ON)
+ option(APFEL_DOWNLOAD_PDFS      "Download LHAPDF sets" ON)
+ 
+-set(CMAKE_BUILD_TYPE Release)
+ # Flags for GNU compilers ==============================================
+ add_compile_options("$<$<COMPILE_LANG_AND_ID:CXX,GNU>:-Wall>")
+ add_compile_options("$<$<COMPILE_LANG_AND_ID:CXX,GNU>:-Wextra>")
