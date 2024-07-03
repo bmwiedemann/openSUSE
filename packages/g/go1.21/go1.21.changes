@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jul  2 18:51:48 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.21.12 (released 2024-07-02) includes security fixes to the
+  net/http package, as well as bug fixes to the compiler, the go
+  command, the runtime, and the crypto/x509, net/http, net/netip,
+  and os packages.
+  Refs boo#1212475 go1.21 release tracking
+  CVE-2024-24791
+  * go#68199 go#67555 boo#1227314 security: fix CVE CVE-2024-24791 net/http: expect: 100-continue handling is broken in various ways
+  * go#67297 runtime: "fatal: morestack on g0" on amd64 after upgrade to Go 1.21, stale bounds
+  * go#67426 cmd/link: need to handle new-style loong64 relocs
+  * go#67714 cmd/cgo/internal/swig,cmd/go,x/build: swig cgo tests incompatible with C++ toolchain on builders
+  * go#67849 go/internal/gccgoimporter: go building failing with gcc 14.1.0
+  * go#67933 net: go DNS resolver fails to connect to local DNS server
+  * go#67944 cmd/link: using -fuzz with test that links with cgo on darwin causes linker failure
+  * go#68051 cmd/go: go list -u -m all fails loading module retractions: module requires go >= 1.N+1 (running go 1.N)
+
+-------------------------------------------------------------------
 Tue Jun  4 18:11:01 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.21.11 (released 2024-06-04) includes security fixes to the
