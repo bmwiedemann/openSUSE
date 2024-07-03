@@ -1,0 +1,178 @@
+-------------------------------------------------------------------
+Tue Feb 20 12:48:51 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Wed Oct 25 16:30:13 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * commons-collections-3.2-build_xml.patch
+    + In ant Javac task, use "release" with compilers that support
+      it. Use source/target for others. Fixes some return value
+      incompatibilities with jdk 21
+
+-------------------------------------------------------------------
+Thu May  5 16:22:53 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not use a dummy pom that only declares dependencies for the 
+  testframework artifact
+- Clean up the spec file
+
+-------------------------------------------------------------------
+Mon Mar 25 17:25:30 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Remove pom parent, since we don't use it when not building with
+  maven
+
+-------------------------------------------------------------------
+Tue Jul 10 13:02:58 UTC 2018 - fstrba@suse.com
+
+- Added patch:
+  * commons-collections-jdk11.patch
+    + resolve ambiguity with toArray(null)
+	+ fixes tests with jdk11
+
+-------------------------------------------------------------------
+Tue May 15 07:37:07 UTC 2018 - fstrba@suse.com
+
+- Build with source and target 8 to prepare for a possible removal
+  of 1.6 compatibility
+- Run fdupes on documentation
+
+-------------------------------------------------------------------
+Fri Sep 29 08:12:33 UTC 2017 - fstrba@suse.com
+
+- Don't condition the maven defines on release version, but on 
+  _maven_repository being defined
+
+-------------------------------------------------------------------
+Thu Sep 14 11:07:55 UTC 2017 - fstrba@suse.com
+
+- Fix build with jdk9 by specifying java source and target 1.6
+- Added patch:
+  * commons-collections-3.2.2-tf.javadoc.patch
+    - Fix unresolved symbols when building tf.javadoc
+
+-------------------------------------------------------------------
+Fri May 19 08:49:50 UTC 2017 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Thu Dec 17 18:24:36 UTC 2015 - tchvatal@suse.com
+
+- Version update to 3.2.2:
+  * Various bugfixes
+  * Unix formating in the archive
+  * Fixes bnc#954102
+- Refresh patches for the dos2unix conversion:
+  * commons-collections-3.2-build_xml.patch
+  * jakarta-commons-collections-javadoc-nonet.patch
+- Add patch to add missing MANIFEST.MF file:
+  * commons-collections-missing-MF.patch
+
+-------------------------------------------------------------------
+Wed Jul 29 10:46:22 UTC 2015 - tchvatal@suse.com
+
+- Fix build with jdk8:
+  * java8-compat.patch
+
+-------------------------------------------------------------------
+Wed Mar 18 09:45:57 UTC 2015 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Mon Jul  7 14:48:57 UTC 2014 - tchvatal@suse.com
+
+- Do not depend on junit4 but use junit
+
+-------------------------------------------------------------------
+Thu May 15 13:17:17 UTC 2014 - darin@darins.net
+
+- no bytecode check from sles 
+
+-------------------------------------------------------------------
+Mon Sep  9 11:04:10 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Thu Sep  5 11:58:13 UTC 2013 - mvyskocil@suse.com
+
+- update to 3.2.1
+- rename to apache-commons-collections
+- deleted patches
+  * jakarta-commons-collections-navigation.patch
+  * jakarta-commons-collections-target15.patch
+- added patches
+  * commons-collections-3.2-build_xml.patch
+- use newest add_maven_depmap from javapackages-tools
+- drop -tomcat5 subpackage
+
+-------------------------------------------------------------------
+Tue Nov 11 09:47:14 CET 2008 - mvyskocil@suse.cz
+
+- fix of bnc#441085: yast2-schema is missing on media (openSUSE-11. 1-DVD-ppc-Build0113)
+  - unittest disabled as it fails on ppc with openjdk b11
+
+-------------------------------------------------------------------
+Mon Aug 25 16:30:12 CEST 2008 - mvyskocil@suse.cz
+
+- target=1.5 source=1.5
+
+-------------------------------------------------------------------
+Thu Mar 13 11:19:36 CET 2008 - mvyskocil@suse.cz
+
+- merged with jpackage-1.7
+- update to 3.2
+- changes in BuildRequires:
+  - java2-devel-packages was substituded by java-devel
+  - added ant-junit
+  - maven build support and a maven specific BuildRequires
+- added maven pom files
+- provides and obsoletes contains a version
+- the gcj build support
+- new subpackages:
+  - jakarta-commons-collections-testframework
+  - jakarta-commons-collections-testframework-javadoc
+  - jakarta-commons-collections-tomcat5
+
+-------------------------------------------------------------------
+Mon Sep 25 11:37:13 CEST 2006 - skh@suse.de
+
+- don't use icecream
+- use source="1.4" and target="1.4" for build with java 1.5
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:36 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jul 27 16:09:34 CEST 2005 - jsmeix@suse.de
+
+- Adjustments in the spec file.
+
+-------------------------------------------------------------------
+Mon Jul 18 16:03:12 CEST 2005 - jsmeix@suse.de
+
+- Current version 3.1 from JPackage.org
+
+-------------------------------------------------------------------
+Mon Feb 21 17:17:15 CET 2005 - skh@suse.de
+
+- update to version 3.1
+- don't use icecream
+
+-------------------------------------------------------------------
+Thu Sep 16 14:59:08 CEST 2004 - skh@suse.de
+
+- Fix prerequires of javadoc subpackage
+
+-------------------------------------------------------------------
+Thu Sep  2 17:46:58 CEST 2004 - skh@suse.de
+
+- Initial package created with version 2.1.1 (JPackage 1.5)
+

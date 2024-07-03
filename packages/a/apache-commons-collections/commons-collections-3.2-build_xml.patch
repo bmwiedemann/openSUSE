@@ -1,0 +1,66 @@
+--- build.xml	2023-10-25 18:15:51.721217809 +0200
++++ build.xml	2023-10-25 18:26:44.848980199 +0200
+@@ -124,6 +124,9 @@
+     <mkdir dir="${build.classes}"/>
+     <javac  srcdir="${source.java}"
+            destdir="${build.classes}"
++           release="8"
++            source="8"
++            target="8"
+              debug="${compile.debug}"
+        deprecation="${compile.deprecation}"
+           optimize="${compile.optimize}">
+@@ -267,6 +270,9 @@
+     <mkdir dir="${build.tests}"/>
+     <javac  srcdir="${source.test}"
+            destdir="${build.tests}"
++           release="8"
++            source="8"
++            target="8"
+              debug="true"
+        deprecation="false"
+           optimize="false">
+@@ -286,7 +292,7 @@
+   <!-- Runs all tests -->
+   <target name="-test-all" depends="compile.tests" unless="testcase">
+     <mkdir dir="${build.test.reports}"/>
+-    <junit printsummary="yes" haltonfailure="yes" showoutput="yes">
++    <junit printsummary="yes" haltonfailure="no" showoutput="yes">
+       <formatter type="brief" />
+       <classpath>
+         <pathelement location="${build.classes}"/>
+@@ -331,7 +337,7 @@
+   <target name="testjar"  depends="compile.tests,jar"
+           description="Run all unit test cases">
+     <echo message="Running collections tests against built jar ..."/>
+-    <junit printsummary="yes" haltonfailure="yes">
++    <junit printsummary="yes" haltonfailure="no">
+       <classpath>
+         <pathelement location="${build.jar.name}"/>
+         <pathelement location="${build.tests}"/>
+@@ -355,6 +361,7 @@
+     <delete     dir="${build.docs}"/>
+     <mkdir      dir="${build.docs}"/>
+     <javadoc sourcepath="${source.java}"
++                 source="8"
+                 destdir="${build.docs}"
+            packagenames="${component.package}.*"
+                  access="${javadoc.access}"
+@@ -412,6 +419,9 @@
+     <javac  srcdir="${source.test}"
+            destdir="${tf.build.tf}"
+              debug="true"
++           release="8"
++            source="8"
++            target="8"
+        deprecation="false"
+           optimize="false">
+       <patternset refid="tf.patternset.validate" />
+@@ -453,6 +463,7 @@
+     <delete     dir="${tf.build.docs}"/>
+     <mkdir      dir="${tf.build.docs}"/>
+     <javadoc    destdir="${tf.build.docs}"
++                 source="8"
+                  access="protected"
+                  author="false"
+                 version="false"
