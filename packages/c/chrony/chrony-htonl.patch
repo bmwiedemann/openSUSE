@@ -1,0 +1,11 @@
+--- test/unit/util.c.orig
++++ test/unit/util.c
+@@ -602,7 +602,7 @@ test_unit(void)
+ #else
+   TEST_CHECK(tspec.tv_sec_high == htonl(TV_NOHIGHSEC));
+ #endif
+-  TEST_CHECK(tspec.tv_sec_low == htonl(ts.tv_sec));
++  TEST_CHECK(tspec.tv_sec_low == htonl((uint32_t) ts.tv_sec));
+   TEST_CHECK(tspec.tv_nsec == htonl(ts.tv_nsec));
+   UTI_TimespecNetworkToHost(&tspec, &ts2);
+   TEST_CHECK(!UTI_CompareTimespecs(&ts, &ts2));

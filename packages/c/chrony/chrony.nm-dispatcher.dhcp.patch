@@ -1,0 +1,11 @@
+--- examples/chrony.nm-dispatcher.dhcp.orig
++++ examples/chrony.nm-dispatcher.dhcp
+@@ -10,7 +10,7 @@
+ 
+ chronyc=/usr/bin/chronyc
+ server_options=iburst
+-server_dir=/var/run/chrony-dhcp
++server_dir=/run/chrony-dhcp
+ 
+ dhcp_server_file=$server_dir/$interface.sources
+ dhcp_ntp_servers="$DHCP4_NTP_SERVERS $DHCP6_DHCP6_NTP_SERVERS"

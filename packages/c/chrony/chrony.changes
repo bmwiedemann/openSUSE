@@ -1,0 +1,888 @@
+-------------------------------------------------------------------
+Tue Jun  4 14:57:09 UTC 2024 - Reinhard Max <max@suse.com>
+
+- bsc#1225362, chrony-124-tai.patch: make 124-tai more reliable
+
+-------------------------------------------------------------------
+Mon May 27 15:34:40 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Update clknetsim to snapshot 0a11a35.
+
+-------------------------------------------------------------------
+Mon Feb 26 10:33:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Mon Jan 15 14:12:31 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Update to version 4.5:
+  * Add support for AES-GCM-SIV in GnuTLS
+  * Add support for corrections from PTP transparent clocks
+  * Add support for systemd socket activation
+  * Fix presend in interleaved mode
+  * Fix reloading of modified sources from sourcedir
+
+-------------------------------------------------------------------
+Fri Sep  1 14:05:34 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Use make quickcheck instead of make check to avoid >1h build
+  times and failures due to timeouts. This was the default before
+  3.2 but it changed to make tests more reliable. Here a seed is
+  already set to get deterministic execution.
+
+-------------------------------------------------------------------
+Wed Aug  9 17:30:28 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Update to 4.4:
+  * Add support for AES-GCM-SIV with Nettle >= 3.9 to shorten NTS
+    cookies to avoid some length-specific blocking of NTP on
+    Internet.
+  * Add support for multiple refclocks using extpps option on one
+    PHC.
+  * Add maxpoll option to hwtimestamp directive to improve PHC
+    tracking with low packet rates
+  * Add hwtstimeout directive to configure timeout for late
+    timestamps.
+  * Handle late hardware transmit timestamps of NTP requests on
+    all sockets.
+  * Handle mismatched 32/64-bit time_t in SOCK refclock samples
+  * Improve source replacement
+  * Log important changes made by command requests (chronyc)
+  * Refresh address of NTP sources periodically
+  * Set DSCP for IPv6 packets
+  * Shorten NTS-KE retry interval when network is down
+  * Update seccomp filter for musl
+  * Warn if loading keys from file with unexpected permissions
+  * Warn if source selection fails or falseticker is detected
+  * Add selectopts command to modify source-specific selection
+    options.
+  * Add timestamp sources to serverstats report and make its fields
+    64-bit.
+  * Add -e option to chronyc to indicate end of response
+- Update clknetsim to snapshot ef2a7a9.
+
+-------------------------------------------------------------------
+Wed Nov 16 11:37:25 UTC 2022 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Install chrony DHCP dispatcher script for Networkmanager
+  * chrony.nm-dispatcher.dhcp.patch /var/run to /run
+
+-------------------------------------------------------------------
+Thu Sep  1 14:40:46 UTC 2022 - Reinhard Max <max@suse.com>
+
+- Update to 4.3:
+  * Add local option to refclock directive to stabilise system
+    clock with more stable free-running clock (e.g. TCXO, OCXO).
+  * Add maxdelayquant option to server/pool/peer directive to
+    replace maxdelaydevratio filter with long-term quantile-based
+    filtering.
+  * Add selection option to log directive.
+  * Allow external PPS in PHC refclock without configurable pin.
+  * Don't accept first interleaved response to minimise error in
+    delay.
+  * Don't use arc4random on Linux to avoid server performance loss.
+  * Improve filter option to better handle missing NTP samples.
+  * Improve stability with hardware timestamping and PHC refclock.
+  * Update seccomp filter
+- Update clknetsim to snapshot f00531b.
+- Use a more specific conditional for the /usr/etc stuff.
+
+-------------------------------------------------------------------
+Wed Jun 15 14:41:05 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Moved logrotate files from user specific directory /etc/logrotate.d
+  to vendor specific directory /usr/etc/logrotate.d.
+
+-------------------------------------------------------------------
+Thu May 12 14:33:50 UTC 2022 - Stefan Schubert <schubi@suse.de>
+
+- Moved 20-chrony file from user specif directory
+  /etc/NetworkManager/dispatcher.d to vendor specific directory 
+  /usr/lib/NetworkManager/dispatcher.d. So, users changes can
+  still be done in /etc and will not be overwritten by an update.
+
+-------------------------------------------------------------------
+Mon Jan 10 17:26:02 UTC 2022 - Reinhard Max <max@suse.com>
+
+- boo#1194206: Use /run instead of /var/run throughout.
+- bsc#1194229: Fix pool package dependencies, so that SLE actually
+  prefers chrony-pool-suse over chrony-pool-empty. 
+
+-------------------------------------------------------------------
+Thu Dec 16 16:47:08 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Update to 4.2
+  * Add support for NTPv4 extension field improving synchronisation
+    stability and resolution of root delay and dispersion
+    (experimental)
+  * Add support for NTP over PTP (experimental)
+  * Add support for AES-CMAC and hash functions in GnuTLS
+  * Improve server interleaved mode to be more reliable and support
+    multiple clients behind NAT
+  * Update seccomp filter
+  * Fix RTC support with 64-bit time_t on 32-bit Linux
+  * Fix seccomp filter to work correctly with bind*device directives
+- Obsoleted patches:
+  * chrony-refid-internal-md5.patch
+  * harden_chrony-wait.service.patch
+  * harden_chronyd.service.patch
+- Update clknetsim to snapshot 470b5e9.
+
+-------------------------------------------------------------------
+Tue Dec  7 10:08:53 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Add chrony-htonl.patch to work around undocumented behaviour of
+  htonl() in older glibc versions (SLE-12) on 64 bit big endian
+  architectures (s390x).
+
+-------------------------------------------------------------------
+Fri Nov 19 16:39:44 UTC 2021 - Reinhard Max <max@suse.com>
+
+- SLE bugs that have been fixed in openSUSE up to this point
+  without explicit references: bsc#1183783, bsc#1184400,
+  bsc#1171806, bsc#1161119, bsc#1159840.
+- Obsoleted SLE patches:
+  * chrony-fix-open.patch
+  * chrony-gettimeofday.patch
+  * chrony-ntp-era-split.patch
+  * chrony-pidfile.patch
+  * chrony-select-timeout.patch
+  * chrony-urandom.patch
+  * chrony.sysconfig
+  * clknetsim-glibc-2.31.patch
+
+-------------------------------------------------------------------
+Fri Oct  8 14:52:41 UTC 2021 - Reinhard Max <max@suse.com>
+
+- boo#1190926: PrivateDevices is too strict, we might need to
+  access the rtc and ptp devices.
+- Add back support to build chrony on SLE12.
+- Drop dependency on asciidoctor. It is only needed for building
+  the HTML documentation which we don't package anyway.
+
+-------------------------------------------------------------------
+Mon Aug 30 13:50:07 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Added patch(es):
+  * harden_chrony-wait.service.patch
+  * harden_chronyd.service.patch
+
+-------------------------------------------------------------------
+Thu Jul  1 12:38:13 UTC 2021 - Reinhard Max <max@suse.com>
+
+- boo#1187906: Consolidate all references to the helper script.
+- bsc#1173760: MD5 is not available from mozilla-nss in FIPS mode,
+  but needed for calculating refids from IPv6 addresses as part of
+  the NTP protocol (rfc5905). As this is a non-cryptographic use of
+  MD5 we can use our own implementation without violating FIPS
+  rules: chrony-refid-internal-md5.patch .
+
+-------------------------------------------------------------------
+Sun Jun 13 13:29:36 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add now working CONFIG parameter to sysusers generator
+
+-------------------------------------------------------------------
+Wed Jun  2 09:10:41 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change to using systemd-sysusers
+- Remove otherproviders, not needed anymore
+
+-------------------------------------------------------------------
+Tue Jun  1 12:53:23 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Update to 4.1
+  * Add support for NTS servers specified by IP address (matching
+    Subject Alternative Name in server certificate)
+  * Add source-specific configuration of trusted certificates
+  * Allow multiple files and directories with trusted certificates
+  * Allow multiple pairs of server keys and certificates
+  * Add copy option to server/pool directive
+  * Increase PPS lock limit to 40% of pulse interval
+  * Perform source selection immediately after loading dump files
+  * Reload dump files for addresses negotiated by NTS-KE server
+  * Update seccomp filter and add less restrictive level
+  * Restart ongoing name resolution on online command
+  * Fix dump files to not include uncorrected offset
+  * Fix initstepslew to accept time from own NTP clients
+  * Reset NTP address and port when no longer negotiated by NTS-KE
+    server
+- Update clknetsim to snapshot f89702d.
+- Refresh chrony.keyring from
+  https://chrony.tuxfamily.org/gpgkey-8F375C7E8D0EE125A3D3BD51537E2B76F7680DAC.asc
+- Ensure the correct pool packages are installed for openSUSE
+  and SLE (bsc#1180689).
+
+-------------------------------------------------------------------
+Fri Feb  5 09:38:02 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Enable syscallfilter unconditionally [boo#1181826].
+
+-------------------------------------------------------------------
+Mon Dec  7 09:53:22 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- drop buildrequires on NSS. We need gnutls for NTS anyway and we
+  can do all the other required crypto via nettle+gnutls. no need
+  for another crypto library.
+
+-------------------------------------------------------------------
+Sun Nov  1 22:26:48 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.0
+  - Enhancements
+    - Add support for Network Time Security (NTS) authentication
+    - Add support for AES-CMAC keys (AES128, AES256) with Nettle
+    - Add authselectmode directive to control selection of
+      unauthenticated sources
+    - Add binddevice, bindacqdevice, bindcmddevice directives
+    - Add confdir directive to better support fragmented
+      configuration
+    - Add sourcedir directive and "reload sources" command to
+      support dynamic NTP sources specified in files
+    - Add clockprecision directive
+    - Add dscp directive to set Differentiated Services Code Point
+      (DSCP)
+    - Add -L option to limit log messages by severity
+    - Add -p option to print whole configuration with included
+      files
+    - Add -U option to allow start under non-root user
+    - Allow maxsamples to be set to 1 for faster update with -q/-Q
+      option
+    - Avoid replacing NTP sources with sources that have
+      unreachable address
+    - Improve pools to repeat name resolution to get "maxsources"
+      sources
+    - Improve source selection with trusted sources
+    - Improve NTP loop test to prevent synchronisation to itself
+    - Repeat iburst when NTP source is switched from offline state
+      to online
+    - Update clock synchronisation status and leap status more
+      frequently
+    - Update seccomp filter
+    - Add "add pool" command
+    - Add "reset sources" command to drop all measurements
+    - Add authdata command to print details about NTP
+      authentication
+    - Add selectdata command to print details about source
+      selection
+    - Add -N option and sourcename command to print original names
+      of sources
+    - Add -a option to some commands to print also unresolved
+      sources
+    - Add -k, -p, -r options to clients command to select, limit,
+      reset data
+  - Bug fixes
+    - Don’t set interface for NTP responses to allow asymmetric
+      routing
+    - Handle RTCs that don’t support interrupts
+    - Respond to command requests with correct address on
+      multihomed hosts
+  - Removed features
+    - Drop support for RIPEMD keys (RMD128, RMD160, RMD256, RMD320)
+    - Drop support for long (non-standard) MACs in NTPv4 packets
+      (chrony 2.x clients using non-MD5/SHA1 keys need to use
+      option "version 3")
+    - Drop support for line editing with GNU Readline
+- add BuildRequires for gnutls-devel (which also pulls nettle to
+  enable the new features)
+- drop patches which are included in the update:
+  chrony-test-update-processing-of-packet-log.patch
+  chrony-test-fix-util-unit-test-for-NTP-era-split.patch
+- refreshed chrony-config.patch
+- track series file for easier quilt setup
+- added option to turn off testsuite with
+  osc build --without=testsuite
+
+  testsuite still runs by default
+
+-------------------------------------------------------------------
+Wed Oct 28 07:49:37 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- By default we don't write log files but log to journald, so
+  only recommend logrotate.
+
+-------------------------------------------------------------------
+Mon Sep 14 10:41:58 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Adjust and rename the sysconfig file, so that it matches the
+  expectations of chronyd.service (bsc#1173277).
+
+-------------------------------------------------------------------
+Sun Sep 13 20:22:46 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 3.5.1:
+  * Create new file when writing pidfile (CVE-2020-14367, bsc#1174911)
+
+-------------------------------------------------------------------
+Sun Aug  2 21:27:45 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+
+-------------------------------------------------------------------
+Thu Jun  4 15:23:17 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Add chrony-pool-suse and chrony-pool-openSUSE subpackages that
+  preconfigure chrony to use NTP servers from the  respective
+  pools for SUSE and openSUSE (bsc#1156884, SLE-11424).
+- Add chrony-pool-empty to still allow installing chrony without
+  preconfigured servers.
+- Use iburst in the default pool statements to speed up initial
+  synchronisation (bsc#1172113).
+
+-------------------------------------------------------------------
+Thu Apr 30 16:03:16 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use _systemdutildir instead of _libexecdir/systemd: systemd does
+  not actually live below libexecdir.
+
+-------------------------------------------------------------------
+Thu Feb 13 12:45:44 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add chrony-test-update-processing-of-packet-log.patch in order
+  to fix test-suite failure.
+
+-------------------------------------------------------------------
+Wed Feb 12 09:24:24 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Update clknetsim to version 79ffe44 (fixes boo#1162964).
+- Backport chrony-test-fix-util-unit-test-for-NTP-era-split.patch.
+
+-------------------------------------------------------------------
+Sat Oct 26 10:39:29 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
+
+- Change to BuildRequires: rubygem(asciidoctor) and remove conditional
+  (is available in SLE12-SP4 and SLE15* as well)
+- Fix typo in %install
+
+-------------------------------------------------------------------
+Tue Oct 22 21:18:58 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix asciidoc in Tumbleweed
+- Revert clknetsim to version 58c5e8b
+
+-------------------------------------------------------------------
+Tue Oct 22 15:25:18 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix incorrect download link for package signature
+
+-------------------------------------------------------------------
+Mon Oct 21 07:57:44 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Temporarily disable signature usage as its expired
+- Update clknetsim to version ac3c832
+
+-------------------------------------------------------------------
+Sat Oct 19 08:27:17 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- fix chrony-service-helper.patch
+
+-------------------------------------------------------------------
+Sat Oct 19 07:22:58 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- Update to 3.5:
+  + Add support for more accurate reading of PHC on Linux 5.0
+  + Add support for hardware timestamping on interfaces with read-only timestamping configuration
+  + Add support for memory locking and real-time priority on FreeBSD, NetBSD, Solaris
+  + Update seccomp filter to work on more architectures
+  + Validate refclock driver options
+  + Fix bindaddress directive on FreeBSD
+  + Fix transposition of hardware RX timestamp on Linux 4.13 and later
+  + Fix building on non-glibc systems
+
+-------------------------------------------------------------------
+Thu Mar 21 13:35:20 UTC 2019 - Reinhard Max <max@suse.com>
+
+- Fix ordering and dependencies of chronyd.service, so that it is
+  started after name resolution is up (bsc#1129914).
+- Add chrony-service-ordering.patch
+- Fix location of helper script in chrony-dnssrv@.service
+  (bsc#1128846).
+
+-------------------------------------------------------------------
+Wed Mar  6 13:40:04 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update testsuite to version 58c5e8b
+
+-------------------------------------------------------------------
+Thu Dec 20 16:48:14 UTC 2018 - Reinhard Max <max@suse.com>
+
+- Read runtime servers from /var/run/netconfig/chrony.servers to
+  fix bsc#1099272.
+- Move chrony-helper to /usr/lib/chrony/helper, because there
+  should be no executables in /usr/share.
+
+-------------------------------------------------------------------
+Fri Dec 14 08:05:35 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Make sure to generate correct sysconfig file (boo#1117147)
+- Update clknetsim to revision 8b48422
+
+-------------------------------------------------------------------
+Thu Nov 22 09:27:58 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Remove discrepancies between spec file and chrony-tmpfiles (boo#1115529) 
+
+-------------------------------------------------------------------
+Thu Oct 18 10:14:08 UTC 2018 - Ismail Dönmez <idonmez@suse.com>
+
+- Update the keyring and uncomment it in the spec file 
+
+-------------------------------------------------------------------
+Thu Oct 18 07:43:44 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Comment out bad signature
+
+-------------------------------------------------------------------
+Wed Sep 19 18:21:19 UTC 2018 - Michael Ströder <michael@stroeder.com>
+
+- Added %{_tmpfilesdir}/%{name}.conf
+- Updated clknetsim
+- Update to version 3.4
+  * Enhancements
+    + Add filter option to server/pool/peer directive
+    + Add minsamples and maxsamples options to hwtimestamp directive
+    + Add support for faster frequency adjustments in Linux 4.19
+    + Change default pidfile to /var/run/chrony/chronyd.pid to allow chronyd 
+      without root privileges to remove it on exit
+    + Disable sub-second polling intervals for distant NTP sources
+    + Extend range of supported sub-second polling intervals
+    + Get/set IPv4 destination/source address of NTP packets on FreeBSD
+    + Make burst options and command useful with short polling intervals
+    + Modify auto_offline option to activate when sending request failed
+    + Respond from interface that received NTP request if possible
+    + Add onoffline command to switch between online and offline state 
+      according to current system network configuration
+    + Improve example NetworkManager dispatcher script
+  * Bug fixes
+    + Avoid waiting in Linux getrandom system call
+    + Fix PPS support on FreeBSD and NetBSD
+
+-------------------------------------------------------------------
+Fri Aug  3 07:56:06 UTC 2018 - mpluskal@suse.com
+
+- Update clknetsim to revision 42b693b
+  * Drop not needed chrony-fix-open.patch
+- Build tests with optflags as well
+- Do not run tests on i586
+- Enable signd
+
+-------------------------------------------------------------------
+Thu Aug  2 07:52:58 UTC 2018 - mpluskal@suse.com
+
+- Mention all sources as such in spec file
+- Fix formatting of changelog
+- Drop reference to change is not present
+
+-------------------------------------------------------------------
+Wed Aug  1 16:36:17 UTC 2018 - bwiedemann@suse.com
+
+- Update to version 3.3
+  * Enhancements:
+    + Add burst option to server/pool directive
+    + Add stratum and tai options to refclock directive
+    + Add support for Nettle crypto library
+    + Add workaround for missing kernel receive timestamps on Linux
+    + Wait for late hardware transmit timestamps
+    + Improve source selection with unreachable sources
+    + Improve protection against replay attacks on symmetric mode
+    + Allow PHC refclock to use socket in /var/run/chrony
+    + Add shutdown command to stop chronyd
+    + Simplify format of response to manual list command
+    + Improve handling of unknown responses in chronyc
+  * Bug fixes:
+    + Respond to NTPv1 client requests with zero mode
+    + Fix -x option to not require CAP_SYS_TIME under non-root user
+    + Fix acquisitionport directive to work with privilege separation
+    + Fix handling of socket errors on Linux to avoid high CPU usage
+    + Fix chronyc to not get stuck in infinite loop after clock step
+
+-------------------------------------------------------------------
+Wed Apr 18 02:55:54 UTC 2018 - mpost@suse.com
+
+- Added /etc/chrony.d/ directory to the package (bsc#1083597)
+  Modifed default chrony.conf to add "include /etc/chrony.d/*"
+
+-------------------------------------------------------------------
+Mon Mar 26 17:30:07 CEST 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Wed Mar 14 15:11:56 CET 2018 - kukuk@suse.de
+
+- Fix name of fillup template (was never installed before)
+- Fix Requires for fillup, it's used in post, not pre.
+
+-------------------------------------------------------------------
+Fri Feb  9 10:21:09 UTC 2018 - mpluskal@suse.com
+
+- Enable pps support
+
+-------------------------------------------------------------------
+Thu Nov 23 13:47:05 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Thu Oct 26 10:39:11 UTC 2017 - mpluskal@suse.com
+
+- Cleanup spec file:
+  * Drop pre systemd support
+  * Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Oct 24 18:23:56 UTC 2017 - mpost@suse.com
+
+- Modified the spec file to comment out the pool statement
+  in chrony.conf if _not_ building for openSUSE. (bsc#1063704).
+
+-------------------------------------------------------------------
+Thu Sep 28 16:17:08 UTC 2017 - mrueckert@suse.de
+
+- refresh patches to apply cleanly again
+  - chrony-config.patch
+  - chrony-fix-open.patch
+
+-------------------------------------------------------------------
+Wed Sep 20 23:57:53 UTC 2017 - mpost@suse.com
+
+- Upgraded to version 3.2:
+  Enhancements
+  * Improve stability with NTP sources and reference clocks
+  * Improve stability with hardware timestamping
+  * Improve support for NTP interleaved modes
+  * Control frequency of system clock on macOS 10.13 and later
+  * Set TAI-UTC offset of system clock with leapsectz directive
+  * Minimise data in client requests to improve privacy
+  * Allow transmit-only hardware timestamping
+  * Add support for new timestamping options introduced in Linux 4.13
+  * Add root delay, root dispersion and maximum error to tracking log
+  * Add mindelay and asymmetry options to server/peer/pool directive
+  * Add extpps option to PHC refclock to timestamp external PPS signal
+  * Add pps option to refclock directive to treat any refclock as PPS
+  * Add width option to refclock directive to filter wrong pulse edges
+  * Add rxfilter option to hwtimestamp directive
+  * Add -x option to disable control of system clock
+  * Add -l option to log to specified file instead of syslog
+  * Allow multiple command-line options to be specified together
+  * Allow starting without root privileges with -Q option
+  * Update seccomp filter for new glibc versions
+  * Dump history on exit by default with dumpdir directive
+  * Use hardening compiler options by default
+  Bug fixes
+  * Don't drop PHC samples with low-resolution system clock
+  * Ignore outliers in PHC tracking, RTC tracking, manual input
+  * Increase polling interval when peer is not responding
+  * Exit with error message when include directive fails
+  * Don't allow slash after hostname in allow/deny directive/command
+  * Try to connect to all addresses in chronyc before giving up
+- Upgraded clknetsim to version 71dbbc5.
+- Reworked chrony-fix-open.patch to fit the new version
+
+-------------------------------------------------------------------
+Tue Jan 31 16:38:05 UTC 2017 - mpost@suse.com
+
+- Upgraded to version 3.1:
+  - Enhancements
+    - Add support for precise cross timestamping of PHC on Linux
+    - Add minpoll, precision, nocrossts options to hwtimestamp directive
+    - Add rawmeasurements option to log directive and modify measurements
+      option to log only valid measurements from synchronised sources
+    - Allow sub-second polling interval with NTP sources
+  - Bug fixes
+    - Fix time smoothing in interleaved mode
+- Upgraded clknetsim to version ce89a1b.
+- Reworked the following patches to fit the new versions
+  - chrony-config.patch
+  - chrony-service-helper.patch
+  - chrony-fix-open.patch
+
+-------------------------------------------------------------------
+Mon Jan 16 22:36:09 UTC 2017 - mpost@suse.com
+
+- Upgraded to version 3.0:
+  - Enhancements
+    - Add support for software and hardware timestamping on Linux
+    - Add support for client/server and symmetric interleaved modes
+    - Add support for MS-SNTP authentication in Samba
+    - Add support for truncated MACs in NTPv4 packets
+    - Estimate and correct for asymmetric network jitter
+    - Increase default minsamples and polltarget to improve stability with very low jitter
+    - Add maxjitter directive to limit source selection by jitter
+    - Add offset option to server/pool/peer directive
+    - Add maxlockage option to refclock directive
+    - Add -t option to chronyd to exit after specified time
+    - Add partial protection against replay attacks on symmetric mode
+    - Don't reset polling interval when switching sources to online state
+    - Allow rate limiting with very short intervals
+    - Improve maximum server throughput on Linux and NetBSD
+    - Remove dump files after start
+    - Add tab-completion to chronyc with libedit/readline
+    - Add ntpdata command to print details about NTP measurements
+    - Allow all source options to be set in add server/peer command
+    - Indicate truncated addresses/hostnames in chronyc output
+    - Print reference IDs as hexadecimal numbers to avoid confusion with IPv4 addresses
+  - Bug fixes
+    - Fix crash with disabled asynchronous name resolving
+- Upgraded clknetsim to version 6bb6519.
+
+-------------------------------------------------------------------
+Tue Nov 29 16:54:52 UTC 2016 - mpost@suse.com
+
+- Upgraded to version 2.4.1:
+  - Bug fixes
+    - Fix processing of kernel timestamps on non-Linux systems
+    - Fix crash with smoothtime directive
+    - Fix validation of refclock sample times
+    - Fix parsing of refclock directive
+
+-------------------------------------------------------------------
+Wed Jun  8 10:02:51 UTC 2016 - mrueckert@suse.de
+
+- update to 2.4:
+  - Enhancements
+    - Add orphan option to local directive for orphan mode
+      compatible with ntpd
+    - Add distance option to local directive to set activation
+      threshold (1 second by default)
+    - Add maxdrift directive to set maximum allowed drift of system
+      clock
+    - Try to replace NTP sources exceeding maximum distance
+    - Randomise source replacement to avoid getting stuck with bad
+      sources
+    - Randomise selection of sources from pools on start
+    - Ignore reference timestamp as ntpd doesn't always set it
+      correctly
+    - Modify tracking report to use same values as seen by NTP
+      clients
+    - Add -c option to chronyc to write reports in CSV format
+    - Provide detailed manual pages
+  - Bug fixes
+    - Fix SOCK refclock to work correctly when not specified as
+      last refclock
+    - Fix initstepslew and -q/-Q options to accept time from own
+      NTP clients
+    - Fix authentication with keys using 512-bit hash functions
+    - Fix crash on exit when multiple signals are received
+    - Fix conversion of very small floating-point numbers in
+      command packets
+  - Removed features
+    - Drop documentation in Texinfo format
+- update clknetsim to a5949fe for fixing a testsuite failure:
+  - add IP_PKTINFO socket option
+  - accept environment variables in make
+  - fix building with FORTIFY_SOURCE
+  - fix compiler warning
+  - support multiple SHM refclocks
+  - fix recv functions with new glibc headers
+- refreshed chrony-fix-open.patch: to apply cleanly after clknetsim
+  update
+- drop patches:
+  - chrony-include-termios.patch
+  - make-105-ntpauth-more-reliable.patch
+- drop buildrequires for texinfo and pre requires on the install
+  info packages
+- no longer use make install-docs: it only installed 0 byte html
+  files.
+
+-------------------------------------------------------------------
+Wed Apr 13 14:23:38 UTC 2016 - mpluskal@suse.com
+
+- Provide ntp-daemon (bsc#973981)
+
+-------------------------------------------------------------------
+Mon Apr 11 15:26:59 UTC 2016 - meissner@suse.com
+
+- chrony-fix-open.patch: make sure _open and _close are initialized
+  in open()/close() override, as libfreebl3 also calls from the
+  the ELF constructor. FATE#319508
+- enable mozilla-nss
+
+-------------------------------------------------------------------
+Fri Apr  8 15:54:08 UTC 2016 - mpluskal@suse.com
+
+- Use correct license
+- Drop hardcoded dependency on libseccomp, it is detected during 
+  build
+
+-------------------------------------------------------------------
+Fri Apr  8 08:38:00 UTC 2016 - mpluskal@suse.com
+
+- Undo reference to chrony-dnssrv@.service in %pre, %preun, %post,
+  and %postun as it would lead to error.
+- Change conditions for libseccom, we can use any version on SLE-12 
+  x86_64
+
+-------------------------------------------------------------------
+Tue Apr  5 22:27:48 UTC 2016 - mpost@suse.com
+
+- Removed %if for distributions that aren't building chrony.
+- Renamed chrony-2.2_logrotate.patch to chrony-logrotate.patch since
+  the patch is not particularly version-dependent.
+- Added clknetsim for "make check" processing.
+- Added Buildrequires for gcc-c++ and timezone for building clknetsim
+  and running "make check".
+- Changed Buildrequires and Requires to specify the minimum level of
+  libseccomp needed to build on s390x and ppc64le.
+- Removed "-Recommends: timedatex" since I couldn't find any instance
+  of it anywhere in the build service.
+- Modified the description to use some of the information from the
+  chrony web site.
+- Added chrony-include-termios.patch so that it will build on ppc64le.
+- Added make-105-ntpauth-more-reliable.patch so that "make check"
+  will not report a non-failure as a failure.
+- Added --without-nss to ./configure to avoid "interruption code
+  0x2003B in chronyd" errors.
+- Changed the symbolic links for rcchronyd and rcchronyd-wait to 
+  point to the actual location of the service command, not the symlink
+  in /sbin.
+- Added reference to chrony-dnssrv@.service in %pre, %preun, %post,
+  and %postun.
+  
+-------------------------------------------------------------------
+Mon Mar 28 09:35:07 UTC 2016 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Prepare for submission to Factory (see fate#319508)
+
+-------------------------------------------------------------------
+Thu Feb 18 16:48:46 UTC 2016 - mrueckert@suse.de
+
+- update to 2.3
+  - Enhancements
+    - Add support for NTP and command response rate limiting
+    - Add support for dropping root privileges on Mac OS X,
+      FreeBSD, Solaris
+    - Add require and trust options for source selection
+    - Enable logchange by default (1 second threshold)
+    - Set RTC on Mac OS X with rtcsync directive
+    - Allow binding to NTP port after dropping root privileges on
+      NetBSD
+    - Drop CAP_NET_BIND_SERVICE capability on Linux when NTP port
+      is disabled
+    - Resolve names in separate process when seccomp filter is
+      enabled
+    - Replace old records in client log when memory limit is
+      reached
+    - Don't reveal local time and synchronisation state in client
+      packets
+    - Don't keep client sockets open for longer than necessary
+    - Ignore poll in KoD RATE packets as ntpd doesn't always set it
+      correctly
+    - Warn when using keys shorter than 80 bits
+    - Add keygen command to generate random keys easily
+    - Add serverstats command to report NTP and command packet
+      statistics
+  - Bug fixes
+    - Fix clock correction after making step on Mac OS X
+    - Fix building on Solaris
+- refreshed patches to apply cleanly again:
+  chrony-2.2_logrotate.patch
+  chrony-config.patch
+  chrony-service-helper.patch
+
+-------------------------------------------------------------------
+Fri Jan 29 14:30:43 UTC 2016 - mrueckert@suse.de
+
+- update to 2.2.1
+  Restrict authentication of NTP server/peer to specified key
+  (CVE-2016-1567)
+
+-------------------------------------------------------------------
+Thu Nov 26 10:45:06 UTC 2015 - mrueckert@suse.de
+
+- silence groupadd/useradd call and drop the shell from the user.
+
+-------------------------------------------------------------------
+Thu Nov 26 01:13:52 UTC 2015 - mrueckert@suse.de
+
+- update to 2.2
+  see /usr/share/doc/packages/chrony/NEWS
+- sync with fedora spec and add systemd support
+- refreshed chrony-config.patch to apply cleanly again
+- added chrony-2.2_logrotate.patch: add missing su option as we no
+  longer have the daemon run as root.
+- added chrony-service-helper.patch: imported from fedora with a
+  changed path for moving from libexecdir to datadir
+- only use syscall filters on 12.3 and newer
+- move helper from libexecdir to datadir
+
+-------------------------------------------------------------------
+Mon Feb 24 17:21:35 UTC 2014 - mrueckert@suse.de
+
+- clean up build section
+  - the configure script can actually import CC/CFLAGS from the
+    environment. no need to break any CFLAGS it might set in the
+    configure script.
+  - remove unneeded prefix from the make calls.
+  - enable building the binaries with PIE/relro now
+
+-------------------------------------------------------------------
+Mon Feb 24 16:53:46 UTC 2014 - mrueckert@suse.de
+
+- Update to version 1.29.1:
+  * Modify chronyc protocol to prevent amplification attacks
+    (CVE-2014-0021) (incompatible with previous protocol version,
+    chronyc supports both)
+- Additional changes from 1.29
+  * Fix crash when processing crafted commands (CVE-2012-4502)
+    (possible with IP addresses allowed by cmdallow and localhost)
+  * Don't send uninitialized data in SUBNETS_ACCESSED and
+    CLIENT_ACCESSES replies (CVE-2012-4503) (not used by chronyc)
+  * Drop support for SUBNETS_ACCESSED and CLIENT_ACCESSES commands
+- Additional changes from 1.28
+  * Combine sources to improve accuracy
+  * Make config and command parser strict
+  * Add -a option to chronyc to authenticate automatically
+  * Add -R option to ignore initstepslew and makestep directives
+  * Add generatecommandkey, minsamples, maxsamples and user
+    directives
+  * Improve compatibility with NTPv1 and NTPv2 clients
+  * Create sockets only in selected family with -4/-6 option
+  * Treat address bind errors as non-fatal
+  * Extend tracking log
+  * Accept float values as initstepslew threshold
+  * Allow hostnames in offline, online and burst commands
+  * Fix and improve peer polling
+  * Fix crash in config parsing with too many servers
+  * Fix crash with duplicated initstepslew address
+  * Fix delta calculation with extreme frequency offsets
+  * Set local stratum correctly
+  * Remove unnecessary adjtimex calls
+  * Set paths in documentation by configure
+  * Update chrony.spec
+- Updated chrony-config.patch:
+  - lots of config values were fixed upstream already
+  - key file patching is unnecessary
+
+-------------------------------------------------------------------
+Sat Jul 13 22:14:49 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.27:
+  + Added support for stronger authentication keys via NSS or
+    libtomcrypt library.
+  + Extended tracking, sources and activity reports printed by
+    chronyc.
+  + The daemon now waits in foreground until it is fully
+    initialized.
+  + Other bug fixes and improvements.
+- Add mozilla-nss-devel & pkg-config BuildRequires, new optional
+  dependencys.
+
+-------------------------------------------------------------------
+Fri Jan 11 04:29:12 UTC 2013 - mrdocs@opensuse.org
+
+-run spec-cleaner on the spec file, fix license and remove cruft
+
+-------------------------------------------------------------------
+Tue Nov 29 13:55:16 UTC 2011 - aj@suse.de
+
+- Update to version 1.26:
+  * Added compatibility with Linux 3.0 and later
+  * Fixed replying on multihomed IPv6 hosts
+  * Other minor bug fixes and improvements
+- Cleanup package a bit.
+
+

@@ -1,0 +1,458 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f9fde8483679e481ae74273865a89c3c</srcmd5>
+    <version>2.3</version>
+    <time>1461855237</time>
+    <user>dimstar_suse</user>
+    <comment>Once again, fate#319508</comment>
+    <requestid>389732</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c6d54b36972829251c02b85f93c50836</srcmd5>
+    <version>2.4</version>
+    <time>1465750493</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400692</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9d9e89477e179e159baf79a61d5df6f4</srcmd5>
+    <version>2.4.1</version>
+    <time>1480584525</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442728</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c361d8341a1c2b743a3af6cd2a6918a6</srcmd5>
+    <version>3.0</version>
+    <time>1485167823</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450712</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8994a6ab884380e2dd488b65ac002b9b</srcmd5>
+    <version>3.1</version>
+    <time>1486046550</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgraded to version 3.1:</comment>
+    <requestid>453813</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>66e9a3c9a5fb106fd6121a9c12d747f4</srcmd5>
+    <version>3.2</version>
+    <time>1506195356</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528217</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>4209ff1fdaadd2ab5316123d4365dc5e</srcmd5>
+    <version>3.2</version>
+    <time>1506956090</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530357</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>7eca39f25afbf321a400432bd062f9de</srcmd5>
+    <version>3.2</version>
+    <time>1509394700</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup spec file:
+  * Drop pre systemd support
+  * Run spec-cleaner
+- Modified the spec file to comment out the pool statement
+  in chrony.conf if _not_ building for openSUSE. (bsc#1063704).
+</comment>
+    <requestid>536990</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>52b28a98b79009a8c2480cb933a48f55</srcmd5>
+    <version>3.2</version>
+    <time>1511595738</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544872</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>85b21cc39d83a10113a3d2f0c60a239a</srcmd5>
+    <version>3.2</version>
+    <time>1518426724</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable pps support</comment>
+    <requestid>574551</requestid>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>47872a1e3ed0c599c0672f1e28bb3f94</srcmd5>
+    <version>3.2</version>
+    <time>1521498705</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587008</requestid>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>be66f6e25e016646d29c971f950ad9e0</srcmd5>
+    <version>3.2</version>
+    <time>1522596327</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592539</requestid>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>12bd2708ecc6ecf955a658cb8e1def3e</srcmd5>
+    <version>3.2</version>
+    <time>1524237827</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597689</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7727bb1b6dc85ee146afe3461f601dd7</srcmd5>
+    <version>3.3</version>
+    <time>1533631806</time>
+    <user>dimstar_suse</user>
+    <comment>- Update clknetsim to revision 42b693b
+  * Drop not needed chrony-fix-open.patch
+- Build tests with optflags as well
+- Do not run tests on i586
+- Enable signd
+
+- Mention all sources as such in spec file
+- Fix formatting of changelog
+- Drop reference to change is not present
+
+- Update to version 3.3
+  * Enhancements:
+    + Add burst option to server/pool directive
+    + Add stratum and tai options to refclock directive
+    + Add support for Nettle crypto library
+    + Add workaround for missing kernel receive timestamps on Linux
+    + Wait for late hardware transmit timestamps
+    + Improve source selection with unreachable sources
+    + Improve protection against replay attacks on symmetric mode
+    + Allow PHC refclock to use socket in /var/run/chrony
+    + Add shutdown command to stop chronyd
+    + Simplify format of response to manual list command
+    + Improve handling of unknown responses in chronyc
+  * Bug fixes:
+    + Respond to NTPv1 client requests with zero mode
+    + Fix -x option to not require CAP_SYS_TIME under non-root user
+    + Fix acquisitionport directive to work with privilege separation
+    + Fix handling of socket errors on Linux to avoid high CPU usage
+    + Fix chronyc to not get stuck in infinite loop after clock step</comment>
+    <requestid>627295</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>760737dbe56549af8ef481d293d401cf</srcmd5>
+    <version>3.4</version>
+    <time>1540447764</time>
+    <user>dimstar_suse</user>
+    <comment>- Update the keyring and uncomment it in the spec file 
+
+- Comment out bad signature
+
+- Added %{_tmpfilesdir}/%{name}.conf
+- Updated clknetsim
+- Update to version 3.4
+  * Enhancements
+    + Add filter option to server/pool/peer directive
+    + Add minsamples and maxsamples options to hwtimestamp directive
+    + Add support for faster frequency adjustments in Linux 4.19
+    + Change default pidfile to /var/run/chrony/chronyd.pid to allow chronyd 
+      without root privileges to remove it on exit
+    + Disable sub-second polling intervals for distant NTP sources
+    + Extend range of supported sub-second polling intervals
+    + Get/set IPv4 destination/source address of NTP packets on FreeBSD
+    + Make burst options and command useful with short polling intervals
+    + Modify auto_offline option to activate when sending request failed
+    + Respond from interface that received NTP request if possible
+    + Add onoffline command to switch between online and offline state 
+      according to current system network configuration
+    + Improve example NetworkManager dispatcher script
+  * Bug fixes
+    + Avoid waiting in Linux getrandom system call
+    + Fix PPS support on FreeBSD and NetBSD</comment>
+    <requestid>642837</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>ce8cf00c32d5731c88746705684ce53a</srcmd5>
+    <version>3.4</version>
+    <time>1544441260</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove discrepancies between spec file and chrony-tmpfiles (boo#1115529)</comment>
+    <requestid>655501</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>8799edf5ef150437f4829efb5e4e413f</srcmd5>
+    <version>3.4</version>
+    <time>1545866718</time>
+    <user>dimstar_suse</user>
+    <comment>- Read runtime servers from /var/run/netconfig/chrony.servers to
+  fix bsc#1099272.
+- Move chrony-helper to /usr/lib/chrony/helper, because there
+  should be no executables in /usr/share.
+
+- Make sure to generate correct sysconfig file (boo#1117147)
+- Update clknetsim to revision 8b48422</comment>
+    <requestid>660562</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>b2a727bbf027fdca1b94cec3bf46eddf</srcmd5>
+    <version>3.4</version>
+    <time>1552464416</time>
+    <user>dimstar_suse</user>
+    <comment>- Update testsuite to version 58c5e8b</comment>
+    <requestid>682198</requestid>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>8143f44c32c92bdf8e1b2883d61eb5cb</srcmd5>
+    <version>3.4</version>
+    <time>1553262939</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix ordering and dependencies of chronyd.service, so that it is
+  started after name resolution is up (bsc#1129914).
+- Add chrony-service-ordering.patch
+- Fix location of helper script in chrony-dnssrv@.service
+  (bsc#1128846).</comment>
+    <requestid>687330</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c62cef1538409bd391a3cd11f788e450</srcmd5>
+    <version>3.5</version>
+    <time>1572021644</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742009</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>6107f0704db196c0e9b48ac5d935a79f</srcmd5>
+    <version>3.5</version>
+    <time>1573222926</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>745175</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>eaef3c56b016b2276cea12cc69f3e7f5</srcmd5>
+    <version>3.5</version>
+    <time>1581801714</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>774160</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>cbbbb16693e50580c7f0276327080d24</srcmd5>
+    <version>3.5</version>
+    <time>1588450382</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799425</requestid>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>226578d499c814679857e97acc66a754</srcmd5>
+    <version>3.5</version>
+    <time>1591558419</time>
+    <user>dimstar_suse</user>
+    <comment>- Add chrony-pool-suse and chrony-pool-openSUSE subpackages that
+  preconfigure chrony to use NTP servers from the  respective
+  pools for SUSE and openSUSE (bsc#1156884, SLE-11424).
+- Add chrony-pool-empty to still allow installing chrony without
+  preconfigured servers.
+- Use iburst in the default pool statements to speed up initial
+  synchronisation (bsc#1172113).</comment>
+    <requestid>811536</requestid>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>af5e9f1eb66b7b5a564c11167ac4156c</srcmd5>
+    <version>3.5</version>
+    <time>1597222565</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825252</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>9af9c253b2cbcc361bab2afcd9d68989</srcmd5>
+    <version>3.5.1</version>
+    <time>1602155422</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust and rename the sysconfig file, so that it matches the
+  expectations of chronyd.service (bsc#1173277).
+
+- Update to 3.5.1:
+  * Create new file when writing pidfile (CVE-2020-14367, bsc#1174911)</comment>
+    <requestid>834313</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>0afcba5c454c81c77d26d4e07cef86b9</srcmd5>
+    <version>3.5.1</version>
+    <time>1604306443</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844909</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>87dd1c870de97f8c58046b60fb2befb7</srcmd5>
+    <version>4.1</version>
+    <time>1622928666</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1
+  * Add support for NTS servers specified by IP address (matching
+    Subject Alternative Name in server certificate)
+  * Add source-specific configuration of trusted certificates
+  * Allow multiple files and directories with trusted certificates
+  * Allow multiple pairs of server keys and certificates
+  * Add copy option to server/pool directive
+  * Increase PPS lock limit to 40% of pulse interval
+  * Perform source selection immediately after loading dump files
+  * Reload dump files for addresses negotiated by NTS-KE server
+  * Update seccomp filter and add less restrictive level
+  * Restart ongoing name resolution on online command
+  * Fix dump files to not include uncorrected offset
+  * Fix initstepslew to accept time from own NTP clients
+  * Reset NTP address and port when no longer negotiated by NTS-KE
+    server
+- Update clknetsim to snapshot f89702d.
+- Refresh chrony.keyring from
+  https://chrony.tuxfamily.org/gpgkey-8F375C7E8D0EE125A3D3BD51537E2B76F7680DAC.asc
+- Ensure the correct pool packages are installed for openSUSE
+  and SLE (bsc#1180689).
+
+- Enable syscallfilter unconditionally [boo#1181826].
+
+- drop buildrequires on NSS. We need gnutls for NTS anyway and we
+  can do all the other required crypto via nettle+gnutls. no need
+  for another crypto library.
+
+- Update to 4.0
+  - Enhancements</comment>
+    <requestid>896714</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>00b43af5873ff14b041a418af0ec6a88</srcmd5>
+    <version>4.1</version>
+    <time>1623268501</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898039</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>3898a125c53c94b7157eac11baa248d0</srcmd5>
+    <version>4.1</version>
+    <time>1625115925</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>899880</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>c14827c69d7cf5aa8b318039654946fe</srcmd5>
+    <version>4.1</version>
+    <time>1625429430</time>
+    <user>dimstar_suse</user>
+    <comment>- boo#1187906: Consolidate all references to the helper script.
+- bsc#1173760: MD5 is not available from mozilla-nss in FIPS mode,
+  but needed for calculating refids from IPv6 addresses as part of
+  the NTP protocol (rfc5905). As this is a non-cryptographic use of
+  MD5 we can use our own implementation without violating FIPS
+  rules: chrony-refid-internal-md5.patch .</comment>
+    <requestid>903544</requestid>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>16826a8621b12252ba41a7c6b5a30a86</srcmd5>
+    <version>4.1</version>
+    <time>1631129776</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>916851</requestid>
+  </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>147a7ae0e5ef3310b951d2d309e56f90</srcmd5>
+    <version>4.1</version>
+    <time>1634677409</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>925526</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>7d9526b4b22fcabef40ee8d06c636d8f</srcmd5>
+    <version>4.2</version>
+    <time>1640373784</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>942274</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>046107adc9f2a79bbad9f1b15416e87a</srcmd5>
+    <version>4.2</version>
+    <time>1642724724</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>947490</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>87e36abe98b6c617a0c48fabde334935</srcmd5>
+    <version>4.2</version>
+    <time>1653417049</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978662</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>9827ca6c4b74d0a56cd8a83841dec2a5</srcmd5>
+    <version>4.3</version>
+    <time>1662740571</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1002167</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>3b68f65987d041c5718b669d9142f392</srcmd5>
+    <version>4.3</version>
+    <time>1669820870</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1038940</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>119c5068bece6cd8a45ccfeea6bacad1</srcmd5>
+    <version>4.4</version>
+    <time>1692294173</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1104233</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>ee60ed258679ff333f9efb581d7161db</srcmd5>
+    <version>4.4</version>
+    <time>1696528977</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1115592</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>bd14241091052d17264023dca9e98338</srcmd5>
+    <version>4.5</version>
+    <time>1709070262</time>
+    <user>anag+factory</user>
+    <comment>- Use %patch -P N instead of deprecated %patchN.
+
+- Update to version 4.5:
+  * Add support for AES-GCM-SIV in GnuTLS
+  * Add support for corrections from PTP transparent clocks
+  * Add support for systemd socket activation
+  * Fix presend in interleaved mode
+  * Fix reloading of modified sources from sourcedir</comment>
+    <requestid>1151495</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>8306baa327e4c2548c7dc7522196d9a5</srcmd5>
+    <version>4.5</version>
+    <time>1717669832</time>
+    <user>anag+factory</user>
+    <comment>- bsc#1225362, chrony-124-tai.patch: make 124-tai more reliable
+
+- Update clknetsim to snapshot 0a11a35.</comment>
+    <requestid>1178691</requestid>
+  </revision>
+</revisionlist>
