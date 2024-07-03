@@ -1,0 +1,88 @@
+-------------------------------------------------------------------
+Fri May 31 14:21:09 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add fix-build-on-icu-75.patch, icu 75 needs c++17 
+
+-------------------------------------------------------------------
+Thu Nov 24 03:33:21 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.10.40
+  * Fix bugs 
+
+-------------------------------------------------------------------
+Sat Aug 27 11:58:56 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.10.35
+  * Add event tracking feature
+  * Fix bugs
+- Drop Fix-return-type.patch 
+
+-------------------------------------------------------------------
+Wed Jun 29 13:09:41 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.10.23
+  * Optimize ui
+  * Fix bugs 
+
+-------------------------------------------------------------------
+Fri May 20 06:36:58 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix build on Tumbleweed 
+
+-------------------------------------------------------------------
+Thu Apr 21 03:04:54 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.10.19
+  * Fix a bug
+
+-------------------------------------------------------------------
+Mon Feb 21 07:49:53 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.10.18
+  * Fix memory leak for asan
+
+-------------------------------------------------------------------
+Mon Jan 31 07:55:18 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.10.16
+  * Add manual documents
+  * Drop libenca0
+  * Add libchardet1
+  * Add ut code
+  * Fix bug
+- Drop Use-librares-system-default.patch
+- Add Fix-return-type.patch, fix a return type error 
+
+-------------------------------------------------------------------
+Wed Feb  3 14:53:04 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.9.0.32
+  * Add many new feature
+  * Update ui design
+- Drop deepin-editor-qt-5_15.patch, fixed by upstream
+- Add Use-librares-system-default.patch, use enca and uchardet in
+  system default
+
+-------------------------------------------------------------------
+Thu Jun 25 02:48:37 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add deepin-editor-Qt-5_15.patch
+  * Support Qt 5.15
+
+-------------------------------------------------------------------
+Wed Jul 10 08:25:04 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.2.9
+  * Should call showNormal() to raise window
+  * Fix do not overwrite the cursorFlashTime of QGuiApplication
+  * Fix crash if DDE file select dialog is not available to use
+  * No longer designate clang++ as compiler
+  * Set default open dir as QStandardPaths::DocumentsLocation
+  * Activate window when opening files
+  * Display word count from status bar 
+  * Fix reduce minimum window size
+
+-------------------------------------------------------------------
+Tue Mar 26 12:41:05 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Initial package for version 1.2.6.3
