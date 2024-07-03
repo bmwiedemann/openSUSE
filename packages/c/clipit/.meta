@@ -1,0 +1,5 @@
+<package name="clipit" project="openSUSE:Factory">
+  <title>A lightweight GTK+ clipboard manager</title>
+  <description>ClipIt is a lightweight, fully featured GTK+ clipboard manager. It was forked from Parcellite (http://parcellite.sourceforge.net), adding additional features and bugfixes to the project.</description>
+  <devel project="GNOME:Apps" package="clipit"/>
+</package>
