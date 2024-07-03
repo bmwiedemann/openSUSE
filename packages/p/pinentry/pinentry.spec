@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package pinentry
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_without fltk
 
 Name:           pinentry%{?nsuffix}
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Collection of Simple PIN or Passphrase Entry Dialogs
 License:        GPL-2.0-or-later
@@ -49,10 +49,10 @@ Provides:       pinentry-dialog
 %if %{with fltk}
 BuildRequires:  fltk-devel >= 1.3
 %endif
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.1.0
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Test)
+BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(gcr-3)
 BuildRequires:  pkgconfig(gcr-base-3)
 BuildRequires:  pkgconfig(gtk+-2.0) >= 2.12.0
@@ -130,7 +130,7 @@ A simple PIN or passphrase entry dialog utilize the Assuan protocol
 as described by the Aegypten project, using FLTK libraries.
 %endif
 
-%package -n pinentry-qt5
+%package -n pinentry-qt6
 Summary:        Simple PIN or Passphrase Entry Dialog for QT5
 Group:          Productivity/Other
 Requires:       pinentry
@@ -140,8 +140,10 @@ Provides:       pinentry-qt = %{version}
 Obsoletes:      pinentry-qt <= 0.8.3
 Provides:       pinentry-qt4 = %{version}-%{release}
 Obsoletes:      pinentry-qt4 <= 0.9.7
+Provides:       pinentry-qt5 = %{version}-%{release}
+Obsoletes:      pinentry-qt5 <= 1.3.0
 
-%description -n pinentry-qt5
+%description -n pinentry-qt6
 A simple PIN or passphrase entry dialog utilize the Assuan protocol
 as described by the Aegypten project, using the QT5 UI toolkit.
 %endif
@@ -152,15 +154,15 @@ as described by the Aegypten project, using the QT5 UI toolkit.
 %build
 nmajor=$(sed -rn 's/^#define\s+NCURSES_VERSION_MAJOR\s+([0-9]+)/\1/p' %{_includedir}/ncurses.h)
 CFLAGS="%{optflags} $(ncursesw${nmajor}-config --cflags)"
-CXXFLAGS="%{optflags} -std=gnu++11 $(ncursesw${nmajor}-config --cflags)"
+CXXFLAGS="%{optflags} $(ncursesw${nmajor}-config --cflags)"
 LDFLAGS="$(ncursesw${nmajor}-config --libs)"
 export CFLAGS CXXFLAGS LDFLAGS
 
 %define _configure ../configure
 %if "%{flavor}" == "gui"
 # Regenerate moc's
-moc-qt5 qt/pinentrydialog.h > qt/pinentrydialog.moc
-moc-qt5 qt/pinentryconfirm.h > qt/pinentryconfirm.moc
+# moc-qt6 qt/pinentrydialog.h > qt/pinentrydialog.moc
+# moc-qt6 qt/pinentryconfirm.h > qt/pinentryconfirm.moc
 
 # build gui version with libsecret (bnc#934214)
 mkdir gui
@@ -209,6 +211,7 @@ cd gui
 cd ..
 
 # backward compatibility symlinks
+ln -s pinentry-qt %{buildroot}%{_bindir}/pinentry-qt6
 ln -s pinentry-qt %{buildroot}%{_bindir}/pinentry-qt5
 ln -s pinentry-qt %{buildroot}%{_bindir}/pinentry-qt4
 rm -rf %{buildroot}%{_infodir}
@@ -255,11 +258,13 @@ install -p -m 755 -D %{SOURCE3} %{buildroot}%{_bindir}/pinentry
 %attr(755,root,root) %{_bindir}/pinentry-fltk
 %endif
 
-%files -n pinentry-qt5
+%files -n pinentry-qt6
 %license COPYING
+%{_bindir}/pinentry-qt6
 %{_bindir}/pinentry-qt5
 %{_bindir}/pinentry-qt4
 %attr(755,root,root) %{_bindir}/pinentry-qt
+%{_datadir}/applications/org.gnupg.pinentry-qt.desktop
 %else
 
 %files

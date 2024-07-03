@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jun 30 21:36:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.0:
+  * qt: Add new Qt6 frontend.  [rP1e79123c38]
+  * qt: Set parent window on Wayland.  [T6930]
+  * qt: Fix capslock detection on Wayland.  [rP7dfc60a70d]
+  * qt: Fix window icon on Wayland.  [T6887]
+  * qt: Add support for external password manager with libsecret.
+  * qt: Remove focus indication by text selection.  [T5863]
+  * qt: Use same focus indication for labels as Kleopatra.
+  * qt: Improve accessibility.  [T5863]
+  * gnome3: Prefer gcr-4.  [rP069c219223]
+  * curses: Fix timeout handling.  [rP08408498b3]
+  * curses: Add SETREPEATOK and quality bar colors.
+  * curses: Add password quality meter.  [rP2923707e75]
+  * curses,tty: Upon SIGINT, let pinentry exit gracefully.
+  * w32: Fix non-focused window and simplify code.
+  * Disable secret storage integration when running on KDE
+    Plasma.
+  * The Windows CE support has been removed.
+
+-------------------------------------------------------------------
 Thu Jun  1 11:07:59 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Update signature file and keyring with latest ones from download
@@ -152,7 +174,7 @@ Mon Dec 14 19:50:38 UTC 2015 - andreas@suse.de
 
 - pinentry 0.9.7:
  * Fix regressions in the Qt pinentry.
-   (previsouly patched, removed 
+   (previsouly patched, removed
    pinentry-qt4-fix-qstring-conversion.patch)
  * Fix minor problems pinnetyr-tty.
  * New option --invisible-char.
@@ -175,7 +197,7 @@ Tue Oct  6 13:10:29 UTC 2015 - kstreitova@suse.com
     + Fix regression in w32 pinentry
   * remove qt4-disable-inputmethod-for-passwords.diff (patched file
     is no longer present)
-  * remove regenerating of qt4/qsecurelineedit.moc in specfile as 
+  * remove regenerating of qt4/qsecurelineedit.moc in specfile as
     qt4/qsecurelineedit.h was deleted. Adjust paths for the rest
     of the moc files (qt4 -> qt).
   * '--enable-pinentry-qt4' is now '--enable-pinentry-qt'
@@ -186,7 +208,7 @@ Tue Oct  6 13:10:29 UTC 2015 - kstreitova@suse.com
 -------------------------------------------------------------------
 Fri Jul 10 08:54:22 UTC 2015 - werner@suse.de
 
-- Make it build with every ncurses library ABI 
+- Make it build with every ncurses library ABI
   adding pinentry-ncurses6.diff
 
 -------------------------------------------------------------------
@@ -254,7 +276,7 @@ Thu Mar 26 19:46:55 UTC 2015 - astieger@suse.com
 -------------------------------------------------------------------
 Mon Mar 23 23:35:05 UTC 2015 - crrodriguez@opensuse.org
 
-- Use -std=gnu++11 in CXXFLAGS, fix build with gcc5. 
+- Use -std=gnu++11 in CXXFLAGS, fix build with gcc5.
 
 -------------------------------------------------------------------
 Thu Mar 19 16:35:14 UTC 2015 - astieger@suse.com
@@ -365,7 +387,7 @@ Tue Sep 13 15:41:23 UTC 2011 - vcizek@suse.com
 -------------------------------------------------------------------
 Thu Mar 24 15:08:28 UTC 2011 - puzel@novell.com
 
-- update to pinentry-0.8.1 
+- update to pinentry-0.8.1
  * The GTK pinentry now always sticks to the top and properly grabs
    the keyboard.
  * The protocol options default-cancel and default-ok now work for
@@ -377,7 +399,7 @@ Thu Mar 24 15:08:28 UTC 2011 - puzel@novell.com
 -------------------------------------------------------------------
 Tue Oct  5 18:28:51 UTC 2010 - cristian.rodriguez@opensuse.org
 
-- Add missing buildrequires on libcap-devel 
+- Add missing buildrequires on libcap-devel
 
 -------------------------------------------------------------------
 Mon Aug 23 12:41:02 UTC 2010 - puzel@novell.com
@@ -394,7 +416,7 @@ Wed Jul  7 07:50:44 UTC 2010 - puzel@novell.com
 -------------------------------------------------------------------
 Wed Mar 17 09:55:17 UTC 2010 - puzel@novell.com
 
-- update to pinentry-0.8.0 
+- update to pinentry-0.8.0
  * Beautified the qt4 pinentry
  * Minor enhancements.
 
@@ -412,7 +434,7 @@ Wed Oct  7 10:21:25 UTC 2009 - puzel@novell.com
 -------------------------------------------------------------------
 Fri Aug 21 11:17:35 UTC 2009 - puzel@novell.com
 
-- all graphical pinentry (-qt,qt4,-gtk2) now provide pinentry-gui 
+- all graphical pinentry (-qt,qt4,-gtk2) now provide pinentry-gui
 
 -------------------------------------------------------------------
 Tue Jun 30 14:13:52 CEST 2009 - puzel@novell.com
@@ -449,7 +471,7 @@ Mon Nov 10 14:57:29 CET 2008 - coolo@suse.de
 -------------------------------------------------------------------
 Wed Nov  5 12:10:12 CET 2008 - puzel@suse.cz
 
-- pinentry requires pinentry-dialog (bnc#441084) 
+- pinentry requires pinentry-dialog (bnc#441084)
 
 -------------------------------------------------------------------
 Wed Jul 23 10:59:04 CEST 2008 - puzel@suse.cz
@@ -466,7 +488,7 @@ Mon Jun 16 13:14:52 CEST 2008 - puzel@suse.cz
 -------------------------------------------------------------------
 Wed Apr 16 20:43:26 CEST 2008 - pcerny@suse.cz
 
-- update to 0.7.5 
+- update to 0.7.5
   (small fixes, see package's changelog for details)
 
 -------------------------------------------------------------------
@@ -479,7 +501,7 @@ Thu Apr 10 18:48:59 CEST 2008 - werner@suse.de
 -------------------------------------------------------------------
 Mon Mar 31 01:03:15 CEST 2008 - ro@suse.de
 
-- fix build with changed definition of g_malloc (gulong->gsize) 
+- fix build with changed definition of g_malloc (gulong->gsize)
 
 -------------------------------------------------------------------
 Tue Sep 11 14:43:07 CEST 2007 - ltinkl@suse.cz
@@ -489,18 +511,18 @@ Tue Sep 11 14:43:07 CEST 2007 - ltinkl@suse.cz
 -------------------------------------------------------------------
 Fri Mar 30 01:23:32 CEST 2007 - ro@suse.de
 
-- added ncurses-devel to buildreq 
+- added ncurses-devel to buildreq
 
 -------------------------------------------------------------------
 Fri Jan  5 11:29:56 CET 2007 - anicka@suse.cz
 
 - fix KDE detection in pinentry wrapper script
-  (thanks llunak for a patch) 
+  (thanks llunak for a patch)
 
 -------------------------------------------------------------------
 Wed Nov 22 13:12:34 CET 2006 - anicka@suse.cz
 
-- fixed Provides [#223074] 
+- fixed Provides [#223074]
 
 -------------------------------------------------------------------
 Tue Nov 21 18:09:45 CET 2006 - nadvornik@suse.cz
@@ -512,12 +534,12 @@ Tue Nov 21 18:09:45 CET 2006 - nadvornik@suse.cz
 Mon Nov  6 20:42:19 CET 2006 - anicka@suse.de
 
 - split graphical frontends (#217373)
-- rewrite pinentry wrapper to use the right binary  
+- rewrite pinentry wrapper to use the right binary
 
 -------------------------------------------------------------------
 Mon Nov  6 11:20:26 CET 2006 - pnemec@suse.cz
 
-- Fixed pinnentry wrapper #218257 
+- Fixed pinnentry wrapper #218257
 
 -------------------------------------------------------------------
 Mon Oct 16 00:18:30 CEST 2006 - schwab@suse.de
@@ -527,7 +549,7 @@ Mon Oct 16 00:18:30 CEST 2006 - schwab@suse.de
 -------------------------------------------------------------------
 Tue Oct  3 10:37:48 CEST 2006 - pnemec@suse.cz
 
-- removed static simlink to pinentry-qt 
+- removed static simlink to pinentry-qt
 - add script which use pinentry-qt only when KDE is detected
 
 -------------------------------------------------------------------
@@ -546,7 +568,7 @@ Wed Jan 25 21:40:19 CET 2006 - mls@suse.de
 -------------------------------------------------------------------
 Mon Dec 19 15:19:28 CET 2005 - ro@suse.de
 
-- added symlink to filelist 
+- added symlink to filelist
 
 -------------------------------------------------------------------
 Fri Jul 29 19:01:54 CEST 2005 - anicka@suse.cz
@@ -583,21 +605,21 @@ Mon Jun  2 13:26:39 CEST 2003 - mc@suse.de
 - switch to version 0.6.9
   * a memory-issue present in 0.6.8
   * a minor build problem (make distclean now cleans up .moc files)
-  * assuan protocol debug messages are not written to stderr 
+  * assuan protocol debug messages are not written to stderr
 - fixed build on x86_64
 
 -------------------------------------------------------------------
 Tue Apr  8 11:49:53 CEST 2003 - mc@suse.de
 
-- prevent pinentry-qt to print the assuan protocol to stderr 
+- prevent pinentry-qt to print the assuan protocol to stderr
 
 -------------------------------------------------------------------
 Fri Feb 21 09:33:26 CET 2003 - ro@suse.de
 
-- fixed neededforbuild 
+- fixed neededforbuild
 
 -------------------------------------------------------------------
 Tue Feb 11 15:38:52 CET 2003 - mc@suse.de
 
-- initial release 
+- initial release
 

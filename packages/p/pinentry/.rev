@@ -511,4 +511,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1091435</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>514a711250e8c765b5710bf68c63838a</srcmd5>
+    <version>1.3.0</version>
+    <time>1720031192</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.0:
+  * qt: Add new Qt6 frontend.  [rP1e79123c38]
+  * qt: Set parent window on Wayland.  [T6930]
+  * qt: Fix capslock detection on Wayland.  [rP7dfc60a70d]
+  * qt: Fix window icon on Wayland.  [T6887]
+  * qt: Add support for external password manager with libsecret.
+  * qt: Remove focus indication by text selection.  [T5863]
+  * qt: Use same focus indication for labels as Kleopatra.
+  * qt: Improve accessibility.  [T5863]
+  * gnome3: Prefer gcr-4.  [rP069c219223]
+  * curses: Fix timeout handling.  [rP08408498b3]
+  * curses: Add SETREPEATOK and quality bar colors.
+  * curses: Add password quality meter.  [rP2923707e75]
+  * curses,tty: Upon SIGINT, let pinentry exit gracefully.
+  * w32: Fix non-focused window and simplify code.
+  * Disable secret storage integration when running on KDE
+    Plasma.
+  * The Windows CE support has been removed.
+
+   (previsouly patched, removed
+  * remove regenerating of qt4/qsecurelineedit.moc in specfile as
+- Make it build with every ncurses library ABI
+- Use -std=gnu++11 in CXXFLAGS, fix build with gcc5.
+- update to pinentry-0.8.1
+- Add missing buildrequires on libcap-devel
+- update to pinentry-0.8.0
+- all graphical pinentry (-qt,qt4,-gtk2) now provide pinentry-gui
+- pinentry requires pinentry-dialog (bnc#441084)
+- update to 0.7.5
+- fix build with changed definition of g_malloc (gulong-&gt;gsize)</comment>
+    <requestid>1184162</requestid>
+  </revision>
 </revisionlist>
