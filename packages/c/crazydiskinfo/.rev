@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>69ea39e7544bf42d888fed3edd8156af</srcmd5>
+    <version>1.0.2</version>
+    <time>1546535241</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain crazydiskinfo in Factory</comment>
+    <requestid>662317</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>17fd3c3b4261ee67606887e3970b6ca1</srcmd5>
+    <version>1.1.0</version>
+    <time>1581087440</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770791</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>dc2332a2af3c420c7e2d60b5d01933f9</srcmd5>
+    <version>1.1.0</version>
+    <time>1708534933</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.</comment>
+    <requestid>1148787</requestid>
+  </revision>
+</revisionlist>
