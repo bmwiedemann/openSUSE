@@ -1,0 +1,156 @@
+-------------------------------------------------------------------
+Wed Nov  9 10:59:47 UTC 2022 - Takashi Iwai <tiwai@suse.com>
+
+- Add tarball signature and keyring
+
+-------------------------------------------------------------------
+Mon May 31 17:27:27 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Use https for URL and SourceURL
+
+-------------------------------------------------------------------
+Wed Nov 27 10:22:17 CET 2019 - tiwai@suse.de
+
+- Drop the superfluous buildreq alsa-topology-devel again;
+  it's no longer mandatory
+
+-------------------------------------------------------------------
+Thu Nov 21 12:02:20 CET 2019 - tiwai@suse.de
+
+- Fix build breakage by the new alsa update; now it requires
+  alsa-topology-devel
+
+-------------------------------------------------------------------
+Wed Jan  9 00:52:00 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid repetition of name in summary. Update description.
+
+-------------------------------------------------------------------
+Tue Jan  8 12:32:04 CET 2019 - tiwai@suse.de
+
+- Update to alsa-oss 1.1.8 (bsc#1181571):
+  Fix the build with the recent glibc
+- Remove obsoleted patch:
+  remove-libio.patch:
+
+-------------------------------------------------------------------
+Mon Aug  6 07:09:55 UTC 2018 - schwab@suse.de
+
+- remove-libio.patch: don't use obsolete <libio.h>
+
+-------------------------------------------------------------------
+Wed Apr  4 12:20:23 CEST 2018 - tiwai@suse.de
+
+- Remove old kludges
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Wed Apr  4 09:08:31 CEST 2018 - tiwai@suse.de
+
+- Update to alsa-oss 1.1.6:
+  * Change FSF address (Franklin Street)
+- Use %license file tag
+
+-------------------------------------------------------------------
+Wed Jun 18 13:23:04 CEST 2014 - tiwai@suse.de
+
+- Updated to alsa-oss 1.0.28:
+  All pervious fix patches are obsoleted:
+  0002-Add-AM_MAINTAINER_MODE-enable-to-configure.in.patch
+  0003-Fix-the-argument-passed-to-snd_pcm_dump_setup.patch
+  0004-Workaround-for-aoss-dmix-with-unaligned-rates.patch 
+
+-------------------------------------------------------------------
+Mon Apr 28 17:03:38 CEST 2014 - tiwai@suse.de
+
+- Fix for dmix with unaligned sample rate:
+  0003-Fix-the-argument-passed-to-snd_pcm_dump_setup.patch
+  0004-Workaround-for-aoss-dmix-with-unaligned-rates.patch 
+
+-------------------------------------------------------------------
+Mon Apr 28 12:28:36 CEST 2014 - tiwai@suse.de
+
+- Revert 0001-Fix-path-to-libaoss.so.patch, as this causes
+  regressions on multi-arch (bnc#874331)
+
+-------------------------------------------------------------------
+Thu May 23 15:50:21 CEST 2013 - tiwai@suse.de
+
+- Backport upstream fixes:
+  0001-Fix-path-to-libaoss.so.patch
+  0002-Add-AM_MAINTAINER_MODE-enable-to-configure.in.patch
+
+-------------------------------------------------------------------
+Thu Mar 29 17:59:55 UTC 2012 - reddwarf@opensuse.org
+
+- stop recommending alsa-oss-32bit
+
+-------------------------------------------------------------------
+Wed Jan 25 11:19:43 CET 2012 - tiwai@suse.de
+
+- updated to version 1.0.25;
+  pcm: check for XRUN state for GETxSPACE and GETxPTR ioctls
+  select: better check for null bit arrays
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:40 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Sat Sep 17 10:56:07 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Wed Jan 27 18:24:07 CET 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Tue Jul 15 18:36:39 CEST 2008 - tiwai@suse.de
+
+- updated to version 1.0.17:
+  * just a version bump
+
+-------------------------------------------------------------------
+Thu May 15 16:35:22 CEST 2008 - olh@suse.de
+
+- remove unneeded Recommends: -64bit on ppc (bnc#390761)
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Fri Mar  7 10:37:39 CET 2008 - sbrabec@suse.cz
+
+- Added bi-arch counterpart Recommends to prevent arch clashes
+  (bnc#117079#c14).
+
+-------------------------------------------------------------------
+Tue Oct 16 15:06:43 CEST 2007 - tiwai@suse.de
+
+- updated to version 1.0.15:
+  * Fix dsp->oss_format setting
+
+-------------------------------------------------------------------
+Thu May 31 12:27:23 CEST 2007 - tiwai@suse.de
+
+- updated to version 1.0.14-final
+  just version number changes.
+
+-------------------------------------------------------------------
+Wed May  2 12:41:40 CEST 2007 - tiwai@suse.de
+
+- updated to version 1.0.14rc4:
+  including HG fixes since 1.0.12
+
+-------------------------------------------------------------------
+Mon Apr 16 14:16:01 CEST 2007 - tiwai@suse.de
+
+- split from alsa package.
+
