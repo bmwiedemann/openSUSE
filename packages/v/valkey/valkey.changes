@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  2 07:52:48 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- valkey.logrotate: fix owner of logfiles
+
+-------------------------------------------------------------------
 Sat Jun 29 17:32:13 UTC 2024 - Neal Gompa <ngompa@opensuse.org>
 
 - Add legacy symlinks for "redis" executables in sbin to fix

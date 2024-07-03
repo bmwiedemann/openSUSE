@@ -6,5 +6,5 @@
        compress
        notifempty
        missingok
-       su redis redis
+       su valkey valkey
 }

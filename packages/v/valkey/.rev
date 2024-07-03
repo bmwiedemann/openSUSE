@@ -32,4 +32,12 @@
   running valkey in other package test suites using absolute paths</comment>
     <requestid>1184023</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>7b8bd544b54e4ba8f1f00829e9c9e40e</srcmd5>
+    <version>7.2.5</version>
+    <time>1720031373</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1184945</requestid>
+  </revision>
 </revisionlist>
