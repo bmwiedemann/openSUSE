@@ -1,0 +1,94 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f0e6fb43496fb34445d2cdedb7829569</srcmd5>
+    <version>0.3.1</version>
+    <time>1604510802</time>
+    <user>dimstar_suse</user>
+    <comment>blanket</comment>
+    <requestid>845771</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5b6026ecd87e83cde88d7ef0442ade0d</srcmd5>
+    <version>0.4.0</version>
+    <time>1618859186</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  * Added autostart on background feature
+  * Added six new sounds
+  * New sounds icons, thanks to Jakub Steiner
+  * Sounds improvements
+  * Added French translation
+  * Added Ukrainian translation
+  * Added Slovak translation
+  * Added Nepali translation
+  * Added German translation
+  * Added Croatian translation
+  * Performance improvements
+  * UI improvements
+  * Bug fixes</comment>
+    <requestid>886677</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b72571ff43eb1294b1b1b8e12cfec210</srcmd5>
+    <version>0.4.1</version>
+    <time>1619653114</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.1:
+  * Added Turkish translation
+  * Added Occitan translation
+  * Fix German and Slovak translations</comment>
+    <requestid>889042</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bba968db88c3f8bdcf85d4505ce70cf7</srcmd5>
+    <version>0.5.0</version>
+    <time>1633038233</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0:
+  * Added new Presets feature
+  * Now you can toggle sounds by clicking the row
+  * Added new dark mode option
+  * Added Tamil translation
+  * Added Simplified Chinese translation
+  * Added Russian translation
+  * Added Irish translation
+  * Added Japanese translation
+  * Added Indonesian translation
+  * Added Finnish translation
+  * Added Portuguese translation
+  * Added Swedish translation
+  * Added Czech translation
+  * Added Hungarian translation
+  * Added Persian (Farsi) translation
+  * Added Galician translation</comment>
+    <requestid>922361</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1f8d9f9cf75452476b56065231f11e6a</srcmd5>
+    <version>0.6.0</version>
+    <time>1650548541</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.0:
+  * App ported to GTK 4 and libadwaita
+  * User interface refinements
+  * New translations added
+  * Bug fixes</comment>
+    <requestid>971239</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2963907588680d4014732382ca09f15f</srcmd5>
+    <version>0.7.0</version>
+    <time>1712590776</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.7.0:
+  * Redesign the user interface and use latest GNOME patterns
+  * Inhibit suspension when playing
+  * Pause playback if the system enters power saver mode
+  * MPRIS: Implement Play, Pause and Stop methods in addition to PlayPause
+  * MPRIS: Implement Next and Prev methods for navigating presets
+  * Updated Pink Noise sample
+  * Changed train sound
+  * Added preference to always start on pause</comment>
+    <requestid>1166082</requestid>
+  </revision>
+</revisionlist>
