@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f5d5dc813a9e47e306ec0bbba70bf5aa</srcmd5>
+    <version>1.4.0</version>
+    <time>1663694625</time>
+    <user>dimstar_suse</user>
+    <comment>New package in GNOME</comment>
+    <requestid>1004764</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6b5db1d64935041228cb252cf4adcd9e</srcmd5>
+    <version>1.6.0</version>
+    <time>1679667565</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1072714 from iznogood)</comment>
+    <requestid>1073175</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>05c9cc8afda2a7e457d962418ed36756</srcmd5>
+    <version>1.8.0</version>
+    <time>1695208999</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1111897</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>81dd4516e4f62117bb283e72f16d5485</srcmd5>
+    <version>1.10.0</version>
+    <time>1710965731</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1158401 from dimstar)</comment>
+    <requestid>1159473</requestid>
+  </revision>
+</revisionlist>
