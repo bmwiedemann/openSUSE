@@ -26,9 +26,9 @@
 %define systemd_release    %{?release_override}%{!?release_override:0}
 %define archive_version    %{nil}
 %else
-%define systemd_version    255.7
+%define systemd_version    255.8
 %define systemd_release    0
-%define archive_version    +suse.33.g603cd1d4d8
+%define archive_version    +suse.34.g5a8eadd0c0
 %endif
 
 %define systemd_major      %{sub %systemd_version 1 3}
@@ -233,7 +233,6 @@ Patch:          0008-sysv-generator-translate-Required-Start-into-a-Wants.patch
 # will be removed as soon as a proper fix will be merged by upstream.
 Patch:          5001-Revert-udev-update-devlink-with-the-newer-device-nod.patch
 Patch:          5002-Revert-udev-revert-workarounds-for-issues-caused-by-.patch
-Patch:          5003-Revert-run-pass-the-pty-slave-fd-to-transient-servic.patch
 %endif
 
 %description

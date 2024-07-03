@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul  1 08:35:26 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Import commit 5a8eadd0c021758337a020c423f25a353bdb9b3c (merge of v255.8)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/603cd1d4d81147d4f2eccd5e352064a4215119b4...5a8eadd0c021758337a020c423f25a353bdb9b3c
+
+- Drop 5003-Revert-run-pass-the-pty-slave-fd-to-transient-servic.patch as v255.8
+  contains the workaround (commit 639c922ede9485) for the broken commit
+  28459ba1f4df.
+
+-------------------------------------------------------------------
 Mon Jun 24 14:36:21 UTC 2024 - Franck Bui <fbui@suse.com>
 
 - Don't automatically clean unmodified config files up (bsc#1226415)

@@ -7262,4 +7262,17 @@ handle manual pages that consist only of a .so directive such as
   dependencies (the libraries are dependencies of the devel packages).</comment>
     <requestid>1183029</requestid>
   </revision>
+  <revision rev="427" vrev="1">
+    <srcmd5>f58c23ffc099fe143210cd8ac752329d</srcmd5>
+    <version>255.8</version>
+    <time>1720031196</time>
+    <user>anag+factory</user>
+    <comment>- Import commit 5a8eadd0c021758337a020c423f25a353bdb9b3c (merge of v255.8)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/603cd1d4d81147d4f2eccd5e352064a4215119b4...5a8eadd0c021758337a020c423f25a353bdb9b3c
+- Drop 5003-Revert-run-pass-the-pty-slave-fd-to-transient-servic.patch as v255.8
+  contains the workaround (commit 639c922ede9485) for the broken commit
+  28459ba1f4df.</comment>
+    <requestid>1184267</requestid>
+  </revision>
 </revisionlist>
