@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Thu Dec 29 21:29:52 UTC 2022 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 0.9.2:
+  * adenroll: set password via LDAP instead Kerberos
+  * disco: fall back to LDAPS if CLDAP ping was not successful
+  * tools: replace getpass()
+  * adenroll: write SID before secret to Samba's db
+  * doc: add clarification to add-member command on doc/adcli.xml
+  * tools: Set umask before calling mkdtemp()
+  * Avoid undefined behaviour in short option parsing
+  * library: include endian.h for le32toh
+  * man: Fix typos and use consistent upper case for some keywords
+  * doc: avoid gnu-make specific usage of $<
+  * configure: check for ns_get16 and ns_get32 as well
+  * Add setattr and delattr options
+  * entry: add passwd-user sub-command
+  * Add dont-expire-password option
+  * build: add --with-vendor-error-message configure option
+- Remove patch fixed upstream: 0001-configure-check-for-ns_get16-and-ns_get32-as-well.patch
+- Update signing key for source validation
+
+-------------------------------------------------------------------
+Fri Aug 13 08:46:13 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
+
+- Fix build with glibc 2.34; (bsc#1189080); Add patch
+  0001-configure-check-for-ns_get16-and-ns_get32-as-well.patch
+
+-------------------------------------------------------------------
+Mon Mar 22 22:45:53 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.9.1:
+  * tools: add show-computer command
+  * add description option to join and update
+  * Use GSS-SPNEGO if available
+  * add option use-ldaps
+  * tools: disable SSSD's locator plugin
+  * doc: explain required AD permissions
+  * computer: add create-msa sub-command
+  * Add account-disable option
+  * fix coredump in discovery (boo#1183870)
+- use upstream bootstrapped tarball
+- add upstream signing key and validate source signature
+- use strict build
+- run tests
+
+-------------------------------------------------------------------
+Wed Nov 20 15:41:09 UTC 2019 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to version 0.9.0+git.0.1b15280:
+  * Release version 0.9.0
+  * doc: add missing samba_data_tool_path.xml(.in) to EXTRA_DIST
+  * doc: explain how to force password reset
+  * Do not use arcfour-hmac-md5 when discovering the salt
+  * Fix for issue found by Coverity
+  * adenroll: use only enctypes permitted by Kerberos config
+  * adenroll: add adcli_enroll_get_permitted_keytab_enctypes with tests
+  * adconn: add adcli_conn_set_krb5_context
+  * adenroll: make sure only allowed enctypes are used in FIPS mode
+  * tools: computer - remove errx from parse_option
+
+-------------------------------------------------------------------
+Tue Oct  2 09:41:47 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Make doc noarch and stop requiring packages that are not
+  technically needed.
+
+-------------------------------------------------------------------
+Mon Oct  1 15:06:01 UTC 2018 - Ismail Dönmez <idonmez@suse.com>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Fri Sep 21 14:28:21 UTC 2018 - ckowalczyk@suse.com
+
+- Initial build.
+
