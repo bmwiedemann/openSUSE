@@ -26,12 +26,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Sphinx%{psuffix}
-Version:        7.2.6
+Version:        7.3.7
 Release:        0
 Summary:        Python documentation generator
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-URL:            http://sphinx-doc.org
+URL:            https://www.sphinx-doc.org
 Source:         https://files.pythonhosted.org/packages/source/s/sphinx/sphinx-%{version}.tar.gz
 # Provide intersphinx inventory offline, run update-intersphinx.sh
 # https://docs.python.org/3/objects.inv
@@ -42,10 +42,6 @@ Source3:        requests.inv
 Source4:        readthedocs.inv
 Source5:        update-intersphinx.sh
 Source99:       python-Sphinx.keyring
-# PATCH-FIX-UPSTREAM: fix-autodoc-tests-python-3117.patch gh#sphinx-doc/sphinx#11793
-Patch01:        fix-autodoc-tests-python-3117.patch
-# PATCH-FIX-UPSTREAM: fix-test-expectation-for-enum-rendering-on-python-3.12.3.patch gh#sphinx-doc/sphinx#12293
-Patch02:        fix-test-expectation-for-enum-rendering-on-python-3.12.3.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
@@ -59,6 +55,7 @@ Requires:       python-Babel >= 1.3
 Requires:       python-Jinja2 >= 2.3
 Requires:       python-Pygments >= 2.14
 Requires:       python-alabaster >= 0.7
+Requires:       python-defusedxml >= 0.7.1
 Requires:       python-docutils >= 0.12
 Requires:       python-imagesize
 Requires:       python-packaging
@@ -85,6 +82,7 @@ Requires:       python-importlib-metadata >= 4.4
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Sphinx = %{version}}
 BuildRequires:  %{python_module Sphinx-latex = %{version}}
+BuildRequires:  %{python_module defusedxml >= 0.7.1}
 BuildRequires:  %{python_module filelock}
 BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module pytest}
@@ -323,8 +321,8 @@ export LC_ALL="C.utf8"
 
 %if ! %{with test}
 %files %{python_files} -f %{python_prefix}-sphinx.lang
-%license LICENSE
-%doc AUTHORS CHANGES README.rst
+%license LICENSE.rst
+%doc CHANGES.rst README.rst
 %python_alternative %{_bindir}/sphinx-apidoc
 %python_alternative %{_bindir}/sphinx-autogen
 %python_alternative %{_bindir}/sphinx-build
@@ -336,24 +334,21 @@ export LC_ALL="C.utf8"
 %dir %{python_sitelib}/sphinxcontrib
 
 %files %{python_files latex}
-%license LICENSE
-%doc AUTHORS
+%license LICENSE.rst
 %{python_sitelib}/sphinx/texinputs/
 %endif
 
 %if %{with test}
 %if 0%{?suse_version} > 1500
 %files -n python-Sphinx-doc-man
-%license LICENSE
-%doc AUTHORS
+%license LICENSE.rst
 %{_mandir}/man1/sphinx-all.1%{?ext_man}
 %{_mandir}/man1/sphinx-apidoc.1%{?ext_man}
 %{_mandir}/man1/sphinx-build.1%{?ext_man}
 %{_mandir}/man1/sphinx-quickstart.1%{?ext_man}
 
 %files -n python-Sphinx-doc-html
-%license LICENSE
-%doc AUTHORS
+%license LICENSE.rst
 %dir %{_docdir}/python-Sphinx/
 %{_docdir}/python-Sphinx/html/
 %endif

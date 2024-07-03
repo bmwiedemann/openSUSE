@@ -1253,4 +1253,41 @@ IMPORTANT: It would be better to fix/update the test, so if you can fix this ple
     <comment></comment>
     <requestid>1169646</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>c6b24c5d38942590514006cb2efb77c4</srcmd5>
+    <version>7.3.7</version>
+    <time>1720031379</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.3.7:
+  * #12299: Defer loading themes defined via entry points until
+    their explicit use by the user or a child theme. Patch by
+    Adam Turner.
+  * #12305: Return the default value for theme.get_config() with
+    an unsupported theme configuration section. Patch by Adam
+    Turner.
+  * #12295: Re-export all AST types in the C and C++ domains.
+    Patch by Adam Turner.
+  * #12295: Re-export various objects from
+    sphinx.domains.python._annotations in sphinx.domains.python.
+    Patch by Jacob Chesslo and Adam Turner.
+  * #12295: Re-export various objects from
+    sphinx.domains.python._object in sphinx.domains.python. Patch
+    by Jacob Chesslo and Adam Turner.
+  * Handle cases when Any is not an instance of type. Patch by
+    Adam Turner.
+  * #12290: Fix a false-positive warning when setting a
+    configuration value with Any as the valid type to a type
+    other than the value's default. Patch by Adam Turner.
+  * Preload all themes defined via entry points. Patch by Adam
+    Turner.
+  * Fix a bad interaction between the 'Furo' theme and the new-
+    style for configuration values. Patch by Adam Turner.
+  * Require tomli on Python 3.10 and earlier. Patch by Adam
+    Turner.
+  * #11858: Increase the minimum supported version of Alabaster
+    to 0.7.14. Patch by Adam Turner.
+  * #11411: Support Docutils 0.21. Patch by Adam Turner.
+  * #12012: Use types-docutils instead of docutils-stubs.</comment>
+    <requestid>1184035</requestid>
+  </revision>
 </revisionlist>
