@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul  3 11:13:00 UTC 2024 - Flex Liu <fliu@suse.com>
+
+- Fix performance of user.list_groups with many remote groups
+
+- Added:
+  * fix-user.list_groups-omits-remote-groups.patch
+
+-------------------------------------------------------------------
 Tue Jun 18 15:00:44 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Fix "status.diskusage" function and exclude some tests for Salt Bundle
