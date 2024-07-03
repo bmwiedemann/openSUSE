@@ -210,4 +210,14 @@
     <comment>- version update to 1.8.9</comment>
     <requestid>1169818</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>8f6d939bfc8f0ffeb94e4aacf7007643</srcmd5>
+    <version>1.8.10</version>
+    <time>1720031335</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.8.10:
+  * feature: new &quot;`--output`&quot; option to write to a file instead
+    of standard output (pull request #90) supplied by xmort (forwarded request 1184158 from dirkmueller)</comment>
+    <requestid>1184170</requestid>
+  </revision>
 </revisionlist>

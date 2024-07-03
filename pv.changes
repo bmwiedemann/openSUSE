@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 30 21:38:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.10:
+  * feature: new "`--output`" option to write to a file instead
+    of standard output (pull request #90) supplied by xmort
+
+-------------------------------------------------------------------
 Tue Apr 23 00:44:04 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - version update to 1.8.9
