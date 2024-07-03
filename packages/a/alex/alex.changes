@@ -1,0 +1,407 @@
+-------------------------------------------------------------------
+Thu Feb 29 13:15:15 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update alex to version 3.5.1.0.
+  ## Changes in 3.5.1.0
+
+  * Drop generating output for GHC < 6.4.
+  * Use qualified imports in generated code (except for `Prelude`)
+    ([Issue #258](https://github.com/haskell/alex/issues/258)).
+  * Suppress warnings `tabs` and `unused-imports` for generated code
+    ([Issue #255](https://github.com/haskell/alex/issues/255)).
+  * Tested with GHC 8.0 - 9.8.2.
+
+  _Andreas Abel, 2024-02-29_
+
+-------------------------------------------------------------------
+Sat Dec 30 15:01:39 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update alex to version 3.5.0.0.
+  ## Changes in 3.5.0.0
+
+   * Add option `--numeric-version`.
+   * Remove deprecated `-v` as alias for `--version`.
+   * Add `-v` as placeholder for a future `--verbose` option.
+   * Make `alex{G,S}etUserState` available with the `monadUserState-bytestring` wrapper
+     ([Issue #220](https://github.com/haskell/alex/issues/220)).
+   * Debugging lexer: print character in addition to its ASCII code
+     ([PR #252](https://github.com/haskell/alex/pull/252)).
+   * Tested with GHC 8.0 - 9.8.1.
+
+  _Andreas Abel, 2023-12-30_
+
+-------------------------------------------------------------------
+Sun Oct 29 08:11:28 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update alex to version 3.4.0.1.
+  ## Changes in 3.4.0.1
+
+   * Address new `x-partial` warning of GHC 9.8.
+   * Alex 3.4.0.1 needs GHC 8.0 or higher to build.
+     The code it generates is the same as 3.4.0.0, so it will likely work for older GHCs.
+   * Tested with GHC 8.0 - 9.8.1.
+
+  _Andreas Abel, 2023-10-29_
+
+  ## Changes in 3.4.0.0
+
+   * New wrappers to lex strict `Text`:
+     `strict-text`, `posn-strict-text`, `monad-strict-text` and `monadUserState-strict-text`
+     (PR [#240](https://github.com/haskell/alex/pull/240)).
+     These complement the existing wrappers for `String` and `ByteString`.
+   * Tested with GHC 7.0 - 9.6.2.
+
+  _Andreas Abel, 2023-06-20_
+
+  ## Changes in 3.3.0.0
+
+   * Add an `Ord` instance to `AlexPosn` (Issue [#233](https://github.com/haskell/alex/issues/233)).
+     This breaks developments that define their own (orphan) `instance Ord AlexPosn`.
+     If this is the derived stock instance, the fix is to delete the orphan instance and require
+     `build-tool-depends: alex:alex >= 3.3.0.0`.
+   * Switch to Haskell PVP versioning with four digits.
+   * Tested with GHC 7.0 - 9.6.1.
+
+  _Andreas Abel, 2023-05-25_
+
+-------------------------------------------------------------------
+Wed Aug  2 09:42:48 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Drop constraints for riscv64
+
+-------------------------------------------------------------------
+Tue May  2 06:58:58 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update alex to version 3.2.7.4.
+  ## Change in 3.2.7.4
+
+   * The user-supplied "epilogue" Haskell code is now put _last_ in the generated file.
+     This enables use of Template Haskell in the epilogue.
+     (Issue [#125](https://github.com/haskell/alex/issues/125).)
+   * Tested with GHC 7.0 - 9.6.1.
+
+  _Andreas Abel, 2023-05-02_
+
+-------------------------------------------------------------------
+Fri Apr 14 05:54:54 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update alex to version 3.2.7.3.
+  ## Change in 3.2.7.3
+
+   * Amend last change (3.2.7.2)
+     so that Alex-generated code does not need `LANGUAGE PatternGuards`.
+   * Tested with GHC 7.0 - 9.6.1.
+
+  _Andreas Abel, 2023-04-14_
+
+-------------------------------------------------------------------
+Mon Apr  3 21:20:37 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update alex to version 3.2.7.2.
+
+  * Fix bug with out-of-bound access to `alex_check` array.
+    (Surfaced with GHC's JS backend, fixed by Sylvain Henry in
+     PR [#223](https://github.com/haskell/alex/pull/223).)
+
+  * Upstream dropped installable documentation and man pages. The
+    documentation can now be found at these locations:
+
+    - Online (HTML): https://haskell-alex.readthedocs.io
+    - PDF: https://haskell-alex.readthedocs.io/_/downloads/en/latest/pdf/
+    - Downloadable HTML: https://haskell-alex.readthedocs.io/_/downloads/en/latest/htmlzip/
+
+  * Re-enabled the test suite for aarch64. The underlying issue
+    https://github.com/simonmar/alex/issues/130 was closed by
+    upstream.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:05:37 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sun Jan 23 23:20:45 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update alex to version 3.2.7.1.
+  ## Change in 3.2.7.1
+
+   * Fix bug with repeated numeral characters *outside* of `r{n,m}`
+     repetitions. This was a regression introduced in 3.2.7.
+
+  ## Changes in 3.2.7
+
+   * Allow arbitrary repetitions in regexps.
+     Previously, the `r{n,m}` and related forms were restricted to single
+     digit numbers `n` and `m`.
+
+   * DFA minimization used to crash on tokens of the form `c*` which
+     produce automata with only accepting states.  Considering the empty
+     set of non-accepting states as an equivalence class caused
+     minimization to crash with exception.
+
+   * The `small_base` flag is removed.  Extremely old GHCs will no longer
+     build.
+
+   * A number of bug fixes and clearer diagnostics.
+
+-------------------------------------------------------------------
+Tue Sep  7 18:43:27 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- make rpmlint happy
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- disable %{ix86} build
+
+-------------------------------------------------------------------
+Tue Dec 15 16:30:27 UTC 2020 - psimons@suse.com
+
+- Update alex to version 3.2.6.
+  ## Changes in 3.2.6:
+
+   * Support for the GHC 9.2.
+
+     The array access primops now use the fixed-sized numeric types
+     corresponding to the width of the data accessed. Additionally, the
+     primops to convert to and from fixed-sized numeric types have been
+     given new names.
+
+     9.2 isn't cut yet, so these changes are somewhat speculative.
+     Unfortunately, GHC must used a released version of Alex (and Happy)
+     at all times until further changes have been made, so we must make
+     the release to actually implement these changes in GHC.
+
+     If the final GHC 9.2 ends up being different, this release will be
+     marked broken to make it less likely people use it by accident.
+
+-------------------------------------------------------------------
+Wed Oct 21 12:51:40 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Add memory constraints for riscv64
+
+-------------------------------------------------------------------
+Tue Aug 18 10:43:42 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun 16 11:13:34 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Re-generate file with latest version of spec-cleaner.
+
+-------------------------------------------------------------------
+Thu Nov  7 06:42:07 UTC 2019 - psimons@suse.com
+
+- Drop obsolete group attributes.
+
+- Update alex to version 3.2.5.
+  * Build fixes for GHC 8.8.x. This allows us to run the test
+    suite again.
+
+-------------------------------------------------------------------
+Wed Nov 28 10:15:25 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable tests on aarch64 as they are broken.
+  See: https://github.com/simonmar/alex/issues/130
+
+-------------------------------------------------------------------
+Sat Oct 20 11:31:04 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Mon Jul 30 03:30:56 UTC 2018 - bwiedemann@suse.com
+
+- Drop config.log from doc to fix build-compare
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:08 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Tue Jun  5 16:50:43 UTC 2018 - psimons@suse.com
+
+- Run the test suite by default.
+- Build and install the man page and the documentation.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update alex to version 3.2.4.
+ * Remove dependency on QuickCheck
+ * Change the way that bootstrapping is done: see README.md for build
+   instructions
+ * fix issue when using cpphs (#116)
+ * Manage line length in generated files [GH-84]
+ * Fix issue when identifier with multiple single quotes, e.g. `foo''` was used
+ * Allow omitting spaces around `=` in macro definitions
+ * Include pre-generated Parser.hs and Scan.hs in the Hackage upload, to
+   make bootstrapping easier.
+
+-------------------------------------------------------------------
+Wed Aug  9 12:59:47 UTC 2017 - bwiedemann@suse.com
+
+- Drop autom4te.cache/requests from doc to fix build-compare
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Sat Apr 29 18:32:34 UTC 2017 - psimons@suse.com
+
+- Update to version 3.2.1 revision 1 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Feb 12 14:17:48 UTC 2017 - psimons@suse.com
+
+- Update to version 3.2.1 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:07:27 UTC 2016 - psimons@suse.com
+
+- Update to version 3.1.7 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Mon Jan 11 07:22:38 UTC 2016 - mimi.vx@gmail.com
+
+- update to 3.1.7
+* Add support for %encoding directive (allows to control --latin1 from inside
+    Alex scripts)
+* Make code forward-compatible with in-progress proposals
+* Suppress more warnings
+
+-------------------------------------------------------------------
+Mon Dec  7 10:19:36 UTC 2015 - mimi.vx@gmail.com
+
+- update to 3.1.6
+* drop dependency on happy
+
+-------------------------------------------------------------------
+Sun Nov 29 17:05:31 UTC 2015 - mimi.vx@gmail.com
+
+- update to 3.1.5
+- drop alex-3.1.4-ghc-7.10.patch, merged by upstream
+* Generate less warning-laden code, and suppress other warnings.
+* Bug fixes.
+
+-------------------------------------------------------------------
+Wed May 13 09:19:35 UTC 2015 - mimi.vx@gmail.com
+
+- add alex-3.1.4-ghc-7.10.patch
+* temporary disable tests
+
+-------------------------------------------------------------------
+Fri Apr 10 13:35:55 UTC 2015 - mimi.vx@gmail.com
+
+- update to 3.1.4
+* Add Applicative/Functor instances for GHC 7.10
+
+-------------------------------------------------------------------
+Mon Sep  8 20:08:49 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- update to 3.1.3
+* fix ghc 7.8 builds
+* needed by Haskell Platform 2014.2.0.0
+
+-------------------------------------------------------------------
+Tue Sep  2 01:17:20 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- package examples
+- cleanup spec file
+
+-------------------------------------------------------------------
+Fri Aug 22 23:46:53 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- enable PowerPC builds
+
+-------------------------------------------------------------------
+Tue May  7 14:03:17 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- update to 3.0.5 from upstream
+* performance improvement with certain grammars ~30%
+- part of Haskell Platform 2013.2
+
+-------------------------------------------------------------------
+Sat Nov 17 13:46:06 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- service localonly for Factory submission
+
+-------------------------------------------------------------------
+Mon Oct  1 19:01:07 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- update to 3.0.2 from upstream
+- needed by Haskell Platform 2012.4.0.0
+
+-------------------------------------------------------------------
+Mon Jun  4 06:59:04 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- update to 3.0.1 from upstream
+    * Unicode support (contributed mostly by Jean-Philippe Bernardy,
+      with help from Alan Zimmerman).
+
+      * An Alex lexer now takes a UTF-8 encoded byte sequence as input
+        (see Section 5.1, “Unicode and UTF-8”. If you are using the
+        "basic" wrapper or one of the other wrappers that takes a
+        Haskell String as input, the string is automatically encoded
+        into UTF-8 by Alex. If your input is a ByteString, you are
+        responsible for ensuring that the input is UTF-8 encoded. The
+        old 8-bit behaviour is still available via the --latin1
+        option.
+
+      * Alex source files are asumed to be in UTF-8, like Haskell
+        source files. The lexer specification can use Unicode
+        characters and ranges.
+
+      * alexGetChar is renamed to alexGetByte in the generated code.
+
+      * There is a new option, --latin1, that restores the old
+        behaviour.
+
+    * Alex now does DFA minimization, which helps to reduce the size
+      of the generated tables, especially for lexers that use Unicode.
+- dropped patch alex-2.3.5-generate-man-page.patch
+- required by Haskell Platform 2012.2.0.0
+
+-------------------------------------------------------------------
+Mon May  7 18:40:00 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- add patch to enable man page generation
+- generate, install and package man page alex.1
+
+-------------------------------------------------------------------
+Thu Dec 29 11:47:39 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Clean up install section
+- Add three word to description to make rpmlint happier
+
+-------------------------------------------------------------------
+Wed Dec 28 20:47:31 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Adjusted version for platform 2011.4
+
+-------------------------------------------------------------------
+Sat Dec 10 16:48:35 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Added /usr/share/alex-3.0.1 files
+- Fixed file owner
+- Deleted additional LICENSE file
+
+-------------------------------------------------------------------
+Mon Dec  5 09:04:47 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Added QuickCheck BR
+
+-------------------------------------------------------------------
+Sat Nov 19 21:44:36 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- enabled i586 build
+
+-------------------------------------------------------------------
+Tue Oct 11 19:50:28 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- created new package
