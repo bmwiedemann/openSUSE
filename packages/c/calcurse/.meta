@@ -1,0 +1,10 @@
+<package name="calcurse" project="openSUSE:Factory">
+  <title>Text-based Organizer</title>
+  <description>Calcurse is a text-based personal organizer which helps keep track of events
+and everyday tasks. It has a calendar and a &quot;todo&quot; list, and puts your
+appointments in order. The user interface is configurable, and you can choose
+between different color schemes and layouts. All of the commands are
+documented within an online help system.</description>
+  <devel project="utilities" package="calcurse"/>
+  <url>http://culot.org/calcurse/</url>
+</package>
