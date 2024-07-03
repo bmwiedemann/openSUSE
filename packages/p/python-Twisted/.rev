@@ -1572,4 +1572,41 @@
   * Avoid 3-arg throw to fix a DeprecationWarning in Python 3.12.</comment>
     <requestid>1143215</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>3747ec2022802f0e967fd72a6aae3810</srcmd5>
+    <version>24.3.0</version>
+    <time>1720031385</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.3.0:
+  * twisted.logger.formatEvent now honors dotted method names,
+    not just flat function names, in format strings, as it has
+    long been explicitly documented to do.  So, you will now get
+    the expected result from formatEvent(&quot;here's the result of
+    calling a method at log-format time: {obj.method()}&quot;,
+    obj=...)
+  * twisted.web.http.HTTPChannel now ignores the trailer headers
+    provided in the last chunk of a chunked encoded response,
+    rather than raising an exception.
+  * twisted.protocols.tls.BufferingTLSTransport, used by default
+    by twisted.protocols.tls.TLSMemoryBIOFactory, was refactored
+    for improved performance when doing a high number of small
+    writes.
+  * twisted.python.failure.Failure now throws exception for
+    generators without triggering a deprecation warnings on
+    Python 3.12.
+  * twisted.internet.process.Process, used by
+    reactor.spawnProcess, now copies the parent environment when
+    the env=None argument is passed on Posix systems and
+    os.posix_spawnp is used internally.
+  * twisted.internet.defer.inlineCallbacks.returnValue's stack
+    introspection was adjusted for the latest PyPy 7.3.14
+    release, allowing legacy @inlineCallbacks to run on new PyPY
+    versions.
+  * twisted.trial.reporter.TestRun.startTest() is no longer
+    called for tests with skip annotation or skip attribute for
+    Python 3.12.1 or newer. This is the result of upstream Python
+    gh-106584 change. The behavior is not change in 3.12.0 or
+    older.</comment>
+    <requestid>1184937</requestid>
+  </revision>
 </revisionlist>

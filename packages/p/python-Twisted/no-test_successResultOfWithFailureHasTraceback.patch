@@ -2,10 +2,10 @@
  src/twisted/conch/test/test_keys.py |    3 +++
  1 file changed, 3 insertions(+)
 
-Index: Twisted-22.10.0/src/twisted/conch/test/test_keys.py
+Index: twisted-24.3.0/src/twisted/conch/test/test_keys.py
 ===================================================================
---- Twisted-22.10.0.orig/src/twisted/conch/test/test_keys.py
-+++ Twisted-22.10.0/src/twisted/conch/test/test_keys.py
+--- twisted-24.3.0.orig/src/twisted/conch/test/test_keys.py
++++ twisted-24.3.0/src/twisted/conch/test/test_keys.py
 @@ -15,6 +15,7 @@ from twisted.python import randbytes
  from twisted.python.filepath import FilePath
  from twisted.python.reflect import requireModule
@@ -14,7 +14,7 @@ Index: Twisted-22.10.0/src/twisted/conch/test/test_keys.py
  
  cryptography = requireModule("cryptography")
  if cryptography is None:
-@@ -259,6 +260,8 @@ class KeyTests(unittest.TestCase):
+@@ -250,6 +251,8 @@ class KeyTests(unittest.TestCase):
          for k, v in data.items():
              self.assertEqual(privateKey.data()[k], v)
  

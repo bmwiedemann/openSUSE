@@ -25,10 +25,9 @@
 %define psuffix %{nil}
 %endif
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-Twisted%{psuffix}
-Version:        23.10.0
+Version:        24.3.0
 Release:        0
 Summary:        An asynchronous networking framework written in Python
 License:        MIT
@@ -42,14 +41,10 @@ Patch2:         no-test_successResultOfWithFailureHasTraceback.patch
 # PATCH-FIX-UPSTREAM 1521_delegate_parseqs_stdlib_bpo42967.patch https://twistedmatrix.com/trac/ticket/10096 mcepl@suse.com
 # overcome incompatibility with the solution for bpo#42967.
 Patch3:         1521_delegate_parseqs_stdlib_bpo42967.patch
-# PATCH-FIX-UPSTREAM twisted-pr12054-testinvokationpy3.12.1.patch gh#twisted/twisted#12054 fixes gh#twisted/twisted#12052
-Patch4:         twisted-pr12054-testinvokationpy3.12.1.patch
 # PATCH-FIX-OPENSUSE We don't want to package yet another module, and it is easily skippable
 Patch5:         no-cython_test_exception_raiser.patch
 # PATCH-FIX-OPENSUSE remove-dependency-version-upper-bounds.patch boo#1190036 -- run with h2 >= 4.0.0 and priority >= 2.0
 Patch6:         remove-dependency-version-upper-bounds.patch
-# PATCH-FIX-UPSTREAM gh#twisted/twisted#2280e5fcd0c9e9d34f5b7650c68f19c1498e49cd
-Patch7:         stop-using-3-arg-throw.patch
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module incremental >= 21.3.0}
