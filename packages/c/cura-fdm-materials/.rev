@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3c40292915c16b37ab27e9d5dc9a4adb</srcmd5>
+    <version>3.6.0</version>
+    <time>1547130053</time>
+    <user>dimstar_suse</user>
+    <comment>Weak dependency for Cura
+- update to version 3.6.0
+  * Lots of updates and additions to generic and vendor specific
+    materials, no changelog available.
+- Correct package group
+- Remove spurious executable flag on data files
+- update to version 3.1.0
+- update to version 2.7.0
+- Add LICENSE file, fix License tag (CC0-1.0)
+- update to version 2.5.0
+- Update to version 2.4.0
+- Initial version of cura-fdm-material package
+</comment>
+    <requestid>663492</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ef46b6a6775f1afb70b0249916d0b44e</srcmd5>
+    <version>4.1.0</version>
+    <time>1564302155</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.1.0
+  * https://ultimaker.com/en/products/ultimaker-cura-software/release-notes
+</comment>
+    <requestid>719012</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1c1b78e0593b604e410b70dc96c08975</srcmd5>
+    <version>4.4.1</version>
+    <time>1578069404</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.4.1
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/v4.4.1
+
+- update to version 4.3.0</comment>
+    <requestid>760433</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5421b2d280f9dd70ecdd88ae99e7b3f4</srcmd5>
+    <version>4.6.1</version>
+    <time>1591559760</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812287</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e253b673d7c6e06da307899b5e33d062</srcmd5>
+    <version>4.7.1</version>
+    <time>1600346806</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.7.1
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/4.7.1
+  * https://github.com/Ultimaker/Cura/releases/tag/4.7.0
+  * https://github.com/Ultimaker/Cura/releases/tag/4.6.2
+</comment>
+    <requestid>835123</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>99ab439819e50418855297a743982687</srcmd5>
+    <version>4.8.0</version>
+    <time>1605124058</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847704</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2ad8cf59bbc02d7351e8af1bfdcc5fe7</srcmd5>
+    <version>4.9.0</version>
+    <time>1619729168</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889135</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ef1f03f61b9090f216e06538cbd62d54</srcmd5>
+    <version>4.13.0</version>
+    <time>1643666229</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950050</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Sun Jan 30 07:57:28 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 4.13.0
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/4.13
+
+-------------------------------------------------------------------
+Mon Apr 26 19:36:45 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 4.9.0
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/4.9
+
+-------------------------------------------------------------------
+Tue Nov 10 18:31:08 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 4.8.0
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/4.8
+
+-------------------------------------------------------------------
+Tue Sep 15 21:20:28 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 4.7.1
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/4.7.1
+  * https://github.com/Ultimaker/Cura/releases/tag/4.7.0
+  * https://github.com/Ultimaker/Cura/releases/tag/4.6.2
+
+-------------------------------------------------------------------
+Sun Jun  7 03:16:44 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 4.6.1
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/4.6.1
+  * https://github.com/Ultimaker/Cura/releases/tag/4.6.0
+  * https://github.com/Ultimaker/Cura/releases/tag/4.5.0
+
+-------------------------------------------------------------------
+Thu Jan  2 11:39:30 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- update to version 4.4.1
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/v4.4.1
+
+-------------------------------------------------------------------
+Mon Oct 14 08:16:15 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 4.3.0
+
+-------------------------------------------------------------------
+Thu Jun 13 09:24:51 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 4.1.0
+  * https://ultimaker.com/en/products/ultimaker-cura-software/release-notes
+
+-------------------------------------------------------------------
+Mon Jan  7 23:35:44 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to version 3.6.0
+  * Lots of updates and additions to generic and vendor specific
+    materials, no changelog available.
+
+-------------------------------------------------------------------
+Mon Jan 29 15:49:20 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Correct package group
+- Remove spurious executable flag on data files
+
+-------------------------------------------------------------------
+Sat Jan 27 18:24:04 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- update to version 3.1.0
+
+-------------------------------------------------------------------
+Wed Sep 13 14:52:07 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- update to version 2.7.0
+- Add LICENSE file, fix License tag (CC0-1.0)
+
+-------------------------------------------------------------------
+Mon May 15 16:51:52 UTC 2017 - bugs@vdm-design.de
+
+- update to version 2.5.0
+
+-------------------------------------------------------------------
+Wed Mar 15 18:30:27 UTC 2017 - bugs@vdm-design.de
+
+- Update to version 2.4.0
+
+-------------------------------------------------------------------
+Wed Jan 25 09:14:15 UTC 2017 - bugs@vdm-design.de
+
+- Initial version of cura-fdm-material package
+
