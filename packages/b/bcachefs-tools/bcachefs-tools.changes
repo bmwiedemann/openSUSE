@@ -1,0 +1,114 @@
+-------------------------------------------------------------------
+Wed Jun 19 19:55:02 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to release v1.9.1:
+  * improve editorconfig to include sh scripts
+  * fix: remove newlines from passphrase
+  * fix: search for key in all keyrings
+- Updates from release v1.9.0:
+  * add BCACHEFS_BLOCK_SCAN environment variable for users that
+  * add BCACHEFS_KERNEL_ONLY environment variable for test
+    bcachefs, utilize it. Otherwise, resort to traversing block
+    devices and checking for bcachefs super blocks.
+    environments
+  * Handle mount with FS with 1 device
+    have a broken blkid which renders the udev db as incomplete
+  * manpage: incorrect "delete" to "snapshot"
+  * mount: If the udev database contains information about
+  * mount: Make udev_bcachefs_info more idiomatic
+  * fix typo that causes encrypted drives to become stuck in a
+    busy loop
+  * check_for_key before ask_for_passphrase -- check if there is
+    already a key in the keyring available before trying to get the
+    key from some more involved means
+
+-------------------------------------------------------------------
+Thu Apr 18 00:07:11 UTC 2024 - David Disseldorp <ddiss@suse.de>
+
+- Update to release v1.7.0
+  * New on disk forat feature - per member 64-bit bitmap of regions
+    with btree nodes, to accelerate recovering by scanning for
+    btree nodes.
+  * mount: canonicalize device path for single device node
+  * Topology repair now uses nodes found by scanning to fill holes
+  * mount: Handle multi-device with 1 device node
+
+-------------------------------------------------------------------
+Mon Mar  4 01:54:50 UTC 2024 - David Disseldorp <ddiss@suse.de>
+
+- Update to release v1.6.4
+  * fix build on powerpc
+  * drop upstream rust-use-libc-Ioctl-type-for-ioctl-request-argument.patch
+
+-------------------------------------------------------------------
+Thu Feb 22 06:23:25 UTC 2024 - David Disseldorp <ddiss@suse.de>
+
+- Fix 32-bit builds [boo#1220175]
+  * add rust-use-libc-Ioctl-type-for-ioctl-request-argument.patch
+
+-------------------------------------------------------------------
+Wed Feb 21 04:55:00 UTC 2024 - David Disseldorp <ddiss@suse.de>
+
+- Update to release v1.6.3
+  * use the kernel fsck implementation if the kernel version is a better
+    match for the filesystem on disk than the -tools version
+  * fix building with old gcc
+  * fix big endian build
+  * collect kernel fsck return code
+  * various other fixes
+
+-------------------------------------------------------------------
+Mon Jan 29 06:55:58 UTC 2024 - David Disseldorp <ddiss@suse.de>
+
+- Build with rust functionality enabled [boo#1219158]
+  * Switch to upstream vendored source tarball
+  * Validate upstream source signature
+
+-------------------------------------------------------------------
+Sat Jan 27 09:49:49 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Rectify paths in systemd unit files [boo#1218808]
+
+-------------------------------------------------------------------
+Fri Jan 19 01:54:34 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Delete use_libexec_not_lib.patch (merged)
+- Update to release v1.4.1
+  * fix cmd_fsck, "bad mount option read-only"
+  * now open block devices with O_EXCL
+
+-------------------------------------------------------------------
+Tue Jan  9 03:46:53 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Add use_libexec_not_lib.patch
+- Update to v1.4.0:
+  * bugfix release
+  * Split brain detection
+  * BCH_IOCTL_OFFLINE_FSCK, and numerous other features and
+    bugfixes.
+
+-------------------------------------------------------------------
+Sun Dec  3 02:10:44 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to v1.3.5:
+  * Update from latest kernel bcachefs sources, pulling in fixes
+    for deleted_inodes btree in particular
+  * cmd_version now works properly
+  * fixes for cmd_format, pick the same bucket size for all devices
+    for the sake of erasure coding
+  * rebalance_work point release
+  * Fix race in closure_sync()
+  * Updated bcachefs sources because
+    bcachefs_metadata_version_deleted_inodes
+  * Snapshot depth, skiplist fields
+  * Updated bcachefs sources because
+    bcachefs_metadata_version_major_minor
+  * Fix quotas + snapshots
+  * Rip out code for storing backpointers in alloc keys
+  * Fragmentation LRU
+  * Rework LRU btree
+
+-------------------------------------------------------------------
+Tue May 30 08:19:24 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (version 24) for build.opensuse.org

@@ -1,0 +1,5 @@
+<package name="bcachefs-tools" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="filesystems" package="bcachefs-tools"/>
+</package>
