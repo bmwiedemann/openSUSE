@@ -1,0 +1,151 @@
+-------------------------------------------------------------------
+Fri May 24 05:36:38 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Require in OBS junit5-minimal to avoid provider choice
+
+-------------------------------------------------------------------
+Tue Apr 30 16:00:07 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.25.3
+  * Deprecations:
+    + Deprecate the following date/time related assertions in favor
+      of isCloseTo:
+      - isEqualToIgnoringHours
+      - isEqualToIgnoringMinutes
+      - isEqualToIgnoringSeconds
+      - isEqualToIgnoringMillis
+      - isEqualToIgnoringNanos
+      - isInSameHourAs
+      - isInSameMinuteAs
+      - isInSameSecondAs
+    + Deprecate asList in favor of asInstanceOf
+  * New Features:
+    + Add Descriptable#describedAs(Supplier<String>)
+    + Add isInThePast and isInTheFuture to LocalDate assertions
+    + Add isInThePast and isInTheFuture to the missing Java 8
+      date/time types
+    + Add isRecord and isNotRecord to Class assertions
+    + Add hasNullValue and doesNotHaveNullValue to
+      AtomicReferenceAssert
+    + Add asBoolean|Byte|Short|Int|Long|Float|Double to String
+      assertions
+    + Add hasRecordComponents to Class assertions
+    + Add getters for field path in ComparisonDifference
+    + Allow to compare enum and string fields in the recursive
+      comparison
+    + Provide value when assertThatThrownBy / thenThrownBy fail
+    + Add isSealed and isNotSealed to Class assertions
+    + Add assertThatCharSequence to disambiguate Groovy's GString
+    + Change the way the properties are collected using the
+      Class.getMethods() API instead of iterating the class
+      hierarchy using Class.declaredMethods()
+    + Add default constructor for RecursiveComparator
+    + Add isPrimitive and isNotPrimitive to Class assertions
+    + Add anyOf(ThrowingConsumer...) and allOf(ThrowingConsumer...)
+    + Show the array/iterable under test in the assertion error
+      message when it is not empty but should have been
+  * Bug Fixes:
+    + Compare Java types from javax and com.sun by their equals
+      method in recursive comparison
+    + The recursive comparison comparingOnlyFields did not treat
+      array/iterable elements as root objects
+    + Fixes a bug when failing assertions on DirectoryStream types
+    + Fix handling of null containers in the recursive assertion
+    + Handle null values in map entry sets when formatting
+    + Fix NPE when expected and actual field values are null
+    + Fix NPE on anyMatch when actual contains null and
+      Objects::isNull is used as predicate
+    + Fix misleading subsequence failure messages in string
+      assertions
+    + Do not ignore nested fields of types specified in
+      comparingOnlyFieldsOfTypes
+    + containsExactly does not work properly with maps not using
+      equals to compare keys
+    + Escape percentage in shouldContainExactly error message
+    + Fix recursive comparison of ignored types in unordered
+      collection
+    + Revert "Provide value when assertThatThrownBy/thenThrownBy
+      fail"
+    + Revert "fix: containsExactly does not work properly with maps
+      not using equals to compare keys"
+    + Fix unresolvable Javadoc stylesheet URLs, simplify
+      configuration
+    + Fix missing configuration for MatcherAssert soft assertions
+    + Make deprecation notice visible in AbstractAssert#asList
+    + Recursive comparison uses equals on root object when
+      useOverriddenEquals is enabled
+    + satisfiesExactlyInAnyOrder fails if actual overrides equals
+    + Avoid calling actual.hashCode() and expected.hashCode() in
+      DualValue
+    + Recursive comparison checks for existence of fields in types
+      that parameterize nested unordered iterables
+    + Lock maven-clean-plugin version for all modules
+    + Fix a performance regression in the recursive comparison
+      related to FieldLocation
+    + Don't fail when the recursive comparison checks compared
+      fields in collection elements
+  * Improvements
+    + Add Spotless
+    + Use Bnd feature to write resolved bndrun files to output
+      folder
+    + Add Throwable stack trace to ShouldHaveClause
+    + Avoid copy of any Collection instance in
+      Iterables::assertContains
+    + Add Throwable stack trace to ShouldHaveRootCauseInstance and
+      ShouldHaveRootCauseExactlyInstance
+    + Add missing description to nested condition
+    + Make nestable condition factory accept conditions on super
+      types
+    + Add varargs overload to Assert::hasString and
+      Assert::doesNotHaveString
+    + Improve recursive comparison performance by caching field and
+      field names result
+    + Document performance cost of ignoring collection order
+    + Track visited values and their comparison differences so that
+      they can be reused
+    + Use hash code for compareUnorderedIterables to improve
+      performance in some common cases
+    + Improve recursive comparison error message regarding equals
+      methods used for JDK types
+    + Format large arrays as strings
+    + Remove null check as isArray already performs it
+    + Fix PrimitiveArralList/TransformlingList test file names
+    + Add exception for usages of isEqualTo and isNotEqualTo on
+      assertions
+    + Add check for missing fields in recursive comparison where
+      specific fields are requested for comparison
+    + Improve efficiency of iterable string conversion
+    + Add more tests for usingRecursiveComparison
+    + Checks that compared fields exist before running the recursive
+      comparison
+    + Remove maven-surefire-plugin duplicate version
+    + Remove Maven default goal
+    + Add dependency graph workflow
+    + Normalize non-breaking spaces like regular white spaces
+    + AbstractOffsetDateTimeAssert::isBetween parameter names should
+      use inclusive, not exclusive
+    + Invoke isNotNull in returns and doesNotReturn
+    + Cache node names in ComparingFields, ComparingProperties
+    + Cache node names in ComparingNormalizedFields
+    + Use simpler syntax in
+      DefaultRecursiveComparisonIntrospectionStrategy
+      .getChildrenNodeNamesOf
+    + Update to Contributor Covenant Code of Conduct v2.1
+    + Correct contains assertion Javadoc to reflect method behavior
+      in case actual is not empty and the group of values to look
+      for is
+    + Fix Javadoc typos
+    + Improving null-safety of isEqualToNormalizingNewlines
+    + Speed up for BinaryDiff performance
+    + Upgrade workflows to Java 21
+    + Apply flatten-maven-plugin to assertj-core and assertj-guava
+
+-------------------------------------------------------------------
+Wed May  1 13:09:58 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
+Tue Apr 30 11:33:34 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of assertj-core 3.8.0
