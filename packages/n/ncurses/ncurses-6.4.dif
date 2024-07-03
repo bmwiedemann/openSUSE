@@ -349,7 +349,7 @@
  
 --- man/man_db.renames.in
 +++ man/man_db.renames.in	2024-05-14 06:15:01.767262785 +0000
-@@ -298,6 +298,7 @@ wtimeout.3x			wtimeout.3ncurses
+@@ -300,6 +300,7 @@ wtimeout.3x			wtimeout.3ncurses
  wunctrl.3x			wunctrl.3ncurses
  #
  # Other:
@@ -359,7 +359,7 @@
  ttys.5				ttys.4
 --- man/ncurses.3x
 +++ man/ncurses.3x	2024-04-15 07:09:39.619910505 +0000
-@@ -341,6 +341,10 @@ and \fBmenu\fP(3X) libraries to ease con
+@@ -357,6 +357,10 @@ and \fBmenu\fP(3X) libraries to ease con
  with
  .IR curses .
  .SS "Initialization"
@@ -371,7 +371,7 @@
  .I TERM
  in the process environment is essential to correct
 --- misc/gen-pkgconfig.in
-+++ misc/gen-pkgconfig.in	2024-04-15 07:05:36.860695856 +0000
++++ misc/gen-pkgconfig.in	2024-06-24 08:03:55.625517938 +0000
 @@ -83,6 +83,8 @@ if [ "$includedir" != "/usr/include" ];
  fi
  
@@ -388,7 +388,7 @@
 +	-Wl,--hash-size=*) # ignore hash as gold linker can not do
 +		continue
 +		;;
- 	-Wl,-z,*) # ignore flags used to manipulate shared image
+ 	-Wl,-z*) # ignore flags used to manipulate shared image
  		continue
  		;;
  	-Wl,--dynamic-linker*) # ignore ELF interpreter

@@ -4603,4 +4603,41 @@
     Debian's ncurses packages.</comment>
     <requestid>1179693</requestid>
   </revision>
+  <revision rev="267" vrev="40">
+    <srcmd5>4762a8b3ba9c54e915a5e126355b0404</srcmd5>
+    <version>unknown</version>
+    <time>1720031194</time>
+    <user>anag+factory</user>
+    <comment>- Add ncurses patch 20240629
+  + build-fix for ncurses-examples with newer PDCurses, which no longer
+    has stubs for unimplemented features.
+  + add help-popup for test_instr.c, test_inwstr.c
+  + modify checks in delwin to avoid checking if the window is a pad
+    until first checking if it is still on the active window-list
+    (cf: 20211115).
+  + improve -t option of test/gdc.c, allowing hours only, or hours and
+    minutes only.
+- Update to tack 1.10 (patch 20240501)
+  * init.c, edit.c: gcc warning (NetBSD)
+  * edit.c:
+    check to avoid printing a non-printable character, per Coverity
+  * tack.c: initialize variables, per Coverity
+  * tack.1: change limit for SGR tool to allow for aixterm's colors
+  * ansi.c: change the SGR tool to show up to 120 (past aixterm's 108)
+  * color.c:
+    when reloading the colors 0-7, use the index for the named color rather than
+    just the array-index (fixing an interchanged red/blue for instance).
+    Also, initialize the palette using the ANSI codes if the terminal supports
+    setaf/setab.
+  * color.c, charset.c, ansi.c, edit.c, crum.c, pad.c, tack.c, tack.h:
+    use &quot;const&quot; in a few places reported by cppcheck
+  * tack.1: improve formatting/style
+
+- Add ncurses patch 20240622
+  + improve test/gdc.c (patch by Branden Robinson).
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + adjust naming of mingw *-config scripts to match the pkg-config names
+  + widen pattern in pc/*-config scripts to disallow more linker options</comment>
+    <requestid>1184207</requestid>
+  </revision>
 </revisionlist>

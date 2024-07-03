@@ -22,17 +22,9 @@ while test "${1::2}" = "--" ; do
 done
 
 sed -ri -e "
-/^[[:blank:]]*--cflags\)/,/;;/ {
-    /;;/ a\\
-	--cflags)\\
-		echo $cflags\\
-		;;
-    d
+/^[[:blank:]]*--cflags.*\)/,/;;/ {
+    s|for opt in .*|for opt in ${cflags}|
 }
-/^[[:blank:]]*--libs\)/,/;;/ {
-    /;;/ a\\
-	--libs)\\
-		echo $libs\\
-		;;
-    d
+/^[[:blank:]]*--libs.*\)/,/;;/ {
+    s|for opt in .*|for opt in ${libs}|
 }" ${1+"$@"}

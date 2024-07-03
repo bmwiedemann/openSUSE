@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon Jul  1 06:32:41 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20240629
+  + build-fix for ncurses-examples with newer PDCurses, which no longer
+    has stubs for unimplemented features.
+  + add help-popup for test_instr.c, test_inwstr.c
+  + modify checks in delwin to avoid checking if the window is a pad
+    until first checking if it is still on the active window-list
+    (cf: 20211115).
+  + improve -t option of test/gdc.c, allowing hours only, or hours and
+    minutes only.
+- Update to tack 1.10 (patch 20240501)
+  * init.c, edit.c: gcc warning (NetBSD)
+  * edit.c:
+    check to avoid printing a non-printable character, per Coverity
+  * tack.c: initialize variables, per Coverity
+  * tack.1: change limit for SGR tool to allow for aixterm's colors
+  * ansi.c: change the SGR tool to show up to 120 (past aixterm's 108)
+  * color.c:
+    when reloading the colors 0-7, use the index for the named color rather than
+    just the array-index (fixing an interchanged red/blue for instance).
+    Also, initialize the palette using the ANSI codes if the terminal supports
+    setaf/setab.
+  * color.c, charset.c, ansi.c, edit.c, crum.c, pad.c, tack.c, tack.h:
+    use "const" in a few places reported by cppcheck
+  * tack.1: improve formatting/style
+
+-------------------------------------------------------------------
+Mon Jun 24 07:57:50 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20240622
+  + improve test/gdc.c (patch by Branden Robinson).
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + adjust naming of mingw *-config scripts to match the pkg-config names
+  + widen pattern in pc/*-config scripts to disallow more linker options
+  + add --cflags-only-I and --cflags-only-other options to
+    misc/ncurses-config.in
+  + revert change to CF_BUILD_CC macro (report by Vassili Courzakis,
+    cf: 20240518).
+- Port patch ncurses-6.4.dif
+- Port edit.sed script to new ncurses-config
+
+-------------------------------------------------------------------
+Mon Jun 17 06:42:12 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20240615
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + review/update modules files.
+  + improve install-rules in Ada95 makefiles (report by Branden Robinson).
+  + improve formatting/style of manpages in test-directory.
+
+-------------------------------------------------------------------
 Mon Jun 10 06:07:51 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20240608

@@ -37,8 +37,8 @@
 
 %global patchlvl %(bash %{_sourcedir}/get_version_number.sh %{_sourcedir})
 %global basevers 6.5
-%global tackvers 1.09
-%global tacklvl  20230201
+%global tackvers 1.10
+%global tacklvl  20240501
 
 Name:           ncurses
 #!BuildIgnore: terminfo
