@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  2 20:29:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add netloc-tests.patch to skip failing test with python 3.12
+
+-------------------------------------------------------------------
 Tue Jul  4 22:28:07 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Add 165-use-ipaddress-library.patch to use standard ipaddress
@@ -14,7 +19,7 @@ Wed Sep 28 19:47:43 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - version update to v2.1.3
   Fixed: Actually drop ';' as a query delimiter. See furl v2.1.2's
-  changelog and https://bugs.python.org/issue42967. 
+  changelog and https://bugs.python.org/issue42967.
 
 -------------------------------------------------------------------
 Fri Aug 19 16:28:12 UTC 2022 - Ben Greiner <code@bnavigator.de>

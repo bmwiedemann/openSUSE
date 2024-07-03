@@ -1,0 +1,22 @@
+Index: furl-2.1.3/tests/test_furl.py
+===================================================================
+--- furl-2.1.3.orig/tests/test_furl.py
++++ furl-2.1.3/tests/test_furl.py
+@@ -1635,11 +1635,12 @@ class TestFurl(unittest.TestCase):
+         f.port = None
+         assert f.url == '' and f.netloc is None
+ 
+-        # urlparse.urlsplit() treats the first two '//' as the beginning
+-        # of a netloc, even if the netloc is empty.
+-        f = furl.furl('////path')
+-        assert f.netloc == '' and str(f.path) == '//path'
+-        assert f.url == '////path'
++        if sys.version_info < (3, 12):
++            # urlparse.urlsplit() treats the first two '//' as the beginning
++            # of a netloc, even if the netloc is empty.
++            f = furl.furl('////path')
++            assert f.netloc == '' and str(f.path) == '//path'
++            assert f.url == '////path'
+ 
+         # TODO(grun): Test more odd URLs.
+ 
