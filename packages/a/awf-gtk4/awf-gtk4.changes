@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Fri Feb  2 20:00:00 UTC 2024 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (2.8.0)
+  * add progress bar in tool bar and status bar
+  * auto resize window to minimal size after layout update
+
+-------------------------------------------------------------------
+Fri Jun 16 20:00:00 UTC 2023 - Fabrice Creuzot <code@luigifab.fr>
+
+- Package spec update
+
+-------------------------------------------------------------------
+Thu Jun  6 20:00:00 UTC 2023 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream version (2.7.0)
+  * add text direction menu
+  * add close button for tabs
+
+-------------------------------------------------------------------
+Thu Sep  9 20:00:00 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream version (2.6.0)
+  * puts the Options menu first
+  * allow to run multiple independent instances
+  * fix getenv crash when variable is not defined
+  * set fixed width for font button
+  * add 0 and 100 marks for all scales
+
+-------------------------------------------------------------------
+Wed Jul  7 20:00:00 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream version (2.5.0)
+  * display all themes in system theme menu
+  * display hour in status bar on startup, on theme reload,
+    on theme change
+  * add new toolbar button (minus icon) to switch text direction
+  * add new dialog with many scales
+  * enable keyboard shortcuts
+  * disable non working screenshot
+
+-------------------------------------------------------------------
+Wed May  5 20:00:00 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream version (2.4.0)
+  * add gtk widgets (check, radio, progress, icon) to gtk treeview
+  * add text, check, radio, action, accelerator for menu items
+  * add two GtkVolumeButton widgets
+  * add two GtkLinkButton widgets
+
+-------------------------------------------------------------------
+Tue Apr  6 14:35:02 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
+
+- Initial openSUSE package release
