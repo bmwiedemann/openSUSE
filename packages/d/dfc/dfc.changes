@@ -1,0 +1,124 @@
+-------------------------------------------------------------------
+Tue Jun 20 13:12:25 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update project and download url
+
+-------------------------------------------------------------------
+Tue Mar 10 12:16:24 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Thu Oct 26 08:12:44 UTC 2017 - mpluskal@suse.com
+
+- Update to version 3.1.1:
+  * fix a typo in the compilation instructions in the readme file
+  * fix an old bug (4+ years) which messed up colors in HTML export
+    when a configuration file is used
+  * fix a bug which prevented some file systems to be displayed
+    when the filtering option was used
+  * fix a bad implicit fallthrough
+
+-------------------------------------------------------------------
+Fri Apr 21 08:05:13 UTC 2017 - mpluskal@suse.com
+
+- Update to version 3.1.0:
+  * New features:
+    + Major code refactoring: now, platform specific code is
+      clearly separated
+    + Solaris support.
+    + The CSV separator can be specified via the configuration file
+      (defaults to",").
+    + In addition to the already export formats (CSV, text, tex and
+      HTML), dfc is able to export the information as JSON (no
+      additional dependency required).
+    + Add support for bold font via the configuration file
+    + Add -M option to disable "Mounted On" information.
+    + Add Dutch translation.
+    + Add git revision to the dfc version string for development
+      versions of dfc.
+  * Bug fixes:
+    + Fix type not respecting -W flag.
+    + Fix alignment issue when both -M and -o options are specified.
+    + Plug a few memory leaks.
+    + Escape mount options with "" when exporting to CSV as mount
+      options may typically contain a ",".
+    + Linux: avoid stat'ing remote file system when local flag is
+      given (prevents dfc from potentially hanging on remote file
+      systems).
+    + Consider nfs4 a remote filesystem.
+    + Correctly link math library (fixes build on, at least,
+      Ubuntu).
+    + Remove a few extra incorrect CSV separators in CSV export
+      mode.
+    + Silently ignore EACCESS error on statvfs.
+    + Fix build failure on Hurd.
+    + Fix build failure on kFreeBSD.
+  * Incompatible changes:
+    + Remove "GRIM" compile option - compile flags previously set
+      by "grim" are now defaults.
+    + Stop translating color names in the configuration file - now,
+      only "English" names are understood.
+
+-------------------------------------------------------------------
+Fri Feb 17 14:33:02 UTC 2017 - mpluskal@suse.com
+
+- Split lang subpackage
+
+-------------------------------------------------------------------
+Wed Dec  9 12:38:11 UTC 2015 - mpluskal@suse.com
+
+- Update download url
+- Use cmake macros
+- Cleanup spec file with spec-clened
+
+-------------------------------------------------------------------
+Tue May 19 14:01:49 UTC 2015 - thutterer@suse.com
+
+- Update to 3.0.5:
+  BUGS:
+  * fixed initialization of LFS
+  * do not install translated configuration files and man pages when NLS option
+is disabled
+  * fixed typos in the man 
+
+-------------------------------------------------------------------
+Fri Oct 25 18:29:45 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to 3.0.4:
+  BUGS:
+  * fixed compilation error on *BSD systems introduced in dfc version 3.0.3
+
+-------------------------------------------------------------------
+Fri Aug 23 20:58:42 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to 3.0.3:
+  BUGS:
+  * fixed warning message wrongly displayed when calling 'dfc -u h'
+  * fixed various typo fixes
+  * fixed some memory management issues
+  * fixed if tests on potentially NULL values
+  * fixed potential security holes (potentially exploitable buffer overflows
+    caused by misuse of printf function)
+  * fixed dfc hang on no more accessible remote file systems
+  * display a warning in any case when file system cannot be stated instead of
+    exiting on error
+  MISCELLANEOUS:
+  * updated license header and copyright year
+
+-------------------------------------------------------------------
+Sun Apr 14 17:53:43 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to 3.0.2:
+  BUGS:
+  * fixed dfc failing when getting volume size information from volume >= 4 To
+    on 32-bit hosts (added LFS option, which can be triggered on or off but is
+    on by default)
+  * fixed missing separator on CSV export when -T and -s options where
+    triggered
+- Fix rpm post build check warning "File is compiled without RPM_OPT_FLAGS".
+
+-------------------------------------------------------------------
+Sat Nov 10 20:08:11 UTC 2012 - asterios.dramis@gmail.com
+
+- Initial rpm release (version 3.0.1).

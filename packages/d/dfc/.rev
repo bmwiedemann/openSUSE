@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bbed70cb6f92a517ff5170e34707b894</srcmd5>
+    <version>3.0.5</version>
+    <time>1450955763</time>
+    <user>dimstar_suse</user>
+    <comment>Colorized df - some people seem to be using it, debian has it as well</comment>
+    <requestid>348218</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9d49beada3ec4b86cebbe51d0167a509</srcmd5>
+    <version>3.0.5</version>
+    <time>1487681369</time>
+    <user>dimstar_suse</user>
+    <comment>- Split lang subpackage</comment>
+    <requestid>458693</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8df805cce3acdaf15fe1db6eb7596b73</srcmd5>
+    <version>3.1.0</version>
+    <time>1493020158</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.0:</comment>
+    <requestid>489755</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>89abe52ae2eaa4eea6097c6fb2f6c2b7</srcmd5>
+    <version>3.1.1</version>
+    <time>1509036352</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.1:
+  * fix a typo in the compilation instructions in the readme file
+  * fix an old bug (4+ years) which messed up colors in HTML export
+    when a configuration file is used
+  * fix a bug which prevented some file systems to be displayed
+    when the filtering option was used
+  * fix a bad implicit fallthrough</comment>
+    <requestid>536723</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ea9b6079201a787a28d638f16850b1a9</srcmd5>
+    <version>3.1.1</version>
+    <time>1583948922</time>
+    <user>dimstar_suse</user>
+    <comment>- Spec file cleanup</comment>
+    <requestid>783362</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>d338ac6838e59d1e745f73c042f55426</srcmd5>
+    <version>3.1.1</version>
+    <time>1687272584</time>
+    <user>dimstar_suse</user>
+    <comment>- Update project and download url</comment>
+    <requestid>1093987</requestid>
+  </revision>
+</revisionlist>
