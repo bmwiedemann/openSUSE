@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  3 07:31:25 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Insert manual provide for perl(Getopt::Long) until new version
+  transition is done
+
+-------------------------------------------------------------------
 Mon Jun 17 12:36:15 CEST 2024 - mls@suse.de
 
 - move UNIVERSAL.pm into perl-base
@@ -1724,7 +1730,6 @@ Thu Jan 22 19:22:53 MET 1998 - florian@suse.de
 Tue Nov 11 19:46:21 MET 1997 - florian@suse.de
 
 - fixed file list
-
 - update to perl 5.004_04
 
 -------------------------------------------------------------------
@@ -1741,15 +1746,11 @@ Thu Oct  9 19:08:47 MEST 1997 - florian@suse.de
 -------------------------------------------------------------------
 Tue May 20 14:10:37 MEST 1997 - florian@suse.de
 
-
 - update to version 5.004
-
 - disable hooks to csh in perl, it is not installed on all systems
-
 
 -------------------------------------------------------------------
 Mon Nov  4 01:59:08 CET 1996 - bs@suse.de
-
 
 h2ph call in doinst.sh added.
 

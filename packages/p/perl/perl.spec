@@ -91,6 +91,8 @@ Provides:       perl-Digest-MD5 = 2.55
 %if "%{version}" != "%{pversion}"
 Provides:       perl-base = %{pversion}-%{release}
 %endif
+# manual provides until we finally switch to the new versions system
+Provides:       perl(Getopt::Long) = 2.570.0
 
 %description base
 perl - Practical Extraction and Report Language

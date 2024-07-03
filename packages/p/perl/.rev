@@ -1146,4 +1146,13 @@ I hope I got it right now. It export both 5.34.0 and 5.34.1 COMPAT. That should 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1181729</requestid>
   </revision>
+  <revision rev="136" vrev="2">
+    <srcmd5>4247e22f75e8455eebb08ef533ed29ad</srcmd5>
+    <version>5.40.0</version>
+    <time>1719994000</time>
+    <user>anag+factory</user>
+    <comment>- Insert manual provide for perl(Getopt::Long) until new version
+  transition is done</comment>
+    <requestid>1185065</requestid>
+  </revision>
 </revisionlist>
