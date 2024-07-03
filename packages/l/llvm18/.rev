@@ -140,4 +140,22 @@
 </comment>
     <requestid>1175712</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4814fdf7d0dcd2fa41182a8f56a0ebfa</srcmd5>
+    <version>18.1.8</version>
+    <time>1720031187</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 18.1.8.
+  * Fix a regression from the 18.1.6 release, which could result in
+    compiler crashes in the PPCMergeStringPool pass when compiling
+    for PowerPC targets.
+  * Fixes clang-format regressions (since 18.1.1) on breaking
+    before a stream insertion operator (&lt;&lt;) when both operands are
+    string literals.
+  * Fixes a clang-format regression (since 17.0.6) on formatting
+    goto labels in macro definitions.
+- Rebase llvm-do-not-install-static-libraries.patch.
+</comment>
+    <requestid>1184151</requestid>
+  </revision>
 </revisionlist>

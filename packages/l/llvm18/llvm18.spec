@@ -19,7 +19,7 @@
 %global _sonum  18
 %global _minor  %{_sonum}.1
 %global _soname %{_minor}%{?_sosuffix}
-%global _patch_level 6
+%global _patch_level 8
 %global _relver %{_minor}.%{_patch_level}
 %global _version %_relver%{?_rc:rc%_rc}
 %global _tagver %_relver%{?_rc:-rc%_rc}

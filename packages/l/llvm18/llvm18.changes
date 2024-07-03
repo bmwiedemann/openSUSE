@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jun 30 17:44:44 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 18.1.8.
+  * Fix a regression from the 18.1.6 release, which could result in
+    compiler crashes in the PPCMergeStringPool pass when compiling
+    for PowerPC targets.
+  * Fixes clang-format regressions (since 18.1.1) on breaking
+    before a stream insertion operator (<<) when both operands are
+    string literals.
+  * Fixes a clang-format regression (since 17.0.6) on formatting
+    goto labels in macro definitions.
+- Rebase llvm-do-not-install-static-libraries.patch.
+
+-------------------------------------------------------------------
 Tue May 21 21:06:41 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 18.1.6.

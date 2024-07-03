@@ -2,10 +2,10 @@ This has similar effect as simply deleting the static libraries which we don't
 want after installation. By not copying them in the first place we reduce the
 disk usage during installation.
 
-Index: clang-18.1.6.src/cmake/modules/AddClang.cmake
+Index: clang-18.1.8.src/cmake/modules/AddClang.cmake
 ===================================================================
---- a/clang-18.1.6.src/cmake/modules/AddClang.cmake
-+++ b/clang-18.1.6.src/cmake/modules/AddClang.cmake
+--- a/clang-18.1.8.src/cmake/modules/AddClang.cmake
++++ b/clang-18.1.8.src/cmake/modules/AddClang.cmake
 @@ -106,12 +106,15 @@ macro(add_clang_library name)
  
        if (NOT LLVM_INSTALL_TOOLCHAIN_ONLY OR ARG_INSTALL_WITH_TOOLCHAIN)
@@ -68,10 +68,10 @@ Index: cmake/modules/AddLLVM.cmake
    endif()
    if (ARG_MODULE)
      set_target_properties(${name} PROPERTIES FOLDER "Loadable modules")
-Index: lld-18.1.6.src/cmake/modules/AddLLD.cmake
+Index: lld-18.1.8.src/cmake/modules/AddLLD.cmake
 ===================================================================
---- a/lld-18.1.6.src/cmake/modules/AddLLD.cmake
-+++ b/lld-18.1.6.src/cmake/modules/AddLLD.cmake
+--- a/lld-18.1.8.src/cmake/modules/AddLLD.cmake
++++ b/lld-18.1.8.src/cmake/modules/AddLLD.cmake
 @@ -17,13 +17,6 @@ macro(add_lld_library name)
  
    if (NOT LLVM_INSTALL_TOOLCHAIN_ONLY)
@@ -86,10 +86,10 @@ Index: lld-18.1.6.src/cmake/modules/AddLLD.cmake
      if (${ARG_SHARED} AND NOT CMAKE_CONFIGURATION_TYPES)
        add_llvm_install_targets(install-${name}
          DEPENDS ${name}
-Index: polly-18.1.6.src/cmake/polly_macros.cmake
+Index: polly-18.1.8.src/cmake/polly_macros.cmake
 ===================================================================
---- a/polly-18.1.6.src/cmake/polly_macros.cmake
-+++ b/polly-18.1.6.src/cmake/polly_macros.cmake
+--- a/polly-18.1.8.src/cmake/polly_macros.cmake
++++ b/polly-18.1.8.src/cmake/polly_macros.cmake
 @@ -42,15 +42,17 @@ macro(add_polly_library name)
      llvm_config(${name} ${LLVM_LINK_COMPONENTS})
    endif( LLVM_LINK_COMPONENTS )
@@ -116,10 +116,10 @@ Index: polly-18.1.6.src/cmake/polly_macros.cmake
  endmacro(add_polly_library)
  
  macro(add_polly_loadable_module name)
-Index: polly-18.1.6.src/lib/CMakeLists.txt
+Index: polly-18.1.8.src/lib/CMakeLists.txt
 ===================================================================
---- a/polly-18.1.6.src/lib/CMakeLists.txt
-+++ b/polly-18.1.6.src/lib/CMakeLists.txt
+--- a/polly-18.1.8.src/lib/CMakeLists.txt
++++ b/polly-18.1.8.src/lib/CMakeLists.txt
 @@ -109,7 +109,7 @@ set_target_properties(PollyCore PROPERTI
  # It depends on all library it needs, such that with
  # LLVM_POLLY_LINK_INTO_TOOLS=ON, its dependencies like PollyISL are linked as
