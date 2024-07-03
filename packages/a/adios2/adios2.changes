@@ -1,0 +1,93 @@
+-------------------------------------------------------------------
+Wed May 29 00:00:00 UTC 2024 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 2.10.1
+
+- Added ADIOS2 v2.10.1:
+  * pugixml: correct target name.
+  * Deactivate campaign recording by default. Use .adios-campaign/ as dir.
+  * Add API call to reset memory selection.
+  * Adding hooks to gather performance.
+  * pugixml,cmake: fix linkage when pugixml.
+  * Fixes for FreeBSD, including upstream.
+  * Kill outdated reference to bindings.Mode.ReadFlattenSteps.
+  * Release notes: https://github.com/ornladios/ADIOS2/releases/tag/v2.10.1
+
+-------------------------------------------------------------------
+Fri Apr  5 13:45:17 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Use full URL for sources.
+
+-------------------------------------------------------------------
+Thu Apr 04 00:00:00 UTC 2024 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 2.10.0
+
+- Added ADIOS2 v2.10.0:
+  * Release notes: https://github.com/ornladios/ADIOS2/releases/tag/v2.10.0
+  * New Python High Level API.
+  * Inclusion of campaign manager feature.
+  * Many bugfixes are included in this patch release.
+- Dropped patch 0001-cmake-set-correct-soname.patch
+- Dropped patch 0002-fix-test-post-install.patch
+
+-------------------------------------------------------------------
+Tue Feb 20 10:00:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
+Mon Jan  1 02:40:37 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix homepage URL.
+- Remove "-ffat-lto-objects" option, no static libs are shipped.
+- Remove unused/ineffective Requires from src package.
+- Add MPI flavor Requires to MPI shared libs package.
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Wed Nov 02 00:00:00 UTC 2023 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 2.9.2
+
+- Added ADIOS2 v2.9.2:
+  * Release notes: https://github.com/ornladios/ADIOS2/releases/tag/v2.9.2
+  * Many bugfixes are included in this patch release.
+- Dropped patch 0003-fix-adios2_evpath_modules.patch
+
+-------------------------------------------------------------------
+Tue Oct 24 08:07:33 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop support for obsolete openmpi3
+- Prepare support for openmpi5
+
+-------------------------------------------------------------------
+Mon Aug 04 00:00:00 UTC 2023 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 2.9.0
+
+- Added ADIOS2 v2.9.1.
+  * Release notes: https://github.com/ornladios/ADIOS2/releases/tag/v2.9.1
+  * Many bugfixes are included in this patch release.
+  * Several Bugfixes for BP5 components.
+  * Kokkos_CUDA option uses kokkos_wrapper.
+  * Kokkos_HIP option is working now.
+  * Added C API for fetching the version and features of the built adios2.
+  * Removed patch 0003-cmake-evpath-namespace-modules-install-dir.patch.
+  * Added patch 0003-fix-adios2_evpath_modules.patch
+
+-------------------------------------------------------------------
+Mon Jul 31 12:05:28 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Add libffi-devel as BuildRequires for successful s390x builds
+
+-------------------------------------------------------------------
+Mon Jul 27 00:00:00 UTC 2023 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 2.9.0
+
+- Fixes mvapich2 build installation prefix.
+- In devel package add conflict to old adios pkg.
+
+-------------------------------------------------------------------
+Mon Jul 10 00:00:00 UTC 2023 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 2.9.0
+
+- Added "0003-cmake-evpath-namespace-modules-install-dir.patch" which
+  namespaces the installation directory of the module files.
+- Moved .so files to the shlib package.
+
+-------------------------------------------------------------------
+Mon Apr 10 00:00:00 UTC 2023 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 2.9.0
+
+- Generated pkg for version 2.9.0

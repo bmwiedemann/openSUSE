@@ -1,0 +1,84 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>827fd3e5ebd3ea61d22bc42d9d598ac8</srcmd5>
+    <version>2.9.0</version>
+    <time>1690654205</time>
+    <user>dimstar_suse</user>
+    <comment>Resolved conflicted file between adios and adios2-devel.</comment>
+    <requestid>1101269</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ab982d682dfec67f4c47a8f582c52af3</srcmd5>
+    <version>2.9.1</version>
+    <time>1691232906</time>
+    <user>dimstar_suse</user>
+    <comment>- Added ADIOS2 v2.9.1.
+  * Release notes: https://github.com/ornladios/ADIOS2/releases/tag/v2.9.1
+  * Many bugfixes are included in this patch release.
+  * Several Bugfixes for BP5 components.
+  * Kokkos_CUDA option uses kokkos_wrapper.
+  * Kokkos_HIP option is working now.
+  * Added C API for fetching the version and features of the built adios2.
+  * Removed patch 0003-cmake-evpath-namespace-modules-install-dir.patch.
+  * Added patch 0003-fix-adios2_evpath_modules.patch
+- Add libffi-devel as BuildRequires for successful s390x builds
+</comment>
+    <requestid>1102412</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>30bbb39ea23edcbe6cd45b3aa210435d</srcmd5>
+    <version>2.9.1</version>
+    <time>1698438505</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120650</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>49a79d79e6c19bcb5f2ff27aa9fbed9c</srcmd5>
+    <version>2.9.2</version>
+    <time>1698952922</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121740</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>3728a357103344cb54a3ee0f1c21ee2b</srcmd5>
+    <version>2.9.2</version>
+    <time>1704487423</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136985</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>5c0f826bf7ad16eb253a42928e3d34f2</srcmd5>
+    <version>2.9.2</version>
+    <time>1708534639</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1148322</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c1d94ccbb08a9cac957a564eba9a0be9</srcmd5>
+    <version>2.10.0</version>
+    <time>1712341661</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1165030</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>7f02ffbd5e2cd3477f090f83faa1a6e6</srcmd5>
+    <version>2.10.0</version>
+    <time>1713290653</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1167880</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>418d40b668e6c72069d50324b0ac46c5</srcmd5>
+    <version>2.10.1</version>
+    <time>1717765393</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1179012</requestid>
+  </revision>
+</revisionlist>

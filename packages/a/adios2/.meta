@@ -1,0 +1,10 @@
+<package name="adios2" project="openSUSE:Factory">
+  <title>adios2</title>
+  <description>ADIOS2: The Adaptable Input Output (I/O) System version 2  is an open-source framework that addresses scientific data management challenges, e.g. scalable parallel I/O, as we approach the exascale era in high-performance computing (HPC).
+
+ADIOS 2 bindings are available in C++, C, Fortran, Python and can be used on supercomputers, personal computers, and cloud systems running on Linux, macOS and Windows.
+
+ADIOS 2 has out-of-the-box support for MPI and serial environments.</description>
+  <devel project="science" package="adios2"/>
+  <url>https://adios2.readthedocs.io/en/latest/index.html</url>
+</package>
