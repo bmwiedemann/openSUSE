@@ -1,0 +1,8 @@
+<package name="casacore" project="openSUSE:Factory">
+  <title>A suite of C++ libraries for radio astronomy data processing</title>
+  <description>Casacore provides a suite of C++ libraries for radio astronomy data processing.
+
+</description>
+  <devel project="science" package="casacore"/>
+  <url>https://github.com/casacore/casacore</url>
+</package>
