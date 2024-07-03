@@ -1082,4 +1082,14 @@ Fixes:
     <comment></comment>
     <requestid>1162287</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>992fe0b988487264bafd5f812ffb8f9e</srcmd5>
+    <version>7.349.0</version>
+    <time>1720031365</time>
+    <user>anag+factory</user>
+    <comment>- Update libplacebo to version 7.349.0. See details in:
+    https://code.videolan.org/videolan/libplacebo/-/tags/v7.349.0
+</comment>
+    <requestid>1184881</requestid>
+  </revision>
 </revisionlist>

@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
-%define sover   338
+%define sover   349
 Name:           libplacebo
-Version:        6.338.2
+Version:        7.349.0
 Release:        0
 Summary:        Library for GPU-accelerated video/image rendering primitives
 License:        LGPL-2.1-or-later
@@ -28,16 +29,16 @@ Source0:        https://code.videolan.org/videolan/libplacebo/-/archive/v%{versi
 Source1:        https://github.com/Immediate-Mode-UI/Nuklear/raw/c512ac886425f6b6b6c816d67f4cb1385cd4cc53/nuklear.h
 Source9:        baselibs.conf
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
-BuildRequires:  gcc13-c++
 BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
 %else
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 %endif
-BuildRequires:  meson >= 0.63.0
-BuildRequires:  pkgconfig
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module glad2}
+BuildRequires:  meson >= 0.63.0
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(dovi)
 BuildRequires:  pkgconfig(glfw3)
