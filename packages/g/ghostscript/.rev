@@ -596,4 +596,12 @@
     <comment>Ghostscript version upgrade to 10.03.0 fixes also boo#1221687 (forwarded request 1161673 from jsmeix)</comment>
     <requestid>1161674</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>f82b36c31d020d2ecbd3e59ecb1c2b30</srcmd5>
+    <version>10.03.1</version>
+    <time>1720031291</time>
+    <user>anag+factory</user>
+    <comment>Security fixes for CVE-2024-33869 bsc#1226946 and CVE-2023-52722 bsc#1223852 and CVE-2024-33870 bsc#1226944 and CVE-2024-33871 bsc#1225491 and CVE-2024-29510 bsc#1226945 for ghostscript and ghostscript-mini (forwarded request 1184312 from jsmeix)</comment>
+    <requestid>1184313</requestid>
+  </revision>
 </revisionlist>

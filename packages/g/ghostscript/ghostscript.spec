@@ -24,13 +24,19 @@
 %bcond_without  apparmor
 %endif
 Name:           ghostscript%{psuffix}
-Version:        10.03.0
+Version:        10.03.1
 Release:        0
 Summary:        The Ghostscript interpreter for PostScript and PDF
 License:        AGPL-3.0-only
 Group:          Productivity/Office/Other
 URL:            https://www.ghostscript.com/
-Source0:        https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10030/ghostscript-10.03.0.tar.xz
+# How to manually get Source0:
+# Go to https://www.ghostscript.com
+# -> "The current Ghostscript release 10.03.1 can be downloaded here" https://www.ghostscript.com/releases/index.html
+# -> "Ghostscript" https://www.ghostscript.com/releases/gsdnld.html
+# -> "Ghostscript 10.03.1 Source for all platforms / GNU Affero General Public License" = "Ghostscript AGPL Release"
+# https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10031/ghostscript-10.03.1.tar.gz
+Source0:        https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10031/ghostscript-10.03.1.tar.gz
 Source10:       apparmor_ghostscript
 # Patch0...Patch9 is for patches from upstream:
 # Source10...Source99 is for sources from SUSE which are intended for upstream:

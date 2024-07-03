@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jul  1 11:56:34 UTC 2024 - Johannes Meixner <jsmeix@suse.com>
+
+- Version upgrade to 10.03.1:
+  Highlights in this release include:
+  See 'Recent Changes in Ghostscript' at Ghostscript upstream
+  https://ghostscript.readthedocs.io/en/gs10.03.1/News.html
+  * Fixes for CVE-2024-33869, CVE-2023-52722, CVE-2024-33870,
+    CVE-2024-33871 and CVE-2024-29510
+- Regarding CVE-2024-33869 see bsc#1226946 and
+  https://cgit.ghostscript.com/cgi-bin/cgit.cgi/ghostpdl.git/commit/?id=5ae2e320d69a7d0973011796bd388cd5befa1a43
+  https://cgit.ghostscript.com/cgi-bin/cgit.cgi/ghostpdl.git/commit/?id=f5336e5b4154f515ac83bc5b9eba94302e6618d4
+  https://bugs.ghostscript.com/show_bug.cgi?id=707691
+- Regarding CVE-2023-52722 see bsc#1223852 and
+  https://cgit.ghostscript.com/cgi-bin/cgit.cgi/ghostpdl.git/commit/?id=afd7188f74918cb51b5fb89f52b54eb16e8acfd1
+- Regarding CVE-2024-33870 see bsc#1226944 and
+  https://cgit.ghostscript.com/cgi-bin/cgit.cgi/ghostpdl.git/commit/?id=79aef19c685984dc3da2dc090450407d9fbcff80
+  https://bugs.ghostscript.com/show_bug.cgi?id=707686
+- Regarding CVE-2024-33871 see bsc#1225491 and
+  https://cgit.ghostscript.com/cgi-bin/cgit.cgi/ghostpdl.git/commit/?id=7145885041bb52cc23964f0aa2aec1b1c82b5908
+- Regarding CVE-2024-29510 see bsc#1226945 and
+  https://cgit.ghostscript.com/cgi-bin/cgit.cgi/ghostpdl.git/commit/?id=3b1735085ecef20b29e8db3416ab36de93e86d1f
+
+-------------------------------------------------------------------
 Tue Mar 26 08:21:08 UTC 2024 - Johannes Meixner <jsmeix@suse.com>
 
 - Version upgrade to 10.03.0:
