@@ -211,4 +211,19 @@
   * dependency bumps</comment>
     <requestid>1143500</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>154cf2e994221be3c4ec36710453da2c</srcmd5>
+    <version>2.2.2</version>
+    <time>1720031402</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.2.2:
+  * Fix for Issue #384: typehints_defaults = &quot;braces-after&quot; fails
+    for a multiline `:param:` entry
+  * Support autodoc_type_aliases configuration
+  * Support Sphinx 7.3 and drop 3.8 support
+  * Return injection fix
+  * Add option to force unions (and options) to be rendered with
+    bars</comment>
+    <requestid>1183919</requestid>
+  </revision>
 </revisionlist>

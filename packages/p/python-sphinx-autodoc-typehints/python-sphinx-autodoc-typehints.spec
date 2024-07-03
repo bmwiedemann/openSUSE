@@ -28,12 +28,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sphinx-autodoc-typehints%{psuffix}
-Version:        1.25.3
+Version:        2.2.2
 Release:        0
 Summary:        Type hints (PEP 484) support for the Sphinx autodoc extension
 License:        MIT
 Group:          Development/Languages/Python
-URL:            https://github.com/agronholm/sphinx-autodoc-typehints
+URL:            https://github.com/tox-dev/sphinx-autodoc-typehints
 Source:         https://files.pythonhosted.org/packages/source/s/sphinx_autodoc_typehints/sphinx_autodoc_typehints-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE python-sphinx-autodoc-typehints-system-object.inv.patch gh#agronholm/sphinx-autodoc-typehints#174 mcepl@suse.com
 # Don't download inventory from the Internet, but use the local one.
@@ -47,12 +47,12 @@ Requires:       python-Sphinx >= 1.7
 BuildArch:      noarch
 %if %{with test}
 # SECTION tests
-BuildRequires:  %{python_module Sphinx >= 1.7}
+BuildRequires:  %{python_module Sphinx >= 7.3.5}
 BuildRequires:  %{python_module doc}
-BuildRequires:  %{python_module nptyping}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module sphobjinv}
-BuildRequires:  %{python_module typing_extensions}
+BuildRequires:  %{python_module nptyping >= 2.5}
+BuildRequires:  %{python_module pytest >= 8.1.1}
+BuildRequires:  %{python_module sphobjinv >= 2.3.1}
+BuildRequires:  %{python_module typing_extensions >= 4.11}
 %endif
 # /SECTION
 %python_subpackages
