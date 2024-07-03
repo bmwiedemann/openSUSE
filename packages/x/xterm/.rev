@@ -1876,4 +1876,40 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment></comment>
     <requestid>1142247</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>282a951d9d30ea2da3fac0fa4e6378a4</srcmd5>
+    <version>392</version>
+    <time>1720031370</time>
+    <user>anag+factory</user>
+    <comment>- update to 392:
+  * improve input decoding for non-Latin1 character sets by preserving the sense of GL/GR.
+  * add resource preferLatin1 to simplify UPSS configuration (Gentoo #932154).
+  * build-fix for --disable-boxchars; patch #390 reuses that feature's code to draw the part of the DEC Technical character set which has no Unicode equivalent.
+  * improve definitions used in clock_gettime logic in graphics_sixel.c, as well as updating comments (patch by Ben Wong).
+  * amend allowC1Printable changes from patch #391, restoring a special case which caused C1 characters to be ignored (report/testcase by Dmytro Bagrii).
+- update to 391:
+  * improve integration between UTF-8 and allowC1Printable.
+  * alter SIXEL HLS computation to make blue 0 degrees (patch by Ben Wong).
+  * disable SIXEL aspect-ratio, pending a rewrite (patch by Ben Wong).
+  * add resource incrementalGraphics (prompted by patch by Ben Wong).
+  * reorganize graphics_sixel.c as a step toward eliminating graphics buffer-size (integrated patch by Ben Wong).
+  * fix regression in patch #390: non-UTF8 text pasted as a XA_UTF8_STRING was not decoded (report by Petri Kaukasoina).
+- update to 390:
+  * improve typography of control-sequences page (patches by Branden Robinson).
+  * amend UPSS change from patch #389, fixing a regression in VT100/VT220 character sets.
+  * modify ANSI conformance per ECMA-43 and DEC 070:
+    * set ANSI conformance level to 3 for DEC levels 2 and up.
+    * disable locking shifts in level 1, e.g., VT100.
+    * disable single-shifts from G2/G3 in level 1.
+    * use UPSS for G2/G3 in levels 2 and up.
+  * modify invisible-character attribute to permit DECRQCRA to report a consistent checksum (report/testcase by Thomas Wolff).
+  * align terminfo building blocks in terminfo to correspond to recent refactoring/trimming in ncurses.
+  * set flag in regexec call for onNClicks to handle “^” anchor (patch by Matthew Martin).
+  * add line-drawing data for the characters in DEC Technical which have no Unicode equivalents.
+  * remove a special case in encode_scs which made xterm report Latin-1 when encoding is set to UTF-8, where ASCII is the selected character set. This fixes a regression in vttest for the DECRSPS cursor test.
+  * correct values for Ps of DECAUPSS in ctlseqs.ms (report by James Holderness).
+  * simplify/correct expression for checking Unicode non-characters (report by Thomas Wolff).
+  * correct loop for trimming environment variables (report/patch by Casper Dik).</comment>
+    <requestid>1184897</requestid>
+  </revision>
 </revisionlist>
