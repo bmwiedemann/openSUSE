@@ -1,0 +1,243 @@
+-------------------------------------------------------------------
+Sat Aug 27 12:13:43 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.10.11
+  * Optimize ui
+  * Fix bugs 
+
+-------------------------------------------------------------------
+Mon Apr  4 03:15:06 UTC 2022 - Hillwood Yang <hillwoodroc@gmail.com>
+
+- Update version to 5.10.6
+  * Change shortcut key for airplane mode
+  * Add isHighPerformanceSupported gsettings
+  * Change close shortcut nameas media-close
+  * Change screenshot shortcut
+  * Fix bugs
+
+-------------------------------------------------------------------
+Wed Feb 23 12:59:51 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.10.2
+  * Add a setting item in control center: sleep mode
+  * Change this url for checking network
+  * Add output auto switch count
+  * Add shotcut for global search
+  * Fix bugs
+
+-------------------------------------------------------------------
+Thu Dec 16 14:25:17 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.9.41
+  * Add shortcut key setting for globle search
+  * Change network check url 
+
+-------------------------------------------------------------------
+Wed Oct 27 08:45:01 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.9.18
+  * Add light-sensor-enable
+ 
+-------------------------------------------------------------------
+Thu Jul 29 12:31:37 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.9.16
+  * Add light-sensor-enable
+  * Drop feature: disable automacally mute
+  * Add feature: regularly scan wifi on dock
+  * Fix bugs
+
+-------------------------------------------------------------------
+Thu May  6 13:03:21 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update default settings. 
+
+-------------------------------------------------------------------
+Thu Mar 11 13:42:23 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.9.5
+  * Move com.deepin.dde.display.gschema.xml and 
+    com.deepin.dde.startdde.gschema.xml to startdde
+  * Update gsetting config
+
+-------------------------------------------------------------------
+Fri Feb 26 01:34:56 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version 5.8.44
+  * fix(keybinding): add XF86Away
+  * Disable turbo
+  * fix(startdde): let if setDPMSMode optional
+  * fix: Modify turbo-invoker-enabled default to false
+  * Add a key for plugins
+  * Add a key for power manager
+  * feat: add music gsettings value
+  * feat: server add session shell to disable Sleep and Hibernate
+  * Fix bugs
+
+-------------------------------------------------------------------
+Thu Jul 18 13:09:12 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 3.13.8
+  * chore: update default desktop background
+  * chore: change the default value of power screen-black-lock to true
+  * chore(mips): remove deepin-movie in dde-dock
+  * chore: disable swap-sched for sw and longxin
+  * chore: copy gala.override from mips to sw
+  * feat: schema for monitor-dependent scaling.
+  * feat: appearance add key wallpaper-slideshow
+
+-------------------------------------------------------------------
+Mon Apr 15 13:37:36 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+-  Update version to 3.13.0
+  * chore: disable swap-sched for sw and longxin
+  * chore: copy gala.override from mips to sw
+  * feat: schema for monitor-dependent scaling
+  * feat: appearance add key wallpaper-slideshow
+  * dock add plugin-settings
+  * sw: add deepin-movie and smplayer
+  * Audio: set max volume to 150 for sw
+  * sw: wrong icon size
+  * feat(touchscreen): add longpress blacklist
+  * feat(Launcher): set icon size to 0.5
+  * chore: override pro remove show desktop from docked apps
+  * fix: com.deepin.dde.power battery-*-delay
+  * chore: change the default value of touchscreen longpress-duration to 1s
+  * chore: override prop power ambient-light-adjust-brightness
+  * power add *-screensaver-delay
+  * fix(Launcher): type error
+  * feat(Launcher): set launcher default icon size to 0.5
+  * add dde session daemon module grub-gfx
+  * fix: some types
+  * add touchscreen settings
+  * add deepin-editor settings
+  * chore: update disable while typing cmd
+  * dock: remove show desktop for dock
+  * refactor: clear all action for zone
+  * Merge "feat: appearance add key opacity"
+  * Merge "feat: power add key ambient-light-adjust-brightness"
+  * feat: appearance add key opacity
+  * fix: update zone right up setting for sw
+  * chore: update changelog
+  * fix config launcher mode for sw
+  * chore: update changelog
+  * chore: override mips power percentage-critical
+  * chore: update changelog
+  * chore: update sw background-uris
+  * chore: update mips background-uris
+  * feat(mips): disable right up hotzone
+  * feat: power add key ambient-light-adjust-brightness
+  * fix(audio): set audio max volume to 150 for mips
+  * fix config launcher mode for sw
+  * chore: override mips power percentage-critical
+  * chore: update sw background-uris
+  * chore: update mips background-uris
+  * feat(mips): set audio max volume to 150
+  * feat(mips): disable right up hotzone
+  * update com.deepin.dde.launcher.override to add evince 
+  * chore: rename org.deepin.flatdeb.deepin-calendar to
+    org.deepin.flatdeb.dde-calendar
+  * feat(mouse): Mouse accel profile option
+  * chore: workspace number defaults to 2
+  * feat: com.deepin.dde.daemon add key 'trayicon' and 'x-event-monitor'
+  * feat: com.deepin.dde.daemon add key 'lastore'
+  * chore(dock): update x86 dock docked-apps
+  * chore(appearance): update picture-uris
+  * launcher: update order list 
+  * Fix dock: error type for delay-plugins-time 
+  * Fix dock: delay load dock plugins change to 200ms
+  * Fix overrides/sw: docked-apps no firefox
+  * Fix correct default backgrounds path 
+  * Fix some apps in apps-order are wrong
+  * Fix flatpak apps in apps-order are not all lowercase
+  * repalce Above_Tab with other keysym string 
+  * Fix sw: remove brightness-setter override 
+  * add dde-welcome to zone black list
+  * desktop add enable hotzone setting
+  * add auto exit for deepin-notification
+  * add auto exit for dde-osd
+  * add auto-exit settings for dde-control-center
+  * startdde add key iowait-enabled and memchecker-enabled
+  * add calltrace
+  * add debug
+  * remove the failed grab keys from mediakey 
+  * com.deepin.dde.dameon add key 'service-trigger'
+  * default-applications.terminal add key 'app-id' 
+  * dde.power add key 'adjust-brightness-enabled'
+  * set swap-sched-enabled default false
+  * add key swap-sched-enabled
+  * add key apps-disable-scaling
+  * remove shortcut color-picker
+  * add 'auto-switch-port' in audio
+  * remove deepin-movie from fullscreen-workaround-list
+  * add shortcut color-picker
+  * add shortcut deepin-system-monitor
+  * dock: add delay-plugins-time
+  * schemas: add key inputdevices wheel-speed
+  * sw: update apps order
+  * x86: add deepin flatpak apps to apps order 
+  * add auto exit for deepin-notification
+  * add auto exit for dde-osd
+  * add auto-exit settings for dde-control-center
+  * startdde add key iowait-enabled and memchecker-enabled
+  * disable calltrace module
+
+-------------------------------------------------------------------
+Fri Mar 23 08:16:38 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 3.2.9
+  * Fix correct default backgrounds path
+  * Fix some apps in apps-order are wrong
+  * Fix flatpak apps in apps-order are not all lowercase
+  * Fix repalce Above_Tab with other keysym string
+  * Fix remove brightness-setter override
+  * Add calltrace
+  * Add debug
+  * Remove the failed grab keys from mediakey
+  * com.deepin.dde.dameon add key 'service-trigger'
+  * Default-applications.terminal add key 'app-id'
+  * dde.power add key 'adjust-brightness-enabled'
+  * Set swap-sched-enabled default false
+  * Add key swap-sched-enabled
+  * Add key apps-disable-scaling
+  * Remove shortcut color-picker
+  * Add 'auto-switch-port' in audio
+  * Remove deepin-movie from fullscreen-workaround-list
+  * Add shortcut color-picker
+  * Add shortcut deepin-system-monitor
+  * Add key inputdevices wheel-speed
+  * Add deepin flatpak apps to apps order for x86
+
+-------------------------------------------------------------------
+Sun Dec  3 06:36:11 UTC 2017 - hillwood@opensuse.org
+
+- Update to 3.2.3
+  * Remove shortcut color-picker
+  * Correct the default backgrounds path
+  * Add audio port switcher
+  * Change apps-order: add deepin-clone and deepin-picker and deepin flatpak apps
+  * Revert "fix: repalce `Above_Tab` with other keysym string"
+  * Change the icon size default value
+  * Remove deepin-move from fullscreen workaround list
+  * Add shortcut for color-picker
+  * Add flatpak apps order list
+  * Add shortcut for deepin-system-monitor
+  * Disable touchpad palm detect
+  * Add 'fprintd'
+  * Replace 'Above_Tab'
+  * Add launcher icon ratio
+
+-------------------------------------------------------------------
+Thu Nov 30 12:54:59 UTC 2017 - hillwood@opensuse.org
+
+- Split branding package. 
+
+-------------------------------------------------------------------
+Sun Nov 12 08:04:03 UTC 2017 - hillwood@opensuse.org
+
+- Cleanup spec.
+
+-------------------------------------------------------------------
+Tue Oct  3 15:29:45 UTC 2017 - sensor.wen@gmail.com
+
+- Initial package.

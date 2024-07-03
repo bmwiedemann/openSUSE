@@ -1,0 +1,101 @@
+https://github.com/linuxdeepin/deepin-desktop-schemas/pull/98
+
+From d8cbcb36198b31616698b8ca99c0a7615f36cd14 Mon Sep 17 00:00:00 2001
+From: ShootingStarDragons <ShootingStarDragons@protonmail.com>
+Date: Fri, 4 Aug 2023 15:01:48 +0800
+Subject: [PATCH] fix: everytime output file key is in random sort
+
+Log:
+---
+ .gitignore             |  1 +
+ tools/override/main.go | 29 +++++++++++++++++++++++++----
+ 2 files changed, 26 insertions(+), 4 deletions(-)
+
+diff --git a/.gitignore b/.gitignore
+index b2be92b..764b18a 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1 +1,2 @@
+ result
++/bin
+diff --git a/tools/override/main.go b/tools/override/main.go
+index 049e5c7..de01167 100644
+--- a/tools/override/main.go
++++ b/tools/override/main.go
+@@ -10,6 +10,7 @@ import (
+ 	"log"
+ 	"os"
+ 	"path/filepath"
++	"sort"
+ 	"strings"
+ 
+ 	"github.com/linuxdeepin/go-lib/keyfile"
+@@ -139,6 +140,24 @@ func getValue(value string, kf *keyfile.KeyFile, section0 string) string {
+ 	return value
+ }
+ 
++type ConfigKVUnit struct {
++	key string
++	val string
++}
++
++func mapToSortedList(basket map[string]string) []ConfigKVUnit {
++	keys := make([]string, 0, len(basket))
++	for k := range basket {
++		keys = append(keys, k)
++	}
++	sort.Strings(keys)
++	out := []ConfigKVUnit{}
++	for _, k := range keys {
++		out = append(out, ConfigKVUnit{key: k, val: basket[k]})
++	}
++	return out
++}
++
+ func combineFiles(inputFiles []string, outputFile string) (err error) {
+ 	log.Printf("inputFiles: %+v -> outputFile: %s\n", inputFiles, outputFile)
+ 	combinedKf := keyfile.NewKeyFile()
+@@ -151,11 +170,13 @@ func combineFiles(inputFiles []string, outputFile string) (err error) {
+ 			return
+ 		}
+ 		sections := kf.GetSections()
++		sort.Strings(sections)
++
+ 		for _, section := range sections {
+-			sectionMap, _ := kf.GetSection(section)
+-			for key, val := range sectionMap {
+-				val = getValue(val, kf, section)
+-				combinedKf.SetValue(section, key, val)
++			sectionMapPre, _ := kf.GetSection(section)
++			sortedList := mapToSortedList(sectionMapPre)
++			for i := range sortedList {
++				combinedKf.SetValue(section, sortedList[i].key, sortedList[i].val)
+ 			}
+ 		}
+ 	}
+https://github.com/linuxdeepin/deepin-desktop-schemas/pull/100
+
+From a7c8a240b9a1d58183f0369c63106415d667bd91 Mon Sep 17 00:00:00 2001
+From: chenhongtao <chenhongtao@deepin.org>
+Date: Fri, 11 Aug 2023 16:03:04 +0800
+Subject: [PATCH] fix: key is empty after generated
+
+Log:
+---
+ tools/override/main.go | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/tools/override/main.go b/tools/override/main.go
+index de01167..3df68dd 100644
+--- a/tools/override/main.go
++++ b/tools/override/main.go
+@@ -176,7 +176,8 @@ func combineFiles(inputFiles []string, outputFile string) (err error) {
+ 			sectionMapPre, _ := kf.GetSection(section)
+ 			sortedList := mapToSortedList(sectionMapPre)
+ 			for i := range sortedList {
+-				combinedKf.SetValue(section, sortedList[i].key, sortedList[i].val)
++				val := getValue(sortedList[i].val, kf, section)
++				combinedKf.SetValue(section, sortedList[i].key, val)
+ 			}
+ 		}
+ 	}

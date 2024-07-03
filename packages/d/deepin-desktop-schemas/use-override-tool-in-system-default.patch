@@ -1,0 +1,21 @@
+diff -Nur deepin-desktop-schemas-5.8.44/Makefile deepin-desktop-schemas-5.8.44-new/Makefile
+--- deepin-desktop-schemas-5.8.44/Makefile	2020-12-16 10:46:00.000000000 +0800
++++ deepin-desktop-schemas-5.8.44-new/Makefile	2021-02-26 11:50:29.344367146 +0800
+@@ -3,15 +3,11 @@
+ 
+ all: build
+ 
+-bin:
+-	mkdir -p bin
+-	env GO111MODULE=off go build -o bin/override_tool tools/override/*.go
+-
+-build: bin
++build:
+ 	@echo build for arch: $(ARCH)
+ 	mkdir -p result
+ 	find schemas -name "*.xml" -exec cp {} result \;
+-	bin/override_tool -arch $(ARCH)
++	override -arch $(ARCH)
+ 
+ test: 
+ 	@echo "Testing schemas with glib-compile-shemas..."
