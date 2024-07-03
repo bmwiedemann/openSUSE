@@ -1,0 +1,14 @@
+Index: arpwatch-3.4/report.c
+===================================================================
+--- arpwatch-3.4.orig/report.c
++++ arpwatch-3.4/report.c
+@@ -59,9 +59,7 @@ struct rtentry;
+ #include <stdlib.h>
+ #include <string.h>
+ #include <syslog.h>
+-#ifdef TIME_WITH_SYS_TIME
+ #include <time.h>
+-#endif
+ #include <unistd.h>
+ 
+ #include "gnuc.h"

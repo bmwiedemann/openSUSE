@@ -1,0 +1,20 @@
+Index: arpwatch-3.1/Makefile.in
+===================================================================
+--- arpwatch-3.1.orig/Makefile.in
++++ arpwatch-3.1/Makefile.in
+@@ -127,11 +127,14 @@ version.c: $(srcdir)/VERSION
+ install: $(ALL)
+ 	$(INSTALL) -v -m 555 $(PROG) $(DESTDIR)$(BINDEST)
+ 	$(INSTALL) -v -m 555 arpsnmp $(DESTDIR)$(BINDEST)
++	$(INSTALL) -d -m 755 $(DESTDIR)/var/lib/arpwatch
++	$(INSTALL) -d -m 755 $(DESTDIR)/usr/share/arpwatch
++	#$(INSTALL) -m 444 ethercodes.dat $(DESTDIR)/usr/share/arpwatch
+ 	@diff $(srcdir)/$(PROG).8 $(DESTDIR)$(MANDEST)/man8 >/dev/null 2>&1 || \
+ 	    $(INSTALL) -v -m 444 $(srcdir)/$(PROG).8 $(DESTDIR)$(MANDEST)/man8
+ 	@diff $(srcdir)/arpsnmp.8 $(DESTDIR)$(MANDEST)/man8 >/dev/null 2>&1 || \
+ 	    $(INSTALL) -v -m 444 $(srcdir)/arpsnmp.8 $(DESTDIR)$(MANDEST)/man8
+-@HAVE_FREEBSD_TRUE@	@$(INSTALL) -v -m 555 arpwatch.sh $(DESTDIR)$(prefix)/etc/rc.d/arpwatch
++#@HAVE_FREEBSD_TRUE@	@$(INSTALL) -v -m 555 arpwatch.sh $(DESTDIR)$(prefix)/etc/rc.d/arpwatch
+ 
+ clean:
+ 	rm -f $(CLEANFILES)

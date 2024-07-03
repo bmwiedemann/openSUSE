@@ -1,0 +1,206 @@
+Index: arpwatch-3.1/arpwatch.c
+===================================================================
+--- arpwatch-3.1.orig/arpwatch.c
++++ arpwatch-3.1/arpwatch.c
+@@ -71,6 +71,8 @@ struct rtentry;
+ #include <string.h>
+ #include <syslog.h>
+ #include <unistd.h>
++#include <pwd.h>
++#include <grp.h>
+ 
+ #include <pcap.h>
+ 
+@@ -170,6 +172,66 @@ int	sanity_fddi(struct fddi_header *, st
+ int	toskip(u_int32_t);
+ void	usage(void) __attribute__((noreturn));
+ 
++void dropprivileges(const char* user)
++{
++	struct passwd* pw;
++	pw = getpwnam( user );
++	if ( pw ) {
++		char *arpfiledir;
++		char *lastslash;
++
++		arpfiledir = malloc(strlen(arpfile)+1);
++		if(arpfiledir == NULL) {
++			syslog(LOG_ERR, "Fatal: malloc().");
++			exit(1);
++		}
++		strcpy(arpfiledir, arpfile);
++		lastslash = strrchr(arpfiledir, '/');
++		if(lastslash == NULL) {
++			syslog(LOG_ERR, "Fatal: cannot determine directory of %s", arpfile);
++			exit(1);
++		}
++		lastslash[0]='\0';
++
++		if (!safe_base_path(arpfiledir)) {
++			syslog(LOG_ERR, "Fatal: directory structure %s not safe, can't operate here. Please make root owner of underlying directories and remove write access for other", arpfiledir);
++			exit(1);
++		}
++
++		// ensure we have a safe place to operate
++		if (lchown( arpfiledir, 0, 0) != 0 ) {
++			syslog(LOG_ERR, "Fatal: could not chown %s to root).", arpfiledir);
++			exit(1);
++		}
++		// change permissions of the file if it exists
++		if (!access(arpfile, F_OK) && lchown ( arpfile, pw->pw_uid, -1) != 0) {
++			syslog(LOG_ERR, "Fatal: could not chown %s to %d).", arpfile, pw->pw_uid);
++			exit(1);
++		}
++		/* files arp.dat.eth0- and arp.dat.eth0.new that are created
++			as backup/lastversion and for temporary storage are
++			deleted before created again, therefor the users needs
++			to control this directory . */
++		if ( lchown ( arpfiledir, pw->pw_uid, -1) != 0 ) {
++			syslog(LOG_ERR, "Fatal: could not chown %s to %d).",
++				arpfiledir, pw->pw_uid);
++			exit(1);
++		}
++		free(arpfiledir);
++		if ( initgroups(pw->pw_name, pw->pw_gid) != 0 || setgid(pw->pw_gid) != 0 ||
++				 setuid(pw->pw_uid) != 0 ) {
++			syslog(LOG_ERR, "Fatal: Couldn't change to user/group '%.32s' uid=%d gid=%d", user,
++						 pw->pw_uid, pw->pw_gid);
++			exit(1);
++		}
++	}
++	else {
++		syslog(LOG_ERR, "No such user: '%.32s'", user);
++		exit(1);
++	}
++	syslog(LOG_DEBUG, "arpwatch running as uid=%d gid=%d", getuid(), getgid());
++}
++
+ int
+ main(int argc, char **argv)
+ {
+@@ -181,6 +243,7 @@ main(int argc, char **argv)
+ 	char *interface, *rfilename;
+ 	struct bpf_program code;
+ 	char errbuf[PCAP_ERRBUF_SIZE];
++	char *serveruser = NULL;
+ 
+ 	if (argv[0] == NULL)
+ 		prog = "arpwatch";
+@@ -198,7 +261,7 @@ main(int argc, char **argv)
+ 	interface = NULL;
+ 	rfilename = NULL;
+ 	pd = NULL;
+-	while ((op = getopt(argc, argv, "CdD:Ff:i:n:NpP:qr:svw:W:x:zZ")) != EOF)
++	while ((op = getopt(argc, argv, "CdD:Ff:i:n:NpP:qr:svw:W:x:zZu:")) != EOF)
+ 		switch (op) {
+ 
+ 		case 'C':
+@@ -283,6 +346,16 @@ main(int argc, char **argv)
+ 			zeropad = 1;
+ 			break;
+ 
++		case 'u':
++			if ( optarg ) {
++				serveruser = strdup(optarg);
++			}
++			else {
++				fprintf(stderr, "%s: Need username after -u\n", prog);
++				usage();
++			}
++			break;
++
+ 		default:
+ 			usage();
+ 		}
+@@ -383,8 +456,9 @@ main(int argc, char **argv)
+ 	 * Revert to non-privileged user after opening sockets
+ 	 * (not needed on most systems).
+ 	 */
+-	setgid(getgid());
+-	setuid(getuid());
++	if ( serveruser ) {
++		dropprivileges( serveruser );
++	}
+ 
+ 	/* Must be ethernet or fddi */
+ 	linktype = pcap_datalink(pd);
+@@ -933,6 +1007,6 @@ usage(void)
+ 	    "usage: %s [-CdFNpqsvzZ] [-D arpdir] [-f datafile]"
+ 	    " [-i interface]\n\t"
+ 	    " [-P pidfile] [-w watcher@email] [-W watchee@email]\n\t"
+-	    " [-n net[/width]] [-x net[/width]] [-r file]\n", prog);
++	    " [-n net[/width]] [-x net[/width]] [-r file] [-u username]\n", prog);
+ 	exit(1);
+ }
+Index: arpwatch-3.1/util.c
+===================================================================
+--- arpwatch-3.1.orig/util.c
++++ arpwatch-3.1/util.c
+@@ -36,6 +36,7 @@ static const char rcsid[] =
+ 
+ #include <sys/types.h>
+ #include <sys/file.h>
++#include <sys/stat.h>
+ 
+ #include <errno.h>
+ #include <fcntl.h>
+@@ -212,3 +213,47 @@ savestr(const char *str)
+ 	strsize -= i;
+ 	return (cp);
+ }
++
++int safe_base_path(char *arpfiledir) {
++	// check directories below arpfiledir for safe ownwership/permissions
++	char *path_component;
++	char *lastslash = NULL;
++	int safe_path = 1;
++
++	if (!arpfiledir) {
++		syslog(LOG_ERR, "Fatal: safe_base_path invalid invocation.");
++		exit(1);
++	}
++
++	path_component = malloc(strlen(arpfiledir)+1);
++	if(path_component == NULL) {
++		syslog(LOG_ERR, "Fatal: malloc().");
++		exit(1);
++	}
++	strcpy(path_component, arpfiledir);
++
++	while ((lastslash = strrchr(path_component, '/'))) {
++		struct stat stats;
++
++		lastslash[0]='\0';
++		if ( lstat(path_component, &stats) ) {
++			/* on the last iteration the string will be empty and this fails,
++			   which is okay, if / is unsafe all is lost anyway and we can
++			   skip the check. Otherwise fail safe if lstat doesn't work */
++			if (strlen(path_component))
++				safe_path = 0;
++		} else {
++			if ( stats.st_uid != 0 ||
++			     stats.st_gid != 0 ||
++			     stats.st_mode & S_IWOTH
++			   ) {
++				 /* this is not a safe path to operate on with privileges because
++				    it isn't owned by root:root or others can write there */
++				safe_path = 0;
++			}
++		}
++	}
++
++	free(path_component);
++	return safe_path;
++}
+Index: arpwatch-3.1/util.h
+===================================================================
+--- arpwatch-3.1.orig/util.h
++++ arpwatch-3.1/util.h
+@@ -8,6 +8,7 @@ char	*intoa(u_int32_t);
+ void	lg(int, const char *, ...) __attribute__ ((format (printf, 2, 3)));
+ int	readdata(void);
+ char	*savestr(const char *);
++int safe_base_path(char *);
+ 
+ extern char *arpdir;
+ extern char *arpfile;

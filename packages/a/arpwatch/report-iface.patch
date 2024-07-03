@@ -1,0 +1,55 @@
+Index: arpwatch-3.1/arpsnmp.c
+===================================================================
+--- arpwatch-3.1.orig/arpsnmp.c
++++ arpwatch-3.1/arpsnmp.c
+@@ -77,6 +77,7 @@ void	usage(void) __attribute__((noreturn
+ 
+ /* Globals */
+ char *prog;
++char *interface;
+ int quiet;
+ int suppress;
+ const char *watcher = WATCHER;
+Index: arpwatch-3.1/arpwatch.c
+===================================================================
+--- arpwatch-3.1.orig/arpwatch.c
++++ arpwatch-3.1/arpwatch.c
+@@ -123,6 +123,7 @@ struct rtentry;
+ 
+ /* Globals */
+ char *prog;
++char *interface;
+ int quiet;
+ int suppress;
+ const char *watcher = WATCHER;
+@@ -244,7 +245,7 @@ main(int argc, char **argv)
+ 	pcap_t *pd;
+ 	FILE *fp;
+ 	pcap_if_t *alldevs;
+-	char *interface, *rfilename;
++	char *rfilename;
+ 	struct bpf_program code;
+ 	char errbuf[PCAP_ERRBUF_SIZE];
+ 	char *serveruser = NULL;
+Index: arpwatch-3.1/report.c
+===================================================================
+--- arpwatch-3.1.orig/report.c
++++ arpwatch-3.1/report.c
+@@ -78,6 +78,8 @@ struct rtentry;
+ 
+ #define PLURAL(n) ((n) == 1 || (n) == -1 ? "" : "s")
+ 
++extern char *interface;
++
+ static int cdepth;	/* number of outstanding children */
+ 
+ static char *fmtdate(time_t);
+@@ -354,6 +356,8 @@ report(const char *title, u_int32_t a, c
+ 		(void)fprintf(f, fmt, "previous timestamp", fmtdate(*t2p));
+ 	if (t1p && t2p && *t1p && *t2p)
+ 		(void)fprintf(f, fmt, "delta", fmtdelta(*t1p - *t2p));
++	if (interface)
++		(void)fprintf(f, fmt, "interface", interface);
+ 
+ 	if (debug) {
+ 		fflush(f);

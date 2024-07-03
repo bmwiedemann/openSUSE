@@ -1,0 +1,31 @@
+[Unit]
+Description=Arpwatch daemon which keeps track of ethernet/ip address pairings
+After=network.target
+After=exim.service
+After=postfix.service
+After=sendmail.service
+Conflicts=arpwatch.target
+
+[Service]
+Type=forking
+Environment=ARPWATCH_ARGS=
+EnvironmentFile=-/etc/sysconfig/arpwatch
+PrivateTmp=yes
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
+ExecStartPre=/usr/bin/touch /var/lib/arpwatch/arp.dat
+ExecStart=/usr/sbin/arpwatch $ARPWATCH_ARGS -f /var/lib/arpwatch/arp.dat
+
+[Install]
+WantedBy=multi-user.target

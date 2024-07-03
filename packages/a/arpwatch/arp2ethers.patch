@@ -1,0 +1,62 @@
+Index: arpwatch-3.1/arp2ethers
+===================================================================
+--- arpwatch-3.1.orig/arp2ethers
++++ arpwatch-3.1/arp2ethers
+@@ -13,11 +13,50 @@
+ #	- sort
+ #
+ 
+-sort +2rn arp.dat |
++sort -k 2 -rn arp.dat | \
+     awk 'NF == 4 { print }' |
+-    awk -f p.awk |
+-    egrep -v '\.[0-9][0-9]*$' |
+-    sed -e 's/	.*	/	/' |
+-    awk -f d.awk |
+-    awk -f e.awk |
+-    sort
++    awk '
++{
++	e = $1
++	if (seen[e])
++		next
++	seen[e] = 1
++	print
++}' | egrep -v '\.[0-9][0-9]*$' | \
++     sed -e 's/	.*	/	/' | \
++    awk '
++BEGIN {
++	n = 0
++	sdecnet = "aa:0:4:"
++	ldecnet = length(sdecnet)
++}
++
++{
++	++n
++	e[n] = $1
++	h[n] = $2
++	if (sdecnet == substr($1, 1, ldecnet))
++		decnet[$2] = 1
++}
++
++END {
++	for (i = 1; i <= n; ++i) {
++		if (decnet[h[i]] && sdecnet != substr(e[i], 1, ldecnet))
++			h[i] = h[i] "-ip"
++		print e[i] "\t" h[i]
++	}
++}' | awk '
++{
++	if (!seen[$2]) {
++		seen[$2] = 1
++		print
++		next
++	}
++	h = $2 "-old"
++	s = h
++	for (n = 1; seen[h]; ++n)
++		h = s n
++	seen[h] = 1
++	print $1 "\t" h
++	next
++}' | sort

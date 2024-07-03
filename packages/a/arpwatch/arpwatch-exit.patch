@@ -1,0 +1,13 @@
+Index: arpwatch-3.5/arpwatch.c
+===================================================================
+--- arpwatch-3.5.orig/arpwatch.c
++++ arpwatch-3.5/arpwatch.c
+@@ -1012,7 +1012,7 @@ die(int signo)
+ {
+ 	lg(LOG_DEBUG, "exiting");
+ 	checkpoint(0);
+-	exit(1);
++	exit(0);
+ }
+ 
+ void

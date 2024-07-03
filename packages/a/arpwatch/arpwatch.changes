@@ -1,0 +1,404 @@
+-------------------------------------------------------------------
+Mon Jan 22 16:25:51 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.6:
+  * Fix bug that prevented checkpoint() from being called until
+    after receiving a new arp/rarp packet
+  * Remove unconditional FreeBSD configure mandir hack
+
+-------------------------------------------------------------------
+Sat Jan  6 11:38:48 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.5:
+  * Make SIGHUP checkpoint arp.dat
+  * Fix bug that prevented checkpoint() from being called until
+    after receiving a new arp/rarp packet
+
+-------------------------------------------------------------------
+Sun Oct 15 18:42:22 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.4:
+  * build system maintenance (upgrade to autoconf 2.71)
+  * add arpwatch-3.4-include-time.patch to fix build broken by it
+
+-------------------------------------------------------------------
+Tue Dec  6 12:34:56 UTC 2022 - olaf@aepfle.de
+
+- Enable loading of ethercodes.dat with arpwatch.ETHERCODES.patch
+- Log useless 0-source only once for each MAC
+
+-------------------------------------------------------------------
+Wed Apr 27 11:06:26 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.3:
+  + Fix direction of memmove() in sanity_fddi().
+
+-------------------------------------------------------------------
+Mon Mar 21 07:52:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2:
+  - Change update-ethercodes to not clobber ethercodes.dat on failure.
+  - Add a configure option to specify the path to sendmail
+- use https, its 2022 after all
+
+-------------------------------------------------------------------
+Mon Jan 10 16:16:16 UTC 2022 - olaf@aepfle.de
+
+- remove instance units from post scripts, they can not be reloaded
+
+-------------------------------------------------------------------
+Fri Sep  3 13:31:51 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Remove accidentially checked in manpage (arpwatch.8) 
+
+-------------------------------------------------------------------
+Fri Sep  3 07:37:27 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.1 (bsc#1185939) 
+  * Dropped 
+    + arpwatch-2.1a11-emailaddr.dif, this is now supported upstream.
+      Incompatible change: Flags change from -e and -s to -w and -W
+    + arpwatch-2.1a11-hname-overflow.dif: included upstream
+    + arpwatch-2.1a11-tokenring.diff: Dropped token ring support
+    + arpwatch-2.1a15-massagevendor.patch: new python version
+      is available
+    + arpwatch-MAC.patch: Fix is upstream
+    + getnameinfo.patch
+  * Refreshed
+    + 0001-Ignore-802.1Q-frames.patch
+    + arp2ethers.patch
+  * Notable upstream changes:
+    + Add python 2 compatibility to massagevendor (for pfsense <= 2.4.4).
+    + Add -Z (zero pad) and -C (compact) flags to arpwatch and arpsnmp to allow
+      run time selection of zero padded or compact ethernet addresses in arp.dat.
+    + arpsnmp errors now go to stderr instead of syslog.
+    + Add arpwatch directory flag (-D)
+    + Added the -x flag which is like -n but excludes cidrs
+
+-------------------------------------------------------------------
+Wed Aug 11 13:47:36 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Modified:
+  * arpwatch.service
+  * arpwatch@.service
+
+-------------------------------------------------------------------
+Tue Jun 29 07:10:40 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Fixed local privilege escalation from runtime user to root
+  (bsc#1186240, CVE-2021-25321)
+- Added service_* calls for the @.service file
+
+-------------------------------------------------------------------
+Tue Feb  9 08:36:27 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Fix arp2ethers script (bsc#1181936). Added arp2ethers.patch to 
+  inline the awk fragments. I tried hard to do this in a script
+  but no matter if sed, awk or perl is used something always breaks
+
+-------------------------------------------------------------------
+Mon Feb  1 15:15:15 UTC 2021 - olaf@aepfle.de
+
+- exit cleanly on SIGTERM with arpwatch-exit.patch
+- refresh all patches for autosetup
+
+-------------------------------------------------------------------
+Thu Jan 28 17:17:17 UTC 2021 - olaf@aepfle.de
+
+- report MAC as HH:HH:HH:HH:HH:HH with arpwatch-MAC.patch
+- remove unused ARPWATCH_INTERFACE= from sysconfig template
+- schedule arpwatch.service after exim/postfix/sendmail
+- remove arpwatch@.service from postinstall scriptlets to avoid warning
+  in case no instance is configured
+- move service_add_post to end of script because the macro exit
+  the script early
+
+-------------------------------------------------------------------
+Thu Jan 28 10:22:41 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Include arp2ethers script (jsc#SLE-17224)
+
+-------------------------------------------------------------------
+Sat Oct 17 10:52:57 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- add report-iface.patch to see, where the offending change happened
+
+-------------------------------------------------------------------
+Tue May  7 08:51:31 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- add 0001-Ignore-802.1Q-frames.patch to fix log spam on networks
+  with configured VLANs. (deb#625796)
+
+-------------------------------------------------------------------
+Sat Mar 16 08:57:03 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Thu Feb  7 12:21:45 UTC 2019 - jsegitz@suse.com
+
+- One %service_* call for all service files
+
+-------------------------------------------------------------------
+Tue Feb  5 12:25:15 UTC 2019 - jsegitz@suse.com
+
+- added getnameinfo.patch to prevent memory leak in gethname
+  (bsc#1119851)
+- %service_* invocations for arpwatch@.service
+
+-------------------------------------------------------------------
+Thu Nov 23 13:44:03 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Sat Aug 12 16:09:14 UTC 2017 - tchvatal@suse.com
+
+- Remove initscript support. Fix the service initialization to\
+  either allow single full client or user has to symlink the instance
+  and make sure he can run only one of them. bsc#737527
+- Make sure rcarpwatch is working
+- Use install commands for installation of files
+- Format with spec-cleaner
+- Generate temp files using systemd
+
+-------------------------------------------------------------------
+Fri Jun 19 14:32:19 UTC 2015 - lmuelle@suse.com
+
+- Deal with added two whitespaces in more recent oui.txt versions.
+  + arpwatch-2.1a15-massagevendor.patch
+
+-------------------------------------------------------------------
+Fri Dec  5 13:26:33 UTC 2014 - lmuelle@suse.com
+
+- Removed executable permission bits from arpwatch@.service file.
+
+-------------------------------------------------------------------
+Wed May 14 14:36:51 UTC 2014 - meissner@suse.com
+
+- added missing %pre/%service_add_pre section
+
+-------------------------------------------------------------------
+Tue Jan  7 10:06:22 UTC 2014 - rmilasan@suse.com
+
+- Rework arpwatch.service file to properly support multiple network
+  interfaces and arpwatch sysconfig file. (bnc#853384).
+
+-------------------------------------------------------------------
+Thu Mar 14 11:33:23 UTC 2013 - p.drouand@gmail.com
+
+- Drop sysvinit support and add systemd support for opensuse > 11.4
+
+-------------------------------------------------------------------
+Wed Jul 18 05:56:13 CEST 2012 - draht@suse.de
+
+- arpwatch-2.1a11-drop-privs.dif: call initgroups() with pw->pw_gid,
+  not NULL, to not have groupid 0 initialized. [bnc#764521]
+
+-------------------------------------------------------------------
+Sat Sep 17 12:17:44 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Fri Nov 27 13:33:41 UTC 2009 - mseben@novell.com
+
+- added ARPDIR to build section in spec file, to fix error message 
+  in logs
+
+-------------------------------------------------------------------
+Wed Nov 12 14:33:57 CET 2008 - draht@suse.de
+
+- arpwatch-2.1a11-emailaddr.dif for flexibility in sender and
+  recipient addresses on commandline.
+- arpwatch-2.1a11-drop-privs.dif to run arpwatch as different user
+- arpwatch-2.1a11-drop-privs-manpage.dif for the manpage
+
+-------------------------------------------------------------------
+Wed Nov 12 11:22:54 CET 2008 - draht@suse.de
+
+- start script tuned for multiple interface support and independent
+  databases. #149003
+
+-------------------------------------------------------------------
+Thu Jul 26 16:52:52 CEST 2007 - prusnak@suse.cz
+
+- changed libpcap to libpcap-devel in BuildRequires
+
+-------------------------------------------------------------------
+Mon May 14 22:58:55 CEST 2007 - lrupp@suse.de
+
+- update to 2.1a15
+  + let the database files belong to the package
+  + build parallel
+  + use rpm macros for configure and make
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:23 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Apr 18 11:56:52 CEST 2005 - meissner@suse.de
+
+- Use RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Fri Nov 12 00:22:36 CET 2004 - lmuelle@suse.de
+
+- Add %insserv_prereq %fillup_prereq to prereq.
+- Add missing call to %stop_on_removal (%preun), %restart_on_update, and
+  %insserv_cleanup (%postun).
+
+-------------------------------------------------------------------
+Sat Nov  6 20:11:32 CET 2004 - lmuelle@suse.de
+
+- Split off massagevendor script and required files as we only need them at
+  build time to create the ethercodes.dat file from the IEEE.org meta data.
+
+-------------------------------------------------------------------
+Sat Nov  6 15:53:57 CET 2004 - lmuelle@suse.de
+
+- Add files needed by massagevendor script, [#48005].
+
+-------------------------------------------------------------------
+Fri Jun 25 23:07:25 CEST 2004 - lmuelle@suse.de
+
+- Update to version 2.1a13.
+- Add sysconfig file to allow additional options in the init script.
+- Compress source tar ball with bzip2.
+- Move IEEE OUI and Company_id file to ethercodes sub package.
+
+-------------------------------------------------------------------
+Thu Mar 25 16:45:57 CET 2004 - mmj@suse.de
+
+- Add postfix to # neededforbuild
+
+-------------------------------------------------------------------
+Mon Jan 12 13:43:11 CET 2004 - adrian@suse.de
+
+- fix build as user
+
+-------------------------------------------------------------------
+Mon Jan 12 09:28:57 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Tue Jul 29 15:10:25 CEST 2003 - aj@suse.de
+
+- Fix for chown changes.
+
+-------------------------------------------------------------------
+Thu Jun 12 16:32:53 CEST 2003 - mmj@suse.de
+
+- Forgot to comment in a line
+
+-------------------------------------------------------------------
+Thu Jun 12 14:50:36 CEST 2003 - mmj@suse.de
+
+- Use BuildRoot
+
+-------------------------------------------------------------------
+Wed Feb 26 15:30:01 CET 2003 - draht@suse.de
+
+- added /usr/sbin/rcarpwatch symlink (#24163)
+
+-------------------------------------------------------------------
+Wed Sep 18 09:15:17 MEST 2002 - draht@suse.de
+
+- added fileutils to PreReq (#19782)
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Thu Aug 22 14:12:22 CEST 2002 - draht@suse.de
+
+- minor buffer overflow with dns query results, fixed by
+  arpwatch-2.1a11-hname-overflow.dif (#18149)
+
+-------------------------------------------------------------------
+Mon Jul  8 15:41:39 MEST 2002 - draht@suse.de
+
+- do not source /etc/rc.config any more.
+
+-------------------------------------------------------------------
+Mon Mar 18 14:01:45 MET 2002 - draht@suse.de
+
+- minor correction to ethercodes.dat
+
+-------------------------------------------------------------------
+Thu Mar 14 19:17:50 MET 2002 - draht@suse.de
+
+- added init script (bugzilla #12548)
+- fix support for token ring interfaces. Thanks to Bjoern Jacke,
+  fixes bugzilla #14504.
+- update of vendor table (ethercodes.dat)
+
+-------------------------------------------------------------------
+Mon Oct 15 17:26:40 MEST 2001 - draht@suse.de
+
+- upgrade to version 2.1a11
+  syslog(3), but do not send mail for packets from IP 0.0.0.0
+
+-------------------------------------------------------------------
+Wed Aug  8 15:33:50 CEST 2001 - sgf@suse.de
+
+- removed libpcapn from neededforbuild and added libpcap 
+
+-------------------------------------------------------------------
+Thu Jan 11 02:29:47 MET 2001 - draht@suse.de
+
+- New version 2.1a10 fixes tmp file race (security).
+
+-------------------------------------------------------------------
+Tue Aug  8 20:46:11 CEST 2000 - olh@suse.de
+
+- add /usr/share/arpwatch to file list, ethercodes.dat was missing
+
+-------------------------------------------------------------------
+Thu Jun  1 09:47:41 CEST 2000 - kukuk@suse.de
+
+- Use doc macro 
+
+-------------------------------------------------------------------
+Fri Feb 18 14:09:29 CET 2000 - dipa@suse.de
+
+- Changed path for manuals to /usr/share/man and /usr/lib/arpwatch
+  to /var/lib/arpwatch for arp.dat and /usr/share/arpwatch for
+  ethercodes.dat 
+
+-------------------------------------------------------------------                                 
+Fri Sep 17 11:28:09 MEST 1999 - kettner@suse.de
+
+- Reinserted old # Commandline: line.
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Thu Jul 22 13:10:27 MEST 1999 - msrex@suse.de
+
+- Fixed postinstall
+
+
+-------------------------------------------------------------------
+Mon Jul 12 01:48:03 MEST 1999 - ro@suse.de
+
+- libpcap is an extra package now
+
+-------------------------------------------------------------------
+Fri Jun 11 23:17:27 CEST 1999 - msrex@suse.de
+
+ - Spec file created from arpwatch-2.1a4.tar.gz by autospec
+
+-------------------------------------------------------------------
+Fri Jun 11 22:37:49 CEST 1999 - msrex@suse.de
+
+ - Spec file created from arpwatch-2.1a4.tar.gz by autospec
