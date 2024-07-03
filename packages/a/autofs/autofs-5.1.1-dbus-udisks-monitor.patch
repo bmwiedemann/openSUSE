@@ -1,0 +1,3089 @@
+ddiss: rebase atop 37fda2c ("autofs-5.1.8 - add soucre parameter to
+       module functions")
+       Fix xmlStructuredErrorFunc callback parameter type (bsc#1221682)
+
+---
+ Makefile.conf.in        |    3 
+ daemon/lookup.c         |    4 
+ daemon/master_tok.l     |    2 
+ include/lookup_udisks.h |  381 +++++++
+ lib/parse_subs.c        |    2 
+ man/autofs.udisks.5.in  |  121 ++
+ modules/Makefile        |   12 
+ modules/lookup_multi.c  |    2 
+ modules/lookup_udisks.c | 2449 ++++++++++++++++++++++++++++++++++++++++++++++++
+ modules/parse_sun.c     |    1 
+ samples/autofs.udisks   |   28 
+ 11 files changed, 3004 insertions(+), 1 deletion(-)
+
+Index: autofs-5.1.9/Makefile.conf.in
+===================================================================
+--- autofs-5.1.9.orig/Makefile.conf.in
++++ autofs-5.1.9/Makefile.conf.in
+@@ -46,6 +46,9 @@ KRB5_FLAGS=@KRB5_FLAGS@
+ # NIS+ support: yes (1) no (0)
+ NISPLUS = @HAVE_NISPLUS@
+ 
++# Udisks support
++UDISKS = 1
++
+ # SMBFS support: yes (1) no (0)
+ SMBFS = @HAVE_SMBMOUNT@
+ 
+Index: autofs-5.1.9/daemon/lookup.c
+===================================================================
+--- autofs-5.1.9.orig/daemon/lookup.c
++++ autofs-5.1.9/daemon/lookup.c
+@@ -200,6 +200,10 @@ int lookup_nss_read_master(struct master
+ 				 (name[3] == ',' || name[3] == ':')) ||
+ 			    (!strncmp(name, "nisplus", 7) &&
+ 				 (name[7] == ',' || name[7] == ':')) ||
++			    (!strncmp(name, "udisks", 6) &&
++			     	 (name[6] == ',' || name[6] == ':')) ||
++			    (!strncmp(name, "udisks2", 7) &&
++			     	 (name[7] == ',' || name[7] == ':')) ||
+ 			    (!strncmp(name, "ldap", 4) &&
+ 				 (name[4] == ',' || name[4] == ':')) ||
+ 			    (!strncmp(name, "ldaps", 5) &&
+Index: autofs-5.1.9/daemon/master_tok.l
+===================================================================
+--- autofs-5.1.9.orig/daemon/master_tok.l
++++ autofs-5.1.9/daemon/master_tok.l
+@@ -123,7 +123,7 @@ DNNAMESTR2	([[:alnum:]_.\-]+)
+ INTMAP		(-hosts|-null)
+ MULTI		((multi)(,(sun|hesiod))?(:{OPTWS}|{WS}))
+ MULTISEP	([\-]{2}[[:blank:]]+)
+-MTYPE		((file|program|exec|sss|yp|nis|nisplus|ldap|ldaps|hesiod|userdir)(,(sun|hesiod|amd))?(:{OPTWS}|{WS}))
++MTYPE		((file|program|exec|sss|yp|nis|nisplus|udisks|udisks2|ldap|ldaps|hesiod|userdir)(,(sun|hesiod|amd))?(:{OPTWS}|{WS}))
+ 
+ 
+ OPTTOUT		(-t{OPTWS}|-t{OPTWS}={OPTWS}|--timeout{OPTWS}|--timeout{OPTWS}={OPTWS})
+Index: autofs-5.1.9/include/lookup_udisks.h
+===================================================================
+--- /dev/null
++++ autofs-5.1.9/include/lookup_udisks.h
+@@ -0,0 +1,381 @@
++/*
++ * loopup_udisks.h - Header file for lookup_udisks automount module
++ *
++ *   Copyright 2012 SuSE LINUX Products GmbH - All Rights Reserved
++ *   Copyright 2012 Werner Fink <werner@suse.de>
++ *
++ *   This program is free software; you can redistribute it and/or modify
++ *   it under the terms of the GNU General Public License as published by
++ *   the Free Software Foundation, Inc., 675 Mass Ave, Cambridge MA 02139,
++ *   USA; either version 2 of the License, or (at your option) any later
++ *   version.
++ *
++ *   This program is distributed in the hope that it will be useful,
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *   GNU General Public License for more details.
++ *
++ */
++
++#ifndef LOOKUP_UDISKS_H
++#define LOOKUP_UDISKS_H
++
++#include "list.h"
++typedef struct list_head list_t;
++
++#ifndef list_for_each_safe
++#define list_for_each_safe(pos, safe, head)	\
++	for (pos = (head)->next, safe = pos->next; pos != (head); pos = safe, safe = pos->next)
++#endif
++#ifdef offsetof
++# undef list_entry
++# define list_entry(ptr, type, member)		(__extension__ ({	\
++	__const__ __typeof__( ((type*)0)->member ) *__mptr = (ptr);	\
++	((type *)( (char *)__mptr - offsetof(type,member) ));}))
++#endif
++
++#if !defined(__STDC_VERSION__) || (__STDC_VERSION__ < 199901L)
++# ifndef  inline
++#  define inline		__inline__
++# endif
++# ifndef  restrict
++#  define restrict		__restrict__
++# endif
++# ifndef  volatile
++#  define volatile		__volatile__
++# endif
++# ifndef  extension
++#  define extension		__extension__
++# endif
++# ifndef  typeof
++#  define typeof		__typeof__
++# endif
++#endif
++#ifndef  attribute
++# define attribute(attr)	__attribute__(attr)
++#endif
++#define alignof(type)		((sizeof(type)+(sizeof(void*)-1)) & ~(sizeof(void*)-1))
++#define strsize(string)		((strlen(string)+1)*sizeof(char))
++#define MODPREFIX "lookup(udisks): "
++
++typedef struct property_s {
++	list_t handle;
++	int type;
++	char *name;
++	void *value;
++} property_t;
++
++typedef struct array_s {
++	list_t handle;
++	char *value;
++} array_t;
++
++typedef struct filter_s {
++	char *property;
++#define DBUS_TYPE_OBJECT DBUS_TYPE_OBJECT_PATH
++	int type;
++} filter_t;
++
++typedef struct option_s {
++	int error;
++	union {
++		dbus_bool_t	boolean;
++		dbus_int32_t	int32;
++		dbus_uint32_t	uint32;
++		dbus_int64_t	int64;
++		dbus_uint64_t	uint64;
++		double		number;
++		const char	*string;
++		const list_t	*array;
++	};
++} option_t;
++
++typedef struct entry_s {
++	time_t   age;
++	size_t	 key_len;
++	size_t	 mapent_len;
++	char	*key;
++	char	*mapent;
++} entry_t;
++
++typedef struct device_s {
++	list_t handle;
++	list_t properties;
++	list_t *head;
++	filter_t *opts;
++	entry_t *entry;
++	char* identify;
++	char* node;
++} device_t;
++
++typedef struct session_s {
++	list_t handle;
++	list_t properties;
++	list_t *head;
++	filter_t *opts;
++	char* identify;
++	char* node;
++} session_t;
++
++typedef struct mntopt_s {
++	list_t handle;
++	char* identify;
++	char* options;
++} mntopt_t;
++
++typedef struct config_s {
++	int enabled;
++	char* common;
++	list_t fstypes;
++	list_t byid;
++	list_t label;
++} config_t;
++
++struct lookup_context {
++	pthread_mutex_t mtx;
++	pthread_t watchdog;
++	dbus_bool_t monitor;
++	volatile int active;
++	volatile int running;
++	const char *mapname;
++	list_t devices;
++	list_t sessions;
++	config_t config;
++	DBusConnection *conn;
++	DBusError *error;
++	struct autofs_point *ap;
++	struct map_source *map;
++	struct parse_mod *parse;
++};
++
++static inline void lock(struct lookup_context *ctxt)
++{
++	int status = pthread_mutex_lock(&ctxt->mtx);
++	if (status)
++		fatal(status);
++	return;
++}
++
++static inline void unlock(struct lookup_context *ctxt)
++{
++	int status = pthread_mutex_unlock(&ctxt->mtx);
++	if (status)
++		fatal(status);
++	return;
++}
++
++/*
++ * Use posix_memalign for  a well aligned container which not only has
++ * the required amount of space for the structure of a list member but
++ * also for the used strings therein.   With this such a container can
++ * be freed at once.
++ */
++extern void* newaligned(size_t size) attribute((__warn_unused_result__,__always_inline__));
++extern inline void* newaligned(size_t size)
++{
++	void *restrict new;
++	if (posix_memalign((void**)&new, sizeof(void*), size) != 0) {
++		char buf[MAX_ERR_BUF];
++		const char *const estr = strerror_r(errno, buf, sizeof(buf));
++		logerr(MODPREFIX "memory allocation: %s", estr);
++		return (void*)0;
++	}
++	return new;
++}
++
++/*
++ * Sorted with same order as found in the response of the dbus call
++ * org.freedesktop.DBus.Properties.GetAll, e.g.
++ *  dbus-send --system --print-reply --dest=org.freedesktop.UDisks \
++ *      /org/freedesktop/UDisks/devices/sda \
++ *      org.freedesktop.DBus.Properties.GetAll \
++ *      string:org.freedesktop.UDisks.Device | \
++ *  sed -rn '/dict entry\(/,/\)/ {
++ *      H
++ *      x
++ *      s@\n*@@g
++ *      s@^\s+string\s"(\w+)"\s+.*@\t\1,@p
++ *  }'
++ *
++ * compare with filter[] found in lookup_udisks.c
++ */
++
++typedef enum {
++	NativePath = 0,
++	DeviceDetectionTime,
++	DeviceMediaDetectionTime,
++	DeviceMajor,
++	DeviceMinor,
++	DeviceFile,
++	DeviceFilePresentation,
++	DeviceFileById,
++	DeviceFileByPath,
++	DeviceIsSystemInternal,
++	DeviceIsPartition,
++	DeviceIsPartitionTable,
++	DeviceIsRemovable,
++	DeviceIsMediaAvailable,
++	DeviceIsMediaChangeDetected,
++	DeviceIsMediaChangeDetectionPolling,
++	DeviceIsMediaChangeDetectionInhibitable,
++	DeviceIsMediaChangeDetectionInhibited,
++	DeviceIsReadOnly,
++	DeviceIsDrive,
++	DeviceIsOpticalDisc,
++	DeviceIsMounted,
++	DeviceMountPaths,
++	DeviceMountedByUid,
++	DeviceIsLuks,
++	DeviceIsLuksCleartext,
++	DeviceIsLinuxMdComponent,
++	DeviceIsLinuxMd,
++	DeviceIsLinuxLvm2LV,
++	DeviceIsLinuxLvm2PV,
++	DeviceIsLinuxDmmpComponent,
++	DeviceIsLinuxDmmp,
++	DeviceIsLinuxLoop,
++	DeviceSize,
++	DeviceBlockSize,
++	DevicePresentationHide,
++	DevicePresentationNopolicy,
++	DevicePresentationName,
++	DevicePresentationIconName,
++	DeviceAutomountHint,
++	JobInProgress,
++	JobId,
++	JobInitiatedByUid,
++	JobIsCancellable,
++	JobPercentage,
++	IdUsage,
++	IdType,
++	IdVersion,
++	IdUuid,
++	IdLabel,
++	LuksHolder,
++	LuksCleartextSlave,
++	LuksCleartextUnlockedByUid,
++	PartitionSlave,
++	PartitionScheme,
++	PartitionType,
++	PartitionLabel,
++	PartitionUuid,
++	PartitionFlags,
++	PartitionNumber,
++	PartitionOffset,
++	PartitionSize,
++	PartitionAlignmentOffset,
++	PartitionTableScheme,
++	PartitionTableCount,
++	DriveVendor,
++	DriveModel,
++	DriveRevision,
++	DriveSerial,
++	DriveWwn,
++	DriveRotationRate,
++	DriveWriteCache,
++	DriveConnectionInterface,
++	DriveConnectionSpeed,
++	DriveMediaCompatibility,
++	DriveMedia,
++	DriveIsMediaEjectable,
++	DriveCanDetach,
++	DriveCanSpindown,
++	DriveIsRotational,
++	DriveAdapter,
++	DrivePorts,
++	DriveSimilarDevices,
++	OpticalDiscIsBlank,
++	OpticalDiscIsAppendable,
++	OpticalDiscIsClosed,
++	OpticalDiscNumTracks,
++	OpticalDiscNumAudioTracks,
++	OpticalDiscNumSessions,
++	DriveAtaSmartIsAvailable,
++	DriveAtaSmartTimeCollected,
++	DriveAtaSmartStatus,
++	DriveAtaSmartBlob,
++	LinuxMdComponentLevel,
++	LinuxMdComponentPosition,
++	LinuxMdComponentNumRaidDevices,
++	LinuxMdComponentUuid,
++	LinuxMdComponentName,
++	LinuxMdComponentHomeHost,
++	LinuxMdComponentVersion,
++	LinuxMdComponentHolder,
++	LinuxMdComponentState,
++	LinuxMdState,
++	LinuxMdLevel,
++	LinuxMdUuid,
++	LinuxMdHomeHost,
++	LinuxMdName,
++	LinuxMdNumRaidDevices,
++	LinuxMdVersion,
++	LinuxMdSlaves,
++	LinuxMdIsDegraded,
++	LinuxMdSyncAction,
++	LinuxMdSyncPercentage,
++	LinuxMdSyncSpeed,
++	LinuxLvm2PVUuid,
++	LinuxLvm2PVNumMetadataAreas,
++	LinuxLvm2PVGroupName,
++	LinuxLvm2PVGroupUuid,
++	LinuxLvm2PVGroupSize,
++	LinuxLvm2PVGroupUnallocatedSize,
++	LinuxLvm2PVGroupSequenceNumber,
++	LinuxLvm2PVGroupExtentSize,
++	LinuxLvm2PVGroupPhysicalVolumes,
++	LinuxLvm2PVGroupLogicalVolumes,
++	LinuxLvm2LVName,
++	LinuxLvm2LVUuid,
++	LinuxLvm2LVGroupName,
++	LinuxLvm2LVGroupUuid,
++	LinuxDmmpComponentHolder,
++	LinuxDmmpName,
++	LinuxDmmpSlaves,
++	LinuxDmmpParameters,
++	LinuxLoopFilename,
++	NullDict
++} devdict_t;
++
++/*
++ * Sorted with same order as found in the response of the dbus call
++ * org.freedesktop.DBus.Properties.GetAll, e.g.
++ *  dbus-send --print-reply --system --dest=org.freedesktop.ConsoleKit \
++ *	/org/freedesktop/ConsoleKit/Session1 \
++ *	org.freedesktop.DBus.Properties.GetAll \
++ *	string:org.freedesktop.ConsoleKit.Session | \
++ *  sed -rn '/dict entry\(/,/\)/{
++ *	H
++ *	x
++ *	s@\n*@@g
++ *	s@^\s+string\s"([a-z0-9-]+)"\s+.*@\t\1,@p
++ *	}'
++ *
++ * compare with sessions[] found in lookup_udisks.c
++ */
++
++typedef enum {
++        unix_user = 0,
++        user,
++        session_type,
++        remote_host_name,
++        display_device,
++        x11_display,
++        x11_display_device,
++        active,
++        is_local,
++        idle_hint,
++	NullCk
++} ckdict_t;
++
++typedef enum {
++	AutofsUdisks = 0,
++	MountOptions,
++	Common,
++	DiskById,
++	DiskByLabel,
++	FSType,
++	NullCnf
++} cnfxml_t;
++
++#endif
+Index: autofs-5.1.9/lib/parse_subs.c
+===================================================================
+--- autofs-5.1.9.orig/lib/parse_subs.c
++++ autofs-5.1.9/lib/parse_subs.c
+@@ -98,6 +98,8 @@ static struct types map_type[] = {
+ 	{ "yp", 2 },
+ 	{ "nis", 3 },
+ 	{ "nisplus", 7 },
++   { "udisks", 6 },
++	{ "udisks2", 7 },
+ 	{ "ldap", 4 },
+ 	{ "ldaps", 5 },
+ 	{ "hesiod", 6 },
+Index: autofs-5.1.9/man/autofs.udisks.5.in
+===================================================================
+--- /dev/null
++++ autofs-5.1.9/man/autofs.udisks.5.in
+@@ -0,0 +1,121 @@
++.\" t
++.TH AUTOFS.UDISKS 5 "22 Aug 2012"
++.SH NAME
++autofs.udisks \- autofs configuration for local removable devices
++.SH "DESCRIPTION"
++The automount udisks module is able to manage removable devices on the
++local system by connecting to the message bus daemon
++.BR dbus\-daemon (1)
++to monitor all device events of the
++.BR udisks\-daemon (8).
++To grant access for local users the automount
++udisks module also monitors users sessions hold by the ConsoleKit
++daemon, compare with description of the PAM module
++.BR pam_ck_connector (8).
++.P
++To use the automount udisks module an entry in the Master Map
++.BR auto.master (5)
++has to added, like this:
++.sp
++.RS +.2i
++.ta 1.0i
++.nf
++.I /media/autofs udisks:@@autofsmapdir@@/autofs.udisks \-\-timeout=5 \-\-ghost
++.fi
++.RE
++.sp
++Please be aware that format of the file
++.R autofs.udisks
++does
++.B not
++follow the common format of the automounter maps but is an XML
++configuration file. This file is used by the automount udisks module
++to generate the automounter map on the fly.
++.P
++An example of this file is:
++.sp
++.RS +.2i
++.ta 1.0i
++.nf
++<?xml version=\[dq]1.0\[dq] ?>
++<AutofsUdisks enable=\[dq]true\[dq]>
++  <MountOptions>
++    <Common>uid=$UID,gid=$GID,nosuid,nodev</Common>
++    <DiskById value=\[dq]usb\-USB_Flash_Disk_XXXXXXXXXXXX\-0:0\-part1\[dq]>
++      uid=1002,gid=501,user,nosuid,nodev,exec
++    </DiskById>
++    <DiskByLabel value=\[dq]MyPersonal\-DVD\-x86_64XXXX\[dq]>
++      unhide
++    </DiskByLabel>
++    <FSType value=\[dq]vfat\[dq]>fmask=0132,dmask=0022,showexec</FSType>
++    <FSType value=\[dq]ntfs\[dq]>umask=0022</FSType>
++    <FSType value=\[dq]iso9660\[dq]>ro</FSType>
++    <FSType value=\[dq]ext4\[dq]>check=none,noatime,nodiratime,data=journal</FSType>
++    <FSType value=\[dq]ext3\[dq]>check=none,noatime,nodiratime,data=journal</FSType>
++    <FSType value=\[dq]ext2\[dq]>check=none,noatime</FSType>
++    <FSType>ro,nosuid,nodev,noexec</FSType>
++  </MountOptions>
++</AutofsUdisks>
++.fi
++.RE
++.sp
++The entries of such a XML configuration file are
++.TP
++.RB < AutofsUdisks >
++as the outer envelop.  This level has exactly one attribute
++.BR enable =\[dq] true \[dq]|\[dq] false \[dq]
++which allows disabling the automount udisks module without
++removing the module its self.
++.TP
++.RB < MountOptions >
++is the only known entry below which is used to list the
++possible mount options, compare with
++.BR mount (8)
++as well as the variable substitutions mentioned in the manual
++page
++.BR autofs (5)
++for the format of the automounter maps.
++.P
++There are four possible entries below
++.RB < MountOptions >
++to help the the automount udisks module to generate the automounter
++map.
++.TP
++.RB < Common >
++is the entry which provides mount options applied to
++nearly all generated maps.
++This entry will be overwritten by the next entry.
++.TP
++.RB < DiskById\ value =\[dq] \fIID\fR \[dq]>
++is the entry which provides mount options which are applied
++instead of the
++.RB < Common >
++entry if a device is found with an
++.I ID
++listed below
++.IR /dev/disk/by\-id/ .
++This entry will be overwritten by the next entry.
++.TP
++.RB < DiskByLabel\ value =\[dq] \fILABEL\fR \[dq]>
++is the entry which provides mount options which are applied
++instead of the
++.RB < Common >
++or
++.RB < DiskByLabel >
++entries if a device is found labeled with
++.IR LABEL .
++Such labels can be detected by the super user with the
++.BR blkid (8)
++command.
++.TP
++.RB < FSType\  [ value =\[dq] \fIFSTYPE\fR \[dq]]>
++those entries are used to apply file system \fIFSTYPE\fR specific mount
++options to a generated automounter map entry.  There can be one
++.RB < FSType >
++entry without any file system value as a fallback for file systems
++not specified in the configuration file.
++.SH "SEE ALSO"
++.BR auto.master (5),
++.BR udisks\-daemon (8)
++.SH AUTHOR
++This manual page was written by Werner Fink <werner@suse.com>.
+Index: autofs-5.1.9/modules/Makefile
+===================================================================
+--- autofs-5.1.9.orig/modules/Makefile
++++ autofs-5.1.9/modules/Makefile
+@@ -62,6 +62,14 @@ ifeq ($(SSSD), 1)
+   MODS += lookup_sss.so
+ endif
+ 
++ifeq ($(UDISKS), 1)
++  UDISKS_FLAGS += $(shell pkg-config --cflags dbus-1)
++  UDISKS_LIBS += $(shell pkg-config --libs dbus-1)
++  UDISKS_LIBS += $(AUTOFS_LIB)
++  SRCS += lookup_udisks.c
++  MODS += lookup_udisks.so
++endif
++
+ CFLAGS += -I../include -I../lib -fPIC -D_GNU_SOURCE
+ CFLAGS += -DAUTOFS_LIB_DIR=\"$(autofslibdir)\"
+ CFLAGS += -DAUTOFS_MAP_DIR=\"$(autofsmapdir)\"
+@@ -145,6 +153,10 @@ lookup_ldap.so: lookup_ldap.c dclist.o b
+ 		$(LDFLAGS) $(LIBLDAP) $(LIBRESOLV) $(LIBS) $(AUTOFS_LIB_LINK)
+ 	$(STRIP) lookup_ldap.so
+ 
++lookup_udisks.so: lookup_udisks.c ../include/lookup_udisks.h
++	$(CC) $(SOLDFLAGS) $(CFLAGS) $(UDISKS_FLAGS) -o $@ $< $(UDISKS_LIBS)
++	$(STRIP) $@
++
+ mount_nfs.so: mount_nfs.c replicated.o
+ 	$(CC) $(SOLDFLAGS) $(CFLAGS) -o mount_nfs.so \
+ 		mount_nfs.c replicated.o $(LDFLAGS) $(LIBS) $(AUTOFS_LIB_LINK)
+Index: autofs-5.1.9/modules/lookup_multi.c
+===================================================================
+--- autofs-5.1.9.orig/modules/lookup_multi.c
++++ autofs-5.1.9/modules/lookup_multi.c
+@@ -189,6 +189,8 @@ static struct lookup_mod *nss_open_looku
+ 	if (!strncmp(argv[0], "file", 4) ||
+ 	    !strncmp(argv[0], "yp", 2) ||
+ 	    !strncmp(argv[0], "nisplus", 7) ||
++	    !strncmp(argv[0], "udisks", 6) ||
++	    !strncmp(argv[0], "udisks2", 7) ||
+ 	    !strncmp(argv[0], "nis", 3) ||
+ 	    !strncmp(argv[0], "ldaps", 5) ||
+ 	    !strncmp(argv[0], "ldap", 4) ||
+Index: autofs-5.1.9/modules/lookup_udisks.c
+===================================================================
+--- /dev/null
++++ autofs-5.1.9/modules/lookup_udisks.c
+@@ -0,0 +1,2411 @@
++/*
++ * lookup_udisks.c - Module for Linux automount to access removable devices
++ *                   listed by the dbus based udisks-daemon
++ *
++ *   Copyright 2012 SuSE LINUX Products GmbH - All Rights Reserved
++ *   Copyright 2012 Werner Fink <werner@suse.de>
++ *
++ *   This program is free software; you can redistribute it and/or modify
++ *   it under the terms of the GNU General Public License as published by
++ *   the Free Software Foundation, Inc., 675 Mass Ave, Cambridge MA 02139,
++ *   USA; either version 2 of the License, or (at your option) any later
++ *   version.
++ *
++ *   This program is distributed in the hope that it will be useful,
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *   GNU General Public License for more details.
++ *
++ */
++
++#include <dbus/dbus.h>
++#include <stdio.h>
++#include <malloc.h>
++#include <string.h>
++#include <sys/param.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <unistd.h>
++#include <libxml/parser.h>
++#include <libxml/tree.h>
++#include <libxml/xmlerror.h>
++
++#define MODULE_LOOKUP
++#include "automount.h"
++#include "nsswitch.h"
++#include "lookup_udisks.h"
++
++extern pthread_attr_t th_attr_detached;
++
++#define MAPFMT_DEFAULT		"sun"
++
++#define DBUS_COMMON_NAME_UDISKS		"org.freedesktop.UDisks"
++#define DBUS_INTERFACE_UDISKS		"org.freedesktop.UDisks"
++#define DBUS_OBJECT_PATH_UDISKS_ROOT	"/org/freedesktop/UDisks"
++
++/*
++ * Sorted with same order as found in the response of the dbus call
++ * org.freedesktop.DBus.Properties.GetAll, e.g.
++ *  dbus-send --system --print-reply --dest=org.freedesktop.UDisks \
++ *	/org/freedesktop/UDisks/devices/sda \
++ *	org.freedesktop.DBus.Properties.GetAll \
++ *	string:org.freedesktop.UDisks.Device | \
++ *  sed -rn '/dict entry\(/,/\)/ {
++ *	H
++ *	x
++ *	s@\n*@@g
++ *	s@^\s+string\s("\w+")\s+variant\s+(\w+).*@FILTER\(\U\2\E,\t\1\)@p
++ *  }'
++ *
++ * compare with enum type devdict_t in ../include/lookup_udisks.h
++ * that is if add here a hash key you have to extend dict_t!
++ */
++#define FILTER(name, property)	{ property, DBUS_TYPE_ ## name }
++static filter_t devproperpty[] = {
++	FILTER(STRING,	"NativePath"),
++	FILTER(UINT64,	"DeviceDetectionTime"),
++	FILTER(UINT64,	"DeviceMediaDetectionTime"),
++	FILTER(INT64,	"DeviceMajor"),
++	FILTER(INT64,	"DeviceMinor"),
++	FILTER(STRING,	"DeviceFile"),
++	FILTER(STRING,	"DeviceFilePresentation"),
++	FILTER(ARRAY,	"DeviceFileById"),
++	FILTER(ARRAY,	"DeviceFileByPath"),
++	FILTER(BOOLEAN,	"DeviceIsSystemInternal"),
++	FILTER(BOOLEAN,	"DeviceIsPartition"),
++	FILTER(BOOLEAN,	"DeviceIsPartitionTable"),
++	FILTER(BOOLEAN,	"DeviceIsRemovable"),
++	FILTER(BOOLEAN,	"DeviceIsMediaAvailable"),
++	FILTER(BOOLEAN,	"DeviceIsMediaChangeDetected"),
++	FILTER(BOOLEAN,	"DeviceIsMediaChangeDetectionPolling"),
++	FILTER(BOOLEAN,	"DeviceIsMediaChangeDetectionInhibitable"),
++	FILTER(BOOLEAN,	"DeviceIsMediaChangeDetectionInhibited"),
++	FILTER(BOOLEAN,	"DeviceIsReadOnly"),
++	FILTER(BOOLEAN,	"DeviceIsDrive"),
++	FILTER(BOOLEAN,	"DeviceIsOpticalDisc"),
++	FILTER(BOOLEAN,	"DeviceIsMounted"),
++	FILTER(ARRAY,	"DeviceMountPaths"),
++	FILTER(UINT32,	"DeviceMountedByUid"),
++	FILTER(BOOLEAN,	"DeviceIsLuks"),
++	FILTER(BOOLEAN,	"DeviceIsLuksCleartext"),
++	FILTER(BOOLEAN,	"DeviceIsLinuxMdComponent"),
++	FILTER(BOOLEAN,	"DeviceIsLinuxMd"),
++	FILTER(BOOLEAN,	"DeviceIsLinuxLvm2LV"),
++	FILTER(BOOLEAN,	"DeviceIsLinuxLvm2PV"),
++	FILTER(BOOLEAN,	"DeviceIsLinuxDmmpComponent"),
++	FILTER(BOOLEAN,	"DeviceIsLinuxDmmp"),
++	FILTER(BOOLEAN,	"DeviceIsLinuxLoop"),
++	FILTER(UINT64,	"DeviceSize"),
++	FILTER(UINT64,	"DeviceBlockSize"),
++	FILTER(BOOLEAN,	"DevicePresentationHide"),
++	FILTER(BOOLEAN,	"DevicePresentationNopolicy"),
++	FILTER(STRING,	"DevicePresentationName"),
++	FILTER(STRING,	"DevicePresentationIconName"),
++	FILTER(STRING,	"DeviceAutomountHint"),
++	FILTER(BOOLEAN,	"JobInProgress"),
++	FILTER(STRING,	"JobId"),
++	FILTER(UINT32,	"JobInitiatedByUid"),
++	FILTER(BOOLEAN,	"JobIsCancellable"),
++	FILTER(DOUBLE,	"JobPercentage"),
++	FILTER(STRING,	"IdUsage"),
++	FILTER(STRING,	"IdType"),
++	FILTER(STRING,	"IdVersion"),
++	FILTER(STRING,	"IdUuid"),
++	FILTER(STRING,	"IdLabel"),
++	FILTER(OBJECT,	"LuksHolder"),
++	FILTER(OBJECT,	"LuksCleartextSlave"),
++	FILTER(UINT32,	"LuksCleartextUnlockedByUid"),
++	FILTER(OBJECT,	"PartitionSlave"),
++	FILTER(STRING,	"PartitionScheme"),
++	FILTER(STRING,	"PartitionType"),
++	FILTER(STRING,	"PartitionLabel"),
++	FILTER(STRING,	"PartitionUuid"),
++	FILTER(ARRAY,	"PartitionFlags"),
++	FILTER(INT32,	"PartitionNumber"),
++	FILTER(UINT64,	"PartitionOffset"),
++	FILTER(UINT64,	"PartitionSize"),
++	FILTER(UINT64,	"PartitionAlignmentOffset"),
++	FILTER(STRING,	"PartitionTableScheme"),
++	FILTER(INT32,	"PartitionTableCount"),
++	FILTER(STRING,	"DriveVendor"),
++	FILTER(STRING,	"DriveModel"),
++	FILTER(STRING,	"DriveRevision"),
++	FILTER(STRING,	"DriveSerial"),
++	FILTER(STRING,	"DriveWwn"),
++	FILTER(UINT32,	"DriveRotationRate"),
++	FILTER(STRING,	"DriveWriteCache"),
++	FILTER(STRING,	"DriveConnectionInterface"),
++	FILTER(UINT64,	"DriveConnectionSpeed"),
++	FILTER(ARRAY,	"DriveMediaCompatibility"),
++	FILTER(STRING,	"DriveMedia"),
++	FILTER(BOOLEAN,	"DriveIsMediaEjectable"),
++	FILTER(BOOLEAN,	"DriveCanDetach"),
++	FILTER(BOOLEAN,	"DriveCanSpindown"),
++	FILTER(BOOLEAN,	"DriveIsRotational"),
++	FILTER(OBJECT,	"DriveAdapter"),
++	FILTER(ARRAY,	"DrivePorts"),
++	FILTER(ARRAY,	"DriveSimilarDevices"),
++	FILTER(BOOLEAN,	"OpticalDiscIsBlank"),
++	FILTER(BOOLEAN,	"OpticalDiscIsAppendable"),
++	FILTER(BOOLEAN,	"OpticalDiscIsClosed"),
++	FILTER(UINT32,	"OpticalDiscNumTracks"),
++	FILTER(UINT32,	"OpticalDiscNumAudioTracks"),
++	FILTER(UINT32,	"OpticalDiscNumSessions"),
++	FILTER(BOOLEAN,	"DriveAtaSmartIsAvailable"),
++	FILTER(UINT64,	"DriveAtaSmartTimeCollected"),
++	FILTER(STRING,	"DriveAtaSmartStatus"),
++	FILTER(ARRAY,	"DriveAtaSmartBlob"),
++	FILTER(STRING,	"LinuxMdComponentLevel"),
++	FILTER(INT32,	"LinuxMdComponentPosition"),
++	FILTER(INT32,	"LinuxMdComponentNumRaidDevices"),
++	FILTER(STRING,	"LinuxMdComponentUuid"),
++	FILTER(STRING,	"LinuxMdComponentName"),
++	FILTER(STRING,	"LinuxMdComponentHomeHost"),
++	FILTER(STRING,	"LinuxMdComponentVersion"),
++	FILTER(OBJECT,	"LinuxMdComponentHolder"),
++	FILTER(ARRAY,	"LinuxMdComponentState"),
++	FILTER(STRING,	"LinuxMdState"),
++	FILTER(STRING,	"LinuxMdLevel"),
++	FILTER(STRING,	"LinuxMdUuid"),
++	FILTER(STRING,	"LinuxMdHomeHost"),
++	FILTER(STRING,	"LinuxMdName"),
++	FILTER(INT32,	"LinuxMdNumRaidDevices"),
++	FILTER(STRING,	"LinuxMdVersion"),
++	FILTER(ARRAY,	"LinuxMdSlaves"),
++	FILTER(BOOLEAN,	"LinuxMdIsDegraded"),
++	FILTER(STRING,	"LinuxMdSyncAction"),
++	FILTER(DOUBLE,	"LinuxMdSyncPercentage"),
++	FILTER(UINT64,	"LinuxMdSyncSpeed"),
++	FILTER(STRING,	"LinuxLvm2PVUuid"),
++	FILTER(UINT32,	"LinuxLvm2PVNumMetadataAreas"),
++	FILTER(STRING,	"LinuxLvm2PVGroupName"),
++	FILTER(STRING,	"LinuxLvm2PVGroupUuid"),
++	FILTER(UINT64,	"LinuxLvm2PVGroupSize"),
++	FILTER(UINT64,	"LinuxLvm2PVGroupUnallocatedSize"),
++	FILTER(UINT64,	"LinuxLvm2PVGroupSequenceNumber"),
++	FILTER(UINT64,	"LinuxLvm2PVGroupExtentSize"),
++	FILTER(ARRAY,	"LinuxLvm2PVGroupPhysicalVolumes"),
++	FILTER(ARRAY,	"LinuxLvm2PVGroupLogicalVolumes"),
++	FILTER(STRING,	"LinuxLvm2LVName"),
++	FILTER(STRING,	"LinuxLvm2LVUuid"),
++	FILTER(STRING,	"LinuxLvm2LVGroupName"),
++	FILTER(STRING,	"LinuxLvm2LVGroupUuid"),
++	FILTER(OBJECT,	"LinuxDmmpComponentHolder"),
++	FILTER(STRING,	"LinuxDmmpName"),
++	FILTER(ARRAY,	"LinuxDmmpSlaves"),
++	FILTER(STRING,	"LinuxDmmpParameters"),
++	FILTER(STRING,	"LinuxLoopFilename"),
++	FILTER(BOOLEAN,	(char*)0)
++};
++
++/*
++ * Sorted with same order as found in the response of the dbus call
++ * org.freedesktop.DBus.Properties.GetAll, e.g.
++ *  dbus-send --print-reply --system --dest=org.freedesktop.ConsoleKit \
++ *	/org/freedesktop/ConsoleKit/Session2 \
++ *	org.freedesktop.DBus.Properties.GetAll \
++ *	string:org.freedesktop.ConsoleKit.Session | \
++ *  sed -rn '/dict entry\(/,/\)/ {
++ *	H
++ *	x
++ *	s@\n*@@g
++ *	s@^\s+string\s("[a-z0-9-]+")\s+variant\s+(\w+).*@FILTER\(\U\2\E,\t\1\)@p
++ *  }'
++ *
++ * compare with enum type ckdict_t in ../include/lookup_udisks.h
++ * that is if add here a hash key you have to extend ckdict_t!
++ */
++static filter_t sessproperty[] = {
++	FILTER(UINT32,  "unix-user"),
++	FILTER(UINT32,  "user"),
++	FILTER(STRING,  "session-type"),
++	FILTER(STRING,  "remote-host-name"),
++	FILTER(STRING,  "display-device"),
++	FILTER(STRING,  "x11-display"),
++	FILTER(STRING,  "x11-display-device"),
++	FILTER(BOOLEAN, "active"),
++	FILTER(BOOLEAN, "is-local"),
++	FILTER(BOOLEAN, "idle-hint"),
++	FILTER(BOOLEAN,	(char*)0)
++};
++
++#undef FILTER
++
++static inline device_t* add_device(list_t *head, const char *node)
++{
++	const char* identify;
++	device_t *restrict new;
++	list_t *ptr;
++
++	if ((identify = strrchr(node, '/')))
++		identify++;
++	else	identify = node;
++
++	list_for_each(ptr, head) {
++		device_t *this = list_entry(ptr, device_t, handle);
++		if (strcmp(this->identify, identify) == 0)
++			return this;
++	}
++
++	new = newaligned(alignof(device_t)+strsize(node));
++	if (!new)
++		return (device_t*)0;
++	memset(new, 0, alignof(device_t));
++
++	list_add_tail(&new->handle, head);
++	INIT_LIST_HEAD(&new->properties);
++	new->head = head;
++
++	new->node = ((typeof(new->node))new)+alignof(device_t);
++	strcpy(new->node, node);
++	new->identify = new->node+(identify-node);
++	return new;
++}
++
++static inline device_t* find_device(list_t *head, const char *node)
++{
++	const char* identify;
++	list_t *ptr;
++
++	if ((identify = strrchr(node, '/')))
++		identify++;
++	else	identify = node;
++
++	list_for_each(ptr, head) {
++		device_t *this = list_entry(ptr, device_t, handle);
++		if (strcmp(this->identify, identify) == 0)
++			return this;
++	}
++	return (device_t*)0;
++}
++
++static inline void delete_device(device_t *this)
++{
++	list_t *ptr, *safe;
++	list_for_each_safe(ptr, safe, &this->properties) {
++		property_t *obj = list_entry(ptr, property_t, handle);
++		if (obj->type == DBUS_TYPE_ARRAY) {
++			list_t *ap, *as;
++			list_for_each_safe(ap, as, (list_t*)obj->value) {
++				array_t *array = list_entry(ap, array_t, handle);
++				list_del(ap);
++				free(array);
++			}
++		}
++		list_del(ptr);
++		free(obj);
++	}
++	list_del(&this->handle);
++	this->head = (list_t*)0;
++	if (this->opts) free(this->opts);
++	if (this->entry) free(this->entry);
++	free(this);
++}
++
++static inline void remove_device(list_t *head, const char *node)
++{
++	list_t *ptr;
++	device_t *this = (device_t*)0;
++	const char* identify;
++
++	if ((identify = strrchr(node, '/')))
++		identify++;
++	else	identify = node;
++
++	list_for_each(ptr, head) {
++		this = list_entry(ptr, device_t, handle);
++		if (strcmp(this->identify, identify) == 0)
++			break;
++	}
++	if (this) delete_device(this);
++}
++
++static inline void clear_devices(list_t *head)
++{
++	list_t *ptr, *safe;
++	list_for_each_safe(ptr, safe, head) {
++		device_t *this = list_entry(ptr, device_t, handle);
++		delete_device(this);
++	}
++}
++
++static inline session_t* add_session(list_t *head, const char *node)
++{
++	const char* identify;
++	session_t *restrict new;
++	list_t *ptr;
++
++	if ((identify = strrchr(node, '/')))
++		identify++;
++	else	identify = node;
++
++	list_for_each(ptr, head) {
++		session_t *this = list_entry(ptr, session_t, handle);
++		if (strcmp(this->identify, identify) == 0)
++			return this;
++	}
++
++	new = newaligned(alignof(session_t)+strsize(node));
++	if (!new)
++		return (session_t*)0;
++	memset(new, 0, alignof(session_t));
++
++	list_add_tail(&new->handle, head);
++	INIT_LIST_HEAD(&new->properties);
++	new->head = head;
++
++	new->node = ((typeof(new->node))new)+alignof(session_t);
++	strcpy(new->node, node);
++	new->identify = new->node+(identify-node);
++	return new;
++}
++
++static inline session_t* find_session(list_t *head, const char *node)
++{
++	const char* identify;
++	list_t *ptr;
++
++	if ((identify = strrchr(node, '/')))
++		identify++;
++	else	identify = node;
++
++	list_for_each(ptr, head) {
++		session_t *this = list_entry(ptr, session_t, handle);
++		if (strcmp(this->identify, identify) == 0)
++			return this;
++	}
++	return (session_t*)0;
++}
++
++static inline void delete_session(session_t *this)
++{
++	list_t *ptr, *safe;
++	list_for_each_safe(ptr, safe, &this->properties) {
++		property_t *obj = list_entry(ptr, property_t, handle);
++		if (obj->type == DBUS_TYPE_ARRAY) {
++			list_t *ap, *as;
++			list_for_each_safe(ap, as, (list_t*)obj->value) {
++				array_t *array = list_entry(ap, array_t, handle);
++				list_del(ap);
++				free(array);
++			}
++		}
++		list_del(ptr);
++		free(obj);
++	}
++	list_del(&this->handle);
++	this->head = (list_t*)0;
++	if (this->opts) free(this->opts);
++	free(this);
++}
++
++static inline void remove_session(list_t *head, const char *node)
++{
++	list_t *ptr;
++	session_t *this = (session_t*)0;
++	const char* identify;
++
++	if ((identify = strrchr(node, '/')))
++		identify++;
++	else	identify = node;
++
++	list_for_each(ptr, head) {
++		this = list_entry(ptr, session_t, handle);
++		if (strcmp(this->identify, identify) == 0)
++			break;
++	}
++	if (this) delete_session(this);
++}
++
++static inline void clear_sessions(list_t *head)
++{
++	list_t *ptr, *safe;
++	list_for_each_safe(ptr, safe, head) {
++		session_t *this = list_entry(ptr, session_t, handle);
++		delete_session(this);
++	}
++}
++
++static filter_t *property;
++static inline property_t *add_property(list_t *head,
++	const char* name,
++	int type,
++	const void *value,
++	size_t len)
++{
++	property_t *restrict new;
++	filter_t *flt;
++	list_t *ptr;
++	size_t slen;
++
++	if (!property) {
++		logerr(MODPREFIX "property not specified");
++		return (property_t*)0;
++	}
++
++	flt = property;
++	do {
++		if (flt->property == (char*)0)
++			break;
++		if (strcmp(flt->property, name) == 0)
++			break;
++	} while (flt++);
++
++	if (flt->property == (char*)0) {
++		warn(LOGOPT_NONE, MODPREFIX "udisks reply property `%s' not known", name);
++		slen = strsize(name);
++	} else {
++		slen = 0;
++		if (flt->type != type)
++			warn(LOGOPT_NONE, MODPREFIX "udisks reply type `%c' not known", type);
++	}
++
++	list_for_each(ptr, head) {
++		property_t *this = list_entry(ptr, property_t, handle);
++		if (strcmp(this->name, name) == 0)
++			return this;
++	}
++	if (type == DBUS_TYPE_STRING || type == DBUS_TYPE_OBJECT_PATH)
++		len++;
++
++	new = newaligned(alignof(property_t)+slen+len);
++	if (!new)
++		return (property_t*)0;
++	memset(new, 0, alignof(property_t));
++
++	list_add_tail(&new->handle, head);
++
++	new->type = type;
++
++	if (flt->property == (char*)0) {
++		new->name = ((typeof(new->name))new)+alignof(property_t);
++		strcpy(new->name, name);
++	} else
++		new->name = flt->property;		/* hash key */
++
++	new->value = ((typeof(new->value))new)+alignof(property_t)+slen;
++	if (type == DBUS_TYPE_ARRAY)
++		INIT_LIST_HEAD(((list_t*)new->value));
++	else if (type == DBUS_TYPE_STRING || type == DBUS_TYPE_OBJECT_PATH)
++		strcpy(new->value, value);
++	else
++		memcpy(new->value, value, len);
++
++	return new;
++}
++
++static void append_array(list_t *head, const char *value)
++{
++	array_t *restrict new;
++	const char *string;
++
++	if ((string = strrchr(value, '/')))
++		string++;
++	else	string = value;
++
++	new = newaligned(alignof(array_t)+strsize(string));
++	if (!new)
++		return;
++	memset(new, 0, alignof(array_t));
++	list_add_tail(&new->handle, head);
++
++	new->value = ((typeof(new->value))new)+alignof(array_t);
++	strcpy(new->value, string);
++}
++
++static inline option_t map_property(const list_t *head, const char *restrict property)
++{
++	option_t ret;
++	list_t *ptr;
++
++	list_for_each(ptr, head) {
++		property_t *prop = list_entry(ptr, property_t, handle);
++		if (property == prop->name) {
++			ret.error = 0;
++			switch (prop->type) {
++			case DBUS_TYPE_BOOLEAN:
++				ret.boolean = *(dbus_bool_t*)(prop->value);
++				break;
++			case DBUS_TYPE_INT32:
++				ret.int32 = *(dbus_int32_t*)(prop->value);
++				break;
++			case DBUS_TYPE_UINT32:
++				ret.uint32 = *(dbus_uint32_t*)(prop->value);
++				break;
++			case DBUS_TYPE_INT64:
++				ret.int64 = *(dbus_int64_t*)(prop->value);
++				break;
++			case DBUS_TYPE_UINT64:
++				ret.uint64 =  *(dbus_uint64_t*)(prop->value);
++				break;
++			case DBUS_TYPE_DOUBLE:
++				ret.number = *(double*)(prop->value);
++				break;
++			case DBUS_TYPE_STRING:
++			case DBUS_TYPE_OBJECT:
++				ret.string = (char*)(prop->value);
++				break;
++			case DBUS_TYPE_ARRAY:
++				ret.array = (list_t*)(prop->value);
++				break;
++			default:
++				ret.error = 1;
++				warn(LOGOPT_NONE, MODPREFIX
++				     "udisks dbus type `%c' not handled", prop->type);
++				break;
++			}
++			break;
++		}
++	}
++
++	return ret;
++}
++
++static option_t get_option(const device_t *this, const devdict_t opt)
++{
++	filter_t *flt;
++	option_t ret;
++
++	memset(&ret, 0, sizeof(ret));
++	ret.error = 1;
++	if (sizeof(devproperpty)/sizeof(filter_t) < opt) {
++		logerr(MODPREFIX "udisks option `%d' not known", opt);
++		goto out;
++	}
++	flt = &devproperpty[opt];
++	if (flt->property == (char*)0) {
++		warn(LOGOPT_NONE, MODPREFIX "udisks option `%d' not known", opt);
++		goto out;
++	}
++	ret = map_property(&this->properties, flt->property);
++out:
++	return ret;
++}
++
++static option_t get_session(const session_t *this, const ckdict_t opt)
++{
++	filter_t *flt;
++	option_t ret;
++
++	memset(&ret, 0, sizeof(ret));
++	ret.error = 1;
++	if (sizeof(sessproperty)/sizeof(filter_t) < opt) {
++		logerr(MODPREFIX "udisks option `%d' not known", opt);
++		goto out;
++	}
++	flt = &sessproperty[opt];
++	if (flt->property == (char*)0) {
++		warn(LOGOPT_NONE, MODPREFIX "udisks option `%d' not known", opt);
++		goto out;
++	}
++	ret = map_property(&this->properties, flt->property);
++out:
++	return ret;
++}
++
++static entry_t *do_map_entry(struct lookup_context *ctxt, device_t *this)
++{
++	const int labels[] = {IdLabel, DriveModel, DriveVendor, DriveSerial, -1};
++	const config_t *const config = &ctxt->config;
++	entry_t *restrict entry = (entry_t*)0;
++	char mapent[MAPENT_MAX_LEN+1];
++	const char *fstype;
++	const char *fallbck;
++	const char *common;
++	const char *device;
++	option_t option;
++	size_t maplen;
++	int offset;
++	list_t *ptr;
++	char *key;
++
++	if (!config->enabled)
++		goto out;
++
++	option = get_option(this, DeviceIsSystemInternal);
++	if (option.error || option.boolean == TRUE)
++		goto out;
++
++	option = get_option(this, JobInProgress);
++	if (option.error || option.boolean == TRUE)
++		goto out;
++
++	option = get_option(this, DeviceIsRemovable);
++	if (option.error || option.boolean == FALSE) {
++		/*
++		 * Check for removable master device!
++		 */
++		option = get_option(this, DeviceIsDrive);
++		if (option.error)
++			goto out;
++		if (option.boolean == FALSE) {
++			device_t *master;
++			option = get_option(this, PartitionSlave);
++			if (option.error || strlen(option.string) <= 1)
++				goto out;
++			master = find_device(this->head, option.string);
++			option = get_option(master, DeviceIsRemovable);
++			if (option.error || option.boolean == FALSE)
++				goto out;
++		}
++	}
++
++	option = get_option(this, DeviceIsPartition);
++	if (option.error || option.boolean == FALSE) {
++		/*
++		 * Check for optical device with media!
++		 */
++		option = get_option(this, DeviceIsOpticalDisc);
++		if (option.error || option.boolean == FALSE)
++			goto out;
++		option = get_option(this, OpticalDiscNumAudioTracks);
++		if (option.error || option.uint32 > 0)
++			goto out;
++	}
++
++	option = get_option(this, IdUsage);
++	if (option.error || strcmp(option.string, "filesystem") != 0)
++			goto out;
++
++	option = get_option(this, IdType);
++	if (option.error)
++		goto out;
++	fstype = option.string;
++	if (*fstype == '\0')
++		fstype = "auto";
++
++	option = get_option(this, DeviceFilePresentation);
++	if (option.error)
++		goto out;
++	device = option.string;
++
++	maplen = sizeof(mapent);
++	offset = snprintf(&mapent[0], maplen, "-fstype=%s", fstype);
++	if (offset < 0 || offset >= maplen)
++		goto out;
++	maplen -= offset;
++
++	fallbck = (char*)0;
++	list_for_each(ptr, &config->fstypes) {
++		mntopt_t *fs = list_entry(ptr, mntopt_t, handle);
++		if (strcmp(fstype, fs->identify) == 0) {
++			int len = snprintf(&mapent[offset], maplen, ",%s", fs->options);
++			if (len < 0 || len >= maplen)
++				goto out;
++			offset += len;
++			maplen -= len;
++			fallbck = (char*)0;
++			break;
++		}
++		if (strcmp("auto", fs->identify) == 0)
++			fallbck = fs->identify;
++	}
++
++	if (fallbck) {
++		int len = snprintf(&mapent[offset], maplen, ",%s", fallbck);
++		if (len < 0 || len >= maplen)
++			goto out;
++		offset += len;
++		maplen -= len;
++	}
++
++	/*
++	 * Determine common mount options in order of <DiskByLabel>
++	 * <DiskById>, and last but not least <Common> from the
++	 * configuration file for the current map.
++	 */
++	common = (char*)0;
++	option = get_option(this, IdLabel);
++	if (option.error)
++		goto out;
++	if (*option.string) {
++		list_for_each(ptr, &config->label) {
++			mntopt_t *lb = list_entry(ptr, mntopt_t, handle);
++			if (strcmp(option.string, lb->identify) == 0) {
++				common = lb->options;
++				break;
++			}
++		}
++	}
++	if (!common) {
++		list_t *tmp;
++		option = get_option(this, DeviceFileById);
++		if (option.error)
++			goto out;
++		list_for_each(tmp, option.array) {
++			array_t *str = list_entry(tmp, array_t, handle);
++			list_for_each(ptr, &config->byid) {
++				mntopt_t *id = list_entry(ptr, mntopt_t, handle);
++				if (strcmp(str->value, id->identify) == 0) {
++					common = id->options;
++					break;
++				}
++			}
++			if (common) break;
++		}
++	}
++	if (!common) common = config->common;
++
++	if (common) {
++		int len = snprintf(&mapent[offset], maplen, ",%s", common);
++		if (len < 0 || len >= maplen)
++			goto out;
++		offset += len;
++		maplen -= len;
++	}
++
++	/*
++	 * Now add the device after a colon
++	 */
++	offset = snprintf(&mapent[offset], maplen, " :%s", device);
++	if (offset < 0 || offset >= maplen)
++		goto out;
++	maplen -= offset;
++
++	/*
++	 * The key of the entry
++	 */
++	key = (char*)0;
++	for (offset = 0; labels[offset] >= 0; offset++) {
++		char *ptr;
++
++		option = get_option(this, labels[offset]);
++		if (option.error)
++			continue;
++		if (*option.string == '\0')
++			continue;
++		if (strcasecmp(option.string, "usb") == 0)
++			continue;
++
++		key = strdup(option.string);
++		if (key == (char*)0)
++			goto out;
++
++		for (ptr = key; *ptr; ptr++) {
++			if (*ptr == ' ') *ptr = '_';
++			else if (*ptr == '/') *ptr = '_';
++			else if (*ptr < 32)  *ptr = '?';
++			else if (*ptr > 127) *ptr = '?';
++		}
++
++		break;
++	}
++	if (key == (char*)0)
++		goto out;
++
++	/*
++	 * Allocate the entry and return this.
++	 */
++	entry = newaligned(alignof(entry_t)+strsize(key)+strsize(mapent));
++	if (!entry)
++		goto out;
++	memset(entry, 0, alignof(entry_t));
++
++	entry->key = ((typeof(entry->key))entry)+alignof(entry_t);
++	entry->key_len = strlen(key);
++	strcpy(entry->key, key);
++
++	entry->mapent = ((typeof(entry->mapent))entry)+alignof(entry_t)+strsize(key);
++	entry->mapent_len = strlen(mapent);
++	strcpy(entry->mapent, mapent);
++
++	if (this->entry)
++		free(this->entry);
++	this->entry = entry;
++	free(key);
++out:
++	return entry;
++}
++
++/*
++ * We parse dbus messages structure as response of org.freedesktop.DBus.Properties.GetAll
++ * which looks like this one:
++ *
++ *    array [
++ *       dict_entry(
++ *          string   "DictName"
++ *          variant  [array:string|boolean|double|int32|int64|object_path|string|uint32|uint64]
++ *       )
++ *       ...
++ *    ]
++ *
++ */
++static void __iterate_reply(DBusMessageIter *iter, list_t *head, const char** name)
++{
++	do {
++		int type = dbus_message_iter_get_arg_type(iter);
++		if (type == DBUS_TYPE_INVALID)
++			break;
++		switch (type) {
++		case DBUS_TYPE_STRING: {
++			char *value;
++			dbus_message_iter_get_basic(iter, &value);
++			if (*name == (char*)0) {
++				*name = value;
++				break;
++			}
++			add_property(head, *name, DBUS_TYPE_STRING, value, strlen(value));
++			break;
++		}
++		case DBUS_TYPE_OBJECT_PATH: {
++			char *value;
++			if (*name == (char*)0)
++				goto err;
++			dbus_message_iter_get_basic(iter, &value);
++			add_property(head, *name, DBUS_TYPE_OBJECT_PATH, value, strlen(value));
++			break;
++		}
++		case DBUS_TYPE_INT32: {
++			dbus_int32_t value;
++			if (*name == (char*)0)
++				goto err;
++			dbus_message_iter_get_basic(iter, &value);
++			add_property(head, *name, DBUS_TYPE_INT32, &value, sizeof(dbus_int32_t));
++			break;
++		}
++		case DBUS_TYPE_UINT32: {
++			dbus_uint32_t value;
++			if (*name == (char*)0)
++				goto err;
++			dbus_message_iter_get_basic(iter, &value);
++			add_property(head, *name, DBUS_TYPE_UINT32, &value, sizeof(dbus_uint32_t));
++			break;
++		}
++		case DBUS_TYPE_INT64: {
++			dbus_int64_t value;
++			if (*name == (char*)0)
++				goto err;
++			dbus_message_iter_get_basic(iter, &value);
++			add_property(head, *name, DBUS_TYPE_INT64, &value, sizeof(dbus_int64_t));
++			break;
++		}
++		case DBUS_TYPE_UINT64: {
++			dbus_uint64_t value;
++			if (*name == (char*)0)
++				goto err;
++			dbus_message_iter_get_basic(iter, &value);
++			add_property(head, *name, DBUS_TYPE_UINT64, &value, sizeof(dbus_uint64_t));
++			break;
++		}
++		case DBUS_TYPE_DOUBLE: {
++			double value;
++			if (*name == (char*)0)
++				goto err;
++			dbus_message_iter_get_basic(iter, &value);
++			add_property(head, *name, DBUS_TYPE_DOUBLE, &value, sizeof(double));
++			break;
++		}
++		case DBUS_TYPE_BOOLEAN: {
++			dbus_bool_t value;
++			if (*name == (char*)0)
++				goto err;
++			dbus_message_iter_get_basic(iter, &value);
++			add_property(head, *name, DBUS_TYPE_BOOLEAN, &value, sizeof(dbus_bool_t));
++			break;
++		}
++		case DBUS_TYPE_ARRAY: {
++			int tsub;
++			property_t *prop;
++			DBusMessageIter isub;
++
++			if (name == (const char**)0) {
++				/*
++				 * The outer array of the message, check for first entry which
++				 * should be a dict container, anything else is a bug.
++				 */
++				dbus_message_iter_recurse (iter, &isub);
++				if (dbus_message_iter_get_arg_type(&isub) != DBUS_TYPE_DICT_ENTRY)
++					goto err;
++				__iterate_reply(&isub, head, (const char**)0);
++				break;
++			}
++
++			dbus_message_iter_recurse(iter, &isub);
++			tsub = dbus_message_iter_get_arg_type(&isub);
++			prop = add_property(head, *name, DBUS_TYPE_ARRAY, 0, sizeof(list_t));
++
++			while (tsub == DBUS_TYPE_STRING) {
++				char *value;
++				dbus_message_iter_get_basic(&isub, &value);
++				append_array(((list_t*)prop->value),  value);
++
++				dbus_message_iter_next(&isub);
++				tsub = dbus_message_iter_get_arg_type(&isub);
++			}
++			break;
++		}
++		case DBUS_TYPE_VARIANT: {
++			DBusMessageIter isub;
++			if (*name == (char*)0)
++				goto err;
++			dbus_message_iter_recurse(iter, &isub);
++			__iterate_reply(&isub, head, name);
++			break;
++		}
++		case DBUS_TYPE_DICT_ENTRY: {
++			const char *dict;
++			DBusMessageIter isub;
++			dbus_message_iter_recurse(iter, &isub);
++			dict = (const char*)0;
++			__iterate_reply(&isub, head, &dict);
++			dbus_message_iter_next(&isub);
++			__iterate_reply(&isub, head, &dict);
++			break;
++		}
++		default:
++		err:
++			warn(LOGOPT_NONE, MODPREFIX "udisks reply type `%c' not handled", type);
++			break;
++		}
++	} while (dbus_message_iter_next(iter));
++}
++
++static inline void iterate_device_reply(DBusMessageIter *iter, list_t *head)
++{
++	property = &devproperpty[0];
++	__iterate_reply(iter, head, (const char**)0);
++	property = (filter_t*)0;
++}
++
++static int read_device_properties(struct lookup_context *ctxt, device_t *obj)
++{
++	const char *device = "org.freedesktop.UDisks.Device";
++	DBusMessage *reply, *send;
++	DBusMessageIter iter;
++	const char *signature;
++	int ret = NSS_STATUS_UNAVAIL;
++
++	send = dbus_message_new_method_call("org.freedesktop.UDisks",
++					     obj->node,
++					    "org.freedesktop.DBus.Properties",
++					    "GetAll");
++	if (!send)
++		goto out;
++	dbus_message_set_auto_start(send, TRUE);
++	if (!dbus_message_set_destination(send, "org.freedesktop.UDisks"))
++		goto out;
++
++	dbus_message_iter_init_append(send, &iter);
++
++	dbus_message_iter_append_basic(&iter, DBUS_TYPE_STRING, &device);
++
++	reply = dbus_connection_send_with_reply_and_block(ctxt->conn, send, 50000, ctxt->error);
++	dbus_message_unref(send);
++
++	if (dbus_error_is_set(ctxt->error)) {
++		warn(LOGOPT_NONE, MODPREFIX
++		     "udisks map %s, can not connect system dbus: %s", ctxt->mapname, ctxt->error->message);
++		dbus_error_free(ctxt->error);
++		goto out;
++	}
++	if (!reply)
++		goto out;
++	if (dbus_message_get_type(reply) != DBUS_MESSAGE_TYPE_METHOD_RETURN)
++		goto unref;
++	signature = dbus_message_get_signature(reply);
++	if ((int)*signature != DBUS_TYPE_ARRAY)
++		goto unref;
++	dbus_message_iter_init(reply, &iter);
++	iterate_device_reply(&iter, &obj->properties);
++	ret = NSS_STATUS_SUCCESS;
++unref:
++	dbus_message_unref(reply);
++out:
++	if (ret != NSS_STATUS_SUCCESS)
++		logerr(MODPREFIX "%s failed", __FUNCTION__);
++	return ret;
++}
++
++static inline void iterate_session_reply(DBusMessageIter *iter, list_t *head)
++{
++	property = &sessproperty[0];
++	__iterate_reply(iter, head, (const char**)0);
++	property = (filter_t*)0;
++}
++
++static int read_session_properties(struct lookup_context *ctxt, session_t *obj)
++{
++	const char *session = "org.freedesktop.ConsoleKit.Session";
++	DBusMessage *reply, *send;
++	DBusMessageIter iter;
++	const char *signature;
++	int ret = NSS_STATUS_UNAVAIL;
++
++	send = dbus_message_new_method_call("org.freedesktop.ConsoleKit",
++					     obj->node,
++					    "org.freedesktop.DBus.Properties",
++					    "GetAll");
++	if (!send)
++		goto out;
++	dbus_message_set_auto_start(send, TRUE);
++	if (!dbus_message_set_destination(send, "org.freedesktop.ConsoleKit"))
++		goto out;
++
++	dbus_message_iter_init_append(send, &iter);
++
++	dbus_message_iter_append_basic(&iter, DBUS_TYPE_STRING, &session);
++
++	reply = dbus_connection_send_with_reply_and_block(ctxt->conn, send, 50000, ctxt->error);
++	dbus_message_unref(send);
++
++	if (dbus_error_is_set(ctxt->error)) {
++		warn(LOGOPT_NONE, MODPREFIX
++		     "udisks sessions %s, can not connect system dbus: %s", ctxt->mapname, ctxt->error->message);
++		dbus_error_free(ctxt->error);
++		goto out;
++	}
++	if (!reply)
++		goto out;
++	if (dbus_message_get_type(reply) != DBUS_MESSAGE_TYPE_METHOD_RETURN)
++		goto unref;
++	signature = dbus_message_get_signature(reply);
++	if ((int)*signature != DBUS_TYPE_ARRAY)
++		goto unref;
++	dbus_message_iter_init(reply, &iter);
++	iterate_session_reply(&iter, &obj->properties);
++	ret = NSS_STATUS_SUCCESS;
++unref:
++	dbus_message_unref(reply);
++out:
++	if (ret != NSS_STATUS_SUCCESS)
++		logerr(MODPREFIX "%s failed", __FUNCTION__);
++	return ret;
++}
++
++typedef enum member_e {
++	DeviceAdded = 0,
++	DeviceChanged,
++	DeviceRemoved,
++	SessionAdded,
++	SessionRemoved,
++	UnkownMember
++} member_t;
++
++static time_t do_cache_update(struct lookup_context *ctxt,
++	const char *key, const char *mapent,
++	const int update)
++{
++	struct autofs_point *ap = ctxt->ap;
++	struct map_source *map = ctxt->map;
++	struct mapent_cache *mc;
++	time_t age = time(NULL);
++	char path[PATH_MAX+1];
++	int manage = 0;
++
++	if (!ap || !map->mc)
++		return 0;
++	mc = map->mc;
++
++	if ((ap->flags & MOUNT_FLAG_GHOST) && strlen(key)) {
++		int len = snprintf(path, PATH_MAX, "%s/%s", ap->path, key);
++		if (len < 0 || len >= PATH_MAX)
++			return 0;
++		manage = 1;
++	}
++
++	cache_writelock(mc);
++	switch (update) {
++	case DeviceRemoved:
++		debug(LOGOPT_NONE, MODPREFIX "%s %d remove %s -> %s", __FUNCTION__, __LINE__, key, mapent);
++		cache_delete(mc, key);
++		if (manage)
++			rmdir_path(ap, path, ap->dev);
++		break;
++	default:
++	case DeviceAdded:
++		debug(LOGOPT_NONE, MODPREFIX "%s %d added %s -> %s", __FUNCTION__, __LINE__, key, mapent);
++		cache_update(mc, map, key, mapent, age);
++		if (manage)
++			mkdir_path(path, 0555);
++		break;
++	}
++	cache_unlock(mc);
++
++	map->age = age;
++	return age;
++}
++
++static DBusHandlerResult dbusfilter(DBusConnection *connection,
++	DBusMessage *message,
++	void *context)
++{
++	struct lookup_context *ctxt = (struct lookup_context *)context;
++	DBusMessageIter iter;
++	const char *interface;
++	const char *member;
++	const char *path;
++	int type, state;
++	member_t memb;
++
++	pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, &state);
++
++	type = dbus_message_get_type(message);
++	switch (type) {
++	case DBUS_MESSAGE_TYPE_SIGNAL:
++	case DBUS_MESSAGE_TYPE_METHOD_CALL:
++		path = dbus_message_get_path(message);
++		if (!path)
++			break;
++		if (strncmp("/org/freedesktop/", path, 17))
++			break;
++		interface = dbus_message_get_interface(message);
++		if (!interface)
++			break;
++		if (strncmp("org.freedesktop.", interface, 16))
++			break;
++		member = dbus_message_get_member(message);
++		if (!member) {
++			warn(LOGOPT_NONE, MODPREFIX
++			     "udisks member of `%s' is missed known", path);
++			break;
++		}
++
++		memb = UnkownMember;
++		if (strcmp("UDisks", path+17) == 0) {
++			if (strcmp("UDisks", interface+16))
++				break;
++			if (strncmp(member, "Device", 6)) {
++				warn(LOGOPT_NONE, MODPREFIX
++				     "udisks member `%s' not known", member);
++				break;
++			}
++			member += 6;
++
++			if (strcmp(member, "Added") == 0)
++				memb = DeviceAdded;
++			else if (strcmp(member, "Changed") == 0)
++				memb = DeviceChanged;
++			else if (strcmp(member, "Removed") == 0)
++				memb = DeviceRemoved;
++
++		} else if (strncmp("ConsoleKit/Seat", path+17, 4) == 0) {
++			if (strcmp("ConsoleKit.Seat", interface+16))
++				break;
++			if (strncmp(member, "Session", 7)) {
++				warn(LOGOPT_NONE, MODPREFIX
++				     "udisks member `%s' not known", member);
++				break;
++			}
++			member += 7;
++
++			if (strcmp(member, "Added") == 0)
++				memb = SessionAdded;
++			else if (strcmp(member, "Removed") == 0)
++				memb = SessionRemoved;
++
++		} else
++			break;
++
++		dbus_message_iter_init(message, &iter);
++		type = dbus_message_iter_get_arg_type(&iter);
++		if (type != DBUS_TYPE_OBJECT_PATH) {
++			warn(LOGOPT_NONE, MODPREFIX
++			     "udisks member `Device%s' without object path", member);
++			break;
++		}
++		dbus_message_iter_get_basic(&iter, &path);
++		lock(ctxt);
++		switch (memb) {
++		case DeviceAdded: {
++			device_t *this = add_device(&ctxt->devices, path);
++			if (this) {
++				entry_t *entry;
++				int ret = read_device_properties(ctxt, this);
++				if (ret != NSS_STATUS_SUCCESS) {
++					remove_device(&ctxt->devices, path);
++					break;
++				}
++				entry = do_map_entry(ctxt, this);
++				if (entry)
++					entry->age = do_cache_update(ctxt, entry->key, entry->mapent, DeviceAdded);
++			}
++			break;
++		}
++		case DeviceChanged: {
++			char *key = (char*)0;
++			device_t *this = find_device(&ctxt->devices, path);
++			if (this) {
++				entry_t *entry = this->entry;
++				if (entry)
++					key = strdup(entry->key);
++				delete_device(this);
++			}
++			this = add_device(&ctxt->devices, path);
++			if (this) {
++				entry_t *entry;
++				int ret = read_device_properties(ctxt, this);
++				if (ret != NSS_STATUS_SUCCESS) {
++					remove_device(&ctxt->devices, path);
++					if (key)
++						free(key);
++					break;
++				}
++				entry = do_map_entry(ctxt, this);
++				if (entry) {
++					if (key == (char*)0)
++						entry->age = do_cache_update(ctxt, entry->key, entry->mapent, DeviceAdded);
++					else if (strcmp(key, entry->key) != 0) {
++						entry->age = do_cache_update(ctxt, entry->key, entry->mapent, DeviceAdded);
++						free(key);
++					}
++				} else {
++					if (key) {
++						(void)do_cache_update(ctxt, key, (char*)0, DeviceRemoved);
++						free(key);
++					}
++				}
++				break;
++			}
++			if (!key)
++				break;
++			do_cache_update(ctxt, key, (char*)0, DeviceRemoved);
++			free(key);
++			break;
++		}
++		case DeviceRemoved: {
++			device_t *this = find_device(&ctxt->devices, path);
++			if (this) {
++				entry_t *entry = this->entry;
++				if (entry)
++					(void)do_cache_update(ctxt, entry->key, (char*)0, DeviceRemoved);
++				delete_device(this);
++			}
++			break;
++		}
++		case SessionAdded: {
++			session_t *this = add_session(&ctxt->sessions, path);
++			if (this) {
++				int ret = read_session_properties(ctxt, this);
++				if (ret == NSS_STATUS_SUCCESS) {
++					debug(LOGOPT_NONE, MODPREFIX "%s %d added session %s", __FUNCTION__, __LINE__, path);
++					break;
++				}
++				remove_session(&ctxt->sessions, path);
++			}
++			break;
++		}
++		case SessionRemoved: {
++			session_t *this = find_session(&ctxt->sessions, path);
++			if (this) {
++				debug(LOGOPT_NONE, MODPREFIX "%s %d removed session %s", __FUNCTION__, __LINE__, path);
++				delete_session(this);
++			}
++			break;
++		}
++		default:
++			warn(LOGOPT_NONE, MODPREFIX "udisks member `Device%s' not known", member);
++			break;
++		}
++		unlock(ctxt);
++	default:
++		break;
++	}
++
++	pthread_setcancelstate(state, NULL);
++
++	if (dbus_message_is_signal (message, DBUS_INTERFACE_LOCAL, "Disconnected")) {
++		if (ctxt->active) {
++			lock(ctxt);
++			ctxt->active = 0;
++			unlock(ctxt);
++			pthread_exit(NULL);
++		}
++	}
++
++	return DBUS_HANDLER_RESULT_HANDLED;
++}
++
++static void free_config(struct lookup_context *ctxt)
++{
++	list_t *ptr, *safe;
++	if (ctxt->config.common)
++		free(ctxt->config.common);
++	list_for_each_safe(ptr, safe, &ctxt->config.fstypes) {
++		mntopt_t *this = list_entry(ptr, mntopt_t, handle);
++		list_del(ptr);
++		free(this);
++	}
++	list_for_each_safe(ptr, safe, &ctxt->config.byid) {
++		mntopt_t *this = list_entry(ptr, mntopt_t, handle);
++		list_del(ptr);
++		free(this);
++	}
++	list_for_each_safe(ptr, safe, &ctxt->config.label) {
++		mntopt_t *this = list_entry(ptr, mntopt_t, handle);
++		list_del(ptr);
++		free(this);
++	}
++}
++
++#ifdef LIBXML_TREE_ENABLED
++static void xmlerror(void *context, const xmlError *err)
++{
++	struct lookup_context *ctxt = (struct lookup_context*)context;
++	char *message = err->message;
++	char *nl = strrchr(message, '\n');
++	if (nl) *nl = '\0';
++	logerr(MODPREFIX "in %s at line %d: %s", ctxt->mapname, err->line, err->message);
++	xmlResetError(err);
++	ctxt->config.enabled = 0;
++}
++
++#define FILTER(property)	{ #property, property }
++static filter_t cnfproperpty[] = {
++	FILTER(AutofsUdisks),
++	FILTER(MountOptions),
++	FILTER(Common),
++	FILTER(DiskById),
++	FILTER(DiskByLabel),
++	FILTER(FSType),
++	{ (char*)0, 0 }
++};
++#undef FILTER
++
++static filter_t *check_config(struct lookup_context *ctxt, const xmlChar *name, const int depth)
++{
++	filter_t *flt;
++	cnfxml_t obj = 0;
++
++	flt = &cnfproperpty[obj];
++
++	do {
++		if (flt->property == (char*)0)
++			break;
++		if (strcmp(flt->property, (char*)name) == 0)
++			break;
++	} while (flt++);
++
++	switch (flt->type) {
++	case AutofsUdisks:
++	case MountOptions:
++		if (depth == flt->type)
++			break;
++		logerr(MODPREFIX "broken xml configuration file %s", ctxt->mapname);
++		ctxt->config.enabled = 0;
++	default:
++		break;
++	}
++
++	return flt;
++}
++
++static void add_config(struct lookup_context *ctxt, list_t *head, const char *fs, const char* opts)
++{
++	mntopt_t *restrict new;
++
++	new = newaligned(alignof(mntopt_t)+strsize(fs)+strsize(opts));
++	if (!new) {
++		ctxt->config.enabled = 0;
++		return;
++	}
++	memset(new, 0, alignof(mntopt_t));
++
++	list_add_tail(&new->handle, head);
++
++	new->identify = ((typeof(new->identify))new)+alignof(mntopt_t);
++	strcpy(new->identify, fs);
++
++	new->options = ((typeof(new->options))new)+alignof(mntopt_t)+strsize(fs);
++	strcpy(new->options, opts);
++}
++
++static void iterate_config(struct lookup_context *ctxt, const xmlNode *node, int depth)
++{
++	const xmlNode *curr;
++
++	for (curr = node; curr; curr = curr->next) {
++		const xmlAttr *attr;
++		xmlNode *child;
++		xmlChar *entry;
++		xmlChar *opts;
++		filter_t *flt;
++		list_t *head;
++		int cnt;
++
++		if (curr->type != XML_ELEMENT_NODE)
++			continue;
++		child = curr->children;
++		flt = check_config(ctxt, curr->name, depth);
++		head = (list_t*)0;
++		opts = (xmlChar*)0;
++
++		entry = xmlNodeListGetString(curr->doc, child, 1);
++		if (entry) {
++			char *nl;
++			opts = entry;
++			while (*opts == ' ' || *opts == '\n')
++				opts++;
++			if ((nl = strchr((char*)opts, '\n')))
++				*nl = '\0';
++			switch (flt->type) {
++			case AutofsUdisks:
++			case MountOptions:
++				if (*opts == '\0')
++					break;
++				goto err;
++			case Common:
++				if (ctxt->config.common)
++					goto err;
++				ctxt->config.common = strdup((char*)opts);
++				break;
++			case DiskById:
++				if (!curr->properties)
++					goto err;
++				head = &ctxt->config.byid;
++				break;
++			case DiskByLabel:
++				if (!curr->properties)
++					goto err;
++				head = &ctxt->config.label;
++				break;
++			case FSType:
++				head = &ctxt->config.fstypes;
++				if (!curr->properties)
++					add_config(ctxt, head, "auto", (const char*)opts);
++				break;
++			default:
++				goto err;
++			}
++		}
++
++		for (attr = curr->properties, cnt = 0; attr; attr = attr->next, cnt++) {
++			xmlChar *key;
++			if (!attr->name)
++				continue;
++			switch (flt->type) {
++			case MountOptions:
++			case Common:
++				goto err;
++			default:
++				if (!cnt)
++					break;
++				goto err;
++			}
++			key = xmlNodeListGetString(attr->doc, attr->children, 1);
++			if (key) {
++				char *nl;
++				xmlChar *ptr = key;
++				while (*ptr == ' ' || *ptr == '\n')
++					ptr++;
++				if ((nl = strchr((char*)opts, '\n')))
++					*nl = '\0';
++				switch (flt->type) {
++				case AutofsUdisks:
++					if (strcmp("enable", (char*)attr->name))
++						goto err;
++					if (strcasecmp("true", (char*)ptr) == 0 ||
++					    strcasecmp("yes", (char*)ptr) == 0)
++						ctxt->config.enabled = 1;	/* Here we go */
++					break;
++				default:
++					if (strcmp("value", (char*)attr->name))
++						goto err;
++					if (!head || !opts)
++						goto err;
++					add_config(ctxt, head, (const char*)ptr, (const char*)opts);
++					break;
++				}
++				xmlFree(key);
++			}
++		}
++		if (entry)
++			xmlFree(entry);
++
++		iterate_config(ctxt, child, ++depth);
++	}
++	return;
++err:
++	logerr(MODPREFIX "broken xml configuration file %s", ctxt->mapname);
++	ctxt->config.enabled = 0;
++}
++
++static void parse_config(struct lookup_context *ctxt, const char* path)
++{
++	xmlNode *root = (xmlNode*)0;
++	xmlDoc *doc;
++
++	xmlSetStructuredErrorFunc(ctxt, &xmlerror);
++
++	doc = xmlReadFile(path, (const char*)0, XML_PARSE_NONET | XML_PARSE_PEDANTIC);
++	if (!doc)
++		return;
++	root = xmlDocGetRootElement(doc);
++	if (!root) {
++		xmlFreeDoc(doc);
++		return;
++	}
++
++	iterate_config(ctxt, root, 0);
++
++	xmlFreeDoc(doc);
++	xmlCleanupParser();
++}
++#else /* !LIBXML_TREE_ENABLED */
++static void parse_config(struct lookup_context ctxt, const char* path)
++{
++	ctxt->config.enabled = 0;
++}
++#endif /* !LIBXML_TREE_ENABLED */
++
++static void free_context(struct lookup_context *ctxt)
++{
++	if (ctxt->active) {
++		lock(ctxt);
++		ctxt->active = 0;
++		unlock(ctxt);
++		pthread_yield();
++		if (ctxt->running && ctxt->watchdog)
++			pthread_cancel(ctxt->watchdog);
++	}
++
++	lock(ctxt);
++	if (!list_empty(&ctxt->devices)) {
++		list_t *ptr;
++		list_for_each(ptr, &ctxt->devices) {
++                        entry_t *entry;
++			device_t *this = list_entry(ptr, device_t, handle);
++			if (!this)
++				continue;
++			entry = do_map_entry(ctxt, this);
++			if (!entry)
++				continue;
++			do_cache_update(ctxt, entry->key, entry->mapent, DeviceRemoved);
++		}
++		clear_devices(&ctxt->devices);
++	}
++	if (!list_empty(&ctxt->sessions))
++		clear_sessions(&ctxt->sessions);
++	unlock(ctxt);
++	pthread_mutex_destroy(&ctxt->mtx);
++
++	free_config(ctxt);
++
++	if (ctxt->error && dbus_error_is_set(ctxt->error))
++		dbus_error_free(ctxt->error);
++	if (ctxt->conn) {
++		dbus_connection_close(ctxt->conn);
++		dbus_connection_unref(ctxt->conn);
++	}
++	dbus_shutdown();
++
++	free(ctxt);
++}
++
++int lookup_version = AUTOFS_LOOKUP_VERSION;     /* Required by protocol */
++int lookup_init(const char *mapfmt, int argc, const char *const *argv, void **context)
++{
++	struct lookup_context *restrict ctxt;
++	struct stat st;
++	int ret;
++
++	*context = NULL;
++
++	debug(LOGOPT_NONE, MODPREFIX "lookup init with argv[0] == %s", argv[0]);
++
++	if (sizeof(devproperpty)/sizeof(filter_t) != NullDict+1) {
++		logerr(MODPREFIX "size of hash array does not fit numbers of symbols");
++		goto err;
++	}
++	if (sizeof(sessproperty)/sizeof(filter_t) != NullCk+1) {
++		logerr(MODPREFIX "size of hash array does not fit numbers of symbols");
++		goto err;
++	}
++
++#ifdef LIBXML_TREE_ENABLED
++	if (sizeof(cnfproperpty)/sizeof(filter_t) != NullCnf+1) {
++		logerr(MODPREFIX "size of hash array does not fit numbers of symbols");
++		goto err;
++	}
++	xmlInitParser();
++
++	/*
++	 * This initialize the library and check potential ABI mismatches
++	 * between the version it was compiled for and the actual shared
++	 * library used.
++	 */
++	LIBXML_TEST_VERSION
++#else /* !LIBXML_TREE_ENABLED */
++	logerr(MODPREFIX "there was no XML support compiled in");
++	goto err;
++#endif /* !LIBXML_TREE_ENABLED */
++	ctxt = newaligned(alignof(struct lookup_context)+sizeof(struct DBusError));
++	if (!ctxt)
++		goto err;
++	memset(ctxt, 0, alignof(struct lookup_context));
++
++	INIT_LIST_HEAD(&ctxt->devices);
++	INIT_LIST_HEAD(&ctxt->sessions);
++	INIT_LIST_HEAD(&ctxt->config.fstypes);
++	INIT_LIST_HEAD(&ctxt->config.byid);
++	INIT_LIST_HEAD(&ctxt->config.label);
++	ctxt->config.enabled = 0;
++	ctxt->error = (struct DBusError*)((void*)ctxt+alignof(struct lookup_context));
++	dbus_error_init(ctxt->error);
++
++	ret = pthread_mutex_init(&ctxt->mtx, NULL);
++	if (ret) {
++		error(LOGOPT_ANY, MODPREFIX "failed to init mutex");
++		goto ferr;
++	}
++
++	/* If a map type isn't explicitly given, parse it like sun entries. */
++	if (mapfmt == NULL)
++		mapfmt = MAPFMT_DEFAULT;
++
++	if (argc < 1) {
++		logerr(MODPREFIX "No map name");
++		goto ferr;
++	}
++	ctxt->mapname = argv[0];
++	if (ctxt->mapname[0] != '/') {
++		logmsg(MODPREFIX
++		       "udisks autofs %s is not an absolute pathname", argv[0]);
++		goto ferr;
++	}
++	if (access(ctxt->mapname, R_OK)) {
++		logerr(MODPREFIX
++		       "udisks autofs %s missing or not readable", argv[0]);
++		goto ferr;
++	}
++	if (stat(ctxt->mapname, &st)) {
++		logerr(MODPREFIX
++		       "udisks autofs %s, could not stat", argv[0]);
++		goto ferr;
++	}
++
++	if (S_ISREG(st.st_mode) == 0) {
++		logerr(MODPREFIX
++		       "udisks autofs %s, is not a regular file", argv[0]);
++		goto ferr;
++	}
++	parse_config(ctxt, ctxt->mapname);
++
++	if (dbus_threads_init_default() == FALSE) {
++		char buf[MAX_ERR_BUF];
++		const char *const estr = strerror_r(errno, buf, sizeof(buf));
++		logerr(MODPREFIX "memory allocation: %s", estr);
++		return NSS_STATUS_UNAVAIL;
++	}
++
++	ctxt->conn = dbus_bus_get_private(DBUS_BUS_SYSTEM, ctxt->error);
++	if (!ctxt->conn) {
++		logerr(MODPREFIX "udisks map %s, can not connect system dbus: %s",
++		       ctxt->mapname, ctxt->error->message);
++		goto ferr;
++	}
++	dbus_connection_set_exit_on_disconnect(ctxt->conn, FALSE);
++
++	ret = dbus_bus_start_service_by_name(ctxt->conn, "org.freedesktop.UDisks", 0, 0, ctxt->error);
++	if ((dbus_bool_t)ret == FALSE) {
++		warn(LOGOPT_NONE, MODPREFIX
++			"udisks map %s, can not start system udisks service: %s", argv[0], ctxt->error->message);
++		goto ferr;
++	}
++
++	ret = dbus_bus_request_name(ctxt->conn, "org.freedesktop.AutoMount", DBUS_NAME_FLAG_REPLACE_EXISTING, ctxt->error);
++	if ((dbus_bool_t)ret == FALSE) {
++		logerr(MODPREFIX "udisks map %s, can not connect system dbus: %s",
++		       ctxt->mapname, ctxt->error->message);
++		goto ferr;
++	}
++
++        /* Open the parser, if we can. */
++	ctxt->parse = open_parse(mapfmt, MODPREFIX, argc - 1, argv + 1);
++	if (!ctxt->parse) {
++		logerr(MODPREFIX "failed to open parse context");
++		goto ferr;
++	}
++
++	ctxt->ap = (struct autofs_point*)0;
++	*context = ctxt;
++	return NSS_STATUS_SUCCESS;
++ferr:
++	free_context(ctxt);
++err:
++	logerr(MODPREFIX "%s failed", __FUNCTION__);
++	return NSS_STATUS_NOTFOUND;
++}
++
++int lookup_read_master(struct master *master, time_t age, void *context)
++{
++	logmsg(MODPREFIX "%s master not supported", __FUNCTION__);
++	return NSS_STATUS_UNKNOWN;
++}
++
++static int read_current_map(struct lookup_context *ctxt)
++{
++	DBusMessage *reply, *send;
++	DBusMessageIter iter, isub;
++	int type, ret = NSS_STATUS_UNAVAIL;
++
++	send = dbus_message_new_method_call("org.freedesktop.UDisks",
++					    "/org/freedesktop/UDisks",
++					    "org.freedesktop.UDisks",
++					    "EnumerateDevices");
++	if (!send)
++		goto err;
++	dbus_message_set_auto_start(send, TRUE);
++	if (!dbus_message_set_destination(send, "org.freedesktop.UDisks"))
++		goto err;
++
++	reply = dbus_connection_send_with_reply_and_block(ctxt->conn, send, 50000, ctxt->error);
++	dbus_message_unref(send);
++
++	if (dbus_error_is_set(ctxt->error)) {
++		logerr(MODPREFIX "udisks map %s, can not connect system dbus: %s",
++		       ctxt->mapname, ctxt->error->message);
++		dbus_error_free(ctxt->error);
++		goto err;
++	}
++	if (!reply)
++		goto err;
++	if (dbus_message_get_type(reply) != DBUS_MESSAGE_TYPE_METHOD_RETURN)
++		goto unref;
++
++	/*
++	 * As reply we assume an array of strings here,
++	 * each of them a device path
++	 */
++	dbus_message_iter_init(reply, &iter);
++	type = dbus_message_iter_get_arg_type(&iter);
++	if (type != DBUS_TYPE_ARRAY)
++		goto unref;
++
++	dbus_message_iter_recurse (&iter, &isub);
++	type = dbus_message_iter_get_arg_type(&isub);
++	if (type == DBUS_TYPE_BYTE)
++		goto unref;
++
++	while (type == DBUS_TYPE_OBJECT_PATH) {
++		char *path;
++
++		dbus_message_iter_get_basic(&isub, &path);
++		if (add_device(&ctxt->devices, path) == (device_t*)0)
++			goto unref;
++
++		dbus_message_iter_next (&isub);
++		type = dbus_message_iter_get_arg_type(&isub);
++	}
++	ret = NSS_STATUS_SUCCESS;
++unref:
++	dbus_message_unref(reply);
++err:
++	if (ret != NSS_STATUS_SUCCESS)
++		logerr(MODPREFIX "%s faild", __FUNCTION__);
++	return ret;
++}
++
++static int read_current_sessions(struct lookup_context *ctxt, const char* seat)
++{
++	DBusMessage *reply, *send;
++	DBusMessageIter iter, isub;
++	int type, ret = NSS_STATUS_UNAVAIL;
++
++
++	send = dbus_message_new_method_call("org.freedesktop.ConsoleKit",
++					    seat,
++					    "org.freedesktop.ConsoleKit.Seat",
++					    "GetSessions");
++	if (!send)
++		goto err;
++	dbus_message_set_auto_start(send, TRUE);
++	if (!dbus_message_set_destination(send, "org.freedesktop.ConsoleKit"))
++		goto err;
++
++	reply = dbus_connection_send_with_reply_and_block(ctxt->conn, send, 50000, ctxt->error);
++	dbus_message_unref(send);
++
++	if (dbus_error_is_set(ctxt->error)) {
++		logerr(MODPREFIX "udisks sessions %s, can not connect system dbus: %s",
++		       ctxt->mapname, ctxt->error->message);
++		dbus_error_free(ctxt->error);
++		goto err;
++	}
++	if (!reply)
++		goto err;
++	if (dbus_message_get_type(reply) != DBUS_MESSAGE_TYPE_METHOD_RETURN)
++		goto unref;
++
++	/*
++	 * As reply we assume an array of strings here,
++	 * each of them a seat path
++	 */
++	dbus_message_iter_init(reply, &iter);
++	type = dbus_message_iter_get_arg_type(&iter);
++	if (type != DBUS_TYPE_ARRAY)
++		goto unref;
++
++	dbus_message_iter_recurse (&iter, &isub);
++	type = dbus_message_iter_get_arg_type(&isub);
++	if (type == DBUS_TYPE_BYTE)
++		goto unref;
++
++	while (type == DBUS_TYPE_OBJECT_PATH) {
++		char *path;
++
++		dbus_message_iter_get_basic(&isub, &path);
++		if (add_session(&ctxt->sessions, path) == (session_t*)0)
++			goto unref;
++
++		dbus_message_iter_next (&isub);
++		type = dbus_message_iter_get_arg_type(&isub);
++	}
++	ret = NSS_STATUS_SUCCESS;
++unref:
++	dbus_message_unref(reply);
++err:
++	if (ret != NSS_STATUS_SUCCESS)
++		logerr(MODPREFIX "%s faild", __FUNCTION__);
++	return ret;
++}
++
++static int read_current_seats(struct lookup_context *ctxt)
++{
++	DBusMessage *reply, *send;
++	DBusMessageIter iter, isub;
++	int type, ret = NSS_STATUS_UNAVAIL;
++
++	send = dbus_message_new_method_call("org.freedesktop.ConsoleKit",
++					    "/org/freedesktop/ConsoleKit/Manager",
++					    "org.freedesktop.ConsoleKit.Manager",
++					    "GetSeats");
++	if (!send)
++		goto err;
++	dbus_message_set_auto_start(send, TRUE);
++	if (!dbus_message_set_destination(send, "org.freedesktop.ConsoleKit"))
++		goto err;
++
++	reply = dbus_connection_send_with_reply_and_block(ctxt->conn, send, 50000, ctxt->error);
++	dbus_message_unref(send);
++
++	if (dbus_error_is_set(ctxt->error)) {
++		logerr(MODPREFIX "udisks seats %s, can not connect system dbus: %s",
++		       ctxt->mapname, ctxt->error->message);
++		dbus_error_free(ctxt->error);
++		goto err;
++	}
++	if (!reply)
++		goto err;
++	if (dbus_message_get_type(reply) != DBUS_MESSAGE_TYPE_METHOD_RETURN)
++		goto unref;
++
++	/*
++	 * As reply we assume an array of strings here,
++	 * each of them a seat path
++	 */
++	dbus_message_iter_init(reply, &iter);
++	type = dbus_message_iter_get_arg_type(&iter);
++	if (type != DBUS_TYPE_ARRAY)
++		goto unref;
++
++	dbus_message_iter_recurse (&iter, &isub);
++	type = dbus_message_iter_get_arg_type(&isub);
++	if (type == DBUS_TYPE_BYTE)
++		goto unref;
++
++	while (type == DBUS_TYPE_OBJECT_PATH) {
++		char *seat;
++
++		dbus_message_iter_get_basic(&isub, &seat);
++		if (read_current_sessions(ctxt, seat) != NSS_STATUS_SUCCESS)
++			goto unref;
++
++		dbus_message_iter_next (&isub);
++		type = dbus_message_iter_get_arg_type(&isub);
++	}
++	ret = NSS_STATUS_SUCCESS;
++unref:
++	dbus_message_unref(reply);
++err:
++	if (ret != NSS_STATUS_SUCCESS)
++		logerr(MODPREFIX "%s faild", __FUNCTION__);
++	return ret;
++}
++
++static void *udisks_dispatcher(void *context)
++{
++	struct lookup_context *ctxt = (struct lookup_context *)context;
++
++	lock(ctxt);
++	ctxt->active = 1;
++	ctxt->running = 1;
++	unlock(ctxt);
++	while (dbus_connection_read_write_dispatch(ctxt->conn, -1)) {
++		if (!ctxt->active)
++			break;
++	}
++	lock(ctxt);
++	ctxt->running = 0;
++	unlock(ctxt);
++	return NULL;
++}
++
++static int enable_udisks_watchdog(struct lookup_context *ctxt)
++{
++	int policy = SCHED_RR, ret;
++	struct sched_param param;
++	char match[128] = "eavesdrop='true',type='signal',sender='org.freedesktop.%s',interface='org.freedesktop.%s'";
++	char *restrict mptr;
++	int offset;
++
++	if (ctxt->monitor)
++		goto dog;
++	offset = 0;
++ckretry:
++	ret = asprintf((char**)&mptr, &match[offset], "ConsoleKit", "ConsoleKit.Seat");
++	if (ret < 0) {
++		char buf[MAX_ERR_BUF];
++		const char *const estr = strerror_r(errno, buf, sizeof(buf));
++		logerr(MODPREFIX "memory allocation: %s", estr);
++		goto err;
++	}
++	dbus_bus_add_match(ctxt->conn, mptr, ctxt->error);
++	free(mptr);
++	if (dbus_error_is_set(ctxt->error)) {
++		if (!offset && strcmp(ctxt->error->name, DBUS_ERROR_MATCH_RULE_INVALID) == 0) {
++			offset = strlen("eavesdrop='true',");
++			dbus_error_free(ctxt->error);
++			goto ckretry;
++		}
++		logerr(MODPREFIX "udisks sessions %s, can not listen system ConsoleKit: %s",
++		       ctxt->mapname, ctxt->error->message);
++		dbus_error_free(ctxt->error);
++		goto err;
++	}
++	offset = 0;
++uretry:
++	ret = asprintf((char**)&mptr, &match[offset], "UDisks", "UDisks");
++	if (ret < 0) {
++		char buf[MAX_ERR_BUF];
++		const char *const estr = strerror_r(errno, buf, sizeof(buf));
++		logerr(MODPREFIX "memory allocation: %s", estr);
++		goto err;
++	}
++	dbus_bus_add_match(ctxt->conn, mptr, ctxt->error);
++	free(mptr);
++	if (dbus_error_is_set(ctxt->error)) {
++		if (!offset && strcmp(ctxt->error->name, DBUS_ERROR_MATCH_RULE_INVALID) == 0) {
++			offset = strlen("eavesdrop='true',");
++			dbus_error_free(ctxt->error);
++			goto uretry;
++		}
++		logerr(MODPREFIX "udisks map %s, can not listen system UDisks: %s",
++		       ctxt->mapname, ctxt->error->message);
++		dbus_error_free(ctxt->error);
++		goto err;
++	}
++	if ((ctxt->monitor = dbus_connection_add_filter(ctxt->conn, dbusfilter, (void *)ctxt, NULL)) != TRUE) {
++		logerr(MODPREFIX "udisks %s, could not add device and session filters: %s", ctxt->mapname, ctxt->error->message);
++		dbus_error_free(ctxt->error);
++		goto err;
++ 	}
++dog:
++	if (ctxt->watchdog)
++		goto out;
++	ret = pthread_getschedparam(pthread_self(), &policy, &param);
++	if (pthread_create(&ctxt->watchdog, &th_attr_detached, &udisks_dispatcher, (void *)ctxt) != 0) {
++		ctxt->watchdog = (pthread_t)0;
++		goto err;
++	}
++	if (ret == 0) pthread_setschedparam(ctxt->watchdog, policy, &param);
++out:
++	return NSS_STATUS_SUCCESS;
++err:
++	return NSS_STATUS_UNAVAIL;
++}
++
++int lookup_read_map(struct autofs_point *ap, struct map_source *source, time_t age, void *context)
++{
++	struct lookup_context *ctxt = (struct lookup_context *)context;
++	struct mapent_cache *mc = source->mc;
++	int ret, cur_state;
++	list_t *ptr;
++
++	ctxt->ap = ap;
++	ctxt->map = ap->entry->current;
++#if defined(DEBUG) && (DEBUG > 0)
++	ctxt->ap->logopt = LOGOPT_DEBUG;
++#endif
++
++	/*
++	 * If we don't need to create directories then there's no use
++	 * reading the map. We always need to read the whole map for
++	 * direct mounts in order to mount the triggers.
++  	 */
++	ret = NSS_STATUS_SUCCESS;
++	if ((ap->flags & MOUNT_FLAG_GHOST) == 0 && ap->type != LKP_DIRECT) {
++		debug(ap->logopt, "map read not needed, so not done");
++		goto out;
++	}
++
++	if (sizeof(devproperpty)/sizeof(filter_t) != NullDict+1) {
++		logerr(MODPREFIX "size of hash array does not fit numbers of symbols");
++		goto out;
++	}
++
++	pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, &cur_state);
++	ret = enable_udisks_watchdog(context);
++	if (ret != NSS_STATUS_SUCCESS) {
++		warn(LOGOPT_NONE, MODPREFIX "udisks map %s, could not start watchdog",
++		     ctxt->mapname);
++		goto cancel;
++	}
++
++	lock(ctxt);
++	if (list_empty(&ctxt->devices)) {
++		ret = read_current_map(ctxt);
++		if (ret != NSS_STATUS_SUCCESS) {
++			unlock(ctxt);
++			goto cancel;
++		}
++		list_for_each(ptr, &ctxt->devices) {
++			device_t *this = list_entry(ptr, device_t, handle);
++			ret = read_device_properties(ctxt, this);
++			if (ret != NSS_STATUS_SUCCESS) {
++				unlock(ctxt);
++				goto cancel;
++			}
++		}
++	}
++	if (list_empty(&ctxt->sessions)) {
++		ret = read_current_seats(ctxt);
++		if (ret != NSS_STATUS_SUCCESS) {
++			unlock(ctxt);
++			goto cancel;
++		}
++		list_for_each(ptr, &ctxt->sessions) {
++			session_t *this = list_entry(ptr, session_t, handle);
++			ret = read_session_properties(ctxt, this);
++			if (ret != NSS_STATUS_SUCCESS) {
++				unlock(ctxt);
++				goto cancel;
++			}
++		}
++	}
++	list_for_each(ptr, &ctxt->devices) {
++		device_t *this = list_entry(ptr, device_t, handle);
++		entry_t *entry = do_map_entry(ctxt, this);
++		char *key;
++
++		if (entry == (entry_t*)0)
++			continue;
++		if (entry->key == (char*)0)
++			continue;
++
++		key = sanitize_path(entry->key, entry->key_len, ap->type, ap->logopt);
++		if (key == (char*)0)
++			continue;
++
++		entry->age = age;
++
++		cache_writelock(mc);
++		cache_update(mc, source, key, entry->mapent, age);
++		cache_unlock(mc);
++
++		free(key);
++	}
++	unlock(ctxt);
++	source->age = age;
++cancel:
++	pthread_setcancelstate(cur_state, NULL);
++out:
++	return ret;
++}
++
++static int lookup_one(struct autofs_point *ap,
++	struct map_source *source,
++	char *key, int key_len,
++	struct lookup_context *ctxt)
++{
++	struct mapent_cache *mc = source->mc;
++	time_t age = time(NULL);
++	int ret, cur_state;
++	entry_t *entry;
++	list_t *ptr;
++
++
++	pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, &cur_state);
++
++	lock(ctxt);
++	entry = (entry_t*)0;
++	list_for_each(ptr, &ctxt->devices) {
++		device_t *this = list_entry(ptr, device_t, handle);
++		entry = this->entry;
++
++		if (entry == (entry_t*)0)
++			continue;
++		if (entry->key == (char*)0)
++			continue;
++
++		if (entry->key_len != key_len)
++			continue;
++
++		if (strcmp(entry->key, key) == 0)
++			break;
++		entry = (entry_t*)0;
++	}
++	unlock(ctxt);
++
++	ret = CHE_MISSING;
++	if (entry == (entry_t*)0)
++		goto out;
++
++	entry->age = age;
++
++	cache_writelock(mc);
++	ret = cache_update(mc, source, key, entry->mapent, age);
++	cache_unlock(mc);
++out:
++	pthread_setcancelstate(cur_state, NULL);
++	return ret;
++}
++
++static int check_map_indirect(struct autofs_point *ap,
++	struct map_source *source,
++	char *key, int key_len,
++	struct lookup_context *ctxt)
++{
++	struct mapent_cache *mc = source->mc;
++	struct mapent *me;
++	time_t now = time(NULL);
++	time_t t_last_read;
++	int ret, cur_state;
++
++	pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, &cur_state);
++	ret = lookup_one(ap, source, key, key_len, ctxt);
++	if (ret == CHE_FAIL) {
++		pthread_setcancelstate(cur_state, NULL);
++		return NSS_STATUS_NOTFOUND;
++	}
++	if (ret == CHE_UNAVAIL) {
++		/*
++		 * If the server is down and the entry exists in the cache
++		 * and belongs to this map return success and use the entry.
++		 */
++		struct mapent *exists = cache_lookup(mc, key);
++		if (exists && exists->source == source) {
++			pthread_setcancelstate(cur_state, NULL);
++			return NSS_STATUS_SUCCESS;
++		}
++
++		warn(ap->logopt,
++		     MODPREFIX "lookup for %s failed: connection failed", key);
++
++		pthread_setcancelstate(cur_state, NULL);
++		return NSS_STATUS_UNAVAIL;
++	}
++	if (ret == CHE_COMPLETED) {
++		pthread_setcancelstate(cur_state, NULL);
++		return NSS_STATUS_COMPLETED;
++	}
++	pthread_setcancelstate(cur_state, NULL);
++
++	/*
++	 * Check for map change and update as needed for
++	 * following cache lookup.
++	 */
++	cache_readlock(mc);
++	t_last_read = ap->exp_runfreq + 1;
++	me = cache_lookup_first(mc);
++	while (me) {
++		if (me->source == source) {
++			t_last_read = now - me->age;
++			break;
++		}
++		me = cache_lookup_next(mc, me);
++	}
++	cache_unlock(mc);
++
++	if (t_last_read > ap->exp_runfreq && ret & CHE_UPDATED)
++		source->stale = 1;
++
++	cache_readlock(mc);
++	me = cache_lookup_distinct(mc, "*");
++	if (ret == CHE_MISSING && (!me || me->source != source)) {
++		cache_unlock(mc);
++		return NSS_STATUS_NOTFOUND;
++	}
++	cache_unlock(mc);
++
++	return NSS_STATUS_SUCCESS;
++}
++
++static int check_permsission(struct autofs_point *ap, struct lookup_context *ctxt)
++{
++        struct thread_stdenv_vars *tsv;
++	int state, ret;
++
++	ret = NSS_STATUS_UNAVAIL;
++	if (list_empty(&ctxt->sessions))
++		goto out;
++
++        pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, &state);
++
++        tsv = pthread_getspecific(key_thread_stdenv_vars);
++        if (tsv) {
++		list_t *ptr;
++		list_for_each(ptr, &ctxt->sessions) {
++			session_t *session = list_entry(ptr, session_t, handle);
++			option_t opt = get_session(session, unix_user);
++			if (opt.error)
++				break;
++			if (opt.uint32 == (unsigned int)tsv->uid) {
++				option_t opt = get_session(session, is_local);
++				if (opt.error)
++					break;
++				if (opt.boolean) {
++					ret = NSS_STATUS_SUCCESS;
++					break;
++				}
++#if defined(DEBUG) && (DEBUG > 0)
++				opt = get_session(session, x11_display);
++				if (opt.error)
++					break;
++				if (*opt.string == ':')
++					ret = NSS_STATUS_SUCCESS;
++#endif
++				break;
++			}
++		}
++	}
++
++        pthread_setcancelstate(state, NULL);
++out:
++	debug(ap->logopt, MODPREFIX "mount not allowed");
++	return ret;
++}
++
++int lookup_mount(struct autofs_point *ap, struct map_source *source, const char *name, int name_len, void *context)
++{
++	struct lookup_context *ctxt = (struct lookup_context *) context;
++	struct mapent_cache *mc = source->mc;
++	struct mapent *me;
++	char key[KEY_MAX_LEN + 1];
++	int key_len;
++	char *mapent = NULL;
++	char mapent_buf[MAPENT_MAX_LEN + 1];
++	int status = 0;
++	int ret = 1;
++
++	debug(ap->logopt, MODPREFIX "looking up %s", name);
++
++	status = check_permsission(ap, ctxt);
++	if (status != NSS_STATUS_SUCCESS)
++		return status;
++
++	key_len = snprintf(key, KEY_MAX_LEN + 1, "%s", name);
++	if (key_len < 0 || key_len > KEY_MAX_LEN)
++		return NSS_STATUS_NOTFOUND;
++
++	if (sizeof(sessproperty)/sizeof(filter_t) != NullCk+1) {
++		logerr(MODPREFIX "size of hash array does not fit numbers of symbols");
++		return NSS_STATUS_NOTFOUND;
++	}
++
++	/* Check if we recorded a mount fail for this key anywhere */
++	me = lookup_source_mapent(ap, key, LKP_DISTINCT);
++	if (me) {
++		if (me->status >= time(NULL)) {
++			cache_unlock(me->mc);
++			return NSS_STATUS_NOTFOUND;
++		} else {
++			struct mapent_cache *smc = me->mc;
++			struct mapent *sme;
++
++			if (me->mapent)
++				cache_unlock(smc);
++			else {
++				cache_unlock(smc);
++				cache_writelock(smc);
++				sme = cache_lookup_distinct(smc, key);
++				/* Negative timeout expired for non-existent entry. */
++				if (sme && !sme->mapent)
++					cache_delete(smc, key);
++				cache_unlock(smc);
++			}
++		}
++	}
++
++        /*
++	 * We can't check the direct mount map as if it's not in
++	 * the map cache already we never get a mount lookup, so
++	 * we never know about it.
++	 */
++	if (ap->type == LKP_INDIRECT && *key != '/') {
++		char *lkp_key;
++
++		cache_readlock(mc);
++		me = cache_lookup_distinct(mc, key);
++		lkp_key = strdup(key);
++		cache_unlock(mc);
++
++		if (!lkp_key)
++			return NSS_STATUS_UNKNOWN;
++
++		status = check_map_indirect(ap, source, lkp_key, strlen(lkp_key), ctxt);
++		free(lkp_key);
++		if (status) {
++			if (status == NSS_STATUS_COMPLETED)
++				return NSS_STATUS_SUCCESS;
++			return NSS_STATUS_NOTFOUND;
++		}
++	}
++
++	cache_readlock(mc);
++	me = cache_lookup(mc, key);
++	/* Stale mapent => check for entry in alternate source or wildcard */
++	if (me && !me->mapent) {
++		while ((me = cache_lookup_key_next(me)))
++			if (me->source == source)
++				break;
++		if (!me)
++			me = cache_lookup_distinct(mc, "*");
++	}
++	if (me && me->mapent && (me->source == source || *me->key == '/')) {
++		pthread_cleanup_push(cache_lock_cleanup, mc);
++		strcpy(mapent_buf, me->mapent);
++		mapent = &mapent_buf[0];
++		pthread_cleanup_pop(0);
++	}
++	cache_unlock(mc);
++
++	if (!me)
++		return NSS_STATUS_NOTFOUND;
++
++	if (!mapent)
++		return NSS_STATUS_TRYAGAIN;
++
++	debug(ap->logopt, MODPREFIX "%s -> %s", key, mapent);
++	ret = ctxt->parse->parse_mount(ap, source, key, key_len,
++				       mapent, ctxt->parse->context);
++	if (ret) {
++		time_t now = time(NULL);
++		int rv = CHE_OK;
++
++		/* Record the the mount fail in the cache */
++		cache_writelock(mc);
++		me = cache_lookup_distinct(mc, key);
++		if (!me)
++			rv = cache_update(mc, source, key, NULL, now);
++		if (rv != CHE_FAIL) {
++			me = cache_lookup_distinct(mc, key);
++			me->status = now + ap->negative_timeout;
++		}
++		cache_unlock(mc);
++		return NSS_STATUS_TRYAGAIN;
++	}
++
++	return NSS_STATUS_SUCCESS;
++}
++
++int lookup_done(void *context)
++{
++	struct lookup_context *ctxt = (struct lookup_context *)context;
++	int ret = NSS_STATUS_UNAVAIL;
++	if (!ctxt)
++		goto out;
++	ret = close_parse(ctxt->parse);
++	free_context(ctxt);
++out:
++	return ret;
++}
+Index: autofs-5.1.9/modules/parse_sun.c
+===================================================================
+--- autofs-5.1.9.orig/modules/parse_sun.c
++++ autofs-5.1.9/modules/parse_sun.c
+@@ -965,6 +965,7 @@ static int validate_location(unsigned in
+ 		    ((esc = strchr(ptr, '\\')) && *(esc + 1) == ':') ||
+ 		    !strncmp(ptr, "file:", 5) || !strncmp(ptr, "yp:", 3) ||
+ 		    !strncmp(ptr, "nis:", 4) || !strncmp(ptr, "nisplus:", 8) ||
++		    !strncmp(ptr, "udisks:", 7) || !strncmp(ptr, "udisks2:", 8) ||
+ 		    !strncmp(ptr, "ldap:", 5) || !strncmp(ptr, "ldaps:", 6) ||
+ 		    !strncmp(ptr, "sss:", 4) || !strncmp(ptr, "dir:", 4))
+ 			return 1;
+Index: autofs-5.1.9/samples/autofs.udisks
+===================================================================
+--- /dev/null
++++ autofs-5.1.9/samples/autofs.udisks
+@@ -0,0 +1,28 @@
++<?xml version="1.0" ?>
++<!--
++ This files contains a several entries. The upper envelop AutofsUdisks can be
++ disabled.  The inner envelop MountOptions includes one or more mount options.
++ Those options are split into DiskByLabel, DiskById, and Common entries, which
++ are applied in matching order. And the options for several file system types
++ with a fallback.  See autofs.udisks(5) for more information.
++-->
++<AutofsUdisks enable="true">
++  <MountOptions>
++    <Common>uid=$UID,gid=$GID,nosuid,nodev</Common>
++ <!--
++    <DiskById value="usb-USB_Flash_Disk_XXXXXXXXXXXX-0:0-part1">
++      uid=1002,gid=501,user,nosuid,nodev,exec
++    </DiskById>
++    <DiskByLabel value="MyPersonal-DVD-x86_64XXXX">
++      unhide
++    </DiskByLabel>
++ -->
++    <FSType value="vfat">fmask=0132,dmask=0022,showexec</FSType>
++    <FSType value="ntfs">umask=0022</FSType>
++    <FSType value="iso9660">ro</FSType>
++    <FSType value="ext4">check=none,noatime,nodiratime,data=journal</FSType>
++    <FSType value="ext3">check=none,noatime,nodiratime,data=journal</FSType>
++    <FSType value="ext2">check=none,noatime</FSType>
++    <FSType>ro,nosuid,nodev,noexec</FSType>
++  </MountOptions>
++</AutofsUdisks>

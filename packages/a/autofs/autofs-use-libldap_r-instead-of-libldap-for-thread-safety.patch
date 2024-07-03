@@ -1,0 +1,74 @@
+From: Jeff Mahoney <jeffm@suse.com>
+Subject: autofs: use libldap_r instead of libldap for thread safety
+References: bsc#955477
+
+In order for OpenSSL to be threadsafe, CRYPTO_set_locking_callback needs
+to be used to set the locking function.  That's only done with libldap_r,
+not plain libldap.
+
+>From the openldap source:
+
+** The preprocessor flag LDAP_API_FEATURE_X_OPENLDAP_THREAD_SAFE
+** can be used to determine if -lldap_r is available at compile
+** time.  You must define LDAP_THREAD_SAFE if and only if you
+** link with -lldap_r.
+**
+** If you fail to define LDAP_THREAD_SAFE when linking with
+** -lldap_r or define LDAP_THREAD_SAFE when linking with -lldap,
+** provided header definations and declarations may be incorrect.
+
+The autofs Makefile defines LDAP_THREAD_SAFE and then links with -lldap.
+
+This patch links with -lldap_r instead and fixes observed crashes.
+
+Signed-off-by: Jeff Mahoney <jeffm@suse.com>
+---
+ aclocal.m4   |    8 ++++----
+ configure.in |    2 +-
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+Index: autofs-5.1.9/aclocal.m4
+===================================================================
+--- autofs-5.1.9.orig/aclocal.m4
++++ autofs-5.1.9/aclocal.m4
+@@ -374,11 +374,11 @@ dnl
+ dnl Check for function ldap_create_page_control
+ dnl --------------------------------------------------------------------------
+ AC_DEFUN([AF_CHECK_FUNC_LDAP_CREATE_PAGE_CONTROL],
+-[AC_MSG_CHECKING(for ldap_create_page_control in -lldap)
++[AC_MSG_CHECKING(for ldap_create_page_control in -lldap_r)
+ 
+ # save current libs
+ af_check_ldap_create_page_control_save_libs="$LIBS"
+-LIBS="$LIBS -lldap"
++LIBS="$LIBS -lldap_r"
+ af_check_ldap_create_page_control_save_cflags="$CFLAGS"
+ CFLAGS="$CFLAGS -Werror=implicit-function-declaration"
+ 
+@@ -410,11 +410,11 @@ dnl
+ dnl Check for function ldap_parse_page_control
+ dnl --------------------------------------------------------------------------
+ AC_DEFUN([AF_CHECK_FUNC_LDAP_PARSE_PAGE_CONTROL],
+-[AC_MSG_CHECKING(for ldap_parse_page_control in -lldap)
++[AC_MSG_CHECKING(for ldap_parse_page_control in -lldap_r)
+ 
+ # save current libs
+ af_check_ldap_parse_page_control_save_libs="$LIBS"
+-LIBS="$LIBS -lldap"
++LIBS="$LIBS -lldap_r"
+ af_check_ldap_parse_page_control_save_cflags="$CFLAGS"
+ CFLAGS="$CFLAGS -Werror=implicit-function-declaration"
+ 
+Index: autofs-5.1.9/configure.ac
+===================================================================
+--- autofs-5.1.9.orig/configure.ac
++++ autofs-5.1.9/configure.ac
+@@ -299,7 +299,7 @@ AC_ARG_WITH(openldap,
+ if test -z "$HAVE_LDAP" -o "$HAVE_LDAP" != "0"; then
+ 	HAVE_LDAP=0
+ 	LDAP_FLAGS="$LDAP_FLAGS -DLDAP_DEPRECATED=1"
+-	AC_CHECK_LIB(ldap, ldap_initialize, HAVE_LDAP=1 LIBLDAP="$LIBLDAP -lldap -llber -lresolv", ,
++	AC_CHECK_LIB(ldap_r, ldap_initialize, HAVE_LDAP=1 LIBLDAP="$LIBLDAP -lldap_r -llber -lresolv", ,
+ 		     -llber -lresolv $LIBS)
+ 	if test "$HAVE_LDAP" = "1"; then
+ 		AC_DEFINE(WITH_LDAP,1,

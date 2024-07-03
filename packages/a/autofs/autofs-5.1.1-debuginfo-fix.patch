@@ -1,0 +1,17 @@
+---
+ Makefile.rules |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: autofs-5.1.8/Makefile.rules
+===================================================================
+--- autofs-5.1.8.orig/Makefile.rules
++++ autofs-5.1.8/Makefile.rules
+@@ -32,7 +32,7 @@ CFLAGS    ?= -g -Wall -DDEBUG
+ LDFLAGS   ?= -g
+ else
+ CFLAGS    ?= -O2 -Wall
+-LDFLAGS   ?= -s
++LDFLAGS   ?= -g
+ endif
+ 
+ ifdef DONTSTRIP

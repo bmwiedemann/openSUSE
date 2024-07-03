@@ -1,0 +1,2790 @@
+-------------------------------------------------------------------
+Mon Jun  3 02:21:09 UTC 2024 - David Disseldorp <ddiss@suse.com>
+
+- Fix xmlStructuredErrorFunc callback parameter type (bsc#1221682)
+  * Refresh autofs-5.1.1-dbus-udisks-monitor.patch
+- Use upstream sasl_callback_t patch
+  * Remove autofs-5.1.9-cast-sasl_callback_t-function-pointers.patch
+  * Add autofs-5.1.9-Fix-incompatible-function-pointer-types.patch
+
+-------------------------------------------------------------------
+Wed Mar 20 01:27:16 UTC 2024 - David Disseldorp <ddiss@suse.com>
+
+- Fix -Werror=incompatible-pointer-types issues (bsc#1221682)
+  * Add autofs-5.1.9-fix-ldap_parse_page_control-check.patch
+  * Add autofs-5.1.9-cast-sasl_callback_t-function-pointers.patch
+
+-------------------------------------------------------------------
+Tue Feb 20 10:27:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Sat Feb 10 13:47:34 UTC 2024 - David Disseldorp <ddiss@suse.com>
+
+- update to 5.1.9 (bsc#1219508)
+  * fix kernel mount status notification.
+  * fix fedfs build flags.
+  * fix set open file limit.
+  * improve descriptor open error reporting.
+  * fix root offset error handling.
+  * fix fix root offset error handling.
+  * fix nonstrict fail handling of last offset mount.
+  * dont fail on duplicate offset entry tree add.
+  * fix loop under run in cache_get_offset_parent().
+  * bailout on rpc systemerror.
+  * fix nfsv4 only mounts should not use rpcbind.
+  * simplify cache_add() a little.
+  * fix use after free in tree_mapent_delete_offset_tree().
+  * fix memory leak in xdr_exports().
+  * avoid calling pthread_getspecific() with NULL key_thread_attempt_id.
+  * fix sysconf(3) return handling.
+  * remove nonstrict parameter from tree_mapent_umount_offsets().
+  * fix handling of incorrect return from umount_ent().
+  * dont use initgroups() at spawn.
+  * fix bashism in configure.
+  * musl: fix missing include in hash.h.
+  * musl: define fallback dummy NSS config path
+  * musl: avoid internal stat.h definitions.
+  * musl: add missing include to hash.h for _WORDSIZE.
+  * musl: add missing include to log.h for pid_t.
+  * musl: define _SWORD_TYPE.
+  * add autofs_strerror_r() helper for musl.
+  * update configure.
+  * handle innetgr() not present in musl.
+  * fix missing unlock in sasl_do_kinit_ext_cc().
+  * fix a couple of null cache locking problems.
+  * restore gcc flags after autoconf Kerberos 5 check.
+  * prepare for OpenLDAP SASL binding.
+  * let OpenLDAP handle SASL binding.
+  * configure: LDAP function checks ignore implicit declarations.
+  * improve debug logging of LDAP binds.
+  * improve debug logging of SASL binds.
+  * internal SASL logging only in debug log mode.
+  * more comprehensive verbose logging for LDAP maps.
+  * fix invalid tsv access.
+  * support SCRAM for SASL binding.
+  * ldap_sasl_interactive_bind() needs credentials for auto-detection.
+  * fix autofs regression due to positive_timeout.
+  * fix parse module instance mutex naming.
+  * serialise lookup module open and reinit.
+  * coverity fix for invalid access.
+  * fix hosts map deadlock on restart.
+  * fix deadlock with hosts map reload.
+  * fix memory leak in update_hosts_mounts().
+  * fix minus only option handling in concat_options().
+  * fix incorrect path for is_mounted() in try_remount().
+  * fix additional tsv invalid access.
+  * fix use_ignore_mount_option description.
+  * include addtional log info for mounts.
+  * fail on empty replicated host name.
+  * improve handling of ENOENT in sss setautomntent().
+  * don't immediately call function when waiting.
+  * define LDAP_DEPRECATED during LDAP configure check.
+  * fix return status of mount_autofs().
+  * don't close lookup at umount.
+  * fix deadlock in lookups.
+  * dont delay expire.
+  * make amd mapent search function name clear.
+  * rename statemachine() to signal_handler().
+  * make signal handling consistent.
+  * eliminate last remaining state_pipe usage.
+  * add function master_find_mapent_by_devid().
+  * use device id to locate autofs_point when setting log priotity.
+  * add command pipe handling functions.
+  * switch to application wide command pipe.
+  * get rid of unused field submnt_count.
+  * fix mount tree startup reconnect.
+  * fix unterminated read in handle_cmd_pipe_fifo_message().
+  * fix memory leak in sasl_do_kinit()
+  * fix fix mount tree startup reconnect.
+  * fix amd selector function matching.
+  * get rid entry thid field.
+  * continue expire immediately after submount check.
+  * eliminate realpath from mount of submount.
+  * eliminate root param from autofs mount and umount.
+  * remove redundant fstat from do_mount_direct().
+  * get rid of strlen call in handle_packet_missing_direct().
+  * remove redundant stat call in lookup_ghost().
+  * set mapent dev and ino before adding to index.
+  * change to use printf functions in amd parser.
+  * dont call umount_subtree_mounts() on parent at umount.
+  * dont take parent source lock at mount shutdown.
+  * fix possible use after free in handle_mounts_exit().
+  * make submount cleanup the same as top level mounts.
+  * add soucre parameter to module functions.
+  * add ioctlfd open helper.
+  * make open files limit configurable.
+  * use correct reference for IN6 macro call.
+  * dont probe interface that cant send packet.
+  * fix some sss error return cases.
+  * fix incorrect matching of cached wildcard key.
+  * fix expire retry looping.
+  * allow -null map in indirect maps.
+  * fix multi-mount check.
+  * fix let OpenLDAP handle SASL binding.
+  * always recreate credential cache.
+  * fix ldap_parse_page_control() check.
+  * fix typo in create_cmd_pipe_fifo().
+  * add null check in master_kill().
+  * be more careful with cmd pipe at exit.
+  * rename configure.in to configure.ac.
+  * update autoconf macros.
+  * update autoconf release.
+  * update autofs release.
+- drop autofs-5-1-3-fix-unset-tsd-group-name-handling.patch, upstream
+  as ab8ca82 ("autofs-5.1.3 - fix unset tsd group name handling")
+- drop autofs-Test-TCP-request-correctly-in-nfs_get_info.patch,
+  superseded by 80845bb ("autofs-5.1.8 - fix nfsv4 only mounts should
+  not use rpcbind")
+- rebase autofs-5.1.1-dbus-udisks-monitor.patch atop 37fda2c
+  ("autofs-5.1.8 - add soucre parameter to module functions")
+
+-------------------------------------------------------------------
+Thu Jan 11 01:32:34 UTC 2024 - Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+- Removed following upstreamed patches because of upgrade:
+  * autofs-5.1.6-fix-quoted-string-length-calc-in-expand.patch
+  * 0001-use_hostname_for_mounts-shouldn-t-prevent-selection-.patch
+  * 0002-Fix-monotonic_elapsed.patch Deleted
+  * 0003-autofs-5.1.4-fix-fd-leak-in-rpc_do_create_client.patch Deleted
+  * 0004-autofs-5.1.3-add-port-parameter-to-rpc_ping.patch
+  * 0005-autofs-5.1.4-fix-incorrect-locking-in-sss-lookup.patch
+  * autofs-5.1.3-revert-fix-argc-off-by-one-in-mount_aut.patch
+  * autofs-5-1-3-check-map-instances-for-staleness-on-map-update.patch
+  * autofs-5-1-3-fix-ordering-of-seteuid-setegid-in-do_spawn.patch
+  * autofs-5-1-3-fix-possible-map-instance-memory-leak.patch
+  * autofs-5.1.3-revert-fix-argc-off-by-one-in-mount_aut.patch
+  * autofs-5.1.6-fix-quoted-string-length-calc-in-expand.patch
+
+-------------------------------------------------------------------
+Sat Apr 22 22:11:37 UTC 2023 - David Disseldorp <ddiss@suse.com>
+
+- autofs-5.1.3-revert-fix-argc-off-by-one-in-mount_aut.patch
+  Fix off-by-one error in recursive map handling. (bsc#1209653)
+
+-------------------------------------------------------------------
+Mon Apr 17 15:21:33 UTC 2023 - Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+- Add autofs-suse-manpage-remove-initdir.patch
+  Removes references of initdir from man pages (bsc#1207881)
+
+-------------------------------------------------------------------
+Tue Sep 13 10:52:58 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move dbus-1 system.d file to /usr (bsc#1203362)
+
+-------------------------------------------------------------------
+Thu May 12 15:12:50 UTC 2022 - Stefan Schubert <schubi@suse.de>
+
+- Moved -autofs- file from user specif directory
+  /etc/NetworkManager/dispatcher.d to vendor specific directory
+  /usr/lib/NetworkManager/dispatcher.d. So, users changes can
+  still be done in /etc and will not be overwritten by an update. 
+
+-------------------------------------------------------------------
+Mon May  9 15:06:32 UTC 2022 - Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+- Use OPTIONS instead of AUTOFS_OPTIONS in /etc/sysconfig/autofs
+  (bsc#1199027)
+
+-------------------------------------------------------------------
+Tue Mar 15 03:47:10 UTC 2022 - Neil Brown <nfbrown@suse.com>
+
+- autofs-5.1.6-fix-quoted-string-length-calc-in-expand.patch
+  Fix problem with quote handling
+  (bsc#1181715)
+
+-------------------------------------------------------------------
+Mon Mar 14 03:58:48 UTC 2022 - Neil Brown <nfbrown@suse.com>
+
+- 0005-autofs-5.1.4-fix-incorrect-locking-in-sss-lookup.patch
+  Fix locking problem that causes deadlock when sss used.
+  (bsc#1196485)
+
+-------------------------------------------------------------------
+Mon Feb 14 22:59:30 UTC 2022 - Neil Brown <nfbrown@suse.com>
+
+- 0004-autofs-5.1.3-add-port-parameter-to-rpc_ping.patch
+  Suppress portmap calls when port explicitly given
+  (bsc#1195697)
+
+-------------------------------------------------------------------
+Thu Feb 10 00:36:26 UTC 2022 - Neil Brown <nfbrown@suse.com>
+
+- Add autofs-Test-TCP-request-correctly-in-nfs_get_info.patch
+  Fix bug when rpcbind not visible
+  (bsc#1195587 bsc#1195595)
+
+-------------------------------------------------------------------
+Tue Jan  4 22:03:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.8:
+  * add xdr_exports().
+  * remove mount.x and rpcgen dependencies.
+  * dont use realloc in host exports list processing.
+  * use sprintf() when constructing hosts mapent.
+  * fix mnts_remove_amdmount() uses wrong list.
+  * Fix option for master read wait.
+  * eliminate cache_lookup_offset() usage.
+  * fix is mounted check on non existent path.
+  * simplify cache_get_parent().
+  * set offset parent in update_offset_entry().
+  * remove redundant variables from mount_autofs_offset().
+  * remove unused parameter form do_mount_autofs_offset().
+  * refactor umount_multi_triggers().
+  * eliminate clean_stale_multi_triggers().
+  * simplify mount_subtree() mount check.
+  * fix mnts_get_expire_list() expire list construction.
+  * fix inconsistent locking in umount_subtree_mounts().
+  * fix return from umount_subtree_mounts() on offset list delete.
+  * pass mapent_cache to update_offset_entry().
+  * fix inconsistent locking in parse_mount().
+  * remove unused mount offset list lock functions.
+  * eliminate count_mounts() from expire_proc_indirect().
+  * eliminate some strlen calls in offset handling.
+  * don't add offset mounts to mounted mounts table.
+  * reduce umount EBUSY check delay.
+  * cleanup cache_delete() a little.
+  * rename path to m_offset in update_offset_entry().
+  * don't pass root to do_mount_autofs_offset().
+  * rename tree implementation functions.
+  * add some multi-mount macros.
+  * remove unused functions cache_dump_multi() and cache_dump_cache().
+  * add a len field to struct autofs_point.
+  * make tree implementation data independent.
+  * add mapent tree implementation.
+  * add tree_mapent_add_node().
+  * add tree_mapent_delete_offsets().
+  * add tree_mapent_traverse_subtree().
+  * fix mount_fullpath().
+  * add tree_mapent_cleanup_offsets().
+  * add set_offset_tree_catatonic().
+  * add mount and umount offsets functions.
+  * switch to use tree implementation for offsets.
+  * remove obsolete functions.
+  * remove redundant local var from sun_mount().
+  * use mount_fullpath() in one spot in parse_mount().
+  * pass root length to mount_fullpath().
+  * remove unused function master_submount_list_empty().
+  * move amd mounts removal into lib/mounts.c.
+  * check for offset with no mount location.
+  * remove mounts_mutex.
+  * remove unused variable from get_exports().
+  * add missing free in handle_mounts().
+  * remove redundant if check.
+  * fix possible memory leak in master_parse().
+  * fix possible memory leak in mnts_add_amdmount().
+  * fix double unlock in parse_mount().
+  * add length check in umount_subtree_mounts().
+  * fix flags check in umount_multi().
+  * dont try umount after stat() ENOENT fail.
+  * remove redundant assignment in master_add_amd_mount_section_mounts().
+  * fix dead code in mnts_add_mount().
+  * fix arg not used in error print.
+  * fix missing lock release in mount_subtree().
+  * fix double free in parse_mapent().
+  * refactor lookup_prune_one_cache() a bit.
+  * cater for empty mounts list in mnts_get_expire_list().
+  * add ext_mount_hash_mutex lock helpers.
+  * fix amd section mounts map reload.
+  * fix dandling symlink creation if nis support is not available.
+  * dont use AUTOFS_DEV_IOCTL_CLOSEMOUNT.
+  * fix lookup_prune_one_cache() refactoring change.
+  * fix amd hosts mount expire.
+  * fix offset entries order.
+  * use mapent tree root for tree_mapent_add_node().
+  * eliminate redundant cache lookup in tree_mapent_add_node().
+  * fix hosts map offset order.
+  * fix direct mount deadlock.
+  * add missing description of null map option.
+  * fix nonstrict offset mount fail handling.
+  * fix concat_options() error handling.
+  * eliminate some more alloca usage.
+  * use default stack size for threads.
+  * fix use of possibly NULL var in lookup_program.c:match_key().
+  * fix incorrect print format specifiers in get_pkt().
+  * add mapent path length check in handle_packet_expire_direct().
+  * add copy length check in umount_autofs_indirect().
+  * add some buffer length checks to master map parser.
+  * add buffer length check to rmdir_path().
+  * eliminate buffer usage from handle_mounts_cleanup().
+  * add buffer length checks to autofs mount_mount().
+  * make NFS version check flags consistent.
+  * refactor get_nfs_info().
+- drop autofs-5.1.7-Fix-option-for-master_read_wait.patch,
+  autofs-5.1.7-use-default-stack-size-for-threads.patch: upstream
+
+-------------------------------------------------------------------
+Wed Sep  8 18:15:58 UTC 2021 - Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+-  autofs-5.1.7-use-default-stack-size-for-threads.patch: Use default
+   stack size for threads (bsc#1189199)
+
+-------------------------------------------------------------------
+Thu Apr 22 20:38:26 UTC 2021 - Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+- Update pidfile path to /run from /var/run (bsc#1185155)
+
+-------------------------------------------------------------------
+Thu Apr 22 14:43:15 UTC 2021 - Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+- Upgrade to 5.1.7
+  - make bind mounts propagation slave by default.
+  - update ldap READMEs and schema definitions.
+  - fix program map multi-mount lookup after mount fail.
+  - fix browse dir not re-created on symlink expire.
+  - fix a regression with map instance lookup.
+  - correct fsf address.
+  - samples: fix Makefile targets' directory dependencies
+  - remove intr hosts map mount option.
+  - fix trailing dollar sun entry expansion.
+  - initialize struct addrinfo for getaddrinfo() calls.
+  - fix quoted string length calc in expandsunent().
+  - fix autofs mount options construction.
+  - mount_nfs.c fix local rdma share not mounting.
+  - configure.in: Remove unneeded second call to PKG_PROG_PKG_CONFIG.
+  - configure.in: Do not append parentheses to PKG_PROG_PKG_CONFIG.
+  - Use PKG_CHECK_MODULES to detect the libxml2 library.
+  - fix ldap sasl reconnect problem.
+  - samples/ldap.schema fix.
+  - fix configure force shutdown check.
+  - fix crash in sun_mount().
+  - fix lookup_nss_read_master() nsswicth check return.
+  - fix typo in open_sss_lib().
+  - fix sss_master_map_wait timing.
+  - add sss ECONREFUSED return handling.
+  - use mapname in sss context for setautomntent().
+  - add support for new sss autofs proto version call.
+  - fix retries check in setautomntent_wait().
+  - refactor sss setautomntent().
+  - improve sss setautomntent() error handling.
+  - refactor sss getautomntent().
+  - improve sss getautomntent() error handling.
+  - sss introduce calculate_retry_count() function.
+  - move readall into struct master.
+  - sss introduce a flag to indicate map being read.
+  - update sss timeout documentation.
+  - refactor sss getautomntbyname().
+  - improve sss getautomntbyname() error handling.
+  - use a valid timeout in lookup_prune_one_cache().
+  - dont prune offset map entries.
+  - simplify sss source stale check.
+  - include linux/nfs.h directly in rpc_subs.h.
+  - fix typo in daemon/automount.c.
+  - fix direct mount unlink_mount_tree() path.
+  - fix unlink mounts umount order.
+  - fix incorrect logical compare in unlink_mount_tree().
+  - use bit flag for force unlink mounts.
+  - improve force unlink option description.
+  - remove command fifo on autofs mount fail.
+  - add force unlink mounts and exit option.
+  - cleanup stale logpri fifo pipes on unlink and exit.
+  - fix incorrect systemctl command syntax in autofs(8).
+  - update list.h.
+  - add hashtable implementation.
+  - change mountpoint to mp in struct ext_mount.
+  - make external mounts independent of amd_entry.
+  - make external mounts use simpler hashtable.
+  - add a hash index to mnt_list.
+  - use mnt_list for submounts.
+  - use mnt_list for amdmounts.
+  - make umount_autofs() static.
+  - remove force parameter from umount_all().
+  - fix remount expire.
+  - fix stale offset directories disable mount.
+  - use struct mnt_list to track mounted mounts.
+  - use struct mnt_list mounted list for expire.
+  - remove unused function tree_get_mnt_list().
+  - only add expre alarm for active mounts.
+  - move submount check into conditional_alarm_add().
+  - move lib/master.c to daemon/master.c.
+  - use master_list_empty() for list empty check.
+  - add helper to construct mount point path.
+  - check defaults_read_config() return.
+  - move AUTOFS_LIB to end of build rule lines.
+  - make autofs.a a shared library.
+  - make lookup_file.c nss map read status return handling consistent.
+  - fix empty mounts list return from unlink_mount_tree().
+- Refreshed autofs-5.1.1-dbus-udisks-monitor.patch
+- Replaced automount-fix-master-wait.patch with upstream patch
+   autofs-5.1.7-Fix-option-for-master_read_wait.patch
+
+-------------------------------------------------------------------
+Fri Oct 23 14:28:02 UTC 2020 - Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+- automount-fix-master-wait.patch: Fix options string for master wait
+  (bsc#1178006)
+
+-------------------------------------------------------------------
+Mon Aug 31 18:12:49 UTC 2020 - Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+- autofs-nsswitch-usr-etc.patch: Use /usr/etc/nsswitch.conf if
+   /etc/nsswitch.con is unavailable (bsc#1175238)
+
+-------------------------------------------------------------------
+Tue Mar  3 17:08:03 UTC 2020 - Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+- Upgrade to 5.1.6
+  - support strictexpire mount option.
+  - fix hesiod string check in master_parse().
+  - add NULL check for get_addr_string() return.
+  - use malloc(3) in spawn.c.
+  - add mount_verbose configuration option.
+  - optionally log mount requestor process info.
+  - log mount call arguments if mount_verbose is set.
+  - Fix NFS mount from IPv6 addresses.
+  - make expire remaining log level debug.
+  - allow period following macro in selector value.
+  - fix macro expansion in selector values.
+  - fix typing errors.
+  - Explain /etc/auto.master.d usage.
+  - plus map includes are only allowed in file sources.
+  - Update README.
+  - fix additional typing errors.
+  - update autofs(8) offset map entry update description.
+  - increase group buffer size geometrically.
+  - also use strictexpire for offsets.
+  - remove unused function has_fstab_option().
+  - remove unused function reverse_mnt_list().
+  - remove a couple of old debug messages.
+  - fix amd entry memory leak.
+  - fix unlink_mount_tree() not umounting mounts.
+  - use ignore option for offset mounts as well.
+  - add config option for "ignore" mount option
+  - use bit flags for autofs mount types in mnt_list.
+  - use mp instead of path in mnt_list entries.
+  - always use PROC_MOUNTS to make mount lists.
+  - add glibc getmntent_r().
+  - use local getmntent_r in table_is_mounted().
+  - refactor unlink_active_mounts() in direct.c.
+  - don't use tree_is_mounted() for mounted checks.
+  - use single unlink_umount_tree() for both direct and indirect mounts.
+  - move unlink_mount_tree() to lib/mounts.c.
+  - use local_getmntent_r() for unlink_mount_tree().
+  - use local getmntent_r() in get_mnt_list().
+  - use local getmntent_r() in tree_make_mnt_list().
+  - fix missing initialization of autofs_point flags.
+
+-------------------------------------------------------------------
+Fri Feb 28 15:03:30 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- NetworkManager-autofs: reload rather than restart autofs.service
+  * If complex network setups are being brought up, autofs.service 
+    may be restarted too quickly, causing systemd to consider the 
+    service failed. "reload" avoids that, and works just fine.
+
+-------------------------------------------------------------------
+Mon Feb 24 08:51:25 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- Fix autofs restart when Networkmanager connection is brought up
+  * NetworkManager-autofs: /bin/systemctl has been removed in 
+    systemd-244
+
+-------------------------------------------------------------------
+Wed Jun 19 11:18:12 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libsystemd) instead of systemd-devel:
+  allow OBS to shortcut by using systemd-devel-mini.
+
+-------------------------------------------------------------------
+Wed Apr 17 11:13:01 CEST 2019 - kukuk@suse.de
+
+- Remove legacy LSB-init script code, we don't have that anymore.
+
+-------------------------------------------------------------------
+Sun Mar 17 14:50:26 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop pre-12.2 parts from build recipe
+- Switch %systemd_requires to %systemd_ordering, since %service_*
+  can deal with its absence.
+
+-------------------------------------------------------------------
+Fri Jan 11 21:13:10 UTC 2019 - rgoldwyn@suse.com
+
+- Upgrade to 5.1.5
+  - fix flag file permission.
+  - fix directory create permission.
+  - fix use after free in do_master_list_reset().
+  - fix deadlock in dumpmaps.
+  - dont use array for path when not necessary.
+  - fix prefix option handling in expand_entry().
+  - fix sublink option not set from defaults.
+  - fix error return in do_nfs_mount().
+  - add error handling for ext_mount_add().
+  - account for recent libnsl changes.
+  - use_hostname_for_mounts shouldn't prevent selection among replicas.
+  - fix monotonic_elapsed.
+  - Makefiles.rules: remove 'samples' from SUBDIRS.
+  - dont allow trailing slash in master map mount points.
+  - fix libresolv configure check.
+  - add fedfs-getsrvinfo.c.
+  - add mount.fedfs.c.
+  - add fedfs-map-nfs4.c.
+  - add conditional inclusion of fedfs binaries.
+  - add an example fedfs master map entry to the installed master map.
+  - improve hostname lookup error logging.
+  - fix rpm spec install premissions on auto.net and auto.smb.
+  - tiny patch for autofs typo and possible bug.
+  - add units After line to include statd service.
+  - use systemd sd_notify() at startup.
+  - fix NFS version mask usage.
+  - fix fd leak in rpc_do_create_client().
+  - add-man page note about extra slashes in paths.
+  - change expire type naming to better reflect usage.
+  - use defines for expire type.
+  - enable SIGUSR2 handling in rpm spec file.
+  - fix age setting at startup.
+  - fix update_negative_cache() map source usage.
+  - fix program usage message.
+  - mark removed cache entry negative.
+  - set bind mount as propagation slave.
+  - add master map pseudo options for mount propagation.
+  - fix use after free in parse_ldap_config().
+  - fix incorrect locking in sss lookup.
+  - fix amd parser opts option handling.
+  - fix possible NULL pointer dereference in get_defaults_entry().
+  - better handle hesiod support not built in.
+  - fix indent in automount(8) man page.
+  - remove autofs4 module load code.
+  - add NULL check in prepare_attempt_prefix().
+  - update build info with systemd.
+  - use flags for startup boolean options.
+  - move close stdio descriptors to become_daemon().
+  - add systemd service command line option.
+  - refactor negative map entry check.
+  - remove unused function dump_master().
+  - remove unused function dump_state_queue().
+  - remove couple of undeeded requires.
+  - Removed patches:
+    * autofs-5-1-3-fix-ordering-of-seteuid-setegid-in-do_spawn.patch
+    * autofs-5-1-3-fix-possible-map-instance-memory-leak.patch
+    * autofs-5-1-3-check-map-instances-for-staleness-on-map-update.patch
+    * 0001-use_hostname_for_mounts-shouldn-t-prevent-selection-.patch
+    * 0002-Fix-monotonic_elapsed.patch
+    * 0003-autofs-5.1.4-fix-fd-leak-in-rpc_do_create_client.patch
+  - Updated spec file to use native autofs service files
+
+-------------------------------------------------------------------
+Wed May 16 00:55:57 UTC 2018 - nfbrown@suse.com
+
+- 0003-autofs-5.1.4-fix-fd-leak-in-rpc_do_create_client.patch
+  Fix filedescriptor leak (bsc#1093436)
+
+-------------------------------------------------------------------
+Tue Mar  6 17:53:35 UTC 2018 - dimstar@opensuse.org
+
+- BuildRequire pkgconfig(udisks2) instead of udisks2-devel: let's
+  be flexible on possible package name changes.
+- Package COPYRIGHT as %license instead of %doc.
+
+-------------------------------------------------------------------
+Sun Feb  4 23:22:33 UTC 2018 - nfbrown@suse.com
+
+- 0001-use_hostname_for_mounts-shouldn-t-prevent-selection-.patch
+  Fix handling of replicated NFS server so that
+  selection between servers still works sensibly when
+  use_hostname_for_mounts is in effect.
+  (bsc#1066720)
+- 0002-Fix-monotonic_elapsed.patch
+  Fix bug introduced with monotonic-time patches which
+  causes nanoseconds to be ignored and effectively
+  disables sorting based on response time and/or weight.
+  (bsc#1066720)
+
+-------------------------------------------------------------------
+Thu Nov 23 13:44:33 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Sun Nov 12 09:51:06 CET 2017 - kukuk@suse.de
+
+- Add build require for rpcgen (preparation for removing it from
+  glibc)
+
+-------------------------------------------------------------------
+Wed Oct 18 21:03:57 UTC 2017 - jeffm@suse.com
+
+- fix ordering of seteuid/setegid in do_spawn (bsc#1062482).
+- fix unset tsd group name handling (bsc#1062482).
+- fix possible map instance memory leak (bsc#1038198).
+- check map instances for staleness on map update (bsc#1038198).
+- Added patches:
+  - autofs-5-1-3-check-map-instances-for-staleness-on-map-update.patch
+  - autofs-5-1-3-fix-ordering-of-seteuid-setegid-in-do_spawn.patch
+  - autofs-5-1-3-fix-possible-map-instance-memory-leak.patch
+  - autofs-5-1-3-fix-unset-tsd-group-name-handling.patch
+
+-------------------------------------------------------------------
+Tue Aug 15 21:57:09 CEST 2017 - kukuk@suse.de
+
+- Add libnsl-devel as build require in preparation of libnsl
+  removal from glibc
+
+-------------------------------------------------------------------
+Tue Aug 15 17:09:57 UTC 2017 - jeffm@suse.com
+
+- Add gpg signature
+
+-------------------------------------------------------------------
+Wed Aug  9 18:45:13 UTC 2017 - jeffm@suse.com
+
+- Update URL to use www.kernel.org now that ftp is gone.
+
+-------------------------------------------------------------------
+Wed Aug  9 17:45:46 UTC 2017 - jeffm@suse.com
+
+- update to version 5.1.3:
+  * limit getgrgid_r() buffer size
+  * increase worker thread per-thread stack size
+  * fix offset mount location multiple expansion
+  * use malloc for expanded map location
+  * fix invalid reference in remount_active_mount()
+  * fix work around sss startup delay
+  * fix possible NULL derefernce
+  * use autofs_point to store expire timeout where possibe
+  * add config option to use mount request log id
+  * factor out set_thread_mount_request_log_id()
+  * log functions to prefix messages with attempt_id if available
+  * create thread-local ID for mount attempts
+  * add the mount requestor's pid to pending_args
+  * delay submount exit for amd submounts
+  * fix bogus check in expire_cleanup()
+  * handle amd cache option all in amd type auto mounts
+  * handle map_option cache for top level mounts
+  * capture cache option and its settings during parsing
+  * add function conf_amd_get_map_options()
+  * check for conflicting amd section mounts
+  * include amd mount section mounts in master mounts list
+  * add function conf_amd_get_mount_paths()
+  * add function conf_amd_get_map_name()
+  * add support for amd browsable option
+  * add ref counting to struct map_source
+  * fix typos in README.amd-maps
+  * honor last rw in mount options when doing a bind mount
+  * set autofs mounts catatonic at exit
+  * make set_direct_mount_catatonic() more general
+  * check NFS server availability on local mount fallback
+  * make lookup_nss_read_master() return nss status
+  * don't return until after master map retry read
+  * set sane default master read wait timeout
+  * dont exit on master map read fail timeout
+  * fix included master map not found return
+  * fix quoted key handling in sanitize_path()
+  * add sss master map wait config option
+  * work around sss startup delay
+  * add master read wait option
+  * wait for master map available at start
+  * update and add README for old autofs schema
+  * fix create_client() RPC client handling
+  * fix _strncmp() usage
+  * fix argc off by one in mount_autofs.c
+  * fix cachefs parse message not being logged
+  * fix typo in MOUNT_FLAG_GHOST comment
+  * Avoid local variable name shadowing another
+  * configure: add cache variable for Linux proc filesystem check
+  * fix count_mounts() function
+  * fix short memory allocation in lookup_amd_instance()
+  * Fix fgets(3) size argument (another one)
+  * Fix typos in error messages
+  * Remove unused local 2KB buffer
+  * fix file map changed check
+  * Change .requestor to .requester for consistency
+  * Fix a typo in CREDITS
+  * fix libtirpc detection with -Wl,--as-needed
+  * Fix size arg of fgets(3)
+  * Drop redundant \n in logerr()
+  * Fix compiler warning in try_remount()
+  * build: check for clock_gettime in librt
+  * fix possible memory leak in nfs mount
+  * add config option to suppress not found log message
+  * properly handle errors in lookup_nss_mount
+  * fix yp map age not updated during map lookup
+  * fix 'nameing' typo in autofs.conf
+  * add remote-fs.target systemd dependency
+  * add autofs(5) note of IPv6 libtirpc requirement
+  * fix autofs(5) description of supported map sources
+  * fix modules make clean target
+  * fix Makefile linking dependencies
+  * fix handle_mounts() termination condition check
+  * log pipe read errors
+  * fix use-after-free in st_queue_handler()
+  * always set direct mounts catatonic at exit
+  * improve scalability of direct mount path component
+  * fix use after free in match_my_name()
+  * fix memory leak in get_network_proximity()
+  * fix typo in autofs_sasl_bind()
+  * fix use after free in open_lookup()
+  * fix use after free in sun parser parse_init()
+  * fix memory leak in ldap do_init()
+  * fix memory leak in nisplus lookup_reinit()
+  * fix sasl connection concurrancy problem
+  * fix unbind sasl external mech
+  * remove unused function elapsed()
+  * change time() to use monotonic_clock()
+  * change remaining gettimeofday() to use clock_gettime()
+  * use monotonic clock for indirect mount condition
+  * use monotonic clock for direct mount condition
+  * define pending condition init helper function
+  * use monotonic clock for alarm thread condition wait
+  * define monotonic clock helper functions
+  * Add a mode option for master map entries
+  * fix error handling of is_mounted()
+  * fix out of order call in program map lookup
+  * add configuration option to use fqdn in mounts
+  * update map_hash_table_size description
+  * change lookup to use reinit instead of reopen
+  * implement reinit in multi lookup module
+  * fix map format check in nss_open_lookup() multi map module
+  * factor out alloc multi map context
+  * factor out free multi map context
+  * add type to struct lookup_mod
+  * implement reinit in yp lookup module
+  * implement reinit in sss lookup module
+  * implement reinit in program lookup module
+  * implement reinit in nisplus lookup module
+  * implement reinit in ldap lookup module
+  * implement reinit in hosts lookup module
+  * implement reinit in hesiod lookup module
+  * implement reinit in file lookup module
+  * implement reinit in dir lookup module
+  * implement reinit in parse modules
+  * add reinit entry point to modules
+  * fix nsswitch handling when opening multi map
+  * make open_lookup() return nss status
+  * move check_nss_result() to nsswitchr.c
+  * fix update_hosts_mounts() return
+  * fix missing source sss in multi map lookup
+  * fix direct map expire not set for initial empty map
+  * fix direct mount stale instance flag reset
+  * fix error handling on ldap bind fail
+  * fix config old name lookup
+  * fix rwlock unlock crash
+  * fix return handling of do_reconnect() in ldap module
+  * make find_server() return a status
+  * make find_dc_server() return a status
+  * make connect_to_server() return a status
+  * make do_connect() return a status
+  * move query dn calculation from do_bind() to do_connect()
+  * fix return handling in sss lookup module
+  * fix left mount count return from umount_multi_triggers()
+  * revert fix libtirpc name clash
+  * update libtirpc workaround for new soname
+  * fix fix gcc5 complaints
+  * Removed patches:
+    autofs-5.1.1-task-use-after-free.patch
+    autofs-improve-scalability-of-direct-mount-path-comp.patch
+    autofs-5.1.1-properly-handle-errors-in-lookup_nss_mount.patch
+    autofs-5.1.1-fix-yp-map-age-not-updated-during-map-lookup.patch
+    autofs-5.1.1-leave_auth_destroy.patch
+  * Updated patches for context:
+    autofs-5.1.1-dbus-udisks-monitor.patch
+
+-------------------------------------------------------------------
+Thu Apr  6 11:23:41 UTC 2017 - astieger@suse.com
+
+- remove rpmlintrc, review was boo#782691
+
+-------------------------------------------------------------------
+Wed Aug 10 13:10:50 UTC 2016 - jeffm@suse.com
+
+- Fix spurious ELOOP on certain kinds of failures (bsc#968918):
+  * autofs: fix yp map age not updated in s/_/./g case
+  * autofs: properly handle errors in lookup_nss_mount
+  * Added patches:
+    autofs-5.1.1-properly-handle-errors-in-lookup_nss_mount.patch
+    autofs-5.1.1-fix-yp-map-age-not-updated-during-map-lookup.patch
+
+-------------------------------------------------------------------
+Thu Mar 24 14:47:04 UTC 2016 - jeffm@suse.com
+
+- improve scalability of direct mount path component creation (bsc#966573).
+  * Added autofs-improve-scalability-of-direct-mount-path-comp.patch
+  * Refreshed autofs-5.1.1-dbus-udisks-monitor.patch
+- Use libldap_r instead of libldap for thread safety (bsc#955477).
+  * Added autofs-use-libldap_r-instead-of-libldap-for-thread-safety.patch
+
+-------------------------------------------------------------------
+Tue Dec  8 22:26:30 CET 2015 - ro@suse.de
+
+- add patch autofs-5.1.1-leave_auth_destroy.patch (bnc#958410)
+  do not redefined auth_destroy, the reason for this has long
+  been fixed in libtirpc (version 0.2.1 is already fine) 
+
+-------------------------------------------------------------------
+Thu Jun 25 23:33:34 UTC 2015 - crrodriguez@opensuse.org
+
+- autofs.service: Use KillMode=mixed so "KillSignal" (SIGTERM) is 
+  only sent to the main process and if still does not exit after
+  "TimeoutStopSec" then "SendSIGKILL" is sent to all remaining 
+  processes of the unit's control group.
+  This is the desired behaviour for almost all daemons that 
+  execute foreign programs.
+
+-------------------------------------------------------------------
+Sun May 17 21:00:05 UTC 2015 - lchiquitto@suse.com
+
+- update to version 5.1.1:
+  * fix compile error in defaults.c
+  * add serialization to sasl init
+  * dont allocate dev_ctl_ops too early
+  * fix incorrect round robin host detection
+  * fix race accessing qdn in get_query_dn()
+  * fix leak in cache_push_mapent()
+  * fix config entry read buffer not checked
+  * fix FILE pointer check in defaults_read_config()
+  * fix memory leak in conf_amd_get_log_options()
+  * fix signed comparison in inet_fill_net()
+  * fix buffer size checks in get_network_proximity()
+  * fix leak in get_network_proximity()
+  * fix buffer size checks in merge_options()
+  * check amd lex buffer len before copy
+  * add return check in ldap check_map_indirect()
+  * check host macro is set before use
+  * check options length before use in parse_amd.c
+  * fix some out of order evaluations in parse_amd.c
+  * fix copy and paste error in dup_defaults_entry()
+  * fix leak in parse_mount()
+  * add mutex call return check in defaults.c
+  * force disable browse mode for amd format maps
+  * fix hosts map options check in lookup_amd_instance()
+  * fix memory leak in create_client()
+  * fix memory leak in get_exports()
+  * fix memory leak in get_defaults_entry()
+  * fix out of order clearing of options buffer
+  * fix reset amd lexer scan buffer
+  * ignore multiple commas in options strings
+  * fix typo in flagdir configure option
+  * clarify multiple mounts description
+  * gaurd against incorrect umount return
+  * update man page autofs(8) for systemd
+  * dont pass sloppy option for other than nfs mounts
+  * make service want network-online
+  * fix fix master map type check
+  * init qdn before use in get_query_dn()
+  * fix typo in update_hosts_mounts()
+  * fix hosts map update on reload
+  * make negative cache update consistent for all lookup modules
+  * ensure negative cache isn't updated on remount
+  * dont add wildcard to negative cache
+  * add a prefix to program map stdvars
+  * add config option to force use of program map stdvars
+  * fix incorrect check in parse_mount()
+  * handle duplicates in multi mounts
+  * revert special case cifs escapes
+  * fix map option parsing for 'strictatime'
+  * fix showmount search in auto.net
+  * remove obsolete comment in auto.net
+  * fix macro usage in lookup_program.c
+  * fix gcc5 complaints
+  * remove unused offset handling code
+  * fix mount as you go offset selection
+  * link daemon with pthread library (Debian patch)
+  * manpage corrections (Debian patch)
+  * fix manpages hyphenation (Debian patch).
+- ported patches:
+  * autofs-5.1.0-dbus-udisks-monitor.patch ->
+    autofs-5.1.1-dbus-udisks-monitor.patch
+  * autofs-debuginfo-fix.patch -> autofs-5.1.1-debuginfo-fix.patch
+  * autofs-5.0.9-suse-auto_master_default.patch ->
+    autofs-5.1.1-suse-auto_master_default.patch
+  * autofs-5.0.9-task-use-after-free.patch ->
+    autofs-5.1.1-task-use-after-free.patch
+- remove patches that are now upstream:
+  * autofs-5.1.0-dont-pass-sloppy-option-for-other-than-nfs-mounts.patch
+  * autofs-5.1.0-add-a-prefix-to-program-map-stdvars.patch
+  * autofs-5.1.0-add-config-option-to-force-use-of-program-map-stdvars.patch
+  * autofs-5.1.0-gcc5-fixes.patch
+
+-------------------------------------------------------------------
+Wed May  6 11:27:45 UTC 2015 - dmueller@suse.com
+
+- add autofs-5.1.0-gcc5-fixes.patch: Fix build against gcc 5.x
+
+-------------------------------------------------------------------
+Tue Mar  3 10:56:48 CET 2015 - mszeredi@suse.cz
+
+- prevent potential privilege escalation via interpreter load path
+  for program-based automount maps, add the following patches:
+  autofs-5.1.0-add-a-prefix-to-program-map-stdvars.patch
+  autofs-5.1.0-add-config-option-to-force-use-of-program-map-stdvars.patch
+  (bnc#917977 CVE-2014-8169)
+
+-------------------------------------------------------------------
+Tue Feb 17 10:23:44 CET 2015 - mszeredi@suse.cz
+
+- add autofs-5.1.0-dont-pass-sloppy-option-for-other-than-nfs-mounts.patch
+  (bsc#911720)
+
+-------------------------------------------------------------------
+Tue Feb  3 19:51:56 UTC 2015 - lchiquitto@suse.com
+
+- Fix autofs.service so that multiple options passed through
+  sysconfig AUTOFS_OPTIONS work correctly (bsc#909472)
+
+-------------------------------------------------------------------
+Tue Feb  3 18:40:56 UTC 2015 - lchiquitto@suse.com
+
+- Fix configuration handling now that we have /etc/autofs.conf
+  and /etc/sysconfig/autofs. Runtime options are now configured in
+  the former, while settings that affect the daemon start up are
+  still handled in the latter.
+- Clean-up sysconfig.autofs, leave only init script options:
+  $OPTIONS and $USE_MISC_DEVICE.
+- Run %fillup also when systemd is enabled. (bsc#906606)
+
+-------------------------------------------------------------------
+Fri Jan  9 09:59:41 CET 2015 - kukuk@suse.de
+
+- Use udisks2, udisks development has ceased in favor of udisks2.
+
+-------------------------------------------------------------------
+Mon Aug  4 14:36:56 CEST 2014 - mszeredi@suse.cz
+
+- add autofs-debuginfo-fix.patch to fix building of debuginfo
+  package
+
+-------------------------------------------------------------------
+Mon Jul 21 15:01:47 UTC 2014 - p.drouand@gmail.com
+
+- Do not depend on insserv if the system use systemd; it's useless
+- Update to version 5.1.0
+  + fix mistake in assignment.
+  + add amd map format parser.
+  + check for non existent negative entries in lookup_ghost().
+  + fix reset flex scan buffer on init.
+  + fix fix negative status being reset on map read.
+  + amd lookup update lookup ldap to handle amd keys.
+    - inadvertantly dropped from initial series.
+  + amd lookup update lookup hesiod to handle amd keys.
+    - inadvertantly dropped from initial series.
+  + fix wildcard key lookup.
+  + fix out of order amd timestamp lookup.
+  + fix ldap default schema config.
+  + fix ldap default master map name config.
+  + fix map format init in lookup_init().
+  + fix incorrect max key length in defaults get_hash().
+  + fix xfn sets incorrect lexer state.
+  + fix old style key lookup.
+  + fix expire when server not responding.
+  + fix ldap_uri config update.
+  + fix typo in conf_load_autofs_defaults().
+  + fix hash on confg option add and delete.
+  + add plus to path match pattern.
+  + fix multi entry ldap option handling.
+  + cleanup options in amd_parse.c
+  + allow empty value for some map options.
+  + allow empty value in macro selectors.
+- Adapt autofs-5.0.9-dbus-udisks-monitor.patch to upstream changes,
+  rename to autofs-5.1.0-dbus-udisks-monitor.patch
+
+-------------------------------------------------------------------
+Wed May 14 11:57:22 UTC 2014 - lchiquitto@suse.com
+
+- autofs.init: drop when systemd is enabled (bnc#863970)
+
+-------------------------------------------------------------------
+Fri Mar 28 14:32:15 UTC 2014 - lchiquitto@suse.com
+
+- update to version 5.0.9:
+  * fixes for samples/auto.master
+  * fix variable substitution description
+  * fix incorrect append options description in README.v5-release
+- rebase, refresh and rename all patches on top of 5.0.9
+- switch to .xz compressed tarball instead of bzip2
+- autofs-5.0.8-upstream-patches-20140324.bz2: remove
+
+-------------------------------------------------------------------
+Tue Mar 25 11:23:27 UTC 2014 - werner@suse.de
+
+- Avoid bad timings and timeouts if a shutdown was done by a remote
+  user via su and with autofs based home directory
+
+-------------------------------------------------------------------
+Mon Mar 24 11:09:12 UTC 2014 - lchiquitto@suse.com
+
+- autofs-5.0.8-upstream-patches-20140324.bz2: update 5.0.8 upstream
+  patches up to 2014-03-24, fixing the following bugs:
+  * fix fix options compare
+  * use open(2) instead of access(2) to trigger dependent mounts
+  * fix fix map source with type lookup (bnc#869377)
+
+-------------------------------------------------------------------
+Tue Feb 25 14:30:35 UTC 2014 - lchiquitto@suse.com
+
+- autofs-5.0.8-upstream-patches-20140224.bz2: update 5.0.8 upstream
+  patches up to 2014-02-24, fixing the following bugs:
+  * fix ipv6 link local address handling
+  * fix fix ipv6 libtirpc getport
+  * get_nfs_info() should query portmapper if port is not given
+  * fix rpc_portmap_getport() proto not set
+  * fix protmap not trying proto v2
+  * fix rpc_getport() when libtirpc is disabled
+  * fix rpc_getrpcbport() when libtirpc is disabled
+  * don't reset errno (former autofs-5.0.8-eaccess.patch)
+  * extend fix for crash due to thread unsafe use of libldap (bnc#853469)
+  * fix deadlock in init_ldap_connection (bnc#859969)
+  * fix options compare
+  * fix negative status being reset on map read
+  * check for existing offset mount before mounting
+  * fix max() declaration
+  * fix symlink fail message in mount_bind.c
+  * fix cache readlock not taken on lookup
+  * pass map_source as function paramter where possible
+  * check for bind onto self in mount_bind.c
+  * fix symlink expire
+  * dont clobber mapent for negative cache
+  * fix macro_addvar() and move init to main thread
+  * change walk_tree() to take ap
+  * add negative cache lookup to hesiod lookup
+  * fix external env configure
+  * make autofs(5) consistent with auto.master(5)
+  * fix map source with type lookup
+  * fix lookup_nss_mount() map lookup
+  * dont ignore null cache entries on multi mount umount
+  * fix inconsistent error returns in handle_packet_missing_direct()
+  * simple coverity fixes
+- autofs-5.0.8-eaccess.patch: removed (merged upstream)
+- autofs-5.0.8-dbus-udisks-monitor.patch: refresh
+
+-------------------------------------------------------------------
+Mon Jan 20 13:46:20 UTC 2014 - lchiquitto@suse.com
+
+- autofs-5.0.8-revert-fix-libtirpc-name-clash.patch: no longer
+  needed after libtirpc was updated to 0.2.4-rc2, remove
+
+-------------------------------------------------------------------
+Mon Dec  2 18:20:54 UTC 2013 - lchiquitto@suse.com
+
+- autofs-5.0.8-upstream-patches-20131124.bz2: update 5.0.8 upstream
+  patches up to 2013-11-24, fixing the following bugs:
+  * fix undefined authtype_requires_creds err if ldap enabled but
+    without sasl
+  * fix master map type check
+  * fix task manager not getting signaled
+  * allow --with-systemd to take a path arg
+  * fix WITH_LIBTIRPC function name
+  * fix ipv6 libtirpc getport
+- autofs-5.0.8-dbus-udisks-monitor.patch: rebase on top of 5.0.8
+
+-------------------------------------------------------------------
+Thu Oct 17 21:21:35 UTC 2013 - lchiquitto@suse.com
+
+- update to version 5.0.8: no code changes as all patches were
+  already present in autofs-5.0.7-upstream-patches-20131001.bz2
+- autofs-5.0.7-upstream-patches-20131001.bz2: removed
+
+-------------------------------------------------------------------
+Thu Oct  3 16:45:02 UTC 2013 - lchiquitto@suse.com
+
+- autofs-suse-build.patch: removed, no longer needed.
+
+-------------------------------------------------------------------
+Thu Oct  3 01:35:29 UTC 2013 - lchiquitto@suse.com
+
+- autofs-5.0.7-upstream-patches-20131001.bz2: update 5.0.7 upstream
+  patches up to 2013-10-01, fixing many bugs:
+  * fix add null check in parse_server_string()
+  * check for protocol option
+  * use ulimit max open files if greater than internal maximum
+  * don't override LDFLAGS in make rules
+  * fix a couple of compiler warnings
+  * add after sssd dependency to unit file
+  * dont start readmap unless ready
+  * fix crash due to thread unsafe use of libldap (bnc#820585)
+  * fix compile error with heimdal support enabled
+  * fix typo forced-shutdown should be force-shutdown
+  * fix hesiod check error and use correct $(LIBS) setting
+  * fix dead LDAP symbolic link when LDAP support is disabled
+  * add missing libtirpc lib to mount_nfs.so when TIRPC enabled
+  * use compiler determined by configure instead of hard-coded ones
+  * remove hard-coded STRIP variable
+  * use LIBS for link libraries
+  * unbundle NOTSTRIP from DEBUG so they dont depend on each other
+  * fix occasional build error when enable parallel compiling
+  * fix compilation of lookup_ldap.c without sasl
+  * fix dumpmaps multi output
+  * try and cleanup after dumpmaps
+  * teach dumpmaps to output simple key value pairs
+  * fix syncronize handle_mounts() shutdown
+  * fix fix wildcard multi map regression
+  * improve timeout option description
+  * only probe specific nfs version when requested
+  * fix bad mkdir permission on create
+  * setup program map env from macro table
+  * add short host name standard marco variable
+  * allow use of hosts map in maps
+  * fix get_nfs_info() probe
+  * fix portmap lookup
+  * add std vars to program map invocation
+  * samples/auto.smb: add logic to obtain credentials
+
+-------------------------------------------------------------------
+Sun Jul  7 17:27:39 UTC 2013 - lchiquitto@suse.com
+
+- autofs-5.0.7-upstream-patches-20130619.bz2: update 5.0.7 upstream
+  patches up to 2013-06-19, fixing some bugs:
+  * make dump maps check for duplicate indirect mounts
+  * document allowed map sources in auto.master
+  * add enable sloppy mount option to configure
+  * fix interface address null check
+  * don't probe rdma mounts
+  * fix master map mount options matching
+  * fix master map bogus keywork match
+  * fix fix map entry duplicate offset detection
+  * probe each nfs version in turn for singleton mounts
+  * fix probe each nfs version in turn for singleton mounts
+  * misc man page fixes
+
+-------------------------------------------------------------------
+Sun Jun 16 02:25:35 UTC 2013 - jengelh@inai.de
+
+- Explicitly specify cyrus-sasl-devel and openssl-devel
+  which were implicit before
+
+-------------------------------------------------------------------
+Sun May 12 10:02:05 UTC 2013 - lchiquitto@suse.com
+
+- autofs-5.0.7-upstream-patches-20130428.bz2: update 5.0.7 upstream
+  patches up to 2013-04-28, fixing some bugs:
+  * fix some automount(8) typos
+  * syncronize handle_mounts() shutdown
+  * fix submount tree not all expiring (bnc#801808)
+- remove patches that are now upstream:
+  * autofs-5.0.7-fix-submount-tree-not-all-expiring.patch
+
+-------------------------------------------------------------------
+Tue Apr  9 20:43:54 UTC 2013 - lchiquitto@suse.com
+
+- autofs-5.0.7-fix-submount-tree-not-all-expiring.patch: expire
+  multiple levels of recursive mounts correctly (bnc#801808)
+
+-------------------------------------------------------------------
+Mon Mar 11 13:36:06 UTC 2013 - lchiquitto@suse.com
+
+- autofs-5.0.7-upstream-patches-20130311.bz2: update 5.0.7 upstream
+  patches to 20130311, fixing some bugs:
+  * dont fail on master map self include (bnc#799873)
+  * fix wildcard multi map regression
+  * fix file descriptor leak when reloading the daemon (bnc#772698)
+  * deprecate nosymlink pseudo option
+  * add symlink pseudo option
+  * document browse option in man page
+
+-------------------------------------------------------------------
+Wed Feb  6 21:30:49 UTC 2013 - lchiquitto@suse.com
+
+- autofs-5.0.6-invalid-ghost-dirs.patch: delete. the problem's
+  root cause was fixed in the kernel
+
+-------------------------------------------------------------------
+Tue Jan 29 16:38:22 UTC 2013 - lchiquitto@suse.com
+
+- rpm spec: enable sssd support if available
+
+-------------------------------------------------------------------
+Mon Jan 21 14:58:04 UTC 2013 - lchiquitto@suse.com
+
+- autofs-5.0.7-upstream-patches-20130121.bz2: update 5.0.7 upstream
+  patches to 20130121, fixing some bugs:
+  * fix nobind man page description
+  * fix submount offset delete
+  * fix init script status return
+  * fix use get_proximity() without libtirpc
+  * don't use dirent d_type to filter out files in scandir()
+  * don't schedule new alarms after readmap
+  * use numeric protocol ids instead of protoent structs
+  * lib/defaults.c: use WITH_LDAP conditional around LDAP types
+  * make yellow pages support optional
+  * modules/replicated.c: use sin6_addr.s6_addr32
+  * workaround missing GNU versionsort extension
+- remove patches that are now upstream:
+  * autofs-5.0.7-fix-scandir-filter.patch
+  * autofs-5.0.7-use-protocol-id-instead-of-protoent.patch
+  * autofs-5.0.7-dont-reschedule-alarm-after-signals.patch
+
+-------------------------------------------------------------------
+Fri Jan 11 19:02:21 UTC 2013 - lchiquitto@suse.com
+
+- fix build on older versions of the distribution, do not install
+  org.freedesktop.AutoMount.conf
+
+-------------------------------------------------------------------
+Fri Jan 11 18:45:14 UTC 2013 - lchiquitto@suse.com
+
+- autofs-5.0.7-fix-scandir-filter.patch: fix lookup_dir when the
+  included directory is on an XFS file system (bnc#798158)
+
+-------------------------------------------------------------------
+Fri Jan 11 18:37:56 UTC 2013 - lchiquitto@suse.com
+
+- autofs-5.0.7-upstream-patches-20121120.bz2: update 5.0.7 upstream
+  patches to 20121120, fixing some bugs:
+  * fix map entry duplicate offset detection
+  * allow nsswitch.conf to not contain "automount:" lines
+
+-------------------------------------------------------------------
+Fri Jan 11 18:28:53 UTC 2013 - lchiquitto@suse.com
+
+- revert systemd initialization type from "simple" to "forking"
+  and drop the patch that partially implemented "new style systemd"
+  daemon (bnc#798162)
+- autofs-5.0.7-new-style-systemd-daemon.patch: delete
+
+-------------------------------------------------------------------
+Thu Nov 15 11:53:37 UTC 2012 - werner@suse.de
+
+- UDisks dbus module support: use private connection, do not refer
+  to a reply if already handled, install dbus AutoMount.conf in
+  direct way
+
+-------------------------------------------------------------------
+Tue Nov  6 21:30:37 UTC 2012 - lchiquitto@suse.com
+
+- autofs-5.0.7-use-protocol-id-instead-of-protoent.patch: use
+  protocol id directly instead of calling the non-reentrant
+  function getprotobyname() (bnc#787410)
+
+-------------------------------------------------------------------
+Tue Nov  6 21:18:39 UTC 2012 - lchiquitto@suse.com
+
+- autofs-5.0.7-dont-reschedule-alarm-after-signals.patch: don't
+  schedule new alarms after handling SIGHUP and SIGUSR1 (bnc#783651)
+
+-------------------------------------------------------------------
+Tue Nov  6 21:12:19 UTC 2012 - lchiquitto@suse.com
+
+- autofs-5.0.7-new-style-systemd-daemon.patch: add new command
+  line parameter --systemd, which instructs automount to skip
+  daemonization completely, leaving the task to systemd
+- autofs.service: use new --systemd option when starting up
+
+-------------------------------------------------------------------
+Thu Nov  1 19:45:43 UTC 2012 - crrodriguez@opensuse.org
+
+- autofs.service: use service type simple with no forking
+
+-------------------------------------------------------------------
+Fri Oct 19 12:56:57 UTC 2012 - lchiquitto@suse.com
+
+- autofs-5.0.7-upstream-patches-20121018.bz2: update 5.0.7 upstream
+  patches to 20121018, fixing some bugs:
+  * fix recursive mount deadlock
+  * increase file map read buffer size
+  * handle new location of systemd
+- remove patches that are now upstream:
+  * autofs-5.0.7-handle-new-location-of-systemd.patch
+
+-------------------------------------------------------------------
+Wed Oct 17 11:49:11 UTC 2012 - lchiquitto@suse.com
+
+- rpm spec: don't try to build with udisks support on old versions
+  of the distribution
+
+-------------------------------------------------------------------
+Wed Oct 17 11:16:44 UTC 2012 - lchiquitto@suse.com
+
+- autofs-5.0.7-upstream-patches-20121016.bz2: update 5.0.7 upstream
+  patches to 20121016, fixing some bugs:
+  * add timeout option description to man page
+  * fix null map entry order handling
+  * make description of default MOUNT_WAIT setting clear
+  * configure.in: allow cross compilation
+  * README: update mailing list subscription info
+
+-------------------------------------------------------------------
+Wed Oct 17 09:07:35 UTC 2012 - fcrozat@suse.com
+
+- autofs-systemd-path.patch: handle new location of systemd
+
+-------------------------------------------------------------------
+Thu Sep 20 12:48:28 UTC 2012 - werner@suse.de
+
+- Make it possible to use tmpfs based parents for autofs mount points
+
+-------------------------------------------------------------------
+Mon Sep 17 15:33:20 UTC 2012 - lchiquitto@suse.com
+
+- autofs-5.0.7-upstream-patches-20120911.bz2: update 5.0.7 upstream
+  patches to 20120911, fixing some bugs:
+  * fix nobind sun escaped map entries
+  * fix use cache entry after free in lookup_prune_one_cache()
+  * fix ipv6 proximity calculation
+  * fix parse buffer initialization
+  * fix typo in automount(8)
+- remove patches that are now upstream:
+  * autofs-5.0.7-fix-parse-buffer-initialization.patch
+  * autofs-5.0.7-fix-use-devid-after-free.patch
+
+-------------------------------------------------------------------
+Tue Aug 28 17:55:46 UTC 2012 - lchiquitto@suse.com
+
+- autofs-5.0.7-fix-use-devid-after-free.patch: fix use cache entry
+  after free in lookup_prune_one_cache() (bnc#774241)
+
+-------------------------------------------------------------------
+Tue Aug 28 17:54:24 UTC 2012 - lchiquitto@suse.com
+
+- autofs-5.0.7-fix-parse-buffer-initialization.patch: fix parse
+  buffer initialization to avoid corruption in the map file name
+  string (bnc#777709)
+
+-------------------------------------------------------------------
+Thu Aug 23 08:45:49 UTC 2012 - werner@suse.de
+
+- Udisk: Check for unknown key word `eavesdrop' for dbus matching
+  rules and if not supported retry without
+- Udisk: Do not crash if map file is not found
+
+-------------------------------------------------------------------
+Fri Aug 17 12:28:53 UTC 2012 - werner@suse.de
+
+- First initial udisks support, that is listen over dbus the udisks
+  daemon and the events for USB and optical devices. Also ask at
+  startup the udisks daemon for all devices and its properties as
+  well as manage the removals and plugins of devices.
+  TODO:
+  + With parsing the map configuration file apply the rules
+    to the map entry, like special options for file systems types
+    and/or devices.  Also make keys unique, that is compare with
+    existing keys and add an counter or similar.
+  + Also with parsing the map configuration file apply the rules
+    to the key of map entry, like using more than one dict entry
+    for the key.
+  + Security management: who is allowed to access the devices?
+  + How to trigger sync and unmount before any timeout?
+  + What is about UTF-8 and Latin to UTF-8?
+
+-------------------------------------------------------------------
+Sun Jul 29 23:38:32 UTC 2012 - lchiquitto@suse.com
+
+- adjust the NetworkManager dispatcher script to check if the
+  AutoFS service is enabled in SysV or systemd (bnc#773440)
+
+-------------------------------------------------------------------
+Wed Jul 25 23:46:20 UTC 2012 - lchiquitto@suse.com
+
+- update to version 5.0.7:
+  * check negative cache much earlier
+  * dont use pthread_rwlock_tryrdlock()
+  * mount_nfs.so to honor explicit NFSv4 requests
+  * mount_nfs.so fix port=0 option behavior v3
+  * documentation fix some typos and misleading comments
+
+-------------------------------------------------------------------
+Fri Jul 20 19:07:22 UTC 2012 - lchiquitto@suse.com
+
+- add reload action to systemd service file (bnc#772487)
+
+-------------------------------------------------------------------
+Thu Jul 19 22:43:42 UTC 2012 - lchiquitto@suse.com
+
+- update 5.0.6 upstream patches to 20120716, fixing some bugs:
+  * fix systemd argument passing
+  * fix get_nfs_info() can incorrectly fail
+  * fix offset directory removal
+
+-------------------------------------------------------------------
+Tue Jul  3 00:36:26 UTC 2012 - lchiquitto@suse.com
+
+- update 5.0.6 upstream patches to 20120629, fixing some bugs:
+  * check if /etc/mtab is a link to /proc/self/mounts
+  * fix nfs4 contacts portmap
+  * fix sss map age not updated
+  * fix remount deadlock (bnc#733479)
+  * fix umount recovery of busy direct mount (bnc#734924)
+  * fix offset mount point directory removal
+  * remove move mount code and configure option
+  * fix remount of multi mount
+  * fix device ioctl alloc path check
+  * refactor hosts lookup module
+  * remove cache update from parse_mount()
+  * add function to delete offset cache entry
+  * allow update of multi mount offset entries
+  * add hup signal handling to hosts map
+- remove patches that are now upstream:
+  * autofs-5.0.6-fix-remount-deadlock.patch
+  * autofs-5.0.6-fix-umount-recovery-of-busy-direct-mount.patch
+
+-------------------------------------------------------------------
+Tue May 29 17:12:43 UTC 2012 - lchiquitto@suse.com
+
+- fix umount recovery of busy direct mounts (bnc#734924)
+- fix remount deadlock that can happen on a restart when there are
+  nested direct mounts busy (bnc#733479)
+
+-------------------------------------------------------------------
+Mon May 28 21:12:46 UTC 2012 - lchiquitto@suse.com
+
+- revert "fix libtirpc name clash": auth_put() is not yet available
+  in our version of tirpc
+
+-------------------------------------------------------------------
+Sat May 26 12:08:26 UTC 2012 - lchiquitto@suse.com
+
+- update 5.0.6 upstream patches to 20120525, fixing some bugs:
+  * fix sss wildcard match
+  * fix dlopen() error handling in sss module
+  * fix configure string length tests
+  * report "map not read" when debug logging
+  * duplicate parent options for included maps (bnc#753693)
+  * update ->timeout() function to not return timeout
+  * move timeout to map_source
+  * fix kernel verion check of version components
+  * dont retry ldap connect if not required
+  * fix initialization in rpc create_client()
+  * fix libtirpc name clash
+- remove patches that are now upstream:
+  * autofs-5.0.6-duplicate-parent-options-for-included-maps.patch
+
+-------------------------------------------------------------------
+Wed Apr 25 09:54:31 UTC 2012 - lchiquitto@suse.com
+
+- duplicate parent options for included maps (bnc#753693)
+
+-------------------------------------------------------------------
+Mon Apr  2 17:50:35 UTC 2012 - lchiquitto@suse.com
+
+- update 5.0.6 upstream patches to 20120402, fixing some bugs:
+  * use strtok_r() in linux_version_code()
+  * improve UDP RPC timeout handling
+  * allow MOUNT_WAIT to override probe
+  * fix rework error return handling in rpc code
+  * fix typo in libtirpc file name
+  * fix function to check mount.nfs version
+  * fix segmentation fault in get_query_dn() (bnc#752044)
+- remove patches that are now upstream:
+  * autofs-5.0.6-fix-libtirpc-name-typo.patch
+
+-------------------------------------------------------------------
+Wed Feb 29 13:00:01 UTC 2012 - lchiquitto@suse.com
+
+- update 5.0.6 upstream patches to 20120228, fixing some bugs and
+  implementing new features (bnc#749098):
+  * fix improve mount location error reporting
+  * fix fix wait for master source mutex
+  * add sss lookup module
+  * teach automount about sss source
+  * fix init script usage message
+  * ignore duplicate exports in auto.net
+  * add kernel version check function
+  * add function to check mount.nfs version
+  * reinstate singleton mount probe
+  * rework error return handling in rpc code
+  * catch EHOSTUNREACH and bail out early
+  * systemd support fixes
+  * check scandir() return value (bnc#748588)
+  * allow for kernel packet size change (in kernel 3.3.0+)
+  * fix function to check mount.nfs version
+- get-upstream-patches: make it work again after kernel.org FTP
+  server reorganization
+
+-------------------------------------------------------------------
+Thu Feb  2 22:18:53 UTC 2012 - lchiquitto@suse.com
+
+- fix segfault caused by an use after free in st_queue_handler()
+  (bnc#727392)
+
+-------------------------------------------------------------------
+Thu Feb  2 13:09:26 UTC 2012 - lchiquitto@suse.com
+
+- comment out /etc/auto.master.d from the shipped auto.master file
+
+-------------------------------------------------------------------
+Thu Feb  2 12:55:51 UTC 2012 - lchiquitto@suse.com
+
+- configure with --disable-mount-move only when systemd is enabled
+
+-------------------------------------------------------------------
+Fri Jan 27 18:05:45 UTC 2012 - lchiquitto@suse.com
+
+- rpm spec: simplify some commands in the install section and
+  use more rpm macros (from Cristian Rodriguez)
+
+-------------------------------------------------------------------
+Mon Jan 23 16:24:31 UTC 2012 - lchiquitto@suse.com
+
+- enable systemd support by default on openSUSE 12.2 (bnc#741879):
+  * enable disable-mount-move and with-systemd configure options
+  * install systemd service file
+
+-------------------------------------------------------------------
+Mon Jan 23 12:56:56 UTC 2012 - lchiquitto@suse.com
+
+- disable "--as-needed" to make sure automount will be linked
+  against libtirpc (bnc#742846)
+
+-------------------------------------------------------------------
+Thu Jan 19 20:40:34 UTC 2012 - lchiquitto@suse.com
+
+- fix typo in libtirpc file name
+- rpm spec: use the %configure macro
+
+-------------------------------------------------------------------
+Tue Jan 17 12:44:26 UTC 2012 - lchiquitto@suse.com
+
+- update 5.0.6 upstream patches to 20111210, fixing some bugs and
+  implementing new features (bnc#741878):
+  * add systemd unit support (not enabled yet)
+  * add disable move mount configure option
+  * implement 'dir' map type
+  * improve mount location error reporting
+  * fix rpc build error
+  * fix ipv6 configure check
+  * fix ipv6 rpc calls
+  * fix ipv6 name lookup check
+  * fix map source check in file lookup
+  * fix submount shutdown race
+  * fix wait for master source mutex
+  * fix not bind mounting local filesystem
+  * fix LDAP result leaks on error paths
+  * fix result null check in read_one_map()
+  * fix dumpmaps not reading maps
+  * fix paged query more results check
+
+-------------------------------------------------------------------
+Tue Dec 20 11:28:00 UTC 2011 - coolo@suse.com
+
+- add autoconf as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Nov 16 19:51:44 UTC 2011 - lchiquitto@suse.com
+
+- fix initialization of LDAP results (bnc#730245)
+
+-------------------------------------------------------------------
+Wed Oct 19 16:00:47 UTC 2011 - lchiquitto@suse.com
+
+- init script: remove SUSE-specific actions that systemd doesn't
+  support (force-expire and force-stop) (bnc#725199)
+
+-------------------------------------------------------------------
+Sat Sep 17 13:43:52 UTC 2011 - jengelh@medozas.de
+
+- rpm spec: remove redundant tags/sections
+- rpm spec: use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Wed Sep 14 18:51:32 UTC 2011 - lchiquitto@suse.com
+
+- fix LDAP result leaks on error paths
+- fix result null check in read_one_map() (bnc#707715)
+- fix paged query more results check
+
+-------------------------------------------------------------------
+Mon Jul  4 11:35:36 UTC 2011 - lchiquitto@suse.com
+
+- update 5.0.6 upstream patches to 20110703, removing one patch
+  that is now upstream:
+  * autofs-5.0.6-fix-ipv6-name-for-lookup-fix.patch
+
+-------------------------------------------------------------------
+Fri Jul  1 13:40:05 UTC 2011 - lchiquitto@suse.com
+
+- fix an error in the recent ipv6 name for lookup patch
+
+-------------------------------------------------------------------
+Tue Jun 28 23:42:30 UTC 2011 - lchiquitto@suse.com
+
+- update to version 5.0.6 (bnc#702791):
+  * add nobind option
+  * add base64 password encode
+  * fix ipv6 name for lookup
+  * fix libtirpc ipv6 check
+  * dont bind nfs mount if nobind is set
+- remove patches that are now upstream:
+  *  autofs-5.0.5-fix-null-cache-deadlock.patch
+
+-------------------------------------------------------------------
+Tue Jun 14 17:21:19 UTC 2011 - lchiquitto@suse.com
+
+- rpm spec: install the rcautofs(8) man page as a symbolic link
+  to autofs(8)
+- rpm spec: restart the automount daemon after updates
+- init script: update Free Software Foundation address
+
+-------------------------------------------------------------------
+Tue Jun 14 12:01:17 UTC 2011 - lchiquitto@suse.com
+
+- fix null cache deadlock (bnc#696596)
+
+-------------------------------------------------------------------
+Tue Jun 14 11:54:02 UTC 2011 - lchiquitto@suse.com
+
+- update 5.0.5 upstream patches to 20110613 (bnc#699767):
+  * remove master_mutex_unlock() leftover
+  * fix sanity checks for brackets in server name
+  * fix lsb service name in init script
+  * fix map source check in file lookup
+  * fix simple bind without SASL support
+  * fix sasl bind host name selection
+
+-------------------------------------------------------------------
+Tue Jun 14 09:36:35 UTC 2011 - aj@suse.de
+
+- build against libtirpc since glibc's rpc code is deprecated
+
+-------------------------------------------------------------------
+Fri May 27 20:53:03 UTC 2011 - lchiquitto@suse.com
+
+- modify the NetworkManager dispatcher script to prevent it from
+  restarting AutoFS when the network goes down (bnc#693402)
+
+-------------------------------------------------------------------
+Fri May 27 20:13:52 UTC 2011 - lchiquitto@suse.com
+
+- init script: remove references to the obsolete autofs.ko (v3)
+  kernel module (bnc#696708)
+- init script: don't wait one second if the misc device is already
+  available (bnc#696708)
+
+-------------------------------------------------------------------
+Mon May 23 17:44:54 UTC 2011 - lchiquitto@suse.com
+
+- documentation: add the following (commented out) options to
+  the default sysconfig file (bnc#695487, bnc#691617):
+  * DEFAULT_NEGATIVE_TIMEOUT
+  * DEFAULT_MOUNT_WAIT and DEFAULT_UMOUNT_WAIT
+  * MOUNT_NFS_DEFAULT_PROTOCOL
+  * LDAP_URI, LDAP_TIMEOUT, LDAP_NETWORK_TIMEOUT and SEARCH_BASE
+
+-------------------------------------------------------------------
+Mon May  9 16:46:48 UTC 2011 - lchiquitto@suse.com
+
+- update 5.0.5 upstream patches to 20110427 (bnc#692104):
+  * fix paged ldap map read
+  * fix next task list update
+  * fix stale map read
+  * fix null cache clean
+  * automount(8) man page correction
+  * fix out of order locking in readmap
+  * include ip address in debug logging
+  * mount using address for DNS round robin host names
+  * reset negative status on cache prune
+- remove patches that are now upstream:
+  * autofs-5.0.5-fix-next-task-list-update.patch
+  * autofs-5.0.5-fix-stale-map-read.patch
+  * autofs-5.0.5-fix-out-of-order-locking-in-readmap.patch
+
+-------------------------------------------------------------------
+Mon Apr  4 21:04:35 UTC 2011 - lchiquitto@suse.com
+
+- init script: use misc device (/dev/autofs) by default, unless it
+  is explicitly disabled in sysconfig (bnc#684997)
+
+-------------------------------------------------------------------
+Mon Apr  4 20:49:38 UTC 2011 - lchiquitto@suse.com
+
+- fix out of order locking in readmap (bnc#667967)
+
+-------------------------------------------------------------------
+Mon Apr  4 20:40:04 UTC 2011 - lchiquitto@suse.com
+
+- add upstream fixes for the "non-expiring mounts" problem and
+  put the "fix direct map not updating on reread" patch back in
+  (bnc#677143)
+
+-------------------------------------------------------------------
+Tue Mar 29 17:47:28 UTC 2011 - lchiquitto@suse.com
+
+- ship init script as a source file and not as a patch against the
+  upstream sample
+
+-------------------------------------------------------------------
+Tue Mar 29 14:54:08 UTC 2011 - lchiquitto@suse.com
+
+- update 5.0.5 upstream patches to 20110318, fixing one bug:
+  * replace GPLv3 code (bnc#682268)
+
+-------------------------------------------------------------------
+Thu Mar 24 21:04:16 UTC 2011 - lchiquitto@suse.com
+
+- revert "fix direct map not updating on reread" due to expiration
+  problems (bnc#677143)
+
+-------------------------------------------------------------------
+Thu Mar  3 14:11:32 UTC 2011 - lchiquitto@suse.com
+
+- update 5.0.5 upstream patches to 20110302 (bnc#676690):
+  * use weight only for server selection
+  * fix isspace() wild card substitution
+  * auto adjust ldap page size
+  * fix prune cache valid check
+  * fix mountd vers retry
+  * fix expire race
+
+-------------------------------------------------------------------
+Tue Feb 22 13:51:47 UTC 2011 - lchiquitto@suse.com
+
+- init script: remove "gssd" from Should-Start/Stop lists, there
+  is no service with this name (bnc#626516)
+
+-------------------------------------------------------------------
+Mon Feb 21 15:01:21 UTC 2011 - lchiquitto@suse.com
+
+- when ghosting is enabled, don't create mount points for cached
+  entries that don't have a valid mapent (bnc#658734)
+
+-------------------------------------------------------------------
+Fri Oct 29 13:08:52 UTC 2010 - lchiquitto@suse.com
+
+- update 5.0.5 upstream patches to 20101021 (bnc#650177):
+  * remove ERR_remove_state() openssl call
+  * always read file maps mount lookup map read fix
+  * fix direct map not updating on reread
+  * fix add simple bind auth
+  * fix submount shutdown wait
+  * add external bind method
+  * add dump maps option
+
+-------------------------------------------------------------------
+Thu Aug 19 12:15:44 UTC 2010 - lchiquitto@suse.com
+
+- add MAP_HASH_TABLE_SIZE option to sysconfig
+
+-------------------------------------------------------------------
+Thu Aug 12 13:31:29 UTC 2010 - lchiquitto@suse.com
+
+- update 5.0.5 upstream patches to 20100810 (bnc#630736):
+  * remove extra read master map call
+  * fix "fix cache_init() on source re-read"
+  * fix error handing in do_mount_indirect()
+  * expire thread use pending mutex
+  * link against krb5 library by default
+  * make "verbose" mode a little less verbose (bnc#630719)
+- merge patches autofs-5.0.2-use_local_cflags.patch and
+  autofs-5.0.5-as_needed.patch into autofs-suse-build.patch
+- remove autofs-5.0.4-link_kerberos.patch (now upstream)
+
+-------------------------------------------------------------------
+Mon May 24 13:02:40 UTC 2010 - lchiquitto@suse.com
+
+- update 5.0.5 upstream patches to 20100524 (bnc#608284):
+  * add support to LDAP simple bind authentication
+  * fix master map source server unavailable handling
+  * add autofs_ldap_auth.conf man page
+  * fix random selection for host on different network
+  * don't hold lock for simple mounts
+  * fix remount locking
+  * fix wildcard map entry match (bnc#585201)
+  * fix parse_sun() module init
+  * don't check null cache on expire
+  * fix null cache race
+  * fix cache_init() on source re-read
+  * mapent becomes negative during lookup
+  * check each dc server
+  * fix negative cache included map lookup
+  * remove state machine timed wait
+
+-------------------------------------------------------------------
+Mon May 10 23:26:47 UTC 2010 - lchiquitto@suse.com
+
+- init script: improve stop routine to avoid problems on restart
+  (bnc#604497)
+
+-------------------------------------------------------------------
+Wed Mar 31 18:02:13 UTC 2010 - lchiquitto@suse.com
+
+- update 5.0.5 upstream patches to 20100326:
+  * fix reconnect get base dn
+  * add missing sasl mutex callbacks
+  * fix get query dn failure
+  * fix ampersand escape in auto.smb
+  * add locality as valid ldap master map attribute
+  * add locality as valid ldap master map attribute fix
+
+-------------------------------------------------------------------
+Wed Feb 24 16:50:02 CET 2010 - mszeredi@suse.cz
+
+- add "network-remotefs" to  Should-Start: and  Should-Stop: in the
+  init script (bnc#522224)
+
+-------------------------------------------------------------------
+Wed Feb 10 10:37:15 UTC 2010 - lchiquitto@suse.com
+
+- remove configure to make sure it will be recreated by autoconf.
+  fixes a build problem that sometimes prevented lookup_ldap.so to
+  be linked against krb5 (bnc#572934, bnc#578655)
+
+-------------------------------------------------------------------
+Thu Feb  4 22:48:22 UTC 2010 - lchiquitto@suse.com
+
+- update 5.0.5 upstream patches to 20100201:
+  * check for path mount location in generic module
+  * don't fail mount on access fail
+  * fix rpc fail on large export list
+  * fix memory leak on reload
+  * don't connect at ldap lookup module init
+  * fix random selection option
+  * fix disable timeout
+  * fix strdup() return value check
+- include README file about active restart feature (bnc#565151)
+
+-------------------------------------------------------------------
+Wed Dec 23 11:56:57 UTC 2009 - lchiquitto@suse.com
+
+- fix build on releases that do not support ext4
+
+-------------------------------------------------------------------
+Wed Dec 16 14:03:27 UTC 2009 - lchiquitto@suse.com
+
+- add new sysconfig parameter USE_MISC_DEVICE and enable it by
+  default (bnc#565151)
+- update initscript bringing it closer to what we have upstream:
+  * remove the deprecated force-stop logic and handle it like a
+    regular stop
+  * remove force-reload from usage and handle it like a regular
+    reload
+
+-------------------------------------------------------------------
+Fri Nov 27 11:59:44 UTC 2009 - lchiquitto@suse.com
+
+- update to version 5.0.5. lots of bug fixes including:
+  * fix nested submount expire deadlock
+  * fix negative caching for non-existent map keys
+  * make hash table scale to thousands of entries
+  * fix uri list locking (again)
+  * add nfs mount protocol default configuration option
+  * fix bad token declaration in master map parser
+  * fix double free in expire_proc()
+  * fix file map lookup when reading included or nsswitch sources
+  * fix memory leak reading master map
+  * fix st_remove_tasks() locking
+  * dont umount existing direct mount on master re-read
+  * fix incorrect shutdown introduced by library relaod fixes
+  * fix not releasing resources when using submounts
+  * fix double free in sasl_bind()
+  * fix map type info parse error
+  * fix an RPC fd leak
+  * fix pthread push order in expire_proc_direct()
+  * fix libxml2 non-thread-safe calls
+  * fix direct map cache locking
+  * fix dont umount existing direct mount on reread.
+- update 5.0.5 upstream patches to 20091124:
+  * add mount wait parameter
+  * don't use master_lex_destroy() to clear parse buffer
+  * fix backwards #ifndef INET6
+  * fix ext4 fsck at mount
+  * fix included map read fail handling
+  * fix libxml2 workaround configure
+  * fix pidof init script usage
+  * fix stale initialization for file map instance
+  * fix timeout in connect_nb()
+  * make documentation for set-log-priority clearer
+  * refactor ldap sasl bind
+  * special case cifs escapes.
+
+-------------------------------------------------------------------
+Fri Jun 19 07:08:43 CEST 2009 - cmorve69@yahoo.es
+
+- fixed build with --as-needed
+
+-------------------------------------------------------------------
+Thu May 14 12:21:09 CEST 2009 - werner@suse.de
+
+- Add nfsserver to should start/stop in rc script (bnc#467906)
+
+-------------------------------------------------------------------
+Thu Apr  9 16:10:27 CEST 2009 - werner@suse.de
+
+- make sure that submounts are not busy anymore (bnc#467906)
+
+-------------------------------------------------------------------
+Thu Feb 12 12:40:06 CET 2009 - mkoenig@suse.de
+
+- add script to fetch upstream patches
+
+-------------------------------------------------------------------
+Wed Feb  4 15:31:19 CET 2009 - mkoenig@suse.de
+
+- update to version 5.0.4 (just version bump, since all 5.0.3
+  upstream patches had been already applied)
+- update 5.0.4 upstream patches to 20090122:
+  * fix dumb libxml2 check
+  * fix nested submount expire deadlock.
+  * fix negative caching for non-existent map keys.
+  * use CLOEXEC flag.
+  * fix select(2) fd limit.
+  * make hash table scale to thousands of entries (Paul Wankadia,
+    Valerie Aurora Henson).
+  * clear the quoted flag after each character from program map input.
+- remove patch
+  autofs-5.0.1-mount_xdr_no_strict_aliasing.patch
+
+-------------------------------------------------------------------
+Tue Jan 27 18:14:48 CET 2009 - kukuk@suse.de
+
+- Add aaa_base to PreReq.
+
+-------------------------------------------------------------------
+Fri Jan 23 15:49:14 CET 2009 - coolo@suse.de
+
+- don't rely on huge perl script to check if autofs is active
+
+-------------------------------------------------------------------
+Thu Jan 22 11:42:35 CET 2009 - mkoenig@suse.de
+
+- apply all 5.0.3 upstream patches which include a couple
+  critical bugfixes:
+- fix segfault due to empty hostlist [bnc#466167]
+- fixes for submount shutdown
+- use /dev/urandom
+- fix problems if /etc/mtab points to /proc/mounts
+- dynamically allocate interface config buffer
+- fix percent hack
+- handle zero length nis key update
+- fix file handle being left open following a multi-mount non-fatal
+  mount fail
+- fix case where an incorrect mount point path was being used when
+  mounting a multi-mount component
+- Fix incorrect match of map type as a host name
+- fix map out of order map re-read on hup signal.
+- fix nisplus error return check and use after free error.
+- fix rootless direct multi-mount expire.
+- wait submount expire thread completion
+- add missing uris list locking
+- fix master map lexer eval order
+- fix bad alloca usage
+
+-------------------------------------------------------------------
+Thu Jan  8 14:33:41 CET 2009 - mkoenig@suse.de
+
+- fix segfault on HUP [bnc#458336]
+
+-------------------------------------------------------------------
+Fri Oct 24 18:06:29 CEST 2008 - mkoenig@suse.de
+
+- fix syntax error in init script [bnc#435505]
+
+-------------------------------------------------------------------
+Fri Aug 15 16:22:49 CEST 2008 - mkoenig@suse.de
+
+- build with --enable-ignore-busy
+- add init script action force-expire to force the expire
+  of mounted filesystems
+- add init script action force-stop for forced shutdown with
+  lazy umount of busy filesystems
+- use force-stop on shutdown
+- Don't kill all processes on busy filesystems anymore,
+  as we do a lazy umount, this might not be needed and
+  reduces shutdown overhead
+
+-------------------------------------------------------------------
+Mon Aug 11 14:28:40 CEST 2008 - mkoenig@suse.de
+
+- update upstream patches 20080806
+- remove patch
+  autofs-5.0.3-allow_rootfs_nonlocal.patch
+
+-------------------------------------------------------------------
+Thu Jun 26 16:59:17 CEST 2008 - mkoenig@suse.de
+
+- update upstream patches 20080528
+- allow rootfs to be non-local [bnc#399944]
+- remove patch
+  autofs-5.0.3-aclocal_pthread.patch
+
+-------------------------------------------------------------------
+Fri May 16 16:31:01 CEST 2008 - mkoenig@suse.de
+
+- more shutdown improvements to minimize the risk of mounted
+  leftovers in the shutdown process
+  differentiate between direct/indirect mounts
+  enforce lazy umount since USR2 seems not to work currently
+
+-------------------------------------------------------------------
+Mon Apr 21 17:10:26 CEST 2008 - mkoenig@suse.de
+
+- improve shutdown in init script
+
+-------------------------------------------------------------------
+Wed Jan 30 09:23:58 CET 2008 - mkoenig@suse.de
+
+- link LDAP lookup module with krb5 if build with SASL [bnc#356599]
+
+-------------------------------------------------------------------
+Thu Jan 17 15:41:30 CET 2008 - mkoenig@suse.de
+
+- update to version 5.0.3
+  * quell annoying "cannot open mount module" message.
+  * fix for improve handling of server not available.
+  * use mount option "nodev" for "-hosts" map unless "dev" is
+    explicily specified.
+  * add LDAP paged query handling to deal with query size restrictions
+  * add additional case for "mark map instances stale so they aren't
+    "cleaned" during updates".
+  * fix race during sub-mount shutdown.
+  * fix add SEARCH_BASE configuration option.
+  * update kernel patches.
+- update upstream patches (20080117)
+  * correct configure test for ldapr page control functions.
+  * catch "-xfn" map type and issue "no supported" message.
+- fix configure check
+- add krb5-devel and libxml2-devel to BuildRequires
+
+-------------------------------------------------------------------
+Mon Dec 17 12:38:25 CET 2007 - mkoenig@suse.de
+
+- update upstream patches
+  * fix off-by-one error for lookup of map keys exactly
+    255 characters long
+  * improve handling of server not available
+  * fix LDAP_URI server selection
+  * add authentication option for using an external credential cache
+  * expand support for the "%" hack
+  * fix to quoting for exports gathered by hosts map
+  * use mount option "nosuid" for "-hosts" map unless "suid" is
+    explicily specified
+  * second attempt fixing quoting for exports gathered by hosts map
+- merged autofs-5.0.2-size_fix.patch
+
+-------------------------------------------------------------------
+Tue Nov 20 17:16:31 CET 2007 - mkoenig@suse.de
+
+- fix buffer overflow [#341626]
+
+-------------------------------------------------------------------
+Thu Nov 15 17:06:21 CET 2007 - dmueller@suse.de
+
+- add recommends on nfs-client
+
+-------------------------------------------------------------------
+Wed Nov 14 18:37:39 CET 2007 - mkoenig@suse.de
+
+- fix version
+
+-------------------------------------------------------------------
+Fri Nov  9 13:11:07 CET 2007 - mkoenig@suse.de
+
+- update upstream patches which include several bugfixes.
+- fix build of debuginfo package, in which the info for the
+  daemon has been missing
+
+-------------------------------------------------------------------
+Thu Oct 18 12:02:15 CEST 2007 - mkoenig@suse.de
+
+- add $portmap to ShouldStart [#331615]
+- fix problem with nested mounts [#128083]
+
+-------------------------------------------------------------------
+Wed Sep 19 15:34:46 CEST 2007 - mkoenig@suse.de
+
+- fix last change [#309123]
+
+-------------------------------------------------------------------
+Mon Sep 17 16:58:35 CEST 2007 - mkoenig@suse.de
+
+- kill processes which keep filesystem busy on shutdown [#309123]
+
+-------------------------------------------------------------------
+Wed Jul 25 12:33:33 CEST 2007 - mkoenig@suse.de
+
+- add BuildRequires e2fsprogs
+  and mention modules to be build explicitly in %files
+
+-------------------------------------------------------------------
+Thu Jul 19 11:03:43 CEST 2007 - mkoenig@suse.de
+
+- new sysconfig parameters LOCAL_OPTIONS and APPEND_OPTIONS
+  support for default mount options to optionally are appended
+  to master map options or replace them.
+- enable LFS support to avoid problems with mount expires
+
+-------------------------------------------------------------------
+Thu Jul  5 12:24:23 CEST 2007 - mkoenig@suse.de
+
+- update to version 5.0.2:
+  * bugfix release
+- new upstream patches
+  autofs-5.0.2-add-krb5-include.patch
+  autofs-5.0.2-bad-proto-init.patch
+  autofs-5.0.2-add-missing-multi-support.patch
+  autofs-5.0.2-add-multi-nsswitch-lookup.patch
+- removed patch (merged upstream)
+  autofs-5.0.1-fix_contained_check.patch
+
+-------------------------------------------------------------------
+Thu Apr 26 17:21:12 CEST 2007 - mkoenig@suse.de
+
+- update to version 5.0.1:
+  * autofs5 is a major rewrite
+  * many new features to be more compliant with industry standard:
+    + improved direct mount map support
+    + '+' map inclusion
+    + added nsswitch map source support
+    + rewrote multi-mount map code
+    + added LDAP encryption and authentication support
+    + improved shutdown and restart
+    + a "hosts" map module has been added
+- add gssd dependencies in init script [#249779]
+
+-------------------------------------------------------------------
+Tue Mar  6 12:12:02 CET 2007 - mkoenig@suse.de
+
+- Fix last upstream patch which introduced a problem for
+  filesystems defined in fstab by LABEL or UUID [#244945]
+- Fix killing of processes on stop [#249770]
+
+-------------------------------------------------------------------
+Wed Jan 31 15:38:19 CET 2007 - mkoenig@suse.de
+
+- add upstream patch autofs-4.1.4-dont_create_remote_dirs.patch
+  Checks first for the directory to create in order to avoid
+  problems with different mkdir behaviour, resolves [#229607]
+
+-------------------------------------------------------------------
+Mon Jan 29 16:59:17 CET 2007 - mkoenig@suse.de
+
+- remove the introduced -multi option, because this issue has
+  been fixed upstream in a different way.
+  add autofs-4.1.4-multi_parse_fix.patch, resolves [#232855]
+
+-------------------------------------------------------------------
+Thu Nov 30 17:47:30 CET 2006 - mkoenig@suse.de
+
+- add NetworkManager dispatcher script [#173990]
+- fix possible buffer overflow
+
+-------------------------------------------------------------------
+Wed Oct  4 16:35:36 CEST 2006 - jeffm@suse.com
+
+- Fixed nfs mount connect retry fallback (195924)
+- Fixed e2fsck error handling (196057)
+
+-------------------------------------------------------------------
+Tue Sep 12 15:08:04 CEST 2006 - schwab@suse.de
+
+- Clean up init script.
+
+-------------------------------------------------------------------
+Tue Sep 12 14:41:06 CEST 2006 - ro@suse.de
+
+- fix typo in comment for previous change
+
+-------------------------------------------------------------------
+Tue Sep 12 14:35:38 CEST 2006 - ro@suse.de
+
+- add previous defaults to newly added variable names in rcscript
+
+-------------------------------------------------------------------
+Thu Sep  7 21:26:00 CEST 2006 - jeffm@suse.com
+
+- Added -multi option to enable consistent mount
+  behavior when using auto.net (118902)
+
+-------------------------------------------------------------------
+Tue Aug 29 15:22:32 CEST 2006 - jeffm@suse.com
+
+- Fixed --timeout=<num> handling (117672)
+- Fixed forced expiry handling (SIGHUP vs SIGUSR1) (177068)
+
+-------------------------------------------------------------------
+Wed Aug 23 20:20:45 CEST 2006 - jeffm@suse.com
+
+- Added configurable locking patch (178308)
+
+-------------------------------------------------------------------
+Fri May 26 19:23:45 CEST 2006 - schwab@suse.de
+
+- Fix broken makefile.
+
+-------------------------------------------------------------------
+Sat May 20 15:52:56 CEST 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed May 17 18:47:56 CEST 2006 - seife@suse.de
+
+- Add README.NetworkManager [#175935]
+
+-------------------------------------------------------------------
+Tue Feb 28 15:16:04 CET 2006 - cthiel@suse.de
+
+- fix post script
+
+-------------------------------------------------------------------
+Wed Feb  1 17:38:29 CET 2006 - rhafer@suse.de
+
+- Support for ':' in ldap mapentries [#117297]
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:32 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Nov 23 10:34:14 CET 2005 - varkoly@suse.de
+
+- Add -fno-strict-aliasing to the CFLAGS
+
+-------------------------------------------------------------------
+Mon Nov 14 08:46:14 CET 2005 - varkoly@suse.de
+
+- Bugfix: bad example ldif.
+
+-------------------------------------------------------------------
+Mon Sep 26 01:25:24 CEST 2005 - ro@suse.de
+
+- added LDAP_DEPRECATED to compile flags
+
+-------------------------------------------------------------------
+Thu Sep  1 11:07:45 CEST 2005 - choeger@suse.de
+
+- Bugfix ID#112779 - autofs uses /etc/openldap/ldap.conf instead of
+  /etc/ldap.conf
+
+-------------------------------------------------------------------
+Thu Aug 25 16:56:06 CEST 2005 - kukuk@suse.de
+
+- Add ldap to Should-Start [#112984]
+
+-------------------------------------------------------------------
+Thu Aug 11 11:49:17 CEST 2005 - mmj@suse.de
+
+- make sure autofs is enabled after an update [#102944]
+- don't support upgrading from <= SuSE Linux 7.3 anymore
+
+-------------------------------------------------------------------
+Sat Jul 23 16:52:26 CEST 2005 - trenn@suse.de
+
+- move /usr/lib64/autofs/autofs-ldap-auto-master to /usr/lib/autofs
+  on x86_64 systems
+
+-------------------------------------------------------------------
+Fri Jun 17 09:22:04 CEST 2005 - kukuk@suse.de
+
+- Rename from autofs4 to autofs
+
+-------------------------------------------------------------------
+Tue Jun 14 10:31:49 CEST 2005 - kukuk@suse.de
+
+- Remove broken "singnal-race" patch [#90521]
+
+-------------------------------------------------------------------
+Mon May 23 00:12:23 CEST 2005 - ro@suse.de
+
+- update to 4.1.4, remove upstream patches
+
+-------------------------------------------------------------------
+Sun May 15 13:24:29 CEST 2005 - aj@suse.de
+
+- Initialize variables.
+
+-------------------------------------------------------------------
+Wed Apr 27 14:03:24 CEST 2005 - meissner@suse.de
+
+- use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Thu Apr  7 14:37:43 CEST 2005 - kukuk@suse.de
+
+- Remove autofs-4.1.0-loop.patch, it is wrong.
+
+-------------------------------------------------------------------
+Fri Mar 04 15:00:24 CET 2005 - arvin@suse.de
+
+- use our good old init script (bug #67311)
+
+-------------------------------------------------------------------
+Fri Mar 04 14:41:20 CET 2005 - arvin@suse.de
+
+- fixed syntax of sysconfig.autofs (bug #70883)
+
+-------------------------------------------------------------------
+Fri Feb 25 22:17:10 CET 2005 - mmj@suse.de
+
+- LSB says return value for not running service is 7 [#65817]
+
+-------------------------------------------------------------------
+Thu Dec  9 18:28:44 CET 2004 - ihno@suse.de
+
+- Update to version 4.1.3 plus patches
+
+-------------------------------------------------------------------
+Tue Jun 22 14:22:12 CEST 2004 - ro@suse.de
+
+- remove nfslock dependency from startscript
+
+-------------------------------------------------------------------
+Mon Apr 19 10:42:14 CEST 2004 - arvin@suse.de
+
+- make AutoBuild happy
+
+-------------------------------------------------------------------
+Fri Oct 31 15:05:44 CET 2003 - arvin@suse.de
+
+- build rpm as non-root user
+
+-------------------------------------------------------------------
+Fri Oct 24 12:19:47 CEST 2003 - arvin@suse.de
+
+- updated to version 4.0.0
+
+-------------------------------------------------------------------
+Wed Oct 22 12:20:10 CEST 2003 - arvin@suse.de
+
+- fixed truncation of LDAP search DN after whitespace (bug #31847)
+
+-------------------------------------------------------------------
+Mon Aug 18 12:54:32 CEST 2003 - arvin@suse.de
+
+- added activation metadata (bug #28838)
+
+-------------------------------------------------------------------
+Mon Jul 28 20:39:06 CEST 2003 - arvin@suse.de
+
+- added documentation about syntax of auto.master file
+
+-------------------------------------------------------------------
+Wed Apr 23 15:59:16 CEST 2003 - arvin@suse.de
+
+- adapted option for sort in auto.net to new coreutils
+
+-------------------------------------------------------------------
+Mon Apr 14 14:41:13 CEST 2003 - arvin@suse.de
+
+- faster shutdown of service autofs (bug #25790)
+
+-------------------------------------------------------------------
+Fri Apr 11 17:22:03 CEST 2003 - arvin@suse.de
+
+- fixed handling of certain yp maps (bug #26274)
+
+-------------------------------------------------------------------
+Wed Feb 05 15:12:00 CET 2003 - arvin@suse.de
+
+- set syslogmask back to not include debug messages
+
+-------------------------------------------------------------------
+Tue Jan 21 17:18:34 CET 2003 - mc@suse.de
+
+- add a patch to support ldap v3
+
+-------------------------------------------------------------------
+Mon Jan 20 15:56:28 CET 2003 - arvin@suse.de
+
+- strip autofs-ldap-auto-master tool
+
+-------------------------------------------------------------------
+Mon Jan 20 15:28:05 CET 2003 - mc@suse.de
+
+- add better ldap support
+- add ldap schema patch to support the nis schema with ldap
+- add the Linux autofs.schema
+- add a README about autofs and ldap
+
+-------------------------------------------------------------------
+Thu Dec 19 20:26:23 CET 2002 - arvin@suse.de
+
+- added sysconfig metadata (bug #22615)
+- better description in start script for runlevel editor
+  (bug #21894)
+- nicer output of init script
+- start: check if daemon runs and export skipped if not configured
+
+-------------------------------------------------------------------
+Mon Sep 02 11:41:55 CEST 2002 - arvin@suse.de
+
+- remove lock file during stop even if no daemon is running
+  (bug #18699)
+
+-------------------------------------------------------------------
+Tue Aug 27 17:39:10 CEST 2002 - arvin@suse.de
+
+- commented auto.misc entry in auto.master (bug #18434)
+
+-------------------------------------------------------------------
+Mon Aug 26 10:53:56 CEST 2002 - arvin@suse.de
+
+- include special dirs in package
+
+-------------------------------------------------------------------
+Fri Aug 23 11:04:01 CEST 2002 - arvin@suse.de
+
+- honor RPM_OPT_FLAGS
+- moved plugins to %{_libdir}/autofs
+
+-------------------------------------------------------------------
+Wed Aug  7 17:32:51 CEST 2002 - ro@suse.de
+
+- added Should-Start nfslock in rcscript (#17425)
+
+-------------------------------------------------------------------
+Thu Aug 01 12:45:59 CEST 2002 - arvin@suse.de
+
+- added requires and prerequires
+
+-------------------------------------------------------------------
+Mon Jul 22 10:57:51 CEST 2002 - sf@suse.de
+
+- updated auto_fs.h to actual version of kernel
+
+-------------------------------------------------------------------
+Thu Jul 18 11:10:43 CEST 2002 - arvin@suse.de
+
+- moved ypbind and keyserv to Should-Start in init script
+  (bug #17064)
+
+-------------------------------------------------------------------
+Mon Feb 25 14:12:18 CET 2002 - arvin@suse.de
+
+- added option expire to init script (unmount all currently
+  not used mounts)
+
+-------------------------------------------------------------------
+Sat Feb 16 23:45:52 CET 2002 - arvin@suse.de
+
+- fixed start/stop message
+
+-------------------------------------------------------------------
+Fri Feb 15 16:39:18 CET 2002 - arvin@suse.de
+
+- simplify remove_and_set call
+
+-------------------------------------------------------------------
+Fri Feb 15 13:58:35 CET 2002 - arvin@suse.de
+
+- better examples in /etc/auto.misc
+
+-------------------------------------------------------------------
+Fri Feb 01 16:20:08 CET 2002 - arvin@suse.de
+
+- fixed restart and force-reload to stop and start the service
+  (bug #13019)
+
+-------------------------------------------------------------------
+Wed Jan 23 12:01:53 CET 2002 - arvin@suse.de
+
+- don't use default value of yes for removal of USE_NIS_FOR_AUTOFS
+
+-------------------------------------------------------------------
+Sat Jan 19 21:03:19 CET 2002 - arvin@suse.de
+
+- read mount types to query from /etc/nsswitch.conf
+
+-------------------------------------------------------------------
+Wed Jan 16 16:02:57 CET 2002 - arvin@suse.de
+
+- compile ldap lookup
+
+-------------------------------------------------------------------
+Wed Dec 12 17:16:38 CET 2001 - ro@suse.de
+
+- moved rc.config.d -> sysconfig
+
+-------------------------------------------------------------------
+Mon Dec 03 11:07:59 CET 2001 - arvin@suse.de
+
+- source /etc/rc.status in init script
+
+-------------------------------------------------------------------
+Fri Nov 23 11:32:54 CET 2001 - ro@suse.de
+
+- correct (and simplify) insserv macro call
+
+-------------------------------------------------------------------
+Wed Nov 21 15:03:16 CET 2001 - arvin@suse.de
+
+- removed rc-variable START_AUTOFS
+
+-------------------------------------------------------------------
+Sat Nov 17 15:24:04 CET 2001 - arvin@suse.de
+
+- Added keyserv to Required-Start (bug #12233)
+
+-------------------------------------------------------------------
+Thu Sep  6 18:33:03 CEST 2001 - kukuk@suse.de
+
+- Use $network, $syslog and add $remote_fs [Bug #9908]
+
+-------------------------------------------------------------------
+Wed Sep  5 18:48:46 CEST 2001 - bjacke@suse.de
+
+- correct name of autosf.rc.config
+
+-------------------------------------------------------------------
+Fri Aug 31 19:14:30 CEST 2001 - arvin@suse.de
+
+- ignore direct maps (bug #9978)
+
+-------------------------------------------------------------------
+Mon Jul 30 14:49:50 CEST 2001 - arvin@suse.de
+
+- read /etc/rc.config.d/autofs.rc.config in init script
+
+-------------------------------------------------------------------
+Mon Jul 30 14:08:32 CEST 2001 - arvin@suse.de
+
+- create /etc/rc.config.d/autofs.rc.config (bug #9471)
+
+-------------------------------------------------------------------
+Mon Jul 23 12:54:21 CEST 2001 - arvin@suse.de
+
+- LSB compliant init script (bug #8973)
+- files and executable maps for nis and nisplus (bug #8984)
+
+-------------------------------------------------------------------
+Wed May 16 19:00:08 CEST 2001 - arvin@suse.de
+
+- fixed compile warnings on ia64
+
+-------------------------------------------------------------------
+Mon Apr 30 15:23:06 CEST 2001 - arvin@suse.de
+
+- unset PS_PERSONALITY and CMD_ENV in init script (fix for
+  bug #7436)
+
+-------------------------------------------------------------------
+Sun Apr 22 15:52:34 CEST 2001 - arvin@suse.de
+
+- update to autofs 4.0.0pre10
+
+-------------------------------------------------------------------
+Wed Apr 18 14:24:40 CEST 2001 - arvin@suse.de
+
+- increased blocksize to 8k in auto.net
+
+-------------------------------------------------------------------
+Tue Apr 17 12:54:30 CEST 2001 - arvin@suse.de
+
+- remove old provides
+
+-------------------------------------------------------------------
+Tue Apr 17 11:42:33 CEST 2001 - arvin@suse.de
+
+- renamed package to autofs4 (no provides or obsoletes, since
+  autofs version 3 will be used by default)
+
+-------------------------------------------------------------------
+Mon Apr 09 16:07:00 CEST 2001 - arvin@suse.de
+
+- fixed restart function in init script
+
+-------------------------------------------------------------------
+Fri Mar  9 14:41:43 CET 2001 - arvin@suse.de
+
+- added note in /etc/auto.master (bug #6660)
+- use test -x instead of test -e in init script
+
+-------------------------------------------------------------------
+Thu Mar  1 01:16:37 CET 2001 - ro@suse.de
+
+- fixed neededforbuild
+
+-------------------------------------------------------------------
+Tue Feb 13 12:03:55 CET 2001 - arvin@suse.de
+
+- fixed killing of processes using autofs during shutdown
+
+-------------------------------------------------------------------
+Fri Jan 12 18:55:54 CET 2001 - arvin@suse.de
+
+- changed start point in init script (fix for bug #5622)
+
+-------------------------------------------------------------------
+Tue Jan  2 12:01:45 CET 2001 - arvin@suse.de
+
+- clear mountoptions in loop for reading auto.master in init script
+
+-------------------------------------------------------------------
+Tue Nov 28 11:22:45 CET 2000 - arvin@suse.de
+
+- kill processes using automounted filesystems when going
+  into runlevel 0 or 6
+
+-------------------------------------------------------------------
+Mon Nov 27 12:09:59 CET 2000 - arvin@suse.de
+
+- moved init script from /sbin/init.d to /etc/init.d
+
+-------------------------------------------------------------------
+Wed Nov 22 17:08:00 CET 2000 - arvin@suse.de
+
+- use insserv in post-install for creating init.d scripts
+- fixed parsing of "--timeout" option in /etc/auto.master,
+  partly fix for bug #4356
+
+-------------------------------------------------------------------
+Wed Nov  8 18:49:30 CET 2000 - arvin@suse.de
+
+- turned off debug messages to syslogd
+
+-------------------------------------------------------------------
+Thu Nov  2 19:34:55 CET 2000 - arvin@suse.de
+
+- added option nonstrict in auto.net
+
+-------------------------------------------------------------------
+Thu Nov  2 11:20:44 CET 2000 - arvin@suse.de
+
+- new version 4.0.0pre9
+
+-------------------------------------------------------------------
+Tue Oct 24 11:30:35 CEST 2000 - arvin@suse.de
+
+- new version 4.0.0pre8
+
+-------------------------------------------------------------------
+Tue Oct 24 00:48:51 CEST 2000 - bk@suse.de
+
+- remove the annoying dequote debug message(filled the logs without errors)
+
+-------------------------------------------------------------------
+Mon Oct 16 01:31:00 CEST 2000 - ro@suse.de
+
+- showmount does no longer have the k-prefix
+
+-------------------------------------------------------------------
+Fri Oct  6 10:45:45 CEST 2000 - schwab@suse.de
+
+- Avoid OPEN_MAX.
+
+-------------------------------------------------------------------
+Wed Sep 27 17:24:21 CEST 2000 - arvin@suse.de
+
+- even more improved auto.net
+
+-------------------------------------------------------------------
+Tue Sep 26 15:13:29 CEST 2000 - arvin@suse.de
+
+- improved auto.net
+- changed to bz2 source archive
+
+-------------------------------------------------------------------
+Thu Sep 21 12:21:17 CEST 2000 - arvin@suse.de
+
+- fixed rcautofs (some lines in status were truncated)
+
+-------------------------------------------------------------------
+Tue Sep 19 18:59:19 CEST 2000 - arvin@suse.de
+
+- fixed bug #3842 (wrong option to mount; was actually random data)
+
+-------------------------------------------------------------------
+Tue Aug 22 23:31:04 CEST 2000 - ro@suse.de
+
+- changed neededforbuild: knfsd -> nfsutils
+
+-------------------------------------------------------------------
+Thu Jul  6 10:23:46 CEST 2000 - kukuk@suse.de
+
+- Fix path to showmount in /etc/auto.net
+
+-------------------------------------------------------------------
+Mon May  8 13:48:19 CEST 2000 - rolf@suse.de
+
+- new version 4.0.0pre7
+- fix bug in rcautofs [BUG#2737]
+
+-------------------------------------------------------------------
+Sat Feb 26 18:10:57 CET 2000 - kukuk@suse.de
+
+- Add patch from beta list for multiple entries
+
+-------------------------------------------------------------------
+Tue Feb 15 16:22:20 CET 2000 - kukuk@suse.de
+
+- Include own showmount
+- Update to autofs 4.0.0pre6
+
+-------------------------------------------------------------------
+Sun Jan 30 17:43:21 CET 2000 - kukuk@suse.de
+
+- Update to autofs 4.0.0pre2
+- Add rc.config variable for autofs options (like --timeout)
+- Add NIS+ support to /sbin/init.d/autofs
+- Mark /etc/auto.* files as %config(noreplace)
+- Add /etc/auto.net (needs new autofs kernel module)
+
+-------------------------------------------------------------------
+Fri Nov  5 16:07:02 MET 1999 - rolf@suse.de
+
+- added flag to switch NIS usage for maps [BUG#1074]
+
+-------------------------------------------------------------------
+Mon Oct 25 23:29:41 CEST 1999 - ro@suse.de
+
+- specfile-fix: no need for %dir /usr/lib/autofs, if that whole tree
+  is packed
+
+-------------------------------------------------------------------
+Mon Oct 25 15:55:37 MEST 1999 - rolf@suse.de
+
+- status now tells whether process is running [BUG#732]
+
+-------------------------------------------------------------------
+Sat Oct 23 17:05:46 MEST 1999 - kukuk@suse.de
+
+- Fix problems with new samba 2.0.x versions [BUG#361]
+- Fix typos and loop problem
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue Jun 22 15:52:03 MEST 1999 - kukuk@suse.de
+
+- added lookup_nisplus.so, mount_autofs.so, mount_ext2.so
+
+-------------------------------------------------------------------
+Wed Dec  9 11:41:24 MET 1998 - rolf@suse.de
+
+- added /usr/sbin/rcautofs
+
+-------------------------------------------------------------------
+Fri Nov 27 14:08:54 MET 1998 - rolf@suse.de
+
+- mount timeout added in init script
+
+-------------------------------------------------------------------
+Tue Nov 24 12:40:58 MET 1998 - rolf@suse.de
+
+- new version 3.1.3
+- modified init script
+- unset localoptions
+
+-------------------------------------------------------------------
+Sat Sep 19 19:24:21 MEST 1998 - ro@suse.de
+
+- define _GNU_SOURCE where getopt_long is used
+
+-------------------------------------------------------------------
+Fri Apr 17 09:43:06 MEST 1998 - rolf@suse.de
+
+- set localoptions to rsize=8192,wsize=8192
+  cleaned up /etc/auto.misc
+
+-------------------------------------------------------------------
+Mon Apr  6 14:38:41 MEST 1998 - ro@suse.de
+
+- update to 3.1.0
+
+-------------------------------------------------------------------
+Mon Mar  2 13:21:56 MET 1998 - ro@suse.de
+
+- marked startscript and files in etc as config
+
+-------------------------------------------------------------------
+Mon Feb  9 16:18:06 MET 1998 - rolf@suse.de
+
+- fixed startup script in /sbin/init.d/ for restart
+
+-------------------------------------------------------------------
+Wed Nov 12 11:17:08 MET 1997 - rolf@suse.de
+
+- minor big fix
+
+-------------------------------------------------------------------
+Thu Oct 16 20:16:31 MEST 1997 - rolf@suse.de
+
+- new version autofs-0.3.14
+
+-------------------------------------------------------------------
+Thu Sep 11 11:18:43 MEST 1997 - rolf@suse.de
+
+- made package from autofs-0.3.9

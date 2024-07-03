@@ -1,0 +1,51 @@
+
+Autofs with ldap
+----------------
+
+You can configure autofs via LDAP using the nis.schema or rfc2307bis.schema.
+You can find this schema at /etc/openldap/schema/nis.schema and
+/etc/openldap/schema/rfc2307bis.schema resp.
+
+1. Change the "automount:" entry in /etc/nsswitch.conf to
+
+ automount:      files ldap
+
+2. Configure your /etc/openldap/ldap.conf
+
+include         /etc/openldap/schema/rfc2307bis.schema
+or
+include         /etc/openldap/schema/nis.schema
+
+3. Create the neccessary entry in LDAP
+
+Here is an example ldif to mount the whole /home per autofs:
+
+--------------------- begin ------------------------------------------------
+dn: ou=AUTOFS,dc=example,dc=org
+objectClass: organizationalUnit
+ou: AUTOFS
+
+dn: nisMapName=auto.master,ou=AUTOFS,dc=example,dc=org
+objectClass: nisMap
+nisMapName: auto.master
+
+dn: cn=/mounts,nisMapName=auto.master,ou=AUTOFS,dc=example,dc=org
+objectClass: nisObject
+nisMapName: auto.master
+cn: /mounts
+nisMapEntry: ldap ldapserver.example.org:nisMapName=auto.mounts,ou=AUTOFS,dc=example,dc=org
+
+dn: nisMapName=auto.mounts,ou=AUTOFS,dc=example,dc=org
+objectClass: nisMap
+nisMapName: auto.mounts
+
+dn: cn=home,nisMapName=auto.mounts,ou=AUTOFS,dc=example,dc=org
+objectClass: nisObject
+nisMapName: auto.mounts
+cn: home
+nisMapEntry: -fstype=nfs,hard,intr,nodev,nosuid nfsserver.example.org:/home
+
+
+
+--------------------- end --------------------------------------------------
+
