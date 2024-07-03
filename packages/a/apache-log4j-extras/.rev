@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ef866cffd36959668465d0c26305069a</srcmd5>
+    <version>1.2.17.1</version>
+    <time>1642730736</time>
+    <user>dimstar_suse</user>
+    <comment>new package (needs recent log4j12 changes though)</comment>
+    <requestid>947463</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>87f831416e7beddddabba0eece1f4598</srcmd5>
+    <version>1.2.17.1</version>
+    <time>1645639615</time>
+    <user>dimstar_suse</user>
+    <comment>Build against reload4j</comment>
+    <requestid>957072</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>83e9a1e4f650a4855effcb298c006dd5</srcmd5>
+    <version>1.2.17.1</version>
+    <time>1647890004</time>
+    <user>dimstar_suse</user>
+    <comment>Fix source and target levels</comment>
+    <requestid>963763</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e051b8d268ab92d8a1ada96336b2e08b</srcmd5>
+    <version>1.2.17.1</version>
+    <time>1698333228</time>
+    <user>anag+factory</user>
+    <comment>source/target 8 == build with jdk 21</comment>
+    <requestid>1120365</requestid>
+  </revision>
+</revisionlist>
