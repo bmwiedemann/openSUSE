@@ -41,8 +41,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 9.11
-Version:        9.11
+%define realver 9.12
+Version:        9.12
 Release:        0
 
 %if "%{flavor}" != ""
@@ -176,13 +176,11 @@ Source7:        baselibs.conf
 Source8:        wine-rpmlintrc
 # SUSE specific patches
 # - currently none, but add them here
-Patch0:         0001-mf-tests-help-older-compilers-by-using-defines.patch
-# 1e701a6b3798ecfd688ad1ff405dbb62b3d214c6 fixing wayland
-Patch1:         0001-winewayland-Avoid-crashing-when-the-dummy-window-sur.patch
+Patch0:         0001-mf-tests-use-defines-instead-of-static-const-for-old.patch
 Recommends:     wine-gecko >= 2.47.4
 Conflicts:      wine-gecko < 2.47.4
-Recommends:     wine-mono >= 9.0.0
-Conflicts:      wine-mono < 9.0.0
+Recommends:     wine-mono >= 9.2.0
+Conflicts:      wine-mono < 9.2.0
 # not packaged in distro...
 Recommends:     wine-mono
 Recommends:     alsa-plugins
@@ -199,7 +197,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 9.11
+%define staging_version 9.12
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel
@@ -564,7 +562,13 @@ chmod 755 %winedir/my-find-requires.sh
 %{_bindir}/wmc
 %{_bindir}/wrc
 %ifnarch aarch64
+%ifarch x86_64
+%if 0%{?suse_version} < 1600
 %{_libdir}/wine/*-unix/*.a
+%endif
+%else
+%{_libdir}/wine/*-unix/*.a
+%endif
 %endif
 %if 0%{?suse_version} >= 1550
 %ifarch %{ix86} x86_64

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jun 29 07:00:18 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 9.12 release
+  - Initial support for user32 data structures in shared memory.
+  - Mono engine updated to version 9.2.0.
+  - Rewrite of the CMD.EXE engine.
+  - Fixed handling of async I/O status in new WoW64 mode.
+  - Various bug fixes.
+- update staging to 9.12 release
+- 0001-winewayland-Avoid-crashing-when-the-dummy-window-sur.patch: upstream
+- removed/merged to below: 0001-mf-tests-help-older-compilers-by-using-defines.patch
+- added: 0001-mf-tests-use-defines-instead-of-static-const-for-old.patch
+ 
+-------------------------------------------------------------------
 Sun Jun 23 11:23:40 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - 0001-winewayland-Avoid-crashing-when-the-dummy-window-sur.patch:

@@ -5213,4 +5213,21 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 9.11 release</comment>
     <requestid>1183416</requestid>
   </revision>
+  <revision rev="443" vrev="1">
+    <srcmd5>c9950f0a97f3b3b9f8d7850007de4519</srcmd5>
+    <version>9.12</version>
+    <time>1720031406</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 9.12 release
+  - Initial support for user32 data structures in shared memory.
+  - Mono engine updated to version 9.2.0.
+  - Rewrite of the CMD.EXE engine.
+  - Fixed handling of async I/O status in new WoW64 mode.
+  - Various bug fixes.
+- update staging to 9.12 release
+- 0001-winewayland-Avoid-crashing-when-the-dummy-window-sur.patch: upstream
+- removed/merged to below: 0001-mf-tests-help-older-compilers-by-using-defines.patch
+- added: 0001-mf-tests-use-defines-instead-of-static-const-for-old.patch</comment>
+    <requestid>1184798</requestid>
+  </revision>
 </revisionlist>
