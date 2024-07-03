@@ -136,4 +136,12 @@
   * Revert &quot;Keep default Search.init behavior if addons injected</comment>
     <requestid>1135627</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>cc52649ba9c83b96da7f38c2a0e61af8</srcmd5>
+    <version>2.2.5</version>
+    <time>1720031381</time>
+    <user>anag+factory</user>
+    <comment>- build as PEP517</comment>
+    <requestid>1184071</requestid>
+  </revision>
 </revisionlist>
