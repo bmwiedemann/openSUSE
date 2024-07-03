@@ -1,0 +1,169 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>90d1e9ee3568a65466d324cd11ef6b48</srcmd5>
+    <version>1.0.5</version>
+    <time>1168901538</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="75">
+    <srcmd5>3b954ac4369c7294b776a441d48c9f09</srcmd5>
+    <version>1.0.5</version>
+    <time>1194561638</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="134">
+    <srcmd5>3b954ac4369c7294b776a441d48c9f09</srcmd5>
+    <version>1.0.5</version>
+    <time>1194561638</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="135">
+    <srcmd5>2e60c0faea1abf1b6475db0ec45b4e32</srcmd5>
+    <version>1.0.5</version>
+    <time>1245337285</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="136">
+    <srcmd5>ee907a8b3a5e168acaa6e15b9d4504bf</srcmd5>
+    <version>1.0.5</version>
+    <time>1251297535</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/bing based on submit request 18750 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="6" vrev="138">
+    <srcmd5>ee907a8b3a5e168acaa6e15b9d4504bf</srcmd5>
+    <version>1.0.5</version>
+    <time>1251297535</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/bing based on submit request 18750 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="7" vrev="139">
+    <srcmd5>36d462160d8c013d22e9a12cde14140a</srcmd5>
+    <version>1.0.5</version>
+    <time>1258390437</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/bing based on submit request 24483 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="8" vrev="140">
+    <srcmd5>72e37fbce307ad3c2d6bce4ef1423da3</srcmd5>
+    <version>1.0.5</version>
+    <time>1268923024</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="142">
+    <srcmd5>72e37fbce307ad3c2d6bce4ef1423da3</srcmd5>
+    <version>1.0.5</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="143">
+    <srcmd5>72e37fbce307ad3c2d6bce4ef1423da3</srcmd5>
+    <version>1.0.5</version>
+    <time>1278678565</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="146">
+    <srcmd5>72e37fbce307ad3c2d6bce4ef1423da3</srcmd5>
+    <version>1.0.5</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="147">
+    <srcmd5>2384a7e95b9cc45b705f3fe71e50b3fe</srcmd5>
+    <version>1.0.5</version>
+    <time>1316616774</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build (forwarded request 82900 from jengelh)</comment>
+    <requestid>84047</requestid>
+  </revision>
+  <revision rev="13" vrev="148">
+    <srcmd5>f54816dbcd7f866b985d6b6bddcd4443</srcmd5>
+    <version>1.0.5</version>
+    <time>1317941167</time>
+    <user>lrupp</user>
+    <comment>- cross-build fix: use %__cc macro (forwarded request 86724 from uli_suse)</comment>
+    <requestid>86930</requestid>
+  </revision>
+  <revision rev="14" vrev="150">
+    <srcmd5>f54816dbcd7f866b985d6b6bddcd4443</srcmd5>
+    <version>1.0.5</version>
+    <time>1319181788</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="151">
+    <srcmd5>f8f74660720b3418b9721edf44f2312f</srcmd5>
+    <version>1.0.5</version>
+    <time>1323190851</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="152">
+    <srcmd5>571710dbc9665d4dc427c48b27e0d317</srcmd5>
+    <version>1.0.5</version>
+    <time>1338016910</time>
+    <user>coolo</user>
+    <comment>- run_permissions macro is obsolete: use set_permissions
+  (bnc#764099)</comment>
+    <requestid>122395</requestid>
+  </revision>
+  <revision rev="17" vrev="154">
+    <srcmd5>571710dbc9665d4dc427c48b27e0d317</srcmd5>
+    <version>1.0.5</version>
+    <time>1340183202</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="156">
+    <srcmd5>571710dbc9665d4dc427c48b27e0d317</srcmd5>
+    <version>1.0.5</version>
+    <time>1359108700</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="158">
+    <srcmd5>571710dbc9665d4dc427c48b27e0d317</srcmd5>
+    <version>1.0.5</version>
+    <time>1379662035</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="160">
+    <srcmd5>571710dbc9665d4dc427c48b27e0d317</srcmd5>
+    <version>1.0.5</version>
+    <time>1409300563</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="161">
+    <srcmd5>278882ca42937cce01139ac1aa7212a2</srcmd5>
+    <version>1.0.5</version>
+    <time>1502366653</time>
+    <user>maxlin_factory</user>
+    <comment>- Update URL to point to exiting website (bnc#1034957)</comment>
+    <requestid>512798</requestid>
+  </revision>
+  <revision rev="22" vrev="162">
+    <srcmd5>6817ef3d2c968f2dd8ce779f15ed2ca7</srcmd5>
+    <version>1.0.5</version>
+    <time>1526372113</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't install using trusted group (bnc#1092157)
+- Minor spec-file cleanup</comment>
+    <requestid>606920</requestid>
+  </revision>
+  <revision rev="23" vrev="163">
+    <srcmd5>d5aec2305444889ead47a2fdc701885f</srcmd5>
+    <version>1.0.5</version>
+    <time>1708632087</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149392</requestid>
+  </revision>
+</revisionlist>

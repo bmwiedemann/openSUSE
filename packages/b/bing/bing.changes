@@ -1,0 +1,144 @@
+-------------------------------------------------------------------
+Thu Feb 22 10:10:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Mon May 14 07:14:21 UTC 2018 - adam.majer@suse.de
+
+- Don't install using trusted group (bnc#1092157)
+- Minor spec-file cleanup
+
+-------------------------------------------------------------------
+Thu Jul 27 13:49:16 UTC 2017 - adam.majer@suse.de
+
+- Update URL to point to exiting website (bnc#1034957)
+
+-------------------------------------------------------------------
+Fri May 25 13:40:45 UTC 2012 - puzel@suse.com
+
+- run_permissions macro is obsolete: use set_permissions
+  (bnc#764099) 
+
+-------------------------------------------------------------------
+Wed Oct  5 15:02:56 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %__cc macro
+
+-------------------------------------------------------------------
+Sat Sep 17 19:37:35 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:08 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Fri Nov  9 02:52:28 CET 2007 - mkudlvasr@suse.cz
+
+- moved bing to /usr/sbin
+- removed SUID bit
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:37 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jul 11 17:41:54 CEST 2005 - postadal@suse.cz
+
+- updated to version 1.0.5
+- bziped
+
+-------------------------------------------------------------------
+Wed Jan 26 12:58:32 CET 2005 - meissner@suse.de
+
+- added RPM_OPT_FLAGS. Fixed some bugs.
+- Moved privilege drop up to earliest place.
+
+-------------------------------------------------------------------
+Thu Nov 11 14:22:44 CET 2004 - ro@suse.de
+
+- permission handling fixes
+
+-------------------------------------------------------------------
+Mon Aug 23 14:42:11 CEST 2004 - postadal@suse.cz
+
+- added missing include arpa/inet.h [#43637]
+
+-------------------------------------------------------------------
+Wed Jun 23 11:03:42 CEST 2004 - hmacht@suse.de
+
+- building as non root user
+- added patch to correct owner/group
+
+-------------------------------------------------------------------
+Tue Apr  6 07:02:41 CEST 2004 - kukuk@suse.de
+
+- Fix default permissions
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Wed Jan 24 09:47:51 CET 2001 - nadvornik@suse.de
+
+- fixed usage of %{_mandir}
+
+-------------------------------------------------------------------
+Wed Apr 26 13:18:23 MEST 2000 - nadvornik@suse.cz
+
+- added URL
+- changed Group
+
+-------------------------------------------------------------------
+Fri Apr  7 16:13:00 CEST 2000 - nadvornik@suse.cz
+
+- added BuildRoot
+
+-------------------------------------------------------------------
+Wed Feb  2 17:13:22 CET 2000 - ro@suse.de
+
+- applied another security fix
+
+-------------------------------------------------------------------
+Wed Jan 26 14:17:24 CET 2000 - ro@suse.de
+
+- applied small security fix 
+
+-------------------------------------------------------------------
+Mon Jan 17 17:28:23 CET 2000 - ro@suse.de
+
+- man to usr/share/man 
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Wed Jun 17 13:33:10 MEST 1998 - ro@suse.de
+
+- changed "ifdef linux" to "defined linux && !defined __NETINET_IP_ICMP_H"
+  to build with libc5 and glibc
+
+-------------------------------------------------------------------
+Thu Nov 27 12:06:46 MET 1997 - bs@suse.de
+
+- compressed man page
+
+-------------------------------------------------------------------
+Fri Oct 31 11:37:04 MET 1997 - ro@suse.de
+
+- first suse version 1.0.4
+

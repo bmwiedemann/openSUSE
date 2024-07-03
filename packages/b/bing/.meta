@@ -1,0 +1,7 @@
+<package name="bing" project="openSUSE:Factory">
+  <title>A Point-to-Point Bandwidth Measurement Tool</title>
+  <description>Bing determines the real (raw, as opposed to available or average)
+throughput of a link by measuring ICMP echo request round trip times
+for different packet sizes for each end of the link.</description>
+  <devel project="network:utilities" package="bing"/>
+</package>
