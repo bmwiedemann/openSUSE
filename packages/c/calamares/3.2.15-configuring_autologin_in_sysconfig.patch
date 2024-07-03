@@ -1,0 +1,30 @@
+In openSUSE and SUSE Linux systems, changing variables for user autologin 
+in displaymanagers' configuarations (sddm, kdm, gdm...) will not take effect.
+In openSUSE and SUSE Linux systems, instead, display managers reads 
+DISPLAYMANAGER_AUTOLOGIN variable from /etc/sysconfig/displaymanager 
+configuration file.
+
+--- a/src/modules/displaymanager/displaymanager.conf
++++ b/src/modules/displaymanager/displaymanager.conf
+@@ -16,14 +16,7 @@
+ # is attempted. You can also list "sysconfig" in this list instead.
+ #
+ displaymanagers:
+-  - slim
+-  - sddm
+-  - lightdm
+-  - gdm
+-  - mdm
+-  - lxdm
+-  - kdm
+-  - greetd
++  - sysconfig
+ 
+ # Enable the following settings to force a desktop environment
+ # in your displaymanager configuration file. This will attempt
+@@ -59,4 +52,4 @@ basicSetup: false
+ # The preferred way to pick sysconfig is to just list it in the
+ # *displaymanagers* list (as the only one).
+ #
+-sysconfigSetup: false
++sysconfigSetup: true

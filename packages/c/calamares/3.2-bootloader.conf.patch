@@ -1,0 +1,21 @@
+Adjust some default settings (default shipped .conf files).
+GRUB2 is default bootloader in openSUSE and openSUSE based appliances.
+
+diff --git a/src/modules/bootloader/bootloader.conf b/src/modules/bootloader/bootloader.conf
+--- a/src/modules/bootloader/bootloader.conf
++++ b/src/modules/bootloader/bootloader.conf
+@@ -33,10 +33,10 @@ timeout: "10"
+ # GRUB functionality (notably grub-probe) to work. As needed, you may use
+ # complete paths like `/usr/bin/efibootmgr` for the executables.
+ #
+-grubInstall: "grub-install"
+-grubMkconfig: "grub-mkconfig"
+-grubCfg: "/boot/grub/grub.cfg"
+-grubProbe: "grub-probe"
++grubInstall: "grub2-install"
++grubMkconfig: "grub2-mkconfig"
++grubCfg: "/boot/grub2/grub.cfg"
++grubProbe: "grub2-probe"
+ efiBootMgr: "efibootmgr"
+ 
+ # Optionally set the bootloader ID to use for EFI. This is passed to

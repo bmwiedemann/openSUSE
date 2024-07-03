@@ -1,0 +1,23 @@
+* Use kdesu instead of pkexec. (pkexec may work too in Tumbleweed.)
+
+Because if we use pkexec, we get error in openSUSE Leap 15:
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'
+No protocol specified
+No protocol specified
+qt.qpa.screen: QXcbConnection: Could not connect to display :0
+Could not connect to any X display.
+
+If we use pkexec, sometimes (in Tumbleweed) Calamares may have theme issues.
+
+diff --git a/calamares.desktop b/calamares.desktop
+--- a/calamares.desktop
++++ b/calamares.desktop
+@@ -5,7 +5,7 @@
+ GenericName=System Installer
+ Keywords=calamares;system;installer;
+ TryExec=calamares
+-Exec=sh -c "pkexec calamares"
++Exec=kdesu -c /usr/bin/calamares
+ Comment=Calamares — System Installer
+ Icon=calamares
+ Terminal=false

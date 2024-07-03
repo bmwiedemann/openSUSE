@@ -1,0 +1,47 @@
+Description: Disable creation of /etc/resolv.conf
+Author: Lorenzo "Palinuro" Faletra <palinuro@parrotsec.org>
+Updated by Mindaugas <opensuse.lietuviu.kalba@gmail.com>
+
+After copying /etc/resolv.conf, it will be a regular file,
+but in openSUSE it should be to /var/run/netconfig/resolv.conf
+and created automatically anyway.
+
+--- a/src/modules/networkcfg/main.py	2020-12-07 18:09:14.000000000 +0200
++++ b/src/modules/networkcfg/main.py	2021-01-31 19:47:20.012191085 +0200
+@@ -132,20 +132,20 @@ def run():
+                 pass
+
+     # We need to overwrite the default resolv.conf in the chroot.
+-    source_resolv, target_resolv = path_pair(root_mount_point, "etc/resolv.conf")
+-    if source_resolv != target_resolv and os.path.exists(source_resolv):
+-        try:
+-            os.remove(target_resolv)
+-        except Exception as err:
+-            libcalamares.utils.debug(
+-                "Couldn't remove {}: {}".format(target_resolv, err)
+-                )
+-
+-        try:
+-            shutil.copy(source_resolv, target_resolv, follow_symlinks=False)
+-        except Exception as err:
+-            libcalamares.utils.debug(
+-                "Can't copy resolv.conf from {}: {}".format(source_resolv, err)
+-                )
++#    source_resolv, target_resolv = path_pair(root_mount_point, "etc/resolv.conf")
++#    if source_resolv != target_resolv and os.path.exists(source_resolv):
++#        try:
++#            os.remove(target_resolv)
++#        except Exception as err:
++#            libcalamares.utils.debug(
++#                "Couldn't remove {}: {}".format(target_resolv, err)
++#                )
++#
++#        try:
++#            shutil.copy(source_resolv, target_resolv, follow_symlinks=False)
++#        except Exception as err:
++#            libcalamares.utils.debug(
++#                "Can't copy resolv.conf from {}: {}".format(source_resolv, err)
++#                )
+
+     return None
+

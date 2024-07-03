@@ -1,0 +1,596 @@
+-------------------------------------------------------------------
+Fri Jun  2 14:08:03 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update to version 3.2.62
+  * See changelog at https://github.com/calamares/calamares/blob/calamares/CHANGES-3.2
+- Refresh patches
+- Remove obsolete rpmlintrc entries
+- Update obsolete field Supplements using packageand
+
+-------------------------------------------------------------------
+Mon Feb  8 11:17:52 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 3.2.36.
+  * It is now possible to hide the *next* and *back* buttons during
+    the "exec" phase of installation. Thanks Anubhav.
+  * The Calamares CI has migrated to GitHub actions. Thanks Jonas.
+  * *bootloader* now uses the current file names for the UEFI Secure
+    Boot shim instead of obsolete ones.
+  * The *mount* module creates swap in its own subvolume, if btrfs
+    is used.
+  * *partition* includes more information about what it will do, 
+    including GPT partition types (in human-readable format, if 
+    possible).
+  * Some edge-cases with overlay filesystems have been resolved in 
+    the *partition* module.
+  * During the creation of filesystems and partitions, automounting
+    is turned off (if DBus is available, and the host system supports
+    KDE Solid automount control). This should reduce the number of 
+    failed installations if automount grabs partitions while they 
+    are being created. The code is prepared to handle other ways 
+    to control automount-behavior as well.
+
+-------------------------------------------------------------------
+Sun Jan 31 18:07:15 UTC 2021 - <opensuse.lietuviu.kalba@gmail.com>
+
+- Update to version 3.2.35.1:
+  * The partition module now supports a not-full-disk-encryption setup, 
+    where /boot is not encrypted, but the rest of the system is.
+  * Fixed issue then the initcpiocfg module would sometimes configure 
+    the system to ask for a passphrase, when none is needed.
+  * The plasmalnf module has been substantially rewritten, so that 
+    it can support a QML version of the module in future. The UI has
+    changed a little, and now displays more themes than before.
+- Add patch 3.2-networkcfg.patch to prevent writing 
+    /etc/resolv.conf as a regular file – let openSUSE to create it as 
+    a symlink automatically.
+- Set default source directory to "/run/overlay/rootfsbase" as
+    it is with Kiwi from 9.21.18 (in older Kiwi was "/run/rootfsbase").
+    See https://github.com/OSInside/kiwi/issues/1558
+
+-------------------------------------------------------------------
+Fri Jan 15 17:29:04 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add compatibility with qml-autoreqprov
+
+-------------------------------------------------------------------
+Fri Nov 20 10:50:18 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 3.2.34.
+  * Modules
+    * The *keyboard* module had a regression in which it no-longer 
+      painted the keycaps in the keyboard preview. 
+    * The *plasmalnf* module did not set all of the look-and-feel 
+      values in the target system. (reported by Bluestar Linux)
+    * In the *users* module, warnings about the strength of the 
+      password are now correctly pluralized when possible.
+    * In the *users* module, if ICU is installed, the user's full 
+      name is automatically transliterated to US-ASCII 
+      (for some locales; this will need tweaking) so that the login
+      name is acceptable.
+- Rebase 3.2.15-unpackfs.conf_Leap15.patch
+- Fix spec file, license file move to LICENSES/GPL-3.0-or-later.txt
+
+-------------------------------------------------------------------
+Mon Aug 24 11:43:12 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- Split -lang package
+
+-------------------------------------------------------------------
+Sat Jul 11 16:18:24 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- calamares.keyring updated (gh#calamares/calamares#1450)
+- Changed 3.2-packages.conf.patch: updated for new version
+- Update to version 3.2.27:
+ - locale put some more places into the correct timezone visually;
+   for instance Norfolk Island gave up UTC+11.5 in 2015 and is now
+   UTC+11, but Calamares still showed it in a zone separate from UTC+11.
+ - localeq can now properly switch between on & offline mode,
+   it detects internet status through js.
+ - tracking now supports kuserfeedback configuration.
+ - welcomeq added the GEOIP configuration option, so locale can be
+   initially set according to IP address.
+ - Welcome to Azerbaijani translations. These are available
+   in two variations, Azerbaijani and Azerbaijani (Azerbaijan).
+ - Warnings while building with Qt 5.15 have been much reduced.
+ - partitioning has one case of undefined behavior (UB) due
+   to a missing integer-initialization.
+ - keyboardq QML module now works correctly.
+ - QML modules with no surrounding navigation -- this is basically a
+   special case for full-screen Calamares -- now have margins suitable
+   for full-screen use.
+ - PythonQt modules are increasingly on the way out.
+ - The netinstall module has had some minor UI tweaks.
+ - Partitioning now tries harder to avoid floppy drives.
+
+-------------------------------------------------------------------
+Sun Jun  7 09:46:46 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 3.2.25:
+  - Slideshow improvements
+  - Welcome QML module is now pretty much complete.
+- Removed Qt515_QPainterPath.patch: contained in upstream
+  
+-------------------------------------------------------------------
+Wed Jun  3 20:12:03 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- Add patch Qt515_QPainterPath.patch to add missing includes 
+  (QPainterPath) for Qt 5.15 compatibility.
+
+-------------------------------------------------------------------
+Thu May 28 18:16:33 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Correct license
+
+-------------------------------------------------------------------
+Mon May 25 05:51:38 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- Update generic branding.
+
+-------------------------------------------------------------------
+Sun May 24 18:02:23 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Added keyring and added SOURCE.asc
+- Patch updates
+- Update to version 3.2.24:
+  - Lots of fixes and additions since 3.2.15:
+   - https://calamares.io/calamares-3.2.16-is-out/
+   - https://calamares.io/calamares-3.2.17-is-out/
+   - https://calamares.io/calamares-3.2.18-is-out/
+   - https://calamares.io/calamares-3.2.19-is-out/
+   - https://calamares.io/calamares-3.2.20-is-out/
+   - https://calamares.io/calamares-3.2.21-is-out/
+   - https://calamares.io/calamares-3.2.22-is-out/
+   - https://calamares.io/calamares-3.2.23-is-out/
+   - https://calamares.io/calamares-3.2.24-is-out/
+
+-------------------------------------------------------------------
+Fri Feb 21 17:09:26 UTC 2020 - avvissu@yandex.by
+
+- Requires kde-cli-tools5 instead of /usr/bin/kdesu, 
+  because OBS KIWI solver does not understand file requirements.
+
+-------------------------------------------------------------------
+Tue Feb 18 12:05:05 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Fix spec file license year string
+
+-------------------------------------------------------------------
+Tue Feb 18 09:15:02 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- Use kdesu to start Calamares:
+  - xdg-su may autoselect gnomesu which fails (boo#1164072);
+  - pkexec may have theme issues.
+
+-------------------------------------------------------------------
+Mon Dec 23 13:04:03 UTC 2019 - opensuse.lietuviu.kalba@gmail.com
+
+- Exclude /etc/dracut.conf.d/02-livecd.conf from copying into
+  filesystem, otherwise installation may fail with with 
+  "Failed to run dracut on the target" error (boo#1159739)
+
+-------------------------------------------------------------------
+Sun Oct 13 08:38:26 UTC 2019 - opensuse.lietuviu.kalba@gmail.com
+
+- Launch with "pkexec calamares" in openSUSE Tumbleweed, but
+  launch with "xdg-su -c calamares" in openSUSE Leap 15.
+
+-------------------------------------------------------------------
+Sat Oct 12 13:54:24 UTC 2019 - opensuse.lietuviu.kalba@gmail.com
+
+- Update 3.2-packages.conf.patch to try remove "dracut-kiwi-live" 
+  package after installation.
+
+-------------------------------------------------------------------
+Fri Oct 11 16:28:34 UTC 2019 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to Calamares 3.2.15:
+  - "displaymanager" module now treats "sysconfig" as a regular 
+    entry in the "displaymanagers" list, and the "sysconfigSetup" 
+    key is used as a shorthand to force only that entry in the 
+    list.
+  - "machineid" module has been re-written in C++ and extended 
+    with a new configuration key to generate urandom pool data.
+  - "unpackfs" now supports a special "sourcefs" value of file 
+    for copying single files (optionally with renaming) or 
+    directory trees to the target system.
+  - "unpackfs" now support an "exclude" and "excludeFile" setting 
+    for excluding particular files or patters from unpacking.
+- Remove patch 3.2-fix-autologin-config-via-sysconfig.patch
+  that included in Calamares 3.2.15 upstream.
+- Update 3.2.14-unpackfs.conf_Leap15.patch and rename it to
+  3.2.15-unpackfs.conf_Leap15.patch
+- Update 3.2.14-configuring_autologin_in_sysconfig.patch and
+  rename it to 3.2.15-configuring_autologin_in_sysconfig.patch
+
+-------------------------------------------------------------------
+Mon Oct  7 17:38:03 UTC 2019 - opensuse.lietuviu.kalba@gmail.com
+
+- Add upstream patch 3.2-fix-autologin-config-via-sysconfig.patch
+  to fix regression while configuring autologin in openSUSE
+  (see https://github.com/calamares/calamares/issues/1253).
+
+-------------------------------------------------------------------
+Tue Oct  1 16:34:53 UTC 2019 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to Calamares 3.2.14:
+  - "locale" module no longer recognizes the legacy GeoIP 
+    configuration. This has been deprecated since Calamares 3.2.8 
+    and is now removed.
+  - "packagechooser" module can now be custom-labeled in the overall
+    progress (left-hand column).
+  - "displaymanager" module now recognizes KDE Plasma 5.17.
+  - "displaymanager" module now can handle Wayland sessions and can
+    detect sessions from their .desktop files.
+  - "unpackfs" now has special handling for sourcefs setting “file”. 
+- Add "-DBoost_NO_BOOST_CMAKE=ON" option to workaround bug in
+  Cmake compatibility with boost >= 1.70 (see bnc#1152377
+  https://github.com/calamares/calamares/issues/1242 
+  https://github.com/calamares/calamares/issues/1251 and 
+  https://gitlab.kitware.com/cmake/cmake/issues/18865)
+- Update 3.1.4-unpackfs.conf_Leap15.patch and rename it to
+  3.2.14-unpackfs.conf_Leap15.patch
+- Update 3.1.2-configuring_autologin_in_sysconfig.patch and
+  rename it to 3.2.14-configuring_autologin_in_sysconfig.patch
+
+-------------------------------------------------------------------
+Mon Sep 30 18:57:02 UTC 2019 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to Calamares 3.2.13. More about upstream changes:
+  https://calamares.io/calamares-3.2.13-is-out/ and
+  https://calamares.io/calamares-3.2.12-is-out/
+
+-------------------------------------------------------------------
+Sat Jul 27 11:12:15 UTC 2019 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to Calamares 3.2.11:
+  - Fix race condition in modules/luksbootkeyfile/main.py 
+    (bnc#1140256, CVE-2019-13178)
+  - more about upstream changes in 3.2 versions can be found in 
+    https://calamares.io/ and 
+    https://github.com/calamares/calamares/releases
+  - drop 2.4-services.conf.patch
+  - update 2.4-bootloader.conf.patch and rename it to
+    3.2-bootloader.conf.patch
+  - update 3.1.11-packages.conf.patch and rename it to
+    3.2-packages.conf.patch
+  - update 3.0-settings.conf.patch and rename it to
+    3.2-settings.conf.patch
+  - update 2.4-removeuser.conf.patch and rename it to
+    3.2-removeuser.conf.patch
+  - update 3.1.1-welcome.conf.patch and rename it to
+    3.2-welcome.conf.patch
+  - update 3.1-show.qml.patch and rename it to
+    3.2-show.qml.patch
+  - Minimum Qt version is Qt 5.7, thus removed support for
+    openSUSE Leap 42.x
+  - drop 3.1.4-unpackfs.conf.patch that used for openSUSE Leap 42.x
+
+-------------------------------------------------------------------
+Sun Feb 10 13:32:45 UTC 2019 - opensuse.lietuviu.kalba@gmail.com
+
+- use suse_version macro instead of sle_version to make effects
+  on openSUSE Tumbleweed.
+
+-------------------------------------------------------------------
+Wed Feb  6 07:59:44 UTC 2019 - opensuse.lietuviu.kalba@gmail.com
+
+- Add patch 3.1.4-unpackfs.conf_Leap15.patch to reflect changed 
+  path to LiveOS read-only filesystem in KIWI-ng (KIWI 9)
+  (bnc#1124451).
+- BuildRequires libboost_python3-devel for Leap 15.0 and newer
+  instead of boost-devel (bnc#1124423, upstream issue 817).
+
+-------------------------------------------------------------------
+Sun Jul 15 14:19:10 UTC 2018 - opensuse.lietuviu.kalba@gmail.com
+
+- Fix building for openSUSE Leap 42.3 by switching to GCC7.
+
+-------------------------------------------------------------------
+Fri Dec 29 09:51:36 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to Calamares 3.1.11:
+  - fix bug then some poorly-configured systems cannot reliably set
+    the hardware clock (RTC). Previously this was an error which 
+    would abort the entire installation. Calamares now ignores the 
+    error.
+  - 3.1.4-packages.conf.patch updated and renamed as 
+    3.1.11-packages.conf.patch
+
+-------------------------------------------------------------------
+Mon Dec 18 14:49:55 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to Calamares 3.1.10:
+  - fix bug then Python job-modules could not use pretty_name() for 
+    reporting the module status when the job was started.
+  - The packages module can now be enabled, but then skipped if 
+    no internet is available (this is a preferred configuration for 
+    distro's which would like to install packages, but which are 
+    optional when there is no connection).
+
+-------------------------------------------------------------------
+Wed Dec  6 08:11:48 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to Calamares 3.1.9:
+  - Fix bug in Netinstall corner cases: a hidden subgroup would be 
+    installed even when its parent was not selected, and a hidden 
+    subgroup could cause its parent to default to unselected.
+  - The branding element ProductLogo is used as the logo, instead 
+    of the product icon.
+
+-------------------------------------------------------------------
+Thu Nov 23 18:13:32 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to Calamares 3.1.8:
+  - Fix Netinstall crash if the returned netinstall-groups 
+    data was empty.
+  - Fix regression were GeoIP data had been read twice.
+  - Use more support code from KPMCore, instead of doing it 
+    ourselves.
+
+-------------------------------------------------------------------
+Thu Nov 23 18:12:14 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to Calamares 3.1.7 fixes two regressions introduced 
+  earlier in the 3.1 series (3.1.5 or before):
+  - Netinstall was no longer compatible with the packages module, 
+    which prevented any users of netinstall from installing 
+    packages from online repositories.
+  - The bootloader installation for EFI systems used the wrong 
+    name for the bootx64.efi (or bootia32.efi) files.
+
+-------------------------------------------------------------------
+Mon Oct 23 07:45:22 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to Calamares 3.1.6:
+  - fixes two regressions introduced in 3.1.5
+  - improving timezone selection in northern locations.
+
+-------------------------------------------------------------------
+Thu Oct 12 05:47:32 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- Remove -devel subpackage: libraries are not intended to be used
+  by other programs.
+- Fix Python shebang in main.py files.
+
+-------------------------------------------------------------------
+Tue Oct  3 06:00:01 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- Merge calamares and calamares-libs3 into one RPM package:
+  Calamares' developers don't guarantee stable API or ABI,
+  libraries are not intended to be used by other programs.
+
+-------------------------------------------------------------------
+Wed Sep 27 06:09:20 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to Calamares 3.1.5:
+  - Python 3.4 is once again supported.
+  - Improved reporting of dependencies in CMake.
+  - Dozens of compilation warnings fixed up.
+
+-------------------------------------------------------------------
+Thu Sep  7 16:07:41 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to Calamares 3.1.4:
+  - A race condition leading to crashes when starting Calamares 
+    has been resolved.
+  - Packages module has been seriously revamped; it is now also 
+    translatable.
+  - Translations in the partitioning module have been improved.
+  - Encrypted swap is now correctly configured.
+  - Minor visual improvements.
+
+-------------------------------------------------------------------
+Sun Sep  3 16:41:16 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- Updated to Calamares 3.1.4 pre-release git version b22bd67:
+  - Fix partitioning regressions in Calamares 3.1.2/3.1.3.
+  - Drop calamares_crash_reporter.
+
+-------------------------------------------------------------------
+Fri Sep  1 16:53:21 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- Drop 2.4-QT5.5-compat.patch: openSUSE Leap 42.1 no longer supported.
+- Drop 3.1-users.conf.patch: no longer need to dissable autologin.
+
+-------------------------------------------------------------------
+Fri Sep  1 11:01:09 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- Don't build calamares_crash_reporter for openSUSE Tumbleweed,
+  otherwise entire building fails.
+
+-------------------------------------------------------------------
+Fri Sep  1 08:19:58 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- Updated to Calamares 3.1.3:
+  - Python jobs without a pretty_name() function – and that is the
+    majority of them – could no longer be run.
+  - The installation-is-done notification could hang Calamares when
+    the installation failed.
+- Update 2.4-unpackfs.conf.patch and rename it to 
+  3.1.3-unpackfs.conf.patch
+
+-------------------------------------------------------------------
+Fri Sep  1 08:14:28 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- Updated to Calamares 3.1.2:
+  - Translation updates.
+  - Summary page now shows language and number-formats information.
+  - The Quit and Done buttons now have a tooltip explaining what 
+    they will do.
+  - At the end of the install process, a notification appears in 
+    the system notification area (generally a pop-up in the lower 
+    right-hand corner of the screen).
+  - If installation fails, the system won’t reboot automatically on
+    the last Calamares page.
+  - Fat32 filesystems are now handled correctly even when misspelled.
+  - Filesystem sizes are now shown with an MB suffix.
+- Modify 3.1.2-SUSE_DM_-_add_special_case_configuring_autologin_in_sysconfig.patch
+  and rename it to 3.1.2-configuring_autologin_in_sysconfig.patch
+
+-------------------------------------------------------------------
+Thu Aug  3 15:27:12 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- Backport upstream patch to enable autologin configurations
+  3.1.2-SUSE_DM_-_add_special_case_configuring_autologin_in_sysconfig.patch
+
+-------------------------------------------------------------------
+Sun Jul 30 07:16:55 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- Updated to Calamares 3.1.1:
+  - Improved salting for user passwords.
+  - Crash on startup when no installation-devices are found has 
+    been fixed.
+  - Support for very small screens (800x600) is improved.
+  - Hostnames may be up to 63 characters in length, conforming to 
+    RFC1123 and various LDAP schemas.
+  - System language, locale settings and keyboard are now guessed 
+    based on installer language and location.
+  - Crashreporter added to release tarball.
+
+-------------------------------------------------------------------
+Mon Jun  5 11:29:38 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- Provide branding package separately.
+
+-------------------------------------------------------------------
+Sun Jun  4 16:12:33 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- Updated to Calamares 3.1.0.
+  Upstream changes between Calamares 3.0.1 and 3.1.0:
+  - improved package selection user interface;
+  - support for disabling swap partition creation in automated 
+    partitioning;
+  - double-click as a way to edit a partition in the manual 
+    partitioning view;
+  - improved check for internet connection availability;
+  - improved package manager handling, so a package operation which
+    fails for a single package won’t block other packages;
+  - various minor fixes.
+  Upstream changes between Calamares 3.0.0 and 3.0.1:
+  - fix for an issue in the users module, which could break login 
+    if the chosen password had non-Latin1 characters;
+  - proper exception handling in the networkcfg module;
+  - improved autologin configuration handling for sddm.
+  Upstream changes between Calamares 2.4.6 and 3.0.0:
+  - new optional PythonQt-based module interface.
+  - dropped support for KPMcore 2;
+  - countless fixes and improvements.
+
+-------------------------------------------------------------------
+Fri Jan 27 18:47:26 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- Updated to Calamares 2.4.6:
+  - fixed autologin handling for sddm in the displaymanager module;
+  - improved build system files so module linkage defaults to 
+    private;
+  - fixed an issue which caused the internet connection status to 
+    not be written to GlobalStorage;
+  - added support for building the partition module with both 
+    KPMcore 2.2 and 3.0;
+  - fixed a crash on startup in the webview module (if built with 
+    QtWebEngine);
+  - fixed an issue in the partition module which could sometimes 
+    cause the legacy bootloader to be installed on the wrong disk;
+  - fixed an issue in the users module to correctly disable the 
+    root password if configured to do so;
+  - fixed an issue in the partition module to always set the 
+    correct flags for an EFI system partition.
+
+-------------------------------------------------------------------
+Mon Nov 25 16:25:09 UTC 2016 - sb56637@gmail.com
+
+- Updated to Calamares 2.4.5:
+  - fixed a path handling issue which could sometimes occur when 
+    reusing an existing EFI system partition;
+  - fixes and reliability improvements for the internet connection
+    check in the welcome module;
+  - fixed GRUB deployment with 32-bit UEFI firmware (note: this 
+    also affects some 64-bit systems which ship a 32-bit UEFI 
+    firmware);
+  - fixed operating system detection for automatic dual boot setup 
+    in GRUB;
+  - added Btrfs subvolumes setup for @ and @home in automated 
+    install modes (note: manual partitioning still doesn’t support 
+    Btrfs subvolumes, as this requires further work in both KPMcore
+    and Calamares);
+  - fixed a security issue which could happen when using manual 
+    partitioning to set up a system with an encrypted root 
+    partition, but with an unencrypted separate /boot partition.
+
+-------------------------------------------------------------------
+Mon Nov 22 10:09:09 UTC 2016 - sb56637@gmail.com
+
+- Updated to Calamares 2.4.4.
+  Upstream changes between Calamares 2.4.3 and 2.4.4:
+  - improved EFI system partition flag management (this removes a 
+    dependency on sgdisk);
+  - improved parsing of SDDM configuration;
+  - support for selecting visible groups by default in the 
+    netinstall module;
+  - added option of updating the packages database before 
+    performing package operations;
+  - added support for try_install and try_remove entries in the 
+    packages module configuration;
+  - fixed potential failure in unpackfs module (caused by inability
+    to write extended attributes to a filesystem which doesn’t 
+    support them).
+  Upstream changes between Calamares 2.4.2 and 2.4.3:
+  - added support for C++/Qt batch job plugins;
+  - new dummycpp job module as an example for module developers;
+  - added support for early LUKS unlocking with Debian initramfs 
+    (new initramfscfg module);
+  - added support for early LUKS unlocking with Dracut 
+    (new dracutlukscfg module);
+  - multiple fixes to /etc/crypttab handling to improve LUKS 
+    support on Debian and related distributions;
+  - fixed user creation so it obeys the list of default groups 
+    for new users;
+  - added Deepin support to the displaymanager module;
+  - fixed an issue which could cause a failed install with LUKS 
+    if other LUKS partitions are already present.
+
+-------------------------------------------------------------------
+Mon Oct 17 10:09:09 UTC 2016 - egeorget@openmailbox.org
+
+- Rebasing partition.conf.patch (2.4 > 2.4.2) 
+
+-------------------------------------------------------------------
+Mon Oct 17 09:51:02 UTC 2016 - egeorget@openmailbox.org
+
+- Updated to Calamares 2.4.2:
+  - improved system requirements configuration checking;
+  - fixed case-insensitive path handling when installing GRUB on 
+    VFAT filesystems;
+  - removed dependency on chfn in the users module;
+  - added support for Debian-style /etc/default/keyboard 
+    configuration as an option;
+  - fixed an issue which could cause a failed install when 
+    resolv.conf is a broken symlink in the target rootfs;
+  - fixed locale filtering for UTF-8 on Fedora and related 
+    distributions;
+  - added support for disabling LUKS-related UI elements;
+  - fixed an issue in the summary page, which caused the target 
+    root partition to be mislabeled in the UI.
+
+-------------------------------------------------------------------
+Tue Oct  4 11:51:38 UTC 2016 - egeorget@openmailbox.org
+
+- Modified 2.4-QT5.5-compat.patch to be a bit less hacky.
+- Added Licence module to the default settings.
+- Removed luksbootkeyfile, luksopenswaphookcfg and webview from default settings.
+
+-------------------------------------------------------------------
+Mon Oct  3 09:55:06 UTC 2016 - egeorget@openmailbox.org
+
+- Updated to Calamares 2.4.1.
+- Rebased all patches.
+- Splited calamares-opensuse-default-settings.patch into 6 new patches.
+- Added 2.4-QT5.5-compat.patch (compatibility patch for OpenSUSE Leap 42.1, which uses QT 5.5).
+- Removed calamares-opensuse-default-settings.patch. 
+
+-------------------------------------------------------------------
+Mon Jun  6 08:20:56 UTC 2016 - egeorget@openmailbox.org
+
+- Updated to Calamares 2.2.3
+
