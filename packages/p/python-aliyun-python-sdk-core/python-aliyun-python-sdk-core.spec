@@ -53,8 +53,8 @@ The core module of Aliyun Python SDK.
 
 %prep
 %setup -q -n aliyun-python-sdk-core-%{version}
-%patch1 -p1
-%patch2 -p1
+%patch -P1 -p1
+%patch -P2 -p1
 cp %{SOURCE1} ChangeLog.txt
 rm -rf aliyunsdkcore/vendored
 
