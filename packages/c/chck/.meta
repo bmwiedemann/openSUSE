@@ -1,0 +1,5 @@
+<package name="chck" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Wayland" package="chck"/>
+</package>
