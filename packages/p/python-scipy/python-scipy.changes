@@ -1,4 +1,212 @@
 -------------------------------------------------------------------
+Mon Jul  1 13:35:29 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.14.0
+  ## Highlights of this release
+  * SciPy now supports the new Accelerate library introduced in macOS 13.3, and
+    has wheels built against Accelerate for macOS >=14 resulting in significant
+    performance improvements for many linear algebra operations.
+  * A new method, ``cobyqa``, has been added to `scipy.optimize.minimize` - this
+    is an interface for COBYQA (Constrained Optimization BY Quadratic
+    Approximations), a derivative-free optimization solver, designed to
+    supersede COBYLA, developed by the Department of Applied Mathematics, The
+    Hong Kong Polytechnic University.
+  * `scipy.sparse.linalg.spsolve_triangular` is now more than an order of
+    magnitude faster in many cases.
+  ## New features
+  # `scipy.fft` improvements
+  * A new function, `scipy.fft.prev_fast_len`, has been added. This function
+    finds the largest composite of FFT radices that is less than the target
+    length. It is useful for discarding a minimal number of samples before FFT.
+  #`scipy.io` improvements
+  * ``wavfile`` now supports reading and writing of ``wav`` files in the RF64
+    format, allowing files greater than 4 GB in size to be handled.
+  #`scipy.constants` improvements
+  * Experimental support for the array API standard has been added.
+  #`scipy.interpolate` improvements
+  * `scipy.interpolate.Akima1DInterpolator` now supports extrapolation via the
+    ``extrapolate`` argument.
+  #`scipy.optimize` improvements
+  * `scipy.optimize.HessianUpdateStrategy` now also accepts square arrays for
+    ``init_scale``.
+  * A new method, ``cobyqa``, has been added to `scipy.optimize.minimize` - this
+    is an interface for COBYQA (Constrained Optimization BY Quadratic
+    Approximations), a derivative-free optimization solver, designed to
+    supersede COBYLA, developed by the Department of Applied Mathematics, The
+    Hong Kong Polytechnic University.
+  * There are some performance improvements in
+    `scipy.optimize.differential_evolution`.
+  * `scipy.optimize.approx_fprime` now has linear space complexity.
+  #`scipy.signal` improvements
+  * `scipy.signal.minimum_phase` has a new argument ``half``, allowing the
+    provision of a filter of the same length as the linear-phase FIR filter
+    coefficients and with the same magnitude spectrum.
+  #`scipy.sparse` improvements
+  * Sparse arrays now support 1D shapes in COO, DOK and CSR formats.
+    These are all the formats we currently intend to support 1D shapes.
+    Other sparse array formats raise an exception for 1D input.
+  * Sparse array methods min/nanmin/argmin and max analogs now return 1D arrays.
+    Results are still COO format sparse arrays for min/nanmin and
+    dense ``np.ndarray`` for argmin.
+  * Sparse matrix and array objects improve their ``repr`` and ``str`` output.
+  * A special case has been added to handle multiplying a ``dia_array`` by a
+    scalar, which avoids a potentially costly conversion to CSR format.
+  * `scipy.sparse.csgraph.yen` has been added, allowing usage of Yen's K-Shortest
+    Paths algorithm on a directed on undirected graph.
+  * Addition between DIA-format sparse arrays and matrices is now faster.
+  * `scipy.sparse.linalg.spsolve_triangular` is now more than an order of
+    magnitude faster in many cases.
+  #`scipy.spatial` improvements
+  * ``Rotation`` supports an alternative "scalar-first" convention of quaternion
+    component ordering. It is available via the keyword argument ``scalar_first``
+    of ``from_quat`` and ``as_quat`` methods.
+  * Some minor performance improvements for inverting of ``Rotation`` objects.
+  #`scipy.special` improvements
+  * Added `scipy.special.log_wright_bessel`, for calculation of the logarithm of
+    Wright's Bessel function.
+  * The relative error in `scipy.special.hyp2f1` calculations has improved
+    substantially.
+  * Improved behavior of ``boxcox``, ``inv_boxcox``, ``boxcox1p``, and
+    ``inv_boxcox1p`` by preventing premature overflow.
+  #`scipy.stats` improvements
+  * A new function `scipy.stats.power` can be used for simulating the power
+    of a hypothesis test with respect to a specified alternative.
+  * The Irwin-Hall (AKA Uniform Sum) distribution has been added as
+    `scipy.stats.irwinhall`.
+  * Exact p-value calculations of `scipy.stats.mannwhitneyu` are much faster
+    and use less memory.
+  * `scipy.stats.pearsonr` now accepts n-D arrays and computes the statistic
+    along a specified ``axis``.
+  * `scipy.stats.kstat`, `scipy.stats.kstatvar`, and `scipy.stats.bartlett`
+    are faster at performing calculations along an axis of a large n-D array.
+  ## Array API Standard Support
+  * Experimental* support for array libraries other than NumPy has been added to
+    existing sub-packages in recent versions of SciPy. Please consider testing
+    these features by setting an environment variable ``SCIPY_ARRAY_API=1`` and
+    providing PyTorch, JAX, or CuPy arrays as array arguments.
+  * As of 1.14.0, there is support for
+    * `scipy.cluster`
+    * `scipy.fft`
+    * `scipy.constants`
+    * `scipy.special`: (select functions)
+       * `scipy.special.log_ndtr`
+       * `scipy.special.ndtr`
+       * `scipy.special.ndtri`
+       * `scipy.special.erf`
+       * `scipy.special.erfc`
+       * `scipy.special.i0`
+       * `scipy.special.i0e`
+       * `scipy.special.i1`
+       * `scipy.special.i1e`
+       * `scipy.special.gammaln`
+       * `scipy.special.gammainc`
+       * `scipy.special.gammaincc`
+       * `scipy.special.logit`
+       * `scipy.special.expit`
+       * `scipy.special.entr`
+       * `scipy.special.rel_entr`
+       * `scipy.special.xlogy`
+       * `scipy.special.chdtrc`
+   * `scipy.stats`: (select functions)
+     * `scipy.stats.describe`
+     * `scipy.stats.moment`
+     * `scipy.stats.skew`
+     * `scipy.stats.kurtosis`
+     * `scipy.stats.kstat`
+     * `scipy.stats.kstatvar`
+     * `scipy.stats.circmean`
+     * `scipy.stats.circvar`
+     * `scipy.stats.circstd`
+     * `scipy.stats.entropy`
+     * `scipy.stats.variation`
+     * `scipy.stats.sem`
+     * `scipy.stats.ttest_1samp`
+     * `scipy.stats.pearsonr`
+     * `scipy.stats.chisquare`
+     * `scipy.stats.skewtest`
+     * `scipy.stats.kurtosistest`
+     * `scipy.stats.normaltest`
+     * `scipy.stats.jarque_bera`
+     * `scipy.stats.bartlett`
+     * `scipy.stats.power_divergence`
+     * `scipy.stats.monte_carlo_test`
+  ## Deprecated features
+  * `scipy.stats.gstd`, `scipy.stats.chisquare`, and
+    `scipy.stats.power_divergence` have deprecated support for masked array
+    input.
+  * `scipy.stats.linregress` has deprecated support for specifying both samples
+    in one argument; ``x`` and ``y`` are to be provided as separate arguments.
+  * The ``conjtransp`` method for `scipy.sparse.dok_array` and
+    `scipy.sparse.dok_matrix` has been deprecated and will be removed in SciPy
+    1.16.0.
+  * The option ``quadrature="trapz"`` in `scipy.integrate.quad_vec` has been
+    deprecated in favour of ``quadrature="trapezoid"`` and will be removed in
+    SciPy 1.16.0.
+  * ``scipy.special.{comb,perm}`` have deprecated support for use of ``exact=True`` in
+    conjunction with non-integral ``N`` and/or ``k``.
+  ## Backwards incompatible changes
+  * Many `scipy.stats` functions now produce a standardized warning message when
+    an input sample is too small (e.g. zero size). Previously, these functions
+    may have raised an error, emitted one or more less informative warnings, or
+    emitted no warnings. In most cases, returned results are unchanged; in almost
+    all cases the correct result is ``NaN``.
+  ## Expired deprecations
+  There is an ongoing effort to follow through on long-standing deprecations.
+  The following previously deprecated features are affected:
+  * Several previously deprecated methods for sparse arrays were removed:
+    ``asfptype``, ``getrow``, ``getcol``, ``get_shape``, ``getmaxprint``,
+    ``set_shape``, ``getnnz``, and ``getformat``. Additionally, the ``.A`` and
+    ``.H`` attributes were removed.
+  * ``scipy.integrate.{simps,trapz,cumtrapz}`` have been removed in favour of
+    ``simpson``, ``trapezoid``, and ``cumulative_trapezoid``.
+  * The ``tol`` argument of ``scipy.sparse.linalg.{bcg,bicstab,cg,cgs,gcrotmk,
+    mres,lgmres,minres,qmr,tfqmr}`` has been removed in favour of ``rtol``.
+    Furthermore, the default value of ``atol`` for these functions has changed
+    to ``0.0``.
+  * The ``restrt`` argument of `scipy.sparse.linalg.gmres` has been removed in
+    favour of ``restart``.
+  * The ``initial_lexsort`` argument of `scipy.stats.kendalltau` has been
+    removed.
+  * The ``cond`` and ``rcond`` arguments of `scipy.linalg.pinv` have been
+    removed.
+  * The ``even`` argument of `scipy.integrate.simpson` has been removed.
+  * The ``turbo`` and ``eigvals`` arguments from ``scipy.linalg.{eigh,eigvalsh}``
+    have been removed.
+  * The ``legacy`` argument of `scipy.special.comb` has been removed.
+  * The ``hz``/``nyq`` argument of ``signal.{firls, firwin, firwin2, remez}`` has
+    been removed.
+  * Objects that weren't part of the public interface but were accessible through
+    deprecated submodules have been removed.
+  * ``float128``, ``float96``, and object arrays now raise an error in
+    `scipy.signal.medfilt` and `scipy.signal.order_filter`.
+  * ``scipy.interpolate.interp2d`` has been replaced by an empty stub (to be
+    removed completely in the future).
+  * Coinciding with changes to function signatures (e.g. removal of a deprecated
+    keyword), we had deprecated positional use of keyword arguments for the
+    affected functions, which will now raise an error. Affected functions are:
+    * ``sparse.linalg.{bicg, bicgstab, cg, cgs, gcrotmk, gmres, lgmres, minres,
+      qmr, tfqmr}``
+    * ``stats.kendalltau``
+    * ``linalg.pinv``
+    * ``integrate.simpson``
+    * ``linalg.{eigh,eigvalsh}``
+    * ``special.comb``
+    * ``signal.{firls, firwin, firwin2, remez}``
+  ## Other changes
+  * SciPy now uses C17 as the C standard to build with, instead of C99. The C++
+    standard remains C++17.
+  * macOS Accelerate, which got a major upgrade in macOS 13.3, is now supported.
+    This results in significant performance improvements for linear algebra
+    operations, as well as smaller binary wheels.
+  * Cross-compilation should be smoother and QEMU or similar is no longer needed
+    to run the cross interpreter.
+  * Experimental array API support for the JAX backend has been added to several
+    parts of SciPy.
+- Cherry-pick upstream patch to fix build with GCC 14
+  * https://github.com/scipy/scipy/pull/21063.patch
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Sun May 26 11:26:14 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.13.1

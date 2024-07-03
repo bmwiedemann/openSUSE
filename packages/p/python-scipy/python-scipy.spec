@@ -93,7 +93,7 @@ ExclusiveArch:  do_not_build
 # TODO explore debundling Boost for standard and hpc
 
 Name:           %{package_name}
-Version:        1.13.1
+Version:        1.14.0
 Release:        0
 Summary:        Scientific Tools for Python
 License:        BSD-3-Clause AND LGPL-2.0-or-later AND BSL-1.0
@@ -101,6 +101,8 @@ URL:            https://www.scipy.org
 Source0:        https://files.pythonhosted.org/packages/source/s/scipy/scipy-%{version}.tar.gz
 # Create with pooch: `python3 scipy-%%{version}/scipy/datasets/_download_all.py scipy-datasets/scipy-data; tar czf scipy-datasets.tar.gz scipy-datasets`
 Source1:        scipy-datasets.tar.gz
+# PATCH-FIX-UPSTREAM - MAINT: gcc-14 test_region5 tol bump
+Patch:          https://github.com/scipy/scipy/pull/21063.patch
 BuildRequires:  %{python_module Cython >= 3.0.8 with %python-Cython < 3.1}
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module meson-python >= 0.15.0 with %python-meson-python < 0.18}
@@ -123,7 +125,7 @@ BuildRequires:  %{python_module scipy = %{version}}
 BuildRequires:  %{python_module threadpoolctl}
 %endif
 %if %{without hpc}
-BuildRequires:  %{python_module numpy-devel >= 1.18.5 with %python-numpy-devel < 2.3}
+BuildRequires:  %{python_module numpy-devel >= 1.23.5 with %python-numpy-devel < 2.3}
 %if 0%{?sle_version} && 0%{?sle_version} <= 150600
 # The default gcc on SLE15 is gcc7 we need something newer
 BuildRequires:  gcc10-c++

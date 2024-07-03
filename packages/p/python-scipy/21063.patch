@@ -1,0 +1,28 @@
+From c485c78ae3918ed26d4c1208e77b029a7f918f0d Mon Sep 17 00:00:00 2001
+From: Tyler Reddy <tyler.je.reddy@gmail.com>
+Date: Thu, 27 Jun 2024 09:56:23 -0600
+Subject: [PATCH] MAINT: gcc-14 test_region5 tol bump
+
+* Fixes #21059
+
+* A small tolerance bump in `TestHyp2f1.test_region5` needed for one
+its test cases to pass when compiling SciPy with gcc-14 series.
+
+[ci skip] [skip ci]
+---
+ scipy/special/tests/test_hyp2f1.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scipy/special/tests/test_hyp2f1.py b/scipy/special/tests/test_hyp2f1.py
+index 6c2f6ec103bf..adef4e2584c8 100644
+--- a/scipy/special/tests/test_hyp2f1.py
++++ b/scipy/special/tests/test_hyp2f1.py
+@@ -2093,7 +2093,7 @@ def test_region4(self, hyp2f1_test_case):
+                     c=-15.5,
+                     z=(0.3413793103448277-0.9482758620689655j),
+                     expected=(-1.0509834850116921-1.1145522325486075j),
+-                    rtol=1e-14,
++                    rtol=1.1e-14,
+                 ),
+             ),
+             pytest.param(
