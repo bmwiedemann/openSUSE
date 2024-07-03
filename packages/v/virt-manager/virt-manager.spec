@@ -1,5 +1,5 @@
 #
-# spec file for package virt-manager
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -177,7 +177,7 @@ Patch280:       virtinst-keep-iso-for-xenpv.patch
 Patch281:       virtinst-add-slem-detection-support.patch
 Patch282:       virtinst-add-sle-hpc-support.patch
 Patch283:       virtinst-add-oracle-linux-support.patch
-Patch284:       virtinst-add-slm-detection-support.patch
+Patch284:       virtinst-add-slem60-detection-support.patch
 Patch285:       virtinst-windows-server-detection.patch
 Patch286:       virtman-fix-shared-disk-request-alignment-error.patch
 Patch287:       virtman-language-fixes.patch

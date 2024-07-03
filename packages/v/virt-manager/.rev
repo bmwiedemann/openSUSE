@@ -2038,4 +2038,12 @@
     <comment></comment>
     <requestid>1184046</requestid>
   </revision>
+  <revision rev="258" vrev="24">
+    <srcmd5>6d2608d02fa1df49a3c6cd9675342f02</srcmd5>
+    <version>4.1.0</version>
+    <time>1720031372</time>
+    <user>anag+factory</user>
+    <comment>Adjust detection for SUSE Linux Micro 6.0 - bsc#1227116</comment>
+    <requestid>1184907</requestid>
+  </revision>
 </revisionlist>

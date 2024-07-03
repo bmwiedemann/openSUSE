@@ -1,7 +1,9 @@
 Add support for detecting SUSE Linux Micro 6.0 and newer.
 See also the osinfo-db package for the description file.
 Note that starting with Micro version 6.0, the word "Enterprise" was
-dropped from the Micro version name.
+temporarily dropped from the Micro version name, then added
+back as the official name upon release but the ISO media does not
+have the word Enterprise.
 
 Index: virt-manager-4.1.0/virtinst/install/urldetect.py
 ===================================================================
@@ -26,26 +28,12 @@ Index: virt-manager-4.1.0/virtinst/install/urldetect.py
              if len(self.product_name.strip().rsplit(' ')) > 5 and not " Micro " in self.product_name:
                  if " SAP " in self.product_name:
                      sle_version = (sle_version + '.' +
-@@ -708,6 +711,14 @@ class _MICRODistro(_SuseDistro):
+@@ -704,7 +707,7 @@ class _MICRODistro(_SuseDistro):
+     PRETTY_NAME = "SLES"
+     matching_distros = ["slem"]
+     _variant_prefix = "slem"
+-    _suse_regex = [".*SUSE Linux Enterprise Micro*", ".*SUSE Micro*"]
++    _suse_regex = [".*SUSE Linux Enterprise Micro*", ".*SUSE Linux Micro*", ".*SUSE Micro*"]
      famregex = ".*SUSE Linux Enterprise Micro.*"
  
  
-+class _SLMICRODistro(_SuseDistro):
-+    PRETTY_NAME = "SLES"
-+    matching_distros = ["slm"]
-+    _variant_prefix = "slm"
-+    _suse_regex = [".*SUSE Linux Micro*", ".*SUSE Micro*"]
-+    famregex = ".*SUSE Linux Micro.*"
-+
-+
- class _CAASPDistro(_SuseDistro):
-     PRETTY_NAME = "SLES"
-     matching_distros = ["caasp"]
-@@ -977,6 +988,7 @@ def _build_distro_list(osobj):
-         _SLEDDistro,
-         _OpensuseDistro,
-         _MICRODistro,
-+        _SLMICRODistro,
-         _CAASPDistro,
-         _OESDistro,
-         _DebianDistro,

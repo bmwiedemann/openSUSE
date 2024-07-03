@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 29 06:52:23 MDT 2024 - carnold@suse.com
+
+- bsc#1227116 - osinfo still uses deprecated SL-Micro name
+  virtinst-add-slem60-detection-support.patch
+  Dropped virtinst-add-slm-detection-support.patch
+
+-------------------------------------------------------------------
 Thu Jun 20 13:40:47 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - remove dependency on /usr/bin/python3 using 
