@@ -492,4 +492,16 @@ Also includes sleep_walkers full set of changes to build wayland support for fac
     <comment></comment>
     <requestid>1155089</requestid>
   </revision>
+  <revision rev="54" vrev="32">
+    <srcmd5>de5d4c28059df401e8688a4de65ce344</srcmd5>
+    <version>unknown</version>
+    <time>1720031396</time>
+    <user>anag+factory</user>
+    <comment>- Drop libpoppler-cpp0 BuildRequires: this was there to workaround
+  a bug in poppler-devel, in the times for openSUSE 13.2 and has
+  long been fixed.
+
+Needed for poppler 24.06 - where that requested library actually no longer exists. (forwarded request 1185069 from dimstar)</comment>
+    <requestid>1185079</requestid>
+  </revision>
 </revisionlist>

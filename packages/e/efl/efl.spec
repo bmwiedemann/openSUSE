@@ -224,8 +224,6 @@ Recommends:     elua = %{version}
 BuildRequires:  doxygen
 %endif
 %if %{poppler_present}
-# boo#864299 need libpoppler-cpp0 for Leap / SLE
-BuildRequires:  libpoppler-cpp0
 BuildRequires:  libpoppler-devel
 %endif
 %if 0%{?suse_version}

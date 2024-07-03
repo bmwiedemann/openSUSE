@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  3 08:07:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop libpoppler-cpp0 BuildRequires: this was there to workaround
+  a bug in poppler-devel, in the times for openSUSE 13.2 and has
+  long been fixed.
+
+-------------------------------------------------------------------
 Tue Mar  5 11:29:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add d9ec36e1de4c2a70ac82dc66a72c282dc42037b7.patch: add charset
