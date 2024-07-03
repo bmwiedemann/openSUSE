@@ -49,7 +49,7 @@ BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  zlib-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  aarch64 %power64 x86_64 s390x
+ExclusiveArch:  aarch64 %power64 x86_64 s390x riscv64
 
 %description
 UCX stands for Unified Communication X. UCX provides a communication

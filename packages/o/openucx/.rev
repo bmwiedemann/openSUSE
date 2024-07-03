@@ -321,4 +321,12 @@
   to fix compilation on ppc64</comment>
     <requestid>1183479</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>7bb55fc70294807a68cc477b5403c1a4</srcmd5>
+    <version>1.17.0</version>
+    <time>1720031195</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1184228</requestid>
+  </revision>
 </revisionlist>
