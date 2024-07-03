@@ -140,4 +140,12 @@
   * Add support for migrating fprint fingerprints</comment>
     <requestid>1181742</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ea53895f7ab77e5850a0fe5327a5a171</srcmd5>
+    <version>1.1.10</version>
+    <time>1720031446</time>
+    <user>anag+factory</user>
+    <comment>Package update to 1.1.10</comment>
+    <requestid>1185112</requestid>
+  </revision>
 </revisionlist>

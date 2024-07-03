@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 03 11:56:04 UTC 2024 - rbrown@suse.com
+
+- Update to version 1.1.10:
+  * mig: Handle failure of mounting /@/home subvolume [boo#1227339]
+  * Update readme for upcoming v1.2 features
+  * Make probe_partitions a core tik-function
+
+-------------------------------------------------------------------
 Wed Jun 19 12:11:44 UTC 2024 - rbrown@suse.com
 
 - Update to version 1.1.9:
