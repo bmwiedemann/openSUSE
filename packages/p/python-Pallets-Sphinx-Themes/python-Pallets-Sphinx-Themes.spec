@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pallets-Sphinx-Themes
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Pallets-Sphinx-Themes
-Version:        2.1.1
+Version:        2.1.3
 Release:        0
 Summary:        Themes for the Pallets projects
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pallets/pallets-sphinx-themes/
-Source:         https://files.pythonhosted.org/packages/source/P/Pallets-Sphinx-Themes/Pallets-Sphinx-Themes-%{version}.tar.gz
-BuildRequires:  %{python_module Sphinx >= 3}
+Source:         https://files.pythonhosted.org/packages/source/P/Pallets-Sphinx-Themes/pallets_sphinx_themes-%{version}.tar.gz
+BuildRequires:  %{python_module Sphinx >= 3.7}
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module packaging}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx >= 3
@@ -41,19 +43,19 @@ the appropriate theme to make your documentation look consistent.
 Available themes: flask, jinja, werkzeug, click
 
 %prep
-%setup -q -n Pallets-Sphinx-Themes-%{version}
+%setup -q -n pallets_sphinx_themes-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%license LICENSE.rst
-%doc README.rst CHANGES.rst
+%license LICENSE.txt
+%doc README.md CHANGES.rst
 %{python_sitelib}/pallets_sphinx_themes/
-%{python_sitelib}/Pallets_Sphinx_Themes-%{version}-py*.egg-info
+%{python_sitelib}/pallets_sphinx_themes-%{version}.dist-info
 
 %changelog
