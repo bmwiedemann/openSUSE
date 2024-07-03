@@ -1,0 +1,5 @@
+#  Have the same binary with and without setuid bit
+# we want zero-length configs as placeholders
+addFilter("zero-length")
+# we do not want to migrate automatically
+addFilter("obsolete-not-provided")

@@ -1,0 +1,84 @@
+Create Apptainer Images from openSUSE/SLE
+===========================================
+
+To create openSUSE/SLE apptainer images from scratch a number
+of bootdef variables need to be specified:
+
+1. Create a bootdef file (for instance 'sle.def'), add
+   BootStrap: zypper
+2. Set the optional OS version:
+   OSVersion: 15.0
+   The version number corresponds to the Leap version or the
+   SLE version and service pack level: <version>.<service_pack_level>
+   Example: SLE-12 SP4 would be 12.4.
+   The inital release of a major version corresponds to
+   <service_pack_level> 0.
+3. For openSUSE the following variables need to be
+   specified:
+   * MirrorURL: URL to the installation repository. Following URL
+     should be work:
+     http://download.opensuse.org/distribution/openSUSE-stable/repo/oss
+   * UpdateURL: (optional) URI of the update repository
+4. For SLE, all required settings are obtained from SCC via
+   suseconnect-container. If the container should be registered separately
+   the following variables are recognized:
+   * Product: The product code: The following forms may be
+                 used:
+                 <product_id>
+                 <product_id>/<os_version>
+                 <product_id>/<os_version>/<arch>
+                 <product_id>: SLES, SLE-HPC (SLE-12),
+                               SLE_HPC (SLE-15), SLED
+                 <os_version>: optional, if ommitted, the value
+                               of OSVersion will be used.
+                               The variable %{OSVERSION} is
+                               recognized and replaced by OSVersion.
+                 <arch>      : The architecture to use. Defaults
+                               to 'uname -m'.
+   * User: The email a subscription is registed with SCC.
+   * Regcode: The SCC registration code provided with the subscription.
+   * ProductPGP:  The PGP key used to sign the repositories. Each line must
+              be terminated with \n. Long lines may be broken using the
+              continuation character '\'. See below.
+              Note: this is not required when an installer repository is
+              provided with MirrorURL.
+   Beginning with version 15, the URI to the installer image needs to be
+   provided as well:
+   * MirrorURL: Repository containing the SLE Installer (see also above).
+   Since SLE-15 consists of modules, a list of modules to be used should
+   to be specified as well:
+   * Modules: Specify the modules in a comma separated list without
+                 spaces. Example:
+                 SLEModules: sle-module-basesystem,sle-module-server-applications,sle-module-web-scripting,sle-module-hpc
+
+Examples
+========
+Example defintions for a generic SUSE installation using the
+repositories registered on the build host (SUSE.def) as well
+as for the running OS version are available in
+/usr/share/apptainer/templates.
+
+
+ProductPGP
+==========
+SLEpgp: -----BEGIN PGP PUBLIC KEY BLOCK-----\n\
+Version: rpm-4.11.2 (NSS-3)\n\
+\n\
+mQENBFEKlmsBCADbpZZbbSC5Zi+HxCR/ynYsVxU5JNNiSSZabN5GMgc9Z0hxeXxp\n\
+YWvFoE/4n0+IXIsp83iKvxf06Eu8je/DXp0lMqDZu7WiT3XXAlkOPSNV4akHTDoY\n\
+91SJaZCpgUJ7K1QXOPABNbREsAMN1a7rxBowjNjBUyiTJ2YuvQRLtGdK1kExsVma\n\
+hieh/QxpoDyYd5w/aky3z23erCoEd+OPfAqEHd5tQIa6LOosa63BSCEl3milJ7J9\n\
+vDmoGPAoS6ui7S2R5X4/+PLN8Mm2kOBrFjhmL93LX0mrGCMxsNsKgP6zabYKQEb8\n\
+L028SXvl7EGoA+Vw5Vd3wIGbM73PfbgNrXjfABEBAAG0KFN1U0UgUGFja2FnZSBT\n\
+aWduaW5nIEtleSA8YnVpbGRAc3VzZS5kZT6JATwEEwECACYCGwMGCwkIBwMCBBUC\n\
+CAMEFgIDAQIeAQIXgAUCWEfrHwUJDsIitAAKCRBwr56BOdt8gpqUB/wPSSS5BcDu\n\
+Oi4n02cj4Hdt7WITKBjjo0lG1fXG1ppx1wOST+s8FertMVFY53TW6FGjcYtwVOIq\n\
+rsMYiV6kf1NxUV/jcAy7VmC5EZnO0R/D3sT4Oh5hsLtERauZolK5BZmd0S51Qa8e\n\
+TxZ5mX9PL2i3s/ShETc30drf83ugc7B4yZPNQWXNDPgGcC+hEeC5qw48RzHYIpUt\n\
+RzHmefR5Z3ioTUbDlzy+SGP2uA7mhR4Lfk/df5fYxWfCoKlyGjtrvA65cB+Pksyn\n\
+xrAeBuB+vBM+KnDrxW2Sn4AbWkzH//dfz9OJDJu4UM91hb7qxM0OkrXHQV3iNqzg\n\
+MDEhky/9NqMy\n\
+=GdP5\n\
+-----END PGP PUBLIC KEY BLOCK-----
+
+   
