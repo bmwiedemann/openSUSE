@@ -1,0 +1,8 @@
+<package name="caja-dropbox" project="openSUSE:Factory">
+  <title>Dropbox client integrated into Caja</title>
+  <description>Dropbox is a free service that lets you bring your photos, docs, and videos
+anywhere and share them easily. Never email yourself a file again!
+
+This package integrates dropbox seamless into caja.</description>
+  <devel project="X11:MATE:Factory" package="caja-dropbox"/>
+</package>
