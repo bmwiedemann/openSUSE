@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Jan 21 03:08:03 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.114
+   see /usr/share/doc/packages/perl-Getopt-Long-Descriptive/Changes
+
+  0.114     2024-01-20 17:14:21-05:00 America/New_York
+          - a switch with (required => 0) is no longer treated as a required!
+
+-------------------------------------------------------------------
+Mon Dec 18 03:06:36 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.113
+   see /usr/share/doc/packages/perl-Getopt-Long-Descriptive/Changes
+
+  0.113     2023-12-15 16:55:46-05:00 America/New_York
+          - improve line wrapping so spacers (non-option text lines) can use more
+            horizontal characters
+          - replace tabs (generally 8 space) indents in output with four spaces
+
+-------------------------------------------------------------------
+Tue Nov 21 03:07:56 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.112
+   see /usr/share/doc/packages/perl-Getopt-Long-Descriptive/Changes
+
+  0.112     2023-11-20 19:34:53-05:00 America/New_York
+          - This version removes the redundant option warning, which is now
+            provided by Getopt::Long v2.55 and later -- which is now required!
+            As before, this will someday become fatal.
+
+-------------------------------------------------------------------
 Mon Jan  2 03:13:27 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.111

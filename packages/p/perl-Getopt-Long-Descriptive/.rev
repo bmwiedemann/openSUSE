@@ -192,4 +192,28 @@
     <comment></comment>
     <requestid>1055900</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d7b4a13621bcacf49341fa380ac15026</srcmd5>
+    <version>0.114.0</version>
+    <time>1719997541</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.114
+   see /usr/share/doc/packages/perl-Getopt-Long-Descriptive/Changes
+  0.114     2024-01-20 17:14:21-05:00 America/New_York
+          - a switch with (required =&gt; 0) is no longer treated as a required!
+- updated to 0.113
+   see /usr/share/doc/packages/perl-Getopt-Long-Descriptive/Changes
+  0.113     2023-12-15 16:55:46-05:00 America/New_York
+          - improve line wrapping so spacers (non-option text lines) can use more
+            horizontal characters
+          - replace tabs (generally 8 space) indents in output with four spaces
+- updated to 0.112
+   see /usr/share/doc/packages/perl-Getopt-Long-Descriptive/Changes
+  0.112     2023-11-20 19:34:53-05:00 America/New_York
+          - This version removes the redundant option warning, which is now
+            provided by Getopt::Long v2.55 and later -- which is now required!
+            As before, this will someday become fatal.
+</comment>
+    <requestid>1185048</requestid>
+  </revision>
 </revisionlist>
