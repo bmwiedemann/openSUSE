@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Thu Oct 21 14:54:48 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.2.5.1
+  * Version bump, source archive name fixed
+
+-------------------------------------------------------------------
+Fri Oct  8 16:20:06 CEST 2021 - tiwai@suse.de
+
+- Install pre-built firmware for avoiding build error on BE hosts
+
+-------------------------------------------------------------------
+Tue Sep  7 17:05:13 CEST 2021 - tiwai@suse.de
+
+- Install the topology binary for skl_hda_dsp_generic-tplg, too
+  (boo#1189688)
+  Add the supplements for Skylake and Kabylake-LP (8086:9d70 and
+  8086:9d71), too
+
+-------------------------------------------------------------------
+Mon May 31 12:09:56 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.2.5
+  * Just a version bump
+
+-------------------------------------------------------------------
+Wed Oct 21 12:57:00 CEST 2020 - tiwai@suse.de
+
+- Update to alsa-topology-conf 1.2.4:
+  hda-dsp: Remove srcintc module from HDA DSP topology
+
+-------------------------------------------------------------------
+Tue Jun  9 11:26:25 CEST 2020 - tiwai@suse.de
+
+- Update to alsa-topology-conf 1.2.3:
+  Add topology file for generic HDA DSP machine driver
+
+-------------------------------------------------------------------
+Fri Mar 13 14:45:26 CET 2020 - tiwai@suse.de
+
+- Update to 1.2.2 tarball;
+  just a version bump
+
+-------------------------------------------------------------------
+Fri Nov 15 17:53:55 CET 2019 - tiwai@suse.de
+
+- New package, split from ALSA tarball since 1.2.1
+
