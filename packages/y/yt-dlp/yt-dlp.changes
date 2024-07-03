@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul  2 10:30:24 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to release 2024.07.01:
+  * Properly sanitize file-extension to prevent file system
+    modification and RCE. Unsafe extensions are now blocked from
+    being downloaded. [CVE-2024-38519 boo#1227305]
+
+-------------------------------------------------------------------
 Tue May 28 06:39:46 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2024.05.27
