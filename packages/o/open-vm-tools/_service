@@ -2,9 +2,9 @@
   <service name="tar_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/vmware/open-vm-tools.git</param>
-    <param name="revision">stable-12.4.0</param>
+    <param name="revision">stable-12.4.5</param>
     <param name="filename">open-vm-tools</param>
-    <param name="versionformat">12.4.0</param>
+    <param name="versionformat">12.4.5</param>
   </service>
   <service name="recompress" mode="manual">
     <param name="file">*.tar</param>

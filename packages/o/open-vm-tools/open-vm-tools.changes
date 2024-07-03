@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jul  1 15:07:51 UTC 2024 - Kirk Allan <kallan@suse.com>
+
+- Update to 12.4.5 (build 23787635) (boo#1227181)
+  - There are no new features in the open-vm-tools 12.4.5 release. This is
+    primarily a maintenance release that addresses a few critical problems,
+    including:
+
+    - A Github pull request and associated issue has been handled. Please
+      see the Resolved Issues section of the Release Notes.
+
+    - A number of issues flagged by Coverity and ShellCheck have been
+      addressed.
+
+    - A vmtoolsd process hang related to nested logging from an RPC Channel
+      error has been fixed.
+
+  For a more complete list of issues resolved in this release, see the
+  Resolved Issues section of the Release Notes.
+
+  For complete details, see: https://github.com/vmware/open-vm-tools/releases/tag/stable-12.4.5
+
+  Release Notes are available at: https://github.com/vmware/open-vm-tools/blob/stable-12.4.5/ReleaseNotes.md
+
+  The granular changes that have gone into the 12.4.5 release are in the ChangeLog at: https://github.com/vmware/open-vm-tools/blob/stable-12.4.5/open-vm-tools/ChangeLog
+
+-------------------------------------------------------------------
 Wed Mar 27 15:36:58 UTC 2024 - Kirk Allan <kallan@suse.com>
 
 - Remove protobuf < 22 dependency from spec file (bsc#1217478)
