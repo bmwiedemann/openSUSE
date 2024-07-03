@@ -1,0 +1,156 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>1d0ecfb5eb19f32dc53e880636dc8701</srcmd5>
+    <version>0.6</version>
+    <time>1243291462</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>0a7d330f6ecc0a5aca0a2c9cd8a89eb6</srcmd5>
+    <version>0.6</version>
+    <time>1245336821</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>0a7d330f6ecc0a5aca0a2c9cd8a89eb6</srcmd5>
+    <version>0.6</version>
+    <time>1245336821</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>902e69604df71688fdf289b770ffc6a5</srcmd5>
+    <version>0.6</version>
+    <time>1268922885</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>902e69604df71688fdf289b770ffc6a5</srcmd5>
+    <version>0.6</version>
+    <time>1278667336</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>902e69604df71688fdf289b770ffc6a5</srcmd5>
+    <version>0.6</version>
+    <time>1278678563</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>902e69604df71688fdf289b770ffc6a5</srcmd5>
+    <version>0.6</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>902e69604df71688fdf289b770ffc6a5</srcmd5>
+    <version>0.6</version>
+    <time>1319181771</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="15">
+    <srcmd5>5ec53bb70760755e9c8ec049ecdb4afb</srcmd5>
+    <version>0.6</version>
+    <time>1327087346</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>100879</requestid>
+  </revision>
+  <revision rev="10" vrev="17">
+    <srcmd5>5ec53bb70760755e9c8ec049ecdb4afb</srcmd5>
+    <version>0.6</version>
+    <time>1340183175</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="19">
+    <srcmd5>5ec53bb70760755e9c8ec049ecdb4afb</srcmd5>
+    <version>0.6</version>
+    <time>1359108656</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="21">
+    <srcmd5>5ec53bb70760755e9c8ec049ecdb4afb</srcmd5>
+    <version>0.6</version>
+    <time>1379661974</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="23">
+    <srcmd5>5ec53bb70760755e9c8ec049ecdb4afb</srcmd5>
+    <version>0.6</version>
+    <time>1409300498</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="24">
+    <srcmd5>5849b292d89142c73f27ee01b2961db3</srcmd5>
+    <version>0.6</version>
+    <time>1413476105</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256902</requestid>
+  </revision>
+  <revision rev="15" vrev="25">
+    <srcmd5>832563df5dd5a8176a0f8e45bdee363c</srcmd5>
+    <version>0.6</version>
+    <time>1415748113</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260852</requestid>
+  </revision>
+  <revision rev="16" vrev="26">
+    <srcmd5>5280942cf64c22543b1c7406351ff353</srcmd5>
+    <version>0.6</version>
+    <time>1437384085</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317186</requestid>
+  </revision>
+  <revision rev="17" vrev="27">
+    <srcmd5>21dd58e87acee3ab127de8ef36745dcd</srcmd5>
+    <version>0.6</version>
+    <time>1450695869</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349344</requestid>
+  </revision>
+  <revision rev="18" vrev="28">
+    <srcmd5>87b9023e2bd8ee472ebfc2b34709d875</srcmd5>
+    <version>0.6</version>
+    <time>1514569855</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>560005</requestid>
+  </revision>
+  <revision rev="19" vrev="29">
+    <srcmd5>80ff91c6ce5a7d32bf2f1e3448ccfd5b</srcmd5>
+    <version>0.6</version>
+    <time>1582018604</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>774741</requestid>
+  </revision>
+  <revision rev="20" vrev="30">
+    <srcmd5>f489c4972a7222fdf410151c59c71120</srcmd5>
+    <version>0.6</version>
+    <time>1708631948</time>
+    <user>anag+factory</user>
+    <comment>Prepare for RPM 4.20 (forwarded request 1147824 from dimstar)</comment>
+    <requestid>1149075</requestid>
+  </revision>
+  <revision rev="21" vrev="31">
+    <srcmd5>710fe3cb3599ac16072feaa2aa8b0061</srcmd5>
+    <version>0.6</version>
+    <time>1715615902</time>
+    <user>anag+factory</user>
+    <comment>- fix build with gcc14
+- added patches
+  work with apache 2.4
+  + apache2-mod_dnssd-httpd24.patch (forwarded request 1172447 from pgajdos)</comment>
+    <requestid>1173610</requestid>
+  </revision>
+</revisionlist>

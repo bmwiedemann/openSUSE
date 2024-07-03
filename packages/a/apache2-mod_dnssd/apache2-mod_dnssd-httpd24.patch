@@ -1,0 +1,28 @@
+Index: mod_dnssd-0.6/src/mod_dnssd.c
+===================================================================
+--- mod_dnssd-0.6.orig/src/mod_dnssd.c
++++ mod_dnssd-0.6/src/mod_dnssd.c
+@@ -23,11 +23,13 @@
+ #include <apr_lib.h>
+ #include <ap_config.h>
+ #include <apr_strings.h>
+-#include <unixd.h>
++#include <mod_unixd.h>
+ #include <apr_signal.h>
+ #include <mpm_common.h>
+ 
+ #include <unistd.h>
++#include <sys/types.h>
++#include <pwd.h>
+ 
+ #include <avahi-common/simple-watch.h>
+ #include <avahi-common/domain.h>
+@@ -576,7 +578,7 @@ static void child_process(apr_pool_t *p,
+ 
+     ap_assert(d);
+ 
+-    unixd_setup_child();
++    ap_unixd_setup_child();
+ 
+     if (pipe(sigterm_pipe_fds) < 0) {
+         ap_log_error(APLOG_MARK, APLOG_ERR, 0, r.main_server, "pipe() failed: %s", strerror(errno));
