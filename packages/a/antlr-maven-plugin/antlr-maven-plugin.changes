@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Tue Feb 20 10:57:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Thu Oct 26 12:08:10 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jdk18plus.patch
+    + catch UnsupportedOperationException that SecurityManager in
+      JDK 21 throws instead of warning about deprecation
+
+-------------------------------------------------------------------
+Mon Sep 25 09:21:04 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Remove dependency on maven2
+
+-------------------------------------------------------------------
+Mon Mar 21 14:49:53 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with maven.compiler.release=8 on any JDK >= 9
+
+-------------------------------------------------------------------
+Fri Mar 11 07:10:16 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * new-reporting-api.patch
+    + fix building with the new maven-reporting-api
+
+-------------------------------------------------------------------
+Fri Apr  5 14:50:16 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of antlr-maven-plugin 2.2

@@ -1,0 +1,72 @@
+From 1305d8d7aa5f9724e28d54a112a524f9a2fb0af7 Mon Sep 17 00:00:00 2001
+From: Michal Srb <msrb@redhat.com>
+Date: Wed, 16 Oct 2013 14:29:21 +0200
+Subject: [PATCH] [MANTLR-34] Fix NPE when building Jenkins
+
+---
+ .../mojo/antlr/metadata/MetadataExtracter.java     | 40 ++++++++++++----------
+ 1 file changed, 21 insertions(+), 19 deletions(-)
+
+diff --git a/src/main/java/org/codehaus/mojo/antlr/metadata/MetadataExtracter.java b/src/main/java/org/codehaus/mojo/antlr/metadata/MetadataExtracter.java
+index c54f301..8637dea 100644
+--- a/src/main/java/org/codehaus/mojo/antlr/metadata/MetadataExtracter.java
++++ b/src/main/java/org/codehaus/mojo/antlr/metadata/MetadataExtracter.java
+@@ -239,34 +239,36 @@ public class MetadataExtracter
+             Method getRHSMethod = helper.getAntlrOptionClass().getMethod( "getRHS", Helper.NO_ARG_SIGNATURE );
+             getRHSMethod.setAccessible( true );
+ 
+-            Object importVocabOption = getElementMethod.invoke( options, new Object[] { "importVocab" } );
+-            if ( importVocabOption != null )
+-            {
+-                String importVocab = (String) getRHSMethod.invoke( importVocabOption, Helper.NO_ARGS );
+-                if ( importVocab != null )
++            if ( options != null ) {
++                Object importVocabOption = getElementMethod.invoke( options, new Object[] { "importVocab" } );
++                if ( importVocabOption != null )
+                 {
+-                    importVocab = importVocab.trim();
+-                    if ( importVocab.endsWith( ";" ) )
++                    String importVocab = (String) getRHSMethod.invoke( importVocabOption, Helper.NO_ARGS );
++                    if ( importVocab != null )
+                     {
+-                        importVocab = importVocab.substring( 0, importVocab.length() - 1 );
++                        importVocab = importVocab.trim();
++                        if ( importVocab.endsWith( ";" ) )
++                        {
++                            importVocab = importVocab.substring( 0, importVocab.length() - 1 );
++                        }
++                        grammar.setImportVocab( importVocab );
+                     }
+-                    grammar.setImportVocab( importVocab );
+                 }
+-            }
+ 
+-            Object exportVocabOption = getElementMethod.invoke( options, new Object[] { "exportVocab" } );
+-            if ( exportVocabOption != null )
+-            {
+-                String exportVocab = (String) getRHSMethod.invoke( exportVocabOption, Helper.NO_ARGS );
+-                if ( exportVocab != null )
++                Object exportVocabOption = getElementMethod.invoke( options, new Object[] { "exportVocab" } );
++                if ( exportVocabOption != null )
+                 {
+-                    exportVocab = exportVocab.trim();
+-                    if ( exportVocab.endsWith( ";" ) )
++                    String exportVocab = (String) getRHSMethod.invoke( exportVocabOption, Helper.NO_ARGS );
++                    if ( exportVocab != null )
+                     {
+-                        exportVocab = exportVocab.substring( 0, exportVocab.length() - 1 );
++                        exportVocab = exportVocab.trim();
++                        if ( exportVocab.endsWith( ";" ) )
++                        {
++                            exportVocab = exportVocab.substring( 0, exportVocab.length() - 1 );
++                        }
+                     }
++                    grammar.setExportVocab( exportVocab );
+                 }
+-                grammar.setExportVocab( exportVocab );
+             }
+         }
+         catch ( Throwable t )
+-- 
+1.8.3.1
+
