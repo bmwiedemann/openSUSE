@@ -1,0 +1,13 @@
+Index: clevis-19/src/luks/tests/meson.build
+===================================================================
+--- clevis-19.orig/src/luks/tests/meson.build
++++ clevis-19/src/luks/tests/meson.build
+@@ -3,7 +3,7 @@ jq = find_program('jq', required: false)
+ 
+ # We use cryptsetup for testing LUKS2 binding and saving the token in a
+ # given token slot.
+-cryptsetup = find_program('cryptsetup', required: true)
++cryptsetup = find_program('/usr/sbin/cryptsetup', required: true)
+ 
+ # Use keyctl to check an existing token id can be created from
+ # kernel keyring password

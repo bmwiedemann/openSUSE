@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b8a7381abe7cbb15d6e8420f9c3957d4</srcmd5>
+    <version>19</version>
+    <time>1681302773</time>
+    <user>dimstar_suse</user>
+    <comment>add a TPM / other automatic luks unlocking tool</comment>
+    <requestid>1078630</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>50a15c1a4b1182e7cfbe35474f34fa04</srcmd5>
+    <version>19</version>
+    <time>1684754088</time>
+    <user>dimstar_suse</user>
+    <comment>- drop ncat requirement from clevis-systemd (boo#1211580) (forwarded request 1088317 from AndreasStieger)</comment>
+    <requestid>1088319</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Mon May 22 10:00:00 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- drop ncat requirement from clevis-systemd (boo#1211580)
+
+-------------------------------------------------------------------
+Tue Apr 11 15:42:34 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- updated to v19
+  - Add external token id for existing passphrase (71869cb)
+  - luks-edit: remove unnecessary 2>/dev/null (6e48a1c)
+  - Avoid invalid message for clevis command (3f879a3)
+  - Notify error url on server connect fail (f5786d3)
+  - Improve boot performance by removing key check (47b01ab)
+  - systemd: account for unlocking failures in clevis-luks-askpass (92b09c9)
+  - luks: enable debugging in clevis scripts when rd.debug is set (8c9e020)
+  - luks: explicitly specify pbkdf iterations to cryptsetup (7159630)
+  - tpm2: improve validation of PCRs in clevis-encrypt-tpm2 (4eb1980)
+  - luks: define max entropy bits for pwmake (3bb852b)
+  - luks: ignore empty & comment lines in crypttab (0589c14)
+  - Avoid luksmeta corruption on clevis bind (d8a25e3)
+
+
+-------------------------------------------------------------------
+Tue Jan 17 15:25:09 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- ship clevis v18, a unattended disk encryption unlocker, via either
+  a server or TPM2. (jsc#PED-3009, jsc#PM-3627, jsc#PM-2793)
