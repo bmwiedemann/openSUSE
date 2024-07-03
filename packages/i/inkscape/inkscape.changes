@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul  2 15:12:33 UTC 2024 - pgajdos@suse.com
+
+- added patches
+  fix https://gitlab.com/inkscape/inkscape/-/commit/96ca7a6c215aa14336b52753f56244dc8796ec43
+  + inkscape-poppler-24.05.0.patch
+  fix https://gitlab.com/inkscape/inkscape/-/commit/877fc26483f74f951eab516f1b57b136780a8c78
+  + inkscape-poppler-c++20-2.patch
+  fix https://gitlab.com/inkscape/inkscape/-/commit/1798e9c13b786f3d077ba0132592c4d5c1d1fb9b
+  + inkscape-poppler-c++20.patch
+
+-------------------------------------------------------------------
 Thu Apr 18 14:13:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add inkscape-libxml2.12.patch: Fix build with libxml 2.12.

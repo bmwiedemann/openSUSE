@@ -1,0 +1,46 @@
+Index: inkscape-1.3.2_2023-11-25_091e20ef0f/src/extension/internal/pdfinput/poppler-transition-api.h
+===================================================================
+--- inkscape-1.3.2_2023-11-25_091e20ef0f.orig/src/extension/internal/pdfinput/poppler-transition-api.h
++++ inkscape-1.3.2_2023-11-25_091e20ef0f/src/extension/internal/pdfinput/poppler-transition-api.h
+@@ -13,6 +13,15 @@
+ #define SEEN_POPPLER_TRANSITION_API_H
+ 
+ #include <glib/poppler-features.h>
++#include <poppler/UTF.h>
++
++#if POPPLER_CHECK_VERSION(24, 5, 0)
++#define _POPPLER_HAS_UNICODE_BOM(value) (hasUnicodeByteOrderMark(value->toStr()))
++#define _POPPLER_HAS_UNICODE_BOMLE(value) (hasUnicodeByteOrderMarkLE(value->toStr()))
++#else
++#define _POPPLER_HAS_UNICODE_BOM(value) (value->hasUnicodeMarker())
++#define _POPPLER_HAS_UNICODE_BOMLE(value) (value->hasUnicodeMarkerLE())
++#endif
+ 
+ #if POPPLER_CHECK_VERSION(22, 4, 0)
+ #define _POPPLER_FONTPTR_TO_GFX8(font_ptr) ((Gfx8BitFont *)font_ptr.get())
+Index: inkscape-1.3.2_2023-11-25_091e20ef0f/src/extension/internal/pdfinput/poppler-utils.cpp
+===================================================================
+--- inkscape-1.3.2_2023-11-25_091e20ef0f.orig/src/extension/internal/pdfinput/poppler-utils.cpp
++++ inkscape-1.3.2_2023-11-25_091e20ef0f/src/extension/internal/pdfinput/poppler-utils.cpp
+@@ -12,6 +12,8 @@
+ 
+ #include "poppler-utils.h"
+ 
++#include <poppler/UTF.h>
++
+ #include "2geom/affine.h"
+ #include "GfxFont.h"
+ #include "GfxState.h"
+@@ -563,10 +565,10 @@ std::string getDictString(Dict *dict, co
+  */
+ std::string getString(const GooString *value)
+ {
+-    if (value->hasUnicodeMarker()) {
++    if (_POPPLER_HAS_UNICODE_BOM(value)) {
+         return g_convert(value->getCString () + 2, value->getLength () - 2,
+                          "UTF-8", "UTF-16BE", NULL, NULL, NULL);
+-    } else if (value->hasUnicodeMarkerLE()) {
++    } else if (_POPPLER_HAS_UNICODE_BOMLE(value)) {
+         return g_convert(value->getCString () + 2, value->getLength () - 2,
+                          "UTF-8", "UTF-16LE", NULL, NULL, NULL);
+     }

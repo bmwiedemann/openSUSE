@@ -36,6 +36,12 @@ Source99:       https://inkscape.org/~MarcJeanmougin/gpg#/%name.keyring
 Patch0:         inkscape-poppler-24.03.0.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         https://gitlab.com/inkscape/inkscape/-/merge_requests/6089.patch#/inkscape-libxml2.12.patch
+# https://gitlab.com/inkscape/inkscape/-/commit/1798e9c13b786f3d077ba0132592c4d5c1d1fb9b
+Patch2:         inkscape-poppler-c++20.patch
+# https://gitlab.com/inkscape/inkscape/-/commit/96ca7a6c215aa14336b52753f56244dc8796ec43
+Patch3:         inkscape-poppler-24.05.0.patch
+# https://gitlab.com/inkscape/inkscape/-/commit/877fc26483f74f951eab516f1b57b136780a8c78
+Patch4:         inkscape-poppler-c++20-2.patch
 
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
