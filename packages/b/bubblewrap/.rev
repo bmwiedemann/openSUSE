@@ -1,0 +1,178 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ce0415abf6cc9019eb16ed5649a2a251</srcmd5>
+    <version>0.1.8</version>
+    <time>1499291828</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>498459</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>18cdc790d851ced1744c3151781e68fd</srcmd5>
+    <version>0.1.8</version>
+    <time>1500275492</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>510257</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6a1bd5a161d5921f4ab10bb032d69b6b</srcmd5>
+    <version>0.1.8</version>
+    <time>1505989966</time>
+    <user>dimstar_suse</user>
+    <comment>- add group
+</comment>
+    <requestid>527016</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0438f15c9193353283dff582d7ede5b5</srcmd5>
+    <version>0.2.0</version>
+    <time>1507896556</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.2.0</comment>
+    <requestid>532853</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c8991dd777496c54da9a01028921bde8</srcmd5>
+    <version>0.2.1</version>
+    <time>1527673235</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.2.1:
+ * All the demos are included
+ * bugfixes for the demo files
+ * There was an issue with mkdir when running bubblewrap on an NFS
+   filesystem that has been fixed, so flatpak now works on NFS shares.
+ * Some leaks have been fixed, including a file descriptor leak.
+</comment>
+    <requestid>612511</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c10ecb3648d93ac3ff661bbe341fca19</srcmd5>
+    <version>0.3.0</version>
+    <time>1532293410</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>624477</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>83ddf51924c7399d0763da0179dd7e5b</srcmd5>
+    <version>0.3.1</version>
+    <time>1540447849</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641812</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4ef3315fc0d9d544d8ad16f8c3aac1dd</srcmd5>
+    <version>0.3.3</version>
+    <time>1559642947</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.3:
+ - This release is the same as 0.3.2 but the version number in configure.ac
+   was accidentally still set to 0.3.1
+- Update to version 0.3.2:
+ - fixes boo#1136958 / CVE-2019-12439
+  This release fixes a mostly theoretical security issue in unusual/broken
+  setups where `$XDG_RUNTIME_DIR` is unset.
+  There are some other smaller fixes, as well as an addition to the JSON
+  API that allows reading the inner process exit code, separately from
+  the `bwrap` exit code.
+  - Print &quot;Out of memory&quot; on stderr, not stdout
+  - bwrap: add option json-status-fd to show child exit code
+  - bwrap: Report COMMAND exit code in json-status-fd
+  - man page: Describe --chdir, not nonexistent --cwd
+  - Don't create our own temporary mount point for pivot_root
+  - Make lockdata long enough on 32-bit with 64-bit file pointers.
+</comment>
+    <requestid>706819</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ec545fa2effc04d7a4d13a378ca2f925</srcmd5>
+    <version>0.3.3</version>
+    <time>1562591087</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713457</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>57f86d66128fc8363dd119c3abf65c7a</srcmd5>
+    <version>0.4.0</version>
+    <time>1577536814</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for new flatpak.
+- Update to version 0.4.0:
+  + The biggest feature in this release is the support for joining
+    existing user and pid namespaces. This doesn't work in the
+    setuid mode (at the moment).
+  + Other changes:
+    - Stores namespace info in status json.
+    - In setuid mode pid 1 is now marked dumpable.
+    - Now builds with musl libc.
+</comment>
+    <requestid>759115</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>682faa9a149e5a3f4dbc632428aad155</srcmd5>
+    <version>0.4.1</version>
+    <time>1586112699</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.1:
+ * retcode: fix return code with syncfd and no event_fd
+ * Ensure we're always clearing the cap bounding set
+ * tests: Update output patterns for libcap &gt;= 2.29
+ * Don't rely on geteuid() to know when to switch back from setuid root
+ * Don't support --userns2 in setuid mode
+ * fixes CVE-2020-5291
+ * fixes bsc#1168291
+</comment>
+    <requestid>790515</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>907cea39c92339cf17be58f4e2afddcc</srcmd5>
+    <version>0.5.0</version>
+    <time>1632522888</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920456</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>35b0596b9a5e06cbbd70f6e91302a2f6</srcmd5>
+    <version>0.6.1</version>
+    <time>1647282908</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>961131</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ecc6c68e39d8de9a53f06d3ac667a6f3</srcmd5>
+    <version>0.6.2</version>
+    <time>1653061806</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977941</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>cec62e13d095ee152e473a00b5338661</srcmd5>
+    <version>0.7.0</version>
+    <time>1670588193</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041340</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>fff141c75f115004a887951a8465cf33</srcmd5>
+    <version>0.8.0</version>
+    <time>1680125153</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074772</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b711587f8e80deb0aa7a4c9978b41dc9</srcmd5>
+    <version>0.9.0</version>
+    <time>1712157495</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1164156</requestid>
+  </revision>
+</revisionlist>

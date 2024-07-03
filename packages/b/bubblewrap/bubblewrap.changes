@@ -1,0 +1,433 @@
+-------------------------------------------------------------------
+Tue Apr  2 12:14:33 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- update to v0.9.0:
+  * Build system changed to Meson from Autotools
+  * Add --argv0
+    https://github.com/containers/bubblewrap/issues/91
+  * --symlink is now idempotent, meaning it succeeds if the symlink already
+    exists and already has the desired target 
+  * Clarify security considerations in documentation
+  * Clarify documentation for --cap-add
+  * Report a better error message if mount(2) fails with ENOSPC
+  * Fix a double-close on error reading from --args, --seccomp or
+    --add-seccomp-fd argument
+  * Improve memory allocation behaviour
+
+-------------------------------------------------------------------
+Mon Mar 27 16:39:05 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to v0.8.0:
+  * Add --disable-userns option to prevent the sandbox from
+    creating its own nested user namespace
+  * Add --assert-userns-disabled option to check that an existing
+    userns was created with --disable-userns
+  * Give a clearer error message if the kernel doesn't have
+    CONFIG_SECCOMP and CONFIG_SECCOMP_FILTER
+
+-------------------------------------------------------------------
+Wed Dec  7 21:50:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to v0.7.0:
+  * --size option controls the size of a subsequent --tmpfs (#509)
+  * Better error messages if a mount operation fails (#472)
+  * Better error message if creating the new user namespace fails with
+    ENOSPC (#487)
+  * When building as a Meson subproject, a RUNPATH can be set on the
+    executable to make it easier to bundle its libcap dependency
+  * Fix test failures when running as uid 0 but with limited capabilities
+    (#510)
+  * Use POSIX command -v in preference to non-standard which (#527)
+  * Fix a copy/paste error in --help (#531)
+
+-------------------------------------------------------------------
+Wed May 18 12:43:26 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.6.2:
+  + New features in Meson build:
+    - Auto-detect whether the man page can be generated.
+    - -Dbwrapdir=... changes the installation directory (useful
+       when being used as a subproject).
+    - -Dtests=false disables unit tests.
+  + Bug fixes:
+    - Add --add-seccomp-fd to shell completions
+    - Document --add-seccomp-fd, --json-status-fd and --share-net
+      in the man page
+    - Add attributes to silence various compiler warnings
+    - Allow compilation of tests with musl on mips architectures
+    - Allow compilation with older glibc
+    - Disable sanitizers for a test helper whose seccomp profile
+      breaks the instrumentation
+    - Disable AddressSanitizer leak detection where it interferes
+      with unit testing
+
+-------------------------------------------------------------------
+Fri Mar  4 18:13:15 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to 0.6.1:
+ - Add a release checklist
+ - completions: Make zsh completion non-executable
+   The Autotools build system installed it with 0644 permissions because
+   it's listed as DATA, but the Meson build system installs executable
+   files as executable by default.
+   zsh completions don't need to be executable to work, and this one doesn't
+   have the `#!` marker that should start an executable script.
+- update to 0.6.0:
+ - meson: Improve compatibility with Meson 0.49
+   That version doesn't allow more than two arguments for define_variable.
+ - Disable test-specifying-pidns.sh under 'meson dist' while I investigate
+   This test is hanging when run under 'meson dist' for some reason, but
+   not when run under 'meson test', and not locally, only in the Github
+   Workflow-based CI. Disable it for now.
+ - meson: Actually build and run the tests
+ - tests: Fix compiler warnings for unused arguments
+ - meson: Run test scripts from $srcdir
+ - meson: Make G_TEST_SRCDIR, G_TEST_BUILDDIR match Autotools
+ - meson: Run the Python test script with Python, not bash
+   The python build option can be used to swap to a different interpreter,
+   for environments like the Steam Runtime where the python3 executable in
+   the PATH is extremely old but there is a better interpreter available.
+   This is treated as non-optional, because Meson is written in Python,
+   so the situation where there is no Python interpreter at build-time
+   shouldn't arise.
+ - meson: Build the try-syscall helper
+ - meson: Build tests with equivalent of -I$(top_srcdir) -I$(top_builddir)
+ - meson.build: Remove unnecessary check for sh
+ - Add a Meson build system
+   This allows bwrap to be built as a subproject in larger Meson projects.
+   When built as a subproject, we install into the --libexecdir and
+   require a program prefix to be specified: for example, Flatpak would use
+   program_prefix=flatpak- to get /usr/libexec/flatpak-bwrap. Verified to
+   be backwards-compatible as far as Meson 0.49.0 (Debian 9 backports).
+   Loosely based on previous work by Jussi Pakkanen (see #133).
+   Differences between the Autotools and Meson builds:
+   The Meson build requires a version of libcap that has pkg-config
+   metadata (introduced in libcap 2.23, in 2013).
+   The Meson build has no equivalent of --with-priv-mode=setuid. On
+   distributions like Debian <= 10 and RHEL <= 7 that require a setuid bwrap
+   executable, the sysadmin or distribution packaging will need to set the
+   correct permissions on the bwrap executable; Debian already did this via
+   packaging rather than the upstream build system.
+   The Meson build supports being used as a subproject, and there is CI
+   for this. It automatically disables shell completions and man pages,
+   moves the bubblewrap executable to ${libexecdir}, and renames the
+   bubblewrap executable according to a program_prefix option that the
+   caller must specify (for example, Flatpak would use
+   -Dprogram_prefix=flatpak- to get /usr/libexec/flatpak-bwrap). See the
+   tests/use-as-subproject/ directory for an example.
+ - Use HEAD to refer to other projects' default branches in documentation
+   This makes the URL independent of the name they have chosen for their
+   default branches.
+ - workflows: Update for rename of default branch to main
+ - tests: Exercise seccomp filters
+ - Allow loading more than one seccomp program
+   This will allow Flatpak to combine an allow-list (default-deny) of
+   known system calls with a deny-list (default-allow) of system calls
+   that are undesired.
+   Resolves: https://github.com/containers/bubblewrap/issues/453
+ - Generalize linked lists of LockFile and SetupOp
+   I'm about to add a third linked list, for seccomp programs, which would
+   seem like too much duplication.
+ - Handle argc == 0 better
+   Unfortunately it's possible for argc to be 0, so error out pretty early
+   on in that case. I don't think this is a security issue in this case.
+ - Fix typo
+ - Remove trailing whitespace
+ - Fix spelling
+ - bash: Fix shellcheck warnings
+ - bash: Invoke bash using /usr/bin/env
+ - bubblewrap: Avoid a -Wjump-misses-init false-positive
+   When building with -Wjump-misses-init as part of a larger project, gcc
+   reports that we jump past initialization of cover_proc_dirs. This is
+   technically true, but we only use this variable in the case where it's
+   initialized, so that's harmless.
+   However, we can avoid this altogether by making the array static and
+   constant, which allows it to be moved from initialized data to read-only
+   data.
+ - bind-mount: Be more const-correct
+   When compiled with -Wwrite-strings as part of a larger project, gcc and
+   clang both warn that we're assigning a string constant to a mutable
+   struct member. There's actually no reason why it should be mutable, so
+   make it const.
+ - die_with_error: Save errno sooner
+   We need to save errno immediately, otherwise it could be overwritten
+   by a failing library call somewhere in the implementation of fprintf.
+ - main: Warn when non-repeatable options are repeated
+   A user might reasonably expect that `bwrap --seccomp 3 --seccomp 4 ...`
+   would load seccomp programs from both fds 3 and 4, but in fact it only
+   loads the program from fd 4.
+   Helps: https://github.com/containers/bubblewrap/issues/453
+   Resolves: https://github.com/containers/bubblewrap/issues/454
+ - utils: Add warn()
+ - Add SPDX-License-Identifier for files that already specify license
+   This is a step towards REUSE compliance. Third-party files that we do
+   not otherwise edit (git.mk, m4/attributes.m4) are excluded here.
+ - tests: Use preferred spelling for SPDX license identifiers
+ - Remove obsolete .travis.yml
+   We no longer use Travis-CI.
+ - Remove obsolete papr CI
+   We no longer use this.
+
+
+-------------------------------------------------------------------
+Mon Sep 20 18:52:20 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.5.0:
+  + New features:
+    - --chmod changes permissions
+    - --clearenv unsets every environment variable (except PWD)
+    - --perms sets permissions for one subsequent --bind-data,
+      --dir, --file, --ro-bind-data or --tmpfs
+  + Other enhancements:
+    - Better diagnostics when a --bind or other bind-mount fails
+    - zsh tab-completion
+    - Better test coverage
+  + Bug fixes:
+    - Use Python 3 for tests and examples
+    - Mount points for non-directories are created with permissions
+      -r--r--r-- instead of -rw-rw-rw-
+    - Don't remount items in /proc read-only if already EROFS,
+      required to run under Docker
+    - Allow mounting an non-directory over an existing
+      non-directory, e.g. --bind "$XDG_RUNTIME_DIR/my-log-socket"
+      /dev/log
+    - Silence kernel messages for our bind-mounts
+    - Make sure pkg-config is checked for, regardless of build
+      options
+    - Improve ability to bind-mount directories on case-insensitive
+      filesystems
+    - Fix -Wshadow warnings
+    - Fix deprecation warnings with newer SELinux
+- Add new subpackage bubblewrap-zsh-completion
+
+-------------------------------------------------------------------
+Wed Apr  1 10:03:39 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 0.4.1:
+ * retcode: fix return code with syncfd and no event_fd
+ * Ensure we're always clearing the cap bounding set
+ * tests: Update output patterns for libcap >= 2.29
+ * Don't rely on geteuid() to know when to switch back from setuid root
+ * Don't support --userns2 in setuid mode
+ * fixes CVE-2020-5291
+ * fixes bsc#1168291
+
+-------------------------------------------------------------------
+Fri Dec 20 22:59:52 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.0:
+  + The biggest feature in this release is the support for joining
+    existing user and pid namespaces. This doesn't work in the
+    setuid mode (at the moment).
+  + Other changes:
+    - Stores namespace info in status json.
+    - In setuid mode pid 1 is now marked dumpable.
+    - Now builds with musl libc.
+
+-------------------------------------------------------------------
+Fri Jun  7 14:38:21 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use /bin/bash instead of /usr/bin/bash in SLE12
+
+-------------------------------------------------------------------
+Sat Jun  1 15:08:49 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 0.3.3:
+ - This release is the same as 0.3.2 but the version number in configure.ac
+   was accidentally still set to 0.3.1
+- Update to version 0.3.2:
+ - fixes boo#1136958 / CVE-2019-12439
+  This release fixes a mostly theoretical security issue in unusual/broken
+  setups where `$XDG_RUNTIME_DIR` is unset.
+  There are some other smaller fixes, as well as an addition to the JSON
+  API that allows reading the inner process exit code, separately from
+  the `bwrap` exit code.
+  - Print "Out of memory" on stderr, not stdout
+  - bwrap: add option json-status-fd to show child exit code
+  - bwrap: Report COMMAND exit code in json-status-fd
+  - man page: Describe --chdir, not nonexistent --cwd
+  - Don't create our own temporary mount point for pivot_root
+  - Make lockdata long enough on 32-bit with 64-bit file pointers.
+
+-------------------------------------------------------------------
+Thu Oct 11 16:41:12 UTC 2018 - Antonio Larrosa <alarrosa@suse.com> - 0.3.1
+
+- update to version 0.3.1:
+  * New feature in this release is --bind-try (as well as --dev-bind-try
+    and --ro-bind-try) which works like the regular versions if the source
+    exists, but does nothing if it doesn't exist.
+
+  * The mount type for the root tmpfs was also changed to "tmpfs" instead
+    of being empty, as the later could cause problems with some programs
+    when parsing the mountinfo files in /proc.
+
+-------------------------------------------------------------------
+Sat Jul 14 20:06:50 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 0.3.0:
+  * The biggest feature from this release is that bwrap
+    now supports being invoked recursively (from other container
+    runtimes such as Docker/podman/runc as well as bwrap itself)
+    when user namespaces are enabled, and the outer container manager
+    allows it (Docker's default seccomp policy doesn't).
+
+  * This is useful for testing scenarios; for example a project
+    uses Kubernetes for its CI, but inside build the project wants to run
+    each unit test in their own pid namespace, without going out
+    and creating a new pod for every single unit test.
+
+  * Similarly, rpm-ostree compose tree uses bwrap internally for scripts,
+    and we want to support running rpm-ostree inside a container as well.
+
+  * Another feature is bwrap now supports -- to terminate argument
+    parsing. To detect availablity of this, you could parse bwrap --version.
+
+-------------------------------------------------------------------
+Tue May  1 21:02:33 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 0.2.1:
+ * All the demos are included
+ * bugfixes for the demo files
+ * There was an issue with mkdir when running bubblewrap on an NFS
+   filesystem that has been fixed, so flatpak now works on NFS shares.
+ * Some leaks have been fixed, including a file descriptor leak.
+
+-------------------------------------------------------------------
+Mon Oct  9 17:53:37 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to version 0.2.0
+ - bwrap now automatically detects the new
+   user namespace restrictions in Red Hat Enterprise Linux 7.4:
+   bubblewrap: check for max_user_namespaces == 0.
+ - The most notable features are new arguments --as-pid1, and
+   --cap-add/--cap-drop. These were added for running systemd (or in general a
+   "full" init system) inside bubblewrap. But the capability options are also
+   useful for unprivileged callers to potentially retain capbilities inside the
+   sandbox (for example CAP_NET_ADMIN), when user namespaces are enabled.
+   Conversely, privileged callers (uid 0) can conversely drop capabilities (without
+   user namespaces). Contributed by Giuseppe Scrivano.
+ - With --dev, add /dev/fd and /dev/core symlinks
+   which should improve compatibility with older software.
+
+-------------------------------------------------------------------
+Mon Sep 18 12:39:54 UTC 2017 - sebix+novell.com@sebix.at
+
+- add group
+
+-------------------------------------------------------------------
+Fri Jul  7 09:40:27 UTC 2017 - sebix+novell.com@sebix.at
+
+- fix build macro with rpm < 4.12 (non-Factory currently)
+
+-------------------------------------------------------------------
+Thu May 25 21:15:49 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to version 0.1.8
+- New --die-with-parent which is based on the Linux prctl(PR_SET_PDEATHSIG) API.
+- smaller bugfixes
+
+-------------------------------------------------------------------
+Thu Mar  2 09:08:58 UTC 2017 - sebix+novell.com@sebix.at
+
+- upgrade to upstream version 0.1.7
+- note that this package was *never* affected by CVE-2017-5226
+  as it was introduced in version 0.1.6
+- upstream changelog of version 0.1.7:
+    This release backs out the change in 0.1.6 which unconditionally
+    called setsid() in order to fix a security issue with TIOCSTI, aka
+    CVE-2017-522. That change caused some behavioural issues that are
+    hard to work with in some cases. For instance, it makes shell job
+    control not work for the bwrap command.
+    Instead there is now a new option --new-session which works like
+    0.1.6. It is recommended that you use this if possible, but if not we
+    recommended that you neutralize this some other way, for instance
+    using SECCOMP, which is what flatpak does:
+    https://github.com/flatpak/flatpak/commit/902fb713990a8f968ea4350c7c2a27ff46f1a6c4
+    In order to make it easy to create maximally safe sandboxes we have
+    also added a new commandline switch called --unshare-all. It unshares
+    all possible namespaces and is currently equivalent with:
+    --unshare-user-try --unshare-ipc --unshare-pid --unshare-net
+    --unshare-uts --unshare-cgroup-try
+    However, the intent is that as new namespaces are added to the kernel they will
+    be added to this list. Additionally, if --share-net is specified the network
+    namespace is not unshared.
+    This release also has some bugfixes:
+        bwrap reaps (unexpected) children that are inherited from the
+        parent, something which can happen if bwrap is part of a shell
+        pipeline.
+        bwrap clears the capability bounding set. The permitted
+        capabilities was already empty, and use of PR_NO_NEW_PRIVS should
+        make it impossible to increase the capabilities, but more
+        layers of protection is better.
+        The seccomp filter is now installed at the very end of bwrap, which
+        means the requirement of the filter is minimal. Any bwrap seccomp
+        filter must at least allow: execve, waitpid and write
+    Alexander Larsson (7):
+          Handle inherited children dying
+          Clear capability bounding set
+          Make the call to setsid() optional, with --new-session
+          demos/bubblewrap-shell.sh: Unshare all namespaces
+          Call setsid() and setexeccon() befor forking the init monitor
+          Install seccomp filter at the very end
+          Bump version to 0.1.7
+    Colin Walters (6):
+          Release 0.1.6
+          man: Correct namespace user -> mount
+          demo/shell: Add /var/tmp compat symlink, tweak PS1, add more docs
+          Release 0.1.6
+          ci: Combine ASAN and UBSAN
+          Add --unshare-all and --share-net
+- upstream changelog for 0.1.6:
+    This fixes a security issue with TIOCSTI, aka CVE-2017-522. Note bubblewrap is
+    far from the only program that has this issue, and I think the best fix is
+    probably in the kernel to support disabling this ioctl.
+
+    Programs can also work around this by calling setsid() on their own in an exec
+    handler before doing an exevp("bwrap").
+- upstream changelog for 0.1.5:
+    This is a bugfix release, here are the major changes:
+        Running bubblewrap as root now works again
+        Various fixes for the testsuite
+        Use same default compiler warnings as ostree
+        Handle errors resolving symlinks during bind mounts
+    Alexander Larsson (2):
+          bind-mount: Check for errors in realpath()
+          Bump version to 0.1.5
+    Colin Walters (6):
+          Don't call capset() unless we need to
+          Only --unshare-user automatically if we're not root
+          ci: Modernize a bit, add f25-ubsan
+          README.md: Update with better one liner and more information
+          utils: Add __attribute__((printf)) to die()
+          build: Sync default warning -> error set from ostree
+    Simon McVittie (4):
+          test-run: be a bash script
+          test-run: don't assume we are uid 1000
+          Adapt tests so they can be run against installed binaries
+          Fix incorrect nesting of backticks when finding a FUSE mount
+
+-------------------------------------------------------------------
+Fri Dec 16 10:14:32 UTC 2016 - sebix+novell.com@sebix.at
+
+- upgrade to upstream version 0.1.4
+- Build also for Leap 42.2
+
+-------------------------------------------------------------------
+Fri Oct 14 2016 Colin Walters <walters@verbum.org> - 0.1.3-2
+
+- New upstream version
+
+-------------------------------------------------------------------
+Mon Sep 12 2016 Kalev Lember <klember@redhat.com> - 0.1.2-1
+
+- Update to 0.1.2
+
+-------------------------------------------------------------------
+Tue Jul 12 2016 Igor Gnatenko <ignatenko@redhat.com> - 0.1.1-2
+
+- Trivial fixes in packaging
+
+-------------------------------------------------------------------
+Fri Jul 08 2016 Colin Walters <walters@verbum.org> - 0.1.1
+
+- Initial package
