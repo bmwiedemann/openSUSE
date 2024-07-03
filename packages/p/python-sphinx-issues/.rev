@@ -64,4 +64,21 @@
     <comment></comment>
     <requestid>1081757</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cae5f0834cbefbf820d0a71b56e10367</srcmd5>
+    <version>4.1.0</version>
+    <time>1720031383</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.1.0:
+  * Add `:pypi:` role for linking to PyPI projects
+  * Default to linking GH Sponsors for the :user: role
+  * Support Python 3.8-3.12. Older versions are no longer supported.
+  * Backwards-incompatible*: Remove ``__version__``,
+    ``__author__``, and ``__license__`` attributes.
+    Use ``importlib.metadata`` to read this metadata instead.
+
+  * Add :pr: role.
+  * Raise ValueError if neither issues_uri nor issues_github_path</comment>
+    <requestid>1184074</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 30 07:39:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.0:
+  * Add `:pypi:` role for linking to PyPI projects
+  * Default to linking GH Sponsors for the :user: role
+  * Support Python 3.8-3.12. Older versions are no longer supported.
+  * Backwards-incompatible*: Remove ``__version__``,
+    ``__author__``, and ``__license__`` attributes.
+    Use ``importlib.metadata`` to read this metadata instead.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:34:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -45,10 +56,10 @@ Fri Apr 26 13:05:20 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
   * Add :commit: role for linking to commits.
   * Add support for linking to external repos.
   * Add :cve: role for linking to CVEs on https://cve.mitre.org.
-  * Add :pr: role. 
+  * Add :pr: role.
   * Drop support for Python 3.4.
   0.4.0
-  * Raise ValueError if neither issues_uri nor issues_github_path 
+  * Raise ValueError if neither issues_uri nor issues_github_path
     is set.
   * Drop support for Python 2.6 and 3.3.
 - take GitHub tarball because of the tests

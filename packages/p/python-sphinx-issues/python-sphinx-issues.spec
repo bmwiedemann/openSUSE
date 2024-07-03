@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-issues
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
 %{?sle15_python_module_pythons}
 Name:           python-sphinx-issues
-Version:        3.0.1
+Version:        4.1.0
 Release:        0
 Summary:        A Sphinx extension for linking to a project's issue tracker
 License:        MIT
 URL:            https://github.com/sloria/sphinx-issues
 Source:         https://github.com/sloria/sphinx-issues/archive/%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx
@@ -47,10 +47,10 @@ built-in support for GitHub (though this works with other services).
 %setup -q -n sphinx-issues-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,6 +59,7 @@ built-in support for GitHub (though this works with other services).
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/sphinx_issues
+%{python_sitelib}/sphinx_issues-%{version}.dist-info
 
 %changelog
