@@ -24,15 +24,15 @@
 %endif
 # Actual version of poppler-data:
 %define poppler_data_version 0.4.11
-%define poppler_sover 135
-%define poppler_cpp_sover 0
+%define poppler_sover 139
+%define poppler_cpp_sover 1
 %define poppler_glib_sover 8
 %define poppler_qt5_sover 1
 %define poppler_qt6_sover 3
 %define poppler_api 0.18
 %define poppler_apipkg 0_18
 Name:           poppler%{?psuffix}
-Version:        24.03.0
+Version:        24.07.0
 Release:        0
 Summary:        PDF Rendering Library
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -57,7 +57,7 @@ BuildRequires:  pkgconfig(cairo-pdf)
 BuildRequires:  pkgconfig(cairo-ps)
 BuildRequires:  pkgconfig(cairo-svg)
 BuildRequires:  pkgconfig(fontconfig)
-BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(freetype2) >= 2.11
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.36
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.41
@@ -260,6 +260,10 @@ export LD_LIBRARY_PATH=$(pwd)/build
 cd %{buildroot} && find . -type f -o -type l | grep -v qt | xargs rm -v
 %endif
 
+%if "%{flavor}" == ""
+%find_lang pdfsig %name-tools.lang
+%endif
+
 echo > %{SOURCE99}
 %if "%{flavor}" == "qt5"
 echo "libpoppler-qt5-%{poppler_qt5_sover}" >> %{SOURCE99}
@@ -314,10 +318,10 @@ echo "libpoppler-cpp%{poppler_cpp_sover}" >> %{SOURCE99}
 %files -n typelib-1_0-Poppler-%{poppler_apipkg}
 %{_libdir}/girepository-1.0/Poppler-%{poppler_api}.typelib
 
-%files tools
+%files tools -f %name-tools.lang
 %license COPYING COPYING3
 %{_bindir}/*
-%{_mandir}/man1/*.*
+%{_mandir}/man1/*.1%{?ext_man}
 
 %files -n libpoppler-cpp%{poppler_cpp_sover}
 %{_libdir}/libpoppler-cpp.so.%{poppler_cpp_sover}*

@@ -6,7 +6,7 @@ Index: poppler-23.10.0/CMakeLists.txt
  
  find_soft_mandatory_package(ENABLE_NSS3 NSS3 3.68)
  find_soft_mandatory_package(ENABLE_GPGME Gpgmepp 1.19)
--find_soft_mandatory_package(ENABLE_LIBTIFF TIFF 4.1)
+-find_soft_mandatory_package(ENABLE_LIBTIFF TIFF 4.3)
 +find_soft_mandatory_package(ENABLE_LIBTIFF TIFF 4.0.9)
  
  macro_optional_find_package(JPEG)

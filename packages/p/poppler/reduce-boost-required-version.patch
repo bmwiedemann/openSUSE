@@ -6,7 +6,7 @@ Index: poppler-23.10.0/CMakeLists.txt
  # Check for Cairo rendering backend
  macro_optional_find_package(Cairo ${CAIRO_VERSION})
  
--find_package(Boost 1.71.0)
+-find_package(Boost 1.74.0)
 +find_package(Boost 1.66.0)
  if(Boost_FOUND)
    set(USE_BOOST_HEADERS ON)

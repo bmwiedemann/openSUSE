@@ -2130,4 +2130,41 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1154586</requestid>
   </revision>
+  <revision rev="204" vrev="1">
+    <srcmd5>2aeff6156bfa254cf982e4972aede17f</srcmd5>
+    <version>24.07.0</version>
+    <time>1720031393</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.07.0:
+  core:
+  * Fix crashes in broken files
+  * Internal code improvements
+  qt6:
+  * Add getters for document additional actions
+  * Implement reset forms link
+  qt5:
+  * Add getters for document additional actions
+  * Implement reset forms link
+  utils:
+  * pdfinfo: Fix crash in broken documents when using -dests
+  build system:
+  * Mark glib-mkenums as required
+- drop poppler-CVE-2024-6239.patch (upstream)
+
+- version update to 24.06.1
+  Release 24.06.1:
+   Re-release 24.06.0 with increased SOVERSION of poppler internal library
+  Release 24.06.0:
+  core:
+   * Performance improvements in some files
+   * Fix some issues with files bigger than 2^31 bytes
+   * Remove all cairo include guards for cairo &lt; 1.16
+   * Fix MSVC build
+   * Internal code improvements
+  qt6:
+   * Update Qt6 doc example
+   * Use the non deprecated version of QString::fromUcs4
+  glib:</comment>
+    <requestid>1184941</requestid>
+  </revision>
 </revisionlist>

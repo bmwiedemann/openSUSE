@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Tue Jul  2 20:12:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.07.0:
+  core:
+  * Fix crashes in broken files
+  * Internal code improvements
+  qt6:
+  * Add getters for document additional actions
+  * Implement reset forms link
+  qt5:
+  * Add getters for document additional actions
+  * Implement reset forms link
+  utils:
+  * pdfinfo: Fix crash in broken documents when using -dests
+  build system:
+  * Mark glib-mkenums as required
+- drop poppler-CVE-2024-6239.patch (upstream)
+
+-------------------------------------------------------------------
+Tue Jun 25 07:44:32 UTC 2024 - pgajdos@suse.com
+
+- version update to 24.06.1
+  Release 24.06.1:
+   Re-release 24.06.0 with increased SOVERSION of poppler internal library
+  Release 24.06.0:
+  core:
+   * Performance improvements in some files
+   * Fix some issues with files bigger than 2^31 bytes
+   * Remove all cairo include guards for cairo < 1.16
+   * Fix MSVC build
+   * Internal code improvements
+  qt6:
+   * Update Qt6 doc example
+   * Use the non deprecated version of QString::fromUcs4
+  glib:
+   * properly document return value from poppler_font_info_scan
+  Release 24.05.0:
+  core:
+   * Fix signing not being totally correct in some kind of PDF files
+   * Assume "Adobe-Identity" for character collection. Issue #1465
+   * Small improvements in annotation font rendering
+   * Remove some GooString methods, use std::string ones instead
+   * Move some GooString methods to UTF.h
+   * Fix crash in broken files
+  cpp:
+   * cpp: Fix crash extracting text and font in some files. Issue #1477
+   * Change base class of ustring to char16_t
+  qt6:
+   * Add async API for certificate validation
+   * Fix text extraction for Landscape/Seascape pages
+  qt5:
+   * Add async API for certificate validation
+   * Fix text extraction for Landscape/Seascape pages
+  utils:
+   * pdfdetach: Small code improvements
+   * pdftops: Write compliant ps header
+  build system:
+   * Increase minimum supported base to that provided by Ubuntu 22.04
+  Release 24.04.0:
+  core:
+   * Optimize page text extraction speed
+   * Fix clipping path handling in some files. Issue #739
+   * Fix regression in text selection
+   * Fix text search across lines between paragraphs
+  qt6:
+   * Fix crash in SoundObject::data
+  utils:
+   * pdfsig: Add Catalan translation
+  build system:
+   * Build code as C++20
+- modified patches
+  % reduce-boost-required-version.patch (refreshed)
+  % reduce-libtiff-required-version.patch (refreshed)
+- added patches
+  fix CVE-2024-6239 [bsc#1226916], crash when using pdfinfo with -dests parameter on malformed input files
+  + poppler-CVE-2024-6239.patch
+
+-------------------------------------------------------------------
 Mon Mar  4 07:25:40 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - version update to 24.03.0
@@ -47,7 +125,7 @@ Tue Dec 26 10:12:06 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 - version update to 23.12.0
     core:
      * Rewrite FoFiType1::parse to be more flexible
-     * Small internal code refactoring 
+     * Small internal code refactoring
 
 -------------------------------------------------------------------
 Thu Nov 16 12:12:13 UTC 2023 - pgajdos@suse.com
