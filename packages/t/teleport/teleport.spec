@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           teleport
-Version:        15.4.4
+Version:        15.4.7
 Release:        0
 Summary:        Identity-aware, multi-protocol access proxy
 License:        AGPL-3.0-only
@@ -36,7 +36,7 @@ Source6:        vendor.tar.zst
 BuildRequires:  cargo >= 1.69
 BuildRequires:  cargo-packaging
 BuildRequires:  git-core
-BuildRequires:  go >= 1.20
+BuildRequires:  go >= 1.22
 BuildRequires:  pam-devel
 BuildRequires:  systemd-rpm-macros
 Requires:       teleport-tctl

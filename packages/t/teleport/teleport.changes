@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Thu Jul  4 07:35:11 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 15.4.7:
+  * Added audit events for discovery config actions. #43794
+  * Updated Go toolchain to v1.22.5. #43769
+  * Reduced CPU usage in auth servers experiencing very high
+    concurrent request load. #43760
+  * Machine ID defaults to disabling the use of the Kubernetes exec
+    plugin when writing a Kubeconfig to a directory destination.
+    This removes the need to manually configure
+    disable_exec_plugin. #43656
+  * Fixed startup crash of Teleport Connect on Ubuntu 24.04 by
+    adding an AppArmor profile. #43652
+  * Added support for dialling leaf clusters to the tbot SSH
+    multiplexer. #43635
+  * Extend Teleport ability to use non-default cluster domains in
+    Kubernetes, avoiding the assumption of cluster.local. #43632
+  * Wait for user MFA input when reissuing expired certificates for
+    a kube proxy. #43613
+  * Improved error diagnostics when using Machine ID's SSH
+    multiplexer. #43587
+
+-------------------------------------------------------------------
+Wed Jul  3 15:58:15 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 15.4.6:
+  * Security Fixes
+    - [Medium] Fixes issue where a SCIM client could potentially
+      overwrite. Teleport system Roles using specially crafted
+      groups. This issue impacts Teleport Enterprise deployments
+      using the Okta integration with SCIM support enabled.
+  * Other updates and improvements
+    - Fixed Discover setup access error when updating user. #43561
+    - Updated Go toolchain to 1.22. #43550
+    - Fixed remote port forwarding validation error. #43517
+    - Added support to trust system CAs for self-hosted databases.
+      #43500
+    - Added error display in the Web UI for SSH and Kubernetes
+      sessions. #43491
+    - Update go-retryablehttp to v0.7.7 (fixes CVE-2024-6104).
+      #43475
+    - Fixed accurate inventory reporting of the updater after it is
+      removed.. #43453
+    - tctl alerts ls now displays remaining alert ttl. #43435
+    - Fixed input search for Teleport Connect's access request
+      listing. #43430
+    - Added Debug setting for event-handler. #43409
+    - Fixed Headless auth for sso users, including when local auth
+      is disabled. #43362
+    - Added configuration for custom CAs in the event-handler helm
+      chart. #43341
+    - Fixed an issue with Database Access Controls preventing users
+      from making additional database connections depending on
+      their permissions. #43302
+    - Fixed Connect My Computer in Teleport Connect failing with
+      "bind: invalid argument". #43288
+
+-------------------------------------------------------------------
+Fri Jun 21 19:10:03 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 15.4.5:
+  * Added a missing [Install] section to the teleport-acm systemd
+    unit file as used by Teleport AMIs. #43256
+  * Patched timing variability in curve25519-dalek. #43249
+  * Updated tctl to ignore a configuration file if the auth_service
+    section is disabled, and prefer loading credentials from a
+    given identity file or tsh profile instead. #43203
+  * Fixed setting request reason for automatic ssh access requests.
+    #43180
+  * Updated teleport to skip jamf_service validation when the Jamf
+    service is not enabled. #43169
+  * Improved log rotation logic in Teleport Connect; now the
+    non-numbered files always contain recent logs. #43162
+  * Made tsh and Teleport Connect return early during login if ping
+    to proxy service was not successful. #43086
+  * Added ability to edit user traits from the Web UI. #43068
+  * Enforce limits when reading events from Firestore to prevent
+    OOM events. #42967
+  * Fixed updating groups for Teleport-created host users. #42884
+  * Added support for crown_jewel resource. #42866
+  * Added ability to edit user traits from the Web UI. #43068
+  * Fixed gRPC disconnection on certificate expiry even though
+    DisconnectCertExpiry was false. #43291
+  * Fixed issue where a Teleport instance running only Jamf or
+    Discovery service would never have a healthy /readyz endpoint.
+    #43284
+
+-------------------------------------------------------------------
 Wed Jun 19 04:42:25 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - change license to AGPL-3.0-only, as license was changed upstream
