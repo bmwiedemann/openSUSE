@@ -559,4 +559,14 @@
     please check the CHANGELOG file</comment>
     <requestid>1152046</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>557da2ab7207a75169696f86117c780e</srcmd5>
+    <version>1.14.1</version>
+    <time>1720102931</time>
+    <user>anag+factory</user>
+    <comment>- Limit explicit GCC13 usage to suse_version &lt; 1600, i.e to Leap
+  15.x. Future versions are supposed to have a recent enough GCC
+  version. (forwarded request 1185120 from dimstar)</comment>
+    <requestid>1185130</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jul  3 13:00:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Limit explicit GCC13 usage to suse_version < 1600, i.e to Leap
+  15.x. Future versions are supposed to have a recent enough GCC
+  version.
+
+-------------------------------------------------------------------
+Wed Jul  3 08:23:41 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- Update to version 1.14.1:
+  * Added buffer bounds checks to vpx_writer and vpx_write_bit_buffer.
+  * Fix to GetSegmentationData() crash in aq_mode=0 for RTC rate control.
+  * Fix to alloc for row_base_thresh_freq_fac.
+  * Free row mt memory before freeing cpi->tile_data.
+  * Fix to buffer alloc for vp9_bitstream_worker_data.
+  * Fix to VP8 race issue for multi-thread with pnsr_calc.
+  * Fix to uv width/height in vp9_scale_and_extend_frame_ssse3.
+  * Fix to integer division by zero and overflow in calc_pframe_target_size().
+  * Fix to integer overflow in vpx_img_alloc() & vpx_img_wrap()(CVE-2024-5197).
+  * Fix to UBSan error in vp9_rc_update_framerate().
+  * Fix to UBSan errors in vp8_new_framerate().
+  * Fix to integer overflow in vp8 encodeframe.c.
+  * Handle EINTR from sem_wait().
+
+-------------------------------------------------------------------
+Tue Feb 27 08:57:04 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- enforce usage of gcc 13 on Leap. Fixes esp. aarch64 builds.
+
+-------------------------------------------------------------------
 Tue Feb 27 08:22:28 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - Update to version 1.14.0:

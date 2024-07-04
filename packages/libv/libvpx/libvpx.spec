@@ -17,8 +17,9 @@
 
 
 %define         sover 9
+%define use_gcc13 0%{?suse_version} < 1600
 Name:           libvpx
-Version:        1.14.0
+Version:        1.14.1
 Release:        0
 Summary:        VP8/VP9 codec library
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -27,8 +28,12 @@ URL:            https://www.webmproject.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1000:     baselibs.conf
 Patch2:         libvpx-configure-add-arch.patch
-# only needed for test suite
+%if %use_gcc13
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
+# only needed for test suite
 # Needed to be able to create pkgconfig() provides.
 BuildRequires:  pkgconfig
 BuildRequires:  yasm
@@ -97,6 +102,10 @@ sed -i~ /ssse3/d configure
 sed -i~ 's@ssse3@@' build/make/rtcd.pl
 %endif
 cd build
+%if %use_gcc13
+export CXX=g++-13
+export CC=gcc-13
+%endif
 # It is only an emulation of autotools configure; the macro does not work
 export CFLAGS="%{optflags} -O3"
 export CXXFLAGS="%{optflags} -O3"
