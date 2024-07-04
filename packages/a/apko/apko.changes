@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jul 03 19:07:59 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.0:
+  * Fix typo in DefaultAuthenticators
+  * Don't mutate accounts if base image is set
+  * accept other apk hosts via env, use rate.Sometimes
+  * fix unit tests, add StaticAuth
+  * add TODO
+  * auth: refactor into Authenticator interface
+  * Make solving multi-architecture aware
+  * Refactor into build.Multi, no behavior change
+  * Expose ignoreSignatures functionality to CLI and library
+    consumers
+  * build(deps): bump github.com/chainguard-dev/clog from 1.3.1 to
+    1.4.0
+  * example(go): golang example with wolfi base
+  * build(deps): bump github.com/google/go-containerregistry
+
+-------------------------------------------------------------------
 Wed Jun 19 05:11:36 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.15.0:
