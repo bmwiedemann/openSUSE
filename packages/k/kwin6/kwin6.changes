@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jul  2 17:33:33 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.2
+- Changes since 6.1.1.2:
+  * Don't assert on null output
+  * quicktiling: Reset layout when last quicktile ceases to exist (kde#465937)
+  * wayland: Bump default max buffer size to 1 MiB
+  * plugins/qpa: set deprecated functions option correctly
+  * plugins/kdecoration: Fix MenuButton not accepting button press events (kde#488993)
+  * plugins/colorcorrection: simplify the effect, merge the shader files and support color management
+  * opengl: Reset OpenGlContext::currentContext() if it's destroyed (kde#488830)
+  * window: adhere to window rules in checkWorkspacePosition (kde#489117)
+  * plugins/hidecursor: show the cursor on tablet events (kde#489009)
+
+-------------------------------------------------------------------
 Thu Jun 27 11:42:31 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.1.2:
