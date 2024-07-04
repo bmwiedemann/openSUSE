@@ -27,7 +27,7 @@
 %define rname layer-shell-qt
 %bcond_without released
 Name:           layer-shell-qt6
-Version:        6.1.1
+Version:        6.1.2
 Release:        0
 Summary:        wlr-layer-shell integration for Qt
 License:        LGPL-3.0-or-later
