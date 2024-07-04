@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul  3 08:22:31 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 13.7
+  * Support copying symlinks between SFTP devices
+  * Fixed input focus not being restored after comparison/sync
+  * Fixed log file pruning not considering selected configuration
+  * Show startup error details when running outside terminal (Linux)
+
+-------------------------------------------------------------------
 Wed May 15 05:41:41 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 13.6:
