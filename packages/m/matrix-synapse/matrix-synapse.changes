@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Wed Jul  3 18:33:06 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.110.0
+  - Features
+    - Add initial implementation of an experimental MSC3575 Sliding
+      Sync /sync endpoint. (#17187)
+    - Add experimental support for MSC3823 - Account suspension.
+      (#17255)
+    - Improve ratelimiting in Synapse. (#17256)
+    - Add support for the unstable MSC4151 report room API.
+      (#17270, #17296)
+    - Filter for public and empty rooms added to Admin-API List
+      Room API. (#17276)
+    - Add is_dm filtering to experimental MSC3575 Sliding Sync
+      /sync endpoint. (#17277)
+    - Add is_encrypted filtering to experimental MSC3575 Sliding
+      Sync /sync endpoint. (#17281)
+    - Include user membership in events served to clients, per
+      MSC4115. (#17282)
+    - Do not require user-interactive authentication for uploading
+      cross-signing keys for the first time, per MSC3967. (#17284)
+    - Add stream_ordering sort to experimental MSC3575 Sliding Sync
+      /sync endpoint. (#17293)
+    - register_new_matrix_user now supports a --password-file flag,
+      which
+    - is useful for scripting. (#17294)
+    - register_new_matrix_user now supports a --exists-ok flag to
+      allow registration of users that already exist in the
+      database.
+    - This is useful for scripts that bootstrap user accounts with
+      initial passwords. (#17304)
+    - Add support for via query parameter from MSC4156. (#17322)
+    - Add is_invite filtering to experimental MSC3575 Sliding Sync
+      /sync endpoint. (#17335)
+    - Support MSC3916 by adding a federation /download endpoint.
+      (#17350)
+  - Bugfixes
+    - Fix bug where /sync requests could get blocked indefinitely
+      after an upgrade from Synapse versions before v1.109.0.
+      (#17386, [#17391](https://github.com/ /issues/17391))
+    - Fix searching for users with their exact localpart whose ID
+      includes a hyphen. (#17254)
+    - Fix wrong retention policy being used when filtering events.
+      (#17272)
+    - Fix bug where OTKs were not always included in /sync response
+      when using workers. (#17275)
+    - Fix a long-standing bug where an invalid 'from' parameter to
+      /notifications would result in an Internal Server Error.
+      (#17283)
+    - Fix edge case in /sync returning the wrong the state when
+      using sharded event persisters. (#17295)
+    - Add initial implementation of an experimental MSC3575 Sliding
+      Sync /sync endpoint. (#17301)
+    - Fix email notification subject when invited to a space.
+      (#17336)
+  - Improved Documentation
+    - Add missing quotes for example for exclude_rooms_from_sync.
+      (#17308)
+    - Update header in the README to visually fix the the
+      auto-generated table of contents. (#17329)
+    - Fix stale references to the Foundation's Security Disclosure
+      Policy. (#17341)
+    - Add default values for rc_invites.per_issuer to docs.
+      (#17347)
+    - Fix an error in the docs for search_all_users parameter under
+      user_directory. (#17348)
+  - Internal Changes
+    - Limit size of presence EDUs to 50 entries. (#17371)
+    - Fix building debian package for debian sid. (#17389)
+    - Fix uploading packages to PyPi. (#17363)
+    - Remove unused expire_access_token option in the Synapse
+      Docker config file. Contributed by @AaronDewes. (#17198)
+    - Use fully-qualified PersistedEventPosition when returning
+      RoomsForUser to facilitate proper comparisons and
+      RoomStreamToken generation. (#17265)
+    - Add debug logging for when room keys are uploaded, including
+      whether they are replacing other room keys. (#17266)
+    - Handle OTK uploads off master. (#17271)
+    - Don't try and resync devices for remote users whose servers
+      are marked as down. (#17273)
+    - Re-organize Pydantic models and types used in handlers.
+      (#17279)
+    - Expose the worker instance that persisted the event on
+      event.internal_metadata.instance_name. (#17300)
+    - Update the README with Element branding, improve headers and
+      fix the #synapse:matrix.org support room link rendering.
+      (#17324)
+    - Change path of the experimental MSC3575 Sliding Sync
+      implementation to /org.matrix.simplified_msc3575/sync since
+      our simplified API is slightly incompatible with what's in
+      the current MSC. (#17331)
+    - Handle device lists notifications for large accounts more
+      efficiently in worker mode. (#17333, #17358)
+    - Do not block event sending/receiving while calculating large
+      event auth chains. (#17338)
+    - Tidy up parse_integer docs and call sites to reflect the fact
+      that they require non-negative integers by default, and bring
+      parse_integer_from_args default in alignment. Contributed by
+      Denis Kasak (@dkasak). (#17339)
+
+-------------------------------------------------------------------
 Tue Jun 18 11:01:41 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.109.0
