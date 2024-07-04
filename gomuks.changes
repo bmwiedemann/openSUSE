@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  4 11:20:11 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Revendor to pull in fresh golang.org/x/image/tiff to fix
+  bsc#1227165 (CVE-2024-24792).
+
+-------------------------------------------------------------------
 Tue Mar  7 16:18:36 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Restore Source URL.
