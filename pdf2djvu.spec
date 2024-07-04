@@ -47,8 +47,10 @@ metadata (including XMP metadata).
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} < 1550
+%if 0%{?suse_version} == 1500
 export CXXFLAGS="%{optflags} -std=c++17"
+%else
+export CXXFLAGS="%{optflags} -std=c++20"
 %endif
 %configure
 %make_build

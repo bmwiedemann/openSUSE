@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  4 08:44:35 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Enforce c++20 on factory to fix build failures with
+  poppler >= 24.05
+
+-------------------------------------------------------------------
 Mon Jan  9 14:14:57 UTC 2023 - pgajdos@suse.com
 
 - enable GraphicsMagick again; GraphicsMagick will stay for the
