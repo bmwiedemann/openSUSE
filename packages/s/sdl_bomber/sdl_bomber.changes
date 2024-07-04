@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 19 08:39:11 UTC 2024 - hui <sturm-fr@web.de>
+
+- Fix broken file path in sdl_bomber.sh boo#1218788
+
+-------------------------------------------------------------------
 Fri Dec  4 22:18:06 UTC 2015 - nemysis@openSUSE.org
 
 - Initial package creation

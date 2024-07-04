@@ -1,4 +1,4 @@
 #!/bin/sh
 
-cd /usr/lib/sdl_bomber
+cd /usr/libexec/sdl_bomber
 exec ./bomber "${@}"
