@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul  2 17:34:34 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.2
+- Changes since 6.1.1:
+  * daemon/controllers: Reintroduce a mutex around ddca_open_display2() (kde#489169)
+  * update version for new release
+  * ddcutildisplay: give some time before changing brightness after the monitor resumes
+  * core: reload actions on brightness controller changes
+  * update version for new release
+- Rebase 0001-Revert-Added-setting-for-battery-conservation-mode-L.patch
+
+-------------------------------------------------------------------
 Tue Jun 25 17:15:54 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.1:
