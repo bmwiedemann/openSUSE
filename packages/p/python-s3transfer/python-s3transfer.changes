@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  3 06:30:39 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.10.2
+  * bugfix:``awscrt``: Pass operation name to awscrt.s3
+    to improve error handling
+
+-------------------------------------------------------------------
 Fri Apr  5 08:50:34 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.10.1
