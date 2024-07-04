@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jul 04 04:51:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.184.0:
+  * Add release notes for v0.184.0
+  * Fix CRUD test
+  * Fix tests
+  * Reorder addons task
+  * Fix integration tests
+  * Add documentation
+  * Fix addon integration tests
+  * Fix running kube-proxy on AL2023 nodes
+  * Do not restart VPC CNI DaemonSet pods
+  * Honour the wait field when creating addons
+  * Do not patch VPC CNI ServiceAccount to use IRSA if
+    disableDefaultAddons is set
+  * Add integration tests and unit tests
+  * Install default addons as EKS managed addons
+  * Allow cluster creation without default networking addons
+  * Fix SDK paginator mocks
+  * use string in logging instead of wrapping error
+  * Schedule pods on a nodegroup on which no concurrent actions are
+    executed (#7834)
+  * Stop using P2 instances which will be retired (#7826)
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Tue Jun 11 20:01:11 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.183.0:
