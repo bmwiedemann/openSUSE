@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jul 04 01:14:15 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1720013336.c526246d:
+  * Bump acorn from 8.12.0 to 8.12.1
+  * Bump ace-builds from 1.35.1 to 1.35.2
+  * Bump @floating-ui/core from 1.6.3 to 1.6.4
+  * Adjust scheduling to consider PARALLEL_ONE_HOST_ONLY from workers
+  * Remove unused variable in worker slot picker
+  * Simplify `update_caps` after passing `PARALLEL_ONE_HOST_ONLY` setting
+  * Dependency cron 2024-07-02
+  * Provide PARALLEL_ONE_HOST_ONLY via workers config file
+  * Bump eslint from 9.5.0 to 9.6.0
+  * Bump @floating-ui/dom from 1.6.6 to 1.6.7
+  * Bump @floating-ui/utils from 0.2.3 to 0.2.4
+  * docs: Explain integration of external test results
+  * Remove unused file WebAPI::Controller::API::V1::Command
+
+-------------------------------------------------------------------
 Mon Jul 01 12:52:33 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1719769755.f382481d:
