@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul  2 14:47:02 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Mozilla Thunderbird 115.12.2
+  * fixed: Annual Thunderbird Beta appeal intended for
+    Thunderbird 115.12.0 did not open as expected (bmo#1898084)
+- Mozilla Thunderbird 115.12.1
+  * 115.12.0 got pulled because of upstream automation process errors
+    and Windows installer signing changes.
+    No code changes, changelog is the same as 115.12.0 (bsc#1226495)
+- Added thunderbird-fix-CVE-2024-34703.patch (bsc#1227239)
+
+-------------------------------------------------------------------
 Mon Jun 17 07:43:27 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 115.12.0

@@ -29,8 +29,8 @@
 # major 69
 # mainver %%major.99
 %define major          115
-%define mainver        %major.12.0
-%define orig_version   115.12.0
+%define mainver        %major.12.2
+%define orig_version   115.12.2
 %define orig_suffix    %nil
 %define update_channel release
 %define source_prefix  thunderbird-%{orig_version}
@@ -207,6 +207,7 @@ Patch19:        svg-rendering.patch
 Patch20:        mozilla-partial-revert-1768632.patch
 Patch21:        mozilla-bmo1775202.patch
 Patch22:        mozilla-rust-disable-future-incompat.patch
+Patch23:        thunderbird-fix-CVE-2024-34703.patch
 %if 0%{?product_libs_llvm_ver} > 17
 # LLVM18 breaks building Firefox ESR:
 Patch30:        mozilla-fix-issues-with-llvm18.patch
