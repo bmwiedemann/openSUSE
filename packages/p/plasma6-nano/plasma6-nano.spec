@@ -25,7 +25,7 @@
 
 %bcond_without released
 Name:           plasma6-nano
-Version:        6.1.1
+Version:        6.1.2
 Release:        0
 # Full Plasma 6 version (e.g. 5.9.3)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
