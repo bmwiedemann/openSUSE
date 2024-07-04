@@ -55,4 +55,12 @@
     <comment>Plasma 6.1.1 (forwarded request 1183337 from Vogtinator)</comment>
     <requestid>1183360</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>72f35b6ea1bcd5b05594c3fbb6f9f4e2</srcmd5>
+    <version>6.1.2</version>
+    <time>1720102888</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.1.2 (with disabled kameleonhelper again)</comment>
+    <requestid>1185322</requestid>
+  </revision>
 </revisionlist>

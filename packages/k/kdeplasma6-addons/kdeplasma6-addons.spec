@@ -26,7 +26,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdeplasma6-addons
-Version:        6.1.1
+Version:        6.1.2
 Release:        0
 Summary:        Additional Plasma6 Widgets
 License:        GPL-2.0-or-later AND LGPL-2.1-only AND GPL-3.0-only
@@ -116,7 +116,7 @@ echo > kdeds/kameleon/CMakeLists.txt
 %files
 %license LICENSES/*
 %{_kf6_appstreamdir}/*.xml
-#%%{_kf6_dbuspolicydir}/org.kde.kameleonhelper.conf
+# %%{_kf6_dbuspolicydir}/org.kde.kameleonhelper.conf
 %{_kf6_debugdir}/kdeplasma-addons.categories
 %ifarch x86_64 aarch64 riscv64
 %{_kf6_iconsdir}/hicolor/scalable/apps/accessories-dictionary.svgz
@@ -124,12 +124,12 @@ echo > kdeds/kameleon/CMakeLists.txt
 %{_kf6_iconsdir}/hicolor/scalable/apps/fifteenpuzzle.svgz
 %{_kf6_knsrcfilesdir}/comic.knsrc
 %{_kf6_libdir}/libplasmapotdprovidercore.so.*
-#%%{_kf6_libexecdir}/kauth/kameleonhelper
+# %%{_kf6_libexecdir}/kauth/kameleonhelper
 %{_kf6_notificationsdir}/plasma_applet_timer.notifyrc
 %{_kf6_plasmadir}/desktoptheme/
 %{_kf6_plasmadir}/plasmoids/
 %{_kf6_plasmadir}/wallpapers/
-#%%{_kf6_plugindir}/kf6/kded/kameleon.so
+# %%{_kf6_plugindir}/kf6/kded/kameleon.so
 %dir %{_kf6_plugindir}/kf6/krunner
 %{_kf6_plugindir}/kf6/krunner/*
 %dir %{_kf6_plugindir}/kf6/packagestructure
@@ -143,9 +143,9 @@ echo > kdeds/kameleon/CMakeLists.txt
 %{_kf6_plugindir}/potd/
 %{_kf6_qmldir}/org/kde/plasma/*
 %{_kf6_qmldir}/org/kde/plasmacalendar/
-#%%{_kf6_sharedir}/dbus-1/system-services/org.kde.kameleonhelper.service
+# %%{_kf6_sharedir}/dbus-1/system-services/org.kde.kameleonhelper.service
 %{_kf6_sharedir}/kwin/
-#%%{_kf6_sharedir}/polkit-1/actions/org.kde.kameleonhelper.policy
+# %%{_kf6_sharedir}/polkit-1/actions/org.kde.kameleonhelper.policy
 
 %files devel
 %dir %{_includedir}/plasma
