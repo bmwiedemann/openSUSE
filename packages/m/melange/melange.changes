@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Wed Jul 03 19:01:03 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.10.1:
+  * update unit test
+  * support var-transforms in subpackage names
+  * go mod tidy
+  * no typo
+  * use apko Authenticator
+  * Revert "Use current user's ID when building via Docker"
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump dagger.io/dagger from 0.11.6 to 0.11.9
+  * build(deps): bump github.com/docker/cli
+  * Update import.yaml
+  * add tests, fix up script
+  * add tests, fix up script
+  * wolfictl bump : handled mangled vars in updateGitCheckout tags
+  * Fix ${{host.triplet.rust}} default value
+  * Add opts to make-install pipeline
+  * Fail on invalid pipeline inputs
+  * python/import pipeline allow setting python binary
+
+-------------------------------------------------------------------
+Wed Jul 03 16:33:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.10.0:
+  * debug: Populate history file via mounts
+  * Add git-cherry-pick pipeline (#1278)
+  * convert some Infofs to Warnfs
+  * log it real good
+  * log the world-writeable file
+  * update docs
+  * enforce some more lint checks
+  * fix stupid bug in linter logging
+  * Restore signalcontext
+  * feat - add flag to go/build to run go mod tidy (#1303)
+  * prevent nil pointer
+  * update schema.json
+  * stable sorted defaults
+  * fix lint findings
+  * prevent nil pointer
+  * fix test
+  * fix tests
+  * review feedback
+  * some small improvements
+  * rewrite linting
+  * build(deps): bump github.com/chainguard-dev/yam from 0.0.8 to
+    0.0.9
+  * build(deps): bump ko-build/setup-ko from 0.6 to 0.7
+  * fix tempdir linter
+  * git-checkout - do not allow both branch and tag to be
+    specified.
+  * build(deps): bump google.golang.org/api from 0.184.0 to 0.185.0
+  * build(deps): bump github.com/github/go-spdx/v2 from 2.2.0 to
+    2.3.1
+  * build(deps): bump github.com/chainguard-dev/clog from 1.3.1 to
+    1.4.0
+  * lint: support linting existence of info dirs
+  * Make melange-test-pipelines call make test-e2e
+  * Make running the git-checkout via melange not emit WARN
+    messages.
+  * Clean up git-checkout-build-test.yaml, fix depth test.
+  * create-git-repo more standalone config, do not write to stderr
+  * Rename test-git-checkout and put create-git-repo in
+    test-fixtures.
+  * Add test-e2e target to Makefile
+  * Run make docs-repo
+  * compile: Fix miscompilation of subpkg tests
+  * Pipelines should inherit workdir from parents
+  * git-checkout: fix recurse='true' does nothing
+  * Use current user's ID when building via Docker
+  * Add test for PreserveBaseURI
+  * Add flag to preserve original PyPi URIs
+
+-------------------------------------------------------------------
 Wed Jun 19 04:44:58 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.9.0:
