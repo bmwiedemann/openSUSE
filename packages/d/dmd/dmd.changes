@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul  3 06:44:10 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.109.1
+  * Compiler change: bool values other than 0 or 1 are not @safe
+  * fixed Bugzilla 24602: Internal compiler error: failed to detect static 
+    initialization of associative array
+  * fixed Bugzilla 24566: condition that starts with runtime value and uses
+    compile time array does not short circuit
+  * Bugzilla 24596: Rebindable2 corrupts objects
+
+- suggest to install also phobos-devel-static (see bsc#1219521)
+
+-------------------------------------------------------------------
 Sun Jun  2 13:54:29 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.109.0

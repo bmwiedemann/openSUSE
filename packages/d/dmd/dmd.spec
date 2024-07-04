@@ -29,7 +29,7 @@ BuildRequires:  dmd
 BuildRequires:  phobos-devel-static
 %endif
 Name:           dmd
-Version:        2.109.0
+Version:        2.109.1
 Release:        0
 Summary:        D Programming Language 2.0
 License:        BSL-1.0
@@ -44,6 +44,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  xz
 Recommends:     phobos-devel
+Recommends:     phobos-devel-static
 # Bootstrap is only possible with x86*
 ExclusiveArch:  %{ix86} x86_64
 %ifarch i586
