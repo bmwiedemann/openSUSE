@@ -1,0 +1,22 @@
+---
+ CMakeLists.txt |    7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+Index: cfitsio-4.4.0/CMakeLists.txt
+===================================================================
+--- cfitsio-4.4.0.orig/CMakeLists.txt
++++ cfitsio-4.4.0/CMakeLists.txt
+@@ -288,7 +288,12 @@ IF (BZIP2_FOUND)
+     SET (PKG_CONFIG_LIBS "${PKG_CONFIG_LIBS} -lbz2")
+ ENDIF(BZIP2_FOUND)
+ 
+-SET_TARGET_PROPERTIES(${LIB_NAME} PROPERTIES VERSION ${${PROJECT_NAME}_VERSION} SOVERSION ${${PROJECT_NAME}_MAJOR})
++# Set SOVERSION same as autotools
++set(${PROJECT_NAME}_SONAME 10)
++SET_TARGET_PROPERTIES(${LIB_NAME}
++    PROPERTIES VERSION ${${PROJECT_NAME}_SONAME}.${${PROJECT_NAME}_VERSION}
++    SOVERSION ${${PROJECT_NAME}_SONAME}
++)
+ 
+ include(GNUInstallDirs)
+ include(CMakePackageConfigHelpers)

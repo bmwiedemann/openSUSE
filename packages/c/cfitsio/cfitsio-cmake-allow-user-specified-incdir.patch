@@ -1,0 +1,17 @@
+---
+ CMakeLists.txt |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: cfitsio-4.4.0/CMakeLists.txt
+===================================================================
+--- cfitsio-4.4.0.orig/CMakeLists.txt
++++ cfitsio-4.4.0/CMakeLists.txt
+@@ -219,7 +219,7 @@ ENDIF()
+ 
+ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}")
+ set (LIB_DESTINATION "${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}")
+-set (INCLUDE_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/include/")
++set (INCLUDE_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/include/" CACHE PATH "Install dir for header files")
+ set (BIN_DESTINATION "${CMAKE_INSTALL_PREFIX}/bin")
+ 
+ SET(H_FILES fitsio.h fitsio2.h longnam.h)

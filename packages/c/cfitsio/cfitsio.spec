@@ -17,18 +17,30 @@
 
 
 %define so_ver 10
+%define __builder ninja
 Name:           cfitsio
-Version:        4.3.1
+Version:        4.4.0
 Release:        0
 Summary:        Library for manipulating FITS data files
-License:        ISC
+License:        NASA-1.3
 URL:            https://heasarc.gsfc.nasa.gov/fitsio/
 Source0:        https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM cfitsio-cmake-allow-user-specified-incdir.patch badshah400@gmail.com -- Allow user-specified include dir
+Patch0:         cfitsio-cmake-allow-user-specified-incdir.patch
+# PATCH-FIX-UPSTREAM cfitsio-cmake-devel-scripts-destination.patch badshah400@gmail.com -- Fix installation dir for pkgconfig and cmake scripts
+Patch1:         cfitsio-cmake-devel-scripts-destination.patch
+# PATCH-FIX-UPSTREAM cfitsio-cmake-lowercase-util-names.patch badshah400@gmail.com -- Use lowercase name for utility binaries when building using cmake (same as autotools)
+Patch2:         cfitsio-cmake-lowercase-util-names.patch
+# PATCH-FIX-UPSTREAM cfitsio-cmake-match-autotools-soversion.patch badshah400@gmail.com -- Use same so version when building with cmake as when done using autotools
+Patch3:         cfitsio-cmake-match-autotools-soversion.patch
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
-BuildRequires:  libcurl-devel
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 CFITSIO is a library of C and Fortran subroutines for reading and writing data
@@ -75,52 +87,51 @@ provides many advanced features for manipulating and filtering the information
 in FITS files.
 
 %prep
-%setup -q
-# Disable build of static library
-sed -i -e 's/\(.*:.*\)lib${PACKAGE}.a/\1/' Makefile.in
+%autosetup -p1
 
 %build
-%configure \
-  --enable-reentrant \
-  --includedir=%{_includedir}/cfitsio \
-  --with-bzip2 \
+%cmake \
+  -DINCLUDE_INSTALL_DIR=%{_includedir}/cfitsio \
+  -DUSE_BZIP2=ON \
+  -DTESTS=ON \
+  -DUTILS=ON \
 %ifarch x86_64
-  --enable-sse2 \
+  -DUSE_SSE2=ON \
 %endif
   %{nil}
 
-%make_build shared
-%make_build fpack funpack fitscopy
+%cmake_build
 
 %install
-%make_install
+%cmake_install
 
 %check
 # testsuite
-%make_build testprog
-LD_LIBRARY_PATH=. ./testprog > testprog.lis
-diff testprog.lis testprog.out
-cmp testprog.fit testprog.std ; echo $?
+%ctest
 
-%post -n libcfitsio%{so_ver} -p /sbin/ldconfig
-%postun -n libcfitsio%{so_ver} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libcfitsio%{so_ver}
 
 %files
-%doc README docs/{changes.txt,fpackguide.pdf}
-%license License.txt
+%doc README.md docs/{changes.txt,fpackguide.pdf}
+%license licenses/NASA_Open_Source_Agreement_1.3.txt
 %{_bindir}/fitscopy
+%{_bindir}/fitsverify
 %{_bindir}/fpack
 %{_bindir}/funpack
 
 %files devel
+%license licenses/NASA_Open_Source_Agreement_1.3.txt
 %{_includedir}/%{name}/
 %{_libdir}/libcfitsio.so
 %{_libdir}/pkgconfig/cfitsio.pc
+%{_libdir}/cmake/%{name}/
+%{_libdir}/%{name}-%{version}/
 
 %files devel-doc
 %doc docs/{cfitsio.ps,cfortran.doc,fitsio.doc,fitsio.ps,quick.ps}
 
 %files -n libcfitsio%{so_ver}
+%license licenses/NASA_Open_Source_Agreement_1.3.txt
 %{_libdir}/libcfitsio.so.%{so_ver}*
 
 %changelog
