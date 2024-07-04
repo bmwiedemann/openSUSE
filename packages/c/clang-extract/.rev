@@ -7,4 +7,29 @@
     <comment></comment>
     <requestid>1183042</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dd99d6ddd8e514992d044844456e07c5</srcmd5>
+    <version>0~20240703.0b3e33c</version>
+    <time>1720102962</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0~20240703.0b3e33c:
+  * Initialize OutputFunctionPrototypeHeader
+
+- Update to version 0~20240702.cbdca46:
+  * README.md: Remove dependency on python311-subprocess-tee
+  * testsuite: attr: Adapt testcase to be executed on ppc64le
+- Remove BR python3-subprocess-tee
+
+- Update to version 0~20240702.1f3826f:
+  * testsuite/attr: Skip tests on s390x
+  * libtest: Add special dg-skip-on-archs option
+
+- Update to version 0~20240627.52683d1:
+  * testsuite: Adapt registers usage to aarch64
+  * SymbolExternalizer: Refactor Get_Range_Of_Identifier
+  * SymbolExternalizer: Rewrite to use RecursiveASTVisitor
+  * SymbolExternalizer: Reduce indentation of _Externalize_Symbol
+  * SymbolExternalizer: Simplify Externalize_Symbols</comment>
+    <requestid>1185287</requestid>
+  </revision>
 </revisionlist>

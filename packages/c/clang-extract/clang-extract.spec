@@ -17,7 +17,7 @@
 
 
 Name:           clang-extract
-Version:        0~20240619.f7c935b
+Version:        0~20240703.0b3e33c
 Release:        0
 Summary:        A tool to extract code content from source files
 License:        Apache-2.0 WITH LLVM-exception AND NCSA
@@ -34,7 +34,6 @@ BuildRequires:  ninja
 BuildRequires:  python3-pexpect
 BuildRequires:  python3-psutil
 BuildRequires:  python3-pytest
-BuildRequires:  python3-subprocess-tee
 
 %description
 A tool to extract code content from source files using the clang and LLVM infrastructure.

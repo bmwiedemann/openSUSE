@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jul 04 06:42:17 UTC 2024 - mvetter@suse.com
+
+- Update to version 0~20240703.0b3e33c:
+  * Initialize OutputFunctionPrototypeHeader
+
+-------------------------------------------------------------------
+Tue Jul 02 17:56:02 UTC 2024 - mvetter@suse.com
+
+- Update to version 0~20240702.cbdca46:
+  * README.md: Remove dependency on python311-subprocess-tee
+  * testsuite: attr: Adapt testcase to be executed on ppc64le
+- Remove BR python3-subprocess-tee
+
+-------------------------------------------------------------------
+Tue Jul 02 16:46:42 UTC 2024 - mvetter@suse.com
+
+- Update to version 0~20240702.1f3826f:
+  * testsuite/attr: Skip tests on s390x
+  * libtest: Add special dg-skip-on-archs option
+
+-------------------------------------------------------------------
+Fri Jun 28 05:08:31 UTC 2024 - mvetter@suse.com
+
+- Update to version 0~20240627.52683d1:
+  * testsuite: Adapt registers usage to aarch64
+  * SymbolExternalizer: Refactor Get_Range_Of_Identifier
+  * SymbolExternalizer: Rewrite to use RecursiveASTVisitor
+  * SymbolExternalizer: Reduce indentation of _Externalize_Symbol
+  * SymbolExternalizer: Simplify Externalize_Symbols
+
+-------------------------------------------------------------------
 Thu Jun 20 22:06:35 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Initial package of clang-extract git f7c935 for openSUSE
