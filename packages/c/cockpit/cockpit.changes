@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jul  3 13:31:38 UTC 2024 - Luna D Dragon <luna.dragon@suse.com>
+
+- new version 320:
+  * pam-ssh-add: Fix insecure killing of session ssh-agent
+    (bsc#1226040, CVE-2024-6126)
+
+- changes in older versions:
+  * Storage: Btrfs snapshots
+  * Podman: Add image pull action
+  * Files: Bookmark support
+  * webserver: System user changes
+  * Metrics: Grafana setup now prefers Valkey
+
+- 0001-users-Support-for-watching-lastlog2.patch,
+  0002-users-Support-for-watching-lastlog2-and-wutmp-on-overview-page.patch
+  removed, upstreamed
+
+-------------------------------------------------------------------
+Wed Jul  3 10:26:08 UTC 2024 - Alice Brooks <alice.brooks@suse.com>
+
+- fix suse_docs.patch causing invalid json against the storaged manifest bsc#1227299
+
+-------------------------------------------------------------------
 Thu Jun 13 11:02:10 UTC 2024 - Luna D Dragon <luna.dragon@suse.com>
 
 - disable selinux on leap versions without selinux

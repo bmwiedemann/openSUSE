@@ -74,7 +74,7 @@ Index: cockpit/pkg/storaged/manifest.json
 ===================================================================
 --- cockpit.orig/pkg/storaged/manifest.json
 +++ cockpit/pkg/storaged/manifest.json
-@@ -14,20 +14,21 @@
+@@ -14,20 +14,22 @@
              "docs": [
                  {
                      "label": "Managing partitions",
@@ -94,8 +94,10 @@ Index: cockpit/pkg/storaged/manifest.json
                  {
                      "label": "Managing LVMs",
 -		    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/using-the-web-console-for-configuring-lvm-logical-volumes_system-management-using-the-rhel-8-web-console"
+-                },
 +                    "url": "https://documentation.suse.com/smart/systems-management/html/cockpit-slemicro/index.html#id-1.7.7"
-                 },
++                }
++            ],
 +            "docs-rh": [
                  {
                      "label": "Managing physical drives",

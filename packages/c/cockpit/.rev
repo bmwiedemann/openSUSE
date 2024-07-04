@@ -488,4 +488,25 @@
 - set libexec dir to %_libexecdir (bsc#1223533)</comment>
     <requestid>1180404</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>62df8b2f241213d626f4f101a28ca914</srcmd5>
+    <version>320</version>
+    <time>1720102937</time>
+    <user>anag+factory</user>
+    <comment>- new version 320:
+  * pam-ssh-add: Fix insecure killing of session ssh-agent
+    (bsc#1226040, CVE-2024-6126)
+- changes in older versions:
+  * Storage: Btrfs snapshots
+  * Podman: Add image pull action
+  * Files: Bookmark support
+  * webserver: System user changes
+  * Metrics: Grafana setup now prefers Valkey
+- 0001-users-Support-for-watching-lastlog2.patch,
+  0002-users-Support-for-watching-lastlog2-and-wutmp-on-overview-page.patch
+  removed, upstreamed
+
+- fix suse_docs.patch causing invalid json against the storaged manifest bsc#1227299</comment>
+    <requestid>1185171</requestid>
+  </revision>
 </revisionlist>

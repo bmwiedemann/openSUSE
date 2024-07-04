@@ -50,7 +50,7 @@ Summary:        Web Console for Linux servers
 License:        LGPL-2.1-or-later
 URL:            https://cockpit-project.org/
 
-Version:        316
+Version:        320
 Release:        0
 Source0:        cockpit-%{version}.tar
 Source1:        cockpit.pam
@@ -66,8 +66,6 @@ Patch2:         suse_docs.patch
 Patch3:         suse-microos-branding.patch
 Patch4:         css-overrides.patch
 Patch5:         storage-btrfs.patch
-Patch6:         0001-users-Support-for-watching-lastlog2.patch
-Patch7:         0002-users-Support-for-watching-lastlog2-and-wutmp-on-overview-page.patch
 # SLE Micro specific patches
 Patch101:       hide-pcp.patch
 Patch102:       0002-selinux-temporary-remove-setroubleshoot-section.patch
@@ -211,8 +209,6 @@ BuildRequires:  python3-tox-current-env
 %patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 5 -p1
-%patch -P 6 -p1
-%patch -P 7 -p1
 
 # SLE Micro specific patches
 %if 0%{?is_smo}
@@ -597,6 +593,7 @@ authentication via sssd/FreeIPA.
 %{_unitdir}/cockpit.service
 %{_unitdir}/cockpit-motd.service
 %{_unitdir}/cockpit.socket
+%{_unitdir}/cockpit-ws-user.service
 %{_unitdir}/cockpit-wsinstance-http.socket
 %{_unitdir}/cockpit-wsinstance-http.service
 %{_unitdir}/cockpit-wsinstance-https-factory.socket
@@ -604,7 +601,8 @@ authentication via sssd/FreeIPA.
 %{_unitdir}/cockpit-wsinstance-https@.socket
 %{_unitdir}/cockpit-wsinstance-https@.service
 %{_unitdir}/system-cockpithttps.slice
-%{_prefix}/%{__lib}/tmpfiles.d/cockpit-tempfiles.conf
+%{_prefix}/%{__lib}/tmpfiles.d/cockpit-ws.conf
+%{_sysusersdir}/cockpit-wsinstance.conf 
 %{pamdir}/pam_ssh_add.so
 %{pamdir}/pam_cockpit_cert.so
 %{_libexecdir}/cockpit-ws
@@ -665,7 +663,7 @@ fi
 %if 0%{?suse_version}
 %set_permissions %{_libexecdir}/cockpit-session
 %endif
-%tmpfiles_create cockpit-tempfiles.conf
+%tmpfiles_create cockpit-ws.conf
 %systemd_post cockpit.socket cockpit.service
 # firewalld only partially picks up changes to its services files without this
 test -f %{_bindir}/firewall-cmd && firewall-cmd --reload --quiet || true
