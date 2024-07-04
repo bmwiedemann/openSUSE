@@ -1030,4 +1030,26 @@
     + Tracing system now respects log level and trace level, with</comment>
     <requestid>1182988</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>5bbc0ceb32b781edef940e8c093f676c</srcmd5>
+    <version>0.5.0</version>
+    <time>1720102893</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5.0:
+  * Selecting ALL now excludes deprecated rules
+  * The released archives now include an extra level of nesting, which
+    can be removed with --strip-components=1 when untarring.
+  * The release artifact's file name no longer includes the version
+    tag. This enables users to install via /latest URLs on GitHub.
+  * The diagnostic ranges for some flake8-bandit rules were modified
+  * for details see https://github.com/astral-sh/ruff/releases/tag/0.5.0
+
+   * Implement re-lexing logic for better error recovery
+   * [flake8-copyright] Update CPY001 to check the first 4096 bytes instead of 1024
+   * [pycodestyle] Update E999 to show all syntax errors instead of just the first one
+  * Add tracing setup guide to Helix documentation
+  * Add tracing setup guide to Neovim documentation
+  * Defer notebook cell deletion to avoid an error message</comment>
+    <requestid>1184226</requestid>
+  </revision>
 </revisionlist>

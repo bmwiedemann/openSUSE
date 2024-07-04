@@ -1,16 +1,28 @@
 -------------------------------------------------------------------
+Mon Jul  1 08:21:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.0:
+  * Selecting ALL now excludes deprecated rules
+  * The released archives now include an extra level of nesting, which
+    can be removed with --strip-components=1 when untarring.
+  * The release artifact's file name no longer includes the version
+    tag. This enables users to install via /latest URLs on GitHub.
+  * The diagnostic ranges for some flake8-bandit rules were modified
+  * for details see https://github.com/astral-sh/ruff/releases/tag/0.5.0
+
+-------------------------------------------------------------------
 Mon Jun 24 09:27:54 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.4.10
  * Parser
-   * Implement re-lexing logic for better error recovery 
+   * Implement re-lexing logic for better error recovery
  * Rule changes
-   * [flake8-copyright] Update CPY001 to check the first 4096 bytes instead of 1024 
-   * [pycodestyle] Update E999 to show all syntax errors instead of just the first one 
+   * [flake8-copyright] Update CPY001 to check the first 4096 bytes instead of 1024
+   * [pycodestyle] Update E999 to show all syntax errors instead of just the first one
  * Server
-  * Add tracing setup guide to Helix documentation 
-  * Add tracing setup guide to Neovim documentation 
-  * Defer notebook cell deletion to avoid an error message 
+  * Add tracing setup guide to Helix documentation
+  * Add tracing setup guide to Neovim documentation
+  * Defer notebook cell deletion to avoid an error message
  * Security
   * Guard against malicious ecosystem comment artifacts
 
