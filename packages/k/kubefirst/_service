@@ -3,7 +3,7 @@
     <param name="url">https://github.com/kubefirst/kubefirst</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v2.4.10</param>
+    <param name="revision">v2.4.11</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 04 04:49:47 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.4.11:
+  * chore: bump launch up version (#2223)
+  * added bubbletea quit method instead of os exit
+
+-------------------------------------------------------------------
 Tue Jun 11 05:36:00 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.4.10:
