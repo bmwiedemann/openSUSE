@@ -46,7 +46,7 @@
 %endif
 
 Name:           python-pytest-ansible
-Version:        24.1.3
+Version:        24.1.4
 Release:        0
 Summary:        Plugin for pytest to simplify calling ansible modules from tests or fixtures
 License:        MIT

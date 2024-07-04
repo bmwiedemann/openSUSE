@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Jul 03 16:45:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 24.1.4:
+  * Bump pylint from 3.2.4 to 3.2.5 in /.config in the dependencies
+    group (#355)
+  * Sort, lowercase and remove duplicates in .config/dictionary.txt
+    (#354)
+  * Remove flake8 (#351)
+  * Bump the dependencies group across 1 directory with 3 updates
+    (#353)
+  * Resolve module to full qualified name (#352)
+  * Bump the dependencies group in /.config with 7 updates (#349)
+  * Add a couple safety pre-commit checks. (#348)
+  * Move the coverage file into the .cache directory. (#347)
+  * Move the coverage file into the .cache directory. (#346)
+  * Bump the dependencies group in /.config with 10 updates (#345)
+  * Add known first party (#344)
+  * Wrap the long line so it will pass a default yamllint config
+    (#343)
+  * Move tool cache into cache directory to prevent root directory
+    pollution. (#342)
+  * Bump pipdeptree in /.config in the dependencies group (#332)
+  * Ruff inline (#341)
+  * Shift to per error exclusions (#340)
+  * The tox workflow is called by release and therefore needs
+    `workflow_call` (#339)
+  * Allow manually running push for release note generation after a
+    failed or reverted release. (#338)
+  * Switch to pycontrib prettier (#335)
+  * Update for coverage exclude (#331)
+  * Sort, lowercase and remove duplicates in .config/dictionary.txt
+    (#329)
+  * Update codecov yaml file (#327)
+  * Update depndabot config (#326)
+  * Update cspell configuration file (#328)
+  * Update pytest (#323)
+  * Update ack to use org token (#324)
+  * Update mypy configuration (#321)
+  * Update pylint (#320)
+  * Enable ruff with exceptions (#319)
+  * Enable pydocstyle (#318)
+  * Update VsCode files (#317)
+  * Update precommit (#316)
+  * Update tox.ini (#315)
+  * Bump the dev group across 1 directory with 10 updates (#314)
+  * Bump the runtime group in /.config with 2 updates (#312)
+  * Use OIDC authentication for codecov (#311)
+  * Bump the dev group in /.config with 7 updates (#310)
+  * Bump the dev group in /.config with 7 updates (#309)
+  * Bump jinja2 from 3.1.3 to 3.1.4 in /.config (#308)
+  * chore: pre-commit autoupdate (#307)
+  * Bump the dev group in /.config with 8 updates (#306)
+  * Bump pytest from 8.1.1 to 8.2.0 in /.config in the runtime
+    group (#303)
+  * Bump the dev group in /.config with 8 updates (#304)
+  * gha: rename reusable repository (#305)
+
+-------------------------------------------------------------------
 Tue Apr 23 11:54:28 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - fix wrong dependencies, even though this package might be called
