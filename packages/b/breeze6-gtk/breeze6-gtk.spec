@@ -31,7 +31,7 @@
 
 %bcond_without released
 Name:           breeze6-gtk
-Version:        6.1.1
+Version:        6.1.2
 Release:        0
 Summary:        GTK+ theme matching KDE's Breeze
 License:        LGPL-2.1-only
