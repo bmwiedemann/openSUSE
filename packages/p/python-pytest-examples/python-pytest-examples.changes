@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jul  3 16:13:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.0.12:
+  * Pin `ruff` version and prep for v0.0.12 release
+- update to 0.0.11:
+  * Use `tb_lineno` to point to correct line in traceback
+  * Fix deprecation warnings in Python 3.12
+  * Include tests in sdist
+  * `ruff` now requires the `check` specification
+
+- drop ruff05.patch,  fix-traceback.patch,
+  support-python-312.patch, test-ruff-0.1.0.patch: upstream
+
+-------------------------------------------------------------------
+Mon Jul  1 18:03:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add ruff05.patch: fix exception with ruff 0.5.0
+
+-------------------------------------------------------------------
 Sat Mar  9 13:16:58 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -21,9 +40,9 @@ Wed Jan 24 06:44:56 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Thu Oct 19 16:35:18 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- add test-ruff-0.1.0.patch to fix tests with ruvv-0.1.0 
+- add test-ruff-0.1.0.patch to fix tests with ruvv-0.1.0
 
 -------------------------------------------------------------------
 Mon Oct 16 13:59:40 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- initial package 
+- initial package

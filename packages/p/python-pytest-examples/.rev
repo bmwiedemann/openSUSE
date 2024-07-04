@@ -46,4 +46,25 @@
 - Add %{?sle15_python_module_pythons}</comment>
     <requestid>1157048</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>45fda2ebce31f179300349a1910038ed</srcmd5>
+    <version>0.0.12</version>
+    <time>1720102955</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.0.12:
+  * Pin `ruff` version and prep for v0.0.12 release
+- update to 0.0.11:
+  * Use `tb_lineno` to point to correct line in traceback
+  * Fix deprecation warnings in Python 3.12
+  * Include tests in sdist
+  * `ruff` now requires the `check` specification
+- drop ruff05.patch,  fix-traceback.patch,
+  support-python-312.patch, test-ruff-0.1.0.patch: upstream
+
+- add ruff05.patch: fix exception with ruff 0.5.0
+
+- add test-ruff-0.1.0.patch to fix tests with ruvv-0.1.0
+- initial package</comment>
+    <requestid>1185172</requestid>
+  </revision>
 </revisionlist>
