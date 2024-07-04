@@ -1,7 +1,7 @@
 #
 # spec file for package oc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define OC_COMMIT 0c63f9da
 
 Name:           oc
-Version:        4.15.0
+Version:        4.16.0
 Release:        0
 Summary:        Openshift / OKD Client CLI
 License:        Apache-2.0
@@ -33,13 +33,13 @@ URL:            https://github.com/openshift/oc
 Source:         oc-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  go >= 1.21
-BuildRequires:  libgpgme-devel
 BuildRequires:  krb5-devel
+BuildRequires:  libgpgme-devel
 
 # this package contains a kubectl link, so we need a Conflicts
 Conflicts:      kubernetes-client
-Conflicts:      kubernetes-client-provider
 Conflicts:      kuberlr
+Conflicts:      kubernetes-client-provider
 
 %description
 With OpenShift Client CLI (oc), you can create applications and manage OpenShift resources. It is built on top of kubectl which means it provides its full capabilities to connect with any kubernetes compliant cluster, and on top adds commands simplifying interaction with an OpenShift cluster.

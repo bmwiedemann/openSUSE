@@ -1,4 +1,179 @@
 -------------------------------------------------------------------
+Wed Jul 03 16:02:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.16.0:
+  * OCPBUGS-33762: Hardcode resource groups/kinds for now
+  * update status: minor code cleanups
+  * `upgrade status`: polish alert insights
+  * inspectalerts: refactor `getWithBearer` to try all urls in
+    route
+  * inspectalerts: use client-go wrappers for thanos call debugging
+  * OCPBUGS-33896: `status/inspect-alerts`: handle non-200 by
+    Thanos
+  * add mock tests for alerts in oc adm upgrade status
+  * add alerts to update health in oc adm upgrade status
+  * `upgrade status`: upgrade -> update
+  * OCPBUGS-33903: Simplify output when not updating
+  * pkg/cli/admin/upgrade/rollback: Gate on
+    OC_ENABLE_CMD_UPGRADE_ROLLBACK
+  * adm update status: Fix target version field for install.
+  * adm update status: Show information about upgrade target
+    version
+  * Add s390x based oc into extraction target
+  * OCPBUGS-32682: Fix the retrieval of API objects with an empty
+    name (#1765)
+  * Support multiple icsps in migrate icsp
+  * [OCPNODE-2282]Support multiple ImageDigestMirrorSet objects in
+    the the single file
+  * Switch cli-artifacts default oc to RHEL9
+  * OTA-1275: cli/admin/release/git: use optimized git flags
+  * Switch cli image to RHEL9 base image
+  * pkg/cli/admin/upgrade/status: Drop free-form Progressing output
+    line
+  * pkg/cli/admin/upgrade/status: Move Failing from free-form to
+    updateInsight
+  * OTA-1174: `update status`: unify on `--details`
+  * Bump go-jose indirect reference to 2.6.3
+  * Improve error message when binary is not in target list
+  * `upgrade status`: hint at using `--details=health`
+  * `upgrade status`: ellipsize (duplicate) long names in messages
+  * `upgrade status --detailed=health`: show involved resources
+  * `update status`: Simplify CO status line
+  * oc image extract: Print an error msg instead of panicking when
+    all images are filtered out from the manifest list.
+  * oc adm must-gather: print timestamp when logging
+  * Changing the conditional risk to known issues
+  * release: extract ccoctl.rhel8 and ccoctl.rhel9
+  * `upgrade status`: always tabulate 'All is well'
+  * `upgrade status`: ignore incomplete insights
+  * `upgrade status`: pad linebreaks in descriptions
+  * `upgrade status`: populate descriptions and refs for insights
+  * `upgrade status`: `--details=health` shows reference and
+    description
+  * `upgrade status`: test `--detailed=all` in examples integration
+    test
+  * `upgrade status`: add `--detailed=nodes` that shows all nodes
+  * add prune renderedmachineconfigs
+  * indicate how many tests each feature has
+  * update library-go for new api
+  * update API for test reporting types
+  * adm update status: Refactor node status
+  * adm update status: Add status of control plane nodes
+  * WRKLDS-1171: Add openshift-install-fips target to oc release
+    extract
+  * OCPBUGS-20097: Migrate tools image to RHEL9
+  * Add help text the behavior of filter-by-os against single image
+  * Add OIDC specific certificate authority bundle flag
+  * update library-go
+  * adjust rendering
+  * update vendor for featuregate diffing
+  * update featureset changes to table based view
+  * Revert "WRKLDS-1128: cli/admin/release/git: use optimized git
+    flags"
+  * Remove some of newapp unit tests relying on external deprecated
+    images
+  * pkg/cli/admin/release/info: add back disk space note
+  * Bump coreos/go-oidc to 3.10.0
+  * pkg/cli/admin/release: fix git extract
+  * pkg/cli/admin/release/git: fetch with blob:none
+  * cli/admin/release/git: use optimized git flags
+  * tools: extend the image with sosreport
+  * vendor: Add machineconfiguration client and API
+  * adm update status: Add MCO logic needed for worker node status
+  * adm update status: Fix "Omitted additional... nodes" text
+  * adm update status: Fix update duration after control plane is
+    updated
+  * adm update status: Add worker pool status
+  * pkg/cli/admin/upgrade/status/examples: Add examples for worker
+    pool status
+  * Add images mismatching kubectl version into warning to track
+  * pkg/cli/admin/upgrade/status/examples: Update examples
+  * Drop issuer-url extraction instead rely on issuer-url flag
+  * Introduce --issuer-url flag in oc login
+  * Introduce certificate-authority flag for image related commands
+  * oc idle: Remove redundant endpoint resource modification
+  * Extract oc also for linux/ppc64le
+  * Update some commands incorrect examples
+  * oc adm catalog mirror: reconstruct the original digest with ':'
+    for sha256 and sha512 algorithms on Windows
+  * Print log rather than returning an error when kubectl version
+    mistmaches
+  * Revert "Revert "NO-JIRA: Bump k8s dependencies to 1.29.1""
+  * Tools image no longer has python;adding
+  * Revert "NO-JIRA: Bump k8s dependencies to 1.29.1"
+  * oc adm catalog mirror: use ToSlash and FromSlash to unify the
+    path separators
+  * pkg/cli/admin/inspectalerts/OWNERS: Assign to monitoring team
+  * pkg/cli/admin/inspectalerts: Pivot to Thanos /api/v1/alerts
+  * pkg/cli/admin/inspectalerts: New tech-preview inspect-alerts
+    subcommand
+  * Bump k8s dependencies to 1.29.1
+  * Revert "Fix --parallelism flag formatting in help"
+  * Copy oc.rhel8 instead of symlink
+  * Bump joelanford/ignore to bump go-git to 5.11.0
+  * add FallbackToLogsOnError for easier debugging
+  * pkg/cli/admin/inspect: use since/since-time for previous
+    container logs
+  * Fix --parallelism flag formatting in help
+  * pkg/cli/admin/inspect: format RFC3339 parse error
+  * Simplified kubectl component version check
+  * Revert "Revert "WRKLDS-1016: Bump kube dependencies to 1.29.0""
+  * Revert "WRKLDS-1016: Bump kube dependencies to 1.29.0"
+  * Use correct hash sum of extracted tarball after re-signing with
+    codesign
+  * Add missing resources for describer test
+  * React to argument order change in library-go func
+  * Bump openshift dependencies to align with 1.29.0
+  * React to plugin resolution to beta promotion
+  * Wire warning printer to configflags for shortname warnings
+  * Change type to VolumeResourceRequirements
+  * Bump to 1.29.0
+  * Wire oc login external OIDC issuer to oc get-token cred exec
+    plugin
+  * Add coreos/go-oidc and int128/oauth2cli and bump oauth2
+    dependencies
+  * Add get-token command as cred exec plugin
+  * Unit tests for must-gather all-images
+  * Add --all-images flag to must-gather
+  * Consider kubectl version checks only in cli and cli-artifact
+    images
+  * Write oc adm must-gather logs into a file
+  * oc adm must-gather: pull gather container logs
+  * pkg/cli/admin/mustgather: add since and since-time flags to
+    limit logs
+  * adm update status: add TODOs to remind us to revise early
+    decisions
+  * pkg/cli/admin/inspect: use since/since-time for rotated logs
+  * report kubectl version to the release controller
+  * add markdown representation of features
+  * add information about featuregate diff in a particular release
+  * Skip rhel9 binary not found error for older releases
+  * Allow extracted binary name can be set to different
+  * Generate RHEL8 based oc and add as target to extract
+  * Add RHEL9 oc as linux command in target list
+  * Skip release-arch and arch type collision per command
+  * OTA-1087: Add update health section to `adm update status`
+  * `adm update status`: add fixtures with degraded/unavailable COs
+  * Sanitize path using filepath Clean
+  * oc adm prune images: fix --certificate-authority flag name in
+    validation code
+  * pkg/cli/admin/upgrade/rollback: New rollback command
+  * pkg/cli/tag: validate tag name on creation
+  * Generate oc rhel9 fips compatible binary compiled in rhel9
+  * Bump ocp images to 4.16 in addition to go 1.21
+  * oc release extract: Introduce --idms-file and deprecate
+    icsp-file
+  * Skip network.openshift.io/v1alpha1 in describer unit test
+  * Bump openshift/api to include to the new CloudCredential
+    capability
+  * Remove deprecated password defaulting in default config flag
+  * Migrate from deprecated ioutils to relevant libraries
+  * pkg/cli/admin/release/extract: Log a warning on
+    --credentials-requests without --included
+  * Do not force the ancient OS version dist tag, just use whatever
+    the OS in question sets.
+
+-------------------------------------------------------------------
 Fri Apr 12 17:09:51 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - add Conflicts for completion subpackages
