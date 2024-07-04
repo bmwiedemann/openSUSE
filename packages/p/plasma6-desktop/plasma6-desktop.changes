@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jul  2 17:34:21 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.2
+- Changes since 6.1.1:
+  * [kcm/keyboard] Add missing GENERATE_MOC to kconfig_add_kcfg_files
+  * update version for new release
+  * kcms/keyboard: fix width and immutability of layout table headers (kde#488957)
+  * Make panel config tooltips ask for focus after each applet change (kde#487640)
+  * kcms/access: Bump the minimum cursor magnification factor (kde#489333)
+  * kcms/access: fix list item highlighting (kde#489206)
+  * Always center "Add Widgets" button on empty panels (kde#488789)
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Jun 25 17:14:09 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.1:

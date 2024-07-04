@@ -31,7 +31,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-desktop
-Version:        6.1.1
+Version:        6.1.2
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-only
