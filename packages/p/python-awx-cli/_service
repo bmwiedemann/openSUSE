@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="subdir">awxkit</param>
-    <param name="revision">24.6.0</param>
+    <param name="revision">24.6.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
   </service>
   <service name="set_version" mode="manual">
