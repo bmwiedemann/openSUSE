@@ -167,4 +167,30 @@ the go metapackage to version 1.22.</comment>
   * go#67696 os: RemoveAll susceptible to symlink race (forwarded request 1178639 from jfkw)</comment>
     <requestid>1178641</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6eaa6130516c01561acb0e282a442d66</srcmd5>
+    <version>1.22.5</version>
+    <time>1720102969</time>
+    <user>anag+factory</user>
+    <comment>- go1.22.5 (released 2024-07-02) includes security fixes to the
+  net/http package, as well as bug fixes to the compiler, cgo, the
+  go command, the linker, the runtime, and the crypto/tls,
+  go/types, net, net/http, and os/exec packages.
+  Refs boo#1218424 go1.22 release tracking
+  CVE-2024-24791
+  * go#68200 go#67555 boo#1227314 security: fix CVE CVE-2024-24791 net/http: expect: 100-continue handling is broken in various ways
+  * go#65983 cmd/compile: hash of unhashable type
+  * go#65994 crypto/tls: segfault when calling tlsrsakex.IncNonDefault()
+  * go#66598 os/exec: calling Cmd.Start after setting Cmd.Path manually to absolute path without &quot;.exe&quot; no longer implicitly adds &quot;.exe&quot; in Go 1.22
+  * go#67298 runtime: &quot;fatal: morestack on g0&quot; on amd64 after upgrade to Go 1.21, stale bounds
+  * go#67715 cmd/cgo/internal/swig,cmd/go,x/build: swig cgo tests incompatible with C++ toolchain on builders
+  * go#67798 cmd/compile: internal compiler error: unexpected type: &lt;nil&gt; (&lt;nil&gt;) in for-range
+  * go#67820 cmd/compile: package-level variable initialization with constant dependencies doesn't match order specified in Go spec
+  * go#67850 go/internal/gccgoimporter: go building failing with gcc 14.1.0
+  * go#67934 net: go DNS resolver fails to connect to local DNS server
+  * go#67945 cmd/link: using -fuzz with test that links with cgo on darwin causes linker failure
+  * go#68052 cmd/go: go list -u -m all fails loading module retractions: module requires go &gt;= 1.N+1 (running go 1.N)
+  * go#68122 cmd/link: runtime.mach_vm_region_trampoline: unsupported dynamic relocation for symbol libc_mach_task_self_ (type=29 (R_GOTPCREL) stype=46 (SDYNIMPORT)) (forwarded request 1184952 from jfkw)</comment>
+    <requestid>1184954</requestid>
+  </revision>
 </revisionlist>
