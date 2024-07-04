@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Jun 29 17:30:32 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.2
+  Features:
+  * Support unrar-free >= 0.2.0.
+  * Add RarFile.is_solid to check if archive uses solid compression.
+  Fixes:
+  * Support old multi-volume archives better where ENDARC does
+    not contain NEXTVOL.
+  version 4.1:
+  Features:
+  * Support 7zip/p7zip as decompression backend.
+  * RAR5: check password before trying to read file.
+  New APIs:
+  * Make get_rar_version a public function.
+  * New option: ``part_only`` for :class:`RarFile`,
+    to read only single file and allow it to be middle-part
+    of multi-volume archive.
+  * Add :meth:`RarFile.printdir`, use it in dumprar. Needed to
+    examine FILE_COPY or HARD_LINK entries that do not contain
+    data.
+  Fixes:
+  * Use OS separator to access filename.
+  * DirectReader: check seek position on each read.
+    Fixes read reading from multiple entries in parallel
+    on RarFile backed by file object.
+  * DirectReader: properly disable CRC check when seeking.
+  * Reset _hdrenc_main before processing a new volume.
+    Fixes CRC checks on multi-volume reads.
+  * Adapt to Python 3.10 argparse.
+  * SFX: Handle volume numbering special cases better.
+  * nsdatetime: support pypy internal use
+  * Throw error if backend does not support passwords.
+  Cleanups:
+  * Avoid isascii, not in 3.6
+- Drop help.patch (merged upstream)
+
+-------------------------------------------------------------------
 Wed May  4 06:25:49 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Add patch help.patch and enable Python 3.10
