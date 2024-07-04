@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jul  2 15:03:29 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
+
+
+-Update to 3.6.3
+  * Update open-uri-context-menu.py (#646)
+  * l10n: Update translations
+
+- Update to 3.6.2
+  * Cancel file loading when closing tab  
+  * Use F12 for the minimap
+
+- Update to 3.6.1
+  * Add shortcut to toggle overview map  
+  * l10n: Update msgid
+  * Use F10 for the minimap
+  * l10n: Update POT
+
+
+- Update to 3.6.0
+  * added shortcut to duplicate selection 
+  * added condition to not save empty doc 
+  * removed trailing space char in custom date time 
+  * added auto close setting to close window when that last tab is closed 
+  * recent files: Don't show a number in front of the filename
+  * l10n: Update POT
+
+
+-------------------------------------------------------------------
 Sun Mar 17 11:46:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.4.5:
