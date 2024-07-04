@@ -903,4 +903,15 @@
   https://wiki.lyx.org/LyX/NewInLyX24</comment>
     <requestid>1177865</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>31c1dc11acf18b66c3ce86d658a7e4ed</srcmd5>
+    <version>2.4.1</version>
+    <time>1720103122</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.4.1:
+  * First maintenance release with many fixes. For
+    details see included ANNOUNCE
+    or https://www.lyx.org/announce/2_4_1.txt</comment>
+    <requestid>1185215</requestid>
+  </revision>
 </revisionlist>
