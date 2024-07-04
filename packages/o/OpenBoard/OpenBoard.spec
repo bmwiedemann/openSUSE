@@ -30,6 +30,10 @@ Source0:        https://github.com/OpenBoard-org/OpenBoard/archive/refs/tags/v%{
 Patch569:       0569-scale-mirror-pixmap.patch
 # https://github.com/OpenBoard-org/OpenBoard/pull/955
 Patch955:       0955-shortcut-configuration.patch
+# https://github.com/OpenBoard-org/OpenBoard/pull/961
+Patch961:       0961-use-cpp20.patch
+# https://github.com/OpenBoard-org/OpenBoard/pull/962
+Patch962:       0962-fix-cpp20-compatibility.patch
 # https://github.com/OpenBoard-org/OpenBoard/pull/1010
 Patch1010:      1010-fix-qapp-cast.patch
 # https://github.com/letsfindaway/OpenBoard/pull/117
@@ -64,7 +68,11 @@ Uniboard.
 %autosetup -p1 -n %{name}-%{version}
 
 %build
+%if 0%{?suse_version} < 1600
 %cmake
+%else
+%cmake -DCMAKE_CXX_STANDARD=20
+%endif
 %cmake_build
 
 %install

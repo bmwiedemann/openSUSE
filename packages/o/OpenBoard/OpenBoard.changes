@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul  4 06:31:52 UTC 2024 - Martin Winter <me@letsfindaway.de>
+
+- compatibility with poppler >= 24.05
+  * poppler >= 24.05 requires c++20
+  * add 0961-use-cpp20.patch
+  * add 0962-fix-cpp20-compatibility.patch
+  * both patches are already merged upstream
+    and will be part of the next release
+
+-------------------------------------------------------------------
 Sun Jun  9 08:35:35 UTC 2024 - Martin Winter <me@letsfindaway.de>
 
 - fix a problem with latest plasma5 security patches
