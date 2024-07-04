@@ -381,7 +381,6 @@ FileProvides: /usr/bin/nm binutils
 FileProvides: /usr/bin/nmtui NetworkManager-tui
 FileProvides: /usr/bin/node nodejs-common
 FileProvides: /usr/bin/node20 nodejs20
-FileProvides: /usr/bin/node21 nodejs21
 FileProvides: /usr/bin/node22 nodejs22
 FileProvides: /usr/bin/nohup busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/nslookup bind-utils busybox-bind-utils
@@ -2389,7 +2388,6 @@ BuildFlags: onlybuild:ninja
 BuildFlags: onlybuild:nlohmann_json
 BuildFlags: onlybuild:nodejs-common
 BuildFlags: onlybuild:nodejs20
-BuildFlags: onlybuild:nodejs21
 BuildFlags: onlybuild:nodejs22
 BuildFlags: onlybuild:npth
 BuildFlags: onlybuild:nss-mdns
@@ -2795,6 +2793,7 @@ BuildFlags: onlybuild:python-cssselect
 BuildFlags: onlybuild:python-dbus-python
 BuildFlags: onlybuild:python-ddt
 BuildFlags: onlybuild:python-decorator
+BuildFlags: onlybuild:python-defusedxml
 BuildFlags: onlybuild:python-distlib
 BuildFlags: onlybuild:python-distro
 BuildFlags: onlybuild:python-dnspython
@@ -2922,7 +2921,6 @@ BuildFlags: onlybuild:python-requests-gssapi
 BuildFlags: onlybuild:python-rpm-macros
 BuildFlags: onlybuild:python-rpm-packaging
 BuildFlags: onlybuild:python-rtslib-fb
-BuildFlags: onlybuild:python-scandir
 BuildFlags: onlybuild:python-scipy
 BuildFlags: onlybuild:python-semantic_version
 BuildFlags: onlybuild:python-service_identity
