@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Thu Jun 27 10:44:46 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
+
+- update to 1.30.2
+   * Fixed co_spawn to correctly propagate exceptions resulting from cancellation to the completion handler.
+   * Added calls to std::launder to fix undefined behaviour in awaitable<> internal storage.
+   * Added missing handling of the file_base::append flag in the Windows implementation of file support.
+   * Updated the socket and descriptor implementations to add more cases where they will fall back to fcntl if a call to ioctl fails.
+   * Fixed a compile error that occurred when channels and experimental::coro were both used in the same translation unit.
+   * Added missing CancellationSlot type requirements to documentation.
+   * Minor documentation updates.
+- update to 1.30.1
+   * Fixed the async_result primary template's concept checking to correctly handle lvalue-qualified completion signatures.
+   * Fixed some compile errors that could arise when using the bind_allocator, bind_executor, bind_immediate_executor and bind_cancellation_slot completion token adapters to adapt each other.
+   * Changed the experimental::ranged_parallel_group operation so that it moves the completion_order vector when invoking the completion handler.
+   * Fixed the asio/experimental/parallel_group.hpp header so that it is self-contained.
+   * Fixed some warnings about deprecated implicit copy constructors on ip::basic_resolver_query, io_context::strand, and coroutine.
+   * Updated the version specification used to initialise Winsock.
+   * Fixed the documentation hyperlinks for the deduced return types of asynchronous operations' initiating functions.
+- update to 1.30.0
+   * Fixed compatibility between any_completion_handler and compilation using ASIO_USE_TS_EXECUTOR_AS_DEFAULT.
+   * Fixed a crash that may occur when attempting to access a default-constructed any_completion_handler object's associators.
+   * Fixed ssl::stream<> class's async_handshake operation so that it works with a defaulted completion token.
+   * Updated all examples to use C++11 as the minimum language standard.
+- update to 1.29.0
+   * Changed to require C++11 as the minimum language standard.
+   * Removed deprecated functionality from the asio::execution namespace.
+   * Removed deprecated invocation and allocation hooks.
+   * Added compatibility between Asio's placeholders and std::bind.
+   * Added try_send_via_dispatch and try_send_n_via_dispatch functions to channels.
+   * Improved C++11 support for multi-signature channels.
+   * Fixed compatibility between channel asynchronous operations and any_completion_handler.
+   * Added missing equality operators for mixed property types belonging to the same category.
+   * Fixed an issue where spawn-based stackful coroutines would terminate the program when used with asynchronous operations that have a completion signature starting with std::exception_ptr.
+- update to 1.28.2
+   * Fixed the completion token adapters bind_allocator, bind_cancellation_slot and bind_immediate_executor to not require a return_type type alias in the adapted async_result specialisation.
+   * Fixed a potental crash due to an object lifetime issue in the co_spawn operation's cancellation support.
+   * Enabled compiler-supported thread locals on more target platforms, using the thread_local keyword if available.
+   * Fixed the documentation of the per-operation cancellation behaviour for experimental::co_composed to correctly state that terminal cancellation is enabled by default.
+   * Documented the per-operation cancellation behaviour of async_compose.
+   * Added bind_immediate_executor to the Completion Token Adapters overview.
+   * Added an example illustrating how to use an experimental channel for mutual exclusion between cooperating asynchronous actors.
+   * Added an example showing how to write a minimal completion executor.
+- update to 1.28.1
+   * Added missing compatibility with associated_immediate_executor to any_completion_handler.
+   * Fixed a null pointer dereference that occurs when using query, require or prefer with an empty any_executor.
+   * Added a workaround in experimental::coro for a spurious syntax error when compiling with MSVC.
+   * Fixed an integer truncation issue in per-operation cancellation, when using the reactor backend on 64-bit Windows.
+   * Added a compile-time check for a minimum Linux kernel version of 5.10, when io_uring support is enabled.
+   * Fixed a compile error in the converting move constructors for experimental::basic_channel and experimental::basic_concurrent_channel.
+   * Fixed a memory leak on some signal_set error handling code paths.
+   * Fixed bad_address_cast to not use a deprecated implicit copy constructor.
+   * Fixed a copy/paste error in the dev_poll_reactor backend.
+   * Fixed the io_uring backend to ensure the internal timeout operations, used to implement io_context::run_for and io_context::run_until, are cleaned up correctly.
+   * Eliminated some duplicated state in the co_spawn implementation's entry point, reducing memory consumption.
+   * Added c++14 echo examples to boostify script.
+ 
+
+-------------------------------------------------------------------
 Sun Jul 16 18:43:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.28:
