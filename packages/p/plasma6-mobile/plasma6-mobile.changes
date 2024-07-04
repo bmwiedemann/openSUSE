@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul  2 17:34:23 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.2
+- Changes since 6.1.1:
+  * update version for new release
+  * panel: Fix it not being full-width at a certain width
+  * kcms/wifi: Fix toggle not updating the first time
+  * envmanager: Ensure KConfigGroup being written to is not derived from const
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Jun 25 17:14:19 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.1:
