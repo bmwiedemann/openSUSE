@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-tempora
-Version:        5.5.1
+Version:        5.6.0
 Release:        0
 Summary:        Objects and routines pertaining to date and time (tempora)
 License:        MIT
@@ -35,15 +35,15 @@ BuildRequires:  %{python_module jaraco.functools >= 1.20}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest > 4.6}
 BuildRequires:  %{python_module pytest-freezegun}
-BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools  >= 56}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
 BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module tzdata}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-jaraco.functools >= 1.20
-Requires:       python-pytz
+Requires:       python-tzdata
 BuildArch:      noarch
 
 %if %{with libalternatives}

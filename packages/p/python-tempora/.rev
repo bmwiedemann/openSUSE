@@ -197,4 +197,14 @@
   * Remove test dependency on backports.unittest_mock.</comment>
     <requestid>1158505</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>eedab1ce527c53a38ef4b913e5a33f70</srcmd5>
+    <version>5.6.0</version>
+    <time>1720102898</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.6.0:
+  * Removed dependency on pytz.
+  * In utc.now(), bind late to allow for monkeypatching.</comment>
+    <requestid>1184902</requestid>
+  </revision>
 </revisionlist>

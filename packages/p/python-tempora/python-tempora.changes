@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  2 15:18:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.6.0:
+  * Removed dependency on pytz.
+  * In utc.now(), bind late to allow for monkeypatching.
+
+-------------------------------------------------------------------
 Sat Mar 16 14:39:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.5.1:
