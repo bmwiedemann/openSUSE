@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  4 09:00:28 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.63.2
+  * **deps:** Require protobuf >= 3.20.2 (c77c0dc)
+  * Regenerate pb2 files for compatibility with protobuf 5.x (c77c0dc)
+
+-------------------------------------------------------------------
 Mon Jun 24 12:01:02 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.63.1

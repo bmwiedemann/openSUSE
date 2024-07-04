@@ -225,4 +225,14 @@
     <comment></comment>
     <requestid>1183012</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a1384dd7e9afb16bdd942a42f2822485</srcmd5>
+    <version>1.63.2</version>
+    <time>1720103270</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.63.2
+  * **deps:** Require protobuf &gt;= 3.20.2 (c77c0dc)
+  * Regenerate pb2 files for compatibility with protobuf 5.x (c77c0dc) (forwarded request 1185360 from glaubitz)</comment>
+    <requestid>1185375</requestid>
+  </revision>
 </revisionlist>
