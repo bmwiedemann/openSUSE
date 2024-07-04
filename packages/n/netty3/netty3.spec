@@ -30,6 +30,7 @@ Patch0:         netty-3.10.6-port-to-jzlib-1.1.0.patch
 Patch1:         disableNPN.patch
 Patch2:         x509certificate.patch
 Patch3:         netty3-CVE-2021-43797.patch
+Patch4:         netty3-CVE-2024-29025.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
@@ -131,6 +132,8 @@ sed -i s/org.jboss.netty.util.internal.jzlib/com.jcraft.jzlib/ \
 %pom_add_dep org.bouncycastle:bcprov-jdk16
 
 %patch -P 3 -p1
+
+%patch -P 4 -p1
 
 # adapting to excluded dep
 rm -v src/main/java/org/jboss/netty/handler/ssl/JettyNpnSslEngine.java

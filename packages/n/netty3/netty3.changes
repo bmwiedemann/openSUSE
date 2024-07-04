@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  4 10:46:24 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * netty3-CVE-2024-29025.patch
+    + backport upstream fix for bsc#1222045, CVE-2024-29025
+
+-------------------------------------------------------------------
 Wed Feb 21 10:52:10 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
