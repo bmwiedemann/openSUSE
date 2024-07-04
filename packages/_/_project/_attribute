@@ -83,6 +83,7 @@
   bsc#1225893: '20240702'
   bsc#1226888: '20240702'
   gh#OSInside/kiwi#2529: '20240416'
+  gh#hexchat/hexchat#2808: '20240702'
   gh#os-autoinst/openQA#5687: '20240613'
   gh#os-autoinst/os-autoinst-distri-opensuse#18471: '20240116'
   gh#os-autoinst/os-autoinst-distri-opensuse#18688: '20240218'
@@ -200,7 +201,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20240702</value>
+    <value>20240703</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
