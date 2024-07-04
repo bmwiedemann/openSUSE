@@ -1073,4 +1073,31 @@
     <comment></comment>
     <requestid>1153447</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>8edd9b9a04170658ebcaabfdfdaa1499</srcmd5>
+    <version>4.15.0+git.1719822011.7a2c0a7f</version>
+    <time>1720103112</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.15.0+git.1719822011.7a2c0a7f:
+  * all agents: dont use Deprecated logging.warn()
+  * symlinked agents: set agent_name to use when generating manpages
+  * fence2man.xsl: improve text for symlinked agents
+  * fence_sbd: --sbd-path defaults to /usr/sbin/sbd
+  * configure: check additional paths for programs
+  * fence_aws: log error if unknown state returned
+  * fence_aws: improve list, list-status and status actions
+  * fencing: use formatted strings to avoid failing when plug is int
+  * fence_azure: fix pinning client api versions for compatibility across different azure sdk versions
+  * fence_docker: Connect to Docker via a UNIX socket
+  * fence_hpblade/fence_mpath/fence_scsi: use r&quot;&quot; for all regular expressions to avoid SyntaxWarning errors
+  * fence_aws: fixes to not fail CI, and dont use boto3 buildreq on CI nodes where it's not installed
+  * fence_eps: add fence_epsr2 for ePowerSwitch R2 and newer
+  * fencing: add support for docs[&quot;agent_name&quot;] to use the main agent name when generating manpages
+  * spec: only require python3-azure-sdk for RHEL &lt; 9
+  * spec: remove old python3-azure-sdk dependency
+  * fence_aliyun: update order for new parameters
+  * fence_aliyun: add credentials file support
+  * lib/all agents: use r&quot;&quot; for all regular expressions to avoid SyntaxWarning errors</comment>
+    <requestid>1185211</requestid>
+  </revision>
 </revisionlist>

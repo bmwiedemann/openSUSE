@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jul 03 18:27:35 UTC 2024 - varkoly@suse.com
+
+- Update to version 4.15.0+git.1719822011.7a2c0a7f:
+  * all agents: dont use Deprecated logging.warn()
+  * symlinked agents: set agent_name to use when generating manpages
+  * fence2man.xsl: improve text for symlinked agents
+  * fence_sbd: --sbd-path defaults to /usr/sbin/sbd
+  * configure: check additional paths for programs
+  * fence_aws: log error if unknown state returned
+  * fence_aws: improve list, list-status and status actions
+  * fencing: use formatted strings to avoid failing when plug is int
+  * fence_azure: fix pinning client api versions for compatibility across different azure sdk versions
+  * fence_docker: Connect to Docker via a UNIX socket
+  * fence_hpblade/fence_mpath/fence_scsi: use r"" for all regular expressions to avoid SyntaxWarning errors
+  * fence_aws: fixes to not fail CI, and dont use boto3 buildreq on CI nodes where it's not installed
+  * fence_eps: add fence_epsr2 for ePowerSwitch R2 and newer
+  * fencing: add support for docs["agent_name"] to use the main agent name when generating manpages
+  * spec: only require python3-azure-sdk for RHEL < 9
+  * spec: remove old python3-azure-sdk dependency
+  * fence_aliyun: update order for new parameters
+  * fence_aliyun: add credentials file support
+  * lib/all agents: use r"" for all regular expressions to avoid SyntaxWarning errors
+
+-------------------------------------------------------------------
 Mon Feb 26 08:40:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
