@@ -7,4 +7,16 @@
     <comment>New package doggo is a CLI DNS client implemented in Go</comment>
     <requestid>1119640</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e827720c23faef3298d4c31170acc2f7</srcmd5>
+    <version>1.0.4</version>
+    <time>1720102964</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.4:
+  * fix: add ca-certificates in doggo-web
+  * Updating canonical URL
+  * Fix zsh completions
+  * docs: add --rm in docker (forwarded request 1185209 from jfkw)</comment>
+    <requestid>1185210</requestid>
+  </revision>
 </revisionlist>

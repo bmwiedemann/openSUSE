@@ -1,9 +1,72 @@
 -------------------------------------------------------------------
+Wed Jul 03 17:49:48 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.0.4:
+  * fix: add ca-certificates in doggo-web
+  * Updating canonical URL
+  * Fix zsh completions
+  * docs: add --rm in docker
+
+-------------------------------------------------------------------
+Tue Jul  2 14:16:05 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Add subpackage web providing web browser UI for making DNS queries
+  * Add Group: Productivity/Networking/DNS/Utilities
+  * Update License: to GPL-3.0 instead of GPL-3.0-only
+  * Update to BuildRequires: golang(API) >= 1.22 matching go.mod
+  * Add Recommends: %{name}-bash-completion
+  * Completions subpackages for fish, zsh remain as Suggests:
+  * Reorder completions install ops consistently: bash, fish, zsh
+  * Add changelog detail for earlier release v1.0.1
+
+-------------------------------------------------------------------
+Tue Jul 02 13:50:51 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.0.3:
+  * chore: upgrade deps
+  * chore: fix help text
+  * docs: specify correct usage of timeout flag
+  * feat: add ctx cancellation while resolving records
+  * feat: Refactor DNS resolvers for concurrent lookups
+  * feat: add support for common query types
+  * chore: fix docs link
+  * chore: revamp README
+
+-------------------------------------------------------------------
+Tue Jul 02 10:43:52 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 1.0.2:
+  * refactor: move main package to cmd/doggo for proper binary naming
+
+- Update to version 1.0.1
+  * fix: proper alignment of help text
+  * ci: re-enable dependabot
+  * ci: add npm caching
+  * ci: goreleaser
+  * ci: upgrade actions
+  * refactor: replace logrus with slog
+  * feat: add support for more platforms and targets
+  * feat: add single install script
+  * feat: add completions command
+  * feat: add support for query flags
+  * refactor: fix loading of nameservers
+  * chore: upgrade deps
+  * fix: send proper json error responses
+
+- Update to version 1.0.0:
+  * feat: add bash completion support
+  * feat: add completions command
+  * Fix syntax error in ZSH completion
+  * Update ZSH completion to include all current options
+  * added tls client configuration for doh and doq
+
+-------------------------------------------------------------------
 Mon Oct 23 09:36:30 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Packaging improvements:
   * Fix zsh-completion and fish-completion by not requiring
-    zsh-completion and fish-completion and by supplementing the 
+    zsh-completion and fish-completion and by supplementing the
     right package.
   * Fix fish-completion by using the .fish suffix when copying the
     completion file.
