@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jul 03 15:45:38 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.79.2:
+  * chore(deps): bump github/codeql-action from 3.25.10 to 3.25.11
+    (#1968)
+  * chore(deps): update tools to latest versions (#1969)
+  * test: update quality gate db to latest version (#1972)
+  * chore: pin new sign installer to commit sha (#1966)
+  * chore(deps): bump github.com/charmbracelet/bubbletea (#1963)
+  * chore(deps): update tools to latest versions (#1962)
+  * chore: add workflow to update quality test db (#1961)
+  * chore(deps): bump github.com/anchore/syft from 1.7.0 to 1.8.0
+    (#1957)
+  * chore(deps): bump github.com/go-test/deep from 1.1.0 to 1.1.1
+    (#1958)
+  * chore(deps): bump github.com/hashicorp/go-getter from 1.7.4 to
+    1.7.5 (#1959)
+  * chore: update test_db_url; remove white space (#1960)
+  * chore(deps): bump peter-evans/create-pull-request from 6.0.5 to
+    6.1.0 (#1954)
+  * chore(deps): bump github.com/charmbracelet/bubbletea (#1955)
+  * chore: enable dependabot to keep boostrap action updated
+    (#1953)
+  * fix: use location RealPath not String() (#1950)
+
+-------------------------------------------------------------------
 Tue Jun 18 10:49:00 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.79.1:
