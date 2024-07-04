@@ -23,7 +23,7 @@
 %define rname ksystemstats
 %bcond_without released
 Name:           ksystemstats6
-Version:        6.1.1
+Version:        6.1.2
 Release:        0
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
