@@ -22,7 +22,7 @@
 %bcond_without released
 %define rname kde-cli-tools
 Name:           kde-cli-tools6
-Version:        6.1.1
+Version:        6.1.2
 Release:        0
 Summary:        Additional CLI tools for KDE applications
 License:        GPL-2.0-or-later
