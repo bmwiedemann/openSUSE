@@ -18,13 +18,14 @@
 
 %define c_lib   libf3d2
 Name:           f3d
-Version:        2.3.1
+Version:        2.5.0
 Release:        0
 Summary:        Fast and minimalist 3D viewer
 License:        BSD-3-Clause
 Group:          Productivity/Graphics/Viewers
 URL:            https://f3d.app
 Source0:        https://github.com/%{name}-app/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         help.patch
 BuildRequires:  cmake
 BuildRequires:  fast_float-devel
 BuildRequires:  fmt-devel
@@ -33,7 +34,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  cmake(Alembic)
 BuildRequires:  cmake(Imath)
 BuildRequires:  cmake(OpenCASCADE)
-BuildRequires:  cmake(vtk) >= 9.0
+BuildRequires:  cmake(vtk) >= 9.3
 BuildRequires:  pkgconfig(assimp)
 BuildRequires:  pkgconfig(draco)
 BuildRequires:  pkgconfig(eigen3)
@@ -106,6 +107,7 @@ Library for f3d.
     -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
 %endif
     -DCMAKE_SKIP_INSTALL_RPATH=ON \
+    -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
     -DBUILD_TESTING=OFF \
     -DF3D_BINDINGS_JAVA=OFF \
     -DF3D_BINDINGS_PYTHON=OFF \
@@ -128,7 +130,6 @@ Library for f3d.
 %install
 %cmake_install
 rm -rfv %{buildroot}%{_docdir}/f3d
-rm -fv %{buildroot}%{_libdir}/libVTKExtensions*.a
 
 # this is needed so f3d autoloads the plugins for those filetypes specified in the configs
 mkdir -p %{buildroot}%{_sysconfdir}/f3d/config.d
@@ -159,6 +160,19 @@ install -Dm644 plugins/occt/configs/config.d/10_occt.json %{buildroot}%{_sysconf
 %dir %{_sysconfdir}/f3d
 %dir %{_sysconfdir}/f3d/config.d
 %config %{_sysconfdir}/f3d/config.d/*.json
+
+%dir %{_includedir}/f3d
+%{_includedir}/f3d/vtkF3DFaceVaryingPointDispatcher.h
+%{_includedir}/f3d/vtkextModule.h
+%dir %{_libdir}/cmake/f3d_vtkext
+%{_libdir}/cmake/f3d_vtkext/f3d_vtkext-targets-relwithdebinfo.cmake
+%{_libdir}/cmake/f3d_vtkext/f3d_vtkext-targets.cmake
+%{_libdir}/cmake/f3d_vtkext/f3d_vtkext-vtk-module-properties.cmake
+%{_libdir}/libvtkext.so
+%dir %{_libdir}/vtk/
+%dir %{_libdir}/vtk/hierarchy
+%dir %{_libdir}/vtk/hierarchy/f3d_vtkext
+%{_libdir}/vtk/hierarchy/f3d_vtkext/vtkext-hierarchy.txt
 
 %files devel
 %doc README.md
