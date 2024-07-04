@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 03 16:36:27 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.5.2:
+  * Fix: Add filters to replicasets (#324)
+  * fix(multi): Support grouping by resource in multi resource mode
+    (#320)
+  * fix(delete): Refactor input handling & output display on
+    resource deletion  (#323)
+  * feat: add CI step to package and publish Helm chart (#306)
+  * update readme to show unused reason (#317)
+
+-------------------------------------------------------------------
 Wed Jun 19 04:46:26 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.5.1:
