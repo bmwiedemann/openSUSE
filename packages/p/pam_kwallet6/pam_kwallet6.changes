@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul  2 17:34:18 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.2
+- Changes since 6.1.1:
+  * Switch to pkgconfig to find libgcrypt (allows building with libgcrypt 1.11) (kde#489303)
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Jun 25 17:13:52 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.1:
