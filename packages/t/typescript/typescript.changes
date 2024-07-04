@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul  3 08:21:30 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 5.5.3
+  * fixed #59032 JavaScript and TypeScript language service has been disabled 
+    after crashing repeatedly
+  * fixed #58955 @import JSDoc tag doesn't seem to account for resolution-mode 
+    import attribute in TS v5.5.2
+
+For the full changelog see https://devblogs.microsoft.com/typescript/announcing-typescript-5-5/
+
+-------------------------------------------------------------------
 Sat Jun 22 16:14:51 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 5.5.2
