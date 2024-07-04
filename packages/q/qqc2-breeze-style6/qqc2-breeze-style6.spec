@@ -23,7 +23,7 @@
 
 %bcond_without released
 Name:           qqc2-breeze-style6
-Version:        6.1.1
+Version:        6.1.2
 Release:        0
 Summary:        Breeze Style for Qt Quick
 License:        LGPL-2.1-or-later
