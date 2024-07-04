@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jul 03 19:09:39 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.11.4:
+  * remove unwanted updating of source-position in app set command
+    (#18887) (#18896)
+  * Bump version to 2.11.4 (#18894)
+  * fix: update static schemas (#18889)
+  * fix(controller): bad server-side diffs (#18213) (2.11) (#18868)
+  * docs: Fix .path to .path.segments go template (#18872) (#18874)
+  * fix(webhook): bitbucket and azure not triggering refresh
+    (#18289) (#18765) (#18819)
+  * fix(appset): revert "keep reconciling even when params error
+    occurred" (#17062) (#18781)
+  * fix: docs site version selector broken (#18378) (#18724)
+  * fix: Update braces package to 3.0.3 (#18459) (#18663)
+  * Revert "feat(server): log app Spec along with event (#16416)"
+    (#18458) (#18639)
+  * test: fix e2e tests after GHSA-3cqf-953p-h5cp (#18543) (#18641)
+  * chore(deps): upgrade redis to 7.2.15-alpine (cherry-pick
+    release-2.11) (#18640)
+  * chore: bump go version to 1.21.10 (#18540)
+
+-------------------------------------------------------------------
 Fri Jun 07 19:45:08 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.11.3:
