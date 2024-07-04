@@ -214,4 +214,12 @@
     <comment>New clazy snapshot</comment>
     <requestid>1175582</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e5e38751609df0e29d093269778eaf15</srcmd5>
+    <version>1.12git.20240630T203330~f3fb82c</version>
+    <time>1720103259</time>
+    <user>anag+factory</user>
+    <comment>Update to 1.12</comment>
+    <requestid>1185343</requestid>
+  </revision>
 </revisionlist>

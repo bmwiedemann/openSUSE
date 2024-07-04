@@ -1,9 +1,10 @@
 <services>
   <service name="obs_scm" mode="disabled">
    <param name="changesgenerate">enable</param>
-   <param name="versionformat">1.11git.%ci~%h</param>
+   <param name="versionformat">1.12git.%ci~%h</param>
    <param name="url">https://invent.kde.org/sdk/clazy.git</param>
    <param name="scm">git</param>
+   <param name="revision">v1.12</param>
   </service>
   <service name="set_version" mode="disabled" />
   <service name="tar" mode="buildtime"/>

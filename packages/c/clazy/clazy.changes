@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul 04 07:45:31 UTC 2024 - christophe@krop.fr
+
+- Update to version 1.12git.20240630T203330~f3fb82c:
+  * docs: update HOWTO.md
+  * Update ChangeLog for 1.12
+  * docs: Update HOWTO to include release instructions
+  * Don't hardcode version in ClazyStandaloneMain.cpp
+  * docs: Bump minimum LLVM to 11
+  * docs: Don't hardcode current version in README
+  * no-module-include: Fix on Windows as line endings can have \r\n
+  * ci: Fix build on ubuntu 24.04
+  * ci: Bump to Qt 6.7
+  * tests: Remove ubuntu-18.04 and 20.04 Dockerfiles
+
+-------------------------------------------------------------------
 Tue May 21 13:15:49 UTC 2024 - christophe@krop.fr
 
 - Update to version 1.11git.20240520T014559~87b83e3:
