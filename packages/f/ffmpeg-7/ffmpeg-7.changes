@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul  2 12:26:28 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-7-CVE-2024-32230.patch:
+  Backporting 96449cfe from upstream, Fix 1 line and one column images.
+  (CVE-2024-32230 bsc#1227296)
+
+-------------------------------------------------------------------
+Tue Jul  2 11:57:01 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-7-CVE-2024-32228.patch:
+  Backporting 45964876 from upstream, Fix segfault on invalid film
+  grain metadata.
+  (CVE-2024-32228, bsc#1227277)
+
+-------------------------------------------------------------------
 Sun Apr  7 11:39:41 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Copy package ffmpeg-6 to ffmpeg-7 and adjust

@@ -7,4 +7,19 @@
     <comment></comment>
     <requestid>1169659</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f1388dce0eb1aae2da374f01124189f4</srcmd5>
+    <version>7.0</version>
+    <time>1720103050</time>
+    <user>anag+factory</user>
+    <comment>- Add ffmpeg-7-CVE-2024-32230.patch:
+  Backporting 96449cfe from upstream, Fix 1 line and one column images.
+  (CVE-2024-32230 bsc#1227296)
+
+- Add ffmpeg-7-CVE-2024-32228.patch:
+  Backporting 45964876 from upstream, Fix segfault on invalid film
+  grain metadata.
+  (CVE-2024-32228, bsc#1227277)</comment>
+    <requestid>1185067</requestid>
+  </revision>
 </revisionlist>

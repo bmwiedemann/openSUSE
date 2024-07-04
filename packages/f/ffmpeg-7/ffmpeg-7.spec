@@ -104,7 +104,6 @@ Source6:        ffmpeg-dlopen-headers.tar.xz
 Source92:       ffmpeg_get_dlopen_headers.sh
 Source98:       http://ffmpeg.org/ffmpeg-devel.asc#/ffmpeg-7.keyring
 Source99:       baselibs.conf
-
 Patch1:         ffmpeg-arm6l.diff
 Patch2:         ffmpeg-new-coder-errors.diff
 Patch3:         ffmpeg-codec-choice.diff
@@ -112,7 +111,8 @@ Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
 Patch10:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
-
+Patch92:        ffmpeg-7-CVE-2024-32228.patch
+Patch93:        ffmpeg-7-CVE-2024-32230.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel >= 3.98.3
