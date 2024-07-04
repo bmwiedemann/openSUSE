@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/ansible/ansible-navigator</param>
     <param name="scm">git</param>
-    <param name="revision">v24.3.2</param>
+    <param name="revision">v24.6.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>

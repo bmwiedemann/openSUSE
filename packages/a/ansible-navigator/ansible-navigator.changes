@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 03 19:10:08 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 24.6.0:
+  * Fix the documentation for securely passing the vault password
+    (#1799)
+
+-------------------------------------------------------------------
 Tue Apr 30 19:37:22 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 24.3.2:
