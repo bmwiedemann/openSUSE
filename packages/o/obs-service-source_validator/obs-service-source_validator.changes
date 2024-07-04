@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul  3 06:17:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.37:
+  * Fix unzip test in 20-files-present-and-referenced
+  (same like previous update)
+- explicitly require unzip as busybox-unzip is not sufficient
+
+-------------------------------------------------------------------
 Thu May 23 12:57:17 UTC 2024 - dimstar@opensuse.org
 
 - Update to version 0.36+2:
@@ -339,7 +347,7 @@ Fri Aug 11 12:09:25 UTC 2017 - adrian@suse.de
   * ignore expand errors with macro scripts
 
 -------------------------------------------------------------------
-Thu Aug 10 07:44:02 UTC 2017 - mstrigl@suse.com 
+Thu Aug 10 07:44:02 UTC 2017 - mstrigl@suse.com
 
 - Update to version 0.6+git20170809.6818366:
   * Ignore not referenced appimage.yml file
@@ -488,13 +496,13 @@ Mon Sep 29 10:23:20 UTC 2014 - coolo@suse.com
 Thu Aug 14 02:09:11 CEST 2014 - ro@suse.de
 
 - update from git:
-  - more work on dealing with util-linux 
+  - more work on dealing with util-linux
 
 -------------------------------------------------------------------
 Thu Aug 14 01:31:31 CEST 2014 - ro@suse.de
 
 - update from git:
-  - hack for util-linux specfiles (bnc#891829) 
+  - hack for util-linux specfiles (bnc#891829)
 
 -------------------------------------------------------------------
 Wed Jun 25 12:56:41 UTC 2014 - coolo@suse.com
@@ -512,7 +520,7 @@ Wed Jun 25 12:56:41 UTC 2014 - coolo@suse.com
 -------------------------------------------------------------------
 Tue May 27 15:16:33 UTC 2014 - t1locs@gmail.com
 
-- Add rpm-build dependancy for centos 6 
+- Add rpm-build dependancy for centos 6
 
 -------------------------------------------------------------------
 Thu Jan  9 09:32:13 UTC 2014 - adrian@suse.de
@@ -544,12 +552,12 @@ Tue Jun 18 12:56:39 UTC 2013 - coolo@suse.com
 -------------------------------------------------------------------
 Tue Feb 26 17:55:43 CET 2013 - ro@suse.de
 
-- allow PKGBUILD build description file for archlinux 
+- allow PKGBUILD build description file for archlinux
 
 -------------------------------------------------------------------
 Mon Feb  4 01:49:22 CET 2013 - ro@suse.de
 
-- check_patches_applied: allow #patches as comment 
+- check_patches_applied: allow #patches as comment
 
 -------------------------------------------------------------------
 Fri Jan 18 16:17:52 CET 2013 - ro@suse.de
@@ -559,12 +567,12 @@ Fri Jan 18 16:17:52 CET 2013 - ro@suse.de
 -------------------------------------------------------------------
 Mon Jan  7 13:28:44 CET 2013 - ro@suse.de
 
-- exit if tmpdir creation fails (bnc#796918) 
+- exit if tmpdir creation fails (bnc#796918)
 
 -------------------------------------------------------------------
 Wed Jun 13 17:13:49 CEST 2012 - ro@suse.de
 
-- also ignore Requires(.*) lines (bnc#724609) 
+- also ignore Requires(.*) lines (bnc#724609)
 
 -------------------------------------------------------------------
 Wed Jun 13 15:01:39 CEST 2012 - ro@suse.de
@@ -574,12 +582,12 @@ Wed Jun 13 15:01:39 CEST 2012 - ro@suse.de
 -------------------------------------------------------------------
 Fri Apr 27 14:07:07 CEST 2012 - ro@suse.de
 
-- use --nodeps with rpmbuild in 20-files-present-and-referenced 
+- use --nodeps with rpmbuild in 20-files-present-and-referenced
 
 -------------------------------------------------------------------
 Mon Feb 27 10:54:20 CET 2012 - dmueller@suse.de
 
-- fix requires for factory 
+- fix requires for factory
 
 -------------------------------------------------------------------
 Tue Feb 14 10:14:25 UTC 2012 - adrian@suse.de
@@ -614,18 +622,18 @@ Fri Jul  1 17:12:32 CEST 2011 - ro@suse.de
 -------------------------------------------------------------------
 Mon May 30 11:53:53 CEST 2011 - ro@suse.de
 
-- fix bug with "Patch" in comments 
+- fix bug with "Patch" in comments
 
 -------------------------------------------------------------------
 Mon May  9 13:47:29 UTC 2011 - ro@novell.com
 
-- try to fix bnc#679980 
+- try to fix bnc#679980
 
 -------------------------------------------------------------------
 Wed Apr 20 17:30:19 CEST 2011 - ro@suse.de
 
 - find another form of commenting out patches
-  in check_patches_applied 
+  in check_patches_applied
 
 -------------------------------------------------------------------
 Mon Apr 18 01:06:59 CEST 2011 - ro@suse.de
@@ -638,7 +646,7 @@ Mon Apr 18 01:06:59 CEST 2011 - ro@suse.de
 Tue Apr 12 16:40:58 CEST 2011 - ro@suse.de
 
 - activate the patches_applied check for real,
-  errors out if errors found 
+  errors out if errors found
 
 -------------------------------------------------------------------
 Mon Apr  4 13:15:11 CEST 2011 - ro@suse.de
@@ -662,13 +670,13 @@ Fri Feb 18 11:39:29 UTC 2011 - jw@novell.com
 -------------------------------------------------------------------
 Sat Feb 12 11:10:42 UTC 2011 - ro@novell.com
 
-- 50-spec-version: show warning only once per specfile 
+- 50-spec-version: show warning only once per specfile
 
 -------------------------------------------------------------------
 Thu Jan 13 14:29:54 CET 2011 - ro@suse.de
 
 - move COPYING file to docdir (prevent permission denied trying
-  to execute it as a checkscript) 
+  to execute it as a checkscript)
 
 -------------------------------------------------------------------
 Thu Jan 13 12:52:36 CET 2011 - ro@suse.de
@@ -713,12 +721,12 @@ Sat May 22 06:38:35 UTC 2010 - adrian@suse.de
 -------------------------------------------------------------------
 Thu May 20 18:11:38 CEST 2010 - ro@suse.de
 
-- make the files executable 
+- make the files executable
 
 -------------------------------------------------------------------
 Thu May 20 17:40:29 CEST 2010 - ro@suse.de
 
-- fill with some content 
+- fill with some content
 
 -------------------------------------------------------------------
 Thu May 20 05:56:47 UTC 2010 - adrian@suse.de

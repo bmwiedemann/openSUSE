@@ -731,4 +731,33 @@ last submission had wrong tar ball for unknown reason</comment>
   * Fix unzip test in 20-files-present-and-referenced (forwarded request 1176476 from dimstar)</comment>
     <requestid>1176477</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>fd33f540a7b3713f09465a03a99f3253</srcmd5>
+    <version>0.37</version>
+    <time>1720103026</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.37:
+  * Fix unzip test in 20-files-present-and-referenced
+  (same like previous update)
+- explicitly require unzip as busybox-unzip is not sufficient
+
+  - more work on dealing with util-linux
+  - hack for util-linux specfiles (bnc#891829)
+- Add rpm-build dependancy for centos 6
+- allow PKGBUILD build description file for archlinux
+- check_patches_applied: allow #patches as comment
+- exit if tmpdir creation fails (bnc#796918)
+- also ignore Requires(.*) lines (bnc#724609)
+- use --nodeps with rpmbuild in 20-files-present-and-referenced
+- fix requires for factory
+- fix bug with &quot;Patch&quot; in comments
+- try to fix bnc#679980
+  in check_patches_applied
+  errors out if errors found
+- 50-spec-version: show warning only once per specfile
+  to execute it as a checkscript)
+- make the files executable
+- fill with some content</comment>
+    <requestid>1184977</requestid>
+  </revision>
 </revisionlist>

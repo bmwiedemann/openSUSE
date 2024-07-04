@@ -23,7 +23,7 @@
 %endif
 
 Name:           obs-service-source_validator
-Version:        0.36+2
+Version:        0.37
 Release:        0
 Summary:        An OBS source service: running all the osc source-validator checks
 License:        GPL-2.0-or-later
@@ -34,11 +34,11 @@ Source:         %{name}-%{version}.tar.bz2
 BuildRequires:  %{build_pkg_name}
 BuildRequires:  zstd
 Requires:       %{_bindir}/cpio
-Requires:       %{_bindir}/unzip
 Requires:       %{_bindir}/xmllint
 Requires:       %{build_pkg_name}
 Requires:       patch
 Requires:       perl-TimeDate
+Requires:       unzip
 Provides:       osc-source_validator = %{version}
 Obsoletes:      osc-source_validator <= 0.1
 BuildArch:      noarch
