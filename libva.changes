@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul  3 08:17:21 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.22.0:
+  * va:Add VVC decode LibVA interface.
+  * va: fix --version-script detection for lld >= 17
+  * wayland: add support for linux-dmabuf
+  * meson:remove autogen.sh from the meson script
+  * trace: Add bit_depth capturing in trace log
+
+-------------------------------------------------------------------
 Mon Apr 22 09:13:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.21.0:
