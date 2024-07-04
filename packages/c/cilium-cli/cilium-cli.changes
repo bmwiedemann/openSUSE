@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Wed Jul 03 16:10:01 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.11:
+  * Prepare for v0.16.11 release
+  * ci: speedup workflows
+  * sysdump: derive operator namespace from agent namespace if
+    specified
+  * sysdump: fix no Cilium output if operator was not detected
+  * fix(deps): update all go dependencies main
+  * image: Push Docker image on tag push
+  * Remove cilium-cli-test-job-chart
+  * aks: Temporarily disable Hubble Relay
+  * fix(deps): update module github.com/cilium/cilium to
+    v1.16.0-rc.0
+  * multicluster: Run cilium-cli inside a container
+  * chore(deps): update docker/build-push-action action to v6.2.0
+  * fix: ExternalTargetCANamespace name
+  * eks: Run cilium-cli inside a container
+  * connectivity: Ensure Hubble Relay is connected to all the nodes
+  * external-workloads: Run cilium-cli inside a container
+  * gke: Run cilium-cli inside a container
+  * gha: fix cluster names in kind workflow
+  * autodetect: try to sanitize autodetected cluster name
+  * azure: directly retrieve cluster name from kubeconfig
+  * action: Add an option to run cilium-cli inside a container
+  * connectivity: Add pod-to-pod-no-frag
+  * connectivity: Extend PingCommand to accept extra args
+  * chore(deps): pin ubuntu docker tag to 2e863c4
+  * connectivity: refactor initClients
+  * connectivity: introduce detectSingleNode method
+  * Dockerfile: Install aws / azure / gcloud CLIs
+  * chore(deps): update docker/build-push-action action to v6.1.0
+  * chore(deps): update all github action dependencies
+  * chore(deps): update golang:1.22.4-alpine3.19 docker digest to
+    c46c460
+  * chore(deps): update docker.io/library/golang:1.22.4-alpine3.19
+    docker digest to c46c460
+  * chore(deps): update quay.io/cilium/alpine-curl docker tag to
+    v1.10.0
+  * chore(deps): update docker.io/library/golang:1.22.4-alpine3.19
+    docker digest to e43a04e
+  * chore(deps): update golang-images
+  * gh/workflows: Fix display img digest step
+  * connectivity: Display last assertion error on failure
+  * connectivity: Extend pod-to-pod encryption tests
+  * chore(deps): update docker/build-push-action action to v6
+  * fix(deps): update all go dependencies main
+  * chore(deps): update docker.io/library/golang:1.22.4-alpine3.19
+    docker digest to d9b1f00
+  * chore(deps): update docker/build-push-action action to v5.4.0
+  * chore(deps): update golangci/golangci-lint docker tag to
+    v1.59.1
+  * chore(deps): update golang-images
+  * Pick up the latest cilium/cilium from main branch
+  * chore(deps): update dependency cilium/cilium to v1.15.6
+  * chore(deps): update actions/checkout action to v4.1.7
+  * gha: increase disk size for GKE clusters
+  * fix(deps): update github.com/cilium/charts digest to 4be5659
+  * Update stable release to v0.16.10
+
+-------------------------------------------------------------------
 Sat Jun 08 09:57:49 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.16.10:
