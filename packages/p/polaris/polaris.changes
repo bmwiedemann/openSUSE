@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul 03 15:57:15 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 9.1.1:
+  * INSIGHTS-156 - Fix typo and improve failure message (#1055)
+  * INSIGHTS-159 - use go templating instead of custom function
+    validation (#1056)
+
+-------------------------------------------------------------------
+Wed Jul 03 15:53:36 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 9.1.0:
+  * fix changelog for release (#1054)
+  * INSIGHTS-90 - implement HPA minAvailable and HPA maxAvailable
+    checks (#1053)
+  * fix typo for minAvailable and maxAvailable (#1050)
+
+-------------------------------------------------------------------
 Fri Mar 15 21:54:48 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 9.0.1:
