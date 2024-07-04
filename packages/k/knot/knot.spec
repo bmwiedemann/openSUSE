@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig(libsystemd)
 %{?systemd_requires}
 %endif
 Name:           knot
-Version:        3.3.6
+Version:        3.3.7
 Release:        0
 Summary:        An authoritative DNS daemon
 License:        GPL-3.0-or-later
@@ -48,6 +48,11 @@ Source4:        system-user-knot.conf
 Source99:       knot.keyring
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libedit-devel
+BuildRequires:  libnghttp2-devel
+%if 0%{?suse_version} >= 1600
+BuildRequires:  libngtcp2-devel
+BuildRequires:  libngtcp2_crypto_gnutls8
+%endif
 BuildRequires:  liburcu-devel
 BuildRequires:  lmdb-devel >= 0.9.15
 BuildRequires:  openssl-devel
@@ -145,6 +150,9 @@ This package contains a library for a zone record scanner.
   --libexecdir=%{_libexecdir}/%{pkg_name} \
   --includedir=%{_includedir}/knot/ \
   --disable-static \
+%if 0%{?suse_version} < 1600
+  --enable-quic \
+%endif
   --enable-recvmmsg=yes \
 %if %{with lto}
   --enable-lto=yes \

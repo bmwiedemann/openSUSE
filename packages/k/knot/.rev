@@ -236,4 +236,16 @@ https://www.knot-dns.cz/</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1181883</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>995d23d7ff260a0f86069ec1a117d408</srcmd5>
+    <version>3.3.7</version>
+    <time>1720102967</time>
+    <user>anag+factory</user>
+    <comment>- use distribution library on Tumbleweed for DoQ support
+- enable DoH support (add dependency on libnghttp2) bsc#1225969
+- enable DoQ support using embedded library (libngtcp2)
+- update to version 3.3.7, see
+  https://www.knot-dns.cz/2024-06-25-version-337.html</comment>
+    <requestid>1184939</requestid>
+  </revision>
 </revisionlist>

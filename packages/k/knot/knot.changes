@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul  1 21:42:11 UTC 2024 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- use distribution library on Tumbleweed for DoQ support
+
+-------------------------------------------------------------------
+Mon Jul  1 21:26:34 UTC 2024 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- enable DoH support (add dependency on libnghttp2) bsc#1225969
+- enable DoQ support using embedded library (libngtcp2)
+
+-------------------------------------------------------------------
+Tue Jun 25 13:13:39 UTC 2024 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- update to version 3.3.7, see
+  https://www.knot-dns.cz/2024-06-25-version-337.html
+
+-------------------------------------------------------------------
 Thu Jun 13 07:24:56 UTC 2024 - Michal Hrusecky <michal.hrusecky@opensuse.org>
 
 - update to version 3.3.6, see
