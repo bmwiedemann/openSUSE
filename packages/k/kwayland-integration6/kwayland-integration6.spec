@@ -19,7 +19,7 @@
 %bcond_without released
 %define rname kwayland-integration
 Name:           kwayland-integration6
-Version:        6.1.1
+Version:        6.1.2
 Release:        0
 Summary:        Plugin to integrate KF5 KWayland into Plasma 6
 License:        LGPL-2.1-or-later
