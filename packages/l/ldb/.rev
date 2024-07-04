@@ -670,4 +670,16 @@ x86-64 when building with python 3.5.</comment>
   * Update patch ldb-python3.5-fix-soabi_name.patch</comment>
     <requestid>1177472</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>0929110bf01bf7f6217f7d0dce7484b5</srcmd5>
+    <version>2.9.1</version>
+    <time>1720102957</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.9.1
+  * Many qsort() comparison functions are non-transitive, which
+    can lead to out-of-bounds access in some circumstances;
+    (bso#15569).
+</comment>
+    <requestid>1185187</requestid>
+  </revision>
 </revisionlist>

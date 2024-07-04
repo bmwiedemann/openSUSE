@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 28 10:25:19 UTC 2024 - Noel Power <nopower@suse.com>
+
+- Update to 2.9.1
+  * Many qsort() comparison functions are non-transitive, which
+    can lead to out-of-bounds access in some circumstances;
+    (bso#15569).
+
+-------------------------------------------------------------------
 Thu May 16 11:34:15 UTC 2024 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 2.9.0
