@@ -22,7 +22,7 @@
 %bcond_without test
 %endif
 Name:           qrtool
-Version:        0.10.13
+Version:        0.11.0
 Release:        0
 Summary:        An utility for encoding or decoding QR code
 License:        MIT AND CC-BY-4.0 AND Apache-2.0

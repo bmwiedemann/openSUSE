@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul  3 20:46:09 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.11.0
+  * Change --zopfli to allow it to take a value. If the value is
+    not specified, it is assumed that 15 is specified. This is the
+    same as before the change
+
+-------------------------------------------------------------------
 Sat Jun 29 05:48:35 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.10.13
