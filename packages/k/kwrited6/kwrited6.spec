@@ -22,7 +22,7 @@
 %bcond_without released
 %define rname kwrited
 Name:           kwrited6
-Version:        6.1.1
+Version:        6.1.2
 Release:        0
 Summary:        Daemon listening for wall and write messages
 License:        GPL-2.0-or-later
