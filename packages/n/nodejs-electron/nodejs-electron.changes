@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  4 04:27:14 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Fix use after free in content::RenderFrameHostImpl::RemoveDocumentService (bsc#1227307)
+  * RenderFrameHostImpl-use-after-free.patch: correct second instance of the same bug
+- ix86, aarch64: pass --jitless in %electron_rebuild macro to work around crashes on OBS and unblock downstream packages
+
+-------------------------------------------------------------------
 Fri Jun 28 16:56:51 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 29.4.3

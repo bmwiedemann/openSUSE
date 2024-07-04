@@ -1,6 +1,6 @@
 --- src/content/browser/renderer_host/render_frame_host_impl.cc.orig	2023-02-08 21:38:09.974003318 +0100
 +++ src/content/browser/renderer_host/render_frame_host_impl.cc	2023-02-13 14:13:50.217792624 +0100
-@@ -5,6 +5,7 @@
+@@ -8,6 +8,7 @@
  #include <deque>
  #include <limits>
  #include <memory>
@@ -8,7 +8,7 @@
  #include <optional>
  #include <tuple>
  #include <unordered_map>
-@@ -1876,7 +1877,12 @@
+@@ -1818,7 +1819,12 @@ RenderFrameHostImpl::~RenderFrameHostImp
    // `DocumentService` and `RenderFrameHostUserData` subclasses are still valid
    // when their destructors run.
    document_associated_data_->RemoveAllServices();
@@ -22,3 +22,14 @@
  
    // If this was the last active frame in the SiteInstanceGroup, the
    // DecrementActiveFrameCount call will trigger the deletion of the
+@@ -13254,7 +13260,9 @@ bool RenderFrameHostImpl::DidCommitNavig
+       // RenderFrameHost commits before the navigation commits. This happens
+       // when the current RenderFrameHost crashes before navigating to a new
+       // URL.
+-      document_associated_data_.emplace(*this,
++      // bsc#1227307 — same root cause as above
++      document_associated_data_->~DocumentAssociatedData();
++      new(&document_associated_data_) std::optional<DocumentAssociatedData>(std::in_place, *this,
+                                         navigation_request->GetDocumentToken());
+     } else {
+       // Cross-RenderFrameHost navigations that commit into a speculative

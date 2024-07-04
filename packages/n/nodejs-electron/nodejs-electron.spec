@@ -55,8 +55,10 @@ BuildArch:      i686
 #(all the widgets use Gtk unconditionally — not sure which of the changed codepaths are used in Electron)
 %bcond_with qt
 
-
-
+%ifarch aarch64 %ix86
+#work around npm rebuild crashes on OBS
+%global jitless NODE_OPTIONS=--jitless
+%endif
 
 %ifarch aarch64 riscv64
 #Video acceleration API to support. Useful for e.g. signal messenger.
@@ -1409,7 +1411,7 @@ cp /dev/stdin %{buildroot}%{_rpmconfigdir}/macros.d/macros.electron <<"EOF"
 
 # Build native modules against Electron. This should be done as the first step in ‰build. You must set CFLAGS/LDFLAGS previously.
 # You can call it multiple times in different directories and pass more parameters to it (seen in vscode)
-%%electron_rebuild PATH="%{_libexecdir}/electron-node:$PATH" npm rebuild --verbose --foreground-scripts --nodedir=%{_includedir}/electron
+%%electron_rebuild  %{?jitless} PATH="%{_libexecdir}/electron-node:$PATH" npm rebuild --verbose --foreground-scripts --nodedir=%{_includedir}/electron
 
 # Sanity check that native modules load. You must include this in ‰check if the package includes native modules (possibly in addition to actual test suites)
 # These do, in order:
