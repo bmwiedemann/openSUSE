@@ -31,8 +31,10 @@ Source1:        abiword.appdata.xml
 Patch5:         abiword-librevenge.patch
 # PATCH-FIX-UPSTREAM abiword-libwps-0.4.patch dimstar@opensuse.org -- Port to libwps-0.4; patch taken from Fedora.
 Patch6:         abiword-libwps-0.4.patch
-# PATCH-FIX-UPSTREAM boost_asio.patch adam.majer@suse.de -- Aadd support for boost::asio
+# PATCH-FIX-UPSTREAM boost_asio.patch adam.majer@suse.de -- Add support for boost::asio
 Patch7:         boost_asio.patch
+# PATCH-FIX-UPSTREAM xml-inc.patch -- Add missing include
+Patch8:         xml-inc.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  bison
 BuildRequires:  dbus-1-glib-devel
@@ -156,8 +158,7 @@ install -dm 0755 %{buildroot}%{_datadir}/appdata
 install -Dm 0644 %{S:1} %{buildroot}%{_datadir}/appdata/abiword.appdata.xml
 %fdupes %{buildroot}
 
-%post -n libabiword-3_0 -p /sbin/ldconfig
-%postun -n libabiword-3_0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libabiword-3_0
 
 %files
 %license COPYING

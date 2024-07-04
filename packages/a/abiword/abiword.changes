@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  2 18:29:30 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add xml-inc.patch: Add missing include. Fix build in factory.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Thu Feb  8 16:06:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Prepare for RPM 4.20: use autosetup.

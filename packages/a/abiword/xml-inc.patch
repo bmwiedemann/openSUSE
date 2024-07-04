@@ -1,0 +1,12 @@
+Index: src/af/util/xp/ut_stringbuf.cpp
+===================================================================
+--- src/af/util/xp/ut_stringbuf.cpp.orig
++++ src/af/util/xp/ut_stringbuf.cpp
+@@ -26,6 +26,7 @@
+ #include <algorithm>
+ 
+ #include <libxml/uri.h>
++#include <libxml/globals.h>
+ 
+ #include <glib.h>
+ 
