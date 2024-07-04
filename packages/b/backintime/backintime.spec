@@ -23,7 +23,7 @@
 %endif
 
 Name:           backintime
-Version:        1.4.1
+Version:        1.4.3
 Release:        0
 Summary:        Backup tool for Linux inspired by the "flyback project"
 Group:          Productivity/Archiving/Backup
@@ -33,10 +33,6 @@ Source0:        https://github.com/bit-team/backintime/releases/download/v%{vers
 # Public key mentioned in https://github.com/bit-team/backintime#archlinux
 Source2:        %{name}.keyring
 Source3:        %{name}.png
-# PATCH-FEATURE-OPENSUSE %%{name}-polkit_priv_downgrade.patch boo#1007723
-Patch0:         %{name}-polkit_priv_downgrade.patch
-# PATCH-FEATURE-UPSTREAM %%{name}-python_location.patch
-Patch1:         %{name}-python_location.patch
 BuildRequires:  %{python_module devel >= 3.8}
 # TEST REQUIREMENTS (only works on real hardware)
 #BuildRequires:  %#{python_module packaging}
@@ -99,8 +95,6 @@ This package has a Qt5 GUI for %{name}.
 
 %prep
 %setup -q
-%patch -P 0
-%patch -P 1 -p1
 
 %build
 
@@ -186,8 +180,7 @@ rm -f %{_sysconfdir}/udev/rules.d/99-backintime-*.rules
 %{_datadir}/polkit-1/actions/net.launchpad.backintime.policy
 %{_docdir}/%{name}-qt/
 %{_mandir}/man1/%{name}-qt.1%{ext_man}
-%dir %{_sysconfdir}/dbus-1
-%dir %{_sysconfdir}/dbus-1/system.d
-%config %{_sysconfdir}/dbus-1/system.d/net.launchpad.backintime.serviceHelper.conf
+%dir %{_datadir}/dbus-1/system.d
+%{_datadir}/dbus-1/system.d/net.launchpad.backintime.serviceHelper.conf
 
 %changelog

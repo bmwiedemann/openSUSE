@@ -305,4 +305,12 @@ Fix usage of deprecated unix-process polkit authorization subject opens a race c
     <comment></comment>
     <requestid>1149380</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>5ef73fca844589c524db565b44c666b5</srcmd5>
+    <version>1.4.3</version>
+    <time>1720102977</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1184961</requestid>
+  </revision>
 </revisionlist>
