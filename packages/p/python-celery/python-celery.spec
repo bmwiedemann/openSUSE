@@ -28,25 +28,23 @@
 %bcond_with ringdisabled
 %{?sle15_python_module_pythons}
 Name:           python-celery%{psuffix}
-Version:        5.3.6
+Version:        5.4.0
 Release:        0
 Summary:        Distributed Task Queue module for Python
 License:        BSD-3-Clause
 URL:            http://celeryproject.org
 Source:         https://files.pythonhosted.org/packages/source/c/celery/celery-%{version}.tar.gz
 Patch0:         move-pytest-configuration-to-conftest.patch
-# PATCH-FIX-UPSTREAM gh#celery/celery#8838
-Patch1:         support-moto-5.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  netcfg
 BuildRequires:  python-rpm-macros
-Requires:       python-billiard >= 3.6.4
+Requires:       python-billiard >= 4.1.0
 Requires:       python-click >= 8.0.3
 Requires:       python-click-didyoumean >= 0.0.3
 Requires:       python-click-plugins >= 1.1.1
 Requires:       python-click-repl >= 0.2.0
-Requires:       python-kombu >= 5.2.3
+Requires:       python-kombu >= 5.3
 Requires:       python-python-dateutil
 Requires:       python-tzdata
 Requires:       python-vine >= 5.0.0
@@ -70,13 +68,13 @@ BuildRequires:  %{python_module cryptography >= 36.0.2}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module eventlet >= 0.32.0}
 BuildRequires:  %{python_module gevent}
+BuildRequires:  %{python_module google-cloud-storage}
 BuildRequires:  %{python_module moto >= 2.2.6}
 BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module pymongo >= 4.0.2}
 BuildRequires:  %{python_module pytest >= 4.5.0}
 BuildRequires:  %{python_module pytest-click}
 BuildRequires:  %{python_module pytest-subtests}
-BuildRequires:  %{python_module tzdata}
 %if %{with ringdisabled}
 ExclusiveArch:  do-not-build
 %endif

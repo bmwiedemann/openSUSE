@@ -480,4 +480,12 @@
   * Use importlib instead of deprecated pkg_resources.</comment>
     <requestid>1145321</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>41186e4a5ab1842968355cd3d25d022c</srcmd5>
+    <version>5.4.0</version>
+    <time>1720103230</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1185292</requestid>
+  </revision>
 </revisionlist>

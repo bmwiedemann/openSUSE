@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jul  3 13:17:39 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.4.0
+  * Add a Task class specialised for Django
+  * Add Google Cloud Storage (GCS) backend
+  * Added documentation to the smoke tests infra
+  * Bugfix: Missing id on chain
+  * Bugfix: Worker not consuming tasks after Redis broker restart
+  * Catch UnicodeDecodeError when opening corrupt beat-schedule.db
+  * chore(ci): Enhance CI with workflow_dispatch for targeted debugging
+  * Enable efficient chord when using dynamicdb as backend store
+  * feat(daemon): allows daemonization options to be fetched from app 
+    settings
+  * Fix DeprecationWarning: datetime.datetime.utcnow()
+  * Fix recursive result parents on group in middle of chain
+  * Hotfix: Smoke tests didn’t allow customizing the worker’s command 
+    arguments, now it does
+  * Make custom remote control commands available in CLI
+  * Print safe_say() to stdout for non-error flows
+  * Support moto 5.0
+- Drop support-moto-5.patch
+
+-------------------------------------------------------------------
 Fri Feb  9 03:09:55 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.3.6:
