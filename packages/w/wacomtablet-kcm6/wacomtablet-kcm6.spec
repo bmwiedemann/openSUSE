@@ -27,7 +27,7 @@
 %bcond_without released
 # wacomtablet is too generic for this package
 Name:           wacomtablet-kcm6
-Version:        6.1.1
+Version:        6.1.2
 Release:        0
 Summary:        Wacom drivers KCM
 License:        GPL-2.0-or-later
