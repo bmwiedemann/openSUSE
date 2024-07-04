@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Jul  2 08:19:40 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.13.1:
+  * Bugfix. Files lock. Fix incorrect readonly state
+    (gh#nextcloud/desktop#6692).
+  * Bugfix. Conflict dialog for multiple files. Fix checkbox
+    border colors for dark mode on Windows
+    (gh#nextcloud/desktop#6697).
+  * Bugfix/slow sync with tray open (gh#nextcloud/desktop#6698).
+  * Do not open client on install as this breaks MDM deployments
+    (gh#nextcloud/desktop#6755).
+  * Censor account details string in file provider logging
+    (gh#nextcloud/desktop#6759).
+  * Bugfix/lockownertype setreadonly basedoncaps
+    (gh#nextcloud/desktop#6747).
+  * you cannot call non const method on a temp const QString
+    (gh#nextcloud/desktop#6765).
+  * Backport #6714 (gh#nextcloud/desktop#6795).
+  * Fix text colour for NCInputTextEdit
+    (gh#nextcloud/desktop#6812).
+  * only use VFS update instruction when sync engine would do
+    nothing (gh#nextcloud/desktop#6827).
+  * Bugfix/update encryption state when server change
+    (gh#nextcloud/desktop#6842).
+  * Add cfapi debug logs (gh#nextcloud/desktop#6850).
+  * Bugfix/rw folders broken (gh#nextcloud/desktop#6853).
+  * Allow deletion of virtual suffix placeholder files
+    (gh#nextcloud/desktop#6856).
+  * Bugfix nextcloudcmd when syncing results in deleting all files
+    (gh#nextcloud/desktop#6857).
+  * Fix sharePath for virtual paths using suffix vfs mode
+    (gh#nextcloud/desktop#6858).
+  * avoid logs too verbose and with binary data
+    (gh#nextcloud/desktop#6865).
+  * avoid deadlock: cancel hydration requests coming from itself
+    (gh#nextcloud/desktop#6869).
+
+-------------------------------------------------------------------
 Wed Apr 24 14:36:05 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Split out a nextcloud-desktop-vfs-plugin package.
