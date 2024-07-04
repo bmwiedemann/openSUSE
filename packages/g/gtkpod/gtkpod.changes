@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  2 19:07:43 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add xml-inc.patch: Add missing include. Fix build in factory.
+- Rebase patches with quilt.
+
+-------------------------------------------------------------------
 Thu Feb  8 15:58:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Prepare for RPM 4.20: use autosetup.

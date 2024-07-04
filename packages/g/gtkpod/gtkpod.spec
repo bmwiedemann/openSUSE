@@ -28,6 +28,8 @@ Source0:        http://downloads.sourceforge.net/project/gtkpod/gtkpod/gtkpod-2.
 Patch0:         gtkpod-pref.patch
 # PATCH-FEATURE-UPSTREAM use-python3.patch -- Use python3
 Patch1:         use-python3.patch
+# PATCH-FIX-UPSTREAM xml-inc.patch -- Add missing include
+Patch2:         xml-inc.patch
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++

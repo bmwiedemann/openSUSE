@@ -1,8 +1,8 @@
-Index: gtkpod-2.0.0.5631699/libgtkpod/prefs.c
+Index: gtkpod-2.1.5/libgtkpod/prefs.c
 ===================================================================
---- gtkpod-2.0.0.5631699.orig/libgtkpod/prefs.c
-+++ gtkpod-2.0.0.5631699/libgtkpod/prefs.c
-@@ -217,7 +217,7 @@ static void set_default_preferences() {
+--- gtkpod-2.1.5.orig/libgtkpod/prefs.c
++++ gtkpod-2.1.5/libgtkpod/prefs.c
+@@ -220,7 +220,7 @@ static void set_default_preferences() {
      prefs_set_int("readtags", TRUE);
      prefs_set_int("parsetags", FALSE);
      prefs_set_int("parsetags_overwrite", FALSE);
