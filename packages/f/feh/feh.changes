@@ -1,8 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul  2 19:08:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.10.3:
+  * Fix feh not respecting aspect ratio of thumbnails that are
+    smaller than --thumb-width and --thumb-height
+  * Fix --no-recursive behaving like --recursive
+  * Fix rotation by 180° corrupting images
+  * Speed up --sort=size and --sort=mtime by caching stat(2)
+    calls
+
+-------------------------------------------------------------------
 Sun Jan 28 11:20:03 UTC 2024 - Mazin Alhaddad <mazin@getstate.dev>
 
 - Update to 3.10.2
-  * Fix crash in right-click / menu rendering code on some distributions 
+  * Fix crash in right-click / menu rendering code on some distributions
 - Drop 'feh-fix_pointer_arithmetics.patch'
 - Update keyring
 
@@ -117,14 +128,14 @@ Wed Jan  6 16:17:09 UTC 2021 - Dirk Müller <dmueller@suse.com>
 Sat Sep 12 09:45:38 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.5:
-  * Enable --version-sort on systems without strverscmp support. 
+  * Enable --version-sort on systems without strverscmp support.
   * Add %a format specifier (slideshow state: "playing" / "paused")
-  * Fix crashes when combining --reload and --multiwindow 
+  * Fix crashes when combining --reload and --multiwindow
 
 -------------------------------------------------------------------
 Fri Jun 19 07:35:10 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
-- Enable inotify support for automatic reload. 
+- Enable inotify support for automatic reload.
 
 -------------------------------------------------------------------
 Mon Jun  1 08:33:22 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
@@ -159,7 +170,7 @@ Tue Nov  5 12:40:12 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
  * Use --no-fehbg option in ~/.fehbg
  * Fix TOCTTOU when setting the file mode of ~/.fehbg
  * Fix insufficient error handling when updating ~/.fehbg
- * Reload current image(s) when receiving SIGUSR1 or SIGUSR2 
+ * Reload current image(s) when receiving SIGUSR1 or SIGUSR2
 
 -------------------------------------------------------------------
 Mon Feb 18 05:38:11 UTC 2019 - seanlew@opensuse.org
@@ -183,14 +194,14 @@ Tue Nov 13 01:51:18 UTC 2018 - sean@suspend.net
   * Remove deprecated option --cycle-once
   * Remove deprecated options --menu-bg
   * Change default save_filelist key from "f" to "L"
-  * Add option --edit, which makes flip and rotation change the 
-    underlying file as well as the displayed image. This was the 
+  * Add option --edit, which makes flip and rotation change the
+    underlying file as well as the displayed image. This was the
     default behavior in feh 1.x and 2.x
-  * Change default toggle_fullscreen key from "v" to "f" as this 
+  * Change default toggle_fullscreen key from "v" to "f" as this
     is also used by mplayer, mpv and similar
-  * flip and rotation (keys "<", ">", "||, amd "_") no longer change 
-    the underlying file. This leaves delet ("Ctrl+Delete") as the 
-    only destructive action which is enabled by default 
+  * flip and rotation (keys "<", ">", "||, amd "_") no longer change
+    the underlying file. This leaves delet ("Ctrl+Delete") as the
+    only destructive action which is enabled by default
 
 -------------------------------------------------------------------
 Tue Nov 06 05:08:38 UTC 2018 - sean@suspend.net
@@ -205,10 +216,10 @@ Thu Oct 18 02:55:25 UTC 2018 - sean@suspend.net
 
 - update to 2.28
   * Decrease loading time for RAW images by utilizing dcraw
-  * Rename --magick-timeout to --conversion-timeout 
+  * Rename --magick-timeout to --conversion-timeout
   * New option: --on-last-slide=hold|quit|resume
-  * Fix unintended aliasing in rotated images 
-  
+  * Fix unintended aliasing in rotated images
+
 -------------------------------------------------------------------
 Fri Jul 20 10:46:33 UTC 2018 - mimi.vx@gmail.com
 
@@ -225,7 +236,7 @@ Fri Jul 20 10:46:33 UTC 2018 - mimi.vx@gmail.com
   * Prevent --zoom <percent> from blocking --scale-down in fullscreen
      / fixed geometry mode
   * Prevent --keep-zoom-vp from blocking the dynamic window resizing mechanism
-  - Prevent automatic recalculation of the zoom ratio when 
+  - Prevent automatic recalculation of the zoom ratio when
     --keep_zoom_vp is enabled
 
 -------------------------------------------------------------------
@@ -282,7 +293,7 @@ Wed Mar  7 10:14:18 UTC 2018 - mvetter@suse.com
   * Respect --geometry settings in --bg-fill mode
   * Add keybinding toggle_auto_zoom (default "Z") to toggle
     --auto-zoom
-  * Fix filelists specified by -f/--filelist not being reloaded 
+  * Fix filelists specified by -f/--filelist not being reloaded
     when using --reload
 
 -------------------------------------------------------------------
@@ -306,7 +317,7 @@ Sun Feb 18 03:02:38 UTC 2018 - avindra@opensuse.org
 Tue Feb 13 19:46:49 UTC 2018 - crrodriguez@opensuse.org
 
 - Remove BuildRequires on xorg-x11-* metapackages
-- Remove unused buildRequires. 
+- Remove unused buildRequires.
 
 -------------------------------------------------------------------
 Thu Feb  1 17:53:52 UTC 2018 - avindra@opensuse.org
@@ -420,7 +431,7 @@ Fri Feb 24 11:07:56 UTC 2017 - mimi.vx@gmail.com
 * Fix image-specific format specifiers not being updated correctly
 * New key binding: ! -  zoom_fill (zoom to fill window, may cut off image parts
 * Disable EXIF-based auto rotation by default
-* add --auto-rotate option to enable auto rotation 
+* add --auto-rotate option to enable auto rotation
 
 -------------------------------------------------------------------
 Thu Sep  1 20:05:51 UTC 2016 - mimi.vx@gmail.com
@@ -516,17 +527,17 @@ Sat Oct 24 14:44:39 UTC 2015 - mimi.vx@gmail.com
 
 - update to 2.14
 * Add --xinerama-index option for background setting
-* When removing the last image in slidsehow mode, stay on the last (previously 
+* When removing the last image in slidsehow mode, stay on the last (previously
     second-to-last) image
-* Allow --sort and --randomize to override each other (most recently specified 
+* Allow --sort and --randomize to override each other (most recently specified
     option wins) instead of always preferring --sort
-* Thumbnail mode: Mark image as processed when executing an action (--action) by 
+* Thumbnail mode: Mark image as processed when executing an action (--action) by
     clicking on an image
-* It is now possible to override feh's idea of the active xinerama screen using the 
+* It is now possible to override feh's idea of the active xinerama screen using the
     --xinerama-index option
-* Remove (undocumented) feature allowing to override feh's idea of the active 
+* Remove (undocumented) feature allowing to override feh's idea of the active
     xinerama screen by setting the XINERAMA_SCREEN environment variable
-- remove obsolete gpg macro 
+- remove obsolete gpg macro
 
 -------------------------------------------------------------------
 Wed Jul  8 15:01:35 UTC 2015 - mimi.vx@gmail.com
@@ -560,7 +571,7 @@ Tue Sep  2 08:46:37 UTC 2014 - toganm@opensuse.org
   * Fix a buffer overflow in the printf implementation when
   * handling unknown format specifiers (affects --action, --customlist,
    --index-info, --info, --thumb-title and --title)
-  * Update help (if built with help=1) 
+  * Update help (if built with help=1)
 - Patches reworked for patch level 1
   * replaced feh-fix_sighandler.patch with feh-2.12-fix_sighandler.patch
 
@@ -585,7 +596,7 @@ Thu Apr 10 09:53:24 UTC 2014 - seiler@b1-systems.de
  * feh-no_date.patch: removed build date to prevent OBS to rebuild
  * feh-fix_sighandler.patch: changeg value of sighandler
  * feh-fix_pointer_arithmetics.patch: corrected variable of pointe
-                                      arithmetics  
+                                      arithmetics
 -------------------------------------------------------------------
 Thu Aug  1 14:46:11 UTC 2013 - vcizek@suse.com
 
@@ -689,7 +700,7 @@ Fri Sep  7 21:26:28 UTC 2012 - toganm@opensuse.org
   * Fix --filelist trying to load .txt files with imagemagick
   * imagemagick support is now disabled by default, to make feh
   * behaviour less confusing. Set --magick-timeout to a non-negative
-    value to enable it (--magick-timeout 5 for feh-2.5 behaviour) 
+    value to enable it (--magick-timeout 5 for feh-2.5 behaviour)
 - convert license tag to spdx format
 -------------------------------------------------------------------
 Thu Apr 05 17:11:51 UTC 2012 - pascal.bleser@opensuse.org
