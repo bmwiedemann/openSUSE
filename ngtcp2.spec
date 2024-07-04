@@ -64,6 +64,7 @@ Python bindings for implementation of QUIC Protocol
 %package -n %{soname}-devel
 Summary:        Development files for ngtcp2
 Group:          Development/Languages/C and C++
+Requires:       %{gnutls_soname}%{gnutls_sover} = %{version}
 Requires:       %{soname}-%{sover} = %{version}
 Provides:       %{name}-devel
 

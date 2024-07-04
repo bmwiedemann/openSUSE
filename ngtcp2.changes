@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  1 22:03:43 UTC 2024 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- make devel package require also gnutls variant of the library
+
+-------------------------------------------------------------------
 Mon Jun 17 18:14:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.0:
