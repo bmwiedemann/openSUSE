@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul  3 14:20:39 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.8.0
+  * Fix is_member_of when group_dn does not exist in ldap
+  * Verify logging for TLS connection
+  * Move LDAPSetting to the config module
+  * Drop support for Python <=3.7, add support for Python 3.12
+  * Allow to reload DN when using user-bind and DN-template
+  * Add support for Django 5.0, drop Django <=4.1
+  * Add support for custom username field
+
+-------------------------------------------------------------------
 Mon Feb 21 13:38:55 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Use fdupes

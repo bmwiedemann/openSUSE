@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-auth-ldap
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-auth-ldap
-Version:        4.0.0
+Version:        4.8.0
 Release:        0
 Summary:        Django LDAP authentication backend
 License:        BSD-2-Clause
@@ -57,12 +57,12 @@ are many rich configuration options for working with users, groups, and permissi
 
 %check
 export LANG=en_US.UTF8
-export PATH=/sbin:/usr/sbin:/usr/local/bin:/usr/bin:/bin 
+export PATH=/sbin:/usr/sbin:/usr/local/bin:/usr/bin:/bin
 %python_exec -m django test --settings tests.settings -v2
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGES README.rst
+%doc README.rst
 %{python_sitelib}/*
 
 %changelog
