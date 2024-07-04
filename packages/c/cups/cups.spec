@@ -40,18 +40,18 @@ Name:           cups
 # "zypper vcmp 2.3.b99 2.3.0" shows "2.3.b99 is older than 2.3.0" and
 # "zypper vcmp 2.2.99 2.3b6" show "2.2.99 is older than 2.3b6" so that
 # version upgrades from 2.2.x via 2.3.b* to 2.3.0 work:
-Version:        2.4.8
+Version:        2.4.10
 Release:        0
 Summary:        The Common UNIX Printing System
 License:        Apache-2.0
 Group:          Hardware/Printing
 URL:            https://openprinting.github.io/cups
 # To get Source0 go to https://github.com/OpenPrinting/cups/releases or use e.g.
-# wget --no-check-certificate -O cups-2.4.7-source.tar.gz https://github.com/OpenPrinting/cups/releases/download/v2.4.7/cups-2.4.7-source.tar.gz
-Source0:        https://github.com/OpenPrinting/cups/releases/download/v2.4.8/cups-2.4.8-source.tar.gz
+# wget --no-check-certificate -O cups-2.4.10-source.tar.gz https://github.com/OpenPrinting/cups/releases/download/v2.4.10/cups-2.4.10-source.tar.gz
+Source0:        https://github.com/OpenPrinting/cups/releases/download/v2.4.10/cups-2.4.10-source.tar.gz
 # To get Source1 go to https://github.com/OpenPrinting/cups/releases or use e.g.
-# wget --no-check-certificate -O cups-2.4.7-source.tar.gz.sig https://github.com/OpenPrinting/cups/releases/download/v2.4.7/cups-2.4.7-source.tar.gz.sig
-Source1:        https://github.com/OpenPrinting/cups/releases/download/v2.4.8/cups-2.4.8-source.tar.gz.sig
+# wget --no-check-certificate -O cups-2.4.10-source.tar.gz.sig https://github.com/OpenPrinting/cups/releases/download/v2.4.10/cups-2.4.10-source.tar.gz.sig
+Source1:        https://github.com/OpenPrinting/cups/releases/download/v2.4.10/cups-2.4.10-source.tar.gz.sig
 # To make Source2 use e.g.
 #   gpg --keyserver keys.openpgp.org --recv-keys 7082A0A50A2E92640F3880E0E4522DCC9B246FF7
 #   gpg --export --armor 7082A0A50A2E92640F3880E0E4522DCC9B246FF7 >cups.keyring
@@ -61,7 +61,7 @@ Source2:        cups.keyring
 # To manually verify Source0 with Source1 and Source2 do e.g.
 #   gpg --import cups.keyring
 #   gpg --list-keys | grep -1 'Zdenek Dohnal'
-#   gpg --verify cups-2.4.7-source.tar.gz.sig cups-2.4.7-source.tar.gz
+#   gpg --verify cups-2.4.10-source.tar.gz.sig cups-2.4.10-source.tar.gz
 Source102:      Postscript.ppd.gz
 Source105:      Postscript-level1.ppd.gz
 Source106:      Postscript-level2.ppd.gz
@@ -77,6 +77,12 @@ Patch10:        cups-2.1.0-choose-uri-template.patch
 # because the files of the CUPS web content are no documentation, see CUPS STR #3578
 # and https://bugzilla.suse.com/show_bug.cgi?id=546023#c6 and subsequent comments:
 Patch11:        cups-2.1.0-default-webcontent-path.patch
+# Patch12 avoid_C99_mode_for_loop_initial_declarations.patch
+# avoids "error: 'for' loop initial declarations are only allowed in C99 mode"
+# that happens when building for SLE12 at "for (char *start = ..." since
+# https://github.com/OpenPrinting/cups/commit/a7eda84da73126e40400e05dd27d57f8c92d5b0d
+# see https://github.com/OpenPrinting/cups/issues/1000
+Patch12:        avoid_C99_mode_for_loop_initial_declarations.patch
 # Patch100...Patch999 is for private patches from SUSE which are not intended for upstream:
 # Patch100 cups-pam.diff adds conf/pam.suse regarding support for PAM for SUSE:
 Patch100:       cups-pam.diff
@@ -103,13 +109,6 @@ Patch108:       downgrade-autoconf-requirement.patch
 # Patch112 cups-2.4.2-additional_policies.patch adds the 'allowallforanybody' policy to cupsd.conf
 # see SUSE FATE 303515 and https://bugzilla.suse.com/show_bug.cgi?id=936309
 Patch112:       cups-2.4.2-additional_policies.patch
-# Patch113 cups-2.4.8-CVE-2024-35235.patch is derived from the upstream patch against master (CUPS 2.5)
-# https://github.com/OpenPrinting/cups/security/advisories/GHSA-vvwp-mv6j-hw6f#advisory-comment-102901
-# to apply to CUPS 2.4.8 in openSUSE Factory
-# to fix CVE-2024-35235 "cupsd Listen port arbitrary chmod 0140777"
-# https://github.com/OpenPrinting/cups/security/advisories/GHSA-vvwp-mv6j-hw6f
-# https://bugzilla.suse.com/show_bug.cgi?id=1225365
-Patch113:       cups-2.4.8-CVE-2024-35235.patch
 # Build Requirements:
 BuildRequires:  dbus-1-devel
 BuildRequires:  fdupes
@@ -337,13 +336,12 @@ printer drivers for CUPS.
 # Patch112 cups-2.4.2-additional_policies.patch adds the 'allowallforanybody' policy to cupsd.conf
 # see SUSE FATE 303515 and https://bugzilla.suse.com/show_bug.cgi?id=936309
 %patch -P 112 -b cups-2.4.2-additional_policies.orig
-# Patch113 cups-2.4.8-CVE-2024-35235.patch is derived from the upstream patch against master (CUPS 2.5)
-# https://github.com/OpenPrinting/cups/security/advisories/GHSA-vvwp-mv6j-hw6f#advisory-comment-102901
-# to apply to CUPS 2.4.8 in openSUSE Factory
-# to fix CVE-2024-35235 "cupsd Listen port arbitrary chmod 0140777"
-# https://github.com/OpenPrinting/cups/security/advisories/GHSA-vvwp-mv6j-hw6f
-# https://bugzilla.suse.com/show_bug.cgi?id=1225365
-%patch -P 113 -b cups-2.4.8-CVE-2024-35235.orig
+# Patch12 avoid_C99_mode_for_loop_initial_declarations.patch
+# avoids "error: 'for' loop initial declarations are only allowed in C99 mode"
+# that happens when building for SLE12 at "for (char *start = ..." since
+# https://github.com/OpenPrinting/cups/commit/a7eda84da73126e40400e05dd27d57f8c92d5b0d
+# see https://github.com/OpenPrinting/cups/issues/1000
+%patch -P 12 -b avoid_C99_mode_for_loop_initial_declarations.orig
 
 %build
 # Remove ".SILENT" rule for verbose build output

@@ -1,7 +1,5 @@
-Index: configure.ac
-===================================================================
---- configure.ac.orig
-+++ configure.ac
+--- configure.ac.orig	2024-06-18 13:11:05.000000000 +0200
++++ configure.ac	2024-07-02 13:55:46.880533719 +0200
 @@ -9,8 +9,8 @@ dnl Licensed under Apache License v2.0.
  dnl information.
  dnl
@@ -12,4 +10,4 @@ Index: configure.ac
 +AC_PREREQ([2.69])
  
  dnl Package name and version...
- AC_INIT([CUPS],[2.4.8],[https://github.com/openprinting/cups/issues],[cups],[https://openprinting.github.io/cups])
+ AC_INIT([CUPS],[2.4.10],[https://github.com/openprinting/cups/issues],[cups],[https://openprinting.github.io/cups])

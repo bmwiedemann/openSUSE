@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Jul  2 11:45:58 UTC 2024 - Johannes Meixner <jsmeix@suse.com>
+
+- Version upgrade to 2.4.10:
+  See https://github.com/openprinting/cups/releases
+  CUPS 2.4.10 brings two fixes:
+  * Fixed error handling when reading a mixed 1setOf attribute.
+  * Fixed scheduler start if there is only domain socket
+    to listen on (Issue #985) which is fix for regression
+    after fix for CVE-2024-35235 in scenarios where is
+    no other listeners in cupsd.conf than domain socket
+    created on demand by systemd, launchd or upstart.
+  Issues are those at https://github.com/OpenPrinting/cups/issues
+- Version upgrade to 2.4.9:
+  See https://github.com/openprinting/cups/releases
+  CUPS 2.4.9 brings security fix for CVE-2024-35235 and
+  several bug fixes regarding CUPS Web User Interface,
+  PPD generation and HTTP protocol implementation.
+  Detailed list (from CHANGES.md):
+  * Fixed domain socket handling (CVE-2024-35235)
+  * Fixed creating of `cupsUrfSupported` PPD keyword
+    (Issue #952)
+  * Fixed searching for destinations in web ui (Issue #954)
+  * Fixed TLS negotiation using OpenSSL with servers
+    that require the TLS SNI extension.
+  * Really raised `cups_enum_dests()` timeout for listing
+    available IPP printers (Issue #751)...
+  * Fixed `Host` header regression (Issue #967)
+  * Fixed DNS-SD lookups of local services with Avahi
+    (Issue #970)
+  * Fixed listing jobs in destinations in web ui.
+    (Apple issue #6204)
+  * Fixed showing search query in web ui help page.
+    (Issue #977)
+  Issues are those at https://github.com/OpenPrinting/cups/issues
+  Apple issues are those at https://github.com/apple/cups/issues
+- Adapted downgrade-autoconf-requirement.patch for CUPS 2.4.10
+- Removed cups-2.4.8-CVE-2024-35235.patch : fixed upstream
+  see the above CUPS 2.4.9 changes
+- avoid_C99_mode_for_loop_initial_declarations.patch avoids error
+  "'for' loop initial declarations are only allowed in C99 mode"
+  that happens when building for SLE12
+  in scheduler/client.c at "for (char *start = ..." since
+  https://github.com/OpenPrinting/cups/commit/a7eda84da73126e40400e05dd27d57f8c92d5b0d
+  see https://github.com/OpenPrinting/cups/issues/1000
+
+-------------------------------------------------------------------
 Tue Jun 11 08:28:32 UTC 2024 - Johannes Meixner <jsmeix@suse.com>
 
 - cups-2.4.8-CVE-2024-35235.patch is derived

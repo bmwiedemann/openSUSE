@@ -1,0 +1,28 @@
+--- scheduler/client.c.orig	2024-06-18 13:11:05.000000000 +0200
++++ scheduler/client.c	2024-07-02 14:51:25.359712447 +0200
+@@ -566,6 +566,7 @@ cupsdReadClient(cupsd_client_t *con)	/*
+   struct stat		filestats;	/* File information */
+   mime_type_t		*type;		/* MIME type of file */
+   static unsigned	request_id = 0;	/* Request ID for temp files */
++  char			*start;		/* Avoid error: 'for' loop initial declarations are only allowed in C99 mode */
+ 
+ 
+   status = HTTP_STATUS_CONTINUE;
+@@ -1145,7 +1146,7 @@ cupsdReadClient(cupsd_client_t *con)	/*
+ 		  {
+ 		    unsigned int i = 0;	// Array index
+ 
+-		    for (char *start = con->uri + 9; *start && *start != '?' && i < sizeof(name);)
++		    for (*start = con->uri + 9; *start && *start != '?' && i < sizeof(name);)
+ 		      name[i++] = *start++;
+ 
+ 		    name[i] = '\0';
+@@ -1185,7 +1186,7 @@ cupsdReadClient(cupsd_client_t *con)	/*
+ 		  {
+ 		    unsigned int i = 0;	// Array index
+ 
+-		    for (char *start = con->uri + 10; *start && *start != '?' && i < sizeof(name);)
++		    for (*start = con->uri + 10; *start && *start != '?' && i < sizeof(name);)
+ 		      name[i++] = *start++;
+ 
+ 		    name[i] = '\0';
