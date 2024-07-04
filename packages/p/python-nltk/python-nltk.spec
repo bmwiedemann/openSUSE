@@ -16,6 +16,7 @@
 #
 
 
+%define modname nltk
 Name:           python-nltk
 Version:        3.8.1
 Release:        0
@@ -23,7 +24,7 @@ Summary:        Natural Language Toolkit
 License:        Apache-2.0
 URL:            http://nltk.org/
 # SourceRepository: https://github.com/nltk/nltk
-Source0:        https://files.pythonhosted.org/packages/source/n/nltk/nltk-%{version}.zip
+Source0:        https://github.com/nltk/%{modname}/archive/refs/tags/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 # Download/Update NLTK data:
 #     quilt setup python-nltk.spec
 #     pushd nltk-?.?.?
@@ -62,6 +63,9 @@ Source99:       python-nltk.rpmlintrc
 Patch0:         skip-networked-test.patch
 # PATCH-FIX-UPSTREAM nltk-pr3207-py312.patch gh#nltk/nltk#3207
 Patch1:         nltk-pr3207-py312.patch
+# PATCH-FIX-UPSTREAM CVE-2024-39705-disable-download.patch bsc#1227174 mcepl@suse.com
+# this patch makes things totally awesome
+Patch2:         CVE-2024-39705-disable-download.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -118,7 +122,7 @@ Python modules, data sets and tutorials supporting research and
 development in Natural Language Processing.
 
 %prep
-%autosetup -p1 -a1 -n nltk-%{version}
+%setup -q -a1 -n %{modname}-%{version}
 
 # Fix EOL
 sed -i 's/\r/\n/g; s/\n$//' \
@@ -150,6 +154,8 @@ sed -E -i "s|#![[:space:]]*%{_bindir}/env python|#!%{_bindir}/python3|" \
     nltk_data/corpora/pl196x/splitter.py \
     tools/find_deprecated.py
 
+%autopatch -p1
+
 %build
 %pyproject_wheel
 
@@ -164,7 +170,12 @@ chmod -x %{buildroot}%{$python_sitelib}/nltk/test/dependency.doctest
 %check
 export NLTK_DATA=$(readlink -f ./nltk_data/)
 # export PYTEST_ADDOPTS="--doctest-modules"
-%pytest -k 'not network'
+# Skip tests requiring pickle.load gh#nltk/nltk#3266 (CVE-2024-39705)
+skip_tests=" or test_basic or test_increment or test_pad_asterisk or test_pad_dotdot"
+skip_tests+=" or test_pos_tag_eng or test_pos_tag_eng_universal or test_pos_tag_rus"
+skip_tests+=" or test_pos_tag_rus_universal or test_pos_tag_unknown_lang"
+skip_tests+=" or test_sent_tokenize or test_unspecified_lang or test_word_tokenize"
+%pytest -k "not (network ${skip_tests})"
 
 %post
 %python_install_alternative nltk

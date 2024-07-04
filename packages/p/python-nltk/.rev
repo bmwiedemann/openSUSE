@@ -186,4 +186,18 @@
     <comment></comment>
     <requestid>1160546</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>21725b5b233f0304bc237b7703d0f5c9</srcmd5>
+    <version>3.8.1</version>
+    <time>1720103040</time>
+    <user>anag+factory</user>
+    <comment>- Use tarball from GitHub instead of the Zip archive from PyPI,
+  the latter has very messy combination of CRLF and LF EOLs,
+  which are hard to patch.
+- Refresh all patches from the original locations.
+- Add CVE-2024-39705-disable-download.patch to make a crude
+  workaround around CVE-2024-39705 (gh#nltk/nltk#3266,
+  bsc#1227174).</comment>
+    <requestid>1185062</requestid>
+  </revision>
 </revisionlist>

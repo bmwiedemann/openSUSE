@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul  1 21:02:45 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Use tarball from GitHub instead of the Zip archive from PyPI,
+  the latter has very messy combination of CRLF and LF EOLs,
+  which are hard to patch.
+- Refresh all patches from the original locations.
+- Add CVE-2024-39705-disable-download.patch to make a crude
+  workaround around CVE-2024-39705 (gh#nltk/nltk#3266,
+  bsc#1227174).
+
+-------------------------------------------------------------------
 Thu Mar 21 17:41:52 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.8.1
