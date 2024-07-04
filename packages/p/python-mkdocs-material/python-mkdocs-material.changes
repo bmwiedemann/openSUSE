@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  3 16:30:14 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.28:
+ * Fixed #7313 <https://github.com/squidfunk/mkdocs-material/pull/7313>:
+   Improved tooltips mounted in sidebar when feature is disabled
+
+-------------------------------------------------------------------
 Sun Jun 16 19:28:54 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.5.27:
