@@ -9794,6 +9794,7 @@ unsorted:
   - kew 
   - kexi 
   - kexi-lang 
+  - key-rack 
   - keybase-client 
   - keybinder-3.0-devel 
   - keybinder-devel 
@@ -15066,7 +15067,7 @@ unsorted:
   - libpkcs11-helper1-32bit 
   - libpkgconf-devel 
   - libplacebo-devel 
-  - libplacebo338-32bit 
+  - libplacebo349-32bit 
   - libplacebo5-devel 
   - libplanarity0 
   - libplank1 
@@ -15138,14 +15139,14 @@ unsorted:
   - libpolylibgmp8 
   - libpolys-4_3_2 
   - libpolys-devel 
-  - libpoppler-cpp0-32bit 
+  - libpoppler-cpp1-32bit 
   - libpoppler-devel 
   - libpoppler-glib-devel 
   - libpoppler-glib8-32bit 
   - libpoppler-qt5-1 
   - libpoppler-qt5-devel 
   - libpoppler-qt6-devel 
-  - libpoppler135-32bit 
+  - libpoppler139-32bit 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -26766,7 +26767,6 @@ unsorted:
   - python310-sasl 
   - python310-sat-search 
   - python310-sat-stac 
-  - python310-scandir 
   - python310-schedule 
   - python310-schema 
   - python310-scikit-build 
@@ -30258,7 +30258,6 @@ unsorted:
   - python311-sasl 
   - python311-sat-search 
   - python311-sat-stac 
-  - python311-scandir 
   - python311-schedule 
   - python311-schema 
   - python311-scikit-build 
@@ -33840,7 +33839,6 @@ unsorted:
   - python312-sarif-om 
   - python312-sas7bdat 
   - python312-sasl 
-  - python312-scandir 
   - python312-schedule 
   - python312-schema 
   - python312-scikit-build 
