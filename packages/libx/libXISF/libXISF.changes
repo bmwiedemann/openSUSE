@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul  3 06:28:36 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.2.12+git5.d00de20:
+  * Add new XISFModify class to edit FITSKeywords
+  * Make compression level 0-100
+  * Fix calculation of compression level for ZSTD
+
+-------------------------------------------------------------------
 Wed Mar 27 13:30:54 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.2.12:

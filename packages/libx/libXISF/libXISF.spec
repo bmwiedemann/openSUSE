@@ -21,13 +21,16 @@
 %endif
 
 %define sover 0
+%define full_sover 0.2.12
+
 Name:           libXISF
-Version:        0.2.12
+Version:        0.2.12+git5.d00de20
 Release:        0
 Summary:        Library to read/write PixInsight XISF files
 License:        GPL-3.0-or-later
 URL:            https://gitea.nouspiro.space/nou/libXISF
-Source:         https://gitea.nouspiro.space/nou/libXISF/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+#Source:         https://gitea.nouspiro.space/nou/libXISF/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM
 Patch0:         fix-pkgconfig.patch
 BuildRequires:  cmake
@@ -56,7 +59,7 @@ Requires:       %{name}%{sover} = %{version}
 This package contains all the needed development files to use %{name}.
 
 %prep
-%autosetup -p1 -n libxisf
+%autosetup -p1
 
 %build
 %cmake \
@@ -77,7 +80,7 @@ This package contains all the needed development files to use %{name}.
 
 %files -n %{name}%{sover}
 %{_libdir}/libXISF.so.%{sover}
-%{_libdir}/libXISF.so.%{version}
+%{_libdir}/libXISF.so.%{full_sover}
 %license LICENSE
 
 %files devel

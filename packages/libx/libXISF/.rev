@@ -121,4 +121,16 @@
 </comment>
     <requestid>1162932</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>285a16bf7d28756a091d3ef8dfba36e3</srcmd5>
+    <version>0.2.12+git5.d00de20</version>
+    <time>1720103032</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.2.12+git5.d00de20:
+  * Add new XISFModify class to edit FITSKeywords
+  * Make compression level 0-100
+  * Fix calculation of compression level for ZSTD
+</comment>
+    <requestid>1185043</requestid>
+  </revision>
 </revisionlist>
