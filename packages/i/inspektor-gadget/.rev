@@ -7,4 +7,12 @@
     <comment>new package inspektor-gadget: eBPF tool and systems inspection framework for Kubernetes, containers and Linux hosts</comment>
     <requestid>1179398</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4b059d79d07dd731f0577cd9606e12d9</srcmd5>
+    <version>0.30.0</version>
+    <time>1720103067</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1185167</requestid>
+  </revision>
 </revisionlist>

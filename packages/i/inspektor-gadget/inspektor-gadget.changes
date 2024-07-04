@@ -1,4 +1,147 @@
 -------------------------------------------------------------------
+Wed Jul 03 15:51:22 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.30.0:
+  * ci: Set DOCKER_BUILD_NO_SUMMARY.
+  * gadgets/trace_capabilities: Add special check for exec-family
+    syscalls
+  * gadgets: Add trace_capabilities
+  * gadgets/trace_tcpdrop: Add kernel stack field
+  * pkg/operators/ebpf: Support kernel stack map
+  * pkg/oci: Add new options to restrain execution by digest.
+  * go: bump github.com/aws/aws-sdk-go in /tools/eks-cleanup
+  * gadgets: update README.md
+  * gadgets/Makefile: add readme target
+  * gadgets/trace_exec: Add tests
+  * testing: Add helper to sleep
+  * treewide: Remove unneeded systemd workaround.
+  * ci: Use eastus2 for AKS
+  * go: bump github.com/moby/moby
+  * go: bump github.com/docker/cli
+  * go: bump github.com/aws/aws-sdk-go in /tools/eks-cleanup
+  * test/images: Test that export command is deterministic
+  * build: Allow reproducible builds
+  * kubemanager: Check ParamAllNamespaces in PreStart too
+  * datasource: Return error on New()
+  * go: bump github.com/moby/moby
+  * go: bump github.com/docker/cli
+  * ci: Remove ARO from release needs.
+  * go: bump github.com/aws/aws-sdk-go in /tools/eks-cleanup
+  * gadgets/snapshot_process: Port test to use new testing
+    framework
+  * pkg/testing/match: Add unittests
+  * testing: Consolidate match logic in pkg/testing/match
+  * CI: Use multinode cluster for testing gadgets on kubernetes
+  * trace_mount: Add call column and flag decoding
+  * docs: Remove mouting /run for ig.
+  * pkg/container-utils: Preprend HOST_ROOT to
+    /run/cri-dockerd.sock.
+  * cmd/ig: Preprend host.HostRoot to runtime socket path.
+  * go: bump github.com/aws/aws-sdk-go in /tools/eks-cleanup
+  * docs: Add instruction to verify ebpf-builder image.
+  * ci: Verify eBPF builder image before building gadgets.
+  * Revert "container-collection: add process metadata enricher"
+  * gadgets/trace_exec: Update metadata.
+  * ci: bump docker/build-push-action from 5 to 6
+  * ci: bump aquasecurity/trivy-action from 0.22.0 to 0.23.0
+  * add sort operator import to ig and gadgettracermanager binaries
+  * pkg/datasource: add @flyth as code owner
+  * pkg/datasource: improve subscription handling
+  * Fix codeowners
+  * trace_tcp{drop,retrans}: Use bitfields for flags
+  * ebpf/formatters: Support formatting bitfields
+  * trace_open: Add missing fields
+  * gadgets/test: Run tests even if wasm module exists
+  * ig/build: Always pull builder-image if latest tag is used
+  * tests: Disable TestTraceNetwork on cri-o
+  * gadgets/trace_sni: Port test to use new testing framework
+  * pkg/operators/sort: add unit tests
+  * add sort operator
+  * pkg/datasource: add Swap() method to DataArray
+  * gadgets/ports: Convert to host endianess inside the gadget
+  * go: bump github.com/containers/image/v5 from 5.31.0 to 5.31.1
+  * go: bump github.com/tetratelabs/wazero from 1.7.1 to 1.7.3
+  * go: bump github.com/aws/aws-sdk-go in /tools/eks-cleanup
+  * gadgets/trace_exec: Add wasm module to handle args field
+  * docs: Add guide to use wasm from a gadget
+  * docs/reference: Add wasm reference docs
+  * wasm: Add test to check consts are in sync
+  * operators/wasm: Add tests
+  * operators: Add wasm operator
+  * image/build: Use correct Inspektor Gadget code in in-tree
+    gadgets
+  * gadgets: Port trace_tcp_test to gadgets
+  * pkg/container-hook: Check container PID bound before converting
+    it.
+  * ci: bump actions/{download,upload}-artifact from 3 to 4
+  * formatters: Avoid changing name of the field
+  * operators/ebpf: Rename converters to formatters
+  * ci: Use westeurope for AKS.
+  * container-hook: delete old entries and marks after timeout
+  * container-hook: use a single fanotify to watch pid files
+  * integration/kubectl-gadget: Add an option to skip image
+    verification
+  * gadgets/test: Add an option skip image verification
+  * ci: Skip signing ig-k8s image/gadget images on fork
+  * go: bump github.com/aws/aws-sdk-go in /tools/eks-cleanup
+  * go: bump github.com/miekg/dns from 1.1.59 to 1.1.61 in
+    /tools/dnstester
+  * execsnoop: add parent upper layer
+  * gadgets/signal: Add test using the new framework.
+  * integration/Command: Enhance error messages for kill
+  * pkg/oci: Remove undeeded authOpts for getSigningInformation().
+  * container-collection: add process metadata enricher
+  * go: bump github.com/aws/aws-sdk-go in /tools/eks-cleanup
+  * gadgets/trace_mount: Implement test using new framework
+  * tests: Remove duplicated test
+  * testing/containers: Add support for privileged mode
+  * gadgets/trace_open: Improve tests
+  * gadgets/trace_exec: drop uid filter on sys_exit_execve
+  * pkg/gadgets/trace_exec: drop uid filter on sys_exit_execve
+  * pkg/gadgets/capabilities: Fix pid field
+  * container-hook: add new test
+  * pkg/gadgets/capabilities: fix pid and tgid fields
+  * go: bump github.com/aws/aws-sdk-go in /tools/eks-cleanup
+  * ci: Use --format to retrieve image digest instead of grep and
+    awk.
+  * go: bump github.com/spf13/cobra from 1.8.0 to 1.8.1
+  * go: bump github.com/aws/aws-sdk-go in /tools/eks-cleanup
+  * go: bump github.com/docker/docker
+  * go: bump github.com/aws/aws-sdk-go in /tools/eks-cleanup
+  * ci: Sign helper images.
+  * go: bump github.com/moby/moby
+  * ci: Sign ig container image.
+  * ci: Add action to sign container image.
+  * go: bump the k8s group with 8 updates
+  * uprobetracer: use secureopen to avoid TOCTOU issues
+  * New pkg: secureopen: open files in containers
+  * go: bump github.com/aws/aws-sdk-go in /tools/eks-cleanup
+  * go: bump google.golang.org/protobuf from 1.34.1 to 1.34.2
+  * Align k8s json and columns name
+  * trace exec: extract fixup for execve as a common header
+  * fields: Mark fields hidden based on attributes
+  * ci: bump aquasecurity/trivy-action from 0.21.0 to 0.22.0
+  * go: bump github.com/aws/aws-sdk-go in /tools/eks-cleanup
+  * go: bump sigs.k8s.io/controller-runtime from 0.18.3 to 0.18.4
+  * go: bump github.com/docker/{cli,docker} and
+    github.com/moby/moby
+  * go: bump github.com/containerd/containerd from 1.7.17 to 1.7.18
+  * go: bump the golang-x group with 3 updates
+  * go: bump github.com/containers/common from 0.59.0 to 0.59.1
+  * Updating trace_open test to support testing in k8s and adding
+    ci job for testing with k8s
+  * adding helper functions for testing with k8s
+  * gadgets/trace_exec: extract fixup for execve as a common header
+  * go: bump github.com/spf13/viper from 1.18.2 to 1.19.0
+  * go: bump github.com/mdlayher/socket from 0.4.1 to 0.5.1 in
+    /examples
+  * Artifact Hub: Update gadgets version to v0.29.0
+  * container-collection: Don't rely on k8s.io/kubernetes/pkg/...
+  * go: bump github.com/aws/aws-sdk-go in /tools/eks-cleanup
+  * implementing container factory interface for k8s
+  * updating field names: pod and container
+
+-------------------------------------------------------------------
 Mon Jun 03 12:59:40 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - update to version 0.29.0:

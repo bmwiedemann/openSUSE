@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           inspektor-gadget
-Version:        0.29.0
+Version:        0.30.0
 Release:        0
 Summary:        A eBPF tool and systems inspection framework
 License:        Apache-2.0
