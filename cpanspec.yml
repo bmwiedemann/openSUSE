@@ -7,11 +7,10 @@
 #sources:
 #  - source1
 #  - source2
-patches:
-  openssl3_1-adapt_tests.patch: -p1 PATCH-FIX-OPENSUSE https://github.com/vlet/p5-Protocol-HTTP2/pull/14
+#patches:
 #  bar.patch:
-#preamble: |-
-# BuildRequires:  gcc-c++
+preamble: |-
+  BuildRequires:  perl(Net::SSLeay) > 1.45
 #post_prep: |-
 # hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
 # sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
@@ -25,7 +24,7 @@ patches:
 #./Build build flags=%{?_smp_mflags} --myflag
 #custom_test: |-
 #startserver && make test
-#ignore_requires: Bizarre::Module
+ignore_requires: Net::SSLeay
 #skip_doc: regexp_to_skip_for_doc.*
 #add_doc: files to add to docs
 #misc: |-

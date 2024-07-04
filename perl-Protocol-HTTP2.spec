@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Protocol-HTTP2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,27 +18,56 @@
 
 %define cpan_name Protocol-HTTP2
 Name:           perl-Protocol-HTTP2
-Version:        1.10
+Version:        1.110.0
 Release:        0
+# 1.11 -> normalize -> 1.110.0
+%define cpan_version 1.11
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        HTTP/2 protocol implementation (RFC 7540)
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/C/CR/CRUX/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/C/CR/CRUX/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
-# PATCH-FIX-OPENSUSE https://github.com/vlet/p5-Protocol-HTTP2/pull/14
-Patch0:         openssl3_1-adapt_tests.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(AnyEvent)
 BuildRequires:  perl(MIME::Base64) >= 3.11
+BuildRequires:  perl(Module::Build)
 BuildRequires:  perl(Module::Build::Tiny) >= 0.035
-BuildRequires:  perl(Net::SSLeay) >= 1.45
+#BuildRequires:  perl(Net::SSLeay) >= > 1.45
 BuildRequires:  perl(Test::LeakTrace)
 BuildRequires:  perl(Test::More) >= 0.98
 BuildRequires:  perl(Test::TCP)
 Requires:       perl(MIME::Base64) >= 3.11
+Provides:       perl(Protocol::HTTP2) = %{version}
+Provides:       perl(Protocol::HTTP2::Client)
+Provides:       perl(Protocol::HTTP2::Connection)
+Provides:       perl(Protocol::HTTP2::Constants)
+Provides:       perl(Protocol::HTTP2::Frame)
+Provides:       perl(Protocol::HTTP2::Frame::Continuation)
+Provides:       perl(Protocol::HTTP2::Frame::Data)
+Provides:       perl(Protocol::HTTP2::Frame::Goaway)
+Provides:       perl(Protocol::HTTP2::Frame::Headers)
+Provides:       perl(Protocol::HTTP2::Frame::Ping)
+Provides:       perl(Protocol::HTTP2::Frame::Priority)
+Provides:       perl(Protocol::HTTP2::Frame::Push_promise)
+Provides:       perl(Protocol::HTTP2::Frame::Rst_stream)
+Provides:       perl(Protocol::HTTP2::Frame::Settings)
+Provides:       perl(Protocol::HTTP2::Frame::Window_update)
+Provides:       perl(Protocol::HTTP2::HeaderCompression)
+Provides:       perl(Protocol::HTTP2::Huffman)
+Provides:       perl(Protocol::HTTP2::HuffmanCodes)
+Provides:       perl(Protocol::HTTP2::Server)
+Provides:       perl(Protocol::HTTP2::Server::Stream)
+Provides:       perl(Protocol::HTTP2::StaticTable)
+Provides:       perl(Protocol::HTTP2::Stream)
+Provides:       perl(Protocol::HTTP2::Trace)
+Provides:       perl(Protocol::HTTP2::Upgrade)
+%undefine       __perllib_provides
 %{perl_requires}
+# MANUAL BEGIN
+BuildRequires:  perl(Net::SSLeay) > 1.45
+# MANUAL END
 
 %description
 Protocol::HTTP2 is HTTP/2 protocol implementation (at
@@ -48,7 +77,7 @@ client/server/intermediate on top of your favorite event loop over plain or
 tls socket (see examples).
 
 %prep
-%autosetup  -n %{cpan_name}-%{version} -p1
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Build.PL --installdirs=vendor
