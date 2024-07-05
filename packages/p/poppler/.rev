@@ -2167,4 +2167,12 @@ New upstream release</comment>
   glib:</comment>
     <requestid>1184941</requestid>
   </revision>
+  <revision rev="205" vrev="2">
+    <srcmd5>67f7613735d89d844a1114f899f68073</srcmd5>
+    <version>24.07.0</version>
+    <time>1720201445</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1185284</requestid>
+  </revision>
 </revisionlist>

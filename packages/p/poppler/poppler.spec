@@ -57,7 +57,7 @@ BuildRequires:  pkgconfig(cairo-pdf)
 BuildRequires:  pkgconfig(cairo-ps)
 BuildRequires:  pkgconfig(cairo-svg)
 BuildRequires:  pkgconfig(fontconfig)
-BuildRequires:  pkgconfig(freetype2) >= 2.11
+BuildRequires:  pkgconfig(freetype2) >= 24.0.18
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.36
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.41
