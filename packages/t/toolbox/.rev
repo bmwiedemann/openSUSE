@@ -262,4 +262,13 @@
   * Fix bash error when container cannot be pulled</comment>
     <requestid>1121193</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>6954a70437ab9858b1981e8c5b1907d5</srcmd5>
+    <version>2.3+git20240704.84ec25e</version>
+    <time>1720201501</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.3+git20240704.84ec25e:
+  * toolbox: use correct container state tense in msg</comment>
+    <requestid>1185366</requestid>
+  </revision>
 </revisionlist>
