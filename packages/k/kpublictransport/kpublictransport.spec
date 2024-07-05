@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kpublictransport
-Version:        24.05.1
+Version:        24.05.2
 Release:        0
 Summary:        QML imports for querying public transport data
 License:        LGPL-2.0-or-later
