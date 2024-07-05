@@ -16,10 +16,10 @@
 #
 
 
-%global DBusName org.gnome.FontManager
-%global DBusName2 org.gnome.FontViewer
+%global DBusName com.github.FontManager.FontManager
+%global DBusName2 com.github.FontManager.FontViewer
 Name:           font-manager
-Version:        0.8.9
+Version:        0.9.0
 Release:        0
 Summary:        A simple font management application for Gtk+ Desktop Environments
 License:        GPL-3.0-or-later
@@ -27,31 +27,29 @@ URL:            https://fontmanager.github.io
 Source0:        https://github.com/FontManager/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  appstream-glib
 BuildRequires:  gettext-runtime
-BuildRequires:  meson
+BuildRequires:  meson >= 0.59
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  vala >= 0.42
+BuildRequires:  vala >= 0.56
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(fontconfig)
-BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.44
+BuildRequires:  pkgconfig(freetype2) >= 2.10
+BuildRequires:  pkgconfig(glib-2.0) >= 2.62
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
-BuildRequires:  pkgconfig(json-glib-1.0)
-# Disable nautilus until font-manager is ported to gtk4
-#BuildRequires:  pkgconfig(libnautilus-extension)
+BuildRequires:  pkgconfig(gtk4) >= 4.12
+BuildRequires:  pkgconfig(json-glib-1.0) >= 1.5
+BuildRequires:  pkgconfig(libnautilus-extension-4)
 BuildRequires:  pkgconfig(libnemo-extension)
-BuildRequires:  pkgconfig(libsoup-3.0)
-BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libsoup-3.0) >= 3.2
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.10
 BuildRequires:  pkgconfig(pango)
-BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(sqlite3) >= 3.35
 BuildRequires:  pkgconfig(thunarx-3)
-BuildRequires:  pkgconfig(webkit2gtk-4.1) >= 2.13.90
+BuildRequires:  pkgconfig(webkitgtk-6.0) >= 2.4
 Requires:       %{name}-common
 Requires:       font-viewer
 Requires:       fontconfig
-Requires:       webkit2gtk-4_0-injected-bundles
-Obsoletes:      nautilus-%{name} <= %{version}
+Requires:       webkitgtk-6_0-injected-bundles
 
 %description
 Font Manager is intended to provide a way for average users to easily
@@ -108,8 +106,8 @@ This package provides integration with the Thunar file manager.
 %build
 %meson \
   --buildtype=release \
-  -Dnautilus=false \
-  -Dnemo=True \
+  -Dnautilus=true \
+  -Dnemo=true \
   -Dthunar=true \
   -Dreproducible=true
 %meson_build
@@ -119,26 +117,25 @@ This package provides integration with the Thunar file manager.
 rm %{buildroot}/%{_libdir}/%{name}/libfontmanager.so
 
 %find_lang %{name}
-%suse_update_desktop_file -r org.gnome.FontManager Graphics Viewer
-%suse_update_desktop_file -r org.gnome.FontViewer Graphics Viewer
+%suse_update_desktop_file -r com.github.FontManager.FontManager Graphics Viewer
+%suse_update_desktop_file -r com.github.FontManager.FontViewer Graphics Viewer
 
 %check
-appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/*.appdata.xml
+appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/*.metainfo.xml
 
 %posttrans
 %{_bindir}/glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
 
 %files
 %{_bindir}/%{name}
-%{_datadir}/metainfo/%{DBusName}.appdata.xml
+%{_datadir}/metainfo/%{DBusName}.metainfo.xml
 %{_datadir}/applications/%{DBusName}.desktop
 %{_datadir}/dbus-1/services/%{DBusName}.service
 %{_datadir}/glib-2.0/schemas/%{DBusName}.gschema.xml
 %dir %{_datadir}/gnome-shell
 %dir %{_datadir}/gnome-shell/search-providers
 %{_datadir}/gnome-shell/search-providers/%{DBusName}.SearchProvider.ini
-%{_datadir}/icons/hicolor/128x128/apps/%{DBusName}.png
-%{_datadir}/icons/hicolor/256x256/apps/%{DBusName}.png
+%{_datadir}/icons/hicolor/scalable/apps/%{DBusName}.svg
 %{_mandir}/man1/%{name}.*
 
 %files -n %{name}-common
@@ -149,15 +146,14 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/*.appdat
 
 %files -n font-viewer
 %{_libexecdir}/%{name}/
-%{_datadir}/metainfo/%{DBusName2}.appdata.xml
+%{_datadir}/metainfo/%{DBusName2}.metainfo.xml
 %{_datadir}/applications/%{DBusName2}.desktop
 %{_datadir}/dbus-1/services/%{DBusName2}.service
 %{_datadir}/glib-2.0/schemas/%{DBusName2}.gschema.xml
-%{_datadir}/icons/hicolor/128x128/apps/%{DBusName2}.png
-%{_datadir}/icons/hicolor/256x256/apps/%{DBusName2}.png
+%{_datadir}/icons/hicolor/scalable/apps/%{DBusName2}.svg
 
-#%%files -n nautilus-%%{name}
-#%%{_libdir}/nautilus/extensions-3.0/nautilus-%%{name}.so
+%files -n nautilus-%{name}
+%{_libdir}/nautilus/extensions-4/nautilus-%{name}.so
 
 %files -n nemo-%{name}
 %{_libdir}/nemo/extensions-3.0/nemo-%{name}.so
