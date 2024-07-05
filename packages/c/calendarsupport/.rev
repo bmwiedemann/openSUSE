@@ -800,4 +800,12 @@
     <comment>KDE release gear 24.05.1 (forwarded request 1180225 from krop)</comment>
     <requestid>1180427</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>3e779cd11dd83c841d66188e86466a1c</srcmd5>
+    <version>24.05.2</version>
+    <time>1720201536</time>
+    <user>anag+factory</user>
+    <comment>KDE Release Gear 24.05.2 (forwarded request 1184893 from krop)</comment>
+    <requestid>1185471</requestid>
+  </revision>
 </revisionlist>
