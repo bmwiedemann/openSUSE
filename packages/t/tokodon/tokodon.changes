@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul  2 13:55:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.2/
+- Changes since 24.05.1:
+  * Fix the private post notice messing with the post width in odd ways
+  * Disable hidden post menu entries
+  * Fix the loading indicator not showing up initially on the timeline
+  * Let users be able to clear content warning (kde#488631)
+  * Actually propagate the spoiler text to the composer when editing a post (kde#488631)
+  * Prevent notes field on profiles from stopping keyboard navigation (kde#488236)
+
+-------------------------------------------------------------------
 Wed Jun 12 07:35:07 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.1
