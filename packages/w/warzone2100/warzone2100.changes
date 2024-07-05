@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jul  2 04:49:22 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- update to 4.5.0 (changes since 4.5.0-beta2)
+  * General:
+    * Fix: Exclude retreating droids from formation speed limiting
+    * Fix: GameStoryLogger: Generate final frame
+    * Fix: missionMoveTransporterOffWorld: Clear additional state 
+    * Fix: Only process structure group assignment if no droids
+      are also selected
+    * Fix: Prevent artillery units under firesupport trying to
+      ram targets
+  * Campaign:
+    * Change: Some buffs for campaign weapons
+  * Other:
+    * Fix: Emscripten build info
+  * For full changelog: https://wz2100.net/news/version-4-5-0/
+- Drop removing devel stuff, fixed upstream
+
+-------------------------------------------------------------------
 Mon Feb 19 18:00:10 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Fix building for openSUSE Tumbleweed, changed docs packaging

@@ -24,7 +24,7 @@
 %bcond_with vulkan
 %endif
 Name:           warzone2100
-Version:        4.4.2
+Version:        4.5.0
 Release:        0
 Summary:        Innovative 3D real-time strategy
 License:        BSD-3-Clause AND CC-BY-SA-3.0 AND GPL-3.0-or-later AND CC0-1.0 AND LGPL-2.1-only
@@ -133,18 +133,16 @@ find .  -name '*.cpp' | xargs sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g"
 %install
 %cmake_install
 %find_lang %{name}
+%find_lang %{name}_guide
 %suse_update_desktop_file -i %{name}
 
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/
 mv %{buildroot}%{_datadir}/icons/warzone2100.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/warzone2100.png
 
-# not needed - we don't want a devel package
-rm -rf  %{buildroot}%{_includedir}/fmt  %{buildroot}%{_libdir}/libfmt.a %{buildroot}%{_libdir}/cmake/fmt %{buildroot}/%{_libdir}/pkgconfig/fmt.pc
-rmdir -v %{buildroot}%{_libdir}/cmake %{buildroot}/%{_libdir}/pkgconfig
-
 %fdupes %{buildroot}%{_datadir}
 
 %files -f %{name}.lang
+%files -f %{name}_guide.lang
 %license COPYING COPYING.NONGPL COPYING.README
 %doc %{_docdir}/%{name}
 %{_bindir}/*
