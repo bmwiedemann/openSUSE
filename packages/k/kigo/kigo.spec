@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kigo
-Version:        24.05.1
+Version:        24.05.2
 Release:        0
 Summary:        Traditional Chinese Boardgame by KDE
 License:        GPL-2.0-or-later
