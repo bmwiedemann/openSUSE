@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           libktorrent
-Version:        24.05.1
+Version:        24.05.2
 Release:        0
 Summary:        Torrent Downloading Library
 License:        GPL-2.0-or-later
