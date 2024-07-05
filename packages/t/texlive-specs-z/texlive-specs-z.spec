@@ -1,5 +1,5 @@
 #
-# spec file for package texlive-specs-z.spec.new
+# spec file for package texlive-specs-z.spec
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -14,12 +14,14 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+##### WARNING: Please do not edit this auto generated spec file.
+#
 
 
 %define texlive_version  2024
 %define texlive_previous 2022
 %define texlive_release  20240311
-%define texlive_noarch   213
+%define texlive_noarch   216
 %define biber_version    2.19
 
 #!BuildIgnore:          texlive
@@ -54,6 +56,10 @@
 %define _x11data        %{_datadir}/X11
 %define _x11inc         %{_includedir}
 %define _appdefdir      %{_x11data}/app-defaults
+
+%if ! %{defined python3_bin_suffix}
+%global python3_bin_suffix 3
+%endif
 
 Name:           texlive-specs-z
 Version:        2024
@@ -43576,10 +43582,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	       %{_texmfdistdir}/doc/fonts/xcharter/altone.py
     do
         test -e %{buildroot}/$scr || continue
-	head -n 1 %{buildroot}/$scr | grep -q python3 && continue
+	head -n 1 %{buildroot}/$scr | grep -q python%python3_bin_suffix && continue
 	ed %{buildroot}/${scr} <<-'EOF'
 		1
-		s@python@python3@
+		s@python[23]\?[^\s]*@python%python3_bin_suffix@
 		.
 		w
 		q
@@ -43739,7 +43745,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	ed %{buildroot}/${scr} <<-'EOF'
 		1
 		i
-		#! /usr/bin/python3
+		#! /usr/bin/python%python3_bin_suffix
 		.
 		w
 		q
@@ -43752,10 +43758,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	       %{_texmfdistdir}/doc/xelatex/xepersian/unldk-0.2.py
     do
         test -e %{buildroot}/$scr || continue
-	head -n 1 %{buildroot}/$scr | grep -q python3 && continue
+	head -n 1 %{buildroot}/$scr | grep -q python%python3_bin_suffix && continue
 	ed %{buildroot}/${scr} <<-'EOF'
 		1
-		s@python@python3@
+		s@python[23]\?[^\s]*@python%python3_bin_suffix@
 		.
 		w
 		q
