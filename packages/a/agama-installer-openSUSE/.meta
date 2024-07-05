@@ -1,0 +1,5 @@
+<package name="agama-installer-openSUSE" project="openSUSE:Factory">
+  <title>agama-live</title>
+  <description>Agama-based live installation media</description>
+  <devel project="systemsmanagement:Agama:Devel" package="agama-installer-openSUSE"/>
+</package>

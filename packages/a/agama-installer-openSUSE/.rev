@@ -1,0 +1,17 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>be341786b3c6c3bee4b12d926d636675</srcmd5>
+    <version>9.0.0</version>
+    <time>1720201604</time>
+    <user>anag+factory</user>
+    <comment>Add agama-installer-openSUSE
+
+* A new installer for SLES / Leap 16, Leap Micro 6
+  https://code.opensuse.org/leap/features/issue/158
+
+* Alterantive installer for TW
+
+* We plan to start workign on openQA this Friday</comment>
+    <requestid>1184819</requestid>
+  </revision>
+</revisionlist>
