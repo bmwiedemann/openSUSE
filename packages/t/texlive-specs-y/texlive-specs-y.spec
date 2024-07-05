@@ -1,5 +1,5 @@
 #
-# spec file for package texlive-specs-y.spec.new
+# spec file for package texlive-specs-y.spec
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -14,12 +14,14 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+##### WARNING: Please do not edit this auto generated spec file.
+#
 
 
 %define texlive_version  2024
 %define texlive_previous 2022
 %define texlive_release  20240311
-%define texlive_noarch   213
+%define texlive_noarch   216
 %define biber_version    2.19
 
 #!BuildIgnore:          texlive
@@ -54,6 +56,10 @@
 %define _x11data        %{_datadir}/X11
 %define _x11inc         %{_includedir}
 %define _appdefdir      %{_x11data}/app-defaults
+
+%if ! %{defined python3_bin_suffix}
+%global python3_bin_suffix 3
+%endif
 
 Name:           texlive-specs-y
 Version:        2024
@@ -32372,9 +32378,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:22} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:23} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:24} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/ufrgscca/ufrgscca-cover-ptBR.tex %{buildroot}%{_texmfdistdir}/tex/latex/ufrgscca/ufrgscca-forms.tex
-    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/ufrgscca/ufrgscca-forms.tex %{buildroot}%{_texmfdistdir}/tex/latex/ufrgscca/ufrgscca-forms.tex
     mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/ufrgscca/ufrgscca-terms-ptBR.tex %{buildroot}%{_texmfdistdir}/tex/latex/ufrgscca/ufrgscca-terms-ptBR.tex
+    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/ufrgscca/ufrgscca-forms.tex %{buildroot}%{_texmfdistdir}/tex/latex/ufrgscca/ufrgscca-forms.tex
+    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/ufrgscca/ufrgscca-cover-ptBR.tex %{buildroot}%{_texmfdistdir}/tex/latex/ufrgscca/ufrgscca-forms.tex
     tar --use-compress-program=xz -xf %{S:25} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:26} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
@@ -32568,6 +32574,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     do
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
+    done
+    # Extend python3 scripts with major version only if any
+    for scr in %{_texmfdistdir}/doc/latex/unicode-math-input/unicode-math-input-script.py
+    do
+	test -e %{buildroot}/$scr || continue
+	ed %{buildroot}/${scr} <<-'EOF'
+		1
+		s@python3@python%python3_bin_suffix@
+		.
+		w
+		q
+	EOF
     done
     tar --use-compress-program=xz -xf %{S:97} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:98} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -33049,10 +33067,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     for scr in %{_texmfdistdir}/tex/latex/wargame/wgexport.py
     do
         test -e %{buildroot}/$scr || continue
-	head -n 1 %{buildroot}/$scr | grep -q python3 && continue
+	head -n 1 %{buildroot}/$scr | grep -q python%python3_bin_suffix && continue
 	ed %{buildroot}/${scr} <<-'EOF'
 		1
-		s@python@python3@
+		s@python[23]\?[^\s]*@python%python3_bin_suffix@
+		.
+		w
+		q
+	EOF
+    done
+    # Extend python3 scripts with major version only if any
+    for scr in %{_texmfdistdir}/tex/latex/wargame/wgsvg2tikz.py
+    do
+	test -e %{buildroot}/$scr || continue
+	ed %{buildroot}/${scr} <<-'EOF'
+		1
+		s@python3@python%python3_bin_suffix@
 		.
 		w
 		q
@@ -33128,7 +33158,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	ed %{buildroot}/${scr} <<-'EOF'
 		1
 		i
-		#! /usr/bin/python3
+		#! /usr/bin/python%python3_bin_suffix
+		.
+		w
+		q
+	EOF
+    done
+    # Extend python3 scripts with major version only if any
+    for scr in %{_texmfdistdir}/scripts/webquiz/webquiz \
+	       %{_texmfdistdir}/scripts/webquiz/webquiz.py \
+	       %{_texmfdistdir}/scripts/webquiz/webquiz_makequiz.py \
+	       %{_texmfdistdir}/scripts/webquiz/webquiz_util.py
+    do
+	test -e %{buildroot}/$scr || continue
+	ed %{buildroot}/${scr} <<-'EOF'
+		1
+		s@python3@python%python3_bin_suffix@
 		.
 		w
 		q
