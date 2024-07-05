@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           konqueror
-Version:        24.05.1
+Version:        24.05.2
 Release:        0
 Summary:        KDE File Manager and Browser
 # Note for legal: webenginepart/autotests/webengine_testutils.h is neither built nor installed in our package.
