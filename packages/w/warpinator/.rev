@@ -33,4 +33,13 @@
     <comment></comment>
     <requestid>1180308</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5518a5f5d1af82bc4db64c7a16e98cf5</srcmd5>
+    <version>1.8.5</version>
+    <time>1720201626</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.8.5:
+  * l10n: Update translations</comment>
+    <requestid>1185410</requestid>
+  </revision>
 </revisionlist>

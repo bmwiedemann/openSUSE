@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  4 14:15:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.5:
+  * l10n: Update translations
+
+-------------------------------------------------------------------
 Thu Jun 13 03:56:44 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Add qrcode to Requires -- software does not start without it
