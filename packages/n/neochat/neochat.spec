@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           neochat
-Version:        24.05.1
+Version:        24.05.2
 Release:        0
 Summary:        A chat client for Matrix, the decentralized communication protocol
 License:        BSD-2-Clause AND GPL-3.0-only AND GPL-3.0-or-later
