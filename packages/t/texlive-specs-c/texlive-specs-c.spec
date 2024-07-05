@@ -1,5 +1,5 @@
 #
-# spec file for package texlive-specs-c.spec.new
+# spec file for package texlive-specs-c.spec
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -14,12 +14,13 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
+##### WARNING: Please do not edit this auto generated spec file.
+#
 
 %define texlive_version  2024
 %define texlive_previous 2022
 %define texlive_release  20240311
-%define texlive_noarch   213
+%define texlive_noarch   216
 %define biber_version    2.19
 
 #!BuildIgnore:          texlive
@@ -54,6 +55,10 @@
 %define _x11data        %{_datadir}/X11
 %define _x11inc         %{_includedir}
 %define _appdefdir      %{_x11data}/app-defaults
+
+%if ! %{defined python3_bin_suffix}
+%global python3_bin_suffix 3
+%endif
 
 Name:           texlive-specs-c
 Version:        2024
@@ -20756,6 +20761,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     do
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
+    done
+    # Extend python3 scripts with major version only if any
+    for scr in %{_texmfdistdir}/doc/latex/biblatex-gb7714-2015/makeall.py
+    do
+	test -e %{buildroot}/$scr || continue
+	ed %{buildroot}/${scr} <<-'EOF'
+		1
+		s@python3@python%python3_bin_suffix@
+		.
+		w
+		q
+	EOF
     done
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/doc/latex/biblatex-gb7714-2015/makeall.py
