@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Jul  3 11:44:54 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Create doc subpackage with _multibuild to move
+  python3-sphnix-autodoc-typehints build requirement out of ring1
+
+-------------------------------------------------------------------
+Tue Feb 27 06:23:55 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.0.0:
+  * BREAKING CHANGE: drop support for python 3.7 (#2436)
+  * feat: add curie method to NamespaceManager (#2365)
+  * feat: add optional target_graph argument to Graph.cbd and use it for
+    DESCRIBE queries (#2322)
+  * feat: Don't generate prefixes for unknown URIs (#2467)
+  * feat: Longturtle improvements (#2500)
+  * fix: SPARQL count with optionals (#2448)
+  * fix: GROUP_CONCAT handling of empty separator (issue) (#2474)
+  * fix: add NORMALIZE_LITERALS to rdflib.__all__ (#2489)
+  * fix: correct imports and __all__ (#2340)
+  * fix: dbpedia URL to use https instead of http (#2444)
+  * fix: eliminate bare except: (#2350)
+  * fix: eliminate some mutable default arguments in SPARQL code (#2301)
+  * fix: formatting of SequencePath and AlternativePath (#2504)
+  * fix: handling of rdf:HTML literals (#2490)
+  * fix: HTTP 308 Permanent Redirect status code handling (#2389)
+  * fix: lexical-to-value mapping of rdf:HTML literals (#2483)
+  * fix: TriG handling of GRAPH keyword without a graph ID (#2469)
+  * fix: TriG parser error handling for nested graphs (#2468)
+- Switch to autosetup and pyproject macros.
+- Shift docs build to the install phase, the module needs to be queryable.
+- Drop patch reproducible.patch, included.
+
+-------------------------------------------------------------------
 Wed Dec 13 08:40:59 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch for reproducible builds (boo#1062303)
