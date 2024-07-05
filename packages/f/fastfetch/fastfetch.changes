@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jul  4 16:53:01 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- update to 2.17.2
+   Changes:
+    * Flatpak package count no longer includes runtime packages (Packages, Linux)
+   Bugfixes:
+    * Fix formattion with multiple batteries (Battery)
+    * Fix incorrect size value for large memory sticks (PhysicalMemory)
+    * Fix spelling of Qt and LXQt
+    * Fix typos
+   Features:
+    * Support Ptyxis terminal version and font detection (Terminal / TerminalFont, Linux)
+    * Improve Cinnamon version detection (DE)
+    * Support cinnamon-wayland (WMTheme)
+    * --ts-version false will disable editor version detection (Editor)
+
+-------------------------------------------------------------------
 Sat Jun 29 03:38:15 UTC 2024 - RN  <R_Nik_C@proton.me>
 
 - update to 2.17.1 
