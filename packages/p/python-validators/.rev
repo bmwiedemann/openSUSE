@@ -246,4 +246,15 @@ Features:
     gh#kvesteri/validators#383</comment>
     <requestid>1184350</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>1c2fd54f34b41252aa98905349bd6066</srcmd5>
+    <version>0.30.0</version>
+    <time>1720201507</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.30.0
+Features:
+  * add validator for trx_addresses
+    gh#kvesteri/validators#384</comment>
+    <requestid>1185281</requestid>
+  </revision>
 </revisionlist>

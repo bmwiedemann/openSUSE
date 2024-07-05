@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul  4 06:00:40 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.30.0
+Features:
+  * add validator for trx_addresses
+    gh#kvesteri/validators#384
+
+-------------------------------------------------------------------
 Mon Jul  1 16:57:22 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.29.0
