@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul  2 13:54:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.2/
+- Changes since 24.05.1:
+  * Add default destructor to TransferJob
+  * Do not try to subscribe to an empty list of folders
+  * Fix a memory leak in TransferJob
+  * Google: explicitly request calendar.events scope in authentication
+
+-------------------------------------------------------------------
 Wed Jun 12 07:32:59 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.1
