@@ -1,0 +1,647 @@
+only in patch2:
+unchanged:
+---
+ Doc/library/turtle.rst |   81 -------------------------------------------------
+ 1 file changed, 81 deletions(-)
+
+Index: Python-3.13.0a3/Doc/library/turtle.rst
+===================================================================
+--- Python-3.13.0a3.orig/Doc/library/turtle.rst
++++ Python-3.13.0a3/Doc/library/turtle.rst
+@@ -449,7 +449,6 @@ Turtle motion
+    turtle is headed.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.position()
+       (0.00,0.00)
+@@ -476,7 +475,6 @@ Turtle motion
+       >>> turtle.goto(0, 0)
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.position()
+       (0.00,0.00)
+@@ -495,13 +493,11 @@ Turtle motion
+    orientation depends on the turtle mode, see :func:`mode`.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+       :hide:
+ 
+       >>> turtle.setheading(22)
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.heading()
+       22.0
+@@ -520,13 +516,11 @@ Turtle motion
+    orientation depends on the turtle mode, see :func:`mode`.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+       :hide:
+ 
+       >>> turtle.setheading(22)
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.heading()
+       22.0
+@@ -549,13 +543,11 @@ Turtle motion
+    not change the turtle's orientation.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+       :hide:
+ 
+       >>> turtle.goto(0, 0)
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> tp = turtle.pos()
+       >>> tp
+@@ -617,13 +609,11 @@ Turtle motion
+    unchanged.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+       :hide:
+ 
+       >>> turtle.goto(0, 240)
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.position()
+       (0.00,240.00)
+@@ -639,13 +629,11 @@ Turtle motion
+    Set the turtle's second coordinate to *y*, leave first coordinate unchanged.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+       :hide:
+ 
+       >>> turtle.goto(0, 40)
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.position()
+       (0.00,40.00)
+@@ -672,7 +660,6 @@ Turtle motion
+    =================== ====================
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.setheading(90)
+       >>> turtle.heading()
+@@ -685,14 +672,12 @@ Turtle motion
+    its start-orientation (which depends on the mode, see :func:`mode`).
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+       :hide:
+ 
+       >>> turtle.setheading(90)
+       >>> turtle.goto(0, -10)
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.heading()
+       90.0
+@@ -724,7 +709,6 @@ Turtle motion
+    calculated automatically.  May be used to draw regular polygons.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.home()
+       >>> turtle.position()
+@@ -753,7 +737,6 @@ Turtle motion
+ 
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.home()
+       >>> turtle.dot()
+@@ -771,7 +754,6 @@ Turtle motion
+    it by calling ``clearstamp(stamp_id)``.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.color("blue")
+       >>> stamp_id = turtle.stamp()
+@@ -786,7 +768,6 @@ Turtle motion
+    Delete stamp with given *stampid*.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.position()
+       (150.00,-0.00)
+@@ -824,7 +805,6 @@ Turtle motion
+    undo actions is determined by the size of the undobuffer.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> for i in range(4):
+       ...     turtle.fd(50); turtle.lt(80)
+@@ -857,7 +837,6 @@ Turtle motion
+    turtle turn instantly.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.speed()
+       3
+@@ -878,7 +857,6 @@ Tell Turtle's state
+    Return the turtle's current location (x,y) (as a :class:`Vec2D` vector).
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.pos()
+       (440.00,-0.00)
+@@ -894,7 +872,6 @@ Tell Turtle's state
+    orientation which depends on the mode - "standard"/"world" or "logo".
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.goto(10, 10)
+       >>> turtle.towards(0,0)
+@@ -906,7 +883,6 @@ Tell Turtle's state
+    Return the turtle's x coordinate.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.home()
+       >>> turtle.left(50)
+@@ -922,7 +898,6 @@ Tell Turtle's state
+    Return the turtle's y coordinate.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.home()
+       >>> turtle.left(60)
+@@ -939,7 +914,6 @@ Tell Turtle's state
+    :func:`mode`).
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.home()
+       >>> turtle.left(67)
+@@ -956,7 +930,6 @@ Tell Turtle's state
+    other turtle, in turtle step units.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.home()
+       >>> turtle.distance(30,40)
+@@ -980,7 +953,6 @@ Settings for measurement
+    Default value is 360 degrees.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.home()
+       >>> turtle.left(90)
+@@ -1003,7 +975,6 @@ Settings for measurement
+    ``degrees(2*math.pi)``.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.home()
+       >>> turtle.left(90)
+@@ -1014,7 +985,6 @@ Settings for measurement
+       1.5707963267948966
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+       :hide:
+ 
+       >>> turtle.degrees(360)
+@@ -1050,7 +1020,6 @@ Drawing state
+    thickness.  If no argument is given, the current pensize is returned.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.pensize()
+       1
+@@ -1082,7 +1051,6 @@ Drawing state
+    attributes in one statement.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+       :options: +NORMALIZE_WHITESPACE
+ 
+       >>> turtle.pen(fillcolor="black", pencolor="red", pensize=10)
+@@ -1105,7 +1073,6 @@ Drawing state
+    Return ``True`` if pen is down, ``False`` if it's up.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.penup()
+       >>> turtle.isdown()
+@@ -1146,7 +1113,6 @@ Color control
+    newly set pencolor.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> colormode()
+       1.0
+@@ -1195,7 +1161,6 @@ Color control
+    with the newly set fillcolor.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.fillcolor("violet")
+       >>> turtle.fillcolor()
+@@ -1234,7 +1199,6 @@ Color control
+    with the newly set colors.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.color("red", "green")
+       >>> turtle.color()
+@@ -1251,7 +1215,6 @@ Filling
+ ~~~~~~~
+ 
+ .. doctest::
+-   :skipif: _tkinter is None
+    :hide:
+ 
+    >>> turtle.home()
+@@ -1261,7 +1224,6 @@ Filling
+    Return fillstate (``True`` if filling, ``False`` else).
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.begin_fill()
+       >>> if turtle.filling():
+@@ -1286,7 +1248,6 @@ Filling
+    above may be either all yellow or have some white regions.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.color("black", "red")
+       >>> turtle.begin_fill()
+@@ -1303,7 +1264,6 @@ More drawing control
+    variables to the default values.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.goto(0,-22)
+       >>> turtle.left(100)
+@@ -1354,7 +1314,6 @@ Visibility
+    drawing observably.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.hideturtle()
+ 
+@@ -1365,7 +1324,6 @@ Visibility
+    Make the turtle visible.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.showturtle()
+ 
+@@ -1396,7 +1354,6 @@ Appearance
+    deal with shapes see Screen method :func:`register_shape`.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.shape()
+       'classic'
+@@ -1422,7 +1379,6 @@ Appearance
+    ``resizemode("user")`` is called by :func:`shapesize` when used with arguments.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.resizemode()
+       'noresize'
+@@ -1446,7 +1402,6 @@ Appearance
+    of the shape's outline.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.shapesize()
+       (1.0, 1.0, 1)
+@@ -1471,7 +1426,6 @@ Appearance
+    heading of the turtle are sheared.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.shape("circle")
+       >>> turtle.shapesize(5,2)
+@@ -1488,7 +1442,6 @@ Appearance
+    change the turtle's heading (direction of movement).
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.reset()
+       >>> turtle.shape("circle")
+@@ -1512,7 +1465,6 @@ Appearance
+    turtle (its direction of movement).
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.reset()
+       >>> turtle.shape("circle")
+@@ -1541,7 +1493,6 @@ Appearance
+    given matrix.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle = Turtle()
+       >>> turtle.shape("square")
+@@ -1557,7 +1508,6 @@ Appearance
+    can be used to define a new shape or components of a compound shape.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.shape("square")
+       >>> turtle.shapetransform(4, -1, 0, 2)
+@@ -1582,7 +1532,6 @@ Using events
+    procedural way:
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> def turn(x, y):
+       ...     left(180)
+@@ -1603,7 +1552,6 @@ Using events
+    ``None``, existing bindings are removed.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> class MyTurtle(Turtle):
+       ...     def glow(self,x,y):
+@@ -1631,7 +1579,6 @@ Using events
+    mouse-click event on that turtle.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.ondrag(turtle.goto)
+ 
+@@ -1659,7 +1606,6 @@ Special Turtle methods
+    Return the last recorded polygon.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.home()
+       >>> turtle.begin_poly()
+@@ -1679,7 +1625,6 @@ Special Turtle methods
+    turtle properties.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> mick = Turtle()
+       >>> joe = mick.clone()
+@@ -1692,7 +1637,6 @@ Special Turtle methods
+    return the "anonymous turtle":
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> pet = getturtle()
+       >>> pet.fd(50)
+@@ -1706,7 +1650,6 @@ Special Turtle methods
+    TurtleScreen methods can then be called for that object.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> ts = turtle.getscreen()
+       >>> ts
+@@ -1724,7 +1667,6 @@ Special Turtle methods
+    ``None``, the undobuffer is disabled.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> turtle.setundobuffer(42)
+ 
+@@ -1734,7 +1676,6 @@ Special Turtle methods
+    Return number of entries in the undobuffer.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> while undobufferentries():
+       ...     undo()
+@@ -1757,7 +1698,6 @@ below:
+    For example:
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> s = Shape("compound")
+       >>> poly1 = ((0,0),(10,-5),(0,10),(-10,-5))
+@@ -1768,7 +1708,6 @@ below:
+ 3. Now add the Shape to the Screen's shapelist and use it:
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> register_shape("myshape", s)
+       >>> shape("myshape")
+@@ -1788,7 +1727,6 @@ Most of the examples in this section ref
+ ``screen``.
+ 
+ .. doctest::
+-   :skipif: _tkinter is None
+    :hide:
+ 
+    >>> screen = Screen()
+@@ -1805,7 +1743,6 @@ Window control
+    Set or return background color of the TurtleScreen.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> screen.bgcolor("orange")
+       >>> screen.bgcolor()
+@@ -1897,7 +1834,6 @@ Window control
+    distorted.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> screen.reset()
+       >>> screen.setworldcoordinates(-50,-7.5,50,7.5)
+@@ -1908,7 +1844,6 @@ Window control
+       ...     left(45); fd(2)   # a regular octagon
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+       :hide:
+ 
+       >>> screen.reset()
+@@ -1930,7 +1865,6 @@ Animation control
+    Optional argument:
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> screen.delay()
+       10
+@@ -1952,7 +1886,6 @@ Animation control
+    :func:`delay`).
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> screen.tracer(8, 25)
+       >>> dist = 2
+@@ -1989,7 +1922,6 @@ Using screen events
+    must have the focus. (See method :func:`listen`.)
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> def f():
+       ...     fd(50)
+@@ -2010,7 +1942,6 @@ Using screen events
+    must have focus. (See method :func:`listen`.)
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> def f():
+       ...     fd(50)
+@@ -2035,7 +1966,6 @@ Using screen events
+    named ``turtle``:
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> screen.onclick(turtle.goto) # Subsequently clicking into the TurtleScreen will
+       >>>                             # make the turtle move to the clicked point.
+@@ -2055,7 +1985,6 @@ Using screen events
+    Install a timer that calls *fun* after *t* milliseconds.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> running = True
+       >>> def f():
+@@ -2137,7 +2066,6 @@ Settings and special methods
+    ============ ========================= ===================
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> mode("logo")   # resets turtle heading to north
+       >>> mode()
+@@ -2152,7 +2080,6 @@ Settings and special methods
+    values of color triples have to be in the range 0..*cmode*.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> screen.colormode(1)
+       >>> turtle.pencolor(240, 160, 80)
+@@ -2173,7 +2100,6 @@ Settings and special methods
+    do with a Tkinter Canvas.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> cv = screen.getcanvas()
+       >>> cv
+@@ -2185,7 +2111,6 @@ Settings and special methods
+    Return a list of names of all currently available turtle shapes.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> screen.getshapes()
+       ['arrow', 'blank', 'circle', ..., 'turtle']
+@@ -2209,7 +2134,6 @@ Settings and special methods
+        coordinates: Install the corresponding polygon shape.
+ 
+        .. doctest::
+-          :skipif: _tkinter is None
+ 
+           >>> screen.register_shape("triangle", ((5,-3), (0,5), (-5,-3)))
+ 
+@@ -2225,7 +2149,6 @@ Settings and special methods
+    Return the list of turtles on the screen.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> for turtle in screen.turtles():
+       ...     turtle.color("red")
+@@ -2287,7 +2210,6 @@ Methods specific to Screen, not inherite
+                   center window vertically
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> screen.setup (width=200, height=200, startx=0, starty=0)
+       >>>              # sets window to 200x200 pixels, in upper left of screen
+@@ -2303,7 +2225,6 @@ Methods specific to Screen, not inherite
+    Set title of turtle window to *titlestring*.
+ 
+    .. doctest::
+-      :skipif: _tkinter is None
+ 
+       >>> screen.title("Welcome to the turtle zoo!")
+ 
+@@ -2374,7 +2295,6 @@ Public classes
+       Example:
+ 
+       .. doctest::
+-         :skipif: _tkinter is None
+ 
+          >>> poly = ((0,0),(10,-5),(0,10),(-10,-5))
+          >>> s = Shape("compound")
+@@ -2759,7 +2679,6 @@ Changes since Python 3.0
+ 
+ 
+ .. doctest::
+-   :skipif: _tkinter is None
+    :hide:
+ 
+    >>> for turtle in turtles():

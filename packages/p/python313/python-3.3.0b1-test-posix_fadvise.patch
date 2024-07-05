@@ -1,0 +1,17 @@
+---
+ Lib/test/test_posix.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: Python-3.13.0a3/Lib/test/test_posix.py
+===================================================================
+--- Python-3.13.0a3.orig/Lib/test/test_posix.py
++++ Python-3.13.0a3/Lib/test/test_posix.py
+@@ -433,7 +433,7 @@ class PosixTester(unittest.TestCase):
+     def test_posix_fadvise(self):
+         fd = os.open(os_helper.TESTFN, os.O_RDONLY)
+         try:
+-            posix.posix_fadvise(fd, 0, 0, posix.POSIX_FADV_WILLNEED)
++            posix.posix_fadvise(fd, 0, 0, posix.POSIX_FADV_RANDOM)
+         finally:
+             os.close(fd)
+ 

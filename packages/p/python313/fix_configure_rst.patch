@@ -1,0 +1,15 @@
+---
+ Misc/NEWS |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/Misc/NEWS
++++ b/Misc/NEWS
+@@ -17608,7 +17608,7 @@ C API
+ - bpo-40939: Removed documentation for the removed ``PyParser_*`` C API.
+ 
+ - bpo-43795: The list in :ref:`limited-api-list` now shows the public name
+-  :c:struct:`PyFrameObject` rather than ``_frame``. The non-existing entry
++  :c:type:`PyFrameObject` rather than ``_frame``. The non-existing entry
+   ``_node`` no longer appears in the list.
+ 
+ - bpo-44378: :c:func:`Py_IS_TYPE` no longer uses :c:func:`Py_TYPE` to avoid

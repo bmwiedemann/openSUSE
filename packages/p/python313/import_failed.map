@@ -1,0 +1,7 @@
+python313-curses: curses _curses _curses_panel
+python313-dbm: dbm _dbm _gdbm
+python313-idle: idlelib
+python313-testsuite: test _ctypes_test _testbuffer _testcapi _testinternalcapi _testimportmultiple _testmultiphase xxlimited
+python313-tk: tkinter _tkinter
+python313-tools: turtledemo
+python313: sqlite3 readline _sqlite3 nis
