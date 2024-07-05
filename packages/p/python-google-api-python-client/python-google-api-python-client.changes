@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Thu Jul  4 08:44:48 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.136.0
+  * **accesscontextmanager:** Update the api
+  * **analyticshub:** Update the api
+  * **beyondcorp:** Update the api
+  * **bigquery:** Update the api
+  * **chat:** Update the api
+  * **cloudcontrolspartner:** Update the api
+  * **compute:** Update the api
+  * **connectors:** Update the api
+  * **containeranalysis:** Update the api
+  * **dataflow:** Update the api
+  * **dialogflow:** Update the api
+  * **displayvideo:** Update the api
+  * **dlp:** Update the api
+  * **file:** Update the api
+  * **firebaseappdistribution:** Update the api
+  * **gkehub:** Update the api
+  * **logging:** Update the api
+  * **metastore:** Update the api
+  * **migrationcenter:** Update the api
+  * **ondemandscanning:** Update the api
+  * **policysimulator:** Update the api
+  * **pubsub:** Update the api
+  * **sqladmin:** Update the api
+  * **storage:** Update the api
+  * **tasks:** Update the api
+  * **vault:** Update the api
+  * **workloadmanager:** Update the api
+  * **workstations:** Update the api
+  * **factchecktools:** Update the api
+- from version 2.135.0
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **androidmanagement:** Update the api
+  * **androidpublisher:** Update the api
+  * **beyondcorp:** Update the api
+  * **classroom:** Update the api
+  * **containeranalysis:** Update the api
+  * **datafusion:** Update the api
+  * **dataproc:** Update the api
+  * **dlp:** Update the api
+  * **firestore:** Update the api
+  * **games:** Update the api
+  * **healthcare:** Update the api
+  * **iap:** Update the api
+  * **integrations:** Update the api
+  * **jobs:** Update the api
+  * **monitoring:** Update the api
+  * **networkconnectivity:** Update the api
+  * **securitycenter:** Update the api
+  * **vmmigration:** Update the api
+  * **walletobjects:** Update the api
+  * **workloadmanager:** Update the api
+  * **bigquerydatatransfer:** Update the api
+  * **bigqueryreservation:** Update the api
+- from version 2.134.0
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **batch:** Update the api
+  * **civicinfo:** Update the api
+  * **cloudbuild:** Update the api
+  * **cloudidentity:** Update the api
+  * **cloudkms:** Update the api
+  * **compute:** Update the api
+  * **connectors:** Update the api
+  * **dataform:** Update the api
+  * **dataplex:** Update the api
+  * **dfareporting:** Update the api
+  * **discoveryengine:** Update the api
+  * **displayvideo:** Update the api
+  * **dlp:** Update the api
+  * **domains:** Update the api
+  * **file:** Update the api
+  * **firebaseml:** Update the api
+  * **firestore:** Update the api
+  * **kmsinventory:** Update the api
+  * **metastore:** Update the api
+  * **migrationcenter:** Update the api
+  * **retail:** Update the api
+  * **serviceconsumermanagement:** Update the api
+  * **spanner:** Update the api
+
+-------------------------------------------------------------------
 Wed Jun 19 07:15:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.133.0:

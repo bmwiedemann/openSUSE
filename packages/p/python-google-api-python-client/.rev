@@ -1133,4 +1133,12 @@ eplacement for google-api-python-client, follow our naming convention</comment>
   * **backupdr:** Update the api</comment>
     <requestid>1181687</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>db7b1e47574c3af1d681ddf2fb4749b9</srcmd5>
+    <version>2.136.0</version>
+    <time>1720201619</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1185402</requestid>
+  </revision>
 </revisionlist>
