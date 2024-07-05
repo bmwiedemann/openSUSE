@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           sweeper
-Version:        24.05.1
+Version:        24.05.2
 Release:        0
 Summary:        KDE Privacy Utility
 License:        LGPL-2.1-or-later
