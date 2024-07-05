@@ -30,6 +30,7 @@ Source1:        vendor.tar.xz
 Source2:        cargo_config
 Source99:       revendor_source.sh
 Patch1:         deno-rm-upgrade.patch
+Patch2:         deno-v8-arm.patch
 BuildRequires:  cargo-packaging
 # gcc-c++ needed to build SPIRV-Cross
 BuildRequires:  clang

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 27 14:33:49 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable cross-compilation for aarch64 and arm:
+  * deno-v8-arm.patch
+
+-------------------------------------------------------------------
 Wed Jun 19 18:52:29 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 1.44.4:

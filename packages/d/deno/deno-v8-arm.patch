@@ -1,0 +1,21 @@
+--- ./vendor/v8/build.rs.orig	2024-06-27 14:26:40.281226961 +0200
++++ ./vendor/v8/build.rs	2024-06-27 14:28:10.388618455 +0200
+@@ -200,16 +200,12 @@ fn build_v8(is_asan: bool) {
+   // cross-compilation setup
+   if target_arch == "aarch64" {
+     gn_args.push(r#"target_cpu="arm64""#.to_string());
+-    gn_args.push("use_sysroot=true".to_string());
+-    maybe_install_sysroot("arm64");
+-    maybe_install_sysroot("amd64");
++    gn_args.push("use_sysroot=false".to_string());
+   }
+   if target_arch == "arm" {
+     gn_args.push(r#"target_cpu="arm""#.to_string());
+     gn_args.push(r#"v8_target_cpu="arm""#.to_string());
+-    gn_args.push("use_sysroot=true".to_string());
+-    maybe_install_sysroot("i386");
+-    maybe_install_sysroot("arm");
++    gn_args.push("use_sysroot=false".to_string());
+   }
+ 
+   let target_triple = env::var("TARGET").unwrap();
