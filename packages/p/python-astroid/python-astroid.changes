@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jun 30 22:03:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.2:
+  * Improve inference for generic classes using the PEP 695
+    syntax (Python 3.12).
+  * Fix ``RecursionError`` in ``infer_call_result()`` for certain
+    ``__call__`` methods.
+  * Add ``AstroidManager.prefer_stubs`` attribute to control the
+    astroid 3.2.0 feature that prefers stubs.
+  * ``igetattr()`` returns the last same-named function in a
+    class (instead of the first). This avoids false positives
+    in pylint with ``@overload``.
+  * Adds ``module_denylist`` to ``AstroidManager`` for modules to
+    be skipped during AST generation. Modules in this list will
+    cause an ``AstroidImportError`` to be raised when an AST
+    for them is requested.
+  * Make ``astroid.interpreter._import.util.is_namespace`` only
+    consider modules using a loader set to ``NamespaceLoader``
+    or ``None`` as namespaces.
+
+-------------------------------------------------------------------
 Fri Mar 22 19:54:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.0:

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-astroid
-Version:        3.1.0
+Version:        3.2.2
 Release:        0
 Summary:        Representation of Python source as an AST for pylint
 License:        LGPL-2.1-or-later

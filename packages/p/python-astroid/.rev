@@ -550,4 +550,29 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
     Python 3.12 when parsing modules.</comment>
     <requestid>1160817</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>ee67c81b8e6044cb680b2094ea8b6d1a</srcmd5>
+    <version>3.2.2</version>
+    <time>1720201510</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2.2:
+  * Improve inference for generic classes using the PEP 695
+    syntax (Python 3.12).
+  * Fix ``RecursionError`` in ``infer_call_result()`` for certain
+    ``__call__`` methods.
+  * Add ``AstroidManager.prefer_stubs`` attribute to control the
+    astroid 3.2.0 feature that prefers stubs.
+  * ``igetattr()`` returns the last same-named function in a
+    class (instead of the first). This avoids false positives
+    in pylint with ``@overload``.
+  * Adds ``module_denylist`` to ``AstroidManager`` for modules to
+    be skipped during AST generation. Modules in this list will
+    cause an ``AstroidImportError`` to be raised when an AST
+    for them is requested.
+  * Make ``astroid.interpreter._import.util.is_namespace`` only
+    consider modules using a loader set to ``NamespaceLoader``
+    or ``None`` as namespaces.
+</comment>
+    <requestid>1185391</requestid>
+  </revision>
 </revisionlist>
