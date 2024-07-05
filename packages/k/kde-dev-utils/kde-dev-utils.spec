@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kde-dev-utils
-Version:        24.05.1
+Version:        24.05.2
 Release:        0
 Summary:        KDE SDK Package
 License:        GPL-2.0-only AND GFDL-1.2-only AND LGPL-2.0-only
