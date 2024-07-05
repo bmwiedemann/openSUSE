@@ -1,0 +1,30 @@
+diff -ru orig/main.cpp mod/main.cpp
+--- orig/main.cpp	2024-06-10 22:39:52.000000000 +0200
++++ mod/main.cpp	2024-06-12 07:44:13.782719909 +0200
+@@ -3,7 +3,7 @@
+ #include <QSurfaceFormat>
+ #include <QTranslator>
+ #include <stdlib.h>
+-#include "libxisf.h"
++#include <libxisf.h>
+ 
+ int main(int argc, char *argv[])
+ {
+diff -ru orig/scriptengine.cpp mod/scriptengine.cpp
+--- orig/scriptengine.cpp	2024-06-10 22:39:52.000000000 +0200
++++ mod/scriptengine.cpp	2024-06-12 07:44:24.692828986 +0200
+@@ -1,4 +1,5 @@
+ #include "scriptengine.h"
++
+ #include <QDir>
+ #include <QFileInfo>
+ #include <QDebug>
+@@ -8,7 +9,7 @@
+ #include "loadrunable.h"
+ #include "batchprocessing.h"
+ #include <fitsio2.h>
+-#include "libXISF/libxisf.h"
++#include <libxisf.h>
+ 
+ namespace Script
+ {

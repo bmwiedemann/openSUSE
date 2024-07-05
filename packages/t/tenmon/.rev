@@ -54,4 +54,24 @@
 </comment>
     <requestid>1146532</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>df6bd7c641ddfed5f48aa1022a9aed33</srcmd5>
+    <version>20240617</version>
+    <time>1720201835</time>
+    <user>anag+factory</user>
+    <comment>- Update to 20240617:
+  * Add scripts
+  * Small fixes
+  * Fix some bugs in scripting
+  * Fix text color in log
+  * Batchprocessing improvments
+  * Add FITSRecordModify for XISF files
+  * Add modifing FITS records
+  * Add compression parameters
+  * Add convert function to script
+  * Fix bug when saving color FITS/XISF files
+- Add fix-libxisf-include.patch.
+</comment>
+    <requestid>1185729</requestid>
+  </revision>
 </revisionlist>

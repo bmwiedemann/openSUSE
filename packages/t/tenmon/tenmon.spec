@@ -21,15 +21,18 @@
 %endif
 
 Name:           tenmon
-Version:        20240201
+Version:        20240617
 Release:        0
 Summary:        FITS and XISF image viewer, converter and indexer
 License:        GPL-3.0-or-later
 URL:            https://gitea.nouspiro.space/nou/tenmon/
 Source:         https://gitea.nouspiro.space/nou/tenmon/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
 Patch0:         use_system_libxisf.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         fix-libxisf-include.patch
 BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12
-BuildRequires:  libXISF-devel
+BuildRequires:  libXISF-devel >= 0.2.12+git5.d00de20
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-base-devel >= 6.2.0
 BuildRequires:  pkgconfig(Qt6OpenGL)

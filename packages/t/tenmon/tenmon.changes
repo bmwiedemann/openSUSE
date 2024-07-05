@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jul  3 09:06:57 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 20240617:
+  * Add scripts
+  * Small fixes
+  * Fix some bugs in scripting
+  * Fix text color in log
+  * Batchprocessing improvments
+  * Add FITSRecordModify for XISF files
+  * Add modifing FITS records
+  * Add compression parameters
+  * Add convert function to script
+  * Fix bug when saving color FITS/XISF files
+- Add fix-libxisf-include.patch.
+
+-------------------------------------------------------------------
 Wed Feb 14 09:37:48 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 20240201:
