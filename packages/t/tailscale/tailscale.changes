@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  2 20:35:35 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.68.2:
+  * Fixed: Tailnet lock validation of rotation signatures now permits multiple nodes
+    signed by the same pre-signed reusable auth key.
+
+-------------------------------------------------------------------
 Sun Jun 16 13:30:20 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - update to 1.68.1:
