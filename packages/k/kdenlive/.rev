@@ -1125,4 +1125,12 @@ I would be grateful.
   * 0001-Fix-timeline-duration-not-correctly-updated-resultin.patch</comment>
     <requestid>1181923</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>6542e58fcd846ecdf8733ea5c166cd6d</srcmd5>
+    <version>24.05.2</version>
+    <time>1720201697</time>
+    <user>anag+factory</user>
+    <comment>KDE Release Gear 24.05.2 (forwarded request 1184893 from krop)</comment>
+    <requestid>1185532</requestid>
+  </revision>
 </revisionlist>

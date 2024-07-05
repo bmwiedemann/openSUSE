@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jul  2 13:54:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.2/
+- Changes since 24.05.1:
+  * Fix guides categories not correctly saved in document (kde#489079)
+  * Fix adding record track adds a normal audio track (kde#489080)
+  * Fix rendering with aspect ratio change always renders with proxies Fixes #1883
+  * Fix compilation on Windows with KF 6.3.0
+  * Fix timeline duration not correctly updated, resulting in audio/video freeze in timeline after 5 min Related to #1885
+  * Fix Windows build without DBUS
+  * Fix crash on spacer tool with subtitles Related to #1627
+- Drop patch, merged upstream:
+  * 0001-Fix-timeline-duration-not-correctly-updated-resultin.patch
+
+-------------------------------------------------------------------
 Thu Jun 20 12:33:50 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream fix (kde#488689):

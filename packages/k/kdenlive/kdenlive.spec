@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           kdenlive
-Version:        24.05.1
+Version:        24.05.2
 Release:        0
 Summary:        Non-linear video editor
 License:        GPL-3.0-or-later
@@ -32,8 +32,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-timeline-duration-not-correctly-updated-resultin.patch
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
