@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7f70ace2170cc04106774b3839acbaf7</srcmd5>
+    <version>0</version>
+    <time>1720201611</time>
+    <user>anag+factory</user>
+    <comment>Add agama-auto
+
+- supply %doc and %license
+- https://code.opensuse.org/leap/features/issue/158</comment>
+    <requestid>1185423</requestid>
+  </revision>
+</revisionlist>

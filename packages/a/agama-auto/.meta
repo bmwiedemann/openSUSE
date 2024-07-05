@@ -1,0 +1,5 @@
+<package name="agama-auto" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="systemsmanagement:Agama:Devel" package="agama-auto"/>
+</package>
