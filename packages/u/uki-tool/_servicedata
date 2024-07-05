@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://gitlab.suse.de/vlefebvre/unified-kernel-image-tool</param>
+              <param name="changesrevision">1de0ad2a87daccc937adc720d3560c7e23f2d39d</param></service><service name="tar_scm">
+                <param name="url">https://github.com/keentux/unified-kernel-image-tool</param>
+              <param name="changesrevision">87efdd2b2076fcf2222d8765d333e3fcad2d4755</param></service></servicedata>

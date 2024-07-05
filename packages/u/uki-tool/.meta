@@ -1,0 +1,6 @@
+<package name="uki-tool" project="openSUSE:Factory">
+  <title>Unified Kernel Image tool</title>
+  <description>Tool that regroup useful command dealing with the Unified Kernel Image (UKI)
+project. Write in Shell script, and adapted to the packaging.</description>
+  <devel project="Kernel:tools" package="uki-tool"/>
+</package>

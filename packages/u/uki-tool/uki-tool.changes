@@ -1,0 +1,159 @@
+-------------------------------------------------------------------
+Fri Jul  5 08:02:20 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Change package name from ukit to uki-tool
+
+-------------------------------------------------------------------
+Mon May 27 15:41:20 UTC 2024 - valentin.lefebvre@suse.com
+
+- Remove upstream fixed patch
+  [- remove-snapshot-number-condition.patch]
+- Update to version 1.2.0+0.g87efdd2:
+  * Release to 1.2.0
+  * doc: add manual
+  * install.sh: Add prefix argument
+  * extension: add no-deps option
+  * Add specfile + update changelog
+  * src: move src files
+  * snapper: add plugin to snapper
+  * addon: Removing snapshot number condition
+  * Update to release 1.1.0
+
+-------------------------------------------------------------------
+Wed Apr 24 20:22:32 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Patch the addon command to accept non numbered snapshot
+  [+ remove-snapshot-number-condition.patch]
+
+-------------------------------------------------------------------
+Fri Apr 19 17:33:04 UTC 2024 - valentin.lefebvre@suse.com
+
+- Update to version 1.0.0+8.geb71bab:
+  * addon: argument to create snpashot
+  * create: fix calling the helper if wrong argument
+  * addon: add command to generate addons
+  * ukify: export the binary path
+  * build.sh: check if all functions are defined
+  * build.sh: Remove export
+
+-------------------------------------------------------------------
+Mon Mar 11 10:06:42 UTC 2024 - valentin.lefebvre@suse.com
+
+- Moving srouces to github
+- Add AUTHORS and Changelog files in doc
+- Update to version 1.0.0+2.g1c51d7e:
+  * sdboot: Add ach argument
+  * license: swith to MIT license
+  * Release to 1.0.0
+  * Inform about tools to use in doc
+  * add AUTHORS file
+
+-------------------------------------------------------------------
+Mon Mar 04 10:22:11 UTC 2024 - valentin.lefebvre@suse.com
+
+- Update to version 0.3.0+15.g1de0ad2:
+  * sdboot: Add doc to readme
+  * Contributing file
+  * Readme: Add new command and fix descr
+  * create command: generate UKI
+  * helpers: use 'OPTIONS' for usage print
+  * Export usefull varaibles
+
+-------------------------------------------------------------------
+Fri Mar 01 13:31:52 UTC 2024 - valentin.lefebvre@suse.com
+
+- Update to version 0.3.0+9.gba4e135:
+  * sdboot: use image option of sdbootutil
+
+-------------------------------------------------------------------
+Thu Feb 29 09:33:13 UTC 2024 - valentin.lefebvre@suse.com
+
+- Update to version 0.3.0+8.ga51b691:
+  * helper: improve messages
+  * sdboot: Add command to add/remove entry
+
+-------------------------------------------------------------------
+Mon Oct 23 18:40:12 UTC 2023 - valentin.lefebvre@suse.com
+
+- Update to version 0.3.0+6:
+  * grub2: verify available memory in efi part
+
+-------------------------------------------------------------------
+Mon Oct 23 09:53:57 UTC 2023 - valentin.lefebvre@suse.com
+
+- Update to version 0.3.0+5:
+  * grub2: fix: UUID device & transactional
+
+-------------------------------------------------------------------
+Thu Oct 19 10:07:06 UTC 2023 - valentin.lefebvre@suse.com
+
+- Update to version v0.3.0+4:
+  * grub2: create dir in efi part
+  * print correct helper & check grub2 file
+  * grub2: fix variable condition
+  * Add changelog file
+
+-------------------------------------------------------------------
+Mon Oct  9 15:32:52 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Remove grub2 requires. Can be used with sdboot (conflicting)
+
+-------------------------------------------------------------------
+Mon Sep 25 09:08:33 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Fix grub2 condition variable
+  [0001-grub2-fix-variable-condition.patch]
+
+-------------------------------------------------------------------
+Mon Sep 25 08:41:28 UTC 2023 - valentin.lefebvre@suse.com
+
+- Update to version 0.3.0:
+  * Add installation script
+  * Switch from bash to shell with shellcheck
+  * readme: update to 0.2.1
+  * extension: add default format squashfs
+  * grub2: check kernel version only when add initrd
+  * readme: add commands documentation
+  * command: add grub2 commands
+  * extension: Update the uki installation path
+  * build.sh: Identicate lines with #!
+  * extension: optimize image creation
+- Update installation on Specfile
+
+-------------------------------------------------------------------
+Wed Jul 12 09:58:52 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Add requires to squashfs 
+
+-------------------------------------------------------------------
+Wed Jul 12 09:18:41 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to 0.2.1
+  * Add extension format squashfs
+- specfile
+  * Use the archive name given by the git project 
+
+-------------------------------------------------------------------
+Tue Jun  6 15:40:52 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Add patch 0001-grub2-check-kernel-version-only-when-add-initrd.patch 
+
+-------------------------------------------------------------------
+Tue Jun  6 08:29:13 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to version 0.2.0
+  * Add grub2 command
+  * Update documentation
+  * Update uki installation path
+  * Fix the line parser in build 
+
+-------------------------------------------------------------------
+Tue May  9 06:50:48 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Switch requires from osc to zypper
+
+-------------------------------------------------------------------
+Fri May  5 16:30:39 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- version 0.1
+
