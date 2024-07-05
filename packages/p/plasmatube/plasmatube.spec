@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           plasmatube
-Version:        24.05.1
+Version:        24.05.2
 Release:        0
 Summary:        YouTube client
 License:        GPL-3.0-or-later
