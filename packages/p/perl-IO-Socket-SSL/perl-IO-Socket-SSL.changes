@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul  3 16:49:59 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 2.86.0 (2.086)
+   see /usr/share/doc/packages/perl-IO-Socket-SSL/Changes
+
+  2.086 2024/07/03
+  - internal optimzation: implement _touch_entry in session cache instead
+     of using del+add.
+
+-------------------------------------------------------------------
 Fri Mar 22 19:12:44 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Remove perl-IO-Socket-SSL-Openssl32.patch, fixed upstream

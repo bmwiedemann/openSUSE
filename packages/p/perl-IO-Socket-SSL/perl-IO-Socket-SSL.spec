@@ -18,10 +18,10 @@
 
 %define cpan_name IO-Socket-SSL
 Name:           perl-IO-Socket-SSL
-Version:        2.85.0
+Version:        2.86.0
 Release:        0
-# 2.085 -> normalize -> 2.85.0
-%define cpan_version 2.085
+# 2.086 -> normalize -> 2.86.0
+%define cpan_version 2.086
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Nearly transparent SSL encapsulation for IO::Socket::INET
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -106,6 +106,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc BUGS Changes docs example README README.Win32
+%doc BUGS Changes docs example README
 
 %changelog
