@@ -1,7 +1,7 @@
 #
 # spec file for package brickd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019 Frank Kunz
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           brickd
-Version:        2.4.5
+Version:        2.4.6
 Release:        0
 Summary:        Tinkerforce Brick Daemon
 License:        GPL-2.0-only
@@ -46,16 +46,18 @@ mv daemonlib-%{name}-%{version} src/daemonlib
 
 %build
 pushd src/brickd
-%make_build WITH_SYSTEMD=yes RPM_OPT_FLAGS+=-D_GNU_SOURCE
+%make_build WITH_SYSTEMD=yes WITH_BRICKLET=no RPM_OPT_FLAGS+=-D_GNU_SOURCE
 popd
 
 %install
 pushd src/brickd
-%make_install
+%make_install WITH_BRICKLET=no
 popd
 mkdir -p %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-resume
+
+%check
 
 %pre
 %service_add_pre brickd-resume.service brickd.service

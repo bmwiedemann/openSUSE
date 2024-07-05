@@ -1,7 +1,17 @@
-Index: brickd-2.4.3/src/build_data/linux/installer/lib/systemd/system/brickd.service
-===================================================================
---- brickd-2.4.3.orig/src/build_data/linux/installer/lib/systemd/system/brickd.service
-+++ brickd-2.4.3/src/build_data/linux/installer/lib/systemd/system/brickd.service
+From 4f9372d700da8d41fbba5b547b68be44397987d2 Mon Sep 17 00:00:00 2001
+From: Frank Kunz <mailinglists@kunz-im-inter.net>
+Date: Thu, 4 Jul 2024 19:22:09 +0200
+Subject: [PATCH 2/2] harden_brickd.service
+
+Signed-off-by: Frank Kunz <mailinglists@kunz-im-inter.net>
+---
+ .../linux/installer/lib/systemd/system/brickd.service | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/src/build_data/linux/installer/lib/systemd/system/brickd.service b/src/build_data/linux/installer/lib/systemd/system/brickd.service
+index 9ccc7b3..180599a 100644
+--- a/src/build_data/linux/installer/lib/systemd/system/brickd.service
++++ b/src/build_data/linux/installer/lib/systemd/system/brickd.service
 @@ -3,6 +3,17 @@ Description=Brick Daemon
  After=network.target
  
@@ -16,7 +26,10 @@ Index: brickd-2.4.3/src/build_data/linux/installer/lib/systemd/system/brickd.ser
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
 +RestrictRealtime=true
-+# end of automatic additions 
++# end of automatic additions
  Type=forking
  ExecStart=/usr/bin/brickd --daemon
- PIDFile=/var/run/brickd.pid
+ PIDFile=/run/brickd.pid
+-- 
+2.45.2
+

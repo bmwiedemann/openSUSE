@@ -1,7 +1,17 @@
-Index: brickd-2.4.3/src/build_data/linux/installer/lib/systemd/system/brickd-resume.service
-===================================================================
---- brickd-2.4.3.orig/src/build_data/linux/installer/lib/systemd/system/brickd-resume.service
-+++ brickd-2.4.3/src/build_data/linux/installer/lib/systemd/system/brickd-resume.service
+From fdf3b58fd700dbb57cda48db87eb1cf9197434d0 Mon Sep 17 00:00:00 2001
+From: Frank Kunz <mailinglists@kunz-im-inter.net>
+Date: Thu, 4 Jul 2024 19:20:43 +0200
+Subject: [PATCH 1/2] harden_brickd-resume.service
+
+Signed-off-by: Frank Kunz <mailinglists@kunz-im-inter.net>
+---
+ .../lib/systemd/system/brickd-resume.service          | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/src/build_data/linux/installer/lib/systemd/system/brickd-resume.service b/src/build_data/linux/installer/lib/systemd/system/brickd-resume.service
+index 6e142c9..58922dc 100644
+--- a/src/build_data/linux/installer/lib/systemd/system/brickd-resume.service
++++ b/src/build_data/linux/installer/lib/systemd/system/brickd-resume.service
 @@ -4,6 +4,17 @@ After=suspend.target
  Requisite=brickd.service
  
@@ -16,7 +26,10 @@ Index: brickd-2.4.3/src/build_data/linux/installer/lib/systemd/system/brickd-res
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
 +RestrictRealtime=true
-+# end of automatic additions 
++# end of automatic additions
  User=root
  Type=oneshot
- ExecStart=/usr/bin/pkill -F /var/run/brickd.pid -L -USR1
+ ExecStart=/usr/bin/pkill -F /run/brickd.pid -L -USR1
+-- 
+2.45.2
+

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul  3 16:18:59 UTC 2024 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- New Version 2.4.6
+  - Adapt to Raspberry Pi 5 GPIO pin numbering changes
+  - Use libgpiod for GPIO pin access on Linux
+  - Change runstatedir default from /var/run to /run on Linux
+
+-------------------------------------------------------------------
 Fri Dec  1 21:41:45 UTC 2023 - Frank Kunz <mailinglists@kunz-im-inter.net>
 
 - New Version 2.4.5
