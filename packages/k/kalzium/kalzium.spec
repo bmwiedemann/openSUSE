@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kalzium
-Version:        24.05.1
+Version:        24.05.2
 Release:        0
 Summary:        Periodic Table of Elements
 License:        GPL-2.0-or-later
