@@ -558,4 +558,12 @@
     <comment>Update to TeXLive 2024, third</comment>
     <requestid>1160647</requestid>
   </revision>
+  <revision rev="54" vrev="57">
+    <srcmd5>d8ca028ffbaa38251fb9ecec19af759b</srcmd5>
+    <version>unknown</version>
+    <time>1720201470</time>
+    <user>anag+factory</user>
+    <comment>Catch all python3 shebangs for boo#1212476</comment>
+    <requestid>1185309</requestid>
+  </revision>
 </revisionlist>
