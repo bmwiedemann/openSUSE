@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul  4 08:13:30 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.30.0
+  * Add WebAuthn plugin component to handle WebAuthn get assertion request (#1464)
+  * ECP Provider drop cryptography requirement (#1524)
+  * Enable webauthn plugin for security keys (#1528)
+  * Fix id_token iam endpoint for non-gdu service credentials (#1506)
+  * Makes default token_url universe aware (#1514)
+- Refresh patches for new version
+  * python-google-auth-no-mock.patch
+
+-------------------------------------------------------------------
 Fri May 17 10:36:48 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.29.0
