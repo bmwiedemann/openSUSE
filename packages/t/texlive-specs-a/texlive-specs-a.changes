@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul  3 08:09:23 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- More fine tuning to catch all python3 shebangs 
+
+-------------------------------------------------------------------
+Thu Jun 27 13:38:11 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add fix for bug boo#1212476 -- fix python shebang 
+
+-------------------------------------------------------------------
 Wed Mar 20 09:19:21 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Move three files of ufrgscca from doc part to runtime part 
