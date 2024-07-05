@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           khealthcertificate
-Version:        24.05.1
+Version:        24.05.2
 Release:        0
 Summary:        Handling of digital vaccination, test and recovery certificates
 License:        LGPL-2.0-or-later
