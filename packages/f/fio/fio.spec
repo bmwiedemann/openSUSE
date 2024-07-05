@@ -57,7 +57,6 @@ BuildRequires:  librbd-devel
 %endif
 %if %{with libpmem}
 BuildRequires:  libpmem-devel
-BuildRequires:  libpmemblk-devel
 %endif
 %if %{with librdmacm}
 BuildRequires:  librdmacm-devel
@@ -83,7 +82,7 @@ gfio is a gtk based graphical front-end for fio.  It is often installed on the
 testers workstation whereas fio would be installed on the server.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 sed -i "s|%{_bindir}/bash|/bin/bash|g" tools/genfio
@@ -105,7 +104,7 @@ sed -i "s|-O3|%{optflags}|g" Makefile
 rm %{buildroot}%{_bindir}/fio-histo-log-pctiles.py
 
 # fix rpmlint
-sed -i 's/\/usr\/bin\/env python3/\/usr\/bin\/python3/' %{buildroot}%{_bindir}/fio*
+%python3_fix_shebang
 
 %check
 %make_build test

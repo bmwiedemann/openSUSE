@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul  3 06:57:21 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Drop the unneeded libpmemblk-devel build dependency. This
+  subpackage is gone is latest pmdk releases
+
+-------------------------------------------------------------------
+Fri Jun 14 13:05:49 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Wed Apr 10 15:09:35 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 3.37:
