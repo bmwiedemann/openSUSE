@@ -16,18 +16,19 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-libgravatar
 Version:        1.0.4
 Release:        0
 Summary:        A library that provides a Python 3 interface for the Gravatar API
-License:        GPL-3.0
+License:        GPL-3.0-only
 URL:            https://github.com/pabluk/libgravatar
 Source:         https://files.pythonhosted.org/packages/source/l/libgravatar/libgravatar-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 

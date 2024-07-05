@@ -7,4 +7,12 @@
     <comment>New package python-libgravatar, needed by pgadmin4 8.7+</comment>
     <requestid>1180309</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>183c4fbbb4aeead411b583cf6b928887</srcmd5>
+    <version>1.0.4</version>
+    <time>1720201617</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1185395</requestid>
+  </revision>
 </revisionlist>
