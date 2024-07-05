@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 04 14:26:05 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240704.2072b16:
+  * Working Leap 16 repoindex with standard + product repo (#67)
+  * Add ports non-oss non-oss/sources for TW (#65) boo#1226763
+
+-------------------------------------------------------------------
 Tue Jun 25 14:25:02 UTC 2024 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20240625.f75b6e5:
