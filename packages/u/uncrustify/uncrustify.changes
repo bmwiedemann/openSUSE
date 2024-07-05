@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul  4 15:03:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.79.0:
+  * Added   : sp_cpp_before_struct_binding_after_byref
+  * Added   : sp_string_string
+  * Added   : pp_unbalanced_if_action
+  * Removed : pp_warn_unbalanced_if
+  * Removed : sp_balance_nested_parens
+  * Added   : debug_print_version
+  * Added   : nl_oc_msg_args_finish_multi_line
+
+-------------------------------------------------------------------
 Wed Feb 28 19:51:06 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Align path for document installation between openSUSE versions.
@@ -7,7 +19,7 @@ Wed Feb 28 19:51:06 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferr
 Fri Nov 24 03:13:10 UTC 2023 - ming li <mli@suse.com>
 
 - update to 0.78.1:
-  * Improve line splitting logic to avoid awkward splits 
+  * Improve line splitting logic to avoid awkward splits
 
 -------------------------------------------------------------------
 Sun Nov 19 21:54:30 UTC 2023 - Dirk Müller <dmueller@suse.com>

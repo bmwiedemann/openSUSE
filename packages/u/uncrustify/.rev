@@ -113,4 +113,21 @@
     <comment></comment>
     <requestid>1153041</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2fa521c3e3e62ac934fe0e0e7eaaf6e1</srcmd5>
+    <version>0.79.0</version>
+    <time>1720201638</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.79.0:
+  * Added   : sp_cpp_before_struct_binding_after_byref
+  * Added   : sp_string_string
+  * Added   : pp_unbalanced_if_action
+  * Removed : pp_warn_unbalanced_if
+  * Removed : sp_balance_nested_parens
+  * Added   : debug_print_version
+  * Added   : nl_oc_msg_args_finish_multi_line
+
+  * Improve line splitting logic to avoid awkward splits</comment>
+    <requestid>1185419</requestid>
+  </revision>
 </revisionlist>
