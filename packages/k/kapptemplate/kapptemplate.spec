@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kapptemplate
-Version:        24.05.1
+Version:        24.05.2
 Release:        0
 Summary:        Template for KDE Application Development
 License:        GPL-2.0-only AND GFDL-1.2-only
