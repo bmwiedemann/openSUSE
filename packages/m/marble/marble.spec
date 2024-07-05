@@ -20,7 +20,7 @@
 %define _so_astro 1
 %bcond_without released
 Name:           marble
-Version:        24.05.1
+Version:        24.05.2
 Release:        0
 Summary:        Generic map viewer
 # License note: the tools directory contains GPL-3 tools, but they are neither built nor installed by the package
