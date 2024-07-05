@@ -382,4 +382,12 @@
   CVE-2024-0091, CVE-2024-0092]</comment>
     <requestid>1178694</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>5109852832beed6b3a35da6b781bd3aa</srcmd5>
+    <version>550.90.07</version>
+    <time>1720201872</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1185803</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Jul  5 08:41:55 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- make buildservice happy; all sources need to be mentioned as such
+  in specfile 
+
+-------------------------------------------------------------------
+Thu Jul  4 16:29:09 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- To avoid issues with missing dependencies when no CUDA repo
+  is present make the dependecy to nvidia-compute-G06 conditional.
+- CUDA is not available for Tumbleweed, exclude the build of the
+  cuda flavor.
+
+-------------------------------------------------------------------
+Thu Jul  4 14:15:41 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- preamble: let the -cuda flavor KMP require the -cuda flavor
+  firmware
+
+-------------------------------------------------------------------
+Wed Jul  3 15:39:50 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Add a second flavor for building the kernel module versions
+  used by CUDA. The kmp targetting CUDA contains '-cuda' in
+  its name to track its versions separately from the graphics
+  kmp. (bsc#1227417)
+- Provide the meta package nv-prefer-signed-open-driver to
+  make sure the latest available SUSE-build open driver is
+  installed - independent of the latest available open driver
+  version in he CUDA repository.
+  Rationale:
+  The package cuda-runtime provides the link between CUDA and
+  the kernel driver version through a
+  Requires: cuda-drivers >= %version
+  This implies that a CUDA version will run withany kernel driver
+  version equal or higher than a base version.
+  nvidia-compute-G06 provides the glue layer between CUDA and
+  a specific version of he kernel driver both by providing
+  a set of base libraries and by requiring a specific kernel
+  version. 'cuda-drivers' (provided by nvidia-compute-utils-G06)
+  requires an unversioned nvidia-compute-G06. With this, the
+  resolver will install the latest available and applicable
+  nvidia-compute-G06.
+  nv-prefer-signed-open-driver then represents the latest available
+  open driver version and restricts the nvidia-compute-G06 version
+  to it. (bsc#1227419)
+
+-------------------------------------------------------------------
 Tue Jun  4 13:40:41 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Security Update 550.90.07 (boo#1223356) [CVE-2024-0090,
@@ -8,7 +56,7 @@ Tue Jun  4 13:40:41 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 Mon Apr 29 08:56:15 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 550.78
-  * addresses boo#1223454 
+  * addresses boo#1223454
 
 -------------------------------------------------------------------
 Wed Apr 17 14:24:53 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>

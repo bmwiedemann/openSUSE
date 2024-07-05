@@ -1,5 +1,5 @@
 #
-# spec file for package nvidia-open-driver-G06-signed
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -16,6 +16,17 @@
 #
 
 
+%define gfx_version 550.90.07
+%define cuda_version 555.42.02
+
+%global flavor @BUILD_FLAVOR@%{?nil}
+%if "%{flavor}" == "cuda"
+ %if 0%{?suse_version} > 1600
+ExclusiveArch:  do_not_build
+ %endif
+%{bcond_without cuda}
+%endif
+
 %if %{undefined kernel_module_directory}
 %if 0%{?suse_version} >= 1550
 %define kernel_module_directory /usr/lib/modules
@@ -29,14 +40,24 @@
 %else
 %define compress_modules xz
 %endif
-Name:           nvidia-open-driver-G06-signed
-Version:        550.90.07
+Name:           nvidia-open-driver-G06-signed%{?with_cuda:-cuda}
+%if %{with cuda}
+Version:        %{cuda_version}
+%else
+Version:        %{gfx_version}
+%endif
+
 Release:        0
 Summary:        NVIDIA open kernel module driver for GeForce RTX 2000 series and newer
 License:        GPL-2.0-only AND MIT
 Group:          System/Kernel
 URL:            https://github.com/NVIDIA/open-gpu-kernel-modules/
-Source0:        open-gpu-kernel-modules-%{version}.tar.gz
+Source0:        https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/%{version}.tar.gz#/open-gpu-kernel-modules-%{version}.tar.gz
+%if %{with please_fix_factory_auto}
+Source16:       https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/%cuda_version}.tar.gz#/open-gpu-kernel-modules-%{cuda_version}.tar.gz
+Source17:       pci_ids-supported-%{cuda_version}
+Source18:       pci_ids-%{cuda_version}
+%endif
 Source1:        my-find-supplements
 Source2:        pci_ids-%{version}
 Source3:        kmp-filelist
@@ -46,6 +67,13 @@ Source6:        modprobe.nvidia.install
 Source7:        preamble
 Source8:        json-to-pci-id-list.py
 Source9:        pci_ids-supported-%{version}
+# Generate:
+# CUDA_VER=12.5.1; DRIVER_VER=%version; ARCH=...
+# mkdir tmp
+# wget https://developer.download.nvidia.com/compute/cuda/<cuda_ver>/local_install -P ./tmp
+# sh tmp/cuda_$CUDA_VER_$DRIVER_VER_linux.run --extract=$(pwd)/tmp
+# sh tmp/NVIDIA-Linux-$ARCH-$DRIVER_VER.run -x
+# ./json-to-pci-id-list.py --skiplegacy --kernelopen tmp/NVIDIA-Linux-$ARCH-$DRIVER_VER/supported-gpus/supported-gpus.json pci_ids-supported-$DRIVER_VER
 Source10:       pci_ids-supported
 Source11:       pesign-copy-sources
 Source12:       pesign-spec-macros
@@ -81,6 +109,21 @@ ExclusiveArch:  x86_64 aarch64
 	  echo "%files -n %{name}-${f}-devel -f files-${f}"; \
       done)}
 
+%package -n nv-prefer-signed-open-driver
+%define version_major %(i=%{version}; echo ${i%%%%.*})
+Summary:        Prefer the signed open driver when installing CUDA
+Requires:       nvidia-open-driver-G06-signed-cuda-kmp = %version
+# This avoids the package being uninstallable when the CUDA repo is unavaliable preventing problems in staging
+Requires:       ( nvidia-compute-G06 = %version if ( cuda-drivers or cuda-drivers-%version_major ) )
+
+%description -n nv-prefer-signed-open-driver
+By installing this package, the signed NVIDIA open driver built by SUSE will be preferred during installation
+of CUDA components.
+Simply run: `zypper install --no-recommends cuda-runtime-<version> nv-prefer-signed-open-driver`
+
+%if %{with cuda}
+%files -n nv-prefer-signed-open-driver
+%endif
 ## create hardware supplements for manual builds
 %{load:%{SOURCE12}}
 

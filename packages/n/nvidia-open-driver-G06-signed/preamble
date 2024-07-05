@@ -1,6 +1,12 @@
-Requires: kernel-firmware-nvidia-gspx-G06 = %{-v*}
 Requires: perl-Bootloader
 Conflicts: nvidia-gfxG06-kmp nvidia-driver-G06-kmp nvidia-gfxG05-kmp
 Requires: group(video)
 Provides: nvidia-open-driver-G06 = %{-v*}
+%if %{with cuda}
+Provides: nvidia-open-driver-G06-signed-kmp = %{-v*}
+Conflicts: nvidia-open-driver-G06-signed-kmp
+Requires: kernel-firmware-nvidia-gspx-G06-cuda = %{-v*}
+%else
+Requires: kernel-firmware-nvidia-gspx-G06 = %{-v*}
+%endif
 Obsoletes: nvidia-open-driver-G06 = %{-v*}
