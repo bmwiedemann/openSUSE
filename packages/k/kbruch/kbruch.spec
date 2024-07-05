@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kbruch
-Version:        24.05.1
+Version:        24.05.2
 Release:        0
 Summary:        Application to excercise fractions
 License:        GPL-2.0-or-later
