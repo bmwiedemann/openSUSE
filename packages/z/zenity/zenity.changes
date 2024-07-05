@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jul  4 16:25:21 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.0.2:
+  + tree:
+    - Enable 'activates-default' in GtkSearchEntry
+    - Don't try to print nonexisting items
+  + main: Fix command-line signal signature
+  + colview:
+    - Return if nth item of row exceeds num items in row
+    - Add more sanity checks
+    - Clicking on column titles should sort items
+  + filesel:
+    - Passing a dir with trailing '/' should open that dir
+    - Allow a non-existing filename with --save and add associated
+      test
+    - Remove spurious extra _show() call
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jan 26 03:29:47 UTC 2024 - jun wang <jgwang@suse.com>
 
 - Update to version 4.0.1
