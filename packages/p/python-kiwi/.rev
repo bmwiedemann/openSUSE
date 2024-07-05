@@ -2455,4 +2455,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1179969</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>77269958a80546d805b473bdff21d41f</srcmd5>
+    <version>10.0.23</version>
+    <time>1720201501</time>
+    <user>anag+factory</user>
+    <comment>- Bump version: 10.0.22 → 10.0.23
+
+- package: Add fully qualified provides for python3-kiwi in spec
+  On SUSE distributions, currently the expectation is that packages
+  built against the Python interpreter should have fully qualified
+  names in the form of pythonXY-&lt;modulename&gt;. Additionally, all other
+  Linux distributions prefer something similar in the form of
+  pythonX.Y-&lt;modulename&gt;.
+  This ensures we have those names so that distribution dependency
+  generation works as expected.
+
+- Add support for arch selector on volumes
+  The optional &lt;volume ... arch=&quot;&quot;/&gt; attribute allows to create
+  the volume only if it matches the specified host architecture.
+  Multiple architecture names can be specified as comma separated
+  list.
+
+- Add rd.kiwi.oem.force_resize boot option
+  Forces the disk resize process on an OEM disk image.
+  If set, no sanity check for unpartitioned/free space
+  is performed and also an eventually configured
+  &lt;oem-resize-once&gt; configuration from the image description
+  will not be taken into account. This Fixes bsc#1224389
+
+- Fixed leap integration tests
+  For whatever reason procps is not longer pulled in by the
+  core dependencies. Thus we have to explicitly request it
+
+- Fix potential race condition in loop detach
+  The call to 'losetup -d' is in fact an async operation. Once</comment>
+    <requestid>1185374</requestid>
+  </revision>
 </revisionlist>

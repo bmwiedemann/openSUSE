@@ -1,4 +1,197 @@
 -------------------------------------------------------------------
+Thu Jul 04 12:57:58 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.22 → 10.0.23
+
+-------------------------------------------------------------------
+Thu Jul 04 11:32:56 CEST 2024 - Neal Gompa <neal@gompa.dev>
+
+- package: Add fully qualified provides for python3-kiwi in spec
+
+  On SUSE distributions, currently the expectation is that packages
+  built against the Python interpreter should have fully qualified
+  names in the form of pythonXY-<modulename>. Additionally, all other
+  Linux distributions prefer something similar in the form of
+  pythonX.Y-<modulename>.
+
+  This ensures we have those names so that distribution dependency
+  generation works as expected.
+
+-------------------------------------------------------------------
+Thu Jul 04 10:01:35 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for arch selector on volumes
+
+  The optional <volume ... arch=""/> attribute allows to create
+  the volume only if it matches the specified host architecture.
+  Multiple architecture names can be specified as comma separated
+  list.
+
+-------------------------------------------------------------------
+Wed Jun 26 14:47:27 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add rd.kiwi.oem.force_resize boot option
+
+  Forces the disk resize process on an OEM disk image.
+  If set, no sanity check for unpartitioned/free space
+  is performed and also an eventually configured
+  <oem-resize-once> configuration from the image description
+  will not be taken into account. This Fixes bsc#1224389
+
+-------------------------------------------------------------------
+Tue Jun 25 14:25:03 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed leap integration tests
+
+  For whatever reason procps is not longer pulled in by the
+  core dependencies. Thus we have to explicitly request it
+
+-------------------------------------------------------------------
+Thu Jun 20 17:59:49 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix potential race condition in loop detach
+
+  The call to 'losetup -d' is in fact an async operation. Once
+  the command returns the loop can still be associated with the
+  former file because it gets lazy unbound and releases later.
+  Prior re-use of the same loop device it is therefore required
+  to wait until the kernel event queue is processed.
+
+-------------------------------------------------------------------
+Wed Jun 19 11:07:52 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed repository include to image with dnf
+
+  When specifying a repository element with imageinclude="true",
+  kiwi permanently adds the repo file inside of the image.
+  The distribution standard path is used to store the repo
+  file in this case. With dnf a package manager exists that is
+  primarily used on Fedora and RHEL systems. Thus the standard
+  path for the repo files is set to "/etc/yum.repos.d".
+  However, dnf can also be used for other rpm based distributions
+  e.g SUSE. On such a system the default path does not exist
+  or is different because another package manager is the
+  default. This commit makes sure that the expected path is
+  created prior adding any repo files.
+
+-------------------------------------------------------------------
+Tue Jun 18 08:42:17 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.21 → 10.0.22
+
+-------------------------------------------------------------------
+Mon Jun 17 18:24:44 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed selinux labels for boot files
+
+  When kiwi calls the bootloader config and installation modules
+  several files gets created as unlabeled_t because the labeling
+  happened earlier. This commit ensures that setfiles gets called
+  after BootLoaderConfig and/or BootLoaderInstall has done its
+  job. This Fixes #2568
+
+-------------------------------------------------------------------
+Mon Jun 17 09:26:29 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add bash to package requirements
+
+  If there are script evaluations that does not specify
+  an interpreter, kiwi uses bash for it. The same applies
+  for sub-process invocations using shell pipelines. Thus
+  the bash shell is a required tool for kiwi under certain
+  circumstances. Further details in Issue #2567
+
+-------------------------------------------------------------------
+Wed Jun 12 13:45:15 CEST 2024 - Pavel Zhukov <pavel@zhukoff.net>
+
+- test-image-live: add shadow package
+
+  Fixes:
+  KiwiCommandError: chroot: stderr: /usr/bin/chroot: failed to run command ‘usermod’: No such file or directory
+
+-------------------------------------------------------------------
+Tue Jun 11 14:37:01 CEST 2024 - Fabian Vogt <fvogt@suse.de>
+
+- Fix displaying the image verification failure dialog
+
+  Kiwi must wait for the previous dialog to finish before showing another
+  one as it's the same systemd service behind it.
+
+-------------------------------------------------------------------
+Mon Jun 10 16:13:37 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow to customize the path of the isoscan cowfile
+
+  Added rd.live.cowfile.path option to specify the cowfile at
+  any path below the isoscan-loop-mount. This Fixes #2554
+
+-------------------------------------------------------------------
+Mon Jun 10 10:36:59 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Better error handling on grub vendor dir lookup
+
+  The strings command is used to lookup the in-efi binary encoded
+  vendor path. However, if the strings or bash command is not availabe
+  on the build host, the command silently failed and moved into the
+  standard (non vendored) EFI boot path. This can lead to a broken
+  boot for those distros and image targets which requires a vendor
+  directory and should lead to an error message instead of a
+  successful image build. This Fixes #2565
+
+-------------------------------------------------------------------
+Mon Jun 10 09:50:02 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed profile variable settings for preferences
+
+  It's allowed to have multiple preferences sections. If those
+  sections provides the same value multiple times, e.g keytable,
+  the last one in the row will win. The setup of the variables
+  in .profile environment file for the preferences elements is
+  not following this rule and used the first section not the
+  last. This commit fixes the profile variables to match the
+  actual setup and Fixes #2560
+
+-------------------------------------------------------------------
+Thu Jun 06 14:24:07 CEST 2024 - Dmitri Popov <dpopov@suse.com>
+
+- Revise users.rst
+
+-------------------------------------------------------------------
+Thu Jun 06 13:57:29 CEST 2024 - Dmitri Popov <dpopov@suse.com>
+
+- REvise systemdeps.rst
+
+-------------------------------------------------------------------
+Thu Jun 06 13:42:57 CEST 2024 - Dmitri Popov <dpopov@suse.com>
+
+- Revise shell_scripts.rst
+
+-------------------------------------------------------------------
+Thu Jun 06 12:32:07 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add initrd boot option rd.kiwi.allow_plymouth
+
+  By default kiwi stops plymouth if present and active in the
+  initrd. Setting rd.kiwi.allow_plymouth will keep plymouth
+  active in the initrd including all effects that might have
+  to the available consoles. This is related to bsc#1214824
+
+-------------------------------------------------------------------
+Thu Jun 06 12:12:45 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop use of obsolete tool isconsole
+
+  isconsole was provided with the dropped kiwi-tools package.
+  It was a simple C application that checked the capabilities
+  of the current console. In the context of fbiterm it was just
+  used to provide proper error messages which fbiterm on its
+  own did not show. As also fbiterm is on its way to become
+  obsolete and isconsole is already no longer present, it's ok
+  to just drop that extra check and therefore keep the fbiterm
+  mode functional if one manages to include fbiterm and its
+  fonts into the initrd
+
+-------------------------------------------------------------------
 Tue Jun 04 11:13:01 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.0.20 → 10.0.21
@@ -172,6 +365,16 @@ Wed May 08 10:48:57 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 Tue May 07 16:18:28 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.0.14 → 10.0.15
+
+-------------------------------------------------------------------
+Tue May 07 11:29:18 CEST 2024 - Dmitri Popov <dpopov@suse.com>
+
+- REview runtime_configuration.rst
+
+-------------------------------------------------------------------
+Tue May 07 11:28:45 CEST 2024 - Dmitri Popov <dpopov@suse.com>
+
+- Review repository_setup.rst
 
 -------------------------------------------------------------------
 Thu May 02 16:27:14 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
@@ -384,6 +587,21 @@ Thu Apr 18 12:46:20 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
   scope and raise an appropriate exception
 
 -------------------------------------------------------------------
+Wed Apr 17 16:05:42 CEST 2024 - Dmitri Popov <dpopov@suse.com>
+
+- Revise profiles.rst
+
+-------------------------------------------------------------------
+Wed Apr 17 15:32:04 CEST 2024 - Dmitri Popov <dpopov@suse.com>
+
+- Revise packages.rst
+
+-------------------------------------------------------------------
+Wed Apr 17 15:09:39 CEST 2024 - Dmitri Popov <dpopov@suse.com>
+
+- Revise customize_the_boot_process.rst
+
+-------------------------------------------------------------------
 Wed Apr 17 12:28:35 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.0.11 → 10.0.12
@@ -492,6 +710,11 @@ Wed Mar 27 17:42:26 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
   Make sure GUI is unique and typecode is set according to the
   standard. This Fixes #2517
+
+-------------------------------------------------------------------
+Tue Mar 26 14:21:00 CET 2024 - Dmitri Popov <dpopov@suse.com>
+
+- Revise customize_boot
 
 -------------------------------------------------------------------
 Mon Mar 25 12:26:24 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>

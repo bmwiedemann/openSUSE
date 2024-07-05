@@ -32,6 +32,14 @@
 %global python3_sitelib %(%{__python3} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
 %endif
 
+%if %{undefined python3_version}
+%global python3_version %(%{__python3} -Esc "import sys; sys.stdout.write('{0.major}.{0.minor}'.format(sys.version_info))")
+%endif
+
+%if %{undefined python3_version_nodots}
+%global python3_version_nodots %(%{__python3} -Esc "import sys; sys.stdout.write('{0.major}{0.minor}'.format(sys.version_info))")
+%endif
+
 %if 0%{?debian} || 0%{?ubuntu}
 %global is_deb 1
 %global pygroup python
@@ -44,7 +52,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        10.0.21
+Version:        10.0.23
 Provides:       kiwi-schema = 8.1
 Release:        0
 Url:            https://github.com/OSInside/kiwi
@@ -390,12 +398,21 @@ leverage all functionality in KIWI.
 %package -n python%{python3_pkgversion}-kiwi
 Summary:        KIWI - Appliance Builder Next Generation
 Group:          %{pygroup}
+%if "%{python3_pkgversion}" == "3"
+%if 0%{?suse_version}
+Provides:       python%{python3_version_nodots}-kiwi = %{version}-%{release}
+%else
+Provides:       python%{python3_version}-kiwi = %{version}-%{release}
+%endif
+%endif
 Obsoletes:      python2-kiwi
 Conflicts:      python2-kiwi
 Conflicts:      kiwi-man-pages < %{version}
 Requires:       screen
 Requires:       file
 Requires:       sed
+Requires:       bash
+Recommends:     bash-completion
 Requires:       python%{python3_pkgversion} >= 3.9
 %if 0%{?ubuntu} || 0%{?debian}
 Requires:       python%{python3_pkgversion}-yaml
