@@ -1,0 +1,1121 @@
+-------------------------------------------------------------------
+Wed Jul  3 07:17:55 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix the files list in the spec file (gh#openSUSE/agama#1429).
+
+-------------------------------------------------------------------
+Fri Jun 28 13:49:54 UTC 2024 - Martin Vidner <mvidner@suse.com>
+
+- In Add/Edit file system dialog (VolumeDialog), keep the numeric value
+  when switching between Fixed and Range sizing (gh#openSUSE/agama#1277)
+
+-------------------------------------------------------------------
+Fri Jun 28 06:56:02 UTC 2024 - Martin Vidner <mvidner@suse.com>
+
+- Use gzip (.gz) instead of bzip2 (.bz2) to compress logs
+  so that they can be attached to GitHub issues
+  (gh#openSUSE/agama#1378)
+
+-------------------------------------------------------------------
+Thu Jun 27 13:23:08 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 9
+
+-------------------------------------------------------------------
+Thu Jun 27 12:05:19 UTC 2024 - David Diaz <dgonzalez@suse.com>
+
+- Do not lose the storage title in the overview
+  (gh#openSUSE/agama#1402).
+
+-------------------------------------------------------------------
+Wed Jun 26 16:46:58 UTC 2024 - David Diaz <dgonzalez@suse.com>
+
+- Reduce progress report flickering (gh#openSUSE/agama#1395).
+
+-------------------------------------------------------------------
+Wed Jun 26 15:57:52 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Display the installation progress when connecting in the middle
+  of the process (gh#openSUSE/agama#1394).
+
+-------------------------------------------------------------------
+Wed Jun 26 14:17:30 UTC 2024 - David Diaz <dgonzalez@suse.com>
+
+- Use similar look&feel for sections at network page
+  (gh#openSUSE/agama#1389).
+
+-------------------------------------------------------------------
+Wed Jun 26 14:04:53 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add status information to each steps in the progress report
+  and do not reset the progress icon animation
+  (gh#openSUSE/agama#1373 and gh#openSUSE/agama#1388).
+
+-------------------------------------------------------------------
+Wed Jun 26 13:45:36 UTC 2024 - David Diaz <dgonzalez@suse.com>
+
+- Reset installer options to its initial values before closing
+  the dialog on cancel (gh#openSUSE/agama#1386).
+
+-------------------------------------------------------------------
+Wed Jun 26 13:38:32 UTC 2024 - David Diaz <dgonzalez@suse.com>
+
+- Fix routes translations (gh#openSUSE/agama#1385).
+
+-------------------------------------------------------------------
+Wed Jun 26 13:14:06 UTC 2024 - David Diaz <dgonzalez@suse.com>
+
+- Bring back installer options when selecting a product
+  (gh#openSUSE/agama#1384).
+
+-------------------------------------------------------------------
+Wed Jun 26 11:54:41 UTC 2024 - Knut Anderssen <kanderssen@suse.com>
+
+- Adapt the network page to the new UI guidelines
+  (gh#openSUSE/agama#1365).
+
+-------------------------------------------------------------------
+Wed Jun 26 08:31:31 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Use the new SetLocale D-Bus method to change the language and the
+  keyboard layout (gh#openSUSE/agama#1375).
+- Move the "Download logs" to the sidebar (gh#openSUSE/agama#1375).
+- Improve the behavior when changing the installer language
+  (gh#openSUSE/agama#1375, gh#openSUSE/agama#1235).
+
+-------------------------------------------------------------------
+Wed Jun 26 07:52:22 UTC 2024 - David Diaz <dgonzalez@suse.com>
+
+- Do not crash when trying to render affected systems by deletion
+  actions (gh#openSUSE/agama#1380).
+
+-------------------------------------------------------------------
+Tue Jun 25 15:05:05 UTC 2024 - David Diaz <dgonzalez@suse.com>
+
+- Integrate actions with space policy in storage proposal page
+  (gh#openSUSE/agama#1354).
+
+-------------------------------------------------------------------
+Fri Jun 21 14:32:11 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Avoid connection attempts when the user is not logged in
+  (gh#openSUSE/agama#1366).
+
+-------------------------------------------------------------------
+Thu Jun 20 05:33:29 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Adapt the installation progress screen to look like the
+  product selection one (gh#openSUSE/agama#1356).
+
+-------------------------------------------------------------------
+Fri Jun 14 13:55:27 UTC 2024 - David Diaz <dgonzalez@suse.com>
+
+- Do not render the overview page when selecting a product
+  (gh#openSUSE/agama#1331).
+
+-------------------------------------------------------------------
+Fri Jun 14 07:37:58 UTC 2024 - David Diaz <dgonzalez@suse.com>
+
+- Do not redirect to login page until really needed
+  (gh#openSUSE/agama#1340).
+
+-------------------------------------------------------------------
+Fri Jun 14 05:34:52 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not redirect to the products selection page again after
+  selecting a product (gh#openSUSE/agama#1334).
+
+-------------------------------------------------------------------
+Thu Jun 13 10:52:22 UTC 2024 - David Diaz <dgonzalez@suse.com>
+
+- Remake the user interface to follow a streamlined approach
+  (gh#openSUSE/agama#1202).
+
+-------------------------------------------------------------------
+Thu Jun  6 07:43:50 UTC 2024 - Knut Anderssen <kanderssen@suse.com>
+
+- Try to reconnect silently when the WebSocket is closed displaying
+  a page error if it is not possible (gh#openSUSE/agama#1254).
+- Display a different login error message depending on the request
+  response (gh#openSUSE/agama#1274).
+
+-------------------------------------------------------------------
+Thu May 23 07:28:44 UTC 2024 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix showing count in pattern search and also improve visuals
+  when there are no matching text (gh#openSUSE/agama#1248)
+
+-------------------------------------------------------------------
+Wed May 22 14:26:18 UTC 2024 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix disappeared search box when no pattern match search expression
+  (gh#openSUSE/agama#1241)
+
+-------------------------------------------------------------------
+Fri May 17 09:52:26 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 8
+
+-------------------------------------------------------------------
+Thu May 16 12:48:27 UTC 2024 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix the download logs action in the web UI and drop the broken
+  actions show logs and show terminal (gh#openSUSE/agama#1216).
+
+-------------------------------------------------------------------
+Tue May 14 12:24:23 UTC 2024 - José Iván López González <jlopez@suse.com>
+
+- Make storage UI work again when there are no devices
+  (gh#openSUSE/agama#1203).
+
+-------------------------------------------------------------------
+Tue May 14 11:17:45 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix DELETE and PATCH calls in the HTTPClient
+  (gh#openSUSE/agama#1204).
+
+-------------------------------------------------------------------
+Mon May 13 09:01:29 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Adapt the iSCSI UI to use the new HTTP API instead of D-Bus
+  (gh#openSUSE/agama#1187).
+
+-------------------------------------------------------------------
+Mon May 13 08:45:57 UTC 2024 - José Iván López González <jlopez@suse.com>
+
+- Adapt the storage UI to use the HTTP API instead of D-Bus
+  (gh#openSUSE/agama#1175).
+
+-------------------------------------------------------------------
+Mon May  6 05:41:15 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Adapt to the new HTTP/JSON API:
+  - Authentication (gh#openSUSE/agama#1080).
+  - Localization (gh#openSUSE/agama#1094).
+  - Networking (gh#openSUSE/agama#1116).
+  - Software (gh#openSUSE/agama#1094 and gh#openSUSE/agama#1112).
+  - Manager service (gh#openSUSE/agama#1132).
+  - Questions (gh#openSUSE/agama#1132).
+  - Progress interface (gh#openSUSE/agama#1103).
+  - Issues interface (gh#openSUSE/agama#1100).
+  - Product registration (gh#openSUSE/agama#1146).
+  - Users (gh#openSUSE/agama#1117).
+- Adapt webpack to work with the new architecture
+  (gh#openSUSE/agama#1061, gh#openSUSE/agama#1074 and
+  gh#openSUSE/agama#1130).
+
+-------------------------------------------------------------------
+Fri May  3 09:45:36 UTC 2024 - José Iván López González <jlopez@suse.com>
+
+- Allow reusing an existing device or file system
+  (gh#openSUSE/agama#1165).
+
+-------------------------------------------------------------------
+Thu May 02 11:07:23 UTC 2024 - Balsa Asanovic <balsaasanovic95@gmail.com>
+
+- Added keyboard support for navigating dropdown
+  of suggested usernames. (gh#openSUSE/agama#1122).
+
+-------------------------------------------------------------------
+Thu Apr 25 15:04:05 UTC 2024 - José Iván López González <jlopez@suse.com>
+
+- Allow adding arbitrary volumes (gh#openSUSE/agama#1154).
+
+-------------------------------------------------------------------
+Thu Apr 25 13:40:06 UTC 2024 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Adapted to recent changes on Y2Storage::GuidedProposal
+  (gh#yast/yast-storage-ng#1382)
+
+-------------------------------------------------------------------
+Tue Apr 16 11:15:13 UTC 2024 - David Diaz <dgonzalez@suse.com>
+
+- Use better icons in storage proposal page
+  (gh#openSUSE/agama#1152).
+
+-------------------------------------------------------------------
+Mon Apr 15 10:52:14 UTC 2024 - David Diaz <dgonzalez@suse.com>
+
+- Stop using `<abbr>` tag because "its exposure continues to be
+  inconsistent across browsers and assistive technologies"
+  (gh#openSUSE/agama#1149).
+
+-------------------------------------------------------------------
+Mon Apr 15 07:14:35 UTC 2024 - David Diaz <dgonzalez@suse.com>
+
+- Enhance the storage page to make it easier to use and understand.
+  (gh#openSUSE/agama#1138).
+
+-------------------------------------------------------------------
+Thu Apr 11 15:16:42 UTC 2024 - José Iván López González <jlopez@suse.com>
+
+- Allow changing the location of a file system
+  (gh#openSUSE/agama#1141).
+
+-------------------------------------------------------------------
+Mon Apr  8 14:17:45 UTC 2024 - José Iván López González <jlopez@suse.com>
+
+- Improve the representation of the devices in the dialog for
+  finding space (gh#openSUSE/agama#1128).
+
+-------------------------------------------------------------------
+Thu Apr  4 15:59:37 UTC 2024 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Changes in the table of file systems (gh#openSUSE/agama#1125)
+
+-------------------------------------------------------------------
+Wed Apr  3 15:16:07 UTC 2024 - José Iván López González <jlopez@suse.com>
+
+- Add new selection for the target device and for configuring the
+  boot device (gh#openSUSE/agama#1068).
+
+-------------------------------------------------------------------
+Wed Mar 27 12:41:11 UTC 2024 - Ladislav Slezák <lslezak@suse.com>
+
+- Dropping Cockpit dependency:
+  - Do not use Cockpit gettext functionality
+    (gh#openSUSE/agama#1118)
+  - Do not store the list of supported languages to the Cockpit
+    manifest file (gh#openSUSE/agama#1121)
+
+-------------------------------------------------------------------
+Tue Mar 19 14:15:30 UTC 2024 - José Iván López González <jlopez@suse.com>
+
+- In storage page, replace Planned Actions section by a new Result
+  section, unify File Systems and Settings sections, and move
+  Find Space section to a popup (gh#openSUSE/agama#1104).
+
+-------------------------------------------------------------------
+Fri Mar  1 10:56:35 UTC 2024 - José Iván López González <jlopez@suse.com>
+
+- Indicate whether the system is transactional
+  (gh#openSUSE/agama/1063).
+
+-------------------------------------------------------------------
+Wed Feb 28 22:26:23 UTC 2024 - Balsa Asanovic <balsaasanovic95@gmail.com>
+
+- Added auto suggestion of usernames during user creation based
+  on given full name. (gh#openSUSE/agama#1022).
+
+-------------------------------------------------------------------
+Mon Feb 26 20:46:45 UTC 2024 - Josef Reidinger <jreidinger@suse.com>
+
+- Remove fs type option "Btrfs with snapshots" and create instead
+  global option that affects only root volume
+  (gh#openSUSE/agama#1039)
+
+-------------------------------------------------------------------
+Thu Feb 22 14:05:56 UTC 2024 - David Diaz <dgonzalez@suse.com>
+
+- Break storage settings in multiple sections to improve the UX
+  (gh#openSUSE/agama#1045).
+
+-------------------------------------------------------------------
+Wed Feb 21 17:40:01 UTC 2024 - David Diaz <dgonzalez@suse.com>
+
+- Stop rendering a warning at the top of storage page
+  (gh#openSUSE/agama#1048).
+
+-------------------------------------------------------------------
+Tue Feb 20 13:13:51 UTC 2024 - José Iván López González <jlopez@suse.com>
+
+- Add section for space policy to the storage page
+  (gh#openSUSE/agama#1028).
+
+-------------------------------------------------------------------
+Wed Feb 14 12:42:32 UTC 2024 - David Diaz <dgonzalez@suse.com>
+
+- UI: change look&feel and internals of Agama selectors
+  (gh#openSUSE/agama#1012).
+
+-------------------------------------------------------------------
+Mon Feb 12 11:53:29 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update cockpit.js to version 309 (gh#openSUSE/agama#1038).
+
+-------------------------------------------------------------------
+Mon Jan 29 14:34:37 UTC 2024 - Knut Anderssen <kanderssen@suse.com>
+
+- Partly replacing the NetworkManager client by the Agama one
+  (gh#openSUSE/agama#1006).
+
+-------------------------------------------------------------------
+Fri Jan 19 09:34:26 UTC 2024 -  Nagu <nagukalakuntla@gmail.com>
+
+- Storage UI: show mount point selector only when the user can change it.
+  (gh#openSUSE/agama#1007)
+
+-------------------------------------------------------------------
+Thu Jan 18 08:33:52 UTC 2024 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Make TPM-based encryption more explicit (gh#openSUSE/agama#995)
+
+-------------------------------------------------------------------
+Tue Jan 16 15:27:28 UTC 2024 - José Iván López González <jlopez@suse.com>
+
+- Fix error with storage issues proxy by anticipating its creation
+  (gh#openSUSE/agama#1003).
+
+-------------------------------------------------------------------
+Thu Jan 11 15:34:26 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Ignore the encoding from the UILocale D-Bus property
+  (gh#openSUSE/agama#987).
+
+-------------------------------------------------------------------
+Mon Jan  8 15:55:39 UTC 2024 - David Diaz <dgonzalez@suse.com>
+
+- Web documentation: improve the auto-generated documentation
+  output to have it ready for a future integration in a static
+  site generator (gh#openSUSE/agama#976).
+
+-------------------------------------------------------------------
+Thu Jan 04 21:44:32 UTC 2024 - Balsa Asanovic <balsaasanovic95@gmail.com>
+
+- Removing global issues page and using popup dialog instead.
+  It shows issues only from a specific category (software,
+  product, storage, ...) and not all at once. (gh#openSUSE/agama#886).
+
+-------------------------------------------------------------------
+Tue Dec 26 11:12:45 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- UI: Use the HTML <strong> element instead of a CSS class for
+   emphasizing content (gh#openSUSE/agama#960).
+
+-------------------------------------------------------------------
+Fri Dec 22 09:29:59 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- UI: Fix page menus placement in production mode,
+   rendering them in the page header (gh#openSUSE/agama#925,
+   gh#openSUSE/agama#950).
+
+-------------------------------------------------------------------
+Thu Dec 21 14:24:02 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 7
+
+-------------------------------------------------------------------
+Thu Dec 21 13:36:46 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- Rework UI internals for improving core/Page component and changing
+  how layout is handled (gh#openSUSE/agama#925).
+- Drop layout/Layout and stop using react-teleporter.
+
+-------------------------------------------------------------------
+Thu Dec 21 11:18:37 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Display countries at timezone selector (gh#openSUSE/agama#946).
+
+-------------------------------------------------------------------
+Mon Dec 18 10:42:53 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- Do not show info icon for the file system label if there is only
+  one option (gh#openSUSE/agama#938).
+
+-------------------------------------------------------------------
+Fri Dec 15 15:03:40 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- Allow selecting file system type and configure snapshots
+  (gh#openSUSE/agama/926).
+
+-------------------------------------------------------------------
+Sat Dec  2 18:06:02 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 6
+
+-------------------------------------------------------------------
+Thu Nov 30 22:39:57 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- UI: make selectors more compact (gh#openSUSE/agama#898).
+
+-------------------------------------------------------------------
+Thu Nov 30 15:19:38 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- Allow selecting the storage policy to make free space for the
+  installation (gh#openSUSE/agama#883).
+
+-------------------------------------------------------------------
+Wed Nov 29 14:15:16 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- Allow selecting language, keymap and timezone for the target
+  system (gh#openSUSE/agama#881).
+
+-------------------------------------------------------------------
+Wed Nov 29 13:01:04 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- UI: improve the look and feel by fine tunning the sections spacing,
+  alignment, and icon sizes (gh#openSUSE/agama#892).
+
+-------------------------------------------------------------------
+Tue Nov 21 15:21:06 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- UI: Do not crash when clicking the install button. It started
+  failing after removing core-js dependency (gh#openSUSE/agama#880
+  and related to gh#openSUSE/agama#866).
+
+-------------------------------------------------------------------
+Fri Nov 17 13:27:22 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- UI: Fix broken storage links (bsc#1217281).
+
+-------------------------------------------------------------------
+Wed Nov 15 12:32:25 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- Add UI for registering a product (gh#openSUSE/agama#869).
+
+-------------------------------------------------------------------
+Thu Nov  2 07:38:22 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- UI: Drop support for opening dialogs directly from a section
+  header (gh#openSUSE/agama#838).
+
+-------------------------------------------------------------------
+Tue Oct 31 09:41:33 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- UI: sections improvements (gh#openSUSE/agama#816):
+  - allow using them without title.
+  - make them more accessible by using aria-label, aria-live-region,
+    and aria-busy attributes.
+
+-------------------------------------------------------------------
+Fri Oct 27 10:25:46 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Display the "Congratulations" message at the end of the
+  installation again (gh#openSUSE/agama#825).
+
+-------------------------------------------------------------------
+Thu Oct 26 16:07:02 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Properly track the status changes. It prevents of getting stuck
+  in the first page when there are multiple products
+  (gh#openSUSE/agama#821).
+
+-------------------------------------------------------------------
+Thu Oct 26 05:58:15 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Make sure that the software context is ready before trying to
+  load any route (gh#openSUSE/agama#820).
+
+-------------------------------------------------------------------
+Thu Oct 26 05:31:28 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix client initialization to avoid a useless reconnection
+  (gh#openSUSE/agama#819).
+
+-------------------------------------------------------------------
+Mon Oct 23 11:33:53 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 5
+
+-------------------------------------------------------------------
+Thu Oct 19 22:07:11 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- UI: fix CSS rule for applying grayscale and blur CSS filters to
+  main wrapper when the sidebar is open (gh#openSUSE/agama#802).
+
+-------------------------------------------------------------------
+Tue Oct 17 10:59:37 UTC 2023 - Imobach González Sosa <igonzalezsosa@suse.com>
+
+- Allow changing the language of the user interface
+  (gh#openSUSE/agama#796).
+
+-------------------------------------------------------------------
+Tue Oct 10 08:50:53 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Added pattern selector to allow changing the installed software
+  (gh#openSUSE/agama#792)
+
+-------------------------------------------------------------------
+Mon Oct  9 11:30:27 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Reload only once when changing the language using the lang=
+  parameter in the query string (gh#openSUSE/agama#794).
+
+-------------------------------------------------------------------
+Thu Oct  5 19:52:17 UTC 2023 - Josef Reidinger <jreidinger@suse.com>
+
+- Add flag if volume is transactional btrfs (gh#openSUSE/agama#789)
+
+-------------------------------------------------------------------
+Thu Oct  5 05:50:57 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Implement a mechanism to reconnect to the D-Bus service
+  (gh#openSUSE/agama#781).
+
+-------------------------------------------------------------------
+Mon Oct  2 08:02:23 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- UI: migrate to PatternFly 5 (gh#openSUSE/agama#759)
+
+-------------------------------------------------------------------
+Fri Sep 29 08:04:01 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- Do not drop source maps from production build
+  (gh#openSUSE/agama#779)
+
+-------------------------------------------------------------------
+Wed Sep 27 12:15:13 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- Allow to select the devices for the system volume group
+  (gh#openSUSE/agama#763).
+
+-------------------------------------------------------------------
+Tue Sep 26 15:57:21 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 4
+
+-------------------------------------------------------------------
+Tue Sep 19 19:11:12 UTC 2023 - Balsa Asanovic <balsaasanovic95@gmail.com>
+
+- Allow users to show password values (gh#openSUSE/agama#750).
+
+-------------------------------------------------------------------
+Tue Sep 19 11:18:05 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- Explicitly call to probe after selecting a new product
+  (gh#openSUSE/agama#748).
+
+-------------------------------------------------------------------
+Thu Sep 14 10:09:07 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Use a single D-Bus service to connect to the manager and the
+  users API (gh#openSUSE/agama#753, follow-up of
+  gh#openSUSE/agama#729).
+
+-------------------------------------------------------------------
+Mon Sep 11 11:56:56 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- Fix the download logs action in the web UI (gh#openSUSE/agama#697)
+
+-------------------------------------------------------------------
+Wed Sep  6 08:04:13 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- Adapt storage to new proposal settings (gh#openSUSE/agama#738).
+
+-------------------------------------------------------------------
+Thu Aug 31 10:37:50 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Adapt the locale and questions clients to use the same D-Bus
+  service (gh#openSUSE/agama#729).
+
+-------------------------------------------------------------------
+Sat Aug 12 11:35:12 UTC 2023 - Balsa Asanovic <balsaasanovic95@gmail.com>
+
+- Added scroll up functionality to the discover iSCSI form when
+  the warning shows up after the submit action
+  (gh#openSUSE/agama#468).
+
+-------------------------------------------------------------------
+Wed Aug  2 18:59:16 UTC 2023 - Balsa Asanovic <balsaasanovic95@gmail.com>
+
+- Introduced functionality to close Dropdown automatically
+  when the user clicks outside of it.
+  (gh#openSUSE/agama#552).
+
+-------------------------------------------------------------------
+Wed Aug  2 10:03:23 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 3
+
+-------------------------------------------------------------------
+Mon Jul 17 09:16:38 UTC 2023 - Josef Reidinger <jreidinger@suse.com>
+
+- Adapt to new questions D-Bus API to allow automatic answering of
+  questions when requested. No visible change in UI, just default
+  answer for LUKS partition activation is now "Skip".
+  (gh#openSUSE/agama#637)
+
+-------------------------------------------------------------------
+Wed Jul  5 13:59:58 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- Add info about deactivated zFCP auto_lun_scan and sort members in
+  device selector (gh#openSUSE/agama#650).
+
+-------------------------------------------------------------------
+Mon Jul  3 10:18:32 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- Add page for managing zFCP devices (gh#openSUSE/agama#634).
+
+-------------------------------------------------------------------
+Wed Jun 21 09:05:21 UTC 2023 - Balsa Asanovic <balsaasanovic95@gmail.com>
+
+- Moved the logic for adding and removing HTML element's
+  attributes from sidebar component to custom hook
+  (gh#openSUSE/agama#565).
+
+-------------------------------------------------------------------
+Tue Jun 13 15:40:01 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- UI: stop using fixed sizes for modal dialogs
+  (gh#openSUSE/agama#620).
+
+-------------------------------------------------------------------
+Tue Jun 13 06:59:12 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- Storage: adjust volume size options wording and size
+   (gh#/openSUSE/agama#618).
+
+-------------------------------------------------------------------
+Mon Jun 12 11:13:41 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- UI: makes more evident when there is none authentication method
+  defined for the root user (gh#openSUSE/agama#615).
+
+-------------------------------------------------------------------
+Fri Jun  9 09:38:05 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- Storage: allow setting the volume size (gh#openSUSE/agama#590).
+
+-------------------------------------------------------------------
+Wed May 24 11:01:24 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- UI: ensure that blur and grayscale CSS filters are not applied to
+  any nodes other than <body> direct children (gh#openSUSE/agama#588).
+
+-------------------------------------------------------------------
+
+Tue May 23 11:51:26 UTC 2023 - Martin Vidner <mvidner@suse.com>
+
+- Version 2.1
+
+-------------------------------------------------------------------
+Tue May 23 08:10:04 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- Add new component for selecting devices.
+- gh#openSUSE/agama#586
+
+-------------------------------------------------------------------
+Mon May 22 12:30:02 UTC 2023 - Martin Vidner <mvidner@suse.com>
+
+- Version 2
+
+-------------------------------------------------------------------
+Mon May 22 10:42:35 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- UI: Fix header and footer block size (gh#openSUSE/agama#583)
+
+-------------------------------------------------------------------
+Fri May 19 09:29:50 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- UI: grayscale and blur not accessible div nodes
+  (gh#openSUSE/agama#564)
+
+-------------------------------------------------------------------
+Wed May 17 15:42:31 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- Ensure siblings of an open modal dialog do not remain hidden from
+  the accessibility API if the dialog is unmounted instead of
+  set as closed (gh#openSUSE/agama#580).
+
+-------------------------------------------------------------------
+Tue May  9 22:36:12 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- Keep the sidebar on top of other elements when it's open
+  (gh#openSUSE/agama#569).
+
+-------------------------------------------------------------------
+Mon May  8 15:20:14 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- Set sidebar siblings as aria-hiden while it's open
+  (gh#openSUSE/agama#563)
+-------------------------------------------------------------------
+Fri Apr 28 15:16:04 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- Add issues for storage client.
+- Add issues page.
+- gh#openSUSE/agama#540
+
+-------------------------------------------------------------------
+Thu Apr 27 08:24:27 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Display details for the "autocalculated" label in the storage
+  settings
+
+-------------------------------------------------------------------
+Tue Apr 25 13:42:22 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- UI: Fix dropdown content alignment at storage proposal page
+  (gh#openSUSE/agama#547).
+
+-------------------------------------------------------------------
+Tue Apr 25 12:23:27 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- UI: Do not indent sections without icons (gh#openSUSE/agama#549).
+
+-------------------------------------------------------------------
+Mon Apr 24 15:53:35 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- Extract page options from the Sidebar to make them
+  more discoverable (gh#openSUSE/agama#545)
+
+-------------------------------------------------------------------
+Thu Apr 20 12:44:44 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- Make styles consistent when the user is hovering a button,
+  no matter if it is a focus state or not (gh#openSUSE/agama#544).
+
+-------------------------------------------------------------------
+Fri Apr 14 13:08:05 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- First steps for redesigning storage proposal UI:
+  * Place settings directly on the proposal page.
+  * Show list of file systems, allowing to add and remove.
+- gh#openSUSE/agama#521
+
+-------------------------------------------------------------------
+Tue Apr 11 14:02:31 UTC 2023 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix netmask handling (bsc#1210104).
+
+-------------------------------------------------------------------
+Wed Apr  5 14:14:32 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- Fix issues with questions client (gh#openSUSE/agama#524).
+
+-------------------------------------------------------------------
+Mon Apr  3 08:13:55 UTC 2023 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix DNS handling by using ipv4.dns-data instead of ipv4.dns (gh#openSUSE/agama#518).
+
+-------------------------------------------------------------------
+Wed Mar 29 11:32:13 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Rename D-Installer to Agama (gh#openSUSE/agama#507).
+- Version 1
+
+-------------------------------------------------------------------
+Fri Mar 24 15:30:48 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 0.8.3
+
+-------------------------------------------------------------------
+Fri Mar 24 14:51:55 UTC 2023 - Knut Alejandro Anderssen González <kanderssen@suse.com>
+
+- Add UI for configuring DASD (gh#openSUSE/agama#501).
+
+-------------------------------------------------------------------
+Fri Mar 24 12:50:06 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Added a tip about iSCSI and DASD configuration to the storage
+  page (gh#openSUSE/agama#500).
+
+-------------------------------------------------------------------
+Fri Mar 24 10:39:45 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 0.8.2
+
+-------------------------------------------------------------------
+Thu Mar 23 17:07:29 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- Reprobe storage if the system becomes deprecated
+  (gh#openSUSE/agama#484).
+
+-------------------------------------------------------------------
+Tue Mar 21 16:41:06 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Do not crash when setting an invalid target device using the
+  command line interface (bsc#1209523)
+
+-------------------------------------------------------------------
+Mon Mar 20 15:13:28 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Upgrade Webpack to version 5.76.2 (CVE-2023-28154, bsc#1209494).
+- Version 0.8.1
+
+-------------------------------------------------------------------
+Mon Mar 20 13:40:08 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Remove the redundant "Settings" suffix (gh#openSUSE/agama#481).
+
+-------------------------------------------------------------------
+Mon Mar 20 11:51:56 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix the initialization of the D-Bus iSCSI proxies
+  (gh#openSUSE/agama#478).
+
+-------------------------------------------------------------------
+Mon Mar 20 11:50:37 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- Fix the iSCSI discover form when no information is found in the
+  browser's local storage (gh#openSUSE/agama#475).
+
+-------------------------------------------------------------------
+Thu Mar 16 16:13:39 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 0.8
+
+-------------------------------------------------------------------
+Thu Mar 16 15:53:34 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- Add UI for configuring iSCSI (gh#openSUSE/agama#435).
+
+-------------------------------------------------------------------
+Mon Mar 13 15:51:08 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- Sidebar improvements (gh#openSUSE/agama#462)
+  * Allow adding actions from a page.
+  * Remove network information.
+  * Use underlined links and darker green color for improving contrast.
+  * Start using a disclosure widget for grouping related actions.
+
+-------------------------------------------------------------------
+Fri Mar  3 15:00:05 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- Enhance the user edit form (gh#openSUSE/agama#451).
+
+-------------------------------------------------------------------
+Thu Mar  2 23:16:09 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- Dependencies update (gh#openSUSE/agama#449).
+  * Go up to React 18.
+  * Bring node packages up to date.
+
+-------------------------------------------------------------------
+Wed Mar  1 23:22:37 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- Create a dedicated page per section
+  (gh#openSUSE/agama#443).
+
+-------------------------------------------------------------------
+Tue Feb 21 00:50:48 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- Set icons as aria-hidden (gh#openSUSE/agama#437).
+
+-------------------------------------------------------------------
+Mon Feb 20 22:52:48 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- Sidebar improvements (gh#openSUSE/agama#436)
+  * Use proper control for open and close actions
+  * Improve styling and labels
+  * Add missing aria attributes
+
+-------------------------------------------------------------------
+Thu Feb 16 12:56:24 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Integrate cockpit terminal application (gh#openSUSE/agama#426)
+
+-------------------------------------------------------------------
+Wed Feb 15 16:35:54 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 0.7
+- Do not use a proxy to get the errors lists
+  (gh#openSUSE/agama#424).
+
+-------------------------------------------------------------------
+Thu Feb  9 15:29:58 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- Add live reloading feature for easing the front-end development
+  process (gh#openSUSE/agama#419).
+
+-------------------------------------------------------------------
+Thu Feb  9 14:16:09 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- Fix storage section crashing when proposal is not ready
+  (gh#openSUSE/agama#418).
+
+-------------------------------------------------------------------
+Wed Feb  8 18:12:06 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Better handling of software repositories
+  (gh#openSUSE/agama#414):
+  * Report issues when reading the software repositories.
+  * Inform the user about the software proposal progress.
+  * Add a button to reload the repositories
+    (gh#openSUSE/agama#388).
+
+-------------------------------------------------------------------
+Tue Jan 24 09:32:13 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Added a button for displaying the YaST logs
+  (related to gh#openSUSE/agama#379)
+
+-------------------------------------------------------------------
+Fri Jan 20 09:03:22 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- UI fixes (gh#openSUSE/agama#401):
+  * Add a fallback height for the layout
+  * Fix some miss-alignments
+  * Add missing icon
+  * Ensure tooling serving and loading fonts
+
+-------------------------------------------------------------------
+Thu Jan 19 07:58:00 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- Update aliases for using "~/" instead of "@"
+  (gh#openSUSE/agama#400).
+
+-------------------------------------------------------------------
+Wed Jan 18 08:06:05 UTC 2023 - Josef Reidinger <jreidinger@suse.com>
+
+- Allow user downloading logs (gh#openSUSE/agama#379)
+
+-------------------------------------------------------------------
+Thu Jan 12 16:23:54 UTC 2023 - Josef Reidinger <jreidinger@suse.com>
+
+- Implement validation of software proposal to early detect
+  issues in software selection (gh#openSUSE/agama#381)
+
+-------------------------------------------------------------------
+Wed Jan 11 20:37:26 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- Testing: use a mocking function to make mocked components
+  consistent across the test suite (gh#openSUSE/agama#392).
+
+-------------------------------------------------------------------
+Wed Jan 11 11:54:29 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- Rework UI internals by using plain CSS as much as possible for
+  building the layout instead of relying on wrapper components
+  (gh#openSUSE/agama#391).
+
+-------------------------------------------------------------------
+Tue Jan 10 10:30:05 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Connect to the dedicated D-Bus server (gh#openSUSE/agama#384).
+
+-------------------------------------------------------------------
+Mon Jan  2 12:53:50 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- Add missing favicon (gh#openSUSE/agama#387).
+
+-------------------------------------------------------------------
+Mon Jan  2 11:46:37 UTC 2023 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not show the link to configure wifi networks when there are no
+  wifi devices and also inform the user when no network connection
+  was detected (gh#openSUSE/agama#323).
+- Version 0.6.3
+
+-------------------------------------------------------------------
+Mon Jan  2 10:03:18 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- Ensure custom fonts are including in the build
+  (gh#openSUSE/agama#385).
+
+-------------------------------------------------------------------
+Fri Dec 30 11:56:46 UTC 2022 - David Diaz <dgonzalez@suse.com>
+
+- Switch to Material Symbols icon set and refactor how icons
+  are imported (gh#openSUSE/agama#383).
+
+-------------------------------------------------------------------
+Thu Dec 15 10:14:22 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not show the link to configure wifi networks when wireless is
+  not enabled (gh#openSUSE/agama#323).
+- Version 0.6.2
+
+-------------------------------------------------------------------
+Thu Dec 15 08:55:02 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Display questions during the software installation (related to
+  gh#openSUSE/agama#369).
+- Update to version 0.6.1
+
+-------------------------------------------------------------------
+Mon Dec  5 13:18:37 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to version 0.6.0
+
+-------------------------------------------------------------------
+Fri Dec  2 15:46:46 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add support for password confirmation
+  (related to gh#openSUSE/agama#297)
+
+-------------------------------------------------------------------
+Fri Dec  2 13:41:41 UTC 2022 - José Iván López González <jlopez@suse.com>
+
+- Add new UI for storage proposal offering LVM and encyption
+  options (gh#openSUSE/agama#321).
+
+-------------------------------------------------------------------
+Fri Dec 2 10:48:14 UTC 2022 - Josef Reidinger <jreidinger@suse.cz>
+
+- Add support for adapting the configuration depending on the
+  architecture (gh#openSUSE/agama#339)
+
+-------------------------------------------------------------------
+Wed Nov 30 08:16:42 UTC 2022 - Knut Alejandro Anderssen González <kanderssen@suse.de>
+
+- Add validation for the first user creation (gh#openSUSE/agama#337)
+
+-------------------------------------------------------------------
+Fri Nov 18 16:27:26 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to version 0.5.0:
+  * Add support for basic network configuration, based on
+    NetworkManager (gh#openSUSE/agama#260, gh#openSUSE/agama#292).
+  * Improve the usability of the LUKS activation dialog
+    (gh#openSUSE/agama#253).
+  * Prevent starting the installation with incomplete or wrong
+    configuration (gh#openSUSE/agama#299).
+
+-------------------------------------------------------------------
+Thu Jul 28 08:17:06 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to version 0.4.2:
+  * Connect to the org.opensuse.DInstaller.Language service
+    (related to gh#openSUSE/agama#240).
+
+-------------------------------------------------------------------
+Tue Jul 26 10:04:53 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to version 0.4.1:
+  * Fix several user interface-related issues (gh#openSUSE/agama#230):
+    - Avoid reloading the page when pushing the enter key.
+    - Always display the D-Bus error page when the connection gets
+      broken. Reload the UI again when the D-Bus connection is
+      working again.
+    - Update the product selection page when the product is
+      modified in background (e.g., using the CLI).
+    - Update the first user settings when they are changed in
+      background.
+    - Refresh the storage section when the settings are modified
+      in background.
+    - If the storage proposal fails, display the error even after
+      reloading the page.
+
+-------------------------------------------------------------------
+Fri Jul 15 07:32:48 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to version 0.4:
+  * Support for installing multiple products
+    (gh#openSUSE/agama#211).
+  * Adapt to the new status/progress reporting API
+    (gh#openSUSE/agama#219).
+  * Add a better layout mechanism (gh#openSUSE/agama#216).
+
+-------------------------------------------------------------------
+Mon Jun 13 10:10:03 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to version 0.3:
+  * Refresh the web UI when a selected option changes (e.g., through
+    the CLI) (gh#openSUSE/agama#180).
+  * Remove the "Restart Installation" button
+    (gh#openSUSE/agama#167 and gh#openSUSE/agama#174).
+  * Add a task to generate the JSDoc-based documentation
+    (gh#openSUSE/agama#186 and gh#openSUSE/agama#191).
+
+-------------------------------------------------------------------
+Tue May 17 10:58:51 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to version 0.2:
+  * Turn the web UI into a Cockpit module (gh#openSUSE/agama#127)
+    and drop the authentication code (gh#openSUSE/agama#128).
+  * Add basic storage devices activation (gh#openSUSE/agama#150).
+  * Fix the behavior of the language selector
+    (gh#openSUSE/agama#125).
+  * Add an installation confirmation dialog
+    (gh#openSUSE/agama#118) and a reboot button
+    (gh#openSUSE/agama#114).
+
+-------------------------------------------------------------------
+Wed Mar 30 07:06:23 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- First release (version 0.1):
+  * Allow setting the language, selecting a product, choosing a disk to
+    install into, setting the root authentication mechanism and creating
+    a first user.
+  * Report installation progress.
+  * Communication with D-Bus through Cockpit's infrastructure.
