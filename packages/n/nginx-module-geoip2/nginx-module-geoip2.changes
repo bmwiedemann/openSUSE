@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Wed Jun 19 00:57:57 UTC 2024 - Илья Индиго <ilya@ilya.top>
+
+- Updated spec-file via spec-cleaner and manual optimizations.
+  * Added README.md file.
+
+-------------------------------------------------------------------
+Wed Jun 22 09:30:15 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.4
+  nginx 1.23.0 support
+
+-------------------------------------------------------------------
+Mon Mar  1 15:26:32 UTC 2021 - Илья Индиго <ilya@ilya.top>
+
+- Updated spec-file via spec-cleaner and manual optimizations.
+  * Fixed Source0 url.
+
+-------------------------------------------------------------------
+Fri Oct  2 04:18:32 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- use the ngx_* macros from the nginx-macros package to simplify
+  the spec file
+
+-------------------------------------------------------------------
+Fri Oct  2 01:37:29 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package

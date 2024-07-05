@@ -1,0 +1,5 @@
+<package name="nginx-module-geoip2" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="server:http" package="nginx-module-geoip2"/>
+</package>
