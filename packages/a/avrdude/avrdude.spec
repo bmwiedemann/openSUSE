@@ -24,7 +24,7 @@
 %define _modprobedir /lib/modprobe.d
 %endif
 Name:           avrdude
-Version:        7.2
+Version:        7.3
 Release:        0
 Summary:        Upload tool for AVR microcontrollers
 License:        GPL-2.0-or-later
@@ -77,11 +77,8 @@ This package contains development files for %{name}.
 #touch lexer.l
 
 %build
-%if 0%{?suse_version} < 1600
 # 15.4 at least has "-Wl,--no-undefined" in there which breaks library build
 EXTRA_CMAKE="-DCMAKE_SHARED_LINKER_FLAGS='-Wl,--as-needed -Wl,-z,now'"
-%endif
-
 %cmake -DHAVE_LINUXGPIO=1 -DHAVE_LINUXSPI=1 -DBUILD_DOC=0 "$EXTRA_CMAKE"
 %cmake_build
 

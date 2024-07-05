@@ -3,7 +3,7 @@
 # This is for Arch Linux.
 
 pkgname=avrdude
-pkgver=7.2
+pkgver=7.3
 pkgrel=1
 epoch=1
 pkgdesc="Download/upload/manipulate the ROM and EEPROM contents of AVR microcontrollers"
