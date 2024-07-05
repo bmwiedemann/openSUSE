@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ec2bf55f172fb2992825b817f04ca2d4</srcmd5>
+    <version>9</version>
+    <time>1720201606</time>
+    <user>anag+factory</user>
+    <comment>Add rubygem-agama-yast dependency of Agama 9
+
+* https://code.opensuse.org/leap/features/issue/158</comment>
+    <requestid>1184823</requestid>
+  </revision>
+</revisionlist>

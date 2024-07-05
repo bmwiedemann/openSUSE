@@ -1,0 +1,5 @@
+<package name="rubygem-agama-yast" project="openSUSE:Factory">
+  <title>YaST integration service for Agama</title>
+  <description>D-Bus service exposing some YaST features that are useful for Agama.</description>
+  <devel project="systemsmanagement:Agama:Devel" package="rubygem-agama-yast"/>
+</package>
