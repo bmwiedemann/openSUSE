@@ -1,5 +1,5 @@
 #
-# spec file for package texlive-specs-k.spec.new
+# spec file for package texlive-specs-k.spec
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -14,12 +14,14 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+##### WARNING: Please do not edit this auto generated spec file.
+#
 
 
 %define texlive_version  2024
 %define texlive_previous 2022
 %define texlive_release  20240311
-%define texlive_noarch   213
+%define texlive_noarch   217
 %define biber_version    2.19
 
 #!BuildIgnore:          texlive
@@ -54,6 +56,10 @@
 %define _x11data        %{_datadir}/X11
 %define _x11inc         %{_includedir}
 %define _appdefdir      %{_x11data}/app-defaults
+
+%if ! %{defined python3_bin_suffix}
+%global python3_bin_suffix 3
+%endif
 
 Name:           texlive-specs-k
 Version:        2024
@@ -22828,6 +22834,20 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
+    # Extend python3 scripts with major version only if any
+    for scr in %{_texmfdistdir}/doc/support/gitfile-info/gfi-run.py \
+	       %{_texmfdistdir}/doc/support/gitfile-info/post-commit.py \
+	       %{_texmfdistdir}/doc/support/gitfile-info/post-merge.py
+    do
+	test -e %{buildroot}/$scr || continue
+	ed %{buildroot}/${scr} <<-'EOF'
+		1
+		s@python3@python%python3_bin_suffix@
+		.
+		w
+		q
+	EOF
+    done
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/doc/support/gitfile-info/gfi-run.py \
 	       %{_texmfdistdir}/doc/support/gitfile-info/post-commit.py \
@@ -22948,14 +22968,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	       %{_texmfdistdir}/doc/fonts/gnu-freefont/tools/generate/TrueType \
 	       %{_texmfdistdir}/doc/fonts/gnu-freefont/tools/generate/WOFF \
 	       %{_texmfdistdir}/doc/fonts/gnu-freefont/tools/report/kernclasses.py \
-	       %{_texmfdistdir}/doc/fonts/gnu-freefont/tools/report/ligatureLookups.py \
-	       %{_texmfdistdir}/doc/fonts/gnu-freefont/tools/report/private_use.py \
-	       %{_texmfdistdir}/doc/fonts/gnu-freefont/tools/report/range_report.py \
 	       %{_texmfdistdir}/doc/fonts/gnu-freefont/tools/script-menu/nameBySlot.py \
-	       %{_texmfdistdir}/doc/fonts/gnu-freefont/tools/test/checkGlyphNumbers.py \
-	       %{_texmfdistdir}/doc/fonts/gnu-freefont/tools/test/findBackLayers.py \
-	       %{_texmfdistdir}/doc/fonts/gnu-freefont/tools/test/isMonoMono.py \
-	       %{_texmfdistdir}/doc/fonts/gnu-freefont/tools/test/validate.py \
 	       %{_texmfdistdir}/doc/fonts/gnu-freefont/tools/utility/metafont/bulk_eps_import.py
     do
 	test -e %{buildroot}/$scr || continue
@@ -22963,7 +22976,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	ed %{buildroot}/${scr} <<-'EOF'
 		1
 		i
-		#! /usr/bin/python3
+		#! /usr/bin/python%python3_bin_suffix
 		.
 		w
 		q
@@ -22976,10 +22989,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	       %{_texmfdistdir}/doc/fonts/gnu-freefont/tools/utility/hex_range.py
     do
         test -e %{buildroot}/$scr || continue
-	head -n 1 %{buildroot}/$scr | grep -q python3 && continue
+	head -n 1 %{buildroot}/$scr | grep -q python%python3_bin_suffix && continue
 	ed %{buildroot}/${scr} <<-'EOF'
 		1
-		s@python@python3@
+		s@python[23]\?[^\s]*@python%python3_bin_suffix@
 		.
 		w
 		q
