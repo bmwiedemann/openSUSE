@@ -1,5 +1,5 @@
 #
-# spec file for package texlive-specs-f.spec.new
+# spec file for package texlive-specs-f.spec
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -14,12 +14,13 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
+##### WARNING: Please do not edit this auto generated spec file.
+#
 
 %define texlive_version  2024
 %define texlive_previous 2022
 %define texlive_release  20240311
-%define texlive_noarch   213
+%define texlive_noarch   216
 %define biber_version    2.19
 
 #!BuildIgnore:          texlive
@@ -54,6 +55,10 @@
 %define _x11data        %{_datadir}/X11
 %define _x11inc         %{_includedir}
 %define _appdefdir      %{_x11data}/app-defaults
+
+%if ! %{defined python3_bin_suffix}
+%global python3_bin_suffix 3
+%endif
 
 Name:           texlive-specs-f
 Version:        2024
