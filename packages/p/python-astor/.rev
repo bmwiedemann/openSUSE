@@ -120,4 +120,13 @@
 </comment>
     <requestid>1114089</requestid>
   </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>36623d21f138dc84bc7b3e6431a8ecd1</srcmd5>
+    <version>0.8.1</version>
+    <time>1720201509</time>
+    <user>anag+factory</user>
+    <comment>- Skip same tests for python-3.13
+</comment>
+    <requestid>1185383</requestid>
+  </revision>
 </revisionlist>

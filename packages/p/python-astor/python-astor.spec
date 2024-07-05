@@ -1,7 +1,7 @@
 #
 # spec file for package python-astor
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -88,6 +88,7 @@ python39_donttest="${python38_donttest} or test_convert_stdlib"
 python310_donttest=${python39_donttest}
 python311_donttest=${python310_donttest}
 python312_donttest=${python311_donttest}
+python313_donttest=${python312_donttest}
 %pytest tests ${$python_donttest:+ -k "not (${$python_donttest})"}
 
 %files %{python_files}
