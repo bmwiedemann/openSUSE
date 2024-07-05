@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  2 21:39:04 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 9d5844679af8f84036f1b800307e799bd7ab73ba.patch VA+DMABuf
+  videos flicker
+
+-------------------------------------------------------------------
 Fri May 17 20:40:00 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.44.2 (boo#1225071):

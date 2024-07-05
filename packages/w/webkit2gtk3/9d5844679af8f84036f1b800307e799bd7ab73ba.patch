@@ -1,0 +1,59 @@
+From 9d5844679af8f84036f1b800307e799bd7ab73ba Mon Sep 17 00:00:00 2001
+From: Philippe Normand <philn@igalia.com>
+Date: Thu, 20 Jun 2024 12:39:27 -0700
+Subject: [PATCH] [GTK][GStreamer] VA+DMABuf videos flicker
+ https://bugs.webkit.org/show_bug.cgi?id=253807
+
+Reviewed by Xabier Rodriguez-Calvar.
+
+By requesting a video frame allocation pool containing at least 3 frames, the risks of flickering
+when rendering should be reduced.
+
+* Source/WebCore/platform/graphics/gstreamer/GStreamerVideoSinkCommon.cpp:
+(WebKitVideoSinkProbe::doProbe):
+
+Canonical link: https://commits.webkit.org/280210@main
+---
+ .../gstreamer/GStreamerVideoSinkCommon.cpp    | 29 +++++++++++++++++--
+ 1 file changed, 27 insertions(+), 2 deletions(-)
+
+diff --git a/Source/WebCore/platform/graphics/gstreamer/GStreamerVideoSinkCommon.cpp b/Source/WebCore/platform/graphics/gstreamer/GStreamerVideoSinkCommon.cpp
+index dc3f912e11d8..b2ddaad303e8 100644
+--- a/Source/WebCore/platform/graphics/gstreamer/GStreamerVideoSinkCommon.cpp
++++ b/Source/WebCore/platform/graphics/gstreamer/GStreamerVideoSinkCommon.cpp
+@@ -73,8 +73,33 @@ class WebKitVideoSinkProbe {
+             player->updateVideoOrientation(tagList);
+         }
+ 
+-        if (info->type & GST_PAD_PROBE_TYPE_QUERY_DOWNSTREAM && GST_QUERY_TYPE(GST_PAD_PROBE_INFO_QUERY(info)) == GST_QUERY_ALLOCATION)
+-            gst_query_add_allocation_meta(GST_PAD_PROBE_INFO_QUERY(info), GST_VIDEO_META_API_TYPE, nullptr);
++        if (info->type & GST_PAD_PROBE_TYPE_QUERY_DOWNSTREAM && GST_QUERY_TYPE(GST_PAD_PROBE_INFO_QUERY(info)) == GST_QUERY_ALLOCATION) {
++            auto query = GST_PAD_PROBE_INFO_QUERY(info);
++            gst_query_add_allocation_meta(query, GST_VIDEO_META_API_TYPE, nullptr);
++
++            GstCaps* caps;
++            gboolean needPool;
++            gst_query_parse_allocation(query, &caps, &needPool);
++            if (UNLIKELY(!caps) || !needPool)
++                return GST_PAD_PROBE_OK;
++
++            unsigned size;
++#if GST_CHECK_VERSION(1, 24, 0)
++            if (gst_video_is_dma_drm_caps(caps)) {
++                GstVideoInfoDmaDrm drmInfo;
++                if (!gst_video_info_dma_drm_from_caps(&drmInfo, caps))
++                    return GST_PAD_PROBE_OK;
++                size = GST_VIDEO_INFO_SIZE(&drmInfo.vinfo);
++            } else
++#endif
++            {
++                GstVideoInfo info;
++                if (!gst_video_info_from_caps(&info, caps))
++                    return GST_PAD_PROBE_OK;
++                size = GST_VIDEO_INFO_SIZE(&info);
++            }
++            gst_query_add_allocation_pool(query, nullptr, size, 3, 0);
++        }
+ 
+ #if USE(GSTREAMER_GL)
+         // FIXME: Verify the following comment. Investigate what actually should be done here.

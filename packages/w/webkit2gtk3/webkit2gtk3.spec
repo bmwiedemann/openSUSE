@@ -91,6 +91,8 @@ Source99:       webkit2gtk3.keyring
 Patch0:         reproducibility.patch
 # PATCH-FIX-UPSTREAM webkit2gtk3-disable-dmabuf-nvidia.patch boo#1216778 mgorse@suse.com -- disable the DMABuf renderer for NVIDIA proprietary drivers.
 Patch2:         webkit2gtk3-disable-dmabuf-nvidia.patch
+# PATCH-FIX-UPSTREAM 9d5844679af8f84036f1b800307e799bd7ab73ba -- VA+DMABuf videos flicker
+Patch3:         https://github.com/WebKit/WebKit/commit/9d5844679af8f84036f1b800307e799bd7ab73ba.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
