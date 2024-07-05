@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul  3 21:23:03 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 18.1.2.
+  * Various bug fixes.
+- Drop Support-SPV_INTEL_maximum_registers-extension.patch since
+  the issue was addressed upstream.
+
+-------------------------------------------------------------------
 Thu Mar 14 09:11:06 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - fixed rpmlintrc rule 
