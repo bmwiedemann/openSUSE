@@ -19,7 +19,7 @@
 %define gstnum  1.0
 %bcond_without released
 Name:           kamoso
-Version:        24.05.1
+Version:        24.05.2
 Release:        0
 Summary:        Application to take pictures and videos using a webcam
 License:        GPL-2.0-or-later
