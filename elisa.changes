@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul  2 13:53:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.2/
+- Changes since 24.05.1:
+  * ContextView: allow scrolling lyrics with the mouse wheel again (kde#481994)
+
+-------------------------------------------------------------------
 Wed Jun 12 07:32:12 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.1
