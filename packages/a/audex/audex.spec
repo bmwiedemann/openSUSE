@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           audex
-Version:        24.05.1
+Version:        24.05.2
 Release:        0
 Summary:        Tool for ripping compact discs
 License:        GPL-3.0-or-later
