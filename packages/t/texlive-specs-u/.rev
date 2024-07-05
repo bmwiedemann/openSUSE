@@ -492,4 +492,12 @@ Reflect all of the licenses of the various components in the spec file license (
     <comment>Update to TeXLive 2024, third</comment>
     <requestid>1160654</requestid>
   </revision>
+  <revision rev="53" vrev="56">
+    <srcmd5>aabb4c5626ab61bb3c71e9d285fbfcd5</srcmd5>
+    <version>unknown</version>
+    <time>1720201479</time>
+    <user>anag+factory</user>
+    <comment>Catch all python3 shebangs for boo#1212476</comment>
+    <requestid>1185316</requestid>
+  </revision>
 </revisionlist>
