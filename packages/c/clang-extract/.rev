@@ -32,4 +32,21 @@
   * SymbolExternalizer: Simplify Externalize_Symbols</comment>
     <requestid>1185287</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8eff50ed8909fb5f72815d19f9acbeb8</srcmd5>
+    <version>0~20240704.16ab0bf</version>
+    <time>1720201833</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0~20240704.16ab0bf:
+  * IncludeTree: Always check for full name of the header
+  * Remove unused python packages
+- Remove unneeded python BR
+
+- Update to version 0~20240704.d14d609:
+  * libcextract: ArgvParser: Change path to /usr/lib on x86 32bit
+  * testsuite: attr: Use esp for current stack point on x86 32bit
+
+- Put version requirement on llvm-devel</comment>
+    <requestid>1185728</requestid>
+  </revision>
 </revisionlist>

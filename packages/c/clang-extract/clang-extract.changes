@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jul 05 07:22:03 UTC 2024 - mvetter@suse.com
+
+- Update to version 0~20240704.16ab0bf:
+  * IncludeTree: Always check for full name of the header
+  * Remove unused python packages
+- Remove unneeded python BR
+
+-------------------------------------------------------------------
+Thu Jul 04 14:21:48 UTC 2024 - mvetter@suse.com
+
+- Update to version 0~20240704.d14d609:
+  * libcextract: ArgvParser: Change path to /usr/lib on x86 32bit
+  * testsuite: attr: Use esp for current stack point on x86 32bit
+
+-------------------------------------------------------------------
+Thu Jul  4 13:52:13 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Put version requirement on llvm-devel
+
+-------------------------------------------------------------------
 Thu Jul 04 06:42:17 UTC 2024 - mvetter@suse.com
 
 - Update to version 0~20240703.0b3e33c:
