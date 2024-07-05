@@ -23,7 +23,7 @@
 %define sover 2
 %bcond_without released
 Name:           kaccounts-integration-kf5
-Version:        24.05.1
+Version:        24.05.2
 Release:        0
 Summary:        KDE Accounts Providers
 License:        GPL-2.0-or-later
