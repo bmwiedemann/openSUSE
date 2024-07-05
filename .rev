@@ -1271,4 +1271,26 @@ Thu April 11 15:22:00 UTC 2024 - Felix Schnizlein &lt;fschnizlein@suse.com&gt;
     * make sure yum that can read repomd.xml correctly is installed (bsc#1221223)</comment>
     <requestid>1169095</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>6c4e27cc434b080324f978f09e119cfa</srcmd5>
+    <version>2.18</version>
+    <time>1720201614</time>
+    <user>anag+factory</user>
+    <comment>Mon July 1 12:42:34 UTC 2024 - Adnilson Delgado &lt;adnilson.delgado@suse.com&gt;
+- Version 2.18
+  * Move temporary storage of downloaded files to the repo directory to avoid filling up /tmp partition. (gh:#1137)
+  * Fixes for RES7-LTSS and OL7-LTSS clients
+  * Instance Verification: re-setting the repository and registry cache path to the right value; update the cache scrubber paths
+
+Thu April 18 09:27:00 UTC 2024 - Adnilson Delgado &lt;adnilson.delgado@suse.com&gt;
+- Version 2.17 :
+  * Improve CLI mirroring summary information by adding the mirror repositories, the file count and size. (gh#702)
+  * Copy metadata content to repodata/ and not create a seperate subdirectory repodata/repodata (gh#1136)
+  * Adding Uptime tracking capability (jsc#PED-7982, jsc#PED-8018)
+  * actionpack update, fixing CVE-2024-28103 (bsc#1225997)
+  * Registry authentication host capability for public cloud
+
+- Adding -f to the file move command when moving the mirrored directory to its final location (bsc#1203171)</comment>
+    <requestid>1185392</requestid>
+  </revision>
 </revisionlist>
