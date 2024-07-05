@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul  5 07:27:29 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.17.0:
+  * Support for Pillow 10.4.0
+  * Minimum supported Pillow version raised to 10.1.0
+  * xmp in info dictionary is now not present if it is empty
+  * Processing of the images in P mode with transparency = 0
+- adapt packaging to better handle rebuilding
+- disable tests for now, as it can't find the correct libs
+
+-------------------------------------------------------------------
 Sun Jun  2 23:24:23 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - remove itself from BuildRequires

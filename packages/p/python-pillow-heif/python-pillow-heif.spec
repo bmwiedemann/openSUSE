@@ -17,15 +17,14 @@
 
 
 %bcond_with     x265
-%bcond_with     libde265
-%define         BUILD_ORIG 0
 Name:           python-pillow-heif
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        Python interface for libheif library
 License:        BSD-3-Clause
 URL:            https://github.com/bigcat88/pillow_heif
-Source:         https://files.pythonhosted.org/packages/source/p/pillow-heif/pillow_heif-%{version}.tar.gz#/python-pillow-heif-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pillow-heif/pillow_heif-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module Pillow >= 9.5.0}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 67.8}
@@ -36,17 +35,9 @@ BuildRequires:  pkgconfig(aom) >= 3.3.0
 BuildRequires:  pkgconfig(libavif)
 BuildRequires:  pkgconfig(libheif) >= 1.17.0
 %if %{with x265}
-BuildRequires:  pkgconfig(libde265} >= 1.0.8
+BuildRequires:  pkgconfig(libde265)
 BuildRequires:  pkgconfig(x265)
 %endif
-# SECTION test requirements
-BuildRequires:  %{python_module Pillow >= 9.5.0}
-BuildRequires:  %{python_module Pympler}
-BuildRequires:  %{python_module defusedxml}
-BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module opencv}
-BuildRequires:  %{python_module pytest >= 6.0.0}
-# /SECTION
 Requires:       python-Pillow >= 9.5.0
 %python_subpackages
 
@@ -63,12 +54,6 @@ export CFLAGS="%{optflags}"
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-
-%if 0%{BUILD_ORIG}
-# tests need nonfree codecs
-%check
-%pytest
-%endif
 
 %files %{python_files}
 %{python_sitearch}/pillow_heif
