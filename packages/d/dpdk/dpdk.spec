@@ -237,6 +237,7 @@ mv %{buildroot}/lib/modules %{buildroot}%{_prefix}/lib
 # Fix documentation
 mkdir -p %{buildroot}%docdir
 mv %{buildroot}%{_datadir}/doc/dpdk %{buildroot}%docdir
+rm -r %{buildroot}/%docdir/dpdk/html/.doctrees
 
 # driver .so files often depend upon the bus drivers for their connect bus,
 # e.g. ixgbe depends on librte_bus_pci. This means that the bus drivers need
