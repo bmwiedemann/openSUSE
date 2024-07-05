@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jul  4 00:00:00 CEST 2024 - dsterba@suse.cz
+
+- update to version 0.5.2
+  - fix syntax error in run_task, preventing jobs to start
+  - start scrub jobs sequentially if RAID5 or RAID6 data profile is found
+  - fix btrfsmaintenance-refresh.service description
+- fix bsc#1224364
+
+-------------------------------------------------------------------
+Thu May  9 00:00:00 CEST 2024 - dsterba@suse.cz
+
+- update to version 0.5.1
+  - fix handling of OnCalendar timer directive in the drop-in configuration file
+    that reads the periods from the sysconfig
+  - fix use of --verbose option of fstrim, not available on util-linux < 2.27
+  - ship manual page of README, also available as 'systemctl help servicename'
+
+-------------------------------------------------------------------
 Mon Apr  8 18:17:13 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Use full URL for Source0 (.gz compressed as upstream does not
