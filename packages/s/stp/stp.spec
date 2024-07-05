@@ -18,7 +18,7 @@
 
 %define sover 2_3
 Name:           stp
-Version:        2.3.3+20231214
+Version:        2.3.4+20240611
 Release:        0
 Summary:        Constraint Solver
 License:        MIT
@@ -30,6 +30,7 @@ BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  flex
 BuildRequires:  gcc-c++
+BuildRequires:  gmp-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  minisat-devel
 BuildRequires:  ninja
