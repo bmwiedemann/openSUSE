@@ -474,6 +474,12 @@ unsorted:
   - afl 
   - afterburn 
   - afterburn-dracut 
+  - agama 
+  - agama-auto 
+  - agama-cli 
+  - agama-playwright 
+  - agama-products-opensuse 
+  - agama-web-ui 
   - age 
   - agenda 
   - agenda-lang 
@@ -2260,6 +2266,7 @@ unsorted:
   - cloud-netconfig-azure 
   - cloud-netconfig-ec2 
   - cloud-netconfig-gce 
+  - cloudflared 
   - cloudproviders-extension-nextcloud 
   - clpeak 
   - clthreads-devel 
@@ -9773,6 +9780,7 @@ unsorted:
   - kernel-docs-html 
   - kernel-firmware 
   - kernel-firmware-nvidia-gsp-G06 
+  - kernel-firmware-nvidia-gspx-G06-cuda 
   - kernel-install-tools 
   - kernel-kvmsmall 
   - kernel-kvmsmall-devel 
@@ -15284,6 +15292,8 @@ unsorted:
   - libpython3_12-1_0 
   - libpython3_12-1_0-32bit 
   - libpython3_12-1_0-x86-64-v3 
+  - libpython3_13-1_0 
+  - libpython3_13-1_0-x86-64-v3 
   - libpython3_8-1_0 
   - libpython3_9-1_0 
   - libpython3_9-1_0-32bit 
@@ -15594,6 +15604,7 @@ unsorted:
   - libreoffice-calc-extensions 
   - libreoffice-gdb-pretty-printers 
   - libreoffice-glade 
+  - libreoffice-kdeintegration 
   - libreoffice-l10n-af 
   - libreoffice-l10n-am 
   - libreoffice-l10n-ar 
@@ -16532,7 +16543,7 @@ unsorted:
   - libvamp-hostsdk3-32bit 
   - libvamp-sdk2 
   - libvamp-sdk2-32bit 
-  - libvapoursynth-68 
+  - libvapoursynth-69 
   - libvapoursynth-script0 
   - libvarlink-devel 
   - libvarlink0 
@@ -19276,6 +19287,7 @@ unsorted:
   - nautilus-extension-sendto-blueman 
   - nautilus-extension-tilix 
   - nautilus-file-roller 
+  - nautilus-font-manager 
   - nautilus-image-converter 
   - nautilus-image-converter-lang 
   - nauty 
@@ -19486,6 +19498,7 @@ unsorted:
   - nginx-macros 
   - nginx-module-brotli 
   - nginx-module-echo 
+  - nginx-module-geoip2 
   - nginx-module-njs 
   - nginx-module-vts 
   - nginx-module-zstd 
@@ -19637,7 +19650,10 @@ unsorted:
   - nut-doc-html 
   - nut-doc-images 
   - nut-drivers-net 
+  - nv-prefer-signed-open-driver 
   - nvdock 
+  - nvidia-open-driver-G06-signed-cuda-default-devel 
+  - nvidia-open-driver-G06-signed-cuda-kmp-default 
   - nvidia-open-driver-G06-signed-default-devel 
   - nvidia-texture-tools 
   - nvimpager 
@@ -22598,6 +22614,7 @@ unsorted:
   - playerctl-devel 
   - playerctl-doc 
   - playerctl-zsh-completion 
+  - playwright 
   - pleaser 
   - plee-the-bear 
   - plee-the-bear-data 
@@ -25287,6 +25304,7 @@ unsorted:
   - python310-hid-parser 
   - python310-hijri-converter 
   - python310-hiredis 
+  - python310-hishel 
   - python310-hkdf 
   - python310-hl7apy 
   - python310-holidays 
@@ -28844,6 +28862,7 @@ unsorted:
   - python311-hid-parser 
   - python311-hijri-converter 
   - python311-hiredis 
+  - python311-hishel 
   - python311-hkdf 
   - python311-hl7apy 
   - python311-holidays 
@@ -32371,6 +32390,7 @@ unsorted:
   - python312-hid-parser 
   - python312-hijri-converter 
   - python312-hiredis 
+  - python312-hishel 
   - python312-hkdf 
   - python312-hl7apy 
   - python312-holidays 
@@ -34427,6 +34447,19 @@ unsorted:
   - python312-zstd 
   - python312-zxcvbn 
   - python312-zypp-plugin 
+  - python313 
+  - python313-base 
+  - python313-base-x86-64-v3 
+  - python313-curses 
+  - python313-dbm 
+  - python313-devel 
+  - python313-doc 
+  - python313-doc-devhelp 
+  - python313-idle 
+  - python313-testsuite 
+  - python313-tk 
+  - python313-tools 
+  - python313-x86-64-v3 
   - python38 
   - python38-base 
   - python38-curses 
@@ -35560,6 +35593,7 @@ unsorted:
   - ruby3.3-rubygem-addressable 
   - ruby3.3-rubygem-aes_key_wrap 
   - ruby3.3-rubygem-afm 
+  - ruby3.3-rubygem-agama-yast 
   - ruby3.3-rubygem-airbrussh 
   - ruby3.3-rubygem-amq-protocol 
   - ruby3.3-rubygem-arel 
@@ -47100,6 +47134,8 @@ unsorted:
   - uimaj 
   - uimaj-javadoc 
   - uisp 
+  - uki-tool 
+  - uki-tool-doc 
   - ulfius-devel 
   - ulogd 
   - ulogd-mysql 
