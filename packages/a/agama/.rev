@@ -1,0 +1,15 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2bbdd91414d8974220718c4b70d1da77</srcmd5>
+    <version>0</version>
+    <time>1720201609</time>
+    <user>anag+factory</user>
+    <comment>-Add Agama 9 installer
+
+- Require new golang-github-google-jsonnet instead of jsonnet
+  jsonnet has an existing weakremover
+
+- https://code.opensuse.org/leap/features/issue/158</comment>
+    <requestid>1184886</requestid>
+  </revision>
+</revisionlist>

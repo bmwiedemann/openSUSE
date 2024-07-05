@@ -1,0 +1,6 @@
+<package name="agama" project="openSUSE:Factory">
+  <title>Agama installer</title>
+  <description>Agama is a service-based Linux installer. It is composed of an HTTP-based API, a web user interface, a command-line interface and a D-Bus service which exposes part of the YaST libraries.
+</description>
+  <devel project="systemsmanagement:Agama:Devel" package="agama"/>
+</package>
