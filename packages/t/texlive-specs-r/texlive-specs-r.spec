@@ -1,5 +1,5 @@
 #
-# spec file for package texlive-specs-r.spec.new
+# spec file for package texlive-specs-r.spec
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -14,12 +14,14 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+##### WARNING: Please do not edit this auto generated spec file.
+#
 
 
 %define texlive_version  2024
 %define texlive_previous 2022
 %define texlive_release  20240311
-%define texlive_noarch   213
+%define texlive_noarch   216
 %define biber_version    2.19
 
 #!BuildIgnore:          texlive
@@ -54,6 +56,10 @@
 %define _x11data        %{_datadir}/X11
 %define _x11inc         %{_includedir}
 %define _appdefdir      %{_x11data}/app-defaults
+
+%if ! %{defined python3_bin_suffix}
+%global python3_bin_suffix 3
+%endif
 
 Name:           texlive-specs-r
 Version:        2024
@@ -21938,10 +21944,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:73} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:74} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:75} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/pas-cours/macro-styles.tex %{buildroot}%{_texmfdistdir}/tex/latex/pas-cours/macro-styles.tex
-    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/pas-cours/macro-calculs.tex %{buildroot}%{_texmfdistdir}/tex/latex/pas-cours/macro-calculs.tex
-    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/pas-cours/macro-solides.tex %{buildroot}%{_texmfdistdir}/tex/latex/pas-cours/macro-solides.tex
     mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/pas-cours/macro-patrons.tex %{buildroot}%{_texmfdistdir}/tex/latex/pas-cours/macro-patrons.tex
+    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/pas-cours/macro-solides.tex %{buildroot}%{_texmfdistdir}/tex/latex/pas-cours/macro-solides.tex
+    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/pas-cours/macro-calculs.tex %{buildroot}%{_texmfdistdir}/tex/latex/pas-cours/macro-calculs.tex
+    mv -vf %{buildroot}%{_texmfdistdir}/doc/latex/pas-cours/macro-styles.tex %{buildroot}%{_texmfdistdir}/tex/latex/pas-cours/macro-styles.tex
     tar --use-compress-program=xz -xf %{S:76} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:77} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:78} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -22003,6 +22009,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:116} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:117} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:118} -C %{buildroot}%{_datadir}/texlive
+    # Extend python3 scripts with major version only if any
+    for scr in %{_texmfdistdir}/scripts/pdfbook2/pdfbook2
+    do
+	test -e %{buildroot}/$scr || continue
+	ed %{buildroot}/${scr} <<-'EOF'
+		1
+		s@python3@python%python3_bin_suffix@
+		.
+		w
+		q
+	EOF
+    done
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/pdfbook2/pdfbook2
     do
