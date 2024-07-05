@@ -18,11 +18,11 @@
 
 %define kf6_version 6.0.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.1.1
+%define kpim6_version 6.1.2
 
 %bcond_without released
 Name:           kitinerary
-Version:        24.05.1
+Version:        24.05.2
 Release:        0
 Summary:        Data model and extraction system for travel reservations
 License:        LGPL-2.1-or-later
