@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 04 14:16:48 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.128.2:
+  * Fix site.GetPage, never do short lookups for paths with leadig slash
+
+-------------------------------------------------------------------
+Thu Jul 04 14:16:18 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.128.1:
+  * create/skeletons: Fix languageCode region subtag
+  * Fix it so publishDate rolls up to section, taxonomy, or term pages
+  * Update README.md
+
+-------------------------------------------------------------------
 Tue Jun 25 17:56:46 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.128.0:

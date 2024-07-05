@@ -1283,4 +1283,18 @@
   * deps: Upgrade github.com/evanw/esbuild v0.20.2 =&gt; v0.21.4 (forwarded request 1183240 from jfkw)</comment>
     <requestid>1183259</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>48701ad8b507f05d767b361ef62a9a9b</srcmd5>
+    <version>0.128.2</version>
+    <time>1720201630</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.128.2:
+  * Fix site.GetPage, never do short lookups for paths with leadig slash
+
+- Update to version 0.128.1:
+  * create/skeletons: Fix languageCode region subtag
+  * Fix it so publishDate rolls up to section, taxonomy, or term pages
+  * Update README.md (forwarded request 1185416 from jfkw)</comment>
+    <requestid>1185417</requestid>
+  </revision>
 </revisionlist>
