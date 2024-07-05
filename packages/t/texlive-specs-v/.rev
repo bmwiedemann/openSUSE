@@ -546,4 +546,12 @@ Adding the LPPL as many files are licensed under this license (forwarded request
     <comment>Update to TeXLive 2024, third</comment>
     <requestid>1160655</requestid>
   </revision>
+  <revision rev="57" vrev="60">
+    <srcmd5>665db5e7d8dfc92236986648f259610c</srcmd5>
+    <version>unknown</version>
+    <time>1720201481</time>
+    <user>anag+factory</user>
+    <comment>Catch all python3 shebangs for boo#1212476</comment>
+    <requestid>1185317</requestid>
+  </revision>
 </revisionlist>
