@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           koko
-Version:        24.05.1
+Version:        24.05.2
 Release:        0
 Summary:        Kirigami based gallery application
 License:        LGPL-2.1-or-later
