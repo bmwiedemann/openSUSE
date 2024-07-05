@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul  5 06:30:51 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 69:
+  * added YUV420PS/H and YUV422PS/H constants for convenience
+  * vspipe --info will now output information for all set output nodes
+  * added a new function to to the vsscript api to get a list of all set output
+    indices, since most users don't need vsscript api 4.2 you now have to
+    define VSSCRIPT_USE_LATEST_API or VSSCRIPT_USE_API_42 to actually require it
+  * the python module will now warn if it doesn't match the core library
+    version when creating a core
+  * updated zimg to fix a rare resizing bug that only happens around 0.5x
+  * scaling with avx512 optimizations
+  * now always sets console output codepage to utf8 in windows
+
+-------------------------------------------------------------------
 Mon May 13 13:54:38 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 68:
