@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jul  2 13:53:48 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.2/
+- Changes since 24.05.1:
+  * Add 24.05.2 release notes
+  * Don't register KContacts QML types with KF >= 6.3
+  * Fix reading/writing of all-day events to/from the Android system calendar
+  * Fix corrupted release notes
+  * Use the same branch for PIM dependencies
+  * Port away from deprecated KMime API
+  * Build APKs against release branch dependencies
+  * Also request calendar read permissions when requesting write permissions
+  * Hide barcode area in pkpasses entirely if there is none
+  * Add 24.05.1 release notes
+
+-------------------------------------------------------------------
 Wed Jun 12 07:32:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.1
