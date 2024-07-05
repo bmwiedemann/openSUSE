@@ -1,0 +1,5 @@
+<package name="agama-products-opensuse" project="openSUSE:Factory">
+  <title>products definition</title>
+  <description></description>
+  <devel project="systemsmanagement:Agama:Devel" package="agama-products-opensuse"/>
+</package>
