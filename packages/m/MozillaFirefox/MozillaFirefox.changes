@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jul  1 09:44:55 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
+
+- Mozilla Firefox 127.0.2
+  * Fixed an issue where YouTube playback may experience stalling under
+    certain conditions (bmo#1900191, bmo#1878510).
+  * Fixed an issue where the Private Window icon was displayed in the taskbar
+    on Windows when browser.privateWindowSeparation.enabled was
+    set to false (bmo#1901840).
+- Mozilla Firefox 127.0.1
+  * Fixed an issue where users with a primary password set on their profile
+    could lose their previous session of tabs upon upgrading if they dismissed
+    the primary password prompt (bmo#1901899).
+  * Fixed an issue where Linux users with accessibility.monoaudio.enable set
+    to true were experiencing slow audio speeds (bmo#1900972).
+  * Fixed an issue where, in some circumstances, the Firefox installer
+    on Windows failed to complete the installation (bmo#1896868).
+  * Fixed an issue causing Firefox to incorrectly reject cookies
+    for certain websites (bmo#1901325).
+
+-------------------------------------------------------------------
+Fri Jun 28 12:37:44 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Fix GNOME search provider (boo#1225278)
+
+-------------------------------------------------------------------
 Tue Jun 11 09:21:24 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 127.0
