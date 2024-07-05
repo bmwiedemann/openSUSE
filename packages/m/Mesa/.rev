@@ -5807,4 +5807,21 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   * fixes glxinfo/eglxinfo on s390x (boo#1226725, comment#6)</comment>
     <requestid>1183856</requestid>
   </revision>
+  <revision rev="512" vrev="384">
+    <srcmd5>545c6499eb02e136165e8f77e60c02b0</srcmd5>
+    <version>unknown</version>
+    <time>1720201502</time>
+    <user>anag+factory</user>
+    <comment>- Update to bugfix release 24.1.3
+  --&gt; https://docs.mesa3d.org/relnotes/24.1.3
+- supersedes the following patches:
+  * u_dri-Fix-BGR-format-exclusion.patch
+  * u_egl-gbm-Enable-RGBA-configs.patch
+  * u_egl-surfaceless-Enable-RGBA-configs.patch
+  * boo1226725-test-fix1.patch
+
+- use gcc-13 on SLE 15/Leap 15.x in order to fix build; credits
+  go to &quot;Friedrich Haubensak&quot; &lt;hsk17@mail.de&gt; to figure this out!</comment>
+    <requestid>1185393</requestid>
+  </revision>
 </revisionlist>

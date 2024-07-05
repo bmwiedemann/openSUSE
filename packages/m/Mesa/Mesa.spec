@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package Mesa
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -42,7 +42,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 24.1.2
+%define _version 24.1.3
 %define with_opencl 0
 %define with_rusticl 0
 %define with_vulkan 0
@@ -145,7 +145,7 @@
 %global _paste_crate_ver 1.0.14
 
 Name:           Mesa%{psuffix}
-Version:        24.1.2
+Version:        24.1.3
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -183,10 +183,6 @@ Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch58:        u_dep_xcb.patch
 Patch100:       U_fix-mpeg1_2-decode-mesa-20.2.patch
 Patch400:       n_stop-iris-flicker.patch
-Patch500:       u_dri-Fix-BGR-format-exclusion.patch
-Patch501:       u_egl-gbm-Enable-RGBA-configs.patch
-Patch502:       u_egl-surfaceless-Enable-RGBA-configs.patch
-Patch503:       boo1226725-test-fix1.patch
 %ifarch %{ix86} x86_64
 BuildRequires:  DirectX-Headers
 %endif
@@ -195,7 +191,7 @@ BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  flex
 %if 0%{?sle_version} >= 150400
-BuildRequires:  gcc12-c++
+BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++
 %endif
@@ -841,10 +837,6 @@ cp %{SOURCE6} subprojects/packagecache/
 %patch -P 58 -p1
 %patch -P 100 -p1
 %patch -P 400 -p1
-%patch -P 500 -p1
-%patch -P 501 -p1
-%patch -P 502 -p1
-%patch -P 503 -p1
 
 # Remove requires to vulkan libs from baselibs.conf on platforms
 # where vulkan build is disabled; ugly ...
@@ -859,8 +851,8 @@ grep -v -i vulkan "%{_sourcedir}/baselibs.conf" >"%{_sourcedir}/temp" && \
 %limit_build -m 1024
 %endif
 %if 0%{?sle_version} >= 150400
-export CC=gcc-12
-export CXX=g++-12
+export CC=gcc-13
+export CXX=g++-13
 %endif
 
 egl_platforms=x11,wayland
