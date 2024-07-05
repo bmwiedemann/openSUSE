@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul  5 07:13:38 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 7.0.5:
+  * Fixed: CVE-2024-24791 - GO-2024-2963 Denial of service due to improper 
+    100-continue handling in net/http
+  * Fixed: authentication Source Administration page wrongfully handles the "Custom URLs Instead 
+    of Default URLs" checkbox (missing checkbox, irrelevant fields).
+  * Fixed: git push to an adopted repository fails.
+  * Fixed: markdown doesn't render math within brackets
+  * Fixed: selecting the "No Project" filter in the issue/pull request list has no effect
+  * Fixed: error 500 when processing crafted TIFF files.
+  * Fixed: wrong placeholder text in the form for adding repository collaborator.
+
+-------------------------------------------------------------------
 Sun Jun 16 12:52:27 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - update to 7.0.4:
