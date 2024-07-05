@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8d7e601e4836680710f8bd666e0c4b13</srcmd5>
+    <version>1.32.1</version>
+    <time>1720201608</time>
+    <user>anag+factory</user>
+    <comment>- Add playwright for Agama playwright testing image flavor
+
+https://code.opensuse.org/leap/features/issue/158</comment>
+    <requestid>1184873</requestid>
+  </revision>
+</revisionlist>
