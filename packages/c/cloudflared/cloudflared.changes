@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Thu Jul  4 13:55:12 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add 003-support-ppc64le.patch 
+
+-------------------------------------------------------------------
+Mon Jun 17 07:40:16 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Initial package for version 2024.6.0
+- Add 001-skip-test.patch and 002-use-pie.patch

@@ -1,0 +1,12 @@
+diff -Nur cloudflared-2024.6.0/Makefile cloudflared-2024.6.0-new/Makefile
+--- cloudflared-2024.6.0/Makefile	2024-07-04 16:52:14.844931090 +0800
++++ cloudflared-2024.6.0-new/Makefile	2024-07-04 20:51:20.984311413 +0800
+@@ -74,6 +74,8 @@
+     TARGET_ARCH ?= arm
+ else ifeq ($(LOCAL_ARCH),s390x)
+     TARGET_ARCH ?= s390x
++else ifeq ($(LOCAL_ARCH),ppc64le)
++    TARGET_ARCH ?= ppc64le
+ else
+     $(error This system's architecture $(LOCAL_ARCH) isn't supported)
+ endif

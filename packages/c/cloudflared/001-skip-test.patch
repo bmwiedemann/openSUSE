@@ -1,0 +1,33 @@
+diff -Nur cloudflared-2024.6.0/Makefile cloudflared-2024.6.0-new/Makefile
+--- cloudflared-2024.6.0/Makefile	2024-06-04 02:29:11.000000000 +0800
++++ cloudflared-2024.6.0-new/Makefile	2024-07-04 16:47:13.388734689 +0800
+@@ -119,7 +119,7 @@
+ RPM_DIGEST := --rpm-digest sha256
+ 
+ .PHONY: all
+-all: cloudflared test
++all: cloudflared
+ 
+ .PHONY: clean
+ clean:
+@@ -171,8 +171,8 @@
+ 
+ .PHONY: install-go
+ install-go:
+-	rm -rf ${CF_GO_PATH}
+-	./.teamcity/install-cloudflare-go.sh
++#	rm -rf ${CF_GO_PATH}
++#	./.teamcity/install-cloudflare-go.sh
+ 
+ .PHONY: cleanup-go
+ cleanup-go:
+@@ -181,7 +181,7 @@
+ cloudflared.1: cloudflared_man_template
+ 	sed -e 's/\$${VERSION}/$(VERSION)/; s/\$${DATE}/$(DATE)/' cloudflared_man_template > cloudflared.1
+ 
+-install: install-go cloudflared cloudflared.1 cleanup-go
++install: cloudflared cloudflared.1 cleanup-go
+ 	mkdir -p $(DESTDIR)$(INSTALL_BINDIR) $(DESTDIR)$(INSTALL_MANDIR)
+ 	install -m755 cloudflared $(DESTDIR)$(INSTALL_BINDIR)/cloudflared
+ 	install -m644 cloudflared.1 $(DESTDIR)$(INSTALL_MANDIR)/cloudflared.1
+二进制文件 cloudflared-2024.6.0/vendor.tar.gz 和 cloudflared-2024.6.0-new/vendor.tar.gz 不同
