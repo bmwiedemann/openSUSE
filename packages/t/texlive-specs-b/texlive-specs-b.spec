@@ -1,5 +1,5 @@
 #
-# spec file for package texlive-specs-b.spec.new
+# spec file for package texlive-specs-b.spec
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -14,12 +14,13 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
+##### WARNING: Please do not edit this auto generated spec file.
+#
 
 %define texlive_version  2024
 %define texlive_previous 2022
 %define texlive_release  20240311
-%define texlive_noarch   213
+%define texlive_noarch   216
 %define biber_version    2.19
 
 #!BuildIgnore:          texlive
@@ -54,6 +55,10 @@
 %define _x11data        %{_datadir}/X11
 %define _x11inc         %{_includedir}
 %define _appdefdir      %{_x11data}/app-defaults
+
+%if ! %{defined python3_bin_suffix}
+%global python3_bin_suffix 3
+%endif
 
 Name:           texlive-specs-b
 Version:        2024
@@ -22293,6 +22298,45 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     do
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
+    done
+    # Extend python3 scripts with major version only if any
+    for scr in %{_texmfdistdir}/asymptote/GUI/ContextWindow.py \
+	       %{_texmfdistdir}/asymptote/GUI/CustMatTransform.py \
+	       %{_texmfdistdir}/asymptote/GUI/DebugFlags.py \
+	       %{_texmfdistdir}/asymptote/GUI/GuidesManager.py \
+	       %{_texmfdistdir}/asymptote/GUI/InplaceAddObj.py \
+	       %{_texmfdistdir}/asymptote/GUI/PrimitiveShape.py \
+	       %{_texmfdistdir}/asymptote/GUI/SetCustomAnchor.py \
+	       %{_texmfdistdir}/asymptote/GUI/UndoRedoStack.py \
+	       %{_texmfdistdir}/asymptote/GUI/Widg_addLabel.py \
+	       %{_texmfdistdir}/asymptote/GUI/Widg_addPolyOpt.py \
+	       %{_texmfdistdir}/asymptote/GUI/Widg_editBezier.py \
+	       %{_texmfdistdir}/asymptote/GUI/Window1.py \
+	       %{_texmfdistdir}/asymptote/GUI/__init__.py \
+	       %{_texmfdistdir}/asymptote/GUI/labelEditor.py \
+	       %{_texmfdistdir}/asymptote/GUI/setup.py \
+	       %{_texmfdistdir}/asymptote/GUI/xasy.py \
+	       %{_texmfdistdir}/asymptote/GUI/xasy2asy.py \
+	       %{_texmfdistdir}/asymptote/GUI/xasyArgs.py \
+	       %{_texmfdistdir}/asymptote/GUI/xasyBezierInterface.py \
+	       %{_texmfdistdir}/asymptote/GUI/xasyFile.py \
+	       %{_texmfdistdir}/asymptote/GUI/xasyOptions.py \
+	       %{_texmfdistdir}/asymptote/GUI/xasyStrings.py \
+	       %{_texmfdistdir}/asymptote/GUI/xasySvg.py \
+	       %{_texmfdistdir}/asymptote/GUI/xasyTransform.py \
+	       %{_texmfdistdir}/asymptote/GUI/xasyUtils.py \
+	       %{_texmfdistdir}/asymptote/GUI/xasyValidator.py \
+	       %{_texmfdistdir}/asymptote/GUI/xasyVersion.py \
+	       %{_texmfdistdir}/asymptote/asymptote.py
+    do
+	test -e %{buildroot}/$scr || continue
+	ed %{buildroot}/${scr} <<-'EOF'
+		1
+		s@python3@python%python3_bin_suffix@
+		.
+		w
+		q
+	EOF
     done
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/asymptote/GUI/ContextWindow.py \
