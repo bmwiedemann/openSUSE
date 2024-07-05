@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jul  2 09:45:34 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.15.5:
+  * Add keyring cli get creds mode
+  * Fix release note autogenerator
+- 0.15.4
+  * Skip netrc when parse failed
+  * Update dependencies
+  * Switch to trusted publisher
+  * Test on 3.13
+- 0.15.3
+  * Allow passing headers to package finder
+  * ci: Matrix for old python versions on macos
+- 0.15.2
+  * Incorrect username when using system keyring CLI
+- 0.15.1
+  * Close local files after read
+- 0.15.0
+  * Support exclude_newer_than evaluation
+  * Support httpx.Client
+
+-------------------------------------------------------------------
 Sun Jan 21 10:44:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.14.0:

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-unearth
-Version:        0.14.0
+Version:        0.15.5
 Release:        0
 Summary:        A utility to fetch and download python packages
 License:        MIT
@@ -32,17 +32,20 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests >= 2.25}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-httpx
 Requires:       python-packaging >= 20
 Requires:       python-requests >= 2.25
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if 0%{?python_version_nodots} < 38
 Requires:       python-cached-property >= 1.5.2
 %endif
 # SECTION test
 BuildRequires:  %{python_module Flask >= 2.1.2}
+BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module pytest-httpserver >= 1.0.4}
+BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-wsgi-adapter >= 0.4.1}
 BuildRequires:  %{python_module trustme >= 0.9.0}
