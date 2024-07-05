@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul  2 13:53:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.2/
+- Changes since 24.05.1:
+  * Add missing GENERATE_MOC to kconfig_add_kcfg_files
+  * CI: Disable Craft Windows
+
+-------------------------------------------------------------------
 Wed Jun 12 07:32:10 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.1
