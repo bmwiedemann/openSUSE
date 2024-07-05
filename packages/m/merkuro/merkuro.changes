@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul  2 13:55:11 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.2/
+- Changes since 24.05.1:
+  * DateTimeState: Use locale for firstDayOfWeek
+  * MonthView: Update Basic grid when changing months (kde#477161)
+  * Fix cliping in Schedule view
+  * HourlyView: Use Calendar.DateTimeState
+
+-------------------------------------------------------------------
 Wed Jun 12 07:34:45 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.1
