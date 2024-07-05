@@ -17,7 +17,7 @@
 
 
 Name:           parcellite
-Version:        1.2.4.0
+Version:        1.2.4
 Release:        0
 Summary:        A lightweight GTK+ clipboard manager
 License:        GPL-3.0-or-later

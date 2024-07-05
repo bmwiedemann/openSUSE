@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  5 06:00:52 UTC 2024 - ming li <mli@suse.com>
+
+- update to 1.2.4:
+  * Fixed Segfault on Rocky 9, and potential on any OS.
+
+-------------------------------------------------------------------
 Mon May 13 09:01:30 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Switch to https://github.com/rickyrockrat/parcellite
