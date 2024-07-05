@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  4 11:54:08 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add fix-lapack-testing.patch to fix tests
+  gh#Reference-LAPACK/lapack@5b0687f429cf
+
+-------------------------------------------------------------------
 Fri Jun 14 03:09:33 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Rename isnan man file to avoid conflict with libm's isnan (from

@@ -44,6 +44,8 @@ Summary:        Linear Algebra PACKage
 License:        BSD-3-Clause
 URL:            https://www.netlib.org/lapack/
 Source0:        https://github.com/Reference-LAPACK/lapack/archive/v%{version}.tar.gz#/%{pname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-lapack-testing.patch gh#Reference-LAPACK/lapack@5b0687f429cf
+Patch1:         fix-lapack-testing.patch
 Source98:       lapack.rpmlintrc
 Source99:       baselibs.conf
 BuildRequires:  cmake

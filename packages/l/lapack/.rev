@@ -525,4 +525,12 @@ An alternative would be to use the older manpages or to pre-generate them.
 * Rename isnan man file to avoid conflict with libm's isnan (from package man-pages).</comment>
     <requestid>1180788</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>b9eb2fa68a6fba923363a529626c4f07</srcmd5>
+    <version>3.12.0</version>
+    <time>1720201518</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1185418</requestid>
+  </revision>
 </revisionlist>
