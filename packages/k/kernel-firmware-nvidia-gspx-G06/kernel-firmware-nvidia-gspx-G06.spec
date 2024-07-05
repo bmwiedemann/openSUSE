@@ -1,5 +1,5 @@
 #
-# spec file for package kernel-firmware-nvidia-gspx-G06
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -16,6 +16,14 @@
 #
 
 
+%define gfx_version 550.90.07
+%define cuda_version 555.42.02
+
+%global flavor @BUILD_FLAVOR@%{?nil}
+%if "%{flavor}" == "cuda"
+%{bcond_without cuda}
+%endif
+
 %define simpletest 0
 
 %ifarch x86_64
@@ -28,21 +36,33 @@
 %define _firmwaredir /lib/firmware
 %endif
 
-Name:           kernel-firmware-nvidia-gspx-G06
+Name:           kernel-firmware-nvidia-gspx-G06%{?with_cuda:-cuda}
 URL:            https://www.nvidia.com/en-us/drivers/unix/
-Version:        550.90.07
+%if %{with cuda}
+Version:        %{cuda_version}
+%else
+Version:        %{gfx_version}
+%endif
 Release:        0
 Summary:        Kernel firmware file for open NVIDIA kernel module driver G06
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
 Group:          System/Kernel
 Source0:        http://download.nvidia.com/XFree86/Linux-x86_64/%{version}/NVIDIA-Linux-x86_64-%{version}.run
 Source1:        http://download.nvidia.com/XFree86/Linux-aarch64/%{version}/NVIDIA-Linux-aarch64-%{version}.run
+%if %{with factory_auto}
+Source2:        http://download.nvidia.com/XFree86/Linux-x86_64/%{cuda_version}/NVIDIA-Linux-x86_64-%{cuda_version}.run
+Source3:        http://download.nvidia.com/XFree86/Linux-aarch64/%{cuda_version}/NVIDIA-Linux-aarch64-%{cuda_version}.run
+%endif
+Source4:        kernel-firmware-nvidia-gspx-G06-rpmlintrc
+Source5:        kernel-firmware-nvidia-gspx-G06-cuda-rpmlintrc
 NoSource:       0
 NoSource:       1
-%if 0%{simpletest} == 1
-Source2:        %{name}-rpmlintrc
-%else
+%if 0%{simpletest} == 0
 Provides:       multiversion(kernel)
+%endif
+%if %{with cuda}
+Provides:       kernel-firmware-nvidia-gspx-G06 = %version
+Conflicts:      kernel-firmware-nvidia-gspx-G06
 %endif
 ExclusiveArch:  x86_64 aarch64
 Obsoletes:      kernel-firmware-nvidia-gsp-G06 = 535.86.05

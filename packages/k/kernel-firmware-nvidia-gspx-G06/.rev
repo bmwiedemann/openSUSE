@@ -93,4 +93,12 @@ https://nvidia.custhelp.com/app/answers/detail/a_id/5491/~/security-bulletin%3A-
   * addresses boo#1223356 [CVE-2024-0090, CVE-2024-0091, CVE-2024-0092]</comment>
     <requestid>1178692</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>556f64d37cf29ef917dd2c78fb510b9d</srcmd5>
+    <version>550.90.07</version>
+    <time>1720201875</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1185804</requestid>
+  </revision>
 </revisionlist>

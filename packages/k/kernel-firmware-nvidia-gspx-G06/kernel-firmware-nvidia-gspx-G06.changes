@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul  5 10:58:50 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- make buildservice happy; all sources need to be mentioned as such
+  in specfile 
+
+-------------------------------------------------------------------
+Thu Jul  4 13:56:54 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Add a second flavor to be used by the kernel module versions
+  used by CUDA. The firmware targetting CUDA contains '-cuda' in
+  its name to track its versions separately from the graphics
+  firmware. (bsc#1227417)
+
+-------------------------------------------------------------------
 Tue Jun  4 12:53:24 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Security Update 550.90.07
